@@ -31,10 +31,12 @@ Efolusi ships WCAG 2.1 AA. The rules, per concern:
 - Durations cap at 240ms and convey state only. If you add larger motion, gate it behind `prefers-reduced-motion`.
 - `tokens/base.css` ships a global `prefers-reduced-motion: reduce` guard that collapses all animation and transition durations, including component-injected CSS.
 
-## Known gaps (tracked for the next component release)
-- Dialog, Drawer, ConfirmDialog, and CommandPalette do not yet trap focus, move focus in on open, or restore it on close.
-- Menu and Popover triggers open on click only (not yet keyboard-operable) and lack `aria-haspopup`/`aria-expanded`; Menu items have no arrow-key navigation yet.
-- Calendar/DatePicker lack grid semantics, full-date labels, and arrow-key navigation.
-- Tooltip is not linked to its trigger via `aria-describedby`.
+## Component keyboard contracts (verified in-browser)
+- Dialog, Drawer, ConfirmDialog: focus moves in on open, Tab and Shift+Tab wrap inside, Escape closes, focus returns to the invoker; panels carry `aria-labelledby`/`aria-describedby`.
+- Menu, Popover: triggers are keyboard-operable with `aria-haspopup`/`aria-expanded`; Menu opens focused with `↑ ↓ Home End` navigation, Escape restores the trigger.
+- CommandPalette: `role="combobox"` input with `aria-activedescendant` over a `listbox` of options; arrows scroll the active option into view.
+- Calendar/DatePicker: `role="grid"` with labelled columnheaders, per-day full-date labels, `aria-selected`/`aria-current`, `← → ↑ ↓ Home End PageUp PageDown` navigation; DatePicker moves focus into the grid on open and back to its button on close.
+- Tabs: roving tabindex, `← → Home End` move focus and selection together.
+- Tooltip links to its trigger via `aria-describedby` and dismisses on Escape; HoverCard is a non-modal panel (no dialog role) and dismisses on Escape.
 
-These are defects against the contract above, not accepted behavior. Fixing them requires component source changes plus a bundle recompile, so they ship together as one release.
+Remaining known gaps: Menu lacks typeahead; ContextMenu and Menubar still need the arrow-key treatment Menu received. Both are tracked in ROADMAP.md.

@@ -19,23 +19,26 @@ export function DatePicker({ label, value, defaultValue, onChange, placeholder =
   const v = value != null ? value : inner;
   const [open, setOpen] = React.useState(false);
   const ref = React.useRef(null);
+  const btnRef = React.useRef(null);
   React.useEffect(() => {
     if (!open) return;
+    const day = ref.current && ref.current.querySelector('[role="gridcell"][tabindex="0"]');
+    if (day) day.focus();
     const away = e => { if (ref.current && !ref.current.contains(e.target)) setOpen(false); };
-    const key = e => { if (e.key === 'Escape') setOpen(false); };
+    const key = e => { if (e.key === 'Escape') { setOpen(false); if (btnRef.current) btnRef.current.focus(); } };
     document.addEventListener('mousedown', away); document.addEventListener('keydown', key);
     return () => { document.removeEventListener('mousedown', away); document.removeEventListener('keydown', key); };
   }, [open]);
   return (
     <span ref={ref} className={`ef-datepicker${className ? ' ' + className : ''}`} style={style}>
       {label ? <span className="ef-datepicker__label">{label}</span> : null}
-      <button type="button" className={`ef-datepicker__btn${v ? '' : ' ef-datepicker__btn--empty'}`} onClick={() => setOpen(o => !o)}>
+      <button type="button" ref={btnRef} aria-haspopup="dialog" aria-expanded={open} className={`ef-datepicker__btn${v ? '' : ' ef-datepicker__btn--empty'}`} onClick={() => setOpen(o => !o)}>
         <Icon name="calendar" size={15} style={{ color: 'var(--text-muted)' }} />{fmt(v) || placeholder}
         <Icon name="chevron-down" size={14} style={{ color: 'var(--text-muted)', marginLeft: 'auto' }} />
       </button>
       {open && (
         <div className="ef-datepicker__pop">
-          <Calendar value={v || undefined} onChange={d => { if (value == null) setInner(d); if (onChange) onChange(d); setOpen(false); }} />
+          <Calendar value={v || undefined} onChange={d => { if (value == null) setInner(d); if (onChange) onChange(d); setOpen(false); if (btnRef.current) btnRef.current.focus(); }} />
         </div>
       )}
     </span>

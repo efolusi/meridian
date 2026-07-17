@@ -10,10 +10,18 @@ const CSS = `
 `;
 export function Tooltip({ label, position = 'top', children, style, className }) {
   injectEfCss('ef-css-tooltip', CSS);
+  const id = React.useId();
+  const [dismissed, setDismissed] = React.useState(false);
+  const child = React.Children.count(children) === 1 && React.isValidElement(children)
+    ? React.cloneElement(children, { 'aria-describedby': id })
+    : children;
   return (
-    <span className={`ef-tooltip${position === 'bottom' ? ' ef-tooltip--bottom' : ''}${className ? ' ' + className : ''}`} style={style}>
-      {children}
-      <span className="ef-tooltip__bubble" role="tooltip">{label}</span>
+    <span className={`ef-tooltip${position === 'bottom' ? ' ef-tooltip--bottom' : ''}${className ? ' ' + className : ''}`} style={style}
+      onKeyDown={e => { if (e.key === 'Escape') setDismissed(true); }}
+      onMouseLeave={() => setDismissed(false)}
+      onBlur={() => setDismissed(false)}>
+      {child}
+      <span className="ef-tooltip__bubble" role="tooltip" id={id} style={dismissed ? { opacity: 0, transitionDelay: '0ms' } : undefined}>{label}</span>
     </span>
   );
 }

@@ -19,10 +19,24 @@ export function Tabs({ items, value, onChange, style, className }) {
     const el = ref.current && ref.current.querySelector('[data-active="true"]');
     if (el) setInk({ left: el.offsetLeft, width: el.offsetWidth });
   }, [value, items]);
+  const onKey = e => {
+    if (!['ArrowLeft', 'ArrowRight', 'Home', 'End'].includes(e.key)) return;
+    e.preventDefault();
+    const ids = items.map(i => i.id);
+    const cur = ids.indexOf(value);
+    let next = cur;
+    if (e.key === 'ArrowLeft') next = (cur - 1 + ids.length) % ids.length;
+    if (e.key === 'ArrowRight') next = (cur + 1) % ids.length;
+    if (e.key === 'Home') next = 0;
+    if (e.key === 'End') next = ids.length - 1;
+    if (onChange) onChange(ids[next]);
+    const btns = ref.current ? ref.current.querySelectorAll('[role="tab"]') : [];
+    if (btns[next]) btns[next].focus();
+  };
   return (
-    <div ref={ref} role="tablist" className={`ef-tabs${className ? ' ' + className : ''}`} style={style}>
+    <div ref={ref} role="tablist" onKeyDown={onKey} className={`ef-tabs${className ? ' ' + className : ''}`} style={style}>
       {items.map(it => (
-        <button key={it.id} role="tab" aria-selected={value === it.id} data-active={value === it.id ? 'true' : 'false'} className={`ef-tabs__tab${value === it.id ? ' ef-tabs__tab--active' : ''}`} onClick={() => onChange && onChange(it.id)}>
+        <button key={it.id} role="tab" aria-selected={value === it.id} tabIndex={value === it.id ? 0 : -1} data-active={value === it.id ? 'true' : 'false'} className={`ef-tabs__tab${value === it.id ? ' ef-tabs__tab--active' : ''}`} onClick={() => onChange && onChange(it.id)}>
           {it.icon ? <Icon name={it.icon} size={16} /> : null}
           {it.label}
           {it.count != null ? <span className="ef-tabs__count">{it.count}</span> : null}

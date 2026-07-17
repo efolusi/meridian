@@ -24,7 +24,16 @@ export function CommandPalette({ open, onClose, groups, onSelect, placeholder = 
   injectEfCss('ef-css-cmdk', CSS);
   const [q, setQ] = React.useState('');
   const [idx, setIdx] = React.useState(0);
-  React.useEffect(() => { if (open) { setQ(''); setIdx(0); } }, [open]);
+  const listId = React.useId();
+  const prevFocus = React.useRef(null);
+  const inputRef = React.useRef(null);
+  React.useEffect(() => {
+    if (!open) return;
+    setQ(''); setIdx(0);
+    prevFocus.current = document.activeElement;
+    if (inputRef.current) inputRef.current.focus();
+    return () => { if (prevFocus.current && prevFocus.current.focus) prevFocus.current.focus(); };
+  }, [open]);
   const flat = [];
   const shown = (groups || []).map(g => {
     const items = g.items.filter(it => !q || (it.label + ' ' + (it.hint || '')).toLowerCase().includes(q.toLowerCase()));
@@ -32,36 +41,47 @@ export function CommandPalette({ open, onClose, groups, onSelect, placeholder = 
     return { ...g, items };
   }).filter(g => g.items.length);
   React.useEffect(() => { setIdx(0); }, [q]);
+  const flatRef = React.useRef(flat); flatRef.current = flat;
+  const idxRef = React.useRef(idx); idxRef.current = idx;
   React.useEffect(() => {
     if (!open) return;
     const key = e => {
       if (e.key === 'Escape') onClose && onClose();
-      if (e.key === 'ArrowDown') { e.preventDefault(); setIdx(i => Math.min(i + 1, flat.length - 1)); }
+      if (e.key === 'ArrowDown') { e.preventDefault(); setIdx(i => Math.min(i + 1, flatRef.current.length - 1)); }
       if (e.key === 'ArrowUp') { e.preventDefault(); setIdx(i => Math.max(i - 1, 0)); }
-      if (e.key === 'Enter' && flat[idx]) { onSelect && onSelect(flat[idx].id); onClose && onClose(); }
+      if (e.key === 'Enter') { const it = flatRef.current[idxRef.current]; if (it) { onSelect && onSelect(it.id); onClose && onClose(); } }
     };
     document.addEventListener('keydown', key);
     return () => document.removeEventListener('keydown', key);
-  });
+  }, [open, onClose, onSelect]);
+  React.useEffect(() => {
+    if (!open) return;
+    const el = document.getElementById(listId + '-opt-' + idx);
+    if (el && el.scrollIntoView) el.scrollIntoView({ block: 'nearest' });
+  }, [open, idx, listId]);
   if (!open) return null;
   return (
     <div className="ef-cmdk__overlay" onMouseDown={e => { if (e.target === e.currentTarget && onClose) onClose(); }}>
-      <div className="ef-cmdk" role="dialog" aria-modal="true">
+      <div className="ef-cmdk" role="dialog" aria-modal="true" aria-label="Command palette">
         <div className="ef-cmdk__inputrow">
           <Icon name="search" size={17} style={{ color: 'var(--text-muted)' }} />
-          <input className="ef-cmdk__input" autoFocus placeholder={placeholder} value={q} onChange={e => setQ(e.target.value)} />
+          <input className="ef-cmdk__input" ref={inputRef} placeholder={placeholder} value={q} onChange={e => setQ(e.target.value)}
+            role="combobox" aria-expanded="true" aria-controls={listId} aria-autocomplete="list" aria-label={placeholder}
+            aria-activedescendant={flat.length ? `${listId}-opt-${idx}` : undefined} />
           <Kbd>Esc</Kbd>
         </div>
-        <div className="ef-cmdk__list">
+        <div className="ef-cmdk__list" role="listbox" id={listId}>
           {shown.length === 0 && <div className="ef-cmdk__empty">Nothing matches "{q}" — try a product or action name.</div>}
           {shown.map(g => (
             <React.Fragment key={g.group}>
               <div className="ef-cmdk__group">{g.group}</div>
               {g.items.map(it => {
-                const active = flat.indexOf(it) === idx;
+                const fi = flat.indexOf(it);
+                const active = fi === idx;
                 return (
-                  <button key={it.id} className={`ef-cmdk__item${active ? ' ef-cmdk__item--active' : ''}`}
-                    onMouseEnter={() => setIdx(flat.indexOf(it))}
+                  <button key={it.id} role="option" id={`${listId}-opt-${fi}`} aria-selected={active}
+                    className={`ef-cmdk__item${active ? ' ef-cmdk__item--active' : ''}`}
+                    onMouseEnter={() => setIdx(fi)}
                     onClick={() => { onSelect && onSelect(it.id); onClose && onClose(); }}>
                     {it.icon ? <span className="ef-cmdk__item__icon"><Icon name={it.icon} size={16} /></span> : null}
                     {it.label}

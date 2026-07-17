@@ -9,6 +9,7 @@ const CSS = `
 @keyframes ef-menu-in{from{opacity:0;transform:translateY(-3px)}}
 .ef-menu__item{display:flex;align-items:center;gap:9px;width:100%;height:32px;padding:0 10px;border:none;border-radius:var(--radius-sm);background:none;cursor:pointer;text-align:left;font-family:var(--font-sans);font-size:var(--text-sm);color:var(--text-primary);transition:background var(--dur-fast) var(--ease-out)}
 .ef-menu__item:hover:not(:disabled){background:var(--surface-sunken)}
+.ef-menu__item:focus-visible{outline:none;box-shadow:var(--focus-ring)}
 .ef-menu__item:disabled{opacity:.4;cursor:not-allowed}
 .ef-menu__item--danger{color:var(--danger-600)}
 .ef-menu__item__icon{color:var(--text-muted);display:inline-flex}
@@ -20,24 +21,57 @@ export function Menu({ trigger, items, onSelect, align = 'left', style, classNam
   injectEfCss('ef-css-menu', CSS);
   const [open, setOpen] = React.useState(false);
   const ref = React.useRef(null);
+  const panelRef = React.useRef(null);
+  const focusItem = which => {
+    const panel = panelRef.current;
+    const nodes = panel ? Array.from(panel.querySelectorAll('[role="menuitem"]:not(:disabled)')) : [];
+    if (!nodes.length) return;
+    const i = nodes.indexOf(document.activeElement);
+    const next = which === 'first' ? 0 : which === 'last' ? nodes.length - 1 : (i + which + nodes.length) % nodes.length;
+    nodes[next].focus();
+  };
+  const restoreFocus = () => {
+    const t = ref.current && ref.current.querySelector('button,[href],[tabindex]');
+    if (t) t.focus();
+  };
+  const close = restore => { setOpen(false); if (restore) restoreFocus(); };
   React.useEffect(() => {
     if (!open) return;
+    focusItem('first');
     const away = e => { if (ref.current && !ref.current.contains(e.target)) setOpen(false); };
-    const key = e => { if (e.key === 'Escape') setOpen(false); };
     document.addEventListener('mousedown', away);
-    document.addEventListener('keydown', key);
-    return () => { document.removeEventListener('mousedown', away); document.removeEventListener('keydown', key); };
+    return () => document.removeEventListener('mousedown', away);
   }, [open]);
+  const onTriggerKey = e => {
+    if (e.key === 'Enter' || e.key === ' ' || e.key === 'ArrowDown') { e.preventDefault(); setOpen(true); }
+    else if (e.key === 'Escape' && open) close(true);
+  };
+  const triggerProps = {
+    onClick: e => { if (React.isValidElement(trigger) && trigger.props.onClick) trigger.props.onClick(e); setOpen(o => !o); },
+    onKeyDown: onTriggerKey,
+    'aria-haspopup': 'menu',
+    'aria-expanded': open,
+  };
+  const onPanelKey = e => {
+    if (e.key === 'Escape') { e.preventDefault(); close(true); }
+    else if (e.key === 'ArrowDown') { e.preventDefault(); focusItem(1); }
+    else if (e.key === 'ArrowUp') { e.preventDefault(); focusItem(-1); }
+    else if (e.key === 'Home') { e.preventDefault(); focusItem('first'); }
+    else if (e.key === 'End') { e.preventDefault(); focusItem('last'); }
+    else if (e.key === 'Tab') close(false);
+  };
   return (
     <span ref={ref} className={`ef-menu${className ? ' ' + className : ''}`} style={style}>
-      <span style={{ display: 'inline-flex' }} onClick={() => setOpen(o => !o)}>{trigger}</span>
+      {React.isValidElement(trigger)
+        ? React.cloneElement(trigger, triggerProps)
+        : <span role="button" tabIndex={0} style={{ display: 'inline-flex' }} {...triggerProps}>{trigger}</span>}
       {open && (
-        <div role="menu" className={`ef-menu__panel ef-menu__panel--${align}`}>
+        <div role="menu" ref={panelRef} onKeyDown={onPanelKey} className={`ef-menu__panel ef-menu__panel--${align}`}>
           {items.map((it, i) => it === 'separator'
             ? <div key={'s' + i} className="ef-menu__sep"></div>
             : (
               <button key={it.id} role="menuitem" disabled={it.disabled} className={`ef-menu__item${it.danger ? ' ef-menu__item--danger' : ''}`}
-                onClick={() => { setOpen(false); if (onSelect) onSelect(it.id); if (it.onClick) it.onClick(); }}>
+                onClick={() => { close(true); if (onSelect) onSelect(it.id); if (it.onClick) it.onClick(); }}>
                 {it.icon ? <span className="ef-menu__item__icon"><Icon name={it.icon} size={15} /></span> : null}
                 {it.label}
                 {it.kbd ? <span className="ef-menu__kbd">{it.kbd}</span> : null}

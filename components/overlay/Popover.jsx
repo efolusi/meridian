@@ -13,17 +13,29 @@ export function Popover({ trigger, children, align = 'left', width = 280, open: 
   const open = controlled != null ? controlled : inner;
   const setOpen = v => { if (controlled == null) setInner(v); if (onOpenChange) onOpenChange(v); };
   const ref = React.useRef(null);
+  const restoreFocus = () => {
+    const t = ref.current && ref.current.querySelector('button,[href],[tabindex]');
+    if (t) t.focus();
+  };
   React.useEffect(() => {
     if (!open) return;
     const away = e => { if (ref.current && !ref.current.contains(e.target)) setOpen(false); };
-    const key = e => { if (e.key === 'Escape') setOpen(false); };
+    const key = e => { if (e.key === 'Escape') { setOpen(false); restoreFocus(); } };
     document.addEventListener('mousedown', away);
     document.addEventListener('keydown', key);
     return () => { document.removeEventListener('mousedown', away); document.removeEventListener('keydown', key); };
   }, [open]);
+  const triggerProps = {
+    onClick: e => { if (React.isValidElement(trigger) && trigger.props.onClick) trigger.props.onClick(e); setOpen(!open); },
+    onKeyDown: e => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); setOpen(!open); } },
+    'aria-haspopup': 'dialog',
+    'aria-expanded': open,
+  };
   return (
     <span ref={ref} className={`ef-popover${className ? ' ' + className : ''}`} style={style}>
-      <span style={{ display: 'inline-flex' }} onClick={() => setOpen(!open)}>{trigger}</span>
+      {React.isValidElement(trigger)
+        ? React.cloneElement(trigger, triggerProps)
+        : <span role="button" tabIndex={0} style={{ display: 'inline-flex' }} {...triggerProps}>{trigger}</span>}
       {open && <div className={`ef-popover__panel ef-popover__panel--${align}`} style={{ width }}>{children}</div>}
     </span>
   );
