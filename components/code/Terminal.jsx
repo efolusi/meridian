@@ -1,7 +1,7 @@
 import React from 'react';
 import { injectEfCss } from '../forms/Button.jsx';
 const CSS = `
-.ef-term{background:var(--surface-inverse);border-radius:var(--radius-md);overflow:hidden}
+.ef-term{background:var(--surface-code);border:1px solid var(--border-code);border-radius:var(--radius-md);overflow:hidden}
 .ef-term__head{display:flex;align-items:center;gap:8px;padding:8px 14px;border-bottom:1px solid rgba(250,249,246,.1)}
 .ef-term__host{font-family:var(--font-mono);font-size:11px;color:rgba(250,249,246,.55)}
 .ef-term__dot{width:7px;height:7px;border-radius:var(--radius-full);background:#7FD08D}

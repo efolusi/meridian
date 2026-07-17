@@ -2,15 +2,15 @@ import React from 'react';
 import { Icon } from '../icons/Icon.jsx';
 import { injectEfCss } from '../forms/Button.jsx';
 const CSS = `
-.ef-code{background:var(--surface-inverse);border-radius:var(--radius-md);overflow:hidden}
+.ef-code{background:var(--surface-code);border:1px solid var(--border-code);border-radius:var(--radius-md);overflow:hidden}
 .ef-code__head{display:flex;align-items:center;padding:7px 8px 7px 14px;border-bottom:1px solid rgba(250,249,246,.1)}
 .ef-code__lang{font-family:var(--font-mono);font-size:11px;color:rgba(250,249,246,.55)}
 .ef-code__copy{margin-left:auto;display:inline-flex;align-items:center;gap:5px;border:none;background:none;cursor:pointer;color:rgba(250,249,246,.6);font-family:var(--font-sans);font-size:12px;font-weight:var(--weight-semibold);padding:4px 8px;border-radius:var(--radius-sm);transition:color var(--dur-fast) var(--ease-out)}
 .ef-code__copy:hover{color:#fff}
 .ef-code__copy--done{color:#7FD08D}
-.ef-code pre{margin:0;padding:14px 16px;overflow-x:auto;font-family:var(--font-mono);font-size:13px;line-height:1.6;color:#E8E3D9}
+.ef-code pre{margin:0;padding:14px 16px;overflow-x:auto;font-family:var(--font-mono);font-size:13px;line-height:1.6;color:var(--text-code)}
 .ef-code__win{position:relative;overflow:hidden;transition:height .45s cubic-bezier(.32,.72,0,1)}
-.ef-code__fade{position:absolute;left:0;right:0;bottom:0;height:56px;display:flex;align-items:flex-end;justify-content:center;padding-bottom:8px;background:linear-gradient(to top,var(--surface-inverse),transparent)}
+.ef-code__fade{position:absolute;left:0;right:0;bottom:0;height:56px;display:flex;align-items:flex-end;justify-content:center;padding-bottom:8px;background:linear-gradient(to top,var(--surface-code),transparent)}
 .ef-code__more{display:inline-flex;align-items:center;gap:5px;border:1px solid rgba(250,249,246,.25);border-radius:var(--radius-full);background:rgba(30,26,20,.85);cursor:pointer;padding:4px 12px;font-family:var(--font-sans);font-size:11.5px;font-weight:var(--weight-semibold);color:rgba(250,249,246,.85)}
 .ef-code__more:hover{color:#fff;border-color:rgba(250,249,246,.5)}
 `;

@@ -22,6 +22,7 @@ All notable changes to Meridian are documented here. Format follows [Keep a Chan
 ### Fixed
 - `starters/dashboard/Customers.dc.html` referenced the non-existent `filter` icon; now `funnel`.
 - Removed the dead `--shadow-color` token (defined only in dark, referenced nowhere).
+- Dark mode: code blocks and the terminal used `--surface-inverse`, which flips to a light surface in dark theme while their text stayed light — unreadable. Added fixed `--surface-code`/`--text-code`/`--border-code` tokens (dark in both themes) and repointed CodeBlock and Terminal.
 
 ## 1.3.0 — 2026-07-17 — AI-native component expansion
 
