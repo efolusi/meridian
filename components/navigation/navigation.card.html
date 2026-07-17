@@ -7,7 +7,7 @@
 </head><body style="background:var(--surface-page)">
 <div id="root"></div>
 <script type="text/babel">
-const { Tabs, Breadcrumbs, SegmentedControl, Pagination, PageControl, SideNav, TopNav, Menubar, Input, IconButton, Avatar, ListItem } = window.EfolusiDesignSystem_4ffc3d;
+const { Tabs, Breadcrumbs, SegmentedControl, Pagination, PageControl, SideNav, TopNav, Menubar, Input, IconButton, Avatar, ListItem, Steps } = window.EfolusiDesignSystem_4ffc3d;
 const lbl = { fontSize: 11, fontWeight: 600, letterSpacing: '0.06em', textTransform: 'uppercase', color: 'var(--text-muted)', marginBottom: 8 };
 function Demo() {
   const [tab, setTab] = React.useState('overview');
@@ -64,6 +64,13 @@ function Demo() {
             </TopNav>
           </div>
         </div>
+      </div>
+      <div style={{ width: 340 }}>
+        <Steps current={1} items={[
+          { title: 'Connect your data', description: 'Read-only warehouse credentials.' },
+          { title: 'Pick an agent', description: 'Start from a template or blank.' },
+          { title: 'First run', description: 'Review the plan before it executes.' },
+        ]} />
       </div>
     </div>
   );

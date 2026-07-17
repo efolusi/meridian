@@ -91,7 +91,7 @@ Concrete items surfaced by the five-area audit (components, tokens, docs site, k
 **Phase 1 — components (a11y release shipped 2026-07-18; contracts in `guidelines/accessibility.md`)**
 - ~~Focus trap, focus-in, restore, labelling for Dialog, Drawer, ConfirmDialog, CommandPalette; keyboard Menu/Popover triggers with arrow navigation; Calendar/DatePicker grid + keyboard; Tabs roving tabindex; Tooltip `aria-describedby`; HoverCard role fix.~~ Done and verified in-browser.
 - ~~Menu typeahead; arrow-key navigation for ContextMenu and Menubar.~~ Done 2026-07-18: full arrow/Home/End/typeahead keyboard support across Menu, ContextMenu, and Menubar (verified in-browser).
-- Specimen-card coverage for the 7 uncarded components: Confirmation, Conversation, BarChart, KeyValueList, StatusDot, Loader, Steps.
+- ~~Specimen-card coverage for the 7 uncarded components.~~ Done 2026-07-18: Confirmation, Conversation, BarChart, KeyValueList, StatusDot, Loader, Steps added to their group cards (verified in-browser). Every public component now appears in a card.
 
 **Phase 1 — tokens (additive, wire in the same bundled release)**
 - `--z-*` elevation scale replacing the 15 raw z-indexes (today: five overlays tie at 80; Tooltip at 60 loses to Drawer at 100).

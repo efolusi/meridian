@@ -7,7 +7,7 @@
 </head><body style="background:var(--surface-page)">
 <div id="root"></div>
 <script type="text/babel">
-const { Table, Stat, EmptyState, Skeleton, Card, Badge, Button, Avatar, LineChart, DonutChart, Sparkline } = window.EfolusiDesignSystem_4ffc3d;
+const { Table, Stat, EmptyState, Skeleton, Card, Badge, Button, Avatar, LineChart, DonutChart, Sparkline, BarChart, KeyValueList, StatusDot } = window.EfolusiDesignSystem_4ffc3d;
 const rows = [
   { id: 1, name: 'Acme Robotics', plan: 'Growth', mrr: '$1,240', status: 'Active' },
   { id: 2, name: 'Bloom Health', plan: 'Scale', mrr: '$3,860', status: 'Active' },
@@ -30,7 +30,7 @@ function Demo() {
         </Card>
         <Card title="Revenue by product" padding={16}>
           <DonutChart size={124} centerValue="$48.2k" centerLabel="MRR" data={[
-            { label: 'Agent', value: 21000 }, { label: 'Infra', value: 14000 }, { label: 'Trader', value: 8200 }, { label: 'Node', value: 5000 },
+            { label: 'Agent', value: 21000 }, { label: 'Infra', value: 14000 }, { label: 'Trader', value: 8200 }, { label: 'Content', value: 5000 },
           ]} />
         </Card>
       </div>
@@ -51,6 +51,25 @@ function Demo() {
           </div>
           <Skeleton variant="rect" height={56} style={{ marginTop: 14 }} />
         </Card>
+      </div>
+      <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 16 }}>
+        <Card title="Weekly runs" padding={16}>
+          <BarChart height={130} highlightLast={1} labels={['Mon','Tue','Wed','Thu','Fri','Sat','Sun']} data={[42,58,51,74,66,30,89]} formatValue={v => v + ' runs'} />
+        </Card>
+        <Card title="Resource" padding={16}>
+          <KeyValueList labelWidth={120} items={[
+            { label: 'Status', value: <Badge tone="success" dot>Healthy</Badge> },
+            { label: 'Region', value: 'eu-west-1' },
+            { label: 'Endpoint', value: 'api.acme.efolusi.com', mono: true },
+          ]} />
+        </Card>
+      </div>
+      <div style={{ display: 'flex', gap: 22, flexWrap: 'wrap' }}>
+        <StatusDot state="ok" label="API" />
+        <StatusDot state="busy" pulse label="Deploying" />
+        <StatusDot state="warn" label="Queue depth" />
+        <StatusDot state="err" label="Webhooks" />
+        <StatusDot state="off" label="Sandbox" />
       </div>
     </div>
   );

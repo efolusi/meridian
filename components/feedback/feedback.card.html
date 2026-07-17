@@ -8,7 +8,7 @@
 </head><body style="background:var(--surface-page)">
 <div id="root"></div>
 <script type="text/babel">
-const { Alert, Progress, Spinner, Dialog, Toast, ToastStack, Tooltip, Button, Input, Banner, ConfirmDialog } = window.EfolusiDesignSystem_4ffc3d;
+const { Alert, Progress, Spinner, Dialog, Toast, ToastStack, Tooltip, Button, Input, Banner, ConfirmDialog, Loader } = window.EfolusiDesignSystem_4ffc3d;
 function Demo() {
   const [open, setOpen] = React.useState(false);
   const [confirm, setConfirm] = React.useState(false);
@@ -36,6 +36,10 @@ function Demo() {
       <ToastStack>
         <Toast tone="success" title="Invite sent" description="Ada will get an email in a minute." onClose={() => {}} />
       </ToastStack>
+      </div>
+      <div style={{ display: 'flex', flexDirection: 'column', gap: 12 }}>
+        <Loader dots>Thinking</Loader>
+        <Loader variant="shimmer" dots duration={1.6}>Generating a reply</Loader>
       </div>
     </div>
   );
