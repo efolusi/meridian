@@ -2,7 +2,22 @@
 
 All notable changes to Meridian are documented here. Format follows [Keep a Changelog](https://keepachangelog.com); versioning follows the policy in `guidelines/governance.md`.
 
-## 2026-07-17 — AI-native component expansion
+## Unreleased
+
+### Added
+- `THIRD_PARTY_NOTICES.md` plus the SIL OFL 1.1 license texts for Bricolage Grotesque, Figtree, and JetBrains Mono (`assets/fonts/OFL-*.txt`) and the Lucide ISC/MIT license (`assets/icons/LICENSE-Lucide.txt`) — required for compliant redistribution of the bundled fonts and icons.
+- Global `prefers-reduced-motion` guard and an `a:focus-visible` ring in `tokens/base.css`.
+- Dark-theme remap for `--success-600` (previously the only status foreground left at its light value in dark).
+
+### Changed
+- Contrast: `--text-muted` (#948A74 → #746A55 light, #8F8574 → #9C9280 dark), `--success-600` (#3E8E4E → #2F7A40 light, #5FB86E dark), `--danger-600` (#DC2626 → #C81E1E) now meet WCAG AA (≥4.5:1) on page, card, and their status tints in both themes.
+- Docs corrected: icon count (65 → 107) and stroke width (assets are 2px; `Icon` renders 1.5px), deduplicated README data-component list, docs-site component counts (88/77 → 104).
+
+### Fixed
+- `templates/dashboard/Customers.dc.html` referenced the non-existent `filter` icon; now `funnel`.
+- Removed the dead `--shadow-color` token (defined only in dark, referenced nowhere).
+
+## 1.3.0 — 2026-07-17 — AI-native component expansion
 
 ### Added
 - 16 components closing the AI-chat/agent surface (studied against nauvalazhar/ai; see guidelines/research/nauval-ai-study.md):
