@@ -3,6 +3,9 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Blocks — Meridian</title>
+<meta name="description" content="Pre-composed sections — app shell, login, pricing, FAQ, and more — ready to paste into a page.">
+<link rel="icon" href="../../assets/logo.png">
 <script src="./support.js"></script>
 </head>
 <body>
@@ -23,7 +26,7 @@
 <div style="margin-left:auto;display:flex;align-items:center;gap:14px">
 <x-import component="SiteSearch" from="./SiteSearch.jsx" hint-size="220px,32px"></x-import>
 <a href="https://github.com/efolusi/meridian" class="hide-sm" style="font-size:13.5px;color:var(--text-secondary);text-decoration:none" style-hover="color:var(--text-primary)">GitHub ↗</a>
-<span onClick="{{ toggleTheme }}" style="font-size:13px;font-weight:500;color:var(--text-secondary);border:1px solid var(--border-strong);border-radius:var(--radius-full);padding:4px 12px;cursor:pointer;user-select:none" style-hover="color:var(--text-primary);background:var(--surface-subtle)">{{ themeLabel }}</span>
+<button onClick="{{ toggleTheme }}" style="font:inherit;font-size:13px;font-weight:500;color:var(--text-secondary);background:transparent;border:1px solid var(--border-strong);border-radius:var(--radius-full);padding:4px 12px;cursor:pointer;user-select:none" style-hover="color:var(--text-primary);background:var(--surface-subtle)">{{ themeLabel }}</button>
 </div>
 </header>
 <main class="pad-sm" style="flex:1;max-width:1160px;margin:0 auto;width:100%;padding:40px 28px 90px">
