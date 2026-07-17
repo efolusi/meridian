@@ -3,6 +3,8 @@ h1,h2,h3,h4{font-family:var(--font-display);letter-spacing:var(--tracking-displa
 p{margin:0}
 a{color:var(--text-link);text-decoration:none;transition:color var(--dur-fast) var(--ease-out)}
 a:hover{color:var(--accent-hover);text-decoration:underline;text-underline-offset:3px}
+a:focus-visible{outline:none;box-shadow:var(--focus-ring);border-radius:var(--radius-sm)}
 code,pre,kbd{font-family:var(--font-mono)}
 ::selection{background:var(--brand-100)}
 *,*::before,*::after{box-sizing:border-box}
+@media (prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important;scroll-behavior:auto!important}}
