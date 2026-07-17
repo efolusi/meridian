@@ -1,0 +1,20 @@
+cff-version: 1.2.0
+title: Meridian
+message: "If you use Meridian, please cite it using these metadata."
+type: software
+authors:
+  - name: Efolusi
+    website: "https://efolusi.com"
+repository-code: "https://github.com/efolusi/meridian"
+url: "https://meridian.efolusi.com"
+abstract: >-
+  Meridian is Efolusi's open-source design system: accessible React
+  components, design tokens, blocks, charts, and product showcases,
+  served browser-native with zero build step.
+keywords:
+  - design-system
+  - react
+  - components
+  - design-tokens
+  - accessibility
+license: MIT

@@ -10,7 +10,16 @@
 <div id="demos"></div>
 <script>
 (async () => {
-  const FILES = ['forms','display','navigation','feedback','data','overlay','ai','code','files','dates','finance','icons','charts'];
+  // Demo files are derived from the registry (group ids) + charts, so a new
+  // group is smoke-tested automatically instead of being silently skipped.
+  let FILES;
+  try {
+    const rt = await (await fetch('./registry.js')).text();
+    const groups = JSON.parse(rt.slice(rt.indexOf('GROUPS = ') + 9, rt.lastIndexOf(';')));
+    FILES = [...new Set(groups.map(g => g.id)), 'charts'];
+  } catch (e) {
+    FILES = ['forms','display','navigation','feedback','data','overlay','ai','code','files','dates','finance','icons','charts'];
+  }
   const fails = [], all = [];
   for (const f of FILES) {
     let src = '';
@@ -26,13 +35,18 @@
   class B extends R.Component {
     constructor(p) { super(p); this.state = { err: null }; }
     static getDerivedStateFromError(e) { return { err: e }; }
-    componentDidCatch(e) { fails.push(this.props.id + ': ' + (e.message || e)); console.error('SMOKE FAIL', this.props.id, e); refresh(); }
+    componentDidCatch(e) { fails.push(this.props.id + ': ' + (e.message || e)); console.error('SMOKE FAIL', this.props.id, e); signal(); }
     render() { return this.state.err ? R.createElement('div', { className: 'fail' }, String(this.state.err.message || this.state.err)) : this.props.children; }
   }
-  let done = 0;
-  function refresh() {
-    document.getElementById('summary').textContent = 'SMOKE: ' + done + '/' + all.length + ' rendered, ' + fails.length + ' failed' + (fails.length ? ' — ' + fails.join(' | ') : '');
-    document.getElementById('summary').style.color = fails.length ? '#B3261E' : 'inherit';
+  // Machine-readable result for headless CI: html[data-smoke], document.title, window.__SMOKE__.
+  function signal() {
+    const ok = fails.length === 0, passed = all.length - fails.length;
+    const line = 'SMOKE: ' + passed + '/' + all.length + ' rendered, ' + fails.length + ' failed' + (fails.length ? ' — ' + fails.join(' | ') : '');
+    const s = document.getElementById('summary');
+    s.textContent = line; s.style.color = ok ? 'inherit' : '#B3261E';
+    document.documentElement.setAttribute('data-smoke', ok ? 'pass' : 'fail');
+    document.title = (ok ? 'SMOKE PASS' : 'SMOKE FAIL') + ' — ' + passed + '/' + all.length;
+    window.__SMOKE__ = { total: all.length, passed, failed: fails.length, ok, fails: fails.slice() };
   }
   for (const d of all) {
     const id = d.file + '#' + d.exp;
@@ -45,9 +59,8 @@
       const Comp = new Function('React', js + '\nreturn ' + d.exp + ';')(R);
       ReactDOM.createRoot(wrap.lastChild).render(R.createElement(B, { id }, R.createElement(Comp)));
     } catch (e) { fails.push(id + ': ' + (e.message || e)); console.error('SMOKE FAIL', id, e); }
-    done++;
   }
-  setTimeout(() => { refresh(); if (!fails.length) console.log('SMOKE OK — ' + all.length + ' demos rendered clean'); }, 1500);
+  setTimeout(() => { signal(); if (!fails.length) console.log('SMOKE OK — ' + all.length + ' demos rendered clean'); }, 1500);
 })();
 </script>
 </body></html>

@@ -46,3 +46,22 @@ jobs:
               print("\n".join(bad)); sys.exit(1)
           print(f"{len(hj['sourceHashes'])} source hashes verified")
           EOF
+
+  smoke:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      - name: Install Playwright chromium
+        run: npx --yes playwright@1.48.0 install --with-deps chromium
+      - name: Serve repo and run headless smoke
+        run: |
+          python3 -m http.server 8000 --bind 127.0.0.1 &
+          SERVER=$!
+          for i in $(seq 1 20); do curl -sf http://127.0.0.1:8000/site/_smoke.html >/dev/null && break || sleep 0.5; done
+          BASE=http://127.0.0.1:8000 npx --yes --package=playwright@1.48.0 node scripts/smoke_headless.mjs
+          CODE=$?
+          kill $SERVER 2>/dev/null || true
+          exit $CODE
