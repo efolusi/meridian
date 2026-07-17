@@ -16,8 +16,33 @@ const CSS = `
 export function ContextMenu({ items, onSelect, children, style, className }) {
   injectEfCss('ef-css-ctx', CSS);
   const [pos, setPos] = React.useState(null);
+  const panelRef = React.useRef(null);
+  const focusItem = which => {
+    const panel = panelRef.current;
+    const nodes = panel ? Array.from(panel.querySelectorAll('[role="menuitem"]:not(:disabled)')) : [];
+    if (!nodes.length) return;
+    const i = nodes.indexOf(document.activeElement);
+    const next = which === 'first' ? 0 : which === 'last' ? nodes.length - 1 : (i + which + nodes.length) % nodes.length;
+    nodes[next].focus();
+  };
+  const onPanelKey = e => {
+    if (e.key === 'ArrowDown') { e.preventDefault(); focusItem(1); }
+    else if (e.key === 'ArrowUp') { e.preventDefault(); focusItem(-1); }
+    else if (e.key === 'Home') { e.preventDefault(); focusItem('first'); }
+    else if (e.key === 'End') { e.preventDefault(); focusItem('last'); }
+    else if (e.key.length === 1 && /\S/.test(e.key) && !e.metaKey && !e.ctrlKey && !e.altKey) {
+      const nodes = panelRef.current ? Array.from(panelRef.current.querySelectorAll('[role="menuitem"]:not(:disabled)')) : [];
+      const cur = nodes.indexOf(document.activeElement), ch = e.key.toLowerCase();
+      for (let k = 1; k <= nodes.length; k++) {
+        const n = nodes[(cur + k) % nodes.length];
+        if ((n.textContent || '').trim().toLowerCase().startsWith(ch)) { e.preventDefault(); n.focus(); break; }
+      }
+    }
+  };
   React.useEffect(() => {
     if (!pos) return;
+    const first = panelRef.current && panelRef.current.querySelector('[role="menuitem"]:not(:disabled)');
+    if (first) first.focus();
     const close = () => setPos(null);
     const key = e => { if (e.key === 'Escape') close(); };
     document.addEventListener('mousedown', close);
@@ -33,7 +58,7 @@ export function ContextMenu({ items, onSelect, children, style, className }) {
     <span className={className} style={style} onContextMenu={openAt}>
       {children}
       {pos ? (
-        <div role="menu" className="ef-ctx__panel" style={{ left: pos.x, top: pos.y }} onMouseDown={e => e.stopPropagation()}>
+        <div role="menu" ref={panelRef} onKeyDown={onPanelKey} className="ef-ctx__panel" style={{ left: pos.x, top: pos.y }} onMouseDown={e => e.stopPropagation()}>
           {items.map((it, i) => it === 'separator'
             ? <div key={'s' + i} className="ef-ctx__sep"></div>
             : (

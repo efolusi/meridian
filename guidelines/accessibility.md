@@ -39,4 +39,4 @@ Efolusi ships WCAG 2.1 AA. The rules, per concern:
 - Tabs: roving tabindex, `← → Home End` move focus and selection together.
 - Tooltip links to its trigger via `aria-describedby` and dismisses on Escape; HoverCard is a non-modal panel (no dialog role) and dismisses on Escape.
 
-Remaining known gaps: Menu lacks typeahead; ContextMenu and Menubar still need the arrow-key treatment Menu received. Both are tracked in ROADMAP.md.
+Full keyboard coverage across overlays: Menu, ContextMenu, and Menubar support arrow-key navigation, Home/End, and single-character typeahead; Menubar adds Left/Right between menus and Down to open.

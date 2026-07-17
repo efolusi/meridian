@@ -59,6 +59,16 @@ export function Menu({ trigger, items, onSelect, align = 'left', style, classNam
     else if (e.key === 'Home') { e.preventDefault(); focusItem('first'); }
     else if (e.key === 'End') { e.preventDefault(); focusItem('last'); }
     else if (e.key === 'Tab') close(false);
+    else if (e.key.length === 1 && /\S/.test(e.key) && !e.metaKey && !e.ctrlKey && !e.altKey) {
+      const panel = panelRef.current;
+      const nodes = panel ? Array.from(panel.querySelectorAll('[role="menuitem"]:not(:disabled)')) : [];
+      const cur = nodes.indexOf(document.activeElement);
+      const ch = e.key.toLowerCase();
+      for (let k = 1; k <= nodes.length; k++) {
+        const n = nodes[(cur + k) % nodes.length];
+        if ((n.textContent || '').trim().toLowerCase().startsWith(ch)) { e.preventDefault(); n.focus(); break; }
+      }
+    }
   };
   return (
     <span ref={ref} className={`ef-menu${className ? ' ' + className : ''}`} style={style}>
