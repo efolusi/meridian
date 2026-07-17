@@ -1,6 +1,6 @@
 # Meridian
 
-> Meridian is the open-source design system behind every Efolusi product: 104 accessible React components, 161 design tokens (light, dark, compact), blocks, charts, and full product demos — served browser-native with zero build step. MIT licensed.
+> Meridian is the open-source design system behind every Efolusi product: 104 accessible React components, 172 design tokens (light, dark, compact), blocks, charts, and full product demos — served browser-native with zero build step. MIT licensed.
 
 Live docs: https://meridian.efolusi.com · Source: https://github.com/efolusi/meridian · License: MIT
 
@@ -13,6 +13,7 @@ The layout is Meridian's own, organized by purpose: /site is the docs website; /
 - /styles.css — stylesheet entry (imports /tokens/*)
 - /_ds_bundle.js — compiled component bundle (all components on one global namespace)
 - /_ds_manifest.json — machine-readable manifest of components, tokens, cards
+- /tokens.json — design tokens in DTCG format (Style Dictionary / Figma Variables); /tailwind.preset.js — Tailwind preset
 - /site/registry.json — machine-readable registry index; per-item install files in /site/registry/
 
 ## Components
