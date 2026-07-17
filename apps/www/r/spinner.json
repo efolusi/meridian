@@ -1,0 +1,27 @@
+{
+  "name": "spinner",
+  "type": "registry:ui",
+  "title": "Spinner",
+  "description": "Standalone loading indicator (Button has its own via `loading`).",
+  "files": [
+    {
+      "path": "apps/www/registry/ui/feedback/Spinner.jsx",
+      "type": "registry:ui",
+      "content": "import React from 'react';\nimport { Icon } from '../icons/Icon.jsx';\nimport { injectEfCss } from '../forms/Button.jsx';\nconst CSS = `\n@keyframes ef-spinner{to{transform:rotate(360deg)}}\n.ef-spinner{display:inline-flex;color:var(--text-muted);animation:ef-spinner .7s linear infinite}\n`;\nexport function Spinner({ size = 16, label, style, className }) {\n  injectEfCss('ef-css-spinner', CSS);\n  return (\n    <span role=\"status\" aria-label={label || 'Loading'} style={{ display: 'inline-flex', alignItems: 'center', gap: 8, ...style }} className={className}>\n      <span className=\"ef-spinner\"><Icon name=\"loader-circle\" size={size} /></span>\n      {label ? <span style={{ fontSize: 'var(--text-sm)', color: 'var(--text-muted)' }}>{label}</span> : null}\n    </span>\n  );\n}\n"
+    },
+    {
+      "path": "apps/www/registry/ui/feedback/Spinner.d.ts",
+      "type": "registry:component",
+      "content": "export interface SpinnerProps {\n  /** Px @default 16 */\n  size?: number;\n  /** Optional text right of the spinner (also the aria-label) */\n  label?: string;\n  style?: React.CSSProperties;\n  className?: string;\n}\nexport declare function Spinner(props: SpinnerProps): JSX.Element;\n"
+    },
+    {
+      "path": "apps/www/registry/ui/feedback/Spinner.prompt.md",
+      "type": "registry:component",
+      "content": "Standalone loading indicator (Button has its own via `loading`).\n\n```jsx\n<Spinner />\n<Spinner size={20} label=\"Loading customers\u2026\" />\n```\n"
+    }
+  ],
+  "categories": [
+    "feedback"
+  ],
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json"
+}

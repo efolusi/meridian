@@ -1,0 +1,27 @@
+{
+  "name": "datepicker",
+  "type": "registry:ui",
+  "title": "DatePicker",
+  "description": "Field-style trigger + Calendar popover; closes on pick, outside click, ESC.",
+  "files": [
+    {
+      "path": "apps/www/registry/ui/dates/DatePicker.jsx",
+      "type": "registry:ui",
+      "content": "import React from 'react';\nimport { Icon } from '../icons/Icon.jsx';\nimport { Calendar } from './Calendar.jsx';\nimport { injectEfCss } from '../forms/Button.jsx';\nconst CSS = `\n.ef-datepicker{position:relative;display:inline-flex;flex-direction:column;gap:6px}\n.ef-datepicker__label{font-size:var(--text-sm);font-weight:var(--weight-semibold);color:var(--text-primary)}\n.ef-datepicker__btn{display:inline-flex;align-items:center;gap:8px;height:var(--control-h-md);padding:0 12px;border:1px solid var(--border-strong);border-radius:var(--radius-sm);background:var(--surface-card);font-family:var(--font-sans);font-size:var(--text-md);color:var(--text-primary);cursor:pointer;transition:border-color var(--dur-fast) var(--ease-out)}\n.ef-datepicker__btn:hover{border-color:var(--sand-400)}\n.ef-datepicker__btn:focus-visible{outline:none;border-color:var(--accent);box-shadow:var(--focus-ring)}\n.ef-datepicker__btn--empty{color:var(--text-muted)}\n.ef-datepicker__pop{position:absolute;top:calc(100% + 6px);left:0;background:var(--surface-card);border:1px solid var(--border-strong);border-radius:var(--radius-md);box-shadow:var(--shadow-md);padding:12px;z-index:80;animation:ef-dp-in var(--dur-fast) var(--ease-out)}\n@keyframes ef-dp-in{from{opacity:0;transform:translateY(-3px)}}\n`;\nconst fmt = v => { if (!v) return null; const d = new Date(v + 'T00:00:00'); return d.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' }); };\nexport function DatePicker({ label, value, defaultValue, onChange, placeholder = 'Pick a date', style, className }) {\n  injectEfCss('ef-css-datepicker', CSS);\n  const [inner, setInner] = React.useState(defaultValue || '');\n  const v = value != null ? value : inner;\n  const [open, setOpen] = React.useState(false);\n  const ref = React.useRef(null);\n  React.useEffect(() => {\n    if (!open) return;\n    const away = e => { if (ref.current && !ref.current.contains(e.target)) setOpen(false); };\n    const key = e => { if (e.key === 'Escape') setOpen(false); };\n    document.addEventListener('mousedown', away); document.addEventListener('keydown', key);\n    return () => { document.removeEventListener('mousedown', away); document.removeEventListener('keydown', key); };\n  }, [open]);\n  return (\n    <span ref={ref} className={`ef-datepicker${className ? ' ' + className : ''}`} style={style}>\n      {label ? <span className=\"ef-datepicker__label\">{label}</span> : null}\n      <button type=\"button\" className={`ef-datepicker__btn${v ? '' : ' ef-datepicker__btn--empty'}`} onClick={() => setOpen(o => !o)}>\n        <Icon name=\"calendar\" size={15} style={{ color: 'var(--text-muted)' }} />{fmt(v) || placeholder}\n        <Icon name=\"chevron-down\" size={14} style={{ color: 'var(--text-muted)', marginLeft: 'auto' }} />\n      </button>\n      {open && (\n        <div className=\"ef-datepicker__pop\">\n          <Calendar value={v || undefined} onChange={d => { if (value == null) setInner(d); if (onChange) onChange(d); setOpen(false); }} />\n        </div>\n      )}\n    </span>\n  );\n}\n"
+    },
+    {
+      "path": "apps/www/registry/ui/dates/DatePicker.d.ts",
+      "type": "registry:component",
+      "content": "export interface DatePickerProps {\n  label?: string;\n  /** Controlled YYYY-MM-DD */\n  value?: string;\n  defaultValue?: string;\n  onChange?: (date: string) => void;\n  /** @default 'Pick a date' */\n  placeholder?: string;\n  style?: React.CSSProperties;\n  className?: string;\n}\nexport declare function DatePicker(props: DatePickerProps): JSX.Element;\n"
+    },
+    {
+      "path": "apps/www/registry/ui/dates/DatePicker.prompt.md",
+      "type": "registry:component",
+      "content": "Field-style trigger + Calendar popover; closes on pick, outside click, ESC.\n\n```jsx\n<DatePicker label=\"Renewal date\" defaultValue=\"2026-08-01\" onChange={setDate} />\n```\n"
+    }
+  ],
+  "categories": [
+    "dates"
+  ],
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json"
+}

@@ -1,0 +1,27 @@
+{
+  "name": "inputgroup",
+  "type": "registry:ui",
+  "title": "InputGroup",
+  "description": "An input with leading/trailing addons inside one bordered row. String addons render as tinted cells (units, protocols); node addons render bare (ghost Buttons, Icons).",
+  "files": [
+    {
+      "path": "apps/www/registry/ui/forms/InputGroup.jsx",
+      "type": "registry:ui",
+      "content": "import React from 'react';\nimport { injectEfCss } from './Button.jsx';\nconst CSS = `\n.ef-igroup{display:flex;flex-direction:column;gap:6px;width:100%}\n.ef-igroup__label{font-size:var(--text-sm);font-weight:600;color:var(--text-primary)}\n.ef-igroup__row{display:flex;align-items:stretch;width:100%;border:1px solid var(--border-strong);border-radius:var(--radius-sm);background:var(--surface-card);transition:box-shadow var(--dur-fast) var(--ease-out)}\n.ef-igroup__row:focus-within{box-shadow:var(--focus-ring)}\n.ef-igroup--invalid .ef-igroup__row{border-color:var(--danger-600)}\n.ef-igroup__addon{display:flex;align-items:center;gap:6px;padding:0 11px;background:var(--surface-sunken);color:var(--text-muted);font-size:var(--text-sm);white-space:nowrap;flex:none}\n.ef-igroup__addon--lead{border-right:1px solid var(--border-default);border-radius:calc(var(--radius-sm) - 1px) 0 0 calc(var(--radius-sm) - 1px)}\n.ef-igroup__addon--trail{border-left:1px solid var(--border-default);border-radius:0 calc(var(--radius-sm) - 1px) calc(var(--radius-sm) - 1px) 0}\n.ef-igroup__addon--bare{background:none;border:none;padding:0 4px}\n.ef-igroup__input{flex:1;min-width:0;height:34px;padding:0 11px;border:none;background:transparent;font-family:var(--font-sans);font-size:var(--text-md);color:var(--text-primary)}\n.ef-igroup__input:focus{outline:none}\n.ef-igroup__input::placeholder{color:var(--text-muted)}\n.ef-igroup--sm .ef-igroup__input{height:26px;font-size:var(--text-sm)}\n.ef-igroup--lg .ef-igroup__input{height:42px}\n.ef-igroup__note{font-size:12.5px;color:var(--text-muted)}\n.ef-igroup__note--error{color:var(--danger-600)}\n`;\nexport function InputGroup({ label, hint, error, prefix, suffix, size = 'md', style, className, ...rest }) {\n  injectEfCss('ef-css-igroup', CSS);\n  const addon = (node, where) => node == null ? null : (\n    <span className={`ef-igroup__addon ef-igroup__addon--${where}${typeof node !== 'string' ? ' ef-igroup__addon--bare' : ''}`}>{node}</span>\n  );\n  return (\n    <label className={`ef-igroup ef-igroup--${size}${error ? ' ef-igroup--invalid' : ''}${className ? ' ' + className : ''}`} style={style}>\n      {label ? <span className=\"ef-igroup__label\">{label}</span> : null}\n      <span className=\"ef-igroup__row\">\n        {addon(prefix, 'lead')}\n        <input className=\"ef-igroup__input\" aria-invalid={!!error} {...rest} />\n        {addon(suffix, 'trail')}\n      </span>\n      {error ? <span className=\"ef-igroup__note ef-igroup__note--error\">{error}</span> : hint ? <span className=\"ef-igroup__note\">{hint}</span> : null}\n    </label>\n  );\n}\n"
+    },
+    {
+      "path": "apps/www/registry/ui/forms/InputGroup.d.ts",
+      "type": "registry:component",
+      "content": "export interface InputGroupProps extends React.InputHTMLAttributes<HTMLInputElement> {\n  /** Field label rendered above */\n  label?: string;\n  /** Muted helper text below */\n  hint?: string;\n  /** Error message below \u2014 also sets invalid styling */\n  error?: string;\n  /** Leading addon: string renders a tinted cell, a node renders bare */\n  prefix?: React.ReactNode;\n  /** Trailing addon: string renders a tinted cell, a node renders bare */\n  suffix?: React.ReactNode;\n  /** @default 'md' */\n  size?: 'sm' | 'md' | 'lg';\n}\nexport declare function InputGroup(props: InputGroupProps): JSX.Element;\n"
+    },
+    {
+      "path": "apps/www/registry/ui/forms/InputGroup.prompt.md",
+      "type": "registry:component",
+      "content": "# InputGroup\n\nAn input with leading/trailing addons inside one bordered row. String addons render as tinted cells (units, protocols); node addons render bare (ghost Buttons, Icons).\n\n`<InputGroup label=\"Site\" prefix=\"https://\" suffix=\".efolusi.com\" placeholder=\"acme\" />`\n\nAccepts all native input props plus label/hint/error like Input. Use plain Input when there are no addons."
+    }
+  ],
+  "categories": [
+    "forms"
+  ],
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json"
+}

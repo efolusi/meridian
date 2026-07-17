@@ -1,0 +1,27 @@
+{
+  "name": "scrollarea",
+  "type": "registry:ui",
+  "title": "ScrollArea",
+  "description": "Overflow container with the system scrollbar treatment (thin, warm, rounded). Use for bounded lists, code panes, chat logs.",
+  "files": [
+    {
+      "path": "apps/www/registry/ui/display/ScrollArea.jsx",
+      "type": "registry:ui",
+      "content": "import React from 'react';\nimport { injectEfCss } from '../forms/Button.jsx';\nconst CSS = `\n.ef-scrollarea{overflow:auto;scrollbar-width:thin;scrollbar-color:var(--border-strong) transparent}\n.ef-scrollarea::-webkit-scrollbar{width:9px;height:9px}\n.ef-scrollarea::-webkit-scrollbar-track{background:transparent}\n.ef-scrollarea::-webkit-scrollbar-thumb{background:var(--border-strong);border-radius:var(--radius-full);border:2px solid transparent;background-clip:content-box}\n.ef-scrollarea::-webkit-scrollbar-thumb:hover{background:var(--text-muted);border:2px solid transparent;background-clip:content-box}\n`;\nexport function ScrollArea({ maxHeight, height, children, style, className, ...rest }) {\n  injectEfCss('ef-css-scrollarea', CSS);\n  return <div className={`ef-scrollarea${className ? ' ' + className : ''}`} style={{ maxHeight, height, ...style }} {...rest}>{children}</div>;\n}\n"
+    },
+    {
+      "path": "apps/www/registry/ui/display/ScrollArea.d.ts",
+      "type": "registry:component",
+      "content": "export interface ScrollAreaProps extends React.HTMLAttributes<HTMLDivElement> {\n  /** Scroll past this height */\n  maxHeight?: number | string;\n  /** Fixed height */\n  height?: number | string;\n  children?: React.ReactNode;\n}\nexport declare function ScrollArea(props: ScrollAreaProps): JSX.Element;\n"
+    },
+    {
+      "path": "apps/www/registry/ui/display/ScrollArea.prompt.md",
+      "type": "registry:component",
+      "content": "# ScrollArea\n\nOverflow container with the system scrollbar treatment (thin, warm, rounded). Use for bounded lists, code panes, chat logs.\n\n`<ScrollArea maxHeight={320}>\u2026</ScrollArea>`\n\nIt is just a styled overflow div \u2014 no custom scroll hijacking."
+    }
+  ],
+  "categories": [
+    "display"
+  ],
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json"
+}

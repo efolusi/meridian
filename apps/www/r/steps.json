@@ -1,0 +1,27 @@
+{
+  "name": "steps",
+  "type": "registry:ui",
+  "title": "Steps",
+  "description": "Numbered progress rail \u2014 vertical for agent task logs, horizontal for wizards.",
+  "files": [
+    {
+      "path": "apps/www/registry/ui/navigation/Steps.jsx",
+      "type": "registry:ui",
+      "content": "import React from 'react';\nimport { Icon } from '../icons/Icon.jsx';\nimport { injectEfCss } from '../forms/Button.jsx';\nconst CSS = `\n.ef-steps{display:flex;flex-direction:column;gap:0}\n.ef-steps__item{display:flex;gap:12px}\n.ef-steps__rail{display:flex;flex-direction:column;align-items:center;flex:none}\n.ef-steps__marker{display:inline-flex;align-items:center;justify-content:center;width:24px;height:24px;border-radius:var(--radius-full);border:1.5px solid var(--sand-300);background:var(--surface-card);color:var(--text-muted);font-size:11px;font-weight:var(--weight-semibold);font-family:var(--font-mono);flex:none;transition:background var(--dur-fast) var(--ease-out),border-color var(--dur-fast) var(--ease-out)}\n.ef-steps__item--done .ef-steps__marker{background:var(--accent);border-color:var(--sand-950);color:var(--sand-50)}\n.ef-steps__item--active .ef-steps__marker{border-color:var(--sand-950);color:var(--text-primary)}\n.ef-steps__line{width:1.5px;flex:1;min-height:16px;background:var(--sand-200);margin:3px 0}\n.ef-steps__item--done .ef-steps__line{background:var(--accent)}\n.ef-steps__content{padding-bottom:20px;min-width:0}\n.ef-steps__item:last-child .ef-steps__content{padding-bottom:0}\n.ef-steps__title{font-size:var(--text-md);font-weight:var(--weight-semibold);color:var(--text-muted);line-height:24px}\n.ef-steps__item--active .ef-steps__title,.ef-steps__item--done .ef-steps__title{color:var(--text-primary)}\n.ef-steps__desc{font-size:var(--text-sm);color:var(--text-muted);margin-top:2px;line-height:1.5}\n.ef-steps--h{flex-direction:row;gap:8px}\n.ef-steps--h .ef-steps__item{flex:1;flex-direction:column;gap:8px}\n.ef-steps--h .ef-steps__rail{flex-direction:row;width:100%}\n.ef-steps--h .ef-steps__line{width:auto;flex:1;height:1.5px;min-height:0;margin:0 6px;align-self:center}\n.ef-steps--h .ef-steps__item:last-child .ef-steps__line{display:none}\n.ef-steps--h .ef-steps__content{padding-bottom:0}\n`;\nexport function Steps({ items, current = 0, orientation = 'vertical', style, className }) {\n  injectEfCss('ef-css-steps', CSS);\n  return (\n    <div className={`ef-steps${orientation === 'horizontal' ? ' ef-steps--h' : ''}${className ? ' ' + className : ''}`} style={style}>\n      {items.map((it, i) => {\n        const state = i < current ? 'done' : i === current ? 'active' : 'todo';\n        return (\n          <div key={it.id || i} className={`ef-steps__item ef-steps__item--${state}`}>\n            <div className=\"ef-steps__rail\">\n              <span className=\"ef-steps__marker\">{state === 'done' ? <Icon name=\"check\" size={13} strokeWidth={2.5} /> : i + 1}</span>\n              {(orientation === 'horizontal' || i < items.length - 1) && <span className=\"ef-steps__line\"></span>}\n            </div>\n            <div className=\"ef-steps__content\">\n              <div className=\"ef-steps__title\">{it.title}</div>\n              {it.description ? <div className=\"ef-steps__desc\">{it.description}</div> : null}\n            </div>\n          </div>\n        );\n      })}\n    </div>\n  );\n}\n"
+    },
+    {
+      "path": "apps/www/registry/ui/navigation/Steps.d.ts",
+      "type": "registry:component",
+      "content": "export interface StepItem {\n  id?: string;\n  title: React.ReactNode;\n  description?: React.ReactNode;\n}\nexport interface StepsProps {\n  items: StepItem[];\n  /** Index of the active step; earlier = done @default 0 */\n  current?: number;\n  /** @default 'vertical' */\n  orientation?: 'vertical' | 'horizontal';\n  style?: React.CSSProperties;\n  className?: string;\n}\nexport declare function Steps(props: StepsProps): JSX.Element;\n"
+    },
+    {
+      "path": "apps/www/registry/ui/navigation/Steps.prompt.md",
+      "type": "registry:component",
+      "content": "Numbered progress rail \u2014 vertical for agent task logs, horizontal for wizards.\n\n```jsx\n<Steps current={1} items={[\n  { title: 'Upload', description: '3 files received' },\n  { title: 'Convert' },\n  { title: 'Download' },\n]} orientation=\"horizontal\" />\n```\n"
+    }
+  ],
+  "categories": [
+    "navigation"
+  ],
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json"
+}

@@ -1,0 +1,27 @@
+{
+  "name": "input",
+  "type": "registry:ui",
+  "title": "Input",
+  "description": "Text input; renders bare, or as a full field when `label`/`hint`/`error` are set.",
+  "files": [
+    {
+      "path": "apps/www/registry/ui/forms/Input.jsx",
+      "type": "registry:ui",
+      "content": "import React from 'react';\nimport { Icon } from '../icons/Icon.jsx';\nimport { injectEfCss } from './Button.jsx';\nconst CSS = `\n.ef-field{display:flex;flex-direction:column;gap:6px}\n.ef-field__label{font-size:var(--text-sm);font-weight:var(--weight-semibold);color:var(--text-primary)}\n.ef-field__hint{font-size:var(--text-xs);color:var(--text-muted)}\n.ef-field__error{font-size:var(--text-xs);color:var(--danger-600);display:flex;align-items:center;gap:4px}\n.ef-input{position:relative;display:flex;align-items:center}\n.ef-input__el{width:100%;border:1px solid var(--border-strong);border-radius:var(--radius-sm);background:var(--surface-card);color:var(--text-primary);font-family:var(--font-sans);transition:border-color var(--dur-fast) var(--ease-out),box-shadow var(--dur-fast) var(--ease-out)}\n.ef-input__el::placeholder{color:var(--text-muted)}\n.ef-input__el:hover:not(:disabled){border-color:var(--sand-400)}\n.ef-input__el:focus{outline:none;border-color:var(--accent);box-shadow:var(--focus-ring)}\n.ef-input__el:disabled{background:var(--surface-sunken);color:var(--text-muted);cursor:not-allowed}\n.ef-input--sm .ef-input__el{height:var(--control-h-sm);padding:0 10px;font-size:var(--text-sm)}\n.ef-input--md .ef-input__el{height:var(--control-h-md);padding:0 12px;font-size:var(--text-md)}\n.ef-input--lg .ef-input__el{height:var(--control-h-lg);padding:0 14px;font-size:var(--text-lg)}\n.ef-input--icon.ef-input--sm .ef-input__el{padding-left:32px}\n.ef-input--icon.ef-input--md .ef-input__el{padding-left:36px}\n.ef-input--icon.ef-input--lg .ef-input__el{padding-left:40px}\n.ef-input__icon{position:absolute;left:11px;color:var(--text-muted);display:inline-flex;pointer-events:none}\n.ef-input--invalid .ef-input__el{border-color:var(--danger-600)}\n.ef-input--invalid .ef-input__el:focus{box-shadow:0 0 0 3px rgba(220,38,38,.22)}\n`;\nexport function Input({ label, hint, error, iconLeft, size = 'md', invalid, style, className, ...rest }) {\n  injectEfCss('ef-css-input', CSS);\n  const bad = invalid || !!error;\n  const control = (\n    <span className={`ef-input ef-input--${size}${iconLeft ? ' ef-input--icon' : ''}${bad ? ' ef-input--invalid' : ''}`}>\n      {iconLeft ? <span className=\"ef-input__icon\"><Icon name={iconLeft} size={size === 'lg' ? 18 : 16} /></span> : null}\n      <input className=\"ef-input__el\" aria-invalid={bad || undefined} {...rest} />\n    </span>\n  );\n  if (!label && !hint && !error) return React.cloneElement(control, { style, className: (control.props.className + (className ? ' ' + className : '')) });\n  return (\n    <label className={`ef-field${className ? ' ' + className : ''}`} style={style}>\n      {label ? <span className=\"ef-field__label\">{label}</span> : null}\n      {control}\n      {error ? <span className=\"ef-field__error\"><Icon name=\"circle-alert\" size={12} />{error}</span> : hint ? <span className=\"ef-field__hint\">{hint}</span> : null}\n    </label>\n  );\n}\n"
+    },
+    {
+      "path": "apps/www/registry/ui/forms/Input.d.ts",
+      "type": "registry:component",
+      "content": "export interface InputProps extends React.InputHTMLAttributes<HTMLInputElement> {\n  /** Field label rendered above */\n  label?: string;\n  /** Muted helper text below */\n  hint?: string;\n  /** Error message below \u2014 also sets invalid styling */\n  error?: string;\n  /** Lucide icon name inside the field, left */\n  iconLeft?: string;\n  /** @default 'md' */\n  size?: 'sm' | 'md' | 'lg';\n  invalid?: boolean;\n}\nexport declare function Input(props: InputProps): JSX.Element;\n"
+    },
+    {
+      "path": "apps/www/registry/ui/forms/Input.prompt.md",
+      "type": "registry:component",
+      "content": "Text input; renders bare, or as a full field when `label`/`hint`/`error` are set.\n\n```jsx\n<Input label=\"Work email\" placeholder=\"you@company.com\" iconLeft=\"mail\" />\n<Input label=\"Password\" type=\"password\" error=\"At least 12 characters needed.\" />\n```\n\n`error` implies invalid styling (red border + message with alert icon). `iconLeft` takes a Lucide name. Sizes `sm|md|lg`.\n"
+    }
+  ],
+  "categories": [
+    "forms"
+  ],
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json"
+}

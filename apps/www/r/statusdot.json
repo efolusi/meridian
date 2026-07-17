@@ -1,0 +1,27 @@
+{
+  "name": "statusdot",
+  "type": "registry:ui",
+  "title": "StatusDot",
+  "description": "Live status dot with label; `pulse` radiates for running/connected states.",
+  "files": [
+    {
+      "path": "apps/www/registry/ui/data/StatusDot.jsx",
+      "type": "registry:ui",
+      "content": "import React from 'react';\nimport { injectEfCss } from '../forms/Button.jsx';\nconst CSS = `\n.ef-status{display:inline-flex;align-items:center;gap:7px;font-size:var(--text-sm);color:var(--text-primary)}\n.ef-status__dot{position:relative;width:8px;height:8px;border-radius:var(--radius-full);flex:none}\n.ef-status--ok .ef-status__dot{background:var(--success-600)}\n.ef-status--warn .ef-status__dot{background:var(--warning-600)}\n.ef-status--err .ef-status__dot{background:var(--danger-600)}\n.ef-status--busy .ef-status__dot{background:var(--caramel-500)}\n.ef-status--off .ef-status__dot{background:var(--sand-400)}\n@keyframes ef-status-pulse{0%{box-shadow:0 0 0 0 currentColor;opacity:.5}100%{box-shadow:0 0 0 6px currentColor;opacity:0}}\n.ef-status--pulse .ef-status__dot::after{content:'';position:absolute;inset:0;border-radius:var(--radius-full);animation:ef-status-pulse 1.6s var(--ease-out) infinite}\n.ef-status--ok .ef-status__dot::after{color:var(--success-600)}\n.ef-status--warn .ef-status__dot::after{color:var(--warning-600)}\n.ef-status--err .ef-status__dot::after{color:var(--danger-600)}\n.ef-status--busy .ef-status__dot::after{color:var(--caramel-500)}\n`;\nexport function StatusDot({ state = 'ok', label, pulse, style, className }) {\n  injectEfCss('ef-css-status', CSS);\n  return (\n    <span className={`ef-status ef-status--${state}${pulse ? ' ef-status--pulse' : ''}${className ? ' ' + className : ''}`} style={style}>\n      <span className=\"ef-status__dot\"></span>\n      {label ? <span>{label}</span> : null}\n    </span>\n  );\n}\n"
+    },
+    {
+      "path": "apps/www/registry/ui/data/StatusDot.d.ts",
+      "type": "registry:component",
+      "content": "export interface StatusDotProps {\n  /** @default 'ok' */\n  state?: 'ok' | 'warn' | 'err' | 'busy' | 'off';\n  label?: React.ReactNode;\n  /** Radiating pulse for live states */\n  pulse?: boolean;\n  style?: React.CSSProperties;\n  className?: string;\n}\nexport declare function StatusDot(props: StatusDotProps): JSX.Element;\n"
+    },
+    {
+      "path": "apps/www/registry/ui/data/StatusDot.prompt.md",
+      "type": "registry:component",
+      "content": "Live status dot with label; `pulse` radiates for running/connected states.\n\n```jsx\n<StatusDot state=\"ok\" pulse label=\"Connected\" />\n<StatusDot state=\"busy\" pulse label=\"Running\" />\n<StatusDot state=\"err\" label=\"Failed\" />\n```\n"
+    }
+  ],
+  "categories": [
+    "data"
+  ],
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json"
+}

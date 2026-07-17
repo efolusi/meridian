@@ -1,0 +1,27 @@
+{
+  "name": "radio",
+  "type": "registry:ui",
+  "title": "Radio",
+  "description": "Radio for 2\u20135 mutually exclusive options; group with a shared `name`.",
+  "files": [
+    {
+      "path": "apps/www/registry/ui/forms/Radio.jsx",
+      "type": "registry:ui",
+      "content": "import React from 'react';\nimport { injectEfCss } from './Button.jsx';\nconst CSS = `\n.ef-radio{display:inline-flex;align-items:flex-start;gap:10px;cursor:pointer;user-select:none}\n.ef-radio--disabled{opacity:.45;cursor:not-allowed}\n.ef-radio__input{position:absolute;opacity:0;width:0;height:0}\n.ef-radio__dot{display:inline-flex;align-items:center;justify-content:center;flex:none;width:18px;height:18px;margin-top:1px;border:1.5px solid var(--border-strong);border-radius:var(--radius-full);background:var(--surface-card);transition:border-color var(--dur-fast) var(--ease-out),transform var(--dur-med) var(--ease-spring)}\n.ef-radio__dot::after{content:'';width:8px;height:8px;border-radius:var(--radius-full);background:var(--accent);opacity:0;transform:scale(.4);transition:opacity var(--dur-fast) var(--ease-out),transform var(--dur-med) var(--ease-spring)}\n.ef-radio__input:checked+.ef-radio__dot{border-color:var(--accent)}\n.ef-radio__input:checked+.ef-radio__dot::after{opacity:1;transform:scale(1)}\n.ef-radio:active .ef-radio__dot{transform:scale(.95)}\n.ef-radio__input:focus-visible+.ef-radio__dot{box-shadow:var(--focus-ring)}\n.ef-radio__label{font-size:var(--text-md);color:var(--text-primary);line-height:1.4}\n.ef-radio__desc{display:block;font-size:var(--text-sm);color:var(--text-muted)}\n`;\nexport function Radio({ label, description, disabled, style, className, ...rest }) {\n  injectEfCss('ef-css-radio', CSS);\n  return (\n    <label className={`ef-radio${disabled ? ' ef-radio--disabled' : ''}${className ? ' ' + className : ''}`} style={style}>\n      <input type=\"radio\" className=\"ef-radio__input\" disabled={disabled} {...rest} />\n      <span className=\"ef-radio__dot\"></span>\n      {label ? <span className=\"ef-radio__label\">{label}{description ? <span className=\"ef-radio__desc\">{description}</span> : null}</span> : null}\n    </label>\n  );\n}\n"
+    },
+    {
+      "path": "apps/www/registry/ui/forms/Radio.d.ts",
+      "type": "registry:component",
+      "content": "export interface RadioProps extends React.InputHTMLAttributes<HTMLInputElement> {\n  label?: React.ReactNode;\n  /** Muted second line under the label */\n  description?: string;\n}\nexport declare function Radio(props: RadioProps): JSX.Element;\n"
+    },
+    {
+      "path": "apps/www/registry/ui/forms/Radio.prompt.md",
+      "type": "registry:component",
+      "content": "Radio for 2\u20135 mutually exclusive options; group with a shared `name`.\n\n```jsx\n<Radio name=\"plan\" defaultChecked label=\"Starter\" description=\"Free forever\" />\n<Radio name=\"plan\" label=\"Growth\" description=\"$12 per seat\" />\n```\n"
+    }
+  ],
+  "categories": [
+    "forms"
+  ],
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json"
+}

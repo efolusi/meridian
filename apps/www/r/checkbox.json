@@ -1,0 +1,27 @@
+{
+  "name": "checkbox",
+  "type": "registry:ui",
+  "title": "Checkbox",
+  "description": "Checkbox with springy check pop; supports a muted `description` second line.",
+  "files": [
+    {
+      "path": "apps/www/registry/ui/forms/Checkbox.jsx",
+      "type": "registry:ui",
+      "content": "import React from 'react';\nimport { Icon } from '../icons/Icon.jsx';\nimport { injectEfCss } from './Button.jsx';\nconst CSS = `\n.ef-check{display:inline-flex;align-items:flex-start;gap:10px;cursor:pointer;user-select:none}\n.ef-check--disabled{opacity:.45;cursor:not-allowed}\n.ef-check__input{position:absolute;opacity:0;width:0;height:0}\n.ef-check__box{display:inline-flex;align-items:center;justify-content:center;flex:none;width:18px;height:18px;margin-top:1px;border:1.5px solid var(--border-strong);border-radius:var(--radius-sm);background:var(--surface-card);color:var(--accent-contrast);transition:background var(--dur-fast) var(--ease-out),border-color var(--dur-fast) var(--ease-out),transform var(--dur-med) var(--ease-spring)}\n.ef-check__box svg{opacity:0;transform:scale(.5);transition:opacity var(--dur-fast) var(--ease-out),transform var(--dur-med) var(--ease-spring)}\n.ef-check__input:checked+.ef-check__box{background:var(--accent);border-color:var(--accent)}\n.ef-check__input:checked+.ef-check__box svg{opacity:1;transform:scale(1)}\n.ef-check:active .ef-check__box{transform:scale(.95)}\n.ef-check__input:focus-visible+.ef-check__box{box-shadow:var(--focus-ring)}\n.ef-check__label{font-size:var(--text-md);color:var(--text-primary);line-height:1.4}\n.ef-check__desc{display:block;font-size:var(--text-sm);color:var(--text-muted)}\n`;\nexport function Checkbox({ label, description, disabled, style, className, ...rest }) {\n  injectEfCss('ef-css-check', CSS);\n  return (\n    <label className={`ef-check${disabled ? ' ef-check--disabled' : ''}${className ? ' ' + className : ''}`} style={style}>\n      <input type=\"checkbox\" className=\"ef-check__input\" disabled={disabled} {...rest} />\n      <span className=\"ef-check__box\"><Icon name=\"check\" size={13} strokeWidth={3} /></span>\n      {label ? <span className=\"ef-check__label\">{label}{description ? <span className=\"ef-check__desc\">{description}</span> : null}</span> : null}\n    </label>\n  );\n}\n"
+    },
+    {
+      "path": "apps/www/registry/ui/forms/Checkbox.d.ts",
+      "type": "registry:component",
+      "content": "export interface CheckboxProps extends React.InputHTMLAttributes<HTMLInputElement> {\n  label?: React.ReactNode;\n  /** Muted second line under the label */\n  description?: string;\n}\nexport declare function Checkbox(props: CheckboxProps): JSX.Element;\n"
+    },
+    {
+      "path": "apps/www/registry/ui/forms/Checkbox.prompt.md",
+      "type": "registry:component",
+      "content": "Checkbox with springy check pop; supports a muted `description` second line.\n\n```jsx\n<Checkbox defaultChecked label=\"Email me receipts\" />\n<Checkbox label=\"Weekly digest\" description=\"One summary, every Monday.\" />\n```\n"
+    }
+  ],
+  "categories": [
+    "forms"
+  ],
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json"
+}

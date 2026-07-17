@@ -1,0 +1,27 @@
+{
+  "name": "filedrop",
+  "type": "registry:ui",
+  "title": "FileDrop",
+  "description": "Dashed dropzone \u2014 click or drag; ink border on hover/dragover.",
+  "files": [
+    {
+      "path": "apps/www/registry/ui/files/FileDrop.jsx",
+      "type": "registry:ui",
+      "content": "import React from 'react';\nimport { Icon } from '../icons/Icon.jsx';\nimport { injectEfCss } from '../forms/Button.jsx';\nconst CSS = `\n.ef-filedrop{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;padding:32px 24px;border:1px dashed var(--sand-300);border-radius:var(--radius-md);background:var(--surface-card);cursor:pointer;text-align:center;transition:border-color var(--dur-fast) var(--ease-out),background var(--dur-fast) var(--ease-out)}\n.ef-filedrop:hover,.ef-filedrop--over{border-color:var(--sand-950);background:var(--surface-subtle)}\n.ef-filedrop:focus-visible{outline:none;box-shadow:var(--focus-ring)}\n.ef-filedrop__icon{color:var(--sand-400)}\n.ef-filedrop--over .ef-filedrop__icon,.ef-filedrop:hover .ef-filedrop__icon{color:var(--text-primary)}\n.ef-filedrop__title{font-size:var(--text-md);font-weight:var(--weight-semibold);color:var(--text-primary)}\n.ef-filedrop__title u{text-decoration-color:var(--caramel-500);text-underline-offset:3px}\n.ef-filedrop__hint{font-size:var(--text-xs);color:var(--text-muted)}\n`;\nexport function FileDrop({ onFiles, accept, multiple = true, title, hint, style, className }) {\n  injectEfCss('ef-css-filedrop', CSS);\n  const [over, setOver] = React.useState(false);\n  const inputRef = React.useRef(null);\n  const handle = files => { if (onFiles && files && files.length) onFiles([...files]); };\n  return (\n    <div role=\"button\" tabIndex={0} className={`ef-filedrop${over ? ' ef-filedrop--over' : ''}${className ? ' ' + className : ''}`} style={style}\n      onClick={() => inputRef.current && inputRef.current.click()}\n      onKeyDown={e => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); inputRef.current.click(); } }}\n      onDragOver={e => { e.preventDefault(); setOver(true); }}\n      onDragLeave={() => setOver(false)}\n      onDrop={e => { e.preventDefault(); setOver(false); handle(e.dataTransfer.files); }}>\n      <span className=\"ef-filedrop__icon\"><Icon name=\"upload\" size={22} /></span>\n      <span className=\"ef-filedrop__title\">{title || <span>Drop files here or <u>browse</u></span>}</span>\n      {hint ? <span className=\"ef-filedrop__hint\">{hint}</span> : null}\n      <input ref={inputRef} type=\"file\" accept={accept} multiple={multiple} style={{ display: 'none' }} onChange={e => { handle(e.target.files); e.target.value = ''; }} />\n    </div>\n  );\n}\n"
+    },
+    {
+      "path": "apps/www/registry/ui/files/FileDrop.d.ts",
+      "type": "registry:component",
+      "content": "export interface FileDropProps {\n  /** Receives the dropped/picked File[] */\n  onFiles?: (files: File[]) => void;\n  /** input accept string, e.g. \"image/*,.pdf\" */\n  accept?: string;\n  /** @default true */\n  multiple?: boolean;\n  /** Replaces \"Drop files here or browse\" */\n  title?: React.ReactNode;\n  /** Muted line, e.g. \"PNG, MP4, PDF \u2014 up to 2 GB\" */\n  hint?: React.ReactNode;\n  style?: React.CSSProperties;\n  className?: string;\n}\nexport declare function FileDrop(props: FileDropProps): JSX.Element;\n"
+    },
+    {
+      "path": "apps/www/registry/ui/files/FileDrop.prompt.md",
+      "type": "registry:component",
+      "content": "Dashed dropzone \u2014 click or drag; ink border on hover/dragover.\n\n```jsx\n<FileDrop accept=\"image/*,video/*,.pdf\" hint=\"PNG, MP4, PDF \u2014 up to 2 GB\" onFiles={enqueue} />\n```\n"
+    }
+  ],
+  "categories": [
+    "files"
+  ],
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json"
+}

@@ -1,0 +1,27 @@
+{
+  "name": "buttongroup",
+  "type": "registry:ui",
+  "title": "ButtonGroup",
+  "description": "Attaches adjacent Buttons/IconButtons into one segment (shared borders, squared inner corners). Use for tightly related actions of equal rank: zoom in/out, prev/next, split-button patterns.",
+  "files": [
+    {
+      "path": "apps/www/registry/ui/forms/ButtonGroup.jsx",
+      "type": "registry:ui",
+      "content": "import React from 'react';\nimport { injectEfCss } from './Button.jsx';\nconst CSS = `\n.ef-btn-group{display:inline-flex;align-items:stretch;isolation:isolate}\n.ef-btn-group>*:not(:first-child){border-top-left-radius:0!important;border-bottom-left-radius:0!important;margin-left:-1px}\n.ef-btn-group>*:not(:last-child){border-top-right-radius:0!important;border-bottom-right-radius:0!important}\n.ef-btn-group>*:hover,.ef-btn-group>*:focus-visible{z-index:1}\n`;\nexport function ButtonGroup({ children, style, className, ...rest }) {\n  injectEfCss('ef-css-btn-group', CSS);\n  return <div role=\"group\" className={`ef-btn-group${className ? ' ' + className : ''}`} style={style} {...rest}>{children}</div>;\n}\n"
+    },
+    {
+      "path": "apps/www/registry/ui/forms/ButtonGroup.d.ts",
+      "type": "registry:component",
+      "content": "export interface ButtonGroupProps extends React.HTMLAttributes<HTMLDivElement> {\n  /** Buttons / IconButtons rendered as one attached segment */\n  children: React.ReactNode;\n}\nexport declare function ButtonGroup(props: ButtonGroupProps): JSX.Element;\n"
+    },
+    {
+      "path": "apps/www/registry/ui/forms/ButtonGroup.prompt.md",
+      "type": "registry:component",
+      "content": "# ButtonGroup\n\nAttaches adjacent Buttons/IconButtons into one segment (shared borders, squared inner corners). Use for tightly related actions of equal rank: zoom in/out, prev/next, split-button patterns.\n\n`<ButtonGroup><Button variant=\"secondary\">Day</Button><Button variant=\"secondary\">Week</Button></ButtonGroup>`\n\nKeep 2\u20134 children, same variant + size. For exclusive selection use SegmentedControl instead."
+    }
+  ],
+  "categories": [
+    "forms"
+  ],
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json"
+}

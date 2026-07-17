@@ -1,0 +1,27 @@
+{
+  "name": "badge",
+  "type": "registry:ui",
+  "title": "Badge",
+  "description": "Small status pill; `dot` adds a leading status dot.",
+  "files": [
+    {
+      "path": "apps/www/registry/ui/display/Badge.jsx",
+      "type": "registry:ui",
+      "content": "import React from 'react';\nimport { injectEfCss } from '../forms/Button.jsx';\nconst CSS = `\n.ef-badge{display:inline-flex;align-items:center;gap:5px;height:20px;padding:0 8px;border-radius:var(--radius-full);font-size:var(--text-xs);font-weight:var(--weight-medium);line-height:1;white-space:nowrap}\n.ef-badge--md{height:24px;padding:0 10px;font-size:var(--text-sm)}\n.ef-badge__dot{width:6px;height:6px;border-radius:var(--radius-full);background:currentColor}\n.ef-badge--neutral{background:var(--surface-sunken);color:var(--sand-700)}\n.ef-badge--accent{background:var(--accent-subtle);color:var(--brand-700)}\n.ef-badge--success{background:var(--success-100);color:var(--success-600)}\n.ef-badge--warning{background:var(--warning-100);color:var(--warning-600)}\n.ef-badge--danger{background:var(--danger-100);color:var(--danger-600)}\n.ef-badge--brand{background:var(--cream-50);color:var(--cocoa-700)}\n[data-theme=\"dark\"] .ef-badge--neutral{background:var(--surface-sunken);color:var(--text-secondary)}\n[data-theme=\"dark\"] .ef-badge--accent{color:var(--brand-300)}\n[data-theme=\"dark\"] .ef-badge--brand{background:#2A2119;color:var(--brand-300)}\n`;\nexport function Badge({ tone = 'neutral', size = 'sm', dot, children, style, className, ...rest }) {\n  injectEfCss('ef-css-badge', CSS);\n  return (\n    <span className={`ef-badge ef-badge--${tone}${size === 'md' ? ' ef-badge--md' : ''}${className ? ' ' + className : ''}`} style={style} {...rest}>\n      {dot ? <span className=\"ef-badge__dot\"></span> : null}\n      {children}\n    </span>\n  );\n}\n"
+    },
+    {
+      "path": "apps/www/registry/ui/display/Badge.d.ts",
+      "type": "registry:component",
+      "content": "export interface BadgeProps extends React.HTMLAttributes<HTMLSpanElement> {\n  /** @default 'neutral' */\n  tone?: 'neutral' | 'accent' | 'success' | 'warning' | 'danger' | 'brand';\n  /** @default 'sm' */\n  size?: 'sm' | 'md';\n  /** Leading status dot */\n  dot?: boolean;\n  children?: React.ReactNode;\n}\nexport declare function Badge(props: BadgeProps): JSX.Element;\n"
+    },
+    {
+      "path": "apps/www/registry/ui/display/Badge.prompt.md",
+      "type": "registry:component",
+      "content": "Small status pill; `dot` adds a leading status dot.\n\n```jsx\n<Badge tone=\"success\" dot>Active</Badge>\n<Badge tone=\"accent\">Beta</Badge>\n```\n\nTones: `neutral | accent | success | warning | danger | brand`. Sizes `sm` (20px) / `md` (24px).\n"
+    }
+  ],
+  "categories": [
+    "display"
+  ],
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json"
+}

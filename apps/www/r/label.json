@@ -1,0 +1,27 @@
+{
+  "name": "label",
+  "type": "registry:ui",
+  "title": "Label",
+  "description": "Standalone field label for custom controls that lack a built-in `label` prop. Pair via `htmlFor`; `required` adds the red asterisk, `hint` a muted inline note.",
+  "files": [
+    {
+      "path": "apps/www/registry/ui/forms/Label.jsx",
+      "type": "registry:ui",
+      "content": "import React from 'react';\nimport { injectEfCss } from './Button.jsx';\nconst CSS = `\n.ef-label{display:inline-flex;align-items:baseline;gap:5px;font-family:var(--font-sans);font-size:var(--text-sm);font-weight:600;color:var(--text-primary)}\n.ef-label__req{color:var(--danger-600);font-weight:600}\n.ef-label__hint{font-weight:400;color:var(--text-muted);font-size:12.5px}\n`;\nexport function Label({ htmlFor, required, hint, children, style, className }) {\n  injectEfCss('ef-css-label', CSS);\n  return (\n    <label htmlFor={htmlFor} className={`ef-label${className ? ' ' + className : ''}`} style={style}>\n      {children}\n      {required ? <span className=\"ef-label__req\" aria-hidden=\"true\">*</span> : null}\n      {hint ? <span className=\"ef-label__hint\">{hint}</span> : null}\n    </label>\n  );\n}\n"
+    },
+    {
+      "path": "apps/www/registry/ui/forms/Label.d.ts",
+      "type": "registry:component",
+      "content": "export interface LabelProps {\n  htmlFor?: string;\n  /** Red asterisk */\n  required?: boolean;\n  /** Muted inline hint after the text */\n  hint?: React.ReactNode;\n  children: React.ReactNode;\n  style?: React.CSSProperties;\n  className?: string;\n}\nexport declare function Label(props: LabelProps): JSX.Element;\n"
+    },
+    {
+      "path": "apps/www/registry/ui/forms/Label.prompt.md",
+      "type": "registry:component",
+      "content": "# Label\n\nStandalone field label for custom controls that lack a built-in `label` prop. Pair via `htmlFor`; `required` adds the red asterisk, `hint` a muted inline note.\n\n`<Label htmlFor=\"region\" required hint=\"Cannot change later\">Region</Label>`\n\nInput, Select, etc. already render their own labels \u2014 do not double-label them."
+    }
+  ],
+  "categories": [
+    "forms"
+  ],
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json"
+}

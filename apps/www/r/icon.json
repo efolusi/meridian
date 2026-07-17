@@ -1,0 +1,27 @@
+{
+  "name": "icon",
+  "type": "registry:ui",
+  "title": "Icon",
+  "description": "Renders one of the 65 curated Lucide icons shipped in `assets/icons/`, inheriting `currentColor`.",
+  "files": [
+    {
+      "path": "apps/www/registry/ui/icons/Icon.jsx",
+      "type": "registry:ui",
+      "content": "import React from 'react';\nconst _cache = {};\nfunction base(){\n  if (window.__efBase !== undefined) return window.__efBase;\n  const s = [...document.querySelectorAll('script')].find(el => el.src && el.src.includes('_ds_bundle.js'));\n  window.__efBase = s ? s.src.slice(0, s.src.indexOf('_ds_bundle.js')) : '';\n  return window.__efBase;\n}\nexport function Icon({ name, size = 16, strokeWidth = 1.5, title, className, style }) {\n  const [svg, setSvg] = React.useState(_cache[name] || null);\n  React.useEffect(() => {\n    if (_cache[name]) { setSvg(_cache[name]); return; }\n    let live = true;\n    fetch(base() + 'assets/icons/' + name + '.svg')\n      .then(r => r.ok ? r.text() : Promise.reject(new Error('icon ' + name)))\n      .then(t => { _cache[name] = t; if (live) setSvg(t); })\n      .catch(() => { if (live) setSvg(''); });\n    return () => { live = false; };\n  }, [name]);\n  const html = svg\n    ? svg.replace('width=\"24\"', 'width=\"' + size + '\"').replace('height=\"24\"', 'height=\"' + size + '\"').replace('stroke-width=\"2\"', 'stroke-width=\"' + strokeWidth + '\"')\n    : '';\n  return <span aria-hidden={title ? undefined : true} aria-label={title} role={title ? 'img' : undefined} className={className} style={{ display: 'inline-flex', flex: 'none', width: size, height: size, color: 'inherit', ...style }} dangerouslySetInnerHTML={{ __html: html }} />;\n}\n"
+    },
+    {
+      "path": "apps/www/registry/ui/icons/Icon.d.ts",
+      "type": "registry:component",
+      "content": "export interface IconProps {\n  /** Lucide icon name matching a file in assets/icons/, e.g. \"arrow-right\" */\n  name: string;\n  /** Square size in px @default 16 */\n  size?: number;\n  /** Stroke width @default 1.5 */\n  strokeWidth?: number;\n  /** Accessible label; omit for decorative icons */\n  title?: string;\n  className?: string;\n  style?: React.CSSProperties;\n}\nexport declare function Icon(props: IconProps): JSX.Element;\n"
+    },
+    {
+      "path": "apps/www/registry/ui/icons/Icon.prompt.md",
+      "type": "registry:component",
+      "content": "Renders one of the 65 curated Lucide icons shipped in `assets/icons/`, inheriting `currentColor`.\n\n```jsx\n<Icon name=\"arrow-right\" />\n<Icon name=\"bell\" size={20} />\n<Icon name=\"trash-2\" size={16} title=\"Delete\" />\n```\n\nSizes: 16 inline/buttons, 20 nav/lists, 24 feature spots. Keep strokeWidth 1.5 (brand default). Available names = filenames in `assets/icons/` (arrow-right, check, x, plus, search, settings, user, users, bell, house, menu, chevron-*, calendar, clock, mail, lock, eye, eye-off, upload, download, trash-2, pencil, copy, external-link, ellipsis, log-out, credit-card, layout-dashboard, folder, file-text, star, circle-alert, triangle-alert, circle-check, info, sparkles, zap, globe, book-open, code, terminal, shield-check, refresh-cw, chart-column, chart-line, trending-up, inbox, sliders-horizontal, loader-circle, panel-left, funnel, link, activity, wallet, database, rocket, life-buoy, message-square, send, badge-check, \u2026).\n"
+    }
+  ],
+  "categories": [
+    "icons"
+  ],
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json"
+}

@@ -1,0 +1,27 @@
+{
+  "name": "tooltip",
+  "type": "registry:ui",
+  "title": "Tooltip",
+  "description": "Hover/focus tooltip with 200ms delay and spring pop. Wrap any trigger element.",
+  "files": [
+    {
+      "path": "apps/www/registry/ui/feedback/Tooltip.jsx",
+      "type": "registry:ui",
+      "content": "import React from 'react';\nimport { injectEfCss } from '../forms/Button.jsx';\nconst CSS = `\n.ef-tooltip{position:relative;display:inline-flex}\n.ef-tooltip__bubble{position:absolute;left:50%;bottom:calc(100% + 8px);transform:translateX(-50%) scale(.92);transform-origin:bottom center;background:var(--surface-inverse);color:var(--text-inverse);font-size:var(--text-xs);font-weight:var(--weight-medium);line-height:1.35;padding:5px 9px;border-radius:6px;white-space:nowrap;pointer-events:none;opacity:0;transition:opacity var(--dur-fast) var(--ease-out),transform var(--dur-med) var(--ease-spring);z-index:60}\n.ef-tooltip__bubble::after{content:'';position:absolute;top:100%;left:50%;transform:translateX(-50%);border:4px solid transparent;border-top-color:var(--surface-inverse)}\n.ef-tooltip--bottom .ef-tooltip__bubble{bottom:auto;top:calc(100% + 8px);transform-origin:top center}\n.ef-tooltip--bottom .ef-tooltip__bubble::after{top:auto;bottom:100%;border-top-color:transparent;border-bottom-color:var(--surface-inverse)}\n.ef-tooltip:hover .ef-tooltip__bubble,.ef-tooltip:focus-within .ef-tooltip__bubble{opacity:1;transform:translateX(-50%) scale(1);transition-delay:200ms}\n`;\nexport function Tooltip({ label, position = 'top', children, style, className }) {\n  injectEfCss('ef-css-tooltip', CSS);\n  return (\n    <span className={`ef-tooltip${position === 'bottom' ? ' ef-tooltip--bottom' : ''}${className ? ' ' + className : ''}`} style={style}>\n      {children}\n      <span className=\"ef-tooltip__bubble\" role=\"tooltip\">{label}</span>\n    </span>\n  );\n}\n"
+    },
+    {
+      "path": "apps/www/registry/ui/feedback/Tooltip.d.ts",
+      "type": "registry:component",
+      "content": "export interface TooltipProps {\n  label: React.ReactNode;\n  /** @default 'top' */\n  position?: 'top' | 'bottom';\n  /** The trigger element */\n  children?: React.ReactNode;\n  style?: React.CSSProperties;\n  className?: string;\n}\nexport declare function Tooltip(props: TooltipProps): JSX.Element;\n"
+    },
+    {
+      "path": "apps/www/registry/ui/feedback/Tooltip.prompt.md",
+      "type": "registry:component",
+      "content": "Hover/focus tooltip with 200ms delay and spring pop. Wrap any trigger element.\n\n```jsx\n<Tooltip label=\"Copy to clipboard\"><IconButton icon=\"copy\" label=\"Copy\" /></Tooltip>\n```\n\n`position`: `top` (default) or `bottom`. Keep labels short; no interactive content inside.\n"
+    }
+  ],
+  "categories": [
+    "feedback"
+  ],
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json"
+}

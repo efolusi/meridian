@@ -1,0 +1,27 @@
+{
+  "name": "table",
+  "type": "registry:ui",
+  "title": "Table",
+  "description": "Data table: uppercase micro headers, hairline rows, optional row click. Borderless \u2014 nest in `<Card padding={0}>` for a framed table.",
+  "files": [
+    {
+      "path": "apps/www/registry/ui/data/Table.jsx",
+      "type": "registry:ui",
+      "content": "import React from 'react';\nimport { injectEfCss } from '../forms/Button.jsx';\nconst CSS = `\n.ef-table{width:100%;border-collapse:collapse}\n.ef-table th{text-align:left;padding:10px var(--table-pad-x);font-size:11px;font-weight:var(--weight-semibold);letter-spacing:0.06em;text-transform:uppercase;color:var(--text-muted);border-bottom:1px solid var(--border-default);white-space:nowrap}\n.ef-table td{padding:var(--table-pad-y) var(--table-pad-x);font-size:var(--text-md);border-bottom:1px solid var(--border-default);vertical-align:middle}\n.ef-table tr:last-child td{border-bottom:none}\n.ef-table--dense td{padding:8px var(--table-pad-x);font-size:var(--text-sm)}\n.ef-table__row--click{cursor:pointer;transition:background var(--dur-fast) var(--ease-out)}\n.ef-table__row--click:hover{background:var(--surface-subtle)}\n.ef-table .ef-num{font-family:var(--font-mono);font-size:13px}\n`;\nexport function Table({ columns, rows, rowKey, onRowClick, dense, style, className }) {\n  injectEfCss('ef-css-table', CSS);\n  const key = (row, i) => rowKey ? (typeof rowKey === 'function' ? rowKey(row) : row[rowKey]) : i;\n  return (\n    <table className={`ef-table${dense ? ' ef-table--dense' : ''}${className ? ' ' + className : ''}`} style={style}>\n      <thead><tr>\n        {columns.map(c => <th key={c.key} style={{ width: c.width, textAlign: c.align }}>{c.label}</th>)}\n      </tr></thead>\n      <tbody>\n        {rows.map((row, i) => (\n          <tr key={key(row, i)} className={onRowClick ? 'ef-table__row--click' : ''} onClick={onRowClick ? () => onRowClick(row) : undefined}>\n            {columns.map(c => (\n              <td key={c.key} className={c.numeric ? 'ef-num' : ''} style={{ textAlign: c.align }}>\n                {c.render ? c.render(row[c.key], row, i) : row[c.key]}\n              </td>\n            ))}\n          </tr>\n        ))}\n      </tbody>\n    </table>\n  );\n}\n"
+    },
+    {
+      "path": "apps/www/registry/ui/data/Table.d.ts",
+      "type": "registry:component",
+      "content": "export interface TableColumn {\n  /** Row field to read */\n  key: string;\n  label: React.ReactNode;\n  width?: number | string;\n  align?: 'left' | 'center' | 'right';\n  /** Mono tabular figures */\n  numeric?: boolean;\n  /** Custom cell: (value, row, rowIndex) => node */\n  render?: (value: any, row: any, index: number) => React.ReactNode;\n}\nexport interface TableProps {\n  columns: TableColumn[];\n  rows: any[];\n  /** Field name or fn for React keys @default index */\n  rowKey?: string | ((row: any) => string);\n  onRowClick?: (row: any) => void;\n  dense?: boolean;\n  style?: React.CSSProperties;\n  className?: string;\n}\nexport declare function Table(props: TableProps): JSX.Element;\n"
+    },
+    {
+      "path": "apps/www/registry/ui/data/Table.prompt.md",
+      "type": "registry:component",
+      "content": "Data table: uppercase micro headers, hairline rows, optional row click. Borderless \u2014 nest in `<Card padding={0}>` for a framed table.\n\n```jsx\n<Table\n  rowKey=\"id\"\n  columns={[\n    { key: 'name', label: 'Customer' },\n    { key: 'plan', label: 'Plan' },\n    { key: 'mrr', label: 'MRR', numeric: true, align: 'right' },\n    { key: 'status', label: 'Status', render: v => <Badge tone=\"success\" dot>{v}</Badge> },\n  ]}\n  rows={customers}\n  onRowClick={openCustomer}\n/>\n```\n\n`dense` tightens row height; `render(value, row, i)` for custom cells.\n"
+    }
+  ],
+  "categories": [
+    "data"
+  ],
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json"
+}

@@ -1,0 +1,27 @@
+{
+  "name": "chatmessage",
+  "type": "registry:ui",
+  "title": "ChatMessage",
+  "description": "Agent-thread message: bot chip or user avatar, meta row, hover copy/retry actions, streaming caret.",
+  "files": [
+    {
+      "path": "apps/www/registry/ui/ai/ChatMessage.jsx",
+      "type": "registry:ui",
+      "content": "import React from 'react';\nimport { Icon } from '../icons/Icon.jsx';\nimport { Avatar } from '../display/Avatar.jsx';\nimport { IconButton } from '../forms/IconButton.jsx';\nimport { injectEfCss } from '../forms/Button.jsx';\nconst CSS = `\n.ef-msg{display:flex;gap:12px;max-width:720px}\n.ef-msg__avatar{flex:none;margin-top:2px}\n.ef-msg__bot{display:inline-flex;align-items:center;justify-content:center;width:28px;height:28px;border-radius:var(--radius-full);background:var(--accent);color:var(--sand-50);flex:none;margin-top:2px}\n.ef-msg__meta{display:flex;align-items:baseline;gap:8px}\n.ef-msg__name{font-size:var(--text-sm);font-weight:var(--weight-semibold);color:var(--text-primary)}\n.ef-msg__time{font-size:var(--text-xs);color:var(--text-muted)}\n.ef-msg__body{font-size:var(--text-md);line-height:var(--leading-relaxed);color:var(--text-primary);margin-top:4px}\n.ef-msg--user .ef-msg__body{background:var(--surface-card);border:1px solid var(--border-default);border-radius:var(--radius-md);padding:10px 14px}\n.ef-msg__actions{display:flex;gap:2px;margin-top:6px;opacity:0;transition:opacity var(--dur-fast) var(--ease-out)}\n.ef-msg:hover .ef-msg__actions{opacity:1}\n@keyframes ef-caret{0%,100%{opacity:1}50%{opacity:0}}\n.ef-msg__caret{display:inline-block;width:7px;height:15px;background:var(--accent);margin-left:3px;vertical-align:-2px;animation:ef-caret 1s steps(1) infinite}\n`;\nexport function ChatMessage({ role = 'assistant', name, time, streaming, actions, children, style, className }) {\n  injectEfCss('ef-css-msg', CSS);\n  const who = name || (role === 'user' ? 'You' : role === 'system' ? 'System' : 'Agent');\n  return (\n    <div className={`ef-msg ef-msg--${role}${className ? ' ' + className : ''}`} style={style}>\n      {role === 'assistant' || role === 'system'\n        ? <span className=\"ef-msg__bot\"><Icon name=\"bot\" size={15} /></span>\n        : <span className=\"ef-msg__avatar\"><Avatar name={who} size={28} /></span>}\n      <div style={{ flex: 1, minWidth: 0 }}>\n        <div className=\"ef-msg__meta\"><span className=\"ef-msg__name\">{who}</span>{time ? <span className=\"ef-msg__time\">{time}</span> : null}</div>\n        <div className=\"ef-msg__body\">{children}{streaming ? <span className=\"ef-msg__caret\"></span> : null}</div>\n        {actions !== false && role === 'assistant' && !streaming ? (\n          <div className=\"ef-msg__actions\">\n            <IconButton icon=\"copy\" label=\"Copy\" size=\"sm\" />\n            <IconButton icon=\"refresh-cw\" label=\"Retry\" size=\"sm\" />\n          </div>\n        ) : null}\n      </div>\n    </div>\n  );\n}\n"
+    },
+    {
+      "path": "apps/www/registry/ui/ai/ChatMessage.d.ts",
+      "type": "registry:component",
+      "content": "export interface ChatMessageProps {\n  /** @default 'assistant' */\n  role?: 'user' | 'assistant' | 'system';\n  /** Display name @default You / Agent / System */\n  name?: string;\n  time?: string;\n  /** Blinking caret while generating */\n  streaming?: boolean;\n  /** false hides the hover copy/retry row */\n  actions?: boolean;\n  children?: React.ReactNode;\n  style?: React.CSSProperties;\n  className?: string;\n}\nexport declare function ChatMessage(props: ChatMessageProps): JSX.Element;\n"
+    },
+    {
+      "path": "apps/www/registry/ui/ai/ChatMessage.prompt.md",
+      "type": "registry:component",
+      "content": "Agent-thread message: bot chip or user avatar, meta row, hover copy/retry actions, streaming caret.\n\n```jsx\n<ChatMessage role=\"user\" name=\"Ada Obi\" time=\"14:02\">Deploy the staging branch.</ChatMessage>\n<ChatMessage time=\"14:02\" streaming>Provisioning a runner\u2026</ChatMessage>\n```\n"
+    }
+  ],
+  "categories": [
+    "ai"
+  ],
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json"
+}

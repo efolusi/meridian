@@ -1,0 +1,27 @@
+{
+  "name": "divider",
+  "type": "registry:ui",
+  "title": "Divider",
+  "description": "1px hairline separator; optional uppercase label; `vertical` for toolbars.",
+  "files": [
+    {
+      "path": "apps/www/registry/ui/display/Divider.jsx",
+      "type": "registry:ui",
+      "content": "import React from 'react';\nimport { injectEfCss } from '../forms/Button.jsx';\nconst CSS = `\n.ef-divider{display:flex;align-items:center;gap:12px;border:none;margin:0}\n.ef-divider__line{flex:1;height:1px;background:var(--border-default)}\n.ef-divider__label{font-size:var(--text-xs);font-weight:var(--weight-medium);letter-spacing:0.06em;text-transform:uppercase;color:var(--text-muted);white-space:nowrap}\n.ef-divider--vertical{display:inline-flex;width:1px;align-self:stretch;background:var(--border-default)}\n`;\nexport function Divider({ label, vertical, style, className }) {\n  injectEfCss('ef-css-divider', CSS);\n  if (vertical) return <span className={`ef-divider--vertical${className ? ' ' + className : ''}`} style={style}></span>;\n  return (\n    <div role=\"separator\" className={`ef-divider${className ? ' ' + className : ''}`} style={style}>\n      <span className=\"ef-divider__line\"></span>\n      {label ? <React.Fragment><span className=\"ef-divider__label\">{label}</span><span className=\"ef-divider__line\"></span></React.Fragment> : null}\n    </div>\n  );\n}\n"
+    },
+    {
+      "path": "apps/www/registry/ui/display/Divider.d.ts",
+      "type": "registry:component",
+      "content": "export interface DividerProps {\n  /** Small uppercase label centered in the rule */\n  label?: string;\n  /** Vertical rule (stretches to container height) */\n  vertical?: boolean;\n  style?: React.CSSProperties;\n  className?: string;\n}\nexport declare function Divider(props: DividerProps): JSX.Element;\n"
+    },
+    {
+      "path": "apps/www/registry/ui/display/Divider.prompt.md",
+      "type": "registry:component",
+      "content": "1px hairline separator; optional uppercase label; `vertical` for toolbars.\n\n```jsx\n<Divider />\n<Divider label=\"or\" />\n<Divider vertical />\n```\n"
+    }
+  ],
+  "categories": [
+    "display"
+  ],
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json"
+}

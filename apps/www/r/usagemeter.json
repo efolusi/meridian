@@ -1,0 +1,27 @@
+{
+  "name": "usagemeter",
+  "type": "registry:ui",
+  "title": "UsageMeter",
+  "description": "Budget meter: used/limit figures, fill bar that turns warning past warnAt and danger past the limit.",
+  "files": [
+    {
+      "path": "apps/www/registry/ui/ai/UsageMeter.jsx",
+      "type": "registry:ui",
+      "content": "import React from 'react';\nimport { injectEfCss } from '../forms/Button.jsx';\nconst CSS = `\n.ef-usage{display:flex;flex-direction:column;gap:7px}\n.ef-usage__row{display:flex;align-items:baseline;gap:8px}\n.ef-usage__label{font-size:var(--text-sm);font-weight:600;color:var(--text-primary)}\n.ef-usage__figures{margin-left:auto;font-family:var(--font-mono);font-size:12px;color:var(--text-muted)}\n.ef-usage__track{height:6px;border-radius:var(--radius-full);background:var(--surface-sunken);overflow:hidden}\n.ef-usage__fill{height:100%;border-radius:var(--radius-full);background:var(--accent);transition:width var(--dur-med) var(--ease-out)}\n.ef-usage--warn .ef-usage__fill{background:var(--warning-600)}\n.ef-usage--over .ef-usage__fill{background:var(--danger-600)}\n.ef-usage__foot{display:flex;gap:8px;font-size:12px;color:var(--text-muted)}\n.ef-usage__cost{margin-left:auto;font-family:var(--font-mono)}\n`;\nexport function UsageMeter({ used = 0, limit = 100, label = 'Usage', unit = '', cost, hint, warnAt = 0.8, animated, format, style, className }) {\n  injectEfCss('ef-css-usage', CSS);\n  const [shown, setShown] = React.useState(animated ? 0 : used);\n  React.useEffect(() => {\n    if (!animated) { setShown(used); return; }\n    let raf, start = null;\n    const from = shown, to = used;\n    const tick = now => {\n      if (start === null) start = now;\n      const t = Math.min(1, (now - start) / 500);\n      setShown(from + (to - from) * (1 - Math.pow(1 - t, 3)));\n      if (t < 1) raf = requestAnimationFrame(tick);\n    };\n    raf = requestAnimationFrame(tick);\n    return () => cancelAnimationFrame(raf);\n  }, [used, animated]);\n  const ratio = limit > 0 ? used / limit : 0;\n  const fmt = format || (v => Math.round(v).toLocaleString());\n  const tone = ratio >= 1 ? ' ef-usage--over' : ratio >= warnAt ? ' ef-usage--warn' : '';\n  const shownRatio = limit > 0 ? shown / limit : 0;\n  return (\n    <div className={`ef-usage${tone}${className ? ' ' + className : ''}`} style={style}>\n      <div className=\"ef-usage__row\">\n        <span className=\"ef-usage__label\">{label}</span>\n        <span className=\"ef-usage__figures\">{fmt(shown)} / {fmt(limit)}{unit ? ' ' + unit : ''}</span>\n      </div>\n      <div className=\"ef-usage__track\" role=\"progressbar\" aria-valuenow={Math.round(ratio * 100)} aria-valuemin={0} aria-valuemax={100} aria-label={label}>\n        <span className=\"ef-usage__fill\" style={{ width: Math.min(100, (animated ? shownRatio : ratio) * 100) + '%', display: 'block' }}></span>\n      </div>\n      {hint || cost ? (\n        <div className=\"ef-usage__foot\">\n          {hint ? <span>{hint}</span> : null}\n          {cost ? <span className=\"ef-usage__cost\">{cost}</span> : null}\n        </div>\n      ) : null}\n    </div>\n  );\n}\n"
+    },
+    {
+      "path": "apps/www/registry/ui/ai/UsageMeter.d.ts",
+      "type": "registry:component",
+      "content": "export interface UsageMeterProps {\n  used: number;\n  limit: number;\n  /** @default 'Usage' */\n  label?: string;\n  /** Appended to figures, e.g. 'tokens' */\n  unit?: string;\n  /** Mono figure bottom-right, e.g. '$4.82' */\n  cost?: string;\n  /** Muted note bottom-left */\n  hint?: string;\n  /** Warning tone threshold (0-1) @default 0.8 */\n  warnAt?: number;\n  /** Count the figure and bar up on mount/change */\n  animated?: boolean;\n  /** Figure formatter @default toLocaleString */\n  format?: (v: number) => string;\n  style?: React.CSSProperties;\n  className?: string;\n}\nexport declare function UsageMeter(props: UsageMeterProps): JSX.Element;\n"
+    },
+    {
+      "path": "apps/www/registry/ui/ai/UsageMeter.prompt.md",
+      "type": "registry:component",
+      "content": "# UsageMeter\n\nBudget meter: used/limit figures, fill bar that turns warning past warnAt and danger past the limit.\n\n`<UsageMeter label=\"Tokens this month\" used={812000} limit={1000000} unit=\"tokens\" cost=\"$4.82\" hint=\"Resets Aug 1\" />`\n\nUse for token, run, or spend budgets in sidebars and billing. For task progress use Progress instead."
+    }
+  ],
+  "categories": [
+    "ai"
+  ],
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json"
+}
