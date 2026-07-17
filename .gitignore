@@ -3,6 +3,15 @@ uploads/
 screenshots/
 .DS_Store
 Thumbs.db
+.claude/launch.json
+
+# Editors & tooling
+.vscode/
+.idea/
+*.log
+node_modules/
+.env
+.env.*
 
 # Generated at build/review time by the design-system compiler — committed
 # intentionally (zero-build distribution). Do NOT ignore:
