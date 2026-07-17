@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet><script src="./ds-base.js"></script><style>@view-transition{navigation:auto}::view-transition-group(*){animation-duration:160ms}@media (prefers-reduced-motion:reduce){::view-transition-group(*),::view-transition-old(*),::view-transition-new(*){animation:none!important}}html{background:#FAF9F6}</style></helmet>
+<div data-theme="{{ theme }}" data-density="{{ density }}" style="min-height:100vh;background:var(--surface-page);color:var(--text-primary);font-family:var(--font-sans)">
+<header style="view-transition-name:shell-top;display:flex;align-items:center;gap:12px;height:60px;padding:0 24px;border-bottom:1px solid var(--border-default)">
+<img src="../../assets/logo.png" alt="" style="width:30px;height:30px">
+<span style="font-family:var(--font-display);font-weight:680;letter-spacing:-0.02em;font-size:19px">Efolusi</span>
+<span style="font-size:14px;color:var(--text-muted)">Console</span>
+<nav style="display:flex;gap:2px;margin-left:16px">
+<a href="./Dashboard.dc.html" style="padding:6px 12px;border-radius:var(--radius-sm);font-size:14px;font-weight:500;color:var(--text-secondary);text-decoration:none" style-hover="background:var(--surface-sunken);color:var(--text-primary)">Overview</a>
+<a href="./Customers.dc.html" style="padding:6px 12px;border-radius:var(--radius-sm);font-size:14px;font-weight:600;background:var(--accent-subtle);color:var(--brand-700);text-decoration:none">Customers</a>
+<a href="./ConsoleSettings.dc.html" style="padding:6px 12px;border-radius:var(--radius-sm);font-size:14px;font-weight:500;color:var(--text-secondary);text-decoration:none" style-hover="background:var(--surface-sunken);color:var(--text-primary)">Settings</a>
+</nav>
+<div style="margin-left:auto;display:flex;gap:8px">
+<x-import component-from-global-scope="EfolusiDesignSystem_4ffc3d.Button" variant="secondary" icon-left="download" hint-size="90px,36px">Export</x-import>
+<x-import component-from-global-scope="EfolusiDesignSystem_4ffc3d.Button" icon-left="plus" hint-size="120px,36px">New project</x-import>
+</div>
+</header>
+<main style="padding:24px;display:flex;flex-direction:column;gap:20px;max-width:1200px;margin:0 auto">
+<div style="font-size:13px;color:var(--text-muted)"><a href="./Customers.dc.html" style="color:var(--text-link);font-weight:600;text-decoration:none">Customers</a> / Bloom Health</div>
+<div style="display:flex;align-items:center;gap:14px">
+<div style="width:44px;height:44px;border-radius:var(--radius-md);background:var(--brand-950);color:var(--brand-50);display:grid;place-items:center;font-family:var(--font-display);font-weight:680;font-size:16px">BH</div>
+<div>
+<h1 style="font-size:24px;font-weight:680;font-family:var(--font-display);letter-spacing:-0.02em;margin:0">Bloom Health</h1>
+<p style="margin:2px 0 0;font-size:13.5px;color:var(--text-secondary)">bloomhealth.co · Scale plan · customer since Mar 2025</p>
+</div>
+<div style="margin-left:auto;display:flex;gap:8px">
+<x-import component-from-global-scope="EfolusiDesignSystem_4ffc3d.Button" variant="secondary" icon-left="mail" hint-size="90px,36px">Email</x-import>
+<x-import component-from-global-scope="EfolusiDesignSystem_4ffc3d.Button" variant="secondary" icon-left="credit-card" hint-size="130px,36px">Manage plan</x-import>
+</div>
+</div>
+<div style="display:grid;grid-template-columns:repeat(3,1fr);gap:16px">
+<div style="background:var(--surface-card);border:1px solid var(--border-default);border-radius:var(--radius-md);padding:16px">
+<div style="font-size:13px;color:var(--text-muted);font-weight:500">MRR</div>
+<div style="display:flex;align-items:baseline;gap:8px;margin-top:6px"><span style="font-family:var(--font-mono);font-size:26px;font-weight:600">$2,400</span><span style="font-size:12px;font-weight:500;color:var(--success-600)">↑ 9.1%</span></div>
+</div>
+<div style="background:var(--surface-card);border:1px solid var(--border-default);border-radius:var(--radius-md);padding:16px">
+<div style="font-size:13px;color:var(--text-muted);font-weight:500">Seats in use</div>
+<div style="display:flex;align-items:baseline;gap:8px;margin-top:6px"><span style="font-family:var(--font-mono);font-size:26px;font-weight:600">38</span><span style="font-size:12px;font-weight:500;color:var(--text-muted)">of 50</span></div>
+</div>
+<div style="background:var(--surface-card);border:1px solid var(--border-default);border-radius:var(--radius-md);padding:16px">
+<div style="font-size:13px;color:var(--text-muted);font-weight:500">API requests / day</div>
+<div style="display:flex;align-items:baseline;gap:8px;margin-top:6px"><span style="font-family:var(--font-mono);font-size:26px;font-weight:600">412k</span><span style="font-size:12px;font-weight:500;color:var(--success-600)">↑ 4.7%</span></div>
+</div>
+</div>
+<div style="display:grid;grid-template-columns:2fr 1fr;gap:16px;align-items:start">
+<div style="background:var(--surface-card);border:1px solid var(--border-default);border-radius:var(--radius-md)">
+<div style="padding:16px 20px;border-bottom:1px solid var(--border-default);font-size:16px;font-weight:600">Activity</div>
+<table style="width:100%;border-collapse:collapse">
+<tbody>
+<tr><td style="padding:var(--table-pad-y) var(--table-pad-x);font-size:14px;border-bottom:1px solid var(--border-default)">Invoice <span style="font-family:var(--font-mono);font-size:13px">#10422</span> paid — $2,400</td><td style="padding:var(--table-pad-y) var(--table-pad-x);font-size:13px;color:var(--text-muted);text-align:right;white-space:nowrap">1h ago</td></tr>
+<tr><td style="padding:var(--table-pad-y) var(--table-pad-x);font-size:14px;border-bottom:1px solid var(--border-default)">6 seats added by <strong>k.mensah@bloomhealth.co</strong></td><td style="padding:var(--table-pad-y) var(--table-pad-x);font-size:13px;color:var(--text-muted);text-align:right;white-space:nowrap">Yesterday</td></tr>
+<tr><td style="padding:var(--table-pad-y) var(--table-pad-x);font-size:14px;border-bottom:1px solid var(--border-default)">Production API key rotated</td><td style="padding:var(--table-pad-y) var(--table-pad-x);font-size:13px;color:var(--text-muted);text-align:right;white-space:nowrap">Jul 12</td></tr>
+<tr><td style="padding:var(--table-pad-y) var(--table-pad-x);font-size:14px">Upgraded Team → Scale</td><td style="padding:var(--table-pad-y) var(--table-pad-x);font-size:13px;color:var(--text-muted);text-align:right;white-space:nowrap">Jun 30</td></tr>
+</tbody>
+</table>
+</div>
+<div style="background:var(--surface-card);border:1px solid var(--border-default);border-radius:var(--radius-md)">
+<div style="padding:16px 20px;border-bottom:1px solid var(--border-default);font-size:16px;font-weight:600">Details</div>
+<div style="padding:16px 20px">
+<x-import component-from-global-scope="EfolusiDesignSystem_4ffc3d.KeyValueList" items="{{ detailItems }}" label-width="{{ 110 }}" hint-size="100%,180px"></x-import>
+</div>
+</div>
+</div>
+</main>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:1280,&quot;height&quot;:800},&quot;theme&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;light&quot;,&quot;dark&quot;],&quot;default&quot;:&quot;light&quot;,&quot;tsType&quot;:&quot;'light'|'dark'&quot;,&quot;section&quot;:&quot;Appearance&quot;},&quot;density&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;comfortable&quot;,&quot;compact&quot;],&quot;default&quot;:&quot;comfortable&quot;,&quot;tsType&quot;:&quot;'comfortable'|'compact'&quot;,&quot;section&quot;:&quot;Appearance&quot;}}">
+class Component extends DCLogic {
+  renderVals() {
+    return {
+      theme: this.props.theme ?? 'light',
+      density: this.props.density ?? 'comfortable',
+      detailItems: [
+        { label: 'Owner', value: 'Ada Obi' },
+        { label: 'Plan', value: 'Scale · annual' },
+        { label: 'Renewal', value: 'Mar 1, 2027' },
+        { label: 'Region', value: 'eu-west-1', mono: true },
+        { label: 'Workspace', value: 'ws_bloom_8841', mono: true },
+      ],
+    };
+  }
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet><script src="./ds-base.js"></script><style>@view-transition{navigation:auto}::view-transition-group(*){animation-duration:160ms}@media (prefers-reduced-motion:reduce){::view-transition-group(*),::view-transition-old(*),::view-transition-new(*){animation:none!important}}html{background:#FAF9F6}</style></helmet>
+<div style="min-height:100vh;background:var(--surface-page);color:var(--text-primary);font-family:var(--font-sans)">
+<header style="view-transition-name:shell-top;display:flex;align-items:center;gap:14px;height:58px;padding:0 24px;border-bottom:1px solid var(--border-default)">
+<img src="../../assets/logo.png" alt="" style="width:26px;height:26px">
+<span style="font-family:var(--font-display);font-weight:680;letter-spacing:-0.02em;font-size:17px">Efolusi</span>
+<span style="font-size:15px;color:var(--text-muted);font-weight:500">Docs</span>
+<div style="margin-left:auto;display:flex;align-items:center;gap:8px;height:28px;padding:0 10px;border:1px solid var(--border-strong);border-radius:var(--radius-sm);background:var(--surface-card);color:var(--text-muted);font-size:13px">Search docs… <kbd style="font-family:var(--font-mono);font-size:10px;border:1px solid var(--border-strong);border-radius:3px;padding:0 4px">⌘K</kbd></div>
+</header>
+<div style="display:flex;max-width:1440px;margin:0 auto">
+<nav style="view-transition-name:shell-side;width:250px;flex:none;padding:20px 12px 20px 24px;border-right:1px solid var(--border-default)">
+<div style="font-size:11px;font-weight:600;letter-spacing:0.06em;text-transform:uppercase;color:var(--text-muted);padding:0 10px 6px">Getting started</div>
+<div style="display:flex;flex-direction:column;gap:1px">
+<a href="./DocsPage.dc.html" style="padding:6px 10px;font-size:13.5px;color:var(--text-secondary);text-decoration:none" style-hover="color:var(--text-primary)">Quickstart</a>
+<a href="./Authentication.dc.html" style="padding:6px 10px;font-size:13.5px;color:var(--text-secondary);text-decoration:none" style-hover="color:var(--text-primary)">Authentication</a>
+<a href="./Errors.dc.html" style="padding:6px 10px;border-radius:var(--radius-sm);font-size:13.5px;font-weight:600;background:var(--accent-subtle);color:var(--brand-700);text-decoration:none">Errors</a>
+</div>
+</nav>
+<main style="flex:1;padding:28px 40px 80px;min-width:0">
+<article style="max-width:720px">
+<h1 style="font-size:38px;font-weight:680;font-family:var(--font-display);letter-spacing:-0.02em;margin:0">Errors</h1>
+<p style="font-size:17px;line-height:1.65;color:var(--text-secondary);margin:12px 0 0">Every non-2xx response carries the same JSON envelope, so one error handler covers all six products.</p>
+<h2 style="font-size:24px;font-weight:600;font-family:var(--font-display);letter-spacing:-0.02em;margin:40px 0 0">The error envelope</h2>
+<div style="margin:18px 0 0">
+<x-import component-from-global-scope="EfolusiDesignSystem_4ffc3d.CodeBlock" lang="json" hint-size="100%,150px">{{ errorJson }}</x-import>
+</div>
+<p style="font-size:15.5px;line-height:1.7;color:var(--text-secondary);margin:14px 0 0">Log the <span style="font-family:var(--font-mono);font-size:13.5px">request_id</span> — support can trace any request from it.</p>
+<h2 style="font-size:24px;font-weight:600;font-family:var(--font-display);letter-spacing:-0.02em;margin:40px 0 0">Status codes</h2>
+<table style="width:100%;border-collapse:collapse;margin:18px 0 0">
+<thead>
+<tr>
+<th style="padding:8px 12px 8px 0;font-size:12px;font-weight:600;letter-spacing:0.04em;text-transform:uppercase;color:var(--text-muted);text-align:left;border-bottom:1px solid var(--border-strong)">Code</th>
+<th style="padding:8px 12px;font-size:12px;font-weight:600;letter-spacing:0.04em;text-transform:uppercase;color:var(--text-muted);text-align:left;border-bottom:1px solid var(--border-strong)">Type</th>
+<th style="padding:8px 0;font-size:12px;font-weight:600;letter-spacing:0.04em;text-transform:uppercase;color:var(--text-muted);text-align:left;border-bottom:1px solid var(--border-strong)">What to do</th>
+</tr>
+</thead>
+<tbody>
+<sc-for list="{{ codes }}" as="c" hint-placeholder-count="5">
+<tr>
+<td style="padding:10px 12px 10px 0;border-bottom:1px solid var(--border-default);font-family:var(--font-mono);font-size:13.5px">{{ c.code }}</td>
+<td style="padding:10px 12px;border-bottom:1px solid var(--border-default);font-family:var(--font-mono);font-size:13.5px">{{ c.type }}</td>
+<td style="padding:10px 0;border-bottom:1px solid var(--border-default);font-size:14.5px;color:var(--text-secondary)">{{ c.fix }}</td>
+</tr>
+</sc-for>
+</tbody>
+</table>
+<p style="font-size:15.5px;line-height:1.7;color:var(--text-secondary);margin:14px 0 0">Retry <span style="font-family:var(--font-mono);font-size:13.5px">429</span> and <span style="font-family:var(--font-mono);font-size:13.5px">5xx</span> with exponential backoff; the SDKs do this for you.</p>
+<div style="display:flex;justify-content:flex-start;margin-top:56px;padding-top:20px;border-top:1px solid var(--border-default)">
+<a href="./Authentication.dc.html" style="font-size:14px;font-weight:600;color:var(--text-link);text-decoration:none"><span style="display:block;font-size:11px;font-weight:600;letter-spacing:0.06em;text-transform:uppercase;color:var(--text-muted)">Previous</span>← Authentication</a>
+</div>
+</article>
+</main>
+<aside style="view-transition-name:shell-toc;width:200px;flex:none;padding:28px 24px 0 0">
+<div style="font-size:11px;font-weight:600;letter-spacing:0.06em;text-transform:uppercase;color:var(--text-muted)">On this page</div>
+<div style="display:flex;flex-direction:column;gap:8px;margin-top:12px;border-left:1px solid var(--border-default)">
+<span style="font-size:13px;padding-left:12px;margin-left:-1px;border-left:2px solid var(--accent);color:var(--brand-700);font-weight:600">The error envelope</span>
+<span style="font-size:13px;padding-left:12px;color:var(--text-secondary)">Status codes</span>
+</div>
+</aside>
+</div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:1280,&quot;height&quot;:800}}">
+class Component extends DCLogic {
+  renderVals() {
+    return {
+      errorJson: "{\n  \"error\": {\n    \"type\": \"rate_limited\",\n    \"message\": \"Too many requests — retry after 12s.\",\n    \"request_id\": \"req_9f2ka\"\n  }\n}",
+      codes: [
+        { code: '400', type: 'invalid_request', fix: 'Fix the field named in message' },
+        { code: '401', type: 'authentication_error', fix: 'Check the key prefix and workspace' },
+        { code: '404', type: 'not_found', fix: 'The resource ID is wrong or deleted' },
+        { code: '429', type: 'rate_limited', fix: 'Back off; respect retry-after' },
+        { code: '500', type: 'server_error', fix: 'Retry; contact support with request_id' },
+      ],
+    };
+  }
+}
+</script>
+</body>
+</html>

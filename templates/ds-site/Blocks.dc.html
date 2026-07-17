@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet><script src="./ds-base.js"></script><link rel="stylesheet" href="./site.css"><style>@view-transition{navigation:auto}::view-transition-group(*){animation-duration:160ms}@media (prefers-reduced-motion:reduce){::view-transition-group(*),::view-transition-old(*),::view-transition-new(*){animation:none!important}}html{background:var(--surface-page,#FAF9F6)}</style></helmet>
+<div style="min-height:100vh;background:var(--surface-page);color:var(--text-primary);font-family:var(--font-sans);display:flex;flex-direction:column">
+<header class="site-top" style="view-transition-name:site-top;position:sticky;top:0;z-index:50;display:flex;align-items:center;gap:26px;height:58px;padding:0 28px;border-bottom:1px solid var(--border-default);background:var(--surface-page)">
+<a href="./DsSite.dc.html" style="display:flex;align-items:center;gap:9px;text-decoration:none;color:var(--text-primary)"><img src="../../assets/logo.png" alt="Meridian" style="width:24px;height:24px"><span style="font-family:var(--font-display);font-weight:680;letter-spacing:-0.02em;font-size:16px">Meridian</span><span class="hide-md" style="font-family:var(--font-mono);font-size:12.5px;color:var(--text-muted)">by Efolusi</span></a>
+<nav class="site-nav" style="display:flex;gap:20px;font-size:14px">
+<a href="./Docs.dc.html" style="color:var(--text-secondary);text-decoration:none" style-hover="color:var(--text-primary)">Docs</a>
+<a href="./Components.dc.html" style="color:var(--text-secondary);text-decoration:none" style-hover="color:var(--text-primary)">Components</a>
+<a href="./Blocks.dc.html" style="color:var(--text-primary);font-weight:600;text-decoration:none">Blocks</a>
+<a href="./Examples.dc.html" style="color:var(--text-secondary);text-decoration:none" style-hover="color:var(--text-primary)">Examples</a>
+<a href="./Charts.dc.html" style="color:var(--text-secondary);text-decoration:none" style-hover="color:var(--text-primary)">Charts</a>
+<a href="./Themes.dc.html" style="color:var(--text-secondary);text-decoration:none" style-hover="color:var(--text-primary)">Themes</a>
+<a href="./Colors.dc.html" style="color:var(--text-secondary);text-decoration:none" style-hover="color:var(--text-primary)">Colors</a>
+</nav>
+<div style="margin-left:auto;display:flex;align-items:center;gap:14px">
+<x-import component="SiteSearch" from="./SiteSearch.jsx" hint-size="220px,32px"></x-import>
+<a href="https://github.com/efolusi/meridian" class="hide-sm" style="font-size:13.5px;color:var(--text-secondary);text-decoration:none" style-hover="color:var(--text-primary)">GitHub ↗</a>
+<span onClick="{{ toggleTheme }}" style="font-size:13px;font-weight:500;color:var(--text-secondary);border:1px solid var(--border-strong);border-radius:var(--radius-full);padding:4px 12px;cursor:pointer;user-select:none" style-hover="color:var(--text-primary);background:var(--surface-subtle)">{{ themeLabel }}</span>
+</div>
+</header>
+<main class="pad-sm" style="flex:1;max-width:1160px;margin:0 auto;width:100%;padding:40px 28px 90px">
+<h1 style="font-size:38px;font-weight:680;font-family:var(--font-display);letter-spacing:-0.02em;margin:0">Blocks</h1>
+<p style="font-size:16.5px;line-height:1.6;color:var(--text-secondary);margin:12px 0 0;max-width:640px">Pre-composed pages and sections you can copy as a starting point. Each block is one self-contained file — check it at desktop, tablet, and mobile widths, then copy the source.</p>
+<sc-for list="{{ blocks }}" as="b" hint-placeholder-count="3">
+<section style="margin-top:48px">
+<div style="display:flex;align-items:baseline;gap:12px"><h2 id="{{ b.anchor }}" style="font-size:22px;font-weight:600;font-family:var(--font-display);letter-spacing:-0.02em;margin:0">{{ b.title }}</h2><span style="font-family:var(--font-mono);font-size:12px;color:var(--text-muted)">{{ b.path }}</span></div>
+<p style="font-size:14px;color:var(--text-secondary);margin:6px 0 10px">{{ b.desc }}</p>
+<x-import component="BlockFrame" from="./BlockFrame.jsx" file="{{ b.file }}" title="{{ b.title }}" height="{{ b.height }}" hint-size="100%,600px"></x-import>
+</section>
+</sc-for>
+</main>
+<footer style="view-transition-name:site-foot;border-top:1px solid var(--border-default)">
+<div class="site-foot-row pad-sm" style="max-width:1200px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;padding:20px 28px;font-size:13px;color:var(--text-muted)">
+<span>Built by <a href="https://efolusi.com" style="color:var(--text-secondary);text-decoration:none">Efolusi</a>. The source code is available on <a href="https://github.com/efolusi/meridian" style="color:var(--text-secondary);text-decoration:none">GitHub</a>. MIT licensed.</span>
+<span style="display:flex;gap:16px"><a href="../../LICENSE" style="color:var(--text-secondary);text-decoration:none" style-hover="color:var(--text-primary)">License</a><a href="../../CONTRIBUTING.md" style="color:var(--text-secondary);text-decoration:none" style-hover="color:var(--text-primary)">Contributing</a><a href="../../README.md" style="color:var(--text-secondary);text-decoration:none" style-hover="color:var(--text-primary)">Readme</a></span>
+</div>
+</footer>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  state = { dark: false };
+  componentDidMount() {
+    try { const t = localStorage.getItem('efolusi-site-theme'); if (t) document.documentElement.setAttribute('data-theme', t); } catch (e) {}
+    this.setState({ dark: document.documentElement.getAttribute('data-theme') === 'dark' });
+  }
+  renderVals() {
+    const mk = (title, slug, desc, height) => ({ title, anchor: slug, path: 'blocks/' + slug + '.html', file: '../../blocks/' + slug + '.html', desc, height });
+    return {
+      blocks: [
+        mk('App shell', 'app-shell', 'SideNav, TopNav, and an empty content well — the scaffold every product screen starts from.', 620),
+        mk('Login', 'login', 'Auth card with SSO, email + password, and a create-workspace footer.', 600),
+        mk('Stats dashboard', 'stats-dashboard', 'KPI row, weekly trend chart, and a top-agents table.', 660),
+        mk('Settings', 'settings', 'Sectioned form page with sticky actions and a danger zone.', 720),
+        mk('Hero', 'hero', 'Marketing opener: eyebrow, display headline, dual CTA, proof strip.', 560),
+        mk('Pricing', 'pricing', 'Three-tier pricing with a featured plan and feature checklists.', 660),
+        mk('FAQ', 'faq', 'Accordion FAQ with a contact escape hatch.', 560),
+        mk('404 page', 'not-found', 'Full-page not-found state with a way home.', 490),
+        mk('Activity feed', 'activity-feed', 'Timeline of workspace events with actor avatars and status.', 560),
+      ],
+      themeLabel: this.state.dark ? 'Light' : 'Dark',
+      toggleTheme: () => {
+        const next = this.state.dark ? 'light' : 'dark';
+        document.documentElement.setAttribute('data-theme', next);
+        try { localStorage.setItem('efolusi-site-theme', next); } catch (e) {}
+        this.setState({ dark: next === 'dark' });
+      },
+    };
+  }
+}
+</script>
+</body>
+</html>

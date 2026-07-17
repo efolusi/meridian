@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet><script src="./ds-base.js"></script><link rel="stylesheet" href="./site.css"><style>@view-transition{navigation:auto}::view-transition-group(*){animation-duration:160ms}@media (prefers-reduced-motion:reduce){::view-transition-group(*),::view-transition-old(*),::view-transition-new(*){animation:none!important}}html{background:var(--surface-page,#FAF9F6)}</style></helmet>
+<div style="min-height:100vh;background:var(--surface-page);color:var(--text-primary);font-family:var(--font-sans);display:flex;flex-direction:column">
+<header class="site-top" style="view-transition-name:site-top;position:sticky;top:0;z-index:50;display:flex;align-items:center;gap:26px;height:58px;padding:0 28px;border-bottom:1px solid var(--border-default);background:var(--surface-page)">
+<a href="./DsSite.dc.html" style="display:flex;align-items:center;gap:9px;text-decoration:none;color:var(--text-primary)"><img src="../../assets/logo.png" alt="Meridian" style="width:24px;height:24px"><span style="font-family:var(--font-display);font-weight:680;letter-spacing:-0.02em;font-size:16px">Meridian</span><span class="hide-md" style="font-family:var(--font-mono);font-size:12.5px;color:var(--text-muted)">by Efolusi</span></a>
+<nav class="site-nav" style="display:flex;gap:20px;font-size:14px">
+<a href="./Docs.dc.html" style="color:var(--text-secondary);text-decoration:none" style-hover="color:var(--text-primary)">Docs</a>
+<a href="./Components.dc.html" style="color:var(--text-secondary);text-decoration:none" style-hover="color:var(--text-primary)">Components</a>
+<a href="./Blocks.dc.html" style="color:var(--text-secondary);text-decoration:none" style-hover="color:var(--text-primary)">Blocks</a>
+<a href="./Examples.dc.html" style="color:var(--text-secondary);text-decoration:none" style-hover="color:var(--text-primary)">Examples</a>
+<a href="./Charts.dc.html" style="color:var(--text-secondary);text-decoration:none" style-hover="color:var(--text-primary)">Charts</a>
+<a href="./Themes.dc.html" style="color:var(--text-secondary);text-decoration:none" style-hover="color:var(--text-primary)">Themes</a>
+<a href="./Colors.dc.html" style="color:var(--text-primary);font-weight:600;text-decoration:none">Colors</a>
+</nav>
+<div style="margin-left:auto;display:flex;align-items:center;gap:14px">
+<x-import component="SiteSearch" from="./SiteSearch.jsx" hint-size="220px,32px"></x-import>
+<a href="https://github.com/efolusi/meridian" class="hide-sm" style="font-size:13.5px;color:var(--text-secondary);text-decoration:none" style-hover="color:var(--text-primary)">GitHub ↗</a>
+<span onClick="{{ toggleTheme }}" style="font-size:13px;font-weight:500;color:var(--text-secondary);border:1px solid var(--border-strong);border-radius:var(--radius-full);padding:4px 12px;cursor:pointer;user-select:none" style-hover="color:var(--text-primary);background:var(--surface-subtle)">{{ themeLabel }}</span>
+</div>
+</header>
+<main class="pad-sm" style="flex:1;max-width:1160px;margin:0 auto;width:100%;padding:40px 28px 90px">
+<h1 style="font-size:38px;font-weight:680;font-family:var(--font-display);letter-spacing:-0.02em;margin:0">Colors</h1>
+<p style="font-size:16.5px;line-height:1.6;color:var(--text-secondary);margin:12px 0 0;max-width:640px">Every color is a CSS custom property, sampled from the owl mark. Click any swatch to copy its variable. Values resolve live — flip the theme to watch the semantic aliases remap.</p>
+<sc-for list="{{ sections }}" as="s" hint-placeholder-count="3">
+<section style="margin-top:44px">
+<h2 style="font-size:22px;font-weight:600;font-family:var(--font-display);letter-spacing:-0.02em;margin:0">{{ s.title }}</h2>
+<p style="font-size:14px;color:var(--text-secondary);margin:6px 0 0">{{ s.note }}</p>
+<div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(108px,1fr));gap:12px;margin-top:16px">
+<sc-for list="{{ s.tokens }}" as="c" hint-placeholder-count="8">
+<div onClick="{{ c.copy }}" style="cursor:pointer" title="Copy CSS variable">
+<span style="display:block;height:56px;border-radius:var(--radius-sm);border:1px solid var(--border-default);overflow:hidden"><svg width="100%" height="100%" aria-hidden="true"><rect width="100%" height="100%" fill="{{ c.v }}"></rect></svg></span>
+<span style="display:block;font-family:var(--font-mono);font-size:11px;color:var(--text-primary);margin-top:6px;word-break:break-all">{{ c.name }}</span>
+<span style="display:block;font-family:var(--font-mono);font-size:10.5px;color:var(--text-muted);margin-top:1px">{{ c.v }}</span>
+</div>
+</sc-for>
+</div>
+</section>
+</sc-for>
+<sc-if value="{{ copied }}" hint-placeholder-val="{{ false }}">
+<div style="position:fixed;bottom:24px;left:50%;transform:translateX(-50%);background:var(--surface-inverse,#2C1709);color:var(--text-inverse,#F8F4E6);font-size:13px;font-weight:500;padding:9px 18px;border-radius:var(--radius-full);box-shadow:var(--shadow-pop)">Copied var({{ copied }})</div>
+</sc-if>
+</main>
+<footer style="view-transition-name:site-foot;border-top:1px solid var(--border-default)">
+<div class="site-foot-row pad-sm" style="max-width:1200px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;padding:20px 28px;font-size:13px;color:var(--text-muted)">
+<span>Built by <a href="https://efolusi.com" style="color:var(--text-secondary);text-decoration:none">Efolusi</a>. The source code is available on <a href="https://github.com/efolusi/meridian" style="color:var(--text-secondary);text-decoration:none">GitHub</a>. MIT licensed.</span>
+<span style="display:flex;gap:16px"><a href="../../LICENSE" style="color:var(--text-secondary);text-decoration:none" style-hover="color:var(--text-primary)">License</a><a href="../../CONTRIBUTING.md" style="color:var(--text-secondary);text-decoration:none" style-hover="color:var(--text-primary)">Contributing</a><a href="../../README.md" style="color:var(--text-secondary);text-decoration:none" style-hover="color:var(--text-primary)">Readme</a></span>
+</div>
+</footer>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  state = { dark: false, sections: [], copied: null };
+  componentDidMount() {
+    try { const t = localStorage.getItem('efolusi-site-theme'); if (t) document.documentElement.setAttribute('data-theme', t); } catch (e) {}
+    this.setState({ dark: document.documentElement.getAttribute('data-theme') === 'dark' });
+    this._tries = 0;
+    const wait = () => {
+      const ready = getComputedStyle(document.documentElement).getPropertyValue('--brand-700').trim();
+      if (ready) { this.resolveTokens(); return; }
+      if (this._tries++ < 50) setTimeout(wait, 100);
+    };
+    wait();
+  }
+  componentWillUnmount() { this._tries = 99; clearTimeout(this._ct); }
+  resolveTokens() {
+    const cs = getComputedStyle(document.documentElement);
+    const val = n => cs.getPropertyValue('--' + n).trim();
+    const steps = [25, 50, 75, 100, 150, 200, 250, 300, 350, 400, 450, 500, 550, 600, 650, 700, 750, 800, 900, 950];
+    const ramp = name => steps.map(s => ({ name: '--' + name + '-' + s, v: val(name + '-' + s) })).filter(x => x.v);
+    const probe = names => names.map(n => ({ name: '--' + n, v: val(n) })).filter(x => x.v);
+    this.setState({ sections: [
+      { title: 'Brand ramp', note: 'Cream → peach → caramel → cocoa, sampled from the owl mark. Fixed across themes.', tokens: ramp('brand') },
+      { title: 'Sand neutrals', note: 'Warm paper surfaces and ink. Fixed across themes.', tokens: ramp('sand') },
+      { title: 'Status', note: 'Each trio ships a 600 foreground, 100 background, 300 border.', tokens: [...ramp('success'), ...ramp('warning'), ...ramp('danger')] },
+      { title: 'Semantic aliases', note: 'What components actually consume — these remap under data-theme="dark".', tokens: probe(['surface-page', 'surface-card', 'surface-subtle', 'surface-inverse', 'text-primary', 'text-secondary', 'text-muted', 'text-link', 'text-inverse', 'accent', 'accent-hover', 'accent-subtle', 'accent-contrast', 'border-default', 'border-strong', 'focus-ring']) },
+    ].filter(s => s.tokens.length) });
+  }
+  renderVals() {
+    return {
+      themeLabel: this.state.dark ? 'Light' : 'Dark',
+      toggleTheme: () => {
+        const next = this.state.dark ? 'light' : 'dark';
+        document.documentElement.setAttribute('data-theme', next);
+        try { localStorage.setItem('efolusi-site-theme', next); } catch (e) {}
+        this.setState({ dark: next === 'dark' });
+        requestAnimationFrame(() => this.resolveTokens());
+      },
+      sections: this.state.sections.map(s => ({ ...s, tokens: s.tokens.map(c => ({ ...c, copy: () => {
+        try { navigator.clipboard.writeText('var(' + c.name + ')'); } catch (e) {}
+        this.setState({ copied: c.name });
+        clearTimeout(this._ct); this._ct = setTimeout(() => this.setState({ copied: null }), 1500);
+      } })) })),
+      copied: this.state.copied,
+    };
+  }
+}
+</script>
+</body>
+</html>

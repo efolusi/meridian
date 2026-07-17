@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<!-- @template name="Dashboard" description="Console journey (4 pages): overview, customers, customer detail, settings" -->
+<helmet><script src="./ds-base.js"></script><style>@view-transition{navigation:auto}::view-transition-group(*){animation-duration:160ms}@media (prefers-reduced-motion:reduce){::view-transition-group(*),::view-transition-old(*),::view-transition-new(*){animation:none!important}}html{background:#FAF9F6}</style></helmet>
+<div data-theme="{{ theme }}" data-density="{{ density }}" style="min-height:100vh;background:var(--surface-page);color:var(--text-primary);font-family:var(--font-sans)">
+<header style="view-transition-name:shell-top;display:flex;align-items:center;gap:12px;height:60px;padding:0 24px;border-bottom:1px solid var(--border-default)">
+<img src="../../assets/logo.png" alt="" style="width:30px;height:30px">
+<span style="font-family:var(--font-display);font-weight:680;letter-spacing:-0.02em;font-size:19px">Efolusi</span>
+<span style="font-size:14px;color:var(--text-muted)">Console</span>
+<nav style="display:flex;gap:2px;margin-left:16px">
+<a href="./Dashboard.dc.html" style="padding:6px 12px;border-radius:var(--radius-sm);font-size:14px;font-weight:600;background:var(--accent-subtle);color:var(--brand-700);text-decoration:none">Overview</a>
+<a href="./Customers.dc.html" style="padding:6px 12px;border-radius:var(--radius-sm);font-size:14px;font-weight:500;color:var(--text-secondary);text-decoration:none" style-hover="background:var(--surface-sunken);color:var(--text-primary)">Customers</a>
+<a href="./ConsoleSettings.dc.html" style="padding:6px 12px;border-radius:var(--radius-sm);font-size:14px;font-weight:500;color:var(--text-secondary);text-decoration:none" style-hover="background:var(--surface-sunken);color:var(--text-primary)">Settings</a>
+</nav>
+<div style="margin-left:auto;display:flex;gap:8px">
+<x-import component-from-global-scope="EfolusiDesignSystem_4ffc3d.Button" variant="secondary" icon-left="download" hint-size="90px,36px">Export</x-import>
+<x-import component-from-global-scope="EfolusiDesignSystem_4ffc3d.Button" icon-left="plus" hint-size="120px,36px">New project</x-import>
+</div>
+</header>
+<main style="padding:24px;display:flex;flex-direction:column;gap:20px;max-width:1200px;margin:0 auto">
+<div>
+<h1 style="font-size:26px;font-weight:680;font-family:var(--font-display);letter-spacing:-0.02em;margin:0">Good morning, Ada</h1>
+<p style="margin:4px 0 0;font-size:14px;color:var(--text-secondary)">Everything is trending the right way.</p>
+</div>
+<div style="display:grid;grid-template-columns:repeat(4,1fr);gap:16px">
+<div style="background:var(--surface-card);border:1px solid var(--border-default);border-radius:var(--radius-md);padding:16px">
+<div style="font-size:13px;color:var(--text-muted);font-weight:500">Monthly recurring revenue</div>
+<div style="display:flex;align-items:baseline;gap:8px;margin-top:6px"><span style="font-family:var(--font-mono);font-size:26px;font-weight:600">$48.2k</span><span style="font-size:12px;font-weight:500;color:var(--success-600)">↑ 12.4%</span></div>
+</div>
+<div style="background:var(--surface-card);border:1px solid var(--border-default);border-radius:var(--radius-md);padding:16px">
+<div style="font-size:13px;color:var(--text-muted);font-weight:500">Active customers</div>
+<div style="display:flex;align-items:baseline;gap:8px;margin-top:6px"><span style="font-family:var(--font-mono);font-size:26px;font-weight:600">1,284</span><span style="font-size:12px;font-weight:500;color:var(--success-600)">↑ 3.1%</span></div>
+</div>
+<div style="background:var(--surface-card);border:1px solid var(--border-default);border-radius:var(--radius-md);padding:16px">
+<div style="font-size:13px;color:var(--text-muted);font-weight:500">Requests / day</div>
+<div style="display:flex;align-items:baseline;gap:8px;margin-top:6px"><span style="font-family:var(--font-mono);font-size:26px;font-weight:600">16.3M</span><span style="font-size:12px;font-weight:500;color:var(--success-600)">↑ 8.9%</span></div>
+</div>
+<div style="background:var(--surface-card);border:1px solid var(--border-default);border-radius:var(--radius-md);padding:16px">
+<div style="font-size:13px;color:var(--text-muted);font-weight:500">Churn</div>
+<div style="display:flex;align-items:baseline;gap:8px;margin-top:6px"><span style="font-family:var(--font-mono);font-size:26px;font-weight:600">1.9%</span><span style="font-size:12px;font-weight:500;color:var(--danger-600)">↓ 0.4pt</span></div>
+</div>
+</div>
+<div style="background:var(--surface-card);border:1px solid var(--border-default);border-radius:var(--radius-md)">
+<div style="display:flex;align-items:center;justify-content:space-between;padding:16px 20px;border-bottom:1px solid var(--border-default)">
+<div><div style="font-size:16px;font-weight:600">API requests</div><div style="font-size:13px;color:var(--text-muted);margin-top:2px">Last 28 days · all products</div></div>
+</div>
+<div style="padding:20px">
+<x-import component-from-global-scope="EfolusiDesignSystem_4ffc3d.BarChart" data="{{ chartData }}" height="{{ 150 }}" hint-size="100%,150px"></x-import>
+</div>
+</div>
+<div style="background:var(--surface-card);border:1px solid var(--border-default);border-radius:var(--radius-md)">
+<div style="padding:16px 20px;border-bottom:1px solid var(--border-default);font-size:16px;font-weight:600">Recent activity</div>
+<table style="width:100%;border-collapse:collapse">
+<tbody>
+<tr><td style="padding:var(--table-pad-y) var(--table-pad-x);font-size:14px;border-bottom:1px solid var(--border-default)"><strong>Femi Alade</strong> rotated the production API key</td><td style="padding:var(--table-pad-y) var(--table-pad-x);font-size:13px;color:var(--text-muted);text-align:right;white-space:nowrap">2m ago</td></tr>
+<tr><td style="padding:var(--table-pad-y) var(--table-pad-x);font-size:14px;border-bottom:1px solid var(--border-default)"><strong>June Park</strong> invited sam@acme.co as Admin</td><td style="padding:var(--table-pad-y) var(--table-pad-x);font-size:13px;color:var(--text-muted);text-align:right;white-space:nowrap">18m ago</td></tr>
+<tr><td style="padding:var(--table-pad-y) var(--table-pad-x);font-size:14px"><strong>Ledger</strong> monthly invoice #10422 was paid</td><td style="padding:var(--table-pad-y) var(--table-pad-x);font-size:13px;color:var(--text-muted);text-align:right;white-space:nowrap">1h ago</td></tr>
+</tbody>
+</table>
+</div>
+</main>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:1280,&quot;height&quot;:800},&quot;theme&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;light&quot;,&quot;dark&quot;],&quot;default&quot;:&quot;light&quot;,&quot;tsType&quot;:&quot;'light'|'dark'&quot;,&quot;section&quot;:&quot;Appearance&quot;},&quot;density&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;comfortable&quot;,&quot;compact&quot;],&quot;default&quot;:&quot;comfortable&quot;,&quot;tsType&quot;:&quot;'comfortable'|'compact'&quot;,&quot;section&quot;:&quot;Appearance&quot;}}">
+class Component extends DCLogic {
+  renderVals() {
+    return {
+      theme: this.props.theme ?? 'light',
+      density: this.props.density ?? 'comfortable',
+      chartData: [42,55,48,61,58,72,66,80,74,88,92,84,96,90,104,98,112,108,118,111,124,130,122,138,132,144,150,141].map((v,i)=>({ label: 'Jun ' + (18+i > 30 ? 'Jul ' + (i-12) : 18+i), value: v*113 })),
+    };
+  }
+}
+</script>
+</body>
+</html>

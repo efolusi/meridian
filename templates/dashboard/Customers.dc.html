@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet><script src="./ds-base.js"></script><style>@view-transition{navigation:auto}::view-transition-group(*){animation-duration:160ms}@media (prefers-reduced-motion:reduce){::view-transition-group(*),::view-transition-old(*),::view-transition-new(*){animation:none!important}}html{background:#FAF9F6}</style></helmet>
+<div data-theme="{{ theme }}" data-density="{{ density }}" style="min-height:100vh;background:var(--surface-page);color:var(--text-primary);font-family:var(--font-sans)">
+<header style="view-transition-name:shell-top;display:flex;align-items:center;gap:12px;height:60px;padding:0 24px;border-bottom:1px solid var(--border-default)">
+<img src="../../assets/logo.png" alt="" style="width:30px;height:30px">
+<span style="font-family:var(--font-display);font-weight:680;letter-spacing:-0.02em;font-size:19px">Efolusi</span>
+<span style="font-size:14px;color:var(--text-muted)">Console</span>
+<nav style="display:flex;gap:2px;margin-left:16px">
+<a href="./Dashboard.dc.html" style="padding:6px 12px;border-radius:var(--radius-sm);font-size:14px;font-weight:500;color:var(--text-secondary);text-decoration:none" style-hover="background:var(--surface-sunken);color:var(--text-primary)">Overview</a>
+<a href="./Customers.dc.html" style="padding:6px 12px;border-radius:var(--radius-sm);font-size:14px;font-weight:600;background:var(--accent-subtle);color:var(--brand-700);text-decoration:none">Customers</a>
+<a href="./ConsoleSettings.dc.html" style="padding:6px 12px;border-radius:var(--radius-sm);font-size:14px;font-weight:500;color:var(--text-secondary);text-decoration:none" style-hover="background:var(--surface-sunken);color:var(--text-primary)">Settings</a>
+</nav>
+<div style="margin-left:auto;display:flex;gap:8px">
+<x-import component-from-global-scope="EfolusiDesignSystem_4ffc3d.Button" variant="secondary" icon-left="download" hint-size="90px,36px">Export</x-import>
+<x-import component-from-global-scope="EfolusiDesignSystem_4ffc3d.Button" icon-left="plus" hint-size="120px,36px">New project</x-import>
+</div>
+</header>
+<main style="padding:24px;display:flex;flex-direction:column;gap:20px;max-width:1200px;margin:0 auto">
+<div style="display:flex;align-items:flex-end;gap:16px">
+<div>
+<h1 style="font-size:26px;font-weight:680;font-family:var(--font-display);letter-spacing:-0.02em;margin:0">Customers</h1>
+<p style="margin:4px 0 0;font-size:14px;color:var(--text-secondary)">1,284 accounts · 96 on trial</p>
+</div>
+<div style="margin-left:auto">
+<x-import component-from-global-scope="EfolusiDesignSystem_4ffc3d.Button" icon-left="plus" hint-size="140px,36px">Add customer</x-import>
+</div>
+</div>
+<div style="display:flex;gap:8px;align-items:center">
+<div style="width:280px"><x-import component-from-global-scope="EfolusiDesignSystem_4ffc3d.Input" placeholder="Search customers…" icon-left="search" hint-size="280px,36px"></x-import></div>
+<x-import component-from-global-scope="EfolusiDesignSystem_4ffc3d.Button" variant="secondary" icon-left="filter" hint-size="84px,36px">Filter</x-import>
+</div>
+<div style="background:var(--surface-card);border:1px solid var(--border-default);border-radius:var(--radius-md);overflow:hidden">
+<table style="width:100%;border-collapse:collapse">
+<thead>
+<tr>
+<th style="padding:var(--table-pad-y) var(--table-pad-x);font-size:12px;font-weight:600;letter-spacing:0.04em;text-transform:uppercase;color:var(--text-muted);text-align:left;border-bottom:1px solid var(--border-default)">Customer</th>
+<th style="padding:var(--table-pad-y) var(--table-pad-x);font-size:12px;font-weight:600;letter-spacing:0.04em;text-transform:uppercase;color:var(--text-muted);text-align:left;border-bottom:1px solid var(--border-default)">Plan</th>
+<th style="padding:var(--table-pad-y) var(--table-pad-x);font-size:12px;font-weight:600;letter-spacing:0.04em;text-transform:uppercase;color:var(--text-muted);text-align:right;border-bottom:1px solid var(--border-default)">MRR</th>
+<th style="padding:var(--table-pad-y) var(--table-pad-x);font-size:12px;font-weight:600;letter-spacing:0.04em;text-transform:uppercase;color:var(--text-muted);text-align:left;border-bottom:1px solid var(--border-default)">Status</th>
+<th style="padding:var(--table-pad-y) var(--table-pad-x);font-size:12px;font-weight:600;letter-spacing:0.04em;text-transform:uppercase;color:var(--text-muted);text-align:right;border-bottom:1px solid var(--border-default)">Since</th>
+</tr>
+</thead>
+<tbody>
+<tr style-hover="background:var(--surface-subtle)">
+<td style="padding:var(--table-pad-y) var(--table-pad-x);border-top:1px solid var(--border-default)"><a href="./CustomerDetail.dc.html" style="font-size:14px;font-weight:600;color:var(--text-primary);text-decoration:none">Bloom Health</a></td>
+<td style="padding:var(--table-pad-y) var(--table-pad-x);border-top:1px solid var(--border-default);font-size:14px;color:var(--text-secondary)">Scale · annual</td>
+<td style="padding:var(--table-pad-y) var(--table-pad-x);border-top:1px solid var(--border-default);font-size:14px;font-family:var(--font-mono);text-align:right">$2,400</td>
+<td style="padding:var(--table-pad-y) var(--table-pad-x);border-top:1px solid var(--border-default)"><span style="display:inline-block;font-size:12px;font-weight:600;padding:2px 9px;border-radius:999px;color:var(--success-600);background:var(--success-100);border:1px solid var(--success-300)">Active</span></td>
+<td style="padding:var(--table-pad-y) var(--table-pad-x);border-top:1px solid var(--border-default);font-size:13px;color:var(--text-muted);text-align:right;white-space:nowrap">Mar 2025</td>
+</tr>
+<tr style-hover="background:var(--surface-subtle)">
+<td style="padding:var(--table-pad-y) var(--table-pad-x);border-top:1px solid var(--border-default)"><a href="./CustomerDetail.dc.html" style="font-size:14px;font-weight:600;color:var(--text-primary);text-decoration:none">Acme Robotics</a></td>
+<td style="padding:var(--table-pad-y) var(--table-pad-x);border-top:1px solid var(--border-default);font-size:14px;color:var(--text-secondary)">Team · annual</td>
+<td style="padding:var(--table-pad-y) var(--table-pad-x);border-top:1px solid var(--border-default);font-size:14px;font-family:var(--font-mono);text-align:right">$1,180</td>
+<td style="padding:var(--table-pad-y) var(--table-pad-x);border-top:1px solid var(--border-default)"><span style="display:inline-block;font-size:12px;font-weight:600;padding:2px 9px;border-radius:999px;color:var(--success-600);background:var(--success-100);border:1px solid var(--success-300)">Active</span></td>
+<td style="padding:var(--table-pad-y) var(--table-pad-x);border-top:1px solid var(--border-default);font-size:13px;color:var(--text-muted);text-align:right;white-space:nowrap">Jun 2025</td>
+</tr>
+<tr style-hover="background:var(--surface-subtle)">
+<td style="padding:var(--table-pad-y) var(--table-pad-x);border-top:1px solid var(--border-default)"><a href="./CustomerDetail.dc.html" style="font-size:14px;font-weight:600;color:var(--text-primary);text-decoration:none">Northwind Grid</a></td>
+<td style="padding:var(--table-pad-y) var(--table-pad-x);border-top:1px solid var(--border-default);font-size:14px;color:var(--text-secondary)">Team · monthly</td>
+<td style="padding:var(--table-pad-y) var(--table-pad-x);border-top:1px solid var(--border-default);font-size:14px;font-family:var(--font-mono);text-align:right">$940</td>
+<td style="padding:var(--table-pad-y) var(--table-pad-x);border-top:1px solid var(--border-default)"><span style="display:inline-block;font-size:12px;font-weight:600;padding:2px 9px;border-radius:999px;color:var(--warning-600);background:var(--warning-100);border:1px solid var(--warning-300)">Trial</span></td>
+<td style="padding:var(--table-pad-y) var(--table-pad-x);border-top:1px solid var(--border-default);font-size:13px;color:var(--text-muted);text-align:right;white-space:nowrap">Jul 2026</td>
+</tr>
+<tr style-hover="background:var(--surface-subtle)">
+<td style="padding:var(--table-pad-y) var(--table-pad-x);border-top:1px solid var(--border-default)"><a href="./CustomerDetail.dc.html" style="font-size:14px;font-weight:600;color:var(--text-primary);text-decoration:none">Kite Labs</a></td>
+<td style="padding:var(--table-pad-y) var(--table-pad-x);border-top:1px solid var(--border-default);font-size:14px;color:var(--text-secondary)">Starter</td>
+<td style="padding:var(--table-pad-y) var(--table-pad-x);border-top:1px solid var(--border-default);font-size:14px;font-family:var(--font-mono);text-align:right">$0</td>
+<td style="padding:var(--table-pad-y) var(--table-pad-x);border-top:1px solid var(--border-default)"><span style="display:inline-block;font-size:12px;font-weight:600;padding:2px 9px;border-radius:999px;color:var(--warning-600);background:var(--warning-100);border:1px solid var(--warning-300)">Trial</span></td>
+<td style="padding:var(--table-pad-y) var(--table-pad-x);border-top:1px solid var(--border-default);font-size:13px;color:var(--text-muted);text-align:right;white-space:nowrap">Jul 2026</td>
+</tr>
+<tr style-hover="background:var(--surface-subtle)">
+<td style="padding:var(--table-pad-y) var(--table-pad-x);border-top:1px solid var(--border-default)"><a href="./CustomerDetail.dc.html" style="font-size:14px;font-weight:600;color:var(--text-primary);text-decoration:none">Osei &amp; Co</a></td>
+<td style="padding:var(--table-pad-y) var(--table-pad-x);border-top:1px solid var(--border-default);font-size:14px;color:var(--text-secondary)">Scale · annual</td>
+<td style="padding:var(--table-pad-y) var(--table-pad-x);border-top:1px solid var(--border-default);font-size:14px;font-family:var(--font-mono);text-align:right">$3,150</td>
+<td style="padding:var(--table-pad-y) var(--table-pad-x);border-top:1px solid var(--border-default)"><span style="display:inline-block;font-size:12px;font-weight:600;padding:2px 9px;border-radius:999px;color:var(--danger-600);background:var(--danger-100);border:1px solid var(--danger-300)">Past due</span></td>
+<td style="padding:var(--table-pad-y) var(--table-pad-x);border-top:1px solid var(--border-default);font-size:13px;color:var(--text-muted);text-align:right;white-space:nowrap">Jan 2025</td>
+</tr>
+<tr style-hover="background:var(--surface-subtle)">
+<td style="padding:var(--table-pad-y) var(--table-pad-x);border-top:1px solid var(--border-default)"><a href="./CustomerDetail.dc.html" style="font-size:14px;font-weight:600;color:var(--text-primary);text-decoration:none">Ferro Systems</a></td>
+<td style="padding:var(--table-pad-y) var(--table-pad-x);border-top:1px solid var(--border-default);font-size:14px;color:var(--text-secondary)">Team · monthly</td>
+<td style="padding:var(--table-pad-y) var(--table-pad-x);border-top:1px solid var(--border-default);font-size:14px;font-family:var(--font-mono);text-align:right">$720</td>
+<td style="padding:var(--table-pad-y) var(--table-pad-x);border-top:1px solid var(--border-default)"><span style="display:inline-block;font-size:12px;font-weight:600;padding:2px 9px;border-radius:999px;color:var(--success-600);background:var(--success-100);border:1px solid var(--success-300)">Active</span></td>
+<td style="padding:var(--table-pad-y) var(--table-pad-x);border-top:1px solid var(--border-default);font-size:13px;color:var(--text-muted);text-align:right;white-space:nowrap">Nov 2025</td>
+</tr>
+</tbody>
+</table>
+<div style="display:flex;align-items:center;padding:12px var(--table-pad-x);border-top:1px solid var(--border-default);font-size:13px;color:var(--text-muted)">Showing 6 of 1,284<a href="./Customers.dc.html" style="margin-left:auto;font-weight:600;color:var(--text-link);text-decoration:none">Next →</a></div>
+</div>
+</main>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:1280,&quot;height&quot;:800},&quot;theme&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;light&quot;,&quot;dark&quot;],&quot;default&quot;:&quot;light&quot;,&quot;tsType&quot;:&quot;'light'|'dark'&quot;,&quot;section&quot;:&quot;Appearance&quot;},&quot;density&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;comfortable&quot;,&quot;compact&quot;],&quot;default&quot;:&quot;comfortable&quot;,&quot;tsType&quot;:&quot;'comfortable'|'compact'&quot;,&quot;section&quot;:&quot;Appearance&quot;}}">
+class Component extends DCLogic {
+  renderVals() {
+    return { theme: this.props.theme ?? 'light', density: this.props.density ?? 'comfortable' };
+  }
+}
+</script>
+</body>
+</html>

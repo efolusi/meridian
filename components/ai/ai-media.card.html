@@ -1,0 +1,52 @@
+<!-- @dsCard group="Components" viewport="700x1290" name="AI · Input & media" subtitle="PromptSteps, RichComposer, SelectionQuote, Player, Transcript, SourceCard, Loader" -->
+<!DOCTYPE html><html><head><meta charset="utf-8"><link rel="stylesheet" href="../../styles.css">
+<script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+<script src="../../_ds_bundle.js"></script>
+</head><body style="background:var(--surface-page)">
+<div id="root"></div>
+<script type="text/babel">
+const { PromptSteps, RichComposer, SelectionQuote, Player, Transcript, SourceCard, Loader } = window.EfolusiDesignSystem_4ffc3d;
+function Demo() {
+  const [t, setT] = React.useState(6);
+  const playerRef = React.useRef(null);
+  return (
+    <div style={{ padding: 24, display: 'flex', flexDirection: 'column', gap: 20, maxWidth: 620 }}>
+      <PromptSteps steps={[
+        { name: 'tone', question: 'What tone should the reply use?', options: ['Formal', 'Friendly', 'Direct'], other: true },
+        { name: 'length', question: 'How long should it be?', options: ['One paragraph', 'Half a page', 'Full page'] },
+      ]} onComplete={() => {}} />
+      <RichComposer hint="@ files · / commands" mentions={[
+        { id: 'f1', label: 'gateway.md', icon: 'file-text', group: 'Files' },
+        { id: 'f2', label: 'retry.ts', icon: 'code', group: 'Files' },
+        { id: 'u1', label: 'Ada Obi', icon: 'user', group: 'People' },
+      ]} commands={[
+        { id: 'summarize', label: 'summarize', description: 'Summarize the thread' },
+        { id: 'clear', label: 'clear', description: 'Start over' },
+      ]} onSubmit={() => {}} />
+      <SelectionQuote onAction={() => {}} actions={[{ id: 'quote', label: 'Quote', icon: 'corner-up-left' }, { id: 'explain', label: 'Explain' }]}>
+        <div style={{ padding: '14px 16px', border: '1px solid var(--border-default)', borderRadius: 10, background: 'var(--surface-card)', fontSize: 13.5, lineHeight: 1.7, color: 'var(--text-secondary)' }}>
+          Select any part of this answer to quote it back — the retry window was shorter than the outage, so all three attempts landed inside the deploy.
+        </div>
+      </SelectionQuote>
+      <div style={{ display: 'flex', gap: 24, alignItems: 'center' }}>
+        <Loader dots>Thinking</Loader>
+        <Loader variant="shimmer">Searching the workspace</Loader>
+      </div>
+      <Player ref={playerRef} title="Standup — webhook incident" meta="03:12" onTimeChange={setT} />
+      <Transcript height={190} currentTime={t} onJump={s => { setT(s); if (playerRef.current) playerRef.current.jumpTo(s); }} items={[
+        { start: 0, speaker: 'Ada', text: 'Quick recap of the webhook incident?' },
+        { start: 4, speaker: 'Efe', words: [{ t: 4, w: 'Twelve' }, { t: 4.4, w: 'deliveries' }, { t: 5, w: 'failed' }, { t: 5.5, w: 'during' }, { t: 6, w: 'the' }, { t: 6.2, w: 'acme' }, { t: 6.6, w: 'deploy.' }] },
+        { start: 8, speaker: 'Ada', text: 'And the fix is the longer backoff?' },
+        { start: 11, speaker: 'Efe', text: 'Five attempts over six minutes, with jitter. Replay went out clean.' },
+      ]} />
+      <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 12 }}>
+        <SourceCard domain="docs.efolusi.dev" title="Webhook retry policy" description="Defaults, backoff windows, and how replays are deduplicated across attempts." />
+        <SourceCard domain="acme.statuspage.io" title="Acme — deploy window 02:00–02:20" description="Scheduled maintenance notice covering the outage." variant="card" />
+      </div>
+    </div>
+  );
+}
+ReactDOM.createRoot(document.getElementById('root')).render(<Demo />);
+</script></body></html>

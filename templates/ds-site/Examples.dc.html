@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet><script src="./ds-base.js"></script><link rel="stylesheet" href="./site.css"><style>@view-transition{navigation:auto}::view-transition-group(*){animation-duration:160ms}@media (prefers-reduced-motion:reduce){::view-transition-group(*),::view-transition-old(*),::view-transition-new(*){animation:none!important}}html{background:var(--surface-page,#FAF9F6)}</style></helmet>
+<div style="min-height:100vh;background:var(--surface-page);color:var(--text-primary);font-family:var(--font-sans);display:flex;flex-direction:column">
+<header class="site-top" style="view-transition-name:site-top;position:sticky;top:0;z-index:50;display:flex;align-items:center;gap:26px;height:58px;padding:0 28px;border-bottom:1px solid var(--border-default);background:var(--surface-page)">
+<a href="./DsSite.dc.html" style="display:flex;align-items:center;gap:9px;text-decoration:none;color:var(--text-primary)"><img src="../../assets/logo.png" alt="Meridian" style="width:24px;height:24px"><span style="font-family:var(--font-display);font-weight:680;letter-spacing:-0.02em;font-size:16px">Meridian</span><span class="hide-md" style="font-family:var(--font-mono);font-size:12.5px;color:var(--text-muted)">by Efolusi</span></a>
+<nav class="site-nav" style="display:flex;gap:20px;font-size:14px">
+<a href="./Docs.dc.html" style="color:var(--text-secondary);text-decoration:none" style-hover="color:var(--text-primary)">Docs</a>
+<a href="./Components.dc.html" style="color:var(--text-secondary);text-decoration:none" style-hover="color:var(--text-primary)">Components</a>
+<a href="./Blocks.dc.html" style="color:var(--text-secondary);text-decoration:none" style-hover="color:var(--text-primary)">Blocks</a>
+<a href="./Examples.dc.html" style="color:var(--text-primary);font-weight:600;text-decoration:none">Examples</a>
+<a href="./Charts.dc.html" style="color:var(--text-secondary);text-decoration:none" style-hover="color:var(--text-primary)">Charts</a>
+<a href="./Themes.dc.html" style="color:var(--text-secondary);text-decoration:none" style-hover="color:var(--text-primary)">Themes</a>
+<a href="./Colors.dc.html" style="color:var(--text-secondary);text-decoration:none" style-hover="color:var(--text-primary)">Colors</a>
+</nav>
+<div style="margin-left:auto;display:flex;align-items:center;gap:14px">
+<x-import component="SiteSearch" from="./SiteSearch.jsx" hint-size="220px,32px"></x-import>
+<a href="https://github.com/efolusi/meridian" class="hide-sm" style="font-size:13.5px;color:var(--text-secondary);text-decoration:none" style-hover="color:var(--text-primary)">GitHub ↗</a>
+<span onClick="{{ toggleTheme }}" style="font-size:13px;font-weight:500;color:var(--text-secondary);border:1px solid var(--border-strong);border-radius:var(--radius-full);padding:4px 12px;cursor:pointer;user-select:none" style-hover="color:var(--text-primary);background:var(--surface-subtle)">{{ themeLabel }}</span>
+</div>
+</header>
+<main class="pad-sm" style="flex:1;max-width:1160px;margin:0 auto;width:100%;padding:40px 28px 90px">
+<h1 style="font-size:38px;font-weight:680;font-family:var(--font-display);letter-spacing:-0.02em;margin:0">Examples</h1>
+<p style="font-size:16.5px;line-height:1.6;color:var(--text-secondary);margin:12px 0 0;max-width:640px">Eight complete product interfaces built with Meridian — real journeys, not screenshots. Every screen is composed from the same 88 components you just browsed.</p>
+<div style="display:flex;gap:2px;flex-wrap:wrap;margin-top:26px;border-bottom:1px solid var(--border-default)">
+<sc-for list="{{ tabs }}" as="t" hint-placeholder-count="8">
+<sc-if value="{{ t.on }}" hint-placeholder-val="{{ false }}"><span style="padding:8px 14px 9px;font-size:13.5px;font-weight:600;color:var(--text-primary);box-shadow:inset 0 -2px 0 var(--brand-700);cursor:default;user-select:none">{{ t.title }}</span></sc-if>
+<sc-if value="{{ t.off }}" hint-placeholder-val="{{ true }}"><span onClick="{{ t.pick }}" style="padding:8px 14px 9px;font-size:13.5px;font-weight:450;color:var(--text-muted);cursor:pointer;user-select:none" style-hover="color:var(--text-primary)">{{ t.title }}</span></sc-if>
+</sc-for>
+</div>
+<div style="display:flex;align-items:baseline;gap:14px;margin-top:22px">
+<h2 style="font-size:21px;font-weight:600;font-family:var(--font-display);letter-spacing:-0.02em;margin:0">{{ curTitle }}</h2>
+<span style="font-family:var(--font-mono);font-size:12px;color:var(--text-muted)">{{ curPath }}</span>
+<span style="margin-left:auto;display:flex;gap:14px">
+<a href="{{ curFile }}" target="_blank" rel="noopener" style="font-size:13.5px;color:var(--text-secondary);text-decoration:none" style-hover="color:var(--text-primary)">Open full screen ↗</a>
+</span>
+</div>
+<p style="font-size:14.5px;line-height:1.6;color:var(--text-secondary);margin:8px 0 0;max-width:680px">{{ curDesc }}</p>
+<div class="frame-scroll" style="margin-top:16px;border:1px solid var(--border-default);border-radius:var(--radius-lg);overflow:hidden;background:var(--surface-card);height:634px">
+<iframe src="{{ curFile }}" title="{{ curTitle }}" style="width:1440px;height:827px;border:0;transform:scale(0.7667);transform-origin:top left;display:block"></iframe>
+</div>
+<p style="font-size:13px;color:var(--text-muted);margin:12px 2px 0">Interactive preview — click around. Source lives in {{ curPath }} as plain JSX screens; copy the folder to start your own product on it.</p>
+</main>
+<footer style="view-transition-name:site-foot;border-top:1px solid var(--border-default)">
+<div class="site-foot-row pad-sm" style="max-width:1200px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;padding:20px 28px;font-size:13px;color:var(--text-muted)">
+<span>Built by <a href="https://efolusi.com" style="color:var(--text-secondary);text-decoration:none">Efolusi</a>. The source code is available on <a href="https://github.com/efolusi/meridian" style="color:var(--text-secondary);text-decoration:none">GitHub</a>. MIT licensed.</span>
+<span style="display:flex;gap:16px"><a href="../../LICENSE" style="color:var(--text-secondary);text-decoration:none" style-hover="color:var(--text-primary)">License</a><a href="../../CONTRIBUTING.md" style="color:var(--text-secondary);text-decoration:none" style-hover="color:var(--text-primary)">Contributing</a><a href="../../README.md" style="color:var(--text-secondary);text-decoration:none" style-hover="color:var(--text-primary)">Readme</a></span>
+</div>
+</footer>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  state = { dark: false, ki: 0 };
+  KITS = [
+    { id: 'agent', title: 'Agent', desc: 'The autonomous-agent workspace: chat thread with streaming replies and embedded tool output, task step rail, context files, run metadata, and a ⌘K palette.' },
+    { id: 'console', title: 'Console', desc: 'The admin surface shared by Efolusi B2B products: overview dashboard, customers table with detail drawer, and workspace settings.' },
+    { id: 'infra', title: 'Infra', desc: 'The infrastructure control plane: resources, domains, and certificates tables with live status, a detail drawer with records and logs, and a connect flow.' },
+    { id: 'trader', title: 'Trader', desc: 'The B2C trading surface: portfolio header with trend, positions table with P&L and sparklines, a strategy card with guardrails, and a social signal feed.' },
+    { id: 'tools', title: 'Tools', desc: 'The all-in-one converter: an upload → convert → download wizard with a live processing queue.' },
+    { id: 'docs', title: 'Docs', desc: 'A documentation product: top bar with search, left nav tree, article view with code blocks and callouts, right table of contents.' },
+    { id: 'auth', title: 'Auth', desc: 'Shared sign-in and create-account screens: brand panel with rotating customer quote, form panel with SSO, validation, and password reveal.' },
+    { id: 'website', title: 'Website', desc: 'The public marketing site: header, hero with live product preview, product trio, brand band, pricing, and footer.' },
+  ];
+  componentDidMount() {
+    try { const t = localStorage.getItem('efolusi-site-theme'); if (t) document.documentElement.setAttribute('data-theme', t); } catch (e) {}
+    this.setState({ dark: document.documentElement.getAttribute('data-theme') === 'dark' });
+    this._onHash = () => this.applyHash();
+    window.addEventListener('hashchange', this._onHash);
+    this.applyHash();
+  }
+  componentWillUnmount() { window.removeEventListener('hashchange', this._onHash); }
+  applyHash() {
+    const h = decodeURIComponent((location.hash || '').replace(/^#/, ''));
+    const i = this.KITS.findIndex(k => k.id === h);
+    if (i >= 0) this.setState({ ki: i });
+  }
+  pick(i) {
+    this.setState({ ki: i });
+    try { history.pushState(null, '', '#' + this.KITS[i].id); } catch (e) {}
+  }
+  renderVals() {
+    const cur = this.KITS[this.state.ki];
+    return {
+      themeLabel: this.state.dark ? 'Light' : 'Dark',
+      toggleTheme: () => {
+        const next = this.state.dark ? 'light' : 'dark';
+        document.documentElement.setAttribute('data-theme', next);
+        try { localStorage.setItem('efolusi-site-theme', next); } catch (e) {}
+        this.setState({ dark: next === 'dark' });
+      },
+      tabs: this.KITS.map((k, i) => ({ title: k.title, on: i === this.state.ki, off: i !== this.state.ki, pick: () => this.pick(i) })),
+      curTitle: cur.title,
+      curDesc: cur.desc,
+      curPath: 'ui_kits/' + cur.id + '/',
+      curFile: '../../ui_kits/' + cur.id + '/index.html',
+    };
+  }
+}
+</script>
+</body>
+</html>

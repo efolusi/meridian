@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet><script src="./ds-base.js"></script><style>@view-transition{navigation:auto}::view-transition-group(*){animation-duration:160ms}@media (prefers-reduced-motion:reduce){::view-transition-group(*),::view-transition-old(*),::view-transition-new(*){animation:none!important}}html{background:#FAF9F6}</style></helmet>
+<div data-theme="{{ theme }}" style="display:flex;height:100vh;overflow:hidden;font-family:var(--font-sans);color:var(--text-primary);background:var(--surface-page)">
+<aside style="view-transition-name:shell-side;width:240px;flex:none;display:flex;flex-direction:column;border-right:1px solid var(--border-default);background:var(--surface-subtle)">
+<a href="./AppPage.dc.html" style="display:flex;align-items:center;gap:10px;padding:16px 16px 14px;color:inherit;text-decoration:none">
+<img src="../../assets/logo.png" alt="Efolusi" style="width:30px;height:30px">
+<span style="font-family:var(--font-display);font-weight:680;letter-spacing:-0.02em;font-size:19px">Efolusi</span>
+</a>
+<nav style="display:flex;flex-direction:column;gap:2px;padding:4px 12px">
+<a href="./AppPage.dc.html" style="display:flex;align-items:center;gap:10px;height:34px;padding:0 10px;border-radius:var(--radius-sm);color:var(--text-secondary);font-size:14px;font-weight:500;text-decoration:none" style-hover="background:var(--surface-sunken);color:var(--text-primary)">Overview</a>
+<a href="./Projects.dc.html" style="display:flex;align-items:center;gap:10px;height:34px;padding:0 10px;border-radius:var(--radius-sm);background:var(--accent-subtle);color:var(--brand-700);font-size:14px;font-weight:600;text-decoration:none">Projects</a>
+<a href="./AppSettings.dc.html" style="display:flex;align-items:center;gap:10px;height:34px;padding:0 10px;border-radius:var(--radius-sm);color:var(--text-secondary);font-size:14px;font-weight:500;text-decoration:none" style-hover="background:var(--surface-sunken);color:var(--text-primary)">Settings</a>
+</nav>
+<div style="margin-top:auto;display:flex;align-items:center;gap:10px;padding:14px 16px;border-top:1px solid var(--border-default)">
+<span style="width:28px;height:28px;border-radius:999px;background:var(--brand-950);color:var(--brand-50);display:grid;place-items:center;font-size:11px;font-weight:600">AO</span>
+<span><span style="display:block;font-size:13px;font-weight:600">Ada Obi</span><span style="display:block;font-size:11.5px;color:var(--text-muted)">ada@efolusi.com</span></span>
+</div>
+</aside>
+<main style="flex:1;overflow-y:auto">
+<header style="view-transition-name:shell-top;display:flex;align-items:center;gap:12px;height:60px;padding:0 24px;border-bottom:1px solid var(--border-default);position:sticky;top:0;background:var(--surface-page);z-index:20">
+<span style="font-size:13px;color:var(--text-muted)"><a href="./Projects.dc.html" style="color:var(--text-link);font-weight:600;text-decoration:none">Projects</a> / Churn digest agent</span>
+<div style="margin-left:auto;display:flex;gap:8px">
+<x-import component-from-global-scope="EfolusiDesignSystem_4ffc3d.Button" variant="secondary" icon-left="settings" hint-size="112px,36px">Configure</x-import>
+<x-import component-from-global-scope="EfolusiDesignSystem_4ffc3d.Button" icon-left="play" hint-size="104px,36px">Run now</x-import>
+</div>
+</header>
+<div style="padding:24px;display:flex;flex-direction:column;gap:20px">
+<div style="display:flex;align-items:center;gap:12px">
+<h1 style="font-family:var(--font-display);font-size:24px;font-weight:680;letter-spacing:-0.02em;margin:0">Churn digest agent</h1>
+<span style="display:inline-flex;align-items:center;gap:6px;font-size:12px;font-weight:600;padding:3px 10px;border-radius:999px;color:var(--success-600);background:var(--success-100);border:1px solid var(--success-300)"><span style="width:7px;height:7px;border-radius:999px;background:var(--success-600)"></span>Live</span>
+</div>
+<div style="display:flex;gap:2px;border-bottom:1px solid var(--border-default)">
+<span style="padding:0 4px 10px;margin-right:16px;font-size:14px;font-weight:600;border-bottom:2px solid var(--accent)">Overview</span>
+<span style="padding:0 4px 10px;margin-right:16px;font-size:14px;font-weight:500;color:var(--text-secondary);cursor:pointer" style-hover="color:var(--text-primary)">Runs</span>
+<span style="padding:0 4px 10px;margin-right:16px;font-size:14px;font-weight:500;color:var(--text-secondary);cursor:pointer" style-hover="color:var(--text-primary)">Logs</span>
+<span style="padding:0 4px 10px;font-size:14px;font-weight:500;color:var(--text-secondary);cursor:pointer" style-hover="color:var(--text-primary)">Settings</span>
+</div>
+<div style="display:flex;gap:16px">
+<div style="flex:1;background:var(--surface-card);border:1px solid var(--border-default);border-radius:var(--radius-md);padding:16px">
+<x-import component-from-global-scope="EfolusiDesignSystem_4ffc3d.Stat" label="Runs this week" value="128" delta="14%" direction="up" hint-size="100%,60px"></x-import>
+</div>
+<div style="flex:1;background:var(--surface-card);border:1px solid var(--border-default);border-radius:var(--radius-md);padding:16px">
+<x-import component-from-global-scope="EfolusiDesignSystem_4ffc3d.Stat" label="Success rate" value="99.2%" hint-size="100%,60px"></x-import>
+</div>
+<div style="flex:1;background:var(--surface-card);border:1px solid var(--border-default);border-radius:var(--radius-md);padding:16px">
+<x-import component-from-global-scope="EfolusiDesignSystem_4ffc3d.Stat" label="Avg duration" value="42s" hint-size="100%,60px"></x-import>
+</div>
+</div>
+<div style="display:grid;grid-template-columns:2fr 1fr;gap:16px;align-items:start">
+<div style="background:var(--surface-card);border:1px solid var(--border-default);border-radius:var(--radius-md)">
+<div style="padding:16px 20px;border-bottom:1px solid var(--border-default);font-size:16px;font-weight:600">Recent runs</div>
+<table style="width:100%;border-collapse:collapse">
+<tbody>
+<tr style-hover="background:var(--surface-subtle)">
+<td style="padding:12px 20px;border-top:1px solid var(--border-default);font-family:var(--font-mono);font-size:13px">run_8412</td>
+<td style="padding:12px 20px;border-top:1px solid var(--border-default);font-size:13.5px;color:var(--text-secondary)">Scheduled</td>
+<td style="padding:12px 20px;border-top:1px solid var(--border-default);font-family:var(--font-mono);font-size:13px;text-align:right">41s</td>
+<td style="padding:12px 20px;border-top:1px solid var(--border-default)"><span style="display:inline-block;font-size:12px;font-weight:600;padding:2px 9px;border-radius:999px;color:var(--success-600);background:var(--success-100);border:1px solid var(--success-300)">Success</span></td>
+<td style="padding:12px 20px;border-top:1px solid var(--border-default);font-size:13px;color:var(--text-muted);text-align:right;white-space:nowrap">06:00 today</td>
+</tr>
+<tr style-hover="background:var(--surface-subtle)">
+<td style="padding:12px 20px;border-top:1px solid var(--border-default);font-family:var(--font-mono);font-size:13px">run_8391</td>
+<td style="padding:12px 20px;border-top:1px solid var(--border-default);font-size:13.5px;color:var(--text-secondary)">Manual — Ada</td>
+<td style="padding:12px 20px;border-top:1px solid var(--border-default);font-family:var(--font-mono);font-size:13px;text-align:right">44s</td>
+<td style="padding:12px 20px;border-top:1px solid var(--border-default)"><span style="display:inline-block;font-size:12px;font-weight:600;padding:2px 9px;border-radius:999px;color:var(--success-600);background:var(--success-100);border:1px solid var(--success-300)">Success</span></td>
+<td style="padding:12px 20px;border-top:1px solid var(--border-default);font-size:13px;color:var(--text-muted);text-align:right;white-space:nowrap">Yesterday</td>
+</tr>
+<tr style-hover="background:var(--surface-subtle)">
+<td style="padding:12px 20px;border-top:1px solid var(--border-default);font-family:var(--font-mono);font-size:13px">run_8367</td>
+<td style="padding:12px 20px;border-top:1px solid var(--border-default);font-size:13.5px;color:var(--text-secondary)">Scheduled</td>
+<td style="padding:12px 20px;border-top:1px solid var(--border-default);font-family:var(--font-mono);font-size:13px;text-align:right">58s</td>
+<td style="padding:12px 20px;border-top:1px solid var(--border-default)"><span style="display:inline-block;font-size:12px;font-weight:600;padding:2px 9px;border-radius:999px;color:var(--danger-600);background:var(--danger-100);border:1px solid var(--danger-300)">Failed</span></td>
+<td style="padding:12px 20px;border-top:1px solid var(--border-default);font-size:13px;color:var(--text-muted);text-align:right;white-space:nowrap">Jul 15</td>
+</tr>
+<tr style-hover="background:var(--surface-subtle)">
+<td style="padding:12px 20px;border-top:1px solid var(--border-default);font-family:var(--font-mono);font-size:13px">run_8344</td>
+<td style="padding:12px 20px;border-top:1px solid var(--border-default);font-size:13.5px;color:var(--text-secondary)">Scheduled</td>
+<td style="padding:12px 20px;border-top:1px solid var(--border-default);font-family:var(--font-mono);font-size:13px;text-align:right">39s</td>
+<td style="padding:12px 20px;border-top:1px solid var(--border-default)"><span style="display:inline-block;font-size:12px;font-weight:600;padding:2px 9px;border-radius:999px;color:var(--success-600);background:var(--success-100);border:1px solid var(--success-300)">Success</span></td>
+<td style="padding:12px 20px;border-top:1px solid var(--border-default);font-size:13px;color:var(--text-muted);text-align:right;white-space:nowrap">Jul 14</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div style="display:flex;flex-direction:column;gap:16px">
+<div style="background:var(--surface-card);border:1px solid var(--border-default);border-radius:var(--radius-md)">
+<div style="padding:16px 20px;border-bottom:1px solid var(--border-default);font-size:16px;font-weight:600">Configuration</div>
+<div style="padding:16px 20px">
+<x-import component-from-global-scope="EfolusiDesignSystem_4ffc3d.KeyValueList" items="{{ configItems }}" label-width="{{ 96 }}" hint-size="100%,180px"></x-import>
+</div>
+</div>
+<div style="background:var(--surface-card);border:1px solid var(--border-default);border-radius:var(--radius-md);padding:16px 20px">
+<x-import component-from-global-scope="EfolusiDesignSystem_4ffc3d.CopyField" label="Invoke URL" value="https://api.efolusi.com/v1/projects/churn-digest" hint-size="100%,64px"></x-import>
+</div>
+</div>
+</div>
+</div>
+</main>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:1280,&quot;height&quot;:800},&quot;theme&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;light&quot;,&quot;dark&quot;],&quot;default&quot;:&quot;light&quot;,&quot;tsType&quot;:&quot;'light'|'dark'&quot;}}">
+class Component extends DCLogic {
+  renderVals() {
+    return {
+      theme: this.props.theme ?? 'light',
+      configItems: [
+        { label: 'Product', value: 'Agent' },
+        { label: 'Model', value: 'efolusi-agent-2', mono: true },
+        { label: 'Schedule', value: 'Daily · 06:00 UTC' },
+        { label: 'Region', value: 'eu-west-1', mono: true },
+        { label: 'Owner', value: 'Ada Obi' },
+      ],
+    };
+  }
+}
+</script>
+</body>
+</html>

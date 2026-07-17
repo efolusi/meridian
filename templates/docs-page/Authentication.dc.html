@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet><script src="./ds-base.js"></script><style>@view-transition{navigation:auto}::view-transition-group(*){animation-duration:160ms}@media (prefers-reduced-motion:reduce){::view-transition-group(*),::view-transition-old(*),::view-transition-new(*){animation:none!important}}html{background:#FAF9F6}</style></helmet>
+<div style="min-height:100vh;background:var(--surface-page);color:var(--text-primary);font-family:var(--font-sans)">
+<header style="view-transition-name:shell-top;display:flex;align-items:center;gap:14px;height:58px;padding:0 24px;border-bottom:1px solid var(--border-default)">
+<img src="../../assets/logo.png" alt="" style="width:26px;height:26px">
+<span style="font-family:var(--font-display);font-weight:680;letter-spacing:-0.02em;font-size:17px">Efolusi</span>
+<span style="font-size:15px;color:var(--text-muted);font-weight:500">Docs</span>
+<div style="margin-left:auto;display:flex;align-items:center;gap:8px;height:28px;padding:0 10px;border:1px solid var(--border-strong);border-radius:var(--radius-sm);background:var(--surface-card);color:var(--text-muted);font-size:13px">Search docs… <kbd style="font-family:var(--font-mono);font-size:10px;border:1px solid var(--border-strong);border-radius:3px;padding:0 4px">⌘K</kbd></div>
+</header>
+<div style="display:flex;max-width:1440px;margin:0 auto">
+<nav style="view-transition-name:shell-side;width:250px;flex:none;padding:20px 12px 20px 24px;border-right:1px solid var(--border-default)">
+<div style="font-size:11px;font-weight:600;letter-spacing:0.06em;text-transform:uppercase;color:var(--text-muted);padding:0 10px 6px">Getting started</div>
+<div style="display:flex;flex-direction:column;gap:1px">
+<a href="./DocsPage.dc.html" style="padding:6px 10px;font-size:13.5px;color:var(--text-secondary);text-decoration:none" style-hover="color:var(--text-primary)">Quickstart</a>
+<a href="./Authentication.dc.html" style="padding:6px 10px;border-radius:var(--radius-sm);font-size:13.5px;font-weight:600;background:var(--accent-subtle);color:var(--brand-700);text-decoration:none">Authentication</a>
+<a href="./Errors.dc.html" style="padding:6px 10px;font-size:13.5px;color:var(--text-secondary);text-decoration:none" style-hover="color:var(--text-primary)">Errors</a>
+</div>
+</nav>
+<main style="flex:1;padding:28px 40px 80px;min-width:0">
+<article style="max-width:720px">
+<h1 style="font-size:38px;font-weight:680;font-family:var(--font-display);letter-spacing:-0.02em;margin:0">Authentication</h1>
+<p style="font-size:17px;line-height:1.65;color:var(--text-secondary);margin:12px 0 0">Every request carries a bearer key. Keys are scoped to a workspace and work across all six products.</p>
+<h2 style="font-size:24px;font-weight:600;font-family:var(--font-display);letter-spacing:-0.02em;margin:40px 0 0">Key types</h2>
+<p style="font-size:15.5px;line-height:1.7;color:var(--text-secondary);margin:14px 0 0">The prefix tells you — and our servers — what a key may touch.</p>
+<table style="width:100%;border-collapse:collapse;margin:18px 0 0">
+<thead>
+<tr>
+<th style="padding:8px 12px 8px 0;font-size:12px;font-weight:600;letter-spacing:0.04em;text-transform:uppercase;color:var(--text-muted);text-align:left;border-bottom:1px solid var(--border-strong)">Prefix</th>
+<th style="padding:8px 12px;font-size:12px;font-weight:600;letter-spacing:0.04em;text-transform:uppercase;color:var(--text-muted);text-align:left;border-bottom:1px solid var(--border-strong)">Environment</th>
+<th style="padding:8px 0;font-size:12px;font-weight:600;letter-spacing:0.04em;text-transform:uppercase;color:var(--text-muted);text-align:left;border-bottom:1px solid var(--border-strong)">Behavior</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="padding:10px 12px 10px 0;border-bottom:1px solid var(--border-default);font-family:var(--font-mono);font-size:13.5px">ef_test_</td>
+<td style="padding:10px 12px;border-bottom:1px solid var(--border-default);font-size:14.5px;color:var(--text-secondary)">Sandbox</td>
+<td style="padding:10px 0;border-bottom:1px solid var(--border-default);font-size:14.5px;color:var(--text-secondary)">Free, rate-limited, no real side effects</td>
+</tr>
+<tr>
+<td style="padding:10px 12px 10px 0;border-bottom:1px solid var(--border-default);font-family:var(--font-mono);font-size:13.5px">ef_live_</td>
+<td style="padding:10px 12px;border-bottom:1px solid var(--border-default);font-size:14.5px;color:var(--text-secondary)">Production</td>
+<td style="padding:10px 0;border-bottom:1px solid var(--border-default);font-size:14.5px;color:var(--text-secondary)">Full access, billed, audit-logged</td>
+</tr>
+</tbody>
+</table>
+<h2 style="font-size:24px;font-weight:600;font-family:var(--font-display);letter-spacing:-0.02em;margin:40px 0 0">Authenticate a request</h2>
+<p style="font-size:15.5px;line-height:1.7;color:var(--text-secondary);margin:14px 0 0">Pass the key as a bearer token. That's the whole protocol.</p>
+<div style="margin:18px 0 0">
+<x-import component-from-global-scope="EfolusiDesignSystem_4ffc3d.CodeBlock" lang="bash" hint-size="100%,120px">{{ curlCode }}</x-import>
+</div>
+<div style="margin:18px 0 0">
+<x-import component-from-global-scope="EfolusiDesignSystem_4ffc3d.Alert" tone="warning" title="Rotate on exposure" description="If a live key leaks, rotate it in Console → Settings → API keys. Old requests keep working for 60 seconds, then stop." hint-size="100%,70px"></x-import>
+</div>
+<div style="display:flex;justify-content:space-between;margin-top:56px;padding-top:20px;border-top:1px solid var(--border-default)">
+<a href="./DocsPage.dc.html" style="font-size:14px;font-weight:600;color:var(--text-link);text-decoration:none"><span style="display:block;font-size:11px;font-weight:600;letter-spacing:0.06em;text-transform:uppercase;color:var(--text-muted)">Previous</span>← Quickstart</a>
+<a href="./Errors.dc.html" style="font-size:14px;font-weight:600;color:var(--text-link);text-decoration:none;text-align:right"><span style="display:block;font-size:11px;font-weight:600;letter-spacing:0.06em;text-transform:uppercase;color:var(--text-muted)">Next</span>Errors →</a>
+</div>
+</article>
+</main>
+<aside style="view-transition-name:shell-toc;width:200px;flex:none;padding:28px 24px 0 0">
+<div style="font-size:11px;font-weight:600;letter-spacing:0.06em;text-transform:uppercase;color:var(--text-muted)">On this page</div>
+<div style="display:flex;flex-direction:column;gap:8px;margin-top:12px;border-left:1px solid var(--border-default)">
+<span style="font-size:13px;padding-left:12px;margin-left:-1px;border-left:2px solid var(--accent);color:var(--brand-700);font-weight:600">Key types</span>
+<span style="font-size:13px;padding-left:12px;color:var(--text-secondary)">Authenticate a request</span>
+</div>
+</aside>
+</div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:1280,&quot;height&quot;:800}}">
+class Component extends DCLogic {
+  renderVals() {
+    return { curlCode: "curl https://api.efolusi.com/v1/agent/tasks \\\n  -H \"Authorization: Bearer ef_live_9a41kzt3…\" \\\n  -H \"Content-Type: application/json\"" };
+  }
+}
+</script>
+</body>
+</html>

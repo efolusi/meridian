@@ -1,0 +1,38 @@
+# Meridian
+
+> Meridian is the open-source design system behind every Efolusi product: 104 accessible React components, 158 design tokens (light, dark, compact), blocks, charts, and full product UI kits — served browser-native with zero build step. MIT licensed.
+
+This repo is a monorepo: tokens, components, blocks, templates, and product kits live together and ship as one stylesheet plus one compiled bundle.
+
+## Start here
+
+- /README.md — overview, principles, content fundamentals
+- /SKILL.md — the agent skill: how to build Efolusi-branded interfaces with Meridian
+- /styles.css — stylesheet entry (imports /tokens/*)
+- /_ds_bundle.js — compiled component bundle (all components on one global namespace)
+- /_ds_manifest.json — machine-readable registry of components, tokens, cards
+
+## Components
+
+104 components in /components/<group>/ across 12 groups: forms, display, navigation, feedback, data, overlay, ai, code, files, dates, finance, icons.
+
+Every component ships three flat files:
+
+- <Name>.jsx — the source (vendor it freely)
+- <Name>.d.ts — typed props interface
+- <Name>.prompt.md — usage guidance for humans and LLMs
+
+## Usage
+
+Load the stylesheet and bundle, then read components off the namespace:
+
+    const { Button } = window.EfolusiDesignSystem_4ffc3d;
+
+Dark mode: set data-theme="dark" on any subtree. Compact density: data-density="compact". Semantic tokens only — never raw ramp values.
+
+## More
+
+- /guidelines/ — accessibility, forms, governance
+- /templates/ds-site/ — the documentation site (open /index.html)
+- /blocks/, /ui_kits/, /templates/ — pre-composed sections, product kits, page shells
+- /CHANGELOG.md, /CONTRIBUTING.md, /SECURITY.md, /LICENSE

@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet><script src="./ds-base.js"></script><link rel="stylesheet" href="./site.css"><style>@view-transition{navigation:auto}::view-transition-group(*){animation-duration:160ms}@media (prefers-reduced-motion:reduce){::view-transition-group(*),::view-transition-old(*),::view-transition-new(*){animation:none!important}}html{background:var(--surface-page,#FAF9F6)}</style></helmet>
+<div style="min-height:100vh;background:var(--surface-page);color:var(--text-primary);font-family:var(--font-sans);display:flex;flex-direction:column">
+<header class="site-top" style="view-transition-name:site-top;position:sticky;top:0;z-index:50;display:flex;align-items:center;gap:26px;height:58px;padding:0 28px;border-bottom:1px solid var(--border-default);background:var(--surface-page)">
+<a href="./DsSite.dc.html" style="display:flex;align-items:center;gap:9px;text-decoration:none;color:var(--text-primary)"><img src="../../assets/logo.png" alt="Meridian" style="width:24px;height:24px"><span style="font-family:var(--font-display);font-weight:680;letter-spacing:-0.02em;font-size:16px">Meridian</span><span class="hide-md" style="font-family:var(--font-mono);font-size:12.5px;color:var(--text-muted)">by Efolusi</span></a>
+<nav class="site-nav" style="display:flex;gap:20px;font-size:14px">
+<a href="./Docs.dc.html" style="color:var(--text-primary);font-weight:600;text-decoration:none">Docs</a>
+<a href="./Components.dc.html" style="color:var(--text-secondary);text-decoration:none" style-hover="color:var(--text-primary)">Components</a>
+<a href="./Blocks.dc.html" style="color:var(--text-secondary);text-decoration:none" style-hover="color:var(--text-primary)">Blocks</a>
+<a href="./Examples.dc.html" style="color:var(--text-secondary);text-decoration:none" style-hover="color:var(--text-primary)">Examples</a>
+<a href="./Charts.dc.html" style="color:var(--text-secondary);text-decoration:none" style-hover="color:var(--text-primary)">Charts</a>
+<a href="./Themes.dc.html" style="color:var(--text-secondary);text-decoration:none" style-hover="color:var(--text-primary)">Themes</a>
+<a href="./Colors.dc.html" style="color:var(--text-secondary);text-decoration:none" style-hover="color:var(--text-primary)">Colors</a>
+</nav>
+<div style="margin-left:auto;display:flex;align-items:center;gap:14px">
+<x-import component="SiteSearch" from="./SiteSearch.jsx" hint-size="220px,32px"></x-import>
+<a href="https://github.com/efolusi/meridian" class="hide-sm" style="font-size:13.5px;color:var(--text-secondary);text-decoration:none" style-hover="color:var(--text-primary)">GitHub ↗</a>
+<span onClick="{{ toggleTheme }}" style="font-size:13px;font-weight:500;color:var(--text-secondary);border:1px solid var(--border-strong);border-radius:var(--radius-full);padding:4px 12px;cursor:pointer;user-select:none" style-hover="color:var(--text-primary);background:var(--surface-subtle)">{{ themeLabel }}</span>
+</div>
+</header>
+<div style="display:flex;max-width:1440px;margin:0 auto;width:100%;flex:1">
+<aside class="site-side" style="view-transition-name:site-side;width:232px;flex:none;padding:22px 10px 40px 24px;border-right:1px solid var(--border-default);height:calc(100vh - 58px);overflow:auto;position:sticky;top:58px">
+<sc-for list="{{ navGroups }}" as="g" hint-placeholder-count="3">
+<div style="margin-bottom:16px">
+<div style="font-size:11px;font-weight:600;letter-spacing:0.06em;text-transform:uppercase;color:var(--text-muted);padding:0 10px 5px">{{ g.label }}</div>
+<div style="display:flex;flex-direction:column;gap:1px">
+<sc-for list="{{ g.items }}" as="it" hint-placeholder-count="4">
+<sc-if value="{{ it.on }}" hint-placeholder-val="{{ false }}"><span style="display:block;padding:4px 10px;border-radius:var(--radius-sm);font-size:13.5px;cursor:default;user-select:none;font-weight:600;color:var(--brand-700);background:var(--accent-subtle)">{{ it.name }}</span></sc-if>
+<sc-if value="{{ it.off }}" hint-placeholder-val="{{ true }}"><span onClick="{{ it.pick }}" style="display:block;padding:4px 10px;border-radius:var(--radius-sm);font-size:13.5px;cursor:pointer;user-select:none;font-weight:400;color:var(--text-secondary);background:transparent" style-hover="color:var(--text-primary)">{{ it.name }}</span></sc-if>
+</sc-for>
+</div>
+</div>
+</sc-for>
+</aside>
+<main class="pad-sm" style="flex:1;min-width:0;padding:30px 36px 90px;display:flex;gap:34px">
+<article style="flex:1;min-width:0;max-width:780px">
+<div style="font-family:var(--font-mono);font-size:12px;color:var(--text-muted)">docs / {{ activeId }}</div>
+<h1 style="font-size:36px;font-weight:680;font-family:var(--font-display);letter-spacing:-0.02em;margin:8px 0 0">{{ activeTitle }}</h1>
+<p style="font-size:16.5px;line-height:1.6;color:var(--text-secondary);margin:10px 0 0;text-wrap:pretty">{{ activeLede }}</p>
+<sc-for list="{{ blocks }}" as="b" hint-placeholder-count="4">
+<sc-if value="{{ b.isH2 }}" hint-placeholder-val="{{ false }}"><h2 id="{{ b.id }}" style="font-size:22px;font-weight:600;font-family:var(--font-display);letter-spacing:-0.02em;margin:38px 0 0">{{ b.text }}</h2></sc-if>
+<sc-if value="{{ b.isP }}" hint-placeholder-val="{{ true }}"><p style="font-size:14.5px;line-height:1.7;color:var(--text-secondary);margin:12px 0 0;text-wrap:pretty">{{ b.text }}</p></sc-if>
+<sc-if value="{{ b.isCode }}" hint-placeholder-val="{{ false }}"><div style="margin:14px 0 0"><x-import component-from-global-scope="EfolusiDesignSystem_4ffc3d.CodeBlock" lang="{{ b.lang }}" title="{{ b.title }}" hint-size="100%,110px">{{ b.code }}</x-import></div></sc-if>
+<sc-if value="{{ b.isList }}" hint-placeholder-val="{{ false }}">
+<div style="margin:12px 0 0;display:flex;flex-direction:column;gap:8px">
+<sc-for list="{{ b.items }}" as="li" hint-placeholder-count="3">
+<div style="display:flex;gap:10px;font-size:14.5px;line-height:1.6;color:var(--text-secondary)"><span style="color:var(--brand-700);flex:none">—</span><span><strong style="color:var(--text-primary);font-weight:600">{{ li.k }}</strong> {{ li.v }}</span></div>
+</sc-for>
+</div>
+</sc-if>
+</sc-for>
+<div style="display:flex;justify-content:space-between;gap:14px;margin-top:44px">
+<sc-if value="{{ hasPrev }}" hint-placeholder-val="{{ false }}">
+<span onClick="{{ prevGo }}" style="display:flex;flex-direction:column;gap:3px;padding:12px 16px;border:1px solid var(--border-default);border-radius:var(--radius-md);cursor:pointer;min-width:170px" style-hover="border-color:var(--border-strong);background:var(--surface-card)">
+<span style="font-size:11.5px;color:var(--text-muted)">← Previous</span>
+<span style="font-size:14.5px;font-weight:600;color:var(--text-primary)">{{ prevName }}</span>
+</span>
+</sc-if>
+<sc-if value="{{ hasNext }}" hint-placeholder-val="{{ false }}">
+<span onClick="{{ nextGo }}" style="display:flex;flex-direction:column;gap:3px;align-items:flex-end;padding:12px 16px;border:1px solid var(--border-default);border-radius:var(--radius-md);cursor:pointer;min-width:170px;margin-left:auto" style-hover="border-color:var(--border-strong);background:var(--surface-card)">
+<span style="font-size:11.5px;color:var(--text-muted)">Next →</span>
+<span style="font-size:14.5px;font-weight:600;color:var(--text-primary)">{{ nextName }}</span>
+</span>
+</sc-if>
+</div>
+</article>
+<aside class="site-toc" style="width:164px;flex:none;position:sticky;top:82px;align-self:flex-start">
+<div style="font-size:11px;font-weight:600;letter-spacing:0.06em;text-transform:uppercase;color:var(--text-muted);margin-bottom:8px">On this page</div>
+<sc-for list="{{ toc }}" as="t" hint-placeholder-count="4">
+<span onClick="{{ t.go }}" style="display:block;padding:3px 0;font-size:13px;color:var(--text-secondary);cursor:pointer;user-select:none" style-hover="color:var(--text-primary)">{{ t.label }}</span>
+</sc-for>
+</aside>
+</main>
+</div>
+<footer style="view-transition-name:site-foot;border-top:1px solid var(--border-default)">
+<div class="site-foot-row pad-sm" style="max-width:1200px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;padding:20px 28px;font-size:13px;color:var(--text-muted)">
+<span>Built by <a href="https://efolusi.com" style="color:var(--text-secondary);text-decoration:none">Efolusi</a>. The source code is available on <a href="https://github.com/efolusi/meridian" style="color:var(--text-secondary);text-decoration:none">GitHub</a>. MIT licensed.</span>
+<span style="display:flex;gap:16px"><a href="../../LICENSE" style="color:var(--text-secondary);text-decoration:none" style-hover="color:var(--text-primary)">License</a><a href="../../CONTRIBUTING.md" style="color:var(--text-secondary);text-decoration:none" style-hover="color:var(--text-primary)">Contributing</a><a href="../../llms.txt" style="color:var(--text-secondary);text-decoration:none" style-hover="color:var(--text-primary)">llms.txt</a></span>
+</div>
+</footer>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  state = { dark: false, si: 0 };
+  componentDidMount() {
+    try { const t = localStorage.getItem('efolusi-site-theme'); if (t) document.documentElement.setAttribute('data-theme', t); } catch (e) {}
+    this.setState({ dark: document.documentElement.getAttribute('data-theme') === 'dark' });
+    this._onHash = () => this.applyHash();
+    window.addEventListener('hashchange', this._onHash);
+    this.applyHash();
+  }
+  componentWillUnmount() { window.removeEventListener('hashchange', this._onHash); }
+  sections() {
+    if (this._sections) return this._sections;
+    const SC = 'scr' + 'ipt';
+    const h2 = (id, text) => ({ isH2: true, id: 'sec-' + id, text });
+    const p = text => ({ isP: true, text });
+    const code = (lang, title, codeStr) => ({ isCode: true, lang, title, code: codeStr });
+    const list = items => ({ isList: true, items: items.map(x => ({ k: x[0], v: x[1] })) });
+    const bundleSnippet = '<link rel="stylesheet" href="meridian/styles.css">\n<' + SC + ' src="https://unpkg.com/react@18.3.1/umd/react.production.min.js"></' + SC + '>\n<' + SC + ' src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.production.min.js"></' + SC + '>\n<' + SC + ' src="meridian/_ds_bundle.js"></' + SC + '>';
+    this._sections = [
+      { group: 'Get started', id: 'introduction', title: 'Introduction', lede: 'Meridian is the open-source design system behind every Efolusi product. 88 accessible components, 158 tokens, and full product kits — with no build step.', blocks: [
+        p('This is not just a component library. It is the complete working system: the tokens, the components, the blocks, and the product kits that use them, in one repository you can read end to end.'),
+        h2('principles', 'Principles'),
+        list([
+          ['Open code.', 'Every component is plain source in the repo — vendor it, edit it, own it. No wrapper layers, no style overrides against a black box.'],
+          ['One namespace.', 'Every component hangs off a single global with one predictable prop grammar. Learn one component, you have learned them all.'],
+          ['Tokens first.', 'Components never hardcode color or spacing. 158 tokens in three layers mean dark mode and compact density come free.'],
+          ['Zero build.', 'One stylesheet, one bundle. It runs in any stack — or no stack — straight from a static file server.'],
+          ['AI-ready.', 'Each component ships a .prompt.md usage guide, the repo ships SKILL.md and llms.txt, and the registry is machine-readable.'],
+        ]),
+        h2('whats-inside', 'What is inside'),
+        list([
+          ['components/', '104 components in 12 groups, each with .jsx source, .d.ts types, and a .prompt.md guide.'],
+          ['tokens/', 'Color ramps, semantic roles, typography, spacing, effects — light, dark, and compact.'],
+          ['blocks/', 'Pre-composed marketing and app sections.'],
+          ['ui_kits/', 'Eight complete product interfaces with connected journeys.'],
+          ['templates/', 'Page shells: dashboard, auth, marketing, docs, app.'],
+          ['guidelines/', 'Accessibility, form patterns, and governance rules.'],
+        ]),
+      ] },
+      { group: 'Get started', id: 'installation', title: 'Installation', lede: 'Load one stylesheet and one bundle. That is the whole install.', blocks: [
+        h2('bundle', 'Use the bundle'),
+        p('Copy the meridian folder into your project (or serve it from your CDN), then load React, the stylesheet, and the compiled bundle:'),
+        code('html', 'index.html', bundleSnippet),
+        p('Every component is now available on the global namespace:'),
+        code('javascript', 'app.js', "const { Button, Card, Dialog } = window.EfolusiDesignSystem_4ffc3d;"),
+        h2('vendor', 'Vendor single components'),
+        p('Prefer owning the source? Copy the component file and its types straight into your codebase — MIT, no attribution required. Components import only React, the Icon component, and the shared stylesheet tokens.'),
+        code('text', 'terminal', 'cp meridian/components/forms/Button.jsx  src/ui/\ncp meridian/components/forms/Button.d.ts src/ui/'),
+        h2('fonts', 'Fonts'),
+        p('Meridian uses Bricolage Grotesque for display, Figtree for text, and JetBrains Mono for code. The stylesheet loads them via @font-face from assets/fonts — swap the files to rebrand.'),
+        h2('frameworks', 'Framework recipes'),
+        p('Static HTML — the zero-build path. One stylesheet, one bundle, no tooling:'),
+        code('html', 'static.html', bundleSnippet),
+        p('Vite (or any bundler) — skip the bundle and vendor source instead. Import the stylesheet once, copy the components you use into src/ui, and import them like your own code:'),
+        code('javascript', 'src/main.jsx — Vite', "import 'meridian/styles.css';\nimport { Button } from './ui/Button.jsx'; // vendored from components/forms/"),
+        p('Next.js — same vendoring, plus mark interactive components as client components:'),
+        code('javascript', 'app/ui/Button.jsx — Next.js', "'use client';\n// vendored from meridian/components/forms/Button.jsx\n// app/layout.tsx: import 'meridian/styles.css';"),
+        p('Components are self-contained JSX with no dependencies beyond React and the Icon component, so they survive vendoring intact.'),
+      ] },
+      { group: 'Get started', id: 'theming', title: 'Theming', lede: 'Three token layers: raw ramps, semantic roles, component styles. You theme the middle layer.', blocks: [
+        h2('layers', 'The three layers'),
+        list([
+          ['Ramps.', 'Raw scales like --brand-50 through --brand-950, derived from the Efolusi mark. Never referenced by components directly.'],
+          ['Semantic roles.', '--surface-page, --text-primary, --border-strong, --accent … the vocabulary components actually use.'],
+          ['Component styles.', 'Each component reads only semantic tokens, so re-mapping the middle layer restyles everything.'],
+        ]),
+        h2('override', 'Override tokens'),
+        p('Redefine semantic tokens after the stylesheet to rebrand without touching a component:'),
+        code('css', 'theme-override.css', ':root {\n  --accent: #1F6F54;\n  --accent-subtle: #E9F2EE;\n  --brand-700: #1F6F54;\n}'),
+        p('Scope overrides to a subtree to theme one area only — a marketing page, an embedded widget — while the rest of the app keeps the default look.'),
+      ] },
+      { group: 'Get started', id: 'dark-mode', title: 'Dark mode & density', lede: 'Both are attribute switches. No component rewrites, no second stylesheet.', blocks: [
+        h2('dark', 'Dark mode'),
+        p('Set data-theme="dark" on any element. Everything inside re-maps to the dark semantic tokens — including nested components you wrote yourself, as long as they use semantic tokens.'),
+        code('html', 'index.html', '<html data-theme="dark">\n  …\n</html>\n\n<!-- or scope it to a subtree -->\n<aside data-theme="dark">…</aside>'),
+        h2('persist', 'Persisting the choice'),
+        code('javascript', 'theme.js', "const saved = localStorage.getItem('theme');\nif (saved) document.documentElement.setAttribute('data-theme', saved);"),
+        h2('density', 'Compact density'),
+        p('Set data-density="compact" to tighten spacing, control heights, and type sizes for dense back-office screens. It composes with dark mode.'),
+        code('html', 'console.html', '<main data-theme="dark" data-density="compact">\n  …\n</main>'),
+      ] },
+      { group: 'Get started', id: 'typography', title: 'Typography', lede: 'Two families and a mono, on a settled scale. Sentence case everywhere.', blocks: [
+        h2('families', 'Families'),
+        list([
+          ['Display — Bricolage Grotesque.', 'Headlines and numbers that want presence. Weight 600–700, tight letter-spacing.'],
+          ['Text — Figtree.', 'Everything readable: body, labels, controls. Weights 400–600.'],
+          ['Mono — JetBrains Mono.', 'Code, tokens, IDs, tabular figures.'],
+        ]),
+        code('css', 'usage.css', 'h1 { font-family: var(--font-display); }\nbody { font-family: var(--font-sans); }\ncode { font-family: var(--font-mono); }'),
+        h2('voice', 'Voice'),
+        list([
+          ['Sentence case', 'for every heading, label, and button.'],
+          ['Verbs on buttons', '— "Save changes", never "Submission".'],
+          ['We/you', '— direct, no third person, no emoji.'],
+        ]),
+      ] },
+      { group: 'Guides', id: 'monorepo', title: 'Monorepo', lede: 'Meridian is a monorepo: tokens, components, blocks, templates, and eight product kits in one tree that ships as a single package.', blocks: [
+        h2('layout', 'Repository layout'),
+        code('text', 'meridian/', 'meridian\n├── styles.css          # stylesheet entry — imports tokens/\n├── _ds_bundle.js       # compiled component bundle\n├── _ds_manifest.json   # machine-readable registry\n├── tokens/             # color, typography, spacing, effects\n├── components/         # 12 groups × (.jsx + .d.ts + .prompt.md)\n├── blocks/             # pre-composed sections\n├── templates/          # page shells + this docs site\n├── ui_kits/            # 8 product apps consuming the system\n├── guidelines/         # a11y, forms, governance\n├── assets/             # logo, 90 icons, fonts\n├── SKILL.md · llms.txt # AI entry points\n└── LICENSE · README.md · CHANGELOG.md'),
+        p('The workspaces relate the way apps and packages do in a classic monorepo: ui_kits and templates are the apps; components, tokens, and assets are the shared packages they consume. Everything versions together, so a token change is visible in every kit in the same commit.'),
+        h2('flat-files', 'Flat-file schema'),
+        p('Each component is three flat files side by side — source, types, usage guide. That is the whole distribution format: no package.json per component, no barrel files, nothing to resolve. Tools (and models) can read _ds_manifest.json to enumerate everything in the repo.'),
+        h2('consuming', 'Consuming from your monorepo'),
+        p('Vendor the meridian folder as a shared package and point every app at it:'),
+        code('text', 'your-repo/', 'your-repo\n├── apps\n│   ├── web        → links ../../packages/meridian/styles.css\n│   └── console    → links ../../packages/meridian/styles.css\n└── packages\n    └── meridian   # this repo, vendored'),
+        p('Because the bundle is a plain file, there is no build coupling between your apps and the system — upgrading Meridian is replacing one folder.'),
+      ] },
+      { group: 'Guides', id: 'ai', title: 'AI & skills', lede: 'Meridian is written to be read by models as much as by people.', blocks: [
+        h2('entry', 'Entry points'),
+        list([
+          ['llms.txt', '— repo map and usage rules at the root, the first thing an agent should read.'],
+          ['SKILL.md', '— the agent skill: brand voice, token rules, where to copy screens from.'],
+          ['<Name>.prompt.md', '— per-component guidance: when to use it, when not to, one canonical snippet.'],
+          ['_ds_manifest.json', '— machine-readable registry of components, tokens, and cards.'],
+        ]),
+        h2('why', 'Why it works'),
+        p('One namespace and one prop grammar mean a model that has seen three Meridian components can write the other 83. Semantic tokens mean generated screens inherit dark mode and density for free. And because components are flat source files, a model can read the implementation instead of guessing.'),
+        code('javascript', 'agent-output.js', "const { Card, Stat, BarChart } = window.EfolusiDesignSystem_4ffc3d;\n// a model that knows the grammar composes correctly:\n<Card title=\"Runs this week\">\n  <Stat label=\"Total\" value=\"1,284\" delta=\"+12.4%\" direction=\"up\" />\n  <BarChart data={[42, 58, 51, 74, 66, 30, 89]} />\n</Card>"),
+      ] },
+      { group: 'Guides', id: 'contributing', title: 'Contributing', lede: 'Meridian is MIT-licensed and open to contributions. The bar: it must feel settled.', blocks: [
+        h2('rules', 'Ground rules'),
+        list([
+          ['Semantic tokens only.', 'A PR that hardcodes a hex value or references a raw ramp is returned.'],
+          ['Three files per component.', 'Source, types, prompt guide — a component without all three is not done.'],
+          ['Both themes, both densities.', 'Every change is checked in light, dark, and compact before merge.'],
+          ['No new dependencies.', 'Components import React and the Icon component. That is the list.'],
+        ]),
+        h2('process', 'Process'),
+        p('Open an issue describing the gap, agree on the API in the thread, then submit the three files plus a specimen entry. Versioning and release policy live in guidelines/governance.md; the full contribution guide is CONTRIBUTING.md at the repo root.'),
+      ] },
+      { group: 'Reference', id: 'changelog', title: 'Changelog', lede: 'Notable changes, newest first. Full history in CHANGELOG.md.', blocks: [
+        h2('v120', '1.2.0 — July 2026'),
+        list([
+          ['11 AI-native components', '— Reasoning, ToolCall (approval gates, streaming args), AgentRun (collapsible steps), Confirmation, Conversation (stick-to-bottom), Citation (hover previews), Suggestions, ModelSelector, UsageMeter (count-up), FeedbackBar, Diff. Total: 88.'],
+          ['Responsive', '— the docs site and all 9 blocks now adapt to tablet and phone widths.'],
+        ]),
+        h2('v110', '1.1.0 — July 2026'),
+        list([
+          ['12 new components', 'closing the shadcn/ui parity gap: Toggle, ToggleGroup, ButtonGroup, InputGroup, Label, Collapsible, AspectRatio, ScrollArea, Carousel, Resizable, Menubar, ContextMenu, HoverCard. Total: 77.'],
+          ['Docs site', '— per-component pages with live Preview/Code examples, search (⌘K), and this manual.'],
+          ['Site upgrades', '— theme customizer with copyable CSS, Blocks with Preview/Code and responsive widths (4 new blocks, 9 total), Examples page for the 8 kits, chart recipes, framework install recipes.'],
+          ['Renamed', '— Efolusi DS is now Meridian, by Efolusi.'],
+          ['Governance', '— SECURITY.md, CHANGELOG.md, llms.txt.'],
+        ]),
+        h2('v100', '1.0.0 — July 2026'),
+        list([
+          ['65 components', 'across 12 groups, each with source, types, and prompt guide.'],
+          ['158 tokens', 'in light, dark, and compact, derived from the Efolusi mark.'],
+          ['8 product kits', 'with connected journeys, 5 blocks, 5 page templates.'],
+          ['MIT license.', 'Copy freely, ship fast.'],
+        ]),
+      ] },
+    ];
+    return this._sections;
+  }
+  flat() { return this.sections(); }
+  applyHash() {
+    const h = decodeURIComponent((location.hash || '').replace(/^#/, ''));
+    const idx = this.flat().findIndex(s => s.id === h);
+    this.setState({ si: idx >= 0 ? idx : 0 });
+  }
+  pick(si) {
+    this.setState({ si });
+    try { history.pushState(null, '', '#' + this.flat()[si].id); } catch (e) {}
+    window.scrollTo({ top: 0 });
+  }
+  jump(id) {
+    const el = document.getElementById(id);
+    if (el) window.scrollTo({ top: el.getBoundingClientRect().top + window.scrollY - 76, behavior: 'smooth' });
+  }
+  renderVals() {
+    const all = this.flat();
+    const cur = all[this.state.si];
+    const groups = [];
+    all.forEach((s, i) => {
+      let g = groups.find(x => x.label === s.group);
+      if (!g) { g = { label: s.group, items: [] }; groups.push(g); }
+      const on = i === this.state.si;
+      g.items.push({ name: s.title, on, off: !on, pick: () => this.pick(i) });
+    });
+    const prev = this.state.si > 0 ? all[this.state.si - 1] : null;
+    const next = this.state.si < all.length - 1 ? all[this.state.si + 1] : null;
+    return {
+      themeLabel: this.state.dark ? 'Light' : 'Dark',
+      toggleTheme: () => {
+        const nextT = this.state.dark ? 'light' : 'dark';
+        document.documentElement.setAttribute('data-theme', nextT);
+        try { localStorage.setItem('efolusi-site-theme', nextT); } catch (e) {}
+        this.setState({ dark: nextT === 'dark' });
+      },
+      navGroups: groups,
+      activeId: cur.id,
+      activeTitle: cur.title,
+      activeLede: cur.lede,
+      blocks: cur.blocks,
+      toc: cur.blocks.filter(b => b.isH2).map(b => ({ label: b.text, go: () => this.jump(b.id) })),
+      hasPrev: !!prev,
+      prevName: prev ? prev.title : '',
+      prevGo: prev ? () => this.pick(this.state.si - 1) : null,
+      hasNext: !!next,
+      nextName: next ? next.title : '',
+      nextGo: next ? () => this.pick(this.state.si + 1) : null,
+    };
+  }
+}
+</script>
+</body>
+</html>

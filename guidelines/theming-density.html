@@ -1,0 +1,17 @@
+<!-- @dsCard group="Theming" viewport="700x290" name="Density" subtitle='data-density="compact" tightens controls + table rows' -->
+<!DOCTYPE html><html><head><meta charset="utf-8"><link rel="stylesheet" href="../styles.css">
+<style>body{margin:0;font-family:var(--font-sans);color:var(--text-primary);background:var(--surface-page);display:flex}
+.pane{flex:1;padding:18px}
+.tag{font-family:var(--font-mono);font-size:10px;color:var(--text-muted)}
+.btn{display:inline-flex;align-items:center;height:var(--control-h-md);padding:0 14px;border-radius:var(--radius-sm);background:var(--accent);color:var(--accent-contrast);font-size:14px;font-weight:600}
+.inp{display:flex;align-items:center;height:var(--control-h-md);padding:0 12px;border:1px solid var(--border-strong);border-radius:var(--radius-sm);background:var(--surface-card);color:var(--text-muted);font-size:14px;margin-top:10px}
+table{width:100%;border-collapse:collapse;margin-top:12px;background:var(--surface-card);border:1px solid var(--border-default);border-radius:var(--radius-md)}
+td{padding:var(--table-pad-y) var(--table-pad-x);font-size:13px;border-bottom:1px solid var(--border-default)}
+tr:last-child td{border-bottom:none}
+td:last-child{font-family:var(--font-mono);text-align:right}</style></head>
+<body>
+<div class="pane"><span class="tag">comfortable (default)</span><div style="margin-top:10px"><span class="btn">New project</span></div><div class="inp">Search customers…</div>
+<table><tr><td>Acme Robotics</td><td>$1,240</td></tr><tr><td>Bloom Health</td><td>$3,860</td></tr><tr><td>Everline</td><td>$2,410</td></tr></table></div>
+<div class="pane" data-density="compact"><span class="tag">[data-density="compact"]</span><div style="margin-top:10px"><span class="btn">New project</span></div><div class="inp">Search customers…</div>
+<table><tr><td>Acme Robotics</td><td>$1,240</td></tr><tr><td>Bloom Health</td><td>$3,860</td></tr><tr><td>Everline</td><td>$2,410</td></tr></table></div>
+</body></html>

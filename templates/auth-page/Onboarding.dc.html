@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet><script src="./ds-base.js"></script><style>@view-transition{navigation:auto}::view-transition-group(*){animation-duration:160ms}@media (prefers-reduced-motion:reduce){::view-transition-group(*),::view-transition-old(*),::view-transition-new(*){animation:none!important}}html{background:#FAF9F6}</style></helmet>
+<div data-theme="{{ theme }}" style="min-height:100vh;display:flex;flex-direction:column;align-items:center;background:var(--surface-page);color:var(--text-primary);font-family:var(--font-sans);padding:48px 24px">
+<div style="display:flex;align-items:center;gap:10px">
+<img src="../../assets/logo.png" alt="" style="width:30px;height:30px">
+<span style="font-family:var(--font-display);font-weight:680;letter-spacing:-0.02em;font-size:20px">Efolusi</span>
+</div>
+<div style="width:520px;max-width:100%;margin-top:56px">
+<h1 style="font-size:26px;font-weight:680;font-family:var(--font-display);letter-spacing:-0.02em;margin:0">Set up your workspace</h1>
+<p style="margin:6px 0 0;font-size:14px;color:var(--text-secondary)">Two quick questions — you can change both later.</p>
+<div style="background:var(--surface-card);border:1px solid var(--border-default);border-radius:var(--radius-md);padding:24px;margin-top:24px;display:flex;flex-direction:column;gap:22px">
+<x-import component-from-global-scope="EfolusiDesignSystem_4ffc3d.Input" size="lg" label="Workspace name" placeholder="Acme, Inc." hint-size="100%,70px"></x-import>
+<div>
+<div style="font-size:13.5px;font-weight:600">Which products will you use?</div>
+<div style="display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:10px">
+<sc-for list="{{ products }}" as="p" hint-placeholder-count="6">
+<x-import component-from-global-scope="EfolusiDesignSystem_4ffc3d.ButtonTile" title="{{ p.name }}" selected="{{ p.on }}" onClick="{{ p.toggle }}" hint-size="100%,44px"></x-import>
+</sc-for>
+</div>
+</div>
+<a href="../dashboard/Dashboard.dc.html" style="display:contents"><x-import component-from-global-scope="EfolusiDesignSystem_4ffc3d.Button" size="lg" full-width="{{ true }}" icon-right="arrow-right" hint-size="100%,44px">Open workspace</x-import></a>
+</div>
+<p style="margin:18px 0 0;font-size:13px;text-align:center"><a href="../dashboard/Dashboard.dc.html" style="color:var(--text-muted);text-decoration:none">Skip for now</a></p>
+</div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:1280,&quot;height&quot;:800},&quot;theme&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;light&quot;,&quot;dark&quot;],&quot;default&quot;:&quot;light&quot;,&quot;tsType&quot;:&quot;'light'|'dark'&quot;}}">
+class Component extends DCLogic {
+  state = { picked: ['Agent', 'Infra'] };
+  renderVals() {
+    const toggle = (name) => this.setState(s => ({
+      picked: s.picked.includes(name) ? s.picked.filter(n => n !== name) : [...s.picked, name],
+    }));
+    return {
+      theme: this.props.theme ?? 'light',
+      products: ['Agent', 'Infra', 'Node', 'Toolbox', 'Trader', 'Social'].map(name => ({
+        name, on: this.state.picked.includes(name), toggle: () => toggle(name),
+      })),
+    };
+  }
+}
+</script>
+</body>
+</html>

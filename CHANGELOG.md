@@ -1,0 +1,47 @@
+# Changelog
+
+All notable changes to Meridian are documented here. Format follows [Keep a Changelog](https://keepachangelog.com); versioning follows the policy in `guidelines/governance.md`.
+
+## 2026-07-17 — AI-native component expansion
+
+### Added
+- 16 components closing the AI-chat/agent surface (studied against nauvalazhar/ai; see guidelines/research/nauval-ai-study.md):
+  - ai/: Task, Todo, DocumentCard, GeneratedImage, Sandbox, WebPreview, SourceCard, PromptSteps, SelectionQuote, RichComposer, Player, Transcript
+  - code/: Console, Exception, EnvList
+  - feedback/: Loader (pulse / shimmer / dots text treatment)
+- Icons: at-sign, bug, corner-up-left, list-todo, skip-back, skip-forward, volume-2, volume-x.
+- Specimen cards: "AI · Agent artifacts" and "AI · Input & media"; Code card now covers Console, Exception, EnvList.
+
+### Changed
+- Diff: accepts `from`/`to` strings (word-level change marks, context collapsing) and `files` for multi-file review; legacy `lines` prop unchanged.
+- CodeBlock: `clip` prop clips tall code with a fade + Show all / Collapse.
+
+## 1.2.0 — 2026-07-17
+### Added
+- AI-native components (inspired by the agentic-UI ecosystem): Reasoning, ToolCall, AgentRun, Confirmation, Conversation, Citation + SourceList, Suggestions, ModelSelector, UsageMeter, FeedbackBar (ai); Diff (code). Total: 88.
+- Native behaviors ported from the ecosystem: tool approval gates (approve/reject), streaming key-value args, stick-to-bottom conversation viewport with jump-to-latest, citation hover previews with a source pager, animated count-up usage figures, collapsible run-step detail.
+- 4 new icons: brain, wrench, thumbs-up, thumbs-down.
+
+## 1.1.0 — 2026-07-17
+### Added
+- 12 components closing the shadcn/ui parity gap: Toggle + ToggleGroup, ButtonGroup, InputGroup, Label (forms); Collapsible, AspectRatio, ScrollArea, Carousel, Resizable (display); Menubar (navigation); ContextMenu, HoverCard (overlay). Total: 77.
+- Documentation site (`templates/ds-site/`): Home, Docs, Components, Blocks, Examples, Charts, Themes, Colors — with client-side page transitions.
+- Per-component docs: live Preview/Code examples (90 demos), install + usage snippets, generated API tables, prev/next, deep links.
+- Site search (⌘K) across pages, docs sections, and all 77 components.
+- Theme customizer: accent × radius × mode × density with live preview and copyable CSS overrides.
+- Blocks: Preview/Code tabs with responsive width toggle; 4 new blocks (App shell, Login, Stats dashboard, Settings). Total: 9.
+- Examples page surfacing the 8 product UI kits; chart recipes section on Charts.
+- Docs manual: 9 sections incl. Monorepo, AI & skills, framework recipes; `llms.txt` at the root.
+- Root `index.html` redirect → docs site.
+- Repo governance: `SECURITY.md`, `CHANGELOG.md`, uppercase `README.md`.
+
+### Changed
+- System renamed **Efolusi DS → Meridian** (by Efolusi). Install paths now `meridian/…`.
+
+## 1.0.0 — 2026-07
+### Added
+- 65 components across 12 groups, each with `.jsx`, typed `.d.ts`, and `.prompt.md` usage guide.
+- 158 design tokens (light, dark, compact) derived from the Efolusi brand mark.
+- 8 product UI kits with connected user journeys; 5 blocks; 5 page templates.
+- Guidelines: accessibility, forms, governance; 46 specimen cards.
+- MIT license.

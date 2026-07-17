@@ -1,0 +1,22 @@
+<!-- @dsCard group="Patterns" viewport="700x260" name="Accessibility" subtitle="Focus is never removed; full keyboard map documented" -->
+<!DOCTYPE html><html><head><meta charset="utf-8"><link rel="stylesheet" href="../styles.css">
+<style>body{margin:0;padding:18px;font-family:var(--font-sans);color:var(--text-primary);background:var(--surface-page)}
+.row{display:flex;gap:24px;align-items:flex-start}
+.btn{display:inline-flex;align-items:center;height:36px;padding:0 14px;border-radius:var(--radius-sm);background:var(--accent);color:var(--accent-contrast);font-size:14px;font-weight:600;box-shadow:var(--focus-ring)}
+kbd{display:inline-flex;align-items:center;justify-content:center;min-width:18px;height:19px;padding:0 5px;border:1px solid var(--border-strong);border-bottom-width:2px;border-radius:var(--radius-sm);background:var(--surface-card);font-family:var(--font-mono);font-size:11px;color:var(--text-secondary)}
+.k{display:flex;align-items:center;gap:8px;font-size:13px;color:var(--text-secondary);margin-top:9px}
+.k span:first-child{display:inline-flex;gap:3px;min-width:86px}
+.note{font-size:12px;color:var(--text-muted);margin-top:12px;line-height:1.55;max-width:230px}</style></head>
+<body>
+<div class="row">
+<div><span class="btn">Focused button</span>
+<div class="note">2px caramel ring on every focusable element — never <code>outline: none</code> without it. Contrast: text ≥ 4.5:1, UI hairlines ≥ 3:1.</div></div>
+<div>
+<div class="k"><span><kbd>Tab</kbd></span> Move between controls</div>
+<div class="k"><span><kbd>Enter</kbd> <kbd>Space</kbd></span> Activate</div>
+<div class="k"><span><kbd>Esc</kbd></span> Close dialog / menu / drawer</div>
+<div class="k"><span><kbd>↑</kbd> <kbd>↓</kbd></span> Navigate menus & palettes</div>
+<div class="k"><span><kbd>⌘</kbd> <kbd>K</kbd></span> Command palette anywhere</div>
+</div>
+</div>
+</body></html>

@@ -1,0 +1,29 @@
+/* Meridian docs site — responsive layer. Inline styles carry the desktop layout; these overrides adapt it. */
+.site-nav{min-width:0;overflow-x:auto;scrollbar-width:none;-webkit-overflow-scrolling:touch}
+.site-top a{white-space:nowrap}
+.site-nav::-webkit-scrollbar{display:none}
+.site-search{width:220px}
+@media (max-width:1080px){
+.site-toc{display:none!important}
+.site-top{gap:16px!important}
+.site-search{width:150px!important}
+.hide-md{display:none!important}
+}
+@media (max-width:900px){
+.site-side{display:none!important}
+.grid-2{grid-template-columns:1fr!important}
+.grid-4{grid-template-columns:1fr 1fr!important}
+}
+@media (max-width:760px){
+.hide-sm{display:none!important}
+.site-search{width:40px!important}
+.site-search .site-search-label,.site-search .site-search-kbd{display:none}
+.grid-3,.grid-4{grid-template-columns:1fr!important}
+.stack-sm{flex-direction:column!important;align-items:stretch!important}
+.pad-sm{padding-left:18px!important;padding-right:18px!important}
+.frame-scroll{overflow-x:auto!important}
+.site-foot-row{flex-wrap:wrap;row-gap:8px}
+.site-top{padding:0 16px!important;gap:14px!important}
+.hero-h1{font-size:38px!important}
+.hero-pad{padding-top:56px!important}
+}

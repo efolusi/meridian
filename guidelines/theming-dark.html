@@ -1,0 +1,18 @@
+<!-- @dsCard group="Theming" viewport="700x300" name="Dark theme" subtitle='Set data-theme="dark" on any subtree — semantic tokens remap' -->
+<!DOCTYPE html><html><head><meta charset="utf-8"><link rel="stylesheet" href="../styles.css">
+<style>body{margin:0;font-family:var(--font-sans)}
+.pane{flex:1;padding:18px;background:var(--surface-page);color:var(--text-primary)}
+.chip{display:inline-flex;align-items:center;gap:6px;height:20px;padding:0 8px;border-radius:999px;background:var(--success-100);color:var(--success-600);font-size:12px;font-weight:500}
+.chip i{width:6px;height:6px;border-radius:99px;background:currentColor}
+.crd{background:var(--surface-card);border:1px solid var(--border-default);border-radius:var(--radius-md);padding:16px;margin-top:12px}
+.lbl{font-size:13px;color:var(--text-muted)}.val{font-family:var(--font-mono);font-size:24px;font-weight:600;margin-top:4px}
+.btn{display:inline-flex;align-items:center;height:30px;padding:0 12px;border-radius:var(--radius-sm);background:var(--accent);color:var(--accent-contrast);font-size:13px;font-weight:600;margin-top:12px}
+.tag{font-family:var(--font-mono);font-size:10px;color:var(--text-muted)}</style></head>
+<body style="display:flex">
+<div class="pane"><span class="tag">:root (light)</span>
+<div class="crd"><div style="display:flex;justify-content:space-between;align-items:center"><span class="lbl">Monthly recurring revenue</span><span class="chip"><i></i>Active</span></div>
+<div class="val">$48.2k</div><span class="btn">View report</span></div></div>
+<div class="pane" data-theme="dark"><span class="tag">[data-theme="dark"]</span>
+<div class="crd"><div style="display:flex;justify-content:space-between;align-items:center"><span class="lbl">Monthly recurring revenue</span><span class="chip"><i></i>Active</span></div>
+<div class="val">$48.2k</div><span class="btn">View report</span></div></div>
+</body></html>

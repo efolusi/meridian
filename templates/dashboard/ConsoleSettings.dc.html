@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet><script src="./ds-base.js"></script><style>@view-transition{navigation:auto}::view-transition-group(*){animation-duration:160ms}@media (prefers-reduced-motion:reduce){::view-transition-group(*),::view-transition-old(*),::view-transition-new(*){animation:none!important}}html{background:#FAF9F6}</style></helmet>
+<div data-theme="{{ theme }}" data-density="{{ density }}" style="min-height:100vh;background:var(--surface-page);color:var(--text-primary);font-family:var(--font-sans)">
+<header style="view-transition-name:shell-top;display:flex;align-items:center;gap:12px;height:60px;padding:0 24px;border-bottom:1px solid var(--border-default)">
+<img src="../../assets/logo.png" alt="" style="width:30px;height:30px">
+<span style="font-family:var(--font-display);font-weight:680;letter-spacing:-0.02em;font-size:19px">Efolusi</span>
+<span style="font-size:14px;color:var(--text-muted)">Console</span>
+<nav style="display:flex;gap:2px;margin-left:16px">
+<a href="./Dashboard.dc.html" style="padding:6px 12px;border-radius:var(--radius-sm);font-size:14px;font-weight:500;color:var(--text-secondary);text-decoration:none" style-hover="background:var(--surface-sunken);color:var(--text-primary)">Overview</a>
+<a href="./Customers.dc.html" style="padding:6px 12px;border-radius:var(--radius-sm);font-size:14px;font-weight:500;color:var(--text-secondary);text-decoration:none" style-hover="background:var(--surface-sunken);color:var(--text-primary)">Customers</a>
+<a href="./ConsoleSettings.dc.html" style="padding:6px 12px;border-radius:var(--radius-sm);font-size:14px;font-weight:600;background:var(--accent-subtle);color:var(--brand-700);text-decoration:none">Settings</a>
+</nav>
+<div style="margin-left:auto;display:flex;gap:8px">
+<x-import component-from-global-scope="EfolusiDesignSystem_4ffc3d.Button" variant="secondary" icon-left="download" hint-size="90px,36px">Export</x-import>
+<x-import component-from-global-scope="EfolusiDesignSystem_4ffc3d.Button" icon-left="plus" hint-size="120px,36px">New project</x-import>
+</div>
+</header>
+<main style="padding:24px;display:flex;flex-direction:column;gap:20px;max-width:760px;margin:0 auto">
+<div>
+<h1 style="font-size:26px;font-weight:680;font-family:var(--font-display);letter-spacing:-0.02em;margin:0">Settings</h1>
+<p style="margin:4px 0 0;font-size:14px;color:var(--text-secondary)">Workspace, keys, and members — changes apply to everyone.</p>
+</div>
+<div style="background:var(--surface-card);border:1px solid var(--border-default);border-radius:var(--radius-md)">
+<div style="padding:16px 20px;border-bottom:1px solid var(--border-default);font-size:16px;font-weight:600">Workspace</div>
+<div style="padding:20px;display:flex;flex-direction:column;gap:16px">
+<x-import component-from-global-scope="EfolusiDesignSystem_4ffc3d.Input" label="Workspace name" placeholder="Efolusi, Inc." hint-size="100%,64px"></x-import>
+<x-import component-from-global-scope="EfolusiDesignSystem_4ffc3d.Input" label="Billing email" placeholder="finance@efolusi.com" icon-left="mail" hint-size="100%,64px"></x-import>
+<div><x-import component-from-global-scope="EfolusiDesignSystem_4ffc3d.Button" variant="secondary" size="sm" hint-size="110px,32px">Save changes</x-import></div>
+</div>
+</div>
+<div style="background:var(--surface-card);border:1px solid var(--border-default);border-radius:var(--radius-md)">
+<div style="padding:16px 20px;border-bottom:1px solid var(--border-default);font-size:16px;font-weight:600">API keys</div>
+<div style="padding:20px;display:flex;flex-direction:column;gap:12px">
+<x-import component-from-global-scope="EfolusiDesignSystem_4ffc3d.CopyField" label="Production key" value="ef_live_9a41kzt3m8q2c2d8" secret="{{ true }}" hint-size="100%,64px"></x-import>
+<div style="display:flex;align-items:center;gap:12px">
+<x-import component-from-global-scope="EfolusiDesignSystem_4ffc3d.Button" variant="secondary" size="sm" icon-left="refresh-cw" hint-size="100px,32px">Rotate</x-import>
+<span style="font-size:12.5px;color:var(--text-muted)">Last rotated 12 days ago by Femi Alade</span>
+</div>
+</div>
+</div>
+<div style="background:var(--surface-card);border:1px solid var(--border-default);border-radius:var(--radius-md)">
+<div style="display:flex;align-items:center;padding:16px 20px;border-bottom:1px solid var(--border-default)"><span style="font-size:16px;font-weight:600">Members</span><span style="margin-left:8px;font-size:13px;color:var(--text-muted)">3 of 50 seats</span><div style="margin-left:auto"><x-import component-from-global-scope="EfolusiDesignSystem_4ffc3d.Button" variant="secondary" size="sm" icon-left="plus" hint-size="86px,32px">Invite</x-import></div></div>
+<div style="display:flex;flex-direction:column">
+<div style="display:flex;align-items:center;gap:12px;padding:14px 20px;border-bottom:1px solid var(--border-default)">
+<span style="width:28px;height:28px;border-radius:999px;background:var(--brand-950);color:var(--brand-50);display:grid;place-items:center;font-size:11px;font-weight:600">AO</span>
+<span><span style="display:block;font-size:14px;font-weight:600">Ada Obi</span><span style="display:block;font-size:12.5px;color:var(--text-muted)">ada@efolusi.com</span></span>
+<span style="margin-left:auto;font-size:13px;color:var(--text-secondary)">Owner</span>
+</div>
+<div style="display:flex;align-items:center;gap:12px;padding:14px 20px;border-bottom:1px solid var(--border-default)">
+<span style="width:28px;height:28px;border-radius:999px;background:var(--brand-950);color:var(--brand-50);display:grid;place-items:center;font-size:11px;font-weight:600">FA</span>
+<span><span style="display:block;font-size:14px;font-weight:600">Femi Alade</span><span style="display:block;font-size:12.5px;color:var(--text-muted)">femi@efolusi.com</span></span>
+<span style="margin-left:auto;font-size:13px;color:var(--text-secondary)">Admin</span>
+</div>
+<div style="display:flex;align-items:center;gap:12px;padding:14px 20px">
+<span style="width:28px;height:28px;border-radius:999px;background:var(--brand-950);color:var(--brand-50);display:grid;place-items:center;font-size:11px;font-weight:600">JP</span>
+<span><span style="display:block;font-size:14px;font-weight:600">June Park</span><span style="display:block;font-size:12.5px;color:var(--text-muted)">june@efolusi.com</span></span>
+<span style="margin-left:auto;font-size:13px;color:var(--text-secondary)">Member</span>
+</div>
+</div>
+</div>
+<div style="background:var(--surface-card);border:1px solid var(--danger-300);border-radius:var(--radius-md);padding:20px;display:flex;align-items:center;gap:16px;margin-bottom:24px">
+<div style="flex:1"><div style="font-size:15px;font-weight:600">Delete workspace</div><p style="margin:3px 0 0;font-size:13.5px;color:var(--text-secondary)">Removes all projects, keys, and member access. This cannot be undone.</p></div>
+<x-import component-from-global-scope="EfolusiDesignSystem_4ffc3d.Button" variant="danger" size="sm" hint-size="150px,32px">Delete workspace</x-import>
+</div>
+</main>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:1280,&quot;height&quot;:800},&quot;theme&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;light&quot;,&quot;dark&quot;],&quot;default&quot;:&quot;light&quot;,&quot;tsType&quot;:&quot;'light'|'dark'&quot;,&quot;section&quot;:&quot;Appearance&quot;},&quot;density&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;comfortable&quot;,&quot;compact&quot;],&quot;default&quot;:&quot;comfortable&quot;,&quot;tsType&quot;:&quot;'comfortable'|'compact'&quot;,&quot;section&quot;:&quot;Appearance&quot;}}">
+class Component extends DCLogic {
+  renderVals() {
+    return { theme: this.props.theme ?? 'light', density: this.props.density ?? 'comfortable' };
+  }
+}
+</script>
+</body>
+</html>
