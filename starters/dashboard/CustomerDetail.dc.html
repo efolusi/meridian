@@ -7,7 +7,7 @@
 </head>
 <body>
 <x-dc>
-<helmet><script src="./ds-base.js"></script><style>@view-transition{navigation:auto}::view-transition-group(*){animation-duration:160ms}@media (prefers-reduced-motion:reduce){::view-transition-group(*),::view-transition-old(*),::view-transition-new(*){animation:none!important}}html{background:#FAF9F6}</style></helmet>
+<helmet><script src="./ds-base.js"></script><style>@view-transition{navigation:auto}::view-transition-group(*){animation-duration:160ms}@media (prefers-reduced-motion:reduce){::view-transition-group(*),::view-transition-old(*),::view-transition-new(*){animation:none!important}}html{background:#FAF9F6}@media(max-width:760px){.cd-kpis{grid-template-columns:1fr!important}.cd-split{grid-template-columns:1fr!important}}</style></helmet>
 <div data-theme="{{ theme }}" data-density="{{ density }}" style="min-height:100vh;background:var(--surface-page);color:var(--text-primary);font-family:var(--font-sans)">
 <header style="view-transition-name:shell-top;display:flex;align-items:center;gap:12px;height:60px;padding:0 24px;border-bottom:1px solid var(--border-default)">
 <img src="../../assets/logo.png" alt="" style="width:30px;height:30px">
@@ -36,7 +36,7 @@
 <x-import component-from-global-scope="EfolusiDesignSystem_4ffc3d.Button" variant="secondary" icon-left="credit-card" hint-size="130px,36px">Manage plan</x-import>
 </div>
 </div>
-<div style="display:grid;grid-template-columns:repeat(3,1fr);gap:16px">
+<div class="cd-kpis" style="display:grid;grid-template-columns:repeat(3,1fr);gap:16px">
 <div style="background:var(--surface-card);border:1px solid var(--border-default);border-radius:var(--radius-md);padding:16px">
 <div style="font-size:13px;color:var(--text-muted);font-weight:500">MRR</div>
 <div style="display:flex;align-items:baseline;gap:8px;margin-top:6px"><span style="font-family:var(--font-mono);font-size:26px;font-weight:600">$2,400</span><span style="font-size:12px;font-weight:500;color:var(--success-600)">↑ 9.1%</span></div>
@@ -50,7 +50,7 @@
 <div style="display:flex;align-items:baseline;gap:8px;margin-top:6px"><span style="font-family:var(--font-mono);font-size:26px;font-weight:600">412k</span><span style="font-size:12px;font-weight:500;color:var(--success-600)">↑ 4.7%</span></div>
 </div>
 </div>
-<div style="display:grid;grid-template-columns:2fr 1fr;gap:16px;align-items:start">
+<div class="cd-split" style="display:grid;grid-template-columns:2fr 1fr;gap:16px;align-items:start">
 <div style="background:var(--surface-card);border:1px solid var(--border-default);border-radius:var(--radius-md)">
 <div style="padding:16px 20px;border-bottom:1px solid var(--border-default);font-size:16px;font-weight:600">Activity</div>
 <table style="width:100%;border-collapse:collapse">
@@ -58,7 +58,7 @@
 <tr><td style="padding:var(--table-pad-y) var(--table-pad-x);font-size:14px;border-bottom:1px solid var(--border-default)">Invoice <span style="font-family:var(--font-mono);font-size:13px">#10422</span> paid — $2,400</td><td style="padding:var(--table-pad-y) var(--table-pad-x);font-size:13px;color:var(--text-muted);text-align:right;white-space:nowrap">1h ago</td></tr>
 <tr><td style="padding:var(--table-pad-y) var(--table-pad-x);font-size:14px;border-bottom:1px solid var(--border-default)">6 seats added by <strong>k.mensah@bloomhealth.co</strong></td><td style="padding:var(--table-pad-y) var(--table-pad-x);font-size:13px;color:var(--text-muted);text-align:right;white-space:nowrap">Yesterday</td></tr>
 <tr><td style="padding:var(--table-pad-y) var(--table-pad-x);font-size:14px;border-bottom:1px solid var(--border-default)">Production API key rotated</td><td style="padding:var(--table-pad-y) var(--table-pad-x);font-size:13px;color:var(--text-muted);text-align:right;white-space:nowrap">Jul 12</td></tr>
-<tr><td style="padding:var(--table-pad-y) var(--table-pad-x);font-size:14px">Upgraded Team → Scale</td><td style="padding:var(--table-pad-y) var(--table-pad-x);font-size:13px;color:var(--text-muted);text-align:right;white-space:nowrap">Jun 30</td></tr>
+<tr><td style="padding:var(--table-pad-y) var(--table-pad-x);font-size:14px">Upgraded Growth → Scale</td><td style="padding:var(--table-pad-y) var(--table-pad-x);font-size:13px;color:var(--text-muted);text-align:right;white-space:nowrap">Jun 30</td></tr>
 </tbody>
 </table>
 </div>

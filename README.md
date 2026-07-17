@@ -1,17 +1,17 @@
 # Meridian — the Efolusi design system
 
-Efolusi builds multiple SaaS products for both B2B and B2C. **Meridian** is the company's open-source design system — tokens, typography, components, and full UI kits — built to scale with every product we ship. One visual language across every Efolusi product: the admin console, auth, marketing site, and docs.
+Efolusi builds multiple SaaS products for both B2B and B2C. **Meridian** is the company's open-source design system — tokens, typography, components, and full product showcases — built to scale with every product we ship. One visual language across every Efolusi product: the admin console, auth, marketing site, and docs.
 
 ## Products
 
 - **Agent** — autonomous AI operator: plans, runs tools, ships reviewable work → ChatMessage, PromptComposer, Steps, Terminal.
 - **Infra** — centralized infrastructure: clouds, SSH, databases, caches, SSL, domains, DNS → StatusDot, KeyValueList, CopyField, Table, Terminal.
-- **Content** — node AI scaling content across text, image, audio, video → FileDrop, FileTile, Steps. (No dedicated kit yet — Tools shows the file patterns.)
+- **Content** — node AI scaling content across text, image, audio, video → FileDrop, FileTile, Steps. (No dedicated showcase yet — Tools shows the file patterns.)
 - **Tools** — all-in-one file utilities: convert, encode/decode, scan → FileDrop, FileTile, Progress.
 - **Trader** — trading robot AI → Sparkline, Stat, Table.
 - **Social Finance** — shared portfolios, social signals → Avatar, Sparkline, mono money.
 
-**Sources provided:** a single brand mark (`assets/logo.png`, an owl in cocoa/caramel/cream — uploaded by the team) and directional answers (bold & expressive personality; warm sand neutrals; a blue primary — later corrected: the palette now derives entirely from the logo; humanist sans type; subtle 4px radii; comfortable density; light mode only; Lucide icons; springy motion). No codebase, Figma, or existing product UI was provided — every component and screen here is an original authoring of the system, not a recreation.
+**Sources provided:** a single brand mark (`assets/logo.png`, an owl in cocoa/caramel/cream — uploaded by the team) and directional answers (bold & expressive personality; warm sand neutrals; a blue primary — later corrected: the palette now derives entirely from the logo; humanist sans type; subtle 4px radii; comfortable density; light mode only; Lucide icons; springy motion). No codebase, design files, or existing product UI was provided — every component and screen here is an original authoring of the system, not a recreation.
 
 ## Brand identity
 
@@ -111,7 +111,7 @@ The layout is Meridian's own, organized by purpose: the system core stays at the
 
 - No original font binaries were provided; Bricolage Grotesque, Figtree, and JetBrains Mono (all OFL, from google/fonts) are the chosen substitutes. Replace the files in `assets/fonts/` to swap.
 - The logo is PNG only; an SVG master would improve crispness at large sizes.
-- All UI kit screens are original demonstrations of the system, since no existing product UI was available to recreate.
+- All showcase screens are original demonstrations of the system, since no existing product UI was available to recreate.
 
 ## License
 

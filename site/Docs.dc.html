@@ -14,7 +14,7 @@
 <div style="min-height:100vh;background:var(--surface-page);color:var(--text-primary);font-family:var(--font-sans);display:flex;flex-direction:column">
 <header class="site-top" style="view-transition-name:site-top;position:sticky;top:0;z-index:50;display:flex;align-items:center;gap:26px;height:58px;padding:0 28px;border-bottom:1px solid var(--border-default);background:var(--surface-page)">
 <a href="./DsSite.dc.html" style="display:flex;align-items:center;gap:9px;text-decoration:none;color:var(--text-primary)"><img src="../assets/logo.png" alt="Meridian" style="width:24px;height:24px"><span style="font-family:var(--font-display);font-weight:680;letter-spacing:-0.02em;font-size:16px">Meridian</span><span class="hide-md" style="font-family:var(--font-mono);font-size:12.5px;color:var(--text-muted)">by Efolusi</span></a>
-<nav class="site-nav" style="display:flex;gap:20px;font-size:14px">
+<nav class="site-nav" style="display:flex;gap:20px;font-size:var(--text-md)">
 <a href="./Docs.dc.html" style="color:var(--text-primary);font-weight:600;text-decoration:none">Docs</a>
 <a href="./Components.dc.html" style="color:var(--text-secondary);text-decoration:none" style-hover="color:var(--text-primary)">Components</a>
 <a href="./Blocks.dc.html" style="color:var(--text-secondary);text-decoration:none" style-hover="color:var(--text-primary)">Blocks</a>
@@ -25,9 +25,9 @@
 </nav>
 <div style="margin-left:auto;display:flex;align-items:center;gap:14px">
 <details class="site-menu"><summary aria-label="Menu"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="4" x2="20" y1="6" y2="6"></line><line x1="4" x2="20" y1="12" y2="12"></line><line x1="4" x2="20" y1="18" y2="18"></line></svg></summary><nav class="site-menu__panel"><a href="./Docs.dc.html">Docs</a><a href="./Components.dc.html">Components</a><a href="./Blocks.dc.html">Blocks</a><a href="./Examples.dc.html">Examples</a><a href="./Charts.dc.html">Charts</a><a href="./Themes.dc.html">Themes</a><a href="./Colors.dc.html">Colors</a><a href="https://github.com/efolusi/meridian">GitHub ↗</a></nav></details>
-<x-import component="SiteSearch" from="./SiteSearch.jsx" hint-size="220px,32px"></x-import>
+<x-import component="SiteSearch" from="./SiteSearch.jsx" hint-size="220px,36px"></x-import>
 <a href="https://github.com/efolusi/meridian" class="hide-sm" style="font-size:13.5px;color:var(--text-secondary);text-decoration:none" style-hover="color:var(--text-primary)">GitHub ↗</a>
-<button onClick="{{ toggleTheme }}" style="font:inherit;font-size:13px;font-weight:500;color:var(--text-secondary);background:transparent;border:1px solid var(--border-strong);border-radius:var(--radius-full);padding:4px 12px;cursor:pointer;user-select:none" style-hover="color:var(--text-primary);background:var(--surface-subtle)">{{ themeLabel }}</button>
+<button onClick="{{ toggleTheme }}" class="site-theme" aria-label="Switch theme" title="Switch theme" style-hover="color:var(--text-primary);background:var(--surface-sunken)"><svg class="icon-sun" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="4"></circle><path d="M12 2v2"></path><path d="M12 20v2"></path><path d="m4.93 4.93 1.41 1.41"></path><path d="m17.66 17.66 1.41 1.41"></path><path d="M2 12h2"></path><path d="M20 12h2"></path><path d="m6.34 17.66-1.41 1.41"></path><path d="m19.07 4.93-1.41 1.41"></path></svg><svg class="icon-moon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"></path></svg></button>
 </div>
 </header>
 <div style="display:flex;max-width:1440px;margin:0 auto;width:100%;flex:1">
@@ -124,6 +124,7 @@ class Component extends DCLogic {
     const code = (lang, title, codeStr) => ({ isCode: true, lang, title, code: codeStr });
     const list = items => ({ isList: true, items: items.map(x => ({ k: x[0], v: x[1] })) });
     const bundleSnippet = '<link rel="stylesheet" href="meridian/styles.css">\n<' + SC + ' src="https://unpkg.com/react@18.3.1/umd/react.production.min.js"></' + SC + '>\n<' + SC + ' src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.production.min.js"></' + SC + '>\n<' + SC + ' src="meridian/_ds_bundle.js"></' + SC + '>';
+    const hostedSnippet = '<link rel="stylesheet" href="https://YOUR-DEPLOYMENT/styles.css">\n<' + SC + ' src="https://unpkg.com/react@18.3.1/umd/react.production.min.js"></' + SC + '>\n<' + SC + ' src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.production.min.js"></' + SC + '>\n<' + SC + ' src="https://YOUR-DEPLOYMENT/_ds_bundle.js"></' + SC + '>';
     this._sections = [
       { group: 'Get started', id: 'introduction', title: 'Introduction', lede: 'Meridian is the open-source design system behind every Efolusi product. 104 accessible components, 158 tokens, and full product kits — with no build step.', blocks: [
         p('This is not just a component library. It is the complete working system: the tokens, the components, the blocks, and the product kits that use them, in one repository you can read end to end.'),
@@ -141,7 +142,7 @@ class Component extends DCLogic {
           ['tokens/', 'Color ramps, semantic roles, typography, spacing, effects — light, dark, and compact.'],
           ['blocks/', 'Pre-composed marketing and app sections.'],
           ['showcases/', 'Eight complete product interfaces with connected journeys.'],
-          ['templates/', 'Page shells: dashboard, auth, marketing, docs, app.'],
+          ['starters/', '5 copyable page journeys: dashboard, auth, marketing, docs, app.'],
           ['guidelines/', 'Accessibility, form patterns, and governance rules.'],
         ]),
       ] },
@@ -151,6 +152,13 @@ class Component extends DCLogic {
         code('html', 'index.html', bundleSnippet),
         p('Every component is now available on the global namespace:'),
         code('javascript', 'app.js', "const { Button, Card, Dialog } = window.EfolusiDesignSystem_4ffc3d;"),
+        h2('hosted', 'Load from the hosted site'),
+        p('The docs deployment doubles as a CDN. Point the stylesheet and bundle at it instead of copying files — replace YOUR-DEPLOYMENT with the deployment address (the workers.dev URL, or the custom domain once connected):'),
+        code('html', 'index.html', hostedSnippet),
+        h2('registry', 'Install from the registry'),
+        p('The deployment also serves a machine-readable registry: the index at /site/registry.json and one file per component at /site/registry/<name>.json, each with source, types, and usage guide embedded. Any tool that understands the open registry-item schema can install components straight from those URLs.'),
+        h2('deploy', 'Deploy your own'),
+        p('The repository ships deploy-ready for Cloudflare: connect it as a Git project with no build command and the root as output directory, and every push deploys. Cache headers, the root redirect, the 404 page, and registry CORS are already configured in _headers, _redirects, and wrangler.jsonc.'),
         h2('vendor', 'Vendor single components'),
         p('Prefer owning the source? Copy the component file and its types straight into your codebase — MIT, no attribution required. Components import only React, the Icon component, and the shared stylesheet tokens.'),
         code('text', 'terminal', 'cp meridian/components/forms/Button.jsx  src/ui/\ncp meridian/components/forms/Button.d.ts src/ui/'),
@@ -295,7 +303,6 @@ class Component extends DCLogic {
     const prev = this.state.si > 0 ? all[this.state.si - 1] : null;
     const next = this.state.si < all.length - 1 ? all[this.state.si + 1] : null;
     return {
-      themeLabel: this.state.dark ? 'Light' : 'Dark',
       toggleTheme: () => {
         const nextT = this.state.dark ? 'light' : 'dark';
         document.documentElement.setAttribute('data-theme', nextT);

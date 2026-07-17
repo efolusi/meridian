@@ -1,6 +1,6 @@
 ---
 name: meridian-design
-description: Use this skill to generate well-branded interfaces and assets with Meridian, the Efolusi design system, either for production or throwaway prototypes/mocks/etc. Contains essential design guidelines, colors, type, fonts, assets, and UI kit components for prototyping.
+description: Use this skill to generate well-branded interfaces and assets with Meridian, the Efolusi design system, either for production or throwaway prototypes/mocks/etc. Contains essential design guidelines, colors, type, fonts, assets, and ready-made product screens for prototyping.
 user-invocable: true
 ---
 

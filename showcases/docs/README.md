@@ -1,4 +1,4 @@
-# Efolusi Docs — UI kit
+# Efolusi Docs — product demo
 
 docs.efolusi.com: top bar with search, left nav tree, article with code blocks + callout, right table of contents. Interactive: sidebar switches between articles, copy buttons on code.
 

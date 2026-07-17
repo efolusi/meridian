@@ -1,4 +1,4 @@
-# Efolusi Trader — UI kit
+# Efolusi Trader — product demo
 
 The B2C trading + social finance surface: portfolio header with trend, positions table with P&L and sparklines, strategy card with guardrails, social signal feed.
 

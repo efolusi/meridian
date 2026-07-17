@@ -1,4 +1,4 @@
-# Efolusi Tools — UI kit
+# Efolusi Tools — product demo
 
 The B2C all-in-one converter: upload → convert → download wizard with a live queue.
 

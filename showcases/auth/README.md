@@ -1,4 +1,4 @@
-# Efolusi Auth — UI kit
+# Efolusi Auth — product demo
 
 Shared sign-in / create-account screens for all Efolusi products. Split layout: brand panel (cocoa, owl, rotating customer quote) + form panel. Interactive: toggle between sign in and sign up, password reveal, fake submit with loading → success.
 

@@ -1,4 +1,4 @@
-# Efolusi Console — UI kit
+# Efolusi Console — product demo
 
 The admin surface shared by Efolusi's B2B products: overview dashboard, customers table, and workspace settings. Original demonstration screens (no prior product existed to recreate).
 

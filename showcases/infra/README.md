@@ -1,4 +1,4 @@
-# Efolusi Infra — UI kit
+# Efolusi Infra — product demo
 
 The infrastructure control plane: resources / domains / certificates tables, live status, detail drawer with records + logs, connect flow.
 

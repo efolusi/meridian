@@ -1,4 +1,4 @@
-# Efolusi.com — marketing website UI kit
+# Efolusi.com — marketing website demo
 
 The public homepage: header, hero with live product preview, product trio, brand band, pricing, footer. Original demonstration of the system (no prior site existed).
 

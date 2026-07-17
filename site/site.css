@@ -16,7 +16,7 @@
 }
 @media (max-width:760px){
 .hide-sm{display:none!important}
-.site-search{width:40px!important}
+.site-search{width:36px!important;justify-content:center!important;padding:0!important;border-color:var(--border-strong)!important;background:transparent!important}
 .site-search .site-search-label,.site-search .site-search-kbd{display:none}
 .grid-3,.grid-4{grid-template-columns:1fr!important}
 .stack-sm{flex-direction:column!important;align-items:stretch!important}
@@ -35,7 +35,7 @@
 .site-menu>summary:focus-visible{outline:none;box-shadow:var(--focus-ring)}
 .site-menu[open]>summary{background:var(--surface-sunken)}
 .site-menu__panel{position:absolute;top:calc(100% + 8px);right:0;min-width:190px;background:var(--surface-card);border:1px solid var(--border-strong);border-radius:var(--radius-md);box-shadow:var(--shadow-md);padding:6px;z-index:60;display:flex;flex-direction:column}
-.site-menu__panel a{display:block;padding:8px 12px;border-radius:var(--radius-sm);font-size:14px;color:var(--text-primary)!important;text-decoration:none}
+.site-menu__panel a{display:block;padding:8px 12px;border-radius:var(--radius-sm);font-size:var(--text-md);color:var(--text-primary)!important;text-decoration:none}
 .site-menu__panel a:hover{background:var(--surface-sunken)}
 .side-drawer{display:none}
 .side-drawer>summary{list-style:none;display:flex;align-items:center;justify-content:space-between;gap:10px;padding:9px 14px;border:1px solid var(--border-strong);border-radius:var(--radius-sm);cursor:pointer;font-size:14px;font-weight:500;background:var(--surface-card)}
@@ -55,3 +55,11 @@
 @media (max-width:900px){
 .side-drawer{display:block;margin:0 0 20px}
 }
+
+/* Header control consistency: 36px hamburger, search, and theme toggle */
+.site-theme{display:inline-flex;align-items:center;justify-content:center;width:36px;height:36px;border:1px solid var(--border-strong);border-radius:var(--radius-sm);background:transparent;color:var(--text-secondary);cursor:pointer;flex:none}
+.site-theme:focus-visible{outline:none;box-shadow:var(--focus-ring)}
+.site-search:focus-visible{outline:none;box-shadow:var(--focus-ring)}
+.site-theme .icon-moon{display:none}
+[data-theme="dark"] .site-theme .icon-sun{display:none}
+[data-theme="dark"] .site-theme .icon-moon{display:block}

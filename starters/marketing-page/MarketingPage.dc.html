@@ -8,9 +8,9 @@
 <body>
 <x-dc>
 <!-- @template name="Marketing page" description="Marketing journey (3 pages): home, pricing, contact — linked to auth + docs" -->
-<helmet><script src="./ds-base.js"></script><style>@view-transition{navigation:auto}::view-transition-group(*){animation-duration:160ms}@media (prefers-reduced-motion:reduce){::view-transition-group(*),::view-transition-old(*),::view-transition-new(*){animation:none!important}}html{background:#FAF9F6}</style></helmet>
+<helmet><script src="./ds-base.js"></script><style>@view-transition{navigation:auto}::view-transition-group(*){animation-duration:160ms}@media (prefers-reduced-motion:reduce){::view-transition-group(*),::view-transition-old(*),::view-transition-new(*){animation:none!important}}html{background:#FAF9F6}@media(max-width:760px){.mk-products{grid-template-columns:1fr!important}}</style></helmet>
 <div style="min-height:100vh;background:var(--surface-page);color:var(--text-primary);font-family:var(--font-sans)">
-<header style="view-transition-name:shell-top;display:flex;align-items:center;gap:28px;height:64px;padding:0 32px;border-bottom:1px solid var(--border-default);max-width:1200px;margin:0 auto">
+<header style="view-transition-name:shell-top;display:flex;flex-wrap:wrap;align-items:center;gap:28px;min-height:64px;padding:0 32px;border-bottom:1px solid var(--border-default);max-width:1200px;margin:0 auto">
 <span style="display:flex;align-items:center;gap:10px">
 <img src="../../assets/logo.png" alt="" style="width:30px;height:30px">
 <span style="font-family:var(--font-display);font-weight:680;letter-spacing:-0.02em;font-size:20px">Efolusi</span>
@@ -36,7 +36,7 @@
 </div>
 </section>
 <section style="max-width:1200px;margin:0 auto;padding:0 32px 96px">
-<div style="display:grid;grid-template-columns:repeat(3,1fr);gap:20px">
+<div class="mk-products" style="display:grid;grid-template-columns:repeat(3,1fr);gap:20px">
 <div style="background:var(--surface-card);border:1px solid var(--border-default);border-radius:var(--radius-md);padding:24px">
 <h3 style="font-size:21px;font-weight:600;font-family:var(--font-display);letter-spacing:-0.02em;margin:0">Agent</h3>
 <p style="font-size:14.5px;line-height:1.6;color:var(--text-secondary);margin:8px 0 0">Autonomous AI that plans, executes, and reports — with every step logged.</p>
