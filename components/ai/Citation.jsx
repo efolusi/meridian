@@ -6,7 +6,7 @@ const CSS = `
 .ef-citation:hover{border-color:var(--brand-700)}
 .ef-citation:focus-visible{outline:none;box-shadow:var(--focus-ring)}
 .ef-citation__wrap{position:relative;display:inline}
-.ef-citation__pop{position:absolute;bottom:calc(100% + 8px);left:0;width:280px;background:var(--surface-card);border:1px solid var(--border-strong);border-radius:var(--radius-md);box-shadow:var(--shadow-md);padding:12px;z-index:85;animation:ef-citation-in var(--dur-fast) var(--ease-out);cursor:default;text-align:left}
+.ef-citation__pop{position:absolute;bottom:calc(100% + 8px);left:0;width:280px;background:var(--surface-card);border:1px solid var(--border-strong);border-radius:var(--radius-md);box-shadow:var(--shadow-md);padding:12px;z-index:var(--z-popover);animation:ef-citation-in var(--dur-fast) var(--ease-out);cursor:default;text-align:left}
 @keyframes ef-citation-in{from{opacity:0;transform:translateY(3px)}}
 .ef-citation__pop-name{display:flex;align-items:center;gap:6px;font-family:var(--font-mono);font-size:11px;color:var(--text-muted)}
 .ef-citation__pop-title{font-size:13.5px;font-weight:600;color:var(--text-primary);line-height:1.4;margin-top:5px}

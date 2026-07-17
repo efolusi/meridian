@@ -3,7 +3,7 @@ import { Icon } from '../icons/Icon.jsx';
 import { injectEfCss } from '../forms/Button.jsx';
 const CSS = `
 .ef-menu{position:relative;display:inline-flex}
-.ef-menu__panel{position:absolute;top:calc(100% + 6px);min-width:190px;background:var(--surface-card);border:1px solid var(--border-strong);border-radius:var(--radius-md);box-shadow:var(--shadow-md);padding:4px;z-index:80;animation:ef-menu-in var(--dur-fast) var(--ease-out)}
+.ef-menu__panel{position:absolute;top:calc(100% + 6px);min-width:190px;background:var(--surface-card);border:1px solid var(--border-strong);border-radius:var(--radius-md);box-shadow:var(--shadow-md);padding:4px;z-index:var(--z-dropdown);animation:ef-menu-in var(--dur-fast) var(--ease-out)}
 .ef-menu__panel--left{left:0}
 .ef-menu__panel--right{right:0}
 @keyframes ef-menu-in{from{opacity:0;transform:translateY(-3px)}}

@@ -2,7 +2,7 @@ import React from 'react';
 import { injectEfCss } from '../forms/Button.jsx';
 import { Icon } from '../icons/Icon.jsx';
 const CSS = `
-.ef-ctx__panel{position:fixed;min-width:190px;background:var(--surface-card);border:1px solid var(--border-strong);border-radius:var(--radius-md);box-shadow:var(--shadow-md);padding:4px;z-index:90;animation:ef-ctx-in var(--dur-fast) var(--ease-out)}
+.ef-ctx__panel{position:fixed;min-width:190px;background:var(--surface-card);border:1px solid var(--border-strong);border-radius:var(--radius-md);box-shadow:var(--shadow-md);padding:4px;z-index:var(--z-dropdown);animation:ef-ctx-in var(--dur-fast) var(--ease-out)}
 @keyframes ef-ctx-in{from{opacity:0;transform:scale(.98)}}
 .ef-ctx__item{display:flex;align-items:center;gap:9px;width:100%;height:32px;padding:0 10px;border:none;border-radius:var(--radius-sm);background:none;cursor:pointer;text-align:left;font-family:var(--font-sans);font-size:var(--text-sm);color:var(--text-primary);transition:background var(--dur-fast) var(--ease-out)}
 .ef-ctx__item:hover:not(:disabled){background:var(--surface-sunken)}

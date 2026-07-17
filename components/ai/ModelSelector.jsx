@@ -8,7 +8,7 @@ const CSS = `
 .ef-modelsel__btn:focus-visible{outline:none;box-shadow:var(--focus-ring)}
 .ef-modelsel__provider{font-size:11.5px;color:var(--text-muted);font-weight:400}
 .ef-modelsel__chev{display:inline-flex;color:var(--text-muted)}
-.ef-modelsel__panel{position:absolute;bottom:calc(100% + 6px);left:0;min-width:260px;background:var(--surface-card);border:1px solid var(--border-strong);border-radius:var(--radius-md);box-shadow:var(--shadow-md);padding:4px;z-index:80;animation:ef-modelsel-in var(--dur-fast) var(--ease-out)}
+.ef-modelsel__panel{position:absolute;bottom:calc(100% + 6px);left:0;min-width:260px;background:var(--surface-card);border:1px solid var(--border-strong);border-radius:var(--radius-md);box-shadow:var(--shadow-md);padding:4px;z-index:var(--z-dropdown);animation:ef-modelsel-in var(--dur-fast) var(--ease-out)}
 .ef-modelsel--down .ef-modelsel__panel{bottom:auto;top:calc(100% + 6px)}
 @keyframes ef-modelsel-in{from{opacity:0;transform:translateY(3px)}}
 .ef-modelsel__item{display:flex;align-items:center;gap:10px;width:100%;padding:8px 10px;border:none;border-radius:var(--radius-sm);background:none;cursor:pointer;text-align:left;font-family:var(--font-sans);transition:background var(--dur-fast) var(--ease-out)}

@@ -12,6 +12,7 @@
 /* Semantic aliases */
 --surface-page:var(--sand-50);--surface-card:#FFFFFF;--surface-sunken:var(--sand-100);--surface-subtle:var(--sand-25);--surface-inverse:var(--sand-950);--surface-brand:var(--brand-900);
 --surface-code:#14110B;--text-code:#E8E3D9;--border-code:rgba(240,235,225,.09);/* code/terminal surface — fixed dark espresso in BOTH themes (never remap) */
+--overlay-scrim:rgba(31,26,20,.45);/* modal/drawer backdrop */--text-on-brand-muted:rgba(248,244,230,.75);/* muted text on brand/inverse surfaces */
 --text-primary:var(--sand-950);--text-secondary:var(--sand-700);--text-muted:#746A55;/* between sand-600/700: ≥4.5:1 on page, card, and sunken */--text-inverse:var(--sand-50);--text-link:var(--brand-700);
 --border-default:var(--sand-200);--border-strong:var(--sand-300);--border-inverse:rgba(250,249,246,.18);
 --accent:var(--brand-950);--accent-hover:#1D0E04;--accent-active:#120801;--accent-subtle:var(--brand-50);--accent-subtle-border:var(--brand-200);--accent-contrast:#FFFFFF;

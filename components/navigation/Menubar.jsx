@@ -7,7 +7,7 @@ const CSS = `
 .ef-menubar__btn{height:28px;padding:0 10px;border:none;border-radius:calc(var(--radius-sm) - 1px);background:none;cursor:pointer;font-family:var(--font-sans);font-size:var(--text-sm);font-weight:500;color:var(--text-primary);transition:background var(--dur-fast) var(--ease-out)}
 .ef-menubar__btn:hover,.ef-menubar__btn--on{background:var(--surface-sunken)}
 .ef-menubar__btn:focus-visible{outline:none;box-shadow:var(--focus-ring)}
-.ef-menubar__panel{position:absolute;top:calc(100% + 6px);left:0;min-width:200px;background:var(--surface-card);border:1px solid var(--border-strong);border-radius:var(--radius-md);box-shadow:var(--shadow-md);padding:4px;z-index:80;animation:ef-menubar-in var(--dur-fast) var(--ease-out)}
+.ef-menubar__panel{position:absolute;top:calc(100% + 6px);left:0;min-width:200px;background:var(--surface-card);border:1px solid var(--border-strong);border-radius:var(--radius-md);box-shadow:var(--shadow-md);padding:4px;z-index:var(--z-dropdown);animation:ef-menubar-in var(--dur-fast) var(--ease-out)}
 @keyframes ef-menubar-in{from{opacity:0;transform:translateY(-3px)}}
 .ef-menubar__item{display:flex;align-items:center;gap:9px;width:100%;height:32px;padding:0 10px;border:none;border-radius:var(--radius-sm);background:none;cursor:pointer;text-align:left;font-family:var(--font-sans);font-size:var(--text-sm);color:var(--text-primary);transition:background var(--dur-fast) var(--ease-out)}
 .ef-menubar__item:hover:not(:disabled){background:var(--surface-sunken)}

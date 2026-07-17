@@ -3,7 +3,7 @@ import { Icon } from '../icons/Icon.jsx';
 import { Kbd } from '../display/Kbd.jsx';
 import { injectEfCss } from '../forms/Button.jsx';
 const CSS = `
-.ef-cmdk__overlay{position:fixed;inset:0;background:rgba(31,26,20,.4);display:flex;justify-content:center;align-items:flex-start;padding:100px 24px 24px;z-index:120;animation:ef-cmdk-fade var(--dur-fast) var(--ease-out)}
+.ef-cmdk__overlay{position:fixed;inset:0;background:var(--overlay-scrim);display:flex;justify-content:center;align-items:flex-start;padding:100px 24px 24px;z-index:var(--z-modal);animation:ef-cmdk-fade var(--dur-fast) var(--ease-out)}
 @keyframes ef-cmdk-fade{from{opacity:0}}
 .ef-cmdk{width:100%;max-width:560px;background:var(--surface-card);border:1px solid var(--border-strong);border-radius:var(--radius-lg);box-shadow:var(--shadow-pop);overflow:hidden;animation:ef-cmdk-in var(--dur-med) var(--ease-out)}
 @keyframes ef-cmdk-in{from{opacity:0;transform:translateY(-6px)}}

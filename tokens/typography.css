@@ -2,7 +2,7 @@
 --font-display:'Bricolage Grotesque','Figtree',ui-sans-serif,system-ui,sans-serif;
 --font-sans:'Figtree',ui-sans-serif,system-ui,-apple-system,'Segoe UI',sans-serif;
 --font-mono:'JetBrains Mono',ui-monospace,'SF Mono',Menlo,monospace;
---text-xs:12px;--text-sm:13px;--text-md:14px;--text-lg:16px;--text-xl:18px;--text-2xl:21px;--text-3xl:26px;--text-4xl:34px;--text-5xl:44px;--text-6xl:60px;--text-7xl:76px;
+--text-2xs:11px;--text-xs:12px;--text-sm:13px;--text-md:14px;--text-lg:16px;--text-xl:18px;--text-2xl:21px;--text-3xl:26px;--text-4xl:34px;--text-5xl:44px;--text-6xl:60px;--text-7xl:76px;
 --leading-tight:1.05;--leading-snug:1.25;--leading-normal:1.5;--leading-relaxed:1.65;
 --tracking-display:-0.02em;--tracking-tight:-0.01em;--tracking-wide:0.06em;
 --weight-regular:400;--weight-medium:500;--weight-semibold:600;--weight-bold:700;--weight-display:680;

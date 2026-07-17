@@ -3,7 +3,7 @@ import { Icon } from '../icons/Icon.jsx';
 import { IconButton } from '../forms/IconButton.jsx';
 import { injectEfCss } from '../forms/Button.jsx';
 const CSS = `
-.ef-dialog__overlay{position:fixed;inset:0;background:rgba(31,26,20,.45);display:flex;align-items:center;justify-content:center;padding:24px;z-index:100;animation:ef-fade var(--dur-med) var(--ease-out)}
+.ef-dialog__overlay{position:fixed;inset:0;background:var(--overlay-scrim);display:flex;align-items:center;justify-content:center;padding:24px;z-index:var(--z-overlay);animation:ef-fade var(--dur-med) var(--ease-out)}
 .ef-dialog{width:100%;max-width:440px;background:var(--surface-card);border-radius:var(--radius-lg);box-shadow:var(--shadow-pop);animation:ef-pop var(--dur-slow) var(--ease-spring);overflow:hidden}
 .ef-dialog:focus{outline:none}
 .ef-dialog__head{display:flex;align-items:flex-start;justify-content:space-between;gap:12px;padding:20px 24px 0}

@@ -10,7 +10,7 @@ const CSS = `
 .ef-combo__input{flex:1;min-width:80px;border:none;outline:none;background:none;font-family:var(--font-sans);font-size:var(--text-md);color:var(--text-primary);height:26px;padding:0 4px}
 .ef-combo__input::placeholder{color:var(--text-muted)}
 .ef-combo__chevron{position:absolute;right:10px;top:50%;transform:translateY(-50%);color:var(--text-muted);display:inline-flex;pointer-events:none}
-.ef-combo__panel{position:absolute;top:calc(100% + 6px);left:0;right:0;max-height:240px;overflow-y:auto;background:var(--surface-card);border:1px solid var(--border-strong);border-radius:var(--radius-md);box-shadow:var(--shadow-md);padding:4px;z-index:80;animation:ef-combo-in var(--dur-fast) var(--ease-out)}
+.ef-combo__panel{position:absolute;top:calc(100% + 6px);left:0;right:0;max-height:240px;overflow-y:auto;background:var(--surface-card);border:1px solid var(--border-strong);border-radius:var(--radius-md);box-shadow:var(--shadow-md);padding:4px;z-index:var(--z-dropdown);animation:ef-combo-in var(--dur-fast) var(--ease-out)}
 @keyframes ef-combo-in{from{opacity:0;transform:translateY(-3px)}}
 .ef-combo__opt{display:flex;align-items:center;gap:9px;width:100%;padding:7px 10px;border:none;border-radius:var(--radius-sm);background:none;cursor:pointer;text-align:left;font-family:var(--font-sans);font-size:var(--text-sm);color:var(--text-primary)}
 .ef-combo__opt--hi{background:var(--surface-sunken)}

@@ -2,9 +2,9 @@ import React from 'react';
 import { IconButton } from '../forms/IconButton.jsx';
 import { injectEfCss } from '../forms/Button.jsx';
 const CSS = `
-.ef-drawer__overlay{position:fixed;inset:0;background:rgba(31,26,20,.45);z-index:100;animation:ef-fade-in var(--dur-med) var(--ease-out)}
+.ef-drawer__overlay{position:fixed;inset:0;background:var(--overlay-scrim);z-index:var(--z-overlay);animation:ef-fade-in var(--dur-med) var(--ease-out)}
 @keyframes ef-fade-in{from{opacity:0}}
-.ef-drawer{position:fixed;top:0;bottom:0;background:var(--surface-card);z-index:101;display:flex;flex-direction:column;box-shadow:var(--shadow-pop)}
+.ef-drawer{position:fixed;top:0;bottom:0;background:var(--surface-card);z-index:var(--z-modal);display:flex;flex-direction:column;box-shadow:var(--shadow-pop)}
 .ef-drawer:focus{outline:none}
 .ef-drawer--right{right:0;border-left:1px solid var(--border-default);animation:ef-drawer-r var(--dur-slow) var(--ease-out)}
 .ef-drawer--left{left:0;border-right:1px solid var(--border-default);animation:ef-drawer-l var(--dur-slow) var(--ease-out)}
