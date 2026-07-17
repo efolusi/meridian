@@ -75,7 +75,7 @@ const NOTIFS = [
 ];
 function Topbar({ title, onSearch, notify }) {
   return (
-    <header style={{ display: 'flex', alignItems: 'center', gap: 12, height: 60, padding: '0 24px', borderBottom: '1px solid var(--border-default)', background: 'rgba(250,249,246,.85)', backdropFilter: 'blur(12px)', position: 'sticky', top: 0, zIndex: 20 }}>
+    <header style={{ display: 'flex', alignItems: 'center', gap: 12, height: 60, padding: '0 24px', borderBottom: '1px solid var(--border-default)', background: 'color-mix(in srgb, var(--surface-page) 85%, transparent)', backdropFilter: 'blur(12px)', position: 'sticky', top: 0, zIndex: 20 }}>
       <h1 style={{ fontSize: 18, fontWeight: 680, fontFamily: 'var(--font-display)', letterSpacing: '-0.02em' }}>{title}</h1>
       <button onClick={onSearch} style={{ marginLeft: 'auto', display: 'flex', alignItems: 'center', gap: 8, width: 300, height: 32, padding: '0 10px', border: '1px solid var(--border-strong)', borderRadius: 'var(--radius-sm)', background: 'var(--surface-card)', cursor: 'pointer', fontFamily: 'var(--font-sans)', fontSize: 13, color: 'var(--text-muted)' }}>
         <Icon name="search" size={15} />Search anything…

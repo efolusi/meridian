@@ -3,7 +3,7 @@ const wrap = { maxWidth: 1200, margin: '0 auto', padding: '0 32px' };
 
 function SiteHeader() {
   return (
-    <header style={{ position: 'sticky', top: 0, zIndex: 50, background: 'rgba(250,249,246,.85)', backdropFilter: 'blur(12px)', borderBottom: '1px solid var(--border-default)' }}>
+    <header style={{ position: 'sticky', top: 0, zIndex: 50, background: 'color-mix(in srgb, var(--surface-page) 85%, transparent)', backdropFilter: 'blur(12px)', borderBottom: '1px solid var(--border-default)' }}>
       <div style={{ ...wrap, display: 'flex', alignItems: 'center', gap: 28, height: 64 }}>
         <a href="#" style={{ display: 'flex', alignItems: 'center', gap: 10, color: 'var(--text-primary)', textDecoration: 'none' }}>
           <img src="../../assets/logo.png" alt="" style={{ width: 30, height: 30 }} />
@@ -117,11 +117,11 @@ function BrandBand() {
     <section style={{ background: 'var(--cocoa-700)', color: 'var(--cream-50)', padding: '88px 0', position: 'relative', overflow: 'hidden' }}>
       <div style={{ ...wrap, textAlign: 'center' }}>
         <div style={{ fontFamily: 'var(--font-display)', fontSize: 34, fontWeight: 700, letterSpacing: '-0.02em', lineHeight: 1.3, maxWidth: 760, margin: '0 auto' }}>
-          “We deleted 40k lines of billing code the week we adopted Ledger. I'm still a little emotional about it.”
+          “We deleted 40k lines of billing code the week we adopted Efolusi. I'm still a little emotional about it.”
         </div>
         <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 10, marginTop: 24 }}>
           <Avatar name="June Park" size={36} />
-          <span style={{ fontSize: 14, color: 'rgba(248,244,230,.75)' }}><strong style={{ color: 'var(--cream-50)' }}>June Park</strong> · CTO, Bloom Health</span>
+          <span style={{ fontSize: 14, color: 'color-mix(in srgb, var(--cream-50) 75%, transparent)' }}><strong style={{ color: 'var(--cream-50)' }}>June Park</strong> · CTO, Bloom Health</span>
         </div>
       </div>
     </section>

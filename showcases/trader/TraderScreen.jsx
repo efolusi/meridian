@@ -56,12 +56,12 @@ function TraderScreen() {
           <div style={{ flex: 1, display: 'flex', flexDirection: 'column', gap: 16 }}>
             <Card padding={18} title="Strategy" actions={<Switch checked={auto} onChange={e => { setAuto(e.target.checked); notify(e.target.checked ? 'Robot resumed' : 'Robot paused'); }} />}>
               <div style={{ display: 'flex', flexDirection: 'column', gap: 16 }}>
-                <div style={{ fontSize: 13, color: 'var(--text-secondary)' }}>Momentum \u00b7 EUR pairs \u00b7 max 3 open positions. Every trade is logged and auditable.</div>
+                <div style={{ fontSize: 13, color: 'var(--text-secondary)' }}>Momentum · EUR pairs · max 3 open positions. Every trade is logged and auditable.</div>
                 <Slider label="Risk per trade" showValue format={v => v + '%'} min={1} max={10} value={risk} onChange={setRisk} />
                 <Progress label="Monthly drawdown cap" value={31} showValue tone={risk > 7 ? 'warning' : 'default'} format={() => '\u22123.1% of \u221210%'} />
               </div>
             </Card>
-            <Card padding={12} title="Social signals" subtitle="Traders you can mirror \u2014 with their real track record.">
+            <Card padding={12} title="Social signals" subtitle="Traders you can mirror — with their real track record.">
               <div style={{ display: 'flex', flexDirection: 'column' }}>
                 {[['Femi Alade', '+31.2% this quarter \u00b7 low risk', 'up'], ['June Park', '+18.7% this quarter \u00b7 medium risk', 'up'], ['Sol Reyes', '\u22124.2% this quarter \u00b7 high risk', 'down']].map(([n, meta, dir]) => (
                   <div key={n} style={{ display: 'flex', alignItems: 'center', gap: 10, padding: '9px 8px' }}>

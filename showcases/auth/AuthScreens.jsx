@@ -9,7 +9,7 @@ function BrandPanel() {
       </a>
       <div style={{ marginTop: 'auto', maxWidth: 420 }}>
         <div style={{ fontFamily: 'var(--font-display)', fontWeight: 700, letterSpacing: '-0.02em', fontSize: 34, lineHeight: 1.15 }}>One account. Every Efolusi product.</div>
-        <p style={{ marginTop: 14, fontSize: 15, lineHeight: 1.6, color: 'rgba(248,244,230,.75)' }}>The agent, your infra, content, tools, trading, and social finance — one workspace, one bill, one login.</p>
+        <p style={{ marginTop: 14, fontSize: 15, lineHeight: 1.6, color: 'color-mix(in srgb, var(--cream-50) 75%, transparent)' }}>The agent, your infra, content, tools, trading, and social finance — one workspace, one bill, one login.</p>
         <div style={{ display: 'flex', gap: 8, marginTop: 20 }}>
           <Badge tone="brand">SOC 2 Type II</Badge>
           <Badge tone="brand">SSO & SCIM</Badge>
