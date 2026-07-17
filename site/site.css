@@ -56,9 +56,9 @@
 .side-drawer{display:block;margin:0 0 20px}
 }
 
-/* Header control consistency: 36px hamburger, search, and theme toggle */
-.site-theme{display:inline-flex;align-items:center;justify-content:center;width:36px;height:36px;border:1px solid var(--border-strong);border-radius:var(--radius-sm);background:transparent;color:var(--text-secondary);cursor:pointer;flex:none}
-.site-theme:focus-visible{outline:none;box-shadow:var(--focus-ring)}
+/* Header control consistency: 36px hamburger, search, GitHub, and theme toggle */
+.site-theme,.site-gh{display:inline-flex;align-items:center;justify-content:center;width:36px;height:36px;border:1px solid var(--border-strong);border-radius:var(--radius-sm);background:transparent;color:var(--text-secondary);cursor:pointer;flex:none;text-decoration:none}
+.site-theme:focus-visible,.site-gh:focus-visible{outline:none;box-shadow:var(--focus-ring)}
 .site-search:focus-visible{outline:none;box-shadow:var(--focus-ring)}
 .site-theme .icon-moon{display:none}
 [data-theme="dark"] .site-theme .icon-sun{display:none}

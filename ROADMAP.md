@@ -2,7 +2,7 @@
 
 Goal: take Meridian from a complete internal system (v1.x) to a professional, enterprise-adoptable open-source design system.
 
-**Baseline today:** 104 components (source + `.d.ts` + `.prompt.md`), 161 tokens in light/dark/compact, 107 icons, 9 blocks, 8 product showcases, 5 starter journeys, docs site with live demos and search, smoke page (121 demos), guidelines (accessibility, forms, governance), MIT license, llms.txt + agent skill.
+**Baseline today:** 104 components (source + `.d.ts` + `.prompt.md`), 161 tokens in light/dark/compact, 108 icons, 9 blocks, 8 product showcases, 5 starter journeys, docs site with live demos and search, smoke page (121 demos), guidelines (accessibility, forms, governance), MIT license, llms.txt + agent skill.
 
 ---
 
@@ -48,7 +48,7 @@ Meet developers where they are; keep the zero-build path as the flagship.
 ## Phase 5 — Design assets
 
 - **Figma library** with parity: tokens as Variables (light/dark/compact modes), components with matching prop names, auto-layout mirroring flex gaps. Publish to Community.
-- **Icon set** published standalone (107 Lucide-derived SVGs, named identically to code).
+- **Icon set** published standalone (108 Lucide-derived SVGs, named identically to code).
 - **Brand usage policy** for the owl mark and "Meridian" name (system is MIT; the mark is not).
 
 ## Phase 6 — Community & governance

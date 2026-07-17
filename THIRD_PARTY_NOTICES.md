@@ -14,7 +14,7 @@ The five variable TTFs in `assets/fonts/` are unmodified upstream builds obtaine
 
 ## Icons (ISC License)
 
-The 107 SVGs in `assets/icons/` are derived from [Lucide](https://lucide.dev), licensed under the ISC License (Copyright (c) Lucide Icons and Contributors); icons that Lucide derived from the Feather project additionally carry the MIT License (Copyright (c) 2013-present Cole Bemis). Both texts: [assets/icons/LICENSE-Lucide.txt](assets/icons/LICENSE-Lucide.txt).
+The 108 SVGs in `assets/icons/` are derived from [Lucide](https://lucide.dev), licensed under the ISC License (Copyright (c) Lucide Icons and Contributors); icons that Lucide derived from the Feather project additionally carry the MIT License (Copyright (c) 2013-present Cole Bemis). Both texts: [assets/icons/LICENSE-Lucide.txt](assets/icons/LICENSE-Lucide.txt).
 
 ## Brand assets
 
