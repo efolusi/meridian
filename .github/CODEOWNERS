@@ -1,0 +1,10 @@
+# Every path requires review by a maintainer. Add area owners as the team grows.
+* @sgnd
+
+# The system core and compiler artifacts are the highest-risk surface.
+/styles.css @sgnd
+/tokens/ @sgnd
+/_ds_bundle.js @sgnd
+/_ds_manifest.json @sgnd
+/ARCHITECTURE.md @sgnd
+/STYLEGUIDE.md @sgnd
