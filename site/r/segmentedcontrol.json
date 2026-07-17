@@ -1,0 +1,27 @@
+{
+  "name": "segmentedcontrol",
+  "type": "registry:ui",
+  "title": "SegmentedControl",
+  "description": "Inline 2\u20135-way toggle on a sand track; active segment is a white hairline chip. For views/ranges \u2014 use Tabs for page sections.",
+  "files": [
+    {
+      "path": "components/navigation/SegmentedControl.jsx",
+      "type": "registry:ui",
+      "content": "import React from 'react';\nimport { Icon } from '../icons/Icon.jsx';\nimport { injectEfCss } from '../forms/Button.jsx';\nconst CSS = `\n.ef-seg{display:inline-flex;gap:2px;padding:2px;background:var(--surface-sunken);border-radius:var(--radius-md)}\n.ef-seg__opt{display:inline-flex;align-items:center;gap:6px;height:28px;padding:0 12px;border:1px solid transparent;border-radius:6px;background:none;cursor:pointer;font-family:var(--font-sans);font-size:var(--text-sm);font-weight:var(--weight-medium);color:var(--text-secondary);transition:background var(--dur-fast) var(--ease-out),color var(--dur-fast) var(--ease-out)}\n.ef-seg__opt:hover:not(.ef-seg__opt--active){color:var(--text-primary)}\n.ef-seg__opt--active{background:var(--surface-card);border-color:var(--border-strong);color:var(--text-primary);font-weight:var(--weight-semibold)}\n.ef-seg__opt:focus-visible{outline:none;box-shadow:var(--focus-ring)}\n.ef-seg__opt:disabled{opacity:.4;cursor:not-allowed}\n`;\nexport function SegmentedControl({ options, value, onChange, style, className }) {\n  injectEfCss('ef-css-seg', CSS);\n  return (\n    <div role=\"group\" className={`ef-seg${className ? ' ' + className : ''}`} style={style}>\n      {options.map(o => {\n        const opt = typeof o === 'string' ? { id: o, label: o } : o;\n        return (\n          <button key={opt.id} className={`ef-seg__opt${value === opt.id ? ' ef-seg__opt--active' : ''}`} aria-pressed={value === opt.id} disabled={opt.disabled} onClick={() => onChange && onChange(opt.id)}>\n            {opt.icon ? <Icon name={opt.icon} size={14} /> : null}{opt.label}\n          </button>\n        );\n      })}\n    </div>\n  );\n}\n"
+    },
+    {
+      "path": "components/navigation/SegmentedControl.d.ts",
+      "type": "registry:component",
+      "content": "export interface SegmentOption {\n  id: string;\n  label: React.ReactNode;\n  /** Lucide icon name */\n  icon?: string;\n  disabled?: boolean;\n}\nexport interface SegmentedControlProps {\n  /** Options as strings or objects */\n  options: Array<string | SegmentOption>;\n  /** Active option id (controlled) */\n  value: string;\n  onChange?: (id: string) => void;\n  style?: React.CSSProperties;\n  className?: string;\n}\nexport declare function SegmentedControl(props: SegmentedControlProps): JSX.Element;\n"
+    },
+    {
+      "path": "components/navigation/SegmentedControl.prompt.md",
+      "type": "registry:component",
+      "content": "Inline 2\u20135-way toggle on a sand track; active segment is a white hairline chip. For views/ranges \u2014 use Tabs for page sections.\n\n```jsx\n<SegmentedControl options={['7d', '30d', '90d']} value={range} onChange={setRange} />\n<SegmentedControl options={[{ id: 'list', label: 'List', icon: 'menu' }, { id: 'board', label: 'Board', icon: 'layout-dashboard' }]} value={view} onChange={setView} />\n```\n"
+    }
+  ],
+  "categories": [
+    "navigation"
+  ],
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json"
+}

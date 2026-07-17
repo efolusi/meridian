@@ -1,0 +1,17 @@
+{
+  "name": "block-not-found",
+  "type": "registry:block",
+  "title": "Not found block",
+  "description": "Pre-composed Meridian section: not found.",
+  "files": [
+    {
+      "path": "blocks/not-found.html",
+      "type": "registry:block",
+      "content": "<!-- @dsCard group=\"Blocks\" viewport=\"1024x420\" name=\"404 page\" subtitle=\"Not-found page with search + way home\" -->\n<!DOCTYPE html><html><head><meta charset=\"utf-8\"><meta name=\"viewport\" content=\"width=device-width, initial-scale=1\"><link rel=\"stylesheet\" href=\"../styles.css\">\n<script src=\"https://unpkg.com/react@18.3.1/umd/react.development.js\" integrity=\"sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L\" crossorigin=\"anonymous\"></script>\n<script src=\"https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js\" integrity=\"sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm\" crossorigin=\"anonymous\"></script>\n<script src=\"https://unpkg.com/@babel/standalone@7.29.0/babel.min.js\" integrity=\"sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y\" crossorigin=\"anonymous\"></script>\n<script src=\"../_ds_bundle.js\"></script>\n<style>@media(max-width:600px){.bk-sec{padding:48px 18px!important}.bk-h1{font-size:30px!important}}</style>\n</head><body style=\"background:var(--surface-page)\">\n<div id=\"root\"></div>\n<script type=\"text/babel\">\n\nconst { Button, Input, Kbd } = window.EfolusiDesignSystem_4ffc3d;\nfunction Block() {\n  return (\n    <section className=\"bk-sec\" style={{ padding: '72px 48px', textAlign: 'center' }}>\n      <div style={{ fontFamily: 'var(--font-mono)', fontSize: 13, color: 'var(--text-muted)' }}>404</div>\n      <h1 className=\"bk-h1\" style={{ fontFamily: 'var(--font-display)', fontSize: 40, fontWeight: 680, letterSpacing: '-0.02em', margin: '12px 0 0' }}>This page moved on.</h1>\n      <p style={{ fontSize: 15, lineHeight: 1.6, color: 'var(--text-secondary)', margin: '12px auto 0', maxWidth: 400 }}>The link may be old, or the page was renamed. Search usually finds it faster than we can apologize.</p>\n      <div style={{ display: 'flex', gap: 8, justifyContent: 'center', margin: '24px auto 0', maxWidth: 380 }}>\n        <Input placeholder=\"Search efolusi.com\u2026\" iconLeft=\"search\" style={{ flex: 1 }} />\n        <Button>Search</Button>\n      </div>\n      <div style={{ display: 'flex', gap: 8, justifyContent: 'center', marginTop: 14, alignItems: 'center', fontSize: 13, color: 'var(--text-muted)', flexWrap: 'wrap' }}>\n        or press <Kbd>\u2318</Kbd><Kbd>K</Kbd> anywhere \u00b7 <a href=\"#\" style={{ fontWeight: 600 }}>Back to home</a>\n      </div>\n    </section>\n  );\n}\nReactDOM.createRoot(document.getElementById('root')).render(<Block />);\n</script></body></html>\n"
+    }
+  ],
+  "categories": [
+    "blocks"
+  ],
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json"
+}

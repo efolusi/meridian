@@ -1,0 +1,27 @@
+{
+  "name": "banner",
+  "type": "registry:ui",
+  "title": "Banner",
+  "description": "Full-width strip above the app chrome \u2014 trials, incidents, announcements. One per view, max.",
+  "files": [
+    {
+      "path": "components/feedback/Banner.jsx",
+      "type": "registry:ui",
+      "content": "import React from 'react';\nimport { Icon } from '../icons/Icon.jsx';\nimport { IconButton } from '../forms/IconButton.jsx';\nimport { injectEfCss } from '../forms/Button.jsx';\nconst CSS = `\n.ef-banner{display:flex;align-items:center;gap:10px;padding:9px 16px;font-size:var(--text-sm);border-bottom:1px solid var(--border-default)}\n.ef-banner--neutral{background:var(--surface-sunken);color:var(--text-primary)}\n.ef-banner--brand{background:var(--cream-50);color:var(--cocoa-700)}\n.ef-banner--warning{background:var(--warning-100);color:var(--warning-600);border-color:var(--warning-300)}\n.ef-banner--danger{background:var(--danger-100);color:var(--danger-600);border-color:var(--danger-300)}\n.ef-banner__icon{display:inline-flex;flex:none}\n.ef-banner__text{flex:1;min-width:0}\n.ef-banner__text strong{font-weight:var(--weight-semibold)}\n.ef-banner__action{flex:none;font-weight:var(--weight-semibold);font-size:var(--text-sm);color:inherit;text-decoration:underline;text-underline-offset:3px;background:none;border:none;cursor:pointer;font-family:var(--font-sans);padding:0}\n`;\nexport function Banner({ tone = 'neutral', icon, action, onAction, onDismiss, children, style, className }) {\n  injectEfCss('ef-css-banner', CSS);\n  return (\n    <div role=\"status\" className={`ef-banner ef-banner--${tone}${className ? ' ' + className : ''}`} style={style}>\n      {icon ? <span className=\"ef-banner__icon\"><Icon name={icon} size={15} /></span> : null}\n      <span className=\"ef-banner__text\">{children}</span>\n      {action ? <button className=\"ef-banner__action\" onClick={onAction}>{action}</button> : null}\n      {onDismiss ? <IconButton icon=\"x\" label=\"Dismiss\" size=\"sm\" onClick={onDismiss} /> : null}\n    </div>\n  );\n}\n"
+    },
+    {
+      "path": "components/feedback/Banner.d.ts",
+      "type": "registry:component",
+      "content": "export interface BannerProps {\n  /** @default 'neutral' */\n  tone?: 'neutral' | 'brand' | 'warning' | 'danger';\n  /** Lucide icon name */\n  icon?: string;\n  /** Underlined action label */\n  action?: string;\n  onAction?: () => void;\n  /** Shows a dismiss \u2715 */\n  onDismiss?: () => void;\n  children?: React.ReactNode;\n  style?: React.CSSProperties;\n  className?: string;\n}\nexport declare function Banner(props: BannerProps): JSX.Element;\n"
+    },
+    {
+      "path": "components/feedback/Banner.prompt.md",
+      "type": "registry:component",
+      "content": "Full-width strip above the app chrome \u2014 trials, incidents, announcements. One per view, max.\n\n```jsx\n<Banner tone=\"warning\" icon=\"triangle-alert\" action=\"Add card\" onAction={billing} onDismiss={hide}>\n  <strong>Trial ends in 3 days.</strong> Your workspace pauses after that.\n</Banner>\n```\n"
+    }
+  ],
+  "categories": [
+    "feedback"
+  ],
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json"
+}

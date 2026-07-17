@@ -1,0 +1,27 @@
+{
+  "name": "kbd",
+  "type": "registry:ui",
+  "title": "Kbd",
+  "description": "Keycap for shortcut hints \u2014 mono 11px, hairline with a 2px base.",
+  "files": [
+    {
+      "path": "components/display/Kbd.jsx",
+      "type": "registry:ui",
+      "content": "import React from 'react';\nimport { injectEfCss } from '../forms/Button.jsx';\nconst CSS = `\n.ef-kbd{display:inline-flex;align-items:center;justify-content:center;min-width:18px;height:19px;padding:0 5px;border:1px solid var(--border-strong);border-bottom-width:2px;border-radius:var(--radius-sm);background:var(--surface-card);font-family:var(--font-mono);font-size:11px;color:var(--text-secondary);line-height:1}\n`;\nexport function Kbd({ children, style, className }) {\n  injectEfCss('ef-css-kbd', CSS);\n  return <kbd className={`ef-kbd${className ? ' ' + className : ''}`} style={style}>{children}</kbd>;\n}\n"
+    },
+    {
+      "path": "components/display/Kbd.d.ts",
+      "type": "registry:component",
+      "content": "export interface KbdProps {\n  /** Key label, e.g. \"\u2318\", \"K\", \"Esc\" */\n  children?: React.ReactNode;\n  style?: React.CSSProperties;\n  className?: string;\n}\nexport declare function Kbd(props: KbdProps): JSX.Element;\n"
+    },
+    {
+      "path": "components/display/Kbd.prompt.md",
+      "type": "registry:component",
+      "content": "Keycap for shortcut hints \u2014 mono 11px, hairline with a 2px base.\n\n```jsx\n<Kbd>\u2318</Kbd> <Kbd>K</Kbd>\n```\n"
+    }
+  ],
+  "categories": [
+    "display"
+  ],
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json"
+}

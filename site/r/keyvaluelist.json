@@ -1,0 +1,27 @@
+{
+  "name": "keyvaluelist",
+  "type": "registry:ui",
+  "title": "KeyValueList",
+  "description": "Label/value rows with hairline separators \u2014 resource details, DNS records, trade info.",
+  "files": [
+    {
+      "path": "components/data/KeyValueList.jsx",
+      "type": "registry:ui",
+      "content": "import React from 'react';\nimport { injectEfCss } from '../forms/Button.jsx';\nconst CSS = `\n.ef-kv{display:flex;flex-direction:column}\n.ef-kv__row{display:flex;gap:16px;padding:9px 0;border-bottom:1px solid var(--border-default)}\n.ef-kv__row:last-child{border-bottom:none}\n.ef-kv__label{width:160px;flex:none;font-size:var(--text-sm);color:var(--text-muted)}\n.ef-kv__value{flex:1;font-size:var(--text-sm);color:var(--text-primary);min-width:0;overflow-wrap:break-word}\n.ef-kv__value--mono{font-family:var(--font-mono);font-size:13px}\n`;\nexport function KeyValueList({ items, labelWidth = 160, style, className }) {\n  injectEfCss('ef-css-kv', CSS);\n  return (\n    <div className={`ef-kv${className ? ' ' + className : ''}`} style={style}>\n      {items.map((it, i) => (\n        <div key={i} className=\"ef-kv__row\">\n          <span className=\"ef-kv__label\" style={{ width: labelWidth }}>{it.label}</span>\n          <span className={`ef-kv__value${it.mono ? ' ef-kv__value--mono' : ''}`}>{it.value}</span>\n        </div>\n      ))}\n    </div>\n  );\n}\n"
+    },
+    {
+      "path": "components/data/KeyValueList.d.ts",
+      "type": "registry:component",
+      "content": "export interface KeyValueItem {\n  label: React.ReactNode;\n  value: React.ReactNode;\n  /** Mono value (IPs, hashes, records) */\n  mono?: boolean;\n}\nexport interface KeyValueListProps {\n  items: KeyValueItem[];\n  /** @default 160 */\n  labelWidth?: number;\n  style?: React.CSSProperties;\n  className?: string;\n}\nexport declare function KeyValueList(props: KeyValueListProps): JSX.Element;\n"
+    },
+    {
+      "path": "components/data/KeyValueList.prompt.md",
+      "type": "registry:component",
+      "content": "Label/value rows with hairline separators \u2014 resource details, DNS records, trade info.\n\n```jsx\n<KeyValueList items={[\n  { label: 'Region', value: 'eu-west-1' },\n  { label: 'IPv4', value: '203.0.113.7', mono: true },\n]} />\n```\n"
+    }
+  ],
+  "categories": [
+    "data"
+  ],
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json"
+}

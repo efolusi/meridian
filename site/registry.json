@@ -1,0 +1,2534 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry.json",
+  "name": "meridian",
+  "homepage": "https://github.com/efolusi/meridian",
+  "items": [
+    {
+      "name": "agentrun",
+      "type": "registry:ui",
+      "title": "AgentRun",
+      "description": "Vertical run trace: one row per step with done/active/pending/error state, connector rail, mono timestamps.",
+      "files": [
+        {
+          "path": "components/ai/AgentRun.jsx",
+          "type": "registry:ui"
+        },
+        {
+          "path": "components/ai/AgentRun.d.ts",
+          "type": "registry:component"
+        },
+        {
+          "path": "components/ai/AgentRun.prompt.md",
+          "type": "registry:component"
+        }
+      ],
+      "categories": [
+        "ai"
+      ]
+    },
+    {
+      "name": "chatmessage",
+      "type": "registry:ui",
+      "title": "ChatMessage",
+      "description": "Agent-thread message: bot chip or user avatar, meta row, hover copy/retry actions, streaming caret.",
+      "files": [
+        {
+          "path": "components/ai/ChatMessage.jsx",
+          "type": "registry:ui"
+        },
+        {
+          "path": "components/ai/ChatMessage.d.ts",
+          "type": "registry:component"
+        },
+        {
+          "path": "components/ai/ChatMessage.prompt.md",
+          "type": "registry:component"
+        }
+      ],
+      "categories": [
+        "ai"
+      ]
+    },
+    {
+      "name": "citation",
+      "type": "registry:ui",
+      "title": "Citation + SourceList",
+      "description": "Inline superscript source chips + the source list they resolve to.",
+      "files": [
+        {
+          "path": "components/ai/Citation.jsx",
+          "type": "registry:ui"
+        },
+        {
+          "path": "components/ai/Citation.d.ts",
+          "type": "registry:component"
+        },
+        {
+          "path": "components/ai/Citation.prompt.md",
+          "type": "registry:component"
+        }
+      ],
+      "categories": [
+        "ai"
+      ]
+    },
+    {
+      "name": "confirmation",
+      "type": "registry:ui",
+      "title": "Confirmation",
+      "description": "Inline approval card for agent actions \u2014 pending shows Approve/Reject, settled shows a status line. Ringed accent (or danger) border while pending.",
+      "files": [
+        {
+          "path": "components/ai/Confirmation.jsx",
+          "type": "registry:ui"
+        },
+        {
+          "path": "components/ai/Confirmation.d.ts",
+          "type": "registry:component"
+        },
+        {
+          "path": "components/ai/Confirmation.prompt.md",
+          "type": "registry:component"
+        }
+      ],
+      "categories": [
+        "ai"
+      ]
+    },
+    {
+      "name": "conversation",
+      "type": "registry:ui",
+      "title": "Conversation",
+      "description": "Stick-to-bottom thread viewport: keeps pinned to the latest message while streaming (ResizeObserver), shows a \"Jump to latest\" pill when the reader scrolls up.",
+      "files": [
+        {
+          "path": "components/ai/Conversation.jsx",
+          "type": "registry:ui"
+        },
+        {
+          "path": "components/ai/Conversation.d.ts",
+          "type": "registry:component"
+        },
+        {
+          "path": "components/ai/Conversation.prompt.md",
+          "type": "registry:component"
+        }
+      ],
+      "categories": [
+        "ai"
+      ]
+    },
+    {
+      "name": "documentcard",
+      "type": "registry:ui",
+      "title": "DocumentCard",
+      "description": "Inline document artifact \u2014 header with copy + expand, content clipped at `collapsedHeight` with a paper fade; measured height animates open.",
+      "files": [
+        {
+          "path": "components/ai/DocumentCard.jsx",
+          "type": "registry:ui"
+        },
+        {
+          "path": "components/ai/DocumentCard.d.ts",
+          "type": "registry:component"
+        },
+        {
+          "path": "components/ai/DocumentCard.prompt.md",
+          "type": "registry:component"
+        }
+      ],
+      "categories": [
+        "ai"
+      ]
+    },
+    {
+      "name": "feedbackbar",
+      "type": "registry:ui",
+      "title": "FeedbackBar",
+      "description": "Quiet action row under an assistant message: thumbs up/down (toggle), copy, regenerate.",
+      "files": [
+        {
+          "path": "components/ai/FeedbackBar.jsx",
+          "type": "registry:ui"
+        },
+        {
+          "path": "components/ai/FeedbackBar.d.ts",
+          "type": "registry:component"
+        },
+        {
+          "path": "components/ai/FeedbackBar.prompt.md",
+          "type": "registry:component"
+        }
+      ],
+      "categories": [
+        "ai"
+      ]
+    },
+    {
+      "name": "generatedimage",
+      "type": "registry:ui",
+      "title": "GeneratedImage",
+      "description": "Image-generation frame with queued / generating (pulsing dot-grid on dark) / complete (fade-in, scrim, hover actions) / error (retry) states.",
+      "files": [
+        {
+          "path": "components/ai/GeneratedImage.jsx",
+          "type": "registry:ui"
+        },
+        {
+          "path": "components/ai/GeneratedImage.d.ts",
+          "type": "registry:component"
+        },
+        {
+          "path": "components/ai/GeneratedImage.prompt.md",
+          "type": "registry:component"
+        }
+      ],
+      "categories": [
+        "ai"
+      ]
+    },
+    {
+      "name": "modelselector",
+      "type": "registry:ui",
+      "title": "ModelSelector",
+      "description": "Compact model picker for composers: current model + provider on the trigger, panel with hint lines and badges.",
+      "files": [
+        {
+          "path": "components/ai/ModelSelector.jsx",
+          "type": "registry:ui"
+        },
+        {
+          "path": "components/ai/ModelSelector.d.ts",
+          "type": "registry:component"
+        },
+        {
+          "path": "components/ai/ModelSelector.prompt.md",
+          "type": "registry:component"
+        }
+      ],
+      "categories": [
+        "ai"
+      ]
+    },
+    {
+      "name": "player",
+      "type": "registry:ui",
+      "title": "Player",
+      "description": "Audio player \u2014 seekable waveform (drag or click), \u00b110s skip, play/pause, mute, tabular timestamps. Expose a ref for `jumpTo` and pair with Transcript via `onTimeChange`.",
+      "files": [
+        {
+          "path": "components/ai/Player.jsx",
+          "type": "registry:ui"
+        },
+        {
+          "path": "components/ai/Player.d.ts",
+          "type": "registry:component"
+        },
+        {
+          "path": "components/ai/Player.prompt.md",
+          "type": "registry:component"
+        }
+      ],
+      "categories": [
+        "ai"
+      ]
+    },
+    {
+      "name": "promptcomposer",
+      "type": "registry:ui",
+      "title": "PromptComposer",
+      "description": "Agent input: auto textarea, attach + voice buttons, ink send. Enter sends, Shift+Enter breaks.",
+      "files": [
+        {
+          "path": "components/ai/PromptComposer.jsx",
+          "type": "registry:ui"
+        },
+        {
+          "path": "components/ai/PromptComposer.d.ts",
+          "type": "registry:component"
+        },
+        {
+          "path": "components/ai/PromptComposer.prompt.md",
+          "type": "registry:component"
+        }
+      ],
+      "categories": [
+        "ai"
+      ]
+    },
+    {
+      "name": "promptsteps",
+      "type": "registry:ui",
+      "title": "PromptSteps",
+      "description": "Keyboard-first inline question wizard \u2014 numbered options (1\u20139 keys), arrows to highlight, Enter to confirm, Esc dismisses, \u2190/Shift-Tab goes back; \"Other\" is an inline input. Calls `onComplete` with all answers.",
+      "files": [
+        {
+          "path": "components/ai/PromptSteps.jsx",
+          "type": "registry:ui"
+        },
+        {
+          "path": "components/ai/PromptSteps.d.ts",
+          "type": "registry:component"
+        },
+        {
+          "path": "components/ai/PromptSteps.prompt.md",
+          "type": "registry:component"
+        }
+      ],
+      "categories": [
+        "ai"
+      ]
+    },
+    {
+      "name": "reasoning",
+      "type": "registry:ui",
+      "title": "Reasoning",
+      "description": "Collapsible \"thinking\" block for model reasoning \u2014 pulsing brain glyph while streaming, then \"Thought for Ns\".",
+      "files": [
+        {
+          "path": "components/ai/Reasoning.jsx",
+          "type": "registry:ui"
+        },
+        {
+          "path": "components/ai/Reasoning.d.ts",
+          "type": "registry:component"
+        },
+        {
+          "path": "components/ai/Reasoning.prompt.md",
+          "type": "registry:component"
+        }
+      ],
+      "categories": [
+        "ai"
+      ]
+    },
+    {
+      "name": "richcomposer",
+      "type": "registry:ui",
+      "title": "RichComposer",
+      "description": "Composer with @-mention chips and /-commands \u2014 typing a trigger opens a filtered list above the composer (arrows + Enter, groups supported); mentions insert as atomic chips that delete as one unit; Enter submits, Shift+Enter breaks.",
+      "files": [
+        {
+          "path": "components/ai/RichComposer.jsx",
+          "type": "registry:ui"
+        },
+        {
+          "path": "components/ai/RichComposer.d.ts",
+          "type": "registry:component"
+        },
+        {
+          "path": "components/ai/RichComposer.prompt.md",
+          "type": "registry:component"
+        }
+      ],
+      "categories": [
+        "ai"
+      ]
+    },
+    {
+      "name": "sandbox",
+      "type": "registry:ui",
+      "title": "Sandbox",
+      "description": "Collapsible code-run panel \u2014 mono title, soft ring while running / on error, tabbed Output & Code panes. Opens itself on error by default.",
+      "files": [
+        {
+          "path": "components/ai/Sandbox.jsx",
+          "type": "registry:ui"
+        },
+        {
+          "path": "components/ai/Sandbox.d.ts",
+          "type": "registry:component"
+        },
+        {
+          "path": "components/ai/Sandbox.prompt.md",
+          "type": "registry:component"
+        }
+      ],
+      "categories": [
+        "ai"
+      ]
+    },
+    {
+      "name": "selectionquote",
+      "type": "registry:ui",
+      "title": "SelectionQuote",
+      "description": "Select-to-quote affordance \u2014 wrap message content; selecting text floats a small toolbar above the selection (flips below near the top, clamped to the container). Actions receive the selected text.",
+      "files": [
+        {
+          "path": "components/ai/SelectionQuote.jsx",
+          "type": "registry:ui"
+        },
+        {
+          "path": "components/ai/SelectionQuote.d.ts",
+          "type": "registry:component"
+        },
+        {
+          "path": "components/ai/SelectionQuote.prompt.md",
+          "type": "registry:component"
+        }
+      ],
+      "categories": [
+        "ai"
+      ]
+    },
+    {
+      "name": "sourcecard",
+      "type": "registry:ui",
+      "title": "SourceCard",
+      "description": "Web-source card for grounded answers \u2014 optional 16:9 thumbnail, favicon + domain row, title, 3-line clamped description. `variant=\"plain\"` for dense lists.",
+      "files": [
+        {
+          "path": "components/ai/SourceCard.jsx",
+          "type": "registry:ui"
+        },
+        {
+          "path": "components/ai/SourceCard.d.ts",
+          "type": "registry:component"
+        },
+        {
+          "path": "components/ai/SourceCard.prompt.md",
+          "type": "registry:component"
+        }
+      ],
+      "categories": [
+        "ai"
+      ]
+    },
+    {
+      "name": "suggestions",
+      "type": "registry:ui",
+      "title": "Suggestions",
+      "description": "Prompt-suggestion chip row for empty chats and follow-ups.",
+      "files": [
+        {
+          "path": "components/ai/Suggestions.jsx",
+          "type": "registry:ui"
+        },
+        {
+          "path": "components/ai/Suggestions.d.ts",
+          "type": "registry:component"
+        },
+        {
+          "path": "components/ai/Suggestions.prompt.md",
+          "type": "registry:component"
+        }
+      ],
+      "categories": [
+        "ai"
+      ]
+    },
+    {
+      "name": "task",
+      "type": "registry:ui",
+      "title": "Task",
+      "description": "Rail-connected list of agent actions \u2014 icon rows joined by hairline connectors; last row's rail is hidden. `streaming` pulses the newest row.",
+      "files": [
+        {
+          "path": "components/ai/Task.jsx",
+          "type": "registry:ui"
+        },
+        {
+          "path": "components/ai/Task.d.ts",
+          "type": "registry:component"
+        },
+        {
+          "path": "components/ai/Task.prompt.md",
+          "type": "registry:component"
+        }
+      ],
+      "categories": [
+        "ai"
+      ]
+    },
+    {
+      "name": "todo",
+      "type": "registry:ui",
+      "title": "Todo",
+      "description": "Collapsible agent checklist card \u2014 spinner while in progress, espresso check + strikethrough when done, n/total count in the header.",
+      "files": [
+        {
+          "path": "components/ai/Todo.jsx",
+          "type": "registry:ui"
+        },
+        {
+          "path": "components/ai/Todo.d.ts",
+          "type": "registry:component"
+        },
+        {
+          "path": "components/ai/Todo.prompt.md",
+          "type": "registry:component"
+        }
+      ],
+      "categories": [
+        "ai"
+      ]
+    },
+    {
+      "name": "toolcall",
+      "type": "registry:ui",
+      "title": "ToolCall",
+      "description": "A tool invocation receipt: mono tool name, live status (running/success/error), collapsible Input/Result body.",
+      "files": [
+        {
+          "path": "components/ai/ToolCall.jsx",
+          "type": "registry:ui"
+        },
+        {
+          "path": "components/ai/ToolCall.d.ts",
+          "type": "registry:component"
+        },
+        {
+          "path": "components/ai/ToolCall.prompt.md",
+          "type": "registry:component"
+        }
+      ],
+      "categories": [
+        "ai"
+      ]
+    },
+    {
+      "name": "transcript",
+      "type": "registry:ui",
+      "title": "Transcript",
+      "description": "Time-synced transcript \u2014 active row derives from `currentTime`, auto-scroll keeps it centered (toggleable), timestamps jump the player, optional word-level highlight via `words`.",
+      "files": [
+        {
+          "path": "components/ai/Transcript.jsx",
+          "type": "registry:ui"
+        },
+        {
+          "path": "components/ai/Transcript.d.ts",
+          "type": "registry:component"
+        },
+        {
+          "path": "components/ai/Transcript.prompt.md",
+          "type": "registry:component"
+        }
+      ],
+      "categories": [
+        "ai"
+      ]
+    },
+    {
+      "name": "usagemeter",
+      "type": "registry:ui",
+      "title": "UsageMeter",
+      "description": "Budget meter: used/limit figures, fill bar that turns warning past warnAt and danger past the limit.",
+      "files": [
+        {
+          "path": "components/ai/UsageMeter.jsx",
+          "type": "registry:ui"
+        },
+        {
+          "path": "components/ai/UsageMeter.d.ts",
+          "type": "registry:component"
+        },
+        {
+          "path": "components/ai/UsageMeter.prompt.md",
+          "type": "registry:component"
+        }
+      ],
+      "categories": [
+        "ai"
+      ]
+    },
+    {
+      "name": "webpreview",
+      "type": "registry:ui",
+      "title": "WebPreview",
+      "description": "Browser pane for agent-built UIs \u2014 reload, draft-state address bar (Enter commits, Esc reverts), desktop/tablet/mobile widths (animated), collapsible console with error badge, open-in-new-tab. Pass `children` to mock the page without an iframe.",
+      "files": [
+        {
+          "path": "components/ai/WebPreview.jsx",
+          "type": "registry:ui"
+        },
+        {
+          "path": "components/ai/WebPreview.d.ts",
+          "type": "registry:component"
+        },
+        {
+          "path": "components/ai/WebPreview.prompt.md",
+          "type": "registry:component"
+        }
+      ],
+      "categories": [
+        "ai"
+      ]
+    },
+    {
+      "name": "codeblock",
+      "type": "registry:ui",
+      "title": "CodeBlock",
+      "description": "Espresso code block with language label and working copy button.",
+      "files": [
+        {
+          "path": "components/code/CodeBlock.jsx",
+          "type": "registry:ui"
+        },
+        {
+          "path": "components/code/CodeBlock.d.ts",
+          "type": "registry:component"
+        },
+        {
+          "path": "components/code/CodeBlock.prompt.md",
+          "type": "registry:component"
+        }
+      ],
+      "categories": [
+        "code"
+      ]
+    },
+    {
+      "name": "console",
+      "type": "registry:ui",
+      "title": "Console",
+      "description": "Log viewer \u2014 level icons/colors, tabular timestamps, per-row collapsible stack traces, sticks to the bottom while streaming and shows a \"Latest\" pill when scrolled up.",
+      "files": [
+        {
+          "path": "components/code/Console.jsx",
+          "type": "registry:ui"
+        },
+        {
+          "path": "components/code/Console.d.ts",
+          "type": "registry:component"
+        },
+        {
+          "path": "components/code/Console.prompt.md",
+          "type": "registry:component"
+        }
+      ],
+      "categories": [
+        "code"
+      ]
+    },
+    {
+      "name": "copyfield",
+      "type": "registry:ui",
+      "title": "CopyField",
+      "description": "Read-only mono value with copy (and reveal, for secrets). For API keys, IPs, DNS records.",
+      "files": [
+        {
+          "path": "components/code/CopyField.jsx",
+          "type": "registry:ui"
+        },
+        {
+          "path": "components/code/CopyField.d.ts",
+          "type": "registry:component"
+        },
+        {
+          "path": "components/code/CopyField.prompt.md",
+          "type": "registry:component"
+        }
+      ],
+      "categories": [
+        "code"
+      ]
+    },
+    {
+      "name": "diff",
+      "type": "registry:ui",
+      "title": "Diff",
+      "description": "Unified diff with dual line-number gutters, +/\u2212 signs, add/del row tints, and header counts.",
+      "files": [
+        {
+          "path": "components/code/Diff.jsx",
+          "type": "registry:ui"
+        },
+        {
+          "path": "components/code/Diff.d.ts",
+          "type": "registry:component"
+        },
+        {
+          "path": "components/code/Diff.prompt.md",
+          "type": "registry:component"
+        }
+      ],
+      "categories": [
+        "code"
+      ]
+    },
+    {
+      "name": "envlist",
+      "type": "registry:ui",
+      "title": "EnvList",
+      "description": "Environment variables card \u2014 secrets masked as \u2022\u2022\u2022\u2022\u2022\u2022\u2022\u2022 with a single reveal toggle in the header; per-row copy always copies the real value.",
+      "files": [
+        {
+          "path": "components/code/EnvList.jsx",
+          "type": "registry:ui"
+        },
+        {
+          "path": "components/code/EnvList.d.ts",
+          "type": "registry:component"
+        },
+        {
+          "path": "components/code/EnvList.prompt.md",
+          "type": "registry:component"
+        }
+      ],
+      "categories": [
+        "code"
+      ]
+    },
+    {
+      "name": "exception",
+      "type": "registry:ui",
+      "title": "Exception",
+      "description": "Runtime-error card \u2014 mono type chip + message, collapsible stack frames (active frame flagged, internal frames dimmed) and an optional source excerpt with the failing line highlighted.",
+      "files": [
+        {
+          "path": "components/code/Exception.jsx",
+          "type": "registry:ui"
+        },
+        {
+          "path": "components/code/Exception.d.ts",
+          "type": "registry:component"
+        },
+        {
+          "path": "components/code/Exception.prompt.md",
+          "type": "registry:component"
+        }
+      ],
+      "categories": [
+        "code"
+      ]
+    },
+    {
+      "name": "terminal",
+      "type": "registry:ui",
+      "title": "Terminal",
+      "description": "Line-oriented console output: $ prompts, tinted ok/err/info lines, optional live caret.",
+      "files": [
+        {
+          "path": "components/code/Terminal.jsx",
+          "type": "registry:ui"
+        },
+        {
+          "path": "components/code/Terminal.d.ts",
+          "type": "registry:component"
+        },
+        {
+          "path": "components/code/Terminal.prompt.md",
+          "type": "registry:component"
+        }
+      ],
+      "categories": [
+        "code"
+      ]
+    },
+    {
+      "name": "barchart",
+      "type": "registry:ui",
+      "title": "BarChart",
+      "description": "Hairline-minimal bar chart: sand bars, ink highlight window, hover tint + title tooltip.",
+      "files": [
+        {
+          "path": "components/data/BarChart.jsx",
+          "type": "registry:ui"
+        },
+        {
+          "path": "components/data/BarChart.d.ts",
+          "type": "registry:component"
+        },
+        {
+          "path": "components/data/BarChart.prompt.md",
+          "type": "registry:component"
+        }
+      ],
+      "categories": [
+        "data"
+      ]
+    },
+    {
+      "name": "donutchart",
+      "type": "registry:ui",
+      "title": "DonutChart",
+      "description": "Donut with center figure + legend; hover highlights a slice. Colors default to the brand ramp.",
+      "files": [
+        {
+          "path": "components/data/DonutChart.jsx",
+          "type": "registry:ui"
+        },
+        {
+          "path": "components/data/DonutChart.d.ts",
+          "type": "registry:component"
+        },
+        {
+          "path": "components/data/DonutChart.prompt.md",
+          "type": "registry:component"
+        }
+      ],
+      "categories": [
+        "data"
+      ]
+    },
+    {
+      "name": "emptystate",
+      "type": "registry:ui",
+      "title": "EmptyState",
+      "description": "Centered empty view \u2014 leads with the action, not the absence.",
+      "files": [
+        {
+          "path": "components/data/EmptyState.jsx",
+          "type": "registry:ui"
+        },
+        {
+          "path": "components/data/EmptyState.d.ts",
+          "type": "registry:component"
+        },
+        {
+          "path": "components/data/EmptyState.prompt.md",
+          "type": "registry:component"
+        }
+      ],
+      "categories": [
+        "data"
+      ]
+    },
+    {
+      "name": "keyvaluelist",
+      "type": "registry:ui",
+      "title": "KeyValueList",
+      "description": "Label/value rows with hairline separators \u2014 resource details, DNS records, trade info.",
+      "files": [
+        {
+          "path": "components/data/KeyValueList.jsx",
+          "type": "registry:ui"
+        },
+        {
+          "path": "components/data/KeyValueList.d.ts",
+          "type": "registry:component"
+        },
+        {
+          "path": "components/data/KeyValueList.prompt.md",
+          "type": "registry:component"
+        }
+      ],
+      "categories": [
+        "data"
+      ]
+    },
+    {
+      "name": "linechart",
+      "type": "registry:ui",
+      "title": "LineChart",
+      "description": "SVG line chart with hover crosshair + tooltip; soft area fill by default.",
+      "files": [
+        {
+          "path": "components/data/LineChart.jsx",
+          "type": "registry:ui"
+        },
+        {
+          "path": "components/data/LineChart.d.ts",
+          "type": "registry:component"
+        },
+        {
+          "path": "components/data/LineChart.prompt.md",
+          "type": "registry:component"
+        }
+      ],
+      "categories": [
+        "data"
+      ]
+    },
+    {
+      "name": "skeleton",
+      "type": "registry:ui",
+      "title": "Skeleton",
+      "description": "Loading placeholder \u2014 soft pulse, no shimmer.",
+      "files": [
+        {
+          "path": "components/data/Skeleton.jsx",
+          "type": "registry:ui"
+        },
+        {
+          "path": "components/data/Skeleton.d.ts",
+          "type": "registry:component"
+        },
+        {
+          "path": "components/data/Skeleton.prompt.md",
+          "type": "registry:component"
+        }
+      ],
+      "categories": [
+        "data"
+      ]
+    },
+    {
+      "name": "sparkline",
+      "type": "registry:ui",
+      "title": "Sparkline",
+      "description": "Inline trend line (SVG) \u2014 green up, red down, faint area fill. Pairs with Stat.",
+      "files": [
+        {
+          "path": "components/data/Sparkline.jsx",
+          "type": "registry:ui"
+        },
+        {
+          "path": "components/data/Sparkline.d.ts",
+          "type": "registry:component"
+        },
+        {
+          "path": "components/data/Sparkline.prompt.md",
+          "type": "registry:component"
+        }
+      ],
+      "categories": [
+        "data"
+      ]
+    },
+    {
+      "name": "stat",
+      "type": "registry:ui",
+      "title": "Stat",
+      "description": "KPI block: muted label, mono value, colored delta.",
+      "files": [
+        {
+          "path": "components/data/Stat.jsx",
+          "type": "registry:ui"
+        },
+        {
+          "path": "components/data/Stat.d.ts",
+          "type": "registry:component"
+        },
+        {
+          "path": "components/data/Stat.prompt.md",
+          "type": "registry:component"
+        }
+      ],
+      "categories": [
+        "data"
+      ]
+    },
+    {
+      "name": "statusdot",
+      "type": "registry:ui",
+      "title": "StatusDot",
+      "description": "Live status dot with label; `pulse` radiates for running/connected states.",
+      "files": [
+        {
+          "path": "components/data/StatusDot.jsx",
+          "type": "registry:ui"
+        },
+        {
+          "path": "components/data/StatusDot.d.ts",
+          "type": "registry:component"
+        },
+        {
+          "path": "components/data/StatusDot.prompt.md",
+          "type": "registry:component"
+        }
+      ],
+      "categories": [
+        "data"
+      ]
+    },
+    {
+      "name": "table",
+      "type": "registry:ui",
+      "title": "Table",
+      "description": "Data table: uppercase micro headers, hairline rows, optional row click. Borderless \u2014 nest in `<Card padding={0}>` for a framed table.",
+      "files": [
+        {
+          "path": "components/data/Table.jsx",
+          "type": "registry:ui"
+        },
+        {
+          "path": "components/data/Table.d.ts",
+          "type": "registry:component"
+        },
+        {
+          "path": "components/data/Table.prompt.md",
+          "type": "registry:component"
+        }
+      ],
+      "categories": [
+        "data"
+      ]
+    },
+    {
+      "name": "calendar",
+      "type": "registry:ui",
+      "title": "Calendar",
+      "description": "Month grid \u2014 hairline today ring, ink selected day, ISO string in/out.",
+      "files": [
+        {
+          "path": "components/dates/Calendar.jsx",
+          "type": "registry:ui"
+        },
+        {
+          "path": "components/dates/Calendar.d.ts",
+          "type": "registry:component"
+        },
+        {
+          "path": "components/dates/Calendar.prompt.md",
+          "type": "registry:component"
+        }
+      ],
+      "categories": [
+        "dates"
+      ]
+    },
+    {
+      "name": "datepicker",
+      "type": "registry:ui",
+      "title": "DatePicker",
+      "description": "Field-style trigger + Calendar popover; closes on pick, outside click, ESC.",
+      "files": [
+        {
+          "path": "components/dates/DatePicker.jsx",
+          "type": "registry:ui"
+        },
+        {
+          "path": "components/dates/DatePicker.d.ts",
+          "type": "registry:component"
+        },
+        {
+          "path": "components/dates/DatePicker.prompt.md",
+          "type": "registry:component"
+        }
+      ],
+      "categories": [
+        "dates"
+      ]
+    },
+    {
+      "name": "accordion",
+      "type": "registry:ui",
+      "title": "Accordion",
+      "description": "Hairline disclosure list (FAQs, docs). Single-open by default; `multiple` allows several.",
+      "files": [
+        {
+          "path": "components/display/Accordion.jsx",
+          "type": "registry:ui"
+        },
+        {
+          "path": "components/display/Accordion.d.ts",
+          "type": "registry:component"
+        },
+        {
+          "path": "components/display/Accordion.prompt.md",
+          "type": "registry:component"
+        }
+      ],
+      "categories": [
+        "display"
+      ]
+    },
+    {
+      "name": "aspectratio",
+      "type": "registry:ui",
+      "title": "AspectRatio",
+      "description": "Locks children to a fixed ratio box (fills width). Use for media, embeds, map placeholders.",
+      "files": [
+        {
+          "path": "components/display/AspectRatio.jsx",
+          "type": "registry:ui"
+        },
+        {
+          "path": "components/display/AspectRatio.d.ts",
+          "type": "registry:component"
+        },
+        {
+          "path": "components/display/AspectRatio.prompt.md",
+          "type": "registry:component"
+        }
+      ],
+      "categories": [
+        "display"
+      ]
+    },
+    {
+      "name": "avatar",
+      "type": "registry:ui",
+      "title": "Avatar + AvatarGroup",
+      "description": "Circular avatar \u2014 image or initials with a deterministic warm tone from `name`. `AvatarGroup` overlaps them with white keylines.",
+      "files": [
+        {
+          "path": "components/display/Avatar.jsx",
+          "type": "registry:ui"
+        },
+        {
+          "path": "components/display/Avatar.d.ts",
+          "type": "registry:component"
+        },
+        {
+          "path": "components/display/Avatar.prompt.md",
+          "type": "registry:component"
+        }
+      ],
+      "categories": [
+        "display"
+      ]
+    },
+    {
+      "name": "badge",
+      "type": "registry:ui",
+      "title": "Badge",
+      "description": "Small status pill; `dot` adds a leading status dot.",
+      "files": [
+        {
+          "path": "components/display/Badge.jsx",
+          "type": "registry:ui"
+        },
+        {
+          "path": "components/display/Badge.d.ts",
+          "type": "registry:component"
+        },
+        {
+          "path": "components/display/Badge.prompt.md",
+          "type": "registry:component"
+        }
+      ],
+      "categories": [
+        "display"
+      ]
+    },
+    {
+      "name": "card",
+      "type": "registry:ui",
+      "title": "Card",
+      "description": "The surface container: white, 1px sand border, 8px radius, warm shadow.",
+      "files": [
+        {
+          "path": "components/display/Card.jsx",
+          "type": "registry:ui"
+        },
+        {
+          "path": "components/display/Card.d.ts",
+          "type": "registry:component"
+        },
+        {
+          "path": "components/display/Card.prompt.md",
+          "type": "registry:component"
+        }
+      ],
+      "categories": [
+        "display"
+      ]
+    },
+    {
+      "name": "carousel",
+      "type": "registry:ui",
+      "title": "Carousel",
+      "description": "Scroll-snap strip with arrow controls and position dots. Use for galleries, template pickers, testimonial strips.",
+      "files": [
+        {
+          "path": "components/display/Carousel.jsx",
+          "type": "registry:ui"
+        },
+        {
+          "path": "components/display/Carousel.d.ts",
+          "type": "registry:component"
+        },
+        {
+          "path": "components/display/Carousel.prompt.md",
+          "type": "registry:component"
+        }
+      ],
+      "categories": [
+        "display"
+      ]
+    },
+    {
+      "name": "collapsible",
+      "type": "registry:ui",
+      "title": "Collapsible",
+      "description": "A single disclosure row: chevron trigger + revealed body. Use for advanced options, long descriptions, log detail.",
+      "files": [
+        {
+          "path": "components/display/Collapsible.jsx",
+          "type": "registry:ui"
+        },
+        {
+          "path": "components/display/Collapsible.d.ts",
+          "type": "registry:component"
+        },
+        {
+          "path": "components/display/Collapsible.prompt.md",
+          "type": "registry:component"
+        }
+      ],
+      "categories": [
+        "display"
+      ]
+    },
+    {
+      "name": "divider",
+      "type": "registry:ui",
+      "title": "Divider",
+      "description": "1px hairline separator; optional uppercase label; `vertical` for toolbars.",
+      "files": [
+        {
+          "path": "components/display/Divider.jsx",
+          "type": "registry:ui"
+        },
+        {
+          "path": "components/display/Divider.d.ts",
+          "type": "registry:component"
+        },
+        {
+          "path": "components/display/Divider.prompt.md",
+          "type": "registry:component"
+        }
+      ],
+      "categories": [
+        "display"
+      ]
+    },
+    {
+      "name": "kbd",
+      "type": "registry:ui",
+      "title": "Kbd",
+      "description": "Keycap for shortcut hints \u2014 mono 11px, hairline with a 2px base.",
+      "files": [
+        {
+          "path": "components/display/Kbd.jsx",
+          "type": "registry:ui"
+        },
+        {
+          "path": "components/display/Kbd.d.ts",
+          "type": "registry:component"
+        },
+        {
+          "path": "components/display/Kbd.prompt.md",
+          "type": "registry:component"
+        }
+      ],
+      "categories": [
+        "display"
+      ]
+    },
+    {
+      "name": "link",
+      "type": "registry:ui",
+      "title": "Link",
+      "description": "Styled anchor. `external` adds \u2197 + new tab; `standalone` makes a semibold CTA with \u2192.",
+      "files": [
+        {
+          "path": "components/display/Link.jsx",
+          "type": "registry:ui"
+        },
+        {
+          "path": "components/display/Link.d.ts",
+          "type": "registry:component"
+        },
+        {
+          "path": "components/display/Link.prompt.md",
+          "type": "registry:component"
+        }
+      ],
+      "categories": [
+        "display"
+      ]
+    },
+    {
+      "name": "listitem",
+      "type": "registry:ui",
+      "title": "ListItem",
+      "description": "Generic row: leading icon/media, title + description, trailing slot. Renders as div, button (`onClick`), or anchor (`href`).",
+      "files": [
+        {
+          "path": "components/display/ListItem.jsx",
+          "type": "registry:ui"
+        },
+        {
+          "path": "components/display/ListItem.d.ts",
+          "type": "registry:component"
+        },
+        {
+          "path": "components/display/ListItem.prompt.md",
+          "type": "registry:component"
+        }
+      ],
+      "categories": [
+        "display"
+      ]
+    },
+    {
+      "name": "resizable",
+      "type": "registry:ui",
+      "title": "Resizable",
+      "description": "Two panes split by a draggable hairline handle (keyboard: arrow keys). Use for editor/preview, list/detail, terminal splits.",
+      "files": [
+        {
+          "path": "components/display/Resizable.jsx",
+          "type": "registry:ui"
+        },
+        {
+          "path": "components/display/Resizable.d.ts",
+          "type": "registry:component"
+        },
+        {
+          "path": "components/display/Resizable.prompt.md",
+          "type": "registry:component"
+        }
+      ],
+      "categories": [
+        "display"
+      ]
+    },
+    {
+      "name": "scrollarea",
+      "type": "registry:ui",
+      "title": "ScrollArea",
+      "description": "Overflow container with the system scrollbar treatment (thin, warm, rounded). Use for bounded lists, code panes, chat logs.",
+      "files": [
+        {
+          "path": "components/display/ScrollArea.jsx",
+          "type": "registry:ui"
+        },
+        {
+          "path": "components/display/ScrollArea.d.ts",
+          "type": "registry:component"
+        },
+        {
+          "path": "components/display/ScrollArea.prompt.md",
+          "type": "registry:component"
+        }
+      ],
+      "categories": [
+        "display"
+      ]
+    },
+    {
+      "name": "tag",
+      "type": "registry:ui",
+      "title": "Tag",
+      "description": "Chip for filters and labels; removable via `onRemove`, clickable via `onClick`.",
+      "files": [
+        {
+          "path": "components/display/Tag.jsx",
+          "type": "registry:ui"
+        },
+        {
+          "path": "components/display/Tag.d.ts",
+          "type": "registry:component"
+        },
+        {
+          "path": "components/display/Tag.prompt.md",
+          "type": "registry:component"
+        }
+      ],
+      "categories": [
+        "display"
+      ]
+    },
+    {
+      "name": "toolbar",
+      "type": "registry:ui",
+      "title": "Toolbar",
+      "description": "Grouped icon actions on a hairline chip \u2014 editors, chart controls, bulk bars. `value` marks active (ink).",
+      "files": [
+        {
+          "path": "components/display/Toolbar.jsx",
+          "type": "registry:ui"
+        },
+        {
+          "path": "components/display/Toolbar.d.ts",
+          "type": "registry:component"
+        },
+        {
+          "path": "components/display/Toolbar.prompt.md",
+          "type": "registry:component"
+        }
+      ],
+      "categories": [
+        "display"
+      ]
+    },
+    {
+      "name": "treelist",
+      "type": "registry:ui",
+      "title": "TreeList",
+      "description": "Collapsible tree for file/nav hierarchies. Rows take icons + mono counts; branches toggle on click.",
+      "files": [
+        {
+          "path": "components/display/TreeList.jsx",
+          "type": "registry:ui"
+        },
+        {
+          "path": "components/display/TreeList.d.ts",
+          "type": "registry:component"
+        },
+        {
+          "path": "components/display/TreeList.prompt.md",
+          "type": "registry:component"
+        }
+      ],
+      "categories": [
+        "display"
+      ]
+    },
+    {
+      "name": "alert",
+      "type": "registry:ui",
+      "title": "Alert",
+      "description": "Inline banner: white surface, hairline border, tone-colored icon. For page-level notices \u2014 use Toast for transient events.",
+      "files": [
+        {
+          "path": "components/feedback/Alert.jsx",
+          "type": "registry:ui"
+        },
+        {
+          "path": "components/feedback/Alert.d.ts",
+          "type": "registry:component"
+        },
+        {
+          "path": "components/feedback/Alert.prompt.md",
+          "type": "registry:component"
+        }
+      ],
+      "categories": [
+        "feedback"
+      ]
+    },
+    {
+      "name": "banner",
+      "type": "registry:ui",
+      "title": "Banner",
+      "description": "Full-width strip above the app chrome \u2014 trials, incidents, announcements. One per view, max.",
+      "files": [
+        {
+          "path": "components/feedback/Banner.jsx",
+          "type": "registry:ui"
+        },
+        {
+          "path": "components/feedback/Banner.d.ts",
+          "type": "registry:component"
+        },
+        {
+          "path": "components/feedback/Banner.prompt.md",
+          "type": "registry:component"
+        }
+      ],
+      "categories": [
+        "feedback"
+      ]
+    },
+    {
+      "name": "confirmdialog",
+      "type": "registry:ui",
+      "title": "ConfirmDialog",
+      "description": "Destructive-action preset of Dialog; optional type-to-confirm gate.",
+      "files": [
+        {
+          "path": "components/feedback/ConfirmDialog.jsx",
+          "type": "registry:ui"
+        },
+        {
+          "path": "components/feedback/ConfirmDialog.d.ts",
+          "type": "registry:component"
+        },
+        {
+          "path": "components/feedback/ConfirmDialog.prompt.md",
+          "type": "registry:component"
+        }
+      ],
+      "categories": [
+        "feedback"
+      ]
+    },
+    {
+      "name": "dialog",
+      "type": "registry:ui",
+      "title": "Dialog",
+      "description": "Centered modal with dimmed overlay, springy scale-in, ESC/overlay/\u2715 close.",
+      "files": [
+        {
+          "path": "components/feedback/Dialog.jsx",
+          "type": "registry:ui"
+        },
+        {
+          "path": "components/feedback/Dialog.d.ts",
+          "type": "registry:component"
+        },
+        {
+          "path": "components/feedback/Dialog.prompt.md",
+          "type": "registry:component"
+        }
+      ],
+      "categories": [
+        "feedback"
+      ]
+    },
+    {
+      "name": "loader",
+      "type": "registry:ui",
+      "title": "Loader",
+      "description": "Text-treatment loading state (no spinner) \u2014 `pulse` breathes opacity, `shimmer` sweeps a highlight through the label; optional staggered dots.",
+      "files": [
+        {
+          "path": "components/feedback/Loader.jsx",
+          "type": "registry:ui"
+        },
+        {
+          "path": "components/feedback/Loader.d.ts",
+          "type": "registry:component"
+        },
+        {
+          "path": "components/feedback/Loader.prompt.md",
+          "type": "registry:component"
+        }
+      ],
+      "categories": [
+        "feedback"
+      ]
+    },
+    {
+      "name": "progress",
+      "type": "registry:ui",
+      "title": "Progress",
+      "description": "4px ink progress bar for usage meters and multi-step flows.",
+      "files": [
+        {
+          "path": "components/feedback/Progress.jsx",
+          "type": "registry:ui"
+        },
+        {
+          "path": "components/feedback/Progress.d.ts",
+          "type": "registry:component"
+        },
+        {
+          "path": "components/feedback/Progress.prompt.md",
+          "type": "registry:component"
+        }
+      ],
+      "categories": [
+        "feedback"
+      ]
+    },
+    {
+      "name": "spinner",
+      "type": "registry:ui",
+      "title": "Spinner",
+      "description": "Standalone loading indicator (Button has its own via `loading`).",
+      "files": [
+        {
+          "path": "components/feedback/Spinner.jsx",
+          "type": "registry:ui"
+        },
+        {
+          "path": "components/feedback/Spinner.d.ts",
+          "type": "registry:component"
+        },
+        {
+          "path": "components/feedback/Spinner.prompt.md",
+          "type": "registry:component"
+        }
+      ],
+      "categories": [
+        "feedback"
+      ]
+    },
+    {
+      "name": "toast",
+      "type": "registry:ui",
+      "title": "Toast + ToastStack",
+      "description": "Dark (espresso) notification card; wrap in `ToastStack` to pin bottom-right.",
+      "files": [
+        {
+          "path": "components/feedback/Toast.jsx",
+          "type": "registry:ui"
+        },
+        {
+          "path": "components/feedback/Toast.d.ts",
+          "type": "registry:component"
+        },
+        {
+          "path": "components/feedback/Toast.prompt.md",
+          "type": "registry:component"
+        }
+      ],
+      "categories": [
+        "feedback"
+      ]
+    },
+    {
+      "name": "tooltip",
+      "type": "registry:ui",
+      "title": "Tooltip",
+      "description": "Hover/focus tooltip with 200ms delay and spring pop. Wrap any trigger element.",
+      "files": [
+        {
+          "path": "components/feedback/Tooltip.jsx",
+          "type": "registry:ui"
+        },
+        {
+          "path": "components/feedback/Tooltip.d.ts",
+          "type": "registry:component"
+        },
+        {
+          "path": "components/feedback/Tooltip.prompt.md",
+          "type": "registry:component"
+        }
+      ],
+      "categories": [
+        "feedback"
+      ]
+    },
+    {
+      "name": "filedrop",
+      "type": "registry:ui",
+      "title": "FileDrop",
+      "description": "Dashed dropzone \u2014 click or drag; ink border on hover/dragover.",
+      "files": [
+        {
+          "path": "components/files/FileDrop.jsx",
+          "type": "registry:ui"
+        },
+        {
+          "path": "components/files/FileDrop.d.ts",
+          "type": "registry:component"
+        },
+        {
+          "path": "components/files/FileDrop.prompt.md",
+          "type": "registry:component"
+        }
+      ],
+      "categories": [
+        "files"
+      ]
+    },
+    {
+      "name": "filetile",
+      "type": "registry:ui",
+      "title": "FileTile",
+      "description": "File row with type icon (inferred from extension), size/status meta, progress or error state.",
+      "files": [
+        {
+          "path": "components/files/FileTile.jsx",
+          "type": "registry:ui"
+        },
+        {
+          "path": "components/files/FileTile.d.ts",
+          "type": "registry:component"
+        },
+        {
+          "path": "components/files/FileTile.prompt.md",
+          "type": "registry:component"
+        }
+      ],
+      "categories": [
+        "files"
+      ]
+    },
+    {
+      "name": "filetypeicon",
+      "type": "registry:ui",
+      "title": "FileTypeIcon",
+      "description": "Typed file glyph with colored extension chip \u2014 maps 20 common extensions to icon + color.",
+      "files": [
+        {
+          "path": "components/files/FileTypeIcon.jsx",
+          "type": "registry:ui"
+        },
+        {
+          "path": "components/files/FileTypeIcon.d.ts",
+          "type": "registry:component"
+        },
+        {
+          "path": "components/files/FileTypeIcon.prompt.md",
+          "type": "registry:component"
+        }
+      ],
+      "categories": [
+        "files"
+      ]
+    },
+    {
+      "name": "paymentcard",
+      "type": "registry:ui",
+      "title": "PaymentCard",
+      "description": "Payment card visual for Trader / Social Finance \u2014 espresso, caramel, or paper; `frozen` grays it out.",
+      "files": [
+        {
+          "path": "components/finance/PaymentCard.jsx",
+          "type": "registry:ui"
+        },
+        {
+          "path": "components/finance/PaymentCard.d.ts",
+          "type": "registry:component"
+        },
+        {
+          "path": "components/finance/PaymentCard.prompt.md",
+          "type": "registry:component"
+        }
+      ],
+      "categories": [
+        "finance"
+      ]
+    },
+    {
+      "name": "button",
+      "type": "registry:ui",
+      "title": "Button",
+      "description": "The action button \u2014 primary for the one main action per view, secondary/ghost for the rest.",
+      "files": [
+        {
+          "path": "components/forms/Button.jsx",
+          "type": "registry:ui"
+        },
+        {
+          "path": "components/forms/Button.d.ts",
+          "type": "registry:component"
+        },
+        {
+          "path": "components/forms/Button.prompt.md",
+          "type": "registry:component"
+        }
+      ],
+      "categories": [
+        "forms"
+      ]
+    },
+    {
+      "name": "buttongroup",
+      "type": "registry:ui",
+      "title": "ButtonGroup",
+      "description": "Attaches adjacent Buttons/IconButtons into one segment (shared borders, squared inner corners). Use for tightly related actions of equal rank: zoom in/out, prev/next, split-button patterns.",
+      "files": [
+        {
+          "path": "components/forms/ButtonGroup.jsx",
+          "type": "registry:ui"
+        },
+        {
+          "path": "components/forms/ButtonGroup.d.ts",
+          "type": "registry:component"
+        },
+        {
+          "path": "components/forms/ButtonGroup.prompt.md",
+          "type": "registry:component"
+        }
+      ],
+      "categories": [
+        "forms"
+      ]
+    },
+    {
+      "name": "buttontile",
+      "type": "registry:ui",
+      "title": "ButtonTile + ButtonTileGroup",
+      "description": "Large selectable tile \u2014 plan pickers, onboarding choices. Wrap in `ButtonTileGroup columns={n}`.",
+      "files": [
+        {
+          "path": "components/forms/ButtonTile.jsx",
+          "type": "registry:ui"
+        },
+        {
+          "path": "components/forms/ButtonTile.d.ts",
+          "type": "registry:component"
+        },
+        {
+          "path": "components/forms/ButtonTile.prompt.md",
+          "type": "registry:component"
+        }
+      ],
+      "categories": [
+        "forms"
+      ]
+    },
+    {
+      "name": "checkbox",
+      "type": "registry:ui",
+      "title": "Checkbox",
+      "description": "Checkbox with springy check pop; supports a muted `description` second line.",
+      "files": [
+        {
+          "path": "components/forms/Checkbox.jsx",
+          "type": "registry:ui"
+        },
+        {
+          "path": "components/forms/Checkbox.d.ts",
+          "type": "registry:component"
+        },
+        {
+          "path": "components/forms/Checkbox.prompt.md",
+          "type": "registry:component"
+        }
+      ],
+      "categories": [
+        "forms"
+      ]
+    },
+    {
+      "name": "combobox",
+      "type": "registry:ui",
+      "title": "Combobox",
+      "description": "Searchable select \u2014 single, or multi with removable chips. Keyboard: arrows + Enter, Backspace removes last chip.",
+      "files": [
+        {
+          "path": "components/forms/Combobox.jsx",
+          "type": "registry:ui"
+        },
+        {
+          "path": "components/forms/Combobox.d.ts",
+          "type": "registry:component"
+        },
+        {
+          "path": "components/forms/Combobox.prompt.md",
+          "type": "registry:component"
+        }
+      ],
+      "categories": [
+        "forms"
+      ]
+    },
+    {
+      "name": "digitentry",
+      "type": "registry:ui",
+      "title": "DigitEntry",
+      "description": "OTP/PIN input \u2014 one cell per digit, auto-advance, paste-aware, `autocomplete=\"one-time-code\"`.",
+      "files": [
+        {
+          "path": "components/forms/DigitEntry.jsx",
+          "type": "registry:ui"
+        },
+        {
+          "path": "components/forms/DigitEntry.d.ts",
+          "type": "registry:component"
+        },
+        {
+          "path": "components/forms/DigitEntry.prompt.md",
+          "type": "registry:component"
+        }
+      ],
+      "categories": [
+        "forms"
+      ]
+    },
+    {
+      "name": "iconbutton",
+      "type": "registry:ui",
+      "title": "IconButton",
+      "description": "Square icon-only button for toolbars, card actions, and dense rows; `label` is required (a11y + tooltip).",
+      "files": [
+        {
+          "path": "components/forms/IconButton.jsx",
+          "type": "registry:ui"
+        },
+        {
+          "path": "components/forms/IconButton.d.ts",
+          "type": "registry:component"
+        },
+        {
+          "path": "components/forms/IconButton.prompt.md",
+          "type": "registry:component"
+        }
+      ],
+      "categories": [
+        "forms"
+      ]
+    },
+    {
+      "name": "input",
+      "type": "registry:ui",
+      "title": "Input",
+      "description": "Text input; renders bare, or as a full field when `label`/`hint`/`error` are set.",
+      "files": [
+        {
+          "path": "components/forms/Input.jsx",
+          "type": "registry:ui"
+        },
+        {
+          "path": "components/forms/Input.d.ts",
+          "type": "registry:component"
+        },
+        {
+          "path": "components/forms/Input.prompt.md",
+          "type": "registry:component"
+        }
+      ],
+      "categories": [
+        "forms"
+      ]
+    },
+    {
+      "name": "inputgroup",
+      "type": "registry:ui",
+      "title": "InputGroup",
+      "description": "An input with leading/trailing addons inside one bordered row. String addons render as tinted cells (units, protocols); node addons render bare (ghost Buttons, Icons).",
+      "files": [
+        {
+          "path": "components/forms/InputGroup.jsx",
+          "type": "registry:ui"
+        },
+        {
+          "path": "components/forms/InputGroup.d.ts",
+          "type": "registry:component"
+        },
+        {
+          "path": "components/forms/InputGroup.prompt.md",
+          "type": "registry:component"
+        }
+      ],
+      "categories": [
+        "forms"
+      ]
+    },
+    {
+      "name": "label",
+      "type": "registry:ui",
+      "title": "Label",
+      "description": "Standalone field label for custom controls that lack a built-in `label` prop. Pair via `htmlFor`; `required` adds the red asterisk, `hint` a muted inline note.",
+      "files": [
+        {
+          "path": "components/forms/Label.jsx",
+          "type": "registry:ui"
+        },
+        {
+          "path": "components/forms/Label.d.ts",
+          "type": "registry:component"
+        },
+        {
+          "path": "components/forms/Label.prompt.md",
+          "type": "registry:component"
+        }
+      ],
+      "categories": [
+        "forms"
+      ]
+    },
+    {
+      "name": "radio",
+      "type": "registry:ui",
+      "title": "Radio",
+      "description": "Radio for 2\u20135 mutually exclusive options; group with a shared `name`.",
+      "files": [
+        {
+          "path": "components/forms/Radio.jsx",
+          "type": "registry:ui"
+        },
+        {
+          "path": "components/forms/Radio.d.ts",
+          "type": "registry:component"
+        },
+        {
+          "path": "components/forms/Radio.prompt.md",
+          "type": "registry:component"
+        }
+      ],
+      "categories": [
+        "forms"
+      ]
+    },
+    {
+      "name": "select",
+      "type": "registry:ui",
+      "title": "Select",
+      "description": "Styled native select with chevron; options as strings, `{value,label}` objects, or `<option>` children.",
+      "files": [
+        {
+          "path": "components/forms/Select.jsx",
+          "type": "registry:ui"
+        },
+        {
+          "path": "components/forms/Select.d.ts",
+          "type": "registry:component"
+        },
+        {
+          "path": "components/forms/Select.prompt.md",
+          "type": "registry:component"
+        }
+      ],
+      "categories": [
+        "forms"
+      ]
+    },
+    {
+      "name": "slider",
+      "type": "registry:ui",
+      "title": "Slider",
+      "description": "Range input with ink fill and hairline track; label + live value optional.",
+      "files": [
+        {
+          "path": "components/forms/Slider.jsx",
+          "type": "registry:ui"
+        },
+        {
+          "path": "components/forms/Slider.d.ts",
+          "type": "registry:component"
+        },
+        {
+          "path": "components/forms/Slider.prompt.md",
+          "type": "registry:component"
+        }
+      ],
+      "categories": [
+        "forms"
+      ]
+    },
+    {
+      "name": "switch",
+      "type": "registry:ui",
+      "title": "Switch",
+      "description": "On/off toggle with springy thumb \u2014 for settings that apply immediately (otherwise use Checkbox).",
+      "files": [
+        {
+          "path": "components/forms/Switch.jsx",
+          "type": "registry:ui"
+        },
+        {
+          "path": "components/forms/Switch.d.ts",
+          "type": "registry:component"
+        },
+        {
+          "path": "components/forms/Switch.prompt.md",
+          "type": "registry:component"
+        }
+      ],
+      "categories": [
+        "forms"
+      ]
+    },
+    {
+      "name": "textarea",
+      "type": "registry:ui",
+      "title": "Textarea",
+      "description": "Multiline input with the same field wrapper as Input (`label`/`hint`/`error`).",
+      "files": [
+        {
+          "path": "components/forms/Textarea.jsx",
+          "type": "registry:ui"
+        },
+        {
+          "path": "components/forms/Textarea.d.ts",
+          "type": "registry:component"
+        },
+        {
+          "path": "components/forms/Textarea.prompt.md",
+          "type": "registry:component"
+        }
+      ],
+      "categories": [
+        "forms"
+      ]
+    },
+    {
+      "name": "toggle",
+      "type": "registry:ui",
+      "title": "Toggle + ToggleGroup",
+      "description": "A pressed-state button for on/off formatting-style options (bold, grid view, mute). Use `icon` alone for toolbars, or icon + children for labeled toggles.",
+      "files": [
+        {
+          "path": "components/forms/Toggle.jsx",
+          "type": "registry:ui"
+        },
+        {
+          "path": "components/forms/Toggle.d.ts",
+          "type": "registry:component"
+        },
+        {
+          "path": "components/forms/Toggle.prompt.md",
+          "type": "registry:component"
+        }
+      ],
+      "categories": [
+        "forms"
+      ]
+    },
+    {
+      "name": "icon",
+      "type": "registry:ui",
+      "title": "Icon",
+      "description": "Renders one of the 65 curated Lucide icons shipped in `assets/icons/`, inheriting `currentColor`.",
+      "files": [
+        {
+          "path": "components/icons/Icon.jsx",
+          "type": "registry:ui"
+        },
+        {
+          "path": "components/icons/Icon.d.ts",
+          "type": "registry:component"
+        },
+        {
+          "path": "components/icons/Icon.prompt.md",
+          "type": "registry:component"
+        }
+      ],
+      "categories": [
+        "icons"
+      ]
+    },
+    {
+      "name": "breadcrumbs",
+      "type": "registry:ui",
+      "title": "Breadcrumbs",
+      "description": "Path trail with chevron separators; last item is the current page.",
+      "files": [
+        {
+          "path": "components/navigation/Breadcrumbs.jsx",
+          "type": "registry:ui"
+        },
+        {
+          "path": "components/navigation/Breadcrumbs.d.ts",
+          "type": "registry:component"
+        },
+        {
+          "path": "components/navigation/Breadcrumbs.prompt.md",
+          "type": "registry:component"
+        }
+      ],
+      "categories": [
+        "navigation"
+      ]
+    },
+    {
+      "name": "menubar",
+      "type": "registry:ui",
+      "title": "Menubar",
+      "description": "Desktop-app style menu bar (File / Edit / View). Click opens; hovering across bar switches menus while open. Items share the Menu item shape (icon, kbd, danger, separator).",
+      "files": [
+        {
+          "path": "components/navigation/Menubar.jsx",
+          "type": "registry:ui"
+        },
+        {
+          "path": "components/navigation/Menubar.d.ts",
+          "type": "registry:component"
+        },
+        {
+          "path": "components/navigation/Menubar.prompt.md",
+          "type": "registry:component"
+        }
+      ],
+      "categories": [
+        "navigation"
+      ]
+    },
+    {
+      "name": "pagecontrol",
+      "type": "registry:ui",
+      "title": "PageControl",
+      "description": "Carousel dots \u2014 active dot stretches to an ink pill.",
+      "files": [
+        {
+          "path": "components/navigation/PageControl.jsx",
+          "type": "registry:ui"
+        },
+        {
+          "path": "components/navigation/PageControl.d.ts",
+          "type": "registry:component"
+        },
+        {
+          "path": "components/navigation/PageControl.prompt.md",
+          "type": "registry:component"
+        }
+      ],
+      "categories": [
+        "navigation"
+      ]
+    },
+    {
+      "name": "pagination",
+      "type": "registry:ui",
+      "title": "Pagination",
+      "description": "Numbered pager with ellipsis collapsing; active page is an ink chip.",
+      "files": [
+        {
+          "path": "components/navigation/Pagination.jsx",
+          "type": "registry:ui"
+        },
+        {
+          "path": "components/navigation/Pagination.d.ts",
+          "type": "registry:component"
+        },
+        {
+          "path": "components/navigation/Pagination.prompt.md",
+          "type": "registry:component"
+        }
+      ],
+      "categories": [
+        "navigation"
+      ]
+    },
+    {
+      "name": "segmentedcontrol",
+      "type": "registry:ui",
+      "title": "SegmentedControl",
+      "description": "Inline 2\u20135-way toggle on a sand track; active segment is a white hairline chip. For views/ranges \u2014 use Tabs for page sections.",
+      "files": [
+        {
+          "path": "components/navigation/SegmentedControl.jsx",
+          "type": "registry:ui"
+        },
+        {
+          "path": "components/navigation/SegmentedControl.d.ts",
+          "type": "registry:component"
+        },
+        {
+          "path": "components/navigation/SegmentedControl.prompt.md",
+          "type": "registry:component"
+        }
+      ],
+      "categories": [
+        "navigation"
+      ]
+    },
+    {
+      "name": "sidenav",
+      "type": "registry:ui",
+      "title": "SideNav",
+      "description": "The product sidebar: brand row, grouped nav with icons/badges, pinned footer. 240px on `--surface-subtle`.",
+      "files": [
+        {
+          "path": "components/navigation/SideNav.jsx",
+          "type": "registry:ui"
+        },
+        {
+          "path": "components/navigation/SideNav.d.ts",
+          "type": "registry:component"
+        },
+        {
+          "path": "components/navigation/SideNav.prompt.md",
+          "type": "registry:component"
+        }
+      ],
+      "categories": [
+        "navigation"
+      ]
+    },
+    {
+      "name": "steps",
+      "type": "registry:ui",
+      "title": "Steps",
+      "description": "Numbered progress rail \u2014 vertical for agent task logs, horizontal for wizards.",
+      "files": [
+        {
+          "path": "components/navigation/Steps.jsx",
+          "type": "registry:ui"
+        },
+        {
+          "path": "components/navigation/Steps.d.ts",
+          "type": "registry:component"
+        },
+        {
+          "path": "components/navigation/Steps.prompt.md",
+          "type": "registry:component"
+        }
+      ],
+      "categories": [
+        "navigation"
+      ]
+    },
+    {
+      "name": "tabs",
+      "type": "registry:ui",
+      "title": "Tabs",
+      "description": "Underline tabs with a spring-sliding caramel ink bar. Controlled: pass `value` + `onChange`.",
+      "files": [
+        {
+          "path": "components/navigation/Tabs.jsx",
+          "type": "registry:ui"
+        },
+        {
+          "path": "components/navigation/Tabs.d.ts",
+          "type": "registry:component"
+        },
+        {
+          "path": "components/navigation/Tabs.prompt.md",
+          "type": "registry:component"
+        }
+      ],
+      "categories": [
+        "navigation"
+      ]
+    },
+    {
+      "name": "topnav",
+      "type": "registry:ui",
+      "title": "TopNav",
+      "description": "Sticky blurred header: optional leading slot, display-font title, right-aligned actions.",
+      "files": [
+        {
+          "path": "components/navigation/TopNav.jsx",
+          "type": "registry:ui"
+        },
+        {
+          "path": "components/navigation/TopNav.d.ts",
+          "type": "registry:component"
+        },
+        {
+          "path": "components/navigation/TopNav.prompt.md",
+          "type": "registry:component"
+        }
+      ],
+      "categories": [
+        "navigation"
+      ]
+    },
+    {
+      "name": "commandpalette",
+      "type": "registry:ui",
+      "title": "CommandPalette",
+      "description": "\u2318K palette: search, grouped commands, full keyboard nav (\u2191\u2193, \u21b5, Esc), Kbd-hinted footer.",
+      "files": [
+        {
+          "path": "components/overlay/CommandPalette.jsx",
+          "type": "registry:ui"
+        },
+        {
+          "path": "components/overlay/CommandPalette.d.ts",
+          "type": "registry:component"
+        },
+        {
+          "path": "components/overlay/CommandPalette.prompt.md",
+          "type": "registry:component"
+        }
+      ],
+      "categories": [
+        "overlay"
+      ]
+    },
+    {
+      "name": "contextmenu",
+      "type": "registry:ui",
+      "title": "ContextMenu",
+      "description": "Right-click menu anchored at the cursor. Wrap the target; items share the Menu item shape.",
+      "files": [
+        {
+          "path": "components/overlay/ContextMenu.jsx",
+          "type": "registry:ui"
+        },
+        {
+          "path": "components/overlay/ContextMenu.d.ts",
+          "type": "registry:component"
+        },
+        {
+          "path": "components/overlay/ContextMenu.prompt.md",
+          "type": "registry:component"
+        }
+      ],
+      "categories": [
+        "overlay"
+      ]
+    },
+    {
+      "name": "drawer",
+      "type": "registry:ui",
+      "title": "Drawer",
+      "description": "Side panel for details and multi-field edits that shouldn't leave the page.",
+      "files": [
+        {
+          "path": "components/overlay/Drawer.jsx",
+          "type": "registry:ui"
+        },
+        {
+          "path": "components/overlay/Drawer.d.ts",
+          "type": "registry:component"
+        },
+        {
+          "path": "components/overlay/Drawer.prompt.md",
+          "type": "registry:component"
+        }
+      ],
+      "categories": [
+        "overlay"
+      ]
+    },
+    {
+      "name": "hovercard",
+      "type": "registry:ui",
+      "title": "HoverCard",
+      "description": "Rich preview on hover/focus (350ms in, 150ms out). Use for people, repos, tickets \u2014 anywhere a link deserves a glance-preview.",
+      "files": [
+        {
+          "path": "components/overlay/HoverCard.jsx",
+          "type": "registry:ui"
+        },
+        {
+          "path": "components/overlay/HoverCard.d.ts",
+          "type": "registry:component"
+        },
+        {
+          "path": "components/overlay/HoverCard.prompt.md",
+          "type": "registry:component"
+        }
+      ],
+      "categories": [
+        "overlay"
+      ]
+    },
+    {
+      "name": "menu",
+      "type": "registry:ui",
+      "title": "Menu",
+      "description": "Dropdown action menu on any trigger. Items take icons, shortcut hints, separators, and a danger style.",
+      "files": [
+        {
+          "path": "components/overlay/Menu.jsx",
+          "type": "registry:ui"
+        },
+        {
+          "path": "components/overlay/Menu.d.ts",
+          "type": "registry:component"
+        },
+        {
+          "path": "components/overlay/Menu.prompt.md",
+          "type": "registry:component"
+        }
+      ],
+      "categories": [
+        "overlay"
+      ]
+    },
+    {
+      "name": "popover",
+      "type": "registry:ui",
+      "title": "Popover",
+      "description": "Anchored floating panel for filters, pickers, help. Closes on outside click / ESC.",
+      "files": [
+        {
+          "path": "components/overlay/Popover.jsx",
+          "type": "registry:ui"
+        },
+        {
+          "path": "components/overlay/Popover.d.ts",
+          "type": "registry:component"
+        },
+        {
+          "path": "components/overlay/Popover.prompt.md",
+          "type": "registry:component"
+        }
+      ],
+      "categories": [
+        "overlay"
+      ]
+    },
+    {
+      "name": "block-activity-feed",
+      "type": "registry:block",
+      "title": "Activity feed block",
+      "description": "Pre-composed Meridian section: activity feed.",
+      "files": [
+        {
+          "path": "blocks/activity-feed.html",
+          "type": "registry:block"
+        }
+      ],
+      "categories": [
+        "blocks"
+      ]
+    },
+    {
+      "name": "block-app-shell",
+      "type": "registry:block",
+      "title": "App shell block",
+      "description": "Pre-composed Meridian section: app shell.",
+      "files": [
+        {
+          "path": "blocks/app-shell.html",
+          "type": "registry:block"
+        }
+      ],
+      "categories": [
+        "blocks"
+      ]
+    },
+    {
+      "name": "block-faq",
+      "type": "registry:block",
+      "title": "Faq block",
+      "description": "Pre-composed Meridian section: faq.",
+      "files": [
+        {
+          "path": "blocks/faq.html",
+          "type": "registry:block"
+        }
+      ],
+      "categories": [
+        "blocks"
+      ]
+    },
+    {
+      "name": "block-hero",
+      "type": "registry:block",
+      "title": "Hero block",
+      "description": "Pre-composed Meridian section: hero.",
+      "files": [
+        {
+          "path": "blocks/hero.html",
+          "type": "registry:block"
+        }
+      ],
+      "categories": [
+        "blocks"
+      ]
+    },
+    {
+      "name": "block-login",
+      "type": "registry:block",
+      "title": "Login block",
+      "description": "Pre-composed Meridian section: login.",
+      "files": [
+        {
+          "path": "blocks/login.html",
+          "type": "registry:block"
+        }
+      ],
+      "categories": [
+        "blocks"
+      ]
+    },
+    {
+      "name": "block-not-found",
+      "type": "registry:block",
+      "title": "Not found block",
+      "description": "Pre-composed Meridian section: not found.",
+      "files": [
+        {
+          "path": "blocks/not-found.html",
+          "type": "registry:block"
+        }
+      ],
+      "categories": [
+        "blocks"
+      ]
+    },
+    {
+      "name": "block-pricing",
+      "type": "registry:block",
+      "title": "Pricing block",
+      "description": "Pre-composed Meridian section: pricing.",
+      "files": [
+        {
+          "path": "blocks/pricing.html",
+          "type": "registry:block"
+        }
+      ],
+      "categories": [
+        "blocks"
+      ]
+    },
+    {
+      "name": "block-settings",
+      "type": "registry:block",
+      "title": "Settings block",
+      "description": "Pre-composed Meridian section: settings.",
+      "files": [
+        {
+          "path": "blocks/settings.html",
+          "type": "registry:block"
+        }
+      ],
+      "categories": [
+        "blocks"
+      ]
+    },
+    {
+      "name": "block-stats-dashboard",
+      "type": "registry:block",
+      "title": "Stats dashboard block",
+      "description": "Pre-composed Meridian section: stats dashboard.",
+      "files": [
+        {
+          "path": "blocks/stats-dashboard.html",
+          "type": "registry:block"
+        }
+      ],
+      "categories": [
+        "blocks"
+      ]
+    }
+  ]
+}

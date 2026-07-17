@@ -4,7 +4,7 @@ Meridian is MIT-licensed and open to contributions. It is plain HTML + CSS + JSX
 
 ## Component contract
 
-Every component ships four files in its group folder (`apps/www/registry/ui/<group>/`):
+Every component ships four files in its group folder (`components/<group>/`):
 
 1. `<Name>.jsx` — the implementation. Styles against **semantic tokens only** (`var(--surface-card)`, never raw hex), so dark theme and compact density work for free.
 2. `<Name>.d.ts` — the public props interface. JSDoc every prop; mark defaults with `@default`.
@@ -20,7 +20,7 @@ Every component ships four files in its group folder (`apps/www/registry/ui/<gro
 - **Motion** uses the shared scale: 100/160/240ms, `--ease-out` / `--ease-spring`. Nothing longer than 240ms.
 - **Accessibility**: keyboard path + visible focus (`--focus-ring`) + ARIA per `guidelines/accessibility.md`. Non-negotiable.
 - **No new dependencies.** Icons come from the curated Lucide set in `assets/icons/`.
-- **Showcase or starter?** A new product category gets a kit (`apps/www/registry/kits/`, plain JSX showcase). A new page journey people should copy gets a starter (`templates/`, self-contained folder). If both, build the starter first and let the kit show its richest screen. Four twin pairs exist on purpose (console/dashboard, auth, website/marketing, docs); a change to a shared screen updates both sides.
+- **Showcase or starter?** A new product category gets a kit (`showcases/`, plain JSX showcase). A new page journey people should copy gets a starter (`starters/`, self-contained folder). If both, build the starter first and let the kit show its richest screen. Four twin pairs exist on purpose (console/dashboard, auth, website/marketing, docs); a change to a shared screen updates both sides.
 - Semver + deprecation policy: see `guidelines/governance.md`.
 
 ## Checklist before you open a PR

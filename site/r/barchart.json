@@ -1,0 +1,27 @@
+{
+  "name": "barchart",
+  "type": "registry:ui",
+  "title": "BarChart",
+  "description": "Hairline-minimal bar chart: sand bars, ink highlight window, hover tint + title tooltip.",
+  "files": [
+    {
+      "path": "components/data/BarChart.jsx",
+      "type": "registry:ui",
+      "content": "import React from 'react';\nimport { injectEfCss } from '../forms/Button.jsx';\nconst CSS = `\n.ef-bars{display:flex;align-items:flex-end;gap:3px;width:100%}\n.ef-bars__bar{flex:1;min-width:3px;border-radius:2px 2px 0 0;background:var(--sand-200);transition:background var(--dur-fast) var(--ease-out)}\n.ef-bars__bar--hi{background:var(--accent)}\n.ef-bars__bar:hover{background:var(--brand-700)}\n.ef-bars__labels{display:flex;justify-content:space-between;margin-top:6px;font-family:var(--font-mono);font-size:10px;color:var(--text-muted)}\n`;\nexport function BarChart({ data = [], height = 140, highlightLast = 0, labels, formatValue, style, className }) {\n  injectEfCss('ef-css-bars', CSS);\n  const vals = data.map(d => typeof d === 'number' ? d : d.value);\n  const max = Math.max(...vals, 1);\n  return (\n    <div className={className} style={style}>\n      <div className=\"ef-bars\" style={{ height }}>\n        {vals.map((v, i) => (\n          <div key={i} className={`ef-bars__bar${i >= vals.length - highlightLast ? ' ef-bars__bar--hi' : ''}`}\n            style={{ height: Math.max(2, (v / max) * 100) + '%' }}\n            title={(data[i] && data[i].label ? data[i].label + ' \u00b7 ' : '') + (formatValue ? formatValue(v) : v.toLocaleString())}></div>\n        ))}\n      </div>\n      {labels && labels.length ? <div className=\"ef-bars__labels\">{labels.map((l, i) => <span key={i}>{l}</span>)}</div> : null}\n    </div>\n  );\n}\n"
+    },
+    {
+      "path": "components/data/BarChart.d.ts",
+      "type": "registry:component",
+      "content": "export interface BarChartProps {\n  /** Numbers, or { value, label } for hover titles */\n  data: Array<number | { value: number; label?: string }>;\n  /** @default 140 */\n  height?: number;\n  /** Ink-fill the last N bars */\n  highlightLast?: number;\n  /** X-axis labels, spread edge to edge */\n  labels?: string[];\n  formatValue?: (v: number) => string;\n  style?: React.CSSProperties;\n  className?: string;\n}\nexport declare function BarChart(props: BarChartProps): JSX.Element;\n"
+    },
+    {
+      "path": "components/data/BarChart.prompt.md",
+      "type": "registry:component",
+      "content": "Hairline-minimal bar chart: sand bars, ink highlight window, hover tint + title tooltip.\n\n```jsx\n<BarChart data={requests} height={150} highlightLast={4} labels={['Jun 18', 'Jul 2', 'Jul 16']} formatValue={v => v.toLocaleString() + ' req'} />\n```\n"
+    }
+  ],
+  "categories": [
+    "data"
+  ],
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json"
+}

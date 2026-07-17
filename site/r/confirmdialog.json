@@ -1,0 +1,27 @@
+{
+  "name": "confirmdialog",
+  "type": "registry:ui",
+  "title": "ConfirmDialog",
+  "description": "Destructive-action preset of Dialog; optional type-to-confirm gate.",
+  "files": [
+    {
+      "path": "components/feedback/ConfirmDialog.jsx",
+      "type": "registry:ui",
+      "content": "import React from 'react';\nimport { Dialog } from './Dialog.jsx';\nimport { Button } from '../forms/Button.jsx';\nimport { Input } from '../forms/Input.jsx';\nexport function ConfirmDialog({ open, onClose, onConfirm, title, description, confirmLabel = 'Delete', cancelLabel = 'Cancel', tone = 'danger', typeToConfirm, children }) {\n  const [typed, setTyped] = React.useState('');\n  React.useEffect(() => { if (!open) setTyped(''); }, [open]);\n  const blocked = typeToConfirm ? typed !== typeToConfirm : false;\n  return (\n    <Dialog open={open} onClose={onClose} title={title} description={description}\n      footer={\n        <React.Fragment>\n          <Button variant=\"ghost\" onClick={onClose}>{cancelLabel}</Button>\n          <Button variant={tone === 'danger' ? 'danger' : 'primary'} disabled={blocked} onClick={() => { if (onConfirm) onConfirm(); if (onClose) onClose(); }}>{confirmLabel}</Button>\n        </React.Fragment>\n      }>\n      {children}\n      {typeToConfirm ? (\n        <Input label={`Type \u201c${typeToConfirm}\u201d to confirm`} value={typed} onChange={e => setTyped(e.target.value)} placeholder={typeToConfirm} style={children ? { marginTop: 14 } : undefined} />\n      ) : null}\n    </Dialog>\n  );\n}\n"
+    },
+    {
+      "path": "components/feedback/ConfirmDialog.d.ts",
+      "type": "registry:component",
+      "content": "export interface ConfirmDialogProps {\n  open: boolean;\n  onClose?: () => void;\n  /** Called on confirm (dialog closes itself after) */\n  onConfirm?: () => void;\n  title: React.ReactNode;\n  description?: React.ReactNode;\n  /** @default 'Delete' */\n  confirmLabel?: string;\n  /** @default 'Cancel' */\n  cancelLabel?: string;\n  /** 'danger' (red confirm) or 'primary' @default 'danger' */\n  tone?: 'danger' | 'primary';\n  /** Require typing this string to enable confirm */\n  typeToConfirm?: string;\n  children?: React.ReactNode;\n}\nexport declare function ConfirmDialog(props: ConfirmDialogProps): JSX.Element;\n"
+    },
+    {
+      "path": "components/feedback/ConfirmDialog.prompt.md",
+      "type": "registry:component",
+      "content": "Destructive-action preset of Dialog; optional type-to-confirm gate.\n\n```jsx\n<ConfirmDialog open={open} onClose={close} onConfirm={destroy}\n  title=\"Delete workspace\" description=\"Removes all projects, keys, and member access. This can't be undone.\"\n  confirmLabel=\"Delete workspace\" typeToConfirm=\"acme-workspace\" />\n```\n"
+    }
+  ],
+  "categories": [
+    "feedback"
+  ],
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json"
+}

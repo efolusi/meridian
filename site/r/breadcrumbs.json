@@ -1,0 +1,27 @@
+{
+  "name": "breadcrumbs",
+  "type": "registry:ui",
+  "title": "Breadcrumbs",
+  "description": "Path trail with chevron separators; last item is the current page.",
+  "files": [
+    {
+      "path": "components/navigation/Breadcrumbs.jsx",
+      "type": "registry:ui",
+      "content": "import React from 'react';\nimport { Icon } from '../icons/Icon.jsx';\nimport { injectEfCss } from '../forms/Button.jsx';\nconst CSS = `\n.ef-crumbs{display:flex;align-items:center;gap:6px;flex-wrap:wrap}\n.ef-crumbs__link{font-size:var(--text-sm);color:var(--text-muted);text-decoration:none;padding:2px 4px;border-radius:var(--radius-sm);transition:color var(--dur-fast) var(--ease-out)}\na.ef-crumbs__link:hover{color:var(--text-primary);text-decoration:none}\n.ef-crumbs__link--current{color:var(--text-primary);font-weight:var(--weight-medium)}\n.ef-crumbs__sep{color:var(--sand-400);display:inline-flex}\n`;\nexport function Breadcrumbs({ items, style, className }) {\n  injectEfCss('ef-css-crumbs', CSS);\n  return (\n    <nav aria-label=\"Breadcrumb\" className={`ef-crumbs${className ? ' ' + className : ''}`} style={style}>\n      {items.map((it, i) => {\n        const last = i === items.length - 1;\n        return (\n          <React.Fragment key={i}>\n            {last ? <span className=\"ef-crumbs__link ef-crumbs__link--current\" aria-current=\"page\">{it.label}</span>\n              : <a className=\"ef-crumbs__link\" href={it.href || '#'} onClick={it.onClick}>{it.label}</a>}\n            {!last && <span className=\"ef-crumbs__sep\"><Icon name=\"chevron-right\" size={13} /></span>}\n          </React.Fragment>\n        );\n      })}\n    </nav>\n  );\n}\n"
+    },
+    {
+      "path": "components/navigation/Breadcrumbs.d.ts",
+      "type": "registry:component",
+      "content": "export interface BreadcrumbItem {\n  label: React.ReactNode;\n  href?: string;\n  onClick?: (e: React.MouseEvent) => void;\n}\nexport interface BreadcrumbsProps {\n  /** Last item renders as the current page */\n  items: BreadcrumbItem[];\n  style?: React.CSSProperties;\n  className?: string;\n}\nexport declare function Breadcrumbs(props: BreadcrumbsProps): JSX.Element;\n"
+    },
+    {
+      "path": "components/navigation/Breadcrumbs.prompt.md",
+      "type": "registry:component",
+      "content": "Path trail with chevron separators; last item is the current page.\n\n```jsx\n<Breadcrumbs items={[{ label: 'Getting started', href: '#' }, { label: 'Quickstart' }]} />\n```\n"
+    }
+  ],
+  "categories": [
+    "navigation"
+  ],
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json"
+}

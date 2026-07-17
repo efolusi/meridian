@@ -1,0 +1,27 @@
+{
+  "name": "filetile",
+  "type": "registry:ui",
+  "title": "FileTile",
+  "description": "File row with type icon (inferred from extension), size/status meta, progress or error state.",
+  "files": [
+    {
+      "path": "components/files/FileTile.jsx",
+      "type": "registry:ui",
+      "content": "import React from 'react';\nimport { Icon } from '../icons/Icon.jsx';\nimport { IconButton } from '../forms/IconButton.jsx';\nimport { Progress } from '../feedback/Progress.jsx';\nimport { injectEfCss } from '../forms/Button.jsx';\nconst CSS = `\n.ef-filetile{display:flex;align-items:center;gap:12px;padding:10px 12px;border:1px solid var(--border-default);border-radius:var(--radius-md);background:var(--surface-card)}\n.ef-filetile__icon{display:inline-flex;align-items:center;justify-content:center;width:34px;height:34px;flex:none;border-radius:var(--radius-sm);background:var(--surface-sunken);color:var(--sand-700)}\n.ef-filetile__name{font-size:var(--text-sm);font-weight:var(--weight-semibold);color:var(--text-primary);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}\n.ef-filetile__meta{font-size:var(--text-xs);color:var(--text-muted);margin-top:1px}\n.ef-filetile__meta--err{color:var(--danger-600)}\n`;\nconst KIND_ICON = { image: 'image', video: 'video', audio: 'music', code: 'code', archive: 'package', doc: 'file-text' };\nconst EXT_KIND = { png: 'image', jpg: 'image', jpeg: 'image', gif: 'image', svg: 'image', webp: 'image', mp4: 'video', mov: 'video', webm: 'video', mp3: 'audio', wav: 'audio', flac: 'audio', js: 'code', ts: 'code', py: 'code', json: 'code', zip: 'archive', tar: 'archive', gz: 'archive', pdf: 'doc', doc: 'doc', docx: 'doc', md: 'doc', txt: 'doc', csv: 'doc' };\nexport function FileTile({ name, size, kind, status, progress, error, onRemove, actions, style, className }) {\n  injectEfCss('ef-css-filetile', CSS);\n  const ext = (name || '').split('.').pop().toLowerCase();\n  const icon = KIND_ICON[kind || EXT_KIND[ext]] || 'file';\n  return (\n    <div className={`ef-filetile${className ? ' ' + className : ''}`} style={style}>\n      <span className=\"ef-filetile__icon\"><Icon name={icon} size={17} /></span>\n      <div style={{ flex: 1, minWidth: 0 }}>\n        <div className=\"ef-filetile__name\">{name}</div>\n        {error ? <div className=\"ef-filetile__meta ef-filetile__meta--err\">{error}</div>\n          : progress != null ? <Progress value={progress} style={{ marginTop: 5, maxWidth: 220 }} />\n          : <div className=\"ef-filetile__meta\">{[size, status].filter(Boolean).join(' \u00b7 ')}</div>}\n      </div>\n      {actions}\n      {onRemove ? <IconButton icon=\"x\" label=\"Remove\" size=\"sm\" onClick={onRemove} /> : null}\n    </div>\n  );\n}\n"
+    },
+    {
+      "path": "components/files/FileTile.d.ts",
+      "type": "registry:component",
+      "content": "export interface FileTileProps {\n  name: string;\n  /** e.g. \"4.2 MB\" */\n  size?: string;\n  /** Icon family; inferred from extension when omitted */\n  kind?: 'image' | 'video' | 'audio' | 'code' | 'archive' | 'doc';\n  /** Meta text after size, e.g. \"Converted\" */\n  status?: string;\n  /** 0\u2013100 shows an upload bar instead of meta */\n  progress?: number;\n  /** Red meta line */\n  error?: string;\n  onRemove?: () => void;\n  /** Extra right-side controls */\n  actions?: React.ReactNode;\n  style?: React.CSSProperties;\n  className?: string;\n}\nexport declare function FileTile(props: FileTileProps): JSX.Element;\n"
+    },
+    {
+      "path": "components/files/FileTile.prompt.md",
+      "type": "registry:component",
+      "content": "File row with type icon (inferred from extension), size/status meta, progress or error state.\n\n```jsx\n<FileTile name=\"hero-final.mp4\" size=\"48 MB\" status=\"Converting\u2026\" progress={62} />\n<FileTile name=\"notes.pdf\" size=\"1.2 MB\" onRemove={remove} />\n```\n"
+    }
+  ],
+  "categories": [
+    "files"
+  ],
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json"
+}

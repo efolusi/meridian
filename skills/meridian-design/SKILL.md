@@ -12,12 +12,12 @@ Quick orientation:
 - `styles.css` imports all tokens (`tokens/*.css`) — link it and you have the full system.
 - Fonts: Bricolage Grotesque (display), Figtree (UI/body), JetBrains Mono (code) — variable TTFs in `assets/fonts/`, @font-face in `tokens/fonts.css`.
 - Palette: everything derives from the owl mark — brand ramp cream→peach→caramel→cocoa (`--brand-50…950`), espresso ink (`--brand-950` `#2C1709`) for primary actions, caramel (`--brand-700`) for links and focus, warm sand neutrals for everything else. Hairline borders, near-zero shadows, no gradients.
-- Components: React primitives in `apps/www/registry/ui/{forms,display,navigation,feedback,data,overlay,ai,code,files,dates,finance,icons}/` — each has a `.prompt.md` with usage.
+- Components: React primitives in `components/{forms,display,navigation,feedback,data,overlay,ai,code,files,dates,finance,icons}/` — each has a `.prompt.md` with usage.
 - Products: Agent (autonomous AI), Infra, Content, Tools, Trader, Social Finance — the `ai/`, `code/`, `files/`, `data/` groups exist for their surfaces.
 - Icons: 107 Lucide SVGs in `assets/icons/`, 2px stroke, rendered via the Icon component or inlined.
-- Full screens to copy from (showcases, plain JSX): `apps/www/registry/kits/{console,auth,website,docs,agent,infra,trader,tools}/`; page-shell starter in `templates/app-page/`.
+- Full screens to copy from (showcases, plain JSX): `showcases/{console,auth,website,docs,agent,infra,trader,tools}/`; page-shell starter in `starters/app-page/`.
 - Voice: sentence case, verbs on buttons, "we/you", no emoji. See README.md § Content fundamentals.
 - Dark mode: `data-theme="dark"` on any subtree; compact density: `data-density="compact"`. Semantic tokens only — never raw ramp values — and both themes come free.
 - Patterns: `guidelines/forms.md` (validation), `guidelines/accessibility.md` (keyboard map, contrast), `guidelines/governance.md` (versioning, contribution).
-- Starters for new pages (copy the whole folder): `templates/{dashboard,auth-page,marketing-page,docs-page,app-page}/`.
-- Pre-composed marketing/app sections in `apps/www/registry/blocks/` (hero, pricing, FAQ, 404, activity feed) — copy and adapt.
+- Starters for new pages (copy the whole folder): `starters/{dashboard,auth-page,marketing-page,docs-page,app-page}/`.
+- Pre-composed marketing/app sections in `blocks/` (hero, pricing, FAQ, 404, activity feed) — copy and adapt.

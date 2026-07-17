@@ -1,0 +1,27 @@
+{
+  "name": "card",
+  "type": "registry:ui",
+  "title": "Card",
+  "description": "The surface container: white, 1px sand border, 8px radius, warm shadow.",
+  "files": [
+    {
+      "path": "components/display/Card.jsx",
+      "type": "registry:ui",
+      "content": "import React from 'react';\nimport { injectEfCss } from '../forms/Button.jsx';\nconst CSS = `\n.ef-card{background:var(--surface-card);border:1px solid var(--border-default);border-radius:var(--radius-md)}\n.ef-card--elevated{box-shadow:var(--shadow-sm)}\n.ef-card--interactive{cursor:pointer;transition:border-color var(--dur-fast) var(--ease-out),background var(--dur-fast) var(--ease-out)}\n.ef-card--interactive:hover{border-color:var(--sand-400)}\n.ef-card--interactive:active{background:var(--surface-subtle)}\n.ef-card__header{display:flex;align-items:flex-start;justify-content:space-between;gap:12px;padding:16px 20px;border-bottom:1px solid var(--border-default)}\n.ef-card__title{font-family:var(--font-sans);font-size:var(--text-lg);font-weight:var(--weight-semibold);letter-spacing:0;color:var(--text-primary)}\n.ef-card__subtitle{font-size:var(--text-sm);color:var(--text-muted);margin-top:2px}\n.ef-card__footer{display:flex;align-items:center;gap:8px;padding:12px 20px;border-top:1px solid var(--border-default);background:var(--surface-subtle);border-radius:0 0 var(--radius-md) var(--radius-md)}\n`;\nexport function Card({ title, subtitle, actions, footer, padding = 20, elevated, interactive, children, style, className, ...rest }) {\n  injectEfCss('ef-css-card', CSS);\n  return (\n    <div className={`ef-card${elevated ? ' ef-card--elevated' : ''}${interactive ? ' ef-card--interactive' : ''}${className ? ' ' + className : ''}`} style={style} {...rest}>\n      {title || actions ? (\n        <div className=\"ef-card__header\">\n          <div>\n            <div className=\"ef-card__title\">{title}</div>\n            {subtitle ? <div className=\"ef-card__subtitle\">{subtitle}</div> : null}\n          </div>\n          {actions ? <div style={{ display: 'flex', gap: 8, flex: 'none' }}>{actions}</div> : null}\n        </div>\n      ) : null}\n      <div style={{ padding }}>{children}</div>\n      {footer ? <div className=\"ef-card__footer\">{footer}</div> : null}\n    </div>\n  );\n}\n"
+    },
+    {
+      "path": "components/display/Card.d.ts",
+      "type": "registry:component",
+      "content": "export interface CardProps extends React.HTMLAttributes<HTMLDivElement> {\n  /** Header title (header renders only if title or actions set) */\n  title?: React.ReactNode;\n  subtitle?: React.ReactNode;\n  /** Right-aligned header slot (buttons etc.) */\n  actions?: React.ReactNode;\n  /** Footer slot on a sunken strip */\n  footer?: React.ReactNode;\n  /** Body padding in px @default 20 */\n  padding?: number;\n  /** Slightly stronger shadow */\n  elevated?: boolean;\n  /** Hover lift + pointer */\n  interactive?: boolean;\n  children?: React.ReactNode;\n}\nexport declare function Card(props: CardProps): JSX.Element;\n"
+    },
+    {
+      "path": "components/display/Card.prompt.md",
+      "type": "registry:component",
+      "content": "The surface container: white, 1px sand border, 8px radius, warm shadow.\n\n```jsx\n<Card title=\"Invite your team\" subtitle=\"Works better together.\" actions={<Button size=\"sm\" variant=\"secondary\">Invite</Button>} footer={<span>3 of 5 seats used</span>}>\n  \u2026content\u2026\n</Card>\n<Card interactive>Hover-lifts 2px \u2014 use for clickable cards.</Card>\n```\n\n`padding` (default 20), `elevated`, `interactive`. Header renders only when `title`/`actions` set.\n"
+    }
+  ],
+  "categories": [
+    "display"
+  ],
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json"
+}

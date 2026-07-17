@@ -1,0 +1,27 @@
+{
+  "name": "avatar",
+  "type": "registry:ui",
+  "title": "Avatar + AvatarGroup",
+  "description": "Circular avatar \u2014 image or initials with a deterministic warm tone from `name`. `AvatarGroup` overlaps them with white keylines.",
+  "files": [
+    {
+      "path": "components/display/Avatar.jsx",
+      "type": "registry:ui",
+      "content": "import React from 'react';\nimport { injectEfCss } from '../forms/Button.jsx';\nconst CSS = `\n.ef-avatar{position:relative;display:inline-flex;align-items:center;justify-content:center;flex:none;border-radius:var(--radius-full);background:var(--peach-200);color:var(--cocoa-700);font-weight:var(--weight-semibold);overflow:hidden;user-select:none}\n.ef-avatar img{width:100%;height:100%;object-fit:cover}\n.ef-avatar-group{display:inline-flex}\n.ef-avatar-group .ef-avatar{border:2px solid var(--surface-card)}\n.ef-avatar-group .ef-avatar+.ef-avatar{margin-left:-8px}\n`;\nconst TONES = [\n  ['var(--peach-200)', 'var(--cocoa-700)'],\n  ['var(--brand-100)', 'var(--brand-800)'],\n  ['var(--sand-200)', 'var(--sand-800)'],\n  ['var(--cream-50)', 'var(--caramel-500)'],\n  ['var(--success-100)', 'var(--success-600)'],\n];\nexport function Avatar({ name = '', src, size = 32, style, className, ...rest }) {\n  injectEfCss('ef-css-avatar', CSS);\n  const initials = name.trim().split(/\\s+/).map(w => w[0]).slice(0, 2).join('').toUpperCase();\n  let h = 0; for (let i = 0; i < name.length; i++) h = (h * 31 + name.charCodeAt(i)) >>> 0;\n  const [bg, fg] = TONES[h % TONES.length];\n  return (\n    <span className={`ef-avatar${className ? ' ' + className : ''}`} title={name || undefined} style={{ width: size, height: size, fontSize: Math.round(size * 0.38), background: src ? 'var(--sand-100)' : bg, color: fg, ...style }} {...rest}>\n      {src ? <img src={src} alt={name} /> : initials || '\u2022'}\n    </span>\n  );\n}\nexport function AvatarGroup({ children, style, className }) {\n  injectEfCss('ef-css-avatar', CSS);\n  return <span className={`ef-avatar-group${className ? ' ' + className : ''}`} style={style}>{children}</span>;\n}\n"
+    },
+    {
+      "path": "components/display/Avatar.d.ts",
+      "type": "registry:component",
+      "content": "export interface AvatarProps extends React.HTMLAttributes<HTMLSpanElement> {\n  /** Full name \u2014 initials + deterministic tone derive from it */\n  name?: string;\n  /** Image URL; falls back to initials */\n  src?: string;\n  /** Px @default 32 */\n  size?: number;\n}\nexport declare function Avatar(props: AvatarProps): JSX.Element;\n\nexport interface AvatarGroupProps {\n  /** Avatar elements; overlap with white keylines */\n  children?: React.ReactNode;\n  style?: React.CSSProperties;\n  className?: string;\n}\nexport declare function AvatarGroup(props: AvatarGroupProps): JSX.Element;\n"
+    },
+    {
+      "path": "components/display/Avatar.prompt.md",
+      "type": "registry:component",
+      "content": "Circular avatar \u2014 image or initials with a deterministic warm tone from `name`. `AvatarGroup` overlaps them with white keylines.\n\n```jsx\n<Avatar name=\"Ada Obi\" size={36} />\n<AvatarGroup><Avatar name=\"Ada Obi\" /><Avatar name=\"Femi Alade\" /></AvatarGroup>\n```\n"
+    }
+  ],
+  "categories": [
+    "display"
+  ],
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json"
+}

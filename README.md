@@ -46,7 +46,7 @@ The owl mark is the anchor: wise, warm, a little playful. The palette pairs the 
 
 ## Blocks
 
-Pre-composed sections in `apps/www/registry/blocks/` (Blocks group in the Design System tab): App shell, Login, Stats dashboard, Settings, Hero, Pricing, FAQ, 404 page, Activity feed. Copy a block's markup as the starting point for a page — they compose the primitives, so they inherit theme + density automatically.
+Pre-composed sections in `blocks/` (Blocks group in the Design System tab): App shell, Login, Stats dashboard, Settings, Hero, Pricing, FAQ, 404 page, Activity feed. Copy a block's markup as the starting point for a page — they compose the primitives, so they inherit theme + density automatically.
 
 ## Theming & density
 
@@ -71,42 +71,41 @@ Pre-composed sections in `apps/www/registry/blocks/` (Blocks group in the Design
 
 Authored from scratch (no source inventory existed). Namespace: `window.EfolusiDesignSystem_4ffc3d`.
 
-- `apps/www/registry/ui/forms/` — Button, IconButton, Input, Textarea, Select, Checkbox, Radio, Switch, Slider, Combobox, DigitEntry, ButtonTile (+Group), Toggle (+Group), ButtonGroup, InputGroup, Label
-- `apps/www/registry/ui/display/` — Card, Badge, Tag, Avatar (+AvatarGroup), Kbd, Divider, Accordion, Link, Toolbar, TreeList, ListItem, Collapsible, AspectRatio, ScrollArea, Carousel, Resizable
-- `apps/www/registry/ui/navigation/` — Tabs, Breadcrumbs, Pagination, SegmentedControl, PageControl, SideNav, TopNav, Steps, Menubar
-- `apps/www/registry/ui/feedback/` — Dialog, ConfirmDialog, Toast (+ToastStack), Tooltip, Alert, Banner, Progress, Spinner, Loader
-- `apps/www/registry/ui/data/` — Table, Stat, EmptyState, Skeleton, BarChart, LineChart, DonutChart, Sparkline, KeyValueList, StatusDot
-- `apps/www/registry/ui/overlay/` — Menu, Popover, Drawer, CommandPalette, ContextMenu, HoverCard
-- `apps/www/registry/ui/ai/` — ChatMessage, PromptComposer, RichComposer, Reasoning, ToolCall, AgentRun, Task, Todo, Confirmation, Conversation, Citation (+SourceList), SourceCard, Suggestions, PromptSteps, SelectionQuote, ModelSelector, UsageMeter, FeedbackBar, DocumentCard, GeneratedImage, Sandbox, WebPreview, Player, Transcript
-- `apps/www/registry/ui/code/` — CodeBlock, Terminal, CopyField, Diff, Console, Exception, EnvList
-- `apps/www/registry/ui/files/` — FileDrop, FileTile, FileTypeIcon
-- `apps/www/registry/ui/dates/` — Calendar, DatePicker
-- `apps/www/registry/ui/finance/` — PaymentCard
-- `apps/www/registry/ui/icons/` — Icon (Lucide loader)
+- `components/forms/` — Button, IconButton, Input, Textarea, Select, Checkbox, Radio, Switch, Slider, Combobox, DigitEntry, ButtonTile (+Group), Toggle (+Group), ButtonGroup, InputGroup, Label
+- `components/display/` — Card, Badge, Tag, Avatar (+AvatarGroup), Kbd, Divider, Accordion, Link, Toolbar, TreeList, ListItem, Collapsible, AspectRatio, ScrollArea, Carousel, Resizable
+- `components/navigation/` — Tabs, Breadcrumbs, Pagination, SegmentedControl, PageControl, SideNav, TopNav, Steps, Menubar
+- `components/feedback/` — Dialog, ConfirmDialog, Toast (+ToastStack), Tooltip, Alert, Banner, Progress, Spinner, Loader
+- `components/data/` — Table, Stat, EmptyState, Skeleton, BarChart, LineChart, DonutChart, Sparkline, KeyValueList, StatusDot
+- `components/overlay/` — Menu, Popover, Drawer, CommandPalette, ContextMenu, HoverCard
+- `components/ai/` — ChatMessage, PromptComposer, RichComposer, Reasoning, ToolCall, AgentRun, Task, Todo, Confirmation, Conversation, Citation (+SourceList), SourceCard, Suggestions, PromptSteps, SelectionQuote, ModelSelector, UsageMeter, FeedbackBar, DocumentCard, GeneratedImage, Sandbox, WebPreview, Player, Transcript
+- `components/code/` — CodeBlock, Terminal, CopyField, Diff, Console, Exception, EnvList
+- `components/files/` — FileDrop, FileTile, FileTypeIcon
+- `components/dates/` — Calendar, DatePicker
+- `components/finance/` — PaymentCard
+- `components/icons/` — Icon (Lucide loader)
 
 **Intentional additions** beyond the classic starter set: `Icon` (required wrapper for the copied Lucide SVGs), plus the data/overlay tier (Table, Stat, Menu, Drawer, …) sized to what the console, docs, and marketing kits actually use — nothing speculative.
 
 ## Index
 
-The layout follows [shadcn/ui](https://github.com/shadcn-ui/ui): the docs app hosts the registry, starters live in `templates/`, and the distribution surface stays at the root so script-tag consumers vendor one folder with stable paths.
+The layout is Meridian's own, organized by purpose: the system core stays at the root (that is the vendoring API and the compiler contract), the library and demo surfaces each get one shallow, self-describing directory, and the docs site consumes them all. Full rationale in `ARCHITECTURE.md`.
 
 - `styles.css` — global entry; imports everything under `tokens/` (link this one file and the system is live)
 - `tokens/` — fonts.css, colors.css, typography.css, spacing.css, effects.css, base.css
 - `assets/` — logo.png, fonts/ (5 variable TTFs + OFL license texts), icons/ (107 Lucide SVGs + license)
-- `_ds_bundle.js` + `_ds_manifest.json` — compiled component bundle and machine-readable manifest
-- `apps/www/` — the docs site (home, docs, components, blocks, charts, themes, colors) and the registry it hosts:
-  - `registry/ui/<group>/` — the 104 components; each ships `.jsx` + `.d.ts` + `.prompt.md` + a group card HTML
-  - `registry/blocks/` — 9 pre-composed sections
-  - `registry/examples/` — the live demos behind every component page
-  - `registry/kits/` — 8 product **showcases** in plain JSX: agent, auth, console, docs, infra, tools, trader, website
-  - `registry.json` — machine-readable registry index (shadcn registry schema)
-- `templates/` — 5 **starter** journeys to copy, one per category, linked pages sharing a consistent shell: marketing (home → pricing → contact), auth (sign in → sign up → onboarding, + password reset), dashboard (overview → customers → detail → settings), app (overview → projects → detail → new project → settings), docs (quickstart → authentication → errors)
+- `_ds_bundle.js` + `_ds_manifest.json` — compiled component bundle and machine-readable manifest (generated by the DS compiler; see `ARCHITECTURE.md`)
+- `components/<group>/` — the 104 components; each ships `.jsx` + `.d.ts` + `.prompt.md` + a group card HTML
+- `blocks/` — 9 pre-composed sections to paste into a page
+- `showcases/<product>/` — 8 product demos in plain JSX: agent, auth, console, docs, infra, tools, trader, website
+- `starters/<journey>/` — 5 journeys to copy wholesale, one per category, linked pages sharing a consistent shell: marketing (home → pricing → contact), auth (sign in → sign up → onboarding, + password reset), dashboard (overview → customers → detail → settings), app (overview → projects → detail → new project → settings), docs (quickstart → authentication → errors)
+- `site/` — the docs website (home, docs, components, blocks, charts, themes, colors), plus `examples/` (the live demos), `registry.json`, and generated `r/` install items
 - `guidelines/` — foundation specimen cards + accessibility, forms, governance
 - `skills/meridian-design/` — the agent skill entry point
-- `scripts/` — registry generator, contrast check
+- `scripts/` — registry generator, contrast check, runtime-copy drift check
+- `ARCHITECTURE.md` — how the pieces fit · `STYLEGUIDE.md` — contributor conventions
 - `LICENSE` — MIT · `THIRD_PARTY_NOTICES.md` · `CONTRIBUTING.md` — component contract + PR checklist
 
-**Showcases vs starters:** kits (`apps/www/registry/kits/`) are one rich screen per product, written in plain JSX so you can lift code straight into a React app; templates (`templates/`) are self-contained multi-page journeys you copy wholesale to start a surface. Four pairs intentionally cover the same category in both forms (console/dashboard, auth, website/marketing, docs).
+**Showcases vs starters:** showcases (`showcases/`) are one rich screen per product, written in plain JSX so you can lift code straight into a React app; starters (`starters/`) are self-contained multi-page journeys you copy wholesale to start a surface. Four pairs intentionally cover the same category in both forms (console/dashboard, auth, website/marketing, docs).
 
 ## Caveats
 

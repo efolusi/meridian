@@ -1,0 +1,27 @@
+{
+  "name": "alert",
+  "type": "registry:ui",
+  "title": "Alert",
+  "description": "Inline banner: white surface, hairline border, tone-colored icon. For page-level notices \u2014 use Toast for transient events.",
+  "files": [
+    {
+      "path": "components/feedback/Alert.jsx",
+      "type": "registry:ui",
+      "content": "import React from 'react';\nimport { Icon } from '../icons/Icon.jsx';\nimport { injectEfCss } from '../forms/Button.jsx';\nconst CSS = `\n.ef-alert{display:flex;gap:10px;align-items:flex-start;padding:12px 14px;border:1px solid var(--border-strong);border-radius:var(--radius-md);background:var(--surface-card)}\n.ef-alert__icon{display:inline-flex;margin-top:1px;flex:none}\n.ef-alert--info .ef-alert__icon{color:var(--brand-700)}\n.ef-alert--success .ef-alert__icon{color:var(--success-600)}\n.ef-alert--warning .ef-alert__icon{color:var(--warning-600)}\n.ef-alert--danger .ef-alert__icon{color:var(--danger-600)}\n.ef-alert--danger{border-color:var(--danger-300)}\n.ef-alert__title{font-size:var(--text-md);font-weight:var(--weight-semibold);color:var(--text-primary);line-height:1.4}\n.ef-alert__desc{font-size:var(--text-sm);color:var(--text-secondary);line-height:1.5;margin-top:2px}\n.ef-alert__action{margin-left:auto;flex:none}\n`;\nconst ICONS = { info: 'info', success: 'circle-check', warning: 'triangle-alert', danger: 'circle-alert' };\nexport function Alert({ tone = 'info', icon, title, description, action, children, style, className }) {\n  injectEfCss('ef-css-alert', CSS);\n  return (\n    <div role=\"status\" className={`ef-alert ef-alert--${tone}${className ? ' ' + className : ''}`} style={style}>\n      <span className=\"ef-alert__icon\"><Icon name={icon || ICONS[tone]} size={16} /></span>\n      <div style={{ flex: 1, minWidth: 0 }}>\n        {title ? <div className=\"ef-alert__title\">{title}</div> : null}\n        {description ? <div className=\"ef-alert__desc\">{description}</div> : null}\n        {children}\n      </div>\n      {action ? <div className=\"ef-alert__action\">{action}</div> : null}\n    </div>\n  );\n}\n"
+    },
+    {
+      "path": "components/feedback/Alert.d.ts",
+      "type": "registry:component",
+      "content": "export interface AlertProps {\n  /** @default 'info' */\n  tone?: 'info' | 'success' | 'warning' | 'danger';\n  /** Override the tone icon (Lucide name) */\n  icon?: string;\n  title?: React.ReactNode;\n  description?: React.ReactNode;\n  /** Right-aligned slot (button/link) */\n  action?: React.ReactNode;\n  children?: React.ReactNode;\n  style?: React.CSSProperties;\n  className?: string;\n}\nexport declare function Alert(props: AlertProps): JSX.Element;\n"
+    },
+    {
+      "path": "components/feedback/Alert.prompt.md",
+      "type": "registry:component",
+      "content": "Inline banner: white surface, hairline border, tone-colored icon. For page-level notices \u2014 use Toast for transient events.\n\n```jsx\n<Alert tone=\"warning\" title=\"Trial ends in 3 days\" description=\"Add a card to keep your workspace running.\" action={<Button size=\"sm\" variant=\"secondary\">Add card</Button>} />\n```\n\nTones: `info | success | warning | danger` (danger also tints the border).\n"
+    }
+  ],
+  "categories": [
+    "feedback"
+  ],
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json"
+}

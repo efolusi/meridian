@@ -13,7 +13,7 @@ Meridian is a design system — static CSS, tokens, and client-side React compon
 Report privately via [GitHub private vulnerability reporting](https://github.com/efolusi/meridian/security/advisories/new) or to **security@efolusi.com**. Do not open a public issue. Include the affected file, a reproduction, and impact. We aim to acknowledge within 72 hours and patch within 14 days.
 
 ## Scope
-- `apps/www/registry/` (ui, blocks, kits, examples) and `templates/` — component and page source
+- `components/`, `blocks/`, `showcases/`, `starters/`, `site/` — component and page source
 - `assets/` — icons, fonts, logo
 - `styles.css` + `tokens/` — stylesheet closure
 

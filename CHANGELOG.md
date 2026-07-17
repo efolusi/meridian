@@ -10,6 +10,7 @@ All notable changes to Meridian are documented here. Format follows [Keep a Chan
 - Dark-theme remap for `--success-600` (previously the only status foreground left at its light value in dark).
 
 ### Changed
+- Repository reorganized into Meridian's own layout: `components/`, `blocks/`, `showcases/` (was `ui_kits/`), `starters/` (was `templates/`), `site/` (the docs website), with the system core (styles, tokens, assets, compiled bundle) unchanged at the root. See `ARCHITECTURE.md`.
 - Contrast: `--text-muted` (#948A74 → #746A55 light, #8F8574 → #9C9280 dark), `--success-600` (#3E8E4E → #2F7A40 light, #5FB86E dark), `--danger-600` (#DC2626 → #C81E1E) now meet WCAG AA (≥4.5:1) on page, card, and their status tints in both themes.
 - Docs corrected: icon count (65 → 107) and stroke width (assets are 2px; `Icon` renders 1.5px), deduplicated README data-component list, docs-site component counts (88/77 → 104).
 

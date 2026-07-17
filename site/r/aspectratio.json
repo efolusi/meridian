@@ -1,0 +1,27 @@
+{
+  "name": "aspectratio",
+  "type": "registry:ui",
+  "title": "AspectRatio",
+  "description": "Locks children to a fixed ratio box (fills width). Use for media, embeds, map placeholders.",
+  "files": [
+    {
+      "path": "components/display/AspectRatio.jsx",
+      "type": "registry:ui",
+      "content": "import React from 'react';\nexport function AspectRatio({ ratio = 16 / 9, children, style, className }) {\n  return (\n    <div className={className} style={{ position: 'relative', width: '100%', aspectRatio: String(ratio), ...style }}>\n      <div style={{ position: 'absolute', inset: 0 }}>{children}</div>\n    </div>\n  );\n}\n"
+    },
+    {
+      "path": "components/display/AspectRatio.d.ts",
+      "type": "registry:component",
+      "content": "export interface AspectRatioProps {\n  /** width / height @default 16/9 */\n  ratio?: number;\n  children?: React.ReactNode;\n  style?: React.CSSProperties;\n  className?: string;\n}\nexport declare function AspectRatio(props: AspectRatioProps): JSX.Element;\n"
+    },
+    {
+      "path": "components/display/AspectRatio.prompt.md",
+      "type": "registry:component",
+      "content": "# AspectRatio\n\nLocks children to a fixed ratio box (fills width). Use for media, embeds, map placeholders.\n\n`<AspectRatio ratio={16/9}><img style={{width:\"100%\",height:\"100%\",objectFit:\"cover\"}} \u2026 /></AspectRatio>`"
+    }
+  ],
+  "categories": [
+    "display"
+  ],
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json"
+}

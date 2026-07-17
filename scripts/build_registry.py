@@ -9,7 +9,7 @@ Idempotent; run after adding or renaming components, blocks, or kits.
 import json, pathlib, re
 
 ROOT = pathlib.Path(__file__).resolve().parent.parent
-WWW = ROOT / "apps" / "www"
+WWW = ROOT / "site"
 R_DIR = WWW / "r"
 
 def prompt_summary(prompt_path):
@@ -57,7 +57,7 @@ def component_items(embed):
 
 def block_items(embed):
     items = []
-    for f in sorted((WWW / "registry" / "blocks").glob("*.html")):
+    for f in sorted((ROOT / "blocks").glob("*.html")):
         items.append({
             "name": "block-" + f.stem,
             "type": "registry:block",

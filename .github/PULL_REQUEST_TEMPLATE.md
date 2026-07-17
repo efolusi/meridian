@@ -8,5 +8,5 @@
 - [ ] Keyboard operable, focus visible (`--focus-ring`)
 - [ ] Semantic tokens only — no raw colors/sizes/fonts
 - [ ] `.d.ts` + `.prompt.md` updated
-- [ ] Specimen card updated; smoke page (`apps/www/_smoke.html`) renders clean
+- [ ] Specimen card updated; smoke page (`site/_smoke.html`) renders clean
 - [ ] No local helper shares a name with a design-system export

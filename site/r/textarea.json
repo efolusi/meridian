@@ -1,0 +1,27 @@
+{
+  "name": "textarea",
+  "type": "registry:ui",
+  "title": "Textarea",
+  "description": "Multiline input with the same field wrapper as Input (`label`/`hint`/`error`).",
+  "files": [
+    {
+      "path": "components/forms/Textarea.jsx",
+      "type": "registry:ui",
+      "content": "import React from 'react';\nimport { Icon } from '../icons/Icon.jsx';\nimport { injectEfCss } from './Button.jsx';\nconst CSS = `\n.ef-field{display:flex;flex-direction:column;gap:6px}\n.ef-field__label{font-size:var(--text-sm);font-weight:var(--weight-semibold);color:var(--text-primary)}\n.ef-field__hint{font-size:var(--text-xs);color:var(--text-muted)}\n.ef-field__error{font-size:var(--text-xs);color:var(--danger-600);display:flex;align-items:center;gap:4px}\n.ef-textarea{width:100%;min-height:80px;padding:10px 12px;border:1px solid var(--border-strong);border-radius:var(--radius-sm);background:var(--surface-card);color:var(--text-primary);font-family:var(--font-sans);font-size:var(--text-md);line-height:var(--leading-normal);resize:vertical;transition:border-color var(--dur-fast) var(--ease-out),box-shadow var(--dur-fast) var(--ease-out)}\n.ef-textarea::placeholder{color:var(--text-muted)}\n.ef-textarea:hover:not(:disabled){border-color:var(--sand-400)}\n.ef-textarea:focus{outline:none;border-color:var(--accent);box-shadow:var(--focus-ring)}\n.ef-textarea:disabled{background:var(--surface-sunken);color:var(--text-muted);cursor:not-allowed}\n.ef-textarea--invalid{border-color:var(--danger-600)}\n.ef-textarea--invalid:focus{box-shadow:0 0 0 3px rgba(220,38,38,.22)}\n`;\nexport function Textarea({ label, hint, error, invalid, style, className, ...rest }) {\n  injectEfCss('ef-css-textarea', CSS);\n  const bad = invalid || !!error;\n  const el = <textarea className={`ef-textarea${bad ? ' ef-textarea--invalid' : ''}`} aria-invalid={bad || undefined} {...rest} />;\n  if (!label && !hint && !error) return React.cloneElement(el, { style, className: el.props.className + (className ? ' ' + className : '') });\n  return (\n    <label className={`ef-field${className ? ' ' + className : ''}`} style={style}>\n      {label ? <span className=\"ef-field__label\">{label}</span> : null}\n      {el}\n      {error ? <span className=\"ef-field__error\"><Icon name=\"circle-alert\" size={12} />{error}</span> : hint ? <span className=\"ef-field__hint\">{hint}</span> : null}\n    </label>\n  );\n}\n"
+    },
+    {
+      "path": "components/forms/Textarea.d.ts",
+      "type": "registry:component",
+      "content": "export interface TextareaProps extends React.TextareaHTMLAttributes<HTMLTextAreaElement> {\n  label?: string;\n  hint?: string;\n  /** Error message below \u2014 also sets invalid styling */\n  error?: string;\n  invalid?: boolean;\n}\nexport declare function Textarea(props: TextareaProps): JSX.Element;\n"
+    },
+    {
+      "path": "components/forms/Textarea.prompt.md",
+      "type": "registry:component",
+      "content": "Multiline input with the same field wrapper as Input (`label`/`hint`/`error`).\n\n```jsx\n<Textarea label=\"Description\" placeholder=\"What is this project for?\" rows={4} />\n```\n"
+    }
+  ],
+  "categories": [
+    "forms"
+  ],
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json"
+}

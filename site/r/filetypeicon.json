@@ -1,0 +1,27 @@
+{
+  "name": "filetypeicon",
+  "type": "registry:ui",
+  "title": "FileTypeIcon",
+  "description": "Typed file glyph with colored extension chip \u2014 maps 20 common extensions to icon + color.",
+  "files": [
+    {
+      "path": "components/files/FileTypeIcon.jsx",
+      "type": "registry:ui",
+      "content": "import React from 'react';\nimport { Icon } from '../icons/Icon.jsx';\nimport { injectEfCss } from '../forms/Button.jsx';\nconst CSS = `\n.ef-filetype{position:relative;display:inline-flex;align-items:center;justify-content:center;flex:none;background:var(--surface-card);border:1px solid var(--border-strong);border-radius:6px;color:var(--text-secondary)}\n.ef-filetype__ext{position:absolute;bottom:-5px;left:50%;transform:translateX(-50%);font-family:var(--font-mono);font-size:8px;font-weight:700;letter-spacing:.04em;padding:1px 4px;border-radius:3px;color:#fff;text-transform:uppercase;line-height:1.3}\n`;\nconst KIND = {\n  pdf: { icon: 'file-text', color: 'var(--danger-600)' },\n  doc: { icon: 'file-text', color: 'var(--brand-700)' }, docx: { icon: 'file-text', color: 'var(--brand-700)' }, txt: { icon: 'file-text', color: 'var(--sand-600)' }, md: { icon: 'file-text', color: 'var(--sand-600)' },\n  csv: { icon: 'table', color: 'var(--success-600)' }, xls: { icon: 'table', color: 'var(--success-600)' }, xlsx: { icon: 'table', color: 'var(--success-600)' },\n  png: { icon: 'image', color: 'var(--brand-500)' }, jpg: { icon: 'image', color: 'var(--brand-500)' }, svg: { icon: 'image', color: 'var(--brand-500)' }, gif: { icon: 'image', color: 'var(--brand-500)' },\n  mp4: { icon: 'video', color: 'var(--warning-600)' }, mov: { icon: 'video', color: 'var(--warning-600)' },\n  mp3: { icon: 'mic', color: 'var(--warning-600)' }, wav: { icon: 'mic', color: 'var(--warning-600)' },\n  zip: { icon: 'archive', color: 'var(--sand-600)' }, json: { icon: 'code', color: 'var(--sand-800)' }, js: { icon: 'code', color: 'var(--warning-600)' }, ts: { icon: 'code', color: 'var(--brand-700)' },\n};\nexport function FileTypeIcon({ ext = 'txt', size = 40, showExt = true, style, className }) {\n  injectEfCss('ef-css-filetype', CSS);\n  const k = KIND[ext.toLowerCase()] || { icon: 'file', color: 'var(--sand-500)' };\n  return (\n    <span className={`ef-filetype${className ? ' ' + className : ''}`} style={{ width: size, height: size, ...style }} title={'.' + ext}>\n      <Icon name={k.icon} size={Math.round(size * 0.45)} />\n      {showExt ? <span className=\"ef-filetype__ext\" style={{ background: k.color }}>{ext}</span> : null}\n    </span>\n  );\n}\n"
+    },
+    {
+      "path": "components/files/FileTypeIcon.d.ts",
+      "type": "registry:component",
+      "content": "export interface FileTypeIconProps {\n  /** Extension: pdf, csv, png, mp4, zip, json\u2026 @default 'txt' */\n  ext?: string;\n  /** Px @default 40 */\n  size?: number;\n  /** Colored extension chip @default true */\n  showExt?: boolean;\n  style?: React.CSSProperties;\n  className?: string;\n}\nexport declare function FileTypeIcon(props: FileTypeIconProps): JSX.Element;\n"
+    },
+    {
+      "path": "components/files/FileTypeIcon.prompt.md",
+      "type": "registry:component",
+      "content": "Typed file glyph with colored extension chip \u2014 maps 20 common extensions to icon + color.\n\n```jsx\n<FileTypeIcon ext=\"pdf\" />\n<FileTypeIcon ext=\"csv\" size={32} />\n```\n"
+    }
+  ],
+  "categories": [
+    "files"
+  ],
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json"
+}

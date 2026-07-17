@@ -1,0 +1,27 @@
+{
+  "name": "collapsible",
+  "type": "registry:ui",
+  "title": "Collapsible",
+  "description": "A single disclosure row: chevron trigger + revealed body. Use for advanced options, long descriptions, log detail.",
+  "files": [
+    {
+      "path": "components/display/Collapsible.jsx",
+      "type": "registry:ui",
+      "content": "import React from 'react';\nimport { injectEfCss } from '../forms/Button.jsx';\nimport { Icon } from '../icons/Icon.jsx';\nconst CSS = `\n.ef-collapsible__trigger{display:flex;align-items:center;gap:8px;width:100%;padding:7px 0;border:none;background:none;cursor:pointer;text-align:left;font-family:var(--font-sans);font-size:var(--text-md);font-weight:600;color:var(--text-primary);border-radius:var(--radius-sm)}\n.ef-collapsible__trigger:focus-visible{outline:none;box-shadow:var(--focus-ring)}\n.ef-collapsible__chev{display:inline-flex;color:var(--text-muted);transition:transform var(--dur-med) var(--ease-out)}\n.ef-collapsible--open .ef-collapsible__chev{transform:rotate(90deg)}\n.ef-collapsible__body{padding:2px 0 10px 24px;animation:ef-collapsible-in var(--dur-fast) var(--ease-out)}\n@keyframes ef-collapsible-in{from{opacity:0;transform:translateY(-2px)}}\n`;\nexport function Collapsible({ title, defaultOpen, open, onOpenChange, children, style, className }) {\n  injectEfCss('ef-css-collapsible', CSS);\n  const [un, setUn] = React.useState(!!defaultOpen);\n  const isOpen = open !== undefined ? open : un;\n  const flip = () => {\n    if (open === undefined) setUn(!isOpen);\n    if (onOpenChange) onOpenChange(!isOpen);\n  };\n  return (\n    <div className={`ef-collapsible${isOpen ? ' ef-collapsible--open' : ''}${className ? ' ' + className : ''}`} style={style}>\n      <button type=\"button\" className=\"ef-collapsible__trigger\" aria-expanded={isOpen} onClick={flip}>\n        <span className=\"ef-collapsible__chev\"><Icon name=\"chevron-right\" size={16} /></span>\n        {title}\n      </button>\n      {isOpen ? <div className=\"ef-collapsible__body\">{children}</div> : null}\n    </div>\n  );\n}\n"
+    },
+    {
+      "path": "components/display/Collapsible.d.ts",
+      "type": "registry:component",
+      "content": "export interface CollapsibleProps {\n  /** Trigger row content */\n  title: React.ReactNode;\n  defaultOpen?: boolean;\n  /** Controlled open state */\n  open?: boolean;\n  onOpenChange?: (open: boolean) => void;\n  children?: React.ReactNode;\n  style?: React.CSSProperties;\n  className?: string;\n}\nexport declare function Collapsible(props: CollapsibleProps): JSX.Element;\n"
+    },
+    {
+      "path": "components/display/Collapsible.prompt.md",
+      "type": "registry:component",
+      "content": "# Collapsible\n\nA single disclosure row: chevron trigger + revealed body. Use for advanced options, long descriptions, log detail.\n\n`<Collapsible title=\"Advanced settings\" defaultOpen={false}>\u2026</Collapsible>`\n\nFor a stacked set with one-open behavior use Accordion instead."
+    }
+  ],
+  "categories": [
+    "display"
+  ],
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json"
+}
