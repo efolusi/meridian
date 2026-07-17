@@ -71,7 +71,41 @@ Meet developers where they are; keep the zero-build path as the flagship.
 ## First five actions
 
 1. Write the API conventions doc and run the 104-component audit against it.
-2. Script the contrast check; fix any failing token pair.
+2. ~~Script the contrast check; fix any failing token pair.~~ Done 2026-07-17: `--text-muted`, `--success-600`, `--danger-600` retuned to ≥4.5:1 in both themes (see CHANGELOG § Unreleased).
 3. A11y pass on the priority-seven interactive components; publish per-component a11y notes.
 4. Cut `tokens.json` (DTCG) from the CSS source.
-5. Add CODE_OF_CONDUCT.md + issue/PR templates + supported-versions table in SECURITY.md.
+5. ~~Add supported-versions table in SECURITY.md + issue-template gaps.~~ Done 2026-07-17 (CODE_OF_CONDUCT.md and bug/proposal templates already existed; added config.yml, docs-issue template, SUPPORT.md, THIRD_PARTY_NOTICES.md).
+
+---
+
+## Appendix — engineering backlog from the 2026-07-17 full audit
+
+Concrete items surfaced by the five-area audit (components, tokens, docs site, kits/blocks/templates, repo meta). Each slots into a phase above. Note the standing constraint: any `components/*.jsx` change requires recompiling `_ds_bundle.js` with the DS compiler — component fixes below ship together as bundled releases, never as source-only edits.
+
+**Phase 1 — components (one bundled a11y release; gaps are listed in `guidelines/accessibility.md` § Known gaps)**
+- Focus trap, focus-in on open, restore on close, and `aria-labelledby`/`aria-describedby` for Dialog, Drawer, ConfirmDialog, CommandPalette.
+- Keyboard-operable Menu/Popover triggers (`role`, `tabIndex`, Enter/Space) with `aria-haspopup`/`aria-expanded`; arrow-key + Home/End + typeahead navigation for Menu, ContextMenu, Menubar; arrow keys + roving tabindex for Tabs.
+- Calendar/DatePicker: `role="grid"`, full-date `aria-label` per day, `aria-selected`/`aria-current`, arrow-key navigation, focus moved into the grid on open.
+- CommandPalette: `role="combobox"` input + `listbox`/`option` results + `aria-activedescendant`; fix the undepped keydown `useEffect`.
+- Tooltip `aria-describedby` linkage + Escape; HoverCard drop `role="dialog"`.
+- Specimen-card coverage for the 7 uncarded components: Confirmation, Conversation, BarChart, KeyValueList, StatusDot, Loader, Steps.
+
+**Phase 1 — tokens (additive, wire in the same bundled release)**
+- `--z-*` elevation scale replacing the 15 raw z-indexes (today: five overlays tie at 80; Tooltip at 60 loses to Drawer at 100).
+- `--overlay-scrim` for the repeated `rgba(31,26,20,.45)` scrims; `--text-on-brand-muted` for the 6 hard-coded `rgba(248,244,230,.75)` sites; `--text-2xs` (or similar) so the 134 raw px font sizes can snap to the scale; route raw hex in Toast/Terminal/CodeBlock/Badge through semantic tokens; rename `--shadow-pop` → `--shadow-xl` (alias kept one major).
+- API conventions sweep: one action-prop shape across Alert/Banner/Toast; `status` vs `state` unified; `defaultVisible`/`defaultConsoleOpen` → `defaultOpen`; document `size` enum-vs-pixel convention. Deprecate per governance.md, don't break.
+
+**Phase 3 — quality infrastructure**
+- CI on every PR: manifest↔source sync check (the committed bundle's one real risk is silent staleness), oxlint adherence run (first fix the config: empty `forbid-elements` rule, and the `no-restricted-imports` message assumes an `index.js` barrel that doesn't exist), dead-link check, headless smoke run.
+- Make `_smoke.html` assert: count real successes (not attempts) and expose a machine-readable pass/fail (e.g. `document.title`), so CI can gate on it.
+- Derive SiteSearch's PAGES/DOCS lists and `_smoke.html`'s FILES list from the registry instead of hand-maintained arrays (today a new page or example file is silently unindexed/untested).
+- Add SRI integrity hashes and production React builds to the CDN snippets (docs install snippet already uses production; `_smoke.html` and kit index.html files load development builds).
+
+**Phase 4 — docs site**
+- Expand nested interface types (`TableColumn`, `TabItem`, …) in generated prop tables.
+- `sitemap.xml`, `robots.txt`, and a wired 404 page when the docs get a public host.
+
+**Needs owner input (in addition to the decision points above)**
+- CODEOWNERS (GitHub handles), FUNDING.yml (platforms or omit), CITATION.cff (optional).
+- Whether `.thumbnail` preview files ship in the public repo (`thumbnail.html` is referenced by the manifest; the WebP files are unreferenced).
+- Same-day 1.1.0/1.2.0/1.3.0 release dates in CHANGELOG — backfill real dates if they exist.
