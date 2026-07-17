@@ -58,7 +58,7 @@ function UsageScreen() {
           data={[82, 95, 88, 101, 98, 112, 106, 120, 114, 128, 132, 124, 136, 130, 144, 138, 152, 148, 158, 151, 164, 170, 162, 178, 172, 184, 190, 181, 196, 214]} />
       </Card>
       <Card title="By product" padding={20}>
-        <div style={{ display: 'flex', flexDirection: 'column', gap: 16, maxWidth: 560 }}>
+        <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '16px 40px' }}>
           {USAGE_BY_PRODUCT.map(u => (
             <Progress key={u.id} label={u.product} value={u.pct} showValue tone={u.pct > 85 ? 'warning' : 'default'} format={() => u.used + ' of ' + u.quota + ' ' + u.unit} />
           ))}
@@ -76,7 +76,7 @@ const INVOICES = [
 ];
 function BillingScreen({ notify }) {
   return (
-    <div style={{ padding: 24, display: 'flex', flexDirection: 'column', gap: 16, maxWidth: 900 }}>
+    <div style={{ padding: 24, display: 'flex', flexDirection: 'column', gap: 16, maxWidth: 860 }}>
       <div style={{ display: 'flex', gap: 16 }}>
         <Card padding={20} style={{ flex: 1.2 }} title="Plan" actions={<Badge tone="accent">Growth</Badge>}>
           <KeyValueList labelWidth={130} items={[

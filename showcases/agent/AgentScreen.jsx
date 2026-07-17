@@ -2,7 +2,7 @@ const { ChatMessage, PromptComposer, Terminal, Steps, FileTile, StatusDot, KeyVa
 
 function AgentHeader({ running, onToggle, notify }) {
   return (
-    <header style={{ display: 'flex', alignItems: 'center', gap: 12, height: 58, padding: '0 20px', borderBottom: '1px solid var(--border-default)', background: 'rgba(250,249,246,.85)', backdropFilter: 'blur(12px)', flex: 'none' }}>
+    <header style={{ display: 'flex', alignItems: 'center', gap: 12, height: 58, padding: '0 24px', borderBottom: '1px solid var(--border-default)', background: 'rgba(250,249,246,.85)', backdropFilter: 'blur(12px)', flex: 'none' }}>
       <a href="../console/index.html" title="Back to Console" style={{ display: 'flex', alignItems: 'center', gap: 8, textDecoration: 'none', color: 'var(--text-primary)' }}>
         <img src="../../assets/logo.png" alt="" style={{ width: 26, height: 26 }} />
         <span style={{ fontFamily: 'var(--font-display)', fontWeight: 680, letterSpacing: '-0.02em', fontSize: 17 }}>Agent</span>
@@ -27,7 +27,7 @@ function AgentHeader({ running, onToggle, notify }) {
 function TaskRail({ running }) {
   return (
     <aside style={{ width: 304, flex: 'none', borderLeft: '1px solid var(--border-default)', overflowY: 'auto', padding: 16, display: 'flex', flexDirection: 'column', gap: 14 }}>
-      <Card padding={16} title="Task" subtitle="4 steps planned">
+      <Card title="Task" subtitle="4 steps planned">
         <Steps current={2} items={[
           { title: 'Connect to pg-prod-eu', description: 'Read-only session' },
           { title: 'Find failed deliveries', description: '12 found · all 503s' },
@@ -35,13 +35,13 @@ function TaskRail({ running }) {
           { title: 'Report + close' },
         ]} />
       </Card>
-      <Card padding={12} title="Context">
+      <Card title="Context">
         <div style={{ display: 'flex', flexDirection: 'column', gap: 8 }}>
           <FileTile name="webhook-log.csv" size="82 KB" style={{ padding: '6px 8px' }} />
           <FileTile name="retry-policy.md" size="3 KB" style={{ padding: '6px 8px' }} />
         </div>
       </Card>
-      <Card padding={16} title="Run">
+      <Card title="Run">
         <div style={{ marginBottom: 8 }}><StatusDot state={running ? 'busy' : 'off'} pulse={running} label={running ? 'Agent active' : 'Paused by you'} /></div>
         <KeyValueList labelWidth={88} items={[
           { label: 'Model', value: 'efolusi-1' },

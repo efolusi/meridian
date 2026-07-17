@@ -17,11 +17,12 @@ const TIERS = [
 ];
 function Block() {
   return (
-    <section className="bk-sec" style={{ padding: '48px 40px' }}>
+    <section className="bk-sec" style={{ padding: '48px 40px', maxWidth: 1040, margin: '0 auto' }}>
       <h2 className="bk-h2" style={{ fontFamily: 'var(--font-display)', fontSize: 34, fontWeight: 680, letterSpacing: '-0.02em', textAlign: 'center', margin: 0 }}>Pricing that stays boring</h2>
       <div className="bk-tiers" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 1fr', gap: 18, marginTop: 32 }}>
         {TIERS.map(([name, price, desc, feats, cta]) => (
-          <Card key={name} padding={24} style={cta === 'primary' ? { borderColor: 'var(--accent)' } : {}}>
+          <Card key={name} padding={24} style={{ display: 'grid', ...(cta === 'primary' ? { borderColor: 'var(--accent)' } : {}) }}>
+            <div style={{ display: 'flex', flexDirection: 'column', height: '100%' }}>
             <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
               <h3 style={{ fontSize: 17, fontWeight: 700, margin: 0 }}>{name}</h3>
               {cta === 'primary' && <Badge tone="accent">Popular</Badge>}
@@ -34,7 +35,8 @@ function Block() {
             <div style={{ display: 'flex', flexDirection: 'column', gap: 8, margin: '18px 0 20px' }}>
               {feats.map(f => <span key={f} style={{ display: 'flex', gap: 8, alignItems: 'center', fontSize: 13.5 }}><span style={{ color: 'var(--sand-600)', display: 'inline-flex' }}><Icon name="check" size={14} /></span>{f}</span>)}
             </div>
-            <Button fullWidth variant={cta} iconRight="arrow-right">{price === 'Custom' ? 'Talk to us' : 'Start free'}</Button>
+            <Button fullWidth variant={cta} iconRight="arrow-right" style={{ marginTop: 'auto' }}>{price === 'Custom' ? 'Talk to us' : 'Start free'}</Button>
+            </div>
           </Card>
         ))}
       </div>
