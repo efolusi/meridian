@@ -1,0 +1,48 @@
+name: checks
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  gates:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Contrast (WCAG AA token pairs)
+        run: python3 scripts/check_contrast.py
+
+      - name: Runtime copies (support.js / ds-base.js drift)
+        run: python3 scripts/check_runtime_copies.py
+
+      - name: Relative paths resolve
+        run: python3 scripts/check_paths.py
+
+      - name: Registry is in sync with its generator
+        run: |
+          python3 scripts/build_registry.py
+          git diff --exit-code -- site/registry.json site/r
+
+      - name: Bundle source hashes match source files
+        run: |
+          python3 - <<'EOF'
+          import pathlib, json, hashlib, sys
+          t = pathlib.Path("_ds_bundle.js").read_text()
+          header = t[:t.index("\n")]
+          hj = json.loads(header[header.index("{"):header.rindex("}")+1])
+          bad = []
+          for p, h in hj["sourceHashes"].items():
+              f = pathlib.Path(p)
+              if not f.exists():
+                  bad.append(p + ": missing"); continue
+              if hashlib.sha256(f.read_bytes()).hexdigest()[:len(h)] != h:
+                  bad.append(p + ": hash mismatch (bundle stale)")
+          if bad:
+              print("\n".join(bad)); sys.exit(1)
+          print(f"{len(hj['sourceHashes'])} source hashes verified")
+          EOF

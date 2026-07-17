@@ -51,4 +51,4 @@ Everything else is authored by hand. Never edit generated files directly, with o
 
 ## Verifying locally
 
-Serve the repo root with any static server and open `index.html` (redirects to `site/DsSite.dc.html`), `site/_smoke.html`, a showcase, and a starter page. There is no build step; if a page is blank, check the browser network tab for a mis-depthed `../` reference first.
+Serve the repo root with any static server and open `index.html` (redirects to `site/DsSite.dc.html`), `site/_smoke.html`, a showcase, and a starter page. There is no build step; if a page is blank, check the browser network tab for a mis-depthed `../` reference first. After editing `_ds_bundle.js`, hard-reload (or `fetch('/_ds_bundle.js', {cache:'reload'})`): browsers heuristically cache the bundle and will happily run stale code while you debug the new code's "failure".
