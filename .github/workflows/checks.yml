@@ -26,7 +26,7 @@ jobs:
       - name: Registry is in sync with its generator
         run: |
           python3 scripts/build_registry.py
-          git diff --exit-code -- site/registry.json site/r
+          git diff --exit-code -- site/registry.json site/registry
 
       - name: Bundle source hashes match source files
         run: |

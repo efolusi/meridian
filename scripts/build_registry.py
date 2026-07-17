@@ -1,7 +1,8 @@
 #!/usr/bin/env python3
-"""Generate apps/www/registry.json (shadcn registry schema) and per-item
-files under apps/www/r/<name>.json with embedded content, from
-_ds_manifest.json plus the files on disk.
+"""Generate site/registry.json and per-item install files under
+site/registry/<name>.json with embedded content, from _ds_manifest.json
+plus the files on disk. Items follow an open registry schema (see the
+$schema URLs) so compatible CLIs can install them from any static host.
 
 Usage: python3 scripts/build_registry.py
 Idempotent; run after adding or renaming components, blocks, or kits.
@@ -10,7 +11,7 @@ import json, pathlib, re
 
 ROOT = pathlib.Path(__file__).resolve().parent.parent
 WWW = ROOT / "site"
-R_DIR = WWW / "r"
+R_DIR = WWW / "registry"
 
 def prompt_summary(prompt_path):
     """First non-heading prose line of a .prompt.md, as the item description."""
@@ -84,7 +85,7 @@ def main():
         "items": index_items,
     }
     (WWW / "registry.json").write_text(json.dumps(registry, indent=2) + "\n")
-    print(f"registry.json: {len(index_items)} items; r/: {written} item files")
+    print(f"registry.json: {len(index_items)} items; registry/: {written} item files")
 
 if __name__ == "__main__":
     main()

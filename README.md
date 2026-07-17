@@ -1,10 +1,10 @@
 # Meridian — the Efolusi design system
 
-Efolusi builds multiple SaaS products for both B2B and B2C. **Meridian** is the company's open-source design system — tokens, typography, components, and full UI kits — intended to scale the way shadcn / Google / Microsoft systems do. One visual language across every Efolusi product: the admin console, auth, marketing site, and docs.
+Efolusi builds multiple SaaS products for both B2B and B2C. **Meridian** is the company's open-source design system — tokens, typography, components, and full UI kits — built to scale with every product we ship. One visual language across every Efolusi product: the admin console, auth, marketing site, and docs.
 
 ## Products
 
-- **Agent** — autonomous AI operator (Manus/Codex-class): plans, runs tools, ships reviewable work → ChatMessage, PromptComposer, Steps, Terminal.
+- **Agent** — autonomous AI operator: plans, runs tools, ships reviewable work → ChatMessage, PromptComposer, Steps, Terminal.
 - **Infra** — centralized infrastructure: clouds, SSH, databases, caches, SSL, domains, DNS → StatusDot, KeyValueList, CopyField, Table, Terminal.
 - **Content** — node AI scaling content across text, image, audio, video → FileDrop, FileTile, Steps. (No dedicated kit yet — Tools shows the file patterns.)
 - **Tools** — all-in-one file utilities: convert, encode/decode, scan → FileDrop, FileTile, Progress.
@@ -29,7 +29,7 @@ The owl mark is the anchor: wise, warm, a little playful. The palette pairs the 
 - **Errors** say what happened + how to fix, no blame, no jargon: "That email is already in use. Try signing in instead."
 - **Numbers & data:** tabular figures in mono for tables/metrics; abbreviate at 10k+ ("12.4k", "$8.2M").
 - **Emoji:** never in product UI. Playfulness comes from motion and the owl, not emoji.
-- **Vibe check:** Stripe's precision with Notion's warmth. Marketing copy may be bolder ("Ship the boring parts faster.") but stays plain-spoken — no exclamation-mark enthusiasm.
+- **Vibe check:** precise, warm, unhurried. Marketing copy may be bolder ("Ship the boring parts faster.") but stays plain-spoken — no exclamation-mark enthusiasm.
 
 ## Visual foundations
 
@@ -98,7 +98,7 @@ The layout is Meridian's own, organized by purpose: the system core stays at the
 - `blocks/` — 9 pre-composed sections to paste into a page
 - `showcases/<product>/` — 8 product demos in plain JSX: agent, auth, console, docs, infra, tools, trader, website
 - `starters/<journey>/` — 5 journeys to copy wholesale, one per category, linked pages sharing a consistent shell: marketing (home → pricing → contact), auth (sign in → sign up → onboarding, + password reset), dashboard (overview → customers → detail → settings), app (overview → projects → detail → new project → settings), docs (quickstart → authentication → errors)
-- `site/` — the docs website (home, docs, components, blocks, charts, themes, colors), plus `examples/` (the live demos), `registry.json`, and generated `r/` install items
+- `site/` — the docs website (home, docs, components, blocks, charts, themes, colors), plus `examples/` (the live demos), `registry.json`, and generated `registry/` install items
 - `guidelines/` — foundation specimen cards + accessibility, forms, governance
 - `skills/` — the agent skill entry point
 - `scripts/` — registry generator, contrast check, runtime-copy drift check

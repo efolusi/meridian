@@ -22,7 +22,7 @@ Three principles produced this layout:
 
 1. **The root is a contract.** `styles.css`, `tokens/`, and `assets/` are what consumers link when they vendor the folder, and the DS compiler writes `_ds_bundle.js`, `_ds_manifest.json`, `_adherence.oxlintrc.json`, and `thumbnail.html` at the root. These paths are pinned by tooling we do not control from this repo. They never move.
 2. **Shallow beats deep.** Pages resolve the root by counted `../` segments, so every authored page lives at most two directories down. Depth is a bug factory here; keep it flat.
-3. **The site consumes, it does not own.** Component, block, and showcase source live in their own directories; `site/` renders them. Docs hosting source was tried (shadcn's shape) and reverted: it buried half the repo six levels deep.
+3. **The site consumes, it does not own.** Component, block, and showcase source live in their own directories; `site/` renders them. An earlier layout nested source inside the docs app and buried half the repo six levels deep; it was reverted.
 
 ## The pipeline
 
@@ -38,7 +38,7 @@ Three principles produced this layout:
 | `_ds_bundle.js` | DS compiler | zero-build distribution: pages run from it directly |
 | `_ds_manifest.json` | DS compiler | machine-readable inventory for tools and agents |
 | `_adherence.oxlintrc.json` | DS compiler | token/prop adherence rules for linting |
-| `site/registry.json`, `site/r/*.json` | `scripts/build_registry.py` | shadcn-schema registry; raw GitHub URLs can serve the items |
+| `site/registry.json`, `site/registry/*.json` | `scripts/build_registry.py` | open-schema registry items; any static host can serve them |
 
 Everything else is authored by hand. Never edit generated files directly, with one documented exception: when a source string that is embedded in the bundle must change before a recompile is possible, apply the identical replacement to both files in the same commit ("lockstep edit") and note it in the commit message.
 

@@ -17,7 +17,7 @@
     {
       "path": "components/ai/SourceCard.prompt.md",
       "type": "registry:component",
-      "content": "# SourceCard\n\nWeb-source card for grounded answers \u2014 optional 16:9 thumbnail, favicon + domain row, title, 3-line clamped description. `variant=\"plain\"` for dense lists.\n\n```jsx\n<SourceCard href=\"https://\u2026\" domain=\"stripe.com\" title=\"Rate limits\" description=\"Default limits are\u2026\" thumbnail=\"/thumb.jpg\" />\n```\n"
+      "content": "# SourceCard\n\nWeb-source card for grounded answers \u2014 optional 16:9 thumbnail, favicon + domain row, title, 3-line clamped description. `variant=\"plain\"` for dense lists.\n\n```jsx\n<SourceCard href=\"https://\u2026\" domain=\"efolusi.com\" title=\"Rate limits\" description=\"Default limits are\u2026\" thumbnail=\"/thumb.jpg\" />\n```\n"
     }
   ],
   "categories": [

@@ -1,0 +1,24 @@
+# Cloudflare Pages headers. Later rules override earlier duplicates.
+
+/assets/*
+  Cache-Control: public, max-age=86400
+
+/assets/fonts/*
+  Cache-Control: public, max-age=31536000, immutable
+
+# Never let the compiled bundle or tokens go stale in browsers
+/_ds_bundle.js
+  Cache-Control: no-cache
+
+/styles.css
+  Cache-Control: no-cache
+
+/tokens/*
+  Cache-Control: no-cache
+
+# The registry is meant to be consumed by external tools
+/site/registry.json
+  Access-Control-Allow-Origin: *
+
+/site/registry/*
+  Access-Control-Allow-Origin: *

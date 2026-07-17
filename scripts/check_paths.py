@@ -27,7 +27,7 @@ for html in ROOT.rglob("*.html"):
         target = ref.split("#")[0].split("?")[0]
         if not target:
             continue
-        resolved = (html.parent / target).resolve()
+        resolved = (ROOT / target.lstrip("/")).resolve() if target.startswith("/") else (html.parent / target).resolve()
         if not resolved.exists():
             fail.append(f"{html.relative_to(ROOT)}: {ref}")
         checked += 1

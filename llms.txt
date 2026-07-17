@@ -11,7 +11,7 @@ The layout is Meridian's own, organized by purpose: /site is the docs website; /
 - /styles.css — stylesheet entry (imports /tokens/*)
 - /_ds_bundle.js — compiled component bundle (all components on one global namespace)
 - /_ds_manifest.json — machine-readable manifest of components, tokens, cards
-- /site/registry.json — registry index in the shadcn registry schema
+- /site/registry.json — machine-readable registry index; per-item install files in /site/registry/
 
 ## Components
 
