@@ -5,4 +5,4 @@ The public homepage: header, hero with live product preview, product trio, brand
 - `index.html` — full scrolling page
 - `Sections.jsx` — SiteHeader, Hero, Products, BrandBand, Pricing, SiteFooter
 
-1200px container, 96px+ between bands, cream→sand hero wash (the one sanctioned gradient), `brand` buttons for marketing CTAs.
+1200px container, 96px+ between bands, solid `--surface-page` hero (no gradients anywhere in the system), `brand` buttons for marketing CTAs.

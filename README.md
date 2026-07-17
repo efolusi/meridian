@@ -62,9 +62,9 @@ Pre-composed sections in `blocks/` (Blocks group in the Design System tab): App 
 
 ## Iconography
 
-- **System:** [Lucide](https://lucide.dev) (ISC), 24px grid, 1.5px stroke, round caps/joins — 65 curated glyphs copied as raw SVG into `assets/icons/`. Render via the `Icon` component (inlines the SVG, inherits `currentColor`).
+- **System:** [Lucide](https://lucide.dev) (ISC), 24px grid, 2px stroke assets, round caps/joins — 107 curated glyphs copied as raw SVG into `assets/icons/`. Render via the `Icon` component (inlines the SVG, inherits `currentColor`, and re-strokes to 1.5px at render).
 - **Sizes:** 16px inline/buttons, 20px nav/list leading, 24px feature spots. Icon color follows text color; decorative feature icons may sit in a 40px `--sand-100` rounded square.
-- **No icon font, no emoji-as-icons, no hand-drawn SVGs.** Unicode glyphs (→, ×) allowed only inside mono/code contexts. Need a glyph we don't ship? Copy it from Lucide, keep 1.5px stroke.
+- **No icon font, no emoji-as-icons, no hand-drawn SVGs.** Unicode glyphs (→, ×) allowed only inside mono/code contexts. Need a glyph we don't ship? Copy it from Lucide and keep the 2px stroke — the `Icon` component only re-strokes assets authored at exactly `stroke-width="2"`.
 - **Logo:** `assets/logo.png` (668×668, transparent). Don't redraw, recolor, or add effects. Minimum size 24px.
 
 ## Component library
@@ -75,7 +75,7 @@ Authored from scratch (no source inventory existed). Namespace: `window.EfolusiD
 - `components/display/` — Card, Badge, Tag, Avatar (+AvatarGroup), Kbd, Divider, Accordion, Link, Toolbar, TreeList, ListItem, Collapsible, AspectRatio, ScrollArea, Carousel, Resizable
 - `components/navigation/` — Tabs, Breadcrumbs, Pagination, SegmentedControl, PageControl, SideNav, TopNav, Steps, Menubar
 - `components/feedback/` — Dialog, ConfirmDialog, Toast (+ToastStack), Tooltip, Alert, Banner, Progress, Spinner, Loader
-- `components/data/` — Table, Stat, EmptyState, Skeleton, BarChart, LineChart, DonutChart, Sparkline, KeyValueList, StatusDot, Sparkline, KeyValueList, StatusDot, BarChart
+- `components/data/` — Table, Stat, EmptyState, Skeleton, BarChart, LineChart, DonutChart, Sparkline, KeyValueList, StatusDot
 - `components/overlay/` — Menu, Popover, Drawer, CommandPalette, ContextMenu, HoverCard
 - `components/ai/` — ChatMessage, PromptComposer, RichComposer, Reasoning, ToolCall, AgentRun, Task, Todo, Confirmation, Conversation, Citation (+SourceList), SourceCard, Suggestions, PromptSteps, SelectionQuote, ModelSelector, UsageMeter, FeedbackBar, DocumentCard, GeneratedImage, Sandbox, WebPreview, Player, Transcript
 - `components/code/` — CodeBlock, Terminal, CopyField, Diff, Console, Exception, EnvList
@@ -90,7 +90,7 @@ Authored from scratch (no source inventory existed). Namespace: `window.EfolusiD
 
 - `styles.css` — global entry; imports everything under `tokens/`
 - `tokens/` — fonts.css, colors.css, typography.css, spacing.css, effects.css, base.css
-- `assets/` — logo.png, fonts/ (5 variable TTFs), icons/ (65 Lucide SVGs)
+- `assets/` — logo.png, fonts/ (5 variable TTFs + OFL license texts), icons/ (107 Lucide SVGs + license)
 - `components/` — see above; each has `.jsx` + `.d.ts` + `.prompt.md` + a card HTML
 - `guidelines/` — foundation specimen cards shown in the Design System tab
 - `ui_kits/console/` — admin dashboard + settings (interactive)

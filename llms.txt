@@ -16,7 +16,7 @@ This repo is a monorepo: tokens, components, blocks, templates, and product kits
 
 104 components in /components/<group>/ across 12 groups: forms, display, navigation, feedback, data, overlay, ai, code, files, dates, finance, icons.
 
-Every component ships three flat files:
+Every component ships three per-component flat files (plus a shared per-group specimen card HTML):
 
 - <Name>.jsx — the source (vendor it freely)
 - <Name>.d.ts — typed props interface
