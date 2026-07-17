@@ -1,0 +1,123 @@
+<!-- @dsCard group="Components" viewport="700x1290" name="Display" subtitle="Card, Badge, Avatar, TreeList, Collapsible, ScrollArea, Carousel, Resizable" -->
+<!DOCTYPE html><html><head><meta charset="utf-8"><link rel="stylesheet" href="../../../../../styles.css">
+<script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+<script src="../../../../../_ds_bundle.js"></script>
+</head><body style="background:var(--surface-page)">
+<div id="root"></div>
+<script type="text/babel">
+const { Card, Badge, Tag, Avatar, AvatarGroup, Button, Kbd, Divider, Accordion, Link, Toolbar, ListItem, TreeList, Switch, Collapsible, AspectRatio, ScrollArea, Carousel, Resizable } = window.EfolusiDesignSystem_4ffc3d;
+const lbl = { fontSize: 11, fontWeight: 600, letterSpacing: '0.06em', textTransform: 'uppercase', color: 'var(--text-muted)', marginBottom: 8 };
+function Demo() {
+  const [tags, setTags] = React.useState(['Billing', 'API']);
+  const [view, setView] = React.useState('list');
+  return (
+    <div style={{ padding: 20, display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 18 }}>
+      <Card title="Invite your team" subtitle="Efolusi works better together." actions={<Button size="sm" variant="secondary" iconLeft="plus">Invite</Button>} footer={<span style={{ fontSize: 13, color: 'var(--text-muted)' }}>3 of 5 seats used</span>}>
+        <AvatarGroup>
+          <Avatar name="Ada Obi" size={36} />
+          <Avatar name="Femi Alade" size={36} />
+          <Avatar name="June Park" size={36} />
+        </AvatarGroup>
+      </Card>
+      <div>
+        <div style={lbl}>Badge · Tag</div>
+        <div style={{ display: 'flex', gap: 8, flexWrap: 'wrap' }}>
+          <Badge>Neutral</Badge><Badge tone="accent">Beta</Badge><Badge tone="success" dot>Active</Badge>
+          <Badge tone="warning" dot>Degraded</Badge><Badge tone="danger">Overdue</Badge><Badge tone="brand">New</Badge>
+        </div>
+        <div style={{ display: 'flex', gap: 8, flexWrap: 'wrap', marginTop: 10 }}>
+          {tags.map(t => <Tag key={t} icon="funnel" onRemove={() => setTags(tags.filter(x => x !== t))}>{t}</Tag>)}
+          <Tag icon="plus" onClick={() => setTags([...tags, 'Tag ' + (tags.length + 1)])}>Add filter</Tag>
+        </div>
+        <div style={{ ...lbl, marginTop: 14 }}>Link</div>
+        <div style={{ display: 'flex', gap: 16, alignItems: 'center', fontSize: 14 }}>
+          <Link href="#">Inline link</Link>
+          <Link external href="#">API status</Link>
+          <Link standalone href="#">Explore Agent</Link>
+        </div>
+        <div style={{ ...lbl, marginTop: 14 }}>Toolbar</div>
+        <Toolbar label="View" value={view} onChange={setView} items={[
+          { id: 'list', icon: 'menu', tip: 'List' },
+          { id: 'board', icon: 'layout-dashboard', tip: 'Board' },
+          { id: 'grid', icon: 'square', tip: 'Grid' },
+          'separator',
+          { id: 'export', icon: 'download', tip: 'Export' },
+        ]} />
+      </div>
+      <div>
+        <div style={lbl}>ListItem</div>
+        <Card padding={6}>
+          <ListItem icon="bell" title="Usage alerts" description="At 80% of plan" trailing={<Switch defaultChecked />} />
+          <ListItem media={<Avatar name="Ada Obi" size={32} />} title="Ada Obi" description="Owner" trailing="2m ago" chevron onClick={() => {}} />
+          <ListItem icon="credit-card" title="Billing" description="Next invoice Aug 1" chevron onClick={() => {}} />
+        </Card>
+      </div>
+      <div>
+        <div style={lbl}>TreeList</div>
+        <Card padding={8}>
+          <TreeList nodes={[
+            { id: 'ws', label: 'Acme Workspace', icon: 'folder', children: [
+              { id: 'agent', label: 'Agent', icon: 'sparkles', count: 12 },
+              { id: 'infra', label: 'Infra', icon: 'server', children: [
+                { id: 'prod', label: 'production', icon: 'database', count: 4 },
+                { id: 'stage', label: 'staging', icon: 'database', count: 2 },
+              ]},
+            ]},
+          ]} />
+        </Card>
+      </div>
+      <div style={{ gridColumn: 'span 2', display: 'flex', flexDirection: 'column', gap: 14 }}>
+        <div style={{ display: 'flex', alignItems: 'center', gap: 8, fontSize: 13, color: 'var(--text-secondary)' }}>Quick search anywhere <Kbd>⌘</Kbd><Kbd>K</Kbd></div>
+        <Divider label="or" />
+        <Accordion defaultOpen={['billing']} items={[
+          { id: 'billing', title: 'How does billing work?', content: 'Per seat, monthly. Usage is metered daily and invoiced on the 1st.' },
+          { id: 'cancel', title: 'Can I cancel anytime?', content: 'Yes — your workspace stays readable forever.' },
+        ]} />
+      </div>
+      <div>
+        <div style={lbl}>Collapsible</div>
+        <Card padding={14}>
+          <Collapsible title="Advanced settings" defaultOpen>
+            <div style={{ display: 'flex', flexDirection: 'column', gap: 8 }}>
+              <Switch size="sm" defaultChecked label="Verbose logs" />
+              <Switch size="sm" label="Beta features" />
+            </div>
+          </Collapsible>
+        </Card>
+        <div style={{ ...lbl, marginTop: 14 }}>ScrollArea</div>
+        <Card padding={0}>
+          <ScrollArea maxHeight={110}>
+            <div style={{ padding: 12, display: 'flex', flexDirection: 'column', gap: 8, fontFamily: 'var(--font-mono)', fontSize: 12 }}>
+              {['agent.run started', 'plan drafted (4 steps)', 'tool: search_flights', 'tool: book_hotel', 'review requested', 'approved by Ada', 'agent.run finished', 'artifact saved', 'notified #ops', 'usage: 1,240 tokens'].map((l, i) => <span key={i} style={{ color: 'var(--text-secondary)' }}>{l}</span>)}
+            </div>
+          </ScrollArea>
+        </Card>
+      </div>
+      <div>
+        <div style={lbl}>AspectRatio</div>
+        <AspectRatio ratio={16 / 9}>
+          <div style={{ width: '100%', height: '100%', display: 'flex', alignItems: 'center', justifyContent: 'center', background: 'var(--brand-950)', color: 'var(--brand-100)', borderRadius: 'var(--radius-md)', fontFamily: 'var(--font-mono)', fontSize: 13 }}>16 : 9</div>
+        </AspectRatio>
+      </div>
+      <div style={{ gridColumn: 'span 2', padding: '0 14px' }}>
+        <div style={lbl}>Carousel</div>
+        <Carousel itemWidth="200px">
+          {['Agent', 'Infra', 'Trader', 'Tools', 'Social', 'Content'].map(p => <Card key={p} title={p} subtitle="Product kit"><div style={{ height: 34 }}></div></Card>)}
+        </Carousel>
+      </div>
+      <div style={{ gridColumn: 'span 2' }}>
+        <div style={lbl}>Resizable</div>
+        <div style={{ height: 140, border: '1px solid var(--border-default)', borderRadius: 'var(--radius-md)', overflow: 'hidden' }}>
+          <Resizable defaultRatio={0.35}>
+            <div style={{ padding: 12, fontSize: 13, color: 'var(--text-secondary)', background: 'var(--surface-card)', height: '100%' }}>Drag the handle →</div>
+            <div style={{ padding: 12, fontSize: 13, color: 'var(--text-secondary)', height: '100%' }}>Keyboard: focus the handle, then arrow keys.</div>
+          </Resizable>
+        </div>
+      </div>
+    </div>
+  );
+}
+ReactDOM.createRoot(document.getElementById('root')).render(<Demo />);
+</script></body></html>

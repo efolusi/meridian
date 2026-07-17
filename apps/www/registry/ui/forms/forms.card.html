@@ -1,0 +1,89 @@
+<!-- @dsCard group="Components" viewport="700x1150" name="Forms" subtitle="Buttons, inputs, selection, Toggle, ButtonGroup, InputGroup, ButtonTile" -->
+<!DOCTYPE html><html><head><meta charset="utf-8"><link rel="stylesheet" href="../../../../../styles.css">
+<script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+<script src="../../../../../_ds_bundle.js"></script>
+</head><body style="background:var(--surface-page)">
+<div id="root"></div>
+<script type="text/babel">
+const { Button, IconButton, Input, Textarea, Select, Checkbox, Radio, Switch, Slider, Combobox, DigitEntry, ButtonTile, ButtonTileGroup, Toggle, ToggleGroup, ButtonGroup, InputGroup, Label } = window.EfolusiDesignSystem_4ffc3d;
+const row = { display: 'flex', alignItems: 'center', gap: 10, flexWrap: 'wrap' };
+const lbl = { fontSize: 11, fontWeight: 600, letterSpacing: '0.06em', textTransform: 'uppercase', color: 'var(--text-muted)', marginBottom: 8 };
+function Demo() {
+  const [on, setOn] = React.useState(true);
+  const [prods, setProds] = React.useState(['Agent']);
+  const [plan, setPlan] = React.useState('growth');
+  return (
+    <div style={{ padding: 20, display: 'flex', flexDirection: 'column', gap: 18 }}>
+      <div><div style={lbl}>Button</div>
+        <div style={row}>
+          <Button>Create workspace</Button>
+          <Button variant="secondary" iconLeft="download">Export</Button>
+          <Button variant="ghost">Cancel</Button>
+          <Button variant="danger" iconLeft="trash-2">Delete</Button>
+          <Button variant="brand" iconRight="arrow-right">Get started</Button>
+          <Button disabled>Disabled</Button>
+          <Button loading>Saving</Button>
+          <IconButton icon="pencil" label="Edit" variant="outline" />
+          <IconButton icon="plus" label="Add" variant="solid" />
+        </div>
+      </div>
+      <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 16, alignItems: 'start' }}>
+        <div><div style={lbl}>Toggle · ToggleGroup</div>
+          <div style={row}>
+            <Toggle icon="sparkles" defaultPressed>Auto-fix</Toggle>
+            <ToggleGroup type="single" defaultValue="list">
+              <Toggle value="list" icon="menu" aria-label="List view" />
+              <Toggle value="board" icon="layout-dashboard" aria-label="Board view" />
+              <Toggle value="grid" icon="square" aria-label="Grid view" />
+            </ToggleGroup>
+          </div>
+          <div style={{ ...lbl, marginTop: 14 }}>ButtonGroup</div>
+          <div style={row}>
+            <ButtonGroup><Button variant="secondary">Day</Button><Button variant="secondary">Week</Button><Button variant="secondary">Month</Button></ButtonGroup>
+            <ButtonGroup><IconButton variant="outline" icon="chevron-left" label="Previous" /><IconButton variant="outline" icon="chevron-right" label="Next" /></ButtonGroup>
+          </div>
+          <div style={{ ...lbl, marginTop: 14 }}>Label</div>
+          <Label htmlFor="ws-name" required hint="Visible to your team">Workspace name</Label>
+        </div>
+        <div><div style={lbl}>InputGroup</div>
+          <div style={{ display: 'flex', flexDirection: 'column', gap: 12 }}>
+            <InputGroup label="Workspace URL" prefix="https://" suffix=".efolusi.com" defaultValue="acme" />
+            <InputGroup prefix="$" suffix="USD / mo" placeholder="0.00" hint="Billed on the 1st." />
+          </div>
+        </div>
+      </div>
+      <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 16 }}>
+        <Input label="Work email" placeholder="you@company.com" iconLeft="mail" />
+        <Input label="Password" type="password" defaultValue="hunter22" error="At least 12 characters needed." />
+        <Select label="Role" options={['Owner', 'Admin', 'Member', 'Viewer']} />
+        <Combobox label="Products" multiple options={['Agent', 'Infra', 'Node', 'Toolbox', 'Trader', 'Social']} value={prods} onChange={setProds} placeholder="Search products…" />
+      </div>
+      <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 1fr', gap: 16, alignItems: 'start' }}>
+        <div style={{ display: 'flex', flexDirection: 'column', gap: 10 }}>
+          <Checkbox defaultChecked label="Email me receipts" />
+          <Checkbox label="Weekly digest" description="One summary, every Monday." />
+          <Radio name="plan" defaultChecked label="Starter" description="Free forever" />
+          <Radio name="plan" label="Growth" description="$12 per seat" />
+        </div>
+        <div style={{ display: 'flex', flexDirection: 'column', gap: 12 }}>
+          <Switch checked={on} onChange={e => setOn(e.target.checked)} label="Usage alerts" />
+          <Switch size="sm" defaultChecked label="Auto-renew" />
+          <Slider label="Alert threshold" showValue format={v => v + '%'} defaultValue={80} />
+        </div>
+        <Textarea label="What happened?" placeholder="Tell us what happened…" style={{ minHeight: 90 }} />
+      </div>
+      <div><div style={lbl}>DigitEntry</div><DigitEntry length={6} /></div>
+      <div><div style={lbl}>ButtonTile</div>
+        <ButtonTileGroup columns={3}>
+          <ButtonTile icon="rocket" title="Starter" description="Free forever" selected={plan === 'starter'} onClick={() => setPlan('starter')} />
+          <ButtonTile icon="zap" title="Growth" description="$12 per seat / month" selected={plan === 'growth'} onClick={() => setPlan('growth')} />
+          <ButtonTile icon="globe" title="Scale" description="Custom, SCIM + audit log" selected={plan === 'scale'} onClick={() => setPlan('scale')} />
+        </ButtonTileGroup>
+      </div>
+    </div>
+  );
+}
+ReactDOM.createRoot(document.getElementById('root')).render(<Demo />);
+</script></body></html>

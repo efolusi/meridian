@@ -1,0 +1,59 @@
+<!-- @dsCard group="Components" viewport="700x760" name="Data & charts" subtitle="Table, Stat, charts, EmptyState, Skeleton" -->
+<!DOCTYPE html><html><head><meta charset="utf-8"><link rel="stylesheet" href="../../../../../styles.css">
+<script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+<script src="../../../../../_ds_bundle.js"></script>
+</head><body style="background:var(--surface-page)">
+<div id="root"></div>
+<script type="text/babel">
+const { Table, Stat, EmptyState, Skeleton, Card, Badge, Button, Avatar, LineChart, DonutChart, Sparkline } = window.EfolusiDesignSystem_4ffc3d;
+const rows = [
+  { id: 1, name: 'Acme Robotics', plan: 'Growth', mrr: '$1,240', status: 'Active' },
+  { id: 2, name: 'Bloom Health', plan: 'Scale', mrr: '$3,860', status: 'Active' },
+  { id: 3, name: 'Everline', plan: 'Scale', mrr: '$2,410', status: 'Past due' },
+];
+const days = [42,55,48,61,58,72,66,80,74,88,92,84,96,90,104,98,112,108,118,124,130,138].map((v, i) => ({ label: 'Day ' + (i + 1), value: v * 113 }));
+function Demo() {
+  return (
+    <div style={{ padding: 20, display: 'flex', flexDirection: 'column', gap: 18 }}>
+      <div style={{ display: 'flex', gap: 16 }}>
+        <Card padding={16} style={{ flex: 1 }}><Stat label="Monthly recurring revenue" value="$48.2k" delta="12.4%" direction="up" /></Card>
+        <Card padding={16} style={{ flex: 1 }}><Stat label="Churn" value="1.9%" delta="0.4pt" direction="down" hint="Rolling 30 days" /></Card>
+        <Card padding={16} style={{ flex: 1, display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: 12 }}>
+          <Stat label="Requests / day" value="16.3M" />
+        </Card>
+      </div>
+      <div style={{ display: 'grid', gridTemplateColumns: '1.4fr 1fr', gap: 16 }}>
+        <Card title="API requests" subtitle="Last 22 days" padding={16}>
+          <LineChart data={days} height={130} format={v => v.toLocaleString()} />
+        </Card>
+        <Card title="Revenue by product" padding={16}>
+          <DonutChart size={124} centerValue="$48.2k" centerLabel="MRR" data={[
+            { label: 'Agent', value: 21000 }, { label: 'Infra', value: 14000 }, { label: 'Trader', value: 8200 }, { label: 'Node', value: 5000 },
+          ]} />
+        </Card>
+      </div>
+      <Card padding={0}>
+        <Table rowKey="id" onRowClick={() => {}} columns={[
+          { key: 'name', label: 'Customer', render: (v) => <span style={{ display: 'inline-flex', alignItems: 'center', gap: 8, fontWeight: 600 }}><Avatar name={v} size={24} />{v}</span> },
+          { key: 'plan', label: 'Plan' },
+          { key: 'status', label: 'Status', render: v => <Badge tone={v === 'Active' ? 'success' : 'warning'} dot>{v}</Badge> },
+          { key: 'mrr', label: 'MRR', numeric: true, align: 'right' },
+        ]} rows={rows} />
+      </Card>
+      <div style={{ display: 'grid', gridTemplateColumns: '1.2fr 1fr', gap: 16 }}>
+        <EmptyState bordered icon="folder" title="Create your first project" description="Projects group keys, environments, and usage." action={<Button size="sm" iconLeft="plus">New project</Button>} />
+        <Card padding={16}>
+          <div style={{ display: 'flex', gap: 12, alignItems: 'center' }}>
+            <Skeleton variant="circle" width={32} />
+            <div style={{ flex: 1 }}><Skeleton lines={2} /></div>
+          </div>
+          <Skeleton variant="rect" height={56} style={{ marginTop: 14 }} />
+        </Card>
+      </div>
+    </div>
+  );
+}
+ReactDOM.createRoot(document.getElementById('root')).render(<Demo />);
+</script></body></html>

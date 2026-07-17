@@ -1,0 +1,57 @@
+<!-- @dsCard group="Components" viewport="700x1250" name="AI · Agent artifacts" subtitle="Task, Todo, Sandbox, GeneratedImage, DocumentCard, WebPreview" -->
+<!DOCTYPE html><html><head><meta charset="utf-8"><link rel="stylesheet" href="../../../../../styles.css">
+<script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+<script src="../../../../../_ds_bundle.js"></script>
+</head><body style="background:var(--surface-page)">
+<div id="root"></div>
+<script type="text/babel">
+const { Task, Todo, Sandbox, GeneratedImage, DocumentCard, WebPreview } = window.EfolusiDesignSystem_4ffc3d;
+function Demo() {
+  return (
+    <div style={{ padding: 24, display: 'flex', flexDirection: 'column', gap: 20, maxWidth: 620 }}>
+      <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 16, alignItems: 'start' }}>
+        <Task streaming items={[
+          { icon: 'search', label: 'Searched workspace', detail: 'for "webhook retries"' },
+          { icon: 'file-text', label: 'Read', detail: <code>gateway.md</code> },
+          { label: 'Drafting the fix' },
+        ]} />
+        <Todo title="Plan" items={[
+          { label: 'Read webhook schema', status: 'done' },
+          { label: 'Patch retry backoff', status: 'progress' },
+          { label: 'Re-run failed batch', status: 'pending' },
+        ]} />
+      </div>
+      <Sandbox title="python analyze_failures.py" state="running" defaultOpen tabs={[
+        { id: 'out', label: 'Output', content: <pre>Loaded 12 failed deliveries{'\n'}Grouping by endpoint… 1 host: hooks.acme.io{'\n'}Computing backoff windows…</pre> },
+        { id: 'code', label: 'Code', content: <pre>{'rows = load("failures.csv")\nby_host = group(rows, "endpoint")\nprint(backoff(by_host))'}</pre> },
+      ]} />
+      <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 16 }}>
+        <GeneratedImage state="generating" prompt="Isometric espresso machine, warm paper light" />
+        <GeneratedImage state="error" prompt="Same, at dusk" error="Rate limit hit" onRetry={() => {}} />
+      </div>
+      <DocumentCard title="Incident summary — failed webhooks" meta="310 words" collapsedHeight={150}>
+        <h3>What happened</h3>
+        <p>Between 02:10 and 02:14, 12 webhook deliveries to hooks.acme.io returned 503. The host was mid-deploy; our retry window (3 attempts over 40s) was shorter than the outage.</p>
+        <h3>Fix</h3>
+        <p>Backoff now stretches to 5 attempts over 6 minutes, with jitter. The failed batch was replayed at 14:06 and all 12 deliveries succeeded. No customer data was lost.</p>
+        <p>Follow-up: alert when a single endpoint accounts for more than 80% of failures in any 5-minute window.</p>
+      </DocumentCard>
+      <WebPreview url="https://status.efolusi.dev" height={220} logs={[
+        { level: 'info', text: 'hydrated in 84ms' },
+        { level: 'error', text: "Uncaught TypeError: retries is undefined" },
+      ]}>
+        <div style={{ padding: 28, fontFamily: 'var(--font-sans)' }}>
+          <div style={{ fontFamily: 'var(--font-display)', fontSize: 22, color: 'var(--text-primary)', marginBottom: 6 }}>All systems operational</div>
+          <div style={{ fontSize: 13, color: 'var(--text-muted)', marginBottom: 18 }}>Webhooks recovered at 14:06 — 12/12 replays delivered.</div>
+          <div style={{ display: 'flex', gap: 8 }}>
+            {['API', 'Webhooks', 'Dashboard'].map(s => <span key={s} style={{ padding: '6px 12px', border: '1px solid var(--border-default)', borderRadius: 999, fontSize: 12.5, color: 'var(--text-secondary)' }}>{s} · OK</span>)}
+          </div>
+        </div>
+      </WebPreview>
+    </div>
+  );
+}
+ReactDOM.createRoot(document.getElementById('root')).render(<Demo />);
+</script></body></html>

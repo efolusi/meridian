@@ -2,19 +2,20 @@
 
 > Meridian is the open-source design system behind every Efolusi product: 104 accessible React components, 158 design tokens (light, dark, compact), blocks, charts, and full product UI kits — served browser-native with zero build step. MIT licensed.
 
-This repo is a monorepo: tokens, components, blocks, templates, and product kits live together and ship as one stylesheet plus one compiled bundle.
+This repo is a monorepo shaped after shadcn/ui: /apps/www is the docs app and hosts the registry (ui, blocks, examples, kits); /templates holds copyable starter journeys; the stylesheet, tokens, assets, and compiled bundle stay at the root.
 
 ## Start here
 
 - /README.md — overview, principles, content fundamentals
-- /SKILL.md — the agent skill: how to build Efolusi-branded interfaces with Meridian
+- /skills/meridian-design/SKILL.md — the agent skill: how to build Efolusi-branded interfaces with Meridian
 - /styles.css — stylesheet entry (imports /tokens/*)
 - /_ds_bundle.js — compiled component bundle (all components on one global namespace)
-- /_ds_manifest.json — machine-readable registry of components, tokens, cards
+- /_ds_manifest.json — machine-readable manifest of components, tokens, cards
+- /apps/www/registry.json — registry index in the shadcn registry schema
 
 ## Components
 
-104 components in /components/<group>/ across 12 groups: forms, display, navigation, feedback, data, overlay, ai, code, files, dates, finance, icons.
+104 components in /apps/www/registry/ui/<group>/ across 12 groups: forms, display, navigation, feedback, data, overlay, ai, code, files, dates, finance, icons.
 
 Every component ships three per-component flat files (plus a shared per-group specimen card HTML):
 
@@ -33,6 +34,6 @@ Dark mode: set data-theme="dark" on any subtree. Compact density: data-density="
 ## More
 
 - /guidelines/ — accessibility, forms, governance
-- /templates/ds-site/ — the documentation site (open /index.html)
-- /blocks/, /ui_kits/, /templates/ — pre-composed sections, product kits, page shells
+- /apps/www/ — the documentation site (open /index.html)
+- /apps/www/registry/blocks/ — pre-composed sections; /apps/www/registry/kits/ — product showcases (lift screen code); /templates/ — starter journeys (copy the folder)
 - /CHANGELOG.md, /CONTRIBUTING.md, /SECURITY.md, /LICENSE

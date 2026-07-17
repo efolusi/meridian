@@ -1,0 +1,31 @@
+<!-- @dsCard group="Blocks" viewport="1024x460" name="Hero" subtitle="Centered marketing hero with CTAs + social proof" -->
+<!DOCTYPE html><html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><link rel="stylesheet" href="../../../../styles.css">
+<script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+<script src="../../../../_ds_bundle.js"></script>
+<style>@media(max-width:600px){.bk-sec{padding:44px 18px 52px!important}.bk-h1{font-size:34px!important}}</style>
+</head><body style="background:var(--surface-page)">
+<div id="root"></div>
+<script type="text/babel">
+
+const { Button, Avatar, AvatarGroup } = window.EfolusiDesignSystem_4ffc3d;
+function Block() {
+  return (
+    <section className="bk-sec" style={{ padding: '72px 48px 80px', textAlign: 'center' }}>
+      <div style={{ fontSize: 12, fontWeight: 600, letterSpacing: '0.08em', textTransform: 'uppercase', color: 'var(--text-muted)' }}>Six products, one workspace</div>
+      <h1 className="bk-h1" style={{ fontFamily: 'var(--font-display)', fontSize: 56, fontWeight: 700, letterSpacing: '-0.02em', lineHeight: 1.05, margin: '16px auto 0', maxWidth: 680 }}>Ship the boring parts faster.</h1>
+      <p style={{ fontSize: 18, lineHeight: 1.6, color: 'var(--text-secondary)', margin: '18px auto 0', maxWidth: 480 }}>Agents, infra, content, and money — the parts every team rebuilds, already built.</p>
+      <div style={{ display: 'flex', gap: 10, justifyContent: 'center', marginTop: 26, flexWrap: 'wrap' }}>
+        <Button size="lg" iconRight="arrow-right">Start free</Button>
+        <Button size="lg" variant="secondary" iconLeft="book-open">Read the docs</Button>
+      </div>
+      <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 12, marginTop: 26, flexWrap: 'wrap' }}>
+        <AvatarGroup><Avatar name="Ada Obi" size={26} /><Avatar name="Femi Alade" size={26} /><Avatar name="June Park" size={26} /><Avatar name="Sol Reyes" size={26} /></AvatarGroup>
+        <span style={{ fontSize: 13, color: 'var(--text-muted)' }}>4,200+ teams ship with Efolusi</span>
+      </div>
+    </section>
+  );
+}
+ReactDOM.createRoot(document.getElementById('root')).render(<Block />);
+</script></body></html>

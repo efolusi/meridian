@@ -1,0 +1,38 @@
+<!-- @dsCard group="Blocks" viewport="1024x600" name="Login" subtitle="Auth card: SSO, email + password, footer switch" -->
+<!DOCTYPE html><html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><link rel="stylesheet" href="../../../../styles.css">
+<script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+<script src="../../../../_ds_bundle.js"></script>
+</head><body style="background:var(--surface-page)">
+<div id="root"></div>
+<script type="text/babel">
+const { Button, Input, Divider, Checkbox, Link } = window.EfolusiDesignSystem_4ffc3d;
+function Block() {
+  return (
+    <main style={{ minHeight: '100vh', display: 'grid', placeItems: 'center', padding: 32 }}>
+      <div style={{ width: '100%', maxWidth: 380 }}>
+        <div style={{ display: 'flex', alignItems: 'center', gap: 10, justifyContent: 'center' }}>
+          <img src="../../../../assets/logo.png" alt="Efolusi" style={{ width: 28, height: 28 }} />
+          <span style={{ fontFamily: 'var(--font-display)', fontWeight: 680, fontSize: 18, letterSpacing: '-0.02em' }}>Efolusi</span>
+        </div>
+        <h1 style={{ fontFamily: 'var(--font-display)', fontSize: 24, fontWeight: 650, letterSpacing: '-0.01em', textAlign: 'center', margin: '22px 0 0' }}>Welcome back</h1>
+        <p style={{ fontSize: 14, color: 'var(--text-secondary)', textAlign: 'center', margin: '8px 0 0' }}>Sign in to your workspace.</p>
+        <div style={{ background: 'var(--surface-card)', border: '1px solid var(--border-default)', borderRadius: 'var(--radius-lg)', padding: 24, marginTop: 22, display: 'flex', flexDirection: 'column', gap: 14 }}>
+          <Button variant="secondary" fullWidth iconLeft="badge-check">Continue with SSO</Button>
+          <Divider label="or" />
+          <Input label="Work email" type="email" placeholder="ada@company.com" iconLeft="mail" />
+          <Input label="Password" type="password" placeholder="••••••••••" iconLeft="lock" />
+          <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
+            <Checkbox label="Remember me" defaultChecked />
+            <Link href="#">Forgot password?</Link>
+          </div>
+          <Button fullWidth>Sign in</Button>
+        </div>
+        <p style={{ fontSize: 13.5, color: 'var(--text-muted)', textAlign: 'center', marginTop: 18 }}>New to Efolusi? <Link href="#">Create a workspace</Link></p>
+      </div>
+    </main>
+  );
+}
+ReactDOM.createRoot(document.getElementById('root')).render(<Block />);
+</script></body></html>

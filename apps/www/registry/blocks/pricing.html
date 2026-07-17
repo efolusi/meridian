@@ -1,0 +1,45 @@
+<!-- @dsCard group="Blocks" viewport="1024x560" name="Pricing" subtitle="Three-tier pricing with popular highlight" -->
+<!DOCTYPE html><html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><link rel="stylesheet" href="../../../../styles.css">
+<script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+<script src="../../../../_ds_bundle.js"></script>
+<style>@media(max-width:860px){.bk-tiers{grid-template-columns:1fr!important}}@media(max-width:600px){.bk-sec{padding:36px 16px!important}.bk-h2{font-size:26px!important}}</style>
+</head><body style="background:var(--surface-page)">
+<div id="root"></div>
+<script type="text/babel">
+
+const { Card, Badge, Button, Icon } = window.EfolusiDesignSystem_4ffc3d;
+const TIERS = [
+  ['Starter', '$0', 'For side projects', ['1 product', '2 seats', '10k requests/mo'], 'secondary'],
+  ['Growth', '$12', 'Per seat — most teams start here', ['All 6 products', 'Unlimited seats', '1M requests/mo', 'SSO'], 'primary'],
+  ['Scale', 'Custom', 'For platforms & regulated teams', ['Everything in Growth', 'Unlimited requests', 'SCIM & audit log'], 'brand'],
+];
+function Block() {
+  return (
+    <section className="bk-sec" style={{ padding: '48px 40px' }}>
+      <h2 className="bk-h2" style={{ fontFamily: 'var(--font-display)', fontSize: 34, fontWeight: 680, letterSpacing: '-0.02em', textAlign: 'center', margin: 0 }}>Pricing that stays boring</h2>
+      <div className="bk-tiers" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 1fr', gap: 18, marginTop: 32 }}>
+        {TIERS.map(([name, price, desc, feats, cta]) => (
+          <Card key={name} padding={24} style={cta === 'primary' ? { borderColor: 'var(--accent)' } : {}}>
+            <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
+              <h3 style={{ fontSize: 17, fontWeight: 700, margin: 0 }}>{name}</h3>
+              {cta === 'primary' && <Badge tone="accent">Popular</Badge>}
+            </div>
+            <div style={{ display: 'flex', alignItems: 'baseline', gap: 6, marginTop: 12 }}>
+              <span style={{ fontFamily: 'var(--font-display)', fontSize: 34, fontWeight: 680, letterSpacing: '-0.02em' }}>{price}</span>
+              {price === '$12' && <span style={{ fontSize: 12, color: 'var(--text-muted)' }}>/seat/mo</span>}
+            </div>
+            <p style={{ fontSize: 13, color: 'var(--text-muted)', margin: '4px 0 0' }}>{desc}</p>
+            <div style={{ display: 'flex', flexDirection: 'column', gap: 8, margin: '18px 0 20px' }}>
+              {feats.map(f => <span key={f} style={{ display: 'flex', gap: 8, alignItems: 'center', fontSize: 13.5 }}><span style={{ color: 'var(--sand-600)', display: 'inline-flex' }}><Icon name="check" size={14} /></span>{f}</span>)}
+            </div>
+            <Button fullWidth variant={cta} iconRight="arrow-right">{price === 'Custom' ? 'Talk to us' : 'Start free'}</Button>
+          </Card>
+        ))}
+      </div>
+    </section>
+  );
+}
+ReactDOM.createRoot(document.getElementById('root')).render(<Block />);
+</script></body></html>
