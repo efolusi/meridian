@@ -1,0 +1,12 @@
+# Not part of the deployed site
+.git
+.github
+.claude
+uploads
+screenshots
+scripts
+node_modules
+wrangler.jsonc
+.assetsignore
+.editorconfig
+.gitignore
