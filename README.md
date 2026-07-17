@@ -100,7 +100,7 @@ The layout is Meridian's own, organized by purpose: the system core stays at the
 - `starters/<journey>/` — 5 journeys to copy wholesale, one per category, linked pages sharing a consistent shell: marketing (home → pricing → contact), auth (sign in → sign up → onboarding, + password reset), dashboard (overview → customers → detail → settings), app (overview → projects → detail → new project → settings), docs (quickstart → authentication → errors)
 - `site/` — the docs website (home, docs, components, blocks, charts, themes, colors), plus `examples/` (the live demos), `registry.json`, and generated `r/` install items
 - `guidelines/` — foundation specimen cards + accessibility, forms, governance
-- `skills/meridian-design/` — the agent skill entry point
+- `skills/` — the agent skill entry point
 - `scripts/` — registry generator, contrast check, runtime-copy drift check
 - `ARCHITECTURE.md` — how the pieces fit · `STYLEGUIDE.md` — contributor conventions
 - `LICENSE` — MIT · `THIRD_PARTY_NOTICES.md` · `CONTRIBUTING.md` — component contract + PR checklist
