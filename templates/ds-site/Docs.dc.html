@@ -108,7 +108,7 @@ class Component extends DCLogic {
     const list = items => ({ isList: true, items: items.map(x => ({ k: x[0], v: x[1] })) });
     const bundleSnippet = '<link rel="stylesheet" href="meridian/styles.css">\n<' + SC + ' src="https://unpkg.com/react@18.3.1/umd/react.production.min.js"></' + SC + '>\n<' + SC + ' src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.production.min.js"></' + SC + '>\n<' + SC + ' src="meridian/_ds_bundle.js"></' + SC + '>';
     this._sections = [
-      { group: 'Get started', id: 'introduction', title: 'Introduction', lede: 'Meridian is the open-source design system behind every Efolusi product. 88 accessible components, 158 tokens, and full product kits — with no build step.', blocks: [
+      { group: 'Get started', id: 'introduction', title: 'Introduction', lede: 'Meridian is the open-source design system behind every Efolusi product. 104 accessible components, 158 tokens, and full product kits — with no build step.', blocks: [
         p('This is not just a component library. It is the complete working system: the tokens, the components, the blocks, and the product kits that use them, in one repository you can read end to end.'),
         h2('principles', 'Principles'),
         list([
@@ -187,7 +187,7 @@ class Component extends DCLogic {
       ] },
       { group: 'Guides', id: 'monorepo', title: 'Monorepo', lede: 'Meridian is a monorepo: tokens, components, blocks, templates, and eight product kits in one tree that ships as a single package.', blocks: [
         h2('layout', 'Repository layout'),
-        code('text', 'meridian/', 'meridian\n├── styles.css          # stylesheet entry — imports tokens/\n├── _ds_bundle.js       # compiled component bundle\n├── _ds_manifest.json   # machine-readable registry\n├── tokens/             # color, typography, spacing, effects\n├── components/         # 12 groups × (.jsx + .d.ts + .prompt.md)\n├── blocks/             # pre-composed sections\n├── templates/          # page shells + this docs site\n├── ui_kits/            # 8 product apps consuming the system\n├── guidelines/         # a11y, forms, governance\n├── assets/             # logo, 90 icons, fonts\n├── SKILL.md · llms.txt # AI entry points\n└── LICENSE · README.md · CHANGELOG.md'),
+        code('text', 'meridian/', 'meridian\n├── styles.css          # stylesheet entry — imports tokens/\n├── _ds_bundle.js       # compiled component bundle\n├── _ds_manifest.json   # machine-readable registry\n├── tokens/             # color, typography, spacing, effects\n├── components/         # 12 groups × (.jsx + .d.ts + .prompt.md)\n├── blocks/             # pre-composed sections\n├── templates/          # page shells + this docs site\n├── ui_kits/            # 8 product apps consuming the system\n├── guidelines/         # a11y, forms, governance\n├── assets/             # logo, 107 icons, fonts\n├── SKILL.md · llms.txt # AI entry points\n└── LICENSE · README.md · CHANGELOG.md'),
         p('The workspaces relate the way apps and packages do in a classic monorepo: ui_kits and templates are the apps; components, tokens, and assets are the shared packages they consume. Everything versions together, so a token change is visible in every kit in the same commit.'),
         h2('flat-files', 'Flat-file schema'),
         p('Each component is three flat files side by side — source, types, usage guide. That is the whole distribution format: no package.json per component, no barrel files, nothing to resolve. Tools (and models) can read _ds_manifest.json to enumerate everything in the repo.'),
@@ -205,7 +205,7 @@ class Component extends DCLogic {
           ['_ds_manifest.json', '— machine-readable registry of components, tokens, and cards.'],
         ]),
         h2('why', 'Why it works'),
-        p('One namespace and one prop grammar mean a model that has seen three Meridian components can write the other 83. Semantic tokens mean generated screens inherit dark mode and density for free. And because components are flat source files, a model can read the implementation instead of guessing.'),
+        p('One namespace and one prop grammar mean a model that has seen three Meridian components can write the other 101. Semantic tokens mean generated screens inherit dark mode and density for free. And because components are flat source files, a model can read the implementation instead of guessing.'),
         code('javascript', 'agent-output.js', "const { Card, Stat, BarChart } = window.EfolusiDesignSystem_4ffc3d;\n// a model that knows the grammar composes correctly:\n<Card title=\"Runs this week\">\n  <Stat label=\"Total\" value=\"1,284\" delta=\"+12.4%\" direction=\"up\" />\n  <BarChart data={[42, 58, 51, 74, 66, 30, 89]} />\n</Card>"),
       ] },
       { group: 'Guides', id: 'contributing', title: 'Contributing', lede: 'Meridian is MIT-licensed and open to contributions. The bar: it must feel settled.', blocks: [
@@ -220,6 +220,12 @@ class Component extends DCLogic {
         p('Open an issue describing the gap, agree on the API in the thread, then submit the three files plus a specimen entry. Versioning and release policy live in guidelines/governance.md; the full contribution guide is CONTRIBUTING.md at the repo root.'),
       ] },
       { group: 'Reference', id: 'changelog', title: 'Changelog', lede: 'Notable changes, newest first. Full history in CHANGELOG.md.', blocks: [
+        h2('v130', '1.3.0 — July 2026'),
+        list([
+          ['16 components', 'closing the AI-chat/agent surface — Task, Todo, DocumentCard, GeneratedImage, Sandbox, WebPreview, SourceCard, PromptSteps, SelectionQuote, RichComposer, Player, Transcript (ai); Console, Exception, EnvList (code); Loader (feedback). Total: 104.'],
+          ['8 icons', '— at-sign, bug, corner-up-left, list-todo, skip-back, skip-forward, volume-2, volume-x. Total: 107.'],
+          ['Diff & CodeBlock', '— Diff accepts from/to strings with word-level marks and multi-file review; CodeBlock gains a clip prop.'],
+        ]),
         h2('v120', '1.2.0 — July 2026'),
         list([
           ['11 AI-native components', '— Reasoning, ToolCall (approval gates, streaming args), AgentRun (collapsible steps), Confirmation, Conversation (stick-to-bottom), Citation (hover previews), Suggestions, ModelSelector, UsageMeter (count-up), FeedbackBar, Diff. Total: 88.'],
