@@ -16,6 +16,10 @@
 /tokens/*
   Cache-Control: no-cache
 
+# Site chrome and runtime must never go stale in browsers
+/site/*
+  Cache-Control: no-cache
+
 # The registry is meant to be consumed by external tools
 /site/registry.json
   Access-Control-Allow-Origin: *

@@ -27,3 +27,31 @@
 .hero-h1{font-size:38px!important}
 .hero-pad{padding-top:56px!important}
 }
+
+/* Header menu (≤1080px) and sidebar drawers (≤900px) — native details/summary */
+.site-menu{display:none;position:relative}
+.site-menu>summary{list-style:none;display:inline-flex;align-items:center;justify-content:center;width:36px;height:36px;border:1px solid var(--border-strong);border-radius:var(--radius-sm);cursor:pointer;color:var(--text-primary);background:transparent}
+.site-menu>summary::-webkit-details-marker{display:none}
+.site-menu>summary:focus-visible{outline:none;box-shadow:var(--focus-ring)}
+.site-menu[open]>summary{background:var(--surface-sunken)}
+.site-menu__panel{position:absolute;top:calc(100% + 8px);right:0;min-width:190px;background:var(--surface-card);border:1px solid var(--border-strong);border-radius:var(--radius-md);box-shadow:var(--shadow-md);padding:6px;z-index:60;display:flex;flex-direction:column}
+.site-menu__panel a{display:block;padding:8px 12px;border-radius:var(--radius-sm);font-size:14px;color:var(--text-primary)!important;text-decoration:none}
+.site-menu__panel a:hover{background:var(--surface-sunken)}
+.side-drawer{display:none}
+.side-drawer>summary{list-style:none;display:flex;align-items:center;justify-content:space-between;gap:10px;padding:9px 14px;border:1px solid var(--border-strong);border-radius:var(--radius-sm);cursor:pointer;font-size:14px;font-weight:500;background:var(--surface-card)}
+.side-drawer>summary::-webkit-details-marker{display:none}
+.side-drawer>summary:focus-visible{outline:none;box-shadow:var(--focus-ring)}
+.side-drawer__chev{transition:transform var(--dur-med) var(--ease-out);flex:none}
+.side-drawer[open] .side-drawer__chev{transform:rotate(180deg)}
+.side-drawer__panel{position:static;box-shadow:none;border:1px solid var(--border-default);margin-top:8px;max-height:50vh;overflow:auto;display:block}
+@media (max-width:1220px){
+.site-top{gap:18px!important}
+.site-nav{gap:14px!important;font-size:13.5px!important}
+}
+@media (max-width:1080px){
+.site-nav{display:none!important}
+.site-menu{display:block}
+}
+@media (max-width:900px){
+.side-drawer{display:block;margin:0 0 20px}
+}
