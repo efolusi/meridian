@@ -2,6 +2,8 @@
 
 > Meridian is the open-source design system behind every Efolusi product: 104 accessible React components, 161 design tokens (light, dark, compact), blocks, charts, and full product demos — served browser-native with zero build step. MIT licensed.
 
+Live docs: https://meridian.efolusi.com · Source: https://github.com/efolusi/meridian · License: MIT
+
 The layout is Meridian's own, organized by purpose: /site is the docs website; /components and /blocks hold the library; /showcases are product demos; /starters are copyable journeys; the stylesheet, tokens, assets, and compiled bundle stay at the root (see /ARCHITECTURE.md).
 
 ## Start here
@@ -28,6 +30,11 @@ Every component ships three per-component flat files (plus a shared per-group sp
 Load the stylesheet and bundle, then read components off the namespace:
 
     const { Button } = window.EfolusiDesignSystem_4ffc3d;
+
+Or load both from the hosted site (no install):
+
+    <link rel="stylesheet" href="https://meridian.efolusi.com/styles.css">
+    <script src="https://meridian.efolusi.com/_ds_bundle.js"></script>
 
 Dark mode: set data-theme="dark" on any subtree. Compact density: data-density="compact". Semantic tokens only — never raw ramp values.
 

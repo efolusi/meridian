@@ -1,4 +1,6 @@
 const { Button, Input, Checkbox, Icon, Badge } = window.EfolusiDesignSystem_4ffc3d;
+// Skip autofocus when embedded in a docs preview iframe (it would scroll the parent gallery).
+const standalone = typeof window !== 'undefined' && window.top === window.self;
 
 function BrandPanel() {
   return (
@@ -43,10 +45,10 @@ function AuthForm({ mode, onSwitch, onMode, onDone }) {
         {signup ? 'Free for 14 days. No card needed.' : 'Sign in to your workspace.'}
       </p>
       <form onSubmit={submit} style={{ display: 'flex', flexDirection: 'column', gap: 14, marginTop: 24 }}>
-        {signup && <Input size="lg" label="Full name" placeholder="Ada Obi" autoFocus />}
-        <Input size="lg" label="Work email" type="email" placeholder="you@company.com" iconLeft="mail" autoFocus={!signup} />
+        {signup && <Input size="lg" label="Full name" placeholder="Ada Obi" autoFocus={standalone} autoComplete="off" />}
+        <Input size="lg" label="Work email" type="email" placeholder="you@company.com" iconLeft="mail" autoFocus={standalone && !signup} autoComplete="off" />
         <div style={{ position: 'relative' }}>
-          <Input size="lg" label="Password" type={show ? 'text' : 'password'} placeholder={signup ? '12+ characters' : '••••••••••••'} iconLeft="lock" hint={signup ? 'At least 12 characters.' : undefined} />
+          <Input size="lg" label="Password" type={show ? 'text' : 'password'} placeholder={signup ? '12+ characters' : '••••••••••••'} iconLeft="lock" hint={signup ? 'At least 12 characters.' : undefined} autoComplete="off" />
           <button type="button" onClick={() => setShow(!show)} aria-label={show ? 'Hide password' : 'Show password'}
             style={{ position: 'absolute', right: 10, top: 36, border: 'none', background: 'none', cursor: 'pointer', color: 'var(--text-muted)', display: 'inline-flex', padding: 4 }}>
             <Icon name={show ? 'eye-off' : 'eye'} size={18} />

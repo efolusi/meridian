@@ -59,7 +59,7 @@ function ToolsScreen() {
   const remove = id => setFiles(f => f.filter(x => x.id !== id));
   return (
     <div style={{ minHeight: '100vh', display: 'flex', flexDirection: 'column' }}>
-      <div style={{ maxWidth: 760, width: '100%', margin: '0 auto', padding: '40px 32px 80px' }}>
+      <div style={{ maxWidth: 1040, width: '100%', margin: '0 auto', padding: '40px 32px 80px' }}>
         <div style={{ display: 'flex', alignItems: 'center', gap: 10, justifyContent: 'center' }}>
           <a href="../console/index.html" title="Back to Console" style={{ display: 'inline-flex' }}><img src="../../assets/logo.png" alt="" style={{ width: 32, height: 32 }} /></a>
           <h1 style={{ fontSize: 26, fontWeight: 680 }}>Tools</h1>

@@ -21,8 +21,8 @@ function Block() {
         <div style={{ background: 'var(--surface-card)', border: '1px solid var(--border-default)', borderRadius: 'var(--radius-lg)', padding: 24, marginTop: 22, display: 'flex', flexDirection: 'column', gap: 14 }}>
           <Button variant="secondary" fullWidth iconLeft="badge-check">Continue with SSO</Button>
           <Divider label="or" />
-          <Input label="Work email" type="email" placeholder="ada@company.com" iconLeft="mail" />
-          <Input label="Password" type="password" placeholder="••••••••••" iconLeft="lock" />
+          <Input label="Work email" type="email" placeholder="ada@company.com" iconLeft="mail" autoComplete="off" />
+          <Input label="Password" type="password" placeholder="••••••••••" iconLeft="lock" autoComplete="off" />
           <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
             <Checkbox label="Remember me" defaultChecked />
             <Link href="#">Forgot password?</Link>

@@ -1,2 +1,4 @@
 # Cloudflare Pages redirects
-/ /site/DsSite.dc.html 302
+/ /site/DsSite.dc.html 301
+/docs /site/Docs.dc.html 301
+/components /site/Components.dc.html 301
