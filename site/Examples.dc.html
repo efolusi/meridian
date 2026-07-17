@@ -31,7 +31,7 @@
 </header>
 <main class="pad-sm" style="flex:1;max-width:1160px;margin:0 auto;width:100%;padding:40px 28px 90px">
 <h1 style="font-size:38px;font-weight:680;font-family:var(--font-display);letter-spacing:-0.02em;margin:0">Examples</h1>
-<p style="font-size:16.5px;line-height:1.6;color:var(--text-secondary);margin:12px 0 0;max-width:640px">Eight complete product interfaces built with Meridian — real journeys, not screenshots. Every screen is composed from the same 104 components you just browsed. These are showcases in plain JSX; for copyable page skeletons, use the starters in templates/ (four are previewed on the home page).</p>
+<p style="font-size:16.5px;line-height:1.6;color:var(--text-secondary);margin:12px 0 0;max-width:640px">Eight complete product interfaces built with Meridian — real journeys, not screenshots. Every screen is composed from the same 104 components you just browsed. These are showcases in plain JSX; for copyable page skeletons, use the journeys in starters/ (four are previewed on the home page).</p>
 <div style="display:flex;gap:2px;flex-wrap:wrap;margin-top:26px;border-bottom:1px solid var(--border-default)">
 <sc-for list="{{ tabs }}" as="t" hint-placeholder-count="8">
 <sc-if value="{{ t.on }}" hint-placeholder-val="{{ false }}"><span style="padding:8px 14px 9px;font-size:13.5px;font-weight:600;color:var(--text-primary);box-shadow:inset 0 -2px 0 var(--brand-700);cursor:default;user-select:none">{{ t.title }}</span></sc-if>
@@ -46,8 +46,8 @@
 </span>
 </div>
 <p style="font-size:14.5px;line-height:1.6;color:var(--text-secondary);margin:8px 0 0;max-width:680px">{{ curDesc }}</p>
-<div class="frame-scroll" style="margin-top:16px;border:1px solid var(--border-default);border-radius:var(--radius-lg);overflow:hidden;background:var(--surface-card);height:634px">
-<iframe src="{{ curFile }}" title="{{ curTitle }}" style="width:1440px;height:827px;border:0;transform:scale(0.7667);transform-origin:top left;display:block"></iframe>
+<div class="frame-scroll kit-frame" style="margin-top:16px;border:1px solid var(--border-default);border-radius:var(--radius-lg);overflow:hidden;background:var(--surface-card);height:{{ frameH }}px">
+<iframe src="{{ curFile }}" title="{{ curTitle }}" style="width:1440px;height:827px;border:0;transform:scale({{ frameScale }});transform-origin:top left;display:block"></iframe>
 </div>
 <p style="font-size:13px;color:var(--text-muted);margin:12px 2px 0">Interactive preview — click around. Source lives in {{ curPath }} as plain JSX screens; copy the folder to start your own product on it.</p>
 </main>
@@ -61,7 +61,7 @@
 </x-dc>
 <script type="text/x-dc" data-dc-script>
 class Component extends DCLogic {
-  state = { dark: false, ki: 0 };
+  state = { dark: false, ki: 0, fw: 1104 };
   KITS = [
     { id: 'agent', title: 'Agent', desc: 'The autonomous-agent workspace: chat thread with streaming replies and embedded tool output, task step rail, context files, run metadata, and a ⌘K palette.' },
     { id: 'console', title: 'Console', desc: 'The admin surface shared by Efolusi B2B products: overview dashboard, customers table with detail drawer, and workspace settings.' },
@@ -78,8 +78,19 @@ class Component extends DCLogic {
     this._onHash = () => this.applyHash();
     window.addEventListener('hashchange', this._onHash);
     this.applyHash();
+    this._measure = () => {
+      const el = document.querySelector('.kit-frame');
+      if (el && el.clientWidth && el.clientWidth !== this.state.fw) this.setState({ fw: el.clientWidth });
+    };
+    this._measure();
+    window.addEventListener('resize', this._measure);
+    if (window.ResizeObserver) {
+      this._ro = new ResizeObserver(this._measure);
+      const el = document.querySelector('.kit-frame');
+      if (el) this._ro.observe(el);
+    }
   }
-  componentWillUnmount() { window.removeEventListener('hashchange', this._onHash); }
+  componentWillUnmount() { window.removeEventListener('hashchange', this._onHash); window.removeEventListener('resize', this._measure); if (this._ro) this._ro.disconnect(); }
   applyHash() {
     const h = decodeURIComponent((location.hash || '').replace(/^#/, ''));
     const i = this.KITS.findIndex(k => k.id === h);
@@ -91,7 +102,10 @@ class Component extends DCLogic {
   }
   renderVals() {
     const cur = this.KITS[this.state.ki];
+    const frameScale = +(this.state.fw / 1440).toFixed(4);
     return {
+      frameScale,
+      frameH: Math.round(827 * frameScale),
       themeLabel: this.state.dark ? 'Light' : 'Dark',
       toggleTheme: () => {
         const next = this.state.dark ? 'light' : 'dark';

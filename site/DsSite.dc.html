@@ -45,8 +45,8 @@
 <div style="display:flex;justify-content:center">
 <x-import component-from-global-scope="EfolusiDesignSystem_4ffc3d.SegmentedControl" options="{{ exampleOptions }}" value="{{ example }}" onChange="{{ setExample }}" hint-size="340px,36px"></x-import>
 </div>
-<div style="margin-top:18px;border:1px solid var(--border-default);border-radius:var(--radius-lg);overflow:hidden;background:var(--surface-card);height:624px">
-<iframe src="{{ exampleSrc }}" title="Live example" style="width:1440px;height:780px;border:0;transform:scale(0.7965);transform-origin:top left;display:block"></iframe>
+<div class="home-frame" style="margin-top:18px;border:1px solid var(--border-default);border-radius:var(--radius-lg);overflow:hidden;background:var(--surface-card);height:{{ frameH }}px">
+<iframe src="{{ exampleSrc }}" title="Live example" style="width:1440px;height:780px;border:0;transform:scale({{ frameScale }});transform-origin:top left;display:block"></iframe>
 </div>
 <p style="text-align:center;font-size:13px;color:var(--text-muted);margin-top:12px">Live template — click around, every page is real.</p>
 </section>
@@ -69,10 +69,21 @@
 </x-dc>
 <script type="text/x-dc" data-dc-script>
 class Component extends DCLogic {
-  state = { dark: false, example: 'dashboard' };
+  state = { dark: false, example: 'dashboard', fw: 1144 };
   componentDidMount() {
     try { const t = localStorage.getItem('efolusi-site-theme'); if (t) document.documentElement.setAttribute('data-theme', t); } catch (e) {}
     this.setState({ dark: document.documentElement.getAttribute('data-theme') === 'dark' });
+    this._measure = () => {
+      const el = document.querySelector('.home-frame');
+      if (el && el.clientWidth && el.clientWidth !== this.state.fw) this.setState({ fw: el.clientWidth });
+    };
+    this._measure();
+    window.addEventListener('resize', this._measure);
+    if (window.ResizeObserver) {
+      this._ro = new ResizeObserver(this._measure);
+      const el = document.querySelector('.home-frame');
+      if (el) this._ro.observe(el);
+    }
   }
   renderVals() {
     const srcs = {
@@ -81,7 +92,10 @@ class Component extends DCLogic {
       marketing: '../starters/marketing-page/MarketingPage.dc.html',
       docs: '../starters/docs-page/DocsPage.dc.html',
     };
+    const frameScale = +(this.state.fw / 1440).toFixed(4);
     return {
+      frameScale,
+      frameH: Math.round(780 * frameScale),
       themeLabel: this.state.dark ? 'Light' : 'Dark',
       toggleTheme: () => {
         const next = this.state.dark ? 'light' : 'dark';
