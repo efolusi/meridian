@@ -114,4 +114,4 @@ Authored from scratch (no source inventory existed). Namespace: `window.EfolusiD
 
 ## License
 
-MIT — free for commercial and personal use, modification, and redistribution. See `LICENSE`. Contributions welcome: `CONTRIBUTING.md`.
+MIT — free for commercial and personal use, modification, and redistribution. See `LICENSE`. Bundled fonts (SIL OFL 1.1) and Lucide-derived icons (ISC/MIT) keep their own licenses: `THIRD_PARTY_NOTICES.md`. The Efolusi owl mark and the "Meridian"/"Efolusi" names are not covered by the MIT grant — don't use them to brand derived systems. Contributions welcome: `CONTRIBUTING.md`.
