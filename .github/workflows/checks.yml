@@ -28,6 +28,12 @@ jobs:
           python3 scripts/build_registry.py
           git diff --exit-code -- site/registry.json site/registry
 
+      - name: Generated tokens and interfaces are in sync
+        run: |
+          python3 scripts/build_tokens.py
+          python3 scripts/build_interfaces.py
+          git diff --exit-code -- tokens.json tailwind.preset.js site/interfaces.json
+
       - name: Bundle source hashes match source files
         run: |
           python3 - <<'EOF'

@@ -110,6 +110,21 @@
 </div>
 <p style="font-size:12.5px;color:var(--text-muted);margin:8px 0 0">* required</p>
 </sc-if>
+<sc-for list="{{ subInterfaces }}" as="si" hint-placeholder-count="0">
+<div style="margin-top:20px">
+<div style="font-family:var(--font-mono);font-size:12.5px;font-weight:600;color:var(--text-primary)">{{ si.name }}</div>
+<div style="border:1px solid var(--border-default);border-radius:var(--radius-md);overflow-x:auto;overflow-y:hidden;margin-top:8px">
+<div style="display:grid;grid-template-columns:150px 1.4fr 1.25fr;gap:14px;padding:8px 16px;background:var(--surface-subtle);border-bottom:1px solid var(--border-default);font-size:11px;font-weight:600;letter-spacing:0.06em;text-transform:uppercase;color:var(--text-muted)"><span>Field</span><span>Type</span><span>Description</span></div>
+<sc-for list="{{ si.fields }}" as="f" hint-placeholder-count="3">
+<div style="display:grid;grid-template-columns:150px 1.4fr 1.25fr;gap:14px;padding:9px 16px;border-bottom:1px solid var(--border-default);align-items:baseline">
+<span style="font-family:var(--font-mono);font-size:12.5px;font-weight:600;color:var(--brand-700)">{{ f.name }}</span>
+<span style="font-family:var(--font-mono);font-size:11.5px;color:var(--text-secondary);word-break:break-word">{{ f.t }}</span>
+<span style="font-size:13px;line-height:1.5;color:var(--text-secondary)">{{ f.d }}</span>
+</div>
+</sc-for>
+</div>
+</div>
+</sc-for>
 <sc-if value="{{ noProps }}" hint-placeholder-val="{{ false }}"><p style="font-size:14.5px;color:var(--text-secondary);margin:12px 0 0">This component takes no props beyond native element attributes.</p></sc-if>
 <p style="font-size:12.5px;font-family:var(--font-mono);color:var(--text-muted);margin:22px 0 0">Source: components/{{ activeGroupId }}/{{ activeName }}.jsx · {{ activeName }}.d.ts · {{ activeName }}.prompt.md</p>
 <a href="{{ activeCard }}" style="display:inline-block;font-size:13.5px;color:var(--text-secondary);margin-top:6px" style-hover="color:var(--text-primary)">Open the {{ activeGroupLabel }} specimen sheet ↗</a>
@@ -147,13 +162,14 @@
 </x-dc>
 <script type="text/x-dc" data-dc-script>
 class Component extends DCLogic {
-  state = { dark: false, groups: null, ns: 'EfolusiDesignSystem_4ffc3d', gi: 0, ii: 0, demoMaps: {} };
+  state = { dark: false, groups: null, ns: 'EfolusiDesignSystem_4ffc3d', gi: 0, ii: 0, demoMaps: {}, interfaces: {} };
   componentDidMount() {
     try { const t = localStorage.getItem('efolusi-site-theme'); if (t) document.documentElement.setAttribute('data-theme', t); } catch (e) {}
     this.setState({ dark: document.documentElement.getAttribute('data-theme') === 'dark' });
     this._onHash = () => this.applyHash();
     window.addEventListener('hashchange', this._onHash);
     import('./registry.js').then(m => this.setState({ groups: m.GROUPS, ns: m.NS }, () => this.applyHash())).catch(e => console.error('registry load failed', e));
+    fetch('./interfaces.json').then(r => r.json()).then(iface => this.setState({ interfaces: iface })).catch(() => {});
   }
   componentWillUnmount() { window.removeEventListener('hashchange', this._onHash); }
   applyHash() {
@@ -254,6 +270,13 @@ class Component extends DCLogic {
       noProps: !!a && shown.length === 0,
       hasStyleNote: !!a && a.props.length !== shown.length,
       propRows: shown.map(p => ({ name: p.n + (p.req ? ' *' : ''), t: p.t, def: p.def || '—', d: p.d || '' })),
+      subInterfaces: (() => {
+        const ifs = this.state.interfaces || {}, seen = new Set(), out = [];
+        shown.forEach(p => (String(p.t || '').match(/[A-Z]\w+/g) || []).forEach(nm => {
+          if (ifs[nm] && !seen.has(nm)) { seen.add(nm); out.push({ name: nm, fields: ifs[nm].map(f => ({ name: f.n + (f.req ? ' *' : ''), t: f.t, d: f.d || '' })) }); }
+        }));
+        return out;
+      })(),
       hasPrev: !!prev,
       prevName: prev ? prev.name : '',
       prevGroup: prev ? prev.glabel : '',
