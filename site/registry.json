@@ -1640,7 +1640,7 @@
       "name": "paymentcard",
       "type": "registry:ui",
       "title": "PaymentCard",
-      "description": "Payment card visual for Trader / Social Finance \u2014 espresso, caramel, or paper; `frozen` grays it out.",
+      "description": "Payment card visual for trading / finance surfaces \u2014 espresso, caramel, or paper; `frozen` grays it out.",
       "files": [
         {
           "path": "components/finance/PaymentCard.jsx",

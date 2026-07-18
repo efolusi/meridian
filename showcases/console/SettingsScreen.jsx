@@ -21,8 +21,8 @@ function GeneralTab({ notify }) {
       <SectionRow title="Description" desc="Helps teammates pick the right workspace.">
         <Textarea defaultValue="Robotics tooling for the Acme fleet." rows={3} />
       </SectionRow>
-      <SectionRow title="Default product" desc="Where new members land after sign-in.">
-        <Select options={['Agent', 'Infra', 'Content', 'Tools', 'Trader', 'Social Finance']} defaultValue="Agent" />
+      <SectionRow title="Default surface" desc="Where new members land after sign-in.">
+        <Select options={['AI agents', 'Infrastructure', 'Automation', 'File tools', 'Trading', 'Finance']} defaultValue="AI agents" />
       </SectionRow>
       <SectionRow title="Notifications" desc="Workspace-wide defaults; members can override.">
         <div style={{ display: 'flex', flexDirection: 'column', gap: 12 }}>

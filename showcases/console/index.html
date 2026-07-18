@@ -59,17 +59,17 @@ function App() {
           { id: 'go-usage', label: 'Usage', icon: 'activity' },
           { id: 'go-billing', label: 'Billing', icon: 'credit-card' },
         ]},
-        { group: 'Products', items: [
-          { id: 'kit-agent', label: 'Agent', icon: 'bot' },
-          { id: 'kit-infra', label: 'Infra', icon: 'server' },
-          { id: 'kit-trader', label: 'Trader', icon: 'chart-candlestick' },
-          { id: 'kit-tools', label: 'Tools', icon: 'package' },
+        { group: 'Platform', items: [
+          { id: 'kit-agent', label: 'AI agents', icon: 'bot' },
+          { id: 'kit-infra', label: 'Infrastructure', icon: 'server' },
+          { id: 'kit-trader', label: 'Trading', icon: 'chart-candlestick' },
+          { id: 'kit-tools', label: 'File tools', icon: 'package' },
         ]},
       ]} />
       <Dialog open={dialog} onClose={() => setDialog(false)} title="New project" description="Projects group keys, environments, and usage."
         footer={<React.Fragment><Button variant="ghost" onClick={() => setDialog(false)}>Cancel</Button><Button onClick={() => { setDialog(false); notify('Project created', 'Q3 launch plan is ready to go.'); }}>Create project</Button></React.Fragment>}>        <div style={{ display: 'flex', flexDirection: 'column', gap: 14 }}>
           <Input label="Project name" placeholder="Q3 launch plan" autoFocus />
-          <Select label="Product" options={['Agent', 'Infra', 'Content', 'Tools', 'Trader', 'Social Finance']} />
+          <Select label="Surface" options={['AI agents', 'Infrastructure', 'Automation', 'File tools', 'Trading', 'Finance']} />
         </div>
       </Dialog>
       <ToastStack>

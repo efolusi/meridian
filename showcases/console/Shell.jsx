@@ -28,12 +28,12 @@ function Sidebar({ nav, onNav }) {
     ['settings', 'settings', 'Settings'],
   ];
   const products = [
-    ['bot', 'Agent', '../agent/index.html'],
-    ['server', 'Infra', '../infra/index.html'],
-    ['sparkles', 'Content', '../docs/index.html'],
-    ['package', 'Tools', '../tools/index.html'],
-    ['chart-candlestick', 'Trader', '../trader/index.html'],
-    ['wallet', 'Social Finance', '../trader/index.html'],
+    ['bot', 'AI agents', '../agent/index.html'],
+    ['server', 'Infrastructure', '../infra/index.html'],
+    ['sparkles', 'Automation', '../docs/index.html'],
+    ['package', 'File tools', '../tools/index.html'],
+    ['chart-candlestick', 'Trading', '../trader/index.html'],
+    ['wallet', 'Finance', '../trader/index.html'],
   ];
   return (
     <aside style={{ width: 240, flex: 'none', display: 'flex', flexDirection: 'column', borderRight: '1px solid var(--border-default)', background: 'var(--sand-25)' }}>
@@ -46,7 +46,7 @@ function Sidebar({ nav, onNav }) {
         {items.map(([id, icon, label, badge]) => <SideItem key={id} icon={icon} label={label} badge={badge} active={nav === id} onClick={() => onNav(id)} />)}
       </nav>
       <div style={{ margin: '14px 12px 0', paddingTop: 12, borderTop: '1px solid var(--border-default)', display: 'flex', flexDirection: 'column', gap: 2 }}>
-        <div style={{ fontSize: 11, fontWeight: 600, letterSpacing: '0.06em', textTransform: 'uppercase', color: 'var(--text-muted)', padding: '0 10px 6px' }}>Products</div>
+        <div style={{ fontSize: 11, fontWeight: 600, letterSpacing: '0.06em', textTransform: 'uppercase', color: 'var(--text-muted)', padding: '0 10px 6px' }}>Platform</div>
         {products.map(([icon, label, href]) => <SideItem key={label} icon={icon} label={label} href={href} />)}
       </div>
       <div style={{ marginTop: 'auto', padding: 12 }}>
@@ -69,8 +69,8 @@ function Sidebar({ nav, onNav }) {
 }
 
 const NOTIFS = [
-  ['circle-check', 'Batch retry finished', 'Agent · 12/12 webhooks delivered', '2m'],
-  ['triangle-alert', 'worker-04 degraded', 'Infra · P95 latency up 4×', '1h'],
+  ['circle-check', 'Batch retry finished', 'AI agents · 12/12 webhooks delivered', '2m'],
+  ['triangle-alert', 'worker-04 degraded', 'Infrastructure · P95 latency up 4×', '1h'],
   ['banknote', 'Invoice #10422 paid', 'Billing · €1,240.00', '3h'],
 ];
 function Topbar({ title, onSearch, notify }) {
@@ -83,7 +83,7 @@ function Topbar({ title, onSearch, notify }) {
       </button>
       <Popover align="right" width={320} trigger={<IconButton icon="sparkles" label="What's new" />}>
         <div style={{ fontSize: 13, fontWeight: 600, marginBottom: 8 }}>What's new</div>
-        <div style={{ fontSize: 13, color: 'var(--text-secondary)', lineHeight: 1.55 }}>Trader now mirrors other traders with a risk cap, and the Agent can use your Infra connections directly.</div>
+        <div style={{ fontSize: 13, color: 'var(--text-secondary)', lineHeight: 1.55 }}>Trading now mirrors other traders with a risk cap, and AI agents can use your infrastructure connections directly.</div>
         <Divider style={{ margin: '10px 0' }} />
         <a href="../docs/index.html" style={{ fontSize: 13, fontWeight: 600 }}>Read the changelog →</a>
       </Popover>

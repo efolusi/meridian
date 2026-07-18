@@ -34,14 +34,14 @@
 </x-dc>
 <script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:1280,&quot;height&quot;:800},&quot;theme&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;light&quot;,&quot;dark&quot;],&quot;default&quot;:&quot;light&quot;,&quot;tsType&quot;:&quot;'light'|'dark'&quot;}}">
 class Component extends DCLogic {
-  state = { picked: ['Agent', 'Infra'] };
+  state = { picked: ['AI agents', 'Infrastructure'] };
   renderVals() {
     const toggle = (name) => this.setState(s => ({
       picked: s.picked.includes(name) ? s.picked.filter(n => n !== name) : [...s.picked, name],
     }));
     return {
       theme: this.props.theme ?? 'light',
-      products: ['Agent', 'Infra', 'Node', 'Toolbox', 'Trader', 'Social'].map(name => ({
+      products: ['AI agents', 'Infrastructure', 'Automation', 'File tools', 'Trading', 'Finance'].map(name => ({
         name, on: this.state.picked.includes(name), toggle: () => toggle(name),
       })),
     };

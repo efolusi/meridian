@@ -13,7 +13,7 @@ function UsageChart({ notify }) {
   const [hov, setHov] = React.useState(null);
   const max = Math.max(...BARS);
   return (
-    <Card title="API requests" subtitle="Last 28 days · all products" actions={<Button size="sm" variant="secondary" iconLeft="download" onClick={() => notify && notify('Export ready', 'requests-28d.csv is downloading.')}>Export</Button>} style={{ flex: 2 }}>
+    <Card title="API requests" subtitle="Last 28 days · all surfaces" actions={<Button size="sm" variant="secondary" iconLeft="download" onClick={() => notify && notify('Export ready', 'requests-28d.csv is downloading.')}>Export</Button>} style={{ flex: 2 }}>
       <div style={{ display: 'flex', alignItems: 'flex-end', gap: 4, height: 150 }}>
         {BARS.map((v, i) => (
           <Tooltip key={i} label={(v * 113).toLocaleString() + ' requests'} style={{ flex: 1, height: '100%', alignItems: 'flex-end' }}>
@@ -32,9 +32,9 @@ function UsageChart({ notify }) {
 const EVENTS = [
   ['Femi Alade', 'rotated the production API key', '2m ago', 'key-round'],
   ['June Park', 'invited sam@acme.co as Admin', '18m ago', 'mail'],
-  ['Trader', 'closed BTC-EUR position at +2.4%', '1h ago', 'chart-candlestick'],
+  ['Trading', 'closed BTC-EUR position at +2.4%', '1h ago', 'chart-candlestick'],
   ['Sol Reyes', 'created project Q3 launch plan', '3h ago', 'folder'],
-  ['Infra', 'pg-prod-eu failover completed', '5h ago', 'server'],
+  ['Infrastructure', 'pg-prod-eu failover completed', '5h ago', 'server'],
 ];
 function Activity() {
   return (
@@ -60,7 +60,7 @@ function DashboardScreen({ onNewProject, notify }) {
       <div style={{ display: 'flex', alignItems: 'flex-end', justifyContent: 'space-between' }}>
         <div>
           <h2 style={{ fontSize: 26, fontWeight: 680 }}>Good morning, Ada</h2>
-          <p style={{ color: 'var(--text-secondary)', marginTop: 4, fontSize: 14 }}>Acme Workspace is trending up across every product.</p>
+          <p style={{ color: 'var(--text-secondary)', marginTop: 4, fontSize: 14 }}>Acme Workspace is trending up across every surface.</p>
         </div>
         <div style={{ display: 'flex', gap: 8 }}>
           <Button variant="secondary" iconLeft="upload" onClick={() => notify && notify('Import started', "We'll email you when the CSV is mapped.")}>Import</Button>

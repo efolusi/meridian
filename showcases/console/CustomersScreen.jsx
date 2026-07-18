@@ -1,13 +1,13 @@
 const { Card, Badge, Button, Input, Select, Checkbox, Avatar, IconButton, Tag, Menu, Pagination, Drawer, KeyValueList, Dialog, Sparkline } = window.EfolusiDesignSystem_4ffc3d;
 
 const SEED = [
-  ['Acme Robotics', 'ada@acmerobotics.com', 'Growth', 'Active', '$1,240', 'Agent'],
-  ['Bloom Health', 'ops@bloomhealth.io', 'Scale', 'Active', '$3,860', 'Infra'],
-  ['Cardinal Freight', 'it@cardinalfreight.com', 'Growth', 'Trial', '$0', 'Trader'],
-  ['Delta Studios', 'hello@deltastudios.tv', 'Starter', 'Active', '$96', 'Content'],
-  ['Everline', 'admin@everline.app', 'Scale', 'Past due', '$2,410', 'Social Finance'],
-  ['Foundry Labs', 'team@foundrylabs.dev', 'Growth', 'Active', '$1,870', 'Tools'],
-  ['Golden Gate Coffee', 'sam@ggcoffee.com', 'Starter', 'Churned', '$0', 'Agent'],
+  ['Acme Robotics', 'ada@acmerobotics.com', 'Growth', 'Active', '$1,240', 'AI agents'],
+  ['Bloom Health', 'ops@bloomhealth.io', 'Scale', 'Active', '$3,860', 'Infrastructure'],
+  ['Cardinal Freight', 'it@cardinalfreight.com', 'Growth', 'Trial', '$0', 'Trading'],
+  ['Delta Studios', 'hello@deltastudios.tv', 'Starter', 'Active', '$96', 'Automation'],
+  ['Everline', 'admin@everline.app', 'Scale', 'Past due', '$2,410', 'Finance'],
+  ['Foundry Labs', 'team@foundrylabs.dev', 'Growth', 'Active', '$1,870', 'File tools'],
+  ['Golden Gate Coffee', 'sam@ggcoffee.com', 'Starter', 'Churned', '$0', 'AI agents'],
 ].map(([name, email, plan, status, mrr, product], i) => ({ id: i + 1, name, email, plan, status, mrr, product }));
 const TONE = { Active: 'success', Trial: 'accent', 'Past due': 'warning', Churned: 'neutral' };
 const STATUSES = ['Any status', 'Active', 'Trial', 'Past due', 'Churned'];
@@ -27,7 +27,7 @@ function CustomersScreen({ notify }) {
   const markChurned = id => { setRows(rs => rs.map(r => r.id === id ? { ...r, status: 'Churned', mrr: '$0' } : r)); notify('Marked churned', 'MRR moved to $0 for this customer.'); };
   const addCustomer = () => {
     if (!form.name.trim()) return;
-    setRows(rs => [{ id: Date.now(), name: form.name, email: form.email || 'hello@' + form.name.toLowerCase().replace(/\s+/g, '') + '.com', plan: form.plan, status: 'Trial', mrr: '$0', product: 'Agent' }, ...rs]);
+    setRows(rs => [{ id: Date.now(), name: form.name, email: form.email || 'hello@' + form.name.toLowerCase().replace(/\s+/g, '') + '.com', plan: form.plan, status: 'Trial', mrr: '$0', product: 'AI agents' }, ...rs]);
     setAdding(false); setForm({ name: '', email: '', plan: 'Starter' });
     notify('Customer added', form.name + ' starts on a 14-day trial.');
   };
@@ -40,7 +40,7 @@ function CustomersScreen({ notify }) {
         <Select size="sm" options={['All plans', 'Starter', 'Growth', 'Scale']} value={plan} onChange={e => setPlan(e.target.value)} style={{ width: 130 }} />
         <Menu trigger={<Tag icon="funnel" onClick={() => {}}>{status}</Tag>} items={STATUSES.map(s => ({ id: s, label: s, icon: s === status ? 'check' : undefined }))} onSelect={setStatus} />
         <div style={{ marginLeft: 'auto', display: 'flex', gap: 8, alignItems: 'center' }}>
-          {checked.length > 0 && <Button size="sm" variant="secondary" iconLeft="mail" onClick={() => { notify('Email drafted', checked.length + ' recipients added in Content.'); setChecked([]); }}>Email {checked.length} selected</Button>}
+          {checked.length > 0 && <Button size="sm" variant="secondary" iconLeft="mail" onClick={() => { notify('Email drafted', checked.length + ' recipients added to the draft.'); setChecked([]); }}>Email {checked.length} selected</Button>}
           <Button size="sm" iconLeft="plus" onClick={() => setAdding(true)}>Add customer</Button>
         </div>
       </div>

@@ -1,4 +1,4 @@
-/* @ds-bundle: {"format":4,"namespace":"EfolusiDesignSystem_4ffc3d","components":[{"name":"AgentRun","sourcePath":"components/ai/AgentRun.jsx"},{"name":"ChatMessage","sourcePath":"components/ai/ChatMessage.jsx"},{"name":"Citation","sourcePath":"components/ai/Citation.jsx"},{"name":"SourceList","sourcePath":"components/ai/Citation.jsx"},{"name":"Confirmation","sourcePath":"components/ai/Confirmation.jsx"},{"name":"Conversation","sourcePath":"components/ai/Conversation.jsx"},{"name":"DocumentCard","sourcePath":"components/ai/DocumentCard.jsx"},{"name":"FeedbackBar","sourcePath":"components/ai/FeedbackBar.jsx"},{"name":"GeneratedImage","sourcePath":"components/ai/GeneratedImage.jsx"},{"name":"ModelSelector","sourcePath":"components/ai/ModelSelector.jsx"},{"name":"Player","sourcePath":"components/ai/Player.jsx"},{"name":"PromptComposer","sourcePath":"components/ai/PromptComposer.jsx"},{"name":"PromptSteps","sourcePath":"components/ai/PromptSteps.jsx"},{"name":"Reasoning","sourcePath":"components/ai/Reasoning.jsx"},{"name":"RichComposer","sourcePath":"components/ai/RichComposer.jsx"},{"name":"Sandbox","sourcePath":"components/ai/Sandbox.jsx"},{"name":"SelectionQuote","sourcePath":"components/ai/SelectionQuote.jsx"},{"name":"SourceCard","sourcePath":"components/ai/SourceCard.jsx"},{"name":"Suggestions","sourcePath":"components/ai/Suggestions.jsx"},{"name":"Task","sourcePath":"components/ai/Task.jsx"},{"name":"Todo","sourcePath":"components/ai/Todo.jsx"},{"name":"ToolCall","sourcePath":"components/ai/ToolCall.jsx"},{"name":"Transcript","sourcePath":"components/ai/Transcript.jsx"},{"name":"UsageMeter","sourcePath":"components/ai/UsageMeter.jsx"},{"name":"WebPreview","sourcePath":"components/ai/WebPreview.jsx"},{"name":"CodeBlock","sourcePath":"components/code/CodeBlock.jsx"},{"name":"Console","sourcePath":"components/code/Console.jsx"},{"name":"CopyField","sourcePath":"components/code/CopyField.jsx"},{"name":"Diff","sourcePath":"components/code/Diff.jsx"},{"name":"EnvList","sourcePath":"components/code/EnvList.jsx"},{"name":"Exception","sourcePath":"components/code/Exception.jsx"},{"name":"Terminal","sourcePath":"components/code/Terminal.jsx"},{"name":"BarChart","sourcePath":"components/data/BarChart.jsx"},{"name":"DonutChart","sourcePath":"components/data/DonutChart.jsx"},{"name":"EmptyState","sourcePath":"components/data/EmptyState.jsx"},{"name":"KeyValueList","sourcePath":"components/data/KeyValueList.jsx"},{"name":"LineChart","sourcePath":"components/data/LineChart.jsx"},{"name":"Skeleton","sourcePath":"components/data/Skeleton.jsx"},{"name":"Sparkline","sourcePath":"components/data/Sparkline.jsx"},{"name":"Stat","sourcePath":"components/data/Stat.jsx"},{"name":"StatusDot","sourcePath":"components/data/StatusDot.jsx"},{"name":"Table","sourcePath":"components/data/Table.jsx"},{"name":"Calendar","sourcePath":"components/dates/Calendar.jsx"},{"name":"DatePicker","sourcePath":"components/dates/DatePicker.jsx"},{"name":"Accordion","sourcePath":"components/display/Accordion.jsx"},{"name":"AspectRatio","sourcePath":"components/display/AspectRatio.jsx"},{"name":"Avatar","sourcePath":"components/display/Avatar.jsx"},{"name":"AvatarGroup","sourcePath":"components/display/Avatar.jsx"},{"name":"Badge","sourcePath":"components/display/Badge.jsx"},{"name":"Card","sourcePath":"components/display/Card.jsx"},{"name":"Carousel","sourcePath":"components/display/Carousel.jsx"},{"name":"Collapsible","sourcePath":"components/display/Collapsible.jsx"},{"name":"Divider","sourcePath":"components/display/Divider.jsx"},{"name":"Kbd","sourcePath":"components/display/Kbd.jsx"},{"name":"Link","sourcePath":"components/display/Link.jsx"},{"name":"ListItem","sourcePath":"components/display/ListItem.jsx"},{"name":"Resizable","sourcePath":"components/display/Resizable.jsx"},{"name":"ScrollArea","sourcePath":"components/display/ScrollArea.jsx"},{"name":"Tag","sourcePath":"components/display/Tag.jsx"},{"name":"Toolbar","sourcePath":"components/display/Toolbar.jsx"},{"name":"TreeList","sourcePath":"components/display/TreeList.jsx"},{"name":"Alert","sourcePath":"components/feedback/Alert.jsx"},{"name":"Banner","sourcePath":"components/feedback/Banner.jsx"},{"name":"ConfirmDialog","sourcePath":"components/feedback/ConfirmDialog.jsx"},{"name":"Dialog","sourcePath":"components/feedback/Dialog.jsx"},{"name":"Loader","sourcePath":"components/feedback/Loader.jsx"},{"name":"Progress","sourcePath":"components/feedback/Progress.jsx"},{"name":"Spinner","sourcePath":"components/feedback/Spinner.jsx"},{"name":"Toast","sourcePath":"components/feedback/Toast.jsx"},{"name":"ToastStack","sourcePath":"components/feedback/Toast.jsx"},{"name":"Tooltip","sourcePath":"components/feedback/Tooltip.jsx"},{"name":"FileDrop","sourcePath":"components/files/FileDrop.jsx"},{"name":"FileTile","sourcePath":"components/files/FileTile.jsx"},{"name":"FileTypeIcon","sourcePath":"components/files/FileTypeIcon.jsx"},{"name":"PaymentCard","sourcePath":"components/finance/PaymentCard.jsx"},{"name":"Button","sourcePath":"components/forms/Button.jsx"},{"name":"ButtonGroup","sourcePath":"components/forms/ButtonGroup.jsx"},{"name":"ButtonTile","sourcePath":"components/forms/ButtonTile.jsx"},{"name":"ButtonTileGroup","sourcePath":"components/forms/ButtonTile.jsx"},{"name":"Checkbox","sourcePath":"components/forms/Checkbox.jsx"},{"name":"Combobox","sourcePath":"components/forms/Combobox.jsx"},{"name":"DigitEntry","sourcePath":"components/forms/DigitEntry.jsx"},{"name":"IconButton","sourcePath":"components/forms/IconButton.jsx"},{"name":"Input","sourcePath":"components/forms/Input.jsx"},{"name":"InputGroup","sourcePath":"components/forms/InputGroup.jsx"},{"name":"Label","sourcePath":"components/forms/Label.jsx"},{"name":"Radio","sourcePath":"components/forms/Radio.jsx"},{"name":"Select","sourcePath":"components/forms/Select.jsx"},{"name":"Slider","sourcePath":"components/forms/Slider.jsx"},{"name":"Switch","sourcePath":"components/forms/Switch.jsx"},{"name":"Textarea","sourcePath":"components/forms/Textarea.jsx"},{"name":"Toggle","sourcePath":"components/forms/Toggle.jsx"},{"name":"ToggleGroup","sourcePath":"components/forms/Toggle.jsx"},{"name":"Icon","sourcePath":"components/icons/Icon.jsx"},{"name":"Breadcrumbs","sourcePath":"components/navigation/Breadcrumbs.jsx"},{"name":"Menubar","sourcePath":"components/navigation/Menubar.jsx"},{"name":"PageControl","sourcePath":"components/navigation/PageControl.jsx"},{"name":"Pagination","sourcePath":"components/navigation/Pagination.jsx"},{"name":"SegmentedControl","sourcePath":"components/navigation/SegmentedControl.jsx"},{"name":"SideNav","sourcePath":"components/navigation/SideNav.jsx"},{"name":"Steps","sourcePath":"components/navigation/Steps.jsx"},{"name":"Tabs","sourcePath":"components/navigation/Tabs.jsx"},{"name":"TopNav","sourcePath":"components/navigation/TopNav.jsx"},{"name":"CommandPalette","sourcePath":"components/overlay/CommandPalette.jsx"},{"name":"ContextMenu","sourcePath":"components/overlay/ContextMenu.jsx"},{"name":"Drawer","sourcePath":"components/overlay/Drawer.jsx"},{"name":"HoverCard","sourcePath":"components/overlay/HoverCard.jsx"},{"name":"Menu","sourcePath":"components/overlay/Menu.jsx"},{"name":"Popover","sourcePath":"components/overlay/Popover.jsx"}],"sourceHashes":{"components/ai/AgentRun.jsx":"8af70ff4bbbd","components/ai/ChatMessage.jsx":"7ddddb0dc44c","components/ai/Citation.jsx":"c695f95f1bd7","components/ai/Confirmation.jsx":"020a708b4aee","components/ai/Conversation.jsx":"3d3ab21999e4","components/ai/DocumentCard.jsx":"f0df7dd84465","components/ai/FeedbackBar.jsx":"d27a365fa3c3","components/ai/GeneratedImage.jsx":"788e2dcc84c3","components/ai/ModelSelector.jsx":"011ad042d74d","components/ai/Player.jsx":"7a42efa14ff9","components/ai/PromptComposer.jsx":"b10dc1468cc9","components/ai/PromptSteps.jsx":"31dc4ed470e3","components/ai/Reasoning.jsx":"2ec4d107d41e","components/ai/RichComposer.jsx":"42e31bc490a9","components/ai/Sandbox.jsx":"08d2c1119288","components/ai/SelectionQuote.jsx":"c78a30cb3163","components/ai/SourceCard.jsx":"b718727df06e","components/ai/Suggestions.jsx":"cd6834ee7634","components/ai/Task.jsx":"b7866e73b50a","components/ai/Todo.jsx":"0b3242b80a77","components/ai/ToolCall.jsx":"c46664bb5c6d","components/ai/Transcript.jsx":"d722a8789088","components/ai/UsageMeter.jsx":"1edf4aa92d0f","components/ai/WebPreview.jsx":"9a833c88610d","components/code/CodeBlock.jsx":"bba6e5b35b66","components/code/Console.jsx":"bc124b518d23","components/code/CopyField.jsx":"2aff10651a79","components/code/Diff.jsx":"52c866c983fe","components/code/EnvList.jsx":"b6568c726ee2","components/code/Exception.jsx":"d1cb05626c05","components/code/Terminal.jsx":"9bcd97b0cf5e","components/data/BarChart.jsx":"3572ea6b70e5","components/data/DonutChart.jsx":"4516ac36a882","components/data/EmptyState.jsx":"80e66d58cfab","components/data/KeyValueList.jsx":"e6a1a52adac1","components/data/LineChart.jsx":"4ee2e7cfdab7","components/data/Skeleton.jsx":"67ed9ab66da9","components/data/Sparkline.jsx":"3697c9d45f2a","components/data/Stat.jsx":"71ef3dc7f426","components/data/StatusDot.jsx":"4d3fcbd0bb8f","components/data/Table.jsx":"439f81fbd68e","components/dates/Calendar.jsx":"7fb598c1c839","components/dates/DatePicker.jsx":"d4bb6a68266a","components/display/Accordion.jsx":"e491332d01ae","components/display/AspectRatio.jsx":"e28d4bfc9649","components/display/Avatar.jsx":"3d7bad69f963","components/display/Badge.jsx":"858e6fd68547","components/display/Card.jsx":"f40832620fe4","components/display/Carousel.jsx":"15ca556d908e","components/display/Collapsible.jsx":"a792da920c1f","components/display/Divider.jsx":"37f8ae0e579c","components/display/Kbd.jsx":"b87de3d2ff75","components/display/Link.jsx":"bdbf64262599","components/display/ListItem.jsx":"bf2353c0b7ae","components/display/Resizable.jsx":"f79b33157f19","components/display/ScrollArea.jsx":"2dbb55595939","components/display/Tag.jsx":"e006104c4672","components/display/Toolbar.jsx":"001b2b3c10a9","components/display/TreeList.jsx":"be8ade07e212","components/feedback/Alert.jsx":"10e00cbdb124","components/feedback/Banner.jsx":"71ed62b75e72","components/feedback/ConfirmDialog.jsx":"d9e8dd767817","components/feedback/Dialog.jsx":"7a1f020e06b4","components/feedback/Loader.jsx":"7cad4f2d0ca0","components/feedback/Progress.jsx":"3a397235e4a4","components/feedback/Spinner.jsx":"3ddb4c2f4d27","components/feedback/Toast.jsx":"59691d8824ea","components/feedback/Tooltip.jsx":"f38b261b2d2a","components/files/FileDrop.jsx":"b47e1654b967","components/files/FileTile.jsx":"415f614a2782","components/files/FileTypeIcon.jsx":"16841d556c5d","components/finance/PaymentCard.jsx":"5e5e05c27381","components/forms/Button.jsx":"6697c5aba056","components/forms/ButtonGroup.jsx":"86bd9a9f90bc","components/forms/ButtonTile.jsx":"445de4f76c96","components/forms/Checkbox.jsx":"3a8df803f636","components/forms/Combobox.jsx":"3a6382be5d6e","components/forms/DigitEntry.jsx":"84f79f7ddc11","components/forms/IconButton.jsx":"7843bc8a3740","components/forms/Input.jsx":"bb7fe1bfa32a","components/forms/InputGroup.jsx":"6cd5192acb83","components/forms/Label.jsx":"6c6a05af67e7","components/forms/Radio.jsx":"00cd0190e053","components/forms/Select.jsx":"d3c229f7fc84","components/forms/Slider.jsx":"3f085fb13cc2","components/forms/Switch.jsx":"3cf6cdbcb529","components/forms/Textarea.jsx":"6ea9371e514d","components/forms/Toggle.jsx":"429ecf0b3c8d","components/icons/Icon.jsx":"9da614cc0068","components/navigation/Breadcrumbs.jsx":"77a855106afa","components/navigation/Menubar.jsx":"771da79a7c23","components/navigation/PageControl.jsx":"92db45f2660e","components/navigation/Pagination.jsx":"1b1762a4df8f","components/navigation/SegmentedControl.jsx":"c440c273683b","components/navigation/SideNav.jsx":"8fe0982f0c79","components/navigation/Steps.jsx":"f5467b876241","components/navigation/Tabs.jsx":"b20bb7671d55","components/navigation/TopNav.jsx":"eaa2ba965eb7","components/overlay/CommandPalette.jsx":"656e5c78fc08","components/overlay/ContextMenu.jsx":"6e413c06c410","components/overlay/Drawer.jsx":"1be84698d081","components/overlay/HoverCard.jsx":"6740ffb30dd7","components/overlay/Menu.jsx":"b0badcf40db5","components/overlay/Popover.jsx":"589c3b8a85b8","showcases/agent/AgentScreen.jsx":"ce2cffc8063e","showcases/auth/AuthScreens.jsx":"2e53fd046ada","showcases/console/CustomersScreen.jsx":"25bdfff84dd8","showcases/console/ExtraScreens.jsx":"c00bdfd3b0b8","showcases/console/OverviewScreen.jsx":"e13213593239","showcases/console/SettingsScreen.jsx":"696252246b4c","showcases/console/Shell.jsx":"79967d7ab008","showcases/docs/DocsScreen.jsx":"8e38115649b8","showcases/infra/InfraScreen.jsx":"afdff50282b6","showcases/tools/ToolsScreen.jsx":"7ae21680edff","showcases/trader/TraderScreen.jsx":"0fb4b9fe292a","showcases/website/Sections.jsx":"89a6be844400"},"inlinedExternals":[],"unexposedExports":[{"name":"computeDiff","sourcePath":"components/code/Diff.jsx"},{"name":"formatTime","sourcePath":"components/ai/Player.jsx"},{"name":"injectEfCss","sourcePath":"components/forms/Button.jsx"}]} */
+/* @ds-bundle: {"format":4,"namespace":"EfolusiDesignSystem_4ffc3d","components":[{"name":"AgentRun","sourcePath":"components/ai/AgentRun.jsx"},{"name":"ChatMessage","sourcePath":"components/ai/ChatMessage.jsx"},{"name":"Citation","sourcePath":"components/ai/Citation.jsx"},{"name":"SourceList","sourcePath":"components/ai/Citation.jsx"},{"name":"Confirmation","sourcePath":"components/ai/Confirmation.jsx"},{"name":"Conversation","sourcePath":"components/ai/Conversation.jsx"},{"name":"DocumentCard","sourcePath":"components/ai/DocumentCard.jsx"},{"name":"FeedbackBar","sourcePath":"components/ai/FeedbackBar.jsx"},{"name":"GeneratedImage","sourcePath":"components/ai/GeneratedImage.jsx"},{"name":"ModelSelector","sourcePath":"components/ai/ModelSelector.jsx"},{"name":"Player","sourcePath":"components/ai/Player.jsx"},{"name":"PromptComposer","sourcePath":"components/ai/PromptComposer.jsx"},{"name":"PromptSteps","sourcePath":"components/ai/PromptSteps.jsx"},{"name":"Reasoning","sourcePath":"components/ai/Reasoning.jsx"},{"name":"RichComposer","sourcePath":"components/ai/RichComposer.jsx"},{"name":"Sandbox","sourcePath":"components/ai/Sandbox.jsx"},{"name":"SelectionQuote","sourcePath":"components/ai/SelectionQuote.jsx"},{"name":"SourceCard","sourcePath":"components/ai/SourceCard.jsx"},{"name":"Suggestions","sourcePath":"components/ai/Suggestions.jsx"},{"name":"Task","sourcePath":"components/ai/Task.jsx"},{"name":"Todo","sourcePath":"components/ai/Todo.jsx"},{"name":"ToolCall","sourcePath":"components/ai/ToolCall.jsx"},{"name":"Transcript","sourcePath":"components/ai/Transcript.jsx"},{"name":"UsageMeter","sourcePath":"components/ai/UsageMeter.jsx"},{"name":"WebPreview","sourcePath":"components/ai/WebPreview.jsx"},{"name":"CodeBlock","sourcePath":"components/code/CodeBlock.jsx"},{"name":"Console","sourcePath":"components/code/Console.jsx"},{"name":"CopyField","sourcePath":"components/code/CopyField.jsx"},{"name":"Diff","sourcePath":"components/code/Diff.jsx"},{"name":"EnvList","sourcePath":"components/code/EnvList.jsx"},{"name":"Exception","sourcePath":"components/code/Exception.jsx"},{"name":"Terminal","sourcePath":"components/code/Terminal.jsx"},{"name":"BarChart","sourcePath":"components/data/BarChart.jsx"},{"name":"DonutChart","sourcePath":"components/data/DonutChart.jsx"},{"name":"EmptyState","sourcePath":"components/data/EmptyState.jsx"},{"name":"KeyValueList","sourcePath":"components/data/KeyValueList.jsx"},{"name":"LineChart","sourcePath":"components/data/LineChart.jsx"},{"name":"Skeleton","sourcePath":"components/data/Skeleton.jsx"},{"name":"Sparkline","sourcePath":"components/data/Sparkline.jsx"},{"name":"Stat","sourcePath":"components/data/Stat.jsx"},{"name":"StatusDot","sourcePath":"components/data/StatusDot.jsx"},{"name":"Table","sourcePath":"components/data/Table.jsx"},{"name":"Calendar","sourcePath":"components/dates/Calendar.jsx"},{"name":"DatePicker","sourcePath":"components/dates/DatePicker.jsx"},{"name":"Accordion","sourcePath":"components/display/Accordion.jsx"},{"name":"AspectRatio","sourcePath":"components/display/AspectRatio.jsx"},{"name":"Avatar","sourcePath":"components/display/Avatar.jsx"},{"name":"AvatarGroup","sourcePath":"components/display/Avatar.jsx"},{"name":"Badge","sourcePath":"components/display/Badge.jsx"},{"name":"Card","sourcePath":"components/display/Card.jsx"},{"name":"Carousel","sourcePath":"components/display/Carousel.jsx"},{"name":"Collapsible","sourcePath":"components/display/Collapsible.jsx"},{"name":"Divider","sourcePath":"components/display/Divider.jsx"},{"name":"Kbd","sourcePath":"components/display/Kbd.jsx"},{"name":"Link","sourcePath":"components/display/Link.jsx"},{"name":"ListItem","sourcePath":"components/display/ListItem.jsx"},{"name":"Resizable","sourcePath":"components/display/Resizable.jsx"},{"name":"ScrollArea","sourcePath":"components/display/ScrollArea.jsx"},{"name":"Tag","sourcePath":"components/display/Tag.jsx"},{"name":"Toolbar","sourcePath":"components/display/Toolbar.jsx"},{"name":"TreeList","sourcePath":"components/display/TreeList.jsx"},{"name":"Alert","sourcePath":"components/feedback/Alert.jsx"},{"name":"Banner","sourcePath":"components/feedback/Banner.jsx"},{"name":"ConfirmDialog","sourcePath":"components/feedback/ConfirmDialog.jsx"},{"name":"Dialog","sourcePath":"components/feedback/Dialog.jsx"},{"name":"Loader","sourcePath":"components/feedback/Loader.jsx"},{"name":"Progress","sourcePath":"components/feedback/Progress.jsx"},{"name":"Spinner","sourcePath":"components/feedback/Spinner.jsx"},{"name":"Toast","sourcePath":"components/feedback/Toast.jsx"},{"name":"ToastStack","sourcePath":"components/feedback/Toast.jsx"},{"name":"Tooltip","sourcePath":"components/feedback/Tooltip.jsx"},{"name":"FileDrop","sourcePath":"components/files/FileDrop.jsx"},{"name":"FileTile","sourcePath":"components/files/FileTile.jsx"},{"name":"FileTypeIcon","sourcePath":"components/files/FileTypeIcon.jsx"},{"name":"PaymentCard","sourcePath":"components/finance/PaymentCard.jsx"},{"name":"Button","sourcePath":"components/forms/Button.jsx"},{"name":"ButtonGroup","sourcePath":"components/forms/ButtonGroup.jsx"},{"name":"ButtonTile","sourcePath":"components/forms/ButtonTile.jsx"},{"name":"ButtonTileGroup","sourcePath":"components/forms/ButtonTile.jsx"},{"name":"Checkbox","sourcePath":"components/forms/Checkbox.jsx"},{"name":"Combobox","sourcePath":"components/forms/Combobox.jsx"},{"name":"DigitEntry","sourcePath":"components/forms/DigitEntry.jsx"},{"name":"IconButton","sourcePath":"components/forms/IconButton.jsx"},{"name":"Input","sourcePath":"components/forms/Input.jsx"},{"name":"InputGroup","sourcePath":"components/forms/InputGroup.jsx"},{"name":"Label","sourcePath":"components/forms/Label.jsx"},{"name":"Radio","sourcePath":"components/forms/Radio.jsx"},{"name":"Select","sourcePath":"components/forms/Select.jsx"},{"name":"Slider","sourcePath":"components/forms/Slider.jsx"},{"name":"Switch","sourcePath":"components/forms/Switch.jsx"},{"name":"Textarea","sourcePath":"components/forms/Textarea.jsx"},{"name":"Toggle","sourcePath":"components/forms/Toggle.jsx"},{"name":"ToggleGroup","sourcePath":"components/forms/Toggle.jsx"},{"name":"Icon","sourcePath":"components/icons/Icon.jsx"},{"name":"Breadcrumbs","sourcePath":"components/navigation/Breadcrumbs.jsx"},{"name":"Menubar","sourcePath":"components/navigation/Menubar.jsx"},{"name":"PageControl","sourcePath":"components/navigation/PageControl.jsx"},{"name":"Pagination","sourcePath":"components/navigation/Pagination.jsx"},{"name":"SegmentedControl","sourcePath":"components/navigation/SegmentedControl.jsx"},{"name":"SideNav","sourcePath":"components/navigation/SideNav.jsx"},{"name":"Steps","sourcePath":"components/navigation/Steps.jsx"},{"name":"Tabs","sourcePath":"components/navigation/Tabs.jsx"},{"name":"TopNav","sourcePath":"components/navigation/TopNav.jsx"},{"name":"CommandPalette","sourcePath":"components/overlay/CommandPalette.jsx"},{"name":"ContextMenu","sourcePath":"components/overlay/ContextMenu.jsx"},{"name":"Drawer","sourcePath":"components/overlay/Drawer.jsx"},{"name":"HoverCard","sourcePath":"components/overlay/HoverCard.jsx"},{"name":"Menu","sourcePath":"components/overlay/Menu.jsx"},{"name":"Popover","sourcePath":"components/overlay/Popover.jsx"}],"sourceHashes":{"components/ai/AgentRun.jsx":"8af70ff4bbbd","components/ai/ChatMessage.jsx":"7ddddb0dc44c","components/ai/Citation.jsx":"c695f95f1bd7","components/ai/Confirmation.jsx":"020a708b4aee","components/ai/Conversation.jsx":"3d3ab21999e4","components/ai/DocumentCard.jsx":"f0df7dd84465","components/ai/FeedbackBar.jsx":"d27a365fa3c3","components/ai/GeneratedImage.jsx":"788e2dcc84c3","components/ai/ModelSelector.jsx":"011ad042d74d","components/ai/Player.jsx":"7a42efa14ff9","components/ai/PromptComposer.jsx":"b10dc1468cc9","components/ai/PromptSteps.jsx":"31dc4ed470e3","components/ai/Reasoning.jsx":"2ec4d107d41e","components/ai/RichComposer.jsx":"42e31bc490a9","components/ai/Sandbox.jsx":"08d2c1119288","components/ai/SelectionQuote.jsx":"c78a30cb3163","components/ai/SourceCard.jsx":"b718727df06e","components/ai/Suggestions.jsx":"cd6834ee7634","components/ai/Task.jsx":"b7866e73b50a","components/ai/Todo.jsx":"0b3242b80a77","components/ai/ToolCall.jsx":"c46664bb5c6d","components/ai/Transcript.jsx":"d722a8789088","components/ai/UsageMeter.jsx":"1edf4aa92d0f","components/ai/WebPreview.jsx":"9a833c88610d","components/code/CodeBlock.jsx":"bba6e5b35b66","components/code/Console.jsx":"bc124b518d23","components/code/CopyField.jsx":"2aff10651a79","components/code/Diff.jsx":"52c866c983fe","components/code/EnvList.jsx":"b6568c726ee2","components/code/Exception.jsx":"d1cb05626c05","components/code/Terminal.jsx":"9bcd97b0cf5e","components/data/BarChart.jsx":"3572ea6b70e5","components/data/DonutChart.jsx":"4516ac36a882","components/data/EmptyState.jsx":"80e66d58cfab","components/data/KeyValueList.jsx":"e6a1a52adac1","components/data/LineChart.jsx":"4ee2e7cfdab7","components/data/Skeleton.jsx":"67ed9ab66da9","components/data/Sparkline.jsx":"3697c9d45f2a","components/data/Stat.jsx":"71ef3dc7f426","components/data/StatusDot.jsx":"4d3fcbd0bb8f","components/data/Table.jsx":"439f81fbd68e","components/dates/Calendar.jsx":"7fb598c1c839","components/dates/DatePicker.jsx":"d4bb6a68266a","components/display/Accordion.jsx":"e491332d01ae","components/display/AspectRatio.jsx":"e28d4bfc9649","components/display/Avatar.jsx":"3d7bad69f963","components/display/Badge.jsx":"858e6fd68547","components/display/Card.jsx":"f40832620fe4","components/display/Carousel.jsx":"15ca556d908e","components/display/Collapsible.jsx":"a792da920c1f","components/display/Divider.jsx":"37f8ae0e579c","components/display/Kbd.jsx":"b87de3d2ff75","components/display/Link.jsx":"bdbf64262599","components/display/ListItem.jsx":"bf2353c0b7ae","components/display/Resizable.jsx":"f79b33157f19","components/display/ScrollArea.jsx":"2dbb55595939","components/display/Tag.jsx":"e006104c4672","components/display/Toolbar.jsx":"001b2b3c10a9","components/display/TreeList.jsx":"be8ade07e212","components/feedback/Alert.jsx":"10e00cbdb124","components/feedback/Banner.jsx":"71ed62b75e72","components/feedback/ConfirmDialog.jsx":"d9e8dd767817","components/feedback/Dialog.jsx":"7a1f020e06b4","components/feedback/Loader.jsx":"7cad4f2d0ca0","components/feedback/Progress.jsx":"3a397235e4a4","components/feedback/Spinner.jsx":"3ddb4c2f4d27","components/feedback/Toast.jsx":"59691d8824ea","components/feedback/Tooltip.jsx":"f38b261b2d2a","components/files/FileDrop.jsx":"b47e1654b967","components/files/FileTile.jsx":"415f614a2782","components/files/FileTypeIcon.jsx":"16841d556c5d","components/finance/PaymentCard.jsx":"5e5e05c27381","components/forms/Button.jsx":"6697c5aba056","components/forms/ButtonGroup.jsx":"86bd9a9f90bc","components/forms/ButtonTile.jsx":"445de4f76c96","components/forms/Checkbox.jsx":"3a8df803f636","components/forms/Combobox.jsx":"3a6382be5d6e","components/forms/DigitEntry.jsx":"84f79f7ddc11","components/forms/IconButton.jsx":"7843bc8a3740","components/forms/Input.jsx":"bb7fe1bfa32a","components/forms/InputGroup.jsx":"6cd5192acb83","components/forms/Label.jsx":"6c6a05af67e7","components/forms/Radio.jsx":"00cd0190e053","components/forms/Select.jsx":"d3c229f7fc84","components/forms/Slider.jsx":"3f085fb13cc2","components/forms/Switch.jsx":"3cf6cdbcb529","components/forms/Textarea.jsx":"6ea9371e514d","components/forms/Toggle.jsx":"429ecf0b3c8d","components/icons/Icon.jsx":"9da614cc0068","components/navigation/Breadcrumbs.jsx":"77a855106afa","components/navigation/Menubar.jsx":"771da79a7c23","components/navigation/PageControl.jsx":"92db45f2660e","components/navigation/Pagination.jsx":"1b1762a4df8f","components/navigation/SegmentedControl.jsx":"c440c273683b","components/navigation/SideNav.jsx":"8fe0982f0c79","components/navigation/Steps.jsx":"f5467b876241","components/navigation/Tabs.jsx":"b20bb7671d55","components/navigation/TopNav.jsx":"eaa2ba965eb7","components/overlay/CommandPalette.jsx":"656e5c78fc08","components/overlay/ContextMenu.jsx":"6e413c06c410","components/overlay/Drawer.jsx":"1be84698d081","components/overlay/HoverCard.jsx":"6740ffb30dd7","components/overlay/Menu.jsx":"b0badcf40db5","components/overlay/Popover.jsx":"589c3b8a85b8","showcases/agent/AgentScreen.jsx":"e727791428f6","showcases/auth/AuthScreens.jsx":"b3583b149df5","showcases/console/CustomersScreen.jsx":"a8a080a80d9e","showcases/console/ExtraScreens.jsx":"1e7a048ab690","showcases/console/OverviewScreen.jsx":"34b01f22bb52","showcases/console/SettingsScreen.jsx":"8549e4ca1f97","showcases/console/Shell.jsx":"b7da6de80c2b","showcases/docs/DocsScreen.jsx":"faa44c30040d","showcases/infra/InfraScreen.jsx":"dd8e20d2c8eb","showcases/tools/ToolsScreen.jsx":"8be637f39e1b","showcases/trader/TraderScreen.jsx":"473d6c38cb07","showcases/website/Sections.jsx":"3f14d6a12c71"},"inlinedExternals":[],"unexposedExports":[{"name":"computeDiff","sourcePath":"components/code/Diff.jsx"},{"name":"formatTime","sourcePath":"components/ai/Player.jsx"},{"name":"injectEfCss","sourcePath":"components/forms/Button.jsx"}]} */
 
 (() => {
 
@@ -8384,7 +8384,7 @@ function AgentHeader({
       letterSpacing: '-0.02em',
       fontSize: 17
     }
-  }, "Agent")), /*#__PURE__*/React.createElement("span", {
+  }, "AI agents")), /*#__PURE__*/React.createElement("span", {
     style: {
       color: 'var(--sand-300)'
     }
@@ -8541,11 +8541,11 @@ const CMD_GROUPS = [{
   group: 'Go to',
   items: [{
     id: 'infra',
-    label: 'Infra',
+    label: 'Infrastructure',
     icon: 'server'
   }, {
     id: 'trader',
-    label: 'Trader',
+    label: 'Trading',
     icon: 'chart-candlestick'
   }, {
     id: 'settings',
@@ -8772,14 +8772,14 @@ function BrandPanel() {
       fontSize: 34,
       lineHeight: 1.15
     }
-  }, "One account. Every Efolusi product."), /*#__PURE__*/React.createElement("p", {
+  }, "One account for your whole workspace."), /*#__PURE__*/React.createElement("p", {
     style: {
       marginTop: 14,
       fontSize: 15,
       lineHeight: 1.6,
       color: 'color-mix(in srgb, var(--cream-50) 75%, transparent)'
     }
-  }, "The agent, your infra, content, tools, trading, and social finance \u2014 one workspace, one bill, one login."), /*#__PURE__*/React.createElement("div", {
+  }, "Every surface your team runs, one workspace, one bill, one login. Pick up right where you left off."), /*#__PURE__*/React.createElement("div", {
     style: {
       display: 'flex',
       gap: 8,
@@ -9207,7 +9207,7 @@ const {
   Dialog,
   Sparkline
 } = window.EfolusiDesignSystem_4ffc3d;
-const SEED = [['Acme Robotics', 'ada@acmerobotics.com', 'Growth', 'Active', '$1,240', 'Agent'], ['Bloom Health', 'ops@bloomhealth.io', 'Scale', 'Active', '$3,860', 'Infra'], ['Cardinal Freight', 'it@cardinalfreight.com', 'Growth', 'Trial', '$0', 'Trader'], ['Delta Studios', 'hello@deltastudios.tv', 'Starter', 'Active', '$96', 'Content'], ['Everline', 'admin@everline.app', 'Scale', 'Past due', '$2,410', 'Social Finance'], ['Foundry Labs', 'team@foundrylabs.dev', 'Growth', 'Active', '$1,870', 'Tools'], ['Golden Gate Coffee', 'sam@ggcoffee.com', 'Starter', 'Churned', '$0', 'Agent']].map(([name, email, plan, status, mrr, product], i) => ({
+const SEED = [['Acme Robotics', 'ada@acmerobotics.com', 'Growth', 'Active', '$1,240', 'AI agents'], ['Bloom Health', 'ops@bloomhealth.io', 'Scale', 'Active', '$3,860', 'Infrastructure'], ['Cardinal Freight', 'it@cardinalfreight.com', 'Growth', 'Trial', '$0', 'Trading'], ['Delta Studios', 'hello@deltastudios.tv', 'Starter', 'Active', '$96', 'Automation'], ['Everline', 'admin@everline.app', 'Scale', 'Past due', '$2,410', 'Finance'], ['Foundry Labs', 'team@foundrylabs.dev', 'Growth', 'Active', '$1,870', 'File tools'], ['Golden Gate Coffee', 'sam@ggcoffee.com', 'Starter', 'Churned', '$0', 'AI agents']].map(([name, email, plan, status, mrr, product], i) => ({
   id: i + 1,
   name,
   email,
@@ -9258,7 +9258,7 @@ function CustomersScreen({
       plan: form.plan,
       status: 'Trial',
       mrr: '$0',
-      product: 'Agent'
+      product: 'AI agents'
     }, ...rs]);
     setAdding(false);
     setForm({
@@ -9339,7 +9339,7 @@ function CustomersScreen({
     variant: "secondary",
     iconLeft: "mail",
     onClick: () => {
-      notify('Email drafted', checked.length + ' recipients added in Content.');
+      notify('Email drafted', checked.length + ' recipients added to the draft.');
       setChecked([]);
     }
   }, "Email ", checked.length, " selected"), /*#__PURE__*/React.createElement(Button, {
@@ -9627,7 +9627,7 @@ const {
   Menu,
   KeyValueList
 } = window.EfolusiDesignSystem_4ffc3d;
-const PROJECTS = [['Q3 launch plan', 'Agent', '2 hours ago', ['Ada Obi', 'Femi Alade'], 'busy'], ['Billing migration', 'Infra', 'Yesterday', ['June Park', 'Ada Obi', 'Sol Reyes'], 'ok'], ['Onboarding videos', 'Content', '3 days ago', ['Sol Reyes'], 'ok'], ['EUR momentum bot', 'Trader', 'Last week', ['Femi Alade', 'June Park'], 'ok']];
+const PROJECTS = [['Q3 launch plan', 'AI agents', '2 hours ago', ['Ada Obi', 'Femi Alade'], 'busy'], ['Billing migration', 'Infrastructure', 'Yesterday', ['June Park', 'Ada Obi', 'Sol Reyes'], 'ok'], ['Onboarding videos', 'Automation', '3 days ago', ['Sol Reyes'], 'ok'], ['EUR momentum bot', 'Trading', 'Last week', ['Femi Alade', 'June Park'], 'ok']];
 function ProjectsScreen({
   onNewProject,
   notify
@@ -9647,7 +9647,7 @@ function ProjectsScreen({
       fontSize: 13,
       color: 'var(--text-muted)'
     }
-  }, PROJECTS.length, " projects \xB7 all products"), /*#__PURE__*/React.createElement(Button, {
+  }, PROJECTS.length, " projects \xB7 all surfaces"), /*#__PURE__*/React.createElement(Button, {
     style: {
       marginLeft: 'auto'
     },
@@ -9706,7 +9706,7 @@ function ProjectsScreen({
   }, product), state === 'busy' && /*#__PURE__*/React.createElement(Badge, {
     tone: "success",
     dot: true
-  }, "Agent running")), /*#__PURE__*/React.createElement("div", {
+  }, "Running")), /*#__PURE__*/React.createElement("div", {
     style: {
       display: 'flex',
       alignItems: 'center',
@@ -9740,28 +9740,28 @@ function ProjectsScreen({
 }
 const USAGE_BY_PRODUCT = [{
   id: 'agent',
-  product: 'Agent',
+  product: 'AI agents',
   unit: 'tasks',
   used: '1,204',
   quota: '5,000',
   pct: 24
 }, {
   id: 'infra',
-  product: 'Infra',
+  product: 'Infrastructure',
   unit: 'tunnels',
   used: '14',
   quota: '25',
   pct: 56
 }, {
   id: 'content',
-  product: 'Content',
+  product: 'Automation',
   unit: 'renders',
   used: '8,912',
   quota: '10,000',
   pct: 89
 }, {
   id: 'tools',
-  product: 'Tools',
+  product: 'File tools',
   unit: 'conversions',
   used: '412',
   quota: '2,000',
@@ -9818,7 +9818,7 @@ function UsageScreen() {
     formatValue: v => (v / 10).toFixed(1) + 'M requests',
     data: [82, 95, 88, 101, 98, 112, 106, 120, 114, 128, 132, 124, 136, 130, 144, 138, 152, 148, 158, 151, 164, 170, 162, 178, 172, 184, 190, 181, 196, 214]
   })), /*#__PURE__*/React.createElement(Card, {
-    title: "By product",
+    title: "By surface",
     padding: 20
   }, /*#__PURE__*/React.createElement("div", {
     style: {
@@ -10038,7 +10038,7 @@ function UsageChart({
   const max = Math.max(...BARS);
   return /*#__PURE__*/React.createElement(Card, {
     title: "API requests",
-    subtitle: "Last 28 days \xB7 all products",
+    subtitle: "Last 28 days \xB7 all surfaces",
     actions: /*#__PURE__*/React.createElement(Button, {
       size: "sm",
       variant: "secondary",
@@ -10084,7 +10084,7 @@ function UsageChart({
     }
   }, /*#__PURE__*/React.createElement("span", null, "Jun 18"), /*#__PURE__*/React.createElement("span", null, "Jul 2"), /*#__PURE__*/React.createElement("span", null, "Jul 16")));
 }
-const EVENTS = [['Femi Alade', 'rotated the production API key', '2m ago', 'key-round'], ['June Park', 'invited sam@acme.co as Admin', '18m ago', 'mail'], ['Trader', 'closed BTC-EUR position at +2.4%', '1h ago', 'chart-candlestick'], ['Sol Reyes', 'created project Q3 launch plan', '3h ago', 'folder'], ['Infra', 'pg-prod-eu failover completed', '5h ago', 'server']];
+const EVENTS = [['Femi Alade', 'rotated the production API key', '2m ago', 'key-round'], ['June Park', 'invited sam@acme.co as Admin', '18m ago', 'mail'], ['Trading', 'closed BTC-EUR position at +2.4%', '1h ago', 'chart-candlestick'], ['Sol Reyes', 'created project Q3 launch plan', '3h ago', 'folder'], ['Infrastructure', 'pg-prod-eu failover completed', '5h ago', 'server']];
 function Activity() {
   return /*#__PURE__*/React.createElement(Card, {
     title: "Activity",
@@ -10175,7 +10175,7 @@ function DashboardScreen({
       marginTop: 4,
       fontSize: 14
     }
-  }, "Acme Workspace is trending up across every product.")), /*#__PURE__*/React.createElement("div", {
+  }, "Acme Workspace is trending up across every surface.")), /*#__PURE__*/React.createElement("div", {
     style: {
       display: 'flex',
       gap: 8
@@ -10297,11 +10297,11 @@ function GeneralTab({
     defaultValue: "Robotics tooling for the Acme fleet.",
     rows: 3
   })), /*#__PURE__*/React.createElement(SectionRow, {
-    title: "Default product",
+    title: "Default surface",
     desc: "Where new members land after sign-in."
   }, /*#__PURE__*/React.createElement(Select, {
-    options: ['Agent', 'Infra', 'Content', 'Tools', 'Trader', 'Social Finance'],
-    defaultValue: "Agent"
+    options: ['AI agents', 'Infrastructure', 'Automation', 'File tools', 'Trading', 'Finance'],
+    defaultValue: "AI agents"
   })), /*#__PURE__*/React.createElement(SectionRow, {
     title: "Notifications",
     desc: "Workspace-wide defaults; members can override."
@@ -10648,7 +10648,7 @@ function Sidebar({
   onNav
 }) {
   const items = [['overview', 'layout-dashboard', 'Overview'], ['customers', 'users', 'Customers', 128], ['projects', 'folder', 'Projects'], ['usage', 'activity', 'Usage'], ['billing', 'credit-card', 'Billing'], ['settings', 'settings', 'Settings']];
-  const products = [['bot', 'Agent', '../agent/index.html'], ['server', 'Infra', '../infra/index.html'], ['sparkles', 'Content', '../docs/index.html'], ['package', 'Tools', '../tools/index.html'], ['chart-candlestick', 'Trader', '../trader/index.html'], ['wallet', 'Social Finance', '../trader/index.html']];
+  const products = [['bot', 'AI agents', '../agent/index.html'], ['server', 'Infrastructure', '../infra/index.html'], ['sparkles', 'Automation', '../docs/index.html'], ['package', 'File tools', '../tools/index.html'], ['chart-candlestick', 'Trading', '../trader/index.html'], ['wallet', 'Finance', '../trader/index.html']];
   return /*#__PURE__*/React.createElement("aside", {
     style: {
       width: 240,
@@ -10722,7 +10722,7 @@ function Sidebar({
       color: 'var(--text-muted)',
       padding: '0 10px 6px'
     }
-  }, "Products"), products.map(([icon, label, href]) => /*#__PURE__*/React.createElement(SideItem, {
+  }, "Platform"), products.map(([icon, label, href]) => /*#__PURE__*/React.createElement(SideItem, {
     key: label,
     icon: icon,
     label: label,
@@ -10786,7 +10786,7 @@ function Sidebar({
     onSelect: () => {}
   }))));
 }
-const NOTIFS = [['circle-check', 'Batch retry finished', 'Agent · 12/12 webhooks delivered', '2m'], ['triangle-alert', 'worker-04 degraded', 'Infra · P95 latency up 4×', '1h'], ['banknote', 'Invoice #10422 paid', 'Billing · €1,240.00', '3h']];
+const NOTIFS = [['circle-check', 'Batch retry finished', 'AI agents · 12/12 webhooks delivered', '2m'], ['triangle-alert', 'worker-04 degraded', 'Infrastructure · P95 latency up 4×', '1h'], ['banknote', 'Invoice #10422 paid', 'Billing · €1,240.00', '3h']];
 function Topbar({
   title,
   onSearch,
@@ -10859,7 +10859,7 @@ function Topbar({
       color: 'var(--text-secondary)',
       lineHeight: 1.55
     }
-  }, "Trader now mirrors other traders with a risk cap, and the Agent can use your Infra connections directly."), /*#__PURE__*/React.createElement(Divider, {
+  }, "Trading now mirrors other traders with a risk cap, and AI agents can use your infrastructure connections directly."), /*#__PURE__*/React.createElement(Divider, {
     style: {
       margin: '10px 0'
     }
@@ -11101,7 +11101,7 @@ function DocsHeader({
     }
   }, "Get API key")));
 }
-const NAV = [['Getting started', [['quickstart', 'Quickstart'], ['auth', 'Authentication'], ['errors', 'Errors']]], ['Agent', [['tasks', 'Running tasks'], ['tools', 'Tool use']]], ['Infra', [['connections', 'Connections'], ['dns', 'Domains & DNS']]], ['Content', [['nodes', 'Content nodes'], ['media', 'Media pipelines']]], ['Tools', [['convert', 'Converting files']]], ['Trader', [['strategies', 'Strategies'], ['risk', 'Risk limits']]]];
+const NAV = [['Getting started', [['quickstart', 'Quickstart'], ['auth', 'Authentication'], ['errors', 'Errors']]], ['AI agents', [['tasks', 'Running tasks'], ['tools', 'Tool use']]], ['Infrastructure', [['connections', 'Connections'], ['dns', 'Domains & DNS']]], ['Automation', [['nodes', 'Automation nodes'], ['media', 'Media pipelines']]], ['File tools', [['convert', 'Converting files']]], ['Trading', [['strategies', 'Strategies'], ['risk', 'Risk limits']]]];
 const ORDER = NAV.flatMap(([g, items]) => items.map(([id, label]) => ({
   id,
   label,
@@ -11192,65 +11192,65 @@ const CONTENT = {
   },
   tasks: {
     lede: 'A task is a goal you hand the agent. It plans steps, runs tools, and reports back for review.',
-    tags: [['clock', '4 min'], ['bot', 'Agent']],
+    tags: [['clock', '4 min'], ['bot', 'AI agents']],
     sections: [['Starting a task', 'Describe the outcome, not the steps. The agent plans, shows its step rail, and pauses at anything destructive unless you pre-approve it.'], ['Reviewing work', 'Every step is logged with its tool calls and output. Pause, redirect, or take over at any point — the transcript stays auditable.']],
     code: ['javascript', "const task = await efolusi.agent.tasks.run(\n  'retry failed webhooks from yesterday',\n  { approve: ['db.read'], pauseOn: ['db.write'] }\n);"],
-    tip: ['Scope access', 'Tasks inherit your Infra connections — grant the narrowest scopes that work.']
+    tip: ['Scope access', 'Tasks inherit your infrastructure connections — grant the narrowest scopes that work.']
   },
   tools: {
-    lede: 'Tools are what the agent can touch: your Infra connections, file utilities, content nodes, and HTTP.',
-    tags: [['clock', '3 min'], ['bot', 'Agent']],
-    sections: [['Built-in tools', 'db.read/db.write against connected databases, ssh.exec on connected hosts, files.convert, http.fetch, and content.render. Each call is one line in the transcript.'], ['Custom tools', 'Register any HTTPS endpoint as a tool with a JSON schema — the agent learns it immediately.']],
+    lede: 'Tools are what the agent can touch: your infrastructure connections, file utilities, automation nodes, and HTTP.',
+    tags: [['clock', '3 min'], ['bot', 'AI agents']],
+    sections: [['Built-in tools', 'db.read/db.write against connected databases, ssh.exec on connected hosts, files.convert, http.fetch, and automation.render. Each call is one line in the transcript.'], ['Custom tools', 'Register any HTTPS endpoint as a tool with a JSON schema — the agent learns it immediately.']],
     code: ['javascript', "efolusi.agent.tools.register({\n  name: 'refund',\n  url: 'https://api.acme.co/refund',\n  schema: { orderId: 'string', amountCents: 'number' },\n});"],
     tip: ['Danger levels', "Mark tools destructive: true and the agent always asks before calling them."]
   },
   connections: {
     lede: 'Connect clouds, databases, caches, and SSH hosts through encrypted tunnels — nothing is stored.',
-    tags: [['clock', '4 min'], ['server', 'Infra']],
-    sections: [['Creating a tunnel', 'Console → Infra → Connect resource, or the CLI below. Efolusi keeps a keepalive tunnel and health-checks it every 30 seconds.'], ['Health & status', 'Resources report ok / degraded / down. Degraded fires a notification and shows amber in the console; the agent avoids degraded resources unless told otherwise.']],
+    tags: [['clock', '4 min'], ['server', 'Infrastructure']],
+    sections: [['Creating a tunnel', 'Console → Infrastructure → Connect resource, or the CLI below. Efolusi keeps a keepalive tunnel and health-checks it every 30 seconds.'], ['Health & status', 'Resources report ok / degraded / down. Degraded fires a notification and shows amber in the console; the agent avoids degraded resources unless told otherwise.']],
     code: ['bash', 'efolusi infra connect postgres \\\n  --host db.internal.acme.co:5432 \\\n  --region eu-west-1'],
     tip: ['Least privilege', 'Connect with a read-only role first; add write roles per-project when needed.']
   },
   dns: {
     lede: 'Point domains at Efolusi, and DNS records, SSL certificates, and renewals manage themselves.',
-    tags: [['clock', '3 min'], ['globe', 'Infra']],
+    tags: [['clock', '3 min'], ['globe', 'Infrastructure']],
     sections: [['Adding a domain', 'Add the domain, copy the two records below into your registrar, and verification runs automatically — usually under a minute.'], ['Certificates', 'Certs issue and renew automatically for verified domains. Manual certs get an expiry warning at 30 days.']],
     code: ['text', 'A     efolusi.com        76.76.21.21\nCNAME app.efolusi.com    edge.efolusi.com'],
     tip: ['Propagation', 'Registrars cache aggressively — a stuck verification usually clears with a lower TTL.']
   },
   nodes: {
-    lede: 'A content node is a small AI worker with one job: turn an input into content — text, image, audio, or video.',
-    tags: [['clock', '4 min'], ['sparkles', 'Content']],
+    lede: 'An automation node is a small AI worker with one job: turn an input into content across text, image, audio, or video.',
+    tags: [['clock', '4 min'], ['sparkles', 'Automation']],
     sections: [['Composing nodes', 'Chain nodes into pipelines: outline → draft → voiceover → subtitle. Each node is testable alone and versioned with its prompt.'], ['Scaling', 'Pipelines fan out: hand one a CSV of 500 rows and it renders 500 variants with per-row context.']],
-    code: ['javascript', "const node = efolusi.content.node('product-blurb');\nconst out = await node.render({ product: 'Trader', tone: 'plain' });"],
+    code: ['javascript', "const node = efolusi.automation.node('product-blurb');\nconst out = await node.render({ topic: 'launch', tone: 'plain' });"],
     tip: ['Brand voice', 'Give nodes your voice guide once — every render inherits it.']
   },
   media: {
     lede: 'Media pipelines handle the heavy lifting after render: transcode, subtitle, resize, and publish.',
-    tags: [['clock', '3 min'], ['video', 'Content']],
-    sections: [['Targets', 'Declare output targets (webm 1080p, mp3, png @2x) and the pipeline produces all of them from one source render.'], ['Delivery', 'Outputs land in your storage or CDN — connected through Infra, so no extra credentials.']],
-    code: ['javascript', "await efolusi.content.pipeline('launch-video')\n  .targets(['webm/1080p', 'mp3', 'srt'])\n  .run({ source: render.id });"],
-    tip: ['Costs', 'Transcoding bills by output minute — check Usage → Content before a big batch.']
+    tags: [['clock', '3 min'], ['video', 'Automation']],
+    sections: [['Targets', 'Declare output targets (webm 1080p, mp3, png @2x) and the pipeline produces all of them from one source render.'], ['Delivery', 'Outputs land in your storage or CDN, connected through your infrastructure, so no extra credentials.']],
+    code: ['javascript', "await efolusi.automation.pipeline('launch-video')\n  .targets(['webm/1080p', 'mp3', 'srt'])\n  .run({ source: render.id });"],
+    tip: ['Costs', 'Transcoding bills by output minute — check Usage → Automation before a big batch.']
   },
   convert: {
     lede: 'One endpoint converts anything: documents, images, audio, video, archives — 240 formats in, 80 out.',
-    tags: [['clock', '2 min'], ['package', 'Tools']],
+    tags: [['clock', '2 min'], ['package', 'File tools']],
     sections: [['Converting', 'Upload or point at a URL, name the target format, get a signed download link. Files are deleted after 24 hours.'], ['Batches', 'Send up to 500 files per batch; a webhook fires when the batch settles.']],
-    code: ['bash', 'efolusi tools convert q3-deck.pdf --to docx\n# → https://files.efolusi.com/d/8f2a…  (expires in 24h)'],
+    code: ['bash', 'efolusi files convert q3-deck.pdf --to docx\n# → https://files.efolusi.com/d/8f2a…  (expires in 24h)'],
     tip: ['Quality flag', '--quality 1-100 trades size for fidelity on lossy targets.']
   },
   strategies: {
     lede: 'A strategy is a rulebook the trading robot follows — entries, exits, sizing — inside your risk caps.',
-    tags: [['clock', '4 min'], ['chart-candlestick', 'Trader']],
+    tags: [['clock', '4 min'], ['chart-candlestick', 'Trading']],
     sections: [['Anatomy', 'Pick a template (momentum, mean-reversion, DCA), scope it to pairs and hours, and set sizing. Every decision the robot makes is logged with its reason.'], ['Backtests', 'Strategies backtest against 5 years of data before going live — results show P&L, drawdown, and win rate with fees included.']],
-    code: ['javascript', "await efolusi.trader.strategies.create({\n  template: 'momentum',\n  pairs: ['BTC-EUR', 'ETH-EUR'],\n  riskPerTrade: 0.04,\n});"],
+    code: ['javascript', "await efolusi.trading.strategies.create({\n  template: 'momentum',\n  pairs: ['BTC-EUR', 'ETH-EUR'],\n  riskPerTrade: 0.04,\n});"],
     tip: ['Paper first', 'New strategies default to paper trading for 7 days. Keep it that way until the log makes sense to you.']
   },
   risk: {
     lede: 'Risk limits are hard stops the robot cannot cross — per trade, per day, and per month.',
-    tags: [['clock', '3 min'], ['shield-check', 'Trader']],
+    tags: [['clock', '3 min'], ['shield-check', 'Trading']],
     sections: [['The three caps', 'Risk per trade (default 4%), daily loss cap (default 5%), monthly drawdown cap (default 10%). Hitting any cap pauses the robot and notifies you.'], ['Overrides', 'Caps only move manually, from the console, with a confirmation — never from the API and never by the robot.']],
-    code: ['javascript', "await efolusi.trader.risk.set({\n  perTrade: 0.04,\n  dailyLoss: 0.05,\n  monthlyDrawdown: 0.10,\n});"],
+    code: ['javascript', "await efolusi.trading.risk.set({\n  perTrade: 0.04,\n  dailyLoss: 0.05,\n  monthlyDrawdown: 0.10,\n});"],
     tip: ['Social mirrors', 'Mirrored traders run inside your caps too — their risk never overrides yours.']
   }
 };
@@ -11407,7 +11407,7 @@ function QuickstartArticle({
       color: 'var(--text-secondary)',
       marginTop: 12
     }
-  }, "Send your first API request in under five minutes. Everything in Efolusi \u2014 agent tasks, infra, content, trades \u2014 starts with the same key."), /*#__PURE__*/React.createElement("div", {
+  }, "Send your first API request in under five minutes. Everything in Efolusi \u2014 agent tasks, infrastructure, automation, trades \u2014 starts with the same key."), /*#__PURE__*/React.createElement("div", {
     style: {
       display: 'flex',
       gap: 8,
@@ -11465,7 +11465,7 @@ const task = await efolusi.agent.tasks.run('retry failed webhooks');`), /*#__PUR
       fontWeight: 680,
       marginTop: 40
     }
-  }, "3. Make it do something"), /*#__PURE__*/React.createElement(P, null, "Run your first agent task, connect your first cloud, or spin up a content node. Each product has its own five-minute guide from here."), /*#__PURE__*/React.createElement(Helpful, {
+  }, "3. Make it do something"), /*#__PURE__*/React.createElement(P, null, "Run your first agent task, connect your first cloud, or spin up an automation node. Each capability has its own five-minute guide from here."), /*#__PURE__*/React.createElement(Helpful, {
     onNext: () => onPage('auth'),
     nextLabel: "Authentication"
   }));
@@ -11764,7 +11764,7 @@ function InfraScreen() {
       fontSize: 24,
       fontWeight: 680
     }
-  }, "Infra"), /*#__PURE__*/React.createElement(StatusDot, {
+  }, "Infrastructure"), /*#__PURE__*/React.createElement(StatusDot, {
     state: "warn",
     pulse: true,
     label: "1 incident"
@@ -12236,7 +12236,7 @@ function ToolsScreen() {
       fontSize: 26,
       fontWeight: 680
     }
-  }, "Tools")), /*#__PURE__*/React.createElement("p", {
+  }, "File tools")), /*#__PURE__*/React.createElement("p", {
     style: {
       textAlign: 'center',
       color: 'var(--text-secondary)',
@@ -12471,7 +12471,7 @@ function TraderScreen() {
       fontSize: 24,
       fontWeight: 680
     }
-  }, "Trader"), /*#__PURE__*/React.createElement(StatusDot, {
+  }, "Trading"), /*#__PURE__*/React.createElement(StatusDot, {
     state: auto ? 'busy' : 'off',
     pulse: auto,
     label: auto ? 'Robot active' : 'Robot paused'
@@ -12940,7 +12940,7 @@ function Hero() {
       textTransform: 'uppercase',
       color: 'var(--text-muted)'
     }
-  }, "Six products, one workspace"), /*#__PURE__*/React.createElement("h1", {
+  }, "One workspace, every surface"), /*#__PURE__*/React.createElement("h1", {
     style: {
       fontSize: 62,
       fontWeight: 700,
@@ -12955,7 +12955,7 @@ function Hero() {
       marginTop: 20,
       maxWidth: 460
     }
-  }, "Six products on one account \u2014 an autonomous agent, unified infrastructure, content AI, file tools, a trading robot, and social finance."), /*#__PURE__*/React.createElement("div", {
+  }, "One account for every surface your team builds: AI agents, infrastructure, automation, file tools, and trading, in a single workspace."), /*#__PURE__*/React.createElement("div", {
     style: {
       display: 'flex',
       gap: 10,
@@ -13004,7 +13004,7 @@ function Hero() {
     }
   }, /*#__PURE__*/React.createElement(MiniConsole, null))));
 }
-const PRODUCTS = [['bot', 'Agent', 'An autonomous operator that plans, runs tools, and ships work you review — not prompts you babysit.', '../agent/index.html'], ['server', 'Infra', 'Every cloud, SSH box, database, cache, cert, domain, and DNS record in one control plane.', '../infra/index.html'], ['sparkles', 'Content', 'Node-based AI that scales content across text, image, audio, and video.', '../docs/index.html'], ['package', 'Tools', 'Convert, encode, decode, and scan any file — one toolbox instead of forty tabs.', '../tools/index.html'], ['chart-candlestick', 'Trader', 'A trading robot with guardrails: strategies you set, risk you cap, logs you can audit.', '../trader/index.html'], ['wallet', 'Social Finance', 'Shared portfolios and social signals with real accounting underneath.', '../trader/index.html']];
+const PRODUCTS = [['bot', 'AI agents', 'An autonomous operator that plans, runs tools, and ships work you review, not prompts you babysit.', '../agent/index.html'], ['server', 'Infrastructure', 'Every cloud, SSH box, database, cache, cert, domain, and DNS record in one control plane.', '../infra/index.html'], ['sparkles', 'Automation', 'Node-based workflows that scale content across text, image, audio, and video.', '../docs/index.html'], ['package', 'File tools', 'Convert, encode, decode, and scan any file: one toolbox instead of forty tabs.', '../tools/index.html'], ['chart-candlestick', 'Trading', 'A trading desk with guardrails: strategies you set, risk you cap, logs you can audit.', '../trader/index.html'], ['wallet', 'Finance', 'Shared portfolios and social signals with real accounting underneath.', '../trader/index.html']];
 function Products() {
   return /*#__PURE__*/React.createElement("section", {
     id: "products",
@@ -13023,14 +13023,14 @@ function Products() {
       textTransform: 'uppercase',
       color: 'var(--text-muted)'
     }
-  }, "Products"), /*#__PURE__*/React.createElement("h2", {
+  }, "The platform"), /*#__PURE__*/React.createElement("h2", {
     style: {
       fontSize: 40,
       fontWeight: 680,
       marginTop: 10,
       maxWidth: 560
     }
-  }, "Six sharp products, one account"), /*#__PURE__*/React.createElement("div", {
+  }, "Every surface, one account"), /*#__PURE__*/React.createElement("div", {
     style: {
       display: 'grid',
       gridTemplateColumns: '1fr 1fr 1fr',
@@ -13126,7 +13126,7 @@ function BrandBand() {
     }
   }, "June Park"), " \xB7 CTO, Bloom Health"))));
 }
-const TIERS = [['Starter', '$0', 'For side projects and tinkering', ['1 product', '2 seats', '10k requests/mo', 'Community support'], 'secondary'], ['Growth', '$12', 'Per seat — most teams start here', ['All 6 products', 'Unlimited seats', '1M requests/mo', 'Email support', 'SSO'], 'primary'], ['Scale', 'Custom', 'For platforms and regulated teams', ['Everything in Growth', 'Unlimited requests', 'SCIM & audit log', 'Dedicated support'], 'brand']];
+const TIERS = [['Starter', '$0', 'For side projects and tinkering', ['1 surface', '2 seats', '10k requests/mo', 'Community support'], 'secondary'], ['Growth', '$12', 'Per seat — most teams start here', ['Every surface', 'Unlimited seats', '1M requests/mo', 'Email support', 'SSO'], 'primary'], ['Scale', 'Custom', 'For platforms and regulated teams', ['Everything in Growth', 'Unlimited requests', 'SCIM & audit log', 'Dedicated support'], 'brand']];
 function Pricing() {
   return /*#__PURE__*/React.createElement("section", {
     id: "pricing",
@@ -13347,7 +13347,7 @@ function SiteFooter() {
       maxWidth: 220,
       lineHeight: 1.55
     }
-  }, "The boring parts of SaaS, shipped for you. Made with care in Lagos & Lisbon.")), col('Products', ['Agent', 'Infra', 'Content', 'Tools', 'Trader', 'Pricing']), col('Company', ['About', 'Blog', 'Careers', 'Brand']), col('Resources', ['Docs', 'API status', 'Changelog', 'Support']), /*#__PURE__*/React.createElement(Newsletter, null)), /*#__PURE__*/React.createElement("div", {
+  }, "The boring parts of SaaS, shipped for you. Made with care in Lagos & Lisbon.")), col('Platform', ['AI agents', 'Infrastructure', 'Automation', 'File tools', 'Trading', 'Pricing']), col('Company', ['About', 'Blog', 'Careers', 'Brand']), col('Resources', ['Docs', 'API status', 'Changelog', 'Support']), /*#__PURE__*/React.createElement(Newsletter, null)), /*#__PURE__*/React.createElement("div", {
     style: {
       ...wrap,
       marginTop: 40,

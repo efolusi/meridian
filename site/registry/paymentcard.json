@@ -2,7 +2,7 @@
   "name": "paymentcard",
   "type": "registry:ui",
   "title": "PaymentCard",
-  "description": "Payment card visual for Trader / Social Finance \u2014 espresso, caramel, or paper; `frozen` grays it out.",
+  "description": "Payment card visual for trading / finance surfaces \u2014 espresso, caramel, or paper; `frozen` grays it out.",
   "files": [
     {
       "path": "components/finance/PaymentCard.jsx",
@@ -17,7 +17,7 @@
     {
       "path": "components/finance/PaymentCard.prompt.md",
       "type": "registry:component",
-      "content": "Payment card visual for Trader / Social Finance \u2014 espresso, caramel, or paper; `frozen` grays it out.\n\n```jsx\n<PaymentCard name=\"ADA OBI\" number=\"\u2022\u2022\u2022\u2022 \u2022\u2022\u2022\u2022 \u2022\u2022\u2022\u2022 4242\" expiry=\"09/29\" />\n<PaymentCard variant=\"paper\" frozen />\n```\n"
+      "content": "Payment card visual for trading / finance surfaces \u2014 espresso, caramel, or paper; `frozen` grays it out.\n\n```jsx\n<PaymentCard name=\"ADA OBI\" number=\"\u2022\u2022\u2022\u2022 \u2022\u2022\u2022\u2022 \u2022\u2022\u2022\u2022 4242\" expiry=\"09/29\" />\n<PaymentCard variant=\"paper\" frozen />\n```\n"
     }
   ],
   "categories": [

@@ -36,7 +36,7 @@ function InfraScreen() {
         <div style={{ maxWidth: 1180, margin: '0 auto', padding: '28px 32px 60px' }}>
           <div style={{ display: 'flex', alignItems: 'center', gap: 12 }}>
             <a href="../console/index.html" title="Back to Console" style={{ display: 'inline-flex' }}><img src="../../assets/logo.png" alt="" style={{ width: 30, height: 30 }} /></a>
-            <h1 style={{ fontSize: 24, fontWeight: 680 }}>Infra</h1>
+            <h1 style={{ fontSize: 24, fontWeight: 680 }}>Infrastructure</h1>
             <StatusDot state="warn" pulse label="1 incident" />
             <div style={{ marginLeft: 'auto', display: 'flex', gap: 8 }}>
               <Button variant="secondary" iconLeft="terminal" onClick={() => setCli(true)}>Open CLI</Button>

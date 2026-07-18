@@ -62,7 +62,7 @@ function ToolsScreen() {
       <div style={{ maxWidth: 1040, width: '100%', margin: '0 auto', padding: '40px 32px 80px' }}>
         <div style={{ display: 'flex', alignItems: 'center', gap: 10, justifyContent: 'center' }}>
           <a href="../console/index.html" title="Back to Console" style={{ display: 'inline-flex' }}><img src="../../assets/logo.png" alt="" style={{ width: 32, height: 32 }} /></a>
-          <h1 style={{ fontSize: 26, fontWeight: 680 }}>Tools</h1>
+          <h1 style={{ fontSize: 26, fontWeight: 680 }}>File tools</h1>
         </div>
         <p style={{ textAlign: 'center', color: 'var(--text-secondary)', fontSize: 15, marginTop: 8 }}>Convert, encode, and scan any file. Nothing leaves your workspace.</p>
         <div style={{ display: 'flex', justifyContent: 'center', marginTop: 18 }}>

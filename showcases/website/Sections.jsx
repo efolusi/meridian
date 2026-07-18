@@ -57,10 +57,10 @@ function Hero() {
     <section style={{ background: 'var(--surface-page)', paddingTop: 88, paddingBottom: 96 }}>
       <div style={{ ...wrap, display: 'flex', gap: 64, alignItems: 'center' }}>
         <div style={{ flex: 1 }}>
-          <div style={{ fontSize: 12, fontWeight: 600, letterSpacing: '0.08em', textTransform: 'uppercase', color: 'var(--text-muted)' }}>Six products, one workspace</div>
+          <div style={{ fontSize: 12, fontWeight: 600, letterSpacing: '0.08em', textTransform: 'uppercase', color: 'var(--text-muted)' }}>One workspace, every surface</div>
           <h1 style={{ fontSize: 62, fontWeight: 700, lineHeight: 1.04, marginTop: 18 }}>Do more with fewer tabs.</h1>
           <p style={{ fontSize: 19, lineHeight: 1.6, color: 'var(--text-secondary)', marginTop: 20, maxWidth: 460 }}>
-            Six products on one account — an autonomous agent, unified infrastructure, content AI, file tools, a trading robot, and social finance.
+            One account for every surface your team builds: AI agents, infrastructure, automation, file tools, and trading, in a single workspace.
           </p>
           <div style={{ display: 'flex', gap: 10, marginTop: 28 }}>
             <Button size="lg" iconRight="arrow-right" onClick={() => { window.location.href = '../auth/index.html'; }}>Start free</Button>
@@ -80,19 +80,19 @@ function Hero() {
 }
 
 const PRODUCTS = [
-  ['bot', 'Agent', 'An autonomous operator that plans, runs tools, and ships work you review — not prompts you babysit.', '../agent/index.html'],
-  ['server', 'Infra', 'Every cloud, SSH box, database, cache, cert, domain, and DNS record in one control plane.', '../infra/index.html'],
-  ['sparkles', 'Content', 'Node-based AI that scales content across text, image, audio, and video.', '../docs/index.html'],
-  ['package', 'Tools', 'Convert, encode, decode, and scan any file — one toolbox instead of forty tabs.', '../tools/index.html'],
-  ['chart-candlestick', 'Trader', 'A trading robot with guardrails: strategies you set, risk you cap, logs you can audit.', '../trader/index.html'],
-  ['wallet', 'Social Finance', 'Shared portfolios and social signals with real accounting underneath.', '../trader/index.html'],
+  ['bot', 'AI agents', 'An autonomous operator that plans, runs tools, and ships work you review, not prompts you babysit.', '../agent/index.html'],
+  ['server', 'Infrastructure', 'Every cloud, SSH box, database, cache, cert, domain, and DNS record in one control plane.', '../infra/index.html'],
+  ['sparkles', 'Automation', 'Node-based workflows that scale content across text, image, audio, and video.', '../docs/index.html'],
+  ['package', 'File tools', 'Convert, encode, decode, and scan any file: one toolbox instead of forty tabs.', '../tools/index.html'],
+  ['chart-candlestick', 'Trading', 'A trading desk with guardrails: strategies you set, risk you cap, logs you can audit.', '../trader/index.html'],
+  ['wallet', 'Finance', 'Shared portfolios and social signals with real accounting underneath.', '../trader/index.html'],
 ];
 function Products() {
   return (
     <section id="products" style={{ padding: '96px 0', background: 'var(--surface-page)', scrollMarginTop: 64 }}>
       <div style={wrap}>
-        <div style={{ fontSize: 12, fontWeight: 600, letterSpacing: '0.06em', textTransform: 'uppercase', color: 'var(--text-muted)' }}>Products</div>
-        <h2 style={{ fontSize: 40, fontWeight: 680, marginTop: 10, maxWidth: 560 }}>Six sharp products, one account</h2>
+        <div style={{ fontSize: 12, fontWeight: 600, letterSpacing: '0.06em', textTransform: 'uppercase', color: 'var(--text-muted)' }}>The platform</div>
+        <h2 style={{ fontSize: 40, fontWeight: 680, marginTop: 10, maxWidth: 560 }}>Every surface, one account</h2>
         <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 1fr', gap: 20, marginTop: 40 }}>
           {PRODUCTS.map(([icon, name, desc, href]) => (
             <Card key={name} interactive padding={24} onClick={() => { window.location.href = href; }}>
@@ -129,8 +129,8 @@ function BrandBand() {
 }
 
 const TIERS = [
-  ['Starter', '$0', 'For side projects and tinkering', ['1 product', '2 seats', '10k requests/mo', 'Community support'], 'secondary'],
-  ['Growth', '$12', 'Per seat — most teams start here', ['All 6 products', 'Unlimited seats', '1M requests/mo', 'Email support', 'SSO'], 'primary'],
+  ['Starter', '$0', 'For side projects and tinkering', ['1 surface', '2 seats', '10k requests/mo', 'Community support'], 'secondary'],
+  ['Growth', '$12', 'Per seat — most teams start here', ['Every surface', 'Unlimited seats', '1M requests/mo', 'Email support', 'SSO'], 'primary'],
   ['Scale', 'Custom', 'For platforms and regulated teams', ['Everything in Growth', 'Unlimited requests', 'SCIM & audit log', 'Dedicated support'], 'brand'],
 ];
 function Pricing() {
@@ -204,7 +204,7 @@ function SiteFooter() {
           </div>
           <p style={{ fontSize: 13, color: 'var(--text-muted)', marginTop: 12, maxWidth: 220, lineHeight: 1.55 }}>The boring parts of SaaS, shipped for you. Made with care in Lagos & Lisbon.</p>
         </div>
-        {col('Products', ['Agent', 'Infra', 'Content', 'Tools', 'Trader', 'Pricing'])}
+        {col('Platform', ['AI agents', 'Infrastructure', 'Automation', 'File tools', 'Trading', 'Pricing'])}
         {col('Company', ['About', 'Blog', 'Careers', 'Brand'])}
         {col('Resources', ['Docs', 'API status', 'Changelog', 'Support'])}
         <Newsletter />

@@ -1,16 +1,16 @@
 const { Card, Badge, Button, Icon, IconButton, Avatar, AvatarGroup, Stat, BarChart, Progress, Table, EmptyState, Menu, KeyValueList } = window.EfolusiDesignSystem_4ffc3d;
 
 const PROJECTS = [
-  ['Q3 launch plan', 'Agent', '2 hours ago', ['Ada Obi', 'Femi Alade'], 'busy'],
-  ['Billing migration', 'Infra', 'Yesterday', ['June Park', 'Ada Obi', 'Sol Reyes'], 'ok'],
-  ['Onboarding videos', 'Content', '3 days ago', ['Sol Reyes'], 'ok'],
-  ['EUR momentum bot', 'Trader', 'Last week', ['Femi Alade', 'June Park'], 'ok'],
+  ['Q3 launch plan', 'AI agents', '2 hours ago', ['Ada Obi', 'Femi Alade'], 'busy'],
+  ['Billing migration', 'Infrastructure', 'Yesterday', ['June Park', 'Ada Obi', 'Sol Reyes'], 'ok'],
+  ['Onboarding videos', 'Automation', '3 days ago', ['Sol Reyes'], 'ok'],
+  ['EUR momentum bot', 'Trading', 'Last week', ['Femi Alade', 'June Park'], 'ok'],
 ];
 function ProjectsScreen({ onNewProject, notify }) {
   return (
     <div style={{ padding: 24 }}>
       <div style={{ display: 'flex', alignItems: 'center', marginBottom: 16 }}>
-        <span style={{ fontSize: 13, color: 'var(--text-muted)' }}>{PROJECTS.length} projects · all products</span>
+        <span style={{ fontSize: 13, color: 'var(--text-muted)' }}>{PROJECTS.length} projects · all surfaces</span>
         <Button style={{ marginLeft: 'auto' }} iconLeft="plus" onClick={onNewProject}>New project</Button>
       </div>
       <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 1fr', gap: 16 }}>
@@ -25,7 +25,7 @@ function ProjectsScreen({ onNewProject, notify }) {
             </div>
             <div style={{ display: 'flex', gap: 6, marginTop: 8 }}>
               <Badge tone={state === 'busy' ? 'accent' : 'neutral'} dot={state === 'busy'}>{product}</Badge>
-              {state === 'busy' && <Badge tone="success" dot>Agent running</Badge>}
+              {state === 'busy' && <Badge tone="success" dot>Running</Badge>}
             </div>
             <div style={{ display: 'flex', alignItems: 'center', marginTop: 16 }}>
               <AvatarGroup>{people.map(p => <Avatar key={p} name={p} size={26} />)}</AvatarGroup>
@@ -40,10 +40,10 @@ function ProjectsScreen({ onNewProject, notify }) {
 }
 
 const USAGE_BY_PRODUCT = [
-  { id: 'agent', product: 'Agent', unit: 'tasks', used: '1,204', quota: '5,000', pct: 24 },
-  { id: 'infra', product: 'Infra', unit: 'tunnels', used: '14', quota: '25', pct: 56 },
-  { id: 'content', product: 'Content', unit: 'renders', used: '8,912', quota: '10,000', pct: 89 },
-  { id: 'tools', product: 'Tools', unit: 'conversions', used: '412', quota: '2,000', pct: 21 },
+  { id: 'agent', product: 'AI agents', unit: 'tasks', used: '1,204', quota: '5,000', pct: 24 },
+  { id: 'infra', product: 'Infrastructure', unit: 'tunnels', used: '14', quota: '25', pct: 56 },
+  { id: 'content', product: 'Automation', unit: 'renders', used: '8,912', quota: '10,000', pct: 89 },
+  { id: 'tools', product: 'File tools', unit: 'conversions', used: '412', quota: '2,000', pct: 21 },
 ];
 function UsageScreen() {
   return (
@@ -57,7 +57,7 @@ function UsageScreen() {
         <BarChart height={150} highlightLast={7} labels={['Jun 17', 'Jul 1', 'Jul 16']} formatValue={v => (v / 10).toFixed(1) + 'M requests'}
           data={[82, 95, 88, 101, 98, 112, 106, 120, 114, 128, 132, 124, 136, 130, 144, 138, 152, 148, 158, 151, 164, 170, 162, 178, 172, 184, 190, 181, 196, 214]} />
       </Card>
-      <Card title="By product" padding={20}>
+      <Card title="By surface" padding={20}>
         <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '16px 40px' }}>
           {USAGE_BY_PRODUCT.map(u => (
             <Progress key={u.id} label={u.product} value={u.pct} showValue tone={u.pct > 85 ? 'warning' : 'default'} format={() => u.used + ' of ' + u.quota + ' ' + u.unit} />

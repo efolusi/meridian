@@ -5,7 +5,7 @@ function AgentHeader({ running, onToggle, notify }) {
     <header style={{ display: 'flex', alignItems: 'center', gap: 12, height: 58, padding: '0 24px', borderBottom: '1px solid var(--border-default)', background: 'rgba(250,249,246,.85)', backdropFilter: 'blur(12px)', flex: 'none' }}>
       <a href="../console/index.html" title="Back to Console" style={{ display: 'flex', alignItems: 'center', gap: 8, textDecoration: 'none', color: 'var(--text-primary)' }}>
         <img src="../../assets/logo.png" alt="" style={{ width: 26, height: 26 }} />
-        <span style={{ fontFamily: 'var(--font-display)', fontWeight: 680, letterSpacing: '-0.02em', fontSize: 17 }}>Agent</span>
+        <span style={{ fontFamily: 'var(--font-display)', fontWeight: 680, letterSpacing: '-0.02em', fontSize: 17 }}>AI agents</span>
       </a>
       <span style={{ color: 'var(--sand-300)' }}>/</span>
       <span style={{ fontSize: 14, fontWeight: 600 }}>Retry failed webhooks</span>
@@ -61,8 +61,8 @@ const CMD_GROUPS = [
     { id: 'export', label: 'Export transcript', icon: 'download' },
   ]},
   { group: 'Go to', items: [
-    { id: 'infra', label: 'Infra', icon: 'server' },
-    { id: 'trader', label: 'Trader', icon: 'chart-candlestick' },
+    { id: 'infra', label: 'Infrastructure', icon: 'server' },
+    { id: 'trader', label: 'Trading', icon: 'chart-candlestick' },
     { id: 'settings', label: 'Workspace settings', icon: 'settings' },
   ]},
 ];
