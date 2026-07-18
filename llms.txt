@@ -1,15 +1,15 @@
 # Meridian
 
-> Meridian is the open-source design system behind every Efolusi product: 104 accessible React components, 172 design tokens (light, dark, compact), blocks, charts, and full product demos — served browser-native with zero build step. MIT licensed.
+> Meridian is a general-purpose open-source design system by Efolusi: 104 accessible React components, 172 design tokens (light, dark, compact), blocks, charts, and full example apps — served browser-native with zero build step. MIT licensed.
 
 Live docs: https://meridian.efolusi.com · Source: https://github.com/efolusi/meridian · License: MIT
 
-The layout is Meridian's own, organized by purpose: /site is the docs website; /components and /blocks hold the library; /showcases are product demos; /starters are copyable journeys; the stylesheet, tokens, assets, and compiled bundle stay at the root (see /ARCHITECTURE.md).
+The layout is Meridian's own, organized by purpose: /site is the docs website; /components and /blocks hold the library; /showcases are example apps; /starters are copyable journeys; the stylesheet, tokens, assets, and compiled bundle stay at the root (see /ARCHITECTURE.md).
 
 ## Start here
 
 - /README.md — overview, principles, content fundamentals
-- /skills/SKILL.md — the agent skill: how to build Efolusi-branded interfaces with Meridian
+- /skills/SKILL.md — the agent skill: how to build product interfaces with Meridian
 - /styles.css — stylesheet entry (imports /tokens/*)
 - /_ds_bundle.js — compiled component bundle (all components on one global namespace)
 - /_ds_manifest.json — machine-readable manifest of components, tokens, cards
@@ -43,5 +43,5 @@ Dark mode: set data-theme="dark" on any subtree. Compact density: data-density="
 
 - /guidelines/ — accessibility, forms, governance
 - /site/ — the documentation site (open /index.html)
-- /blocks/ — pre-composed sections; /showcases/ — product demos (lift screen code); /starters/ — starter journeys (copy the folder)
+- /blocks/ — pre-composed sections; /showcases/ — example apps (lift screen code); /starters/ — starter journeys (copy the folder)
 - /CHANGELOG.md, /CONTRIBUTING.md, /SECURITY.md, /LICENSE

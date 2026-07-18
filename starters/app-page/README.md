@@ -8,4 +8,4 @@ Copyable product-app journey: overview → projects → project detail → new p
 - `NewProject.dc.html` — creation flow
 - `AppSettings.dc.html` — app settings tabs
 
-No showcase twin: this is the generic app shell every product kit specializes.
+No showcase twin: this is the generic app shell every example app specializes.

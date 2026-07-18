@@ -11,7 +11,7 @@ meridian/
 ├── _adherence.oxlintrc.json · thumbnail.html · index.html
 ├── components/<group>/                  # the library: lift code from here
 ├── blocks/                              # pre-composed sections: paste from here
-├── showcases/<product>/                 # product demos: see the system in use
+├── showcases/<app>/                     # example apps: see the system in use
 ├── starters/<journey>/                  # copyable journeys: start a surface here
 ├── site/                                # the docs website: consumes all of the above
 ├── guidelines/ · skills/ · scripts/
@@ -22,7 +22,7 @@ Three principles produced this layout:
 
 1. **The root is a contract.** `styles.css`, `tokens/`, and `assets/` are what consumers link when they vendor the folder, and the DS compiler writes `_ds_bundle.js`, `_ds_manifest.json`, `_adherence.oxlintrc.json`, and `thumbnail.html` at the root. These paths are pinned by tooling we do not control from this repo. They never move.
 2. **Shallow beats deep.** Pages resolve the root by counted `../` segments, so every authored page lives at most two directories down. Depth is a bug factory here; keep it flat.
-3. **The site consumes, it does not own.** Component, block, and showcase source live in their own directories; `site/` renders them. An earlier layout nested source inside the docs app and buried half the repo six levels deep; it was reverted.
+3. **The site consumes, it does not own.** Component, block, and example-app source live in their own directories; `site/` renders them. An earlier layout nested source inside the docs app and buried half the repo six levels deep; it was reverted.
 
 ## The pipeline
 
