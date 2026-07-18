@@ -1,4 +1,4 @@
-# Efolusi Infra — product demo
+# Infra — example app
 
 The infrastructure control plane: resources / domains / certificates tables, live status, detail drawer with records + logs, connect flow.
 

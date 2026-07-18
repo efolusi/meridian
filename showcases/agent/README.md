@@ -1,4 +1,4 @@
-# Efolusi Agent — product demo
+# Agent — example app
 
 The autonomous-agent workspace: chat thread with streaming replies and embedded tool output, task step rail, context files, run metadata, ⌘K palette.
 

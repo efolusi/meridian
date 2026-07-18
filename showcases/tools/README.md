@@ -1,6 +1,6 @@
-# Efolusi Tools — product demo
+# Tools — example app
 
-The B2C all-in-one converter: upload → convert → download wizard with a live queue.
+A B2C all-in-one converter: upload → convert → download wizard with a live queue.
 
 - `index.html` — interactive: drop/browse files, pick a target format, convert (animated progress), download
 - `ToolsScreen.jsx` — steps, dropzone, queue, options

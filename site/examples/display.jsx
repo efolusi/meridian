@@ -34,7 +34,7 @@ export function AvatarDemo() {
       <Avatar name="Ada Obi" size={24} />
       <Avatar name="Ada Obi" size={32} />
       <Avatar name="Kofi Mensah" size={40} />
-      <Avatar name="Efolusi Agent" size={48} />
+      <Avatar name="June Park" size={48} />
     </div>
   );
 }
