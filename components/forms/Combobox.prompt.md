@@ -2,5 +2,5 @@ Searchable select — single, or multi with removable chips. Keyboard: arrows + 
 
 ```jsx
 <Combobox label="Assignee" options={people} value={who} onChange={setWho} />
-<Combobox label="Products" multiple options={['Agent','Infra','Node']} value={sel} onChange={setSel} />
+<Combobox label="Surfaces" multiple options={['AI agents','Infrastructure','Automation']} value={sel} onChange={setSel} />
 ```

@@ -72,8 +72,8 @@ export function CarouselDemo() {
   return (
     <div style={{ width: '100%', maxWidth: 560 }}>
       <Carousel itemWidth="180px">
-        {['Agent', 'Infra', 'Trader', 'Tools', 'Social', 'Content'].map(p => (
-          <Card key={p} title={p} subtitle="Product kit"><div style={{ height: 28 }}></div></Card>
+        {['Analytics', 'Billing', 'Identity', 'Storage', 'Search', 'Webhooks'].map(p => (
+          <Card key={p} title={p} subtitle="Module"><div style={{ height: 28 }}></div></Card>
         ))}
       </Carousel>
     </div>

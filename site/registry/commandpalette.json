@@ -17,7 +17,7 @@
     {
       "path": "components/overlay/CommandPalette.prompt.md",
       "type": "registry:component",
-      "content": "\u2318K palette: search, grouped commands, full keyboard nav (\u2191\u2193, \u21b5, Esc), Kbd-hinted footer.\n\n```jsx\n<CommandPalette open={open} onClose={close} onSelect={run} groups={[\n  { group: 'Actions', items: [\n    { id: 'new', label: 'New project', icon: 'plus' },\n    { id: 'invite', label: 'Invite teammate', icon: 'mail', hint: 'Settings' },\n  ]},\n  { group: 'Go to', items: [{ id: 'infra', label: 'Infra', icon: 'server' }] },\n]} />\n```\n"
+      "content": "\u2318K palette: search, grouped commands, full keyboard nav (\u2191\u2193, \u21b5, Esc), Kbd-hinted footer.\n\n```jsx\n<CommandPalette open={open} onClose={close} onSelect={run} groups={[\n  { group: 'Actions', items: [\n    { id: 'new', label: 'New project', icon: 'plus' },\n    { id: 'invite', label: 'Invite teammate', icon: 'mail', hint: 'Settings' },\n  ]},\n  { group: 'Go to', items: [{ id: 'infra', label: 'Infrastructure', icon: 'server' }] },\n]} />\n```\n"
     }
   ],
   "categories": [

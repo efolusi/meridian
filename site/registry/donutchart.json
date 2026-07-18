@@ -17,7 +17,7 @@
     {
       "path": "components/data/DonutChart.prompt.md",
       "type": "registry:component",
-      "content": "Donut with center figure + legend; hover highlights a slice. Colors default to the brand ramp.\n\n```jsx\n<DonutChart centerValue=\"$8.4k\" centerLabel=\"This month\" data={[\n  { label: 'Agent', value: 4200 }, { label: 'Infra', value: 2600 }, { label: 'Node', value: 1600 },\n]} />\n```\n"
+      "content": "Donut with center figure + legend; hover highlights a slice. Colors default to the brand ramp.\n\n```jsx\n<DonutChart centerValue=\"$8.4k\" centerLabel=\"This month\" data={[\n  { label: 'AI agents', value: 4200 }, { label: 'Infrastructure', value: 2600 }, { label: 'Automation', value: 1600 },\n]} />\n```\n"
     }
   ],
   "categories": [

@@ -28,9 +28,9 @@ function Demo() {
         <Card title="API requests" subtitle="Last 22 days" padding={16}>
           <LineChart data={days} height={130} format={v => v.toLocaleString()} />
         </Card>
-        <Card title="Revenue by product" padding={16}>
+        <Card title="Revenue by surface" padding={16}>
           <DonutChart size={124} centerValue="$48.2k" centerLabel="MRR" data={[
-            { label: 'Agent', value: 21000 }, { label: 'Infra', value: 14000 }, { label: 'Trader', value: 8200 }, { label: 'Content', value: 5000 },
+            { label: 'AI agents', value: 21000 }, { label: 'Infrastructure', value: 14000 }, { label: 'Trading', value: 8200 }, { label: 'Automation', value: 5000 },
           ]} />
         </Card>
       </div>

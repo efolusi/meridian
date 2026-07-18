@@ -6,6 +6,6 @@
     { id: 'new', label: 'New project', icon: 'plus' },
     { id: 'invite', label: 'Invite teammate', icon: 'mail', hint: 'Settings' },
   ]},
-  { group: 'Go to', items: [{ id: 'infra', label: 'Infra', icon: 'server' }] },
+  { group: 'Go to', items: [{ id: 'infra', label: 'Infrastructure', icon: 'server' }] },
 ]} />
 ```

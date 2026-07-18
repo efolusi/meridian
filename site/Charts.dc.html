@@ -112,7 +112,7 @@ class Component extends DCLogic {
       barCode: "<BarChart data={[42, 38, 51, …]} labels={months}\n  highlightLast={3} formatValue={v => `$${v}k`} />",
       lineProps: { data: [118, 126, 121, 134, 142, 138, 155, 161, 158, 174, 182, 196].map((value, i) => ({ value, label: 'Week ' + (i + 1) })), height: 150, format: v => v + ' runs' },
       lineCode: "<LineChart data={weeks} showArea\n  format={v => `${v} runs`} />",
-      donutProps: { data: [{ label: 'Agent', value: 38 }, { label: 'Infra', value: 26 }, { label: 'Trader', value: 19 }, { label: 'Tools', value: 17 }], size: 160, centerValue: '$82k', centerLabel: 'MRR', format: v => v + '%' },
+      donutProps: { data: [{ label: 'AI agents', value: 38 }, { label: 'Infrastructure', value: 26 }, { label: 'Trading', value: 19 }, { label: 'File tools', value: 17 }], size: 160, centerValue: '$82k', centerLabel: 'MRR', format: v => v + '%' },
       donutCode: "<DonutChart data={byProduct} size={160}\n  centerValue=\"$82k\" centerLabel=\"MRR\" />",
       sparkUp: { data: [3, 4, 3.6, 5, 5.4, 6.2, 6, 7.1], width: 120 },
       sparkDown: { data: [7.2, 6.8, 7, 6.1, 5.6, 5.9, 4.8, 4.2], width: 120 },

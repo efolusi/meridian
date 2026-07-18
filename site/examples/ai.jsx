@@ -65,7 +65,7 @@ export function ConversationDemo() {
   return (
     <div style={{ width: '100%', maxWidth: 520, border: '1px solid var(--border-default)', borderRadius: 'var(--radius-md)', padding: 4 }}>
       <Conversation height={260} padding={12}>
-        {msgs.map(([role, text], i) => <ChatMessage key={i} role={role} name={role === 'user' ? 'Ada' : 'Agent'}>{text}</ChatMessage>)}
+        {msgs.map(([role, text], i) => <ChatMessage key={i} role={role} name={role === 'user' ? 'Ada' : 'Assistant'}>{text}</ChatMessage>)}
       </Conversation>
     </div>
   );
@@ -162,10 +162,10 @@ export function ChatMessageDemo() {
   return (
     <div style={{ display: 'flex', flexDirection: 'column', gap: 18, width: '100%', maxWidth: 560 }}>
       <ChatMessage role="user" name="Ada" time="09:41">Rebook my Lisbon flight to arrive before 15:00 local.</ChatMessage>
-      <ChatMessage role="assistant" name="Agent" time="09:41" actions>
+      <ChatMessage role="assistant" name="Assistant" time="09:41" actions>
         Found 3 nonstops arriving before 15:00. Booking TP 1287 (dep 10:20, arr 13:05) — same fare class, no change fee.
       </ChatMessage>
-      <ChatMessage role="assistant" name="Agent" streaming>Confirming seat 14C…</ChatMessage>
+      <ChatMessage role="assistant" name="Assistant" streaming>Confirming seat 14C…</ChatMessage>
     </div>
   );
 }

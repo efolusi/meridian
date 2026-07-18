@@ -2,6 +2,6 @@ Donut with center figure + legend; hover highlights a slice. Colors default to t
 
 ```jsx
 <DonutChart centerValue="$8.4k" centerLabel="This month" data={[
-  { label: 'Agent', value: 4200 }, { label: 'Infra', value: 2600 }, { label: 'Node', value: 1600 },
+  { label: 'AI agents', value: 4200 }, { label: 'Infrastructure', value: 2600 }, { label: 'Automation', value: 1600 },
 ]} />
 ```
