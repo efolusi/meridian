@@ -1,6 +1,6 @@
 # Meridian
 
-> Meridian is a general-purpose open-source design system by Efolusi: 104 accessible React components, 177 design tokens (light, dark, compact), blocks, charts, and full example apps — served browser-native with zero build step. MIT licensed.
+> Meridian is a general-purpose open-source design system by Efolusi: 105 accessible React components, 177 design tokens (light, dark, compact), blocks, charts, and full example apps — served browser-native with zero build step. MIT licensed.
 
 Live docs: https://meridian.efolusi.com · Source: https://github.com/efolusi/meridian · License: MIT
 
@@ -18,7 +18,7 @@ The layout is Meridian's own, organized by purpose: /site is the docs website; /
 
 ## Components
 
-104 components in /components/<group>/ across 12 groups: forms, display, navigation, feedback, data, overlay, ai, code, files, dates, finance, icons.
+105 components in /components/<group>/ across 12 groups: forms, display, navigation, feedback, data, overlay, ai, code, files, dates, finance, icons.
 
 Every component ships three per-component flat files (plus a shared per-group specimen card HTML):
 
