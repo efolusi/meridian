@@ -12,7 +12,7 @@ jobs:
   gates:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
 
       - name: Contrast (WCAG AA token pairs)
         run: python3 scripts/check_contrast.py
@@ -50,9 +50,9 @@ jobs:
       # The real gate: recompile from source and require the committed artifact to
       # match byte for byte. This is reproduction, not self-attestation — the same
       # standard the registry and token generators are already held to.
-      - uses: actions/setup-node@v4
+      - uses: actions/setup-node@v5
         with:
-          node-version: '20'
+          node-version: '22'
       - name: Install build dependency
         run: npm ci --no-audit --no-fund
       - name: _ds_bundle.js is reproducible from source
@@ -79,10 +79,10 @@ jobs:
   smoke:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
+      - uses: actions/checkout@v5
+      - uses: actions/setup-node@v5
         with:
-          node-version: '20'
+          node-version: '22'
       # smoke_headless.mjs does `import { chromium } from 'playwright'`, so the
       # package has to be resolvable from the repo. `npx --package=X node script`
       # does not put X on the module search path, which is why this job failed

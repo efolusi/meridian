@@ -7,7 +7,7 @@
     {
       "path": "styles.css",
       "type": "registry:file",
-      "content": "@import \"tokens/fonts.css\";\n@import \"tokens/colors.css\";\n@import \"tokens/typography.css\";\n@import \"tokens/spacing.css\";\n@import \"tokens/effects.css\";\n@import \"tokens/base.css\";\n"
+      "content": "/* Relative specifiers are required, not cosmetic. A bare \"tokens/x.css\" is a\n   valid relative URL to a browser, so the CDN path never noticed, but css-loader\n   and other bundler CSS pipelines read a non-relative specifier as a module\n   request into node_modules and fail to resolve it. \"./\" works everywhere. */\n@import \"./tokens/fonts.css\";\n@import \"./tokens/colors.css\";\n@import \"./tokens/typography.css\";\n@import \"./tokens/spacing.css\";\n@import \"./tokens/effects.css\";\n@import \"./tokens/base.css\";\n"
     },
     {
       "path": "tokens/base.css",

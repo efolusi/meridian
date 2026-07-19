@@ -79,6 +79,62 @@ try {
   fs.rmSync(sandbox, { recursive: true, force: true });
 }
 
+// A bare @import is a valid relative URL to a browser, so the CDN path never
+// noticed, but a bundler CSS pipeline may read it as a module request into
+// node_modules. Reported from a real downstream build. './' works everywhere.
+const bareImports = [];
+for (const rel of ['styles.css']) {
+  const p = path.join(ROOT, 'dist', rel);
+  if (!fs.existsSync(p)) continue;
+  for (const [, spec] of fs.readFileSync(p, 'utf8').matchAll(/@import\s+['"]([^'"]+)['"]/g)) {
+    if (!/^(\.|https?:|\/)/.test(spec)) bareImports.push(`${rel} -> @import "${spec}"`);
+  }
+}
+if (bareImports.length) {
+  console.error('CSS uses bare @import specifiers (prefix with "./"):');
+  for (const b of bareImports) console.error(`  ${b}`);
+  process.exit(1);
+}
+
+// 68 of the components render an Icon. The npm build inlines the SVG sources,
+// so a missing icon is a blank box with no error — exactly what shipped in 1.5.0.
+const repoIcons = fs.readdirSync(path.join(ROOT, 'assets', 'icons')).filter(f => f.endsWith('.svg')).length;
+const svgModule = path.join(ROOT, 'dist', 'icons', '_svg.js');
+if (!fs.existsSync(svgModule)) {
+  console.error('icons/_svg.js missing — the package would render every icon blank');
+  process.exit(1);
+}
+const shippedIcons = Object.keys((await import(pathToFileURL(svgModule).href)).SVGS).length;
+if (shippedIcons !== repoIcons) {
+  console.error(`icon count mismatch: ${repoIcons} in assets/icons, ${shippedIcons} inlined in the package`);
+  process.exit(1);
+}
+
+// Every component calls hooks. Without the directive, a Next.js App Router
+// Server Component importing this package is a build error.
+const noDirective = [];
+for (const group of fs.readdirSync(path.join(ROOT, 'dist'), { withFileTypes: true })) {
+  if (!group.isDirectory() || group.name.startsWith('assets') || group.name === 'tokens') continue;
+  for (const f of fs.readdirSync(path.join(ROOT, 'dist', group.name))) {
+    if (!f.endsWith('.js') || f === '_svg.js') continue;
+    const head = fs.readFileSync(path.join(ROOT, 'dist', group.name, f), 'utf8').slice(0, 40);
+    if (!/^['"]use client['"]/.test(head)) noDirective.push(`${group.name}/${f}`);
+  }
+}
+if (noDirective.length) {
+  console.error(`${noDirective.length} module(s) missing the "use client" directive, e.g. ${noDirective.slice(0, 3).join(', ')}`);
+  process.exit(1);
+}
+
+// A "license": "MIT" field is metadata; the MIT grant itself requires the licence
+// text to ship with the code. THIRD_PARTY_NOTICES covers the redistributed fonts.
+const missingLegal = ['LICENSE', 'THIRD_PARTY_NOTICES.md']
+  .filter(f => !fs.existsSync(path.join(ROOT, 'dist', f)));
+if (missingLegal.length) {
+  console.error('legal texts missing from the package:', missingLegal.join(', '));
+  process.exit(1);
+}
+
 // Every asset the CSS references must actually be in the tarball. A dangling
 // url() is not a cosmetic miss: Vite and webpack fail the build outright when
 // they cannot resolve one, so shipping tokens/fonts.css without the fonts next

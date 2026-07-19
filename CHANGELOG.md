@@ -7,6 +7,12 @@ All notable changes to Meridian are documented here. Format follows [Keep a Chan
 ## 1.5.1 — 2026-07-20
 
 ### Fixed
+- **Every icon in the npm package was blank.** 68 of the 106 components render an `Icon`, and the tarball shipped none of the 108 SVGs. Even had it shipped them, `Icon` derives its base URL from the `<script src="..._ds_bundle.js">` tag, which exists only on the zero-build site: in an npm consumer that lookup returns `''` and the request goes out page-relative. Copying the files in would not have fixed the URL, so the npm build now inlines the SVG sources (~38 kB raw, ~5 kB gzipped) and drops the fetch entirely. Icons render in server output instead of one effect late, with no request per icon per route.
+- **`styles.css` used bare `@import "tokens/…"` specifiers.** A browser reads those as relative URLs, which is why the CDN path never noticed, but a bundler CSS pipeline can read a non-relative specifier as a module request into `node_modules`. Reported from a real downstream build. Now `./tokens/…`, which is correct everywhere.
+- **No `"use client"` directive**, so importing the package from a Next.js App Router Server Component was a build error. Every component calls hooks; the directive is now emitted on each module and is inert outside RSC.
+- **`LICENSE` and `THIRD_PARTY_NOTICES.md` did not ship.** A `"license": "MIT"` field is metadata, not the grant; MIT requires the text to travel with the code. The Lucide licence ships with the inlined icons for the same reason.
+- `sideEffects` was `*.css`, a glob that does not cross a directory boundary and so missed `tokens/*.css`. Now `**/*.css`.
+- `assets/*` was unreachable through `exports`: the `./*` pattern rewrote every non-JS subpath to a `.js` that does not exist.
 - **Deep imports were broken in the published 1.5.0.** The `exports` map used a single `./*` pattern, which appends the extension, so `@efolusi/meridian/forms/Button.js` resolved to `forms/Button.js.js` and threw for every consumer — and that is the exact spelling the package README documents. `@efolusi/meridian/package.json` failed the same way, which breaks tools that read it. Both spellings now resolve, with or without `.js`.
 - `check_npm_package.mjs` imported `dist/` by file path, which bypasses `exports` entirely; that is why the broken map shipped green. It now symlinks the build into a temp `node_modules` and resolves every specifier by package name, the way Node does after an install.
 
