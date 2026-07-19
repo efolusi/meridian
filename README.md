@@ -4,7 +4,7 @@
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-7A4E2B.svg)](LICENSE)
 [![Docs](https://img.shields.io/badge/docs-meridian.efolusi.com-2C1709.svg)](https://meridian.efolusi.com)
-[![Components](https://img.shields.io/badge/components-104-A0693C.svg)](https://meridian.efolusi.com/site/Components.dc.html)
+[![Components](https://img.shields.io/badge/components-106-A0693C.svg)](https://meridian.efolusi.com/site/Components.dc.html)
 [![Zero dependencies](https://img.shields.io/badge/runtime%20deps-react%20only-5C3A1F.svg)](#quickstart)
 
 **[Live docs](https://meridian.efolusi.com)** · [Components](https://meridian.efolusi.com/site/Components.dc.html) · [Blocks](https://meridian.efolusi.com/site/Blocks.dc.html) · [Example apps](https://meridian.efolusi.com/site/Examples.dc.html) · [Themes](https://meridian.efolusi.com/site/Themes.dc.html)
@@ -45,7 +45,7 @@ Dark mode and compact density are attribute scopes, not rebuilds:
 |---|---|---|
 | **CDN** (above) | prototypes, demos, a single-file artifact | point the two tags at `meridian.efolusi.com` |
 | **Vendor the folder** | you want to own and edit the source | copy the repo; link `styles.css` and `_ds_bundle.js` |
-| **Vendor one component** | you need Button, not 104 | copy `components/<group>/<Name>.jsx` + `.d.ts` — MIT, no attribution required |
+| **Vendor one component** | you need Button, not 106 | copy `components/<group>/<Name>.jsx` + `.d.ts` — MIT, no attribution required |
 
 > **On npm:** the ESM package builds from these same sources (`npm run build:npm` emits `@efolusi/meridian` into `dist/`, and CI imports it on every push) but is **not published to the registry yet**. Until it is, the CDN and vendoring paths above are the supported ones. When it lands the usage is:
 >
