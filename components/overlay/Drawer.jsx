@@ -46,9 +46,9 @@ export function Drawer({ open, onClose, title, footer, width = 400, side = 'righ
   }, [open, onClose]);
   if (!open) return null;
   return (
-    <React.Fragment {...rest}>
+    <React.Fragment>
       <div className="ef-drawer__overlay" onMouseDown={onClose}></div>
-      <div className={`ef-drawer ef-drawer--${side}`} role="dialog" aria-modal="true" ref={panelRef} tabIndex={-1} aria-labelledby={title ? titleId : undefined} style={{ width }}>
+      <div {...rest} className={`ef-drawer ef-drawer--${side}`} role="dialog" aria-modal="true" ref={panelRef} tabIndex={-1} aria-labelledby={title ? titleId : undefined} style={{ width }}>
         <div className="ef-drawer__head">
           <div className="ef-drawer__title" id={titleId}>{title}</div>
           {onClose ? <IconButton icon="x" label="Close" size="sm" onClick={onClose} /> : null}

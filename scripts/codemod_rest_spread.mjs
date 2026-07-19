@@ -34,16 +34,36 @@ for (const group of fs.readdirSync(path.join(ROOT, 'components')).sort()) {
   }
 }
 
-/** The outermost JSX element a function returns, if it is unambiguous. */
+/** `<React.Fragment>` / `<Fragment>` are JSXElements but accept only `key`. */
+function isFragmentElement(el) {
+  const n = el.openingElement.name;
+  if (n.type === 'JSXIdentifier') return n.name === 'Fragment';
+  if (n.type === 'JSXMemberExpression') return n.property && n.property.name === 'Fragment';
+  return false;
+}
+
+/**
+ * The outermost JSX element a function returns, if it is unambiguous.
+ *
+ * Bails out when a function has more than one JSX-returning path (Combobox
+ * returns a bare control or a labelled field): spreading onto whichever return
+ * happened to be found first drops the props on every other path.
+ */
 function rootJsx(fnNode) {
   let found = null;
+  let returns = 0;
   const walk = node => {
-    if (!node || typeof node !== 'object' || found) return;
+    if (!node || typeof node !== 'object') return;
     if (node.type === 'ReturnStatement') {
       let arg = node.argument;
       // unwrap parenthesised / conditional returns to their first JSX element
       while (arg && arg.type === 'ConditionalExpression') arg = arg.consequent;
-      if (arg && arg.type === 'JSXElement') { found = arg; return; }
+      if (arg && arg.type === 'JSXElement') {
+        returns++;
+        if (isFragmentElement(arg)) { found = 'fragment'; return; }
+        if (!found) found = arg;
+        return;
+      }
       if (arg && arg.type === 'JSXFragment') { found = 'fragment'; return; }
       return;
     }
@@ -56,6 +76,8 @@ function rootJsx(fnNode) {
     }
   };
   (fnNode.body.body || []).forEach(walk);
+  if (found === 'fragment') return 'fragment';
+  if (returns > 1) return 'multiple';
   return found;
 }
 
@@ -84,7 +106,8 @@ for (const rel of files) {
     if (pattern.properties.some(p => p.type === 'RestElement')) { note = 'already has a rest element'; continue; }
 
     const root = rootJsx(fn);
-    if (root === 'fragment') { note = 'root is a fragment'; continue; }
+    if (root === 'fragment') { note = 'root is a fragment (takes only key)'; continue; }
+    if (root === 'multiple') { note = 'more than one JSX return path'; continue; }
     if (!root) { note = 'could not resolve a root element'; continue; }
     if (root.openingElement.attributes.some(a => a.type === 'JSXSpreadAttribute')) { note = 'root already spreads'; continue; }
 

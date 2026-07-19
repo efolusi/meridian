@@ -82,7 +82,7 @@ export function Combobox({ label, hint, options, value, onChange, multiple, plac
   );
   if (!label && !hint) return <div {...rest} className={className} style={style}>{control}</div>;
   return (
-    <div className={`ef-field${className ? ' ' + className : ''}`} style={style}>
+    <div {...rest} className={`ef-field${className ? ' ' + className : ''}`} style={style}>
       {label ? <span className="ef-field__label">{label}</span> : null}
       {control}
       {hint ? <span className="ef-field__hint">{hint}</span> : null}
