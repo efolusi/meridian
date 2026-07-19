@@ -25,7 +25,7 @@ export function Combobox({ label, hint, options, value, onChange, multiple, plac
   const [hi, setHi] = React.useState(0);
   const ref = React.useRef(null);
   const panelRef = React.useRef(null);
-  const anchored = useAnchoredStyle(ref, panelRef, { open, placement: 'bottom', align: 'start', matchWidth: true });
+  const { style: anchored } = useAnchoredStyle(ref, panelRef, { open, placement: 'bottom', align: 'start', matchWidth: true });
   const sel = multiple ? (value || []) : (value != null ? [value] : []);
   const opts = options.map(o => typeof o === 'string' ? { value: o, label: o } : o);
   const shown = opts.filter(o => o.label.toLowerCase().includes(q.toLowerCase()) && (!multiple || !sel.includes(o.value)));

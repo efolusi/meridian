@@ -16,7 +16,7 @@ export function HoverCard({ trigger, side = 'bottom', openDelay = 350, closeDela
   const t = React.useRef(null);
   const ref = React.useRef(null);
   const panelRef = React.useRef(null);
-  const anchored = useAnchoredStyle(ref, panelRef, { open, placement: side === 'top' ? 'top' : 'bottom', align: 'start', offset: 8 });
+  const { style: anchored } = useAnchoredStyle(ref, panelRef, { open, placement: side === 'top' ? 'top' : 'bottom', align: 'start', offset: 8 });
   const enter = () => { clearTimeout(t.current); t.current = setTimeout(() => setOpen(true), openDelay); };
   const leave = () => { clearTimeout(t.current); t.current = setTimeout(() => setOpen(false), closeDelay); };
   React.useEffect(() => () => clearTimeout(t.current), []);

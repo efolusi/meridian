@@ -23,7 +23,7 @@ export function Menu({ trigger, items, onSelect, align = 'left', style, classNam
   const [open, setOpen] = React.useState(false);
   const ref = React.useRef(null);
   const panelRef = React.useRef(null);
-  const anchored = useAnchoredStyle(ref, panelRef, { open, placement: 'bottom', align: align === 'right' ? 'end' : 'start' });
+  const { style: anchored } = useAnchoredStyle(ref, panelRef, { open, placement: 'bottom', align: align === 'right' ? 'end' : 'start' });
   const focusItem = which => {
     const panel = panelRef.current;
     const nodes = panel ? Array.from(panel.querySelectorAll('[role="menuitem"]:not(:disabled)')) : [];

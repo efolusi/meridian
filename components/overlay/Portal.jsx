@@ -37,16 +37,23 @@ export function Portal({ children, container }) {
  * Position a portaled panel against its anchor, in viewport coordinates.
  *
  * Flips to the opposite side when the preferred one would overflow, then shifts
- * along the cross axis to stay on screen. Returns a style for the panel; it is
- * hidden for the first frame so the measurement never flashes.
+ * along the cross axis to stay on screen. Returns { style, side } — the panel is
+ * hidden for the first frame so the measurement never flashes, and `side` is the
+ * placement actually resolved, which a caller drawing an arrow has to know.
  *
  * Not exported on the namespace — it is a building block for the overlay
  * components, and is only useful with a panel ref you already control.
  */
 export function useAnchoredStyle(anchorRef, panelRef, { open, placement = 'bottom', align = 'start', offset = 6, matchWidth = false } = {}) {
-  const [style, setStyle] = React.useState({ position: 'fixed', top: 0, left: 0, visibility: 'hidden' });
+  const [state, setState] = React.useState({
+    style: { position: 'fixed', top: 0, left: 0, visibility: 'hidden' },
+    side: placement,
+  });
   React.useLayoutEffect(() => {
-    if (!open) { setStyle(s => (s.visibility === 'hidden' ? s : { ...s, visibility: 'hidden' })); return; }
+    if (!open) {
+      setState(s => (s.style.visibility === 'hidden' ? s : { ...s, style: { ...s.style, visibility: 'hidden' } }));
+      return;
+    }
     const place = () => {
       const anchor = anchorRef.current;
       const panel = panelRef.current;
@@ -77,7 +84,7 @@ export function useAnchoredStyle(anchorRef, panelRef, { open, placement = 'botto
 
       const next = { position: 'fixed', top: Math.round(top), left: Math.round(left), right: 'auto', bottom: 'auto', visibility: 'visible' };
       if (matchWidth) next.width = Math.round(a.width);
-      setStyle(next);
+      setState({ style: next, side });
     };
     place();
     // capture phase: any scrolling ancestor moves the anchor, not just the window
@@ -88,5 +95,5 @@ export function useAnchoredStyle(anchorRef, panelRef, { open, placement = 'botto
       window.removeEventListener('resize', place);
     };
   }, [open, placement, align, offset, matchWidth, anchorRef, panelRef]);
-  return style;
+  return state;
 }

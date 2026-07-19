@@ -26,7 +26,7 @@ export function ModelSelector({ models = [], value, onChange, side = 'up', style
   const [open, setOpen] = React.useState(false);
   const ref = React.useRef(null);
   const panelRef = React.useRef(null);
-  const anchored = useAnchoredStyle(ref, panelRef, { open, placement: side === 'down' ? 'bottom' : 'top', align: 'start' });
+  const { style: anchored } = useAnchoredStyle(ref, panelRef, { open, placement: side === 'down' ? 'bottom' : 'top', align: 'start' });
   React.useEffect(() => {
     if (!open) return;
     const away = e => { if (ref.current && !ref.current.contains(e.target)) setOpen(false); };

@@ -15,7 +15,7 @@ export function Popover({ trigger, children, align = 'left', width = 280, open: 
   const setOpen = v => { if (controlled == null) setInner(v); if (onOpenChange) onOpenChange(v); };
   const ref = React.useRef(null);
   const panelRef = React.useRef(null);
-  const anchored = useAnchoredStyle(ref, panelRef, { open, placement: 'bottom', align: align === 'right' ? 'end' : 'start', offset: 8 });
+  const { style: anchored } = useAnchoredStyle(ref, panelRef, { open, placement: 'bottom', align: align === 'right' ? 'end' : 'start', offset: 8 });
   const restoreFocus = () => {
     const t = ref.current && ref.current.querySelector('button,[href],[tabindex]');
     if (t) t.focus();

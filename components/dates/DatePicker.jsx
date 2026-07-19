@@ -22,7 +22,7 @@ export function DatePicker({ label, value, defaultValue, onChange, placeholder =
   const ref = React.useRef(null);
   const btnRef = React.useRef(null);
   const panelRef = React.useRef(null);
-  const anchored = useAnchoredStyle(ref, panelRef, { open, placement: 'bottom', align: 'start' });
+  const { style: anchored } = useAnchoredStyle(ref, panelRef, { open, placement: 'bottom', align: 'start' });
   React.useEffect(() => {
     if (!open) return;
     // the calendar is portaled out of `ref`, so look for it in the panel
