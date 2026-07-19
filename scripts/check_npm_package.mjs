@@ -5,6 +5,7 @@
 //
 //   node scripts/build_npm.mjs && node scripts/check_npm_package.mjs
 
+import fs from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath, pathToFileURL } from 'node:url';
 
@@ -35,6 +36,34 @@ for (const p of ['forms/Button.js', 'data/Table.js', 'overlay/Portal.js', 'feedb
   }
 }
 
+// Every asset the CSS references must actually be in the tarball. A dangling
+// url() is not a cosmetic miss: Vite and webpack fail the build outright when
+// they cannot resolve one, so shipping tokens/fonts.css without the fonts next
+// to it breaks every bundler consumer on import.
+const cssFiles = [];
+(function walk(dir) {
+  for (const e of fs.readdirSync(path.join(ROOT, 'dist', dir), { withFileTypes: true })) {
+    const rel = dir ? `${dir}/${e.name}` : e.name;
+    if (e.isDirectory()) walk(rel);
+    else if (e.name.endsWith('.css')) cssFiles.push(rel);
+  }
+})('');
+
+const dangling = [];
+for (const rel of cssFiles) {
+  const css = fs.readFileSync(path.join(ROOT, 'dist', rel), 'utf8');
+  for (const [, url] of css.matchAll(/url\(\s*['"]?([^'")]+)['"]?\s*\)/g)) {
+    if (/^(data:|https?:|\/\/)/.test(url)) continue;
+    const target = path.resolve(path.dirname(path.join(ROOT, 'dist', rel)), url.split(/[?#]/)[0]);
+    if (!fs.existsSync(target)) dangling.push(`${rel} -> ${url}`);
+  }
+}
+if (dangling.length) {
+  console.error('CSS references assets missing from the package:');
+  for (const d of dangling) console.error(`  ${d}`);
+  process.exit(1);
+}
+
 // internal helpers must NOT be on the public barrel
 const leaked = ['injectEfCss', 'mergeRefs', 'useAnchoredStyle', 'useFieldProps'].filter(n => n in barrel);
 if (leaked.length) {
@@ -42,4 +71,4 @@ if (leaked.length) {
   process.exit(1);
 }
 
-console.log(`dist/ imports cleanly: ${Object.keys(barrel).length} exports, deep imports resolve, no internals leaked`);
+console.log(`dist/ imports cleanly: ${Object.keys(barrel).length} exports, deep imports resolve, ${cssFiles.length} css files with no dangling assets, no internals leaked`);

@@ -94,6 +94,18 @@ for (const f of fs.readdirSync(path.join(ROOT, 'tokens')).sort()) {
   if (f.endsWith('.css')) files.set(`tokens/${f}`, fs.readFileSync(path.join(ROOT, 'tokens', f), 'utf8'));
 }
 
+// The fonts the token layer actually @font-faces. Without them tokens/fonts.css
+// points at ../assets/fonts/*.ttf and nothing resolves — and an unresolvable
+// url() in CSS is a hard build error in Vite and webpack, not a missing glyph.
+// So the package must carry them or it breaks every bundler consumer. All three
+// families are OFL, which permits redistribution provided the licence travels
+// with them, so the OFL texts ship too.
+const FONT_DIR = path.join(ROOT, 'assets', 'fonts');
+for (const f of fs.readdirSync(FONT_DIR).sort()) {
+  if (/\.(ttf|woff2?)$/.test(f)) files.set(`assets/fonts/${f}`, fs.readFileSync(path.join(FONT_DIR, f)));
+  else if (f.startsWith('OFL')) files.set(`assets/fonts/${f}`, fs.readFileSync(path.join(FONT_DIR, f), 'utf8'));
+}
+
 files.set('package.json', JSON.stringify({
   name: '@efolusi/meridian',
   version,
@@ -130,7 +142,12 @@ if (CHECK) {
   let stale = [];
   for (const [rel, content] of files) {
     const p = path.join(DIST, rel);
-    if (!fs.existsSync(p) || fs.readFileSync(p, 'utf8') !== content) stale.push(rel);
+    if (!fs.existsSync(p)) { stale.push(rel); continue; }
+    // Font files are Buffers; comparing them as utf8 would mangle both sides.
+    const same = Buffer.isBuffer(content)
+      ? fs.readFileSync(p).equals(content)
+      : fs.readFileSync(p, 'utf8') === content;
+    if (!same) stale.push(rel);
   }
   if (stale.length) {
     console.error(`dist/ is out of date (${stale.length} file(s)), e.g. ${stale.slice(0, 3).join(', ')}`);
