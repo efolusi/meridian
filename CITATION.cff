@@ -7,10 +7,12 @@ authors:
     website: "https://efolusi.com"
 repository-code: "https://github.com/efolusi/meridian"
 url: "https://meridian.efolusi.com"
+version: 1.4.0
+date-released: "2026-07-19"
 abstract: >-
-  Meridian is Efolusi's open-source design system: accessible React
-  components, design tokens, blocks, charts, and product showcases,
-  served browser-native with zero build step.
+  Meridian is a general-purpose open-source design system by Efolusi:
+  accessible React components, design tokens, blocks, charts, and full
+  example apps, served browser-native with zero build step.
 keywords:
   - design-system
   - react

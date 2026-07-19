@@ -6,12 +6,21 @@ All notable changes to Meridian are documented here. Format follows [Keep a Chan
 
 ## Unreleased
 
+Nothing yet.
+
+## 1.4.0 — 2026-07-19 — first public release
+
+The first tagged, installable version. Meridian is repositioned as a general-purpose design system, the accessibility claims it was making are now true, and the documented install path actually runs.
+
 ### Fixed
 - **Focus indicator now meets WCAG 1.4.11.** The ring was translucent and measured 2.02–2.11:1 (light) and 2.61–2.77:1 (dark) against every surface, failing the 3:1 non-text minimum on every focusable element. It is now opaque and two-layer — a surface-coloured offset plus `--focus-ring-color` — measuring 6.20–7.41:1 in both themes, and it holds over green and red control fills, which no single-ring colour could. Token-only fix; all 58 consuming components inherit it.
 - **Eight pairs that were invisible in dark mode** (1.02–1.09:1), each caused by a semantic token that inverts being set against a fixed ramp value: ChatMessage bot avatar, Steps done and active markers, Calendar selected day, PromptComposer and FileDrop focus borders, Sparkline neutral trend, Toast icon hover. All now 14.7–17:1 in both themes.
 - **Controls that did nothing no longer render.** PromptComposer shipped a paperclip and a mic button, and ChatMessage shipped copy and retry on every assistant message, all with no handler and no prop to attach one — visible, labelled and focusable, but inert. They now render only when given `onAttach` / `onVoice` / `onCopy` / `onRetry`.
 - **The install snippets now work.** The per-component snippet on all 104 component pages omitted React, so pasting it rendered nothing; the hosted snippet still said `YOUR-DEPLOYMENT`. Both now load react, react-dom and the bundle from `meridian.efolusi.com`.
 - **Registry items declare their dependencies.** All 113 items previously declared none, so a CLI install wrote an orphan file with unresolvable imports and no tokens. Items now carry `dependencies: ["react"]` and real `registryDependencies` (297 edges), rooted at a new `meridian-base` item that ships `styles.css` and the whole token layer.
+- `starters/dashboard/Customers.dc.html` referenced the non-existent `filter` icon; now `funnel`.
+- Removed the dead `--shadow-color` token (defined only in dark, referenced nowhere).
+- Dark mode: code blocks and the terminal used `--surface-inverse`, which flips to a light surface in dark theme while their text stayed light — unreadable. Added fixed `--surface-code`/`--text-code`/`--border-code` tokens (dark in both themes) and repointed CodeBlock and Terminal.
 
 ### Added
 - `--focus-ring-color`, `--focus-ring-offset`, `--focus-ring-danger` and `--danger-contrast` tokens (177 total). `--danger-contrast` fixes a white label on a solid danger fill that measured 3.45:1 in dark.
@@ -33,11 +42,6 @@ All notable changes to Meridian are documented here. Format follows [Keep a Chan
 - Repository reorganized into Meridian's own layout: `components/`, `blocks/`, `showcases/` (was `ui_kits/`), `starters/` (was `templates/`), `site/` (the docs website), with the system core (styles, tokens, assets, compiled bundle) unchanged at the root. See `ARCHITECTURE.md`.
 - Contrast: `--text-muted` (#948A74 → #746A55 light, #8F8574 → #9C9280 dark), `--success-600` (#3E8E4E → #2F7A40 light, #5FB86E dark), `--danger-600` (#DC2626 → #C81E1E) now meet WCAG AA (≥4.5:1) on page, card, and their status tints in both themes.
 - Docs corrected: icon count (65 → 107) and stroke width (assets are 2px; `Icon` renders 1.5px), deduplicated README data-component list, docs-site component counts (88/77 → 104).
-
-### Fixed
-- `starters/dashboard/Customers.dc.html` referenced the non-existent `filter` icon; now `funnel`.
-- Removed the dead `--shadow-color` token (defined only in dark, referenced nowhere).
-- Dark mode: code blocks and the terminal used `--surface-inverse`, which flips to a light surface in dark theme while their text stayed light — unreadable. Added fixed `--surface-code`/`--text-code`/`--border-code` tokens (dark in both themes) and repointed CodeBlock and Terminal.
 
 ## 1.3.0 — 2026-07-17 — AI-native component expansion
 

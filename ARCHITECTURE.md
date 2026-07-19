@@ -42,6 +42,28 @@ Three principles produced this layout:
 
 Everything else is authored by hand. Never edit generated files directly, with one documented exception: when a source string that is embedded in the bundle must change before a recompile is possible, apply the identical replacement to both files in the same commit ("lockstep edit") and note it in the commit message.
 
+### The bundle format, for whoever vendors the compiler in
+
+The compiler living outside this repo is the project's single biggest structural limit: an outside contributor cannot regenerate `_ds_bundle.js`, so component PRs cannot be verified by CI or by the contributor. Replacing or vendoring it is the highest-value work available. This is the format it emits, recovered by reading the artifact, so a replacement can be checked against the committed bundle.
+
+**File shape.** Line 1 is `/* @ds-bundle: {…} */` carrying `format: 4`, `namespace`, `version`, `components` (one entry per exported name, `{name, sourcePath}`), `sourceHashes` (path → first 12 hex of the source's SHA-256, keys sorted by path), `inlinedExternals`, and `unexposedExports` (exports deliberately kept off the public namespace: `injectEfCss`, `computeDiff`, `formatTime`). Then a single IIFE that defines `__ds_ns` (the window global), a private `__ds_scope = {}`, and `__ds_ns.__errors`. Then one unit per source file. Then an epilogue of `__ds_ns.X = __ds_scope.X;` for every exposed export.
+
+**Unit shape.** Each unit is:
+
+```js
+// <repo-relative source path>
+try { (() => {
+<source compiled with Babel preset "react", imports stripped>
+Object.assign(__ds_scope, { <exported names> });
+})(); } catch (e) { __ds_ns.__errors.push({ path: "<path>", error: String((e && e.message) || e) }); }
+```
+
+Bare imports (`react`) are dropped — React is read off the global. Relative imports are erased and every reference to the imported binding is rewritten to `__ds_scope.<local>` (including JSX identifiers, which become `<__ds_scope.Name>`). A unit that throws is caught and recorded in `__ds_ns.__errors` rather than taking the page down.
+
+**Unit order** is dependency-respecting: components before showcases, and within that a file is emitted only once its relative imports have been. Order is not load-bearing at runtime — every cross-unit reference resolves inside a function body, not at unit evaluation — so a replacement compiler may order differently without changing behaviour.
+
+`scripts/check_bundle_hashes.py` verifies the recorded hashes against the sources. Once the compiler is in-repo, upgrade that gate from self-attestation to reproduction: run the compiler in CI and `git diff --exit-code -- _ds_bundle.js`, the way the registry and token generators are already gated, and delete the lockstep-edit exception above.
+
 ## The invariants
 
 1. **Bundle lockstep.** Any change to `components/**/*.jsx` or `showcases/**/*.jsx` requires a matching `_ds_bundle.js` update (recompile, or a lockstep edit as above). Source-only component edits silently ship stale behavior.
