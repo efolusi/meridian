@@ -10,4 +10,4 @@ export interface IconProps {
   className?: string;
   style?: React.CSSProperties;
 }
-export declare function Icon(props: IconProps): JSX.Element;
+export declare function Icon(props: IconProps): React.JSX.Element;

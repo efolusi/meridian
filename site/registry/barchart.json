@@ -19,7 +19,7 @@
     {
       "path": "components/data/BarChart.d.ts",
       "type": "registry:component",
-      "content": "export interface BarChartProps {\n  /** Numbers, or { value, label } for hover titles */\n  data: Array<number | { value: number; label?: string }>;\n  /** @default 140 */\n  height?: number;\n  /** Ink-fill the last N bars */\n  highlightLast?: number;\n  /** X-axis labels, spread edge to edge */\n  labels?: string[];\n  formatValue?: (v: number) => string;\n  style?: React.CSSProperties;\n  className?: string;\n}\nexport declare function BarChart(props: BarChartProps): JSX.Element;\n"
+      "content": "export interface BarChartProps {\n  /** Numbers, or { value, label } for hover titles */\n  data: Array<number | { value: number; label?: string }>;\n  /** @default 140 */\n  height?: number;\n  /** Ink-fill the last N bars */\n  highlightLast?: number;\n  /** X-axis labels, spread edge to edge */\n  labels?: string[];\n  formatValue?: (v: number) => string;\n  style?: React.CSSProperties;\n  className?: string;\n}\nexport declare function BarChart(props: BarChartProps): React.JSX.Element;\n"
     },
     {
       "path": "components/data/BarChart.prompt.md",

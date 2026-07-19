@@ -20,7 +20,7 @@
     {
       "path": "components/navigation/SegmentedControl.d.ts",
       "type": "registry:component",
-      "content": "export interface SegmentOption {\n  id: string;\n  label: React.ReactNode;\n  /** Lucide icon name */\n  icon?: string;\n  disabled?: boolean;\n}\nexport interface SegmentedControlProps {\n  /** Options as strings or objects */\n  options: Array<string | SegmentOption>;\n  /** Active option id (controlled) */\n  value: string;\n  onChange?: (id: string) => void;\n  style?: React.CSSProperties;\n  className?: string;\n}\nexport declare function SegmentedControl(props: SegmentedControlProps): JSX.Element;\n"
+      "content": "export interface SegmentOption {\n  id: string;\n  label: React.ReactNode;\n  /** Lucide icon name */\n  icon?: string;\n  disabled?: boolean;\n}\nexport interface SegmentedControlProps {\n  /** Options as strings or objects */\n  options: Array<string | SegmentOption>;\n  /** Active option id (controlled) */\n  value: string;\n  onChange?: (id: string) => void;\n  style?: React.CSSProperties;\n  className?: string;\n}\nexport declare function SegmentedControl(props: SegmentedControlProps): React.JSX.Element;\n"
     },
     {
       "path": "components/navigation/SegmentedControl.prompt.md",

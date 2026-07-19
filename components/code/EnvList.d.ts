@@ -11,4 +11,4 @@ export interface EnvListProps {
   style?: React.CSSProperties;
   className?: string;
 }
-export declare function EnvList(props: EnvListProps): JSX.Element;
+export declare function EnvList(props: EnvListProps): React.JSX.Element;

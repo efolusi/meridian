@@ -21,7 +21,7 @@
     {
       "path": "components/display/Toolbar.d.ts",
       "type": "registry:component",
-      "content": "export interface ToolbarItem {\n  id: string;\n  /** Lucide icon */\n  icon?: string;\n  label?: React.ReactNode;\n  /** Tooltip text */\n  tip?: string;\n  disabled?: boolean;\n  onClick?: () => void;\n}\nexport interface ToolbarProps {\n  /** Items; 'separator' inserts a divider */\n  items: Array<ToolbarItem | 'separator'>;\n  /** Active id or ids (toggle styling) */\n  value?: string | string[];\n  onChange?: (id: string) => void;\n  /** aria-label */\n  label?: string;\n  style?: React.CSSProperties;\n  className?: string;\n}\nexport declare function Toolbar(props: ToolbarProps): JSX.Element;\n"
+      "content": "export interface ToolbarItem {\n  id: string;\n  /** Lucide icon */\n  icon?: string;\n  label?: React.ReactNode;\n  /** Tooltip text */\n  tip?: string;\n  disabled?: boolean;\n  onClick?: () => void;\n}\nexport interface ToolbarProps {\n  /** Items; 'separator' inserts a divider */\n  items: Array<ToolbarItem | 'separator'>;\n  /** Active id or ids (toggle styling) */\n  value?: string | string[];\n  onChange?: (id: string) => void;\n  /** aria-label */\n  label?: string;\n  style?: React.CSSProperties;\n  className?: string;\n}\nexport declare function Toolbar(props: ToolbarProps): React.JSX.Element;\n"
     },
     {
       "path": "components/display/Toolbar.prompt.md",

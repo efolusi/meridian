@@ -4,4 +4,4 @@ export interface KbdProps {
   style?: React.CSSProperties;
   className?: string;
 }
-export declare function Kbd(props: KbdProps): JSX.Element;
+export declare function Kbd(props: KbdProps): React.JSX.Element;

@@ -20,7 +20,7 @@
     {
       "path": "components/display/Tag.d.ts",
       "type": "registry:component",
-      "content": "export interface TagProps extends React.HTMLAttributes<HTMLSpanElement> {\n  /** Lucide icon name, leading */\n  icon?: string;\n  /** Shows a remove \u2715 button */\n  onRemove?: (e: React.MouseEvent) => void;\n  onClick?: (e: React.MouseEvent) => void;\n  children?: React.ReactNode;\n}\nexport declare function Tag(props: TagProps): JSX.Element;\n"
+      "content": "export interface TagProps extends React.HTMLAttributes<HTMLSpanElement> {\n  /** Lucide icon name, leading */\n  icon?: string;\n  /** Shows a remove \u2715 button */\n  onRemove?: (e: React.MouseEvent) => void;\n  onClick?: (e: React.MouseEvent) => void;\n  children?: React.ReactNode;\n}\nexport declare function Tag(props: TagProps): React.JSX.Element;\n"
     },
     {
       "path": "components/display/Tag.prompt.md",

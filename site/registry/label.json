@@ -19,7 +19,7 @@
     {
       "path": "components/forms/Label.d.ts",
       "type": "registry:component",
-      "content": "export interface LabelProps {\n  htmlFor?: string;\n  /** Red asterisk */\n  required?: boolean;\n  /** Muted inline hint after the text */\n  hint?: React.ReactNode;\n  children: React.ReactNode;\n  style?: React.CSSProperties;\n  className?: string;\n}\nexport declare function Label(props: LabelProps): JSX.Element;\n"
+      "content": "export interface LabelProps {\n  htmlFor?: string;\n  /** Red asterisk */\n  required?: boolean;\n  /** Muted inline hint after the text */\n  hint?: React.ReactNode;\n  children: React.ReactNode;\n  style?: React.CSSProperties;\n  className?: string;\n}\nexport declare function Label(props: LabelProps): React.JSX.Element;\n"
     },
     {
       "path": "components/forms/Label.prompt.md",

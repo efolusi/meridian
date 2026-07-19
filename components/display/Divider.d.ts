@@ -6,4 +6,4 @@ export interface DividerProps {
   style?: React.CSSProperties;
   className?: string;
 }
-export declare function Divider(props: DividerProps): JSX.Element;
+export declare function Divider(props: DividerProps): React.JSX.Element;

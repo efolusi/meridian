@@ -20,7 +20,7 @@
     {
       "path": "components/ai/Task.d.ts",
       "type": "registry:component",
-      "content": "export interface TaskItem {\n  /** Lucide icon name; omit for a dot */\n  icon?: string;\n  label: React.ReactNode;\n  /** Muted inline detail after the label */\n  detail?: React.ReactNode;\n}\nexport interface TaskProps {\n  items: TaskItem[];\n  /** Pulses the last row while the agent works */\n  streaming?: boolean;\n  style?: React.CSSProperties;\n  className?: string;\n}\nexport declare function Task(props: TaskProps): JSX.Element;\n"
+      "content": "export interface TaskItem {\n  /** Lucide icon name; omit for a dot */\n  icon?: string;\n  label: React.ReactNode;\n  /** Muted inline detail after the label */\n  detail?: React.ReactNode;\n}\nexport interface TaskProps {\n  items: TaskItem[];\n  /** Pulses the last row while the agent works */\n  streaming?: boolean;\n  style?: React.CSSProperties;\n  className?: string;\n}\nexport declare function Task(props: TaskProps): React.JSX.Element;\n"
     },
     {
       "path": "components/ai/Task.prompt.md",

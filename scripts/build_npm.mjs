@@ -79,7 +79,10 @@ for (const { group, name } of sources()) {
   if (!names.length) continue;
   barrel.push(`export { ${names.join(', ')} } from './${group}/${name}.js';`);
   if (fs.existsSync(path.join(ROOT, 'components', group, `${name}.d.ts`))) {
-    barrelTypes.push(`export * from './${group}/${name}.d.ts';`);
+    // Point at the implementation path, not the .d.ts — TypeScript resolves the
+    // sibling declaration itself, and importing a declaration file directly is
+    // an error (TS2846) for anyone consuming the package's types.
+    barrelTypes.push(`export * from './${group}/${name}.js';`);
   }
 }
 files.set('index.js', barrel.join('\n') + '\n');

@@ -13,4 +13,4 @@ export interface CarouselProps {
   style?: React.CSSProperties;
   className?: string;
 }
-export declare function Carousel(props: CarouselProps): JSX.Element;
+export declare function Carousel(props: CarouselProps): React.JSX.Element;

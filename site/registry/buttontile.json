@@ -20,7 +20,7 @@
     {
       "path": "components/forms/ButtonTile.d.ts",
       "type": "registry:component",
-      "content": "export interface ButtonTileProps {\n  /** Lucide icon */\n  icon?: string;\n  title: React.ReactNode;\n  description?: React.ReactNode;\n  selected?: boolean;\n  disabled?: boolean;\n  onClick?: (e: React.MouseEvent) => void;\n  style?: React.CSSProperties;\n  className?: string;\n}\nexport declare function ButtonTile(props: ButtonTileProps): JSX.Element;\n\nexport interface ButtonTileGroupProps {\n  /** @default 3 */\n  columns?: number;\n  children?: React.ReactNode;\n  style?: React.CSSProperties;\n  className?: string;\n}\nexport declare function ButtonTileGroup(props: ButtonTileGroupProps): JSX.Element;\n"
+      "content": "export interface ButtonTileProps {\n  /** Lucide icon */\n  icon?: string;\n  title: React.ReactNode;\n  description?: React.ReactNode;\n  selected?: boolean;\n  disabled?: boolean;\n  onClick?: (e: React.MouseEvent) => void;\n  style?: React.CSSProperties;\n  className?: string;\n}\nexport declare function ButtonTile(props: ButtonTileProps): React.JSX.Element;\n\nexport interface ButtonTileGroupProps {\n  /** @default 3 */\n  columns?: number;\n  children?: React.ReactNode;\n  style?: React.CSSProperties;\n  className?: string;\n}\nexport declare function ButtonTileGroup(props: ButtonTileGroupProps): React.JSX.Element;\n"
     },
     {
       "path": "components/forms/ButtonTile.prompt.md",

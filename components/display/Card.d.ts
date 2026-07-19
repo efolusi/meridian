@@ -1,4 +1,4 @@
-export interface CardProps extends React.HTMLAttributes<HTMLDivElement> {
+export interface CardProps extends Omit<React.HTMLAttributes<HTMLDivElement>, 'title'> {
   /** Header title (header renders only if title or actions set) */
   title?: React.ReactNode;
   subtitle?: React.ReactNode;
@@ -14,4 +14,4 @@ export interface CardProps extends React.HTMLAttributes<HTMLDivElement> {
   interactive?: boolean;
   children?: React.ReactNode;
 }
-export declare function Card(props: CardProps): JSX.Element;
+export declare function Card(props: CardProps): React.JSX.Element;

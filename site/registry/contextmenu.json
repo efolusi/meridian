@@ -21,7 +21,7 @@
     {
       "path": "components/overlay/ContextMenu.d.ts",
       "type": "registry:component",
-      "content": "export interface ContextMenuItem { id: string; label: React.ReactNode; /** Lucide icon name */ icon?: string; kbd?: string; danger?: boolean; disabled?: boolean; onClick?: () => void; }\nexport interface ContextMenuProps {\n  /** Right-click target */\n  children: React.ReactNode;\n  items: Array<ContextMenuItem | 'separator'>;\n  /** Fires with the picked item id */\n  onSelect?: (id: string) => void;\n  style?: React.CSSProperties;\n  className?: string;\n}\nexport declare function ContextMenu(props: ContextMenuProps): JSX.Element;\n"
+      "content": "export interface ContextMenuItem { id: string; label: React.ReactNode; /** Lucide icon name */ icon?: string; kbd?: string; danger?: boolean; disabled?: boolean; onClick?: () => void; }\nexport interface ContextMenuProps {\n  /** Right-click target */\n  children: React.ReactNode;\n  items: Array<ContextMenuItem | 'separator'>;\n  /** Fires with the picked item id */\n  onSelect?: (id: string) => void;\n  style?: React.CSSProperties;\n  className?: string;\n}\nexport declare function ContextMenu(props: ContextMenuProps): React.JSX.Element;\n"
     },
     {
       "path": "components/overlay/ContextMenu.prompt.md",

@@ -23,4 +23,4 @@ export interface ConfirmationProps {
   style?: React.CSSProperties;
   className?: string;
 }
-export declare function Confirmation(props: ConfirmationProps): JSX.Element;
+export declare function Confirmation(props: ConfirmationProps): React.JSX.Element;

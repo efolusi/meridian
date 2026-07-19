@@ -15,4 +15,4 @@ export interface PromptStepsProps {
   style?: React.CSSProperties;
   className?: string;
 }
-export declare function PromptSteps(props: PromptStepsProps): JSX.Element;
+export declare function PromptSteps(props: PromptStepsProps): React.JSX.Element;

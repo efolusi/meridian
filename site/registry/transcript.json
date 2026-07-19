@@ -20,7 +20,7 @@
     {
       "path": "components/ai/Transcript.d.ts",
       "type": "registry:component",
-      "content": "export interface TranscriptWord {\n  /** Start time of the word in seconds */\n  t: number;\n  w: string;\n}\nexport interface TranscriptItem {\n  start: number;\n  end?: number;\n  speaker?: string;\n  text?: React.ReactNode;\n  /** Word-level timings for karaoke highlight */\n  words?: TranscriptWord[];\n  /** Italic live-caption styling */\n  interim?: boolean;\n}\nexport interface TranscriptProps {\n  title?: string;\n  items: TranscriptItem[];\n  /** Drive from Player onTimeChange */\n  currentTime?: number;\n  onJump?: (seconds: number) => void;\n  height?: number;\n  defaultAutoScroll?: boolean;\n  style?: React.CSSProperties;\n  className?: string;\n}\nexport declare function Transcript(props: TranscriptProps): JSX.Element;\n"
+      "content": "export interface TranscriptWord {\n  /** Start time of the word in seconds */\n  t: number;\n  w: string;\n}\nexport interface TranscriptItem {\n  start: number;\n  end?: number;\n  speaker?: string;\n  text?: React.ReactNode;\n  /** Word-level timings for karaoke highlight */\n  words?: TranscriptWord[];\n  /** Italic live-caption styling */\n  interim?: boolean;\n}\nexport interface TranscriptProps {\n  title?: string;\n  items: TranscriptItem[];\n  /** Drive from Player onTimeChange */\n  currentTime?: number;\n  onJump?: (seconds: number) => void;\n  height?: number;\n  defaultAutoScroll?: boolean;\n  style?: React.CSSProperties;\n  className?: string;\n}\nexport declare function Transcript(props: TranscriptProps): React.JSX.Element;\n"
     },
     {
       "path": "components/ai/Transcript.prompt.md",

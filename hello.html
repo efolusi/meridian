@@ -49,7 +49,7 @@ function App() {
           <Badge tone="success" dot>Healthy</Badge>
           <Badge tone="warning">2 warnings</Badge>
         </div>
-        <Input label="Your name" placeholder="Ada Obi" value={name} onChange={setName} style={{ marginTop: 18 }} />
+        <Input label="Your name" placeholder="Ada Obi" value={name} onChange={e => setName(e.target.value)} style={{ marginTop: 18 }} />
       </Card>
 
       <div style={{ display: 'flex', gap: 10, marginTop: 22 }}>

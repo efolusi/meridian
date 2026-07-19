@@ -17,4 +17,4 @@ export interface AgentRunProps {
   style?: React.CSSProperties;
   className?: string;
 }
-export declare function AgentRun(props: AgentRunProps): JSX.Element;
+export declare function AgentRun(props: AgentRunProps): React.JSX.Element;

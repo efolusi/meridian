@@ -77,12 +77,12 @@ class Component extends DCLogic {
         mk('App shell', 'app-shell', 'SideNav, TopNav, and an empty content well — the scaffold every product screen starts from.', 620),
         mk('Login', 'login', 'Auth card with SSO, email + password, and a create-workspace footer.', 600),
         mk('Stats dashboard', 'stats-dashboard', 'KPI row, weekly trend chart, and a top-agents table.', 660),
-        mk('Settings', 'settings', 'Sectioned form page with sticky actions and a danger zone.', 720),
+        mk('Settings', 'settings', 'Sectioned form page with tabs, grouped rows, and a danger zone.', 720),
         mk('Hero', 'hero', 'Marketing opener: eyebrow, display headline, dual CTA, proof strip.', 560),
         mk('Pricing', 'pricing', 'Three-tier pricing with a featured plan and feature checklists.', 660),
-        mk('FAQ', 'faq', 'Accordion FAQ with a contact escape hatch.', 560),
+        mk('FAQ', 'faq', 'Accordion FAQ on a text measure.', 560),
         mk('404 page', 'not-found', 'Full-page not-found state with a way home.', 490),
-        mk('Activity feed', 'activity-feed', 'Timeline of workspace events with actor avatars and status.', 560),
+        mk('Activity feed', 'activity-feed', 'Timeline of workspace events with event icons and status badges.', 560),
       ],
       toggleTheme: () => {
         const next = this.state.dark ? 'light' : 'dark';

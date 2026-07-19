@@ -4,7 +4,7 @@ Copyable admin-console journey: overview → customers → customer detail → s
 
 - `Dashboard.dc.html` — overview: stats, usage chart, activity
 - `Customers.dc.html` — filterable accounts table
-- `CustomerDetail.dc.html` — single account: plan, usage, invoices
+- `CustomerDetail.dc.html` — single account: plan, usage, activity
 - `ConsoleSettings.dc.html` — workspace settings tabs
 
 Showcase twin: `showcases/console/` covers the same category as plain JSX screens you can lift into a React app. When a screen changes in one, update the other.

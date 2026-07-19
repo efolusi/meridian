@@ -20,7 +20,7 @@
     {
       "path": "components/forms/Switch.d.ts",
       "type": "registry:component",
-      "content": "export interface SwitchProps extends React.InputHTMLAttributes<HTMLInputElement> {\n  label?: React.ReactNode;\n  /** @default 'md' */\n  size?: 'sm' | 'md';\n}\nexport declare function Switch(props: SwitchProps): JSX.Element;\n"
+      "content": "export interface SwitchProps extends Omit<React.InputHTMLAttributes<HTMLInputElement>, 'size'> {\n  label?: React.ReactNode;\n  /** @default 'md' */\n  size?: 'sm' | 'md';\n}\nexport declare function Switch(props: SwitchProps): React.JSX.Element;\n"
     },
     {
       "path": "components/forms/Switch.prompt.md",

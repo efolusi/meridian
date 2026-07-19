@@ -14,4 +14,4 @@ export interface SourceCardProps {
   style?: React.CSSProperties;
   className?: string;
 }
-export declare function SourceCard(props: SourceCardProps): JSX.Element;
+export declare function SourceCard(props: SourceCardProps): React.JSX.Element;

@@ -20,7 +20,7 @@
     {
       "path": "components/ai/RichComposer.d.ts",
       "type": "registry:component",
-      "content": "export interface ComposerItem {\n  id: string;\n  label: string;\n  icon?: string;\n  description?: string;\n  group?: string;\n  keywords?: string[];\n}\nexport interface RichComposerProps {\n  placeholder?: string;\n  /** @-mention items, inserted as atomic chips */\n  mentions?: ComposerItem[];\n  /** /-command items, executed via onCommand */\n  commands?: ComposerItem[];\n  hint?: React.ReactNode;\n  /** Left toolbar slot */\n  actions?: React.ReactNode;\n  disabled?: boolean;\n  autoFocus?: boolean;\n  onSubmit?: (value: { text: string; mentions: { id: string; label: string }[] }) => void;\n  onCommand?: (item: ComposerItem) => void;\n  style?: React.CSSProperties;\n  className?: string;\n}\nexport declare function RichComposer(props: RichComposerProps): JSX.Element;\n"
+      "content": "export interface ComposerItem {\n  id: string;\n  label: string;\n  icon?: string;\n  description?: string;\n  group?: string;\n  keywords?: string[];\n}\nexport interface RichComposerProps {\n  placeholder?: string;\n  /** @-mention items, inserted as atomic chips */\n  mentions?: ComposerItem[];\n  /** /-command items, executed via onCommand */\n  commands?: ComposerItem[];\n  hint?: React.ReactNode;\n  /** Left toolbar slot */\n  actions?: React.ReactNode;\n  disabled?: boolean;\n  autoFocus?: boolean;\n  onSubmit?: (value: { text: string; mentions: { id: string; label: string }[] }) => void;\n  onCommand?: (item: ComposerItem) => void;\n  style?: React.CSSProperties;\n  className?: string;\n}\nexport declare function RichComposer(props: RichComposerProps): React.JSX.Element;\n"
     },
     {
       "path": "components/ai/RichComposer.prompt.md",

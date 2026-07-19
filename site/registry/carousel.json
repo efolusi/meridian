@@ -20,7 +20,7 @@
     {
       "path": "components/display/Carousel.d.ts",
       "type": "registry:component",
-      "content": "export interface CarouselProps {\n  /** One slide per child */\n  children: React.ReactNode;\n  /** CSS width of each item @default '280px' */\n  itemWidth?: string;\n  /** Px between items @default 14 */\n  gap?: number;\n  /** Prev / next arrows @default true */\n  showControls?: boolean;\n  /** Position dots below @default true */\n  showDots?: boolean;\n  ariaLabel?: string;\n  style?: React.CSSProperties;\n  className?: string;\n}\nexport declare function Carousel(props: CarouselProps): JSX.Element;\n"
+      "content": "export interface CarouselProps {\n  /** One slide per child */\n  children: React.ReactNode;\n  /** CSS width of each item @default '280px' */\n  itemWidth?: string;\n  /** Px between items @default 14 */\n  gap?: number;\n  /** Prev / next arrows @default true */\n  showControls?: boolean;\n  /** Position dots below @default true */\n  showDots?: boolean;\n  ariaLabel?: string;\n  style?: React.CSSProperties;\n  className?: string;\n}\nexport declare function Carousel(props: CarouselProps): React.JSX.Element;\n"
     },
     {
       "path": "components/display/Carousel.prompt.md",

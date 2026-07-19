@@ -15,14 +15,17 @@ All notable changes to Meridian are documented here. Format follows [Keep a Chan
 - **An ESM npm build** (`npm run build:npm` → `@efolusi/meridian` in `dist/`), verified in CI by importing it. Not published to the registry yet.
 - **The compiler**, vendored in as `scripts/build_bundle.mjs`; it reproduces the historical bundle byte for byte, and CI now rebuilds and diffs rather than trusting a recorded hash.
 - Browser-support and RTL statements in `guidelines/accessibility.md` — including the honest note that RTL is *not* supported in 1.x.
+- **A types gate** (`npm run check:types`, `scripts/check_types.mjs`). The `.d.ts` layer is hand-maintained, so nothing forced it to stay valid; it now compiles in CI, along with the emitted package's type barrel imported the way a consumer would.
 
 ### Changed
-- Every component forwards unknown props to its root (103 of 106), and the nine you most often need a handle on forward refs.
+- Every component forwards unknown props to its root (104 of 106), and the nine you most often need a handle on forward refs.
 - The six hand-rolled toast queues in the showcases are gone; tones are chosen per call instead of everything being green.
 
 ### Fixed
-- The manifest's `components` and `tokens` inventories are generated rather than hand-maintained. They had drifted, which silently produced no registry item for Portal and dropped it from the dependency list of all seven overlays that import it.
+- The manifest's `components` and `tokens` inventories are generated rather than hand-maintained. They had drifted, which silently produced no registry item for Portal and dropped it from the dependency list of all eight overlays that import it.
 - `Portal` imported `react-dom` explicitly instead of relying on a window global, which only worked inside the bundle.
+- **The published types now compile for consumers.** `JSX.Element` was written against the global `JSX` namespace that `@types/react` 19 removed, so every declaration broke for anyone on React 19 — which `peerDependencies: react >=18` invites. All 102 uses are now `React.JSX.Element`, valid on both majors. Six interfaces also contradicted the DOM attributes they extended (`Card.title` as a node vs `string`; `size` as a scale vs `number` on Input, InputGroup, Select and Switch; `InputGroup.prefix` as a node), and the package's type barrel re-exported `.d.ts` paths, which TypeScript rejects outright (TS2846).
+- **Repo-wide factual drift.** An audit of every surface against measured counts fixed 83 confirmed items: component inventories that listed 104 of 106 (README omitted `FormField` and `Portal` from their groups), a stale icon count of 65 against the 108 that ship, `unexposedExports` documented as three helpers when the bundle carries seven, `kits`/`templates` named in the license scope years after they became `showcases`/`starters`, ROADMAP entries still listing shipped work as missing, docs-site meta and JSON-LD counts, `.prompt.md` examples referencing an icon that does not exist, and the last of the internal-product naming. Released changelog entries were deliberately left alone: they record what was true at the time.
 
 ## 1.4.0 — 2026-07-19 — first public release
 

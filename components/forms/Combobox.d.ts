@@ -14,4 +14,4 @@ export interface ComboboxProps {
   style?: React.CSSProperties;
   className?: string;
 }
-export declare function Combobox(props: ComboboxProps): JSX.Element;
+export declare function Combobox(props: ComboboxProps): React.JSX.Element;

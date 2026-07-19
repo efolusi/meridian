@@ -11,4 +11,4 @@ export interface DrawerProps {
   side?: 'left' | 'right';
   children?: React.ReactNode;
 }
-export declare function Drawer(props: DrawerProps): JSX.Element;
+export declare const Drawer: React.ForwardRefExoticComponent<DrawerProps & React.RefAttributes<HTMLDivElement>>;

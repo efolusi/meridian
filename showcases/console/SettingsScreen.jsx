@@ -42,7 +42,7 @@ function GeneralTab({ notify }) {
 const MEMBERS = [['Ada Obi', 'ada@acme.co', 'Owner'], ['Femi Alade', 'femi@acme.co', 'Admin'], ['June Park', 'june@acme.co', 'Member'], ['Sol Reyes', 'sol@acme.co', 'Member']];
 function MembersTab({ notify }) {
   return (
-    <Card padding={0} title="Members" subtitle="3 of 5 seats used on the Growth plan." actions={<Button size="sm" iconLeft="plus" onClick={() => notify('Invite sent', "We'll email them a join link.")}>Invite</Button>}>
+    <Card padding={0} title="Members" subtitle="4 of 5 seats used on the Growth plan." actions={<Button size="sm" iconLeft="plus" onClick={() => notify('Invite sent', "We'll email them a join link.")}>Invite</Button>}>
       <div>
         {MEMBERS.map(([name, email, role]) => (
           <div key={email} style={{ display: 'flex', alignItems: 'center', gap: 12, padding: '12px 20px', borderTop: '1px solid var(--sand-100)' }}>

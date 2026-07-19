@@ -20,7 +20,7 @@
     {
       "path": "components/ai/WebPreview.d.ts",
       "type": "registry:component",
-      "content": "export interface WebPreviewLog {\n  /** 'log' | 'info' | 'warn' | 'error' */\n  level?: 'log' | 'info' | 'warn' | 'error';\n  text: React.ReactNode;\n}\nexport interface WebPreviewProps {\n  url?: string;\n  /** Stage height in px. Default 340 */\n  height?: number;\n  /** Console entries; error count badges the toggle */\n  logs?: WebPreviewLog[];\n  defaultConsoleOpen?: boolean;\n  /** Rendered instead of an iframe (mock content) */\n  children?: React.ReactNode;\n  onUrlChange?: (url: string) => void;\n  style?: React.CSSProperties;\n  className?: string;\n}\nexport declare function WebPreview(props: WebPreviewProps): JSX.Element;\n"
+      "content": "export interface WebPreviewLog {\n  /** 'log' | 'info' | 'warn' | 'error' */\n  level?: 'log' | 'info' | 'warn' | 'error';\n  text: React.ReactNode;\n}\nexport interface WebPreviewProps {\n  url?: string;\n  /** Stage height in px. Default 340 */\n  height?: number;\n  /** Console entries; error count badges the toggle */\n  logs?: WebPreviewLog[];\n  defaultConsoleOpen?: boolean;\n  /** Rendered instead of an iframe (mock content) */\n  children?: React.ReactNode;\n  onUrlChange?: (url: string) => void;\n  style?: React.CSSProperties;\n  className?: string;\n}\nexport declare function WebPreview(props: WebPreviewProps): React.JSX.Element;\n"
     },
     {
       "path": "components/ai/WebPreview.prompt.md",

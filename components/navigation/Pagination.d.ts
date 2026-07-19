@@ -6,4 +6,4 @@ export interface PaginationProps {
   style?: React.CSSProperties;
   className?: string;
 }
-export declare function Pagination(props: PaginationProps): JSX.Element;
+export declare function Pagination(props: PaginationProps): React.JSX.Element;

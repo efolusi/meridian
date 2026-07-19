@@ -20,7 +20,7 @@
     {
       "path": "components/display/TreeList.d.ts",
       "type": "registry:component",
-      "content": "export interface TreeNode {\n  id: string;\n  label: React.ReactNode;\n  /** Lucide icon */\n  icon?: string;\n  /** Right-aligned mono count */\n  count?: number;\n  children?: TreeNode[];\n}\nexport interface TreeListProps {\n  nodes: TreeNode[];\n  /** Controlled selected id */\n  value?: string;\n  onSelect?: (id: string, node: TreeNode) => void;\n  /** Branch ids open initially (default: all top-level) */\n  defaultOpen?: string[];\n  style?: React.CSSProperties;\n  className?: string;\n}\nexport declare function TreeList(props: TreeListProps): JSX.Element;\n"
+      "content": "export interface TreeNode {\n  id: string;\n  label: React.ReactNode;\n  /** Lucide icon */\n  icon?: string;\n  /** Right-aligned mono count */\n  count?: number;\n  children?: TreeNode[];\n}\nexport interface TreeListProps {\n  nodes: TreeNode[];\n  /** Controlled selected id */\n  value?: string;\n  onSelect?: (id: string, node: TreeNode) => void;\n  /** Branch ids open initially (default: all top-level) */\n  defaultOpen?: string[];\n  style?: React.CSSProperties;\n  className?: string;\n}\nexport declare function TreeList(props: TreeListProps): React.JSX.Element;\n"
     },
     {
       "path": "components/display/TreeList.prompt.md",

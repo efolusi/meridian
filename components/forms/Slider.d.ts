@@ -15,4 +15,4 @@ export interface SliderProps {
   style?: React.CSSProperties;
   className?: string;
 }
-export declare function Slider(props: SliderProps): JSX.Element;
+export declare function Slider(props: SliderProps): React.JSX.Element;

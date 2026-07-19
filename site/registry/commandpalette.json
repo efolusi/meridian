@@ -21,7 +21,7 @@
     {
       "path": "components/overlay/CommandPalette.d.ts",
       "type": "registry:component",
-      "content": "export interface CommandItem {\n  id: string;\n  label: string;\n  /** Lucide icon name */\n  icon?: string;\n  /** Right-aligned hint, e.g. a shortcut or product name */\n  hint?: string;\n}\nexport interface CommandGroup {\n  group: string;\n  items: CommandItem[];\n}\nexport interface CommandPaletteProps {\n  open: boolean;\n  onClose?: () => void;\n  groups: CommandGroup[];\n  onSelect?: (id: string) => void;\n  /** @default 'Type a command or search\u2026' */\n  placeholder?: string;\n}\nexport declare function CommandPalette(props: CommandPaletteProps): JSX.Element;\n"
+      "content": "export interface CommandItem {\n  id: string;\n  label: string;\n  /** Lucide icon name */\n  icon?: string;\n  /** Right-aligned hint, e.g. a shortcut or product name */\n  hint?: string;\n}\nexport interface CommandGroup {\n  group: string;\n  items: CommandItem[];\n}\nexport interface CommandPaletteProps {\n  open: boolean;\n  onClose?: () => void;\n  groups: CommandGroup[];\n  onSelect?: (id: string) => void;\n  /** @default 'Type a command or search\u2026' */\n  placeholder?: string;\n}\nexport declare function CommandPalette(props: CommandPaletteProps): React.JSX.Element;\n"
     },
     {
       "path": "components/overlay/CommandPalette.prompt.md",

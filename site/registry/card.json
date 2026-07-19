@@ -19,7 +19,7 @@
     {
       "path": "components/display/Card.d.ts",
       "type": "registry:component",
-      "content": "export interface CardProps extends React.HTMLAttributes<HTMLDivElement> {\n  /** Header title (header renders only if title or actions set) */\n  title?: React.ReactNode;\n  subtitle?: React.ReactNode;\n  /** Right-aligned header slot (buttons etc.) */\n  actions?: React.ReactNode;\n  /** Footer slot on a sunken strip */\n  footer?: React.ReactNode;\n  /** Body padding in px @default 20 */\n  padding?: number;\n  /** Slightly stronger shadow */\n  elevated?: boolean;\n  /** Hover lift + pointer */\n  interactive?: boolean;\n  children?: React.ReactNode;\n}\nexport declare function Card(props: CardProps): JSX.Element;\n"
+      "content": "export interface CardProps extends Omit<React.HTMLAttributes<HTMLDivElement>, 'title'> {\n  /** Header title (header renders only if title or actions set) */\n  title?: React.ReactNode;\n  subtitle?: React.ReactNode;\n  /** Right-aligned header slot (buttons etc.) */\n  actions?: React.ReactNode;\n  /** Footer slot on a sunken strip */\n  footer?: React.ReactNode;\n  /** Body padding in px @default 20 */\n  padding?: number;\n  /** Slightly stronger shadow */\n  elevated?: boolean;\n  /** Hover lift + pointer */\n  interactive?: boolean;\n  children?: React.ReactNode;\n}\nexport declare function Card(props: CardProps): React.JSX.Element;\n"
     },
     {
       "path": "components/display/Card.prompt.md",

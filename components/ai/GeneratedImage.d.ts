@@ -19,4 +19,4 @@ export interface GeneratedImageProps {
   style?: React.CSSProperties;
   className?: string;
 }
-export declare function GeneratedImage(props: GeneratedImageProps): JSX.Element;
+export declare function GeneratedImage(props: GeneratedImageProps): React.JSX.Element;

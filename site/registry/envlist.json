@@ -20,7 +20,7 @@
     {
       "path": "components/code/EnvList.d.ts",
       "type": "registry:component",
-      "content": "export interface EnvVar {\n  name: string;\n  value: string;\n  /** Masked until revealed */\n  secret?: boolean;\n}\nexport interface EnvListProps {\n  title?: string;\n  vars: EnvVar[];\n  defaultVisible?: boolean;\n  style?: React.CSSProperties;\n  className?: string;\n}\nexport declare function EnvList(props: EnvListProps): JSX.Element;\n"
+      "content": "export interface EnvVar {\n  name: string;\n  value: string;\n  /** Masked until revealed */\n  secret?: boolean;\n}\nexport interface EnvListProps {\n  title?: string;\n  vars: EnvVar[];\n  defaultVisible?: boolean;\n  style?: React.CSSProperties;\n  className?: string;\n}\nexport declare function EnvList(props: EnvListProps): React.JSX.Element;\n"
     },
     {
       "path": "components/code/EnvList.prompt.md",

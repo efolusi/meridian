@@ -12,4 +12,4 @@ export interface ConversationProps {
   style?: React.CSSProperties;
   className?: string;
 }
-export declare function Conversation(props: ConversationProps): JSX.Element;
+export declare const Conversation: React.ForwardRefExoticComponent<ConversationProps & React.RefAttributes<HTMLDivElement>>;

@@ -20,7 +20,7 @@
     {
       "path": "components/navigation/Steps.d.ts",
       "type": "registry:component",
-      "content": "export interface StepItem {\n  id?: string;\n  title: React.ReactNode;\n  description?: React.ReactNode;\n}\nexport interface StepsProps {\n  items: StepItem[];\n  /** Index of the active step; earlier = done @default 0 */\n  current?: number;\n  /** @default 'vertical' */\n  orientation?: 'vertical' | 'horizontal';\n  style?: React.CSSProperties;\n  className?: string;\n}\nexport declare function Steps(props: StepsProps): JSX.Element;\n"
+      "content": "export interface StepItem {\n  id?: string;\n  title: React.ReactNode;\n  description?: React.ReactNode;\n}\nexport interface StepsProps {\n  items: StepItem[];\n  /** Index of the active step; earlier = done @default 0 */\n  current?: number;\n  /** @default 'vertical' */\n  orientation?: 'vertical' | 'horizontal';\n  style?: React.CSSProperties;\n  className?: string;\n}\nexport declare function Steps(props: StepsProps): React.JSX.Element;\n"
     },
     {
       "path": "components/navigation/Steps.prompt.md",

@@ -6,4 +6,4 @@ export interface TagProps extends React.HTMLAttributes<HTMLSpanElement> {
   onClick?: (e: React.MouseEvent) => void;
   children?: React.ReactNode;
 }
-export declare function Tag(props: TagProps): JSX.Element;
+export declare function Tag(props: TagProps): React.JSX.Element;

@@ -20,7 +20,7 @@
     {
       "path": "components/data/EmptyState.d.ts",
       "type": "registry:component",
-      "content": "export interface EmptyStateProps {\n  /** Lucide icon name @default 'inbox' */\n  icon?: string;\n  title: React.ReactNode;\n  description?: React.ReactNode;\n  /** Action slot, usually a primary Button */\n  action?: React.ReactNode;\n  /** Dashed hairline container */\n  bordered?: boolean;\n  style?: React.CSSProperties;\n  className?: string;\n}\nexport declare function EmptyState(props: EmptyStateProps): JSX.Element;\n"
+      "content": "export interface EmptyStateProps {\n  /** Lucide icon name @default 'inbox' */\n  icon?: string;\n  title: React.ReactNode;\n  description?: React.ReactNode;\n  /** Action slot, usually a primary Button */\n  action?: React.ReactNode;\n  /** Dashed hairline container */\n  bordered?: boolean;\n  style?: React.CSSProperties;\n  className?: string;\n}\nexport declare function EmptyState(props: EmptyStateProps): React.JSX.Element;\n"
     },
     {
       "path": "components/data/EmptyState.prompt.md",

@@ -17,4 +17,4 @@ export interface TreeListProps {
   style?: React.CSSProperties;
   className?: string;
 }
-export declare function TreeList(props: TreeListProps): JSX.Element;
+export declare function TreeList(props: TreeListProps): React.JSX.Element;

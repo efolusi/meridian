@@ -27,4 +27,4 @@ export interface ToolCallProps {
   style?: React.CSSProperties;
   className?: string;
 }
-export declare function ToolCall(props: ToolCallProps): JSX.Element;
+export declare function ToolCall(props: ToolCallProps): React.JSX.Element;

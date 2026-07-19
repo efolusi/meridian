@@ -2803,7 +2803,7 @@
       "name": "icon",
       "type": "registry:ui",
       "title": "Icon",
-      "description": "Renders one of the 65 curated Lucide icons shipped in `assets/icons/`, inheriting `currentColor`.",
+      "description": "Renders one of the 108 curated Lucide icons shipped in `assets/icons/`, inheriting `currentColor`.",
       "dependencies": [
         "react"
       ],

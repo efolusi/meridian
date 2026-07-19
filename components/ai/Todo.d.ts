@@ -10,4 +10,4 @@ export interface TodoProps {
   style?: React.CSSProperties;
   className?: string;
 }
-export declare function Todo(props: TodoProps): JSX.Element;
+export declare function Todo(props: TodoProps): React.JSX.Element;

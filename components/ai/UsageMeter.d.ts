@@ -1,4 +1,4 @@
-export interface UsageMeterProps {
+export interface UsageMeterProps extends React.HTMLAttributes<HTMLDivElement> {
   used: number;
   limit: number;
   /** @default 'Usage' */
@@ -18,4 +18,4 @@ export interface UsageMeterProps {
   style?: React.CSSProperties;
   className?: string;
 }
-export declare function UsageMeter(props: UsageMeterProps): JSX.Element;
+export declare function UsageMeter(props: UsageMeterProps): React.JSX.Element;

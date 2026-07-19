@@ -20,7 +20,7 @@
     {
       "path": "components/forms/Radio.d.ts",
       "type": "registry:component",
-      "content": "export interface RadioProps extends React.InputHTMLAttributes<HTMLInputElement> {\n  label?: React.ReactNode;\n  /** Muted second line under the label */\n  description?: string;\n}\nexport declare function Radio(props: RadioProps): JSX.Element;\n"
+      "content": "export interface RadioProps extends React.InputHTMLAttributes<HTMLInputElement> {\n  label?: React.ReactNode;\n  /** Muted second line under the label */\n  description?: string;\n}\nexport declare function Radio(props: RadioProps): React.JSX.Element;\n"
     },
     {
       "path": "components/forms/Radio.prompt.md",

@@ -7,4 +7,4 @@ export interface StatusDotProps {
   style?: React.CSSProperties;
   className?: string;
 }
-export declare function StatusDot(props: StatusDotProps): JSX.Element;
+export declare function StatusDot(props: StatusDotProps): React.JSX.Element;

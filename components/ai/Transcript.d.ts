@@ -24,4 +24,4 @@ export interface TranscriptProps {
   style?: React.CSSProperties;
   className?: string;
 }
-export declare function Transcript(props: TranscriptProps): JSX.Element;
+export declare function Transcript(props: TranscriptProps): React.JSX.Element;

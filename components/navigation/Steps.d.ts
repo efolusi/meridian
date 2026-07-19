@@ -12,4 +12,4 @@ export interface StepsProps {
   style?: React.CSSProperties;
   className?: string;
 }
-export declare function Steps(props: StepsProps): JSX.Element;
+export declare function Steps(props: StepsProps): React.JSX.Element;

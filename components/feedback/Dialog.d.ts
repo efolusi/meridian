@@ -10,4 +10,4 @@ export interface DialogProps {
   width?: number;
   children?: React.ReactNode;
 }
-export declare function Dialog(props: DialogProps): JSX.Element;
+export declare const Dialog: React.ForwardRefExoticComponent<DialogProps & React.RefAttributes<HTMLDivElement>>;

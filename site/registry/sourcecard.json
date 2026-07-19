@@ -20,7 +20,7 @@
     {
       "path": "components/ai/SourceCard.d.ts",
       "type": "registry:component",
-      "content": "export interface SourceCardProps {\n  href?: string;\n  title: React.ReactNode;\n  description?: React.ReactNode;\n  /** e.g. 'stripe.com' */\n  domain?: string;\n  /** Favicon URL; falls back to icon */\n  favicon?: string;\n  icon?: string;\n  thumbnail?: string;\n  /** 'card' | 'plain' */\n  variant?: 'card' | 'plain';\n  onClick?: (e: React.MouseEvent) => void;\n  style?: React.CSSProperties;\n  className?: string;\n}\nexport declare function SourceCard(props: SourceCardProps): JSX.Element;\n"
+      "content": "export interface SourceCardProps {\n  href?: string;\n  title: React.ReactNode;\n  description?: React.ReactNode;\n  /** e.g. 'stripe.com' */\n  domain?: string;\n  /** Favicon URL; falls back to icon */\n  favicon?: string;\n  icon?: string;\n  thumbnail?: string;\n  /** 'card' | 'plain' */\n  variant?: 'card' | 'plain';\n  onClick?: (e: React.MouseEvent) => void;\n  style?: React.CSSProperties;\n  className?: string;\n}\nexport declare function SourceCard(props: SourceCardProps): React.JSX.Element;\n"
     },
     {
       "path": "components/ai/SourceCard.prompt.md",

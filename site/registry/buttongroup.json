@@ -19,7 +19,7 @@
     {
       "path": "components/forms/ButtonGroup.d.ts",
       "type": "registry:component",
-      "content": "export interface ButtonGroupProps extends React.HTMLAttributes<HTMLDivElement> {\n  /** Buttons / IconButtons rendered as one attached segment */\n  children: React.ReactNode;\n}\nexport declare function ButtonGroup(props: ButtonGroupProps): JSX.Element;\n"
+      "content": "export interface ButtonGroupProps extends React.HTMLAttributes<HTMLDivElement> {\n  /** Buttons / IconButtons rendered as one attached segment */\n  children: React.ReactNode;\n}\nexport declare function ButtonGroup(props: ButtonGroupProps): React.JSX.Element;\n"
     },
     {
       "path": "components/forms/ButtonGroup.prompt.md",

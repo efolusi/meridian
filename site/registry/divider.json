@@ -19,7 +19,7 @@
     {
       "path": "components/display/Divider.d.ts",
       "type": "registry:component",
-      "content": "export interface DividerProps {\n  /** Small uppercase label centered in the rule */\n  label?: string;\n  /** Vertical rule (stretches to container height) */\n  vertical?: boolean;\n  style?: React.CSSProperties;\n  className?: string;\n}\nexport declare function Divider(props: DividerProps): JSX.Element;\n"
+      "content": "export interface DividerProps {\n  /** Small uppercase label centered in the rule */\n  label?: string;\n  /** Vertical rule (stretches to container height) */\n  vertical?: boolean;\n  style?: React.CSSProperties;\n  className?: string;\n}\nexport declare function Divider(props: DividerProps): React.JSX.Element;\n"
     },
     {
       "path": "components/display/Divider.prompt.md",

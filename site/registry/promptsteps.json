@@ -20,7 +20,7 @@
     {
       "path": "components/ai/PromptSteps.d.ts",
       "type": "registry:component",
-      "content": "export interface PromptStep {\n  /** Answer key */\n  name: string;\n  question: React.ReactNode;\n  options: string[];\n  /** true, or a placeholder string, adds an \"Other\" free-text row */\n  other?: boolean | string;\n}\nexport interface PromptStepsProps {\n  steps: PromptStep[];\n  defaultValues?: Record<string, string>;\n  onAnswer?: (value: string, ctx: { name: string; stepIndex: number; totalSteps: number }) => void;\n  onComplete?: (answers: Record<string, string>) => void;\n  onDismiss?: () => void;\n  style?: React.CSSProperties;\n  className?: string;\n}\nexport declare function PromptSteps(props: PromptStepsProps): JSX.Element;\n"
+      "content": "export interface PromptStep {\n  /** Answer key */\n  name: string;\n  question: React.ReactNode;\n  options: string[];\n  /** true, or a placeholder string, adds an \"Other\" free-text row */\n  other?: boolean | string;\n}\nexport interface PromptStepsProps {\n  steps: PromptStep[];\n  defaultValues?: Record<string, string>;\n  onAnswer?: (value: string, ctx: { name: string; stepIndex: number; totalSteps: number }) => void;\n  onComplete?: (answers: Record<string, string>) => void;\n  onDismiss?: () => void;\n  style?: React.CSSProperties;\n  className?: string;\n}\nexport declare function PromptSteps(props: PromptStepsProps): React.JSX.Element;\n"
     },
     {
       "path": "components/ai/PromptSteps.prompt.md",

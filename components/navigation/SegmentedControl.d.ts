@@ -14,4 +14,4 @@ export interface SegmentedControlProps {
   style?: React.CSSProperties;
   className?: string;
 }
-export declare function SegmentedControl(props: SegmentedControlProps): JSX.Element;
+export declare function SegmentedControl(props: SegmentedControlProps): React.JSX.Element;

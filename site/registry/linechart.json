@@ -19,7 +19,7 @@
     {
       "path": "components/data/LineChart.d.ts",
       "type": "registry:component",
-      "content": "export interface LinePoint { label?: string; value: number; }\nexport interface LineChartProps {\n  data: LinePoint[];\n  /** Px @default 150 */\n  height?: number;\n  /** Soft fill under the line @default true */\n  showArea?: boolean;\n  /** Dot on every point @default false */\n  showDots?: boolean;\n  /** Tooltip value formatter */\n  format?: (value: number) => string;\n  style?: React.CSSProperties;\n  className?: string;\n}\nexport declare function LineChart(props: LineChartProps): JSX.Element;\n"
+      "content": "export interface LinePoint { label?: string; value: number; }\nexport interface LineChartProps {\n  data: LinePoint[];\n  /** Px @default 150 */\n  height?: number;\n  /** Soft fill under the line @default true */\n  showArea?: boolean;\n  /** Dot on every point @default false */\n  showDots?: boolean;\n  /** Tooltip value formatter */\n  format?: (value: number) => string;\n  style?: React.CSSProperties;\n  className?: string;\n}\nexport declare function LineChart(props: LineChartProps): React.JSX.Element;\n"
     },
     {
       "path": "components/data/LineChart.prompt.md",

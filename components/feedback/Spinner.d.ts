@@ -6,4 +6,4 @@ export interface SpinnerProps {
   style?: React.CSSProperties;
   className?: string;
 }
-export declare function Spinner(props: SpinnerProps): JSX.Element;
+export declare function Spinner(props: SpinnerProps): React.JSX.Element;

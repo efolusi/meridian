@@ -20,7 +20,7 @@
     {
       "path": "components/forms/IconButton.d.ts",
       "type": "registry:component",
-      "content": "export interface IconButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {\n  /** Lucide icon name */\n  icon: string;\n  /** Accessible label (required \u2014 rendered as aria-label + title) */\n  label: string;\n  /** @default 'quiet' */\n  variant?: 'quiet' | 'outline' | 'solid';\n  /** @default 'md' */\n  size?: 'sm' | 'md' | 'lg';\n}\nexport declare function IconButton(props: IconButtonProps): JSX.Element;\n"
+      "content": "export interface IconButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {\n  /** Lucide icon name */\n  icon: string;\n  /** Accessible label (required \u2014 rendered as aria-label + title) */\n  label: string;\n  /** @default 'quiet' */\n  variant?: 'quiet' | 'outline' | 'solid';\n  /** @default 'md' */\n  size?: 'sm' | 'md' | 'lg';\n}\nexport declare function IconButton(props: IconButtonProps): React.JSX.Element;\n"
     },
     {
       "path": "components/forms/IconButton.prompt.md",

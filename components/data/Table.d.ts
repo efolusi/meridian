@@ -17,7 +17,7 @@ export interface TableSort {
   key: string;
   direction: 'asc' | 'desc';
 }
-export interface TableProps {
+export interface TableProps extends React.HTMLAttributes<HTMLDivElement> {
   columns: TableColumn[];
   rows: any[];
   /** Field name or fn for React keys @default index */

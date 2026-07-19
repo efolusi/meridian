@@ -21,7 +21,7 @@
     {
       "path": "components/forms/Textarea.d.ts",
       "type": "registry:component",
-      "content": "export interface TextareaProps extends React.TextareaHTMLAttributes<HTMLTextAreaElement> {\n  label?: string;\n  hint?: string;\n  /** Error message below \u2014 also sets invalid styling */\n  error?: string;\n  invalid?: boolean;\n}\nexport declare function Textarea(props: TextareaProps): JSX.Element;\n"
+      "content": "export interface TextareaProps extends React.TextareaHTMLAttributes<HTMLTextAreaElement> {\n  label?: string;\n  hint?: string;\n  /** Error message below \u2014 also sets invalid styling */\n  error?: string;\n  invalid?: boolean;\n}\nexport declare function Textarea(props: TextareaProps): React.JSX.Element;\n"
     },
     {
       "path": "components/forms/Textarea.prompt.md",

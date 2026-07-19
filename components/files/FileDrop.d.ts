@@ -12,4 +12,4 @@ export interface FileDropProps {
   style?: React.CSSProperties;
   className?: string;
 }
-export declare function FileDrop(props: FileDropProps): JSX.Element;
+export declare function FileDrop(props: FileDropProps): React.JSX.Element;

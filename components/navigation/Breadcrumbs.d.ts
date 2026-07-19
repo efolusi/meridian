@@ -9,4 +9,4 @@ export interface BreadcrumbsProps {
   style?: React.CSSProperties;
   className?: string;
 }
-export declare function Breadcrumbs(props: BreadcrumbsProps): JSX.Element;
+export declare function Breadcrumbs(props: BreadcrumbsProps): React.JSX.Element;

@@ -9,4 +9,4 @@ export interface LoaderProps {
   style?: React.CSSProperties;
   className?: string;
 }
-export declare function Loader(props: LoaderProps): JSX.Element;
+export declare function Loader(props: LoaderProps): React.JSX.Element;

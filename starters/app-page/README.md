@@ -4,7 +4,7 @@ Copyable product-app journey: overview → projects → project detail → new p
 
 - `AppPage.dc.html` — overview with side navigation
 - `Projects.dc.html` — project list
-- `ProjectDetail.dc.html` — single project: runs, files, activity
+- `ProjectDetail.dc.html` — single project: run stats, recent runs table, configuration
 - `NewProject.dc.html` — creation flow
 - `AppSettings.dc.html` — app settings tabs
 

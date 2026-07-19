@@ -19,7 +19,7 @@
     {
       "path": "components/code/Terminal.d.ts",
       "type": "registry:component",
-      "content": "export interface TerminalLine {\n  text: string;\n  /** cmd gets a $ prompt; ok/err/info are tinted */\n  type?: 'cmd' | 'out' | 'ok' | 'err' | 'info';\n  /** Muted timestamp prefix */\n  time?: string;\n}\nexport interface TerminalProps {\n  /** Header label, e.g. \"deploy@efolusi-prod\" */\n  host?: string;\n  /** Strings or line objects */\n  lines?: Array<string | TerminalLine>;\n  /** Blinking caret after the last line */\n  live?: boolean;\n  /** @default 260 */\n  maxHeight?: number;\n  style?: React.CSSProperties;\n  className?: string;\n}\nexport declare function Terminal(props: TerminalProps): JSX.Element;\n"
+      "content": "export interface TerminalLine {\n  text: string;\n  /** cmd gets a $ prompt; ok/err/info are tinted */\n  type?: 'cmd' | 'out' | 'ok' | 'err' | 'info';\n  /** Muted timestamp prefix */\n  time?: string;\n}\nexport interface TerminalProps extends React.HTMLAttributes<HTMLDivElement> {\n  /** Header label, e.g. \"deploy@efolusi-prod\" */\n  host?: string;\n  /** Strings or line objects */\n  lines?: Array<string | TerminalLine>;\n  /** Blinking caret after the last line */\n  live?: boolean;\n  /** @default 260 */\n  maxHeight?: number;\n  style?: React.CSSProperties;\n  className?: string;\n}\nexport declare function Terminal(props: TerminalProps): React.JSX.Element;\n"
     },
     {
       "path": "components/code/Terminal.prompt.md",

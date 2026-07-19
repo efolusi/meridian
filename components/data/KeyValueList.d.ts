@@ -11,4 +11,4 @@ export interface KeyValueListProps {
   style?: React.CSSProperties;
   className?: string;
 }
-export declare function KeyValueList(props: KeyValueListProps): JSX.Element;
+export declare function KeyValueList(props: KeyValueListProps): React.JSX.Element;

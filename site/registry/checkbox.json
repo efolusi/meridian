@@ -21,7 +21,7 @@
     {
       "path": "components/forms/Checkbox.d.ts",
       "type": "registry:component",
-      "content": "export interface CheckboxProps extends React.InputHTMLAttributes<HTMLInputElement> {\n  label?: React.ReactNode;\n  /** Muted second line under the label */\n  description?: string;\n}\nexport declare function Checkbox(props: CheckboxProps): JSX.Element;\n"
+      "content": "export interface CheckboxProps extends React.InputHTMLAttributes<HTMLInputElement> {\n  label?: React.ReactNode;\n  /** Muted second line under the label */\n  description?: string;\n}\nexport declare const Checkbox: React.ForwardRefExoticComponent<CheckboxProps & React.RefAttributes<HTMLInputElement>>;\n"
     },
     {
       "path": "components/forms/Checkbox.prompt.md",

@@ -21,7 +21,7 @@
     {
       "path": "components/forms/Input.d.ts",
       "type": "registry:component",
-      "content": "export interface InputProps extends React.InputHTMLAttributes<HTMLInputElement> {\n  /** Field label rendered above */\n  label?: string;\n  /** Muted helper text below */\n  hint?: string;\n  /** Error message below \u2014 also sets invalid styling */\n  error?: string;\n  /** Lucide icon name inside the field, left */\n  iconLeft?: string;\n  /** @default 'md' */\n  size?: 'sm' | 'md' | 'lg';\n  invalid?: boolean;\n}\nexport declare function Input(props: InputProps): JSX.Element;\n"
+      "content": "export interface InputProps extends Omit<React.InputHTMLAttributes<HTMLInputElement>, 'size'> {\n  /** Field label rendered above */\n  label?: string;\n  /** Muted helper text below */\n  hint?: string;\n  /** Error message below \u2014 also sets invalid styling */\n  error?: string;\n  /** Lucide icon name inside the field, left */\n  iconLeft?: string;\n  /** @default 'md' */\n  size?: 'sm' | 'md' | 'lg';\n  invalid?: boolean;\n}\nexport declare function Input(props: InputProps): React.JSX.Element;\n"
     },
     {
       "path": "components/forms/Input.prompt.md",

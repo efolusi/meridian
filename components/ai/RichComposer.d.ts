@@ -22,4 +22,4 @@ export interface RichComposerProps {
   style?: React.CSSProperties;
   className?: string;
 }
-export declare function RichComposer(props: RichComposerProps): JSX.Element;
+export declare function RichComposer(props: RichComposerProps): React.JSX.Element;

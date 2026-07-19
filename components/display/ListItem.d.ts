@@ -16,4 +16,4 @@ export interface ListItemProps {
   style?: React.CSSProperties;
   className?: string;
 }
-export declare function ListItem(props: ListItemProps): JSX.Element;
+export declare function ListItem(props: ListItemProps): React.JSX.Element;

@@ -3,7 +3,7 @@
 Efolusi ships WCAG 2.1 AA. The rules, per concern:
 
 ## Focus
-- Every focusable element shows the 2px brand ring (`--focus-ring`: brand-700 in light, brand-400 in dark) via `:focus-visible`. Never remove it; never replace it with color alone. Plain links get the ring from `tokens/base.css`.
+- Every focusable element shows the two-layer opaque ring (`--focus-ring`: a 2px `--focus-ring-offset` surface layer under a 2px `--focus-ring-color` band, brand-700 in light and brand-400 in dark) via `:focus-visible`. Never remove it; never replace it with color alone. Plain links get the ring from `tokens/base.css`.
 - Focus order follows DOM order. The contract for Dialogs/Drawers: trap focus while open and return it to the trigger on close (see Known gaps).
 
 ## Keyboard map

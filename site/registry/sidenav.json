@@ -21,12 +21,12 @@
     {
       "path": "components/navigation/SideNav.d.ts",
       "type": "registry:component",
-      "content": "export interface SideNavItem { id: string; label: React.ReactNode; icon: string; badge?: React.ReactNode; }\nexport interface SideNavGroup { /** Uppercase group heading (omit for main nav) */ label?: string; items: SideNavItem[]; }\nexport interface SideNavProps {\n  /** @default 'Efolusi' */\n  brand?: string;\n  /** Badge next to brand (e.g. 'Console') */\n  brandBadge?: React.ReactNode;\n  logoSrc?: string;\n  groups: SideNavGroup[];\n  /** Active item id */\n  value: string;\n  onChange?: (id: string) => void;\n  /** Pinned bottom slot (account card\u2026) */\n  footer?: React.ReactNode;\n  style?: React.CSSProperties;\n  className?: string;\n}\nexport declare function SideNav(props: SideNavProps): JSX.Element;\n"
+      "content": "export interface SideNavItem { id: string; label: React.ReactNode; icon: string; badge?: React.ReactNode; }\nexport interface SideNavGroup { /** Uppercase group heading (omit for main nav) */ label?: string; items: SideNavItem[]; }\nexport interface SideNavProps {\n  /** @default 'Efolusi' */\n  brand?: string;\n  /** Badge next to brand (e.g. 'Console') */\n  brandBadge?: React.ReactNode;\n  logoSrc?: string;\n  groups: SideNavGroup[];\n  /** Active item id */\n  value: string;\n  onChange?: (id: string) => void;\n  /** Pinned bottom slot (account card\u2026) */\n  footer?: React.ReactNode;\n  style?: React.CSSProperties;\n  className?: string;\n}\nexport declare function SideNav(props: SideNavProps): React.JSX.Element;\n"
     },
     {
       "path": "components/navigation/SideNav.prompt.md",
       "type": "registry:component",
-      "content": "The product sidebar: brand row, grouped nav with icons/badges, pinned footer. 240px on `--surface-subtle`.\n\n```jsx\n<SideNav logoSrc=\"assets/logo.png\" brandBadge=\"Console\" value={nav} onChange={setNav}\n  groups={[\n    { items: [{ id: 'overview', label: 'Overview', icon: 'layout-dashboard' }, { id: 'customers', label: 'Customers', icon: 'users', badge: 128 }] },\n    { label: 'Products', items: [{ id: 'agent', label: 'Agent', icon: 'bot' }] },\n  ]}\n  footer={<ListItem media={<Avatar name=\"Ada Obi\" size={30} />} title=\"Ada Obi\" description=\"Acme Workspace\" />} />\n```\n"
+      "content": "The product sidebar: brand row, grouped nav with icons/badges, pinned footer. 240px on `--surface-subtle`.\n\n```jsx\n<SideNav logoSrc=\"assets/logo.png\" brandBadge=\"Console\" value={nav} onChange={setNav}\n  groups={[\n    { items: [{ id: 'overview', label: 'Overview', icon: 'layout-dashboard' }, { id: 'customers', label: 'Customers', icon: 'users', badge: 128 }] },\n{ label: 'Products', items: [{ id: 'agent', label: 'AI agents', icon: 'bot' }] },\n  ]}\n  footer={<ListItem media={<Avatar name=\"Ada Obi\" size={30} />} title=\"Ada Obi\" description=\"Acme Workspace\" />} />\n```\n"
     }
   ],
   "categories": [

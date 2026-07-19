@@ -21,7 +21,7 @@
     {
       "path": "components/feedback/ConfirmDialog.d.ts",
       "type": "registry:component",
-      "content": "export interface ConfirmDialogProps {\n  open: boolean;\n  onClose?: () => void;\n  /** Called on confirm (dialog closes itself after) */\n  onConfirm?: () => void;\n  title: React.ReactNode;\n  description?: React.ReactNode;\n  /** @default 'Delete' */\n  confirmLabel?: string;\n  /** @default 'Cancel' */\n  cancelLabel?: string;\n  /** 'danger' (red confirm) or 'primary' @default 'danger' */\n  tone?: 'danger' | 'primary';\n  /** Require typing this string to enable confirm */\n  typeToConfirm?: string;\n  children?: React.ReactNode;\n}\nexport declare function ConfirmDialog(props: ConfirmDialogProps): JSX.Element;\n"
+      "content": "export interface ConfirmDialogProps {\n  open: boolean;\n  onClose?: () => void;\n  /** Called on confirm (dialog closes itself after) */\n  onConfirm?: () => void;\n  title: React.ReactNode;\n  description?: React.ReactNode;\n  /** @default 'Delete' */\n  confirmLabel?: string;\n  /** @default 'Cancel' */\n  cancelLabel?: string;\n  /** 'danger' (red confirm) or 'primary' @default 'danger' */\n  tone?: 'danger' | 'primary';\n  /** Require typing this string to enable confirm */\n  typeToConfirm?: string;\n  children?: React.ReactNode;\n}\nexport declare function ConfirmDialog(props: ConfirmDialogProps): React.JSX.Element;\n"
     },
     {
       "path": "components/feedback/ConfirmDialog.prompt.md",

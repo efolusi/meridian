@@ -20,7 +20,7 @@
     {
       "path": "components/code/CodeBlock.d.ts",
       "type": "registry:component",
-      "content": "export interface CodeBlockProps {\n  /** Shown in the header, e.g. \"bash\" */\n  lang?: string;\n  /** Overrides lang in the header, e.g. a filename */\n  title?: string;\n  /** Scroll beyond this height */\n  maxHeight?: number | string;\n  /** The code text */\n  children?: React.ReactNode;\n  style?: React.CSSProperties;\n  className?: string;\n}\nexport declare function CodeBlock(props: CodeBlockProps): JSX.Element;\n"
+      "content": "export interface CodeBlockProps {\n  /** Shown in the header, e.g. \"bash\" */\n  lang?: string;\n  /** Overrides lang in the header, e.g. a filename */\n  title?: string;\n  /** Scroll beyond this height */\nmaxHeight?: number | string;\n  /** Collapse to `clipHeight` with a \"show more\" control */\n  clip?: boolean;\n  /** Collapsed height in px @default 240 */\n  clipHeight?: number;\n  /** The code text */\n  children?: React.ReactNode;\n  style?: React.CSSProperties;\n  className?: string;\n}\nexport declare function CodeBlock(props: CodeBlockProps): React.JSX.Element;\n"
     },
     {
       "path": "components/code/CodeBlock.prompt.md",

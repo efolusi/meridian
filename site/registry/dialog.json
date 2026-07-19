@@ -21,7 +21,7 @@
     {
       "path": "components/feedback/Dialog.d.ts",
       "type": "registry:component",
-      "content": "export interface DialogProps {\n  open: boolean;\n  /** Called on \u2715, ESC, or overlay click; omit to hide \u2715 */\n  onClose?: () => void;\n  title: React.ReactNode;\n  description?: React.ReactNode;\n  /** Right-aligned action row on sunken strip */\n  footer?: React.ReactNode;\n  /** Max width px @default 440 */\n  width?: number;\n  children?: React.ReactNode;\n}\nexport declare function Dialog(props: DialogProps): JSX.Element;\n"
+      "content": "export interface DialogProps {\n  open: boolean;\n  /** Called on \u2715, ESC, or overlay click; omit to hide \u2715 */\n  onClose?: () => void;\n  title: React.ReactNode;\n  description?: React.ReactNode;\n  /** Right-aligned action row on sunken strip */\n  footer?: React.ReactNode;\n  /** Max width px @default 440 */\n  width?: number;\n  children?: React.ReactNode;\n}\nexport declare const Dialog: React.ForwardRefExoticComponent<DialogProps & React.RefAttributes<HTMLDivElement>>;\n"
     },
     {
       "path": "components/feedback/Dialog.prompt.md",

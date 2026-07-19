@@ -18,4 +18,4 @@ export interface CommandPaletteProps {
   /** @default 'Type a command or search…' */
   placeholder?: string;
 }
-export declare function CommandPalette(props: CommandPaletteProps): JSX.Element;
+export declare function CommandPalette(props: CommandPaletteProps): React.JSX.Element;

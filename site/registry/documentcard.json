@@ -20,7 +20,7 @@
     {
       "path": "components/ai/DocumentCard.d.ts",
       "type": "registry:component",
-      "content": "export interface DocumentCardProps {\n  title: React.ReactNode;\n  /** Muted meta, e.g. \"1,240 words\" */\n  meta?: React.ReactNode;\n  /** Icon name. Default 'file-text' */\n  icon?: string;\n  /** Clipped height in px before expand. Default 200 */\n  collapsedHeight?: number;\n  defaultOpen?: boolean;\n  onCopy?: (text: string) => void;\n  /** Extra header action buttons */\n  actions?: React.ReactNode;\n  children: React.ReactNode;\n  style?: React.CSSProperties;\n  className?: string;\n}\nexport declare function DocumentCard(props: DocumentCardProps): JSX.Element;\n"
+      "content": "export interface DocumentCardProps {\n  title: React.ReactNode;\n  /** Muted meta, e.g. \"1,240 words\" */\n  meta?: React.ReactNode;\n  /** Icon name. Default 'file-text' */\n  icon?: string;\n  /** Clipped height in px before expand. Default 200 */\n  collapsedHeight?: number;\n  defaultOpen?: boolean;\n  onCopy?: (text: string) => void;\n  /** Extra header action buttons */\n  actions?: React.ReactNode;\n  children: React.ReactNode;\n  style?: React.CSSProperties;\n  className?: string;\n}\nexport declare function DocumentCard(props: DocumentCardProps): React.JSX.Element;\n"
     },
     {
       "path": "components/ai/DocumentCard.prompt.md",

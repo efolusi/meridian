@@ -21,7 +21,7 @@
     {
       "path": "components/overlay/Menu.d.ts",
       "type": "registry:component",
-      "content": "export interface MenuItem {\n  id: string;\n  label: React.ReactNode;\n  /** Lucide icon name */\n  icon?: string;\n  /** Red destructive styling */\n  danger?: boolean;\n  disabled?: boolean;\n  /** Shortcut hint, e.g. \"\u2318D\" */\n  kbd?: string;\n  onClick?: () => void;\n}\nexport interface MenuProps {\n  /** The element that toggles the menu (Button, IconButton, \u2026) */\n  trigger: React.ReactNode;\n  /** Items; the string 'separator' inserts a rule */\n  items: Array<MenuItem | 'separator'>;\n  onSelect?: (id: string) => void;\n  /** Panel edge alignment @default 'left' */\n  align?: 'left' | 'right';\n  style?: React.CSSProperties;\n  className?: string;\n}\nexport declare function Menu(props: MenuProps): JSX.Element;\n"
+      "content": "export interface MenuItem {\n  id: string;\n  label: React.ReactNode;\n  /** Lucide icon name */\n  icon?: string;\n  /** Red destructive styling */\n  danger?: boolean;\n  disabled?: boolean;\n  /** Shortcut hint, e.g. \"\u2318D\" */\n  kbd?: string;\n  onClick?: () => void;\n}\nexport interface MenuProps {\n  /** The element that toggles the menu (Button, IconButton, \u2026) */\n  trigger: React.ReactNode;\n  /** Items; the string 'separator' inserts a rule */\n  items: Array<MenuItem | 'separator'>;\n  onSelect?: (id: string) => void;\n  /** Panel edge alignment @default 'left' */\n  align?: 'left' | 'right';\n  style?: React.CSSProperties;\n  className?: string;\n}\nexport declare const Menu: React.ForwardRefExoticComponent<MenuProps & React.RefAttributes<HTMLSpanElement>>;\n"
     },
     {
       "path": "components/overlay/Menu.prompt.md",

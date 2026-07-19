@@ -174,7 +174,7 @@ class Component extends DCLogic {
         h2('deploy', 'Deploy your own'),
         p('The repository ships deploy-ready for Cloudflare: connect it as a Git project with no build command and the root as output directory, and every push deploys. Cache headers, the root redirect, the 404 page, and registry CORS are already configured in _headers, _redirects, and wrangler.jsonc.'),
         h2('vendor', 'Vendor single components'),
-        p('Prefer owning the source? Copy the component file and its types straight into your codebase — MIT, no attribution required. Components import only React, the Icon component, and the shared stylesheet tokens.'),
+        p('Prefer owning the source? Copy the component file and its types straight into your codebase — MIT, no attribution required. Prefer owning the source? Copy the component file and its types straight into your codebase — MIT, no attribution required. Most components also import a few Meridian siblings (Icon, Button, IconButton, FormField, Portal among them) plus the shared stylesheet tokens; each registry item lists those under registryDependencies, so copy them too.'),
         code('text', 'terminal', 'cp meridian/components/forms/Button.jsx  src/ui/\ncp meridian/components/forms/Button.d.ts src/ui/'),
         h2('fonts', 'Fonts'),
         p('Meridian uses Bricolage Grotesque for display, Figtree for text, and JetBrains Mono for code. The stylesheet loads them via @font-face from assets/fonts — swap the files to rebrand.'),
@@ -185,7 +185,7 @@ class Component extends DCLogic {
         code('javascript', 'src/main.jsx — Vite', "import 'meridian/styles.css';\nimport { Button } from './ui/Button.jsx'; // vendored from components/forms/"),
         p('Next.js — same vendoring, plus mark interactive components as client components:'),
         code('javascript', 'app/ui/Button.jsx — Next.js', "'use client';\n// vendored from meridian/components/forms/Button.jsx\n// app/layout.tsx: import 'meridian/styles.css';"),
-        p('Components are self-contained JSX with no dependencies beyond React and the Icon component, so they survive vendoring intact.'),
+        p('Components are plain JSX; the only third-party dependencies are React, and react-dom for the portal-based overlays. Internally they compose a few Meridian siblings (most often Icon, Button, IconButton, FormField, Portal), so copy those alongside and the set survives vendoring intact.'),
       ] },
       { group: 'Get started', id: 'theming', title: 'Theming', lede: 'Three token layers: raw ramps, semantic roles, component styles. You theme the middle layer.', blocks: [
         h2('layers', 'The three layers'),
@@ -244,7 +244,7 @@ class Component extends DCLogic {
           ['_ds_manifest.json', '— machine-readable registry of components, tokens, and cards.'],
         ]),
         h2('why', 'Why it works'),
-        p('One namespace and one prop grammar mean a model that has seen three Meridian components can write the other 101. Semantic tokens mean generated screens inherit dark mode and density for free. And because components are flat source files, a model can read the implementation instead of guessing.'),
+        p('One namespace and one prop grammar mean a model that has seen three Meridian components can write the other 103. Semantic tokens mean generated screens inherit dark mode and density for free. And because components are flat source files, a model can read the implementation instead of guessing.'),
         code('javascript', 'agent-output.js', "const { Card, Stat, BarChart } = window.EfolusiDesignSystem_4ffc3d;\n// a model that knows the grammar composes correctly:\n<Card title=\"Runs this week\">\n  <Stat label=\"Total\" value=\"1,284\" delta=\"+12.4%\" direction=\"up\" />\n  <BarChart data={[42, 58, 51, 74, 66, 30, 89]} />\n</Card>"),
       ] },
       { group: 'Guides', id: 'contributing', title: 'Contributing', lede: 'Meridian is MIT-licensed and open to contributions. The bar: it must feel settled.', blocks: [
@@ -253,12 +253,18 @@ class Component extends DCLogic {
           ['Semantic tokens only.', 'A PR that hardcodes a hex value or references a raw ramp is returned.'],
           ['Three files per component.', 'Source, types, prompt guide — a component without all three is not done.'],
           ['Both themes, both densities.', 'Every change is checked in light, dark, and compact before merge.'],
-          ['No new dependencies.', 'Components import React and the Icon component. That is the list.'],
+          ['No new dependencies.', 'Components import React, react-dom, and other Meridian components. Nothing else joins that list.'],
         ]),
         h2('process', 'Process'),
         p('Open an issue describing the gap, agree on the API in the thread, then submit the three files plus a specimen entry. Versioning and release policy live in guidelines/governance.md; the full contribution guide is CONTRIBUTING.md at the repo root.'),
       ] },
       { group: 'Reference', id: 'changelog', title: 'Changelog', lede: 'Notable changes, newest first. Full history in CHANGELOG.md.', blocks: [
+        h2('v140', '1.4.0 — July 2026'),
+        list([
+          ['First public release.', '— the first tagged, installable version; Meridian is positioned as a general-purpose design system.'],
+          ['Accessibility.', '— an opaque two-layer focus ring that meets WCAG 1.4.11 in both themes, eight dark-mode contrast pairs fixed, and keyboard/focus contracts for every interactive component.'],
+          ['Install path.', '— machine-readable registry with real dependency edges, working per-component snippets, and CI gates for contrast, registry sync, and bundle hashes.'],
+        ]),
         h2('v130', '1.3.0 — July 2026'),
         list([
           ['16 components', 'closing the AI-chat/agent surface — Task, Todo, DocumentCard, GeneratedImage, Sandbox, WebPreview, SourceCard, PromptSteps, SelectionQuote, RichComposer, Player, Transcript (ai); Console, Exception, EnvList (code); Loader (feedback). Total: 104.'],

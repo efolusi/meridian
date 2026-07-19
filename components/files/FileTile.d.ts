@@ -1,4 +1,4 @@
-export interface FileTileProps {
+export interface FileTileProps extends React.HTMLAttributes<HTMLDivElement> {
   name: string;
   /** e.g. "4.2 MB" */
   size?: string;
@@ -16,4 +16,4 @@ export interface FileTileProps {
   style?: React.CSSProperties;
   className?: string;
 }
-export declare function FileTile(props: FileTileProps): JSX.Element;
+export declare function FileTile(props: FileTileProps): React.JSX.Element;

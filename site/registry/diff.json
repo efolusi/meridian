@@ -20,7 +20,7 @@
     {
       "path": "components/code/Diff.d.ts",
       "type": "registry:component",
-      "content": "export interface DiffLine {\n  /** @default 'ctx' */\n  type?: 'add' | 'del' | 'ctx';\n  text: string;\n}\nexport interface DiffProps {\n  /** Header: file path etc. Shows +/\u2212 counts */\n  title?: React.ReactNode;\n  lines: DiffLine[];\n  /** Scroll past this height */\n  maxHeight?: number | string;\n  style?: React.CSSProperties;\n  className?: string;\n}\nexport declare function Diff(props: DiffProps): JSX.Element;\n"
+      "content": "export interface DiffLine {\n  /** @default 'ctx' */\n  type?: 'add' | 'del' | 'ctx';\n  text: string;\n}\nexport interface DiffProps {\n  /** Header: file path etc. Shows +/\u2212 counts */\n  title?: React.ReactNode;\n/** Pre-computed rows. Omit and pass `from`/`to` instead. */\n  lines?: DiffLine[];\n  /** Original text; diffed against `to` when `lines` is omitted */\n  from?: string;\n  /** Changed text */\n  to?: string;\n  /** Multi-file diff; each file is diffed and collapsible */\n  files?: Array<{ name: string; from?: string; to?: string; lines?: DiffLine[]; defaultOpen?: boolean }>;\n  /** Highlight changed words inside a changed line @default true */\n  wordLevel?: boolean;\n  /** Unchanged lines kept around each hunk @default 3 */\n  contextLines?: number;\n  /** Scroll past this height */\n  maxHeight?: number | string;\n  style?: React.CSSProperties;\n  className?: string;\n}\nexport declare function Diff(props: DiffProps): React.JSX.Element;\n"
     },
     {
       "path": "components/code/Diff.prompt.md",

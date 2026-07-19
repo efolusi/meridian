@@ -11,4 +11,4 @@ export interface AlertProps {
   style?: React.CSSProperties;
   className?: string;
 }
-export declare function Alert(props: AlertProps): JSX.Element;
+export declare function Alert(props: AlertProps): React.JSX.Element;

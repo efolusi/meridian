@@ -5,4 +5,4 @@ export interface ScrollAreaProps extends React.HTMLAttributes<HTMLDivElement> {
   height?: number | string;
   children?: React.ReactNode;
 }
-export declare function ScrollArea(props: ScrollAreaProps): JSX.Element;
+export declare function ScrollArea(props: ScrollAreaProps): React.JSX.Element;

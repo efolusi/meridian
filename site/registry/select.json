@@ -21,7 +21,7 @@
     {
       "path": "components/forms/Select.d.ts",
       "type": "registry:component",
-      "content": "export interface SelectProps extends React.SelectHTMLAttributes<HTMLSelectElement> {\n  label?: string;\n  hint?: string;\n  /** Options as strings or {value, label}; alternatively pass <option> children */\n  options?: Array<string | { value: string; label: string }>;\n  /** @default 'md' */\n  size?: 'sm' | 'md' | 'lg';\n  invalid?: boolean;\n}\nexport declare function Select(props: SelectProps): JSX.Element;\n"
+      "content": "export interface SelectProps extends Omit<React.SelectHTMLAttributes<HTMLSelectElement>, 'size'> {\n  label?: string;\n  hint?: string;\n  /** Options as strings or {value, label}; alternatively pass <option> children */\n  options?: Array<string | { value: string; label: string }>;\n  /** @default 'md' */\n  size?: 'sm' | 'md' | 'lg';\n  invalid?: boolean;\n}\nexport declare function Select(props: SelectProps): React.JSX.Element;\n"
     },
     {
       "path": "components/forms/Select.prompt.md",

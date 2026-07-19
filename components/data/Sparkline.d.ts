@@ -11,4 +11,4 @@ export interface SparklineProps {
   style?: React.CSSProperties;
   className?: string;
 }
-export declare function Sparkline(props: SparklineProps): JSX.Element;
+export declare function Sparkline(props: SparklineProps): React.JSX.Element;

@@ -14,4 +14,4 @@ export interface ReasoningProps {
   style?: React.CSSProperties;
   className?: string;
 }
-export declare function Reasoning(props: ReasoningProps): JSX.Element;
+export declare function Reasoning(props: ReasoningProps): React.JSX.Element;

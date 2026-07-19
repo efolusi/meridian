@@ -20,7 +20,7 @@
     {
       "path": "components/ai/AgentRun.d.ts",
       "type": "registry:component",
-      "content": "export interface AgentRunStep {\n  id?: string;\n  title: React.ReactNode;\n  /** Supporting line \u2014 text or nodes */\n  detail?: React.ReactNode;\n  /** Collapsible panel (ToolCall, Diff\u2026) behind a \"Show detail\" toggle */\n  children?: React.ReactNode;\n  /** Open the panel initially */\n  defaultOpen?: boolean;\n  /** @default 'pending' */\n  status?: 'done' | 'active' | 'pending' | 'error';\n  /** Mono timestamp on the right */\n  time?: string;\n}\nexport interface AgentRunProps {\n  steps: AgentRunStep[];\n  style?: React.CSSProperties;\n  className?: string;\n}\nexport declare function AgentRun(props: AgentRunProps): JSX.Element;\n"
+      "content": "export interface AgentRunStep {\n  id?: string;\n  title: React.ReactNode;\n  /** Supporting line \u2014 text or nodes */\n  detail?: React.ReactNode;\n  /** Collapsible panel (ToolCall, Diff\u2026) behind a \"Show detail\" toggle */\n  children?: React.ReactNode;\n  /** Open the panel initially */\n  defaultOpen?: boolean;\n  /** @default 'pending' */\n  status?: 'done' | 'active' | 'pending' | 'error';\n  /** Mono timestamp on the right */\n  time?: string;\n}\nexport interface AgentRunProps {\n  steps: AgentRunStep[];\n  style?: React.CSSProperties;\n  className?: string;\n}\nexport declare function AgentRun(props: AgentRunProps): React.JSX.Element;\n"
     },
     {
       "path": "components/ai/AgentRun.prompt.md",

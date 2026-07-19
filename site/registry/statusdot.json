@@ -19,7 +19,7 @@
     {
       "path": "components/data/StatusDot.d.ts",
       "type": "registry:component",
-      "content": "export interface StatusDotProps {\n  /** @default 'ok' */\n  state?: 'ok' | 'warn' | 'err' | 'busy' | 'off';\n  label?: React.ReactNode;\n  /** Radiating pulse for live states */\n  pulse?: boolean;\n  style?: React.CSSProperties;\n  className?: string;\n}\nexport declare function StatusDot(props: StatusDotProps): JSX.Element;\n"
+      "content": "export interface StatusDotProps {\n  /** @default 'ok' */\n  state?: 'ok' | 'warn' | 'err' | 'busy' | 'off';\n  label?: React.ReactNode;\n  /** Radiating pulse for live states */\n  pulse?: boolean;\n  style?: React.CSSProperties;\n  className?: string;\n}\nexport declare function StatusDot(props: StatusDotProps): React.JSX.Element;\n"
     },
     {
       "path": "components/data/StatusDot.prompt.md",

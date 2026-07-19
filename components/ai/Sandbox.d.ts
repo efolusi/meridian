@@ -17,4 +17,4 @@ export interface SandboxProps {
   style?: React.CSSProperties;
   className?: string;
 }
-export declare function Sandbox(props: SandboxProps): JSX.Element;
+export declare function Sandbox(props: SandboxProps): React.JSX.Element;

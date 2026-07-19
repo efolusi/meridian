@@ -11,4 +11,4 @@ export interface FeedbackBarProps {
   style?: React.CSSProperties;
   className?: string;
 }
-export declare function FeedbackBar(props: FeedbackBarProps): JSX.Element;
+export declare function FeedbackBar(props: FeedbackBarProps): React.JSX.Element;

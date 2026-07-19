@@ -36,4 +36,4 @@ export interface FormFieldProps {
  * id linking them. Design-system controls pick the wiring up from context; for
  * anything else, pass a function and spread `controlProps` on the control.
  */
-export declare function FormField(props: FormFieldProps): JSX.Element;
+export declare function FormField(props: FormFieldProps): React.JSX.Element;

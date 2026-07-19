@@ -19,7 +19,7 @@
     {
       "path": "components/display/Kbd.d.ts",
       "type": "registry:component",
-      "content": "export interface KbdProps {\n  /** Key label, e.g. \"\u2318\", \"K\", \"Esc\" */\n  children?: React.ReactNode;\n  style?: React.CSSProperties;\n  className?: string;\n}\nexport declare function Kbd(props: KbdProps): JSX.Element;\n"
+      "content": "export interface KbdProps {\n  /** Key label, e.g. \"\u2318\", \"K\", \"Esc\" */\n  children?: React.ReactNode;\n  style?: React.CSSProperties;\n  className?: string;\n}\nexport declare function Kbd(props: KbdProps): React.JSX.Element;\n"
     },
     {
       "path": "components/display/Kbd.prompt.md",

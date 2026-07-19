@@ -21,7 +21,7 @@
     {
       "path": "components/feedback/Banner.d.ts",
       "type": "registry:component",
-      "content": "export interface BannerProps {\n  /** @default 'neutral' */\n  tone?: 'neutral' | 'brand' | 'warning' | 'danger';\n  /** Lucide icon name */\n  icon?: string;\n  /** Underlined action label */\n  action?: string;\n  onAction?: () => void;\n  /** Shows a dismiss \u2715 */\n  onDismiss?: () => void;\n  children?: React.ReactNode;\n  style?: React.CSSProperties;\n  className?: string;\n}\nexport declare function Banner(props: BannerProps): JSX.Element;\n"
+      "content": "export interface BannerProps {\n  /** @default 'neutral' */\n  tone?: 'neutral' | 'brand' | 'warning' | 'danger';\n  /** Lucide icon name */\n  icon?: string;\n  /** Underlined action label */\n  action?: string;\n  onAction?: () => void;\n  /** Shows a dismiss \u2715 */\n  onDismiss?: () => void;\n  children?: React.ReactNode;\n  style?: React.CSSProperties;\n  className?: string;\n}\nexport declare function Banner(props: BannerProps): React.JSX.Element;\n"
     },
     {
       "path": "components/feedback/Banner.prompt.md",

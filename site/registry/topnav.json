@@ -19,7 +19,7 @@
     {
       "path": "components/navigation/TopNav.d.ts",
       "type": "registry:component",
-      "content": "export interface TopNavProps {\n  title?: React.ReactNode;\n  /** Slot before the title (back button, breadcrumbs) */\n  leading?: React.ReactNode;\n  /** Right-aligned actions (search, bell, avatar) */\n  children?: React.ReactNode;\n  style?: React.CSSProperties;\n  className?: string;\n}\nexport declare function TopNav(props: TopNavProps): JSX.Element;\n"
+      "content": "export interface TopNavProps {\n  title?: React.ReactNode;\n  /** Slot before the title (back button, breadcrumbs) */\n  leading?: React.ReactNode;\n  /** Right-aligned actions (search, bell, avatar) */\n  children?: React.ReactNode;\n  style?: React.CSSProperties;\n  className?: string;\n}\nexport declare function TopNav(props: TopNavProps): React.JSX.Element;\n"
     },
     {
       "path": "components/navigation/TopNav.prompt.md",

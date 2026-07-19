@@ -20,7 +20,7 @@
     {
       "path": "components/ai/SelectionQuote.d.ts",
       "type": "registry:component",
-      "content": "export interface SelectionAction {\n  id: string;\n  label: string;\n  icon?: string;\n}\nexport interface SelectionQuoteProps {\n  /** The selectable content */\n  children: React.ReactNode;\n  /** Toolbar buttons. Default: one \"Quote\" action */\n  actions?: SelectionAction[];\n  onAction?: (id: string, text: string) => void;\n  style?: React.CSSProperties;\n  className?: string;\n}\nexport declare function SelectionQuote(props: SelectionQuoteProps): JSX.Element;\n"
+      "content": "export interface SelectionAction {\n  id: string;\n  label: string;\n  icon?: string;\n}\nexport interface SelectionQuoteProps {\n  /** The selectable content */\n  children: React.ReactNode;\n  /** Toolbar buttons. Default: one \"Quote\" action */\n  actions?: SelectionAction[];\n  onAction?: (id: string, text: string) => void;\n  style?: React.CSSProperties;\n  className?: string;\n}\nexport declare function SelectionQuote(props: SelectionQuoteProps): React.JSX.Element;\n"
     },
     {
       "path": "components/ai/SelectionQuote.prompt.md",

@@ -18,7 +18,7 @@
     {
       "path": "components/data/Sparkline.d.ts",
       "type": "registry:component",
-      "content": "export interface SparklineProps {\n  /** Series values */\n  data: number[];\n  /** @default 120 */ width?: number;\n  /** @default 32 */ height?: number;\n  /** Color override; inferred from first vs last value */\n  direction?: 'up' | 'down' | 'flat';\n  /** @default 1.5 */ strokeWidth?: number;\n  /** Faint area fill @default true */\n  area?: boolean;\n  style?: React.CSSProperties;\n  className?: string;\n}\nexport declare function Sparkline(props: SparklineProps): JSX.Element;\n"
+      "content": "export interface SparklineProps {\n  /** Series values */\n  data: number[];\n  /** @default 120 */ width?: number;\n  /** @default 32 */ height?: number;\n  /** Color override; inferred from first vs last value */\n  direction?: 'up' | 'down' | 'flat';\n  /** @default 1.5 */ strokeWidth?: number;\n  /** Faint area fill @default true */\n  area?: boolean;\n  style?: React.CSSProperties;\n  className?: string;\n}\nexport declare function Sparkline(props: SparklineProps): React.JSX.Element;\n"
     },
     {
       "path": "components/data/Sparkline.prompt.md",

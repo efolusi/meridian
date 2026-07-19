@@ -8,4 +8,4 @@ export interface FileTypeIconProps {
   style?: React.CSSProperties;
   className?: string;
 }
-export declare function FileTypeIcon(props: FileTypeIconProps): JSX.Element;
+export declare function FileTypeIcon(props: FileTypeIconProps): React.JSX.Element;

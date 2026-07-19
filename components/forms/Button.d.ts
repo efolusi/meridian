@@ -12,4 +12,4 @@ export interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElemen
   loading?: boolean;
   children?: React.ReactNode;
 }
-export declare function Button(props: ButtonProps): JSX.Element;
+export declare function Button(props: ButtonProps): React.JSX.Element;

@@ -19,7 +19,7 @@
     {
       "path": "components/finance/PaymentCard.d.ts",
       "type": "registry:component",
-      "content": "export interface PaymentCardProps {\n  /** @default 'ADA OBI' */\n  name?: string;\n  /** Masked number @default '\u2022\u2022\u2022\u2022 \u2022\u2022\u2022\u2022 \u2022\u2022\u2022\u2022 4242' */\n  number?: string;\n  /** @default '09/29' */\n  expiry?: string;\n  /** Top-left brand text @default 'Efolusi' */\n  network?: string;\n  /** @default 'espresso' */\n  variant?: 'espresso' | 'caramel' | 'paper';\n  /** Grayscale frozen state */\n  frozen?: boolean;\n  style?: React.CSSProperties;\n  className?: string;\n}\nexport declare function PaymentCard(props: PaymentCardProps): JSX.Element;\n"
+      "content": "export interface PaymentCardProps {\n  /** @default 'ADA OBI' */\n  name?: string;\n  /** Masked number @default '\u2022\u2022\u2022\u2022 \u2022\u2022\u2022\u2022 \u2022\u2022\u2022\u2022 4242' */\n  number?: string;\n  /** @default '09/29' */\n  expiry?: string;\n  /** Top-left brand text @default 'Efolusi' */\n  network?: string;\n  /** @default 'espresso' */\n  variant?: 'espresso' | 'caramel' | 'paper';\n  /** Grayscale frozen state */\n  frozen?: boolean;\n  style?: React.CSSProperties;\n  className?: string;\n}\nexport declare function PaymentCard(props: PaymentCardProps): React.JSX.Element;\n"
     },
     {
       "path": "components/finance/PaymentCard.prompt.md",

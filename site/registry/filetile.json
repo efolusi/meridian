@@ -22,7 +22,7 @@
     {
       "path": "components/files/FileTile.d.ts",
       "type": "registry:component",
-      "content": "export interface FileTileProps {\n  name: string;\n  /** e.g. \"4.2 MB\" */\n  size?: string;\n  /** Icon family; inferred from extension when omitted */\n  kind?: 'image' | 'video' | 'audio' | 'code' | 'archive' | 'doc';\n  /** Meta text after size, e.g. \"Converted\" */\n  status?: string;\n  /** 0\u2013100 shows an upload bar instead of meta */\n  progress?: number;\n  /** Red meta line */\n  error?: string;\n  onRemove?: () => void;\n  /** Extra right-side controls */\n  actions?: React.ReactNode;\n  style?: React.CSSProperties;\n  className?: string;\n}\nexport declare function FileTile(props: FileTileProps): JSX.Element;\n"
+      "content": "export interface FileTileProps extends React.HTMLAttributes<HTMLDivElement> {\n  name: string;\n  /** e.g. \"4.2 MB\" */\n  size?: string;\n  /** Icon family; inferred from extension when omitted */\n  kind?: 'image' | 'video' | 'audio' | 'code' | 'archive' | 'doc';\n  /** Meta text after size, e.g. \"Converted\" */\n  status?: string;\n  /** 0\u2013100 shows an upload bar instead of meta */\n  progress?: number;\n  /** Red meta line */\n  error?: string;\n  onRemove?: () => void;\n  /** Extra right-side controls */\n  actions?: React.ReactNode;\n  style?: React.CSSProperties;\n  className?: string;\n}\nexport declare function FileTile(props: FileTileProps): React.JSX.Element;\n"
     },
     {
       "path": "components/files/FileTile.prompt.md",

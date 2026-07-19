@@ -21,7 +21,7 @@
     {
       "path": "components/ai/ModelSelector.d.ts",
       "type": "registry:component",
-      "content": "export interface ModelOption {\n  id: string;\n  name: string;\n  /** Shown muted next to the name */\n  provider?: string;\n  /** Second line in the list */\n  hint?: string;\n  /** Small uppercase tag, e.g. 'New' */\n  badge?: string;\n}\nexport interface ModelSelectorProps {\n  models: ModelOption[];\n  /** Selected model id */\n  value?: string;\n  onChange?: (id: string) => void;\n  /** Panel direction @default 'up' */\n  side?: 'up' | 'down';\n  style?: React.CSSProperties;\n  className?: string;\n}\nexport declare function ModelSelector(props: ModelSelectorProps): JSX.Element;\n"
+      "content": "export interface ModelOption {\n  id: string;\n  name: string;\n  /** Shown muted next to the name */\n  provider?: string;\n  /** Second line in the list */\n  hint?: string;\n  /** Small uppercase tag, e.g. 'New' */\n  badge?: string;\n}\nexport interface ModelSelectorProps {\n  models: ModelOption[];\n  /** Selected model id */\n  value?: string;\n  onChange?: (id: string) => void;\n  /** Panel direction @default 'up' */\n  side?: 'up' | 'down';\n  style?: React.CSSProperties;\n  className?: string;\n}\nexport declare function ModelSelector(props: ModelSelectorProps): React.JSX.Element;\n"
     },
     {
       "path": "components/ai/ModelSelector.prompt.md",

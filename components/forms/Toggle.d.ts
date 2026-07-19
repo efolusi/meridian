@@ -22,5 +22,5 @@ export interface ToggleGroupProps {
   style?: React.CSSProperties;
   className?: string;
 }
-export declare function Toggle(props: ToggleProps): JSX.Element;
-export declare function ToggleGroup(props: ToggleGroupProps): JSX.Element;
+export declare function Toggle(props: ToggleProps): React.JSX.Element;
+export declare function ToggleGroup(props: ToggleGroupProps): React.JSX.Element;

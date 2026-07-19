@@ -19,7 +19,7 @@
     {
       "path": "components/ai/UsageMeter.d.ts",
       "type": "registry:component",
-      "content": "export interface UsageMeterProps {\n  used: number;\n  limit: number;\n  /** @default 'Usage' */\n  label?: string;\n  /** Appended to figures, e.g. 'tokens' */\n  unit?: string;\n  /** Mono figure bottom-right, e.g. '$4.82' */\n  cost?: string;\n  /** Muted note bottom-left */\n  hint?: string;\n  /** Warning tone threshold (0-1) @default 0.8 */\n  warnAt?: number;\n  /** Count the figure and bar up on mount/change */\n  animated?: boolean;\n  /** Figure formatter @default toLocaleString */\n  format?: (v: number) => string;\n  style?: React.CSSProperties;\n  className?: string;\n}\nexport declare function UsageMeter(props: UsageMeterProps): JSX.Element;\n"
+      "content": "export interface UsageMeterProps extends React.HTMLAttributes<HTMLDivElement> {\n  used: number;\n  limit: number;\n  /** @default 'Usage' */\n  label?: string;\n  /** Appended to figures, e.g. 'tokens' */\n  unit?: string;\n  /** Mono figure bottom-right, e.g. '$4.82' */\n  cost?: string;\n  /** Muted note bottom-left */\n  hint?: string;\n  /** Warning tone threshold (0-1) @default 0.8 */\n  warnAt?: number;\n  /** Count the figure and bar up on mount/change */\n  animated?: boolean;\n  /** Figure formatter @default toLocaleString */\n  format?: (v: number) => string;\n  style?: React.CSSProperties;\n  className?: string;\n}\nexport declare function UsageMeter(props: UsageMeterProps): React.JSX.Element;\n"
     },
     {
       "path": "components/ai/UsageMeter.prompt.md",

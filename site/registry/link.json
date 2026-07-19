@@ -20,12 +20,12 @@
     {
       "path": "components/display/Link.d.ts",
       "type": "registry:component",
-      "content": "export interface LinkProps extends React.AnchorHTMLAttributes<HTMLAnchorElement> {\n  /** Opens in new tab + trailing \u2197 */\n  external?: boolean;\n  /** Leading Lucide icon */\n  icon?: string;\n  /** 'quiet' inherits secondary text color @default 'default' */\n  variant?: 'default' | 'quiet';\n  /** Semibold + trailing \u2192 for standalone CTAs */\n  standalone?: boolean;\n  children?: React.ReactNode;\n}\nexport declare function Link(props: LinkProps): JSX.Element;\n"
+      "content": "export interface LinkProps extends React.AnchorHTMLAttributes<HTMLAnchorElement> {\n  /** Opens in new tab + trailing \u2197 */\n  external?: boolean;\n  /** Leading Lucide icon */\n  icon?: string;\n  /** 'quiet' inherits secondary text color @default 'default' */\n  variant?: 'default' | 'quiet';\n  /** Semibold + trailing \u2192 for standalone CTAs */\n  standalone?: boolean;\n  children?: React.ReactNode;\n}\nexport declare function Link(props: LinkProps): React.JSX.Element;\n"
     },
     {
       "path": "components/display/Link.prompt.md",
       "type": "registry:component",
-      "content": "Styled anchor. `external` adds \u2197 + new tab; `standalone` makes a semibold CTA with \u2192.\n\n```jsx\n<Link href=\"/docs\">the docs</Link>\n<Link external href=\"https://status.efolusi.com\">API status</Link>\n<Link standalone href=\"#\">Explore Agent</Link>\n```\n"
+      "content": "Styled anchor. `external` adds \u2197 + new tab; `standalone` makes a semibold CTA with \u2192.\n\n```jsx\n<Link href=\"/docs\">the docs</Link>\n<Link external href=\"https://status.efolusi.com\">API status</Link>\n<Link standalone href=\"#\">Explore AI agents</Link>\n```\n"
     }
   ],
   "categories": [

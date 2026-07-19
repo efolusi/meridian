@@ -5,4 +5,4 @@ export interface CalendarProps {
   style?: React.CSSProperties;
   className?: string;
 }
-export declare function Calendar(props: CalendarProps): JSX.Element;
+export declare function Calendar(props: CalendarProps): React.JSX.Element;

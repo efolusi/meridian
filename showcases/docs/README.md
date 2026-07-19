@@ -5,6 +5,6 @@ A documentation site: top bar with search, left nav tree, article with code bloc
 - `index.html` — interactive entry
 - `DocsScreen.jsx` — DocsHeader, DocsNav, Article, Toc
 
-Article prose 16px on `--container-text` measure; code blocks on espresso (`--surface-inverse`).
+Article prose 16px on `--container-text` measure; code blocks on espresso (`--surface-code`).
 
 Starter twin: `starters/docs-page/` is the copyable multi-page journey for this category; this example app shows the layout as liftable plain JSX. When the layout changes in one, update the other.

@@ -1,6 +1,6 @@
 Label, hint, error and required chrome around a control, and the owner of the `id` that ties them together. Use it when a control has no `label` prop of its own, when several controls share one label, or when the control is not from this system.
 
-Input, Textarea, Select, Combobox, DigitEntry and InputGroup already take `label` / `hint` / `error` directly — for a single one of those, keep using the prop. `FormField` is the general case underneath.
+Input, Textarea and InputGroup already take `label` / `hint` / `error` directly, Select and Combobox take `label` / `hint`, and DigitEntry takes `label` — for a single one of those, keep using the prop. `FormField` is the general case underneath.
 
 ```jsx
 <FormField label="Work email" hint="We only use this for receipts." required>

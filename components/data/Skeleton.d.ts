@@ -8,4 +8,4 @@ export interface SkeletonProps {
   style?: React.CSSProperties;
   className?: string;
 }
-export declare function Skeleton(props: SkeletonProps): JSX.Element;
+export declare function Skeleton(props: SkeletonProps): React.JSX.Element;

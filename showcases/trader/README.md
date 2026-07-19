@@ -5,4 +5,4 @@ A B2C trading + social-finance surface: portfolio header with trend, positions t
 - `index.html` — interactive: timeframe toggle, strategy on/off (toast), risk slider, follow traders
 - `TraderScreen.jsx` — portfolio, positions, strategy, feed
 
-Composes: Stat, Sparkline, BarChart, SegmentedControl, Table, Badge, Switch, Slider, Progress, Avatar, Toast.
+Composes: Stat, Sparkline, BarChart, SegmentedControl, Table, Badge, Switch, Slider, Progress, Avatar, Toaster.

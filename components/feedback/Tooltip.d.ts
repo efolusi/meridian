@@ -9,4 +9,4 @@ export interface TooltipProps {
   style?: React.CSSProperties;
   className?: string;
 }
-export declare function Tooltip(props: TooltipProps): JSX.Element;
+export declare function Tooltip(props: TooltipProps): React.JSX.Element;

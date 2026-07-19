@@ -20,7 +20,7 @@
     {
       "path": "components/ai/Reasoning.d.ts",
       "type": "registry:component",
-      "content": "export interface ReasoningProps {\n  /** Pulsing glyph + \"Thinking\u2026\" header */\n  streaming?: boolean;\n  /** Header reads \"Thought for <duration>\" */\n  duration?: string;\n  /** Custom header text */\n  label?: React.ReactNode;\n  defaultOpen?: boolean;\n  /** Controlled open state */\n  open?: boolean;\n  onOpenChange?: (open: boolean) => void;\n  /** The reasoning text */\n  children?: React.ReactNode;\n  style?: React.CSSProperties;\n  className?: string;\n}\nexport declare function Reasoning(props: ReasoningProps): JSX.Element;\n"
+      "content": "export interface ReasoningProps {\n  /** Pulsing glyph + \"Thinking\u2026\" header */\n  streaming?: boolean;\n  /** Header reads \"Thought for <duration>\" */\n  duration?: string;\n  /** Custom header text */\n  label?: React.ReactNode;\n  defaultOpen?: boolean;\n  /** Controlled open state */\n  open?: boolean;\n  onOpenChange?: (open: boolean) => void;\n  /** The reasoning text */\n  children?: React.ReactNode;\n  style?: React.CSSProperties;\n  className?: string;\n}\nexport declare function Reasoning(props: ReasoningProps): React.JSX.Element;\n"
     },
     {
       "path": "components/ai/Reasoning.prompt.md",

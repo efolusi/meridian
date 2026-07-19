@@ -20,7 +20,7 @@
     {
       "path": "components/navigation/Tabs.d.ts",
       "type": "registry:component",
-      "content": "export interface TabItem {\n  id: string;\n  label: React.ReactNode;\n  /** Lucide icon name */\n  icon?: string;\n  /** Count pill */\n  count?: number;\n}\nexport interface TabsProps {\n  items: TabItem[];\n  /** Active item id (controlled) */\n  value: string;\n  onChange?: (id: string) => void;\n  style?: React.CSSProperties;\n  className?: string;\n}\nexport declare function Tabs(props: TabsProps): JSX.Element;\n"
+      "content": "export interface TabItem {\n  id: string;\n  label: React.ReactNode;\n  /** Lucide icon name */\n  icon?: string;\n  /** Count pill */\n  count?: number;\n}\nexport interface TabsProps {\n  items: TabItem[];\n  /** Active item id (controlled) */\n  value: string;\n  onChange?: (id: string) => void;\n  style?: React.CSSProperties;\n  className?: string;\n}\nexport declare const Tabs: React.ForwardRefExoticComponent<TabsProps & React.RefAttributes<HTMLDivElement>>;\n"
     },
     {
       "path": "components/navigation/Tabs.prompt.md",

@@ -8,4 +8,4 @@ export interface LabelProps {
   style?: React.CSSProperties;
   className?: string;
 }
-export declare function Label(props: LabelProps): JSX.Element;
+export declare function Label(props: LabelProps): React.JSX.Element;

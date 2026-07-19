@@ -20,7 +20,7 @@
     {
       "path": "components/display/Collapsible.d.ts",
       "type": "registry:component",
-      "content": "export interface CollapsibleProps {\n  /** Trigger row content */\n  title: React.ReactNode;\n  defaultOpen?: boolean;\n  /** Controlled open state */\n  open?: boolean;\n  onOpenChange?: (open: boolean) => void;\n  children?: React.ReactNode;\n  style?: React.CSSProperties;\n  className?: string;\n}\nexport declare function Collapsible(props: CollapsibleProps): JSX.Element;\n"
+      "content": "export interface CollapsibleProps {\n  /** Trigger row content */\n  title: React.ReactNode;\n  defaultOpen?: boolean;\n  /** Controlled open state */\n  open?: boolean;\n  onOpenChange?: (open: boolean) => void;\n  children?: React.ReactNode;\n  style?: React.CSSProperties;\n  className?: string;\n}\nexport declare function Collapsible(props: CollapsibleProps): React.JSX.Element;\n"
     },
     {
       "path": "components/display/Collapsible.prompt.md",

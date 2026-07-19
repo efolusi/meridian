@@ -8,4 +8,4 @@ export interface PageControlProps {
   style?: React.CSSProperties;
   className?: string;
 }
-export declare function PageControl(props: PageControlProps): JSX.Element;
+export declare function PageControl(props: PageControlProps): React.JSX.Element;

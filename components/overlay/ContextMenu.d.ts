@@ -8,4 +8,4 @@ export interface ContextMenuProps {
   style?: React.CSSProperties;
   className?: string;
 }
-export declare function ContextMenu(props: ContextMenuProps): JSX.Element;
+export declare function ContextMenu(props: ContextMenuProps): React.JSX.Element;

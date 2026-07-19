@@ -5,7 +5,7 @@ export interface TerminalLine {
   /** Muted timestamp prefix */
   time?: string;
 }
-export interface TerminalProps {
+export interface TerminalProps extends React.HTMLAttributes<HTMLDivElement> {
   /** Header label, e.g. "deploy@efolusi-prod" */
   host?: string;
   /** Strings or line objects */
@@ -17,4 +17,4 @@ export interface TerminalProps {
   style?: React.CSSProperties;
   className?: string;
 }
-export declare function Terminal(props: TerminalProps): JSX.Element;
+export declare function Terminal(props: TerminalProps): React.JSX.Element;

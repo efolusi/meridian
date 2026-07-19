@@ -16,4 +16,4 @@ export interface ChatMessageProps {
   style?: React.CSSProperties;
   className?: string;
 }
-export declare function ChatMessage(props: ChatMessageProps): JSX.Element;
+export declare function ChatMessage(props: ChatMessageProps): React.JSX.Element;

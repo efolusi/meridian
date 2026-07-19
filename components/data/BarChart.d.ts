@@ -11,4 +11,4 @@ export interface BarChartProps {
   style?: React.CSSProperties;
   className?: string;
 }
-export declare function BarChart(props: BarChartProps): JSX.Element;
+export declare function BarChart(props: BarChartProps): React.JSX.Element;

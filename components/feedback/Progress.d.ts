@@ -12,4 +12,4 @@ export interface ProgressProps {
   style?: React.CSSProperties;
   className?: string;
 }
-export declare function Progress(props: ProgressProps): JSX.Element;
+export declare function Progress(props: ProgressProps): React.JSX.Element;

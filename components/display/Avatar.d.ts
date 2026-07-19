@@ -6,7 +6,7 @@ export interface AvatarProps extends React.HTMLAttributes<HTMLSpanElement> {
   /** Px @default 32 */
   size?: number;
 }
-export declare function Avatar(props: AvatarProps): JSX.Element;
+export declare function Avatar(props: AvatarProps): React.JSX.Element;
 
 export interface AvatarGroupProps {
   /** Avatar elements; overlap with white keylines */
@@ -14,4 +14,4 @@ export interface AvatarGroupProps {
   style?: React.CSSProperties;
   className?: string;
 }
-export declare function AvatarGroup(props: AvatarGroupProps): JSX.Element;
+export declare function AvatarGroup(props: AvatarGroupProps): React.JSX.Element;

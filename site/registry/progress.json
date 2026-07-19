@@ -19,7 +19,7 @@
     {
       "path": "components/feedback/Progress.d.ts",
       "type": "registry:component",
-      "content": "export interface ProgressProps {\n  /** @default 0 */\n  value?: number;\n  /** @default 100 */\n  max?: number;\n  label?: string;\n  /** Show value right of the label (default = percent) */\n  showValue?: boolean;\n  format?: (value: number, max: number) => string;\n  /** @default 'default' (ink) */\n  tone?: 'default' | 'warning' | 'danger';\n  style?: React.CSSProperties;\n  className?: string;\n}\nexport declare function Progress(props: ProgressProps): JSX.Element;\n"
+      "content": "export interface ProgressProps {\n  /** @default 0 */\n  value?: number;\n  /** @default 100 */\n  max?: number;\n  label?: string;\n  /** Show value right of the label (default = percent) */\n  showValue?: boolean;\n  format?: (value: number, max: number) => string;\n  /** @default 'default' (ink) */\n  tone?: 'default' | 'warning' | 'danger';\n  style?: React.CSSProperties;\n  className?: string;\n}\nexport declare function Progress(props: ProgressProps): React.JSX.Element;\n"
     },
     {
       "path": "components/feedback/Progress.prompt.md",

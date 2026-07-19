@@ -1,6 +1,6 @@
 # Auth — example app
 
-Shared sign-in / create-account screens for a multi-app workspace. Split layout: brand panel (cocoa, owl, rotating customer quote) + form panel. Interactive: toggle between sign in and sign up, password reveal, fake submit with loading → success.
+Shared sign-in / create-account screens for a multi-app workspace. Split layout: brand panel (cocoa, owl, workspace pitch + trust badges) + form panel. Interactive: toggle between sign in and sign up, password reveal, fake submit with loading → success.
 
 - `index.html` — interactive entry
 - `AuthScreens.jsx` — BrandPanel, SignIn/SignUp, ForgotForm, MagicForm (+ sent confirmations)

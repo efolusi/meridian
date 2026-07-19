@@ -20,7 +20,7 @@
     {
       "path": "components/files/FileTypeIcon.d.ts",
       "type": "registry:component",
-      "content": "export interface FileTypeIconProps {\n  /** Extension: pdf, csv, png, mp4, zip, json\u2026 @default 'txt' */\n  ext?: string;\n  /** Px @default 40 */\n  size?: number;\n  /** Colored extension chip @default true */\n  showExt?: boolean;\n  style?: React.CSSProperties;\n  className?: string;\n}\nexport declare function FileTypeIcon(props: FileTypeIconProps): JSX.Element;\n"
+      "content": "export interface FileTypeIconProps {\n  /** Extension: pdf, csv, png, mp4, zip, json\u2026 @default 'txt' */\n  ext?: string;\n  /** Px @default 40 */\n  size?: number;\n  /** Colored extension chip @default true */\n  showExt?: boolean;\n  style?: React.CSSProperties;\n  className?: string;\n}\nexport declare function FileTypeIcon(props: FileTypeIconProps): React.JSX.Element;\n"
     },
     {
       "path": "components/files/FileTypeIcon.prompt.md",

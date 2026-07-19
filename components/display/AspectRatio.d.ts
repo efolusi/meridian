@@ -5,4 +5,4 @@ export interface AspectRatioProps {
   style?: React.CSSProperties;
   className?: string;
 }
-export declare function AspectRatio(props: AspectRatioProps): JSX.Element;
+export declare function AspectRatio(props: AspectRatioProps): React.JSX.Element;

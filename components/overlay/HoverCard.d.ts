@@ -14,4 +14,4 @@ export interface HoverCardProps {
   style?: React.CSSProperties;
   className?: string;
 }
-export declare function HoverCard(props: HoverCardProps): JSX.Element;
+export declare function HoverCard(props: HoverCardProps): React.JSX.Element;

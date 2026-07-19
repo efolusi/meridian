@@ -20,7 +20,7 @@
     {
       "path": "components/display/Accordion.d.ts",
       "type": "registry:component",
-      "content": "export interface AccordionItem {\n  id: string;\n  title: React.ReactNode;\n  content: React.ReactNode;\n}\nexport interface AccordionProps {\n  items: AccordionItem[];\n  /** Allow several items open at once @default false */\n  multiple?: boolean;\n  /** Ids open initially */\n  defaultOpen?: string[];\n  style?: React.CSSProperties;\n  className?: string;\n}\nexport declare function Accordion(props: AccordionProps): JSX.Element;\n"
+      "content": "export interface AccordionItem {\n  id: string;\n  title: React.ReactNode;\n  content: React.ReactNode;\n}\nexport interface AccordionProps {\n  items: AccordionItem[];\n  /** Allow several items open at once @default false */\n  multiple?: boolean;\n  /** Ids open initially */\n  defaultOpen?: string[];\n  style?: React.CSSProperties;\n  className?: string;\n}\nexport declare function Accordion(props: AccordionProps): React.JSX.Element;\n"
     },
     {
       "path": "components/display/Accordion.prompt.md",

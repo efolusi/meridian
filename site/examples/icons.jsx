@@ -14,7 +14,7 @@ export function IconDemo() {
         <Icon name="rocket" size={32} />
         <Icon name="rocket" size={32} strokeWidth={1} />
       </div>
-      <span style={{ fontSize: 13, color: 'var(--text-muted)' }}>90 Lucide icons, 1.5px stroke by default.</span>
+<span style={{ fontSize: 13, color: 'var(--text-muted)' }}>108 Lucide icons, 1.5px stroke by default.</span>
     </div>
   );
 }

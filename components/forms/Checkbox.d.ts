@@ -3,4 +3,4 @@ export interface CheckboxProps extends React.InputHTMLAttributes<HTMLInputElemen
   /** Muted second line under the label */
   description?: string;
 }
-export declare function Checkbox(props: CheckboxProps): JSX.Element;
+export declare const Checkbox: React.ForwardRefExoticComponent<CheckboxProps & React.RefAttributes<HTMLInputElement>>;

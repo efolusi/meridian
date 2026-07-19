@@ -19,5 +19,5 @@ export interface SourceListProps {
   style?: React.CSSProperties;
   className?: string;
 }
-export declare function Citation(props: CitationProps): JSX.Element;
-export declare function SourceList(props: SourceListProps): JSX.Element;
+export declare function Citation(props: CitationProps): React.JSX.Element;
+export declare function SourceList(props: SourceListProps): React.JSX.Element;

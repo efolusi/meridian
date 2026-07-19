@@ -7,4 +7,4 @@ export interface SuggestionsProps {
   style?: React.CSSProperties;
   className?: string;
 }
-export declare function Suggestions(props: SuggestionsProps): JSX.Element;
+export declare function Suggestions(props: SuggestionsProps): React.JSX.Element;

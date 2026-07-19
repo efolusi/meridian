@@ -1,6 +1,6 @@
 # Website — marketing example app
 
-A public homepage: header, hero with live product preview, product trio, brand band, pricing, footer. Original demonstration of the system (no prior site existed).
+A public homepage: header, hero with live product preview, six-card product grid, brand band, pricing, footer. Original demonstration of the system (no prior site existed).
 
 - `index.html` — full scrolling page
 - `Sections.jsx` — SiteHeader, Hero, Products, BrandBand, Pricing, SiteFooter

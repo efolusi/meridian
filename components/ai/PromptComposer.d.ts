@@ -25,4 +25,4 @@ export interface PromptComposerProps {
   style?: React.CSSProperties;
   className?: string;
 }
-export declare function PromptComposer(props: PromptComposerProps): JSX.Element;
+export declare const PromptComposer: React.ForwardRefExoticComponent<PromptComposerProps & React.RefAttributes<HTMLDivElement>>;

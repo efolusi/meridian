@@ -13,4 +13,4 @@ export interface ResizableProps {
   style?: React.CSSProperties;
   className?: string;
 }
-export declare function Resizable(props: ResizableProps): JSX.Element;
+export declare function Resizable(props: ResizableProps): React.JSX.Element;

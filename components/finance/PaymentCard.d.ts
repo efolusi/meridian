@@ -14,4 +14,4 @@ export interface PaymentCardProps {
   style?: React.CSSProperties;
   className?: string;
 }
-export declare function PaymentCard(props: PaymentCardProps): JSX.Element;
+export declare function PaymentCard(props: PaymentCardProps): React.JSX.Element;

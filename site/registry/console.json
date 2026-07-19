@@ -20,7 +20,7 @@
     {
       "path": "components/code/Console.d.ts",
       "type": "registry:component",
-      "content": "export interface ConsoleEntry {\n  /** 'log' | 'info' | 'warn' | 'error' | 'debug' */\n  level?: 'log' | 'info' | 'warn' | 'error' | 'debug';\n  time?: string;\n  text: React.ReactNode;\n  /** Collapsible stack trace */\n  stack?: string;\n  /** Right-aligned origin, e.g. 'app.js:12' */\n  source?: string;\n}\nexport interface ConsoleProps {\n  title?: string;\n  entries: ConsoleEntry[];\n  /** Viewport height in px. Default 240 */\n  height?: number;\n  style?: React.CSSProperties;\n  className?: string;\n}\nexport declare function Console(props: ConsoleProps): JSX.Element;\n"
+      "content": "export interface ConsoleEntry {\n  /** 'log' | 'info' | 'warn' | 'error' | 'debug' */\n  level?: 'log' | 'info' | 'warn' | 'error' | 'debug';\n  time?: string;\n  text: React.ReactNode;\n  /** Collapsible stack trace */\n  stack?: string;\n  /** Right-aligned origin, e.g. 'app.js:12' */\n  source?: string;\n}\nexport interface ConsoleProps {\n  title?: string;\n  entries: ConsoleEntry[];\n  /** Viewport height in px. Default 240 */\n  height?: number;\n  style?: React.CSSProperties;\n  className?: string;\n}\nexport declare function Console(props: ConsoleProps): React.JSX.Element;\n"
     },
     {
       "path": "components/code/Console.prompt.md",

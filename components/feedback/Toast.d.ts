@@ -16,7 +16,7 @@ export interface ToastProps {
   style?: React.CSSProperties;
   className?: string;
 }
-export declare function Toast(props: ToastProps): JSX.Element;
+export declare function Toast(props: ToastProps): React.JSX.Element;
 
 export interface ToastStackProps {
   /** Toasts, stacked fixed bottom-right */
@@ -24,7 +24,7 @@ export interface ToastStackProps {
   style?: React.CSSProperties;
   className?: string;
 }
-export declare function ToastStack(props: ToastStackProps): JSX.Element;
+export declare function ToastStack(props: ToastStackProps): React.JSX.Element;
 
 export interface ToastOptions {
   title: React.ReactNode;
@@ -63,7 +63,7 @@ export interface ToasterProps {
  * The hook is published as a static — `Toaster.useToast()` — because only
  * capitalised exports reach the global namespace.
  */
-export declare function Toaster(props: ToasterProps): JSX.Element;
+export declare function Toaster(props: ToasterProps): React.JSX.Element;
 export declare namespace Toaster {
   /** Must be called inside a `<Toaster>`; throws otherwise. */
   function useToast(): ToastApi;

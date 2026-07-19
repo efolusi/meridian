@@ -1,4 +1,4 @@
-export interface InputGroupProps extends React.InputHTMLAttributes<HTMLInputElement> {
+export interface InputGroupProps extends Omit<React.InputHTMLAttributes<HTMLInputElement>, 'size' | 'prefix'> {
   /** Field label rendered above */
   label?: string;
   /** Muted helper text below */
@@ -12,4 +12,4 @@ export interface InputGroupProps extends React.InputHTMLAttributes<HTMLInputElem
   /** @default 'md' */
   size?: 'sm' | 'md' | 'lg';
 }
-export declare function InputGroup(props: InputGroupProps): JSX.Element;
+export declare function InputGroup(props: InputGroupProps): React.JSX.Element;

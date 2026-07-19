@@ -20,7 +20,7 @@
     {
       "path": "components/dates/Calendar.d.ts",
       "type": "registry:component",
-      "content": "export interface CalendarProps {\n  /** Selected date as YYYY-MM-DD */\n  value?: string;\n  onChange?: (date: string) => void;\n  style?: React.CSSProperties;\n  className?: string;\n}\nexport declare function Calendar(props: CalendarProps): JSX.Element;\n"
+      "content": "export interface CalendarProps {\n  /** Selected date as YYYY-MM-DD */\n  value?: string;\n  onChange?: (date: string) => void;\n  style?: React.CSSProperties;\n  className?: string;\n}\nexport declare function Calendar(props: CalendarProps): React.JSX.Element;\n"
     },
     {
       "path": "components/dates/Calendar.prompt.md",

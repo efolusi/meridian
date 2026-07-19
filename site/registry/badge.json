@@ -19,7 +19,7 @@
     {
       "path": "components/display/Badge.d.ts",
       "type": "registry:component",
-      "content": "export interface BadgeProps extends React.HTMLAttributes<HTMLSpanElement> {\n  /** @default 'neutral' */\n  tone?: 'neutral' | 'accent' | 'success' | 'warning' | 'danger' | 'brand';\n  /** @default 'sm' */\n  size?: 'sm' | 'md';\n  /** Leading status dot */\n  dot?: boolean;\n  children?: React.ReactNode;\n}\nexport declare function Badge(props: BadgeProps): JSX.Element;\n"
+      "content": "export interface BadgeProps extends React.HTMLAttributes<HTMLSpanElement> {\n  /** @default 'neutral' */\n  tone?: 'neutral' | 'accent' | 'success' | 'warning' | 'danger' | 'brand';\n  /** @default 'sm' */\n  size?: 'sm' | 'md';\n  /** Leading status dot */\n  dot?: boolean;\n  children?: React.ReactNode;\n}\nexport declare function Badge(props: BadgeProps): React.JSX.Element;\n"
     },
     {
       "path": "components/display/Badge.prompt.md",

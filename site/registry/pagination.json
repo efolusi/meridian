@@ -20,7 +20,7 @@
     {
       "path": "components/navigation/Pagination.d.ts",
       "type": "registry:component",
-      "content": "export interface PaginationProps {\n  /** Current page, 1-based */\n  page: number;\n  pageCount: number;\n  onChange?: (page: number) => void;\n  style?: React.CSSProperties;\n  className?: string;\n}\nexport declare function Pagination(props: PaginationProps): JSX.Element;\n"
+      "content": "export interface PaginationProps {\n  /** Current page, 1-based */\n  page: number;\n  pageCount: number;\n  onChange?: (page: number) => void;\n  style?: React.CSSProperties;\n  className?: string;\n}\nexport declare function Pagination(props: PaginationProps): React.JSX.Element;\n"
     },
     {
       "path": "components/navigation/Pagination.prompt.md",

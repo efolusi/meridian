@@ -50,7 +50,7 @@ function Block() {
         <Button variant="ghost">Cancel</Button>
         <Button>Save changes</Button>
       </div>
-      <Card tone="danger" title="Danger zone" subtitle="These actions are permanent." padding={18} style={{ marginTop: 10 }}>
+      <Card title="Danger zone" subtitle="These actions are permanent." padding={18} style={{ marginTop: 10, borderColor: 'var(--danger-300)' }}>
         <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: 18 }}>
           <span style={{ fontSize: 13.5, color: 'var(--text-secondary)' }}>Delete this workspace and every agent, run, and artifact in it.</span>
           <Button variant="danger">Delete workspace</Button>

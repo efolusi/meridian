@@ -19,7 +19,7 @@
     {
       "path": "components/data/Skeleton.d.ts",
       "type": "registry:component",
-      "content": "export interface SkeletonProps {\n  /** @default 'text' */\n  variant?: 'text' | 'rect' | 'circle';\n  width?: number | string;\n  height?: number | string;\n  /** Stacked text lines (last one 60% wide) @default 1 */\n  lines?: number;\n  style?: React.CSSProperties;\n  className?: string;\n}\nexport declare function Skeleton(props: SkeletonProps): JSX.Element;\n"
+      "content": "export interface SkeletonProps {\n  /** @default 'text' */\n  variant?: 'text' | 'rect' | 'circle';\n  width?: number | string;\n  height?: number | string;\n  /** Stacked text lines (last one 60% wide) @default 1 */\n  lines?: number;\n  style?: React.CSSProperties;\n  className?: string;\n}\nexport declare function Skeleton(props: SkeletonProps): React.JSX.Element;\n"
     },
     {
       "path": "components/data/Skeleton.prompt.md",

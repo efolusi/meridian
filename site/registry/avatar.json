@@ -19,7 +19,7 @@
     {
       "path": "components/display/Avatar.d.ts",
       "type": "registry:component",
-      "content": "export interface AvatarProps extends React.HTMLAttributes<HTMLSpanElement> {\n  /** Full name \u2014 initials + deterministic tone derive from it */\n  name?: string;\n  /** Image URL; falls back to initials */\n  src?: string;\n  /** Px @default 32 */\n  size?: number;\n}\nexport declare function Avatar(props: AvatarProps): JSX.Element;\n\nexport interface AvatarGroupProps {\n  /** Avatar elements; overlap with white keylines */\n  children?: React.ReactNode;\n  style?: React.CSSProperties;\n  className?: string;\n}\nexport declare function AvatarGroup(props: AvatarGroupProps): JSX.Element;\n"
+      "content": "export interface AvatarProps extends React.HTMLAttributes<HTMLSpanElement> {\n  /** Full name \u2014 initials + deterministic tone derive from it */\n  name?: string;\n  /** Image URL; falls back to initials */\n  src?: string;\n  /** Px @default 32 */\n  size?: number;\n}\nexport declare function Avatar(props: AvatarProps): React.JSX.Element;\n\nexport interface AvatarGroupProps {\n  /** Avatar elements; overlap with white keylines */\n  children?: React.ReactNode;\n  style?: React.CSSProperties;\n  className?: string;\n}\nexport declare function AvatarGroup(props: AvatarGroupProps): React.JSX.Element;\n"
     },
     {
       "path": "components/display/Avatar.prompt.md",

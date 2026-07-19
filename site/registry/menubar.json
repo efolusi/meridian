@@ -20,7 +20,7 @@
     {
       "path": "components/navigation/Menubar.d.ts",
       "type": "registry:component",
-      "content": "export interface MenubarItem { id: string; label: React.ReactNode; /** Lucide icon name */ icon?: string; kbd?: string; danger?: boolean; disabled?: boolean; onClick?: () => void; }\nexport interface MenubarMenu { label: string; items: Array<MenubarItem | 'separator'>; }\nexport interface MenubarProps {\n  menus: MenubarMenu[];\n  /** Fires with the picked item id */\n  onSelect?: (id: string) => void;\n  style?: React.CSSProperties;\n  className?: string;\n}\nexport declare function Menubar(props: MenubarProps): JSX.Element;\n"
+      "content": "export interface MenubarItem { id: string; label: React.ReactNode; /** Lucide icon name */ icon?: string; kbd?: string; danger?: boolean; disabled?: boolean; onClick?: () => void; }\nexport interface MenubarMenu { label: string; items: Array<MenubarItem | 'separator'>; }\nexport interface MenubarProps {\n  menus: MenubarMenu[];\n  /** Fires with the picked item id */\n  onSelect?: (id: string) => void;\n  style?: React.CSSProperties;\n  className?: string;\n}\nexport declare function Menubar(props: MenubarProps): React.JSX.Element;\n"
     },
     {
       "path": "components/navigation/Menubar.prompt.md",

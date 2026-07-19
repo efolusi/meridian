@@ -12,4 +12,4 @@ export interface TaskProps {
   style?: React.CSSProperties;
   className?: string;
 }
-export declare function Task(props: TaskProps): JSX.Element;
+export declare function Task(props: TaskProps): React.JSX.Element;

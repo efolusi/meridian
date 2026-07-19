@@ -1,4 +1,4 @@
-export interface InputProps extends React.InputHTMLAttributes<HTMLInputElement> {
+export interface InputProps extends Omit<React.InputHTMLAttributes<HTMLInputElement>, 'size'> {
   /** Field label rendered above */
   label?: string;
   /** Muted helper text below */
@@ -11,4 +11,4 @@ export interface InputProps extends React.InputHTMLAttributes<HTMLInputElement> 
   size?: 'sm' | 'md' | 'lg';
   invalid?: boolean;
 }
-export declare function Input(props: InputProps): JSX.Element;
+export declare function Input(props: InputProps): React.JSX.Element;

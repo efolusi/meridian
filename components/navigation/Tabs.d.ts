@@ -14,4 +14,4 @@ export interface TabsProps {
   style?: React.CSSProperties;
   className?: string;
 }
-export declare function Tabs(props: TabsProps): JSX.Element;
+export declare const Tabs: React.ForwardRefExoticComponent<TabsProps & React.RefAttributes<HTMLDivElement>>;

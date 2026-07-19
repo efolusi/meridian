@@ -20,7 +20,7 @@
     {
       "path": "components/files/FileDrop.d.ts",
       "type": "registry:component",
-      "content": "export interface FileDropProps {\n  /** Receives the dropped/picked File[] */\n  onFiles?: (files: File[]) => void;\n  /** input accept string, e.g. \"image/*,.pdf\" */\n  accept?: string;\n  /** @default true */\n  multiple?: boolean;\n  /** Replaces \"Drop files here or browse\" */\n  title?: React.ReactNode;\n  /** Muted line, e.g. \"PNG, MP4, PDF \u2014 up to 2 GB\" */\n  hint?: React.ReactNode;\n  style?: React.CSSProperties;\n  className?: string;\n}\nexport declare function FileDrop(props: FileDropProps): JSX.Element;\n"
+      "content": "export interface FileDropProps {\n  /** Receives the dropped/picked File[] */\n  onFiles?: (files: File[]) => void;\n  /** input accept string, e.g. \"image/*,.pdf\" */\n  accept?: string;\n  /** @default true */\n  multiple?: boolean;\n  /** Replaces \"Drop files here or browse\" */\n  title?: React.ReactNode;\n  /** Muted line, e.g. \"PNG, MP4, PDF \u2014 up to 2 GB\" */\n  hint?: React.ReactNode;\n  style?: React.CSSProperties;\n  className?: string;\n}\nexport declare function FileDrop(props: FileDropProps): React.JSX.Element;\n"
     },
     {
       "path": "components/files/FileDrop.prompt.md",

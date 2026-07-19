@@ -21,4 +21,4 @@ export interface MenuProps {
   style?: React.CSSProperties;
   className?: string;
 }
-export declare function Menu(props: MenuProps): JSX.Element;
+export declare const Menu: React.ForwardRefExoticComponent<MenuProps & React.RefAttributes<HTMLSpanElement>>;

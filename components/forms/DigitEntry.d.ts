@@ -12,4 +12,4 @@ export interface DigitEntryProps {
   style?: React.CSSProperties;
   className?: string;
 }
-export declare function DigitEntry(props: DigitEntryProps): JSX.Element;
+export declare function DigitEntry(props: DigitEntryProps): React.JSX.Element;

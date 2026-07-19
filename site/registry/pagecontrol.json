@@ -19,7 +19,7 @@
     {
       "path": "components/navigation/PageControl.d.ts",
       "type": "registry:component",
-      "content": "export interface PageControlProps {\n  count: number;\n  /** Active index, 0-based @default 0 */\n  index?: number;\n  onChange?: (index: number) => void;\n  /** aria-label prefix @default 'Page' */\n  label?: string;\n  style?: React.CSSProperties;\n  className?: string;\n}\nexport declare function PageControl(props: PageControlProps): JSX.Element;\n"
+      "content": "export interface PageControlProps {\n  count: number;\n  /** Active index, 0-based @default 0 */\n  index?: number;\n  onChange?: (index: number) => void;\n  /** aria-label prefix @default 'Page' */\n  label?: string;\n  style?: React.CSSProperties;\n  className?: string;\n}\nexport declare function PageControl(props: PageControlProps): React.JSX.Element;\n"
     },
     {
       "path": "components/navigation/PageControl.prompt.md",

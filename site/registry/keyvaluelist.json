@@ -19,7 +19,7 @@
     {
       "path": "components/data/KeyValueList.d.ts",
       "type": "registry:component",
-      "content": "export interface KeyValueItem {\n  label: React.ReactNode;\n  value: React.ReactNode;\n  /** Mono value (IPs, hashes, records) */\n  mono?: boolean;\n}\nexport interface KeyValueListProps {\n  items: KeyValueItem[];\n  /** @default 160 */\n  labelWidth?: number;\n  style?: React.CSSProperties;\n  className?: string;\n}\nexport declare function KeyValueList(props: KeyValueListProps): JSX.Element;\n"
+      "content": "export interface KeyValueItem {\n  label: React.ReactNode;\n  value: React.ReactNode;\n  /** Mono value (IPs, hashes, records) */\n  mono?: boolean;\n}\nexport interface KeyValueListProps {\n  items: KeyValueItem[];\n  /** @default 160 */\n  labelWidth?: number;\n  style?: React.CSSProperties;\n  className?: string;\n}\nexport declare function KeyValueList(props: KeyValueListProps): React.JSX.Element;\n"
     },
     {
       "path": "components/data/KeyValueList.prompt.md",

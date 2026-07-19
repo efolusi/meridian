@@ -19,7 +19,7 @@
     {
       "path": "components/display/ScrollArea.d.ts",
       "type": "registry:component",
-      "content": "export interface ScrollAreaProps extends React.HTMLAttributes<HTMLDivElement> {\n  /** Scroll past this height */\n  maxHeight?: number | string;\n  /** Fixed height */\n  height?: number | string;\n  children?: React.ReactNode;\n}\nexport declare function ScrollArea(props: ScrollAreaProps): JSX.Element;\n"
+      "content": "export interface ScrollAreaProps extends React.HTMLAttributes<HTMLDivElement> {\n  /** Scroll past this height */\n  maxHeight?: number | string;\n  /** Fixed height */\n  height?: number | string;\n  children?: React.ReactNode;\n}\nexport declare function ScrollArea(props: ScrollAreaProps): React.JSX.Element;\n"
     },
     {
       "path": "components/display/ScrollArea.prompt.md",

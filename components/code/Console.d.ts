@@ -16,4 +16,4 @@ export interface ConsoleProps {
   style?: React.CSSProperties;
   className?: string;
 }
-export declare function Console(props: ConsoleProps): JSX.Element;
+export declare function Console(props: ConsoleProps): React.JSX.Element;

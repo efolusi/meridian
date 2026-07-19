@@ -12,4 +12,4 @@ export interface LineChartProps {
   style?: React.CSSProperties;
   className?: string;
 }
-export declare function LineChart(props: LineChartProps): JSX.Element;
+export declare function LineChart(props: LineChartProps): React.JSX.Element;

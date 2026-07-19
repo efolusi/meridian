@@ -12,4 +12,4 @@ export interface BannerProps {
   style?: React.CSSProperties;
   className?: string;
 }
-export declare function Banner(props: BannerProps): JSX.Element;
+export declare function Banner(props: BannerProps): React.JSX.Element;

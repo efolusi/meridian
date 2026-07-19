@@ -19,7 +19,7 @@
     {
       "path": "components/feedback/Loader.d.ts",
       "type": "registry:component",
-      "content": "export interface LoaderProps {\n  /** 'pulse' | 'shimmer' */\n  variant?: 'pulse' | 'shimmer';\n  /** Trailing animated ellipsis */\n  dots?: boolean;\n  /** Cycle duration in seconds */\n  duration?: number;\n  children?: React.ReactNode;\n  style?: React.CSSProperties;\n  className?: string;\n}\nexport declare function Loader(props: LoaderProps): JSX.Element;\n"
+      "content": "export interface LoaderProps {\n  /** 'pulse' | 'shimmer' */\n  variant?: 'pulse' | 'shimmer';\n  /** Trailing animated ellipsis */\n  dots?: boolean;\n  /** Cycle duration in seconds */\n  duration?: number;\n  children?: React.ReactNode;\n  style?: React.CSSProperties;\n  className?: string;\n}\nexport declare function Loader(props: LoaderProps): React.JSX.Element;\n"
     },
     {
       "path": "components/feedback/Loader.prompt.md",

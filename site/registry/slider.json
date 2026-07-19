@@ -20,7 +20,7 @@
     {
       "path": "components/forms/Slider.d.ts",
       "type": "registry:component",
-      "content": "export interface SliderProps {\n  label?: string;\n  /** Show current value right of the label */\n  showValue?: boolean;\n  /** Format the shown value, e.g. v => v + '%' */\n  format?: (v: number) => string;\n  /** @default 0 */ min?: number;\n  /** @default 100 */ max?: number;\n  /** @default 1 */ step?: number;\n  /** Controlled value */\n  value?: number;\n  defaultValue?: number;\n  onChange?: (value: number, e: React.ChangeEvent) => void;\n  disabled?: boolean;\n  style?: React.CSSProperties;\n  className?: string;\n}\nexport declare function Slider(props: SliderProps): JSX.Element;\n"
+      "content": "export interface SliderProps {\n  label?: string;\n  /** Show current value right of the label */\n  showValue?: boolean;\n  /** Format the shown value, e.g. v => v + '%' */\n  format?: (v: number) => string;\n  /** @default 0 */ min?: number;\n  /** @default 100 */ max?: number;\n  /** @default 1 */ step?: number;\n  /** Controlled value */\n  value?: number;\n  defaultValue?: number;\n  onChange?: (value: number, e: React.ChangeEvent) => void;\n  disabled?: boolean;\n  style?: React.CSSProperties;\n  className?: string;\n}\nexport declare function Slider(props: SliderProps): React.JSX.Element;\n"
     },
     {
       "path": "components/forms/Slider.prompt.md",

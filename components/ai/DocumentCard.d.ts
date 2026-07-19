@@ -14,4 +14,4 @@ export interface DocumentCardProps {
   style?: React.CSSProperties;
   className?: string;
 }
-export declare function DocumentCard(props: DocumentCardProps): JSX.Element;
+export declare function DocumentCard(props: DocumentCardProps): React.JSX.Element;

@@ -19,7 +19,7 @@
     {
       "path": "components/forms/Button.d.ts",
       "type": "registry:component",
-      "content": "export interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {\n  /** @default 'primary' */\n  variant?: 'primary' | 'secondary' | 'ghost' | 'danger' | 'brand';\n  /** @default 'md' */\n  size?: 'sm' | 'md' | 'lg';\n  /** Lucide icon name rendered before the label */\n  iconLeft?: string;\n  /** Lucide icon name rendered after the label */\n  iconRight?: string;\n  fullWidth?: boolean;\n  /** Shows a spinner and disables the button */\n  loading?: boolean;\n  children?: React.ReactNode;\n}\nexport declare function Button(props: ButtonProps): JSX.Element;\n"
+      "content": "export interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {\n  /** @default 'primary' */\n  variant?: 'primary' | 'secondary' | 'ghost' | 'danger' | 'brand';\n  /** @default 'md' */\n  size?: 'sm' | 'md' | 'lg';\n  /** Lucide icon name rendered before the label */\n  iconLeft?: string;\n  /** Lucide icon name rendered after the label */\n  iconRight?: string;\n  fullWidth?: boolean;\n  /** Shows a spinner and disables the button */\n  loading?: boolean;\n  children?: React.ReactNode;\n}\nexport declare function Button(props: ButtonProps): React.JSX.Element;\n"
     },
     {
       "path": "components/forms/Button.prompt.md",

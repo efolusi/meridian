@@ -1,6 +1,6 @@
 # Third-party notices
 
-Meridian's own source (components, tokens, blocks, kits, templates, docs) is MIT licensed — see [LICENSE](LICENSE). The repository also redistributes the following third-party assets under their own licenses. Their license texts ship alongside the assets and must travel with any redistribution.
+Meridian's own source (components, tokens, blocks, showcases, starters, docs) is MIT licensed — see [LICENSE](LICENSE). The repository also redistributes the following third-party assets under their own licenses. Their license texts ship alongside the assets and must travel with any redistribution.
 
 ## Fonts (SIL Open Font License 1.1)
 

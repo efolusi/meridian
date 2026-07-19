@@ -22,4 +22,4 @@ export interface ExceptionProps {
   style?: React.CSSProperties;
   className?: string;
 }
-export declare function Exception(props: ExceptionProps): JSX.Element;
+export declare function Exception(props: ExceptionProps): React.JSX.Element;

@@ -7,4 +7,4 @@ export interface MenubarProps {
   style?: React.CSSProperties;
   className?: string;
 }
-export declare function Menubar(props: MenubarProps): JSX.Element;
+export declare function Menubar(props: MenubarProps): React.JSX.Element;

@@ -18,7 +18,7 @@
     {
       "path": "components/display/AspectRatio.d.ts",
       "type": "registry:component",
-      "content": "export interface AspectRatioProps {\n  /** width / height @default 16/9 */\n  ratio?: number;\n  children?: React.ReactNode;\n  style?: React.CSSProperties;\n  className?: string;\n}\nexport declare function AspectRatio(props: AspectRatioProps): JSX.Element;\n"
+      "content": "export interface AspectRatioProps {\n  /** width / height @default 16/9 */\n  ratio?: number;\n  children?: React.ReactNode;\n  style?: React.CSSProperties;\n  className?: string;\n}\nexport declare function AspectRatio(props: AspectRatioProps): React.JSX.Element;\n"
     },
     {
       "path": "components/display/AspectRatio.prompt.md",

@@ -21,7 +21,7 @@
     {
       "path": "components/code/CopyField.d.ts",
       "type": "registry:component",
-      "content": "export interface CopyFieldProps {\n  label?: string;\n  /** The copyable value (mono) */\n  value: string;\n  /** Mask with dots + reveal toggle */\n  secret?: boolean;\n  style?: React.CSSProperties;\n  className?: string;\n}\nexport declare function CopyField(props: CopyFieldProps): JSX.Element;\n"
+      "content": "export interface CopyFieldProps extends React.HTMLAttributes<HTMLSpanElement> {\n  label?: string;\n  /** The copyable value (mono) */\n  value: string;\n  /** Mask with dots + reveal toggle */\n  secret?: boolean;\n  style?: React.CSSProperties;\n  className?: string;\n}\nexport declare function CopyField(props: CopyFieldProps): React.JSX.Element;\n"
     },
     {
       "path": "components/code/CopyField.prompt.md",

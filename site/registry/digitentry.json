@@ -20,7 +20,7 @@
     {
       "path": "components/forms/DigitEntry.d.ts",
       "type": "registry:component",
-      "content": "export interface DigitEntryProps {\n  /** Number of cells @default 6 */\n  length?: number;\n  /** Controlled value (digits only) */\n  value?: string;\n  onChange?: (value: string) => void;\n  /** Fires when all cells are filled */\n  onComplete?: (value: string) => void;\n  label?: string;\n  invalid?: boolean;\n  disabled?: boolean;\n  style?: React.CSSProperties;\n  className?: string;\n}\nexport declare function DigitEntry(props: DigitEntryProps): JSX.Element;\n"
+      "content": "export interface DigitEntryProps {\n  /** Number of cells @default 6 */\n  length?: number;\n  /** Controlled value (digits only) */\n  value?: string;\n  onChange?: (value: string) => void;\n  /** Fires when all cells are filled */\n  onComplete?: (value: string) => void;\n  label?: string;\n  invalid?: boolean;\n  disabled?: boolean;\n  style?: React.CSSProperties;\n  className?: string;\n}\nexport declare function DigitEntry(props: DigitEntryProps): React.JSX.Element;\n"
     },
     {
       "path": "components/forms/DigitEntry.prompt.md",

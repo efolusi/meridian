@@ -11,4 +11,4 @@ export interface StatProps {
   style?: React.CSSProperties;
   className?: string;
 }
-export declare function Stat(props: StatProps): JSX.Element;
+export declare function Stat(props: StatProps): React.JSX.Element;

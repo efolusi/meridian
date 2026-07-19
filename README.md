@@ -91,12 +91,12 @@ Pre-composed sections in `blocks/` (Blocks group in the Design System tab): App 
 
 Authored from scratch (no source inventory existed). Namespace: `window.EfolusiDesignSystem_4ffc3d`.
 
-- `components/forms/` — Button, IconButton, Input, Textarea, Select, Checkbox, Radio, Switch, Slider, Combobox, DigitEntry, ButtonTile (+Group), Toggle (+Group), ButtonGroup, InputGroup, Label
+- `components/forms/` — Button, IconButton, Input, Textarea, Select, Checkbox, Radio, Switch, Slider, Combobox, DigitEntry, ButtonTile (+Group), Toggle (+Group), ButtonGroup, InputGroup, FormField, Label
 - `components/display/` — Card, Badge, Tag, Avatar (+AvatarGroup), Kbd, Divider, Accordion, Link, Toolbar, TreeList, ListItem, Collapsible, AspectRatio, ScrollArea, Carousel, Resizable
 - `components/navigation/` — Tabs, Breadcrumbs, Pagination, SegmentedControl, PageControl, SideNav, TopNav, Steps, Menubar
 - `components/feedback/` — Dialog, ConfirmDialog, Toast (+ToastStack), Tooltip, Alert, Banner, Progress, Spinner, Loader
 - `components/data/` — Table, Stat, EmptyState, Skeleton, BarChart, LineChart, DonutChart, Sparkline, KeyValueList, StatusDot
-- `components/overlay/` — Menu, Popover, Drawer, CommandPalette, ContextMenu, HoverCard
+- `components/overlay/` — Menu, Popover, Drawer, CommandPalette, ContextMenu, HoverCard, Portal
 - `components/ai/` — ChatMessage, PromptComposer, RichComposer, Reasoning, ToolCall, AgentRun, Task, Todo, Confirmation, Conversation, Citation (+SourceList), SourceCard, Suggestions, PromptSteps, SelectionQuote, ModelSelector, UsageMeter, FeedbackBar, DocumentCard, GeneratedImage, Sandbox, WebPreview, Player, Transcript
 - `components/code/` — CodeBlock, Terminal, CopyField, Diff, Console, Exception, EnvList
 - `components/files/` — FileDrop, FileTile, FileTypeIcon
@@ -118,7 +118,7 @@ The layout is Meridian's own, organized by purpose: the system core stays at the
 - `blocks/` — 9 pre-composed sections to paste into a page
 - `showcases/<app>/` — 8 example apps in plain JSX: agent, auth, console, docs, infra, tools, trader, website
 - `starters/<journey>/` — 5 journeys to copy wholesale, one per category, linked pages sharing a consistent shell: marketing (home → pricing → contact), auth (sign in → sign up → onboarding, + password reset), dashboard (overview → customers → detail → settings), app (overview → projects → detail → new project → settings), docs (quickstart → authentication → errors)
-- `site/` — the docs website (home, docs, components, blocks, charts, themes, colors), plus `examples/` (the live demos), `registry.json`, and generated `registry/` install items
+- `site/` — the docs website (home, docs, components, blocks, example apps, charts, themes, colors), plus `examples/` (the live demos), `registry.json`, and generated `registry/` install items
 - `guidelines/` — foundation specimen cards + brand (design language), accessibility, forms, governance
 - `hello.html` — a complete runnable page; open it in a browser to see the system working with nothing installed
 - `skills/` — the agent skill entry point

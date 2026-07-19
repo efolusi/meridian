@@ -13,4 +13,4 @@ export interface PopoverProps {
   style?: React.CSSProperties;
   className?: string;
 }
-export declare function Popover(props: PopoverProps): JSX.Element;
+export declare const Popover: React.ForwardRefExoticComponent<PopoverProps & React.RefAttributes<HTMLSpanElement>>;

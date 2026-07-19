@@ -20,7 +20,7 @@
     {
       "path": "components/ai/Sandbox.d.ts",
       "type": "registry:component",
-      "content": "export interface SandboxTab {\n  id: string;\n  label: string;\n  icon?: string;\n  content: React.ReactNode;\n}\nexport interface SandboxProps {\n  /** Command or filename, mono */\n  title: React.ReactNode;\n  /** 'running' | 'success' | 'error' */\n  state?: 'running' | 'success' | 'error';\n  /** Right-side meta, e.g. duration */\n  meta?: React.ReactNode;\n  tabs: SandboxTab[];\n  defaultOpen?: boolean;\n  defaultTab?: string;\n  style?: React.CSSProperties;\n  className?: string;\n}\nexport declare function Sandbox(props: SandboxProps): JSX.Element;\n"
+      "content": "export interface SandboxTab {\n  id: string;\n  label: string;\n  icon?: string;\n  content: React.ReactNode;\n}\nexport interface SandboxProps {\n  /** Command or filename, mono */\n  title: React.ReactNode;\n  /** 'running' | 'success' | 'error' */\n  state?: 'running' | 'success' | 'error';\n  /** Right-side meta, e.g. duration */\n  meta?: React.ReactNode;\n  tabs: SandboxTab[];\n  defaultOpen?: boolean;\n  defaultTab?: string;\n  style?: React.CSSProperties;\n  className?: string;\n}\nexport declare function Sandbox(props: SandboxProps): React.JSX.Element;\n"
     },
     {
       "path": "components/ai/Sandbox.prompt.md",

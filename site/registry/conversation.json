@@ -20,7 +20,7 @@
     {
       "path": "components/ai/Conversation.d.ts",
       "type": "registry:component",
-      "content": "export interface ConversationProps {\n  /** Viewport height @default 420 */\n  height?: number | string;\n  /** Keep pinned to bottom as content grows @default true */\n  autoStick?: boolean;\n  /** @default 'Jump to latest' */\n  jumpLabel?: string;\n  /** Viewport padding @default 4 */\n  padding?: number | string;\n  /** Messages, tool calls, etc. */\n  children?: React.ReactNode;\n  style?: React.CSSProperties;\n  className?: string;\n}\nexport declare function Conversation(props: ConversationProps): JSX.Element;\n"
+      "content": "export interface ConversationProps {\n  /** Viewport height @default 420 */\n  height?: number | string;\n  /** Keep pinned to bottom as content grows @default true */\n  autoStick?: boolean;\n  /** @default 'Jump to latest' */\n  jumpLabel?: string;\n  /** Viewport padding @default 4 */\n  padding?: number | string;\n  /** Messages, tool calls, etc. */\n  children?: React.ReactNode;\n  style?: React.CSSProperties;\n  className?: string;\n}\nexport declare const Conversation: React.ForwardRefExoticComponent<ConversationProps & React.RefAttributes<HTMLDivElement>>;\n"
     },
     {
       "path": "components/ai/Conversation.prompt.md",

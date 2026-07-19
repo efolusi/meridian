@@ -16,4 +16,4 @@ export interface WebPreviewProps {
   style?: React.CSSProperties;
   className?: string;
 }
-export declare function WebPreview(props: WebPreviewProps): JSX.Element;
+export declare function WebPreview(props: WebPreviewProps): React.JSX.Element;

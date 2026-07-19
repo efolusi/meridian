@@ -20,7 +20,7 @@
     {
       "path": "components/ai/Todo.d.ts",
       "type": "registry:component",
-      "content": "export interface TodoItem {\n  label: React.ReactNode;\n  /** 'pending' | 'progress' | 'done' */\n  status?: 'pending' | 'progress' | 'done';\n}\nexport interface TodoProps {\n  title?: string;\n  items: TodoItem[];\n  defaultOpen?: boolean;\n  style?: React.CSSProperties;\n  className?: string;\n}\nexport declare function Todo(props: TodoProps): JSX.Element;\n"
+      "content": "export interface TodoItem {\n  label: React.ReactNode;\n  /** 'pending' | 'progress' | 'done' */\n  status?: 'pending' | 'progress' | 'done';\n}\nexport interface TodoProps {\n  title?: string;\n  items: TodoItem[];\n  defaultOpen?: boolean;\n  style?: React.CSSProperties;\n  className?: string;\n}\nexport declare function Todo(props: TodoProps): React.JSX.Element;\n"
     },
     {
       "path": "components/ai/Todo.prompt.md",

@@ -20,7 +20,7 @@
     {
       "path": "components/overlay/Popover.d.ts",
       "type": "registry:component",
-      "content": "export interface PopoverProps {\n  /** The element that toggles the popover */\n  trigger: React.ReactNode;\n  /** Panel content */\n  children?: React.ReactNode;\n  /** @default 'left' */\n  align?: 'left' | 'right';\n  /** Panel width @default 280 */\n  width?: number;\n  /** Controlled open state */\n  open?: boolean;\n  onOpenChange?: (open: boolean) => void;\n  style?: React.CSSProperties;\n  className?: string;\n}\nexport declare function Popover(props: PopoverProps): JSX.Element;\n"
+      "content": "export interface PopoverProps {\n  /** The element that toggles the popover */\n  trigger: React.ReactNode;\n  /** Panel content */\n  children?: React.ReactNode;\n  /** @default 'left' */\n  align?: 'left' | 'right';\n  /** Panel width @default 280 */\n  width?: number;\n  /** Controlled open state */\n  open?: boolean;\n  onOpenChange?: (open: boolean) => void;\n  style?: React.CSSProperties;\n  className?: string;\n}\nexport declare const Popover: React.ForwardRefExoticComponent<PopoverProps & React.RefAttributes<HTMLSpanElement>>;\n"
     },
     {
       "path": "components/overlay/Popover.prompt.md",

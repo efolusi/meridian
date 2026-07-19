@@ -20,7 +20,7 @@
     {
       "path": "components/ai/Suggestions.d.ts",
       "type": "registry:component",
-      "content": "export interface SuggestionItem { label: string; /** Lucide icon */ icon?: string; }\nexport interface SuggestionsProps {\n  /** Strings or { label, icon } */\n  items: Array<string | SuggestionItem>;\n  /** Fires with the picked label */\n  onPick?: (label: string, index: number) => void;\n  style?: React.CSSProperties;\n  className?: string;\n}\nexport declare function Suggestions(props: SuggestionsProps): JSX.Element;\n"
+      "content": "export interface SuggestionItem { label: string; /** Lucide icon */ icon?: string; }\nexport interface SuggestionsProps {\n  /** Strings or { label, icon } */\n  items: Array<string | SuggestionItem>;\n  /** Fires with the picked label */\n  onPick?: (label: string, index: number) => void;\n  style?: React.CSSProperties;\n  className?: string;\n}\nexport declare function Suggestions(props: SuggestionsProps): React.JSX.Element;\n"
     },
     {
       "path": "components/ai/Suggestions.prompt.md",

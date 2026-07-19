@@ -12,4 +12,4 @@ export interface SelectionQuoteProps {
   style?: React.CSSProperties;
   className?: string;
 }
-export declare function SelectionQuote(props: SelectionQuoteProps): JSX.Element;
+export declare function SelectionQuote(props: SelectionQuoteProps): React.JSX.Element;

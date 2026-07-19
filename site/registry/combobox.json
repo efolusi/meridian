@@ -23,7 +23,7 @@
     {
       "path": "components/forms/Combobox.d.ts",
       "type": "registry:component",
-      "content": "export interface ComboOption { value: string; label: string; icon?: string; }\nexport interface ComboboxProps {\n  label?: string;\n  hint?: string;\n  /** Options as strings or {value,label,icon} */\n  options: Array<string | ComboOption>;\n  /** Selected value (single) or values (multiple) */\n  value?: string | string[] | null;\n  onChange?: (value: any) => void;\n  /** Multi-select with removable chips */\n  multiple?: boolean;\n  /** @default 'Search\u2026' */\n  placeholder?: string;\n  style?: React.CSSProperties;\n  className?: string;\n}\nexport declare function Combobox(props: ComboboxProps): JSX.Element;\n"
+      "content": "export interface ComboOption { value: string; label: string; icon?: string; }\nexport interface ComboboxProps {\n  label?: string;\n  hint?: string;\n  /** Options as strings or {value,label,icon} */\n  options: Array<string | ComboOption>;\n  /** Selected value (single) or values (multiple) */\n  value?: string | string[] | null;\n  onChange?: (value: any) => void;\n  /** Multi-select with removable chips */\n  multiple?: boolean;\n  /** @default 'Search\u2026' */\n  placeholder?: string;\n  style?: React.CSSProperties;\n  className?: string;\n}\nexport declare function Combobox(props: ComboboxProps): React.JSX.Element;\n"
     },
     {
       "path": "components/forms/Combobox.prompt.md",

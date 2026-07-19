@@ -20,7 +20,7 @@
     {
       "path": "components/overlay/Drawer.d.ts",
       "type": "registry:component",
-      "content": "export interface DrawerProps {\n  open: boolean;\n  /** Called on \u2715, ESC, or overlay click */\n  onClose?: () => void;\n  title: React.ReactNode;\n  /** Right-aligned action row on sunken strip */\n  footer?: React.ReactNode;\n  /** Px @default 400 */\n  width?: number;\n  /** @default 'right' */\n  side?: 'left' | 'right';\n  children?: React.ReactNode;\n}\nexport declare function Drawer(props: DrawerProps): JSX.Element;\n"
+      "content": "export interface DrawerProps {\n  open: boolean;\n  /** Called on \u2715, ESC, or overlay click */\n  onClose?: () => void;\n  title: React.ReactNode;\n  /** Right-aligned action row on sunken strip */\n  footer?: React.ReactNode;\n  /** Px @default 400 */\n  width?: number;\n  /** @default 'right' */\n  side?: 'left' | 'right';\n  children?: React.ReactNode;\n}\nexport declare const Drawer: React.ForwardRefExoticComponent<DrawerProps & React.RefAttributes<HTMLDivElement>>;\n"
     },
     {
       "path": "components/overlay/Drawer.prompt.md",

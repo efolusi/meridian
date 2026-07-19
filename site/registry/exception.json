@@ -20,7 +20,7 @@
     {
       "path": "components/code/Exception.d.ts",
       "type": "registry:component",
-      "content": "export interface ExceptionFrame {\n  /** Function name */\n  fn: string;\n  /** e.g. 'api/users.ts:32:11' */\n  loc: string;\n  active?: boolean;\n  /** Dimmed framework frame */\n  internal?: boolean;\n}\nexport interface ExceptionSourceLine {\n  no: number;\n  text: string;\n  active?: boolean;\n}\nexport interface ExceptionProps {\n  /** e.g. 'TypeError' */\n  type?: string;\n  message: React.ReactNode;\n  frames?: ExceptionFrame[];\n  source?: { title: string; lines: ExceptionSourceLine[] };\n  defaultOpen?: boolean;\n  style?: React.CSSProperties;\n  className?: string;\n}\nexport declare function Exception(props: ExceptionProps): JSX.Element;\n"
+      "content": "export interface ExceptionFrame {\n  /** Function name */\n  fn: string;\n  /** e.g. 'api/users.ts:32:11' */\n  loc: string;\n  active?: boolean;\n  /** Dimmed framework frame */\n  internal?: boolean;\n}\nexport interface ExceptionSourceLine {\n  no: number;\n  text: string;\n  active?: boolean;\n}\nexport interface ExceptionProps {\n  /** e.g. 'TypeError' */\n  type?: string;\n  message: React.ReactNode;\n  frames?: ExceptionFrame[];\n  source?: { title: string; lines: ExceptionSourceLine[] };\n  defaultOpen?: boolean;\n  style?: React.CSSProperties;\n  className?: string;\n}\nexport declare function Exception(props: ExceptionProps): React.JSX.Element;\n"
     },
     {
       "path": "components/code/Exception.prompt.md",

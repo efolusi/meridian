@@ -12,4 +12,4 @@ export interface AccordionProps {
   style?: React.CSSProperties;
   className?: string;
 }
-export declare function Accordion(props: AccordionProps): JSX.Element;
+export declare function Accordion(props: AccordionProps): React.JSX.Element;

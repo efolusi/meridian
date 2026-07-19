@@ -18,4 +18,4 @@ export interface ModelSelectorProps {
   style?: React.CSSProperties;
   className?: string;
 }
-export declare function ModelSelector(props: ModelSelectorProps): JSX.Element;
+export declare function ModelSelector(props: ModelSelectorProps): React.JSX.Element;

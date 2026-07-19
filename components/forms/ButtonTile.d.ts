@@ -9,7 +9,7 @@ export interface ButtonTileProps {
   style?: React.CSSProperties;
   className?: string;
 }
-export declare function ButtonTile(props: ButtonTileProps): JSX.Element;
+export declare function ButtonTile(props: ButtonTileProps): React.JSX.Element;
 
 export interface ButtonTileGroupProps {
   /** @default 3 */
@@ -18,4 +18,4 @@ export interface ButtonTileGroupProps {
   style?: React.CSSProperties;
   className?: string;
 }
-export declare function ButtonTileGroup(props: ButtonTileGroupProps): JSX.Element;
+export declare function ButtonTileGroup(props: ButtonTileGroupProps): React.JSX.Element;

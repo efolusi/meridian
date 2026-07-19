@@ -19,4 +19,4 @@ export interface ToolbarProps {
   style?: React.CSSProperties;
   className?: string;
 }
-export declare function Toolbar(props: ToolbarProps): JSX.Element;
+export declare function Toolbar(props: ToolbarProps): React.JSX.Element;

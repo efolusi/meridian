@@ -15,4 +15,4 @@ export interface ConfirmDialogProps {
   typeToConfirm?: string;
   children?: React.ReactNode;
 }
-export declare function ConfirmDialog(props: ConfirmDialogProps): JSX.Element;
+export declare function ConfirmDialog(props: ConfirmDialogProps): React.JSX.Element;

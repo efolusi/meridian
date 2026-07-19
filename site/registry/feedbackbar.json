@@ -20,7 +20,7 @@
     {
       "path": "components/ai/FeedbackBar.d.ts",
       "type": "registry:component",
-      "content": "export interface FeedbackBarProps {\n  /** Fires 'up' | 'down' | null (toggled off) */\n  onFeedback?: (dir: 'up' | 'down' | null) => void;\n  /** Copies this text on the copy button */\n  copyText?: string;\n  onCopy?: () => void;\n  /** Shows the regenerate button */\n  onRetry?: () => void;\n  /** Muted note after the buttons */\n  note?: React.ReactNode;\n  style?: React.CSSProperties;\n  className?: string;\n}\nexport declare function FeedbackBar(props: FeedbackBarProps): JSX.Element;\n"
+      "content": "export interface FeedbackBarProps {\n  /** Fires 'up' | 'down' | null (toggled off) */\n  onFeedback?: (dir: 'up' | 'down' | null) => void;\n  /** Copies this text on the copy button */\n  copyText?: string;\n  onCopy?: () => void;\n  /** Shows the regenerate button */\n  onRetry?: () => void;\n  /** Muted note after the buttons */\n  note?: React.ReactNode;\n  style?: React.CSSProperties;\n  className?: string;\n}\nexport declare function FeedbackBar(props: FeedbackBarProps): React.JSX.Element;\n"
     },
     {
       "path": "components/ai/FeedbackBar.prompt.md",

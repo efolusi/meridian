@@ -70,6 +70,12 @@ jobs:
           node scripts/build_npm.mjs
           node scripts/check_npm_package.mjs
 
+      # The .d.ts layer is hand-maintained, so nothing else forces it to stay
+      # valid. Runs after the npm build so the dist/ barrel pass has something
+      # to check.
+      - name: Types compile (components and the package barrel)
+        run: node scripts/check_types.mjs
+
   smoke:
     runs-on: ubuntu-latest
     steps:

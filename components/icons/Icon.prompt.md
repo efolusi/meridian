@@ -1,4 +1,4 @@
-Renders one of the 65 curated Lucide icons shipped in `assets/icons/`, inheriting `currentColor`.
+Renders one of the 108 curated Lucide icons shipped in `assets/icons/`, inheriting `currentColor`.
 
 ```jsx
 <Icon name="arrow-right" />

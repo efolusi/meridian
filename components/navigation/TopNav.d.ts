@@ -7,4 +7,4 @@ export interface TopNavProps {
   style?: React.CSSProperties;
   className?: string;
 }
-export declare function TopNav(props: TopNavProps): JSX.Element;
+export declare function TopNav(props: TopNavProps): React.JSX.Element;

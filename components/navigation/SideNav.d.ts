@@ -15,4 +15,4 @@ export interface SideNavProps {
   style?: React.CSSProperties;
   className?: string;
 }
-export declare function SideNav(props: SideNavProps): JSX.Element;
+export declare function SideNav(props: SideNavProps): React.JSX.Element;

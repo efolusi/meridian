@@ -20,7 +20,7 @@
     {
       "path": "components/ai/GeneratedImage.d.ts",
       "type": "registry:component",
-      "content": "export interface GeneratedImageAction {\n  icon: string;\n  label: string;\n  onClick?: () => void;\n}\nexport interface GeneratedImageProps {\n  /** 'queued' | 'generating' | 'complete' | 'error' */\n  state?: 'queued' | 'generating' | 'complete' | 'error';\n  src?: string;\n  alt?: string;\n  /** Prompt shown top-left over the image */\n  prompt?: string;\n  /** 'square' | 'video' | 'portrait' */\n  aspect?: 'square' | 'video' | 'portrait';\n  error?: React.ReactNode;\n  onRetry?: () => void;\n  /** Hover actions, top-right (e.g. download) */\n  actions?: GeneratedImageAction[];\n  style?: React.CSSProperties;\n  className?: string;\n}\nexport declare function GeneratedImage(props: GeneratedImageProps): JSX.Element;\n"
+      "content": "export interface GeneratedImageAction {\n  icon: string;\n  label: string;\n  onClick?: () => void;\n}\nexport interface GeneratedImageProps {\n  /** 'queued' | 'generating' | 'complete' | 'error' */\n  state?: 'queued' | 'generating' | 'complete' | 'error';\n  src?: string;\n  alt?: string;\n  /** Prompt shown top-left over the image */\n  prompt?: string;\n  /** 'square' | 'video' | 'portrait' */\n  aspect?: 'square' | 'video' | 'portrait';\n  error?: React.ReactNode;\n  onRetry?: () => void;\n  /** Hover actions, top-right (e.g. download) */\n  actions?: GeneratedImageAction[];\n  style?: React.CSSProperties;\n  className?: string;\n}\nexport declare function GeneratedImage(props: GeneratedImageProps): React.JSX.Element;\n"
     },
     {
       "path": "components/ai/GeneratedImage.prompt.md",

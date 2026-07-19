@@ -20,7 +20,7 @@
     {
       "path": "components/display/ListItem.d.ts",
       "type": "registry:component",
-      "content": "export interface ListItemProps {\n  /** Lucide icon in a 32px sunken square */\n  icon?: string;\n  /** Custom leading node (Avatar, FileTypeIcon\u2026) \u2014 overrides icon */\n  media?: React.ReactNode;\n  title: React.ReactNode;\n  description?: React.ReactNode;\n  /** Right-aligned slot (Badge, time, Switch\u2026) */\n  trailing?: React.ReactNode;\n  /** Trailing chevron */\n  chevron?: boolean;\n  /** Renders as button */\n  onClick?: (e: React.MouseEvent) => void;\n  /** Renders as anchor */\n  href?: string;\n  style?: React.CSSProperties;\n  className?: string;\n}\nexport declare function ListItem(props: ListItemProps): JSX.Element;\n"
+      "content": "export interface ListItemProps {\n  /** Lucide icon in a 32px sunken square */\n  icon?: string;\n  /** Custom leading node (Avatar, FileTypeIcon\u2026) \u2014 overrides icon */\n  media?: React.ReactNode;\n  title: React.ReactNode;\n  description?: React.ReactNode;\n  /** Right-aligned slot (Badge, time, Switch\u2026) */\n  trailing?: React.ReactNode;\n  /** Trailing chevron */\n  chevron?: boolean;\n  /** Renders as button */\n  onClick?: (e: React.MouseEvent) => void;\n  /** Renders as anchor */\n  href?: string;\n  style?: React.CSSProperties;\n  className?: string;\n}\nexport declare function ListItem(props: ListItemProps): React.JSX.Element;\n"
     },
     {
       "path": "components/display/ListItem.prompt.md",

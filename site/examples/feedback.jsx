@@ -30,7 +30,7 @@ export function BannerDemo() {
   return (
     <div style={{ width: '100%', maxWidth: 560 }}>
       <Banner tone="brand" icon="sparkles" action="See what's new" onAction={() => {}} onDismiss={() => setOpen(false)}>
-        Meridian 1.1 adds 12 new components.
+Meridian 1.4 is the first public release.
       </Banner>
     </div>
   );

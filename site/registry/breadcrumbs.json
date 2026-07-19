@@ -20,7 +20,7 @@
     {
       "path": "components/navigation/Breadcrumbs.d.ts",
       "type": "registry:component",
-      "content": "export interface BreadcrumbItem {\n  label: React.ReactNode;\n  href?: string;\n  onClick?: (e: React.MouseEvent) => void;\n}\nexport interface BreadcrumbsProps {\n  /** Last item renders as the current page */\n  items: BreadcrumbItem[];\n  style?: React.CSSProperties;\n  className?: string;\n}\nexport declare function Breadcrumbs(props: BreadcrumbsProps): JSX.Element;\n"
+      "content": "export interface BreadcrumbItem {\n  label: React.ReactNode;\n  href?: string;\n  onClick?: (e: React.MouseEvent) => void;\n}\nexport interface BreadcrumbsProps {\n  /** Last item renders as the current page */\n  items: BreadcrumbItem[];\n  style?: React.CSSProperties;\n  className?: string;\n}\nexport declare function Breadcrumbs(props: BreadcrumbsProps): React.JSX.Element;\n"
     },
     {
       "path": "components/navigation/Breadcrumbs.prompt.md",

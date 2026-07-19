@@ -3,4 +3,4 @@ export interface RadioProps extends React.InputHTMLAttributes<HTMLInputElement> 
   /** Muted second line under the label */
   description?: string;
 }
-export declare function Radio(props: RadioProps): JSX.Element;
+export declare function Radio(props: RadioProps): React.JSX.Element;

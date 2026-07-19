@@ -22,7 +22,7 @@
     {
       "path": "components/ai/ChatMessage.d.ts",
       "type": "registry:component",
-      "content": "export interface ChatMessageProps {\n  /** @default 'assistant' */\n  role?: 'user' | 'assistant' | 'system';\n  /** Display name @default You / Agent / System */\n  name?: string;\n  time?: string;\n  /** Blinking caret while generating */\n  streaming?: boolean;\n  /** false hides the hover action row; a node replaces it wholesale */\n  actions?: boolean | React.ReactNode;\n  /** Copy button; omit and the button is not rendered */\n  onCopy?: (e: React.MouseEvent) => void;\n  /** Retry button; omit and the button is not rendered */\n  onRetry?: (e: React.MouseEvent) => void;\n  children?: React.ReactNode;\n  style?: React.CSSProperties;\n  className?: string;\n}\nexport declare function ChatMessage(props: ChatMessageProps): JSX.Element;\n"
+      "content": "export interface ChatMessageProps {\n  /** @default 'assistant' */\n  role?: 'user' | 'assistant' | 'system';\n  /** Display name @default You / Agent / System */\n  name?: string;\n  time?: string;\n  /** Blinking caret while generating */\n  streaming?: boolean;\n  /** false hides the hover action row; a node replaces it wholesale */\n  actions?: boolean | React.ReactNode;\n  /** Copy button; omit and the button is not rendered */\n  onCopy?: (e: React.MouseEvent) => void;\n  /** Retry button; omit and the button is not rendered */\n  onRetry?: (e: React.MouseEvent) => void;\n  children?: React.ReactNode;\n  style?: React.CSSProperties;\n  className?: string;\n}\nexport declare function ChatMessage(props: ChatMessageProps): React.JSX.Element;\n"
     },
     {
       "path": "components/ai/ChatMessage.prompt.md",

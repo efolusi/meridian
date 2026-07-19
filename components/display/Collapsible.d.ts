@@ -9,4 +9,4 @@ export interface CollapsibleProps {
   style?: React.CSSProperties;
   className?: string;
 }
-export declare function Collapsible(props: CollapsibleProps): JSX.Element;
+export declare function Collapsible(props: CollapsibleProps): React.JSX.Element;

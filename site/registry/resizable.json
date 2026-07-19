@@ -19,7 +19,7 @@
     {
       "path": "components/display/Resizable.d.ts",
       "type": "registry:component",
-      "content": "export interface ResizableProps {\n  /** @default 'horizontal' */\n  direction?: 'horizontal' | 'vertical';\n  /** First pane share, 0-1 @default 0.5 */\n  defaultRatio?: number;\n  /** @default 0.15 */\n  min?: number;\n  /** @default 0.85 */\n  max?: number;\n  onRatioChange?: (ratio: number) => void;\n  /** Exactly two panes */\n  children: React.ReactNode;\n  style?: React.CSSProperties;\n  className?: string;\n}\nexport declare function Resizable(props: ResizableProps): JSX.Element;\n"
+      "content": "export interface ResizableProps {\n  /** @default 'horizontal' */\n  direction?: 'horizontal' | 'vertical';\n  /** First pane share, 0-1 @default 0.5 */\n  defaultRatio?: number;\n  /** @default 0.15 */\n  min?: number;\n  /** @default 0.85 */\n  max?: number;\n  onRatioChange?: (ratio: number) => void;\n  /** Exactly two panes */\n  children: React.ReactNode;\n  style?: React.CSSProperties;\n  className?: string;\n}\nexport declare function Resizable(props: ResizableProps): React.JSX.Element;\n"
     },
     {
       "path": "components/display/Resizable.prompt.md",

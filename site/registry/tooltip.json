@@ -20,7 +20,7 @@
     {
       "path": "components/feedback/Tooltip.d.ts",
       "type": "registry:component",
-      "content": "export interface TooltipProps {\n  label: React.ReactNode;\n  /** Preferred side; flips automatically when there is no room. @default 'top' */\n  position?: 'top' | 'bottom';\n  /** Hover delay in ms before showing. Focus always shows immediately. @default 200 */\n  delay?: number;\n  /** The trigger element */\n  children?: React.ReactNode;\n  style?: React.CSSProperties;\n  className?: string;\n}\nexport declare function Tooltip(props: TooltipProps): JSX.Element;\n"
+      "content": "export interface TooltipProps {\n  label: React.ReactNode;\n  /** Preferred side; flips automatically when there is no room. @default 'top' */\n  position?: 'top' | 'bottom';\n  /** Hover delay in ms before showing. Focus always shows immediately. @default 200 */\n  delay?: number;\n  /** The trigger element */\n  children?: React.ReactNode;\n  style?: React.CSSProperties;\n  className?: string;\n}\nexport declare function Tooltip(props: TooltipProps): React.JSX.Element;\n"
     },
     {
       "path": "components/feedback/Tooltip.prompt.md",

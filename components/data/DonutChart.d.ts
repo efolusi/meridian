@@ -14,4 +14,4 @@ export interface DonutChartProps {
   style?: React.CSSProperties;
   className?: string;
 }
-export declare function DonutChart(props: DonutChartProps): JSX.Element;
+export declare function DonutChart(props: DonutChartProps): React.JSX.Element;
