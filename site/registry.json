@@ -30,7 +30,7 @@
       "name": "chatmessage",
       "type": "registry:ui",
       "title": "ChatMessage",
-      "description": "Agent-thread message: bot chip or user avatar, meta row, hover copy/retry actions, streaming caret.",
+      "description": "Agent-thread message: bot chip or user avatar, meta row, optional hover action row, streaming caret.",
       "files": [
         {
           "path": "components/ai/ChatMessage.jsx",
@@ -237,7 +237,7 @@
       "name": "promptcomposer",
       "type": "registry:ui",
       "title": "PromptComposer",
-      "description": "Agent input: auto textarea, attach + voice buttons, ink send. Enter sends, Shift+Enter breaks.",
+      "description": "Agent input: auto textarea, optional attach + voice buttons, ink send. Enter sends, Shift+Enter breaks.",
       "files": [
         {
           "path": "components/ai/PromptComposer.jsx",

@@ -15,7 +15,7 @@ const CSS = `
 .ef-composer__send:focus-visible{outline:none;box-shadow:var(--focus-ring)}
 .ef-composer__hint{font-size:var(--text-xs);color:var(--text-muted);padding:0 4px}
 `;
-export function PromptComposer({ value, defaultValue, onChange, onSend, placeholder = 'Ask the agent anything…', rows = 2, disabled, attachments, hint, style, className }) {
+export function PromptComposer({ value, defaultValue, onChange, onSend, onAttach, onVoice, busy, onStop, placeholder = 'Ask the agent anything…', rows = 2, disabled, attachments, hint, style, className }) {
   injectEfCss('ef-css-composer', CSS);
   const [inner, setInner] = React.useState(defaultValue || '');
   const v = value != null ? value : inner;
@@ -28,12 +28,16 @@ export function PromptComposer({ value, defaultValue, onChange, onSend, placehol
         onChange={e => set(e.target.value, e)}
         onKeyDown={e => { if (e.key === 'Enter' && !e.shiftKey) { e.preventDefault(); send(); } }} />
       <div className="ef-composer__bar">
-        <IconButton icon="paperclip" label="Attach files" size="sm" />
-        <IconButton icon="mic" label="Voice input" size="sm" />
+        {onAttach ? <IconButton icon="paperclip" label="Attach files" size="sm" onClick={onAttach} /> : null}
+        {onVoice ? <IconButton icon="mic" label="Voice input" size="sm" onClick={onVoice} /> : null}
         {hint ? <span className="ef-composer__hint">{hint}</span> : null}
-        <button className="ef-composer__send" aria-label="Send" disabled={disabled || !v.trim()} onClick={send}>
-          <Icon name="arrow-up-right" size={16} strokeWidth={2} style={{ transform: 'rotate(-45deg)' }} />
-        </button>
+        {busy
+          ? <button className="ef-composer__send" aria-label="Stop generating" onClick={onStop} disabled={!onStop}>
+              <Icon name="square" size={13} strokeWidth={2.5} />
+            </button>
+          : <button className="ef-composer__send" aria-label="Send" disabled={disabled || !v.trim()} onClick={send}>
+              <Icon name="arrow-up-right" size={16} strokeWidth={2} style={{ transform: 'rotate(-45deg)' }} />
+            </button>}
       </div>
     </div>
   );

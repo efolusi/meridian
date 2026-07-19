@@ -120,7 +120,9 @@ function AgentScreen() {
           </div>
           <div style={{ flex: 'none', padding: '0 32px 24px' }}>
             <div style={{ maxWidth: 720, margin: '0 auto' }}>
-              <PromptComposer onSend={send} hint="Agent can read your workspace" placeholder="Tell the agent what to do next…" />
+              <PromptComposer onSend={send} hint="Agent can read your workspace" placeholder="Tell the agent what to do next…"
+                onAttach={() => notify('Attach files', 'Pick files from your workspace.')}
+                busy={streaming} onStop={() => setStreaming(false)} />
             </div>
           </div>
         </main>

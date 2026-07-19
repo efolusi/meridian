@@ -162,7 +162,9 @@ export function ChatMessageDemo() {
   return (
     <div style={{ display: 'flex', flexDirection: 'column', gap: 18, width: '100%', maxWidth: 560 }}>
       <ChatMessage role="user" name="Ada" time="09:41">Rebook my Lisbon flight to arrive before 15:00 local.</ChatMessage>
-      <ChatMessage role="assistant" name="Assistant" time="09:41" actions>
+      <ChatMessage role="assistant" name="Assistant" time="09:41"
+        onCopy={() => navigator.clipboard && navigator.clipboard.writeText('Booking TP 1287 (dep 10:20, arr 13:05).')}
+        onRetry={() => {}}>
         Found 3 nonstops arriving before 15:00. Booking TP 1287 (dep 10:20, arr 13:05) — same fare class, no change fee.
       </ChatMessage>
       <ChatMessage role="assistant" name="Assistant" streaming>Confirming seat 14C…</ChatMessage>
@@ -174,9 +176,13 @@ export function ChatMessageDemo() {
 export function PromptComposerDemo() {
   const { PromptComposer, Tag } = window.EfolusiDesignSystem_4ffc3d;
   const [sent, setSent] = React.useState('');
+  const [busy, setBusy] = React.useState(false);
   return (
     <div style={{ width: '100%', maxWidth: 560, display: 'flex', flexDirection: 'column', gap: 10 }}>
-      <PromptComposer placeholder="Ask the agent to do something…" onSend={setSent}
+      <PromptComposer placeholder="Ask the agent to do something…"
+        onSend={t => { setSent(t); setBusy(true); setTimeout(() => setBusy(false), 1600); }}
+        onAttach={() => {}} onVoice={() => {}}
+        busy={busy} onStop={() => setBusy(false)}
         attachments={<Tag icon="paperclip">itinerary.pdf</Tag>}
         hint="⏎ to send · ⇧⏎ for a new line" />
       {sent ? <span style={{ fontSize: 13, color: 'var(--text-muted)' }}>Sent: “{sent}”</span> : null}

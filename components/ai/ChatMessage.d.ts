@@ -6,8 +6,12 @@ export interface ChatMessageProps {
   time?: string;
   /** Blinking caret while generating */
   streaming?: boolean;
-  /** false hides the hover copy/retry row */
-  actions?: boolean;
+  /** false hides the hover action row; a node replaces it wholesale */
+  actions?: boolean | React.ReactNode;
+  /** Copy button; omit and the button is not rendered */
+  onCopy?: (e: React.MouseEvent) => void;
+  /** Retry button; omit and the button is not rendered */
+  onRetry?: (e: React.MouseEvent) => void;
   children?: React.ReactNode;
   style?: React.CSSProperties;
   className?: string;

@@ -15,7 +15,7 @@ function Demo() {
       <ChatMessage role="user" name="Ada Obi" time="14:02">Connect the prod database and check yesterday's failed webhooks.</ChatMessage>
       <Reasoning duration="3s" defaultOpen={false}>Need read access first; then filter deliveries by status=failed between 02:00–03:00.</Reasoning>
       <ToolCall name="query_webhooks" status="success" args={{ status: 'failed', since: 'yesterday' }} result="12 failed deliveries, all 503s to the same endpoint." />
-      <ChatMessage time="14:02">
+      <ChatMessage time="14:02" onCopy={() => {}} onRetry={() => {}}>
         Connected to <strong>pg-prod-eu</strong>. Found 12 failed deliveries between 02:10 and 02:14<Citation index={1} title="webhook-log.csv" /> — all to the same endpoint, all 503s. Want me to retry them now?
       </ChatMessage>
       <FeedbackBar copyText="12 failed deliveries found." onFeedback={() => {}} onRetry={() => {}} note="ef-2 · 1.8s" />
@@ -35,7 +35,7 @@ function Demo() {
         { id: 'ef-2', name: 'Efolusi 2', provider: 'Efolusi', hint: 'Best for agent runs', badge: 'New' },
         { id: 'ef-2-mini', name: 'Efolusi 2 Mini', provider: 'Efolusi', hint: 'Fast and cheap for chat' },
       ]} /></div>
-      <PromptComposer hint="Agent can read your workspace"
+      <PromptComposer hint="Agent can read your workspace" onAttach={() => setAtt(true)} onVoice={() => {}}
         attachments={att ? <FileTile name="webhook-log.csv" size="82 KB" onRemove={() => setAtt(false)} style={{ padding: '6px 8px' }} /> : null} />
       <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 16 }}>
         <Confirmation title="Send 12 refund emails?" description="Covers every customer hit by yesterday's failed webhooks." />
