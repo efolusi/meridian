@@ -31,7 +31,7 @@ function findTrigger(root) {
   if (!m) return null;
   return { node, offset: s.anchorOffset, char: m[2], query: m[3] };
 }
-export function RichComposer({ placeholder = 'Message… use @ to mention, / for commands', mentions = [], commands = [], hint, actions, disabled, autoFocus, onSubmit, onCommand, style, className }) {
+export function RichComposer({ placeholder = 'Message… use @ to mention, / for commands', mentions = [], commands = [], hint, actions, disabled, autoFocus, onSubmit, onCommand, style, className, ...rest }) {
   injectEfCss('ef-css-richcomposer', CSS);
   const edRef = React.useRef(null);
   const [pop, setPop] = React.useState(null);
@@ -119,7 +119,7 @@ export function RichComposer({ placeholder = 'Message… use @ to mention, / for
   React.useEffect(() => { if (autoFocus && edRef.current) edRef.current.focus(); }, [autoFocus]);
   let lastGroup = null;
   return (
-    <div className={`ef-richcomposer${className ? ' ' + className : ''}`} style={style}>
+    <div {...rest} className={`ef-richcomposer${className ? ' ' + className : ''}`} style={style}>
       {pop ? (
         <div className="ef-richcomposer__pop" role="listbox">
           {!items.length ? <div className="ef-richcomposer__empty">No matches for {pop.char}{pop.query}</div> : null}

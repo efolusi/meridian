@@ -17,7 +17,7 @@ const CSS = `
 .ef-promptsteps__kbd{margin-left:auto;display:inline-flex;align-items:center;gap:5px}
 .ef-promptsteps__kbd kbd{padding:1px 6px;border:1px solid var(--border-default);border-radius:var(--radius-sm);background:var(--surface-subtle);font-family:var(--font-sans);font-size:11px;color:var(--text-secondary)}
 `;
-export function PromptSteps({ steps = [], defaultValues = {}, onAnswer, onComplete, onDismiss, style, className }) {
+export function PromptSteps({ steps = [], defaultValues = {}, onAnswer, onComplete, onDismiss, style, className, ...rest }) {
   injectEfCss('ef-css-promptsteps', CSS);
   const [idx, setIdx] = React.useState(0);
   const [hi, setHi] = React.useState(0);
@@ -56,7 +56,7 @@ export function PromptSteps({ steps = [], defaultValues = {}, onAnswer, onComple
   };
   if (!step) return null;
   return (
-    <div ref={rootRef} tabIndex={-1} className={`ef-promptsteps${className ? ' ' + className : ''}`} style={style} onKeyDown={onKey}>
+    <div {...rest} ref={rootRef} tabIndex={-1} className={`ef-promptsteps${className ? ' ' + className : ''}`} style={style} onKeyDown={onKey}>
       <div className="ef-promptsteps__q">{step.question}</div>
       {opts.map((o, i) => i === otherIdx ? (
         <div key="__other" className={`ef-promptsteps__opt${hi === i ? ' ef-promptsteps__opt--hi' : ''}`} style={{ cursor: 'text' }} onMouseEnter={() => setHi(i)} onClick={() => { setHi(i); if (otherRef.current) otherRef.current.focus(); }}>

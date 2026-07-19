@@ -22,7 +22,7 @@ const CSS = `
 .ef-confirm__status--approved{color:var(--success-600,var(--text-secondary))}
 .ef-confirm__status--rejected{color:var(--text-muted)}
 `;
-export function Confirmation({ title, description, tone = 'default', state, defaultState = 'pending', onStateChange, icon, approveLabel = 'Approve', rejectLabel = 'Reject', approvedNote = 'Approved — continuing.', rejectedNote = 'Rejected — the agent will skip this.', children, style, className }) {
+export function Confirmation({ title, description, tone = 'default', state, defaultState = 'pending', onStateChange, icon, approveLabel = 'Approve', rejectLabel = 'Reject', approvedNote = 'Approved — continuing.', rejectedNote = 'Rejected — the agent will skip this.', children, style, className, ...rest }) {
   injectEfCss('ef-css-confirm', CSS);
   const [un, setUn] = React.useState(defaultState);
   const cur = state !== undefined ? state : un;
@@ -32,7 +32,7 @@ export function Confirmation({ title, description, tone = 'default', state, defa
   };
   const settled = cur !== 'pending';
   return (
-    <div role="group" className={`ef-confirm${tone === 'danger' ? ' ef-confirm--danger' : ''}${settled ? ' ef-confirm--settled' : ''}${className ? ' ' + className : ''}`} style={style}>
+    <div {...rest} role="group" className={`ef-confirm${tone === 'danger' ? ' ef-confirm--danger' : ''}${settled ? ' ef-confirm--settled' : ''}${className ? ' ' + className : ''}`} style={style}>
       <div className="ef-confirm__head">
         <span className="ef-confirm__icon"><Icon name={icon || (tone === 'danger' ? 'triangle-alert' : 'shield-check')} size={15} /></span>
         <span className="ef-confirm__title">{title}</span>

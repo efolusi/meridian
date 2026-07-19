@@ -17,7 +17,7 @@ const CSS = `
 @keyframes ef-caret{0%,100%{opacity:1}50%{opacity:0}}
 .ef-msg__caret{display:inline-block;width:7px;height:15px;background:var(--accent);margin-left:3px;vertical-align:-2px;animation:ef-caret 1s steps(1) infinite}
 `;
-export function ChatMessage({ role = 'assistant', name, time, streaming, actions, onCopy, onRetry, children, style, className }) {
+export function ChatMessage({ role = 'assistant', name, time, streaming, actions, onCopy, onRetry, children, style, className, ...rest }) {
   injectEfCss('ef-css-msg', CSS);
   const who = name || (role === 'user' ? 'You' : role === 'system' ? 'System' : 'Agent');
   // Only render an action a caller can actually handle: a button with nowhere to
@@ -30,7 +30,7 @@ export function ChatMessage({ role = 'assistant', name, time, streaming, actions
   ) : null;
   const actionRow = actions === false ? null : (actions != null && actions !== true ? actions : builtIn);
   return (
-    <div className={`ef-msg ef-msg--${role}${className ? ' ' + className : ''}`} style={style}>
+    <div {...rest} className={`ef-msg ef-msg--${role}${className ? ' ' + className : ''}`} style={style}>
       {role === 'assistant' || role === 'system'
         ? <span className="ef-msg__bot"><Icon name="bot" size={15} /></span>
         : <span className="ef-msg__avatar"><Avatar name={who} size={28} /></span>}

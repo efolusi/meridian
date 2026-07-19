@@ -26,12 +26,12 @@ const CSS = `
 .ef-agentrun__toggle--open .ef-agentrun__tchev{transform:rotate(180deg)}
 .ef-agentrun__panel{margin-top:8px;display:flex;flex-direction:column;gap:8px}
 `;
-export function AgentRun({ steps = [], style, className }) {
+export function AgentRun({ steps = [], style, className, ...rest }) {
   injectEfCss('ef-css-agentrun', CSS);
   const [openIds, setOpenIds] = React.useState(() => new Set(steps.filter(s => s.defaultOpen).map((s, idx) => s.id || idx)));
   const flip = key => setOpenIds(prev => { const n = new Set(prev); if (n.has(key)) n.delete(key); else n.add(key); return n; });
   return (
-    <div className={`ef-agentrun${className ? ' ' + className : ''}`} style={style} role="list">
+    <div {...rest} className={`ef-agentrun${className ? ' ' + className : ''}`} style={style} role="list">
       {steps.map((s, i) => {
         const st = s.status || 'pending';
         return (

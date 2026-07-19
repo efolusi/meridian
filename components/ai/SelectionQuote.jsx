@@ -9,7 +9,7 @@ const CSS = `
 .ef-selq__btn:focus-visible{outline:none;box-shadow:var(--focus-ring)}
 .ef-selq__sep{width:1px;height:16px;background:var(--border-default);margin:0 3px}
 `;
-export function SelectionQuote({ children, actions = [{ id: 'quote', label: 'Quote', icon: 'corner-up-left' }], onAction, style, className }) {
+export function SelectionQuote({ children, actions = [{ id: 'quote', label: 'Quote', icon: 'corner-up-left' }], onAction, style, className, ...rest }) {
   injectEfCss('ef-css-selq', CSS);
   const contRef = React.useRef(null);
   const barRef = React.useRef(null);
@@ -54,7 +54,7 @@ export function SelectionQuote({ children, actions = [{ id: 'quote', label: 'Quo
     setPos({ top, left });
   }, [sel]);
   return (
-    <div ref={contRef} className={`ef-selq${className ? ' ' + className : ''}`} style={style}>
+    <div {...rest} ref={contRef} className={`ef-selq${className ? ' ' + className : ''}`} style={style}>
       {children}
       {sel ? (
         <div ref={barRef} className="ef-selq__bar" role="toolbar" style={pos ? { top: pos.top, left: pos.left } : { top: 0, left: 0, visibility: 'hidden' }} onMouseDown={e => e.preventDefault()}>

@@ -18,7 +18,7 @@ const CSS = `
 .ef-combo__opt__check{margin-left:auto;color:var(--accent);display:inline-flex}
 .ef-combo__empty{padding:14px 10px;font-size:var(--text-sm);color:var(--text-muted);text-align:center}
 `;
-export function Combobox({ label, hint, options, value, onChange, multiple, placeholder = 'Search…', style, className }) {
+export function Combobox({ label, hint, options, value, onChange, multiple, placeholder = 'Search…', style, className, ...rest }) {
   injectEfCss('ef-css-combo', CSS);
   const [open, setOpen] = React.useState(false);
   const [q, setQ] = React.useState('');
@@ -80,7 +80,7 @@ export function Combobox({ label, hint, options, value, onChange, multiple, plac
       )}
     </div>
   );
-  if (!label && !hint) return <div className={className} style={style}>{control}</div>;
+  if (!label && !hint) return <div {...rest} className={className} style={style}>{control}</div>;
   return (
     <div className={`ef-field${className ? ' ' + className : ''}`} style={style}>
       {label ? <span className="ef-field__label">{label}</span> : null}

@@ -30,7 +30,7 @@ function Node({ node, depth, open, sel, toggle, select }) {
     </React.Fragment>
   );
 }
-export function TreeList({ nodes, value, onSelect, defaultOpen, style, className }) {
+export function TreeList({ nodes, value, onSelect, defaultOpen, style, className, ...rest }) {
   injectEfCss('ef-css-tree', CSS);
   const [open, setOpen] = React.useState(defaultOpen || nodes.filter(n => n.children).map(n => n.id));
   const [innerSel, setInnerSel] = React.useState(null);
@@ -38,7 +38,7 @@ export function TreeList({ nodes, value, onSelect, defaultOpen, style, className
   const toggle = id => setOpen(o => o.includes(id) ? o.filter(x => x !== id) : [...o, id]);
   const select = (id, node) => { if (value == null) setInnerSel(id); if (onSelect) onSelect(id, node); };
   return (
-    <div role="tree" className={`ef-tree${className ? ' ' + className : ''}`} style={style}>
+    <div {...rest} role="tree" className={`ef-tree${className ? ' ' + className : ''}`} style={style}>
       {nodes.map(n => <Node key={n.id} node={n} depth={0} open={open} sel={sel} toggle={toggle} select={select} />)}
     </div>
   );

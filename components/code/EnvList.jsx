@@ -34,12 +34,12 @@ function Row({ v, visible }) {
     </div>
   );
 }
-export function EnvList({ title = 'Environment', vars = [], defaultVisible = false, style, className }) {
+export function EnvList({ title = 'Environment', vars = [], defaultVisible = false, style, className, ...rest }) {
   injectEfCss('ef-css-env', CSS);
   const [visible, setVisible] = React.useState(!!defaultVisible);
   const hasSecrets = vars.some(v => v.secret);
   return (
-    <div className={`ef-env${className ? ' ' + className : ''}`} style={style}>
+    <div {...rest} className={`ef-env${className ? ' ' + className : ''}`} style={style}>
       <div className="ef-env__head">
         <span className="ef-env__glyph"><Icon name="key" size={14} /></span>
         <span className="ef-env__title">{title}</span>

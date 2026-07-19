@@ -14,11 +14,11 @@ const KIND = {
   mp3: { icon: 'mic', color: 'var(--warning-600)' }, wav: { icon: 'mic', color: 'var(--warning-600)' },
   zip: { icon: 'archive', color: 'var(--sand-600)' }, json: { icon: 'code', color: 'var(--sand-800)' }, js: { icon: 'code', color: 'var(--warning-600)' }, ts: { icon: 'code', color: 'var(--brand-700)' },
 };
-export function FileTypeIcon({ ext = 'txt', size = 40, showExt = true, style, className }) {
+export function FileTypeIcon({ ext = 'txt', size = 40, showExt = true, style, className, ...rest }) {
   injectEfCss('ef-css-filetype', CSS);
   const k = KIND[ext.toLowerCase()] || { icon: 'file', color: 'var(--sand-500)' };
   return (
-    <span className={`ef-filetype${className ? ' ' + className : ''}`} style={{ width: size, height: size, ...style }} title={'.' + ext}>
+    <span {...rest} className={`ef-filetype${className ? ' ' + className : ''}`} style={{ width: size, height: size, ...style }} title={'.' + ext}>
       <Icon name={k.icon} size={Math.round(size * 0.45)} />
       {showExt ? <span className="ef-filetype__ext" style={{ background: k.color }}>{ext}</span> : null}
     </span>

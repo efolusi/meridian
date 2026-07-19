@@ -5,10 +5,10 @@ const CSS = `
 .ef-label__req{color:var(--danger-600);font-weight:600}
 .ef-label__hint{font-weight:400;color:var(--text-muted);font-size:12.5px}
 `;
-export function Label({ htmlFor, required, hint, children, style, className }) {
+export function Label({ htmlFor, required, hint, children, style, className, ...rest }) {
   injectEfCss('ef-css-label', CSS);
   return (
-    <label htmlFor={htmlFor} className={`ef-label${className ? ' ' + className : ''}`} style={style}>
+    <label {...rest} htmlFor={htmlFor} className={`ef-label${className ? ' ' + className : ''}`} style={style}>
       {children}
       {required ? <span className="ef-label__req" aria-hidden="true">*</span> : null}
       {hint ? <span className="ef-label__hint">{hint}</span> : null}

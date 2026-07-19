@@ -26,7 +26,7 @@ const CSS = `
 .ef-webprev__badge{position:absolute;top:3px;right:3px;min-width:14px;height:14px;padding:0 4px;border-radius:var(--radius-full);background:var(--danger-600);color:var(--danger-contrast);font-size:9.5px;font-weight:var(--weight-semibold);display:inline-flex;align-items:center;justify-content:center;font-family:var(--font-sans)}
 `;
 const VIEWPORTS = [{ id: 'desktop', icon: 'monitor', width: null }, { id: 'tablet', icon: 'tablet', width: 768 }, { id: 'mobile', icon: 'smartphone', width: 390 }];
-export function WebPreview({ url: urlProp = '', height = 340, logs = [], defaultConsoleOpen = false, children, onUrlChange, style, className }) {
+export function WebPreview({ url: urlProp = '', height = 340, logs = [], defaultConsoleOpen = false, children, onUrlChange, style, className, ...rest }) {
   injectEfCss('ef-css-webprev', CSS);
   const [url, setUrl] = React.useState(urlProp);
   const [draft, setDraft] = React.useState(urlProp);
@@ -43,7 +43,7 @@ export function WebPreview({ url: urlProp = '', height = 340, logs = [], default
   const width = (VIEWPORTS.find(v => v.id === vp) || {}).width;
   const LOG_ICON = { warn: 'triangle-alert', error: 'circle-alert', info: 'info' };
   return (
-    <div className={`ef-webprev${cons ? ' ef-webprev--console' : ''}${className ? ' ' + className : ''}`} style={style}>
+    <div {...rest} className={`ef-webprev${cons ? ' ef-webprev--console' : ''}${className ? ' ' + className : ''}`} style={style}>
       <div className="ef-webprev__bar">
         <button type="button" className="ef-webprev__btn" aria-label="Reload" onClick={() => setKey(k => k + 1)}><Icon name="refresh-cw" size={13} /></button>
         <input className="ef-webprev__addr" type="text" value={draft} placeholder="Enter a URL to preview" spellCheck={false}

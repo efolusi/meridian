@@ -18,7 +18,7 @@ const CSS = `
 .ef-doccard__fade{position:absolute;left:0;right:0;bottom:0;height:72px;background:linear-gradient(to top,var(--surface-card),transparent);pointer-events:none;transition:opacity var(--dur-med) var(--ease-out)}
 .ef-doccard--open .ef-doccard__fade{opacity:0}
 `;
-export function DocumentCard({ title, meta, icon = 'file-text', collapsedHeight = 200, defaultOpen = false, onCopy, actions, children, style, className }) {
+export function DocumentCard({ title, meta, icon = 'file-text', collapsedHeight = 200, defaultOpen = false, onCopy, actions, children, style, className, ...rest }) {
   injectEfCss('ef-css-doccard', CSS);
   const [open, setOpen] = React.useState(!!defaultOpen);
   const [full, setFull] = React.useState(null);
@@ -42,7 +42,7 @@ export function DocumentCard({ title, meta, icon = 'file-text', collapsedHeight 
     setCopied(true); setTimeout(() => setCopied(false), 1600);
   };
   return (
-    <div className={`ef-doccard${open ? ' ef-doccard--open' : ''}${className ? ' ' + className : ''}`} style={style}>
+    <div {...rest} className={`ef-doccard${open ? ' ef-doccard--open' : ''}${className ? ' ' + className : ''}`} style={style}>
       <div className="ef-doccard__head">
         <span className="ef-doccard__glyph"><Icon name={icon} size={15} /></span>
         <span className="ef-doccard__title">{title}</span>

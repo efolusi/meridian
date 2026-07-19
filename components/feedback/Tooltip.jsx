@@ -8,7 +8,7 @@ const CSS = `
 .ef-tooltip__bubble--bottom::after{top:auto;bottom:100%;border-top-color:transparent;border-bottom-color:var(--surface-inverse)}
 @keyframes ef-tooltip-in{from{opacity:0}to{opacity:1}}
 `;
-export function Tooltip({ label, position = 'top', delay = 200, children, style, className }) {
+export function Tooltip({ label, position = 'top', delay = 200, children, style, className, ...rest }) {
   injectEfCss('ef-css-tooltip', CSS);
   const id = React.useId();
   const [open, setOpen] = React.useState(false);
@@ -44,7 +44,7 @@ export function Tooltip({ label, position = 'top', delay = 200, children, style,
     : children;
 
   return (
-    <span ref={ref} className={`ef-tooltip${className ? ' ' + className : ''}`} style={style}
+    <span {...rest} ref={ref} className={`ef-tooltip${className ? ' ' + className : ''}`} style={style}
       onMouseEnter={() => show(false)}
       onMouseLeave={hide}
       onFocus={() => show(true)}

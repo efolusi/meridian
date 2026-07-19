@@ -157,7 +157,7 @@ function legacy(lines) {
   });
   return { rows, adds, dels };
 }
-export function Diff({ title, lines, from, to, files, wordLevel = true, contextLines = 3, maxHeight, style, className }) {
+export function Diff({ title, lines, from, to, files, wordLevel = true, contextLines = 3, maxHeight, style, className, ...rest }) {
   injectEfCss('ef-css-diff', CSS);
   const single = React.useMemo(() => {
     if (files) return null;
@@ -165,7 +165,7 @@ export function Diff({ title, lines, from, to, files, wordLevel = true, contextL
     return computeDiff(from || '', to || '', { wordLevel, contextLines: from !== undefined ? contextLines : null });
   }, [lines, from, to, files, wordLevel, contextLines]);
   return (
-    <div className={`ef-diff${className ? ' ' + className : ''}`} style={style}>
+    <div {...rest} className={`ef-diff${className ? ' ' + className : ''}`} style={style}>
       {title && single ? (
         <div className="ef-diff__head">{title}<Counts adds={single.adds} dels={single.dels} /></div>
       ) : null}

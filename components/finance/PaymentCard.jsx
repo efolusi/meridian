@@ -11,10 +11,10 @@ const CSS = `
 .ef-paycard__val{font-size:12.5px;font-weight:600;margin-top:2px}
 .ef-paycard__chip{width:34px;height:25px;border-radius:5px;background:linear-gradient(135deg,var(--brand-200),var(--brand-500));opacity:.9}
 `;
-export function PaymentCard({ name = 'ADA OBI', number = '•••• •••• •••• 4242', expiry = '09/29', network = 'Efolusi', variant = 'espresso', frozen, style, className }) {
+export function PaymentCard({ name = 'ADA OBI', number = '•••• •••• •••• 4242', expiry = '09/29', network = 'Efolusi', variant = 'espresso', frozen, style, className, ...rest }) {
   injectEfCss('ef-css-paycard', CSS);
   return (
-    <div className={`ef-paycard${variant === 'caramel' ? ' ef-paycard--caramel' : variant === 'paper' ? ' ef-paycard--paper' : ''}${className ? ' ' + className : ''}`} style={{ filter: frozen ? 'grayscale(.7) opacity(.75)' : undefined, ...style }}>
+    <div {...rest} className={`ef-paycard${variant === 'caramel' ? ' ef-paycard--caramel' : variant === 'paper' ? ' ef-paycard--paper' : ''}${className ? ' ' + className : ''}`} style={{ filter: frozen ? 'grayscale(.7) opacity(.75)' : undefined, ...style }}>
       <span className="ef-paycard__ring" style={{ width: 220, height: 220, right: -70, top: -70 }}></span>
       <span className="ef-paycard__ring" style={{ width: 220, height: 220, right: -40, top: -110 }}></span>
       <div style={{ display: 'flex', alignItems: 'center' }}>

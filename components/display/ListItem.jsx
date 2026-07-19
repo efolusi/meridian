@@ -11,11 +11,11 @@ button.ef-listitem:focus-visible{outline:none;box-shadow:var(--focus-ring)}
 .ef-listitem__desc{font-size:var(--text-sm);color:var(--text-muted);line-height:1.4;margin-top:1px}
 .ef-listitem__trailing{margin-left:auto;flex:none;display:inline-flex;align-items:center;gap:8px;color:var(--text-muted)}
 `;
-export function ListItem({ icon, media, title, description, trailing, chevron, onClick, href, style, className }) {
+export function ListItem({ icon, media, title, description, trailing, chevron, onClick, href, style, className, ...rest }) {
   injectEfCss('ef-css-listitem', CSS);
   const Tag = href ? 'a' : onClick ? 'button' : 'div';
   return (
-    <Tag href={href} onClick={onClick} className={`ef-listitem${className ? ' ' + className : ''}`} style={style}>
+    <Tag {...rest} href={href} onClick={onClick} className={`ef-listitem${className ? ' ' + className : ''}`} style={style}>
       {media ? media : icon ? <span className="ef-listitem__media"><Icon name={icon} size={16} /></span> : null}
       <span style={{ minWidth: 0, flex: 1 }}>
         <span className="ef-listitem__title" style={{ display: 'block' }}>{title}</span>

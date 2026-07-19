@@ -16,7 +16,7 @@ const CSS = `
 .ef-drawer__foot{display:flex;justify-content:flex-end;gap:8px;padding:14px 20px;border-top:1px solid var(--border-default);background:var(--surface-subtle)}
 `;
 const FOCUSABLE = 'button,[href],input,select,textarea,[tabindex]:not([tabindex="-1"])';
-export function Drawer({ open, onClose, title, footer, width = 400, side = 'right', children }) {
+export function Drawer({ open, onClose, title, footer, width = 400, side = 'right', children, ...rest }) {
   injectEfCss('ef-css-drawer', CSS);
   const panelRef = React.useRef(null);
   const prevFocus = React.useRef(null);
@@ -46,7 +46,7 @@ export function Drawer({ open, onClose, title, footer, width = 400, side = 'righ
   }, [open, onClose]);
   if (!open) return null;
   return (
-    <React.Fragment>
+    <React.Fragment {...rest}>
       <div className="ef-drawer__overlay" onMouseDown={onClose}></div>
       <div className={`ef-drawer ef-drawer--${side}`} role="dialog" aria-modal="true" ref={panelRef} tabIndex={-1} aria-labelledby={title ? titleId : undefined} style={{ width }}>
         <div className="ef-drawer__head">

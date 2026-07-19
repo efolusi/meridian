@@ -20,11 +20,11 @@ function range(page, count) {
   }
   return out;
 }
-export function Pagination({ page, pageCount, onChange, style, className }) {
+export function Pagination({ page, pageCount, onChange, style, className, ...rest }) {
   injectEfCss('ef-css-pager', CSS);
   const go = p => { if (p >= 1 && p <= pageCount && onChange) onChange(p); };
   return (
-    <nav aria-label="Pagination" className={`ef-pager${className ? ' ' + className : ''}`} style={style}>
+    <nav {...rest} aria-label="Pagination" className={`ef-pager${className ? ' ' + className : ''}`} style={style}>
       <button className="ef-pager__btn" aria-label="Previous page" disabled={page <= 1} onClick={() => go(page - 1)}><Icon name="chevron-left" size={15} /></button>
       {range(page, pageCount).map((p, i) => p === '…'
         ? <span key={'g' + i} className="ef-pager__gap">…</span>

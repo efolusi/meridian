@@ -10,7 +10,7 @@ const CSS = `
 .ef-feedback__sep{width:1px;height:14px;background:var(--border-default);margin:0 5px}
 .ef-feedback__note{font-size:11.5px;color:var(--text-muted);margin-left:6px}
 `;
-export function FeedbackBar({ onFeedback, onCopy, onRetry, copyText, note, style, className }) {
+export function FeedbackBar({ onFeedback, onCopy, onRetry, copyText, note, style, className, ...rest }) {
   injectEfCss('ef-css-feedback', CSS);
   const [vote, setVote] = React.useState(null);
   const [copied, setCopied] = React.useState(false);
@@ -26,7 +26,7 @@ export function FeedbackBar({ onFeedback, onCopy, onRetry, copyText, note, style
     setTimeout(() => setCopied(false), 1400);
   };
   return (
-    <div className={`ef-feedback${className ? ' ' + className : ''}`} style={style}>
+    <div {...rest} className={`ef-feedback${className ? ' ' + className : ''}`} style={style}>
       <button type="button" aria-label="Good response" aria-pressed={vote === 'up'} className={`ef-feedback__btn${vote === 'up' ? ' ef-feedback__btn--on' : ''}`} onClick={() => cast('up')}><Icon name="thumbs-up" size={13} /></button>
       <button type="button" aria-label="Bad response" aria-pressed={vote === 'down'} className={`ef-feedback__btn${vote === 'down' ? ' ef-feedback__btn--on' : ''}`} onClick={() => cast('down')}><Icon name="thumbs-down" size={13} /></button>
       <span className="ef-feedback__sep"></span>

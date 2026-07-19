@@ -8,10 +8,10 @@ a.ef-crumbs__link:hover{color:var(--text-primary);text-decoration:none}
 .ef-crumbs__link--current{color:var(--text-primary);font-weight:var(--weight-medium)}
 .ef-crumbs__sep{color:var(--sand-400);display:inline-flex}
 `;
-export function Breadcrumbs({ items, style, className }) {
+export function Breadcrumbs({ items, style, className, ...rest }) {
   injectEfCss('ef-css-crumbs', CSS);
   return (
-    <nav aria-label="Breadcrumb" className={`ef-crumbs${className ? ' ' + className : ''}`} style={style}>
+    <nav {...rest} aria-label="Breadcrumb" className={`ef-crumbs${className ? ' ' + className : ''}`} style={style}>
       {items.map((it, i) => {
         const last = i === items.length - 1;
         return (

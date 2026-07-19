@@ -10,7 +10,7 @@ const CSS = `
 .ef-hovercard__panel--top{bottom:calc(100% + 8px)}
 @keyframes ef-hovercard-in{from{opacity:0;transform:translateY(2px)}}
 `;
-export function HoverCard({ trigger, side = 'bottom', openDelay = 350, closeDelay = 150, width = 300, children, style, className }) {
+export function HoverCard({ trigger, side = 'bottom', openDelay = 350, closeDelay = 150, width = 300, children, style, className, ...rest }) {
   injectEfCss('ef-css-hovercard', CSS);
   const [open, setOpen] = React.useState(false);
   const t = React.useRef(null);
@@ -21,7 +21,7 @@ export function HoverCard({ trigger, side = 'bottom', openDelay = 350, closeDela
   const leave = () => { clearTimeout(t.current); t.current = setTimeout(() => setOpen(false), closeDelay); };
   React.useEffect(() => () => clearTimeout(t.current), []);
   return (
-    <span ref={ref} className={`ef-hovercard${className ? ' ' + className : ''}`} style={style} onMouseEnter={enter} onMouseLeave={leave}
+    <span {...rest} ref={ref} className={`ef-hovercard${className ? ' ' + className : ''}`} style={style} onMouseEnter={enter} onMouseLeave={leave}
       onKeyDown={e => { if (e.key === 'Escape') { clearTimeout(t.current); setOpen(false); } }}>
       <span className="ef-hovercard__trigger" tabIndex={0} onFocus={() => setOpen(true)} onBlur={() => setOpen(false)}>{trigger}</span>
       {open ? (

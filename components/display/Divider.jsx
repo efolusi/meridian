@@ -6,9 +6,9 @@ const CSS = `
 .ef-divider__label{font-size:var(--text-xs);font-weight:var(--weight-medium);letter-spacing:0.06em;text-transform:uppercase;color:var(--text-muted);white-space:nowrap}
 .ef-divider--vertical{display:inline-flex;width:1px;align-self:stretch;background:var(--border-default)}
 `;
-export function Divider({ label, vertical, style, className }) {
+export function Divider({ label, vertical, style, className, ...rest }) {
   injectEfCss('ef-css-divider', CSS);
-  if (vertical) return <span className={`ef-divider--vertical${className ? ' ' + className : ''}`} style={style}></span>;
+  if (vertical) return <span {...rest} className={`ef-divider--vertical${className ? ' ' + className : ''}`} style={style}></span>;
   return (
     <div role="separator" className={`ef-divider${className ? ' ' + className : ''}`} style={style}>
       <span className="ef-divider__line"></span>

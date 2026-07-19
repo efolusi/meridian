@@ -15,12 +15,12 @@ const CSS = `
 .ef-acc__inner{overflow:hidden}
 .ef-acc__content{padding:0 2px 16px;font-size:var(--text-md);line-height:var(--leading-relaxed);color:var(--text-secondary);max-width:640px}
 `;
-export function Accordion({ items, multiple, defaultOpen, style, className }) {
+export function Accordion({ items, multiple, defaultOpen, style, className, ...rest }) {
   injectEfCss('ef-css-acc', CSS);
   const [open, setOpen] = React.useState(defaultOpen || []);
   const toggle = id => setOpen(o => o.includes(id) ? o.filter(x => x !== id) : multiple ? [...o, id] : [id]);
   return (
-    <div className={`ef-acc${className ? ' ' + className : ''}`} style={style}>
+    <div {...rest} className={`ef-acc${className ? ' ' + className : ''}`} style={style}>
       {items.map(it => (
         <div key={it.id} className={`ef-acc__item${open.includes(it.id) ? ' ef-acc__item--open' : ''}`}>
           <button className="ef-acc__head" aria-expanded={open.includes(it.id)} onClick={() => toggle(it.id)}>

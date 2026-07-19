@@ -5,13 +5,13 @@ const CSS = `
 .ef-skel{display:block;background:var(--border-default);border-radius:var(--radius-sm);animation:ef-skel 1.4s var(--ease-in-out) infinite}
 .ef-skel--circle{border-radius:var(--radius-full)}
 `;
-export function Skeleton({ variant = 'text', width, height, lines = 1, style, className }) {
+export function Skeleton({ variant = 'text', width, height, lines = 1, style, className, ...rest }) {
   injectEfCss('ef-css-skel', CSS);
   const h = height != null ? height : variant === 'text' ? 12 : variant === 'circle' ? (width || 32) : 64;
   const w = width != null ? width : variant === 'circle' ? h : '100%';
   if (variant === 'text' && lines > 1) {
     return (
-      <span style={{ display: 'flex', flexDirection: 'column', gap: 8, ...style }} className={className}>
+      <span {...rest} style={{ display: 'flex', flexDirection: 'column', gap: 8, ...style }} className={className}>
         {Array.from({ length: lines }, (_, i) => (
           <span key={i} className="ef-skel" style={{ width: i === lines - 1 ? '60%' : w, height: h }}></span>
         ))}

@@ -14,7 +14,7 @@ const CSS = `
 .ef-ctx__sep{height:1px;background:var(--border-default);margin:4px 6px}
 .ef-ctx__kbd{margin-left:auto;font-family:var(--font-mono);font-size:11px;color:var(--text-muted)}
 `;
-export function ContextMenu({ items, onSelect, children, style, className }) {
+export function ContextMenu({ items, onSelect, children, style, className, ...rest }) {
   injectEfCss('ef-css-ctx', CSS);
   const [pos, setPos] = React.useState(null);
   const panelRef = React.useRef(null);
@@ -67,7 +67,7 @@ export function ContextMenu({ items, onSelect, children, style, className }) {
     setPos({ x: e.clientX, y: e.clientY });
   };
   return (
-    <span className={className} style={style} onContextMenu={openAt}>
+    <span {...rest} className={className} style={style} onContextMenu={openAt}>
       {children}
       {pos ? (
         <Portal><div role="menu" ref={panelRef} onKeyDown={onPanelKey} className="ef-ctx__panel" style={{ left: pos.x, top: pos.y }} onMouseDown={e => e.stopPropagation()}>

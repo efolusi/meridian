@@ -8,7 +8,7 @@ const CSS = `
 .ef-donut__val{margin-left:auto;font-family:var(--font-mono);font-size:12px;color:var(--text-primary);padding-left:14px}
 `;
 const PALETTE = ['var(--brand-950)', 'var(--brand-500)', 'var(--brand-200)', 'var(--sand-400)', 'var(--sand-200)'];
-export function DonutChart({ data, size = 140, thickness = 16, centerLabel, centerValue, format, style, className }) {
+export function DonutChart({ data, size = 140, thickness = 16, centerLabel, centerValue, format, style, className, ...rest }) {
   injectEfCss('ef-css-donut', CSS);
   const [hov, setHov] = React.useState(null);
   const total = data.reduce((s, d) => s + d.value, 0) || 1;
@@ -22,7 +22,7 @@ export function DonutChart({ data, size = 140, thickness = 16, centerLabel, cent
     return seg;
   });
   return (
-    <div className={`ef-donut${className ? ' ' + className : ''}`} style={style}>
+    <div {...rest} className={`ef-donut${className ? ' ' + className : ''}`} style={style}>
       <div style={{ position: 'relative', width: size, height: size, flex: 'none' }}>
         <svg viewBox="0 0 100 100" width={size} height={size} style={{ transform: 'rotate(-90deg)' }}>
           {segs.map(s => (

@@ -22,7 +22,7 @@ const CSS = `
 .ef-transcript__word--played{color:var(--text-primary)}
 .ef-transcript__text--interim{font-style:italic;color:var(--text-muted)}
 `;
-export function Transcript({ title = 'Transcript', items = [], currentTime = 0, onJump, height = 280, defaultAutoScroll = true, style, className }) {
+export function Transcript({ title = 'Transcript', items = [], currentTime = 0, onJump, height = 280, defaultAutoScroll = true, style, className, ...rest }) {
   injectEfCss('ef-css-transcript', CSS);
   const [auto, setAuto] = React.useState(!!defaultAutoScroll);
   const viewport = React.useRef(null);
@@ -40,7 +40,7 @@ export function Transcript({ title = 'Transcript', items = [], currentTime = 0, 
     v.scrollTo({ top: Math.max(0, target), behavior: 'smooth' });
   }, [active, auto]);
   return (
-    <div className={`ef-transcript${className ? ' ' + className : ''}`} style={style}>
+    <div {...rest} className={`ef-transcript${className ? ' ' + className : ''}`} style={style}>
       <div className="ef-transcript__head">
         <span className="ef-transcript__title">{title}</span>
         <button type="button" className={`ef-transcript__auto${auto ? ' ef-transcript__auto--on' : ''}`} aria-pressed={auto} onClick={() => setAuto(!auto)}>Auto-scroll</button>

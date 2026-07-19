@@ -26,7 +26,7 @@ const CSS = `
 .ef-sources__domain{flex:none;font-family:var(--font-mono);font-size:11.5px;color:var(--text-muted)}
 .ef-sources__ext{flex:none;display:inline-flex;color:var(--text-muted)}
 `;
-export function Citation({ index, href, title, sources, onClick, style, className }) {
+export function Citation({ index, href, title, sources, onClick, style, className, ...rest }) {
   injectEfCss('ef-css-citation', CSS);
   const [open, setOpen] = React.useState(false);
   const [i, setI] = React.useState(0);
@@ -42,7 +42,7 @@ export function Citation({ index, href, title, sources, onClick, style, classNam
   if (!list) return chip;
   const cur = list[Math.abs(i) % list.length];
   return (
-    <span className="ef-citation__wrap" style={style} onMouseEnter={enter} onMouseLeave={leave}>
+    <span {...rest} className="ef-citation__wrap" style={style} onMouseEnter={enter} onMouseLeave={leave}>
       {chip}
       {open ? (
         <span className="ef-citation__pop" role="dialog">
@@ -61,10 +61,10 @@ export function Citation({ index, href, title, sources, onClick, style, classNam
     </span>
   );
 }
-export function SourceList({ sources = [], title = 'Sources', style, className }) {
+export function SourceList({ sources = [], title = 'Sources', style, className, ...rest }) {
   injectEfCss('ef-css-citation', CSS);
   return (
-    <div className={`ef-sources${className ? ' ' + className : ''}`} style={style}>
+    <div {...rest} className={`ef-sources${className ? ' ' + className : ''}`} style={style}>
       <div className="ef-sources__head">{title}</div>
       {sources.map((s, i) => (
         <a key={s.index || i} className="ef-sources__item" href={s.url || '#'} target={s.url ? '_blank' : undefined} rel={s.url ? 'noopener' : undefined}>

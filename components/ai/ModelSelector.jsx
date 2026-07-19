@@ -21,7 +21,7 @@ const CSS = `
 .ef-modelsel__check{margin-left:auto;flex:none;display:inline-flex;color:var(--brand-700)}
 .ef-modelsel__badge+.ef-modelsel__check{margin-left:8px}
 `;
-export function ModelSelector({ models = [], value, onChange, side = 'up', style, className }) {
+export function ModelSelector({ models = [], value, onChange, side = 'up', style, className, ...rest }) {
   injectEfCss('ef-css-modelsel', CSS);
   const [open, setOpen] = React.useState(false);
   const ref = React.useRef(null);
@@ -37,7 +37,7 @@ export function ModelSelector({ models = [], value, onChange, side = 'up', style
   }, [open]);
   const cur = models.find(m => m.id === value) || models[0] || {};
   return (
-    <span ref={ref} className={`ef-modelsel${side === 'down' ? ' ef-modelsel--down' : ''}${className ? ' ' + className : ''}`} style={style}>
+    <span {...rest} ref={ref} className={`ef-modelsel${side === 'down' ? ' ef-modelsel--down' : ''}${className ? ' ' + className : ''}`} style={style}>
       <button type="button" className="ef-modelsel__btn" aria-haspopup="listbox" aria-expanded={open} onClick={() => setOpen(!open)}>
         <Icon name="sparkles" size={13} />
         {cur.name || 'Choose model'}

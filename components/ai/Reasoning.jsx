@@ -12,7 +12,7 @@ const CSS = `
 .ef-reasoning--open .ef-reasoning__chev{transform:rotate(180deg)}
 .ef-reasoning__body{padding:2px 14px 12px;font-size:13.5px;line-height:1.65;color:var(--text-secondary);white-space:pre-wrap;border-top:1px dashed var(--border-default);padding-top:10px;margin:0 0}
 `;
-export function Reasoning({ streaming, duration, defaultOpen, open, onOpenChange, label, children, style, className }) {
+export function Reasoning({ streaming, duration, defaultOpen, open, onOpenChange, label, children, style, className, ...rest }) {
   injectEfCss('ef-css-reasoning', CSS);
   const [un, setUn] = React.useState(!!defaultOpen);
   const isOpen = open !== undefined ? open : un;
@@ -22,7 +22,7 @@ export function Reasoning({ streaming, duration, defaultOpen, open, onOpenChange
   };
   const head = label || (streaming ? 'Thinking…' : duration ? 'Thought for ' + duration : 'Reasoning');
   return (
-    <div className={`ef-reasoning${isOpen ? ' ef-reasoning--open' : ''}${streaming ? ' ef-reasoning--streaming' : ''}${className ? ' ' + className : ''}`} style={style}>
+    <div {...rest} className={`ef-reasoning${isOpen ? ' ef-reasoning--open' : ''}${streaming ? ' ef-reasoning--streaming' : ''}${className ? ' ' + className : ''}`} style={style}>
       <button type="button" className="ef-reasoning__head" aria-expanded={isOpen} onClick={flip}>
         <span className="ef-reasoning__glyph"><Icon name="brain" size={14} /></span>
         {head}

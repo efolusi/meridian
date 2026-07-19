@@ -16,10 +16,10 @@ const CSS = `
 @keyframes ef-term-caret{0%,100%{opacity:1}50%{opacity:0}}
 .ef-term__caret{display:inline-block;width:7px;height:13px;background:#F8F4E6;vertical-align:-2px;animation:ef-term-caret 1s steps(1) infinite}
 `;
-export function Terminal({ host, lines = [], live, maxHeight = 260, style, className }) {
+export function Terminal({ host, lines = [], live, maxHeight = 260, style, className, ...rest }) {
   injectEfCss('ef-css-term', CSS);
   return (
-    <div className={`ef-term${className ? ' ' + className : ''}`} style={style}>
+    <div {...rest} className={`ef-term${className ? ' ' + className : ''}`} style={style}>
       {host ? <div className="ef-term__head"><span className="ef-term__dot"></span><span className="ef-term__host">{host}</span></div> : null}
       <div className="ef-term__body" style={{ maxHeight, overflowY: 'auto' }}>
         {lines.map((l, i) => {

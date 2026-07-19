@@ -8,10 +8,10 @@ const CSS = `
 .ef-suggestion:focus-visible{outline:none;box-shadow:var(--focus-ring)}
 .ef-suggestion__icon{display:inline-flex;color:var(--text-muted)}
 `;
-export function Suggestions({ items = [], onPick, style, className }) {
+export function Suggestions({ items = [], onPick, style, className, ...rest }) {
   injectEfCss('ef-css-suggestions', CSS);
   return (
-    <div className={`ef-suggestions${className ? ' ' + className : ''}`} style={style}>
+    <div {...rest} className={`ef-suggestions${className ? ' ' + className : ''}`} style={style}>
       {items.map((it, i) => {
         const label = typeof it === 'string' ? it : it.label;
         const icon = typeof it === 'string' ? null : it.icon;

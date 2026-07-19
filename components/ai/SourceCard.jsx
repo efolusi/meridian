@@ -13,11 +13,11 @@ a.ef-sourcecard:focus-visible{outline:none;box-shadow:var(--focus-ring)}
 .ef-sourcecard__title{font-size:13.5px;font-weight:var(--weight-semibold);color:var(--text-primary);line-height:1.4}
 .ef-sourcecard__desc{font-size:12.5px;color:var(--text-muted);line-height:1.55;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}
 `;
-export function SourceCard({ href, title, description, domain, favicon, icon = 'globe', thumbnail, variant = 'card', onClick, style, className }) {
+export function SourceCard({ href, title, description, domain, favicon, icon = 'globe', thumbnail, variant = 'card', onClick, style, className, ...rest }) {
   injectEfCss('ef-css-sourcecard', CSS);
   const Tag = href || onClick ? 'a' : 'div';
   return (
-    <Tag className={`ef-sourcecard${variant === 'plain' ? ' ef-sourcecard--plain' : ''}${className ? ' ' + className : ''}`} style={style}
+    <Tag {...rest} className={`ef-sourcecard${variant === 'plain' ? ' ef-sourcecard--plain' : ''}${className ? ' ' + className : ''}`} style={style}
       href={href} target={href ? '_blank' : undefined} rel={href ? 'noreferrer noopener' : undefined} onClick={onClick}>
       {thumbnail ? <img className="ef-sourcecard__thumb" src={thumbnail} alt="" /> : null}
       {domain ? (

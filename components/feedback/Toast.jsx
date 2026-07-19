@@ -25,10 +25,10 @@ const CSS = `
 @keyframes ef-toast-in{from{opacity:0;transform:translateY(12px) scale(.96)}}
 `;
 const ICONS = { success: 'circle-check', danger: 'circle-alert', warning: 'triangle-alert', info: 'info' };
-export function Toast({ tone = 'info', title, description, actionLabel, onAction, onClose, style, className }) {
+export function Toast({ tone = 'info', title, description, actionLabel, onAction, onClose, style, className, ...rest }) {
   injectEfCss('ef-css-toast', CSS);
   return (
-    <div className={`ef-toast ef-toast--${tone}${className ? ' ' + className : ''}`} role="status" style={style}>
+    <div {...rest} className={`ef-toast ef-toast--${tone}${className ? ' ' + className : ''}`} role="status" style={style}>
       <span className="ef-toast__icon"><Icon name={ICONS[tone] || 'info'} size={18} /></span>
       <div style={{ flex: 1 }}>
         <div className="ef-toast__title">{title}</div>
@@ -39,7 +39,7 @@ export function Toast({ tone = 'info', title, description, actionLabel, onAction
     </div>
   );
 }
-export function ToastStack({ children, style, className }) {
+export function ToastStack({ children, style, className, ...rest }) {
   injectEfCss('ef-css-toast', CSS);
-  return <div className={`ef-toast-stack${className ? ' ' + className : ''}`} style={style}>{children}</div>;
+  return <div {...rest} className={`ef-toast-stack${className ? ' ' + className : ''}`} style={style}>{children}</div>;
 }

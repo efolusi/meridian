@@ -14,10 +14,10 @@ const CSS = `
 .ef-alert__action{margin-left:auto;flex:none}
 `;
 const ICONS = { info: 'info', success: 'circle-check', warning: 'triangle-alert', danger: 'circle-alert' };
-export function Alert({ tone = 'info', icon, title, description, action, children, style, className }) {
+export function Alert({ tone = 'info', icon, title, description, action, children, style, className, ...rest }) {
   injectEfCss('ef-css-alert', CSS);
   return (
-    <div role="status" className={`ef-alert ef-alert--${tone}${className ? ' ' + className : ''}`} style={style}>
+    <div {...rest} role="status" className={`ef-alert ef-alert--${tone}${className ? ' ' + className : ''}`} style={style}>
       <span className="ef-alert__icon"><Icon name={icon || ICONS[tone]} size={16} /></span>
       <div style={{ flex: 1, minWidth: 0 }}>
         {title ? <div className="ef-alert__title">{title}</div> : null}

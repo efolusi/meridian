@@ -15,10 +15,10 @@ const CSS = `
 .ef-tile__check{position:absolute;top:12px;right:12px;display:inline-flex;align-items:center;justify-content:center;width:18px;height:18px;border-radius:var(--radius-full);background:var(--accent);color:var(--accent-contrast);opacity:0;transform:scale(.6);transition:opacity var(--dur-fast) var(--ease-out),transform var(--dur-med) var(--ease-spring)}
 .ef-tile--on .ef-tile__check{opacity:1;transform:scale(1)}
 `;
-export function ButtonTile({ icon, title, description, selected, disabled, onClick, style, className }) {
+export function ButtonTile({ icon, title, description, selected, disabled, onClick, style, className, ...rest }) {
   injectEfCss('ef-css-tile', CSS);
   return (
-    <button className={`ef-tile${selected ? ' ef-tile--on' : ''}${className ? ' ' + className : ''}`} disabled={disabled} aria-pressed={!!selected} onClick={onClick} style={style}>
+    <button {...rest} className={`ef-tile${selected ? ' ef-tile--on' : ''}${className ? ' ' + className : ''}`} disabled={disabled} aria-pressed={!!selected} onClick={onClick} style={style}>
       {icon ? <span className="ef-tile__icon"><Icon name={icon} size={20} /></span> : null}
       <span className="ef-tile__title">{title}</span>
       {description ? <span className="ef-tile__desc">{description}</span> : null}
@@ -26,7 +26,7 @@ export function ButtonTile({ icon, title, description, selected, disabled, onCli
     </button>
   );
 }
-export function ButtonTileGroup({ columns = 3, children, style, className }) {
+export function ButtonTileGroup({ columns = 3, children, style, className, ...rest }) {
   injectEfCss('ef-css-tile', CSS);
-  return <div className={`ef-tilegroup${className ? ' ' + className : ''}`} style={{ gridTemplateColumns: `repeat(${columns},1fr)`, ...style }}>{children}</div>;
+  return <div {...rest} className={`ef-tilegroup${className ? ' ' + className : ''}`} style={{ gridTemplateColumns: `repeat(${columns},1fr)`, ...style }}>{children}</div>;
 }

@@ -9,7 +9,7 @@ const CSS = `
 .ef-collapsible__body{padding:2px 0 10px 24px;animation:ef-collapsible-in var(--dur-fast) var(--ease-out)}
 @keyframes ef-collapsible-in{from{opacity:0;transform:translateY(-2px)}}
 `;
-export function Collapsible({ title, defaultOpen, open, onOpenChange, children, style, className }) {
+export function Collapsible({ title, defaultOpen, open, onOpenChange, children, style, className, ...rest }) {
   injectEfCss('ef-css-collapsible', CSS);
   const [un, setUn] = React.useState(!!defaultOpen);
   const isOpen = open !== undefined ? open : un;
@@ -18,7 +18,7 @@ export function Collapsible({ title, defaultOpen, open, onOpenChange, children, 
     if (onOpenChange) onOpenChange(!isOpen);
   };
   return (
-    <div className={`ef-collapsible${isOpen ? ' ef-collapsible--open' : ''}${className ? ' ' + className : ''}`} style={style}>
+    <div {...rest} className={`ef-collapsible${isOpen ? ' ef-collapsible--open' : ''}${className ? ' ' + className : ''}`} style={style}>
       <button type="button" className="ef-collapsible__trigger" aria-expanded={isOpen} onClick={flip}>
         <span className="ef-collapsible__chev"><Icon name="chevron-right" size={16} /></span>
         {title}

@@ -13,7 +13,7 @@
     {
       "path": "components/display/AspectRatio.jsx",
       "type": "registry:ui",
-      "content": "import React from 'react';\nexport function AspectRatio({ ratio = 16 / 9, children, style, className }) {\n  return (\n    <div className={className} style={{ position: 'relative', width: '100%', aspectRatio: String(ratio), ...style }}>\n      <div style={{ position: 'absolute', inset: 0 }}>{children}</div>\n    </div>\n  );\n}\n"
+      "content": "import React from 'react';\nexport function AspectRatio({ ratio = 16 / 9, children, style, className, ...rest }) {\n  return (\n    <div {...rest} className={className} style={{ position: 'relative', width: '100%', aspectRatio: String(ratio), ...style }}>\n      <div style={{ position: 'absolute', inset: 0 }}>{children}</div>\n    </div>\n  );\n}\n"
     },
     {
       "path": "components/display/AspectRatio.d.ts",

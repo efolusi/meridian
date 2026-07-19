@@ -29,10 +29,10 @@ const CSS = `
 .ef-genimg__retry{display:inline-flex;align-items:center;gap:6px;padding:7px 13px;border:1px solid var(--border-strong);border-radius:var(--radius-full);background:var(--surface-card);cursor:pointer;font-family:var(--font-sans);font-size:12.5px;font-weight:var(--weight-semibold);color:var(--text-primary)}
 .ef-genimg__err{color:var(--danger-600)}
 `;
-export function GeneratedImage({ state = 'complete', src, alt, prompt, aspect = 'square', error, onRetry, actions, style, className }) {
+export function GeneratedImage({ state = 'complete', src, alt, prompt, aspect = 'square', error, onRetry, actions, style, className, ...rest }) {
   injectEfCss('ef-css-genimg', CSS);
   return (
-    <div className={`ef-genimg ef-genimg--${aspect} ef-genimg--${state}${className ? ' ' + className : ''}`} style={style} data-state={state}>
+    <div {...rest} className={`ef-genimg ef-genimg--${aspect} ef-genimg--${state}${className ? ' ' + className : ''}`} style={style} data-state={state}>
       {src && (state === 'complete' || state === 'error') ? <img className="ef-genimg__img" src={src} alt={alt || prompt || ''} /> : null}
       <div className="ef-genimg__dark">{state === 'generating' ? <div className="ef-genimg__dots"></div> : null}</div>
       <div className="ef-genimg__scrim ef-genimg__scrim--top" aria-hidden="true"></div>

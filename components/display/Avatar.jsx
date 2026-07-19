@@ -25,7 +25,7 @@ export function Avatar({ name = '', src, size = 32, style, className, ...rest })
     </span>
   );
 }
-export function AvatarGroup({ children, style, className }) {
+export function AvatarGroup({ children, style, className, ...rest }) {
   injectEfCss('ef-css-avatar', CSS);
-  return <span className={`ef-avatar-group${className ? ' ' + className : ''}`} style={style}>{children}</span>;
+  return <span {...rest} className={`ef-avatar-group${className ? ' ' + className : ''}`} style={style}>{children}</span>;
 }

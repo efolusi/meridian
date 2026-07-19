@@ -20,7 +20,7 @@ const CSS = `
 .ef-cmdk__foot{display:flex;align-items:center;gap:14px;padding:9px 14px;border-top:1px solid var(--border-default);background:var(--surface-subtle);font-size:var(--text-xs);color:var(--text-muted)}
 .ef-cmdk__foot span{display:inline-flex;align-items:center;gap:5px}
 `;
-export function CommandPalette({ open, onClose, groups, onSelect, placeholder = 'Type a command or search…' }) {
+export function CommandPalette({ open, onClose, groups, onSelect, placeholder = 'Type a command or search…', ...rest }) {
   injectEfCss('ef-css-cmdk', CSS);
   const [q, setQ] = React.useState('');
   const [idx, setIdx] = React.useState(0);
@@ -61,7 +61,7 @@ export function CommandPalette({ open, onClose, groups, onSelect, placeholder = 
   }, [open, idx, listId]);
   if (!open) return null;
   return (
-    <div className="ef-cmdk__overlay" onMouseDown={e => { if (e.target === e.currentTarget && onClose) onClose(); }}>
+    <div {...rest} className="ef-cmdk__overlay" onMouseDown={e => { if (e.target === e.currentTarget && onClose) onClose(); }}>
       <div className="ef-cmdk" role="dialog" aria-modal="true" aria-label="Command palette">
         <div className="ef-cmdk__inputrow">
           <Icon name="search" size={17} style={{ color: 'var(--text-muted)' }} />

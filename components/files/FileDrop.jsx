@@ -11,13 +11,13 @@ const CSS = `
 .ef-filedrop__title u{text-decoration-color:var(--caramel-500);text-underline-offset:3px}
 .ef-filedrop__hint{font-size:var(--text-xs);color:var(--text-muted)}
 `;
-export function FileDrop({ onFiles, accept, multiple = true, title, hint, style, className }) {
+export function FileDrop({ onFiles, accept, multiple = true, title, hint, style, className, ...rest }) {
   injectEfCss('ef-css-filedrop', CSS);
   const [over, setOver] = React.useState(false);
   const inputRef = React.useRef(null);
   const handle = files => { if (onFiles && files && files.length) onFiles([...files]); };
   return (
-    <div role="button" tabIndex={0} className={`ef-filedrop${over ? ' ef-filedrop--over' : ''}${className ? ' ' + className : ''}`} style={style}
+    <div {...rest} role="button" tabIndex={0} className={`ef-filedrop${over ? ' ef-filedrop--over' : ''}${className ? ' ' + className : ''}`} style={style}
       onClick={() => inputRef.current && inputRef.current.click()}
       onKeyDown={e => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); inputRef.current.click(); } }}
       onDragOver={e => { e.preventDefault(); setOver(true); }}

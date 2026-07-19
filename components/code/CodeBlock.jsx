@@ -14,7 +14,7 @@ const CSS = `
 .ef-code__more{display:inline-flex;align-items:center;gap:5px;border:1px solid rgba(250,249,246,.25);border-radius:var(--radius-full);background:rgba(30,26,20,.85);cursor:pointer;padding:4px 12px;font-family:var(--font-sans);font-size:11.5px;font-weight:var(--weight-semibold);color:rgba(250,249,246,.85)}
 .ef-code__more:hover{color:#fff;border-color:rgba(250,249,246,.5)}
 `;
-export function CodeBlock({ lang, title, children, maxHeight, clip, clipHeight = 240, style, className }) {
+export function CodeBlock({ lang, title, children, maxHeight, clip, clipHeight = 240, style, className, ...rest }) {
   injectEfCss('ef-css-code', CSS);
   const [copied, setCopied] = React.useState(false);
   const [open, setOpen] = React.useState(false);
@@ -36,7 +36,7 @@ export function CodeBlock({ lang, title, children, maxHeight, clip, clipHeight =
     setCopied(true); setTimeout(() => setCopied(false), 1600);
   };
   return (
-    <div className={`ef-code${className ? ' ' + className : ''}`} style={style}>
+    <div {...rest} className={`ef-code${className ? ' ' + className : ''}`} style={style}>
       <div className="ef-code__head">
         <span className="ef-code__lang">{title || lang}</span>
         <button className={`ef-code__copy${copied ? ' ef-code__copy--done' : ''}`} onClick={copy}>

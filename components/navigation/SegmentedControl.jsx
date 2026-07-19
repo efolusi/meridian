@@ -9,10 +9,10 @@ const CSS = `
 .ef-seg__opt:focus-visible{outline:none;box-shadow:var(--focus-ring)}
 .ef-seg__opt:disabled{opacity:.4;cursor:not-allowed}
 `;
-export function SegmentedControl({ options, value, onChange, style, className }) {
+export function SegmentedControl({ options, value, onChange, style, className, ...rest }) {
   injectEfCss('ef-css-seg', CSS);
   return (
-    <div role="group" className={`ef-seg${className ? ' ' + className : ''}`} style={style}>
+    <div {...rest} role="group" className={`ef-seg${className ? ' ' + className : ''}`} style={style}>
       {options.map(o => {
         const opt = typeof o === 'string' ? { id: o, label: o } : o;
         return (

@@ -13,10 +13,10 @@ const CSS = `
 .ef-task--streaming .ef-task__row:last-of-type{animation:ef-task-pulse 1.2s var(--ease-out) infinite}
 @keyframes ef-task-pulse{0%,100%{opacity:1}50%{opacity:.45}}
 `;
-export function Task({ items = [], streaming, style, className }) {
+export function Task({ items = [], streaming, style, className, ...rest }) {
   injectEfCss('ef-css-task', CSS);
   return (
-    <div className={`ef-task${streaming ? ' ef-task--streaming' : ''}${className ? ' ' + className : ''}`} style={style} role="list">
+    <div {...rest} className={`ef-task${streaming ? ' ef-task--streaming' : ''}${className ? ' ' + className : ''}`} style={style} role="list">
       {items.map((it, i) => (
         <React.Fragment key={i}>
           <div className="ef-task__row" role="listitem">

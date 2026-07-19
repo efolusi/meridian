@@ -29,7 +29,7 @@ export function Toggle({ pressed, defaultPressed, onPressedChange, value, icon, 
     </button>
   );
 }
-export function ToggleGroup({ type = 'single', value, defaultValue, onChange, children, style, className }) {
+export function ToggleGroup({ type = 'single', value, defaultValue, onChange, children, style, className, ...rest }) {
   injectEfCss('ef-css-toggle', CSS);
   const [un, setUn] = React.useState(defaultValue !== undefined ? defaultValue : (type === 'multiple' ? [] : null));
   const cur = value !== undefined ? value : un;
@@ -41,5 +41,5 @@ export function ToggleGroup({ type = 'single', value, defaultValue, onChange, ch
     if (value === undefined) setUn(next);
     if (onChange) onChange(next);
   };
-  return <div role="group" className={`ef-toggle-group${className ? ' ' + className : ''}`} style={style}><GroupCtx.Provider value={{ isOn, toggle }}>{children}</GroupCtx.Provider></div>;
+  return <div {...rest} role="group" className={`ef-toggle-group${className ? ' ' + className : ''}`} style={style}><GroupCtx.Provider value={{ isOn, toggle }}>{children}</GroupCtx.Provider></div>;
 }

@@ -10,7 +10,7 @@ const CSS = `
 .ef-conversation__jump:focus-visible{outline:none;box-shadow:var(--focus-ring)}
 @keyframes ef-conversation-in{from{opacity:0;transform:translateX(-50%) translateY(4px)}}
 `;
-export function Conversation({ height = 420, autoStick = true, jumpLabel = 'Jump to latest', padding = 4, children, style, className }) {
+export function Conversation({ height = 420, autoStick = true, jumpLabel = 'Jump to latest', padding = 4, children, style, className, ...rest }) {
   injectEfCss('ef-css-conversation', CSS);
   const viewport = React.useRef(null);
   const inner = React.useRef(null);
@@ -40,7 +40,7 @@ export function Conversation({ height = 420, autoStick = true, jumpLabel = 'Jump
     return () => ro.disconnect();
   }, [autoStick]);
   return (
-    <div className={`ef-conversation${className ? ' ' + className : ''}`} style={{ height, ...style }}>
+    <div {...rest} className={`ef-conversation${className ? ' ' + className : ''}`} style={{ height, ...style }}>
       <div ref={viewport} className="ef-conversation__viewport" onScroll={recompute} style={{ padding }}>
         <div ref={inner} className="ef-conversation__inner">{children}</div>
       </div>

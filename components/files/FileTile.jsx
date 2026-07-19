@@ -12,12 +12,12 @@ const CSS = `
 `;
 const KIND_ICON = { image: 'image', video: 'video', audio: 'music', code: 'code', archive: 'package', doc: 'file-text' };
 const EXT_KIND = { png: 'image', jpg: 'image', jpeg: 'image', gif: 'image', svg: 'image', webp: 'image', mp4: 'video', mov: 'video', webm: 'video', mp3: 'audio', wav: 'audio', flac: 'audio', js: 'code', ts: 'code', py: 'code', json: 'code', zip: 'archive', tar: 'archive', gz: 'archive', pdf: 'doc', doc: 'doc', docx: 'doc', md: 'doc', txt: 'doc', csv: 'doc' };
-export function FileTile({ name, size, kind, status, progress, error, onRemove, actions, style, className }) {
+export function FileTile({ name, size, kind, status, progress, error, onRemove, actions, style, className, ...rest }) {
   injectEfCss('ef-css-filetile', CSS);
   const ext = (name || '').split('.').pop().toLowerCase();
   const icon = KIND_ICON[kind || EXT_KIND[ext]] || 'file';
   return (
-    <div className={`ef-filetile${className ? ' ' + className : ''}`} style={style}>
+    <div {...rest} className={`ef-filetile${className ? ' ' + className : ''}`} style={style}>
       <span className="ef-filetile__icon"><Icon name={icon} size={17} /></span>
       <div style={{ flex: 1, minWidth: 0 }}>
         <div className="ef-filetile__name">{name}</div>

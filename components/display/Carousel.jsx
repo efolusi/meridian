@@ -18,7 +18,7 @@ const CSS = `
 .ef-carousel__dot--on{background:var(--accent)}
 .ef-carousel__dot:focus-visible{outline:none;box-shadow:var(--focus-ring)}
 `;
-export function Carousel({ children, itemWidth = '280px', gap = 14, showControls = true, showDots = true, ariaLabel = 'Carousel', style, className }) {
+export function Carousel({ children, itemWidth = '280px', gap = 14, showControls = true, showDots = true, ariaLabel = 'Carousel', style, className, ...rest }) {
   injectEfCss('ef-css-carousel', CSS);
   const track = React.useRef(null);
   const [index, setIndex] = React.useState(0);
@@ -31,7 +31,7 @@ export function Carousel({ children, itemWidth = '280px', gap = 14, showControls
   const goTo = i => { const el = track.current; if (el) el.scrollTo({ left: i * step(), behavior: 'smooth' }); };
   const onScroll = () => { const el = track.current; if (el) setIndex(Math.min(count - 1, Math.max(0, Math.round(el.scrollLeft / step())))); };
   return (
-    <div role="region" aria-label={ariaLabel} className={`ef-carousel${className ? ' ' + className : ''}`} style={style}>
+    <div {...rest} role="region" aria-label={ariaLabel} className={`ef-carousel${className ? ' ' + className : ''}`} style={style}>
       <div ref={track} className="ef-carousel__track" style={{ gridAutoColumns: itemWidth, gap }} onScroll={onScroll}>
         {React.Children.map(children, c => <div className="ef-carousel__item">{c}</div>)}
       </div>

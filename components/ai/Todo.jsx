@@ -23,12 +23,12 @@ const CSS = `
 .ef-todo__text{min-width:0;color:var(--text-primary);line-height:1.55;transition:color var(--dur-fast) var(--ease-out)}
 .ef-todo__item--done .ef-todo__text{color:var(--text-muted);text-decoration:line-through}
 `;
-export function Todo({ title = 'Tasks', items = [], defaultOpen = true, style, className }) {
+export function Todo({ title = 'Tasks', items = [], defaultOpen = true, style, className, ...rest }) {
   injectEfCss('ef-css-todo', CSS);
   const [open, setOpen] = React.useState(!!defaultOpen);
   const done = items.filter(i => i.status === 'done').length;
   return (
-    <div className={`ef-todo${open ? ' ef-todo--open' : ''}${className ? ' ' + className : ''}`} style={style}>
+    <div {...rest} className={`ef-todo${open ? ' ef-todo--open' : ''}${className ? ' ' + className : ''}`} style={style}>
       <button type="button" className="ef-todo__head" aria-expanded={open} onClick={() => setOpen(!open)}>
         <span className="ef-todo__glyph"><Icon name="list-todo" size={15} /></span>
         <span className="ef-todo__title">{title}</span>

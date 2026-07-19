@@ -11,7 +11,7 @@ const CSS = `
 .ef-tabs__count{font-size:var(--text-xs);font-weight:var(--weight-medium);color:var(--text-muted)}
 .ef-tabs__tab--active .ef-tabs__count{color:var(--text-primary)}
 `;
-export function Tabs({ items, value, onChange, style, className }) {
+export function Tabs({ items, value, onChange, style, className, ...rest }) {
   injectEfCss('ef-css-tabs', CSS);
   const ref = React.useRef(null);
   const [ink, setInk] = React.useState({ left: 0, width: 0 });
@@ -34,7 +34,7 @@ export function Tabs({ items, value, onChange, style, className }) {
     if (btns[next]) btns[next].focus();
   };
   return (
-    <div ref={ref} role="tablist" onKeyDown={onKey} className={`ef-tabs${className ? ' ' + className : ''}`} style={style}>
+    <div {...rest} ref={ref} role="tablist" onKeyDown={onKey} className={`ef-tabs${className ? ' ' + className : ''}`} style={style}>
       {items.map(it => (
         <button key={it.id} role="tab" aria-selected={value === it.id} tabIndex={value === it.id ? 0 : -1} data-active={value === it.id ? 'true' : 'false'} className={`ef-tabs__tab${value === it.id ? ' ef-tabs__tab--active' : ''}`} onClick={() => onChange && onChange(it.id)}>
           {it.icon ? <Icon name={it.icon} size={16} /> : null}

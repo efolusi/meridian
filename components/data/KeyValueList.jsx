@@ -8,10 +8,10 @@ const CSS = `
 .ef-kv__value{flex:1;font-size:var(--text-sm);color:var(--text-primary);min-width:0;overflow-wrap:break-word}
 .ef-kv__value--mono{font-family:var(--font-mono);font-size:13px}
 `;
-export function KeyValueList({ items, labelWidth = 160, style, className }) {
+export function KeyValueList({ items, labelWidth = 160, style, className, ...rest }) {
   injectEfCss('ef-css-kv', CSS);
   return (
-    <div className={`ef-kv${className ? ' ' + className : ''}`} style={style}>
+    <div {...rest} className={`ef-kv${className ? ' ' + className : ''}`} style={style}>
       {items.map((it, i) => (
         <div key={i} className="ef-kv__row">
           <span className="ef-kv__label" style={{ width: labelWidth }}>{it.label}</span>

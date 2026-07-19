@@ -42,7 +42,7 @@ function Row({ e }) {
     </div>
   );
 }
-export function Console({ title = 'Console', entries = [], height = 240, style, className }) {
+export function Console({ title = 'Console', entries = [], height = 240, style, className, ...rest }) {
   injectEfCss('ef-css-console', CSS);
   const viewport = React.useRef(null);
   const wasBottom = React.useRef(true);
@@ -60,7 +60,7 @@ export function Console({ title = 'Console', entries = [], height = 240, style, 
     recompute();
   }, [entries.length]);
   return (
-    <div className={`ef-console${className ? ' ' + className : ''}`} style={style}>
+    <div {...rest} className={`ef-console${className ? ' ' + className : ''}`} style={style}>
       <div className="ef-console__head"><Icon name="terminal" size={13} />{title}<span style={{ marginLeft: 'auto', color: 'var(--text-muted)' }}>{entries.length} entries</span></div>
       <div ref={viewport} className="ef-console__scroll" style={{ height }} onScroll={recompute}>
         {entries.map((e, i) => <Row key={i} e={e} />)}

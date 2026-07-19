@@ -6,7 +6,7 @@ function base(){
   window.__efBase = s ? s.src.slice(0, s.src.indexOf('_ds_bundle.js')) : '';
   return window.__efBase;
 }
-export function Icon({ name, size = 16, strokeWidth = 1.5, title, className, style }) {
+export function Icon({ name, size = 16, strokeWidth = 1.5, title, className, style, ...rest }) {
   const [svg, setSvg] = React.useState(_cache[name] || null);
   React.useEffect(() => {
     if (_cache[name]) { setSvg(_cache[name]); return; }
@@ -20,5 +20,5 @@ export function Icon({ name, size = 16, strokeWidth = 1.5, title, className, sty
   const html = svg
     ? svg.replace('width="24"', 'width="' + size + '"').replace('height="24"', 'height="' + size + '"').replace('stroke-width="2"', 'stroke-width="' + strokeWidth + '"')
     : '';
-  return <span aria-hidden={title ? undefined : true} aria-label={title} role={title ? 'img' : undefined} className={className} style={{ display: 'inline-flex', flex: 'none', width: size, height: size, color: 'inherit', ...style }} dangerouslySetInnerHTML={{ __html: html }} />;
+  return <span {...rest} aria-hidden={title ? undefined : true} aria-label={title} role={title ? 'img' : undefined} className={className} style={{ display: 'inline-flex', flex: 'none', width: size, height: size, color: 'inherit', ...style }} dangerouslySetInnerHTML={{ __html: html }} />;
 }

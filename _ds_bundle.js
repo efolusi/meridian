@@ -1,4 +1,4 @@
-/* @ds-bundle: {"format":4,"namespace":"EfolusiDesignSystem_4ffc3d","components":[{"name":"AgentRun","sourcePath":"components/ai/AgentRun.jsx"},{"name":"ChatMessage","sourcePath":"components/ai/ChatMessage.jsx"},{"name":"Citation","sourcePath":"components/ai/Citation.jsx"},{"name":"SourceList","sourcePath":"components/ai/Citation.jsx"},{"name":"Confirmation","sourcePath":"components/ai/Confirmation.jsx"},{"name":"Conversation","sourcePath":"components/ai/Conversation.jsx"},{"name":"DocumentCard","sourcePath":"components/ai/DocumentCard.jsx"},{"name":"FeedbackBar","sourcePath":"components/ai/FeedbackBar.jsx"},{"name":"GeneratedImage","sourcePath":"components/ai/GeneratedImage.jsx"},{"name":"ModelSelector","sourcePath":"components/ai/ModelSelector.jsx"},{"name":"Player","sourcePath":"components/ai/Player.jsx"},{"name":"PromptComposer","sourcePath":"components/ai/PromptComposer.jsx"},{"name":"PromptSteps","sourcePath":"components/ai/PromptSteps.jsx"},{"name":"Reasoning","sourcePath":"components/ai/Reasoning.jsx"},{"name":"RichComposer","sourcePath":"components/ai/RichComposer.jsx"},{"name":"Sandbox","sourcePath":"components/ai/Sandbox.jsx"},{"name":"SelectionQuote","sourcePath":"components/ai/SelectionQuote.jsx"},{"name":"SourceCard","sourcePath":"components/ai/SourceCard.jsx"},{"name":"Suggestions","sourcePath":"components/ai/Suggestions.jsx"},{"name":"Task","sourcePath":"components/ai/Task.jsx"},{"name":"Todo","sourcePath":"components/ai/Todo.jsx"},{"name":"ToolCall","sourcePath":"components/ai/ToolCall.jsx"},{"name":"Transcript","sourcePath":"components/ai/Transcript.jsx"},{"name":"UsageMeter","sourcePath":"components/ai/UsageMeter.jsx"},{"name":"WebPreview","sourcePath":"components/ai/WebPreview.jsx"},{"name":"CodeBlock","sourcePath":"components/code/CodeBlock.jsx"},{"name":"Console","sourcePath":"components/code/Console.jsx"},{"name":"CopyField","sourcePath":"components/code/CopyField.jsx"},{"name":"Diff","sourcePath":"components/code/Diff.jsx"},{"name":"EnvList","sourcePath":"components/code/EnvList.jsx"},{"name":"Exception","sourcePath":"components/code/Exception.jsx"},{"name":"Terminal","sourcePath":"components/code/Terminal.jsx"},{"name":"BarChart","sourcePath":"components/data/BarChart.jsx"},{"name":"DonutChart","sourcePath":"components/data/DonutChart.jsx"},{"name":"EmptyState","sourcePath":"components/data/EmptyState.jsx"},{"name":"KeyValueList","sourcePath":"components/data/KeyValueList.jsx"},{"name":"LineChart","sourcePath":"components/data/LineChart.jsx"},{"name":"Skeleton","sourcePath":"components/data/Skeleton.jsx"},{"name":"Sparkline","sourcePath":"components/data/Sparkline.jsx"},{"name":"Stat","sourcePath":"components/data/Stat.jsx"},{"name":"StatusDot","sourcePath":"components/data/StatusDot.jsx"},{"name":"Table","sourcePath":"components/data/Table.jsx"},{"name":"Calendar","sourcePath":"components/dates/Calendar.jsx"},{"name":"DatePicker","sourcePath":"components/dates/DatePicker.jsx"},{"name":"Accordion","sourcePath":"components/display/Accordion.jsx"},{"name":"AspectRatio","sourcePath":"components/display/AspectRatio.jsx"},{"name":"Avatar","sourcePath":"components/display/Avatar.jsx"},{"name":"AvatarGroup","sourcePath":"components/display/Avatar.jsx"},{"name":"Badge","sourcePath":"components/display/Badge.jsx"},{"name":"Card","sourcePath":"components/display/Card.jsx"},{"name":"Carousel","sourcePath":"components/display/Carousel.jsx"},{"name":"Collapsible","sourcePath":"components/display/Collapsible.jsx"},{"name":"Divider","sourcePath":"components/display/Divider.jsx"},{"name":"Kbd","sourcePath":"components/display/Kbd.jsx"},{"name":"Link","sourcePath":"components/display/Link.jsx"},{"name":"ListItem","sourcePath":"components/display/ListItem.jsx"},{"name":"Resizable","sourcePath":"components/display/Resizable.jsx"},{"name":"ScrollArea","sourcePath":"components/display/ScrollArea.jsx"},{"name":"Tag","sourcePath":"components/display/Tag.jsx"},{"name":"Toolbar","sourcePath":"components/display/Toolbar.jsx"},{"name":"TreeList","sourcePath":"components/display/TreeList.jsx"},{"name":"Alert","sourcePath":"components/feedback/Alert.jsx"},{"name":"Banner","sourcePath":"components/feedback/Banner.jsx"},{"name":"ConfirmDialog","sourcePath":"components/feedback/ConfirmDialog.jsx"},{"name":"Dialog","sourcePath":"components/feedback/Dialog.jsx"},{"name":"Loader","sourcePath":"components/feedback/Loader.jsx"},{"name":"Progress","sourcePath":"components/feedback/Progress.jsx"},{"name":"Spinner","sourcePath":"components/feedback/Spinner.jsx"},{"name":"Toast","sourcePath":"components/feedback/Toast.jsx"},{"name":"ToastStack","sourcePath":"components/feedback/Toast.jsx"},{"name":"Tooltip","sourcePath":"components/feedback/Tooltip.jsx"},{"name":"FileDrop","sourcePath":"components/files/FileDrop.jsx"},{"name":"FileTile","sourcePath":"components/files/FileTile.jsx"},{"name":"FileTypeIcon","sourcePath":"components/files/FileTypeIcon.jsx"},{"name":"PaymentCard","sourcePath":"components/finance/PaymentCard.jsx"},{"name":"Button","sourcePath":"components/forms/Button.jsx"},{"name":"ButtonGroup","sourcePath":"components/forms/ButtonGroup.jsx"},{"name":"ButtonTile","sourcePath":"components/forms/ButtonTile.jsx"},{"name":"ButtonTileGroup","sourcePath":"components/forms/ButtonTile.jsx"},{"name":"Checkbox","sourcePath":"components/forms/Checkbox.jsx"},{"name":"Combobox","sourcePath":"components/forms/Combobox.jsx"},{"name":"DigitEntry","sourcePath":"components/forms/DigitEntry.jsx"},{"name":"IconButton","sourcePath":"components/forms/IconButton.jsx"},{"name":"Input","sourcePath":"components/forms/Input.jsx"},{"name":"InputGroup","sourcePath":"components/forms/InputGroup.jsx"},{"name":"Label","sourcePath":"components/forms/Label.jsx"},{"name":"Radio","sourcePath":"components/forms/Radio.jsx"},{"name":"Select","sourcePath":"components/forms/Select.jsx"},{"name":"Slider","sourcePath":"components/forms/Slider.jsx"},{"name":"Switch","sourcePath":"components/forms/Switch.jsx"},{"name":"Textarea","sourcePath":"components/forms/Textarea.jsx"},{"name":"Toggle","sourcePath":"components/forms/Toggle.jsx"},{"name":"ToggleGroup","sourcePath":"components/forms/Toggle.jsx"},{"name":"Icon","sourcePath":"components/icons/Icon.jsx"},{"name":"Breadcrumbs","sourcePath":"components/navigation/Breadcrumbs.jsx"},{"name":"Menubar","sourcePath":"components/navigation/Menubar.jsx"},{"name":"PageControl","sourcePath":"components/navigation/PageControl.jsx"},{"name":"Pagination","sourcePath":"components/navigation/Pagination.jsx"},{"name":"SegmentedControl","sourcePath":"components/navigation/SegmentedControl.jsx"},{"name":"SideNav","sourcePath":"components/navigation/SideNav.jsx"},{"name":"Steps","sourcePath":"components/navigation/Steps.jsx"},{"name":"Tabs","sourcePath":"components/navigation/Tabs.jsx"},{"name":"TopNav","sourcePath":"components/navigation/TopNav.jsx"},{"name":"CommandPalette","sourcePath":"components/overlay/CommandPalette.jsx"},{"name":"ContextMenu","sourcePath":"components/overlay/ContextMenu.jsx"},{"name":"Drawer","sourcePath":"components/overlay/Drawer.jsx"},{"name":"HoverCard","sourcePath":"components/overlay/HoverCard.jsx"},{"name":"Menu","sourcePath":"components/overlay/Menu.jsx"},{"name":"Popover","sourcePath":"components/overlay/Popover.jsx"},{"name":"Portal","sourcePath":"components/overlay/Portal.jsx"}],"sourceHashes":{"components/ai/AgentRun.jsx":"8af70ff4bbbd","components/ai/ChatMessage.jsx":"8c126777f3f5","components/ai/Citation.jsx":"c695f95f1bd7","components/ai/Confirmation.jsx":"cb01ed2c6a5a","components/ai/Conversation.jsx":"3d3ab21999e4","components/ai/DocumentCard.jsx":"f0df7dd84465","components/ai/FeedbackBar.jsx":"d27a365fa3c3","components/ai/GeneratedImage.jsx":"788e2dcc84c3","components/ai/ModelSelector.jsx":"a11594e62775","components/ai/Player.jsx":"7a42efa14ff9","components/ai/PromptComposer.jsx":"85b0b00913c0","components/ai/PromptSteps.jsx":"31dc4ed470e3","components/ai/Reasoning.jsx":"2ec4d107d41e","components/ai/RichComposer.jsx":"42e31bc490a9","components/ai/Sandbox.jsx":"08d2c1119288","components/ai/SelectionQuote.jsx":"c78a30cb3163","components/ai/SourceCard.jsx":"b718727df06e","components/ai/Suggestions.jsx":"cd6834ee7634","components/ai/Task.jsx":"b7866e73b50a","components/ai/Todo.jsx":"0b3242b80a77","components/ai/ToolCall.jsx":"c46664bb5c6d","components/ai/Transcript.jsx":"d722a8789088","components/ai/UsageMeter.jsx":"1edf4aa92d0f","components/ai/WebPreview.jsx":"3ef642e4aed8","components/code/CodeBlock.jsx":"bba6e5b35b66","components/code/Console.jsx":"bc124b518d23","components/code/CopyField.jsx":"2aff10651a79","components/code/Diff.jsx":"52c866c983fe","components/code/EnvList.jsx":"b6568c726ee2","components/code/Exception.jsx":"d1cb05626c05","components/code/Terminal.jsx":"9bcd97b0cf5e","components/data/BarChart.jsx":"3572ea6b70e5","components/data/DonutChart.jsx":"4516ac36a882","components/data/EmptyState.jsx":"80e66d58cfab","components/data/KeyValueList.jsx":"e6a1a52adac1","components/data/LineChart.jsx":"4ee2e7cfdab7","components/data/Skeleton.jsx":"67ed9ab66da9","components/data/Sparkline.jsx":"41d07771e945","components/data/Stat.jsx":"71ef3dc7f426","components/data/StatusDot.jsx":"4d3fcbd0bb8f","components/data/Table.jsx":"30e384ae3c87","components/dates/Calendar.jsx":"ac60a4163f43","components/dates/DatePicker.jsx":"05a175fd7a0a","components/display/Accordion.jsx":"e491332d01ae","components/display/AspectRatio.jsx":"e28d4bfc9649","components/display/Avatar.jsx":"3d7bad69f963","components/display/Badge.jsx":"858e6fd68547","components/display/Card.jsx":"f40832620fe4","components/display/Carousel.jsx":"15ca556d908e","components/display/Collapsible.jsx":"a792da920c1f","components/display/Divider.jsx":"37f8ae0e579c","components/display/Kbd.jsx":"b87de3d2ff75","components/display/Link.jsx":"bdbf64262599","components/display/ListItem.jsx":"bf2353c0b7ae","components/display/Resizable.jsx":"f79b33157f19","components/display/ScrollArea.jsx":"2dbb55595939","components/display/Tag.jsx":"e006104c4672","components/display/Toolbar.jsx":"001b2b3c10a9","components/display/TreeList.jsx":"be8ade07e212","components/feedback/Alert.jsx":"10e00cbdb124","components/feedback/Banner.jsx":"71ed62b75e72","components/feedback/ConfirmDialog.jsx":"d9e8dd767817","components/feedback/Dialog.jsx":"7a1f020e06b4","components/feedback/Loader.jsx":"7cad4f2d0ca0","components/feedback/Progress.jsx":"3a397235e4a4","components/feedback/Spinner.jsx":"3ddb4c2f4d27","components/feedback/Toast.jsx":"b8abe8490a55","components/feedback/Tooltip.jsx":"fccb04430d32","components/files/FileDrop.jsx":"6515374a972c","components/files/FileTile.jsx":"415f614a2782","components/files/FileTypeIcon.jsx":"16841d556c5d","components/finance/PaymentCard.jsx":"5e5e05c27381","components/forms/Button.jsx":"cdb36ec93eaf","components/forms/ButtonGroup.jsx":"86bd9a9f90bc","components/forms/ButtonTile.jsx":"445de4f76c96","components/forms/Checkbox.jsx":"3a8df803f636","components/forms/Combobox.jsx":"ead901b7037d","components/forms/DigitEntry.jsx":"84f79f7ddc11","components/forms/IconButton.jsx":"7843bc8a3740","components/forms/Input.jsx":"01d2f58316e5","components/forms/InputGroup.jsx":"6cd5192acb83","components/forms/Label.jsx":"6c6a05af67e7","components/forms/Radio.jsx":"00cd0190e053","components/forms/Select.jsx":"d3c229f7fc84","components/forms/Slider.jsx":"3f085fb13cc2","components/forms/Switch.jsx":"3cf6cdbcb529","components/forms/Textarea.jsx":"0e14c341faf3","components/forms/Toggle.jsx":"429ecf0b3c8d","components/icons/Icon.jsx":"9da614cc0068","components/navigation/Breadcrumbs.jsx":"77a855106afa","components/navigation/Menubar.jsx":"771da79a7c23","components/navigation/PageControl.jsx":"92db45f2660e","components/navigation/Pagination.jsx":"1b1762a4df8f","components/navigation/SegmentedControl.jsx":"c440c273683b","components/navigation/SideNav.jsx":"8fe0982f0c79","components/navigation/Steps.jsx":"044ee6d4859c","components/navigation/Tabs.jsx":"b20bb7671d55","components/navigation/TopNav.jsx":"eaa2ba965eb7","components/overlay/CommandPalette.jsx":"656e5c78fc08","components/overlay/ContextMenu.jsx":"c516554f5dd9","components/overlay/Drawer.jsx":"1be84698d081","components/overlay/HoverCard.jsx":"f099fb96a947","components/overlay/Menu.jsx":"42c9a75e2c13","components/overlay/Popover.jsx":"6c13920a306a","components/overlay/Portal.jsx":"8fa6220ec157","showcases/agent/AgentScreen.jsx":"de1badd371ca","showcases/auth/AuthScreens.jsx":"b3583b149df5","showcases/console/CustomersScreen.jsx":"a8a080a80d9e","showcases/console/ExtraScreens.jsx":"1e7a048ab690","showcases/console/OverviewScreen.jsx":"34b01f22bb52","showcases/console/SettingsScreen.jsx":"8549e4ca1f97","showcases/console/Shell.jsx":"b7da6de80c2b","showcases/docs/DocsScreen.jsx":"faa44c30040d","showcases/infra/InfraScreen.jsx":"dd8e20d2c8eb","showcases/tools/ToolsScreen.jsx":"8be637f39e1b","showcases/trader/TraderScreen.jsx":"473d6c38cb07","showcases/website/Sections.jsx":"3f14d6a12c71"},"inlinedExternals":[],"unexposedExports":[{"name":"computeDiff","sourcePath":"components/code/Diff.jsx"},{"name":"formatTime","sourcePath":"components/ai/Player.jsx"},{"name":"injectEfCss","sourcePath":"components/forms/Button.jsx"},{"name":"useAnchoredStyle","sourcePath":"components/overlay/Portal.jsx"}]} */
+/* @ds-bundle: {"format":4,"namespace":"EfolusiDesignSystem_4ffc3d","components":[{"name":"AgentRun","sourcePath":"components/ai/AgentRun.jsx"},{"name":"ChatMessage","sourcePath":"components/ai/ChatMessage.jsx"},{"name":"Citation","sourcePath":"components/ai/Citation.jsx"},{"name":"SourceList","sourcePath":"components/ai/Citation.jsx"},{"name":"Confirmation","sourcePath":"components/ai/Confirmation.jsx"},{"name":"Conversation","sourcePath":"components/ai/Conversation.jsx"},{"name":"DocumentCard","sourcePath":"components/ai/DocumentCard.jsx"},{"name":"FeedbackBar","sourcePath":"components/ai/FeedbackBar.jsx"},{"name":"GeneratedImage","sourcePath":"components/ai/GeneratedImage.jsx"},{"name":"ModelSelector","sourcePath":"components/ai/ModelSelector.jsx"},{"name":"Player","sourcePath":"components/ai/Player.jsx"},{"name":"PromptComposer","sourcePath":"components/ai/PromptComposer.jsx"},{"name":"PromptSteps","sourcePath":"components/ai/PromptSteps.jsx"},{"name":"Reasoning","sourcePath":"components/ai/Reasoning.jsx"},{"name":"RichComposer","sourcePath":"components/ai/RichComposer.jsx"},{"name":"Sandbox","sourcePath":"components/ai/Sandbox.jsx"},{"name":"SelectionQuote","sourcePath":"components/ai/SelectionQuote.jsx"},{"name":"SourceCard","sourcePath":"components/ai/SourceCard.jsx"},{"name":"Suggestions","sourcePath":"components/ai/Suggestions.jsx"},{"name":"Task","sourcePath":"components/ai/Task.jsx"},{"name":"Todo","sourcePath":"components/ai/Todo.jsx"},{"name":"ToolCall","sourcePath":"components/ai/ToolCall.jsx"},{"name":"Transcript","sourcePath":"components/ai/Transcript.jsx"},{"name":"UsageMeter","sourcePath":"components/ai/UsageMeter.jsx"},{"name":"WebPreview","sourcePath":"components/ai/WebPreview.jsx"},{"name":"CodeBlock","sourcePath":"components/code/CodeBlock.jsx"},{"name":"Console","sourcePath":"components/code/Console.jsx"},{"name":"CopyField","sourcePath":"components/code/CopyField.jsx"},{"name":"Diff","sourcePath":"components/code/Diff.jsx"},{"name":"EnvList","sourcePath":"components/code/EnvList.jsx"},{"name":"Exception","sourcePath":"components/code/Exception.jsx"},{"name":"Terminal","sourcePath":"components/code/Terminal.jsx"},{"name":"BarChart","sourcePath":"components/data/BarChart.jsx"},{"name":"DonutChart","sourcePath":"components/data/DonutChart.jsx"},{"name":"EmptyState","sourcePath":"components/data/EmptyState.jsx"},{"name":"KeyValueList","sourcePath":"components/data/KeyValueList.jsx"},{"name":"LineChart","sourcePath":"components/data/LineChart.jsx"},{"name":"Skeleton","sourcePath":"components/data/Skeleton.jsx"},{"name":"Sparkline","sourcePath":"components/data/Sparkline.jsx"},{"name":"Stat","sourcePath":"components/data/Stat.jsx"},{"name":"StatusDot","sourcePath":"components/data/StatusDot.jsx"},{"name":"Table","sourcePath":"components/data/Table.jsx"},{"name":"Calendar","sourcePath":"components/dates/Calendar.jsx"},{"name":"DatePicker","sourcePath":"components/dates/DatePicker.jsx"},{"name":"Accordion","sourcePath":"components/display/Accordion.jsx"},{"name":"AspectRatio","sourcePath":"components/display/AspectRatio.jsx"},{"name":"Avatar","sourcePath":"components/display/Avatar.jsx"},{"name":"AvatarGroup","sourcePath":"components/display/Avatar.jsx"},{"name":"Badge","sourcePath":"components/display/Badge.jsx"},{"name":"Card","sourcePath":"components/display/Card.jsx"},{"name":"Carousel","sourcePath":"components/display/Carousel.jsx"},{"name":"Collapsible","sourcePath":"components/display/Collapsible.jsx"},{"name":"Divider","sourcePath":"components/display/Divider.jsx"},{"name":"Kbd","sourcePath":"components/display/Kbd.jsx"},{"name":"Link","sourcePath":"components/display/Link.jsx"},{"name":"ListItem","sourcePath":"components/display/ListItem.jsx"},{"name":"Resizable","sourcePath":"components/display/Resizable.jsx"},{"name":"ScrollArea","sourcePath":"components/display/ScrollArea.jsx"},{"name":"Tag","sourcePath":"components/display/Tag.jsx"},{"name":"Toolbar","sourcePath":"components/display/Toolbar.jsx"},{"name":"TreeList","sourcePath":"components/display/TreeList.jsx"},{"name":"Alert","sourcePath":"components/feedback/Alert.jsx"},{"name":"Banner","sourcePath":"components/feedback/Banner.jsx"},{"name":"ConfirmDialog","sourcePath":"components/feedback/ConfirmDialog.jsx"},{"name":"Dialog","sourcePath":"components/feedback/Dialog.jsx"},{"name":"Loader","sourcePath":"components/feedback/Loader.jsx"},{"name":"Progress","sourcePath":"components/feedback/Progress.jsx"},{"name":"Spinner","sourcePath":"components/feedback/Spinner.jsx"},{"name":"Toast","sourcePath":"components/feedback/Toast.jsx"},{"name":"ToastStack","sourcePath":"components/feedback/Toast.jsx"},{"name":"Tooltip","sourcePath":"components/feedback/Tooltip.jsx"},{"name":"FileDrop","sourcePath":"components/files/FileDrop.jsx"},{"name":"FileTile","sourcePath":"components/files/FileTile.jsx"},{"name":"FileTypeIcon","sourcePath":"components/files/FileTypeIcon.jsx"},{"name":"PaymentCard","sourcePath":"components/finance/PaymentCard.jsx"},{"name":"Button","sourcePath":"components/forms/Button.jsx"},{"name":"ButtonGroup","sourcePath":"components/forms/ButtonGroup.jsx"},{"name":"ButtonTile","sourcePath":"components/forms/ButtonTile.jsx"},{"name":"ButtonTileGroup","sourcePath":"components/forms/ButtonTile.jsx"},{"name":"Checkbox","sourcePath":"components/forms/Checkbox.jsx"},{"name":"Combobox","sourcePath":"components/forms/Combobox.jsx"},{"name":"DigitEntry","sourcePath":"components/forms/DigitEntry.jsx"},{"name":"IconButton","sourcePath":"components/forms/IconButton.jsx"},{"name":"Input","sourcePath":"components/forms/Input.jsx"},{"name":"InputGroup","sourcePath":"components/forms/InputGroup.jsx"},{"name":"Label","sourcePath":"components/forms/Label.jsx"},{"name":"Radio","sourcePath":"components/forms/Radio.jsx"},{"name":"Select","sourcePath":"components/forms/Select.jsx"},{"name":"Slider","sourcePath":"components/forms/Slider.jsx"},{"name":"Switch","sourcePath":"components/forms/Switch.jsx"},{"name":"Textarea","sourcePath":"components/forms/Textarea.jsx"},{"name":"Toggle","sourcePath":"components/forms/Toggle.jsx"},{"name":"ToggleGroup","sourcePath":"components/forms/Toggle.jsx"},{"name":"Icon","sourcePath":"components/icons/Icon.jsx"},{"name":"Breadcrumbs","sourcePath":"components/navigation/Breadcrumbs.jsx"},{"name":"Menubar","sourcePath":"components/navigation/Menubar.jsx"},{"name":"PageControl","sourcePath":"components/navigation/PageControl.jsx"},{"name":"Pagination","sourcePath":"components/navigation/Pagination.jsx"},{"name":"SegmentedControl","sourcePath":"components/navigation/SegmentedControl.jsx"},{"name":"SideNav","sourcePath":"components/navigation/SideNav.jsx"},{"name":"Steps","sourcePath":"components/navigation/Steps.jsx"},{"name":"Tabs","sourcePath":"components/navigation/Tabs.jsx"},{"name":"TopNav","sourcePath":"components/navigation/TopNav.jsx"},{"name":"CommandPalette","sourcePath":"components/overlay/CommandPalette.jsx"},{"name":"ContextMenu","sourcePath":"components/overlay/ContextMenu.jsx"},{"name":"Drawer","sourcePath":"components/overlay/Drawer.jsx"},{"name":"HoverCard","sourcePath":"components/overlay/HoverCard.jsx"},{"name":"Menu","sourcePath":"components/overlay/Menu.jsx"},{"name":"Popover","sourcePath":"components/overlay/Popover.jsx"},{"name":"Portal","sourcePath":"components/overlay/Portal.jsx"}],"sourceHashes":{"components/ai/AgentRun.jsx":"d7551b7e2779","components/ai/ChatMessage.jsx":"8c9c04ef133a","components/ai/Citation.jsx":"32568078b90e","components/ai/Confirmation.jsx":"00816561c8b9","components/ai/Conversation.jsx":"0e066c61cead","components/ai/DocumentCard.jsx":"4c83083cda05","components/ai/FeedbackBar.jsx":"68046596a88a","components/ai/GeneratedImage.jsx":"f30d5bf6782c","components/ai/ModelSelector.jsx":"4a090f8c9b57","components/ai/Player.jsx":"7a42efa14ff9","components/ai/PromptComposer.jsx":"f997df24d6c0","components/ai/PromptSteps.jsx":"521295be865a","components/ai/Reasoning.jsx":"c98cda442fa9","components/ai/RichComposer.jsx":"4d721b061ed2","components/ai/Sandbox.jsx":"981baaf090aa","components/ai/SelectionQuote.jsx":"76606d2b19a8","components/ai/SourceCard.jsx":"ca0d3eedf981","components/ai/Suggestions.jsx":"2cef727b7182","components/ai/Task.jsx":"83f456ac9ea2","components/ai/Todo.jsx":"e1b738ca02ce","components/ai/ToolCall.jsx":"da7afa011d06","components/ai/Transcript.jsx":"425938bc993b","components/ai/UsageMeter.jsx":"a723eaf87fb8","components/ai/WebPreview.jsx":"1e5b2d3f3057","components/code/CodeBlock.jsx":"f7ac4c4e672d","components/code/Console.jsx":"3bd68a03fe47","components/code/CopyField.jsx":"f4857226ca99","components/code/Diff.jsx":"aeea7e04551f","components/code/EnvList.jsx":"a8b06114885c","components/code/Exception.jsx":"4534f701892c","components/code/Terminal.jsx":"55b2293338fd","components/data/BarChart.jsx":"c168e1fbc9c2","components/data/DonutChart.jsx":"a1313f94e379","components/data/EmptyState.jsx":"45244a08b427","components/data/KeyValueList.jsx":"3876b7c9581e","components/data/LineChart.jsx":"950f14d7cac6","components/data/Skeleton.jsx":"7aa04d6e8a82","components/data/Sparkline.jsx":"e554aa7b6696","components/data/Stat.jsx":"aba92e72a0f8","components/data/StatusDot.jsx":"088abd78e054","components/data/Table.jsx":"2bf60bb0d563","components/dates/Calendar.jsx":"11ddfb06a05f","components/dates/DatePicker.jsx":"92d30b6941aa","components/display/Accordion.jsx":"ed805cfaab45","components/display/AspectRatio.jsx":"d648bab5a333","components/display/Avatar.jsx":"d277cabaa4de","components/display/Badge.jsx":"858e6fd68547","components/display/Card.jsx":"f40832620fe4","components/display/Carousel.jsx":"4035663ef2e0","components/display/Collapsible.jsx":"494e5a1ef090","components/display/Divider.jsx":"0975f170a2ab","components/display/Kbd.jsx":"3953794bd3c5","components/display/Link.jsx":"bdbf64262599","components/display/ListItem.jsx":"1372f89cfe9d","components/display/Resizable.jsx":"e7d6ac5c36ab","components/display/ScrollArea.jsx":"2dbb55595939","components/display/Tag.jsx":"e006104c4672","components/display/Toolbar.jsx":"bbe6cffbcbab","components/display/TreeList.jsx":"2b83e595b855","components/feedback/Alert.jsx":"21822b47430e","components/feedback/Banner.jsx":"cf9434e1ccf4","components/feedback/ConfirmDialog.jsx":"ae69cb48e209","components/feedback/Dialog.jsx":"ca2edf03fcd3","components/feedback/Loader.jsx":"4d1f601f5490","components/feedback/Progress.jsx":"9d268a12d201","components/feedback/Spinner.jsx":"5e2c9c05ca9d","components/feedback/Toast.jsx":"952105fb4b45","components/feedback/Tooltip.jsx":"5bac867f940e","components/files/FileDrop.jsx":"4a43701d7399","components/files/FileTile.jsx":"28af04d1303b","components/files/FileTypeIcon.jsx":"5e46f6a0ba86","components/finance/PaymentCard.jsx":"088bf3a83cbb","components/forms/Button.jsx":"cdb36ec93eaf","components/forms/ButtonGroup.jsx":"86bd9a9f90bc","components/forms/ButtonTile.jsx":"5ad126f8a2d3","components/forms/Checkbox.jsx":"3a8df803f636","components/forms/Combobox.jsx":"465d2c966ff6","components/forms/DigitEntry.jsx":"87c88de7c34a","components/forms/IconButton.jsx":"7843bc8a3740","components/forms/Input.jsx":"01d2f58316e5","components/forms/InputGroup.jsx":"6cd5192acb83","components/forms/Label.jsx":"83c5cf662fb3","components/forms/Radio.jsx":"00cd0190e053","components/forms/Select.jsx":"d3c229f7fc84","components/forms/Slider.jsx":"3f085fb13cc2","components/forms/Switch.jsx":"3cf6cdbcb529","components/forms/Textarea.jsx":"0e14c341faf3","components/forms/Toggle.jsx":"7e6f51814f81","components/icons/Icon.jsx":"b9673d1eee4d","components/navigation/Breadcrumbs.jsx":"aa413c3db363","components/navigation/Menubar.jsx":"6b65d442bc26","components/navigation/PageControl.jsx":"763b58c5e895","components/navigation/Pagination.jsx":"09d35b923287","components/navigation/SegmentedControl.jsx":"ae08ad97a9a2","components/navigation/SideNav.jsx":"ad856b688402","components/navigation/Steps.jsx":"062ff09a1f24","components/navigation/Tabs.jsx":"36611ea22aa1","components/navigation/TopNav.jsx":"774ca0116af7","components/overlay/CommandPalette.jsx":"fe1d8c03a8ff","components/overlay/ContextMenu.jsx":"3037cda652c2","components/overlay/Drawer.jsx":"fbc5d0d8bc8a","components/overlay/HoverCard.jsx":"55ecb9b0a47a","components/overlay/Menu.jsx":"3d506dc3c5ac","components/overlay/Popover.jsx":"5d6959a84c9d","components/overlay/Portal.jsx":"8fa6220ec157","showcases/agent/AgentScreen.jsx":"de1badd371ca","showcases/auth/AuthScreens.jsx":"b3583b149df5","showcases/console/CustomersScreen.jsx":"a8a080a80d9e","showcases/console/ExtraScreens.jsx":"1e7a048ab690","showcases/console/OverviewScreen.jsx":"34b01f22bb52","showcases/console/SettingsScreen.jsx":"8549e4ca1f97","showcases/console/Shell.jsx":"b7da6de80c2b","showcases/docs/DocsScreen.jsx":"faa44c30040d","showcases/infra/InfraScreen.jsx":"dd8e20d2c8eb","showcases/tools/ToolsScreen.jsx":"8be637f39e1b","showcases/trader/TraderScreen.jsx":"473d6c38cb07","showcases/website/Sections.jsx":"3f14d6a12c71"},"inlinedExternals":[],"unexposedExports":[{"name":"computeDiff","sourcePath":"components/code/Diff.jsx"},{"name":"formatTime","sourcePath":"components/ai/Player.jsx"},{"name":"injectEfCss","sourcePath":"components/forms/Button.jsx"},{"name":"useAnchoredStyle","sourcePath":"components/overlay/Portal.jsx"}]} */
 
 (() => {
 
@@ -10,6 +10,7 @@ const __ds_scope = {};
 
 // components/data/Sparkline.jsx
 try { (() => {
+function _extends() { return _extends = Object.assign ? Object.assign.bind() : function (n) { for (var e = 1; e < arguments.length; e++) { var t = arguments[e]; for (var r in t) ({}).hasOwnProperty.call(t, r) && (n[r] = t[r]); } return n; }, _extends.apply(null, arguments); }
 function Sparkline({
   data = [],
   width = 120,
@@ -18,7 +19,8 @@ function Sparkline({
   strokeWidth = 1.5,
   area = true,
   style,
-  className
+  className,
+  ...rest
 }) {
   if (!data.length) return null;
   const min = Math.min(...data),
@@ -29,14 +31,14 @@ function Sparkline({
   const dir = direction || (data[data.length - 1] >= data[0] ? 'up' : 'down');
   const color = dir === 'up' ? 'var(--success-600)' : dir === 'down' ? 'var(--danger-600)' : 'var(--text-primary)';
   const line = pts.map(p => p.map(n => n.toFixed(1)).join(',')).join(' ');
-  return /*#__PURE__*/React.createElement("svg", {
+  return /*#__PURE__*/React.createElement("svg", _extends({}, rest, {
     width: width,
     height: height,
     viewBox: `0 0 ${width} ${height}`,
     style: style,
     className: className,
     "aria-hidden": "true"
-  }, area && /*#__PURE__*/React.createElement("polygon", {
+  }), area && /*#__PURE__*/React.createElement("polygon", {
     points: `${pad},${height - pad} ${line} ${width - pad},${height - pad}`,
     fill: color,
     opacity: "0.09"
@@ -54,13 +56,15 @@ Object.assign(__ds_scope, { Sparkline });
 
 // components/display/AspectRatio.jsx
 try { (() => {
+function _extends() { return _extends = Object.assign ? Object.assign.bind() : function (n) { for (var e = 1; e < arguments.length; e++) { var t = arguments[e]; for (var r in t) ({}).hasOwnProperty.call(t, r) && (n[r] = t[r]); } return n; }, _extends.apply(null, arguments); }
 function AspectRatio({
   ratio = 16 / 9,
   children,
   style,
-  className
+  className,
+  ...rest
 }) {
-  return /*#__PURE__*/React.createElement("div", {
+  return /*#__PURE__*/React.createElement("div", _extends({}, rest, {
     className: className,
     style: {
       position: 'relative',
@@ -68,7 +72,7 @@ function AspectRatio({
       aspectRatio: String(ratio),
       ...style
     }
-  }, /*#__PURE__*/React.createElement("div", {
+  }), /*#__PURE__*/React.createElement("div", {
     style: {
       position: 'absolute',
       inset: 0
@@ -80,6 +84,7 @@ Object.assign(__ds_scope, { AspectRatio });
 
 // components/icons/Icon.jsx
 try { (() => {
+function _extends() { return _extends = Object.assign ? Object.assign.bind() : function (n) { for (var e = 1; e < arguments.length; e++) { var t = arguments[e]; for (var r in t) ({}).hasOwnProperty.call(t, r) && (n[r] = t[r]); } return n; }, _extends.apply(null, arguments); }
 const _cache = {};
 function base() {
   if (window.__efBase !== undefined) return window.__efBase;
@@ -93,7 +98,8 @@ function Icon({
   strokeWidth = 1.5,
   title,
   className,
-  style
+  style,
+  ...rest
 }) {
   const [svg, setSvg] = React.useState(_cache[name] || null);
   React.useEffect(() => {
@@ -113,7 +119,7 @@ function Icon({
     };
   }, [name]);
   const html = svg ? svg.replace('width="24"', 'width="' + size + '"').replace('height="24"', 'height="' + size + '"').replace('stroke-width="2"', 'stroke-width="' + strokeWidth + '"') : '';
-  return /*#__PURE__*/React.createElement("span", {
+  return /*#__PURE__*/React.createElement("span", _extends({}, rest, {
     "aria-hidden": title ? undefined : true,
     "aria-label": title,
     role: title ? 'img' : undefined,
@@ -129,7 +135,7 @@ function Icon({
     dangerouslySetInnerHTML: {
       __html: html
     }
-  });
+  }));
 }
 Object.assign(__ds_scope, { Icon });
 })(); } catch (e) { __ds_ns.__errors.push({ path: "components/icons/Icon.jsx", error: String((e && e.message) || e) }); }
@@ -206,6 +212,7 @@ Object.assign(__ds_scope, { injectEfCss, Button });
 
 // components/ai/AgentRun.jsx
 try { (() => {
+function _extends() { return _extends = Object.assign ? Object.assign.bind() : function (n) { for (var e = 1; e < arguments.length; e++) { var t = arguments[e]; for (var r in t) ({}).hasOwnProperty.call(t, r) && (n[r] = t[r]); } return n; }, _extends.apply(null, arguments); }
 const CSS = `
 .ef-agentrun{display:flex;flex-direction:column}
 .ef-agentrun__step{display:flex;gap:12px;position:relative}
@@ -234,7 +241,8 @@ const CSS = `
 function AgentRun({
   steps = [],
   style,
-  className
+  className,
+  ...rest
 }) {
   __ds_scope.injectEfCss('ef-css-agentrun', CSS);
   const [openIds, setOpenIds] = React.useState(() => new Set(steps.filter(s => s.defaultOpen).map((s, idx) => s.id || idx)));
@@ -243,11 +251,11 @@ function AgentRun({
     if (n.has(key)) n.delete(key);else n.add(key);
     return n;
   });
-  return /*#__PURE__*/React.createElement("div", {
+  return /*#__PURE__*/React.createElement("div", _extends({}, rest, {
     className: `ef-agentrun${className ? ' ' + className : ''}`,
     style: style,
     role: "list"
-  }, steps.map((s, i) => {
+  }), steps.map((s, i) => {
     const st = s.status || 'pending';
     return /*#__PURE__*/React.createElement("div", {
       key: s.id || i,
@@ -306,6 +314,7 @@ Object.assign(__ds_scope, { AgentRun });
 
 // components/ai/Citation.jsx
 try { (() => {
+function _extends() { return _extends = Object.assign ? Object.assign.bind() : function (n) { for (var e = 1; e < arguments.length; e++) { var t = arguments[e]; for (var r in t) ({}).hasOwnProperty.call(t, r) && (n[r] = t[r]); } return n; }, _extends.apply(null, arguments); }
 const CSS = `
 .ef-citation{display:inline-flex;align-items:center;justify-content:center;min-width:16px;height:16px;padding:0 4px;margin:0 1px;vertical-align:super;border-radius:var(--radius-sm);border:1px solid var(--accent-subtle-border);background:var(--accent-subtle);color:var(--brand-700);font-family:var(--font-mono);font-size:10px;font-weight:600;text-decoration:none;cursor:pointer;line-height:1}
 .ef-citation:hover{border-color:var(--brand-700)}
@@ -338,7 +347,8 @@ function Citation({
   sources,
   onClick,
   style,
-  className
+  className,
+  ...rest
 }) {
   __ds_scope.injectEfCss('ef-css-citation', CSS);
   const [open, setOpen] = React.useState(false);
@@ -367,12 +377,12 @@ function Citation({
   }, index);
   if (!list) return chip;
   const cur = list[Math.abs(i) % list.length];
-  return /*#__PURE__*/React.createElement("span", {
+  return /*#__PURE__*/React.createElement("span", _extends({}, rest, {
     className: "ef-citation__wrap",
     style: style,
     onMouseEnter: enter,
     onMouseLeave: leave
-  }, chip, open ? /*#__PURE__*/React.createElement("span", {
+  }), chip, open ? /*#__PURE__*/React.createElement("span", {
     className: "ef-citation__pop",
     role: "dialog"
   }, /*#__PURE__*/React.createElement("span", {
@@ -419,13 +429,14 @@ function SourceList({
   sources = [],
   title = 'Sources',
   style,
-  className
+  className,
+  ...rest
 }) {
   __ds_scope.injectEfCss('ef-css-citation', CSS);
-  return /*#__PURE__*/React.createElement("div", {
+  return /*#__PURE__*/React.createElement("div", _extends({}, rest, {
     className: `ef-sources${className ? ' ' + className : ''}`,
     style: style
-  }, /*#__PURE__*/React.createElement("div", {
+  }), /*#__PURE__*/React.createElement("div", {
     className: "ef-sources__head"
   }, title), sources.map((s, i) => /*#__PURE__*/React.createElement("a", {
     key: s.index || i,
@@ -451,6 +462,7 @@ Object.assign(__ds_scope, { Citation, SourceList });
 
 // components/ai/Confirmation.jsx
 try { (() => {
+function _extends() { return _extends = Object.assign ? Object.assign.bind() : function (n) { for (var e = 1; e < arguments.length; e++) { var t = arguments[e]; for (var r in t) ({}).hasOwnProperty.call(t, r) && (n[r] = t[r]); } return n; }, _extends.apply(null, arguments); }
 const CSS = `
 .ef-confirm{border-radius:var(--radius-md);background:var(--surface-card);border:1px solid var(--accent-subtle-border);box-shadow:0 0 0 2px var(--accent-subtle)}
 .ef-confirm--danger{border-color:var(--danger-300,var(--danger-600));box-shadow:0 0 0 2px var(--danger-100,#F8ECEA)}
@@ -486,7 +498,8 @@ function Confirmation({
   rejectedNote = 'Rejected — the agent will skip this.',
   children,
   style,
-  className
+  className,
+  ...rest
 }) {
   __ds_scope.injectEfCss('ef-css-confirm', CSS);
   const [un, setUn] = React.useState(defaultState);
@@ -496,11 +509,11 @@ function Confirmation({
     if (onStateChange) onStateChange(next);
   };
   const settled = cur !== 'pending';
-  return /*#__PURE__*/React.createElement("div", {
+  return /*#__PURE__*/React.createElement("div", _extends({}, rest, {
     role: "group",
     className: `ef-confirm${tone === 'danger' ? ' ef-confirm--danger' : ''}${settled ? ' ef-confirm--settled' : ''}${className ? ' ' + className : ''}`,
     style: style
-  }, /*#__PURE__*/React.createElement("div", {
+  }), /*#__PURE__*/React.createElement("div", {
     className: "ef-confirm__head"
   }, /*#__PURE__*/React.createElement("span", {
     className: "ef-confirm__icon"
@@ -535,6 +548,7 @@ Object.assign(__ds_scope, { Confirmation });
 
 // components/ai/Conversation.jsx
 try { (() => {
+function _extends() { return _extends = Object.assign ? Object.assign.bind() : function (n) { for (var e = 1; e < arguments.length; e++) { var t = arguments[e]; for (var r in t) ({}).hasOwnProperty.call(t, r) && (n[r] = t[r]); } return n; }, _extends.apply(null, arguments); }
 const CSS = `
 .ef-conversation{position:relative;overflow:hidden;display:flex;flex-direction:column}
 .ef-conversation__viewport{overflow-y:auto;overscroll-behavior:contain;flex:1;min-height:0}
@@ -551,7 +565,8 @@ function Conversation({
   padding = 4,
   children,
   style,
-  className
+  className,
+  ...rest
 }) {
   __ds_scope.injectEfCss('ef-css-conversation', CSS);
   const viewport = React.useRef(null);
@@ -584,13 +599,13 @@ function Conversation({
     ro.observe(inner.current);
     return () => ro.disconnect();
   }, [autoStick]);
-  return /*#__PURE__*/React.createElement("div", {
+  return /*#__PURE__*/React.createElement("div", _extends({}, rest, {
     className: `ef-conversation${className ? ' ' + className : ''}`,
     style: {
       height,
       ...style
     }
-  }, /*#__PURE__*/React.createElement("div", {
+  }), /*#__PURE__*/React.createElement("div", {
     ref: viewport,
     className: "ef-conversation__viewport",
     onScroll: recompute,
@@ -614,6 +629,7 @@ Object.assign(__ds_scope, { Conversation });
 
 // components/ai/DocumentCard.jsx
 try { (() => {
+function _extends() { return _extends = Object.assign ? Object.assign.bind() : function (n) { for (var e = 1; e < arguments.length; e++) { var t = arguments[e]; for (var r in t) ({}).hasOwnProperty.call(t, r) && (n[r] = t[r]); } return n; }, _extends.apply(null, arguments); }
 const CSS = `
 .ef-doccard{border:1px solid var(--border-default);border-radius:var(--radius-md);background:var(--surface-card);font-family:var(--font-sans)}
 .ef-doccard__head{display:flex;align-items:center;gap:9px;padding:10px 10px 10px 14px}
@@ -641,7 +657,8 @@ function DocumentCard({
   actions,
   children,
   style,
-  className
+  className,
+  ...rest
 }) {
   __ds_scope.injectEfCss('ef-css-doccard', CSS);
   const [open, setOpen] = React.useState(!!defaultOpen);
@@ -666,10 +683,10 @@ function DocumentCard({
     setCopied(true);
     setTimeout(() => setCopied(false), 1600);
   };
-  return /*#__PURE__*/React.createElement("div", {
+  return /*#__PURE__*/React.createElement("div", _extends({}, rest, {
     className: `ef-doccard${open ? ' ef-doccard--open' : ''}${className ? ' ' + className : ''}`,
     style: style
-  }, /*#__PURE__*/React.createElement("div", {
+  }), /*#__PURE__*/React.createElement("div", {
     className: "ef-doccard__head"
   }, /*#__PURE__*/React.createElement("span", {
     className: "ef-doccard__glyph"
@@ -715,6 +732,7 @@ Object.assign(__ds_scope, { DocumentCard });
 
 // components/ai/FeedbackBar.jsx
 try { (() => {
+function _extends() { return _extends = Object.assign ? Object.assign.bind() : function (n) { for (var e = 1; e < arguments.length; e++) { var t = arguments[e]; for (var r in t) ({}).hasOwnProperty.call(t, r) && (n[r] = t[r]); } return n; }, _extends.apply(null, arguments); }
 const CSS = `
 .ef-feedback{display:inline-flex;align-items:center;gap:2px}
 .ef-feedback__btn{display:inline-flex;align-items:center;justify-content:center;width:26px;height:26px;border:none;border-radius:var(--radius-sm);background:none;cursor:pointer;color:var(--text-muted);transition:color var(--dur-fast) var(--ease-out),background var(--dur-fast) var(--ease-out)}
@@ -731,7 +749,8 @@ function FeedbackBar({
   copyText,
   note,
   style,
-  className
+  className,
+  ...rest
 }) {
   __ds_scope.injectEfCss('ef-css-feedback', CSS);
   const [vote, setVote] = React.useState(null);
@@ -751,10 +770,10 @@ function FeedbackBar({
     setCopied(true);
     setTimeout(() => setCopied(false), 1400);
   };
-  return /*#__PURE__*/React.createElement("div", {
+  return /*#__PURE__*/React.createElement("div", _extends({}, rest, {
     className: `ef-feedback${className ? ' ' + className : ''}`,
     style: style
-  }, /*#__PURE__*/React.createElement("button", {
+  }), /*#__PURE__*/React.createElement("button", {
     type: "button",
     "aria-label": "Good response",
     "aria-pressed": vote === 'up',
@@ -799,6 +818,7 @@ Object.assign(__ds_scope, { FeedbackBar });
 
 // components/ai/GeneratedImage.jsx
 try { (() => {
+function _extends() { return _extends = Object.assign ? Object.assign.bind() : function (n) { for (var e = 1; e < arguments.length; e++) { var t = arguments[e]; for (var r in t) ({}).hasOwnProperty.call(t, r) && (n[r] = t[r]); } return n; }, _extends.apply(null, arguments); }
 const CSS = `
 .ef-genimg{position:relative;width:100%;overflow:hidden;border-radius:var(--radius-md);border:1px solid var(--border-default);background:var(--surface-sunken);font-family:var(--font-sans)}
 .ef-genimg--square{aspect-ratio:1}
@@ -837,14 +857,15 @@ function GeneratedImage({
   onRetry,
   actions,
   style,
-  className
+  className,
+  ...rest
 }) {
   __ds_scope.injectEfCss('ef-css-genimg', CSS);
-  return /*#__PURE__*/React.createElement("div", {
+  return /*#__PURE__*/React.createElement("div", _extends({}, rest, {
     className: `ef-genimg ef-genimg--${aspect} ef-genimg--${state}${className ? ' ' + className : ''}`,
     style: style,
     "data-state": state
-  }, src && (state === 'complete' || state === 'error') ? /*#__PURE__*/React.createElement("img", {
+  }), src && (state === 'complete' || state === 'error') ? /*#__PURE__*/React.createElement("img", {
     className: "ef-genimg__img",
     src: src,
     alt: alt || prompt || ''
@@ -1102,6 +1123,7 @@ Object.assign(__ds_scope, { formatTime, Player });
 
 // components/ai/PromptSteps.jsx
 try { (() => {
+function _extends() { return _extends = Object.assign ? Object.assign.bind() : function (n) { for (var e = 1; e < arguments.length; e++) { var t = arguments[e]; for (var r in t) ({}).hasOwnProperty.call(t, r) && (n[r] = t[r]); } return n; }, _extends.apply(null, arguments); }
 const CSS = `
 .ef-promptsteps{border:1px solid var(--border-default);border-radius:var(--radius-md);background:var(--surface-card);padding:5px;font-family:var(--font-sans)}
 .ef-promptsteps:focus{outline:none}
@@ -1125,7 +1147,8 @@ function PromptSteps({
   onComplete,
   onDismiss,
   style,
-  className
+  className,
+  ...rest
 }) {
   __ds_scope.injectEfCss('ef-css-promptsteps', CSS);
   const [idx, setIdx] = React.useState(0);
@@ -1204,13 +1227,13 @@ function PromptSteps({
     }
   };
   if (!step) return null;
-  return /*#__PURE__*/React.createElement("div", {
+  return /*#__PURE__*/React.createElement("div", _extends({}, rest, {
     ref: rootRef,
     tabIndex: -1,
     className: `ef-promptsteps${className ? ' ' + className : ''}`,
     style: style,
     onKeyDown: onKey
-  }, /*#__PURE__*/React.createElement("div", {
+  }), /*#__PURE__*/React.createElement("div", {
     className: "ef-promptsteps__q"
   }, step.question), opts.map((o, i) => i === otherIdx ? /*#__PURE__*/React.createElement("div", {
     key: "__other",
@@ -1269,6 +1292,7 @@ Object.assign(__ds_scope, { PromptSteps });
 
 // components/ai/Reasoning.jsx
 try { (() => {
+function _extends() { return _extends = Object.assign ? Object.assign.bind() : function (n) { for (var e = 1; e < arguments.length; e++) { var t = arguments[e]; for (var r in t) ({}).hasOwnProperty.call(t, r) && (n[r] = t[r]); } return n; }, _extends.apply(null, arguments); }
 const CSS = `
 .ef-reasoning{border:1px solid var(--border-default);border-radius:var(--radius-md);background:var(--surface-subtle);overflow:hidden}
 .ef-reasoning__head{display:flex;align-items:center;gap:8px;width:100%;padding:9px 12px;border:none;background:none;cursor:pointer;text-align:left;font-family:var(--font-sans);font-size:var(--text-sm);font-weight:500;color:var(--text-secondary)}
@@ -1289,7 +1313,8 @@ function Reasoning({
   label,
   children,
   style,
-  className
+  className,
+  ...rest
 }) {
   __ds_scope.injectEfCss('ef-css-reasoning', CSS);
   const [un, setUn] = React.useState(!!defaultOpen);
@@ -1299,10 +1324,10 @@ function Reasoning({
     if (onOpenChange) onOpenChange(!isOpen);
   };
   const head = label || (streaming ? 'Thinking…' : duration ? 'Thought for ' + duration : 'Reasoning');
-  return /*#__PURE__*/React.createElement("div", {
+  return /*#__PURE__*/React.createElement("div", _extends({}, rest, {
     className: `ef-reasoning${isOpen ? ' ef-reasoning--open' : ''}${streaming ? ' ef-reasoning--streaming' : ''}${className ? ' ' + className : ''}`,
     style: style
-  }, /*#__PURE__*/React.createElement("button", {
+  }), /*#__PURE__*/React.createElement("button", {
     type: "button",
     className: "ef-reasoning__head",
     "aria-expanded": isOpen,
@@ -1326,6 +1351,7 @@ Object.assign(__ds_scope, { Reasoning });
 
 // components/ai/RichComposer.jsx
 try { (() => {
+function _extends() { return _extends = Object.assign ? Object.assign.bind() : function (n) { for (var e = 1; e < arguments.length; e++) { var t = arguments[e]; for (var r in t) ({}).hasOwnProperty.call(t, r) && (n[r] = t[r]); } return n; }, _extends.apply(null, arguments); }
 const CSS = `
 .ef-richcomposer{position:relative;border:1px solid var(--border-strong);border-radius:var(--radius-lg,14px);background:var(--surface-card);transition:border-color var(--dur-fast) var(--ease-out),box-shadow var(--dur-fast) var(--ease-out)}
 .ef-richcomposer:focus-within{border-color:var(--text-muted);box-shadow:var(--focus-ring)}
@@ -1372,7 +1398,8 @@ function RichComposer({
   onSubmit,
   onCommand,
   style,
-  className
+  className,
+  ...rest
 }) {
   __ds_scope.injectEfCss('ef-css-richcomposer', CSS);
   const edRef = React.useRef(null);
@@ -1504,10 +1531,10 @@ function RichComposer({
     if (autoFocus && edRef.current) edRef.current.focus();
   }, [autoFocus]);
   let lastGroup = null;
-  return /*#__PURE__*/React.createElement("div", {
+  return /*#__PURE__*/React.createElement("div", _extends({}, rest, {
     className: `ef-richcomposer${className ? ' ' + className : ''}`,
     style: style
-  }, pop ? /*#__PURE__*/React.createElement("div", {
+  }), pop ? /*#__PURE__*/React.createElement("div", {
     className: "ef-richcomposer__pop",
     role: "listbox"
   }, !items.length ? /*#__PURE__*/React.createElement("div", {
@@ -1573,6 +1600,7 @@ Object.assign(__ds_scope, { RichComposer });
 
 // components/ai/Sandbox.jsx
 try { (() => {
+function _extends() { return _extends = Object.assign ? Object.assign.bind() : function (n) { for (var e = 1; e < arguments.length; e++) { var t = arguments[e]; for (var r in t) ({}).hasOwnProperty.call(t, r) && (n[r] = t[r]); } return n; }, _extends.apply(null, arguments); }
 const CSS = `
 .ef-sandbox{border:1px solid var(--border-default);border-radius:var(--radius-md);background:var(--surface-card);overflow:hidden;font-family:var(--font-sans);transition:border-color var(--dur-fast) var(--ease-out),box-shadow var(--dur-fast) var(--ease-out)}
 .ef-sandbox--running{border-color:var(--accent-subtle-border);box-shadow:0 0 0 3px var(--accent-subtle)}
@@ -1611,17 +1639,18 @@ function Sandbox({
   defaultOpen,
   defaultTab,
   style,
-  className
+  className,
+  ...rest
 }) {
   __ds_scope.injectEfCss('ef-css-sandbox', CSS);
   const [open, setOpen] = React.useState(defaultOpen !== undefined ? !!defaultOpen : state === 'error');
   const [tab, setTab] = React.useState(defaultTab || tabs[0] && tabs[0].id);
   const active = tabs.find(t => t.id === tab) || tabs[0];
-  return /*#__PURE__*/React.createElement("div", {
+  return /*#__PURE__*/React.createElement("div", _extends({}, rest, {
     className: `ef-sandbox ef-sandbox--${state}${open ? ' ef-sandbox--open' : ''}${className ? ' ' + className : ''}`,
     style: style,
     "data-state": state
-  }, /*#__PURE__*/React.createElement("button", {
+  }), /*#__PURE__*/React.createElement("button", {
     type: "button",
     className: "ef-sandbox__head",
     "aria-expanded": open,
@@ -1669,6 +1698,7 @@ Object.assign(__ds_scope, { Sandbox });
 
 // components/ai/SelectionQuote.jsx
 try { (() => {
+function _extends() { return _extends = Object.assign ? Object.assign.bind() : function (n) { for (var e = 1; e < arguments.length; e++) { var t = arguments[e]; for (var r in t) ({}).hasOwnProperty.call(t, r) && (n[r] = t[r]); } return n; }, _extends.apply(null, arguments); }
 const CSS = `
 .ef-selq{position:relative}
 .ef-selq__bar{position:absolute;z-index:30;display:inline-flex;align-items:center;gap:2px;padding:4px;border:1px solid var(--border-default);border-radius:var(--radius-md);background:var(--surface-card);box-shadow:var(--shadow-lg,0 8px 24px rgba(0,0,0,.12));user-select:none}
@@ -1686,7 +1716,8 @@ function SelectionQuote({
   }],
   onAction,
   style,
-  className
+  className,
+  ...rest
 }) {
   __ds_scope.injectEfCss('ef-css-selq', CSS);
   const contRef = React.useRef(null);
@@ -1751,11 +1782,11 @@ function SelectionQuote({
       left
     });
   }, [sel]);
-  return /*#__PURE__*/React.createElement("div", {
+  return /*#__PURE__*/React.createElement("div", _extends({}, rest, {
     ref: contRef,
     className: `ef-selq${className ? ' ' + className : ''}`,
     style: style
-  }, children, sel ? /*#__PURE__*/React.createElement("div", {
+  }), children, sel ? /*#__PURE__*/React.createElement("div", {
     ref: barRef,
     className: "ef-selq__bar",
     role: "toolbar",
@@ -1792,6 +1823,7 @@ Object.assign(__ds_scope, { SelectionQuote });
 
 // components/ai/SourceCard.jsx
 try { (() => {
+function _extends() { return _extends = Object.assign ? Object.assign.bind() : function (n) { for (var e = 1; e < arguments.length; e++) { var t = arguments[e]; for (var r in t) ({}).hasOwnProperty.call(t, r) && (n[r] = t[r]); } return n; }, _extends.apply(null, arguments); }
 const CSS = `
 .ef-sourcecard{display:flex;flex-direction:column;gap:6px;padding:12px;border:1px solid var(--border-default);border-radius:var(--radius-md);background:var(--surface-card);text-decoration:none;color:inherit;transition:border-color var(--dur-fast) var(--ease-out),background var(--dur-fast) var(--ease-out)}
 a.ef-sourcecard{cursor:pointer}
@@ -1815,18 +1847,19 @@ function SourceCard({
   variant = 'card',
   onClick,
   style,
-  className
+  className,
+  ...rest
 }) {
   __ds_scope.injectEfCss('ef-css-sourcecard', CSS);
   const Tag = href || onClick ? 'a' : 'div';
-  return /*#__PURE__*/React.createElement(Tag, {
+  return /*#__PURE__*/React.createElement(Tag, _extends({}, rest, {
     className: `ef-sourcecard${variant === 'plain' ? ' ef-sourcecard--plain' : ''}${className ? ' ' + className : ''}`,
     style: style,
     href: href,
     target: href ? '_blank' : undefined,
     rel: href ? 'noreferrer noopener' : undefined,
     onClick: onClick
-  }, thumbnail ? /*#__PURE__*/React.createElement("img", {
+  }), thumbnail ? /*#__PURE__*/React.createElement("img", {
     className: "ef-sourcecard__thumb",
     src: thumbnail,
     alt: ""
@@ -1849,6 +1882,7 @@ Object.assign(__ds_scope, { SourceCard });
 
 // components/ai/Suggestions.jsx
 try { (() => {
+function _extends() { return _extends = Object.assign ? Object.assign.bind() : function (n) { for (var e = 1; e < arguments.length; e++) { var t = arguments[e]; for (var r in t) ({}).hasOwnProperty.call(t, r) && (n[r] = t[r]); } return n; }, _extends.apply(null, arguments); }
 const CSS = `
 .ef-suggestions{display:flex;flex-wrap:wrap;gap:8px}
 .ef-suggestion{display:inline-flex;align-items:center;gap:7px;padding:7px 13px;border:1px solid var(--border-strong);border-radius:var(--radius-full);background:var(--surface-card);cursor:pointer;font-family:var(--font-sans);font-size:13.5px;color:var(--text-secondary);transition:color var(--dur-fast) var(--ease-out),border-color var(--dur-fast) var(--ease-out),background var(--dur-fast) var(--ease-out)}
@@ -1860,13 +1894,14 @@ function Suggestions({
   items = [],
   onPick,
   style,
-  className
+  className,
+  ...rest
 }) {
   __ds_scope.injectEfCss('ef-css-suggestions', CSS);
-  return /*#__PURE__*/React.createElement("div", {
+  return /*#__PURE__*/React.createElement("div", _extends({}, rest, {
     className: `ef-suggestions${className ? ' ' + className : ''}`,
     style: style
-  }, items.map((it, i) => {
+  }), items.map((it, i) => {
     const label = typeof it === 'string' ? it : it.label;
     const icon = typeof it === 'string' ? null : it.icon;
     return /*#__PURE__*/React.createElement("button", {
@@ -1887,6 +1922,7 @@ Object.assign(__ds_scope, { Suggestions });
 
 // components/ai/Task.jsx
 try { (() => {
+function _extends() { return _extends = Object.assign ? Object.assign.bind() : function (n) { for (var e = 1; e < arguments.length; e++) { var t = arguments[e]; for (var r in t) ({}).hasOwnProperty.call(t, r) && (n[r] = t[r]); } return n; }, _extends.apply(null, arguments); }
 const CSS = `
 .ef-task{display:flex;flex-direction:column;font-family:var(--font-sans);font-size:13.5px}
 .ef-task__row{display:inline-flex;align-items:flex-start;gap:9px;padding:3px 8px;align-self:flex-start;color:var(--text-secondary);border-radius:var(--radius-sm)}
@@ -1903,14 +1939,15 @@ function Task({
   items = [],
   streaming,
   style,
-  className
+  className,
+  ...rest
 }) {
   __ds_scope.injectEfCss('ef-css-task', CSS);
-  return /*#__PURE__*/React.createElement("div", {
+  return /*#__PURE__*/React.createElement("div", _extends({}, rest, {
     className: `ef-task${streaming ? ' ef-task--streaming' : ''}${className ? ' ' + className : ''}`,
     style: style,
     role: "list"
-  }, items.map((it, i) => /*#__PURE__*/React.createElement(React.Fragment, {
+  }), items.map((it, i) => /*#__PURE__*/React.createElement(React.Fragment, {
     key: i
   }, /*#__PURE__*/React.createElement("div", {
     className: "ef-task__row",
@@ -1936,6 +1973,7 @@ Object.assign(__ds_scope, { Task });
 
 // components/ai/Todo.jsx
 try { (() => {
+function _extends() { return _extends = Object.assign ? Object.assign.bind() : function (n) { for (var e = 1; e < arguments.length; e++) { var t = arguments[e]; for (var r in t) ({}).hasOwnProperty.call(t, r) && (n[r] = t[r]); } return n; }, _extends.apply(null, arguments); }
 const CSS = `
 .ef-todo{border:1px solid var(--border-default);border-radius:var(--radius-md);background:var(--surface-card);font-family:var(--font-sans)}
 .ef-todo__head{display:flex;align-items:center;gap:9px;width:100%;padding:10px 14px;border:none;background:none;cursor:pointer;text-align:left;font-family:inherit}
@@ -1963,15 +2001,16 @@ function Todo({
   items = [],
   defaultOpen = true,
   style,
-  className
+  className,
+  ...rest
 }) {
   __ds_scope.injectEfCss('ef-css-todo', CSS);
   const [open, setOpen] = React.useState(!!defaultOpen);
   const done = items.filter(i => i.status === 'done').length;
-  return /*#__PURE__*/React.createElement("div", {
+  return /*#__PURE__*/React.createElement("div", _extends({}, rest, {
     className: `ef-todo${open ? ' ef-todo--open' : ''}${className ? ' ' + className : ''}`,
     style: style
-  }, /*#__PURE__*/React.createElement("button", {
+  }), /*#__PURE__*/React.createElement("button", {
     type: "button",
     className: "ef-todo__head",
     "aria-expanded": open,
@@ -2023,6 +2062,7 @@ Object.assign(__ds_scope, { Todo });
 
 // components/ai/ToolCall.jsx
 try { (() => {
+function _extends() { return _extends = Object.assign ? Object.assign.bind() : function (n) { for (var e = 1; e < arguments.length; e++) { var t = arguments[e]; for (var r in t) ({}).hasOwnProperty.call(t, r) && (n[r] = t[r]); } return n; }, _extends.apply(null, arguments); }
 const CSS = `
 .ef-toolcall{border:1px solid var(--border-default);border-radius:var(--radius-md);background:var(--surface-card);overflow:hidden;transition:border-color var(--dur-fast) var(--ease-out),box-shadow var(--dur-fast) var(--ease-out)}
 .ef-toolcall--approval{border-color:var(--accent-subtle-border);box-shadow:0 0 0 2px var(--accent-subtle)}
@@ -2084,7 +2124,8 @@ function ToolCall({
   rejectLabel = 'Reject',
   children,
   style,
-  className
+  className,
+  ...rest
 }) {
   __ds_scope.injectEfCss('ef-css-toolcall', CSS);
   const [open, setOpen] = React.useState(defaultOpen !== undefined ? !!defaultOpen : status === 'error' || status === 'approval');
@@ -2092,10 +2133,10 @@ function ToolCall({
   const entries = args != null && typeof args === 'object' && !Array.isArray(args) ? Object.entries(args) : null;
   const argText = args == null || entries ? null : typeof args === 'string' ? args : JSON.stringify(args, null, 2);
   const fmt = v => v == null ? 'null' : typeof v === 'string' ? v : typeof v === 'object' ? JSON.stringify(v, null, 2) : String(v);
-  return /*#__PURE__*/React.createElement("div", {
+  return /*#__PURE__*/React.createElement("div", _extends({}, rest, {
     className: `ef-toolcall ef-toolcall--${status}${open ? ' ef-toolcall--open' : ''}${streaming ? ' ef-toolcall--streaming' : ''}${className ? ' ' + className : ''}`,
     style: style
-  }, /*#__PURE__*/React.createElement("button", {
+  }), /*#__PURE__*/React.createElement("button", {
     type: "button",
     className: "ef-toolcall__head",
     "aria-expanded": open,
@@ -2170,6 +2211,7 @@ Object.assign(__ds_scope, { ToolCall });
 
 // components/ai/Transcript.jsx
 try { (() => {
+function _extends() { return _extends = Object.assign ? Object.assign.bind() : function (n) { for (var e = 1; e < arguments.length; e++) { var t = arguments[e]; for (var r in t) ({}).hasOwnProperty.call(t, r) && (n[r] = t[r]); } return n; }, _extends.apply(null, arguments); }
 const CSS = `
 .ef-transcript{display:flex;flex-direction:column;border:1px solid var(--border-default);border-radius:var(--radius-md);background:var(--surface-card);overflow:hidden;font-family:var(--font-sans)}
 .ef-transcript__head{display:flex;align-items:center;gap:9px;padding:10px 14px;border-bottom:1px solid var(--border-default)}
@@ -2199,7 +2241,8 @@ function Transcript({
   height = 280,
   defaultAutoScroll = true,
   style,
-  className
+  className,
+  ...rest
 }) {
   __ds_scope.injectEfCss('ef-css-transcript', CSS);
   const [auto, setAuto] = React.useState(!!defaultAutoScroll);
@@ -2224,10 +2267,10 @@ function Transcript({
       behavior: 'smooth'
     });
   }, [active, auto]);
-  return /*#__PURE__*/React.createElement("div", {
+  return /*#__PURE__*/React.createElement("div", _extends({}, rest, {
     className: `ef-transcript${className ? ' ' + className : ''}`,
     style: style
-  }, /*#__PURE__*/React.createElement("div", {
+  }), /*#__PURE__*/React.createElement("div", {
     className: "ef-transcript__head"
   }, /*#__PURE__*/React.createElement("span", {
     className: "ef-transcript__title"
@@ -2266,6 +2309,7 @@ Object.assign(__ds_scope, { Transcript });
 
 // components/ai/UsageMeter.jsx
 try { (() => {
+function _extends() { return _extends = Object.assign ? Object.assign.bind() : function (n) { for (var e = 1; e < arguments.length; e++) { var t = arguments[e]; for (var r in t) ({}).hasOwnProperty.call(t, r) && (n[r] = t[r]); } return n; }, _extends.apply(null, arguments); }
 const CSS = `
 .ef-usage{display:flex;flex-direction:column;gap:7px}
 .ef-usage__row{display:flex;align-items:baseline;gap:8px}
@@ -2289,7 +2333,8 @@ function UsageMeter({
   animated,
   format,
   style,
-  className
+  className,
+  ...rest
 }) {
   __ds_scope.injectEfCss('ef-css-usage', CSS);
   const [shown, setShown] = React.useState(animated ? 0 : used);
@@ -2315,10 +2360,10 @@ function UsageMeter({
   const fmt = format || (v => Math.round(v).toLocaleString());
   const tone = ratio >= 1 ? ' ef-usage--over' : ratio >= warnAt ? ' ef-usage--warn' : '';
   const shownRatio = limit > 0 ? shown / limit : 0;
-  return /*#__PURE__*/React.createElement("div", {
+  return /*#__PURE__*/React.createElement("div", _extends({}, rest, {
     className: `ef-usage${tone}${className ? ' ' + className : ''}`,
     style: style
-  }, /*#__PURE__*/React.createElement("div", {
+  }), /*#__PURE__*/React.createElement("div", {
     className: "ef-usage__row"
   }, /*#__PURE__*/React.createElement("span", {
     className: "ef-usage__label"
@@ -2348,6 +2393,7 @@ Object.assign(__ds_scope, { UsageMeter });
 
 // components/ai/WebPreview.jsx
 try { (() => {
+function _extends() { return _extends = Object.assign ? Object.assign.bind() : function (n) { for (var e = 1; e < arguments.length; e++) { var t = arguments[e]; for (var r in t) ({}).hasOwnProperty.call(t, r) && (n[r] = t[r]); } return n; }, _extends.apply(null, arguments); }
 const CSS = `
 .ef-webprev{display:flex;flex-direction:column;border:1px solid var(--border-default);border-radius:var(--radius-md);background:var(--surface-card);padding:6px;font-family:var(--font-sans)}
 .ef-webprev__bar{display:flex;align-items:center;gap:4px;padding:2px 4px 8px}
@@ -2393,7 +2439,8 @@ function WebPreview({
   children,
   onUrlChange,
   style,
-  className
+  className,
+  ...rest
 }) {
   __ds_scope.injectEfCss('ef-css-webprev', CSS);
   const [url, setUrl] = React.useState(urlProp);
@@ -2415,10 +2462,10 @@ function WebPreview({
     error: 'circle-alert',
     info: 'info'
   };
-  return /*#__PURE__*/React.createElement("div", {
+  return /*#__PURE__*/React.createElement("div", _extends({}, rest, {
     className: `ef-webprev${cons ? ' ef-webprev--console' : ''}${className ? ' ' + className : ''}`,
     style: style
-  }, /*#__PURE__*/React.createElement("div", {
+  }), /*#__PURE__*/React.createElement("div", {
     className: "ef-webprev__bar"
   }, /*#__PURE__*/React.createElement("button", {
     type: "button",
@@ -2527,6 +2574,7 @@ Object.assign(__ds_scope, { WebPreview });
 
 // components/code/CodeBlock.jsx
 try { (() => {
+function _extends() { return _extends = Object.assign ? Object.assign.bind() : function (n) { for (var e = 1; e < arguments.length; e++) { var t = arguments[e]; for (var r in t) ({}).hasOwnProperty.call(t, r) && (n[r] = t[r]); } return n; }, _extends.apply(null, arguments); }
 const CSS = `
 .ef-code{background:var(--surface-code);border:1px solid var(--border-code);border-radius:var(--radius-md);overflow:hidden}
 .ef-code__head{display:flex;align-items:center;padding:7px 8px 7px 14px;border-bottom:1px solid rgba(250,249,246,.1)}
@@ -2548,7 +2596,8 @@ function CodeBlock({
   clip,
   clipHeight = 240,
   style,
-  className
+  className,
+  ...rest
 }) {
   __ds_scope.injectEfCss('ef-css-code', CSS);
   const [copied, setCopied] = React.useState(false);
@@ -2571,10 +2620,10 @@ function CodeBlock({
     setCopied(true);
     setTimeout(() => setCopied(false), 1600);
   };
-  return /*#__PURE__*/React.createElement("div", {
+  return /*#__PURE__*/React.createElement("div", _extends({}, rest, {
     className: `ef-code${className ? ' ' + className : ''}`,
     style: style
-  }, /*#__PURE__*/React.createElement("div", {
+  }), /*#__PURE__*/React.createElement("div", {
     className: "ef-code__head"
   }, /*#__PURE__*/React.createElement("span", {
     className: "ef-code__lang"
@@ -2626,6 +2675,7 @@ Object.assign(__ds_scope, { CodeBlock });
 
 // components/code/Console.jsx
 try { (() => {
+function _extends() { return _extends = Object.assign ? Object.assign.bind() : function (n) { for (var e = 1; e < arguments.length; e++) { var t = arguments[e]; for (var r in t) ({}).hasOwnProperty.call(t, r) && (n[r] = t[r]); } return n; }, _extends.apply(null, arguments); }
 const CSS = `
 .ef-console{position:relative;display:flex;flex-direction:column;border:1px solid var(--border-default);border-radius:var(--radius-md);background:var(--surface-card);overflow:hidden;font-family:var(--font-sans)}
 .ef-console__head{display:flex;align-items:center;gap:8px;padding:8px 13px;border-bottom:1px solid var(--border-default);background:var(--surface-subtle);font-size:12px;color:var(--text-secondary)}
@@ -2689,7 +2739,8 @@ function Console({
   entries = [],
   height = 240,
   style,
-  className
+  className,
+  ...rest
 }) {
   __ds_scope.injectEfCss('ef-css-console', CSS);
   const viewport = React.useRef(null);
@@ -2707,10 +2758,10 @@ function Console({
     if (v && wasBottom.current) v.scrollTop = v.scrollHeight;
     recompute();
   }, [entries.length]);
-  return /*#__PURE__*/React.createElement("div", {
+  return /*#__PURE__*/React.createElement("div", _extends({}, rest, {
     className: `ef-console${className ? ' ' + className : ''}`,
     style: style
-  }, /*#__PURE__*/React.createElement("div", {
+  }), /*#__PURE__*/React.createElement("div", {
     className: "ef-console__head"
   }, /*#__PURE__*/React.createElement(__ds_scope.Icon, {
     name: "terminal",
@@ -2750,6 +2801,7 @@ Object.assign(__ds_scope, { Console });
 
 // components/code/Diff.jsx
 try { (() => {
+function _extends() { return _extends = Object.assign ? Object.assign.bind() : function (n) { for (var e = 1; e < arguments.length; e++) { var t = arguments[e]; for (var r in t) ({}).hasOwnProperty.call(t, r) && (n[r] = t[r]); } return n; }, _extends.apply(null, arguments); }
 const CSS = `
 .ef-diff{border:1px solid var(--border-default);border-radius:var(--radius-md);background:var(--surface-card);overflow:hidden;font-family:var(--font-mono);font-size:12.5px;line-height:1.7}
 .ef-diff__head{display:flex;align-items:center;gap:10px;padding:8px 13px;background:var(--surface-subtle);border-bottom:1px solid var(--border-default);font-size:12px;color:var(--text-secondary);font-family:var(--font-sans)}
@@ -3070,7 +3122,8 @@ function Diff({
   contextLines = 3,
   maxHeight,
   style,
-  className
+  className,
+  ...rest
 }) {
   __ds_scope.injectEfCss('ef-css-diff', CSS);
   const single = React.useMemo(() => {
@@ -3081,10 +3134,10 @@ function Diff({
       contextLines: from !== undefined ? contextLines : null
     });
   }, [lines, from, to, files, wordLevel, contextLines]);
-  return /*#__PURE__*/React.createElement("div", {
+  return /*#__PURE__*/React.createElement("div", _extends({}, rest, {
     className: `ef-diff${className ? ' ' + className : ''}`,
     style: style
-  }, title && single ? /*#__PURE__*/React.createElement("div", {
+  }), title && single ? /*#__PURE__*/React.createElement("div", {
     className: "ef-diff__head"
   }, title, /*#__PURE__*/React.createElement(Counts, {
     adds: single.adds,
@@ -3108,6 +3161,7 @@ Object.assign(__ds_scope, { computeDiff, Diff });
 
 // components/code/EnvList.jsx
 try { (() => {
+function _extends() { return _extends = Object.assign ? Object.assign.bind() : function (n) { for (var e = 1; e < arguments.length; e++) { var t = arguments[e]; for (var r in t) ({}).hasOwnProperty.call(t, r) && (n[r] = t[r]); } return n; }, _extends.apply(null, arguments); }
 const CSS = `
 .ef-env{border:1px solid var(--border-default);border-radius:var(--radius-md);background:var(--surface-card);font-family:var(--font-sans)}
 .ef-env__head{display:flex;align-items:center;gap:9px;padding:10px 14px}
@@ -3158,15 +3212,16 @@ function EnvList({
   vars = [],
   defaultVisible = false,
   style,
-  className
+  className,
+  ...rest
 }) {
   __ds_scope.injectEfCss('ef-css-env', CSS);
   const [visible, setVisible] = React.useState(!!defaultVisible);
   const hasSecrets = vars.some(v => v.secret);
-  return /*#__PURE__*/React.createElement("div", {
+  return /*#__PURE__*/React.createElement("div", _extends({}, rest, {
     className: `ef-env${className ? ' ' + className : ''}`,
     style: style
-  }, /*#__PURE__*/React.createElement("div", {
+  }), /*#__PURE__*/React.createElement("div", {
     className: "ef-env__head"
   }, /*#__PURE__*/React.createElement("span", {
     className: "ef-env__glyph"
@@ -3197,6 +3252,7 @@ Object.assign(__ds_scope, { EnvList });
 
 // components/code/Exception.jsx
 try { (() => {
+function _extends() { return _extends = Object.assign ? Object.assign.bind() : function (n) { for (var e = 1; e < arguments.length; e++) { var t = arguments[e]; for (var r in t) ({}).hasOwnProperty.call(t, r) && (n[r] = t[r]); } return n; }, _extends.apply(null, arguments); }
 const CSS = `
 .ef-exception{border:1px solid var(--border-default);border-radius:var(--radius-md);background:var(--surface-card);font-family:var(--font-sans);overflow:hidden}
 .ef-exception__head{display:flex;align-items:flex-start;gap:10px;padding:11px 14px}
@@ -3230,14 +3286,15 @@ function Exception({
   source,
   defaultOpen = false,
   style,
-  className
+  className,
+  ...rest
 }) {
   __ds_scope.injectEfCss('ef-css-exception', CSS);
   const [open, setOpen] = React.useState(!!defaultOpen);
-  return /*#__PURE__*/React.createElement("div", {
+  return /*#__PURE__*/React.createElement("div", _extends({}, rest, {
     className: `ef-exception${open ? ' ef-exception--open' : ''}${className ? ' ' + className : ''}`,
     style: style
-  }, /*#__PURE__*/React.createElement("div", {
+  }), /*#__PURE__*/React.createElement("div", {
     className: "ef-exception__head"
   }, /*#__PURE__*/React.createElement("span", {
     className: "ef-exception__type"
@@ -3287,6 +3344,7 @@ Object.assign(__ds_scope, { Exception });
 
 // components/code/Terminal.jsx
 try { (() => {
+function _extends() { return _extends = Object.assign ? Object.assign.bind() : function (n) { for (var e = 1; e < arguments.length; e++) { var t = arguments[e]; for (var r in t) ({}).hasOwnProperty.call(t, r) && (n[r] = t[r]); } return n; }, _extends.apply(null, arguments); }
 const CSS = `
 .ef-term{background:var(--surface-code);border:1px solid var(--border-code);border-radius:var(--radius-md);overflow:hidden}
 .ef-term__head{display:flex;align-items:center;gap:8px;padding:8px 14px;border-bottom:1px solid rgba(250,249,246,.1)}
@@ -3309,13 +3367,14 @@ function Terminal({
   live,
   maxHeight = 260,
   style,
-  className
+  className,
+  ...rest
 }) {
   __ds_scope.injectEfCss('ef-css-term', CSS);
-  return /*#__PURE__*/React.createElement("div", {
+  return /*#__PURE__*/React.createElement("div", _extends({}, rest, {
     className: `ef-term${className ? ' ' + className : ''}`,
     style: style
-  }, host ? /*#__PURE__*/React.createElement("div", {
+  }), host ? /*#__PURE__*/React.createElement("div", {
     className: "ef-term__head"
   }, /*#__PURE__*/React.createElement("span", {
     className: "ef-term__dot"
@@ -3346,6 +3405,7 @@ Object.assign(__ds_scope, { Terminal });
 
 // components/data/BarChart.jsx
 try { (() => {
+function _extends() { return _extends = Object.assign ? Object.assign.bind() : function (n) { for (var e = 1; e < arguments.length; e++) { var t = arguments[e]; for (var r in t) ({}).hasOwnProperty.call(t, r) && (n[r] = t[r]); } return n; }, _extends.apply(null, arguments); }
 const CSS = `
 .ef-bars{display:flex;align-items:flex-end;gap:3px;width:100%}
 .ef-bars__bar{flex:1;min-width:3px;border-radius:2px 2px 0 0;background:var(--sand-200);transition:background var(--dur-fast) var(--ease-out)}
@@ -3360,15 +3420,16 @@ function BarChart({
   labels,
   formatValue,
   style,
-  className
+  className,
+  ...rest
 }) {
   __ds_scope.injectEfCss('ef-css-bars', CSS);
   const vals = data.map(d => typeof d === 'number' ? d : d.value);
   const max = Math.max(...vals, 1);
-  return /*#__PURE__*/React.createElement("div", {
+  return /*#__PURE__*/React.createElement("div", _extends({}, rest, {
     className: className,
     style: style
-  }, /*#__PURE__*/React.createElement("div", {
+  }), /*#__PURE__*/React.createElement("div", {
     className: "ef-bars",
     style: {
       height
@@ -3391,6 +3452,7 @@ Object.assign(__ds_scope, { BarChart });
 
 // components/data/DonutChart.jsx
 try { (() => {
+function _extends() { return _extends = Object.assign ? Object.assign.bind() : function (n) { for (var e = 1; e < arguments.length; e++) { var t = arguments[e]; for (var r in t) ({}).hasOwnProperty.call(t, r) && (n[r] = t[r]); } return n; }, _extends.apply(null, arguments); }
 const CSS = `
 .ef-donut{display:flex;align-items:center;gap:20px}
 .ef-donut__legend{display:flex;flex-direction:column;gap:8px}
@@ -3407,7 +3469,8 @@ function DonutChart({
   centerValue,
   format,
   style,
-  className
+  className,
+  ...rest
 }) {
   __ds_scope.injectEfCss('ef-css-donut', CSS);
   const [hov, setHov] = React.useState(null);
@@ -3427,10 +3490,10 @@ function DonutChart({
     acc += frac;
     return seg;
   });
-  return /*#__PURE__*/React.createElement("div", {
+  return /*#__PURE__*/React.createElement("div", _extends({}, rest, {
     className: `ef-donut${className ? ' ' + className : ''}`,
     style: style
-  }, /*#__PURE__*/React.createElement("div", {
+  }), /*#__PURE__*/React.createElement("div", {
     style: {
       position: 'relative',
       width: size,
@@ -3506,6 +3569,7 @@ Object.assign(__ds_scope, { DonutChart });
 
 // components/data/EmptyState.jsx
 try { (() => {
+function _extends() { return _extends = Object.assign ? Object.assign.bind() : function (n) { for (var e = 1; e < arguments.length; e++) { var t = arguments[e]; for (var r in t) ({}).hasOwnProperty.call(t, r) && (n[r] = t[r]); } return n; }, _extends.apply(null, arguments); }
 const CSS = `
 .ef-empty{display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:48px 24px;gap:4px}
 .ef-empty--bordered{border:1px dashed var(--sand-300);border-radius:var(--radius-md)}
@@ -3521,13 +3585,14 @@ function EmptyState({
   action,
   bordered,
   style,
-  className
+  className,
+  ...rest
 }) {
   __ds_scope.injectEfCss('ef-css-empty', CSS);
-  return /*#__PURE__*/React.createElement("div", {
+  return /*#__PURE__*/React.createElement("div", _extends({}, rest, {
     className: `ef-empty${bordered ? ' ef-empty--bordered' : ''}${className ? ' ' + className : ''}`,
     style: style
-  }, /*#__PURE__*/React.createElement("span", {
+  }), /*#__PURE__*/React.createElement("span", {
     className: "ef-empty__icon"
   }, /*#__PURE__*/React.createElement(__ds_scope.Icon, {
     name: icon,
@@ -3545,6 +3610,7 @@ Object.assign(__ds_scope, { EmptyState });
 
 // components/data/KeyValueList.jsx
 try { (() => {
+function _extends() { return _extends = Object.assign ? Object.assign.bind() : function (n) { for (var e = 1; e < arguments.length; e++) { var t = arguments[e]; for (var r in t) ({}).hasOwnProperty.call(t, r) && (n[r] = t[r]); } return n; }, _extends.apply(null, arguments); }
 const CSS = `
 .ef-kv{display:flex;flex-direction:column}
 .ef-kv__row{display:flex;gap:16px;padding:9px 0;border-bottom:1px solid var(--border-default)}
@@ -3557,13 +3623,14 @@ function KeyValueList({
   items,
   labelWidth = 160,
   style,
-  className
+  className,
+  ...rest
 }) {
   __ds_scope.injectEfCss('ef-css-kv', CSS);
-  return /*#__PURE__*/React.createElement("div", {
+  return /*#__PURE__*/React.createElement("div", _extends({}, rest, {
     className: `ef-kv${className ? ' ' + className : ''}`,
     style: style
-  }, items.map((it, i) => /*#__PURE__*/React.createElement("div", {
+  }), items.map((it, i) => /*#__PURE__*/React.createElement("div", {
     key: i,
     className: "ef-kv__row"
   }, /*#__PURE__*/React.createElement("span", {
@@ -3580,6 +3647,7 @@ Object.assign(__ds_scope, { KeyValueList });
 
 // components/data/LineChart.jsx
 try { (() => {
+function _extends() { return _extends = Object.assign ? Object.assign.bind() : function (n) { for (var e = 1; e < arguments.length; e++) { var t = arguments[e]; for (var r in t) ({}).hasOwnProperty.call(t, r) && (n[r] = t[r]); } return n; }, _extends.apply(null, arguments); }
 const CSS = `
 .ef-linechart{position:relative}
 .ef-linechart__tip{position:absolute;transform:translate(-50%,-130%);background:var(--surface-inverse);color:var(--text-inverse);font-size:11px;font-weight:500;padding:4px 8px;border-radius:6px;white-space:nowrap;pointer-events:none;z-index:5}
@@ -3591,7 +3659,8 @@ function LineChart({
   showDots = false,
   format,
   style,
-  className
+  className,
+  ...rest
 }) {
   __ds_scope.injectEfCss('ef-css-linechart', CSS);
   const [hov, setHov] = React.useState(null);
@@ -3612,13 +3681,13 @@ function LineChart({
     const i = Math.round((e.clientX - r.left) / r.width * (data.length - 1));
     setHov(Math.max(0, Math.min(data.length - 1, i)));
   };
-  return /*#__PURE__*/React.createElement("div", {
+  return /*#__PURE__*/React.createElement("div", _extends({}, rest, {
     ref: ref,
     className: `ef-linechart${className ? ' ' + className : ''}`,
     style: style,
     onMouseMove: move,
     onMouseLeave: () => setHov(null)
-  }, /*#__PURE__*/React.createElement("svg", {
+  }), /*#__PURE__*/React.createElement("svg", {
     viewBox: `0 0 ${W} ${H}`,
     width: "100%",
     height: H,
@@ -3666,6 +3735,7 @@ Object.assign(__ds_scope, { LineChart });
 
 // components/data/Skeleton.jsx
 try { (() => {
+function _extends() { return _extends = Object.assign ? Object.assign.bind() : function (n) { for (var e = 1; e < arguments.length; e++) { var t = arguments[e]; for (var r in t) ({}).hasOwnProperty.call(t, r) && (n[r] = t[r]); } return n; }, _extends.apply(null, arguments); }
 const CSS = `
 @keyframes ef-skel{0%,100%{opacity:1}50%{opacity:.45}}
 .ef-skel{display:block;background:var(--border-default);border-radius:var(--radius-sm);animation:ef-skel 1.4s var(--ease-in-out) infinite}
@@ -3677,13 +3747,14 @@ function Skeleton({
   height,
   lines = 1,
   style,
-  className
+  className,
+  ...rest
 }) {
   __ds_scope.injectEfCss('ef-css-skel', CSS);
   const h = height != null ? height : variant === 'text' ? 12 : variant === 'circle' ? width || 32 : 64;
   const w = width != null ? width : variant === 'circle' ? h : '100%';
   if (variant === 'text' && lines > 1) {
-    return /*#__PURE__*/React.createElement("span", {
+    return /*#__PURE__*/React.createElement("span", _extends({}, rest, {
       style: {
         display: 'flex',
         flexDirection: 'column',
@@ -3691,7 +3762,7 @@ function Skeleton({
         ...style
       },
       className: className
-    }, Array.from({
+    }), Array.from({
       length: lines
     }, (_, i) => /*#__PURE__*/React.createElement("span", {
       key: i,
@@ -3716,6 +3787,7 @@ Object.assign(__ds_scope, { Skeleton });
 
 // components/data/Stat.jsx
 try { (() => {
+function _extends() { return _extends = Object.assign ? Object.assign.bind() : function (n) { for (var e = 1; e < arguments.length; e++) { var t = arguments[e]; for (var r in t) ({}).hasOwnProperty.call(t, r) && (n[r] = t[r]); } return n; }, _extends.apply(null, arguments); }
 const CSS = `
 .ef-stat__label{font-size:var(--text-sm);color:var(--text-muted);font-weight:var(--weight-medium)}
 .ef-stat__row{display:flex;align-items:baseline;gap:8px;margin-top:6px}
@@ -3733,14 +3805,15 @@ function Stat({
   direction = 'flat',
   hint,
   style,
-  className
+  className,
+  ...rest
 }) {
   __ds_scope.injectEfCss('ef-css-stat', CSS);
   const arrow = direction === 'up' ? '↑ ' : direction === 'down' ? '↓ ' : '';
-  return /*#__PURE__*/React.createElement("div", {
+  return /*#__PURE__*/React.createElement("div", _extends({}, rest, {
     className: className,
     style: style
-  }, /*#__PURE__*/React.createElement("div", {
+  }), /*#__PURE__*/React.createElement("div", {
     className: "ef-stat__label"
   }, label), /*#__PURE__*/React.createElement("div", {
     className: "ef-stat__row"
@@ -3757,6 +3830,7 @@ Object.assign(__ds_scope, { Stat });
 
 // components/data/StatusDot.jsx
 try { (() => {
+function _extends() { return _extends = Object.assign ? Object.assign.bind() : function (n) { for (var e = 1; e < arguments.length; e++) { var t = arguments[e]; for (var r in t) ({}).hasOwnProperty.call(t, r) && (n[r] = t[r]); } return n; }, _extends.apply(null, arguments); }
 const CSS = `
 .ef-status{display:inline-flex;align-items:center;gap:7px;font-size:var(--text-sm);color:var(--text-primary)}
 .ef-status__dot{position:relative;width:8px;height:8px;border-radius:var(--radius-full);flex:none}
@@ -3777,13 +3851,14 @@ function StatusDot({
   label,
   pulse,
   style,
-  className
+  className,
+  ...rest
 }) {
   __ds_scope.injectEfCss('ef-css-status', CSS);
-  return /*#__PURE__*/React.createElement("span", {
+  return /*#__PURE__*/React.createElement("span", _extends({}, rest, {
     className: `ef-status ef-status--${state}${pulse ? ' ef-status--pulse' : ''}${className ? ' ' + className : ''}`,
     style: style
-  }, /*#__PURE__*/React.createElement("span", {
+  }), /*#__PURE__*/React.createElement("span", {
     className: "ef-status__dot"
   }), label ? /*#__PURE__*/React.createElement("span", null, label) : null);
 }
@@ -3792,6 +3867,7 @@ Object.assign(__ds_scope, { StatusDot });
 
 // components/data/Table.jsx
 try { (() => {
+function _extends() { return _extends = Object.assign ? Object.assign.bind() : function (n) { for (var e = 1; e < arguments.length; e++) { var t = arguments[e]; for (var r in t) ({}).hasOwnProperty.call(t, r) && (n[r] = t[r]); } return n; }, _extends.apply(null, arguments); }
 const CSS = `
 .ef-table-wrap{max-width:100%;overflow-x:auto;overflow-y:hidden;-webkit-overflow-scrolling:touch}
 .ef-table{width:100%;border-collapse:collapse}
@@ -3810,14 +3886,15 @@ function Table({
   onRowClick,
   dense,
   style,
-  className
+  className,
+  ...rest
 }) {
   __ds_scope.injectEfCss('ef-css-table', CSS);
   const key = (row, i) => rowKey ? typeof rowKey === 'function' ? rowKey(row) : row[rowKey] : i;
-  return /*#__PURE__*/React.createElement("div", {
+  return /*#__PURE__*/React.createElement("div", _extends({}, rest, {
     className: "ef-table-wrap",
     style: style
-  }, /*#__PURE__*/React.createElement("table", {
+  }), /*#__PURE__*/React.createElement("table", {
     className: `ef-table${dense ? ' ef-table--dense' : ''}${className ? ' ' + className : ''}`
   }, /*#__PURE__*/React.createElement("thead", null, /*#__PURE__*/React.createElement("tr", null, columns.map(c => /*#__PURE__*/React.createElement("th", {
     key: c.key,
@@ -3842,6 +3919,7 @@ Object.assign(__ds_scope, { Table });
 
 // components/display/Accordion.jsx
 try { (() => {
+function _extends() { return _extends = Object.assign ? Object.assign.bind() : function (n) { for (var e = 1; e < arguments.length; e++) { var t = arguments[e]; for (var r in t) ({}).hasOwnProperty.call(t, r) && (n[r] = t[r]); } return n; }, _extends.apply(null, arguments); }
 const CSS = `
 .ef-acc{display:flex;flex-direction:column}
 .ef-acc__item{border-bottom:1px solid var(--border-default)}
@@ -3861,15 +3939,16 @@ function Accordion({
   multiple,
   defaultOpen,
   style,
-  className
+  className,
+  ...rest
 }) {
   __ds_scope.injectEfCss('ef-css-acc', CSS);
   const [open, setOpen] = React.useState(defaultOpen || []);
   const toggle = id => setOpen(o => o.includes(id) ? o.filter(x => x !== id) : multiple ? [...o, id] : [id]);
-  return /*#__PURE__*/React.createElement("div", {
+  return /*#__PURE__*/React.createElement("div", _extends({}, rest, {
     className: `ef-acc${className ? ' ' + className : ''}`,
     style: style
-  }, items.map(it => /*#__PURE__*/React.createElement("div", {
+  }), items.map(it => /*#__PURE__*/React.createElement("div", {
     key: it.id,
     className: `ef-acc__item${open.includes(it.id) ? ' ef-acc__item--open' : ''}`
   }, /*#__PURE__*/React.createElement("button", {
@@ -3935,13 +4014,14 @@ function Avatar({
 function AvatarGroup({
   children,
   style,
-  className
+  className,
+  ...rest
 }) {
   __ds_scope.injectEfCss('ef-css-avatar', CSS);
-  return /*#__PURE__*/React.createElement("span", {
+  return /*#__PURE__*/React.createElement("span", _extends({}, rest, {
     className: `ef-avatar-group${className ? ' ' + className : ''}`,
     style: style
-  }, children);
+  }), children);
 }
 Object.assign(__ds_scope, { Avatar, AvatarGroup });
 })(); } catch (e) { __ds_ns.__errors.push({ path: "components/display/Avatar.jsx", error: String((e && e.message) || e) }); }
@@ -4039,6 +4119,7 @@ Object.assign(__ds_scope, { Card });
 
 // components/display/Carousel.jsx
 try { (() => {
+function _extends() { return _extends = Object.assign ? Object.assign.bind() : function (n) { for (var e = 1; e < arguments.length; e++) { var t = arguments[e]; for (var r in t) ({}).hasOwnProperty.call(t, r) && (n[r] = t[r]); } return n; }, _extends.apply(null, arguments); }
 const CSS = `
 .ef-carousel{position:relative}
 .ef-carousel__track{display:grid;grid-auto-flow:column;overflow-x:auto;scroll-snap-type:x mandatory;scroll-behavior:smooth;scrollbar-width:none}
@@ -4064,7 +4145,8 @@ function Carousel({
   showDots = true,
   ariaLabel = 'Carousel',
   style,
-  className
+  className,
+  ...rest
 }) {
   __ds_scope.injectEfCss('ef-css-carousel', CSS);
   const track = React.useRef(null);
@@ -4086,12 +4168,12 @@ function Carousel({
     const el = track.current;
     if (el) setIndex(Math.min(count - 1, Math.max(0, Math.round(el.scrollLeft / step()))));
   };
-  return /*#__PURE__*/React.createElement("div", {
+  return /*#__PURE__*/React.createElement("div", _extends({}, rest, {
     role: "region",
     "aria-label": ariaLabel,
     className: `ef-carousel${className ? ' ' + className : ''}`,
     style: style
-  }, /*#__PURE__*/React.createElement("div", {
+  }), /*#__PURE__*/React.createElement("div", {
     ref: track,
     className: "ef-carousel__track",
     style: {
@@ -4136,6 +4218,7 @@ Object.assign(__ds_scope, { Carousel });
 
 // components/display/Collapsible.jsx
 try { (() => {
+function _extends() { return _extends = Object.assign ? Object.assign.bind() : function (n) { for (var e = 1; e < arguments.length; e++) { var t = arguments[e]; for (var r in t) ({}).hasOwnProperty.call(t, r) && (n[r] = t[r]); } return n; }, _extends.apply(null, arguments); }
 const CSS = `
 .ef-collapsible__trigger{display:flex;align-items:center;gap:8px;width:100%;padding:7px 0;border:none;background:none;cursor:pointer;text-align:left;font-family:var(--font-sans);font-size:var(--text-md);font-weight:600;color:var(--text-primary);border-radius:var(--radius-sm)}
 .ef-collapsible__trigger:focus-visible{outline:none;box-shadow:var(--focus-ring)}
@@ -4151,7 +4234,8 @@ function Collapsible({
   onOpenChange,
   children,
   style,
-  className
+  className,
+  ...rest
 }) {
   __ds_scope.injectEfCss('ef-css-collapsible', CSS);
   const [un, setUn] = React.useState(!!defaultOpen);
@@ -4160,10 +4244,10 @@ function Collapsible({
     if (open === undefined) setUn(!isOpen);
     if (onOpenChange) onOpenChange(!isOpen);
   };
-  return /*#__PURE__*/React.createElement("div", {
+  return /*#__PURE__*/React.createElement("div", _extends({}, rest, {
     className: `ef-collapsible${isOpen ? ' ef-collapsible--open' : ''}${className ? ' ' + className : ''}`,
     style: style
-  }, /*#__PURE__*/React.createElement("button", {
+  }), /*#__PURE__*/React.createElement("button", {
     type: "button",
     className: "ef-collapsible__trigger",
     "aria-expanded": isOpen,
@@ -4182,6 +4266,7 @@ Object.assign(__ds_scope, { Collapsible });
 
 // components/display/Divider.jsx
 try { (() => {
+function _extends() { return _extends = Object.assign ? Object.assign.bind() : function (n) { for (var e = 1; e < arguments.length; e++) { var t = arguments[e]; for (var r in t) ({}).hasOwnProperty.call(t, r) && (n[r] = t[r]); } return n; }, _extends.apply(null, arguments); }
 const CSS = `
 .ef-divider{display:flex;align-items:center;gap:12px;border:none;margin:0}
 .ef-divider__line{flex:1;height:1px;background:var(--border-default)}
@@ -4192,13 +4277,14 @@ function Divider({
   label,
   vertical,
   style,
-  className
+  className,
+  ...rest
 }) {
   __ds_scope.injectEfCss('ef-css-divider', CSS);
-  if (vertical) return /*#__PURE__*/React.createElement("span", {
+  if (vertical) return /*#__PURE__*/React.createElement("span", _extends({}, rest, {
     className: `ef-divider--vertical${className ? ' ' + className : ''}`,
     style: style
-  });
+  }));
   return /*#__PURE__*/React.createElement("div", {
     role: "separator",
     className: `ef-divider${className ? ' ' + className : ''}`,
@@ -4216,19 +4302,21 @@ Object.assign(__ds_scope, { Divider });
 
 // components/display/Kbd.jsx
 try { (() => {
+function _extends() { return _extends = Object.assign ? Object.assign.bind() : function (n) { for (var e = 1; e < arguments.length; e++) { var t = arguments[e]; for (var r in t) ({}).hasOwnProperty.call(t, r) && (n[r] = t[r]); } return n; }, _extends.apply(null, arguments); }
 const CSS = `
 .ef-kbd{display:inline-flex;align-items:center;justify-content:center;min-width:18px;height:19px;padding:0 5px;border:1px solid var(--border-strong);border-bottom-width:2px;border-radius:var(--radius-sm);background:var(--surface-card);font-family:var(--font-mono);font-size:11px;color:var(--text-secondary);line-height:1}
 `;
 function Kbd({
   children,
   style,
-  className
+  className,
+  ...rest
 }) {
   __ds_scope.injectEfCss('ef-css-kbd', CSS);
-  return /*#__PURE__*/React.createElement("kbd", {
+  return /*#__PURE__*/React.createElement("kbd", _extends({}, rest, {
     className: `ef-kbd${className ? ' ' + className : ''}`,
     style: style
-  }, children);
+  }), children);
 }
 Object.assign(__ds_scope, { Kbd });
 })(); } catch (e) { __ds_ns.__errors.push({ path: "components/display/Kbd.jsx", error: String((e && e.message) || e) }); }
@@ -4278,6 +4366,7 @@ Object.assign(__ds_scope, { Link });
 
 // components/display/ListItem.jsx
 try { (() => {
+function _extends() { return _extends = Object.assign ? Object.assign.bind() : function (n) { for (var e = 1; e < arguments.length; e++) { var t = arguments[e]; for (var r in t) ({}).hasOwnProperty.call(t, r) && (n[r] = t[r]); } return n; }, _extends.apply(null, arguments); }
 const CSS = `
 .ef-listitem{display:flex;align-items:center;gap:12px;padding:10px 12px;border-radius:var(--radius-sm);text-align:left;width:100%;border:none;background:none;font-family:var(--font-sans);color:var(--text-primary)}
 button.ef-listitem,a.ef-listitem{cursor:pointer;transition:background var(--dur-fast) var(--ease-out);text-decoration:none}
@@ -4298,16 +4387,17 @@ function ListItem({
   onClick,
   href,
   style,
-  className
+  className,
+  ...rest
 }) {
   __ds_scope.injectEfCss('ef-css-listitem', CSS);
   const Tag = href ? 'a' : onClick ? 'button' : 'div';
-  return /*#__PURE__*/React.createElement(Tag, {
+  return /*#__PURE__*/React.createElement(Tag, _extends({}, rest, {
     href: href,
     onClick: onClick,
     className: `ef-listitem${className ? ' ' + className : ''}`,
     style: style
-  }, media ? media : icon ? /*#__PURE__*/React.createElement("span", {
+  }), media ? media : icon ? /*#__PURE__*/React.createElement("span", {
     className: "ef-listitem__media"
   }, /*#__PURE__*/React.createElement(__ds_scope.Icon, {
     name: icon,
@@ -4339,6 +4429,7 @@ Object.assign(__ds_scope, { ListItem });
 
 // components/display/Resizable.jsx
 try { (() => {
+function _extends() { return _extends = Object.assign ? Object.assign.bind() : function (n) { for (var e = 1; e < arguments.length; e++) { var t = arguments[e]; for (var r in t) ({}).hasOwnProperty.call(t, r) && (n[r] = t[r]); } return n; }, _extends.apply(null, arguments); }
 const CSS = `
 .ef-resizable{display:flex;width:100%;height:100%;min-height:0;min-width:0}
 .ef-resizable--vertical{flex-direction:column}
@@ -4360,7 +4451,8 @@ function Resizable({
   onRatioChange,
   children,
   style,
-  className
+  className,
+  ...rest
 }) {
   __ds_scope.injectEfCss('ef-css-resizable', CSS);
   const [ratio, setRatio] = React.useState(defaultRatio);
@@ -4399,11 +4491,11 @@ function Resizable({
     apply(ratio + d);
   };
   const kids = React.Children.toArray(children);
-  return /*#__PURE__*/React.createElement("div", {
+  return /*#__PURE__*/React.createElement("div", _extends({}, rest, {
     ref: ref,
     className: `ef-resizable ef-resizable--${direction}${className ? ' ' + className : ''}`,
     style: style
-  }, /*#__PURE__*/React.createElement("div", {
+  }), /*#__PURE__*/React.createElement("div", {
     className: "ef-resizable__pane",
     style: {
       flexBasis: ratio * 100 + '%',
@@ -4504,6 +4596,7 @@ Object.assign(__ds_scope, { Tag });
 
 // components/display/TreeList.jsx
 try { (() => {
+function _extends() { return _extends = Object.assign ? Object.assign.bind() : function (n) { for (var e = 1; e < arguments.length; e++) { var t = arguments[e]; for (var r in t) ({}).hasOwnProperty.call(t, r) && (n[r] = t[r]); } return n; }, _extends.apply(null, arguments); }
 const CSS = `
 .ef-tree{display:flex;flex-direction:column;gap:1px;font-size:var(--text-sm)}
 .ef-tree__row{display:flex;align-items:center;gap:7px;height:30px;padding:0 8px;border:none;border-radius:var(--radius-sm);background:none;cursor:pointer;text-align:left;font-family:var(--font-sans);font-size:var(--text-sm);color:var(--text-secondary);width:100%;transition:background var(--dur-fast) var(--ease-out),color var(--dur-fast) var(--ease-out)}
@@ -4575,7 +4668,8 @@ function TreeList({
   onSelect,
   defaultOpen,
   style,
-  className
+  className,
+  ...rest
 }) {
   __ds_scope.injectEfCss('ef-css-tree', CSS);
   const [open, setOpen] = React.useState(defaultOpen || nodes.filter(n => n.children).map(n => n.id));
@@ -4586,11 +4680,11 @@ function TreeList({
     if (value == null) setInnerSel(id);
     if (onSelect) onSelect(id, node);
   };
-  return /*#__PURE__*/React.createElement("div", {
+  return /*#__PURE__*/React.createElement("div", _extends({}, rest, {
     role: "tree",
     className: `ef-tree${className ? ' ' + className : ''}`,
     style: style
-  }, nodes.map(n => /*#__PURE__*/React.createElement(Node, {
+  }), nodes.map(n => /*#__PURE__*/React.createElement(Node, {
     key: n.id,
     node: n,
     depth: 0,
@@ -4605,6 +4699,7 @@ Object.assign(__ds_scope, { TreeList });
 
 // components/feedback/Alert.jsx
 try { (() => {
+function _extends() { return _extends = Object.assign ? Object.assign.bind() : function (n) { for (var e = 1; e < arguments.length; e++) { var t = arguments[e]; for (var r in t) ({}).hasOwnProperty.call(t, r) && (n[r] = t[r]); } return n; }, _extends.apply(null, arguments); }
 const CSS = `
 .ef-alert{display:flex;gap:10px;align-items:flex-start;padding:12px 14px;border:1px solid var(--border-strong);border-radius:var(--radius-md);background:var(--surface-card)}
 .ef-alert__icon{display:inline-flex;margin-top:1px;flex:none}
@@ -4631,14 +4726,15 @@ function Alert({
   action,
   children,
   style,
-  className
+  className,
+  ...rest
 }) {
   __ds_scope.injectEfCss('ef-css-alert', CSS);
-  return /*#__PURE__*/React.createElement("div", {
+  return /*#__PURE__*/React.createElement("div", _extends({}, rest, {
     role: "status",
     className: `ef-alert ef-alert--${tone}${className ? ' ' + className : ''}`,
     style: style
-  }, /*#__PURE__*/React.createElement("span", {
+  }), /*#__PURE__*/React.createElement("span", {
     className: "ef-alert__icon"
   }, /*#__PURE__*/React.createElement(__ds_scope.Icon, {
     name: icon || ICONS[tone],
@@ -4661,6 +4757,7 @@ Object.assign(__ds_scope, { Alert });
 
 // components/feedback/Loader.jsx
 try { (() => {
+function _extends() { return _extends = Object.assign ? Object.assign.bind() : function (n) { for (var e = 1; e < arguments.length; e++) { var t = arguments[e]; for (var r in t) ({}).hasOwnProperty.call(t, r) && (n[r] = t[r]); } return n; }, _extends.apply(null, arguments); }
 const CSS = `
 .ef-loader{display:inline-flex;align-items:baseline;font-family:var(--font-sans);font-size:13.5px;color:var(--text-muted)}
 .ef-loader--pulse{animation:ef-loader-pulse var(--ef-loader-dur,1.4s) ease-in-out infinite both}
@@ -4679,13 +4776,14 @@ function Loader({
   duration,
   children = 'Thinking',
   style,
-  className
+  className,
+  ...rest
 }) {
   __ds_scope.injectEfCss('ef-css-loader', CSS);
   const vars = duration ? {
     '--ef-loader-dur': duration + 's'
   } : null;
-  return /*#__PURE__*/React.createElement("span", {
+  return /*#__PURE__*/React.createElement("span", _extends({}, rest, {
     role: "status",
     "aria-label": typeof children === 'string' ? children : 'Loading',
     className: `ef-loader ef-loader--${variant}${className ? ' ' + className : ''}`,
@@ -4693,7 +4791,7 @@ function Loader({
       ...vars,
       ...style
     }
-  }, children, dots ? /*#__PURE__*/React.createElement("span", {
+  }), children, dots ? /*#__PURE__*/React.createElement("span", {
     className: "ef-loader__dots",
     "aria-hidden": "true"
   }, /*#__PURE__*/React.createElement("span", null, "."), /*#__PURE__*/React.createElement("span", null, "."), /*#__PURE__*/React.createElement("span", null, ".")) : null);
@@ -4703,6 +4801,7 @@ Object.assign(__ds_scope, { Loader });
 
 // components/feedback/Progress.jsx
 try { (() => {
+function _extends() { return _extends = Object.assign ? Object.assign.bind() : function (n) { for (var e = 1; e < arguments.length; e++) { var t = arguments[e]; for (var r in t) ({}).hasOwnProperty.call(t, r) && (n[r] = t[r]); } return n; }, _extends.apply(null, arguments); }
 const CSS = `
 .ef-progress{display:flex;flex-direction:column;gap:6px}
 .ef-progress__head{display:flex;justify-content:space-between;align-items:baseline}
@@ -4721,18 +4820,19 @@ function Progress({
   format,
   tone = 'default',
   style,
-  className
+  className,
+  ...rest
 }) {
   __ds_scope.injectEfCss('ef-css-progress', CSS);
   const pct = Math.min(100, Math.max(0, value / max * 100));
-  return /*#__PURE__*/React.createElement("div", {
+  return /*#__PURE__*/React.createElement("div", _extends({}, rest, {
     className: `ef-progress ef-progress--${tone}${className ? ' ' + className : ''}`,
     style: style,
     role: "progressbar",
     "aria-valuenow": value,
     "aria-valuemin": 0,
     "aria-valuemax": max
-  }, (label || showValue) && /*#__PURE__*/React.createElement("div", {
+  }), (label || showValue) && /*#__PURE__*/React.createElement("div", {
     className: "ef-progress__head"
   }, /*#__PURE__*/React.createElement("span", {
     className: "ef-progress__label"
@@ -4752,6 +4852,7 @@ Object.assign(__ds_scope, { Progress });
 
 // components/feedback/Spinner.jsx
 try { (() => {
+function _extends() { return _extends = Object.assign ? Object.assign.bind() : function (n) { for (var e = 1; e < arguments.length; e++) { var t = arguments[e]; for (var r in t) ({}).hasOwnProperty.call(t, r) && (n[r] = t[r]); } return n; }, _extends.apply(null, arguments); }
 const CSS = `
 @keyframes ef-spinner{to{transform:rotate(360deg)}}
 .ef-spinner{display:inline-flex;color:var(--text-muted);animation:ef-spinner .7s linear infinite}
@@ -4760,10 +4861,11 @@ function Spinner({
   size = 16,
   label,
   style,
-  className
+  className,
+  ...rest
 }) {
   __ds_scope.injectEfCss('ef-css-spinner', CSS);
-  return /*#__PURE__*/React.createElement("span", {
+  return /*#__PURE__*/React.createElement("span", _extends({}, rest, {
     role: "status",
     "aria-label": label || 'Loading',
     style: {
@@ -4773,7 +4875,7 @@ function Spinner({
       ...style
     },
     className: className
-  }, /*#__PURE__*/React.createElement("span", {
+  }), /*#__PURE__*/React.createElement("span", {
     className: "ef-spinner"
   }, /*#__PURE__*/React.createElement(__ds_scope.Icon, {
     name: "loader-circle",
@@ -4790,6 +4892,7 @@ Object.assign(__ds_scope, { Spinner });
 
 // components/files/FileDrop.jsx
 try { (() => {
+function _extends() { return _extends = Object.assign ? Object.assign.bind() : function (n) { for (var e = 1; e < arguments.length; e++) { var t = arguments[e]; for (var r in t) ({}).hasOwnProperty.call(t, r) && (n[r] = t[r]); } return n; }, _extends.apply(null, arguments); }
 const CSS = `
 .ef-filedrop{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;padding:32px 24px;border:1px dashed var(--sand-300);border-radius:var(--radius-md);background:var(--surface-card);cursor:pointer;text-align:center;transition:border-color var(--dur-fast) var(--ease-out),background var(--dur-fast) var(--ease-out)}
 .ef-filedrop:hover,.ef-filedrop--over{border-color:var(--accent);background:var(--surface-subtle)}
@@ -4807,7 +4910,8 @@ function FileDrop({
   title,
   hint,
   style,
-  className
+  className,
+  ...rest
 }) {
   __ds_scope.injectEfCss('ef-css-filedrop', CSS);
   const [over, setOver] = React.useState(false);
@@ -4815,7 +4919,7 @@ function FileDrop({
   const handle = files => {
     if (onFiles && files && files.length) onFiles([...files]);
   };
-  return /*#__PURE__*/React.createElement("div", {
+  return /*#__PURE__*/React.createElement("div", _extends({}, rest, {
     role: "button",
     tabIndex: 0,
     className: `ef-filedrop${over ? ' ef-filedrop--over' : ''}${className ? ' ' + className : ''}`,
@@ -4837,7 +4941,7 @@ function FileDrop({
       setOver(false);
       handle(e.dataTransfer.files);
     }
-  }, /*#__PURE__*/React.createElement("span", {
+  }), /*#__PURE__*/React.createElement("span", {
     className: "ef-filedrop__icon"
   }, /*#__PURE__*/React.createElement(__ds_scope.Icon, {
     name: "upload",
@@ -4865,6 +4969,7 @@ Object.assign(__ds_scope, { FileDrop });
 
 // components/files/FileTypeIcon.jsx
 try { (() => {
+function _extends() { return _extends = Object.assign ? Object.assign.bind() : function (n) { for (var e = 1; e < arguments.length; e++) { var t = arguments[e]; for (var r in t) ({}).hasOwnProperty.call(t, r) && (n[r] = t[r]); } return n; }, _extends.apply(null, arguments); }
 const CSS = `
 .ef-filetype{position:relative;display:inline-flex;align-items:center;justify-content:center;flex:none;background:var(--surface-card);border:1px solid var(--border-strong);border-radius:6px;color:var(--text-secondary)}
 .ef-filetype__ext{position:absolute;bottom:-5px;left:50%;transform:translateX(-50%);font-family:var(--font-mono);font-size:8px;font-weight:700;letter-spacing:.04em;padding:1px 4px;border-radius:3px;color:#fff;text-transform:uppercase;line-height:1.3}
@@ -4956,14 +5061,15 @@ function FileTypeIcon({
   size = 40,
   showExt = true,
   style,
-  className
+  className,
+  ...rest
 }) {
   __ds_scope.injectEfCss('ef-css-filetype', CSS);
   const k = KIND[ext.toLowerCase()] || {
     icon: 'file',
     color: 'var(--sand-500)'
   };
-  return /*#__PURE__*/React.createElement("span", {
+  return /*#__PURE__*/React.createElement("span", _extends({}, rest, {
     className: `ef-filetype${className ? ' ' + className : ''}`,
     style: {
       width: size,
@@ -4971,7 +5077,7 @@ function FileTypeIcon({
       ...style
     },
     title: '.' + ext
-  }, /*#__PURE__*/React.createElement(__ds_scope.Icon, {
+  }), /*#__PURE__*/React.createElement(__ds_scope.Icon, {
     name: k.icon,
     size: Math.round(size * 0.45)
   }), showExt ? /*#__PURE__*/React.createElement("span", {
@@ -4986,6 +5092,7 @@ Object.assign(__ds_scope, { FileTypeIcon });
 
 // components/finance/PaymentCard.jsx
 try { (() => {
+function _extends() { return _extends = Object.assign ? Object.assign.bind() : function (n) { for (var e = 1; e < arguments.length; e++) { var t = arguments[e]; for (var r in t) ({}).hasOwnProperty.call(t, r) && (n[r] = t[r]); } return n; }, _extends.apply(null, arguments); }
 const CSS = `
 .ef-paycard{position:relative;width:320px;aspect-ratio:1.586;border-radius:14px;padding:20px;display:flex;flex-direction:column;color:var(--brand-50);background:var(--brand-950);overflow:hidden;font-family:var(--font-sans)}
 .ef-paycard--caramel{background:var(--brand-700)}
@@ -5005,16 +5112,17 @@ function PaymentCard({
   variant = 'espresso',
   frozen,
   style,
-  className
+  className,
+  ...rest
 }) {
   __ds_scope.injectEfCss('ef-css-paycard', CSS);
-  return /*#__PURE__*/React.createElement("div", {
+  return /*#__PURE__*/React.createElement("div", _extends({}, rest, {
     className: `ef-paycard${variant === 'caramel' ? ' ef-paycard--caramel' : variant === 'paper' ? ' ef-paycard--paper' : ''}${className ? ' ' + className : ''}`,
     style: {
       filter: frozen ? 'grayscale(.7) opacity(.75)' : undefined,
       ...style
     }
-  }, /*#__PURE__*/React.createElement("span", {
+  }), /*#__PURE__*/React.createElement("span", {
     className: "ef-paycard__ring",
     style: {
       width: 220,
@@ -5121,6 +5229,7 @@ Object.assign(__ds_scope, { ButtonGroup });
 
 // components/forms/ButtonTile.jsx
 try { (() => {
+function _extends() { return _extends = Object.assign ? Object.assign.bind() : function (n) { for (var e = 1; e < arguments.length; e++) { var t = arguments[e]; for (var r in t) ({}).hasOwnProperty.call(t, r) && (n[r] = t[r]); } return n; }, _extends.apply(null, arguments); }
 const CSS = `
 .ef-tilegroup{display:grid;gap:10px}
 .ef-tile{position:relative;display:flex;flex-direction:column;align-items:flex-start;gap:8px;padding:16px;border:1px solid var(--border-strong);border-radius:var(--radius-md);background:var(--surface-card);cursor:pointer;text-align:left;font-family:var(--font-sans);color:var(--text-primary);transition:border-color var(--dur-fast) var(--ease-out),background var(--dur-fast) var(--ease-out)}
@@ -5143,16 +5252,17 @@ function ButtonTile({
   disabled,
   onClick,
   style,
-  className
+  className,
+  ...rest
 }) {
   __ds_scope.injectEfCss('ef-css-tile', CSS);
-  return /*#__PURE__*/React.createElement("button", {
+  return /*#__PURE__*/React.createElement("button", _extends({}, rest, {
     className: `ef-tile${selected ? ' ef-tile--on' : ''}${className ? ' ' + className : ''}`,
     disabled: disabled,
     "aria-pressed": !!selected,
     onClick: onClick,
     style: style
-  }, icon ? /*#__PURE__*/React.createElement("span", {
+  }), icon ? /*#__PURE__*/React.createElement("span", {
     className: "ef-tile__icon"
   }, /*#__PURE__*/React.createElement(__ds_scope.Icon, {
     name: icon,
@@ -5173,16 +5283,17 @@ function ButtonTileGroup({
   columns = 3,
   children,
   style,
-  className
+  className,
+  ...rest
 }) {
   __ds_scope.injectEfCss('ef-css-tile', CSS);
-  return /*#__PURE__*/React.createElement("div", {
+  return /*#__PURE__*/React.createElement("div", _extends({}, rest, {
     className: `ef-tilegroup${className ? ' ' + className : ''}`,
     style: {
       gridTemplateColumns: `repeat(${columns},1fr)`,
       ...style
     }
-  }, children);
+  }), children);
 }
 Object.assign(__ds_scope, { ButtonTile, ButtonTileGroup });
 })(); } catch (e) { __ds_ns.__errors.push({ path: "components/forms/ButtonTile.jsx", error: String((e && e.message) || e) }); }
@@ -5236,6 +5347,7 @@ Object.assign(__ds_scope, { Checkbox });
 
 // components/forms/DigitEntry.jsx
 try { (() => {
+function _extends() { return _extends = Object.assign ? Object.assign.bind() : function (n) { for (var e = 1; e < arguments.length; e++) { var t = arguments[e]; for (var r in t) ({}).hasOwnProperty.call(t, r) && (n[r] = t[r]); } return n; }, _extends.apply(null, arguments); }
 const CSS = `
 .ef-digits{display:flex;gap:8px}
 .ef-digits__cell{width:44px;height:52px;border:1px solid var(--border-strong);border-radius:var(--radius-sm);background:var(--surface-card);color:var(--text-primary);font-family:var(--font-mono);font-size:22px;font-weight:600;text-align:center;transition:border-color var(--dur-fast) var(--ease-out),box-shadow var(--dur-fast) var(--ease-out)}
@@ -5253,7 +5365,8 @@ function DigitEntry({
   invalid,
   disabled,
   style,
-  className
+  className,
+  ...rest
 }) {
   __ds_scope.injectEfCss('ef-css-digits', CSS);
   const [inner, setInner] = React.useState('');
@@ -5301,10 +5414,10 @@ function DigitEntry({
   const group = /*#__PURE__*/React.createElement("div", {
     className: `ef-digits${invalid ? ' ef-digits--invalid' : ''}`
   }, cells);
-  if (!label) return /*#__PURE__*/React.createElement("div", {
+  if (!label) return /*#__PURE__*/React.createElement("div", _extends({}, rest, {
     className: className,
     style: style
-  }, group);
+  }), group);
   return /*#__PURE__*/React.createElement("div", {
     className: `ef-field${className ? ' ' + className : ''}`,
     style: style
@@ -5360,6 +5473,7 @@ Object.assign(__ds_scope, { IconButton });
 
 // components/ai/ChatMessage.jsx
 try { (() => {
+function _extends() { return _extends = Object.assign ? Object.assign.bind() : function (n) { for (var e = 1; e < arguments.length; e++) { var t = arguments[e]; for (var r in t) ({}).hasOwnProperty.call(t, r) && (n[r] = t[r]); } return n; }, _extends.apply(null, arguments); }
 const CSS = `
 .ef-msg{display:flex;gap:12px;max-width:720px}
 .ef-msg__avatar{flex:none;margin-top:2px}
@@ -5384,7 +5498,8 @@ function ChatMessage({
   onRetry,
   children,
   style,
-  className
+  className,
+  ...rest
 }) {
   __ds_scope.injectEfCss('ef-css-msg', CSS);
   const who = name || (role === 'user' ? 'You' : role === 'system' ? 'System' : 'Agent');
@@ -5402,10 +5517,10 @@ function ChatMessage({
     onClick: onRetry
   }) : null) : null;
   const actionRow = actions === false ? null : actions != null && actions !== true ? actions : builtIn;
-  return /*#__PURE__*/React.createElement("div", {
+  return /*#__PURE__*/React.createElement("div", _extends({}, rest, {
     className: `ef-msg ef-msg--${role}${className ? ' ' + className : ''}`,
     style: style
-  }, role === 'assistant' || role === 'system' ? /*#__PURE__*/React.createElement("span", {
+  }), role === 'assistant' || role === 'system' ? /*#__PURE__*/React.createElement("span", {
     className: "ef-msg__bot"
   }, /*#__PURE__*/React.createElement(__ds_scope.Icon, {
     name: "bot",
@@ -5439,6 +5554,7 @@ Object.assign(__ds_scope, { ChatMessage });
 
 // components/ai/PromptComposer.jsx
 try { (() => {
+function _extends() { return _extends = Object.assign ? Object.assign.bind() : function (n) { for (var e = 1; e < arguments.length; e++) { var t = arguments[e]; for (var r in t) ({}).hasOwnProperty.call(t, r) && (n[r] = t[r]); } return n; }, _extends.apply(null, arguments); }
 const CSS = `
 .ef-composer{display:flex;flex-direction:column;background:var(--surface-card);border:1px solid var(--border-strong);border-radius:var(--radius-lg);transition:border-color var(--dur-fast) var(--ease-out),box-shadow var(--dur-fast) var(--ease-out)}
 .ef-composer:focus-within{border-color:var(--accent);box-shadow:var(--focus-ring)}
@@ -5467,7 +5583,8 @@ function PromptComposer({
   attachments,
   hint,
   style,
-  className
+  className,
+  ...rest
 }) {
   __ds_scope.injectEfCss('ef-css-composer', CSS);
   const [inner, setInner] = React.useState(defaultValue || '');
@@ -5482,10 +5599,10 @@ function PromptComposer({
       if (value == null) setInner('');
     }
   };
-  return /*#__PURE__*/React.createElement("div", {
+  return /*#__PURE__*/React.createElement("div", _extends({}, rest, {
     className: `ef-composer${className ? ' ' + className : ''}`,
     style: style
-  }, attachments ? /*#__PURE__*/React.createElement("div", {
+  }), attachments ? /*#__PURE__*/React.createElement("div", {
     style: {
       display: 'flex',
       gap: 6,
@@ -5547,6 +5664,7 @@ Object.assign(__ds_scope, { PromptComposer });
 
 // components/code/CopyField.jsx
 try { (() => {
+function _extends() { return _extends = Object.assign ? Object.assign.bind() : function (n) { for (var e = 1; e < arguments.length; e++) { var t = arguments[e]; for (var r in t) ({}).hasOwnProperty.call(t, r) && (n[r] = t[r]); } return n; }, _extends.apply(null, arguments); }
 const CSS = `
 .ef-copyfield{display:flex;flex-direction:column;gap:6px}
 .ef-copyfield__label{font-size:var(--text-sm);font-weight:var(--weight-semibold);color:var(--text-primary)}
@@ -5558,7 +5676,8 @@ function CopyField({
   value,
   secret,
   style,
-  className
+  className,
+  ...rest
 }) {
   __ds_scope.injectEfCss('ef-css-copyfield', CSS);
   const [show, setShow] = React.useState(!secret);
@@ -5588,10 +5707,10 @@ function CopyField({
     className: 'ef-copyfield__box' + (className ? ' ' + className : ''),
     style
   });
-  return /*#__PURE__*/React.createElement("span", {
+  return /*#__PURE__*/React.createElement("span", _extends({}, rest, {
     className: `ef-copyfield${className ? ' ' + className : ''}`,
     style: style
-  }, /*#__PURE__*/React.createElement("span", {
+  }), /*#__PURE__*/React.createElement("span", {
     className: "ef-copyfield__label"
   }, label), box);
 }
@@ -5600,6 +5719,7 @@ Object.assign(__ds_scope, { CopyField });
 
 // components/dates/Calendar.jsx
 try { (() => {
+function _extends() { return _extends = Object.assign ? Object.assign.bind() : function (n) { for (var e = 1; e < arguments.length; e++) { var t = arguments[e]; for (var r in t) ({}).hasOwnProperty.call(t, r) && (n[r] = t[r]); } return n; }, _extends.apply(null, arguments); }
 const CSS = `
 .ef-cal{width:252px;user-select:none}
 .ef-cal__head{display:flex;align-items:center;gap:4px;margin-bottom:8px}
@@ -5623,7 +5743,8 @@ function Calendar({
   value,
   onChange,
   style,
-  className
+  className,
+  ...rest
 }) {
   __ds_scope.injectEfCss('ef-css-cal', CSS);
   const sel = value ? new Date(value + 'T00:00:00') : null;
@@ -5684,10 +5805,10 @@ function Calendar({
   const rows = Array.from({
     length: 6
   }, (_, r) => cells.slice(r * 7, r * 7 + 7));
-  return /*#__PURE__*/React.createElement("div", {
+  return /*#__PURE__*/React.createElement("div", _extends({}, rest, {
     className: `ef-cal${className ? ' ' + className : ''}`,
     style: style
-  }, /*#__PURE__*/React.createElement("div", {
+  }), /*#__PURE__*/React.createElement("div", {
     className: "ef-cal__head"
   }, /*#__PURE__*/React.createElement(__ds_scope.IconButton, {
     icon: "chevron-left",
@@ -5743,6 +5864,7 @@ Object.assign(__ds_scope, { Calendar });
 
 // components/feedback/Banner.jsx
 try { (() => {
+function _extends() { return _extends = Object.assign ? Object.assign.bind() : function (n) { for (var e = 1; e < arguments.length; e++) { var t = arguments[e]; for (var r in t) ({}).hasOwnProperty.call(t, r) && (n[r] = t[r]); } return n; }, _extends.apply(null, arguments); }
 const CSS = `
 .ef-banner{display:flex;align-items:center;gap:10px;padding:9px 16px;font-size:var(--text-sm);border-bottom:1px solid var(--border-default)}
 .ef-banner--neutral{background:var(--surface-sunken);color:var(--text-primary)}
@@ -5762,14 +5884,15 @@ function Banner({
   onDismiss,
   children,
   style,
-  className
+  className,
+  ...rest
 }) {
   __ds_scope.injectEfCss('ef-css-banner', CSS);
-  return /*#__PURE__*/React.createElement("div", {
+  return /*#__PURE__*/React.createElement("div", _extends({}, rest, {
     role: "status",
     className: `ef-banner ef-banner--${tone}${className ? ' ' + className : ''}`,
     style: style
-  }, icon ? /*#__PURE__*/React.createElement("span", {
+  }), icon ? /*#__PURE__*/React.createElement("span", {
     className: "ef-banner__icon"
   }, /*#__PURE__*/React.createElement(__ds_scope.Icon, {
     name: icon,
@@ -5791,6 +5914,7 @@ Object.assign(__ds_scope, { Banner });
 
 // components/feedback/Dialog.jsx
 try { (() => {
+function _extends() { return _extends = Object.assign ? Object.assign.bind() : function (n) { for (var e = 1; e < arguments.length; e++) { var t = arguments[e]; for (var r in t) ({}).hasOwnProperty.call(t, r) && (n[r] = t[r]); } return n; }, _extends.apply(null, arguments); }
 const CSS = `
 .ef-dialog__overlay{position:fixed;inset:0;background:var(--overlay-scrim);display:flex;align-items:center;justify-content:center;padding:24px;z-index:var(--z-overlay);animation:ef-fade var(--dur-med) var(--ease-out)}
 .ef-dialog{width:100%;max-width:440px;background:var(--surface-card);border-radius:var(--radius-lg);box-shadow:var(--shadow-pop);animation:ef-pop var(--dur-slow) var(--ease-spring);overflow:hidden}
@@ -5811,7 +5935,8 @@ function Dialog({
   description,
   footer,
   width = 440,
-  children
+  children,
+  ...rest
 }) {
   __ds_scope.injectEfCss('ef-css-dialog', CSS);
   const panelRef = React.useRef(null);
@@ -5855,12 +5980,12 @@ function Dialog({
     return () => document.removeEventListener('keydown', onKey);
   }, [open, onClose]);
   if (!open) return null;
-  return /*#__PURE__*/React.createElement("div", {
+  return /*#__PURE__*/React.createElement("div", _extends({}, rest, {
     className: "ef-dialog__overlay",
     onMouseDown: e => {
       if (e.target === e.currentTarget && onClose) onClose();
     }
-  }, /*#__PURE__*/React.createElement("div", {
+  }), /*#__PURE__*/React.createElement("div", {
     className: "ef-dialog",
     role: "dialog",
     "aria-modal": "true",
@@ -5895,6 +6020,7 @@ Object.assign(__ds_scope, { Dialog });
 
 // components/feedback/Toast.jsx
 try { (() => {
+function _extends() { return _extends = Object.assign ? Object.assign.bind() : function (n) { for (var e = 1; e < arguments.length; e++) { var t = arguments[e]; for (var r in t) ({}).hasOwnProperty.call(t, r) && (n[r] = t[r]); } return n; }, _extends.apply(null, arguments); }
 const CSS = `
 .ef-toast{display:flex;align-items:flex-start;gap:10px;width:360px;max-width:100%;padding:12px 14px;background:var(--surface-inverse);color:var(--text-inverse);border-radius:var(--radius-md);box-shadow:var(--shadow-lg);animation:ef-toast-in var(--dur-slow) var(--ease-spring)}
 .ef-toast__icon{display:inline-flex;margin-top:1px}
@@ -5931,14 +6057,15 @@ function Toast({
   onAction,
   onClose,
   style,
-  className
+  className,
+  ...rest
 }) {
   __ds_scope.injectEfCss('ef-css-toast', CSS);
-  return /*#__PURE__*/React.createElement("div", {
+  return /*#__PURE__*/React.createElement("div", _extends({}, rest, {
     className: `ef-toast ef-toast--${tone}${className ? ' ' + className : ''}`,
     role: "status",
     style: style
-  }, /*#__PURE__*/React.createElement("span", {
+  }), /*#__PURE__*/React.createElement("span", {
     className: "ef-toast__icon"
   }, /*#__PURE__*/React.createElement(__ds_scope.Icon, {
     name: ICONS[tone] || 'info',
@@ -5964,19 +6091,21 @@ function Toast({
 function ToastStack({
   children,
   style,
-  className
+  className,
+  ...rest
 }) {
   __ds_scope.injectEfCss('ef-css-toast', CSS);
-  return /*#__PURE__*/React.createElement("div", {
+  return /*#__PURE__*/React.createElement("div", _extends({}, rest, {
     className: `ef-toast-stack${className ? ' ' + className : ''}`,
     style: style
-  }, children);
+  }), children);
 }
 Object.assign(__ds_scope, { Toast, ToastStack });
 })(); } catch (e) { __ds_ns.__errors.push({ path: "components/feedback/Toast.jsx", error: String((e && e.message) || e) }); }
 
 // components/files/FileTile.jsx
 try { (() => {
+function _extends() { return _extends = Object.assign ? Object.assign.bind() : function (n) { for (var e = 1; e < arguments.length; e++) { var t = arguments[e]; for (var r in t) ({}).hasOwnProperty.call(t, r) && (n[r] = t[r]); } return n; }, _extends.apply(null, arguments); }
 const CSS = `
 .ef-filetile{display:flex;align-items:center;gap:12px;padding:10px 12px;border:1px solid var(--border-default);border-radius:var(--radius-md);background:var(--surface-card)}
 .ef-filetile__icon{display:inline-flex;align-items:center;justify-content:center;width:34px;height:34px;flex:none;border-radius:var(--radius-sm);background:var(--surface-sunken);color:var(--sand-700)}
@@ -6029,15 +6158,16 @@ function FileTile({
   onRemove,
   actions,
   style,
-  className
+  className,
+  ...rest
 }) {
   __ds_scope.injectEfCss('ef-css-filetile', CSS);
   const ext = (name || '').split('.').pop().toLowerCase();
   const icon = KIND_ICON[kind || EXT_KIND[ext]] || 'file';
-  return /*#__PURE__*/React.createElement("div", {
+  return /*#__PURE__*/React.createElement("div", _extends({}, rest, {
     className: `ef-filetile${className ? ' ' + className : ''}`,
     style: style
-  }, /*#__PURE__*/React.createElement("span", {
+  }), /*#__PURE__*/React.createElement("span", {
     className: "ef-filetile__icon"
   }, /*#__PURE__*/React.createElement(__ds_scope.Icon, {
     name: icon,
@@ -6140,6 +6270,7 @@ Object.assign(__ds_scope, { Input });
 
 // components/feedback/ConfirmDialog.jsx
 try { (() => {
+function _extends() { return _extends = Object.assign ? Object.assign.bind() : function (n) { for (var e = 1; e < arguments.length; e++) { var t = arguments[e]; for (var r in t) ({}).hasOwnProperty.call(t, r) && (n[r] = t[r]); } return n; }, _extends.apply(null, arguments); }
 function ConfirmDialog({
   open,
   onClose,
@@ -6150,14 +6281,15 @@ function ConfirmDialog({
   cancelLabel = 'Cancel',
   tone = 'danger',
   typeToConfirm,
-  children
+  children,
+  ...rest
 }) {
   const [typed, setTyped] = React.useState('');
   React.useEffect(() => {
     if (!open) setTyped('');
   }, [open]);
   const blocked = typeToConfirm ? typed !== typeToConfirm : false;
-  return /*#__PURE__*/React.createElement(__ds_scope.Dialog, {
+  return /*#__PURE__*/React.createElement(__ds_scope.Dialog, _extends({}, rest, {
     open: open,
     onClose: onClose,
     title: title,
@@ -6173,7 +6305,7 @@ function ConfirmDialog({
         if (onClose) onClose();
       }
     }, confirmLabel))
-  }, children, typeToConfirm ? /*#__PURE__*/React.createElement(__ds_scope.Input, {
+  }), children, typeToConfirm ? /*#__PURE__*/React.createElement(__ds_scope.Input, {
     label: `Type “${typeToConfirm}” to confirm`,
     value: typed,
     onChange: e => setTyped(e.target.value),
@@ -6243,6 +6375,7 @@ Object.assign(__ds_scope, { InputGroup });
 
 // components/forms/Label.jsx
 try { (() => {
+function _extends() { return _extends = Object.assign ? Object.assign.bind() : function (n) { for (var e = 1; e < arguments.length; e++) { var t = arguments[e]; for (var r in t) ({}).hasOwnProperty.call(t, r) && (n[r] = t[r]); } return n; }, _extends.apply(null, arguments); }
 const CSS = `
 .ef-label{display:inline-flex;align-items:baseline;gap:5px;font-family:var(--font-sans);font-size:var(--text-sm);font-weight:600;color:var(--text-primary)}
 .ef-label__req{color:var(--danger-600);font-weight:600}
@@ -6254,14 +6387,15 @@ function Label({
   hint,
   children,
   style,
-  className
+  className,
+  ...rest
 }) {
   __ds_scope.injectEfCss('ef-css-label', CSS);
-  return /*#__PURE__*/React.createElement("label", {
+  return /*#__PURE__*/React.createElement("label", _extends({}, rest, {
     htmlFor: htmlFor,
     className: `ef-label${className ? ' ' + className : ''}`,
     style: style
-  }, children, required ? /*#__PURE__*/React.createElement("span", {
+  }), children, required ? /*#__PURE__*/React.createElement("span", {
     className: "ef-label__req",
     "aria-hidden": "true"
   }, "*") : null, hint ? /*#__PURE__*/React.createElement("span", {
@@ -6601,7 +6735,8 @@ function ToggleGroup({
   onChange,
   children,
   style,
-  className
+  className,
+  ...rest
 }) {
   __ds_scope.injectEfCss('ef-css-toggle', CSS);
   const [un, setUn] = React.useState(defaultValue !== undefined ? defaultValue : type === 'multiple' ? [] : null);
@@ -6616,11 +6751,11 @@ function ToggleGroup({
     if (value === undefined) setUn(next);
     if (onChange) onChange(next);
   };
-  return /*#__PURE__*/React.createElement("div", {
+  return /*#__PURE__*/React.createElement("div", _extends({}, rest, {
     role: "group",
     className: `ef-toggle-group${className ? ' ' + className : ''}`,
     style: style
-  }, /*#__PURE__*/React.createElement(GroupCtx.Provider, {
+  }), /*#__PURE__*/React.createElement(GroupCtx.Provider, {
     value: {
       isOn,
       toggle
@@ -6632,6 +6767,7 @@ Object.assign(__ds_scope, { Toggle, ToggleGroup });
 
 // components/navigation/Breadcrumbs.jsx
 try { (() => {
+function _extends() { return _extends = Object.assign ? Object.assign.bind() : function (n) { for (var e = 1; e < arguments.length; e++) { var t = arguments[e]; for (var r in t) ({}).hasOwnProperty.call(t, r) && (n[r] = t[r]); } return n; }, _extends.apply(null, arguments); }
 const CSS = `
 .ef-crumbs{display:flex;align-items:center;gap:6px;flex-wrap:wrap}
 .ef-crumbs__link{font-size:var(--text-sm);color:var(--text-muted);text-decoration:none;padding:2px 4px;border-radius:var(--radius-sm);transition:color var(--dur-fast) var(--ease-out)}
@@ -6642,14 +6778,15 @@ a.ef-crumbs__link:hover{color:var(--text-primary);text-decoration:none}
 function Breadcrumbs({
   items,
   style,
-  className
+  className,
+  ...rest
 }) {
   __ds_scope.injectEfCss('ef-css-crumbs', CSS);
-  return /*#__PURE__*/React.createElement("nav", {
+  return /*#__PURE__*/React.createElement("nav", _extends({}, rest, {
     "aria-label": "Breadcrumb",
     className: `ef-crumbs${className ? ' ' + className : ''}`,
     style: style
-  }, items.map((it, i) => {
+  }), items.map((it, i) => {
     const last = i === items.length - 1;
     return /*#__PURE__*/React.createElement(React.Fragment, {
       key: i
@@ -6673,6 +6810,7 @@ Object.assign(__ds_scope, { Breadcrumbs });
 
 // components/navigation/Menubar.jsx
 try { (() => {
+function _extends() { return _extends = Object.assign ? Object.assign.bind() : function (n) { for (var e = 1; e < arguments.length; e++) { var t = arguments[e]; for (var r in t) ({}).hasOwnProperty.call(t, r) && (n[r] = t[r]); } return n; }, _extends.apply(null, arguments); }
 const CSS = `
 .ef-menubar{display:inline-flex;gap:2px;padding:2px;border:1px solid var(--border-default);border-radius:var(--radius-sm);background:var(--surface-card)}
 .ef-menubar__wrap{position:relative}
@@ -6694,7 +6832,8 @@ function Menubar({
   menus,
   onSelect,
   style,
-  className
+  className,
+  ...rest
 }) {
   __ds_scope.injectEfCss('ef-css-menubar', CSS);
   const [open, setOpen] = React.useState(null);
@@ -6796,12 +6935,12 @@ function Menubar({
       setOpen((i - 1 + menus.length) % menus.length);
     } else if (e.key.length === 1 && /\S/.test(e.key) && !e.metaKey && !e.ctrlKey && !e.altKey) typeahead(e);
   };
-  return /*#__PURE__*/React.createElement("div", {
+  return /*#__PURE__*/React.createElement("div", _extends({}, rest, {
     ref: ref,
     role: "menubar",
     className: `ef-menubar${className ? ' ' + className : ''}`,
     style: style
-  }, menus.map((m, i) => /*#__PURE__*/React.createElement("span", {
+  }), menus.map((m, i) => /*#__PURE__*/React.createElement("span", {
     key: m.label,
     className: "ef-menubar__wrap"
   }, /*#__PURE__*/React.createElement("button", {
@@ -6846,6 +6985,7 @@ Object.assign(__ds_scope, { Menubar });
 
 // components/navigation/PageControl.jsx
 try { (() => {
+function _extends() { return _extends = Object.assign ? Object.assign.bind() : function (n) { for (var e = 1; e < arguments.length; e++) { var t = arguments[e]; for (var r in t) ({}).hasOwnProperty.call(t, r) && (n[r] = t[r]); } return n; }, _extends.apply(null, arguments); }
 const CSS = `
 .ef-dots{display:inline-flex;align-items:center;gap:6px}
 .ef-dots__dot{width:7px;height:7px;padding:0;border:none;border-radius:var(--radius-full);background:var(--border-strong);cursor:pointer;transition:background var(--dur-fast) var(--ease-out),width var(--dur-med) var(--ease-out)}
@@ -6859,15 +6999,16 @@ function PageControl({
   onChange,
   label = 'Page',
   style,
-  className
+  className,
+  ...rest
 }) {
   __ds_scope.injectEfCss('ef-css-dots', CSS);
-  return /*#__PURE__*/React.createElement("div", {
+  return /*#__PURE__*/React.createElement("div", _extends({}, rest, {
     role: "tablist",
     "aria-label": label,
     className: `ef-dots${className ? ' ' + className : ''}`,
     style: style
-  }, Array.from({
+  }), Array.from({
     length: count
   }, (_, i) => /*#__PURE__*/React.createElement("button", {
     key: i,
@@ -6883,6 +7024,7 @@ Object.assign(__ds_scope, { PageControl });
 
 // components/navigation/Pagination.jsx
 try { (() => {
+function _extends() { return _extends = Object.assign ? Object.assign.bind() : function (n) { for (var e = 1; e < arguments.length; e++) { var t = arguments[e]; for (var r in t) ({}).hasOwnProperty.call(t, r) && (n[r] = t[r]); } return n; }, _extends.apply(null, arguments); }
 const CSS = `
 .ef-pager{display:flex;align-items:center;gap:4px}
 .ef-pager__btn{display:inline-flex;align-items:center;justify-content:center;min-width:28px;height:28px;padding:0 6px;border:1px solid transparent;border-radius:var(--radius-sm);background:none;cursor:pointer;font-family:var(--font-sans);font-size:var(--text-sm);color:var(--text-secondary);transition:background var(--dur-fast) var(--ease-out),color var(--dur-fast) var(--ease-out)}
@@ -6910,17 +7052,18 @@ function Pagination({
   pageCount,
   onChange,
   style,
-  className
+  className,
+  ...rest
 }) {
   __ds_scope.injectEfCss('ef-css-pager', CSS);
   const go = p => {
     if (p >= 1 && p <= pageCount && onChange) onChange(p);
   };
-  return /*#__PURE__*/React.createElement("nav", {
+  return /*#__PURE__*/React.createElement("nav", _extends({}, rest, {
     "aria-label": "Pagination",
     className: `ef-pager${className ? ' ' + className : ''}`,
     style: style
-  }, /*#__PURE__*/React.createElement("button", {
+  }), /*#__PURE__*/React.createElement("button", {
     className: "ef-pager__btn",
     "aria-label": "Previous page",
     disabled: page <= 1,
@@ -6951,6 +7094,7 @@ Object.assign(__ds_scope, { Pagination });
 
 // components/navigation/SegmentedControl.jsx
 try { (() => {
+function _extends() { return _extends = Object.assign ? Object.assign.bind() : function (n) { for (var e = 1; e < arguments.length; e++) { var t = arguments[e]; for (var r in t) ({}).hasOwnProperty.call(t, r) && (n[r] = t[r]); } return n; }, _extends.apply(null, arguments); }
 const CSS = `
 .ef-seg{display:inline-flex;gap:2px;padding:2px;background:var(--surface-sunken);border-radius:var(--radius-md)}
 .ef-seg__opt{display:inline-flex;align-items:center;gap:6px;height:28px;padding:0 12px;border:1px solid transparent;border-radius:6px;background:none;cursor:pointer;font-family:var(--font-sans);font-size:var(--text-sm);font-weight:var(--weight-medium);color:var(--text-secondary);transition:background var(--dur-fast) var(--ease-out),color var(--dur-fast) var(--ease-out)}
@@ -6964,14 +7108,15 @@ function SegmentedControl({
   value,
   onChange,
   style,
-  className
+  className,
+  ...rest
 }) {
   __ds_scope.injectEfCss('ef-css-seg', CSS);
-  return /*#__PURE__*/React.createElement("div", {
+  return /*#__PURE__*/React.createElement("div", _extends({}, rest, {
     role: "group",
     className: `ef-seg${className ? ' ' + className : ''}`,
     style: style
-  }, options.map(o => {
+  }), options.map(o => {
     const opt = typeof o === 'string' ? {
       id: o,
       label: o
@@ -6993,6 +7138,7 @@ Object.assign(__ds_scope, { SegmentedControl });
 
 // components/navigation/SideNav.jsx
 try { (() => {
+function _extends() { return _extends = Object.assign ? Object.assign.bind() : function (n) { for (var e = 1; e < arguments.length; e++) { var t = arguments[e]; for (var r in t) ({}).hasOwnProperty.call(t, r) && (n[r] = t[r]); } return n; }, _extends.apply(null, arguments); }
 const CSS = `
 .ef-sidenav{display:flex;flex-direction:column;width:240px;flex:none;background:var(--surface-subtle);border-right:1px solid var(--border-default);min-height:100%}
 .ef-sidenav__brand{display:flex;align-items:center;gap:10px;padding:16px 16px 14px}
@@ -7012,13 +7158,14 @@ function SideNav({
   onChange,
   footer,
   style,
-  className
+  className,
+  ...rest
 }) {
   __ds_scope.injectEfCss('ef-css-sidenav', CSS);
-  return /*#__PURE__*/React.createElement("aside", {
+  return /*#__PURE__*/React.createElement("aside", _extends({}, rest, {
     className: `ef-sidenav${className ? ' ' + className : ''}`,
     style: style
-  }, /*#__PURE__*/React.createElement("div", {
+  }), /*#__PURE__*/React.createElement("div", {
     className: "ef-sidenav__brand"
   }, logoSrc ? /*#__PURE__*/React.createElement("img", {
     src: logoSrc,
@@ -7079,6 +7226,7 @@ Object.assign(__ds_scope, { SideNav });
 
 // components/navigation/Steps.jsx
 try { (() => {
+function _extends() { return _extends = Object.assign ? Object.assign.bind() : function (n) { for (var e = 1; e < arguments.length; e++) { var t = arguments[e]; for (var r in t) ({}).hasOwnProperty.call(t, r) && (n[r] = t[r]); } return n; }, _extends.apply(null, arguments); }
 const CSS = `
 .ef-steps{display:flex;flex-direction:column;gap:0}
 .ef-steps__item{display:flex;gap:12px}
@@ -7105,13 +7253,14 @@ function Steps({
   current = 0,
   orientation = 'vertical',
   style,
-  className
+  className,
+  ...rest
 }) {
   __ds_scope.injectEfCss('ef-css-steps', CSS);
-  return /*#__PURE__*/React.createElement("div", {
+  return /*#__PURE__*/React.createElement("div", _extends({}, rest, {
     className: `ef-steps${orientation === 'horizontal' ? ' ef-steps--h' : ''}${className ? ' ' + className : ''}`,
     style: style
-  }, items.map((it, i) => {
+  }), items.map((it, i) => {
     const state = i < current ? 'done' : i === current ? 'active' : 'todo';
     return /*#__PURE__*/React.createElement("div", {
       key: it.id || i,
@@ -7140,6 +7289,7 @@ Object.assign(__ds_scope, { Steps });
 
 // components/navigation/Tabs.jsx
 try { (() => {
+function _extends() { return _extends = Object.assign ? Object.assign.bind() : function (n) { for (var e = 1; e < arguments.length; e++) { var t = arguments[e]; for (var r in t) ({}).hasOwnProperty.call(t, r) && (n[r] = t[r]); } return n; }, _extends.apply(null, arguments); }
 const CSS = `
 .ef-tabs{position:relative;display:flex;gap:4px;border-bottom:1px solid var(--border-default)}
 .ef-tabs__tab{display:inline-flex;align-items:center;gap:6px;height:38px;padding:0 12px;border:none;background:transparent;color:var(--text-secondary);font-family:var(--font-sans);font-size:var(--text-md);font-weight:var(--weight-medium);cursor:pointer;border-radius:var(--radius-sm) var(--radius-sm) 0 0;transition:color var(--dur-fast) var(--ease-out),background var(--dur-fast) var(--ease-out)}
@@ -7155,7 +7305,8 @@ function Tabs({
   value,
   onChange,
   style,
-  className
+  className,
+  ...rest
 }) {
   __ds_scope.injectEfCss('ef-css-tabs', CSS);
   const ref = React.useRef(null);
@@ -7184,13 +7335,13 @@ function Tabs({
     const btns = ref.current ? ref.current.querySelectorAll('[role="tab"]') : [];
     if (btns[next]) btns[next].focus();
   };
-  return /*#__PURE__*/React.createElement("div", {
+  return /*#__PURE__*/React.createElement("div", _extends({}, rest, {
     ref: ref,
     role: "tablist",
     onKeyDown: onKey,
     className: `ef-tabs${className ? ' ' + className : ''}`,
     style: style
-  }, items.map(it => /*#__PURE__*/React.createElement("button", {
+  }), items.map(it => /*#__PURE__*/React.createElement("button", {
     key: it.id,
     role: "tab",
     "aria-selected": value === it.id,
@@ -7216,6 +7367,7 @@ Object.assign(__ds_scope, { Tabs });
 
 // components/navigation/TopNav.jsx
 try { (() => {
+function _extends() { return _extends = Object.assign ? Object.assign.bind() : function (n) { for (var e = 1; e < arguments.length; e++) { var t = arguments[e]; for (var r in t) ({}).hasOwnProperty.call(t, r) && (n[r] = t[r]); } return n; }, _extends.apply(null, arguments); }
 const CSS = `
 .ef-topnav{display:flex;align-items:center;gap:12px;height:60px;padding:0 24px;border-bottom:1px solid var(--border-default);background:color-mix(in srgb,var(--surface-page) 85%,transparent);backdrop-filter:blur(12px);position:sticky;top:0;z-index:20}
 .ef-topnav__title{font-size:18px;font-weight:700;font-family:var(--font-display);letter-spacing:-0.02em;color:var(--text-primary);margin:0}
@@ -7226,13 +7378,14 @@ function TopNav({
   leading,
   children,
   style,
-  className
+  className,
+  ...rest
 }) {
   __ds_scope.injectEfCss('ef-css-topnav', CSS);
-  return /*#__PURE__*/React.createElement("header", {
+  return /*#__PURE__*/React.createElement("header", _extends({}, rest, {
     className: `ef-topnav${className ? ' ' + className : ''}`,
     style: style
-  }, leading, title ? /*#__PURE__*/React.createElement("h1", {
+  }), leading, title ? /*#__PURE__*/React.createElement("h1", {
     className: "ef-topnav__title"
   }, title) : null, /*#__PURE__*/React.createElement("span", {
     className: "ef-topnav__spacer"
@@ -7243,6 +7396,7 @@ Object.assign(__ds_scope, { TopNav });
 
 // components/overlay/CommandPalette.jsx
 try { (() => {
+function _extends() { return _extends = Object.assign ? Object.assign.bind() : function (n) { for (var e = 1; e < arguments.length; e++) { var t = arguments[e]; for (var r in t) ({}).hasOwnProperty.call(t, r) && (n[r] = t[r]); } return n; }, _extends.apply(null, arguments); }
 const CSS = `
 .ef-cmdk__overlay{position:fixed;inset:0;background:var(--overlay-scrim);display:flex;justify-content:center;align-items:flex-start;padding:100px 24px 24px;z-index:var(--z-modal);animation:ef-cmdk-fade var(--dur-fast) var(--ease-out)}
 @keyframes ef-cmdk-fade{from{opacity:0}}
@@ -7266,7 +7420,8 @@ function CommandPalette({
   onClose,
   groups,
   onSelect,
-  placeholder = 'Type a command or search…'
+  placeholder = 'Type a command or search…',
+  ...rest
 }) {
   __ds_scope.injectEfCss('ef-css-cmdk', CSS);
   const [q, setQ] = React.useState('');
@@ -7331,12 +7486,12 @@ function CommandPalette({
     });
   }, [open, idx, listId]);
   if (!open) return null;
-  return /*#__PURE__*/React.createElement("div", {
+  return /*#__PURE__*/React.createElement("div", _extends({}, rest, {
     className: "ef-cmdk__overlay",
     onMouseDown: e => {
       if (e.target === e.currentTarget && onClose) onClose();
     }
-  }, /*#__PURE__*/React.createElement("div", {
+  }), /*#__PURE__*/React.createElement("div", {
     className: "ef-cmdk",
     role: "dialog",
     "aria-modal": "true",
@@ -7428,7 +7583,8 @@ function Drawer({
   footer,
   width = 400,
   side = 'right',
-  children
+  children,
+  ...rest
 }) {
   __ds_scope.injectEfCss('ef-css-drawer', CSS);
   const panelRef = React.useRef(null);
@@ -7471,7 +7627,7 @@ function Drawer({
     return () => document.removeEventListener('keydown', key);
   }, [open, onClose]);
   if (!open) return null;
-  return /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement("div", {
+  return /*#__PURE__*/React.createElement(React.Fragment, rest, /*#__PURE__*/React.createElement("div", {
     className: "ef-drawer__overlay",
     onMouseDown: onClose
   }), /*#__PURE__*/React.createElement("div", {
@@ -7632,6 +7788,7 @@ Object.assign(__ds_scope, { Portal, useAnchoredStyle });
 
 // components/ai/ModelSelector.jsx
 try { (() => {
+function _extends() { return _extends = Object.assign ? Object.assign.bind() : function (n) { for (var e = 1; e < arguments.length; e++) { var t = arguments[e]; for (var r in t) ({}).hasOwnProperty.call(t, r) && (n[r] = t[r]); } return n; }, _extends.apply(null, arguments); }
 const CSS = `
 .ef-modelsel{position:relative;display:inline-flex}
 .ef-modelsel__btn{display:inline-flex;align-items:center;gap:8px;height:32px;padding:0 10px;border:1px solid var(--border-strong);border-radius:var(--radius-sm);background:var(--surface-card);cursor:pointer;font-family:var(--font-sans);font-size:13px;font-weight:500;color:var(--text-primary);transition:border-color var(--dur-fast) var(--ease-out)}
@@ -7657,7 +7814,8 @@ function ModelSelector({
   onChange,
   side = 'up',
   style,
-  className
+  className,
+  ...rest
 }) {
   __ds_scope.injectEfCss('ef-css-modelsel', CSS);
   const [open, setOpen] = React.useState(false);
@@ -7686,11 +7844,11 @@ function ModelSelector({
     };
   }, [open]);
   const cur = models.find(m => m.id === value) || models[0] || {};
-  return /*#__PURE__*/React.createElement("span", {
+  return /*#__PURE__*/React.createElement("span", _extends({}, rest, {
     ref: ref,
     className: `ef-modelsel${side === 'down' ? ' ef-modelsel--down' : ''}${className ? ' ' + className : ''}`,
     style: style
-  }, /*#__PURE__*/React.createElement("button", {
+  }), /*#__PURE__*/React.createElement("button", {
     type: "button",
     className: "ef-modelsel__btn",
     "aria-haspopup": "listbox",
@@ -7743,6 +7901,7 @@ Object.assign(__ds_scope, { ModelSelector });
 
 // components/dates/DatePicker.jsx
 try { (() => {
+function _extends() { return _extends = Object.assign ? Object.assign.bind() : function (n) { for (var e = 1; e < arguments.length; e++) { var t = arguments[e]; for (var r in t) ({}).hasOwnProperty.call(t, r) && (n[r] = t[r]); } return n; }, _extends.apply(null, arguments); }
 const CSS = `
 .ef-datepicker{position:relative;display:inline-flex;flex-direction:column;gap:6px}
 .ef-datepicker__label{font-size:var(--text-sm);font-weight:var(--weight-semibold);color:var(--text-primary)}
@@ -7769,7 +7928,8 @@ function DatePicker({
   onChange,
   placeholder = 'Pick a date',
   style,
-  className
+  className,
+  ...rest
 }) {
   __ds_scope.injectEfCss('ef-css-datepicker', CSS);
   const [inner, setInner] = React.useState(defaultValue || '');
@@ -7808,11 +7968,11 @@ function DatePicker({
       document.removeEventListener('keydown', key);
     };
   }, [open]);
-  return /*#__PURE__*/React.createElement("span", {
+  return /*#__PURE__*/React.createElement("span", _extends({}, rest, {
     ref: ref,
     className: `ef-datepicker${className ? ' ' + className : ''}`,
     style: style
-  }, label ? /*#__PURE__*/React.createElement("span", {
+  }), label ? /*#__PURE__*/React.createElement("span", {
     className: "ef-datepicker__label"
   }, label) : null, /*#__PURE__*/React.createElement("button", {
     type: "button",
@@ -7853,6 +8013,7 @@ Object.assign(__ds_scope, { DatePicker });
 
 // components/feedback/Tooltip.jsx
 try { (() => {
+function _extends() { return _extends = Object.assign ? Object.assign.bind() : function (n) { for (var e = 1; e < arguments.length; e++) { var t = arguments[e]; for (var r in t) ({}).hasOwnProperty.call(t, r) && (n[r] = t[r]); } return n; }, _extends.apply(null, arguments); }
 const CSS = `
 .ef-tooltip{position:relative;display:inline-flex}
 .ef-tooltip__bubble{position:fixed;background:var(--surface-inverse);color:var(--text-inverse);font-size:var(--text-xs);font-weight:var(--weight-medium);line-height:1.35;padding:5px 9px;border-radius:6px;white-space:nowrap;pointer-events:none;z-index:var(--z-tooltip);animation:ef-tooltip-in var(--dur-fast) var(--ease-out)}
@@ -7866,7 +8027,8 @@ function Tooltip({
   delay = 200,
   children,
   style,
-  className
+  className,
+  ...rest
 }) {
   __ds_scope.injectEfCss('ef-css-tooltip', CSS);
   const id = React.useId();
@@ -7910,7 +8072,7 @@ function Tooltip({
   const child = React.Children.count(children) === 1 && React.isValidElement(children) ? React.cloneElement(children, {
     'aria-describedby': open ? id : undefined
   }) : children;
-  return /*#__PURE__*/React.createElement("span", {
+  return /*#__PURE__*/React.createElement("span", _extends({}, rest, {
     ref: ref,
     className: `ef-tooltip${className ? ' ' + className : ''}`,
     style: style,
@@ -7921,7 +8083,7 @@ function Tooltip({
     onKeyDown: e => {
       if (e.key === 'Escape') hide();
     }
-  }, child, open ? /*#__PURE__*/React.createElement(__ds_scope.Portal, null, /*#__PURE__*/React.createElement("span", {
+  }), child, open ? /*#__PURE__*/React.createElement(__ds_scope.Portal, null, /*#__PURE__*/React.createElement("span", {
     ref: bubbleRef,
     role: "tooltip",
     id: id,
@@ -7939,6 +8101,7 @@ Object.assign(__ds_scope, { Tooltip });
 
 // components/display/Toolbar.jsx
 try { (() => {
+function _extends() { return _extends = Object.assign ? Object.assign.bind() : function (n) { for (var e = 1; e < arguments.length; e++) { var t = arguments[e]; for (var r in t) ({}).hasOwnProperty.call(t, r) && (n[r] = t[r]); } return n; }, _extends.apply(null, arguments); }
 const CSS = `
 .ef-toolbar{display:inline-flex;align-items:center;gap:2px;padding:3px;background:var(--surface-card);border:1px solid var(--border-strong);border-radius:var(--radius-md)}
 .ef-toolbar__btn{display:inline-flex;align-items:center;justify-content:center;gap:6px;height:28px;min-width:28px;padding:0 7px;border:none;border-radius:6px;background:none;cursor:pointer;color:var(--text-secondary);font-family:var(--font-sans);font-size:var(--text-sm);font-weight:var(--weight-medium);transition:background var(--dur-fast) var(--ease-out),color var(--dur-fast) var(--ease-out)}
@@ -7955,16 +8118,17 @@ function Toolbar({
   onChange,
   label,
   style,
-  className
+  className,
+  ...rest
 }) {
   __ds_scope.injectEfCss('ef-css-toolbar', CSS);
   const active = Array.isArray(value) ? value : value != null ? [value] : [];
-  return /*#__PURE__*/React.createElement("div", {
+  return /*#__PURE__*/React.createElement("div", _extends({}, rest, {
     role: "toolbar",
     "aria-label": label,
     className: `ef-toolbar${className ? ' ' + className : ''}`,
     style: style
-  }, items.map((it, i) => {
+  }), items.map((it, i) => {
     if (it === 'separator') return /*#__PURE__*/React.createElement("span", {
       key: 's' + i,
       className: "ef-toolbar__sep"
@@ -7993,6 +8157,7 @@ Object.assign(__ds_scope, { Toolbar });
 
 // components/forms/Combobox.jsx
 try { (() => {
+function _extends() { return _extends = Object.assign ? Object.assign.bind() : function (n) { for (var e = 1; e < arguments.length; e++) { var t = arguments[e]; for (var r in t) ({}).hasOwnProperty.call(t, r) && (n[r] = t[r]); } return n; }, _extends.apply(null, arguments); }
 const CSS = `
 .ef-combo{position:relative}
 .ef-combo__control{display:flex;align-items:center;flex-wrap:wrap;gap:6px;min-height:var(--control-h-md);padding:4px 32px 4px 8px;border:1px solid var(--border-strong);border-radius:var(--radius-sm);background:var(--surface-card);cursor:text;transition:border-color var(--dur-fast) var(--ease-out),box-shadow var(--dur-fast) var(--ease-out)}
@@ -8017,7 +8182,8 @@ function Combobox({
   multiple,
   placeholder = 'Search…',
   style,
-  className
+  className,
+  ...rest
 }) {
   __ds_scope.injectEfCss('ef-css-combo', CSS);
   const [open, setOpen] = React.useState(false);
@@ -8129,10 +8295,10 @@ function Combobox({
     name: "check",
     size: 15
   })) : null)))));
-  if (!label && !hint) return /*#__PURE__*/React.createElement("div", {
+  if (!label && !hint) return /*#__PURE__*/React.createElement("div", _extends({}, rest, {
     className: className,
     style: style
-  }, control);
+  }), control);
   return /*#__PURE__*/React.createElement("div", {
     className: `ef-field${className ? ' ' + className : ''}`,
     style: style
@@ -8147,6 +8313,7 @@ Object.assign(__ds_scope, { Combobox });
 
 // components/overlay/ContextMenu.jsx
 try { (() => {
+function _extends() { return _extends = Object.assign ? Object.assign.bind() : function (n) { for (var e = 1; e < arguments.length; e++) { var t = arguments[e]; for (var r in t) ({}).hasOwnProperty.call(t, r) && (n[r] = t[r]); } return n; }, _extends.apply(null, arguments); }
 const CSS = `
 .ef-ctx__panel{position:fixed;min-width:190px;background:var(--surface-card);border:1px solid var(--border-strong);border-radius:var(--radius-md);box-shadow:var(--shadow-md);padding:4px;z-index:var(--z-dropdown);animation:ef-ctx-in var(--dur-fast) var(--ease-out)}
 @keyframes ef-ctx-in{from{opacity:0;transform:scale(.98)}}
@@ -8164,7 +8331,8 @@ function ContextMenu({
   onSelect,
   children,
   style,
-  className
+  className,
+  ...rest
 }) {
   __ds_scope.injectEfCss('ef-css-ctx', CSS);
   const [pos, setPos] = React.useState(null);
@@ -8244,11 +8412,11 @@ function ContextMenu({
       y: e.clientY
     });
   };
-  return /*#__PURE__*/React.createElement("span", {
+  return /*#__PURE__*/React.createElement("span", _extends({}, rest, {
     className: className,
     style: style,
     onContextMenu: openAt
-  }, children, pos ? /*#__PURE__*/React.createElement(__ds_scope.Portal, null, /*#__PURE__*/React.createElement("div", {
+  }), children, pos ? /*#__PURE__*/React.createElement(__ds_scope.Portal, null, /*#__PURE__*/React.createElement("div", {
     role: "menu",
     ref: panelRef,
     onKeyDown: onPanelKey,
@@ -8286,6 +8454,7 @@ Object.assign(__ds_scope, { ContextMenu });
 
 // components/overlay/HoverCard.jsx
 try { (() => {
+function _extends() { return _extends = Object.assign ? Object.assign.bind() : function (n) { for (var e = 1; e < arguments.length; e++) { var t = arguments[e]; for (var r in t) ({}).hasOwnProperty.call(t, r) && (n[r] = t[r]); } return n; }, _extends.apply(null, arguments); }
 const CSS = `
 .ef-hovercard{position:relative;display:inline-flex}
 .ef-hovercard__trigger{display:inline-flex;border-radius:var(--radius-sm)}
@@ -8303,7 +8472,8 @@ function HoverCard({
   width = 300,
   children,
   style,
-  className
+  className,
+  ...rest
 }) {
   __ds_scope.injectEfCss('ef-css-hovercard', CSS);
   const [open, setOpen] = React.useState(false);
@@ -8327,7 +8497,7 @@ function HoverCard({
     t.current = setTimeout(() => setOpen(false), closeDelay);
   };
   React.useEffect(() => () => clearTimeout(t.current), []);
-  return /*#__PURE__*/React.createElement("span", {
+  return /*#__PURE__*/React.createElement("span", _extends({}, rest, {
     ref: ref,
     className: `ef-hovercard${className ? ' ' + className : ''}`,
     style: style,
@@ -8339,7 +8509,7 @@ function HoverCard({
         setOpen(false);
       }
     }
-  }, /*#__PURE__*/React.createElement("span", {
+  }), /*#__PURE__*/React.createElement("span", {
     className: "ef-hovercard__trigger",
     tabIndex: 0,
     onFocus: () => setOpen(true),
@@ -8383,7 +8553,8 @@ function Menu({
   onSelect,
   align = 'left',
   style,
-  className
+  className,
+  ...rest
 }) {
   __ds_scope.injectEfCss('ef-css-menu', CSS);
   const [open, setOpen] = React.useState(false);
@@ -8470,11 +8641,11 @@ function Menu({
       }
     }
   };
-  return /*#__PURE__*/React.createElement("span", {
+  return /*#__PURE__*/React.createElement("span", _extends({}, rest, {
     ref: ref,
     className: `ef-menu${className ? ' ' + className : ''}`,
     style: style
-  }, React.isValidElement(trigger) ? React.cloneElement(trigger, triggerProps) : /*#__PURE__*/React.createElement("span", _extends({
+  }), React.isValidElement(trigger) ? React.cloneElement(trigger, triggerProps) : /*#__PURE__*/React.createElement("span", _extends({
     role: "button",
     tabIndex: 0,
     style: {
@@ -8529,7 +8700,8 @@ function Popover({
   open: controlled,
   onOpenChange,
   style,
-  className
+  className,
+  ...rest
 }) {
   __ds_scope.injectEfCss('ef-css-popover', CSS);
   const [inner, setInner] = React.useState(false);
@@ -8586,11 +8758,11 @@ function Popover({
     'aria-haspopup': 'dialog',
     'aria-expanded': open
   };
-  return /*#__PURE__*/React.createElement("span", {
+  return /*#__PURE__*/React.createElement("span", _extends({}, rest, {
     ref: ref,
     className: `ef-popover${className ? ' ' + className : ''}`,
     style: style
-  }, React.isValidElement(trigger) ? React.cloneElement(trigger, triggerProps) : /*#__PURE__*/React.createElement("span", _extends({
+  }), React.isValidElement(trigger) ? React.cloneElement(trigger, triggerProps) : /*#__PURE__*/React.createElement("span", _extends({
     role: "button",
     tabIndex: 0,
     style: {

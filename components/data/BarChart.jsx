@@ -7,12 +7,12 @@ const CSS = `
 .ef-bars__bar:hover{background:var(--brand-700)}
 .ef-bars__labels{display:flex;justify-content:space-between;margin-top:6px;font-family:var(--font-mono);font-size:10px;color:var(--text-muted)}
 `;
-export function BarChart({ data = [], height = 140, highlightLast = 0, labels, formatValue, style, className }) {
+export function BarChart({ data = [], height = 140, highlightLast = 0, labels, formatValue, style, className, ...rest }) {
   injectEfCss('ef-css-bars', CSS);
   const vals = data.map(d => typeof d === 'number' ? d : d.value);
   const max = Math.max(...vals, 1);
   return (
-    <div className={className} style={style}>
+    <div {...rest} className={className} style={style}>
       <div className="ef-bars" style={{ height }}>
         {vals.map((v, i) => (
           <div key={i} className={`ef-bars__bar${i >= vals.length - highlightLast ? ' ef-bars__bar--hi' : ''}`}

@@ -15,10 +15,10 @@ const CSS = `
 .ef-status--err .ef-status__dot::after{color:var(--danger-600)}
 .ef-status--busy .ef-status__dot::after{color:var(--caramel-500)}
 `;
-export function StatusDot({ state = 'ok', label, pulse, style, className }) {
+export function StatusDot({ state = 'ok', label, pulse, style, className, ...rest }) {
   injectEfCss('ef-css-status', CSS);
   return (
-    <span className={`ef-status ef-status--${state}${pulse ? ' ef-status--pulse' : ''}${className ? ' ' + className : ''}`} style={style}>
+    <span {...rest} className={`ef-status ef-status--${state}${pulse ? ' ef-status--pulse' : ''}${className ? ' ' + className : ''}`} style={style}>
       <span className="ef-status__dot"></span>
       {label ? <span>{label}</span> : null}
     </span>

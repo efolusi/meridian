@@ -4,7 +4,7 @@ const CSS = `
 .ef-linechart{position:relative}
 .ef-linechart__tip{position:absolute;transform:translate(-50%,-130%);background:var(--surface-inverse);color:var(--text-inverse);font-size:11px;font-weight:500;padding:4px 8px;border-radius:6px;white-space:nowrap;pointer-events:none;z-index:5}
 `;
-export function LineChart({ data, height = 150, showArea = true, showDots = false, format, style, className }) {
+export function LineChart({ data, height = 150, showArea = true, showDots = false, format, style, className, ...rest }) {
   injectEfCss('ef-css-linechart', CSS);
   const [hov, setHov] = React.useState(null);
   const ref = React.useRef(null);
@@ -22,7 +22,7 @@ export function LineChart({ data, height = 150, showArea = true, showDots = fals
     setHov(Math.max(0, Math.min(data.length - 1, i)));
   };
   return (
-    <div ref={ref} className={`ef-linechart${className ? ' ' + className : ''}`} style={style} onMouseMove={move} onMouseLeave={() => setHov(null)}>
+    <div {...rest} ref={ref} className={`ef-linechart${className ? ' ' + className : ''}`} style={style} onMouseMove={move} onMouseLeave={() => setHov(null)}>
       <svg viewBox={`0 0 ${W} ${H}`} width="100%" height={H} preserveAspectRatio="none" style={{ display: 'block' }}>
         {showArea && <path d={area} fill="var(--accent)" opacity=".07" />}
         <path d={path} fill="none" stroke="var(--accent)" strokeWidth="1.5" vectorEffect="non-scaling-stroke" />

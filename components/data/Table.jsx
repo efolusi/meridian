@@ -11,11 +11,11 @@ const CSS = `
 .ef-table__row--click:hover{background:var(--surface-subtle)}
 .ef-table .ef-num{font-family:var(--font-mono);font-size:13px}
 `;
-export function Table({ columns, rows, rowKey, onRowClick, dense, style, className }) {
+export function Table({ columns, rows, rowKey, onRowClick, dense, style, className, ...rest }) {
   injectEfCss('ef-css-table', CSS);
   const key = (row, i) => rowKey ? (typeof rowKey === 'function' ? rowKey(row) : row[rowKey]) : i;
   return (
-    <div className="ef-table-wrap" style={style}>
+    <div {...rest} className="ef-table-wrap" style={style}>
       <table className={`ef-table${dense ? ' ef-table--dense' : ''}${className ? ' ' + className : ''}`}>
         <thead><tr>
           {columns.map(c => <th key={c.key} style={{ width: c.width, textAlign: c.align }}>{c.label}</th>)}

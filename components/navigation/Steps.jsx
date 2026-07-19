@@ -22,10 +22,10 @@ const CSS = `
 .ef-steps--h .ef-steps__item:last-child .ef-steps__line{display:none}
 .ef-steps--h .ef-steps__content{padding-bottom:0}
 `;
-export function Steps({ items, current = 0, orientation = 'vertical', style, className }) {
+export function Steps({ items, current = 0, orientation = 'vertical', style, className, ...rest }) {
   injectEfCss('ef-css-steps', CSS);
   return (
-    <div className={`ef-steps${orientation === 'horizontal' ? ' ef-steps--h' : ''}${className ? ' ' + className : ''}`} style={style}>
+    <div {...rest} className={`ef-steps${orientation === 'horizontal' ? ' ef-steps--h' : ''}${className ? ' ' + className : ''}`} style={style}>
       {items.map((it, i) => {
         const state = i < current ? 'done' : i === current ? 'active' : 'todo';
         return (

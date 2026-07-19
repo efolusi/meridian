@@ -8,7 +8,7 @@ const CSS = `
 .ef-digits__cell:disabled{background:var(--surface-sunken);cursor:not-allowed}
 .ef-digits--invalid .ef-digits__cell{border-color:var(--danger-600)}
 `;
-export function DigitEntry({ length = 6, value, onChange, onComplete, label, invalid, disabled, style, className }) {
+export function DigitEntry({ length = 6, value, onChange, onComplete, label, invalid, disabled, style, className, ...rest }) {
   injectEfCss('ef-css-digits', CSS);
   const [inner, setInner] = React.useState('');
   const v = value != null ? value : inner;
@@ -41,7 +41,7 @@ export function DigitEntry({ length = 6, value, onChange, onComplete, label, inv
       onChange={e => inputAt(i, e)} onKeyDown={e => keyAt(i, e)} onFocus={e => e.target.select()} />
   ));
   const group = <div className={`ef-digits${invalid ? ' ef-digits--invalid' : ''}`}>{cells}</div>;
-  if (!label) return <div className={className} style={style}>{group}</div>;
+  if (!label) return <div {...rest} className={className} style={style}>{group}</div>;
   return (
     <div className={`ef-field${className ? ' ' + className : ''}`} style={style}>
       <span className="ef-field__label">{label}</span>

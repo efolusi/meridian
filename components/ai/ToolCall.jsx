@@ -41,7 +41,7 @@ const CSS = `
 .ef-toolcall__btn:focus-visible{outline:none;box-shadow:var(--focus-ring)}
 `;
 const STATES = { pending: 'Queued', approval: 'Needs approval', running: 'Running', success: 'Done', error: 'Failed' };
-export function ToolCall({ name, status = 'running', args, result, error, icon = 'wrench', defaultOpen, streaming, onApprove, onReject, approveLabel = 'Approve', rejectLabel = 'Reject', children, style, className }) {
+export function ToolCall({ name, status = 'running', args, result, error, icon = 'wrench', defaultOpen, streaming, onApprove, onReject, approveLabel = 'Approve', rejectLabel = 'Reject', children, style, className, ...rest }) {
   injectEfCss('ef-css-toolcall', CSS);
   const [open, setOpen] = React.useState(defaultOpen !== undefined ? !!defaultOpen : (status === 'error' || status === 'approval'));
   const body = children || result;
@@ -49,7 +49,7 @@ export function ToolCall({ name, status = 'running', args, result, error, icon =
   const argText = args == null || entries ? null : typeof args === 'string' ? args : JSON.stringify(args, null, 2);
   const fmt = v => v == null ? 'null' : typeof v === 'string' ? v : typeof v === 'object' ? JSON.stringify(v, null, 2) : String(v);
   return (
-    <div className={`ef-toolcall ef-toolcall--${status}${open ? ' ef-toolcall--open' : ''}${streaming ? ' ef-toolcall--streaming' : ''}${className ? ' ' + className : ''}`} style={style}>
+    <div {...rest} className={`ef-toolcall ef-toolcall--${status}${open ? ' ef-toolcall--open' : ''}${streaming ? ' ef-toolcall--streaming' : ''}${className ? ' ' + className : ''}`} style={style}>
       <button type="button" className="ef-toolcall__head" aria-expanded={open} onClick={() => setOpen(!open)}>
         <span className="ef-toolcall__icon"><Icon name={icon} size={14} /></span>
         <span className="ef-toolcall__verb">tool</span>

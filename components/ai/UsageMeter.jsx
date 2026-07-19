@@ -12,7 +12,7 @@ const CSS = `
 .ef-usage__foot{display:flex;gap:8px;font-size:12px;color:var(--text-muted)}
 .ef-usage__cost{margin-left:auto;font-family:var(--font-mono)}
 `;
-export function UsageMeter({ used = 0, limit = 100, label = 'Usage', unit = '', cost, hint, warnAt = 0.8, animated, format, style, className }) {
+export function UsageMeter({ used = 0, limit = 100, label = 'Usage', unit = '', cost, hint, warnAt = 0.8, animated, format, style, className, ...rest }) {
   injectEfCss('ef-css-usage', CSS);
   const [shown, setShown] = React.useState(animated ? 0 : used);
   React.useEffect(() => {
@@ -33,7 +33,7 @@ export function UsageMeter({ used = 0, limit = 100, label = 'Usage', unit = '', 
   const tone = ratio >= 1 ? ' ef-usage--over' : ratio >= warnAt ? ' ef-usage--warn' : '';
   const shownRatio = limit > 0 ? shown / limit : 0;
   return (
-    <div className={`ef-usage${tone}${className ? ' ' + className : ''}`} style={style}>
+    <div {...rest} className={`ef-usage${tone}${className ? ' ' + className : ''}`} style={style}>
       <div className="ef-usage__row">
         <span className="ef-usage__label">{label}</span>
         <span className="ef-usage__figures">{fmt(shown)} / {fmt(limit)}{unit ? ' ' + unit : ''}</span>

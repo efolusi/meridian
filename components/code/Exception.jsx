@@ -27,11 +27,11 @@ const CSS = `
 .ef-exception__ln--active{border-left-color:var(--danger-600);background:var(--danger-100);color:var(--danger-600)}
 .ef-exception__no{flex:none;width:34px;color:var(--text-muted);user-select:none}
 `;
-export function Exception({ type = 'Error', message, frames = [], source, defaultOpen = false, style, className }) {
+export function Exception({ type = 'Error', message, frames = [], source, defaultOpen = false, style, className, ...rest }) {
   injectEfCss('ef-css-exception', CSS);
   const [open, setOpen] = React.useState(!!defaultOpen);
   return (
-    <div className={`ef-exception${open ? ' ef-exception--open' : ''}${className ? ' ' + className : ''}`} style={style}>
+    <div {...rest} className={`ef-exception${open ? ' ef-exception--open' : ''}${className ? ' ' + className : ''}`} style={style}>
       <div className="ef-exception__head">
         <span className="ef-exception__type">{type}</span>
         <span className="ef-exception__msg">{message}</span>

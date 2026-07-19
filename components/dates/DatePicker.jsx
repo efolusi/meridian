@@ -14,7 +14,7 @@ const CSS = `
 @keyframes ef-dp-in{from{opacity:0;transform:translateY(-3px)}}
 `;
 const fmt = v => { if (!v) return null; const d = new Date(v + 'T00:00:00'); return d.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' }); };
-export function DatePicker({ label, value, defaultValue, onChange, placeholder = 'Pick a date', style, className }) {
+export function DatePicker({ label, value, defaultValue, onChange, placeholder = 'Pick a date', style, className, ...rest }) {
   injectEfCss('ef-css-datepicker', CSS);
   const [inner, setInner] = React.useState(defaultValue || '');
   const v = value != null ? value : inner;
@@ -38,7 +38,7 @@ export function DatePicker({ label, value, defaultValue, onChange, placeholder =
     return () => { document.removeEventListener('mousedown', away); document.removeEventListener('keydown', key); };
   }, [open]);
   return (
-    <span ref={ref} className={`ef-datepicker${className ? ' ' + className : ''}`} style={style}>
+    <span {...rest} ref={ref} className={`ef-datepicker${className ? ' ' + className : ''}`} style={style}>
       {label ? <span className="ef-datepicker__label">{label}</span> : null}
       <button type="button" ref={btnRef} aria-haspopup="dialog" aria-expanded={open} className={`ef-datepicker__btn${v ? '' : ' ef-datepicker__btn--empty'}`} onClick={() => setOpen(o => !o)}>
         <Icon name="calendar" size={15} style={{ color: 'var(--text-muted)' }} />{fmt(v) || placeholder}

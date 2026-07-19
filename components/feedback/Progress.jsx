@@ -10,11 +10,11 @@ const CSS = `
 .ef-progress--warning .ef-progress__fill{background:var(--warning-600)}
 .ef-progress--danger .ef-progress__fill{background:var(--danger-600)}
 `;
-export function Progress({ value = 0, max = 100, label, showValue, format, tone = 'default', style, className }) {
+export function Progress({ value = 0, max = 100, label, showValue, format, tone = 'default', style, className, ...rest }) {
   injectEfCss('ef-css-progress', CSS);
   const pct = Math.min(100, Math.max(0, (value / max) * 100));
   return (
-    <div className={`ef-progress ef-progress--${tone}${className ? ' ' + className : ''}`} style={style} role="progressbar" aria-valuenow={value} aria-valuemin={0} aria-valuemax={max}>
+    <div {...rest} className={`ef-progress ef-progress--${tone}${className ? ' ' + className : ''}`} style={style} role="progressbar" aria-valuenow={value} aria-valuemin={0} aria-valuemax={max}>
       {(label || showValue) && (
         <div className="ef-progress__head">
           <span className="ef-progress__label">{label}</span>

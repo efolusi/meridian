@@ -8,7 +8,7 @@ const CSS = `
 .ef-popover__panel--right{right:0}
 @keyframes ef-pop-in{from{opacity:0;transform:translateY(-3px)}}
 `;
-export function Popover({ trigger, children, align = 'left', width = 280, open: controlled, onOpenChange, style, className }) {
+export function Popover({ trigger, children, align = 'left', width = 280, open: controlled, onOpenChange, style, className, ...rest }) {
   injectEfCss('ef-css-popover', CSS);
   const [inner, setInner] = React.useState(false);
   const open = controlled != null ? controlled : inner;
@@ -39,7 +39,7 @@ export function Popover({ trigger, children, align = 'left', width = 280, open: 
     'aria-expanded': open,
   };
   return (
-    <span ref={ref} className={`ef-popover${className ? ' ' + className : ''}`} style={style}>
+    <span {...rest} ref={ref} className={`ef-popover${className ? ' ' + className : ''}`} style={style}>
       {React.isValidElement(trigger)
         ? React.cloneElement(trigger, triggerProps)
         : <span role="button" tabIndex={0} style={{ display: 'inline-flex' }} {...triggerProps}>{trigger}</span>}

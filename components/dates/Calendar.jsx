@@ -20,7 +20,7 @@ const DOW = ['Mo', 'Tu', 'We', 'Th', 'Fr', 'Sa', 'Su'];
 const DOW_FULL = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'];
 const MONTHS = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
 const iso = d => d.getFullYear() + '-' + String(d.getMonth() + 1).padStart(2, '0') + '-' + String(d.getDate()).padStart(2, '0');
-export function Calendar({ value, onChange, style, className }) {
+export function Calendar({ value, onChange, style, className, ...rest }) {
   injectEfCss('ef-css-cal', CSS);
   const sel = value ? new Date(value + 'T00:00:00') : null;
   const [view, setView] = React.useState(() => { const b = sel || new Date(); return [b.getFullYear(), b.getMonth()]; });
@@ -56,7 +56,7 @@ export function Calendar({ value, onChange, style, className }) {
   };
   const rows = Array.from({ length: 6 }, (_, r) => cells.slice(r * 7, r * 7 + 7));
   return (
-    <div className={`ef-cal${className ? ' ' + className : ''}`} style={style}>
+    <div {...rest} className={`ef-cal${className ? ' ' + className : ''}`} style={style}>
       <div className="ef-cal__head">
         <IconButton icon="chevron-left" label="Previous month" size="sm" onClick={() => setView(m === 0 ? [y - 1, 11] : [y, m - 1])} />
         <span className="ef-cal__month" aria-live="polite">{MONTHS[m]} {y}</span>

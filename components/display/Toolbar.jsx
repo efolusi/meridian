@@ -12,11 +12,11 @@ const CSS = `
 .ef-toolbar__btn:focus-visible{outline:none;box-shadow:var(--focus-ring)}
 .ef-toolbar__sep{width:1px;height:18px;background:var(--border-default);margin:0 4px}
 `;
-export function Toolbar({ items, value, onChange, label, style, className }) {
+export function Toolbar({ items, value, onChange, label, style, className, ...rest }) {
   injectEfCss('ef-css-toolbar', CSS);
   const active = Array.isArray(value) ? value : value != null ? [value] : [];
   return (
-    <div role="toolbar" aria-label={label} className={`ef-toolbar${className ? ' ' + className : ''}`} style={style}>
+    <div {...rest} role="toolbar" aria-label={label} className={`ef-toolbar${className ? ' ' + className : ''}`} style={style}>
       {items.map((it, i) => {
         if (it === 'separator') return <span key={'s' + i} className="ef-toolbar__sep"></span>;
         const btn = (

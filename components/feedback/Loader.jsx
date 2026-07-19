@@ -12,11 +12,11 @@ const CSS = `
 .ef-loader__dots span:nth-child(3){animation-delay:calc(var(--ef-loader-dur,1.4s)*.28)}
 @keyframes ef-loader-dot{0%,80%,100%{opacity:0}40%{opacity:1}}
 `;
-export function Loader({ variant = 'pulse', dots, duration, children = 'Thinking', style, className }) {
+export function Loader({ variant = 'pulse', dots, duration, children = 'Thinking', style, className, ...rest }) {
   injectEfCss('ef-css-loader', CSS);
   const vars = duration ? { '--ef-loader-dur': duration + 's' } : null;
   return (
-    <span role="status" aria-label={typeof children === 'string' ? children : 'Loading'} className={`ef-loader ef-loader--${variant}${className ? ' ' + className : ''}`} style={{ ...vars, ...style }}>
+    <span {...rest} role="status" aria-label={typeof children === 'string' ? children : 'Loading'} className={`ef-loader ef-loader--${variant}${className ? ' ' + className : ''}`} style={{ ...vars, ...style }}>
       {children}
       {dots ? <span className="ef-loader__dots" aria-hidden="true"><span>.</span><span>.</span><span>.</span></span> : null}
     </span>

@@ -5,10 +5,10 @@ const CSS = `
 .ef-topnav__title{font-size:18px;font-weight:700;font-family:var(--font-display);letter-spacing:-0.02em;color:var(--text-primary);margin:0}
 .ef-topnav__spacer{margin-left:auto}
 `;
-export function TopNav({ title, leading, children, style, className }) {
+export function TopNav({ title, leading, children, style, className, ...rest }) {
   injectEfCss('ef-css-topnav', CSS);
   return (
-    <header className={`ef-topnav${className ? ' ' + className : ''}`} style={style}>
+    <header {...rest} className={`ef-topnav${className ? ' ' + className : ''}`} style={style}>
       {leading}
       {title ? <h1 className="ef-topnav__title">{title}</h1> : null}
       <span className="ef-topnav__spacer"></span>

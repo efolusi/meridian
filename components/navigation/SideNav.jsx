@@ -12,10 +12,10 @@ const CSS = `
 .ef-sidenav__item:focus-visible{outline:none;box-shadow:var(--focus-ring)}
 .ef-sidenav__foot{margin-top:auto;padding:12px}
 `;
-export function SideNav({ brand = 'Efolusi', brandBadge, logoSrc, groups, value, onChange, footer, style, className }) {
+export function SideNav({ brand = 'Efolusi', brandBadge, logoSrc, groups, value, onChange, footer, style, className, ...rest }) {
   injectEfCss('ef-css-sidenav', CSS);
   return (
-    <aside className={`ef-sidenav${className ? ' ' + className : ''}`} style={style}>
+    <aside {...rest} className={`ef-sidenav${className ? ' ' + className : ''}`} style={style}>
       <div className="ef-sidenav__brand">
         {logoSrc ? <img src={logoSrc} alt="" style={{ width: 30, height: 30 }} /> : null}
         <span style={{ fontFamily: 'var(--font-display)', fontWeight: 680, letterSpacing: '-0.02em', fontSize: 19 }}>{brand}</span>

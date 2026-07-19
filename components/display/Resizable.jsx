@@ -13,7 +13,7 @@ const CSS = `
 .ef-resizable__handle:hover::after,.ef-resizable__handle--drag::after{background:var(--accent)}
 .ef-resizable__handle:focus-visible{outline:none;box-shadow:var(--focus-ring)}
 `;
-export function Resizable({ direction = 'horizontal', defaultRatio = 0.5, min = 0.15, max = 0.85, onRatioChange, children, style, className }) {
+export function Resizable({ direction = 'horizontal', defaultRatio = 0.5, min = 0.15, max = 0.85, onRatioChange, children, style, className, ...rest }) {
   injectEfCss('ef-css-resizable', CSS);
   const [ratio, setRatio] = React.useState(defaultRatio);
   const [drag, setDrag] = React.useState(false);
@@ -39,7 +39,7 @@ export function Resizable({ direction = 'horizontal', defaultRatio = 0.5, min = 
   };
   const kids = React.Children.toArray(children);
   return (
-    <div ref={ref} className={`ef-resizable ef-resizable--${direction}${className ? ' ' + className : ''}`} style={style}>
+    <div {...rest} ref={ref} className={`ef-resizable ef-resizable--${direction}${className ? ' ' + className : ''}`} style={style}>
       <div className="ef-resizable__pane" style={{ flexBasis: (ratio * 100) + '%', flexGrow: 0, flexShrink: 0 }}>{kids[0]}</div>
       <button type="button" role="separator" aria-orientation={direction === 'horizontal' ? 'vertical' : 'horizontal'} aria-label="Resize panes"
         className={`ef-resizable__handle${drag ? ' ef-resizable__handle--drag' : ''}`} onPointerDown={down} onKeyDown={key}></button>

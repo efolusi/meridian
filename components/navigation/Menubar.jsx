@@ -18,7 +18,7 @@ const CSS = `
 .ef-menubar__sep{height:1px;background:var(--border-default);margin:4px 6px}
 .ef-menubar__kbd{margin-left:auto;font-family:var(--font-mono);font-size:11px;color:var(--text-muted)}
 `;
-export function Menubar({ menus, onSelect, style, className }) {
+export function Menubar({ menus, onSelect, style, className, ...rest }) {
   injectEfCss('ef-css-menubar', CSS);
   const [open, setOpen] = React.useState(null);
   const ref = React.useRef(null);
@@ -61,7 +61,7 @@ export function Menubar({ menus, onSelect, style, className }) {
     else if (e.key.length === 1 && /\S/.test(e.key) && !e.metaKey && !e.ctrlKey && !e.altKey) typeahead(e);
   };
   return (
-    <div ref={ref} role="menubar" className={`ef-menubar${className ? ' ' + className : ''}`} style={style}>
+    <div {...rest} ref={ref} role="menubar" className={`ef-menubar${className ? ' ' + className : ''}`} style={style}>
       {menus.map((m, i) => (
         <span key={m.label} className="ef-menubar__wrap">
           <button type="button" aria-haspopup="menu" aria-expanded={open === i} className={`ef-menubar__btn${open === i ? ' ef-menubar__btn--on' : ''}`}
