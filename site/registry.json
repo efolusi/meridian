@@ -1279,13 +1279,15 @@
       "name": "table",
       "type": "registry:ui",
       "title": "Table",
-      "description": "Data table: uppercase micro headers, hairline rows, optional row click. Borderless \u2014 nest in `<Card padding={0}>` for a framed table.",
+      "description": "Data table: uppercase micro headers, hairline rows, optional row click. Borderless \u2014 nest in `<Card padding={0}>` for a framed table. Sorting, selection, sticky header, and empty/loading states are built in, so the common admin table does not have to be hand-rolled around it.",
       "dependencies": [
         "react"
       ],
       "registryDependencies": [
         "https://meridian.efolusi.com/site/registry/meridian-base.json",
-        "https://meridian.efolusi.com/site/registry/button.json"
+        "https://meridian.efolusi.com/site/registry/button.json",
+        "https://meridian.efolusi.com/site/registry/checkbox.json",
+        "https://meridian.efolusi.com/site/registry/icon.json"
       ],
       "files": [
         {

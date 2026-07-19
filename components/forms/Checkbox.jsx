@@ -14,13 +14,13 @@ const CSS = `
 .ef-check__label{font-size:var(--text-md);color:var(--text-primary);line-height:1.4}
 .ef-check__desc{display:block;font-size:var(--text-sm);color:var(--text-muted)}
 `;
-export function Checkbox({ label, description, disabled, style, className, ...rest }) {
+export const Checkbox = React.forwardRef(function Checkbox({ label, description, disabled, style, className, ...rest }, ref) {
   injectEfCss('ef-css-check', CSS);
   return (
     <label className={`ef-check${disabled ? ' ef-check--disabled' : ''}${className ? ' ' + className : ''}`} style={style}>
-      <input type="checkbox" className="ef-check__input" disabled={disabled} {...rest} />
+      <input ref={ref} type="checkbox" className="ef-check__input" disabled={disabled} {...rest} />
       <span className="ef-check__box"><Icon name="check" size={13} strokeWidth={3} /></span>
       {label ? <span className="ef-check__label">{label}{description ? <span className="ef-check__desc">{description}</span> : null}</span> : null}
     </label>
   );
-}
+});
