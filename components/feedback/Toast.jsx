@@ -2,6 +2,7 @@ import React from 'react';
 import { Icon } from '../icons/Icon.jsx';
 import { IconButton } from '../forms/IconButton.jsx';
 import { injectEfCss } from '../forms/Button.jsx';
+import { Portal } from '../overlay/Portal.jsx';
 const CSS = `
 .ef-toast{display:flex;align-items:flex-start;gap:10px;width:360px;max-width:100%;padding:12px 14px;background:var(--surface-inverse);color:var(--text-inverse);border-radius:var(--radius-md);box-shadow:var(--shadow-lg);animation:ef-toast-in var(--dur-slow) var(--ease-spring)}
 .ef-toast__icon{display:inline-flex;margin-top:1px}
@@ -25,10 +26,10 @@ const CSS = `
 @keyframes ef-toast-in{from{opacity:0;transform:translateY(12px) scale(.96)}}
 `;
 const ICONS = { success: 'circle-check', danger: 'circle-alert', warning: 'triangle-alert', info: 'info' };
-export function Toast({ tone = 'info', title, description, actionLabel, onAction, onClose, style, className, ...rest }) {
+export function Toast({ tone = 'info', title, description, actionLabel, onAction, onClose, role = 'status', style, className, ...rest }) {
   injectEfCss('ef-css-toast', CSS);
   return (
-    <div {...rest} className={`ef-toast ef-toast--${tone}${className ? ' ' + className : ''}`} role="status" style={style}>
+    <div {...rest} className={`ef-toast ef-toast--${tone}${className ? ' ' + className : ''}`} role={role || undefined} style={style}>
       <span className="ef-toast__icon"><Icon name={ICONS[tone] || 'info'} size={18} /></span>
       <div style={{ flex: 1 }}>
         <div className="ef-toast__title">{title}</div>
@@ -43,3 +44,112 @@ export function ToastStack({ children, style, className, ...rest }) {
   injectEfCss('ef-css-toast', CSS);
   return <div {...rest} className={`ef-toast-stack${className ? ' ' + className : ''}`} style={style}>{children}</div>;
 }
+
+const ToastCtx = React.createContext(null);
+
+/**
+ * The toast queue API: notify, dismiss, dismissAll.
+ *
+ * Lowercase, so the compiler files it under unexposedExports and it never
+ * reaches the global namespace directly. Consumers get it as `Toaster.useToast`
+ * (assigned at the bottom of this file), which is the one sanctioned way to
+ * publish a hook when only capitalised exports are exposed.
+ *
+ * Throws outside a <Toaster> rather than degrading to a no-op: a notification
+ * that silently never appears is the harder bug to find.
+ */
+export function useToast() {
+  const ctx = React.useContext(ToastCtx);
+  if (!ctx) throw new Error('useToast must be called inside a <Toaster>');
+  return ctx;
+}
+
+/**
+ * Owns the toast queue: ids, timers, the live region, and the portal.
+ *
+ * Renders a Fragment around your app plus one portaled stack, so it can sit at
+ * the root without introducing a wrapper element.
+ */
+export function Toaster({ duration = 5000, label = 'Notifications', children, ...rest }) {
+  injectEfCss('ef-css-toast', CSS);
+  const uid = React.useId();
+  const seq = React.useRef(0);
+  const [toasts, setToasts] = React.useState([]);
+  const timers = React.useRef(new Map());
+
+  const dismiss = React.useCallback(id => {
+    const rec = timers.current.get(id);
+    if (rec && rec.handle) clearTimeout(rec.handle);
+    timers.current.delete(id);
+    setToasts(list => list.filter(x => x.id !== id));
+  }, []);
+
+  const arm = React.useCallback((id, ms) => {
+    const rec = { remaining: ms, startedAt: Date.now(), handle: null };
+    rec.handle = setTimeout(() => dismiss(id), ms);
+    timers.current.set(id, rec);
+  }, [dismiss]);
+
+  const notify = React.useCallback(options => {
+    const id = uid + (seq.current++);
+    const { duration: own, ...props } = options || {};
+    // A toast carrying an action must not time out: WCAG 2.2.1 does not allow a
+    // control to disappear on a timer the user cannot adjust.
+    const ms = own != null ? own : (props.actionLabel ? 0 : duration);
+    setToasts(list => [...list, { id, props }]);
+    if (ms > 0) arm(id, ms);
+    return id;
+  }, [uid, duration, arm]);
+
+  const dismissAll = React.useCallback(() => {
+    timers.current.forEach(rec => { if (rec.handle) clearTimeout(rec.handle); });
+    timers.current.clear();
+    setToasts([]);
+  }, []);
+
+  React.useEffect(() => () => {
+    timers.current.forEach(rec => { if (rec.handle) clearTimeout(rec.handle); });
+    timers.current.clear();
+  }, []);
+
+  // Hovering or focusing the stack holds every pending timer, so a slow reader
+  // or a keyboard user can actually reach the action inside a toast.
+  const pause = () => {
+    timers.current.forEach(rec => {
+      if (!rec.handle) return;
+      clearTimeout(rec.handle);
+      rec.remaining = Math.max(0, rec.remaining - (Date.now() - rec.startedAt));
+      rec.handle = null;
+    });
+  };
+  const resume = () => {
+    // A toast whose time ran out while paused must go on unpause, not become
+    // permanent. Collect them first: dismiss() mutates the map being iterated.
+    const expired = [];
+    timers.current.forEach((rec, id) => {
+      if (rec.handle) return;
+      if (rec.remaining <= 0) { expired.push(id); return; }
+      rec.startedAt = Date.now();
+      rec.handle = setTimeout(() => dismiss(id), rec.remaining);
+    });
+    expired.forEach(dismiss);
+  };
+
+  const api = React.useMemo(() => ({ notify, dismiss, dismissAll }), [notify, dismiss, dismissAll]);
+
+  return (
+    <ToastCtx.Provider value={api}>
+      {children}
+      <Portal>
+        <ToastStack {...rest} aria-label={label} role="log" aria-live="polite" aria-relevant="additions"
+          onMouseEnter={pause} onMouseLeave={resume} onFocusCapture={pause} onBlurCapture={resume}>
+          {toasts.map(t => (
+            <Toast key={t.id} {...t.props} role={null} onClose={() => dismiss(t.id)} />
+          ))}
+        </ToastStack>
+      </Portal>
+    </ToastCtx.Provider>
+  );
+}
+
+Toaster.useToast = useToast;

@@ -2081,8 +2081,8 @@
     {
       "name": "toast",
       "type": "registry:ui",
-      "title": "Toast + ToastStack",
-      "description": "Dark (espresso) notification card; wrap in `ToastStack` to pin bottom-right.",
+      "title": "Toast + ToastStack + Toaster",
+      "description": "Dark (espresso) notification card. Reach for `Toaster` first \u2014 it owns the queue, so you do not hand-roll ids, timers and a stack in every screen.",
       "dependencies": [
         "react"
       ],
@@ -2090,7 +2090,8 @@
         "https://meridian.efolusi.com/site/registry/meridian-base.json",
         "https://meridian.efolusi.com/site/registry/button.json",
         "https://meridian.efolusi.com/site/registry/icon.json",
-        "https://meridian.efolusi.com/site/registry/iconbutton.json"
+        "https://meridian.efolusi.com/site/registry/iconbutton.json",
+        "https://meridian.efolusi.com/site/registry/portal.json"
       ],
       "files": [
         {
