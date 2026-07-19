@@ -3,6 +3,12 @@
   "type": "registry:ui",
   "title": "Icon",
   "description": "Renders one of the 65 curated Lucide icons shipped in `assets/icons/`, inheriting `currentColor`.",
+  "dependencies": [
+    "react"
+  ],
+  "registryDependencies": [
+    "https://meridian.efolusi.com/site/registry/meridian-base.json"
+  ],
   "files": [
     {
       "path": "components/icons/Icon.jsx",

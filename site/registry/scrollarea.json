@@ -3,6 +3,13 @@
   "type": "registry:ui",
   "title": "ScrollArea",
   "description": "Overflow container with the system scrollbar treatment (thin, warm, rounded). Use for bounded lists, code panes, chat logs.",
+  "dependencies": [
+    "react"
+  ],
+  "registryDependencies": [
+    "https://meridian.efolusi.com/site/registry/meridian-base.json",
+    "https://meridian.efolusi.com/site/registry/button.json"
+  ],
   "files": [
     {
       "path": "components/display/ScrollArea.jsx",

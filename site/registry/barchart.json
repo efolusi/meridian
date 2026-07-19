@@ -3,6 +3,13 @@
   "type": "registry:ui",
   "title": "BarChart",
   "description": "Hairline-minimal bar chart: sand bars, ink highlight window, hover tint + title tooltip.",
+  "dependencies": [
+    "react"
+  ],
+  "registryDependencies": [
+    "https://meridian.efolusi.com/site/registry/meridian-base.json",
+    "https://meridian.efolusi.com/site/registry/button.json"
+  ],
   "files": [
     {
       "path": "components/data/BarChart.jsx",

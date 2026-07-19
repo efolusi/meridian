@@ -3,6 +3,14 @@
   "type": "registry:ui",
   "title": "PromptSteps",
   "description": "Keyboard-first inline question wizard \u2014 numbered options (1\u20139 keys), arrows to highlight, Enter to confirm, Esc dismisses, \u2190/Shift-Tab goes back; \"Other\" is an inline input. Calls `onComplete` with all answers.",
+  "dependencies": [
+    "react"
+  ],
+  "registryDependencies": [
+    "https://meridian.efolusi.com/site/registry/meridian-base.json",
+    "https://meridian.efolusi.com/site/registry/button.json",
+    "https://meridian.efolusi.com/site/registry/icon.json"
+  ],
   "files": [
     {
       "path": "components/ai/PromptSteps.jsx",

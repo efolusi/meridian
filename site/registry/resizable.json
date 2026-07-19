@@ -3,6 +3,13 @@
   "type": "registry:ui",
   "title": "Resizable",
   "description": "Two panes split by a draggable hairline handle (keyboard: arrow keys). Use for editor/preview, list/detail, terminal splits.",
+  "dependencies": [
+    "react"
+  ],
+  "registryDependencies": [
+    "https://meridian.efolusi.com/site/registry/meridian-base.json",
+    "https://meridian.efolusi.com/site/registry/button.json"
+  ],
   "files": [
     {
       "path": "components/display/Resizable.jsx",

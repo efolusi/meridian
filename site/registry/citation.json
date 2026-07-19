@@ -3,6 +3,14 @@
   "type": "registry:ui",
   "title": "Citation + SourceList",
   "description": "Inline superscript source chips + the source list they resolve to.",
+  "dependencies": [
+    "react"
+  ],
+  "registryDependencies": [
+    "https://meridian.efolusi.com/site/registry/meridian-base.json",
+    "https://meridian.efolusi.com/site/registry/button.json",
+    "https://meridian.efolusi.com/site/registry/icon.json"
+  ],
   "files": [
     {
       "path": "components/ai/Citation.jsx",

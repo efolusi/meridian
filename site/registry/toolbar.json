@@ -3,6 +3,15 @@
   "type": "registry:ui",
   "title": "Toolbar",
   "description": "Grouped icon actions on a hairline chip \u2014 editors, chart controls, bulk bars. `value` marks active (ink).",
+  "dependencies": [
+    "react"
+  ],
+  "registryDependencies": [
+    "https://meridian.efolusi.com/site/registry/meridian-base.json",
+    "https://meridian.efolusi.com/site/registry/button.json",
+    "https://meridian.efolusi.com/site/registry/icon.json",
+    "https://meridian.efolusi.com/site/registry/tooltip.json"
+  ],
   "files": [
     {
       "path": "components/display/Toolbar.jsx",

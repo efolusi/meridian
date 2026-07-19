@@ -3,6 +3,13 @@
   "type": "registry:ui",
   "title": "Card",
   "description": "The surface container: white, 1px sand border, 8px radius, warm shadow.",
+  "dependencies": [
+    "react"
+  ],
+  "registryDependencies": [
+    "https://meridian.efolusi.com/site/registry/meridian-base.json",
+    "https://meridian.efolusi.com/site/registry/button.json"
+  ],
   "files": [
     {
       "path": "components/display/Card.jsx",

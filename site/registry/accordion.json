@@ -3,6 +3,14 @@
   "type": "registry:ui",
   "title": "Accordion",
   "description": "Hairline disclosure list (FAQs, docs). Single-open by default; `multiple` allows several.",
+  "dependencies": [
+    "react"
+  ],
+  "registryDependencies": [
+    "https://meridian.efolusi.com/site/registry/meridian-base.json",
+    "https://meridian.efolusi.com/site/registry/button.json",
+    "https://meridian.efolusi.com/site/registry/icon.json"
+  ],
   "files": [
     {
       "path": "components/display/Accordion.jsx",

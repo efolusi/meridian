@@ -3,6 +3,14 @@
   "type": "registry:ui",
   "title": "FileDrop",
   "description": "Dashed dropzone \u2014 click or drag; ink border on hover/dragover.",
+  "dependencies": [
+    "react"
+  ],
+  "registryDependencies": [
+    "https://meridian.efolusi.com/site/registry/meridian-base.json",
+    "https://meridian.efolusi.com/site/registry/button.json",
+    "https://meridian.efolusi.com/site/registry/icon.json"
+  ],
   "files": [
     {
       "path": "components/files/FileDrop.jsx",

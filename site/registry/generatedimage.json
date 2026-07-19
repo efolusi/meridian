@@ -3,6 +3,14 @@
   "type": "registry:ui",
   "title": "GeneratedImage",
   "description": "Image-generation frame with queued / generating (pulsing dot-grid on dark) / complete (fade-in, scrim, hover actions) / error (retry) states.",
+  "dependencies": [
+    "react"
+  ],
+  "registryDependencies": [
+    "https://meridian.efolusi.com/site/registry/meridian-base.json",
+    "https://meridian.efolusi.com/site/registry/button.json",
+    "https://meridian.efolusi.com/site/registry/icon.json"
+  ],
   "files": [
     {
       "path": "components/ai/GeneratedImage.jsx",

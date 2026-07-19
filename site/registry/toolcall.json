@@ -3,6 +3,14 @@
   "type": "registry:ui",
   "title": "ToolCall",
   "description": "A tool invocation receipt: mono tool name, live status (running/success/error), collapsible Input/Result body.",
+  "dependencies": [
+    "react"
+  ],
+  "registryDependencies": [
+    "https://meridian.efolusi.com/site/registry/meridian-base.json",
+    "https://meridian.efolusi.com/site/registry/button.json",
+    "https://meridian.efolusi.com/site/registry/icon.json"
+  ],
   "files": [
     {
       "path": "components/ai/ToolCall.jsx",

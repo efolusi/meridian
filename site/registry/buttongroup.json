@@ -3,6 +3,13 @@
   "type": "registry:ui",
   "title": "ButtonGroup",
   "description": "Attaches adjacent Buttons/IconButtons into one segment (shared borders, squared inner corners). Use for tightly related actions of equal rank: zoom in/out, prev/next, split-button patterns.",
+  "dependencies": [
+    "react"
+  ],
+  "registryDependencies": [
+    "https://meridian.efolusi.com/site/registry/meridian-base.json",
+    "https://meridian.efolusi.com/site/registry/button.json"
+  ],
   "files": [
     {
       "path": "components/forms/ButtonGroup.jsx",

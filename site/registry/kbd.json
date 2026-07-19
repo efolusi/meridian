@@ -3,6 +3,13 @@
   "type": "registry:ui",
   "title": "Kbd",
   "description": "Keycap for shortcut hints \u2014 mono 11px, hairline with a 2px base.",
+  "dependencies": [
+    "react"
+  ],
+  "registryDependencies": [
+    "https://meridian.efolusi.com/site/registry/meridian-base.json",
+    "https://meridian.efolusi.com/site/registry/button.json"
+  ],
   "files": [
     {
       "path": "components/display/Kbd.jsx",

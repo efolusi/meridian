@@ -3,6 +3,14 @@
   "type": "registry:ui",
   "title": "ButtonTile + ButtonTileGroup",
   "description": "Large selectable tile \u2014 plan pickers, onboarding choices. Wrap in `ButtonTileGroup columns={n}`.",
+  "dependencies": [
+    "react"
+  ],
+  "registryDependencies": [
+    "https://meridian.efolusi.com/site/registry/meridian-base.json",
+    "https://meridian.efolusi.com/site/registry/button.json",
+    "https://meridian.efolusi.com/site/registry/icon.json"
+  ],
   "files": [
     {
       "path": "components/forms/ButtonTile.jsx",

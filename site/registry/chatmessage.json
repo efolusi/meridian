@@ -3,6 +3,16 @@
   "type": "registry:ui",
   "title": "ChatMessage",
   "description": "Agent-thread message: bot chip or user avatar, meta row, optional hover action row, streaming caret.",
+  "dependencies": [
+    "react"
+  ],
+  "registryDependencies": [
+    "https://meridian.efolusi.com/site/registry/meridian-base.json",
+    "https://meridian.efolusi.com/site/registry/avatar.json",
+    "https://meridian.efolusi.com/site/registry/button.json",
+    "https://meridian.efolusi.com/site/registry/icon.json",
+    "https://meridian.efolusi.com/site/registry/iconbutton.json"
+  ],
   "files": [
     {
       "path": "components/ai/ChatMessage.jsx",

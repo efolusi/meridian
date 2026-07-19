@@ -3,6 +3,13 @@
   "type": "registry:ui",
   "title": "Table",
   "description": "Data table: uppercase micro headers, hairline rows, optional row click. Borderless \u2014 nest in `<Card padding={0}>` for a framed table.",
+  "dependencies": [
+    "react"
+  ],
+  "registryDependencies": [
+    "https://meridian.efolusi.com/site/registry/meridian-base.json",
+    "https://meridian.efolusi.com/site/registry/button.json"
+  ],
   "files": [
     {
       "path": "components/data/Table.jsx",

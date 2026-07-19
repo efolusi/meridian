@@ -3,6 +3,15 @@
   "type": "registry:ui",
   "title": "DatePicker",
   "description": "Field-style trigger + Calendar popover; closes on pick, outside click, ESC.",
+  "dependencies": [
+    "react"
+  ],
+  "registryDependencies": [
+    "https://meridian.efolusi.com/site/registry/meridian-base.json",
+    "https://meridian.efolusi.com/site/registry/button.json",
+    "https://meridian.efolusi.com/site/registry/calendar.json",
+    "https://meridian.efolusi.com/site/registry/icon.json"
+  ],
   "files": [
     {
       "path": "components/dates/DatePicker.jsx",

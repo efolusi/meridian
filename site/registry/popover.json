@@ -3,6 +3,13 @@
   "type": "registry:ui",
   "title": "Popover",
   "description": "Anchored floating panel for filters, pickers, help. Closes on outside click / ESC.",
+  "dependencies": [
+    "react"
+  ],
+  "registryDependencies": [
+    "https://meridian.efolusi.com/site/registry/meridian-base.json",
+    "https://meridian.efolusi.com/site/registry/button.json"
+  ],
   "files": [
     {
       "path": "components/overlay/Popover.jsx",

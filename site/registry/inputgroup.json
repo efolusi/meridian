@@ -3,6 +3,13 @@
   "type": "registry:ui",
   "title": "InputGroup",
   "description": "An input with leading/trailing addons inside one bordered row. String addons render as tinted cells (units, protocols); node addons render bare (ghost Buttons, Icons).",
+  "dependencies": [
+    "react"
+  ],
+  "registryDependencies": [
+    "https://meridian.efolusi.com/site/registry/meridian-base.json",
+    "https://meridian.efolusi.com/site/registry/button.json"
+  ],
   "files": [
     {
       "path": "components/forms/InputGroup.jsx",

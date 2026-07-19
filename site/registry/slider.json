@@ -3,6 +3,13 @@
   "type": "registry:ui",
   "title": "Slider",
   "description": "Range input with ink fill and hairline track; label + live value optional.",
+  "dependencies": [
+    "react"
+  ],
+  "registryDependencies": [
+    "https://meridian.efolusi.com/site/registry/meridian-base.json",
+    "https://meridian.efolusi.com/site/registry/button.json"
+  ],
   "files": [
     {
       "path": "components/forms/Slider.jsx",

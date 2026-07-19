@@ -3,6 +3,16 @@
   "type": "registry:ui",
   "title": "FileTile",
   "description": "File row with type icon (inferred from extension), size/status meta, progress or error state.",
+  "dependencies": [
+    "react"
+  ],
+  "registryDependencies": [
+    "https://meridian.efolusi.com/site/registry/meridian-base.json",
+    "https://meridian.efolusi.com/site/registry/button.json",
+    "https://meridian.efolusi.com/site/registry/icon.json",
+    "https://meridian.efolusi.com/site/registry/iconbutton.json",
+    "https://meridian.efolusi.com/site/registry/progress.json"
+  ],
   "files": [
     {
       "path": "components/files/FileTile.jsx",

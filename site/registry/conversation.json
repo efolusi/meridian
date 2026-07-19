@@ -3,6 +3,14 @@
   "type": "registry:ui",
   "title": "Conversation",
   "description": "Stick-to-bottom thread viewport: keeps pinned to the latest message while streaming (ResizeObserver), shows a \"Jump to latest\" pill when the reader scrolls up.",
+  "dependencies": [
+    "react"
+  ],
+  "registryDependencies": [
+    "https://meridian.efolusi.com/site/registry/meridian-base.json",
+    "https://meridian.efolusi.com/site/registry/button.json",
+    "https://meridian.efolusi.com/site/registry/icon.json"
+  ],
   "files": [
     {
       "path": "components/ai/Conversation.jsx",

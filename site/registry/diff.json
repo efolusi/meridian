@@ -3,6 +3,14 @@
   "type": "registry:ui",
   "title": "Diff",
   "description": "Unified diff with dual line-number gutters, +/\u2212 signs, add/del row tints, and header counts.",
+  "dependencies": [
+    "react"
+  ],
+  "registryDependencies": [
+    "https://meridian.efolusi.com/site/registry/meridian-base.json",
+    "https://meridian.efolusi.com/site/registry/button.json",
+    "https://meridian.efolusi.com/site/registry/icon.json"
+  ],
   "files": [
     {
       "path": "components/code/Diff.jsx",

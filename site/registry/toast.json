@@ -3,6 +3,15 @@
   "type": "registry:ui",
   "title": "Toast + ToastStack",
   "description": "Dark (espresso) notification card; wrap in `ToastStack` to pin bottom-right.",
+  "dependencies": [
+    "react"
+  ],
+  "registryDependencies": [
+    "https://meridian.efolusi.com/site/registry/meridian-base.json",
+    "https://meridian.efolusi.com/site/registry/button.json",
+    "https://meridian.efolusi.com/site/registry/icon.json",
+    "https://meridian.efolusi.com/site/registry/iconbutton.json"
+  ],
   "files": [
     {
       "path": "components/feedback/Toast.jsx",

@@ -3,6 +3,14 @@
   "type": "registry:ui",
   "title": "Suggestions",
   "description": "Prompt-suggestion chip row for empty chats and follow-ups.",
+  "dependencies": [
+    "react"
+  ],
+  "registryDependencies": [
+    "https://meridian.efolusi.com/site/registry/meridian-base.json",
+    "https://meridian.efolusi.com/site/registry/button.json",
+    "https://meridian.efolusi.com/site/registry/icon.json"
+  ],
   "files": [
     {
       "path": "components/ai/Suggestions.jsx",

@@ -3,6 +3,13 @@
   "type": "registry:ui",
   "title": "DonutChart",
   "description": "Donut with center figure + legend; hover highlights a slice. Colors default to the brand ramp.",
+  "dependencies": [
+    "react"
+  ],
+  "registryDependencies": [
+    "https://meridian.efolusi.com/site/registry/meridian-base.json",
+    "https://meridian.efolusi.com/site/registry/button.json"
+  ],
   "files": [
     {
       "path": "components/data/DonutChart.jsx",

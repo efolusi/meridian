@@ -3,6 +3,14 @@
   "type": "registry:ui",
   "title": "Tag",
   "description": "Chip for filters and labels; removable via `onRemove`, clickable via `onClick`.",
+  "dependencies": [
+    "react"
+  ],
+  "registryDependencies": [
+    "https://meridian.efolusi.com/site/registry/meridian-base.json",
+    "https://meridian.efolusi.com/site/registry/button.json",
+    "https://meridian.efolusi.com/site/registry/icon.json"
+  ],
   "files": [
     {
       "path": "components/display/Tag.jsx",

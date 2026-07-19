@@ -1,0 +1,47 @@
+{
+  "name": "meridian-base",
+  "type": "registry:style",
+  "title": "Meridian base",
+  "description": "Stylesheet entry and the full token layer (colour, typography, spacing, effects) in light, dark and compact. Every other item depends on this.",
+  "files": [
+    {
+      "path": "styles.css",
+      "type": "registry:file",
+      "content": "@import \"tokens/fonts.css\";\n@import \"tokens/colors.css\";\n@import \"tokens/typography.css\";\n@import \"tokens/spacing.css\";\n@import \"tokens/effects.css\";\n@import \"tokens/base.css\";\n"
+    },
+    {
+      "path": "tokens/base.css",
+      "type": "registry:file",
+      "content": "body{margin:0;font-family:var(--font-sans);font-size:var(--text-md);line-height:var(--leading-normal);color:var(--text-primary);background:var(--surface-page);-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}\nh1,h2,h3,h4{font-family:var(--font-display);letter-spacing:var(--tracking-display);line-height:var(--leading-snug);margin:0}\np{margin:0}\na{color:var(--text-link);text-decoration:none;transition:color var(--dur-fast) var(--ease-out)}\na:hover{color:var(--accent-hover);text-decoration:underline;text-underline-offset:3px}\na:focus-visible{outline:none;box-shadow:var(--focus-ring);border-radius:var(--radius-sm)}\ncode,pre,kbd{font-family:var(--font-mono)}\n::selection{background:var(--brand-100)}\n*,*::before,*::after{box-sizing:border-box}\n@media (prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important;scroll-behavior:auto!important}}\n"
+    },
+    {
+      "path": "tokens/colors.css",
+      "type": "registry:file",
+      "content": ":root{\n/* Sand \u2014 warm neutrals */\n--sand-25:#FCFBF9;--sand-50:#FAF9F6;--sand-100:#F3F1EB;--sand-200:#E7E3D9;--sand-300:#D5CFC0;--sand-400:#B4AB97;--sand-500:#948A74;--sand-600:#786E59;--sand-700:#5E5545;--sand-800:#443D32;--sand-900:#2E2922;--sand-950:#1E1A14;\n/* Brand \u2014 cream\u2192peach\u2192caramel\u2192cocoa ramp sampled from the owl mark */\n--brand-50:#F8F4E6;--brand-100:#F4E9D2;--brand-200:#EFCFAC;--brand-300:#DFB585;--brand-400:#CE9C66;--brand-500:#C08A5A;--brand-600:#A0693C;--brand-700:#7A4E2B;--brand-800:#5C3A1F;--brand-900:#482818;--brand-950:#2C1709;\n/* Named logo tones (aliases into the ramp) */\n--cocoa-950:var(--brand-950);--cocoa-900:#3A2012;--cocoa-700:var(--brand-900);--caramel-500:var(--brand-500);--peach-200:var(--brand-200);--cream-50:var(--brand-50);\n/* Status \u2014 each 600 fg holds \u22654.5:1 on its 100 tint and on white */\n--success-600:#2F7A40;--success-100:#EBF5EC;--success-300:#BFE0C6;\n--warning-600:#B45309;--warning-100:#FDF3E0;--warning-300:#F3D9A8;\n--danger-600:#C81E1E;--danger-700:#B91C1C;--danger-100:#FDEEEC;--danger-300:#F5C6C0;\n/* Semantic aliases */\n--surface-page:var(--sand-50);--surface-card:#FFFFFF;--surface-sunken:var(--sand-100);--surface-subtle:var(--sand-25);--surface-inverse:var(--sand-950);--surface-brand:var(--brand-900);\n--surface-code:#14110B;--text-code:#E8E3D9;--border-code:rgba(240,235,225,.09);/* code/terminal surface \u2014 fixed dark espresso in BOTH themes (never remap) */\n--overlay-scrim:rgba(31,26,20,.45);/* modal/drawer backdrop */--text-on-brand-muted:rgba(248,244,230,.75);/* muted text on brand/inverse surfaces */\n--text-primary:var(--sand-950);--text-secondary:var(--sand-700);--text-muted:#746A55;/* between sand-600/700: \u22654.5:1 on page, card, and sunken */--text-inverse:var(--sand-50);--text-link:var(--brand-700);\n--border-default:var(--sand-200);--border-strong:var(--sand-300);--border-inverse:rgba(250,249,246,.18);\n--accent:var(--brand-950);--accent-hover:#1D0E04;--accent-active:#120801;--accent-subtle:var(--brand-50);--accent-subtle-border:var(--brand-200);--accent-contrast:#FFFFFF;\n--danger-contrast:#FFFFFF;/* label on a solid --danger-600 fill; flips in dark where the red lightens */\n/* Focus ring \u2014 opaque, two-layer. The inner offset ring is surface-coloured so the\n   indicator never sits directly against a control fill; the outer ring only ever needs\n   contrast against the surface, clearing WCAG 1.4.11 (3:1 non-text) on every background. */\n--focus-ring-color:var(--brand-700);--focus-ring-offset:var(--surface-card);\n--focus-ring:0 0 0 2px var(--focus-ring-offset),0 0 0 4px var(--focus-ring-color);\n--focus-ring-danger:0 0 0 2px var(--focus-ring-offset),0 0 0 4px var(--danger-600);\n}\n/* Dark theme \u2014 semantic remap only; ramps stay fixed */\n[data-theme=\"dark\"]{\n--surface-page:#191512;--surface-card:#211C17;--surface-sunken:#2A251E;--surface-subtle:#1D1814;--surface-inverse:var(--sand-50);--surface-brand:var(--brand-950);\n--text-primary:#F3EFE7;--text-secondary:#C9C0B2;--text-muted:#9C9280;--text-inverse:var(--sand-950);--text-link:var(--brand-400);\n--border-default:#332C24;--border-strong:#453C31;--border-inverse:rgba(30,26,20,.2);\n--accent:#F3EFE7;--accent-hover:#FFFFFF;--accent-active:#D5CFC0;--accent-subtle:#2A2119;--accent-subtle-border:#453728;--accent-contrast:#1E1A14;\n--success-600:#5FB86E;--success-100:#1C2B1F;--success-300:#2E4A34;\n--warning-100:#2E2413;--warning-300:#4A3A1D;--warning-600:#D9822B;\n--danger-100:#321B18;--danger-300:#54291F;--danger-600:#E85D4A;--danger-contrast:#1E1A14;\n--focus-ring-color:var(--brand-400);/* offset + composite inherit from :root and re-resolve here */\n}\n[data-theme=\"dark\"] ::selection{background:#453728}\n"
+    },
+    {
+      "path": "tokens/effects.css",
+      "type": "registry:file",
+      "content": ":root{\n--shadow-xs:0 1px 2px rgba(46,41,34,.05);\n--shadow-sm:0 1px 3px rgba(46,41,34,.07);\n--shadow-md:0 4px 12px rgba(46,41,34,.08);\n--shadow-lg:0 12px 28px rgba(46,41,34,.12);\n--shadow-xl:0 16px 40px rgba(31,26,20,.18),0 2px 8px rgba(31,26,20,.08);\n--shadow-pop:var(--shadow-xl);/* deprecated alias of --shadow-xl; kept one major */\n/* Elevation scale \u2014 the single source of overlay stacking order */\n--z-dropdown:1000;/* @kind other */\n--z-sticky:1100;/* @kind other */\n--z-overlay:1200;/* @kind other */\n--z-modal:1300;/* @kind other */\n--z-popover:1400;/* @kind other */\n--z-toast:1500;/* @kind other */\n--z-tooltip:1600;/* @kind other */\n--ease-spring:cubic-bezier(.3,1.04,.35,1);/* @kind other */\n--ease-out:cubic-bezier(.22,1,.36,1);/* @kind other */\n--ease-in-out:cubic-bezier(.65,0,.35,1);/* @kind other */\n--dur-fast:100ms;/* @kind other */\n--dur-med:160ms;/* @kind other */\n--dur-slow:240ms;/* @kind other */\n}\n"
+    },
+    {
+      "path": "tokens/fonts.css",
+      "type": "registry:file",
+      "content": "@font-face{font-family:'Bricolage Grotesque';src:url('../assets/fonts/BricolageGrotesque-Variable.ttf') format('truetype-variations');font-weight:200 800;font-style:normal;font-display:swap}\n@font-face{font-family:'Figtree';src:url('../assets/fonts/Figtree-Variable.ttf') format('truetype-variations');font-weight:300 900;font-style:normal;font-display:swap}\n@font-face{font-family:'Figtree';src:url('../assets/fonts/Figtree-Italic-Variable.ttf') format('truetype-variations');font-weight:300 900;font-style:italic;font-display:swap}\n@font-face{font-family:'JetBrains Mono';src:url('../assets/fonts/JetBrainsMono-Variable.ttf') format('truetype-variations');font-weight:100 800;font-style:normal;font-display:swap}\n@font-face{font-family:'JetBrains Mono';src:url('../assets/fonts/JetBrainsMono-Italic-Variable.ttf') format('truetype-variations');font-weight:100 800;font-style:italic;font-display:swap}\n"
+    },
+    {
+      "path": "tokens/spacing.css",
+      "type": "registry:file",
+      "content": ":root{\n--space-0:0;--space-1:4px;--space-2:8px;--space-3:12px;--space-4:16px;--space-5:20px;--space-6:24px;--space-8:32px;--space-10:40px;--space-12:48px;--space-16:64px;--space-20:80px;--space-24:96px;--space-32:128px;\n--radius-sm:4px;--radius-md:8px;--radius-lg:12px;--radius-xl:16px;--radius-full:999px;\n--container-max:1200px;--container-text:720px;\n--control-h-sm:28px;--control-h-md:36px;--control-h-lg:44px;\n--table-pad-y:12px;--table-pad-x:16px;\n}\n/* Compact density \u2014 data-heavy B2B views */\n[data-density=\"compact\"]{\n--control-h-sm:24px;--control-h-md:30px;--control-h-lg:38px;\n--table-pad-y:7px;--table-pad-x:12px;\n}\n"
+    },
+    {
+      "path": "tokens/typography.css",
+      "type": "registry:file",
+      "content": ":root{\n--font-display:'Bricolage Grotesque','Figtree',ui-sans-serif,system-ui,sans-serif;\n--font-sans:'Figtree',ui-sans-serif,system-ui,-apple-system,'Segoe UI',sans-serif;\n--font-mono:'JetBrains Mono',ui-monospace,'SF Mono',Menlo,monospace;\n--text-2xs:11px;--text-xs:12px;--text-sm:13px;--text-md:14px;--text-lg:16px;--text-xl:18px;--text-2xl:21px;--text-3xl:26px;--text-4xl:34px;--text-5xl:44px;--text-6xl:60px;--text-7xl:76px;\n--leading-tight:1.05;--leading-snug:1.25;--leading-normal:1.5;--leading-relaxed:1.65;\n--tracking-display:-0.02em;--tracking-tight:-0.01em;--tracking-wide:0.06em;\n--weight-regular:400;--weight-medium:500;--weight-semibold:600;--weight-bold:700;--weight-display:680;\n}\n"
+    }
+  ],
+  "categories": [
+    "foundation"
+  ],
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json"
+}

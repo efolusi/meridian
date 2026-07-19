@@ -3,6 +3,14 @@
   "type": "registry:ui",
   "title": "Task",
   "description": "Rail-connected list of agent actions \u2014 icon rows joined by hairline connectors; last row's rail is hidden. `streaming` pulses the newest row.",
+  "dependencies": [
+    "react"
+  ],
+  "registryDependencies": [
+    "https://meridian.efolusi.com/site/registry/meridian-base.json",
+    "https://meridian.efolusi.com/site/registry/button.json",
+    "https://meridian.efolusi.com/site/registry/icon.json"
+  ],
   "files": [
     {
       "path": "components/ai/Task.jsx",

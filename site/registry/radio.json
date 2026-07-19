@@ -3,6 +3,13 @@
   "type": "registry:ui",
   "title": "Radio",
   "description": "Radio for 2\u20135 mutually exclusive options; group with a shared `name`.",
+  "dependencies": [
+    "react"
+  ],
+  "registryDependencies": [
+    "https://meridian.efolusi.com/site/registry/meridian-base.json",
+    "https://meridian.efolusi.com/site/registry/button.json"
+  ],
   "files": [
     {
       "path": "components/forms/Radio.jsx",

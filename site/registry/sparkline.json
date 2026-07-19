@@ -3,6 +3,12 @@
   "type": "registry:ui",
   "title": "Sparkline",
   "description": "Inline trend line (SVG) \u2014 green up, red down, faint area fill. Pairs with Stat.",
+  "dependencies": [
+    "react"
+  ],
+  "registryDependencies": [
+    "https://meridian.efolusi.com/site/registry/meridian-base.json"
+  ],
   "files": [
     {
       "path": "components/data/Sparkline.jsx",

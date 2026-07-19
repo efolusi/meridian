@@ -3,6 +3,13 @@
   "type": "registry:ui",
   "title": "LineChart",
   "description": "SVG line chart with hover crosshair + tooltip; soft area fill by default.",
+  "dependencies": [
+    "react"
+  ],
+  "registryDependencies": [
+    "https://meridian.efolusi.com/site/registry/meridian-base.json",
+    "https://meridian.efolusi.com/site/registry/button.json"
+  ],
   "files": [
     {
       "path": "components/data/LineChart.jsx",

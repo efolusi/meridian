@@ -3,6 +3,14 @@
   "type": "registry:ui",
   "title": "TreeList",
   "description": "Collapsible tree for file/nav hierarchies. Rows take icons + mono counts; branches toggle on click.",
+  "dependencies": [
+    "react"
+  ],
+  "registryDependencies": [
+    "https://meridian.efolusi.com/site/registry/meridian-base.json",
+    "https://meridian.efolusi.com/site/registry/button.json",
+    "https://meridian.efolusi.com/site/registry/icon.json"
+  ],
   "files": [
     {
       "path": "components/display/TreeList.jsx",

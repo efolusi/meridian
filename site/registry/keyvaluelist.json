@@ -3,6 +3,13 @@
   "type": "registry:ui",
   "title": "KeyValueList",
   "description": "Label/value rows with hairline separators \u2014 resource details, DNS records, trade info.",
+  "dependencies": [
+    "react"
+  ],
+  "registryDependencies": [
+    "https://meridian.efolusi.com/site/registry/meridian-base.json",
+    "https://meridian.efolusi.com/site/registry/button.json"
+  ],
   "files": [
     {
       "path": "components/data/KeyValueList.jsx",

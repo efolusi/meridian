@@ -3,6 +3,14 @@
   "type": "registry:ui",
   "title": "SourceCard",
   "description": "Web-source card for grounded answers \u2014 optional 16:9 thumbnail, favicon + domain row, title, 3-line clamped description. `variant=\"plain\"` for dense lists.",
+  "dependencies": [
+    "react"
+  ],
+  "registryDependencies": [
+    "https://meridian.efolusi.com/site/registry/meridian-base.json",
+    "https://meridian.efolusi.com/site/registry/button.json",
+    "https://meridian.efolusi.com/site/registry/icon.json"
+  ],
   "files": [
     {
       "path": "components/ai/SourceCard.jsx",

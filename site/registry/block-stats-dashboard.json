@@ -3,6 +3,12 @@
   "type": "registry:block",
   "title": "Stats dashboard block",
   "description": "Pre-composed Meridian section: stats dashboard.",
+  "dependencies": [
+    "react"
+  ],
+  "registryDependencies": [
+    "https://meridian.efolusi.com/site/registry/meridian-base.json"
+  ],
   "files": [
     {
       "path": "blocks/stats-dashboard.html",

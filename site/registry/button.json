@@ -3,6 +3,13 @@
   "type": "registry:ui",
   "title": "Button",
   "description": "The action button \u2014 primary for the one main action per view, secondary/ghost for the rest.",
+  "dependencies": [
+    "react"
+  ],
+  "registryDependencies": [
+    "https://meridian.efolusi.com/site/registry/meridian-base.json",
+    "https://meridian.efolusi.com/site/registry/icon.json"
+  ],
   "files": [
     {
       "path": "components/forms/Button.jsx",

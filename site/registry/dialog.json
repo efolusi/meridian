@@ -3,6 +3,15 @@
   "type": "registry:ui",
   "title": "Dialog",
   "description": "Centered modal with dimmed overlay, springy scale-in, ESC/overlay/\u2715 close.",
+  "dependencies": [
+    "react"
+  ],
+  "registryDependencies": [
+    "https://meridian.efolusi.com/site/registry/meridian-base.json",
+    "https://meridian.efolusi.com/site/registry/button.json",
+    "https://meridian.efolusi.com/site/registry/icon.json",
+    "https://meridian.efolusi.com/site/registry/iconbutton.json"
+  ],
   "files": [
     {
       "path": "components/feedback/Dialog.jsx",

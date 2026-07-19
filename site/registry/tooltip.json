@@ -3,6 +3,13 @@
   "type": "registry:ui",
   "title": "Tooltip",
   "description": "Hover/focus tooltip with 200ms delay and spring pop. Wrap any trigger element.",
+  "dependencies": [
+    "react"
+  ],
+  "registryDependencies": [
+    "https://meridian.efolusi.com/site/registry/meridian-base.json",
+    "https://meridian.efolusi.com/site/registry/button.json"
+  ],
   "files": [
     {
       "path": "components/feedback/Tooltip.jsx",

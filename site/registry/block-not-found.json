@@ -3,6 +3,12 @@
   "type": "registry:block",
   "title": "Not found block",
   "description": "Pre-composed Meridian section: not found.",
+  "dependencies": [
+    "react"
+  ],
+  "registryDependencies": [
+    "https://meridian.efolusi.com/site/registry/meridian-base.json"
+  ],
   "files": [
     {
       "path": "blocks/not-found.html",

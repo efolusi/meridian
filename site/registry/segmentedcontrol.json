@@ -3,6 +3,14 @@
   "type": "registry:ui",
   "title": "SegmentedControl",
   "description": "Inline 2\u20135-way toggle on a sand track; active segment is a white hairline chip. For views/ranges \u2014 use Tabs for page sections.",
+  "dependencies": [
+    "react"
+  ],
+  "registryDependencies": [
+    "https://meridian.efolusi.com/site/registry/meridian-base.json",
+    "https://meridian.efolusi.com/site/registry/button.json",
+    "https://meridian.efolusi.com/site/registry/icon.json"
+  ],
   "files": [
     {
       "path": "components/navigation/SegmentedControl.jsx",

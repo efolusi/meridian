@@ -3,6 +3,14 @@
   "type": "registry:ui",
   "title": "Breadcrumbs",
   "description": "Path trail with chevron separators; last item is the current page.",
+  "dependencies": [
+    "react"
+  ],
+  "registryDependencies": [
+    "https://meridian.efolusi.com/site/registry/meridian-base.json",
+    "https://meridian.efolusi.com/site/registry/button.json",
+    "https://meridian.efolusi.com/site/registry/icon.json"
+  ],
   "files": [
     {
       "path": "components/navigation/Breadcrumbs.jsx",

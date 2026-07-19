@@ -3,6 +3,14 @@
   "type": "registry:ui",
   "title": "DocumentCard",
   "description": "Inline document artifact \u2014 header with copy + expand, content clipped at `collapsedHeight` with a paper fade; measured height animates open.",
+  "dependencies": [
+    "react"
+  ],
+  "registryDependencies": [
+    "https://meridian.efolusi.com/site/registry/meridian-base.json",
+    "https://meridian.efolusi.com/site/registry/button.json",
+    "https://meridian.efolusi.com/site/registry/icon.json"
+  ],
   "files": [
     {
       "path": "components/ai/DocumentCard.jsx",

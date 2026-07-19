@@ -3,6 +3,13 @@
   "type": "registry:ui",
   "title": "Stat",
   "description": "KPI block: muted label, mono value, colored delta.",
+  "dependencies": [
+    "react"
+  ],
+  "registryDependencies": [
+    "https://meridian.efolusi.com/site/registry/meridian-base.json",
+    "https://meridian.efolusi.com/site/registry/button.json"
+  ],
   "files": [
     {
       "path": "components/data/Stat.jsx",

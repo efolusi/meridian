@@ -3,6 +3,14 @@
   "type": "registry:ui",
   "title": "Console",
   "description": "Log viewer \u2014 level icons/colors, tabular timestamps, per-row collapsible stack traces, sticks to the bottom while streaming and shows a \"Latest\" pill when scrolled up.",
+  "dependencies": [
+    "react"
+  ],
+  "registryDependencies": [
+    "https://meridian.efolusi.com/site/registry/meridian-base.json",
+    "https://meridian.efolusi.com/site/registry/button.json",
+    "https://meridian.efolusi.com/site/registry/icon.json"
+  ],
   "files": [
     {
       "path": "components/code/Console.jsx",

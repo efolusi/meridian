@@ -3,6 +3,15 @@
   "type": "registry:ui",
   "title": "ConfirmDialog",
   "description": "Destructive-action preset of Dialog; optional type-to-confirm gate.",
+  "dependencies": [
+    "react"
+  ],
+  "registryDependencies": [
+    "https://meridian.efolusi.com/site/registry/meridian-base.json",
+    "https://meridian.efolusi.com/site/registry/button.json",
+    "https://meridian.efolusi.com/site/registry/dialog.json",
+    "https://meridian.efolusi.com/site/registry/input.json"
+  ],
   "files": [
     {
       "path": "components/feedback/ConfirmDialog.jsx",

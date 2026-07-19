@@ -3,6 +3,13 @@
   "type": "registry:ui",
   "title": "PageControl",
   "description": "Carousel dots \u2014 active dot stretches to an ink pill.",
+  "dependencies": [
+    "react"
+  ],
+  "registryDependencies": [
+    "https://meridian.efolusi.com/site/registry/meridian-base.json",
+    "https://meridian.efolusi.com/site/registry/button.json"
+  ],
   "files": [
     {
       "path": "components/navigation/PageControl.jsx",

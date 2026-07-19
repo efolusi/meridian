@@ -3,6 +3,14 @@
   "type": "registry:ui",
   "title": "Link",
   "description": "Styled anchor. `external` adds \u2197 + new tab; `standalone` makes a semibold CTA with \u2192.",
+  "dependencies": [
+    "react"
+  ],
+  "registryDependencies": [
+    "https://meridian.efolusi.com/site/registry/meridian-base.json",
+    "https://meridian.efolusi.com/site/registry/button.json",
+    "https://meridian.efolusi.com/site/registry/icon.json"
+  ],
   "files": [
     {
       "path": "components/display/Link.jsx",

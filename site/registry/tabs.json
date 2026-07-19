@@ -3,6 +3,14 @@
   "type": "registry:ui",
   "title": "Tabs",
   "description": "Underline tabs with a spring-sliding caramel ink bar. Controlled: pass `value` + `onChange`.",
+  "dependencies": [
+    "react"
+  ],
+  "registryDependencies": [
+    "https://meridian.efolusi.com/site/registry/meridian-base.json",
+    "https://meridian.efolusi.com/site/registry/button.json",
+    "https://meridian.efolusi.com/site/registry/icon.json"
+  ],
   "files": [
     {
       "path": "components/navigation/Tabs.jsx",

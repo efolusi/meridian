@@ -3,6 +3,14 @@
   "type": "registry:ui",
   "title": "Transcript",
   "description": "Time-synced transcript \u2014 active row derives from `currentTime`, auto-scroll keeps it centered (toggleable), timestamps jump the player, optional word-level highlight via `words`.",
+  "dependencies": [
+    "react"
+  ],
+  "registryDependencies": [
+    "https://meridian.efolusi.com/site/registry/meridian-base.json",
+    "https://meridian.efolusi.com/site/registry/button.json",
+    "https://meridian.efolusi.com/site/registry/player.json"
+  ],
   "files": [
     {
       "path": "components/ai/Transcript.jsx",

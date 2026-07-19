@@ -3,6 +3,14 @@
   "type": "registry:ui",
   "title": "Todo",
   "description": "Collapsible agent checklist card \u2014 spinner while in progress, espresso check + strikethrough when done, n/total count in the header.",
+  "dependencies": [
+    "react"
+  ],
+  "registryDependencies": [
+    "https://meridian.efolusi.com/site/registry/meridian-base.json",
+    "https://meridian.efolusi.com/site/registry/button.json",
+    "https://meridian.efolusi.com/site/registry/icon.json"
+  ],
   "files": [
     {
       "path": "components/ai/Todo.jsx",

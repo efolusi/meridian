@@ -3,6 +3,14 @@
   "type": "registry:ui",
   "title": "Carousel",
   "description": "Scroll-snap strip with arrow controls and position dots. Use for galleries, template pickers, testimonial strips.",
+  "dependencies": [
+    "react"
+  ],
+  "registryDependencies": [
+    "https://meridian.efolusi.com/site/registry/meridian-base.json",
+    "https://meridian.efolusi.com/site/registry/button.json",
+    "https://meridian.efolusi.com/site/registry/icon.json"
+  ],
   "files": [
     {
       "path": "components/display/Carousel.jsx",

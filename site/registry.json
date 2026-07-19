@@ -4,10 +4,57 @@
   "homepage": "https://github.com/efolusi/meridian",
   "items": [
     {
+      "name": "meridian-base",
+      "type": "registry:style",
+      "title": "Meridian base",
+      "description": "Stylesheet entry and the full token layer (colour, typography, spacing, effects) in light, dark and compact. Every other item depends on this.",
+      "files": [
+        {
+          "path": "styles.css",
+          "type": "registry:file"
+        },
+        {
+          "path": "tokens/base.css",
+          "type": "registry:file"
+        },
+        {
+          "path": "tokens/colors.css",
+          "type": "registry:file"
+        },
+        {
+          "path": "tokens/effects.css",
+          "type": "registry:file"
+        },
+        {
+          "path": "tokens/fonts.css",
+          "type": "registry:file"
+        },
+        {
+          "path": "tokens/spacing.css",
+          "type": "registry:file"
+        },
+        {
+          "path": "tokens/typography.css",
+          "type": "registry:file"
+        }
+      ],
+      "categories": [
+        "foundation"
+      ]
+    },
+    {
       "name": "agentrun",
       "type": "registry:ui",
       "title": "AgentRun",
       "description": "Vertical run trace: one row per step with done/active/pending/error state, connector rail, mono timestamps.",
+      "dependencies": [
+        "react"
+      ],
+      "registryDependencies": [
+        "https://meridian.efolusi.com/site/registry/meridian-base.json",
+        "https://meridian.efolusi.com/site/registry/button.json",
+        "https://meridian.efolusi.com/site/registry/icon.json"
+      ],
       "files": [
         {
           "path": "components/ai/AgentRun.jsx",
@@ -31,6 +78,16 @@
       "type": "registry:ui",
       "title": "ChatMessage",
       "description": "Agent-thread message: bot chip or user avatar, meta row, optional hover action row, streaming caret.",
+      "dependencies": [
+        "react"
+      ],
+      "registryDependencies": [
+        "https://meridian.efolusi.com/site/registry/meridian-base.json",
+        "https://meridian.efolusi.com/site/registry/avatar.json",
+        "https://meridian.efolusi.com/site/registry/button.json",
+        "https://meridian.efolusi.com/site/registry/icon.json",
+        "https://meridian.efolusi.com/site/registry/iconbutton.json"
+      ],
       "files": [
         {
           "path": "components/ai/ChatMessage.jsx",
@@ -54,6 +111,14 @@
       "type": "registry:ui",
       "title": "Citation + SourceList",
       "description": "Inline superscript source chips + the source list they resolve to.",
+      "dependencies": [
+        "react"
+      ],
+      "registryDependencies": [
+        "https://meridian.efolusi.com/site/registry/meridian-base.json",
+        "https://meridian.efolusi.com/site/registry/button.json",
+        "https://meridian.efolusi.com/site/registry/icon.json"
+      ],
       "files": [
         {
           "path": "components/ai/Citation.jsx",
@@ -77,6 +142,14 @@
       "type": "registry:ui",
       "title": "Confirmation",
       "description": "Inline approval card for agent actions \u2014 pending shows Approve/Reject, settled shows a status line. Ringed accent (or danger) border while pending.",
+      "dependencies": [
+        "react"
+      ],
+      "registryDependencies": [
+        "https://meridian.efolusi.com/site/registry/meridian-base.json",
+        "https://meridian.efolusi.com/site/registry/button.json",
+        "https://meridian.efolusi.com/site/registry/icon.json"
+      ],
       "files": [
         {
           "path": "components/ai/Confirmation.jsx",
@@ -100,6 +173,14 @@
       "type": "registry:ui",
       "title": "Conversation",
       "description": "Stick-to-bottom thread viewport: keeps pinned to the latest message while streaming (ResizeObserver), shows a \"Jump to latest\" pill when the reader scrolls up.",
+      "dependencies": [
+        "react"
+      ],
+      "registryDependencies": [
+        "https://meridian.efolusi.com/site/registry/meridian-base.json",
+        "https://meridian.efolusi.com/site/registry/button.json",
+        "https://meridian.efolusi.com/site/registry/icon.json"
+      ],
       "files": [
         {
           "path": "components/ai/Conversation.jsx",
@@ -123,6 +204,14 @@
       "type": "registry:ui",
       "title": "DocumentCard",
       "description": "Inline document artifact \u2014 header with copy + expand, content clipped at `collapsedHeight` with a paper fade; measured height animates open.",
+      "dependencies": [
+        "react"
+      ],
+      "registryDependencies": [
+        "https://meridian.efolusi.com/site/registry/meridian-base.json",
+        "https://meridian.efolusi.com/site/registry/button.json",
+        "https://meridian.efolusi.com/site/registry/icon.json"
+      ],
       "files": [
         {
           "path": "components/ai/DocumentCard.jsx",
@@ -146,6 +235,14 @@
       "type": "registry:ui",
       "title": "FeedbackBar",
       "description": "Quiet action row under an assistant message: thumbs up/down (toggle), copy, regenerate.",
+      "dependencies": [
+        "react"
+      ],
+      "registryDependencies": [
+        "https://meridian.efolusi.com/site/registry/meridian-base.json",
+        "https://meridian.efolusi.com/site/registry/button.json",
+        "https://meridian.efolusi.com/site/registry/icon.json"
+      ],
       "files": [
         {
           "path": "components/ai/FeedbackBar.jsx",
@@ -169,6 +266,14 @@
       "type": "registry:ui",
       "title": "GeneratedImage",
       "description": "Image-generation frame with queued / generating (pulsing dot-grid on dark) / complete (fade-in, scrim, hover actions) / error (retry) states.",
+      "dependencies": [
+        "react"
+      ],
+      "registryDependencies": [
+        "https://meridian.efolusi.com/site/registry/meridian-base.json",
+        "https://meridian.efolusi.com/site/registry/button.json",
+        "https://meridian.efolusi.com/site/registry/icon.json"
+      ],
       "files": [
         {
           "path": "components/ai/GeneratedImage.jsx",
@@ -192,6 +297,14 @@
       "type": "registry:ui",
       "title": "ModelSelector",
       "description": "Compact model picker for composers: current model + provider on the trigger, panel with hint lines and badges.",
+      "dependencies": [
+        "react"
+      ],
+      "registryDependencies": [
+        "https://meridian.efolusi.com/site/registry/meridian-base.json",
+        "https://meridian.efolusi.com/site/registry/button.json",
+        "https://meridian.efolusi.com/site/registry/icon.json"
+      ],
       "files": [
         {
           "path": "components/ai/ModelSelector.jsx",
@@ -215,6 +328,14 @@
       "type": "registry:ui",
       "title": "Player",
       "description": "Audio player \u2014 seekable waveform (drag or click), \u00b110s skip, play/pause, mute, tabular timestamps. Expose a ref for `jumpTo` and pair with Transcript via `onTimeChange`.",
+      "dependencies": [
+        "react"
+      ],
+      "registryDependencies": [
+        "https://meridian.efolusi.com/site/registry/meridian-base.json",
+        "https://meridian.efolusi.com/site/registry/button.json",
+        "https://meridian.efolusi.com/site/registry/icon.json"
+      ],
       "files": [
         {
           "path": "components/ai/Player.jsx",
@@ -238,6 +359,15 @@
       "type": "registry:ui",
       "title": "PromptComposer",
       "description": "Agent input: auto textarea, optional attach + voice buttons, ink send. Enter sends, Shift+Enter breaks.",
+      "dependencies": [
+        "react"
+      ],
+      "registryDependencies": [
+        "https://meridian.efolusi.com/site/registry/meridian-base.json",
+        "https://meridian.efolusi.com/site/registry/button.json",
+        "https://meridian.efolusi.com/site/registry/icon.json",
+        "https://meridian.efolusi.com/site/registry/iconbutton.json"
+      ],
       "files": [
         {
           "path": "components/ai/PromptComposer.jsx",
@@ -261,6 +391,14 @@
       "type": "registry:ui",
       "title": "PromptSteps",
       "description": "Keyboard-first inline question wizard \u2014 numbered options (1\u20139 keys), arrows to highlight, Enter to confirm, Esc dismisses, \u2190/Shift-Tab goes back; \"Other\" is an inline input. Calls `onComplete` with all answers.",
+      "dependencies": [
+        "react"
+      ],
+      "registryDependencies": [
+        "https://meridian.efolusi.com/site/registry/meridian-base.json",
+        "https://meridian.efolusi.com/site/registry/button.json",
+        "https://meridian.efolusi.com/site/registry/icon.json"
+      ],
       "files": [
         {
           "path": "components/ai/PromptSteps.jsx",
@@ -284,6 +422,14 @@
       "type": "registry:ui",
       "title": "Reasoning",
       "description": "Collapsible \"thinking\" block for model reasoning \u2014 pulsing brain glyph while streaming, then \"Thought for Ns\".",
+      "dependencies": [
+        "react"
+      ],
+      "registryDependencies": [
+        "https://meridian.efolusi.com/site/registry/meridian-base.json",
+        "https://meridian.efolusi.com/site/registry/button.json",
+        "https://meridian.efolusi.com/site/registry/icon.json"
+      ],
       "files": [
         {
           "path": "components/ai/Reasoning.jsx",
@@ -307,6 +453,14 @@
       "type": "registry:ui",
       "title": "RichComposer",
       "description": "Composer with @-mention chips and /-commands \u2014 typing a trigger opens a filtered list above the composer (arrows + Enter, groups supported); mentions insert as atomic chips that delete as one unit; Enter submits, Shift+Enter breaks.",
+      "dependencies": [
+        "react"
+      ],
+      "registryDependencies": [
+        "https://meridian.efolusi.com/site/registry/meridian-base.json",
+        "https://meridian.efolusi.com/site/registry/button.json",
+        "https://meridian.efolusi.com/site/registry/icon.json"
+      ],
       "files": [
         {
           "path": "components/ai/RichComposer.jsx",
@@ -330,6 +484,14 @@
       "type": "registry:ui",
       "title": "Sandbox",
       "description": "Collapsible code-run panel \u2014 mono title, soft ring while running / on error, tabbed Output & Code panes. Opens itself on error by default.",
+      "dependencies": [
+        "react"
+      ],
+      "registryDependencies": [
+        "https://meridian.efolusi.com/site/registry/meridian-base.json",
+        "https://meridian.efolusi.com/site/registry/button.json",
+        "https://meridian.efolusi.com/site/registry/icon.json"
+      ],
       "files": [
         {
           "path": "components/ai/Sandbox.jsx",
@@ -353,6 +515,14 @@
       "type": "registry:ui",
       "title": "SelectionQuote",
       "description": "Select-to-quote affordance \u2014 wrap message content; selecting text floats a small toolbar above the selection (flips below near the top, clamped to the container). Actions receive the selected text.",
+      "dependencies": [
+        "react"
+      ],
+      "registryDependencies": [
+        "https://meridian.efolusi.com/site/registry/meridian-base.json",
+        "https://meridian.efolusi.com/site/registry/button.json",
+        "https://meridian.efolusi.com/site/registry/icon.json"
+      ],
       "files": [
         {
           "path": "components/ai/SelectionQuote.jsx",
@@ -376,6 +546,14 @@
       "type": "registry:ui",
       "title": "SourceCard",
       "description": "Web-source card for grounded answers \u2014 optional 16:9 thumbnail, favicon + domain row, title, 3-line clamped description. `variant=\"plain\"` for dense lists.",
+      "dependencies": [
+        "react"
+      ],
+      "registryDependencies": [
+        "https://meridian.efolusi.com/site/registry/meridian-base.json",
+        "https://meridian.efolusi.com/site/registry/button.json",
+        "https://meridian.efolusi.com/site/registry/icon.json"
+      ],
       "files": [
         {
           "path": "components/ai/SourceCard.jsx",
@@ -399,6 +577,14 @@
       "type": "registry:ui",
       "title": "Suggestions",
       "description": "Prompt-suggestion chip row for empty chats and follow-ups.",
+      "dependencies": [
+        "react"
+      ],
+      "registryDependencies": [
+        "https://meridian.efolusi.com/site/registry/meridian-base.json",
+        "https://meridian.efolusi.com/site/registry/button.json",
+        "https://meridian.efolusi.com/site/registry/icon.json"
+      ],
       "files": [
         {
           "path": "components/ai/Suggestions.jsx",
@@ -422,6 +608,14 @@
       "type": "registry:ui",
       "title": "Task",
       "description": "Rail-connected list of agent actions \u2014 icon rows joined by hairline connectors; last row's rail is hidden. `streaming` pulses the newest row.",
+      "dependencies": [
+        "react"
+      ],
+      "registryDependencies": [
+        "https://meridian.efolusi.com/site/registry/meridian-base.json",
+        "https://meridian.efolusi.com/site/registry/button.json",
+        "https://meridian.efolusi.com/site/registry/icon.json"
+      ],
       "files": [
         {
           "path": "components/ai/Task.jsx",
@@ -445,6 +639,14 @@
       "type": "registry:ui",
       "title": "Todo",
       "description": "Collapsible agent checklist card \u2014 spinner while in progress, espresso check + strikethrough when done, n/total count in the header.",
+      "dependencies": [
+        "react"
+      ],
+      "registryDependencies": [
+        "https://meridian.efolusi.com/site/registry/meridian-base.json",
+        "https://meridian.efolusi.com/site/registry/button.json",
+        "https://meridian.efolusi.com/site/registry/icon.json"
+      ],
       "files": [
         {
           "path": "components/ai/Todo.jsx",
@@ -468,6 +670,14 @@
       "type": "registry:ui",
       "title": "ToolCall",
       "description": "A tool invocation receipt: mono tool name, live status (running/success/error), collapsible Input/Result body.",
+      "dependencies": [
+        "react"
+      ],
+      "registryDependencies": [
+        "https://meridian.efolusi.com/site/registry/meridian-base.json",
+        "https://meridian.efolusi.com/site/registry/button.json",
+        "https://meridian.efolusi.com/site/registry/icon.json"
+      ],
       "files": [
         {
           "path": "components/ai/ToolCall.jsx",
@@ -491,6 +701,14 @@
       "type": "registry:ui",
       "title": "Transcript",
       "description": "Time-synced transcript \u2014 active row derives from `currentTime`, auto-scroll keeps it centered (toggleable), timestamps jump the player, optional word-level highlight via `words`.",
+      "dependencies": [
+        "react"
+      ],
+      "registryDependencies": [
+        "https://meridian.efolusi.com/site/registry/meridian-base.json",
+        "https://meridian.efolusi.com/site/registry/button.json",
+        "https://meridian.efolusi.com/site/registry/player.json"
+      ],
       "files": [
         {
           "path": "components/ai/Transcript.jsx",
@@ -514,6 +732,13 @@
       "type": "registry:ui",
       "title": "UsageMeter",
       "description": "Budget meter: used/limit figures, fill bar that turns warning past warnAt and danger past the limit.",
+      "dependencies": [
+        "react"
+      ],
+      "registryDependencies": [
+        "https://meridian.efolusi.com/site/registry/meridian-base.json",
+        "https://meridian.efolusi.com/site/registry/button.json"
+      ],
       "files": [
         {
           "path": "components/ai/UsageMeter.jsx",
@@ -537,6 +762,14 @@
       "type": "registry:ui",
       "title": "WebPreview",
       "description": "Browser pane for agent-built UIs \u2014 reload, draft-state address bar (Enter commits, Esc reverts), desktop/tablet/mobile widths (animated), collapsible console with error badge, open-in-new-tab. Pass `children` to mock the page without an iframe.",
+      "dependencies": [
+        "react"
+      ],
+      "registryDependencies": [
+        "https://meridian.efolusi.com/site/registry/meridian-base.json",
+        "https://meridian.efolusi.com/site/registry/button.json",
+        "https://meridian.efolusi.com/site/registry/icon.json"
+      ],
       "files": [
         {
           "path": "components/ai/WebPreview.jsx",
@@ -560,6 +793,14 @@
       "type": "registry:ui",
       "title": "CodeBlock",
       "description": "Espresso code block with language label and working copy button.",
+      "dependencies": [
+        "react"
+      ],
+      "registryDependencies": [
+        "https://meridian.efolusi.com/site/registry/meridian-base.json",
+        "https://meridian.efolusi.com/site/registry/button.json",
+        "https://meridian.efolusi.com/site/registry/icon.json"
+      ],
       "files": [
         {
           "path": "components/code/CodeBlock.jsx",
@@ -583,6 +824,14 @@
       "type": "registry:ui",
       "title": "Console",
       "description": "Log viewer \u2014 level icons/colors, tabular timestamps, per-row collapsible stack traces, sticks to the bottom while streaming and shows a \"Latest\" pill when scrolled up.",
+      "dependencies": [
+        "react"
+      ],
+      "registryDependencies": [
+        "https://meridian.efolusi.com/site/registry/meridian-base.json",
+        "https://meridian.efolusi.com/site/registry/button.json",
+        "https://meridian.efolusi.com/site/registry/icon.json"
+      ],
       "files": [
         {
           "path": "components/code/Console.jsx",
@@ -606,6 +855,15 @@
       "type": "registry:ui",
       "title": "CopyField",
       "description": "Read-only mono value with copy (and reveal, for secrets). For API keys, IPs, DNS records.",
+      "dependencies": [
+        "react"
+      ],
+      "registryDependencies": [
+        "https://meridian.efolusi.com/site/registry/meridian-base.json",
+        "https://meridian.efolusi.com/site/registry/button.json",
+        "https://meridian.efolusi.com/site/registry/icon.json",
+        "https://meridian.efolusi.com/site/registry/iconbutton.json"
+      ],
       "files": [
         {
           "path": "components/code/CopyField.jsx",
@@ -629,6 +887,14 @@
       "type": "registry:ui",
       "title": "Diff",
       "description": "Unified diff with dual line-number gutters, +/\u2212 signs, add/del row tints, and header counts.",
+      "dependencies": [
+        "react"
+      ],
+      "registryDependencies": [
+        "https://meridian.efolusi.com/site/registry/meridian-base.json",
+        "https://meridian.efolusi.com/site/registry/button.json",
+        "https://meridian.efolusi.com/site/registry/icon.json"
+      ],
       "files": [
         {
           "path": "components/code/Diff.jsx",
@@ -652,6 +918,14 @@
       "type": "registry:ui",
       "title": "EnvList",
       "description": "Environment variables card \u2014 secrets masked as \u2022\u2022\u2022\u2022\u2022\u2022\u2022\u2022 with a single reveal toggle in the header; per-row copy always copies the real value.",
+      "dependencies": [
+        "react"
+      ],
+      "registryDependencies": [
+        "https://meridian.efolusi.com/site/registry/meridian-base.json",
+        "https://meridian.efolusi.com/site/registry/button.json",
+        "https://meridian.efolusi.com/site/registry/icon.json"
+      ],
       "files": [
         {
           "path": "components/code/EnvList.jsx",
@@ -675,6 +949,14 @@
       "type": "registry:ui",
       "title": "Exception",
       "description": "Runtime-error card \u2014 mono type chip + message, collapsible stack frames (active frame flagged, internal frames dimmed) and an optional source excerpt with the failing line highlighted.",
+      "dependencies": [
+        "react"
+      ],
+      "registryDependencies": [
+        "https://meridian.efolusi.com/site/registry/meridian-base.json",
+        "https://meridian.efolusi.com/site/registry/button.json",
+        "https://meridian.efolusi.com/site/registry/icon.json"
+      ],
       "files": [
         {
           "path": "components/code/Exception.jsx",
@@ -698,6 +980,13 @@
       "type": "registry:ui",
       "title": "Terminal",
       "description": "Line-oriented console output: $ prompts, tinted ok/err/info lines, optional live caret.",
+      "dependencies": [
+        "react"
+      ],
+      "registryDependencies": [
+        "https://meridian.efolusi.com/site/registry/meridian-base.json",
+        "https://meridian.efolusi.com/site/registry/button.json"
+      ],
       "files": [
         {
           "path": "components/code/Terminal.jsx",
@@ -721,6 +1010,13 @@
       "type": "registry:ui",
       "title": "BarChart",
       "description": "Hairline-minimal bar chart: sand bars, ink highlight window, hover tint + title tooltip.",
+      "dependencies": [
+        "react"
+      ],
+      "registryDependencies": [
+        "https://meridian.efolusi.com/site/registry/meridian-base.json",
+        "https://meridian.efolusi.com/site/registry/button.json"
+      ],
       "files": [
         {
           "path": "components/data/BarChart.jsx",
@@ -744,6 +1040,13 @@
       "type": "registry:ui",
       "title": "DonutChart",
       "description": "Donut with center figure + legend; hover highlights a slice. Colors default to the brand ramp.",
+      "dependencies": [
+        "react"
+      ],
+      "registryDependencies": [
+        "https://meridian.efolusi.com/site/registry/meridian-base.json",
+        "https://meridian.efolusi.com/site/registry/button.json"
+      ],
       "files": [
         {
           "path": "components/data/DonutChart.jsx",
@@ -767,6 +1070,14 @@
       "type": "registry:ui",
       "title": "EmptyState",
       "description": "Centered empty view \u2014 leads with the action, not the absence.",
+      "dependencies": [
+        "react"
+      ],
+      "registryDependencies": [
+        "https://meridian.efolusi.com/site/registry/meridian-base.json",
+        "https://meridian.efolusi.com/site/registry/button.json",
+        "https://meridian.efolusi.com/site/registry/icon.json"
+      ],
       "files": [
         {
           "path": "components/data/EmptyState.jsx",
@@ -790,6 +1101,13 @@
       "type": "registry:ui",
       "title": "KeyValueList",
       "description": "Label/value rows with hairline separators \u2014 resource details, DNS records, trade info.",
+      "dependencies": [
+        "react"
+      ],
+      "registryDependencies": [
+        "https://meridian.efolusi.com/site/registry/meridian-base.json",
+        "https://meridian.efolusi.com/site/registry/button.json"
+      ],
       "files": [
         {
           "path": "components/data/KeyValueList.jsx",
@@ -813,6 +1131,13 @@
       "type": "registry:ui",
       "title": "LineChart",
       "description": "SVG line chart with hover crosshair + tooltip; soft area fill by default.",
+      "dependencies": [
+        "react"
+      ],
+      "registryDependencies": [
+        "https://meridian.efolusi.com/site/registry/meridian-base.json",
+        "https://meridian.efolusi.com/site/registry/button.json"
+      ],
       "files": [
         {
           "path": "components/data/LineChart.jsx",
@@ -836,6 +1161,13 @@
       "type": "registry:ui",
       "title": "Skeleton",
       "description": "Loading placeholder \u2014 soft pulse, no shimmer.",
+      "dependencies": [
+        "react"
+      ],
+      "registryDependencies": [
+        "https://meridian.efolusi.com/site/registry/meridian-base.json",
+        "https://meridian.efolusi.com/site/registry/button.json"
+      ],
       "files": [
         {
           "path": "components/data/Skeleton.jsx",
@@ -859,6 +1191,12 @@
       "type": "registry:ui",
       "title": "Sparkline",
       "description": "Inline trend line (SVG) \u2014 green up, red down, faint area fill. Pairs with Stat.",
+      "dependencies": [
+        "react"
+      ],
+      "registryDependencies": [
+        "https://meridian.efolusi.com/site/registry/meridian-base.json"
+      ],
       "files": [
         {
           "path": "components/data/Sparkline.jsx",
@@ -882,6 +1220,13 @@
       "type": "registry:ui",
       "title": "Stat",
       "description": "KPI block: muted label, mono value, colored delta.",
+      "dependencies": [
+        "react"
+      ],
+      "registryDependencies": [
+        "https://meridian.efolusi.com/site/registry/meridian-base.json",
+        "https://meridian.efolusi.com/site/registry/button.json"
+      ],
       "files": [
         {
           "path": "components/data/Stat.jsx",
@@ -905,6 +1250,13 @@
       "type": "registry:ui",
       "title": "StatusDot",
       "description": "Live status dot with label; `pulse` radiates for running/connected states.",
+      "dependencies": [
+        "react"
+      ],
+      "registryDependencies": [
+        "https://meridian.efolusi.com/site/registry/meridian-base.json",
+        "https://meridian.efolusi.com/site/registry/button.json"
+      ],
       "files": [
         {
           "path": "components/data/StatusDot.jsx",
@@ -928,6 +1280,13 @@
       "type": "registry:ui",
       "title": "Table",
       "description": "Data table: uppercase micro headers, hairline rows, optional row click. Borderless \u2014 nest in `<Card padding={0}>` for a framed table.",
+      "dependencies": [
+        "react"
+      ],
+      "registryDependencies": [
+        "https://meridian.efolusi.com/site/registry/meridian-base.json",
+        "https://meridian.efolusi.com/site/registry/button.json"
+      ],
       "files": [
         {
           "path": "components/data/Table.jsx",
@@ -951,6 +1310,14 @@
       "type": "registry:ui",
       "title": "Calendar",
       "description": "Month grid \u2014 hairline today ring, ink selected day, ISO string in/out.",
+      "dependencies": [
+        "react"
+      ],
+      "registryDependencies": [
+        "https://meridian.efolusi.com/site/registry/meridian-base.json",
+        "https://meridian.efolusi.com/site/registry/button.json",
+        "https://meridian.efolusi.com/site/registry/iconbutton.json"
+      ],
       "files": [
         {
           "path": "components/dates/Calendar.jsx",
@@ -974,6 +1341,15 @@
       "type": "registry:ui",
       "title": "DatePicker",
       "description": "Field-style trigger + Calendar popover; closes on pick, outside click, ESC.",
+      "dependencies": [
+        "react"
+      ],
+      "registryDependencies": [
+        "https://meridian.efolusi.com/site/registry/meridian-base.json",
+        "https://meridian.efolusi.com/site/registry/button.json",
+        "https://meridian.efolusi.com/site/registry/calendar.json",
+        "https://meridian.efolusi.com/site/registry/icon.json"
+      ],
       "files": [
         {
           "path": "components/dates/DatePicker.jsx",
@@ -997,6 +1373,14 @@
       "type": "registry:ui",
       "title": "Accordion",
       "description": "Hairline disclosure list (FAQs, docs). Single-open by default; `multiple` allows several.",
+      "dependencies": [
+        "react"
+      ],
+      "registryDependencies": [
+        "https://meridian.efolusi.com/site/registry/meridian-base.json",
+        "https://meridian.efolusi.com/site/registry/button.json",
+        "https://meridian.efolusi.com/site/registry/icon.json"
+      ],
       "files": [
         {
           "path": "components/display/Accordion.jsx",
@@ -1020,6 +1404,12 @@
       "type": "registry:ui",
       "title": "AspectRatio",
       "description": "Locks children to a fixed ratio box (fills width). Use for media, embeds, map placeholders.",
+      "dependencies": [
+        "react"
+      ],
+      "registryDependencies": [
+        "https://meridian.efolusi.com/site/registry/meridian-base.json"
+      ],
       "files": [
         {
           "path": "components/display/AspectRatio.jsx",
@@ -1043,6 +1433,13 @@
       "type": "registry:ui",
       "title": "Avatar + AvatarGroup",
       "description": "Circular avatar \u2014 image or initials with a deterministic warm tone from `name`. `AvatarGroup` overlaps them with white keylines.",
+      "dependencies": [
+        "react"
+      ],
+      "registryDependencies": [
+        "https://meridian.efolusi.com/site/registry/meridian-base.json",
+        "https://meridian.efolusi.com/site/registry/button.json"
+      ],
       "files": [
         {
           "path": "components/display/Avatar.jsx",
@@ -1066,6 +1463,13 @@
       "type": "registry:ui",
       "title": "Badge",
       "description": "Small status pill; `dot` adds a leading status dot.",
+      "dependencies": [
+        "react"
+      ],
+      "registryDependencies": [
+        "https://meridian.efolusi.com/site/registry/meridian-base.json",
+        "https://meridian.efolusi.com/site/registry/button.json"
+      ],
       "files": [
         {
           "path": "components/display/Badge.jsx",
@@ -1089,6 +1493,13 @@
       "type": "registry:ui",
       "title": "Card",
       "description": "The surface container: white, 1px sand border, 8px radius, warm shadow.",
+      "dependencies": [
+        "react"
+      ],
+      "registryDependencies": [
+        "https://meridian.efolusi.com/site/registry/meridian-base.json",
+        "https://meridian.efolusi.com/site/registry/button.json"
+      ],
       "files": [
         {
           "path": "components/display/Card.jsx",
@@ -1112,6 +1523,14 @@
       "type": "registry:ui",
       "title": "Carousel",
       "description": "Scroll-snap strip with arrow controls and position dots. Use for galleries, template pickers, testimonial strips.",
+      "dependencies": [
+        "react"
+      ],
+      "registryDependencies": [
+        "https://meridian.efolusi.com/site/registry/meridian-base.json",
+        "https://meridian.efolusi.com/site/registry/button.json",
+        "https://meridian.efolusi.com/site/registry/icon.json"
+      ],
       "files": [
         {
           "path": "components/display/Carousel.jsx",
@@ -1135,6 +1554,14 @@
       "type": "registry:ui",
       "title": "Collapsible",
       "description": "A single disclosure row: chevron trigger + revealed body. Use for advanced options, long descriptions, log detail.",
+      "dependencies": [
+        "react"
+      ],
+      "registryDependencies": [
+        "https://meridian.efolusi.com/site/registry/meridian-base.json",
+        "https://meridian.efolusi.com/site/registry/button.json",
+        "https://meridian.efolusi.com/site/registry/icon.json"
+      ],
       "files": [
         {
           "path": "components/display/Collapsible.jsx",
@@ -1158,6 +1585,13 @@
       "type": "registry:ui",
       "title": "Divider",
       "description": "1px hairline separator; optional uppercase label; `vertical` for toolbars.",
+      "dependencies": [
+        "react"
+      ],
+      "registryDependencies": [
+        "https://meridian.efolusi.com/site/registry/meridian-base.json",
+        "https://meridian.efolusi.com/site/registry/button.json"
+      ],
       "files": [
         {
           "path": "components/display/Divider.jsx",
@@ -1181,6 +1615,13 @@
       "type": "registry:ui",
       "title": "Kbd",
       "description": "Keycap for shortcut hints \u2014 mono 11px, hairline with a 2px base.",
+      "dependencies": [
+        "react"
+      ],
+      "registryDependencies": [
+        "https://meridian.efolusi.com/site/registry/meridian-base.json",
+        "https://meridian.efolusi.com/site/registry/button.json"
+      ],
       "files": [
         {
           "path": "components/display/Kbd.jsx",
@@ -1204,6 +1645,14 @@
       "type": "registry:ui",
       "title": "Link",
       "description": "Styled anchor. `external` adds \u2197 + new tab; `standalone` makes a semibold CTA with \u2192.",
+      "dependencies": [
+        "react"
+      ],
+      "registryDependencies": [
+        "https://meridian.efolusi.com/site/registry/meridian-base.json",
+        "https://meridian.efolusi.com/site/registry/button.json",
+        "https://meridian.efolusi.com/site/registry/icon.json"
+      ],
       "files": [
         {
           "path": "components/display/Link.jsx",
@@ -1227,6 +1676,14 @@
       "type": "registry:ui",
       "title": "ListItem",
       "description": "Generic row: leading icon/media, title + description, trailing slot. Renders as div, button (`onClick`), or anchor (`href`).",
+      "dependencies": [
+        "react"
+      ],
+      "registryDependencies": [
+        "https://meridian.efolusi.com/site/registry/meridian-base.json",
+        "https://meridian.efolusi.com/site/registry/button.json",
+        "https://meridian.efolusi.com/site/registry/icon.json"
+      ],
       "files": [
         {
           "path": "components/display/ListItem.jsx",
@@ -1250,6 +1707,13 @@
       "type": "registry:ui",
       "title": "Resizable",
       "description": "Two panes split by a draggable hairline handle (keyboard: arrow keys). Use for editor/preview, list/detail, terminal splits.",
+      "dependencies": [
+        "react"
+      ],
+      "registryDependencies": [
+        "https://meridian.efolusi.com/site/registry/meridian-base.json",
+        "https://meridian.efolusi.com/site/registry/button.json"
+      ],
       "files": [
         {
           "path": "components/display/Resizable.jsx",
@@ -1273,6 +1737,13 @@
       "type": "registry:ui",
       "title": "ScrollArea",
       "description": "Overflow container with the system scrollbar treatment (thin, warm, rounded). Use for bounded lists, code panes, chat logs.",
+      "dependencies": [
+        "react"
+      ],
+      "registryDependencies": [
+        "https://meridian.efolusi.com/site/registry/meridian-base.json",
+        "https://meridian.efolusi.com/site/registry/button.json"
+      ],
       "files": [
         {
           "path": "components/display/ScrollArea.jsx",
@@ -1296,6 +1767,14 @@
       "type": "registry:ui",
       "title": "Tag",
       "description": "Chip for filters and labels; removable via `onRemove`, clickable via `onClick`.",
+      "dependencies": [
+        "react"
+      ],
+      "registryDependencies": [
+        "https://meridian.efolusi.com/site/registry/meridian-base.json",
+        "https://meridian.efolusi.com/site/registry/button.json",
+        "https://meridian.efolusi.com/site/registry/icon.json"
+      ],
       "files": [
         {
           "path": "components/display/Tag.jsx",
@@ -1319,6 +1798,15 @@
       "type": "registry:ui",
       "title": "Toolbar",
       "description": "Grouped icon actions on a hairline chip \u2014 editors, chart controls, bulk bars. `value` marks active (ink).",
+      "dependencies": [
+        "react"
+      ],
+      "registryDependencies": [
+        "https://meridian.efolusi.com/site/registry/meridian-base.json",
+        "https://meridian.efolusi.com/site/registry/button.json",
+        "https://meridian.efolusi.com/site/registry/icon.json",
+        "https://meridian.efolusi.com/site/registry/tooltip.json"
+      ],
       "files": [
         {
           "path": "components/display/Toolbar.jsx",
@@ -1342,6 +1830,14 @@
       "type": "registry:ui",
       "title": "TreeList",
       "description": "Collapsible tree for file/nav hierarchies. Rows take icons + mono counts; branches toggle on click.",
+      "dependencies": [
+        "react"
+      ],
+      "registryDependencies": [
+        "https://meridian.efolusi.com/site/registry/meridian-base.json",
+        "https://meridian.efolusi.com/site/registry/button.json",
+        "https://meridian.efolusi.com/site/registry/icon.json"
+      ],
       "files": [
         {
           "path": "components/display/TreeList.jsx",
@@ -1365,6 +1861,14 @@
       "type": "registry:ui",
       "title": "Alert",
       "description": "Inline banner: white surface, hairline border, tone-colored icon. For page-level notices \u2014 use Toast for transient events.",
+      "dependencies": [
+        "react"
+      ],
+      "registryDependencies": [
+        "https://meridian.efolusi.com/site/registry/meridian-base.json",
+        "https://meridian.efolusi.com/site/registry/button.json",
+        "https://meridian.efolusi.com/site/registry/icon.json"
+      ],
       "files": [
         {
           "path": "components/feedback/Alert.jsx",
@@ -1388,6 +1892,15 @@
       "type": "registry:ui",
       "title": "Banner",
       "description": "Full-width strip above the app chrome \u2014 trials, incidents, announcements. One per view, max.",
+      "dependencies": [
+        "react"
+      ],
+      "registryDependencies": [
+        "https://meridian.efolusi.com/site/registry/meridian-base.json",
+        "https://meridian.efolusi.com/site/registry/button.json",
+        "https://meridian.efolusi.com/site/registry/icon.json",
+        "https://meridian.efolusi.com/site/registry/iconbutton.json"
+      ],
       "files": [
         {
           "path": "components/feedback/Banner.jsx",
@@ -1411,6 +1924,15 @@
       "type": "registry:ui",
       "title": "ConfirmDialog",
       "description": "Destructive-action preset of Dialog; optional type-to-confirm gate.",
+      "dependencies": [
+        "react"
+      ],
+      "registryDependencies": [
+        "https://meridian.efolusi.com/site/registry/meridian-base.json",
+        "https://meridian.efolusi.com/site/registry/button.json",
+        "https://meridian.efolusi.com/site/registry/dialog.json",
+        "https://meridian.efolusi.com/site/registry/input.json"
+      ],
       "files": [
         {
           "path": "components/feedback/ConfirmDialog.jsx",
@@ -1434,6 +1956,15 @@
       "type": "registry:ui",
       "title": "Dialog",
       "description": "Centered modal with dimmed overlay, springy scale-in, ESC/overlay/\u2715 close.",
+      "dependencies": [
+        "react"
+      ],
+      "registryDependencies": [
+        "https://meridian.efolusi.com/site/registry/meridian-base.json",
+        "https://meridian.efolusi.com/site/registry/button.json",
+        "https://meridian.efolusi.com/site/registry/icon.json",
+        "https://meridian.efolusi.com/site/registry/iconbutton.json"
+      ],
       "files": [
         {
           "path": "components/feedback/Dialog.jsx",
@@ -1457,6 +1988,13 @@
       "type": "registry:ui",
       "title": "Loader",
       "description": "Text-treatment loading state (no spinner) \u2014 `pulse` breathes opacity, `shimmer` sweeps a highlight through the label; optional staggered dots.",
+      "dependencies": [
+        "react"
+      ],
+      "registryDependencies": [
+        "https://meridian.efolusi.com/site/registry/meridian-base.json",
+        "https://meridian.efolusi.com/site/registry/button.json"
+      ],
       "files": [
         {
           "path": "components/feedback/Loader.jsx",
@@ -1480,6 +2018,13 @@
       "type": "registry:ui",
       "title": "Progress",
       "description": "4px ink progress bar for usage meters and multi-step flows.",
+      "dependencies": [
+        "react"
+      ],
+      "registryDependencies": [
+        "https://meridian.efolusi.com/site/registry/meridian-base.json",
+        "https://meridian.efolusi.com/site/registry/button.json"
+      ],
       "files": [
         {
           "path": "components/feedback/Progress.jsx",
@@ -1503,6 +2048,14 @@
       "type": "registry:ui",
       "title": "Spinner",
       "description": "Standalone loading indicator (Button has its own via `loading`).",
+      "dependencies": [
+        "react"
+      ],
+      "registryDependencies": [
+        "https://meridian.efolusi.com/site/registry/meridian-base.json",
+        "https://meridian.efolusi.com/site/registry/button.json",
+        "https://meridian.efolusi.com/site/registry/icon.json"
+      ],
       "files": [
         {
           "path": "components/feedback/Spinner.jsx",
@@ -1526,6 +2079,15 @@
       "type": "registry:ui",
       "title": "Toast + ToastStack",
       "description": "Dark (espresso) notification card; wrap in `ToastStack` to pin bottom-right.",
+      "dependencies": [
+        "react"
+      ],
+      "registryDependencies": [
+        "https://meridian.efolusi.com/site/registry/meridian-base.json",
+        "https://meridian.efolusi.com/site/registry/button.json",
+        "https://meridian.efolusi.com/site/registry/icon.json",
+        "https://meridian.efolusi.com/site/registry/iconbutton.json"
+      ],
       "files": [
         {
           "path": "components/feedback/Toast.jsx",
@@ -1549,6 +2111,13 @@
       "type": "registry:ui",
       "title": "Tooltip",
       "description": "Hover/focus tooltip with 200ms delay and spring pop. Wrap any trigger element.",
+      "dependencies": [
+        "react"
+      ],
+      "registryDependencies": [
+        "https://meridian.efolusi.com/site/registry/meridian-base.json",
+        "https://meridian.efolusi.com/site/registry/button.json"
+      ],
       "files": [
         {
           "path": "components/feedback/Tooltip.jsx",
@@ -1572,6 +2141,14 @@
       "type": "registry:ui",
       "title": "FileDrop",
       "description": "Dashed dropzone \u2014 click or drag; ink border on hover/dragover.",
+      "dependencies": [
+        "react"
+      ],
+      "registryDependencies": [
+        "https://meridian.efolusi.com/site/registry/meridian-base.json",
+        "https://meridian.efolusi.com/site/registry/button.json",
+        "https://meridian.efolusi.com/site/registry/icon.json"
+      ],
       "files": [
         {
           "path": "components/files/FileDrop.jsx",
@@ -1595,6 +2172,16 @@
       "type": "registry:ui",
       "title": "FileTile",
       "description": "File row with type icon (inferred from extension), size/status meta, progress or error state.",
+      "dependencies": [
+        "react"
+      ],
+      "registryDependencies": [
+        "https://meridian.efolusi.com/site/registry/meridian-base.json",
+        "https://meridian.efolusi.com/site/registry/button.json",
+        "https://meridian.efolusi.com/site/registry/icon.json",
+        "https://meridian.efolusi.com/site/registry/iconbutton.json",
+        "https://meridian.efolusi.com/site/registry/progress.json"
+      ],
       "files": [
         {
           "path": "components/files/FileTile.jsx",
@@ -1618,6 +2205,14 @@
       "type": "registry:ui",
       "title": "FileTypeIcon",
       "description": "Typed file glyph with colored extension chip \u2014 maps 20 common extensions to icon + color.",
+      "dependencies": [
+        "react"
+      ],
+      "registryDependencies": [
+        "https://meridian.efolusi.com/site/registry/meridian-base.json",
+        "https://meridian.efolusi.com/site/registry/button.json",
+        "https://meridian.efolusi.com/site/registry/icon.json"
+      ],
       "files": [
         {
           "path": "components/files/FileTypeIcon.jsx",
@@ -1641,6 +2236,13 @@
       "type": "registry:ui",
       "title": "PaymentCard",
       "description": "Payment card visual for trading / finance surfaces \u2014 espresso, caramel, or paper; `frozen` grays it out.",
+      "dependencies": [
+        "react"
+      ],
+      "registryDependencies": [
+        "https://meridian.efolusi.com/site/registry/meridian-base.json",
+        "https://meridian.efolusi.com/site/registry/button.json"
+      ],
       "files": [
         {
           "path": "components/finance/PaymentCard.jsx",
@@ -1664,6 +2266,13 @@
       "type": "registry:ui",
       "title": "Button",
       "description": "The action button \u2014 primary for the one main action per view, secondary/ghost for the rest.",
+      "dependencies": [
+        "react"
+      ],
+      "registryDependencies": [
+        "https://meridian.efolusi.com/site/registry/meridian-base.json",
+        "https://meridian.efolusi.com/site/registry/icon.json"
+      ],
       "files": [
         {
           "path": "components/forms/Button.jsx",
@@ -1687,6 +2296,13 @@
       "type": "registry:ui",
       "title": "ButtonGroup",
       "description": "Attaches adjacent Buttons/IconButtons into one segment (shared borders, squared inner corners). Use for tightly related actions of equal rank: zoom in/out, prev/next, split-button patterns.",
+      "dependencies": [
+        "react"
+      ],
+      "registryDependencies": [
+        "https://meridian.efolusi.com/site/registry/meridian-base.json",
+        "https://meridian.efolusi.com/site/registry/button.json"
+      ],
       "files": [
         {
           "path": "components/forms/ButtonGroup.jsx",
@@ -1710,6 +2326,14 @@
       "type": "registry:ui",
       "title": "ButtonTile + ButtonTileGroup",
       "description": "Large selectable tile \u2014 plan pickers, onboarding choices. Wrap in `ButtonTileGroup columns={n}`.",
+      "dependencies": [
+        "react"
+      ],
+      "registryDependencies": [
+        "https://meridian.efolusi.com/site/registry/meridian-base.json",
+        "https://meridian.efolusi.com/site/registry/button.json",
+        "https://meridian.efolusi.com/site/registry/icon.json"
+      ],
       "files": [
         {
           "path": "components/forms/ButtonTile.jsx",
@@ -1733,6 +2357,14 @@
       "type": "registry:ui",
       "title": "Checkbox",
       "description": "Checkbox with springy check pop; supports a muted `description` second line.",
+      "dependencies": [
+        "react"
+      ],
+      "registryDependencies": [
+        "https://meridian.efolusi.com/site/registry/meridian-base.json",
+        "https://meridian.efolusi.com/site/registry/button.json",
+        "https://meridian.efolusi.com/site/registry/icon.json"
+      ],
       "files": [
         {
           "path": "components/forms/Checkbox.jsx",
@@ -1756,6 +2388,15 @@
       "type": "registry:ui",
       "title": "Combobox",
       "description": "Searchable select \u2014 single, or multi with removable chips. Keyboard: arrows + Enter, Backspace removes last chip.",
+      "dependencies": [
+        "react"
+      ],
+      "registryDependencies": [
+        "https://meridian.efolusi.com/site/registry/meridian-base.json",
+        "https://meridian.efolusi.com/site/registry/button.json",
+        "https://meridian.efolusi.com/site/registry/icon.json",
+        "https://meridian.efolusi.com/site/registry/tag.json"
+      ],
       "files": [
         {
           "path": "components/forms/Combobox.jsx",
@@ -1779,6 +2420,13 @@
       "type": "registry:ui",
       "title": "DigitEntry",
       "description": "OTP/PIN input \u2014 one cell per digit, auto-advance, paste-aware, `autocomplete=\"one-time-code\"`.",
+      "dependencies": [
+        "react"
+      ],
+      "registryDependencies": [
+        "https://meridian.efolusi.com/site/registry/meridian-base.json",
+        "https://meridian.efolusi.com/site/registry/button.json"
+      ],
       "files": [
         {
           "path": "components/forms/DigitEntry.jsx",
@@ -1802,6 +2450,14 @@
       "type": "registry:ui",
       "title": "IconButton",
       "description": "Square icon-only button for toolbars, card actions, and dense rows; `label` is required (a11y + tooltip).",
+      "dependencies": [
+        "react"
+      ],
+      "registryDependencies": [
+        "https://meridian.efolusi.com/site/registry/meridian-base.json",
+        "https://meridian.efolusi.com/site/registry/button.json",
+        "https://meridian.efolusi.com/site/registry/icon.json"
+      ],
       "files": [
         {
           "path": "components/forms/IconButton.jsx",
@@ -1825,6 +2481,14 @@
       "type": "registry:ui",
       "title": "Input",
       "description": "Text input; renders bare, or as a full field when `label`/`hint`/`error` are set.",
+      "dependencies": [
+        "react"
+      ],
+      "registryDependencies": [
+        "https://meridian.efolusi.com/site/registry/meridian-base.json",
+        "https://meridian.efolusi.com/site/registry/button.json",
+        "https://meridian.efolusi.com/site/registry/icon.json"
+      ],
       "files": [
         {
           "path": "components/forms/Input.jsx",
@@ -1848,6 +2512,13 @@
       "type": "registry:ui",
       "title": "InputGroup",
       "description": "An input with leading/trailing addons inside one bordered row. String addons render as tinted cells (units, protocols); node addons render bare (ghost Buttons, Icons).",
+      "dependencies": [
+        "react"
+      ],
+      "registryDependencies": [
+        "https://meridian.efolusi.com/site/registry/meridian-base.json",
+        "https://meridian.efolusi.com/site/registry/button.json"
+      ],
       "files": [
         {
           "path": "components/forms/InputGroup.jsx",
@@ -1871,6 +2542,13 @@
       "type": "registry:ui",
       "title": "Label",
       "description": "Standalone field label for custom controls that lack a built-in `label` prop. Pair via `htmlFor`; `required` adds the red asterisk, `hint` a muted inline note.",
+      "dependencies": [
+        "react"
+      ],
+      "registryDependencies": [
+        "https://meridian.efolusi.com/site/registry/meridian-base.json",
+        "https://meridian.efolusi.com/site/registry/button.json"
+      ],
       "files": [
         {
           "path": "components/forms/Label.jsx",
@@ -1894,6 +2572,13 @@
       "type": "registry:ui",
       "title": "Radio",
       "description": "Radio for 2\u20135 mutually exclusive options; group with a shared `name`.",
+      "dependencies": [
+        "react"
+      ],
+      "registryDependencies": [
+        "https://meridian.efolusi.com/site/registry/meridian-base.json",
+        "https://meridian.efolusi.com/site/registry/button.json"
+      ],
       "files": [
         {
           "path": "components/forms/Radio.jsx",
@@ -1917,6 +2602,14 @@
       "type": "registry:ui",
       "title": "Select",
       "description": "Styled native select with chevron; options as strings, `{value,label}` objects, or `<option>` children.",
+      "dependencies": [
+        "react"
+      ],
+      "registryDependencies": [
+        "https://meridian.efolusi.com/site/registry/meridian-base.json",
+        "https://meridian.efolusi.com/site/registry/button.json",
+        "https://meridian.efolusi.com/site/registry/icon.json"
+      ],
       "files": [
         {
           "path": "components/forms/Select.jsx",
@@ -1940,6 +2633,13 @@
       "type": "registry:ui",
       "title": "Slider",
       "description": "Range input with ink fill and hairline track; label + live value optional.",
+      "dependencies": [
+        "react"
+      ],
+      "registryDependencies": [
+        "https://meridian.efolusi.com/site/registry/meridian-base.json",
+        "https://meridian.efolusi.com/site/registry/button.json"
+      ],
       "files": [
         {
           "path": "components/forms/Slider.jsx",
@@ -1963,6 +2663,13 @@
       "type": "registry:ui",
       "title": "Switch",
       "description": "On/off toggle with springy thumb \u2014 for settings that apply immediately (otherwise use Checkbox).",
+      "dependencies": [
+        "react"
+      ],
+      "registryDependencies": [
+        "https://meridian.efolusi.com/site/registry/meridian-base.json",
+        "https://meridian.efolusi.com/site/registry/button.json"
+      ],
       "files": [
         {
           "path": "components/forms/Switch.jsx",
@@ -1986,6 +2693,14 @@
       "type": "registry:ui",
       "title": "Textarea",
       "description": "Multiline input with the same field wrapper as Input (`label`/`hint`/`error`).",
+      "dependencies": [
+        "react"
+      ],
+      "registryDependencies": [
+        "https://meridian.efolusi.com/site/registry/meridian-base.json",
+        "https://meridian.efolusi.com/site/registry/button.json",
+        "https://meridian.efolusi.com/site/registry/icon.json"
+      ],
       "files": [
         {
           "path": "components/forms/Textarea.jsx",
@@ -2009,6 +2724,14 @@
       "type": "registry:ui",
       "title": "Toggle + ToggleGroup",
       "description": "A pressed-state button for on/off formatting-style options (bold, grid view, mute). Use `icon` alone for toolbars, or icon + children for labeled toggles.",
+      "dependencies": [
+        "react"
+      ],
+      "registryDependencies": [
+        "https://meridian.efolusi.com/site/registry/meridian-base.json",
+        "https://meridian.efolusi.com/site/registry/button.json",
+        "https://meridian.efolusi.com/site/registry/icon.json"
+      ],
       "files": [
         {
           "path": "components/forms/Toggle.jsx",
@@ -2032,6 +2755,12 @@
       "type": "registry:ui",
       "title": "Icon",
       "description": "Renders one of the 65 curated Lucide icons shipped in `assets/icons/`, inheriting `currentColor`.",
+      "dependencies": [
+        "react"
+      ],
+      "registryDependencies": [
+        "https://meridian.efolusi.com/site/registry/meridian-base.json"
+      ],
       "files": [
         {
           "path": "components/icons/Icon.jsx",
@@ -2055,6 +2784,14 @@
       "type": "registry:ui",
       "title": "Breadcrumbs",
       "description": "Path trail with chevron separators; last item is the current page.",
+      "dependencies": [
+        "react"
+      ],
+      "registryDependencies": [
+        "https://meridian.efolusi.com/site/registry/meridian-base.json",
+        "https://meridian.efolusi.com/site/registry/button.json",
+        "https://meridian.efolusi.com/site/registry/icon.json"
+      ],
       "files": [
         {
           "path": "components/navigation/Breadcrumbs.jsx",
@@ -2078,6 +2815,14 @@
       "type": "registry:ui",
       "title": "Menubar",
       "description": "Desktop-app style menu bar (File / Edit / View). Click opens; hovering across bar switches menus while open. Items share the Menu item shape (icon, kbd, danger, separator).",
+      "dependencies": [
+        "react"
+      ],
+      "registryDependencies": [
+        "https://meridian.efolusi.com/site/registry/meridian-base.json",
+        "https://meridian.efolusi.com/site/registry/button.json",
+        "https://meridian.efolusi.com/site/registry/icon.json"
+      ],
       "files": [
         {
           "path": "components/navigation/Menubar.jsx",
@@ -2101,6 +2846,13 @@
       "type": "registry:ui",
       "title": "PageControl",
       "description": "Carousel dots \u2014 active dot stretches to an ink pill.",
+      "dependencies": [
+        "react"
+      ],
+      "registryDependencies": [
+        "https://meridian.efolusi.com/site/registry/meridian-base.json",
+        "https://meridian.efolusi.com/site/registry/button.json"
+      ],
       "files": [
         {
           "path": "components/navigation/PageControl.jsx",
@@ -2124,6 +2876,14 @@
       "type": "registry:ui",
       "title": "Pagination",
       "description": "Numbered pager with ellipsis collapsing; active page is an ink chip.",
+      "dependencies": [
+        "react"
+      ],
+      "registryDependencies": [
+        "https://meridian.efolusi.com/site/registry/meridian-base.json",
+        "https://meridian.efolusi.com/site/registry/button.json",
+        "https://meridian.efolusi.com/site/registry/icon.json"
+      ],
       "files": [
         {
           "path": "components/navigation/Pagination.jsx",
@@ -2147,6 +2907,14 @@
       "type": "registry:ui",
       "title": "SegmentedControl",
       "description": "Inline 2\u20135-way toggle on a sand track; active segment is a white hairline chip. For views/ranges \u2014 use Tabs for page sections.",
+      "dependencies": [
+        "react"
+      ],
+      "registryDependencies": [
+        "https://meridian.efolusi.com/site/registry/meridian-base.json",
+        "https://meridian.efolusi.com/site/registry/button.json",
+        "https://meridian.efolusi.com/site/registry/icon.json"
+      ],
       "files": [
         {
           "path": "components/navigation/SegmentedControl.jsx",
@@ -2170,6 +2938,15 @@
       "type": "registry:ui",
       "title": "SideNav",
       "description": "The product sidebar: brand row, grouped nav with icons/badges, pinned footer. 240px on `--surface-subtle`.",
+      "dependencies": [
+        "react"
+      ],
+      "registryDependencies": [
+        "https://meridian.efolusi.com/site/registry/meridian-base.json",
+        "https://meridian.efolusi.com/site/registry/badge.json",
+        "https://meridian.efolusi.com/site/registry/button.json",
+        "https://meridian.efolusi.com/site/registry/icon.json"
+      ],
       "files": [
         {
           "path": "components/navigation/SideNav.jsx",
@@ -2193,6 +2970,14 @@
       "type": "registry:ui",
       "title": "Steps",
       "description": "Numbered progress rail \u2014 vertical for agent task logs, horizontal for wizards.",
+      "dependencies": [
+        "react"
+      ],
+      "registryDependencies": [
+        "https://meridian.efolusi.com/site/registry/meridian-base.json",
+        "https://meridian.efolusi.com/site/registry/button.json",
+        "https://meridian.efolusi.com/site/registry/icon.json"
+      ],
       "files": [
         {
           "path": "components/navigation/Steps.jsx",
@@ -2216,6 +3001,14 @@
       "type": "registry:ui",
       "title": "Tabs",
       "description": "Underline tabs with a spring-sliding caramel ink bar. Controlled: pass `value` + `onChange`.",
+      "dependencies": [
+        "react"
+      ],
+      "registryDependencies": [
+        "https://meridian.efolusi.com/site/registry/meridian-base.json",
+        "https://meridian.efolusi.com/site/registry/button.json",
+        "https://meridian.efolusi.com/site/registry/icon.json"
+      ],
       "files": [
         {
           "path": "components/navigation/Tabs.jsx",
@@ -2239,6 +3032,13 @@
       "type": "registry:ui",
       "title": "TopNav",
       "description": "Sticky blurred header: optional leading slot, display-font title, right-aligned actions.",
+      "dependencies": [
+        "react"
+      ],
+      "registryDependencies": [
+        "https://meridian.efolusi.com/site/registry/meridian-base.json",
+        "https://meridian.efolusi.com/site/registry/button.json"
+      ],
       "files": [
         {
           "path": "components/navigation/TopNav.jsx",
@@ -2262,6 +3062,15 @@
       "type": "registry:ui",
       "title": "CommandPalette",
       "description": "\u2318K palette: search, grouped commands, full keyboard nav (\u2191\u2193, \u21b5, Esc), Kbd-hinted footer.",
+      "dependencies": [
+        "react"
+      ],
+      "registryDependencies": [
+        "https://meridian.efolusi.com/site/registry/meridian-base.json",
+        "https://meridian.efolusi.com/site/registry/button.json",
+        "https://meridian.efolusi.com/site/registry/icon.json",
+        "https://meridian.efolusi.com/site/registry/kbd.json"
+      ],
       "files": [
         {
           "path": "components/overlay/CommandPalette.jsx",
@@ -2285,6 +3094,14 @@
       "type": "registry:ui",
       "title": "ContextMenu",
       "description": "Right-click menu anchored at the cursor. Wrap the target; items share the Menu item shape.",
+      "dependencies": [
+        "react"
+      ],
+      "registryDependencies": [
+        "https://meridian.efolusi.com/site/registry/meridian-base.json",
+        "https://meridian.efolusi.com/site/registry/button.json",
+        "https://meridian.efolusi.com/site/registry/icon.json"
+      ],
       "files": [
         {
           "path": "components/overlay/ContextMenu.jsx",
@@ -2308,6 +3125,14 @@
       "type": "registry:ui",
       "title": "Drawer",
       "description": "Side panel for details and multi-field edits that shouldn't leave the page.",
+      "dependencies": [
+        "react"
+      ],
+      "registryDependencies": [
+        "https://meridian.efolusi.com/site/registry/meridian-base.json",
+        "https://meridian.efolusi.com/site/registry/button.json",
+        "https://meridian.efolusi.com/site/registry/iconbutton.json"
+      ],
       "files": [
         {
           "path": "components/overlay/Drawer.jsx",
@@ -2331,6 +3156,13 @@
       "type": "registry:ui",
       "title": "HoverCard",
       "description": "Rich preview on hover/focus (350ms in, 150ms out). Use for people, repos, tickets \u2014 anywhere a link deserves a glance-preview.",
+      "dependencies": [
+        "react"
+      ],
+      "registryDependencies": [
+        "https://meridian.efolusi.com/site/registry/meridian-base.json",
+        "https://meridian.efolusi.com/site/registry/button.json"
+      ],
       "files": [
         {
           "path": "components/overlay/HoverCard.jsx",
@@ -2354,6 +3186,14 @@
       "type": "registry:ui",
       "title": "Menu",
       "description": "Dropdown action menu on any trigger. Items take icons, shortcut hints, separators, and a danger style.",
+      "dependencies": [
+        "react"
+      ],
+      "registryDependencies": [
+        "https://meridian.efolusi.com/site/registry/meridian-base.json",
+        "https://meridian.efolusi.com/site/registry/button.json",
+        "https://meridian.efolusi.com/site/registry/icon.json"
+      ],
       "files": [
         {
           "path": "components/overlay/Menu.jsx",
@@ -2377,6 +3217,13 @@
       "type": "registry:ui",
       "title": "Popover",
       "description": "Anchored floating panel for filters, pickers, help. Closes on outside click / ESC.",
+      "dependencies": [
+        "react"
+      ],
+      "registryDependencies": [
+        "https://meridian.efolusi.com/site/registry/meridian-base.json",
+        "https://meridian.efolusi.com/site/registry/button.json"
+      ],
       "files": [
         {
           "path": "components/overlay/Popover.jsx",
@@ -2400,6 +3247,12 @@
       "type": "registry:block",
       "title": "Activity feed block",
       "description": "Pre-composed Meridian section: activity feed.",
+      "dependencies": [
+        "react"
+      ],
+      "registryDependencies": [
+        "https://meridian.efolusi.com/site/registry/meridian-base.json"
+      ],
       "files": [
         {
           "path": "blocks/activity-feed.html",
@@ -2415,6 +3268,12 @@
       "type": "registry:block",
       "title": "App shell block",
       "description": "Pre-composed Meridian section: app shell.",
+      "dependencies": [
+        "react"
+      ],
+      "registryDependencies": [
+        "https://meridian.efolusi.com/site/registry/meridian-base.json"
+      ],
       "files": [
         {
           "path": "blocks/app-shell.html",
@@ -2430,6 +3289,12 @@
       "type": "registry:block",
       "title": "Faq block",
       "description": "Pre-composed Meridian section: faq.",
+      "dependencies": [
+        "react"
+      ],
+      "registryDependencies": [
+        "https://meridian.efolusi.com/site/registry/meridian-base.json"
+      ],
       "files": [
         {
           "path": "blocks/faq.html",
@@ -2445,6 +3310,12 @@
       "type": "registry:block",
       "title": "Hero block",
       "description": "Pre-composed Meridian section: hero.",
+      "dependencies": [
+        "react"
+      ],
+      "registryDependencies": [
+        "https://meridian.efolusi.com/site/registry/meridian-base.json"
+      ],
       "files": [
         {
           "path": "blocks/hero.html",
@@ -2460,6 +3331,12 @@
       "type": "registry:block",
       "title": "Login block",
       "description": "Pre-composed Meridian section: login.",
+      "dependencies": [
+        "react"
+      ],
+      "registryDependencies": [
+        "https://meridian.efolusi.com/site/registry/meridian-base.json"
+      ],
       "files": [
         {
           "path": "blocks/login.html",
@@ -2475,6 +3352,12 @@
       "type": "registry:block",
       "title": "Not found block",
       "description": "Pre-composed Meridian section: not found.",
+      "dependencies": [
+        "react"
+      ],
+      "registryDependencies": [
+        "https://meridian.efolusi.com/site/registry/meridian-base.json"
+      ],
       "files": [
         {
           "path": "blocks/not-found.html",
@@ -2490,6 +3373,12 @@
       "type": "registry:block",
       "title": "Pricing block",
       "description": "Pre-composed Meridian section: pricing.",
+      "dependencies": [
+        "react"
+      ],
+      "registryDependencies": [
+        "https://meridian.efolusi.com/site/registry/meridian-base.json"
+      ],
       "files": [
         {
           "path": "blocks/pricing.html",
@@ -2505,6 +3394,12 @@
       "type": "registry:block",
       "title": "Settings block",
       "description": "Pre-composed Meridian section: settings.",
+      "dependencies": [
+        "react"
+      ],
+      "registryDependencies": [
+        "https://meridian.efolusi.com/site/registry/meridian-base.json"
+      ],
       "files": [
         {
           "path": "blocks/settings.html",
@@ -2520,6 +3415,12 @@
       "type": "registry:block",
       "title": "Stats dashboard block",
       "description": "Pre-composed Meridian section: stats dashboard.",
+      "dependencies": [
+        "react"
+      ],
+      "registryDependencies": [
+        "https://meridian.efolusi.com/site/registry/meridian-base.json"
+      ],
       "files": [
         {
           "path": "blocks/stats-dashboard.html",

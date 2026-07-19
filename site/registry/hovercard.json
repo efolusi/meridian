@@ -3,6 +3,13 @@
   "type": "registry:ui",
   "title": "HoverCard",
   "description": "Rich preview on hover/focus (350ms in, 150ms out). Use for people, repos, tickets \u2014 anywhere a link deserves a glance-preview.",
+  "dependencies": [
+    "react"
+  ],
+  "registryDependencies": [
+    "https://meridian.efolusi.com/site/registry/meridian-base.json",
+    "https://meridian.efolusi.com/site/registry/button.json"
+  ],
   "files": [
     {
       "path": "components/overlay/HoverCard.jsx",

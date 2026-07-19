@@ -3,6 +3,15 @@
   "type": "registry:ui",
   "title": "Combobox",
   "description": "Searchable select \u2014 single, or multi with removable chips. Keyboard: arrows + Enter, Backspace removes last chip.",
+  "dependencies": [
+    "react"
+  ],
+  "registryDependencies": [
+    "https://meridian.efolusi.com/site/registry/meridian-base.json",
+    "https://meridian.efolusi.com/site/registry/button.json",
+    "https://meridian.efolusi.com/site/registry/icon.json",
+    "https://meridian.efolusi.com/site/registry/tag.json"
+  ],
   "files": [
     {
       "path": "components/forms/Combobox.jsx",

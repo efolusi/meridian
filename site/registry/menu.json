@@ -3,6 +3,14 @@
   "type": "registry:ui",
   "title": "Menu",
   "description": "Dropdown action menu on any trigger. Items take icons, shortcut hints, separators, and a danger style.",
+  "dependencies": [
+    "react"
+  ],
+  "registryDependencies": [
+    "https://meridian.efolusi.com/site/registry/meridian-base.json",
+    "https://meridian.efolusi.com/site/registry/button.json",
+    "https://meridian.efolusi.com/site/registry/icon.json"
+  ],
   "files": [
     {
       "path": "components/overlay/Menu.jsx",

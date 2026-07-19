@@ -3,6 +3,15 @@
   "type": "registry:ui",
   "title": "CommandPalette",
   "description": "\u2318K palette: search, grouped commands, full keyboard nav (\u2191\u2193, \u21b5, Esc), Kbd-hinted footer.",
+  "dependencies": [
+    "react"
+  ],
+  "registryDependencies": [
+    "https://meridian.efolusi.com/site/registry/meridian-base.json",
+    "https://meridian.efolusi.com/site/registry/button.json",
+    "https://meridian.efolusi.com/site/registry/icon.json",
+    "https://meridian.efolusi.com/site/registry/kbd.json"
+  ],
   "files": [
     {
       "path": "components/overlay/CommandPalette.jsx",

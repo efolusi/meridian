@@ -3,6 +3,13 @@
   "type": "registry:ui",
   "title": "Switch",
   "description": "On/off toggle with springy thumb \u2014 for settings that apply immediately (otherwise use Checkbox).",
+  "dependencies": [
+    "react"
+  ],
+  "registryDependencies": [
+    "https://meridian.efolusi.com/site/registry/meridian-base.json",
+    "https://meridian.efolusi.com/site/registry/button.json"
+  ],
   "files": [
     {
       "path": "components/forms/Switch.jsx",

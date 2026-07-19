@@ -3,6 +3,14 @@
   "type": "registry:ui",
   "title": "EmptyState",
   "description": "Centered empty view \u2014 leads with the action, not the absence.",
+  "dependencies": [
+    "react"
+  ],
+  "registryDependencies": [
+    "https://meridian.efolusi.com/site/registry/meridian-base.json",
+    "https://meridian.efolusi.com/site/registry/button.json",
+    "https://meridian.efolusi.com/site/registry/icon.json"
+  ],
   "files": [
     {
       "path": "components/data/EmptyState.jsx",

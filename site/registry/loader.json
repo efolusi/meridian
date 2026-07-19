@@ -3,6 +3,13 @@
   "type": "registry:ui",
   "title": "Loader",
   "description": "Text-treatment loading state (no spinner) \u2014 `pulse` breathes opacity, `shimmer` sweeps a highlight through the label; optional staggered dots.",
+  "dependencies": [
+    "react"
+  ],
+  "registryDependencies": [
+    "https://meridian.efolusi.com/site/registry/meridian-base.json",
+    "https://meridian.efolusi.com/site/registry/button.json"
+  ],
   "files": [
     {
       "path": "components/feedback/Loader.jsx",

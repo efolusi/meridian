@@ -3,6 +3,12 @@
   "type": "registry:ui",
   "title": "AspectRatio",
   "description": "Locks children to a fixed ratio box (fills width). Use for media, embeds, map placeholders.",
+  "dependencies": [
+    "react"
+  ],
+  "registryDependencies": [
+    "https://meridian.efolusi.com/site/registry/meridian-base.json"
+  ],
   "files": [
     {
       "path": "components/display/AspectRatio.jsx",

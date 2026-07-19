@@ -3,6 +3,12 @@
   "type": "registry:block",
   "title": "App shell block",
   "description": "Pre-composed Meridian section: app shell.",
+  "dependencies": [
+    "react"
+  ],
+  "registryDependencies": [
+    "https://meridian.efolusi.com/site/registry/meridian-base.json"
+  ],
   "files": [
     {
       "path": "blocks/app-shell.html",

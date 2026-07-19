@@ -3,6 +3,13 @@
   "type": "registry:ui",
   "title": "TopNav",
   "description": "Sticky blurred header: optional leading slot, display-font title, right-aligned actions.",
+  "dependencies": [
+    "react"
+  ],
+  "registryDependencies": [
+    "https://meridian.efolusi.com/site/registry/meridian-base.json",
+    "https://meridian.efolusi.com/site/registry/button.json"
+  ],
   "files": [
     {
       "path": "components/navigation/TopNav.jsx",

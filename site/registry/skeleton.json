@@ -3,6 +3,13 @@
   "type": "registry:ui",
   "title": "Skeleton",
   "description": "Loading placeholder \u2014 soft pulse, no shimmer.",
+  "dependencies": [
+    "react"
+  ],
+  "registryDependencies": [
+    "https://meridian.efolusi.com/site/registry/meridian-base.json",
+    "https://meridian.efolusi.com/site/registry/button.json"
+  ],
   "files": [
     {
       "path": "components/data/Skeleton.jsx",

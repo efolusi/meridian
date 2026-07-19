@@ -3,6 +3,14 @@
   "type": "registry:ui",
   "title": "Reasoning",
   "description": "Collapsible \"thinking\" block for model reasoning \u2014 pulsing brain glyph while streaming, then \"Thought for Ns\".",
+  "dependencies": [
+    "react"
+  ],
+  "registryDependencies": [
+    "https://meridian.efolusi.com/site/registry/meridian-base.json",
+    "https://meridian.efolusi.com/site/registry/button.json",
+    "https://meridian.efolusi.com/site/registry/icon.json"
+  ],
   "files": [
     {
       "path": "components/ai/Reasoning.jsx",

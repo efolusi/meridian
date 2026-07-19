@@ -3,6 +3,14 @@
   "type": "registry:ui",
   "title": "AgentRun",
   "description": "Vertical run trace: one row per step with done/active/pending/error state, connector rail, mono timestamps.",
+  "dependencies": [
+    "react"
+  ],
+  "registryDependencies": [
+    "https://meridian.efolusi.com/site/registry/meridian-base.json",
+    "https://meridian.efolusi.com/site/registry/button.json",
+    "https://meridian.efolusi.com/site/registry/icon.json"
+  ],
   "files": [
     {
       "path": "components/ai/AgentRun.jsx",

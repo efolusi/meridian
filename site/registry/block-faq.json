@@ -3,6 +3,12 @@
   "type": "registry:block",
   "title": "Faq block",
   "description": "Pre-composed Meridian section: faq.",
+  "dependencies": [
+    "react"
+  ],
+  "registryDependencies": [
+    "https://meridian.efolusi.com/site/registry/meridian-base.json"
+  ],
   "files": [
     {
       "path": "blocks/faq.html",

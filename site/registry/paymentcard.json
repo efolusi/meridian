@@ -3,6 +3,13 @@
   "type": "registry:ui",
   "title": "PaymentCard",
   "description": "Payment card visual for trading / finance surfaces \u2014 espresso, caramel, or paper; `frozen` grays it out.",
+  "dependencies": [
+    "react"
+  ],
+  "registryDependencies": [
+    "https://meridian.efolusi.com/site/registry/meridian-base.json",
+    "https://meridian.efolusi.com/site/registry/button.json"
+  ],
   "files": [
     {
       "path": "components/finance/PaymentCard.jsx",

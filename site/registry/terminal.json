@@ -3,6 +3,13 @@
   "type": "registry:ui",
   "title": "Terminal",
   "description": "Line-oriented console output: $ prompts, tinted ok/err/info lines, optional live caret.",
+  "dependencies": [
+    "react"
+  ],
+  "registryDependencies": [
+    "https://meridian.efolusi.com/site/registry/meridian-base.json",
+    "https://meridian.efolusi.com/site/registry/button.json"
+  ],
   "files": [
     {
       "path": "components/code/Terminal.jsx",

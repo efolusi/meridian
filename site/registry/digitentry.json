@@ -3,6 +3,13 @@
   "type": "registry:ui",
   "title": "DigitEntry",
   "description": "OTP/PIN input \u2014 one cell per digit, auto-advance, paste-aware, `autocomplete=\"one-time-code\"`.",
+  "dependencies": [
+    "react"
+  ],
+  "registryDependencies": [
+    "https://meridian.efolusi.com/site/registry/meridian-base.json",
+    "https://meridian.efolusi.com/site/registry/button.json"
+  ],
   "files": [
     {
       "path": "components/forms/DigitEntry.jsx",

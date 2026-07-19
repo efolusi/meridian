@@ -3,6 +3,13 @@
   "type": "registry:ui",
   "title": "Avatar + AvatarGroup",
   "description": "Circular avatar \u2014 image or initials with a deterministic warm tone from `name`. `AvatarGroup` overlaps them with white keylines.",
+  "dependencies": [
+    "react"
+  ],
+  "registryDependencies": [
+    "https://meridian.efolusi.com/site/registry/meridian-base.json",
+    "https://meridian.efolusi.com/site/registry/button.json"
+  ],
   "files": [
     {
       "path": "components/display/Avatar.jsx",
