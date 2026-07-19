@@ -16,3 +16,6 @@ node_modules/
 # Generated at build/review time by the design-system compiler — committed
 # intentionally (zero-build distribution). Do NOT ignore:
 # _ds_bundle.js, _ds_manifest.json, _adherence.oxlintrc.json
+
+# Test output
+coverage/

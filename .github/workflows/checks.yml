@@ -55,6 +55,12 @@ jobs:
       - name: _ds_bundle.js is reproducible from source
         run: node scripts/build_bundle.mjs --check
 
+      # Keyboard and wiring contracts, run against the component sources rather
+      # than the bundle. This is the one gate an outside contributor can turn
+      # green without understanding the compiler.
+      - name: Unit tests
+        run: npm test
+
   smoke:
     runs-on: ubuntu-latest
     steps:
