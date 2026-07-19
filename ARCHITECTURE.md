@@ -36,7 +36,7 @@ Three principles produced this layout:
 | Path | Written by | Committed because |
 |---|---|---|
 | `_ds_bundle.js` | `scripts/build_bundle.mjs` | zero-build distribution: pages run from it directly |
-| `_ds_manifest.json` | DS compiler | machine-readable inventory for tools and agents |
+| `_ds_manifest.json` | DS compiler, `components` + `tokens` by `scripts/sync_manifest.py` | machine-readable inventory for tools and agents |
 | `_adherence.oxlintrc.json` | DS compiler | token/prop adherence rules for linting |
 | `site/registry.json`, `site/registry/*.json` | `scripts/build_registry.py` | open-schema registry items; any static host can serve them |
 

@@ -1,0 +1,34 @@
+{
+  "name": "portal",
+  "type": "registry:ui",
+  "title": "Portal",
+  "description": "Escape hatch for floating content: renders children into `document.body` so no ancestor's `overflow` can clip them. Menu, Popover, Tooltip, HoverCard, ContextMenu, Combobox and DatePicker all sit on it.",
+  "dependencies": [
+    "react"
+  ],
+  "registryDependencies": [
+    "https://meridian.efolusi.com/site/registry/meridian-base.json",
+    "https://meridian.efolusi.com/site/registry/button.json"
+  ],
+  "files": [
+    {
+      "path": "components/overlay/Portal.jsx",
+      "type": "registry:ui",
+      "content": "import React from 'react';\nimport { injectEfCss } from '../forms/Button.jsx';\nconst CSS = `\n.ef-portal{position:fixed;top:0;left:0;width:0;height:0}\n`;\n\n/**\n * Renders children into document.body (or `container`).\n *\n * Every floating surface needs this. An overlay positioned inside its trigger's\n * subtree is clipped by the first ancestor with overflow:auto|hidden \u2014 which in\n * practice is the scrolling table, drawer, or card it was opened from.\n */\nexport function Portal({ children, container }) {\n  injectEfCss('ef-css-portal', CSS);\n  const hostRef = React.useRef(null);\n  if (hostRef.current === null && typeof document !== 'undefined') {\n    hostRef.current = document.createElement('div');\n    hostRef.current.className = 'ef-portal';\n  }\n  // Children mount into the host on the first render, while it is still detached,\n  // and this layout effect attaches it before paint. Gating the render on a\n  // \"mounted\" state instead would leave the panel absent when the parent measures\n  // it for placement, which puts every anchored overlay at the viewport origin.\n  React.useLayoutEffect(() => {\n    const host = hostRef.current;\n    if (!host) return;\n    const parent = container || document.body;\n    parent.appendChild(host);\n    return () => { if (host.parentNode) host.parentNode.removeChild(host); };\n  }, [container]);\n  if (!hostRef.current) return null;\n  return ReactDOM.createPortal(children, hostRef.current);\n}\n\n/**\n * Position a portaled panel against its anchor, in viewport coordinates.\n *\n * Flips to the opposite side when the preferred one would overflow, then shifts\n * along the cross axis to stay on screen. Returns { style, side } \u2014 the panel is\n * hidden for the first frame so the measurement never flashes, and `side` is the\n * placement actually resolved, which a caller drawing an arrow has to know.\n *\n * Not exported on the namespace \u2014 it is a building block for the overlay\n * components, and is only useful with a panel ref you already control.\n */\nexport function useAnchoredStyle(anchorRef, panelRef, { open, placement = 'bottom', align = 'start', offset = 6, matchWidth = false } = {}) {\n  const [state, setState] = React.useState({\n    style: { position: 'fixed', top: 0, left: 0, visibility: 'hidden' },\n    side: placement,\n  });\n  React.useLayoutEffect(() => {\n    if (!open) {\n      setState(s => (s.style.visibility === 'hidden' ? s : { ...s, style: { ...s.style, visibility: 'hidden' } }));\n      return;\n    }\n    const place = () => {\n      const anchor = anchorRef.current;\n      const panel = panelRef.current;\n      if (!anchor || !panel) return;\n      const a = anchor.getBoundingClientRect();\n      const p = panel.getBoundingClientRect();\n      const vw = document.documentElement.clientWidth;\n      const vh = document.documentElement.clientHeight;\n      const edge = 8;\n\n      const roomBelow = vh - a.bottom - offset;\n      const roomAbove = a.top - offset;\n      const wantsTop = placement === 'top';\n      const side = wantsTop\n        ? (roomAbove >= p.height || roomAbove >= roomBelow ? 'top' : 'bottom')\n        : (roomBelow >= p.height || roomBelow >= roomAbove ? 'bottom' : 'top');\n\n      // a width-matched panel (a listbox under its input) is measured at the\n      // anchor's width, not its own, or the clamp below uses the wrong number\n      const width = matchWidth ? a.width : p.width;\n      let top = side === 'bottom' ? a.bottom + offset : a.top - offset - p.height;\n      let left = align === 'end' ? a.right - width\n        : align === 'center' ? a.left + a.width / 2 - width / 2\n        : a.left;\n\n      left = Math.max(edge, Math.min(left, vw - width - edge));\n      top = Math.max(edge, Math.min(top, vh - p.height - edge));\n\n      const next = { position: 'fixed', top: Math.round(top), left: Math.round(left), right: 'auto', bottom: 'auto', visibility: 'visible' };\n      if (matchWidth) next.width = Math.round(a.width);\n      setState({ style: next, side });\n    };\n    place();\n    // capture phase: any scrolling ancestor moves the anchor, not just the window\n    window.addEventListener('scroll', place, true);\n    window.addEventListener('resize', place);\n    return () => {\n      window.removeEventListener('scroll', place, true);\n      window.removeEventListener('resize', place);\n    };\n  }, [open, placement, align, offset, matchWidth, anchorRef, panelRef]);\n  return state;\n}\n"
+    },
+    {
+      "path": "components/overlay/Portal.d.ts",
+      "type": "registry:component",
+      "content": "export interface PortalProps {\n  children?: React.ReactNode;\n  /** Where to mount. @default document.body */\n  container?: HTMLElement;\n}\n/**\n * Render children outside the current DOM subtree so they cannot be clipped by\n * an ancestor's overflow. Used by every floating surface in the system.\n */\nexport declare function Portal(props: PortalProps): JSX.Element | null;\n"
+    },
+    {
+      "path": "components/overlay/Portal.prompt.md",
+      "type": "registry:component",
+      "content": "Escape hatch for floating content: renders children into `document.body` so no ancestor's `overflow` can clip them. Menu, Popover, Tooltip, HoverCard, ContextMenu, Combobox and DatePicker all sit on it.\n\nReach for it when you build your own floating surface. If you are placing that surface against a trigger, position it in viewport coordinates rather than `position:absolute`, or it will drift when an ancestor scrolls.\n\n```jsx\n<Portal>\n  <div style={{ position: 'fixed', top: 120, left: 80, zIndex: 'var(--z-popover)' }}>\n    Floating, and never clipped.\n  </div>\n</Portal>\n```\n"
+    }
+  ],
+  "categories": [
+    "overlay"
+  ],
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json"
+}

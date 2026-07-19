@@ -303,7 +303,8 @@
       "registryDependencies": [
         "https://meridian.efolusi.com/site/registry/meridian-base.json",
         "https://meridian.efolusi.com/site/registry/button.json",
-        "https://meridian.efolusi.com/site/registry/icon.json"
+        "https://meridian.efolusi.com/site/registry/icon.json",
+        "https://meridian.efolusi.com/site/registry/portal.json"
       ],
       "files": [
         {
@@ -1350,7 +1351,8 @@
         "https://meridian.efolusi.com/site/registry/meridian-base.json",
         "https://meridian.efolusi.com/site/registry/button.json",
         "https://meridian.efolusi.com/site/registry/calendar.json",
-        "https://meridian.efolusi.com/site/registry/icon.json"
+        "https://meridian.efolusi.com/site/registry/icon.json",
+        "https://meridian.efolusi.com/site/registry/portal.json"
       ],
       "files": [
         {
@@ -2118,7 +2120,8 @@
       ],
       "registryDependencies": [
         "https://meridian.efolusi.com/site/registry/meridian-base.json",
-        "https://meridian.efolusi.com/site/registry/button.json"
+        "https://meridian.efolusi.com/site/registry/button.json",
+        "https://meridian.efolusi.com/site/registry/portal.json"
       ],
       "files": [
         {
@@ -2397,6 +2400,7 @@
         "https://meridian.efolusi.com/site/registry/meridian-base.json",
         "https://meridian.efolusi.com/site/registry/button.json",
         "https://meridian.efolusi.com/site/registry/icon.json",
+        "https://meridian.efolusi.com/site/registry/portal.json",
         "https://meridian.efolusi.com/site/registry/tag.json"
       ],
       "files": [
@@ -3102,7 +3106,8 @@
       "registryDependencies": [
         "https://meridian.efolusi.com/site/registry/meridian-base.json",
         "https://meridian.efolusi.com/site/registry/button.json",
-        "https://meridian.efolusi.com/site/registry/icon.json"
+        "https://meridian.efolusi.com/site/registry/icon.json",
+        "https://meridian.efolusi.com/site/registry/portal.json"
       ],
       "files": [
         {
@@ -3163,7 +3168,8 @@
       ],
       "registryDependencies": [
         "https://meridian.efolusi.com/site/registry/meridian-base.json",
-        "https://meridian.efolusi.com/site/registry/button.json"
+        "https://meridian.efolusi.com/site/registry/button.json",
+        "https://meridian.efolusi.com/site/registry/portal.json"
       ],
       "files": [
         {
@@ -3194,7 +3200,8 @@
       "registryDependencies": [
         "https://meridian.efolusi.com/site/registry/meridian-base.json",
         "https://meridian.efolusi.com/site/registry/button.json",
-        "https://meridian.efolusi.com/site/registry/icon.json"
+        "https://meridian.efolusi.com/site/registry/icon.json",
+        "https://meridian.efolusi.com/site/registry/portal.json"
       ],
       "files": [
         {
@@ -3224,7 +3231,8 @@
       ],
       "registryDependencies": [
         "https://meridian.efolusi.com/site/registry/meridian-base.json",
-        "https://meridian.efolusi.com/site/registry/button.json"
+        "https://meridian.efolusi.com/site/registry/button.json",
+        "https://meridian.efolusi.com/site/registry/portal.json"
       ],
       "files": [
         {
@@ -3237,6 +3245,36 @@
         },
         {
           "path": "components/overlay/Popover.prompt.md",
+          "type": "registry:component"
+        }
+      ],
+      "categories": [
+        "overlay"
+      ]
+    },
+    {
+      "name": "portal",
+      "type": "registry:ui",
+      "title": "Portal",
+      "description": "Escape hatch for floating content: renders children into `document.body` so no ancestor's `overflow` can clip them. Menu, Popover, Tooltip, HoverCard, ContextMenu, Combobox and DatePicker all sit on it.",
+      "dependencies": [
+        "react"
+      ],
+      "registryDependencies": [
+        "https://meridian.efolusi.com/site/registry/meridian-base.json",
+        "https://meridian.efolusi.com/site/registry/button.json"
+      ],
+      "files": [
+        {
+          "path": "components/overlay/Portal.jsx",
+          "type": "registry:ui"
+        },
+        {
+          "path": "components/overlay/Portal.d.ts",
+          "type": "registry:component"
+        },
+        {
+          "path": "components/overlay/Portal.prompt.md",
           "type": "registry:component"
         }
       ],

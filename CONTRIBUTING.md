@@ -24,7 +24,7 @@ python3 scripts/check_contrast.py          # WCAG contrast pairs (4.5:1 text, 3:
 python3 scripts/check_dead_controls.py     # no buttons that render but do nothing
 python3 scripts/check_paths.py             # every relative reference resolves
 python3 scripts/check_runtime_copies.py    # support.js / ds-base.js copies have not drifted
-python3 scripts/sync_manifest_tokens.py --check
+python3 scripts/sync_manifest.py --check
 python3 scripts/build_registry.py && python3 scripts/build_tokens.py && python3 scripts/build_interfaces.py
 node scripts/build_bundle.mjs --check      # the committed bundle matches a fresh compile
 ```

@@ -8,7 +8,8 @@
   ],
   "registryDependencies": [
     "https://meridian.efolusi.com/site/registry/meridian-base.json",
-    "https://meridian.efolusi.com/site/registry/button.json"
+    "https://meridian.efolusi.com/site/registry/button.json",
+    "https://meridian.efolusi.com/site/registry/portal.json"
   ],
   "files": [
     {
