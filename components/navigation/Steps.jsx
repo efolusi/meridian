@@ -6,8 +6,8 @@ const CSS = `
 .ef-steps__item{display:flex;gap:12px}
 .ef-steps__rail{display:flex;flex-direction:column;align-items:center;flex:none}
 .ef-steps__marker{display:inline-flex;align-items:center;justify-content:center;width:24px;height:24px;border-radius:var(--radius-full);border:1.5px solid var(--sand-300);background:var(--surface-card);color:var(--text-muted);font-size:11px;font-weight:var(--weight-semibold);font-family:var(--font-mono);flex:none;transition:background var(--dur-fast) var(--ease-out),border-color var(--dur-fast) var(--ease-out)}
-.ef-steps__item--done .ef-steps__marker{background:var(--accent);border-color:var(--sand-950);color:var(--sand-50)}
-.ef-steps__item--active .ef-steps__marker{border-color:var(--sand-950);color:var(--text-primary)}
+.ef-steps__item--done .ef-steps__marker{background:var(--accent);border-color:var(--accent);color:var(--accent-contrast)}
+.ef-steps__item--active .ef-steps__marker{border-color:var(--accent);color:var(--text-primary)}
 .ef-steps__line{width:1.5px;flex:1;min-height:16px;background:var(--sand-200);margin:3px 0}
 .ef-steps__item--done .ef-steps__line{background:var(--accent)}
 .ef-steps__content{padding-bottom:20px;min-width:0}

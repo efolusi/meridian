@@ -15,7 +15,7 @@ const CSS = `
 .ef-btn--secondary:hover:not(:disabled){background:var(--surface-sunken)}
 .ef-btn--ghost{background:transparent;color:var(--text-secondary)}
 .ef-btn--ghost:hover:not(:disabled){background:var(--surface-sunken);color:var(--text-primary)}
-.ef-btn--danger{background:var(--danger-600);color:#fff}
+.ef-btn--danger{background:var(--danger-600);color:var(--danger-contrast)}
 .ef-btn--danger:hover:not(:disabled){background:var(--danger-700)}
 .ef-btn--brand{background:var(--brand-700);color:#fff}
 .ef-btn--brand:hover:not(:disabled){background:var(--brand-800)}

@@ -67,6 +67,7 @@ module.exports = { theme: { extend: {
     "accent-subtle": "var(--accent-subtle)",
     "accent-subtle-border": "var(--accent-subtle-border)",
     "accent-contrast": "var(--accent-contrast)",
+    "danger-contrast": "var(--danger-contrast)",
     "text-2xs": "var(--text-2xs)",
     "text-xs": "var(--text-xs)",
     "text-sm": "var(--text-sm)",

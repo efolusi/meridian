@@ -20,7 +20,7 @@ const CSS = `
 .ef-input--icon.ef-input--lg .ef-input__el{padding-left:40px}
 .ef-input__icon{position:absolute;left:11px;color:var(--text-muted);display:inline-flex;pointer-events:none}
 .ef-input--invalid .ef-input__el{border-color:var(--danger-600)}
-.ef-input--invalid .ef-input__el:focus{box-shadow:0 0 0 3px rgba(220,38,38,.22)}
+.ef-input--invalid .ef-input__el:focus{box-shadow:var(--focus-ring-danger)}
 `;
 export function Input({ label, hint, error, iconLeft, size = 'md', invalid, style, className, ...rest }) {
   injectEfCss('ef-css-input', CSS);

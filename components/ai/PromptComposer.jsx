@@ -4,7 +4,7 @@ import { IconButton } from '../forms/IconButton.jsx';
 import { injectEfCss } from '../forms/Button.jsx';
 const CSS = `
 .ef-composer{display:flex;flex-direction:column;background:var(--surface-card);border:1px solid var(--border-strong);border-radius:var(--radius-lg);transition:border-color var(--dur-fast) var(--ease-out),box-shadow var(--dur-fast) var(--ease-out)}
-.ef-composer:focus-within{border-color:var(--sand-950);box-shadow:var(--focus-ring)}
+.ef-composer:focus-within{border-color:var(--accent);box-shadow:var(--focus-ring)}
 .ef-composer__input{border:none;background:none;resize:none;padding:14px 16px 6px;font-family:var(--font-sans);font-size:var(--text-md);line-height:1.5;color:var(--text-primary);outline:none;min-height:24px}
 .ef-composer__input::placeholder{color:var(--text-muted)}
 .ef-composer__bar{display:flex;align-items:center;gap:2px;padding:6px 8px 8px}

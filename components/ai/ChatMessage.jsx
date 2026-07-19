@@ -6,7 +6,7 @@ import { injectEfCss } from '../forms/Button.jsx';
 const CSS = `
 .ef-msg{display:flex;gap:12px;max-width:720px}
 .ef-msg__avatar{flex:none;margin-top:2px}
-.ef-msg__bot{display:inline-flex;align-items:center;justify-content:center;width:28px;height:28px;border-radius:var(--radius-full);background:var(--accent);color:var(--sand-50);flex:none;margin-top:2px}
+.ef-msg__bot{display:inline-flex;align-items:center;justify-content:center;width:28px;height:28px;border-radius:var(--radius-full);background:var(--accent);color:var(--accent-contrast);flex:none;margin-top:2px}
 .ef-msg__meta{display:flex;align-items:baseline;gap:8px}
 .ef-msg__name{font-size:var(--text-sm);font-weight:var(--weight-semibold);color:var(--text-primary)}
 .ef-msg__time{font-size:var(--text-xs);color:var(--text-muted)}

@@ -8,7 +8,7 @@ export function Sparkline({ data = [], width = 120, height = 32, direction, stro
     pad + (1 - (v - min) / span) * (height - pad * 2),
   ]);
   const dir = direction || (data[data.length - 1] >= data[0] ? 'up' : 'down');
-  const color = dir === 'up' ? 'var(--success-600)' : dir === 'down' ? 'var(--danger-600)' : 'var(--sand-950)';
+  const color = dir === 'up' ? 'var(--success-600)' : dir === 'down' ? 'var(--danger-600)' : 'var(--text-primary)';
   const line = pts.map(p => p.map(n => n.toFixed(1)).join(',')).join(' ');
   return (
     <svg width={width} height={height} viewBox={`0 0 ${width} ${height}`} style={style} className={className} aria-hidden="true">

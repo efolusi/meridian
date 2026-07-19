@@ -17,7 +17,7 @@ const CSS = `
 .ef-confirm__btn:focus-visible{outline:none;box-shadow:var(--focus-ring)}
 .ef-confirm__btn--accept{background:var(--accent);border-color:var(--accent);color:var(--accent-contrast)}
 .ef-confirm__btn--accept:hover{background:var(--accent-hover)}
-.ef-confirm--danger .ef-confirm__btn--accept{background:var(--danger-600);border-color:var(--danger-600);color:#fff}
+.ef-confirm--danger .ef-confirm__btn--accept{background:var(--danger-600);border-color:var(--danger-600);color:var(--danger-contrast)}
 .ef-confirm__status{display:flex;align-items:center;gap:8px;padding:10px 14px 12px;font-size:13px;color:var(--text-secondary)}
 .ef-confirm__status--approved{color:var(--success-600,var(--text-secondary))}
 .ef-confirm__status--rejected{color:var(--text-muted)}

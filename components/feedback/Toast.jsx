@@ -14,7 +14,7 @@ const CSS = `
 .ef-toast__action{margin-top:8px;background:none;border:none;padding:0;color:var(--peach-200);font-family:var(--font-sans);font-size:var(--text-sm);font-weight:var(--weight-semibold);cursor:pointer}
 .ef-toast__action:hover{color:var(--cream-50);text-decoration:underline}
 .ef-toast .ef-iconbtn{color:rgba(250,249,246,.6)}
-.ef-toast .ef-iconbtn:hover:not(:disabled){background:rgba(250,249,246,.12);color:#fff}
+.ef-toast .ef-iconbtn:hover:not(:disabled){background:color-mix(in srgb,var(--text-inverse) 12%,transparent);color:var(--text-inverse)}
 .ef-toast-stack{position:fixed;bottom:24px;right:24px;display:flex;flex-direction:column;gap:10px;z-index:var(--z-toast)}
 [data-theme="dark"] .ef-toast--success .ef-toast__icon{color:var(--success-600)}
 [data-theme="dark"] .ef-toast--danger .ef-toast__icon{color:var(--danger-600)}

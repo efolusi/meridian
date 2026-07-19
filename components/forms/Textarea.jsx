@@ -12,7 +12,7 @@ const CSS = `
 .ef-textarea:focus{outline:none;border-color:var(--accent);box-shadow:var(--focus-ring)}
 .ef-textarea:disabled{background:var(--surface-sunken);color:var(--text-muted);cursor:not-allowed}
 .ef-textarea--invalid{border-color:var(--danger-600)}
-.ef-textarea--invalid:focus{box-shadow:0 0 0 3px rgba(220,38,38,.22)}
+.ef-textarea--invalid:focus{box-shadow:var(--focus-ring-danger)}
 `;
 export function Textarea({ label, hint, error, invalid, style, className, ...rest }) {
   injectEfCss('ef-css-textarea', CSS);

@@ -16,7 +16,13 @@
 --text-primary:var(--sand-950);--text-secondary:var(--sand-700);--text-muted:#746A55;/* between sand-600/700: ≥4.5:1 on page, card, and sunken */--text-inverse:var(--sand-50);--text-link:var(--brand-700);
 --border-default:var(--sand-200);--border-strong:var(--sand-300);--border-inverse:rgba(250,249,246,.18);
 --accent:var(--brand-950);--accent-hover:#1D0E04;--accent-active:#120801;--accent-subtle:var(--brand-50);--accent-subtle-border:var(--brand-200);--accent-contrast:#FFFFFF;
---focus-ring:0 0 0 2px rgba(122,78,43,.45);
+--danger-contrast:#FFFFFF;/* label on a solid --danger-600 fill; flips in dark where the red lightens */
+/* Focus ring — opaque, two-layer. The inner offset ring is surface-coloured so the
+   indicator never sits directly against a control fill; the outer ring only ever needs
+   contrast against the surface, clearing WCAG 1.4.11 (3:1 non-text) on every background. */
+--focus-ring-color:var(--brand-700);--focus-ring-offset:var(--surface-card);
+--focus-ring:0 0 0 2px var(--focus-ring-offset),0 0 0 4px var(--focus-ring-color);
+--focus-ring-danger:0 0 0 2px var(--focus-ring-offset),0 0 0 4px var(--danger-600);
 }
 /* Dark theme — semantic remap only; ramps stay fixed */
 [data-theme="dark"]{
@@ -26,7 +32,7 @@
 --accent:#F3EFE7;--accent-hover:#FFFFFF;--accent-active:#D5CFC0;--accent-subtle:#2A2119;--accent-subtle-border:#453728;--accent-contrast:#1E1A14;
 --success-600:#5FB86E;--success-100:#1C2B1F;--success-300:#2E4A34;
 --warning-100:#2E2413;--warning-300:#4A3A1D;--warning-600:#D9822B;
---danger-100:#321B18;--danger-300:#54291F;--danger-600:#E85D4A;
---focus-ring:0 0 0 2px rgba(206,156,102,.5);
+--danger-100:#321B18;--danger-300:#54291F;--danger-600:#E85D4A;--danger-contrast:#1E1A14;
+--focus-ring-color:var(--brand-400);/* offset + composite inherit from :root and re-resolve here */
 }
 [data-theme="dark"] ::selection{background:#453728}

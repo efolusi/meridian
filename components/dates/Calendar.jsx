@@ -13,7 +13,7 @@ const CSS = `
 .ef-cal__day:focus-visible{outline:none;box-shadow:var(--focus-ring)}
 .ef-cal__day--out{color:var(--sand-400)}
 .ef-cal__day--today{border-color:var(--sand-400)}
-.ef-cal__day--sel{background:var(--sand-950);color:var(--sand-50);font-weight:var(--weight-semibold)}
+.ef-cal__day--sel{background:var(--accent);color:var(--accent-contrast);font-weight:var(--weight-semibold)}
 .ef-cal__day--sel:hover{background:var(--sand-900)}
 `;
 const DOW = ['Mo', 'Tu', 'We', 'Th', 'Fr', 'Sa', 'Su'];

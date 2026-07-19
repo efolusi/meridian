@@ -23,7 +23,7 @@ const CSS = `
 .ef-webprev__log--warn{color:var(--warning-600)}
 .ef-webprev__log--error{color:var(--danger-600)}
 .ef-webprev__logicon{display:inline-flex;flex:none;margin-top:2px}
-.ef-webprev__badge{position:absolute;top:3px;right:3px;min-width:14px;height:14px;padding:0 4px;border-radius:var(--radius-full);background:var(--danger-600);color:#fff;font-size:9.5px;font-weight:var(--weight-semibold);display:inline-flex;align-items:center;justify-content:center;font-family:var(--font-sans)}
+.ef-webprev__badge{position:absolute;top:3px;right:3px;min-width:14px;height:14px;padding:0 4px;border-radius:var(--radius-full);background:var(--danger-600);color:var(--danger-contrast);font-size:9.5px;font-weight:var(--weight-semibold);display:inline-flex;align-items:center;justify-content:center;font-family:var(--font-sans)}
 `;
 const VIEWPORTS = [{ id: 'desktop', icon: 'monitor', width: null }, { id: 'tablet', icon: 'tablet', width: 768 }, { id: 'mobile', icon: 'smartphone', width: 390 }];
 export function WebPreview({ url: urlProp = '', height = 340, logs = [], defaultConsoleOpen = false, children, onUrlChange, style, className }) {
