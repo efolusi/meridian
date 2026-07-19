@@ -4,17 +4,18 @@ Meridian is MIT-licensed and open to contributions. It is plain HTML + CSS + JSX
 
 ## Read this first if you are changing a component
 
-`_ds_bundle.js` is a **compiled artifact**. Every `components/**/*.jsx` and `showcases/**/*.jsx` file is compiled into it, and the bundle header records a SHA-256 of each source file. Pages load the bundle, not your `.jsx`, so **editing a component source alone changes nothing at runtime.**
+`_ds_bundle.js` is a **compiled artifact**. Every `components/**/*.jsx` and `showcases/**/*.jsx` file is compiled into it, and pages load the bundle rather than your `.jsx` — so **editing a component source alone changes nothing at runtime until you rebuild.**
 
-The compiler that produces the bundle is **not in this repository**. That means:
+Rebuilding takes one command:
 
-- **You cannot regenerate `_ds_bundle.js` yourself, and you are not expected to.** Open your PR with the source change only (`.jsx` + `.d.ts` + `.prompt.md` + specimen card). A maintainer recompiles the bundle and pushes it to your branch before merge.
-- **CI will report a bundle hash mismatch on your PR.** For pull requests from forks that touch component sources this check is informational and will not block you. Seeing `hash mismatch (bundle stale)` on a component PR is expected and is the maintainer's job to resolve, not yours.
-- Describe the visual or behavioural change in the PR body so the maintainer can verify it after recompiling.
+```bash
+npm install                      # once — @babel/standalone is the only build dependency
+node scripts/build_bundle.mjs    # recompile _ds_bundle.js from source
+```
 
-Everything else in the repo you can build, run, and verify completely on your own: `tokens/`, `blocks/`, `starters/`, `site/`, `guidelines/`, `scripts/`, and all documentation. Those PRs need no special handling.
+Commit the regenerated `_ds_bundle.js` alongside your source change. CI recompiles from scratch and requires the committed artifact to match byte for byte (`node scripts/build_bundle.mjs --check`), so a stale bundle cannot merge and neither can a bundle that does not correspond to its sources.
 
-Removing this asymmetry is tracked in [ROADMAP.md](ROADMAP.md) — vendoring the compiler (or replacing it) is the single highest-value contribution anyone could make to this project.
+The compiler is `scripts/build_bundle.mjs` and the format it emits is documented in [ARCHITECTURE.md](ARCHITECTURE.md) § The bundle format. It was previously an external tool nobody outside the project could run; it now lives here, and reproduces the historical artifact exactly.
 
 ## Running the checks locally
 
@@ -25,6 +26,7 @@ python3 scripts/check_paths.py             # every relative reference resolves
 python3 scripts/check_runtime_copies.py    # support.js / ds-base.js copies have not drifted
 python3 scripts/sync_manifest_tokens.py --check
 python3 scripts/build_registry.py && python3 scripts/build_tokens.py && python3 scripts/build_interfaces.py
+node scripts/build_bundle.mjs --check      # the committed bundle matches a fresh compile
 ```
 
 Then open `site/_smoke.html` in a browser; it renders every demo and reports pass/fail in the page title.

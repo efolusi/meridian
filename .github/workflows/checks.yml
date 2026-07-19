@@ -40,21 +40,20 @@ jobs:
       - name: No dead interactive controls
         run: python3 scripts/check_dead_controls.py
 
-      # A fork PR cannot regenerate the bundle: the compiler is not in this repo.
-      # For those, report the drift and let the maintainer recompile before merge.
-      # Everything else (pushes, same-repo branches) must keep source and artifact in step.
-      - name: Detect fork pull request
-        id: fork
-        run: |
-          if [ "${{ github.event_name }}" = "pull_request" ] && \
-             [ "${{ github.event.pull_request.head.repo.full_name }}" != "${{ github.repository }}" ]; then
-            echo "advisory=--advisory" >> "$GITHUB_OUTPUT"
-          else
-            echo "advisory=" >> "$GITHUB_OUTPUT"
-          fi
-
+      # Fast pre-check: the header's recorded hashes vs the sources on disk.
       - name: Bundle source hashes match source files
-        run: python3 scripts/check_bundle_hashes.py ${{ steps.fork.outputs.advisory }}
+        run: python3 scripts/check_bundle_hashes.py
+
+      # The real gate: recompile from source and require the committed artifact to
+      # match byte for byte. This is reproduction, not self-attestation — the same
+      # standard the registry and token generators are already held to.
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      - name: Install build dependency
+        run: npm ci --no-audit --no-fund
+      - name: _ds_bundle.js is reproducible from source
+        run: node scripts/build_bundle.mjs --check
 
   smoke:
     runs-on: ubuntu-latest
