@@ -1,5 +1,5 @@
 import React from 'react';
-import { injectEfCss } from '../forms/Button.jsx';
+import { injectEfCss, mergeRefs } from '../forms/Button.jsx';
 import { Portal, useAnchoredStyle } from './Portal.jsx';
 const CSS = `
 .ef-popover{position:relative;display:inline-flex}
@@ -8,7 +8,7 @@ const CSS = `
 .ef-popover__panel--right{right:0}
 @keyframes ef-pop-in{from{opacity:0;transform:translateY(-3px)}}
 `;
-export function Popover({ trigger, children, align = 'left', width = 280, open: controlled, onOpenChange, style, className, ...rest }) {
+export const Popover = React.forwardRef(function Popover({ trigger, children, align = 'left', width = 280, open: controlled, onOpenChange, style, className, ...rest }, fRef) {
   injectEfCss('ef-css-popover', CSS);
   const [inner, setInner] = React.useState(false);
   const open = controlled != null ? controlled : inner;
@@ -39,7 +39,7 @@ export function Popover({ trigger, children, align = 'left', width = 280, open: 
     'aria-expanded': open,
   };
   return (
-    <span {...rest} ref={ref} className={`ef-popover${className ? ' ' + className : ''}`} style={style}>
+    <span {...rest} ref={mergeRefs(fRef, ref)} className={`ef-popover${className ? ' ' + className : ''}`} style={style}>
       {React.isValidElement(trigger)
         ? React.cloneElement(trigger, triggerProps)
         : <span role="button" tabIndex={0} style={{ display: 'inline-flex' }} {...triggerProps}>{trigger}</span>}
@@ -50,4 +50,4 @@ export function Popover({ trigger, children, align = 'left', width = 280, open: 
       )}
     </span>
   );
-}
+});

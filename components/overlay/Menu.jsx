@@ -1,6 +1,6 @@
 import React from 'react';
 import { Icon } from '../icons/Icon.jsx';
-import { injectEfCss } from '../forms/Button.jsx';
+import { injectEfCss, mergeRefs } from '../forms/Button.jsx';
 import { Portal, useAnchoredStyle } from './Portal.jsx';
 const CSS = `
 .ef-menu{position:relative;display:inline-flex}
@@ -18,7 +18,7 @@ const CSS = `
 .ef-menu__sep{height:1px;background:var(--border-default);margin:4px 6px}
 .ef-menu__kbd{margin-left:auto;font-family:var(--font-mono);font-size:11px;color:var(--text-muted)}
 `;
-export function Menu({ trigger, items, onSelect, align = 'left', style, className, ...rest }) {
+export const Menu = React.forwardRef(function Menu({ trigger, items, onSelect, align = 'left', style, className, ...rest }, fRef) {
   injectEfCss('ef-css-menu', CSS);
   const [open, setOpen] = React.useState(false);
   const ref = React.useRef(null);
@@ -78,7 +78,7 @@ export function Menu({ trigger, items, onSelect, align = 'left', style, classNam
     }
   };
   return (
-    <span {...rest} ref={ref} className={`ef-menu${className ? ' ' + className : ''}`} style={style}>
+    <span {...rest} ref={mergeRefs(fRef, ref)} className={`ef-menu${className ? ' ' + className : ''}`} style={style}>
       {React.isValidElement(trigger)
         ? React.cloneElement(trigger, triggerProps)
         : <span role="button" tabIndex={0} style={{ display: 'inline-flex' }} {...triggerProps}>{trigger}</span>}
@@ -101,4 +101,4 @@ export function Menu({ trigger, items, onSelect, align = 'left', style, classNam
       )}
     </span>
   );
-}
+});

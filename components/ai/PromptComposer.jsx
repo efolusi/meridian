@@ -15,14 +15,14 @@ const CSS = `
 .ef-composer__send:focus-visible{outline:none;box-shadow:var(--focus-ring)}
 .ef-composer__hint{font-size:var(--text-xs);color:var(--text-muted);padding:0 4px}
 `;
-export function PromptComposer({ value, defaultValue, onChange, onSend, onAttach, onVoice, busy, onStop, placeholder = 'Ask the agent anything…', rows = 2, disabled, attachments, hint, style, className, ...rest }) {
+export const PromptComposer = React.forwardRef(function PromptComposer({ value, defaultValue, onChange, onSend, onAttach, onVoice, busy, onStop, placeholder = 'Ask the agent anything…', rows = 2, disabled, attachments, hint, style, className, ...rest }, ref) {
   injectEfCss('ef-css-composer', CSS);
   const [inner, setInner] = React.useState(defaultValue || '');
   const v = value != null ? value : inner;
   const set = (t, e) => { if (value == null) setInner(t); if (onChange) onChange(t, e); };
   const send = () => { if (v.trim() && onSend && !disabled) { onSend(v); if (value == null) setInner(''); } };
   return (
-    <div {...rest} className={`ef-composer${className ? ' ' + className : ''}`} style={style}>
+    <div ref={ref} {...rest} className={`ef-composer${className ? ' ' + className : ''}`} style={style}>
       {attachments ? <div style={{ display: 'flex', gap: 6, flexWrap: 'wrap', padding: '10px 12px 0' }}>{attachments}</div> : null}
       <textarea className="ef-composer__input" rows={rows} placeholder={placeholder} value={v} disabled={disabled}
         onChange={e => set(e.target.value, e)}
@@ -41,4 +41,4 @@ export function PromptComposer({ value, defaultValue, onChange, onSend, onAttach
       </div>
     </div>
   );
-}
+});

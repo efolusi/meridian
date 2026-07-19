@@ -1,6 +1,6 @@
 import React from 'react';
 import { IconButton } from '../forms/IconButton.jsx';
-import { injectEfCss } from '../forms/Button.jsx';
+import { injectEfCss, mergeRefs } from '../forms/Button.jsx';
 const CSS = `
 .ef-drawer__overlay{position:fixed;inset:0;background:var(--overlay-scrim);z-index:var(--z-overlay);animation:ef-fade-in var(--dur-med) var(--ease-out)}
 @keyframes ef-fade-in{from{opacity:0}}
@@ -16,7 +16,7 @@ const CSS = `
 .ef-drawer__foot{display:flex;justify-content:flex-end;gap:8px;padding:14px 20px;border-top:1px solid var(--border-default);background:var(--surface-subtle)}
 `;
 const FOCUSABLE = 'button,[href],input,select,textarea,[tabindex]:not([tabindex="-1"])';
-export function Drawer({ open, onClose, title, footer, width = 400, side = 'right', children, ...rest }) {
+export const Drawer = React.forwardRef(function Drawer({ open, onClose, title, footer, width = 400, side = 'right', children, ...rest }, ref) {
   injectEfCss('ef-css-drawer', CSS);
   const panelRef = React.useRef(null);
   const prevFocus = React.useRef(null);
@@ -48,7 +48,7 @@ export function Drawer({ open, onClose, title, footer, width = 400, side = 'righ
   return (
     <React.Fragment>
       <div className="ef-drawer__overlay" onMouseDown={onClose}></div>
-      <div {...rest} className={`ef-drawer ef-drawer--${side}`} role="dialog" aria-modal="true" ref={panelRef} tabIndex={-1} aria-labelledby={title ? titleId : undefined} style={{ width }}>
+      <div {...rest} className={`ef-drawer ef-drawer--${side}`} role="dialog" aria-modal="true" ref={mergeRefs(ref, panelRef)} tabIndex={-1} aria-labelledby={title ? titleId : undefined} style={{ width }}>
         <div className="ef-drawer__head">
           <div className="ef-drawer__title" id={titleId}>{title}</div>
           {onClose ? <IconButton icon="x" label="Close" size="sm" onClick={onClose} /> : null}
@@ -58,4 +58,4 @@ export function Drawer({ open, onClose, title, footer, width = 400, side = 'righ
       </div>
     </React.Fragment>
   );
-}
+});

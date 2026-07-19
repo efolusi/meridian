@@ -26,6 +26,22 @@ export function injectEfCss(id, text) {
   if (typeof document === 'undefined' || document.getElementById(id)) return;
   const s = document.createElement('style'); s.id = id; s.textContent = text; document.head.appendChild(s);
 }
+/**
+ * Point several refs at one node.
+ *
+ * A component that forwards a ref usually needs the same node itself — to
+ * anchor an overlay, trap focus, or measure. Lowercase, so it stays an internal
+ * helper rather than part of the public namespace.
+ */
+export function mergeRefs(...refs) {
+  return node => {
+    for (const r of refs) {
+      if (!r) continue;
+      if (typeof r === 'function') r(node);
+      else r.current = node;
+    }
+  };
+}
 export function Button({ variant = 'primary', size = 'md', iconLeft, iconRight, fullWidth, loading, disabled, children, style, className, ...rest }) {
   injectEfCss('ef-css-btn', CSS);
   const isz = size === 'sm' ? 14 : size === 'lg' ? 18 : 16;
