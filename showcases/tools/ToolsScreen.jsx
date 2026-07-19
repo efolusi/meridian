@@ -1,4 +1,4 @@
-const { Steps, FileDrop, FileTile, Select, Slider, Button, EmptyState, Toast, ToastStack, Card, Divider, SegmentedControl, Icon, Textarea, CopyField } = window.EfolusiDesignSystem_4ffc3d;
+const { Steps, FileDrop, FileTile, Select, Slider, Button, EmptyState, Card, Divider, SegmentedControl, Icon, Textarea, CopyField, Toaster } = window.EfolusiDesignSystem_4ffc3d;
 
 function EncodePane() {
   const [scheme, setScheme] = React.useState('base64');
@@ -36,7 +36,7 @@ function ToolsScreen() {
   const [format, setFormat] = React.useState('DOCX');
   const [quality, setQuality] = React.useState(80);
   const [phase, setPhase] = React.useState(0); // 0 upload, 1 convert, 2 download
-  const [toast, setToast] = React.useState(null);
+  const toast = Toaster.useToast();
   const timers = React.useRef([]);
   React.useEffect(() => () => timers.current.forEach(clearInterval), []);
   const addFiles = fs => setFiles(f => [...f, ...fs.map(x => ({ id: nextId++, name: x.name, size: (x.size / 1048576).toFixed(1) + ' MB', state: 'ready' }))]);
@@ -49,7 +49,7 @@ function ToolsScreen() {
         if (out.every(f => f.state === 'done')) {
           clearInterval(t);
           setPhase(2);
-          setToast('Everything converted');
+          toast.notify({ tone: 'success', title: 'Everything converted', description: 'Files are ready to download.' });
         }
         return out;
       });
@@ -103,7 +103,6 @@ function ToolsScreen() {
           )}
         </Card>
       </div>
-      <ToastStack>{toast && <Toast tone="success" title={toast} description="Files are ready to download." onClose={() => setToast(null)} />}</ToastStack>
     </div>
   );
 }

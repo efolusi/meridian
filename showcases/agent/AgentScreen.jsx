@@ -1,4 +1,4 @@
-const { ChatMessage, PromptComposer, Terminal, Steps, FileTile, StatusDot, KeyValueList, CommandPalette, Menu, Card, Button, IconButton, Badge, Kbd, Icon, Toast, ToastStack } = window.EfolusiDesignSystem_4ffc3d;
+const { ChatMessage, PromptComposer, Terminal, Steps, FileTile, StatusDot, KeyValueList, CommandPalette, Menu, Card, Button, IconButton, Badge, Kbd, Icon, Toaster } = window.EfolusiDesignSystem_4ffc3d;
 
 function AgentHeader({ running, onToggle, notify }) {
   return (
@@ -70,8 +70,8 @@ const CMD_GROUPS = [
 function AgentScreen() {
   const [running, setRunning] = React.useState(true);
   const [cmdk, setCmdk] = React.useState(false);
-  const [toast, setToast] = React.useState(null);
-  const notify = (title, description) => { setToast({ title, description }); setTimeout(() => setToast(null), 4000); };
+  const toast = Toaster.useToast();
+  const notify = (title, description) => toast.notify({ tone: 'success', title, description });
   const [msgs, setMsgs] = React.useState([
     { id: 1, role: 'user', text: 'Connect the prod database and retry yesterday\u2019s failed webhooks.', time: '14:02' },
     { id: 2, role: 'assistant', time: '14:02', body: 'terminal' },
@@ -136,7 +136,6 @@ function AgentScreen() {
         else if (id === 'trader') window.location.href = '../trader/index.html';
         else if (id === 'settings') window.location.href = '../console/index.html';
       }} groups={CMD_GROUPS} />
-      <ToastStack>{toast && <Toast tone="success" title={toast.title} description={toast.description} onClose={() => setToast(null)} />}</ToastStack>
     </div>
   );
 }

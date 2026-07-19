@@ -12,7 +12,7 @@
 </head><body>
 <div id="root"></div>
 <script type="text/babel">
-const { Dialog, Toast, ToastStack, Button, Input, Select, Textarea, CommandPalette } = window.EfolusiDesignSystem_4ffc3d;
+const { Dialog, Toaster, Button, Input, Select, Textarea, CommandPalette } = window.EfolusiDesignSystem_4ffc3d;
 const TITLES = { overview: 'Overview', customers: 'Customers', projects: 'Projects', usage: 'Usage', billing: 'Billing', settings: 'Workspace settings' };
 function Placeholder({ name }) {
   return <div style={{ padding: 24 }}><div style={{ border: '1px dashed var(--sand-300)', borderRadius: 'var(--radius-md)', padding: 48, textAlign: 'center', color: 'var(--text-muted)', fontSize: 14 }}>{name} — intentionally omitted from this kit.</div></div>;
@@ -21,17 +21,13 @@ function App() {
   const [nav, setNav] = React.useState('overview');
   const [dialog, setDialog] = React.useState(false);
   const [cmdk, setCmdk] = React.useState(false);
-  const [toasts, setToasts] = React.useState([]);
   React.useEffect(() => {
     const key = e => { if ((e.metaKey || e.ctrlKey) && e.key.toLowerCase() === 'k') { e.preventDefault(); setCmdk(o => !o); } };
     document.addEventListener('keydown', key);
     return () => document.removeEventListener('keydown', key);
   }, []);
-  const notify = (title, description) => {
-    const id = Date.now();
-    setToasts(t => [...t, { id, title, description }]);
-    setTimeout(() => setToasts(t => t.filter(x => x.id !== id)), 5000);
-  };
+  const toast = Toaster.useToast();
+  const notify = (title, description, tone = 'success') => toast.notify({ tone, title, description });
   return (
     <div style={{ display: 'flex', height: '100vh', overflow: 'hidden' }}>
       <Sidebar nav={nav} onNav={setNav} />
@@ -72,11 +68,8 @@ function App() {
           <Select label="Surface" options={['AI agents', 'Infrastructure', 'Automation', 'File tools', 'Trading', 'Finance']} />
         </div>
       </Dialog>
-      <ToastStack>
-        {toasts.map(t => <Toast key={t.id} tone="success" title={t.title} description={t.description} onClose={() => setToasts(x => x.filter(y => y.id !== t.id))} />)}
-      </ToastStack>
     </div>
   );
 }
-ReactDOM.createRoot(document.getElementById('root')).render(<App />);
+ReactDOM.createRoot(document.getElementById('root')).render(<Toaster><App /></Toaster>);
 </script></body></html>

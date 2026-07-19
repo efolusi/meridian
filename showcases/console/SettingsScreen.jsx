@@ -94,7 +94,7 @@ function ApiTab({ notify }) {
         </div>
       </Card>
       <Dialog open={confirm} onClose={() => setConfirm(false)} title="Delete Acme Workspace?" description="All projects, keys, and member access disappear. There is no undo."
-        footer={<React.Fragment><Button variant="ghost" onClick={() => setConfirm(false)}>Keep workspace</Button><Button variant="danger" iconLeft="trash-2" onClick={() => { setConfirm(false); notify('Deletion requested', 'Owners get a confirmation email first.'); }}>Delete forever</Button></React.Fragment>}>
+        footer={<React.Fragment><Button variant="ghost" onClick={() => setConfirm(false)}>Keep workspace</Button><Button variant="danger" iconLeft="trash-2" onClick={() => { setConfirm(false); notify('Deletion requested', 'Owners get a confirmation email first.', 'warning'); }}>Delete forever</Button></React.Fragment>}>
         <Input label='Type "Acme Workspace" to confirm' placeholder="Acme Workspace" autoFocus />
       </Dialog>
     </div>

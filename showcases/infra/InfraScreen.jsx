@@ -1,4 +1,4 @@
-const { Banner, Stat, Sparkline, SegmentedControl, Table, StatusDot, Drawer, KeyValueList, CopyField, Terminal, Dialog, Card, Button, Select, Input, Badge, Icon, Toast, ToastStack } = window.EfolusiDesignSystem_4ffc3d;
+const { Banner, Stat, Sparkline, SegmentedControl, Table, StatusDot, Drawer, KeyValueList, CopyField, Terminal, Dialog, Card, Button, Select, Input, Badge, Icon, Toaster } = window.EfolusiDesignSystem_4ffc3d;
 
 const RESOURCES = [
   { id: 'pg', name: 'pg-prod-eu', kind: 'PostgreSQL', icon: 'database', region: 'eu-west-1', status: 'ok', latency: '38 ms' },
@@ -26,8 +26,8 @@ function InfraScreen() {
   const [connect, setConnect] = React.useState(false);
   const [cli, setCli] = React.useState(false);
   const [extra, setExtra] = React.useState([]);
-  const [toast, setToast] = React.useState(null);
-  const notify = (title, description) => { setToast({ title, description }); setTimeout(() => setToast(null), 4000); };
+  const toast = Toaster.useToast();
+  const notify = (title, description) => toast.notify({ tone: 'success', title, description });
   const rows = tab === 'resources' ? [...RESOURCES, ...extra] : tab === 'domains' ? DOMAINS : CERTS;
   return (
     <div style={{ height: '100vh', display: 'flex', flexDirection: 'column' }}>
@@ -111,7 +111,6 @@ function InfraScreen() {
           ]} />
         </div>
       </Drawer>
-      <ToastStack>{toast && <Toast tone="success" title={toast.title} description={toast.description} onClose={() => setToast(null)} />}</ToastStack>
     </div>
   );
 }

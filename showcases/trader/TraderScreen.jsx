@@ -1,4 +1,4 @@
-const { Stat, Sparkline, BarChart, SegmentedControl, Table, Badge, Switch, Slider, Progress, Avatar, Toast, ToastStack, Card, Button, StatusDot, Divider, Icon, Menu, IconButton } = window.EfolusiDesignSystem_4ffc3d;
+const { Stat, Sparkline, BarChart, SegmentedControl, Table, Badge, Switch, Slider, Progress, Avatar, Card, Button, StatusDot, Divider, Icon, Menu, IconButton, Toaster } = window.EfolusiDesignSystem_4ffc3d;
 
 const SERIES = { '24h': [98, 99, 97, 101, 103, 102, 105, 104, 107, 106, 109, 112], '7d': [88, 92, 90, 95, 93, 99, 104, 101, 106, 110, 108, 112], '30d': [72, 78, 75, 82, 86, 84, 90, 95, 92, 101, 107, 112] };
 const POSITIONS = [
@@ -13,8 +13,8 @@ function TraderScreen() {
   const [risk, setRisk] = React.useState(4);
   const [followed, setFollowed] = React.useState([]);
   const [positions, setPositions] = React.useState(POSITIONS);
-  const [toast, setToast] = React.useState(null);
-  const notify = t => { setToast(t); setTimeout(() => setToast(null), 4000); };
+  const toast = Toaster.useToast();
+  const notify = (t, tone = 'success') => toast.notify({ tone, title: t, description: 'Change applies to the next trade.' });
   const follow = n => { setFollowed(f => f.includes(n) ? f.filter(x => x !== n) : [...f, n]); };
   return (
     <div style={{ minHeight: '100vh' }}>
@@ -50,11 +50,11 @@ function TraderScreen() {
               { key: 'mark', label: 'Mark', numeric: true, align: 'right' },
               { key: 'pnl', label: 'P&L (€)', numeric: true, align: 'right', render: (v, r) => <span style={{ color: r.up ? 'var(--success-600)' : 'var(--danger-600)', fontFamily: 'var(--font-mono)', fontSize: 13 }}>{v}</span> },
               { key: 'spark', label: '', width: 100, render: (v, r) => <Sparkline data={v} width={84} height={24} direction={r.up ? 'up' : 'down'} /> },
-              { key: 'menu', label: '', width: 44, render: (v, r) => <Menu align="right" trigger={<IconButton icon="ellipsis" label="More" size="sm" />} onSelect={id => { if (id === 'close') { setPositions(ps => ps.filter(p => p.id !== r.id)); notify('Position closed'); } else notify('Order ticket opened'); }} items={[{ id: 'ticket', label: 'Adjust position', icon: 'pencil' }, 'separator', { id: 'close', label: 'Close position', icon: 'x', danger: true }]} /> },
+              { key: 'menu', label: '', width: 44, render: (v, r) => <Menu align="right" trigger={<IconButton icon="ellipsis" label="More" size="sm" />} onSelect={id => { if (id === 'close') { setPositions(ps => ps.filter(p => p.id !== r.id)); notify('Position closed', 'info'); } else notify('Order ticket opened'); }} items={[{ id: 'ticket', label: 'Adjust position', icon: 'pencil' }, 'separator', { id: 'close', label: 'Close position', icon: 'x', danger: true }]} /> },
             ]} rows={positions} />
           </Card>
           <div style={{ flex: 1, display: 'flex', flexDirection: 'column', gap: 16 }}>
-            <Card padding={18} title="Strategy" actions={<Switch checked={auto} onChange={e => { setAuto(e.target.checked); notify(e.target.checked ? 'Robot resumed' : 'Robot paused'); }} />}>
+            <Card padding={18} title="Strategy" actions={<Switch checked={auto} onChange={e => { setAuto(e.target.checked); notify(e.target.checked ? 'Robot resumed' : 'Robot paused', e.target.checked ? 'success' : 'info'); }} />}>
               <div style={{ display: 'flex', flexDirection: 'column', gap: 16 }}>
                 <div style={{ fontSize: 13, color: 'var(--text-secondary)' }}>Momentum · EUR pairs · max 3 open positions. Every trade is logged and auditable.</div>
                 <Slider label="Risk per trade" showValue format={v => v + '%'} min={1} max={10} value={risk} onChange={setRisk} />
@@ -78,7 +78,6 @@ function TraderScreen() {
           </div>
         </div>
       </div>
-      <ToastStack>{toast && <Toast tone="success" title={toast} description="Change applies to the next trade." onClose={() => setToast(null)} />}</ToastStack>
     </div>
   );
 }

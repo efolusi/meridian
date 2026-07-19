@@ -8,17 +8,18 @@
 </head><body>
 <div id="root"></div>
 <script type="text/babel">
-const { Toast, ToastStack } = window.EfolusiDesignSystem_4ffc3d;
+const { Toaster } = window.EfolusiDesignSystem_4ffc3d;
 function App() {
   const [mode, setMode] = React.useState('signin');
-  const [toast, setToast] = React.useState(null);
+  const { notify } = Toaster.useToast();
   const done = kind => {
     if (kind === 'sso') {
-      setToast({ title: 'Redirecting to your identity provider', description: 'SSO is configured by your workspace admin.' });
-      setTimeout(() => setToast(null), 4000);
+      notify({ tone: 'info', title: 'Redirecting to your identity provider', description: 'SSO is configured by your workspace admin.' });
       return;
     }
-    setToast(kind === true ? { title: 'Account created', description: 'Check your inbox to verify your email.' } : { title: 'Signed in', description: 'Taking you to Acme Workspace…' });
+    notify(kind === true
+      ? { tone: 'success', title: 'Account created', description: 'Check your inbox to verify your email.' }
+      : { tone: 'success', title: 'Signed in', description: 'Taking you to Acme Workspace…' });
     setTimeout(() => { window.location.href = '../console/index.html'; }, 1600);
   };
   return (
@@ -29,9 +30,8 @@ function App() {
           : mode === 'magic' ? <MagicForm onBack={() => setMode('signin')} />
           : <AuthForm mode={mode} onSwitch={() => setMode(mode === 'signin' ? 'signup' : 'signin')} onMode={setMode} onDone={done} />}
       </div>
-      <ToastStack>{toast && <Toast tone="success" title={toast.title} description={toast.description} onClose={() => setToast(null)} />}</ToastStack>
     </div>
   );
 }
-ReactDOM.createRoot(document.getElementById('root')).render(<App />);
+ReactDOM.createRoot(document.getElementById('root')).render(<Toaster><App /></Toaster>);
 </script></body></html>
