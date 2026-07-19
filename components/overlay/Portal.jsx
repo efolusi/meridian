@@ -43,7 +43,7 @@ export function Portal({ children, container }) {
  * Not exported on the namespace — it is a building block for the overlay
  * components, and is only useful with a panel ref you already control.
  */
-export function useAnchoredStyle(anchorRef, panelRef, { open, placement = 'bottom', align = 'start', offset = 6 } = {}) {
+export function useAnchoredStyle(anchorRef, panelRef, { open, placement = 'bottom', align = 'start', offset = 6, matchWidth = false } = {}) {
   const [style, setStyle] = React.useState({ position: 'fixed', top: 0, left: 0, visibility: 'hidden' });
   React.useLayoutEffect(() => {
     if (!open) { setStyle(s => (s.visibility === 'hidden' ? s : { ...s, visibility: 'hidden' })); return; }
@@ -64,15 +64,20 @@ export function useAnchoredStyle(anchorRef, panelRef, { open, placement = 'botto
         ? (roomAbove >= p.height || roomAbove >= roomBelow ? 'top' : 'bottom')
         : (roomBelow >= p.height || roomBelow >= roomAbove ? 'bottom' : 'top');
 
+      // a width-matched panel (a listbox under its input) is measured at the
+      // anchor's width, not its own, or the clamp below uses the wrong number
+      const width = matchWidth ? a.width : p.width;
       let top = side === 'bottom' ? a.bottom + offset : a.top - offset - p.height;
-      let left = align === 'end' ? a.right - p.width
-        : align === 'center' ? a.left + a.width / 2 - p.width / 2
+      let left = align === 'end' ? a.right - width
+        : align === 'center' ? a.left + a.width / 2 - width / 2
         : a.left;
 
-      left = Math.max(edge, Math.min(left, vw - p.width - edge));
+      left = Math.max(edge, Math.min(left, vw - width - edge));
       top = Math.max(edge, Math.min(top, vh - p.height - edge));
 
-      setStyle({ position: 'fixed', top: Math.round(top), left: Math.round(left), right: 'auto', bottom: 'auto', visibility: 'visible' });
+      const next = { position: 'fixed', top: Math.round(top), left: Math.round(left), right: 'auto', bottom: 'auto', visibility: 'visible' };
+      if (matchWidth) next.width = Math.round(a.width);
+      setStyle(next);
     };
     place();
     // capture phase: any scrolling ancestor moves the anchor, not just the window
@@ -82,6 +87,6 @@ export function useAnchoredStyle(anchorRef, panelRef, { open, placement = 'botto
       window.removeEventListener('scroll', place, true);
       window.removeEventListener('resize', place);
     };
-  }, [open, placement, align, offset, anchorRef, panelRef]);
+  }, [open, placement, align, offset, matchWidth, anchorRef, panelRef]);
   return style;
 }

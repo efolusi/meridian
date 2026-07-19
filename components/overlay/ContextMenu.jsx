@@ -1,5 +1,6 @@
 import React from 'react';
 import { injectEfCss } from '../forms/Button.jsx';
+import { Portal } from './Portal.jsx';
 import { Icon } from '../icons/Icon.jsx';
 const CSS = `
 .ef-ctx__panel{position:fixed;min-width:190px;background:var(--surface-card);border:1px solid var(--border-strong);border-radius:var(--radius-md);box-shadow:var(--shadow-md);padding:4px;z-index:var(--z-dropdown);animation:ef-ctx-in var(--dur-fast) var(--ease-out)}
@@ -25,6 +26,17 @@ export function ContextMenu({ items, onSelect, children, style, className }) {
     const next = which === 'first' ? 0 : which === 'last' ? nodes.length - 1 : (i + which + nodes.length) % nodes.length;
     nodes[next].focus();
   };
+  // A fixed panel still escapes overflow, but nothing kept it inside the viewport:
+  // right-clicking near the bottom or right edge pushed items off-screen.
+  React.useLayoutEffect(() => {
+    const panel = panelRef.current;
+    if (!pos || !panel) return;
+    const r = panel.getBoundingClientRect();
+    const vw = document.documentElement.clientWidth, vh = document.documentElement.clientHeight, edge = 8;
+    const x = Math.max(edge, Math.min(pos.x, vw - r.width - edge));
+    const y = Math.max(edge, Math.min(pos.y, vh - r.height - edge));
+    if (x !== pos.x || y !== pos.y) setPos({ x, y });
+  }, [pos]);
   const onPanelKey = e => {
     if (e.key === 'ArrowDown') { e.preventDefault(); focusItem(1); }
     else if (e.key === 'ArrowUp') { e.preventDefault(); focusItem(-1); }
@@ -52,13 +64,13 @@ export function ContextMenu({ items, onSelect, children, style, className }) {
   }, [pos]);
   const openAt = e => {
     e.preventDefault();
-    setPos({ x: Math.min(e.clientX, window.innerWidth - 210), y: Math.min(e.clientY, window.innerHeight - 40 * items.length - 20) });
+    setPos({ x: e.clientX, y: e.clientY });
   };
   return (
     <span className={className} style={style} onContextMenu={openAt}>
       {children}
       {pos ? (
-        <div role="menu" ref={panelRef} onKeyDown={onPanelKey} className="ef-ctx__panel" style={{ left: pos.x, top: pos.y }} onMouseDown={e => e.stopPropagation()}>
+        <Portal><div role="menu" ref={panelRef} onKeyDown={onPanelKey} className="ef-ctx__panel" style={{ left: pos.x, top: pos.y }} onMouseDown={e => e.stopPropagation()}>
           {items.map((it, i) => it === 'separator'
             ? <div key={'s' + i} className="ef-ctx__sep"></div>
             : (
@@ -69,7 +81,7 @@ export function ContextMenu({ items, onSelect, children, style, className }) {
                 {it.kbd ? <span className="ef-ctx__kbd">{it.kbd}</span> : null}
               </button>
             ))}
-        </div>
+        </div></Portal>
       ) : null}
     </span>
   );

@@ -2,6 +2,7 @@ import React from 'react';
 import { Icon } from '../icons/Icon.jsx';
 import { Calendar } from './Calendar.jsx';
 import { injectEfCss } from '../forms/Button.jsx';
+import { Portal, useAnchoredStyle } from '../overlay/Portal.jsx';
 const CSS = `
 .ef-datepicker{position:relative;display:inline-flex;flex-direction:column;gap:6px}
 .ef-datepicker__label{font-size:var(--text-sm);font-weight:var(--weight-semibold);color:var(--text-primary)}
@@ -20,11 +21,18 @@ export function DatePicker({ label, value, defaultValue, onChange, placeholder =
   const [open, setOpen] = React.useState(false);
   const ref = React.useRef(null);
   const btnRef = React.useRef(null);
+  const panelRef = React.useRef(null);
+  const anchored = useAnchoredStyle(ref, panelRef, { open, placement: 'bottom', align: 'start' });
   React.useEffect(() => {
     if (!open) return;
-    const day = ref.current && ref.current.querySelector('[role="gridcell"][tabindex="0"]');
+    // the calendar is portaled out of `ref`, so look for it in the panel
+    const day = panelRef.current && panelRef.current.querySelector('[role="gridcell"][tabindex="0"]');
     if (day) day.focus();
-    const away = e => { if (ref.current && !ref.current.contains(e.target)) setOpen(false); };
+    const away = e => {
+      const inTrigger = ref.current && ref.current.contains(e.target);
+      const inPanel = panelRef.current && panelRef.current.contains(e.target);
+      if (!inTrigger && !inPanel) setOpen(false);
+    };
     const key = e => { if (e.key === 'Escape') { setOpen(false); if (btnRef.current) btnRef.current.focus(); } };
     document.addEventListener('mousedown', away); document.addEventListener('keydown', key);
     return () => { document.removeEventListener('mousedown', away); document.removeEventListener('keydown', key); };
@@ -37,9 +45,11 @@ export function DatePicker({ label, value, defaultValue, onChange, placeholder =
         <Icon name="chevron-down" size={14} style={{ color: 'var(--text-muted)', marginLeft: 'auto' }} />
       </button>
       {open && (
-        <div className="ef-datepicker__pop">
-          <Calendar value={v || undefined} onChange={d => { if (value == null) setInner(d); if (onChange) onChange(d); setOpen(false); if (btnRef.current) btnRef.current.focus(); }} />
-        </div>
+        <Portal>
+          <div ref={panelRef} className="ef-datepicker__pop" style={anchored}>
+            <Calendar value={v || undefined} onChange={d => { if (value == null) setInner(d); if (onChange) onChange(d); setOpen(false); if (btnRef.current) btnRef.current.focus(); }} />
+          </div>
+        </Portal>
       )}
     </span>
   );

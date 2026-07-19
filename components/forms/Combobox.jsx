@@ -2,6 +2,7 @@ import React from 'react';
 import { Icon } from '../icons/Icon.jsx';
 import { Tag } from '../display/Tag.jsx';
 import { injectEfCss } from './Button.jsx';
+import { Portal, useAnchoredStyle } from '../overlay/Portal.jsx';
 const CSS = `
 .ef-combo{position:relative}
 .ef-combo__control{display:flex;align-items:center;flex-wrap:wrap;gap:6px;min-height:var(--control-h-md);padding:4px 32px 4px 8px;border:1px solid var(--border-strong);border-radius:var(--radius-sm);background:var(--surface-card);cursor:text;transition:border-color var(--dur-fast) var(--ease-out),box-shadow var(--dur-fast) var(--ease-out)}
@@ -23,12 +24,18 @@ export function Combobox({ label, hint, options, value, onChange, multiple, plac
   const [q, setQ] = React.useState('');
   const [hi, setHi] = React.useState(0);
   const ref = React.useRef(null);
+  const panelRef = React.useRef(null);
+  const anchored = useAnchoredStyle(ref, panelRef, { open, placement: 'bottom', align: 'start', matchWidth: true });
   const sel = multiple ? (value || []) : (value != null ? [value] : []);
   const opts = options.map(o => typeof o === 'string' ? { value: o, label: o } : o);
   const shown = opts.filter(o => o.label.toLowerCase().includes(q.toLowerCase()) && (!multiple || !sel.includes(o.value)));
   React.useEffect(() => {
     if (!open) return;
-    const away = e => { if (ref.current && !ref.current.contains(e.target)) setOpen(false); };
+    const away = e => {
+      const inControl = ref.current && ref.current.contains(e.target);
+      const inPanel = panelRef.current && panelRef.current.contains(e.target);
+      if (!inControl && !inPanel) setOpen(false);
+    };
     document.addEventListener('mousedown', away);
     return () => document.removeEventListener('mousedown', away);
   }, [open]);
@@ -57,7 +64,8 @@ export function Combobox({ label, hint, options, value, onChange, multiple, plac
         <span className="ef-combo__chevron"><Icon name="chevron-down" size={16} /></span>
       </div>
       {open && (
-        <div className="ef-combo__panel" role="listbox">
+        <Portal>
+        <div ref={panelRef} className="ef-combo__panel" role="listbox" style={anchored}>
           {shown.length === 0 && <div className="ef-combo__empty">Nothing matches “{q}”.</div>}
           {shown.map((o, i) => (
             <button key={o.value} role="option" aria-selected={!multiple && sel.includes(o.value)} className={`ef-combo__opt${i === hi ? ' ef-combo__opt--hi' : ''}`}
@@ -68,6 +76,7 @@ export function Combobox({ label, hint, options, value, onChange, multiple, plac
             </button>
           ))}
         </div>
+        </Portal>
       )}
     </div>
   );

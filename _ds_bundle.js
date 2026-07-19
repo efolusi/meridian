@@ -1,4 +1,4 @@
-/* @ds-bundle: {"format":4,"namespace":"EfolusiDesignSystem_4ffc3d","components":[{"name":"AgentRun","sourcePath":"components/ai/AgentRun.jsx"},{"name":"ChatMessage","sourcePath":"components/ai/ChatMessage.jsx"},{"name":"Citation","sourcePath":"components/ai/Citation.jsx"},{"name":"SourceList","sourcePath":"components/ai/Citation.jsx"},{"name":"Confirmation","sourcePath":"components/ai/Confirmation.jsx"},{"name":"Conversation","sourcePath":"components/ai/Conversation.jsx"},{"name":"DocumentCard","sourcePath":"components/ai/DocumentCard.jsx"},{"name":"FeedbackBar","sourcePath":"components/ai/FeedbackBar.jsx"},{"name":"GeneratedImage","sourcePath":"components/ai/GeneratedImage.jsx"},{"name":"ModelSelector","sourcePath":"components/ai/ModelSelector.jsx"},{"name":"Player","sourcePath":"components/ai/Player.jsx"},{"name":"PromptComposer","sourcePath":"components/ai/PromptComposer.jsx"},{"name":"PromptSteps","sourcePath":"components/ai/PromptSteps.jsx"},{"name":"Reasoning","sourcePath":"components/ai/Reasoning.jsx"},{"name":"RichComposer","sourcePath":"components/ai/RichComposer.jsx"},{"name":"Sandbox","sourcePath":"components/ai/Sandbox.jsx"},{"name":"SelectionQuote","sourcePath":"components/ai/SelectionQuote.jsx"},{"name":"SourceCard","sourcePath":"components/ai/SourceCard.jsx"},{"name":"Suggestions","sourcePath":"components/ai/Suggestions.jsx"},{"name":"Task","sourcePath":"components/ai/Task.jsx"},{"name":"Todo","sourcePath":"components/ai/Todo.jsx"},{"name":"ToolCall","sourcePath":"components/ai/ToolCall.jsx"},{"name":"Transcript","sourcePath":"components/ai/Transcript.jsx"},{"name":"UsageMeter","sourcePath":"components/ai/UsageMeter.jsx"},{"name":"WebPreview","sourcePath":"components/ai/WebPreview.jsx"},{"name":"CodeBlock","sourcePath":"components/code/CodeBlock.jsx"},{"name":"Console","sourcePath":"components/code/Console.jsx"},{"name":"CopyField","sourcePath":"components/code/CopyField.jsx"},{"name":"Diff","sourcePath":"components/code/Diff.jsx"},{"name":"EnvList","sourcePath":"components/code/EnvList.jsx"},{"name":"Exception","sourcePath":"components/code/Exception.jsx"},{"name":"Terminal","sourcePath":"components/code/Terminal.jsx"},{"name":"BarChart","sourcePath":"components/data/BarChart.jsx"},{"name":"DonutChart","sourcePath":"components/data/DonutChart.jsx"},{"name":"EmptyState","sourcePath":"components/data/EmptyState.jsx"},{"name":"KeyValueList","sourcePath":"components/data/KeyValueList.jsx"},{"name":"LineChart","sourcePath":"components/data/LineChart.jsx"},{"name":"Skeleton","sourcePath":"components/data/Skeleton.jsx"},{"name":"Sparkline","sourcePath":"components/data/Sparkline.jsx"},{"name":"Stat","sourcePath":"components/data/Stat.jsx"},{"name":"StatusDot","sourcePath":"components/data/StatusDot.jsx"},{"name":"Table","sourcePath":"components/data/Table.jsx"},{"name":"Calendar","sourcePath":"components/dates/Calendar.jsx"},{"name":"DatePicker","sourcePath":"components/dates/DatePicker.jsx"},{"name":"Accordion","sourcePath":"components/display/Accordion.jsx"},{"name":"AspectRatio","sourcePath":"components/display/AspectRatio.jsx"},{"name":"Avatar","sourcePath":"components/display/Avatar.jsx"},{"name":"AvatarGroup","sourcePath":"components/display/Avatar.jsx"},{"name":"Badge","sourcePath":"components/display/Badge.jsx"},{"name":"Card","sourcePath":"components/display/Card.jsx"},{"name":"Carousel","sourcePath":"components/display/Carousel.jsx"},{"name":"Collapsible","sourcePath":"components/display/Collapsible.jsx"},{"name":"Divider","sourcePath":"components/display/Divider.jsx"},{"name":"Kbd","sourcePath":"components/display/Kbd.jsx"},{"name":"Link","sourcePath":"components/display/Link.jsx"},{"name":"ListItem","sourcePath":"components/display/ListItem.jsx"},{"name":"Resizable","sourcePath":"components/display/Resizable.jsx"},{"name":"ScrollArea","sourcePath":"components/display/ScrollArea.jsx"},{"name":"Tag","sourcePath":"components/display/Tag.jsx"},{"name":"Toolbar","sourcePath":"components/display/Toolbar.jsx"},{"name":"TreeList","sourcePath":"components/display/TreeList.jsx"},{"name":"Alert","sourcePath":"components/feedback/Alert.jsx"},{"name":"Banner","sourcePath":"components/feedback/Banner.jsx"},{"name":"ConfirmDialog","sourcePath":"components/feedback/ConfirmDialog.jsx"},{"name":"Dialog","sourcePath":"components/feedback/Dialog.jsx"},{"name":"Loader","sourcePath":"components/feedback/Loader.jsx"},{"name":"Progress","sourcePath":"components/feedback/Progress.jsx"},{"name":"Spinner","sourcePath":"components/feedback/Spinner.jsx"},{"name":"Toast","sourcePath":"components/feedback/Toast.jsx"},{"name":"ToastStack","sourcePath":"components/feedback/Toast.jsx"},{"name":"Tooltip","sourcePath":"components/feedback/Tooltip.jsx"},{"name":"FileDrop","sourcePath":"components/files/FileDrop.jsx"},{"name":"FileTile","sourcePath":"components/files/FileTile.jsx"},{"name":"FileTypeIcon","sourcePath":"components/files/FileTypeIcon.jsx"},{"name":"PaymentCard","sourcePath":"components/finance/PaymentCard.jsx"},{"name":"Button","sourcePath":"components/forms/Button.jsx"},{"name":"ButtonGroup","sourcePath":"components/forms/ButtonGroup.jsx"},{"name":"ButtonTile","sourcePath":"components/forms/ButtonTile.jsx"},{"name":"ButtonTileGroup","sourcePath":"components/forms/ButtonTile.jsx"},{"name":"Checkbox","sourcePath":"components/forms/Checkbox.jsx"},{"name":"Combobox","sourcePath":"components/forms/Combobox.jsx"},{"name":"DigitEntry","sourcePath":"components/forms/DigitEntry.jsx"},{"name":"IconButton","sourcePath":"components/forms/IconButton.jsx"},{"name":"Input","sourcePath":"components/forms/Input.jsx"},{"name":"InputGroup","sourcePath":"components/forms/InputGroup.jsx"},{"name":"Label","sourcePath":"components/forms/Label.jsx"},{"name":"Radio","sourcePath":"components/forms/Radio.jsx"},{"name":"Select","sourcePath":"components/forms/Select.jsx"},{"name":"Slider","sourcePath":"components/forms/Slider.jsx"},{"name":"Switch","sourcePath":"components/forms/Switch.jsx"},{"name":"Textarea","sourcePath":"components/forms/Textarea.jsx"},{"name":"Toggle","sourcePath":"components/forms/Toggle.jsx"},{"name":"ToggleGroup","sourcePath":"components/forms/Toggle.jsx"},{"name":"Icon","sourcePath":"components/icons/Icon.jsx"},{"name":"Breadcrumbs","sourcePath":"components/navigation/Breadcrumbs.jsx"},{"name":"Menubar","sourcePath":"components/navigation/Menubar.jsx"},{"name":"PageControl","sourcePath":"components/navigation/PageControl.jsx"},{"name":"Pagination","sourcePath":"components/navigation/Pagination.jsx"},{"name":"SegmentedControl","sourcePath":"components/navigation/SegmentedControl.jsx"},{"name":"SideNav","sourcePath":"components/navigation/SideNav.jsx"},{"name":"Steps","sourcePath":"components/navigation/Steps.jsx"},{"name":"Tabs","sourcePath":"components/navigation/Tabs.jsx"},{"name":"TopNav","sourcePath":"components/navigation/TopNav.jsx"},{"name":"CommandPalette","sourcePath":"components/overlay/CommandPalette.jsx"},{"name":"ContextMenu","sourcePath":"components/overlay/ContextMenu.jsx"},{"name":"Drawer","sourcePath":"components/overlay/Drawer.jsx"},{"name":"HoverCard","sourcePath":"components/overlay/HoverCard.jsx"},{"name":"Menu","sourcePath":"components/overlay/Menu.jsx"},{"name":"Popover","sourcePath":"components/overlay/Popover.jsx"},{"name":"Portal","sourcePath":"components/overlay/Portal.jsx"}],"sourceHashes":{"components/ai/AgentRun.jsx":"8af70ff4bbbd","components/ai/ChatMessage.jsx":"8c126777f3f5","components/ai/Citation.jsx":"c695f95f1bd7","components/ai/Confirmation.jsx":"cb01ed2c6a5a","components/ai/Conversation.jsx":"3d3ab21999e4","components/ai/DocumentCard.jsx":"f0df7dd84465","components/ai/FeedbackBar.jsx":"d27a365fa3c3","components/ai/GeneratedImage.jsx":"788e2dcc84c3","components/ai/ModelSelector.jsx":"011ad042d74d","components/ai/Player.jsx":"7a42efa14ff9","components/ai/PromptComposer.jsx":"85b0b00913c0","components/ai/PromptSteps.jsx":"31dc4ed470e3","components/ai/Reasoning.jsx":"2ec4d107d41e","components/ai/RichComposer.jsx":"42e31bc490a9","components/ai/Sandbox.jsx":"08d2c1119288","components/ai/SelectionQuote.jsx":"c78a30cb3163","components/ai/SourceCard.jsx":"b718727df06e","components/ai/Suggestions.jsx":"cd6834ee7634","components/ai/Task.jsx":"b7866e73b50a","components/ai/Todo.jsx":"0b3242b80a77","components/ai/ToolCall.jsx":"c46664bb5c6d","components/ai/Transcript.jsx":"d722a8789088","components/ai/UsageMeter.jsx":"1edf4aa92d0f","components/ai/WebPreview.jsx":"3ef642e4aed8","components/code/CodeBlock.jsx":"bba6e5b35b66","components/code/Console.jsx":"bc124b518d23","components/code/CopyField.jsx":"2aff10651a79","components/code/Diff.jsx":"52c866c983fe","components/code/EnvList.jsx":"b6568c726ee2","components/code/Exception.jsx":"d1cb05626c05","components/code/Terminal.jsx":"9bcd97b0cf5e","components/data/BarChart.jsx":"3572ea6b70e5","components/data/DonutChart.jsx":"4516ac36a882","components/data/EmptyState.jsx":"80e66d58cfab","components/data/KeyValueList.jsx":"e6a1a52adac1","components/data/LineChart.jsx":"4ee2e7cfdab7","components/data/Skeleton.jsx":"67ed9ab66da9","components/data/Sparkline.jsx":"41d07771e945","components/data/Stat.jsx":"71ef3dc7f426","components/data/StatusDot.jsx":"4d3fcbd0bb8f","components/data/Table.jsx":"30e384ae3c87","components/dates/Calendar.jsx":"ac60a4163f43","components/dates/DatePicker.jsx":"d4bb6a68266a","components/display/Accordion.jsx":"e491332d01ae","components/display/AspectRatio.jsx":"e28d4bfc9649","components/display/Avatar.jsx":"3d7bad69f963","components/display/Badge.jsx":"858e6fd68547","components/display/Card.jsx":"f40832620fe4","components/display/Carousel.jsx":"15ca556d908e","components/display/Collapsible.jsx":"a792da920c1f","components/display/Divider.jsx":"37f8ae0e579c","components/display/Kbd.jsx":"b87de3d2ff75","components/display/Link.jsx":"bdbf64262599","components/display/ListItem.jsx":"bf2353c0b7ae","components/display/Resizable.jsx":"f79b33157f19","components/display/ScrollArea.jsx":"2dbb55595939","components/display/Tag.jsx":"e006104c4672","components/display/Toolbar.jsx":"001b2b3c10a9","components/display/TreeList.jsx":"be8ade07e212","components/feedback/Alert.jsx":"10e00cbdb124","components/feedback/Banner.jsx":"71ed62b75e72","components/feedback/ConfirmDialog.jsx":"d9e8dd767817","components/feedback/Dialog.jsx":"7a1f020e06b4","components/feedback/Loader.jsx":"7cad4f2d0ca0","components/feedback/Progress.jsx":"3a397235e4a4","components/feedback/Spinner.jsx":"3ddb4c2f4d27","components/feedback/Toast.jsx":"b8abe8490a55","components/feedback/Tooltip.jsx":"f38b261b2d2a","components/files/FileDrop.jsx":"6515374a972c","components/files/FileTile.jsx":"415f614a2782","components/files/FileTypeIcon.jsx":"16841d556c5d","components/finance/PaymentCard.jsx":"5e5e05c27381","components/forms/Button.jsx":"cdb36ec93eaf","components/forms/ButtonGroup.jsx":"86bd9a9f90bc","components/forms/ButtonTile.jsx":"445de4f76c96","components/forms/Checkbox.jsx":"3a8df803f636","components/forms/Combobox.jsx":"3a6382be5d6e","components/forms/DigitEntry.jsx":"84f79f7ddc11","components/forms/IconButton.jsx":"7843bc8a3740","components/forms/Input.jsx":"01d2f58316e5","components/forms/InputGroup.jsx":"6cd5192acb83","components/forms/Label.jsx":"6c6a05af67e7","components/forms/Radio.jsx":"00cd0190e053","components/forms/Select.jsx":"d3c229f7fc84","components/forms/Slider.jsx":"3f085fb13cc2","components/forms/Switch.jsx":"3cf6cdbcb529","components/forms/Textarea.jsx":"0e14c341faf3","components/forms/Toggle.jsx":"429ecf0b3c8d","components/icons/Icon.jsx":"9da614cc0068","components/navigation/Breadcrumbs.jsx":"77a855106afa","components/navigation/Menubar.jsx":"771da79a7c23","components/navigation/PageControl.jsx":"92db45f2660e","components/navigation/Pagination.jsx":"1b1762a4df8f","components/navigation/SegmentedControl.jsx":"c440c273683b","components/navigation/SideNav.jsx":"8fe0982f0c79","components/navigation/Steps.jsx":"044ee6d4859c","components/navigation/Tabs.jsx":"b20bb7671d55","components/navigation/TopNav.jsx":"eaa2ba965eb7","components/overlay/CommandPalette.jsx":"656e5c78fc08","components/overlay/ContextMenu.jsx":"6e413c06c410","components/overlay/Drawer.jsx":"1be84698d081","components/overlay/HoverCard.jsx":"6740ffb30dd7","components/overlay/Menu.jsx":"c7faa8af593c","components/overlay/Popover.jsx":"589c3b8a85b8","components/overlay/Portal.jsx":"7bd285433521","showcases/agent/AgentScreen.jsx":"de1badd371ca","showcases/auth/AuthScreens.jsx":"b3583b149df5","showcases/console/CustomersScreen.jsx":"a8a080a80d9e","showcases/console/ExtraScreens.jsx":"1e7a048ab690","showcases/console/OverviewScreen.jsx":"34b01f22bb52","showcases/console/SettingsScreen.jsx":"8549e4ca1f97","showcases/console/Shell.jsx":"b7da6de80c2b","showcases/docs/DocsScreen.jsx":"faa44c30040d","showcases/infra/InfraScreen.jsx":"dd8e20d2c8eb","showcases/tools/ToolsScreen.jsx":"8be637f39e1b","showcases/trader/TraderScreen.jsx":"473d6c38cb07","showcases/website/Sections.jsx":"3f14d6a12c71"},"inlinedExternals":[],"unexposedExports":[{"name":"computeDiff","sourcePath":"components/code/Diff.jsx"},{"name":"formatTime","sourcePath":"components/ai/Player.jsx"},{"name":"injectEfCss","sourcePath":"components/forms/Button.jsx"},{"name":"useAnchoredStyle","sourcePath":"components/overlay/Portal.jsx"}]} */
+/* @ds-bundle: {"format":4,"namespace":"EfolusiDesignSystem_4ffc3d","components":[{"name":"AgentRun","sourcePath":"components/ai/AgentRun.jsx"},{"name":"ChatMessage","sourcePath":"components/ai/ChatMessage.jsx"},{"name":"Citation","sourcePath":"components/ai/Citation.jsx"},{"name":"SourceList","sourcePath":"components/ai/Citation.jsx"},{"name":"Confirmation","sourcePath":"components/ai/Confirmation.jsx"},{"name":"Conversation","sourcePath":"components/ai/Conversation.jsx"},{"name":"DocumentCard","sourcePath":"components/ai/DocumentCard.jsx"},{"name":"FeedbackBar","sourcePath":"components/ai/FeedbackBar.jsx"},{"name":"GeneratedImage","sourcePath":"components/ai/GeneratedImage.jsx"},{"name":"ModelSelector","sourcePath":"components/ai/ModelSelector.jsx"},{"name":"Player","sourcePath":"components/ai/Player.jsx"},{"name":"PromptComposer","sourcePath":"components/ai/PromptComposer.jsx"},{"name":"PromptSteps","sourcePath":"components/ai/PromptSteps.jsx"},{"name":"Reasoning","sourcePath":"components/ai/Reasoning.jsx"},{"name":"RichComposer","sourcePath":"components/ai/RichComposer.jsx"},{"name":"Sandbox","sourcePath":"components/ai/Sandbox.jsx"},{"name":"SelectionQuote","sourcePath":"components/ai/SelectionQuote.jsx"},{"name":"SourceCard","sourcePath":"components/ai/SourceCard.jsx"},{"name":"Suggestions","sourcePath":"components/ai/Suggestions.jsx"},{"name":"Task","sourcePath":"components/ai/Task.jsx"},{"name":"Todo","sourcePath":"components/ai/Todo.jsx"},{"name":"ToolCall","sourcePath":"components/ai/ToolCall.jsx"},{"name":"Transcript","sourcePath":"components/ai/Transcript.jsx"},{"name":"UsageMeter","sourcePath":"components/ai/UsageMeter.jsx"},{"name":"WebPreview","sourcePath":"components/ai/WebPreview.jsx"},{"name":"CodeBlock","sourcePath":"components/code/CodeBlock.jsx"},{"name":"Console","sourcePath":"components/code/Console.jsx"},{"name":"CopyField","sourcePath":"components/code/CopyField.jsx"},{"name":"Diff","sourcePath":"components/code/Diff.jsx"},{"name":"EnvList","sourcePath":"components/code/EnvList.jsx"},{"name":"Exception","sourcePath":"components/code/Exception.jsx"},{"name":"Terminal","sourcePath":"components/code/Terminal.jsx"},{"name":"BarChart","sourcePath":"components/data/BarChart.jsx"},{"name":"DonutChart","sourcePath":"components/data/DonutChart.jsx"},{"name":"EmptyState","sourcePath":"components/data/EmptyState.jsx"},{"name":"KeyValueList","sourcePath":"components/data/KeyValueList.jsx"},{"name":"LineChart","sourcePath":"components/data/LineChart.jsx"},{"name":"Skeleton","sourcePath":"components/data/Skeleton.jsx"},{"name":"Sparkline","sourcePath":"components/data/Sparkline.jsx"},{"name":"Stat","sourcePath":"components/data/Stat.jsx"},{"name":"StatusDot","sourcePath":"components/data/StatusDot.jsx"},{"name":"Table","sourcePath":"components/data/Table.jsx"},{"name":"Calendar","sourcePath":"components/dates/Calendar.jsx"},{"name":"DatePicker","sourcePath":"components/dates/DatePicker.jsx"},{"name":"Accordion","sourcePath":"components/display/Accordion.jsx"},{"name":"AspectRatio","sourcePath":"components/display/AspectRatio.jsx"},{"name":"Avatar","sourcePath":"components/display/Avatar.jsx"},{"name":"AvatarGroup","sourcePath":"components/display/Avatar.jsx"},{"name":"Badge","sourcePath":"components/display/Badge.jsx"},{"name":"Card","sourcePath":"components/display/Card.jsx"},{"name":"Carousel","sourcePath":"components/display/Carousel.jsx"},{"name":"Collapsible","sourcePath":"components/display/Collapsible.jsx"},{"name":"Divider","sourcePath":"components/display/Divider.jsx"},{"name":"Kbd","sourcePath":"components/display/Kbd.jsx"},{"name":"Link","sourcePath":"components/display/Link.jsx"},{"name":"ListItem","sourcePath":"components/display/ListItem.jsx"},{"name":"Resizable","sourcePath":"components/display/Resizable.jsx"},{"name":"ScrollArea","sourcePath":"components/display/ScrollArea.jsx"},{"name":"Tag","sourcePath":"components/display/Tag.jsx"},{"name":"Toolbar","sourcePath":"components/display/Toolbar.jsx"},{"name":"TreeList","sourcePath":"components/display/TreeList.jsx"},{"name":"Alert","sourcePath":"components/feedback/Alert.jsx"},{"name":"Banner","sourcePath":"components/feedback/Banner.jsx"},{"name":"ConfirmDialog","sourcePath":"components/feedback/ConfirmDialog.jsx"},{"name":"Dialog","sourcePath":"components/feedback/Dialog.jsx"},{"name":"Loader","sourcePath":"components/feedback/Loader.jsx"},{"name":"Progress","sourcePath":"components/feedback/Progress.jsx"},{"name":"Spinner","sourcePath":"components/feedback/Spinner.jsx"},{"name":"Toast","sourcePath":"components/feedback/Toast.jsx"},{"name":"ToastStack","sourcePath":"components/feedback/Toast.jsx"},{"name":"Tooltip","sourcePath":"components/feedback/Tooltip.jsx"},{"name":"FileDrop","sourcePath":"components/files/FileDrop.jsx"},{"name":"FileTile","sourcePath":"components/files/FileTile.jsx"},{"name":"FileTypeIcon","sourcePath":"components/files/FileTypeIcon.jsx"},{"name":"PaymentCard","sourcePath":"components/finance/PaymentCard.jsx"},{"name":"Button","sourcePath":"components/forms/Button.jsx"},{"name":"ButtonGroup","sourcePath":"components/forms/ButtonGroup.jsx"},{"name":"ButtonTile","sourcePath":"components/forms/ButtonTile.jsx"},{"name":"ButtonTileGroup","sourcePath":"components/forms/ButtonTile.jsx"},{"name":"Checkbox","sourcePath":"components/forms/Checkbox.jsx"},{"name":"Combobox","sourcePath":"components/forms/Combobox.jsx"},{"name":"DigitEntry","sourcePath":"components/forms/DigitEntry.jsx"},{"name":"IconButton","sourcePath":"components/forms/IconButton.jsx"},{"name":"Input","sourcePath":"components/forms/Input.jsx"},{"name":"InputGroup","sourcePath":"components/forms/InputGroup.jsx"},{"name":"Label","sourcePath":"components/forms/Label.jsx"},{"name":"Radio","sourcePath":"components/forms/Radio.jsx"},{"name":"Select","sourcePath":"components/forms/Select.jsx"},{"name":"Slider","sourcePath":"components/forms/Slider.jsx"},{"name":"Switch","sourcePath":"components/forms/Switch.jsx"},{"name":"Textarea","sourcePath":"components/forms/Textarea.jsx"},{"name":"Toggle","sourcePath":"components/forms/Toggle.jsx"},{"name":"ToggleGroup","sourcePath":"components/forms/Toggle.jsx"},{"name":"Icon","sourcePath":"components/icons/Icon.jsx"},{"name":"Breadcrumbs","sourcePath":"components/navigation/Breadcrumbs.jsx"},{"name":"Menubar","sourcePath":"components/navigation/Menubar.jsx"},{"name":"PageControl","sourcePath":"components/navigation/PageControl.jsx"},{"name":"Pagination","sourcePath":"components/navigation/Pagination.jsx"},{"name":"SegmentedControl","sourcePath":"components/navigation/SegmentedControl.jsx"},{"name":"SideNav","sourcePath":"components/navigation/SideNav.jsx"},{"name":"Steps","sourcePath":"components/navigation/Steps.jsx"},{"name":"Tabs","sourcePath":"components/navigation/Tabs.jsx"},{"name":"TopNav","sourcePath":"components/navigation/TopNav.jsx"},{"name":"CommandPalette","sourcePath":"components/overlay/CommandPalette.jsx"},{"name":"ContextMenu","sourcePath":"components/overlay/ContextMenu.jsx"},{"name":"Drawer","sourcePath":"components/overlay/Drawer.jsx"},{"name":"HoverCard","sourcePath":"components/overlay/HoverCard.jsx"},{"name":"Menu","sourcePath":"components/overlay/Menu.jsx"},{"name":"Popover","sourcePath":"components/overlay/Popover.jsx"},{"name":"Portal","sourcePath":"components/overlay/Portal.jsx"}],"sourceHashes":{"components/ai/AgentRun.jsx":"8af70ff4bbbd","components/ai/ChatMessage.jsx":"8c126777f3f5","components/ai/Citation.jsx":"c695f95f1bd7","components/ai/Confirmation.jsx":"cb01ed2c6a5a","components/ai/Conversation.jsx":"3d3ab21999e4","components/ai/DocumentCard.jsx":"f0df7dd84465","components/ai/FeedbackBar.jsx":"d27a365fa3c3","components/ai/GeneratedImage.jsx":"788e2dcc84c3","components/ai/ModelSelector.jsx":"c32e3b66a1a9","components/ai/Player.jsx":"7a42efa14ff9","components/ai/PromptComposer.jsx":"85b0b00913c0","components/ai/PromptSteps.jsx":"31dc4ed470e3","components/ai/Reasoning.jsx":"2ec4d107d41e","components/ai/RichComposer.jsx":"42e31bc490a9","components/ai/Sandbox.jsx":"08d2c1119288","components/ai/SelectionQuote.jsx":"c78a30cb3163","components/ai/SourceCard.jsx":"b718727df06e","components/ai/Suggestions.jsx":"cd6834ee7634","components/ai/Task.jsx":"b7866e73b50a","components/ai/Todo.jsx":"0b3242b80a77","components/ai/ToolCall.jsx":"c46664bb5c6d","components/ai/Transcript.jsx":"d722a8789088","components/ai/UsageMeter.jsx":"1edf4aa92d0f","components/ai/WebPreview.jsx":"3ef642e4aed8","components/code/CodeBlock.jsx":"bba6e5b35b66","components/code/Console.jsx":"bc124b518d23","components/code/CopyField.jsx":"2aff10651a79","components/code/Diff.jsx":"52c866c983fe","components/code/EnvList.jsx":"b6568c726ee2","components/code/Exception.jsx":"d1cb05626c05","components/code/Terminal.jsx":"9bcd97b0cf5e","components/data/BarChart.jsx":"3572ea6b70e5","components/data/DonutChart.jsx":"4516ac36a882","components/data/EmptyState.jsx":"80e66d58cfab","components/data/KeyValueList.jsx":"e6a1a52adac1","components/data/LineChart.jsx":"4ee2e7cfdab7","components/data/Skeleton.jsx":"67ed9ab66da9","components/data/Sparkline.jsx":"41d07771e945","components/data/Stat.jsx":"71ef3dc7f426","components/data/StatusDot.jsx":"4d3fcbd0bb8f","components/data/Table.jsx":"30e384ae3c87","components/dates/Calendar.jsx":"ac60a4163f43","components/dates/DatePicker.jsx":"6b8532216650","components/display/Accordion.jsx":"e491332d01ae","components/display/AspectRatio.jsx":"e28d4bfc9649","components/display/Avatar.jsx":"3d7bad69f963","components/display/Badge.jsx":"858e6fd68547","components/display/Card.jsx":"f40832620fe4","components/display/Carousel.jsx":"15ca556d908e","components/display/Collapsible.jsx":"a792da920c1f","components/display/Divider.jsx":"37f8ae0e579c","components/display/Kbd.jsx":"b87de3d2ff75","components/display/Link.jsx":"bdbf64262599","components/display/ListItem.jsx":"bf2353c0b7ae","components/display/Resizable.jsx":"f79b33157f19","components/display/ScrollArea.jsx":"2dbb55595939","components/display/Tag.jsx":"e006104c4672","components/display/Toolbar.jsx":"001b2b3c10a9","components/display/TreeList.jsx":"be8ade07e212","components/feedback/Alert.jsx":"10e00cbdb124","components/feedback/Banner.jsx":"71ed62b75e72","components/feedback/ConfirmDialog.jsx":"d9e8dd767817","components/feedback/Dialog.jsx":"7a1f020e06b4","components/feedback/Loader.jsx":"7cad4f2d0ca0","components/feedback/Progress.jsx":"3a397235e4a4","components/feedback/Spinner.jsx":"3ddb4c2f4d27","components/feedback/Toast.jsx":"b8abe8490a55","components/feedback/Tooltip.jsx":"f38b261b2d2a","components/files/FileDrop.jsx":"6515374a972c","components/files/FileTile.jsx":"415f614a2782","components/files/FileTypeIcon.jsx":"16841d556c5d","components/finance/PaymentCard.jsx":"5e5e05c27381","components/forms/Button.jsx":"cdb36ec93eaf","components/forms/ButtonGroup.jsx":"86bd9a9f90bc","components/forms/ButtonTile.jsx":"445de4f76c96","components/forms/Checkbox.jsx":"3a8df803f636","components/forms/Combobox.jsx":"366f9c383790","components/forms/DigitEntry.jsx":"84f79f7ddc11","components/forms/IconButton.jsx":"7843bc8a3740","components/forms/Input.jsx":"01d2f58316e5","components/forms/InputGroup.jsx":"6cd5192acb83","components/forms/Label.jsx":"6c6a05af67e7","components/forms/Radio.jsx":"00cd0190e053","components/forms/Select.jsx":"d3c229f7fc84","components/forms/Slider.jsx":"3f085fb13cc2","components/forms/Switch.jsx":"3cf6cdbcb529","components/forms/Textarea.jsx":"0e14c341faf3","components/forms/Toggle.jsx":"429ecf0b3c8d","components/icons/Icon.jsx":"9da614cc0068","components/navigation/Breadcrumbs.jsx":"77a855106afa","components/navigation/Menubar.jsx":"771da79a7c23","components/navigation/PageControl.jsx":"92db45f2660e","components/navigation/Pagination.jsx":"1b1762a4df8f","components/navigation/SegmentedControl.jsx":"c440c273683b","components/navigation/SideNav.jsx":"8fe0982f0c79","components/navigation/Steps.jsx":"044ee6d4859c","components/navigation/Tabs.jsx":"b20bb7671d55","components/navigation/TopNav.jsx":"eaa2ba965eb7","components/overlay/CommandPalette.jsx":"656e5c78fc08","components/overlay/ContextMenu.jsx":"c516554f5dd9","components/overlay/Drawer.jsx":"1be84698d081","components/overlay/HoverCard.jsx":"4ac68a8e7306","components/overlay/Menu.jsx":"c7faa8af593c","components/overlay/Popover.jsx":"47258a240afb","components/overlay/Portal.jsx":"a511e3f5d874","showcases/agent/AgentScreen.jsx":"de1badd371ca","showcases/auth/AuthScreens.jsx":"b3583b149df5","showcases/console/CustomersScreen.jsx":"a8a080a80d9e","showcases/console/ExtraScreens.jsx":"1e7a048ab690","showcases/console/OverviewScreen.jsx":"34b01f22bb52","showcases/console/SettingsScreen.jsx":"8549e4ca1f97","showcases/console/Shell.jsx":"b7da6de80c2b","showcases/docs/DocsScreen.jsx":"faa44c30040d","showcases/infra/InfraScreen.jsx":"dd8e20d2c8eb","showcases/tools/ToolsScreen.jsx":"8be637f39e1b","showcases/trader/TraderScreen.jsx":"473d6c38cb07","showcases/website/Sections.jsx":"3f14d6a12c71"},"inlinedExternals":[],"unexposedExports":[{"name":"computeDiff","sourcePath":"components/code/Diff.jsx"},{"name":"formatTime","sourcePath":"components/ai/Player.jsx"},{"name":"injectEfCss","sourcePath":"components/forms/Button.jsx"},{"name":"useAnchoredStyle","sourcePath":"components/overlay/Portal.jsx"}]} */
 
 (() => {
 
@@ -896,107 +896,6 @@ function GeneratedImage({
 }
 Object.assign(__ds_scope, { GeneratedImage });
 })(); } catch (e) { __ds_ns.__errors.push({ path: "components/ai/GeneratedImage.jsx", error: String((e && e.message) || e) }); }
-
-// components/ai/ModelSelector.jsx
-try { (() => {
-const CSS = `
-.ef-modelsel{position:relative;display:inline-flex}
-.ef-modelsel__btn{display:inline-flex;align-items:center;gap:8px;height:32px;padding:0 10px;border:1px solid var(--border-strong);border-radius:var(--radius-sm);background:var(--surface-card);cursor:pointer;font-family:var(--font-sans);font-size:13px;font-weight:500;color:var(--text-primary);transition:border-color var(--dur-fast) var(--ease-out)}
-.ef-modelsel__btn:hover{border-color:var(--text-muted)}
-.ef-modelsel__btn:focus-visible{outline:none;box-shadow:var(--focus-ring)}
-.ef-modelsel__provider{font-size:11.5px;color:var(--text-muted);font-weight:400}
-.ef-modelsel__chev{display:inline-flex;color:var(--text-muted)}
-.ef-modelsel__panel{position:absolute;bottom:calc(100% + 6px);left:0;min-width:260px;background:var(--surface-card);border:1px solid var(--border-strong);border-radius:var(--radius-md);box-shadow:var(--shadow-md);padding:4px;z-index:var(--z-dropdown);animation:ef-modelsel-in var(--dur-fast) var(--ease-out)}
-.ef-modelsel--down .ef-modelsel__panel{bottom:auto;top:calc(100% + 6px)}
-@keyframes ef-modelsel-in{from{opacity:0;transform:translateY(3px)}}
-.ef-modelsel__item{display:flex;align-items:center;gap:10px;width:100%;padding:8px 10px;border:none;border-radius:var(--radius-sm);background:none;cursor:pointer;text-align:left;font-family:var(--font-sans);transition:background var(--dur-fast) var(--ease-out)}
-.ef-modelsel__item:hover{background:var(--surface-sunken)}
-.ef-modelsel__item:focus-visible{outline:none;box-shadow:var(--focus-ring)}
-.ef-modelsel__name{font-size:13.5px;font-weight:500;color:var(--text-primary)}
-.ef-modelsel__hint{font-size:12px;color:var(--text-muted);margin-top:1px}
-.ef-modelsel__badge{margin-left:auto;flex:none;font-size:10.5px;font-weight:600;letter-spacing:.04em;text-transform:uppercase;color:var(--brand-700);background:var(--accent-subtle);border-radius:var(--radius-sm);padding:2px 6px}
-.ef-modelsel__check{margin-left:auto;flex:none;display:inline-flex;color:var(--brand-700)}
-.ef-modelsel__badge+.ef-modelsel__check{margin-left:8px}
-`;
-function ModelSelector({
-  models = [],
-  value,
-  onChange,
-  side = 'up',
-  style,
-  className
-}) {
-  __ds_scope.injectEfCss('ef-css-modelsel', CSS);
-  const [open, setOpen] = React.useState(false);
-  const ref = React.useRef(null);
-  React.useEffect(() => {
-    if (!open) return;
-    const away = e => {
-      if (ref.current && !ref.current.contains(e.target)) setOpen(false);
-    };
-    const key = e => {
-      if (e.key === 'Escape') setOpen(false);
-    };
-    document.addEventListener('mousedown', away);
-    document.addEventListener('keydown', key);
-    return () => {
-      document.removeEventListener('mousedown', away);
-      document.removeEventListener('keydown', key);
-    };
-  }, [open]);
-  const cur = models.find(m => m.id === value) || models[0] || {};
-  return /*#__PURE__*/React.createElement("span", {
-    ref: ref,
-    className: `ef-modelsel${side === 'down' ? ' ef-modelsel--down' : ''}${className ? ' ' + className : ''}`,
-    style: style
-  }, /*#__PURE__*/React.createElement("button", {
-    type: "button",
-    className: "ef-modelsel__btn",
-    "aria-haspopup": "listbox",
-    "aria-expanded": open,
-    onClick: () => setOpen(!open)
-  }, /*#__PURE__*/React.createElement(__ds_scope.Icon, {
-    name: "sparkles",
-    size: 13
-  }), cur.name || 'Choose model', cur.provider ? /*#__PURE__*/React.createElement("span", {
-    className: "ef-modelsel__provider"
-  }, cur.provider) : null, /*#__PURE__*/React.createElement("span", {
-    className: "ef-modelsel__chev"
-  }, /*#__PURE__*/React.createElement(__ds_scope.Icon, {
-    name: side === 'down' ? 'chevron-down' : 'chevron-up',
-    size: 13
-  }))), open ? /*#__PURE__*/React.createElement("div", {
-    role: "listbox",
-    className: "ef-modelsel__panel"
-  }, models.map(m => /*#__PURE__*/React.createElement("button", {
-    key: m.id,
-    type: "button",
-    role: "option",
-    "aria-selected": m.id === cur.id,
-    className: "ef-modelsel__item",
-    onClick: () => {
-      setOpen(false);
-      if (onChange) onChange(m.id);
-    }
-  }, /*#__PURE__*/React.createElement("span", {
-    style: {
-      minWidth: 0
-    }
-  }, /*#__PURE__*/React.createElement("span", {
-    className: "ef-modelsel__name"
-  }, m.name), m.hint ? /*#__PURE__*/React.createElement("div", {
-    className: "ef-modelsel__hint"
-  }, m.hint) : null), m.badge ? /*#__PURE__*/React.createElement("span", {
-    className: "ef-modelsel__badge"
-  }, m.badge) : null, m.id === cur.id ? /*#__PURE__*/React.createElement("span", {
-    className: "ef-modelsel__check"
-  }, /*#__PURE__*/React.createElement(__ds_scope.Icon, {
-    name: "check",
-    size: 14
-  })) : null))) : null);
-}
-Object.assign(__ds_scope, { ModelSelector });
-})(); } catch (e) { __ds_ns.__errors.push({ path: "components/ai/ModelSelector.jsx", error: String((e && e.message) || e) }); }
 
 // components/ai/Player.jsx
 try { (() => {
@@ -5433,147 +5332,6 @@ function Checkbox({
 Object.assign(__ds_scope, { Checkbox });
 })(); } catch (e) { __ds_ns.__errors.push({ path: "components/forms/Checkbox.jsx", error: String((e && e.message) || e) }); }
 
-// components/forms/Combobox.jsx
-try { (() => {
-const CSS = `
-.ef-combo{position:relative}
-.ef-combo__control{display:flex;align-items:center;flex-wrap:wrap;gap:6px;min-height:var(--control-h-md);padding:4px 32px 4px 8px;border:1px solid var(--border-strong);border-radius:var(--radius-sm);background:var(--surface-card);cursor:text;transition:border-color var(--dur-fast) var(--ease-out),box-shadow var(--dur-fast) var(--ease-out)}
-.ef-combo__control:hover{border-color:var(--sand-400)}
-.ef-combo--open .ef-combo__control{border-color:var(--accent);box-shadow:var(--focus-ring)}
-.ef-combo__input{flex:1;min-width:80px;border:none;outline:none;background:none;font-family:var(--font-sans);font-size:var(--text-md);color:var(--text-primary);height:26px;padding:0 4px}
-.ef-combo__input::placeholder{color:var(--text-muted)}
-.ef-combo__chevron{position:absolute;right:10px;top:50%;transform:translateY(-50%);color:var(--text-muted);display:inline-flex;pointer-events:none}
-.ef-combo__panel{position:absolute;top:calc(100% + 6px);left:0;right:0;max-height:240px;overflow-y:auto;background:var(--surface-card);border:1px solid var(--border-strong);border-radius:var(--radius-md);box-shadow:var(--shadow-md);padding:4px;z-index:var(--z-dropdown);animation:ef-combo-in var(--dur-fast) var(--ease-out)}
-@keyframes ef-combo-in{from{opacity:0;transform:translateY(-3px)}}
-.ef-combo__opt{display:flex;align-items:center;gap:9px;width:100%;padding:7px 10px;border:none;border-radius:var(--radius-sm);background:none;cursor:pointer;text-align:left;font-family:var(--font-sans);font-size:var(--text-sm);color:var(--text-primary)}
-.ef-combo__opt--hi{background:var(--surface-sunken)}
-.ef-combo__opt__check{margin-left:auto;color:var(--accent);display:inline-flex}
-.ef-combo__empty{padding:14px 10px;font-size:var(--text-sm);color:var(--text-muted);text-align:center}
-`;
-function Combobox({
-  label,
-  hint,
-  options,
-  value,
-  onChange,
-  multiple,
-  placeholder = 'Search…',
-  style,
-  className
-}) {
-  __ds_scope.injectEfCss('ef-css-combo', CSS);
-  const [open, setOpen] = React.useState(false);
-  const [q, setQ] = React.useState('');
-  const [hi, setHi] = React.useState(0);
-  const ref = React.useRef(null);
-  const sel = multiple ? value || [] : value != null ? [value] : [];
-  const opts = options.map(o => typeof o === 'string' ? {
-    value: o,
-    label: o
-  } : o);
-  const shown = opts.filter(o => o.label.toLowerCase().includes(q.toLowerCase()) && (!multiple || !sel.includes(o.value)));
-  React.useEffect(() => {
-    if (!open) return;
-    const away = e => {
-      if (ref.current && !ref.current.contains(e.target)) setOpen(false);
-    };
-    document.addEventListener('mousedown', away);
-    return () => document.removeEventListener('mousedown', away);
-  }, [open]);
-  const pick = v => {
-    if (multiple) {
-      onChange && onChange([...sel, v]);
-      setQ('');
-    } else {
-      onChange && onChange(v);
-      setQ('');
-      setOpen(false);
-    }
-  };
-  const unpick = v => onChange && onChange(multiple ? sel.filter(x => x !== v) : null);
-  const key = e => {
-    if (e.key === 'ArrowDown') {
-      e.preventDefault();
-      setHi(h => Math.min(h + 1, shown.length - 1));
-      setOpen(true);
-    } else if (e.key === 'ArrowUp') {
-      e.preventDefault();
-      setHi(h => Math.max(h - 1, 0));
-    } else if (e.key === 'Enter' && open && shown[hi]) {
-      e.preventDefault();
-      pick(shown[hi].value);
-    } else if (e.key === 'Escape') setOpen(false);else if (e.key === 'Backspace' && !q && multiple && sel.length) unpick(sel[sel.length - 1]);
-  };
-  const control = /*#__PURE__*/React.createElement("div", {
-    ref: ref,
-    className: `ef-combo${open ? ' ef-combo--open' : ''}`
-  }, /*#__PURE__*/React.createElement("div", {
-    className: "ef-combo__control",
-    onClick: () => {
-      setOpen(true);
-      ref.current.querySelector('input').focus();
-    }
-  }, multiple && sel.map(v => {
-    const o = opts.find(x => x.value === v);
-    return /*#__PURE__*/React.createElement(__ds_scope.Tag, {
-      key: v,
-      onRemove: () => unpick(v)
-    }, o ? o.label : v);
-  }), /*#__PURE__*/React.createElement("input", {
-    className: "ef-combo__input",
-    role: "combobox",
-    "aria-expanded": open,
-    placeholder: sel.length && multiple ? '' : !multiple && sel.length ? (opts.find(x => x.value === sel[0]) || {}).label : placeholder,
-    value: q,
-    onChange: e => {
-      setQ(e.target.value);
-      setOpen(true);
-      setHi(0);
-    },
-    onFocus: () => setOpen(true),
-    onKeyDown: key
-  }), /*#__PURE__*/React.createElement("span", {
-    className: "ef-combo__chevron"
-  }, /*#__PURE__*/React.createElement(__ds_scope.Icon, {
-    name: "chevron-down",
-    size: 16
-  }))), open && /*#__PURE__*/React.createElement("div", {
-    className: "ef-combo__panel",
-    role: "listbox"
-  }, shown.length === 0 && /*#__PURE__*/React.createElement("div", {
-    className: "ef-combo__empty"
-  }, "Nothing matches \u201C", q, "\u201D."), shown.map((o, i) => /*#__PURE__*/React.createElement("button", {
-    key: o.value,
-    role: "option",
-    "aria-selected": !multiple && sel.includes(o.value),
-    className: `ef-combo__opt${i === hi ? ' ef-combo__opt--hi' : ''}`,
-    onMouseEnter: () => setHi(i),
-    onClick: () => pick(o.value)
-  }, o.icon ? /*#__PURE__*/React.createElement(__ds_scope.Icon, {
-    name: o.icon,
-    size: 15
-  }) : null, o.label, !multiple && sel.includes(o.value) ? /*#__PURE__*/React.createElement("span", {
-    className: "ef-combo__opt__check"
-  }, /*#__PURE__*/React.createElement(__ds_scope.Icon, {
-    name: "check",
-    size: 15
-  })) : null))));
-  if (!label && !hint) return /*#__PURE__*/React.createElement("div", {
-    className: className,
-    style: style
-  }, control);
-  return /*#__PURE__*/React.createElement("div", {
-    className: `ef-field${className ? ' ' + className : ''}`,
-    style: style
-  }, label ? /*#__PURE__*/React.createElement("span", {
-    className: "ef-field__label"
-  }, label) : null, control, hint ? /*#__PURE__*/React.createElement("span", {
-    className: "ef-field__hint"
-  }, hint) : null);
-}
-Object.assign(__ds_scope, { Combobox });
-})(); } catch (e) { __ds_ns.__errors.push({ path: "components/forms/Combobox.jsx", error: String((e && e.message) || e) }); }
-
 // components/forms/DigitEntry.jsx
 try { (() => {
 const CSS = `
@@ -6080,103 +5838,6 @@ function Calendar({
 }
 Object.assign(__ds_scope, { Calendar });
 })(); } catch (e) { __ds_ns.__errors.push({ path: "components/dates/Calendar.jsx", error: String((e && e.message) || e) }); }
-
-// components/dates/DatePicker.jsx
-try { (() => {
-const CSS = `
-.ef-datepicker{position:relative;display:inline-flex;flex-direction:column;gap:6px}
-.ef-datepicker__label{font-size:var(--text-sm);font-weight:var(--weight-semibold);color:var(--text-primary)}
-.ef-datepicker__btn{display:inline-flex;align-items:center;gap:8px;height:var(--control-h-md);padding:0 12px;border:1px solid var(--border-strong);border-radius:var(--radius-sm);background:var(--surface-card);font-family:var(--font-sans);font-size:var(--text-md);color:var(--text-primary);cursor:pointer;transition:border-color var(--dur-fast) var(--ease-out)}
-.ef-datepicker__btn:hover{border-color:var(--sand-400)}
-.ef-datepicker__btn:focus-visible{outline:none;border-color:var(--accent);box-shadow:var(--focus-ring)}
-.ef-datepicker__btn--empty{color:var(--text-muted)}
-.ef-datepicker__pop{position:absolute;top:calc(100% + 6px);left:0;background:var(--surface-card);border:1px solid var(--border-strong);border-radius:var(--radius-md);box-shadow:var(--shadow-md);padding:12px;z-index:var(--z-dropdown);animation:ef-dp-in var(--dur-fast) var(--ease-out)}
-@keyframes ef-dp-in{from{opacity:0;transform:translateY(-3px)}}
-`;
-const fmt = v => {
-  if (!v) return null;
-  const d = new Date(v + 'T00:00:00');
-  return d.toLocaleDateString('en-US', {
-    month: 'short',
-    day: 'numeric',
-    year: 'numeric'
-  });
-};
-function DatePicker({
-  label,
-  value,
-  defaultValue,
-  onChange,
-  placeholder = 'Pick a date',
-  style,
-  className
-}) {
-  __ds_scope.injectEfCss('ef-css-datepicker', CSS);
-  const [inner, setInner] = React.useState(defaultValue || '');
-  const v = value != null ? value : inner;
-  const [open, setOpen] = React.useState(false);
-  const ref = React.useRef(null);
-  const btnRef = React.useRef(null);
-  React.useEffect(() => {
-    if (!open) return;
-    const day = ref.current && ref.current.querySelector('[role="gridcell"][tabindex="0"]');
-    if (day) day.focus();
-    const away = e => {
-      if (ref.current && !ref.current.contains(e.target)) setOpen(false);
-    };
-    const key = e => {
-      if (e.key === 'Escape') {
-        setOpen(false);
-        if (btnRef.current) btnRef.current.focus();
-      }
-    };
-    document.addEventListener('mousedown', away);
-    document.addEventListener('keydown', key);
-    return () => {
-      document.removeEventListener('mousedown', away);
-      document.removeEventListener('keydown', key);
-    };
-  }, [open]);
-  return /*#__PURE__*/React.createElement("span", {
-    ref: ref,
-    className: `ef-datepicker${className ? ' ' + className : ''}`,
-    style: style
-  }, label ? /*#__PURE__*/React.createElement("span", {
-    className: "ef-datepicker__label"
-  }, label) : null, /*#__PURE__*/React.createElement("button", {
-    type: "button",
-    ref: btnRef,
-    "aria-haspopup": "dialog",
-    "aria-expanded": open,
-    className: `ef-datepicker__btn${v ? '' : ' ef-datepicker__btn--empty'}`,
-    onClick: () => setOpen(o => !o)
-  }, /*#__PURE__*/React.createElement(__ds_scope.Icon, {
-    name: "calendar",
-    size: 15,
-    style: {
-      color: 'var(--text-muted)'
-    }
-  }), fmt(v) || placeholder, /*#__PURE__*/React.createElement(__ds_scope.Icon, {
-    name: "chevron-down",
-    size: 14,
-    style: {
-      color: 'var(--text-muted)',
-      marginLeft: 'auto'
-    }
-  })), open && /*#__PURE__*/React.createElement("div", {
-    className: "ef-datepicker__pop"
-  }, /*#__PURE__*/React.createElement(__ds_scope.Calendar, {
-    value: v || undefined,
-    onChange: d => {
-      if (value == null) setInner(d);
-      if (onChange) onChange(d);
-      setOpen(false);
-      if (btnRef.current) btnRef.current.focus();
-    }
-  })));
-}
-Object.assign(__ds_scope, { DatePicker });
-})(); } catch (e) { __ds_ns.__errors.push({ path: "components/dates/DatePicker.jsx", error: String((e && e.message) || e) }); }
 
 // components/feedback/Banner.jsx
 try { (() => {
@@ -7841,129 +7502,6 @@ function CommandPalette({
 Object.assign(__ds_scope, { CommandPalette });
 })(); } catch (e) { __ds_ns.__errors.push({ path: "components/overlay/CommandPalette.jsx", error: String((e && e.message) || e) }); }
 
-// components/overlay/ContextMenu.jsx
-try { (() => {
-const CSS = `
-.ef-ctx__panel{position:fixed;min-width:190px;background:var(--surface-card);border:1px solid var(--border-strong);border-radius:var(--radius-md);box-shadow:var(--shadow-md);padding:4px;z-index:var(--z-dropdown);animation:ef-ctx-in var(--dur-fast) var(--ease-out)}
-@keyframes ef-ctx-in{from{opacity:0;transform:scale(.98)}}
-.ef-ctx__item{display:flex;align-items:center;gap:9px;width:100%;height:32px;padding:0 10px;border:none;border-radius:var(--radius-sm);background:none;cursor:pointer;text-align:left;font-family:var(--font-sans);font-size:var(--text-sm);color:var(--text-primary);transition:background var(--dur-fast) var(--ease-out)}
-.ef-ctx__item:hover:not(:disabled){background:var(--surface-sunken)}
-.ef-ctx__item:disabled{opacity:.4;cursor:not-allowed}
-.ef-ctx__item--danger{color:var(--danger-600)}
-.ef-ctx__item__icon{color:var(--text-muted);display:inline-flex}
-.ef-ctx__item--danger .ef-ctx__item__icon{color:var(--danger-600)}
-.ef-ctx__sep{height:1px;background:var(--border-default);margin:4px 6px}
-.ef-ctx__kbd{margin-left:auto;font-family:var(--font-mono);font-size:11px;color:var(--text-muted)}
-`;
-function ContextMenu({
-  items,
-  onSelect,
-  children,
-  style,
-  className
-}) {
-  __ds_scope.injectEfCss('ef-css-ctx', CSS);
-  const [pos, setPos] = React.useState(null);
-  const panelRef = React.useRef(null);
-  const focusItem = which => {
-    const panel = panelRef.current;
-    const nodes = panel ? Array.from(panel.querySelectorAll('[role="menuitem"]:not(:disabled)')) : [];
-    if (!nodes.length) return;
-    const i = nodes.indexOf(document.activeElement);
-    const next = which === 'first' ? 0 : which === 'last' ? nodes.length - 1 : (i + which + nodes.length) % nodes.length;
-    nodes[next].focus();
-  };
-  const onPanelKey = e => {
-    if (e.key === 'ArrowDown') {
-      e.preventDefault();
-      focusItem(1);
-    } else if (e.key === 'ArrowUp') {
-      e.preventDefault();
-      focusItem(-1);
-    } else if (e.key === 'Home') {
-      e.preventDefault();
-      focusItem('first');
-    } else if (e.key === 'End') {
-      e.preventDefault();
-      focusItem('last');
-    } else if (e.key.length === 1 && /\S/.test(e.key) && !e.metaKey && !e.ctrlKey && !e.altKey) {
-      const nodes = panelRef.current ? Array.from(panelRef.current.querySelectorAll('[role="menuitem"]:not(:disabled)')) : [];
-      const cur = nodes.indexOf(document.activeElement),
-        ch = e.key.toLowerCase();
-      for (let k = 1; k <= nodes.length; k++) {
-        const n = nodes[(cur + k) % nodes.length];
-        if ((n.textContent || '').trim().toLowerCase().startsWith(ch)) {
-          e.preventDefault();
-          n.focus();
-          break;
-        }
-      }
-    }
-  };
-  React.useEffect(() => {
-    if (!pos) return;
-    const first = panelRef.current && panelRef.current.querySelector('[role="menuitem"]:not(:disabled)');
-    if (first) first.focus();
-    const close = () => setPos(null);
-    const key = e => {
-      if (e.key === 'Escape') close();
-    };
-    document.addEventListener('mousedown', close);
-    document.addEventListener('keydown', key);
-    window.addEventListener('blur', close);
-    return () => {
-      document.removeEventListener('mousedown', close);
-      document.removeEventListener('keydown', key);
-      window.removeEventListener('blur', close);
-    };
-  }, [pos]);
-  const openAt = e => {
-    e.preventDefault();
-    setPos({
-      x: Math.min(e.clientX, window.innerWidth - 210),
-      y: Math.min(e.clientY, window.innerHeight - 40 * items.length - 20)
-    });
-  };
-  return /*#__PURE__*/React.createElement("span", {
-    className: className,
-    style: style,
-    onContextMenu: openAt
-  }, children, pos ? /*#__PURE__*/React.createElement("div", {
-    role: "menu",
-    ref: panelRef,
-    onKeyDown: onPanelKey,
-    className: "ef-ctx__panel",
-    style: {
-      left: pos.x,
-      top: pos.y
-    },
-    onMouseDown: e => e.stopPropagation()
-  }, items.map((it, i) => it === 'separator' ? /*#__PURE__*/React.createElement("div", {
-    key: 's' + i,
-    className: "ef-ctx__sep"
-  }) : /*#__PURE__*/React.createElement("button", {
-    key: it.id,
-    type: "button",
-    role: "menuitem",
-    disabled: it.disabled,
-    className: `ef-ctx__item${it.danger ? ' ef-ctx__item--danger' : ''}`,
-    onClick: () => {
-      setPos(null);
-      if (onSelect) onSelect(it.id);
-      if (it.onClick) it.onClick();
-    }
-  }, it.icon ? /*#__PURE__*/React.createElement("span", {
-    className: "ef-ctx__item__icon"
-  }, /*#__PURE__*/React.createElement(__ds_scope.Icon, {
-    name: it.icon,
-    size: 15
-  })) : null, it.label, it.kbd ? /*#__PURE__*/React.createElement("span", {
-    className: "ef-ctx__kbd"
-  }, it.kbd) : null))) : null);
-}
-Object.assign(__ds_scope, { ContextMenu });
-})(); } catch (e) { __ds_ns.__errors.push({ path: "components/overlay/ContextMenu.jsx", error: String((e && e.message) || e) }); }
-
 // components/overlay/Drawer.jsx
 try { (() => {
 const CSS = `
@@ -8063,149 +7601,6 @@ function Drawer({
 Object.assign(__ds_scope, { Drawer });
 })(); } catch (e) { __ds_ns.__errors.push({ path: "components/overlay/Drawer.jsx", error: String((e && e.message) || e) }); }
 
-// components/overlay/HoverCard.jsx
-try { (() => {
-const CSS = `
-.ef-hovercard{position:relative;display:inline-flex}
-.ef-hovercard__trigger{display:inline-flex;border-radius:var(--radius-sm)}
-.ef-hovercard__trigger:focus-visible{outline:none;box-shadow:var(--focus-ring)}
-.ef-hovercard__panel{position:absolute;left:0;background:var(--surface-card);border:1px solid var(--border-strong);border-radius:var(--radius-md);box-shadow:var(--shadow-md);padding:14px;z-index:var(--z-popover);animation:ef-hovercard-in var(--dur-med) var(--ease-out)}
-.ef-hovercard__panel--bottom{top:calc(100% + 8px)}
-.ef-hovercard__panel--top{bottom:calc(100% + 8px)}
-@keyframes ef-hovercard-in{from{opacity:0;transform:translateY(2px)}}
-`;
-function HoverCard({
-  trigger,
-  side = 'bottom',
-  openDelay = 350,
-  closeDelay = 150,
-  width = 300,
-  children,
-  style,
-  className
-}) {
-  __ds_scope.injectEfCss('ef-css-hovercard', CSS);
-  const [open, setOpen] = React.useState(false);
-  const t = React.useRef(null);
-  const enter = () => {
-    clearTimeout(t.current);
-    t.current = setTimeout(() => setOpen(true), openDelay);
-  };
-  const leave = () => {
-    clearTimeout(t.current);
-    t.current = setTimeout(() => setOpen(false), closeDelay);
-  };
-  React.useEffect(() => () => clearTimeout(t.current), []);
-  return /*#__PURE__*/React.createElement("span", {
-    className: `ef-hovercard${className ? ' ' + className : ''}`,
-    style: style,
-    onMouseEnter: enter,
-    onMouseLeave: leave,
-    onKeyDown: e => {
-      if (e.key === 'Escape') {
-        clearTimeout(t.current);
-        setOpen(false);
-      }
-    }
-  }, /*#__PURE__*/React.createElement("span", {
-    className: "ef-hovercard__trigger",
-    tabIndex: 0,
-    onFocus: () => setOpen(true),
-    onBlur: () => setOpen(false)
-  }, trigger), open ? /*#__PURE__*/React.createElement("div", {
-    className: `ef-hovercard__panel ef-hovercard__panel--${side}`,
-    style: {
-      width
-    }
-  }, children) : null);
-}
-Object.assign(__ds_scope, { HoverCard });
-})(); } catch (e) { __ds_ns.__errors.push({ path: "components/overlay/HoverCard.jsx", error: String((e && e.message) || e) }); }
-
-// components/overlay/Popover.jsx
-try { (() => {
-function _extends() { return _extends = Object.assign ? Object.assign.bind() : function (n) { for (var e = 1; e < arguments.length; e++) { var t = arguments[e]; for (var r in t) ({}).hasOwnProperty.call(t, r) && (n[r] = t[r]); } return n; }, _extends.apply(null, arguments); }
-const CSS = `
-.ef-popover{position:relative;display:inline-flex}
-.ef-popover__panel{position:absolute;top:calc(100% + 8px);width:280px;background:var(--surface-card);border:1px solid var(--border-strong);border-radius:var(--radius-md);box-shadow:var(--shadow-md);padding:14px;z-index:var(--z-dropdown);animation:ef-pop-in var(--dur-fast) var(--ease-out)}
-.ef-popover__panel--left{left:0}
-.ef-popover__panel--right{right:0}
-@keyframes ef-pop-in{from{opacity:0;transform:translateY(-3px)}}
-`;
-function Popover({
-  trigger,
-  children,
-  align = 'left',
-  width = 280,
-  open: controlled,
-  onOpenChange,
-  style,
-  className
-}) {
-  __ds_scope.injectEfCss('ef-css-popover', CSS);
-  const [inner, setInner] = React.useState(false);
-  const open = controlled != null ? controlled : inner;
-  const setOpen = v => {
-    if (controlled == null) setInner(v);
-    if (onOpenChange) onOpenChange(v);
-  };
-  const ref = React.useRef(null);
-  const restoreFocus = () => {
-    const t = ref.current && ref.current.querySelector('button,[href],[tabindex]');
-    if (t) t.focus();
-  };
-  React.useEffect(() => {
-    if (!open) return;
-    const away = e => {
-      if (ref.current && !ref.current.contains(e.target)) setOpen(false);
-    };
-    const key = e => {
-      if (e.key === 'Escape') {
-        setOpen(false);
-        restoreFocus();
-      }
-    };
-    document.addEventListener('mousedown', away);
-    document.addEventListener('keydown', key);
-    return () => {
-      document.removeEventListener('mousedown', away);
-      document.removeEventListener('keydown', key);
-    };
-  }, [open]);
-  const triggerProps = {
-    onClick: e => {
-      if (React.isValidElement(trigger) && trigger.props.onClick) trigger.props.onClick(e);
-      setOpen(!open);
-    },
-    onKeyDown: e => {
-      if (e.key === 'Enter' || e.key === ' ') {
-        e.preventDefault();
-        setOpen(!open);
-      }
-    },
-    'aria-haspopup': 'dialog',
-    'aria-expanded': open
-  };
-  return /*#__PURE__*/React.createElement("span", {
-    ref: ref,
-    className: `ef-popover${className ? ' ' + className : ''}`,
-    style: style
-  }, React.isValidElement(trigger) ? React.cloneElement(trigger, triggerProps) : /*#__PURE__*/React.createElement("span", _extends({
-    role: "button",
-    tabIndex: 0,
-    style: {
-      display: 'inline-flex'
-    }
-  }, triggerProps), trigger), open && /*#__PURE__*/React.createElement("div", {
-    className: `ef-popover__panel ef-popover__panel--${align}`,
-    style: {
-      width
-    }
-  }, children));
-}
-Object.assign(__ds_scope, { Popover });
-})(); } catch (e) { __ds_ns.__errors.push({ path: "components/overlay/Popover.jsx", error: String((e && e.message) || e) }); }
-
 // components/overlay/Portal.jsx
 try { (() => {
 const CSS = `
@@ -8260,7 +7655,8 @@ function useAnchoredStyle(anchorRef, panelRef, {
   open,
   placement = 'bottom',
   align = 'start',
-  offset = 6
+  offset = 6,
+  matchWidth = false
 } = {}) {
   const [style, setStyle] = React.useState({
     position: 'fixed',
@@ -8289,18 +7685,24 @@ function useAnchoredStyle(anchorRef, panelRef, {
       const roomAbove = a.top - offset;
       const wantsTop = placement === 'top';
       const side = wantsTop ? roomAbove >= p.height || roomAbove >= roomBelow ? 'top' : 'bottom' : roomBelow >= p.height || roomBelow >= roomAbove ? 'bottom' : 'top';
+
+      // a width-matched panel (a listbox under its input) is measured at the
+      // anchor's width, not its own, or the clamp below uses the wrong number
+      const width = matchWidth ? a.width : p.width;
       let top = side === 'bottom' ? a.bottom + offset : a.top - offset - p.height;
-      let left = align === 'end' ? a.right - p.width : align === 'center' ? a.left + a.width / 2 - p.width / 2 : a.left;
-      left = Math.max(edge, Math.min(left, vw - p.width - edge));
+      let left = align === 'end' ? a.right - width : align === 'center' ? a.left + a.width / 2 - width / 2 : a.left;
+      left = Math.max(edge, Math.min(left, vw - width - edge));
       top = Math.max(edge, Math.min(top, vh - p.height - edge));
-      setStyle({
+      const next = {
         position: 'fixed',
         top: Math.round(top),
         left: Math.round(left),
         right: 'auto',
         bottom: 'auto',
         visibility: 'visible'
-      });
+      };
+      if (matchWidth) next.width = Math.round(a.width);
+      setStyle(next);
     };
     place();
     // capture phase: any scrolling ancestor moves the anchor, not just the window
@@ -8310,11 +7712,591 @@ function useAnchoredStyle(anchorRef, panelRef, {
       window.removeEventListener('scroll', place, true);
       window.removeEventListener('resize', place);
     };
-  }, [open, placement, align, offset, anchorRef, panelRef]);
+  }, [open, placement, align, offset, matchWidth, anchorRef, panelRef]);
   return style;
 }
 Object.assign(__ds_scope, { Portal, useAnchoredStyle });
 })(); } catch (e) { __ds_ns.__errors.push({ path: "components/overlay/Portal.jsx", error: String((e && e.message) || e) }); }
+
+// components/ai/ModelSelector.jsx
+try { (() => {
+const CSS = `
+.ef-modelsel{position:relative;display:inline-flex}
+.ef-modelsel__btn{display:inline-flex;align-items:center;gap:8px;height:32px;padding:0 10px;border:1px solid var(--border-strong);border-radius:var(--radius-sm);background:var(--surface-card);cursor:pointer;font-family:var(--font-sans);font-size:13px;font-weight:500;color:var(--text-primary);transition:border-color var(--dur-fast) var(--ease-out)}
+.ef-modelsel__btn:hover{border-color:var(--text-muted)}
+.ef-modelsel__btn:focus-visible{outline:none;box-shadow:var(--focus-ring)}
+.ef-modelsel__provider{font-size:11.5px;color:var(--text-muted);font-weight:400}
+.ef-modelsel__chev{display:inline-flex;color:var(--text-muted)}
+.ef-modelsel__panel{position:absolute;bottom:calc(100% + 6px);left:0;min-width:260px;background:var(--surface-card);border:1px solid var(--border-strong);border-radius:var(--radius-md);box-shadow:var(--shadow-md);padding:4px;z-index:var(--z-dropdown);animation:ef-modelsel-in var(--dur-fast) var(--ease-out)}
+.ef-modelsel--down .ef-modelsel__panel{bottom:auto;top:calc(100% + 6px)}
+@keyframes ef-modelsel-in{from{opacity:0;transform:translateY(3px)}}
+.ef-modelsel__item{display:flex;align-items:center;gap:10px;width:100%;padding:8px 10px;border:none;border-radius:var(--radius-sm);background:none;cursor:pointer;text-align:left;font-family:var(--font-sans);transition:background var(--dur-fast) var(--ease-out)}
+.ef-modelsel__item:hover{background:var(--surface-sunken)}
+.ef-modelsel__item:focus-visible{outline:none;box-shadow:var(--focus-ring)}
+.ef-modelsel__name{font-size:13.5px;font-weight:500;color:var(--text-primary)}
+.ef-modelsel__hint{font-size:12px;color:var(--text-muted);margin-top:1px}
+.ef-modelsel__badge{margin-left:auto;flex:none;font-size:10.5px;font-weight:600;letter-spacing:.04em;text-transform:uppercase;color:var(--brand-700);background:var(--accent-subtle);border-radius:var(--radius-sm);padding:2px 6px}
+.ef-modelsel__check{margin-left:auto;flex:none;display:inline-flex;color:var(--brand-700)}
+.ef-modelsel__badge+.ef-modelsel__check{margin-left:8px}
+`;
+function ModelSelector({
+  models = [],
+  value,
+  onChange,
+  side = 'up',
+  style,
+  className
+}) {
+  __ds_scope.injectEfCss('ef-css-modelsel', CSS);
+  const [open, setOpen] = React.useState(false);
+  const ref = React.useRef(null);
+  const panelRef = React.useRef(null);
+  const anchored = __ds_scope.useAnchoredStyle(ref, panelRef, {
+    open,
+    placement: side === 'down' ? 'bottom' : 'top',
+    align: 'start'
+  });
+  React.useEffect(() => {
+    if (!open) return;
+    const away = e => {
+      if (ref.current && !ref.current.contains(e.target)) setOpen(false);
+    };
+    const key = e => {
+      if (e.key === 'Escape') setOpen(false);
+    };
+    document.addEventListener('mousedown', away);
+    document.addEventListener('keydown', key);
+    return () => {
+      document.removeEventListener('mousedown', away);
+      document.removeEventListener('keydown', key);
+    };
+  }, [open]);
+  const cur = models.find(m => m.id === value) || models[0] || {};
+  return /*#__PURE__*/React.createElement("span", {
+    ref: ref,
+    className: `ef-modelsel${side === 'down' ? ' ef-modelsel--down' : ''}${className ? ' ' + className : ''}`,
+    style: style
+  }, /*#__PURE__*/React.createElement("button", {
+    type: "button",
+    className: "ef-modelsel__btn",
+    "aria-haspopup": "listbox",
+    "aria-expanded": open,
+    onClick: () => setOpen(!open)
+  }, /*#__PURE__*/React.createElement(__ds_scope.Icon, {
+    name: "sparkles",
+    size: 13
+  }), cur.name || 'Choose model', cur.provider ? /*#__PURE__*/React.createElement("span", {
+    className: "ef-modelsel__provider"
+  }, cur.provider) : null, /*#__PURE__*/React.createElement("span", {
+    className: "ef-modelsel__chev"
+  }, /*#__PURE__*/React.createElement(__ds_scope.Icon, {
+    name: side === 'down' ? 'chevron-down' : 'chevron-up',
+    size: 13
+  }))), open ? /*#__PURE__*/React.createElement(__ds_scope.Portal, null, /*#__PURE__*/React.createElement("div", {
+    role: "listbox",
+    ref: panelRef,
+    className: "ef-modelsel__panel",
+    style: anchored
+  }, models.map(m => /*#__PURE__*/React.createElement("button", {
+    key: m.id,
+    type: "button",
+    role: "option",
+    "aria-selected": m.id === cur.id,
+    className: "ef-modelsel__item",
+    onClick: () => {
+      setOpen(false);
+      if (onChange) onChange(m.id);
+    }
+  }, /*#__PURE__*/React.createElement("span", {
+    style: {
+      minWidth: 0
+    }
+  }, /*#__PURE__*/React.createElement("span", {
+    className: "ef-modelsel__name"
+  }, m.name), m.hint ? /*#__PURE__*/React.createElement("div", {
+    className: "ef-modelsel__hint"
+  }, m.hint) : null), m.badge ? /*#__PURE__*/React.createElement("span", {
+    className: "ef-modelsel__badge"
+  }, m.badge) : null, m.id === cur.id ? /*#__PURE__*/React.createElement("span", {
+    className: "ef-modelsel__check"
+  }, /*#__PURE__*/React.createElement(__ds_scope.Icon, {
+    name: "check",
+    size: 14
+  })) : null)))) : null);
+}
+Object.assign(__ds_scope, { ModelSelector });
+})(); } catch (e) { __ds_ns.__errors.push({ path: "components/ai/ModelSelector.jsx", error: String((e && e.message) || e) }); }
+
+// components/dates/DatePicker.jsx
+try { (() => {
+const CSS = `
+.ef-datepicker{position:relative;display:inline-flex;flex-direction:column;gap:6px}
+.ef-datepicker__label{font-size:var(--text-sm);font-weight:var(--weight-semibold);color:var(--text-primary)}
+.ef-datepicker__btn{display:inline-flex;align-items:center;gap:8px;height:var(--control-h-md);padding:0 12px;border:1px solid var(--border-strong);border-radius:var(--radius-sm);background:var(--surface-card);font-family:var(--font-sans);font-size:var(--text-md);color:var(--text-primary);cursor:pointer;transition:border-color var(--dur-fast) var(--ease-out)}
+.ef-datepicker__btn:hover{border-color:var(--sand-400)}
+.ef-datepicker__btn:focus-visible{outline:none;border-color:var(--accent);box-shadow:var(--focus-ring)}
+.ef-datepicker__btn--empty{color:var(--text-muted)}
+.ef-datepicker__pop{position:absolute;top:calc(100% + 6px);left:0;background:var(--surface-card);border:1px solid var(--border-strong);border-radius:var(--radius-md);box-shadow:var(--shadow-md);padding:12px;z-index:var(--z-dropdown);animation:ef-dp-in var(--dur-fast) var(--ease-out)}
+@keyframes ef-dp-in{from{opacity:0;transform:translateY(-3px)}}
+`;
+const fmt = v => {
+  if (!v) return null;
+  const d = new Date(v + 'T00:00:00');
+  return d.toLocaleDateString('en-US', {
+    month: 'short',
+    day: 'numeric',
+    year: 'numeric'
+  });
+};
+function DatePicker({
+  label,
+  value,
+  defaultValue,
+  onChange,
+  placeholder = 'Pick a date',
+  style,
+  className
+}) {
+  __ds_scope.injectEfCss('ef-css-datepicker', CSS);
+  const [inner, setInner] = React.useState(defaultValue || '');
+  const v = value != null ? value : inner;
+  const [open, setOpen] = React.useState(false);
+  const ref = React.useRef(null);
+  const btnRef = React.useRef(null);
+  const panelRef = React.useRef(null);
+  const anchored = __ds_scope.useAnchoredStyle(ref, panelRef, {
+    open,
+    placement: 'bottom',
+    align: 'start'
+  });
+  React.useEffect(() => {
+    if (!open) return;
+    // the calendar is portaled out of `ref`, so look for it in the panel
+    const day = panelRef.current && panelRef.current.querySelector('[role="gridcell"][tabindex="0"]');
+    if (day) day.focus();
+    const away = e => {
+      const inTrigger = ref.current && ref.current.contains(e.target);
+      const inPanel = panelRef.current && panelRef.current.contains(e.target);
+      if (!inTrigger && !inPanel) setOpen(false);
+    };
+    const key = e => {
+      if (e.key === 'Escape') {
+        setOpen(false);
+        if (btnRef.current) btnRef.current.focus();
+      }
+    };
+    document.addEventListener('mousedown', away);
+    document.addEventListener('keydown', key);
+    return () => {
+      document.removeEventListener('mousedown', away);
+      document.removeEventListener('keydown', key);
+    };
+  }, [open]);
+  return /*#__PURE__*/React.createElement("span", {
+    ref: ref,
+    className: `ef-datepicker${className ? ' ' + className : ''}`,
+    style: style
+  }, label ? /*#__PURE__*/React.createElement("span", {
+    className: "ef-datepicker__label"
+  }, label) : null, /*#__PURE__*/React.createElement("button", {
+    type: "button",
+    ref: btnRef,
+    "aria-haspopup": "dialog",
+    "aria-expanded": open,
+    className: `ef-datepicker__btn${v ? '' : ' ef-datepicker__btn--empty'}`,
+    onClick: () => setOpen(o => !o)
+  }, /*#__PURE__*/React.createElement(__ds_scope.Icon, {
+    name: "calendar",
+    size: 15,
+    style: {
+      color: 'var(--text-muted)'
+    }
+  }), fmt(v) || placeholder, /*#__PURE__*/React.createElement(__ds_scope.Icon, {
+    name: "chevron-down",
+    size: 14,
+    style: {
+      color: 'var(--text-muted)',
+      marginLeft: 'auto'
+    }
+  })), open && /*#__PURE__*/React.createElement(__ds_scope.Portal, null, /*#__PURE__*/React.createElement("div", {
+    ref: panelRef,
+    className: "ef-datepicker__pop",
+    style: anchored
+  }, /*#__PURE__*/React.createElement(__ds_scope.Calendar, {
+    value: v || undefined,
+    onChange: d => {
+      if (value == null) setInner(d);
+      if (onChange) onChange(d);
+      setOpen(false);
+      if (btnRef.current) btnRef.current.focus();
+    }
+  }))));
+}
+Object.assign(__ds_scope, { DatePicker });
+})(); } catch (e) { __ds_ns.__errors.push({ path: "components/dates/DatePicker.jsx", error: String((e && e.message) || e) }); }
+
+// components/forms/Combobox.jsx
+try { (() => {
+const CSS = `
+.ef-combo{position:relative}
+.ef-combo__control{display:flex;align-items:center;flex-wrap:wrap;gap:6px;min-height:var(--control-h-md);padding:4px 32px 4px 8px;border:1px solid var(--border-strong);border-radius:var(--radius-sm);background:var(--surface-card);cursor:text;transition:border-color var(--dur-fast) var(--ease-out),box-shadow var(--dur-fast) var(--ease-out)}
+.ef-combo__control:hover{border-color:var(--sand-400)}
+.ef-combo--open .ef-combo__control{border-color:var(--accent);box-shadow:var(--focus-ring)}
+.ef-combo__input{flex:1;min-width:80px;border:none;outline:none;background:none;font-family:var(--font-sans);font-size:var(--text-md);color:var(--text-primary);height:26px;padding:0 4px}
+.ef-combo__input::placeholder{color:var(--text-muted)}
+.ef-combo__chevron{position:absolute;right:10px;top:50%;transform:translateY(-50%);color:var(--text-muted);display:inline-flex;pointer-events:none}
+.ef-combo__panel{position:absolute;top:calc(100% + 6px);left:0;right:0;max-height:240px;overflow-y:auto;background:var(--surface-card);border:1px solid var(--border-strong);border-radius:var(--radius-md);box-shadow:var(--shadow-md);padding:4px;z-index:var(--z-dropdown);animation:ef-combo-in var(--dur-fast) var(--ease-out)}
+@keyframes ef-combo-in{from{opacity:0;transform:translateY(-3px)}}
+.ef-combo__opt{display:flex;align-items:center;gap:9px;width:100%;padding:7px 10px;border:none;border-radius:var(--radius-sm);background:none;cursor:pointer;text-align:left;font-family:var(--font-sans);font-size:var(--text-sm);color:var(--text-primary)}
+.ef-combo__opt--hi{background:var(--surface-sunken)}
+.ef-combo__opt__check{margin-left:auto;color:var(--accent);display:inline-flex}
+.ef-combo__empty{padding:14px 10px;font-size:var(--text-sm);color:var(--text-muted);text-align:center}
+`;
+function Combobox({
+  label,
+  hint,
+  options,
+  value,
+  onChange,
+  multiple,
+  placeholder = 'Search…',
+  style,
+  className
+}) {
+  __ds_scope.injectEfCss('ef-css-combo', CSS);
+  const [open, setOpen] = React.useState(false);
+  const [q, setQ] = React.useState('');
+  const [hi, setHi] = React.useState(0);
+  const ref = React.useRef(null);
+  const panelRef = React.useRef(null);
+  const anchored = __ds_scope.useAnchoredStyle(ref, panelRef, {
+    open,
+    placement: 'bottom',
+    align: 'start',
+    matchWidth: true
+  });
+  const sel = multiple ? value || [] : value != null ? [value] : [];
+  const opts = options.map(o => typeof o === 'string' ? {
+    value: o,
+    label: o
+  } : o);
+  const shown = opts.filter(o => o.label.toLowerCase().includes(q.toLowerCase()) && (!multiple || !sel.includes(o.value)));
+  React.useEffect(() => {
+    if (!open) return;
+    const away = e => {
+      const inControl = ref.current && ref.current.contains(e.target);
+      const inPanel = panelRef.current && panelRef.current.contains(e.target);
+      if (!inControl && !inPanel) setOpen(false);
+    };
+    document.addEventListener('mousedown', away);
+    return () => document.removeEventListener('mousedown', away);
+  }, [open]);
+  const pick = v => {
+    if (multiple) {
+      onChange && onChange([...sel, v]);
+      setQ('');
+    } else {
+      onChange && onChange(v);
+      setQ('');
+      setOpen(false);
+    }
+  };
+  const unpick = v => onChange && onChange(multiple ? sel.filter(x => x !== v) : null);
+  const key = e => {
+    if (e.key === 'ArrowDown') {
+      e.preventDefault();
+      setHi(h => Math.min(h + 1, shown.length - 1));
+      setOpen(true);
+    } else if (e.key === 'ArrowUp') {
+      e.preventDefault();
+      setHi(h => Math.max(h - 1, 0));
+    } else if (e.key === 'Enter' && open && shown[hi]) {
+      e.preventDefault();
+      pick(shown[hi].value);
+    } else if (e.key === 'Escape') setOpen(false);else if (e.key === 'Backspace' && !q && multiple && sel.length) unpick(sel[sel.length - 1]);
+  };
+  const control = /*#__PURE__*/React.createElement("div", {
+    ref: ref,
+    className: `ef-combo${open ? ' ef-combo--open' : ''}`
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "ef-combo__control",
+    onClick: () => {
+      setOpen(true);
+      ref.current.querySelector('input').focus();
+    }
+  }, multiple && sel.map(v => {
+    const o = opts.find(x => x.value === v);
+    return /*#__PURE__*/React.createElement(__ds_scope.Tag, {
+      key: v,
+      onRemove: () => unpick(v)
+    }, o ? o.label : v);
+  }), /*#__PURE__*/React.createElement("input", {
+    className: "ef-combo__input",
+    role: "combobox",
+    "aria-expanded": open,
+    placeholder: sel.length && multiple ? '' : !multiple && sel.length ? (opts.find(x => x.value === sel[0]) || {}).label : placeholder,
+    value: q,
+    onChange: e => {
+      setQ(e.target.value);
+      setOpen(true);
+      setHi(0);
+    },
+    onFocus: () => setOpen(true),
+    onKeyDown: key
+  }), /*#__PURE__*/React.createElement("span", {
+    className: "ef-combo__chevron"
+  }, /*#__PURE__*/React.createElement(__ds_scope.Icon, {
+    name: "chevron-down",
+    size: 16
+  }))), open && /*#__PURE__*/React.createElement(__ds_scope.Portal, null, /*#__PURE__*/React.createElement("div", {
+    ref: panelRef,
+    className: "ef-combo__panel",
+    role: "listbox",
+    style: anchored
+  }, shown.length === 0 && /*#__PURE__*/React.createElement("div", {
+    className: "ef-combo__empty"
+  }, "Nothing matches \u201C", q, "\u201D."), shown.map((o, i) => /*#__PURE__*/React.createElement("button", {
+    key: o.value,
+    role: "option",
+    "aria-selected": !multiple && sel.includes(o.value),
+    className: `ef-combo__opt${i === hi ? ' ef-combo__opt--hi' : ''}`,
+    onMouseEnter: () => setHi(i),
+    onClick: () => pick(o.value)
+  }, o.icon ? /*#__PURE__*/React.createElement(__ds_scope.Icon, {
+    name: o.icon,
+    size: 15
+  }) : null, o.label, !multiple && sel.includes(o.value) ? /*#__PURE__*/React.createElement("span", {
+    className: "ef-combo__opt__check"
+  }, /*#__PURE__*/React.createElement(__ds_scope.Icon, {
+    name: "check",
+    size: 15
+  })) : null)))));
+  if (!label && !hint) return /*#__PURE__*/React.createElement("div", {
+    className: className,
+    style: style
+  }, control);
+  return /*#__PURE__*/React.createElement("div", {
+    className: `ef-field${className ? ' ' + className : ''}`,
+    style: style
+  }, label ? /*#__PURE__*/React.createElement("span", {
+    className: "ef-field__label"
+  }, label) : null, control, hint ? /*#__PURE__*/React.createElement("span", {
+    className: "ef-field__hint"
+  }, hint) : null);
+}
+Object.assign(__ds_scope, { Combobox });
+})(); } catch (e) { __ds_ns.__errors.push({ path: "components/forms/Combobox.jsx", error: String((e && e.message) || e) }); }
+
+// components/overlay/ContextMenu.jsx
+try { (() => {
+const CSS = `
+.ef-ctx__panel{position:fixed;min-width:190px;background:var(--surface-card);border:1px solid var(--border-strong);border-radius:var(--radius-md);box-shadow:var(--shadow-md);padding:4px;z-index:var(--z-dropdown);animation:ef-ctx-in var(--dur-fast) var(--ease-out)}
+@keyframes ef-ctx-in{from{opacity:0;transform:scale(.98)}}
+.ef-ctx__item{display:flex;align-items:center;gap:9px;width:100%;height:32px;padding:0 10px;border:none;border-radius:var(--radius-sm);background:none;cursor:pointer;text-align:left;font-family:var(--font-sans);font-size:var(--text-sm);color:var(--text-primary);transition:background var(--dur-fast) var(--ease-out)}
+.ef-ctx__item:hover:not(:disabled){background:var(--surface-sunken)}
+.ef-ctx__item:disabled{opacity:.4;cursor:not-allowed}
+.ef-ctx__item--danger{color:var(--danger-600)}
+.ef-ctx__item__icon{color:var(--text-muted);display:inline-flex}
+.ef-ctx__item--danger .ef-ctx__item__icon{color:var(--danger-600)}
+.ef-ctx__sep{height:1px;background:var(--border-default);margin:4px 6px}
+.ef-ctx__kbd{margin-left:auto;font-family:var(--font-mono);font-size:11px;color:var(--text-muted)}
+`;
+function ContextMenu({
+  items,
+  onSelect,
+  children,
+  style,
+  className
+}) {
+  __ds_scope.injectEfCss('ef-css-ctx', CSS);
+  const [pos, setPos] = React.useState(null);
+  const panelRef = React.useRef(null);
+  const focusItem = which => {
+    const panel = panelRef.current;
+    const nodes = panel ? Array.from(panel.querySelectorAll('[role="menuitem"]:not(:disabled)')) : [];
+    if (!nodes.length) return;
+    const i = nodes.indexOf(document.activeElement);
+    const next = which === 'first' ? 0 : which === 'last' ? nodes.length - 1 : (i + which + nodes.length) % nodes.length;
+    nodes[next].focus();
+  };
+  // A fixed panel still escapes overflow, but nothing kept it inside the viewport:
+  // right-clicking near the bottom or right edge pushed items off-screen.
+  React.useLayoutEffect(() => {
+    const panel = panelRef.current;
+    if (!pos || !panel) return;
+    const r = panel.getBoundingClientRect();
+    const vw = document.documentElement.clientWidth,
+      vh = document.documentElement.clientHeight,
+      edge = 8;
+    const x = Math.max(edge, Math.min(pos.x, vw - r.width - edge));
+    const y = Math.max(edge, Math.min(pos.y, vh - r.height - edge));
+    if (x !== pos.x || y !== pos.y) setPos({
+      x,
+      y
+    });
+  }, [pos]);
+  const onPanelKey = e => {
+    if (e.key === 'ArrowDown') {
+      e.preventDefault();
+      focusItem(1);
+    } else if (e.key === 'ArrowUp') {
+      e.preventDefault();
+      focusItem(-1);
+    } else if (e.key === 'Home') {
+      e.preventDefault();
+      focusItem('first');
+    } else if (e.key === 'End') {
+      e.preventDefault();
+      focusItem('last');
+    } else if (e.key.length === 1 && /\S/.test(e.key) && !e.metaKey && !e.ctrlKey && !e.altKey) {
+      const nodes = panelRef.current ? Array.from(panelRef.current.querySelectorAll('[role="menuitem"]:not(:disabled)')) : [];
+      const cur = nodes.indexOf(document.activeElement),
+        ch = e.key.toLowerCase();
+      for (let k = 1; k <= nodes.length; k++) {
+        const n = nodes[(cur + k) % nodes.length];
+        if ((n.textContent || '').trim().toLowerCase().startsWith(ch)) {
+          e.preventDefault();
+          n.focus();
+          break;
+        }
+      }
+    }
+  };
+  React.useEffect(() => {
+    if (!pos) return;
+    const first = panelRef.current && panelRef.current.querySelector('[role="menuitem"]:not(:disabled)');
+    if (first) first.focus();
+    const close = () => setPos(null);
+    const key = e => {
+      if (e.key === 'Escape') close();
+    };
+    document.addEventListener('mousedown', close);
+    document.addEventListener('keydown', key);
+    window.addEventListener('blur', close);
+    return () => {
+      document.removeEventListener('mousedown', close);
+      document.removeEventListener('keydown', key);
+      window.removeEventListener('blur', close);
+    };
+  }, [pos]);
+  const openAt = e => {
+    e.preventDefault();
+    setPos({
+      x: e.clientX,
+      y: e.clientY
+    });
+  };
+  return /*#__PURE__*/React.createElement("span", {
+    className: className,
+    style: style,
+    onContextMenu: openAt
+  }, children, pos ? /*#__PURE__*/React.createElement(__ds_scope.Portal, null, /*#__PURE__*/React.createElement("div", {
+    role: "menu",
+    ref: panelRef,
+    onKeyDown: onPanelKey,
+    className: "ef-ctx__panel",
+    style: {
+      left: pos.x,
+      top: pos.y
+    },
+    onMouseDown: e => e.stopPropagation()
+  }, items.map((it, i) => it === 'separator' ? /*#__PURE__*/React.createElement("div", {
+    key: 's' + i,
+    className: "ef-ctx__sep"
+  }) : /*#__PURE__*/React.createElement("button", {
+    key: it.id,
+    type: "button",
+    role: "menuitem",
+    disabled: it.disabled,
+    className: `ef-ctx__item${it.danger ? ' ef-ctx__item--danger' : ''}`,
+    onClick: () => {
+      setPos(null);
+      if (onSelect) onSelect(it.id);
+      if (it.onClick) it.onClick();
+    }
+  }, it.icon ? /*#__PURE__*/React.createElement("span", {
+    className: "ef-ctx__item__icon"
+  }, /*#__PURE__*/React.createElement(__ds_scope.Icon, {
+    name: it.icon,
+    size: 15
+  })) : null, it.label, it.kbd ? /*#__PURE__*/React.createElement("span", {
+    className: "ef-ctx__kbd"
+  }, it.kbd) : null)))) : null);
+}
+Object.assign(__ds_scope, { ContextMenu });
+})(); } catch (e) { __ds_ns.__errors.push({ path: "components/overlay/ContextMenu.jsx", error: String((e && e.message) || e) }); }
+
+// components/overlay/HoverCard.jsx
+try { (() => {
+const CSS = `
+.ef-hovercard{position:relative;display:inline-flex}
+.ef-hovercard__trigger{display:inline-flex;border-radius:var(--radius-sm)}
+.ef-hovercard__trigger:focus-visible{outline:none;box-shadow:var(--focus-ring)}
+.ef-hovercard__panel{position:absolute;left:0;background:var(--surface-card);border:1px solid var(--border-strong);border-radius:var(--radius-md);box-shadow:var(--shadow-md);padding:14px;z-index:var(--z-popover);animation:ef-hovercard-in var(--dur-med) var(--ease-out)}
+.ef-hovercard__panel--bottom{top:calc(100% + 8px)}
+.ef-hovercard__panel--top{bottom:calc(100% + 8px)}
+@keyframes ef-hovercard-in{from{opacity:0;transform:translateY(2px)}}
+`;
+function HoverCard({
+  trigger,
+  side = 'bottom',
+  openDelay = 350,
+  closeDelay = 150,
+  width = 300,
+  children,
+  style,
+  className
+}) {
+  __ds_scope.injectEfCss('ef-css-hovercard', CSS);
+  const [open, setOpen] = React.useState(false);
+  const t = React.useRef(null);
+  const ref = React.useRef(null);
+  const panelRef = React.useRef(null);
+  const anchored = __ds_scope.useAnchoredStyle(ref, panelRef, {
+    open,
+    placement: side === 'top' ? 'top' : 'bottom',
+    align: 'start',
+    offset: 8
+  });
+  const enter = () => {
+    clearTimeout(t.current);
+    t.current = setTimeout(() => setOpen(true), openDelay);
+  };
+  const leave = () => {
+    clearTimeout(t.current);
+    t.current = setTimeout(() => setOpen(false), closeDelay);
+  };
+  React.useEffect(() => () => clearTimeout(t.current), []);
+  return /*#__PURE__*/React.createElement("span", {
+    ref: ref,
+    className: `ef-hovercard${className ? ' ' + className : ''}`,
+    style: style,
+    onMouseEnter: enter,
+    onMouseLeave: leave,
+    onKeyDown: e => {
+      if (e.key === 'Escape') {
+        clearTimeout(t.current);
+        setOpen(false);
+      }
+    }
+  }, /*#__PURE__*/React.createElement("span", {
+    className: "ef-hovercard__trigger",
+    tabIndex: 0,
+    onFocus: () => setOpen(true),
+    onBlur: () => setOpen(false)
+  }, trigger), open ? /*#__PURE__*/React.createElement(__ds_scope.Portal, null, /*#__PURE__*/React.createElement("div", {
+    ref: panelRef,
+    onMouseEnter: enter,
+    onMouseLeave: leave,
+    className: `ef-hovercard__panel ef-hovercard__panel--${side}`,
+    style: {
+      ...anchored,
+      width
+    }
+  }, children)) : null);
+}
+Object.assign(__ds_scope, { HoverCard });
+})(); } catch (e) { __ds_ns.__errors.push({ path: "components/overlay/HoverCard.jsx", error: String((e && e.message) || e) }); }
 
 // components/overlay/Menu.jsx
 try { (() => {
@@ -8466,6 +8448,101 @@ function Menu({
 }
 Object.assign(__ds_scope, { Menu });
 })(); } catch (e) { __ds_ns.__errors.push({ path: "components/overlay/Menu.jsx", error: String((e && e.message) || e) }); }
+
+// components/overlay/Popover.jsx
+try { (() => {
+function _extends() { return _extends = Object.assign ? Object.assign.bind() : function (n) { for (var e = 1; e < arguments.length; e++) { var t = arguments[e]; for (var r in t) ({}).hasOwnProperty.call(t, r) && (n[r] = t[r]); } return n; }, _extends.apply(null, arguments); }
+const CSS = `
+.ef-popover{position:relative;display:inline-flex}
+.ef-popover__panel{position:absolute;top:calc(100% + 8px);width:280px;background:var(--surface-card);border:1px solid var(--border-strong);border-radius:var(--radius-md);box-shadow:var(--shadow-md);padding:14px;z-index:var(--z-dropdown);animation:ef-pop-in var(--dur-fast) var(--ease-out)}
+.ef-popover__panel--left{left:0}
+.ef-popover__panel--right{right:0}
+@keyframes ef-pop-in{from{opacity:0;transform:translateY(-3px)}}
+`;
+function Popover({
+  trigger,
+  children,
+  align = 'left',
+  width = 280,
+  open: controlled,
+  onOpenChange,
+  style,
+  className
+}) {
+  __ds_scope.injectEfCss('ef-css-popover', CSS);
+  const [inner, setInner] = React.useState(false);
+  const open = controlled != null ? controlled : inner;
+  const setOpen = v => {
+    if (controlled == null) setInner(v);
+    if (onOpenChange) onOpenChange(v);
+  };
+  const ref = React.useRef(null);
+  const panelRef = React.useRef(null);
+  const anchored = __ds_scope.useAnchoredStyle(ref, panelRef, {
+    open,
+    placement: 'bottom',
+    align: align === 'right' ? 'end' : 'start',
+    offset: 8
+  });
+  const restoreFocus = () => {
+    const t = ref.current && ref.current.querySelector('button,[href],[tabindex]');
+    if (t) t.focus();
+  };
+  React.useEffect(() => {
+    if (!open) return;
+    const away = e => {
+      const inTrigger = ref.current && ref.current.contains(e.target);
+      const inPanel = panelRef.current && panelRef.current.contains(e.target);
+      if (!inTrigger && !inPanel) setOpen(false);
+    };
+    const key = e => {
+      if (e.key === 'Escape') {
+        setOpen(false);
+        restoreFocus();
+      }
+    };
+    document.addEventListener('mousedown', away);
+    document.addEventListener('keydown', key);
+    return () => {
+      document.removeEventListener('mousedown', away);
+      document.removeEventListener('keydown', key);
+    };
+  }, [open]);
+  const triggerProps = {
+    onClick: e => {
+      if (React.isValidElement(trigger) && trigger.props.onClick) trigger.props.onClick(e);
+      setOpen(!open);
+    },
+    onKeyDown: e => {
+      if (e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault();
+        setOpen(!open);
+      }
+    },
+    'aria-haspopup': 'dialog',
+    'aria-expanded': open
+  };
+  return /*#__PURE__*/React.createElement("span", {
+    ref: ref,
+    className: `ef-popover${className ? ' ' + className : ''}`,
+    style: style
+  }, React.isValidElement(trigger) ? React.cloneElement(trigger, triggerProps) : /*#__PURE__*/React.createElement("span", _extends({
+    role: "button",
+    tabIndex: 0,
+    style: {
+      display: 'inline-flex'
+    }
+  }, triggerProps), trigger), open && /*#__PURE__*/React.createElement(__ds_scope.Portal, null, /*#__PURE__*/React.createElement("div", {
+    ref: panelRef,
+    className: `ef-popover__panel ef-popover__panel--${align}`,
+    style: {
+      ...anchored,
+      width
+    }
+  }, children)));
+}
+Object.assign(__ds_scope, { Popover });
+})(); } catch (e) { __ds_ns.__errors.push({ path: "components/overlay/Popover.jsx", error: String((e && e.message) || e) }); }
 
 // showcases/agent/AgentScreen.jsx
 try { (() => {

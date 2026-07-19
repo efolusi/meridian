@@ -1,5 +1,6 @@
 import React from 'react';
 import { injectEfCss } from '../forms/Button.jsx';
+import { Portal, useAnchoredStyle } from './Portal.jsx';
 const CSS = `
 .ef-popover{position:relative;display:inline-flex}
 .ef-popover__panel{position:absolute;top:calc(100% + 8px);width:280px;background:var(--surface-card);border:1px solid var(--border-strong);border-radius:var(--radius-md);box-shadow:var(--shadow-md);padding:14px;z-index:var(--z-dropdown);animation:ef-pop-in var(--dur-fast) var(--ease-out)}
@@ -13,13 +14,19 @@ export function Popover({ trigger, children, align = 'left', width = 280, open: 
   const open = controlled != null ? controlled : inner;
   const setOpen = v => { if (controlled == null) setInner(v); if (onOpenChange) onOpenChange(v); };
   const ref = React.useRef(null);
+  const panelRef = React.useRef(null);
+  const anchored = useAnchoredStyle(ref, panelRef, { open, placement: 'bottom', align: align === 'right' ? 'end' : 'start', offset: 8 });
   const restoreFocus = () => {
     const t = ref.current && ref.current.querySelector('button,[href],[tabindex]');
     if (t) t.focus();
   };
   React.useEffect(() => {
     if (!open) return;
-    const away = e => { if (ref.current && !ref.current.contains(e.target)) setOpen(false); };
+    const away = e => {
+      const inTrigger = ref.current && ref.current.contains(e.target);
+      const inPanel = panelRef.current && panelRef.current.contains(e.target);
+      if (!inTrigger && !inPanel) setOpen(false);
+    };
     const key = e => { if (e.key === 'Escape') { setOpen(false); restoreFocus(); } };
     document.addEventListener('mousedown', away);
     document.addEventListener('keydown', key);
@@ -36,7 +43,11 @@ export function Popover({ trigger, children, align = 'left', width = 280, open: 
       {React.isValidElement(trigger)
         ? React.cloneElement(trigger, triggerProps)
         : <span role="button" tabIndex={0} style={{ display: 'inline-flex' }} {...triggerProps}>{trigger}</span>}
-      {open && <div className={`ef-popover__panel ef-popover__panel--${align}`} style={{ width }}>{children}</div>}
+      {open && (
+        <Portal>
+          <div ref={panelRef} className={`ef-popover__panel ef-popover__panel--${align}`} style={{ ...anchored, width }}>{children}</div>
+        </Portal>
+      )}
     </span>
   );
 }

@@ -1,5 +1,6 @@
 import React from 'react';
 import { injectEfCss } from '../forms/Button.jsx';
+import { Portal, useAnchoredStyle } from '../overlay/Portal.jsx';
 import { Icon } from '../icons/Icon.jsx';
 const CSS = `
 .ef-modelsel{position:relative;display:inline-flex}
@@ -24,6 +25,8 @@ export function ModelSelector({ models = [], value, onChange, side = 'up', style
   injectEfCss('ef-css-modelsel', CSS);
   const [open, setOpen] = React.useState(false);
   const ref = React.useRef(null);
+  const panelRef = React.useRef(null);
+  const anchored = useAnchoredStyle(ref, panelRef, { open, placement: side === 'down' ? 'bottom' : 'top', align: 'start' });
   React.useEffect(() => {
     if (!open) return;
     const away = e => { if (ref.current && !ref.current.contains(e.target)) setOpen(false); };
@@ -42,7 +45,7 @@ export function ModelSelector({ models = [], value, onChange, side = 'up', style
         <span className="ef-modelsel__chev"><Icon name={side === 'down' ? 'chevron-down' : 'chevron-up'} size={13} /></span>
       </button>
       {open ? (
-        <div role="listbox" className="ef-modelsel__panel">
+        <Portal><div role="listbox" ref={panelRef} className="ef-modelsel__panel" style={anchored}>
           {models.map(m => (
             <button key={m.id} type="button" role="option" aria-selected={m.id === cur.id} className="ef-modelsel__item"
               onClick={() => { setOpen(false); if (onChange) onChange(m.id); }}>
@@ -54,7 +57,7 @@ export function ModelSelector({ models = [], value, onChange, side = 'up', style
               {m.id === cur.id ? <span className="ef-modelsel__check"><Icon name="check" size={14} /></span> : null}
             </button>
           ))}
-        </div>
+        </div></Portal>
       ) : null}
     </span>
   );
