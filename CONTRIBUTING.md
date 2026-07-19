@@ -1,6 +1,33 @@
 # Contributing to Meridian
 
-Meridian is MIT-licensed and open to contributions. It is plain HTML + CSS + JSX — no build step, no npm install. Open any `.html` in a browser.
+Meridian is MIT-licensed and open to contributions. It is plain HTML + CSS + JSX. For most of the repo there is no build step and no npm install — open any `.html` in a browser and you are running the real thing.
+
+## Read this first if you are changing a component
+
+`_ds_bundle.js` is a **compiled artifact**. Every `components/**/*.jsx` and `showcases/**/*.jsx` file is compiled into it, and the bundle header records a SHA-256 of each source file. Pages load the bundle, not your `.jsx`, so **editing a component source alone changes nothing at runtime.**
+
+The compiler that produces the bundle is **not in this repository**. That means:
+
+- **You cannot regenerate `_ds_bundle.js` yourself, and you are not expected to.** Open your PR with the source change only (`.jsx` + `.d.ts` + `.prompt.md` + specimen card). A maintainer recompiles the bundle and pushes it to your branch before merge.
+- **CI will report a bundle hash mismatch on your PR.** For pull requests from forks that touch component sources this check is informational and will not block you. Seeing `hash mismatch (bundle stale)` on a component PR is expected and is the maintainer's job to resolve, not yours.
+- Describe the visual or behavioural change in the PR body so the maintainer can verify it after recompiling.
+
+Everything else in the repo you can build, run, and verify completely on your own: `tokens/`, `blocks/`, `starters/`, `site/`, `guidelines/`, `scripts/`, and all documentation. Those PRs need no special handling.
+
+Removing this asymmetry is tracked in [ROADMAP.md](ROADMAP.md) — vendoring the compiler (or replacing it) is the single highest-value contribution anyone could make to this project.
+
+## Running the checks locally
+
+```bash
+python3 scripts/check_contrast.py          # WCAG contrast pairs (4.5:1 text, 3:1 non-text)
+python3 scripts/check_dead_controls.py     # no buttons that render but do nothing
+python3 scripts/check_paths.py             # every relative reference resolves
+python3 scripts/check_runtime_copies.py    # support.js / ds-base.js copies have not drifted
+python3 scripts/sync_manifest_tokens.py --check
+python3 scripts/build_registry.py && python3 scripts/build_tokens.py && python3 scripts/build_interfaces.py
+```
+
+Then open `site/_smoke.html` in a browser; it renders every demo and reports pass/fail in the page title.
 
 ## Component contract
 

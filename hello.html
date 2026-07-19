@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Hello Meridian</title>
+
+<!-- 1. the stylesheet: this one file is the whole token layer -->
+<link rel="stylesheet" href="https://meridian.efolusi.com/styles.css">
+
+<!-- 2. React (any 18.x UMD build) -->
+<script src="https://unpkg.com/react@18.3.1/umd/react.production.min.js"></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.production.min.js"></script>
+
+<!-- 3. the component bundle: every component lands on one global -->
+<script src="https://meridian.efolusi.com/_ds_bundle.js"></script>
+
+<!-- 4. Babel, only so the JSX below can run straight in the browser.
+        In a real app your bundler compiles JSX and you skip this. -->
+<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js"></script>
+</head>
+<body style="background:var(--surface-page);font-family:var(--font-sans);margin:0">
+<div id="root"></div>
+
+<script type="text/babel">
+const { Button, Card, Stat, Badge, Input, Toast, ToastStack } = window.EfolusiDesignSystem_4ffc3d;
+
+function App() {
+  const [toasts, setToasts] = React.useState([]);
+  const [name, setName] = React.useState('');
+  const cheer = () => {
+    const id = Date.now();
+    setToasts(t => [...t, id]);
+    setTimeout(() => setToasts(t => t.filter(x => x !== id)), 3200);
+  };
+  return (
+    <main style={{ maxWidth: 520, margin: '0 auto', padding: '64px 24px' }}>
+      <h1 style={{ fontFamily: 'var(--font-display)', fontSize: 32, letterSpacing: '-0.02em', margin: 0 }}>
+        Hello, Meridian
+      </h1>
+      <p style={{ color: 'var(--text-secondary)', lineHeight: 1.6, marginTop: 10 }}>
+        No build step, no install. Four tags in the head and every component is on one global.
+        Toggle the theme to see the whole page follow.
+      </p>
+
+      <Card title="Live component" subtitle="Everything below is Meridian" padding={20} style={{ marginTop: 28 }}>
+        <Stat label="Monthly recurring revenue" value="$48.2k" delta="12.4%" direction="up" />
+        <div style={{ display: 'flex', gap: 8, marginTop: 18, flexWrap: 'wrap' }}>
+          <Badge tone="success" dot>Healthy</Badge>
+          <Badge tone="warning">2 warnings</Badge>
+        </div>
+        <Input label="Your name" placeholder="Ada Obi" value={name} onChange={setName} style={{ marginTop: 18 }} />
+      </Card>
+
+      <div style={{ display: 'flex', gap: 10, marginTop: 22 }}>
+        <Button onClick={cheer}>{name ? `Say hello to ${name}` : 'Show a toast'}</Button>
+        <Button variant="secondary" onClick={() => {
+          const el = document.documentElement;
+          el.setAttribute('data-theme', el.getAttribute('data-theme') === 'dark' ? 'light' : 'dark');
+        }}>Toggle theme</Button>
+      </div>
+
+      <ToastStack>
+        {toasts.map(id => (
+          <Toast key={id} tone="success" title="It works"
+            description={name ? `Nice to meet you, ${name}.` : 'You are running Meridian.'}
+            onClose={() => setToasts(t => t.filter(x => x !== id))} />
+        ))}
+      </ToastStack>
+    </main>
+  );
+}
+
+ReactDOM.createRoot(document.getElementById('root')).render(<App />);
+</script>
+</body>
+</html>

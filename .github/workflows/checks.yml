@@ -40,24 +40,21 @@ jobs:
       - name: No dead interactive controls
         run: python3 scripts/check_dead_controls.py
 
-      - name: Bundle source hashes match source files
+      # A fork PR cannot regenerate the bundle: the compiler is not in this repo.
+      # For those, report the drift and let the maintainer recompile before merge.
+      # Everything else (pushes, same-repo branches) must keep source and artifact in step.
+      - name: Detect fork pull request
+        id: fork
         run: |
-          python3 - <<'EOF'
-          import pathlib, json, hashlib, sys
-          t = pathlib.Path("_ds_bundle.js").read_text()
-          header = t[:t.index("\n")]
-          hj = json.loads(header[header.index("{"):header.rindex("}")+1])
-          bad = []
-          for p, h in hj["sourceHashes"].items():
-              f = pathlib.Path(p)
-              if not f.exists():
-                  bad.append(p + ": missing"); continue
-              if hashlib.sha256(f.read_bytes()).hexdigest()[:len(h)] != h:
-                  bad.append(p + ": hash mismatch (bundle stale)")
-          if bad:
-              print("\n".join(bad)); sys.exit(1)
-          print(f"{len(hj['sourceHashes'])} source hashes verified")
-          EOF
+          if [ "${{ github.event_name }}" = "pull_request" ] && \
+             [ "${{ github.event.pull_request.head.repo.full_name }}" != "${{ github.repository }}" ]; then
+            echo "advisory=--advisory" >> "$GITHUB_OUTPUT"
+          else
+            echo "advisory=" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Bundle source hashes match source files
+        run: python3 scripts/check_bundle_hashes.py ${{ steps.fork.outputs.advisory }}
 
   smoke:
     runs-on: ubuntu-latest

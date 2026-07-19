@@ -16,7 +16,7 @@ Quick orientation:
 - Use cases: the `ai/`, `code/`, `files/`, and `data/` groups exist for richer product surfaces — AI workspaces, infrastructure consoles, file tools, and trading/finance dashboards.
 - Icons: 108 Lucide SVGs in `assets/icons/`, 2px stroke, rendered via the Icon component or inlined.
 - Full screens to copy from (showcases, plain JSX): `showcases/{console,auth,website,docs,agent,infra,trader,tools}/`; page-shell starter in `starters/app-page/`.
-- Voice: sentence case, verbs on buttons, "we/you", no emoji. See README.md § Content fundamentals.
+- Voice: sentence case, verbs on buttons, "we/you", no emoji. See `guidelines/brand.md` § Content fundamentals.
 - Dark mode: `data-theme="dark"` on any subtree; compact density: `data-density="compact"`. Semantic tokens only — never raw ramp values — and both themes come free.
 - Patterns: `guidelines/forms.md` (validation), `guidelines/accessibility.md` (keyboard map, contrast), `guidelines/governance.md` (versioning, contribution).
 - Starters for new pages (copy the whole folder): `starters/{dashboard,auth-page,marketing-page,docs-page,app-page}/`.

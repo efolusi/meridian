@@ -4,8 +4,9 @@
 
 | Version | Supported |
 |---|---|
-| Latest release (1.x) | Yes — security fixes |
-| Older releases | No — upgrade to the latest release |
+| `main` (hosted at meridian.efolusi.com) | Yes — fixes land here first |
+| Latest tagged release (1.x) | Yes — security fixes |
+| Untagged 1.0.0–1.3.0 milestones | No — these were never published; see CHANGELOG.md |
 
 ## Reporting a vulnerability
 Meridian is a design system — static CSS, tokens, and client-side React components with no server, no telemetry, and no data collection. Security issues are still possible (XSS via component props, malicious SVG assets, supply-chain concerns).

@@ -1,6 +1,57 @@
 # Meridian
 
-**Meridian** is an open-source design system by [Efolusi](https://efolusi.com) — design tokens, typography, 104 accessible React components, pre-composed blocks, and full example apps, served browser-native with zero build step. Warm paper, espresso ink, hairline structure. Copy it, theme it, ship it. MIT licensed.
+**A general-purpose open-source design system by [Efolusi](https://efolusi.com).** 104 accessible React components, 177 design tokens in light, dark and compact, 9 blocks, and 8 full example apps — served browser-native with **no build step**.
+
+[![License: MIT](https://img.shields.io/badge/License-MIT-7A4E2B.svg)](LICENSE)
+[![Docs](https://img.shields.io/badge/docs-meridian.efolusi.com-2C1709.svg)](https://meridian.efolusi.com)
+[![Components](https://img.shields.io/badge/components-104-A0693C.svg)](https://meridian.efolusi.com/site/Components.dc.html)
+[![Zero dependencies](https://img.shields.io/badge/runtime%20deps-react%20only-5C3A1F.svg)](#quickstart)
+
+**[Live docs](https://meridian.efolusi.com)** · [Components](https://meridian.efolusi.com/site/Components.dc.html) · [Blocks](https://meridian.efolusi.com/site/Blocks.dc.html) · [Example apps](https://meridian.efolusi.com/site/Examples.dc.html) · [Themes](https://meridian.efolusi.com/site/Themes.dc.html)
+
+Warm paper, espresso ink, hairline structure. Copy it, theme it, ship it.
+
+## Quickstart
+
+Four tags. No install, no bundler, no config — every component lands on one global.
+
+```html
+<link rel="stylesheet" href="https://meridian.efolusi.com/styles.css">
+<script src="https://unpkg.com/react@18.3.1/umd/react.production.min.js"></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.production.min.js"></script>
+<script src="https://meridian.efolusi.com/_ds_bundle.js"></script>
+```
+
+```jsx
+const { Button, Card, Stat } = window.EfolusiDesignSystem_4ffc3d;
+
+<Card title="Revenue" padding={20}>
+  <Stat label="MRR" value="$48.2k" delta="12.4%" direction="up" />
+  <Button onClick={save}>Save changes</Button>
+</Card>
+```
+
+A complete runnable page is in [`hello.html`](hello.html) — open it in a browser, nothing else required.
+
+Dark mode and compact density are attribute scopes, not rebuilds:
+
+```html
+<html data-theme="dark" data-density="compact">
+```
+
+### Other ways to install
+
+| Path | When to use it | How |
+|---|---|---|
+| **CDN** (above) | prototypes, demos, a single-file artifact | point the two tags at `meridian.efolusi.com` |
+| **Vendor the folder** | you want to own and edit the source | copy the repo; link `styles.css` and `_ds_bundle.js` |
+| **Vendor one component** | you need Button, not 104 | copy `components/<group>/<Name>.jsx` + `.d.ts` — MIT, no attribution required |
+
+> **Note:** there is no npm package yet — packaging is the next milestone (see [ROADMAP.md](ROADMAP.md)). The CDN and vendoring paths above are the supported ones today.
+
+## Design language
+
+Palette, type, spacing, motion, and the voice rules live in **[guidelines/brand.md](guidelines/brand.md)**. Accessibility, forms, and governance are in [`guidelines/`](guidelines/).
 
 ## What it covers
 
@@ -14,37 +65,6 @@ Meridian is general-purpose: the primitives and the patterns for an entire produ
 
 Every component and screen here is original. The system was authored from a single brand mark (`assets/logo.png`, an owl in cocoa/caramel/cream) and a short brief: warm sand neutrals with a palette sampled entirely from the mark, humanist sans type, subtle 4px radii, comfortable density, light and dark themes, Lucide icons, springy motion. No prior codebase or product UI was recreated.
 
-## Brand identity
-
-The owl mark is the anchor: wise, warm, a little playful. The palette pairs the owl's **warm browns** (cocoa `#482818`, caramel `#C08A5A`, peach `#EFCFAC`, cream `#F8F4E6` — sampled from the mark) with **sand neutrals**. Interaction color comes from the mark too: **espresso ink** (`--brand-950` `#2C1709`) for primary actions, caramel (`--brand-700`) for links and focus. Design stance: beautiful, fast, minimalist, powerful — warm paper, espresso ink, hairline structure, motion that never performs.
-
-- **Wordmark:** "Efolusi" set in Bricolage Grotesque 650–700, tracking -0.02em, next to the owl. There is no separate logotype file; render the name in type.
-- **Fonts (self-hosted, OFL):** Bricolage Grotesque (display), Figtree (UI/body), JetBrains Mono (code). Variable TTFs in `assets/fonts/`.
-
-## Content fundamentals
-
-- **Voice:** confident, direct, warm. Short declarative sentences. We speak as "we", address the user as "you". ("You're all set." / "We'll email you a receipt.")
-- **Casing:** Sentence case everywhere — headings, buttons, labels, nav. Never Title Case, never ALL CAPS except tiny eyebrow labels (`letter-spacing: 0.06em`, 12px, semibold).
-- **Buttons** are verbs: "Create workspace", "Send invite", "Save changes" — never "Submit", "OK", or "Click here".
-- **Empty states** lead with the action, not the absence: "Create your first project" over "No projects found".
-- **Errors** say what happened + how to fix, no blame, no jargon: "That email is already in use. Try signing in instead."
-- **Numbers & data:** tabular figures in mono for tables/metrics; abbreviate at 10k+ ("12.4k", "$8.2M").
-- **Emoji:** never in product UI. Playfulness comes from motion and the owl, not emoji.
-- **Vibe check:** precise, warm, unhurried. Marketing copy may be bolder ("Ship the boring parts faster.") but stays plain-spoken — no exclamation-mark enthusiasm.
-
-## Visual foundations
-
-- **Color:** warm sand neutral ramp (`--sand-25…950`) for surfaces/text; brand ramp (`--brand-50…950`, cream→peach→caramel→cocoa sampled from the mark): espresso `--brand-950` for primary actions, caramel `--brand-700` for links + focus, cream for selection; the deep end of the ramp (cocoa `#482818`) for brand moments — hero bands, inverse panels, the `brand` button variant. Status trios (success/warning/danger) each ship a 600 fg, 100 bg, 300 border.
-- **Surfaces:** page is warm paper `--sand-50`, cards are pure white with a 1px `--sand-200` border. Max two background colors per view. Inverse/brand sections use `--sand-950` (espresso) or `--cocoa-700` full-bleed with cream text.
-- **Type:** Bricolage Grotesque for h1–h4 and display moments (weight 500–700, tracking -0.02em, optical sizing carries the personality); Figtree 400/500/600 for everything else; JetBrains Mono for code, keys, and tabular numbers. UI base 14px, body prose 16px, minimum 12px.
-- **Spacing:** 4px scale (`--space-1…32`). Comfortable density: 36px default control height (28 compact / 44 large), 16–24px card padding, 24px section gaps in-app, 96px+ between marketing bands.
-- **Radii:** subtle and consistent — 4px controls (`--radius-sm`), 8px cards (`--radius-md`), 12px overlays (`--radius-lg`), 16px hero media (`--radius-xl`), pills `--radius-full`. Nothing blob-shaped.
-- **Borders & shadows:** 1px warm hairlines do ALL the structural work; cards are border-only at rest. Shadows exist only where something floats — `--shadow-md` dropdowns, `--shadow-pop` modals. No inner shadows, no decorative elevation.
-- **Motion:** fast and assured: 100/160/240ms. `--ease-spring` is a soft settle (no bounce) for entrances; `--ease-out` everywhere else. Buttons scale to .985 on press; cards darken their border on hover (no lift); overlays scale from .96 + fade. Nothing longer than 240ms; no parallax. Motion confirms — it never performs.
-- **Hover:** darker fill for solid controls (`--accent-hover`), `--sand-100` wash for quiet ones, underline for links. **Press:** darker still + scale(.985). **Focus:** 2px caramel ring (`--focus-ring`), never removed.
-- **Imagery:** warm-toned, natural light, cream/sand backgrounds preferred. No cool-blue stock. No gradients, period.
-- **Transparency & blur:** sticky headers only (`rgba(250,249,246,.85)` + 12px blur). Nowhere else.
-
 ## Blocks
 
 Pre-composed sections in `blocks/` (Blocks group in the Design System tab): App shell, Login, Stats dashboard, Settings, Hero, Pricing, FAQ, 404 page, Activity feed. Copy a block's markup as the starting point for a page — they compose the primitives, so they inherit theme + density automatically.
@@ -57,16 +77,10 @@ Pre-composed sections in `blocks/` (Blocks group in the Design System tab): App 
 
 ## Patterns
 
+- `guidelines/brand.md` — palette derivation, type and spacing scales, motion, iconography, voice and copy rules
 - `guidelines/forms.md` — validation timing (blur → change → submit), error copy, submit states, async checks
 - `guidelines/accessibility.md` — focus rules, full keyboard map, contrast targets, per-component semantics
 - `guidelines/governance.md` — semver rules, contribution contract, do/don't, deprecation policy
-
-## Iconography
-
-- **System:** [Lucide](https://lucide.dev) (ISC), 24px grid, 2px stroke assets, round caps/joins — 108 curated glyphs copied as raw SVG into `assets/icons/`. Render via the `Icon` component (inlines the SVG, inherits `currentColor`, and re-strokes to 1.5px at render).
-- **Sizes:** 16px inline/buttons, 20px nav/list leading, 24px feature spots. Icon color follows text color; decorative feature icons may sit in a 40px `--sand-100` rounded square.
-- **No icon font, no emoji-as-icons, no hand-drawn SVGs.** Unicode glyphs (→, ×) allowed only inside mono/code contexts. Need a glyph we don't ship? Copy it from Lucide and keep the 2px stroke — the `Icon` component only re-strokes assets authored at exactly `stroke-width="2"`.
-- **Logo:** `assets/logo.png` (668×668, transparent). Don't redraw, recolor, or add effects. Minimum size 24px.
 
 ## Component library
 
@@ -100,7 +114,8 @@ The layout is Meridian's own, organized by purpose: the system core stays at the
 - `showcases/<app>/` — 8 example apps in plain JSX: agent, auth, console, docs, infra, tools, trader, website
 - `starters/<journey>/` — 5 journeys to copy wholesale, one per category, linked pages sharing a consistent shell: marketing (home → pricing → contact), auth (sign in → sign up → onboarding, + password reset), dashboard (overview → customers → detail → settings), app (overview → projects → detail → new project → settings), docs (quickstart → authentication → errors)
 - `site/` — the docs website (home, docs, components, blocks, charts, themes, colors), plus `examples/` (the live demos), `registry.json`, and generated `registry/` install items
-- `guidelines/` — foundation specimen cards + accessibility, forms, governance
+- `guidelines/` — foundation specimen cards + brand (design language), accessibility, forms, governance
+- `hello.html` — a complete runnable page; open it in a browser to see the system working with nothing installed
 - `skills/` — the agent skill entry point
 - `scripts/` — registry generator, contrast check, runtime-copy drift check
 - `tokens.json` (DTCG) + `tailwind.preset.js` — design tokens for Style Dictionary, Figma Variables, and Tailwind (generated by `scripts/build_tokens.py`)

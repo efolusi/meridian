@@ -261,7 +261,7 @@ class Component extends DCLogic {
       heroExp: hero ? hero.exp : '',
       hasMore: more.length > 0,
       more,
-      installCode: '<link rel="stylesheet" href="meridian/styles.css">\n<' + SC + ' src="meridian/_ds_bundle.js"></' + SC + '>',
+      installCode: '<link rel="stylesheet" href="https://meridian.efolusi.com/styles.css">\n<' + SC + ' src="https://unpkg.com/react@18.3.1/umd/react.production.min.js"></' + SC + '>\n<' + SC + ' src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.production.min.js"></' + SC + '>\n<' + SC + ' src="https://meridian.efolusi.com/_ds_bundle.js"></' + SC + '>',
       manualNote: a ? 'Prefer vendoring? Copy components/' + g.id + '/' + a.name + '.jsx and ' + a.name + '.d.ts into your project — MIT, no attribution required.' : '',
       usageCode: a ? 'const { ' + a.name + ' } = window.' + this.state.ns + ';' : '',
       hasExt: !!(a && a.ext),
