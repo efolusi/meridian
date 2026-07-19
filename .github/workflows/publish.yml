@@ -5,13 +5,26 @@ name: publish
 # short-lived identity token for this exact workflow, and npm verifies it against
 # the trusted publisher configured on the package.
 #
-# One-time setup on npmjs.com, under the package's Settings -> Trusted Publisher:
+# IMPORTANT — the very first publish cannot use this workflow. npm only exposes
+# the Trusted Publisher settings on a package that already exists, so version
+# 1.5.0 has to be published once by hand:
+#
+#   npm login
+#   npm run build:npm
+#   npm publish ./dist --access public
+#
+# After that, one-time setup on npmjs.com under the package's Settings ->
+# Trusted Publisher:
 #   Provider    GitHub Actions
-#   Repository  efolusi/meridian
+#   Repository  efolusi/meridian     (case sensitive)
 #   Workflow    publish.yml
 #   Environment npm-publish
-# Until that is configured, the publish step fails with an auth error. That is
-# the intended failure: it means npm does not yet trust this workflow.
+#
+# From 1.5.1 onward this workflow publishes with no token anywhere. Note that a
+# misconfigured trusted publisher surfaces as a bare 404 on publish, which means
+# "npm rejected the OIDC identity", not "package missing" — check the repository
+# spelling, the workflow filename, and that package.json's repository.url
+# matches the repo GitHub reports.
 #
 # Normal use: cut a GitHub Release whose tag is v<version>. This runs, re-checks
 # every gate, and publishes only if the tag agrees with the built package.
