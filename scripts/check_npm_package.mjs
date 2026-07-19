@@ -27,13 +27,56 @@ if (missing.length) {
   process.exit(1);
 }
 
-// deep imports are the reason for the directory shape; check one from each group
-for (const p of ['forms/Button.js', 'data/Table.js', 'overlay/Portal.js', 'feedback/Toast.js']) {
-  const mod = await import(dist(p));
-  if (!Object.values(mod).some(renderable)) {
-    console.error('deep import exported nothing renderable:', p);
+// Deep imports must be checked THROUGH the package name, not by file path.
+// Importing dist/forms/Button.js directly bypasses the "exports" map entirely,
+// which is how a broken map shipped: './*' appended .js, so the documented
+// '@efolusi/meridian/forms/Button.js' resolved to forms/Button.js.js and threw
+// for every consumer, while this check stayed green.
+// Symlink the built package into a temp node_modules so Node resolves it by
+// name and applies exports exactly as it would after npm install.
+const sandbox = path.join(ROOT, '.check-pkg-sandbox');
+fs.rmSync(sandbox, { recursive: true, force: true });
+fs.mkdirSync(path.join(sandbox, 'node_modules', '@efolusi'), { recursive: true });
+fs.symlinkSync(path.join(ROOT, 'dist'), path.join(sandbox, 'node_modules', '@efolusi', 'meridian'), 'dir');
+fs.writeFileSync(path.join(sandbox, 'package.json'), '{"type":"module"}\n');
+
+const NAME = JSON.parse(fs.readFileSync(path.join(ROOT, 'dist', 'package.json'), 'utf8')).name;
+const probe = path.join(sandbox, 'probe.mjs');
+
+async function resolvesByName(specifier) {
+  fs.writeFileSync(probe, `export { default as m } from ${JSON.stringify(specifier)};\n`);
+  try { await import(pathToFileURL(probe).href + `?t=${specifier}`); return true; }
+  catch (err) { return err.code === 'ERR_MODULE_NOT_FOUND' ? false : true; }
+}
+
+try {
+  const specs = [
+    `${NAME}`,
+    `${NAME}/package.json`,
+    // both spellings, because both appear in the docs and in the wild
+    `${NAME}/forms/Button.js`, `${NAME}/forms/Button`,
+    `${NAME}/data/Table.js`, `${NAME}/data/Table`,
+    `${NAME}/overlay/Portal.js`, `${NAME}/feedback/Toast.js`,
+  ];
+  const unresolvable = [];
+  for (const s of specs) if (!(await resolvesByName(s))) unresolvable.push(s);
+  if (unresolvable.length) {
+    console.error('these specifiers do not resolve through the package "exports" map:');
+    for (const s of unresolvable) console.error(`  ${s}`);
     process.exit(1);
   }
+
+  // and they must actually export something usable
+  for (const s of [`${NAME}/forms/Button.js`, `${NAME}/data/Table.js`, `${NAME}/overlay/Portal.js`]) {
+    fs.writeFileSync(probe, `export * from ${JSON.stringify(s)};\n`);
+    const mod = await import(pathToFileURL(probe).href + `?u=${s}`);
+    if (!Object.values(mod).some(renderable)) {
+      console.error('deep import exported nothing renderable:', s);
+      process.exit(1);
+    }
+  }
+} finally {
+  fs.rmSync(sandbox, { recursive: true, force: true });
 }
 
 // Every asset the CSS references must actually be in the tarball. A dangling

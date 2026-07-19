@@ -121,6 +121,14 @@ files.set('package.json', JSON.stringify({
     '.': { types: './index.d.ts', default: './index.js' },
     './styles.css': './styles.css',
     './tokens/*': './tokens/*',
+    // Tools read this directly; without an entry the './*' pattern rewrites it
+    // to package.json.js and the read fails.
+    './package.json': './package.json',
+    // Both spellings of a deep import must work. './*' alone appends the
+    // extension, so 'forms/Button.js' resolved to forms/Button.js.js — which is
+    // exactly the form the README documents. Node prefers the more specific
+    // pattern, so these two coexist.
+    './*.js': { types: './*.d.ts', default: './*.js' },
     './*': { types: './*.d.ts', default: './*.js' },
   },
   peerDependencies: { react: '>=18', 'react-dom': '>=18' },
