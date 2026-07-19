@@ -83,14 +83,22 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: '20'
+      # smoke_headless.mjs does `import { chromium } from 'playwright'`, so the
+      # package has to be resolvable from the repo. `npx --package=X node script`
+      # does not put X on the module search path, which is why this job failed
+      # silently for weeks while the gates job stayed green. Install it for real.
       - name: Install Playwright chromium
-        run: npx --yes playwright@1.48.0 install --with-deps chromium
+        run: |
+          npm install --no-save --no-audit --no-fund playwright@1.48.0
+          npx playwright install --with-deps chromium
       - name: Serve repo and run headless smoke
         run: |
           python3 -m http.server 8000 --bind 127.0.0.1 &
           SERVER=$!
           for i in $(seq 1 20); do curl -sf http://127.0.0.1:8000/site/_smoke.html >/dev/null && break || sleep 0.5; done
-          BASE=http://127.0.0.1:8000 npx --yes --package=playwright@1.48.0 node scripts/smoke_headless.mjs
+          set +e
+          BASE=http://127.0.0.1:8000 node scripts/smoke_headless.mjs
           CODE=$?
+          set -e
           kill $SERVER 2>/dev/null || true
           exit $CODE
