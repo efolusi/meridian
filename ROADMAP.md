@@ -2,7 +2,7 @@
 
 Goal: take Meridian from a complete internal system (v1.x) to a professional, enterprise-adoptable open-source design system.
 
-**Baseline today:** 105 components (source + `.d.ts` + `.prompt.md`), 177 tokens in light/dark/compact, 108 icons, 9 blocks, 8 example apps, 5 starter journeys, docs site with live demos and search, smoke page (121 demos), guidelines (accessibility, forms, governance), MIT license, llms.txt + agent skill.
+**Baseline today:** 106 components (source + `.d.ts` + `.prompt.md`), 177 tokens in light/dark/compact, 108 icons, 9 blocks, 8 example apps, 5 starter journeys, docs site with live demos and search, smoke page (121 demos), guidelines (accessibility, forms, governance), MIT license, llms.txt + agent skill.
 
 ---
 

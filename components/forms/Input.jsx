@@ -1,6 +1,7 @@
 import React from 'react';
 import { Icon } from '../icons/Icon.jsx';
 import { injectEfCss } from './Button.jsx';
+import { useFieldProps } from './FormField.jsx';
 const CSS = `
 .ef-field{display:flex;flex-direction:column;gap:6px}
 .ef-field__label{font-size:var(--text-sm);font-weight:var(--weight-semibold);color:var(--text-primary)}
@@ -24,11 +25,13 @@ const CSS = `
 `;
 export function Input({ label, hint, error, iconLeft, size = 'md', invalid, style, className, ...rest }) {
   injectEfCss('ef-css-input', CSS);
-  const bad = invalid || !!error;
+  // Picks up id / aria wiring when nested in a FormField; standalone this is a no-op.
+  const field = useFieldProps({ invalid, error, id: rest.id, 'aria-describedby': rest['aria-describedby'] });
+  const bad = field.invalid;
   const control = (
     <span className={`ef-input ef-input--${size}${iconLeft ? ' ef-input--icon' : ''}${bad ? ' ef-input--invalid' : ''}`}>
       {iconLeft ? <span className="ef-input__icon"><Icon name={iconLeft} size={size === 'lg' ? 18 : 16} /></span> : null}
-      <input className="ef-input__el" aria-invalid={bad || undefined} {...rest} />
+      <input className="ef-input__el" aria-invalid={bad || undefined} {...rest} {...field.controlProps} />
     </span>
   );
   if (!label && !hint && !error) return React.cloneElement(control, { style, className: (control.props.className + (className ? ' ' + className : '')) });

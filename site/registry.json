@@ -2453,6 +2453,37 @@
       ]
     },
     {
+      "name": "formfield",
+      "type": "registry:ui",
+      "title": "FormField",
+      "description": "Label, hint, error and required chrome around a control, and the owner of the `id` that ties them together. Use it when a control has no `label` prop of its own, when several controls share one label, or when the control is not from this system.",
+      "dependencies": [
+        "react"
+      ],
+      "registryDependencies": [
+        "https://meridian.efolusi.com/site/registry/meridian-base.json",
+        "https://meridian.efolusi.com/site/registry/button.json",
+        "https://meridian.efolusi.com/site/registry/icon.json"
+      ],
+      "files": [
+        {
+          "path": "components/forms/FormField.jsx",
+          "type": "registry:ui"
+        },
+        {
+          "path": "components/forms/FormField.d.ts",
+          "type": "registry:component"
+        },
+        {
+          "path": "components/forms/FormField.prompt.md",
+          "type": "registry:component"
+        }
+      ],
+      "categories": [
+        "forms"
+      ]
+    },
+    {
       "name": "iconbutton",
       "type": "registry:ui",
       "title": "IconButton",
@@ -2494,6 +2525,7 @@
       "registryDependencies": [
         "https://meridian.efolusi.com/site/registry/meridian-base.json",
         "https://meridian.efolusi.com/site/registry/button.json",
+        "https://meridian.efolusi.com/site/registry/formfield.json",
         "https://meridian.efolusi.com/site/registry/icon.json"
       ],
       "files": [
@@ -2615,6 +2647,7 @@
       "registryDependencies": [
         "https://meridian.efolusi.com/site/registry/meridian-base.json",
         "https://meridian.efolusi.com/site/registry/button.json",
+        "https://meridian.efolusi.com/site/registry/formfield.json",
         "https://meridian.efolusi.com/site/registry/icon.json"
       ],
       "files": [
@@ -2706,6 +2739,7 @@
       "registryDependencies": [
         "https://meridian.efolusi.com/site/registry/meridian-base.json",
         "https://meridian.efolusi.com/site/registry/button.json",
+        "https://meridian.efolusi.com/site/registry/formfield.json",
         "https://meridian.efolusi.com/site/registry/icon.json"
       ],
       "files": [

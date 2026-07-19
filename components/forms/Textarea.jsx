@@ -1,6 +1,7 @@
 import React from 'react';
 import { Icon } from '../icons/Icon.jsx';
 import { injectEfCss } from './Button.jsx';
+import { useFieldProps } from './FormField.jsx';
 const CSS = `
 .ef-field{display:flex;flex-direction:column;gap:6px}
 .ef-field__label{font-size:var(--text-sm);font-weight:var(--weight-semibold);color:var(--text-primary)}
@@ -16,8 +17,10 @@ const CSS = `
 `;
 export function Textarea({ label, hint, error, invalid, style, className, ...rest }) {
   injectEfCss('ef-css-textarea', CSS);
-  const bad = invalid || !!error;
-  const el = <textarea className={`ef-textarea${bad ? ' ef-textarea--invalid' : ''}`} aria-invalid={bad || undefined} {...rest} />;
+  // Picks up id / aria wiring when nested in a FormField; standalone this is a no-op.
+  const field = useFieldProps({ invalid, error, id: rest.id, 'aria-describedby': rest['aria-describedby'] });
+  const bad = field.invalid;
+  const el = <textarea className={`ef-textarea${bad ? ' ef-textarea--invalid' : ''}`} aria-invalid={bad || undefined} {...rest} {...field.controlProps} />;
   if (!label && !hint && !error) return React.cloneElement(el, { style, className: el.props.className + (className ? ' ' + className : '') });
   return (
     <label className={`ef-field${className ? ' ' + className : ''}`} style={style}>

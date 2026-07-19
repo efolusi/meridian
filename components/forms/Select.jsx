@@ -1,6 +1,7 @@
 import React from 'react';
 import { Icon } from '../icons/Icon.jsx';
 import { injectEfCss } from './Button.jsx';
+import { useFieldProps } from './FormField.jsx';
 const CSS = `
 .ef-field{display:flex;flex-direction:column;gap:6px}
 .ef-field__label{font-size:var(--text-sm);font-weight:var(--weight-semibold);color:var(--text-primary)}
@@ -18,9 +19,11 @@ const CSS = `
 `;
 export function Select({ label, hint, options, size = 'md', invalid, children, style, className, ...rest }) {
   injectEfCss('ef-css-select', CSS);
+  // Picks up id / aria wiring when nested in a FormField; standalone this is a no-op.
+  const field = useFieldProps({ invalid, id: rest.id, 'aria-describedby': rest['aria-describedby'] });
   const control = (
-    <span className={`ef-select ef-select--${size}${invalid ? ' ef-select--invalid' : ''}`}>
-      <select className="ef-select__el" aria-invalid={invalid || undefined} {...rest}>
+    <span className={`ef-select ef-select--${size}${field.invalid ? ' ef-select--invalid' : ''}`}>
+      <select className="ef-select__el" aria-invalid={field.invalid || undefined} {...rest} {...field.controlProps}>
         {options ? options.map(o => typeof o === 'string' ? <option key={o} value={o}>{o}</option> : <option key={o.value} value={o.value}>{o.label}</option>) : children}
       </select>
       <span className="ef-select__chevron"><Icon name="chevron-down" size={16} /></span>
