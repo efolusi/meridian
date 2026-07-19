@@ -6,7 +6,23 @@ All notable changes to Meridian are documented here. Format follows [Keep a Chan
 
 ## Unreleased
 
-Nothing yet.
+### Added
+- **Toaster + `Toaster.useToast()`** — one owner for the toast queue: ids, timers, the live region and the portal. A toast carrying an action never auto-dismisses (WCAG 2.2.1), timers pause on hover and focus, and the stack holds a single live region instead of one per toast.
+- **FormField + the field wiring** — label / hint / error / required chrome and the id that links them. All eleven form controls inherit `id`, `aria-describedby`, `aria-invalid` and `aria-required` from an enclosing field; `group` mode uses `role="group"` for control sets; a render prop wires non-Meridian controls.
+- **Table** gains sorting (applied by the table, with `sortAccessor`), selection with an indeterminate select-all, sticky header, and empty/loading states.
+- **Portal + `useAnchoredStyle`**, and all eight floating surfaces routed through them: they flip when there is no room, shift to stay on screen, and can no longer be clipped by a scrolling ancestor.
+- **A test suite** — 22 vitest + testing-library tests over the keyboard and wiring contracts that were previously only claimed in prose. Run with `npm test`.
+- **An ESM npm build** (`npm run build:npm` → `@efolusi/meridian` in `dist/`), verified in CI by importing it. Not published to the registry yet.
+- **The compiler**, vendored in as `scripts/build_bundle.mjs`; it reproduces the historical bundle byte for byte, and CI now rebuilds and diffs rather than trusting a recorded hash.
+- Browser-support and RTL statements in `guidelines/accessibility.md` — including the honest note that RTL is *not* supported in 1.x.
+
+### Changed
+- Every component forwards unknown props to its root (103 of 106), and the nine you most often need a handle on forward refs.
+- The six hand-rolled toast queues in the showcases are gone; tones are chosen per call instead of everything being green.
+
+### Fixed
+- The manifest's `components` and `tokens` inventories are generated rather than hand-maintained. They had drifted, which silently produced no registry item for Portal and dropped it from the dependency list of all seven overlays that import it.
+- `Portal` imported `react-dom` explicitly instead of relying on a window global, which only worked inside the bundle.
 
 ## 1.4.0 — 2026-07-19 — first public release
 

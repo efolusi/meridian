@@ -40,6 +40,9 @@ jobs:
       - name: No dead interactive controls
         run: python3 scripts/check_dead_controls.py
 
+      - name: No new raw colour literals
+        run: python3 scripts/check_token_adherence.py
+
       # Fast pre-check: the header's recorded hashes vs the sources on disk.
       - name: Bundle source hashes match source files
         run: python3 scripts/check_bundle_hashes.py

@@ -40,3 +40,25 @@ Efolusi ships WCAG 2.1 AA. The rules, per concern:
 - Tooltip links to its trigger via `aria-describedby` and dismisses on Escape; HoverCard is a non-modal panel (no dialog role) and dismisses on Escape.
 
 Full keyboard coverage across overlays: Menu, ContextMenu, and Menubar support arrow-key navigation, Home/End, and single-character typeahead; Menubar adds Left/Right between menus and Down to open.
+
+## Browser support and RTL
+
+**Supported:** the last two versions of Chrome, Edge, Safari and Firefox. The
+system uses `color-mix()`, `:focus-visible`, CSS custom properties and
+`position: fixed` overlays; all are available across that range. The zero-build
+CDN path additionally depends on React 18 UMD builds — React 19 dropped UMD, so
+that path is pinned to 18 while the npm build tracks `react >= 18`.
+
+**RTL is not supported in 1.x, and the honest reason is that it has not been
+done rather than that it is impossible.** Components use physical properties
+(`left`, `right`, `margin-left`) in places, so a `dir="rtl"` document will render
+with correct text direction but mirrored-wrong spacing and overlay alignment.
+Moving to logical properties (`inset-inline-start`, `margin-inline`) is tracked
+in ROADMAP.md. Do not claim RTL support until that lands and a mirrored screen
+has been reviewed.
+
+**Reduced motion** is honoured globally at `tokens/base.css:10`: under
+`prefers-reduced-motion: reduce` every animation and transition is collapsed to
+0.01ms with `!important` and scroll-behavior goes auto, so entrances land
+instantly rather than being skipped. It applies to `*`, so a component cannot opt
+out of it by accident.
