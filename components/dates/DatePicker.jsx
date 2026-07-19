@@ -2,6 +2,7 @@ import React from 'react';
 import { Icon } from '../icons/Icon.jsx';
 import { Calendar } from './Calendar.jsx';
 import { injectEfCss } from '../forms/Button.jsx';
+import { useFieldProps } from '../forms/FormField.jsx';
 import { Portal, useAnchoredStyle } from '../overlay/Portal.jsx';
 const CSS = `
 .ef-datepicker{position:relative;display:inline-flex;flex-direction:column;gap:6px}
@@ -16,6 +17,8 @@ const CSS = `
 const fmt = v => { if (!v) return null; const d = new Date(v + 'T00:00:00'); return d.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' }); };
 export function DatePicker({ label, value, defaultValue, onChange, placeholder = 'Pick a date', style, className, ...rest }) {
   injectEfCss('ef-css-datepicker', CSS);
+  // Picks up id / aria wiring when nested in a FormField; standalone this is a no-op.
+  const field = useFieldProps({ id: rest.id, 'aria-describedby': rest['aria-describedby'] });
   const [inner, setInner] = React.useState(defaultValue || '');
   const v = value != null ? value : inner;
   const [open, setOpen] = React.useState(false);
@@ -40,7 +43,7 @@ export function DatePicker({ label, value, defaultValue, onChange, placeholder =
   return (
     <span {...rest} ref={ref} className={`ef-datepicker${className ? ' ' + className : ''}`} style={style}>
       {label ? <span className="ef-datepicker__label">{label}</span> : null}
-      <button type="button" ref={btnRef} aria-haspopup="dialog" aria-expanded={open} className={`ef-datepicker__btn${v ? '' : ' ef-datepicker__btn--empty'}`} onClick={() => setOpen(o => !o)}>
+      <button {...field.controlProps} type="button" ref={btnRef} aria-haspopup="dialog" aria-expanded={open} className={`ef-datepicker__btn${v ? '' : ' ef-datepicker__btn--empty'}`} onClick={() => setOpen(o => !o)}>
         <Icon name="calendar" size={15} style={{ color: 'var(--text-muted)' }} />{fmt(v) || placeholder}
         <Icon name="chevron-down" size={14} style={{ color: 'var(--text-muted)', marginLeft: 'auto' }} />
       </button>

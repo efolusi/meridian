@@ -1,6 +1,7 @@
 import React from 'react';
 import { Icon } from '../icons/Icon.jsx';
 import { injectEfCss } from './Button.jsx';
+import { useFieldProps } from './FormField.jsx';
 const CSS = `
 .ef-check{display:inline-flex;align-items:flex-start;gap:10px;cursor:pointer;user-select:none}
 .ef-check--disabled{opacity:.45;cursor:not-allowed}
@@ -16,9 +17,11 @@ const CSS = `
 `;
 export const Checkbox = React.forwardRef(function Checkbox({ label, description, disabled, style, className, ...rest }, ref) {
   injectEfCss('ef-css-check', CSS);
+  // Picks up id / aria wiring when nested in a FormField; standalone this is a no-op.
+  const field = useFieldProps({ id: rest.id, 'aria-describedby': rest['aria-describedby'] });
   return (
     <label className={`ef-check${disabled ? ' ef-check--disabled' : ''}${className ? ' ' + className : ''}`} style={style}>
-      <input ref={ref} type="checkbox" className="ef-check__input" disabled={disabled} {...rest} />
+      <input ref={ref} type="checkbox" className="ef-check__input" disabled={disabled} {...rest} {...field.controlProps} />
       <span className="ef-check__box"><Icon name="check" size={13} strokeWidth={3} /></span>
       {label ? <span className="ef-check__label">{label}{description ? <span className="ef-check__desc">{description}</span> : null}</span> : null}
     </label>

@@ -1,5 +1,6 @@
 import React from 'react';
 import { injectEfCss } from './Button.jsx';
+import { useFieldProps } from './FormField.jsx';
 const CSS = `
 .ef-radio{display:inline-flex;align-items:flex-start;gap:10px;cursor:pointer;user-select:none}
 .ef-radio--disabled{opacity:.45;cursor:not-allowed}
@@ -15,9 +16,11 @@ const CSS = `
 `;
 export function Radio({ label, description, disabled, style, className, ...rest }) {
   injectEfCss('ef-css-radio', CSS);
+  // Picks up id / aria wiring when nested in a FormField; standalone this is a no-op.
+  const field = useFieldProps({ id: rest.id, 'aria-describedby': rest['aria-describedby'] });
   return (
     <label className={`ef-radio${disabled ? ' ef-radio--disabled' : ''}${className ? ' ' + className : ''}`} style={style}>
-      <input type="radio" className="ef-radio__input" disabled={disabled} {...rest} />
+      <input type="radio" className="ef-radio__input" disabled={disabled} {...rest} {...field.controlProps} />
       <span className="ef-radio__dot"></span>
       {label ? <span className="ef-radio__label">{label}{description ? <span className="ef-radio__desc">{description}</span> : null}</span> : null}
     </label>

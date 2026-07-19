@@ -2,6 +2,7 @@ import React from 'react';
 import { Icon } from '../icons/Icon.jsx';
 import { Tag } from '../display/Tag.jsx';
 import { injectEfCss } from './Button.jsx';
+import { useFieldProps } from './FormField.jsx';
 import { Portal, useAnchoredStyle } from '../overlay/Portal.jsx';
 const CSS = `
 .ef-combo{position:relative}
@@ -20,6 +21,8 @@ const CSS = `
 `;
 export function Combobox({ label, hint, options, value, onChange, multiple, placeholder = 'Search…', style, className, ...rest }) {
   injectEfCss('ef-css-combo', CSS);
+  // Picks up id / aria wiring when nested in a FormField; standalone this is a no-op.
+  const field = useFieldProps({ id: rest.id, 'aria-describedby': rest['aria-describedby'] });
   const [open, setOpen] = React.useState(false);
   const [q, setQ] = React.useState('');
   const [hi, setHi] = React.useState(0);
@@ -58,7 +61,7 @@ export function Combobox({ label, hint, options, value, onChange, multiple, plac
           const o = opts.find(x => x.value === v);
           return <Tag key={v} onRemove={() => unpick(v)}>{o ? o.label : v}</Tag>;
         })}
-        <input className="ef-combo__input" role="combobox" aria-expanded={open}
+        <input {...field.controlProps} className="ef-combo__input" role="combobox" aria-expanded={open}
           placeholder={sel.length && multiple ? '' : !multiple && sel.length ? (opts.find(x => x.value === sel[0]) || {}).label : placeholder}
           value={q} onChange={e => { setQ(e.target.value); setOpen(true); setHi(0); }} onFocus={() => setOpen(true)} onKeyDown={key} />
         <span className="ef-combo__chevron"><Icon name="chevron-down" size={16} /></span>

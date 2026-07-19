@@ -1,5 +1,6 @@
 import React from 'react';
 import { injectEfCss } from './Button.jsx';
+import { useFieldProps } from './FormField.jsx';
 const CSS = `
 .ef-slider{display:flex;flex-direction:column;gap:8px}
 .ef-slider__row{display:flex;align-items:center;gap:12px}
@@ -18,11 +19,13 @@ const CSS = `
 `;
 export function Slider({ label, showValue, format, min = 0, max = 100, step = 1, value, defaultValue, onChange, disabled, style, className, ...rest }) {
   injectEfCss('ef-css-slider', CSS);
+  // Picks up id / aria wiring when nested in a FormField; standalone this is a no-op.
+  const field = useFieldProps({ id: rest.id, 'aria-describedby': rest['aria-describedby'] });
   const [inner, setInner] = React.useState(defaultValue != null ? defaultValue : (min + max) / 2);
   const v = value != null ? value : inner;
   const pct = ((v - min) / (max - min)) * 100;
   const handle = e => { const n = +e.target.value; if (value == null) setInner(n); if (onChange) onChange(n, e); };
-  const input = <input type="range" className="ef-slider__input" style={{ '--ef-fill': pct + '%' }} min={min} max={max} step={step} value={v} onChange={handle} disabled={disabled} {...rest} />;
+  const input = <input type="range" className="ef-slider__input" style={{ '--ef-fill': pct + '%' }} min={min} max={max} step={step} value={v} onChange={handle} disabled={disabled} {...rest} {...field.controlProps} />;
   if (!label && !showValue) return <span className={`ef-slider${className ? ' ' + className : ''}`} style={style}>{input}</span>;
   return (
     <label className={`ef-slider${className ? ' ' + className : ''}`} style={style}>

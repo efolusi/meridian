@@ -1,5 +1,6 @@
 import React from 'react';
 import { injectEfCss } from './Button.jsx';
+import { useFieldProps } from './FormField.jsx';
 const CSS = `
 .ef-digits{display:flex;gap:8px}
 .ef-digits__cell{width:44px;height:52px;border:1px solid var(--border-strong);border-radius:var(--radius-sm);background:var(--surface-card);color:var(--text-primary);font-family:var(--font-mono);font-size:22px;font-weight:600;text-align:center;transition:border-color var(--dur-fast) var(--ease-out),box-shadow var(--dur-fast) var(--ease-out)}
@@ -10,6 +11,8 @@ const CSS = `
 `;
 export function DigitEntry({ length = 6, value, onChange, onComplete, label, invalid, disabled, style, className, ...rest }) {
   injectEfCss('ef-css-digits', CSS);
+  // Picks up id / aria wiring when nested in a FormField; standalone this is a no-op.
+  const field = useFieldProps({ invalid, id: rest.id, 'aria-describedby': rest['aria-describedby'] });
   const [inner, setInner] = React.useState('');
   const v = value != null ? value : inner;
   const refs = React.useRef([]);
@@ -36,7 +39,7 @@ export function DigitEntry({ length = 6, value, onChange, onComplete, label, inv
     refs.current[to] && refs.current[to].focus();
   };
   const cells = Array.from({ length }, (_, i) => (
-    <input key={i} ref={el => refs.current[i] = el} className="ef-digits__cell" inputMode="numeric" autoComplete={i === 0 ? 'one-time-code' : 'off'}
+    <input key={i} {...(i === 0 ? field.controlProps : null)} ref={el => refs.current[i] = el} className="ef-digits__cell" inputMode="numeric" autoComplete={i === 0 ? 'one-time-code' : 'off'}
       maxLength={length} value={v[i] || ''} disabled={disabled} aria-label={`Digit ${i + 1} of ${length}`}
       onChange={e => inputAt(i, e)} onKeyDown={e => keyAt(i, e)} onFocus={e => e.target.select()} />
   ));

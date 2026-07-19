@@ -1,5 +1,6 @@
 import React from 'react';
 import { injectEfCss } from './Button.jsx';
+import { useFieldProps } from './FormField.jsx';
 const CSS = `
 .ef-switch{display:inline-flex;align-items:center;gap:10px;cursor:pointer;user-select:none}
 .ef-switch--disabled{opacity:.45;cursor:not-allowed}
@@ -16,9 +17,11 @@ const CSS = `
 `;
 export function Switch({ label, size = 'md', disabled, style, className, ...rest }) {
   injectEfCss('ef-css-switch', CSS);
+  // Picks up id / aria wiring when nested in a FormField; standalone this is a no-op.
+  const field = useFieldProps({ id: rest.id, 'aria-describedby': rest['aria-describedby'] });
   return (
     <label className={`ef-switch ef-switch--${size}${disabled ? ' ef-switch--disabled' : ''}${className ? ' ' + className : ''}`} style={style}>
-      <input type="checkbox" role="switch" className="ef-switch__input" disabled={disabled} {...rest} />
+      <input type="checkbox" role="switch" className="ef-switch__input" disabled={disabled} {...rest} {...field.controlProps} />
       <span className="ef-switch__track"></span>
       {label ? <span className="ef-switch__label">{label}</span> : null}
     </label>

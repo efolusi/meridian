@@ -1,5 +1,6 @@
 import React from 'react';
 import { injectEfCss } from './Button.jsx';
+import { useFieldProps } from './FormField.jsx';
 const CSS = `
 .ef-igroup{display:flex;flex-direction:column;gap:6px;width:100%}
 .ef-igroup__label{font-size:var(--text-sm);font-weight:600;color:var(--text-primary)}
@@ -20,6 +21,8 @@ const CSS = `
 `;
 export function InputGroup({ label, hint, error, prefix, suffix, size = 'md', style, className, ...rest }) {
   injectEfCss('ef-css-igroup', CSS);
+  // Picks up id / aria wiring when nested in a FormField; standalone this is a no-op.
+  const field = useFieldProps({ error, id: rest.id, 'aria-describedby': rest['aria-describedby'] });
   const addon = (node, where) => node == null ? null : (
     <span className={`ef-igroup__addon ef-igroup__addon--${where}${typeof node !== 'string' ? ' ef-igroup__addon--bare' : ''}`}>{node}</span>
   );
@@ -28,7 +31,7 @@ export function InputGroup({ label, hint, error, prefix, suffix, size = 'md', st
       {label ? <span className="ef-igroup__label">{label}</span> : null}
       <span className="ef-igroup__row">
         {addon(prefix, 'lead')}
-        <input className="ef-igroup__input" aria-invalid={!!error} {...rest} />
+        <input className="ef-igroup__input" aria-invalid={field.invalid || undefined} {...rest} {...field.controlProps} />
         {addon(suffix, 'trail')}
       </span>
       {error ? <span className="ef-igroup__note ef-igroup__note--error">{error}</span> : hint ? <span className="ef-igroup__note">{hint}</span> : null}
