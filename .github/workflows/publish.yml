@@ -1,0 +1,121 @@
+name: publish
+
+# Publishes @efolusi/meridian to npm using Trusted Publishing (OIDC), so no npm
+# token is ever stored in this repository or in GitHub secrets. GitHub mints a
+# short-lived identity token for this exact workflow, and npm verifies it against
+# the trusted publisher configured on the package.
+#
+# One-time setup on npmjs.com, under the package's Settings -> Trusted Publisher:
+#   Provider    GitHub Actions
+#   Repository  efolusi/meridian
+#   Workflow    publish.yml
+#   Environment npm-publish
+# Until that is configured, the publish step fails with an auth error. That is
+# the intended failure: it means npm does not yet trust this workflow.
+#
+# Normal use: cut a GitHub Release whose tag is v<version>. This runs, re-checks
+# every gate, and publishes only if the tag agrees with the built package.
+# Use the manual trigger with dry_run to rehearse the whole path safely.
+
+on:
+  release:
+    types: [published]
+  workflow_dispatch:
+    inputs:
+      dry_run:
+        description: 'Build and validate, but do not publish'
+        type: boolean
+        default: true
+
+permissions:
+  contents: read
+  id-token: write # required for OIDC; without it npm cannot verify the workflow
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    # Gives the publish a reviewable gate in repo settings, and scopes the OIDC
+    # claim. Must match the Environment named in the trusted publisher config.
+    environment: npm-publish
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          registry-url: 'https://registry.npmjs.org'
+
+      # Trusted publishing needs npm 11.5.1 or newer; node 22 still bundles 10.x.
+      - name: Use an npm that understands trusted publishing
+        run: |
+          npm install -g npm@latest
+          npm --version
+
+      - name: Install
+        run: npm ci --no-audit --no-fund
+
+      # A package that cannot pass its own checks has no business on a registry,
+      # and a bad version cannot be unpublished after 72 hours.
+      - name: Gates
+        run: |
+          python3 scripts/check_contrast.py
+          python3 scripts/check_runtime_copies.py
+          python3 scripts/check_paths.py
+          python3 scripts/check_dead_controls.py
+          python3 scripts/check_token_adherence.py
+          python3 scripts/check_bundle_hashes.py
+          python3 scripts/sync_manifest.py --check
+          node scripts/build_bundle.mjs --check
+
+      - name: Tests
+        run: npm test
+
+      - name: Build the package
+        run: node scripts/build_npm.mjs
+
+      - name: Validate the package
+        run: |
+          node scripts/check_npm_package.mjs
+          node scripts/check_types.mjs
+
+      # The tag is the release's claim about what this is; the manifest is what
+      # actually got built. If they disagree, the wrong thing is about to ship
+      # under a name people will pin.
+      - name: Tag and package version must agree
+        if: github.event_name == 'release'
+        run: |
+          TAG="${{ github.event.release.tag_name }}"
+          PKG="$(node -p "require('./dist/package.json').version")"
+          echo "release tag: $TAG"
+          echo "package    : $PKG"
+          if [ "$TAG" != "v$PKG" ]; then
+            echo "::error::tag $TAG does not match package version $PKG."
+            echo "Bump version in _ds_manifest.json (the npm build reads it from there), or retag."
+            exit 1
+          fi
+
+      # Republishing an existing version fails at the registry anyway; failing
+      # here says why, instead of surfacing a bare 403.
+      - name: Version must not already be published
+        run: |
+          PKG="$(node -p "require('./dist/package.json').version")"
+          NAME="$(node -p "require('./dist/package.json').name")"
+          if npm view "$NAME@$PKG" version >/dev/null 2>&1; then
+            echo "::error::$NAME@$PKG is already on the registry. npm versions are immutable; bump it."
+            exit 1
+          fi
+          echo "$NAME@$PKG is not on the registry yet"
+
+      - name: Pack (what would ship)
+        run: npm pack ./dist --dry-run
+
+      - name: Publish
+        if: github.event_name == 'release' || inputs.dry_run == false
+        # No NODE_AUTH_TOKEN: the OIDC identity above is the credential.
+        # Provenance is attached automatically when publishing this way.
+        run: npm publish ./dist --access public
+
+      - name: Dry run finished
+        if: github.event_name == 'workflow_dispatch' && inputs.dry_run
+        run: echo "Dry run only. Nothing was published."

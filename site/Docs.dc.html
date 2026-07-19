@@ -259,6 +259,12 @@ class Component extends DCLogic {
         p('Open an issue describing the gap, agree on the API in the thread, then submit the three files plus a specimen entry. Versioning and release policy live in guidelines/governance.md; the full contribution guide is CONTRIBUTING.md at the repo root.'),
       ] },
       { group: 'Reference', id: 'changelog', title: 'Changelog', lede: 'Notable changes, newest first. Full history in CHANGELOG.md.', blocks: [
+        h2('v150', '1.5.0 — July 2026'),
+        list([
+          ['Runtime layer.', '— Toaster owns the toast queue (a toast with an action never auto-dismisses), FormField unifies label, hint, error and id wiring across all eleven controls, and every floating surface flips and shifts through a shared Portal instead of being clipped.'],
+          ['Table.', '— sorting, selection with an indeterminate select-all, sticky header, and empty and loading states.'],
+          ['Tested and packaged.', '— 22 vitest tests over the keyboard and wiring contracts, the compiler vendored in and diffed in CI, and an ESM npm package whose types compile on @types/react 18 and 19 and which ships the fonts its own CSS asks for.'],
+        ]),
         h2('v140', '1.4.0 — July 2026'),
         list([
           ['First public release.', '— the first tagged, installable version; Meridian is positioned as a general-purpose design system.'],

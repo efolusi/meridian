@@ -4,7 +4,9 @@ All notable changes to Meridian are documented here. Format follows [Keep a Chan
 
 > **On the versions below 1.4.0:** Meridian was built in the open but released to nobody. Versions 1.0.0 through 1.3.0 are development milestones recorded as they happened; they were never tagged, published, or installable, so there is no artefact to go back to. They are kept because they are an accurate record of how the system was built, not because you can depend on them. The first tagged, publicly consumable release is 1.4.0.
 
-## Unreleased
+## 1.5.0 — 2026-07-20
+
+The runtime layer the 1.4.0 release was missing: a toast owner, field wiring, a portal for every floating surface, a real test suite, and an npm package whose types and assets actually work for consumers.
 
 ### Added
 - **Toaster + `Toaster.useToast()`** — one owner for the toast queue: ids, timers, the live region and the portal. A toast carrying an action never auto-dismisses (WCAG 2.2.1), timers pause on hover and focus, and the stack holds a single live region instead of one per toast.
