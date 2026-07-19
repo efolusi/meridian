@@ -1,4 +1,7 @@
 import React from 'react';
+// Bare imports are stripped by the bundle compiler, so this resolves to the
+// window global there; in an ESM consumer it resolves normally. Both work.
+import ReactDOM from 'react-dom';
 import { injectEfCss } from '../forms/Button.jsx';
 const CSS = `
 .ef-portal{position:fixed;top:0;left:0;width:0;height:0}

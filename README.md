@@ -47,7 +47,12 @@ Dark mode and compact density are attribute scopes, not rebuilds:
 | **Vendor the folder** | you want to own and edit the source | copy the repo; link `styles.css` and `_ds_bundle.js` |
 | **Vendor one component** | you need Button, not 104 | copy `components/<group>/<Name>.jsx` + `.d.ts` — MIT, no attribution required |
 
-> **Note:** there is no npm package yet — packaging is the next milestone (see [ROADMAP.md](ROADMAP.md)). The CDN and vendoring paths above are the supported ones today.
+> **On npm:** the ESM package builds from these same sources (`npm run build:npm` emits `@efolusi/meridian` into `dist/`, and CI imports it on every push) but is **not published to the registry yet**. Until it is, the CDN and vendoring paths above are the supported ones. When it lands the usage is:
+>
+> ```js
+> import '@efolusi/meridian/styles.css';
+> import { Button, FormField } from '@efolusi/meridian';
+> ```
 
 ## Design language
 

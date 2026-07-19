@@ -7,7 +7,9 @@
     "build:bundle": "node scripts/build_bundle.mjs",
     "check:bundle": "node scripts/build_bundle.mjs --check",
     "test": "vitest run",
-    "test:watch": "vitest"
+    "test:watch": "vitest",
+    "build:npm": "node scripts/build_npm.mjs",
+    "check:npm": "node scripts/build_npm.mjs --check"
   },
   "devDependencies": {
     "@babel/standalone": "7.29.0",

@@ -61,6 +61,12 @@ jobs:
       - name: Unit tests
         run: npm test
 
+      # The ESM package must build and import for real, not just compile.
+      - name: npm package builds and imports
+        run: |
+          node scripts/build_npm.mjs
+          node scripts/check_npm_package.mjs
+
   smoke:
     runs-on: ubuntu-latest
     steps:
