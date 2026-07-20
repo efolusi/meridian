@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Rebuild the generated arrays in _ds_manifest.json: `components` and `tokens`.
+"""Rebuild the generated fields in _ds_manifest.json: `version`, `components`, `tokens`.
 
 The manifest is a compiler artifact whose inventories drift silently, and the
 drift is not cosmetic: scripts/build_registry.py derives the whole registry from
@@ -16,6 +16,15 @@ Conventions preserved from the compiler output:
   - a token that already exists keeps its recorded `kind` (the compiler is the
     authority on those); only new tokens get a kind inferred from their name
 
+`version` is reconciled against package.json because the npm build reads the
+version from the manifest, not from package.json. Bumping package.json alone
+therefore builds a tarball carrying the previous version, and every gate stays
+green while it happens: this was hit for real while cutting 1.5.2. The release
+workflow does compare the release tag against dist/package.json and would catch
+it, but only on the release path, so a local `build_npm` still ships the wrong
+number silently. package.json is the source of truth here, since that is the
+file `npm version` and a human both edit.
+
 Usage: python3 scripts/sync_manifest.py [--check]
   --check  exit 1 if the manifest is out of date, without writing
 """
@@ -23,6 +32,7 @@ import json, pathlib, re, sys
 
 ROOT = pathlib.Path(__file__).resolve().parent.parent
 MANIFEST = ROOT / "_ds_manifest.json"
+PACKAGE = ROOT / "package.json"
 BUNDLE = ROOT / "_ds_bundle.js"
 FILE_ORDER = ["colors.css", "typography.css", "spacing.css", "effects.css"]
 
@@ -116,12 +126,16 @@ def main():
     comp_added = [c["name"] for c in new_components if c["name"] not in {o["name"] for o in old_components}]
     comp_removed = [o["name"] for o in old_components if o["name"] not in {c["name"] for c in new_components}]
 
+    old_version = manifest.get("version")
+    new_version = json.loads(PACKAGE.read_text())["version"]
+
     old = manifest.get("tokens", [])
     existing_kinds = {e["name"]: e["kind"] for e in old}
     new = build(existing_kinds)
 
-    if old == new and old_components == new_components:
-        print(f"manifest in sync ({len(new_components)} components, {len(new)} token entries)")
+    if old == new and old_components == new_components and old_version == new_version:
+        print(f"manifest in sync (version {new_version}, "
+              f"{len(new_components)} components, {len(new)} token entries)")
         return 0
 
     added = [e["name"] for e in new if e["name"] not in {o["name"] for o in old}]
@@ -136,6 +150,10 @@ def main():
 
     if check:
         print(f"manifest OUT OF DATE")
+        if old_version != new_version:
+            print(f"  version: {old_version} -> {new_version} (from package.json)")
+            print(f"           the npm build reads the version from the manifest, so"
+                  f" building now would ship {old_version}")
         if old_components != new_components:
             print(f"  components: {len(old_components)} -> {len(new_components)}")
             for a in comp_added:
@@ -152,10 +170,13 @@ def main():
         print("\nrun: python3 scripts/sync_manifest.py")
         return 1
 
+    manifest["version"] = new_version
     manifest["components"] = new_components
     manifest["tokens"] = new
     # match the compiler's serialisation exactly: compact, \u-escaped, no trailing newline
     MANIFEST.write_text(json.dumps(manifest, separators=(",", ":"), ensure_ascii=True))
+    if old_version != new_version:
+        print(f"manifest version: {old_version} -> {new_version}")
     if old_components != new_components:
         print(f"manifest components: {len(old_components)} -> {len(new_components)}")
         for a in comp_added:
