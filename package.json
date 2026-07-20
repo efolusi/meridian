@@ -6,12 +6,14 @@
   "type": "module",
   "scripts": {
     "build:bundle": "node scripts/build_bundle.mjs",
-    "check:bundle": "node scripts/build_bundle.mjs --check",
-    "test": "vitest run",
-    "test:watch": "vitest",
     "build:npm": "node scripts/build_npm.mjs",
+    "check": "node scripts/check_all.mjs",
+    "check:bundle": "node scripts/build_bundle.mjs --check",
+    "check:fix": "node scripts/check_all.mjs --fix",
     "check:npm": "node scripts/build_npm.mjs --check",
-    "check:types": "node scripts/check_types.mjs"
+    "check:types": "node scripts/check_types.mjs",
+    "test": "vitest run",
+    "test:watch": "vitest"
   },
   "devDependencies": {
     "@babel/standalone": "7.29.0",
