@@ -1,5 +1,5 @@
 import React from 'react';
-import { injectEfCss } from '../forms/Button.jsx';
+import { injectEfCss, cssPct } from '../forms/Button.jsx';
 import { Icon } from '../icons/Icon.jsx';
 const CSS = `
 .ef-player{display:flex;flex-direction:column;gap:10px;padding:14px;border:1px solid var(--border-default);border-radius:var(--radius-md);background:var(--surface-card);font-family:var(--font-sans)}
@@ -93,7 +93,7 @@ export const Player = React.forwardRef(function Player({ src, title, meta, peaks
       ) : null}
       <div ref={wave} className="ef-player__wave" role="slider" aria-label="Seek" aria-valuemin={0} aria-valuemax={Math.round(dur)} aria-valuenow={Math.round(t)} onPointerDown={onPointerDown}>
         {bars.map((p, i) => (
-          <span key={i} className={`ef-player__bar${!dur && playing ? ' ef-player__bar--loading' : (i + 0.5) / bars.length <= ratio ? ' ef-player__bar--played' : ''}`} style={{ height: Math.max(8, p * 100) + '%', animationDelay: !dur ? (i * 30) + 'ms' : undefined }}></span>
+          <span key={i} className={`ef-player__bar${!dur && playing ? ' ef-player__bar--loading' : (i + 0.5) / bars.length <= ratio ? ' ef-player__bar--played' : ''}`} style={{ height: cssPct(Math.max(8, p * 100)), animationDelay: !dur ? (i * 30) + 'ms' : undefined }}></span>
         ))}
       </div>
       <div className="ef-player__row">

@@ -1,5 +1,5 @@
 import React from 'react';
-import { injectEfCss } from '../forms/Button.jsx';
+import { injectEfCss, cssPct } from '../forms/Button.jsx';
 const CSS = `
 .ef-bars{display:flex;align-items:flex-end;gap:3px;width:100%}
 .ef-bars__bar{flex:1;min-width:3px;border-radius:2px 2px 0 0;background:var(--sand-200);transition:background var(--dur-fast) var(--ease-out)}
@@ -16,7 +16,7 @@ export function BarChart({ data = [], height = 140, highlightLast = 0, labels, f
       <div className="ef-bars" style={{ height }}>
         {vals.map((v, i) => (
           <div key={i} className={`ef-bars__bar${i >= vals.length - highlightLast ? ' ef-bars__bar--hi' : ''}`}
-            style={{ height: Math.max(2, (v / max) * 100) + '%' }}
+            style={{ height: cssPct(Math.max(2, (v / max) * 100)) }}
             title={(data[i] && data[i].label ? data[i].label + ' · ' : '') + (formatValue ? formatValue(v) : v.toLocaleString())}></div>
         ))}
       </div>

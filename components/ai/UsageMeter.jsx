@@ -1,5 +1,5 @@
 import React from 'react';
-import { injectEfCss } from '../forms/Button.jsx';
+import { injectEfCss, cssPct } from '../forms/Button.jsx';
 const CSS = `
 .ef-usage{display:flex;flex-direction:column;gap:7px}
 .ef-usage__row{display:flex;align-items:baseline;gap:8px}
@@ -39,7 +39,7 @@ export function UsageMeter({ used = 0, limit = 100, label = 'Usage', unit = '', 
         <span className="ef-usage__figures">{fmt(shown)} / {fmt(limit)}{unit ? ' ' + unit : ''}</span>
       </div>
       <div className="ef-usage__track" role="progressbar" aria-valuenow={Math.round(ratio * 100)} aria-valuemin={0} aria-valuemax={100} aria-label={label}>
-        <span className="ef-usage__fill" style={{ width: Math.min(100, (animated ? shownRatio : ratio) * 100) + '%', display: 'block' }}></span>
+        <span className="ef-usage__fill" style={{ width: cssPct(Math.min(100, (animated ? shownRatio : ratio) * 100)), display: 'block' }}></span>
       </div>
       {hint || cost ? (
         <div className="ef-usage__foot">

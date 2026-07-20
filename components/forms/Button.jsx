@@ -27,6 +27,27 @@ export function injectEfCss(id, text) {
   const s = document.createElement('style'); s.id = id; s.textContent = text; document.head.appendChild(s);
 }
 /**
+ * Format a number as a CSS percentage that survives server rendering.
+ *
+ * A bare `value + '%'` writes every digit JavaScript has: `1/3 * 100` becomes
+ * `33.33333333333333%`. Browsers keep roughly six significant figures when they
+ * parse an inline style, so the DOM reads back `33.3333%`, and React's
+ * hydration check compares its own 16-digit string against the browser's
+ * truncated one and reports a mismatch on every affected element. The bars in
+ * Player, the fill in UsageMeter and the columns in BarChart all hit this.
+ *
+ * Rounding to three decimals stays well inside what the parser preserves and is
+ * far below one pixel at any realistic size. Number-to-string drops trailing
+ * zeros on its own, which matters: `33.300%` would be normalised to `33.3%` and
+ * reintroduce the very mismatch this avoids.
+ *
+ * Lowercase, so it stays an internal helper rather than part of the public
+ * namespace.
+ */
+export function cssPct(value) {
+  return (Math.round(value * 1000) / 1000) + '%';
+}
+/**
  * Point several refs at one node.
  *
  * A component that forwards a ref usually needs the same node itself — to

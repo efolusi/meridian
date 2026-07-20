@@ -1,5 +1,5 @@
 import React from 'react';
-import { injectEfCss } from '../forms/Button.jsx';
+import { injectEfCss, cssPct } from '../forms/Button.jsx';
 const CSS = `
 .ef-resizable{display:flex;width:100%;height:100%;min-height:0;min-width:0}
 .ef-resizable--vertical{flex-direction:column}
@@ -40,7 +40,7 @@ export function Resizable({ direction = 'horizontal', defaultRatio = 0.5, min = 
   const kids = React.Children.toArray(children);
   return (
     <div {...rest} ref={ref} className={`ef-resizable ef-resizable--${direction}${className ? ' ' + className : ''}`} style={style}>
-      <div className="ef-resizable__pane" style={{ flexBasis: (ratio * 100) + '%', flexGrow: 0, flexShrink: 0 }}>{kids[0]}</div>
+      <div className="ef-resizable__pane" style={{ flexBasis: cssPct(ratio * 100), flexGrow: 0, flexShrink: 0 }}>{kids[0]}</div>
       <button type="button" role="separator" aria-orientation={direction === 'horizontal' ? 'vertical' : 'horizontal'} aria-label="Resize panes"
         className={`ef-resizable__handle${drag ? ' ef-resizable__handle--drag' : ''}`} onPointerDown={down} onKeyDown={key}></button>
       <div className="ef-resizable__pane" style={{ flex: 1 }}>{kids[1]}</div>

@@ -4,6 +4,17 @@ All notable changes to Meridian are documented here. Format follows [Keep a Chan
 
 > **On the versions below 1.4.0:** Meridian was built in the open but released to nobody. Versions 1.0.0 through 1.3.0 are development milestones recorded as they happened; they were never tagged, published, or installable, so there is no artefact to go back to. They are kept because they are an accurate record of how the system was built, not because you can depend on them. The first tagged, publicly consumable release is 1.4.0.
 
+## 1.5.2 — 2026-07-20
+
+### Fixed
+- **Server rendering any component with a proportional inline style mismatched on hydration.** Percentages were built as `value + '%'`, which writes every digit JavaScript has: `1/3 * 100` becomes `33.33333333333333%`. Browsers keep about six significant figures when parsing an inline style, so the DOM reads back `33.3333%`, React compares its own string against the browser's truncated one, and reports a mismatch. React does not patch these up, so the affected elements keep the server's values and any client-side recalculation is silently dropped.
+
+  `Player` hit it on every one of its 72 waveform bars, `UsageMeter` on any ratio that does not divide evenly, `BarChart` on essentially all real data, `Resizable` on a non-half split, and `LineChart` on its hover tooltip. Reported from a downstream Next.js App Router build.
+
+  Percentages now go through a shared internal `cssPct` helper that rounds to three decimals, comfortably inside what every parser preserves and far below one pixel at any realistic size. Rounding alone is not sufficient: a fixed-decimal format would emit `33.300%`, which browsers normalise to `33.3%` and which mismatches for the same reason, so the helper relies on number-to-string dropping trailing zeros.
+
+  Regression coverage renders the five components with `renderToString` and asserts no serialised style carries more decimals than the parser keeps. Note for future work: jsdom preserves full float precision where browsers truncate, so a round-trip assertion through jsdom passes even with the fix reverted. The test asserts the precision bound directly for that reason.
+
 ## 1.5.1 — 2026-07-20
 
 ### Fixed

@@ -1,5 +1,5 @@
 import React from 'react';
-import { injectEfCss } from '../forms/Button.jsx';
+import { injectEfCss, cssPct } from '../forms/Button.jsx';
 const CSS = `
 .ef-linechart{position:relative}
 .ef-linechart__tip{position:absolute;transform:translate(-50%,-130%);background:var(--surface-inverse);color:var(--text-inverse);font-size:11px;font-weight:500;padding:4px 8px;border-radius:6px;white-space:nowrap;pointer-events:none;z-index:5}
@@ -32,7 +32,7 @@ export function LineChart({ data, height = 150, showArea = true, showDots = fals
         {hov != null && <line x1={x(hov)} x2={x(hov)} y1={PAD} y2={H - PAD} stroke="var(--border-strong)" strokeDasharray="3 3" vectorEffect="non-scaling-stroke" />}
       </svg>
       {hov != null && (
-        <div className="ef-linechart__tip" style={{ left: (x(hov) / W * 100) + '%', top: (y(data[hov].value) / H * 100) + '%' }}>
+        <div className="ef-linechart__tip" style={{ left: cssPct(x(hov) / W * 100), top: cssPct(y(data[hov].value) / H * 100) }}>
           {data[hov].label}{data[hov].label ? ' · ' : ''}{format ? format(data[hov].value) : data[hov].value.toLocaleString()}
         </div>
       )}
