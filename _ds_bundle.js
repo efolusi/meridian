@@ -1,4 +1,4 @@
-/* @ds-bundle: {"format":4,"namespace":"EfolusiDesignSystem_4ffc3d","components":[{"name":"AgentRun","sourcePath":"components/ai/AgentRun.jsx"},{"name":"ChatMessage","sourcePath":"components/ai/ChatMessage.jsx"},{"name":"Citation","sourcePath":"components/ai/Citation.jsx"},{"name":"SourceList","sourcePath":"components/ai/Citation.jsx"},{"name":"Confirmation","sourcePath":"components/ai/Confirmation.jsx"},{"name":"Conversation","sourcePath":"components/ai/Conversation.jsx"},{"name":"DocumentCard","sourcePath":"components/ai/DocumentCard.jsx"},{"name":"FeedbackBar","sourcePath":"components/ai/FeedbackBar.jsx"},{"name":"GeneratedImage","sourcePath":"components/ai/GeneratedImage.jsx"},{"name":"ModelSelector","sourcePath":"components/ai/ModelSelector.jsx"},{"name":"Player","sourcePath":"components/ai/Player.jsx"},{"name":"PromptComposer","sourcePath":"components/ai/PromptComposer.jsx"},{"name":"PromptSteps","sourcePath":"components/ai/PromptSteps.jsx"},{"name":"Reasoning","sourcePath":"components/ai/Reasoning.jsx"},{"name":"RichComposer","sourcePath":"components/ai/RichComposer.jsx"},{"name":"Sandbox","sourcePath":"components/ai/Sandbox.jsx"},{"name":"SelectionQuote","sourcePath":"components/ai/SelectionQuote.jsx"},{"name":"SourceCard","sourcePath":"components/ai/SourceCard.jsx"},{"name":"Suggestions","sourcePath":"components/ai/Suggestions.jsx"},{"name":"Task","sourcePath":"components/ai/Task.jsx"},{"name":"Todo","sourcePath":"components/ai/Todo.jsx"},{"name":"ToolCall","sourcePath":"components/ai/ToolCall.jsx"},{"name":"Transcript","sourcePath":"components/ai/Transcript.jsx"},{"name":"UsageMeter","sourcePath":"components/ai/UsageMeter.jsx"},{"name":"WebPreview","sourcePath":"components/ai/WebPreview.jsx"},{"name":"CodeBlock","sourcePath":"components/code/CodeBlock.jsx"},{"name":"Console","sourcePath":"components/code/Console.jsx"},{"name":"CopyField","sourcePath":"components/code/CopyField.jsx"},{"name":"Diff","sourcePath":"components/code/Diff.jsx"},{"name":"EnvList","sourcePath":"components/code/EnvList.jsx"},{"name":"Exception","sourcePath":"components/code/Exception.jsx"},{"name":"Terminal","sourcePath":"components/code/Terminal.jsx"},{"name":"BarChart","sourcePath":"components/data/BarChart.jsx"},{"name":"DonutChart","sourcePath":"components/data/DonutChart.jsx"},{"name":"EmptyState","sourcePath":"components/data/EmptyState.jsx"},{"name":"KeyValueList","sourcePath":"components/data/KeyValueList.jsx"},{"name":"LineChart","sourcePath":"components/data/LineChart.jsx"},{"name":"Skeleton","sourcePath":"components/data/Skeleton.jsx"},{"name":"Sparkline","sourcePath":"components/data/Sparkline.jsx"},{"name":"Stat","sourcePath":"components/data/Stat.jsx"},{"name":"StatusDot","sourcePath":"components/data/StatusDot.jsx"},{"name":"Table","sourcePath":"components/data/Table.jsx"},{"name":"Calendar","sourcePath":"components/dates/Calendar.jsx"},{"name":"DatePicker","sourcePath":"components/dates/DatePicker.jsx"},{"name":"Accordion","sourcePath":"components/display/Accordion.jsx"},{"name":"AspectRatio","sourcePath":"components/display/AspectRatio.jsx"},{"name":"Avatar","sourcePath":"components/display/Avatar.jsx"},{"name":"AvatarGroup","sourcePath":"components/display/Avatar.jsx"},{"name":"Badge","sourcePath":"components/display/Badge.jsx"},{"name":"Card","sourcePath":"components/display/Card.jsx"},{"name":"Carousel","sourcePath":"components/display/Carousel.jsx"},{"name":"Collapsible","sourcePath":"components/display/Collapsible.jsx"},{"name":"Divider","sourcePath":"components/display/Divider.jsx"},{"name":"Kbd","sourcePath":"components/display/Kbd.jsx"},{"name":"Link","sourcePath":"components/display/Link.jsx"},{"name":"ListItem","sourcePath":"components/display/ListItem.jsx"},{"name":"Resizable","sourcePath":"components/display/Resizable.jsx"},{"name":"ScrollArea","sourcePath":"components/display/ScrollArea.jsx"},{"name":"Tag","sourcePath":"components/display/Tag.jsx"},{"name":"Toolbar","sourcePath":"components/display/Toolbar.jsx"},{"name":"TreeList","sourcePath":"components/display/TreeList.jsx"},{"name":"Alert","sourcePath":"components/feedback/Alert.jsx"},{"name":"Banner","sourcePath":"components/feedback/Banner.jsx"},{"name":"ConfirmDialog","sourcePath":"components/feedback/ConfirmDialog.jsx"},{"name":"Dialog","sourcePath":"components/feedback/Dialog.jsx"},{"name":"Loader","sourcePath":"components/feedback/Loader.jsx"},{"name":"Progress","sourcePath":"components/feedback/Progress.jsx"},{"name":"Spinner","sourcePath":"components/feedback/Spinner.jsx"},{"name":"Toast","sourcePath":"components/feedback/Toast.jsx"},{"name":"ToastStack","sourcePath":"components/feedback/Toast.jsx"},{"name":"Toaster","sourcePath":"components/feedback/Toast.jsx"},{"name":"Tooltip","sourcePath":"components/feedback/Tooltip.jsx"},{"name":"FileDrop","sourcePath":"components/files/FileDrop.jsx"},{"name":"FileTile","sourcePath":"components/files/FileTile.jsx"},{"name":"FileTypeIcon","sourcePath":"components/files/FileTypeIcon.jsx"},{"name":"PaymentCard","sourcePath":"components/finance/PaymentCard.jsx"},{"name":"Button","sourcePath":"components/forms/Button.jsx"},{"name":"ButtonGroup","sourcePath":"components/forms/ButtonGroup.jsx"},{"name":"ButtonTile","sourcePath":"components/forms/ButtonTile.jsx"},{"name":"ButtonTileGroup","sourcePath":"components/forms/ButtonTile.jsx"},{"name":"Checkbox","sourcePath":"components/forms/Checkbox.jsx"},{"name":"Combobox","sourcePath":"components/forms/Combobox.jsx"},{"name":"DigitEntry","sourcePath":"components/forms/DigitEntry.jsx"},{"name":"FormField","sourcePath":"components/forms/FormField.jsx"},{"name":"IconButton","sourcePath":"components/forms/IconButton.jsx"},{"name":"Input","sourcePath":"components/forms/Input.jsx"},{"name":"InputGroup","sourcePath":"components/forms/InputGroup.jsx"},{"name":"Label","sourcePath":"components/forms/Label.jsx"},{"name":"Radio","sourcePath":"components/forms/Radio.jsx"},{"name":"Select","sourcePath":"components/forms/Select.jsx"},{"name":"Slider","sourcePath":"components/forms/Slider.jsx"},{"name":"Switch","sourcePath":"components/forms/Switch.jsx"},{"name":"Textarea","sourcePath":"components/forms/Textarea.jsx"},{"name":"Toggle","sourcePath":"components/forms/Toggle.jsx"},{"name":"ToggleGroup","sourcePath":"components/forms/Toggle.jsx"},{"name":"Icon","sourcePath":"components/icons/Icon.jsx"},{"name":"Breadcrumbs","sourcePath":"components/navigation/Breadcrumbs.jsx"},{"name":"Menubar","sourcePath":"components/navigation/Menubar.jsx"},{"name":"PageControl","sourcePath":"components/navigation/PageControl.jsx"},{"name":"Pagination","sourcePath":"components/navigation/Pagination.jsx"},{"name":"SegmentedControl","sourcePath":"components/navigation/SegmentedControl.jsx"},{"name":"SideNav","sourcePath":"components/navigation/SideNav.jsx"},{"name":"Steps","sourcePath":"components/navigation/Steps.jsx"},{"name":"Tabs","sourcePath":"components/navigation/Tabs.jsx"},{"name":"TopNav","sourcePath":"components/navigation/TopNav.jsx"},{"name":"CommandPalette","sourcePath":"components/overlay/CommandPalette.jsx"},{"name":"ContextMenu","sourcePath":"components/overlay/ContextMenu.jsx"},{"name":"Drawer","sourcePath":"components/overlay/Drawer.jsx"},{"name":"HoverCard","sourcePath":"components/overlay/HoverCard.jsx"},{"name":"Menu","sourcePath":"components/overlay/Menu.jsx"},{"name":"Popover","sourcePath":"components/overlay/Popover.jsx"},{"name":"Portal","sourcePath":"components/overlay/Portal.jsx"}],"sourceHashes":{"components/ai/AgentRun.jsx":"d7551b7e2779","components/ai/ChatMessage.jsx":"8c9c04ef133a","components/ai/Citation.jsx":"32568078b90e","components/ai/Confirmation.jsx":"00816561c8b9","components/ai/Conversation.jsx":"811020760647","components/ai/DocumentCard.jsx":"4c83083cda05","components/ai/FeedbackBar.jsx":"68046596a88a","components/ai/GeneratedImage.jsx":"f30d5bf6782c","components/ai/ModelSelector.jsx":"4a090f8c9b57","components/ai/Player.jsx":"3b8a10cee263","components/ai/PromptComposer.jsx":"f78c03c0b8c8","components/ai/PromptSteps.jsx":"521295be865a","components/ai/Reasoning.jsx":"c98cda442fa9","components/ai/RichComposer.jsx":"4d721b061ed2","components/ai/Sandbox.jsx":"981baaf090aa","components/ai/SelectionQuote.jsx":"4a9f7f0779e7","components/ai/SourceCard.jsx":"ca0d3eedf981","components/ai/Suggestions.jsx":"2cef727b7182","components/ai/Task.jsx":"83f456ac9ea2","components/ai/Todo.jsx":"e1b738ca02ce","components/ai/ToolCall.jsx":"da7afa011d06","components/ai/Transcript.jsx":"3ecad5218a37","components/ai/UsageMeter.jsx":"4392dfd1dea9","components/ai/WebPreview.jsx":"1e5b2d3f3057","components/code/CodeBlock.jsx":"f7ac4c4e672d","components/code/Console.jsx":"e9e8526f760e","components/code/CopyField.jsx":"f4857226ca99","components/code/Diff.jsx":"aeea7e04551f","components/code/EnvList.jsx":"a8b06114885c","components/code/Exception.jsx":"4534f701892c","components/code/Terminal.jsx":"a5239841dcb5","components/data/BarChart.jsx":"b6f178a2aecc","components/data/DonutChart.jsx":"a1313f94e379","components/data/EmptyState.jsx":"45244a08b427","components/data/KeyValueList.jsx":"3876b7c9581e","components/data/LineChart.jsx":"d191766e01c3","components/data/Skeleton.jsx":"7aa04d6e8a82","components/data/Sparkline.jsx":"e554aa7b6696","components/data/Stat.jsx":"aba92e72a0f8","components/data/StatusDot.jsx":"a552ec8d9563","components/data/Table.jsx":"b3f540b65d15","components/dates/Calendar.jsx":"7fd4010e56b0","components/dates/DatePicker.jsx":"a7ab311417e0","components/display/Accordion.jsx":"ed805cfaab45","components/display/AspectRatio.jsx":"7c3585ca2961","components/display/Avatar.jsx":"ad44388722cf","components/display/Badge.jsx":"858e6fd68547","components/display/Card.jsx":"f40832620fe4","components/display/Carousel.jsx":"2875ed7a03b0","components/display/Collapsible.jsx":"494e5a1ef090","components/display/Divider.jsx":"0975f170a2ab","components/display/Kbd.jsx":"3953794bd3c5","components/display/Link.jsx":"bdbf64262599","components/display/ListItem.jsx":"1372f89cfe9d","components/display/Resizable.jsx":"c2f6d95997d7","components/display/ScrollArea.jsx":"2dbb55595939","components/display/Tag.jsx":"e9dadb374567","components/display/Toolbar.jsx":"bbe6cffbcbab","components/display/TreeList.jsx":"2b83e595b855","components/feedback/Alert.jsx":"21822b47430e","components/feedback/Banner.jsx":"cf9434e1ccf4","components/feedback/ConfirmDialog.jsx":"ae69cb48e209","components/feedback/Dialog.jsx":"58eb68405d65","components/feedback/Loader.jsx":"4d1f601f5490","components/feedback/Progress.jsx":"6902d7932dbd","components/feedback/Spinner.jsx":"5e2c9c05ca9d","components/feedback/Toast.jsx":"741f7fbff299","components/feedback/Tooltip.jsx":"7fff420516ae","components/files/FileDrop.jsx":"4a43701d7399","components/files/FileTile.jsx":"28af04d1303b","components/files/FileTypeIcon.jsx":"5e46f6a0ba86","components/finance/PaymentCard.jsx":"088bf3a83cbb","components/forms/Button.jsx":"85bcd4da9508","components/forms/ButtonGroup.jsx":"86bd9a9f90bc","components/forms/ButtonTile.jsx":"5ad126f8a2d3","components/forms/Checkbox.jsx":"2898578cf1eb","components/forms/Combobox.jsx":"664669966362","components/forms/DigitEntry.jsx":"b8a0d74fbd03","components/forms/FormField.jsx":"77b05c2d72ac","components/forms/IconButton.jsx":"7843bc8a3740","components/forms/Input.jsx":"8e90b84d8968","components/forms/InputGroup.jsx":"3afe73286592","components/forms/Label.jsx":"83c5cf662fb3","components/forms/Radio.jsx":"c07e4cb51feb","components/forms/Select.jsx":"2ab7cbc0efcd","components/forms/Slider.jsx":"a2c5c56d442b","components/forms/Switch.jsx":"d0935523d1ff","components/forms/Textarea.jsx":"4504bb5edb12","components/forms/Toggle.jsx":"7e6f51814f81","components/icons/Icon.jsx":"b9673d1eee4d","components/navigation/Breadcrumbs.jsx":"aa413c3db363","components/navigation/Menubar.jsx":"eea3a4f6e8a2","components/navigation/PageControl.jsx":"8c5bfdc21407","components/navigation/Pagination.jsx":"09d35b923287","components/navigation/SegmentedControl.jsx":"ae08ad97a9a2","components/navigation/SideNav.jsx":"ad856b688402","components/navigation/Steps.jsx":"062ff09a1f24","components/navigation/Tabs.jsx":"d9f09db9c7f1","components/navigation/TopNav.jsx":"774ca0116af7","components/overlay/CommandPalette.jsx":"d339b06c0c06","components/overlay/ContextMenu.jsx":"0f94a57f7c45","components/overlay/Drawer.jsx":"0ee203bb32b7","components/overlay/HoverCard.jsx":"5abb6fb3857f","components/overlay/Menu.jsx":"3d54fa323a67","components/overlay/Popover.jsx":"1cd8602d1d17","components/overlay/Portal.jsx":"04dec0414392","showcases/agent/AgentScreen.jsx":"87f60f9116cc","showcases/auth/AuthScreens.jsx":"b3583b149df5","showcases/console/CustomersScreen.jsx":"a8a080a80d9e","showcases/console/ExtraScreens.jsx":"1e7a048ab690","showcases/console/OverviewScreen.jsx":"34b01f22bb52","showcases/console/SettingsScreen.jsx":"1d67397e26b4","showcases/console/Shell.jsx":"b7da6de80c2b","showcases/docs/DocsScreen.jsx":"faa44c30040d","showcases/infra/InfraScreen.jsx":"f95eefa85b8d","showcases/tools/ToolsScreen.jsx":"dc4c12101820","showcases/trader/TraderScreen.jsx":"12e5273b9894","showcases/website/Sections.jsx":"3f14d6a12c71"},"inlinedExternals":[],"unexposedExports":[{"name":"computeDiff","sourcePath":"components/code/Diff.jsx"},{"name":"cssPct","sourcePath":"components/forms/Button.jsx"},{"name":"formatTime","sourcePath":"components/ai/Player.jsx"},{"name":"injectEfCss","sourcePath":"components/forms/Button.jsx"},{"name":"mergeRefs","sourcePath":"components/forms/Button.jsx"},{"name":"prefersReducedMotion","sourcePath":"components/forms/Button.jsx"},{"name":"useAnchoredStyle","sourcePath":"components/overlay/Portal.jsx"},{"name":"useFieldProps","sourcePath":"components/forms/FormField.jsx"},{"name":"useIsoLayoutEffect","sourcePath":"components/forms/Button.jsx"},{"name":"useToast","sourcePath":"components/feedback/Toast.jsx"}]} */
+/* @ds-bundle: {"format":4,"namespace":"EfolusiDesignSystem_4ffc3d","components":[{"name":"AgentRun","sourcePath":"components/ai/AgentRun.jsx"},{"name":"ChatMessage","sourcePath":"components/ai/ChatMessage.jsx"},{"name":"Citation","sourcePath":"components/ai/Citation.jsx"},{"name":"SourceList","sourcePath":"components/ai/Citation.jsx"},{"name":"Confirmation","sourcePath":"components/ai/Confirmation.jsx"},{"name":"Conversation","sourcePath":"components/ai/Conversation.jsx"},{"name":"DocumentCard","sourcePath":"components/ai/DocumentCard.jsx"},{"name":"FeedbackBar","sourcePath":"components/ai/FeedbackBar.jsx"},{"name":"GeneratedImage","sourcePath":"components/ai/GeneratedImage.jsx"},{"name":"ModelSelector","sourcePath":"components/ai/ModelSelector.jsx"},{"name":"Player","sourcePath":"components/ai/Player.jsx"},{"name":"PromptComposer","sourcePath":"components/ai/PromptComposer.jsx"},{"name":"PromptSteps","sourcePath":"components/ai/PromptSteps.jsx"},{"name":"Reasoning","sourcePath":"components/ai/Reasoning.jsx"},{"name":"RichComposer","sourcePath":"components/ai/RichComposer.jsx"},{"name":"Sandbox","sourcePath":"components/ai/Sandbox.jsx"},{"name":"SelectionQuote","sourcePath":"components/ai/SelectionQuote.jsx"},{"name":"SourceCard","sourcePath":"components/ai/SourceCard.jsx"},{"name":"Suggestions","sourcePath":"components/ai/Suggestions.jsx"},{"name":"Task","sourcePath":"components/ai/Task.jsx"},{"name":"Todo","sourcePath":"components/ai/Todo.jsx"},{"name":"ToolCall","sourcePath":"components/ai/ToolCall.jsx"},{"name":"Transcript","sourcePath":"components/ai/Transcript.jsx"},{"name":"UsageMeter","sourcePath":"components/ai/UsageMeter.jsx"},{"name":"WebPreview","sourcePath":"components/ai/WebPreview.jsx"},{"name":"CodeBlock","sourcePath":"components/code/CodeBlock.jsx"},{"name":"Console","sourcePath":"components/code/Console.jsx"},{"name":"CopyField","sourcePath":"components/code/CopyField.jsx"},{"name":"Diff","sourcePath":"components/code/Diff.jsx"},{"name":"EnvList","sourcePath":"components/code/EnvList.jsx"},{"name":"Exception","sourcePath":"components/code/Exception.jsx"},{"name":"Terminal","sourcePath":"components/code/Terminal.jsx"},{"name":"BarChart","sourcePath":"components/data/BarChart.jsx"},{"name":"DonutChart","sourcePath":"components/data/DonutChart.jsx"},{"name":"EmptyState","sourcePath":"components/data/EmptyState.jsx"},{"name":"KeyValueList","sourcePath":"components/data/KeyValueList.jsx"},{"name":"LineChart","sourcePath":"components/data/LineChart.jsx"},{"name":"Skeleton","sourcePath":"components/data/Skeleton.jsx"},{"name":"Sparkline","sourcePath":"components/data/Sparkline.jsx"},{"name":"Stat","sourcePath":"components/data/Stat.jsx"},{"name":"StatusDot","sourcePath":"components/data/StatusDot.jsx"},{"name":"Table","sourcePath":"components/data/Table.jsx"},{"name":"Calendar","sourcePath":"components/dates/Calendar.jsx"},{"name":"DatePicker","sourcePath":"components/dates/DatePicker.jsx"},{"name":"DateRangePicker","sourcePath":"components/dates/DateRangePicker.jsx"},{"name":"TimePicker","sourcePath":"components/dates/TimePicker.jsx"},{"name":"Accordion","sourcePath":"components/display/Accordion.jsx"},{"name":"AspectRatio","sourcePath":"components/display/AspectRatio.jsx"},{"name":"Avatar","sourcePath":"components/display/Avatar.jsx"},{"name":"AvatarGroup","sourcePath":"components/display/Avatar.jsx"},{"name":"Badge","sourcePath":"components/display/Badge.jsx"},{"name":"Card","sourcePath":"components/display/Card.jsx"},{"name":"Carousel","sourcePath":"components/display/Carousel.jsx"},{"name":"Collapsible","sourcePath":"components/display/Collapsible.jsx"},{"name":"Divider","sourcePath":"components/display/Divider.jsx"},{"name":"Kbd","sourcePath":"components/display/Kbd.jsx"},{"name":"Link","sourcePath":"components/display/Link.jsx"},{"name":"ListItem","sourcePath":"components/display/ListItem.jsx"},{"name":"Resizable","sourcePath":"components/display/Resizable.jsx"},{"name":"ScrollArea","sourcePath":"components/display/ScrollArea.jsx"},{"name":"Tag","sourcePath":"components/display/Tag.jsx"},{"name":"Toolbar","sourcePath":"components/display/Toolbar.jsx"},{"name":"TreeList","sourcePath":"components/display/TreeList.jsx"},{"name":"Alert","sourcePath":"components/feedback/Alert.jsx"},{"name":"Banner","sourcePath":"components/feedback/Banner.jsx"},{"name":"ConfirmDialog","sourcePath":"components/feedback/ConfirmDialog.jsx"},{"name":"Dialog","sourcePath":"components/feedback/Dialog.jsx"},{"name":"Loader","sourcePath":"components/feedback/Loader.jsx"},{"name":"Progress","sourcePath":"components/feedback/Progress.jsx"},{"name":"Spinner","sourcePath":"components/feedback/Spinner.jsx"},{"name":"Toast","sourcePath":"components/feedback/Toast.jsx"},{"name":"ToastStack","sourcePath":"components/feedback/Toast.jsx"},{"name":"Toaster","sourcePath":"components/feedback/Toast.jsx"},{"name":"Tooltip","sourcePath":"components/feedback/Tooltip.jsx"},{"name":"FileDrop","sourcePath":"components/files/FileDrop.jsx"},{"name":"FileTile","sourcePath":"components/files/FileTile.jsx"},{"name":"FileTypeIcon","sourcePath":"components/files/FileTypeIcon.jsx"},{"name":"PaymentCard","sourcePath":"components/finance/PaymentCard.jsx"},{"name":"Button","sourcePath":"components/forms/Button.jsx"},{"name":"ButtonGroup","sourcePath":"components/forms/ButtonGroup.jsx"},{"name":"ButtonTile","sourcePath":"components/forms/ButtonTile.jsx"},{"name":"ButtonTileGroup","sourcePath":"components/forms/ButtonTile.jsx"},{"name":"Checkbox","sourcePath":"components/forms/Checkbox.jsx"},{"name":"Combobox","sourcePath":"components/forms/Combobox.jsx"},{"name":"DigitEntry","sourcePath":"components/forms/DigitEntry.jsx"},{"name":"FormField","sourcePath":"components/forms/FormField.jsx"},{"name":"IconButton","sourcePath":"components/forms/IconButton.jsx"},{"name":"Input","sourcePath":"components/forms/Input.jsx"},{"name":"InputGroup","sourcePath":"components/forms/InputGroup.jsx"},{"name":"Label","sourcePath":"components/forms/Label.jsx"},{"name":"NumberInput","sourcePath":"components/forms/NumberInput.jsx"},{"name":"Radio","sourcePath":"components/forms/Radio.jsx"},{"name":"Select","sourcePath":"components/forms/Select.jsx"},{"name":"Slider","sourcePath":"components/forms/Slider.jsx"},{"name":"Switch","sourcePath":"components/forms/Switch.jsx"},{"name":"Textarea","sourcePath":"components/forms/Textarea.jsx"},{"name":"Toggle","sourcePath":"components/forms/Toggle.jsx"},{"name":"ToggleGroup","sourcePath":"components/forms/Toggle.jsx"},{"name":"Icon","sourcePath":"components/icons/Icon.jsx"},{"name":"Breadcrumbs","sourcePath":"components/navigation/Breadcrumbs.jsx"},{"name":"Menubar","sourcePath":"components/navigation/Menubar.jsx"},{"name":"PageControl","sourcePath":"components/navigation/PageControl.jsx"},{"name":"Pagination","sourcePath":"components/navigation/Pagination.jsx"},{"name":"SegmentedControl","sourcePath":"components/navigation/SegmentedControl.jsx"},{"name":"SideNav","sourcePath":"components/navigation/SideNav.jsx"},{"name":"Steps","sourcePath":"components/navigation/Steps.jsx"},{"name":"Tabs","sourcePath":"components/navigation/Tabs.jsx"},{"name":"TopNav","sourcePath":"components/navigation/TopNav.jsx"},{"name":"CommandPalette","sourcePath":"components/overlay/CommandPalette.jsx"},{"name":"ContextMenu","sourcePath":"components/overlay/ContextMenu.jsx"},{"name":"Drawer","sourcePath":"components/overlay/Drawer.jsx"},{"name":"HoverCard","sourcePath":"components/overlay/HoverCard.jsx"},{"name":"Menu","sourcePath":"components/overlay/Menu.jsx"},{"name":"Popover","sourcePath":"components/overlay/Popover.jsx"},{"name":"Portal","sourcePath":"components/overlay/Portal.jsx"}],"sourceHashes":{"components/ai/AgentRun.jsx":"d7551b7e2779","components/ai/ChatMessage.jsx":"8c9c04ef133a","components/ai/Citation.jsx":"32568078b90e","components/ai/Confirmation.jsx":"00816561c8b9","components/ai/Conversation.jsx":"811020760647","components/ai/DocumentCard.jsx":"4c83083cda05","components/ai/FeedbackBar.jsx":"68046596a88a","components/ai/GeneratedImage.jsx":"f30d5bf6782c","components/ai/ModelSelector.jsx":"4a090f8c9b57","components/ai/Player.jsx":"3b8a10cee263","components/ai/PromptComposer.jsx":"f78c03c0b8c8","components/ai/PromptSteps.jsx":"521295be865a","components/ai/Reasoning.jsx":"c98cda442fa9","components/ai/RichComposer.jsx":"4d721b061ed2","components/ai/Sandbox.jsx":"981baaf090aa","components/ai/SelectionQuote.jsx":"4a9f7f0779e7","components/ai/SourceCard.jsx":"ca0d3eedf981","components/ai/Suggestions.jsx":"2cef727b7182","components/ai/Task.jsx":"83f456ac9ea2","components/ai/Todo.jsx":"e1b738ca02ce","components/ai/ToolCall.jsx":"da7afa011d06","components/ai/Transcript.jsx":"3ecad5218a37","components/ai/UsageMeter.jsx":"4392dfd1dea9","components/ai/WebPreview.jsx":"1e5b2d3f3057","components/code/CodeBlock.jsx":"f7ac4c4e672d","components/code/Console.jsx":"e9e8526f760e","components/code/CopyField.jsx":"f4857226ca99","components/code/Diff.jsx":"aeea7e04551f","components/code/EnvList.jsx":"a8b06114885c","components/code/Exception.jsx":"4534f701892c","components/code/Terminal.jsx":"a5239841dcb5","components/data/BarChart.jsx":"b6f178a2aecc","components/data/DonutChart.jsx":"a1313f94e379","components/data/EmptyState.jsx":"45244a08b427","components/data/KeyValueList.jsx":"3876b7c9581e","components/data/LineChart.jsx":"d191766e01c3","components/data/Skeleton.jsx":"7aa04d6e8a82","components/data/Sparkline.jsx":"e554aa7b6696","components/data/Stat.jsx":"aba92e72a0f8","components/data/StatusDot.jsx":"a552ec8d9563","components/data/Table.jsx":"b3f540b65d15","components/dates/Calendar.jsx":"31c0c73b6b10","components/dates/DatePicker.jsx":"a7ab311417e0","components/dates/DateRangePicker.jsx":"8319382e62ee","components/dates/TimePicker.jsx":"8015445af51e","components/display/Accordion.jsx":"ed805cfaab45","components/display/AspectRatio.jsx":"7c3585ca2961","components/display/Avatar.jsx":"ad44388722cf","components/display/Badge.jsx":"858e6fd68547","components/display/Card.jsx":"f40832620fe4","components/display/Carousel.jsx":"2875ed7a03b0","components/display/Collapsible.jsx":"494e5a1ef090","components/display/Divider.jsx":"0975f170a2ab","components/display/Kbd.jsx":"3953794bd3c5","components/display/Link.jsx":"bdbf64262599","components/display/ListItem.jsx":"1372f89cfe9d","components/display/Resizable.jsx":"c2f6d95997d7","components/display/ScrollArea.jsx":"2dbb55595939","components/display/Tag.jsx":"e9dadb374567","components/display/Toolbar.jsx":"bbe6cffbcbab","components/display/TreeList.jsx":"2b83e595b855","components/feedback/Alert.jsx":"21822b47430e","components/feedback/Banner.jsx":"cf9434e1ccf4","components/feedback/ConfirmDialog.jsx":"ae69cb48e209","components/feedback/Dialog.jsx":"58eb68405d65","components/feedback/Loader.jsx":"4d1f601f5490","components/feedback/Progress.jsx":"6902d7932dbd","components/feedback/Spinner.jsx":"5e2c9c05ca9d","components/feedback/Toast.jsx":"741f7fbff299","components/feedback/Tooltip.jsx":"7fff420516ae","components/files/FileDrop.jsx":"4a43701d7399","components/files/FileTile.jsx":"28af04d1303b","components/files/FileTypeIcon.jsx":"5e46f6a0ba86","components/finance/PaymentCard.jsx":"088bf3a83cbb","components/forms/Button.jsx":"85bcd4da9508","components/forms/ButtonGroup.jsx":"86bd9a9f90bc","components/forms/ButtonTile.jsx":"5ad126f8a2d3","components/forms/Checkbox.jsx":"2898578cf1eb","components/forms/Combobox.jsx":"664669966362","components/forms/DigitEntry.jsx":"b8a0d74fbd03","components/forms/FormField.jsx":"f5aaeeab8166","components/forms/IconButton.jsx":"7843bc8a3740","components/forms/Input.jsx":"8e90b84d8968","components/forms/InputGroup.jsx":"3afe73286592","components/forms/Label.jsx":"83c5cf662fb3","components/forms/NumberInput.jsx":"855fd7a53799","components/forms/Radio.jsx":"c07e4cb51feb","components/forms/Select.jsx":"2ab7cbc0efcd","components/forms/Slider.jsx":"a2c5c56d442b","components/forms/Switch.jsx":"d0935523d1ff","components/forms/Textarea.jsx":"4504bb5edb12","components/forms/Toggle.jsx":"7e6f51814f81","components/icons/Icon.jsx":"b9673d1eee4d","components/navigation/Breadcrumbs.jsx":"aa413c3db363","components/navigation/Menubar.jsx":"eea3a4f6e8a2","components/navigation/PageControl.jsx":"8c5bfdc21407","components/navigation/Pagination.jsx":"09d35b923287","components/navigation/SegmentedControl.jsx":"ae08ad97a9a2","components/navigation/SideNav.jsx":"ad856b688402","components/navigation/Steps.jsx":"062ff09a1f24","components/navigation/Tabs.jsx":"d9f09db9c7f1","components/navigation/TopNav.jsx":"774ca0116af7","components/overlay/CommandPalette.jsx":"d339b06c0c06","components/overlay/ContextMenu.jsx":"0f94a57f7c45","components/overlay/Drawer.jsx":"0ee203bb32b7","components/overlay/HoverCard.jsx":"5abb6fb3857f","components/overlay/Menu.jsx":"3d54fa323a67","components/overlay/Popover.jsx":"1cd8602d1d17","components/overlay/Portal.jsx":"04dec0414392","showcases/agent/AgentScreen.jsx":"87f60f9116cc","showcases/auth/AuthScreens.jsx":"b3583b149df5","showcases/console/CustomersScreen.jsx":"a8a080a80d9e","showcases/console/ExtraScreens.jsx":"1e7a048ab690","showcases/console/OverviewScreen.jsx":"34b01f22bb52","showcases/console/SettingsScreen.jsx":"1d67397e26b4","showcases/console/Shell.jsx":"b7da6de80c2b","showcases/docs/DocsScreen.jsx":"faa44c30040d","showcases/infra/InfraScreen.jsx":"f95eefa85b8d","showcases/tools/ToolsScreen.jsx":"dc4c12101820","showcases/trader/TraderScreen.jsx":"12e5273b9894","showcases/website/Sections.jsx":"3f14d6a12c71"},"inlinedExternals":[],"unexposedExports":[{"name":"computeDiff","sourcePath":"components/code/Diff.jsx"},{"name":"cssPct","sourcePath":"components/forms/Button.jsx"},{"name":"formatTime","sourcePath":"components/ai/Player.jsx"},{"name":"injectEfCss","sourcePath":"components/forms/Button.jsx"},{"name":"mergeRefs","sourcePath":"components/forms/Button.jsx"},{"name":"prefersReducedMotion","sourcePath":"components/forms/Button.jsx"},{"name":"useAnchoredStyle","sourcePath":"components/overlay/Portal.jsx"},{"name":"useFieldProps","sourcePath":"components/forms/FormField.jsx"},{"name":"useFormState","sourcePath":"components/forms/FormField.jsx"},{"name":"useIsoLayoutEffect","sourcePath":"components/forms/Button.jsx"},{"name":"useToast","sourcePath":"components/feedback/Toast.jsx"}]} */
 
 (() => {
 
@@ -5506,7 +5506,97 @@ function FormField({
     className: "ef-field__hint"
   }, hint) : null);
 }
-Object.assign(__ds_scope, { useFieldProps, FormField });
+
+/**
+ * Zero-dependency form state: values, per-field wiring, validation timing.
+ *
+ * `validate(values)` returns `{ field: 'message' }` for whatever is currently
+ * invalid; an empty object means clean. A field's error only surfaces once
+ * that field has blurred or a submit was attempted — the timing
+ * guidelines/forms.md prescribes (blur, then re-validate on change, then
+ * everything on submit) — while `errors` always carries the raw result.
+ *
+ * Lowercase, so the compiler files it under unexposedExports and it never
+ * reaches the global namespace directly. Consumers get it as
+ * `FormField.useFormState` (assigned at the bottom of this file), the same
+ * publication Toaster.useToast uses.
+ */
+function useFormState({
+  initial,
+  validate
+} = {}) {
+  // The first render's `initial` wins for the life of the hook, so an inline
+  // object literal does not re-seed the form on every render.
+  const initialRef = React.useRef(initial || {});
+  const [values, setValues] = React.useState(initialRef.current);
+  const [touched, setTouched] = React.useState({});
+  const [submitted, setSubmitted] = React.useState(false);
+  const [submitting, setSubmitting] = React.useState(false);
+  const errors = validate ? validate(values) || {} : {};
+  const set = React.useCallback((name, val) => {
+    setValues(prev => ({
+      ...prev,
+      [name]: val
+    }));
+  }, []);
+  const field = name => {
+    const err = touched[name] || submitted ? errors[name] : undefined;
+    return {
+      value: values[name],
+      onChange: eventOrValue => {
+        const t = eventOrValue && typeof eventOrValue === 'object' ? eventOrValue.target : null;
+        set(name, t && 'value' in t ? t.type === 'checkbox' ? t.checked : t.value : eventOrValue);
+      },
+      onBlur: () => setTouched(prev => prev[name] ? prev : {
+        ...prev,
+        [name]: true
+      }),
+      invalid: err != null && err !== '',
+      error: err != null && err !== '' ? err : undefined
+    };
+  };
+  const handleSubmit = fn => e => {
+    if (e && typeof e.preventDefault === 'function') e.preventDefault();
+    setSubmitted(true);
+    const errs = validate ? validate(values) || {} : {};
+    const all = {};
+    Object.keys(values).forEach(k => {
+      all[k] = true;
+    });
+    Object.keys(errs).forEach(k => {
+      all[k] = true;
+    });
+    setTouched(prev => ({
+      ...prev,
+      ...all
+    }));
+    if (Object.keys(errs).length > 0) return;
+    const out = fn ? fn(values) : undefined;
+    if (out && typeof out.then === 'function') {
+      setSubmitting(true);
+      return Promise.resolve(out).finally(() => setSubmitting(false));
+    }
+    return out;
+  };
+  const reset = React.useCallback(() => {
+    setValues(initialRef.current);
+    setTouched({});
+    setSubmitted(false);
+    setSubmitting(false);
+  }, []);
+  return {
+    values,
+    errors,
+    touched,
+    set,
+    field,
+    submitting,
+    handleSubmit,
+    reset
+  };
+}
+FormField.useFormState = useFormState;
+Object.assign(__ds_scope, { useFieldProps, FormField, useFormState });
 })(); } catch (e) { __ds_ns.__errors.push({ path: "components/forms/FormField.jsx", error: String((e && e.message) || e) }); }
 
 // components/forms/Checkbox.jsx
@@ -6135,6 +6225,8 @@ const CSS = `
 .ef-cal__day--today{border-color:var(--sand-400)}
 .ef-cal__day--sel{background:var(--accent);color:var(--accent-contrast);font-weight:var(--weight-semibold)}
 .ef-cal__day--sel:hover{background:var(--sand-900)}
+.ef-cal__day--band{background:var(--brand-100);color:var(--brand-950);border-radius:0}
+.ef-cal__day--band:hover{background:var(--brand-200)}
 `;
 const DOW = ['Mo', 'Tu', 'We', 'Th', 'Fr', 'Sa', 'Su'];
 const DOW_FULL = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'];
@@ -6143,14 +6235,19 @@ const iso = d => d.getFullYear() + '-' + String(d.getMonth() + 1).padStart(2, '0
 function Calendar({
   value,
   onChange,
+  range,
   style,
   className,
   ...rest
 }) {
   __ds_scope.injectEfCss('ef-css-cal', CSS);
-  const sel = value ? new Date(value + 'T00:00:00') : null;
+  // In range mode value is { from, to } of ISO strings (either may be null);
+  // without the prop everything below behaves exactly as before.
+  const from = range && value ? value.from || null : null;
+  const to = range && value ? value.to || null : null;
+  const sel = !range && value ? new Date(value + 'T00:00:00') : null;
   const [view, setView] = React.useState(() => {
-    const b = sel || new Date();
+    const b = sel || (from ? new Date(from + 'T00:00:00') : new Date());
     return [b.getFullYear(), b.getMonth()];
   });
   const [y, m] = view;
@@ -6162,7 +6259,7 @@ function Calendar({
     length: 42
   }, (_, i) => new Date(start.getFullYear(), start.getMonth(), start.getDate() + i));
   const gridRef = React.useRef(null);
-  const [focusIso, setFocusIso] = React.useState(() => sel ? iso(sel) : today);
+  const [focusIso, setFocusIso] = React.useState(() => sel ? iso(sel) : from || today);
   const focusTarget = cells.some(d => iso(d) === focusIso) ? focusIso : iso(first);
   const move = days => {
     const base = new Date(focusTarget + 'T00:00:00');
@@ -6208,6 +6305,26 @@ function Calendar({
       setView([ty, tm]);
     }
   };
+  // Range selection: first pick opens a range, the second closes it (swapped
+  // when it lands earlier — ISO strings compare correctly), a third starts over.
+  const pick = id => {
+    setFocusIso(id);
+    if (!onChange) return;
+    if (!range) {
+      onChange(id);
+      return;
+    }
+    if (!from || to) onChange({
+      from: id,
+      to: null
+    });else if (id < from) onChange({
+      from: id,
+      to: from
+    });else onChange({
+      from,
+      to: id
+    });
+  };
   const rows = Array.from({
     length: 6
   }, (_, r) => cells.slice(r * 7, r * 7 + 7));
@@ -6249,19 +6366,18 @@ function Calendar({
     key: ri
   }, row.map(d => {
     const id = iso(d);
+    const isEnd = range && (id === from || id === to);
+    const inBand = range && from && to && id > from && id < to;
     return /*#__PURE__*/React.createElement("button", {
       key: id,
       role: "gridcell",
       "data-iso": id,
       tabIndex: id === focusTarget ? 0 : -1,
-      "aria-selected": sel ? id === iso(sel) : undefined,
+      "aria-selected": range ? from || to ? isEnd : undefined : sel ? id === iso(sel) : undefined,
       "aria-current": id === today ? 'date' : undefined,
       "aria-label": `${d.getDate()} ${MONTHS[d.getMonth()]} ${d.getFullYear()}`,
-      className: `ef-cal__day${d.getMonth() !== m ? ' ef-cal__day--out' : ''}${id === today ? ' ef-cal__day--today' : ''}${sel && id === iso(sel) ? ' ef-cal__day--sel' : ''}`,
-      onClick: () => {
-        setFocusIso(id);
-        if (onChange) onChange(id);
-      }
+      className: `ef-cal__day${d.getMonth() !== m ? ' ef-cal__day--out' : ''}${id === today ? ' ef-cal__day--today' : ''}${(range ? isEnd : sel && id === iso(sel)) ? ' ef-cal__day--sel' : ''}${inBand ? ' ef-cal__day--band' : ''}`,
+      onClick: () => pick(id)
     }, d.getDate());
   })))));
 }
@@ -6743,6 +6859,212 @@ function Label({
 }
 Object.assign(__ds_scope, { Label });
 })(); } catch (e) { __ds_ns.__errors.push({ path: "components/forms/Label.jsx", error: String((e && e.message) || e) }); }
+
+// components/forms/NumberInput.jsx
+try { (() => {
+function _extends() { return _extends = Object.assign ? Object.assign.bind() : function (n) { for (var e = 1; e < arguments.length; e++) { var t = arguments[e]; for (var r in t) ({}).hasOwnProperty.call(t, r) && (n[r] = t[r]); } return n; }, _extends.apply(null, arguments); }
+const CSS = `
+.ef-field{display:flex;flex-direction:column;gap:6px}
+.ef-field__label{font-size:var(--text-sm);font-weight:var(--weight-semibold);color:var(--text-primary)}
+.ef-field__hint{font-size:var(--text-xs);color:var(--text-muted)}
+.ef-field__error{font-size:var(--text-xs);color:var(--danger-600);display:flex;align-items:center;gap:4px}
+.ef-number{display:flex;align-items:stretch;overflow:hidden;border:1px solid var(--border-strong);border-radius:var(--radius-sm);background:var(--surface-card);transition:border-color var(--dur-fast) var(--ease-out),box-shadow var(--dur-fast) var(--ease-out)}
+.ef-number:hover:not(.ef-number--disabled){border-color:var(--sand-400)}
+.ef-number:focus-within{border-color:var(--accent);box-shadow:var(--focus-ring)}
+.ef-number.ef-number--invalid{border-color:var(--danger-600)}
+.ef-number.ef-number--invalid:focus-within{box-shadow:var(--focus-ring-danger)}
+.ef-number--disabled{background:var(--surface-sunken)}
+.ef-number__el{flex:1;min-width:0;border:none;background:transparent;color:var(--text-primary);font-family:var(--font-sans);font-variant-numeric:tabular-nums}
+.ef-number__el:focus{outline:none}
+.ef-number__el::placeholder{color:var(--text-muted)}
+.ef-number__el:disabled{color:var(--text-muted);cursor:not-allowed}
+.ef-number--sm .ef-number__el{height:calc(var(--control-h-sm) - 2px);padding:0 10px;font-size:var(--text-sm)}
+.ef-number--md .ef-number__el{height:calc(var(--control-h-md) - 2px);padding:0 12px;font-size:var(--text-md)}
+.ef-number--lg .ef-number__el{height:calc(var(--control-h-lg) - 2px);padding:0 14px;font-size:var(--text-lg)}
+.ef-number__steps{display:flex;flex-direction:column;flex:none;align-self:stretch;border-left:1px solid var(--border-default)}
+.ef-number__step{flex:1 1 0;display:flex;align-items:center;justify-content:center;width:24px;padding:0;border:none;background:transparent;color:var(--text-muted);cursor:pointer;transition:background var(--dur-fast) var(--ease-out),color var(--dur-fast) var(--ease-out)}
+.ef-number__step:hover:not(:disabled){background:var(--surface-sunken);color:var(--text-primary)}
+.ef-number__step:disabled{opacity:.45;cursor:not-allowed}
+.ef-number__step:focus-visible{outline:none;box-shadow:var(--focus-ring)}
+.ef-number__step+.ef-number__step{border-top:1px solid var(--border-default)}
+.ef-number--sm .ef-number__step{width:22px}
+.ef-number--lg .ef-number__step{width:28px}
+`;
+// How many decimal places a number carries, so a commit can round away float
+// noise: 0.1 + 0.2 must land as 0.3, not 0.30000000000000004.
+function decimalsOf(n) {
+  if (!Number.isFinite(n)) return 0;
+  const s = String(n);
+  const e = s.search(/e-/i);
+  const i = s.indexOf('.');
+  if (e !== -1) return (+s.slice(e + 2) || 0) + (i !== -1 ? e - i - 1 : 0);
+  return i === -1 ? 0 : s.length - i - 1;
+}
+const defaultParse = t => {
+  const n = Number(t.replace(/,/g, ''));
+  return Number.isFinite(n) ? n : null;
+};
+/**
+ * A numeric field with stepper buttons — a text input with inputmode="decimal"
+ * rather than type=number, so typing stays free-form and the value only
+ * commits (parse → clamp → snap to step) on blur. Empty commits null.
+ * ArrowUp/Down step, Shift multiplies by 10, Home/End jump to finite rails.
+ */
+function NumberInput({
+  label,
+  hint,
+  error,
+  invalid,
+  value,
+  defaultValue,
+  onChange,
+  min,
+  max,
+  step = 1,
+  size = 'md',
+  disabled,
+  placeholder,
+  format,
+  parse,
+  style,
+  className,
+  ...rest
+}) {
+  __ds_scope.injectEfCss('ef-css-number', CSS);
+  // Picks up id / aria wiring when nested in a FormField; standalone this is a no-op.
+  const field = __ds_scope.useFieldProps({
+    invalid,
+    error,
+    id: rest.id,
+    'aria-describedby': rest['aria-describedby']
+  });
+  const uid = React.useId();
+  const inputId = field.id || (label ? uid + 'n' : undefined);
+  const bad = field.invalid;
+  const [inner, setInner] = React.useState(defaultValue !== undefined ? defaultValue : null);
+  const v = value !== undefined ? value : inner;
+  // The text being edited; null means "not editing, show the formatted value".
+  const [draft, setDraft] = React.useState(null);
+  const fmt = n => format ? format(n) : String(n);
+  const parseText = t => {
+    const s = t.trim();
+    if (s === '') return null;
+    const n = (parse || defaultParse)(s);
+    return n != null && Number.isFinite(n) ? n : undefined; // undefined = unparseable
+  };
+  const normalize = n => {
+    let x = n;
+    if (step > 0) {
+      const base = Number.isFinite(min) ? min : 0;
+      const d = Math.max(decimalsOf(step), decimalsOf(base));
+      x = base + Math.round((x - base) / step) * step;
+      x = Number(x.toFixed(Math.min(d, 20)));
+    }
+    if (Number.isFinite(min) && x < min) x = min;
+    if (Number.isFinite(max) && x > max) x = max;
+    return x;
+  };
+  const emit = (next, e) => {
+    if (value === undefined) setInner(next);
+    if (onChange && !Object.is(next, v)) onChange(next, e);
+  };
+  const commit = e => {
+    if (draft == null) return;
+    const n = parseText(draft);
+    setDraft(null);
+    if (n === undefined) return; // unparseable: revert to the last committed value
+    emit(n === null ? null : normalize(n), e);
+  };
+  const stepBy = (dir, mult, e) => {
+    const parsed = draft != null ? parseText(draft) : v;
+    const cur = parsed === undefined ? v : parsed;
+    let next;
+    if (cur == null) next = Number.isFinite(min) ? min : Number.isFinite(max) && dir < 0 ? max : 0;else next = cur + dir * step * mult;
+    setDraft(null);
+    emit(normalize(next), e);
+  };
+  const keys = e => {
+    if (disabled) return;
+    if (e.key === 'ArrowUp') {
+      e.preventDefault();
+      stepBy(1, e.shiftKey ? 10 : 1, e);
+    } else if (e.key === 'ArrowDown') {
+      e.preventDefault();
+      stepBy(-1, e.shiftKey ? 10 : 1, e);
+    } else if (e.key === 'Home' && Number.isFinite(min)) {
+      e.preventDefault();
+      setDraft(null);
+      emit(normalize(min), e);
+    } else if (e.key === 'End' && Number.isFinite(max)) {
+      e.preventDefault();
+      setDraft(null);
+      emit(normalize(max), e);
+    }
+  };
+  const shown = draft != null ? draft : v == null ? '' : fmt(v);
+  const upStuck = disabled || v != null && Number.isFinite(max) && v >= max;
+  const downStuck = disabled || v != null && Number.isFinite(min) && v <= min;
+  const control = /*#__PURE__*/React.createElement("span", {
+    className: `ef-number ef-number--${size}${bad ? ' ef-number--invalid' : ''}${disabled ? ' ef-number--disabled' : ''}`
+  }, /*#__PURE__*/React.createElement("input", _extends({}, rest, field.controlProps, {
+    id: inputId,
+    className: "ef-number__el",
+    type: "text",
+    inputMode: "decimal",
+    autoComplete: "off",
+    placeholder: placeholder,
+    disabled: disabled,
+    value: shown,
+    "aria-invalid": bad || undefined,
+    onChange: e => setDraft(e.target.value),
+    onKeyDown: keys,
+    onBlur: commit
+  })), /*#__PURE__*/React.createElement("span", {
+    className: "ef-number__steps"
+  }, /*#__PURE__*/React.createElement("button", {
+    type: "button",
+    className: "ef-number__step",
+    "aria-label": "Increase",
+    tabIndex: -1,
+    disabled: upStuck,
+    onMouseDown: e => e.preventDefault(),
+    onClick: e => stepBy(1, 1, e)
+  }, /*#__PURE__*/React.createElement(__ds_scope.Icon, {
+    name: "chevron-up",
+    size: size === 'lg' ? 14 : 12
+  })), /*#__PURE__*/React.createElement("button", {
+    type: "button",
+    className: "ef-number__step",
+    "aria-label": "Decrease",
+    tabIndex: -1,
+    disabled: downStuck,
+    onMouseDown: e => e.preventDefault(),
+    onClick: e => stepBy(-1, 1, e)
+  }, /*#__PURE__*/React.createElement(__ds_scope.Icon, {
+    name: "chevron-down",
+    size: size === 'lg' ? 14 : 12
+  }))));
+  if (!label && !hint && !error) return React.cloneElement(control, {
+    style,
+    className: control.props.className + (className ? ' ' + className : '')
+  });
+  return /*#__PURE__*/React.createElement("div", {
+    className: `ef-field${className ? ' ' + className : ''}`,
+    style: style
+  }, label ? /*#__PURE__*/React.createElement("label", {
+    htmlFor: inputId,
+    className: "ef-field__label"
+  }, label) : null, control, error ? /*#__PURE__*/React.createElement("span", {
+    className: "ef-field__error"
+  }, /*#__PURE__*/React.createElement(__ds_scope.Icon, {
+    name: "circle-alert",
+    size: 12
+  }), error) : hint ? /*#__PURE__*/React.createElement("span", {
+    className: "ef-field__hint"
+  }, hint) : null);
+}
+Object.assign(__ds_scope, { NumberInput });
+})(); } catch (e) { __ds_ns.__errors.push({ path: "components/forms/NumberInput.jsx", error: String((e && e.message) || e) }); }
 
 // components/forms/Radio.jsx
 try { (() => {
@@ -8397,6 +8719,397 @@ function DatePicker({
 }
 Object.assign(__ds_scope, { DatePicker });
 })(); } catch (e) { __ds_ns.__errors.push({ path: "components/dates/DatePicker.jsx", error: String((e && e.message) || e) }); }
+
+// components/dates/DateRangePicker.jsx
+try { (() => {
+function _extends() { return _extends = Object.assign ? Object.assign.bind() : function (n) { for (var e = 1; e < arguments.length; e++) { var t = arguments[e]; for (var r in t) ({}).hasOwnProperty.call(t, r) && (n[r] = t[r]); } return n; }, _extends.apply(null, arguments); }
+const CSS = `
+.ef-daterange{position:relative;display:inline-flex;flex-direction:column;gap:6px}
+.ef-daterange__label{font-size:var(--text-sm);font-weight:var(--weight-semibold);color:var(--text-primary)}
+.ef-daterange__hint{font-size:var(--text-xs);color:var(--text-muted)}
+.ef-daterange__wrap{position:relative;display:inline-flex}
+.ef-daterange__btn{flex:1;min-width:0;display:inline-flex;align-items:center;gap:8px;height:var(--control-h-md);padding:0 32px 0 12px;border:1px solid var(--border-strong);border-radius:var(--radius-sm);background:var(--surface-card);font-family:var(--font-sans);font-size:var(--text-md);color:var(--text-primary);cursor:pointer;white-space:nowrap;transition:border-color var(--dur-fast) var(--ease-out)}
+.ef-daterange__btn:hover:not(:disabled){border-color:var(--sand-400)}
+.ef-daterange__btn:focus-visible{outline:none;border-color:var(--accent);box-shadow:var(--focus-ring)}
+.ef-daterange__btn:disabled{background:var(--surface-sunken);color:var(--text-muted);cursor:not-allowed}
+.ef-daterange__btn--empty{color:var(--text-muted)}
+.ef-daterange__chevron{position:absolute;right:10px;top:50%;transform:translateY(-50%);display:inline-flex;color:var(--text-muted);pointer-events:none}
+.ef-daterange__clear{position:absolute;right:6px;top:50%;transform:translateY(-50%);display:inline-flex;align-items:center;justify-content:center;width:22px;height:22px;border:none;border-radius:var(--radius-sm);background:none;color:var(--text-muted);cursor:pointer}
+.ef-daterange__clear:hover{background:var(--surface-sunken);color:var(--text-primary)}
+.ef-daterange__clear:focus-visible{outline:none;box-shadow:var(--focus-ring)}
+.ef-daterange__pop{background:var(--surface-card);border:1px solid var(--border-strong);border-radius:var(--radius-md);box-shadow:var(--shadow-md);padding:12px;z-index:var(--z-dropdown);animation:ef-drp-in var(--dur-fast) var(--ease-out)}
+@keyframes ef-drp-in{from{opacity:0;transform:translateY(-3px)}}
+`;
+const fmt = v => {
+  if (!v) return null;
+  const d = new Date(v + 'T00:00:00');
+  return d.toLocaleDateString('en-US', {
+    month: 'short',
+    day: 'numeric',
+    year: 'numeric'
+  });
+};
+const EMPTY = {
+  from: null,
+  to: null
+};
+function DateRangePicker({
+  label,
+  hint,
+  value,
+  onChange,
+  min,
+  max,
+  placeholder = 'Pick a date range',
+  disabled,
+  style,
+  className,
+  ...rest
+}) {
+  __ds_scope.injectEfCss('ef-css-daterange', CSS);
+  // Picks up id / aria wiring when nested in a FormField; standalone this is a no-op.
+  const field = __ds_scope.useFieldProps({
+    id: rest.id,
+    'aria-describedby': rest['aria-describedby']
+  });
+  const [inner, setInner] = React.useState(EMPTY);
+  const v = value != null ? value : inner;
+  const from = v && v.from ? v.from : null;
+  const to = v && v.to ? v.to : null;
+  const [open, setOpen] = React.useState(false);
+  const rootRef = React.useRef(null);
+  const wrapRef = React.useRef(null);
+  const btnRef = React.useRef(null);
+  const panelRef = React.useRef(null);
+  const {
+    style: anchored
+  } = __ds_scope.useAnchoredStyle(wrapRef, panelRef, {
+    open,
+    placement: 'bottom',
+    align: 'start'
+  });
+  React.useEffect(() => {
+    if (!open) return;
+    // the calendar is portaled out of `rootRef`, so look for it in the panel
+    const day = panelRef.current && panelRef.current.querySelector('[role="gridcell"][tabindex="0"]');
+    if (day) day.focus();
+    const away = e => {
+      const inTrigger = rootRef.current && rootRef.current.contains(e.target);
+      const inPanel = panelRef.current && panelRef.current.contains(e.target);
+      if (!inTrigger && !inPanel) setOpen(false);
+    };
+    const key = e => {
+      if (e.key === 'Escape') {
+        setOpen(false);
+        if (btnRef.current) btnRef.current.focus();
+      }
+    };
+    document.addEventListener('mousedown', away);
+    document.addEventListener('keydown', key);
+    return () => {
+      document.removeEventListener('mousedown', away);
+      document.removeEventListener('keydown', key);
+    };
+  }, [open]);
+  const commit = r => {
+    if (value == null) setInner(r);
+    if (onChange) onChange(r);
+  };
+  // The Calendar itself has no bounds, so a pick outside [min, max] is dropped
+  // here: any change whose ends stray out of the window never commits.
+  const inBounds = d => !d || (!min || d >= min) && (!max || d <= max);
+  const handlePick = r => {
+    if (!inBounds(r.from) || !inBounds(r.to)) return;
+    commit(r);
+    if (r.from && r.to) {
+      setOpen(false);
+      if (btnRef.current) btnRef.current.focus();
+    }
+  };
+  const clear = () => {
+    commit(EMPTY);
+    if (btnRef.current) btnRef.current.focus();
+  };
+  const text = from || to ? `${fmt(from) || '…'} — ${fmt(to) || '…'}` : null;
+  return /*#__PURE__*/React.createElement("span", _extends({}, rest, {
+    ref: rootRef,
+    className: `ef-daterange${className ? ' ' + className : ''}`,
+    style: style
+  }), label ? /*#__PURE__*/React.createElement("span", {
+    className: "ef-daterange__label"
+  }, label) : null, /*#__PURE__*/React.createElement("span", {
+    ref: wrapRef,
+    className: "ef-daterange__wrap"
+  }, /*#__PURE__*/React.createElement("button", _extends({}, field.controlProps, {
+    type: "button",
+    ref: btnRef,
+    disabled: disabled,
+    "aria-haspopup": "dialog",
+    "aria-expanded": open,
+    className: `ef-daterange__btn${text ? '' : ' ef-daterange__btn--empty'}`,
+    onClick: () => setOpen(o => !o)
+  }), /*#__PURE__*/React.createElement(__ds_scope.Icon, {
+    name: "calendar",
+    size: 15,
+    style: {
+      color: 'var(--text-muted)'
+    }
+  }), text || placeholder), text && !disabled ? /*#__PURE__*/React.createElement("button", {
+    type: "button",
+    className: "ef-daterange__clear",
+    "aria-label": "Clear date range",
+    onClick: clear
+  }, /*#__PURE__*/React.createElement(__ds_scope.Icon, {
+    name: "x",
+    size: 13
+  })) : /*#__PURE__*/React.createElement("span", {
+    className: "ef-daterange__chevron"
+  }, /*#__PURE__*/React.createElement(__ds_scope.Icon, {
+    name: "chevron-down",
+    size: 14
+  }))), hint ? /*#__PURE__*/React.createElement("span", {
+    className: "ef-daterange__hint"
+  }, hint) : null, open && /*#__PURE__*/React.createElement(__ds_scope.Portal, null, /*#__PURE__*/React.createElement("div", {
+    ref: panelRef,
+    className: "ef-daterange__pop",
+    style: anchored
+  }, /*#__PURE__*/React.createElement(__ds_scope.Calendar, {
+    range: true,
+    value: {
+      from,
+      to
+    },
+    onChange: handlePick
+  }))));
+}
+Object.assign(__ds_scope, { DateRangePicker });
+})(); } catch (e) { __ds_ns.__errors.push({ path: "components/dates/DateRangePicker.jsx", error: String((e && e.message) || e) }); }
+
+// components/dates/TimePicker.jsx
+try { (() => {
+function _extends() { return _extends = Object.assign ? Object.assign.bind() : function (n) { for (var e = 1; e < arguments.length; e++) { var t = arguments[e]; for (var r in t) ({}).hasOwnProperty.call(t, r) && (n[r] = t[r]); } return n; }, _extends.apply(null, arguments); }
+const CSS = `
+.ef-field{display:flex;flex-direction:column;gap:6px}
+.ef-field__label{font-size:var(--text-sm);font-weight:var(--weight-semibold);color:var(--text-primary)}
+.ef-field__hint{font-size:var(--text-xs);color:var(--text-muted)}
+.ef-timepicker{position:relative;display:flex;align-items:center}
+.ef-timepicker__input{width:100%;height:var(--control-h-md);padding:0 34px 0 12px;border:1px solid var(--border-strong);border-radius:var(--radius-sm);background:var(--surface-card);font-family:var(--font-sans);font-size:var(--text-md);color:var(--text-primary);transition:border-color var(--dur-fast) var(--ease-out),box-shadow var(--dur-fast) var(--ease-out)}
+.ef-timepicker__input::placeholder{color:var(--text-muted)}
+.ef-timepicker__input:hover:not(:disabled){border-color:var(--sand-400)}
+.ef-timepicker__input:focus{outline:none;border-color:var(--accent);box-shadow:var(--focus-ring)}
+.ef-timepicker__input:disabled{background:var(--surface-sunken);color:var(--text-muted);cursor:not-allowed}
+.ef-timepicker--invalid .ef-timepicker__input{border-color:var(--danger-600)}
+.ef-timepicker--invalid .ef-timepicker__input:focus{box-shadow:var(--focus-ring-danger)}
+.ef-timepicker__icon{position:absolute;right:11px;color:var(--text-muted);display:inline-flex;pointer-events:none}
+.ef-timepicker__panel{max-height:240px;overflow-y:auto;background:var(--surface-card);border:1px solid var(--border-strong);border-radius:var(--radius-md);box-shadow:var(--shadow-md);padding:4px;z-index:var(--z-dropdown);animation:ef-tp-in var(--dur-fast) var(--ease-out)}
+@keyframes ef-tp-in{from{opacity:0;transform:translateY(-3px)}}
+.ef-timepicker__opt{display:flex;align-items:center;gap:9px;width:100%;padding:7px 10px;border:none;border-radius:var(--radius-sm);background:none;cursor:pointer;text-align:left;font-family:var(--font-sans);font-size:var(--text-sm);color:var(--text-primary)}
+.ef-timepicker__opt--hi{background:var(--surface-sunken)}
+.ef-timepicker__opt__check{margin-left:auto;color:var(--accent);display:inline-flex}
+.ef-timepicker__empty{padding:14px 10px;font-size:var(--text-sm);color:var(--text-muted);text-align:center}
+`;
+const toMin = t => {
+  const p = t.split(':');
+  return Number(p[0]) * 60 + Number(p[1] || 0);
+};
+const toHM = n => String(Math.floor(n / 60)).padStart(2, '0') + ':' + String(n % 60).padStart(2, '0');
+const label12 = t => {
+  const p = t.split(':').map(Number);
+  const ap = p[0] < 12 ? 'AM' : 'PM';
+  return (p[0] % 12 || 12) + ':' + String(p[1]).padStart(2, '0') + ' ' + ap;
+};
+// '9:5' -> '09:05', '14' -> '14:00', '9:05 pm' -> '21:05'; null when not a time.
+const parseTyped = raw => {
+  const m = /^\s*(\d{1,2})(?::(\d{1,2}))?\s*(am|pm)?\s*$/i.exec(raw);
+  if (!m) return null;
+  let h = Number(m[1]);
+  const mm = Number(m[2] || 0);
+  const ap = m[3] ? m[3].toLowerCase() : null;
+  if (ap) {
+    if (h < 1 || h > 12) return null;
+    if (ap === 'pm' && h !== 12) h += 12;
+    if (ap === 'am' && h === 12) h = 0;
+  }
+  if (h > 23 || mm > 59) return null;
+  return toHM(h * 60 + mm);
+};
+function TimePicker({
+  label,
+  hint,
+  value,
+  onChange,
+  stepMinutes = 30,
+  minTime,
+  maxTime,
+  format24 = true,
+  placeholder = 'Pick a time',
+  disabled,
+  invalid,
+  style,
+  className,
+  ...rest
+}) {
+  __ds_scope.injectEfCss('ef-css-timepicker', CSS);
+  // Picks up id / aria wiring when nested in a FormField; standalone this is a no-op.
+  const field = __ds_scope.useFieldProps({
+    invalid,
+    id: rest.id,
+    'aria-describedby': rest['aria-describedby']
+  });
+  const bad = field.invalid;
+  const [open, setOpen] = React.useState(false);
+  const [q, setQ] = React.useState(null); // null = not editing, input mirrors `value`
+  const [hi, setHi] = React.useState(0);
+  const listId = React.useId();
+  const ref = React.useRef(null);
+  const panelRef = React.useRef(null);
+  const {
+    style: anchored
+  } = __ds_scope.useAnchoredStyle(ref, panelRef, {
+    open,
+    placement: 'bottom',
+    align: 'start',
+    matchWidth: true
+  });
+  const lo = toMin(minTime || '00:00');
+  const end = toMin(maxTime || '23:59');
+  const step = Math.max(1, stepMinutes);
+  const slots = [];
+  for (let t = lo; t <= end; t += step) slots.push(toHM(t));
+  const fmtSlot = t => format24 ? t : label12(t);
+  const query = q ? q.trim().toLowerCase() : '';
+  const shown = query ? slots.filter(s => fmtSlot(s).toLowerCase().includes(query) || s.includes(query)) : slots;
+  // Keep the highlighted option visible to sighted users the same way
+  // aria-activedescendant keeps it visible to screen readers.
+  React.useEffect(() => {
+    if (!open) return;
+    const el = document.getElementById(`${listId}-opt-${hi}`);
+    if (el && el.scrollIntoView) el.scrollIntoView({
+      block: 'nearest'
+    });
+  }, [open, hi, listId]);
+  React.useEffect(() => {
+    if (!open) return;
+    const away = e => {
+      const inControl = ref.current && ref.current.contains(e.target);
+      const inPanel = panelRef.current && panelRef.current.contains(e.target);
+      if (!inControl && !inPanel) setOpen(false);
+    };
+    document.addEventListener('mousedown', away);
+    return () => document.removeEventListener('mousedown', away);
+  }, [open]);
+  const openList = () => {
+    if (disabled) return;
+    setOpen(true);
+    const idx = value ? slots.indexOf(value) : -1;
+    setHi(idx >= 0 ? idx : 0);
+  };
+  const pick = t => {
+    if (onChange) onChange(t);
+    setQ(null);
+    setOpen(false);
+  };
+  // A typed valid time commits on blur even when it is not a listed slot,
+  // clamped into [minTime, maxTime]; an emptied input commits null.
+  const commitTyped = () => {
+    if (q == null) return;
+    if (q.trim() === '') {
+      if (onChange) onChange(null);
+    } else {
+      const t = parseTyped(q);
+      if (t) {
+        if (onChange) onChange(toHM(Math.min(Math.max(toMin(t), lo), end)));
+      }
+    }
+    setQ(null);
+  };
+  const onBlur = () => {
+    commitTyped();
+    setOpen(false);
+  };
+  const onKey = e => {
+    if (e.key === 'ArrowDown') {
+      e.preventDefault();
+      if (!open) openList();else setHi(h => Math.min(h + 1, shown.length - 1));
+    } else if (e.key === 'ArrowUp') {
+      e.preventDefault();
+      setHi(h => Math.max(h - 1, 0));
+    } else if (e.key === 'Enter' && open && shown[hi]) {
+      e.preventDefault();
+      pick(shown[hi]);
+    } else if (e.key === 'Escape') {
+      setOpen(false);
+      setQ(null);
+    }
+  };
+  const control = /*#__PURE__*/React.createElement("div", {
+    ref: ref,
+    className: `ef-timepicker${bad ? ' ef-timepicker--invalid' : ''}`
+  }, /*#__PURE__*/React.createElement("input", _extends({}, field.controlProps, {
+    className: "ef-timepicker__input",
+    role: "combobox",
+    "aria-expanded": open,
+    "aria-controls": listId,
+    "aria-autocomplete": "list",
+    "aria-invalid": bad || undefined,
+    "aria-activedescendant": open && shown.length ? `${listId}-opt-${hi}` : undefined,
+    placeholder: placeholder,
+    disabled: disabled,
+    value: q != null ? q : value ? fmtSlot(value) : '',
+    onChange: e => {
+      setQ(e.target.value);
+      setOpen(true);
+      setHi(0);
+    },
+    onClick: openList,
+    onFocus: openList,
+    onBlur: onBlur,
+    onKeyDown: onKey
+  })), /*#__PURE__*/React.createElement("span", {
+    className: "ef-timepicker__icon"
+  }, /*#__PURE__*/React.createElement(__ds_scope.Icon, {
+    name: "clock",
+    size: 15
+  })), open && /*#__PURE__*/React.createElement(__ds_scope.Portal, null, /*#__PURE__*/React.createElement("div", {
+    ref: panelRef,
+    className: "ef-timepicker__panel",
+    role: "listbox",
+    id: listId,
+    style: anchored,
+    onMouseDown: e => e.preventDefault()
+  }, shown.length === 0 && /*#__PURE__*/React.createElement("div", {
+    className: "ef-timepicker__empty"
+  }, "No matching time."), shown.map((t, i) => /*#__PURE__*/React.createElement("button", {
+    key: t,
+    type: "button",
+    role: "option",
+    id: `${listId}-opt-${i}`,
+    tabIndex: -1,
+    "aria-selected": t === value,
+    className: `ef-timepicker__opt${i === hi ? ' ef-timepicker__opt--hi' : ''}`,
+    onMouseEnter: () => setHi(i),
+    onClick: () => pick(t)
+  }, fmtSlot(t), t === value ? /*#__PURE__*/React.createElement("span", {
+    className: "ef-timepicker__opt__check"
+  }, /*#__PURE__*/React.createElement(__ds_scope.Icon, {
+    name: "check",
+    size: 15
+  })) : null)))));
+  if (!label && !hint) return /*#__PURE__*/React.createElement("div", _extends({}, rest, {
+    className: className,
+    style: style
+  }), control);
+  return /*#__PURE__*/React.createElement("div", _extends({}, rest, {
+    className: `ef-field${className ? ' ' + className : ''}`,
+    style: style
+  }), label ? /*#__PURE__*/React.createElement("span", {
+    className: "ef-field__label"
+  }, label) : null, control, hint ? /*#__PURE__*/React.createElement("span", {
+    className: "ef-field__hint"
+  }, hint) : null);
+}
+Object.assign(__ds_scope, { TimePicker });
+})(); } catch (e) { __ds_ns.__errors.push({ path: "components/dates/TimePicker.jsx", error: String((e && e.message) || e) }); }
 
 // components/feedback/Toast.jsx
 try { (() => {
@@ -14554,6 +15267,10 @@ __ds_ns.Calendar = __ds_scope.Calendar;
 
 __ds_ns.DatePicker = __ds_scope.DatePicker;
 
+__ds_ns.DateRangePicker = __ds_scope.DateRangePicker;
+
+__ds_ns.TimePicker = __ds_scope.TimePicker;
+
 __ds_ns.Accordion = __ds_scope.Accordion;
 
 __ds_ns.AspectRatio = __ds_scope.AspectRatio;
@@ -14641,6 +15358,8 @@ __ds_ns.Input = __ds_scope.Input;
 __ds_ns.InputGroup = __ds_scope.InputGroup;
 
 __ds_ns.Label = __ds_scope.Label;
+
+__ds_ns.NumberInput = __ds_scope.NumberInput;
 
 __ds_ns.Radio = __ds_scope.Radio;
 

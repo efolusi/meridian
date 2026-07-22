@@ -97,3 +97,75 @@ export function FormField({ label, hint, error, invalid, required, group, id, ch
     </div>
   );
 }
+
+/**
+ * Zero-dependency form state: values, per-field wiring, validation timing.
+ *
+ * `validate(values)` returns `{ field: 'message' }` for whatever is currently
+ * invalid; an empty object means clean. A field's error only surfaces once
+ * that field has blurred or a submit was attempted — the timing
+ * guidelines/forms.md prescribes (blur, then re-validate on change, then
+ * everything on submit) — while `errors` always carries the raw result.
+ *
+ * Lowercase, so the compiler files it under unexposedExports and it never
+ * reaches the global namespace directly. Consumers get it as
+ * `FormField.useFormState` (assigned at the bottom of this file), the same
+ * publication Toaster.useToast uses.
+ */
+export function useFormState({ initial, validate } = {}) {
+  // The first render's `initial` wins for the life of the hook, so an inline
+  // object literal does not re-seed the form on every render.
+  const initialRef = React.useRef(initial || {});
+  const [values, setValues] = React.useState(initialRef.current);
+  const [touched, setTouched] = React.useState({});
+  const [submitted, setSubmitted] = React.useState(false);
+  const [submitting, setSubmitting] = React.useState(false);
+
+  const errors = validate ? validate(values) || {} : {};
+
+  const set = React.useCallback((name, val) => {
+    setValues(prev => ({ ...prev, [name]: val }));
+  }, []);
+
+  const field = name => {
+    const err = touched[name] || submitted ? errors[name] : undefined;
+    return {
+      value: values[name],
+      onChange: eventOrValue => {
+        const t = eventOrValue && typeof eventOrValue === 'object' ? eventOrValue.target : null;
+        set(name, t && 'value' in t ? (t.type === 'checkbox' ? t.checked : t.value) : eventOrValue);
+      },
+      onBlur: () => setTouched(prev => (prev[name] ? prev : { ...prev, [name]: true })),
+      invalid: err != null && err !== '',
+      error: err != null && err !== '' ? err : undefined,
+    };
+  };
+
+  const handleSubmit = fn => e => {
+    if (e && typeof e.preventDefault === 'function') e.preventDefault();
+    setSubmitted(true);
+    const errs = validate ? validate(values) || {} : {};
+    const all = {};
+    Object.keys(values).forEach(k => { all[k] = true; });
+    Object.keys(errs).forEach(k => { all[k] = true; });
+    setTouched(prev => ({ ...prev, ...all }));
+    if (Object.keys(errs).length > 0) return;
+    const out = fn ? fn(values) : undefined;
+    if (out && typeof out.then === 'function') {
+      setSubmitting(true);
+      return Promise.resolve(out).finally(() => setSubmitting(false));
+    }
+    return out;
+  };
+
+  const reset = React.useCallback(() => {
+    setValues(initialRef.current);
+    setTouched({});
+    setSubmitted(false);
+    setSubmitting(false);
+  }, []);
+
+  return { values, errors, touched, set, field, submitting, handleSubmit, reset };
+}
+
+FormField.useFormState = useFormState;

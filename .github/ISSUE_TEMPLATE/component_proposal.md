@@ -5,7 +5,7 @@ labels: proposal
 ---
 
 **Problem**
-What can't be built cleanly with the current 106 components?
+What can't be built cleanly with the current 109 components?
 
 **Proposal**
 Sketch the API: props, variants, states. Reference prior art if any.

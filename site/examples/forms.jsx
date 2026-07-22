@@ -100,6 +100,34 @@ export function DigitEntryDemo() {
   );
 }
 
+// @demo FormField Form state
+export function FormFieldFormState() {
+  const { FormField, Input, NumberInput, Button } = window.EfolusiDesignSystem_4ffc3d;
+  const form = FormField.useFormState({
+    initial: { name: '', seats: 3 },
+    validate: v => {
+      const errors = {};
+      if (!v.name.trim()) errors.name = 'Name the workspace to continue.';
+      if (v.seats == null) errors.seats = 'How many seats?';
+      return errors;
+    },
+  });
+  const name = form.field('name');
+  const save = () => new Promise(resolve => setTimeout(resolve, 1200));
+  return (
+    <form onSubmit={form.handleSubmit(save)} style={{ display: 'flex', flexDirection: 'column', gap: 14, width: 300 }}>
+      <FormField label="Workspace name" error={name.error}>
+        <Input placeholder="acme-labs" value={name.value} onChange={name.onChange} onBlur={name.onBlur} />
+      </FormField>
+      <NumberInput label="Seats" min={1} max={50} {...form.field('seats')} />
+      <div style={{ display: 'flex', gap: 10 }}>
+        <Button type="submit" loading={form.submitting}>Create workspace</Button>
+        <Button type="button" variant="ghost" onClick={form.reset}>Reset</Button>
+      </div>
+    </form>
+  );
+}
+
 // @demo IconButton Variants
 export function IconButtonDemo() {
   const { IconButton } = window.EfolusiDesignSystem_4ffc3d;
@@ -151,6 +179,18 @@ export function LabelDemo() {
     <div style={{ display: 'flex', flexDirection: 'column', gap: 6 }}>
       <Label htmlFor="lbl-demo" required hint="Cannot be changed later">Primary region</Label>
       <input id="lbl-demo" placeholder="eu-west-1" style={{ height: 34, padding: '0 11px', border: '1px solid var(--border-strong)', borderRadius: 'var(--radius-sm)', font: 'inherit', background: 'var(--surface-card)', color: 'var(--text-primary)' }} />
+    </div>
+  );
+}
+
+// @demo NumberInput Stepped and clamped
+export function NumberInputDemo() {
+  const { NumberInput } = window.EfolusiDesignSystem_4ffc3d;
+  const [gb, setGb] = React.useState(8);
+  return (
+    <div style={{ display: 'flex', gap: 14, flexWrap: 'wrap' }}>
+      <NumberInput label="Memory" min={0} max={128} step={8} value={gb} onChange={setGb} hint="GB, in steps of 8." style={{ width: 150 }} />
+      <NumberInput label="Timeout" defaultValue={30} min={5} max={300} step={5} hint="Seconds." style={{ width: 150 }} />
     </div>
   );
 }

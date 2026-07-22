@@ -15,15 +15,21 @@ const CSS = `
 .ef-cal__day--today{border-color:var(--sand-400)}
 .ef-cal__day--sel{background:var(--accent);color:var(--accent-contrast);font-weight:var(--weight-semibold)}
 .ef-cal__day--sel:hover{background:var(--sand-900)}
+.ef-cal__day--band{background:var(--brand-100);color:var(--brand-950);border-radius:0}
+.ef-cal__day--band:hover{background:var(--brand-200)}
 `;
 const DOW = ['Mo', 'Tu', 'We', 'Th', 'Fr', 'Sa', 'Su'];
 const DOW_FULL = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'];
 const MONTHS = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
 const iso = d => d.getFullYear() + '-' + String(d.getMonth() + 1).padStart(2, '0') + '-' + String(d.getDate()).padStart(2, '0');
-export function Calendar({ value, onChange, style, className, ...rest }) {
+export function Calendar({ value, onChange, range, style, className, ...rest }) {
   injectEfCss('ef-css-cal', CSS);
-  const sel = value ? new Date(value + 'T00:00:00') : null;
-  const [view, setView] = React.useState(() => { const b = sel || new Date(); return [b.getFullYear(), b.getMonth()]; });
+  // In range mode value is { from, to } of ISO strings (either may be null);
+  // without the prop everything below behaves exactly as before.
+  const from = range && value ? value.from || null : null;
+  const to = range && value ? value.to || null : null;
+  const sel = !range && value ? new Date(value + 'T00:00:00') : null;
+  const [view, setView] = React.useState(() => { const b = sel || (from ? new Date(from + 'T00:00:00') : new Date()); return [b.getFullYear(), b.getMonth()]; });
   const [y, m] = view;
   const first = new Date(y, m, 1);
   const offset = (first.getDay() + 6) % 7;
@@ -31,7 +37,7 @@ export function Calendar({ value, onChange, style, className, ...rest }) {
   const today = iso(new Date());
   const cells = Array.from({ length: 42 }, (_, i) => new Date(start.getFullYear(), start.getMonth(), start.getDate() + i));
   const gridRef = React.useRef(null);
-  const [focusIso, setFocusIso] = React.useState(() => (sel ? iso(sel) : today));
+  const [focusIso, setFocusIso] = React.useState(() => (sel ? iso(sel) : from || today));
   const focusTarget = cells.some(d => iso(d) === focusIso) ? focusIso : iso(first);
   const move = days => {
     const base = new Date(focusTarget + 'T00:00:00');
@@ -64,6 +70,16 @@ export function Calendar({ value, onChange, style, className, ...rest }) {
       setView([ty, tm]);
     }
   };
+  // Range selection: first pick opens a range, the second closes it (swapped
+  // when it lands earlier — ISO strings compare correctly), a third starts over.
+  const pick = id => {
+    setFocusIso(id);
+    if (!onChange) return;
+    if (!range) { onChange(id); return; }
+    if (!from || to) onChange({ from: id, to: null });
+    else if (id < from) onChange({ from: id, to: from });
+    else onChange({ from, to: id });
+  };
   const rows = Array.from({ length: 6 }, (_, r) => cells.slice(r * 7, r * 7 + 7));
   return (
     <div {...rest} className={`ef-cal${className ? ' ' + className : ''}`} style={style}>
@@ -80,13 +96,15 @@ export function Calendar({ value, onChange, style, className, ...rest }) {
           <div role="row" className="ef-cal__row" key={ri}>
             {row.map(d => {
               const id = iso(d);
+              const isEnd = range && (id === from || id === to);
+              const inBand = range && from && to && id > from && id < to;
               return (
                 <button key={id} role="gridcell" data-iso={id} tabIndex={id === focusTarget ? 0 : -1}
-                  aria-selected={sel ? id === iso(sel) : undefined}
+                  aria-selected={range ? (from || to ? isEnd : undefined) : sel ? id === iso(sel) : undefined}
                   aria-current={id === today ? 'date' : undefined}
                   aria-label={`${d.getDate()} ${MONTHS[d.getMonth()]} ${d.getFullYear()}`}
-                  className={`ef-cal__day${d.getMonth() !== m ? ' ef-cal__day--out' : ''}${id === today ? ' ef-cal__day--today' : ''}${sel && id === iso(sel) ? ' ef-cal__day--sel' : ''}`}
-                  onClick={() => { setFocusIso(id); if (onChange) onChange(id); }}>{d.getDate()}</button>
+                  className={`ef-cal__day${d.getMonth() !== m ? ' ef-cal__day--out' : ''}${id === today ? ' ef-cal__day--today' : ''}${(range ? isEnd : sel && id === iso(sel)) ? ' ef-cal__day--sel' : ''}${inBand ? ' ef-cal__day--band' : ''}`}
+                  onClick={() => pick(id)}>{d.getDate()}</button>
               );
             })}
           </div>

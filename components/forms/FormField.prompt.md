@@ -30,3 +30,29 @@ For a control this system does not own, take the wiring as a function and spread
   {({ controlProps }) => <StripeCardElement {...controlProps} />}
 </FormField>
 ```
+
+## FormField.useFormState
+
+Zero-dependency form state for a whole form: values, per-field wiring, and the validation timing guidelines/forms.md prescribes (blur first, then re-validate on change, then everything on submit). Published as a static, like `Toaster.useToast`.
+
+```jsx
+const form = FormField.useFormState({
+  initial: { name: '', seats: 3 },
+  validate: v => {
+    const errors = {};
+    if (!v.name.trim()) errors.name = 'Name the workspace to continue.';
+    if (v.seats == null) errors.seats = 'How many seats?';
+    return errors; // empty object = valid
+  },
+});
+
+<form onSubmit={form.handleSubmit(save)}>
+  <Input label="Workspace name" {...form.field('name')} />
+  <NumberInput label="Seats" min={1} max={50} {...form.field('seats')} />
+  <Button type="submit" loading={form.submitting}>Create</Button>
+</form>
+```
+
+`field(name)` returns `{ value, onChange, onBlur, invalid, error }` — spread it on any control here (`onChange` takes a change event or a raw value, so `Input` and `NumberInput` both work). `error` only surfaces after that field blurs or a submit attempt; `form.errors` always holds the raw `validate` result. `handleSubmit(fn)` validates everything, marks all fields touched, and only calls `fn(values)` when clean — an async `fn` sets `form.submitting` around its promise, which feeds `Button loading` directly. `set(name, value)` writes a field imperatively; `reset()` returns to `initial`.
+
+Use it for a form of two or more validated fields. A single self-contained control does not need it — pass `error` yourself.

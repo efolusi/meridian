@@ -1312,7 +1312,7 @@
       "name": "calendar",
       "type": "registry:ui",
       "title": "Calendar",
-      "description": "Month grid \u2014 hairline today ring, ink selected day, ISO string in/out.",
+      "description": "Month grid \u2014 hairline today ring, ink selected day, ISO string in/out. `range` switches to a {from,to} pair: first pick sets from, second sets to (swapped when earlier), a third starts over; the days between paint as a tinted band.",
       "dependencies": [
         "react"
       ],
@@ -1366,6 +1366,73 @@
         },
         {
           "path": "components/dates/DatePicker.prompt.md",
+          "type": "registry:component"
+        }
+      ],
+      "categories": [
+        "dates"
+      ]
+    },
+    {
+      "name": "daterangepicker",
+      "type": "registry:ui",
+      "title": "DateRangePicker",
+      "description": "Field-style trigger + range Calendar popover for a check-in/check-out pair. Shows \"from \u2014 to\" once picked, an inline clear button while a range exists; closes when both ends are set, on outside click, ESC. `min`/`max` (ISO) drop picks outside the window.",
+      "dependencies": [
+        "react"
+      ],
+      "registryDependencies": [
+        "https://meridian.efolusi.com/site/registry/meridian-base.json",
+        "https://meridian.efolusi.com/site/registry/button.json",
+        "https://meridian.efolusi.com/site/registry/calendar.json",
+        "https://meridian.efolusi.com/site/registry/formfield.json",
+        "https://meridian.efolusi.com/site/registry/icon.json",
+        "https://meridian.efolusi.com/site/registry/portal.json"
+      ],
+      "files": [
+        {
+          "path": "components/dates/DateRangePicker.jsx",
+          "type": "registry:ui"
+        },
+        {
+          "path": "components/dates/DateRangePicker.d.ts",
+          "type": "registry:component"
+        },
+        {
+          "path": "components/dates/DateRangePicker.prompt.md",
+          "type": "registry:component"
+        }
+      ],
+      "categories": [
+        "dates"
+      ]
+    },
+    {
+      "name": "timepicker",
+      "type": "registry:ui",
+      "title": "TimePicker",
+      "description": "Input + listbox of time slots every `stepMinutes` between `minTime`/`maxTime`. Typing filters the list; Enter picks the highlighted slot; a typed valid time ('9:5' becomes '09:05') commits on blur even off-grid. Value is always 24h 'HH:MM' \u2014 `format24={false}` only changes the labels to 12h AM/PM.",
+      "dependencies": [
+        "react"
+      ],
+      "registryDependencies": [
+        "https://meridian.efolusi.com/site/registry/meridian-base.json",
+        "https://meridian.efolusi.com/site/registry/button.json",
+        "https://meridian.efolusi.com/site/registry/formfield.json",
+        "https://meridian.efolusi.com/site/registry/icon.json",
+        "https://meridian.efolusi.com/site/registry/portal.json"
+      ],
+      "files": [
+        {
+          "path": "components/dates/TimePicker.jsx",
+          "type": "registry:ui"
+        },
+        {
+          "path": "components/dates/TimePicker.d.ts",
+          "type": "registry:component"
+        },
+        {
+          "path": "components/dates/TimePicker.prompt.md",
           "type": "registry:component"
         }
       ],
@@ -2604,6 +2671,38 @@
         },
         {
           "path": "components/forms/Label.prompt.md",
+          "type": "registry:component"
+        }
+      ],
+      "categories": [
+        "forms"
+      ]
+    },
+    {
+      "name": "numberinput",
+      "type": "registry:ui",
+      "title": "NumberInput",
+      "description": "Numeric field with stepper buttons; renders bare, or as a full field when `label`/`hint`/`error` are set. It is a text input with `inputmode=\"decimal\"` \u2014 not `type=number` \u2014 so typing stays free-form and the value only commits on blur: parse, clamp to `min`/`max`, snap to the `step` grid (float nois",
+      "dependencies": [
+        "react"
+      ],
+      "registryDependencies": [
+        "https://meridian.efolusi.com/site/registry/meridian-base.json",
+        "https://meridian.efolusi.com/site/registry/button.json",
+        "https://meridian.efolusi.com/site/registry/formfield.json",
+        "https://meridian.efolusi.com/site/registry/icon.json"
+      ],
+      "files": [
+        {
+          "path": "components/forms/NumberInput.jsx",
+          "type": "registry:ui"
+        },
+        {
+          "path": "components/forms/NumberInput.d.ts",
+          "type": "registry:component"
+        },
+        {
+          "path": "components/forms/NumberInput.prompt.md",
           "type": "registry:component"
         }
       ],

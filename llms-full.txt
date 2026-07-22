@@ -1,0 +1,3919 @@
+# Meridian — llms-full.txt
+
+The entire design system in one file, generated from llms.txt, components/*/, and tokens/*.css by scripts/build_llms.py. Do not edit by hand. The short map of the repository is /llms.txt.
+
+> Meridian is a general-purpose open-source design system by Efolusi: 109 accessible React components, 177 design tokens (light, dark, compact), blocks, charts, and full example apps — served browser-native with zero build step. MIT licensed.
+
+Live docs: https://meridian.efolusi.com · Source: https://github.com/efolusi/meridian · License: MIT
+
+The layout is Meridian's own, organized by purpose: /site is the docs website; /components and /blocks hold the library; /showcases are example apps; /starters are copyable journeys; the stylesheet, tokens, assets, and compiled bundle stay at the root (see /ARCHITECTURE.md).
+
+## Install
+
+Load the stylesheet and bundle, then read components off the namespace:
+
+    const { Button } = window.EfolusiDesignSystem_4ffc3d;
+
+Or load both from the hosted site (no install):
+
+    <link rel="stylesheet" href="https://meridian.efolusi.com/styles.css">
+    <script src="https://meridian.efolusi.com/_ds_bundle.js"></script>
+
+Or install from npm for bundler projects (Vite, Next, Remix) — ESM modules, icons inlined, fonts included, types for @types/react 18 and 19:
+
+    npm install @efolusi/meridian
+
+    import '@efolusi/meridian/styles.css';
+    import { Button, FormField } from '@efolusi/meridian';
+
+Dark mode: set data-theme="dark" on any subtree. Compact density: data-density="compact". Semantic tokens only — never raw ramp values.
+
+## Components
+
+109 components across 12 groups: ai, code, data, dates, display, feedback, files, finance, forms, icons, navigation, overlay. Each entry lists the component's public exports, its usage guidance (.prompt.md), and its typed props interface (.d.ts).
+
+### ai
+
+#### AgentRun
+
+Group: ai · Source: /components/ai/AgentRun.jsx · Exports: AgentRun
+
+# AgentRun
+
+Vertical run trace: one row per step with done/active/pending/error state, connector rail, mono timestamps.
+
+`<AgentRun steps={[{ title: 'Draft plan', status: 'done', time: '09:41' }, { title: 'Booking', status: 'active', detail: <ToolCall … /> }]} />`
+
+Use for live agent progress or the run detail page. For static onboarding checklists use Steps instead.
+
+```ts
+export interface AgentRunStep {
+  id?: string;
+  title: React.ReactNode;
+  /** Supporting line — text or nodes */
+  detail?: React.ReactNode;
+  /** Collapsible panel (ToolCall, Diff…) behind a "Show detail" toggle */
+  children?: React.ReactNode;
+  /** Open the panel initially */
+  defaultOpen?: boolean;
+  /** @default 'pending' */
+  status?: 'done' | 'active' | 'pending' | 'error';
+  /** Mono timestamp on the right */
+  time?: string;
+}
+export interface AgentRunProps {
+  steps: AgentRunStep[];
+  style?: React.CSSProperties;
+  className?: string;
+}
+export declare function AgentRun(props: AgentRunProps): React.JSX.Element;
+```
+
+#### ChatMessage
+
+Group: ai · Source: /components/ai/ChatMessage.jsx · Exports: ChatMessage
+
+Agent-thread message: bot chip or user avatar, meta row, optional hover action row, streaming caret.
+
+The copy and retry buttons only render when you pass `onCopy` / `onRetry`, so a message never shows a control it cannot action. Pass a node as `actions` to replace the row, or `false` to suppress it.
+
+```jsx
+<ChatMessage role="user" name="Ada Obi" time="14:02">Deploy the staging branch.</ChatMessage>
+<ChatMessage time="14:02" onCopy={copy} onRetry={rerun}>Deployed to staging.</ChatMessage>
+<ChatMessage time="14:02" streaming>Provisioning a runner…</ChatMessage>
+```
+
+```ts
+export interface ChatMessageProps {
+  /** @default 'assistant' */
+  role?: 'user' | 'assistant' | 'system';
+  /** Display name @default You / Agent / System */
+  name?: string;
+  time?: string;
+  /** Blinking caret while generating */
+  streaming?: boolean;
+  /** false hides the hover action row; a node replaces it wholesale */
+  actions?: boolean | React.ReactNode;
+  /** Copy button; omit and the button is not rendered */
+  onCopy?: (e: React.MouseEvent) => void;
+  /** Retry button; omit and the button is not rendered */
+  onRetry?: (e: React.MouseEvent) => void;
+  children?: React.ReactNode;
+  style?: React.CSSProperties;
+  className?: string;
+}
+export declare function ChatMessage(props: ChatMessageProps): React.JSX.Element;
+```
+
+#### Citation
+
+Group: ai · Source: /components/ai/Citation.jsx · Exports: Citation, SourceList
+
+# Citation / SourceList
+
+Inline superscript source chips + the source list they resolve to.
+
+`…fares dropped 12%<Citation index={1} href="https://…" title="IATA report" /> this quarter.`
+`<SourceList sources={[{ index: 1, title: 'IATA quarterly report', domain: 'iata.org', url: 'https://…' }]} />`
+
+Number citations in reading order; render SourceList once at the end of the message.
+
+```ts
+export interface CitationSource { title: string; url?: string; domain?: string; description?: string; }
+export interface CitationProps {
+  /** Superscript number */
+  index: number;
+  href?: string;
+  /** Tooltip + aria label */
+  title?: string;
+  /** Hover preview card(s) with pager when 2+ */
+  sources?: CitationSource[];
+  onClick?: (e: React.MouseEvent) => void;
+  style?: React.CSSProperties;
+  className?: string;
+}
+export interface Source { index?: number; title: string; url?: string; domain?: string; }
+export interface SourceListProps {
+  sources: Source[];
+  /** @default 'Sources' */
+  title?: string;
+  style?: React.CSSProperties;
+  className?: string;
+}
+export declare function Citation(props: CitationProps): React.JSX.Element;
+export declare function SourceList(props: SourceListProps): React.JSX.Element;
+```
+
+#### Confirmation
+
+Group: ai · Source: /components/ai/Confirmation.jsx · Exports: Confirmation
+
+# Confirmation
+
+Inline approval card for agent actions — pending shows Approve/Reject, settled shows a status line. Ringed accent (or danger) border while pending.
+
+`<Confirmation title="Send 12 refund emails?" description="Covers every failed webhook customer." onStateChange={apply} />`
+`<Confirmation tone="danger" title="Drop table archived_runs?" approveLabel="Drop it" />`
+
+Use in the thread when the agent needs permission; use ConfirmDialog only for app-level modals. Nest a ToolCall or Diff as children to show exactly what runs.
+
+```ts
+export interface ConfirmationProps {
+  title: React.ReactNode;
+  description?: React.ReactNode;
+  /** 'danger' for destructive approvals @default 'default' */
+  tone?: 'default' | 'danger';
+  /** Controlled state */
+  state?: 'pending' | 'approved' | 'rejected';
+  /** @default 'pending' */
+  defaultState?: 'pending' | 'approved' | 'rejected';
+  onStateChange?: (state: 'pending' | 'approved' | 'rejected') => void;
+  /** Lucide icon; defaults by tone */
+  icon?: string;
+  /** @default 'Approve' */
+  approveLabel?: string;
+  /** @default 'Reject' */
+  rejectLabel?: string;
+  /** Status line after approving */
+  approvedNote?: React.ReactNode;
+  /** Status line after rejecting */
+  rejectedNote?: React.ReactNode;
+  /** Extra content (ToolCall, Diff…) */
+  children?: React.ReactNode;
+  style?: React.CSSProperties;
+  className?: string;
+}
+export declare function Confirmation(props: ConfirmationProps): React.JSX.Element;
+```
+
+#### Conversation
+
+Group: ai · Source: /components/ai/Conversation.jsx · Exports: Conversation
+
+# Conversation
+
+Stick-to-bottom thread viewport: keeps pinned to the latest message while streaming (ResizeObserver), shows a "Jump to latest" pill when the reader scrolls up.
+
+`<Conversation height={480}>{messages.map(m => <ChatMessage …/>)}</Conversation>`
+
+Wrap the message column of any chat surface; it owns scrolling, you own the messages. Set autoStick={false} for read-only transcripts.
+
+```ts
+export interface ConversationProps {
+  /** Viewport height @default 420 */
+  height?: number | string;
+  /** Keep pinned to bottom as content grows @default true */
+  autoStick?: boolean;
+  /** @default 'Jump to latest' */
+  jumpLabel?: string;
+  /** Viewport padding @default 4 */
+  padding?: number | string;
+  /** Messages, tool calls, etc. */
+  children?: React.ReactNode;
+  style?: React.CSSProperties;
+  className?: string;
+}
+export declare const Conversation: React.ForwardRefExoticComponent<ConversationProps & React.RefAttributes<HTMLDivElement>>;
+```
+
+#### DocumentCard
+
+Group: ai · Source: /components/ai/DocumentCard.jsx · Exports: DocumentCard
+
+# DocumentCard
+
+Inline document artifact — header with copy + expand, content clipped at `collapsedHeight` with a paper fade; measured height animates open.
+
+```jsx
+<DocumentCard title="Q3 launch brief" meta="840 words">
+  <h3>Summary</h3><p>…long generated document…</p>
+</DocumentCard>
+```
+
+```ts
+export interface DocumentCardProps {
+  title: React.ReactNode;
+  /** Muted meta, e.g. "1,240 words" */
+  meta?: React.ReactNode;
+  /** Icon name. Default 'file-text' */
+  icon?: string;
+  /** Clipped height in px before expand. Default 200 */
+  collapsedHeight?: number;
+  defaultOpen?: boolean;
+  onCopy?: (text: string) => void;
+  /** Extra header action buttons */
+  actions?: React.ReactNode;
+  children: React.ReactNode;
+  style?: React.CSSProperties;
+  className?: string;
+}
+export declare function DocumentCard(props: DocumentCardProps): React.JSX.Element;
+```
+
+#### FeedbackBar
+
+Group: ai · Source: /components/ai/FeedbackBar.jsx · Exports: FeedbackBar
+
+# FeedbackBar
+
+Quiet action row under an assistant message: thumbs up/down (toggle), copy, regenerate.
+
+`<FeedbackBar copyText={msg} onFeedback={log} onRetry={rerun} note="gpt-answer · 2.1s" />`
+
+Keep it ghost-quiet — it should disappear until hovered in dense threads. Wire onFeedback to your telemetry, not a toast.
+
+```ts
+export interface FeedbackBarProps {
+  /** Fires 'up' | 'down' | null (toggled off) */
+  onFeedback?: (dir: 'up' | 'down' | null) => void;
+  /** Copies this text on the copy button */
+  copyText?: string;
+  onCopy?: () => void;
+  /** Shows the regenerate button */
+  onRetry?: () => void;
+  /** Muted note after the buttons */
+  note?: React.ReactNode;
+  style?: React.CSSProperties;
+  className?: string;
+}
+export declare function FeedbackBar(props: FeedbackBarProps): React.JSX.Element;
+```
+
+#### GeneratedImage
+
+Group: ai · Source: /components/ai/GeneratedImage.jsx · Exports: GeneratedImage
+
+# GeneratedImage
+
+Image-generation frame with queued / generating (pulsing dot-grid on dark) / complete (fade-in, scrim, hover actions) / error (retry) states.
+
+```jsx
+<GeneratedImage state="generating" prompt="A lighthouse at dawn" aspect="video" />
+<GeneratedImage src="/img.jpg" prompt="A lighthouse at dawn" actions={[{ icon: 'download', label: 'Download' }]} />
+```
+
+```ts
+export interface GeneratedImageAction {
+  icon: string;
+  label: string;
+  onClick?: () => void;
+}
+export interface GeneratedImageProps {
+  /** 'queued' | 'generating' | 'complete' | 'error' */
+  state?: 'queued' | 'generating' | 'complete' | 'error';
+  src?: string;
+  alt?: string;
+  /** Prompt shown top-left over the image */
+  prompt?: string;
+  /** 'square' | 'video' | 'portrait' */
+  aspect?: 'square' | 'video' | 'portrait';
+  error?: React.ReactNode;
+  onRetry?: () => void;
+  /** Hover actions, top-right (e.g. download) */
+  actions?: GeneratedImageAction[];
+  style?: React.CSSProperties;
+  className?: string;
+}
+export declare function GeneratedImage(props: GeneratedImageProps): React.JSX.Element;
+```
+
+#### ModelSelector
+
+Group: ai · Source: /components/ai/ModelSelector.jsx · Exports: ModelSelector
+
+# ModelSelector
+
+Compact model picker for composers: current model + provider on the trigger, panel with hint lines and badges.
+
+`<ModelSelector value={m} onChange={setM} models={[{ id: 'ef-2', name: 'Efolusi 2', provider: 'Efolusi', hint: 'Best for agent runs', badge: 'New' }]} />`
+
+Panel opens upward by default (composers sit at the bottom); side="down" for toolbars. For arbitrary options use Select.
+
+```ts
+export interface ModelOption {
+  id: string;
+  name: string;
+  /** Shown muted next to the name */
+  provider?: string;
+  /** Second line in the list */
+  hint?: string;
+  /** Small uppercase tag, e.g. 'New' */
+  badge?: string;
+}
+export interface ModelSelectorProps {
+  models: ModelOption[];
+  /** Selected model id */
+  value?: string;
+  onChange?: (id: string) => void;
+  /** Panel direction @default 'up' */
+  side?: 'up' | 'down';
+  style?: React.CSSProperties;
+  className?: string;
+}
+export declare function ModelSelector(props: ModelSelectorProps): React.JSX.Element;
+```
+
+#### Player
+
+Group: ai · Source: /components/ai/Player.jsx · Exports: Player
+
+# Player
+
+Audio player — seekable waveform (drag or click), ±10s skip, play/pause, mute, tabular timestamps. Expose a ref for `jumpTo` and pair with Transcript via `onTimeChange`.
+
+```jsx
+const ref = React.useRef(null);
+<Player ref={ref} src="/call.mp3" title="Call with Voit" meta="12:40" onTimeChange={setT} />
+```
+
+```ts
+export interface PlayerHandle {
+  jumpTo: (seconds: number) => void;
+  play: () => void;
+  pause: () => void;
+}
+export interface PlayerProps {
+  src?: string;
+  title?: React.ReactNode;
+  meta?: React.ReactNode;
+  /** Normalized 0–1 waveform peaks; deterministic placeholder bars if omitted */
+  peaks?: number[];
+  /** Bar count when peaks omitted. Default 72 */
+  samples?: number;
+  onTimeChange?: (seconds: number) => void;
+  style?: React.CSSProperties;
+  className?: string;
+}
+export declare const Player: React.ForwardRefExoticComponent<PlayerProps & React.RefAttributes<PlayerHandle>>;
+```
+
+#### PromptComposer
+
+Group: ai · Source: /components/ai/PromptComposer.jsx · Exports: PromptComposer
+
+Agent input: auto textarea, optional attach + voice buttons, ink send. Enter sends, Shift+Enter breaks.
+
+The attach and voice buttons only render when you pass `onAttach` / `onVoice` — the composer never shows a control it cannot action. While `busy`, the send button becomes a stop button that calls `onStop`.
+
+```jsx
+<PromptComposer onSend={run} hint="Agent can read your workspace"
+  onAttach={pickFiles} busy={streaming} onStop={abort}
+  attachments={<FileTile name="q3-plan.pdf" size="1.2 MB" onRemove={clear} />} />
+```
+
+```ts
+export interface PromptComposerProps {
+  /** Controlled text */
+  value?: string;
+  defaultValue?: string;
+  onChange?: (text: string, e: React.ChangeEvent) => void;
+  /** Enter sends (Shift+Enter = newline) */
+  onSend?: (text: string) => void;
+  /** Attach button; omit and the button is not rendered */
+  onAttach?: (e: React.MouseEvent) => void;
+  /** Voice-input button; omit and the button is not rendered */
+  onVoice?: (e: React.MouseEvent) => void;
+  /** Swaps send for a stop button while a response streams */
+  busy?: boolean;
+  /** Called by the stop button when `busy` */
+  onStop?: (e: React.MouseEvent) => void;
+  /** @default 'Ask the agent anything…' */
+  placeholder?: string;
+  /** @default 2 */
+  rows?: number;
+  disabled?: boolean;
+  /** FileTile chips shown above the input */
+  attachments?: React.ReactNode;
+  /** Muted hint left of the send button */
+  hint?: React.ReactNode;
+  style?: React.CSSProperties;
+  className?: string;
+}
+export declare const PromptComposer: React.ForwardRefExoticComponent<PromptComposerProps & React.RefAttributes<HTMLDivElement>>;
+```
+
+#### PromptSteps
+
+Group: ai · Source: /components/ai/PromptSteps.jsx · Exports: PromptSteps
+
+# PromptSteps
+
+Keyboard-first inline question wizard — numbered options (1–9 keys), arrows to highlight, Enter to confirm, Esc dismisses, ←/Shift-Tab goes back; "Other" is an inline input. Calls `onComplete` with all answers.
+
+```jsx
+<PromptSteps onComplete={console.log} steps={[
+  { name: 'tone', question: 'What tone should the draft use?', options: ['Formal', 'Friendly', 'Direct'], other: true },
+  { name: 'length', question: 'How long?', options: ['One paragraph', 'One page'] },
+]} />
+```
+
+```ts
+export interface PromptStep {
+  /** Answer key */
+  name: string;
+  question: React.ReactNode;
+  options: string[];
+  /** true, or a placeholder string, adds an "Other" free-text row */
+  other?: boolean | string;
+}
+export interface PromptStepsProps {
+  steps: PromptStep[];
+  defaultValues?: Record<string, string>;
+  onAnswer?: (value: string, ctx: { name: string; stepIndex: number; totalSteps: number }) => void;
+  onComplete?: (answers: Record<string, string>) => void;
+  onDismiss?: () => void;
+  style?: React.CSSProperties;
+  className?: string;
+}
+export declare function PromptSteps(props: PromptStepsProps): React.JSX.Element;
+```
+
+#### Reasoning
+
+Group: ai · Source: /components/ai/Reasoning.jsx · Exports: Reasoning
+
+# Reasoning
+
+Collapsible "thinking" block for model reasoning — pulsing brain glyph while streaming, then "Thought for Ns".
+
+`<Reasoning streaming>Comparing nonstop fares…</Reasoning>`
+`<Reasoning duration="4s" defaultOpen={false}>…full chain…</Reasoning>`
+
+Place above the assistant reply inside the message column. Keep collapsed by default when done — reasoning is a receipt, not the answer.
+
+```ts
+export interface ReasoningProps {
+  /** Pulsing glyph + "Thinking…" header */
+  streaming?: boolean;
+  /** Header reads "Thought for <duration>" */
+  duration?: string;
+  /** Custom header text */
+  label?: React.ReactNode;
+  defaultOpen?: boolean;
+  /** Controlled open state */
+  open?: boolean;
+  onOpenChange?: (open: boolean) => void;
+  /** The reasoning text */
+  children?: React.ReactNode;
+  style?: React.CSSProperties;
+  className?: string;
+}
+export declare function Reasoning(props: ReasoningProps): React.JSX.Element;
+```
+
+#### RichComposer
+
+Group: ai · Source: /components/ai/RichComposer.jsx · Exports: RichComposer
+
+# RichComposer
+
+Composer with @-mention chips and /-commands — typing a trigger opens a filtered list above the composer (arrows + Enter, groups supported); mentions insert as atomic chips that delete as one unit; Enter submits, Shift+Enter breaks.
+
+```jsx
+<RichComposer hint="@ files · / commands"
+  mentions={[{ id: 'f1', label: 'gateway.md', icon: 'file-text', group: 'Files' }]}
+  commands={[{ id: 'clear', label: 'clear', description: 'Reset the thread' }]}
+  onSubmit={({ text, mentions }) => send(text, mentions)} />
+```
+
+```ts
+export interface ComposerItem {
+  id: string;
+  label: string;
+  icon?: string;
+  description?: string;
+  group?: string;
+  keywords?: string[];
+}
+export interface RichComposerProps {
+  placeholder?: string;
+  /** @-mention items, inserted as atomic chips */
+  mentions?: ComposerItem[];
+  /** /-command items, executed via onCommand */
+  commands?: ComposerItem[];
+  hint?: React.ReactNode;
+  /** Left toolbar slot */
+  actions?: React.ReactNode;
+  disabled?: boolean;
+  autoFocus?: boolean;
+  onSubmit?: (value: { text: string; mentions: { id: string; label: string }[] }) => void;
+  onCommand?: (item: ComposerItem) => void;
+  style?: React.CSSProperties;
+  className?: string;
+}
+export declare function RichComposer(props: RichComposerProps): React.JSX.Element;
+```
+
+#### Sandbox
+
+Group: ai · Source: /components/ai/Sandbox.jsx · Exports: Sandbox
+
+# Sandbox
+
+Collapsible code-run panel — mono title, soft ring while running / on error, tabbed Output & Code panes. Opens itself on error by default.
+
+```jsx
+<Sandbox title="python analyze.py" state="running" tabs={[
+  { id: 'out', label: 'Output', content: <pre>Loading rows…</pre> },
+  { id: 'code', label: 'Code', content: <pre>import pandas as pd</pre> },
+]} />
+```
+
+```ts
+export interface SandboxTab {
+  id: string;
+  label: string;
+  icon?: string;
+  content: React.ReactNode;
+}
+export interface SandboxProps {
+  /** Command or filename, mono */
+  title: React.ReactNode;
+  /** 'running' | 'success' | 'error' */
+  state?: 'running' | 'success' | 'error';
+  /** Right-side meta, e.g. duration */
+  meta?: React.ReactNode;
+  tabs: SandboxTab[];
+  defaultOpen?: boolean;
+  defaultTab?: string;
+  style?: React.CSSProperties;
+  className?: string;
+}
+export declare function Sandbox(props: SandboxProps): React.JSX.Element;
+```
+
+#### SelectionQuote
+
+Group: ai · Source: /components/ai/SelectionQuote.jsx · Exports: SelectionQuote
+
+# SelectionQuote
+
+Select-to-quote affordance — wrap message content; selecting text floats a small toolbar above the selection (flips below near the top, clamped to the container). Actions receive the selected text.
+
+```jsx
+<SelectionQuote onAction={(id, text) => quote(text)}
+  actions={[{ id: 'quote', label: 'Quote', icon: 'corner-up-left' }, { id: 'explain', label: 'Explain' }]}>
+  <p>…assistant answer…</p>
+</SelectionQuote>
+```
+
+```ts
+export interface SelectionAction {
+  id: string;
+  label: string;
+  icon?: string;
+}
+export interface SelectionQuoteProps {
+  /** The selectable content */
+  children: React.ReactNode;
+  /** Toolbar buttons. Default: one "Quote" action */
+  actions?: SelectionAction[];
+  onAction?: (id: string, text: string) => void;
+  style?: React.CSSProperties;
+  className?: string;
+}
+export declare function SelectionQuote(props: SelectionQuoteProps): React.JSX.Element;
+```
+
+#### SourceCard
+
+Group: ai · Source: /components/ai/SourceCard.jsx · Exports: SourceCard
+
+# SourceCard
+
+Web-source card for grounded answers — optional 16:9 thumbnail, favicon + domain row, title, 3-line clamped description. `variant="plain"` for dense lists.
+
+```jsx
+<SourceCard href="https://…" domain="efolusi.com" title="Rate limits" description="Default limits are…" thumbnail="/thumb.jpg" />
+```
+
+```ts
+export interface SourceCardProps {
+  href?: string;
+  title: React.ReactNode;
+  description?: React.ReactNode;
+  /** e.g. 'stripe.com' */
+  domain?: string;
+  /** Favicon URL; falls back to icon */
+  favicon?: string;
+  icon?: string;
+  thumbnail?: string;
+  /** 'card' | 'plain' */
+  variant?: 'card' | 'plain';
+  onClick?: (e: React.MouseEvent) => void;
+  style?: React.CSSProperties;
+  className?: string;
+}
+export declare function SourceCard(props: SourceCardProps): React.JSX.Element;
+```
+
+#### Suggestions
+
+Group: ai · Source: /components/ai/Suggestions.jsx · Exports: Suggestions
+
+# Suggestions
+
+Prompt-suggestion chip row for empty chats and follow-ups.
+
+`<Suggestions items={[{ icon: 'sparkles', label: 'Summarize this thread' }, 'Draft a reply']} onPick={send} />`
+
+3–5 chips max, verb-first labels. Picking a chip should send it, not just fill the composer.
+
+```ts
+export interface SuggestionItem { label: string; /** Lucide icon */ icon?: string; }
+export interface SuggestionsProps {
+  /** Strings or { label, icon } */
+  items: Array<string | SuggestionItem>;
+  /** Fires with the picked label */
+  onPick?: (label: string, index: number) => void;
+  style?: React.CSSProperties;
+  className?: string;
+}
+export declare function Suggestions(props: SuggestionsProps): React.JSX.Element;
+```
+
+#### Task
+
+Group: ai · Source: /components/ai/Task.jsx · Exports: Task
+
+# Task
+
+Rail-connected list of agent actions — icon rows joined by hairline connectors; last row's rail is hidden. `streaming` pulses the newest row.
+
+```jsx
+<Task streaming items={[
+  { icon: 'search', label: 'Searched docs', detail: 'for "rate limits"' },
+  { icon: 'file-text', label: 'Read', detail: <code>gateway.md</code> },
+  { label: 'Drafting answer' },
+]} />
+```
+
+```ts
+export interface TaskItem {
+  /** Lucide icon name; omit for a dot */
+  icon?: string;
+  label: React.ReactNode;
+  /** Muted inline detail after the label */
+  detail?: React.ReactNode;
+}
+export interface TaskProps {
+  items: TaskItem[];
+  /** Pulses the last row while the agent works */
+  streaming?: boolean;
+  style?: React.CSSProperties;
+  className?: string;
+}
+export declare function Task(props: TaskProps): React.JSX.Element;
+```
+
+#### Todo
+
+Group: ai · Source: /components/ai/Todo.jsx · Exports: Todo
+
+# Todo
+
+Collapsible agent checklist card — spinner while in progress, espresso check + strikethrough when done, n/total count in the header.
+
+```jsx
+<Todo title="Plan" items={[
+  { label: 'Read schema', status: 'done' },
+  { label: 'Write migration', status: 'progress' },
+  { label: 'Run tests', status: 'pending' },
+]} />
+```
+
+```ts
+export interface TodoItem {
+  label: React.ReactNode;
+  /** 'pending' | 'progress' | 'done' */
+  status?: 'pending' | 'progress' | 'done';
+}
+export interface TodoProps {
+  title?: string;
+  items: TodoItem[];
+  defaultOpen?: boolean;
+  style?: React.CSSProperties;
+  className?: string;
+}
+export declare function Todo(props: TodoProps): React.JSX.Element;
+```
+
+#### ToolCall
+
+Group: ai · Source: /components/ai/ToolCall.jsx · Exports: ToolCall
+
+# ToolCall
+
+A tool invocation receipt: mono tool name, live status (running/success/error), collapsible Input/Result body.
+
+`<ToolCall name="search_flights" status="success" args={{ from: 'LIS', before: '15:00' }} result="3 nonstops found" />`
+
+Errors open by default and show the error prop. Stack several inside a message or an AgentRun step. Use Terminal for raw logs instead.
+
+```ts
+export interface ToolCallProps {
+  /** Tool name, mono */
+  name: string;
+  /** @default 'running' */
+  status?: 'pending' | 'approval' | 'running' | 'success' | 'error';
+  /** Input args — object renders a key/value grid, string renders raw */
+  args?: object | string;
+  /** Result body (also accepts children) */
+  result?: React.ReactNode;
+  /** Error message shown in the body */
+  error?: React.ReactNode;
+  /** Pulses the last arg row while args stream in */
+  streaming?: boolean;
+  /** Approve action — rendered when status is 'approval' */
+  onApprove?: () => void;
+  /** Reject action — rendered when status is 'approval' */
+  onReject?: () => void;
+  /** @default 'Approve' */
+  approveLabel?: string;
+  /** @default 'Reject' */
+  rejectLabel?: string;
+  /** Lucide icon @default 'wrench' */
+  icon?: string;
+  /** Body visibility; errors and approvals open by default */
+  defaultOpen?: boolean;
+  children?: React.ReactNode;
+  style?: React.CSSProperties;
+  className?: string;
+}
+export declare function ToolCall(props: ToolCallProps): React.JSX.Element;
+```
+
+#### Transcript
+
+Group: ai · Source: /components/ai/Transcript.jsx · Exports: Transcript
+
+# Transcript
+
+Time-synced transcript — active row derives from `currentTime`, auto-scroll keeps it centered (toggleable), timestamps jump the player, optional word-level highlight via `words`.
+
+```jsx
+<Transcript currentTime={t} onJump={s => player.current.jumpTo(s)} items={[
+  { start: 0, speaker: 'Ada', text: 'Morning — shall we start?' },
+  { start: 4.2, speaker: 'Efe', words: [{ t: 4.2, w: 'Yes,' }, { t: 4.6, w: 'pulling' }, { t: 5.0, w: 'it' }, { t: 5.2, w: 'up.' }] },
+]} />
+```
+
+```ts
+export interface TranscriptWord {
+  /** Start time of the word in seconds */
+  t: number;
+  w: string;
+}
+export interface TranscriptItem {
+  start: number;
+  end?: number;
+  speaker?: string;
+  text?: React.ReactNode;
+  /** Word-level timings for karaoke highlight */
+  words?: TranscriptWord[];
+  /** Italic live-caption styling */
+  interim?: boolean;
+}
+export interface TranscriptProps {
+  title?: string;
+  items: TranscriptItem[];
+  /** Drive from Player onTimeChange */
+  currentTime?: number;
+  onJump?: (seconds: number) => void;
+  height?: number;
+  defaultAutoScroll?: boolean;
+  style?: React.CSSProperties;
+  className?: string;
+}
+export declare function Transcript(props: TranscriptProps): React.JSX.Element;
+```
+
+#### UsageMeter
+
+Group: ai · Source: /components/ai/UsageMeter.jsx · Exports: UsageMeter
+
+# UsageMeter
+
+Budget meter: used/limit figures, fill bar that turns warning past warnAt and danger past the limit.
+
+`<UsageMeter label="Tokens this month" used={812000} limit={1000000} unit="tokens" cost="$4.82" hint="Resets Aug 1" />`
+
+Use for token, run, or spend budgets in sidebars and billing. For task progress use Progress instead.
+
+```ts
+export interface UsageMeterProps extends React.HTMLAttributes<HTMLDivElement> {
+  used: number;
+  limit: number;
+  /** @default 'Usage' */
+  label?: string;
+  /** Appended to figures, e.g. 'tokens' */
+  unit?: string;
+  /** Mono figure bottom-right, e.g. '$4.82' */
+  cost?: string;
+  /** Muted note bottom-left */
+  hint?: string;
+  /** Warning tone threshold (0-1) @default 0.8 */
+  warnAt?: number;
+  /** Count the figure and bar up on mount/change */
+  animated?: boolean;
+  /** Figure formatter @default toLocaleString */
+  format?: (v: number) => string;
+  style?: React.CSSProperties;
+  className?: string;
+}
+export declare function UsageMeter(props: UsageMeterProps): React.JSX.Element;
+```
+
+#### WebPreview
+
+Group: ai · Source: /components/ai/WebPreview.jsx · Exports: WebPreview
+
+# WebPreview
+
+Browser pane for agent-built UIs — reload, draft-state address bar (Enter commits, Esc reverts), desktop/tablet/mobile widths (animated), collapsible console with error badge, open-in-new-tab. Pass `children` to mock the page without an iframe.
+
+```jsx
+<WebPreview url="https://demo.efolusi.dev" logs={[{ level: 'error', text: 'Uncaught TypeError…' }]}>
+  <MockLanding />
+</WebPreview>
+```
+
+```ts
+export interface WebPreviewLog {
+  /** 'log' | 'info' | 'warn' | 'error' */
+  level?: 'log' | 'info' | 'warn' | 'error';
+  text: React.ReactNode;
+}
+export interface WebPreviewProps {
+  url?: string;
+  /** Stage height in px. Default 340 */
+  height?: number;
+  /** Console entries; error count badges the toggle */
+  logs?: WebPreviewLog[];
+  defaultConsoleOpen?: boolean;
+  /** Rendered instead of an iframe (mock content) */
+  children?: React.ReactNode;
+  onUrlChange?: (url: string) => void;
+  style?: React.CSSProperties;
+  className?: string;
+}
+export declare function WebPreview(props: WebPreviewProps): React.JSX.Element;
+```
+
+### code
+
+#### CodeBlock
+
+Group: code · Source: /components/code/CodeBlock.jsx · Exports: CodeBlock
+
+Espresso code block with language label and working copy button.
+
+```jsx
+<CodeBlock lang="bash">npm install @efolusi/sdk</CodeBlock>
+<CodeBlock title="deploy.yml" maxHeight={240}>{yaml}</CodeBlock>
+```
+
+```ts
+export interface CodeBlockProps {
+  /** Shown in the header, e.g. "bash" */
+  lang?: string;
+  /** Overrides lang in the header, e.g. a filename */
+  title?: string;
+  /** Scroll beyond this height */
+maxHeight?: number | string;
+  /** Collapse to `clipHeight` with a "show more" control */
+  clip?: boolean;
+  /** Collapsed height in px @default 240 */
+  clipHeight?: number;
+  /** The code text */
+  children?: React.ReactNode;
+  style?: React.CSSProperties;
+  className?: string;
+}
+export declare function CodeBlock(props: CodeBlockProps): React.JSX.Element;
+```
+
+#### Console
+
+Group: code · Source: /components/code/Console.jsx · Exports: Console
+
+# Console
+
+Log viewer — level icons/colors, tabular timestamps, per-row collapsible stack traces, sticks to the bottom while streaming and shows a "Latest" pill when scrolled up.
+
+```jsx
+<Console entries={[
+  { level: 'info', time: '14:02:11', text: 'Server started on :3000' },
+  { level: 'error', time: '14:02:19', text: 'Unhandled rejection', stack: 'at fetchUser (api.js:32)', source: 'api.js:32' },
+]} />
+```
+
+```ts
+export interface ConsoleEntry {
+  /** 'log' | 'info' | 'warn' | 'error' | 'debug' */
+  level?: 'log' | 'info' | 'warn' | 'error' | 'debug';
+  time?: string;
+  text: React.ReactNode;
+  /** Collapsible stack trace */
+  stack?: string;
+  /** Right-aligned origin, e.g. 'app.js:12' */
+  source?: string;
+}
+export interface ConsoleProps {
+  title?: string;
+  entries: ConsoleEntry[];
+  /** Viewport height in px. Default 240 */
+  height?: number;
+  style?: React.CSSProperties;
+  className?: string;
+}
+export declare function Console(props: ConsoleProps): React.JSX.Element;
+```
+
+#### CopyField
+
+Group: code · Source: /components/code/CopyField.jsx · Exports: CopyField
+
+Read-only mono value with copy (and reveal, for secrets). For API keys, IPs, DNS records.
+
+```jsx
+<CopyField label="API key" value="ef_live_a91xK2mQ84vT" secret />
+<CopyField label="CNAME" value="app.efolusi.com" />
+```
+
+```ts
+export interface CopyFieldProps extends React.HTMLAttributes<HTMLSpanElement> {
+  label?: string;
+  /** The copyable value (mono) */
+  value: string;
+  /** Mask with dots + reveal toggle */
+  secret?: boolean;
+  style?: React.CSSProperties;
+  className?: string;
+}
+export declare function CopyField(props: CopyFieldProps): React.JSX.Element;
+```
+
+#### Diff
+
+Group: code · Source: /components/code/Diff.jsx · Exports: Diff
+
+# Diff
+
+Unified diff with dual line-number gutters, +/− signs, add/del row tints, and header counts.
+
+`<Diff title="agents/retry.ts" lines={[{ text: 'const max = 3;', type: 'del' }, { text: 'const max = 5;', type: 'add' }, { text: 'return run();' }]} />`
+
+Pass lines in display order; numbering is computed. For non-diff code use CodeBlock.
+
+```ts
+export interface DiffLine {
+  /** @default 'ctx' */
+  type?: 'add' | 'del' | 'ctx';
+  text: string;
+}
+export interface DiffProps {
+  /** Header: file path etc. Shows +/− counts */
+  title?: React.ReactNode;
+/** Pre-computed rows. Omit and pass `from`/`to` instead. */
+  lines?: DiffLine[];
+  /** Original text; diffed against `to` when `lines` is omitted */
+  from?: string;
+  /** Changed text */
+  to?: string;
+  /** Multi-file diff; each file is diffed and collapsible */
+  files?: Array<{ name: string; from?: string; to?: string; lines?: DiffLine[]; defaultOpen?: boolean }>;
+  /** Highlight changed words inside a changed line @default true */
+  wordLevel?: boolean;
+  /** Unchanged lines kept around each hunk @default 3 */
+  contextLines?: number;
+  /** Scroll past this height */
+  maxHeight?: number | string;
+  style?: React.CSSProperties;
+  className?: string;
+}
+export declare function Diff(props: DiffProps): React.JSX.Element;
+```
+
+#### EnvList
+
+Group: code · Source: /components/code/EnvList.jsx · Exports: EnvList
+
+# EnvList
+
+Environment variables card — secrets masked as •••••••• with a single reveal toggle in the header; per-row copy always copies the real value.
+
+```jsx
+<EnvList vars={[
+  { name: 'DATABASE_URL', value: 'postgres://…', secret: true },
+  { name: 'NODE_ENV', value: 'production' },
+]} />
+```
+
+```ts
+export interface EnvVar {
+  name: string;
+  value: string;
+  /** Masked until revealed */
+  secret?: boolean;
+}
+export interface EnvListProps {
+  title?: string;
+  vars: EnvVar[];
+  defaultVisible?: boolean;
+  style?: React.CSSProperties;
+  className?: string;
+}
+export declare function EnvList(props: EnvListProps): React.JSX.Element;
+```
+
+#### Exception
+
+Group: code · Source: /components/code/Exception.jsx · Exports: Exception
+
+# Exception
+
+Runtime-error card — mono type chip + message, collapsible stack frames (active frame flagged, internal frames dimmed) and an optional source excerpt with the failing line highlighted.
+
+```jsx
+<Exception type="TypeError" message="Cannot read properties of undefined (reading 'id')" frames={[
+  { fn: 'getUser', loc: 'api/users.ts:32:11', active: true },
+  { fn: 'renderApp', loc: 'react-dom.js:118', internal: true },
+]} />
+```
+
+```ts
+export interface ExceptionFrame {
+  /** Function name */
+  fn: string;
+  /** e.g. 'api/users.ts:32:11' */
+  loc: string;
+  active?: boolean;
+  /** Dimmed framework frame */
+  internal?: boolean;
+}
+export interface ExceptionSourceLine {
+  no: number;
+  text: string;
+  active?: boolean;
+}
+export interface ExceptionProps {
+  /** e.g. 'TypeError' */
+  type?: string;
+  message: React.ReactNode;
+  frames?: ExceptionFrame[];
+  source?: { title: string; lines: ExceptionSourceLine[] };
+  defaultOpen?: boolean;
+  style?: React.CSSProperties;
+  className?: string;
+}
+export declare function Exception(props: ExceptionProps): React.JSX.Element;
+```
+
+#### Terminal
+
+Group: code · Source: /components/code/Terminal.jsx · Exports: Terminal
+
+Line-oriented console output: $ prompts, tinted ok/err/info lines, optional live caret.
+
+```jsx
+<Terminal host="deploy@efolusi-prod" live lines={[
+  { type: 'cmd', text: 'efolusi infra connect aws' },
+  { type: 'info', text: 'Handshake with eu-west-1…', time: '09:41:02' },
+  { type: 'ok', text: '✓ Connected · 14 resources found', time: '09:41:04' },
+]} />
+```
+
+```ts
+export interface TerminalLine {
+  text: string;
+  /** cmd gets a $ prompt; ok/err/info are tinted */
+  type?: 'cmd' | 'out' | 'ok' | 'err' | 'info';
+  /** Muted timestamp prefix */
+  time?: string;
+}
+export interface TerminalProps extends React.HTMLAttributes<HTMLDivElement> {
+  /** Header label, e.g. "deploy@efolusi-prod" */
+  host?: string;
+  /** Strings or line objects */
+  lines?: Array<string | TerminalLine>;
+  /** Blinking caret after the last line */
+  live?: boolean;
+  /** @default 260 */
+  maxHeight?: number;
+  style?: React.CSSProperties;
+  className?: string;
+}
+export declare function Terminal(props: TerminalProps): React.JSX.Element;
+```
+
+### data
+
+#### BarChart
+
+Group: data · Source: /components/data/BarChart.jsx · Exports: BarChart
+
+Hairline-minimal bar chart: sand bars, ink highlight window, hover tint + title tooltip.
+
+```jsx
+<BarChart data={requests} height={150} highlightLast={4} labels={['Jun 18', 'Jul 2', 'Jul 16']} formatValue={v => v.toLocaleString() + ' req'} />
+```
+
+```ts
+export interface BarChartProps {
+  /** Numbers, or { value, label } for hover titles */
+  data: Array<number | { value: number; label?: string }>;
+  /** @default 140 */
+  height?: number;
+  /** Ink-fill the last N bars */
+  highlightLast?: number;
+  /** X-axis labels, spread edge to edge */
+  labels?: string[];
+  formatValue?: (v: number) => string;
+  style?: React.CSSProperties;
+  className?: string;
+}
+export declare function BarChart(props: BarChartProps): React.JSX.Element;
+```
+
+#### DonutChart
+
+Group: data · Source: /components/data/DonutChart.jsx · Exports: DonutChart
+
+Donut with center figure + legend; hover highlights a slice. Colors default to the brand ramp.
+
+```jsx
+<DonutChart centerValue="$8.4k" centerLabel="This month" data={[
+  { label: 'AI agents', value: 4200 }, { label: 'Infrastructure', value: 2600 }, { label: 'Automation', value: 1600 },
+]} />
+```
+
+```ts
+export interface DonutSlice { label: string; value: number; /** Defaults to brand palette */ color?: string; }
+export interface DonutChartProps {
+  data: DonutSlice[];
+  /** Px @default 140 */
+  size?: number;
+  /** Ring thickness (viewBox units) @default 16 */
+  thickness?: number;
+  /** Center caption */
+  centerLabel?: React.ReactNode;
+  /** Center figure */
+  centerValue?: React.ReactNode;
+  /** Hover value formatter */
+  format?: (value: number) => string;
+  style?: React.CSSProperties;
+  className?: string;
+}
+export declare function DonutChart(props: DonutChartProps): React.JSX.Element;
+```
+
+#### EmptyState
+
+Group: data · Source: /components/data/EmptyState.jsx · Exports: EmptyState
+
+Centered empty view — leads with the action, not the absence.
+
+```jsx
+<EmptyState bordered icon="folder" title="Create your first project"
+  description="Projects group keys, environments, and usage."
+  action={<Button iconLeft="plus">New project</Button>} />
+```
+
+```ts
+export interface EmptyStateProps {
+  /** Lucide icon name @default 'inbox' */
+  icon?: string;
+  title: React.ReactNode;
+  description?: React.ReactNode;
+  /** Action slot, usually a primary Button */
+  action?: React.ReactNode;
+  /** Dashed hairline container */
+  bordered?: boolean;
+  style?: React.CSSProperties;
+  className?: string;
+}
+export declare function EmptyState(props: EmptyStateProps): React.JSX.Element;
+```
+
+#### KeyValueList
+
+Group: data · Source: /components/data/KeyValueList.jsx · Exports: KeyValueList
+
+Label/value rows with hairline separators — resource details, DNS records, trade info.
+
+```jsx
+<KeyValueList items={[
+  { label: 'Region', value: 'eu-west-1' },
+  { label: 'IPv4', value: '203.0.113.7', mono: true },
+]} />
+```
+
+```ts
+export interface KeyValueItem {
+  label: React.ReactNode;
+  value: React.ReactNode;
+  /** Mono value (IPs, hashes, records) */
+  mono?: boolean;
+}
+export interface KeyValueListProps {
+  items: KeyValueItem[];
+  /** @default 160 */
+  labelWidth?: number;
+  style?: React.CSSProperties;
+  className?: string;
+}
+export declare function KeyValueList(props: KeyValueListProps): React.JSX.Element;
+```
+
+#### LineChart
+
+Group: data · Source: /components/data/LineChart.jsx · Exports: LineChart
+
+SVG line chart with hover crosshair + tooltip; soft area fill by default.
+
+```jsx
+<LineChart data={days.map(d => ({ label: d.date, value: d.requests }))} height={150} format={v => v.toLocaleString()} />
+```
+
+```ts
+export interface LinePoint { label?: string; value: number; }
+export interface LineChartProps {
+  data: LinePoint[];
+  /** Px @default 150 */
+  height?: number;
+  /** Soft fill under the line @default true */
+  showArea?: boolean;
+  /** Dot on every point @default false */
+  showDots?: boolean;
+  /** Tooltip value formatter */
+  format?: (value: number) => string;
+  style?: React.CSSProperties;
+  className?: string;
+}
+export declare function LineChart(props: LineChartProps): React.JSX.Element;
+```
+
+#### Skeleton
+
+Group: data · Source: /components/data/Skeleton.jsx · Exports: Skeleton
+
+Loading placeholder — soft pulse, no shimmer.
+
+```jsx
+<Skeleton variant="circle" width={32} />
+<Skeleton lines={3} />
+<Skeleton variant="rect" height={120} />
+```
+
+```ts
+export interface SkeletonProps {
+  /** @default 'text' */
+  variant?: 'text' | 'rect' | 'circle';
+  width?: number | string;
+  height?: number | string;
+  /** Stacked text lines (last one 60% wide) @default 1 */
+  lines?: number;
+  style?: React.CSSProperties;
+  className?: string;
+}
+export declare function Skeleton(props: SkeletonProps): React.JSX.Element;
+```
+
+#### Sparkline
+
+Group: data · Source: /components/data/Sparkline.jsx · Exports: Sparkline
+
+Inline trend line (SVG) — green up, red down, faint area fill. Pairs with Stat.
+
+```jsx
+<Sparkline data={[42, 48, 45, 61, 58, 72, 84]} />
+<Sparkline data={prices} width={160} height={40} />
+```
+
+```ts
+export interface SparklineProps {
+  /** Series values */
+  data: number[];
+  /** @default 120 */ width?: number;
+  /** @default 32 */ height?: number;
+  /** Color override; inferred from first vs last value */
+  direction?: 'up' | 'down' | 'flat';
+  /** @default 1.5 */ strokeWidth?: number;
+  /** Faint area fill @default true */
+  area?: boolean;
+  style?: React.CSSProperties;
+  className?: string;
+}
+export declare function Sparkline(props: SparklineProps): React.JSX.Element;
+```
+
+#### Stat
+
+Group: data · Source: /components/data/Stat.jsx · Exports: Stat
+
+KPI block: muted label, mono value, colored delta.
+
+```jsx
+<Stat label="Monthly recurring revenue" value="$48.2k" delta="12.4%" direction="up" />
+```
+
+Wrap in `<Card padding={16}>` for dashboard stat rows.
+
+```ts
+export interface StatProps {
+  label: React.ReactNode;
+  /** Pre-formatted, e.g. "$48.2k" */
+  value: React.ReactNode;
+  /** e.g. "12.4%" */
+  delta?: React.ReactNode;
+  /** Colors + arrows the delta @default 'flat' */
+  direction?: 'up' | 'down' | 'flat';
+  /** Muted line under the value */
+  hint?: React.ReactNode;
+  style?: React.CSSProperties;
+  className?: string;
+}
+export declare function Stat(props: StatProps): React.JSX.Element;
+```
+
+#### StatusDot
+
+Group: data · Source: /components/data/StatusDot.jsx · Exports: StatusDot
+
+Live status dot with label; `pulse` radiates for running/connected states. The state is never colour-only: with a `label` the state text is prepended visually hidden ("Error: API"), without one the dot announces itself as an image named after the state. Override the announced text with `stateLabel`.
+
+```jsx
+<StatusDot state="ok" pulse label="Connected" />
+<StatusDot state="busy" pulse label="Running" />
+<StatusDot state="err" label="Failed" />
+<StatusDot state="warn" stateLabel="Degraded" label="EU region" />
+```
+
+```ts
+export interface StatusDotProps extends Omit<React.HTMLAttributes<HTMLSpanElement>, 'children'> {
+  /** @default 'ok' */
+  state?: 'ok' | 'warn' | 'err' | 'busy' | 'off';
+  label?: React.ReactNode;
+  /** Text announced for the state; defaults to OK / Warning / Error / Busy / Offline */
+  stateLabel?: string;
+  /** Radiating pulse for live states */
+  pulse?: boolean;
+  style?: React.CSSProperties;
+  className?: string;
+}
+export declare function StatusDot(props: StatusDotProps): React.JSX.Element;
+```
+
+#### Table
+
+Group: data · Source: /components/data/Table.jsx · Exports: Table
+
+Data table: uppercase micro headers, hairline rows, optional row click. Borderless — nest in `<Card padding={0}>` for a framed table. Sorting, selection, sticky header, and empty/loading states are built in, so the common admin table does not have to be hand-rolled around it.
+
+Sorting is applied by the table. Mark a column `sortable` and it sorts itself; pass `sort` + `onSortChange` only when the order lives elsewhere (a server query, a URL param). `sortAccessor` covers cells whose sort value differs from what is rendered.
+
+Selection behaves the same: `selectable` alone works, and `selected` + `onSelectionChange` takes over when you need the state. Selected rows are tracked by `rowKey`, so set it whenever rows can reorder.
+
+```jsx
+<Table
+  rowKey="id"
+  selectable
+  stickyHeader
+  onRowClick={openCustomer}
+  columns={[
+    { key: 'name', label: 'Customer', sortable: true },
+    { key: 'plan', label: 'Plan' },
+    { key: 'mrr', label: 'MRR', numeric: true, align: 'right', sortable: true,
+      sortAccessor: r => Number(String(r.mrr).replace(/[^0-9.]/g, '')) },
+    { key: 'status', label: 'Status', render: v => <Badge tone="success" dot>{v}</Badge> },
+  ]}
+  rows={customers}
+  empty="No customers yet."
+/>
+```
+
+`dense` tightens row height; `render(value, row, i)` for custom cells; `loading` swaps the body for shimmer rows so the header and column widths stay put while the first page loads.
+
+For a genuinely large grid — virtualisation, column resizing, grouping — reach for a dedicated data grid. This covers the admin table, not that.
+
+```ts
+export interface TableColumn {
+  /** Row field to read */
+  key: string;
+  label: React.ReactNode;
+  width?: number | string;
+  align?: 'left' | 'center' | 'right';
+  /** Mono tabular figures */
+  numeric?: boolean;
+  /** Show a sort control in the header for this column */
+  sortable?: boolean;
+  /** Value to sort on, when it is not simply row[key] */
+  sortAccessor?: (row: any) => any;
+  /** Custom cell: (value, row, rowIndex) => node */
+  render?: (value: any, row: any, index: number) => React.ReactNode;
+}
+export interface TableSort {
+  key: string;
+  direction: 'asc' | 'desc';
+}
+export interface TableProps extends React.HTMLAttributes<HTMLDivElement> {
+  columns: TableColumn[];
+  rows: any[];
+  /** Field name or fn for React keys @default index */
+  rowKey?: string | ((row: any) => string);
+  onRowClick?: (row: any) => void;
+  dense?: boolean;
+  /** Controlled sort. Omit and the table sorts itself. */
+  sort?: TableSort | null;
+  defaultSort?: TableSort;
+  onSortChange?: (sort: TableSort) => void;
+  /** Adds a leading checkbox column with a select-all header */
+  selectable?: boolean;
+  /** Controlled selection, as row keys */
+  selected?: Array<string | number>;
+  defaultSelected?: Array<string | number>;
+  onSelectionChange?: (selected: Array<string | number>) => void;
+  /** Pin the header while the body scrolls (implies a scroll box) */
+  stickyHeader?: boolean;
+  /** Height of the scroll box @default 320 when sticky */
+  maxHeight?: number | string;
+  /** Replace the body with shimmer rows */
+  loading?: boolean;
+  /** @default 3 */
+  loadingRows?: number;
+  /** Shown when there are no rows @default 'Nothing to show yet.' */
+  empty?: React.ReactNode;
+  style?: React.CSSProperties;
+  className?: string;
+}
+/** Ref lands on the scrolling wrapper element. */
+export declare const Table: React.ForwardRefExoticComponent<
+  TableProps & React.RefAttributes<HTMLDivElement>
+>;
+```
+
+### dates
+
+#### Calendar
+
+Group: dates · Source: /components/dates/Calendar.jsx · Exports: Calendar
+
+Month grid — hairline today ring, ink selected day, ISO string in/out. `range` switches to a {from,to} pair: first pick sets from, second sets to (swapped when earlier), a third starts over; the days between paint as a tinted band.
+
+```jsx
+<Calendar value={date} onChange={setDate} />
+<Calendar range value={{ from, to }} onChange={setRange} />
+```
+
+```ts
+export interface DateRange {
+  /** Range start as YYYY-MM-DD, or null while unset */
+  from: string | null;
+  /** Range end as YYYY-MM-DD, or null while unset */
+  to: string | null;
+}
+export interface CalendarProps extends Omit<React.HTMLAttributes<HTMLDivElement>, 'onChange'> {
+  /** Single-date mode (the default) */
+  range?: false;
+  /** Selected date as YYYY-MM-DD */
+  value?: string;
+  onChange?: (date: string) => void;
+  style?: React.CSSProperties;
+  className?: string;
+}
+export interface CalendarRangeProps extends Omit<React.HTMLAttributes<HTMLDivElement>, 'onChange'> {
+  /** Range mode: value/onChange carry a {from,to} pair; first pick sets from, second sets to (swapped when earlier), third starts over */
+  range: true;
+  value?: DateRange;
+  onChange?: (range: DateRange) => void;
+  style?: React.CSSProperties;
+  className?: string;
+}
+export declare function Calendar(props: CalendarProps | CalendarRangeProps): React.JSX.Element;
+```
+
+#### DatePicker
+
+Group: dates · Source: /components/dates/DatePicker.jsx · Exports: DatePicker
+
+Field-style trigger + Calendar popover; closes on pick, outside click, ESC.
+
+```jsx
+<DatePicker label="Renewal date" defaultValue="2026-08-01" onChange={setDate} />
+```
+
+```ts
+export interface DatePickerProps {
+  label?: string;
+  /** Controlled YYYY-MM-DD */
+  value?: string;
+  defaultValue?: string;
+  onChange?: (date: string) => void;
+  /** @default 'Pick a date' */
+  placeholder?: string;
+  style?: React.CSSProperties;
+  className?: string;
+}
+export declare function DatePicker(props: DatePickerProps): React.JSX.Element;
+```
+
+#### DateRangePicker
+
+Group: dates · Source: /components/dates/DateRangePicker.jsx · Exports: DateRangePicker
+
+Field-style trigger + range Calendar popover for a check-in/check-out pair. Shows "from — to" once picked, an inline clear button while a range exists; closes when both ends are set, on outside click, ESC. `min`/`max` (ISO) drop picks outside the window.
+
+Use it for a stay, a report window, a billing period — two dates that belong together. Not for a single date (DatePicker) or two unrelated dates (two DatePickers).
+
+```jsx
+<DateRangePicker label="Stay" value={range} onChange={setRange} />
+<DateRangePicker label="Report window" min="2026-01-01" max="2026-12-31" value={r} onChange={setR} hint="This fiscal year." />
+```
+
+```ts
+import type { DateRange } from './Calendar.js';
+
+export interface DateRangePickerProps extends Omit<React.HTMLAttributes<HTMLSpanElement>, 'onChange'> {
+  /** Field label rendered above the trigger */
+  label?: string;
+  /** Muted helper line rendered below */
+  hint?: string;
+  /** Controlled {from,to} of YYYY-MM-DD strings; either may be null */
+  value?: DateRange;
+  onChange?: (range: DateRange) => void;
+  /** Earliest pickable day as YYYY-MM-DD; earlier picks are ignored */
+  min?: string;
+  /** Latest pickable day as YYYY-MM-DD; later picks are ignored */
+  max?: string;
+  /** @default 'Pick a date range' */
+  placeholder?: string;
+  disabled?: boolean;
+  style?: React.CSSProperties;
+  className?: string;
+}
+export declare function DateRangePicker(props: DateRangePickerProps): React.JSX.Element;
+```
+
+#### TimePicker
+
+Group: dates · Source: /components/dates/TimePicker.jsx · Exports: TimePicker
+
+Input + listbox of time slots every `stepMinutes` between `minTime`/`maxTime`. Typing filters the list; Enter picks the highlighted slot; a typed valid time ('9:5' becomes '09:05') commits on blur even off-grid. Value is always 24h 'HH:MM' — `format24={false}` only changes the labels to 12h AM/PM.
+
+Use it for appointment starts, opening hours, reminders. Not for durations or seconds precision.
+
+```jsx
+<TimePicker label="Starts at" value={time} onChange={setTime} minTime="08:00" maxTime="18:00" />
+<TimePicker label="Reminder" format24={false} stepMinutes={15} value={t} onChange={setT} />
+```
+
+```ts
+export interface TimePickerProps extends Omit<React.HTMLAttributes<HTMLDivElement>, 'onChange'> {
+  /** Field label rendered above the input */
+  label?: string;
+  /** Muted helper line rendered below */
+  hint?: string;
+  /** Controlled time as 24h 'HH:MM', or null when empty (always 24h, whatever `format24` shows) */
+  value?: string | null;
+  onChange?: (time: string | null) => void;
+  /** Minutes between listed slots @default 30 */
+  stepMinutes?: number;
+  /** First listed slot as 'HH:MM' @default '00:00' */
+  minTime?: string;
+  /** Slots stop at this 'HH:MM' @default '23:59' */
+  maxTime?: string;
+  /** 24h labels; false renders 12h with AM/PM (value stays 24h) @default true */
+  format24?: boolean;
+  /** @default 'Pick a time' */
+  placeholder?: string;
+  disabled?: boolean;
+  /** Danger border + aria-invalid */
+  invalid?: boolean;
+  style?: React.CSSProperties;
+  className?: string;
+}
+export declare function TimePicker(props: TimePickerProps): React.JSX.Element;
+```
+
+### display
+
+#### Accordion
+
+Group: display · Source: /components/display/Accordion.jsx · Exports: Accordion
+
+Hairline disclosure list (FAQs, docs). Single-open by default; `multiple` allows several.
+
+```jsx
+<Accordion defaultOpen={['billing']} items={[
+  { id: 'billing', title: 'How does billing work?', content: 'Per seat, monthly. Usage is metered daily.' },
+  { id: 'cancel', title: 'Can I cancel anytime?', content: 'Yes — your workspace stays readable forever.' },
+]} />
+```
+
+```ts
+export interface AccordionItem {
+  id: string;
+  title: React.ReactNode;
+  content: React.ReactNode;
+}
+export interface AccordionProps {
+  items: AccordionItem[];
+  /** Allow several items open at once @default false */
+  multiple?: boolean;
+  /** Ids open initially */
+  defaultOpen?: string[];
+  style?: React.CSSProperties;
+  className?: string;
+}
+export declare function Accordion(props: AccordionProps): React.JSX.Element;
+```
+
+#### AspectRatio
+
+Group: display · Source: /components/display/AspectRatio.jsx · Exports: AspectRatio
+
+# AspectRatio
+
+Locks children to a fixed ratio box (fills width). Use for media, embeds, map placeholders.
+
+`<AspectRatio ratio={16/9}><img style={{width:"100%",height:"100%",objectFit:"cover"}} … /></AspectRatio>`
+
+```ts
+export interface AspectRatioProps {
+  /** width / height @default 16/9 */
+  ratio?: number;
+  children?: React.ReactNode;
+  style?: React.CSSProperties;
+  className?: string;
+}
+export declare function AspectRatio(props: AspectRatioProps): React.JSX.Element;
+```
+
+#### Avatar
+
+Group: display · Source: /components/display/Avatar.jsx · Exports: Avatar, AvatarGroup
+
+Circular avatar — image or initials with a deterministic warm tone from `name`. `AvatarGroup` overlaps them with white keylines.
+
+```jsx
+<Avatar name="Ada Obi" size={36} />
+<AvatarGroup><Avatar name="Ada Obi" /><Avatar name="Femi Alade" /></AvatarGroup>
+```
+
+```ts
+export interface AvatarProps extends React.HTMLAttributes<HTMLSpanElement> {
+  /** Full name — initials + deterministic tone derive from it */
+  name?: string;
+  /** Image URL; falls back to initials */
+  src?: string;
+  /** Px @default 32 */
+  size?: number;
+}
+export declare function Avatar(props: AvatarProps): React.JSX.Element;
+
+export interface AvatarGroupProps {
+  /** Avatar elements; overlap with white keylines */
+  children?: React.ReactNode;
+  style?: React.CSSProperties;
+  className?: string;
+}
+export declare function AvatarGroup(props: AvatarGroupProps): React.JSX.Element;
+```
+
+#### Badge
+
+Group: display · Source: /components/display/Badge.jsx · Exports: Badge
+
+Small status pill; `dot` adds a leading status dot.
+
+```jsx
+<Badge tone="success" dot>Active</Badge>
+<Badge tone="accent">Beta</Badge>
+```
+
+Tones: `neutral | accent | success | warning | danger | brand`. Sizes `sm` (20px) / `md` (24px).
+
+```ts
+export interface BadgeProps extends React.HTMLAttributes<HTMLSpanElement> {
+  /** @default 'neutral' */
+  tone?: 'neutral' | 'accent' | 'success' | 'warning' | 'danger' | 'brand';
+  /** @default 'sm' */
+  size?: 'sm' | 'md';
+  /** Leading status dot */
+  dot?: boolean;
+  children?: React.ReactNode;
+}
+export declare function Badge(props: BadgeProps): React.JSX.Element;
+```
+
+#### Card
+
+Group: display · Source: /components/display/Card.jsx · Exports: Card
+
+The surface container: white, 1px sand border, 8px radius, warm shadow.
+
+```jsx
+<Card title="Invite your team" subtitle="Works better together." actions={<Button size="sm" variant="secondary">Invite</Button>} footer={<span>3 of 5 seats used</span>}>
+  …content…
+</Card>
+<Card interactive>Hover-lifts 2px — use for clickable cards.</Card>
+```
+
+`padding` (default 20), `elevated`, `interactive`. Header renders only when `title`/`actions` set.
+
+```ts
+export interface CardProps extends Omit<React.HTMLAttributes<HTMLDivElement>, 'title'> {
+  /** Header title (header renders only if title or actions set) */
+  title?: React.ReactNode;
+  subtitle?: React.ReactNode;
+  /** Right-aligned header slot (buttons etc.) */
+  actions?: React.ReactNode;
+  /** Footer slot on a sunken strip */
+  footer?: React.ReactNode;
+  /** Body padding in px @default 20 */
+  padding?: number;
+  /** Slightly stronger shadow */
+  elevated?: boolean;
+  /** Hover lift + pointer */
+  interactive?: boolean;
+  children?: React.ReactNode;
+}
+export declare function Card(props: CardProps): React.JSX.Element;
+```
+
+#### Carousel
+
+Group: display · Source: /components/display/Carousel.jsx · Exports: Carousel
+
+# Carousel
+
+Scroll-snap strip with arrow controls and position dots. Use for galleries, template pickers, testimonial strips.
+
+`<Carousel itemWidth="300px">{cards}</Carousel>`
+
+Each child becomes one snap item. Keep items self-contained (Cards, images). Not for primary navigation.
+
+```ts
+export interface CarouselProps {
+  /** One slide per child */
+  children: React.ReactNode;
+  /** CSS width of each item @default '280px' */
+  itemWidth?: string;
+  /** Px between items @default 14 */
+  gap?: number;
+  /** Prev / next arrows @default true */
+  showControls?: boolean;
+  /** Position dots below @default true */
+  showDots?: boolean;
+  ariaLabel?: string;
+  style?: React.CSSProperties;
+  className?: string;
+}
+export declare function Carousel(props: CarouselProps): React.JSX.Element;
+```
+
+#### Collapsible
+
+Group: display · Source: /components/display/Collapsible.jsx · Exports: Collapsible
+
+# Collapsible
+
+A single disclosure row: chevron trigger + revealed body. Use for advanced options, long descriptions, log detail.
+
+`<Collapsible title="Advanced settings" defaultOpen={false}>…</Collapsible>`
+
+For a stacked set with one-open behavior use Accordion instead.
+
+```ts
+export interface CollapsibleProps {
+  /** Trigger row content */
+  title: React.ReactNode;
+  defaultOpen?: boolean;
+  /** Controlled open state */
+  open?: boolean;
+  onOpenChange?: (open: boolean) => void;
+  children?: React.ReactNode;
+  style?: React.CSSProperties;
+  className?: string;
+}
+export declare function Collapsible(props: CollapsibleProps): React.JSX.Element;
+```
+
+#### Divider
+
+Group: display · Source: /components/display/Divider.jsx · Exports: Divider
+
+1px hairline separator; optional uppercase label; `vertical` for toolbars.
+
+```jsx
+<Divider />
+<Divider label="or" />
+<Divider vertical />
+```
+
+```ts
+export interface DividerProps {
+  /** Small uppercase label centered in the rule */
+  label?: string;
+  /** Vertical rule (stretches to container height) */
+  vertical?: boolean;
+  style?: React.CSSProperties;
+  className?: string;
+}
+export declare function Divider(props: DividerProps): React.JSX.Element;
+```
+
+#### Kbd
+
+Group: display · Source: /components/display/Kbd.jsx · Exports: Kbd
+
+Keycap for shortcut hints — mono 11px, hairline with a 2px base.
+
+```jsx
+<Kbd>⌘</Kbd> <Kbd>K</Kbd>
+```
+
+```ts
+export interface KbdProps {
+  /** Key label, e.g. "⌘", "K", "Esc" */
+  children?: React.ReactNode;
+  style?: React.CSSProperties;
+  className?: string;
+}
+export declare function Kbd(props: KbdProps): React.JSX.Element;
+```
+
+#### Link
+
+Group: display · Source: /components/display/Link.jsx · Exports: Link
+
+Styled anchor. `external` adds ↗ + new tab; `standalone` makes a semibold CTA with →.
+
+```jsx
+<Link href="/docs">the docs</Link>
+<Link external href="https://status.efolusi.com">API status</Link>
+<Link standalone href="#">Explore AI agents</Link>
+```
+
+```ts
+export interface LinkProps extends React.AnchorHTMLAttributes<HTMLAnchorElement> {
+  /** Opens in new tab + trailing ↗ */
+  external?: boolean;
+  /** Leading Lucide icon */
+  icon?: string;
+  /** 'quiet' inherits secondary text color @default 'default' */
+  variant?: 'default' | 'quiet';
+  /** Semibold + trailing → for standalone CTAs */
+  standalone?: boolean;
+  children?: React.ReactNode;
+}
+export declare function Link(props: LinkProps): React.JSX.Element;
+```
+
+#### ListItem
+
+Group: display · Source: /components/display/ListItem.jsx · Exports: ListItem
+
+Generic row: leading icon/media, title + description, trailing slot. Renders as div, button (`onClick`), or anchor (`href`).
+
+```jsx
+<ListItem icon="bell" title="Usage alerts" description="At 80% of plan" trailing={<Switch defaultChecked />} />
+<ListItem media={<Avatar name="Ada Obi" />} title="Ada Obi" trailing="2m ago" chevron onClick={open} />
+```
+
+```ts
+export interface ListItemProps {
+  /** Lucide icon in a 32px sunken square */
+  icon?: string;
+  /** Custom leading node (Avatar, FileTypeIcon…) — overrides icon */
+  media?: React.ReactNode;
+  title: React.ReactNode;
+  description?: React.ReactNode;
+  /** Right-aligned slot (Badge, time, Switch…) */
+  trailing?: React.ReactNode;
+  /** Trailing chevron */
+  chevron?: boolean;
+  /** Renders as button */
+  onClick?: (e: React.MouseEvent) => void;
+  /** Renders as anchor */
+  href?: string;
+  style?: React.CSSProperties;
+  className?: string;
+}
+export declare function ListItem(props: ListItemProps): React.JSX.Element;
+```
+
+#### Resizable
+
+Group: display · Source: /components/display/Resizable.jsx · Exports: Resizable
+
+# Resizable
+
+Two panes split by a draggable hairline handle (keyboard: arrow keys). Use for editor/preview, list/detail, terminal splits.
+
+`<Resizable direction="horizontal" defaultRatio={0.4}><FileTree/><Editor/></Resizable>`
+
+Exactly two children; nest Resizables for 3-way splits. Parent needs a height.
+
+```ts
+export interface ResizableProps {
+  /** @default 'horizontal' */
+  direction?: 'horizontal' | 'vertical';
+  /** First pane share, 0-1 @default 0.5 */
+  defaultRatio?: number;
+  /** @default 0.15 */
+  min?: number;
+  /** @default 0.85 */
+  max?: number;
+  onRatioChange?: (ratio: number) => void;
+  /** Exactly two panes */
+  children: React.ReactNode;
+  style?: React.CSSProperties;
+  className?: string;
+}
+export declare function Resizable(props: ResizableProps): React.JSX.Element;
+```
+
+#### ScrollArea
+
+Group: display · Source: /components/display/ScrollArea.jsx · Exports: ScrollArea
+
+# ScrollArea
+
+Overflow container with the system scrollbar treatment (thin, warm, rounded). Use for bounded lists, code panes, chat logs.
+
+`<ScrollArea maxHeight={320}>…</ScrollArea>`
+
+It is just a styled overflow div — no custom scroll hijacking.
+
+```ts
+export interface ScrollAreaProps extends React.HTMLAttributes<HTMLDivElement> {
+  /** Scroll past this height */
+  maxHeight?: number | string;
+  /** Fixed height */
+  height?: number | string;
+  children?: React.ReactNode;
+}
+export declare function ScrollArea(props: ScrollAreaProps): React.JSX.Element;
+```
+
+#### Tag
+
+Group: display · Source: /components/display/Tag.jsx · Exports: Tag
+
+Chip for filters and labels; removable via `onRemove`, clickable via `onClick`.
+
+```jsx
+<Tag icon="funnel" onRemove={remove}>Billing</Tag>
+<Tag icon="plus" onClick={add}>Add filter</Tag>
+```
+
+```ts
+export interface TagProps extends React.HTMLAttributes<HTMLSpanElement> {
+  /** Lucide icon name, leading */
+  icon?: string;
+  /** Shows a remove ✕ button */
+  onRemove?: (e: React.MouseEvent) => void;
+  onClick?: (e: React.MouseEvent) => void;
+  children?: React.ReactNode;
+}
+export declare function Tag(props: TagProps): React.JSX.Element;
+```
+
+#### Toolbar
+
+Group: display · Source: /components/display/Toolbar.jsx · Exports: Toolbar
+
+Grouped icon actions on a hairline chip — editors, chart controls, bulk bars. `value` marks active (ink).
+
+```jsx
+<Toolbar label="View" value={view} onChange={setView} items={[
+  { id: 'list', icon: 'menu', tip: 'List' },
+  { id: 'board', icon: 'layout-dashboard', tip: 'Board' },
+  'separator',
+  { id: 'export', icon: 'download', tip: 'Export' },
+]} />
+```
+
+```ts
+export interface ToolbarItem {
+  id: string;
+  /** Lucide icon */
+  icon?: string;
+  label?: React.ReactNode;
+  /** Tooltip text */
+  tip?: string;
+  disabled?: boolean;
+  onClick?: () => void;
+}
+export interface ToolbarProps {
+  /** Items; 'separator' inserts a divider */
+  items: Array<ToolbarItem | 'separator'>;
+  /** Active id or ids (toggle styling) */
+  value?: string | string[];
+  onChange?: (id: string) => void;
+  /** aria-label */
+  label?: string;
+  style?: React.CSSProperties;
+  className?: string;
+}
+export declare function Toolbar(props: ToolbarProps): React.JSX.Element;
+```
+
+#### TreeList
+
+Group: display · Source: /components/display/TreeList.jsx · Exports: TreeList
+
+Collapsible tree for file/nav hierarchies. Rows take icons + mono counts; branches toggle on click.
+
+```jsx
+<TreeList value={sel} onSelect={setSel} nodes={[
+  { id: 'src', label: 'src', icon: 'folder', children: [
+    { id: 'app', label: 'app.ts', icon: 'code' },
+  ]},
+]} />
+```
+
+```ts
+export interface TreeNode {
+  id: string;
+  label: React.ReactNode;
+  /** Lucide icon */
+  icon?: string;
+  /** Right-aligned mono count */
+  count?: number;
+  children?: TreeNode[];
+}
+export interface TreeListProps {
+  nodes: TreeNode[];
+  /** Controlled selected id */
+  value?: string;
+  onSelect?: (id: string, node: TreeNode) => void;
+  /** Branch ids open initially (default: all top-level) */
+  defaultOpen?: string[];
+  style?: React.CSSProperties;
+  className?: string;
+}
+export declare function TreeList(props: TreeListProps): React.JSX.Element;
+```
+
+### feedback
+
+#### Alert
+
+Group: feedback · Source: /components/feedback/Alert.jsx · Exports: Alert
+
+Inline banner: white surface, hairline border, tone-colored icon. For page-level notices — use Toast for transient events.
+
+```jsx
+<Alert tone="warning" title="Trial ends in 3 days" description="Add a card to keep your workspace running." action={<Button size="sm" variant="secondary">Add card</Button>} />
+```
+
+Tones: `info | success | warning | danger` (danger also tints the border).
+
+```ts
+export interface AlertProps {
+  /** @default 'info' */
+  tone?: 'info' | 'success' | 'warning' | 'danger';
+  /** Override the tone icon (Lucide name) */
+  icon?: string;
+  title?: React.ReactNode;
+  description?: React.ReactNode;
+  /** Right-aligned slot (button/link) */
+  action?: React.ReactNode;
+  children?: React.ReactNode;
+  style?: React.CSSProperties;
+  className?: string;
+}
+export declare function Alert(props: AlertProps): React.JSX.Element;
+```
+
+#### Banner
+
+Group: feedback · Source: /components/feedback/Banner.jsx · Exports: Banner
+
+Full-width strip above the app chrome — trials, incidents, announcements. One per view, max.
+
+```jsx
+<Banner tone="warning" icon="triangle-alert" action="Add card" onAction={billing} onDismiss={hide}>
+  <strong>Trial ends in 3 days.</strong> Your workspace pauses after that.
+</Banner>
+```
+
+```ts
+export interface BannerProps {
+  /** @default 'neutral' */
+  tone?: 'neutral' | 'brand' | 'warning' | 'danger';
+  /** Lucide icon name */
+  icon?: string;
+  /** Underlined action label */
+  action?: string;
+  onAction?: () => void;
+  /** Shows a dismiss ✕ */
+  onDismiss?: () => void;
+  children?: React.ReactNode;
+  style?: React.CSSProperties;
+  className?: string;
+}
+export declare function Banner(props: BannerProps): React.JSX.Element;
+```
+
+#### ConfirmDialog
+
+Group: feedback · Source: /components/feedback/ConfirmDialog.jsx · Exports: ConfirmDialog
+
+Destructive-action preset of Dialog; optional type-to-confirm gate.
+
+```jsx
+<ConfirmDialog open={open} onClose={close} onConfirm={destroy}
+  title="Delete workspace" description="Removes all projects, keys, and member access. This can't be undone."
+  confirmLabel="Delete workspace" typeToConfirm="acme-workspace" />
+```
+
+```ts
+export interface ConfirmDialogProps {
+  open: boolean;
+  onClose?: () => void;
+  /** Called on confirm (dialog closes itself after) */
+  onConfirm?: () => void;
+  title: React.ReactNode;
+  description?: React.ReactNode;
+  /** @default 'Delete' */
+  confirmLabel?: string;
+  /** @default 'Cancel' */
+  cancelLabel?: string;
+  /** 'danger' (red confirm) or 'primary' @default 'danger' */
+  tone?: 'danger' | 'primary';
+  /** Require typing this string to enable confirm */
+  typeToConfirm?: string;
+  children?: React.ReactNode;
+}
+export declare function ConfirmDialog(props: ConfirmDialogProps): React.JSX.Element;
+```
+
+#### Dialog
+
+Group: feedback · Source: /components/feedback/Dialog.jsx · Exports: Dialog
+
+Centered modal with dimmed overlay, springy scale-in, ESC/overlay/✕ close.
+
+```jsx
+<Dialog open={open} onClose={close} title="Rename project" description="This updates the URL for everyone."
+  footer={<><Button variant="ghost" onClick={close}>Cancel</Button><Button onClick={save}>Save changes</Button></>}>
+  <Input label="Project name" defaultValue="Q3 launch plan" />
+</Dialog>
+```
+
+`width` caps max-width (default 440). Footer sits on a sunken sand strip.
+
+```ts
+export interface DialogProps {
+  open: boolean;
+  /** Called on ✕, ESC, or overlay click; omit to hide ✕ */
+  onClose?: () => void;
+  title: React.ReactNode;
+  description?: React.ReactNode;
+  /** Right-aligned action row on sunken strip */
+  footer?: React.ReactNode;
+  /** Max width px @default 440 */
+  width?: number;
+  children?: React.ReactNode;
+}
+export declare const Dialog: React.ForwardRefExoticComponent<DialogProps & React.RefAttributes<HTMLDivElement>>;
+```
+
+#### Loader
+
+Group: feedback · Source: /components/feedback/Loader.jsx · Exports: Loader
+
+# Loader
+
+Text-treatment loading state (no spinner) — `pulse` breathes opacity, `shimmer` sweeps a highlight through the label; optional staggered dots.
+
+```jsx
+<Loader variant="shimmer">Searching the workspace</Loader>
+<Loader dots>Thinking</Loader>
+```
+
+```ts
+export interface LoaderProps {
+  /** 'pulse' | 'shimmer' */
+  variant?: 'pulse' | 'shimmer';
+  /** Trailing animated ellipsis */
+  dots?: boolean;
+  /** Cycle duration in seconds */
+  duration?: number;
+  children?: React.ReactNode;
+  style?: React.CSSProperties;
+  className?: string;
+}
+export declare function Loader(props: LoaderProps): React.JSX.Element;
+```
+
+#### Progress
+
+Group: feedback · Source: /components/feedback/Progress.jsx · Exports: Progress
+
+4px ink progress bar for usage meters and multi-step flows.
+
+```jsx
+<Progress label="Seats used" value={4} max={5} showValue format={(v, m) => v + ' of ' + m} />
+<Progress value={92} tone="danger" label="API quota" showValue />
+```
+
+```ts
+export interface ProgressProps {
+  /** @default 0 */
+  value?: number;
+  /** @default 100 */
+  max?: number;
+  label?: string;
+  /** Show value right of the label (default = percent) */
+  showValue?: boolean;
+  format?: (value: number, max: number) => string;
+  /** @default 'default' (ink) */
+  tone?: 'default' | 'warning' | 'danger';
+  style?: React.CSSProperties;
+  className?: string;
+}
+export declare function Progress(props: ProgressProps): React.JSX.Element;
+```
+
+#### Spinner
+
+Group: feedback · Source: /components/feedback/Spinner.jsx · Exports: Spinner
+
+Standalone loading indicator (Button has its own via `loading`).
+
+```jsx
+<Spinner />
+<Spinner size={20} label="Loading customers…" />
+```
+
+```ts
+export interface SpinnerProps {
+  /** Px @default 16 */
+  size?: number;
+  /** Optional text right of the spinner (also the aria-label) */
+  label?: string;
+  style?: React.CSSProperties;
+  className?: string;
+}
+export declare function Spinner(props: SpinnerProps): React.JSX.Element;
+```
+
+#### Toast
+
+Group: feedback · Source: /components/feedback/Toast.jsx · Exports: Toast, ToastStack, Toaster
+
+Dark (espresso) notification card. Reach for `Toaster` first — it owns the queue, so you do not hand-roll ids, timers and a stack in every screen.
+
+Put one `Toaster` at the root, then call the hook anywhere below it. The hook is a static on `Toaster` because only capitalised exports reach the namespace:
+
+```jsx
+const { Toaster } = window.EfolusiDesignSystem_4ffc3d;
+const useToast = Toaster.useToast;
+
+function App() {
+  return <Toaster><Page /></Toaster>;
+}
+
+function Page() {
+  const { notify } = useToast();
+  return <Button onClick={() => notify({ tone: 'success', title: 'Invite sent',
+    description: 'Ada will get an email in a minute.' })}>Send invite</Button>;
+}
+```
+
+`notify` returns an id; `dismiss(id)` and `dismissAll()` are on the same object. Tones: `info | success | warning | danger`, defaulting to `info` — pick `success` deliberately rather than making every notification green.
+
+Timing is an accessibility contract, not a preference. Timers pause while the stack is hovered or focused, and **a toast with `actionLabel` never auto-dismisses**, because a control that disappears on a timer the user cannot adjust fails WCAG 2.2.1. Override per call with `duration` (`0` for persistent). The stack owns one live region, so a queue announces once instead of as several competing regions.
+
+Use `Toast` and `ToastStack` directly only when you are rendering a fixed, non-queued notification — a specimen, or a message whose lifecycle something else already owns:
+
+```jsx
+<ToastStack>
+  <Toast tone="success" title="Invite sent" onClose={dismiss} />
+</ToastStack>
+```
+
+```ts
+export interface ToastProps {
+  /** @default 'info' */
+  tone?: 'info' | 'success' | 'warning' | 'danger';
+  title: React.ReactNode;
+  description?: React.ReactNode;
+  actionLabel?: string;
+  onAction?: () => void;
+  /** Shows a dismiss ✕ */
+  onClose?: () => void;
+  /**
+   * Live-region role. Inside a `Toaster` the stack owns the live region and each
+   * toast renders with `null`, so a queue announces once rather than as N
+   * competing regions. @default 'status'
+   */
+  role?: 'status' | 'alert' | null;
+  style?: React.CSSProperties;
+  className?: string;
+}
+export declare function Toast(props: ToastProps): React.JSX.Element;
+
+export interface ToastStackProps {
+  /** Toasts, stacked fixed bottom-right */
+  children?: React.ReactNode;
+  style?: React.CSSProperties;
+  className?: string;
+}
+export declare function ToastStack(props: ToastStackProps): React.JSX.Element;
+
+export interface ToastOptions {
+  title: React.ReactNode;
+  description?: React.ReactNode;
+  /** @default 'info' */
+  tone?: 'info' | 'success' | 'warning' | 'danger';
+  actionLabel?: string;
+  onAction?: () => void;
+  /**
+   * ms before auto-dismiss; 0 never dismisses.
+   * @default the Toaster's `duration`, or 0 when `actionLabel` is set — a
+   * control must not vanish on a timer the user cannot adjust (WCAG 2.2.1).
+   */
+  duration?: number;
+}
+export interface ToastApi {
+  /** Queue a toast; returns its id. */
+  notify: (options: ToastOptions) => string;
+  dismiss: (id: string) => void;
+  dismissAll: () => void;
+}
+export interface ToasterProps {
+  /** ms before a toast auto-dismisses; 0 never. @default 5000 */
+  duration?: number;
+  /** aria-label of the live region. @default 'Notifications' */
+  label?: string;
+  /** Your app. Toaster renders a Fragment, never a wrapper element. */
+  children?: React.ReactNode;
+  style?: React.CSSProperties;
+  className?: string;
+}
+/**
+ * Owns the toast queue: ids, timers, the live region and the portal. Timers
+ * pause while the stack is hovered or focused.
+ *
+ * The hook is published as a static — `Toaster.useToast()` — because only
+ * capitalised exports reach the global namespace.
+ */
+export declare function Toaster(props: ToasterProps): React.JSX.Element;
+export declare namespace Toaster {
+  /** Must be called inside a `<Toaster>`; throws otherwise. */
+  function useToast(): ToastApi;
+}
+```
+
+#### Tooltip
+
+Group: feedback · Source: /components/feedback/Tooltip.jsx · Exports: Tooltip
+
+Hover/focus tooltip with 200ms delay and spring pop. Wrap any trigger element.
+
+```jsx
+<Tooltip label="Copy to clipboard"><IconButton icon="copy" label="Copy" /></Tooltip>
+```
+
+`position`: `top` (default) or `bottom`. Keep labels short; no interactive content inside.
+
+```ts
+export interface TooltipProps {
+  label: React.ReactNode;
+  /** Preferred side; flips automatically when there is no room. @default 'top' */
+  position?: 'top' | 'bottom';
+  /** Hover delay in ms before showing. Focus always shows immediately. @default 200 */
+  delay?: number;
+  /** The trigger element */
+  children?: React.ReactNode;
+  style?: React.CSSProperties;
+  className?: string;
+}
+export declare function Tooltip(props: TooltipProps): React.JSX.Element;
+```
+
+### files
+
+#### FileDrop
+
+Group: files · Source: /components/files/FileDrop.jsx · Exports: FileDrop
+
+Dashed dropzone — click or drag; ink border on hover/dragover.
+
+```jsx
+<FileDrop accept="image/*,video/*,.pdf" hint="PNG, MP4, PDF — up to 2 GB" onFiles={enqueue} />
+```
+
+```ts
+export interface FileDropProps {
+  /** Receives the dropped/picked File[] */
+  onFiles?: (files: File[]) => void;
+  /** input accept string, e.g. "image/*,.pdf" */
+  accept?: string;
+  /** @default true */
+  multiple?: boolean;
+  /** Replaces "Drop files here or browse" */
+  title?: React.ReactNode;
+  /** Muted line, e.g. "PNG, MP4, PDF — up to 2 GB" */
+  hint?: React.ReactNode;
+  style?: React.CSSProperties;
+  className?: string;
+}
+export declare function FileDrop(props: FileDropProps): React.JSX.Element;
+```
+
+#### FileTile
+
+Group: files · Source: /components/files/FileTile.jsx · Exports: FileTile
+
+File row with type icon (inferred from extension), size/status meta, progress or error state.
+
+```jsx
+<FileTile name="hero-final.mp4" size="48 MB" status="Converting…" progress={62} />
+<FileTile name="notes.pdf" size="1.2 MB" onRemove={remove} />
+```
+
+```ts
+export interface FileTileProps extends React.HTMLAttributes<HTMLDivElement> {
+  name: string;
+  /** e.g. "4.2 MB" */
+  size?: string;
+  /** Icon family; inferred from extension when omitted */
+  kind?: 'image' | 'video' | 'audio' | 'code' | 'archive' | 'doc';
+  /** Meta text after size, e.g. "Converted" */
+  status?: string;
+  /** 0–100 shows an upload bar instead of meta */
+  progress?: number;
+  /** Red meta line */
+  error?: string;
+  onRemove?: () => void;
+  /** Extra right-side controls */
+  actions?: React.ReactNode;
+  style?: React.CSSProperties;
+  className?: string;
+}
+export declare function FileTile(props: FileTileProps): React.JSX.Element;
+```
+
+#### FileTypeIcon
+
+Group: files · Source: /components/files/FileTypeIcon.jsx · Exports: FileTypeIcon
+
+Typed file glyph with colored extension chip — maps 20 common extensions to icon + color.
+
+```jsx
+<FileTypeIcon ext="pdf" />
+<FileTypeIcon ext="csv" size={32} />
+```
+
+```ts
+export interface FileTypeIconProps {
+  /** Extension: pdf, csv, png, mp4, zip, json… @default 'txt' */
+  ext?: string;
+  /** Px @default 40 */
+  size?: number;
+  /** Colored extension chip @default true */
+  showExt?: boolean;
+  style?: React.CSSProperties;
+  className?: string;
+}
+export declare function FileTypeIcon(props: FileTypeIconProps): React.JSX.Element;
+```
+
+### finance
+
+#### PaymentCard
+
+Group: finance · Source: /components/finance/PaymentCard.jsx · Exports: PaymentCard
+
+Payment card visual for trading / finance surfaces — espresso, caramel, or paper; `frozen` grays it out.
+
+```jsx
+<PaymentCard name="ADA OBI" number="•••• •••• •••• 4242" expiry="09/29" />
+<PaymentCard variant="paper" frozen />
+```
+
+```ts
+export interface PaymentCardProps {
+  /** @default 'ADA OBI' */
+  name?: string;
+  /** Masked number @default '•••• •••• •••• 4242' */
+  number?: string;
+  /** @default '09/29' */
+  expiry?: string;
+  /** Top-left brand text @default 'Efolusi' */
+  network?: string;
+  /** @default 'espresso' */
+  variant?: 'espresso' | 'caramel' | 'paper';
+  /** Grayscale frozen state */
+  frozen?: boolean;
+  style?: React.CSSProperties;
+  className?: string;
+}
+export declare function PaymentCard(props: PaymentCardProps): React.JSX.Element;
+```
+
+### forms
+
+#### Button
+
+Group: forms · Source: /components/forms/Button.jsx · Exports: Button
+
+The action button — primary for the one main action per view, secondary/ghost for the rest.
+
+```jsx
+<Button iconRight="arrow-right">Create workspace</Button>
+<Button variant="secondary" iconLeft="download">Export</Button>
+<Button variant="ghost">Cancel</Button>
+```
+
+Variants: `primary` (espresso ink), `secondary` (white + border), `ghost`, `danger`, `brand` (cocoa — marketing/brand moments only). Sizes `sm|md|lg` (28/36/44px). `loading` swaps in a spinner; labels are verbs in sentence case ("Save changes", never "Submit").
+
+```ts
+export interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
+  /** @default 'primary' */
+  variant?: 'primary' | 'secondary' | 'ghost' | 'danger' | 'brand';
+  /** @default 'md' */
+  size?: 'sm' | 'md' | 'lg';
+  /** Lucide icon name rendered before the label */
+  iconLeft?: string;
+  /** Lucide icon name rendered after the label */
+  iconRight?: string;
+  fullWidth?: boolean;
+  /** Shows a spinner and disables the button */
+  loading?: boolean;
+  children?: React.ReactNode;
+}
+export declare function Button(props: ButtonProps): React.JSX.Element;
+```
+
+#### ButtonGroup
+
+Group: forms · Source: /components/forms/ButtonGroup.jsx · Exports: ButtonGroup
+
+# ButtonGroup
+
+Attaches adjacent Buttons/IconButtons into one segment (shared borders, squared inner corners). Use for tightly related actions of equal rank: zoom in/out, prev/next, split-button patterns.
+
+`<ButtonGroup><Button variant="secondary">Day</Button><Button variant="secondary">Week</Button></ButtonGroup>`
+
+Keep 2–4 children, same variant + size. For exclusive selection use SegmentedControl instead.
+
+```ts
+export interface ButtonGroupProps extends React.HTMLAttributes<HTMLDivElement> {
+  /** Buttons / IconButtons rendered as one attached segment */
+  children: React.ReactNode;
+}
+export declare function ButtonGroup(props: ButtonGroupProps): React.JSX.Element;
+```
+
+#### ButtonTile
+
+Group: forms · Source: /components/forms/ButtonTile.jsx · Exports: ButtonTile, ButtonTileGroup
+
+Large selectable tile — plan pickers, onboarding choices. Wrap in `ButtonTileGroup columns={n}`.
+
+```jsx
+<ButtonTileGroup columns={3}>
+  <ButtonTile icon="rocket" title="Starter" description="Free forever" selected={plan==='starter'} onClick={() => setPlan('starter')} />
+  <ButtonTile icon="zap" title="Growth" description="$12 per seat" selected={plan==='growth'} onClick={() => setPlan('growth')} />
+</ButtonTileGroup>
+```
+
+```ts
+export interface ButtonTileProps {
+  /** Lucide icon */
+  icon?: string;
+  title: React.ReactNode;
+  description?: React.ReactNode;
+  selected?: boolean;
+  disabled?: boolean;
+  onClick?: (e: React.MouseEvent) => void;
+  style?: React.CSSProperties;
+  className?: string;
+}
+export declare function ButtonTile(props: ButtonTileProps): React.JSX.Element;
+
+export interface ButtonTileGroupProps {
+  /** @default 3 */
+  columns?: number;
+  children?: React.ReactNode;
+  style?: React.CSSProperties;
+  className?: string;
+}
+export declare function ButtonTileGroup(props: ButtonTileGroupProps): React.JSX.Element;
+```
+
+#### Checkbox
+
+Group: forms · Source: /components/forms/Checkbox.jsx · Exports: Checkbox
+
+Checkbox with springy check pop; supports a muted `description` second line.
+
+```jsx
+<Checkbox defaultChecked label="Email me receipts" />
+<Checkbox label="Weekly digest" description="One summary, every Monday." />
+```
+
+```ts
+export interface CheckboxProps extends React.InputHTMLAttributes<HTMLInputElement> {
+  label?: React.ReactNode;
+  /** Muted second line under the label */
+  description?: string;
+}
+export declare const Checkbox: React.ForwardRefExoticComponent<CheckboxProps & React.RefAttributes<HTMLInputElement>>;
+```
+
+#### Combobox
+
+Group: forms · Source: /components/forms/Combobox.jsx · Exports: Combobox
+
+Searchable select — single, or multi with removable chips. Keyboard: arrows + Enter, Backspace removes last chip.
+
+```jsx
+<Combobox label="Assignee" options={people} value={who} onChange={setWho} />
+<Combobox label="Surfaces" multiple options={['AI agents','Infrastructure','Automation']} value={sel} onChange={setSel} />
+```
+
+```ts
+export interface ComboOption { value: string; label: string; icon?: string; }
+export interface ComboboxProps {
+  label?: string;
+  hint?: string;
+  /** Options as strings or {value,label,icon} */
+  options: Array<string | ComboOption>;
+  /** Selected value (single) or values (multiple) */
+  value?: string | string[] | null;
+  onChange?: (value: any) => void;
+  /** Multi-select with removable chips */
+  multiple?: boolean;
+  /** @default 'Search…' */
+  placeholder?: string;
+  style?: React.CSSProperties;
+  className?: string;
+}
+export declare function Combobox(props: ComboboxProps): React.JSX.Element;
+```
+
+#### DigitEntry
+
+Group: forms · Source: /components/forms/DigitEntry.jsx · Exports: DigitEntry
+
+OTP/PIN input — one cell per digit, auto-advance, paste-aware, `autocomplete="one-time-code"`.
+
+```jsx
+<DigitEntry label="Enter the 6-digit code" onComplete={verify} />
+```
+
+```ts
+export interface DigitEntryProps {
+  /** Number of cells @default 6 */
+  length?: number;
+  /** Controlled value (digits only) */
+  value?: string;
+  onChange?: (value: string) => void;
+  /** Fires when all cells are filled */
+  onComplete?: (value: string) => void;
+  label?: string;
+  invalid?: boolean;
+  disabled?: boolean;
+  style?: React.CSSProperties;
+  className?: string;
+}
+export declare function DigitEntry(props: DigitEntryProps): React.JSX.Element;
+```
+
+#### FormField
+
+Group: forms · Source: /components/forms/FormField.jsx · Exports: FormField
+
+Label, hint, error and required chrome around a control, and the owner of the `id` that ties them together. Use it when a control has no `label` prop of its own, when several controls share one label, or when the control is not from this system.
+
+Input, Textarea and InputGroup already take `label` / `hint` / `error` directly, Select and Combobox take `label` / `hint`, and DigitEntry takes `label` — for a single one of those, keep using the prop. `FormField` is the general case underneath.
+
+```jsx
+<FormField label="Work email" hint="We only use this for receipts." required>
+  <Input type="email" placeholder="ada@company.com" />
+</FormField>
+
+<FormField label="Plan" error="Pick a plan to continue.">
+  <Select options={['Starter', 'Growth', 'Scale']} />
+</FormField>
+```
+
+`error` wins over `hint` and marks the control invalid, so you do not pass both `error` and `invalid`.
+
+For a set of controls that share one label, `group` swaps the `<label>` for `role="group"` + `aria-labelledby` — five checkboxes cannot share a single `htmlFor`:
+
+```jsx
+<FormField group label="Notify me about" hint="Choose any.">
+  <Checkbox label="Mentions" />
+  <Checkbox label="Replies" />
+</FormField>
+```
+
+For a control this system does not own, take the wiring as a function and spread it yourself:
+
+```jsx
+<FormField label="Card number" error={err}>
+  {({ controlProps }) => <StripeCardElement {...controlProps} />}
+</FormField>
+```
+
+## FormField.useFormState
+
+Zero-dependency form state for a whole form: values, per-field wiring, and the validation timing guidelines/forms.md prescribes (blur first, then re-validate on change, then everything on submit). Published as a static, like `Toaster.useToast`.
+
+```jsx
+const form = FormField.useFormState({
+  initial: { name: '', seats: 3 },
+  validate: v => {
+    const errors = {};
+    if (!v.name.trim()) errors.name = 'Name the workspace to continue.';
+    if (v.seats == null) errors.seats = 'How many seats?';
+    return errors; // empty object = valid
+  },
+});
+
+<form onSubmit={form.handleSubmit(save)}>
+  <Input label="Workspace name" {...form.field('name')} />
+  <NumberInput label="Seats" min={1} max={50} {...form.field('seats')} />
+  <Button type="submit" loading={form.submitting}>Create</Button>
+</form>
+```
+
+`field(name)` returns `{ value, onChange, onBlur, invalid, error }` — spread it on any control here (`onChange` takes a change event or a raw value, so `Input` and `NumberInput` both work). `error` only surfaces after that field blurs or a submit attempt; `form.errors` always holds the raw `validate` result. `handleSubmit(fn)` validates everything, marks all fields touched, and only calls `fn(values)` when clean — an async `fn` sets `form.submitting` around its promise, which feeds `Button loading` directly. `set(name, value)` writes a field imperatively; `reset()` returns to `initial`.
+
+Use it for a form of two or more validated fields. A single self-contained control does not need it — pass `error` yourself.
+
+```ts
+export interface FieldWiring {
+  /** The control's id. `null` in `group` mode, where no single child owns it. */
+  id: string | null;
+  invalid: boolean;
+  required: boolean;
+  /** Spread on the real control element, after `{...rest}`. */
+  controlProps: {
+    id?: string;
+    'aria-describedby'?: string;
+    'aria-invalid'?: true;
+    'aria-required'?: true;
+  };
+}
+export interface FormFieldProps {
+  /** Rendered as `<label htmlFor>`, or a `<span id>` when `group`. */
+  label?: React.ReactNode;
+  /** Muted helper text below the control. Hidden while `error` is set. */
+  hint?: React.ReactNode;
+  /** Error message below the control. Truthy implies invalid. */
+  error?: React.ReactNode;
+  /** Invalid state with no message. @default false */
+  invalid?: boolean;
+  /** Red asterisk plus aria-required on the control. @default false */
+  required?: boolean;
+  /** Label a set of controls: role="group" + aria-labelledby. @default false */
+  group?: boolean;
+  /** The control's id. Generated with React.useId() when omitted. */
+  id?: string;
+  /** A control, or a function receiving the wiring to spread yourself. */
+  children?: React.ReactNode | ((field: FieldWiring) => React.ReactNode);
+  style?: React.CSSProperties;
+  className?: string;
+}
+/**
+ * Label / hint / error / required chrome around a control, and the owner of the
+ * id linking them. Design-system controls pick the wiring up from context; for
+ * anything else, pass a function and spread `controlProps` on the control.
+ */
+export declare function FormField(props: FormFieldProps): React.JSX.Element;
+
+/** What `field(name)` returns: spread it on a control, or wire prop-by-prop. */
+export interface FormFieldControl<V = unknown> {
+  value: V;
+  /** Accepts a change event (reads `target.value`, or `target.checked` for checkboxes) or a raw value. */
+  onChange: (eventOrValue: unknown) => void;
+  /** Marks the field touched, which lets its error surface. */
+  onBlur: () => void;
+  invalid: boolean;
+  /** Only set after the field was touched or a submit attempt (guidelines/forms.md timing). */
+  error: string | undefined;
+}
+export interface UseFormStateOptions<T extends Record<string, any>> {
+  /** Seed values. Read once, on the first render. */
+  initial: T;
+  /** Returns `{ field: 'message' }` for invalid fields; empty object = valid. */
+  validate?: (values: T) => Partial<Record<keyof T & string, string>>;
+}
+export interface UseFormStateReturn<T extends Record<string, any>> {
+  values: T;
+  /** The raw `validate(values)` result — not gated by touch. `field().error` is. */
+  errors: Partial<Record<keyof T & string, string>>;
+  touched: Partial<Record<keyof T & string, boolean>>;
+  set: <K extends keyof T & string>(name: K, value: T[K]) => void;
+  field: <K extends keyof T & string>(name: K) => FormFieldControl<T[K]>;
+  /** True while an async submit handler is in flight. */
+  submitting: boolean;
+  /**
+   * Wraps a submit handler: validates everything, marks all fields touched,
+   * and only calls `fn(values)` when clean. An async `fn` sets `submitting`
+   * around its promise.
+   */
+  handleSubmit: (fn?: (values: T) => unknown | Promise<unknown>) => (e?: React.SyntheticEvent) => unknown;
+  /** Back to `initial`, untouched, not submitting. */
+  reset: () => void;
+}
+/**
+ * Zero-dependency form state. Published as a static — `FormField.useFormState()`
+ * — because only capitalised exports reach the global namespace.
+ */
+export declare namespace FormField {
+  function useFormState<T extends Record<string, any>>(options: UseFormStateOptions<T>): UseFormStateReturn<T>;
+}
+```
+
+#### IconButton
+
+Group: forms · Source: /components/forms/IconButton.jsx · Exports: IconButton
+
+Square icon-only button for toolbars, card actions, and dense rows; `label` is required (a11y + tooltip).
+
+```jsx
+<IconButton icon="pencil" label="Edit" />
+<IconButton icon="ellipsis" label="More" variant="outline" size="sm" />
+```
+
+Variants: `quiet` (default, transparent), `outline`, `solid` (espresso ink). Sizes `sm|md|lg`.
+
+```ts
+export interface IconButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
+  /** Lucide icon name */
+  icon: string;
+  /** Accessible label (required — rendered as aria-label + title) */
+  label: string;
+  /** @default 'quiet' */
+  variant?: 'quiet' | 'outline' | 'solid';
+  /** @default 'md' */
+  size?: 'sm' | 'md' | 'lg';
+}
+export declare function IconButton(props: IconButtonProps): React.JSX.Element;
+```
+
+#### Input
+
+Group: forms · Source: /components/forms/Input.jsx · Exports: Input
+
+Text input; renders bare, or as a full field when `label`/`hint`/`error` are set.
+
+```jsx
+<Input label="Work email" placeholder="you@company.com" iconLeft="mail" />
+<Input label="Password" type="password" error="At least 12 characters needed." />
+```
+
+`error` implies invalid styling (red border + message with alert icon). `iconLeft` takes a Lucide name. Sizes `sm|md|lg`.
+
+```ts
+export interface InputProps extends Omit<React.InputHTMLAttributes<HTMLInputElement>, 'size'> {
+  /** Field label rendered above */
+  label?: string;
+  /** Muted helper text below */
+  hint?: string;
+  /** Error message below — also sets invalid styling */
+  error?: string;
+  /** Lucide icon name inside the field, left */
+  iconLeft?: string;
+  /** @default 'md' */
+  size?: 'sm' | 'md' | 'lg';
+  invalid?: boolean;
+}
+export declare function Input(props: InputProps): React.JSX.Element;
+```
+
+#### InputGroup
+
+Group: forms · Source: /components/forms/InputGroup.jsx · Exports: InputGroup
+
+# InputGroup
+
+An input with leading/trailing addons inside one bordered row. String addons render as tinted cells (units, protocols); node addons render bare (ghost Buttons, Icons).
+
+`<InputGroup label="Site" prefix="https://" suffix=".efolusi.com" placeholder="acme" />`
+
+Accepts all native input props plus label/hint/error like Input. Use plain Input when there are no addons.
+
+```ts
+export interface InputGroupProps extends Omit<React.InputHTMLAttributes<HTMLInputElement>, 'size' | 'prefix'> {
+  /** Field label rendered above */
+  label?: string;
+  /** Muted helper text below */
+  hint?: string;
+  /** Error message below — also sets invalid styling */
+  error?: string;
+  /** Leading addon: string renders a tinted cell, a node renders bare */
+  prefix?: React.ReactNode;
+  /** Trailing addon: string renders a tinted cell, a node renders bare */
+  suffix?: React.ReactNode;
+  /** @default 'md' */
+  size?: 'sm' | 'md' | 'lg';
+}
+export declare function InputGroup(props: InputGroupProps): React.JSX.Element;
+```
+
+#### Label
+
+Group: forms · Source: /components/forms/Label.jsx · Exports: Label
+
+# Label
+
+Standalone field label for custom controls that lack a built-in `label` prop. Pair via `htmlFor`; `required` adds the red asterisk, `hint` a muted inline note.
+
+`<Label htmlFor="region" required hint="Cannot change later">Region</Label>`
+
+Input, Select, etc. already render their own labels — do not double-label them.
+
+```ts
+export interface LabelProps {
+  htmlFor?: string;
+  /** Red asterisk */
+  required?: boolean;
+  /** Muted inline hint after the text */
+  hint?: React.ReactNode;
+  children: React.ReactNode;
+  style?: React.CSSProperties;
+  className?: string;
+}
+export declare function Label(props: LabelProps): React.JSX.Element;
+```
+
+#### NumberInput
+
+Group: forms · Source: /components/forms/NumberInput.jsx · Exports: NumberInput
+
+Numeric field with stepper buttons; renders bare, or as a full field when `label`/`hint`/`error` are set. It is a text input with `inputmode="decimal"` — not `type=number` — so typing stays free-form and the value only commits on blur: parse, clamp to `min`/`max`, snap to the `step` grid (float noise rounded away). An emptied field commits `null`.
+
+```jsx
+<NumberInput label="Seats" min={1} max={50} defaultValue={4} />
+<NumberInput label="Memory" min={0} max={128} step={8} value={gb} onChange={setGb} hint="GB, in steps of 8." />
+```
+
+Keyboard: ArrowUp/ArrowDown step, Shift+Arrow steps by 10× `step`, Home/End jump to `min`/`max` when finite. The steppers disable at the rails and carry "Increase"/"Decrease" labels.
+
+`onChange(value, e)` fires with a number on every commit and `null` when cleared — guard for `null` before doing math. Controlled via `value` (where `null` means empty), or uncontrolled via `defaultValue`.
+
+`format` renders the committed value ("128 GB"); if the formatted text is not parseable as a plain number, pass a matching `parse`:
+
+```jsx
+<NumberInput label="Price" format={n => '$' + n} parse={t => Number(t.replace(/[$,]/g, '')) || null} />
+```
+
+Pairs with `FormField.useFormState` — `field()` hands it `value` / `onChange` / `onBlur` / `invalid` / `error` directly:
+
+```jsx
+<NumberInput label="Seats" min={1} max={50} {...form.field('seats')} />
+```
+
+Use when the value is a number a user tunes in small moves (quantities, limits, thresholds). Not for phone numbers, codes or IDs (use `Input` or `DigitEntry` — those are digit strings, not quantities), and not for coarse picks along a visual range (use `Slider`).
+
+```ts
+export interface NumberInputProps extends Omit<React.InputHTMLAttributes<HTMLInputElement>, 'size' | 'value' | 'defaultValue' | 'onChange' | 'min' | 'max' | 'step'> {
+  /** Field label rendered above */
+  label?: string;
+  /** Muted helper text below */
+  hint?: string;
+  /** Error message below — also sets invalid styling */
+  error?: string;
+  /** Invalid styling with no message. @default false */
+  invalid?: boolean;
+  /** Controlled value; null is "empty" */
+  value?: number | null;
+  defaultValue?: number | null;
+  /** Fires on commit (blur, arrow keys, steppers). null when cleared. */
+  onChange?: (value: number | null, e: React.SyntheticEvent) => void;
+  /** Lower rail; commits clamp to it, Home jumps to it when finite */
+  min?: number;
+  /** Upper rail; commits clamp to it, End jumps to it when finite */
+  max?: number;
+  /** Arrow/stepper increment; commits snap to its grid. @default 1 */
+  step?: number;
+  /** @default 'md' */
+  size?: 'sm' | 'md' | 'lg';
+  disabled?: boolean;
+  placeholder?: string;
+  /** Display formatting for the committed value, e.g. n => n + ' GB' */
+  format?: (value: number) => string;
+  /** Turn typed text back into a number; pair it with `format`. Return null for unparseable. */
+  parse?: (text: string) => number | null;
+  style?: React.CSSProperties;
+  className?: string;
+}
+/**
+ * Numeric field with stepper buttons. A text input with inputmode="decimal" —
+ * not type=number — so typing stays free-form; the value commits on blur:
+ * parse, clamp to min/max, snap to the step grid. Empty commits null.
+ * ArrowUp/Down step, Shift+Arrow steps by 10× step, Home/End jump to finite
+ * rails. Steppers disable at the rails.
+ */
+export declare function NumberInput(props: NumberInputProps): React.JSX.Element;
+```
+
+#### Radio
+
+Group: forms · Source: /components/forms/Radio.jsx · Exports: Radio
+
+Radio for 2–5 mutually exclusive options; group with a shared `name`.
+
+```jsx
+<Radio name="plan" defaultChecked label="Starter" description="Free forever" />
+<Radio name="plan" label="Growth" description="$12 per seat" />
+```
+
+```ts
+export interface RadioProps extends React.InputHTMLAttributes<HTMLInputElement> {
+  label?: React.ReactNode;
+  /** Muted second line under the label */
+  description?: string;
+}
+export declare function Radio(props: RadioProps): React.JSX.Element;
+```
+
+#### Select
+
+Group: forms · Source: /components/forms/Select.jsx · Exports: Select
+
+Styled native select with chevron; options as strings, `{value,label}` objects, or `<option>` children.
+
+```jsx
+<Select label="Role" options={['Owner', 'Admin', 'Member']} defaultValue="Member" />
+```
+
+Sizes `sm|md|lg`; supports `hint` and `invalid`.
+
+```ts
+export interface SelectProps extends Omit<React.SelectHTMLAttributes<HTMLSelectElement>, 'size'> {
+  label?: string;
+  hint?: string;
+  /** Options as strings or {value, label}; alternatively pass <option> children */
+  options?: Array<string | { value: string; label: string }>;
+  /** @default 'md' */
+  size?: 'sm' | 'md' | 'lg';
+  invalid?: boolean;
+}
+export declare function Select(props: SelectProps): React.JSX.Element;
+```
+
+#### Slider
+
+Group: forms · Source: /components/forms/Slider.jsx · Exports: Slider
+
+Range input with ink fill and hairline track; label + live value optional.
+
+```jsx
+<Slider label="Usage alert threshold" showValue format={v => v + '%'} defaultValue={80} />
+```
+
+Controlled via `value`/`onChange(n)`, or uncontrolled with `defaultValue`.
+
+```ts
+export interface SliderProps {
+  label?: string;
+  /** Show current value right of the label */
+  showValue?: boolean;
+  /** Format the shown value, e.g. v => v + '%' */
+  format?: (v: number) => string;
+  /** @default 0 */ min?: number;
+  /** @default 100 */ max?: number;
+  /** @default 1 */ step?: number;
+  /** Controlled value */
+  value?: number;
+  defaultValue?: number;
+  onChange?: (value: number, e: React.ChangeEvent) => void;
+  disabled?: boolean;
+  style?: React.CSSProperties;
+  className?: string;
+}
+export declare function Slider(props: SliderProps): React.JSX.Element;
+```
+
+#### Switch
+
+Group: forms · Source: /components/forms/Switch.jsx · Exports: Switch
+
+On/off toggle with springy thumb — for settings that apply immediately (otherwise use Checkbox).
+
+```jsx
+<Switch defaultChecked label="Usage alerts" />
+<Switch size="sm" label="Auto-renew" />
+```
+
+```ts
+export interface SwitchProps extends Omit<React.InputHTMLAttributes<HTMLInputElement>, 'size'> {
+  label?: React.ReactNode;
+  /** @default 'md' */
+  size?: 'sm' | 'md';
+}
+export declare function Switch(props: SwitchProps): React.JSX.Element;
+```
+
+#### Textarea
+
+Group: forms · Source: /components/forms/Textarea.jsx · Exports: Textarea
+
+Multiline input with the same field wrapper as Input (`label`/`hint`/`error`).
+
+```jsx
+<Textarea label="Description" placeholder="What is this project for?" rows={4} />
+```
+
+```ts
+export interface TextareaProps extends React.TextareaHTMLAttributes<HTMLTextAreaElement> {
+  label?: string;
+  hint?: string;
+  /** Error message below — also sets invalid styling */
+  error?: string;
+  invalid?: boolean;
+}
+export declare function Textarea(props: TextareaProps): React.JSX.Element;
+```
+
+#### Toggle
+
+Group: forms · Source: /components/forms/Toggle.jsx · Exports: Toggle, ToggleGroup
+
+# Toggle / ToggleGroup
+
+A pressed-state button for on/off formatting-style options (bold, grid view, mute). Use `icon` alone for toolbars, or icon + children for labeled toggles.
+
+- Standalone: `<Toggle icon="sparkles" pressed={b} onPressedChange={setB} />`
+- Grouped: `<ToggleGroup type="multiple" value={views} onChange={setViews}><Toggle value="list" icon="menu" />…</ToggleGroup>` — single type deselects on re-click.
+- Not for navigation (use Tabs/SegmentedControl) or settings that save (use Switch).
+
+```ts
+export interface ToggleProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
+  /** Controlled pressed state */
+  pressed?: boolean;
+  defaultPressed?: boolean;
+  onPressedChange?: (pressed: boolean) => void;
+  /** Identity when used inside a ToggleGroup */
+  value?: string;
+  /** Lucide icon name */
+  icon?: string;
+  /** @default 'md' */
+  size?: 'sm' | 'md';
+  children?: React.ReactNode;
+}
+export interface ToggleGroupProps {
+  /** @default 'single' */
+  type?: 'single' | 'multiple';
+  /** Controlled: string (single) or string[] (multiple) */
+  value?: string | string[] | null;
+  defaultValue?: string | string[] | null;
+  onChange?: (value: string | string[] | null) => void;
+  children?: React.ReactNode;
+  style?: React.CSSProperties;
+  className?: string;
+}
+export declare function Toggle(props: ToggleProps): React.JSX.Element;
+export declare function ToggleGroup(props: ToggleGroupProps): React.JSX.Element;
+```
+
+### icons
+
+#### Icon
+
+Group: icons · Source: /components/icons/Icon.jsx · Exports: Icon
+
+Renders one of the 108 curated Lucide icons shipped in `assets/icons/`, inheriting `currentColor`.
+
+```jsx
+<Icon name="arrow-right" />
+<Icon name="bell" size={20} />
+<Icon name="trash-2" size={16} title="Delete" />
+```
+
+Sizes: 16 inline/buttons, 20 nav/lists, 24 feature spots. Keep strokeWidth 1.5 (brand default). Available names = filenames in `assets/icons/` (arrow-right, check, x, plus, search, settings, user, users, bell, house, menu, chevron-*, calendar, clock, mail, lock, eye, eye-off, upload, download, trash-2, pencil, copy, external-link, ellipsis, log-out, credit-card, layout-dashboard, folder, file-text, star, circle-alert, triangle-alert, circle-check, info, sparkles, zap, globe, book-open, code, terminal, shield-check, refresh-cw, chart-column, chart-line, trending-up, inbox, sliders-horizontal, loader-circle, panel-left, funnel, link, activity, wallet, database, rocket, life-buoy, message-square, send, badge-check, …).
+
+```ts
+export interface IconProps {
+  /** Lucide icon name matching a file in assets/icons/, e.g. "arrow-right" */
+  name: string;
+  /** Square size in px @default 16 */
+  size?: number;
+  /** Stroke width @default 1.5 */
+  strokeWidth?: number;
+  /** Accessible label; omit for decorative icons */
+  title?: string;
+  className?: string;
+  style?: React.CSSProperties;
+}
+export declare function Icon(props: IconProps): React.JSX.Element;
+```
+
+### navigation
+
+#### Breadcrumbs
+
+Group: navigation · Source: /components/navigation/Breadcrumbs.jsx · Exports: Breadcrumbs
+
+Path trail with chevron separators; last item is the current page.
+
+```jsx
+<Breadcrumbs items={[{ label: 'Getting started', href: '#' }, { label: 'Quickstart' }]} />
+```
+
+```ts
+export interface BreadcrumbItem {
+  label: React.ReactNode;
+  href?: string;
+  onClick?: (e: React.MouseEvent) => void;
+}
+export interface BreadcrumbsProps {
+  /** Last item renders as the current page */
+  items: BreadcrumbItem[];
+  style?: React.CSSProperties;
+  className?: string;
+}
+export declare function Breadcrumbs(props: BreadcrumbsProps): React.JSX.Element;
+```
+
+#### Menubar
+
+Group: navigation · Source: /components/navigation/Menubar.jsx · Exports: Menubar
+
+# Menubar
+
+Desktop-app style menu bar (File / Edit / View). Click opens; hovering across bar switches menus while open. Items share the Menu item shape (icon, kbd, danger, separator).
+
+`<Menubar menus={[{label:"File",items:[{id:"new",label:"New task",kbd:"⌘N"}]}]} onSelect={run} />`
+
+For a single dropdown use Menu; for page navigation use TopNav/Tabs.
+
+```ts
+export interface MenubarItem { id: string; label: React.ReactNode; /** Lucide icon name */ icon?: string; kbd?: string; danger?: boolean; disabled?: boolean; onClick?: () => void; }
+export interface MenubarMenu { label: string; items: Array<MenubarItem | 'separator'>; }
+export interface MenubarProps {
+  menus: MenubarMenu[];
+  /** Fires with the picked item id */
+  onSelect?: (id: string) => void;
+  style?: React.CSSProperties;
+  className?: string;
+}
+export declare function Menubar(props: MenubarProps): React.JSX.Element;
+```
+
+#### PageControl
+
+Group: navigation · Source: /components/navigation/PageControl.jsx · Exports: PageControl
+
+Carousel dots — active dot stretches to an ink pill.
+
+```jsx
+<PageControl count={4} index={i} onChange={setI} />
+```
+
+```ts
+export interface PageControlProps {
+  count: number;
+  /** Active index, 0-based @default 0 */
+  index?: number;
+  onChange?: (index: number) => void;
+  /** aria-label prefix @default 'Page' */
+  label?: string;
+  style?: React.CSSProperties;
+  className?: string;
+}
+export declare function PageControl(props: PageControlProps): React.JSX.Element;
+```
+
+#### Pagination
+
+Group: navigation · Source: /components/navigation/Pagination.jsx · Exports: Pagination
+
+Numbered pager with ellipsis collapsing; active page is an ink chip.
+
+```jsx
+<Pagination page={page} pageCount={12} onChange={setPage} />
+```
+
+```ts
+export interface PaginationProps {
+  /** Current page, 1-based */
+  page: number;
+  pageCount: number;
+  onChange?: (page: number) => void;
+  style?: React.CSSProperties;
+  className?: string;
+}
+export declare function Pagination(props: PaginationProps): React.JSX.Element;
+```
+
+#### SegmentedControl
+
+Group: navigation · Source: /components/navigation/SegmentedControl.jsx · Exports: SegmentedControl
+
+Inline 2–5-way toggle on a sand track; active segment is a white hairline chip. For views/ranges — use Tabs for page sections.
+
+```jsx
+<SegmentedControl options={['7d', '30d', '90d']} value={range} onChange={setRange} />
+<SegmentedControl options={[{ id: 'list', label: 'List', icon: 'menu' }, { id: 'board', label: 'Board', icon: 'layout-dashboard' }]} value={view} onChange={setView} />
+```
+
+```ts
+export interface SegmentOption {
+  id: string;
+  label: React.ReactNode;
+  /** Lucide icon name */
+  icon?: string;
+  disabled?: boolean;
+}
+export interface SegmentedControlProps {
+  /** Options as strings or objects */
+  options: Array<string | SegmentOption>;
+  /** Active option id (controlled) */
+  value: string;
+  onChange?: (id: string) => void;
+  style?: React.CSSProperties;
+  className?: string;
+}
+export declare function SegmentedControl(props: SegmentedControlProps): React.JSX.Element;
+```
+
+#### SideNav
+
+Group: navigation · Source: /components/navigation/SideNav.jsx · Exports: SideNav
+
+The product sidebar: brand row, grouped nav with icons/badges, pinned footer. 240px on `--surface-subtle`.
+
+```jsx
+<SideNav logoSrc="assets/logo.png" brandBadge="Console" value={nav} onChange={setNav}
+  groups={[
+    { items: [{ id: 'overview', label: 'Overview', icon: 'layout-dashboard' }, { id: 'customers', label: 'Customers', icon: 'users', badge: 128 }] },
+{ label: 'Products', items: [{ id: 'agent', label: 'AI agents', icon: 'bot' }] },
+  ]}
+  footer={<ListItem media={<Avatar name="Ada Obi" size={30} />} title="Ada Obi" description="Acme Workspace" />} />
+```
+
+```ts
+export interface SideNavItem { id: string; label: React.ReactNode; icon: string; badge?: React.ReactNode; }
+export interface SideNavGroup { /** Uppercase group heading (omit for main nav) */ label?: string; items: SideNavItem[]; }
+export interface SideNavProps {
+  /** @default 'Efolusi' */
+  brand?: string;
+  /** Badge next to brand (e.g. 'Console') */
+  brandBadge?: React.ReactNode;
+  logoSrc?: string;
+  groups: SideNavGroup[];
+  /** Active item id */
+  value: string;
+  onChange?: (id: string) => void;
+  /** Pinned bottom slot (account card…) */
+  footer?: React.ReactNode;
+  style?: React.CSSProperties;
+  className?: string;
+}
+export declare function SideNav(props: SideNavProps): React.JSX.Element;
+```
+
+#### Steps
+
+Group: navigation · Source: /components/navigation/Steps.jsx · Exports: Steps
+
+Numbered progress rail — vertical for agent task logs, horizontal for wizards.
+
+```jsx
+<Steps current={1} items={[
+  { title: 'Upload', description: '3 files received' },
+  { title: 'Convert' },
+  { title: 'Download' },
+]} orientation="horizontal" />
+```
+
+```ts
+export interface StepItem {
+  id?: string;
+  title: React.ReactNode;
+  description?: React.ReactNode;
+}
+export interface StepsProps {
+  items: StepItem[];
+  /** Index of the active step; earlier = done @default 0 */
+  current?: number;
+  /** @default 'vertical' */
+  orientation?: 'vertical' | 'horizontal';
+  style?: React.CSSProperties;
+  className?: string;
+}
+export declare function Steps(props: StepsProps): React.JSX.Element;
+```
+
+#### Tabs
+
+Group: navigation · Source: /components/navigation/Tabs.jsx · Exports: Tabs
+
+Underline tabs with a spring-sliding caramel ink bar. Controlled: pass `value` + `onChange`.
+
+```jsx
+<Tabs value={tab} onChange={setTab} items={[
+  { id: 'overview', label: 'Overview', icon: 'layout-dashboard' },
+  { id: 'members', label: 'Members', icon: 'users', count: 12 },
+]} />
+```
+
+```ts
+export interface TabItem {
+  id: string;
+  label: React.ReactNode;
+  /** Lucide icon name */
+  icon?: string;
+  /** Count pill */
+  count?: number;
+}
+export interface TabsProps {
+  items: TabItem[];
+  /** Active item id (controlled) */
+  value: string;
+  onChange?: (id: string) => void;
+  style?: React.CSSProperties;
+  className?: string;
+}
+export declare const Tabs: React.ForwardRefExoticComponent<TabsProps & React.RefAttributes<HTMLDivElement>>;
+```
+
+#### TopNav
+
+Group: navigation · Source: /components/navigation/TopNav.jsx · Exports: TopNav
+
+Sticky blurred header: optional leading slot, display-font title, right-aligned actions.
+
+```jsx
+<TopNav title="Customers">
+  <Input size="sm" placeholder="Search… ⌘K" iconLeft="search" style={{ width: 300 }} />
+  <IconButton icon="bell" label="Notifications" />
+  <Avatar name="Ada Obi" size={30} />
+</TopNav>
+```
+
+```ts
+export interface TopNavProps {
+  title?: React.ReactNode;
+  /** Slot before the title (back button, breadcrumbs) */
+  leading?: React.ReactNode;
+  /** Right-aligned actions (search, bell, avatar) */
+  children?: React.ReactNode;
+  style?: React.CSSProperties;
+  className?: string;
+}
+export declare function TopNav(props: TopNavProps): React.JSX.Element;
+```
+
+### overlay
+
+#### CommandPalette
+
+Group: overlay · Source: /components/overlay/CommandPalette.jsx · Exports: CommandPalette
+
+⌘K palette: search, grouped commands, full keyboard nav (↑↓, ↵, Esc), Kbd-hinted footer.
+
+```jsx
+<CommandPalette open={open} onClose={close} onSelect={run} groups={[
+  { group: 'Actions', items: [
+    { id: 'new', label: 'New project', icon: 'plus' },
+    { id: 'invite', label: 'Invite teammate', icon: 'mail', hint: 'Settings' },
+  ]},
+  { group: 'Go to', items: [{ id: 'infra', label: 'Infrastructure', icon: 'server' }] },
+]} />
+```
+
+```ts
+export interface CommandItem {
+  id: string;
+  label: string;
+  /** Lucide icon name */
+  icon?: string;
+  /** Right-aligned hint, e.g. a shortcut or product name */
+  hint?: string;
+}
+export interface CommandGroup {
+  group: string;
+  items: CommandItem[];
+}
+export interface CommandPaletteProps {
+  open: boolean;
+  onClose?: () => void;
+  groups: CommandGroup[];
+  onSelect?: (id: string) => void;
+  /** @default 'Type a command or search…' */
+  placeholder?: string;
+}
+export declare function CommandPalette(props: CommandPaletteProps): React.JSX.Element;
+```
+
+#### ContextMenu
+
+Group: overlay · Source: /components/overlay/ContextMenu.jsx · Exports: ContextMenu
+
+# ContextMenu
+
+Right-click menu anchored at the cursor. Wrap the target; items share the Menu item shape.
+
+`<ContextMenu items={[{id:"rename",label:"Rename"},"separator",{id:"del",label:"Delete",danger:true}]} onSelect={run}><FileTile …/></ContextMenu>`
+
+Every context-menu action must also exist somewhere visible — right-click is a shortcut, not the only path.
+
+```ts
+export interface ContextMenuItem { id: string; label: React.ReactNode; /** Lucide icon name */ icon?: string; kbd?: string; danger?: boolean; disabled?: boolean; onClick?: () => void; }
+export interface ContextMenuProps {
+  /** Right-click target */
+  children: React.ReactNode;
+  items: Array<ContextMenuItem | 'separator'>;
+  /** Fires with the picked item id */
+  onSelect?: (id: string) => void;
+  style?: React.CSSProperties;
+  className?: string;
+}
+export declare function ContextMenu(props: ContextMenuProps): React.JSX.Element;
+```
+
+#### Drawer
+
+Group: overlay · Source: /components/overlay/Drawer.jsx · Exports: Drawer
+
+Side panel for details and multi-field edits that shouldn't leave the page.
+
+```jsx
+<Drawer open={open} onClose={close} title="Customer details"
+  footer={<><Button variant="ghost" onClick={close}>Cancel</Button><Button onClick={save}>Save changes</Button></>}>
+  …content…
+</Drawer>
+```
+
+`width` (default 400), `side` left/right.
+
+```ts
+export interface DrawerProps {
+  open: boolean;
+  /** Called on ✕, ESC, or overlay click */
+  onClose?: () => void;
+  title: React.ReactNode;
+  /** Right-aligned action row on sunken strip */
+  footer?: React.ReactNode;
+  /** Px @default 400 */
+  width?: number;
+  /** @default 'right' */
+  side?: 'left' | 'right';
+  children?: React.ReactNode;
+}
+export declare const Drawer: React.ForwardRefExoticComponent<DrawerProps & React.RefAttributes<HTMLDivElement>>;
+```
+
+#### HoverCard
+
+Group: overlay · Source: /components/overlay/HoverCard.jsx · Exports: HoverCard
+
+# HoverCard
+
+Rich preview on hover/focus (350ms in, 150ms out). Use for people, repos, tickets — anywhere a link deserves a glance-preview.
+
+`<HoverCard trigger={<Link>@amara</Link>} width={300}>…profile summary…</HoverCard>`
+
+Content must be supplementary — never the only way to reach it. For plain text hints use Tooltip.
+
+```ts
+export interface HoverCardProps {
+  /** Hover / focus target */
+  trigger: React.ReactNode;
+  /** Panel contents */
+  children: React.ReactNode;
+  /** @default 'bottom' */
+  side?: 'top' | 'bottom';
+  /** Ms before opening @default 350 */
+  openDelay?: number;
+  /** Ms before closing @default 150 */
+  closeDelay?: number;
+  /** Panel width px @default 300 */
+  width?: number;
+  style?: React.CSSProperties;
+  className?: string;
+}
+export declare function HoverCard(props: HoverCardProps): React.JSX.Element;
+```
+
+#### Menu
+
+Group: overlay · Source: /components/overlay/Menu.jsx · Exports: Menu
+
+Dropdown action menu on any trigger. Items take icons, shortcut hints, separators, and a danger style.
+
+```jsx
+<Menu align="right" onSelect={handle} trigger={<IconButton icon="ellipsis" label="More" />}
+  items={[
+    { id: 'edit', label: 'Edit', icon: 'pencil' },
+    { id: 'copy', label: 'Duplicate', icon: 'copy', kbd: '⌘D' },
+    'separator',
+    { id: 'delete', label: 'Delete', icon: 'trash-2', danger: true },
+  ]} />
+```
+
+```ts
+export interface MenuItem {
+  id: string;
+  label: React.ReactNode;
+  /** Lucide icon name */
+  icon?: string;
+  /** Red destructive styling */
+  danger?: boolean;
+  disabled?: boolean;
+  /** Shortcut hint, e.g. "⌘D" */
+  kbd?: string;
+  onClick?: () => void;
+}
+export interface MenuProps {
+  /** The element that toggles the menu (Button, IconButton, …) */
+  trigger: React.ReactNode;
+  /** Items; the string 'separator' inserts a rule */
+  items: Array<MenuItem | 'separator'>;
+  onSelect?: (id: string) => void;
+  /** Panel edge alignment @default 'left' */
+  align?: 'left' | 'right';
+  style?: React.CSSProperties;
+  className?: string;
+}
+export declare const Menu: React.ForwardRefExoticComponent<MenuProps & React.RefAttributes<HTMLSpanElement>>;
+```
+
+#### Popover
+
+Group: overlay · Source: /components/overlay/Popover.jsx · Exports: Popover
+
+Anchored floating panel for filters, pickers, help. Closes on outside click / ESC.
+
+```jsx
+<Popover trigger={<Button variant="secondary" iconLeft="funnel">Filter</Button>} width={300}>
+  …any content…
+</Popover>
+```
+
+Controlled via `open`/`onOpenChange` when needed.
+
+```ts
+export interface PopoverProps {
+  /** The element that toggles the popover */
+  trigger: React.ReactNode;
+  /** Panel content */
+  children?: React.ReactNode;
+  /** @default 'left' */
+  align?: 'left' | 'right';
+  /** Panel width @default 280 */
+  width?: number;
+  /** Controlled open state */
+  open?: boolean;
+  onOpenChange?: (open: boolean) => void;
+  style?: React.CSSProperties;
+  className?: string;
+}
+export declare const Popover: React.ForwardRefExoticComponent<PopoverProps & React.RefAttributes<HTMLSpanElement>>;
+```
+
+#### Portal
+
+Group: overlay · Source: /components/overlay/Portal.jsx · Exports: Portal
+
+Escape hatch for floating content: renders children into `document.body` so no ancestor's `overflow` can clip them. Menu, Popover, Tooltip, HoverCard, ContextMenu, Combobox and DatePicker all sit on it.
+
+Reach for it when you build your own floating surface. If you are placing that surface against a trigger, position it in viewport coordinates rather than `position:absolute`, or it will drift when an ancestor scrolls.
+
+```jsx
+<Portal>
+  <div style={{ position: 'fixed', top: 120, left: 80, zIndex: 'var(--z-popover)' }}>
+    Floating, and never clipped.
+  </div>
+</Portal>
+```
+
+```ts
+export interface PortalProps {
+  children?: React.ReactNode;
+  /** Where to mount. @default document.body */
+  container?: HTMLElement;
+}
+/**
+ * Render children outside the current DOM subtree so they cannot be clipped by
+ * an ancestor's overflow. Used by every floating surface in the system.
+ */
+export declare function Portal(props: PortalProps): React.JSX.Element | null;
+```
+
+## Design tokens
+
+141 custom property names by file (names only — resolve current values from /styles.css, which imports these files, or /tokens.json):
+
+### /tokens/base.css
+
+(no custom properties — font-face declarations only)
+
+### /tokens/colors.css
+
+--accent
+--accent-active
+--accent-contrast
+--accent-hover
+--accent-subtle
+--accent-subtle-border
+--border-code
+--border-default
+--border-inverse
+--border-strong
+--brand-100
+--brand-200
+--brand-300
+--brand-400
+--brand-50
+--brand-500
+--brand-600
+--brand-700
+--brand-800
+--brand-900
+--brand-950
+--caramel-500
+--cocoa-700
+--cocoa-900
+--cocoa-950
+--cream-50
+--danger-100
+--danger-300
+--danger-600
+--danger-700
+--danger-contrast
+--focus-ring
+--focus-ring-color
+--focus-ring-danger
+--focus-ring-offset
+--overlay-scrim
+--peach-200
+--sand-100
+--sand-200
+--sand-25
+--sand-300
+--sand-400
+--sand-50
+--sand-500
+--sand-600
+--sand-700
+--sand-800
+--sand-900
+--sand-950
+--success-100
+--success-300
+--success-600
+--surface-brand
+--surface-card
+--surface-code
+--surface-inverse
+--surface-page
+--surface-subtle
+--surface-sunken
+--text-code
+--text-inverse
+--text-link
+--text-muted
+--text-on-brand-muted
+--text-primary
+--text-secondary
+--warning-100
+--warning-300
+--warning-600
+
+### /tokens/effects.css
+
+--dur-fast
+--dur-med
+--dur-slow
+--ease-in-out
+--ease-out
+--ease-spring
+--shadow-lg
+--shadow-md
+--shadow-pop
+--shadow-sm
+--shadow-xl
+--shadow-xs
+--z-dropdown
+--z-modal
+--z-overlay
+--z-popover
+--z-sticky
+--z-toast
+--z-tooltip
+
+### /tokens/fonts.css
+
+(no custom properties — font-face declarations only)
+
+### /tokens/spacing.css
+
+--container-max
+--container-text
+--control-h-lg
+--control-h-md
+--control-h-sm
+--radius-full
+--radius-lg
+--radius-md
+--radius-sm
+--radius-xl
+--space-0
+--space-1
+--space-10
+--space-12
+--space-16
+--space-2
+--space-20
+--space-24
+--space-3
+--space-32
+--space-4
+--space-5
+--space-6
+--space-8
+--table-pad-x
+--table-pad-y
+
+### /tokens/typography.css
+
+--font-display
+--font-mono
+--font-sans
+--leading-normal
+--leading-relaxed
+--leading-snug
+--leading-tight
+--text-2xl
+--text-2xs
+--text-3xl
+--text-4xl
+--text-5xl
+--text-6xl
+--text-7xl
+--text-lg
+--text-md
+--text-sm
+--text-xl
+--text-xs
+--tracking-display
+--tracking-tight
+--tracking-wide
+--weight-bold
+--weight-display
+--weight-medium
+--weight-regular
+--weight-semibold
+
+## More
+
+- /llms.txt — the short map of this repository
+- /site/registry.json — machine-readable registry index; per-item install files in /site/registry/
+- /guidelines/ — accessibility, forms, governance

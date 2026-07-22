@@ -58,6 +58,9 @@ const PROPS = {
   Toggle: { children: 'x' },
   Tooltip: { content: 'tip', children: React.createElement('button', null, 'x') },
   TreeList: { nodes: [{ id: 'a', label: 'A' }] },
+  NumberInput: { label: 'Seats', defaultValue: 5 },
+  DateRangePicker: { value: { from: '2026-07-01', to: '2026-07-04' } },
+  TimePicker: { value: '09:00' },
   UsageMeter: { used: 1, limit: 3 },
 };
 
@@ -86,7 +89,7 @@ function decimalsOk(html, name) {
 
 describe(`SSR sweep over ${cases.length} public exports`, () => {
   it('found the whole surface', () => {
-    // 112 exports ship; a broken glob silently sweeping nothing must fail.
+    // 115 exports ship; a broken glob silently sweeping nothing must fail.
     expect(cases.length).toBeGreaterThanOrEqual(100);
   });
   for (const [name, Comp] of cases) {

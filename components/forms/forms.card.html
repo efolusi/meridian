@@ -1,4 +1,4 @@
-<!-- @dsCard group="Components" viewport="700x1150" name="Forms" subtitle="Buttons, inputs, selection, Toggle, ButtonGroup, InputGroup, ButtonTile" -->
+<!-- @dsCard group="Components" viewport="700x1250" name="Forms" subtitle="Buttons, inputs, selection, Toggle, ButtonGroup, InputGroup, NumberInput, ButtonTile" -->
 <!DOCTYPE html><html><head><meta charset="utf-8"><link rel="stylesheet" href="../../styles.css">
 <script src="https://unpkg.com/react@18.3.1/umd/react.production.min.js" integrity="sha384-DGyLxAyjq0f9SPpVevD6IgztCFlnMF6oW/XQGmfe+IsZ8TqEiDrcHkMLKI6fiB/Z" crossorigin="anonymous"></script>
 <script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.production.min.js" integrity="sha384-gTGxhz21lVGYNMcdJOyq01Edg0jhn/c22nsx0kyqP0TxaV5WVdsSH1fSDUf5YJj1" crossorigin="anonymous"></script>
@@ -7,7 +7,7 @@
 </head><body style="background:var(--surface-page)">
 <div id="root"></div>
 <script type="text/babel">
-const { Button, IconButton, Input, Textarea, Select, Checkbox, Radio, Switch, Slider, Combobox, DigitEntry, ButtonTile, ButtonTileGroup, Toggle, ToggleGroup, ButtonGroup, InputGroup, Label } = window.EfolusiDesignSystem_4ffc3d;
+const { Button, IconButton, Input, Textarea, Select, Checkbox, Radio, Switch, Slider, Combobox, DigitEntry, NumberInput, ButtonTile, ButtonTileGroup, Toggle, ToggleGroup, ButtonGroup, InputGroup, Label } = window.EfolusiDesignSystem_4ffc3d;
 const row = { display: 'flex', alignItems: 'center', gap: 10, flexWrap: 'wrap' };
 const lbl = { fontSize: 11, fontWeight: 600, letterSpacing: '0.06em', textTransform: 'uppercase', color: 'var(--text-muted)', marginBottom: 8 };
 function Demo() {
@@ -73,6 +73,13 @@ function Demo() {
           <Slider label="Alert threshold" showValue format={v => v + '%'} defaultValue={80} />
         </div>
         <Textarea label="What happened?" placeholder="Tell us what happened…" style={{ minHeight: 90 }} />
+      </div>
+      <div><div style={lbl}>NumberInput</div>
+        <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 1fr', gap: 16, alignItems: 'start' }}>
+          <NumberInput label="Seats" defaultValue={4} min={1} max={50} />
+          <NumberInput label="Budget cap" defaultValue={250} step={50} hint="USD / month" />
+          <NumberInput label="Retries" defaultValue={12} min={0} max={10} error="At most 10." />
+        </div>
       </div>
       <div><div style={lbl}>DigitEntry</div><DigitEntry length={6} /></div>
       <div><div style={lbl}>ButtonTile</div>

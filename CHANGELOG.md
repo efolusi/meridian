@@ -4,6 +4,21 @@ All notable changes to Meridian are documented here. Format follows [Keep a Chan
 
 > **On the versions below 1.4.0:** Meridian was built in the open but released to nobody. Versions 1.0.0 through 1.3.0 are development milestones recorded as they happened; they were never tagged, published, or installable, so there is no artefact to go back to. They are kept because they are an accurate record of how the system was built, not because you can depend on them. The first tagged, publicly consumable release is 1.4.0.
 
+## 1.8.0 — 2026-07-22
+
+Three new components, range selection for Calendar, form-level state, a bring-your-own-brand theming guide, and a single-file AI corpus. 109 components, 115 public exports.
+
+### Added
+- **NumberInput** — a spinbutton done the native-adjacent way: text input with `inputmode="decimal"` plus steppers. Arrows step, Shift×10, Home/End to the rails, blur commits (parse → clamp → snap to the step grid, floating point handled), empty commits `null`. Controlled and uncontrolled.
+- **TimePicker** — combobox-with-listbox of time slots (`stepMinutes`, `minTime`/`maxTime`, 12/24h display over a fixed `'HH:MM'` value), full `aria-activedescendant` wiring, typed off-grid times commit on blur.
+- **Calendar range mode + DateRangePicker** — `range` puts `{from,to}` selection on the existing grid (keyboard contract untouched, both ends `aria-selected`, tinted band between); DateRangePicker composes it behind an input with the DatePicker focus contract, min/max windowing and a labelled clear button.
+- **`FormField.useFormState`** — zero-dependency form state published the `Toaster.useToast` way: `values`/`errors`/`touched`, per-field wiring via `field(name)`, and `handleSubmit` that validates everything and only calls through when clean. Error timing follows `guidelines/forms.md`: nothing surfaces until blur or submit.
+- **`guidelines/theming.md`** — the bring-your-own-brand guide: the three token layers, the minimum semantic override set, dark-mode invariants, font swaps, and the contrast duties that come with new colours. Every token name in it is grep-verified against `tokens/*.css`.
+- **`llms-full.txt`** — a generated single-file corpus (per-component prompt guides + typed interfaces + token names), wired into the generator gates so it can never silently drift from the sources it aggregates.
+
+### Changed
+- The docs' AI-consumption claim scales with the library: a model that has seen three Meridian components can now write the other 106.
+
 ## 1.7.0 — 2026-07-22
 
 The keyboard contracts the docs called "verified in-browser" are now verified by tests — which promptly found three components breaking them — plus live-region announcements, reduced-motion coverage for JS-driven animation, and a server-render sweep of all 112 exports.

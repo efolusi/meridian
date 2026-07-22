@@ -1,4 +1,4 @@
-<!-- @dsCard group="Components" viewport="700x360" name="Dates" subtitle="Calendar, DatePicker" -->
+<!-- @dsCard group="Components" viewport="760x420" name="Dates" subtitle="Calendar, DatePicker, DateRangePicker, TimePicker" -->
 <!DOCTYPE html><html><head><meta charset="utf-8"><link rel="stylesheet" href="../../styles.css">
 <script src="https://unpkg.com/react@18.3.1/umd/react.production.min.js" integrity="sha384-DGyLxAyjq0f9SPpVevD6IgztCFlnMF6oW/XQGmfe+IsZ8TqEiDrcHkMLKI6fiB/Z" crossorigin="anonymous"></script>
 <script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.production.min.js" integrity="sha384-gTGxhz21lVGYNMcdJOyq01Edg0jhn/c22nsx0kyqP0TxaV5WVdsSH1fSDUf5YJj1" crossorigin="anonymous"></script>
@@ -7,15 +7,18 @@
 </head><body style="background:var(--surface-page)">
 <div id="root"></div>
 <script type="text/babel">
-const { Calendar, DatePicker, Card } = window.EfolusiDesignSystem_4ffc3d;
+const { Calendar, DatePicker, DateRangePicker, TimePicker, Card } = window.EfolusiDesignSystem_4ffc3d;
 function Demo() {
   const [d, setD] = React.useState('2026-07-16');
+  const [r, setR] = React.useState({ from: '2026-07-14', to: '2026-07-21' });
+  const [t, setT] = React.useState('09:30');
   return (
     <div style={{ padding: 20, display: 'flex', gap: 24, alignItems: 'flex-start' }}>
-      <Card padding={12}><Calendar value={d} onChange={setD} /></Card>
+      <Card padding={12}><Calendar range value={r} onChange={setR} /></Card>
       <div style={{ display: 'flex', flexDirection: 'column', gap: 14 }}>
         <DatePicker label="Renewal date" value={d} onChange={setD} />
-        <DatePicker label="Trial ends" placeholder="Pick a date" />
+        <DateRangePicker label="Stay" value={r} onChange={setR} />
+        <TimePicker label="Starts at" value={t} onChange={setT} minTime="08:00" maxTime="18:00" />
       </div>
     </div>
   );
