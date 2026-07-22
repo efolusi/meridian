@@ -73,6 +73,7 @@ export function ConsoleDemo() {
 }
 
 // @demo Console Streaming (stick to bottom)
+// @live — clock/interval content; hidden during visual baseline capture
 export function ConsoleStreamingDemo() {
   const { Console } = window.EfolusiDesignSystem_4ffc3d;
   const [entries, setEntries] = React.useState([{ level: 'info', time: '14:02:00', text: 'Stream started' }]);

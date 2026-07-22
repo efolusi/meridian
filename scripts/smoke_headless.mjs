@@ -45,7 +45,7 @@ if (SHOTS) {
   // The sticky summary banner paints over whichever section is scrolled under
   // it, so it was getting baked into the captures — carrying the live demo
   // count, which would churn every affected baseline whenever a demo is added.
-  await page.addStyleTag({ content: '#summary, h1 { display: none !important; }' });
+  await page.addStyleTag({ content: '#summary, h1, [data-live] { display: none !important; }' });
   let count = 0;
   for (const theme of ['light', 'dark']) {
     await page.evaluate(t => {

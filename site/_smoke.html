@@ -65,6 +65,9 @@
     const id = d.file + '#' + d.exp;
     const wrap = document.createElement('div');
     wrap.className = 'demo';
+    // Demos marked // @live render clocks or intervals — real content for the
+    // docs, poison for a pixel baseline. The shots pass hides [data-live].
+    if (d.code.includes('// @live')) wrap.dataset.live = '';
     wrap.innerHTML = '<h4>' + id + '</h4><div></div>';
     sectionFor(d.file).appendChild(wrap);
     try {

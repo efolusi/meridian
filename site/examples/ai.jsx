@@ -50,6 +50,7 @@ export function ConfirmationDemo() {
 }
 
 // @demo Conversation Stick-to-bottom thread
+// @live — clock/interval content; hidden during visual baseline capture
 export function ConversationDemo() {
   const { Conversation, ChatMessage } = window.EfolusiDesignSystem_4ffc3d;
   const [msgs, setMsgs] = React.useState([
@@ -204,6 +205,7 @@ export function TaskDemo() {
 }
 
 // @demo Todo Streaming plan
+// @live — clock/interval content; hidden during visual baseline capture
 export function TodoDemo() {
   const { Todo } = window.EfolusiDesignSystem_4ffc3d;
   const [step, setStep] = React.useState(1);
@@ -253,6 +255,7 @@ export function GeneratedImageDemo() {
 }
 
 // @demo Sandbox Run with tabs
+// @live — clock/interval content; hidden during visual baseline capture
 export function SandboxDemo() {
   const { Sandbox } = window.EfolusiDesignSystem_4ffc3d;
   const [state, setState] = React.useState('running');
