@@ -21,7 +21,7 @@ export function Terminal({ host, lines = [], live, maxHeight = 260, style, class
   return (
     <div {...rest} className={`ef-term${className ? ' ' + className : ''}`} style={style}>
       {host ? <div className="ef-term__head"><span className="ef-term__dot"></span><span className="ef-term__host">{host}</span></div> : null}
-      <div className="ef-term__body" style={{ maxHeight, overflowY: 'auto' }}>
+      <div className="ef-term__body" role="log" aria-live="polite" style={{ maxHeight, overflowY: 'auto' }}>
         {lines.map((l, i) => {
           const item = typeof l === 'string' ? { text: l } : l;
           return (

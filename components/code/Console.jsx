@@ -1,5 +1,5 @@
 import React from 'react';
-import { injectEfCss } from '../forms/Button.jsx';
+import { injectEfCss, prefersReducedMotion } from '../forms/Button.jsx';
 import { Icon } from '../icons/Icon.jsx';
 const CSS = `
 .ef-console{position:relative;display:flex;flex-direction:column;border:1px solid var(--border-default);border-radius:var(--radius-md);background:var(--surface-card);overflow:hidden;font-family:var(--font-sans)}
@@ -62,10 +62,10 @@ export function Console({ title = 'Console', entries = [], height = 240, style, 
   return (
     <div {...rest} className={`ef-console${className ? ' ' + className : ''}`} style={style}>
       <div className="ef-console__head"><Icon name="terminal" size={13} />{title}<span style={{ marginLeft: 'auto', color: 'var(--text-muted)' }}>{entries.length} entries</span></div>
-      <div ref={viewport} className="ef-console__scroll" style={{ height }} onScroll={recompute}>
+      <div ref={viewport} className="ef-console__scroll" role="log" aria-live="polite" style={{ height }} onScroll={recompute}>
         {entries.map((e, i) => <Row key={i} e={e} />)}
       </div>
-      {!atBottom ? <button type="button" className="ef-console__jump" onClick={() => { const v = viewport.current; if (v) v.scrollTo({ top: v.scrollHeight, behavior: 'smooth' }); }}><Icon name="chevron-down" size={12} />Latest</button> : null}
+      {!atBottom ? <button type="button" className="ef-console__jump" onClick={() => { const v = viewport.current; if (v) v.scrollTo({ top: v.scrollHeight, behavior: prefersReducedMotion() ? 'auto' : 'smooth' }); }}><Icon name="chevron-down" size={12} />Latest</button> : null}
     </div>
   );
 }

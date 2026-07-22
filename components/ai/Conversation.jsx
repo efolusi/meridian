@@ -1,5 +1,5 @@
 import React from 'react';
-import { injectEfCss } from '../forms/Button.jsx';
+import { injectEfCss, prefersReducedMotion } from '../forms/Button.jsx';
 import { Icon } from '../icons/Icon.jsx';
 const CSS = `
 .ef-conversation{position:relative;overflow:hidden;display:flex;flex-direction:column}
@@ -25,7 +25,7 @@ export const Conversation = React.forwardRef(function Conversation({ height = 42
   };
   const toBottom = behavior => {
     const v = viewport.current;
-    if (v) v.scrollTo({ top: v.scrollHeight, behavior: behavior || 'smooth' });
+    if (v) v.scrollTo({ top: v.scrollHeight, behavior: prefersReducedMotion() ? 'auto' : (behavior || 'smooth') });
   };
   React.useEffect(() => {
     const v = viewport.current;

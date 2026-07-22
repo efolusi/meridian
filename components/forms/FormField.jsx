@@ -90,7 +90,7 @@ export function FormField({ label, hint, error, invalid, required, group, id, ch
         {typeof children === 'function' ? children(wiring) : children}
       </FieldCtx.Provider>
       {hasError
-        ? <span id={noteId} className="ef-field__error"><Icon name="circle-alert" size={13} />{error}</span>
+        ? <span id={noteId} role="alert" className="ef-field__error"><Icon name="circle-alert" size={13} />{error}</span>
         : hasHint
           ? <span id={noteId} className="ef-field__hint">{hint}</span>
           : null}

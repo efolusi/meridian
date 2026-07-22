@@ -20,6 +20,12 @@ export function HoverCard({ trigger, side = 'bottom', openDelay = 350, closeDela
   const enter = () => { clearTimeout(t.current); t.current = setTimeout(() => setOpen(true), openDelay); };
   const leave = () => { clearTimeout(t.current); t.current = setTimeout(() => setOpen(false), closeDelay); };
   React.useEffect(() => () => clearTimeout(t.current), []);
+  React.useEffect(() => {
+    if (!open) return;
+    const key = e => { if (e.key === 'Escape') { clearTimeout(t.current); setOpen(false); } };
+    document.addEventListener('keydown', key);
+    return () => document.removeEventListener('keydown', key);
+  }, [open]);
   return (
     <span {...rest} ref={ref} className={`ef-hovercard${className ? ' ' + className : ''}`} style={style} onMouseEnter={enter} onMouseLeave={leave}
       onKeyDown={e => { if (e.key === 'Escape') { clearTimeout(t.current); setOpen(false); } }}>

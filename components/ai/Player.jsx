@@ -6,7 +6,8 @@ const CSS = `
 .ef-player__top{display:flex;align-items:center;gap:10px}
 .ef-player__title{flex:1;min-width:0;font-size:13.5px;font-weight:var(--weight-semibold);color:var(--text-primary);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .ef-player__meta{font-size:12px;color:var(--text-muted)}
-.ef-player__wave{position:relative;display:flex;align-items:center;justify-content:space-between;height:44px;cursor:pointer;touch-action:none}
+.ef-player__wave{position:relative;display:flex;align-items:center;justify-content:space-between;height:44px;cursor:pointer;touch-action:none;border-radius:var(--radius-sm)}
+.ef-player__wave:focus-visible{outline:none;box-shadow:var(--focus-ring)}
 .ef-player__bar{flex:none;width:2.5px;border-radius:var(--radius-full);background:var(--sand-300,#D9D2C3);transition:background .2s var(--ease-out)}
 .ef-player__bar--played{background:var(--accent)}
 .ef-player__bar--loading{animation:ef-player-load 1.2s ease-in-out infinite}
@@ -91,7 +92,15 @@ export const Player = React.forwardRef(function Player({ src, title, meta, peaks
           {meta ? <span className="ef-player__meta">{meta}</span> : null}
         </div>
       ) : null}
-      <div ref={wave} className="ef-player__wave" role="slider" aria-label="Seek" aria-valuemin={0} aria-valuemax={Math.round(dur)} aria-valuenow={Math.round(t)} onPointerDown={onPointerDown}>
+      <div ref={wave} className="ef-player__wave" role="slider" aria-label="Seek" tabIndex={0}
+        aria-valuemin={0} aria-valuemax={Math.round(dur)} aria-valuenow={Math.round(t)} aria-valuetext={`${formatTime(t, dur)} of ${formatTime(dur)}`}
+        onPointerDown={onPointerDown}
+        onKeyDown={e => {
+          if (e.key === 'ArrowRight' || e.key === 'ArrowUp') { e.preventDefault(); jumpTo(t + 5); }
+          else if (e.key === 'ArrowLeft' || e.key === 'ArrowDown') { e.preventDefault(); jumpTo(t - 5); }
+          else if (e.key === 'Home') { e.preventDefault(); jumpTo(0); }
+          else if (e.key === 'End') { e.preventDefault(); jumpTo(dur); }
+        }}>
         {bars.map((p, i) => (
           <span key={i} className={`ef-player__bar${!dur && playing ? ' ef-player__bar--loading' : (i + 0.5) / bars.length <= ratio ? ' ef-player__bar--played' : ''}`} style={{ height: cssPct(Math.max(8, p * 100)), animationDelay: !dur ? (i * 30) + 'ms' : undefined }}></span>
         ))}

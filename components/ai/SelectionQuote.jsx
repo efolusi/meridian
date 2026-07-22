@@ -1,5 +1,5 @@
 import React from 'react';
-import { injectEfCss } from '../forms/Button.jsx';
+import { injectEfCss, useIsoLayoutEffect } from '../forms/Button.jsx';
 import { Icon } from '../icons/Icon.jsx';
 const CSS = `
 .ef-selq{position:relative}
@@ -43,7 +43,7 @@ export function SelectionQuote({ children, actions = [{ id: 'quote', label: 'Quo
       document.removeEventListener('keydown', key);
     };
   }, []);
-  React.useLayoutEffect(() => {
+  useIsoLayoutEffect(() => {
     if (!sel || !barRef.current || !contRef.current) return;
     const bar = barRef.current.getBoundingClientRect();
     const cont = contRef.current.getBoundingClientRect();

@@ -1,5 +1,5 @@
 import React from 'react';
-import { injectEfCss } from '../forms/Button.jsx';
+import { injectEfCss, useIsoLayoutEffect } from '../forms/Button.jsx';
 import { Portal } from './Portal.jsx';
 import { Icon } from '../icons/Icon.jsx';
 const CSS = `
@@ -28,7 +28,7 @@ export function ContextMenu({ items, onSelect, children, style, className, ...re
   };
   // A fixed panel still escapes overflow, but nothing kept it inside the viewport:
   // right-clicking near the bottom or right edge pushed items off-screen.
-  React.useLayoutEffect(() => {
+  useIsoLayoutEffect(() => {
     const panel = panelRef.current;
     if (!pos || !panel) return;
     const r = panel.getBoundingClientRect();

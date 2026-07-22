@@ -1,5 +1,5 @@
 import React from 'react';
-import { injectEfCss } from '../forms/Button.jsx';
+import { injectEfCss, prefersReducedMotion } from '../forms/Button.jsx';
 import { formatTime } from './Player.jsx';
 const CSS = `
 .ef-transcript{display:flex;flex-direction:column;border:1px solid var(--border-default);border-radius:var(--radius-md);background:var(--surface-card);overflow:hidden;font-family:var(--font-sans)}
@@ -37,7 +37,7 @@ export function Transcript({ title = 'Transcript', items = [], currentTime = 0, 
     const v = viewport.current, row = rowRefs.current[active];
     if (!v || !row) return;
     const target = row.offsetTop - v.clientHeight / 2 + row.offsetHeight / 2;
-    v.scrollTo({ top: Math.max(0, target), behavior: 'smooth' });
+    v.scrollTo({ top: Math.max(0, target), behavior: prefersReducedMotion() ? 'auto' : 'smooth' });
   }, [active, auto]);
   return (
     <div {...rest} className={`ef-transcript${className ? ' ' + className : ''}`} style={style}>

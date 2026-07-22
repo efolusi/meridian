@@ -1,6 +1,6 @@
 import React from 'react';
 import { Icon } from '../icons/Icon.jsx';
-import { injectEfCss, mergeRefs } from '../forms/Button.jsx';
+import { injectEfCss, mergeRefs, useIsoLayoutEffect } from '../forms/Button.jsx';
 const CSS = `
 .ef-tabs{position:relative;display:flex;gap:4px;border-bottom:1px solid var(--border-default)}
 .ef-tabs__tab{display:inline-flex;align-items:center;gap:6px;height:38px;padding:0 12px;border:none;background:transparent;color:var(--text-secondary);font-family:var(--font-sans);font-size:var(--text-md);font-weight:var(--weight-medium);cursor:pointer;border-radius:var(--radius-sm) var(--radius-sm) 0 0;transition:color var(--dur-fast) var(--ease-out),background var(--dur-fast) var(--ease-out)}
@@ -15,7 +15,7 @@ export const Tabs = React.forwardRef(function Tabs({ items, value, onChange, sty
   injectEfCss('ef-css-tabs', CSS);
   const ref = React.useRef(null);
   const [ink, setInk] = React.useState({ left: 0, width: 0 });
-  React.useLayoutEffect(() => {
+  useIsoLayoutEffect(() => {
     const el = ref.current && ref.current.querySelector('[data-active="true"]');
     if (el) setInk({ left: el.offsetLeft, width: el.offsetWidth });
   }, [value, items]);

@@ -187,6 +187,13 @@ for (const f of fs.readdirSync(path.join(ROOT, 'tokens')).sort()) {
   if (f.endsWith('.css')) files.set(`tokens/${f}`, fs.readFileSync(path.join(ROOT, 'tokens', f), 'utf8'));
 }
 
+// The token deliverables the README advertises for Style Dictionary, Figma
+// Variables and Tailwind. The preset is CommonJS (tailwind.config.js does
+// require()), and dist/package.json says "type":"module", so it ships as .cjs
+// or Node would parse it as ESM and throw on module.exports.
+files.set('tokens.json', fs.readFileSync(path.join(ROOT, 'tokens.json'), 'utf8'));
+files.set('tailwind.preset.cjs', fs.readFileSync(path.join(ROOT, 'tailwind.preset.js'), 'utf8'));
+
 // The fonts the token layer actually @font-faces. Without them tokens/fonts.css
 // points at ../assets/fonts/*.woff2 and nothing resolves — and an unresolvable
 // url() in CSS is a hard build error in Vite and webpack, not a missing glyph.
@@ -228,6 +235,9 @@ files.set('package.json', JSON.stringify({
     // Tools read this directly; without an entry the './*' pattern rewrites it
     // to package.json.js and the read fails.
     './package.json': './package.json',
+    // Explicit because the './*' pattern appends .js to anything else.
+    './tokens.json': './tokens.json',
+    './tailwind.preset.cjs': './tailwind.preset.cjs',
     // Without this the './*' pattern rewrites asset subpaths to a '.js' that
     // does not exist, so an explicit font or licence import fails.
     './assets/*': './assets/*',

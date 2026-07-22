@@ -4,6 +4,27 @@ All notable changes to Meridian are documented here. Format follows [Keep a Chan
 
 > **On the versions below 1.4.0:** Meridian was built in the open but released to nobody. Versions 1.0.0 through 1.3.0 are development milestones recorded as they happened; they were never tagged, published, or installable, so there is no artefact to go back to. They are kept because they are an accurate record of how the system was built, not because you can depend on them. The first tagged, publicly consumable release is 1.4.0.
 
+## 1.7.0 — 2026-07-22
+
+The keyboard contracts the docs called "verified in-browser" are now verified by tests — which promptly found three components breaking them — plus live-region announcements, reduced-motion coverage for JS-driven animation, and a server-render sweep of all 112 exports.
+
+### Added
+- **39 keyboard-contract tests** across Drawer, ConfirmDialog, Popover, CommandPalette, DatePicker, Tooltip, HoverCard, ContextMenu and Menubar — every contract `guidelines/accessibility.md` documents now has a test enforcing it (194 tests total, from 30).
+- **An SSR sweep** renders all 112 public exports with `renderToString` in a real node environment and fails on any inline-style float a CSS parser would truncate — the hydration-mismatch class, guarded for the whole surface instead of four hand-picked components. It caught AspectRatio serialising 16 decimals on its very first run.
+- Dynamic content announces itself: FormField errors are `role="alert"`, Terminal and Console bodies are `role="log"` live regions, and Progress is finally named by its visible label.
+- `tokens.json` (DTCG) and `tailwind.preset.cjs` now ship in the npm package with explicit `exports` entries — the README advertised both for a package that contained neither.
+
+### Fixed
+- **Calendar `PageUp`/`PageDown` dropped keyboard focus to `<body>`** — the month re-render unmounted the focused day and the refocus effect refused to reclaim focus. They now move focus a month (same day, clamped to month length) and the effect reclaims focus from `<body>`.
+- **HoverCard ignored Escape when focus was outside it** — the only handler was on the trigger span. A document-level listener now dismisses an open card from anywhere.
+- **Menubar Escape closed the menu but stranded focus** — it now returns focus to the top-level button, as the contract states.
+- **Player's seek slider was announced but inoperable** — `role="slider"` with no tabIndex and no key handling. It is now focusable with Arrow ±5s, Home/End, a human-readable `aria-valuetext`, and a focus ring.
+- **A clickable Tag was mouse-only** — a span with onClick. It renders as a real button now (or an inner label-button when `onRemove` needs to coexist, since interactive content must not nest).
+- Avatar falls back to initials when its image URL dies, instead of a broken image forever.
+- JS-driven motion now honours `prefers-reduced-motion`: UsageMeter's count-up snaps, and the smooth scrolls in Conversation, Transcript, Console and Carousel jump instantly. The CSS kill-switch never could reach `scrollTo({behavior:'smooth'})`.
+- The `useLayoutEffect` SSR warning is gone from all 13 components that fired it (one isomorphic helper, downgrade-to-`useEffect` on the server — behaviour-identical, positioning work only means anything with a DOM).
+- `publish.yml` runs `npm run check` instead of its own hand-maintained gate list, which had already drifted from CI's.
+
 ## 1.6.0 — 2026-07-22
 
 The npm package grows a static CSS story, and an audit of eight dimensions fixed the accessibility and forwarding bugs it confirmed.

@@ -101,28 +101,11 @@ jobs:
         run: npm ci --no-audit --no-fund
 
       # A package that cannot pass its own checks has no business on a registry,
-      # and a bad version cannot be unpublished after 72 hours.
-      - name: Gates
-        run: |
-          python3 scripts/check_contrast.py
-          python3 scripts/check_runtime_copies.py
-          python3 scripts/check_paths.py
-          python3 scripts/check_dead_controls.py
-          python3 scripts/check_token_adherence.py
-          python3 scripts/check_bundle_hashes.py
-          python3 scripts/sync_manifest.py --check
-          node scripts/build_bundle.mjs --check
-
-      - name: Tests
-        run: npm test
-
-      - name: Build the package
-        run: node scripts/build_npm.mjs
-
-      - name: Validate the package
-        run: |
-          node scripts/check_npm_package.mjs
-          node scripts/check_types.mjs
+      # and a bad version cannot be unpublished after 72 hours. check_all.mjs is
+      # the single source of the gate list (it also builds dist/); keeping a
+      # second hand-maintained list here is how publish and CI drift apart.
+      - name: Gates, tests, build and package validation
+        run: npm run check
 
       # The tag is the release's claim about what this is; the manifest is what
       # actually got built. If they disagree, the wrong thing is about to ship

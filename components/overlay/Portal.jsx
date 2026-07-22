@@ -2,7 +2,7 @@ import React from 'react';
 // Bare imports are stripped by the bundle compiler, so this resolves to the
 // window global there; in an ESM consumer it resolves normally. Both work.
 import ReactDOM from 'react-dom';
-import { injectEfCss } from '../forms/Button.jsx';
+import { injectEfCss, useIsoLayoutEffect } from '../forms/Button.jsx';
 const CSS = `
 .ef-portal{position:fixed;top:0;left:0;width:0;height:0}
 `;
@@ -25,7 +25,7 @@ export function Portal({ children, container }) {
   // and this layout effect attaches it before paint. Gating the render on a
   // "mounted" state instead would leave the panel absent when the parent measures
   // it for placement, which puts every anchored overlay at the viewport origin.
-  React.useLayoutEffect(() => {
+  useIsoLayoutEffect(() => {
     const host = hostRef.current;
     if (!host) return;
     const parent = container || document.body;
@@ -52,7 +52,7 @@ export function useAnchoredStyle(anchorRef, panelRef, { open, placement = 'botto
     style: { position: 'fixed', top: 0, left: 0, visibility: 'hidden' },
     side: placement,
   });
-  React.useLayoutEffect(() => {
+  useIsoLayoutEffect(() => {
     if (!open) {
       setState(s => (s.style.visibility === 'hidden' ? s : { ...s, style: { ...s.style, visibility: 'hidden' } }));
       return;

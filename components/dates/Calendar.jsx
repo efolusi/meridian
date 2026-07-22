@@ -41,7 +41,11 @@ export function Calendar({ value, onChange, style, className, ...rest }) {
   };
   React.useEffect(() => {
     const g = gridRef.current;
-    if (!g || !g.contains(document.activeElement)) return;
+    if (!g) return;
+    // A month change unmounts the focused day and drops focus to <body>;
+    // reclaiming it from there is restoration, not stealing.
+    const ae = document.activeElement;
+    if (!(g.contains(ae) || ae === document.body)) return;
     const btn = g.querySelector(`[data-iso="${focusTarget}"]`);
     if (btn) btn.focus();
   }, [focusTarget, y, m]);
@@ -51,8 +55,14 @@ export function Calendar({ value, onChange, style, className, ...rest }) {
     const dow = () => (new Date(focusTarget + 'T00:00:00').getDay() + 6) % 7;
     if (e.key === 'Home') { e.preventDefault(); move(-dow()); }
     else if (e.key === 'End') { e.preventDefault(); move(6 - dow()); }
-    else if (e.key === 'PageUp') { e.preventDefault(); setView(m === 0 ? [y - 1, 11] : [y, m - 1]); }
-    else if (e.key === 'PageDown') { e.preventDefault(); setView(m === 11 ? [y + 1, 0] : [y, m + 1]); }
+    else if (e.key === 'PageUp' || e.key === 'PageDown') {
+      e.preventDefault();
+      const base = new Date(focusTarget + 'T00:00:00');
+      const [ty, tm] = e.key === 'PageUp' ? (m === 0 ? [y - 1, 11] : [y, m - 1]) : (m === 11 ? [y + 1, 0] : [y, m + 1]);
+      const clamped = Math.min(base.getDate(), new Date(ty, tm + 1, 0).getDate());
+      setFocusIso(iso(new Date(ty, tm, clamped)));
+      setView([ty, tm]);
+    }
   };
   const rows = Array.from({ length: 6 }, (_, r) => cells.slice(r * 7, r * 7 + 7));
   return (

@@ -1,5 +1,5 @@
 import React from 'react';
-import { injectEfCss, cssPct } from '../forms/Button.jsx';
+import { injectEfCss, cssPct, prefersReducedMotion } from '../forms/Button.jsx';
 const CSS = `
 .ef-usage{display:flex;flex-direction:column;gap:7px}
 .ef-usage__row{display:flex;align-items:baseline;gap:8px}
@@ -16,7 +16,7 @@ export function UsageMeter({ used = 0, limit = 100, label = 'Usage', unit = '', 
   injectEfCss('ef-css-usage', CSS);
   const [shown, setShown] = React.useState(animated ? 0 : used);
   React.useEffect(() => {
-    if (!animated) { setShown(used); return; }
+    if (!animated || prefersReducedMotion()) { setShown(used); return; }
     let raf, start = null;
     const from = shown, to = used;
     const tick = now => {

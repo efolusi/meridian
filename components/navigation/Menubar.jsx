@@ -25,7 +25,12 @@ export function Menubar({ menus, onSelect, style, className, ...rest }) {
   React.useEffect(() => {
     if (open === null) return;
     const away = e => { if (ref.current && !ref.current.contains(e.target)) setOpen(null); };
-    const key = e => { if (e.key === 'Escape') setOpen(null); };
+    const key = e => {
+      if (e.key !== 'Escape') return;
+      const btns = ref.current ? ref.current.querySelectorAll('.ef-menubar__btn') : [];
+      if (btns[open]) btns[open].focus();
+      setOpen(null);
+    };
     document.addEventListener('mousedown', away);
     document.addEventListener('keydown', key);
     return () => { document.removeEventListener('mousedown', away); document.removeEventListener('keydown', key); };

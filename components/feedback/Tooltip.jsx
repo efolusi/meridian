@@ -1,5 +1,5 @@
 import React from 'react';
-import { injectEfCss } from '../forms/Button.jsx';
+import { injectEfCss, useIsoLayoutEffect } from '../forms/Button.jsx';
 import { Portal, useAnchoredStyle } from '../overlay/Portal.jsx';
 const CSS = `
 .ef-tooltip{position:relative;display:inline-flex}
@@ -22,7 +22,7 @@ export function Tooltip({ label, position = 'top', delay = 200, children, style,
   // Keep the arrow over the trigger's centre even when the bubble has been
   // shifted to stay on screen, so it never points at empty space.
   const [arrowX, setArrowX] = React.useState(null);
-  React.useLayoutEffect(() => {
+  useIsoLayoutEffect(() => {
     if (!open || !ref.current || !bubbleRef.current) { setArrowX(null); return; }
     const a = ref.current.getBoundingClientRect();
     const b = bubbleRef.current.getBoundingClientRect();

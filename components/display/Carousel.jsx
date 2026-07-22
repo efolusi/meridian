@@ -1,5 +1,5 @@
 import React from 'react';
-import { injectEfCss } from '../forms/Button.jsx';
+import { injectEfCss, prefersReducedMotion } from '../forms/Button.jsx';
 import { Icon } from '../icons/Icon.jsx';
 const CSS = `
 .ef-carousel{position:relative}
@@ -30,7 +30,7 @@ export function Carousel({ children, itemWidth = '280px', gap = 14, showControls
     if (!el || !el.firstChild) return el ? el.clientWidth : 0;
     return el.firstChild.getBoundingClientRect().width + gap;
   };
-  const goTo = i => { const el = track.current; if (el) el.scrollTo({ left: i * step(), behavior: 'smooth' }); };
+  const goTo = i => { const el = track.current; if (el) el.scrollTo({ left: i * step(), behavior: prefersReducedMotion() ? 'auto' : 'smooth' }); };
   const onScroll = () => { const el = track.current; if (el) setIndex(Math.min(count - 1, Math.max(0, Math.round(el.scrollLeft / step())))); };
   return (
     <div {...rest} role="region" aria-label={ariaLabel} className={`ef-carousel${className ? ' ' + className : ''}`} style={style}>

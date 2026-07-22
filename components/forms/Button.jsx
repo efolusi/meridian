@@ -54,6 +54,21 @@ export function cssPct(value) {
  * anchor an overlay, trap focus, or measure. Lowercase, so it stays an internal
  * helper rather than part of the public namespace.
  */
+/**
+ * useLayoutEffect that is silent on the server.
+ *
+ * React warns when useLayoutEffect renders under renderToString; the effect
+ * body is positioning work that only means anything with a DOM, so downgrading
+ * to useEffect on the server is behaviour-identical. Lowercase: internal.
+ */
+export const useIsoLayoutEffect = typeof window === 'undefined' ? React.useEffect : React.useLayoutEffect;
+/**
+ * The CSS kill-switch cannot reach JS-driven motion — rAF count-ups and
+ * scrollTo({behavior:'smooth'}) — so those call sites ask here. Lowercase: internal.
+ */
+export function prefersReducedMotion() {
+  return typeof window !== 'undefined' && !!window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+}
 export function mergeRefs(...refs) {
   return node => {
     for (const r of refs) {
