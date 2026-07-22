@@ -13,8 +13,8 @@ export interface ModelSelectorProps {
   /** Selected model id */
   value?: string;
   onChange?: (id: string) => void;
-  /** Panel direction @default 'up' */
-  side?: 'up' | 'down';
+  /** Panel direction @default 'top'. 'up'/'down' are deprecated aliases for 'top'/'bottom' (one major). */
+  side?: 'top' | 'bottom' | 'up' | 'down';
   style?: React.CSSProperties;
   className?: string;
 }

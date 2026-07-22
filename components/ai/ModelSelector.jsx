@@ -21,12 +21,14 @@ const CSS = `
 .ef-modelsel__check{margin-left:auto;flex:none;display:inline-flex;color:var(--brand-700)}
 .ef-modelsel__badge+.ef-modelsel__check{margin-left:8px}
 `;
-export function ModelSelector({ models = [], value, onChange, side = 'up', style, className, ...rest }) {
+export function ModelSelector({ models = [], value, onChange, side = 'top', style, className, ...rest }) {
   injectEfCss('ef-css-modelsel', CSS);
+  // 'up'/'down' are deprecated value aliases for 'top'/'bottom' (the house placement vocabulary).
+  const dir = side === 'down' || side === 'bottom' ? 'bottom' : 'top';
   const [open, setOpen] = React.useState(false);
   const ref = React.useRef(null);
   const panelRef = React.useRef(null);
-  const { style: anchored } = useAnchoredStyle(ref, panelRef, { open, placement: side === 'down' ? 'bottom' : 'top', align: 'start' });
+  const { style: anchored } = useAnchoredStyle(ref, panelRef, { open, placement: dir, align: 'start' });
   React.useEffect(() => {
     if (!open) return;
     const away = e => { if (ref.current && !ref.current.contains(e.target)) setOpen(false); };
@@ -37,12 +39,12 @@ export function ModelSelector({ models = [], value, onChange, side = 'up', style
   }, [open]);
   const cur = models.find(m => m.id === value) || models[0] || {};
   return (
-    <span {...rest} ref={ref} className={`ef-modelsel${side === 'down' ? ' ef-modelsel--down' : ''}${className ? ' ' + className : ''}`} style={style}>
+    <span {...rest} ref={ref} className={`ef-modelsel${dir === 'bottom' ? ' ef-modelsel--down' : ''}${className ? ' ' + className : ''}`} style={style}>
       <button type="button" className="ef-modelsel__btn" aria-haspopup="listbox" aria-expanded={open} onClick={() => setOpen(!open)}>
         <Icon name="sparkles" size={13} />
         {cur.name || 'Choose model'}
         {cur.provider ? <span className="ef-modelsel__provider">{cur.provider}</span> : null}
-        <span className="ef-modelsel__chev"><Icon name={side === 'down' ? 'chevron-down' : 'chevron-up'} size={13} /></span>
+        <span className="ef-modelsel__chev"><Icon name={dir === 'bottom' ? 'chevron-down' : 'chevron-up'} size={13} /></span>
       </button>
       {open ? (
         <Portal><div role="listbox" ref={panelRef} className="ef-modelsel__panel" style={anchored}>

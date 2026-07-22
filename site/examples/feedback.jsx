@@ -105,7 +105,7 @@ export function TooltipDemo() {
   return (
     <div style={{ display: 'flex', gap: 14, alignItems: 'center' }}>
       <Tooltip label="Duplicate run"><IconButton variant="outline" icon="copy" label="Duplicate" /></Tooltip>
-      <Tooltip label="Runs again with the same inputs" position="bottom"><IconButton variant="outline" icon="refresh-cw" label="Retry" /></Tooltip>
+      <Tooltip label="Runs again with the same inputs" side="bottom"><IconButton variant="outline" icon="refresh-cw" label="Retry" /></Tooltip>
     </div>
   );
 }

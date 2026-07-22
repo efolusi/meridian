@@ -11,7 +11,7 @@ export function RevenueBars() {
   return (
     <Card title="Revenue" subtitle="Recognized, USD thousands" padding={18} style={{ width: '100%', maxWidth: 560 }}
       actions={<SegmentedControl value={range} onChange={setRange} options={[{ id: '30d', label: '30d' }, { id: '12m', label: '12m' }]} />}>
-      <BarChart height={160} data={series.data} labels={series.labels} highlightLast={3} formatValue={(v) => '$' + v + 'k'} />
+      <BarChart height={160} data={series.data} labels={series.labels} highlightLast={3} format={(v) => '$' + v + 'k'} />
     </Card>
   );
 }

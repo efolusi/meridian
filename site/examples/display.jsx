@@ -201,7 +201,7 @@ export function TreeListDemo() {
   const [sel, setSel] = React.useState('runs');
   return (
     <div style={{ width: 260 }}>
-      <TreeList value={sel} onSelect={setSel} defaultOpen={['agents']} nodes={[
+      <TreeList value={sel} onChange={setSel} defaultOpen={['agents']} nodes={[
         { id: 'agents', label: 'Agents', icon: 'bot', children: [
           { id: 'runs', label: 'Runs', count: 128 },
           { id: 'schedules', label: 'Schedules', count: 6 },

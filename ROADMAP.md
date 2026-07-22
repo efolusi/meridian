@@ -30,7 +30,7 @@ Meet developers where they are; keep the zero-build path as the flagship.
 
 ## Phase 3 — Quality infrastructure
 
-- **Visual regression.** Snapshot every demo from the smoke page per PR; light + dark.
+- ~~Visual regression.~~ Landed 2026-07-22: the smoke run captures one PNG per example group per theme (26 shots), `scripts/check_visual.mjs` gates every push/PR against `tests/__shots__` baselines with pixelmatch, and the `update-visual-baselines` workflow refreshes them via a reviewable PR (baselines are CI-born; local rasterisation differs by platform).
 - **Interaction tests** for the stateful ten (Combobox, CommandPalette, Dialog, Menu, DatePicker, Slider, RichComposer, Player, PromptSteps, Toast) — keyboard-driven, not click-only.
 - **Token adherence lint** in CI (the adherence config already exists — enforce it).
 - **Performance budget.** Bundle size tracked per release; per-component cost table in docs.
@@ -62,10 +62,10 @@ Meet developers where they are; keep the zero-build path as the flagship.
 
 ## Decision points (need owner input)
 
-1. npm scope/name — `@efolusi/meridian` vs unscoped `meridian-ds`.
-2. Monorepo split on publish (tokens / icons / components as separate packages) or single package.
+1. ~~npm scope/name~~ Decided 2026-07-20: `@efolusi/meridian`, published from 1.5.0.
+2. ~~Monorepo split~~ Decided 2026-07-22: **single package.** Subpath exports (`/forms/Button`, `/tokens/*`, `/tokens.json`, `/tailwind.preset.cjs`) already give granular access, the registry serves per-component installs, and a split buys a version-matrix (tokens 1.2 + components 1.3?) that nobody has asked to pay for. Revisit only if a consumer demonstrably needs tokens on a different release cadence than components.
 3. Figma: build in-house or recruit a community maintainer.
-4. Docs hosting + domain (e.g. meridian.efolusi.com) and analytics stance (recommend: none, state it).
+4. ~~Docs hosting~~ Decided: live at meridian.efolusi.com on Cloudflare Pages; no analytics.
 5. CLA vs DCO for contributions.
 
 ## First five actions
@@ -96,7 +96,7 @@ Concrete items surfaced by the five-area audit (components, tokens, docs site, k
 **Phase 1 — tokens (additive, wire in the same bundled release)**
 - `--z-*` elevation scale replacing the 15 raw z-indexes (today: five overlays tie at 80; Tooltip at 60 loses to Drawer at 100).
 - `--overlay-scrim` for the repeated `rgba(31,26,20,.45)` scrims; `--text-on-brand-muted` for the 6 hard-coded `rgba(248,244,230,.75)` sites; `--text-2xs` (or similar) so the 134 raw px font sizes can snap to the scale; route raw hex in Toast/Terminal/CodeBlock/Badge through semantic tokens; rename `--shadow-pop` → `--shadow-xl` (alias kept one major).
-- API conventions sweep: one action-prop shape across Alert/Banner/Toast; `status` vs `state` unified; `defaultVisible`/`defaultConsoleOpen` → `defaultOpen`; document `size` enum-vs-pixel convention. Deprecate per governance.md, don't break.
+- API conventions sweep, partially landed 2026-07-22 (choose-an-item events unified on onChange/onSelect, placement unified on `side`, `formatValue`→`format`, WebPreview controlled-capable + `defaultOpen` — all with one-major deprecated aliases). Still open: one action-prop shape across Alert/Banner/Toast, `status` vs `state`, `defaultVisible`, `size` enum-vs-pixel doc.
 
 **Phase 3 — quality infrastructure**
 - CI on every PR: manifest↔source sync check (the committed bundle's one real risk is silent staleness), oxlint adherence run (first fix the config: empty `forbid-elements` rule, and the `no-restricted-imports` message assumes an `index.js` barrel that doesn't exist), dead-link check, headless smoke run.
@@ -109,6 +109,6 @@ Concrete items surfaced by the five-area audit (components, tokens, docs site, k
 - ~~`sitemap.xml`, `robots.txt`, and a wired 404 page when the docs get a public host.~~ Done: all three ship at the repo root.
 
 **Needs owner input (in addition to the decision points above)**
-- FUNDING.yml (platforms or omit).
+- ~~FUNDING.yml~~ Decided 2026-07-22: omitted — there are no sponsor accounts to point at, and an empty funding banner is worse than none. Reversible in one commit when accounts exist.
 - Whether `.thumbnail` preview files ship in the public repo (`thumbnail.html` is referenced by the manifest; the WebP files are unreferenced).
 - Same-day 1.1.0/1.2.0/1.3.0 release dates in CHANGELOG — backfill real dates if they exist.

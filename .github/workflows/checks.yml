@@ -97,8 +97,22 @@ jobs:
           SERVER=$!
           for i in $(seq 1 20); do curl -sf http://127.0.0.1:8000/site/_smoke.html >/dev/null && break || sleep 0.5; done
           set +e
-          BASE=http://127.0.0.1:8000 node scripts/smoke_headless.mjs
+          BASE=http://127.0.0.1:8000 SHOTS="$RUNNER_TEMP/shots" node scripts/smoke_headless.mjs
           CODE=$?
           set -e
           kill $SERVER 2>/dev/null || true
           exit $CODE
+
+      # Compares against tests/__shots__ baselines; skips loudly while none
+      # exist. Baselines are made by the update-visual-baselines workflow so
+      # they always come from this same runner platform.
+      - name: Visual regression (group screenshots vs baselines)
+        run: SHOTS="$RUNNER_TEMP/shots" node scripts/check_visual.mjs
+
+      - name: Upload shots and diffs on failure
+        if: failure()
+        uses: actions/upload-artifact@v4
+        with:
+          name: visual-shots
+          path: ${{ runner.temp }}/shots
+          if-no-files-found: ignore

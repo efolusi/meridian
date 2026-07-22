@@ -4,6 +4,25 @@ All notable changes to Meridian are documented here. Format follows [Keep a Chan
 
 > **On the versions below 1.4.0:** Meridian was built in the open but released to nobody. Versions 1.0.0 through 1.3.0 are development milestones recorded as they happened; they were never tagged, published, or installable, so there is no artefact to go back to. They are kept because they are an accurate record of how the system was built, not because you can depend on them. The first tagged, publicly consumable release is 1.4.0.
 
+## 1.9.0 — 2026-07-22
+
+Editable demos, one prop vocabulary (with one-major deprecated aliases, per governance), zero raw colour literals, and visual regression in CI.
+
+### Added
+- **Every demo is now a playground.** Components and Charts pages gain an Edit tab beside Preview/Code: edit the source, Run recompiles it through the exact pipeline the pristine demos use, errors land in the same boundary and clear on the next Run, Reset restores the original. Edits survive navigating within the session; nothing persists beyond it.
+- **Visual regression in CI.** The smoke run captures one screenshot per example group per theme (26 shots); `scripts/check_visual.mjs` compares them against `tests/__shots__` baselines with pixelmatch on every push and PR. Baselines are born in CI — the `update-visual-baselines` workflow opens a PR whose image diff is the approval step — because font rasterisation differs across platforms.
+- `--success-contrast` and `--warning-contrast` tokens, completing the family `--danger-contrast` started.
+
+### Changed
+- **One vocabulary for the drifted props, nothing broken.** State-carrying selection fires `onChange` (TreeList; `onSelect` aliased), command menus fire `onSelect` (Suggestions; `onPick` aliased), placement is `side` with top/bottom/left/right (Tooltip; `position` aliased — and Tooltip newly implements left/right with flip-and-clamp), charts format with `format` (BarChart; `formatValue` aliased), ModelSelector's side takes top/bottom (up/down mapped), WebPreview's `url` is controlled-capable and `defaultOpen` replaces `defaultConsoleOpen`. Every alias keeps working for one major and is marked `@deprecated` in its types.
+- **Zero raw colour literals** — the token-adherence baseline hit 0, from 48. Theme-fixed surfaces (code ink ladder, ANSI-ish status colours, media scrims and checkerboard) got honestly named fixed tokens; exact-value duplicates became the token they duplicated; stale var() fallbacks that had drifted from their token's real value were removed.
+
+### Fixed
+- **FileTypeIcon's extension chip was white-on-everything.** No single label colour passes on all eight chip fills in both themes (white fails brand-500/sand-500 in light; dark ink fails the fixed dark fills in dark), so every fill now pairs with a label that measures ≥4.5:1 in both — flip tokens on status fills, fixed white or ink elsewhere. All nine pairs verified numerically.
+
+### Decided (recorded in ROADMAP.md)
+- Single npm package, no monorepo split; FUNDING.yml omitted until sponsor accounts exist; docs hosting and npm scope marked resolved.
+
 ## 1.8.0 — 2026-07-22
 
 Three new components, range selection for Calendar, form-level state, a bring-your-own-brand theming guide, and a single-file AI corpus. 109 components, 115 public exports.

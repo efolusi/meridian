@@ -12,11 +12,21 @@
 /* Semantic aliases */
 --surface-page:var(--sand-50);--surface-card:#FFFFFF;--surface-sunken:var(--sand-100);--surface-subtle:var(--sand-25);--surface-inverse:var(--sand-950);--surface-brand:var(--brand-900);
 --surface-code:#14110B;--text-code:#E8E3D9;--border-code:rgba(240,235,225,.09);/* code/terminal surface — fixed dark espresso in BOTH themes (never remap) */
---overlay-scrim:rgba(31,26,20,.45);/* modal/drawer backdrop */--text-on-brand-muted:rgba(248,244,230,.75);/* muted text on brand/inverse surfaces */
---text-primary:var(--sand-950);--text-secondary:var(--sand-700);--text-muted:#746A55;/* between sand-600/700: ≥4.5:1 on page, card, and sunken */--text-inverse:var(--sand-50);--text-link:var(--brand-700);
+/* Code-surface ink ladder — everything here sits on --surface-code, so each step is fixed in BOTH themes on purpose (never remap) */
+--code-ink:rgba(250,249,246,.82);/* default terminal output */--code-ink-strong:rgba(250,249,246,.85);/* control labels on code */--code-ink-bright:#FFFFFF;/* hovered controls on code */
+--code-ink-muted:rgba(250,249,246,.6);/* resting copy button */--code-ink-subtle:rgba(250,249,246,.55);/* language/host labels, info lines */--code-ink-faint:rgba(250,249,246,.35);/* timestamps */
+--code-divider:rgba(250,249,246,.1);/* header hairline on code */--code-edge:rgba(250,249,246,.25);/* pill border on code */--code-edge-hover:rgba(250,249,246,.5);--code-raised:rgba(30,26,20,.85);/* pill fill floating over code */
+/* Pastel status tints for dark fills (terminal ok/err lines, toast icons on the inverse surface) — fixed in BOTH themes on purpose; where the surface itself flips in dark, the component rule swaps to the strong status tokens */
+--success-on-dark:#7FD08D;--danger-on-dark:#F49B93;--warning-on-dark:#F2C078;
+--overlay-scrim:rgba(31,26,20,.45);/* modal/drawer backdrop */--text-on-brand-muted:rgba(248,244,230,.75);/* muted text on brand/inverse surfaces */--text-on-brand:#FFFFFF;/* label on a fixed brand-ramp fill (e.g. a --brand-700 button) — a fixed dark brand- or sand-ramp fill never remaps, so this is fixed in BOTH themes on purpose */
+/* Media tones (GeneratedImage) — sit over user imagery, dark in BOTH themes on purpose (never remap) */
+--media-backdrop:#141210;/* generation backdrop */--media-backdrop-dot:rgba(243,239,231,.22);/* shimmer dots on the backdrop */
+--media-scrim:rgba(20,16,12,.55);/* legibility gradient over the finished image */--media-scrim-soft:rgba(20,16,12,.45);/* action chip resting fill */--media-scrim-strong:rgba(20,16,12,.7);/* action chip hover fill */
+--text-on-media:var(--sand-50);/* prompt text over imagery — stays light in both themes */--text-on-media-muted:rgba(250,249,246,.75);/* status line over imagery */
+--text-primary:var(--sand-950);--text-secondary:var(--sand-700);--text-muted:#746A55;/* between sand-600/700: ≥4.5:1 on page, card, and sunken */--text-inverse:var(--sand-50);--text-inverse-muted:rgba(250,249,246,.6);/* dim ink on --surface-inverse (toast close button); remapped in dark where the inverse surface flips light */--text-link:var(--brand-700);
 --border-default:var(--sand-200);--border-strong:var(--sand-300);--border-inverse:rgba(250,249,246,.18);
 --accent:var(--brand-950);--accent-hover:#1D0E04;--accent-active:#120801;--accent-subtle:var(--brand-50);--accent-subtle-border:var(--brand-200);--accent-contrast:#FFFFFF;
---danger-contrast:#FFFFFF;/* label on a solid --danger-600 fill; flips in dark where the red lightens */
+--danger-contrast:#FFFFFF;/* label on a solid --danger-600 fill; flips in dark where the red lightens */--success-contrast:#FFFFFF;--warning-contrast:#FFFFFF;/* same contract as --danger-contrast, for the green and amber fills */
 /* Focus ring — opaque, two-layer. The inner offset ring is surface-coloured so the
    indicator never sits directly against a control fill; the outer ring only ever needs
    contrast against the surface, clearing WCAG 1.4.11 (3:1 non-text) on every background. */
@@ -27,12 +37,12 @@
 /* Dark theme — semantic remap only; ramps stay fixed */
 [data-theme="dark"]{
 --surface-page:#191512;--surface-card:#211C17;--surface-sunken:#2A251E;--surface-subtle:#1D1814;--surface-inverse:var(--sand-50);--surface-brand:var(--brand-950);
---text-primary:#F3EFE7;--text-secondary:#C9C0B2;--text-muted:#9C9280;--text-inverse:var(--sand-950);--text-link:var(--brand-400);
+--text-primary:#F3EFE7;--text-secondary:#C9C0B2;--text-muted:#9C9280;--text-inverse:var(--sand-950);--text-inverse-muted:rgba(30,26,20,.55);--text-link:var(--brand-400);
 --border-default:#332C24;--border-strong:#453C31;--border-inverse:rgba(30,26,20,.2);
 --accent:#F3EFE7;--accent-hover:#FFFFFF;--accent-active:#D5CFC0;--accent-subtle:#2A2119;--accent-subtle-border:#453728;--accent-contrast:#1E1A14;
 --success-600:#5FB86E;--success-100:#1C2B1F;--success-300:#2E4A34;
 --warning-100:#2E2413;--warning-300:#4A3A1D;--warning-600:#D9822B;
---danger-100:#321B18;--danger-300:#54291F;--danger-600:#E85D4A;--danger-contrast:#1E1A14;
+--danger-100:#321B18;--danger-300:#54291F;--danger-600:#E85D4A;--danger-contrast:#1E1A14;--success-contrast:#1E1A14;--warning-contrast:#1E1A14;
 --focus-ring-color:var(--brand-400);/* offset + composite inherit from :root and re-resolve here */
 }
 [data-theme="dark"] ::selection{background:#453728}

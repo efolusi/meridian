@@ -32,7 +32,7 @@ const CSS = `
 .ef-toolcall--streaming .ef-toolcall__row:last-child .ef-toolcall__val{animation:ef-toolcall-pulse 1.2s var(--ease-out) infinite}
 .ef-toolcall__args{margin:0;padding:10px 12px;background:var(--surface-sunken);border:1px solid var(--border-default);border-radius:var(--radius-sm);font-family:var(--font-mono);font-size:12px;line-height:1.6;color:var(--text-secondary);white-space:pre-wrap;word-break:break-word;max-height:256px;overflow:auto}
 .ef-toolcall__result{font-size:13.5px;line-height:1.6;color:var(--text-secondary)}
-.ef-toolcall__error{padding:10px 12px;border-radius:var(--radius-sm);background:var(--danger-100,#F8ECEA);color:var(--danger-600);font-size:13px;line-height:1.55}
+.ef-toolcall__error{padding:10px 12px;border-radius:var(--radius-sm);background:var(--danger-100);color:var(--danger-600);font-size:13px;line-height:1.55}
 .ef-toolcall__actions{display:flex;justify-content:flex-end;gap:8px;padding-top:2px}
 .ef-toolcall__btn{height:28px;padding:0 12px;border-radius:var(--radius-sm);border:1px solid var(--border-strong);background:var(--surface-card);cursor:pointer;font-family:var(--font-sans);font-size:12.5px;font-weight:600;color:var(--text-primary);transition:background var(--dur-fast) var(--ease-out)}
 .ef-toolcall__btn:hover{background:var(--surface-subtle)}

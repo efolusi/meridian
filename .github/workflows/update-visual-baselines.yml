@@ -1,0 +1,66 @@
+name: update-visual-baselines
+
+# Captures fresh group screenshots on the CI platform and opens a PR replacing
+# tests/__shots__. Run it when a visual change is intentional; reviewing the
+# PR's images IS the approval step. Baselines must be born on this runner —
+# font rasterisation differs across platforms, so locally captured PNGs would
+# permanently disagree with CI.
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  baselines:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+
+      - uses: actions/setup-node@v5
+        with:
+          node-version: '22'
+
+      - name: Install
+        run: npm ci --no-audit --no-fund
+
+      - name: Install Playwright chromium
+        run: |
+          npm install --no-save --no-audit --no-fund playwright@1.48.0
+          npx playwright install --with-deps chromium
+
+      - name: Capture group screenshots
+        run: |
+          python3 -m http.server 8000 --bind 127.0.0.1 &
+          SERVER=$!
+          for i in $(seq 1 20); do curl -sf http://127.0.0.1:8000/site/_smoke.html >/dev/null && break || sleep 0.5; done
+          set +e
+          BASE=http://127.0.0.1:8000 SHOTS="$RUNNER_TEMP/shots" node scripts/smoke_headless.mjs
+          CODE=$?
+          set -e
+          kill $SERVER 2>/dev/null || true
+          exit $CODE
+
+      - name: Open the baseline PR
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          rm -f tests/__shots__/*.png
+          cp "$RUNNER_TEMP"/shots/*.png tests/__shots__/
+          COUNT=$(ls tests/__shots__/*.png | wc -l)
+          if git diff --quiet -- tests/__shots__; then
+            echo "baselines unchanged — nothing to update"
+            exit 0
+          fi
+          BRANCH="visual-baselines-${GITHUB_RUN_ID}"
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git checkout -b "$BRANCH"
+          git add tests/__shots__
+          git commit -m "test(visual): refresh the $COUNT group screenshot baselines"
+          git push origin "$BRANCH"
+          gh pr create --base main --head "$BRANCH" \
+            --title "Refresh visual baselines ($COUNT group shots)" \
+            --body "Captured on this runner by the update-visual-baselines workflow (run ${GITHUB_RUN_ID}). Review the images in the diff — merging is the approval."

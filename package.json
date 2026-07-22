@@ -1,6 +1,6 @@
 {
   "name": "meridian-build",
-  "version": "1.8.0",
+  "version": "1.9.0",
   "private": true,
   "description": "Build tooling for the Meridian design system. Not the published package \u2014 consumers use the CDN or vendor the folder; see README.md.",
   "type": "module",
@@ -13,7 +13,8 @@
     "check:npm": "node scripts/build_npm.mjs --check",
     "check:types": "node scripts/check_types.mjs",
     "test": "vitest run",
-    "test:watch": "vitest"
+    "test:watch": "vitest",
+    "check:visual": "node scripts/check_visual.mjs"
   },
   "devDependencies": {
     "@babel/standalone": "7.29.0",
@@ -22,6 +23,8 @@
     "@types/react": "^18.3.12",
     "@types/react-dom": "^18.3.1",
     "jsdom": "^25.0.1",
+    "pixelmatch": "^6.0.0",
+    "pngjs": "^7.0.0",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
     "typescript": "^5.6.3",

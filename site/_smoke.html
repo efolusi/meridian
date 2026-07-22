@@ -48,12 +48,25 @@
     document.title = (ok ? 'SMOKE PASS' : 'SMOKE FAIL') + ' — ' + passed + '/' + all.length;
     window.__SMOKE__ = { total: all.length, passed, failed: fails.length, ok, fails: fails.slice() };
   }
+  // One section per example file, so visual regression can snapshot a group at
+  // a time instead of one giant page or 126 tiny files.
+  const sections = {};
+  function sectionFor(file) {
+    if (!sections[file]) {
+      const s = document.createElement('section');
+      s.id = 'g-' + file;
+      s.dataset.group = file;
+      host.appendChild(s);
+      sections[file] = s;
+    }
+    return sections[file];
+  }
   for (const d of all) {
     const id = d.file + '#' + d.exp;
     const wrap = document.createElement('div');
     wrap.className = 'demo';
     wrap.innerHTML = '<h4>' + id + '</h4><div></div>';
-    host.appendChild(wrap);
+    sectionFor(d.file).appendChild(wrap);
     try {
       const js = Babel.transform(d.code, { presets: ['react'] }).code;
       const Comp = new Function('React', js + '\nreturn ' + d.exp + ';')(R);

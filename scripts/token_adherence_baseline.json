@@ -1,16 +1,1 @@
-{
-  "components/ai/Confirmation.jsx": 1,
-  "components/ai/GeneratedImage.jsx": 8,
-  "components/ai/Player.jsx": 1,
-  "components/ai/RichComposer.jsx": 1,
-  "components/ai/SelectionQuote.jsx": 1,
-  "components/ai/ToolCall.jsx": 1,
-  "components/code/CodeBlock.jsx": 10,
-  "components/code/Console.jsx": 1,
-  "components/code/Diff.jsx": 5,
-  "components/code/Terminal.jsx": 10,
-  "components/display/Badge.jsx": 1,
-  "components/feedback/Toast.jsx": 6,
-  "components/files/FileTypeIcon.jsx": 1,
-  "components/forms/Button.jsx": 1
-}
+{}

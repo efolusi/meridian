@@ -8,7 +8,7 @@ const CSS = `
 .ef-player__meta{font-size:12px;color:var(--text-muted)}
 .ef-player__wave{position:relative;display:flex;align-items:center;justify-content:space-between;height:44px;cursor:pointer;touch-action:none;border-radius:var(--radius-sm)}
 .ef-player__wave:focus-visible{outline:none;box-shadow:var(--focus-ring)}
-.ef-player__bar{flex:none;width:2.5px;border-radius:var(--radius-full);background:var(--sand-300,#D9D2C3);transition:background .2s var(--ease-out)}
+.ef-player__bar{flex:none;width:2.5px;border-radius:var(--radius-full);background:var(--sand-300);transition:background .2s var(--ease-out)}
 .ef-player__bar--played{background:var(--accent)}
 .ef-player__bar--loading{animation:ef-player-load 1.2s ease-in-out infinite}
 @keyframes ef-player-load{0%,100%{transform:scaleY(.3);opacity:.5}50%{transform:scaleY(1);opacity:1}}

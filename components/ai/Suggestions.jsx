@@ -8,15 +8,17 @@ const CSS = `
 .ef-suggestion:focus-visible{outline:none;box-shadow:var(--focus-ring)}
 .ef-suggestion__icon{display:inline-flex;color:var(--text-muted)}
 `;
-export function Suggestions({ items = [], onPick, style, className, ...rest }) {
+export function Suggestions({ items = [], onSelect, onPick, style, className, ...rest }) {
   injectEfCss('ef-css-suggestions', CSS);
+  // onPick is the deprecated alias; onSelect (command-pick convention) wins when both are passed.
+  const fire = onSelect ?? onPick;
   return (
     <div {...rest} className={`ef-suggestions${className ? ' ' + className : ''}`} style={style}>
       {items.map((it, i) => {
         const label = typeof it === 'string' ? it : it.label;
         const icon = typeof it === 'string' ? null : it.icon;
         return (
-          <button key={i} type="button" className="ef-suggestion" onClick={() => onPick && onPick(label, i)}>
+          <button key={i} type="button" className="ef-suggestion" onClick={() => fire && fire(label, i)}>
             {icon ? <span className="ef-suggestion__icon"><Icon name={icon} size={14} /></span> : null}
             {label}
           </button>

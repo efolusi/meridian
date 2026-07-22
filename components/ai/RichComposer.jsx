@@ -13,7 +13,7 @@ const CSS = `
 .ef-richcomposer__send:hover{background:var(--accent-hover)}
 .ef-richcomposer__send:disabled{opacity:.35;cursor:default}
 .ef-richcomposer__send:focus-visible{outline:none;box-shadow:var(--focus-ring)}
-.ef-richcomposer__pop{position:absolute;bottom:calc(100% + 6px);left:0;right:0;z-index:40;max-height:260px;overflow-y:auto;padding:4px;border:1px solid var(--border-default);border-radius:var(--radius-md);background:var(--surface-card);box-shadow:var(--shadow-lg,0 8px 24px rgba(0,0,0,.12))}
+.ef-richcomposer__pop{position:absolute;bottom:calc(100% + 6px);left:0;right:0;z-index:40;max-height:260px;overflow-y:auto;padding:4px;border:1px solid var(--border-default);border-radius:var(--radius-md);background:var(--surface-card);box-shadow:var(--shadow-lg)}
 .ef-richcomposer__group{padding:7px 10px 3px;font-size:11px;font-weight:var(--weight-semibold);letter-spacing:.04em;text-transform:uppercase;color:var(--text-muted)}
 .ef-richcomposer__item{display:flex;align-items:center;gap:9px;width:100%;padding:7px 10px;border:none;background:none;cursor:pointer;text-align:left;border-radius:var(--radius-sm);font-family:var(--font-sans);font-size:13.5px;color:var(--text-primary)}
 .ef-richcomposer__item--hi{background:var(--surface-sunken)}

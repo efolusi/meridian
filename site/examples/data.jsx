@@ -6,7 +6,7 @@ export function BarChartDemo() {
   return (
     <div style={{ width: '100%', maxWidth: 460 }}>
       <BarChart height={150} highlightLast={1} labels={['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun']}
-        data={[42, 58, 51, 74, 66, 30, 89]} formatValue={(v) => v + ' runs'} />
+        data={[42, 58, 51, 74, 66, 30, 89]} format={(v) => v + ' runs'} />
     </div>
   );
 }

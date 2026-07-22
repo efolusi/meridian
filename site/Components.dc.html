@@ -78,7 +78,7 @@
 <h1 style="font-size:36px;font-weight:680;font-family:var(--font-display);letter-spacing:-0.02em;margin:8px 0 0">{{ activeName }}</h1>
 <p style="font-size:16.5px;line-height:1.6;color:var(--text-secondary);margin:10px 0 0;text-wrap:pretty">{{ activeDesc }}</p>
 <sc-if value="{{ hasHero }}" hint-placeholder-val="{{ false }}">
-<div id="sec-preview" style="margin-top:26px"><x-import component="ExampleFrame" from="./ExampleFrame.jsx" file="{{ heroFile }}" exp="{{ heroExp }}" hint-size="100%,420px"></x-import></div>
+<div id="sec-preview" style="margin-top:26px"><x-import component-from-global-scope="MeridianLiveFrame" file="{{ heroFile }}" exp="{{ heroExp }}" hint-size="100%,420px"></x-import></div>
 </sc-if>
 <h2 id="sec-install" style="font-size:22px;font-weight:600;font-family:var(--font-display);letter-spacing:-0.02em;margin:40px 0 0;padding-top:8px;border-top:1px solid var(--border-default)">Installation</h2>
 <p style="font-size:14.5px;line-height:1.6;color:var(--text-secondary);margin:8px 0 12px">Load the stylesheet and the compiled bundle once — every component hangs off a single global namespace. No build step.</p>
@@ -90,7 +90,7 @@
 <h2 id="sec-examples" style="font-size:22px;font-weight:600;font-family:var(--font-display);letter-spacing:-0.02em;margin:40px 0 0">Examples</h2>
 <sc-for list="{{ more }}" as="m" hint-placeholder-count="1">
 <h3 style="font-size:16.5px;font-weight:600;margin:26px 0 10px">{{ m.title }}</h3>
-<x-import component="ExampleFrame" from="./ExampleFrame.jsx" file="{{ m.file }}" exp="{{ m.exp }}" hint-size="100%,380px"></x-import>
+<x-import component-from-global-scope="MeridianLiveFrame" file="{{ m.file }}" exp="{{ m.exp }}" hint-size="100%,380px"></x-import>
 </sc-for>
 </sc-if>
 <h2 id="sec-api" style="font-size:22px;font-weight:600;font-family:var(--font-display);letter-spacing:-0.02em;margin:40px 0 0">API reference</h2>
@@ -161,6 +161,159 @@
 </div>
 </x-dc>
 <script type="text/x-dc" data-dc-script>
+// MeridianLiveFrame: the docs demo frame (Preview / Code) plus an Edit tab that
+// recompiles the demo in the browser. Mirrors site/ExampleFrame.jsx for the
+// pristine path; edited state lives in liveEdits keyed file#exp for the life of
+// the page (no persistence). The pristine liveCompiled cache is never written
+// by the edit path. Keep this block identical to the copy in Charts.dc.html.
+window.MeridianLiveFrame = (() => {
+  const h = React.createElement;
+  const LIVE_NS = 'EfolusiDesignSystem_4ffc3d';
+  const liveSrc = {};
+  const fetchDemoSrc = (file) => {
+    if (!liveSrc[file]) liveSrc[file] = fetch(file).then((r) => { if (!r.ok) throw new Error('Could not load ' + file); return r.text(); });
+    return liveSrc[file];
+  };
+  const waitForGlobal = (get, msg, tries) => new Promise((res, rej) => {
+    let n = 0;
+    const t = () => { const v = get(); if (v) return res(v); if (++n > tries) return rej(new Error(msg)); setTimeout(t, 80); };
+    t();
+  });
+  const waitBabel = () => waitForGlobal(() => window.Babel, 'Babel not available', 120);
+  const waitBundle = () => waitForGlobal(() => window[LIVE_NS], 'Component bundle not loaded', 150);
+  const extractDemo = (src, exp) => {
+    const chunks = String(src).split('// @demo ');
+    for (let i = 1; i < chunks.length; i++) {
+      const nl = chunks[i].indexOf('\n');
+      const body = chunks[i].slice(nl + 1);
+      const m = body.match(/export function (\w+)/);
+      if (m && m[1] === exp) return body.replace('export function', 'function').trim();
+    }
+    throw new Error('Demo "' + exp + '" not found');
+  };
+  const compileDemo = (code, exp) => {
+    const js = window.Babel.transform(code, { presets: ['react'] }).code;
+    return new Function('React', js + '\nreturn ' + exp + ';')(React);
+  };
+  const liveCompiled = {};
+  const getPristine = (file, exp) => {
+    const key = file + '#' + exp;
+    if (!liveCompiled[key]) liveCompiled[key] = (async () => {
+      try {
+        const [src] = await Promise.all([fetchDemoSrc(file), waitBabel(), waitBundle()]);
+        const code = extractDemo(src, exp);
+        return { code, Comp: compileDemo(code, exp) };
+      } catch (e) { delete liveCompiled[key]; throw e; }
+    })();
+    return liveCompiled[key];
+  };
+  const liveEdits = {};
+  class LiveBoundary extends React.Component {
+    constructor(p) { super(p); this.state = { err: null }; }
+    static getDerivedStateFromError(e) { return { err: e }; }
+    componentDidUpdate(prev) { if (prev.resetKey !== this.props.resetKey && this.state.err) this.setState({ err: null }); }
+    render() {
+      if (this.state.err) return h('div', { style: { color: 'var(--danger-600)', fontFamily: 'var(--font-mono)', fontSize: 12.5, padding: 20 } }, 'Render error: ' + String(this.state.err.message || this.state.err));
+      return this.props.children;
+    }
+  }
+  const nameGoneMsg = (exp) => 'This demo renders by name: keep a function called "' + exp + '" defined. Rename it back, or press Reset.';
+  const runEdited = (prev, exp, text) => {
+    if (!window.Babel) return { ...prev, text, error: 'The compiler is still loading. Try Run again in a moment.' };
+    const code = String(text).replace('export function', 'function').trim();
+    if (!code) return { ...prev, text, error: 'Nothing to run. Reset restores the original demo.' };
+    if (!new RegExp('\\b' + exp + '\\b').test(code)) return { ...prev, text, error: nameGoneMsg(exp) };
+    try {
+      const Comp = compileDemo(code, exp);
+      if (typeof Comp !== 'function') return { ...prev, text, error: nameGoneMsg(exp) };
+      return { text, Comp, runId: (prev.runId || 0) + 1, error: null };
+    } catch (e) {
+      const msg = String((e && e.message) || e);
+      if (e instanceof ReferenceError && msg.indexOf(exp) !== -1) return { ...prev, text, error: nameGoneMsg(exp) };
+      return { ...prev, text, error: msg };
+    }
+  };
+  const liveBtnStyle = (kind) => ({
+    appearance: 'none', cursor: 'pointer', fontFamily: 'var(--font-sans)', fontSize: 13, fontWeight: 600,
+    borderRadius: 'var(--radius-sm)', padding: '6px 16px',
+    color: kind === 'run' ? 'var(--accent-contrast)' : 'var(--text-secondary)',
+    background: kind === 'run' ? 'var(--accent)' : 'transparent',
+    border: '1px solid ' + (kind === 'run' ? 'var(--accent)' : 'var(--border-default)'),
+  });
+  function MeridianLiveFrame({ file, exp, minHeight }) {
+    const [tab, setTab] = React.useState('preview');
+    const [demo, setDemo] = React.useState(null);
+    const [err, setErr] = React.useState(null);
+    const [, setRev] = React.useState(0);
+    const bump = () => setRev((n) => n + 1);
+    React.useEffect(() => {
+      let on = true;
+      setDemo(null); setErr(null); setTab('preview');
+      getPristine(file, exp).then((d) => { if (on) setDemo(d); }).catch((e) => { if (on) setErr(String(e.message || e)); });
+      return () => { on = false; };
+    }, [file, exp]);
+    const ds = window[LIVE_NS] || {};
+    const CodeBlock = ds.CodeBlock;
+    const key = file + '#' + exp;
+    const edit = liveEdits[key] || null;
+    const text = edit && edit.text != null ? edit.text : (demo ? demo.code : '');
+    const Comp = edit && edit.Comp ? edit.Comp : (demo ? demo.Comp : null);
+    const isEdited = !!(edit && (edit.Comp || (demo && edit.text != null && edit.text !== demo.code)));
+    const doRun = () => {
+      liveEdits[key] = runEdited(liveEdits[key] || {}, exp, text);
+      bump();
+      if (!liveEdits[key].error) setTab('preview');
+    };
+    const doReset = () => { delete liveEdits[key]; bump(); };
+    const tabStyle = (on) => ({
+      appearance: 'none', border: 'none', background: 'none', cursor: 'pointer', padding: '8px 2px 9px', marginRight: 18,
+      fontFamily: 'var(--font-sans)', fontSize: 13.5, fontWeight: on ? 600 : 450,
+      color: on ? 'var(--text-primary)' : 'var(--text-muted)',
+      boxShadow: on ? 'inset 0 -2px 0 var(--brand-700)' : 'none',
+    });
+    const shell = { border: '1px solid var(--border-default)', borderTop: 'none', borderRadius: '0 0 var(--radius-md) var(--radius-md)', background: 'var(--surface-card)' };
+    let body;
+    if (tab === 'preview') {
+      body = h('div', { style: { ...shell, minHeight: minHeight || 300, padding: '44px 34px', display: 'flex', alignItems: 'center', justifyContent: 'center', overflow: 'auto' } },
+        err ? h('div', { style: { color: 'var(--danger-600)', fontFamily: 'var(--font-mono)', fontSize: 12.5 } }, err)
+          : Comp ? h('div', { style: { width: '100%', display: 'flex', justifyContent: 'center' } }, h(LiveBoundary, { resetKey: key + ':' + ((edit && edit.runId) || 0) }, h(Comp)))
+          : h('div', { style: { color: 'var(--text-muted)', fontSize: 13 } }, 'Loading example…'));
+    } else if (tab === 'code') {
+      body = h('div', { style: { borderRadius: '0 0 var(--radius-md) var(--radius-md)', overflow: 'hidden', marginTop: 0 } },
+        demo && CodeBlock ? h(CodeBlock, { lang: 'jsx', maxHeight: 420 }, demo.code)
+          : demo ? h('pre', { style: { margin: 0, padding: 16, fontFamily: 'var(--font-mono)', fontSize: 12.5, whiteSpace: 'pre-wrap', border: '1px solid var(--border-default)', borderTop: 'none' } }, demo.code)
+          : h('div', { style: { padding: 20, color: 'var(--text-muted)', fontSize: 13, border: '1px solid var(--border-default)', borderTop: 'none' } }, err || 'Loading…'));
+    } else {
+      body = h('div', { style: { ...shell, padding: 14 } },
+        demo ? h(React.Fragment, null,
+          h('textarea', {
+            value: text,
+            onChange: (e) => { liveEdits[key] = { ...(liveEdits[key] || {}), text: e.target.value }; bump(); },
+            spellCheck: false,
+            wrap: 'off',
+            'aria-label': 'Edit the ' + exp + ' demo source',
+            style: { width: '100%', minHeight: 240, boxSizing: 'border-box', resize: 'vertical', display: 'block', fontFamily: 'var(--font-mono)', fontSize: 12.5, lineHeight: 1.6, tabSize: 2, color: 'var(--text-primary)', background: 'var(--surface-card)', border: '1px solid var(--border-strong)', borderRadius: 'var(--radius-sm)', padding: '12px 14px', overflow: 'auto' },
+          }),
+          h('div', { style: { display: 'flex', alignItems: 'baseline', gap: 10, marginTop: 10, flexWrap: 'wrap' } },
+            h('button', { style: liveBtnStyle('run'), onClick: doRun }, 'Run'),
+            h('button', { style: liveBtnStyle('ghost'), onClick: doReset }, 'Reset'),
+            edit && edit.error
+              ? h('span', { role: 'alert', style: { fontFamily: 'var(--font-mono)', fontSize: 12, color: 'var(--danger-600)', whiteSpace: 'pre-wrap' } }, edit.error)
+              : h('span', { style: { fontFamily: 'var(--font-mono)', fontSize: 11.5, color: 'var(--text-muted)' } }, 'Runs in your browser. Edits last until you leave the page.')))
+          : h('div', { style: { padding: 20, color: err ? 'var(--danger-600)' : 'var(--text-muted)', fontSize: 13, fontFamily: err ? 'var(--font-mono)' : 'var(--font-sans)' } }, err || 'Loading example…'));
+    }
+    return h('div', { style: { marginTop: 4 } },
+      h('div', { style: { display: 'flex', alignItems: 'center', borderBottom: '1px solid var(--border-default)' } },
+        h('button', { style: tabStyle(tab === 'preview'), onClick: () => setTab('preview') }, 'Preview'),
+        h('button', { style: tabStyle(tab === 'code'), onClick: () => setTab('code') }, 'Code'),
+        h('button', { style: tabStyle(tab === 'edit'), onClick: () => setTab('edit') }, 'Edit'),
+        isEdited ? h('span', { style: { marginLeft: 'auto', display: 'flex', alignItems: 'center', gap: 12 } },
+          h('span', { style: { fontFamily: 'var(--font-mono)', fontSize: 11, color: 'var(--text-muted)' } }, 'edited'),
+          h('button', { style: { appearance: 'none', border: 'none', background: 'none', cursor: 'pointer', padding: '8px 2px 9px', fontFamily: 'var(--font-sans)', fontSize: 12.5, fontWeight: 500, color: 'var(--text-secondary)' }, onClick: doReset }, 'Reset')) : null),
+      body);
+  }
+  return MeridianLiveFrame;
+})();
 class Component extends DCLogic {
   state = { dark: false, groups: null, ns: 'EfolusiDesignSystem_4ffc3d', gi: 0, ii: 0, demoMaps: {}, interfaces: {} };
   componentDidMount() {

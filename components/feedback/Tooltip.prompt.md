@@ -4,4 +4,6 @@ Hover/focus tooltip with 200ms delay and spring pop. Wrap any trigger element.
 <Tooltip label="Copy to clipboard"><IconButton icon="copy" label="Copy" /></Tooltip>
 ```
 
-`position`: `top` (default) or `bottom`. Keep labels short; no interactive content inside.
+`side`: `top` (default), `bottom`, `left`, or `right`; flips when there is no room. Keep labels short; no interactive content inside.
+
+Vocabulary: state-carrying selection fires `onChange`; command menus fire `onSelect`; placement is `side` (top/bottom/left/right). `position` is a deprecated alias for `side` (one major); `side` wins when both are passed.

@@ -17,7 +17,7 @@ const CSS = `
 .ef-btn--ghost:hover:not(:disabled){background:var(--surface-sunken);color:var(--text-primary)}
 .ef-btn--danger{background:var(--danger-600);color:var(--danger-contrast)}
 .ef-btn--danger:hover:not(:disabled){background:var(--danger-700)}
-.ef-btn--brand{background:var(--brand-700);color:#fff}
+.ef-btn--brand{background:var(--brand-700);color:var(--text-on-brand)}
 .ef-btn--brand:hover:not(:disabled){background:var(--brand-800)}
 @keyframes ef-spin{to{transform:rotate(360deg)}}
 .ef-btn__spin{display:inline-flex;animation:ef-spin .7s linear infinite}

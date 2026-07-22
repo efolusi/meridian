@@ -1,6 +1,8 @@
 export interface TooltipProps {
   label: React.ReactNode;
-  /** Preferred side; flips automatically when there is no room. @default 'top' */
+  /** Preferred side; flips to the opposite side when there is no room. @default 'top' */
+  side?: 'top' | 'bottom' | 'left' | 'right';
+  /** @deprecated Use `side`. Alias kept for one major; `side` wins when both are passed. */
   position?: 'top' | 'bottom';
   /** Hover delay in ms before showing. Focus always shows immediately. @default 200 */
   delay?: number;

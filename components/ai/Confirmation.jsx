@@ -3,7 +3,7 @@ import { injectEfCss } from '../forms/Button.jsx';
 import { Icon } from '../icons/Icon.jsx';
 const CSS = `
 .ef-confirm{border-radius:var(--radius-md);background:var(--surface-card);border:1px solid var(--accent-subtle-border);box-shadow:0 0 0 2px var(--accent-subtle)}
-.ef-confirm--danger{border-color:var(--danger-300,var(--danger-600));box-shadow:0 0 0 2px var(--danger-100,#F8ECEA)}
+.ef-confirm--danger{border-color:var(--danger-300,var(--danger-600));box-shadow:0 0 0 2px var(--danger-100)}
 .ef-confirm--settled{border-color:var(--border-default);box-shadow:none}
 .ef-confirm__head{display:flex;align-items:center;gap:9px;padding:11px 14px 0}
 .ef-confirm__icon{display:inline-flex;color:var(--brand-700);flex:none}

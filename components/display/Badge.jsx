@@ -12,7 +12,7 @@ const CSS = `
 .ef-badge--brand{background:var(--cream-50);color:var(--cocoa-700)}
 [data-theme="dark"] .ef-badge--neutral{background:var(--surface-sunken);color:var(--text-secondary)}
 [data-theme="dark"] .ef-badge--accent{color:var(--brand-300)}
-[data-theme="dark"] .ef-badge--brand{background:#2A2119;color:var(--brand-300)}
+[data-theme="dark"] .ef-badge--brand{background:var(--accent-subtle);color:var(--brand-300)}
 `;
 export function Badge({ tone = 'neutral', size = 'sm', dot, children, style, className, ...rest }) {
   injectEfCss('ef-css-badge', CSS);

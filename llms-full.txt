@@ -327,7 +327,9 @@ Compact model picker for composers: current model + provider on the trigger, pan
 
 `<ModelSelector value={m} onChange={setM} models={[{ id: 'ef-2', name: 'Efolusi 2', provider: 'Efolusi', hint: 'Best for agent runs', badge: 'New' }]} />`
 
-Panel opens upward by default (composers sit at the bottom); side="down" for toolbars. For arbitrary options use Select.
+Panel opens upward by default (composers sit at the bottom); side="bottom" for toolbars. For arbitrary options use Select.
+
+Vocabulary: state-carrying selection fires `onChange`; command menus fire `onSelect`; placement is `side` (top/bottom/left/right). The `side` values 'up'/'down' are deprecated aliases for 'top'/'bottom' (one major).
 
 ```ts
 export interface ModelOption {
@@ -345,8 +347,8 @@ export interface ModelSelectorProps {
   /** Selected model id */
   value?: string;
   onChange?: (id: string) => void;
-  /** Panel direction @default 'up' */
-  side?: 'up' | 'down';
+  /** Panel direction @default 'top'. 'up'/'down' are deprecated aliases for 'top'/'bottom' (one major). */
+  side?: 'top' | 'bottom' | 'up' | 'down';
   style?: React.CSSProperties;
   className?: string;
 }
@@ -655,9 +657,11 @@ Group: ai · Source: /components/ai/Suggestions.jsx · Exports: Suggestions
 
 Prompt-suggestion chip row for empty chats and follow-ups.
 
-`<Suggestions items={[{ icon: 'sparkles', label: 'Summarize this thread' }, 'Draft a reply']} onPick={send} />`
+`<Suggestions items={[{ icon: 'sparkles', label: 'Summarize this thread' }, 'Draft a reply']} onSelect={send} />`
 
 3–5 chips max, verb-first labels. Picking a chip should send it, not just fill the composer.
+
+Vocabulary: state-carrying selection fires `onChange`; command menus fire `onSelect`; placement is `side` (top/bottom/left/right). `onPick` is a deprecated alias for `onSelect` (one major); `onSelect` wins when both are passed.
 
 ```ts
 export interface SuggestionItem { label: string; /** Lucide icon */ icon?: string; }
@@ -665,6 +669,8 @@ export interface SuggestionsProps {
   /** Strings or { label, icon } */
   items: Array<string | SuggestionItem>;
   /** Fires with the picked label */
+  onSelect?: (label: string, index: number) => void;
+  /** @deprecated Use `onSelect`. Alias kept for one major; `onSelect` wins when both are passed. */
   onPick?: (label: string, index: number) => void;
   style?: React.CSSProperties;
   className?: string;
@@ -870,13 +876,15 @@ Group: ai · Source: /components/ai/WebPreview.jsx · Exports: WebPreview
 
 # WebPreview
 
-Browser pane for agent-built UIs — reload, draft-state address bar (Enter commits, Esc reverts), desktop/tablet/mobile widths (animated), collapsible console with error badge, open-in-new-tab. Pass `children` to mock the page without an iframe.
+Browser pane for agent-built UIs — reload, draft-state address bar (Enter commits, Esc reverts), desktop/tablet/mobile widths (animated), collapsible console with error badge, open-in-new-tab. Pass `children` to mock the page without an iframe. Changing the `url` prop navigates the pane (parent-driven navigation); `defaultOpen` starts the console open.
 
 ```jsx
 <WebPreview url="https://demo.efolusi.dev" logs={[{ level: 'error', text: 'Uncaught TypeError…' }]}>
   <MockLanding />
 </WebPreview>
 ```
+
+Vocabulary: state-carrying selection fires `onChange`; command menus fire `onSelect`; placement is `side` (top/bottom/left/right). `defaultConsoleOpen` is a deprecated alias for `defaultOpen` (one major); `defaultOpen` wins when both are passed.
 
 ```ts
 export interface WebPreviewLog {
@@ -885,11 +893,15 @@ export interface WebPreviewLog {
   text: React.ReactNode;
 }
 export interface WebPreviewProps {
+  /** Current address. A changed prop is adopted (parent-driven navigation); user edits in the address bar still work between changes. */
   url?: string;
   /** Stage height in px. Default 340 */
   height?: number;
   /** Console entries; error count badges the toggle */
   logs?: WebPreviewLog[];
+  /** Console starts open */
+  defaultOpen?: boolean;
+  /** @deprecated Use `defaultOpen`. Alias kept for one major; `defaultOpen` wins when both are passed. */
   defaultConsoleOpen?: boolean;
   /** Rendered instead of an iframe (mock content) */
   children?: React.ReactNode;
@@ -1156,8 +1168,10 @@ Group: data · Source: /components/data/BarChart.jsx · Exports: BarChart
 Hairline-minimal bar chart: sand bars, ink highlight window, hover tint + title tooltip.
 
 ```jsx
-<BarChart data={requests} height={150} highlightLast={4} labels={['Jun 18', 'Jul 2', 'Jul 16']} formatValue={v => v.toLocaleString() + ' req'} />
+<BarChart data={requests} height={150} highlightLast={4} labels={['Jun 18', 'Jul 2', 'Jul 16']} format={v => v.toLocaleString() + ' req'} />
 ```
+
+Vocabulary: state-carrying selection fires `onChange`; command menus fire `onSelect`; placement is `side` (top/bottom/left/right). `formatValue` is a deprecated alias for `format` (one major, matching the other charts); `format` wins when both are passed.
 
 ```ts
 export interface BarChartProps {
@@ -1169,6 +1183,9 @@ export interface BarChartProps {
   highlightLast?: number;
   /** X-axis labels, spread edge to edge */
   labels?: string[];
+  /** Hover value formatter */
+  format?: (v: number) => string;
+  /** @deprecated Use `format`. Alias kept for one major; `format` wins when both are passed. */
   formatValue?: (v: number) => string;
   style?: React.CSSProperties;
   className?: string;
@@ -2068,12 +2085,14 @@ Group: display · Source: /components/display/TreeList.jsx · Exports: TreeList
 Collapsible tree for file/nav hierarchies. Rows take icons + mono counts; branches toggle on click.
 
 ```jsx
-<TreeList value={sel} onSelect={setSel} nodes={[
+<TreeList value={sel} onChange={setSel} nodes={[
   { id: 'src', label: 'src', icon: 'folder', children: [
     { id: 'app', label: 'app.ts', icon: 'code' },
   ]},
 ]} />
 ```
+
+Vocabulary: state-carrying selection fires `onChange`; command menus fire `onSelect`; placement is `side` (top/bottom/left/right). `onSelect` here is a deprecated alias for `onChange` (one major); `onChange` wins when both are passed.
 
 ```ts
 export interface TreeNode {
@@ -2089,6 +2108,9 @@ export interface TreeListProps {
   nodes: TreeNode[];
   /** Controlled selected id */
   value?: string;
+  /** Fires with the clicked row's id and node */
+  onChange?: (id: string, node: TreeNode) => void;
+  /** @deprecated Use `onChange`. Alias kept for one major; `onChange` wins when both are passed. */
   onSelect?: (id: string, node: TreeNode) => void;
   /** Branch ids open initially (default: all top-level) */
   defaultOpen?: string[];
@@ -2421,12 +2443,16 @@ Hover/focus tooltip with 200ms delay and spring pop. Wrap any trigger element.
 <Tooltip label="Copy to clipboard"><IconButton icon="copy" label="Copy" /></Tooltip>
 ```
 
-`position`: `top` (default) or `bottom`. Keep labels short; no interactive content inside.
+`side`: `top` (default), `bottom`, `left`, or `right`; flips when there is no room. Keep labels short; no interactive content inside.
+
+Vocabulary: state-carrying selection fires `onChange`; command menus fire `onSelect`; placement is `side` (top/bottom/left/right). `position` is a deprecated alias for `side` (one major); `side` wins when both are passed.
 
 ```ts
 export interface TooltipProps {
   label: React.ReactNode;
-  /** Preferred side; flips automatically when there is no room. @default 'top' */
+  /** Preferred side; flips to the opposite side when there is no room. @default 'top' */
+  side?: 'top' | 'bottom' | 'left' | 'right';
+  /** @deprecated Use `side`. Alias kept for one major; `side` wins when both are passed. */
   position?: 'top' | 'bottom';
   /** Hover delay in ms before showing. Focus always shows immediately. @default 200 */
   delay?: number;
@@ -3749,7 +3775,7 @@ export declare function Portal(props: PortalProps): React.JSX.Element | null;
 
 ## Design tokens
 
-141 custom property names by file (names only — resolve current values from /styles.css, which imports these files, or /tokens.json):
+165 custom property names by file (names only — resolve current values from /styles.css, which imports these files, or /tokens.json):
 
 ### /tokens/base.css
 
@@ -3782,16 +3808,32 @@ export declare function Portal(props: PortalProps): React.JSX.Element | null;
 --cocoa-700
 --cocoa-900
 --cocoa-950
+--code-divider
+--code-edge
+--code-edge-hover
+--code-ink
+--code-ink-bright
+--code-ink-faint
+--code-ink-muted
+--code-ink-strong
+--code-ink-subtle
+--code-raised
 --cream-50
 --danger-100
 --danger-300
 --danger-600
 --danger-700
 --danger-contrast
+--danger-on-dark
 --focus-ring
 --focus-ring-color
 --focus-ring-danger
 --focus-ring-offset
+--media-backdrop
+--media-backdrop-dot
+--media-scrim
+--media-scrim-soft
+--media-scrim-strong
 --overlay-scrim
 --peach-200
 --sand-100
@@ -3809,6 +3851,8 @@ export declare function Portal(props: PortalProps): React.JSX.Element | null;
 --success-100
 --success-300
 --success-600
+--success-contrast
+--success-on-dark
 --surface-brand
 --surface-card
 --surface-code
@@ -3818,14 +3862,20 @@ export declare function Portal(props: PortalProps): React.JSX.Element | null;
 --surface-sunken
 --text-code
 --text-inverse
+--text-inverse-muted
 --text-link
 --text-muted
+--text-on-brand
 --text-on-brand-muted
+--text-on-media
+--text-on-media-muted
 --text-primary
 --text-secondary
 --warning-100
 --warning-300
 --warning-600
+--warning-contrast
+--warning-on-dark
 
 ### /tokens/effects.css
 

@@ -113,7 +113,7 @@ export function SuggestionsDemo() {
   const [picked, setPicked] = React.useState('');
   return (
     <div style={{ display: 'flex', flexDirection: 'column', gap: 12, alignItems: 'center' }}>
-      <Suggestions onPick={setPicked} items={[
+      <Suggestions onSelect={setPicked} items={[
         { icon: 'sparkles', label: 'Summarize this thread' },
         { icon: 'calendar', label: 'Find a meeting slot' },
         'Draft a status update',

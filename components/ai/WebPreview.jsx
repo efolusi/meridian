@@ -26,13 +26,17 @@ const CSS = `
 .ef-webprev__badge{position:absolute;top:3px;right:3px;min-width:14px;height:14px;padding:0 4px;border-radius:var(--radius-full);background:var(--danger-600);color:var(--danger-contrast);font-size:9.5px;font-weight:var(--weight-semibold);display:inline-flex;align-items:center;justify-content:center;font-family:var(--font-sans)}
 `;
 const VIEWPORTS = [{ id: 'desktop', icon: 'monitor', width: null }, { id: 'tablet', icon: 'tablet', width: 768 }, { id: 'mobile', icon: 'smartphone', width: 390 }];
-export function WebPreview({ url: urlProp = '', height = 340, logs = [], defaultConsoleOpen = false, children, onUrlChange, style, className, ...rest }) {
+export function WebPreview({ url: urlProp = '', height = 340, logs = [], defaultOpen, defaultConsoleOpen, children, onUrlChange, style, className, ...rest }) {
   injectEfCss('ef-css-webprev', CSS);
   const [url, setUrl] = React.useState(urlProp);
   const [draft, setDraft] = React.useState(urlProp);
   const [key, setKey] = React.useState(0);
   const [vp, setVp] = React.useState('desktop');
-  const [cons, setCons] = React.useState(!!defaultConsoleOpen);
+  // defaultConsoleOpen is the deprecated alias; defaultOpen wins when both are passed.
+  const [cons, setCons] = React.useState(!!(defaultOpen ?? defaultConsoleOpen));
+  // Controlled-capable url: a changed url prop is adopted into state, so a parent
+  // can drive navigation (address bar + iframe follow it) between user edits.
+  React.useEffect(() => { setUrl(urlProp); setDraft(urlProp); }, [urlProp]);
   const errs = logs.filter(l => l.level === 'error').length;
   const commit = v => {
     const t = v.trim();
