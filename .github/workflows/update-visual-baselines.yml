@@ -64,6 +64,13 @@ jobs:
           git checkout -b "$BRANCH"
           git commit -m "test(visual): refresh the $COUNT group screenshot baselines"
           git push origin "$BRANCH"
-          gh pr create --base main --head "$BRANCH" \
+          # The efolusi org forbids Actions from creating PRs and that policy
+          # needs an org admin to change, so treat pr-create as best effort:
+          # when it is refused, the branch is still pushed and the compare URL
+          # lands in the run summary — one click away from the same PR.
+          if ! gh pr create --base main --head "$BRANCH" \
             --title "Refresh visual baselines ($COUNT group shots)" \
-            --body "Captured on this runner by the update-visual-baselines workflow (run ${GITHUB_RUN_ID}). Review the images in the diff — merging is the approval."
+            --body "Captured on this runner by the update-visual-baselines workflow (run ${GITHUB_RUN_ID}). Review the images in the diff — merging is the approval."; then
+            echo "## Baselines captured — org policy blocks Actions from opening the PR" >> "$GITHUB_STEP_SUMMARY"
+            echo "Open it here: https://github.com/${GITHUB_REPOSITORY}/pull/new/$BRANCH" >> "$GITHUB_STEP_SUMMARY"
+          fi
