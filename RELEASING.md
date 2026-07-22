@@ -1,8 +1,10 @@
 # Releasing Meridian
 
-Every release is a version bump, a tag, and a GitHub Release. The publish
-workflow does the rest — it re-runs every gate and refuses to ship a package
-that disagrees with its tag.
+A release is a version bump pushed to `main`. The publish workflow notices that
+the manifest carries a version the registry does not have, re-runs every gate,
+publishes via npm Trusted Publishing (OIDC, no token anywhere), and then creates
+the `vX.Y.Z` tag and the GitHub Release itself. Pushes whose version is already
+published are a no-op for the workflow.
 
 ## Where the version lives
 
@@ -22,26 +24,24 @@ carry it and must agree:
 ## The steps
 
 1. Move CHANGELOG's `Unreleased` content under a `## X.Y.Z — YYYY-MM-DD` heading.
+   The workflow lifts this section verbatim into the GitHub Release notes.
 2. Bump the version in the five files above.
 3. `npm run check` — all gates green, locally, before anything is pushed.
-4. Commit, push, and confirm the `checks` workflow is green on `main`.
-5. Tag and release:
+4. Commit and push. That is the release: the publish workflow sees the new
+   version, re-runs the gates, publishes to npm, then pushes the tag and cuts
+   the GitHub Release on its own.
 
-   ```bash
-   git tag vX.Y.Z
-   git push origin vX.Y.Z
-   gh release create vX.Y.Z --title "Meridian X.Y.Z" --notes-file <notes>
-   ```
-
-6. Publishing the GitHub Release triggers `.github/workflows/publish.yml`,
-   which re-runs the gates, verifies the tag matches the built package version,
-   verifies the version is not already on the registry, and publishes via npm
-   Trusted Publishing (OIDC) — no token anywhere.
+Cutting a GitHub Release by hand still publishes too (with the tag-must-match
+guard), and `workflow_dispatch` remains for dry-run rehearsals.
 
 ## Rules the workflow enforces
 
-- **Tag and package version must agree.** A release tagged `v1.6.0` whose
-  manifest still says `1.5.2` fails before publish, not after.
+- **Only a version absent from the registry triggers the auto path.** Routine
+  pushes skip publishing entirely; two racing bump pushes are serialized by a
+  concurrency group, and the loser fails the already-published check.
+- **Tag and package version must agree** on the manual-Release path. A release
+  tagged `v1.6.0` whose manifest still says `1.5.2` fails before publish, not
+  after.
 - **A version already on the registry fails.** npm versions are immutable;
   bump instead.
 - **Manual dispatch defaults to a dry run.** A non-dry manual publish

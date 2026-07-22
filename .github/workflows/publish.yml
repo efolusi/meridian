@@ -5,32 +5,30 @@ name: publish
 # short-lived identity token for this exact workflow, and npm verifies it against
 # the trusted publisher configured on the package.
 #
-# IMPORTANT — the very first publish cannot use this workflow. npm only exposes
-# the Trusted Publisher settings on a package that already exists, so version
-# 1.5.0 has to be published once by hand:
-#
-#   npm login
-#   npm run build:npm
-#   npm publish ./dist --access public
-#
-# After that, one-time setup on npmjs.com under the package's Settings ->
-# Trusted Publisher:
+# One-time setup on npmjs.com under the package's Settings -> Trusted Publisher:
 #   Provider    GitHub Actions
 #   Repository  efolusi/meridian     (case sensitive)
 #   Workflow    publish.yml
 #   Environment npm-publish
+# A misconfigured trusted publisher surfaces as a bare 404 on publish, which
+# means "npm rejected the OIDC identity", not "package missing" — check the
+# repository spelling, the workflow filename, and the environment name.
 #
-# From 1.5.1 onward this workflow publishes with no token anywhere. Note that a
-# misconfigured trusted publisher surfaces as a bare 404 on publish, which means
-# "npm rejected the OIDC identity", not "package missing" — check the repository
-# spelling, the workflow filename, and that package.json's repository.url
-# matches the repo GitHub reports.
-#
-# Normal use: cut a GitHub Release whose tag is v<version>. This runs, re-checks
-# every gate, and publishes only if the tag agrees with the built package.
-# Use the manual trigger with dry_run to rehearse the whole path safely.
+# Three ways in:
+#   push to main   — THE NORMAL PATH. When _ds_manifest.json carries a version
+#                    that is not on the registry yet, this run re-checks every
+#                    gate, publishes, then creates the vX.Y.Z tag and GitHub
+#                    Release itself. A push whose version is already published
+#                    is a no-op. Releasing is therefore just: bump the version,
+#                    update the changelog, push (see RELEASING.md).
+#   release        — cutting a GitHub Release by hand still publishes, with the
+#                    extra guard that the tag must match the built version.
+#   dispatch       — manual rehearsal; defaults to dry run. Non-dry requires
+#                    the matching tag at HEAD.
 
 on:
+  push:
+    branches: [main]
   release:
     types: [published]
   workflow_dispatch:
@@ -40,16 +38,50 @@ on:
         type: boolean
         default: true
 
+# Two version-bump pushes racing would both pass the registry check and publish
+# out of order. Serialize; never cancel a publish mid-flight.
+concurrency:
+  group: publish
+  cancel-in-progress: false
+
 permissions:
   contents: read
-  id-token: write # required for OIDC; without it npm cannot verify the workflow
 
 jobs:
+  # Fast gate so routine pushes don't spin up the whole publish machinery.
+  decide:
+    runs-on: ubuntu-latest
+    outputs:
+      go: ${{ steps.d.outputs.go }}
+      version: ${{ steps.d.outputs.version }}
+    steps:
+      - uses: actions/checkout@v5
+      - id: d
+        run: |
+          VERSION="$(node -p "require('./_ds_manifest.json').version")"
+          echo "version=$VERSION" >> "$GITHUB_OUTPUT"
+          if [ "${{ github.event_name }}" != "push" ]; then
+            echo "go=true" >> "$GITHUB_OUTPUT"
+            exit 0
+          fi
+          if npm view "@efolusi/meridian@$VERSION" version >/dev/null 2>&1; then
+            echo "@efolusi/meridian@$VERSION is already on the registry — nothing to release."
+            echo "go=false" >> "$GITHUB_OUTPUT"
+          else
+            echo "version $VERSION is not on the registry — this push releases it."
+            echo "go=true" >> "$GITHUB_OUTPUT"
+          fi
+
   publish:
+    needs: decide
+    if: needs.decide.outputs.go == 'true'
     runs-on: ubuntu-latest
     # Gives the publish a reviewable gate in repo settings, and scopes the OIDC
     # claim. Must match the Environment named in the trusted publisher config.
     environment: npm-publish
+    permissions:
+      contents: write # the auto path pushes the tag and creates the Release
+      id-token: write # required for OIDC; without it npm cannot verify the workflow
 
     steps:
       - uses: actions/checkout@v5
@@ -110,6 +142,7 @@ jobs:
 
       # A manual non-dry publish must still be anchored to a tag: an untagged
       # tree reaching the registry means a version nobody can check out later.
+      # (The push path creates its tag itself, after the publish succeeds.)
       - name: Non-dry dispatch requires the matching tag at HEAD
         if: github.event_name == 'workflow_dispatch' && inputs.dry_run == false
         run: |
@@ -128,7 +161,8 @@ jobs:
           echo "tag v$PKG is at HEAD"
 
       # Republishing an existing version fails at the registry anyway; failing
-      # here says why, instead of surfacing a bare 403.
+      # here says why, instead of surfacing a bare 403. On the push path this
+      # re-checks what `decide` saw, after the slow steps — closing the race.
       - name: Version must not already be published
         run: |
           PKG="$(node -p "require('./dist/package.json').version")"
@@ -143,10 +177,31 @@ jobs:
         run: npm pack ./dist --dry-run
 
       - name: Publish
-        if: github.event_name == 'release' || inputs.dry_run == false
+        if: github.event_name != 'workflow_dispatch' || inputs.dry_run == false
         # No NODE_AUTH_TOKEN: the OIDC identity above is the credential.
         # Provenance is attached automatically when publishing this way.
         run: npm publish ./dist --access public
+
+      # The auto path finishes the paperwork the human used to do. Releases
+      # created with GITHUB_TOKEN do not trigger other workflows, so this cannot
+      # re-enter the `release` path and double-publish.
+      - name: Tag and cut the GitHub Release (auto path)
+        if: github.event_name == 'push'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          PKG="$(node -p "require('./dist/package.json').version")"
+          python3 - "$PKG" > /tmp/notes.md <<'EOF'
+          import re, sys
+          ver = sys.argv[1]
+          t = open('CHANGELOG.md', encoding='utf-8').read()
+          m = re.search(rf'^## {re.escape(ver)}[^\n]*\n(.*?)(?=^## |\Z)', t, re.S | re.M)
+          print(m.group(1).strip() if m else f'Meridian {ver}. Details in CHANGELOG.md.')
+          EOF
+          git tag "v$PKG"
+          git push origin "v$PKG"
+          gh release create "v$PKG" --title "Meridian $PKG" --notes-file /tmp/notes.md
+          echo "released v$PKG"
 
       - name: Dry run finished
         if: github.event_name == 'workflow_dispatch' && inputs.dry_run
