@@ -1,11 +1,13 @@
 import React from 'react';
 import { injectEfCss } from '../forms/Button.jsx';
 const CSS = `
-.ef-dots{display:inline-flex;align-items:center;gap:6px}
-.ef-dots__dot{width:7px;height:7px;padding:0;border:none;border-radius:var(--radius-full);background:var(--border-strong);cursor:pointer;transition:background var(--dur-fast) var(--ease-out),width var(--dur-med) var(--ease-out)}
-.ef-dots__dot:hover{background:var(--sand-400)}
-.ef-dots__dot--on{width:20px;background:var(--accent)}
-.ef-dots__dot:focus-visible{outline:none;box-shadow:var(--focus-ring)}
+.ef-dots{display:inline-flex;align-items:center}
+.ef-dots__dot{position:relative;width:24px;height:24px;padding:0;border:none;background:transparent;cursor:pointer}
+.ef-dots__dot::before{content:'';position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:7px;height:7px;border-radius:var(--radius-full);background:var(--border-strong);transition:background var(--dur-fast) var(--ease-out),width var(--dur-med) var(--ease-out)}
+.ef-dots__dot:hover::before{background:var(--sand-400)}
+.ef-dots__dot--on::before{width:20px;background:var(--accent)}
+.ef-dots__dot:focus-visible{outline:none}
+.ef-dots__dot:focus-visible::before{box-shadow:var(--focus-ring)}
 `;
 export function PageControl({ count, index = 0, onChange, label = 'Page', style, className, ...rest }) {
   injectEfCss('ef-css-dots', CSS);

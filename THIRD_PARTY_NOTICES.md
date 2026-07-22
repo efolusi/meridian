@@ -10,7 +10,7 @@ Meridian's own source (components, tokens, blocks, showcases, starters, docs) is
 | Figtree | Copyright 2022 The Figtree Project Authors (https://github.com/erikdkennedy/figtree) | [assets/fonts/OFL-Figtree.txt](assets/fonts/OFL-Figtree.txt) |
 | JetBrains Mono | Copyright 2020 The JetBrains Mono Project Authors (https://github.com/JetBrains/JetBrainsMono) | [assets/fonts/OFL-JetBrainsMono.txt](assets/fonts/OFL-JetBrainsMono.txt) |
 
-The five variable TTFs in `assets/fonts/` are unmodified upstream builds obtained via [google/fonts](https://github.com/google/fonts). The OFL permits use, bundling, and redistribution (including commercial) provided the font files are not sold by themselves and these notices are retained.
+The five variable fonts in `assets/fonts/` are upstream builds obtained via [google/fonts](https://github.com/google/fonts), losslessly repackaged from TTF to WOFF2 (same glyphs, same variation axes). The OFL permits use, bundling, and redistribution (including commercial) provided the font files are not sold by themselves and these notices are retained.
 
 ## Icons (ISC License)
 

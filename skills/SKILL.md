@@ -10,7 +10,8 @@ If the user invokes this skill without any other guidance, ask them what they wa
 
 Quick orientation:
 - `styles.css` imports all tokens (`tokens/*.css`) — link it and you have the full system.
-- Fonts: Bricolage Grotesque (display), Figtree (UI/body), JetBrains Mono (code) — variable TTFs in `assets/fonts/`, @font-face in `tokens/fonts.css`.
+- Fonts: Bricolage Grotesque (display), Figtree (UI/body), JetBrains Mono (code) — variable WOFF2 in `assets/fonts/`, @font-face in `tokens/fonts.css`.
+- For bundler projects the same system installs from npm: `npm install @efolusi/meridian`, then `import '@efolusi/meridian/styles.css'` and import components by name.
 - Palette: everything derives from the owl mark — brand ramp cream→peach→caramel→cocoa (`--brand-50…950`), espresso ink (`--brand-950` `#2C1709`) for primary actions, caramel (`--brand-700`) for links and focus, warm sand neutrals for everything else. Hairline borders, near-zero shadows, no gradients.
 - Components: React primitives in `components/{forms,display,navigation,feedback,data,overlay,ai,code,files,dates,finance,icons}/` — each has a `.prompt.md` with usage.
 - Use cases: the `ai/`, `code/`, `files/`, and `data/` groups exist for richer product surfaces — AI workspaces, infrastructure consoles, file tools, and trading/finance dashboards.

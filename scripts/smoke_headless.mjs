@@ -25,4 +25,12 @@ if (!result.ok) {
   console.error('FAILURES:\n  ' + result.fails.join('\n  '));
   process.exit(1);
 }
+// A demo can render and still be broken — a failed fetch, a React warning, an
+// unhandled rejection all land here and nowhere else. This array was collected
+// from day one and then ignored, which is how errors stayed invisible.
+if (consoleErrors.length) {
+  console.error(`smoke: ${consoleErrors.length} console error(s) during the run:\n  ` + consoleErrors.join('\n  '));
+  process.exit(1);
+}
+console.log('smoke: console clean');
 process.exit(0);

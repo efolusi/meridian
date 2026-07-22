@@ -108,6 +108,25 @@ jobs:
             exit 1
           fi
 
+      # A manual non-dry publish must still be anchored to a tag: an untagged
+      # tree reaching the registry means a version nobody can check out later.
+      - name: Non-dry dispatch requires the matching tag at HEAD
+        if: github.event_name == 'workflow_dispatch' && inputs.dry_run == false
+        run: |
+          PKG="$(node -p "require('./dist/package.json').version")"
+          git fetch --tags --quiet
+          TAG_SHA="$(git rev-list -n1 "v$PKG" 2>/dev/null || true)"
+          HEAD_SHA="$(git rev-parse HEAD)"
+          if [ -z "$TAG_SHA" ]; then
+            echo "::error::tag v$PKG does not exist. Tag the release commit first (see RELEASING.md)."
+            exit 1
+          fi
+          if [ "$TAG_SHA" != "$HEAD_SHA" ]; then
+            echo "::error::tag v$PKG points at $TAG_SHA but this run builds $HEAD_SHA."
+            exit 1
+          fi
+          echo "tag v$PKG is at HEAD"
+
       # Republishing an existing version fails at the registry anyway; failing
       # here says why, instead of surfacing a bare 403.
       - name: Version must not already be published

@@ -26,12 +26,20 @@ export function Combobox({ label, hint, options, value, onChange, multiple, plac
   const [open, setOpen] = React.useState(false);
   const [q, setQ] = React.useState('');
   const [hi, setHi] = React.useState(0);
+  const listId = React.useId();
   const ref = React.useRef(null);
   const panelRef = React.useRef(null);
   const { style: anchored } = useAnchoredStyle(ref, panelRef, { open, placement: 'bottom', align: 'start', matchWidth: true });
   const sel = multiple ? (value || []) : (value != null ? [value] : []);
   const opts = options.map(o => typeof o === 'string' ? { value: o, label: o } : o);
   const shown = opts.filter(o => o.label.toLowerCase().includes(q.toLowerCase()) && (!multiple || !sel.includes(o.value)));
+  // Keep the highlighted option visible to sighted users the same way
+  // aria-activedescendant keeps it visible to screen readers.
+  React.useEffect(() => {
+    if (!open) return;
+    const el = document.getElementById(`${listId}-opt-${hi}`);
+    if (el && el.scrollIntoView) el.scrollIntoView({ block: 'nearest' });
+  }, [open, hi, listId]);
   React.useEffect(() => {
     if (!open) return;
     const away = e => {
@@ -62,16 +70,18 @@ export function Combobox({ label, hint, options, value, onChange, multiple, plac
           return <Tag key={v} onRemove={() => unpick(v)}>{o ? o.label : v}</Tag>;
         })}
         <input {...field.controlProps} className="ef-combo__input" role="combobox" aria-expanded={open}
+          aria-controls={listId} aria-autocomplete="list"
+          aria-activedescendant={open && shown.length ? `${listId}-opt-${hi}` : undefined}
           placeholder={sel.length && multiple ? '' : !multiple && sel.length ? (opts.find(x => x.value === sel[0]) || {}).label : placeholder}
           value={q} onChange={e => { setQ(e.target.value); setOpen(true); setHi(0); }} onFocus={() => setOpen(true)} onKeyDown={key} />
         <span className="ef-combo__chevron"><Icon name="chevron-down" size={16} /></span>
       </div>
       {open && (
         <Portal>
-        <div ref={panelRef} className="ef-combo__panel" role="listbox" style={anchored}>
+        <div ref={panelRef} className="ef-combo__panel" role="listbox" id={listId} style={anchored}>
           {shown.length === 0 && <div className="ef-combo__empty">Nothing matches “{q}”.</div>}
           {shown.map((o, i) => (
-            <button key={o.value} role="option" aria-selected={!multiple && sel.includes(o.value)} className={`ef-combo__opt${i === hi ? ' ef-combo__opt--hi' : ''}`}
+            <button key={o.value} role="option" id={`${listId}-opt-${i}`} aria-selected={!multiple && sel.includes(o.value)} className={`ef-combo__opt${i === hi ? ' ef-combo__opt--hi' : ''}`}
               onMouseEnter={() => setHi(i)} onClick={() => pick(o.value)}>
               {o.icon ? <Icon name={o.icon} size={15} /> : null}
               {o.label}

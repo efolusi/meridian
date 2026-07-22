@@ -6,7 +6,7 @@ const CSS = `
 .ef-slider__row{display:flex;align-items:center;gap:12px}
 .ef-slider__label{font-size:var(--text-sm);font-weight:var(--weight-semibold);color:var(--text-primary);display:flex;justify-content:space-between}
 .ef-slider__val{font-family:var(--font-mono);font-size:var(--text-sm);font-weight:400;color:var(--text-muted)}
-.ef-slider__input{-webkit-appearance:none;appearance:none;width:100%;height:16px;background:transparent;cursor:pointer;margin:0}
+.ef-slider__input{-webkit-appearance:none;appearance:none;width:100%;height:24px;background:transparent;cursor:pointer;margin:0}
 .ef-slider__input::-webkit-slider-runnable-track{height:2px;border-radius:2px;background:linear-gradient(to right,var(--accent) var(--ef-fill,50%),var(--border-strong) var(--ef-fill,50%))}
 .ef-slider__input::-webkit-slider-thumb{-webkit-appearance:none;width:14px;height:14px;margin-top:-6px;border-radius:var(--radius-full);background:var(--surface-card);border:1.5px solid var(--accent);transition:transform var(--dur-fast) var(--ease-out)}
 .ef-slider__input:active::-webkit-slider-thumb{transform:scale(1.15)}

@@ -38,7 +38,14 @@ function sources() {
   return out;
 }
 
-/** Compile one .jsx to ESM, rewriting relative .jsx imports to .js. */
+/**
+ * Compile one .jsx to ESM: rewrite relative .jsx imports to .js, and strip the
+ * runtime CSS layer. The npm package ships all component CSS statically in
+ * components.css (imported by styles.css), so the injected copies would be the
+ * same 124 kB of rules a second time — as uncacheable JS strings that also run
+ * injection work on every component's first render. The CDN bundle keeps
+ * injection; only this build strips it.
+ */
 function compile(rel) {
   const src = fs.readFileSync(path.join(ROOT, rel), 'utf8');
   const code = Babel.transform(src, {
@@ -46,12 +53,25 @@ function compile(rel) {
     plugins: [() => ({
       visitor: {
         ImportDeclaration(p) {
+          // drop the injectEfCss specifier; the call sites are gone too
+          p.node.specifiers = p.node.specifiers.filter(
+            s => !(s.imported && s.imported.name === 'injectEfCss'));
+          if (!p.node.specifiers.length) { p.remove(); return; }
           const v = p.node.source.value;
           if (v.startsWith('.') && v.endsWith('.jsx')) p.node.source.value = v.slice(0, -4) + '.js';
         },
         ExportNamedDeclaration(p) {
           const s = p.node.source;
           if (s && s.value.startsWith('.') && s.value.endsWith('.jsx')) s.value = s.value.slice(0, -4) + '.js';
+        },
+        VariableDeclaration(p) {
+          // the `const CSS = \`...\`` literal, now redundant with components.css
+          if (p.parent.type !== 'Program') return;
+          if (p.node.declarations.length === 1 && p.node.declarations[0].id.name === 'CSS') p.remove();
+        },
+        ExpressionStatement(p) {
+          const e = p.node.expression;
+          if (e.type === 'CallExpression' && e.callee.type === 'Identifier' && e.callee.name === 'injectEfCss') p.remove();
         },
       },
     })],
@@ -137,14 +157,38 @@ for (const { group, name } of sources()) {
 files.set('index.js', barrel.join('\n') + '\n');
 files.set('index.d.ts', barrelTypes.join('\n') + '\n');
 
-// The token layer. Without it every component renders unstyled.
-files.set('styles.css', fs.readFileSync(path.join(ROOT, 'styles.css'), 'utf8'));
+// --- static component CSS ---------------------------------------------------
+// On the CDN path each component injects its CSS at runtime. In the npm build
+// the same rules ship as one static, cacheable stylesheet: server-rendered HTML
+// is styled before hydration, and the JS modules stop carrying 124 kB of CSS
+// strings. Extraction is only sound while every literal is static — a `${}`
+// would make the static file diverge from what injection produces, so that is
+// a hard build failure, not a skip.
+const cssBlocks = [];
+for (const { group, name } of sources()) {
+  const src = fs.readFileSync(path.join(ROOT, 'components', group, `${name}.jsx`), 'utf8');
+  const m = src.match(/const CSS = `([\s\S]*?)`;/);
+  if (!m) continue;
+  if (m[1].includes('${')) {
+    console.error(`components/${group}/${name}.jsx: CSS literal contains \${} — cannot be extracted statically.`);
+    process.exit(1);
+  }
+  cssBlocks.push(`/* components/${group}/${name}.jsx */${m[1].replace(/\s+$/, '')}\n`);
+}
+files.set('components.css', cssBlocks.join(''));
+
+// The token layer. Without it every component renders unstyled. The npm
+// styles.css additionally pulls in the static component CSS, so the documented
+// single import keeps working now that the modules no longer inject.
+files.set('styles.css',
+  fs.readFileSync(path.join(ROOT, 'styles.css'), 'utf8') +
+  '@import "./components.css";\n');
 for (const f of fs.readdirSync(path.join(ROOT, 'tokens')).sort()) {
   if (f.endsWith('.css')) files.set(`tokens/${f}`, fs.readFileSync(path.join(ROOT, 'tokens', f), 'utf8'));
 }
 
 // The fonts the token layer actually @font-faces. Without them tokens/fonts.css
-// points at ../assets/fonts/*.ttf and nothing resolves — and an unresolvable
+// points at ../assets/fonts/*.woff2 and nothing resolves — and an unresolvable
 // url() in CSS is a hard build error in Vite and webpack, not a missing glyph.
 // So the package must carry them or it breaks every bundler consumer. All three
 // families are OFL, which permits redistribution provided the licence travels
@@ -178,6 +222,8 @@ files.set('package.json', JSON.stringify({
   exports: {
     '.': { types: './index.d.ts', default: './index.js' },
     './styles.css': './styles.css',
+    // Explicit, because the './*' pattern would rewrite it to components.css.js.
+    './components.css': './components.css',
     './tokens/*': './tokens/*',
     // Tools read this directly; without an entry the './*' pattern rewrites it
     // to package.json.js and the read fails.

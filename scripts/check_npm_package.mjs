@@ -79,6 +79,54 @@ try {
   fs.rmSync(sandbox, { recursive: true, force: true });
 }
 
+// The static component stylesheet must carry every source literal byte for
+// byte, and the modules must no longer carry any of them. Count-parity is not
+// enough: a truncated extraction passes a count check and ships broken styling.
+{
+  const componentsCss = path.join(ROOT, 'dist', 'components.css');
+  if (!fs.existsSync(componentsCss)) {
+    console.error('dist/components.css is missing — SSR consumers get unstyled components');
+    process.exit(1);
+  }
+  const cssText = fs.readFileSync(componentsCss, 'utf8');
+  const missing = [];
+  let literals = 0;
+  for (const group of fs.readdirSync(path.join(ROOT, 'components'), { withFileTypes: true })) {
+    if (!group.isDirectory()) continue;
+    for (const f of fs.readdirSync(path.join(ROOT, 'components', group.name))) {
+      if (!f.endsWith('.jsx')) continue;
+      const src = fs.readFileSync(path.join(ROOT, 'components', group.name, f), 'utf8');
+      const m = src.match(/const CSS = `([\s\S]*?)`;/);
+      if (!m) continue;
+      literals++;
+      if (!cssText.includes(m[1].replace(/\s+$/, ''))) missing.push(`components/${group.name}/${f}`);
+    }
+  }
+  if (missing.length) {
+    console.error(`components.css is missing the CSS of ${missing.length} source(s): ${missing.slice(0, 3).join(', ')}`);
+    process.exit(1);
+  }
+  // and the compiled modules must not inject: no CSS literal, no call
+  const stillInjecting = [];
+  for (const group of fs.readdirSync(path.join(ROOT, 'dist'), { withFileTypes: true })) {
+    if (!group.isDirectory() || group.name === 'assets' || group.name === 'tokens') continue;
+    for (const f of fs.readdirSync(path.join(ROOT, 'dist', group.name))) {
+      if (!f.endsWith('.js')) continue;
+      const js = fs.readFileSync(path.join(ROOT, 'dist', group.name, f), 'utf8');
+      if (/const CSS = `/.test(js) || /\binjectEfCss\(['"`]/.test(js)) stillInjecting.push(`${group.name}/${f}`);
+    }
+  }
+  if (stillInjecting.length) {
+    console.error(`runtime CSS injection survived in ${stillInjecting.length} module(s): ${stillInjecting.slice(0, 3).join(', ')}`);
+    process.exit(1);
+  }
+  if (!fs.readFileSync(path.join(ROOT, 'dist', 'styles.css'), 'utf8').includes('@import "./components.css";')) {
+    console.error('dist/styles.css does not import components.css — the documented single import would ship tokens only');
+    process.exit(1);
+  }
+  console.log(`components.css carries all ${literals} source CSS literals; modules are injection-free`);
+}
+
 // A bare @import is a valid relative URL to a browser, so the CDN path never
 // noticed, but a bundler CSS pipeline may read it as a module request into
 // node_modules. Reported from a real downstream build. './' works everywhere.

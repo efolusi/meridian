@@ -4,6 +4,27 @@ All notable changes to Meridian are documented here. Format follows [Keep a Chan
 
 > **On the versions below 1.4.0:** Meridian was built in the open but released to nobody. Versions 1.0.0 through 1.3.0 are development milestones recorded as they happened; they were never tagged, published, or installable, so there is no artefact to go back to. They are kept because they are an accurate record of how the system was built, not because you can depend on them. The first tagged, publicly consumable release is 1.4.0.
 
+## 1.6.0 — 2026-07-22
+
+The npm package grows a static CSS story, and an audit of eight dimensions fixed the accessibility and forwarding bugs it confirmed.
+
+### Added
+- **`components.css`** — all 102 component CSS literals extracted into one static stylesheet that the package's `styles.css` imports. Server-rendered HTML is styled before hydration; previously every SSR consumer saw unstyled markup until JS ran. The compiled modules no longer inject CSS at runtime (extraction fails the build if a literal ever gains an interpolation, so the static file cannot silently diverge), which drops the shipped JS from 405 kB to 272 kB. The CDN bundle keeps runtime injection; `injectEfCss` stays exported for compatibility. Consumers who imported `styles.css` see no change in setup and gain styled SSR; anyone relying on injection without importing the stylesheet must add the documented import.
+- `StatusDot` carries its state as text: visually hidden ahead of the label ("Error: API"), or as the dot's accessible name when there is no label; `stateLabel` overrides the wording. Screen readers previously got nothing from an unlabelled dot, contradicting the shipped guideline that status is never colour-only.
+- `RELEASING.md`, and the publish workflow now refuses a non-dry manual publish whose version tag does not exist at HEAD.
+
+### Fixed
+- **Dialog, ConfirmDialog, Drawer and CommandPalette silently dropped a caller's `className` and `style`** — the only 4 of 106 components that wrote a literal `className=` after the rest spread, clobbering whatever the caller passed.
+- **Combobox now implements the combobox pattern it declared**: `aria-controls`, `aria-autocomplete`, `aria-activedescendant` on the highlighted option, real option ids, and the highlight scrolls into view — the wiring CommandPalette already had.
+- **Touch targets meet WCAG 2.5.8 (24×24)**: Carousel and PageControl dots are 24px hit areas (the 7px dot is drawn inside, so dot spacing grows), Tag's remove button grows from 16px, Slider's input from 16px tall.
+- The headless smoke run now fails on any console error; the array was collected from day one and then ignored.
+- The site's JSON-LD `softwareVersion` had lagged at 1.5.1 through the 1.5.2 release; version locations are now listed in RELEASING.md.
+
+### Changed
+- **Fonts ship as WOFF2 instead of TTF** — a lossless repack (same glyphs, same variation axes, verified with fonttools): 912 kB → 409 kB, shrinking both the npm package (620 → 520 kB) and every CDN page load.
+- The docs site, `llms.txt`, `SKILL.md` and CONTRIBUTING now document the npm install path; CONTRIBUTING's check list is `npm run check`.
+- `main` is protected by a ruleset: PRs plus green `gates` and `smoke` checks required, repository admins bypass.
+
 ## 1.5.2 — 2026-07-20
 
 ### Fixed

@@ -15,7 +15,7 @@ const CSS = `
 @keyframes ef-pop{from{opacity:0;transform:scale(.94) translateY(8px)}}
 `;
 const FOCUSABLE = 'button,[href],input,select,textarea,[tabindex]:not([tabindex="-1"])';
-export const Dialog = React.forwardRef(function Dialog({ open, onClose, title, description, footer, width = 440, children, ...rest }, ref) {
+export const Dialog = React.forwardRef(function Dialog({ open, onClose, title, description, footer, width = 440, children, style, className, ...rest }, ref) {
   injectEfCss('ef-css-dialog', CSS);
   const panelRef = React.useRef(null);
   const prevFocus = React.useRef(null);
@@ -46,7 +46,7 @@ export const Dialog = React.forwardRef(function Dialog({ open, onClose, title, d
   }, [open, onClose]);
   if (!open) return null;
   return (
-    <div ref={ref} {...rest} className="ef-dialog__overlay" onMouseDown={e => { if (e.target === e.currentTarget && onClose) onClose(); }}>
+    <div ref={ref} {...rest} className={`ef-dialog__overlay${className ? ' ' + className : ''}`} style={style} onMouseDown={e => { if (e.target === e.currentTarget && onClose) onClose(); }}>
       <div className="ef-dialog" role="dialog" aria-modal="true" ref={panelRef} tabIndex={-1}
         aria-labelledby={title ? titleId : undefined} aria-describedby={description ? descId : undefined}
         style={{ maxWidth: width }}>

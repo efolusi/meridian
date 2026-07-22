@@ -37,6 +37,13 @@ Or load both from the hosted site (no install):
     <link rel="stylesheet" href="https://meridian.efolusi.com/styles.css">
     <script src="https://meridian.efolusi.com/_ds_bundle.js"></script>
 
+Or install from npm for bundler projects (Vite, Next, Remix) — ESM modules, icons inlined, fonts included, types for @types/react 18 and 19:
+
+    npm install @efolusi/meridian
+
+    import '@efolusi/meridian/styles.css';
+    import { Button, FormField } from '@efolusi/meridian';
+
 Dark mode: set data-theme="dark" on any subtree. Compact density: data-density="compact". Semantic tokens only — never raw ramp values.
 
 ## More

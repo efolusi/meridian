@@ -17,7 +17,7 @@ Efolusi ships WCAG 2.1 AA. The rules, per concern:
 ## Contrast (light and dark)
 - Body text ≥ 4.5:1: `--text-primary`, `--text-secondary`, and `--text-muted` all pass on page, card, and sunken surfaces in both themes; status `*-600` foregrounds pass on their `*-100` tints and on white.
 - Hairline borders (`--border-default`, `--border-strong`) are decorative structure and are exempt from contrast minimums. Any border that conveys state on its own (an error outline, a selected row) must use a ≥3:1 color such as `--danger-600` or `--accent`; the hairline tokens do not qualify.
-- Status is never color-only: Badge pairs color with text, Alert with an icon, Progress with a value.
+- Status is never color-only: Badge pairs color with text, Alert with an icon, Progress with a value. StatusDot always carries its state as text — visually hidden ahead of the label when one is present ("Error: API"), or as the accessible name of the dot itself when there is none; override the wording with `stateLabel`.
 
 ## Semantics baked into components
 - Icon: `aria-hidden` unless `title` given (then `role="img"`)

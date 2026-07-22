@@ -13,10 +13,12 @@ const CSS = `
 .ef-carousel__nav:disabled{opacity:.35;cursor:default}
 .ef-carousel__nav--prev{left:-14px}
 .ef-carousel__nav--next{right:-14px}
-.ef-carousel__dots{display:flex;justify-content:center;gap:6px;margin-top:14px}
-.ef-carousel__dot{width:7px;height:7px;border-radius:var(--radius-full);border:none;padding:0;background:var(--border-strong);cursor:pointer;transition:background var(--dur-fast) var(--ease-out)}
-.ef-carousel__dot--on{background:var(--accent)}
-.ef-carousel__dot:focus-visible{outline:none;box-shadow:var(--focus-ring)}
+.ef-carousel__dots{display:flex;justify-content:center;margin-top:6px}
+.ef-carousel__dot{position:relative;width:24px;height:24px;border:none;padding:0;background:transparent;cursor:pointer}
+.ef-carousel__dot::before{content:'';position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:7px;height:7px;border-radius:var(--radius-full);background:var(--border-strong);transition:background var(--dur-fast) var(--ease-out)}
+.ef-carousel__dot--on::before{background:var(--accent)}
+.ef-carousel__dot:focus-visible{outline:none}
+.ef-carousel__dot:focus-visible::before{box-shadow:var(--focus-ring)}
 `;
 export function Carousel({ children, itemWidth = '280px', gap = 14, showControls = true, showDots = true, ariaLabel = 'Carousel', style, className, ...rest }) {
   injectEfCss('ef-css-carousel', CSS);

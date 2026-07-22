@@ -20,16 +20,11 @@ The compiler is `scripts/build_bundle.mjs` and the format it emits is documented
 ## Running the checks locally
 
 ```bash
-python3 scripts/check_contrast.py          # WCAG contrast pairs (4.5:1 text, 3:1 non-text)
-python3 scripts/check_dead_controls.py     # no buttons that render but do nothing
-python3 scripts/check_paths.py             # every relative reference resolves
-python3 scripts/check_runtime_copies.py    # support.js / ds-base.js copies have not drifted
-python3 scripts/sync_manifest.py --check
-python3 scripts/build_registry.py && python3 scripts/build_tokens.py && python3 scripts/build_interfaces.py
-node scripts/build_bundle.mjs --check      # the committed bundle matches a fresh compile
+npm run check        # every gate CI runs: three generators, then the full battery
+npm run check:fix    # same, but regenerate stale generated files first
 ```
 
-Then open `site/_smoke.html` in a browser; it renders every demo and reports pass/fail in the page title.
+One command is the whole contract — it is the same script CI executes, so a green run here means a green run there. The only thing it cannot cover locally is the browser: open `site/_smoke.html` after demo changes; it renders every demo and reports pass/fail in the page title.
 
 ## Component contract
 
