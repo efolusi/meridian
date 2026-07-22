@@ -50,7 +50,11 @@ jobs:
           rm -f tests/__shots__/*.png
           cp "$RUNNER_TEMP"/shots/*.png tests/__shots__/
           COUNT=$(ls tests/__shots__/*.png | wc -l)
-          if git diff --quiet -- tests/__shots__; then
+          git add tests/__shots__
+          # Staged diff, not worktree diff: fresh baselines are UNTRACKED files,
+          # which `git diff --quiet` cannot see — that combination silently
+          # skipped the very first baseline capture.
+          if git diff --cached --quiet -- tests/__shots__; then
             echo "baselines unchanged — nothing to update"
             exit 0
           fi
@@ -58,7 +62,6 @@ jobs:
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git checkout -b "$BRANCH"
-          git add tests/__shots__
           git commit -m "test(visual): refresh the $COUNT group screenshot baselines"
           git push origin "$BRANCH"
           gh pr create --base main --head "$BRANCH" \
