@@ -4,6 +4,15 @@ All notable changes to Meridian are documented here. Format follows [Keep a Chan
 
 > **On the versions below 1.4.0:** Meridian was built in the open but released to nobody. Versions 1.0.0 through 1.3.0 are development milestones recorded as they happened; they were never tagged, published, or installable, so there is no artefact to go back to. They are kept because they are an accurate record of how the system was built, not because you can depend on them. The first tagged, publicly consumable release is 1.4.0.
 
+## 1.9.1 — 2026-07-23
+
+Three fixes for bugs that read as mistakes at the call site rather than as component faults, which is what made them expensive to track down.
+
+### Fixed
+- **CopyField widened its container instead of truncating.** The value is a flex child with `overflow:hidden` and an ellipsis, but flex children default to `min-width:auto`, so a long value — a contract address, an API key — pushed the row past its parent and broke the page layout on narrow screens. The value and the box now pin `min-width:0`, and the box caps at `max-width:100%`.
+- **CopyField dropped its extra props when used without a label.** The unlabelled branch rebuilt the box through `cloneElement` and never passed `...rest`, so `id`, `data-*` and `aria-*` set at the call site silently vanished. Its copied-state timeout also outlived unmount.
+- **Icon failed silently on an unknown name.** A missing glyph rendered an empty span with nothing in the console, which reads as a CSS bug and sends you looking in the wrong place. It now warns with the name and how to fix it. The failure is also cached, so a name that 404s is no longer refetched by every later mount.
+
 ## 1.9.0 — 2026-07-22
 
 Editable demos, one prop vocabulary (with one-major deprecated aliases, per governance), zero raw colour literals, and visual regression in CI.
