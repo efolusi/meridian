@@ -7,14 +7,24 @@ function base(){
   return window.__efBase;
 }
 export function Icon({ name, size = 16, strokeWidth = 1.5, title, className, style, ...rest }) {
-  const [svg, setSvg] = React.useState(_cache[name] || null);
+  const [svg, setSvg] = React.useState(name in _cache ? _cache[name] : null);
   React.useEffect(() => {
-    if (_cache[name]) { setSvg(_cache[name]); return; }
+    // `name in _cache` rather than a truthy check, so a name that 404s is
+    // remembered as '' instead of being refetched by every later mount.
+    if (name in _cache) { setSvg(_cache[name]); return; }
     let live = true;
     fetch(base() + 'assets/icons/' + name + '.svg')
-      .then(r => r.ok ? r.text() : Promise.reject(new Error('icon ' + name)))
+      .then(r => r.ok ? r.text() : Promise.reject(new Error('HTTP ' + r.status)))
       .then(t => { _cache[name] = t; if (live) setSvg(t); })
-      .catch(() => { if (live) setSvg(''); });
+      .catch(err => {
+        _cache[name] = '';
+        // Without this an unknown name renders an empty box and looks like a
+        // styling bug; say plainly that the glyph is missing.
+        if (typeof console !== 'undefined') {
+          console.warn('[meridian] <Icon name="' + name + '"> could not be loaded (' + err.message + '). Add ' + name + '.svg to assets/icons/, or check the name against the icon gallery.');
+        }
+        if (live) setSvg('');
+      });
     return () => { live = false; };
   }, [name]);
   const html = svg
