@@ -1,3 +1,4 @@
+import { readFileSync } from 'node:fs';
 import { describe, it, expect, vi, beforeEach, afterEach } from 'vitest';
 import { render, screen, act } from '@testing-library/react';
 
@@ -43,6 +44,26 @@ describe('Icon', () => {
     });
     expect(warn).toHaveBeenCalled();
     expect(warn.mock.calls[0][0]).toContain('briefcase');
+  });
+
+  it('stays quiet when the fetch itself fails, which is the environment and not a bad name', async () => {
+    // jsdom test runs have no base URL, so every valid icon rejects here; a
+    // warning would be pure noise in every consumer's suite
+    vi.stubGlobal('fetch', vi.fn(() => Promise.reject(new Error('Failed to parse URL'))));
+    await act(async () => {
+      render(<Icon name="check" />);
+    });
+    expect(warn).not.toHaveBeenCalled();
+  });
+
+  it('warns from the npm build too, which ships its own inlined-SVG implementation', () => {
+    // The bundle and the npm package have separate Icon implementations, so a
+    // fix applied only to the .jsx source leaves every `npm install` consumer
+    // failing in silence. That is exactly how 1.9.1 shipped incomplete.
+    const gen = readFileSync('scripts/build_npm.mjs', 'utf8');
+    const template = gen.slice(gen.indexOf("files.set('icons/Icon.js'"));
+    expect(template).toContain('console.warn');
+    expect(template).toContain('SVGS[name]');
   });
 
   it('remembers a missing glyph so later mounts do not refetch it', async () => {

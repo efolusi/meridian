@@ -6,6 +6,16 @@ function base(){
   window.__efBase = s ? s.src.slice(0, s.src.indexOf('_ds_bundle.js')) : '';
   return window.__efBase;
 }
+// An unknown name renders an empty box, which reads as a styling bug and sends
+// you looking in the wrong place. Say it plainly instead, once per name so a
+// bad icon inside a list does not flood the console.
+const _warned = new Set();
+function warnMissing(name) {
+  if (_warned.has(name) || typeof console === 'undefined') return;
+  _warned.add(name);
+  console.warn('[meridian] <Icon name="' + name + '"> is not a Meridian glyph, so nothing will render. Check the name against the icon gallery, or add ' + name + '.svg to assets/icons/.');
+}
+
 export function Icon({ name, size = 16, strokeWidth = 1.5, title, className, style, ...rest }) {
   const [svg, setSvg] = React.useState(name in _cache ? _cache[name] : null);
   React.useEffect(() => {
@@ -14,17 +24,16 @@ export function Icon({ name, size = 16, strokeWidth = 1.5, title, className, sty
     if (name in _cache) { setSvg(_cache[name]); return; }
     let live = true;
     fetch(base() + 'assets/icons/' + name + '.svg')
-      .then(r => r.ok ? r.text() : Promise.reject(new Error('HTTP ' + r.status)))
+      .then(r => {
+        // A served 404 means the name is wrong; anything else — offline, a
+        // jsdom test with no base URL, a blocked request — is the environment,
+        // not the call site, so it stays quiet rather than crying wolf on
+        // every valid icon in a consumer's test run.
+        if (!r.ok) { warnMissing(name); return Promise.reject(new Error('HTTP ' + r.status)); }
+        return r.text();
+      })
       .then(t => { _cache[name] = t; if (live) setSvg(t); })
-      .catch(err => {
-        _cache[name] = '';
-        // Without this an unknown name renders an empty box and looks like a
-        // styling bug; say plainly that the glyph is missing.
-        if (typeof console !== 'undefined') {
-          console.warn('[meridian] <Icon name="' + name + '"> could not be loaded (' + err.message + '). Add ' + name + '.svg to assets/icons/, or check the name against the icon gallery.');
-        }
-        if (live) setSvg('');
-      });
+      .catch(() => { _cache[name] = ''; if (live) setSvg(''); });
     return () => { live = false; };
   }, [name]);
   const html = svg
