@@ -68,6 +68,7 @@ const GATES = [
   ['Unit tests', 'npm', ['test', '--silent']],
   ['npm package builds', 'node', ['scripts/build_npm.mjs']],
   ['npm package imports', 'node', ['scripts/check_npm_package.mjs']],
+  ['Bundle and package size budget', 'node', ['scripts/check_size.mjs']],
   ['Types compile', 'node', ['scripts/check_types.mjs']],
 ]
 
