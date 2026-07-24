@@ -8,7 +8,7 @@
 
 ## What Meridian is
 
-Meridian is a general-purpose, open-source design system by Efolusi: 109 accessible React components, 177 design tokens in light, dark and compact, 9 blocks, and full example apps. It ships two ways from one source. The flagship is zero-build: four tags, one global, no bundler, the way meridian.efolusi.com serves itself. The second is `@efolusi/meridian` on npm, real ES modules with types, for teams on Vite, Next and Remix. It is warm paper, espresso ink, hairline structure, derived entirely from the Efolusi owl mark, and it is the studio's own most demanding customer: Efolusi builds its products and its site on it.
+Meridian is a general-purpose, open-source design system by Efolusi: 109 accessible React components, 177 design tokens in light, dark and compact, 9 blocks, and full example apps. It ships two ways from one source. The flagship is zero-build: four tags, one global, no bundler, the way meridian.efolusi.com serves itself. The second is npm, a monorepo of lockstep packages: the `@efolusi/meridian` umbrella (everything: components, tokens, icons, types), plus `@efolusi/meridian-tokens` and `@efolusi/meridian-icons` for teams who want only one layer, real ES modules for Vite, Next and Remix. It is warm paper, espresso ink, hairline structure, derived entirely from the Efolusi owl mark, and it is the studio's own most demanding customer: Efolusi builds its products and its site on it.
 
 ## North star
 
@@ -85,7 +85,7 @@ Reach follows from those. Stars do not.
 - Not a component for every possible need. Meridian covers the common path of a real product surface completely, and declines the speculative and the niche.
 - Not a framework. It is components, tokens and patterns; it does not own routing, data, or state beyond a component's own.
 - Not a break-for-cleanliness system. A nicer API is not worth a consumer's broken build; deprecate and keep the old name.
-- Not a monorepo of split packages. One package, granular via subpath exports; revisit only if a consumer needs tokens on a different cadence than components (decision recorded in ROADMAP.md).
+- Not a *breaking* split. The repo is a monorepo (Option A, umbrella): `@efolusi/meridian` stays the one package that ships everything and never breaks for existing consumers, and standalone sub-packages (`@efolusi/meridian-tokens`, `@efolusi/meridian-icons`) are carved from the same flat sources for people who want only tokens or only icons. Versions move in lockstep. The flat component sources and the zero-build CDN bundle are never moved into packages; the monorepo is an npm-side structure only (decision and structure in ROADMAP.md).
 - Not Meridian's own analytics or telemetry in a consumer's page. What a team ships is theirs.
 
 ## Where the work is tracked
