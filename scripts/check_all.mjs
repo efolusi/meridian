@@ -69,6 +69,7 @@ const GATES = [
   ['npm package builds', 'node', ['scripts/build_npm.mjs']],
   ['npm package imports', 'node', ['scripts/check_npm_package.mjs']],
   ['Bundle and package size budget', 'node', ['scripts/check_size.mjs']],
+  ['Tokens sub-package builds', 'node', ['scripts/build_pkg_tokens.mjs']],
   ['Types compile', 'node', ['scripts/check_types.mjs']],
 ]
 
