@@ -71,6 +71,15 @@ This is Meridian's definition of done, applied to every release. Most of it is m
 - Live docs with editable-in-place demos, a bring-your-own-brand theming guide, per-component prompt guides, `llms.txt` and `llms-full.txt`, a machine-readable registry.
 - **Open (ROADMAP Phase 4):** versioned docs with a switcher, per-framework guides with maintained example repos, migration codemods, an MCP server exposing the registry to agents.
 
+### Generative-engine discoverability (GEO) — met, growing
+- Meridian is built to be found and *correctly used* by generative engines, not only search crawlers. `llms.txt` and the generated `llms-full.txt` (every component's prompt guide plus its typed interface and the token names, in one file), the per-component `.prompt.md`, and the machine-readable registry give a model everything it needs to recommend Meridian and write correct Meridian code on the first try.
+- **Growing:** the AI corpus stays generated, never hand-drifted, so it cannot fall out of sync with the components; the studio, the install paths and the component facts are stated in plain prose a model can lift, never locked inside images.
+
+### Internationalization, id and en — open
+- The target is Indonesian and English as first-class: the docs available in both, and locale-aware behaviour where it actually matters (Calendar, DatePicker and NumberInput formatting and parsing).
+- Every component already takes its text from the consumer — labels, empty-state copy, error copy are props — so an app can localise *around* Meridian today, even while the system itself is English-first.
+- RTL is honestly **not supported in 1.x** (physical CSS properties in places); the path is logical properties, tracked in ROADMAP. i18n makes no RTL claim until a mirrored screen has been reviewed.
+
 ## What winning looks like
 
 - Every Efolusi product surface is Meridian, and the studio finds its gaps before anyone outside does.
