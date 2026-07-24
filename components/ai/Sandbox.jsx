@@ -27,19 +27,20 @@ const CSS = `
 .ef-sandbox__panel pre{margin:0;white-space:pre-wrap;word-break:break-word}
 `;
 const STATES = { running: 'Running', success: 'Done', error: 'Failed' };
-export function Sandbox({ title, state = 'success', meta, tabs = [], defaultOpen, defaultTab, style, className, ...rest }) {
+export function Sandbox({ title, status, state, meta, tabs = [], defaultOpen, defaultTab, style, className, ...rest }) {
+  const s = status ?? state ?? 'success'; // `state` is a deprecated alias for `status`
   injectEfCss('ef-css-sandbox', CSS);
-  const [open, setOpen] = React.useState(defaultOpen !== undefined ? !!defaultOpen : state === 'error');
+  const [open, setOpen] = React.useState(defaultOpen !== undefined ? !!defaultOpen : s === 'error');
   const [tab, setTab] = React.useState(defaultTab || (tabs[0] && tabs[0].id));
   const active = tabs.find(t => t.id === tab) || tabs[0];
   return (
-    <div {...rest} className={`ef-sandbox ef-sandbox--${state}${open ? ' ef-sandbox--open' : ''}${className ? ' ' + className : ''}`} style={style} data-state={state}>
+    <div {...rest} className={`ef-sandbox ef-sandbox--${s}${open ? ' ef-sandbox--open' : ''}${className ? ' ' + className : ''}`} style={style} data-state={s}>
       <button type="button" className="ef-sandbox__head" aria-expanded={open} onClick={() => setOpen(!open)}>
         <span className="ef-sandbox__chev"><Icon name="chevron-right" size={14} /></span>
         <span className="ef-sandbox__title">{title}</span>
         <span className="ef-sandbox__meta">
-          {state === 'running' ? <span className="ef-sandbox__spin"><Icon name="loader-circle" size={13} /></span> : null}
-          {meta || STATES[state]}
+          {s === 'running' ? <span className="ef-sandbox__spin"><Icon name="loader-circle" size={13} /></span> : null}
+          {meta || STATES[s]}
         </span>
       </button>
       <div className="ef-sandbox__body"><div className="ef-sandbox__clip"><div className="ef-sandbox__inner">

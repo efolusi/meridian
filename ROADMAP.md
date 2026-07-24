@@ -63,7 +63,7 @@ Meet developers where they are; keep the zero-build path as the flagship.
 ## Decision points (need owner input)
 
 1. ~~npm scope/name~~ Decided 2026-07-20: `@efolusi/meridian`, published from 1.5.0.
-2. ~~Monorepo split~~ Decided 2026-07-22: **single package.** Subpath exports (`/forms/Button`, `/tokens/*`, `/tokens.json`, `/tailwind.preset.cjs`) already give granular access, the registry serves per-component installs, and a split buys a version-matrix (tokens 1.2 + components 1.3?) that nobody has asked to pay for. Revisit only if a consumer demonstrably needs tokens on a different release cadence than components.
+2. ~~Monorepo~~ Decided 2026-07-24: **monorepo, Option A (umbrella, non-breaking).** Reverses the earlier single-package call. The repo is a workspace of lockstep packages: `@efolusi/meridian` stays the umbrella that ships everything (existing consumers unaffected, still 1.x), and standalone sub-packages are carved from the same flat sources for one-layer consumers — `@efolusi/meridian-tokens` (shipped), `@efolusi/meridian-icons` (next). The flat component sources and the zero-build CDN bundle are not moved; the monorepo is an npm-side structure only. Versions move in lockstep from `_ds_manifest.json`. A per-package split of the components themselves (Option B, breaking, 2.0) was declined.
 3. Figma: build in-house or recruit a community maintainer.
 4. ~~Docs hosting~~ Decided: live at meridian.efolusi.com on Cloudflare Pages; no analytics.
 5. CLA vs DCO for contributions.

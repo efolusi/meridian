@@ -1250,7 +1250,7 @@
       "name": "statusdot",
       "type": "registry:ui",
       "title": "StatusDot",
-      "description": "Live status dot with label; `pulse` radiates for running/connected states. The state is never colour-only: with a `label` the state text is prepended visually hidden (\"Error: API\"), without one the dot announces itself as an image named after the state. Override the announced text with `stateLabel`.",
+      "description": "Live status dot with label; `pulse` radiates for running/connected states. The state is never colour-only: with a `label` the state text is prepended visually hidden (\"Error: API\"), without one the dot announces itself as an image named after the state. Override the announced text with `statusLabel`",
       "dependencies": [
         "react"
       ],

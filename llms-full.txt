@@ -163,10 +163,17 @@ export interface ConfirmationProps {
   description?: React.ReactNode;
   /** 'danger' for destructive approvals @default 'default' */
   tone?: 'default' | 'danger';
-  /** Controlled state */
+  /** Controlled status */
+  status?: 'pending' | 'approved' | 'rejected';
+  /** @deprecated use `status` */
   state?: 'pending' | 'approved' | 'rejected';
   /** @default 'pending' */
+  /** @default 'pending' */
+  defaultStatus?: 'pending' | 'approved' | 'rejected';
+  /** @deprecated use `defaultStatus` */
   defaultState?: 'pending' | 'approved' | 'rejected';
+  onStatusChange?: (status: 'pending' | 'approved' | 'rejected') => void;
+  /** @deprecated use `onStatusChange` */
   onStateChange?: (state: 'pending' | 'approved' | 'rejected') => void;
   /** Lucide icon; defaults by tone */
   icon?: string;
@@ -288,7 +295,7 @@ Group: ai · Source: /components/ai/GeneratedImage.jsx · Exports: GeneratedImag
 Image-generation frame with queued / generating (pulsing dot-grid on dark) / complete (fade-in, scrim, hover actions) / error (retry) states.
 
 ```jsx
-<GeneratedImage state="generating" prompt="A lighthouse at dawn" aspect="video" />
+<GeneratedImage status="generating" prompt="A lighthouse at dawn" aspect="video" />
 <GeneratedImage src="/img.jpg" prompt="A lighthouse at dawn" actions={[{ icon: 'download', label: 'Download' }]} />
 ```
 
@@ -300,6 +307,9 @@ export interface GeneratedImageAction {
 }
 export interface GeneratedImageProps {
   /** 'queued' | 'generating' | 'complete' | 'error' */
+  /** @default 'complete' */
+  status?: 'queued' | 'generating' | 'complete' | 'error';
+  /** @deprecated use `status` */
   state?: 'queued' | 'generating' | 'complete' | 'error';
   src?: string;
   alt?: string;
@@ -555,7 +565,7 @@ Group: ai · Source: /components/ai/Sandbox.jsx · Exports: Sandbox
 Collapsible code-run panel — mono title, soft ring while running / on error, tabbed Output & Code panes. Opens itself on error by default.
 
 ```jsx
-<Sandbox title="python analyze.py" state="running" tabs={[
+<Sandbox title="python analyze.py" status="running" tabs={[
   { id: 'out', label: 'Output', content: <pre>Loading rows…</pre> },
   { id: 'code', label: 'Code', content: <pre>import pandas as pd</pre> },
 ]} />
@@ -572,6 +582,9 @@ export interface SandboxProps {
   /** Command or filename, mono */
   title: React.ReactNode;
   /** 'running' | 'success' | 'error' */
+  /** @default 'success' */
+  status?: 'running' | 'success' | 'error';
+  /** @deprecated use `status` */
   state?: 'running' | 'success' | 'error';
   /** Right-side meta, e.g. duration */
   meta?: React.ReactNode;
@@ -1398,21 +1411,25 @@ export declare function Stat(props: StatProps): React.JSX.Element;
 
 Group: data · Source: /components/data/StatusDot.jsx · Exports: StatusDot
 
-Live status dot with label; `pulse` radiates for running/connected states. The state is never colour-only: with a `label` the state text is prepended visually hidden ("Error: API"), without one the dot announces itself as an image named after the state. Override the announced text with `stateLabel`.
+Live status dot with label; `pulse` radiates for running/connected states. The state is never colour-only: with a `label` the state text is prepended visually hidden ("Error: API"), without one the dot announces itself as an image named after the state. Override the announced text with `statusLabel`.
 
 ```jsx
-<StatusDot state="ok" pulse label="Connected" />
-<StatusDot state="busy" pulse label="Running" />
-<StatusDot state="err" label="Failed" />
-<StatusDot state="warn" stateLabel="Degraded" label="EU region" />
+<StatusDot status="ok" pulse label="Connected" />
+<StatusDot status="busy" pulse label="Running" />
+<StatusDot status="err" label="Failed" />
+<StatusDot status="warn" statusLabel="Degraded" label="EU region" />
 ```
 
 ```ts
 export interface StatusDotProps extends Omit<React.HTMLAttributes<HTMLSpanElement>, 'children'> {
   /** @default 'ok' */
+  status?: 'ok' | 'warn' | 'err' | 'busy' | 'off';
+  /** @deprecated use `status` */
   state?: 'ok' | 'warn' | 'err' | 'busy' | 'off';
   label?: React.ReactNode;
-  /** Text announced for the state; defaults to OK / Warning / Error / Busy / Offline */
+  /** Text announced for the status; defaults to OK / Warning / Error / Busy / Offline */
+  statusLabel?: string;
+  /** @deprecated use `statusLabel` */
   stateLabel?: string;
   /** Radiating pulse for live states */
   pulse?: boolean;
