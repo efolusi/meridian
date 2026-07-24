@@ -96,6 +96,7 @@ Pre-composed sections in `blocks/` (Blocks group in the Design System tab): App 
 - `guidelines/brand.md` — palette derivation, type and spacing scales, motion, iconography, voice and copy rules
 - `guidelines/theming.md` — bring your own brand: token layers, the semantic override set, dark-mode invariants, font swaps, contrast duties
 - `guidelines/forms.md` — validation timing (blur → change → submit), error copy, submit states, async checks
+- `guidelines/patterns.md` — the product-state playbook: loading, empty, error, destructive flows, and agent surfaces
 - `guidelines/accessibility.md` — focus rules, full keyboard map, contrast targets, per-component semantics
 - `guidelines/governance.md` — semver rules, contribution contract, do/don't, deprecation policy
 

@@ -41,7 +41,7 @@ Meet developers where they are; keep the zero-build path as the flagship.
 
 - **Versioned docs** with a version switcher; docs frozen per minor release.
 - **Migration guides + codemods** for every breaking change; deprecation warnings one minor ahead.
-- **Patterns section** (beyond components): forms + validation, empty states, error handling, loading, destructive flows, agent UX (our differentiator — the ai/ group deserves a written playbook).
+- **Patterns section** (beyond components). Started 2026-07-24: `guidelines/patterns.md` covers loading, empty, error, destructive flows and agent surfaces (forms already had `guidelines/forms.md`). Still open: worked examples on the docs site, and a deeper agent-UX playbook for the ai/ group.
 - **Framework guides**: Next.js (RSC/`use client`), Vite, Remix, plain HTML — each with a maintained example repo.
 - **Agent-native docs**: keep llms.txt + `.prompt.md` first-class; publish an MCP server exposing the registry so agents can query components directly.
 
