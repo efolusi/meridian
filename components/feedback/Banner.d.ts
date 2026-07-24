@@ -3,8 +3,9 @@ export interface BannerProps {
   tone?: 'neutral' | 'brand' | 'warning' | 'danger';
   /** Lucide icon name */
   icon?: string;
-  /** Underlined action label */
-  action?: string;
+  /** Action slot: a node (rendered as-is) or, deprecated, a string label used with `onAction`. */
+  action?: React.ReactNode;
+  /** @deprecated pass a node to `action` instead */
   onAction?: () => void;
   /** Shows a dismiss ✕ */
   onDismiss?: () => void;

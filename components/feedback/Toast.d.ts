@@ -3,7 +3,11 @@ export interface ToastProps {
   tone?: 'info' | 'success' | 'warning' | 'danger';
   title: React.ReactNode;
   description?: React.ReactNode;
+  /** Action slot, a node rendered as-is (prevents auto-dismiss per WCAG 2.2.1). */
+  action?: React.ReactNode;
+  /** @deprecated pass a node to `action` instead */
   actionLabel?: string;
+  /** @deprecated pass a node to `action` instead */
   onAction?: () => void;
   /** Shows a dismiss ✕ */
   onClose?: () => void;
@@ -31,11 +35,15 @@ export interface ToastOptions {
   description?: React.ReactNode;
   /** @default 'info' */
   tone?: 'info' | 'success' | 'warning' | 'danger';
+  /** Action slot, a node rendered as-is (prevents auto-dismiss per WCAG 2.2.1). */
+  action?: React.ReactNode;
+  /** @deprecated pass a node to `action` instead */
   actionLabel?: string;
+  /** @deprecated pass a node to `action` instead */
   onAction?: () => void;
   /**
    * ms before auto-dismiss; 0 never dismisses.
-   * @default the Toaster's `duration`, or 0 when `actionLabel` is set — a
+   * @default the Toaster's `duration`, or 0 when `action`/`actionLabel` is set — a
    * control must not vanish on a timer the user cannot adjust (WCAG 2.2.1).
    */
   duration?: number;

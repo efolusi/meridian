@@ -26,7 +26,7 @@ const CSS = `
 @keyframes ef-toast-in{from{opacity:0;transform:translateY(12px) scale(.96)}}
 `;
 const ICONS = { success: 'circle-check', danger: 'circle-alert', warning: 'triangle-alert', info: 'info' };
-export function Toast({ tone = 'info', title, description, actionLabel, onAction, onClose, role = 'status', style, className, ...rest }) {
+export function Toast({ tone = 'info', title, description, action, actionLabel, onAction, onClose, role = 'status', style, className, ...rest }) {
   injectEfCss('ef-css-toast', CSS);
   return (
     <div {...rest} className={`ef-toast ef-toast--${tone}${className ? ' ' + className : ''}`} role={role || undefined} style={style}>
@@ -34,7 +34,7 @@ export function Toast({ tone = 'info', title, description, actionLabel, onAction
       <div style={{ flex: 1 }}>
         <div className="ef-toast__title">{title}</div>
         {description ? <div className="ef-toast__desc">{description}</div> : null}
-        {actionLabel ? <button className="ef-toast__action" onClick={onAction}>{actionLabel}</button> : null}
+        {action ? action : actionLabel ? <button className="ef-toast__action" onClick={onAction}>{actionLabel}</button> : null}
       </div>
       {onClose ? <IconButton icon="x" label="Dismiss" size="sm" onClick={onClose} /> : null}
     </div>
@@ -95,7 +95,7 @@ export function Toaster({ duration = 5000, label = 'Notifications', children, ..
     const { duration: own, ...props } = options || {};
     // A toast carrying an action must not time out: WCAG 2.2.1 does not allow a
     // control to disappear on a timer the user cannot adjust.
-    const ms = own != null ? own : (props.actionLabel ? 0 : duration);
+    const ms = own != null ? own : ((props.action || props.actionLabel) ? 0 : duration);
     setToasts(list => [...list, { id, props }]);
     if (ms > 0) arm(id, ms);
     return id;

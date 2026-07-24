@@ -12,7 +12,7 @@ The credibility layer: nothing markets a system like correctness.
 
 - **Accessibility conformance.** Audit every interactive component against WCAG 2.2 AA: keyboard map, focus order, ARIA roles, `prefers-reduced-motion`. Publish a per-component a11y note on its docs page ("Keyboard", "Screen reader", "Known limits"). Priority: Combobox, CommandPalette, Dialog/Drawer, Menu, DatePicker, RichComposer, Player.
 - **Contrast verification.** Scripted check of every semantic token pair (text-on-surface, accent-contrast, states) in light *and* dark; publish results on the Colors page.
-- **API consistency audit.** One conventions doc (naming: `variant/size/tone`, `defaultX` for uncontrolled, `onX` for events); sweep all 104 props tables against it; deprecate outliers rather than break.
+- ~~**API consistency audit.**~~ Landed 2026-07-24: the drifted props are unified with one-major deprecated aliases — onChange for state-selection, onSelect for command menus, side for placement, format for chart formatting (1.9.0); status for a component's condition, and action=ReactNode across Alert/Banner/Toast (this sweep). Severity stays `tone`, controlled uses `defaultX`, events use `onX`. Every alias is tested (canonical works, alias works, canonical wins).
 - **Browser support matrix + RTL statement.** Test on last 2 versions of evergreen browsers; document logical-properties status and what RTL support is (or isn't) in v1.
 
 **Exit:** an ACCESSIBILITY.md conformance statement an enterprise buyer can hand to their compliance team.

@@ -19,7 +19,7 @@ function Page() {
 
 `notify` returns an id; `dismiss(id)` and `dismissAll()` are on the same object. Tones: `info | success | warning | danger`, defaulting to `info` — pick `success` deliberately rather than making every notification green.
 
-Timing is an accessibility contract, not a preference. Timers pause while the stack is hovered or focused, and **a toast with `actionLabel` never auto-dismisses**, because a control that disappears on a timer the user cannot adjust fails WCAG 2.2.1. Override per call with `duration` (`0` for persistent). The stack owns one live region, so a queue announces once instead of as several competing regions.
+Timing is an accessibility contract, not a preference. Timers pause while the stack is hovered or focused, and **a toast with an `action` (or the legacy `actionLabel`) never auto-dismisses**, because a control that disappears on a timer the user cannot adjust fails WCAG 2.2.1. Override per call with `duration` (`0` for persistent). The stack owns one live region, so a queue announces once instead of as several competing regions.
 
 Use `Toast` and `ToastStack` directly only when you are rendering a fixed, non-queued notification — a specimen, or a message whose lifecycle something else already owns:
 

@@ -2180,14 +2180,17 @@ Full-width strip above the app chrome — trials, incidents, announcements. One 
 </Banner>
 ```
 
+`action` takes a node (rendered as-is); a string label with `onAction` is the legacy form.
+
 ```ts
 export interface BannerProps {
   /** @default 'neutral' */
   tone?: 'neutral' | 'brand' | 'warning' | 'danger';
   /** Lucide icon name */
   icon?: string;
-  /** Underlined action label */
-  action?: string;
+  /** Action slot: a node (rendered as-is) or, deprecated, a string label used with `onAction`. */
+  action?: React.ReactNode;
+  /** @deprecated pass a node to `action` instead */
   onAction?: () => void;
   /** Shows a dismiss ✕ */
   onDismiss?: () => void;
@@ -2367,7 +2370,7 @@ function Page() {
 
 `notify` returns an id; `dismiss(id)` and `dismissAll()` are on the same object. Tones: `info | success | warning | danger`, defaulting to `info` — pick `success` deliberately rather than making every notification green.
 
-Timing is an accessibility contract, not a preference. Timers pause while the stack is hovered or focused, and **a toast with `actionLabel` never auto-dismisses**, because a control that disappears on a timer the user cannot adjust fails WCAG 2.2.1. Override per call with `duration` (`0` for persistent). The stack owns one live region, so a queue announces once instead of as several competing regions.
+Timing is an accessibility contract, not a preference. Timers pause while the stack is hovered or focused, and **a toast with an `action` (or the legacy `actionLabel`) never auto-dismisses**, because a control that disappears on a timer the user cannot adjust fails WCAG 2.2.1. Override per call with `duration` (`0` for persistent). The stack owns one live region, so a queue announces once instead of as several competing regions.
 
 Use `Toast` and `ToastStack` directly only when you are rendering a fixed, non-queued notification — a specimen, or a message whose lifecycle something else already owns:
 
@@ -2383,7 +2386,11 @@ export interface ToastProps {
   tone?: 'info' | 'success' | 'warning' | 'danger';
   title: React.ReactNode;
   description?: React.ReactNode;
+  /** Action slot, a node rendered as-is (prevents auto-dismiss per WCAG 2.2.1). */
+  action?: React.ReactNode;
+  /** @deprecated pass a node to `action` instead */
   actionLabel?: string;
+  /** @deprecated pass a node to `action` instead */
   onAction?: () => void;
   /** Shows a dismiss ✕ */
   onClose?: () => void;
@@ -2411,11 +2418,15 @@ export interface ToastOptions {
   description?: React.ReactNode;
   /** @default 'info' */
   tone?: 'info' | 'success' | 'warning' | 'danger';
+  /** Action slot, a node rendered as-is (prevents auto-dismiss per WCAG 2.2.1). */
+  action?: React.ReactNode;
+  /** @deprecated pass a node to `action` instead */
   actionLabel?: string;
+  /** @deprecated pass a node to `action` instead */
   onAction?: () => void;
   /**
    * ms before auto-dismiss; 0 never dismisses.
-   * @default the Toaster's `duration`, or 0 when `actionLabel` is set — a
+   * @default the Toaster's `duration`, or 0 when `action`/`actionLabel` is set — a
    * control must not vanish on a timer the user cannot adjust (WCAG 2.2.1).
    */
   duration?: number;

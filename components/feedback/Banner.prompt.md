@@ -5,3 +5,5 @@ Full-width strip above the app chrome — trials, incidents, announcements. One 
   <strong>Trial ends in 3 days.</strong> Your workspace pauses after that.
 </Banner>
 ```
+
+`action` takes a node (rendered as-is); a string label with `onAction` is the legacy form.

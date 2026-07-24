@@ -11,6 +11,8 @@ import { Tooltip } from '../components/feedback/Tooltip.jsx';
 import { StatusDot } from '../components/data/StatusDot.jsx';
 import { Sandbox } from '../components/ai/Sandbox.jsx';
 import { Confirmation } from '../components/ai/Confirmation.jsx';
+import { Banner } from '../components/feedback/Banner.jsx';
+import { Toast } from '../components/feedback/Toast.jsx';
 
 // The 1.x vocabulary normalization: every renamed prop keeps its old name as a
 // deprecated alias for one major (guidelines/governance.md), and the canonical
@@ -182,5 +184,25 @@ describe('status vs state (1.9.3 sweep)', () => {
     const { rerender } = render(<Confirmation title="Q" defaultState="approved" data-testid="cf" />);
     expect(screen.getAllByText(/Approved/).length).toBeGreaterThan(0);
     rerender(<Confirmation title="Q" defaultStatus="approved" data-testid="cf" />);
+  });
+});
+
+describe('action shape (1.9.3 sweep): action=ReactNode is canonical', () => {
+  it('Banner renders a node action as-is, and a string label (legacy) as a button', () => {
+    const { rerender } = render(<Banner action={<a href="#x">Go</a>}>msg</Banner>);
+    expect(screen.getByRole('link', { name: 'Go' })).toBeTruthy();
+    const onAction = vi.fn();
+    rerender(<Banner action="Undo" onAction={onAction}>msg</Banner>);
+    const btn = screen.getByRole('button', { name: 'Undo' });
+    btn.click();
+    expect(onAction).toHaveBeenCalled();
+  });
+  it('Toast renders a node action, and actionLabel+onAction (legacy) as a button', () => {
+    const { rerender } = render(<Toast title="T" action={<button>Retry</button>} />);
+    expect(screen.getByRole('button', { name: 'Retry' })).toBeTruthy();
+    const onAction = vi.fn();
+    rerender(<Toast title="T" actionLabel="Undo" onAction={onAction} />);
+    screen.getByRole('button', { name: 'Undo' }).click();
+    expect(onAction).toHaveBeenCalled();
   });
 });
