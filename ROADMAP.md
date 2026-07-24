@@ -31,7 +31,7 @@ Meet developers where they are; keep the zero-build path as the flagship.
 ## Phase 3 — Quality infrastructure
 
 - ~~Visual regression.~~ Landed 2026-07-22: the smoke run captures one PNG per example group per theme (26 shots), `scripts/check_visual.mjs` gates every push/PR against `tests/__shots__` baselines with pixelmatch, and the `update-visual-baselines` workflow refreshes them via a reviewable PR (baselines are CI-born; local rasterisation differs by platform).
-- **Interaction tests** for the stateful ten (Combobox, CommandPalette, Dialog, Menu, DatePicker, Slider, RichComposer, Player, PromptSteps, Toast) — keyboard-driven, not click-only.
+- ~~**Interaction tests** for the stateful ten.~~ Landed 2026-07-24: keyboard/interaction tests now cover all ten. The four that lacked one (Slider, RichComposer, PromptSteps, and Player's keyboard seek) shipped in `tests/interaction-stateful.test.jsx`; the rest have `tests/keyboard-*.test.jsx` or `wave1.test.jsx` (Combobox). Suite at 246 tests.
 - **Token adherence lint** in CI (the adherence config already exists — enforce it).
 - ~~**Performance budget** (the size-regression gate).~~ Landed 2026-07-24: `scripts/check_size.mjs` gates `_ds_bundle.js`, `dist/components.css` and the npm `dist/` total against `scripts/size_budget.json` inside `npm run check`; the budget grows only through a committed `--update`, so every size increase is a reviewed act. Still open: a per-component cost table in the docs.
 
