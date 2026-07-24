@@ -5,7 +5,10 @@ name: publish
 # short-lived identity token for this exact workflow, and npm verifies it against
 # the trusted publisher configured on the package.
 #
-# One-time setup on npmjs.com under the package's Settings -> Trusted Publisher:
+# This is a monorepo: it publishes THREE packages in lockstep at one version —
+# the @efolusi/meridian umbrella plus the standalone @efolusi/meridian-tokens and
+# @efolusi/meridian-icons. Each is a separate npm package and needs its OWN
+# one-time Trusted Publisher on npmjs.com, all pointing at the same source:
 #   Provider    GitHub Actions
 #   Repository  efolusi/meridian     (case sensitive)
 #   Workflow    publish.yml
@@ -13,6 +16,13 @@ name: publish
 # A misconfigured trusted publisher surfaces as a bare 404 on publish, which
 # means "npm rejected the OIDC identity", not "package missing" — check the
 # repository spelling, the workflow filename, and the environment name.
+#
+# First publish of a NEW package cannot use OIDC (npm only shows the Trusted
+# Publisher settings once a package exists), so a brand-new sub-package needs one
+# manual `npm publish ./packages/<name>/dist --access public` to create it,
+# then its trusted publisher configured. After that the pipeline maintains it.
+# The publish step is idempotent, so a version already on the registry is skipped
+# and a partially-failed run re-runs cleanly.
 #
 # Three ways in:
 #   push to main   — THE NORMAL PATH. When _ds_manifest.json carries a version
@@ -157,13 +167,37 @@ jobs:
           echo "$NAME@$PKG is not on the registry yet"
 
       - name: Pack (what would ship)
-        run: npm pack ./dist --dry-run
+        # All three packages of the monorepo: the umbrella and the two standalone
+        # sub-packages. npm run check above built each one's dist/.
+        run: |
+          for d in dist packages/tokens/dist packages/icons/dist; do
+            echo "== $d"
+            npm pack "./$d" --dry-run
+          done
 
       - name: Publish
         if: github.event_name != 'workflow_dispatch' || inputs.dry_run == false
         # No NODE_AUTH_TOKEN: the OIDC identity above is the credential.
-        # Provenance is attached automatically when publishing this way.
-        run: npm publish ./dist --access public
+        # Provenance is attached automatically. Each publish is idempotent: a
+        # version already on the registry is skipped, so a run that failed
+        # partway (a sub-package's trusted publisher not yet set) re-runs cleanly
+        # instead of deadlocking on npm's immutability.
+        run: |
+          publish_if_new() {
+            local dir="$1"
+            local name ver
+            name="$(node -p "require('./$dir/package.json').name")"
+            ver="$(node -p "require('./$dir/package.json').version")"
+            if npm view "$name@$ver" version >/dev/null 2>&1; then
+              echo "$name@$ver already published — skipping"
+            else
+              echo "publishing $name@$ver from $dir"
+              npm publish "./$dir" --access public
+            fi
+          }
+          publish_if_new dist
+          publish_if_new packages/tokens/dist
+          publish_if_new packages/icons/dist
 
       # The auto path finishes the paperwork the human used to do. Releases
       # created with GITHUB_TOKEN do not trigger other workflows, so this cannot
