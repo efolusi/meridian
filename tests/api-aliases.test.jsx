@@ -8,6 +8,9 @@ import { WebPreview } from '../components/ai/WebPreview.jsx';
 import { ModelSelector } from '../components/ai/ModelSelector.jsx';
 import { BarChart } from '../components/data/BarChart.jsx';
 import { Tooltip } from '../components/feedback/Tooltip.jsx';
+import { StatusDot } from '../components/data/StatusDot.jsx';
+import { Sandbox } from '../components/ai/Sandbox.jsx';
+import { Confirmation } from '../components/ai/Confirmation.jsx';
 
 // The 1.x vocabulary normalization: every renamed prop keeps its old name as a
 // deprecated alias for one major (guidelines/governance.md), and the canonical
@@ -138,5 +141,46 @@ describe("ModelSelector side 'up'/'down' -> 'top'/'bottom'", () => {
     expect(screen.getByTestId('ms').className).not.toContain('ef-modelsel--down');
     rerender(<ModelSelector data-testid="ms" models={models} />);
     expect(screen.getByTestId('ms').className).not.toContain('ef-modelsel--down');
+  });
+});
+
+describe('status vs state (1.9.3 sweep)', () => {
+  it('StatusDot: status is canonical, state is the alias, status wins', () => {
+    const { rerender } = render(<StatusDot status="err" label="API" />);
+    let dot = document.querySelector('.ef-status');
+    expect(dot.className).toContain('ef-status--err');
+    rerender(<StatusDot state="err" label="API" />); // alias still works
+    expect(document.querySelector('.ef-status').className).toContain('ef-status--err');
+    rerender(<StatusDot status="ok" state="err" label="API" />); // canonical wins
+    dot = document.querySelector('.ef-status');
+    expect(dot.className).toContain('ef-status--ok');
+    expect(dot.className).not.toContain('ef-status--err');
+  });
+
+  it('StatusDot: statusLabel is canonical, stateLabel the alias', () => {
+    render(<StatusDot status="warn" statusLabel="Degraded" />);
+    expect(screen.getByRole('img', { name: 'Degraded' })).toBeTruthy();
+  });
+
+  it('Sandbox: state alias maps to status', () => {
+    const { rerender } = render(<Sandbox title="x" status="error" data-testid="sb" />);
+    expect(screen.getByTestId('sb').className).toContain('ef-sandbox--error');
+    rerender(<Sandbox title="x" state="error" data-testid="sb" />);
+    expect(screen.getByTestId('sb').className).toContain('ef-sandbox--error');
+  });
+
+  it('Confirmation: the whole triad aliases (status/defaultStatus/onStatusChange)', async () => {
+    const user = userEvent.setup();
+    const onStatusChange = vi.fn();
+    render(<Confirmation title="Deploy?" onStatusChange={onStatusChange} />);
+    await user.click(screen.getByRole('button', { name: 'Approve' }));
+    expect(onStatusChange).toHaveBeenCalledWith('approved');
+    // controlled via the canonical `status`
+    const onOld = vi.fn();
+    render(<Confirmation title="Deploy?" status="rejected" onStateChange={onOld} />);
+    // the old onStateChange still fires when the new one is absent
+    const { rerender } = render(<Confirmation title="Q" defaultState="approved" data-testid="cf" />);
+    expect(screen.getAllByText(/Approved/).length).toBeGreaterThan(0);
+    rerender(<Confirmation title="Q" defaultStatus="approved" data-testid="cf" />);
   });
 });

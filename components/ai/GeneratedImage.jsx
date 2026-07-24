@@ -29,17 +29,18 @@ const CSS = `
 .ef-genimg__retry{display:inline-flex;align-items:center;gap:6px;padding:7px 13px;border:1px solid var(--border-strong);border-radius:var(--radius-full);background:var(--surface-card);cursor:pointer;font-family:var(--font-sans);font-size:12.5px;font-weight:var(--weight-semibold);color:var(--text-primary)}
 .ef-genimg__err{color:var(--danger-600)}
 `;
-export function GeneratedImage({ state = 'complete', src, alt, prompt, aspect = 'square', error, onRetry, actions, style, className, ...rest }) {
+export function GeneratedImage({ status, state, src, alt, prompt, aspect = 'square', error, onRetry, actions, style, className, ...rest }) {
+  const s = status ?? state ?? 'complete'; // `state` is a deprecated alias for `status`
   injectEfCss('ef-css-genimg', CSS);
   return (
-    <div {...rest} className={`ef-genimg ef-genimg--${aspect} ef-genimg--${state}${className ? ' ' + className : ''}`} style={style} data-state={state}>
-      {src && (state === 'complete' || state === 'error') ? <img className="ef-genimg__img" src={src} alt={alt || prompt || ''} /> : null}
-      <div className="ef-genimg__dark">{state === 'generating' ? <div className="ef-genimg__dots"></div> : null}</div>
+    <div {...rest} className={`ef-genimg ef-genimg--${aspect} ef-genimg--${s}${className ? ' ' + className : ''}`} style={style} data-state={s}>
+      {src && (s === 'complete' || s === 'error') ? <img className="ef-genimg__img" src={src} alt={alt || prompt || ''} /> : null}
+      <div className="ef-genimg__dark">{s === 'generating' ? <div className="ef-genimg__dots"></div> : null}</div>
       <div className="ef-genimg__scrim ef-genimg__scrim--top" aria-hidden="true"></div>
       {prompt ? <div className="ef-genimg__prompt">{prompt}</div> : null}
-      {state === 'queued' ? <div className="ef-genimg__center"><Icon name="image" size={20} /><span>Queued…</span></div> : null}
-      {state === 'generating' ? <div className="ef-genimg__status">Generating…</div> : null}
-      {state === 'error' ? (
+      {s === 'queued' ? <div className="ef-genimg__center"><Icon name="image" size={20} /><span>Queued…</span></div> : null}
+      {s === 'generating' ? <div className="ef-genimg__status">Generating…</div> : null}
+      {s === 'error' ? (
         <div className="ef-genimg__center">
           <span className="ef-genimg__err"><Icon name="circle-alert" size={20} /></span>
           <span className="ef-genimg__err">{error || 'Generation failed'}</span>
