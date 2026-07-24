@@ -31,9 +31,9 @@ Meet developers where they are; keep the zero-build path as the flagship.
 ## Phase 3 — Quality infrastructure
 
 - ~~Visual regression.~~ Landed 2026-07-22: the smoke run captures one PNG per example group per theme (26 shots), `scripts/check_visual.mjs` gates every push/PR against `tests/__shots__` baselines with pixelmatch, and the `update-visual-baselines` workflow refreshes them via a reviewable PR (baselines are CI-born; local rasterisation differs by platform).
-- **Interaction tests** for the stateful ten (Combobox, CommandPalette, Dialog, Menu, DatePicker, Slider, RichComposer, Player, PromptSteps, Toast) — keyboard-driven, not click-only.
+- ~~**Interaction tests** for the stateful ten.~~ Landed 2026-07-24: keyboard/interaction tests now cover all ten. The four that lacked one (Slider, RichComposer, PromptSteps, and Player's keyboard seek) shipped in `tests/interaction-stateful.test.jsx`; the rest have `tests/keyboard-*.test.jsx` or `wave1.test.jsx` (Combobox). Suite at 246 tests.
 - **Token adherence lint** in CI (the adherence config already exists — enforce it).
-- **Performance budget.** Bundle size tracked per release; per-component cost table in docs.
+- ~~**Performance budget** (the size-regression gate).~~ Landed 2026-07-24: `scripts/check_size.mjs` gates `_ds_bundle.js`, `dist/components.css` and the npm `dist/` total against `scripts/size_budget.json` inside `npm run check`; the budget grows only through a committed `--update`, so every size increase is a reviewed act. Still open: a per-component cost table in the docs.
 
 **Exit:** a PR can't merge if it breaks a demo, a keyboard path, or the size budget.
 
@@ -41,8 +41,8 @@ Meet developers where they are; keep the zero-build path as the flagship.
 
 - **Versioned docs** with a version switcher; docs frozen per minor release.
 - **Migration guides + codemods** for every breaking change; deprecation warnings one minor ahead.
-- **Patterns section** (beyond components): forms + validation, empty states, error handling, loading, destructive flows, agent UX (our differentiator — the ai/ group deserves a written playbook).
-- **Framework guides**: Next.js (RSC/`use client`), Vite, Remix, plain HTML — each with a maintained example repo.
+- **Patterns section** (beyond components). Started 2026-07-24: `guidelines/patterns.md` covers loading, empty, error, destructive flows and agent surfaces (forms already had `guidelines/forms.md`). Still open: worked examples on the docs site, and a deeper agent-UX playbook for the ai/ group.
+- **Framework guides**: Next.js (RSC/`use client`), Vite, Remix, plain HTML. Landed 2026-07-24: `guidelines/frameworks.md` documents all four with the real gotchas (the styles import location, the built-in `"use client"`, React 18 UMD pinning for the CDN path, vendoring). Still open (needs an owner decision): a *maintained example repo* per framework.
 - **Agent-native docs**: keep llms.txt + `.prompt.md` first-class; publish an MCP server exposing the registry so agents can query components directly.
 
 ## Phase 5 — Design assets
