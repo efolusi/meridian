@@ -42,7 +42,7 @@ Meet developers where they are; keep the zero-build path as the flagship.
 - **Versioned docs** with a version switcher; docs frozen per minor release.
 - **Migration guides + codemods** for every breaking change; deprecation warnings one minor ahead.
 - **Patterns section** (beyond components). Started 2026-07-24: `guidelines/patterns.md` covers loading, empty, error, destructive flows and agent surfaces (forms already had `guidelines/forms.md`). Still open: worked examples on the docs site, and a deeper agent-UX playbook for the ai/ group.
-- **Framework guides**: Next.js (RSC/`use client`), Vite, Remix, plain HTML — each with a maintained example repo.
+- **Framework guides**: Next.js (RSC/`use client`), Vite, Remix, plain HTML. Landed 2026-07-24: `guidelines/frameworks.md` documents all four with the real gotchas (the styles import location, the built-in `"use client"`, React 18 UMD pinning for the CDN path, vendoring). Still open (needs an owner decision): a *maintained example repo* per framework.
 - **Agent-native docs**: keep llms.txt + `.prompt.md` first-class; publish an MCP server exposing the registry so agents can query components directly.
 
 ## Phase 5 — Design assets
