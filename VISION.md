@@ -75,8 +75,9 @@ This is Meridian's definition of done, applied to every release. Most of it is m
 - Meridian is built to be found and *correctly used* by generative engines, not only search crawlers. `llms.txt` and the generated `llms-full.txt` (every component's prompt guide plus its typed interface and the token names, in one file), the per-component `.prompt.md`, and the machine-readable registry give a model everything it needs to recommend Meridian and write correct Meridian code on the first try.
 - **Growing:** the AI corpus stays generated, never hand-drifted, so it cannot fall out of sync with the components; the studio, the install paths and the component facts are stated in plain prose a model can lift, never locked inside images.
 
-### Internationalization, id and en — open
+### Internationalization, id and en — started
 - The target is Indonesian and English as first-class: the docs available in both, and locale-aware behaviour where it actually matters (Calendar, DatePicker and NumberInput formatting and parsing).
+- **Landed:** NumberInput takes a `locale` (BCP 47) and formats/parses through `Intl.NumberFormat` — `id` shows `1.234,5`, `en` shows `1,234.5`, each parsing its own format back exactly. Additive: no locale keeps plain output, an explicit `format`/`parse` still wins. **Next slice:** the same treatment for Calendar and DatePicker; then bilingual docs.
 - Every component already takes its text from the consumer — labels, empty-state copy, error copy are props — so an app can localise *around* Meridian today, even while the system itself is English-first.
 - RTL is honestly **not supported in 1.x** (physical CSS properties in places); the path is logical properties, tracked in ROADMAP. i18n makes no RTL claim until a mirrored screen has been reviewed.
 
