@@ -13,6 +13,7 @@ import { Sandbox } from '../components/ai/Sandbox.jsx';
 import { Confirmation } from '../components/ai/Confirmation.jsx';
 import { Banner } from '../components/feedback/Banner.jsx';
 import { Toast } from '../components/feedback/Toast.jsx';
+import { EnvList } from '../components/code/EnvList.jsx';
 
 // The 1.x vocabulary normalization: every renamed prop keeps its old name as a
 // deprecated alias for one major (guidelines/governance.md), and the canonical
@@ -204,5 +205,20 @@ describe('action shape (1.9.3 sweep): action=ReactNode is canonical', () => {
     rerender(<Toast title="T" actionLabel="Undo" onAction={onAction} />);
     screen.getByRole('button', { name: 'Undo' }).click();
     expect(onAction).toHaveBeenCalled();
+  });
+});
+
+describe('EnvList defaultVisible -> defaultOpen', () => {
+  const vars = [{ name: 'API_KEY', value: 'sk-live-42', secret: true }];
+  it('reveals via defaultOpen (canonical) or the deprecated defaultVisible, canonical winning', () => {
+    const { unmount } = render(<EnvList vars={vars} defaultOpen />);
+    expect(screen.getByText('sk-live-42')).toBeTruthy();
+    unmount();
+    const { unmount: u2 } = render(<EnvList vars={vars} defaultVisible />);
+    expect(screen.getByText('sk-live-42')).toBeTruthy();
+    u2();
+    // canonical wins: defaultOpen={false} keeps the secret masked despite the alias
+    render(<EnvList vars={vars} defaultOpen={false} defaultVisible />);
+    expect(screen.queryByText('sk-live-42')).toBeNull();
   });
 });

@@ -1085,6 +1085,9 @@ export interface EnvVar {
 export interface EnvListProps {
   title?: string;
   vars: EnvVar[];
+  /** Reveal secret values on mount. @default false */
+  defaultOpen?: boolean;
+  /** @deprecated use `defaultOpen` */
   defaultVisible?: boolean;
   style?: React.CSSProperties;
   className?: string;

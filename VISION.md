@@ -57,10 +57,10 @@ This is Meridian's definition of done, applied to every release. Most of it is m
 - Fonts ship as WOFF2, licences travel with the fonts and icons, `LICENSE` and `THIRD_PARTY_NOTICES` are in the package.
 - Types compile against `@types/react` 18 and 19.
 
-### Testing and regression — met, growing
-- 230+ tests across 22 files: keyboard contracts, wiring, SSR, alias compatibility, hydration.
+### Testing and regression — met, gated
+- 250+ tests across 23 files: keyboard contracts, wiring, SSR, alias compatibility, hydration, stateful interaction.
 - Visual regression: 26 group screenshots per theme, gated against baselines with pixelmatch, refreshed through a reviewable PR.
-- **Open (ROADMAP Phase 3):** interaction tests for the last few stateful components; a per-release size budget.
+- Interaction tests cover the stateful components (Slider, RichComposer, PromptSteps, Player); a per-release size budget (`scripts/check_size.mjs`) fails the build on bundle or package bloat.
 
 ### Release operations — met
 - Published to npm with provenance via Trusted Publishing (OIDC): no token stored anywhere.
@@ -150,12 +150,14 @@ Releasing is a human act. The loop's output is reviewed diffs, never a shipped v
 
 Ordered by value. Each is verifiable by the existing gates plus its own new test. Confirm the gap before starting each, per step 2.
 
-1. **Size budget gate.** Add `scripts/check_size.mjs` that records the built bundle and npm `dist/` sizes and fails on a regression past a set threshold; wire it into `check_all.mjs` and prove it fails on synthetic bloat. (ROADMAP Phase 3.)
-2. **Interaction tests for the still-uncovered stateful components.** Verify which of Slider, RichComposer, PromptSteps and Toast lack a keyboard test, then add one file each, matching `tests/keyboard-*.test.jsx`. (Phase 3.)
-3. **Finish the API-conventions sweep, with aliases.** One action-prop shape across Alert / Banner / Toast; unify `status` vs `state`; `defaultVisible` to `defaultOpen`. Deprecated aliases, never a break, canonical-wins tests. (Phase 1 / appendix.)
-4. **Remove the last hand-maintained lists.** If SiteSearch's `PAGES`/`DOCS` are still hand-authored, derive them from the registry the way the smoke `FILES` list already is; prove a new page appears without editing an array. (Appendix.)
-5. **Patterns docs** (additive pages): forms and validation, empty states, error handling, loading, destructive flows, and an agent-UX playbook for the `ai/` group. Render plus smoke pass. (Phase 4.)
-6. **Framework guide pages**: Next.js App Router (`use client`), Vite, Remix, plain HTML, each accurate against the real 1.9.x package. (Phase 4.)
+1. ~~**Size budget gate.**~~ Shipped: `scripts/check_size.mjs` records the built bundle and npm `dist/` sizes and fails on a regression past `scripts/size_budget.json`, wired into `check_all.mjs`.
+2. ~~**Interaction tests for the still-uncovered stateful components.**~~ Shipped: `tests/interaction-stateful.test.jsx` covers Slider, RichComposer, PromptSteps and Player.
+3. ~~**Finish the API-conventions sweep, with aliases.**~~ Shipped: `action` is a `ReactNode` across Alert / Banner / Toast; `status` is canonical over `state`; `defaultOpen` is canonical over `defaultVisible` (EnvList). Deprecated aliases, canonical-wins tests in `tests/api-aliases.test.jsx`.
+4. **Remove the last hand-maintained lists.** SiteSearch's `PAGES`/`DOCS` are still hand-authored arrays. The original framing (mirror a smoke `FILES` list) is stale — no such list exists, and the site nav is duplicated across each `.dc.html` header rather than sourced from a manifest. Deriving these needs a small `site/nav` generator; low priority (the lists change rarely) and left for an owner call in ROADMAP.
+5. ~~**Patterns docs.**~~ Shipped: `guidelines/patterns.md` (product-state playbook) and `guidelines/frameworks.md`, linked from the README.
+6. ~~**Framework guide pages.**~~ Shipped as `guidelines/frameworks.md`: Next.js App Router (`use client`), Vite, Remix, plain HTML/CDN.
+
+**Still open, larger, needs an owner decision (not loop-safe):** internationalization (id/en) — bilingual docs and locale-aware Calendar / DatePicker / NumberInput; the i18n section above is the target, and RTL stays out of 1.x.
 
 **Excluded from the loop (a human must decide first):** versioned-docs tooling, an MCP server, the Figma library, a standalone icon package, CLA vs DCO, and the analytics stance. These are in ROADMAP.md under decision points; the loop does not touch them.
 

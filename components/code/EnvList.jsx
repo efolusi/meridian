@@ -34,9 +34,9 @@ function Row({ v, visible }) {
     </div>
   );
 }
-export function EnvList({ title = 'Environment', vars = [], defaultVisible = false, style, className, ...rest }) {
+export function EnvList({ title = 'Environment', vars = [], defaultOpen, defaultVisible, style, className, ...rest }) {
   injectEfCss('ef-css-env', CSS);
-  const [visible, setVisible] = React.useState(!!defaultVisible);
+  const [visible, setVisible] = React.useState(!!(defaultOpen ?? defaultVisible ?? false));
   const hasSecrets = vars.some(v => v.secret);
   return (
     <div {...rest} className={`ef-env${className ? ' ' + className : ''}`} style={style}>
