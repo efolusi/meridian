@@ -2,6 +2,8 @@ import { describe, it, expect, vi } from 'vitest';
 import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { NumberInput } from '../components/forms/NumberInput.jsx';
+import { Calendar } from '../components/dates/Calendar.jsx';
+import { DatePicker } from '../components/dates/DatePicker.jsx';
 
 // First i18n slice: locale-aware number formatting and parsing. The default
 // (no locale) stays plain and unchanged; locale is purely additive.
@@ -33,5 +35,30 @@ describe('NumberInput locale (i18n)', () => {
   it('an explicit format wins over locale', () => {
     render(<NumberInput aria-label="n" locale="id" format={n => n + ' rb'} value={5} onChange={() => {}} />);
     expect(screen.getByLabelText('n').value).toBe('5 rb');
+  });
+});
+
+describe('Calendar locale (i18n)', () => {
+  it('localises month and weekday names for id', () => {
+    render(<Calendar value="2026-01-15" locale="id" onChange={() => {}} />);
+    expect(screen.getByText('Januari 2026')).toBeTruthy();
+    // weekday column header: short text "Sen", accessible name "Senin"
+    expect(screen.getByRole('columnheader', { name: 'Senin' })).toBeTruthy();
+  });
+
+  it('keeps English names without a locale (unchanged default)', () => {
+    render(<Calendar value="2026-01-15" onChange={() => {}} />);
+    expect(screen.getByText('January 2026')).toBeTruthy();
+    expect(screen.getByRole('columnheader', { name: 'Monday' })).toBeTruthy();
+  });
+});
+
+describe('DatePicker locale (i18n)', () => {
+  it('formats the trigger label per locale, en-US by default', () => {
+    const { unmount } = render(<DatePicker value="2026-01-15" onChange={() => {}} />);
+    expect(screen.getByRole('button').textContent).toContain('Jan 15, 2026');
+    unmount();
+    render(<DatePicker value="2026-01-15" locale="id" onChange={() => {}} />);
+    expect(screen.getByRole('button').textContent).toContain('15 Jan 2026');
   });
 });

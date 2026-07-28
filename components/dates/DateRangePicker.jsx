@@ -21,9 +21,9 @@ const CSS = `
 .ef-daterange__pop{background:var(--surface-card);border:1px solid var(--border-strong);border-radius:var(--radius-md);box-shadow:var(--shadow-md);padding:12px;z-index:var(--z-dropdown);animation:ef-drp-in var(--dur-fast) var(--ease-out)}
 @keyframes ef-drp-in{from{opacity:0;transform:translateY(-3px)}}
 `;
-const fmt = v => { if (!v) return null; const d = new Date(v + 'T00:00:00'); return d.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' }); };
+const fmt = (v, locale) => { if (!v) return null; const d = new Date(v + 'T00:00:00'); return d.toLocaleDateString(locale || 'en-US', { month: 'short', day: 'numeric', year: 'numeric' }); };
 const EMPTY = { from: null, to: null };
-export function DateRangePicker({ label, hint, value, onChange, min, max, placeholder = 'Pick a date range', disabled, style, className, ...rest }) {
+export function DateRangePicker({ label, hint, value, onChange, min, max, placeholder = 'Pick a date range', disabled, locale, style, className, ...rest }) {
   injectEfCss('ef-css-daterange', CSS);
   // Picks up id / aria wiring when nested in a FormField; standalone this is a no-op.
   const field = useFieldProps({ id: rest.id, 'aria-describedby': rest['aria-describedby'] });
@@ -61,7 +61,7 @@ export function DateRangePicker({ label, hint, value, onChange, min, max, placeh
     if (r.from && r.to) { setOpen(false); if (btnRef.current) btnRef.current.focus(); }
   };
   const clear = () => { commit(EMPTY); if (btnRef.current) btnRef.current.focus(); };
-  const text = from || to ? `${fmt(from) || '…'} — ${fmt(to) || '…'}` : null;
+  const text = from || to ? `${fmt(from, locale) || '…'} — ${fmt(to, locale) || '…'}` : null;
   return (
     <span {...rest} ref={rootRef} className={`ef-daterange${className ? ' ' + className : ''}`} style={style}>
       {label ? <span className="ef-daterange__label">{label}</span> : null}
@@ -78,7 +78,7 @@ export function DateRangePicker({ label, hint, value, onChange, min, max, placeh
       {open && (
         <Portal>
           <div ref={panelRef} className="ef-daterange__pop" style={anchored}>
-            <Calendar range value={{ from, to }} onChange={handlePick} />
+            <Calendar range value={{ from, to }} locale={locale} onChange={handlePick} />
           </div>
         </Portal>
       )}

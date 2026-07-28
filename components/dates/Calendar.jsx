@@ -22,8 +22,30 @@ const DOW = ['Mo', 'Tu', 'We', 'Th', 'Fr', 'Sa', 'Su'];
 const DOW_FULL = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'];
 const MONTHS = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
 const iso = d => d.getFullYear() + '-' + String(d.getMonth() + 1).padStart(2, '0') + '-' + String(d.getDate()).padStart(2, '0');
-export function Calendar({ value, onChange, range, style, className, ...rest }) {
+// Month, weekday and full-date names for a locale, from Intl. Reference dates:
+// 2024-01-01 is a Monday, so index 0..6 is Monday..Sunday — matching the grid,
+// which stays Monday-first for every locale (week-start localisation depends on
+// Intl.Locale weekInfo, which is not portable, so it is deliberately out of scope).
+const EN = { months: MONTHS, dow: DOW, dowFull: DOW_FULL, dayLabel: d => `${d.getDate()} ${MONTHS[d.getMonth()]} ${d.getFullYear()}` };
+function localeNames(locale) {
+  if (!locale) return EN;
+  const mLong = new Intl.DateTimeFormat(locale, { month: 'long' });
+  const dShort = new Intl.DateTimeFormat(locale, { weekday: 'short' });
+  const dLong = new Intl.DateTimeFormat(locale, { weekday: 'long' });
+  const dayFmt = new Intl.DateTimeFormat(locale, { day: 'numeric', month: 'long', year: 'numeric' });
+  return {
+    months: Array.from({ length: 12 }, (_, i) => mLong.format(new Date(2024, i, 1))),
+    dow: Array.from({ length: 7 }, (_, i) => dShort.format(new Date(2024, 0, 1 + i))),
+    dowFull: Array.from({ length: 7 }, (_, i) => dLong.format(new Date(2024, 0, 1 + i))),
+    dayLabel: d => dayFmt.format(d),
+  };
+}
+export function Calendar({ value, onChange, range, locale, style, className, ...rest }) {
   injectEfCss('ef-css-cal', CSS);
+  // Names localise when `locale` is set; without it the English constants are
+  // used unchanged, so this is additive.
+  const L = React.useMemo(() => localeNames(locale), [locale]);
+  const { months: MONTHS_L, dow: DOW_L, dowFull: DOW_FULL_L, dayLabel } = L;
   // In range mode value is { from, to } of ISO strings (either may be null);
   // without the prop everything below behaves exactly as before.
   const from = range && value ? value.from || null : null;
@@ -85,12 +107,12 @@ export function Calendar({ value, onChange, range, style, className, ...rest }) 
     <div {...rest} className={`ef-cal${className ? ' ' + className : ''}`} style={style}>
       <div className="ef-cal__head">
         <IconButton icon="chevron-left" label="Previous month" size="sm" onClick={() => setView(m === 0 ? [y - 1, 11] : [y, m - 1])} />
-        <span className="ef-cal__month" aria-live="polite">{MONTHS[m]} {y}</span>
+        <span className="ef-cal__month" aria-live="polite">{MONTHS_L[m]} {y}</span>
         <IconButton icon="chevron-right" label="Next month" size="sm" onClick={() => setView(m === 11 ? [y + 1, 0] : [y, m + 1])} />
       </div>
-      <div role="grid" ref={gridRef} onKeyDown={onGridKey} aria-label={`${MONTHS[m]} ${y}`} className="ef-cal__grid">
+      <div role="grid" ref={gridRef} onKeyDown={onGridKey} aria-label={`${MONTHS_L[m]} ${y}`} className="ef-cal__grid">
         <div role="row" className="ef-cal__row">
-          {DOW.map((d, i) => <span key={d} role="columnheader" aria-label={DOW_FULL[i]} className="ef-cal__dow">{d}</span>)}
+          {DOW_L.map((d, i) => <span key={i} role="columnheader" aria-label={DOW_FULL_L[i]} className="ef-cal__dow">{d}</span>)}
         </div>
         {rows.map((row, ri) => (
           <div role="row" className="ef-cal__row" key={ri}>
@@ -102,7 +124,7 @@ export function Calendar({ value, onChange, range, style, className, ...rest }) 
                 <button key={id} role="gridcell" data-iso={id} tabIndex={id === focusTarget ? 0 : -1}
                   aria-selected={range ? (from || to ? isEnd : undefined) : sel ? id === iso(sel) : undefined}
                   aria-current={id === today ? 'date' : undefined}
-                  aria-label={`${d.getDate()} ${MONTHS[d.getMonth()]} ${d.getFullYear()}`}
+                  aria-label={dayLabel(d)}
                   className={`ef-cal__day${d.getMonth() !== m ? ' ef-cal__day--out' : ''}${id === today ? ' ef-cal__day--today' : ''}${(range ? isEnd : sel && id === iso(sel)) ? ' ef-cal__day--sel' : ''}${inBand ? ' ef-cal__day--band' : ''}`}
                   onClick={() => pick(id)}>{d.getDate()}</button>
               );

@@ -15,6 +15,8 @@ export interface DateRangePickerProps extends Omit<React.HTMLAttributes<HTMLSpan
   /** @default 'Pick a date range' */
   placeholder?: string;
   disabled?: boolean;
+  /** BCP 47 locale for the trigger's date labels and the calendar's names via Intl (e.g. 'id', 'en'); omit for en-US. */
+  locale?: string;
   style?: React.CSSProperties;
   className?: string;
 }

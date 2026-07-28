@@ -77,7 +77,7 @@ This is Meridian's definition of done, applied to every release. Most of it is m
 
 ### Internationalization, id and en — started
 - The target is Indonesian and English as first-class: the docs available in both, and locale-aware behaviour where it actually matters (Calendar, DatePicker and NumberInput formatting and parsing).
-- **Landed:** NumberInput takes a `locale` (BCP 47) and formats/parses through `Intl.NumberFormat` — `id` shows `1.234,5`, `en` shows `1,234.5`, each parsing its own format back exactly. Additive: no locale keeps plain output, an explicit `format`/`parse` still wins. **Next slice:** the same treatment for Calendar and DatePicker; then bilingual docs.
+- **Landed:** locale-aware formatting via `Intl`, all additive (no `locale` keeps the English/plain default). NumberInput takes a `locale` (BCP 47) and formats/parses numbers — `id` shows `1.234,5`, `en` shows `1,234.5`, each parsing its own format back exactly (an explicit `format`/`parse` still wins). Calendar, DatePicker and DateRangePicker take a `locale` for month and weekday names and the trigger's date label — `id` renders "Januari", "Sen", "15 Jan 2026". The calendar grid stays Monday-first for every locale (week-start localisation depends on non-portable `Intl.Locale` weekInfo). **Next slice:** bilingual (id/en) docs.
 - Every component already takes its text from the consumer — labels, empty-state copy, error copy are props — so an app can localise *around* Meridian today, even while the system itself is English-first.
 - RTL is honestly **not supported in 1.x** (physical CSS properties in places); the path is logical properties, tracked in ROADMAP. i18n makes no RTL claim until a mirrored screen has been reviewed.
 

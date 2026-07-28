@@ -10,6 +10,8 @@ export interface CalendarProps extends Omit<React.HTMLAttributes<HTMLDivElement>
   /** Selected date as YYYY-MM-DD */
   value?: string;
   onChange?: (date: string) => void;
+  /** BCP 47 locale for month and weekday names via Intl (e.g. 'id', 'en'); omit for English. The grid stays Monday-first for every locale. */
+  locale?: string;
   style?: React.CSSProperties;
   className?: string;
 }
@@ -18,6 +20,8 @@ export interface CalendarRangeProps extends Omit<React.HTMLAttributes<HTMLDivEle
   range: true;
   value?: DateRange;
   onChange?: (range: DateRange) => void;
+  /** BCP 47 locale for month and weekday names via Intl (e.g. 'id', 'en'); omit for English. The grid stays Monday-first for every locale. */
+  locale?: string;
   style?: React.CSSProperties;
   className?: string;
 }

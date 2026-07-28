@@ -1543,6 +1543,12 @@ Month grid — hairline today ring, ink selected day, ISO string in/out. `range`
 <Calendar range value={{ from, to }} onChange={setRange} />
 ```
 
+Pass `locale` (a BCP 47 tag) to localise month and weekday names via Intl — `locale="id"` renders "Januari", "Sen". Omit it for English. The grid stays Monday-first for every locale. `DatePicker` and `DateRangePicker` take the same `locale` and forward it to the calendar.
+
+```jsx
+<Calendar value={date} locale="id" onChange={setDate} />
+```
+
 ```ts
 export interface DateRange {
   /** Range start as YYYY-MM-DD, or null while unset */
@@ -1556,6 +1562,8 @@ export interface CalendarProps extends Omit<React.HTMLAttributes<HTMLDivElement>
   /** Selected date as YYYY-MM-DD */
   value?: string;
   onChange?: (date: string) => void;
+  /** BCP 47 locale for month and weekday names via Intl (e.g. 'id', 'en'); omit for English. The grid stays Monday-first for every locale. */
+  locale?: string;
   style?: React.CSSProperties;
   className?: string;
 }
@@ -1564,6 +1572,8 @@ export interface CalendarRangeProps extends Omit<React.HTMLAttributes<HTMLDivEle
   range: true;
   value?: DateRange;
   onChange?: (range: DateRange) => void;
+  /** BCP 47 locale for month and weekday names via Intl (e.g. 'id', 'en'); omit for English. The grid stays Monday-first for every locale. */
+  locale?: string;
   style?: React.CSSProperties;
   className?: string;
 }
@@ -1589,6 +1599,8 @@ export interface DatePickerProps {
   onChange?: (date: string) => void;
   /** @default 'Pick a date' */
   placeholder?: string;
+  /** BCP 47 locale for the trigger's date label and the calendar's names via Intl (e.g. 'id', 'en'); omit for en-US. */
+  locale?: string;
   style?: React.CSSProperties;
   className?: string;
 }
@@ -1626,6 +1638,8 @@ export interface DateRangePickerProps extends Omit<React.HTMLAttributes<HTMLSpan
   /** @default 'Pick a date range' */
   placeholder?: string;
   disabled?: boolean;
+  /** BCP 47 locale for the trigger's date labels and the calendar's names via Intl (e.g. 'id', 'en'); omit for en-US. */
+  locale?: string;
   style?: React.CSSProperties;
   className?: string;
 }
