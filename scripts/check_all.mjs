@@ -35,6 +35,7 @@ const GENERATORS = [
   ['python3', ['scripts/build_tokens.py']],
   ['python3', ['scripts/build_interfaces.py']],
   ['python3', ['scripts/build_llms.py']],
+  ['node', ['scripts/build_site_nav.mjs']],
 ]
 
 /**
@@ -54,6 +55,7 @@ const GENERATED_PATHS = [
   'tokens.json',
   'tailwind.preset.js',
   'llms-full.txt',
+  'site/nav.json',
 ]
 
 const GATES = [

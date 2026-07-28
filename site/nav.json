@@ -1,0 +1,82 @@
+{
+  "pages": [
+    {
+      "id": "./DsSite.dc.html",
+      "label": "Home",
+      "icon": "house"
+    },
+    {
+      "id": "./Docs.dc.html",
+      "label": "Docs",
+      "icon": "book-open"
+    },
+    {
+      "id": "./Components.dc.html",
+      "label": "Components",
+      "icon": "package"
+    },
+    {
+      "id": "./Blocks.dc.html",
+      "label": "Blocks",
+      "icon": "layout-dashboard"
+    },
+    {
+      "id": "./Examples.dc.html",
+      "label": "Examples",
+      "icon": "bot"
+    },
+    {
+      "id": "./Charts.dc.html",
+      "label": "Charts",
+      "icon": "chart-line"
+    },
+    {
+      "id": "./Themes.dc.html",
+      "label": "Themes",
+      "icon": "sparkles"
+    },
+    {
+      "id": "./Colors.dc.html",
+      "label": "Colors",
+      "icon": "sliders-horizontal"
+    }
+  ],
+  "docs": [
+    {
+      "id": "./Docs.dc.html#introduction",
+      "label": "Introduction"
+    },
+    {
+      "id": "./Docs.dc.html#installation",
+      "label": "Installation"
+    },
+    {
+      "id": "./Docs.dc.html#theming",
+      "label": "Theming"
+    },
+    {
+      "id": "./Docs.dc.html#dark-mode",
+      "label": "Dark mode & density"
+    },
+    {
+      "id": "./Docs.dc.html#typography",
+      "label": "Typography"
+    },
+    {
+      "id": "./Docs.dc.html#monorepo",
+      "label": "Repository"
+    },
+    {
+      "id": "./Docs.dc.html#ai",
+      "label": "AI & skills"
+    },
+    {
+      "id": "./Docs.dc.html#contributing",
+      "label": "Contributing"
+    },
+    {
+      "id": "./Docs.dc.html#changelog",
+      "label": "Changelog"
+    }
+  ]
+}
