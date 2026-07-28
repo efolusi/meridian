@@ -4,6 +4,21 @@ All notable changes to Meridian are documented here. Format follows [Keep a Chan
 
 > **On the versions below 1.4.0:** Meridian was built in the open but released to nobody. Versions 1.0.0 through 1.3.0 are development milestones recorded as they happened; they were never tagged, published, or installable, so there is no artefact to go back to. They are kept because they are an accurate record of how the system was built, not because you can depend on them. The first tagged, publicly consumable release is 1.4.0.
 
+## 1.10.0 — 2026-07-29
+
+A monorepo of three lockstep packages, one prop vocabulary aligned to the common
+standard, and a size-regression budget in CI. Every change is additive: old prop
+names keep working for one more major, marked `@deprecated`.
+
+### Added
+- **Two standalone sub-packages, carved from the same sources.** `@efolusi/meridian-tokens` (design tokens, CSS, fonts, Tailwind preset) and `@efolusi/meridian-icons` (the Lucide-derived SVGs plus a name-to-svg index) publish at the same version as the umbrella. The flat component sources and the CDN bundle do not move; the umbrella `@efolusi/meridian` still ships everything. The release pipeline publishes all three idempotently on one version bump.
+- **Size-regression budget gate.** `scripts/check_size.mjs` ratchets `_ds_bundle.js`, `dist/components.css`, and the npm package total against `scripts/size_budget.json`; a silent size creep now fails CI instead of shipping.
+- **Interaction coverage** for Slider, RichComposer, PromptSteps, and Player (keyboard seek included).
+- **`guidelines/patterns.md`** (product-state playbook) and **`guidelines/frameworks.md`** (Next.js / Vite / Remix / CDN integration), linked from the README.
+
+### Changed
+- **Prop vocabulary aligned to the common standard, non-breaking.** `status` is now the canonical prop for state-like values (StatusDot, Sandbox, GeneratedImage, Confirmation); `state` stays as a `@deprecated` alias. `action` is canonically a `ReactNode` across Alert, Banner, and Toast; the old `onAction` / `actionLabel` remain as `@deprecated` aliases. Canonical wins when both are passed. No prop was removed; 18 alias tests pin the old call sites still working.
+
 ## 1.9.2 — 2026-07-23
 
 ### Fixed
