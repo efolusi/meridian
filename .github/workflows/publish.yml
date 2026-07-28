@@ -74,13 +74,23 @@ jobs:
             echo "go=true" >> "$GITHUB_OUTPUT"
             exit 0
           fi
-          if npm view "@efolusi/meridian@$VERSION" version >/dev/null 2>&1; then
-            echo "@efolusi/meridian@$VERSION is already on the registry — nothing to release."
-            echo "go=false" >> "$GITHUB_OUTPUT"
-          else
-            echo "version $VERSION is not on the registry — this push releases it."
-            echo "go=true" >> "$GITHUB_OUTPUT"
-          fi
+          # Monorepo: three packages move in lockstep at one version. Release if
+          # ANY of them is missing this version — not just the umbrella. Checking
+          # only the umbrella is how a run that published the umbrella but failed
+          # on a sub-package (e.g. its trusted publisher wasn't set yet) could
+          # never be finished by CI, forcing a manual publish. Now the next push
+          # re-runs and completes whatever is still missing.
+          GO=false
+          for name in @efolusi/meridian @efolusi/meridian-tokens @efolusi/meridian-icons; do
+            if npm view "$name@$VERSION" version >/dev/null 2>&1; then
+              echo "$name@$VERSION already on the registry"
+            else
+              echo "$name@$VERSION is not on the registry — this push will publish it"
+              GO=true
+            fi
+          done
+          echo "go=$GO" >> "$GITHUB_OUTPUT"
+          [ "$GO" = true ] || echo "all three packages already at $VERSION — nothing to release."
 
   publish:
     needs: decide
@@ -156,15 +166,28 @@ jobs:
       # Republishing an existing version fails at the registry anyway; failing
       # here says why, instead of surfacing a bare 403. On the push path this
       # re-checks what `decide` saw, after the slow steps — closing the race.
-      - name: Version must not already be published
+      - name: At least one package must still need publishing
+        # Monorepo-aware immutability guard. The publish step below is idempotent
+        # (already-published packages are skipped), so a run where the umbrella is
+        # already up but a sub-package lags is legitimate work, not an error. Only
+        # a run where ALL THREE are already on the registry has nothing to do —
+        # that is the "you forgot to bump the version" case, and it hard-fails.
         run: |
-          PKG="$(node -p "require('./dist/package.json').version")"
-          NAME="$(node -p "require('./dist/package.json').name")"
-          if npm view "$NAME@$PKG" version >/dev/null 2>&1; then
-            echo "::error::$NAME@$PKG is already on the registry. npm versions are immutable; bump it."
+          NEED=false
+          for dir in dist packages/tokens/dist packages/icons/dist; do
+            NAME="$(node -p "require('./$dir/package.json').name")"
+            PKG="$(node -p "require('./$dir/package.json').version")"
+            if npm view "$NAME@$PKG" version >/dev/null 2>&1; then
+              echo "$NAME@$PKG already published — will be skipped"
+            else
+              echo "$NAME@$PKG not yet on the registry — will publish"
+              NEED=true
+            fi
+          done
+          if [ "$NEED" != true ]; then
+            echo "::error::every package is already on the registry at this version. npm versions are immutable; bump the version."
             exit 1
           fi
-          echo "$NAME@$PKG is not on the registry yet"
 
       - name: Pack (what would ship)
         # All three packages of the monorepo: the umbrella and the two standalone
@@ -208,6 +231,13 @@ jobs:
           GH_TOKEN: ${{ github.token }}
         run: |
           PKG="$(node -p "require('./dist/package.json').version")"
+          # Idempotent: a run that only completes a lagging sub-package finds the
+          # tag and Release already made by the run that shipped the umbrella, so
+          # `git tag` would otherwise abort the whole job. Skip when it exists.
+          if gh release view "v$PKG" >/dev/null 2>&1 || git rev-parse -q --verify "refs/tags/v$PKG" >/dev/null; then
+            echo "v$PKG tag/release already exists — nothing to cut"
+            exit 0
+          fi
           python3 - "$PKG" > /tmp/notes.md <<'EOF'
           import re, sys
           ver = sys.argv[1]
