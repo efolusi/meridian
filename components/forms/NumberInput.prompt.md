@@ -15,6 +15,12 @@ Keyboard: ArrowUp/ArrowDown step, Shift+Arrow steps by 10× `step`, Home/End jum
 <NumberInput label="Price" format={n => '$' + n} parse={t => Number(t.replace(/[$,]/g, '')) || null} />
 ```
 
+For locale-aware grouping and decimals, pass `locale` (a BCP 47 tag) instead of writing `format`/`parse` by hand — `id` displays `1.234,5`, `en` displays `1,234.5`, and each parses its own format back correctly. An explicit `format`/`parse` still wins; omitting `locale` keeps plain ungrouped numbers.
+
+```jsx
+<NumberInput label="Harga" locale="id" step={0.01} />
+```
+
 Pairs with `FormField.useFormState` — `field()` hands it `value` / `onChange` / `onBlur` / `invalid` / `error` directly:
 
 ```jsx

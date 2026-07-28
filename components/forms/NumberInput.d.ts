@@ -22,9 +22,16 @@ export interface NumberInputProps extends Omit<React.InputHTMLAttributes<HTMLInp
   size?: 'sm' | 'md' | 'lg';
   disabled?: boolean;
   placeholder?: string;
-  /** Display formatting for the committed value, e.g. n => n + ' GB' */
+  /**
+   * BCP 47 locale (e.g. 'id', 'en-US') for locale-aware display and parsing via
+   * Intl.NumberFormat — 'id' groups with '.' and decimals with ',', 'en' the
+   * reverse. Ignored when both `format` and `parse` are given. Omit for plain,
+   * ungrouped formatting (the default).
+   */
+  locale?: string;
+  /** Display formatting for the committed value, e.g. n => n + ' GB'. Wins over `locale`. */
   format?: (value: number) => string;
-  /** Turn typed text back into a number; pair it with `format`. Return null for unparseable. */
+  /** Turn typed text back into a number; pair it with `format`. Return null for unparseable. Wins over `locale`. */
   parse?: (text: string) => number | null;
   style?: React.CSSProperties;
   className?: string;

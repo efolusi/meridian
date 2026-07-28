@@ -43,14 +43,38 @@ const defaultParse = t => {
   const n = Number(t.replace(/,/g, ''));
   return Number.isFinite(n) ? n : null;
 };
+// A locale's own format and parse, derived from Intl so the two always agree:
+// 'en' groups with ',' and points with '.', 'id' the other way round. Parsing
+// reads the locale's real separators (via formatToParts) rather than assuming,
+// so a value the field displayed round-trips back to the same number.
+function localeNumber(locale) {
+  const nf = new Intl.NumberFormat(locale, { maximumFractionDigits: 20 });
+  const parts = nf.formatToParts(12345.6);
+  const group = (parts.find(p => p.type === 'group') || {}).value || '';
+  const decimal = (parts.find(p => p.type === 'decimal') || {}).value || '.';
+  return {
+    format: n => nf.format(n),
+    parse: t => {
+      let s = t.trim();
+      if (group) s = s.split(group).join('');
+      if (decimal !== '.') s = s.split(decimal).join('.');
+      const n = Number(s);
+      return Number.isFinite(n) ? n : null;
+    },
+  };
+}
 /**
  * A numeric field with stepper buttons — a text input with inputmode="decimal"
  * rather than type=number, so typing stays free-form and the value only
  * commits (parse → clamp → snap to step) on blur. Empty commits null.
  * ArrowUp/Down step, Shift multiplies by 10, Home/End jump to finite rails.
  */
-export function NumberInput({ label, hint, error, invalid, value, defaultValue, onChange, min, max, step = 1, size = 'md', disabled, placeholder, format, parse, style, className, ...rest }) {
+export function NumberInput({ label, hint, error, invalid, value, defaultValue, onChange, min, max, step = 1, size = 'md', disabled, placeholder, locale, format, parse, style, className, ...rest }) {
   injectEfCss('ef-css-number', CSS);
+  // locale supplies a format/parse pair when neither is given explicitly; an
+  // explicit format or parse always wins over it, and no locale keeps the old
+  // plain behaviour, so this is additive.
+  const loc = locale && !(format && parse) ? localeNumber(locale) : null;
   // Picks up id / aria wiring when nested in a FormField; standalone this is a no-op.
   const field = useFieldProps({ invalid, error, id: rest.id, 'aria-describedby': rest['aria-describedby'] });
   const uid = React.useId();
@@ -62,11 +86,11 @@ export function NumberInput({ label, hint, error, invalid, value, defaultValue, 
   // The text being edited; null means "not editing, show the formatted value".
   const [draft, setDraft] = React.useState(null);
 
-  const fmt = n => (format ? format(n) : String(n));
+  const fmt = n => (format ? format(n) : loc ? loc.format(n) : String(n));
   const parseText = t => {
     const s = t.trim();
     if (s === '') return null;
-    const n = (parse || defaultParse)(s);
+    const n = (parse || (loc && loc.parse) || defaultParse)(s);
     return n != null && Number.isFinite(n) ? n : undefined; // undefined = unparseable
   };
   const normalize = n => {
