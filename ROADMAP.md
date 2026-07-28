@@ -48,7 +48,7 @@ Meet developers where they are; keep the zero-build path as the flagship.
 ## Phase 5 — Design assets
 
 - **Figma library** with parity: tokens as Variables (light/dark/compact modes), components with matching prop names, auto-layout mirroring flex gaps. Publish to Community.
-- ~~**Icon set** published standalone.~~ Landed 2026-07-24: `@efolusi/meridian-icons` (packages/icons) ships the 108 SVGs plus a name-to-svg index, built from assets/icons/ in lockstep with the umbrella. Not yet published; part of the monorepo's multi-package release.
+- ~~**Icon set** published standalone.~~ Landed 2026-07-24: `@efolusi/meridian-icons` (packages/icons) ships the 108 SVGs plus a name-to-svg index, built from assets/icons/ in lockstep with the umbrella. Published 2026-07-29 at 1.10.0 alongside `@efolusi/meridian-tokens` and the umbrella.
 - **Brand usage policy** for the owl mark and "Meridian" name (system is MIT; the mark is not).
 
 ## Phase 6 — Community & governance
@@ -63,7 +63,7 @@ Meet developers where they are; keep the zero-build path as the flagship.
 ## Decision points (need owner input)
 
 1. ~~npm scope/name~~ Decided 2026-07-20: `@efolusi/meridian`, published from 1.5.0.
-2. ~~Monorepo~~ Decided 2026-07-24: **monorepo, Option A (umbrella, non-breaking).** Reverses the earlier single-package call. The repo is a workspace of lockstep packages: `@efolusi/meridian` stays the umbrella that ships everything (existing consumers unaffected, still 1.x), and standalone sub-packages are carved from the same flat sources for one-layer consumers — `@efolusi/meridian-tokens` (shipped), `@efolusi/meridian-icons` (next). The flat component sources and the zero-build CDN bundle are not moved; the monorepo is an npm-side structure only. Versions move in lockstep from `_ds_manifest.json`. A per-package split of the components themselves (Option B, breaking, 2.0) was declined. The release pipeline publishes all three lockstep packages idempotently in one version bump (2026-07-24); each sub-package needs its own Trusted Publisher and a one-time manual first publish.
+2. ~~Monorepo~~ Decided 2026-07-24: **monorepo, Option A (umbrella, non-breaking).** Reverses the earlier single-package call. The repo is a workspace of lockstep packages: `@efolusi/meridian` stays the umbrella that ships everything (existing consumers unaffected, still 1.x), and standalone sub-packages are carved from the same flat sources for one-layer consumers — `@efolusi/meridian-tokens` and `@efolusi/meridian-icons` (both shipped, published at 1.10.0). The flat component sources and the zero-build CDN bundle are not moved; the monorepo is an npm-side structure only. Versions move in lockstep from `_ds_manifest.json`. A per-package split of the components themselves (Option B, breaking, 2.0) was declined. The release pipeline publishes all three lockstep packages idempotently in one version bump (2026-07-24); each sub-package needs its own Trusted Publisher and a one-time manual first publish.
 3. Figma: build in-house or recruit a community maintainer.
 4. ~~Docs hosting~~ Decided: live at meridian.efolusi.com on Cloudflare Pages; no analytics.
 5. CLA vs DCO for contributions.

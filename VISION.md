@@ -1,6 +1,6 @@
 # Meridian — vision
 
-**Status:** living document · reflects 1.9.2 (2026-07-23)
+**Status:** living document · reflects 1.10.0 (2026-07-29)
 **Scope:** what Meridian is for, who it serves, the bar that keeps it production-grade, and the protocol for running an autonomous loop against it.
 **Execution detail lives in [ROADMAP.md](ROADMAP.md); this is the why plus the safe how, not the day-to-day plan.**
 
