@@ -131,37 +131,43 @@ class Component extends DCLogic {
     this.applyHash();
     // Re-render section titles, ledes and nav labels when the language changes.
     // renderVals reads the language live, so this only needs to force a render.
-    this._offLang = window.EfLang && window.EfLang.onChange(() => this.setState({ langTick: (this.state.langTick || 0) + 1 }));
+    // Use an instance counter (not this.state, which can read stale in the
+    // closure and then setState the same value twice, skipping the re-render).
+    this._lt = 0;
+    this._offLang = window.EfLang && window.EfLang.onChange(() => { this._lt += 1; this.setState({ langTick: this._lt }); });
   }
   componentWillUnmount() { window.removeEventListener('hashchange', this._onHash); if (this._offLang) this._offLang(); }
   sections() {
     if (this._sections) return this._sections;
     const SC = 'scr' + 'ipt';
-    const h2 = (id, text) => ({ isH2: true, id: 'sec-' + id, text });
-    const p = text => ({ isP: true, text });
+    // Optional trailing *_id args carry the Indonesian text; renderVals picks by
+    // language. A block with no id text falls back to English.
+    const h2 = (id, text, textId) => ({ isH2: true, id: 'sec-' + id, text, textId });
+    const p = (text, textId) => ({ isP: true, text, textId });
     const code = (lang, title, codeStr) => ({ isCode: true, lang, title, code: codeStr });
-    const list = items => ({ isList: true, items: items.map(x => ({ k: x[0], v: x[1] })) });
+    const list = items => ({ isList: true, items: items.map(x => ({ k: x[0], v: x[1], kId: x[2], vId: x[3] })) });
     const bundleSnippet = '<link rel="stylesheet" href="meridian/styles.css">\n<' + SC + ' src="https://unpkg.com/react@18.3.1/umd/react.production.min.js"></' + SC + '>\n<' + SC + ' src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.production.min.js"></' + SC + '>\n<' + SC + ' src="meridian/_ds_bundle.js"></' + SC + '>';
     const hostedSnippet = '<link rel="stylesheet" href="https://meridian.efolusi.com/styles.css">\n<' + SC + ' src="https://unpkg.com/react@18.3.1/umd/react.production.min.js"></' + SC + '>\n<' + SC + ' src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.production.min.js"></' + SC + '>\n<' + SC + ' src="https://meridian.efolusi.com/_ds_bundle.js"></' + SC + '>';
     this._sections = [
       { group: 'Get started', id: 'introduction', title: 'Introduction', lede: 'Meridian is a general-purpose open-source design system by Efolusi. 109 accessible components, 177 tokens, and full example apps — with no build step.', blocks: [
-        p('This is not just a component library. It is the complete working system: the tokens, the components, the blocks, and the example apps that use them, in one repository you can read end to end.'),
-        h2('principles', 'Principles'),
+        p('This is not just a component library. It is the complete working system: the tokens, the components, the blocks, and the example apps that use them, in one repository you can read end to end.',
+          'Ini bukan sekadar pustaka komponen. Ini sistem kerja lengkap: token, komponen, blok, dan aplikasi contoh yang memakainya, dalam satu repositori yang bisa Anda baca dari ujung ke ujung.'),
+        h2('principles', 'Principles', 'Prinsip'),
         list([
-          ['Open code.', 'Every component is plain source in the repo — vendor it, edit it, own it. No wrapper layers, no style overrides against a black box.'],
-          ['One namespace.', 'Every component hangs off a single global with one predictable prop grammar. Learn one component, you have learned them all.'],
-          ['Tokens first.', 'Components never hardcode color or spacing. 177 tokens in three layers mean dark mode and compact density come free.'],
-          ['Zero build.', 'One stylesheet, one bundle. It runs in any stack — or no stack — straight from a static file server.'],
-          ['AI-ready.', 'Each component ships a .prompt.md usage guide, the repo ships SKILL.md and llms.txt, and the registry is machine-readable.'],
+          ['Open code.', 'Every component is plain source in the repo — vendor it, edit it, own it. No wrapper layers, no style overrides against a black box.', 'Kode terbuka.', 'Setiap komponen adalah source biasa di repo — vendor, sunting, miliki. Tanpa lapisan pembungkus, tanpa override gaya terhadap kotak hitam.'],
+          ['One namespace.', 'Every component hangs off a single global with one predictable prop grammar. Learn one component, you have learned them all.', 'Satu namespace.', 'Setiap komponen bergantung pada satu global dengan tata bahasa props yang dapat ditebak. Pelajari satu komponen, Anda menguasai semuanya.'],
+          ['Tokens first.', 'Components never hardcode color or spacing. 177 tokens in three layers mean dark mode and compact density come free.', 'Token dulu.', 'Komponen tak pernah menuliskan warna atau spasi secara kaku. 177 token dalam tiga lapis membuat mode gelap dan densitas ringkas datang gratis.'],
+          ['Zero build.', 'One stylesheet, one bundle. It runs in any stack — or no stack — straight from a static file server.', 'Tanpa build.', 'Satu stylesheet, satu bundle. Berjalan di stack apa pun — atau tanpa stack — langsung dari server berkas statis.'],
+          ['AI-ready.', 'Each component ships a .prompt.md usage guide, the repo ships SKILL.md and llms.txt, and the registry is machine-readable.', 'Siap-AI.', 'Tiap komponen menyertakan panduan .prompt.md, repo menyertakan SKILL.md dan llms.txt, dan registry-nya terbaca mesin.'],
         ]),
-        h2('whats-inside', 'What is inside'),
+        h2('whats-inside', 'What is inside', 'Apa isinya'),
         list([
-          ['components/', '109 components in 12 groups, each with .jsx source, .d.ts types, and a .prompt.md guide.'],
-          ['tokens/', 'Color ramps, semantic roles, typography, spacing, effects — light, dark, and compact.'],
-          ['blocks/', 'Pre-composed marketing and app sections.'],
-          ['showcases/', 'Eight complete product interfaces with connected journeys.'],
-          ['starters/', '5 copyable page journeys: dashboard, auth, marketing, docs, app.'],
-          ['guidelines/', 'Accessibility, form patterns, and governance rules.'],
+          ['components/', '109 components in 12 groups, each with .jsx source, .d.ts types, and a .prompt.md guide.', 'components/', '109 komponen dalam 12 grup, masing-masing dengan source .jsx, tipe .d.ts, dan panduan .prompt.md.'],
+          ['tokens/', 'Color ramps, semantic roles, typography, spacing, effects — light, dark, and compact.', 'tokens/', 'Ramp warna, peran semantik, tipografi, spasi, efek — terang, gelap, dan ringkas.'],
+          ['blocks/', 'Pre-composed marketing and app sections.', 'blocks/', 'Bagian marketing dan aplikasi siap-pakai.'],
+          ['showcases/', 'Eight complete product interfaces with connected journeys.', 'showcases/', 'Delapan antarmuka produk lengkap dengan alur terhubung.'],
+          ['starters/', '5 copyable page journeys: dashboard, auth, marketing, docs, app.', 'starters/', '5 alur halaman yang bisa disalin: dashboard, auth, marketing, docs, app.'],
+          ['guidelines/', 'Accessibility, form patterns, and governance rules.', 'guidelines/', 'Aksesibilitas, pola formulir, dan aturan tata kelola.'],
         ]),
       ] },
       { group: 'Get started', id: 'installation', title: 'Installation', lede: 'Load one stylesheet and one bundle. That is the whole install.', blocks: [
@@ -358,6 +364,14 @@ class Component extends DCLogic {
     const tGroup = (g) => (lang === 'id' && GROUP_ID[g]) || g;
     const tTitle = (s) => (lang === 'id' && TITLE_ID[s.id]) || s.title;
     const tLede = (s) => (lang === 'id' && LEDE_ID[s.id]) || s.lede;
+    // Pick a block's Indonesian text when present and lang is id; code blocks are
+    // left untouched (snippets are code, not prose).
+    const pick = (id, en) => (lang === 'id' && id != null ? id : en);
+    const tBlocks = (blocks) => blocks.map((b) => {
+      if (b.isList) return Object.assign({}, b, { items: b.items.map((it) => ({ k: pick(it.kId, it.k), v: pick(it.vId, it.v) })) });
+      if (b.isH2 || b.isP) return Object.assign({}, b, { text: pick(b.textId, b.text) });
+      return b;
+    });
     const groups = [];
     all.forEach((s, i) => {
       let g = groups.find(x => x._key === s.group);
@@ -378,8 +392,8 @@ class Component extends DCLogic {
       activeId: cur.id,
       activeTitle: tTitle(cur),
       activeLede: tLede(cur),
-      blocks: cur.blocks,
-      toc: cur.blocks.filter(b => b.isH2).map(b => ({ label: b.text, go: () => this.jump(b.id) })),
+      blocks: tBlocks(cur.blocks),
+      toc: cur.blocks.filter(b => b.isH2).map(b => ({ label: pick(b.textId, b.text), go: () => this.jump(b.id) })),
       hasPrev: !!prev,
       prevName: prev ? tTitle(prev) : '',
       prevGo: prev ? () => this.pick(this.state.si - 1) : null,
