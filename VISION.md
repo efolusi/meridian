@@ -68,8 +68,8 @@ This is Meridian's definition of done, applied to every release. Most of it is m
 - npm versions are immutable, so the rule is fix-forward, documented in [RELEASING.md](RELEASING.md).
 
 ### Documentation and discoverability — met, expanding
-- Live docs with editable-in-place demos, a bring-your-own-brand theming guide, per-component prompt guides, `llms.txt` and `llms-full.txt`, a machine-readable registry.
-- **Open (ROADMAP Phase 4):** versioned docs with a switcher, per-framework guides with maintained example repos, migration codemods, an MCP server exposing the registry to agents.
+- Live docs with editable-in-place demos, a bring-your-own-brand theming guide, per-component prompt guides, `llms.txt` and `llms-full.txt`, a machine-readable registry, and an **MCP server** (`mcp/`, `@efolusi/meridian-mcp`) that hands an AI coding agent the component list, each component's real source / types / usage guide, and the tokens — reading the hosted registry so it needs no checkout.
+- **Open (ROADMAP Phase 4):** per-framework guides with maintained example repos, migration codemods. Versioned docs with a switcher are deferred until a 2.x exists — 1.x is all additive (deprecate-never-break), so there is nothing to switch between yet.
 
 ### Generative-engine discoverability (GEO) — met, growing
 - Meridian is built to be found and *correctly used* by generative engines, not only search crawlers. `llms.txt` and the generated `llms-full.txt` (every component's prompt guide plus its typed interface and the token names, in one file), the per-component `.prompt.md`, and the machine-readable registry give a model everything it needs to recommend Meridian and write correct Meridian code on the first try.
