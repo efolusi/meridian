@@ -38,12 +38,16 @@
     }
   }
 
+  var subs = [];
   function setLang(next) {
     lang = next === 'id' ? 'id' : 'en';
     try { localStorage.setItem(KEY, lang); } catch (e) {}
     document.documentElement.setAttribute('lang', lang);
     updateToggles();
     apply(document);
+    // Notify subscribers (e.g. DCLogic pages that render text from state and so
+    // cannot use data-lang-id) so they can re-render in the new language.
+    for (var i = 0; i < subs.length; i++) { try { subs[i](lang); } catch (e) {} }
   }
 
   document.addEventListener('click', function (e) {
@@ -71,5 +75,16 @@
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', init);
   else init();
 
-  window.EfLang = { get: function () { return lang; }, set: setLang, toggle: function () { setLang(lang === 'id' ? 'en' : 'id'); } };
+  window.EfLang = {
+    get: function () { return lang; },
+    set: setLang,
+    toggle: function () { setLang(lang === 'id' ? 'en' : 'id'); },
+    // Subscribe to language changes; returns an unsubscribe function. For pages
+    // whose text is rendered from state (DCLogic) rather than static markup.
+    onChange: function (cb) {
+      if (typeof cb !== 'function') return function () {};
+      subs.push(cb);
+      return function () { var i = subs.indexOf(cb); if (i !== -1) subs.splice(i, 1); };
+    },
+  };
 })();

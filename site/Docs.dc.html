@@ -122,15 +122,18 @@
 </x-dc>
 <script type="text/x-dc" data-dc-script>
 class Component extends DCLogic {
-  state = { dark: false, si: 0 };
+  state = { dark: false, si: 0, langTick: 0 };
   componentDidMount() {
     try { const t = localStorage.getItem('efolusi-site-theme'); if (t) document.documentElement.setAttribute('data-theme', t); } catch (e) {}
     this.setState({ dark: document.documentElement.getAttribute('data-theme') === 'dark' });
     this._onHash = () => this.applyHash();
     window.addEventListener('hashchange', this._onHash);
     this.applyHash();
+    // Re-render section titles, ledes and nav labels when the language changes.
+    // renderVals reads the language live, so this only needs to force a render.
+    this._offLang = window.EfLang && window.EfLang.onChange(() => this.setState({ langTick: (this.state.langTick || 0) + 1 }));
   }
-  componentWillUnmount() { window.removeEventListener('hashchange', this._onHash); }
+  componentWillUnmount() { window.removeEventListener('hashchange', this._onHash); if (this._offLang) this._offLang(); }
   sections() {
     if (this._sections) return this._sections;
     const SC = 'scr' + 'ipt';
@@ -334,12 +337,33 @@ class Component extends DCLogic {
   renderVals() {
     const all = this.flat();
     const cur = all[this.state.si];
+    // Bilingual labels for the sidebar, header and paging. Block bodies are
+    // English until later; a missing id string falls back to the English source.
+    // Read the language live (a state tick from the EfLang subscription forces
+    // the re-render) so a rebuilt logic instance can never render a stale one.
+    const lang = (window.EfLang && window.EfLang.get()) || 'en';
+    const GROUP_ID = { 'Get started': 'Mulai', 'Guides': 'Panduan', 'Reference': 'Referensi' };
+    const TITLE_ID = { introduction: 'Pendahuluan', installation: 'Instalasi', theming: 'Penataan tema', 'dark-mode': 'Mode gelap & densitas', typography: 'Tipografi', monorepo: 'Repositori', ai: 'AI & skills', contributing: 'Berkontribusi', changelog: 'Catatan perubahan' };
+    const LEDE_ID = {
+      introduction: 'Meridian adalah design system open-source serba-guna oleh Efolusi. 109 komponen aksesibel, 177 token, dan aplikasi contoh lengkap — tanpa langkah build.',
+      installation: 'Muat satu stylesheet dan satu bundle. Itu saja seluruh instalasinya.',
+      theming: 'Tiga lapis token: ramp mentah, peran semantik, gaya komponen. Anda menata lapisan tengah.',
+      'dark-mode': 'Keduanya sakelar atribut. Tanpa menulis ulang komponen, tanpa stylesheet kedua.',
+      typography: 'Dua keluarga huruf dan satu mono, pada skala yang mapan. Sentence case di mana-mana.',
+      monorepo: 'Satu pohon, ditata menurut tujuan: inti sistem di root, satu direktori dangkal per permukaan, dan situs docs yang mengonsumsi semuanya.',
+      ai: 'Meridian ditulis agar terbaca oleh model sebanyak oleh manusia.',
+      contributing: 'Meridian berlisensi MIT dan terbuka untuk kontribusi. Standarnya: harus terasa mapan.',
+      changelog: 'Perubahan penting, terbaru dulu. Riwayat lengkap di CHANGELOG.md.',
+    };
+    const tGroup = (g) => (lang === 'id' && GROUP_ID[g]) || g;
+    const tTitle = (s) => (lang === 'id' && TITLE_ID[s.id]) || s.title;
+    const tLede = (s) => (lang === 'id' && LEDE_ID[s.id]) || s.lede;
     const groups = [];
     all.forEach((s, i) => {
-      let g = groups.find(x => x.label === s.group);
-      if (!g) { g = { label: s.group, items: [] }; groups.push(g); }
+      let g = groups.find(x => x._key === s.group);
+      if (!g) { g = { _key: s.group, label: tGroup(s.group), items: [] }; groups.push(g); }
       const on = i === this.state.si;
-      g.items.push({ name: s.title, on, off: !on, pick: () => this.pick(i) });
+      g.items.push({ name: tTitle(s), on, off: !on, pick: () => this.pick(i) });
     });
     const prev = this.state.si > 0 ? all[this.state.si - 1] : null;
     const next = this.state.si < all.length - 1 ? all[this.state.si + 1] : null;
@@ -352,15 +376,15 @@ class Component extends DCLogic {
       },
       navGroups: groups,
       activeId: cur.id,
-      activeTitle: cur.title,
-      activeLede: cur.lede,
+      activeTitle: tTitle(cur),
+      activeLede: tLede(cur),
       blocks: cur.blocks,
       toc: cur.blocks.filter(b => b.isH2).map(b => ({ label: b.text, go: () => this.jump(b.id) })),
       hasPrev: !!prev,
-      prevName: prev ? prev.title : '',
+      prevName: prev ? tTitle(prev) : '',
       prevGo: prev ? () => this.pick(this.state.si - 1) : null,
       hasNext: !!next,
-      nextName: next ? next.title : '',
+      nextName: next ? tTitle(next) : '',
       nextGo: next ? () => this.pick(this.state.si + 1) : null,
     };
   }
