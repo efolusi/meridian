@@ -58,6 +58,9 @@
 
 /* Header control consistency: 36px hamburger, search, GitHub, and theme toggle */
 .site-theme,.site-gh{display:inline-flex;align-items:center;justify-content:center;width:36px;height:36px;border:1px solid var(--border-strong);border-radius:var(--radius-sm);background:transparent;color:var(--text-secondary);cursor:pointer;flex:none;text-decoration:none}
+.site-lang{display:inline-flex;align-items:center;justify-content:center;height:36px;min-width:36px;padding:0 8px;border:1px solid var(--border-strong);border-radius:var(--radius-sm);background:transparent;color:var(--text-secondary);cursor:pointer;flex:none;font-family:var(--font-mono);font-size:12px;font-weight:600;letter-spacing:0.02em}
+.site-lang:hover{color:var(--text-primary);background:var(--surface-sunken)}
+.site-lang:focus-visible{outline:none;box-shadow:var(--focus-ring)}
 .site-theme:focus-visible,.site-gh:focus-visible{outline:none;box-shadow:var(--focus-ring)}
 .site-search:focus-visible{outline:none;box-shadow:var(--focus-ring)}
 .site-theme .icon-moon{display:none}
