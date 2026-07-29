@@ -4,6 +4,17 @@ All notable changes to Meridian are documented here. Format follows [Keep a Chan
 
 > **On the versions below 1.4.0:** Meridian was built in the open but released to nobody. Versions 1.0.0 through 1.3.0 are development milestones recorded as they happened; they were never tagged, published, or installable, so there is no artefact to go back to. They are kept because they are an accurate record of how the system was built, not because you can depend on them. The first tagged, publicly consumable release is 1.4.0.
 
+## 1.11.0 — 2026-07-29
+
+Locale-aware inputs and one more prop aligned to the house convention. Every
+change is additive: without a `locale` the components format exactly as before.
+
+### Added
+- **`locale` on the numeric and date inputs.** NumberInput, Calendar, DatePicker and DateRangePicker take a BCP 47 `locale` and format (and parse) through `Intl` — `id` shows `1.234,5` and "Januari", "Sen", "15 Jan 2026"; `en` shows `1,234.5` and the English names. NumberInput parses the locale's own separators back to a number, so a displayed value round-trips exactly; an explicit `format`/`parse` still wins. The calendar grid stays Monday-first for every locale (week-start localisation depends on non-portable `Intl.Locale` weekInfo).
+
+### Changed
+- **`defaultOpen` is canonical on EnvList**, matching the `defaultOpen` used across the other disclosure-style components. The old `defaultVisible` keeps working as a `@deprecated` alias (canonical wins), pinned by a test — no break.
+
 ## 1.10.0 — 2026-07-29
 
 A monorepo of three lockstep packages, one prop vocabulary aligned to the common
