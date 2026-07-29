@@ -5,9 +5,11 @@ name: publish
 # short-lived identity token for this exact workflow, and npm verifies it against
 # the trusted publisher configured on the package.
 #
-# This is a monorepo: it publishes THREE packages in lockstep at one version —
+# This is a monorepo. It publishes THREE packages in lockstep at one version —
 # the @efolusi/meridian umbrella plus the standalone @efolusi/meridian-tokens and
-# @efolusi/meridian-icons. Each is a separate npm package and needs its OWN
+# @efolusi/meridian-icons — and one INDEPENDENTLY-versioned package, the MCP
+# server @efolusi/meridian-mcp (version from mcp/package.json). Each is a separate
+# npm package and needs its OWN
 # one-time Trusted Publisher on npmjs.com, all pointing at the same source:
 #   Provider    GitHub Actions
 #   Repository  efolusi/meridian     (case sensitive)
@@ -89,6 +91,16 @@ jobs:
               GO=true
             fi
           done
+          # The MCP server (mcp/) is versioned independently of the lockstep three,
+          # so it is gated on its own version — a push that only bumps mcp still
+          # releases.
+          MCPVER="$(node -p "require('./mcp/package.json').version")"
+          if npm view "@efolusi/meridian-mcp@$MCPVER" version >/dev/null 2>&1; then
+            echo "@efolusi/meridian-mcp@$MCPVER already on the registry"
+          else
+            echo "@efolusi/meridian-mcp@$MCPVER is not on the registry — this push will publish it"
+            GO=true
+          fi
           echo "go=$GO" >> "$GITHUB_OUTPUT"
           [ "$GO" = true ] || echo "all three packages already at $VERSION — nothing to release."
 
@@ -174,7 +186,7 @@ jobs:
         # that is the "you forgot to bump the version" case, and it hard-fails.
         run: |
           NEED=false
-          for dir in dist packages/tokens/dist packages/icons/dist; do
+          for dir in dist packages/tokens/dist packages/icons/dist mcp; do
             NAME="$(node -p "require('./$dir/package.json').name")"
             PKG="$(node -p "require('./$dir/package.json').version")"
             if npm view "$NAME@$PKG" version >/dev/null 2>&1; then
@@ -190,10 +202,11 @@ jobs:
           fi
 
       - name: Pack (what would ship)
-        # All three packages of the monorepo: the umbrella and the two standalone
-        # sub-packages. npm run check above built each one's dist/.
+        # The three lockstep packages (umbrella + two sub-packages, each built by
+        # npm run check above) plus the independently-versioned MCP server (mcp/,
+        # plain .mjs, no build). Its `files` field ships only server.mjs + README.
         run: |
-          for d in dist packages/tokens/dist packages/icons/dist; do
+          for d in dist packages/tokens/dist packages/icons/dist mcp; do
             echo "== $d"
             npm pack "./$d" --dry-run
           done
@@ -221,6 +234,9 @@ jobs:
           publish_if_new dist
           publish_if_new packages/tokens/dist
           publish_if_new packages/icons/dist
+          # Independently versioned; publishes only when mcp/package.json carries a
+          # version not yet on the registry. Needs its own trusted publisher.
+          publish_if_new mcp
 
       # The auto path finishes the paperwork the human used to do. Releases
       # created with GITHUB_TOKEN do not trigger other workflows, so this cannot

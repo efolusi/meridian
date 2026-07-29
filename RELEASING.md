@@ -15,6 +15,14 @@ on npmjs.com (all pointing at `publish.yml`); a brand-new sub-package must be
 created once with a manual `npm publish ./packages/<name>/dist --access public`
 before OIDC can take over, exactly as the umbrella was first published.
 
+The MCP server `@efolusi/meridian-mcp` (`mcp/`) is a **fourth** package the same
+pipeline maintains, but **versioned independently** in `mcp/package.json` — it is
+a dev tool, not part of the design-system surface. Bump `mcp/package.json` and
+push; the `decide` job gates it on its own version, so an mcp-only bump releases
+without touching the lockstep three (and a lockstep bump leaves mcp alone unless
+its version is new). It has its own Trusted Publisher; it was first published
+manually, so OIDC now maintains it.
+
 ## Where the version lives
 
 The npm build reads its version from `_ds_manifest.json`. Four other files
