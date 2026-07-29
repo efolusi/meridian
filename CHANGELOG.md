@@ -4,6 +4,11 @@ All notable changes to Meridian are documented here. Format follows [Keep a Chan
 
 > **On the versions below 1.4.0:** Meridian was built in the open but released to nobody. Versions 1.0.0 through 1.3.0 are development milestones recorded as they happened; they were never tagged, published, or installable, so there is no artefact to go back to. They are kept because they are an accurate record of how the system was built, not because you can depend on them. The first tagged, publicly consumable release is 1.4.0.
 
+## 1.11.1 — 2026-07-30
+
+### Fixed
+- **`::selection` sets an explicit text color.** The selection rules set only a background (`--brand-100` light, `#453728` dark), so selected text kept its own color — light text on a dark section in the light theme disappeared into the cream highlight when selected. Each selection background now pairs with a matching ink (`--cocoa-900` light, `#F3EFE7` dark).
+
 ## 1.11.0 — 2026-07-29
 
 Locale-aware inputs and one more prop aligned to the house convention. Every
