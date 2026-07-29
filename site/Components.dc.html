@@ -81,24 +81,24 @@
 <sc-if value="{{ hasHero }}" hint-placeholder-val="{{ false }}">
 <div id="sec-preview" style="margin-top:26px"><x-import component-from-global-scope="MeridianLiveFrame" file="{{ heroFile }}" exp="{{ heroExp }}" hint-size="100%,420px"></x-import></div>
 </sc-if>
-<h2 id="sec-install" style="font-size:22px;font-weight:600;font-family:var(--font-display);letter-spacing:-0.02em;margin:40px 0 0;padding-top:8px;border-top:1px solid var(--border-default)">Installation</h2>
-<p style="font-size:14.5px;line-height:1.6;color:var(--text-secondary);margin:8px 0 12px">Load the stylesheet and the compiled bundle once — every component hangs off a single global namespace. No build step.</p>
+<h2 id="sec-install" style="font-size:22px;font-weight:600;font-family:var(--font-display);letter-spacing:-0.02em;margin:40px 0 0;padding-top:8px;border-top:1px solid var(--border-default)" data-lang-id="Instalasi">Installation</h2>
+<p style="font-size:14.5px;line-height:1.6;color:var(--text-secondary);margin:8px 0 12px" data-lang-id="Muat stylesheet dan bundle terkompilasi sekali — setiap komponen bergantung pada satu namespace global. Tanpa langkah build.">Load the stylesheet and the compiled bundle once — every component hangs off a single global namespace. No build step.</p>
 <x-import component-from-global-scope="EfolusiDesignSystem_4ffc3d.CodeBlock" lang="html" hint-size="100%,90px">{{ installCode }}</x-import>
 <p style="font-size:13.5px;line-height:1.6;color:var(--text-muted);margin:10px 0 0">{{ manualNote }}</p>
-<h2 id="sec-usage" style="font-size:22px;font-weight:600;font-family:var(--font-display);letter-spacing:-0.02em;margin:36px 0 12px">Usage</h2>
+<h2 id="sec-usage" style="font-size:22px;font-weight:600;font-family:var(--font-display);letter-spacing:-0.02em;margin:36px 0 12px" data-lang-id="Penggunaan">Usage</h2>
 <x-import component-from-global-scope="EfolusiDesignSystem_4ffc3d.CodeBlock" lang="javascript" hint-size="100%,76px">{{ usageCode }}</x-import>
 <sc-if value="{{ hasMore }}" hint-placeholder-val="{{ false }}">
-<h2 id="sec-examples" style="font-size:22px;font-weight:600;font-family:var(--font-display);letter-spacing:-0.02em;margin:40px 0 0">Examples</h2>
+<h2 id="sec-examples" style="font-size:22px;font-weight:600;font-family:var(--font-display);letter-spacing:-0.02em;margin:40px 0 0" data-lang-id="Contoh">Examples</h2>
 <sc-for list="{{ more }}" as="m" hint-placeholder-count="1">
 <h3 style="font-size:16.5px;font-weight:600;margin:26px 0 10px">{{ m.title }}</h3>
 <x-import component-from-global-scope="MeridianLiveFrame" file="{{ m.file }}" exp="{{ m.exp }}" hint-size="100%,380px"></x-import>
 </sc-for>
 </sc-if>
-<h2 id="sec-api" style="font-size:22px;font-weight:600;font-family:var(--font-display);letter-spacing:-0.02em;margin:40px 0 0">API reference</h2>
+<h2 id="sec-api" style="font-size:22px;font-weight:600;font-family:var(--font-display);letter-spacing:-0.02em;margin:40px 0 0" data-lang-id="Referensi API">API reference</h2>
 <sc-if value="{{ hasExt }}" hint-placeholder-val="{{ false }}"><p style="font-size:13.5px;color:var(--text-muted);margin:10px 0 0">{{ extNote }}</p></sc-if>
 <sc-if value="{{ hasProps }}" hint-placeholder-val="{{ true }}">
 <div style="border:1px solid var(--border-default);border-radius:var(--radius-md);overflow-x:auto;overflow-y:hidden;margin-top:14px">
-<div style="display:grid;grid-template-columns:150px 1.15fr 90px 1.25fr;gap:14px;min-width:560px;padding:9px 16px;background:var(--surface-subtle);border-bottom:1px solid var(--border-default);font-size:11px;font-weight:600;letter-spacing:0.06em;text-transform:uppercase;color:var(--text-muted)"><span>Prop</span><span>Type</span><span>Default</span><span>Description</span></div>
+<div style="display:grid;grid-template-columns:150px 1.15fr 90px 1.25fr;gap:14px;min-width:560px;padding:9px 16px;background:var(--surface-subtle);border-bottom:1px solid var(--border-default);font-size:11px;font-weight:600;letter-spacing:0.06em;text-transform:uppercase;color:var(--text-muted)"><span>Prop</span><span data-lang-id="Tipe">Type</span><span data-lang-id="Bawaan">Default</span><span data-lang-id="Deskripsi">Description</span></div>
 <sc-for list="{{ propRows }}" as="p" hint-placeholder-count="5">
 <div style="display:grid;grid-template-columns:150px 1.15fr 90px 1.25fr;gap:14px;min-width:560px;padding:10px 16px;border-bottom:1px solid var(--border-default);align-items:baseline">
 <span style="font-family:var(--font-mono);font-size:12.5px;font-weight:600;color:var(--brand-700)">{{ p.name }}</span>
@@ -107,7 +107,7 @@
 <span style="font-size:13px;line-height:1.5;color:var(--text-secondary)">{{ p.d }}</span>
 </div>
 </sc-for>
-<sc-if value="{{ hasStyleNote }}" hint-placeholder-val="{{ false }}"><div style="padding:9px 16px;font-size:12.5px;color:var(--text-muted)">Also accepts style and className.</div></sc-if>
+<sc-if value="{{ hasStyleNote }}" hint-placeholder-val="{{ false }}"><div style="padding:9px 16px;font-size:12.5px;color:var(--text-muted)" data-lang-id="Juga menerima style dan className.">Also accepts style and className.</div></sc-if>
 </div>
 <p style="font-size:12.5px;color:var(--text-muted);margin:8px 0 0">* required</p>
 </sc-if>
@@ -115,7 +115,7 @@
 <div style="margin-top:20px">
 <div style="font-family:var(--font-mono);font-size:12.5px;font-weight:600;color:var(--text-primary)">{{ si.name }}</div>
 <div style="border:1px solid var(--border-default);border-radius:var(--radius-md);overflow-x:auto;overflow-y:hidden;margin-top:8px">
-<div style="display:grid;grid-template-columns:150px 1.4fr 1.25fr;gap:14px;min-width:460px;padding:8px 16px;background:var(--surface-subtle);border-bottom:1px solid var(--border-default);font-size:11px;font-weight:600;letter-spacing:0.06em;text-transform:uppercase;color:var(--text-muted)"><span>Field</span><span>Type</span><span>Description</span></div>
+<div style="display:grid;grid-template-columns:150px 1.4fr 1.25fr;gap:14px;min-width:460px;padding:8px 16px;background:var(--surface-subtle);border-bottom:1px solid var(--border-default);font-size:11px;font-weight:600;letter-spacing:0.06em;text-transform:uppercase;color:var(--text-muted)"><span data-lang-id="Bidang">Field</span><span data-lang-id="Tipe">Type</span><span data-lang-id="Deskripsi">Description</span></div>
 <sc-for list="{{ si.fields }}" as="f" hint-placeholder-count="3">
 <div style="display:grid;grid-template-columns:150px 1.4fr 1.25fr;gap:14px;min-width:460px;padding:9px 16px;border-bottom:1px solid var(--border-default);align-items:baseline">
 <span style="font-family:var(--font-mono);font-size:12.5px;font-weight:600;color:var(--brand-700)">{{ f.name }}</span>
@@ -126,7 +126,7 @@
 </div>
 </div>
 </sc-for>
-<sc-if value="{{ noProps }}" hint-placeholder-val="{{ false }}"><p style="font-size:14.5px;color:var(--text-secondary);margin:12px 0 0">This component takes no props beyond native element attributes.</p></sc-if>
+<sc-if value="{{ noProps }}" hint-placeholder-val="{{ false }}"><p style="font-size:14.5px;color:var(--text-secondary);margin:12px 0 0" data-lang-id="Komponen ini tak menerima props di luar atribut elemen native.">This component takes no props beyond native element attributes.</p></sc-if>
 <p style="font-size:12.5px;font-family:var(--font-mono);color:var(--text-muted);margin:22px 0 0">Source: components/{{ activeGroupId }}/{{ activeName }}.jsx · {{ activeName }}.d.ts · {{ activeName }}.prompt.md</p>
 <a href="{{ activeCard }}" style="display:inline-block;font-size:13.5px;color:var(--text-secondary);margin-top:6px" style-hover="color:var(--text-primary)">Open the {{ activeGroupLabel }} specimen sheet ↗</a>
 <div style="display:flex;justify-content:space-between;gap:14px;margin-top:44px">
@@ -324,8 +324,13 @@ class Component extends DCLogic {
     window.addEventListener('hashchange', this._onHash);
     import('./registry.js').then(m => this.setState({ groups: m.GROUPS, ns: m.NS }, () => this.applyHash())).catch(e => console.error('registry load failed', e));
     fetch('./interfaces.json').then(r => r.json()).then(iface => this.setState({ interfaces: iface })).catch(() => {});
+    // Re-render the sidebar group labels when the language changes. renderVals
+    // reads the language live; an instance counter guarantees a state change so
+    // the re-render never gets skipped.
+    this._lt = 0;
+    this._offLang = window.EfLang && window.EfLang.onChange(() => { this._lt += 1; this.setState({ langTick: this._lt }); });
   }
-  componentWillUnmount() { window.removeEventListener('hashchange', this._onHash); }
+  componentWillUnmount() { window.removeEventListener('hashchange', this._onHash); if (this._offLang) this._offLang(); }
   applyHash() {
     const gs = this.state.groups || [];
     const h = decodeURIComponent((location.hash || '').replace(/^#/, ''));
@@ -368,8 +373,13 @@ class Component extends DCLogic {
   }
   renderVals() {
     const gs = this.state.groups || [];
+    // Group labels are the only prose here to localise; component names and their
+    // per-component descriptions stay English (names are proper nouns).
+    const lang = (window.EfLang && window.EfLang.get()) || 'en';
+    const GROUP_ID = { Forms: 'Formulir', Display: 'Tampilan', Navigation: 'Navigasi', Feedback: 'Umpan balik', Data: 'Data', Overlay: 'Overlay', AI: 'AI', Code: 'Kode', Files: 'Berkas', Dates: 'Tanggal', Finance: 'Keuangan', Icons: 'Ikon' };
+    const tG = (l) => (lang === 'id' && GROUP_ID[l]) || l;
     const navGroups = gs.map((g, gi) => ({
-      label: g.label,
+      label: tG(g.label),
       items: g.items.map((it, ii) => {
         const on = gi === this.state.gi && ii === this.state.ii;
         return { name: it.name, on, off: !on, pick: () => this.pick(gi, ii) };
@@ -388,12 +398,14 @@ class Component extends DCLogic {
     const idx = flat.findIndex(f => f.gi === this.state.gi && f.ii === this.state.ii);
     const prev = idx > 0 ? flat[idx - 1] : null;
     const next = idx >= 0 && idx < flat.length - 1 ? flat[idx + 1] : null;
+    const SEC_ID = { Preview: 'Pratinjau', Installation: 'Instalasi', Usage: 'Penggunaan', Examples: 'Contoh', 'API reference': 'Referensi API' };
+    const tS = (l) => (lang === 'id' && SEC_ID[l]) || l;
     const toc = [
-      hero && { id: 'sec-preview', label: 'Preview' },
-      { id: 'sec-install', label: 'Installation' },
-      { id: 'sec-usage', label: 'Usage' },
-      more.length && { id: 'sec-examples', label: 'Examples' },
-      { id: 'sec-api', label: 'API reference' },
+      hero && { id: 'sec-preview', label: tS('Preview') },
+      { id: 'sec-install', label: tS('Installation') },
+      { id: 'sec-usage', label: tS('Usage') },
+      more.length && { id: 'sec-examples', label: tS('Examples') },
+      { id: 'sec-api', label: tS('API reference') },
     ].filter(Boolean).map(t => ({ label: t.label, go: () => this.jump(t.id) }));
     const SC = 'scr' + 'ipt';
     return {
@@ -406,9 +418,9 @@ class Component extends DCLogic {
       navGroups,
       ready: !!a,
       activeName: a ? a.name : '',
-      activeDesc: a ? (a.desc || 'Part of the ' + g.label + ' group.') : '',
+      activeDesc: a ? (a.desc || (lang === 'id' ? ('Bagian dari grup ' + tG(g.label) + '.') : ('Part of the ' + g.label + ' group.'))) : '',
       activeGroupId: g ? g.id : '',
-      activeGroupLabel: g ? g.label : '',
+      activeGroupLabel: g ? tG(g.label) : '',
       activeCard: g ? g.card : '',
       hasHero: !!hero,
       heroFile: exFile,
