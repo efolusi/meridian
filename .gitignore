@@ -25,3 +25,7 @@ dist/
 
 # monorepo sub-package build output (assembled from the flat sources)
 packages/*/dist/
+
+# MCP server deps
+mcp/node_modules/
+mcp/package-lock.json

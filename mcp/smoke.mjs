@@ -1,0 +1,17 @@
+import { Client } from '@modelcontextprotocol/sdk/client/index.js';
+import { StdioClientTransport } from '@modelcontextprotocol/sdk/client/stdio.js';
+const repo = new URL('..', import.meta.url).pathname;
+const transport = new StdioClientTransport({ command: 'node', args: ['server.mjs'], env: { ...process.env, MERIDIAN_SOURCE: repo } });
+const client = new Client({ name: 'smoke', version: '0' });
+await client.connect(transport);
+const tools = await client.listTools();
+console.log('tools:', tools.tools.map(t=>t.name).join(', '));
+const list = await client.callTool({ name: 'list_components', arguments: { category: 'dates' } });
+console.log('--- list_components(dates) ---\n' + list.content[0].text);
+const search = await client.callTool({ name: 'search_components', arguments: { query: 'upload' } });
+console.log('--- search(upload) ---\n' + search.content[0].text);
+const get = await client.callTool({ name: 'get_component', arguments: { name: 'NumberInput' } });
+console.log('--- get_component(NumberInput) first 400 ---\n' + get.content[0].text.slice(0,400));
+const bad = await client.callTool({ name: 'get_component', arguments: { name: 'Nope' } });
+console.log('--- get bad ---', bad.isError, bad.content[0].text);
+await client.close();
