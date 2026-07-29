@@ -3,9 +3,15 @@
   "version": "0.1.1",
   "description": "MCP server exposing the Meridian design system registry (components, source, types, usage guides, tokens) to AI coding agents.",
   "license": "MIT",
+  "homepage": "https://meridian.efolusi.com",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/efolusi/meridian.git",
+    "directory": "mcp"
+  },
   "type": "module",
   "bin": {
-    "meridian-mcp": "./server.mjs"
+    "meridian-mcp": "server.mjs"
   },
   "files": [
     "server.mjs",
