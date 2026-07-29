@@ -73,6 +73,7 @@ const GATES = [
   ['Bundle and package size budget', 'node', ['scripts/check_size.mjs']],
   ['Tokens sub-package builds', 'node', ['scripts/build_pkg_tokens.mjs']],
   ['Icons sub-package builds', 'node', ['scripts/build_pkg_icons.mjs']],
+  ['Indonesian descriptions cover the registry', 'node', ['scripts/check_descriptions_id.mjs']],
   ['Types compile', 'node', ['scripts/check_types.mjs']],
 ]
 
