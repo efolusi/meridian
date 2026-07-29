@@ -71,6 +71,12 @@
     updateToggles();
     apply(document);
     if (document.body) mo.observe(document.body, { childList: true, subtree: true });
+    // DCLogic pages rebuild the template from state after load, restoring the
+    // English text; the MutationObserver catches that, but on a heavy page whose
+    // render lands in bursts the swap can be missed. A few delayed re-applies are
+    // a cheap safety net so a fresh load in Indonesian never shows through as
+    // English. No-op work once everything already matches.
+    [60, 250, 600].forEach(function (d) { setTimeout(function () { apply(document); updateToggles(); }, d); });
   }
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', init);
   else init();
