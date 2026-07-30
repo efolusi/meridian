@@ -4,6 +4,11 @@ All notable changes to Meridian are documented here. Format follows [Keep a Chan
 
 > **On the versions below 1.4.0:** Meridian was built in the open but released to nobody. Versions 1.0.0 through 1.3.0 are development milestones recorded as they happened; they were never tagged, published, or installable, so there is no artefact to go back to. They are kept because they are an accurate record of how the system was built, not because you can depend on them. The first tagged, publicly consumable release is 1.4.0.
 
+## 1.13.0 — 2026-07-30
+
+### Added
+- **`sun` and `moon`.** The system documents a dark theme via `data-theme` but shipped no icon for switching between them, so consumers hand-inlined Lucide glyphs to build a theme toggle — the Efolusi site did exactly that. Both now come from the set.
+
 ## 1.12.0 — 2026-07-30
 
 ### Added
