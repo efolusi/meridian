@@ -1,10 +1,10 @@
 import React from 'react';
 import { Icon } from '../icons/Icon.jsx';
 import { injectEfCss } from '../forms/Button.jsx';
-// Hover deepens the link's own hue. It used to jump to --accent-hover, which
-// is #1D0E04 in light — a warm brown link turning near-black on hover reads as
-// broken, not emphasised. The underline stays: colour alone is not a safe
-// affordance (WCAG 1.4.1).
+// Hover deepens the link's own hue. It used to jump to --accent-hover, which is
+// near-black in the light theme — a warm brown link turning almost black on
+// hover reads as broken, not emphasised. The underline stays: colour alone is
+// not a safe affordance (WCAG 1.4.1).
 const CSS = `
 .ef-link{display:inline-flex;align-items:center;gap:4px;color:var(--text-link);text-decoration:none;font-weight:var(--weight-medium);cursor:pointer;border-radius:var(--radius-sm);transition:color var(--dur-fast) var(--ease-out)}
 .ef-link:hover{color:var(--text-link-hover);text-decoration:underline;text-underline-offset:3px}
