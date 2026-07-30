@@ -4,6 +4,11 @@ All notable changes to Meridian are documented here. Format follows [Keep a Chan
 
 > **On the versions below 1.4.0:** Meridian was built in the open but released to nobody. Versions 1.0.0 through 1.3.0 are development milestones recorded as they happened; they were never tagged, published, or installable, so there is no artefact to go back to. They are kept because they are an accurate record of how the system was built, not because you can depend on them. The first tagged, publicly consumable release is 1.4.0.
 
+## 1.17.0 — 2026-07-31
+
+### Added
+- **`closeLabel` on `Dialog` and `Drawer`.** The ✕ carried an accessible name written in English in the source, so an app that had translated every other string still shipped a dialog whose only unlabelled-by-sight control announced itself as "Close" — and that is the one control a screen-reader user needs to get out of a modal. Both components now take `closeLabel`, defaulting to `Close`, alongside the `revealLabel`/`hideLabel` added in 1.16.0. A dialog with no `onClose` still has no ✕ at all: passing a label does not conjure one.
+
 ## 1.16.0 — 2026-07-31
 
 ### Added

@@ -15,7 +15,7 @@ const CSS = `
 @keyframes ef-pop{from{opacity:0;transform:scale(.94) translateY(8px)}}
 `;
 const FOCUSABLE = 'button,[href],input,select,textarea,[tabindex]:not([tabindex="-1"])';
-export const Dialog = React.forwardRef(function Dialog({ open, onClose, title, description, footer, width = 440, children, style, className, ...rest }, ref) {
+export const Dialog = React.forwardRef(function Dialog({ open, onClose, closeLabel = 'Close', title, description, footer, width = 440, children, style, className, ...rest }, ref) {
   injectEfCss('ef-css-dialog', CSS);
   const panelRef = React.useRef(null);
   const prevFocus = React.useRef(null);
@@ -55,7 +55,7 @@ export const Dialog = React.forwardRef(function Dialog({ open, onClose, title, d
             <div className="ef-dialog__title" id={titleId}>{title}</div>
             {description ? <div className="ef-dialog__desc" id={descId}>{description}</div> : null}
           </div>
-          {onClose ? <IconButton icon="x" label="Close" size="sm" onClick={onClose} /> : null}
+          {onClose ? <IconButton icon="x" label={closeLabel} size="sm" onClick={onClose} /> : null}
         </div>
         <div className="ef-dialog__body">{children}</div>
         {footer ? <div className="ef-dialog__foot">{footer}</div> : null}

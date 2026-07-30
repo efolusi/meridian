@@ -2,6 +2,9 @@ export interface DialogProps {
   open: boolean;
   /** Called on ✕, ESC, or overlay click; omit to hide ✕ */
   onClose?: () => void;
+  /** Accessible name of the ✕ button. Pass a translated string in a
+   *  non-English UI. @default 'Close' */
+  closeLabel?: string;
   title: React.ReactNode;
   description?: React.ReactNode;
   /** Right-aligned action row on sunken strip */

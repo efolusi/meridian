@@ -16,7 +16,7 @@ const CSS = `
 .ef-drawer__foot{display:flex;justify-content:flex-end;gap:8px;padding:14px 20px;border-top:1px solid var(--border-default);background:var(--surface-subtle)}
 `;
 const FOCUSABLE = 'button,[href],input,select,textarea,[tabindex]:not([tabindex="-1"])';
-export const Drawer = React.forwardRef(function Drawer({ open, onClose, title, footer, width = 400, side = 'right', children, style, className, ...rest }, ref) {
+export const Drawer = React.forwardRef(function Drawer({ open, onClose, closeLabel = 'Close', title, footer, width = 400, side = 'right', children, style, className, ...rest }, ref) {
   injectEfCss('ef-css-drawer', CSS);
   const panelRef = React.useRef(null);
   const prevFocus = React.useRef(null);
@@ -51,7 +51,7 @@ export const Drawer = React.forwardRef(function Drawer({ open, onClose, title, f
       <div {...rest} className={`ef-drawer ef-drawer--${side}${className ? ' ' + className : ''}`} role="dialog" aria-modal="true" ref={mergeRefs(ref, panelRef)} tabIndex={-1} aria-labelledby={title ? titleId : undefined} style={{ width, ...style }}>
         <div className="ef-drawer__head">
           <div className="ef-drawer__title" id={titleId}>{title}</div>
-          {onClose ? <IconButton icon="x" label="Close" size="sm" onClick={onClose} /> : null}
+          {onClose ? <IconButton icon="x" label={closeLabel} size="sm" onClick={onClose} /> : null}
         </div>
         <div className="ef-drawer__body">{children}</div>
         {footer ? <div className="ef-drawer__foot">{footer}</div> : null}
