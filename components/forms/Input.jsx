@@ -20,18 +20,58 @@ const CSS = `
 .ef-input--icon.ef-input--md .ef-input__el{padding-left:36px}
 .ef-input--icon.ef-input--lg .ef-input__el{padding-left:40px}
 .ef-input__icon{position:absolute;left:11px;color:var(--text-muted);display:inline-flex;pointer-events:none}
+.ef-input__reveal{position:absolute;right:6px;display:inline-flex;align-items:center;justify-content:center;width:28px;height:28px;padding:0;border:none;border-radius:var(--radius-sm);background:none;color:var(--text-muted);cursor:pointer}
+.ef-input__reveal:hover{color:var(--text-primary)}
+.ef-input__reveal:focus-visible{outline:none;box-shadow:var(--focus-ring)}
+.ef-input--reveal.ef-input--sm .ef-input__el{padding-right:34px}
+.ef-input--reveal.ef-input--md .ef-input__el{padding-right:38px}
+.ef-input--reveal.ef-input--lg .ef-input__el{padding-right:42px}
 .ef-input--invalid .ef-input__el{border-color:var(--danger-600)}
 .ef-input--invalid .ef-input__el:focus{box-shadow:var(--focus-ring-danger)}
 `;
-export function Input({ label, hint, error, iconLeft, size = 'md', invalid, style, className, ...rest }) {
+export function Input({
+  label,
+  hint,
+  error,
+  iconLeft,
+  size = 'md',
+  invalid,
+  revealable,
+  revealLabel = 'Show password',
+  hideLabel = 'Hide password',
+  style,
+  className,
+  ...rest
+}) {
   injectEfCss('ef-css-input', CSS);
+  // A password field people cannot read back is a password field people mistype.
+  // The toggle is a real button so it is reachable by keyboard, and it is left
+  // out of the tab order only when there is nothing to reveal.
+  const [revealed, setRevealed] = React.useState(false);
+  const showToggle = revealable && rest.type === 'password';
   // Picks up id / aria wiring when nested in a FormField; standalone this is a no-op.
   const field = useFieldProps({ invalid, error, id: rest.id, 'aria-describedby': rest['aria-describedby'] });
   const bad = field.invalid;
   const control = (
-    <span className={`ef-input ef-input--${size}${iconLeft ? ' ef-input--icon' : ''}${bad ? ' ef-input--invalid' : ''}`}>
+    <span className={`ef-input ef-input--${size}${iconLeft ? ' ef-input--icon' : ''}${showToggle ? ' ef-input--reveal' : ''}${bad ? ' ef-input--invalid' : ''}`}>
       {iconLeft ? <span className="ef-input__icon"><Icon name={iconLeft} size={size === 'lg' ? 18 : 16} /></span> : null}
-      <input className="ef-input__el" aria-invalid={bad || undefined} {...rest} {...field.controlProps} />
+      <input
+        className="ef-input__el"
+        aria-invalid={bad || undefined}
+        {...rest}
+        {...field.controlProps}
+        type={showToggle && revealed ? 'text' : rest.type}
+      />
+      {showToggle ? (
+        <button
+          type="button"
+          className="ef-input__reveal"
+          aria-label={revealed ? hideLabel : revealLabel}
+          aria-pressed={revealed}
+          onClick={() => setRevealed(v => !v)}>
+          <Icon name={revealed ? 'eye-off' : 'eye'} size={16} />
+        </button>
+      ) : null}
     </span>
   );
   if (!label && !hint && !error) return React.cloneElement(control, { style, className: (control.props.className + (className ? ' ' + className : '')) });

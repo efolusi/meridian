@@ -10,5 +10,11 @@ export interface InputProps extends Omit<React.InputHTMLAttributes<HTMLInputElem
   /** @default 'md' */
   size?: 'sm' | 'md' | 'lg';
   invalid?: boolean;
+  /** Adds a show/hide button to a `type="password"` field */
+  revealable?: boolean;
+  /** @default 'Show password' */
+  revealLabel?: string;
+  /** @default 'Hide password' */
+  hideLabel?: string;
 }
 export declare function Input(props: InputProps): React.JSX.Element;
