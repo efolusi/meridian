@@ -3833,7 +3833,7 @@ export declare function Portal(props: PortalProps): React.JSX.Element | null;
 
 ## Design tokens
 
-165 custom property names by file (names only — resolve current values from /styles.css, which imports these files, or /tokens.json):
+166 custom property names by file (names only — resolve current values from /styles.css, which imports these files, or /tokens.json):
 
 ### /tokens/base.css
 
@@ -3922,6 +3922,7 @@ export declare function Portal(props: PortalProps): React.JSX.Element | null;
 --text-inverse
 --text-inverse-muted
 --text-link
+--text-link-hover
 --text-muted
 --text-on-brand
 --text-on-brand-muted

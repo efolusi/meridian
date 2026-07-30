@@ -4,6 +4,14 @@ All notable changes to Meridian are documented here. Format follows [Keep a Chan
 
 > **On the versions below 1.4.0:** Meridian was built in the open but released to nobody. Versions 1.0.0 through 1.3.0 are development milestones recorded as they happened; they were never tagged, published, or installable, so there is no artefact to go back to. They are kept because they are an accurate record of how the system was built, not because you can depend on them. The first tagged, publicly consumable release is 1.4.0.
 
+## 1.14.0 — 2026-07-30
+
+### Fixed
+- **Link hover no longer turns the link near-black.** `.ef-link:hover` used `--accent-hover`, which is `#1D0E04` in the light theme — a warm brown link jumping to near-black on hover reads as broken rather than emphasised. Hover now deepens the link's own hue through a new `--text-link-hover` token (`--brand-900` light, `--brand-300` dark). The hover underline stays: colour alone is not a safe affordance (WCAG 1.4.1).
+
+### Added
+- **`--text-link-hover`.** The link ramp had a resting colour but no hover companion, which is why consumers inherited the accent ramp by default.
+
 ## 1.13.0 — 2026-07-30
 
 ### Added

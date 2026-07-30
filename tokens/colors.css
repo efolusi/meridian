@@ -23,7 +23,7 @@
 --media-backdrop:#141210;/* generation backdrop */--media-backdrop-dot:rgba(243,239,231,.22);/* shimmer dots on the backdrop */
 --media-scrim:rgba(20,16,12,.55);/* legibility gradient over the finished image */--media-scrim-soft:rgba(20,16,12,.45);/* action chip resting fill */--media-scrim-strong:rgba(20,16,12,.7);/* action chip hover fill */
 --text-on-media:var(--sand-50);/* prompt text over imagery — stays light in both themes */--text-on-media-muted:rgba(250,249,246,.75);/* status line over imagery */
---text-primary:var(--sand-950);--text-secondary:var(--sand-700);--text-muted:#746A55;/* between sand-600/700: ≥4.5:1 on page, card, and sunken */--text-inverse:var(--sand-50);--text-inverse-muted:rgba(250,249,246,.6);/* dim ink on --surface-inverse (toast close button); remapped in dark where the inverse surface flips light */--text-link:var(--brand-700);
+--text-primary:var(--sand-950);--text-secondary:var(--sand-700);--text-muted:#746A55;/* between sand-600/700: ≥4.5:1 on page, card, and sunken */--text-inverse:var(--sand-50);--text-inverse-muted:rgba(250,249,246,.6);/* dim ink on --surface-inverse (toast close button); remapped in dark where the inverse surface flips light */--text-link:var(--brand-700);--text-link-hover:var(--brand-900);
 --border-default:var(--sand-200);--border-strong:var(--sand-300);--border-inverse:rgba(250,249,246,.18);
 --accent:var(--brand-950);--accent-hover:#1D0E04;--accent-active:#120801;--accent-subtle:var(--brand-50);--accent-subtle-border:var(--brand-200);--accent-contrast:#FFFFFF;
 --danger-contrast:#FFFFFF;/* label on a solid --danger-600 fill; flips in dark where the red lightens */--success-contrast:#FFFFFF;--warning-contrast:#FFFFFF;/* same contract as --danger-contrast, for the green and amber fills */
@@ -37,7 +37,7 @@
 /* Dark theme — semantic remap only; ramps stay fixed */
 [data-theme="dark"]{
 --surface-page:#191512;--surface-card:#211C17;--surface-sunken:#2A251E;--surface-subtle:#1D1814;--surface-inverse:var(--sand-50);--surface-brand:var(--brand-950);
---text-primary:#F3EFE7;--text-secondary:#C9C0B2;--text-muted:#9C9280;--text-inverse:var(--sand-950);--text-inverse-muted:rgba(30,26,20,.55);--text-link:var(--brand-400);
+--text-primary:#F3EFE7;--text-secondary:#C9C0B2;--text-muted:#9C9280;--text-inverse:var(--sand-950);--text-inverse-muted:rgba(30,26,20,.55);--text-link:var(--brand-400);--text-link-hover:var(--brand-300);
 --border-default:#332C24;--border-strong:#453C31;--border-inverse:rgba(30,26,20,.2);
 --accent:#F3EFE7;--accent-hover:#FFFFFF;--accent-active:#D5CFC0;--accent-subtle:#2A2119;--accent-subtle-border:#453728;--accent-contrast:#1E1A14;
 --success-600:#5FB86E;--success-100:#1C2B1F;--success-300:#2E4A34;

@@ -65,6 +65,7 @@ module.exports = { theme: { extend: {
     "text-inverse": "var(--text-inverse)",
     "text-inverse-muted": "var(--text-inverse-muted)",
     "text-link": "var(--text-link)",
+    "text-link-hover": "var(--text-link-hover)",
     "border-default": "var(--border-default)",
     "border-strong": "var(--border-strong)",
     "border-inverse": "var(--border-inverse)",
