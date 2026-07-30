@@ -4,6 +4,14 @@ All notable changes to Meridian are documented here. Format follows [Keep a Chan
 
 > **On the versions below 1.4.0:** Meridian was built in the open but released to nobody. Versions 1.0.0 through 1.3.0 are development milestones recorded as they happened; they were never tagged, published, or installable, so there is no artefact to go back to. They are kept because they are an accurate record of how the system was built, not because you can depend on them. The first tagged, publicly consumable release is 1.4.0.
 
+## 1.12.0 — 2026-07-30
+
+### Added
+- **Four icons the account and security surfaces needed.** `shield`, `laptop`, `monitor` and `log-in` join the Lucide-derived set. The gap showed up building a sign-in and account console: there was no icon for a security section, a desktop session, or a sign-in affordance — the set shipped `log-out` without `log-in`, and `shield-check` without the plain `shield`.
+
+### Changed
+- **`Divider` carries default vertical spacing** (one step on the space scale) instead of `margin: 0`. A separator flush against its neighbours is never what a caller wants, and the papercut was visible in this repo: the tools and console showcases each patched it inline with a different magic number (`20px` and `10px`). An explicit `style` or `className` still overrides, and those two showcase patches are gone.
+
 ## 1.11.1 — 2026-07-30
 
 ### Fixed
