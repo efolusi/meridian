@@ -78,7 +78,7 @@ function ToolsScreen() {
             { title: 'Convert', description: 'to ' + format },
             { title: 'Download' },
           ]} />
-          <Divider style={{ margin: '20px 0' }} />
+          <Divider />
           {tool === 'convert' ? (
             <div style={{ display: 'flex', flexDirection: 'column', gap: 12 }}>
               <FileDrop accept="*/*" hint="PDF, MP4, PNG, DOCX — up to 2 GB each" onFiles={addFiles} />

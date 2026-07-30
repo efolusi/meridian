@@ -84,7 +84,7 @@ function Topbar({ title, onSearch, notify }) {
       <Popover align="right" width={320} trigger={<IconButton icon="sparkles" label="What's new" />}>
         <div style={{ fontSize: 13, fontWeight: 600, marginBottom: 8 }}>What's new</div>
         <div style={{ fontSize: 13, color: 'var(--text-secondary)', lineHeight: 1.55 }}>Trading now mirrors other traders with a risk cap, and AI agents can use your infrastructure connections directly.</div>
-        <Divider style={{ margin: '10px 0' }} />
+        <Divider />
         <a href="../docs/index.html" style={{ fontSize: 13, fontWeight: 600 }}>Read the changelog →</a>
       </Popover>
       <Popover align="right" width={340} trigger={<IconButton icon="bell" label="Notifications" />}>
