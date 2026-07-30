@@ -1,11 +1,10 @@
 import React from 'react';
 import { injectEfCss, mergeRefs } from '../forms/Button.jsx';
 import { Portal, useAnchoredStyle } from './Portal.jsx';
+// Panel modifiers pin no edge on purpose; see useAnchoredStyle in Portal.jsx.
 const CSS = `
 .ef-popover{position:relative;display:inline-flex}
 .ef-popover__panel{position:absolute;top:calc(100% + 8px);width:280px;background:var(--surface-card);border:1px solid var(--border-strong);border-radius:var(--radius-md);box-shadow:var(--shadow-md);padding:14px;z-index:var(--z-dropdown);animation:ef-pop-in var(--dur-fast) var(--ease-out)}
-.ef-popover__panel--left{left:0}
-.ef-popover__panel--right{right:0}
 @keyframes ef-pop-in{from{opacity:0;transform:translateY(-3px)}}
 `;
 export const Popover = React.forwardRef(function Popover({ trigger, children, align = 'left', width = 280, open: controlled, onOpenChange, style, className, ...rest }, fRef) {

@@ -4,6 +4,11 @@ All notable changes to Meridian are documented here. Format follows [Keep a Chan
 
 > **On the versions below 1.4.0:** Meridian was built in the open but released to nobody. Versions 1.0.0 through 1.3.0 are development milestones recorded as they happened; they were never tagged, published, or installable, so there is no artefact to go back to. They are kept because they are an accurate record of how the system was built, not because you can depend on them. The first tagged, publicly consumable release is 1.4.0.
 
+## 1.15.0 — 2026-07-30
+
+### Fixed
+- **Anchored panels aligned to the right opened against the wrong edge.** A `Menu` with `align="right"` near the right of the viewport dropped its panel at the far LEFT instead of under its trigger — reported from the Efolusi accounts console, where every row's action menu did it. Two halves caused it: the panel class pinned `right: 0` while `useAnchoredStyle`'s first-frame inline style pinned `left: 0`, so the panel was laid out with both edges pinned, stretched to the full viewport width, and was then measured at that width — after which the edge clamp had nowhere to put it and fell back to the left edge. The placement now pins `right`/`bottom` to `auto` from the first frame, and the panel classes for `Menu`, `Popover` and `HoverCard` no longer pin an edge the placement already sets. `HoverCard` had the same shape vertically (`top`/`bottom`).
+
 ## 1.14.0 — 2026-07-30
 
 ### Fixed

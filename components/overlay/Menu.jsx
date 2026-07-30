@@ -2,11 +2,10 @@ import React from 'react';
 import { Icon } from '../icons/Icon.jsx';
 import { injectEfCss, mergeRefs } from '../forms/Button.jsx';
 import { Portal, useAnchoredStyle } from './Portal.jsx';
+// Panel modifiers pin no edge on purpose; see useAnchoredStyle in Portal.jsx.
 const CSS = `
 .ef-menu{position:relative;display:inline-flex}
 .ef-menu__panel{position:absolute;top:calc(100% + 6px);min-width:190px;background:var(--surface-card);border:1px solid var(--border-strong);border-radius:var(--radius-md);box-shadow:var(--shadow-md);padding:4px;z-index:var(--z-dropdown);animation:ef-menu-in var(--dur-fast) var(--ease-out)}
-.ef-menu__panel--left{left:0}
-.ef-menu__panel--right{right:0}
 @keyframes ef-menu-in{from{opacity:0;transform:translateY(-3px)}to{opacity:1;transform:translateY(0)}}
 .ef-menu__item{display:flex;align-items:center;gap:9px;width:100%;height:32px;padding:0 10px;border:none;border-radius:var(--radius-sm);background:none;cursor:pointer;text-align:left;font-family:var(--font-sans);font-size:var(--text-sm);color:var(--text-primary);transition:background var(--dur-fast) var(--ease-out)}
 .ef-menu__item:hover:not(:disabled){background:var(--surface-sunken)}

@@ -49,7 +49,12 @@ export function Portal({ children, container }) {
  */
 export function useAnchoredStyle(anchorRef, panelRef, { open, placement = 'bottom', align = 'start', offset = 6, matchWidth = false } = {}) {
   const [state, setState] = React.useState({
-    style: { position: 'fixed', top: 0, left: 0, visibility: 'hidden' },
+    // `right`/`bottom` are pinned to auto from the very first frame. A panel
+    // whose class also sets `right: 0` (every align="right" menu) would
+    // otherwise be laid out with both edges pinned, stretch to the full
+    // viewport, and get measured at that width — so the clamp below shoved it
+    // against the left edge instead of under its trigger.
+    style: { position: 'fixed', top: 0, left: 0, right: 'auto', bottom: 'auto', visibility: 'hidden' },
     side: placement,
   });
   useIsoLayoutEffect(() => {
