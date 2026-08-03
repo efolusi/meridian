@@ -4,6 +4,11 @@ All notable changes to Meridian are documented here. Format follows [Keep a Chan
 
 > **On the versions below 1.4.0:** Meridian was built in the open but released to nobody. Versions 1.0.0 through 1.3.0 are development milestones recorded as they happened; they were never tagged, published, or installable, so there is no artefact to go back to. They are kept because they are an accurate record of how the system was built, not because you can depend on them. The first tagged, publicly consumable release is 1.4.0.
 
+## 1.18.0 — 2026-08-03
+
+### Added
+- **Brand marks: `linkedin` and `x-brand`.** The set is Lucide-derived, and Lucide dropped its brand logos — so any product that wanted a "follow us" row had to inline its own SVGs, which efolusi.com promptly did (a smell: the design system existing so products don't hand-roll visuals). Two filled 24×24 marks join the set: `linkedin`, and `x-brand` for the X platform logo — named that way because `x` is already the close mark, and a close button that renders a social logo is the kind of bug you only catch in production. They are trademarks reproduced for linking to official profiles, noted as such in THIRD_PARTY_NOTICES.md, and they follow `currentColor` like every other glyph.
+
 ## 1.17.0 — 2026-07-31
 
 ### Added

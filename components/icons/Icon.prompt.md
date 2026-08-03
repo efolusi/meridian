@@ -1,4 +1,4 @@
-Renders one of the 108 curated Lucide icons shipped in `assets/icons/`, inheriting `currentColor`.
+Renders one of the 115 glyphs shipped in `assets/icons/` (113 curated Lucide icons plus the `linkedin` and `x-brand` brand marks), inheriting `currentColor`. `x` is the close mark; the X platform logo is `x-brand`.
 
 ```jsx
 <Icon name="arrow-right" />
