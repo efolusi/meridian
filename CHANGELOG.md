@@ -4,6 +4,11 @@ All notable changes to Meridian are documented here. Format follows [Keep a Chan
 
 > **On the versions below 1.4.0:** Meridian was built in the open but released to nobody. Versions 1.0.0 through 1.3.0 are development milestones recorded as they happened; they were never tagged, published, or installable, so there is no artefact to go back to. They are kept because they are an accurate record of how the system was built, not because you can depend on them. The first tagged, publicly consumable release is 1.4.0.
 
+## 1.19.0 — 2026-08-03
+
+### Added
+- **`github-brand`.** 1.18.0 shipped `linkedin` and `x-brand` filled, which made the one social glyph already in the set — the Lucide outline `github` — the odd one out in any follow-us row: two solid marks and one wireframe. The filled GitHub mark joins under the same naming rule (`-brand` when a Lucide name is taken); the outline `github` stays for whoever prefers it.
+
 ## 1.18.0 — 2026-08-03
 
 ### Added

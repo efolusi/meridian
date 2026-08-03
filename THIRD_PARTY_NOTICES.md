@@ -16,7 +16,7 @@ The five variable fonts in `assets/fonts/` are upstream builds obtained via [goo
 
 Of the SVGs in `assets/icons/`, 113 are derived from [Lucide](https://lucide.dev), licensed under the ISC License (Copyright (c) Lucide Icons and Contributors); icons that Lucide derived from the Feather project additionally carry the MIT License (Copyright (c) 2013-present Cole Bemis). Both texts: [assets/icons/LICENSE-Lucide.txt](assets/icons/LICENSE-Lucide.txt).
 
-The two brand marks (`linkedin.svg`, `x-brand.svg`) are not from Lucide: they depict the LinkedIn and X logos, which are trademarks of their respective owners, and are included solely so products can link to their official profiles. Trademark rules of those owners apply; the repository's MIT license covers the files, not the marks.
+The three brand marks (`linkedin.svg`, `x-brand.svg`, `github-brand.svg`) are not from Lucide: they depict the LinkedIn, X and GitHub logos, which are trademarks of their respective owners, and are included solely so products can link to their official profiles. Trademark rules of those owners apply; the repository's MIT license covers the files, not the marks.
 
 ## Brand assets
 
