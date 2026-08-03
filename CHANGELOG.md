@@ -4,6 +4,11 @@ All notable changes to Meridian are documented here. Format follows [Keep a Chan
 
 > **On the versions below 1.4.0:** Meridian was built in the open but released to nobody. Versions 1.0.0 through 1.3.0 are development milestones recorded as they happened; they were never tagged, published, or installable, so there is no artefact to go back to. They are kept because they are an accurate record of how the system was built, not because you can depend on them. The first tagged, publicly consumable release is 1.4.0.
 
+## 1.19.1 — 2026-08-03
+
+### Changed
+- **`linkedin` is now the tile, not the letters.** The 1.18.0 glyph drew only the "in" letterforms, which is not how anyone recognises the logo — the mark people know is the rounded square with the letters knocked out. Redrawn as the tile with even-odd cutouts; same name, same box, so nothing changes at call sites except looking right.
+
 ## 1.19.0 — 2026-08-03
 
 ### Added
