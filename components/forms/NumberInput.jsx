@@ -7,12 +7,12 @@ const CSS = `
 .ef-field__label{font-size:var(--text-sm);font-weight:var(--weight-semibold);color:var(--text-primary)}
 .ef-field__hint{font-size:var(--text-xs);color:var(--text-muted)}
 .ef-field__error{font-size:var(--text-xs);color:var(--danger-600);display:flex;align-items:center;gap:4px}
-.ef-number{display:flex;align-items:stretch;overflow:hidden;border:1px solid var(--border-strong);border-radius:var(--radius-sm);background:var(--surface-card);transition:border-color var(--dur-fast) var(--ease-out),box-shadow var(--dur-fast) var(--ease-out)}
+.ef-number{display:flex;align-items:stretch;overflow:hidden;border:1px solid var(--border-strong);border-radius:var(--radius-sm);background:var(--surface-sunken);transition:border-color var(--dur-fast) var(--ease-out),box-shadow var(--dur-fast) var(--ease-out)}
 .ef-number:hover:not(.ef-number--disabled){border-color:var(--sand-400)}
 .ef-number:focus-within{border-color:var(--accent);box-shadow:var(--focus-ring)}
 .ef-number.ef-number--invalid{border-color:var(--danger-600)}
 .ef-number.ef-number--invalid:focus-within{box-shadow:var(--focus-ring-danger)}
-.ef-number--disabled{background:var(--surface-sunken)}
+.ef-number--disabled{background:var(--surface-subtle)}
 .ef-number__el{flex:1;min-width:0;border:none;background:transparent;color:var(--text-primary);font-family:var(--font-sans);font-variant-numeric:tabular-nums}
 .ef-number__el:focus{outline:none}
 .ef-number__el::placeholder{color:var(--text-muted)}

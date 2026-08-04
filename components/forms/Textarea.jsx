@@ -7,11 +7,11 @@ const CSS = `
 .ef-field__label{font-size:var(--text-sm);font-weight:var(--weight-semibold);color:var(--text-primary)}
 .ef-field__hint{font-size:var(--text-xs);color:var(--text-muted)}
 .ef-field__error{font-size:var(--text-xs);color:var(--danger-600);display:flex;align-items:center;gap:4px}
-.ef-textarea{width:100%;min-height:80px;padding:10px 12px;border:1px solid var(--border-strong);border-radius:var(--radius-sm);background:var(--surface-card);color:var(--text-primary);font-family:var(--font-sans);font-size:var(--text-md);line-height:var(--leading-normal);resize:vertical;transition:border-color var(--dur-fast) var(--ease-out),box-shadow var(--dur-fast) var(--ease-out)}
+.ef-textarea{width:100%;min-height:80px;padding:10px 12px;border:1px solid var(--border-strong);border-radius:var(--radius-sm);background:var(--surface-sunken);color:var(--text-primary);font-family:var(--font-sans);font-size:var(--text-md);line-height:var(--leading-normal);resize:vertical;transition:border-color var(--dur-fast) var(--ease-out),box-shadow var(--dur-fast) var(--ease-out)}
 .ef-textarea::placeholder{color:var(--text-muted)}
 .ef-textarea:hover:not(:disabled){border-color:var(--sand-400)}
 .ef-textarea:focus{outline:none;border-color:var(--accent);box-shadow:var(--focus-ring)}
-.ef-textarea:disabled{background:var(--surface-sunken);color:var(--text-muted);cursor:not-allowed}
+.ef-textarea:disabled{background:var(--surface-subtle);color:var(--text-muted);cursor:not-allowed}
 .ef-textarea--invalid{border-color:var(--danger-600)}
 .ef-textarea--invalid:focus{box-shadow:var(--focus-ring-danger)}
 `;

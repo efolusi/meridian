@@ -8,11 +8,11 @@ const CSS = `
 .ef-field__hint{font-size:var(--text-xs);color:var(--text-muted)}
 .ef-field__error{font-size:var(--text-xs);color:var(--danger-600);display:flex;align-items:center;gap:4px}
 .ef-input{position:relative;display:flex;align-items:center}
-.ef-input__el{width:100%;border:1px solid var(--border-strong);border-radius:var(--radius-sm);background:var(--surface-card);color:var(--text-primary);font-family:var(--font-sans);transition:border-color var(--dur-fast) var(--ease-out),box-shadow var(--dur-fast) var(--ease-out)}
+.ef-input__el{width:100%;border:1px solid var(--border-strong);border-radius:var(--radius-sm);background:var(--surface-sunken);color:var(--text-primary);font-family:var(--font-sans);transition:border-color var(--dur-fast) var(--ease-out),box-shadow var(--dur-fast) var(--ease-out)}
 .ef-input__el::placeholder{color:var(--text-muted)}
 .ef-input__el:hover:not(:disabled){border-color:var(--sand-400)}
 .ef-input__el:focus{outline:none;border-color:var(--accent);box-shadow:var(--focus-ring)}
-.ef-input__el:disabled{background:var(--surface-sunken);color:var(--text-muted);cursor:not-allowed}
+.ef-input__el:disabled{background:var(--surface-subtle);color:var(--text-muted);cursor:not-allowed}
 .ef-input--sm .ef-input__el{height:var(--control-h-sm);padding:0 10px;font-size:var(--text-sm)}
 .ef-input--md .ef-input__el{height:var(--control-h-md);padding:0 12px;font-size:var(--text-md)}
 .ef-input--lg .ef-input__el{height:var(--control-h-lg);padding:0 14px;font-size:var(--text-lg)}

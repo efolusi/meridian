@@ -7,10 +7,10 @@ const CSS = `
 .ef-field__label{font-size:var(--text-sm);font-weight:var(--weight-semibold);color:var(--text-primary)}
 .ef-field__hint{font-size:var(--text-xs);color:var(--text-muted)}
 .ef-select{position:relative;display:flex;align-items:center}
-.ef-select__el{width:100%;appearance:none;border:1px solid var(--border-strong);border-radius:var(--radius-sm);background:var(--surface-card);color:var(--text-primary);font-family:var(--font-sans);cursor:pointer;transition:border-color var(--dur-fast) var(--ease-out),box-shadow var(--dur-fast) var(--ease-out)}
+.ef-select__el{width:100%;appearance:none;border:1px solid var(--border-strong);border-radius:var(--radius-sm);background:var(--surface-sunken);color:var(--text-primary);font-family:var(--font-sans);cursor:pointer;transition:border-color var(--dur-fast) var(--ease-out),box-shadow var(--dur-fast) var(--ease-out)}
 .ef-select__el:hover:not(:disabled){border-color:var(--sand-400)}
 .ef-select__el:focus{outline:none;border-color:var(--accent);box-shadow:var(--focus-ring)}
-.ef-select__el:disabled{background:var(--surface-sunken);color:var(--text-muted);cursor:not-allowed}
+.ef-select__el:disabled{background:var(--surface-subtle);color:var(--text-muted);cursor:not-allowed}
 .ef-select--sm .ef-select__el{height:var(--control-h-sm);padding:0 28px 0 10px;font-size:var(--text-sm)}
 .ef-select--md .ef-select__el{height:var(--control-h-md);padding:0 32px 0 12px;font-size:var(--text-md)}
 .ef-select--lg .ef-select__el{height:var(--control-h-lg);padding:0 36px 0 14px;font-size:var(--text-lg)}

@@ -6,7 +6,7 @@ import { useFieldProps } from './FormField.jsx';
 import { Portal, useAnchoredStyle } from '../overlay/Portal.jsx';
 const CSS = `
 .ef-combo{position:relative}
-.ef-combo__control{display:flex;align-items:center;flex-wrap:wrap;gap:6px;min-height:var(--control-h-md);padding:4px 32px 4px 8px;border:1px solid var(--border-strong);border-radius:var(--radius-sm);background:var(--surface-card);cursor:text;transition:border-color var(--dur-fast) var(--ease-out),box-shadow var(--dur-fast) var(--ease-out)}
+.ef-combo__control{display:flex;align-items:center;flex-wrap:wrap;gap:6px;min-height:var(--control-h-md);padding:4px 32px 4px 8px;border:1px solid var(--border-strong);border-radius:var(--radius-sm);background:var(--surface-sunken);cursor:text;transition:border-color var(--dur-fast) var(--ease-out),box-shadow var(--dur-fast) var(--ease-out)}
 .ef-combo__control:hover{border-color:var(--sand-400)}
 .ef-combo--open .ef-combo__control{border-color:var(--accent);box-shadow:var(--focus-ring)}
 .ef-combo__input{flex:1;min-width:80px;border:none;outline:none;background:none;font-family:var(--font-sans);font-size:var(--text-md);color:var(--text-primary);height:26px;padding:0 4px}

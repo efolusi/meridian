@@ -3,10 +3,10 @@ import { injectEfCss } from './Button.jsx';
 import { useFieldProps } from './FormField.jsx';
 const CSS = `
 .ef-digits{display:flex;gap:8px}
-.ef-digits__cell{width:44px;height:52px;border:1px solid var(--border-strong);border-radius:var(--radius-sm);background:var(--surface-card);color:var(--text-primary);font-family:var(--font-mono);font-size:22px;font-weight:600;text-align:center;transition:border-color var(--dur-fast) var(--ease-out),box-shadow var(--dur-fast) var(--ease-out)}
+.ef-digits__cell{width:44px;height:52px;border:1px solid var(--border-strong);border-radius:var(--radius-sm);background:var(--surface-sunken);color:var(--text-primary);font-family:var(--font-mono);font-size:22px;font-weight:600;text-align:center;transition:border-color var(--dur-fast) var(--ease-out),box-shadow var(--dur-fast) var(--ease-out)}
 .ef-digits__cell:hover:not(:disabled){border-color:var(--sand-400)}
 .ef-digits__cell:focus{outline:none;border-color:var(--accent);box-shadow:var(--focus-ring)}
-.ef-digits__cell:disabled{background:var(--surface-sunken);cursor:not-allowed}
+.ef-digits__cell:disabled{background:var(--surface-subtle);cursor:not-allowed}
 .ef-digits--invalid .ef-digits__cell{border-color:var(--danger-600)}
 `;
 export function DigitEntry({ length = 6, value, onChange, onComplete, label, invalid, disabled, style, className, ...rest }) {
