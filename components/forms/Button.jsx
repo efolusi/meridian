@@ -23,9 +23,32 @@ const CSS = `
 @keyframes ef-spin{to{transform:rotate(360deg)}}
 .ef-btn__spin{display:inline-flex;animation:ef-spin .7s linear infinite}
 `;
+/**
+ * Put a component's CSS in the document, inside the `meridian` cascade layer.
+ *
+ * THE LAYER IS THE POINT. This appends a <style> at runtime, so it always
+ * lands after whatever stylesheet the app shipped, and at equal specificity
+ * later wins. Every product paid for that: Trady doubles its selectors
+ * (`.hide-sm.hide-sm`) because a one-class utility lost to
+ * `.ef-badge { display: inline-flex }`, and Efolusi restates radii and colours
+ * to get its own back. A design system that has to be out-specified by its
+ * consumers is not a foundation, it is a competitor.
+ *
+ * An unlayered rule beats a layered one no matter the order or the
+ * specificity, so app CSS now wins by default and meridian is the floor it
+ * stands on. Products can stop fighting; the workarounds above can go.
+ *
+ * Note this changes precedence for pages that shipped before it. Anywhere an
+ * app rule accidentally collided with a component rule and lost, it now wins.
+ * That is the intended direction, but it is a real change and worth looking at
+ * a page or two after upgrading.
+ */
 export function injectEfCss(id, text) {
   if (typeof document === 'undefined' || document.getElementById(id)) return;
-  const s = document.createElement('style'); s.id = id; s.textContent = text; document.head.appendChild(s);
+  const s = document.createElement('style');
+  s.id = id;
+  s.textContent = `@layer meridian{${text}}`;
+  document.head.appendChild(s);
 }
 /**
  * Format a number as a CSS percentage that survives server rendering.

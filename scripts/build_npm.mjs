@@ -187,7 +187,11 @@ for (const { group, name } of sources()) {
   }
   cssBlocks.push(`/* components/${group}/${name}.jsx */${m[1].replace(/\s+$/, '')}\n`);
 }
-files.set('components.css', cssBlocks.join(''));
+// Inside the same `meridian` cascade layer the runtime injector uses, and for
+// the same reason: whichever path delivers this CSS, an app's own unlayered
+// rule must win a tie without doubling its selectors. The two paths must not
+// disagree, or a component behaves differently on the CDN and on npm.
+files.set('components.css', `@layer meridian{\n${cssBlocks.join('')}}\n`);
 
 // The token layer. Without it every component renders unstyled. The npm
 // styles.css additionally pulls in the static component CSS, so the documented

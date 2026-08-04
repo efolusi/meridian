@@ -16,7 +16,10 @@ describe('injectEfCss contract', () => {
     injectEfCss('ef-test-dedupe', '.x{color:blue}');
     const tags = document.querySelectorAll('style#ef-test-dedupe');
     expect(tags.length).toBe(1);
-    expect(tags[0].textContent).toBe('.x{color:red}'); // first write wins, second is a no-op
+    // First write wins, second is a no-op — and the content sits inside the
+    // `meridian` cascade layer, which is the contract that lets an app's own
+    // unlayered CSS win a specificity tie without doubling its selectors.
+    expect(tags[0].textContent).toBe('@layer meridian{.x{color:red}}');
   });
 
   it('never leaks a <style> tag into rendered markup', () => {
