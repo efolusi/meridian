@@ -1,7 +1,8 @@
 import React from 'react';
 import { Icon } from '../icons/Icon.jsx';
 const CSS = `
-.ef-btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;border:1px solid transparent;border-radius:var(--radius-sm);font-family:var(--font-sans);font-weight:var(--weight-semibold);cursor:pointer;white-space:nowrap;user-select:none;transition:background var(--dur-fast) var(--ease-out),border-color var(--dur-fast) var(--ease-out),color var(--dur-fast) var(--ease-out),box-shadow var(--dur-fast) var(--ease-out),transform var(--dur-med) var(--ease-spring)}
+.ef-btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;text-decoration:none;border:1px solid transparent;border-radius:var(--radius-sm);font-family:var(--font-sans);font-weight:var(--weight-semibold);cursor:pointer;white-space:nowrap;user-select:none;transition:background var(--dur-fast) var(--ease-out),border-color var(--dur-fast) var(--ease-out),color var(--dur-fast) var(--ease-out),box-shadow var(--dur-fast) var(--ease-out),transform var(--dur-med) var(--ease-spring)}
+.ef-btn:hover,.ef-btn:focus,.ef-btn:visited{text-decoration:none}
 .ef-btn:focus-visible{outline:none;box-shadow:var(--focus-ring)}
 .ef-btn:active:not(:disabled){transform:scale(.985)}
 .ef-btn:disabled{opacity:.45;cursor:not-allowed}
