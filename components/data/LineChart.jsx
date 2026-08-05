@@ -12,10 +12,17 @@ export function LineChart({ data, height = 150, showArea = true, showDots = fals
   const vals = data.map(d => d.value);
   const max = Math.max(...vals), min = Math.min(...vals);
   const span = max - min || 1;
-  const x = i => PAD + (i / (data.length - 1)) * (W - PAD * 2);
-  const y = v => H - PAD - ((v - min) / span) * (H - PAD * 2);
-  const path = data.map((d, i) => (i ? 'L' : 'M') + x(i).toFixed(1) + ',' + y(d.value).toFixed(1)).join(' ');
-  const area = path + ` L${x(data.length - 1).toFixed(1)},${H - PAD} L${x(0).toFixed(1)},${H - PAD} Z`;
+  const n = data.length;
+  const x = i => PAD + (n === 1 ? 0.5 : i / (n - 1)) * (W - PAD * 2);
+  const y = v => n === 1 ? H / 2 : H - PAD - ((v - min) / span) * (H - PAD * 2);
+  // One reading has no left-to-right span; draw it as a flat line across the
+  // middle instead of dividing by zero, which put NaN in the path.
+  const path = n === 1
+    ? `M${PAD.toFixed(1)},${y(data[0].value).toFixed(1)} L${(W - PAD).toFixed(1)},${y(data[0].value).toFixed(1)}`
+    : data.map((d, i) => (i ? 'L' : 'M') + x(i).toFixed(1) + ',' + y(d.value).toFixed(1)).join(' ');
+  const area = n === 1
+    ? `${path} L${(W - PAD).toFixed(1)},${(H - PAD).toFixed(1)} L${PAD.toFixed(1)},${(H - PAD).toFixed(1)} Z`
+    : path + ` L${x(data.length - 1).toFixed(1)},${H - PAD} L${x(0).toFixed(1)},${H - PAD} Z`;
   const move = e => {
     const r = ref.current.getBoundingClientRect();
     const i = Math.round(((e.clientX - r.left) / r.width) * (data.length - 1));

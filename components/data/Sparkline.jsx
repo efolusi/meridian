@@ -1,12 +1,17 @@
 import React from 'react';
 export function Sparkline({ data = [], width = 120, height = 32, direction, strokeWidth = 1.5, area = true, style, className, ...rest }) {
   if (!data.length) return null;
+  const len = data.length;
   const min = Math.min(...data), max = Math.max(...data), span = max - min || 1;
   const pad = strokeWidth;
-  const pts = data.map((v, i) => [
-    pad + (i / (data.length - 1)) * (width - pad * 2),
-    pad + (1 - (v - min) / span) * (height - pad * 2),
-  ]);
+  // One reading has no left-to-right span; draw it as a flat line across the
+  // middle instead of dividing by zero, which put NaN in every coordinate.
+  const pts = len === 1
+    ? [[pad, height / 2], [width - pad, height / 2]]
+    : data.map((v, i) => [
+        pad + (i / (len - 1)) * (width - pad * 2),
+        pad + (1 - (v - min) / span) * (height - pad * 2),
+      ]);
   const dir = direction || (data[data.length - 1] >= data[0] ? 'up' : 'down');
   const color = dir === 'up' ? 'var(--success-600)' : dir === 'down' ? 'var(--danger-600)' : 'var(--text-primary)';
   const line = pts.map(p => p.map(n => n.toFixed(1)).join(',')).join(' ');
