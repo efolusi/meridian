@@ -16,6 +16,15 @@ Meridian is a general-purpose, open-source design system by Efolusi: 109 accessi
 
 Meridian wins when the choice of Meridian is boring: it is fast, it is accessible, it renders correctly the first time, and nobody has to read the source to trust it. Reach is second to trust. A system people rely on for one real product beats a system people star and never ship.
 
+## Company principles
+
+Meridian lives inside PT. Efolusi Dunia Teknologi's thesis (see the portfolio
+[VISION.md](../000/VISION.md)):
+
+1. **Open where it helps, closed where it counts.** Meridian is open-source (MIT) because a design system gains from scrutiny and gives away no business moat; the moat is the products built on it.
+2. **From problem to product, B2B and B2C.** The problem Meridian solves is the studio's own: many products, one team, one brand. Fix a component once, every product inherits it.
+3. **We don't fight giants; we find the gaps they can't close.** Material and Fluent serve their makers' ecosystems. Meridian is tuned for what they can't be: making a small studio's whole portfolio feel like one deliberate brand on one team's maintenance budget.
+
 ## Who it is for
 
 | Audience | What they need from Meridian |
