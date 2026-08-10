@@ -60,7 +60,7 @@
 </section>
 <section style="max-width:1200px;margin:64px auto 0;padding:0 28px">
 <div style="display:flex;justify-content:center">
-<x-import component-from-global-scope="EfolusiDesignSystem_4ffc3d.SegmentedControl" options="{{ exampleOptions }}" value="{{ example }}" onChange="{{ setExample }}" hint-size="340px,36px"></x-import>
+<x-import component-from-global-scope="EfolusiDesignSystem_4ffc3d.Select" options="{{ exampleOptions }}" value="{{ example }}" onChange="{{ setExample }}" aria-label="Choose a starter journey" hint-size="220px,36px"></x-import>
 </div>
 <div class="home-frame" style="margin-top:18px;border:1px solid var(--border-default);border-radius:var(--radius-lg);overflow:hidden;background:var(--surface-card);height:{{ frameH }}px">
 <iframe src="{{ exampleSrc }}" title="Live example" style="width:1440px;height:780px;border:0;transform:scale({{ frameScale }});transform-origin:top left;display:block"></iframe>
@@ -108,6 +108,11 @@ class Component extends DCLogic {
       app: '../starters/app-page/AppPage.dc.html',
       marketing: '../starters/marketing-page/MarketingPage.dc.html',
       docs: '../starters/docs-page/DocsPage.dc.html',
+      ai: '../starters/ai-workspace/Workspace.dc.html',
+      crm: '../starters/crm/Pipeline.dc.html',
+      finance: '../starters/finance-ops/Cashflow.dc.html',
+      support: '../starters/service-desk/Queue.dc.html',
+      auth: '../starters/auth-page/AuthPage.dc.html',
     };
     const frameScale = +(this.state.fw / 1440).toFixed(4);
     return {
@@ -120,8 +125,8 @@ class Component extends DCLogic {
         this.setState({ dark: next === 'dark' });
       },
       example: this.state.example,
-      exampleOptions: [{ id: 'dashboard', label: 'Dashboard' }, { id: 'app', label: 'App' }, { id: 'marketing', label: 'Marketing' }, { id: 'docs', label: 'Docs' }],
-      setExample: (id) => this.setState({ example: id }),
+      exampleOptions: [{ value: 'dashboard', label: 'Dashboard' }, { value: 'app', label: 'App' }, { value: 'marketing', label: 'Marketing' }, { value: 'docs', label: 'Docs' }, { value: 'auth', label: 'Auth' }, { value: 'ai', label: 'AI workspace' }, { value: 'crm', label: 'CRM' }, { value: 'finance', label: 'Finance operations' }, { value: 'support', label: 'Service desk' }],
+      setExample: (event) => this.setState({ example: event.target.value }),
       exampleSrc: srcs[this.state.example],
     };
   }

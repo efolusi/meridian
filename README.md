@@ -131,7 +131,7 @@ The layout is Meridian's own, organized by purpose: the system core stays at the
 - `components/<group>/` — the 109 components; each ships `.jsx` + `.d.ts` + `.prompt.md` + a group card HTML
 - `blocks/` — 9 pre-composed sections to paste into a page
 - `showcases/<app>/` — 8 example apps in plain JSX: agent, auth, console, docs, infra, tools, trader, website
-- `starters/<journey>/` — 5 journeys to copy wholesale, one per category, linked pages sharing a consistent shell: marketing (home → pricing → contact), auth (sign in → sign up → onboarding, + password reset), dashboard (overview → customers → detail → settings), app (overview → projects → detail → new project → settings), docs (quickstart → authentication → errors)
+- `starters/<journey>/` — 9 journeys to copy wholesale, each with linked pages and a consistent shell: marketing, auth, dashboard, app, docs, AI workspace, CRM, finance operations, and service desk
 - `site/` — the docs website (home, docs, components, blocks, example apps, charts, themes, colors), plus `examples/` (the live demos), `registry.json`, and generated `registry/` install items
 - `guidelines/` — foundation specimen cards + brand (design language), accessibility, forms, governance
 - `hello.html` — a complete runnable page; open it in a browser to see the system working with nothing installed
@@ -141,7 +141,7 @@ The layout is Meridian's own, organized by purpose: the system core stays at the
 - `ARCHITECTURE.md` — how the pieces fit · `STYLEGUIDE.md` — contributor conventions
 - `LICENSE` — MIT · `THIRD_PARTY_NOTICES.md` · `CONTRIBUTING.md` — component contract + PR checklist
 
-**Showcases vs starters:** showcases (`showcases/`) are one rich screen per example app, written in plain JSX so you can lift code straight into a React app; starters (`starters/`) are self-contained multi-page journeys you copy wholesale to start a surface. Four pairs intentionally cover the same category in both forms (console/dashboard, auth, website/marketing, docs).
+**Showcases vs starters:** showcases (`showcases/`) are rich screens written in plain JSX so you can lift code straight into a React app; starters (`starters/`) are self-contained multi-page journeys you copy wholesale. Four pairs intentionally cover the same category in both forms (console/dashboard, auth, website/marketing, docs); the AI workspace, CRM, finance operations, and service desk starters extend coverage into domain-specific enterprise workflows.
 
 ## Caveats
 
