@@ -1,6 +1,27 @@
 [
   {
     "date": "2026-08-10",
+    "macrostructure": "Split Studio",
+    "theme": "Meridian",
+    "enrichment": "none",
+    "brief": "CRM account relationship detail starter"
+  },
+  {
+    "date": "2026-08-10",
+    "macrostructure": "Ecosystem Index",
+    "theme": "Meridian",
+    "enrichment": "none",
+    "brief": "CRM account index starter"
+  },
+  {
+    "date": "2026-08-10",
+    "macrostructure": "Index First",
+    "theme": "Meridian",
+    "enrichment": "none",
+    "brief": "CRM pipeline starter"
+  },
+  {
+    "date": "2026-08-10",
     "macrostructure": "Workbench",
     "theme": "Meridian",
     "enrichment": "none",

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<!-- @template name="CRM accounts" description="Searchable account index with owners and next actions" -->
+<helmet><script src="./ds-base.js"></script><style>
+/* Hallmark · pre-emit critique: P5 H5 E4 S5 R5 V5 */
+/* Hallmark · macrostructure: Ecosystem Index · tone: utilitarian · anchor hue: Meridian caramel */
+html,body{overflow-x:clip}html{background:var(--surface-page)}
+.crm-shell{min-height:100dvh;background:var(--surface-page);color:var(--text-primary);font-family:var(--font-sans)}
+.crm-top{display:flex;align-items:center;gap:10px;min-height:60px;padding:8px 16px;border-bottom:1px solid var(--border-default);background:var(--surface-card)}
+.crm-brand{display:flex;align-items:center;gap:9px;min-width:0}.crm-brand img{width:28px;height:28px}.crm-brand strong{font-family:var(--font-display);font-size:17px;white-space:nowrap}.crm-nav{display:none}.crm-actions{margin-inline-start:auto;display:flex;gap:8px}
+.crm-main{padding:16px;max-width:1480px;margin-inline:auto}.crm-title{display:flex;align-items:flex-start;gap:12px;flex-wrap:wrap}.crm-title h1{font-size:clamp(1.5rem,3vw,2.125rem);overflow-wrap:anywhere;min-width:0}.crm-title p{margin-top:4px;color:var(--text-secondary)}.crm-title>div:last-child{margin-inline-start:auto}
+.crm-board{display:grid;gap:12px;margin-top:20px}.crm-stage{min-width:0}.crm-stage-head{display:flex;align-items:center;gap:8px;padding:10px 4px}.crm-stage-head h2{font-size:13px}.crm-count{font-family:var(--font-mono);font-size:11px;color:var(--text-muted)}
+.crm-cards{display:grid;gap:8px}.crm-card{display:block;padding:14px;background:var(--surface-card);border:1px solid var(--border-default);border-radius:var(--radius-md);color:var(--text-primary);text-decoration:none;box-shadow:var(--shadow-xs)}.crm-card strong{display:block;font-size:14px}.crm-card p{margin-top:5px;color:var(--text-secondary);font-size:12px;line-height:1.45}.crm-meta{display:flex;align-items:center;gap:8px;margin-top:14px;padding-top:10px;border-top:1px solid var(--border-default);font-size:11px;color:var(--text-muted)}.crm-meta span:last-child{margin-inline-start:auto;white-space:nowrap}
+.crm-account-grid{display:grid;gap:12px;margin-top:20px}.crm-account-grid .crm-card{min-height:142px}.crm-account-kind{display:block;margin-bottom:8px;font-size:11px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--text-muted)}
+.crm-note{margin-top:16px;padding:12px 14px;border:1px dashed var(--border-strong);border-radius:var(--radius-md);color:var(--text-muted);font-size:12px}
+a:focus-visible{outline:none;box-shadow:var(--focus-ring)}
+@media (hover:hover) and (pointer:fine){.crm-card:hover{border-color:var(--border-strong);transform:translateY(-1px);text-decoration:none}}
+@media (min-width:40rem){.crm-nav{display:flex;gap:2px;margin-inline-start:12px}.crm-nav a{padding:7px 10px;border-radius:var(--radius-sm);color:var(--text-secondary);font-size:13px;font-weight:600;text-decoration:none;white-space:nowrap}.crm-nav a[aria-current="page"]{background:var(--accent-subtle);color:var(--text-link)}.crm-board,.crm-account-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (min-width:64rem){.crm-main{padding:24px}.crm-board{grid-template-columns:repeat(4,minmax(0,1fr))}.crm-account-grid{grid-template-columns:repeat(3,minmax(0,1fr))}}
+@media (pointer:coarse){.crm-nav a,.crm-card{min-height:44px}}
+@media (prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition-duration:.01ms!important}}
+</style></helmet>
+<div class="crm-shell" data-theme="{{ theme }}" data-density="{{ density }}">
+<header class="crm-top"><div class="crm-brand"><img src="../../assets/logo.png" alt=""><strong>Northstar CRM</strong></div><nav class="crm-nav" aria-label="CRM"><a href="./Pipeline.dc.html">Pipeline</a><a href="./Accounts.dc.html" aria-current="page">Accounts</a></nav><div class="crm-actions"><x-import component-from-global-scope="EfolusiDesignSystem_4ffc3d.Button" variant="secondary" size="sm" icon-left="search" hint-size="92px,36px">Search</x-import><x-import component-from-global-scope="EfolusiDesignSystem_4ffc3d.Button" size="sm" icon-left="plus" hint-size="138px,36px">Add account</x-import></div></header>
+<main class="crm-main"><div class="crm-title"><div><h1>Accounts</h1><p>Browse relationships by owner and next action.</p></div><div><x-import component-from-global-scope="EfolusiDesignSystem_4ffc3d.SegmentedControl" value="all" options='[{"id":"all","label":"All"},{"id":"mine","label":"Mine"}]' hint-size="120px,36px"></x-import></div></div>
+<div class="crm-account-grid" aria-label="Sample account index">
+  <a class="crm-card" href="./AccountDetail.dc.html"><span class="crm-account-kind">Enterprise software</span><strong>Acme Industries</strong><p>Regional rollout · security review is the next decision.</p><div class="crm-meta"><span>Ada O.</span><span>Contact Tue</span></div></a>
+  <a class="crm-card" href="./AccountDetail.dc.html"><span class="crm-account-kind">Financial services</span><strong>Harbor Mutual</strong><p>Claims intake · workflow mapping is in progress.</p><div class="crm-meta"><span>June P.</span><span>Contact Thu</span></div></a>
+  <a class="crm-card" href="./AccountDetail.dc.html"><span class="crm-account-kind">Logistics</span><strong>Drift Operations</strong><p>Field portal · legal review is complete.</p><div class="crm-meta"><span>Femi A.</span><span>Contact Mon</span></div></a>
+  <a class="crm-card" href="./AccountDetail.dc.html"><span class="crm-account-kind">Data platform</span><strong>Atlas Works</strong><p>Workspace consolidation · requirements captured.</p><div class="crm-meta"><span>Ada O.</span><span>Contact Fri</span></div></a>
+  <a class="crm-card" href="./AccountDetail.dc.html"><span class="crm-account-kind">Professional services</span><strong>Beacon Partners</strong><p>Partner portal · procurement questions remain.</p><div class="crm-meta"><span>June P.</span><span>Waiting</span></div></a>
+  <a class="crm-card" href="./AccountDetail.dc.html"><span class="crm-account-kind">Retail</span><strong>Juniper Market</strong><p>Support desk · operations workshop scheduled.</p><div class="crm-meta"><span>Femi A.</span><span>Contact Wed</span></div></a>
+</div><div class="crm-note">Sample records only. Connect your CRM source and preserve its permissions, retention rules, and audit history.</div></main>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:1280,&quot;height&quot;:800},&quot;theme&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;light&quot;,&quot;dark&quot;],&quot;default&quot;:&quot;light&quot;,&quot;tsType&quot;:&quot;'light'|'dark'&quot;},&quot;density&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;comfortable&quot;,&quot;compact&quot;],&quot;default&quot;:&quot;comfortable&quot;,&quot;tsType&quot;:&quot;'comfortable'|'compact'&quot;}}">
+class Component extends DCLogic { renderVals(){ return { theme:this.props.theme ?? 'light',density:this.props.density ?? 'comfortable' }; } }
+</script>
+</body>
+</html>
