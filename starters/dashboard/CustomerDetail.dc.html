@@ -7,8 +7,8 @@
 </head>
 <body>
 <x-dc>
-<helmet><script src="./ds-base.js"></script><style>@view-transition{navigation:auto}::view-transition-group(*){animation-duration:160ms}@media (prefers-reduced-motion:reduce){::view-transition-group(*),::view-transition-old(*),::view-transition-new(*){animation:none!important}}html{background:#FAF9F6}@media(max-width:760px){.cd-kpis{grid-template-columns:1fr!important}.cd-split{grid-template-columns:1fr!important}}</style></helmet>
-<div data-theme="{{ theme }}" data-density="{{ density }}" style="min-height:100vh;background:var(--surface-page);color:var(--text-primary);font-family:var(--font-sans)">
+<helmet><script src="./ds-base.js"></script><style>@view-transition{navigation:auto}::view-transition-group(*){animation-duration:160ms}@media (prefers-reduced-motion:reduce){::view-transition-group(*),::view-transition-old(*),::view-transition-new(*){animation:none!important}}html{background:#FAF9F6}@media(max-width:760px){.console-shell>header{height:auto!important;min-height:60px;padding:10px 16px!important;gap:8px!important;flex-wrap:wrap}.console-shell>header nav{order:3;width:100%;margin-left:0!important;overflow-x:auto}.console-shell>header>div:last-child x-import:first-child{display:none}.console-shell>main{padding:16px!important}.cd-heading{flex-wrap:wrap}.cd-heading>div:last-child{width:100%;margin-left:58px!important;flex-wrap:wrap}.cd-kpis{grid-template-columns:1fr!important}.cd-split{grid-template-columns:1fr!important}}</style></helmet>
+<div class="console-shell" data-theme="{{ theme }}" data-density="{{ density }}" style="min-height:100vh;background:var(--surface-page);color:var(--text-primary);font-family:var(--font-sans)">
 <header style="view-transition-name:shell-top;display:flex;align-items:center;gap:12px;height:60px;padding:0 24px;border-bottom:1px solid var(--border-default)">
 <img src="../../assets/logo.png" alt="" style="width:30px;height:30px">
 <span style="font-family:var(--font-display);font-weight:680;letter-spacing:-0.02em;font-size:19px">Efolusi</span>
@@ -25,7 +25,7 @@
 </header>
 <main style="padding:24px;display:flex;flex-direction:column;gap:20px;max-width:1200px;margin:0 auto">
 <div style="font-size:13px;color:var(--text-muted)"><a href="./Customers.dc.html" style="color:var(--text-link);font-weight:600;text-decoration:none">Customers</a> / Bloom Health</div>
-<div style="display:flex;align-items:center;gap:14px">
+<div class="cd-heading" style="display:flex;align-items:center;gap:14px">
 <div style="width:44px;height:44px;border-radius:var(--radius-md);background:var(--brand-950);color:var(--brand-50);display:grid;place-items:center;font-family:var(--font-display);font-weight:680;font-size:16px">BH</div>
 <div>
 <h1 style="font-size:24px;font-weight:680;font-family:var(--font-display);letter-spacing:-0.02em;margin:0">Bloom Health</h1>

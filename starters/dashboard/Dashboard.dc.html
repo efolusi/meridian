@@ -8,8 +8,8 @@
 <body>
 <x-dc>
 <!-- @template name="Dashboard" description="Console journey (4 pages): overview, customers, customer detail, settings" -->
-<helmet><script src="./ds-base.js"></script><style>@view-transition{navigation:auto}::view-transition-group(*){animation-duration:160ms}@media (prefers-reduced-motion:reduce){::view-transition-group(*),::view-transition-old(*),::view-transition-new(*){animation:none!important}}html{background:#FAF9F6}</style></helmet>
-<div data-theme="{{ theme }}" data-density="{{ density }}" style="min-height:100vh;background:var(--surface-page);color:var(--text-primary);font-family:var(--font-sans)">
+<helmet><script src="./ds-base.js"></script><style>@view-transition{navigation:auto}::view-transition-group(*){animation-duration:160ms}@media (prefers-reduced-motion:reduce){::view-transition-group(*),::view-transition-old(*),::view-transition-new(*){animation:none!important}}html{background:#FAF9F6}@media(max-width:760px){.console-shell>header{height:auto!important;min-height:60px;padding:10px 16px!important;gap:8px!important;flex-wrap:wrap}.console-shell>header nav{order:3;width:100%;margin-left:0!important;overflow-x:auto}.console-shell>header>div:last-child x-import:first-child{display:none}.console-shell>main{padding:16px!important}.console-kpis{grid-template-columns:1fr!important}}</style></helmet>
+<div class="console-shell" data-theme="{{ theme }}" data-density="{{ density }}" style="min-height:100vh;background:var(--surface-page);color:var(--text-primary);font-family:var(--font-sans)">
 <header style="view-transition-name:shell-top;display:flex;align-items:center;gap:12px;height:60px;padding:0 24px;border-bottom:1px solid var(--border-default)">
 <img src="../../assets/logo.png" alt="" style="width:30px;height:30px">
 <span style="font-family:var(--font-display);font-weight:680;letter-spacing:-0.02em;font-size:19px">Efolusi</span>
@@ -29,7 +29,7 @@
 <h1 style="font-size:26px;font-weight:680;font-family:var(--font-display);letter-spacing:-0.02em;margin:0">Good morning, Ada</h1>
 <p style="margin:4px 0 0;font-size:14px;color:var(--text-secondary)">Everything is trending the right way.</p>
 </div>
-<div style="display:grid;grid-template-columns:repeat(4,1fr);gap:16px">
+<div class="console-kpis" style="display:grid;grid-template-columns:repeat(4,1fr);gap:16px">
 <div style="background:var(--surface-card);border:1px solid var(--border-default);border-radius:var(--radius-md);padding:16px">
 <div style="font-size:13px;color:var(--text-muted);font-weight:500">Monthly recurring revenue</div>
 <div style="display:flex;align-items:baseline;gap:8px;margin-top:6px"><span style="font-family:var(--font-mono);font-size:26px;font-weight:600">$48.2k</span><span style="font-size:12px;font-weight:500;color:var(--success-600)">↑ 12.4%</span></div>

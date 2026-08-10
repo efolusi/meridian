@@ -7,7 +7,7 @@
 </head>
 <body>
 <x-dc>
-<helmet><script src="./ds-base.js"></script><style>@view-transition{navigation:auto}::view-transition-group(*){animation-duration:160ms}@media (prefers-reduced-motion:reduce){::view-transition-group(*),::view-transition-old(*),::view-transition-new(*){animation:none!important}}html{background:#FAF9F6}</style></helmet>
+<helmet><script src="./ds-base.js"></script><style>@view-transition{navigation:auto}::view-transition-group(*){animation-duration:160ms}@media (prefers-reduced-motion:reduce){::view-transition-group(*),::view-transition-old(*),::view-transition-new(*){animation:none!important}}html{background:#FAF9F6}@media(max-width:480px){.onboarding-products{grid-template-columns:1fr!important}}</style></helmet>
 <div data-theme="{{ theme }}" style="min-height:100vh;display:flex;flex-direction:column;align-items:center;background:var(--surface-page);color:var(--text-primary);font-family:var(--font-sans);padding:48px 24px">
 <div style="display:flex;align-items:center;gap:10px">
 <img src="../../assets/logo.png" alt="" style="width:30px;height:30px">
@@ -20,7 +20,7 @@
 <x-import component-from-global-scope="EfolusiDesignSystem_4ffc3d.Input" size="lg" label="Workspace name" placeholder="Acme, Inc." hint-size="100%,70px"></x-import>
 <div>
 <div style="font-size:13.5px;font-weight:600">Which products will you use?</div>
-<div style="display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:10px">
+<div class="onboarding-products" style="display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:10px">
 <sc-for list="{{ products }}" as="p" hint-placeholder-count="6">
 <x-import component-from-global-scope="EfolusiDesignSystem_4ffc3d.ButtonTile" title="{{ p.name }}" selected="{{ p.on }}" onClick="{{ p.toggle }}" hint-size="100%,44px"></x-import>
 </sc-for>
