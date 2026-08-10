@@ -61,7 +61,7 @@ export function Console({ title = 'Console', entries = [], height = 240, style, 
   }, [entries.length]);
   return (
     <div {...rest} className={`ef-console${className ? ' ' + className : ''}`} style={style}>
-      <div className="ef-console__head"><Icon name="terminal" size={13} />{title}<span style={{ marginLeft: 'auto', color: 'var(--text-muted)' }}>{entries.length} entries</span></div>
+      <div className="ef-console__head"><Icon name="terminal" size={13} />{title}<span style={{ marginInlineStart: 'auto', color: 'var(--text-muted)' }}>{entries.length} entries</span></div>
       <div ref={viewport} className="ef-console__scroll" role="log" aria-live="polite" style={{ height }} onScroll={recompute}>
         {entries.map((e, i) => <Row key={i} e={e} />)}
       </div>

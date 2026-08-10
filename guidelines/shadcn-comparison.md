@@ -25,10 +25,10 @@ Primary references:
 2. Meridian is broader in AI, code, dates, finance and zero-build delivery.
    shadcn remains broader in community registries, framework starters, block
    variants and CLI configuration workflows.
-3. The highest correctness gap is full RTL support. `DirectionProvider` and
-   mirrored horizontal keyboard behavior have landed, but physical CSS
-   properties and mirrored visual review remain open. Meridian must not claim
-   full RTL support yet.
+3. The component-level RTL gap is closed: `DirectionProvider`, mirrored
+   horizontal behavior, logical CSS, a physical-coordinate exception gate and
+   bidirectional 128-demo browser smoke are in place. The broader support claim
+   remains provisional until the cross-browser matrix is exercised.
 4. Distribution parity improved materially: root `registry.json` now supports
    `npx shadcn@latest view/add efolusi/meridian/<item>`, while the byte-identical
    hosted registry remains available under `site/registry.json`.
@@ -67,7 +67,7 @@ Status meanings:
 | Data Table | Table + Pagination + Input | Composition | Sorting, selection, loading, empty and sticky states are built into Table; filtering and paging compose around it. |
 | Date Picker | DatePicker, DateRangePicker | Direct | Meridian includes both single and range pickers. |
 | Dialog | Dialog | Direct | Focus trap, Escape and focus restoration. |
-| Direction | DirectionProvider, useDirection | Direct foundation | Keyboard mirroring is implemented; full CSS/layout RTL remains open. |
+| Direction | DirectionProvider, useDirection | Direct | Keyboard, pointer and layout mirroring are implemented and gated. |
 | Drawer | Drawer | Direct | Side panel with modal semantics. |
 | Dropdown Menu | Menu | Renamed | Triggered menu with typeahead and keyboard navigation. |
 | Empty | EmptyState | Renamed | Empty-result or first-use surface. |
@@ -122,7 +122,7 @@ Status meanings:
 | Blocks | Large catalogue with many variants per use case. | Nine curated blocks and nine professional starter journeys. | Open breadth gap; add only evidence-backed use cases. |
 | Ecosystem | Public directory contains many third-party registries. | First-party registry and MCP/agent surfaces; no community directory. | Open ecosystem gap, not a component defect. |
 | AI surfaces | New conversational primitives in the core catalogue. | Dedicated AI group covers messages, conversation scrolling, prompts, tools, reasoning, citations and agent runs. | Meridian is broader. |
-| RTL | Direction provider plus RTL examples across component docs. | Direction foundation and keyboard mirroring landed; full logical-CSS migration is unfinished. | Highest remaining correctness gap. |
+| RTL | Direction provider plus RTL examples across component docs. | Direction provider, logical CSS gate, mirrored behavior tests and LTR/RTL full-demo smoke. | Component-level parity; cross-browser matrix remains. |
 
 ## Prioritized work
 
@@ -132,15 +132,15 @@ Status meanings:
 - Public inventory facts derived and gated against source inventories.
 - DirectionProvider plus RTL keyboard/pointer behavior for Tabs, Menubar,
   DigitEntry, Calendar and Resizable.
+- Semantic logical-CSS migration, documented physical-coordinate exceptions,
+  representative mirrored visual review and a 128-demo RTL browser smoke pass.
 - Two completed one-time codemods removed after a zero-change dry run and
   repository-wide reference check.
 
 ### Still open
 
-1. **Full RTL layout:** migrate semantic physical CSS declarations to logical
-   properties, add a static regression gate with documented physical-coordinate
-   exceptions, then review mirrored docs/screens before changing the support
-   statement.
+1. **Cross-browser RTL proof:** exercise the last two Safari, Firefox and Edge
+   releases before promoting the provisional browser-matrix claim.
 2. **Framework proof:** maintained minimal example repositories for the
    frameworks already covered by `guidelines/frameworks.md`.
 3. **Block breadth:** add variants only from recurring product needs; do not

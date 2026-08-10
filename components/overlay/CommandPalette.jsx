@@ -95,7 +95,7 @@ export function CommandPalette({ open, onClose, groups, onSelect, placeholder = 
         <div className="ef-cmdk__foot">
           <span><Kbd>↑</Kbd><Kbd>↓</Kbd> navigate</span>
           <span><Kbd>↵</Kbd> run</span>
-          <span style={{ marginLeft: 'auto' }}><Kbd>⌘</Kbd><Kbd>K</Kbd> anywhere</span>
+          <span style={{ marginInlineStart: 'auto' }}><Kbd>⌘</Kbd><Kbd>K</Kbd> anywhere</span>
         </div>
       </div>
     </div>

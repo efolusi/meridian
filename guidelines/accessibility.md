@@ -4,7 +4,7 @@ Efolusi ships WCAG 2.1 AA. The rules, per concern:
 
 ## Focus
 - Every focusable element shows the two-layer opaque ring (`--focus-ring`: a 2px `--focus-ring-offset` surface layer under a 2px `--focus-ring-color` band, brand-700 in light and brand-400 in dark) via `:focus-visible`. Never remove it; never replace it with color alone. Plain links get the ring from `tokens/base.css`.
-- Focus order follows DOM order. The contract for Dialogs/Drawers: trap focus while open and return it to the trigger on close (see Known gaps).
+- Focus order follows DOM order. Dialogs and Drawers trap focus while open and return it to the trigger on close.
 
 ## Keyboard map
 - `Tab` / `Shift+Tab` — move between controls
@@ -53,15 +53,17 @@ system uses `color-mix()`, `:focus-visible`, CSS custom properties and
 CDN path additionally depends on React 18 UMD builds — React 19 dropped UMD, so
 that path is pinned to 18 while the npm build tracks `react >= 18`.
 
-**Full RTL layout support is not yet claimed in 1.x.** The direction foundation
-is present: set `dir="rtl"` on the document and wrap the app in
-`<DirectionProvider direction="rtl">`. Tabs, Menubar, DigitEntry, Calendar and
-Resizable then mirror their horizontal keyboard or pointer behavior. Components
-still use physical properties (`left`, `right`, `margin-left`) in places, so
-some spacing and overlay alignment remains mirrored-wrong. Moving those rules
-to logical properties (`inset-inline-start`, `margin-inline`) is tracked in
-ROADMAP.md. Do not claim full RTL support until that lands and mirrored screens
-have been reviewed.
+**RTL layout is implemented, but the cross-browser support claim remains
+provisional in 1.x.** Set `dir="rtl"` on the document and wrap the app in
+`<DirectionProvider direction="rtl">`. Tabs, Menubar, DigitEntry, Calendar,
+Resizable, PromptSteps and Carousel mirror their horizontal behavior. Semantic
+component spacing, alignment, borders and insets use logical properties; a
+static gate admits physical coordinates only for reviewed geometry such as
+viewport-positioned overlays, chart points and explicitly left/right drawers.
+The browser smoke renders all 128 demos in both directions, and representative
+forms, navigation, display and overlay screens have been visually reviewed in
+light and dark themes. Do not call RTL fully supported across the browser matrix
+until the last-two-version Safari, Firefox and Edge pass in ROADMAP.md is done.
 
 **Reduced motion** is honoured globally at `tokens/base.css:10`: under
 `prefers-reduced-motion: reduce` every animation and transition is collapsed to

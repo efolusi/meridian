@@ -67,6 +67,7 @@ const GATES = [
   ['Public facts match inventories', 'python3', ['scripts/check_public_facts.py']],
   ['No dead interactive controls', 'python3', ['scripts/check_dead_controls.py']],
   ['No new raw colour literals', 'python3', ['scripts/check_token_adherence.py']],
+  ['Logical CSS direction safety', 'python3', ['scripts/check_logical_css.py']],
   ['Bundle source hashes', 'python3', ['scripts/check_bundle_hashes.py']],
   ['Bundle reproducible from source', 'node', ['scripts/build_bundle.mjs', '--check']],
   ['Unit tests', 'npm', ['test', '--silent']],

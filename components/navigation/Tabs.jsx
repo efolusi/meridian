@@ -8,7 +8,7 @@ const CSS = `
 .ef-tabs__tab:hover{color:var(--text-primary);background:var(--surface-sunken)}
 .ef-tabs__tab:focus-visible{outline:none;box-shadow:var(--focus-ring)}
 .ef-tabs__tab--active{color:var(--text-primary);font-weight:var(--weight-semibold)}
-.ef-tabs__ink{position:absolute;bottom:-1px;height:2px;background:var(--accent);border-radius:2px;transition:left var(--dur-med) var(--ease-spring),width var(--dur-med) var(--ease-spring)}
+.ef-tabs__ink{position:absolute;bottom:-1px;height:2px;background:var(--accent);border-radius:2px;transition:inset-inline-start var(--dur-med) var(--ease-spring),width var(--dur-med) var(--ease-spring)}
 .ef-tabs__count{font-size:var(--text-xs);font-weight:var(--weight-medium);color:var(--text-muted)}
 .ef-tabs__tab--active .ef-tabs__count{color:var(--text-primary)}
 `;
@@ -16,11 +16,16 @@ export const Tabs = React.forwardRef(function Tabs({ items, value, onChange, sty
   injectEfCss('ef-css-tabs', CSS);
   const ref = React.useRef(null);
   const direction = useDirection();
-  const [ink, setInk] = React.useState({ left: 0, width: 0 });
+  const [ink, setInk] = React.useState({ start: 0, width: 0 });
   useIsoLayoutEffect(() => {
     const el = ref.current && ref.current.querySelector('[data-active="true"]');
-    if (el) setInk({ left: el.offsetLeft, width: el.offsetWidth });
-  }, [value, items]);
+    if (el) {
+      const start = direction === 'rtl'
+        ? ref.current.clientWidth - el.offsetLeft - el.offsetWidth
+        : el.offsetLeft;
+      setInk({ start, width: el.offsetWidth });
+    }
+  }, [value, items, direction]);
   const onKey = e => {
     if (!['ArrowLeft', 'ArrowRight', 'Home', 'End'].includes(e.key)) return;
     e.preventDefault();
@@ -44,7 +49,7 @@ export const Tabs = React.forwardRef(function Tabs({ items, value, onChange, sty
           {it.count != null ? <span className="ef-tabs__count">{it.count}</span> : null}
         </button>
       ))}
-      <span className="ef-tabs__ink" style={{ left: ink.left, width: ink.width }}></span>
+      <span className="ef-tabs__ink" style={{ insetInlineStart: ink.start, width: ink.width }}></span>
     </div>
   );
 });

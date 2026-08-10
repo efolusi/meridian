@@ -84,7 +84,6 @@ describe('Menubar', () => {
     await user.keyboard('{Escape}');
     expect(screen.queryByRole('menu')).toBeNull();
     expect(file.getAttribute('aria-expanded')).toBe('false');
-    // Known gap: focus is NOT restored to the button (lands on body) — the
-    // Escape handler only calls setOpen(null). Tracked as a component bug.
+    expect(document.activeElement).toBe(file);
   });
 });

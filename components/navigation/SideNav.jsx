@@ -19,7 +19,7 @@ export function SideNav({ brand = 'Efolusi', brandBadge, logoSrc, groups, value,
       <div className="ef-sidenav__brand">
         {logoSrc ? <img src={logoSrc} alt="" style={{ width: 30, height: 30 }} /> : null}
         <span style={{ fontFamily: 'var(--font-display)', fontWeight: 680, letterSpacing: '-0.02em', fontSize: 19 }}>{brand}</span>
-        {brandBadge ? <Badge tone="brand" style={{ marginLeft: 'auto' }}>{brandBadge}</Badge> : null}
+        {brandBadge ? <Badge tone="brand" style={{ marginInlineStart: 'auto' }}>{brandBadge}</Badge> : null}
       </div>
       {groups.map((g, gi) => (
         <React.Fragment key={gi}>

@@ -18,7 +18,8 @@ import path from 'node:path';
 const BASE = process.env.BASE || 'http://localhost:8000';
 const SHOTS = process.env.SHOTS || '';
 const EXECUTABLE_PATH = process.env.EXECUTABLE_PATH || '';
-const URL = `${BASE}/site/_smoke.html`;
+const DIRECTION = process.env.DIRECTION === 'rtl' ? 'rtl' : 'ltr';
+const URL = `${BASE}/site/_smoke.html?dir=${DIRECTION}`;
 
 const browser = await chromium.launch(EXECUTABLE_PATH ? { executablePath: EXECUTABLE_PATH } : {});
 const page = await browser.newPage({
@@ -43,7 +44,12 @@ await page.waitForFunction(() => document.documentElement.getAttribute('data-smo
 const result = await page.evaluate(() => window.__SMOKE__);
 
 if (!result) { console.error('smoke: no result signal'); await browser.close(); process.exit(1); }
-console.log(`smoke: ${result.passed}/${result.total} rendered, ${result.failed} failed`);
+console.log(`smoke (${result.direction}): ${result.passed}/${result.total} rendered, ${result.failed} failed`);
+if (result.direction !== DIRECTION) {
+  console.error(`smoke: requested ${DIRECTION} but document rendered ${result.direction}`);
+  await browser.close();
+  process.exit(1);
+}
 if (!result.ok) {
   console.error('FAILURES:\n  ' + result.fails.join('\n  '));
   await browser.close();

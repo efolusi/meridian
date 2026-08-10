@@ -19,7 +19,7 @@ function Node({ node, depth, open, sel, toggle, select }) {
   const isOpen = open.includes(node.id);
   return (
     <React.Fragment>
-      <button className={`ef-tree__row${sel === node.id ? ' ef-tree__row--sel' : ''}`} style={{ paddingLeft: 8 + depth * 18 }}
+      <button className={`ef-tree__row${sel === node.id ? ' ef-tree__row--sel' : ''}`} style={{ paddingInlineStart: 8 + depth * 18 }}
         onClick={() => { if (kids.length) toggle(node.id); select(node.id, node); }}>
         {kids.length ? <span className={`ef-tree__chev${isOpen ? ' ef-tree__chev--open' : ''}`}><Icon name="chevron-right" size={13} /></span> : <span style={{ width: 13, flex: 'none' }}></span>}
         {node.icon ? <span className="ef-tree__icon"><Icon name={node.icon} size={15} /></span> : null}

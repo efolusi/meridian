@@ -15,11 +15,11 @@ export function PaymentCard({ name = 'ADA OBI', number = '•••• •••
   injectEfCss('ef-css-paycard', CSS);
   return (
     <div {...rest} className={`ef-paycard${variant === 'caramel' ? ' ef-paycard--caramel' : variant === 'paper' ? ' ef-paycard--paper' : ''}${className ? ' ' + className : ''}`} style={{ filter: frozen ? 'grayscale(.7) opacity(.75)' : undefined, ...style }}>
-      <span className="ef-paycard__ring" style={{ width: 220, height: 220, right: -70, top: -70 }}></span>
-      <span className="ef-paycard__ring" style={{ width: 220, height: 220, right: -40, top: -110 }}></span>
+      <span className="ef-paycard__ring" style={{ width: 220, height: 220, insetInlineEnd: -70, top: -70 }}></span>
+      <span className="ef-paycard__ring" style={{ width: 220, height: 220, insetInlineEnd: -40, top: -110 }}></span>
       <div style={{ display: 'flex', alignItems: 'center' }}>
         <span style={{ fontFamily: 'var(--font-display)', fontWeight: 680, letterSpacing: '-0.02em', fontSize: 16 }}>{network}</span>
-        {frozen ? <span style={{ marginLeft: 'auto', fontSize: 10, fontWeight: 600, letterSpacing: '.08em', textTransform: 'uppercase', opacity: .7 }}>Frozen</span> : null}
+        {frozen ? <span style={{ marginInlineStart: 'auto', fontSize: 10, fontWeight: 600, letterSpacing: '.08em', textTransform: 'uppercase', opacity: .7 }}>Frozen</span> : null}
       </div>
       <div style={{ marginTop: 14 }}><span className="ef-paycard__chip" style={{ display: 'block' }}></span></div>
       <div className="ef-paycard__num">{number}</div>

@@ -47,7 +47,7 @@ export function DatePicker({ label, value, defaultValue, onChange, placeholder =
       {label ? <span className="ef-datepicker__label">{label}</span> : null}
       <button {...field.controlProps} type="button" ref={btnRef} aria-haspopup="dialog" aria-expanded={open} className={`ef-datepicker__btn${v ? '' : ' ef-datepicker__btn--empty'}`} onClick={() => setOpen(o => !o)}>
         <Icon name="calendar" size={15} style={{ color: 'var(--text-muted)' }} />{fmt(v, locale) || placeholder}
-        <Icon name="chevron-down" size={14} style={{ color: 'var(--text-muted)', marginLeft: 'auto' }} />
+        <Icon name="chevron-down" size={14} style={{ color: 'var(--text-muted)', marginInlineStart: 'auto' }} />
       </button>
       {open && (
         <Portal>

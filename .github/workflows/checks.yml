@@ -43,6 +43,9 @@ jobs:
       - name: No new raw colour literals
         run: python3 scripts/check_token_adherence.py
 
+      - name: Logical CSS direction safety
+        run: python3 scripts/check_logical_css.py
+
       # Fast pre-check: the header's recorded hashes vs the sources on disk.
       - name: Bundle source hashes match source files
         run: python3 scripts/check_bundle_hashes.py
@@ -99,6 +102,10 @@ jobs:
           set +e
           BASE=http://127.0.0.1:8000 SHOTS="$RUNNER_TEMP/shots" node scripts/smoke_headless.mjs
           CODE=$?
+          if [ "$CODE" -eq 0 ]; then
+            BASE=http://127.0.0.1:8000 DIRECTION=rtl node scripts/smoke_headless.mjs
+            CODE=$?
+          fi
           set -e
           kill $SERVER 2>/dev/null || true
           exit $CODE
