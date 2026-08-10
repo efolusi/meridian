@@ -1,6 +1,27 @@
 [
   {
     "date": "2026-08-10",
+    "macrostructure": "Long Document",
+    "theme": "Meridian",
+    "enrichment": "none",
+    "brief": "Service desk incident record starter"
+  },
+  {
+    "date": "2026-08-10",
+    "macrostructure": "Catalogue",
+    "theme": "Meridian",
+    "enrichment": "none",
+    "brief": "Service desk ticket catalogue starter"
+  },
+  {
+    "date": "2026-08-10",
+    "macrostructure": "Feature Stack",
+    "theme": "Meridian",
+    "enrichment": "none",
+    "brief": "Service desk triage queue starter"
+  },
+  {
+    "date": "2026-08-10",
     "macrostructure": "Narrative Workflow",
     "theme": "Meridian",
     "enrichment": "none",
