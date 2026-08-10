@@ -32,6 +32,16 @@ for f in FOLDERS:
     elif m.group(1) != want:
         fail.append(f"{f.relative_to(ROOT)}/ds-base.js: base '{m.group(1)}' != expected '{want}'")
 
+normalized_ds_base = {}
+for f in FOLDERS:
+    text = (f / "ds-base.js").read_text()
+    normalized = re.sub(r"const base = '[^']*';", "const base = '<root>';", text)
+    normalized_ds_base[f] = hashlib.md5(normalized.encode()).hexdigest()
+if len(set(normalized_ds_base.values())) != 1:
+    fail.append("ds-base.js copies differ beyond their base line:")
+    for f, h in normalized_ds_base.items():
+        fail.append(f"  {h}  {f.relative_to(ROOT)}")
+
 if fail:
     print("\n".join(fail))
     sys.exit(1)
