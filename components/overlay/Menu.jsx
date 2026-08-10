@@ -7,7 +7,7 @@ const CSS = `
 .ef-menu{position:relative;display:inline-flex}
 .ef-menu__panel{position:absolute;top:calc(100% + 6px);min-width:190px;background:var(--surface-card);border:1px solid var(--border-strong);border-radius:var(--radius-md);box-shadow:var(--shadow-md);padding:4px;z-index:var(--z-dropdown);animation:ef-menu-in var(--dur-fast) var(--ease-out)}
 @keyframes ef-menu-in{from{opacity:0;transform:translateY(-3px)}to{opacity:1;transform:translateY(0)}}
-.ef-menu__item{display:flex;align-items:center;gap:9px;width:100%;height:32px;padding:0 10px;border:none;border-radius:var(--radius-sm);background:none;cursor:pointer;text-align:left;font-family:var(--font-sans);font-size:var(--text-sm);color:var(--text-primary);transition:background var(--dur-fast) var(--ease-out)}
+.ef-menu__item{display:flex;align-items:center;gap:9px;width:100%;height:32px;padding:0 10px;border:none;border-radius:var(--radius-sm);background:none;cursor:pointer;text-align:start;font-family:var(--font-sans);font-size:var(--text-sm);color:var(--text-primary);transition:background var(--dur-fast) var(--ease-out)}
 .ef-menu__item:hover:not(:disabled){background:var(--surface-sunken)}
 .ef-menu__item:focus-visible{outline:none;box-shadow:var(--focus-ring)}
 .ef-menu__item:disabled{opacity:.4;cursor:not-allowed}
@@ -15,7 +15,7 @@ const CSS = `
 .ef-menu__item__icon{color:var(--text-muted);display:inline-flex}
 .ef-menu__item--danger .ef-menu__item__icon{color:var(--danger-600)}
 .ef-menu__sep{height:1px;background:var(--border-default);margin:4px 6px}
-.ef-menu__kbd{margin-left:auto;font-family:var(--font-mono);font-size:11px;color:var(--text-muted)}
+.ef-menu__kbd{margin-inline-start:auto;font-family:var(--font-mono);font-size:11px;color:var(--text-muted)}
 `;
 export const Menu = React.forwardRef(function Menu({ trigger, items, onSelect, align = 'left', style, className, ...rest }, fRef) {
   injectEfCss('ef-css-menu', CSS);

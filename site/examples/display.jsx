@@ -28,7 +28,7 @@ export function AspectRatioDemo() {
 
 // @demo DirectionProvider Right-to-left behavior
 export function DirectionProviderDemo() {
-  const { DirectionProvider, Tabs } = window.EfolusiDesignSystem_4ffc3d;
+  const { DirectionProvider, Switch, Tabs } = window.EfolusiDesignSystem_4ffc3d;
   const [value, setValue] = React.useState('overview');
   return (
     <div dir="rtl" lang="ar" style={{ width: '100%', maxWidth: 420 }}>
@@ -38,6 +38,7 @@ export function DirectionProviderDemo() {
           { id: 'activity', label: 'النشاط' },
           { id: 'settings', label: 'الإعدادات' },
         ]} />
+        <div style={{ marginTop: 18 }}><Switch defaultChecked label="الإشعارات" /></div>
       </DirectionProvider>
     </div>
   );

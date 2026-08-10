@@ -14,7 +14,7 @@ const CSS = `
 .ef-select--sm .ef-select__el{height:var(--control-h-sm);padding:0 28px 0 10px;font-size:var(--text-sm)}
 .ef-select--md .ef-select__el{height:var(--control-h-md);padding:0 32px 0 12px;font-size:var(--text-md)}
 .ef-select--lg .ef-select__el{height:var(--control-h-lg);padding:0 36px 0 14px;font-size:var(--text-lg)}
-.ef-select__chevron{position:absolute;right:10px;color:var(--text-muted);pointer-events:none;display:inline-flex}
+.ef-select__chevron{position:absolute;inset-inline-end:10px;color:var(--text-muted);pointer-events:none;display:inline-flex}
 .ef-select--invalid .ef-select__el{border-color:var(--danger-600)}
 `;
 export function Select({ label, hint, options, size = 'md', invalid, children, style, className, ...rest }) {

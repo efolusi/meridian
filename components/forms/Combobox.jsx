@@ -11,12 +11,12 @@ const CSS = `
 .ef-combo--open .ef-combo__control{border-color:var(--accent);box-shadow:var(--focus-ring)}
 .ef-combo__input{flex:1;min-width:80px;border:none;outline:none;background:none;font-family:var(--font-sans);font-size:var(--text-md);color:var(--text-primary);height:26px;padding:0 4px}
 .ef-combo__input::placeholder{color:var(--text-muted)}
-.ef-combo__chevron{position:absolute;right:10px;top:50%;transform:translateY(-50%);color:var(--text-muted);display:inline-flex;pointer-events:none}
-.ef-combo__panel{position:absolute;top:calc(100% + 6px);left:0;right:0;max-height:240px;overflow-y:auto;background:var(--surface-card);border:1px solid var(--border-strong);border-radius:var(--radius-md);box-shadow:var(--shadow-md);padding:4px;z-index:var(--z-dropdown);animation:ef-combo-in var(--dur-fast) var(--ease-out)}
+.ef-combo__chevron{position:absolute;inset-inline-end:10px;top:50%;transform:translateY(-50%);color:var(--text-muted);display:inline-flex;pointer-events:none}
+.ef-combo__panel{position:absolute;top:calc(100% + 6px);inset-inline:0;max-height:240px;overflow-y:auto;background:var(--surface-card);border:1px solid var(--border-strong);border-radius:var(--radius-md);box-shadow:var(--shadow-md);padding:4px;z-index:var(--z-dropdown);animation:ef-combo-in var(--dur-fast) var(--ease-out)}
 @keyframes ef-combo-in{from{opacity:0;transform:translateY(-3px)}}
-.ef-combo__opt{display:flex;align-items:center;gap:9px;width:100%;padding:7px 10px;border:none;border-radius:var(--radius-sm);background:none;cursor:pointer;text-align:left;font-family:var(--font-sans);font-size:var(--text-sm);color:var(--text-primary)}
+.ef-combo__opt{display:flex;align-items:center;gap:9px;width:100%;padding:7px 10px;border:none;border-radius:var(--radius-sm);background:none;cursor:pointer;text-align:start;font-family:var(--font-sans);font-size:var(--text-sm);color:var(--text-primary)}
 .ef-combo__opt--hi{background:var(--surface-sunken)}
-.ef-combo__opt__check{margin-left:auto;color:var(--accent);display:inline-flex}
+.ef-combo__opt__check{margin-inline-start:auto;color:var(--accent);display:inline-flex}
 .ef-combo__empty{padding:14px 10px;font-size:var(--text-sm);color:var(--text-muted);text-align:center}
 `;
 export function Combobox({ label, hint, options, value, onChange, multiple, placeholder = 'Search…', style, className, ...rest }) {

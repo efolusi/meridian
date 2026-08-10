@@ -4,7 +4,7 @@ import { injectEfCss } from './Button.jsx';
 const CSS = `
 .ef-field{display:flex;flex-direction:column;gap:6px}
 .ef-field__label{font-size:var(--text-sm);font-weight:var(--weight-semibold);color:var(--text-primary)}
-.ef-field__req{color:var(--danger-600);margin-left:2px}
+.ef-field__req{color:var(--danger-600);margin-inline-start:2px}
 .ef-field__hint{font-size:var(--text-xs);color:var(--text-muted)}
 .ef-field__error{font-size:var(--text-xs);color:var(--danger-600);display:flex;align-items:center;gap:4px}
 `;

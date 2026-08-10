@@ -14,7 +14,7 @@
     {
       "path": "components/forms/ButtonGroup.jsx",
       "type": "registry:ui",
-      "content": "import React from 'react';\nimport { injectEfCss } from './Button.jsx';\nconst CSS = `\n.ef-btn-group{display:inline-flex;align-items:stretch;isolation:isolate}\n.ef-btn-group>*:not(:first-child){border-top-left-radius:0!important;border-bottom-left-radius:0!important;margin-left:-1px}\n.ef-btn-group>*:not(:last-child){border-top-right-radius:0!important;border-bottom-right-radius:0!important}\n.ef-btn-group>*:hover,.ef-btn-group>*:focus-visible{z-index:1}\n`;\nexport function ButtonGroup({ children, style, className, ...rest }) {\n  injectEfCss('ef-css-btn-group', CSS);\n  return <div role=\"group\" className={`ef-btn-group${className ? ' ' + className : ''}`} style={style} {...rest}>{children}</div>;\n}\n"
+      "content": "import React from 'react';\nimport { injectEfCss } from './Button.jsx';\nconst CSS = `\n.ef-btn-group{display:inline-flex;align-items:stretch;isolation:isolate}\n.ef-btn-group>*:not(:first-child){border-start-start-radius:0!important;border-end-start-radius:0!important;margin-inline-start:-1px}\n.ef-btn-group>*:not(:last-child){border-start-end-radius:0!important;border-end-end-radius:0!important}\n.ef-btn-group>*:hover,.ef-btn-group>*:focus-visible{z-index:1}\n`;\nexport function ButtonGroup({ children, style, className, ...rest }) {\n  injectEfCss('ef-css-btn-group', CSS);\n  return <div role=\"group\" className={`ef-btn-group${className ? ' ' + className : ''}`} style={style} {...rest}>{children}</div>;\n}\n"
     },
     {
       "path": "components/forms/ButtonGroup.d.ts",

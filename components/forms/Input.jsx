@@ -16,16 +16,16 @@ const CSS = `
 .ef-input--sm .ef-input__el{height:var(--control-h-sm);padding:0 10px;font-size:var(--text-sm)}
 .ef-input--md .ef-input__el{height:var(--control-h-md);padding:0 12px;font-size:var(--text-md)}
 .ef-input--lg .ef-input__el{height:var(--control-h-lg);padding:0 14px;font-size:var(--text-lg)}
-.ef-input--icon.ef-input--sm .ef-input__el{padding-left:32px}
-.ef-input--icon.ef-input--md .ef-input__el{padding-left:36px}
-.ef-input--icon.ef-input--lg .ef-input__el{padding-left:40px}
-.ef-input__icon{position:absolute;left:11px;color:var(--text-muted);display:inline-flex;pointer-events:none}
-.ef-input__reveal{position:absolute;right:6px;display:inline-flex;align-items:center;justify-content:center;width:28px;height:28px;padding:0;border:none;border-radius:var(--radius-sm);background:none;color:var(--text-muted);cursor:pointer}
+.ef-input--icon.ef-input--sm .ef-input__el{padding-inline-start:32px}
+.ef-input--icon.ef-input--md .ef-input__el{padding-inline-start:36px}
+.ef-input--icon.ef-input--lg .ef-input__el{padding-inline-start:40px}
+.ef-input__icon{position:absolute;inset-inline-start:11px;color:var(--text-muted);display:inline-flex;pointer-events:none}
+.ef-input__reveal{position:absolute;inset-inline-end:6px;display:inline-flex;align-items:center;justify-content:center;width:28px;height:28px;padding:0;border:none;border-radius:var(--radius-sm);background:none;color:var(--text-muted);cursor:pointer}
 .ef-input__reveal:hover{color:var(--text-primary)}
 .ef-input__reveal:focus-visible{outline:none;box-shadow:var(--focus-ring)}
-.ef-input--reveal.ef-input--sm .ef-input__el{padding-right:34px}
-.ef-input--reveal.ef-input--md .ef-input__el{padding-right:38px}
-.ef-input--reveal.ef-input--lg .ef-input__el{padding-right:42px}
+.ef-input--reveal.ef-input--sm .ef-input__el{padding-inline-end:34px}
+.ef-input--reveal.ef-input--md .ef-input__el{padding-inline-end:38px}
+.ef-input--reveal.ef-input--lg .ef-input__el{padding-inline-end:42px}
 .ef-input--invalid .ef-input__el{border-color:var(--danger-600)}
 .ef-input--invalid .ef-input__el:focus{box-shadow:var(--focus-ring-danger)}
 `;

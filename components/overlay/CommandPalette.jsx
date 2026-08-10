@@ -12,10 +12,10 @@ const CSS = `
 .ef-cmdk__input::placeholder{color:var(--text-muted)}
 .ef-cmdk__list{max-height:320px;overflow-y:auto;padding:6px}
 .ef-cmdk__group{font-size:10px;font-weight:var(--weight-semibold);letter-spacing:0.06em;text-transform:uppercase;color:var(--text-muted);padding:10px 10px 4px}
-.ef-cmdk__item{display:flex;align-items:center;gap:10px;width:100%;padding:9px 10px;border:none;border-radius:var(--radius-sm);background:none;cursor:pointer;text-align:left;font-family:var(--font-sans);font-size:var(--text-md);color:var(--text-primary)}
+.ef-cmdk__item{display:flex;align-items:center;gap:10px;width:100%;padding:9px 10px;border:none;border-radius:var(--radius-sm);background:none;cursor:pointer;text-align:start;font-family:var(--font-sans);font-size:var(--text-md);color:var(--text-primary)}
 .ef-cmdk__item--active{background:var(--surface-sunken)}
 .ef-cmdk__item__icon{color:var(--text-muted);display:inline-flex}
-.ef-cmdk__item__hint{margin-left:auto;font-size:var(--text-xs);color:var(--text-muted)}
+.ef-cmdk__item__hint{margin-inline-start:auto;font-size:var(--text-xs);color:var(--text-muted)}
 .ef-cmdk__empty{padding:32px;text-align:center;color:var(--text-muted);font-size:var(--text-sm)}
 .ef-cmdk__foot{display:flex;align-items:center;gap:14px;padding:9px 14px;border-top:1px solid var(--border-default);background:var(--surface-subtle);font-size:var(--text-xs);color:var(--text-muted)}
 .ef-cmdk__foot span{display:inline-flex;align-items:center;gap:5px}
