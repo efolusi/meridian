@@ -1,25 +1,28 @@
 import React from 'react';
 import { injectEfCss } from '../forms/Button.jsx';
 import { Icon } from '../icons/Icon.jsx';
+import { useDirection } from '../display/Direction.jsx';
 const CSS = `
 .ef-menubar{display:inline-flex;gap:2px;padding:2px;border:1px solid var(--border-default);border-radius:var(--radius-sm);background:var(--surface-card)}
 .ef-menubar__wrap{position:relative}
 .ef-menubar__btn{height:28px;padding:0 10px;border:none;border-radius:calc(var(--radius-sm) - 1px);background:none;cursor:pointer;font-family:var(--font-sans);font-size:var(--text-sm);font-weight:500;color:var(--text-primary);transition:background var(--dur-fast) var(--ease-out)}
 .ef-menubar__btn:hover,.ef-menubar__btn--on{background:var(--surface-sunken)}
 .ef-menubar__btn:focus-visible{outline:none;box-shadow:var(--focus-ring)}
-.ef-menubar__panel{position:absolute;top:calc(100% + 6px);left:0;min-width:200px;background:var(--surface-card);border:1px solid var(--border-strong);border-radius:var(--radius-md);box-shadow:var(--shadow-md);padding:4px;z-index:var(--z-dropdown);animation:ef-menubar-in var(--dur-fast) var(--ease-out)}
+.ef-menubar__panel{position:absolute;top:calc(100% + 6px);inset-inline-start:0;min-width:200px;background:var(--surface-card);border:1px solid var(--border-strong);border-radius:var(--radius-md);box-shadow:var(--shadow-md);padding:4px;z-index:var(--z-dropdown);animation:ef-menubar-in var(--dur-fast) var(--ease-out)}
 @keyframes ef-menubar-in{from{opacity:0;transform:translateY(-3px)}}
-.ef-menubar__item{display:flex;align-items:center;gap:9px;width:100%;height:32px;padding:0 10px;border:none;border-radius:var(--radius-sm);background:none;cursor:pointer;text-align:left;font-family:var(--font-sans);font-size:var(--text-sm);color:var(--text-primary);transition:background var(--dur-fast) var(--ease-out)}
+.ef-menubar__item{display:flex;align-items:center;gap:9px;width:100%;height:32px;padding:0 10px;border:none;border-radius:var(--radius-sm);background:none;cursor:pointer;text-align:start;font-family:var(--font-sans);font-size:var(--text-sm);color:var(--text-primary);transition:background var(--dur-fast) var(--ease-out)}
 .ef-menubar__item:hover:not(:disabled){background:var(--surface-sunken)}
 .ef-menubar__item:disabled{opacity:.4;cursor:not-allowed}
 .ef-menubar__item--danger{color:var(--danger-600)}
 .ef-menubar__item__icon{color:var(--text-muted);display:inline-flex}
 .ef-menubar__item--danger .ef-menubar__item__icon{color:var(--danger-600)}
 .ef-menubar__sep{height:1px;background:var(--border-default);margin:4px 6px}
-.ef-menubar__kbd{margin-left:auto;font-family:var(--font-mono);font-size:11px;color:var(--text-muted)}
+.ef-menubar__kbd{margin-inline-start:auto;font-family:var(--font-mono);font-size:11px;color:var(--text-muted)}
 `;
 export function Menubar({ menus, onSelect, style, className, ...rest }) {
   injectEfCss('ef-css-menubar', CSS);
+  const direction = useDirection();
+  const horizontalStep = key => key === 'ArrowRight' ? (direction === 'rtl' ? -1 : 1) : (direction === 'rtl' ? 1 : -1);
   const [open, setOpen] = React.useState(null);
   const ref = React.useRef(null);
   React.useEffect(() => {
@@ -52,8 +55,7 @@ export function Menubar({ menus, onSelect, style, className, ...rest }) {
     for (let k = 1; k <= nodes.length; k++) { const n = nodes[(cur + k) % nodes.length]; if ((n.textContent || '').trim().toLowerCase().startsWith(ch)) { e.preventDefault(); n.focus(); break; } }
   };
   const onBtnKey = (e, i) => {
-    if (e.key === 'ArrowRight') { e.preventDefault(); if (open !== null) { kbdOpen.current = true; setOpen((i + 1) % menus.length); } focusBtn(i + 1); }
-    else if (e.key === 'ArrowLeft') { e.preventDefault(); if (open !== null) { kbdOpen.current = true; setOpen((i - 1 + menus.length) % menus.length); } focusBtn(i - 1); }
+    if (e.key === 'ArrowRight' || e.key === 'ArrowLeft') { const step = horizontalStep(e.key); e.preventDefault(); if (open !== null) { kbdOpen.current = true; setOpen((i + step + menus.length) % menus.length); } focusBtn(i + step); }
     else if (e.key === 'ArrowDown') { e.preventDefault(); kbdOpen.current = true; setOpen(i); }
   };
   const onPanelKey = (e, i) => {
@@ -61,8 +63,7 @@ export function Menubar({ menus, onSelect, style, className, ...rest }) {
     else if (e.key === 'ArrowUp') { e.preventDefault(); focusItem(-1); }
     else if (e.key === 'Home') { e.preventDefault(); focusItem('first'); }
     else if (e.key === 'End') { e.preventDefault(); focusItem('last'); }
-    else if (e.key === 'ArrowRight') { e.preventDefault(); kbdOpen.current = true; setOpen((i + 1) % menus.length); }
-    else if (e.key === 'ArrowLeft') { e.preventDefault(); kbdOpen.current = true; setOpen((i - 1 + menus.length) % menus.length); }
+    else if (e.key === 'ArrowRight' || e.key === 'ArrowLeft') { const step = horizontalStep(e.key); e.preventDefault(); kbdOpen.current = true; setOpen((i + step + menus.length) % menus.length); }
     else if (e.key.length === 1 && /\S/.test(e.key) && !e.metaKey && !e.ctrlKey && !e.altKey) typeahead(e);
   };
   return (

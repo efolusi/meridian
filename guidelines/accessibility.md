@@ -53,13 +53,15 @@ system uses `color-mix()`, `:focus-visible`, CSS custom properties and
 CDN path additionally depends on React 18 UMD builds — React 19 dropped UMD, so
 that path is pinned to 18 while the npm build tracks `react >= 18`.
 
-**RTL is not supported in 1.x, and the honest reason is that it has not been
-done rather than that it is impossible.** Components use physical properties
-(`left`, `right`, `margin-left`) in places, so a `dir="rtl"` document will render
-with correct text direction but mirrored-wrong spacing and overlay alignment.
-Moving to logical properties (`inset-inline-start`, `margin-inline`) is tracked
-in ROADMAP.md. Do not claim RTL support until that lands and a mirrored screen
-has been reviewed.
+**Full RTL layout support is not yet claimed in 1.x.** The direction foundation
+is present: set `dir="rtl"` on the document and wrap the app in
+`<DirectionProvider direction="rtl">`. Tabs, Menubar, DigitEntry, Calendar and
+Resizable then mirror their horizontal keyboard or pointer behavior. Components
+still use physical properties (`left`, `right`, `margin-left`) in places, so
+some spacing and overlay alignment remains mirrored-wrong. Moving those rules
+to logical properties (`inset-inline-start`, `margin-inline`) is tracked in
+ROADMAP.md. Do not claim full RTL support until that lands and mirrored screens
+have been reviewed.
 
 **Reduced motion** is honoured globally at `tokens/base.css:10`: under
 `prefers-reduced-motion: reduce` every animation and transition is collapsed to

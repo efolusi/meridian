@@ -30,7 +30,7 @@ Dark mode: set data-theme="dark" on any subtree. Compact density: data-density="
 
 ## Components
 
-110 components across 12 groups: ai, code, data, dates, display, feedback, files, finance, forms, icons, navigation, overlay. Each entry lists the component's public exports, its usage guidance (.prompt.md), and its typed props interface (.d.ts).
+111 components across 12 groups: ai, code, data, dates, display, feedback, files, finance, forms, icons, navigation, overlay. Each entry lists the component's public exports, its usage guidance (.prompt.md), and its typed props interface (.d.ts).
 
 ### ai
 
@@ -1889,6 +1889,37 @@ export interface CollapsibleProps {
   className?: string;
 }
 export declare function Collapsible(props: CollapsibleProps): React.JSX.Element;
+```
+
+#### Direction
+
+Group: display · Source: /components/display/Direction.jsx · Exports: DirectionProvider
+
+# DirectionProvider
+
+Supplies `ltr` or `rtl` to Meridian components whose horizontal keyboard behavior must mirror. Set the same direction on the document so CSS and text flow agree with the component context.
+
+```jsx
+<html dir="rtl">
+  <body>
+    <DirectionProvider direction="rtl">
+      <App />
+    </DirectionProvider>
+  </body>
+</html>
+```
+
+Use `useDirection()` in custom components that need the current Meridian direction. Invalid provider values fall back to `ltr`.
+
+```ts
+export interface DirectionProviderProps {
+  /** Reading direction supplied to direction-aware Meridian components. @default 'ltr' */
+  direction?: 'ltr' | 'rtl';
+  children?: React.ReactNode;
+}
+
+export declare function DirectionProvider(props: DirectionProviderProps): React.JSX.Element;
+export declare function useDirection(): 'ltr' | 'rtl';
 ```
 
 #### Divider

@@ -26,6 +26,23 @@ export function AspectRatioDemo() {
   );
 }
 
+// @demo DirectionProvider Right-to-left behavior
+export function DirectionProviderDemo() {
+  const { DirectionProvider, Tabs } = window.EfolusiDesignSystem_4ffc3d;
+  const [value, setValue] = React.useState('overview');
+  return (
+    <div dir="rtl" lang="ar" style={{ width: '100%', maxWidth: 420 }}>
+      <DirectionProvider direction="rtl">
+        <Tabs value={value} onChange={setValue} items={[
+          { id: 'overview', label: 'نظرة عامة' },
+          { id: 'activity', label: 'النشاط' },
+          { id: 'settings', label: 'الإعدادات' },
+        ]} />
+      </DirectionProvider>
+    </div>
+  );
+}
+
 // @demo Avatar Initials and sizes
 export function AvatarDemo() {
   const { Avatar } = window.EfolusiDesignSystem_4ffc3d;

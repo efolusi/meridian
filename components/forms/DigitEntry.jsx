@@ -1,6 +1,7 @@
 import React from 'react';
 import { injectEfCss } from './Button.jsx';
 import { useFieldProps } from './FormField.jsx';
+import { useDirection } from '../display/Direction.jsx';
 const CSS = `
 .ef-digits{display:flex;gap:8px}
 .ef-digits__cell{width:44px;height:52px;border:1px solid var(--border-strong);border-radius:var(--radius-sm);background:var(--surface-sunken);color:var(--text-primary);font-family:var(--font-mono);font-size:22px;font-weight:600;text-align:center;transition:border-color var(--dur-fast) var(--ease-out),box-shadow var(--dur-fast) var(--ease-out)}
@@ -13,6 +14,7 @@ export function DigitEntry({ length = 6, value, onChange, onComplete, label, inv
   injectEfCss('ef-css-digits', CSS);
   // Picks up id / aria wiring when nested in a FormField; standalone this is a no-op.
   const field = useFieldProps({ invalid, id: rest.id, 'aria-describedby': rest['aria-describedby'] });
+  const direction = useDirection();
   const [inner, setInner] = React.useState('');
   const v = value != null ? value : inner;
   const refs = React.useRef([]);
@@ -27,8 +29,13 @@ export function DigitEntry({ length = 6, value, onChange, onComplete, label, inv
       e.preventDefault();
       if (v[i]) set(v.slice(0, i) + v.slice(i + 1));
       else if (i > 0) { set(v.slice(0, i - 1) + v.slice(i)); refs.current[i - 1] && refs.current[i - 1].focus(); }
-    } else if (e.key === 'ArrowLeft' && i > 0) refs.current[i - 1].focus();
-    else if (e.key === 'ArrowRight' && i < length - 1) refs.current[i + 1].focus();
+    } else if (e.key === 'ArrowLeft') {
+      const to = i + (direction === 'rtl' ? 1 : -1);
+      if (to >= 0 && to < length) refs.current[to].focus();
+    } else if (e.key === 'ArrowRight') {
+      const to = i + (direction === 'rtl' ? -1 : 1);
+      if (to >= 0 && to < length) refs.current[to].focus();
+    }
   };
   const inputAt = (i, e) => {
     const ch = e.target.value.replace(/\D/g, '');

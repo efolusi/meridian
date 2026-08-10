@@ -1,6 +1,7 @@
 import React from 'react';
 import { IconButton } from '../forms/IconButton.jsx';
 import { injectEfCss } from '../forms/Button.jsx';
+import { useDirection } from '../display/Direction.jsx';
 const CSS = `
 .ef-cal{width:252px;user-select:none}
 .ef-cal__head{display:flex;align-items:center;gap:4px;margin-bottom:8px}
@@ -42,6 +43,7 @@ function localeNames(locale) {
 }
 export function Calendar({ value, onChange, range, locale, style, className, ...rest }) {
   injectEfCss('ef-css-cal', CSS);
+  const direction = useDirection();
   // Names localise when `locale` is set; without it the English constants are
   // used unchanged, so this is additive.
   const L = React.useMemo(() => localeNames(locale), [locale]);
@@ -78,7 +80,7 @@ export function Calendar({ value, onChange, range, locale, style, className, ...
     if (btn) btn.focus();
   }, [focusTarget, y, m]);
   const onGridKey = e => {
-    const map = { ArrowLeft: -1, ArrowRight: 1, ArrowUp: -7, ArrowDown: 7 };
+    const map = { ArrowLeft: direction === 'rtl' ? 1 : -1, ArrowRight: direction === 'rtl' ? -1 : 1, ArrowUp: -7, ArrowDown: 7 };
     if (e.key in map) { e.preventDefault(); move(map[e.key]); return; }
     const dow = () => (new Date(focusTarget + 'T00:00:00').getDay() + 6) % 7;
     if (e.key === 'Home') { e.preventDefault(); move(-dow()); }
@@ -106,9 +108,9 @@ export function Calendar({ value, onChange, range, locale, style, className, ...
   return (
     <div {...rest} className={`ef-cal${className ? ' ' + className : ''}`} style={style}>
       <div className="ef-cal__head">
-        <IconButton icon="chevron-left" label="Previous month" size="sm" onClick={() => setView(m === 0 ? [y - 1, 11] : [y, m - 1])} />
+        <IconButton icon={direction === 'rtl' ? 'chevron-right' : 'chevron-left'} label="Previous month" size="sm" onClick={() => setView(m === 0 ? [y - 1, 11] : [y, m - 1])} />
         <span className="ef-cal__month" aria-live="polite">{MONTHS_L[m]} {y}</span>
-        <IconButton icon="chevron-right" label="Next month" size="sm" onClick={() => setView(m === 11 ? [y + 1, 0] : [y, m + 1])} />
+        <IconButton icon={direction === 'rtl' ? 'chevron-left' : 'chevron-right'} label="Next month" size="sm" onClick={() => setView(m === 11 ? [y + 1, 0] : [y, m + 1])} />
       </div>
       <div role="grid" ref={gridRef} onKeyDown={onGridKey} aria-label={`${MONTHS_L[m]} ${y}`} className="ef-cal__grid">
         <div role="row" className="ef-cal__row">

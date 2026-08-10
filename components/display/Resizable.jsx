@@ -1,5 +1,6 @@
 import React from 'react';
 import { injectEfCss, cssPct } from '../forms/Button.jsx';
+import { useDirection } from './Direction.jsx';
 const CSS = `
 .ef-resizable{display:flex;width:100%;height:100%;min-height:0;min-width:0}
 .ef-resizable--vertical{flex-direction:column}
@@ -15,6 +16,7 @@ const CSS = `
 `;
 export function Resizable({ direction = 'horizontal', defaultRatio = 0.5, min = 0.15, max = 0.85, onRatioChange, children, style, className, ...rest }) {
   injectEfCss('ef-css-resizable', CSS);
+  const readingDirection = useDirection();
   const [ratio, setRatio] = React.useState(defaultRatio);
   const [drag, setDrag] = React.useState(false);
   const ref = React.useRef(null);
@@ -25,14 +27,14 @@ export function Resizable({ direction = 'horizontal', defaultRatio = 0.5, min = 
     setDrag(true);
     const move = ev => {
       const rect = ref.current.getBoundingClientRect();
-      apply(direction === 'horizontal' ? (ev.clientX - rect.left) / rect.width : (ev.clientY - rect.top) / rect.height);
+      apply(direction === 'horizontal' ? (readingDirection === 'rtl' ? rect.right - ev.clientX : ev.clientX - rect.left) / rect.width : (ev.clientY - rect.top) / rect.height);
     };
     const up = () => { setDrag(false); window.removeEventListener('pointermove', move); window.removeEventListener('pointerup', up); };
     window.addEventListener('pointermove', move);
     window.addEventListener('pointerup', up);
   };
   const key = e => {
-    const d = { ArrowLeft: -0.02, ArrowRight: 0.02, ArrowUp: -0.02, ArrowDown: 0.02 }[e.key];
+    const d = { ArrowLeft: readingDirection === 'rtl' ? 0.02 : -0.02, ArrowRight: readingDirection === 'rtl' ? -0.02 : 0.02, ArrowUp: -0.02, ArrowDown: 0.02 }[e.key];
     if (d === undefined) return;
     e.preventDefault();
     apply(ratio + d);

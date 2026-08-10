@@ -1326,6 +1326,7 @@
       "registryDependencies": [
         "https://meridian.efolusi.com/site/registry/meridian-base.json",
         "https://meridian.efolusi.com/site/registry/button.json",
+        "https://meridian.efolusi.com/site/registry/directionprovider.json",
         "https://meridian.efolusi.com/site/registry/iconbutton.json"
       ],
       "files": [
@@ -1660,6 +1661,35 @@
       ]
     },
     {
+      "name": "directionprovider",
+      "type": "registry:ui",
+      "title": "DirectionProvider",
+      "description": "Supplies `ltr` or `rtl` to Meridian components whose horizontal keyboard behavior must mirror. Set the same direction on the document so CSS and text flow agree with the component context.",
+      "dependencies": [
+        "react"
+      ],
+      "registryDependencies": [
+        "https://meridian.efolusi.com/site/registry/meridian-base.json"
+      ],
+      "files": [
+        {
+          "path": "components/display/Direction.jsx",
+          "type": "registry:ui"
+        },
+        {
+          "path": "components/display/Direction.d.ts",
+          "type": "registry:component"
+        },
+        {
+          "path": "components/display/Direction.prompt.md",
+          "type": "registry:component"
+        }
+      ],
+      "categories": [
+        "display"
+      ]
+    },
+    {
       "name": "divider",
       "type": "registry:ui",
       "title": "Divider",
@@ -1791,7 +1821,8 @@
       ],
       "registryDependencies": [
         "https://meridian.efolusi.com/site/registry/meridian-base.json",
-        "https://meridian.efolusi.com/site/registry/button.json"
+        "https://meridian.efolusi.com/site/registry/button.json",
+        "https://meridian.efolusi.com/site/registry/directionprovider.json"
       ],
       "files": [
         {
@@ -2541,6 +2572,7 @@
       "registryDependencies": [
         "https://meridian.efolusi.com/site/registry/meridian-base.json",
         "https://meridian.efolusi.com/site/registry/button.json",
+        "https://meridian.efolusi.com/site/registry/directionprovider.json",
         "https://meridian.efolusi.com/site/registry/formfield.json"
       ],
       "files": [
@@ -3007,6 +3039,7 @@
       "registryDependencies": [
         "https://meridian.efolusi.com/site/registry/meridian-base.json",
         "https://meridian.efolusi.com/site/registry/button.json",
+        "https://meridian.efolusi.com/site/registry/directionprovider.json",
         "https://meridian.efolusi.com/site/registry/icon.json"
       ],
       "files": [
@@ -3193,6 +3226,7 @@
       "registryDependencies": [
         "https://meridian.efolusi.com/site/registry/meridian-base.json",
         "https://meridian.efolusi.com/site/registry/button.json",
+        "https://meridian.efolusi.com/site/registry/directionprovider.json",
         "https://meridian.efolusi.com/site/registry/icon.json"
       ],
       "files": [
