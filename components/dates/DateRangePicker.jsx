@@ -14,8 +14,8 @@ const CSS = `
 .ef-daterange__btn:focus-visible{outline:none;border-color:var(--accent);box-shadow:var(--focus-ring)}
 .ef-daterange__btn:disabled{background:var(--surface-sunken);color:var(--text-muted);cursor:not-allowed}
 .ef-daterange__btn--empty{color:var(--text-muted)}
-.ef-daterange__chevron{position:absolute;right:10px;top:50%;transform:translateY(-50%);display:inline-flex;color:var(--text-muted);pointer-events:none}
-.ef-daterange__clear{position:absolute;right:6px;top:50%;transform:translateY(-50%);display:inline-flex;align-items:center;justify-content:center;width:22px;height:22px;border:none;border-radius:var(--radius-sm);background:none;color:var(--text-muted);cursor:pointer}
+.ef-daterange__chevron{position:absolute;inset-inline-end:10px;top:50%;transform:translateY(-50%);display:inline-flex;color:var(--text-muted);pointer-events:none}
+.ef-daterange__clear{position:absolute;inset-inline-end:6px;top:50%;transform:translateY(-50%);display:inline-flex;align-items:center;justify-content:center;width:22px;height:22px;border:none;border-radius:var(--radius-sm);background:none;color:var(--text-muted);cursor:pointer}
 .ef-daterange__clear:hover{background:var(--surface-sunken);color:var(--text-primary)}
 .ef-daterange__clear:focus-visible{outline:none;box-shadow:var(--focus-ring)}
 .ef-daterange__pop{background:var(--surface-card);border:1px solid var(--border-strong);border-radius:var(--radius-md);box-shadow:var(--shadow-md);padding:12px;z-index:var(--z-dropdown);animation:ef-drp-in var(--dur-fast) var(--ease-out)}

@@ -12,7 +12,7 @@ const CSS = `
 .ef-term__line--ok{color:var(--success-on-dark)}
 .ef-term__line--err{color:var(--danger-on-dark)}
 .ef-term__line--info{color:var(--code-ink-subtle)}
-.ef-term__time{color:var(--code-ink-faint);margin-right:10px}
+.ef-term__time{color:var(--code-ink-faint);margin-inline-end:10px}
 @keyframes ef-term-caret{0%,100%{opacity:1}50%{opacity:0}}
 .ef-term__caret{display:inline-block;width:7px;height:13px;background:var(--cream-50);vertical-align:-2px;animation:ef-term-caret 1s steps(1) infinite}
 `;

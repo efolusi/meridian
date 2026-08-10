@@ -13,13 +13,13 @@ const CSS = `
 .ef-console__row--debug .ef-console__glyph{color:var(--text-link)}
 .ef-console__time{flex:none;color:var(--text-muted);font-variant-numeric:tabular-nums}
 .ef-console__msg{flex:1;min-width:0;white-space:pre-wrap;word-break:break-word}
-.ef-console__src{flex:none;margin-left:auto;color:var(--text-muted);font-size:11px}
-.ef-console__stackbtn{display:inline-flex;align-items:center;gap:5px;border:none;background:none;padding:0;cursor:pointer;font:inherit;color:inherit;text-align:left}
+.ef-console__src{flex:none;margin-inline-start:auto;color:var(--text-muted);font-size:11px}
+.ef-console__stackbtn{display:inline-flex;align-items:center;gap:5px;border:none;background:none;padding:0;cursor:pointer;font:inherit;color:inherit;text-align:start}
 .ef-console__stackbtn:hover{color:var(--text-primary)}
 .ef-console__stackchev{display:inline-flex;margin-top:2px;color:var(--text-muted);transition:transform var(--dur-fast) var(--ease-out)}
 .ef-console__stackchev--open{transform:rotate(90deg)}
-.ef-console__stack{margin:4px 0 0;padding-left:19px;white-space:pre-wrap;color:var(--text-muted);font-size:11.5px}
-.ef-console__jump{position:absolute;right:10px;bottom:10px;display:inline-flex;align-items:center;gap:6px;padding:6px 11px;border:1px solid var(--border-strong);border-radius:var(--radius-full);background:var(--surface-card);box-shadow:var(--shadow-md);cursor:pointer;font-family:var(--font-sans);font-size:12px;font-weight:var(--weight-semibold);color:var(--text-primary)}
+.ef-console__stack{margin:4px 0 0;padding-inline-start:19px;white-space:pre-wrap;color:var(--text-muted);font-size:11.5px}
+.ef-console__jump{position:absolute;inset-inline-end:10px;bottom:10px;display:inline-flex;align-items:center;gap:6px;padding:6px 11px;border:1px solid var(--border-strong);border-radius:var(--radius-full);background:var(--surface-card);box-shadow:var(--shadow-md);cursor:pointer;font-family:var(--font-sans);font-size:12px;font-weight:var(--weight-semibold);color:var(--text-primary)}
 `;
 const GLYPH = { info: 'info', warn: 'triangle-alert', error: 'circle-alert', debug: 'bug' };
 function Row({ e }) {

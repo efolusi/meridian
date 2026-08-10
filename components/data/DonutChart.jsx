@@ -3,9 +3,9 @@ import { injectEfCss } from '../forms/Button.jsx';
 const CSS = `
 .ef-donut{display:flex;align-items:center;gap:20px}
 .ef-donut__legend{display:flex;flex-direction:column;gap:8px}
-.ef-donut__item{display:flex;align-items:center;gap:8px;font-size:var(--text-sm);color:var(--text-secondary);border:none;background:none;padding:0;cursor:default;font-family:var(--font-sans);text-align:left}
+.ef-donut__item{display:flex;align-items:center;gap:8px;font-size:var(--text-sm);color:var(--text-secondary);border:none;background:none;padding:0;cursor:default;font-family:var(--font-sans);text-align:start}
 .ef-donut__swatch{width:9px;height:9px;border-radius:2px;flex:none}
-.ef-donut__val{margin-left:auto;font-family:var(--font-mono);font-size:12px;color:var(--text-primary);padding-left:14px}
+.ef-donut__val{margin-inline-start:auto;font-family:var(--font-mono);font-size:12px;color:var(--text-primary);padding-inline-start:14px}
 `;
 const PALETTE = ['var(--brand-950)', 'var(--brand-500)', 'var(--brand-200)', 'var(--sand-400)', 'var(--sand-200)'];
 export function DonutChart({ data, size = 140, thickness = 16, centerLabel, centerValue, format, style, className, ...rest }) {

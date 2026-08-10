@@ -11,7 +11,7 @@ const CSS = `
 .ef-datepicker__btn:hover{border-color:var(--sand-400)}
 .ef-datepicker__btn:focus-visible{outline:none;border-color:var(--accent);box-shadow:var(--focus-ring)}
 .ef-datepicker__btn--empty{color:var(--text-muted)}
-.ef-datepicker__pop{position:absolute;top:calc(100% + 6px);left:0;background:var(--surface-card);border:1px solid var(--border-strong);border-radius:var(--radius-md);box-shadow:var(--shadow-md);padding:12px;z-index:var(--z-dropdown);animation:ef-dp-in var(--dur-fast) var(--ease-out)}
+.ef-datepicker__pop{position:absolute;top:calc(100% + 6px);inset-inline-start:0;background:var(--surface-card);border:1px solid var(--border-strong);border-radius:var(--radius-md);box-shadow:var(--shadow-md);padding:12px;z-index:var(--z-dropdown);animation:ef-dp-in var(--dur-fast) var(--ease-out)}
 @keyframes ef-dp-in{from{opacity:0;transform:translateY(-3px)}}
 `;
 // The trigger's date label; locale defaults to en-US so the display is unchanged

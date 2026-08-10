@@ -6,7 +6,7 @@ const CSS = `
 .ef-table-wrap{max-width:100%;overflow-x:auto;overflow-y:hidden;-webkit-overflow-scrolling:touch}
 .ef-table-wrap--sticky{overflow-y:auto}
 .ef-table{width:100%;border-collapse:collapse}
-.ef-table th{text-align:left;padding:10px var(--table-pad-x);font-size:11px;font-weight:var(--weight-semibold);letter-spacing:0.06em;text-transform:uppercase;color:var(--text-muted);border-bottom:1px solid var(--border-default);white-space:nowrap}
+.ef-table th{text-align:start;padding:10px var(--table-pad-x);font-size:11px;font-weight:var(--weight-semibold);letter-spacing:0.06em;text-transform:uppercase;color:var(--text-muted);border-bottom:1px solid var(--border-default);white-space:nowrap}
 .ef-table--sticky thead th{position:sticky;top:0;z-index:1;background:var(--surface-card)}
 .ef-table td{padding:var(--table-pad-y) var(--table-pad-x);font-size:var(--text-md);border-bottom:1px solid var(--border-default);vertical-align:middle}
 .ef-table tr:last-child td{border-bottom:none}

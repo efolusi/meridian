@@ -14,7 +14,7 @@ const CSS = `
 .ef-env__row{display:flex;align-items:center;gap:12px;padding:5px 8px;border-radius:var(--radius-sm)}
 .ef-env__row:hover{background:var(--surface-subtle)}
 .ef-env__name{flex:none;font-family:var(--font-mono);font-size:12.5px;color:var(--text-muted)}
-.ef-env__val{flex:1;min-width:0;margin-left:auto;text-align:right;font-family:var(--font-mono);font-size:12.5px;color:var(--text-primary);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.ef-env__val{flex:1;min-width:0;margin-inline-start:auto;text-align:end;font-family:var(--font-mono);font-size:12.5px;color:var(--text-primary);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .ef-env__row .ef-env__btn{opacity:0;width:24px;height:24px}
 .ef-env__row:hover .ef-env__btn,.ef-env__row .ef-env__btn:focus-visible,.ef-env__row .ef-env__btn--done{opacity:1}
 `;
