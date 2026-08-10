@@ -140,6 +140,20 @@ export function ListItemDemo() {
   );
 }
 
+// @demo Timeline Audit history
+export function TimelineDemo() {
+  const { Timeline } = window.EfolusiDesignSystem_4ffc3d;
+  return (
+    <div style={{ width: '100%', maxWidth: 520 }}>
+      <Timeline items={[
+        { id: 'review', title: 'Security review requested', description: 'Regional deployment questions assigned to solutions.', time: '09:42', dateTime: '2026-08-10T09:42:00Z', actor: 'Ada Obi', tone: 'warning' },
+        { id: 'workshop', title: 'Rollout workshop completed', description: 'Operations named regional owners and the approval path.', time: 'Yesterday', dateTime: '2026-08-09', actor: 'Femi Alade' },
+        { id: 'approved', title: 'Implementation approved', time: '8 Aug', dateTime: '2026-08-08', actor: 'June Park', tone: 'success' },
+      ]} aria-label="Account history" />
+    </div>
+  );
+}
+
 // @demo Resizable Split panes
 export function ResizableDemo() {
   const { Resizable } = window.EfolusiDesignSystem_4ffc3d;

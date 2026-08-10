@@ -1,0 +1,35 @@
+{
+  "name": "timeline",
+  "type": "registry:ui",
+  "title": "Timeline",
+  "description": "Chronological, immutable events for audit logs, incidents, approvals, and relationship history. Uses semantic `ol`, `li`, and `time` elements. Use `Steps` for a process the user is progressing through; use `Timeline` for events that already happened.",
+  "dependencies": [
+    "react"
+  ],
+  "registryDependencies": [
+    "https://meridian.efolusi.com/site/registry/meridian-base.json",
+    "https://meridian.efolusi.com/site/registry/button.json",
+    "https://meridian.efolusi.com/site/registry/icon.json"
+  ],
+  "files": [
+    {
+      "path": "components/display/Timeline.jsx",
+      "type": "registry:ui",
+      "content": "import React from 'react';\nimport { Icon } from '../icons/Icon.jsx';\nimport { injectEfCss } from '../forms/Button.jsx';\n\nconst CSS = `\n.ef-timeline{list-style:none;margin:0;padding:0;display:flex;flex-direction:column}\n.ef-timeline__item{display:grid;grid-template-columns:24px minmax(0,1fr);column-gap:12px;position:relative;min-width:0}\n.ef-timeline__rail{display:flex;flex-direction:column;align-items:center;grid-row:1/span 2}\n.ef-timeline__marker{display:inline-flex;align-items:center;justify-content:center;width:24px;height:24px;border-radius:var(--radius-full);border:1px solid var(--border-strong);background:var(--surface-card);color:var(--text-muted);flex:none;z-index:1}\n.ef-timeline__line{width:1px;flex:1;min-height:16px;background:var(--border-default);margin:4px 0}\n.ef-timeline__item:last-child .ef-timeline__line{visibility:hidden}\n.ef-timeline__content{min-width:0;padding-bottom:20px}\n.ef-timeline__item:last-child .ef-timeline__content{padding-bottom:0}\n.ef-timeline__head{display:flex;align-items:baseline;gap:8px;flex-wrap:wrap;min-height:24px}\n.ef-timeline__title{font-size:var(--text-md);font-weight:var(--weight-semibold);color:var(--text-primary);line-height:1.45}\n.ef-timeline__time{margin-left:auto;color:var(--text-muted);font-family:var(--font-mono);font-size:var(--text-xs);white-space:nowrap}\n.ef-timeline__desc{margin-top:3px;color:var(--text-secondary);font-size:var(--text-sm);line-height:1.5}\n.ef-timeline__meta{margin-top:6px;color:var(--text-muted);font-size:var(--text-xs);line-height:1.4}\n.ef-timeline__item--success .ef-timeline__marker{border-color:var(--success-300);background:var(--success-100);color:var(--success-600)}\n.ef-timeline__item--warning .ef-timeline__marker{border-color:var(--warning-300);background:var(--warning-100);color:var(--warning-600)}\n.ef-timeline__item--danger .ef-timeline__marker{border-color:var(--danger-300);background:var(--danger-100);color:var(--danger-600)}\n.ef-timeline--compact .ef-timeline__content{padding-bottom:12px}\n`;\n\nconst TONE_ICONS = { success: 'check', warning: 'triangle-alert', danger: 'x' };\n\nexport function Timeline({ items = [], compact = false, style, className, ...rest }) {\n  injectEfCss('ef-css-timeline', CSS);\n  return (\n    <ol {...rest} className={`ef-timeline${compact ? ' ef-timeline--compact' : ''}${className ? ' ' + className : ''}`} style={style}>\n      {items.map((item, index) => {\n        const tone = ['success', 'warning', 'danger'].includes(item.tone) ? item.tone : 'neutral';\n        const icon = item.icon || TONE_ICONS[tone] || 'circle';\n        return (\n          <li key={item.id ?? index} className={`ef-timeline__item ef-timeline__item--${tone}`}>\n            <span className=\"ef-timeline__rail\" aria-hidden=\"true\">\n              <span className=\"ef-timeline__marker\"><Icon name={icon} size={13} /></span>\n              <span className=\"ef-timeline__line\" />\n            </span>\n            <div className=\"ef-timeline__content\">\n              <div className=\"ef-timeline__head\">\n                <span className=\"ef-timeline__title\">{item.title}</span>\n                {item.time ? <time className=\"ef-timeline__time\" dateTime={item.dateTime}>{item.time}</time> : null}\n              </div>\n              {item.description ? <div className=\"ef-timeline__desc\">{item.description}</div> : null}\n              {item.actor || item.meta ? <div className=\"ef-timeline__meta\">{item.actor}{item.actor && item.meta ? ' \u00b7 ' : null}{item.meta}</div> : null}\n            </div>\n          </li>\n        );\n      })}\n    </ol>\n  );\n}\n\n"
+    },
+    {
+      "path": "components/display/Timeline.d.ts",
+      "type": "registry:component",
+      "content": "export type TimelineTone = 'neutral' | 'success' | 'warning' | 'danger';\n\nexport interface TimelineItem {\n  id?: React.Key;\n  title: React.ReactNode;\n  description?: React.ReactNode;\n  /** Human-readable time shown in the UI. */\n  time?: React.ReactNode;\n  /** Machine-readable ISO date/time passed to the native time element. */\n  dateTime?: string;\n  actor?: React.ReactNode;\n  meta?: React.ReactNode;\n  tone?: TimelineTone;\n  /** Lucide icon name. Defaults from tone. */\n  icon?: string;\n}\n\nexport interface TimelineProps extends Omit<React.OlHTMLAttributes<HTMLOListElement>, 'children'> {\n  items: TimelineItem[];\n  compact?: boolean;\n}\n\nexport declare function Timeline(props: TimelineProps): React.JSX.Element;\n\n"
+    },
+    {
+      "path": "components/display/Timeline.prompt.md",
+      "type": "registry:component",
+      "content": "Chronological, immutable events for audit logs, incidents, approvals, and relationship history. Uses semantic `ol`, `li`, and `time` elements. Use `Steps` for a process the user is progressing through; use `Timeline` for events that already happened.\n\n```jsx\n<Timeline items={[\n  { id: 'review', title: 'Security review requested', description: 'Assigned to the solutions team.', time: '09:42', dateTime: '2026-08-10T09:42:00Z', actor: 'Ada Obi', tone: 'warning' },\n  { id: 'approved', title: 'Rollout approved', time: 'Yesterday', dateTime: '2026-08-09', actor: 'June Park', tone: 'success' },\n]} />\n```\n\nTone is optional and never the only state signal: titles and descriptions carry the meaning. Supply `dateTime` whenever `time` represents a real timestamp.\n\n"
+    }
+  ],
+  "categories": [
+    "display"
+  ],
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json"
+}

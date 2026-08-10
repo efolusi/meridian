@@ -1866,6 +1866,37 @@
       ]
     },
     {
+      "name": "timeline",
+      "type": "registry:ui",
+      "title": "Timeline",
+      "description": "Chronological, immutable events for audit logs, incidents, approvals, and relationship history. Uses semantic `ol`, `li`, and `time` elements. Use `Steps` for a process the user is progressing through; use `Timeline` for events that already happened.",
+      "dependencies": [
+        "react"
+      ],
+      "registryDependencies": [
+        "https://meridian.efolusi.com/site/registry/meridian-base.json",
+        "https://meridian.efolusi.com/site/registry/button.json",
+        "https://meridian.efolusi.com/site/registry/icon.json"
+      ],
+      "files": [
+        {
+          "path": "components/display/Timeline.jsx",
+          "type": "registry:ui"
+        },
+        {
+          "path": "components/display/Timeline.d.ts",
+          "type": "registry:component"
+        },
+        {
+          "path": "components/display/Timeline.prompt.md",
+          "type": "registry:component"
+        }
+      ],
+      "categories": [
+        "display"
+      ]
+    },
+    {
       "name": "toolbar",
       "type": "registry:ui",
       "title": "Toolbar",

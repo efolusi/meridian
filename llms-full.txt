@@ -2,7 +2,7 @@
 
 The entire design system in one file, generated from llms.txt, components/*/, and tokens/*.css by scripts/build_llms.py. Do not edit by hand. The short map of the repository is /llms.txt.
 
-> Meridian is a general-purpose open-source design system by Efolusi: 109 accessible React components, 177 design tokens (light, dark, compact), blocks, charts, and full example apps — served browser-native with zero build step. MIT licensed.
+> Meridian is a general-purpose open-source design system by Efolusi: 110 accessible React components, 166 design tokens (light, dark, compact), blocks, charts, and full example apps — served browser-native with zero build step. MIT licensed.
 
 Live docs: https://meridian.efolusi.com · Source: https://github.com/efolusi/meridian · License: MIT
 
@@ -30,7 +30,7 @@ Dark mode: set data-theme="dark" on any subtree. Compact density: data-density="
 
 ## Components
 
-109 components across 12 groups: ai, code, data, dates, display, feedback, files, finance, forms, icons, navigation, overlay. Each entry lists the component's public exports, its usage guidance (.prompt.md), and its typed props interface (.d.ts).
+110 components across 12 groups: ai, code, data, dates, display, feedback, files, finance, forms, icons, navigation, overlay. Each entry lists the component's public exports, its usage guidance (.prompt.md), and its typed props interface (.d.ts).
 
 ### ai
 
@@ -2070,6 +2070,47 @@ export interface TagProps extends React.HTMLAttributes<HTMLSpanElement> {
   children?: React.ReactNode;
 }
 export declare function Tag(props: TagProps): React.JSX.Element;
+```
+
+#### Timeline
+
+Group: display · Source: /components/display/Timeline.jsx · Exports: Timeline
+
+Chronological, immutable events for audit logs, incidents, approvals, and relationship history. Uses semantic `ol`, `li`, and `time` elements. Use `Steps` for a process the user is progressing through; use `Timeline` for events that already happened.
+
+```jsx
+<Timeline items={[
+  { id: 'review', title: 'Security review requested', description: 'Assigned to the solutions team.', time: '09:42', dateTime: '2026-08-10T09:42:00Z', actor: 'Ada Obi', tone: 'warning' },
+  { id: 'approved', title: 'Rollout approved', time: 'Yesterday', dateTime: '2026-08-09', actor: 'June Park', tone: 'success' },
+]} />
+```
+
+Tone is optional and never the only state signal: titles and descriptions carry the meaning. Supply `dateTime` whenever `time` represents a real timestamp.
+
+```ts
+export type TimelineTone = 'neutral' | 'success' | 'warning' | 'danger';
+
+export interface TimelineItem {
+  id?: React.Key;
+  title: React.ReactNode;
+  description?: React.ReactNode;
+  /** Human-readable time shown in the UI. */
+  time?: React.ReactNode;
+  /** Machine-readable ISO date/time passed to the native time element. */
+  dateTime?: string;
+  actor?: React.ReactNode;
+  meta?: React.ReactNode;
+  tone?: TimelineTone;
+  /** Lucide icon name. Defaults from tone. */
+  icon?: string;
+}
+
+export interface TimelineProps extends Omit<React.OlHTMLAttributes<HTMLOListElement>, 'children'> {
+  items: TimelineItem[];
+  compact?: boolean;
+}
+
+export declare function Timeline(props: TimelineProps): React.JSX.Element;
 ```
 
 #### Toolbar
