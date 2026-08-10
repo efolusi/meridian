@@ -3,7 +3,7 @@ import { Icon } from '../icons/Icon.jsx';
 import { injectEfCss } from '../forms/Button.jsx';
 const CSS = `
 .ef-tree{display:flex;flex-direction:column;gap:1px;font-size:var(--text-sm)}
-.ef-tree__row{display:flex;align-items:center;gap:7px;height:30px;padding:0 8px;border:none;border-radius:var(--radius-sm);background:none;cursor:pointer;text-align:left;font-family:var(--font-sans);font-size:var(--text-sm);color:var(--text-secondary);width:100%;transition:background var(--dur-fast) var(--ease-out),color var(--dur-fast) var(--ease-out)}
+.ef-tree__row{display:flex;align-items:center;gap:7px;height:30px;padding:0 8px;border:none;border-radius:var(--radius-sm);background:none;cursor:pointer;text-align:start;font-family:var(--font-sans);font-size:var(--text-sm);color:var(--text-secondary);width:100%;transition:background var(--dur-fast) var(--ease-out),color var(--dur-fast) var(--ease-out)}
 .ef-tree__row:hover{background:var(--surface-sunken);color:var(--text-primary)}
 .ef-tree__row--sel{background:var(--accent-subtle);color:var(--brand-700);font-weight:var(--weight-semibold)}
 .ef-tree__row--sel:hover{background:var(--accent-subtle);color:var(--brand-700)}
@@ -12,7 +12,7 @@ const CSS = `
 .ef-tree__chev--open{transform:rotate(90deg)}
 .ef-tree__icon{display:inline-flex;flex:none;color:var(--text-muted)}
 .ef-tree__row--sel .ef-tree__icon{color:inherit}
-.ef-tree__count{margin-left:auto;font-family:var(--font-mono);font-size:11px;color:var(--text-muted)}
+.ef-tree__count{margin-inline-start:auto;font-family:var(--font-mono);font-size:11px;color:var(--text-muted)}
 `;
 function Node({ node, depth, open, sel, toggle, select }) {
   const kids = node.children || [];

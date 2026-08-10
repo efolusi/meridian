@@ -1,6 +1,7 @@
 import React from 'react';
 import { injectEfCss, prefersReducedMotion } from '../forms/Button.jsx';
 import { Icon } from '../icons/Icon.jsx';
+import { useDirection } from './Direction.jsx';
 const CSS = `
 .ef-carousel{position:relative}
 .ef-carousel__track{display:grid;grid-auto-flow:column;overflow-x:auto;scroll-snap-type:x mandatory;scroll-behavior:smooth;scrollbar-width:none}
@@ -11,8 +12,8 @@ const CSS = `
 .ef-carousel__nav:active:not(:disabled){transform:translateY(-50%) scale(.96)}
 .ef-carousel__nav:focus-visible{outline:none;box-shadow:var(--focus-ring)}
 .ef-carousel__nav:disabled{opacity:.35;cursor:default}
-.ef-carousel__nav--prev{left:-14px}
-.ef-carousel__nav--next{right:-14px}
+.ef-carousel__nav--prev{inset-inline-start:-14px}
+.ef-carousel__nav--next{inset-inline-end:-14px}
 .ef-carousel__dots{display:flex;justify-content:center;margin-top:6px}
 .ef-carousel__dot{position:relative;width:24px;height:24px;border:none;padding:0;background:transparent;cursor:pointer}
 .ef-carousel__dot::before{content:'';position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:7px;height:7px;border-radius:var(--radius-full);background:var(--border-strong);transition:background var(--dur-fast) var(--ease-out)}
@@ -22,6 +23,7 @@ const CSS = `
 `;
 export function Carousel({ children, itemWidth = '280px', gap = 14, showControls = true, showDots = true, ariaLabel = 'Carousel', style, className, ...rest }) {
   injectEfCss('ef-css-carousel', CSS);
+  const direction = useDirection();
   const track = React.useRef(null);
   const [index, setIndex] = React.useState(0);
   const count = React.Children.count(children);
@@ -30,8 +32,8 @@ export function Carousel({ children, itemWidth = '280px', gap = 14, showControls
     if (!el || !el.firstChild) return el ? el.clientWidth : 0;
     return el.firstChild.getBoundingClientRect().width + gap;
   };
-  const goTo = i => { const el = track.current; if (el) el.scrollTo({ left: i * step(), behavior: prefersReducedMotion() ? 'auto' : 'smooth' }); };
-  const onScroll = () => { const el = track.current; if (el) setIndex(Math.min(count - 1, Math.max(0, Math.round(el.scrollLeft / step())))); };
+  const goTo = i => { const el = track.current; if (el) el.scrollTo({ left: (direction === 'rtl' ? -1 : 1) * i * step(), behavior: prefersReducedMotion() ? 'auto' : 'smooth' }); };
+  const onScroll = () => { const el = track.current; if (el) setIndex(Math.min(count - 1, Math.max(0, Math.round(Math.abs(el.scrollLeft) / step())))); };
   return (
     <div {...rest} role="region" aria-label={ariaLabel} className={`ef-carousel${className ? ' ' + className : ''}`} style={style}>
       <div ref={track} className="ef-carousel__track" style={{ gridAutoColumns: itemWidth, gap }} onScroll={onScroll}>
@@ -39,8 +41,8 @@ export function Carousel({ children, itemWidth = '280px', gap = 14, showControls
       </div>
       {showControls ? (
         <React.Fragment>
-          <button type="button" aria-label="Previous" disabled={index <= 0} className="ef-carousel__nav ef-carousel__nav--prev" onClick={() => goTo(index - 1)}><Icon name="chevron-left" size={16} /></button>
-          <button type="button" aria-label="Next" disabled={index >= count - 1} className="ef-carousel__nav ef-carousel__nav--next" onClick={() => goTo(index + 1)}><Icon name="chevron-right" size={16} /></button>
+          <button type="button" aria-label="Previous" disabled={index <= 0} className="ef-carousel__nav ef-carousel__nav--prev" onClick={() => goTo(index - 1)}><Icon name={direction === 'rtl' ? 'chevron-right' : 'chevron-left'} size={16} /></button>
+          <button type="button" aria-label="Next" disabled={index >= count - 1} className="ef-carousel__nav ef-carousel__nav--next" onClick={() => goTo(index + 1)}><Icon name={direction === 'rtl' ? 'chevron-left' : 'chevron-right'} size={16} /></button>
         </React.Fragment>
       ) : null}
       {showDots ? (

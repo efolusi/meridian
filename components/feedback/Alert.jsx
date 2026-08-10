@@ -11,7 +11,7 @@ const CSS = `
 .ef-alert--danger{border-color:var(--danger-300)}
 .ef-alert__title{font-size:var(--text-md);font-weight:var(--weight-semibold);color:var(--text-primary);line-height:1.4}
 .ef-alert__desc{font-size:var(--text-sm);color:var(--text-secondary);line-height:1.5;margin-top:2px}
-.ef-alert__action{margin-left:auto;flex:none}
+.ef-alert__action{margin-inline-start:auto;flex:none}
 `;
 const ICONS = { info: 'info', success: 'circle-check', warning: 'triangle-alert', danger: 'circle-alert' };
 export function Alert({ tone = 'info', icon, title, description, action, children, style, className, ...rest }) {

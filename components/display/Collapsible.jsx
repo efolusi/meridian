@@ -2,7 +2,7 @@ import React from 'react';
 import { injectEfCss } from '../forms/Button.jsx';
 import { Icon } from '../icons/Icon.jsx';
 const CSS = `
-.ef-collapsible__trigger{display:flex;align-items:center;gap:8px;width:100%;padding:7px 0;border:none;background:none;cursor:pointer;text-align:left;font-family:var(--font-sans);font-size:var(--text-md);font-weight:600;color:var(--text-primary);border-radius:var(--radius-sm)}
+.ef-collapsible__trigger{display:flex;align-items:center;gap:8px;width:100%;padding:7px 0;border:none;background:none;cursor:pointer;text-align:start;font-family:var(--font-sans);font-size:var(--text-md);font-weight:600;color:var(--text-primary);border-radius:var(--radius-sm)}
 .ef-collapsible__trigger:focus-visible{outline:none;box-shadow:var(--focus-ring)}
 .ef-collapsible__chev{display:inline-flex;color:var(--text-muted);transition:transform var(--dur-med) var(--ease-out)}
 .ef-collapsible--open .ef-collapsible__chev{transform:rotate(90deg)}

@@ -8,8 +8,8 @@ const CSS = `
 .ef-igroup__row:focus-within{box-shadow:var(--focus-ring)}
 .ef-igroup--invalid .ef-igroup__row{border-color:var(--danger-600)}
 .ef-igroup__addon{display:flex;align-items:center;gap:6px;padding:0 11px;background:var(--surface-sunken);color:var(--text-muted);font-size:var(--text-sm);white-space:nowrap;flex:none}
-.ef-igroup__addon--lead{border-right:1px solid var(--border-default);border-radius:calc(var(--radius-sm) - 1px) 0 0 calc(var(--radius-sm) - 1px)}
-.ef-igroup__addon--trail{border-left:1px solid var(--border-default);border-radius:0 calc(var(--radius-sm) - 1px) calc(var(--radius-sm) - 1px) 0}
+.ef-igroup__addon--lead{border-inline-end:1px solid var(--border-default);border-start-start-radius:calc(var(--radius-sm) - 1px);border-end-start-radius:calc(var(--radius-sm) - 1px)}
+.ef-igroup__addon--trail{border-inline-start:1px solid var(--border-default);border-start-end-radius:calc(var(--radius-sm) - 1px);border-end-end-radius:calc(var(--radius-sm) - 1px)}
 .ef-igroup__addon--bare{background:none;border:none;padding:0 4px}
 .ef-igroup__input{flex:1;min-width:0;height:34px;padding:0 11px;border:none;background:transparent;font-family:var(--font-sans);font-size:var(--text-md);color:var(--text-primary)}
 .ef-igroup__input:focus{outline:none}

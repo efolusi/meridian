@@ -5,10 +5,10 @@ const CSS = `
 .ef-acc{display:flex;flex-direction:column}
 .ef-acc__item{border-bottom:1px solid var(--border-default)}
 .ef-acc__item:first-child{border-top:1px solid var(--border-default)}
-.ef-acc__head{display:flex;align-items:center;gap:10px;width:100%;padding:14px 2px;border:none;background:none;cursor:pointer;text-align:left;font-family:var(--font-sans);font-size:var(--text-md);font-weight:var(--weight-semibold);color:var(--text-primary)}
+.ef-acc__head{display:flex;align-items:center;gap:10px;width:100%;padding:14px 2px;border:none;background:none;cursor:pointer;text-align:start;font-family:var(--font-sans);font-size:var(--text-md);font-weight:var(--weight-semibold);color:var(--text-primary)}
 .ef-acc__head:hover{color:var(--brand-700)}
 .ef-acc__head:focus-visible{outline:none;box-shadow:var(--focus-ring);border-radius:var(--radius-sm)}
-.ef-acc__chev{margin-left:auto;color:var(--text-muted);display:inline-flex;transition:transform var(--dur-med) var(--ease-out)}
+.ef-acc__chev{margin-inline-start:auto;color:var(--text-muted);display:inline-flex;transition:transform var(--dur-med) var(--ease-out)}
 .ef-acc__item--open .ef-acc__chev{transform:rotate(180deg)}
 .ef-acc__body{display:grid;grid-template-rows:0fr;transition:grid-template-rows var(--dur-slow) var(--ease-out)}
 .ef-acc__item--open .ef-acc__body{grid-template-rows:1fr}

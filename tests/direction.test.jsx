@@ -1,5 +1,5 @@
 import React from 'react';
-import { describe, expect, it } from 'vitest';
+import { describe, expect, it, vi } from 'vitest';
 import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 
@@ -10,6 +10,7 @@ import { Calendar } from '../components/dates/Calendar.jsx';
 import { DigitEntry } from '../components/forms/DigitEntry.jsx';
 import { Resizable } from '../components/display/Resizable.jsx';
 import { PromptSteps } from '../components/ai/PromptSteps.jsx';
+import { Carousel } from '../components/display/Carousel.jsx';
 
 function DirectionValue() {
   return <output>{useDirection()}</output>;
@@ -104,5 +105,19 @@ describe('RTL horizontal keyboard behavior', () => {
     expect(screen.getByText('Second question')).toBeTruthy();
     await user.keyboard('{ArrowRight}');
     expect(screen.getByText('First question')).toBeTruthy();
+  });
+
+  it('scrolls Carousel toward negative inline offsets', async () => {
+    const user = userEvent.setup();
+    const { container } = render(
+      <DirectionProvider direction="rtl">
+        <Carousel gap={14}><div>A</div><div>B</div></Carousel>
+      </DirectionProvider>,
+    );
+    const track = container.querySelector('.ef-carousel__track');
+    track.scrollTo = vi.fn();
+    track.firstChild.getBoundingClientRect = () => ({ width: 100 });
+    await user.click(screen.getByRole('button', { name: 'Next' }));
+    expect(track.scrollTo).toHaveBeenCalledWith({ left: -114, behavior: 'smooth' });
   });
 });

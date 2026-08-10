@@ -20,7 +20,7 @@ const CSS = `
 .ef-number--sm .ef-number__el{height:calc(var(--control-h-sm) - 2px);padding:0 10px;font-size:var(--text-sm)}
 .ef-number--md .ef-number__el{height:calc(var(--control-h-md) - 2px);padding:0 12px;font-size:var(--text-md)}
 .ef-number--lg .ef-number__el{height:calc(var(--control-h-lg) - 2px);padding:0 14px;font-size:var(--text-lg)}
-.ef-number__steps{display:flex;flex-direction:column;flex:none;align-self:stretch;border-left:1px solid var(--border-default)}
+.ef-number__steps{display:flex;flex-direction:column;flex:none;align-self:stretch;border-inline-start:1px solid var(--border-default)}
 .ef-number__step{flex:1 1 0;display:flex;align-items:center;justify-content:center;width:24px;padding:0;border:none;background:transparent;color:var(--text-muted);cursor:pointer;transition:background var(--dur-fast) var(--ease-out),color var(--dur-fast) var(--ease-out)}
 .ef-number__step:hover:not(:disabled){background:var(--surface-sunken);color:var(--text-primary)}
 .ef-number__step:disabled{opacity:.45;cursor:not-allowed}

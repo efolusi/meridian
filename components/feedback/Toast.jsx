@@ -16,7 +16,7 @@ const CSS = `
 .ef-toast__action:hover{color:var(--cream-50);text-decoration:underline}
 .ef-toast .ef-iconbtn{color:var(--text-inverse-muted)}
 .ef-toast .ef-iconbtn:hover:not(:disabled){background:color-mix(in srgb,var(--text-inverse) 12%,transparent);color:var(--text-inverse)}
-.ef-toast-stack{position:fixed;bottom:24px;right:24px;display:flex;flex-direction:column;gap:10px;z-index:var(--z-toast)}
+.ef-toast-stack{position:fixed;bottom:24px;inset-inline-end:24px;display:flex;flex-direction:column;gap:10px;z-index:var(--z-toast)}
 [data-theme="dark"] .ef-toast--success .ef-toast__icon{color:var(--success-600)}
 [data-theme="dark"] .ef-toast--danger .ef-toast__icon{color:var(--danger-600)}
 [data-theme="dark"] .ef-toast--warning .ef-toast__icon{color:var(--warning-600)}

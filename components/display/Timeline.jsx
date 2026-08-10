@@ -13,7 +13,7 @@ const CSS = `
 .ef-timeline__item:last-child .ef-timeline__content{padding-bottom:0}
 .ef-timeline__head{display:flex;align-items:baseline;gap:8px;flex-wrap:wrap;min-height:24px}
 .ef-timeline__title{font-size:var(--text-md);font-weight:var(--weight-semibold);color:var(--text-primary);line-height:1.45}
-.ef-timeline__time{margin-left:auto;color:var(--text-muted);font-family:var(--font-mono);font-size:var(--text-xs);white-space:nowrap}
+.ef-timeline__time{margin-inline-start:auto;color:var(--text-muted);font-family:var(--font-mono);font-size:var(--text-xs);white-space:nowrap}
 .ef-timeline__desc{margin-top:3px;color:var(--text-secondary);font-size:var(--text-sm);line-height:1.5}
 .ef-timeline__meta{margin-top:6px;color:var(--text-muted);font-size:var(--text-xs);line-height:1.4}
 .ef-timeline__item--success .ef-timeline__marker{border-color:var(--success-300);background:var(--success-100);color:var(--success-600)}
@@ -51,4 +51,3 @@ export function Timeline({ items = [], compact = false, style, className, ...res
     </ol>
   );
 }
-

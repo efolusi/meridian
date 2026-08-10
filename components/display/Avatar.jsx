@@ -5,7 +5,7 @@ const CSS = `
 .ef-avatar img{width:100%;height:100%;object-fit:cover}
 .ef-avatar-group{display:inline-flex}
 .ef-avatar-group .ef-avatar{border:2px solid var(--surface-card)}
-.ef-avatar-group .ef-avatar+.ef-avatar{margin-left:-8px}
+.ef-avatar-group .ef-avatar+.ef-avatar{margin-inline-start:-8px}
 `;
 const TONES = [
   ['var(--peach-200)', 'var(--cocoa-700)'],
