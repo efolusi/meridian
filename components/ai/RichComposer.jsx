@@ -9,16 +9,16 @@ const CSS = `
 .ef-richcomposer__chip{display:inline-flex;align-items:center;gap:4px;margin:0 1px;padding:1px 7px;border-radius:var(--radius-sm);background:var(--accent-subtle);border:1px solid var(--accent-subtle-border);color:var(--text-primary);font-size:13px;white-space:nowrap;user-select:none}
 .ef-richcomposer__bar{display:flex;align-items:center;gap:8px;padding:8px 10px 10px}
 .ef-richcomposer__hint{font-size:12px;color:var(--text-muted)}
-.ef-richcomposer__send{margin-left:auto;display:inline-flex;align-items:center;justify-content:center;width:32px;height:32px;border:none;border-radius:var(--radius-full);background:var(--accent);color:var(--accent-contrast);cursor:pointer;transition:background var(--dur-fast) var(--ease-out),opacity var(--dur-fast) var(--ease-out)}
+.ef-richcomposer__send{margin-inline-start:auto;display:inline-flex;align-items:center;justify-content:center;width:32px;height:32px;border:none;border-radius:var(--radius-full);background:var(--accent);color:var(--accent-contrast);cursor:pointer;transition:background var(--dur-fast) var(--ease-out),opacity var(--dur-fast) var(--ease-out)}
 .ef-richcomposer__send:hover{background:var(--accent-hover)}
 .ef-richcomposer__send:disabled{opacity:.35;cursor:default}
 .ef-richcomposer__send:focus-visible{outline:none;box-shadow:var(--focus-ring)}
-.ef-richcomposer__pop{position:absolute;bottom:calc(100% + 6px);left:0;right:0;z-index:40;max-height:260px;overflow-y:auto;padding:4px;border:1px solid var(--border-default);border-radius:var(--radius-md);background:var(--surface-card);box-shadow:var(--shadow-lg)}
+.ef-richcomposer__pop{position:absolute;bottom:calc(100% + 6px);inset-inline:0;z-index:40;max-height:260px;overflow-y:auto;padding:4px;border:1px solid var(--border-default);border-radius:var(--radius-md);background:var(--surface-card);box-shadow:var(--shadow-lg)}
 .ef-richcomposer__group{padding:7px 10px 3px;font-size:11px;font-weight:var(--weight-semibold);letter-spacing:.04em;text-transform:uppercase;color:var(--text-muted)}
-.ef-richcomposer__item{display:flex;align-items:center;gap:9px;width:100%;padding:7px 10px;border:none;background:none;cursor:pointer;text-align:left;border-radius:var(--radius-sm);font-family:var(--font-sans);font-size:13.5px;color:var(--text-primary)}
+.ef-richcomposer__item{display:flex;align-items:center;gap:9px;width:100%;padding:7px 10px;border:none;background:none;cursor:pointer;text-align:start;border-radius:var(--radius-sm);font-family:var(--font-sans);font-size:13.5px;color:var(--text-primary)}
 .ef-richcomposer__item--hi{background:var(--surface-sunken)}
 .ef-richcomposer__itemicon{display:inline-flex;flex:none;color:var(--text-muted)}
-.ef-richcomposer__itemdesc{margin-left:auto;font-size:12px;color:var(--text-muted);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.ef-richcomposer__itemdesc{margin-inline-start:auto;font-size:12px;color:var(--text-muted);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .ef-richcomposer__empty{padding:8px 10px;font-size:13px;color:var(--text-muted)}
 `;
 function findTrigger(root) {

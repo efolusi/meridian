@@ -6,13 +6,13 @@ const CSS = `
 .ef-toolcall--approval{border-color:var(--accent-subtle-border);box-shadow:0 0 0 2px var(--accent-subtle)}
 .ef-toolcall--running{border-color:var(--accent-subtle-border)}
 .ef-toolcall--error{border-color:var(--danger-300,var(--danger-600))}
-.ef-toolcall__head{display:flex;align-items:center;gap:9px;width:100%;padding:9px 12px;border:none;background:none;cursor:pointer;text-align:left;font-family:var(--font-mono);font-size:12.5px;color:var(--text-primary)}
+.ef-toolcall__head{display:flex;align-items:center;gap:9px;width:100%;padding:9px 12px;border:none;background:none;cursor:pointer;text-align:start;font-family:var(--font-mono);font-size:12.5px;color:var(--text-primary)}
 .ef-toolcall__head:focus-visible{outline:none;box-shadow:var(--focus-ring)}
 .ef-toolcall--pending .ef-toolcall__head{animation:ef-toolcall-pulse 1.4s var(--ease-out) infinite}
 @keyframes ef-toolcall-pulse{0%,100%{opacity:1}50%{opacity:.55}}
 .ef-toolcall__icon{display:inline-flex;color:var(--text-muted)}
 .ef-toolcall__verb{color:var(--text-muted);font-family:var(--font-sans);font-size:12.5px}
-.ef-toolcall__state{margin-left:auto;display:inline-flex;align-items:center;gap:6px;font-family:var(--font-sans);font-size:12px;font-weight:500;flex:none}
+.ef-toolcall__state{margin-inline-start:auto;display:inline-flex;align-items:center;gap:6px;font-family:var(--font-sans);font-size:12px;font-weight:500;flex:none}
 .ef-toolcall__state--pending{color:var(--text-muted)}
 .ef-toolcall__state--approval{color:var(--brand-700)}
 .ef-toolcall__state--running{color:var(--text-secondary)}

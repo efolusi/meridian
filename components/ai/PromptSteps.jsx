@@ -1,24 +1,26 @@
 import React from 'react';
 import { injectEfCss } from '../forms/Button.jsx';
 import { Icon } from '../icons/Icon.jsx';
+import { useDirection } from '../display/Direction.jsx';
 const CSS = `
 .ef-promptsteps{border:1px solid var(--border-default);border-radius:var(--radius-md);background:var(--surface-card);padding:5px;font-family:var(--font-sans)}
 .ef-promptsteps:focus{outline:none}
 .ef-promptsteps:focus-visible{box-shadow:var(--focus-ring)}
 .ef-promptsteps__q{padding:8px 11px 6px;font-size:13.5px;font-weight:var(--weight-semibold);color:var(--text-primary)}
-.ef-promptsteps__opt{display:flex;align-items:center;gap:11px;width:100%;padding:8px 11px;border:none;background:none;cursor:pointer;text-align:left;border-radius:var(--radius-sm);font-family:var(--font-sans);font-size:13.5px;color:var(--text-secondary)}
+.ef-promptsteps__opt{display:flex;align-items:center;gap:11px;width:100%;padding:8px 11px;border:none;background:none;cursor:pointer;text-align:start;border-radius:var(--radius-sm);font-family:var(--font-sans);font-size:13.5px;color:var(--text-secondary)}
 .ef-promptsteps__opt--hi{background:var(--surface-sunken);color:var(--text-primary)}
 .ef-promptsteps__num{flex:none;width:14px;font-variant-numeric:tabular-nums;color:var(--text-muted);font-size:12.5px}
 .ef-promptsteps__other{flex:1;min-width:0;border:none;background:none;outline:none;font-family:var(--font-sans);font-size:13.5px;color:var(--text-primary);padding:0}
 .ef-promptsteps__other::placeholder{color:var(--text-muted)}
 .ef-promptsteps__foot{display:flex;align-items:center;gap:12px;padding:8px 11px 5px;font-size:12px;color:var(--text-muted)}
-.ef-promptsteps__back{display:inline-flex;align-items:center;gap:4px;border:none;background:none;cursor:pointer;padding:2px 6px;margin-left:-6px;border-radius:var(--radius-sm);font-family:var(--font-sans);font-size:12px;color:var(--text-muted)}
+.ef-promptsteps__back{display:inline-flex;align-items:center;gap:4px;border:none;background:none;cursor:pointer;padding:2px 6px;margin-inline-start:-6px;border-radius:var(--radius-sm);font-family:var(--font-sans);font-size:12px;color:var(--text-muted)}
 .ef-promptsteps__back:hover{color:var(--text-primary)}
-.ef-promptsteps__kbd{margin-left:auto;display:inline-flex;align-items:center;gap:5px}
+.ef-promptsteps__kbd{margin-inline-start:auto;display:inline-flex;align-items:center;gap:5px}
 .ef-promptsteps__kbd kbd{padding:1px 6px;border:1px solid var(--border-default);border-radius:var(--radius-sm);background:var(--surface-subtle);font-family:var(--font-sans);font-size:11px;color:var(--text-secondary)}
 `;
 export function PromptSteps({ steps = [], defaultValues = {}, onAnswer, onComplete, onDismiss, style, className, ...rest }) {
   injectEfCss('ef-css-promptsteps', CSS);
+  const direction = useDirection();
   const [idx, setIdx] = React.useState(0);
   const [hi, setHi] = React.useState(0);
   const [other, setOther] = React.useState('');
@@ -51,7 +53,7 @@ export function PromptSteps({ steps = [], defaultValues = {}, onAnswer, onComple
     else if (e.key === 'ArrowUp') { e.preventDefault(); setHi(Math.max(0, hi - 1)); }
     else if (e.key === 'Enter') { e.preventDefault(); submit(); }
     else if (e.key === 'Escape') { e.preventDefault(); reset(); if (onDismiss) onDismiss(); }
-    else if ((e.key === 'ArrowLeft' && !inOther) || (e.key === 'Tab' && e.shiftKey)) { e.preventDefault(); back(); }
+    else if ((e.key === (direction === 'rtl' ? 'ArrowRight' : 'ArrowLeft') && !inOther) || (e.key === 'Tab' && e.shiftKey)) { e.preventDefault(); back(); }
     else if (!inOther && /^[1-9]$/.test(e.key)) { const n = +e.key - 1; if (n < opts.length) { e.preventDefault(); setHi(n); } }
   };
   if (!step) return null;
@@ -70,7 +72,7 @@ export function PromptSteps({ steps = [], defaultValues = {}, onAnswer, onComple
         </button>
       ))}
       <div className="ef-promptsteps__foot">
-        {idx > 0 ? <button type="button" className="ef-promptsteps__back" onClick={back}><Icon name="chevron-left" size={12} />Back</button> : null}
+        {idx > 0 ? <button type="button" className="ef-promptsteps__back" onClick={back}><Icon name={direction === 'rtl' ? 'chevron-right' : 'chevron-left'} size={12} />Back</button> : null}
         <span>{idx + 1} of {steps.length}</span>
         <span className="ef-promptsteps__kbd">select <kbd>↑↓</kbd> or <kbd>1–9</kbd> · confirm <kbd>↵</kbd></span>
       </div>

@@ -15,7 +15,7 @@ const CSS = `
 .ef-doccard__content{padding:0 16px 14px;font-size:14px;line-height:1.7;color:var(--text-secondary)}
 .ef-doccard__content h1,.ef-doccard__content h2,.ef-doccard__content h3{color:var(--text-primary);font-family:var(--font-display,var(--font-sans));margin:.2em 0 .4em}
 .ef-doccard__content p{margin:0 0 .8em}
-.ef-doccard__fade{position:absolute;left:0;right:0;bottom:0;height:72px;background:linear-gradient(to top,var(--surface-card),transparent);pointer-events:none;transition:opacity var(--dur-med) var(--ease-out)}
+.ef-doccard__fade{position:absolute;inset-inline:0;bottom:0;height:72px;background:linear-gradient(to top,var(--surface-card),transparent);pointer-events:none;transition:opacity var(--dur-med) var(--ease-out)}
 .ef-doccard--open .ef-doccard__fade{opacity:0}
 `;
 export function DocumentCard({ title, meta, icon = 'file-text', collapsedHeight = 200, defaultOpen = false, onCopy, actions, children, style, className, ...rest }) {

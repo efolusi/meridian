@@ -8,7 +8,7 @@ const CSS = `
 .ef-composer__input{border:none;background:none;resize:none;padding:14px 16px 6px;font-family:var(--font-sans);font-size:var(--text-md);line-height:1.5;color:var(--text-primary);outline:none;min-height:24px}
 .ef-composer__input::placeholder{color:var(--text-muted)}
 .ef-composer__bar{display:flex;align-items:center;gap:2px;padding:6px 8px 8px}
-.ef-composer__send{display:inline-flex;align-items:center;justify-content:center;width:32px;height:32px;margin-left:auto;border:none;border-radius:var(--radius-md);background:var(--accent);color:var(--accent-contrast);cursor:pointer;transition:background var(--dur-fast) var(--ease-out),transform var(--dur-fast) var(--ease-out)}
+.ef-composer__send{display:inline-flex;align-items:center;justify-content:center;width:32px;height:32px;margin-inline-start:auto;border:none;border-radius:var(--radius-md);background:var(--accent);color:var(--accent-contrast);cursor:pointer;transition:background var(--dur-fast) var(--ease-out),transform var(--dur-fast) var(--ease-out)}
 .ef-composer__send:hover:not(:disabled){background:var(--accent-hover)}
 .ef-composer__send:active:not(:disabled){transform:scale(.95)}
 .ef-composer__send:disabled{background:var(--sand-200);color:var(--sand-400);cursor:not-allowed}

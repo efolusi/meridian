@@ -5,7 +5,7 @@ const CSS = `
 .ef-sandbox{border:1px solid var(--border-default);border-radius:var(--radius-md);background:var(--surface-card);overflow:hidden;font-family:var(--font-sans);transition:border-color var(--dur-fast) var(--ease-out),box-shadow var(--dur-fast) var(--ease-out)}
 .ef-sandbox--running{border-color:var(--accent-subtle-border);box-shadow:0 0 0 3px var(--accent-subtle)}
 .ef-sandbox--error{border-color:var(--danger-300);box-shadow:0 0 0 3px var(--danger-100)}
-.ef-sandbox__head{display:flex;align-items:center;gap:9px;width:100%;padding:10px 14px;border:none;background:none;cursor:pointer;text-align:left;font-family:inherit}
+.ef-sandbox__head{display:flex;align-items:center;gap:9px;width:100%;padding:10px 14px;border:none;background:none;cursor:pointer;text-align:start;font-family:inherit}
 .ef-sandbox__head:focus-visible{outline:none;box-shadow:var(--focus-ring)}
 .ef-sandbox__chev{display:inline-flex;color:var(--text-muted);transition:transform var(--dur-med) var(--ease-out)}
 .ef-sandbox--open .ef-sandbox__chev{transform:rotate(90deg)}

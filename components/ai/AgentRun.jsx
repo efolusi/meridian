@@ -17,7 +17,7 @@ const CSS = `
 .ef-agentrun__step:last-child .ef-agentrun__content{padding-bottom:2px}
 .ef-agentrun__title{display:flex;align-items:baseline;gap:8px;font-size:var(--text-sm);font-weight:600;color:var(--text-primary)}
 .ef-agentrun__step--pending .ef-agentrun__title{color:var(--text-muted);font-weight:500}
-.ef-agentrun__time{margin-left:auto;font-family:var(--font-mono);font-size:11px;color:var(--text-muted);flex:none}
+.ef-agentrun__time{margin-inline-start:auto;font-family:var(--font-mono);font-size:11px;color:var(--text-muted);flex:none}
 .ef-agentrun__detail{font-size:13px;line-height:1.55;color:var(--text-secondary);margin-top:3px}
 .ef-agentrun__toggle{display:inline-flex;align-items:center;gap:5px;border:none;background:none;padding:0;cursor:pointer;font-family:var(--font-sans);font-size:12px;font-weight:500;color:var(--text-muted);margin-top:4px}
 .ef-agentrun__toggle:hover{color:var(--text-primary)}

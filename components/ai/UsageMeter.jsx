@@ -4,13 +4,13 @@ const CSS = `
 .ef-usage{display:flex;flex-direction:column;gap:7px}
 .ef-usage__row{display:flex;align-items:baseline;gap:8px}
 .ef-usage__label{font-size:var(--text-sm);font-weight:600;color:var(--text-primary)}
-.ef-usage__figures{margin-left:auto;font-family:var(--font-mono);font-size:12px;color:var(--text-muted)}
+.ef-usage__figures{margin-inline-start:auto;font-family:var(--font-mono);font-size:12px;color:var(--text-muted)}
 .ef-usage__track{height:6px;border-radius:var(--radius-full);background:var(--surface-sunken);overflow:hidden}
 .ef-usage__fill{height:100%;border-radius:var(--radius-full);background:var(--accent);transition:width var(--dur-med) var(--ease-out)}
 .ef-usage--warn .ef-usage__fill{background:var(--warning-600)}
 .ef-usage--over .ef-usage__fill{background:var(--danger-600)}
 .ef-usage__foot{display:flex;gap:8px;font-size:12px;color:var(--text-muted)}
-.ef-usage__cost{margin-left:auto;font-family:var(--font-mono)}
+.ef-usage__cost{margin-inline-start:auto;font-family:var(--font-mono)}
 `;
 export function UsageMeter({ used = 0, limit = 100, label = 'Usage', unit = '', cost, hint, warnAt = 0.8, animated, format, style, className, ...rest }) {
   injectEfCss('ef-css-usage', CSS);

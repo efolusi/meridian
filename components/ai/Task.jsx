@@ -9,7 +9,7 @@ const CSS = `
 .ef-task__label{color:var(--text-primary)}
 .ef-task__detail{color:var(--text-muted)}
 .ef-task__detail code{font-family:var(--font-mono);font-size:12px;background:var(--surface-sunken);border-radius:4px;padding:1px 5px;color:var(--text-secondary)}
-.ef-task__rail{width:1px;height:13px;margin-left:16px;background:var(--border-default);flex:none}
+.ef-task__rail{width:1px;height:13px;margin-inline-start:16px;background:var(--border-default);flex:none}
 .ef-task--streaming .ef-task__row:last-of-type{animation:ef-task-pulse 1.2s var(--ease-out) infinite}
 @keyframes ef-task-pulse{0%,100%{opacity:1}50%{opacity:.45}}
 `;

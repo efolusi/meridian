@@ -3,7 +3,7 @@ import { injectEfCss } from '../forms/Button.jsx';
 import { Icon } from '../icons/Icon.jsx';
 const CSS = `
 .ef-todo{border:1px solid var(--border-default);border-radius:var(--radius-md);background:var(--surface-card);font-family:var(--font-sans)}
-.ef-todo__head{display:flex;align-items:center;gap:9px;width:100%;padding:10px 14px;border:none;background:none;cursor:pointer;text-align:left;font-family:inherit}
+.ef-todo__head{display:flex;align-items:center;gap:9px;width:100%;padding:10px 14px;border:none;background:none;cursor:pointer;text-align:start;font-family:inherit}
 .ef-todo__head:focus-visible{outline:none;box-shadow:var(--focus-ring);border-radius:var(--radius-md)}
 .ef-todo__glyph{display:inline-flex;color:var(--text-muted)}
 .ef-todo__title{flex:1;min-width:0;font-size:13.5px;font-weight:var(--weight-semibold);color:var(--text-primary)}

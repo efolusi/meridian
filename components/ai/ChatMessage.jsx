@@ -15,7 +15,7 @@ const CSS = `
 .ef-msg__actions{display:flex;gap:2px;margin-top:6px;opacity:0;transition:opacity var(--dur-fast) var(--ease-out)}
 .ef-msg:hover .ef-msg__actions{opacity:1}
 @keyframes ef-caret{0%,100%{opacity:1}50%{opacity:0}}
-.ef-msg__caret{display:inline-block;width:7px;height:15px;background:var(--accent);margin-left:3px;vertical-align:-2px;animation:ef-caret 1s steps(1) infinite}
+.ef-msg__caret{display:inline-block;width:7px;height:15px;background:var(--accent);margin-inline-start:3px;vertical-align:-2px;animation:ef-caret 1s steps(1) infinite}
 `;
 export function ChatMessage({ role = 'assistant', name, time, streaming, actions, onCopy, onRetry, children, style, className, ...rest }) {
   injectEfCss('ef-css-msg', CSS);

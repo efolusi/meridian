@@ -9,6 +9,7 @@ import { Menubar } from '../components/navigation/Menubar.jsx';
 import { Calendar } from '../components/dates/Calendar.jsx';
 import { DigitEntry } from '../components/forms/DigitEntry.jsx';
 import { Resizable } from '../components/display/Resizable.jsx';
+import { PromptSteps } from '../components/ai/PromptSteps.jsx';
 
 function DirectionValue() {
   return <output>{useDirection()}</output>;
@@ -87,5 +88,21 @@ describe('RTL horizontal keyboard behavior', () => {
     handle.focus();
     await user.keyboard('{ArrowLeft}');
     expect(container.querySelector('.ef-resizable__pane').style.flexBasis).toBe('52%');
+  });
+
+  it('uses ArrowRight to go back through PromptSteps', async () => {
+    const user = userEvent.setup();
+    render(
+      <DirectionProvider direction="rtl">
+        <PromptSteps steps={[
+          { name: 'first', question: 'First question', options: ['A'] },
+          { name: 'second', question: 'Second question', options: ['B'] },
+        ]} />
+      </DirectionProvider>,
+    );
+    await user.click(screen.getByRole('button', { name: /1\.\s*A/ }));
+    expect(screen.getByText('Second question')).toBeTruthy();
+    await user.keyboard('{ArrowRight}');
+    expect(screen.getByText('First question')).toBeTruthy();
   });
 });
