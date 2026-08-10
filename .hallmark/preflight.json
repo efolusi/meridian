@@ -1,0 +1,10 @@
+{
+  "date": "2026-08-10",
+  "fontStack": "Bricolage Grotesque + Figtree + JetBrains Mono",
+  "palette": "Meridian semantic CSS custom properties",
+  "motion": "motion-cut; CSS transitions only",
+  "spacing": "4px base scale in tokens/spacing.css",
+  "framework": "vanilla HTML + x-dc runtime + React UMD bundle",
+  "preserve": ["font stack", "palette", "spacing scale", "runtime conventions"]
+}
+

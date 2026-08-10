@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<!-- @template name="AI evaluations" description="AI workspace evaluation suites and review results" -->
+<helmet><script src="./ds-base.js"></script><style>
+/* Hallmark · pre-emit critique: P5 H4 E4 S5 R5 V5 */
+/* Hallmark · macrostructure: Narrative Workflow · tone: technical · anchor hue: Meridian caramel */
+html,body{overflow-x:clip}html{background:var(--surface-page)}
+.ai-shell{min-height:100dvh;background:var(--surface-page);color:var(--text-primary);font-family:var(--font-sans)}
+.ai-top{display:flex;align-items:center;gap:10px;min-height:60px;padding:8px 16px;border-bottom:1px solid var(--border-default);background:var(--surface-card)}
+.ai-brand{display:flex;align-items:center;gap:9px;min-width:0}.ai-brand img{width:28px;height:28px}.ai-brand strong{font-family:var(--font-display);font-size:17px;white-space:nowrap}
+.ai-nav{display:none}.ai-actions{margin-inline-start:auto;display:flex;gap:8px}
+.ai-main{display:grid;gap:16px;padding:16px;max-width:1440px;margin-inline:auto}
+.ai-queue,.ai-sources,.ai-canvas{min-width:0;background:var(--surface-card);border:1px solid var(--border-default);border-radius:var(--radius-md)}
+.ai-head{padding:14px 16px;border-bottom:1px solid var(--border-default)}.ai-head h1,.ai-head h2{overflow-wrap:anywhere;min-width:0}.ai-head h1{font-size:20px}.ai-head h2{font-size:15px}.ai-head p{margin-top:3px;color:var(--text-muted);font-size:12px}
+.ai-list{display:grid}.ai-run{display:block;padding:13px 16px;border-bottom:1px solid var(--border-default);color:var(--text-primary);text-decoration:none}.ai-run:last-child{border-bottom:0}.ai-run[aria-current="true"]{background:var(--accent-subtle)}.ai-run strong,.ai-run span{display:block}.ai-run strong{font-size:13px}.ai-run span{margin-top:3px;color:var(--text-muted);font-size:12px}
+.ai-thread{padding:16px;display:grid;gap:14px}.ai-message{max-width:72ch;padding:14px 16px;border-radius:var(--radius-md);background:var(--surface-sunken);line-height:1.6}.ai-message[data-role="assistant"]{margin-inline-start:auto;background:var(--surface-brand);color:var(--text-on-brand)}.ai-message small{display:block;margin-bottom:6px;font-size:11px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:inherit;opacity:.7}
+.ai-review{display:flex;align-items:center;gap:10px;flex-wrap:wrap;padding:14px 16px;border-top:1px solid var(--border-default)}
+.ai-source{padding:13px 16px;border-bottom:1px solid var(--border-default)}.ai-source:last-child{border-bottom:0}.ai-source strong{display:block;font-size:13px}.ai-source span{display:block;margin-top:4px;color:var(--text-muted);font-size:12px}
+a:focus-visible{outline:none;box-shadow:var(--focus-ring)}
+@media (hover:hover) and (pointer:fine){.ai-run:hover{background:var(--surface-sunken);text-decoration:none}}
+@media (min-width:40rem){.ai-nav{display:flex;gap:2px;margin-inline-start:12px}.ai-nav a{padding:7px 10px;border-radius:var(--radius-sm);color:var(--text-secondary);font-size:13px;font-weight:600;text-decoration:none;white-space:nowrap}.ai-nav a[aria-current="page"]{background:var(--accent-subtle);color:var(--text-link)}.ai-main{grid-template-columns:minmax(180px,240px) minmax(0,1fr)}.ai-sources{grid-column:2}}
+@media (min-width:64rem){.ai-main{grid-template-columns:minmax(200px,240px) minmax(0,1fr) minmax(220px,280px)}.ai-sources{grid-column:auto}}
+@media (pointer:coarse){.ai-nav a,.ai-run{min-height:44px}}
+@media (prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition-duration:.01ms!important}}
+</style></helmet>
+<div class="ai-shell" data-theme="{{ theme }}">
+<header class="ai-top">
+  <div class="ai-brand"><img src="../../assets/logo.png" alt=""><strong>Meridian AI</strong></div>
+  <nav class="ai-nav" aria-label="Workspace"><a href="./Workspace.dc.html">Workbench</a><a href="./Knowledge.dc.html">Knowledge</a><a href="./Evaluations.dc.html" aria-current="page">Evaluations</a></nav>
+  <div class="ai-actions"><x-import component-from-global-scope="EfolusiDesignSystem_4ffc3d.Button" variant="secondary" size="sm" icon-left="search" hint-size="90px,36px">Search</x-import><x-import component-from-global-scope="EfolusiDesignSystem_4ffc3d.Button" size="sm" icon-left="plus" hint-size="108px,36px">New run</x-import></div>
+</header>
+<main class="ai-main">
+  <aside class="ai-queue" aria-label="Evaluation suites"><div class="ai-head"><h2>Suites</h2><p>Sample cases · no claimed metrics</p></div><div class="ai-list">
+    <a class="ai-run" aria-current="true" href="#active"><strong>Policy grounding</strong><span>24 cases · review open</span></a>
+    <a class="ai-run" href="#"><strong>Escalation routing</strong><span>16 cases · draft</span></a>
+    <a class="ai-run" href="#"><strong>Tone and clarity</strong><span>12 cases · review open</span></a>
+  </div></aside>
+  <section class="ai-canvas" id="active"><div class="ai-head"><h1>Policy grounding</h1><p>Review the workflow before publishing a score</p></div><div class="ai-thread">
+    <div class="ai-message"><small>1.0 Prepare</small>Choose a fixed dataset and lock the source revision.</div>
+    <div class="ai-message"><small>2.0 Run</small>Execute the candidate model with recorded parameters.</div>
+    <div class="ai-message"><small>3.0 Review</small>Inspect failures and approve the result with a named reviewer.</div>
+  </div><div class="ai-review"><x-import component-from-global-scope="EfolusiDesignSystem_4ffc3d.Button" variant="secondary" icon-left="file-text" hint-size="132px,36px">View cases</x-import><x-import component-from-global-scope="EfolusiDesignSystem_4ffc3d.Button" icon-left="play" hint-size="118px,36px">Run suite</x-import></div></section>
+  <aside class="ai-sources"><div class="ai-head"><h2>Latest sample run</h2><p>Values intentionally unset</p></div><div class="ai-source"><strong>Grounded answers</strong><span>— · metric to confirm</span></div><div class="ai-source"><strong>Reviewer agreement</strong><span>— · metric to confirm</span></div></aside>
+</main>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:1280,&quot;height&quot;:800},&quot;theme&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;light&quot;,&quot;dark&quot;],&quot;default&quot;:&quot;light&quot;,&quot;tsType&quot;:&quot;'light'|'dark'&quot;}}">
+class Component extends DCLogic { renderVals(){ return { theme:this.props.theme ?? 'light' }; } }
+</script>
+</body>
+</html>
