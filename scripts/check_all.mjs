@@ -49,6 +49,7 @@ const GENERATORS = [
  * script did exactly that and passed on a tree it should have rejected.
  */
 const GENERATED_PATHS = [
+  'registry.json',
   'site/registry',
   'site/registry.json',
   'site/interfaces.json',
@@ -63,6 +64,7 @@ const GATES = [
   ['Runtime copies', 'python3', ['scripts/check_runtime_copies.py']],
   ['Relative paths resolve', 'python3', ['scripts/check_paths.py']],
   ['Manifest inventories', 'python3', ['scripts/sync_manifest.py', '--check']],
+  ['Public facts match inventories', 'python3', ['scripts/check_public_facts.py']],
   ['No dead interactive controls', 'python3', ['scripts/check_dead_controls.py']],
   ['No new raw colour literals', 'python3', ['scripts/check_token_adherence.py']],
   ['Bundle source hashes', 'python3', ['scripts/check_bundle_hashes.py']],
