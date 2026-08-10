@@ -1,4 +1,4 @@
-Renders one of the 116 glyphs shipped in `assets/icons/` (113 curated Lucide icons plus the `linkedin`, `x-brand` and `github-brand` marks), inheriting `currentColor`. Naming rule: when a Lucide name is taken, the filled brand mark gets a `-brand` suffix — `x` is the close mark and `github` the outline, so the logos are `x-brand` and `github-brand`.
+Renders one of the 117 glyphs shipped in `assets/icons/` (114 curated Lucide icons plus the `linkedin`, `x-brand` and `github-brand` marks), inheriting `currentColor`. Naming rule: when a Lucide name is taken, the filled brand mark gets a `-brand` suffix — `x` is the close mark and `github` the outline, so the logos are `x-brand` and `github-brand`.
 
 ```jsx
 <Icon name="arrow-right" />

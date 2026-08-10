@@ -3,6 +3,8 @@
 // machine-readable signal (html[data-smoke]), and fails if any demo threw.
 // Requires a static server on BASE and Playwright's chromium.
 //   BASE=http://localhost:8000 node scripts/smoke_headless.mjs
+// Set EXECUTABLE_PATH to use an installed Chrome/Chromium binary locally;
+// CI omits it and continues to use Playwright's pinned browser.
 //
 // With SHOTS=<dir> it additionally captures one PNG per example group per theme
 // (g-<file>-<light|dark>.png) after the render settles. Those are the inputs to
@@ -15,16 +17,25 @@ import path from 'node:path';
 
 const BASE = process.env.BASE || 'http://localhost:8000';
 const SHOTS = process.env.SHOTS || '';
+const EXECUTABLE_PATH = process.env.EXECUTABLE_PATH || '';
 const URL = `${BASE}/site/_smoke.html`;
 
-const browser = await chromium.launch();
+const browser = await chromium.launch(EXECUTABLE_PATH ? { executablePath: EXECUTABLE_PATH } : {});
 const page = await browser.newPage({
   viewport: { width: 1280, height: 900 },
   deviceScaleFactor: 1,
   reducedMotion: 'reduce',
 });
 const consoleErrors = [];
-page.on('console', m => { if (m.type() === 'error') consoleErrors.push(m.text()); });
+page.on('console', m => {
+  if (m.type() === 'error') {
+    const location = m.location().url ? ` (${m.location().url}:${m.location().lineNumber + 1})` : '';
+    consoleErrors.push(m.text() + location);
+  }
+});
+page.on('response', response => {
+  if (response.status() >= 400) consoleErrors.push(`HTTP ${response.status()} ${response.url()}`);
+});
 
 await page.goto(URL, { waitUntil: 'load', timeout: 60000 });
 // Demos compile via in-browser Babel; wait for the smoke signal to settle.
