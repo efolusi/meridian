@@ -9,6 +9,7 @@ Primary references:
 
 - [shadcn/ui introduction](https://ui.shadcn.com/docs)
 - [official component catalogue](https://ui.shadcn.com/docs/components)
+- [React Aria base announcement](https://ui.shadcn.com/docs/changelog)
 - [registry overview](https://ui.shadcn.com/docs/registry/getting-started)
 - [GitHub registries](https://ui.shadcn.com/docs/registry/github)
 - [CLI](https://ui.shadcn.com/docs/cli)
@@ -88,7 +89,6 @@ Status meanings:
 | Pagination | Pagination, PageControl | Direct | Page-number and compact previous/next variants. |
 | Popover | Popover | Direct | Anchored non-modal content. |
 | Progress | Progress | Direct | Determinate progress. |
-| Questionnaire | PromptSteps | Renamed | Multi-step questions, progress, shortcuts and answer callbacks. |
 | Radio Group | Radio | Renamed | Native radio-group behavior. |
 | Resizable | Resizable | Direct | Pointer and keyboard split panes. |
 | Scroll Area | ScrollArea | Direct | Bounded overflow region. |
@@ -98,6 +98,7 @@ Status meanings:
 | Sidebar | SideNav | Renamed | Application side navigation. |
 | Skeleton | Skeleton | Direct | Loading placeholder. |
 | Slider | Slider | Direct | Native range control. |
+| Sonner | Toast, Toaster | Renamed | Meridian's queue and viewport own the same application-toast responsibility. |
 | Spinner | Spinner, Loader | Direct | Inline and labelled loading indicators. |
 | Switch | Switch | Direct | Binary switch semantics. |
 | Table | Table | Direct | Semantic table foundation. |
@@ -119,6 +120,7 @@ Status meanings:
 | Zero-build use | Not a primary distribution mode. | React 18 UMD bundle + CSS remains first-class. | Meridian advantage. |
 | npm | Registry dependencies are installed into an app. | `@efolusi/meridian`, tokens and icons packages ship in lockstep. | Different but complete paths. |
 | Framework reach | Official setup guides and starters across several React frameworks. | React source works broadly; guides exist, maintained example repositories do not. | Open gap. |
+| Primitive bases | Radix, Base UI and React Aria variants behind a shared shadcn API. | Browser-native React components with no interchangeable primitive layer. | Intentional architecture difference; Meridian favors one inspectable implementation. |
 | Blocks | Large catalogue with many variants per use case. | Nine curated blocks and nine professional starter journeys. | Open breadth gap; add only evidence-backed use cases. |
 | Ecosystem | Public directory contains many third-party registries. | First-party registry and MCP/agent surfaces; no community directory. | Open ecosystem gap, not a component defect. |
 | AI surfaces | New conversational primitives in the core catalogue. | Dedicated AI group covers messages, conversation scrolling, prompts, tools, reasoning, citations and agent runs. | Meridian is broader. |
