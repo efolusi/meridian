@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"><script src="./support.js"></script></head>
+<body><x-dc>
+<!-- @template name="Finance reconciliation" description="Numbered reconciliation workflow with ownership and evidence" -->
+<helmet><script src="./ds-base.js"></script><style>
+/* Hallmark · pre-emit critique: P5 H5 E4 S5 R5 V5 */
+/* Hallmark · macrostructure: Narrative Workflow · tone: austere · anchor hue: Meridian caramel */
+html,body{overflow-x:clip}html{background:var(--surface-page)}
+.fin-shell{min-height:100dvh;background:var(--surface-page);color:var(--text-primary);font-family:var(--font-sans)}
+.fin-top{display:flex;align-items:center;gap:10px;min-height:60px;padding:8px 16px;border-bottom:1px solid var(--border-default);background:var(--surface-card)}
+.fin-brand{display:flex;align-items:center;gap:9px;min-width:0}.fin-brand img{width:28px;height:28px}.fin-brand strong{font-family:var(--font-display);font-size:17px;white-space:nowrap}.fin-nav{display:none}.fin-actions{display:flex;gap:8px;margin-inline-start:auto}
+.fin-main{max-width:1320px;margin-inline:auto;padding:16px}.fin-heading{display:flex;align-items:flex-start;gap:12px;flex-wrap:wrap}.fin-heading h1{font-size:clamp(1.5rem,3vw,2.125rem);overflow-wrap:anywhere;min-width:0}.fin-heading p{margin-top:5px;color:var(--text-secondary);max-width:62ch}.fin-heading>div:last-child{margin-inline-start:auto}
+.fin-map{display:grid;gap:12px;margin-top:22px}.fin-lane{display:grid;gap:10px;align-content:start;padding:14px;background:var(--surface-sunken);border:1px solid var(--border-default);border-radius:var(--radius-md)}.fin-lane h2{font-size:12px;letter-spacing:.05em;text-transform:uppercase;color:var(--text-muted)}
+.fin-node{position:relative;padding:14px;background:var(--surface-card);border:1px solid var(--border-default);border-radius:var(--radius-md);box-shadow:var(--shadow-xs)}.fin-node strong{display:block;font-size:14px}.fin-node p{margin-top:5px;color:var(--text-secondary);font-size:12px;line-height:1.45}.fin-node small{display:block;margin-top:10px;color:var(--text-muted);font-family:var(--font-mono);font-size:11px}.fin-node[data-state="review"]{border-color:var(--warning-300)}
+.fin-legend{display:flex;gap:14px;flex-wrap:wrap;margin-top:14px;color:var(--text-muted);font-size:12px}.fin-legend span{display:flex;align-items:center;gap:6px}.fin-dot{width:8px;height:8px;border-radius:var(--radius-full);background:var(--success-600)}.fin-dot[data-tone="review"]{background:var(--warning-600)}
+a:focus-visible{outline:none;box-shadow:var(--focus-ring)}
+@media (hover:hover) and (pointer:fine){.fin-node:hover{transform:translateY(-1px);border-color:var(--border-strong)}}
+@media (min-width:40rem){.fin-nav{display:flex;gap:2px;margin-inline-start:12px}.fin-nav a{padding:7px 10px;border-radius:var(--radius-sm);color:var(--text-secondary);font-size:13px;font-weight:600;text-decoration:none;white-space:nowrap}.fin-nav a[aria-current="page"]{background:var(--accent-subtle);color:var(--text-link)}.fin-map{grid-template-columns:repeat(3,minmax(0,1fr));align-items:start}}
+@media (min-width:64rem){.fin-main{padding:24px}.fin-map{gap:20px}.fin-lane{padding:18px}}
+@media (pointer:coarse){.fin-nav a,.fin-node{min-height:44px}}
+@media (prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition-duration:.01ms!important}}
+</style></helmet>
+<div class="fin-shell" data-theme="{{ theme }}" data-density="{{ density }}">
+<header class="fin-top"><div class="fin-brand"><img src="../../assets/logo.png" alt=""><strong>Ledgerroom</strong></div><nav class="fin-nav" aria-label="Finance operations"><a href="./Cashflow.dc.html">Cash flow</a><a href="./Transactions.dc.html">Transactions</a><a href="./Reconciliation.dc.html" aria-current="page">Reconcile</a></nav><div class="fin-actions"><x-import component-from-global-scope="EfolusiDesignSystem_4ffc3d.Button" variant="secondary" size="sm" icon-left="file-text" hint-size="112px,36px">Evidence</x-import><x-import component-from-global-scope="EfolusiDesignSystem_4ffc3d.Button" size="sm" icon-left="play" hint-size="118px,36px">Start close</x-import></div></header>
+<main class="fin-main"><div class="fin-heading"><div><h1>Close with an evidence trail</h1><p>Move through the sample reconciliation in order; each stage names its owner and exit condition.</p></div><div><x-import component-from-global-scope="EfolusiDesignSystem_4ffc3d.Badge" tone="neutral" hint-size="104px,24px">Sample data</x-import></div></div>
+<div class="fin-map" aria-label="Sample reconciliation workflow">
+  <section class="fin-lane"><h2>1.0 Import</h2><article class="fin-node"><strong>Lock source periods</strong><p>Capture bank, processor, and ledger revisions.</p><small>Owner: Finance systems</small></article><article class="fin-node"><strong>Validate completeness</strong><p>Confirm every expected file arrived.</p><small>Exit: sources signed</small></article></section>
+  <section class="fin-lane"><h2>2.0 Match</h2><article class="fin-node"><strong>Run matching rules</strong><p>Apply approved references and tolerances.</p><small>Owner: Accounting</small></article><article class="fin-node" data-state="review"><strong>Resolve exceptions</strong><p>Assign unmatched lines with supporting evidence.</p><small>Exit: review queue empty</small></article></section>
+  <section class="fin-lane"><h2>3.0 Approve</h2><article class="fin-node"><strong>Review adjustments</strong><p>A second person reviews manual entries.</p><small>Owner: Controller</small></article><article class="fin-node"><strong>Seal the period</strong><p>Publish the signed summary and evidence index.</p><small>Exit: named approval</small></article></section>
+</div><div class="fin-legend"><span><i class="fin-dot"></i>Ready or complete</span><span><i class="fin-dot" data-tone="review"></i>Review gate</span></div></main>
+</div></x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:1280,&quot;height&quot;:800},&quot;theme&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;light&quot;,&quot;dark&quot;],&quot;default&quot;:&quot;light&quot;,&quot;tsType&quot;:&quot;'light'|'dark'&quot;},&quot;density&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;comfortable&quot;,&quot;compact&quot;],&quot;default&quot;:&quot;comfortable&quot;,&quot;tsType&quot;:&quot;'comfortable'|'compact'&quot;}}">
+class Component extends DCLogic { renderVals(){ return { theme:this.props.theme ?? 'light',density:this.props.density ?? 'comfortable' }; } }
+</script></body></html>

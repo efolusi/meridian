@@ -1,6 +1,27 @@
 [
   {
     "date": "2026-08-10",
+    "macrostructure": "Narrative Workflow",
+    "theme": "Meridian",
+    "enrichment": "none",
+    "brief": "Finance reconciliation starter"
+  },
+  {
+    "date": "2026-08-10",
+    "macrostructure": "Index First",
+    "theme": "Meridian",
+    "enrichment": "none",
+    "brief": "Finance transaction index starter"
+  },
+  {
+    "date": "2026-08-10",
+    "macrostructure": "Map / Diagram",
+    "theme": "Meridian",
+    "enrichment": "none",
+    "brief": "Finance cash-flow map starter"
+  },
+  {
+    "date": "2026-08-10",
     "macrostructure": "Split Studio",
     "theme": "Meridian",
     "enrichment": "none",
