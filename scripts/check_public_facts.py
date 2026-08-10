@@ -34,6 +34,38 @@ for path, needle, label in checks:
     if needle not in path.read_text():
         failures.append(f"{label}: expected {needle!r} in {path.relative_to(ROOT)}")
 
+# Exact SEO needles are not enough: visible copy and translations can retain a
+# stale count while another correct occurrence lets the page pass. Check every
+# authored component-count claim on the public surfaces in both languages.
+public_surfaces = (
+    ROOT / "README.md",
+    ROOT / "ROADMAP.md",
+    ROOT / "site/Components.dc.html",
+    ROOT / "site/Docs.dc.html",
+    ROOT / "site/DsSite.dc.html",
+    ROOT / "site/Examples.dc.html",
+)
+component_claim_patterns = (
+    re.compile(r"\b(\d+)\s+accessible\s+(?:React\s+)?components\b", re.IGNORECASE),
+    re.compile(r"\b(\d+)\s+komponen\s+aksesibel\b", re.IGNORECASE),
+    re.compile(r"\bthe\s+(\d+)\s+components\b", re.IGNORECASE),
+    re.compile(r"\bsame\s+(\d+)\s+components\b", re.IGNORECASE),
+    re.compile(r"\b(\d+)\s+components\s+in\s+12\s+groups\b", re.IGNORECASE),
+    re.compile(r"\b(\d+)\s+komponen\s+dalam\s+12\s+grup\b", re.IGNORECASE),
+    re.compile(r"\b(\d+)\s+(?:components|komponen)\s+·", re.IGNORECASE),
+    re.compile(r"\b(\d+)\s+components\s+\(source\b", re.IGNORECASE),
+)
+for path in public_surfaces:
+    source = path.read_text()
+    for pattern in component_claim_patterns:
+        for match in pattern.finditer(source):
+            if int(match.group(1)) != facts["components"]:
+                line = source[: match.start()].count("\n") + 1
+                failures.append(
+                    f"{path.relative_to(ROOT)}:{line}: stale public component count "
+                    f"{match.group(1)} (expected {facts['components']})"
+                )
+
 # Catch the common partial-update failure even when the expected string appears
 # elsewhere on the same page.
 for path in (ROOT / "site/Components.dc.html", ROOT / "site/Docs.dc.html", ROOT / "site/DsSite.dc.html"):
