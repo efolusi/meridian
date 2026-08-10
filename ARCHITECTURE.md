@@ -8,7 +8,7 @@ How Meridian's pieces fit together, what is generated versus authored, and the r
 meridian/
 ├── styles.css · tokens/ · assets/       # system core — the vendoring API
 ├── _ds_bundle.js · _ds_manifest.json    # compiler output (generated, committed)
-├── _adherence.oxlintrc.json · thumbnail.html · index.html
+├── registry.json · _adherence.oxlintrc.json · thumbnail.html · index.html
 ├── components/<group>/                  # the library: lift code from here
 ├── blocks/                              # pre-composed sections: paste from here
 ├── showcases/<app>/                     # example apps: see the system in use
@@ -20,7 +20,7 @@ meridian/
 
 Three principles produced this layout:
 
-1. **The root is a contract.** `styles.css`, `tokens/`, and `assets/` are what consumers link when they vendor the folder, and the compiled artifacts (`_ds_bundle.js`, `_ds_manifest.json`, `_adherence.oxlintrc.json`, `thumbnail.html`) sit beside them. Consumers, the CDN, and `Icon`'s asset resolution all depend on these paths. They never move.
+1. **The root is a contract.** `styles.css`, `tokens/`, and `assets/` are what consumers link when they vendor the folder, and the compiled artifacts (`_ds_bundle.js`, `_ds_manifest.json`, `registry.json`, `_adherence.oxlintrc.json`, `thumbnail.html`) sit beside them. `registry.json` is the source catalog used by shadcn GitHub Registry installs; `site/registry.json` is its byte-identical hosted discovery copy. Consumers, the CDN, and `Icon`'s asset resolution all depend on these paths. They never move.
 2. **Shallow beats deep.** Pages resolve the root by counted `../` segments, so every authored page lives at most two directories down. Depth is a bug factory here; keep it flat.
 3. **The site consumes, it does not own.** Component, block, and example-app source live in their own directories; `site/` renders them. An earlier layout nested source inside the docs app and buried half the repo six levels deep; it was reverted.
 

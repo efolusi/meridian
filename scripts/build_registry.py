@@ -1,8 +1,8 @@
 #!/usr/bin/env python3
-"""Generate site/registry.json and per-item install files under
-site/registry/<name>.json with embedded content, from _ds_manifest.json
-plus the files on disk. Items follow an open registry schema (see the
-$schema URLs) so compatible CLIs can install them from any static host.
+"""Generate the root source registry, site/registry.json, and per-item install
+files under site/registry/<name>.json with embedded content, from
+_ds_manifest.json plus the files on disk. Items follow the shadcn registry
+schema so compatible CLIs can install them from GitHub or the hosted site.
 
 Usage: python3 scripts/build_registry.py
 Idempotent; run after adding or renaming components, blocks, or kits.
@@ -27,6 +27,10 @@ def prompt_summary(prompt_path):
 def file_entry(path, ftype, embed):
     rel = str(path.relative_to(ROOT))
     e = {"path": rel, "type": ftype}
+    # Generic files and pages have no framework-conventional destination, so
+    # the current shadcn schema requires the registry to state it explicitly.
+    if ftype in {"registry:file", "registry:page"}:
+        e["target"] = rel
     if embed:
         e["content"] = path.read_text()
     return e
@@ -177,7 +181,12 @@ def main():
         "homepage": "https://github.com/efolusi/meridian",
         "items": index_items,
     }
-    (WWW / "registry.json").write_text(json.dumps(registry, indent=2) + "\n")
+    payload = json.dumps(registry, indent=2) + "\n"
+    # The root catalog turns this public repository into a shadcn GitHub
+    # Registry: `npx shadcn@latest add efolusi/meridian/button`. The hosted
+    # copy remains the discovery index for the docs site and MCP server.
+    (ROOT / "registry.json").write_text(payload)
+    (WWW / "registry.json").write_text(payload)
     suffix = f"; removed {removed} stale file(s)" if removed else ""
     print(f"registry.json: {len(index_items)} items; registry/: {written} item files{suffix}")
 
