@@ -129,15 +129,48 @@ def block_items(embed):
         })
     return items
 
+
+def template_items(embed):
+    """Publish copyable starter journeys from the generated manifest inventory."""
+    manifest = json.loads((ROOT / "_ds_manifest.json").read_text())
+    items = []
+    for template in manifest.get("templates", []):
+        folder = template["folder"]
+        if not folder.startswith("starters/"):
+            continue
+        root = ROOT / folder
+        files = []
+        for path in sorted(root.iterdir()):
+            if not path.is_file() or path.name == ".thumbnail":
+                continue
+            files.append(file_entry(path, "registry:page", embed))
+        items.append({
+            "name": "starter-" + root.name,
+            "type": "registry:page",
+            "title": template["name"],
+            "description": template["description"],
+            "dependencies": ["react", "react-dom"],
+            "registryDependencies": [f"{HOST}/{BASE_ITEM}.json"],
+            "files": files,
+            "categories": ["starters"],
+        })
+    return items
+
 def main():
     R_DIR.mkdir(exist_ok=True)
     index_items, written = [], 0
-    for make in (base_item, component_items, block_items):
+    for make in (base_item, component_items, block_items, template_items):
         for lean, full in zip(make(embed=False), make(embed=True)):
             index_items.append(lean)
             full["$schema"] = "https://ui.shadcn.com/schema/registry-item.json"
             (R_DIR / f"{full['name']}.json").write_text(json.dumps(full, indent=2) + "\n")
             written += 1
+    expected = {f"{item['name']}.json" for item in index_items}
+    removed = 0
+    for stale in R_DIR.glob("*.json"):
+        if stale.name not in expected:
+            stale.unlink()
+            removed += 1
     registry = {
         "$schema": "https://ui.shadcn.com/schema/registry.json",
         "name": "meridian",
@@ -145,7 +178,8 @@ def main():
         "items": index_items,
     }
     (WWW / "registry.json").write_text(json.dumps(registry, indent=2) + "\n")
-    print(f"registry.json: {len(index_items)} items; registry/: {written} item files")
+    suffix = f"; removed {removed} stale file(s)" if removed else ""
+    print(f"registry.json: {len(index_items)} items; registry/: {written} item files{suffix}")
 
 if __name__ == "__main__":
     main()

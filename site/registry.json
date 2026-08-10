@@ -3612,6 +3612,400 @@
       "categories": [
         "blocks"
       ]
+    },
+    {
+      "name": "starter-ai-workspace",
+      "type": "registry:page",
+      "title": "AI workspace",
+      "description": "AI operations journey (3 pages): workbench, knowledge, evaluations",
+      "dependencies": [
+        "react",
+        "react-dom"
+      ],
+      "registryDependencies": [
+        "https://meridian.efolusi.com/site/registry/meridian-base.json"
+      ],
+      "files": [
+        {
+          "path": "starters/ai-workspace/Evaluations.dc.html",
+          "type": "registry:page"
+        },
+        {
+          "path": "starters/ai-workspace/Knowledge.dc.html",
+          "type": "registry:page"
+        },
+        {
+          "path": "starters/ai-workspace/README.md",
+          "type": "registry:page"
+        },
+        {
+          "path": "starters/ai-workspace/Workspace.dc.html",
+          "type": "registry:page"
+        },
+        {
+          "path": "starters/ai-workspace/ds-base.js",
+          "type": "registry:page"
+        },
+        {
+          "path": "starters/ai-workspace/support.js",
+          "type": "registry:page"
+        }
+      ],
+      "categories": [
+        "starters"
+      ]
+    },
+    {
+      "name": "starter-app-page",
+      "type": "registry:page",
+      "title": "App page",
+      "description": "App journey (5 pages): overview, projects, project detail, new project, settings",
+      "dependencies": [
+        "react",
+        "react-dom"
+      ],
+      "registryDependencies": [
+        "https://meridian.efolusi.com/site/registry/meridian-base.json"
+      ],
+      "files": [
+        {
+          "path": "starters/app-page/AppPage.dc.html",
+          "type": "registry:page"
+        },
+        {
+          "path": "starters/app-page/AppSettings.dc.html",
+          "type": "registry:page"
+        },
+        {
+          "path": "starters/app-page/NewProject.dc.html",
+          "type": "registry:page"
+        },
+        {
+          "path": "starters/app-page/ProjectDetail.dc.html",
+          "type": "registry:page"
+        },
+        {
+          "path": "starters/app-page/Projects.dc.html",
+          "type": "registry:page"
+        },
+        {
+          "path": "starters/app-page/README.md",
+          "type": "registry:page"
+        },
+        {
+          "path": "starters/app-page/ds-base.js",
+          "type": "registry:page"
+        },
+        {
+          "path": "starters/app-page/support.js",
+          "type": "registry:page"
+        }
+      ],
+      "categories": [
+        "starters"
+      ]
+    },
+    {
+      "name": "starter-auth-page",
+      "type": "registry:page",
+      "title": "Auth page",
+      "description": "Auth journey (4 pages): sign in \u2192 sign up \u2192 onboarding, plus password reset",
+      "dependencies": [
+        "react",
+        "react-dom"
+      ],
+      "registryDependencies": [
+        "https://meridian.efolusi.com/site/registry/meridian-base.json"
+      ],
+      "files": [
+        {
+          "path": "starters/auth-page/AuthPage.dc.html",
+          "type": "registry:page"
+        },
+        {
+          "path": "starters/auth-page/ForgotPassword.dc.html",
+          "type": "registry:page"
+        },
+        {
+          "path": "starters/auth-page/Onboarding.dc.html",
+          "type": "registry:page"
+        },
+        {
+          "path": "starters/auth-page/README.md",
+          "type": "registry:page"
+        },
+        {
+          "path": "starters/auth-page/SignUp.dc.html",
+          "type": "registry:page"
+        },
+        {
+          "path": "starters/auth-page/ds-base.js",
+          "type": "registry:page"
+        },
+        {
+          "path": "starters/auth-page/support.js",
+          "type": "registry:page"
+        }
+      ],
+      "categories": [
+        "starters"
+      ]
+    },
+    {
+      "name": "starter-crm",
+      "type": "registry:page",
+      "title": "CRM pipeline",
+      "description": "Revenue workspace journey (3 pages): pipeline, accounts, account detail",
+      "dependencies": [
+        "react",
+        "react-dom"
+      ],
+      "registryDependencies": [
+        "https://meridian.efolusi.com/site/registry/meridian-base.json"
+      ],
+      "files": [
+        {
+          "path": "starters/crm/AccountDetail.dc.html",
+          "type": "registry:page"
+        },
+        {
+          "path": "starters/crm/Accounts.dc.html",
+          "type": "registry:page"
+        },
+        {
+          "path": "starters/crm/Pipeline.dc.html",
+          "type": "registry:page"
+        },
+        {
+          "path": "starters/crm/README.md",
+          "type": "registry:page"
+        },
+        {
+          "path": "starters/crm/ds-base.js",
+          "type": "registry:page"
+        },
+        {
+          "path": "starters/crm/support.js",
+          "type": "registry:page"
+        }
+      ],
+      "categories": [
+        "starters"
+      ]
+    },
+    {
+      "name": "starter-dashboard",
+      "type": "registry:page",
+      "title": "Dashboard",
+      "description": "Console journey (4 pages): overview, customers, customer detail, settings",
+      "dependencies": [
+        "react",
+        "react-dom"
+      ],
+      "registryDependencies": [
+        "https://meridian.efolusi.com/site/registry/meridian-base.json"
+      ],
+      "files": [
+        {
+          "path": "starters/dashboard/ConsoleSettings.dc.html",
+          "type": "registry:page"
+        },
+        {
+          "path": "starters/dashboard/CustomerDetail.dc.html",
+          "type": "registry:page"
+        },
+        {
+          "path": "starters/dashboard/Customers.dc.html",
+          "type": "registry:page"
+        },
+        {
+          "path": "starters/dashboard/Dashboard.dc.html",
+          "type": "registry:page"
+        },
+        {
+          "path": "starters/dashboard/README.md",
+          "type": "registry:page"
+        },
+        {
+          "path": "starters/dashboard/ds-base.js",
+          "type": "registry:page"
+        },
+        {
+          "path": "starters/dashboard/support.js",
+          "type": "registry:page"
+        }
+      ],
+      "categories": [
+        "starters"
+      ]
+    },
+    {
+      "name": "starter-docs-page",
+      "type": "registry:page",
+      "title": "Docs page",
+      "description": "Docs journey (3 pages): quickstart, authentication, errors",
+      "dependencies": [
+        "react",
+        "react-dom"
+      ],
+      "registryDependencies": [
+        "https://meridian.efolusi.com/site/registry/meridian-base.json"
+      ],
+      "files": [
+        {
+          "path": "starters/docs-page/Authentication.dc.html",
+          "type": "registry:page"
+        },
+        {
+          "path": "starters/docs-page/DocsPage.dc.html",
+          "type": "registry:page"
+        },
+        {
+          "path": "starters/docs-page/Errors.dc.html",
+          "type": "registry:page"
+        },
+        {
+          "path": "starters/docs-page/README.md",
+          "type": "registry:page"
+        },
+        {
+          "path": "starters/docs-page/ds-base.js",
+          "type": "registry:page"
+        },
+        {
+          "path": "starters/docs-page/support.js",
+          "type": "registry:page"
+        }
+      ],
+      "categories": [
+        "starters"
+      ]
+    },
+    {
+      "name": "starter-finance-ops",
+      "type": "registry:page",
+      "title": "Finance operations",
+      "description": "Finance journey (3 pages): cash-flow map, transactions, reconciliation",
+      "dependencies": [
+        "react",
+        "react-dom"
+      ],
+      "registryDependencies": [
+        "https://meridian.efolusi.com/site/registry/meridian-base.json"
+      ],
+      "files": [
+        {
+          "path": "starters/finance-ops/Cashflow.dc.html",
+          "type": "registry:page"
+        },
+        {
+          "path": "starters/finance-ops/README.md",
+          "type": "registry:page"
+        },
+        {
+          "path": "starters/finance-ops/Reconciliation.dc.html",
+          "type": "registry:page"
+        },
+        {
+          "path": "starters/finance-ops/Transactions.dc.html",
+          "type": "registry:page"
+        },
+        {
+          "path": "starters/finance-ops/ds-base.js",
+          "type": "registry:page"
+        },
+        {
+          "path": "starters/finance-ops/support.js",
+          "type": "registry:page"
+        }
+      ],
+      "categories": [
+        "starters"
+      ]
+    },
+    {
+      "name": "starter-marketing-page",
+      "type": "registry:page",
+      "title": "Marketing page",
+      "description": "Marketing journey (3 pages): home, pricing, contact \u2014 linked to auth + docs",
+      "dependencies": [
+        "react",
+        "react-dom"
+      ],
+      "registryDependencies": [
+        "https://meridian.efolusi.com/site/registry/meridian-base.json"
+      ],
+      "files": [
+        {
+          "path": "starters/marketing-page/Contact.dc.html",
+          "type": "registry:page"
+        },
+        {
+          "path": "starters/marketing-page/MarketingPage.dc.html",
+          "type": "registry:page"
+        },
+        {
+          "path": "starters/marketing-page/Pricing.dc.html",
+          "type": "registry:page"
+        },
+        {
+          "path": "starters/marketing-page/README.md",
+          "type": "registry:page"
+        },
+        {
+          "path": "starters/marketing-page/ds-base.js",
+          "type": "registry:page"
+        },
+        {
+          "path": "starters/marketing-page/support.js",
+          "type": "registry:page"
+        }
+      ],
+      "categories": [
+        "starters"
+      ]
+    },
+    {
+      "name": "starter-service-desk",
+      "type": "registry:page",
+      "title": "Service desk queue",
+      "description": "Support operations journey (3 pages): queue, ticket catalogue, incident record",
+      "dependencies": [
+        "react",
+        "react-dom"
+      ],
+      "registryDependencies": [
+        "https://meridian.efolusi.com/site/registry/meridian-base.json"
+      ],
+      "files": [
+        {
+          "path": "starters/service-desk/Queue.dc.html",
+          "type": "registry:page"
+        },
+        {
+          "path": "starters/service-desk/README.md",
+          "type": "registry:page"
+        },
+        {
+          "path": "starters/service-desk/TicketDetail.dc.html",
+          "type": "registry:page"
+        },
+        {
+          "path": "starters/service-desk/Tickets.dc.html",
+          "type": "registry:page"
+        },
+        {
+          "path": "starters/service-desk/ds-base.js",
+          "type": "registry:page"
+        },
+        {
+          "path": "starters/service-desk/support.js",
+          "type": "registry:page"
+        }
+      ],
+      "categories": [
+        "starters"
+      ]
     }
   ]
 }

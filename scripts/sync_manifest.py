@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Rebuild the generated fields in _ds_manifest.json: `version`, `components`, `tokens`.
+"""Rebuild generated inventories in _ds_manifest.json.
 
 The manifest is a compiler artifact whose inventories drift silently, and the
 drift is not cosmetic: scripts/build_registry.py derives the whole registry from
@@ -8,6 +8,12 @@ is silently dropped from the dependency lists of everything that imports it.
 Adding Portal.jsx did exactly that. `components` is therefore taken from the
 bundle header (which the compiler auto-discovers) and `tokens` from the
 stylesheets, so neither can disagree with the source again.
+
+`templates` is discovered from authored ``@template`` markers. Each starter
+folder must have exactly one entry marker whose description contains
+``journey``; this distinguishes the journey entry page from its linked detail
+pages while keeping the public name and description beside the source. The docs
+site is a single explicit template entry and follows the same marker grammar.
 
 Conventions preserved from the compiler output:
   - grouped per file in the order colors, typography, spacing, effects
@@ -117,6 +123,59 @@ def bundle_components():
     return [{"name": c["name"], "sourcePath": c["sourcePath"]} for c in meta["components"]]
 
 
+TEMPLATE_RE = re.compile(
+    r'<!--\s*@template\s+name="([^"]+)"\s+description="([^"]+)"\s*-->'
+)
+
+
+def template_marker(path):
+    """Return authored (name, description), or None when a page is not a template."""
+    match = TEMPLATE_RE.search(path.read_text())
+    return match.groups() if match else None
+
+
+def template_entry(name, description, folder, entry_path):
+    thumbnail = ROOT / folder / ".thumbnail"
+    if not thumbnail.exists():
+        raise ValueError(f"template {folder} has no .thumbnail")
+    return {
+        "name": name,
+        "description": description,
+        "folder": folder,
+        "entryPath": entry_path,
+        "thumbnail": {"path": f"{folder}/.thumbnail", "kind": "captured"},
+    }
+
+
+def template_inventory():
+    """Discover every starter journey plus the docs-site template."""
+    entries = []
+    for folder_path in sorted((ROOT / "starters").iterdir()):
+        if not folder_path.is_dir():
+            continue
+        candidates = []
+        for page in sorted(folder_path.glob("*.dc.html")):
+            marker = template_marker(page)
+            if marker and "journey" in marker[1].lower():
+                candidates.append((page, marker))
+        if len(candidates) != 1:
+            names = ", ".join(str(p.relative_to(ROOT)) for p, _ in candidates) or "none"
+            raise ValueError(
+                f"{folder_path.relative_to(ROOT)} must have exactly one @template "
+                f"entry whose description contains 'journey'; found {names}"
+            )
+        page, (name, description) = candidates[0]
+        folder = str(folder_path.relative_to(ROOT))
+        entries.append(template_entry(name, description, folder, str(page.relative_to(ROOT))))
+
+    site_page = ROOT / "site" / "DsSite.dc.html"
+    site_marker = template_marker(site_page)
+    if not site_marker:
+        raise ValueError("site/DsSite.dc.html has no @template marker")
+    entries.append(template_entry(*site_marker, "site", "site/DsSite.dc.html"))
+    return entries
+
+
 def main():
     check = "--check" in sys.argv
     manifest = json.loads(MANIFEST.read_text())
@@ -129,13 +188,18 @@ def main():
     old_version = manifest.get("version")
     new_version = json.loads(PACKAGE.read_text())["version"]
 
+    old_templates = manifest.get("templates", [])
+    new_templates = template_inventory()
+
     old = manifest.get("tokens", [])
     existing_kinds = {e["name"]: e["kind"] for e in old}
     new = build(existing_kinds)
 
-    if old == new and old_components == new_components and old_version == new_version:
+    if (old == new and old_components == new_components and old_version == new_version
+            and old_templates == new_templates):
         print(f"manifest in sync (version {new_version}, "
-              f"{len(new_components)} components, {len(new)} token entries)")
+              f"{len(new_components)} components, {len(new_templates)} templates, "
+              f"{len(new)} token entries)")
         return 0
 
     added = [e["name"] for e in new if e["name"] not in {o["name"] for o in old}]
@@ -160,6 +224,14 @@ def main():
                 print(f"    added    {a}")
             for r in comp_removed:
                 print(f"    removed  {r}")
+        if old_templates != new_templates:
+            print(f"  templates: {len(old_templates)} -> {len(new_templates)}")
+            old_folders = {entry["folder"] for entry in old_templates}
+            new_folders = {entry["folder"] for entry in new_templates}
+            for folder in sorted(new_folders - old_folders):
+                print(f"    added    {folder}")
+            for folder in sorted(old_folders - new_folders):
+                print(f"    removed  {folder}")
         print(f"  tokens: {len(old)} -> {len(new)} entries")
         for c in changed:
             print(f"  changed  {c}")
@@ -172,6 +244,7 @@ def main():
 
     manifest["version"] = new_version
     manifest["components"] = new_components
+    manifest["templates"] = new_templates
     manifest["tokens"] = new
     # match the compiler's serialisation exactly: compact, \u-escaped, no trailing newline
     MANIFEST.write_text(json.dumps(manifest, separators=(",", ":"), ensure_ascii=True))
@@ -183,6 +256,14 @@ def main():
             print(f"  added    {a}")
         for r in comp_removed:
             print(f"  removed  {r}")
+    if old_templates != new_templates:
+        print(f"manifest templates: {len(old_templates)} -> {len(new_templates)}")
+        old_folders = {entry["folder"] for entry in old_templates}
+        new_folders = {entry["folder"] for entry in new_templates}
+        for folder in sorted(new_folders - old_folders):
+            print(f"  added    {folder}")
+        for folder in sorted(old_folders - new_folders):
+            print(f"  removed  {folder}")
     print(f"manifest tokens: {len(old)} -> {len(new)} entries")
     for c in changed:
         print(f"  changed  {c}")
