@@ -46,6 +46,9 @@ jobs:
       - name: Logical CSS direction safety
         run: python3 scripts/check_logical_css.py
 
+      - name: Template prop and attribute contracts
+        run: python3 scripts/check_template_props.py
+
       # Fast pre-check: the header's recorded hashes vs the sources on disk.
       - name: Bundle source hashes match source files
         run: python3 scripts/check_bundle_hashes.py
@@ -104,6 +107,10 @@ jobs:
           CODE=$?
           if [ "$CODE" -eq 0 ]; then
             BASE=http://127.0.0.1:8000 DIRECTION=rtl node scripts/smoke_headless.mjs
+            CODE=$?
+          fi
+          if [ "$CODE" -eq 0 ]; then
+            BASE=http://127.0.0.1:8000 node scripts/smoke_starters.mjs
             CODE=$?
           fi
           set -e

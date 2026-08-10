@@ -15,11 +15,14 @@ const CSS = `
 .ef-steps__title{font-size:var(--text-md);font-weight:var(--weight-semibold);color:var(--text-muted);line-height:24px}
 .ef-steps__item--active .ef-steps__title,.ef-steps__item--done .ef-steps__title{color:var(--text-primary)}
 .ef-steps__desc{font-size:var(--text-sm);color:var(--text-muted);margin-top:2px;line-height:1.5}
-.ef-steps--h{flex-direction:row;gap:8px}
+.ef-steps--h{flex-direction:row;gap:0;width:100%}
 .ef-steps--h .ef-steps__item{flex:1;flex-direction:column;gap:8px}
 .ef-steps--h .ef-steps__rail{flex-direction:row;width:100%}
 .ef-steps--h .ef-steps__line{width:auto;flex:1;height:1.5px;min-height:0;margin:0 6px;align-self:center}
+.ef-steps--h .ef-steps__item:last-child{flex:0 0 auto;align-items:flex-end}
+.ef-steps--h .ef-steps__item:last-child .ef-steps__rail{justify-content:flex-end}
 .ef-steps--h .ef-steps__item:last-child .ef-steps__line{display:none}
+.ef-steps--h .ef-steps__item:last-child .ef-steps__content{text-align:end}
 .ef-steps--h .ef-steps__content{padding-bottom:0}
 `;
 export function Steps({ items, current = 0, orientation = 'vertical', style, className, ...rest }) {

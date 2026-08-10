@@ -8,7 +8,7 @@ const CSS = `
 .ef-filedrop__icon{color:var(--sand-400)}
 .ef-filedrop--over .ef-filedrop__icon,.ef-filedrop:hover .ef-filedrop__icon{color:var(--text-primary)}
 .ef-filedrop__title{font-size:var(--text-md);font-weight:var(--weight-semibold);color:var(--text-primary)}
-.ef-filedrop__title u{text-decoration-color:var(--caramel-500);text-underline-offset:3px}
+.ef-filedrop__action{color:var(--text-link);font-weight:var(--weight-semibold)}
 .ef-filedrop__hint{font-size:var(--text-xs);color:var(--text-muted)}
 `;
 export function FileDrop({ onFiles, accept, multiple = true, title, hint, style, className, ...rest }) {
@@ -24,7 +24,7 @@ export function FileDrop({ onFiles, accept, multiple = true, title, hint, style,
       onDragLeave={() => setOver(false)}
       onDrop={e => { e.preventDefault(); setOver(false); handle(e.dataTransfer.files); }}>
       <span className="ef-filedrop__icon"><Icon name="upload" size={22} /></span>
-      <span className="ef-filedrop__title">{title || <span>Drop files here or <u>browse</u></span>}</span>
+      <span className="ef-filedrop__title">{title || <span>Drop files here or <span className="ef-filedrop__action">browse</span></span>}</span>
       {hint ? <span className="ef-filedrop__hint">{hint}</span> : null}
       <input ref={inputRef} type="file" accept={accept} multiple={multiple} style={{ display: 'none' }} onChange={e => { handle(e.target.files); e.target.value = ''; }} />
     </div>
