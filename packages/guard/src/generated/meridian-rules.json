@@ -1,0 +1,1176 @@
+{
+  "schemaVersion": 1,
+  "version": "1.20.0",
+  "components": [
+    {
+      "name": "Accordion",
+      "sourcePath": "components/display/Accordion.jsx"
+    },
+    {
+      "name": "AccordionContent",
+      "sourcePath": "components/display/Accordion.jsx"
+    },
+    {
+      "name": "AccordionItem",
+      "sourcePath": "components/display/Accordion.jsx"
+    },
+    {
+      "name": "AccordionTrigger",
+      "sourcePath": "components/display/Accordion.jsx"
+    },
+    {
+      "name": "AgentRun",
+      "sourcePath": "components/ai/AgentRun.jsx"
+    },
+    {
+      "name": "Alert",
+      "sourcePath": "components/feedback/Alert.jsx"
+    },
+    {
+      "name": "AlertDescription",
+      "sourcePath": "components/feedback/Alert.jsx"
+    },
+    {
+      "name": "AlertDialog",
+      "sourcePath": "components/feedback/AlertDialog.jsx"
+    },
+    {
+      "name": "AlertDialogAction",
+      "sourcePath": "components/feedback/AlertDialog.jsx"
+    },
+    {
+      "name": "AlertDialogCancel",
+      "sourcePath": "components/feedback/AlertDialog.jsx"
+    },
+    {
+      "name": "AlertDialogContent",
+      "sourcePath": "components/feedback/AlertDialog.jsx"
+    },
+    {
+      "name": "AlertDialogDescription",
+      "sourcePath": "components/feedback/AlertDialog.jsx"
+    },
+    {
+      "name": "AlertDialogFooter",
+      "sourcePath": "components/feedback/AlertDialog.jsx"
+    },
+    {
+      "name": "AlertDialogHeader",
+      "sourcePath": "components/feedback/AlertDialog.jsx"
+    },
+    {
+      "name": "AlertDialogMedia",
+      "sourcePath": "components/feedback/AlertDialog.jsx"
+    },
+    {
+      "name": "AlertDialogOverlay",
+      "sourcePath": "components/feedback/AlertDialog.jsx"
+    },
+    {
+      "name": "AlertDialogPortal",
+      "sourcePath": "components/feedback/AlertDialog.jsx"
+    },
+    {
+      "name": "AlertDialogTitle",
+      "sourcePath": "components/feedback/AlertDialog.jsx"
+    },
+    {
+      "name": "AlertDialogTrigger",
+      "sourcePath": "components/feedback/AlertDialog.jsx"
+    },
+    {
+      "name": "AlertTitle",
+      "sourcePath": "components/feedback/Alert.jsx"
+    },
+    {
+      "name": "AspectRatio",
+      "sourcePath": "components/display/AspectRatio.jsx"
+    },
+    {
+      "name": "Attachment",
+      "sourcePath": "components/files/Attachment.jsx"
+    },
+    {
+      "name": "AttachmentAction",
+      "sourcePath": "components/files/Attachment.jsx"
+    },
+    {
+      "name": "AttachmentActions",
+      "sourcePath": "components/files/Attachment.jsx"
+    },
+    {
+      "name": "AttachmentContent",
+      "sourcePath": "components/files/Attachment.jsx"
+    },
+    {
+      "name": "AttachmentDescription",
+      "sourcePath": "components/files/Attachment.jsx"
+    },
+    {
+      "name": "AttachmentGroup",
+      "sourcePath": "components/files/Attachment.jsx"
+    },
+    {
+      "name": "AttachmentMedia",
+      "sourcePath": "components/files/Attachment.jsx"
+    },
+    {
+      "name": "AttachmentTitle",
+      "sourcePath": "components/files/Attachment.jsx"
+    },
+    {
+      "name": "AttachmentTrigger",
+      "sourcePath": "components/files/Attachment.jsx"
+    },
+    {
+      "name": "Avatar",
+      "sourcePath": "components/display/Avatar.jsx"
+    },
+    {
+      "name": "AvatarBadge",
+      "sourcePath": "components/display/Avatar.jsx"
+    },
+    {
+      "name": "AvatarFallback",
+      "sourcePath": "components/display/Avatar.jsx"
+    },
+    {
+      "name": "AvatarGroup",
+      "sourcePath": "components/display/Avatar.jsx"
+    },
+    {
+      "name": "AvatarGroupCount",
+      "sourcePath": "components/display/Avatar.jsx"
+    },
+    {
+      "name": "AvatarImage",
+      "sourcePath": "components/display/Avatar.jsx"
+    },
+    {
+      "name": "Badge",
+      "sourcePath": "components/display/Badge.jsx"
+    },
+    {
+      "name": "Banner",
+      "sourcePath": "components/feedback/Banner.jsx"
+    },
+    {
+      "name": "BarChart",
+      "sourcePath": "components/data/BarChart.jsx"
+    },
+    {
+      "name": "Breadcrumb",
+      "sourcePath": "components/navigation/Breadcrumbs.jsx"
+    },
+    {
+      "name": "BreadcrumbEllipsis",
+      "sourcePath": "components/navigation/Breadcrumbs.jsx"
+    },
+    {
+      "name": "BreadcrumbItem",
+      "sourcePath": "components/navigation/Breadcrumbs.jsx"
+    },
+    {
+      "name": "BreadcrumbLink",
+      "sourcePath": "components/navigation/Breadcrumbs.jsx"
+    },
+    {
+      "name": "BreadcrumbList",
+      "sourcePath": "components/navigation/Breadcrumbs.jsx"
+    },
+    {
+      "name": "BreadcrumbPage",
+      "sourcePath": "components/navigation/Breadcrumbs.jsx"
+    },
+    {
+      "name": "Breadcrumbs",
+      "sourcePath": "components/navigation/Breadcrumbs.jsx"
+    },
+    {
+      "name": "BreadcrumbSeparator",
+      "sourcePath": "components/navigation/Breadcrumbs.jsx"
+    },
+    {
+      "name": "Bubble",
+      "sourcePath": "components/ai/Bubble.jsx"
+    },
+    {
+      "name": "BubbleContent",
+      "sourcePath": "components/ai/Bubble.jsx"
+    },
+    {
+      "name": "BubbleGroup",
+      "sourcePath": "components/ai/Bubble.jsx"
+    },
+    {
+      "name": "BubbleReactions",
+      "sourcePath": "components/ai/Bubble.jsx"
+    },
+    {
+      "name": "Button",
+      "sourcePath": "components/forms/Button.jsx"
+    },
+    {
+      "name": "ButtonGroup",
+      "sourcePath": "components/forms/ButtonGroup.jsx"
+    },
+    {
+      "name": "ButtonGroupSeparator",
+      "sourcePath": "components/forms/ButtonGroup.jsx"
+    },
+    {
+      "name": "ButtonGroupText",
+      "sourcePath": "components/forms/ButtonGroup.jsx"
+    },
+    {
+      "name": "ButtonTile",
+      "sourcePath": "components/forms/ButtonTile.jsx"
+    },
+    {
+      "name": "ButtonTileGroup",
+      "sourcePath": "components/forms/ButtonTile.jsx"
+    },
+    {
+      "name": "Calendar",
+      "sourcePath": "components/dates/Calendar.jsx"
+    },
+    {
+      "name": "Card",
+      "sourcePath": "components/display/Card.jsx"
+    },
+    {
+      "name": "CardAction",
+      "sourcePath": "components/display/Card.jsx"
+    },
+    {
+      "name": "CardContent",
+      "sourcePath": "components/display/Card.jsx"
+    },
+    {
+      "name": "CardDescription",
+      "sourcePath": "components/display/Card.jsx"
+    },
+    {
+      "name": "CardFooter",
+      "sourcePath": "components/display/Card.jsx"
+    },
+    {
+      "name": "CardHeader",
+      "sourcePath": "components/display/Card.jsx"
+    },
+    {
+      "name": "CardTitle",
+      "sourcePath": "components/display/Card.jsx"
+    },
+    {
+      "name": "Carousel",
+      "sourcePath": "components/display/Carousel.jsx"
+    },
+    {
+      "name": "ChatMessage",
+      "sourcePath": "components/ai/ChatMessage.jsx"
+    },
+    {
+      "name": "Checkbox",
+      "sourcePath": "components/forms/Checkbox.jsx"
+    },
+    {
+      "name": "Citation",
+      "sourcePath": "components/ai/Citation.jsx"
+    },
+    {
+      "name": "CodeBlock",
+      "sourcePath": "components/code/CodeBlock.jsx"
+    },
+    {
+      "name": "Collapsible",
+      "sourcePath": "components/display/Collapsible.jsx"
+    },
+    {
+      "name": "CollapsibleContent",
+      "sourcePath": "components/display/Collapsible.jsx"
+    },
+    {
+      "name": "CollapsibleTrigger",
+      "sourcePath": "components/display/Collapsible.jsx"
+    },
+    {
+      "name": "Combobox",
+      "sourcePath": "components/forms/Combobox.jsx"
+    },
+    {
+      "name": "CommandPalette",
+      "sourcePath": "components/overlay/CommandPalette.jsx"
+    },
+    {
+      "name": "Confirmation",
+      "sourcePath": "components/ai/Confirmation.jsx"
+    },
+    {
+      "name": "ConfirmDialog",
+      "sourcePath": "components/feedback/ConfirmDialog.jsx"
+    },
+    {
+      "name": "Console",
+      "sourcePath": "components/code/Console.jsx"
+    },
+    {
+      "name": "ContextMenu",
+      "sourcePath": "components/overlay/ContextMenu.jsx"
+    },
+    {
+      "name": "Conversation",
+      "sourcePath": "components/ai/Conversation.jsx"
+    },
+    {
+      "name": "CopyField",
+      "sourcePath": "components/code/CopyField.jsx"
+    },
+    {
+      "name": "DatePicker",
+      "sourcePath": "components/dates/DatePicker.jsx"
+    },
+    {
+      "name": "DateRangePicker",
+      "sourcePath": "components/dates/DateRangePicker.jsx"
+    },
+    {
+      "name": "Dialog",
+      "sourcePath": "components/feedback/Dialog.jsx"
+    },
+    {
+      "name": "DialogClose",
+      "sourcePath": "components/feedback/Dialog.jsx"
+    },
+    {
+      "name": "DialogContent",
+      "sourcePath": "components/feedback/Dialog.jsx"
+    },
+    {
+      "name": "DialogDescription",
+      "sourcePath": "components/feedback/Dialog.jsx"
+    },
+    {
+      "name": "DialogFooter",
+      "sourcePath": "components/feedback/Dialog.jsx"
+    },
+    {
+      "name": "DialogHeader",
+      "sourcePath": "components/feedback/Dialog.jsx"
+    },
+    {
+      "name": "DialogOverlay",
+      "sourcePath": "components/feedback/Dialog.jsx"
+    },
+    {
+      "name": "DialogPortal",
+      "sourcePath": "components/feedback/Dialog.jsx"
+    },
+    {
+      "name": "DialogTitle",
+      "sourcePath": "components/feedback/Dialog.jsx"
+    },
+    {
+      "name": "DialogTrigger",
+      "sourcePath": "components/feedback/Dialog.jsx"
+    },
+    {
+      "name": "Diff",
+      "sourcePath": "components/code/Diff.jsx"
+    },
+    {
+      "name": "DigitEntry",
+      "sourcePath": "components/forms/DigitEntry.jsx"
+    },
+    {
+      "name": "DirectionProvider",
+      "sourcePath": "components/display/Direction.jsx"
+    },
+    {
+      "name": "Divider",
+      "sourcePath": "components/display/Divider.jsx"
+    },
+    {
+      "name": "DocumentCard",
+      "sourcePath": "components/ai/DocumentCard.jsx"
+    },
+    {
+      "name": "DonutChart",
+      "sourcePath": "components/data/DonutChart.jsx"
+    },
+    {
+      "name": "Drawer",
+      "sourcePath": "components/overlay/Drawer.jsx"
+    },
+    {
+      "name": "Empty",
+      "sourcePath": "components/data/EmptyState.jsx"
+    },
+    {
+      "name": "EmptyContent",
+      "sourcePath": "components/data/EmptyState.jsx"
+    },
+    {
+      "name": "EmptyDescription",
+      "sourcePath": "components/data/EmptyState.jsx"
+    },
+    {
+      "name": "EmptyHeader",
+      "sourcePath": "components/data/EmptyState.jsx"
+    },
+    {
+      "name": "EmptyMedia",
+      "sourcePath": "components/data/EmptyState.jsx"
+    },
+    {
+      "name": "EmptyState",
+      "sourcePath": "components/data/EmptyState.jsx"
+    },
+    {
+      "name": "EmptyTitle",
+      "sourcePath": "components/data/EmptyState.jsx"
+    },
+    {
+      "name": "EnvList",
+      "sourcePath": "components/code/EnvList.jsx"
+    },
+    {
+      "name": "Exception",
+      "sourcePath": "components/code/Exception.jsx"
+    },
+    {
+      "name": "FeedbackBar",
+      "sourcePath": "components/ai/FeedbackBar.jsx"
+    },
+    {
+      "name": "FileDrop",
+      "sourcePath": "components/files/FileDrop.jsx"
+    },
+    {
+      "name": "FileTile",
+      "sourcePath": "components/files/FileTile.jsx"
+    },
+    {
+      "name": "FileTypeIcon",
+      "sourcePath": "components/files/FileTypeIcon.jsx"
+    },
+    {
+      "name": "FormField",
+      "sourcePath": "components/forms/FormField.jsx"
+    },
+    {
+      "name": "GeneratedImage",
+      "sourcePath": "components/ai/GeneratedImage.jsx"
+    },
+    {
+      "name": "HoverCard",
+      "sourcePath": "components/overlay/HoverCard.jsx"
+    },
+    {
+      "name": "Icon",
+      "sourcePath": "components/icons/Icon.jsx"
+    },
+    {
+      "name": "IconButton",
+      "sourcePath": "components/forms/IconButton.jsx"
+    },
+    {
+      "name": "Input",
+      "sourcePath": "components/forms/Input.jsx"
+    },
+    {
+      "name": "InputGroup",
+      "sourcePath": "components/forms/InputGroup.jsx"
+    },
+    {
+      "name": "InputGroupAddon",
+      "sourcePath": "components/forms/InputGroup.jsx"
+    },
+    {
+      "name": "InputGroupButton",
+      "sourcePath": "components/forms/InputGroup.jsx"
+    },
+    {
+      "name": "InputGroupInput",
+      "sourcePath": "components/forms/InputGroup.jsx"
+    },
+    {
+      "name": "InputGroupText",
+      "sourcePath": "components/forms/InputGroup.jsx"
+    },
+    {
+      "name": "InputGroupTextarea",
+      "sourcePath": "components/forms/InputGroup.jsx"
+    },
+    {
+      "name": "Kbd",
+      "sourcePath": "components/display/Kbd.jsx"
+    },
+    {
+      "name": "KbdGroup",
+      "sourcePath": "components/display/Kbd.jsx"
+    },
+    {
+      "name": "KeyValueList",
+      "sourcePath": "components/data/KeyValueList.jsx"
+    },
+    {
+      "name": "Label",
+      "sourcePath": "components/forms/Label.jsx"
+    },
+    {
+      "name": "LineChart",
+      "sourcePath": "components/data/LineChart.jsx"
+    },
+    {
+      "name": "Link",
+      "sourcePath": "components/display/Link.jsx"
+    },
+    {
+      "name": "ListItem",
+      "sourcePath": "components/display/ListItem.jsx"
+    },
+    {
+      "name": "Loader",
+      "sourcePath": "components/feedback/Loader.jsx"
+    },
+    {
+      "name": "Marker",
+      "sourcePath": "components/ai/Marker.jsx"
+    },
+    {
+      "name": "MarkerContent",
+      "sourcePath": "components/ai/Marker.jsx"
+    },
+    {
+      "name": "MarkerIcon",
+      "sourcePath": "components/ai/Marker.jsx"
+    },
+    {
+      "name": "Menu",
+      "sourcePath": "components/overlay/Menu.jsx"
+    },
+    {
+      "name": "Menubar",
+      "sourcePath": "components/navigation/Menubar.jsx"
+    },
+    {
+      "name": "ModelSelector",
+      "sourcePath": "components/ai/ModelSelector.jsx"
+    },
+    {
+      "name": "NativeSelect",
+      "sourcePath": "components/forms/NativeSelect.jsx"
+    },
+    {
+      "name": "NativeSelectOptGroup",
+      "sourcePath": "components/forms/NativeSelect.jsx"
+    },
+    {
+      "name": "NativeSelectOption",
+      "sourcePath": "components/forms/NativeSelect.jsx"
+    },
+    {
+      "name": "NumberInput",
+      "sourcePath": "components/forms/NumberInput.jsx"
+    },
+    {
+      "name": "PageControl",
+      "sourcePath": "components/navigation/PageControl.jsx"
+    },
+    {
+      "name": "Pagination",
+      "sourcePath": "components/navigation/Pagination.jsx"
+    },
+    {
+      "name": "PaymentCard",
+      "sourcePath": "components/finance/PaymentCard.jsx"
+    },
+    {
+      "name": "Player",
+      "sourcePath": "components/ai/Player.jsx"
+    },
+    {
+      "name": "Popover",
+      "sourcePath": "components/overlay/Popover.jsx"
+    },
+    {
+      "name": "Portal",
+      "sourcePath": "components/overlay/Portal.jsx"
+    },
+    {
+      "name": "Progress",
+      "sourcePath": "components/feedback/Progress.jsx"
+    },
+    {
+      "name": "PromptComposer",
+      "sourcePath": "components/ai/PromptComposer.jsx"
+    },
+    {
+      "name": "PromptSteps",
+      "sourcePath": "components/ai/PromptSteps.jsx"
+    },
+    {
+      "name": "Radio",
+      "sourcePath": "components/forms/Radio.jsx"
+    },
+    {
+      "name": "Reasoning",
+      "sourcePath": "components/ai/Reasoning.jsx"
+    },
+    {
+      "name": "Resizable",
+      "sourcePath": "components/display/Resizable.jsx"
+    },
+    {
+      "name": "RichComposer",
+      "sourcePath": "components/ai/RichComposer.jsx"
+    },
+    {
+      "name": "Sandbox",
+      "sourcePath": "components/ai/Sandbox.jsx"
+    },
+    {
+      "name": "ScrollArea",
+      "sourcePath": "components/display/ScrollArea.jsx"
+    },
+    {
+      "name": "SegmentedControl",
+      "sourcePath": "components/navigation/SegmentedControl.jsx"
+    },
+    {
+      "name": "Select",
+      "sourcePath": "components/forms/Select.jsx"
+    },
+    {
+      "name": "SelectionQuote",
+      "sourcePath": "components/ai/SelectionQuote.jsx"
+    },
+    {
+      "name": "Separator",
+      "sourcePath": "components/display/Separator.jsx"
+    },
+    {
+      "name": "SideNav",
+      "sourcePath": "components/navigation/SideNav.jsx"
+    },
+    {
+      "name": "Skeleton",
+      "sourcePath": "components/data/Skeleton.jsx"
+    },
+    {
+      "name": "Slider",
+      "sourcePath": "components/forms/Slider.jsx"
+    },
+    {
+      "name": "SourceCard",
+      "sourcePath": "components/ai/SourceCard.jsx"
+    },
+    {
+      "name": "SourceList",
+      "sourcePath": "components/ai/Citation.jsx"
+    },
+    {
+      "name": "Sparkline",
+      "sourcePath": "components/data/Sparkline.jsx"
+    },
+    {
+      "name": "Spinner",
+      "sourcePath": "components/feedback/Spinner.jsx"
+    },
+    {
+      "name": "Stat",
+      "sourcePath": "components/data/Stat.jsx"
+    },
+    {
+      "name": "StatusDot",
+      "sourcePath": "components/data/StatusDot.jsx"
+    },
+    {
+      "name": "Steps",
+      "sourcePath": "components/navigation/Steps.jsx"
+    },
+    {
+      "name": "Suggestions",
+      "sourcePath": "components/ai/Suggestions.jsx"
+    },
+    {
+      "name": "Switch",
+      "sourcePath": "components/forms/Switch.jsx"
+    },
+    {
+      "name": "Table",
+      "sourcePath": "components/data/Table.jsx"
+    },
+    {
+      "name": "Tabs",
+      "sourcePath": "components/navigation/Tabs.jsx"
+    },
+    {
+      "name": "Tag",
+      "sourcePath": "components/display/Tag.jsx"
+    },
+    {
+      "name": "Task",
+      "sourcePath": "components/ai/Task.jsx"
+    },
+    {
+      "name": "Terminal",
+      "sourcePath": "components/code/Terminal.jsx"
+    },
+    {
+      "name": "Textarea",
+      "sourcePath": "components/forms/Textarea.jsx"
+    },
+    {
+      "name": "Timeline",
+      "sourcePath": "components/display/Timeline.jsx"
+    },
+    {
+      "name": "TimePicker",
+      "sourcePath": "components/dates/TimePicker.jsx"
+    },
+    {
+      "name": "Toast",
+      "sourcePath": "components/feedback/Toast.jsx"
+    },
+    {
+      "name": "Toaster",
+      "sourcePath": "components/feedback/Toast.jsx"
+    },
+    {
+      "name": "ToastStack",
+      "sourcePath": "components/feedback/Toast.jsx"
+    },
+    {
+      "name": "Todo",
+      "sourcePath": "components/ai/Todo.jsx"
+    },
+    {
+      "name": "Toggle",
+      "sourcePath": "components/forms/Toggle.jsx"
+    },
+    {
+      "name": "ToggleGroup",
+      "sourcePath": "components/forms/Toggle.jsx"
+    },
+    {
+      "name": "Toolbar",
+      "sourcePath": "components/display/Toolbar.jsx"
+    },
+    {
+      "name": "ToolCall",
+      "sourcePath": "components/ai/ToolCall.jsx"
+    },
+    {
+      "name": "Tooltip",
+      "sourcePath": "components/feedback/Tooltip.jsx"
+    },
+    {
+      "name": "TopNav",
+      "sourcePath": "components/navigation/TopNav.jsx"
+    },
+    {
+      "name": "Transcript",
+      "sourcePath": "components/ai/Transcript.jsx"
+    },
+    {
+      "name": "TreeList",
+      "sourcePath": "components/display/TreeList.jsx"
+    },
+    {
+      "name": "UsageMeter",
+      "sourcePath": "components/ai/UsageMeter.jsx"
+    },
+    {
+      "name": "WebPreview",
+      "sourcePath": "components/ai/WebPreview.jsx"
+    }
+  ],
+  "icons": [
+    "activity",
+    "archive",
+    "arrow-down-right",
+    "arrow-right",
+    "arrow-up-right",
+    "at-sign",
+    "badge-check",
+    "banknote",
+    "bell",
+    "book-open",
+    "bot",
+    "brain",
+    "bug",
+    "calendar",
+    "chart-candlestick",
+    "chart-column",
+    "chart-line",
+    "check",
+    "chevron-down",
+    "chevron-left",
+    "chevron-right",
+    "chevron-up",
+    "circle",
+    "circle-alert",
+    "circle-check",
+    "clock",
+    "cloud",
+    "code",
+    "coins",
+    "copy",
+    "corner-up-left",
+    "cpu",
+    "credit-card",
+    "database",
+    "download",
+    "ellipsis",
+    "ellipsis-vertical",
+    "external-link",
+    "eye",
+    "eye-off",
+    "file",
+    "file-text",
+    "files",
+    "folder",
+    "funnel",
+    "github",
+    "github-brand",
+    "globe",
+    "hard-drive",
+    "house",
+    "image",
+    "inbox",
+    "info",
+    "key",
+    "laptop",
+    "layout-dashboard",
+    "life-buoy",
+    "link",
+    "linkedin",
+    "list-todo",
+    "loader-circle",
+    "lock",
+    "log-in",
+    "log-out",
+    "mail",
+    "menu",
+    "message-square",
+    "mic",
+    "minus",
+    "monitor",
+    "moon",
+    "music",
+    "network",
+    "package",
+    "panel-left",
+    "paperclip",
+    "pause",
+    "pencil",
+    "play",
+    "plug",
+    "plus",
+    "qr-code",
+    "refresh-cw",
+    "rocket",
+    "scan",
+    "search",
+    "send",
+    "server",
+    "settings",
+    "shield",
+    "shield-check",
+    "skip-back",
+    "skip-forward",
+    "sliders-horizontal",
+    "smartphone",
+    "sparkles",
+    "square",
+    "star",
+    "sun",
+    "table",
+    "tablet",
+    "terminal",
+    "thumbs-down",
+    "thumbs-up",
+    "trash-2",
+    "trending-up",
+    "triangle-alert",
+    "upload",
+    "user",
+    "users",
+    "video",
+    "volume-2",
+    "volume-x",
+    "wallet",
+    "wrench",
+    "x",
+    "x-brand",
+    "zap"
+  ],
+  "tokens": [
+    "accent",
+    "accent-active",
+    "accent-contrast",
+    "accent-hover",
+    "accent-subtle",
+    "accent-subtle-border",
+    "border-code",
+    "border-default",
+    "border-inverse",
+    "border-strong",
+    "brand-100",
+    "brand-200",
+    "brand-300",
+    "brand-400",
+    "brand-50",
+    "brand-500",
+    "brand-600",
+    "brand-700",
+    "brand-800",
+    "brand-900",
+    "brand-950",
+    "caramel-500",
+    "cocoa-700",
+    "cocoa-900",
+    "cocoa-950",
+    "code-divider",
+    "code-edge",
+    "code-edge-hover",
+    "code-ink",
+    "code-ink-bright",
+    "code-ink-faint",
+    "code-ink-muted",
+    "code-ink-strong",
+    "code-ink-subtle",
+    "code-raised",
+    "container-max",
+    "container-text",
+    "control-h-lg",
+    "control-h-md",
+    "control-h-sm",
+    "cream-50",
+    "danger-100",
+    "danger-300",
+    "danger-600",
+    "danger-700",
+    "danger-contrast",
+    "danger-on-dark",
+    "dur-fast",
+    "dur-med",
+    "dur-slow",
+    "ease-in-out",
+    "ease-out",
+    "ease-spring",
+    "focus-ring",
+    "focus-ring-color",
+    "focus-ring-danger",
+    "focus-ring-offset",
+    "font-display",
+    "font-mono",
+    "font-sans",
+    "leading-normal",
+    "leading-relaxed",
+    "leading-snug",
+    "leading-tight",
+    "media-backdrop",
+    "media-backdrop-dot",
+    "media-scrim",
+    "media-scrim-soft",
+    "media-scrim-strong",
+    "overlay-scrim",
+    "peach-200",
+    "radius-full",
+    "radius-lg",
+    "radius-md",
+    "radius-sm",
+    "radius-xl",
+    "sand-100",
+    "sand-200",
+    "sand-25",
+    "sand-300",
+    "sand-400",
+    "sand-50",
+    "sand-500",
+    "sand-600",
+    "sand-700",
+    "sand-800",
+    "sand-900",
+    "sand-950",
+    "shadow-lg",
+    "shadow-md",
+    "shadow-pop",
+    "shadow-sm",
+    "shadow-xl",
+    "shadow-xs",
+    "space-0",
+    "space-1",
+    "space-10",
+    "space-12",
+    "space-16",
+    "space-2",
+    "space-20",
+    "space-24",
+    "space-3",
+    "space-32",
+    "space-4",
+    "space-5",
+    "space-6",
+    "space-8",
+    "success-100",
+    "success-300",
+    "success-600",
+    "success-contrast",
+    "success-on-dark",
+    "surface-brand",
+    "surface-card",
+    "surface-code",
+    "surface-inverse",
+    "surface-page",
+    "surface-subtle",
+    "surface-sunken",
+    "table-pad-x",
+    "table-pad-y",
+    "text-2xl",
+    "text-2xs",
+    "text-3xl",
+    "text-4xl",
+    "text-5xl",
+    "text-6xl",
+    "text-7xl",
+    "text-code",
+    "text-inverse",
+    "text-inverse-muted",
+    "text-lg",
+    "text-link",
+    "text-link-hover",
+    "text-md",
+    "text-muted",
+    "text-on-brand",
+    "text-on-brand-muted",
+    "text-on-media",
+    "text-on-media-muted",
+    "text-primary",
+    "text-secondary",
+    "text-sm",
+    "text-xl",
+    "text-xs",
+    "tracking-display",
+    "tracking-tight",
+    "tracking-wide",
+    "warning-100",
+    "warning-300",
+    "warning-600",
+    "warning-contrast",
+    "warning-on-dark",
+    "weight-bold",
+    "weight-display",
+    "weight-medium",
+    "weight-regular",
+    "weight-semibold",
+    "z-dropdown",
+    "z-modal",
+    "z-overlay",
+    "z-popover",
+    "z-sticky",
+    "z-toast",
+    "z-tooltip"
+  ],
+  "deprecated": [
+    {
+      "component": "Banner",
+      "prop": "onAction",
+      "replacement": "action",
+      "message": "@deprecated pass a node to `action` instead"
+    },
+    {
+      "component": "BarChart",
+      "prop": "formatValue",
+      "replacement": "format",
+      "message": "@deprecated Use `format`. Alias kept for one major; `format` wins when both are passed."
+    },
+    {
+      "component": "Confirmation",
+      "prop": "defaultState",
+      "replacement": "defaultStatus",
+      "message": "@deprecated use `defaultStatus`"
+    },
+    {
+      "component": "Confirmation",
+      "prop": "onStateChange",
+      "replacement": "onStatusChange",
+      "message": "@deprecated use `onStatusChange`"
+    },
+    {
+      "component": "Confirmation",
+      "prop": "state",
+      "replacement": "status",
+      "message": "@deprecated use `status`"
+    },
+    {
+      "component": "EnvList",
+      "prop": "defaultVisible",
+      "replacement": "defaultOpen",
+      "message": "@deprecated use `defaultOpen`"
+    },
+    {
+      "component": "GeneratedImage",
+      "prop": "state",
+      "replacement": "status",
+      "message": "@deprecated use `status`"
+    },
+    {
+      "component": "Sandbox",
+      "prop": "state",
+      "replacement": "status",
+      "message": "@deprecated use `status`"
+    },
+    {
+      "component": "StatusDot",
+      "prop": "state",
+      "replacement": "status",
+      "message": "@deprecated use `status`"
+    },
+    {
+      "component": "StatusDot",
+      "prop": "stateLabel",
+      "replacement": "statusLabel",
+      "message": "@deprecated use `statusLabel`"
+    },
+    {
+      "component": "Suggestions",
+      "prop": "onPick",
+      "replacement": "onSelect",
+      "message": "@deprecated Use `onSelect`. Alias kept for one major; `onSelect` wins when both are passed."
+    },
+    {
+      "component": "Toast",
+      "prop": "actionLabel",
+      "replacement": "action",
+      "message": "@deprecated pass a node to `action` instead"
+    },
+    {
+      "component": "Toast",
+      "prop": "onAction",
+      "replacement": "action",
+      "message": "@deprecated pass a node to `action` instead"
+    },
+    {
+      "component": "Tooltip",
+      "prop": "position",
+      "replacement": "side",
+      "message": "@deprecated Use `side`. Alias kept for one major; `side` wins when both are passed."
+    },
+    {
+      "component": "TreeList",
+      "prop": "onSelect",
+      "replacement": "onChange",
+      "message": "@deprecated Use `onChange`. Alias kept for one major; `onChange` wins when both are passed."
+    },
+    {
+      "component": "WebPreview",
+      "prop": "defaultConsoleOpen",
+      "replacement": "defaultOpen",
+      "message": "@deprecated Use `defaultOpen`. Alias kept for one major; `defaultOpen` wins when both are passed."
+    }
+  ]
+}

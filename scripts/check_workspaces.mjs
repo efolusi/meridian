@@ -18,6 +18,7 @@ if (JSON.stringify(root.workspaces) !== JSON.stringify(expectedWorkspaces)) {
 for (const [folder, name] of [
   ['packages/tokens', '@efolusi/meridian-tokens'],
   ['packages/icons', '@efolusi/meridian-icons'],
+  ['packages/guard', '@efolusi/meridian-guard'],
 ]) {
   const pkg = read(`${folder}/package.json`)
   if (pkg.name !== name) fail(`${folder} must be named ${name}`)

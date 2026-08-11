@@ -1,0 +1,7 @@
+#!/usr/bin/env node
+import { main } from '../src/cli.mjs';
+
+main(process.argv.slice(2)).catch(error => {
+  process.stderr.write(`meridian-guard: ${error.message}\n`);
+  process.exitCode = 2;
+});

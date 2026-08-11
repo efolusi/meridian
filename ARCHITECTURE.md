@@ -14,7 +14,7 @@ meridian/
 ├── showcases/<app>/                     # example apps: see the system in use
 ├── starters/<journey>/                  # copyable journeys: start a surface here
 ├── site/                                # the docs website: consumes all of the above
-├── packages/{tokens,icons}/              # standalone source workspaces
+├── packages/{tokens,icons,guard}/        # standalone source workspaces
 ├── mcp/                                 # independently versioned server workspace
 ├── guidelines/ · skills/ · scripts/
 └── governance docs (README, STYLEGUIDE, CONTRIBUTING, …)
@@ -29,7 +29,7 @@ Three principles produced this layout:
 ## Workspace boundaries
 
 The private root package orchestrates builds and verification. npm workspaces
-cover `packages/*` and `mcp/`: tokens and icons follow the Meridian release
+cover `packages/*` and `mcp/`: tokens, icons, and Guard follow the Meridian release
 version, while the server workspace versions independently. Their source
 workspace manifests are private so an accidental root-level publish cannot ship
 an incomplete package; release builds generate the public package manifests in
@@ -60,6 +60,7 @@ monorepo.
 | `_ds_manifest.json` | DS compiler, `components` + `tokens` by `scripts/sync_manifest.py` | machine-readable inventory for tools and agents |
 | `_adherence.oxlintrc.json` | DS compiler | token/prop adherence rules for linting |
 | `site/registry.json`, `site/registry/*.json` | `scripts/build_registry.py` | open-schema registry items; any static host can serve them |
+| `packages/guard/src/generated/meridian-rules.json` | `scripts/build_guard_rules.mjs` | Guard's component, icon, token, and deprecation contract |
 
 Everything else is authored by hand. Never edit generated files directly — rebuild them. The bundle is reproducible (`node scripts/build_bundle.mjs`), so the "lockstep edit" workaround that this file used to document is retired: there is no longer a situation where a source string must be patched into the artifact by hand.
 

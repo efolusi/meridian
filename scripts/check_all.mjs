@@ -36,6 +36,7 @@ const GENERATORS = [
   ['python3', ['scripts/build_interfaces.py']],
   ['python3', ['scripts/build_llms.py']],
   ['node', ['scripts/build_site_nav.mjs']],
+  ['node', ['scripts/build_guard_rules.mjs']],
 ]
 
 /**
@@ -57,6 +58,7 @@ const GENERATED_PATHS = [
   'tailwind.preset.js',
   'llms-full.txt',
   'site/nav.json',
+  'packages/guard/src/generated/meridian-rules.json',
 ]
 
 const GATES = [
@@ -80,6 +82,8 @@ const GATES = [
   ['Bundle and package size budget', 'node', ['scripts/check_size.mjs']],
   ['Tokens sub-package builds', 'node', ['scripts/build_pkg_tokens.mjs']],
   ['Icons sub-package builds', 'node', ['scripts/build_pkg_icons.mjs']],
+  ['Guard sub-package builds', 'node', ['scripts/build_pkg_guard.mjs']],
+  ['Guard package imports and CLI', 'node', ['scripts/check_pkg_guard.mjs']],
   ['Indonesian descriptions cover the registry', 'node', ['scripts/check_descriptions_id.mjs']],
   ['Types compile', 'node', ['scripts/check_types.mjs']],
 ]
