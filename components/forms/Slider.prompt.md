@@ -1,7 +1,9 @@
-Range input with ink fill and hairline track; label + live value optional.
+Single, range, or multi-thumb numeric selection with horizontal and vertical layouts.
 
 ```jsx
-<Slider label="Usage alert threshold" showValue format={v => v + '%'} defaultValue={80} />
+<Slider defaultValue={[20, 80]} min={0} max={100} step={5} aria-label="Price range" />
 ```
 
-Controlled via `value`/`onChange(n)`, or uncontrolled with `defaultValue`.
+Canonical values and callbacks are arrays: `value`, `defaultValue`,
+`onValueChange`, and `onValueCommit`. Use `orientation="vertical"` when space is
+tall rather than wide. Scalar values and `onChange` remain legacy adapters.

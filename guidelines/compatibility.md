@@ -220,6 +220,22 @@ similarity.
   disabled state, refs, types, registry installation, demos, and tests.
   Meridian's `onChange` callback and direct `Toggle` children remain adapters.
 
+- `RadioGroup` and `RadioGroupItem` support controlled and uncontrolled state,
+  native named grouping, required and disabled propagation, horizontal and
+  vertical orientation, invalid state, refs, types, registry installation,
+  demos, and tests. Meridian's integrated-label `Radio` remains additive.
+
+- `Slider` supports single, range, and multiple thumbs; controlled and
+  uncontrolled arrays; horizontal and vertical orientation; minimum thumb
+  spacing; disabled state; commit callbacks; refs; types; registry
+  installation; demos; and tests. Scalar values and callbacks remain adapters.
+
+- `Pagination`, `PaginationContent`, `PaginationItem`, `PaginationLink`,
+  `PaginationPrevious`, `PaginationNext`, and `PaginationEllipsis` provide
+  semantic navigation and native links, active state, logical RTL-safe layout,
+  refs, types, registry installation, demos, and tests. Meridian's controlled
+  numeric-page shorthand remains available.
+
 
 ## Release gate
 

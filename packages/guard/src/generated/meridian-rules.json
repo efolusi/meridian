@@ -583,6 +583,30 @@
       "sourcePath": "components/navigation/Pagination.jsx"
     },
     {
+      "name": "PaginationContent",
+      "sourcePath": "components/navigation/Pagination.jsx"
+    },
+    {
+      "name": "PaginationEllipsis",
+      "sourcePath": "components/navigation/Pagination.jsx"
+    },
+    {
+      "name": "PaginationItem",
+      "sourcePath": "components/navigation/Pagination.jsx"
+    },
+    {
+      "name": "PaginationLink",
+      "sourcePath": "components/navigation/Pagination.jsx"
+    },
+    {
+      "name": "PaginationNext",
+      "sourcePath": "components/navigation/Pagination.jsx"
+    },
+    {
+      "name": "PaginationPrevious",
+      "sourcePath": "components/navigation/Pagination.jsx"
+    },
+    {
       "name": "PaymentCard",
       "sourcePath": "components/finance/PaymentCard.jsx"
     },

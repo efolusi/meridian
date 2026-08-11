@@ -3610,12 +3610,20 @@ export declare function NumberInput(props: NumberInputProps): React.JSX.Element;
 
 Group: forms · Source: /components/forms/Radio.jsx · Exports: RadioGroup, RadioGroupItem, Radio
 
-Radio for 2–5 mutually exclusive options; group with a shared `name`.
+Compose mutually exclusive choices with `RadioGroup` and `RadioGroupItem`.
 
 ```jsx
-<Radio name="plan" defaultChecked label="Starter" description="Free forever" />
-<Radio name="plan" label="Growth" description="$12 per seat" />
+<RadioGroup defaultValue="starter" aria-label="Plan">
+  <RadioGroupItem id="starter" value="starter" />
+  <Label htmlFor="starter">Starter</Label>
+  <RadioGroupItem id="growth" value="growth" />
+  <Label htmlFor="growth">Growth</Label>
+</RadioGroup>
 ```
+
+Use `value`/`onValueChange` for controlled state. Group-level `name`, `required`,
+`disabled`, and `orientation` propagate to native radio inputs. `Radio` remains
+an additive shorthand with integrated label and description.
 
 ```ts
 export interface RadioProps extends React.InputHTMLAttributes<HTMLInputElement> {
@@ -3668,35 +3676,30 @@ export declare const Select: React.ForwardRefExoticComponent<
 
 Group: forms · Source: /components/forms/Slider.jsx · Exports: Slider
 
-Range input with ink fill and hairline track; label + live value optional.
+Single, range, or multi-thumb numeric selection with horizontal and vertical layouts.
 
 ```jsx
-<Slider label="Usage alert threshold" showValue format={v => v + '%'} defaultValue={80} />
+<Slider defaultValue={[20, 80]} min={0} max={100} step={5} aria-label="Price range" />
 ```
 
-Controlled via `value`/`onChange(n)`, or uncontrolled with `defaultValue`.
+Canonical values and callbacks are arrays: `value`, `defaultValue`,
+`onValueChange`, and `onValueCommit`. Use `orientation="vertical"` when space is
+tall rather than wide. Scalar values and `onChange` remain legacy adapters.
 
 ```ts
-export interface SliderProps {
-  label?: string;
-  /** Show current value right of the label */
-  showValue?: boolean;
-  /** Format the shown value, e.g. v => v + '%' */
-  format?: (v: number) => string;
-  /** @default 0 */ min?: number;
-  /** @default 100 */ max?: number;
-  /** @default 1 */ step?: number;
-  /** Controlled value */
-  value?: number | number[];
-  defaultValue?: number | number[];
-  onChange?: (value: number, e: React.ChangeEvent) => void;
+export interface SliderProps extends Omit<React.InputHTMLAttributes<HTMLInputElement>, 'value' | 'defaultValue' | 'onChange' | 'min' | 'max' | 'step' | 'size'> {
+  label?: string; showValue?: boolean; format?: (value: number) => string;
+  min?: number; max?: number; step?: number;
+  value?: number | number[]; defaultValue?: number | number[];
   onValueChange?: (value: number[]) => void;
   onValueCommit?: (value: number[]) => void;
-  disabled?: boolean;
-  style?: React.CSSProperties;
-  className?: string;
+  /** Legacy callback: scalar for scalar input, array for array input. */ onChange?: (value: number | number[], event: React.ChangeEvent<HTMLInputElement>) => void;
+  orientation?: 'horizontal' | 'vertical';
+  minStepsBetweenThumbs?: number;
+  inverted?: boolean;
+  dir?: 'ltr' | 'rtl';
 }
-export declare const Slider: React.ForwardRefExoticComponent<SliderProps & Omit<React.InputHTMLAttributes<HTMLInputElement>, keyof SliderProps> & React.RefAttributes<HTMLInputElement>>;
+export declare const Slider: React.ForwardRefExoticComponent<SliderProps & React.RefAttributes<HTMLInputElement>>;
 ```
 
 #### Switch
@@ -3941,24 +3944,38 @@ export declare function PageControl(props: PageControlProps): React.JSX.Element;
 
 #### Pagination
 
-Group: navigation · Source: /components/navigation/Pagination.jsx · Exports: Pagination
+Group: navigation · Source: /components/navigation/Pagination.jsx · Exports: Pagination, PaginationContent, PaginationItem, PaginationLink, PaginationPrevious, PaginationNext, PaginationEllipsis
 
-Numbered pager with ellipsis collapsing; active page is an ink chip.
+Semantic page navigation composed from links and list items.
 
 ```jsx
-<Pagination page={page} pageCount={12} onChange={setPage} />
+<Pagination>
+  <PaginationContent>
+    <PaginationItem><PaginationPrevious href="?page=1" /></PaginationItem>
+    <PaginationItem><PaginationLink href="?page=2" isActive>2</PaginationLink></PaginationItem>
+    <PaginationItem><PaginationEllipsis /></PaginationItem>
+    <PaginationItem><PaginationNext href="?page=3" /></PaginationItem>
+  </PaginationContent>
+</Pagination>
 ```
 
+Links are real anchors so routing, modified clicks, and copy-link behavior stay
+native. The `page`/`pageCount`/`onChange` shorthand remains available.
+
 ```ts
-export interface PaginationProps {
-  /** Current page, 1-based */
-  page: number;
-  pageCount: number;
-  onChange?: (page: number) => void;
-  style?: React.CSSProperties;
-  className?: string;
+export interface PaginationProps extends Omit<React.HTMLAttributes<HTMLElement>, 'onChange'> {
+  /** Legacy controlled page adapter. */ page?: number;
+  /** Legacy total-pages adapter. */ pageCount?: number;
+  /** Legacy page callback. */ onChange?: (page: number) => void;
 }
-export declare function Pagination(props: PaginationProps): React.JSX.Element;
+export interface PaginationLinkProps extends React.AnchorHTMLAttributes<HTMLAnchorElement> { isActive?: boolean; size?: 'default' | 'icon'; }
+export declare const Pagination: React.ForwardRefExoticComponent<PaginationProps & React.RefAttributes<HTMLElement>>;
+export declare const PaginationContent: React.ForwardRefExoticComponent<React.HTMLAttributes<HTMLUListElement> & React.RefAttributes<HTMLUListElement>>;
+export declare const PaginationItem: React.ForwardRefExoticComponent<React.LiHTMLAttributes<HTMLLIElement> & React.RefAttributes<HTMLLIElement>>;
+export declare const PaginationLink: React.ForwardRefExoticComponent<PaginationLinkProps & React.RefAttributes<HTMLAnchorElement>>;
+export declare const PaginationPrevious: React.ForwardRefExoticComponent<PaginationLinkProps & React.RefAttributes<HTMLAnchorElement>>;
+export declare const PaginationNext: React.ForwardRefExoticComponent<PaginationLinkProps & React.RefAttributes<HTMLAnchorElement>>;
+export declare const PaginationEllipsis: React.ForwardRefExoticComponent<React.HTMLAttributes<HTMLSpanElement> & React.RefAttributes<HTMLSpanElement>>;
 ```
 
 #### SegmentedControl

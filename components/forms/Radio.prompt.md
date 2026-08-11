@@ -1,6 +1,14 @@
-Radio for 2–5 mutually exclusive options; group with a shared `name`.
+Compose mutually exclusive choices with `RadioGroup` and `RadioGroupItem`.
 
 ```jsx
-<Radio name="plan" defaultChecked label="Starter" description="Free forever" />
-<Radio name="plan" label="Growth" description="$12 per seat" />
+<RadioGroup defaultValue="starter" aria-label="Plan">
+  <RadioGroupItem id="starter" value="starter" />
+  <Label htmlFor="starter">Starter</Label>
+  <RadioGroupItem id="growth" value="growth" />
+  <Label htmlFor="growth">Growth</Label>
+</RadioGroup>
 ```
+
+Use `value`/`onValueChange` for controlled state. Group-level `name`, `required`,
+`disabled`, and `orientation` propagate to native radio inputs. `Radio` remains
+an additive shorthand with integrated label and description.

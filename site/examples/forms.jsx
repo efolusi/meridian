@@ -241,10 +241,10 @@ export function NativeSelectDemo() {
 // @demo Slider Value formatting
 export function SliderDemo() {
   const { Slider } = window.EfolusiDesignSystem_4ffc3d;
-  const [v, setV] = React.useState(40);
+  const [memoryWindow, setMemoryWindow] = React.useState([32, 96]);
   return (
     <div style={{ width: 320 }}>
-      <Slider label="Memory limit" min={0} max={128} step={8} value={[v]} onValueChange={([next]) => setV(next)} showValue format={(n) => n + ' GB'} />
+      <Slider label="Autoscaling window" min={0} max={128} step={8} value={memoryWindow} onValueChange={setMemoryWindow} minStepsBetweenThumbs={1} showValue format={(n) => n + ' GB'} />
     </div>
   );
 }

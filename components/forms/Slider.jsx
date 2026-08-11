@@ -1,39 +1,93 @@
 import React from 'react';
-import { injectEfCss } from './Button.jsx';
+import { injectEfCss, mergeRefs } from './Button.jsx';
 import { useFieldProps } from './FormField.jsx';
+
 const CSS = `
-.ef-slider{display:flex;flex-direction:column;gap:8px}
+.ef-slider{display:flex;flex-direction:column;gap:8px;touch-action:none;user-select:none}
 .ef-slider__row{display:flex;align-items:center;gap:12px}
-.ef-slider__label{font-size:var(--text-sm);font-weight:var(--weight-semibold);color:var(--text-primary);display:flex;justify-content:space-between}
+.ef-slider__label{display:flex;justify-content:space-between;font-size:var(--text-sm);font-weight:var(--weight-semibold);color:var(--text-primary)}
 .ef-slider__val{font-family:var(--font-mono);font-size:var(--text-sm);font-weight:400;color:var(--text-muted)}
-.ef-slider__input{-webkit-appearance:none;appearance:none;width:100%;height:24px;background:transparent;cursor:pointer;margin:0}
-.ef-slider__input::-webkit-slider-runnable-track{height:2px;border-radius:2px;background:linear-gradient(to right,var(--accent) var(--ef-fill,50%),var(--border-strong) var(--ef-fill,50%))}
-.ef-slider__input::-webkit-slider-thumb{-webkit-appearance:none;width:14px;height:14px;margin-top:-6px;border-radius:var(--radius-full);background:var(--surface-card);border:1.5px solid var(--accent);transition:transform var(--dur-fast) var(--ease-out)}
-.ef-slider__input:active::-webkit-slider-thumb{transform:scale(1.15)}
+.ef-slider__control{position:relative;display:flex;align-items:center;width:100%;height:24px}
+.ef-slider__rail{position:absolute;inset-inline:0;height:3px;border-radius:var(--radius-full);background:var(--border-strong);overflow:hidden}
+.ef-slider__range{position:absolute;inset-block:0;border-radius:inherit;background:var(--accent)}
+.ef-slider__input{position:absolute;inset:0;width:100%;height:24px;margin:0;background:transparent;pointer-events:none;-webkit-appearance:none;appearance:none}
+.ef-slider__input::-webkit-slider-runnable-track{height:3px;background:transparent}
+.ef-slider__input::-webkit-slider-thumb{width:16px;height:16px;margin-top:-6.5px;border:1.5px solid var(--accent);border-radius:var(--radius-full);background:var(--surface-card);box-shadow:var(--shadow-xs);pointer-events:auto;cursor:grab;-webkit-appearance:none;transition:transform var(--dur-fast) var(--ease-out)}
+.ef-slider__input::-moz-range-track{height:3px;background:transparent}
+.ef-slider__input::-moz-range-thumb{width:13px;height:13px;border:1.5px solid var(--accent);border-radius:var(--radius-full);background:var(--surface-card);box-shadow:var(--shadow-xs);pointer-events:auto;cursor:grab}
+.ef-slider__input:active::-webkit-slider-thumb{cursor:grabbing;transform:scale(1.12)}
 .ef-slider__input:focus-visible{outline:none}
 .ef-slider__input:focus-visible::-webkit-slider-thumb{box-shadow:var(--focus-ring)}
-.ef-slider__input:disabled{opacity:.45;cursor:not-allowed}
-.ef-slider__input::-moz-range-track{height:2px;border-radius:2px;background:var(--border-strong)}
-.ef-slider__input::-moz-range-progress{height:2px;border-radius:2px;background:var(--accent)}
-.ef-slider__input::-moz-range-thumb{width:12px;height:12px;border-radius:var(--radius-full);background:var(--surface-card);border:1.5px solid var(--accent)}
+.ef-slider__input:focus-visible::-moz-range-thumb{box-shadow:var(--focus-ring)}
+.ef-slider[data-disabled]{opacity:.45;cursor:not-allowed}
+.ef-slider[data-disabled] .ef-slider__input::-webkit-slider-thumb{cursor:not-allowed}
+.ef-slider[data-orientation="vertical"]{display:inline-flex;height:180px}
+.ef-slider[data-orientation="vertical"] .ef-slider__control{width:24px;height:100%}
+.ef-slider[data-orientation="vertical"] .ef-slider__rail{inset-block:0;inset-inline:auto;width:3px;height:auto;inset-inline-start:50%;transform:translateX(-50%)}
+.ef-slider[data-orientation="vertical"] .ef-slider__input{width:24px;height:100%;writing-mode:vertical-lr;direction:rtl}
 `;
-export const Slider = React.forwardRef(function Slider({ label, showValue, format, min = 0, max = 100, step = 1, value: valueProp, defaultValue, onValueChange, onValueCommit, onChange, disabled, style, className, ...rest }, ref) {
+
+function clamp(value, min, max) { return Math.max(min, Math.min(max, value)); }
+function asArray(value, fallback) { return Array.isArray(value) ? value : value == null ? fallback : [value]; }
+
+export const Slider = React.forwardRef(function Slider({ label, showValue, format, min = 0, max = 100, step = 1, value: valueProp, defaultValue, onValueChange, onValueCommit, onChange, disabled, orientation = 'horizontal', minStepsBetweenThumbs = 0, inverted = false, dir, style, className, ...rest }, forwardedRef) {
   injectEfCss('ef-css-slider', CSS);
-  // Picks up id / aria wiring when nested in a FormField; standalone this is a no-op.
   const field = useFieldProps({ id: rest.id, 'aria-describedby': rest['aria-describedby'] });
-  const arrays = Array.isArray(valueProp) || Array.isArray(defaultValue);
-  const initial = defaultValue != null ? defaultValue : (arrays ? [(min + max) / 2] : (min + max) / 2);
-  const [inner, setInner] = React.useState(initial);
-  const current = valueProp != null ? valueProp : inner;
-  const v = Array.isArray(current) ? current[0] : current;
-  const pct = ((v - min) / (max - min)) * 100;
-  const handle = e => { const n = +e.target.value; const next = arrays ? [n] : n; if (valueProp == null) setInner(next); if (onValueChange) onValueChange(arrays ? [n] : [n]); if (onChange) onChange(n, e); };
-  const input = <input ref={ref} type="range" data-slot="slider" className="ef-slider__input" style={{ '--ef-fill': pct + '%' }} min={min} max={max} step={step} value={v} onChange={handle} onPointerUp={() => onValueCommit && onValueCommit(Array.isArray(current) ? current : [current])} disabled={disabled} {...rest} {...field.controlProps} />;
-  if (!label && !showValue) return <span className={`ef-slider${className ? ' ' + className : ''}`} style={style}>{input}</span>;
-  return (
-    <label className={`ef-slider${className ? ' ' + className : ''}`} style={style}>
-      {(label || showValue) && <span className="ef-slider__label">{label}<span className="ef-slider__val">{showValue ? (format ? format(v) : v) : ''}</span></span>}
-      {input}
-    </label>
+  const canonical = Array.isArray(valueProp) || Array.isArray(defaultValue);
+  const fallback = [(min + max) / 2];
+  const [inner, setInner] = React.useState(() => asArray(defaultValue, fallback));
+  const values = asArray(valueProp, inner).map(value => clamp(Number(value), min, max));
+  const latestRef = React.useRef(values);
+  latestRef.current = values;
+  const inputRefs = React.useRef([]);
+  const span = max - min || 1;
+  const percentages = values.map(value => ((value - min) / span) * 100);
+  const low = values.length > 1 ? Math.min(...percentages) : 0;
+  const high = values.length > 1 ? Math.max(...percentages) : percentages[0];
+  const displayValue = values.map(value => format ? format(value) : value).join(', ');
+
+  const update = (index, nextNumber, event) => {
+    const next = [...values];
+    const gap = minStepsBetweenThumbs * step;
+    const lower = index > 0 ? next[index - 1] + gap : min;
+    const upper = index < next.length - 1 ? next[index + 1] - gap : max;
+    next[index] = clamp(nextNumber, lower, upper);
+    latestRef.current = next;
+    if (valueProp === undefined) setInner(next);
+    onValueChange?.(next);
+    onChange?.(canonical ? next : next[0], event);
+  };
+
+  const rangeStyle = orientation === 'vertical'
+    ? { bottom: `${low}%`, height: `${high - low}%`, width: '100%' }
+    : { insetInlineStart: `${inverted ? 100 - high : low}%`, width: `${high - low}%` };
+  const control = (
+    <span className="ef-slider__control">
+      <span className="ef-slider__rail" data-slot="slider-track"><span className="ef-slider__range" data-slot="slider-range" style={rangeStyle} /></span>
+      {values.map((value, index) => (
+        <input
+          {...rest}
+          {...field.controlProps}
+          key={index}
+          ref={mergeRefs(index === 0 ? forwardedRef : null, node => { inputRefs.current[index] = node; })}
+          type="range"
+          data-slot="slider-thumb"
+          aria-label={rest['aria-label'] ? `${rest['aria-label']}${values.length > 1 ? ` ${index + 1}` : ''}` : undefined}
+          min={index > 0 ? values[index - 1] + minStepsBetweenThumbs * step : min}
+          max={index < values.length - 1 ? values[index + 1] - minStepsBetweenThumbs * step : max}
+          step={step}
+          value={value}
+          disabled={disabled}
+          dir={inverted ? (dir === 'rtl' ? 'ltr' : 'rtl') : dir}
+          className="ef-slider__input"
+          onChange={event => update(index, Number(event.target.value), event)}
+          onPointerUp={() => onValueCommit?.(latestRef.current)}
+          onKeyUp={event => { if (['ArrowLeft', 'ArrowRight', 'ArrowUp', 'ArrowDown', 'Home', 'End'].includes(event.key)) onValueCommit?.(latestRef.current); }}
+        />
+      ))}
+    </span>
   );
+  const rootProps = { 'data-slot': 'slider', 'data-orientation': orientation, 'data-disabled': disabled ? '' : undefined, dir, className: `ef-slider${className ? ' ' + className : ''}`, style };
+  if (!label && !showValue) return <span {...rootProps}>{control}</span>;
+  return <label {...rootProps}>{(label || showValue) ? <span className="ef-slider__label">{label}<span className="ef-slider__val">{showValue ? displayValue : ''}</span></span> : null}{control}</label>;
 });

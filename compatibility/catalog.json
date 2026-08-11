@@ -236,7 +236,14 @@
       "tests": ["tests/compatibility-primitives.test.jsx"]
     },
     { "name": "Navigation Menu", "status": "unverified" },
-    { "name": "Pagination", "status": "unverified" },
+    {
+      "name": "Pagination",
+      "status": "proven",
+      "requiredExports": ["Pagination", "PaginationContent", "PaginationItem", "PaginationLink", "PaginationPrevious", "PaginationNext", "PaginationEllipsis"],
+      "sourceFiles": ["components/navigation/Pagination.jsx", "components/navigation/Pagination.d.ts"],
+      "registryItems": ["site/registry/pagination.json"],
+      "tests": ["tests/radio-slider-pagination-compatibility.test.jsx"]
+    },
     {
       "name": "Popover",
       "status": "proven",
@@ -254,7 +261,14 @@
       "tests": ["tests/progress-compatibility.test.jsx"]
     },
     { "name": "Questionnaire", "status": "unverified" },
-    { "name": "Radio Group", "status": "unverified" },
+    {
+      "name": "Radio Group",
+      "status": "proven",
+      "requiredExports": ["RadioGroup", "RadioGroupItem"],
+      "sourceFiles": ["components/forms/Radio.jsx", "components/forms/Radio.d.ts"],
+      "registryItems": ["site/registry/radio-group.json"],
+      "tests": ["tests/radio-slider-pagination-compatibility.test.jsx", "tests/five-primitives-compatibility.test.jsx"]
+    },
     { "name": "Resizable", "status": "unverified" },
     { "name": "Scroll Area", "status": "unverified" },
     { "name": "Select", "status": "unverified" },
@@ -276,7 +290,14 @@
       "registryItems": ["site/registry/skeleton.json"],
       "tests": ["tests/simple-primitives-compatibility.test.jsx"]
     },
-    { "name": "Slider", "status": "unverified" },
+    {
+      "name": "Slider",
+      "status": "proven",
+      "requiredExports": ["Slider"],
+      "sourceFiles": ["components/forms/Slider.jsx", "components/forms/Slider.d.ts"],
+      "registryItems": ["site/registry/slider.json"],
+      "tests": ["tests/radio-slider-pagination-compatibility.test.jsx", "tests/interaction-stateful.test.jsx"]
+    },
     {
       "name": "Spinner",
       "status": "proven",

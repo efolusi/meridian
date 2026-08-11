@@ -2967,7 +2967,7 @@
       "name": "radio-group",
       "type": "registry:ui",
       "title": "RadioGroup + RadioGroupItem + Radio",
-      "description": "Radio for 2\u20135 mutually exclusive options; group with a shared `name`.",
+      "description": "Compose mutually exclusive choices with `RadioGroup` and `RadioGroupItem`.",
       "dependencies": [
         "react"
       ],
@@ -2998,7 +2998,7 @@
       "name": "radio",
       "type": "registry:ui",
       "title": "RadioGroup + RadioGroupItem + Radio (legacy registry alias)",
-      "description": "Radio for 2\u20135 mutually exclusive options; group with a shared `name`.",
+      "description": "Compose mutually exclusive choices with `RadioGroup` and `RadioGroupItem`.",
       "dependencies": [
         "react"
       ],
@@ -3061,7 +3061,7 @@
       "name": "slider",
       "type": "registry:ui",
       "title": "Slider",
-      "description": "Range input with ink fill and hairline track; label + live value optional.",
+      "description": "Single, range, or multi-thumb numeric selection with horizontal and vertical layouts.",
       "dependencies": [
         "react"
       ],
@@ -3307,8 +3307,8 @@
     {
       "name": "pagination",
       "type": "registry:ui",
-      "title": "Pagination",
-      "description": "Numbered pager with ellipsis collapsing; active page is an ink chip.",
+      "title": "Pagination + PaginationContent + PaginationItem + PaginationLink + PaginationPrevious + PaginationNext + PaginationEllipsis",
+      "description": "Semantic page navigation composed from links and list items.",
       "dependencies": [
         "react"
       ],

@@ -46,9 +46,19 @@ export function PageControlDemo() {
 
 // @demo Pagination Numbered pages
 export function PaginationDemo() {
-  const { Pagination } = window.EfolusiDesignSystem_4ffc3d;
-  const [page, setPage] = React.useState(3);
-  return <Pagination page={page} pageCount={12} onChange={setPage} />;
+  const { Pagination, PaginationContent, PaginationItem, PaginationPrevious, PaginationLink, PaginationEllipsis, PaginationNext } = window.EfolusiDesignSystem_4ffc3d;
+  return (
+    <Pagination>
+      <PaginationContent>
+        <PaginationItem><PaginationPrevious href="#runs-page-1" /></PaginationItem>
+        <PaginationItem><PaginationLink href="#runs-page-1">1</PaginationLink></PaginationItem>
+        <PaginationItem><PaginationLink href="#runs-page-2" isActive>2</PaginationLink></PaginationItem>
+        <PaginationItem><PaginationLink href="#runs-page-3">3</PaginationLink></PaginationItem>
+        <PaginationItem><PaginationEllipsis /></PaginationItem>
+        <PaginationItem><PaginationNext href="#runs-page-3" /></PaginationItem>
+      </PaginationContent>
+    </Pagination>
+  );
 }
 
 // @demo SegmentedControl Exclusive views
