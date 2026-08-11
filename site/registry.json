@@ -300,6 +300,36 @@
       ]
     },
     {
+      "name": "marker",
+      "type": "registry:ui",
+      "title": "Marker + MarkerIcon + MarkerContent",
+      "description": "Use `Marker` for compact status notes, system events, bordered rows, and labeled",
+      "dependencies": [
+        "react"
+      ],
+      "registryDependencies": [
+        "https://meridian.efolusi.com/site/registry/meridian-base.json",
+        "https://meridian.efolusi.com/site/registry/button.json"
+      ],
+      "files": [
+        {
+          "path": "components/ai/Marker.jsx",
+          "type": "registry:ui"
+        },
+        {
+          "path": "components/ai/Marker.d.ts",
+          "type": "registry:component"
+        },
+        {
+          "path": "components/ai/Marker.prompt.md",
+          "type": "registry:component"
+        }
+      ],
+      "categories": [
+        "ai"
+      ]
+    },
+    {
       "name": "modelselector",
       "type": "registry:ui",
       "title": "ModelSelector",

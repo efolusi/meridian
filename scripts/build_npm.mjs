@@ -22,6 +22,7 @@ const Babel = require('@babel/standalone');
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const DIST = path.join(ROOT, 'dist');
 const CHECK = process.argv.includes('--check');
+const PUBLIC_HELPERS = new Set(['markerVariants']);
 
 const pkg = JSON.parse(fs.readFileSync(path.join(ROOT, 'package.json'), 'utf8'));
 const version = JSON.parse(fs.readFileSync(path.join(ROOT, '_ds_manifest.json'), 'utf8')).version;
@@ -150,13 +151,13 @@ export function Icon({ name, size = 16, strokeWidth = 1.5, title, className, sty
 // The icons are Lucide-derived, so their licence has to travel with them.
 files.set('assets/icons/LICENSE-Lucide.txt', fs.readFileSync(path.join(ICON_DIR, 'LICENSE-Lucide.txt'), 'utf8'));
 
-// Root barrel: every public (capitalised) export, re-exported.
+// Root barrel: every component plus explicitly public lowercase helpers.
 const barrel = [];
 const barrelTypes = [];
 for (const { group, name } of sources()) {
   const src = fs.readFileSync(path.join(ROOT, 'components', group, `${name}.jsx`), 'utf8');
   const names = [...src.matchAll(/^export (?:function|const) (\w+)/gm)].map(m => m[1])
-    .filter(n => n[0] === n[0].toUpperCase());
+    .filter(n => n[0] === n[0].toUpperCase() || PUBLIC_HELPERS.has(n));
   if (!names.length) continue;
   barrel.push(`export { ${names.join(', ')} } from './${group}/${name}.js';`);
   if (fs.existsSync(path.join(ROOT, 'components', group, `${name}.d.ts`))) {

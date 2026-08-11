@@ -30,7 +30,7 @@ Dark mode: set data-theme="dark" on any subtree. Compact density: data-density="
 
 ## Components
 
-113 components across 12 groups: ai, code, data, dates, display, feedback, files, finance, forms, icons, navigation, overlay. Each entry lists the component's public exports, its usage guidance (.prompt.md), and its typed props interface (.d.ts).
+114 components across 12 groups: ai, code, data, dates, display, feedback, files, finance, forms, icons, navigation, overlay. Each entry lists the component's public exports, its usage guidance (.prompt.md), and its typed props interface (.d.ts).
 
 ### ai
 
@@ -325,6 +325,57 @@ export interface GeneratedImageProps {
   className?: string;
 }
 export declare function GeneratedImage(props: GeneratedImageProps): React.JSX.Element;
+```
+
+#### Marker
+
+Group: ai · Source: /components/ai/Marker.jsx · Exports: Marker, MarkerIcon, MarkerContent
+
+# Marker
+
+Use `Marker` for compact status notes, system events, bordered rows, and labeled
+dividers inside a timeline or conversation. Compose visible text with
+`MarkerContent`; place decorative graphics inside `MarkerIcon`.
+
+## API
+
+- `variant`: `default`, `border`, or `separator`.
+- `render`: an element or render function when the marker must be a real link or
+  button.
+- `MarkerIcon`: always decorative and hidden from assistive technology.
+- `markerVariants`: returns the root class names for custom compositions.
+
+The root is presentational by default. Add `role="status"` only when dynamic
+updates should be announced. Do not add `role="separator"` to a labeled divider;
+its visible text should remain ordinary content.
+
+```ts
+import * as React from 'react';
+
+export type MarkerVariant = 'default' | 'border' | 'separator';
+
+export interface MarkerStyleOptions {
+  variant?: MarkerVariant;
+  className?: string;
+}
+
+export interface MarkerProps extends React.HTMLAttributes<HTMLElement> {
+  /** Layout treatment. @default 'default' */
+  variant?: MarkerVariant;
+  /** Replace the default root with an element or render function. */
+  render?: React.ReactElement | ((props: React.HTMLAttributes<HTMLElement> & { ref?: React.Ref<HTMLElement> }) => React.ReactElement);
+}
+
+export declare function markerVariants(options?: MarkerStyleOptions): string;
+export declare const Marker: React.ForwardRefExoticComponent<
+  MarkerProps & React.RefAttributes<HTMLElement>
+>;
+export declare const MarkerIcon: React.ForwardRefExoticComponent<
+  React.HTMLAttributes<HTMLSpanElement> & React.RefAttributes<HTMLSpanElement>
+>;
+export declare const MarkerContent: React.ForwardRefExoticComponent<
+  React.HTMLAttributes<HTMLSpanElement> & React.RefAttributes<HTMLSpanElement>
+>;
 ```
 
 #### ModelSelector
