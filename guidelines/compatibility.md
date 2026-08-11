@@ -111,8 +111,8 @@ similarity.
   Meridian's tone, size, and status-dot helpers remain additive extensions.
 - `Spinner` renders an accessible SVG status indicator, accepts native SVG
   props and accessible-name overrides, forwards refs, and includes types,
-  registry installation, demos, and tests. Meridian's numeric size and label
-  aliases remain additive extensions.
+  registry installation, demos, and tests. Dimensions and accessible naming use
+  native SVG attributes without a parallel alias contract.
 - `Skeleton` renders a native div, forwards refs and HTML attributes, and
   includes types, registry installation, demos, and tests. Meridian's shape,
   dimension, and multi-line helpers remain additive extensions.

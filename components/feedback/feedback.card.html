@@ -21,7 +21,7 @@ function Demo() {
       <Progress label="Seats used" value={4} max={5} showValue format={(v, m) => v + ' of ' + m} />
       <Progress label="API quota" value={92} tone="danger" showValue />
       <div className="show-tip" style={{ display: 'flex', gap: 16, alignItems: 'center' }}>
-        <Spinner label="Loading customers…" />
+        <Spinner aria-label="Loading customers…" />
         <Tooltip label="Tooltips settle in fast"><Button size="sm" variant="secondary" iconLeft="info">Hover me</Button></Tooltip>
         <Button size="sm" onClick={() => setOpen(true)}>Open dialog</Button>
         <Button size="sm" variant="danger" onClick={() => setConfirm(true)}>Delete…</Button>

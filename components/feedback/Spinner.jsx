@@ -7,7 +7,7 @@ const CSS = `
 `;
 
 export const Spinner = React.forwardRef(function Spinner(
-  { size = 16, label, className, width, height, ...props },
+  { className, ...props },
   ref,
 ) {
   injectEfCss('ef-css-spinner', CSS);
@@ -15,15 +15,15 @@ export const Spinner = React.forwardRef(function Spinner(
     <svg
       ref={ref}
       role="status"
-      aria-label={label || 'Loading'}
+      aria-label="Loading"
       viewBox="0 0 24 24"
       fill="none"
       stroke="currentColor"
       strokeWidth="2"
       strokeLinecap="round"
       strokeLinejoin="round"
-      width={width ?? size}
-      height={height ?? size}
+      width="16"
+      height="16"
       className={`ef-spinner${className ? ' ' + className : ''}`}
       {...props}
     >

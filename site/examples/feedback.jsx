@@ -104,10 +104,10 @@ export function SpinnerDemo() {
   const { Spinner } = window.EfolusiDesignSystem_4ffc3d;
   return (
     <div style={{ display: 'flex', gap: 22, alignItems: 'center' }}>
-      <Spinner size={14} />
-      <Spinner size={20} />
+      <Spinner width={14} height={14} />
+      <Spinner width={20} height={20} />
       <span style={{ display: 'inline-flex', alignItems: 'center', gap: 8, fontSize: 'var(--text-sm)', color: 'var(--text-muted)' }}>
-        <Spinner size={28} aria-label="Restoring backup" /> Restoring backup…
+        <Spinner width={28} height={28} aria-label="Restoring backup" /> Restoring backup…
       </span>
     </div>
   );

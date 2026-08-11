@@ -14,17 +14,17 @@
     {
       "path": "components/feedback/Spinner.jsx",
       "type": "registry:ui",
-      "content": "import React from 'react';\nimport { injectEfCss } from '../forms/Button.jsx';\n\nconst CSS = `\n@keyframes ef-spinner{to{transform:rotate(360deg)}}\n.ef-spinner{display:inline-block;flex:none;color:var(--text-muted);animation:ef-spinner .7s linear infinite}\n`;\n\nexport const Spinner = React.forwardRef(function Spinner(\n  { size = 16, label, className, width, height, ...props },\n  ref,\n) {\n  injectEfCss('ef-css-spinner', CSS);\n  return (\n    <svg\n      ref={ref}\n      role=\"status\"\n      aria-label={label || 'Loading'}\n      viewBox=\"0 0 24 24\"\n      fill=\"none\"\n      stroke=\"currentColor\"\n      strokeWidth=\"2\"\n      strokeLinecap=\"round\"\n      strokeLinejoin=\"round\"\n      width={width ?? size}\n      height={height ?? size}\n      className={`ef-spinner${className ? ' ' + className : ''}`}\n      {...props}\n    >\n      <path d=\"M21 12a9 9 0 1 1-6.219-8.56\" />\n    </svg>\n  );\n});\n"
+      "content": "import React from 'react';\nimport { injectEfCss } from '../forms/Button.jsx';\n\nconst CSS = `\n@keyframes ef-spinner{to{transform:rotate(360deg)}}\n.ef-spinner{display:inline-block;flex:none;color:var(--text-muted);animation:ef-spinner .7s linear infinite}\n`;\n\nexport const Spinner = React.forwardRef(function Spinner(\n  { className, ...props },\n  ref,\n) {\n  injectEfCss('ef-css-spinner', CSS);\n  return (\n    <svg\n      ref={ref}\n      role=\"status\"\n      aria-label=\"Loading\"\n      viewBox=\"0 0 24 24\"\n      fill=\"none\"\n      stroke=\"currentColor\"\n      strokeWidth=\"2\"\n      strokeLinecap=\"round\"\n      strokeLinejoin=\"round\"\n      width=\"16\"\n      height=\"16\"\n      className={`ef-spinner${className ? ' ' + className : ''}`}\n      {...props}\n    >\n      <path d=\"M21 12a9 9 0 1 1-6.219-8.56\" />\n    </svg>\n  );\n});\n"
     },
     {
       "path": "components/feedback/Spinner.d.ts",
       "type": "registry:component",
-      "content": "export interface SpinnerProps extends React.SVGProps<SVGSVGElement> {\n  /** Meridian legacy pixel-size helper. @default 16 */\n  size?: number;\n  /** Meridian legacy accessible-label alias. */\n  label?: string;\n}\nexport declare const Spinner: React.ForwardRefExoticComponent<SpinnerProps & React.RefAttributes<SVGSVGElement>>;\n"
+      "content": "export type SpinnerProps = React.SVGProps<SVGSVGElement>;\nexport declare const Spinner: React.ForwardRefExoticComponent<SpinnerProps & React.RefAttributes<SVGSVGElement>>;\n"
     },
     {
       "path": "components/feedback/Spinner.prompt.md",
       "type": "registry:component",
-      "content": "Accessible SVG loading indicator. It accepts native SVG attributes and forwards its ref.\n\n```jsx\n<Spinner />\n<Spinner aria-label=\"Saving changes\" width={20} height={20} />\n```\n\nThe additive `size` and `label` aliases remain available for existing Meridian code.\n"
+      "content": "Accessible SVG loading indicator. It accepts native SVG attributes and forwards its ref.\n\n```jsx\n<Spinner />\n<Spinner aria-label=\"Saving changes\" width={20} height={20} />\n```\n\nUse native `width` and `height` attributes to change dimensions and `aria-label` to describe a specific operation.\n"
     }
   ],
   "categories": [

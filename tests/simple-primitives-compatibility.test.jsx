@@ -36,8 +36,8 @@ describe('Spinner compatibility contract', () => {
     expect(spinner.getAttribute('height')).toBe('16');
   });
 
-  it('keeps the legacy size and label aliases', () => {
-    render(<Spinner size={24} label="Restoring" />);
+  it('accepts native dimensions and an accessible-name override', () => {
+    render(<Spinner width={24} height={24} aria-label="Restoring" />);
     const spinner = screen.getByRole('status', { name: 'Restoring' });
     expect(spinner.getAttribute('width')).toBe('24');
     expect(spinner.getAttribute('height')).toBe('24');

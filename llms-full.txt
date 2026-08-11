@@ -2733,15 +2733,10 @@ Accessible SVG loading indicator. It accepts native SVG attributes and forwards 
 <Spinner aria-label="Saving changes" width={20} height={20} />
 ```
 
-The additive `size` and `label` aliases remain available for existing Meridian code.
+Use native `width` and `height` attributes to change dimensions and `aria-label` to describe a specific operation.
 
 ```ts
-export interface SpinnerProps extends React.SVGProps<SVGSVGElement> {
-  /** Meridian legacy pixel-size helper. @default 16 */
-  size?: number;
-  /** Meridian legacy accessible-label alias. */
-  label?: string;
-}
+export type SpinnerProps = React.SVGProps<SVGSVGElement>;
 export declare const Spinner: React.ForwardRefExoticComponent<SpinnerProps & React.RefAttributes<SVGSVGElement>>;
 ```
 
