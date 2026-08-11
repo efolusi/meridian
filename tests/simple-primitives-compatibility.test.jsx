@@ -16,10 +16,12 @@ describe('Skeleton compatibility contract', () => {
     expect(skeleton.classList.contains('rounded')).toBe(true);
   });
 
-  it('preserves the legacy shape and multi-line helpers', () => {
-    const { container } = render(<Skeleton variant="text" lines={3} width="80%" data-testid="lines" />);
-    expect(screen.getByTestId('lines').children).toHaveLength(3);
-    expect(container.querySelectorAll('.ef-skel')).toHaveLength(3);
+  it('accepts native style attributes without changing its element shape', () => {
+    render(<Skeleton style={{ width: '80%', height: 12, borderRadius: 999 }} data-testid="styled" />);
+    const skeleton = screen.getByTestId('styled');
+    expect(skeleton.style.width).toBe('80%');
+    expect(skeleton.style.height).toBe('12px');
+    expect(skeleton.style.borderRadius).toBe('999px');
   });
 });
 

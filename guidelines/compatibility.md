@@ -114,8 +114,8 @@ similarity.
   registry installation, demos, and tests. Dimensions and accessible naming use
   native SVG attributes without a parallel alias contract.
 - `Skeleton` renders a native div, forwards refs and HTML attributes, and
-  includes types, registry installation, demos, and tests. Meridian's shape,
-  dimension, and multi-line helpers remain additive extensions.
+  includes types, registry installation, demos, and tests. Shape, dimensions,
+  and repeated lines use native styles and explicit composition.
 - `Label` preserves native label attributes and click-to-focus association,
   forwards refs, supports consumer classes/styles, and includes types, registry
   installation, demos, and tests. Meridian's required marker and hint remain

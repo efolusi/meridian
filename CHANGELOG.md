@@ -2,6 +2,7 @@
 
 ## Unreleased
 
+- **Skeleton is a single native div primitive.** The shape, width, height, and multi-line renderer aliases were removed; maintained consumers now express dimensions through native styles and repeated placeholders through explicit composition.
 - **Spinner uses its native SVG contract.** The numeric `size` and `label` aliases were removed; dimensions now use `width`/`height`, accessible naming uses `aria-label`, and maintained demos and tests follow the same contract.
 - **Avatar is composition-only.** Maintained consumers now render `AvatarImage`, `AvatarFallback`, and `AvatarBadge` explicitly, use named sizes, and compose groups with `AvatarGroupCount`; the parallel `name`, `src`, and numeric-size renderer has been removed from runtime and types.
 - **Card is composition-only.** The parallel `title`, `subtitle`, `actions`, `footer`, and `padding` shorthand renderer has been removed. Maintained blocks, demos, showcases, docs, prompts, and tests now use the explicit Card part family and its shared spacing contract.

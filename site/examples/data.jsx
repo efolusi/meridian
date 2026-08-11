@@ -68,11 +68,11 @@ export function SkeletonDemo() {
   const { Skeleton } = window.EfolusiDesignSystem_4ffc3d;
   return (
     <div style={{ display: 'flex', gap: 14, alignItems: 'flex-start', width: 340 }}>
-      <Skeleton variant="circle" width={40} height={40} />
+      <Skeleton style={{ width: 40, height: 40, borderRadius: 'var(--radius-full)' }} />
       <div style={{ flex: 1, display: 'flex', flexDirection: 'column', gap: 8 }}>
-        <Skeleton width="60%" />
-        <Skeleton lines={2} />
-        <Skeleton variant="rect" height={72} />
+        <Skeleton style={{ width: '60%', height: 12 }} />
+        <div style={{ display: 'grid', gap: 8 }}><Skeleton style={{ width: '100%', height: 12 }} /><Skeleton style={{ width: '60%', height: 12 }} /></div>
+        <Skeleton style={{ width: '100%', height: 72 }} />
       </div>
     </div>
   );
