@@ -55,6 +55,7 @@
  "EmptyState": "Tampilan kosong terpusat — memimpin dengan aksi, bukan ketiadaan.",
  "KeyValueList": "Baris label/nilai dengan pemisah setipis rambut — detail sumber daya, record DNS, info transaksi.",
  "LineChart": "Line chart SVG dengan crosshair hover + tooltip; isian area lembut secara bawaan.",
+ "Sheet": "Dialog geser composable untuk alur tambahan, dengan dukungan sisi atas, kanan, bawah, dan kiri serta fokus modal yang aksesibel.",
  "Skeleton": "Placeholder memuat — pulse lembut, tanpa shimmer.",
  "Sparkline": "Garis tren inline (SVG) — hijau naik, merah turun, isian area samar. Berpasangan dengan Stat.",
  "Stat": "Blok KPI: label redup, nilai mono, delta berwarna.",

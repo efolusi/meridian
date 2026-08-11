@@ -46,6 +46,7 @@ COORDINATE_EXCEPTIONS = {
     # Context menus open at a physical pointer coordinate, independent of text direction.
     "components/overlay/ContextMenu.jsx": ["left: root.point.x"],
     "components/overlay/Drawer.jsx": ["right:0", "left:0"],
+    "components/overlay/Sheet.jsx": ["right:0", "left:0"],
     "components/overlay/Portal.jsx": [
         "left:0",
         "left: 0, right: 'auto'",
@@ -60,6 +61,7 @@ SEMANTIC_EXCEPTIONS = {
         "ef-tooltip__bubble--right::after",
     ],
     "components/overlay/Drawer.jsx": ["ef-drawer--left", "ef-drawer--right"],
+    "components/overlay/Sheet.jsx": ["ef-sheet[data-side=left]", "ef-sheet[data-side=right]"],
 }
 
 

@@ -30,7 +30,7 @@ Dark mode: set data-theme="dark" on any subtree. Compact density: data-density="
 
 ## Components
 
-115 components across 12 groups: ai, code, data, dates, display, feedback, files, finance, forms, icons, navigation, overlay. Each entry lists the component's public exports, its usage guidance (.prompt.md), and its typed props interface (.d.ts).
+116 components across 12 groups: ai, code, data, dates, display, feedback, files, finance, forms, icons, navigation, overlay. Each entry lists the component's public exports, its usage guidance (.prompt.md), and its typed props interface (.d.ts).
 
 ### ai
 
@@ -2577,12 +2577,12 @@ Compose `Dialog`, `DialogTrigger`, `DialogContent`, `DialogHeader`, `DialogTitle
 export interface DialogRootProps { open?: boolean; defaultOpen?: boolean; onOpenChange?: (open: boolean) => void; children?: React.ReactNode; }
 export interface DialogLegacyProps extends DialogRootProps { onClose?: () => void; closeLabel?: string; title?: React.ReactNode; description?: React.ReactNode; footer?: React.ReactNode; width?: number; }
 export declare const Dialog: React.ForwardRefExoticComponent<DialogLegacyProps & React.RefAttributes<HTMLDivElement>>;
-export interface DialogSlotProps extends React.HTMLAttributes<HTMLDivElement> { asChild?: boolean; }
+export interface DialogSlotProps extends React.HTMLAttributes<HTMLDivElement> { asChild?: boolean; slot?: string; }
 export declare const DialogTrigger: React.ForwardRefExoticComponent<React.ButtonHTMLAttributes<HTMLButtonElement> & { asChild?: boolean } & React.RefAttributes<HTMLButtonElement>>;
 export declare function DialogPortal(props: { children?: React.ReactNode; container?: HTMLElement }): React.JSX.Element | null;
 export declare const DialogOverlay: React.ForwardRefExoticComponent<React.HTMLAttributes<HTMLDivElement> & React.RefAttributes<HTMLDivElement>>;
 export declare const DialogClose: React.ForwardRefExoticComponent<React.ButtonHTMLAttributes<HTMLButtonElement> & { asChild?: boolean } & React.RefAttributes<HTMLButtonElement>>;
-export interface DialogContentProps extends React.HTMLAttributes<HTMLDivElement> { width?: number; showCloseButton?: boolean; closeLabel?: string; onEscapeKeyDown?: (event: KeyboardEvent) => void; }
+export interface DialogContentProps extends React.HTMLAttributes<HTMLDivElement> { width?: number | string; showCloseButton?: boolean; closeLabel?: string; onEscapeKeyDown?: (event: KeyboardEvent) => void; slot?: string; }
 export declare const DialogContent: React.ForwardRefExoticComponent<DialogContentProps & React.RefAttributes<HTMLDivElement>>;
 export declare const DialogHeader: React.ForwardRefExoticComponent<DialogSlotProps & React.RefAttributes<HTMLDivElement>>;
 export declare const DialogFooter: React.ForwardRefExoticComponent<DialogSlotProps & React.RefAttributes<HTMLDivElement>>;
@@ -4345,6 +4345,30 @@ export interface PortalProps {
  * an ancestor's overflow. Used by every floating surface in the system.
  */
 export declare function Portal(props: PortalProps): React.JSX.Element | null;
+```
+
+#### Sheet
+
+Group: overlay · Source: /components/overlay/Sheet.jsx · Exports: Sheet, SheetTrigger, SheetClose, SheetContent, SheetHeader, SheetFooter, SheetTitle, SheetDescription
+
+# Sheet
+
+Slide-in dialog for supplementary workflows that should preserve page context. Compose `Sheet`, `SheetTrigger`, `SheetContent`, `SheetHeader`, `SheetTitle`, `SheetDescription`, `SheetFooter`, and `SheetClose`. Content supports `top`, `right`, `bottom`, and `left` sides.
+
+Use a regular Dialog when the task deserves centered attention; use Drawer for gesture-driven mobile surfaces.
+
+```ts
+import type * as React from 'react';
+import type { DialogContentProps, DialogRootProps, DialogSlotProps } from '../feedback/Dialog.jsx';
+export declare const Sheet: React.ForwardRefExoticComponent<DialogRootProps & React.RefAttributes<HTMLDivElement>>;
+export declare const SheetTrigger: React.ForwardRefExoticComponent<React.ButtonHTMLAttributes<HTMLButtonElement> & { asChild?: boolean } & React.RefAttributes<HTMLButtonElement>>;
+export declare const SheetClose: React.ForwardRefExoticComponent<React.ButtonHTMLAttributes<HTMLButtonElement> & { asChild?: boolean } & React.RefAttributes<HTMLButtonElement>>;
+export interface SheetContentProps extends DialogContentProps { side?: 'top' | 'right' | 'bottom' | 'left'; }
+export declare const SheetContent: React.ForwardRefExoticComponent<SheetContentProps & React.RefAttributes<HTMLDivElement>>;
+export declare const SheetHeader: React.ForwardRefExoticComponent<DialogSlotProps & React.RefAttributes<HTMLDivElement>>;
+export declare const SheetFooter: React.ForwardRefExoticComponent<DialogSlotProps & React.RefAttributes<HTMLDivElement>>;
+export declare const SheetTitle: React.ForwardRefExoticComponent<DialogSlotProps & React.RefAttributes<HTMLDivElement>>;
+export declare const SheetDescription: React.ForwardRefExoticComponent<DialogSlotProps & React.RefAttributes<HTMLDivElement>>;
 ```
 
 ## Design tokens

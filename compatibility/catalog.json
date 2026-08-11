@@ -397,7 +397,14 @@
       "registryItems": ["site/registry/separator.json"],
       "tests": ["tests/compatibility-primitives.test.jsx"]
     },
-    { "name": "Sheet", "status": "unverified" },
+    {
+      "name": "Sheet",
+      "status": "proven",
+      "requiredExports": ["Sheet", "SheetTrigger", "SheetClose", "SheetContent", "SheetHeader", "SheetFooter", "SheetTitle", "SheetDescription"],
+      "sourceFiles": ["components/overlay/Sheet.jsx", "components/overlay/Sheet.d.ts"],
+      "registryItems": ["site/registry/sheet.json"],
+      "tests": ["tests/sheet-compatibility.test.jsx"]
+    },
     { "name": "Sidebar", "status": "unverified" },
     {
       "name": "Skeleton",

@@ -70,6 +70,12 @@ export function DrawerDemo() {
   );
 }
 
+// @demo Sheet Workspace settings
+export function SheetDemo() {
+  const { Sheet, SheetTrigger, SheetContent, SheetHeader, SheetTitle, SheetDescription, SheetFooter, SheetClose, Button, Input } = window.EfolusiDesignSystem_4ffc3d;
+  return <Sheet><SheetTrigger asChild><Button variant="secondary">Edit workspace</Button></SheetTrigger><SheetContent side="right"><SheetHeader><SheetTitle>Workspace settings</SheetTitle><SheetDescription>Update the details shown to your team.</SheetDescription></SheetHeader><div style={{ display: 'grid', gap: 14, padding: 24 }}><Input label="Workspace name" defaultValue="Acme Operations" /><Input label="Billing email" defaultValue="ops@acme.co" /></div><SheetFooter><SheetClose asChild><Button variant="secondary">Cancel</Button></SheetClose><SheetClose asChild><Button>Save changes</Button></SheetClose></SheetFooter></SheetContent></Sheet>;
+}
+
 // @demo HoverCard Person preview
 export function HoverCardDemo() {
   const { HoverCard, HoverCardTrigger, HoverCardContent, Button, Avatar } = window.EfolusiDesignSystem_4ffc3d;

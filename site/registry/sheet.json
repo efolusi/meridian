@@ -1,0 +1,35 @@
+{
+  "name": "sheet",
+  "type": "registry:ui",
+  "title": "Sheet + SheetTrigger + SheetClose + SheetContent + SheetHeader + SheetFooter + SheetTitle + SheetDescription",
+  "description": "Slide-in dialog for supplementary workflows that should preserve page context. Compose `Sheet`, `SheetTrigger`, `SheetContent`, `SheetHeader`, `SheetTitle`, `SheetDescription`, `SheetFooter`, and `SheetClose`. Content supports `top`, `right`, `bottom`, and `left` sides.",
+  "dependencies": [
+    "react"
+  ],
+  "registryDependencies": [
+    "https://meridian.efolusi.com/site/registry/meridian-base.json",
+    "https://meridian.efolusi.com/site/registry/button.json",
+    "https://meridian.efolusi.com/site/registry/dialog.json"
+  ],
+  "files": [
+    {
+      "path": "components/overlay/Sheet.jsx",
+      "type": "registry:ui",
+      "content": "import React from 'react';\nimport { injectEfCss } from '../forms/Button.jsx';\nimport { Dialog, DialogClose, DialogContent, DialogDescription, DialogFooter, DialogHeader, DialogTitle, DialogTrigger } from '../feedback/Dialog.jsx';\n\nconst CSS = `\n.ef-sheet{position:fixed;margin:0;max-width:none;max-height:none;border-radius:0;display:flex;flex-direction:column}\n.ef-sheet[data-side=right]{top:0;right:0;bottom:0;width:min(75vw,384px);border-width:0 0 0 1px;animation:ef-sheet-right var(--dur-slow) var(--ease-out)}\n.ef-sheet[data-side=left]{top:0;left:0;bottom:0;width:min(75vw,384px);border-width:0 1px 0 0;animation:ef-sheet-left var(--dur-slow) var(--ease-out)}\n.ef-sheet[data-side=top]{top:0;left:0;right:0;width:100%;max-height:80vh;border-width:0 0 1px;animation:ef-sheet-top var(--dur-slow) var(--ease-out)}\n.ef-sheet[data-side=bottom]{bottom:0;left:0;right:0;width:100%;max-height:80vh;border-width:1px 0 0;animation:ef-sheet-bottom var(--dur-slow) var(--ease-out)}\n.ef-sheet__header{padding:24px 24px 12px}.ef-sheet__footer{margin-top:auto}.ef-sheet__description{margin-top:4px}\n@keyframes ef-sheet-right{from{transform:translateX(24px);opacity:0}}@keyframes ef-sheet-left{from{transform:translateX(-24px);opacity:0}}@keyframes ef-sheet-top{from{transform:translateY(-24px);opacity:0}}@keyframes ef-sheet-bottom{from{transform:translateY(24px);opacity:0}}\n`;\n\nexport const Sheet = Dialog;\nexport const SheetTrigger = DialogTrigger;\nexport const SheetClose = DialogClose;\n\nexport const SheetContent = React.forwardRef(function SheetContent({ side = 'right', className, children, style, ...props }, ref) {\n  injectEfCss('ef-css-sheet', CSS);\n  return <DialogContent {...props} ref={ref} slot=\"sheet-content\" data-side={side} className={`ef-sheet${className ? ' ' + className : ''}`} width=\"none\" style={{ ...style, position: 'fixed' }}>{children}</DialogContent>;\n});\nexport const SheetHeader = React.forwardRef(function SheetHeader({ className, ...props }, ref) { return <DialogHeader {...props} ref={ref} slot=\"sheet-header\" className={`ef-sheet__header${className ? ' ' + className : ''}`} />; });\nexport const SheetFooter = React.forwardRef(function SheetFooter({ className, ...props }, ref) { return <DialogFooter {...props} ref={ref} slot=\"sheet-footer\" className={`ef-sheet__footer${className ? ' ' + className : ''}`} />; });\nexport const SheetTitle = React.forwardRef(function SheetTitle(props, ref) { return <DialogTitle {...props} ref={ref} slot=\"sheet-title\" />; });\nexport const SheetDescription = React.forwardRef(function SheetDescription({ className, ...props }, ref) { return <DialogDescription {...props} ref={ref} slot=\"sheet-description\" className={`ef-sheet__description${className ? ' ' + className : ''}`} />; });\n"
+    },
+    {
+      "path": "components/overlay/Sheet.d.ts",
+      "type": "registry:component",
+      "content": "import type * as React from 'react';\nimport type { DialogContentProps, DialogRootProps, DialogSlotProps } from '../feedback/Dialog.jsx';\nexport declare const Sheet: React.ForwardRefExoticComponent<DialogRootProps & React.RefAttributes<HTMLDivElement>>;\nexport declare const SheetTrigger: React.ForwardRefExoticComponent<React.ButtonHTMLAttributes<HTMLButtonElement> & { asChild?: boolean } & React.RefAttributes<HTMLButtonElement>>;\nexport declare const SheetClose: React.ForwardRefExoticComponent<React.ButtonHTMLAttributes<HTMLButtonElement> & { asChild?: boolean } & React.RefAttributes<HTMLButtonElement>>;\nexport interface SheetContentProps extends DialogContentProps { side?: 'top' | 'right' | 'bottom' | 'left'; }\nexport declare const SheetContent: React.ForwardRefExoticComponent<SheetContentProps & React.RefAttributes<HTMLDivElement>>;\nexport declare const SheetHeader: React.ForwardRefExoticComponent<DialogSlotProps & React.RefAttributes<HTMLDivElement>>;\nexport declare const SheetFooter: React.ForwardRefExoticComponent<DialogSlotProps & React.RefAttributes<HTMLDivElement>>;\nexport declare const SheetTitle: React.ForwardRefExoticComponent<DialogSlotProps & React.RefAttributes<HTMLDivElement>>;\nexport declare const SheetDescription: React.ForwardRefExoticComponent<DialogSlotProps & React.RefAttributes<HTMLDivElement>>;\n"
+    },
+    {
+      "path": "components/overlay/Sheet.prompt.md",
+      "type": "registry:component",
+      "content": "# Sheet\n\nSlide-in dialog for supplementary workflows that should preserve page context. Compose `Sheet`, `SheetTrigger`, `SheetContent`, `SheetHeader`, `SheetTitle`, `SheetDescription`, `SheetFooter`, and `SheetClose`. Content supports `top`, `right`, `bottom`, and `left` sides.\n\nUse a regular Dialog when the task deserves centered attention; use Drawer for gesture-driven mobile surfaces.\n"
+    }
+  ],
+  "categories": [
+    "overlay"
+  ],
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json"
+}

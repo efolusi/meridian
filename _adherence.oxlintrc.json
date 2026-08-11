@@ -1274,6 +1274,30 @@
       "Skeleton": {
         "replaces": []
       },
+      "Sheet": {
+        "replaces": []
+      },
+      "SheetClose": {
+        "replaces": []
+      },
+      "SheetContent": {
+        "replaces": []
+      },
+      "SheetDescription": {
+        "replaces": []
+      },
+      "SheetFooter": {
+        "replaces": []
+      },
+      "SheetHeader": {
+        "replaces": []
+      },
+      "SheetTitle": {
+        "replaces": []
+      },
+      "SheetTrigger": {
+        "replaces": []
+      },
       "Slider": {
         "replaces": []
       },

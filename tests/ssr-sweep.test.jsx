@@ -39,6 +39,7 @@ const PROPS = {
   KeyValueList: { items: [{ key: 'k', value: 'v' }] },
   LineChart: { data: [{ label: 'a', value: 1 }, { label: 'b', value: 2 }] },
   DropdownMenu: { children: React.createElement('span', null, 'Menu') },
+  Sheet: { children: React.createElement('span', null, 'Sheet') },
   Menubar: { menus: [{ label: 'File', items: [{ id: 'n', label: 'New' }] }] },
   PageControl: { count: 3 },
   Pagination: { page: 1, pageCount: 3 },

@@ -3641,6 +3641,37 @@
       ]
     },
     {
+      "name": "sheet",
+      "type": "registry:ui",
+      "title": "Sheet + SheetTrigger + SheetClose + SheetContent + SheetHeader + SheetFooter + SheetTitle + SheetDescription",
+      "description": "Slide-in dialog for supplementary workflows that should preserve page context. Compose `Sheet`, `SheetTrigger`, `SheetContent`, `SheetHeader`, `SheetTitle`, `SheetDescription`, `SheetFooter`, and `SheetClose`. Content supports `top`, `right`, `bottom`, and `left` sides.",
+      "dependencies": [
+        "react"
+      ],
+      "registryDependencies": [
+        "https://meridian.efolusi.com/site/registry/meridian-base.json",
+        "https://meridian.efolusi.com/site/registry/button.json",
+        "https://meridian.efolusi.com/site/registry/dialog.json"
+      ],
+      "files": [
+        {
+          "path": "components/overlay/Sheet.jsx",
+          "type": "registry:ui"
+        },
+        {
+          "path": "components/overlay/Sheet.d.ts",
+          "type": "registry:component"
+        },
+        {
+          "path": "components/overlay/Sheet.prompt.md",
+          "type": "registry:component"
+        }
+      ],
+      "categories": [
+        "overlay"
+      ]
+    },
+    {
       "name": "block-activity-feed",
       "type": "registry:block",
       "title": "Activity feed block",

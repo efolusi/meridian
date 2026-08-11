@@ -1051,6 +1051,38 @@
       "sourcePath": "components/display/Separator.jsx"
     },
     {
+      "name": "Sheet",
+      "sourcePath": "components/overlay/Sheet.jsx"
+    },
+    {
+      "name": "SheetClose",
+      "sourcePath": "components/overlay/Sheet.jsx"
+    },
+    {
+      "name": "SheetContent",
+      "sourcePath": "components/overlay/Sheet.jsx"
+    },
+    {
+      "name": "SheetDescription",
+      "sourcePath": "components/overlay/Sheet.jsx"
+    },
+    {
+      "name": "SheetFooter",
+      "sourcePath": "components/overlay/Sheet.jsx"
+    },
+    {
+      "name": "SheetHeader",
+      "sourcePath": "components/overlay/Sheet.jsx"
+    },
+    {
+      "name": "SheetTitle",
+      "sourcePath": "components/overlay/Sheet.jsx"
+    },
+    {
+      "name": "SheetTrigger",
+      "sourcePath": "components/overlay/Sheet.jsx"
+    },
+    {
       "name": "SideNav",
       "sourcePath": "components/navigation/SideNav.jsx"
     },
