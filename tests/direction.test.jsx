@@ -8,7 +8,7 @@ import { Tabs } from '../components/navigation/Tabs.jsx';
 import { Menubar } from '../components/navigation/Menubar.jsx';
 import { Calendar } from '../components/dates/Calendar.jsx';
 import { DigitEntry } from '../components/forms/DigitEntry.jsx';
-import { Resizable } from '../components/display/Resizable.jsx';
+import { ResizableHandle, ResizablePanel, ResizablePanelGroup } from '../components/display/Resizable.jsx';
 import { PromptSteps } from '../components/ai/PromptSteps.jsx';
 import { Carousel } from '../components/display/Carousel.jsx';
 
@@ -89,7 +89,11 @@ describe('RTL horizontal keyboard behavior', () => {
     const user = userEvent.setup();
     const { container } = render(
       <DirectionProvider direction="rtl">
-        <Resizable><div>A</div><div>B</div></Resizable>
+        <ResizablePanelGroup>
+          <ResizablePanel><div>A</div></ResizablePanel>
+          <ResizableHandle />
+          <ResizablePanel><div>B</div></ResizablePanel>
+        </ResizablePanelGroup>
       </DirectionProvider>,
     );
     const handle = screen.getByRole('separator', { name: 'Resize panes' });

@@ -236,6 +236,16 @@ similarity.
   refs, types, registry installation, demos, and tests. Meridian's controlled
   numeric-page shorthand remains available.
 
+- `ResizablePanelGroup`, `ResizablePanel`, and `ResizableHandle` support
+  horizontal and vertical multi-pane composition, percentage defaults and
+  constraints, pointer and keyboard resizing, direction-aware movement,
+  optional visible grips, disabled state, refs, types, registry installation,
+  demos, and tests.
+
+- `ScrollArea` and `ScrollBar` provide a composed native scrolling viewport,
+  horizontal and vertical orientation markers, themed platform scrollbars,
+  bounded-height helpers, refs, types, registry installation, demos, and tests.
+
 
 ## Release gate
 

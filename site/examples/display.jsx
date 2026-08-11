@@ -219,20 +219,25 @@ export function TimelineDemo() {
 
 // @demo Resizable Split panes
 export function ResizableDemo() {
-  const { Resizable } = window.EfolusiDesignSystem_4ffc3d;
+  const { ResizablePanelGroup, ResizablePanel, ResizableHandle } = window.EfolusiDesignSystem_4ffc3d;
   return (
     <div style={{ width: '100%', maxWidth: 520, height: 150, border: '1px solid var(--border-default)', borderRadius: 'var(--radius-md)', overflow: 'hidden' }}>
-      <Resizable defaultRatio={0.35}>
-        <div style={{ padding: 14, fontSize: 13, color: 'var(--text-secondary)', background: 'var(--surface-card)', height: '100%' }}>Drag the handle →</div>
-        <div style={{ padding: 14, fontSize: 13, color: 'var(--text-secondary)', height: '100%' }}>Keyboard: focus the handle, then use arrow keys.</div>
-      </Resizable>
+      <ResizablePanelGroup orientation="horizontal">
+        <ResizablePanel defaultSize={35} minSize={20}>
+          <div style={{ padding: 14, fontSize: 13, color: 'var(--text-secondary)', background: 'var(--surface-card)', height: '100%' }}>Drag the handle →</div>
+        </ResizablePanel>
+        <ResizableHandle withHandle />
+        <ResizablePanel minSize={30}>
+          <div style={{ padding: 14, fontSize: 13, color: 'var(--text-secondary)', height: '100%' }}>Keyboard: focus the handle, then use arrow keys.</div>
+        </ResizablePanel>
+      </ResizablePanelGroup>
     </div>
   );
 }
 
 // @demo ScrollArea Bounded log
 export function ScrollAreaDemo() {
-  const { ScrollArea } = window.EfolusiDesignSystem_4ffc3d;
+  const { ScrollArea, ScrollBar } = window.EfolusiDesignSystem_4ffc3d;
   const lines = ['agent.run started', 'plan drafted (4 steps)', 'tool: search_flights', 'tool: book_hotel', 'review requested', 'approved by Ada', 'agent.run finished', 'artifact saved', 'notified #ops', 'usage: 1,240 tokens'];
   return (
     <div style={{ width: 340, border: '1px solid var(--border-default)', borderRadius: 'var(--radius-md)' }}>
@@ -240,6 +245,7 @@ export function ScrollAreaDemo() {
         <div style={{ padding: 12, display: 'flex', flexDirection: 'column', gap: 7, fontFamily: 'var(--font-mono)', fontSize: 12, color: 'var(--text-secondary)' }}>
           {lines.map((l, i) => <span key={i}>{l}</span>)}
         </div>
+        <ScrollBar orientation="vertical" />
       </ScrollArea>
     </div>
   );

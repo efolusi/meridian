@@ -5,4 +5,6 @@ export interface ScrollAreaProps extends React.HTMLAttributes<HTMLDivElement> {
   height?: number | string;
   children?: React.ReactNode;
 }
-export declare function ScrollArea(props: ScrollAreaProps): React.JSX.Element;
+export interface ScrollBarProps extends React.HTMLAttributes<HTMLSpanElement> { orientation?: 'horizontal' | 'vertical'; }
+export declare const ScrollArea: React.ForwardRefExoticComponent<ScrollAreaProps & React.RefAttributes<HTMLDivElement>>;
+export declare const ScrollBar: React.ForwardRefExoticComponent<ScrollBarProps & React.RefAttributes<HTMLSpanElement>>;

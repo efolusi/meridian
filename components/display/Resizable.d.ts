@@ -1,16 +1,6 @@
-export interface ResizableProps {
-  /** @default 'horizontal' */
-  direction?: 'horizontal' | 'vertical';
-  /** First pane share, 0-1 @default 0.5 */
-  defaultRatio?: number;
-  /** @default 0.15 */
-  min?: number;
-  /** @default 0.85 */
-  max?: number;
-  onRatioChange?: (ratio: number) => void;
-  /** Exactly two panes */
-  children: React.ReactNode;
-  style?: React.CSSProperties;
-  className?: string;
-}
-export declare function Resizable(props: ResizableProps): React.JSX.Element;
+export interface ResizablePanelGroupProps extends React.HTMLAttributes<HTMLDivElement> { orientation?: 'horizontal' | 'vertical'; direction?: 'ltr' | 'rtl'; onLayoutChange?: (sizes: number[]) => void; }
+export interface ResizablePanelProps extends React.HTMLAttributes<HTMLDivElement> { defaultSize?: number | string; minSize?: number | string; maxSize?: number | string; }
+export interface ResizableHandleProps extends React.HTMLAttributes<HTMLDivElement> { withHandle?: boolean; disabled?: boolean; }
+export declare const ResizablePanelGroup: React.ForwardRefExoticComponent<ResizablePanelGroupProps & React.RefAttributes<HTMLDivElement>>;
+export declare const ResizablePanel: React.ForwardRefExoticComponent<ResizablePanelProps & React.RefAttributes<HTMLDivElement>>;
+export declare const ResizableHandle: React.ForwardRefExoticComponent<ResizableHandleProps & React.RefAttributes<HTMLDivElement>>;

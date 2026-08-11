@@ -671,7 +671,15 @@
       "sourcePath": "components/ai/Reasoning.jsx"
     },
     {
-      "name": "Resizable",
+      "name": "ResizableHandle",
+      "sourcePath": "components/display/Resizable.jsx"
+    },
+    {
+      "name": "ResizablePanel",
+      "sourcePath": "components/display/Resizable.jsx"
+    },
+    {
+      "name": "ResizablePanelGroup",
       "sourcePath": "components/display/Resizable.jsx"
     },
     {
@@ -684,6 +692,10 @@
     },
     {
       "name": "ScrollArea",
+      "sourcePath": "components/display/ScrollArea.jsx"
+    },
+    {
+      "name": "ScrollBar",
       "sourcePath": "components/display/ScrollArea.jsx"
     },
     {

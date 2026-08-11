@@ -1874,10 +1874,10 @@
       ]
     },
     {
-      "name": "resizable",
+      "name": "resizablepanelgroup",
       "type": "registry:ui",
-      "title": "Resizable",
-      "description": "Two panes split by a draggable hairline handle (keyboard: arrow keys). Use for editor/preview, list/detail, terminal splits.",
+      "title": "ResizablePanelGroup + ResizablePanel + ResizableHandle",
+      "description": "Build two-or-more pane workspaces with accessible, draggable separators.",
       "dependencies": [
         "react"
       ],
@@ -1907,8 +1907,8 @@
     {
       "name": "scrollarea",
       "type": "registry:ui",
-      "title": "ScrollArea",
-      "description": "Overflow container with the system scrollbar treatment (thin, warm, rounded). Use for bounded lists, code panes, chat logs.",
+      "title": "ScrollArea + ScrollBar",
+      "description": "Scrollable viewport with thin, themed scrollbars.",
       "dependencies": [
         "react"
       ],

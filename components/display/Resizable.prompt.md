@@ -1,7 +1,13 @@
 # Resizable
 
-Two panes split by a draggable hairline handle (keyboard: arrow keys). Use for editor/preview, list/detail, terminal splits.
+Build two-or-more pane workspaces with accessible, draggable separators.
 
-`<Resizable direction="horizontal" defaultRatio={0.4}><FileTree/><Editor/></Resizable>`
+```jsx
+<ResizablePanelGroup orientation="horizontal">
+  <ResizablePanel defaultSize={35} minSize={20}><FileTree /></ResizablePanel>
+  <ResizableHandle withHandle />
+  <ResizablePanel><Editor /></ResizablePanel>
+</ResizablePanelGroup>
+```
 
-Exactly two children; nest Resizables for 3-way splits. Parent needs a height.
+The group needs a bounded height. Separators support pointer dragging and arrow-key resizing.

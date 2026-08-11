@@ -7,7 +7,7 @@
 </head><body style="background:var(--surface-page)">
 <div id="root"></div>
 <script type="text/babel">
-const { Card, Badge, Tag, Avatar, AvatarGroup, Button, Kbd, Divider, Accordion, Link, Toolbar, ListItem, TreeList, Switch, Collapsible, AspectRatio, ScrollArea, Carousel, Resizable } = window.EfolusiDesignSystem_4ffc3d;
+const { Card, Badge, Tag, Avatar, AvatarGroup, Button, Kbd, Divider, Accordion, Link, Toolbar, ListItem, TreeList, Switch, Collapsible, AspectRatio, ScrollArea, Carousel, ResizablePanelGroup, ResizablePanel, ResizableHandle } = window.EfolusiDesignSystem_4ffc3d;
 const lbl = { fontSize: 11, fontWeight: 600, letterSpacing: '0.06em', textTransform: 'uppercase', color: 'var(--text-muted)', marginBottom: 8 };
 function Demo() {
   const [tags, setTags] = React.useState(['Billing', 'API']);
@@ -110,10 +110,11 @@ function Demo() {
       <div style={{ gridColumn: 'span 2' }}>
         <div style={lbl}>Resizable</div>
         <div style={{ height: 140, border: '1px solid var(--border-default)', borderRadius: 'var(--radius-md)', overflow: 'hidden' }}>
-          <Resizable defaultRatio={0.35}>
-            <div style={{ padding: 12, fontSize: 13, color: 'var(--text-secondary)', background: 'var(--surface-card)', height: '100%' }}>Drag the handle →</div>
-            <div style={{ padding: 12, fontSize: 13, color: 'var(--text-secondary)', height: '100%' }}>Keyboard: focus the handle, then arrow keys.</div>
-          </Resizable>
+          <ResizablePanelGroup>
+            <ResizablePanel defaultSize={35}><div style={{ padding: 12, fontSize: 13, color: 'var(--text-secondary)', background: 'var(--surface-card)', height: '100%' }}>Drag the handle →</div></ResizablePanel>
+            <ResizableHandle withHandle />
+            <ResizablePanel><div style={{ padding: 12, fontSize: 13, color: 'var(--text-secondary)', height: '100%' }}>Keyboard: focus the handle, then arrow keys.</div></ResizablePanel>
+          </ResizablePanelGroup>
         </div>
       </div>
     </div>

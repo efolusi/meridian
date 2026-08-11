@@ -1,7 +1,12 @@
 # ScrollArea
 
-Overflow container with the system scrollbar treatment (thin, warm, rounded). Use for bounded lists, code panes, chat logs.
+Scrollable viewport with thin, themed scrollbars.
 
-`<ScrollArea maxHeight={320}>…</ScrollArea>`
+```jsx
+<ScrollArea maxHeight={320}>
+  <ActivityLog />
+  <ScrollBar orientation="vertical" />
+</ScrollArea>
+```
 
-It is just a styled overflow div — no custom scroll hijacking.
+Add a horizontal `ScrollBar` when wide content can overflow. The scrollbar component declares the intended orientation while the native viewport preserves platform scrolling and accessibility.

@@ -5,7 +5,7 @@ import { cssPct } from '../components/forms/Button.jsx';
 import { Player } from '../components/ai/Player.jsx';
 import { UsageMeter } from '../components/ai/UsageMeter.jsx';
 import { BarChart } from '../components/data/BarChart.jsx';
-import { Resizable } from '../components/display/Resizable.jsx';
+import { ResizableHandle, ResizablePanel, ResizablePanelGroup } from '../components/display/Resizable.jsx';
 
 /**
  * Server-rendered markup must survive a round trip through the browser's CSS
@@ -92,13 +92,14 @@ describe('server-rendered styles survive the CSS parser', () => {
     );
   });
 
-  it('Resizable, at a ratio that does not divide evenly', () => {
+  it('ResizablePanel, at a percentage that does not divide evenly', () => {
     expectStylesSurviveParsing(
       renderToString(
-        <Resizable ratio={1 / 3}>
-          <div>left</div>
-          <div>right</div>
-        </Resizable>,
+        <ResizablePanelGroup>
+          <ResizablePanel defaultSize={100 / 3}><div>left</div></ResizablePanel>
+          <ResizableHandle />
+          <ResizablePanel><div>right</div></ResizablePanel>
+        </ResizablePanelGroup>,
       ),
     );
   });

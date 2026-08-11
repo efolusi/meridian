@@ -1,8 +1,8 @@
 {
   "name": "scrollarea",
   "type": "registry:ui",
-  "title": "ScrollArea",
-  "description": "Overflow container with the system scrollbar treatment (thin, warm, rounded). Use for bounded lists, code panes, chat logs.",
+  "title": "ScrollArea + ScrollBar",
+  "description": "Scrollable viewport with thin, themed scrollbars.",
   "dependencies": [
     "react"
   ],
@@ -14,17 +14,17 @@
     {
       "path": "components/display/ScrollArea.jsx",
       "type": "registry:ui",
-      "content": "import React from 'react';\nimport { injectEfCss } from '../forms/Button.jsx';\nconst CSS = `\n.ef-scrollarea{overflow:auto;scrollbar-width:thin;scrollbar-color:var(--border-strong) transparent}\n.ef-scrollarea::-webkit-scrollbar{width:9px;height:9px}\n.ef-scrollarea::-webkit-scrollbar-track{background:transparent}\n.ef-scrollarea::-webkit-scrollbar-thumb{background:var(--border-strong);border-radius:var(--radius-full);border:2px solid transparent;background-clip:content-box}\n.ef-scrollarea::-webkit-scrollbar-thumb:hover{background:var(--text-muted);border:2px solid transparent;background-clip:content-box}\n`;\nexport function ScrollArea({ maxHeight, height, children, style, className, ...rest }) {\n  injectEfCss('ef-css-scrollarea', CSS);\n  return <div className={`ef-scrollarea${className ? ' ' + className : ''}`} style={{ maxHeight, height, ...style }} {...rest}>{children}</div>;\n}\n"
+      "content": "import React from 'react';\nimport { injectEfCss } from '../forms/Button.jsx';\nconst CSS = `\n.ef-scrollarea{position:relative;overflow:hidden}\n.ef-scrollarea__viewport{width:100%;height:100%;overflow:auto;scrollbar-width:thin;scrollbar-color:var(--border-strong) transparent}\n.ef-scrollarea__viewport::-webkit-scrollbar{width:9px;height:9px}\n.ef-scrollarea__viewport::-webkit-scrollbar-track{background:transparent}\n.ef-scrollarea__viewport::-webkit-scrollbar-thumb{background:var(--border-strong);border-radius:var(--radius-full);border:2px solid transparent;background-clip:content-box}\n.ef-scrollarea__viewport::-webkit-scrollbar-thumb:hover{background:var(--text-muted);border:2px solid transparent;background-clip:content-box}\n.ef-scrollarea__bar{position:absolute;pointer-events:none;opacity:0}\n`;\nexport const ScrollArea = React.forwardRef(function ScrollArea({ maxHeight, height, children, style, className, ...rest }, ref) {\n  injectEfCss('ef-css-scrollarea', CSS);\n  const nodes = React.Children.toArray(children);\n  const bars = nodes.filter(child => React.isValidElement(child) && child.type === ScrollBar);\n  const content = nodes.filter(child => !(React.isValidElement(child) && child.type === ScrollBar));\n  return <div {...rest} ref={ref} data-slot=\"scroll-area\" className={`ef-scrollarea${className ? ' ' + className : ''}`} style={{ maxHeight, height, ...style }}><div data-slot=\"scroll-area-viewport\" className=\"ef-scrollarea__viewport\" style={{ maxHeight, height }}>{content}</div>{bars}</div>;\n});\nexport const ScrollBar = React.forwardRef(function ScrollBar({ orientation = 'vertical', className, ...props }, ref) {\n  return <span {...props} ref={ref} aria-hidden=\"true\" data-slot=\"scroll-area-scrollbar\" data-orientation={orientation} className={`ef-scrollarea__bar${className ? ' ' + className : ''}`} />;\n});\n"
     },
     {
       "path": "components/display/ScrollArea.d.ts",
       "type": "registry:component",
-      "content": "export interface ScrollAreaProps extends React.HTMLAttributes<HTMLDivElement> {\n  /** Scroll past this height */\n  maxHeight?: number | string;\n  /** Fixed height */\n  height?: number | string;\n  children?: React.ReactNode;\n}\nexport declare function ScrollArea(props: ScrollAreaProps): React.JSX.Element;\n"
+      "content": "export interface ScrollAreaProps extends React.HTMLAttributes<HTMLDivElement> {\n  /** Scroll past this height */\n  maxHeight?: number | string;\n  /** Fixed height */\n  height?: number | string;\n  children?: React.ReactNode;\n}\nexport interface ScrollBarProps extends React.HTMLAttributes<HTMLSpanElement> { orientation?: 'horizontal' | 'vertical'; }\nexport declare const ScrollArea: React.ForwardRefExoticComponent<ScrollAreaProps & React.RefAttributes<HTMLDivElement>>;\nexport declare const ScrollBar: React.ForwardRefExoticComponent<ScrollBarProps & React.RefAttributes<HTMLSpanElement>>;\n"
     },
     {
       "path": "components/display/ScrollArea.prompt.md",
       "type": "registry:component",
-      "content": "# ScrollArea\n\nOverflow container with the system scrollbar treatment (thin, warm, rounded). Use for bounded lists, code panes, chat logs.\n\n`<ScrollArea maxHeight={320}>\u2026</ScrollArea>`\n\nIt is just a styled overflow div \u2014 no custom scroll hijacking."
+      "content": "# ScrollArea\n\nScrollable viewport with thin, themed scrollbars.\n\n```jsx\n<ScrollArea maxHeight={320}>\n  <ActivityLog />\n  <ScrollBar orientation=\"vertical\" />\n</ScrollArea>\n```\n\nAdd a horizontal `ScrollBar` when wide content can overflow. The scrollbar component declares the intended orientation while the native viewport preserves platform scrolling and accessibility.\n"
     }
   ],
   "categories": [

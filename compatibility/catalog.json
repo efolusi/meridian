@@ -269,8 +269,22 @@
       "registryItems": ["site/registry/radio-group.json"],
       "tests": ["tests/radio-slider-pagination-compatibility.test.jsx", "tests/five-primitives-compatibility.test.jsx"]
     },
-    { "name": "Resizable", "status": "unverified" },
-    { "name": "Scroll Area", "status": "unverified" },
+    {
+      "name": "Resizable",
+      "status": "proven",
+      "requiredExports": ["ResizablePanelGroup", "ResizablePanel", "ResizableHandle"],
+      "sourceFiles": ["components/display/Resizable.jsx", "components/display/Resizable.d.ts"],
+      "registryItems": ["site/registry/resizablepanelgroup.json"],
+      "tests": ["tests/scrollarea-resizable-compatibility.test.jsx", "tests/direction.test.jsx", "tests/hydration.test.jsx"]
+    },
+    {
+      "name": "Scroll Area",
+      "status": "proven",
+      "requiredExports": ["ScrollArea", "ScrollBar"],
+      "sourceFiles": ["components/display/ScrollArea.jsx", "components/display/ScrollArea.d.ts"],
+      "registryItems": ["site/registry/scrollarea.json"],
+      "tests": ["tests/scrollarea-resizable-compatibility.test.jsx"]
+    },
     { "name": "Select", "status": "unverified" },
     {
       "name": "Separator",

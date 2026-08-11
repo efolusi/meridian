@@ -2225,46 +2225,47 @@ export declare function ListItem(props: ListItemProps): React.JSX.Element;
 
 #### Resizable
 
-Group: display · Source: /components/display/Resizable.jsx · Exports: Resizable
+Group: display · Source: /components/display/Resizable.jsx · Exports: ResizablePanelGroup, ResizablePanel, ResizableHandle
 
 # Resizable
 
-Two panes split by a draggable hairline handle (keyboard: arrow keys). Use for editor/preview, list/detail, terminal splits.
+Build two-or-more pane workspaces with accessible, draggable separators.
 
-`<Resizable direction="horizontal" defaultRatio={0.4}><FileTree/><Editor/></Resizable>`
+```jsx
+<ResizablePanelGroup orientation="horizontal">
+  <ResizablePanel defaultSize={35} minSize={20}><FileTree /></ResizablePanel>
+  <ResizableHandle withHandle />
+  <ResizablePanel><Editor /></ResizablePanel>
+</ResizablePanelGroup>
+```
 
-Exactly two children; nest Resizables for 3-way splits. Parent needs a height.
+The group needs a bounded height. Separators support pointer dragging and arrow-key resizing.
 
 ```ts
-export interface ResizableProps {
-  /** @default 'horizontal' */
-  direction?: 'horizontal' | 'vertical';
-  /** First pane share, 0-1 @default 0.5 */
-  defaultRatio?: number;
-  /** @default 0.15 */
-  min?: number;
-  /** @default 0.85 */
-  max?: number;
-  onRatioChange?: (ratio: number) => void;
-  /** Exactly two panes */
-  children: React.ReactNode;
-  style?: React.CSSProperties;
-  className?: string;
-}
-export declare function Resizable(props: ResizableProps): React.JSX.Element;
+export interface ResizablePanelGroupProps extends React.HTMLAttributes<HTMLDivElement> { orientation?: 'horizontal' | 'vertical'; direction?: 'ltr' | 'rtl'; onLayoutChange?: (sizes: number[]) => void; }
+export interface ResizablePanelProps extends React.HTMLAttributes<HTMLDivElement> { defaultSize?: number | string; minSize?: number | string; maxSize?: number | string; }
+export interface ResizableHandleProps extends React.HTMLAttributes<HTMLDivElement> { withHandle?: boolean; disabled?: boolean; }
+export declare const ResizablePanelGroup: React.ForwardRefExoticComponent<ResizablePanelGroupProps & React.RefAttributes<HTMLDivElement>>;
+export declare const ResizablePanel: React.ForwardRefExoticComponent<ResizablePanelProps & React.RefAttributes<HTMLDivElement>>;
+export declare const ResizableHandle: React.ForwardRefExoticComponent<ResizableHandleProps & React.RefAttributes<HTMLDivElement>>;
 ```
 
 #### ScrollArea
 
-Group: display · Source: /components/display/ScrollArea.jsx · Exports: ScrollArea
+Group: display · Source: /components/display/ScrollArea.jsx · Exports: ScrollArea, ScrollBar
 
 # ScrollArea
 
-Overflow container with the system scrollbar treatment (thin, warm, rounded). Use for bounded lists, code panes, chat logs.
+Scrollable viewport with thin, themed scrollbars.
 
-`<ScrollArea maxHeight={320}>…</ScrollArea>`
+```jsx
+<ScrollArea maxHeight={320}>
+  <ActivityLog />
+  <ScrollBar orientation="vertical" />
+</ScrollArea>
+```
 
-It is just a styled overflow div — no custom scroll hijacking.
+Add a horizontal `ScrollBar` when wide content can overflow. The scrollbar component declares the intended orientation while the native viewport preserves platform scrolling and accessibility.
 
 ```ts
 export interface ScrollAreaProps extends React.HTMLAttributes<HTMLDivElement> {
@@ -2274,7 +2275,9 @@ export interface ScrollAreaProps extends React.HTMLAttributes<HTMLDivElement> {
   height?: number | string;
   children?: React.ReactNode;
 }
-export declare function ScrollArea(props: ScrollAreaProps): React.JSX.Element;
+export interface ScrollBarProps extends React.HTMLAttributes<HTMLSpanElement> { orientation?: 'horizontal' | 'vertical'; }
+export declare const ScrollArea: React.ForwardRefExoticComponent<ScrollAreaProps & React.RefAttributes<HTMLDivElement>>;
+export declare const ScrollBar: React.ForwardRefExoticComponent<ScrollBarProps & React.RefAttributes<HTMLSpanElement>>;
 ```
 
 #### Separator
