@@ -48,6 +48,7 @@ REGISTRY_NAME_OVERRIDES = {
     "components/display/Item.jsx": "item",
     "components/display/Direction.jsx": "direction",
     "components/forms/Radio.jsx": "radio-group",
+    "components/navigation/Sidebar.jsx": "sidebar",
 }
 
 # Older Meridian item URLs remain installable when the canonical migration

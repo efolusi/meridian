@@ -1259,6 +1259,98 @@
       "sourcePath": "components/overlay/Sheet.jsx"
     },
     {
+      "name": "Sidebar",
+      "sourcePath": "components/navigation/Sidebar.jsx"
+    },
+    {
+      "name": "SidebarContent",
+      "sourcePath": "components/navigation/Sidebar.jsx"
+    },
+    {
+      "name": "SidebarFooter",
+      "sourcePath": "components/navigation/Sidebar.jsx"
+    },
+    {
+      "name": "SidebarGroup",
+      "sourcePath": "components/navigation/Sidebar.jsx"
+    },
+    {
+      "name": "SidebarGroupAction",
+      "sourcePath": "components/navigation/Sidebar.jsx"
+    },
+    {
+      "name": "SidebarGroupContent",
+      "sourcePath": "components/navigation/Sidebar.jsx"
+    },
+    {
+      "name": "SidebarGroupLabel",
+      "sourcePath": "components/navigation/Sidebar.jsx"
+    },
+    {
+      "name": "SidebarHeader",
+      "sourcePath": "components/navigation/Sidebar.jsx"
+    },
+    {
+      "name": "SidebarInput",
+      "sourcePath": "components/navigation/Sidebar.jsx"
+    },
+    {
+      "name": "SidebarInset",
+      "sourcePath": "components/navigation/Sidebar.jsx"
+    },
+    {
+      "name": "SidebarMenu",
+      "sourcePath": "components/navigation/Sidebar.jsx"
+    },
+    {
+      "name": "SidebarMenuAction",
+      "sourcePath": "components/navigation/Sidebar.jsx"
+    },
+    {
+      "name": "SidebarMenuBadge",
+      "sourcePath": "components/navigation/Sidebar.jsx"
+    },
+    {
+      "name": "SidebarMenuButton",
+      "sourcePath": "components/navigation/Sidebar.jsx"
+    },
+    {
+      "name": "SidebarMenuItem",
+      "sourcePath": "components/navigation/Sidebar.jsx"
+    },
+    {
+      "name": "SidebarMenuSkeleton",
+      "sourcePath": "components/navigation/Sidebar.jsx"
+    },
+    {
+      "name": "SidebarMenuSub",
+      "sourcePath": "components/navigation/Sidebar.jsx"
+    },
+    {
+      "name": "SidebarMenuSubButton",
+      "sourcePath": "components/navigation/Sidebar.jsx"
+    },
+    {
+      "name": "SidebarMenuSubItem",
+      "sourcePath": "components/navigation/Sidebar.jsx"
+    },
+    {
+      "name": "SidebarProvider",
+      "sourcePath": "components/navigation/Sidebar.jsx"
+    },
+    {
+      "name": "SidebarRail",
+      "sourcePath": "components/navigation/Sidebar.jsx"
+    },
+    {
+      "name": "SidebarSeparator",
+      "sourcePath": "components/navigation/Sidebar.jsx"
+    },
+    {
+      "name": "SidebarTrigger",
+      "sourcePath": "components/navigation/Sidebar.jsx"
+    },
+    {
       "name": "SideNav",
       "sourcePath": "components/navigation/SideNav.jsx"
     },

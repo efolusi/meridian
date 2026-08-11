@@ -3421,6 +3421,37 @@
       ]
     },
     {
+      "name": "sidebar",
+      "type": "registry:ui",
+      "title": "Sidebar + SidebarProvider + SidebarTrigger + SidebarRail + SidebarInset + SidebarHeader + SidebarFooter + SidebarContent + SidebarGroup + SidebarGroupContent + SidebarMenu + SidebarMenuItem + SidebarMenuSub + SidebarMenuSubItem + SidebarInput + SidebarSeparator + SidebarGroupLabel + SidebarGroupAction + SidebarMenuButton + SidebarMenuAction + SidebarMenuBadge + SidebarMenuSubButton + SidebarMenuSkeleton",
+      "description": "Composable application shell navigation with controlled or uncontrolled desktop and mobile state.",
+      "dependencies": [
+        "react"
+      ],
+      "registryDependencies": [
+        "https://meridian.efolusi.com/site/registry/meridian-base.json",
+        "https://meridian.efolusi.com/site/registry/button.json",
+        "https://meridian.efolusi.com/site/registry/icon.json"
+      ],
+      "files": [
+        {
+          "path": "components/navigation/Sidebar.jsx",
+          "type": "registry:ui"
+        },
+        {
+          "path": "components/navigation/Sidebar.d.ts",
+          "type": "registry:component"
+        },
+        {
+          "path": "components/navigation/Sidebar.prompt.md",
+          "type": "registry:component"
+        }
+      ],
+      "categories": [
+        "navigation"
+      ]
+    },
+    {
       "name": "steps",
       "type": "registry:ui",
       "title": "Steps",

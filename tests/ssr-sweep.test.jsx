@@ -43,6 +43,7 @@ const PROPS = {
   Menubar: { children: React.createElement('span', null, 'Menu') },
   Message: { children: React.createElement('span', null, 'Message') },
   MessageScrollerProvider: { children: React.createElement('span', null, 'Scroller') },
+  SidebarProvider: { children: React.createElement('span', null, 'Sidebar') },
   NavigationMenu: { children: React.createElement('span', null, 'Navigation') },
   PageControl: { count: 3 },
   Pagination: { page: 1, pageCount: 3 },
@@ -111,6 +112,8 @@ describe(`SSR sweep over ${cases.length} public exports`, () => {
         );
       } else if (name.startsWith('MessageScroller') && name !== 'MessageScrollerProvider') {
         element = React.createElement(modules[file].MessageScrollerProvider, null, component);
+      } else if (name.startsWith('Sidebar') && name !== 'SidebarProvider') {
+        element = React.createElement(modules[file].SidebarProvider, null, component);
       }
       const html = renderToString(element);
       decimalsOk(html, name);

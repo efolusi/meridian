@@ -1567,6 +1567,75 @@
       },
       "WebPreview": {
         "replaces": []
+      },
+      "Sidebar": {
+        "replaces": []
+      },
+      "SidebarContent": {
+        "replaces": []
+      },
+      "SidebarFooter": {
+        "replaces": []
+      },
+      "SidebarGroup": {
+        "replaces": []
+      },
+      "SidebarGroupAction": {
+        "replaces": []
+      },
+      "SidebarGroupContent": {
+        "replaces": []
+      },
+      "SidebarGroupLabel": {
+        "replaces": []
+      },
+      "SidebarHeader": {
+        "replaces": []
+      },
+      "SidebarInput": {
+        "replaces": []
+      },
+      "SidebarInset": {
+        "replaces": []
+      },
+      "SidebarMenu": {
+        "replaces": []
+      },
+      "SidebarMenuAction": {
+        "replaces": []
+      },
+      "SidebarMenuBadge": {
+        "replaces": []
+      },
+      "SidebarMenuButton": {
+        "replaces": []
+      },
+      "SidebarMenuItem": {
+        "replaces": []
+      },
+      "SidebarMenuSkeleton": {
+        "replaces": []
+      },
+      "SidebarMenuSub": {
+        "replaces": []
+      },
+      "SidebarMenuSubButton": {
+        "replaces": []
+      },
+      "SidebarMenuSubItem": {
+        "replaces": []
+      },
+      "SidebarProvider": {
+        "replaces": []
+      },
+      "SidebarRail": {
+        "replaces": []
+      },
+      "SidebarSeparator": {
+        "replaces": []
+      },
+      "SidebarTrigger": {
+        "replaces": []
       }
     },
     "tokens": [

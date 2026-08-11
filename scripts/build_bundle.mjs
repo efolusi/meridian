@@ -36,6 +36,7 @@ const PUBLIC_HELPERS = new Set([
   'useMessageScroller',
   'useMessageScrollerScrollable',
   'useMessageScrollerVisibility',
+  'useSidebar',
 ]);
 
 let Babel;

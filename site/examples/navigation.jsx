@@ -1,5 +1,22 @@
 // Meridian docs demos — navigation.
 
+// @demo Sidebar Application shell
+export function SidebarDemo() {
+  const { SidebarProvider, Sidebar, SidebarHeader, SidebarInput, SidebarContent, SidebarGroup, SidebarGroupLabel, SidebarGroupContent, SidebarMenu, SidebarMenuItem, SidebarMenuButton, SidebarMenuBadge, SidebarFooter, SidebarRail, SidebarInset, SidebarTrigger, Avatar, Icon } = window.EfolusiDesignSystem_4ffc3d;
+  return <div style={{ width: '100%', maxWidth: 760, height: 420, overflow: 'hidden', border: '1px solid var(--border-default)', borderRadius: 'var(--radius-lg)' }}>
+    <SidebarProvider style={{ '--sidebar-width': '220px', minHeight: 420 }}>
+      <Sidebar collapsible="icon">
+        <SidebarHeader><strong className="ef-sidebar__collapse-hide">Northstar</strong><SidebarInput placeholder="Search workspace…" aria-label="Search workspace" /></SidebarHeader>
+        <SidebarContent><SidebarGroup><SidebarGroupLabel>Operations</SidebarGroupLabel><SidebarGroupContent><SidebarMenu>
+          {[['layout-dashboard', 'Overview'], ['activity', 'Live runs'], ['inbox', 'Inbox'], ['settings', 'Settings']].map(([icon, label], index) => <SidebarMenuItem key={label}><SidebarMenuButton href={`#sidebar-${label.toLowerCase().replace(' ', '-')}`} isActive={index === 0}><span className="ef-sidebar-menu-button__icon"><Icon name={icon} size={16} /></span><span>{label}</span>{label === 'Inbox' ? <SidebarMenuBadge>3</SidebarMenuBadge> : null}</SidebarMenuButton></SidebarMenuItem>)}
+        </SidebarMenu></SidebarGroupContent></SidebarGroup></SidebarContent>
+        <SidebarFooter><SidebarMenu><SidebarMenuItem><SidebarMenuButton><Avatar name="Ada Obi" size={24} /><span>Ada Obi</span></SidebarMenuButton></SidebarMenuItem></SidebarMenu></SidebarFooter><SidebarRail />
+      </Sidebar>
+      <SidebarInset><header style={{ height: 52, display: 'flex', alignItems: 'center', gap: 8, paddingInline: 14, borderBottom: '1px solid var(--border-default)' }}><SidebarTrigger /><strong>Operations</strong></header><div style={{ padding: 20 }}><h3 style={{ margin: 0 }}>Release health</h3><p style={{ color: 'var(--text-secondary)' }}>All customer-facing regions are healthy.</p></div></SidebarInset>
+    </SidebarProvider>
+  </div>;
+}
+
 // @demo Breadcrumbs Path trail
 export function BreadcrumbsDemo() {
   const { Breadcrumb, BreadcrumbList, BreadcrumbItem, BreadcrumbLink, BreadcrumbPage, BreadcrumbSeparator, BreadcrumbEllipsis } = window.EfolusiDesignSystem_4ffc3d;

@@ -459,7 +459,15 @@
       "registryItems": ["site/registry/sheet.json"],
       "tests": ["tests/sheet-compatibility.test.jsx"]
     },
-    { "name": "Sidebar", "status": "unverified" },
+    {
+      "name": "Sidebar",
+      "status": "proven",
+      "requiredExports": ["Sidebar", "SidebarContent", "SidebarFooter", "SidebarGroup", "SidebarGroupAction", "SidebarGroupContent", "SidebarGroupLabel", "SidebarHeader", "SidebarInput", "SidebarInset", "SidebarMenu", "SidebarMenuAction", "SidebarMenuBadge", "SidebarMenuButton", "SidebarMenuItem", "SidebarMenuSkeleton", "SidebarMenuSub", "SidebarMenuSubButton", "SidebarMenuSubItem", "SidebarProvider", "SidebarRail", "SidebarSeparator", "SidebarTrigger"],
+      "requiredModuleExports": ["useSidebar"],
+      "sourceFiles": ["components/navigation/Sidebar.jsx", "components/navigation/Sidebar.d.ts"],
+      "registryItems": ["site/registry/sidebar.json"],
+      "tests": ["tests/sidebar-compatibility.test.jsx", "tests/direction.test.jsx"]
+    },
     {
       "name": "Skeleton",
       "status": "proven",

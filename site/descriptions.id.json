@@ -39,6 +39,7 @@
  "Pagination": "Pager bernomor dengan elipsis yang meringkas; halaman aktif adalah chip tinta.",
  "SegmentedControl": "Toggle inline 2–5 arah pada trek pasir; segmen aktif adalah chip putih setipis rambut. Untuk tampilan/rentang — pakai Tabs untuk bagian halaman.",
  "SideNav": "Sidebar produk: baris brand, navigasi berkelompok dengan ikon/badge, footer tersemat. 240px di --surface-subtle.",
+ "Sidebar": "Shell aplikasi composable dengan state desktop dan seluler, mode off-canvas atau ikon, sisi kiri/kanan, navigasi bertingkat, serta pintasan keyboard.",
  "Steps": "Rel progres bernomor — vertikal untuk log tugas agen, horizontal untuk wizard.",
  "Tabs": "Tab bergaris-bawah dengan bar tinta karamel yang meluncur lentur. Terkendali: berikan value + onChange.",
  "TopNav": "Header lengket berblur: slot depan opsional, judul font-display, aksi rata-kanan.",
