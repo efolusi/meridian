@@ -8,13 +8,14 @@
   ],
   "registryDependencies": [
     "https://meridian.efolusi.com/site/registry/meridian-base.json",
-    "https://meridian.efolusi.com/site/registry/select.json"
+    "https://meridian.efolusi.com/site/registry/button.json",
+    "https://meridian.efolusi.com/site/registry/icon.json"
   ],
   "files": [
     {
       "path": "components/forms/NativeSelect.jsx",
       "type": "registry:ui",
-      "content": "import React from 'react';\nimport { Select } from './Select.jsx';\n\nexport const NativeSelect = React.forwardRef(function NativeSelect(\n  { children, ...props },\n  ref,\n) {\n  return <Select {...props} ref={ref}>{children}</Select>;\n});\n\nexport const NativeSelectOption = React.forwardRef(function NativeSelectOption(\n  props,\n  ref,\n) {\n  return <option {...props} ref={ref} />;\n});\n\nexport const NativeSelectOptGroup = React.forwardRef(function NativeSelectOptGroup(\n  props,\n  ref,\n) {\n  return <optgroup {...props} ref={ref} />;\n});\n"
+      "content": "import React from 'react';\nimport { Icon } from '../icons/Icon.jsx';\nimport { injectEfCss, mergeRefs } from './Button.jsx';\n\nconst CSS = `\n.ef-native-select{position:relative;display:flex;align-items:center;width:100%}\n.ef-native-select select{width:100%;height:var(--control-h-md);appearance:none;padding:0 32px 0 11px;border:1px solid var(--border-strong);border-radius:var(--radius-sm);background:var(--surface-sunken);color:var(--text-primary);font:inherit;font-size:var(--text-sm);cursor:pointer}\n[dir=\"rtl\"] .ef-native-select select{padding:0 11px 0 32px}\n.ef-native-select select:focus-visible{outline:none;box-shadow:var(--focus-ring)}\n.ef-native-select select:disabled{cursor:not-allowed;opacity:.5}\n.ef-native-select[data-size=\"sm\"] select{height:var(--control-h-sm)}\n.ef-native-select[data-size=\"lg\"] select{height:var(--control-h-lg)}\n.ef-native-select__icon{position:absolute;inset-inline-end:10px;display:inline-flex;color:var(--text-muted);pointer-events:none}\n`;\nexport const NativeSelect = React.forwardRef(function NativeSelect({ size = 'md', className, style, ...props }, ref) {\n  injectEfCss('ef-css-native-select', CSS);\n  return <span data-slot=\"native-select\" data-size={size} className={`ef-native-select${className ? ` ${className}` : ''}`} style={style}><select {...props} ref={ref} /><span className=\"ef-native-select__icon\"><Icon name=\"chevron-down\" size={16} /></span></span>;\n});\nexport const NativeSelectOption = React.forwardRef(function NativeSelectOption(props, ref) { return <option {...props} ref={ref} />; });\nexport const NativeSelectOptGroup = React.forwardRef(function NativeSelectOptGroup(props, ref) { return <optgroup {...props} ref={ref} />; });\n"
     },
     {
       "path": "components/forms/NativeSelect.d.ts",
@@ -24,7 +25,7 @@
     {
       "path": "components/forms/NativeSelect.prompt.md",
       "type": "registry:component",
-      "content": "# NativeSelect\n\nUse `NativeSelect` when browser-native selection behavior, mobile pickers, and\nlow interaction cost matter most. Compose `NativeSelectOption` directly, or\ngroup related choices with `NativeSelectOptGroup`. Use `aria-invalid` for an\ninvalid control and provide its visible label through `FormField` or `Label`.\n"
+      "content": "# NativeSelect\n\nUse `NativeSelect` when browser-native selection behavior, mobile pickers, and\nlow interaction cost matter most. Compose `NativeSelectOption` directly, or\ngroup related choices with `NativeSelectOptGroup`. Use `aria-invalid` for an\ninvalid control and provide its visible label through `FieldLabel` or `Label`.\n"
     }
   ],
   "categories": [

@@ -109,31 +109,11 @@ export function InputOTPDemo() {
   );
 }
 
-// @demo FormField Form state
-export function FormFieldFormState() {
-  const { FormField, Input, NumberInput, Button } = window.EfolusiDesignSystem_4ffc3d;
-  const form = FormField.useFormState({
-    initial: { name: '', seats: 3 },
-    validate: v => {
-      const errors = {};
-      if (!v.name.trim()) errors.name = 'Name the workspace to continue.';
-      if (v.seats == null) errors.seats = 'How many seats?';
-      return errors;
-    },
-  });
-  const name = form.field('name');
-  const save = () => new Promise(resolve => setTimeout(resolve, 1200));
+// @demo Field Accessible field composition
+export function FieldDemo() {
+  const { Field, FieldDescription, FieldError, FieldGroup, FieldLabel, FieldLegend, FieldSet, Input } = window.EfolusiDesignSystem_4ffc3d;
   return (
-    <form onSubmit={form.handleSubmit(save)} style={{ display: 'flex', flexDirection: 'column', gap: 14, width: 300 }}>
-      <FormField label="Workspace name" error={name.error}>
-        <Input placeholder="acme-labs" value={name.value} onChange={name.onChange} onBlur={name.onBlur} />
-      </FormField>
-      <NumberInput label="Seats" min={1} max={50} {...form.field('seats')} />
-      <div style={{ display: 'flex', gap: 10 }}>
-        <Button type="submit" loading={form.submitting}>Create workspace</Button>
-        <Button type="button" variant="ghost" onClick={form.reset}>Reset</Button>
-      </div>
-    </form>
+    <FieldSet style={{ width: 320 }}><FieldLegend>Workspace</FieldLegend><FieldDescription>Used on invoices and team invitations.</FieldDescription><FieldGroup><Field data-invalid><FieldLabel htmlFor="field-workspace">Workspace name</FieldLabel><Input id="field-workspace" defaultValue="a" aria-invalid /><FieldError>Use at least three characters.</FieldError></Field></FieldGroup></FieldSet>
   );
 }
 
@@ -217,13 +197,18 @@ export function RadioDemo() {
   );
 }
 
-// @demo Select Native select
+// @demo Select Composed popup select
 export function SelectDemo() {
-  const { Select } = window.EfolusiDesignSystem_4ffc3d;
+  const { Field, FieldLabel, FieldDescription, Select, SelectTrigger, SelectValue, SelectContent, SelectGroup, SelectLabel, SelectItem } = window.EfolusiDesignSystem_4ffc3d;
   return (
-    <div style={{ width: 280 }}>
-      <Select label="Role" options={['Owner', 'Admin', 'Editor', 'Viewer']} defaultValue="Editor" hint="Owners can delete the workspace." />
-    </div>
+    <Field style={{ width: 280 }}>
+      <FieldLabel htmlFor="role-select">Role</FieldLabel>
+      <Select defaultValue="editor">
+        <SelectTrigger id="role-select"><SelectValue placeholder="Choose a role" /></SelectTrigger>
+        <SelectContent><SelectGroup><SelectLabel>Workspace roles</SelectLabel>{['Owner', 'Admin', 'Editor', 'Viewer'].map(role => <SelectItem key={role} value={role.toLowerCase()}>{role}</SelectItem>)}</SelectGroup></SelectContent>
+      </Select>
+      <FieldDescription>Owners can delete the workspace.</FieldDescription>
+    </Field>
   );
 }
 

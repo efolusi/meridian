@@ -2,7 +2,7 @@ import React from 'react';
 import { Icon } from '../icons/Icon.jsx';
 import { Calendar } from './Calendar.jsx';
 import { injectEfCss } from '../forms/Button.jsx';
-import { useFieldProps } from '../forms/FormField.jsx';
+import { useFieldProps } from '../forms/Field.jsx';
 import { Portal, useAnchoredStyle } from '../overlay/Portal.jsx';
 const CSS = `
 .ef-daterange{position:relative;display:inline-flex;flex-direction:column;gap:6px}
@@ -25,7 +25,7 @@ const fmt = (v, locale) => { if (!v) return null; const d = new Date(v + 'T00:00
 const EMPTY = { from: null, to: null };
 export function DateRangePicker({ label, hint, value, onChange, min, max, placeholder = 'Pick a date range', disabled, locale, style, className, ...rest }) {
   injectEfCss('ef-css-daterange', CSS);
-  // Picks up id / aria wiring when nested in a FormField; standalone this is a no-op.
+  // Picks up id / aria wiring when nested in a Field; standalone this is a no-op.
   const field = useFieldProps({ id: rest.id, 'aria-describedby': rest['aria-describedby'] });
   const [inner, setInner] = React.useState(EMPTY);
   const v = value != null ? value : inner;

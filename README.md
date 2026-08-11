@@ -65,7 +65,7 @@ npm install @efolusi/meridian
 
 ```js
 import '@efolusi/meridian/styles.css';        // once, at the app root
-import { Button, FormField } from '@efolusi/meridian';
+import { Button, Field, FieldLabel } from '@efolusi/meridian';
 
 // or per component, for the smallest graph — with or without the extension:
 import { Button } from '@efolusi/meridian/forms/Button.js';
@@ -113,7 +113,7 @@ Pre-composed sections in `blocks/` (Blocks group in the Design System tab): App 
 
 Authored from scratch (no source inventory existed). Namespace: `window.EfolusiDesignSystem_4ffc3d`.
 
-- `components/forms/` — Button, IconButton, Input, Textarea, Select, NativeSelect (+Option, +OptGroup), Checkbox, Radio, Switch, Slider, Combobox, NumberInput, InputOTP (+Group, +Slot, +Separator), ButtonTile (+Group), Toggle (+Group), ButtonGroup, InputGroup, FormField, Label
+- `components/forms/` — Button, IconButton, Input, Textarea, Select (+Trigger, +Value, +Content, +Group, +Label, +Item, +Separator), NativeSelect (+Option, +OptGroup), Checkbox, Radio, Switch, Slider, Combobox, NumberInput, InputOTP (+Group, +Slot, +Separator), ButtonTile (+Group), Toggle (+Group), ButtonGroup, InputGroup, Field (+Set, +Legend, +Group, +Content, +Label, +Title, +Description, +Separator, +Error), Label
 - `components/display/` — Card, Badge, Tag, Avatar (+AvatarGroup), Kbd, Divider, Separator, Accordion, Link, Toolbar, TreeList, ListItem, Collapsible, AspectRatio, ScrollArea, Carousel, Resizable
 - `components/navigation/` — Tabs, Breadcrumbs, Pagination, SegmentedControl, PageControl, SideNav, TopNav, Steps, Menubar
 - `components/feedback/` — Dialog, ConfirmDialog, Toast (+ToastStack), Tooltip, Alert, Banner, Progress, Spinner, Loader

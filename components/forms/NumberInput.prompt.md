@@ -21,10 +21,4 @@ For locale-aware grouping and decimals, pass `locale` (a BCP 47 tag) instead of 
 <NumberInput label="Harga" locale="id" step={0.01} />
 ```
 
-Pairs with `FormField.useFormState` — `field()` hands it `value` / `onChange` / `onBlur` / `invalid` / `error` directly:
-
-```jsx
-<NumberInput label="Seats" min={1} max={50} {...form.field('seats')} />
-```
-
 Use when the value is a number a user tunes in small moves (quantities, limits, thresholds). Not for phone numbers, codes or IDs (use `Input` or `InputOTP` — those are strings, not quantities), and not for coarse picks along a visual range (use `Slider`).

@@ -1,6 +1,6 @@
 import React from 'react';
 import { injectEfCss } from './Button.jsx';
-import { useFieldProps } from './FormField.jsx';
+import { useFieldProps } from './Field.jsx';
 const CSS = `
 .ef-switch-field{display:inline-flex;align-items:center;gap:10px;cursor:pointer;user-select:none}.ef-switch{--ef-switch-shift:15px;position:relative;display:inline-flex;flex:none;width:36px;height:21px;padding:0;border:0;border-radius:var(--radius-full);background:var(--border-strong);cursor:pointer;transition:background var(--dur-med) var(--ease-out)}
 .ef-switch--disabled{opacity:.45;cursor:not-allowed}
@@ -12,7 +12,7 @@ const CSS = `
 `;
 export const Switch = React.forwardRef(function Switch({ label, size = 'md', disabled, checked: checkedProp, defaultChecked, onCheckedChange, onClick, name, value = 'on', required, style, className, ...rest }, ref) {
   injectEfCss('ef-css-switch', CSS);
-  // Picks up id / aria wiring when nested in a FormField; standalone this is a no-op.
+  // Picks up id / aria wiring when nested in a Field; standalone this is a no-op.
   const field = useFieldProps({ id: rest.id, 'aria-describedby': rest['aria-describedby'] });
   const [inner, setInner] = React.useState(!!defaultChecked);
   const checked = checkedProp !== undefined ? checkedProp : inner;

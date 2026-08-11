@@ -983,7 +983,34 @@
       "Combobox": {
         "replaces": []
       },
-      "FormField": {
+      "Field": {
+        "replaces": []
+      },
+      "FieldSet": {
+        "replaces": []
+      },
+      "FieldGroup": {
+        "replaces": []
+      },
+      "FieldContent": {
+        "replaces": []
+      },
+      "FieldLabel": {
+        "replaces": []
+      },
+      "FieldTitle": {
+        "replaces": []
+      },
+      "FieldDescription": {
+        "replaces": []
+      },
+      "FieldLegend": {
+        "replaces": []
+      },
+      "FieldSeparator": {
+        "replaces": []
+      },
+      "FieldError": {
         "replaces": []
       },
       "IconButton": {
@@ -1047,6 +1074,27 @@
         "replaces": []
       },
       "Select": {
+        "replaces": []
+      },
+      "SelectTrigger": {
+        "replaces": []
+      },
+      "SelectValue": {
+        "replaces": []
+      },
+      "SelectContent": {
+        "replaces": []
+      },
+      "SelectGroup": {
+        "replaces": []
+      },
+      "SelectLabel": {
+        "replaces": []
+      },
+      "SelectSeparator": {
+        "replaces": []
+      },
+      "SelectItem": {
         "replaces": []
       },
       "Slider": {

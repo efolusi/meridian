@@ -186,7 +186,14 @@
       "requiredExports": ["Empty", "EmptyHeader", "EmptyMedia", "EmptyTitle", "EmptyDescription", "EmptyContent"],
       "sourceFiles": ["components/data/EmptyState.jsx", "components/data/EmptyState.d.ts"], "registryItems": ["site/registry/empty.json"], "tests": ["tests/empty-compatibility.test.jsx"]
     },
-    { "name": "Field", "status": "unverified" },
+    {
+      "name": "Field",
+      "status": "proven",
+      "requiredExports": ["Field", "FieldContent", "FieldDescription", "FieldError", "FieldGroup", "FieldLabel", "FieldLegend", "FieldSeparator", "FieldSet", "FieldTitle"],
+      "sourceFiles": ["components/forms/Field.jsx", "components/forms/Field.d.ts"],
+      "registryItems": ["site/registry/field.json"],
+      "tests": ["tests/select-field-compatibility.test.jsx"]
+    },
     { "name": "Hover Card", "status": "unverified" },
     {
       "name": "Input",
@@ -299,7 +306,14 @@
       "registryItems": ["site/registry/scrollarea.json"],
       "tests": ["tests/scrollarea-resizable-compatibility.test.jsx"]
     },
-    { "name": "Select", "status": "unverified" },
+    {
+      "name": "Select",
+      "status": "proven",
+      "requiredExports": ["Select", "SelectContent", "SelectGroup", "SelectItem", "SelectLabel", "SelectSeparator", "SelectTrigger", "SelectValue"],
+      "sourceFiles": ["components/forms/Select.jsx", "components/forms/Select.d.ts"],
+      "registryItems": ["site/registry/select.json"],
+      "tests": ["tests/select-field-compatibility.test.jsx"]
+    },
     {
       "name": "Separator",
       "status": "proven",

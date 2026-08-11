@@ -1,6 +1,6 @@
 import React from 'react';
 import { injectEfCss } from './Button.jsx';
-import { useFieldProps } from './FormField.jsx';
+import { useFieldProps } from './Field.jsx';
 const CSS = `
 .ef-radio-group{display:grid;gap:var(--space-3)}
 .ef-radio-group[data-orientation="horizontal"]{display:flex;align-items:center;flex-wrap:wrap}
@@ -33,7 +33,7 @@ export const RadioGroupItem = React.forwardRef(function RadioGroupItem({ value, 
 });
 export const Radio = React.forwardRef(function Radio({ label, description, disabled, style, className, ...rest }, ref) {
   injectEfCss('ef-css-radio', CSS);
-  // Picks up id / aria wiring when nested in a FormField; standalone this is a no-op.
+  // Picks up id / aria wiring when nested in a Field; standalone this is a no-op.
   const field = useFieldProps({ id: rest.id, 'aria-describedby': rest['aria-describedby'] });
   return (
     <label className={`ef-radio${disabled ? ' ef-radio--disabled' : ''}${className ? ' ' + className : ''}`} style={style}>

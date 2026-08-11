@@ -37,6 +37,9 @@ jobs:
       - name: Manifest inventories match the bundle and tokens
         run: python3 scripts/sync_manifest.py --check
 
+      - name: Adherence rules match the manifest
+        run: node scripts/check_adherence_manifest.mjs
+
       - name: No dead interactive controls
         run: python3 scripts/check_dead_controls.py
 

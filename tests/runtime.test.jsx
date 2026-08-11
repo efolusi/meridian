@@ -3,7 +3,6 @@ import { render, screen, within, act } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 
 import { Toaster } from '../components/feedback/Toast.jsx';
-import { FormField } from '../components/forms/FormField.jsx';
 import { Input } from '../components/forms/Input.jsx';
 import { Checkbox } from '../components/forms/Checkbox.jsx';
 import { Table } from '../components/data/Table.jsx';
@@ -65,51 +64,6 @@ describe('Toaster', () => {
     const quiet = vi.spyOn(console, 'error').mockImplementation(() => {});
     expect(() => render(<Fire options={{ title: 'x' }} />)).toThrow(/inside a <Toaster>/);
     quiet.mockRestore();
-  });
-});
-
-describe('FormField', () => {
-  it('links the label, hint and control', () => {
-    render(<FormField label="Work email" hint="For receipts." required><Input /></FormField>);
-    const input = document.querySelector('input');
-    const label = document.querySelector('label.ef-field__label');
-    const hint = document.querySelector('.ef-field__hint');
-    expect(label.getAttribute('for')).toBe(input.id);
-    expect(input.getAttribute('aria-describedby')).toBe(hint.id);
-    expect(input.getAttribute('aria-required')).toBe('true');
-  });
-
-  it('lets error win over hint and marks the control invalid', () => {
-    render(<FormField label="Plan" hint="Pick one." error="Required."><Input /></FormField>);
-    const input = document.querySelector('input');
-    expect(document.querySelector('.ef-field__hint')).toBeNull();
-    expect(input.getAttribute('aria-invalid')).toBe('true');
-    expect(input.getAttribute('aria-describedby')).toBe(document.querySelector('.ef-field__error').id);
-  });
-
-  it('labels a set with role=group and claims no single control id', () => {
-    render(
-      <FormField group label="Notify me about">
-        <Checkbox label="Mentions" /><Checkbox label="Replies" />
-      </FormField>
-    );
-    const group = document.querySelector('[role="group"]');
-    expect(group.getAttribute('aria-labelledby')).toBe(document.querySelector('span.ef-field__label').id);
-    const ids = [...document.querySelectorAll('input')].map(i => i.id).filter(Boolean);
-    expect(ids).toHaveLength(0); // no child may claim the field id
-  });
-
-  it('hands wiring to a foreign control through the render prop', () => {
-    render(<FormField label="Card" error="Bad card.">{({ controlProps }) => <input {...controlProps} />}</FormField>);
-    const input = document.querySelector('input');
-    expect(input.getAttribute('aria-invalid')).toBe('true');
-    expect(input.id).toBeTruthy();
-  });
-
-  it('leaves a standalone Input untouched', () => {
-    const { container } = render(<Input placeholder="bare" />);
-    expect(container.querySelector('.ef-field')).toBeNull();
-    expect(container.firstChild.className).toContain('ef-input');
   });
 });
 

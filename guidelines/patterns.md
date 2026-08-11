@@ -26,7 +26,7 @@ By how long the message should live:
 - **Persistent, in place**: `Alert` inside the page (an invalid section, a degraded feature) or `Banner` across the top (account-wide: billing, an outage). Both pair colour with an icon; never colour alone.
 - **Transient, after an action**: `Toast tone="danger"` through `Toaster`. A toast that carries an action never auto-dismisses (WCAG 2.2.1); a plain one fades.
 - **A thrown error with a stack** (dev surfaces, logs): `Exception` in the `code` group.
-- **A field**: `FormField` / control `error` prop. Timing and copy live in `forms.md`.
+- **A field**: composed `Field` with `FieldLabel`, `FieldDescription`, and `FieldError`. Timing and copy live in `forms.md`.
 
 Error copy everywhere: what happened, then how to fix it. No codes, no blame.
 

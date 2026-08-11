@@ -1,7 +1,7 @@
 import React from 'react';
 import { Icon } from '../icons/Icon.jsx';
 import { injectEfCss } from './Button.jsx';
-import { useFieldProps } from './FormField.jsx';
+import { useFieldProps } from './Field.jsx';
 
 const CSS = `
 .ef-check{display:inline-flex;align-items:flex-start;gap:10px;user-select:none}

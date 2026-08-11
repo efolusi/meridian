@@ -274,7 +274,7 @@ files.set('README.md',
   `The npm build of [Meridian](https://meridian.efolusi.com). Import the stylesheet once, then components as you need them.\n\n` +
   '```js\n' +
   `import '@efolusi/meridian/styles.css';\n` +
-  `import { Button, FormField, Input } from '@efolusi/meridian';\n` +
+  `import { Button, Field, FieldLabel, Input } from '@efolusi/meridian';\n` +
   `// or per component, for the smallest graph:\n` +
   `import { Button } from '@efolusi/meridian/forms/Button.js';\n` +
   '```\n\n' +

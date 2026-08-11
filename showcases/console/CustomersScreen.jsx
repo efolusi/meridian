@@ -1,4 +1,4 @@
-const { Card, Badge, Button, Input, Select, Checkbox, Avatar, IconButton, Tag, Menu, Pagination, Drawer, KeyValueList, Dialog, Sparkline } = window.EfolusiDesignSystem_4ffc3d;
+const { Card, Badge, Button, Input, NativeSelect, NativeSelectOption, Checkbox, Avatar, IconButton, Tag, Menu, Pagination, Drawer, KeyValueList, Dialog, Sparkline, Field, FieldLabel } = window.EfolusiDesignSystem_4ffc3d;
 
 const SEED = [
   ['Acme Robotics', 'ada@acmerobotics.com', 'Growth', 'Active', '$1,240', 'AI agents'],
@@ -37,7 +37,7 @@ function CustomersScreen({ notify }) {
     <div style={{ padding: 24, display: 'flex', flexDirection: 'column', gap: 16 }}>
       <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
         <div style={{ width: 280 }}><Input size="sm" placeholder="Search customers…" iconLeft="search" value={q} onChange={e => setQ(e.target.value)} /></div>
-        <Select size="sm" options={['All plans', 'Starter', 'Growth', 'Scale']} value={plan} onChange={e => setPlan(e.target.value)} style={{ width: 130 }} />
+        <NativeSelect size="sm" value={plan} onChange={e => setPlan(e.target.value)} aria-label="Plan filter" style={{ width: 130 }}>{['All plans', 'Starter', 'Growth', 'Scale'].map(value => <NativeSelectOption key={value} value={value}>{value}</NativeSelectOption>)}</NativeSelect>
         <Menu trigger={<Tag icon="funnel" onClick={() => {}}>{status}</Tag>} items={STATUSES.map(s => ({ id: s, label: s, icon: s === status ? 'check' : undefined }))} onSelect={setStatus} />
         <div style={{ marginLeft: 'auto', display: 'flex', gap: 8, alignItems: 'center' }}>
           {checked.length > 0 && <Button size="sm" variant="secondary" iconLeft="mail" onClick={() => { notify('Email drafted', checked.length + ' recipients added to the draft.'); setChecked([]); }}>Email {checked.length} selected</Button>}
@@ -112,7 +112,7 @@ function CustomersScreen({ notify }) {
         <div style={{ display: 'flex', flexDirection: 'column', gap: 14 }}>
           <Input label="Company" placeholder="Acme Robotics" autoFocus value={form.name} onChange={e => setForm({ ...form, name: e.target.value })} />
           <Input label="Billing email" type="email" placeholder="ops@acme.co" iconLeft="mail" value={form.email} onChange={e => setForm({ ...form, email: e.target.value })} />
-          <Select label="Plan" options={['Starter', 'Growth', 'Scale']} value={form.plan} onChange={e => setForm({ ...form, plan: e.target.value })} />
+          <Field><FieldLabel htmlFor="customer-plan">Plan</FieldLabel><NativeSelect id="customer-plan" value={form.plan} onChange={e => setForm({ ...form, plan: e.target.value })}>{['Starter', 'Growth', 'Scale'].map(value => <NativeSelectOption key={value} value={value}>{value}</NativeSelectOption>)}</NativeSelect></Field>
         </div>
       </Dialog>
     </div>

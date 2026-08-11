@@ -2,7 +2,7 @@ import React from 'react';
 import { Icon } from '../icons/Icon.jsx';
 import { Tag } from '../display/Tag.jsx';
 import { injectEfCss } from './Button.jsx';
-import { useFieldProps } from './FormField.jsx';
+import { useFieldProps } from './Field.jsx';
 import { Portal, useAnchoredStyle } from '../overlay/Portal.jsx';
 const CSS = `
 .ef-combo{position:relative}
@@ -21,7 +21,7 @@ const CSS = `
 `;
 export function Combobox({ label, hint, options, value, onChange, multiple, placeholder = 'Search…', style, className, ...rest }) {
   injectEfCss('ef-css-combo', CSS);
-  // Picks up id / aria wiring when nested in a FormField; standalone this is a no-op.
+  // Picks up id / aria wiring when nested in a Field; standalone this is a no-op.
   const field = useFieldProps({ id: rest.id, 'aria-describedby': rest['aria-describedby'] });
   const [open, setOpen] = React.useState(false);
   const [q, setQ] = React.useState('');

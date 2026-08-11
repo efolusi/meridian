@@ -455,6 +455,46 @@
       "sourcePath": "components/ai/FeedbackBar.jsx"
     },
     {
+      "name": "Field",
+      "sourcePath": "components/forms/Field.jsx"
+    },
+    {
+      "name": "FieldContent",
+      "sourcePath": "components/forms/Field.jsx"
+    },
+    {
+      "name": "FieldDescription",
+      "sourcePath": "components/forms/Field.jsx"
+    },
+    {
+      "name": "FieldError",
+      "sourcePath": "components/forms/Field.jsx"
+    },
+    {
+      "name": "FieldGroup",
+      "sourcePath": "components/forms/Field.jsx"
+    },
+    {
+      "name": "FieldLabel",
+      "sourcePath": "components/forms/Field.jsx"
+    },
+    {
+      "name": "FieldLegend",
+      "sourcePath": "components/forms/Field.jsx"
+    },
+    {
+      "name": "FieldSeparator",
+      "sourcePath": "components/forms/Field.jsx"
+    },
+    {
+      "name": "FieldSet",
+      "sourcePath": "components/forms/Field.jsx"
+    },
+    {
+      "name": "FieldTitle",
+      "sourcePath": "components/forms/Field.jsx"
+    },
+    {
       "name": "FileDrop",
       "sourcePath": "components/files/FileDrop.jsx"
     },
@@ -465,10 +505,6 @@
     {
       "name": "FileTypeIcon",
       "sourcePath": "components/files/FileTypeIcon.jsx"
-    },
-    {
-      "name": "FormField",
-      "sourcePath": "components/forms/FormField.jsx"
     },
     {
       "name": "GeneratedImage",
@@ -735,8 +771,36 @@
       "sourcePath": "components/forms/Select.jsx"
     },
     {
+      "name": "SelectContent",
+      "sourcePath": "components/forms/Select.jsx"
+    },
+    {
+      "name": "SelectGroup",
+      "sourcePath": "components/forms/Select.jsx"
+    },
+    {
       "name": "SelectionQuote",
       "sourcePath": "components/ai/SelectionQuote.jsx"
+    },
+    {
+      "name": "SelectItem",
+      "sourcePath": "components/forms/Select.jsx"
+    },
+    {
+      "name": "SelectLabel",
+      "sourcePath": "components/forms/Select.jsx"
+    },
+    {
+      "name": "SelectSeparator",
+      "sourcePath": "components/forms/Select.jsx"
+    },
+    {
+      "name": "SelectTrigger",
+      "sourcePath": "components/forms/Select.jsx"
+    },
+    {
+      "name": "SelectValue",
+      "sourcePath": "components/forms/Select.jsx"
     },
     {
       "name": "Separator",

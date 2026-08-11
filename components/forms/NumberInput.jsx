@@ -1,7 +1,7 @@
 import React from 'react';
 import { Icon } from '../icons/Icon.jsx';
 import { injectEfCss } from './Button.jsx';
-import { useFieldProps } from './FormField.jsx';
+import { useFieldProps } from './Field.jsx';
 const CSS = `
 .ef-field{display:flex;flex-direction:column;gap:6px}
 .ef-field__label{font-size:var(--text-sm);font-weight:var(--weight-semibold);color:var(--text-primary)}
@@ -75,7 +75,7 @@ export function NumberInput({ label, hint, error, invalid, value, defaultValue, 
   // explicit format or parse always wins over it, and no locale keeps the old
   // plain behaviour, so this is additive.
   const loc = locale && !(format && parse) ? localeNumber(locale) : null;
-  // Picks up id / aria wiring when nested in a FormField; standalone this is a no-op.
+  // Picks up id / aria wiring when nested in a Field; standalone this is a no-op.
   const field = useFieldProps({ invalid, error, id: rest.id, 'aria-describedby': rest['aria-describedby'] });
   const uid = React.useId();
   const inputId = field.id || (label ? uid + 'n' : undefined);

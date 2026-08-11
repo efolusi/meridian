@@ -1,4 +1,4 @@
-const { Card, Badge, Button, Input, Textarea, Select, Switch, Tabs, Avatar, IconButton, Tag, Icon, Dialog } = window.EfolusiDesignSystem_4ffc3d;
+const { Card, Badge, Button, Input, Textarea, NativeSelect, NativeSelectOption, Switch, Tabs, Avatar, IconButton, Tag, Icon, Dialog } = window.EfolusiDesignSystem_4ffc3d;
 
 function SectionRow({ title, desc, children }) {
   return (
@@ -22,7 +22,7 @@ function GeneralTab({ notify }) {
         <Textarea defaultValue="Robotics tooling for the Acme fleet." rows={3} />
       </SectionRow>
       <SectionRow title="Default surface" desc="Where new members land after sign-in.">
-        <Select options={['AI agents', 'Infrastructure', 'Automation', 'File tools', 'Trading', 'Finance']} defaultValue="AI agents" />
+        <NativeSelect defaultValue="AI agents" aria-label="Default surface">{['AI agents', 'Infrastructure', 'Automation', 'File tools', 'Trading', 'Finance'].map(value => <NativeSelectOption key={value} value={value}>{value}</NativeSelectOption>)}</NativeSelect>
       </SectionRow>
       <SectionRow title="Notifications" desc="Workspace-wide defaults; members can override.">
         <div style={{ display: 'flex', flexDirection: 'column', gap: 12 }}>
@@ -51,7 +51,7 @@ function MembersTab({ notify }) {
               <div style={{ fontSize: 14, fontWeight: 600 }}>{name}</div>
               <div style={{ fontSize: 12, color: 'var(--text-muted)' }}>{email}</div>
             </div>
-            {role === 'Owner' ? <Badge tone="brand">Owner</Badge> : <Select size="sm" options={['Admin', 'Member', 'Viewer']} defaultValue={role} style={{ width: 110 }} />}
+            {role === 'Owner' ? <Badge tone="brand">Owner</Badge> : <NativeSelect size="sm" defaultValue={role} aria-label={`Role for ${email}`} style={{ width: 110 }}>{['Admin', 'Member', 'Viewer'].map(value => <NativeSelectOption key={value} value={value}>{value}</NativeSelectOption>)}</NativeSelect>}
             <IconButton icon="ellipsis" label="More" size="sm" disabled={role === 'Owner'} />
           </div>
         ))}

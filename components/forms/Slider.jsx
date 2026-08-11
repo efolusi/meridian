@@ -1,6 +1,6 @@
 import React from 'react';
 import { injectEfCss, mergeRefs } from './Button.jsx';
-import { useFieldProps } from './FormField.jsx';
+import { useFieldProps } from './Field.jsx';
 
 const CSS = `
 .ef-slider{display:flex;flex-direction:column;gap:8px;touch-action:none;user-select:none}

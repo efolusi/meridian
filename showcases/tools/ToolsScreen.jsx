@@ -1,4 +1,4 @@
-const { Steps, FileDrop, FileTile, Select, Slider, Button, EmptyState, Card, Divider, SegmentedControl, Icon, Textarea, CopyField, Toaster } = window.EfolusiDesignSystem_4ffc3d;
+const { Steps, FileDrop, FileTile, NativeSelect, NativeSelectOption, Field, FieldLabel, Slider, Button, EmptyState, Card, Divider, SegmentedControl, Icon, Textarea, CopyField, Toaster } = window.EfolusiDesignSystem_4ffc3d;
 
 function EncodePane() {
   const [scheme, setScheme] = React.useState('base64');
@@ -91,7 +91,7 @@ function ToolsScreen() {
                   onRemove={f.state === 'working' ? undefined : () => remove(f.id)} />
               ))}
               <div style={{ display: 'flex', gap: 14, alignItems: 'flex-end', marginTop: 6 }}>
-                <Select label="Convert to" options={['DOCX', 'PDF', 'PNG', 'WEBM', 'MP3', 'TXT']} value={format} onChange={e => setFormat(e.target.value)} style={{ width: 160 }} />
+                <Field style={{ width: 160 }}><FieldLabel htmlFor="convert-format">Convert to</FieldLabel><NativeSelect id="convert-format" value={format} onChange={e => setFormat(e.target.value)}>{['DOCX', 'PDF', 'PNG', 'WEBM', 'MP3', 'TXT'].map(value => <NativeSelectOption key={value} value={value}>{value}</NativeSelectOption>)}</NativeSelect></Field>
                 <Slider label="Quality" showValue format={v => v + '%'} value={quality} onChange={setQuality} style={{ flex: 1 }} />
                 <Button iconLeft="refresh-cw" disabled={files.length === 0 || phase === 1} loading={phase === 1} onClick={convert}>{phase === 1 ? 'Converting' : 'Convert all'}</Button>
               </div>

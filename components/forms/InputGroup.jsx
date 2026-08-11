@@ -1,6 +1,6 @@
 import React from 'react';
 import { injectEfCss } from './Button.jsx';
-import { useFieldProps } from './FormField.jsx';
+import { useFieldProps } from './Field.jsx';
 const CSS = `
 .ef-input-group{display:flex;min-width:0;width:100%;align-items:center;border:1px solid var(--border-strong);border-radius:var(--radius-sm);background:var(--surface-card);transition:border-color var(--dur-fast) var(--ease-out),box-shadow var(--dur-fast) var(--ease-out)}
 .ef-input-group:focus-within{border-color:var(--accent);box-shadow:var(--focus-ring)}.ef-input-group:has([aria-invalid="true"]){border-color:var(--danger-600)}

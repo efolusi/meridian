@@ -1,7 +1,7 @@
 import React from 'react';
 import { Icon } from '../icons/Icon.jsx';
 import { injectEfCss } from '../forms/Button.jsx';
-import { useFieldProps } from '../forms/FormField.jsx';
+import { useFieldProps } from '../forms/Field.jsx';
 import { Portal, useAnchoredStyle } from '../overlay/Portal.jsx';
 const CSS = `
 .ef-field{display:flex;flex-direction:column;gap:6px}
@@ -43,7 +43,7 @@ const parseTyped = raw => {
 };
 export function TimePicker({ label, hint, value, onChange, stepMinutes = 30, minTime, maxTime, format24 = true, placeholder = 'Pick a time', disabled, invalid, style, className, ...rest }) {
   injectEfCss('ef-css-timepicker', CSS);
-  // Picks up id / aria wiring when nested in a FormField; standalone this is a no-op.
+  // Picks up id / aria wiring when nested in a Field; standalone this is a no-op.
   const field = useFieldProps({ invalid, id: rest.id, 'aria-describedby': rest['aria-describedby'] });
   const bad = field.invalid;
   const [open, setOpen] = React.useState(false);

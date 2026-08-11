@@ -1,4 +1,4 @@
-/* @ds-bundle: {"format":4,"namespace":"EfolusiDesignSystem_4ffc3d","components":[{"name":"AgentRun","sourcePath":"components/ai/AgentRun.jsx"},{"name":"BubbleGroup","sourcePath":"components/ai/Bubble.jsx"},{"name":"Bubble","sourcePath":"components/ai/Bubble.jsx"},{"name":"BubbleContent","sourcePath":"components/ai/Bubble.jsx"},{"name":"BubbleReactions","sourcePath":"components/ai/Bubble.jsx"},{"name":"ChatMessage","sourcePath":"components/ai/ChatMessage.jsx"},{"name":"Citation","sourcePath":"components/ai/Citation.jsx"},{"name":"SourceList","sourcePath":"components/ai/Citation.jsx"},{"name":"Confirmation","sourcePath":"components/ai/Confirmation.jsx"},{"name":"Conversation","sourcePath":"components/ai/Conversation.jsx"},{"name":"DocumentCard","sourcePath":"components/ai/DocumentCard.jsx"},{"name":"FeedbackBar","sourcePath":"components/ai/FeedbackBar.jsx"},{"name":"GeneratedImage","sourcePath":"components/ai/GeneratedImage.jsx"},{"name":"Marker","sourcePath":"components/ai/Marker.jsx"},{"name":"MarkerIcon","sourcePath":"components/ai/Marker.jsx"},{"name":"MarkerContent","sourcePath":"components/ai/Marker.jsx"},{"name":"ModelSelector","sourcePath":"components/ai/ModelSelector.jsx"},{"name":"Player","sourcePath":"components/ai/Player.jsx"},{"name":"PromptComposer","sourcePath":"components/ai/PromptComposer.jsx"},{"name":"PromptSteps","sourcePath":"components/ai/PromptSteps.jsx"},{"name":"Reasoning","sourcePath":"components/ai/Reasoning.jsx"},{"name":"RichComposer","sourcePath":"components/ai/RichComposer.jsx"},{"name":"Sandbox","sourcePath":"components/ai/Sandbox.jsx"},{"name":"SelectionQuote","sourcePath":"components/ai/SelectionQuote.jsx"},{"name":"SourceCard","sourcePath":"components/ai/SourceCard.jsx"},{"name":"Suggestions","sourcePath":"components/ai/Suggestions.jsx"},{"name":"Task","sourcePath":"components/ai/Task.jsx"},{"name":"Todo","sourcePath":"components/ai/Todo.jsx"},{"name":"ToolCall","sourcePath":"components/ai/ToolCall.jsx"},{"name":"Transcript","sourcePath":"components/ai/Transcript.jsx"},{"name":"UsageMeter","sourcePath":"components/ai/UsageMeter.jsx"},{"name":"WebPreview","sourcePath":"components/ai/WebPreview.jsx"},{"name":"CodeBlock","sourcePath":"components/code/CodeBlock.jsx"},{"name":"Console","sourcePath":"components/code/Console.jsx"},{"name":"CopyField","sourcePath":"components/code/CopyField.jsx"},{"name":"Diff","sourcePath":"components/code/Diff.jsx"},{"name":"EnvList","sourcePath":"components/code/EnvList.jsx"},{"name":"Exception","sourcePath":"components/code/Exception.jsx"},{"name":"Terminal","sourcePath":"components/code/Terminal.jsx"},{"name":"BarChart","sourcePath":"components/data/BarChart.jsx"},{"name":"DonutChart","sourcePath":"components/data/DonutChart.jsx"},{"name":"Empty","sourcePath":"components/data/EmptyState.jsx"},{"name":"EmptyHeader","sourcePath":"components/data/EmptyState.jsx"},{"name":"EmptyMedia","sourcePath":"components/data/EmptyState.jsx"},{"name":"EmptyTitle","sourcePath":"components/data/EmptyState.jsx"},{"name":"EmptyDescription","sourcePath":"components/data/EmptyState.jsx"},{"name":"EmptyContent","sourcePath":"components/data/EmptyState.jsx"},{"name":"EmptyState","sourcePath":"components/data/EmptyState.jsx"},{"name":"KeyValueList","sourcePath":"components/data/KeyValueList.jsx"},{"name":"LineChart","sourcePath":"components/data/LineChart.jsx"},{"name":"Skeleton","sourcePath":"components/data/Skeleton.jsx"},{"name":"Sparkline","sourcePath":"components/data/Sparkline.jsx"},{"name":"Stat","sourcePath":"components/data/Stat.jsx"},{"name":"StatusDot","sourcePath":"components/data/StatusDot.jsx"},{"name":"Table","sourcePath":"components/data/Table.jsx"},{"name":"TableHeader","sourcePath":"components/data/Table.jsx"},{"name":"TableBody","sourcePath":"components/data/Table.jsx"},{"name":"TableFooter","sourcePath":"components/data/Table.jsx"},{"name":"TableRow","sourcePath":"components/data/Table.jsx"},{"name":"TableHead","sourcePath":"components/data/Table.jsx"},{"name":"TableCell","sourcePath":"components/data/Table.jsx"},{"name":"TableCaption","sourcePath":"components/data/Table.jsx"},{"name":"Calendar","sourcePath":"components/dates/Calendar.jsx"},{"name":"DatePicker","sourcePath":"components/dates/DatePicker.jsx"},{"name":"DateRangePicker","sourcePath":"components/dates/DateRangePicker.jsx"},{"name":"TimePicker","sourcePath":"components/dates/TimePicker.jsx"},{"name":"Accordion","sourcePath":"components/display/Accordion.jsx"},{"name":"AccordionItem","sourcePath":"components/display/Accordion.jsx"},{"name":"AccordionTrigger","sourcePath":"components/display/Accordion.jsx"},{"name":"AccordionContent","sourcePath":"components/display/Accordion.jsx"},{"name":"AspectRatio","sourcePath":"components/display/AspectRatio.jsx"},{"name":"Avatar","sourcePath":"components/display/Avatar.jsx"},{"name":"AvatarImage","sourcePath":"components/display/Avatar.jsx"},{"name":"AvatarFallback","sourcePath":"components/display/Avatar.jsx"},{"name":"AvatarBadge","sourcePath":"components/display/Avatar.jsx"},{"name":"AvatarGroup","sourcePath":"components/display/Avatar.jsx"},{"name":"AvatarGroupCount","sourcePath":"components/display/Avatar.jsx"},{"name":"Badge","sourcePath":"components/display/Badge.jsx"},{"name":"CardHeader","sourcePath":"components/display/Card.jsx"},{"name":"CardTitle","sourcePath":"components/display/Card.jsx"},{"name":"CardDescription","sourcePath":"components/display/Card.jsx"},{"name":"CardAction","sourcePath":"components/display/Card.jsx"},{"name":"CardContent","sourcePath":"components/display/Card.jsx"},{"name":"CardFooter","sourcePath":"components/display/Card.jsx"},{"name":"Card","sourcePath":"components/display/Card.jsx"},{"name":"Carousel","sourcePath":"components/display/Carousel.jsx"},{"name":"CarouselContent","sourcePath":"components/display/Carousel.jsx"},{"name":"CarouselItem","sourcePath":"components/display/Carousel.jsx"},{"name":"CarouselPrevious","sourcePath":"components/display/Carousel.jsx"},{"name":"CarouselNext","sourcePath":"components/display/Carousel.jsx"},{"name":"Collapsible","sourcePath":"components/display/Collapsible.jsx"},{"name":"CollapsibleTrigger","sourcePath":"components/display/Collapsible.jsx"},{"name":"CollapsibleContent","sourcePath":"components/display/Collapsible.jsx"},{"name":"DirectionProvider","sourcePath":"components/display/Direction.jsx"},{"name":"Divider","sourcePath":"components/display/Divider.jsx"},{"name":"Kbd","sourcePath":"components/display/Kbd.jsx"},{"name":"KbdGroup","sourcePath":"components/display/Kbd.jsx"},{"name":"Link","sourcePath":"components/display/Link.jsx"},{"name":"ListItem","sourcePath":"components/display/ListItem.jsx"},{"name":"ResizablePanelGroup","sourcePath":"components/display/Resizable.jsx"},{"name":"ResizablePanel","sourcePath":"components/display/Resizable.jsx"},{"name":"ResizableHandle","sourcePath":"components/display/Resizable.jsx"},{"name":"ScrollArea","sourcePath":"components/display/ScrollArea.jsx"},{"name":"ScrollBar","sourcePath":"components/display/ScrollArea.jsx"},{"name":"Separator","sourcePath":"components/display/Separator.jsx"},{"name":"Tag","sourcePath":"components/display/Tag.jsx"},{"name":"Timeline","sourcePath":"components/display/Timeline.jsx"},{"name":"Toolbar","sourcePath":"components/display/Toolbar.jsx"},{"name":"TreeList","sourcePath":"components/display/TreeList.jsx"},{"name":"Alert","sourcePath":"components/feedback/Alert.jsx"},{"name":"AlertTitle","sourcePath":"components/feedback/Alert.jsx"},{"name":"AlertDescription","sourcePath":"components/feedback/Alert.jsx"},{"name":"AlertDialog","sourcePath":"components/feedback/AlertDialog.jsx"},{"name":"AlertDialogTrigger","sourcePath":"components/feedback/AlertDialog.jsx"},{"name":"AlertDialogPortal","sourcePath":"components/feedback/AlertDialog.jsx"},{"name":"AlertDialogOverlay","sourcePath":"components/feedback/AlertDialog.jsx"},{"name":"AlertDialogContent","sourcePath":"components/feedback/AlertDialog.jsx"},{"name":"AlertDialogHeader","sourcePath":"components/feedback/AlertDialog.jsx"},{"name":"AlertDialogFooter","sourcePath":"components/feedback/AlertDialog.jsx"},{"name":"AlertDialogMedia","sourcePath":"components/feedback/AlertDialog.jsx"},{"name":"AlertDialogTitle","sourcePath":"components/feedback/AlertDialog.jsx"},{"name":"AlertDialogDescription","sourcePath":"components/feedback/AlertDialog.jsx"},{"name":"AlertDialogCancel","sourcePath":"components/feedback/AlertDialog.jsx"},{"name":"AlertDialogAction","sourcePath":"components/feedback/AlertDialog.jsx"},{"name":"Banner","sourcePath":"components/feedback/Banner.jsx"},{"name":"ConfirmDialog","sourcePath":"components/feedback/ConfirmDialog.jsx"},{"name":"Dialog","sourcePath":"components/feedback/Dialog.jsx"},{"name":"DialogTrigger","sourcePath":"components/feedback/Dialog.jsx"},{"name":"DialogPortal","sourcePath":"components/feedback/Dialog.jsx"},{"name":"DialogOverlay","sourcePath":"components/feedback/Dialog.jsx"},{"name":"DialogClose","sourcePath":"components/feedback/Dialog.jsx"},{"name":"DialogContent","sourcePath":"components/feedback/Dialog.jsx"},{"name":"DialogHeader","sourcePath":"components/feedback/Dialog.jsx"},{"name":"DialogFooter","sourcePath":"components/feedback/Dialog.jsx"},{"name":"DialogTitle","sourcePath":"components/feedback/Dialog.jsx"},{"name":"DialogDescription","sourcePath":"components/feedback/Dialog.jsx"},{"name":"Loader","sourcePath":"components/feedback/Loader.jsx"},{"name":"Progress","sourcePath":"components/feedback/Progress.jsx"},{"name":"Spinner","sourcePath":"components/feedback/Spinner.jsx"},{"name":"Toast","sourcePath":"components/feedback/Toast.jsx"},{"name":"ToastStack","sourcePath":"components/feedback/Toast.jsx"},{"name":"Toaster","sourcePath":"components/feedback/Toast.jsx"},{"name":"Tooltip","sourcePath":"components/feedback/Tooltip.jsx"},{"name":"TooltipProvider","sourcePath":"components/feedback/Tooltip.jsx"},{"name":"TooltipTrigger","sourcePath":"components/feedback/Tooltip.jsx"},{"name":"TooltipContent","sourcePath":"components/feedback/Tooltip.jsx"},{"name":"Attachment","sourcePath":"components/files/Attachment.jsx"},{"name":"AttachmentMedia","sourcePath":"components/files/Attachment.jsx"},{"name":"AttachmentContent","sourcePath":"components/files/Attachment.jsx"},{"name":"AttachmentTitle","sourcePath":"components/files/Attachment.jsx"},{"name":"AttachmentDescription","sourcePath":"components/files/Attachment.jsx"},{"name":"AttachmentActions","sourcePath":"components/files/Attachment.jsx"},{"name":"AttachmentAction","sourcePath":"components/files/Attachment.jsx"},{"name":"AttachmentTrigger","sourcePath":"components/files/Attachment.jsx"},{"name":"AttachmentGroup","sourcePath":"components/files/Attachment.jsx"},{"name":"FileDrop","sourcePath":"components/files/FileDrop.jsx"},{"name":"FileTile","sourcePath":"components/files/FileTile.jsx"},{"name":"FileTypeIcon","sourcePath":"components/files/FileTypeIcon.jsx"},{"name":"PaymentCard","sourcePath":"components/finance/PaymentCard.jsx"},{"name":"Button","sourcePath":"components/forms/Button.jsx"},{"name":"ButtonGroup","sourcePath":"components/forms/ButtonGroup.jsx"},{"name":"ButtonGroupText","sourcePath":"components/forms/ButtonGroup.jsx"},{"name":"ButtonGroupSeparator","sourcePath":"components/forms/ButtonGroup.jsx"},{"name":"ButtonTile","sourcePath":"components/forms/ButtonTile.jsx"},{"name":"ButtonTileGroup","sourcePath":"components/forms/ButtonTile.jsx"},{"name":"Checkbox","sourcePath":"components/forms/Checkbox.jsx"},{"name":"Combobox","sourcePath":"components/forms/Combobox.jsx"},{"name":"FormField","sourcePath":"components/forms/FormField.jsx"},{"name":"IconButton","sourcePath":"components/forms/IconButton.jsx"},{"name":"Input","sourcePath":"components/forms/Input.jsx"},{"name":"InputGroup","sourcePath":"components/forms/InputGroup.jsx"},{"name":"InputGroupAddon","sourcePath":"components/forms/InputGroup.jsx"},{"name":"InputGroupButton","sourcePath":"components/forms/InputGroup.jsx"},{"name":"InputGroupInput","sourcePath":"components/forms/InputGroup.jsx"},{"name":"InputGroupTextarea","sourcePath":"components/forms/InputGroup.jsx"},{"name":"InputGroupText","sourcePath":"components/forms/InputGroup.jsx"},{"name":"InputOTP","sourcePath":"components/forms/InputOTP.jsx"},{"name":"InputOTPGroup","sourcePath":"components/forms/InputOTP.jsx"},{"name":"InputOTPSlot","sourcePath":"components/forms/InputOTP.jsx"},{"name":"InputOTPSeparator","sourcePath":"components/forms/InputOTP.jsx"},{"name":"Label","sourcePath":"components/forms/Label.jsx"},{"name":"NativeSelect","sourcePath":"components/forms/NativeSelect.jsx"},{"name":"NativeSelectOption","sourcePath":"components/forms/NativeSelect.jsx"},{"name":"NativeSelectOptGroup","sourcePath":"components/forms/NativeSelect.jsx"},{"name":"NumberInput","sourcePath":"components/forms/NumberInput.jsx"},{"name":"RadioGroup","sourcePath":"components/forms/Radio.jsx"},{"name":"RadioGroupItem","sourcePath":"components/forms/Radio.jsx"},{"name":"Radio","sourcePath":"components/forms/Radio.jsx"},{"name":"Select","sourcePath":"components/forms/Select.jsx"},{"name":"Slider","sourcePath":"components/forms/Slider.jsx"},{"name":"Switch","sourcePath":"components/forms/Switch.jsx"},{"name":"Textarea","sourcePath":"components/forms/Textarea.jsx"},{"name":"Toggle","sourcePath":"components/forms/Toggle.jsx"},{"name":"ToggleGroup","sourcePath":"components/forms/Toggle.jsx"},{"name":"ToggleGroupItem","sourcePath":"components/forms/Toggle.jsx"},{"name":"Icon","sourcePath":"components/icons/Icon.jsx"},{"name":"Breadcrumb","sourcePath":"components/navigation/Breadcrumbs.jsx"},{"name":"BreadcrumbList","sourcePath":"components/navigation/Breadcrumbs.jsx"},{"name":"BreadcrumbItem","sourcePath":"components/navigation/Breadcrumbs.jsx"},{"name":"BreadcrumbLink","sourcePath":"components/navigation/Breadcrumbs.jsx"},{"name":"BreadcrumbPage","sourcePath":"components/navigation/Breadcrumbs.jsx"},{"name":"BreadcrumbSeparator","sourcePath":"components/navigation/Breadcrumbs.jsx"},{"name":"BreadcrumbEllipsis","sourcePath":"components/navigation/Breadcrumbs.jsx"},{"name":"Breadcrumbs","sourcePath":"components/navigation/Breadcrumbs.jsx"},{"name":"Menubar","sourcePath":"components/navigation/Menubar.jsx"},{"name":"PageControl","sourcePath":"components/navigation/PageControl.jsx"},{"name":"Pagination","sourcePath":"components/navigation/Pagination.jsx"},{"name":"PaginationContent","sourcePath":"components/navigation/Pagination.jsx"},{"name":"PaginationItem","sourcePath":"components/navigation/Pagination.jsx"},{"name":"PaginationLink","sourcePath":"components/navigation/Pagination.jsx"},{"name":"PaginationPrevious","sourcePath":"components/navigation/Pagination.jsx"},{"name":"PaginationNext","sourcePath":"components/navigation/Pagination.jsx"},{"name":"PaginationEllipsis","sourcePath":"components/navigation/Pagination.jsx"},{"name":"SegmentedControl","sourcePath":"components/navigation/SegmentedControl.jsx"},{"name":"SideNav","sourcePath":"components/navigation/SideNav.jsx"},{"name":"Steps","sourcePath":"components/navigation/Steps.jsx"},{"name":"Tabs","sourcePath":"components/navigation/Tabs.jsx"},{"name":"TabsList","sourcePath":"components/navigation/Tabs.jsx"},{"name":"TabsTrigger","sourcePath":"components/navigation/Tabs.jsx"},{"name":"TabsContent","sourcePath":"components/navigation/Tabs.jsx"},{"name":"TopNav","sourcePath":"components/navigation/TopNav.jsx"},{"name":"CommandPalette","sourcePath":"components/overlay/CommandPalette.jsx"},{"name":"ContextMenu","sourcePath":"components/overlay/ContextMenu.jsx"},{"name":"Drawer","sourcePath":"components/overlay/Drawer.jsx"},{"name":"HoverCard","sourcePath":"components/overlay/HoverCard.jsx"},{"name":"Menu","sourcePath":"components/overlay/Menu.jsx"},{"name":"Popover","sourcePath":"components/overlay/Popover.jsx"},{"name":"PopoverTrigger","sourcePath":"components/overlay/Popover.jsx"},{"name":"PopoverContent","sourcePath":"components/overlay/Popover.jsx"},{"name":"PopoverHeader","sourcePath":"components/overlay/Popover.jsx"},{"name":"PopoverTitle","sourcePath":"components/overlay/Popover.jsx"},{"name":"PopoverDescription","sourcePath":"components/overlay/Popover.jsx"},{"name":"Portal","sourcePath":"components/overlay/Portal.jsx"}],"publicHelpers":[{"name":"markerVariants","sourcePath":"components/ai/Marker.jsx"},{"name":"badgeVariants","sourcePath":"components/display/Badge.jsx"},{"name":"useDirection","sourcePath":"components/display/Direction.jsx"},{"name":"buttonVariants","sourcePath":"components/forms/Button.jsx"},{"name":"buttonGroupVariants","sourcePath":"components/forms/ButtonGroup.jsx"},{"name":"toggleVariants","sourcePath":"components/forms/Toggle.jsx"}],"sourceHashes":{"components/ai/AgentRun.jsx":"9740e0e168e0","components/ai/Bubble.jsx":"1fbd306ae6c7","components/ai/ChatMessage.jsx":"98920e696206","components/ai/Citation.jsx":"bdfe512cd8b0","components/ai/Confirmation.jsx":"e6baaf9f3831","components/ai/Conversation.jsx":"811020760647","components/ai/DocumentCard.jsx":"a7159ec86c9a","components/ai/FeedbackBar.jsx":"76ce9048b0f8","components/ai/GeneratedImage.jsx":"700da56ce3b7","components/ai/Marker.jsx":"4a8e54cf1022","components/ai/ModelSelector.jsx":"275bb7ef8ddc","components/ai/Player.jsx":"a8a820c1e259","components/ai/PromptComposer.jsx":"37273e81af0a","components/ai/PromptSteps.jsx":"428074df6cd1","components/ai/Reasoning.jsx":"6a54640d743d","components/ai/RichComposer.jsx":"cf26b89fd54b","components/ai/Sandbox.jsx":"78eacd199e92","components/ai/SelectionQuote.jsx":"2ba728772ad9","components/ai/SourceCard.jsx":"ca0d3eedf981","components/ai/Suggestions.jsx":"49b23d064460","components/ai/Task.jsx":"613d6bf8d05a","components/ai/Todo.jsx":"5c8653be0ea4","components/ai/ToolCall.jsx":"3c36ce2c9aab","components/ai/Transcript.jsx":"3ecad5218a37","components/ai/UsageMeter.jsx":"75c7a916706a","components/ai/WebPreview.jsx":"83ced5843df1","components/code/CodeBlock.jsx":"2160ce0d755d","components/code/Console.jsx":"5a150480bfb5","components/code/CopyField.jsx":"61f56f69d3d3","components/code/Diff.jsx":"0590d197b3b0","components/code/EnvList.jsx":"e25c72e2863c","components/code/Exception.jsx":"7c9828556417","components/code/Terminal.jsx":"5eda66e465b6","components/data/BarChart.jsx":"af57088eee06","components/data/DonutChart.jsx":"13aa95392d7a","components/data/EmptyState.jsx":"dfddad4e80a3","components/data/KeyValueList.jsx":"3876b7c9581e","components/data/LineChart.jsx":"7cce718ff267","components/data/Skeleton.jsx":"1f61553d59d1","components/data/Sparkline.jsx":"5b2a0e67cdae","components/data/Stat.jsx":"aba92e72a0f8","components/data/StatusDot.jsx":"51ac4e89dcc7","components/data/Table.jsx":"b2bb4dafe5e1","components/dates/Calendar.jsx":"f0174dbb465b","components/dates/DatePicker.jsx":"9ce510965f1b","components/dates/DateRangePicker.jsx":"7eb2f9c9a088","components/dates/TimePicker.jsx":"3fd5e28936c7","components/display/Accordion.jsx":"d1599a676217","components/display/AspectRatio.jsx":"91558029d648","components/display/Avatar.jsx":"4aa383ee6c4b","components/display/Badge.jsx":"5a1248c43eaf","components/display/Card.jsx":"3c59a39074d9","components/display/Carousel.jsx":"d10ba2744373","components/display/Collapsible.jsx":"cb3eb298cff5","components/display/Direction.jsx":"538f2d4cbf23","components/display/Divider.jsx":"ee51ca336cc7","components/display/Kbd.jsx":"443f2a9b8f89","components/display/Link.jsx":"4f2fc59ae0db","components/display/ListItem.jsx":"8528c6e482bb","components/display/Resizable.jsx":"74bc54184023","components/display/ScrollArea.jsx":"6c71af1111a2","components/display/Separator.jsx":"5c2b62cf7532","components/display/Tag.jsx":"e9dadb374567","components/display/Timeline.jsx":"6c5bff5f4dcf","components/display/Toolbar.jsx":"bbe6cffbcbab","components/display/TreeList.jsx":"69be2d21b8ad","components/feedback/Alert.jsx":"e05249f7f5a2","components/feedback/AlertDialog.jsx":"d31e73948f4f","components/feedback/Banner.jsx":"d1e818e8451a","components/feedback/ConfirmDialog.jsx":"ae69cb48e209","components/feedback/Dialog.jsx":"aeb4a8707687","components/feedback/Loader.jsx":"02efacc86905","components/feedback/Progress.jsx":"0964f54f5644","components/feedback/Spinner.jsx":"8f26ebaeaed1","components/feedback/Toast.jsx":"3ce2ec55ef4d","components/feedback/Tooltip.jsx":"2358a8b5f657","components/files/Attachment.jsx":"bd63ebd29171","components/files/FileDrop.jsx":"737632ac07db","components/files/FileTile.jsx":"28af04d1303b","components/files/FileTypeIcon.jsx":"3bcdf5ca7eb9","components/finance/PaymentCard.jsx":"74fa271e12f2","components/forms/Button.jsx":"b75f2a023e92","components/forms/ButtonGroup.jsx":"df7d04210646","components/forms/ButtonTile.jsx":"1508984c0c5c","components/forms/Checkbox.jsx":"e2735e29e843","components/forms/Combobox.jsx":"724b03db0032","components/forms/FormField.jsx":"4219a23c3754","components/forms/IconButton.jsx":"967b0b3312fe","components/forms/Input.jsx":"614640ceb8db","components/forms/InputGroup.jsx":"757871abd9a7","components/forms/InputOTP.jsx":"275c5ea31342","components/forms/Label.jsx":"f0bfcb5ae210","components/forms/NativeSelect.jsx":"caa858aa46d0","components/forms/NumberInput.jsx":"134d8cf88a75","components/forms/Radio.jsx":"1f2ba0be6db8","components/forms/Select.jsx":"ac3b6f4a2b4f","components/forms/Slider.jsx":"5cd508513388","components/forms/Switch.jsx":"81d54767c724","components/forms/Textarea.jsx":"928735f70e65","components/forms/Toggle.jsx":"75a66e225060","components/icons/Icon.jsx":"65c4206c8479","components/navigation/Breadcrumbs.jsx":"2e53cdf7a4e9","components/navigation/Menubar.jsx":"950604788590","components/navigation/PageControl.jsx":"8c5bfdc21407","components/navigation/Pagination.jsx":"127bcfba7d9e","components/navigation/SegmentedControl.jsx":"ae08ad97a9a2","components/navigation/SideNav.jsx":"00851e64baa2","components/navigation/Steps.jsx":"45c6c1162b22","components/navigation/Tabs.jsx":"1af60f8cf9d8","components/navigation/TopNav.jsx":"967b11093c20","components/overlay/CommandPalette.jsx":"b07b4f28cb8c","components/overlay/ContextMenu.jsx":"5053709a1ee5","components/overlay/Drawer.jsx":"18c562fe05c3","components/overlay/HoverCard.jsx":"7438ba615e77","components/overlay/Menu.jsx":"3119fa73b187","components/overlay/Popover.jsx":"09e245cb8d48","components/overlay/Portal.jsx":"3819af4bd7c7","showcases/agent/AgentScreen.jsx":"87f60f9116cc","showcases/auth/AuthScreens.jsx":"b3583b149df5","showcases/console/CustomersScreen.jsx":"a8a080a80d9e","showcases/console/ExtraScreens.jsx":"1e7a048ab690","showcases/console/OverviewScreen.jsx":"34b01f22bb52","showcases/console/SettingsScreen.jsx":"1d67397e26b4","showcases/console/Shell.jsx":"f5dd862d2098","showcases/docs/DocsScreen.jsx":"faa44c30040d","showcases/infra/InfraScreen.jsx":"f95eefa85b8d","showcases/tools/ToolsScreen.jsx":"bc6efc0184c2","showcases/trader/TraderScreen.jsx":"12e5273b9894","showcases/website/Sections.jsx":"3f14d6a12c71"},"inlinedExternals":[],"unexposedExports":[{"name":"computeDiff","sourcePath":"components/code/Diff.jsx"},{"name":"cssPct","sourcePath":"components/forms/Button.jsx"},{"name":"formatTime","sourcePath":"components/ai/Player.jsx"},{"name":"injectEfCss","sourcePath":"components/forms/Button.jsx"},{"name":"mergeRefs","sourcePath":"components/forms/Button.jsx"},{"name":"prefersReducedMotion","sourcePath":"components/forms/Button.jsx"},{"name":"useAnchoredStyle","sourcePath":"components/overlay/Portal.jsx"},{"name":"useFieldProps","sourcePath":"components/forms/FormField.jsx"},{"name":"useFormState","sourcePath":"components/forms/FormField.jsx"},{"name":"useIsoLayoutEffect","sourcePath":"components/forms/Button.jsx"},{"name":"useToast","sourcePath":"components/feedback/Toast.jsx"}]} */
+/* @ds-bundle: {"format":4,"namespace":"EfolusiDesignSystem_4ffc3d","components":[{"name":"AgentRun","sourcePath":"components/ai/AgentRun.jsx"},{"name":"BubbleGroup","sourcePath":"components/ai/Bubble.jsx"},{"name":"Bubble","sourcePath":"components/ai/Bubble.jsx"},{"name":"BubbleContent","sourcePath":"components/ai/Bubble.jsx"},{"name":"BubbleReactions","sourcePath":"components/ai/Bubble.jsx"},{"name":"ChatMessage","sourcePath":"components/ai/ChatMessage.jsx"},{"name":"Citation","sourcePath":"components/ai/Citation.jsx"},{"name":"SourceList","sourcePath":"components/ai/Citation.jsx"},{"name":"Confirmation","sourcePath":"components/ai/Confirmation.jsx"},{"name":"Conversation","sourcePath":"components/ai/Conversation.jsx"},{"name":"DocumentCard","sourcePath":"components/ai/DocumentCard.jsx"},{"name":"FeedbackBar","sourcePath":"components/ai/FeedbackBar.jsx"},{"name":"GeneratedImage","sourcePath":"components/ai/GeneratedImage.jsx"},{"name":"Marker","sourcePath":"components/ai/Marker.jsx"},{"name":"MarkerIcon","sourcePath":"components/ai/Marker.jsx"},{"name":"MarkerContent","sourcePath":"components/ai/Marker.jsx"},{"name":"ModelSelector","sourcePath":"components/ai/ModelSelector.jsx"},{"name":"Player","sourcePath":"components/ai/Player.jsx"},{"name":"PromptComposer","sourcePath":"components/ai/PromptComposer.jsx"},{"name":"PromptSteps","sourcePath":"components/ai/PromptSteps.jsx"},{"name":"Reasoning","sourcePath":"components/ai/Reasoning.jsx"},{"name":"RichComposer","sourcePath":"components/ai/RichComposer.jsx"},{"name":"Sandbox","sourcePath":"components/ai/Sandbox.jsx"},{"name":"SelectionQuote","sourcePath":"components/ai/SelectionQuote.jsx"},{"name":"SourceCard","sourcePath":"components/ai/SourceCard.jsx"},{"name":"Suggestions","sourcePath":"components/ai/Suggestions.jsx"},{"name":"Task","sourcePath":"components/ai/Task.jsx"},{"name":"Todo","sourcePath":"components/ai/Todo.jsx"},{"name":"ToolCall","sourcePath":"components/ai/ToolCall.jsx"},{"name":"Transcript","sourcePath":"components/ai/Transcript.jsx"},{"name":"UsageMeter","sourcePath":"components/ai/UsageMeter.jsx"},{"name":"WebPreview","sourcePath":"components/ai/WebPreview.jsx"},{"name":"CodeBlock","sourcePath":"components/code/CodeBlock.jsx"},{"name":"Console","sourcePath":"components/code/Console.jsx"},{"name":"CopyField","sourcePath":"components/code/CopyField.jsx"},{"name":"Diff","sourcePath":"components/code/Diff.jsx"},{"name":"EnvList","sourcePath":"components/code/EnvList.jsx"},{"name":"Exception","sourcePath":"components/code/Exception.jsx"},{"name":"Terminal","sourcePath":"components/code/Terminal.jsx"},{"name":"BarChart","sourcePath":"components/data/BarChart.jsx"},{"name":"DonutChart","sourcePath":"components/data/DonutChart.jsx"},{"name":"Empty","sourcePath":"components/data/EmptyState.jsx"},{"name":"EmptyHeader","sourcePath":"components/data/EmptyState.jsx"},{"name":"EmptyMedia","sourcePath":"components/data/EmptyState.jsx"},{"name":"EmptyTitle","sourcePath":"components/data/EmptyState.jsx"},{"name":"EmptyDescription","sourcePath":"components/data/EmptyState.jsx"},{"name":"EmptyContent","sourcePath":"components/data/EmptyState.jsx"},{"name":"EmptyState","sourcePath":"components/data/EmptyState.jsx"},{"name":"KeyValueList","sourcePath":"components/data/KeyValueList.jsx"},{"name":"LineChart","sourcePath":"components/data/LineChart.jsx"},{"name":"Skeleton","sourcePath":"components/data/Skeleton.jsx"},{"name":"Sparkline","sourcePath":"components/data/Sparkline.jsx"},{"name":"Stat","sourcePath":"components/data/Stat.jsx"},{"name":"StatusDot","sourcePath":"components/data/StatusDot.jsx"},{"name":"Table","sourcePath":"components/data/Table.jsx"},{"name":"TableHeader","sourcePath":"components/data/Table.jsx"},{"name":"TableBody","sourcePath":"components/data/Table.jsx"},{"name":"TableFooter","sourcePath":"components/data/Table.jsx"},{"name":"TableRow","sourcePath":"components/data/Table.jsx"},{"name":"TableHead","sourcePath":"components/data/Table.jsx"},{"name":"TableCell","sourcePath":"components/data/Table.jsx"},{"name":"TableCaption","sourcePath":"components/data/Table.jsx"},{"name":"Calendar","sourcePath":"components/dates/Calendar.jsx"},{"name":"DatePicker","sourcePath":"components/dates/DatePicker.jsx"},{"name":"DateRangePicker","sourcePath":"components/dates/DateRangePicker.jsx"},{"name":"TimePicker","sourcePath":"components/dates/TimePicker.jsx"},{"name":"Accordion","sourcePath":"components/display/Accordion.jsx"},{"name":"AccordionItem","sourcePath":"components/display/Accordion.jsx"},{"name":"AccordionTrigger","sourcePath":"components/display/Accordion.jsx"},{"name":"AccordionContent","sourcePath":"components/display/Accordion.jsx"},{"name":"AspectRatio","sourcePath":"components/display/AspectRatio.jsx"},{"name":"Avatar","sourcePath":"components/display/Avatar.jsx"},{"name":"AvatarImage","sourcePath":"components/display/Avatar.jsx"},{"name":"AvatarFallback","sourcePath":"components/display/Avatar.jsx"},{"name":"AvatarBadge","sourcePath":"components/display/Avatar.jsx"},{"name":"AvatarGroup","sourcePath":"components/display/Avatar.jsx"},{"name":"AvatarGroupCount","sourcePath":"components/display/Avatar.jsx"},{"name":"Badge","sourcePath":"components/display/Badge.jsx"},{"name":"CardHeader","sourcePath":"components/display/Card.jsx"},{"name":"CardTitle","sourcePath":"components/display/Card.jsx"},{"name":"CardDescription","sourcePath":"components/display/Card.jsx"},{"name":"CardAction","sourcePath":"components/display/Card.jsx"},{"name":"CardContent","sourcePath":"components/display/Card.jsx"},{"name":"CardFooter","sourcePath":"components/display/Card.jsx"},{"name":"Card","sourcePath":"components/display/Card.jsx"},{"name":"Carousel","sourcePath":"components/display/Carousel.jsx"},{"name":"CarouselContent","sourcePath":"components/display/Carousel.jsx"},{"name":"CarouselItem","sourcePath":"components/display/Carousel.jsx"},{"name":"CarouselPrevious","sourcePath":"components/display/Carousel.jsx"},{"name":"CarouselNext","sourcePath":"components/display/Carousel.jsx"},{"name":"Collapsible","sourcePath":"components/display/Collapsible.jsx"},{"name":"CollapsibleTrigger","sourcePath":"components/display/Collapsible.jsx"},{"name":"CollapsibleContent","sourcePath":"components/display/Collapsible.jsx"},{"name":"DirectionProvider","sourcePath":"components/display/Direction.jsx"},{"name":"Divider","sourcePath":"components/display/Divider.jsx"},{"name":"Kbd","sourcePath":"components/display/Kbd.jsx"},{"name":"KbdGroup","sourcePath":"components/display/Kbd.jsx"},{"name":"Link","sourcePath":"components/display/Link.jsx"},{"name":"ListItem","sourcePath":"components/display/ListItem.jsx"},{"name":"ResizablePanelGroup","sourcePath":"components/display/Resizable.jsx"},{"name":"ResizablePanel","sourcePath":"components/display/Resizable.jsx"},{"name":"ResizableHandle","sourcePath":"components/display/Resizable.jsx"},{"name":"ScrollArea","sourcePath":"components/display/ScrollArea.jsx"},{"name":"ScrollBar","sourcePath":"components/display/ScrollArea.jsx"},{"name":"Separator","sourcePath":"components/display/Separator.jsx"},{"name":"Tag","sourcePath":"components/display/Tag.jsx"},{"name":"Timeline","sourcePath":"components/display/Timeline.jsx"},{"name":"Toolbar","sourcePath":"components/display/Toolbar.jsx"},{"name":"TreeList","sourcePath":"components/display/TreeList.jsx"},{"name":"Alert","sourcePath":"components/feedback/Alert.jsx"},{"name":"AlertTitle","sourcePath":"components/feedback/Alert.jsx"},{"name":"AlertDescription","sourcePath":"components/feedback/Alert.jsx"},{"name":"AlertDialog","sourcePath":"components/feedback/AlertDialog.jsx"},{"name":"AlertDialogTrigger","sourcePath":"components/feedback/AlertDialog.jsx"},{"name":"AlertDialogPortal","sourcePath":"components/feedback/AlertDialog.jsx"},{"name":"AlertDialogOverlay","sourcePath":"components/feedback/AlertDialog.jsx"},{"name":"AlertDialogContent","sourcePath":"components/feedback/AlertDialog.jsx"},{"name":"AlertDialogHeader","sourcePath":"components/feedback/AlertDialog.jsx"},{"name":"AlertDialogFooter","sourcePath":"components/feedback/AlertDialog.jsx"},{"name":"AlertDialogMedia","sourcePath":"components/feedback/AlertDialog.jsx"},{"name":"AlertDialogTitle","sourcePath":"components/feedback/AlertDialog.jsx"},{"name":"AlertDialogDescription","sourcePath":"components/feedback/AlertDialog.jsx"},{"name":"AlertDialogCancel","sourcePath":"components/feedback/AlertDialog.jsx"},{"name":"AlertDialogAction","sourcePath":"components/feedback/AlertDialog.jsx"},{"name":"Banner","sourcePath":"components/feedback/Banner.jsx"},{"name":"ConfirmDialog","sourcePath":"components/feedback/ConfirmDialog.jsx"},{"name":"Dialog","sourcePath":"components/feedback/Dialog.jsx"},{"name":"DialogTrigger","sourcePath":"components/feedback/Dialog.jsx"},{"name":"DialogPortal","sourcePath":"components/feedback/Dialog.jsx"},{"name":"DialogOverlay","sourcePath":"components/feedback/Dialog.jsx"},{"name":"DialogClose","sourcePath":"components/feedback/Dialog.jsx"},{"name":"DialogContent","sourcePath":"components/feedback/Dialog.jsx"},{"name":"DialogHeader","sourcePath":"components/feedback/Dialog.jsx"},{"name":"DialogFooter","sourcePath":"components/feedback/Dialog.jsx"},{"name":"DialogTitle","sourcePath":"components/feedback/Dialog.jsx"},{"name":"DialogDescription","sourcePath":"components/feedback/Dialog.jsx"},{"name":"Loader","sourcePath":"components/feedback/Loader.jsx"},{"name":"Progress","sourcePath":"components/feedback/Progress.jsx"},{"name":"Spinner","sourcePath":"components/feedback/Spinner.jsx"},{"name":"Toast","sourcePath":"components/feedback/Toast.jsx"},{"name":"ToastStack","sourcePath":"components/feedback/Toast.jsx"},{"name":"Toaster","sourcePath":"components/feedback/Toast.jsx"},{"name":"Tooltip","sourcePath":"components/feedback/Tooltip.jsx"},{"name":"TooltipProvider","sourcePath":"components/feedback/Tooltip.jsx"},{"name":"TooltipTrigger","sourcePath":"components/feedback/Tooltip.jsx"},{"name":"TooltipContent","sourcePath":"components/feedback/Tooltip.jsx"},{"name":"Attachment","sourcePath":"components/files/Attachment.jsx"},{"name":"AttachmentMedia","sourcePath":"components/files/Attachment.jsx"},{"name":"AttachmentContent","sourcePath":"components/files/Attachment.jsx"},{"name":"AttachmentTitle","sourcePath":"components/files/Attachment.jsx"},{"name":"AttachmentDescription","sourcePath":"components/files/Attachment.jsx"},{"name":"AttachmentActions","sourcePath":"components/files/Attachment.jsx"},{"name":"AttachmentAction","sourcePath":"components/files/Attachment.jsx"},{"name":"AttachmentTrigger","sourcePath":"components/files/Attachment.jsx"},{"name":"AttachmentGroup","sourcePath":"components/files/Attachment.jsx"},{"name":"FileDrop","sourcePath":"components/files/FileDrop.jsx"},{"name":"FileTile","sourcePath":"components/files/FileTile.jsx"},{"name":"FileTypeIcon","sourcePath":"components/files/FileTypeIcon.jsx"},{"name":"PaymentCard","sourcePath":"components/finance/PaymentCard.jsx"},{"name":"Button","sourcePath":"components/forms/Button.jsx"},{"name":"ButtonGroup","sourcePath":"components/forms/ButtonGroup.jsx"},{"name":"ButtonGroupText","sourcePath":"components/forms/ButtonGroup.jsx"},{"name":"ButtonGroupSeparator","sourcePath":"components/forms/ButtonGroup.jsx"},{"name":"ButtonTile","sourcePath":"components/forms/ButtonTile.jsx"},{"name":"ButtonTileGroup","sourcePath":"components/forms/ButtonTile.jsx"},{"name":"Checkbox","sourcePath":"components/forms/Checkbox.jsx"},{"name":"Combobox","sourcePath":"components/forms/Combobox.jsx"},{"name":"Field","sourcePath":"components/forms/Field.jsx"},{"name":"FieldSet","sourcePath":"components/forms/Field.jsx"},{"name":"FieldGroup","sourcePath":"components/forms/Field.jsx"},{"name":"FieldContent","sourcePath":"components/forms/Field.jsx"},{"name":"FieldLabel","sourcePath":"components/forms/Field.jsx"},{"name":"FieldTitle","sourcePath":"components/forms/Field.jsx"},{"name":"FieldDescription","sourcePath":"components/forms/Field.jsx"},{"name":"FieldLegend","sourcePath":"components/forms/Field.jsx"},{"name":"FieldSeparator","sourcePath":"components/forms/Field.jsx"},{"name":"FieldError","sourcePath":"components/forms/Field.jsx"},{"name":"IconButton","sourcePath":"components/forms/IconButton.jsx"},{"name":"Input","sourcePath":"components/forms/Input.jsx"},{"name":"InputGroup","sourcePath":"components/forms/InputGroup.jsx"},{"name":"InputGroupAddon","sourcePath":"components/forms/InputGroup.jsx"},{"name":"InputGroupButton","sourcePath":"components/forms/InputGroup.jsx"},{"name":"InputGroupInput","sourcePath":"components/forms/InputGroup.jsx"},{"name":"InputGroupTextarea","sourcePath":"components/forms/InputGroup.jsx"},{"name":"InputGroupText","sourcePath":"components/forms/InputGroup.jsx"},{"name":"InputOTP","sourcePath":"components/forms/InputOTP.jsx"},{"name":"InputOTPGroup","sourcePath":"components/forms/InputOTP.jsx"},{"name":"InputOTPSlot","sourcePath":"components/forms/InputOTP.jsx"},{"name":"InputOTPSeparator","sourcePath":"components/forms/InputOTP.jsx"},{"name":"Label","sourcePath":"components/forms/Label.jsx"},{"name":"NativeSelect","sourcePath":"components/forms/NativeSelect.jsx"},{"name":"NativeSelectOption","sourcePath":"components/forms/NativeSelect.jsx"},{"name":"NativeSelectOptGroup","sourcePath":"components/forms/NativeSelect.jsx"},{"name":"NumberInput","sourcePath":"components/forms/NumberInput.jsx"},{"name":"RadioGroup","sourcePath":"components/forms/Radio.jsx"},{"name":"RadioGroupItem","sourcePath":"components/forms/Radio.jsx"},{"name":"Radio","sourcePath":"components/forms/Radio.jsx"},{"name":"Select","sourcePath":"components/forms/Select.jsx"},{"name":"SelectTrigger","sourcePath":"components/forms/Select.jsx"},{"name":"SelectValue","sourcePath":"components/forms/Select.jsx"},{"name":"SelectContent","sourcePath":"components/forms/Select.jsx"},{"name":"SelectGroup","sourcePath":"components/forms/Select.jsx"},{"name":"SelectLabel","sourcePath":"components/forms/Select.jsx"},{"name":"SelectSeparator","sourcePath":"components/forms/Select.jsx"},{"name":"SelectItem","sourcePath":"components/forms/Select.jsx"},{"name":"Slider","sourcePath":"components/forms/Slider.jsx"},{"name":"Switch","sourcePath":"components/forms/Switch.jsx"},{"name":"Textarea","sourcePath":"components/forms/Textarea.jsx"},{"name":"Toggle","sourcePath":"components/forms/Toggle.jsx"},{"name":"ToggleGroup","sourcePath":"components/forms/Toggle.jsx"},{"name":"ToggleGroupItem","sourcePath":"components/forms/Toggle.jsx"},{"name":"Icon","sourcePath":"components/icons/Icon.jsx"},{"name":"Breadcrumb","sourcePath":"components/navigation/Breadcrumbs.jsx"},{"name":"BreadcrumbList","sourcePath":"components/navigation/Breadcrumbs.jsx"},{"name":"BreadcrumbItem","sourcePath":"components/navigation/Breadcrumbs.jsx"},{"name":"BreadcrumbLink","sourcePath":"components/navigation/Breadcrumbs.jsx"},{"name":"BreadcrumbPage","sourcePath":"components/navigation/Breadcrumbs.jsx"},{"name":"BreadcrumbSeparator","sourcePath":"components/navigation/Breadcrumbs.jsx"},{"name":"BreadcrumbEllipsis","sourcePath":"components/navigation/Breadcrumbs.jsx"},{"name":"Breadcrumbs","sourcePath":"components/navigation/Breadcrumbs.jsx"},{"name":"Menubar","sourcePath":"components/navigation/Menubar.jsx"},{"name":"PageControl","sourcePath":"components/navigation/PageControl.jsx"},{"name":"Pagination","sourcePath":"components/navigation/Pagination.jsx"},{"name":"PaginationContent","sourcePath":"components/navigation/Pagination.jsx"},{"name":"PaginationItem","sourcePath":"components/navigation/Pagination.jsx"},{"name":"PaginationLink","sourcePath":"components/navigation/Pagination.jsx"},{"name":"PaginationPrevious","sourcePath":"components/navigation/Pagination.jsx"},{"name":"PaginationNext","sourcePath":"components/navigation/Pagination.jsx"},{"name":"PaginationEllipsis","sourcePath":"components/navigation/Pagination.jsx"},{"name":"SegmentedControl","sourcePath":"components/navigation/SegmentedControl.jsx"},{"name":"SideNav","sourcePath":"components/navigation/SideNav.jsx"},{"name":"Steps","sourcePath":"components/navigation/Steps.jsx"},{"name":"Tabs","sourcePath":"components/navigation/Tabs.jsx"},{"name":"TabsList","sourcePath":"components/navigation/Tabs.jsx"},{"name":"TabsTrigger","sourcePath":"components/navigation/Tabs.jsx"},{"name":"TabsContent","sourcePath":"components/navigation/Tabs.jsx"},{"name":"TopNav","sourcePath":"components/navigation/TopNav.jsx"},{"name":"CommandPalette","sourcePath":"components/overlay/CommandPalette.jsx"},{"name":"ContextMenu","sourcePath":"components/overlay/ContextMenu.jsx"},{"name":"Drawer","sourcePath":"components/overlay/Drawer.jsx"},{"name":"HoverCard","sourcePath":"components/overlay/HoverCard.jsx"},{"name":"Menu","sourcePath":"components/overlay/Menu.jsx"},{"name":"Popover","sourcePath":"components/overlay/Popover.jsx"},{"name":"PopoverTrigger","sourcePath":"components/overlay/Popover.jsx"},{"name":"PopoverContent","sourcePath":"components/overlay/Popover.jsx"},{"name":"PopoverHeader","sourcePath":"components/overlay/Popover.jsx"},{"name":"PopoverTitle","sourcePath":"components/overlay/Popover.jsx"},{"name":"PopoverDescription","sourcePath":"components/overlay/Popover.jsx"},{"name":"Portal","sourcePath":"components/overlay/Portal.jsx"}],"publicHelpers":[{"name":"markerVariants","sourcePath":"components/ai/Marker.jsx"},{"name":"badgeVariants","sourcePath":"components/display/Badge.jsx"},{"name":"useDirection","sourcePath":"components/display/Direction.jsx"},{"name":"buttonVariants","sourcePath":"components/forms/Button.jsx"},{"name":"buttonGroupVariants","sourcePath":"components/forms/ButtonGroup.jsx"},{"name":"toggleVariants","sourcePath":"components/forms/Toggle.jsx"}],"sourceHashes":{"components/ai/AgentRun.jsx":"9740e0e168e0","components/ai/Bubble.jsx":"1fbd306ae6c7","components/ai/ChatMessage.jsx":"98920e696206","components/ai/Citation.jsx":"bdfe512cd8b0","components/ai/Confirmation.jsx":"e6baaf9f3831","components/ai/Conversation.jsx":"811020760647","components/ai/DocumentCard.jsx":"a7159ec86c9a","components/ai/FeedbackBar.jsx":"76ce9048b0f8","components/ai/GeneratedImage.jsx":"700da56ce3b7","components/ai/Marker.jsx":"4a8e54cf1022","components/ai/ModelSelector.jsx":"275bb7ef8ddc","components/ai/Player.jsx":"a8a820c1e259","components/ai/PromptComposer.jsx":"37273e81af0a","components/ai/PromptSteps.jsx":"428074df6cd1","components/ai/Reasoning.jsx":"6a54640d743d","components/ai/RichComposer.jsx":"cf26b89fd54b","components/ai/Sandbox.jsx":"78eacd199e92","components/ai/SelectionQuote.jsx":"2ba728772ad9","components/ai/SourceCard.jsx":"ca0d3eedf981","components/ai/Suggestions.jsx":"49b23d064460","components/ai/Task.jsx":"613d6bf8d05a","components/ai/Todo.jsx":"5c8653be0ea4","components/ai/ToolCall.jsx":"3c36ce2c9aab","components/ai/Transcript.jsx":"3ecad5218a37","components/ai/UsageMeter.jsx":"75c7a916706a","components/ai/WebPreview.jsx":"83ced5843df1","components/code/CodeBlock.jsx":"2160ce0d755d","components/code/Console.jsx":"5a150480bfb5","components/code/CopyField.jsx":"61f56f69d3d3","components/code/Diff.jsx":"0590d197b3b0","components/code/EnvList.jsx":"e25c72e2863c","components/code/Exception.jsx":"7c9828556417","components/code/Terminal.jsx":"5eda66e465b6","components/data/BarChart.jsx":"af57088eee06","components/data/DonutChart.jsx":"13aa95392d7a","components/data/EmptyState.jsx":"dfddad4e80a3","components/data/KeyValueList.jsx":"3876b7c9581e","components/data/LineChart.jsx":"7cce718ff267","components/data/Skeleton.jsx":"1f61553d59d1","components/data/Sparkline.jsx":"5b2a0e67cdae","components/data/Stat.jsx":"aba92e72a0f8","components/data/StatusDot.jsx":"51ac4e89dcc7","components/data/Table.jsx":"b2bb4dafe5e1","components/dates/Calendar.jsx":"f0174dbb465b","components/dates/DatePicker.jsx":"69a29c307013","components/dates/DateRangePicker.jsx":"cc108adea926","components/dates/TimePicker.jsx":"197760d69fd7","components/display/Accordion.jsx":"d1599a676217","components/display/AspectRatio.jsx":"91558029d648","components/display/Avatar.jsx":"4aa383ee6c4b","components/display/Badge.jsx":"5a1248c43eaf","components/display/Card.jsx":"3c59a39074d9","components/display/Carousel.jsx":"d10ba2744373","components/display/Collapsible.jsx":"cb3eb298cff5","components/display/Direction.jsx":"538f2d4cbf23","components/display/Divider.jsx":"ee51ca336cc7","components/display/Kbd.jsx":"443f2a9b8f89","components/display/Link.jsx":"4f2fc59ae0db","components/display/ListItem.jsx":"8528c6e482bb","components/display/Resizable.jsx":"74bc54184023","components/display/ScrollArea.jsx":"6c71af1111a2","components/display/Separator.jsx":"5c2b62cf7532","components/display/Tag.jsx":"e9dadb374567","components/display/Timeline.jsx":"6c5bff5f4dcf","components/display/Toolbar.jsx":"bbe6cffbcbab","components/display/TreeList.jsx":"69be2d21b8ad","components/feedback/Alert.jsx":"e05249f7f5a2","components/feedback/AlertDialog.jsx":"d31e73948f4f","components/feedback/Banner.jsx":"d1e818e8451a","components/feedback/ConfirmDialog.jsx":"ae69cb48e209","components/feedback/Dialog.jsx":"aeb4a8707687","components/feedback/Loader.jsx":"02efacc86905","components/feedback/Progress.jsx":"0964f54f5644","components/feedback/Spinner.jsx":"8f26ebaeaed1","components/feedback/Toast.jsx":"3ce2ec55ef4d","components/feedback/Tooltip.jsx":"2358a8b5f657","components/files/Attachment.jsx":"bd63ebd29171","components/files/FileDrop.jsx":"737632ac07db","components/files/FileTile.jsx":"28af04d1303b","components/files/FileTypeIcon.jsx":"3bcdf5ca7eb9","components/finance/PaymentCard.jsx":"74fa271e12f2","components/forms/Button.jsx":"b75f2a023e92","components/forms/ButtonGroup.jsx":"df7d04210646","components/forms/ButtonTile.jsx":"1508984c0c5c","components/forms/Checkbox.jsx":"027d94ccb5a9","components/forms/Combobox.jsx":"6ec40e1f8b36","components/forms/Field.jsx":"adf061cacd94","components/forms/IconButton.jsx":"967b0b3312fe","components/forms/Input.jsx":"727982a67f29","components/forms/InputGroup.jsx":"d58e90c419ae","components/forms/InputOTP.jsx":"275c5ea31342","components/forms/Label.jsx":"f0bfcb5ae210","components/forms/NativeSelect.jsx":"a3d4a9d8eeb3","components/forms/NumberInput.jsx":"27fe9faa2091","components/forms/Radio.jsx":"fd805667ed84","components/forms/Select.jsx":"c8373842d395","components/forms/Slider.jsx":"2904722ea54e","components/forms/Switch.jsx":"1c87f39efc97","components/forms/Textarea.jsx":"5c8934e2ecbf","components/forms/Toggle.jsx":"75a66e225060","components/icons/Icon.jsx":"65c4206c8479","components/navigation/Breadcrumbs.jsx":"2e53cdf7a4e9","components/navigation/Menubar.jsx":"950604788590","components/navigation/PageControl.jsx":"8c5bfdc21407","components/navigation/Pagination.jsx":"127bcfba7d9e","components/navigation/SegmentedControl.jsx":"ae08ad97a9a2","components/navigation/SideNav.jsx":"00851e64baa2","components/navigation/Steps.jsx":"45c6c1162b22","components/navigation/Tabs.jsx":"1af60f8cf9d8","components/navigation/TopNav.jsx":"967b11093c20","components/overlay/CommandPalette.jsx":"b07b4f28cb8c","components/overlay/ContextMenu.jsx":"5053709a1ee5","components/overlay/Drawer.jsx":"18c562fe05c3","components/overlay/HoverCard.jsx":"7438ba615e77","components/overlay/Menu.jsx":"3119fa73b187","components/overlay/Popover.jsx":"09e245cb8d48","components/overlay/Portal.jsx":"3819af4bd7c7","showcases/agent/AgentScreen.jsx":"87f60f9116cc","showcases/auth/AuthScreens.jsx":"b3583b149df5","showcases/console/CustomersScreen.jsx":"f010864726f1","showcases/console/ExtraScreens.jsx":"1e7a048ab690","showcases/console/OverviewScreen.jsx":"34b01f22bb52","showcases/console/SettingsScreen.jsx":"862f176ffd6a","showcases/console/Shell.jsx":"f5dd862d2098","showcases/docs/DocsScreen.jsx":"faa44c30040d","showcases/infra/InfraScreen.jsx":"e4d2729ee39b","showcases/tools/ToolsScreen.jsx":"f783037f212b","showcases/trader/TraderScreen.jsx":"12e5273b9894","showcases/website/Sections.jsx":"3f14d6a12c71"},"inlinedExternals":[],"unexposedExports":[{"name":"computeDiff","sourcePath":"components/code/Diff.jsx"},{"name":"cssPct","sourcePath":"components/forms/Button.jsx"},{"name":"formatTime","sourcePath":"components/ai/Player.jsx"},{"name":"injectEfCss","sourcePath":"components/forms/Button.jsx"},{"name":"mergeRefs","sourcePath":"components/forms/Button.jsx"},{"name":"prefersReducedMotion","sourcePath":"components/forms/Button.jsx"},{"name":"useAnchoredStyle","sourcePath":"components/overlay/Portal.jsx"},{"name":"useFieldProps","sourcePath":"components/forms/Field.jsx"},{"name":"useIsoLayoutEffect","sourcePath":"components/forms/Button.jsx"},{"name":"useToast","sourcePath":"components/feedback/Toast.jsx"}]} */
 
 (() => {
 
@@ -6967,225 +6967,132 @@ function ButtonTileGroup({
 Object.assign(__ds_scope, { ButtonTile, ButtonTileGroup });
 })(); } catch (e) { __ds_ns.__errors.push({ path: "components/forms/ButtonTile.jsx", error: String((e && e.message) || e) }); }
 
-// components/forms/FormField.jsx
+// components/forms/Field.jsx
 try { (() => {
 function _extends() { return _extends = Object.assign ? Object.assign.bind() : function (n) { for (var e = 1; e < arguments.length; e++) { var t = arguments[e]; for (var r in t) ({}).hasOwnProperty.call(t, r) && (n[r] = t[r]); } return n; }, _extends.apply(null, arguments); }
 const CSS = `
-.ef-field{display:flex;flex-direction:column;gap:6px}
-.ef-field__label{font-size:var(--text-sm);font-weight:var(--weight-semibold);color:var(--text-primary)}
-.ef-field__req{color:var(--danger-600);margin-inline-start:2px}
-.ef-field__hint{font-size:var(--text-xs);color:var(--text-muted)}
-.ef-field__error{font-size:var(--text-xs);color:var(--danger-600);display:flex;align-items:center;gap:4px}
+.ef-field-set{min-width:0;margin:0;padding:0;border:0;display:grid;gap:14px}
+.ef-field-legend{padding:0;color:var(--text-primary);font-size:var(--text-lg);font-weight:var(--weight-semibold)}
+.ef-field-legend[data-variant="label"]{font-size:var(--text-sm)}
+.ef-field-group{display:grid;gap:18px}
+.ef-field{display:flex;min-width:0;gap:6px;color:var(--text-primary)}
+.ef-field[data-orientation="vertical"]{flex-direction:column}
+.ef-field[data-orientation="horizontal"]{align-items:flex-start;flex-direction:row;gap:12px}
+.ef-field[data-orientation="responsive"]{flex-direction:column}
+@media (min-width: 640px){.ef-field[data-orientation="responsive"]{align-items:flex-start;flex-direction:row;gap:18px}.ef-field[data-orientation="responsive"]>.ef-field-content{flex:1}}
+.ef-field-content{display:flex;min-width:0;flex:1;flex-direction:column;gap:4px}
+.ef-field-label,.ef-field-title{color:var(--text-primary);font-size:var(--text-sm);font-weight:var(--weight-semibold);line-height:1.35}
+.ef-field-label{display:flex;align-items:center;gap:8px;cursor:pointer}
+.ef-field[data-disabled] .ef-field-label{cursor:not-allowed;opacity:.55}
+.ef-field-description{margin:0;color:var(--text-muted);font-size:var(--text-xs);line-height:1.45}
+.ef-field-error{margin:0;color:var(--danger-600);font-size:var(--text-xs);line-height:1.45}
+.ef-field-separator{display:flex;align-items:center;gap:10px;color:var(--text-muted);font-size:var(--text-xs)}
+.ef-field-separator::before,.ef-field-separator::after{content:"";height:1px;flex:1;background:var(--border-default)}
+.ef-field[data-invalid] .ef-field-label,.ef-field[data-invalid] .ef-field-title{color:var(--danger-600)}
 `;
-
-// Module-private, never exported: a control outside a FormField simply sees
-// null and behaves standalone. Same shape as GroupCtx in Toggle.jsx.
 const FieldCtx = React.createContext(null);
-
-/**
- * How a control joins an enclosing FormField.
- *
- * Lowercase, so it stays off the public namespace. That is deliberate: no
- * consumer needs it — design-system controls are wired by their own props, and
- * anything else is wired through FormField's render prop — and keeping it
- * unreachable stops a seventh field dialect being invented in a showcase.
- */
 function useFieldProps(own = {}) {
   const ctx = React.useContext(FieldCtx);
-  const invalid = !!(own.invalid || own.error || ctx && ctx.invalid);
-  const required = own.required != null ? !!own.required : !!(ctx && ctx.required);
-  const describedBy = [own['aria-describedby'], ctx && ctx.describedBy].filter(Boolean).join(' ');
-  const id = own.id || ctx && ctx.id || undefined;
-  // Keys are added conditionally, never assigned undefined: a control spreads
-  // {...rest} and then {...controlProps}, and an always-present key would reset
-  // a caller's own aria-invalid back to absent.
+  const invalid = !!(own.invalid || own.error || ctx?.invalid);
+  const required = own.required != null ? !!own.required : !!ctx?.required;
   const controlProps = {};
-  if (id) controlProps.id = id;
-  if (describedBy) controlProps['aria-describedby'] = describedBy;
+  if (own.id) controlProps.id = own.id;
+  if (own['aria-describedby']) controlProps['aria-describedby'] = own['aria-describedby'];
   if (invalid) controlProps['aria-invalid'] = true;
   if (required) controlProps['aria-required'] = true;
   return {
     inField: !!ctx,
-    id: id || null,
+    id: own.id || null,
     invalid,
     required,
     controlProps
   };
 }
-
-/**
- * Label, hint, error and required chrome around any control, and the owner of
- * the id that ties them together.
- *
- * Wrap a control as children and design-system controls pick the wiring up
- * automatically. For anything else — a third-party input, a control with no
- * label prop — pass a function and spread the wiring yourself.
- */
-function FormField({
-  label,
-  hint,
-  error,
-  invalid,
-  required,
-  group,
-  id,
-  children,
-  style,
+function slot(Component, name, base) {
+  return React.forwardRef(function FieldSlot({
+    className,
+    ...props
+  }, ref) {
+    __ds_scope.injectEfCss('ef-css-field', CSS);
+    return /*#__PURE__*/React.createElement(Component, _extends({}, props, {
+      ref: ref,
+      "data-slot": name,
+      className: `${base}${className ? ` ${className}` : ''}`
+    }));
+  });
+}
+const Field = React.forwardRef(function Field({
+  orientation = 'vertical',
   className,
-  ...rest
-}) {
+  ...props
+}, ref) {
   __ds_scope.injectEfCss('ef-css-field', CSS);
-  const uid = React.useId();
-  const controlId = id || uid + 'c';
-  const labelId = uid + 'l';
-  const noteId = uid + 'n';
-  const hasError = error != null && error !== false && error !== '';
-  const hasHint = !hasError && hint != null && hint !== false && hint !== '';
-  const note = hasError ? 'error' : hasHint ? 'hint' : null;
-  const bad = !!(invalid || hasError);
-  const ctx = React.useMemo(() => ({
-    // In group mode no single child owns the id — five radios cannot share one —
-    // so the group element carries the label and description instead.
-    id: group ? null : controlId,
-    describedBy: note && !group ? noteId : undefined,
-    invalid: bad,
-    required: !!required
-  }), [group, controlId, note, noteId, bad, required]);
-  const wiring = React.useMemo(() => {
-    const p = {};
-    if (ctx.id) p.id = ctx.id;
-    if (ctx.describedBy) p['aria-describedby'] = ctx.describedBy;
-    if (bad) p['aria-invalid'] = true;
-    if (required) p['aria-required'] = true;
-    return {
-      id: ctx.id,
-      invalid: bad,
-      required: !!required,
-      controlProps: p
-    };
-  }, [ctx, bad, required]);
-  const star = required ? /*#__PURE__*/React.createElement("span", {
-    className: "ef-field__req",
-    "aria-hidden": "true"
-  }, "*") : null;
-  return /*#__PURE__*/React.createElement("div", _extends({}, rest, {
-    role: group ? 'group' : undefined,
-    "aria-labelledby": group && label ? labelId : undefined,
-    "aria-describedby": group && note ? noteId : undefined,
-    className: `ef-field${className ? ' ' + className : ''}`,
-    style: style
-  }), label ? group ? /*#__PURE__*/React.createElement("span", {
-    id: labelId,
-    className: "ef-field__label"
-  }, label, star) : /*#__PURE__*/React.createElement("label", {
-    htmlFor: controlId,
-    className: "ef-field__label"
-  }, label, star) : null, /*#__PURE__*/React.createElement(FieldCtx.Provider, {
-    value: ctx
-  }, typeof children === 'function' ? children(wiring) : children), hasError ? /*#__PURE__*/React.createElement("span", {
-    id: noteId,
+  const value = React.useMemo(() => ({
+    invalid: !!props['data-invalid'],
+    required: !!props['data-required']
+  }), [props['data-invalid'], props['data-required']]);
+  return /*#__PURE__*/React.createElement(FieldCtx.Provider, {
+    value: value
+  }, /*#__PURE__*/React.createElement("div", _extends({}, props, {
+    ref: ref,
+    role: "group",
+    "data-slot": "field",
+    "data-orientation": orientation,
+    className: `ef-field${className ? ` ${className}` : ''}`
+  })));
+});
+const FieldSet = slot('fieldset', 'field-set', 'ef-field-set');
+const FieldGroup = slot('div', 'field-group', 'ef-field-group');
+const FieldContent = slot('div', 'field-content', 'ef-field-content');
+const FieldLabel = slot('label', 'field-label', 'ef-field-label');
+const FieldTitle = slot('div', 'field-title', 'ef-field-title');
+const FieldDescription = slot('p', 'field-description', 'ef-field-description');
+const FieldLegend = React.forwardRef(function FieldLegend({
+  variant = 'legend',
+  className,
+  ...props
+}, ref) {
+  __ds_scope.injectEfCss('ef-css-field', CSS);
+  return /*#__PURE__*/React.createElement("legend", _extends({}, props, {
+    ref: ref,
+    "data-slot": "field-legend",
+    "data-variant": variant,
+    className: `ef-field-legend${className ? ` ${className}` : ''}`
+  }));
+});
+const FieldSeparator = React.forwardRef(function FieldSeparator({
+  children,
+  className,
+  ...props
+}, ref) {
+  __ds_scope.injectEfCss('ef-css-field', CSS);
+  return /*#__PURE__*/React.createElement("div", _extends({}, props, {
+    ref: ref,
+    role: "separator",
+    "data-slot": "field-separator",
+    className: `ef-field-separator${className ? ` ${className}` : ''}`
+  }), children ? /*#__PURE__*/React.createElement("span", null, children) : null);
+});
+const FieldError = React.forwardRef(function FieldError({
+  children,
+  errors,
+  className,
+  ...props
+}, ref) {
+  __ds_scope.injectEfCss('ef-css-field', CSS);
+  const messages = (errors || []).map(error => error?.message).filter(Boolean);
+  if (!children && !messages.length) return null;
+  return /*#__PURE__*/React.createElement("div", _extends({}, props, {
+    ref: ref,
     role: "alert",
-    className: "ef-field__error"
-  }, /*#__PURE__*/React.createElement(__ds_scope.Icon, {
-    name: "circle-alert",
-    size: 13
-  }), error) : hasHint ? /*#__PURE__*/React.createElement("span", {
-    id: noteId,
-    className: "ef-field__hint"
-  }, hint) : null);
-}
-
-/**
- * Zero-dependency form state: values, per-field wiring, validation timing.
- *
- * `validate(values)` returns `{ field: 'message' }` for whatever is currently
- * invalid; an empty object means clean. A field's error only surfaces once
- * that field has blurred or a submit was attempted — the timing
- * guidelines/forms.md prescribes (blur, then re-validate on change, then
- * everything on submit) — while `errors` always carries the raw result.
- *
- * Lowercase, so the compiler files it under unexposedExports and it never
- * reaches the global namespace directly. Consumers get it as
- * `FormField.useFormState` (assigned at the bottom of this file), the same
- * publication Toaster.useToast uses.
- */
-function useFormState({
-  initial,
-  validate
-} = {}) {
-  // The first render's `initial` wins for the life of the hook, so an inline
-  // object literal does not re-seed the form on every render.
-  const initialRef = React.useRef(initial || {});
-  const [values, setValues] = React.useState(initialRef.current);
-  const [touched, setTouched] = React.useState({});
-  const [submitted, setSubmitted] = React.useState(false);
-  const [submitting, setSubmitting] = React.useState(false);
-  const errors = validate ? validate(values) || {} : {};
-  const set = React.useCallback((name, val) => {
-    setValues(prev => ({
-      ...prev,
-      [name]: val
-    }));
-  }, []);
-  const field = name => {
-    const err = touched[name] || submitted ? errors[name] : undefined;
-    return {
-      value: values[name],
-      onChange: eventOrValue => {
-        const t = eventOrValue && typeof eventOrValue === 'object' ? eventOrValue.target : null;
-        set(name, t && 'value' in t ? t.type === 'checkbox' ? t.checked : t.value : eventOrValue);
-      },
-      onBlur: () => setTouched(prev => prev[name] ? prev : {
-        ...prev,
-        [name]: true
-      }),
-      invalid: err != null && err !== '',
-      error: err != null && err !== '' ? err : undefined
-    };
-  };
-  const handleSubmit = fn => e => {
-    if (e && typeof e.preventDefault === 'function') e.preventDefault();
-    setSubmitted(true);
-    const errs = validate ? validate(values) || {} : {};
-    const all = {};
-    Object.keys(values).forEach(k => {
-      all[k] = true;
-    });
-    Object.keys(errs).forEach(k => {
-      all[k] = true;
-    });
-    setTouched(prev => ({
-      ...prev,
-      ...all
-    }));
-    if (Object.keys(errs).length > 0) return;
-    const out = fn ? fn(values) : undefined;
-    if (out && typeof out.then === 'function') {
-      setSubmitting(true);
-      return Promise.resolve(out).finally(() => setSubmitting(false));
-    }
-    return out;
-  };
-  const reset = React.useCallback(() => {
-    setValues(initialRef.current);
-    setTouched({});
-    setSubmitted(false);
-    setSubmitting(false);
-  }, []);
-  return {
-    values,
-    errors,
-    touched,
-    set,
-    field,
-    submitting,
-    handleSubmit,
-    reset
-  };
-}
-FormField.useFormState = useFormState;
-Object.assign(__ds_scope, { useFieldProps, FormField, useFormState });
-})(); } catch (e) { __ds_ns.__errors.push({ path: "components/forms/FormField.jsx", error: String((e && e.message) || e) }); }
+    "data-slot": "field-error",
+    className: `ef-field-error${className ? ` ${className}` : ''}`
+  }), children || (messages.length === 1 ? messages[0] : /*#__PURE__*/React.createElement("ul", null, [...new Set(messages)].map(message => /*#__PURE__*/React.createElement("li", {
+    key: message
+  }, message)))));
+});
+Object.assign(__ds_scope, { useFieldProps, Field, FieldSet, FieldGroup, FieldContent, FieldLabel, FieldTitle, FieldDescription, FieldLegend, FieldSeparator, FieldError });
+})(); } catch (e) { __ds_ns.__errors.push({ path: "components/forms/Field.jsx", error: String((e && e.message) || e) }); }
 
 // components/forms/Checkbox.jsx
 try { (() => {
@@ -8613,6 +8520,53 @@ const Label = React.forwardRef(function Label({
 Object.assign(__ds_scope, { Label });
 })(); } catch (e) { __ds_ns.__errors.push({ path: "components/forms/Label.jsx", error: String((e && e.message) || e) }); }
 
+// components/forms/NativeSelect.jsx
+try { (() => {
+function _extends() { return _extends = Object.assign ? Object.assign.bind() : function (n) { for (var e = 1; e < arguments.length; e++) { var t = arguments[e]; for (var r in t) ({}).hasOwnProperty.call(t, r) && (n[r] = t[r]); } return n; }, _extends.apply(null, arguments); }
+const CSS = `
+.ef-native-select{position:relative;display:flex;align-items:center;width:100%}
+.ef-native-select select{width:100%;height:var(--control-h-md);appearance:none;padding:0 32px 0 11px;border:1px solid var(--border-strong);border-radius:var(--radius-sm);background:var(--surface-sunken);color:var(--text-primary);font:inherit;font-size:var(--text-sm);cursor:pointer}
+[dir="rtl"] .ef-native-select select{padding:0 11px 0 32px}
+.ef-native-select select:focus-visible{outline:none;box-shadow:var(--focus-ring)}
+.ef-native-select select:disabled{cursor:not-allowed;opacity:.5}
+.ef-native-select[data-size="sm"] select{height:var(--control-h-sm)}
+.ef-native-select[data-size="lg"] select{height:var(--control-h-lg)}
+.ef-native-select__icon{position:absolute;inset-inline-end:10px;display:inline-flex;color:var(--text-muted);pointer-events:none}
+`;
+const NativeSelect = React.forwardRef(function NativeSelect({
+  size = 'md',
+  className,
+  style,
+  ...props
+}, ref) {
+  __ds_scope.injectEfCss('ef-css-native-select', CSS);
+  return /*#__PURE__*/React.createElement("span", {
+    "data-slot": "native-select",
+    "data-size": size,
+    className: `ef-native-select${className ? ` ${className}` : ''}`,
+    style: style
+  }, /*#__PURE__*/React.createElement("select", _extends({}, props, {
+    ref: ref
+  })), /*#__PURE__*/React.createElement("span", {
+    className: "ef-native-select__icon"
+  }, /*#__PURE__*/React.createElement(__ds_scope.Icon, {
+    name: "chevron-down",
+    size: 16
+  })));
+});
+const NativeSelectOption = React.forwardRef(function NativeSelectOption(props, ref) {
+  return /*#__PURE__*/React.createElement("option", _extends({}, props, {
+    ref: ref
+  }));
+});
+const NativeSelectOptGroup = React.forwardRef(function NativeSelectOptGroup(props, ref) {
+  return /*#__PURE__*/React.createElement("optgroup", _extends({}, props, {
+    ref: ref
+  }));
+});
+Object.assign(__ds_scope, { NativeSelect, NativeSelectOption, NativeSelectOptGroup });
+})(); } catch (e) { __ds_ns.__errors.push({ path: "components/forms/NativeSelect.jsx", error: String((e && e.message) || e) }); }
+
 // components/forms/NumberInput.jsx
 try { (() => {
 function _extends() { return _extends = Object.assign ? Object.assign.bind() : function (n) { for (var e = 1; e < arguments.length; e++) { var t = arguments[e]; for (var r in t) ({}).hasOwnProperty.call(t, r) && (n[r] = t[r]); } return n; }, _extends.apply(null, arguments); }
@@ -8711,7 +8665,7 @@ function NumberInput({
   // explicit format or parse always wins over it, and no locale keeps the old
   // plain behaviour, so this is additive.
   const loc = locale && !(format && parse) ? localeNumber(locale) : null;
-  // Picks up id / aria wiring when nested in a FormField; standalone this is a no-op.
+  // Picks up id / aria wiring when nested in a Field; standalone this is a no-op.
   const field = __ds_scope.useFieldProps({
     invalid,
     error,
@@ -8941,7 +8895,7 @@ const Radio = React.forwardRef(function Radio({
   ...rest
 }, ref) {
   __ds_scope.injectEfCss('ef-css-radio', CSS);
-  // Picks up id / aria wiring when nested in a FormField; standalone this is a no-op.
+  // Picks up id / aria wiring when nested in a Field; standalone this is a no-op.
   const field = __ds_scope.useFieldProps({
     id: rest.id,
     'aria-describedby': rest['aria-describedby']
@@ -8967,100 +8921,6 @@ const Radio = React.forwardRef(function Radio({
 });
 Object.assign(__ds_scope, { RadioGroup, RadioGroupItem, Radio });
 })(); } catch (e) { __ds_ns.__errors.push({ path: "components/forms/Radio.jsx", error: String((e && e.message) || e) }); }
-
-// components/forms/Select.jsx
-try { (() => {
-function _extends() { return _extends = Object.assign ? Object.assign.bind() : function (n) { for (var e = 1; e < arguments.length; e++) { var t = arguments[e]; for (var r in t) ({}).hasOwnProperty.call(t, r) && (n[r] = t[r]); } return n; }, _extends.apply(null, arguments); }
-const CSS = `
-.ef-field{display:flex;flex-direction:column;gap:6px}
-.ef-field__label{font-size:var(--text-sm);font-weight:var(--weight-semibold);color:var(--text-primary)}
-.ef-field__hint{font-size:var(--text-xs);color:var(--text-muted)}
-.ef-select{position:relative;display:flex;align-items:center}
-.ef-select__el{width:100%;appearance:none;border:1px solid var(--border-strong);border-radius:var(--radius-sm);background:var(--surface-sunken);color:var(--text-primary);font-family:var(--font-sans);cursor:pointer;transition:border-color var(--dur-fast) var(--ease-out),box-shadow var(--dur-fast) var(--ease-out)}
-.ef-select__el:hover:not(:disabled){border-color:var(--sand-400)}
-.ef-select__el:focus{outline:none;border-color:var(--accent);box-shadow:var(--focus-ring)}
-.ef-select__el:disabled{background:var(--surface-subtle);color:var(--text-muted);cursor:not-allowed}
-.ef-select--sm .ef-select__el{height:var(--control-h-sm);padding:0 28px 0 10px;font-size:var(--text-sm)}
-.ef-select--md .ef-select__el{height:var(--control-h-md);padding:0 32px 0 12px;font-size:var(--text-md)}
-.ef-select--lg .ef-select__el{height:var(--control-h-lg);padding:0 36px 0 14px;font-size:var(--text-lg)}
-.ef-select__chevron{position:absolute;inset-inline-end:10px;color:var(--text-muted);pointer-events:none;display:inline-flex}
-.ef-select--invalid .ef-select__el{border-color:var(--danger-600)}
-`;
-const Select = React.forwardRef(function Select({
-  label,
-  hint,
-  options,
-  size = 'md',
-  invalid,
-  children,
-  style,
-  className,
-  ...rest
-}, ref) {
-  __ds_scope.injectEfCss('ef-css-select', CSS);
-  // Picks up id / aria wiring when nested in a FormField; standalone this is a no-op.
-  const field = __ds_scope.useFieldProps({
-    invalid,
-    id: rest.id,
-    'aria-describedby': rest['aria-describedby']
-  });
-  const control = /*#__PURE__*/React.createElement("span", {
-    className: `ef-select ef-select--${size}${field.invalid ? ' ef-select--invalid' : ''}`
-  }, /*#__PURE__*/React.createElement("select", _extends({
-    ref: ref,
-    className: "ef-select__el",
-    "aria-invalid": field.invalid || undefined
-  }, rest, field.controlProps), options ? options.map(o => typeof o === 'string' ? /*#__PURE__*/React.createElement("option", {
-    key: o,
-    value: o
-  }, o) : /*#__PURE__*/React.createElement("option", {
-    key: o.value,
-    value: o.value
-  }, o.label)) : children), /*#__PURE__*/React.createElement("span", {
-    className: "ef-select__chevron"
-  }, /*#__PURE__*/React.createElement(__ds_scope.Icon, {
-    name: "chevron-down",
-    size: 16
-  })));
-  if (!label && !hint) return React.cloneElement(control, {
-    style,
-    className: control.props.className + (className ? ' ' + className : '')
-  });
-  return /*#__PURE__*/React.createElement("label", {
-    className: `ef-field${className ? ' ' + className : ''}`,
-    style: style
-  }, label ? /*#__PURE__*/React.createElement("span", {
-    className: "ef-field__label"
-  }, label) : null, control, hint ? /*#__PURE__*/React.createElement("span", {
-    className: "ef-field__hint"
-  }, hint) : null);
-});
-Object.assign(__ds_scope, { Select });
-})(); } catch (e) { __ds_ns.__errors.push({ path: "components/forms/Select.jsx", error: String((e && e.message) || e) }); }
-
-// components/forms/NativeSelect.jsx
-try { (() => {
-function _extends() { return _extends = Object.assign ? Object.assign.bind() : function (n) { for (var e = 1; e < arguments.length; e++) { var t = arguments[e]; for (var r in t) ({}).hasOwnProperty.call(t, r) && (n[r] = t[r]); } return n; }, _extends.apply(null, arguments); }
-const NativeSelect = React.forwardRef(function NativeSelect({
-  children,
-  ...props
-}, ref) {
-  return /*#__PURE__*/React.createElement(__ds_scope.Select, _extends({}, props, {
-    ref: ref
-  }), children);
-});
-const NativeSelectOption = React.forwardRef(function NativeSelectOption(props, ref) {
-  return /*#__PURE__*/React.createElement("option", _extends({}, props, {
-    ref: ref
-  }));
-});
-const NativeSelectOptGroup = React.forwardRef(function NativeSelectOptGroup(props, ref) {
-  return /*#__PURE__*/React.createElement("optgroup", _extends({}, props, {
-    ref: ref
-  }));
-});
-Object.assign(__ds_scope, { NativeSelect, NativeSelectOption, NativeSelectOptGroup });
-})(); } catch (e) { __ds_ns.__errors.push({ path: "components/forms/NativeSelect.jsx", error: String((e && e.message) || e) }); }
 
 // components/forms/Slider.jsx
 try { (() => {
@@ -9228,7 +9088,7 @@ const Switch = React.forwardRef(function Switch({
   ...rest
 }, ref) {
   __ds_scope.injectEfCss('ef-css-switch', CSS);
-  // Picks up id / aria wiring when nested in a FormField; standalone this is a no-op.
+  // Picks up id / aria wiring when nested in a Field; standalone this is a no-op.
   const field = __ds_scope.useFieldProps({
     id: rest.id,
     'aria-describedby': rest['aria-describedby']
@@ -10967,7 +10827,7 @@ function DatePicker({
   ...rest
 }) {
   __ds_scope.injectEfCss('ef-css-datepicker', CSS);
-  // Picks up id / aria wiring when nested in a FormField; standalone this is a no-op.
+  // Picks up id / aria wiring when nested in a Field; standalone this is a no-op.
   const field = __ds_scope.useFieldProps({
     id: rest.id,
     'aria-describedby': rest['aria-describedby']
@@ -11100,7 +10960,7 @@ function DateRangePicker({
   ...rest
 }) {
   __ds_scope.injectEfCss('ef-css-daterange', CSS);
-  // Picks up id / aria wiring when nested in a FormField; standalone this is a no-op.
+  // Picks up id / aria wiring when nested in a Field; standalone this is a no-op.
   const field = __ds_scope.useFieldProps({
     id: rest.id,
     'aria-describedby': rest['aria-describedby']
@@ -11284,7 +11144,7 @@ function TimePicker({
   ...rest
 }) {
   __ds_scope.injectEfCss('ef-css-timepicker', CSS);
-  // Picks up id / aria wiring when nested in a FormField; standalone this is a no-op.
+  // Picks up id / aria wiring when nested in a Field; standalone this is a no-op.
   const field = __ds_scope.useFieldProps({
     invalid,
     id: rest.id,
@@ -12557,7 +12417,7 @@ function Combobox({
   ...rest
 }) {
   __ds_scope.injectEfCss('ef-css-combo', CSS);
-  // Picks up id / aria wiring when nested in a FormField; standalone this is a no-op.
+  // Picks up id / aria wiring when nested in a Field; standalone this is a no-op.
   const field = __ds_scope.useFieldProps({
     id: rest.id,
     'aria-describedby': rest['aria-describedby']
@@ -12701,6 +12561,289 @@ function Combobox({
 }
 Object.assign(__ds_scope, { Combobox });
 })(); } catch (e) { __ds_ns.__errors.push({ path: "components/forms/Combobox.jsx", error: String((e && e.message) || e) }); }
+
+// components/forms/Select.jsx
+try { (() => {
+function _extends() { return _extends = Object.assign ? Object.assign.bind() : function (n) { for (var e = 1; e < arguments.length; e++) { var t = arguments[e]; for (var r in t) ({}).hasOwnProperty.call(t, r) && (n[r] = t[r]); } return n; }, _extends.apply(null, arguments); }
+const CSS = `
+.ef-select-trigger{display:flex;width:100%;height:var(--control-h-md);align-items:center;justify-content:space-between;gap:8px;padding:0 11px;border:1px solid var(--border-strong);border-radius:var(--radius-sm);background:var(--surface-sunken);color:var(--text-primary);font:inherit;font-size:var(--text-sm);text-align:start;cursor:pointer}
+.ef-select-trigger:hover:not(:disabled){border-color:var(--sand-400)}
+.ef-select-trigger:focus-visible{outline:none;box-shadow:var(--focus-ring)}
+.ef-select-trigger:disabled{cursor:not-allowed;opacity:.5}
+.ef-select-trigger[aria-invalid="true"]{border-color:var(--danger-600)}
+.ef-select-value[data-placeholder]{color:var(--text-muted)}
+.ef-select-content{position:fixed;z-index:var(--z-dropdown);min-width:var(--select-trigger-width);max-height:280px;overflow:auto;padding:4px;border:1px solid var(--border-strong);border-radius:var(--radius-md);background:var(--surface-card);box-shadow:var(--shadow-md);animation:ef-select-in var(--dur-fast) var(--ease-out)}
+@keyframes ef-select-in{from{opacity:0;transform:translateY(-3px)}}
+.ef-select-group{padding:2px 0}
+.ef-select-label{padding:6px 9px;color:var(--text-muted);font-size:var(--text-xs);font-weight:var(--weight-semibold)}
+.ef-select-item{position:relative;display:flex;width:100%;min-height:32px;align-items:center;padding:6px 30px 6px 9px;border:0;border-radius:var(--radius-sm);background:none;color:var(--text-primary);font:inherit;font-size:var(--text-sm);text-align:start;cursor:pointer}
+[dir="rtl"] .ef-select-item{padding:6px 9px 6px 30px}
+.ef-select-item:hover,.ef-select-item:focus-visible,.ef-select-item[data-highlighted]{outline:none;background:var(--surface-sunken)}
+.ef-select-item:disabled{cursor:not-allowed;opacity:.45}
+.ef-select-check{position:absolute;inset-inline-end:9px;display:inline-flex}
+.ef-select-separator{height:1px;margin:4px 6px;background:var(--border-default)}
+`;
+const SelectCtx = React.createContext(null);
+const itemText = children => typeof children === 'string' || typeof children === 'number' ? String(children) : '';
+function collectLabels(children, out = {}) {
+  React.Children.forEach(children, child => {
+    if (!React.isValidElement(child)) return;
+    if (child.type === SelectItem) out[child.props.value] = itemText(child.props.children) || child.props.value;
+    if (child.props.children) collectLabels(child.props.children, out);
+  });
+  return out;
+}
+function Select({
+  value: controlled,
+  defaultValue = '',
+  onValueChange,
+  onOpenChange,
+  open: controlledOpen,
+  defaultOpen = false,
+  disabled = false,
+  name,
+  required,
+  children
+}) {
+  __ds_scope.injectEfCss('ef-css-select', CSS);
+  const [innerValue, setInnerValue] = React.useState(defaultValue);
+  const [innerOpen, setInnerOpen] = React.useState(defaultOpen);
+  const value = controlled !== undefined ? controlled : innerValue;
+  const open = controlledOpen !== undefined ? controlledOpen : innerOpen;
+  const triggerRef = React.useRef(null);
+  const contentRef = React.useRef(null);
+  const declaredLabels = React.useMemo(() => collectLabels(children), [children]);
+  const [labels, setLabels] = React.useState(declaredLabels);
+  const setOpen = React.useCallback(next => {
+    if (controlledOpen === undefined) setInnerOpen(next);
+    onOpenChange?.(next);
+  }, [controlledOpen, onOpenChange]);
+  const choose = React.useCallback((next, label) => {
+    if (controlled === undefined) setInnerValue(next);
+    onValueChange?.(next);
+    setLabels(prev => prev[next] === label ? prev : {
+      ...prev,
+      [next]: label
+    });
+    setOpen(false);
+    triggerRef.current?.focus();
+  }, [controlled, onValueChange, setOpen]);
+  const register = React.useCallback((next, label) => setLabels(prev => prev[next] === label ? prev : {
+    ...prev,
+    [next]: label
+  }), []);
+  const allLabels = {
+    ...declaredLabels,
+    ...labels
+  };
+  const ctx = React.useMemo(() => ({
+    value,
+    open,
+    disabled,
+    labels: allLabels,
+    setOpen,
+    choose,
+    register,
+    triggerRef,
+    contentRef
+  }), [value, open, disabled, allLabels, setOpen, choose, register]);
+  React.useEffect(() => {
+    if (!open) return;
+    const away = event => {
+      if (!triggerRef.current?.contains(event.target) && !contentRef.current?.contains(event.target)) setOpen(false);
+    };
+    document.addEventListener('pointerdown', away);
+    return () => document.removeEventListener('pointerdown', away);
+  }, [open, setOpen]);
+  return /*#__PURE__*/React.createElement(SelectCtx.Provider, {
+    value: ctx
+  }, name ? /*#__PURE__*/React.createElement("input", {
+    type: "hidden",
+    name: name,
+    value: value,
+    required: required
+  }) : null, children);
+}
+const SelectTrigger = React.forwardRef(function SelectTrigger({
+  children,
+  className,
+  onClick,
+  onKeyDown,
+  ...props
+}, ref) {
+  const ctx = React.useContext(SelectCtx);
+  const key = event => {
+    onKeyDown?.(event);
+    if (!event.defaultPrevented && ['Enter', ' ', 'ArrowDown', 'ArrowUp'].includes(event.key)) {
+      event.preventDefault();
+      ctx?.setOpen(true);
+    }
+  };
+  return /*#__PURE__*/React.createElement("button", _extends({}, props, {
+    ref: __ds_scope.mergeRefs(ref, ctx?.triggerRef),
+    type: "button",
+    role: "combobox",
+    "aria-haspopup": "listbox",
+    "aria-expanded": !!ctx?.open,
+    disabled: ctx?.disabled || props.disabled,
+    "data-slot": "select-trigger",
+    className: `ef-select-trigger${className ? ` ${className}` : ''}`,
+    onClick: event => {
+      onClick?.(event);
+      if (!event.defaultPrevented) ctx?.setOpen(!ctx.open);
+    },
+    onKeyDown: key
+  }), children, /*#__PURE__*/React.createElement(__ds_scope.Icon, {
+    name: "chevron-down",
+    size: 16
+  }));
+});
+function SelectValue({
+  placeholder,
+  children,
+  className
+}) {
+  const ctx = React.useContext(SelectCtx);
+  const shown = children ?? ctx?.labels[ctx?.value];
+  return /*#__PURE__*/React.createElement("span", {
+    "data-slot": "select-value",
+    "data-placeholder": shown ? undefined : '',
+    className: `ef-select-value${className ? ` ${className}` : ''}`
+  }, shown || placeholder);
+}
+const SelectContent = React.forwardRef(function SelectContent({
+  children,
+  className,
+  position,
+  align = 'start',
+  sideOffset = 5,
+  onKeyDown,
+  style,
+  ...props
+}, ref) {
+  const ctx = React.useContext(SelectCtx);
+  const {
+    style: anchored
+  } = __ds_scope.useAnchoredStyle(ctx?.triggerRef, ctx?.contentRef, {
+    open: !!ctx?.open,
+    placement: 'bottom',
+    align,
+    offset: sideOffset
+  });
+  React.useEffect(() => {
+    if (!ctx?.open) return;
+    requestAnimationFrame(() => {
+      const selected = ctx.contentRef.current?.querySelector('[aria-selected="true"]');
+      const first = ctx.contentRef.current?.querySelector('[role="option"]:not(:disabled)');
+      (selected || first)?.focus();
+    });
+  }, [ctx?.open]);
+  if (!ctx?.open) return null;
+  const key = event => {
+    onKeyDown?.(event);
+    if (event.defaultPrevented) return;
+    const items = [...event.currentTarget.querySelectorAll('[role="option"]:not(:disabled)')];
+    const index = items.indexOf(document.activeElement);
+    if (event.key === 'Escape') {
+      event.preventDefault();
+      ctx.setOpen(false);
+      ctx.triggerRef.current?.focus();
+    } else if (event.key === 'ArrowDown' || event.key === 'ArrowUp') {
+      event.preventDefault();
+      items[(index + (event.key === 'ArrowDown' ? 1 : -1) + items.length) % items.length]?.focus();
+    } else if (event.key === 'Home' || event.key === 'End') {
+      event.preventDefault();
+      items[event.key === 'Home' ? 0 : items.length - 1]?.focus();
+    } else if (event.key === 'Tab') ctx.setOpen(false);else if (event.key.length === 1 && /\S/.test(event.key) && !event.metaKey && !event.ctrlKey && !event.altKey) {
+      const query = event.key.toLocaleLowerCase();
+      const match = items.slice(index + 1).concat(items.slice(0, index + 1)).find(item => (item.textContent || '').trim().toLocaleLowerCase().startsWith(query));
+      if (match) {
+        event.preventDefault();
+        match.focus();
+      }
+    }
+  };
+  return /*#__PURE__*/React.createElement(__ds_scope.Portal, null, /*#__PURE__*/React.createElement("div", _extends({}, props, {
+    ref: __ds_scope.mergeRefs(ref, ctx.contentRef),
+    role: "listbox",
+    "data-slot": "select-content",
+    "data-position": position,
+    className: `ef-select-content${className ? ` ${className}` : ''}`,
+    style: {
+      ...anchored,
+      '--select-trigger-width': `${ctx.triggerRef.current?.offsetWidth || 160}px`,
+      ...style
+    },
+    onKeyDown: key
+  }), children));
+});
+const SelectGroup = React.forwardRef(function SelectGroup({
+  className,
+  ...props
+}, ref) {
+  return /*#__PURE__*/React.createElement("div", _extends({}, props, {
+    ref: ref,
+    role: "group",
+    "data-slot": "select-group",
+    className: `ef-select-group${className ? ` ${className}` : ''}`
+  }));
+});
+const SelectLabel = React.forwardRef(function SelectLabel({
+  className,
+  ...props
+}, ref) {
+  return /*#__PURE__*/React.createElement("div", _extends({}, props, {
+    ref: ref,
+    "data-slot": "select-label",
+    className: `ef-select-label${className ? ` ${className}` : ''}`
+  }));
+});
+const SelectSeparator = React.forwardRef(function SelectSeparator({
+  className,
+  ...props
+}, ref) {
+  return /*#__PURE__*/React.createElement("div", _extends({}, props, {
+    ref: ref,
+    role: "separator",
+    "data-slot": "select-separator",
+    className: `ef-select-separator${className ? ` ${className}` : ''}`
+  }));
+});
+const SelectItem = React.forwardRef(function SelectItem({
+  value,
+  disabled = false,
+  children,
+  className,
+  onClick,
+  ...props
+}, ref) {
+  const ctx = React.useContext(SelectCtx);
+  const label = itemText(children) || value;
+  React.useEffect(() => {
+    ctx?.register(value, label);
+  }, [ctx?.register, value, label]);
+  const selected = ctx?.value === value;
+  return /*#__PURE__*/React.createElement("button", _extends({}, props, {
+    ref: ref,
+    type: "button",
+    role: "option",
+    "aria-selected": selected,
+    disabled: disabled,
+    "data-slot": "select-item",
+    className: `ef-select-item${className ? ` ${className}` : ''}`,
+    onClick: event => {
+      onClick?.(event);
+      if (!event.defaultPrevented) ctx?.choose(value, label);
+    }
+  }), children, selected ? /*#__PURE__*/React.createElement("span", {
+    className: "ef-select-check"
+  }, /*#__PURE__*/React.createElement(__ds_scope.Icon, {
+    name: "check",
+    size: 15
+  })) : null);
+});
+Object.assign(__ds_scope, { Select, SelectTrigger, SelectValue, SelectContent, SelectGroup, SelectLabel, SelectSeparator, SelectItem });
+})(); } catch (e) { __ds_ns.__errors.push({ path: "components/forms/Select.jsx", error: String((e && e.message) || e) }); }
 
 // components/overlay/ContextMenu.jsx
 try { (() => {
@@ -14147,7 +14290,8 @@ const {
   Badge,
   Button,
   Input,
-  Select,
+  NativeSelect,
+  NativeSelectOption,
   Checkbox,
   Avatar,
   IconButton,
@@ -14157,7 +14301,9 @@ const {
   Drawer,
   KeyValueList,
   Dialog,
-  Sparkline
+  Sparkline,
+  Field,
+  FieldLabel
 } = window.EfolusiDesignSystem_4ffc3d;
 const SEED = [['Acme Robotics', 'ada@acmerobotics.com', 'Growth', 'Active', '$1,240', 'AI agents'], ['Bloom Health', 'ops@bloomhealth.io', 'Scale', 'Active', '$3,860', 'Infrastructure'], ['Cardinal Freight', 'it@cardinalfreight.com', 'Growth', 'Trial', '$0', 'Trading'], ['Delta Studios', 'hello@deltastudios.tv', 'Starter', 'Active', '$96', 'Automation'], ['Everline', 'admin@everline.app', 'Scale', 'Past due', '$2,410', 'Finance'], ['Foundry Labs', 'team@foundrylabs.dev', 'Growth', 'Active', '$1,870', 'File tools'], ['Golden Gate Coffee', 'sam@ggcoffee.com', 'Starter', 'Churned', '$0', 'AI agents']].map(([name, email, plan, status, mrr, product], i) => ({
   id: i + 1,
@@ -14260,15 +14406,18 @@ function CustomersScreen({
     iconLeft: "search",
     value: q,
     onChange: e => setQ(e.target.value)
-  })), /*#__PURE__*/React.createElement(Select, {
+  })), /*#__PURE__*/React.createElement(NativeSelect, {
     size: "sm",
-    options: ['All plans', 'Starter', 'Growth', 'Scale'],
     value: plan,
     onChange: e => setPlan(e.target.value),
+    "aria-label": "Plan filter",
     style: {
       width: 130
     }
-  }), /*#__PURE__*/React.createElement(Menu, {
+  }, ['All plans', 'Starter', 'Growth', 'Scale'].map(value => /*#__PURE__*/React.createElement(NativeSelectOption, {
+    key: value,
+    value: value
+  }, value))), /*#__PURE__*/React.createElement(Menu, {
     trigger: /*#__PURE__*/React.createElement(Tag, {
       icon: "funnel",
       onClick: () => {}
@@ -14546,15 +14695,19 @@ function CustomersScreen({
       ...form,
       email: e.target.value
     })
-  }), /*#__PURE__*/React.createElement(Select, {
-    label: "Plan",
-    options: ['Starter', 'Growth', 'Scale'],
+  }), /*#__PURE__*/React.createElement(Field, null, /*#__PURE__*/React.createElement(FieldLabel, {
+    htmlFor: "customer-plan"
+  }, "Plan"), /*#__PURE__*/React.createElement(NativeSelect, {
+    id: "customer-plan",
     value: form.plan,
     onChange: e => setForm({
       ...form,
       plan: e.target.value
     })
-  }))));
+  }, ['Starter', 'Growth', 'Scale'].map(value => /*#__PURE__*/React.createElement(NativeSelectOption, {
+    key: value,
+    value: value
+  }, value)))))));
 }
 Object.assign(window, {
   CustomersScreen
@@ -15186,7 +15339,8 @@ const {
   Button,
   Input,
   Textarea,
-  Select,
+  NativeSelect,
+  NativeSelectOption,
   Switch,
   Tabs,
   Avatar,
@@ -15251,10 +15405,13 @@ function GeneralTab({
   })), /*#__PURE__*/React.createElement(SectionRow, {
     title: "Default surface",
     desc: "Where new members land after sign-in."
-  }, /*#__PURE__*/React.createElement(Select, {
-    options: ['AI agents', 'Infrastructure', 'Automation', 'File tools', 'Trading', 'Finance'],
-    defaultValue: "AI agents"
-  })), /*#__PURE__*/React.createElement(SectionRow, {
+  }, /*#__PURE__*/React.createElement(NativeSelect, {
+    defaultValue: "AI agents",
+    "aria-label": "Default surface"
+  }, ['AI agents', 'Infrastructure', 'Automation', 'File tools', 'Trading', 'Finance'].map(value => /*#__PURE__*/React.createElement(NativeSelectOption, {
+    key: value,
+    value: value
+  }, value)))), /*#__PURE__*/React.createElement(SectionRow, {
     title: "Notifications",
     desc: "Workspace-wide defaults; members can override."
   }, /*#__PURE__*/React.createElement("div", {
@@ -15325,14 +15482,17 @@ function MembersTab({
     }
   }, email)), role === 'Owner' ? /*#__PURE__*/React.createElement(Badge, {
     tone: "brand"
-  }, "Owner") : /*#__PURE__*/React.createElement(Select, {
+  }, "Owner") : /*#__PURE__*/React.createElement(NativeSelect, {
     size: "sm",
-    options: ['Admin', 'Member', 'Viewer'],
     defaultValue: role,
+    "aria-label": `Role for ${email}`,
     style: {
       width: 110
     }
-  }), /*#__PURE__*/React.createElement(IconButton, {
+  }, ['Admin', 'Member', 'Viewer'].map(value => /*#__PURE__*/React.createElement(NativeSelectOption, {
+    key: value,
+    value: value
+  }, value))), /*#__PURE__*/React.createElement(IconButton, {
     icon: "ellipsis",
     label: "More",
     size: "sm",
@@ -16546,7 +16706,10 @@ const {
   Dialog,
   Card,
   Button,
-  Select,
+  NativeSelect,
+  NativeSelectOption,
+  Field,
+  FieldLabel,
   Input,
   Badge,
   Icon,
@@ -16960,17 +17123,25 @@ function InfraScreen() {
       flexDirection: 'column',
       gap: 14
     }
-  }, /*#__PURE__*/React.createElement(Select, {
-    label: "Kind",
-    options: ['PostgreSQL', 'MySQL', 'Redis', 'SSH host', 'Kubernetes', 'AWS account', 'Domain / DNS']
-  }), /*#__PURE__*/React.createElement(Input, {
+  }, /*#__PURE__*/React.createElement(Field, null, /*#__PURE__*/React.createElement(FieldLabel, {
+    htmlFor: "connection-kind"
+  }, "Kind"), /*#__PURE__*/React.createElement(NativeSelect, {
+    id: "connection-kind"
+  }, ['PostgreSQL', 'MySQL', 'Redis', 'SSH host', 'Kubernetes', 'AWS account', 'Domain / DNS'].map(value => /*#__PURE__*/React.createElement(NativeSelectOption, {
+    key: value,
+    value: value
+  }, value)))), /*#__PURE__*/React.createElement(Input, {
     label: "Host",
     placeholder: "db.internal.acme.co:5432",
     iconLeft: "server"
-  }), /*#__PURE__*/React.createElement(Select, {
-    label: "Region",
-    options: ['eu-west-1', 'us-east-1', 'fra1', 'sgp1']
-  }))), /*#__PURE__*/React.createElement(Drawer, {
+  }), /*#__PURE__*/React.createElement(Field, null, /*#__PURE__*/React.createElement(FieldLabel, {
+    htmlFor: "connection-region"
+  }, "Region"), /*#__PURE__*/React.createElement(NativeSelect, {
+    id: "connection-region"
+  }, ['eu-west-1', 'us-east-1', 'fra1', 'sgp1'].map(value => /*#__PURE__*/React.createElement(NativeSelectOption, {
+    key: value,
+    value: value
+  }, value)))))), /*#__PURE__*/React.createElement(Drawer, {
     open: cli,
     onClose: () => setCli(false),
     title: "Efolusi CLI",
@@ -17019,7 +17190,10 @@ const {
   Steps,
   FileDrop,
   FileTile,
-  Select,
+  NativeSelect,
+  NativeSelectOption,
+  Field,
+  FieldLabel,
   Slider,
   Button,
   EmptyState,
@@ -17258,15 +17432,20 @@ function ToolsScreen() {
       alignItems: 'flex-end',
       marginTop: 6
     }
-  }, /*#__PURE__*/React.createElement(Select, {
-    label: "Convert to",
-    options: ['DOCX', 'PDF', 'PNG', 'WEBM', 'MP3', 'TXT'],
-    value: format,
-    onChange: e => setFormat(e.target.value),
+  }, /*#__PURE__*/React.createElement(Field, {
     style: {
       width: 160
     }
-  }), /*#__PURE__*/React.createElement(Slider, {
+  }, /*#__PURE__*/React.createElement(FieldLabel, {
+    htmlFor: "convert-format"
+  }, "Convert to"), /*#__PURE__*/React.createElement(NativeSelect, {
+    id: "convert-format",
+    value: format,
+    onChange: e => setFormat(e.target.value)
+  }, ['DOCX', 'PDF', 'PNG', 'WEBM', 'MP3', 'TXT'].map(value => /*#__PURE__*/React.createElement(NativeSelectOption, {
+    key: value,
+    value: value
+  }, value)))), /*#__PURE__*/React.createElement(Slider, {
     label: "Quality",
     showValue: true,
     format: v => v + '%',
@@ -18657,7 +18836,25 @@ __ds_ns.Checkbox = __ds_scope.Checkbox;
 
 __ds_ns.Combobox = __ds_scope.Combobox;
 
-__ds_ns.FormField = __ds_scope.FormField;
+__ds_ns.Field = __ds_scope.Field;
+
+__ds_ns.FieldSet = __ds_scope.FieldSet;
+
+__ds_ns.FieldGroup = __ds_scope.FieldGroup;
+
+__ds_ns.FieldContent = __ds_scope.FieldContent;
+
+__ds_ns.FieldLabel = __ds_scope.FieldLabel;
+
+__ds_ns.FieldTitle = __ds_scope.FieldTitle;
+
+__ds_ns.FieldDescription = __ds_scope.FieldDescription;
+
+__ds_ns.FieldLegend = __ds_scope.FieldLegend;
+
+__ds_ns.FieldSeparator = __ds_scope.FieldSeparator;
+
+__ds_ns.FieldError = __ds_scope.FieldError;
 
 __ds_ns.IconButton = __ds_scope.IconButton;
 
@@ -18700,6 +18897,20 @@ __ds_ns.RadioGroupItem = __ds_scope.RadioGroupItem;
 __ds_ns.Radio = __ds_scope.Radio;
 
 __ds_ns.Select = __ds_scope.Select;
+
+__ds_ns.SelectTrigger = __ds_scope.SelectTrigger;
+
+__ds_ns.SelectValue = __ds_scope.SelectValue;
+
+__ds_ns.SelectContent = __ds_scope.SelectContent;
+
+__ds_ns.SelectGroup = __ds_scope.SelectGroup;
+
+__ds_ns.SelectLabel = __ds_scope.SelectLabel;
+
+__ds_ns.SelectSeparator = __ds_scope.SelectSeparator;
+
+__ds_ns.SelectItem = __ds_scope.SelectItem;
 
 __ds_ns.Slider = __ds_scope.Slider;
 

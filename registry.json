@@ -1420,7 +1420,7 @@
         "https://meridian.efolusi.com/site/registry/meridian-base.json",
         "https://meridian.efolusi.com/site/registry/button.json",
         "https://meridian.efolusi.com/site/registry/calendar.json",
-        "https://meridian.efolusi.com/site/registry/formfield.json",
+        "https://meridian.efolusi.com/site/registry/field.json",
         "https://meridian.efolusi.com/site/registry/icon.json",
         "https://meridian.efolusi.com/site/registry/portal.json"
       ],
@@ -1454,7 +1454,7 @@
         "https://meridian.efolusi.com/site/registry/meridian-base.json",
         "https://meridian.efolusi.com/site/registry/button.json",
         "https://meridian.efolusi.com/site/registry/calendar.json",
-        "https://meridian.efolusi.com/site/registry/formfield.json",
+        "https://meridian.efolusi.com/site/registry/field.json",
         "https://meridian.efolusi.com/site/registry/icon.json",
         "https://meridian.efolusi.com/site/registry/portal.json"
       ],
@@ -1487,7 +1487,7 @@
       "registryDependencies": [
         "https://meridian.efolusi.com/site/registry/meridian-base.json",
         "https://meridian.efolusi.com/site/registry/button.json",
-        "https://meridian.efolusi.com/site/registry/formfield.json",
+        "https://meridian.efolusi.com/site/registry/field.json",
         "https://meridian.efolusi.com/site/registry/icon.json",
         "https://meridian.efolusi.com/site/registry/portal.json"
       ],
@@ -2659,7 +2659,7 @@
       "registryDependencies": [
         "https://meridian.efolusi.com/site/registry/meridian-base.json",
         "https://meridian.efolusi.com/site/registry/button.json",
-        "https://meridian.efolusi.com/site/registry/formfield.json",
+        "https://meridian.efolusi.com/site/registry/field.json",
         "https://meridian.efolusi.com/site/registry/icon.json"
       ],
       "files": [
@@ -2691,7 +2691,7 @@
       "registryDependencies": [
         "https://meridian.efolusi.com/site/registry/meridian-base.json",
         "https://meridian.efolusi.com/site/registry/button.json",
-        "https://meridian.efolusi.com/site/registry/formfield.json",
+        "https://meridian.efolusi.com/site/registry/field.json",
         "https://meridian.efolusi.com/site/registry/icon.json",
         "https://meridian.efolusi.com/site/registry/portal.json",
         "https://meridian.efolusi.com/site/registry/tag.json"
@@ -2715,29 +2715,28 @@
       ]
     },
     {
-      "name": "formfield",
+      "name": "field",
       "type": "registry:ui",
-      "title": "FormField",
-      "description": "Label, hint, error and required chrome around a control, and the owner of the `id` that ties them together. Use it when a control has no `label` prop of its own, when several controls share one label, or when the control is not from this system.",
+      "title": "Field + FieldSet + FieldGroup + FieldContent + FieldLabel + FieldTitle + FieldDescription + FieldLegend + FieldSeparator + FieldError",
+      "description": "Compose accessible form layout with `Field`, `FieldLabel`, `FieldDescription`, and `FieldError`. Use `FieldSet`/`FieldLegend` for related controls, `FieldGroup` for spacing, and `FieldContent` for horizontal or responsive layouts.",
       "dependencies": [
         "react"
       ],
       "registryDependencies": [
         "https://meridian.efolusi.com/site/registry/meridian-base.json",
-        "https://meridian.efolusi.com/site/registry/button.json",
-        "https://meridian.efolusi.com/site/registry/icon.json"
+        "https://meridian.efolusi.com/site/registry/button.json"
       ],
       "files": [
         {
-          "path": "components/forms/FormField.jsx",
+          "path": "components/forms/Field.jsx",
           "type": "registry:ui"
         },
         {
-          "path": "components/forms/FormField.d.ts",
+          "path": "components/forms/Field.d.ts",
           "type": "registry:component"
         },
         {
-          "path": "components/forms/FormField.prompt.md",
+          "path": "components/forms/Field.prompt.md",
           "type": "registry:component"
         }
       ],
@@ -2787,7 +2786,7 @@
       "registryDependencies": [
         "https://meridian.efolusi.com/site/registry/meridian-base.json",
         "https://meridian.efolusi.com/site/registry/button.json",
-        "https://meridian.efolusi.com/site/registry/formfield.json",
+        "https://meridian.efolusi.com/site/registry/field.json",
         "https://meridian.efolusi.com/site/registry/icon.json"
       ],
       "files": [
@@ -2819,7 +2818,7 @@
       "registryDependencies": [
         "https://meridian.efolusi.com/site/registry/meridian-base.json",
         "https://meridian.efolusi.com/site/registry/button.json",
-        "https://meridian.efolusi.com/site/registry/formfield.json"
+        "https://meridian.efolusi.com/site/registry/field.json"
       ],
       "files": [
         {
@@ -2909,7 +2908,8 @@
       ],
       "registryDependencies": [
         "https://meridian.efolusi.com/site/registry/meridian-base.json",
-        "https://meridian.efolusi.com/site/registry/select.json"
+        "https://meridian.efolusi.com/site/registry/button.json",
+        "https://meridian.efolusi.com/site/registry/icon.json"
       ],
       "files": [
         {
@@ -2940,7 +2940,7 @@
       "registryDependencies": [
         "https://meridian.efolusi.com/site/registry/meridian-base.json",
         "https://meridian.efolusi.com/site/registry/button.json",
-        "https://meridian.efolusi.com/site/registry/formfield.json",
+        "https://meridian.efolusi.com/site/registry/field.json",
         "https://meridian.efolusi.com/site/registry/icon.json"
       ],
       "files": [
@@ -2972,7 +2972,7 @@
       "registryDependencies": [
         "https://meridian.efolusi.com/site/registry/meridian-base.json",
         "https://meridian.efolusi.com/site/registry/button.json",
-        "https://meridian.efolusi.com/site/registry/formfield.json"
+        "https://meridian.efolusi.com/site/registry/field.json"
       ],
       "files": [
         {
@@ -3003,7 +3003,7 @@
       "registryDependencies": [
         "https://meridian.efolusi.com/site/registry/meridian-base.json",
         "https://meridian.efolusi.com/site/registry/button.json",
-        "https://meridian.efolusi.com/site/registry/formfield.json"
+        "https://meridian.efolusi.com/site/registry/field.json"
       ],
       "files": [
         {
@@ -3026,16 +3026,16 @@
     {
       "name": "select",
       "type": "registry:ui",
-      "title": "Select",
-      "description": "Styled native select with chevron; options as strings, `{value,label}` objects, or `<option>` children.",
+      "title": "Select + SelectTrigger + SelectValue + SelectContent + SelectGroup + SelectLabel + SelectSeparator + SelectItem",
+      "description": "Use the composed Select for a custom popup list. Use `NativeSelect` when native `<select>` semantics are required.",
       "dependencies": [
         "react"
       ],
       "registryDependencies": [
         "https://meridian.efolusi.com/site/registry/meridian-base.json",
         "https://meridian.efolusi.com/site/registry/button.json",
-        "https://meridian.efolusi.com/site/registry/formfield.json",
-        "https://meridian.efolusi.com/site/registry/icon.json"
+        "https://meridian.efolusi.com/site/registry/icon.json",
+        "https://meridian.efolusi.com/site/registry/portal.json"
       ],
       "files": [
         {
@@ -3066,7 +3066,7 @@
       "registryDependencies": [
         "https://meridian.efolusi.com/site/registry/meridian-base.json",
         "https://meridian.efolusi.com/site/registry/button.json",
-        "https://meridian.efolusi.com/site/registry/formfield.json"
+        "https://meridian.efolusi.com/site/registry/field.json"
       ],
       "files": [
         {
@@ -3097,7 +3097,7 @@
       "registryDependencies": [
         "https://meridian.efolusi.com/site/registry/meridian-base.json",
         "https://meridian.efolusi.com/site/registry/button.json",
-        "https://meridian.efolusi.com/site/registry/formfield.json"
+        "https://meridian.efolusi.com/site/registry/field.json"
       ],
       "files": [
         {
@@ -3128,7 +3128,7 @@
       "registryDependencies": [
         "https://meridian.efolusi.com/site/registry/meridian-base.json",
         "https://meridian.efolusi.com/site/registry/button.json",
-        "https://meridian.efolusi.com/site/registry/formfield.json",
+        "https://meridian.efolusi.com/site/registry/field.json",
         "https://meridian.efolusi.com/site/registry/icon.json"
       ],
       "files": [

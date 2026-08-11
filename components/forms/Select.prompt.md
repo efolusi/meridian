@@ -1,7 +1,16 @@
-Styled native select with chevron; options as strings, `{value,label}` objects, or `<option>` children.
+# Select
+
+Use the composed Select for a custom popup list. Use `NativeSelect` when native `<select>` semantics are required.
 
 ```jsx
-<Select label="Role" options={['Owner', 'Admin', 'Member']} defaultValue="Member" />
+<Select defaultValue="member">
+  <SelectTrigger><SelectValue placeholder="Choose a role" /></SelectTrigger>
+  <SelectContent>
+    <SelectGroup>
+      <SelectLabel>Roles</SelectLabel>
+      <SelectItem value="member">Member</SelectItem>
+      <SelectItem value="admin">Admin</SelectItem>
+    </SelectGroup>
+  </SelectContent>
+</Select>
 ```
-
-Sizes `sm|md|lg`; supports `hint` and `invalid`.

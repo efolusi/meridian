@@ -3225,152 +3225,37 @@ export interface ComboboxProps {
 export declare function Combobox(props: ComboboxProps): React.JSX.Element;
 ```
 
-#### FormField
+#### Field
 
-Group: forms · Source: /components/forms/FormField.jsx · Exports: FormField
+Group: forms · Source: /components/forms/Field.jsx · Exports: Field, FieldSet, FieldGroup, FieldContent, FieldLabel, FieldTitle, FieldDescription, FieldLegend, FieldSeparator, FieldError
 
-Label, hint, error and required chrome around a control, and the owner of the `id` that ties them together. Use it when a control has no `label` prop of its own, when several controls share one label, or when the control is not from this system.
+# Field
 
-Input, Textarea and InputGroup already take `label` / `hint` / `error` directly, while Select and Combobox take `label` / `hint`. `FormField` is the general case for composed controls such as InputOTP.
-
-```jsx
-<FormField label="Work email" hint="We only use this for receipts." required>
-  <Input type="email" placeholder="ada@company.com" />
-</FormField>
-
-<FormField label="Plan" error="Pick a plan to continue.">
-  <Select options={['Starter', 'Growth', 'Scale']} />
-</FormField>
-```
-
-`error` wins over `hint` and marks the control invalid, so you do not pass both `error` and `invalid`.
-
-For a set of controls that share one label, `group` swaps the `<label>` for `role="group"` + `aria-labelledby` — five checkboxes cannot share a single `htmlFor`:
+Compose accessible form layout with `Field`, `FieldLabel`, `FieldDescription`, and `FieldError`. Use `FieldSet`/`FieldLegend` for related controls, `FieldGroup` for spacing, and `FieldContent` for horizontal or responsive layouts.
 
 ```jsx
-<FormField group label="Notify me about" hint="Choose any.">
-  <Checkbox label="Mentions" />
-  <Checkbox label="Replies" />
-</FormField>
+<Field data-invalid={invalid}>
+  <FieldLabel htmlFor="email">Email</FieldLabel>
+  <Input id="email" aria-invalid={invalid} />
+  <FieldError>{invalid ? 'Enter a valid email.' : null}</FieldError>
+</Field>
 ```
-
-For a control this system does not own, take the wiring as a function and spread it yourself:
-
-```jsx
-<FormField label="Card number" error={err}>
-  {({ controlProps }) => <StripeCardElement {...controlProps} />}
-</FormField>
-```
-
-## FormField.useFormState
-
-Zero-dependency form state for a whole form: values, per-field wiring, and the validation timing guidelines/forms.md prescribes (blur first, then re-validate on change, then everything on submit). Published as a static, like `Toaster.useToast`.
-
-```jsx
-const form = FormField.useFormState({
-  initial: { name: '', seats: 3 },
-  validate: v => {
-    const errors = {};
-    if (!v.name.trim()) errors.name = 'Name the workspace to continue.';
-    if (v.seats == null) errors.seats = 'How many seats?';
-    return errors; // empty object = valid
-  },
-});
-
-<form onSubmit={form.handleSubmit(save)}>
-  <Input label="Workspace name" {...form.field('name')} />
-  <NumberInput label="Seats" min={1} max={50} {...form.field('seats')} />
-  <Button type="submit" loading={form.submitting}>Create</Button>
-</form>
-```
-
-`field(name)` returns `{ value, onChange, onBlur, invalid, error }` — spread it on any control here (`onChange` takes a change event or a raw value, so `Input` and `NumberInput` both work). `error` only surfaces after that field blurs or a submit attempt; `form.errors` always holds the raw `validate` result. `handleSubmit(fn)` validates everything, marks all fields touched, and only calls `fn(values)` when clean — an async `fn` sets `form.submitting` around its promise, which feeds `Button loading` directly. `set(name, value)` writes a field imperatively; `reset()` returns to `initial`.
-
-Use it for a form of two or more validated fields. A single self-contained control does not need it — pass `error` yourself.
 
 ```ts
-export interface FieldWiring {
-  /** The control's id. `null` in `group` mode, where no single child owns it. */
-  id: string | null;
-  invalid: boolean;
-  required: boolean;
-  /** Spread on the real control element, after `{...rest}`. */
-  controlProps: {
-    id?: string;
-    'aria-describedby'?: string;
-    'aria-invalid'?: true;
-    'aria-required'?: true;
-  };
-}
-export interface FormFieldProps {
-  /** Rendered as `<label htmlFor>`, or a `<span id>` when `group`. */
-  label?: React.ReactNode;
-  /** Muted helper text below the control. Hidden while `error` is set. */
-  hint?: React.ReactNode;
-  /** Error message below the control. Truthy implies invalid. */
-  error?: React.ReactNode;
-  /** Invalid state with no message. @default false */
-  invalid?: boolean;
-  /** Red asterisk plus aria-required on the control. @default false */
-  required?: boolean;
-  /** Label a set of controls: role="group" + aria-labelledby. @default false */
-  group?: boolean;
-  /** The control's id. Generated with React.useId() when omitted. */
-  id?: string;
-  /** A control, or a function receiving the wiring to spread yourself. */
-  children?: React.ReactNode | ((field: FieldWiring) => React.ReactNode);
-  style?: React.CSSProperties;
-  className?: string;
-}
-/**
- * Label / hint / error / required chrome around a control, and the owner of the
- * id linking them. Design-system controls pick the wiring up from context; for
- * anything else, pass a function and spread `controlProps` on the control.
- */
-export declare function FormField(props: FormFieldProps): React.JSX.Element;
-
-/** What `field(name)` returns: spread it on a control, or wire prop-by-prop. */
-export interface FormFieldControl<V = unknown> {
-  value: V;
-  /** Accepts a change event (reads `target.value`, or `target.checked` for checkboxes) or a raw value. */
-  onChange: (eventOrValue: unknown) => void;
-  /** Marks the field touched, which lets its error surface. */
-  onBlur: () => void;
-  invalid: boolean;
-  /** Only set after the field was touched or a submit attempt (guidelines/forms.md timing). */
-  error: string | undefined;
-}
-export interface UseFormStateOptions<T extends Record<string, any>> {
-  /** Seed values. Read once, on the first render. */
-  initial: T;
-  /** Returns `{ field: 'message' }` for invalid fields; empty object = valid. */
-  validate?: (values: T) => Partial<Record<keyof T & string, string>>;
-}
-export interface UseFormStateReturn<T extends Record<string, any>> {
-  values: T;
-  /** The raw `validate(values)` result — not gated by touch. `field().error` is. */
-  errors: Partial<Record<keyof T & string, string>>;
-  touched: Partial<Record<keyof T & string, boolean>>;
-  set: <K extends keyof T & string>(name: K, value: T[K]) => void;
-  field: <K extends keyof T & string>(name: K) => FormFieldControl<T[K]>;
-  /** True while an async submit handler is in flight. */
-  submitting: boolean;
-  /**
-   * Wraps a submit handler: validates everything, marks all fields touched,
-   * and only calls `fn(values)` when clean. An async `fn` sets `submitting`
-   * around its promise.
-   */
-  handleSubmit: (fn?: (values: T) => unknown | Promise<unknown>) => (e?: React.SyntheticEvent) => unknown;
-  /** Back to `initial`, untouched, not submitting. */
-  reset: () => void;
-}
-/**
- * Zero-dependency form state. Published as a static — `FormField.useFormState()`
- * — because only capitalised exports reach the global namespace.
- */
-export declare namespace FormField {
-  function useFormState<T extends Record<string, any>>(options: UseFormStateOptions<T>): UseFormStateReturn<T>;
-}
+export type FieldOrientation = 'vertical' | 'horizontal' | 'responsive';
+export type FieldProps = React.ComponentPropsWithoutRef<'div'> & { orientation?: FieldOrientation };
+export type FieldLegendProps = React.ComponentPropsWithoutRef<'legend'> & { variant?: 'legend' | 'label' };
+export type FieldErrorProps = React.ComponentPropsWithoutRef<'div'> & { errors?: Array<{ message?: string } | undefined> };
+export declare const FieldSet: React.ForwardRefExoticComponent<React.ComponentPropsWithoutRef<'fieldset'> & React.RefAttributes<HTMLFieldSetElement>>;
+export declare const FieldLegend: React.ForwardRefExoticComponent<FieldLegendProps & React.RefAttributes<HTMLLegendElement>>;
+export declare const FieldGroup: React.ForwardRefExoticComponent<React.ComponentPropsWithoutRef<'div'> & React.RefAttributes<HTMLDivElement>>;
+export declare const Field: React.ForwardRefExoticComponent<FieldProps & React.RefAttributes<HTMLDivElement>>;
+export declare const FieldContent: React.ForwardRefExoticComponent<React.ComponentPropsWithoutRef<'div'> & React.RefAttributes<HTMLDivElement>>;
+export declare const FieldLabel: React.ForwardRefExoticComponent<React.ComponentPropsWithoutRef<'label'> & React.RefAttributes<HTMLLabelElement>>;
+export declare const FieldTitle: React.ForwardRefExoticComponent<React.ComponentPropsWithoutRef<'div'> & React.RefAttributes<HTMLDivElement>>;
+export declare const FieldDescription: React.ForwardRefExoticComponent<React.ComponentPropsWithoutRef<'p'> & React.RefAttributes<HTMLParagraphElement>>;
+export declare const FieldSeparator: React.ForwardRefExoticComponent<React.ComponentPropsWithoutRef<'div'> & React.RefAttributes<HTMLDivElement>>;
+export declare const FieldError: React.ForwardRefExoticComponent<FieldErrorProps & React.RefAttributes<HTMLDivElement>>;
 ```
 
 #### IconButton
@@ -3534,7 +3419,7 @@ Group: forms · Source: /components/forms/NativeSelect.jsx · Exports: NativeSel
 Use `NativeSelect` when browser-native selection behavior, mobile pickers, and
 low interaction cost matter most. Compose `NativeSelectOption` directly, or
 group related choices with `NativeSelectOptGroup`. Use `aria-invalid` for an
-invalid control and provide its visible label through `FormField` or `Label`.
+invalid control and provide its visible label through `FieldLabel` or `Label`.
 
 ```ts
 export type NativeSelectProps = Omit<React.ComponentPropsWithoutRef<'select'>, 'size'> & {
@@ -3580,12 +3465,6 @@ For locale-aware grouping and decimals, pass `locale` (a BCP 47 tag) instead of 
 
 ```jsx
 <NumberInput label="Harga" locale="id" step={0.01} />
-```
-
-Pairs with `FormField.useFormState` — `field()` hands it `value` / `onChange` / `onBlur` / `invalid` / `error` directly:
-
-```jsx
-<NumberInput label="Seats" min={1} max={50} {...form.field('seats')} />
 ```
 
 Use when the value is a number a user tunes in small moves (quantities, limits, thresholds). Not for phone numbers, codes or IDs (use `Input` or `InputOTP` — those are strings, not quantities), and not for coarse picks along a visual range (use `Slider`).
@@ -3680,29 +3559,39 @@ export declare const RadioGroupItem: React.ForwardRefExoticComponent<Omit<RadioP
 
 #### Select
 
-Group: forms · Source: /components/forms/Select.jsx · Exports: Select
+Group: forms · Source: /components/forms/Select.jsx · Exports: Select, SelectTrigger, SelectValue, SelectContent, SelectGroup, SelectLabel, SelectSeparator, SelectItem
 
-Styled native select with chevron; options as strings, `{value,label}` objects, or `<option>` children.
+# Select
+
+Use the composed Select for a custom popup list. Use `NativeSelect` when native `<select>` semantics are required.
 
 ```jsx
-<Select label="Role" options={['Owner', 'Admin', 'Member']} defaultValue="Member" />
+<Select defaultValue="member">
+  <SelectTrigger><SelectValue placeholder="Choose a role" /></SelectTrigger>
+  <SelectContent>
+    <SelectGroup>
+      <SelectLabel>Roles</SelectLabel>
+      <SelectItem value="member">Member</SelectItem>
+      <SelectItem value="admin">Admin</SelectItem>
+    </SelectGroup>
+  </SelectContent>
+</Select>
 ```
 
-Sizes `sm|md|lg`; supports `hint` and `invalid`.
-
 ```ts
-export interface SelectProps extends Omit<React.SelectHTMLAttributes<HTMLSelectElement>, 'size'> {
-  label?: string;
-  hint?: string;
-  /** Options as strings or {value, label}; alternatively pass <option> children */
-  options?: Array<string | { value: string; label: string }>;
-  /** @default 'md' */
-  size?: 'sm' | 'md' | 'lg';
-  invalid?: boolean;
-}
-export declare const Select: React.ForwardRefExoticComponent<
-  SelectProps & React.RefAttributes<HTMLSelectElement>
->;
+export interface SelectProps { value?: string; defaultValue?: string; onValueChange?: (value: string) => void; open?: boolean; defaultOpen?: boolean; onOpenChange?: (open: boolean) => void; disabled?: boolean; name?: string; required?: boolean; children?: React.ReactNode }
+export declare function Select(props: SelectProps): React.JSX.Element;
+export type SelectTriggerProps = React.ComponentPropsWithoutRef<'button'>;
+export declare const SelectTrigger: React.ForwardRefExoticComponent<SelectTriggerProps & React.RefAttributes<HTMLButtonElement>>;
+export interface SelectValueProps { placeholder?: React.ReactNode; children?: React.ReactNode; className?: string }
+export declare function SelectValue(props: SelectValueProps): React.JSX.Element;
+export type SelectContentProps = React.ComponentPropsWithoutRef<'div'> & { position?: 'item-aligned' | 'popper'; align?: 'start' | 'center' | 'end'; sideOffset?: number };
+export declare const SelectContent: React.ForwardRefExoticComponent<SelectContentProps & React.RefAttributes<HTMLDivElement>>;
+export declare const SelectGroup: React.ForwardRefExoticComponent<React.ComponentPropsWithoutRef<'div'> & React.RefAttributes<HTMLDivElement>>;
+export declare const SelectLabel: React.ForwardRefExoticComponent<React.ComponentPropsWithoutRef<'div'> & React.RefAttributes<HTMLDivElement>>;
+export type SelectItemProps = Omit<React.ComponentPropsWithoutRef<'button'>, 'value'> & { value: string };
+export declare const SelectItem: React.ForwardRefExoticComponent<SelectItemProps & React.RefAttributes<HTMLButtonElement>>;
+export declare const SelectSeparator: React.ForwardRefExoticComponent<React.ComponentPropsWithoutRef<'div'> & React.RefAttributes<HTMLDivElement>>;
 ```
 
 #### Slider

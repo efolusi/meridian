@@ -1,0 +1,14 @@
+export type FieldOrientation = 'vertical' | 'horizontal' | 'responsive';
+export type FieldProps = React.ComponentPropsWithoutRef<'div'> & { orientation?: FieldOrientation };
+export type FieldLegendProps = React.ComponentPropsWithoutRef<'legend'> & { variant?: 'legend' | 'label' };
+export type FieldErrorProps = React.ComponentPropsWithoutRef<'div'> & { errors?: Array<{ message?: string } | undefined> };
+export declare const FieldSet: React.ForwardRefExoticComponent<React.ComponentPropsWithoutRef<'fieldset'> & React.RefAttributes<HTMLFieldSetElement>>;
+export declare const FieldLegend: React.ForwardRefExoticComponent<FieldLegendProps & React.RefAttributes<HTMLLegendElement>>;
+export declare const FieldGroup: React.ForwardRefExoticComponent<React.ComponentPropsWithoutRef<'div'> & React.RefAttributes<HTMLDivElement>>;
+export declare const Field: React.ForwardRefExoticComponent<FieldProps & React.RefAttributes<HTMLDivElement>>;
+export declare const FieldContent: React.ForwardRefExoticComponent<React.ComponentPropsWithoutRef<'div'> & React.RefAttributes<HTMLDivElement>>;
+export declare const FieldLabel: React.ForwardRefExoticComponent<React.ComponentPropsWithoutRef<'label'> & React.RefAttributes<HTMLLabelElement>>;
+export declare const FieldTitle: React.ForwardRefExoticComponent<React.ComponentPropsWithoutRef<'div'> & React.RefAttributes<HTMLDivElement>>;
+export declare const FieldDescription: React.ForwardRefExoticComponent<React.ComponentPropsWithoutRef<'p'> & React.RefAttributes<HTMLParagraphElement>>;
+export declare const FieldSeparator: React.ForwardRefExoticComponent<React.ComponentPropsWithoutRef<'div'> & React.RefAttributes<HTMLDivElement>>;
+export declare const FieldError: React.ForwardRefExoticComponent<FieldErrorProps & React.RefAttributes<HTMLDivElement>>;
