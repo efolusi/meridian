@@ -1,5 +1,32 @@
 // Meridian docs demos — files.
 
+// @demo Attachment File states and actions
+export function AttachmentDemo() {
+  const { Attachment, AttachmentAction, AttachmentActions, AttachmentContent, AttachmentDescription, AttachmentGroup, AttachmentMedia, AttachmentTitle, AttachmentTrigger, Icon } = window.EfolusiDesignSystem_4ffc3d;
+  const files = [
+    ['design-system.zip', 'Uploading · 64%', 'uploading'],
+    ['market-research.pdf', 'Processing document', 'processing'],
+    ['financial-model.xlsx', 'Upload failed. Try again.', 'error'],
+  ];
+  return (
+    <AttachmentGroup role="group" aria-label="Project files" tabIndex={0} style={{ width: '100%', maxWidth: 720 }}>
+      {files.map(([name, description, state]) => (
+        <Attachment key={name} state={state} style={{ width: 250 }}>
+          <AttachmentMedia><Icon name="file-text" size={17} /></AttachmentMedia>
+          <AttachmentContent>
+            <AttachmentTitle>{name}</AttachmentTitle>
+            <AttachmentDescription>{description}</AttachmentDescription>
+          </AttachmentContent>
+          <AttachmentActions>
+            <AttachmentAction variant="ghost" aria-label={`Remove ${name}`}><Icon name="x" size={13} /></AttachmentAction>
+          </AttachmentActions>
+          <AttachmentTrigger aria-label={`Open ${name}`} onClick={() => {}} />
+        </Attachment>
+      ))}
+    </AttachmentGroup>
+  );
+}
+
 // @demo FileDrop Upload target
 export function FileDropDemo() {
   const { FileDrop } = window.EfolusiDesignSystem_4ffc3d;

@@ -26,9 +26,11 @@ if (missing.length) {
   console.error('missing or unrenderable exports:', missing.join(', '));
   process.exit(1);
 }
-if (typeof barrel.markerVariants !== 'function') {
-  console.error('missing public style helper: markerVariants');
-  process.exit(1);
+for (const helper of ['buttonVariants', 'markerVariants']) {
+  if (typeof barrel[helper] !== 'function') {
+    console.error(`missing public style helper: ${helper}`);
+    process.exit(1);
+  }
 }
 
 // Deep imports must be checked THROUGH the package name, not by file path.

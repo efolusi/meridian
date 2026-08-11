@@ -24,7 +24,7 @@ const require = createRequire(import.meta.url);
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const NAMESPACE = 'EfolusiDesignSystem_4ffc3d';
 const OUT = path.join(ROOT, '_ds_bundle.js');
-const PUBLIC_HELPERS = new Set(['markerVariants']);
+const PUBLIC_HELPERS = new Set(['buttonVariants', 'markerVariants']);
 
 let Babel;
 try {

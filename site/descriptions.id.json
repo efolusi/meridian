@@ -97,6 +97,7 @@
  "EnvList": "Kartu variabel lingkungan — rahasia disamarkan sebagai •••••••• dengan satu toggle ungkap di header; salin per-baris selalu menyalin nilai asli.",
  "Exception": "Kartu error-runtime — chip tipe mono + pesan, frame stack yang bisa dilipat (frame aktif ditandai, frame internal diredupkan) dan kutipan source opsional dengan …",
  "Terminal": "Output konsol berorientasi-baris: prompt $, baris ok/err/info bernuansa, caret langsung opsional.",
+ "Attachment": "Lampiran berkas atau gambar yang dapat dikomposisi dengan status unggah, media, metadata, tindakan independen, dan pemicu seluruh kartu.",
  "FileDrop": "Zona-jatuh bergaris putus — klik atau seret; border tinta saat hover/dragover.",
  "FileTile": "Baris berkas dengan ikon tipe (disimpulkan dari ekstensi), meta ukuran/status, status progres atau error.",
  "FileTypeIcon": "Glyph berkas bertipe dengan chip ekstensi berwarna — memetakan 20 ekstensi umum ke ikon + warna.",

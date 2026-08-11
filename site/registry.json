@@ -2342,6 +2342,36 @@
       ]
     },
     {
+      "name": "attachment",
+      "type": "registry:ui",
+      "title": "Attachment + AttachmentMedia + AttachmentContent + AttachmentTitle + AttachmentDescription + AttachmentActions + AttachmentAction + AttachmentTrigger + AttachmentGroup",
+      "description": "Compose a file attachment from `Attachment`, `AttachmentMedia`, `AttachmentContent`, `AttachmentTitle`, `AttachmentDescription`, and optional `AttachmentActions`. Use `AttachmentTrigger` for a full-card action and `AttachmentGroup` for a horizontally scrollable collection. Label icon-only actions an",
+      "dependencies": [
+        "react"
+      ],
+      "registryDependencies": [
+        "https://meridian.efolusi.com/site/registry/meridian-base.json",
+        "https://meridian.efolusi.com/site/registry/button.json"
+      ],
+      "files": [
+        {
+          "path": "components/files/Attachment.jsx",
+          "type": "registry:ui"
+        },
+        {
+          "path": "components/files/Attachment.d.ts",
+          "type": "registry:component"
+        },
+        {
+          "path": "components/files/Attachment.prompt.md",
+          "type": "registry:component"
+        }
+      ],
+      "categories": [
+        "files"
+      ]
+    },
+    {
       "name": "filedrop",
       "type": "registry:ui",
       "title": "FileDrop",

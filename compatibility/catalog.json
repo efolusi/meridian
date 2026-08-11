@@ -7,7 +7,27 @@
     { "name": "Alert", "status": "unverified" },
     { "name": "Alert Dialog", "status": "unverified" },
     { "name": "Aspect Ratio", "status": "unverified" },
-    { "name": "Attachment", "status": "unverified" },
+    {
+      "name": "Attachment",
+      "status": "proven",
+      "requiredExports": [
+        "Attachment",
+        "AttachmentMedia",
+        "AttachmentContent",
+        "AttachmentTitle",
+        "AttachmentDescription",
+        "AttachmentActions",
+        "AttachmentAction",
+        "AttachmentTrigger",
+        "AttachmentGroup"
+      ],
+      "sourceFiles": [
+        "components/files/Attachment.jsx",
+        "components/files/Attachment.d.ts"
+      ],
+      "registryItems": ["site/registry/attachment.json"],
+      "tests": ["tests/attachment-compatibility.test.jsx"]
+    },
     { "name": "Avatar", "status": "unverified" },
     { "name": "Badge", "status": "unverified" },
     { "name": "Breadcrumb", "status": "unverified" },

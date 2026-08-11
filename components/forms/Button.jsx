@@ -9,6 +9,11 @@ const CSS = `
 .ef-btn--sm{height:var(--control-h-sm);padding:0 10px;font-size:var(--text-sm)}
 .ef-btn--md{height:var(--control-h-md);padding:0 14px;font-size:var(--text-md)}
 .ef-btn--lg{height:var(--control-h-lg);padding:0 20px;font-size:var(--text-lg)}
+.ef-btn--xs{height:28px;padding:0 9px;font-size:var(--text-xs);gap:6px}
+.ef-btn--icon,.ef-btn--icon-md{width:var(--control-h-md);height:var(--control-h-md);padding:0}
+.ef-btn--icon-xs{width:24px;height:24px;padding:0}
+.ef-btn--icon-sm{width:var(--control-h-sm);height:var(--control-h-sm);padding:0}
+.ef-btn--icon-lg{width:var(--control-h-lg);height:var(--control-h-lg);padding:0}
 .ef-btn--primary{background:var(--accent);color:var(--accent-contrast)}
 .ef-btn--primary:hover:not(:disabled){background:var(--accent-hover)}
 .ef-btn--primary:active:not(:disabled){background:var(--accent-active)}
@@ -20,6 +25,12 @@ const CSS = `
 .ef-btn--danger:hover:not(:disabled){background:var(--danger-700)}
 .ef-btn--brand{background:var(--brand-700);color:var(--text-on-brand)}
 .ef-btn--brand:hover:not(:disabled){background:var(--brand-800)}
+.ef-btn--outline{background:transparent;color:var(--text-primary);border-color:var(--border-strong)}
+.ef-btn--outline:hover:not(:disabled){background:var(--surface-sunken)}
+.ef-btn--destructive{background:var(--danger-600);color:var(--danger-contrast)}
+.ef-btn--destructive:hover:not(:disabled){background:var(--danger-700)}
+.ef-btn--link{height:auto;padding:0;background:transparent;color:var(--text-link);text-underline-offset:4px}
+.ef-btn--link:hover:not(:disabled){text-decoration:underline}
 @keyframes ef-spin{to{transform:rotate(360deg)}}
 .ef-btn__spin{display:inline-flex;animation:ef-spin .7s linear infinite}
 `;
@@ -102,14 +113,19 @@ export function mergeRefs(...refs) {
     }
   };
 }
-export function Button({ variant = 'primary', size = 'md', iconLeft, iconRight, fullWidth, loading, disabled, children, style, className, ...rest }) {
+export function buttonVariants({ variant = 'default', size = 'default', className = '' } = {}) {
+  const mappedVariant = variant === 'default' ? 'primary' : variant;
+  const mappedSize = size === 'default' ? 'md' : size;
+  return `ef-btn ef-btn--${mappedVariant} ef-btn--${mappedSize}${className ? ' ' + className : ''}`;
+}
+export const Button = React.forwardRef(function Button({ variant = 'default', size = 'default', iconLeft, iconRight, fullWidth, loading, disabled, children, style, className, ...rest }, ref) {
   injectEfCss('ef-css-btn', CSS);
-  const isz = size === 'sm' ? 14 : size === 'lg' ? 18 : 16;
+  const isz = size === 'xs' || size === 'icon-xs' ? 12 : size === 'sm' || size === 'icon-sm' ? 14 : size === 'lg' || size === 'icon-lg' ? 18 : 16;
   return (
-    <button className={`ef-btn ef-btn--${variant} ef-btn--${size}${className ? ' ' + className : ''}`} disabled={disabled || loading} style={{ width: fullWidth ? '100%' : undefined, ...style }} {...rest}>
+    <button ref={ref} className={buttonVariants({ variant, size, className })} disabled={disabled || loading} style={{ width: fullWidth ? '100%' : undefined, ...style }} {...rest}>
       {loading ? <span className="ef-btn__spin"><Icon name="loader-circle" size={isz} /></span> : iconLeft ? <Icon name={iconLeft} size={isz} /> : null}
       {children}
       {iconRight ? <Icon name={iconRight} size={isz} /> : null}
     </button>
   );
-}
+});
