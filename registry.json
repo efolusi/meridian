@@ -2091,6 +2091,37 @@
       ]
     },
     {
+      "name": "alertdialog",
+      "type": "registry:ui",
+      "title": "AlertDialog + AlertDialogTrigger + AlertDialogPortal + AlertDialogOverlay + AlertDialogContent + AlertDialogHeader + AlertDialogFooter + AlertDialogMedia + AlertDialogTitle + AlertDialogDescription + AlertDialogCancel + AlertDialogAction",
+      "description": "Use Alert Dialog for an important decision that must be acknowledged before work continues. Compose the trigger, content, header, title, description, footer, cancel, and action parts. Add media only when it helps explain the decision.",
+      "dependencies": [
+        "react"
+      ],
+      "registryDependencies": [
+        "https://meridian.efolusi.com/site/registry/meridian-base.json",
+        "https://meridian.efolusi.com/site/registry/button.json",
+        "https://meridian.efolusi.com/site/registry/portal.json"
+      ],
+      "files": [
+        {
+          "path": "components/feedback/AlertDialog.jsx",
+          "type": "registry:ui"
+        },
+        {
+          "path": "components/feedback/AlertDialog.d.ts",
+          "type": "registry:component"
+        },
+        {
+          "path": "components/feedback/AlertDialog.prompt.md",
+          "type": "registry:component"
+        }
+      ],
+      "categories": [
+        "feedback"
+      ]
+    },
+    {
       "name": "banner",
       "type": "registry:ui",
       "title": "Banner",

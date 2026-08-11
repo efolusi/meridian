@@ -19,7 +19,27 @@
       "registryItems": ["site/registry/alert.json"],
       "tests": ["tests/alert-compatibility.test.jsx"]
     },
-    { "name": "Alert Dialog", "status": "unverified" },
+    {
+      "name": "Alert Dialog",
+      "status": "proven",
+      "requiredExports": [
+        "AlertDialog",
+        "AlertDialogTrigger",
+        "AlertDialogPortal",
+        "AlertDialogOverlay",
+        "AlertDialogContent",
+        "AlertDialogHeader",
+        "AlertDialogFooter",
+        "AlertDialogTitle",
+        "AlertDialogDescription",
+        "AlertDialogAction",
+        "AlertDialogCancel",
+        "AlertDialogMedia"
+      ],
+      "sourceFiles": ["components/feedback/AlertDialog.jsx", "components/feedback/AlertDialog.d.ts"],
+      "registryItems": ["site/registry/alertdialog.json"],
+      "tests": ["tests/alert-dialog-compatibility.test.jsx"]
+    },
     {
       "name": "Aspect Ratio",
       "status": "proven",

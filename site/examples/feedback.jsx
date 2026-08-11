@@ -1,5 +1,26 @@
 // Meridian docs demos — feedback.
 
+// @demo AlertDialog Important decision
+export function AlertDialogDemo() {
+  const { AlertDialog, AlertDialogAction, AlertDialogCancel, AlertDialogContent, AlertDialogDescription, AlertDialogFooter, AlertDialogHeader, AlertDialogMedia, AlertDialogTitle, AlertDialogTrigger, Button, Icon } = window.EfolusiDesignSystem_4ffc3d;
+  return (
+    <AlertDialog>
+      <AlertDialogTrigger asChild><Button variant="outline">Archive project</Button></AlertDialogTrigger>
+      <AlertDialogContent>
+        <AlertDialogHeader>
+          <AlertDialogMedia><Icon name="archive" size={20} /></AlertDialogMedia>
+          <AlertDialogTitle>Archive Meridian Cloud?</AlertDialogTitle>
+          <AlertDialogDescription>Scheduled runs pause immediately. You can restore the project later from workspace settings.</AlertDialogDescription>
+        </AlertDialogHeader>
+        <AlertDialogFooter>
+          <AlertDialogCancel>Cancel</AlertDialogCancel>
+          <AlertDialogAction>Archive project</AlertDialogAction>
+        </AlertDialogFooter>
+      </AlertDialogContent>
+    </AlertDialog>
+  );
+}
+
 // @demo Alert Inline callout
 export function AlertDemo() {
   const { Alert, AlertTitle, AlertDescription, Icon } = window.EfolusiDesignSystem_4ffc3d;

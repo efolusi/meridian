@@ -89,7 +89,7 @@ function decimalsOk(html, name) {
 
 describe(`SSR sweep over ${cases.length} public exports`, () => {
   it('found the whole surface', () => {
-    // 115 exports ship; a broken glob silently sweeping nothing must fail.
+    // The public surface is broad; a broken glob silently sweeping nothing must fail.
     expect(cases.length).toBeGreaterThanOrEqual(100);
   });
   for (const [name, Comp, file] of cases) {
@@ -98,6 +98,8 @@ describe(`SSR sweep over ${cases.length} public exports`, () => {
       let element = component;
       if (name === 'CollapsibleTrigger' || name === 'CollapsibleContent') {
         element = React.createElement(modules[file].Collapsible, { defaultOpen: true }, component);
+      } else if (name.startsWith('AlertDialog') && name !== 'AlertDialog') {
+        element = React.createElement(modules[file].AlertDialog, { defaultOpen: true }, component);
       } else if (name === 'AccordionItem') {
         element = React.createElement(modules[file].Accordion, { type: 'single' }, React.cloneElement(component, { value: 'item' }));
       } else if (name === 'AccordionTrigger' || name === 'AccordionContent') {

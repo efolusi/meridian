@@ -141,6 +141,12 @@ similarity.
   bordered, and labeled-divider layouts; decorative icons; semantic custom
   roots; ref forwarding; types; registry installation; demos; and tests.
 
+- `AlertDialog` and its trigger, content, header, media, title, description,
+  footer, cancel, and action parts support controlled and uncontrolled state,
+  semantic child composition, portal rendering, default and small sizes, focus
+  trapping and restoration, deliberate dismissal, native props, refs, types,
+  registry installation, demos, and tests.
+
 ## Release gate
 
 Before claiming complete compatibility:
