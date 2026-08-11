@@ -1823,17 +1823,10 @@ Disclosure list composable dengan mode `single` atau `multiple`, state controlle
 </Accordion>
 ```
 
-Shorthand Meridian berbasis prop `items`, `multiple`, dan `defaultOpen` tetap tersedia untuk permukaan lama.
+Gunakan `type="multiple"` dan `defaultValue` untuk disclosure multi-select yang tidak dikontrol.
 
 ```ts
 import type * as React from 'react';
-
-export interface AccordionLegacyItem {
-  id: string;
-  title: React.ReactNode;
-  content: React.ReactNode;
-  disabled?: boolean;
-}
 
 interface AccordionBaseProps extends React.HTMLAttributes<HTMLDivElement> {
   disabled?: boolean;
@@ -1841,12 +1834,6 @@ interface AccordionBaseProps extends React.HTMLAttributes<HTMLDivElement> {
   dir?: 'ltr' | 'rtl';
   loop?: boolean;
   asChild?: boolean;
-  /** Meridian data-array shorthand. */
-  items?: AccordionLegacyItem[];
-  /** Meridian shorthand for type="multiple". */
-  multiple?: boolean;
-  /** Meridian shorthand for defaultValue. */
-  defaultOpen?: string[];
 }
 
 export interface AccordionSingleProps extends AccordionBaseProps {
@@ -2094,19 +2081,17 @@ Panel disclosure composable dengan state controlled maupun uncontrolled, dukunga
 </Collapsible>
 ```
 
-Untuk permukaan Meridian yang ringkas, shorthand lama tetap tersedia: `<Collapsible title="Advanced settings">…</Collapsible>`.
+Selalu susun trigger dan content secara eksplisit agar struktur interaksi tetap terlihat di source.
 
 ```ts
 import type * as React from 'react';
 
-export interface CollapsibleProps extends Omit<React.HTMLAttributes<HTMLDivElement>, 'title'> {
+export interface CollapsibleProps extends React.HTMLAttributes<HTMLDivElement> {
   open?: boolean;
   defaultOpen?: boolean;
   onOpenChange?: (open: boolean) => void;
   disabled?: boolean;
   asChild?: boolean;
-  /** Meridian shorthand. Use CollapsibleTrigger and CollapsibleContent for composable layouts. */
-  title?: React.ReactNode;
 }
 
 export interface CollapsibleTriggerProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
@@ -2634,7 +2619,7 @@ Group: feedback · Source: /components/feedback/ConfirmDialog.jsx · Exports: Co
 Destructive-action preset of Dialog; optional type-to-confirm gate.
 
 ```jsx
-<ConfirmDialog open={open} onClose={close} onConfirm={destroy}
+<ConfirmDialog open={open} onOpenChange={setOpen} onConfirm={destroy}
   title="Delete workspace" description="Removes all projects, keys, and member access. This can't be undone."
   confirmLabel="Delete workspace" typeToConfirm="acme-workspace" />
 ```
@@ -2642,7 +2627,7 @@ Destructive-action preset of Dialog; optional type-to-confirm gate.
 ```ts
 export interface ConfirmDialogProps {
   open: boolean;
-  onClose?: () => void;
+  onOpenChange?: (open: boolean) => void;
   /** Called on confirm (dialog closes itself after) */
   onConfirm?: () => void;
   title: React.ReactNode;
@@ -2667,9 +2652,12 @@ Group: feedback · Source: /components/feedback/Dialog.jsx · Exports: Dialog, D
 Compose `Dialog`, `DialogTrigger`, `DialogContent`, `DialogHeader`, `DialogTitle`, `DialogDescription`, `DialogFooter`, and `DialogClose` for a centered modal with focus containment, ESC/overlay/close dismissal, and focus restoration.
 
 ```jsx
-<Dialog open={open} onClose={close} title="Rename project" description="This updates the URL for everyone."
-  footer={<><Button variant="ghost" onClick={close}>Cancel</Button><Button onClick={save}>Save changes</Button></>}>
-  <Input label="Project name" defaultValue="Q3 launch plan" />
+<Dialog open={open} onOpenChange={setOpen}>
+  <DialogContent>
+    <DialogHeader><DialogTitle>Rename project</DialogTitle><DialogDescription>This updates the URL for everyone.</DialogDescription></DialogHeader>
+    <div className="ef-dialog__body"><Input label="Project name" defaultValue="Q3 launch plan" /></div>
+    <DialogFooter><DialogClose asChild><Button variant="ghost">Cancel</Button></DialogClose><Button onClick={save}>Save changes</Button></DialogFooter>
+  </DialogContent>
 </Dialog>
 ```
 
@@ -2677,8 +2665,7 @@ Compose `Dialog`, `DialogTrigger`, `DialogContent`, `DialogHeader`, `DialogTitle
 
 ```ts
 export interface DialogRootProps { open?: boolean; defaultOpen?: boolean; onOpenChange?: (open: boolean) => void; children?: React.ReactNode; }
-export interface DialogLegacyProps extends DialogRootProps { onClose?: () => void; closeLabel?: string; title?: React.ReactNode; description?: React.ReactNode; footer?: React.ReactNode; width?: number; }
-export declare const Dialog: React.ForwardRefExoticComponent<DialogLegacyProps & React.RefAttributes<HTMLDivElement>>;
+export declare function Dialog(props: DialogRootProps): React.JSX.Element;
 export interface DialogSlotProps extends React.HTMLAttributes<HTMLDivElement> { asChild?: boolean; slot?: string; }
 export declare const DialogTrigger: React.ForwardRefExoticComponent<React.ButtonHTMLAttributes<HTMLButtonElement> & { asChild?: boolean; slot?: string } & React.RefAttributes<HTMLButtonElement>>;
 export declare function DialogPortal(props: { children?: React.ReactNode; container?: HTMLElement }): React.JSX.Element | null;
@@ -4505,22 +4492,18 @@ Anchored floating panel for filters, pickers, help. Closes on outside click / ES
 </Popover>
 ```
 
-Controlled via `open`/`onOpenChange` when needed. The `trigger` and `width`
-shorthand remains available for existing products.
+Control state with `open`/`onOpenChange` when needed; set panel width on `PopoverContent`.
 
 ```ts
 export interface PopoverProps {
-  /** Legacy trigger shorthand. Prefer PopoverTrigger composition. */ trigger?: React.ReactNode;
   children?: React.ReactNode;
-  /** Legacy alignment aliases. */ align?: 'left' | 'center' | 'right'; width?: number;
   open?: boolean; defaultOpen?: boolean; onOpenChange?: (open: boolean) => void;
-  style?: React.CSSProperties; className?: string;
 }
 export interface PopoverTriggerProps extends React.ButtonHTMLAttributes<HTMLButtonElement> { asChild?: boolean; }
 export interface PopoverContentProps extends React.HTMLAttributes<HTMLDivElement> {
   align?: 'start' | 'center' | 'end'; side?: 'top' | 'bottom'; sideOffset?: number; width?: number | string;
 }
-export declare const Popover: React.ForwardRefExoticComponent<PopoverProps & React.RefAttributes<HTMLSpanElement>>;
+export declare function Popover(props: PopoverProps): React.JSX.Element;
 export declare const PopoverTrigger: React.ForwardRefExoticComponent<PopoverTriggerProps & React.RefAttributes<HTMLElement>>;
 export declare const PopoverContent: React.ForwardRefExoticComponent<PopoverContentProps & React.RefAttributes<HTMLDivElement>>;
 export declare const PopoverHeader: React.ForwardRefExoticComponent<React.HTMLAttributes<HTMLDivElement> & React.RefAttributes<HTMLDivElement>>;

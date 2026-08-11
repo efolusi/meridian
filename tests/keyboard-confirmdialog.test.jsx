@@ -17,7 +17,7 @@ describe('ConfirmDialog', () => {
         <Button onClick={() => setOpen(true)}>Open</Button>
         <ConfirmDialog
           open={open}
-          onClose={() => setOpen(false)}
+          onOpenChange={setOpen}
           onConfirm={onConfirm}
           title="Delete project"
           typeToConfirm={typeToConfirm}
@@ -73,7 +73,7 @@ describe('ConfirmDialog', () => {
     confirm.focus();
     await user.keyboard('{Enter}');
     expect(onConfirm).toHaveBeenCalledTimes(1);
-    expect(screen.queryByRole('dialog')).toBeNull(); // onClose fired too
+    expect(screen.queryByRole('dialog')).toBeNull();
     expect(document.activeElement).toBe(trigger);
   });
 });

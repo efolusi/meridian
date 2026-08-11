@@ -1,4 +1,4 @@
-const { Card, Badge, Button, Input, NativeSelect, NativeSelectOption, Checkbox, Avatar, Icon, IconButton, Tag, DropdownMenu, DropdownMenuTrigger, DropdownMenuContent, DropdownMenuItem, DropdownMenuSeparator, Pagination, Drawer, DrawerContent, DrawerHeader, DrawerTitle, DrawerDescription, DrawerFooter, DrawerClose, KeyValueList, Dialog, Sparkline, Field, FieldLabel } = window.EfolusiDesignSystem_4ffc3d;
+const { Card, Badge, Button, Input, NativeSelect, NativeSelectOption, Checkbox, Avatar, Icon, IconButton, Tag, DropdownMenu, DropdownMenuTrigger, DropdownMenuContent, DropdownMenuItem, DropdownMenuSeparator, Pagination, Drawer, DrawerContent, DrawerHeader, DrawerTitle, DrawerDescription, DrawerFooter, DrawerClose, KeyValueList, Dialog, DialogClose, DialogContent, DialogDescription, DialogFooter, DialogHeader, DialogTitle, Sparkline, Field, FieldLabel } = window.EfolusiDesignSystem_4ffc3d;
 
 function CustomerActionMenu({ trigger, items, onSelect, align = 'start' }) { return <DropdownMenu><DropdownMenuTrigger asChild>{trigger}</DropdownMenuTrigger><DropdownMenuContent align={align}>{items.map((item, index) => item === 'separator' ? <DropdownMenuSeparator key={'separator-' + index} /> : <DropdownMenuItem key={item.id} disabled={item.disabled} variant={item.danger ? 'destructive' : 'default'} onSelect={() => { onSelect?.(item.id); item.onClick?.(); }}>{item.icon ? <Icon name={item.icon} size={15} /> : null}{item.label}</DropdownMenuItem>)}</DropdownMenuContent></DropdownMenu>; }
 
@@ -109,14 +109,11 @@ function CustomersScreen({ notify }) {
         )}
         {sel && <DrawerFooter><DrawerClose asChild><Button variant="ghost">Close</Button></DrawerClose><Button variant="secondary" iconLeft="mail" onClick={() => { notify('Email drafted', 'To ' + sel.email); setSel(null); }}>Email</Button></DrawerFooter>}
       </DrawerContent></Drawer>
-      <Dialog open={adding} onClose={() => setAdding(false)} title="Add customer" description="They'll start on a 14-day trial."
-        footer={<React.Fragment><Button variant="ghost" onClick={() => setAdding(false)}>Cancel</Button><Button onClick={addCustomer}>Add customer</Button></React.Fragment>}>
-        <div style={{ display: 'flex', flexDirection: 'column', gap: 14 }}>
+      <Dialog open={adding} onOpenChange={setAdding}><DialogContent><DialogHeader><DialogTitle>Add customer</DialogTitle><DialogDescription>They'll start on a 14-day trial.</DialogDescription></DialogHeader><div className="ef-dialog__body"><div style={{ display: 'flex', flexDirection: 'column', gap: 14 }}>
           <Input label="Company" placeholder="Acme Robotics" autoFocus value={form.name} onChange={e => setForm({ ...form, name: e.target.value })} />
           <Input label="Billing email" type="email" placeholder="ops@acme.co" iconLeft="mail" value={form.email} onChange={e => setForm({ ...form, email: e.target.value })} />
           <Field><FieldLabel htmlFor="customer-plan">Plan</FieldLabel><NativeSelect id="customer-plan" value={form.plan} onChange={e => setForm({ ...form, plan: e.target.value })}>{['Starter', 'Growth', 'Scale'].map(value => <NativeSelectOption key={value} value={value}>{value}</NativeSelectOption>)}</NativeSelect></Field>
-        </div>
-      </Dialog>
+        </div></div><DialogFooter><DialogClose asChild><Button variant="ghost">Cancel</Button></DialogClose><Button onClick={addCustomer}>Add customer</Button></DialogFooter></DialogContent></Dialog>
     </div>
   );
 }

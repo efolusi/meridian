@@ -74,6 +74,7 @@ const GATES = [
   ['No dead interactive controls', 'python3', ['scripts/check_dead_controls.py']],
   ['No new raw colour literals', 'python3', ['scripts/check_token_adherence.py']],
   ['Logical CSS direction safety', 'python3', ['scripts/check_logical_css.py']],
+  ['Hover does not add underlines', 'node', ['scripts/check_hover_decoration.mjs']],
   ['Template prop and attribute contracts', 'python3', ['scripts/check_template_props.py']],
   ['Bundle source hashes', 'python3', ['scripts/check_bundle_hashes.py']],
   ['Bundle reproducible from source', 'node', ['scripts/build_bundle.mjs', '--check']],

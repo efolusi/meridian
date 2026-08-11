@@ -2,7 +2,7 @@ import { describe, it, expect } from 'vitest';
 import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 
-import { Popover } from '../components/overlay/Popover.jsx';
+import { Popover, PopoverContent, PopoverTrigger } from '../components/overlay/Popover.jsx';
 import { Button } from '../components/forms/Button.jsx';
 
 // guidelines/accessibility.md: "Menu, Popover: triggers are keyboard-operable
@@ -12,10 +12,7 @@ import { Button } from '../components/forms/Button.jsx';
 describe('Popover', () => {
   function Harness() {
     return (
-      <Popover trigger={<Button>Filters</Button>}>
-        <p>Panel body</p>
-        <Button>Apply</Button>
-      </Popover>
+      <Popover><PopoverTrigger asChild><Button>Filters</Button></PopoverTrigger><PopoverContent><p>Panel body</p><Button>Apply</Button></PopoverContent></Popover>
     );
   }
 

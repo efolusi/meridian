@@ -1,4 +1,4 @@
-const { Banner, Stat, Sparkline, SegmentedControl, Table, StatusDot, Drawer, DrawerContent, DrawerHeader, DrawerTitle, DrawerDescription, DrawerFooter, DrawerClose, KeyValueList, CopyField, Terminal, Dialog, Card, Button, NativeSelect, NativeSelectOption, Field, FieldLabel, Input, Badge, Icon, Toaster, toast } = window.EfolusiDesignSystem_4ffc3d;
+const { Banner, Stat, Sparkline, SegmentedControl, Table, StatusDot, Drawer, DrawerContent, DrawerHeader, DrawerTitle, DrawerDescription, DrawerFooter, DrawerClose, KeyValueList, CopyField, Terminal, Dialog, DialogClose, DialogContent, DialogDescription, DialogFooter, DialogHeader, DialogTitle, Card, Button, NativeSelect, NativeSelectOption, Field, FieldLabel, Input, Badge, Icon, Toaster, toast } = window.EfolusiDesignSystem_4ffc3d;
 
 const RESOURCES = [
   { id: 'pg', name: 'pg-prod-eu', kind: 'PostgreSQL', icon: 'database', region: 'eu-west-1', status: 'ok', latency: '38 ms' },
@@ -90,14 +90,11 @@ function InfraScreen() {
         )}
         {sel && <DrawerFooter><DrawerClose asChild><Button variant="ghost">Close</Button></DrawerClose><Button variant="danger" iconLeft="plug" onClick={() => { notify(sel.name + ' disconnected', 'The tunnel closed cleanly.'); setSel(null); }}>Disconnect</Button></DrawerFooter>}
       </DrawerContent></Drawer>
-      <Dialog open={connect} onClose={() => setConnect(false)} title="Connect a resource" description="Efolusi talks to it through an encrypted tunnel — nothing is stored."
-        footer={<React.Fragment><Button variant="ghost" onClick={() => setConnect(false)}>Cancel</Button><Button iconRight="arrow-right" onClick={() => { setConnect(false); setTab('resources'); setExtra(x => [...x, { id: 'new' + x.length, name: 'db-replica-' + (x.length + 1), kind: 'PostgreSQL', icon: 'database', region: 'eu-west-1', status: 'ok', latency: '41 ms' }]); notify('Tunnel created', 'db-replica is connected and healthy.'); }}>Create tunnel</Button></React.Fragment>}>
-        <div style={{ display: 'flex', flexDirection: 'column', gap: 14 }}>
+      <Dialog open={connect} onOpenChange={setConnect}><DialogContent><DialogHeader><DialogTitle>Connect a resource</DialogTitle><DialogDescription>Efolusi talks to it through an encrypted tunnel — nothing is stored.</DialogDescription></DialogHeader><div className="ef-dialog__body"><div style={{ display: 'flex', flexDirection: 'column', gap: 14 }}>
           <Field><FieldLabel htmlFor="connection-kind">Kind</FieldLabel><NativeSelect id="connection-kind">{['PostgreSQL', 'MySQL', 'Redis', 'SSH host', 'Kubernetes', 'AWS account', 'Domain / DNS'].map(value => <NativeSelectOption key={value} value={value}>{value}</NativeSelectOption>)}</NativeSelect></Field>
           <Input label="Host" placeholder="db.internal.acme.co:5432" iconLeft="server" />
           <Field><FieldLabel htmlFor="connection-region">Region</FieldLabel><NativeSelect id="connection-region">{['eu-west-1', 'us-east-1', 'fra1', 'sgp1'].map(value => <NativeSelectOption key={value} value={value}>{value}</NativeSelectOption>)}</NativeSelect></Field>
-        </div>
-      </Dialog>
+        </div></div><DialogFooter><DialogClose asChild><Button variant="ghost">Cancel</Button></DialogClose><Button iconRight="arrow-right" onClick={() => { setConnect(false); setTab('resources'); setExtra(x => [...x, { id: 'new' + x.length, name: 'db-replica-' + (x.length + 1), kind: 'PostgreSQL', icon: 'database', region: 'eu-west-1', status: 'ok', latency: '41 ms' }]); notify('Tunnel created', 'db-replica is connected and healthy.'); }}>Create tunnel</Button></DialogFooter></DialogContent></Dialog>
       <Drawer open={cli} onOpenChange={setCli} direction="right"><DrawerContent style={{ width: 480 }}><DrawerHeader><DrawerTitle>Efolusi CLI</DrawerTitle><DrawerDescription>Install commands and live infrastructure output.</DrawerDescription></DrawerHeader>
         <div style={{ display: 'flex', flexDirection: 'column', gap: 14, padding: 20 }}>
           <CopyField label="Install" value="curl -fsSL cli.efolusi.com | sh" />

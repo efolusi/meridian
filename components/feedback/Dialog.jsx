@@ -18,22 +18,16 @@ const FOCUSABLE = 'button,[href],input,select,textarea,[tabindex]:not([tabindex=
 function cx(base, className) { return base + (className ? ` ${className}` : ''); }
 function compose(first, second) { return e => { if (first) first(e); if (!e.defaultPrevented && second) second(e); }; }
 
-export const Dialog = React.forwardRef(function Dialog({ open: controlled, defaultOpen = false, onOpenChange, children, ...legacy }, ref) {
+export function Dialog({ open: controlled, defaultOpen = false, onOpenChange, children }) {
   injectEfCss('ef-css-dialog', CSS);
-  const { title, description, footer, onClose, closeLabel, width, className, style, ...legacyRest } = legacy;
-  const isLegacy = title !== undefined || description !== undefined || footer !== undefined || onClose !== undefined;
   const [internal, setInternal] = React.useState(defaultOpen);
   const titleId = React.useId();
   const descriptionId = React.useId();
   const open = controlled === undefined ? internal : controlled;
-  const setOpen = React.useCallback(next => { if (controlled === undefined) setInternal(next); if (onOpenChange) onOpenChange(next); if (!next && onClose) onClose(); }, [controlled, onOpenChange, onClose]);
+  const setOpen = React.useCallback(next => { if (controlled === undefined) setInternal(next); onOpenChange?.(next); }, [controlled, onOpenChange]);
   const value = React.useMemo(() => ({ open, setOpen, titleId, descriptionId }), [open, setOpen, titleId, descriptionId]);
-  if (isLegacy) return <DialogContext.Provider value={value}>{open ? <DialogContent width={width} showCloseButton={!!onClose} closeLabel={closeLabel} overlayRef={ref} overlayProps={{ ...legacyRest, className, style }}>
-    <DialogHeader><DialogTitle>{title}</DialogTitle>{description ? <DialogDescription>{description}</DialogDescription> : null}</DialogHeader>
-    <div className="ef-dialog__body">{children}</div>{footer ? <DialogFooter>{footer}</DialogFooter> : null}
-  </DialogContent> : null}</DialogContext.Provider>;
   return <DialogContext.Provider value={value}>{children}</DialogContext.Provider>;
-});
+}
 
 export const DialogTrigger = React.forwardRef(function DialogTrigger({ asChild = false, children, onClick, slot = 'dialog-trigger', ...rest }, ref) {
   const ctx = React.useContext(DialogContext);

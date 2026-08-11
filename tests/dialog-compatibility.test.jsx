@@ -13,7 +13,4 @@ describe('Dialog compatibility contract', () => {
   it('closes on escape and restores trigger focus', () => {
     render(<Fixture />); const trigger=screen.getByRole('button',{name:'Open dialog'}); trigger.focus(); fireEvent.click(trigger); fireEvent.keyDown(screen.getByRole('dialog'),{key:'Escape'}); expect(screen.queryByRole('dialog')).toBeNull(); expect(document.activeElement).toBe(trigger);
   });
-  it('retains the shorthand adapter', () => {
-    const close=vi.fn(); render(<Dialog open onClose={close} title="Legacy title" description="Legacy description" footer="Actions">Body</Dialog>); expect(screen.getByRole('dialog',{name:'Legacy title'})).toBeTruthy(); expect(screen.getByText('Body')).toBeTruthy(); fireEvent.click(screen.getByRole('button',{name:'Close'})); expect(close).toHaveBeenCalledOnce();
-  });
 });

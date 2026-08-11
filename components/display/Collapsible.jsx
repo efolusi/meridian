@@ -1,14 +1,10 @@
 import React from 'react';
 import { injectEfCss, mergeRefs } from '../forms/Button.jsx';
-import { Icon } from '../icons/Icon.jsx';
 
 const CSS = `
 .ef-collapsible__trigger{display:flex;align-items:center;gap:8px;width:100%;padding:7px 0;border:none;background:none;cursor:pointer;text-align:start;font-family:var(--font-sans);font-size:var(--text-md);font-weight:600;color:var(--text-primary);border-radius:var(--radius-sm)}
 .ef-collapsible__trigger:focus-visible{outline:none;box-shadow:var(--focus-ring)}
 .ef-collapsible__trigger:disabled{opacity:.45;cursor:not-allowed}
-.ef-collapsible__chev{display:inline-flex;color:var(--text-muted);transition:transform var(--dur-med) var(--ease-out)}
-.ef-collapsible[data-state="open"] .ef-collapsible__chev{transform:rotate(90deg)}
-.ef-collapsible__legacy-content{padding:2px 0 10px 24px}
 .ef-collapsible__content[data-state="open"]{opacity:1}
 `;
 
@@ -33,7 +29,6 @@ export const Collapsible = React.forwardRef(function Collapsible({
   onOpenChange,
   disabled = false,
   asChild = false,
-  title,
   children,
   style,
   className,
@@ -52,16 +47,6 @@ export const Collapsible = React.forwardRef(function Collapsible({
   }, [disabled, isControlled, isOpen, onOpenChange]);
   const state = isOpen ? 'open' : 'closed';
   const context = React.useMemo(() => ({ contentId, disabled, open: isOpen, setOpen }), [contentId, disabled, isOpen, setOpen]);
-  const content = title !== undefined ? (
-    <>
-      <CollapsibleTrigger className="ef-collapsible__trigger">
-        <span className="ef-collapsible__chev"><Icon name="chevron-right" size={16} /></span>
-        {title}
-      </CollapsibleTrigger>
-      <CollapsibleContent className="ef-collapsible__legacy-content">{children}</CollapsibleContent>
-    </>
-  ) : children;
-
   const rootProps = {
     ...rest,
     ref,
@@ -72,7 +57,7 @@ export const Collapsible = React.forwardRef(function Collapsible({
     style,
   };
   const root = asChild ? (() => {
-    const child = React.Children.only(content);
+    const child = React.Children.only(children);
     return React.cloneElement(child, {
       ...rootProps,
       ...child.props,
@@ -83,7 +68,7 @@ export const Collapsible = React.forwardRef(function Collapsible({
       className: `${rootProps.className}${child.props.className ? ' ' + child.props.className : ''}`,
       style: { ...style, ...child.props.style },
     });
-  })() : <div {...rootProps}>{content}</div>;
+  })() : <div {...rootProps}>{children}</div>;
 
   return <CollapsibleStateContext.Provider value={context}>{root}</CollapsibleStateContext.Provider>;
 });

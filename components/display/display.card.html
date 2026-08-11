@@ -7,7 +7,7 @@
 </head><body style="background:var(--surface-page)">
 <div id="root"></div>
 <script type="text/babel">
-const { Card, Badge, Tag, Avatar, AvatarGroup, Button, Kbd, Divider, Accordion, Link, Toolbar, Item, ItemActions, ItemContent, ItemDescription, ItemGroup, ItemMedia, ItemSeparator, ItemTitle, Icon, TreeList, Switch, Collapsible, AspectRatio, ScrollArea, Carousel, CarouselContent, CarouselItem, CarouselPrevious, CarouselNext, ResizablePanelGroup, ResizablePanel, ResizableHandle } = window.EfolusiDesignSystem_4ffc3d;
+const { Card, Badge, Tag, Avatar, AvatarGroup, Button, Kbd, Divider, Accordion, AccordionItem, AccordionTrigger, AccordionContent, Link, Toolbar, Item, ItemActions, ItemContent, ItemDescription, ItemGroup, ItemMedia, ItemSeparator, ItemTitle, Icon, TreeList, Switch, Collapsible, CollapsibleTrigger, CollapsibleContent, AspectRatio, ScrollArea, Carousel, CarouselContent, CarouselItem, CarouselPrevious, CarouselNext, ResizablePanelGroup, ResizablePanel, ResizableHandle } = window.EfolusiDesignSystem_4ffc3d;
 const lbl = { fontSize: 11, fontWeight: 600, letterSpacing: '0.06em', textTransform: 'uppercase', color: 'var(--text-muted)', marginBottom: 8 };
 function Demo() {
   const [tags, setTags] = React.useState(['Billing', 'API']);
@@ -73,19 +73,20 @@ function Demo() {
       <div style={{ gridColumn: 'span 2', display: 'flex', flexDirection: 'column', gap: 14 }}>
         <div style={{ display: 'flex', alignItems: 'center', gap: 8, fontSize: 13, color: 'var(--text-secondary)' }}>Quick search anywhere <Kbd>⌘</Kbd><Kbd>K</Kbd></div>
         <Divider label="or" />
-        <Accordion defaultOpen={['billing']} items={[
-          { id: 'billing', title: 'How does billing work?', content: 'Per seat, monthly. Usage is metered daily and invoiced on the 1st.' },
-          { id: 'cancel', title: 'Can I cancel anytime?', content: 'Yes — your workspace stays readable forever.' },
-        ]} />
+        <Accordion type="single" defaultValue="billing" collapsible>
+          <AccordionItem value="billing"><AccordionTrigger>How does billing work?</AccordionTrigger><AccordionContent>Per seat, monthly. Usage is metered daily and invoiced on the 1st.</AccordionContent></AccordionItem>
+          <AccordionItem value="cancel"><AccordionTrigger>Can I cancel anytime?</AccordionTrigger><AccordionContent>Yes — your workspace stays readable forever.</AccordionContent></AccordionItem>
+        </Accordion>
       </div>
       <div>
         <div style={lbl}>Collapsible</div>
         <Card padding={14}>
-          <Collapsible title="Advanced settings" defaultOpen>
-            <div style={{ display: 'flex', flexDirection: 'column', gap: 8 }}>
+          <Collapsible defaultOpen>
+            <CollapsibleTrigger className="ef-collapsible__trigger"><Icon name="chevron-right" size={16} />Advanced settings</CollapsibleTrigger>
+            <CollapsibleContent style={{ padding: '2px 0 10px 24px' }}><div style={{ display: 'flex', flexDirection: 'column', gap: 8 }}>
               <Switch size="sm" defaultChecked label="Verbose logs" />
               <Switch size="sm" label="Beta features" />
-            </div>
+            </div></CollapsibleContent>
           </Collapsible>
         </Card>
         <div style={{ ...lbl, marginTop: 14 }}>ScrollArea</div>

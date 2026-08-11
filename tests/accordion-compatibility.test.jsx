@@ -132,9 +132,9 @@ describe('Accordion compatibility contract', () => {
     expect(screen.getByText('First').parentElement.tagName).toBe('ARTICLE');
   });
 
-  it('supports disabled roots, forceMount, and the Meridian item shorthand', () => {
+  it('supports disabled roots and force-mounted content', () => {
     const onValueChange = vi.fn();
-    const { rerender } = render(
+    render(
       <Accordion type="single" disabled onValueChange={onValueChange}>
         <AccordionItem value="one"><AccordionTrigger>One</AccordionTrigger><AccordionContent forceMount>First</AccordionContent></AccordionItem>
       </Accordion>,
@@ -144,9 +144,5 @@ describe('Accordion compatibility contract', () => {
     expect(screen.getByText('First').closest('[data-slot="accordion-content"]').hidden).toBe(true);
     fireEvent.click(trigger);
     expect(onValueChange).not.toHaveBeenCalled();
-
-    rerender(<Accordion key="legacy" defaultOpen={['one']} items={[{ id: 'one', title: 'Legacy title', content: 'Legacy content' }]} />);
-    expect(screen.getByRole('button', { name: 'Legacy title' }).getAttribute('aria-expanded')).toBe('true');
-    expect(screen.getByText('Legacy content')).not.toBeNull();
   });
 });

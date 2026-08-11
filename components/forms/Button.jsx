@@ -30,7 +30,7 @@ const CSS = `
 .ef-btn--destructive{background:var(--danger-600);color:var(--danger-contrast)}
 .ef-btn--destructive:hover:not(:disabled){background:var(--danger-700)}
 .ef-btn--link{height:auto;padding:0;background:transparent;color:var(--text-link);text-underline-offset:4px}
-.ef-btn--link:hover:not(:disabled){text-decoration:underline}
+.ef-btn--link:hover:not(:disabled){color:var(--text-link-hover);text-decoration:none}
 @keyframes ef-spin{to{transform:rotate(360deg)}}
 .ef-btn__spin{display:inline-flex;animation:ef-spin .7s linear infinite}
 `;

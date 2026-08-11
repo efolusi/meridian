@@ -49,6 +49,9 @@ jobs:
       - name: Logical CSS direction safety
         run: python3 scripts/check_logical_css.py
 
+      - name: Hover does not add underlines
+        run: node scripts/check_hover_decoration.mjs
+
       - name: Template prop and attribute contracts
         run: python3 scripts/check_template_props.py
 

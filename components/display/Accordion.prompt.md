@@ -11,4 +11,4 @@ Disclosure list composable dengan mode `single` atau `multiple`, state controlle
 </Accordion>
 ```
 
-Shorthand Meridian berbasis prop `items`, `multiple`, dan `defaultOpen` tetap tersedia untuk permukaan lama.
+Gunakan `type="multiple"` dan `defaultValue` untuk disclosure multi-select yang tidak dikontrol.

@@ -2,7 +2,7 @@ import { describe, it, expect } from 'vitest';
 import { render, screen, within } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 
-import { Dialog } from '../components/feedback/Dialog.jsx';
+import { Dialog, DialogContent, DialogTitle } from '../components/feedback/Dialog.jsx';
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from '../components/overlay/DropdownMenu.jsx';
 import { Tabs } from '../components/navigation/Tabs.jsx';
 import { Calendar } from '../components/dates/Calendar.jsx';
@@ -19,9 +19,7 @@ describe('Dialog', () => {
       return (
         <>
           <Button onClick={() => setOpen(true)}>Open</Button>
-          <Dialog open={open} onClose={() => setOpen(false)} title="Confirm">
-            <Button>Inner</Button>
-          </Dialog>
+          <Dialog open={open} onOpenChange={setOpen}><DialogContent><DialogTitle>Confirm</DialogTitle><Button>Inner</Button></DialogContent></Dialog>
         </>
       );
     }

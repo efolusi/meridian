@@ -16,7 +16,7 @@ function compose(theirs, ours) {
   return event => { theirs?.(event); if (!event.defaultPrevented) ours?.(event); };
 }
 
-export const Popover = React.forwardRef(function Popover({ trigger, children, align = 'left', width = 280, open: controlled, defaultOpen = false, onOpenChange, style, className, ...rest }, forwardedRef) {
+export function Popover({ children, open: controlled, defaultOpen = false, onOpenChange }) {
   injectEfCss('ef-css-popover', CSS);
   const [inner, setInner] = React.useState(defaultOpen);
   const open = controlled !== undefined ? controlled : inner;
@@ -49,19 +49,8 @@ export const Popover = React.forwardRef(function Popover({ trigger, children, al
     };
   }, [open, setOpen]);
 
-  if (trigger !== undefined) {
-    const legacyAlign = align === 'right' ? 'end' : align === 'center' ? 'center' : 'start';
-    return (
-      <PopoverCtx.Provider value={value}>
-        <span {...rest} ref={forwardedRef} className={`ef-popover${className ? ' ' + className : ''}`} style={style}>
-          <PopoverTrigger asChild={React.isValidElement(trigger)}>{trigger}</PopoverTrigger>
-          <PopoverContent align={legacyAlign} style={{ width }}>{children}</PopoverContent>
-        </span>
-      </PopoverCtx.Provider>
-    );
-  }
   return <PopoverCtx.Provider value={value}>{children}</PopoverCtx.Provider>;
-});
+}
 
 export const PopoverTrigger = React.forwardRef(function PopoverTrigger({ asChild = false, children, ...rest }, forwardedRef) {
   const ctx = React.useContext(PopoverCtx);

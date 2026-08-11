@@ -1,24 +1,11 @@
 import type * as React from 'react';
 
-export interface AccordionLegacyItem {
-  id: string;
-  title: React.ReactNode;
-  content: React.ReactNode;
-  disabled?: boolean;
-}
-
 interface AccordionBaseProps extends React.HTMLAttributes<HTMLDivElement> {
   disabled?: boolean;
   orientation?: 'horizontal' | 'vertical';
   dir?: 'ltr' | 'rtl';
   loop?: boolean;
   asChild?: boolean;
-  /** Meridian data-array shorthand. */
-  items?: AccordionLegacyItem[];
-  /** Meridian shorthand for type="multiple". */
-  multiple?: boolean;
-  /** Meridian shorthand for defaultValue. */
-  defaultOpen?: string[];
 }
 
 export interface AccordionSingleProps extends AccordionBaseProps {

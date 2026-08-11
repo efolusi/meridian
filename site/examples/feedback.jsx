@@ -68,7 +68,7 @@ export function ConfirmDialogDemo() {
   return (
     <div>
       <Button variant="danger" onClick={() => setOpen(true)}>Delete workspace</Button>
-      <ConfirmDialog open={open} onClose={() => setOpen(false)} onConfirm={() => setOpen(false)}
+      <ConfirmDialog open={open} onOpenChange={setOpen} onConfirm={() => setOpen(false)}
         title="Delete this workspace?" description="All agents, runs, and artifacts are removed. This cannot be undone."
         typeToConfirm="acme-prod" confirmLabel="Delete workspace" />
     </div>

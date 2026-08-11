@@ -1,4 +1,4 @@
-const { Icon, IconButton, Input, Avatar, Tooltip, Badge, DropdownMenu, DropdownMenuTrigger, DropdownMenuContent, DropdownMenuItem, DropdownMenuSeparator, DropdownMenuShortcut, Popover, Kbd, Divider } = window.EfolusiDesignSystem_4ffc3d;
+const { Icon, IconButton, Input, Avatar, Tooltip, Badge, DropdownMenu, DropdownMenuTrigger, DropdownMenuContent, DropdownMenuItem, DropdownMenuSeparator, DropdownMenuShortcut, Popover, PopoverTrigger, PopoverContent, Kbd, Divider } = window.EfolusiDesignSystem_4ffc3d;
 
 function ShellActionMenu({ trigger, items, onSelect }) { return <DropdownMenu><DropdownMenuTrigger asChild>{trigger}</DropdownMenuTrigger><DropdownMenuContent align="end">{items.map((item, index) => item === 'separator' ? <DropdownMenuSeparator key={'separator-' + index} /> : <DropdownMenuItem key={item.id} disabled={item.disabled} variant={item.danger ? 'destructive' : 'default'} onSelect={() => { onSelect?.(item.id); item.onClick?.(); }}>{item.icon ? <Icon name={item.icon} size={15} /> : null}{item.label}{item.kbd ? <DropdownMenuShortcut>{item.kbd}</DropdownMenuShortcut> : null}</DropdownMenuItem>)}</DropdownMenuContent></DropdownMenu>; }
 
@@ -83,13 +83,13 @@ function Topbar({ title, onSearch, notify }) {
         <Icon name="search" size={15} />Search anything…
         <span style={{ marginLeft: 'auto', display: 'inline-flex', gap: 3 }}><Kbd>⌘</Kbd><Kbd>K</Kbd></span>
       </button>
-      <Popover align="right" width={320} trigger={<IconButton icon="sparkles" label="What's new" />}>
+      <Popover><PopoverTrigger asChild><IconButton icon="sparkles" label="What's new" /></PopoverTrigger><PopoverContent align="end" width={320}>
         <div style={{ fontSize: 13, fontWeight: 600, marginBottom: 8 }}>What's new</div>
         <div style={{ fontSize: 13, color: 'var(--text-secondary)', lineHeight: 1.55 }}>Trading now mirrors other traders with a risk cap, and AI agents can use your infrastructure connections directly.</div>
         <Divider />
         <a href="../docs/index.html" style={{ fontSize: 13, fontWeight: 600 }}>Read the changelog →</a>
-      </Popover>
-      <Popover align="right" width={340} trigger={<IconButton icon="bell" label="Notifications" />}>
+      </PopoverContent></Popover>
+      <Popover><PopoverTrigger asChild><IconButton icon="bell" label="Notifications" /></PopoverTrigger><PopoverContent align="end" width={340}>
         <div style={{ fontSize: 13, fontWeight: 600, marginBottom: 4 }}>Notifications</div>
         {NOTIFS.map(([icon, t, d, when]) => (
           <div key={t} style={{ display: 'flex', gap: 10, padding: '9px 0', borderBottom: '1px solid var(--sand-100)' }}>
@@ -102,7 +102,7 @@ function Topbar({ title, onSearch, notify }) {
           </div>
         ))}
         <button onClick={() => notify('All caught up', 'Notifications cleared.')} style={{ marginTop: 8, background: 'none', border: 'none', padding: 0, fontFamily: 'var(--font-sans)', fontSize: 13, fontWeight: 600, color: 'var(--text-link)', cursor: 'pointer' }}>Mark all as read</button>
-      </Popover>
+      </PopoverContent></Popover>
       <ShellActionMenu trigger={<button style={{ border: 'none', background: 'none', padding: 0, cursor: 'pointer', display: 'inline-flex' }}><Avatar name="Ada Obi" size={30} /></button>} items={[
         { id: 'profile', label: 'Profile', icon: 'user' },
         { id: 'settings', label: 'Workspace settings', icon: 'settings' },

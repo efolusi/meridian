@@ -1,13 +1,11 @@
 import type * as React from 'react';
 
-export interface CollapsibleProps extends Omit<React.HTMLAttributes<HTMLDivElement>, 'title'> {
+export interface CollapsibleProps extends React.HTMLAttributes<HTMLDivElement> {
   open?: boolean;
   defaultOpen?: boolean;
   onOpenChange?: (open: boolean) => void;
   disabled?: boolean;
   asChild?: boolean;
-  /** Meridian shorthand. Use CollapsibleTrigger and CollapsibleContent for composable layouts. */
-  title?: React.ReactNode;
 }
 
 export interface CollapsibleTriggerProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {

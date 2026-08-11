@@ -91,9 +91,9 @@ describe('Collapsible compatibility contract', () => {
     expect(screen.getByText('Article content').getAttribute('data-state')).toBe('open');
   });
 
-  it('supports disabled roots, force-mounted content, and the Meridian shorthand', () => {
+  it('supports disabled roots and force-mounted content', () => {
     const onOpenChange = vi.fn();
-    const { rerender } = render(
+    render(
       <Collapsible disabled onOpenChange={onOpenChange}>
         <CollapsibleTrigger>Details</CollapsibleTrigger>
         <CollapsibleContent forceMount>Content</CollapsibleContent>
@@ -106,9 +106,5 @@ describe('Collapsible compatibility contract', () => {
     expect(content.hidden).toBe(true);
     fireEvent.click(trigger);
     expect(onOpenChange).not.toHaveBeenCalled();
-
-    rerender(<Collapsible key="legacy" title="Advanced settings" defaultOpen>Legacy content</Collapsible>);
-    expect(screen.getByRole('button', { name: 'Advanced settings' }).getAttribute('aria-expanded')).toBe('true');
-    expect(screen.getByText('Legacy content').hidden).toBe(false);
   });
 });

@@ -7,7 +7,7 @@
 </head><body style="background:var(--surface-page)">
 <div id="root"></div>
 <script type="text/babel">
-const { DropdownMenu, DropdownMenuTrigger, DropdownMenuContent, DropdownMenuItem, DropdownMenuSeparator, DropdownMenuShortcut, Popover, Drawer, DrawerContent, DrawerHeader, DrawerTitle, DrawerDescription, DrawerFooter, DrawerClose, CommandDialog, CommandInput, CommandList, CommandEmpty, CommandGroup, CommandItem, CommandShortcut, ContextMenu, ContextMenuTrigger, ContextMenuContent, ContextMenuItem, ContextMenuCheckboxItem, ContextMenuSeparator, ContextMenuShortcut, ContextMenuSub, ContextMenuSubTrigger, ContextMenuSubContent, HoverCard, HoverCardTrigger, HoverCardContent, Button, IconButton, Input, Select, Checkbox, Divider, Kbd, Avatar, Icon } = window.EfolusiDesignSystem_4ffc3d;
+const { DropdownMenu, DropdownMenuTrigger, DropdownMenuContent, DropdownMenuItem, DropdownMenuSeparator, DropdownMenuShortcut, Popover, PopoverTrigger, PopoverContent, Drawer, DrawerContent, DrawerHeader, DrawerTitle, DrawerDescription, DrawerFooter, DrawerClose, CommandDialog, CommandInput, CommandList, CommandEmpty, CommandGroup, CommandItem, CommandShortcut, ContextMenu, ContextMenuTrigger, ContextMenuContent, ContextMenuItem, ContextMenuCheckboxItem, ContextMenuSeparator, ContextMenuShortcut, ContextMenuSub, ContextMenuSubTrigger, ContextMenuSubContent, HoverCard, HoverCardTrigger, HoverCardContent, Button, IconButton, Input, Select, Checkbox, Divider, Kbd, Avatar, Icon } = window.EfolusiDesignSystem_4ffc3d;
 function Demo() {
   const [drawer, setDrawer] = React.useState(true);
   const [cmdk, setCmdk] = React.useState(false);
@@ -16,14 +16,14 @@ function Demo() {
       <DropdownMenu><DropdownMenuTrigger asChild><Button variant="secondary" iconRight="chevron-down">Actions</Button></DropdownMenuTrigger><DropdownMenuContent align="start">
         <DropdownMenuItem>Edit</DropdownMenuItem><DropdownMenuItem>Duplicate<DropdownMenuShortcut>⌘D</DropdownMenuShortcut></DropdownMenuItem><DropdownMenuItem>Export CSV</DropdownMenuItem><DropdownMenuSeparator /><DropdownMenuItem variant="destructive">Delete</DropdownMenuItem>
       </DropdownMenuContent></DropdownMenu>
-      <Popover trigger={<Button variant="secondary" iconLeft="funnel">Filter</Button>} width={260}>
+      <Popover><PopoverTrigger asChild><Button variant="secondary" iconLeft="funnel">Filter</Button></PopoverTrigger><PopoverContent align="start" width={260}>
         <div style={{ display: 'flex', flexDirection: 'column', gap: 12 }}>
           <Select label="Plan" size="sm" options={['Any', 'Starter', 'Growth', 'Scale']} />
           <Checkbox defaultChecked label="Active only" />
           <Divider />
           <Button size="sm" fullWidth>Apply filters</Button>
         </div>
-      </Popover>
+      </PopoverContent></Popover>
       <Button variant="secondary" iconLeft="panel-left" onClick={() => setDrawer(true)}>Open drawer</Button>
       <Button variant="secondary" iconLeft="search" onClick={() => setCmdk(true)}>Command palette&nbsp;<Kbd>⌘</Kbd><Kbd>K</Kbd></Button>
       <CommandDialog open={cmdk} onOpenChange={setCmdk} title="Workspace commands">

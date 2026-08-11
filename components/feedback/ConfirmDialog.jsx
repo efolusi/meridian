@@ -1,23 +1,26 @@
 import React from 'react';
-import { Dialog } from './Dialog.jsx';
+import { Dialog, DialogContent, DialogDescription, DialogFooter, DialogHeader, DialogTitle } from './Dialog.jsx';
 import { Button } from '../forms/Button.jsx';
 import { Input } from '../forms/Input.jsx';
-export function ConfirmDialog({ open, onClose, onConfirm, title, description, confirmLabel = 'Delete', cancelLabel = 'Cancel', tone = 'danger', typeToConfirm, children, ...rest }) {
+export function ConfirmDialog({ open, onOpenChange, onConfirm, title, description, confirmLabel = 'Delete', cancelLabel = 'Cancel', tone = 'danger', typeToConfirm, children, ...rest }) {
   const [typed, setTyped] = React.useState('');
   React.useEffect(() => { if (!open) setTyped(''); }, [open]);
   const blocked = typeToConfirm ? typed !== typeToConfirm : false;
   return (
-    <Dialog {...rest} open={open} onClose={onClose} title={title} description={description}
-      footer={
-        <React.Fragment>
-          <Button variant="ghost" onClick={onClose}>{cancelLabel}</Button>
-          <Button variant={tone === 'danger' ? 'danger' : 'primary'} disabled={blocked} onClick={() => { if (onConfirm) onConfirm(); if (onClose) onClose(); }}>{confirmLabel}</Button>
-        </React.Fragment>
-      }>
-      {children}
-      {typeToConfirm ? (
-        <Input label={`Type “${typeToConfirm}” to confirm`} value={typed} onChange={e => setTyped(e.target.value)} placeholder={typeToConfirm} style={children ? { marginTop: 14 } : undefined} />
-      ) : null}
+    <Dialog open={open} onOpenChange={onOpenChange}>
+      <DialogContent {...rest}>
+        <DialogHeader><DialogTitle>{title}</DialogTitle>{description ? <DialogDescription>{description}</DialogDescription> : null}</DialogHeader>
+        <div className="ef-dialog__body">
+          {children}
+          {typeToConfirm ? (
+            <Input label={`Type “${typeToConfirm}” to confirm`} value={typed} onChange={e => setTyped(e.target.value)} placeholder={typeToConfirm} style={children ? { marginTop: 14 } : undefined} />
+          ) : null}
+        </div>
+        <DialogFooter>
+          <Button variant="ghost" onClick={() => onOpenChange?.(false)}>{cancelLabel}</Button>
+          <Button variant={tone === 'danger' ? 'danger' : 'primary'} disabled={blocked} onClick={() => { onConfirm?.(); onOpenChange?.(false); }}>{confirmLabel}</Button>
+        </DialogFooter>
+      </DialogContent>
     </Dialog>
   );
 }

@@ -21,7 +21,7 @@ const CSS = `
 .ef-badge--default:hover{background:var(--accent-hover)}
 .ef-badge--secondary:hover,.ef-badge--neutral:hover,.ef-badge--outline:hover,.ef-badge--ghost:hover{background:var(--surface-sunken)}
 .ef-badge--destructive:hover{background:var(--danger-700)}
-.ef-badge--link:hover{color:var(--text-link-hover);text-decoration:underline}
+.ef-badge--link:hover{color:var(--text-link-hover);text-decoration:none}
 [data-theme="dark"] .ef-badge--accent{color:var(--brand-300)}
 [data-theme="dark"] .ef-badge--brand{background:var(--accent-subtle);color:var(--brand-300)}
 `;

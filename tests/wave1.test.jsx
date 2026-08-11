@@ -2,7 +2,7 @@ import { describe, it, expect } from 'vitest';
 import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 
-import { Dialog } from '../components/feedback/Dialog.jsx';
+import { Dialog, DialogContent, DialogTitle } from '../components/feedback/Dialog.jsx';
 import { ConfirmDialog } from '../components/feedback/ConfirmDialog.jsx';
 import { Drawer, DrawerContent, DrawerTitle } from '../components/overlay/Drawer.jsx';
 import { CommandDialog, CommandInput, CommandList, CommandItem } from '../components/overlay/Command.jsx';
@@ -13,10 +13,10 @@ import { StatusDot } from '../components/data/StatusDot.jsx';
 // caller's className: it landed in ...rest, then a literal className= written
 // after the spread clobbered it.
 describe('className/style forwarding on the modal four', () => {
-  it('Dialog composes the caller className onto its root and keeps its own', () => {
-    render(<Dialog open title="T" className="mine" style={{ zIndex: 9 }} data-testid="d" />);
+  it('DialogContent composes the caller className and style', () => {
+    render(<Dialog open><DialogContent className="mine" style={{ zIndex: 9 }} data-testid="d"><DialogTitle>T</DialogTitle></DialogContent></Dialog>);
     const root = screen.getByTestId('d');
-    expect(root.className).toContain('ef-dialog__overlay');
+    expect(root.className).toContain('ef-dialog__content');
     expect(root.className).toContain('mine');
     expect(root.style.zIndex).toBe('9');
   });
@@ -36,7 +36,7 @@ describe('className/style forwarding on the modal four', () => {
   it('ConfirmDialog forwards className through to Dialog', () => {
     render(<ConfirmDialog open title="T" className="mine" data-testid="cd" />);
     const root = screen.getByTestId('cd');
-    expect(root.className).toContain('ef-dialog__overlay');
+    expect(root.className).toContain('ef-dialog__content');
     expect(root.className).toContain('mine');
   });
 });

@@ -2,6 +2,8 @@
 
 ## Unreleased
 
+- **Hover never introduces an underline.** Base links, `Link`, link-style `Button` and `Badge`, and toast actions now keep text decoration stable while changing color on hover. A repository gate scans authored CSS/JSX/HTML so the behavior cannot regress in a new component or template.
+- **Composition-only disclosure and overlay roots.** `Accordion`, `Collapsible`, `Dialog`, and `Popover` no longer maintain parallel prop-shorthand renderers. Every maintained block, showcase, demo, prompt, and test now uses their explicit item/trigger/content parts; `ConfirmDialog` follows the canonical `onOpenChange` state contract.
 - **Canonical component contracts no longer carry the first alias wave.** Maintained consumers now use `status`, `defaultStatus`, `onStatusChange`, `onSelect`, `onChange`, `onValueChange`, `side`, `format`, `defaultOpen`, and explicit action nodes. The superseded prop and placement aliases were removed from runtime source, types, demos, prompts, generated registry items, and Guard's stable contract.
 - **The current compatibility inventory is fully evidenced.** Chart now ships the Recharts 3 composition contract (`ChartContainer`, tooltip, legend, scoped theme variables, and `useChart`). Data Table and Typography are explicitly verified as upstream-style authored guides without fabricated runtime exports, while deprecated Toast is pinned to the tested Sonner migration path.
 - **Registry and package installs carry Chart's engine dependency.** The `chart` registry item declares Recharts 3, and the ESM package publishes it as a runtime dependency; the browser bundle resolves the optional Recharts UMD namespace only when chart composition is rendered.

@@ -1,4 +1,4 @@
-const { Card, Badge, Button, Input, Textarea, NativeSelect, NativeSelectOption, Switch, Tabs, Avatar, IconButton, Tag, Icon, Dialog } = window.EfolusiDesignSystem_4ffc3d;
+const { Card, Badge, Button, Input, Textarea, NativeSelect, NativeSelectOption, Switch, Tabs, Avatar, IconButton, Tag, Icon, Dialog, DialogClose, DialogContent, DialogDescription, DialogFooter, DialogHeader, DialogTitle } = window.EfolusiDesignSystem_4ffc3d;
 
 function SectionRow({ title, desc, children }) {
   return (
@@ -93,10 +93,10 @@ function ApiTab({ notify }) {
           <Button variant="danger" iconLeft="trash-2" onClick={() => setConfirm(true)}>Delete workspace</Button>
         </div>
       </Card>
-      <Dialog open={confirm} onClose={() => setConfirm(false)} title="Delete Acme Workspace?" description="All projects, keys, and member access disappear. There is no undo."
-        footer={<React.Fragment><Button variant="ghost" onClick={() => setConfirm(false)}>Keep workspace</Button><Button variant="danger" iconLeft="trash-2" onClick={() => { setConfirm(false); notify('Deletion requested', 'Owners get a confirmation email first.', 'warning'); }}>Delete forever</Button></React.Fragment>}>
-        <Input label='Type "Acme Workspace" to confirm' placeholder="Acme Workspace" autoFocus />
-      </Dialog>
+      <Dialog open={confirm} onOpenChange={setConfirm}><DialogContent><DialogHeader><DialogTitle>Delete Acme Workspace?</DialogTitle><DialogDescription>All projects, keys, and member access disappear. There is no undo.</DialogDescription></DialogHeader>
+        <div className="ef-dialog__body"><Input label='Type "Acme Workspace" to confirm' placeholder="Acme Workspace" autoFocus /></div>
+        <DialogFooter><DialogClose asChild><Button variant="ghost">Keep workspace</Button></DialogClose><Button variant="danger" iconLeft="trash-2" onClick={() => { setConfirm(false); notify('Deletion requested', 'Owners get a confirmation email first.', 'warning'); }}>Delete forever</Button></DialogFooter>
+      </DialogContent></Dialog>
     </div>
   );
 }

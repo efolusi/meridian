@@ -8,7 +8,7 @@
 </head><body style="background:var(--surface-page)">
 <div id="root"></div>
 <script type="text/babel">
-const { Alert, Progress, Spinner, Dialog, Toast, ToastStack, Tooltip, Button, Input, Banner, ConfirmDialog, Loader } = window.EfolusiDesignSystem_4ffc3d;
+const { Alert, Progress, Spinner, Dialog, DialogClose, DialogContent, DialogDescription, DialogFooter, DialogHeader, DialogTitle, Toast, ToastStack, Tooltip, Button, Input, Banner, ConfirmDialog, Loader } = window.EfolusiDesignSystem_4ffc3d;
 function Demo() {
   const [open, setOpen] = React.useState(false);
   const [confirm, setConfirm] = React.useState(false);
@@ -26,13 +26,13 @@ function Demo() {
         <Button size="sm" onClick={() => setOpen(true)}>Open dialog</Button>
         <Button size="sm" variant="danger" onClick={() => setConfirm(true)}>Delete…</Button>
       </div>
-      <ConfirmDialog open={confirm} onClose={() => setConfirm(false)} onConfirm={() => {}}
+      <ConfirmDialog open={confirm} onOpenChange={setConfirm} onConfirm={() => {}}
         title="Delete workspace" description="Removes all projects, keys, and member access. This can't be undone."
         confirmLabel="Delete workspace" typeToConfirm="acme" />
-      <Dialog open={open} onClose={() => setOpen(false)} title="Rename project" description="This updates the URL for everyone."
-        footer={<React.Fragment><Button variant="ghost" onClick={() => setOpen(false)}>Cancel</Button><Button onClick={() => setOpen(false)}>Save changes</Button></React.Fragment>}>
-        <Input label="Project name" defaultValue="Q3 launch plan" />
-      </Dialog>
+      <Dialog open={open} onOpenChange={setOpen}><DialogContent><DialogHeader><DialogTitle>Rename project</DialogTitle><DialogDescription>This updates the URL for everyone.</DialogDescription></DialogHeader>
+        <div className="ef-dialog__body"><Input label="Project name" defaultValue="Q3 launch plan" /></div>
+        <DialogFooter><DialogClose asChild><Button variant="ghost">Cancel</Button></DialogClose><DialogClose asChild><Button>Save changes</Button></DialogClose></DialogFooter>
+      </DialogContent></Dialog>
       <ToastStack>
         <Toast tone="success" title="Invite sent" description="Ada will get an email in a minute." onClose={() => {}} />
       </ToastStack>

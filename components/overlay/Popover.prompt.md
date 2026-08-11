@@ -13,5 +13,4 @@ Anchored floating panel for filters, pickers, help. Closes on outside click / ES
 </Popover>
 ```
 
-Controlled via `open`/`onOpenChange` when needed. The `trigger` and `width`
-shorthand remains available for existing products.
+Control state with `open`/`onOpenChange` when needed; set panel width on `PopoverContent`.

@@ -1,6 +1,6 @@
 export interface ConfirmDialogProps {
   open: boolean;
-  onClose?: () => void;
+  onOpenChange?: (open: boolean) => void;
   /** Called on confirm (dialog closes itself after) */
   onConfirm?: () => void;
   title: React.ReactNode;

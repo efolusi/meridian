@@ -1,6 +1,5 @@
 export interface DialogRootProps { open?: boolean; defaultOpen?: boolean; onOpenChange?: (open: boolean) => void; children?: React.ReactNode; }
-export interface DialogLegacyProps extends DialogRootProps { onClose?: () => void; closeLabel?: string; title?: React.ReactNode; description?: React.ReactNode; footer?: React.ReactNode; width?: number; }
-export declare const Dialog: React.ForwardRefExoticComponent<DialogLegacyProps & React.RefAttributes<HTMLDivElement>>;
+export declare function Dialog(props: DialogRootProps): React.JSX.Element;
 export interface DialogSlotProps extends React.HTMLAttributes<HTMLDivElement> { asChild?: boolean; slot?: string; }
 export declare const DialogTrigger: React.ForwardRefExoticComponent<React.ButtonHTMLAttributes<HTMLButtonElement> & { asChild?: boolean; slot?: string } & React.RefAttributes<HTMLButtonElement>>;
 export declare function DialogPortal(props: { children?: React.ReactNode; container?: HTMLElement }): React.JSX.Element | null;

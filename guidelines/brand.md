@@ -29,7 +29,7 @@ The owl mark is the anchor: wise, warm, a little playful. The palette pairs the 
 - **Radii:** subtle and consistent — 4px controls (`--radius-sm`), 8px cards (`--radius-md`), 12px overlays (`--radius-lg`), 16px hero media (`--radius-xl`), pills `--radius-full`. Nothing blob-shaped.
 - **Borders & shadows:** 1px warm hairlines do ALL the structural work; cards are border-only at rest. Shadows exist only where something floats — `--shadow-md` dropdowns, `--shadow-pop` modals. No inner shadows, no decorative elevation.
 - **Motion:** fast and assured: 100/160/240ms. `--ease-spring` is a soft settle (no bounce) for entrances; `--ease-out` everywhere else. Buttons scale to .985 on press; cards darken their border on hover (no lift); overlays scale from .96 + fade. Nothing longer than 240ms; no parallax. Motion confirms — it never performs.
-- **Hover:** darker fill for solid controls (`--accent-hover`), `--sand-100` wash for quiet ones, underline for links. **Press:** darker still + scale(.985). **Focus:** 2px caramel ring (`--focus-ring`), never removed.
+- **Hover:** darker fill for solid controls (`--accent-hover`), `--sand-100` wash for quiet ones, and a deeper link color without adding an underline. **Press:** darker still + scale(.985). **Focus:** 2px caramel ring (`--focus-ring`), never removed.
 - **Imagery:** warm-toned, natural light, cream/sand backgrounds preferred. No cool-blue stock. No gradients, period.
 - **Transparency & blur:** sticky headers only (`rgba(250,249,246,.85)` + 12px blur). Nowhere else.
 

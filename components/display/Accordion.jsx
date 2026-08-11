@@ -51,21 +51,14 @@ export const Accordion = React.forwardRef(function Accordion({
   dir = 'ltr',
   loop = true,
   asChild = false,
-  items,
-  multiple = false,
-  defaultOpen,
   children,
   className,
   style,
   ...rest
 }, forwardedRef) {
   injectEfCss('ef-css-acc', CSS);
-  const resolvedType = type || (multiple ? 'multiple' : 'single');
-  const initialValue = defaultValue !== undefined
-    ? defaultValue
-    : defaultOpen !== undefined
-      ? (resolvedType === 'multiple' ? defaultOpen : defaultOpen[0])
-      : (resolvedType === 'multiple' ? [] : '');
+  const resolvedType = type || 'single';
+  const initialValue = defaultValue !== undefined ? defaultValue : (resolvedType === 'multiple' ? [] : '');
   const [uncontrolledValue, setUncontrolledValue] = React.useState(initialValue);
   const controlled = value !== undefined;
   const currentValue = controlled ? value : uncontrolledValue;
@@ -114,12 +107,7 @@ export const Accordion = React.forwardRef(function Accordion({
     triggers[nextIndex].focus();
   }, [dir, loop, orientation]);
   const context = React.useMemo(() => ({ disabled, dir, isOpen, moveFocus, orientation, toggle }), [disabled, dir, isOpen, moveFocus, orientation, toggle]);
-  const content = items ? items.map(item => (
-    <AccordionItem key={item.id} value={item.id} disabled={item.disabled}>
-      <AccordionTrigger>{item.title}</AccordionTrigger>
-      <AccordionContent>{item.content}</AccordionContent>
-    </AccordionItem>
-  )) : children;
+  const content = children;
   const rootProps = {
     ...rest,
     ref: mergeRefs(forwardedRef, rootRef),

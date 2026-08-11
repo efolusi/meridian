@@ -9,4 +9,4 @@ Panel disclosure composable dengan state controlled maupun uncontrolled, dukunga
 </Collapsible>
 ```
 
-Untuk permukaan Meridian yang ringkas, shorthand lama tetap tersedia: `<Collapsible title="Advanced settings">…</Collapsible>`.
+Selalu susun trigger dan content secara eksplisit agar struktur interaksi tetap terlihat di source.
