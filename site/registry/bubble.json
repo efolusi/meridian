@@ -1,7 +1,7 @@
 {
   "name": "bubble",
   "type": "registry:ui",
-  "title": "BubbleGroup + Bubble + BubbleContent + BubbleReactions",
+  "title": "Bubble + BubbleGroup + BubbleContent + BubbleReactions",
   "description": "Use Bubble for compact conversational content. Group related bubbles, choose a semantic visual variant, align a sender's content to the end, and add reactions only when they remain useful after the message is read.",
   "dependencies": [
     "react"

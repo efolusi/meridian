@@ -198,14 +198,15 @@ export function LinkDemo() {
   );
 }
 
-// @demo ListItem Rows with trailing actions
-export function ListItemDemo() {
-  const { ListItem, Badge } = window.EfolusiDesignSystem_4ffc3d;
+// @demo Item Compositional content rows
+export function ItemDemo() {
+  const { Item, ItemActions, ItemContent, ItemDescription, ItemGroup, ItemMedia, ItemSeparator, ItemTitle, Badge, Icon } = window.EfolusiDesignSystem_4ffc3d;
   return (
-    <div style={{ width: '100%', maxWidth: 460, border: '1px solid var(--border-default)', borderRadius: 'var(--radius-md)', overflow: 'hidden' }}>
-      <ListItem icon="bot" title="Flight rebooking agent" description="Last run 4 min ago" trailing={<Badge tone="success" dot>Live</Badge>} chevron onClick={() => {}} />
-      <ListItem icon="database" title="Warehouse sync" description="Nightly at 02:00" trailing={<Badge tone="neutral">Paused</Badge>} chevron onClick={() => {}} />
-    </div>
+    <ItemGroup style={{ width: '100%', maxWidth: 460 }}>
+      <Item variant="outline"><ItemMedia variant="icon"><Icon name="bot" /></ItemMedia><ItemContent><ItemTitle>Flight rebooking agent</ItemTitle><ItemDescription>Last run 4 min ago</ItemDescription></ItemContent><ItemActions><Badge tone="success" dot>Live</Badge></ItemActions></Item>
+      <ItemSeparator />
+      <Item variant="muted" size="sm"><ItemMedia variant="icon"><Icon name="database" /></ItemMedia><ItemContent><ItemTitle>Warehouse sync</ItemTitle><ItemDescription>Nightly at 02:00</ItemDescription></ItemContent><ItemActions><Badge tone="neutral">Paused</Badge></ItemActions></Item>
+    </ItemGroup>
   );
 }
 

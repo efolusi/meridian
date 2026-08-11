@@ -26,7 +26,7 @@
  "Divider": "Pemisah setipis rambut 1px; label huruf besar opsional; vertikal untuk toolbar.",
  "Kbd": "Keycap untuk petunjuk pintasan — mono 11px, garis tipis dengan dasar 2px.",
  "Link": "Anchor bergaya. external menambah ↗ + tab baru; standalone membuat CTA semibold dengan →.",
- "ListItem": "Baris generik: ikon/media di depan, judul + deskripsi, slot di akhir. Tampil sebagai div, button (onClick), atau anchor (href).",
+ "Item": "Baris konten komposisional untuk media, judul, deskripsi, dan aksi; mendukung grup, pemisah, header, footer, varian, serta kepadatan.",
  "Resizable": "Dua panel yang dibelah gagang setipis rambut yang bisa diseret (keyboard: tombol panah). Untuk editor/preview, list/detail, split terminal.",
  "ScrollArea": "Wadah overflow dengan perlakuan scrollbar sistem (tipis, hangat, membulat). Untuk daftar terbatas, panel kode, log obrolan.",
  "Tag": "Chip untuk filter dan label; bisa dihapus via onRemove, bisa diklik via onClick.",

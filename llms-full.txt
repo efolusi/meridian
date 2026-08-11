@@ -2074,6 +2074,49 @@ export interface DividerProps {
 export declare function Divider(props: DividerProps): React.JSX.Element;
 ```
 
+#### Item
+
+Group: display · Source: /components/display/Item.jsx · Exports: ItemGroup, ItemSeparator, Item, ItemMedia, ItemContent, ItemTitle, ItemDescription, ItemActions, ItemHeader, ItemFooter
+
+# Item
+
+A compositional content row for lists and card-like collections. Use Field for form controls; use Item for media, title, description, and actions. Group related rows with ItemGroup and ItemSeparator.
+
+```jsx
+<Item variant="outline">
+  <ItemMedia variant="icon"><Icon name="shield-alert" /></ItemMedia>
+  <ItemContent>
+    <ItemTitle>Security alert</ItemTitle>
+    <ItemDescription>New login detected from an unknown device.</ItemDescription>
+  </ItemContent>
+  <ItemActions><Button variant="outline">Review</Button></ItemActions>
+</Item>
+```
+
+`Item` supports `variant="default|outline|muted"`, `size="default|sm|xs"`, `asChild`, and the cross-primitive `render` prop. `ItemHeader` and `ItemFooter` span the full row.
+
+```ts
+export type ItemVariant = 'default' | 'outline' | 'muted';
+export type ItemSize = 'default' | 'sm' | 'xs';
+export interface ItemProps extends React.HTMLAttributes<HTMLDivElement> {
+  variant?: ItemVariant;
+  size?: ItemSize;
+  render?: React.ReactElement | ((props: React.HTMLAttributes<HTMLElement> & { ref?: React.Ref<HTMLElement> }) => React.ReactElement);
+  asChild?: boolean;
+}
+export interface ItemMediaProps extends React.HTMLAttributes<HTMLDivElement> { variant?: 'default' | 'icon' | 'image' }
+export declare const Item: React.ForwardRefExoticComponent<ItemProps & React.RefAttributes<HTMLElement>>;
+export declare const ItemGroup: React.ForwardRefExoticComponent<React.HTMLAttributes<HTMLDivElement> & React.RefAttributes<HTMLDivElement>>;
+export declare const ItemSeparator: React.ForwardRefExoticComponent<React.HTMLAttributes<HTMLDivElement> & React.RefAttributes<HTMLDivElement>>;
+export declare const ItemMedia: React.ForwardRefExoticComponent<ItemMediaProps & React.RefAttributes<HTMLDivElement>>;
+export declare const ItemContent: React.ForwardRefExoticComponent<React.HTMLAttributes<HTMLDivElement> & React.RefAttributes<HTMLDivElement>>;
+export declare const ItemTitle: React.ForwardRefExoticComponent<React.HTMLAttributes<HTMLDivElement> & React.RefAttributes<HTMLDivElement>>;
+export declare const ItemDescription: React.ForwardRefExoticComponent<React.HTMLAttributes<HTMLParagraphElement> & React.RefAttributes<HTMLParagraphElement>>;
+export declare const ItemActions: React.ForwardRefExoticComponent<React.HTMLAttributes<HTMLDivElement> & React.RefAttributes<HTMLDivElement>>;
+export declare const ItemHeader: React.ForwardRefExoticComponent<React.HTMLAttributes<HTMLDivElement> & React.RefAttributes<HTMLDivElement>>;
+export declare const ItemFooter: React.ForwardRefExoticComponent<React.HTMLAttributes<HTMLDivElement> & React.RefAttributes<HTMLDivElement>>;
+```
+
 #### Kbd
 
 Group: display · Source: /components/display/Kbd.jsx · Exports: Kbd, KbdGroup
@@ -2119,39 +2162,6 @@ export interface LinkProps extends React.AnchorHTMLAttributes<HTMLAnchorElement>
   children?: React.ReactNode;
 }
 export declare function Link(props: LinkProps): React.JSX.Element;
-```
-
-#### ListItem
-
-Group: display · Source: /components/display/ListItem.jsx · Exports: ListItem
-
-Generic row: leading icon/media, title + description, trailing slot. Renders as div, button (`onClick`), or anchor (`href`).
-
-```jsx
-<ListItem icon="bell" title="Usage alerts" description="At 80% of plan" trailing={<Switch defaultChecked />} />
-<ListItem media={<Avatar name="Ada Obi" />} title="Ada Obi" trailing="2m ago" chevron onClick={open} />
-```
-
-```ts
-export interface ListItemProps {
-  /** Lucide icon in a 32px sunken square */
-  icon?: string;
-  /** Custom leading node (Avatar, FileTypeIcon…) — overrides icon */
-  media?: React.ReactNode;
-  title: React.ReactNode;
-  description?: React.ReactNode;
-  /** Right-aligned slot (Badge, time, Switch…) */
-  trailing?: React.ReactNode;
-  /** Trailing chevron */
-  chevron?: boolean;
-  /** Renders as button */
-  onClick?: (e: React.MouseEvent) => void;
-  /** Renders as anchor */
-  href?: string;
-  style?: React.CSSProperties;
-  className?: string;
-}
-export declare function ListItem(props: ListItemProps): React.JSX.Element;
 ```
 
 #### Resizable
@@ -3858,7 +3868,7 @@ The product sidebar: brand row, grouped nav with icons/badges, pinned footer. 24
     { items: [{ id: 'overview', label: 'Overview', icon: 'layout-dashboard' }, { id: 'customers', label: 'Customers', icon: 'users', badge: 128 }] },
 { label: 'Products', items: [{ id: 'agent', label: 'AI agents', icon: 'bot' }] },
   ]}
-  footer={<ListItem media={<Avatar name="Ada Obi" size={30} />} title="Ada Obi" description="Acme Workspace" />} />
+  footer={<Item size="sm"><ItemMedia><Avatar name="Ada Obi" size={30} /></ItemMedia><ItemContent><ItemTitle>Ada Obi</ItemTitle><ItemDescription>Acme Workspace</ItemDescription></ItemContent></Item>} />
 ```
 
 ```ts

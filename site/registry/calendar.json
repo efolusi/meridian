@@ -1,7 +1,7 @@
 {
   "name": "calendar",
   "type": "registry:ui",
-  "title": "CalendarDayButton + Calendar",
+  "title": "Calendar + CalendarDayButton",
   "description": "Calendar follows the DayPicker-style contract: `mode`, `selected`, and `onSelect` use JavaScript `Date` values. Use `mode=\"range\"` for `{ from, to }`, `mode=\"multiple\"` for arrays, `captionLayout=\"dropdown\"` for month/year selection, and `disabled` matchers for unavailable days.",
   "dependencies": [
     "react"

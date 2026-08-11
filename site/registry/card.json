@@ -1,7 +1,7 @@
 {
   "name": "card",
   "type": "registry:ui",
-  "title": "CardHeader + CardTitle + CardDescription + CardAction + CardContent + CardFooter + Card",
+  "title": "Card + CardHeader + CardTitle + CardDescription + CardAction + CardContent + CardFooter",
   "description": "Compose Card from header, title, description, action, content, and footer parts. Use `size=\"sm\"` for compact surfaces or set `--card-spacing` on the root when a layout needs a deliberate custom inset.",
   "dependencies": [
     "react"

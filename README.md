@@ -114,7 +114,7 @@ Pre-composed sections in `blocks/` (Blocks group in the Design System tab): App 
 Authored from scratch (no source inventory existed). Namespace: `window.EfolusiDesignSystem_4ffc3d`.
 
 - `components/forms/` — Button, IconButton, Input, Textarea, Select (+Trigger, +Value, +Content, +Group, +Label, +Item, +Separator), NativeSelect (+Option, +OptGroup), Checkbox, Radio, Switch, Slider, Combobox, NumberInput, InputOTP (+Group, +Slot, +Separator), ButtonTile (+Group), Toggle (+Group), ButtonGroup, InputGroup, Field (+Set, +Legend, +Group, +Content, +Label, +Title, +Description, +Separator, +Error), Label
-- `components/display/` — Card, Badge, Tag, Avatar (+AvatarGroup), Kbd, Divider, Separator, Accordion, Link, Toolbar, TreeList, ListItem, Collapsible, AspectRatio, ScrollArea, Carousel, Resizable
+- `components/display/` — Card, Badge, Tag, Avatar (+AvatarGroup), Kbd, Divider, Separator, Accordion, Link, Toolbar, TreeList, Item (+Group, +Separator, +Media, +Content, +Title, +Description, +Actions, +Header, +Footer), Collapsible, AspectRatio, ScrollArea, Carousel, Resizable
 - `components/navigation/` — Tabs, Breadcrumbs, Pagination, SegmentedControl, PageControl, SideNav, TopNav, Steps, Menubar
 - `components/feedback/` — Dialog, ConfirmDialog, Toast (+ToastStack), Tooltip, Alert, Banner, Progress, Spinner, Loader
 - `components/data/` — Table, Stat, EmptyState, Skeleton, BarChart, LineChart, DonutChart, Sparkline, KeyValueList, StatusDot

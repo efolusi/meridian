@@ -44,6 +44,7 @@ REGISTRY_NAME_OVERRIDES = {
     "components/ai/Bubble.jsx": "bubble",
     "components/dates/Calendar.jsx": "calendar",
     "components/display/Card.jsx": "card",
+    "components/display/Item.jsx": "item",
     "components/display/Direction.jsx": "direction",
     "components/forms/Radio.jsx": "radio-group",
 }
@@ -125,10 +126,12 @@ def component_items(embed):
         reg_deps = [f"{HOST}/{BASE_ITEM}.json"] + [
             f"{HOST}/{d}.json" for d in deps if d != self_name
         ]
+        primary = next((name for name in names if name.lower() == self_name), names[0])
+        ordered_names = [primary] + [name for name in names if name != primary]
         item = {
             "name": self_name,
             "type": "registry:ui",
-            "title": " + ".join(names) if len(names) > 1 else names[0],
+            "title": " + ".join(ordered_names),
             "description": prompt_summary(prompt) or f"{names[0]} ({group}) from the Meridian design system.",
             "dependencies": ["react"],
             "registryDependencies": reg_deps,

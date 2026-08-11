@@ -83,7 +83,7 @@
     {
       "name": "bubble",
       "type": "registry:ui",
-      "title": "BubbleGroup + Bubble + BubbleContent + BubbleReactions",
+      "title": "Bubble + BubbleGroup + BubbleContent + BubbleReactions",
       "description": "Use Bubble for compact conversational content. Group related bubbles, choose a semantic visual variant, align a sender's content to the end, and add reactions only when they remain useful after the message is read.",
       "dependencies": [
         "react"
@@ -1379,7 +1379,7 @@
     {
       "name": "calendar",
       "type": "registry:ui",
-      "title": "CalendarDayButton + Calendar",
+      "title": "Calendar + CalendarDayButton",
       "description": "Calendar follows the DayPicker-style contract: `mode`, `selected`, and `onSelect` use JavaScript `Date` values. Use `mode=\"range\"` for `{ from, to }`, `mode=\"multiple\"` for arrays, `captionLayout=\"dropdown\"` for month/year selection, and `disabled` matchers for unavailable days.",
       "dependencies": [
         "react"
@@ -1565,7 +1565,7 @@
     {
       "name": "card",
       "type": "registry:ui",
-      "title": "CardHeader + CardTitle + CardDescription + CardAction + CardContent + CardFooter + Card",
+      "title": "Card + CardHeader + CardTitle + CardDescription + CardAction + CardContent + CardFooter",
       "description": "Compose Card from header, title, description, action, content, and footer parts. Use `size=\"sm\"` for compact surfaces or set `--card-spacing` on the root when a layout needs a deliberate custom inset.",
       "dependencies": [
         "react"
@@ -1715,6 +1715,37 @@
       ]
     },
     {
+      "name": "item",
+      "type": "registry:ui",
+      "title": "Item + ItemGroup + ItemSeparator + ItemMedia + ItemContent + ItemTitle + ItemDescription + ItemActions + ItemHeader + ItemFooter",
+      "description": "A compositional content row for lists and card-like collections. Use Field for form controls; use Item for media, title, description, and actions. Group related rows with ItemGroup and ItemSeparator.",
+      "dependencies": [
+        "react"
+      ],
+      "registryDependencies": [
+        "https://meridian.efolusi.com/site/registry/meridian-base.json",
+        "https://meridian.efolusi.com/site/registry/button.json",
+        "https://meridian.efolusi.com/site/registry/separator.json"
+      ],
+      "files": [
+        {
+          "path": "components/display/Item.jsx",
+          "type": "registry:ui"
+        },
+        {
+          "path": "components/display/Item.d.ts",
+          "type": "registry:component"
+        },
+        {
+          "path": "components/display/Item.prompt.md",
+          "type": "registry:component"
+        }
+      ],
+      "categories": [
+        "display"
+      ]
+    },
+    {
       "name": "kbd",
       "type": "registry:ui",
       "title": "Kbd + KbdGroup",
@@ -1768,37 +1799,6 @@
         },
         {
           "path": "components/display/Link.prompt.md",
-          "type": "registry:component"
-        }
-      ],
-      "categories": [
-        "display"
-      ]
-    },
-    {
-      "name": "listitem",
-      "type": "registry:ui",
-      "title": "ListItem",
-      "description": "Generic row: leading icon/media, title + description, trailing slot. Renders as div, button (`onClick`), or anchor (`href`).",
-      "dependencies": [
-        "react"
-      ],
-      "registryDependencies": [
-        "https://meridian.efolusi.com/site/registry/meridian-base.json",
-        "https://meridian.efolusi.com/site/registry/button.json",
-        "https://meridian.efolusi.com/site/registry/icon.json"
-      ],
-      "files": [
-        {
-          "path": "components/display/ListItem.jsx",
-          "type": "registry:ui"
-        },
-        {
-          "path": "components/display/ListItem.d.ts",
-          "type": "registry:component"
-        },
-        {
-          "path": "components/display/ListItem.prompt.md",
           "type": "registry:component"
         }
       ],

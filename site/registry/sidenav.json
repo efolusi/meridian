@@ -26,7 +26,7 @@
     {
       "path": "components/navigation/SideNav.prompt.md",
       "type": "registry:component",
-      "content": "The product sidebar: brand row, grouped nav with icons/badges, pinned footer. 240px on `--surface-subtle`.\n\n```jsx\n<SideNav logoSrc=\"assets/logo.png\" brandBadge=\"Console\" value={nav} onChange={setNav}\n  groups={[\n    { items: [{ id: 'overview', label: 'Overview', icon: 'layout-dashboard' }, { id: 'customers', label: 'Customers', icon: 'users', badge: 128 }] },\n{ label: 'Products', items: [{ id: 'agent', label: 'AI agents', icon: 'bot' }] },\n  ]}\n  footer={<ListItem media={<Avatar name=\"Ada Obi\" size={30} />} title=\"Ada Obi\" description=\"Acme Workspace\" />} />\n```\n"
+      "content": "The product sidebar: brand row, grouped nav with icons/badges, pinned footer. 240px on `--surface-subtle`.\n\n```jsx\n<SideNav logoSrc=\"assets/logo.png\" brandBadge=\"Console\" value={nav} onChange={setNav}\n  groups={[\n    { items: [{ id: 'overview', label: 'Overview', icon: 'layout-dashboard' }, { id: 'customers', label: 'Customers', icon: 'users', badge: 128 }] },\n{ label: 'Products', items: [{ id: 'agent', label: 'AI agents', icon: 'bot' }] },\n  ]}\n  footer={<Item size=\"sm\"><ItemMedia><Avatar name=\"Ada Obi\" size={30} /></ItemMedia><ItemContent><ItemTitle>Ada Obi</ItemTitle><ItemDescription>Acme Workspace</ItemDescription></ItemContent></Item>} />\n```\n"
     }
   ],
   "categories": [

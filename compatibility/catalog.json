@@ -230,7 +230,32 @@
       "registryItems": ["site/registry/inputotp.json"],
       "tests": ["tests/input-otp-compatibility.test.jsx"]
     },
-    { "name": "Item", "status": "unverified" },
+    {
+      "name": "Item",
+      "status": "proven",
+      "requiredExports": [
+        "Item",
+        "ItemActions",
+        "ItemContent",
+        "ItemDescription",
+        "ItemFooter",
+        "ItemGroup",
+        "ItemHeader",
+        "ItemMedia",
+        "ItemSeparator",
+        "ItemTitle"
+      ],
+      "sourceFiles": [
+        "components/display/Item.jsx",
+        "components/display/Item.d.ts"
+      ],
+      "registryItems": [
+        "site/registry/item.json"
+      ],
+      "tests": [
+        "tests/item-compatibility.test.jsx"
+      ]
+    },
     {
       "name": "Kbd",
       "status": "proven",

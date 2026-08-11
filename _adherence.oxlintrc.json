@@ -189,10 +189,6 @@
         "message": "<CopyField> doesn't accept that prop. Declared props: label, value, secret, style, className."
       },
       {
-        "selector": "JSXOpeningElement[name.name='DatePicker'] > JSXAttribute > JSXIdentifier[name!=/^(?:label|value|defaultValue|onChange|placeholder|style|className|key|ref|className|style|children)$/]",
-        "message": "<DatePicker> doesn't accept that prop. Declared props: label, value, defaultValue, onChange, placeholder, style, className."
-      },
-      {
         "selector": "JSXOpeningElement[name.name='Dialog'] > JSXAttribute > JSXIdentifier[name!=/^(?:open|onClose|title|description|footer|width|children|key|ref|className|style|children)$/]",
         "message": "<Dialog> doesn't accept that prop. Declared props: open, onClose, title, description, footer, width, children."
       },
@@ -289,12 +285,20 @@
         "message": "<Link> doesn't accept that prop. Declared props: external, icon, variant, standalone, children."
       },
       {
-        "selector": "JSXOpeningElement[name.name='Link'] > JSXAttribute[name.name='variant'] > Literal[value!=/^(?:default|quiet)$/]",
-        "message": "<Link> variant must be one of 'default' | 'quiet'."
+        "selector": "JSXOpeningElement[name.name='Item'] > JSXAttribute > JSXIdentifier[name!=/^(?:variant|size|render|asChild|key|ref|className|style|children)$/]",
+        "message": "<Item> doesn't accept that prop. Declared props: variant, size, render, asChild, className, style, children."
       },
       {
-        "selector": "JSXOpeningElement[name.name='ListItem'] > JSXAttribute > JSXIdentifier[name!=/^(?:icon|media|title|description|trailing|chevron|onClick|href|style|className|key|ref|className|style|children)$/]",
-        "message": "<ListItem> doesn't accept that prop. Declared props: icon, media, title, description, trailing, chevron, onClick, href, style, className."
+        "selector": "JSXOpeningElement[name.name='Item'] > JSXAttribute[name.name='variant'] > Literal[value!=/^(?:default|outline|muted)$/]",
+        "message": "<Item> variant must be one of 'default' | 'outline' | 'muted'."
+      },
+      {
+        "selector": "JSXOpeningElement[name.name='Item'] > JSXAttribute[name.name='size'] > Literal[value!=/^(?:default|sm|xs)$/]",
+        "message": "<Item> size must be one of 'default' | 'sm' | 'xs'."
+      },
+      {
+        "selector": "JSXOpeningElement[name.name='Link'] > JSXAttribute[name.name='variant'] > Literal[value!=/^(?:default|quiet)$/]",
+        "message": "<Link> variant must be one of 'default' | 'quiet'."
       },
       {
         "selector": "JSXOpeningElement[name.name='Loader'] > JSXAttribute > JSXIdentifier[name!=/^(?:variant|dots|duration|children|style|className|key|ref|className|style|children)$/]",
@@ -764,6 +768,36 @@
       "Divider": {
         "replaces": []
       },
+      "ItemGroup": {
+        "replaces": []
+      },
+      "ItemSeparator": {
+        "replaces": []
+      },
+      "Item": {
+        "replaces": []
+      },
+      "ItemMedia": {
+        "replaces": []
+      },
+      "ItemContent": {
+        "replaces": []
+      },
+      "ItemTitle": {
+        "replaces": []
+      },
+      "ItemDescription": {
+        "replaces": []
+      },
+      "ItemActions": {
+        "replaces": []
+      },
+      "ItemHeader": {
+        "replaces": []
+      },
+      "ItemFooter": {
+        "replaces": []
+      },
       "Kbd": {
         "replaces": []
       },
@@ -771,9 +805,6 @@
         "replaces": []
       },
       "Link": {
-        "replaces": []
-      },
-      "ListItem": {
         "replaces": []
       },
       "ResizablePanelGroup": {

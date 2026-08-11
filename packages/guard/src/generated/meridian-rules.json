@@ -563,6 +563,46 @@
       "sourcePath": "components/forms/InputOTP.jsx"
     },
     {
+      "name": "Item",
+      "sourcePath": "components/display/Item.jsx"
+    },
+    {
+      "name": "ItemActions",
+      "sourcePath": "components/display/Item.jsx"
+    },
+    {
+      "name": "ItemContent",
+      "sourcePath": "components/display/Item.jsx"
+    },
+    {
+      "name": "ItemDescription",
+      "sourcePath": "components/display/Item.jsx"
+    },
+    {
+      "name": "ItemFooter",
+      "sourcePath": "components/display/Item.jsx"
+    },
+    {
+      "name": "ItemGroup",
+      "sourcePath": "components/display/Item.jsx"
+    },
+    {
+      "name": "ItemHeader",
+      "sourcePath": "components/display/Item.jsx"
+    },
+    {
+      "name": "ItemMedia",
+      "sourcePath": "components/display/Item.jsx"
+    },
+    {
+      "name": "ItemSeparator",
+      "sourcePath": "components/display/Item.jsx"
+    },
+    {
+      "name": "ItemTitle",
+      "sourcePath": "components/display/Item.jsx"
+    },
+    {
       "name": "Kbd",
       "sourcePath": "components/display/Kbd.jsx"
     },
@@ -585,10 +625,6 @@
     {
       "name": "Link",
       "sourcePath": "components/display/Link.jsx"
-    },
-    {
-      "name": "ListItem",
-      "sourcePath": "components/display/ListItem.jsx"
     },
     {
       "name": "Loader",
