@@ -17,13 +17,13 @@ const CSS = `
 .ef-select__chevron{position:absolute;inset-inline-end:10px;color:var(--text-muted);pointer-events:none;display:inline-flex}
 .ef-select--invalid .ef-select__el{border-color:var(--danger-600)}
 `;
-export function Select({ label, hint, options, size = 'md', invalid, children, style, className, ...rest }) {
+export const Select = React.forwardRef(function Select({ label, hint, options, size = 'md', invalid, children, style, className, ...rest }, ref) {
   injectEfCss('ef-css-select', CSS);
   // Picks up id / aria wiring when nested in a FormField; standalone this is a no-op.
   const field = useFieldProps({ invalid, id: rest.id, 'aria-describedby': rest['aria-describedby'] });
   const control = (
     <span className={`ef-select ef-select--${size}${field.invalid ? ' ef-select--invalid' : ''}`}>
-      <select className="ef-select__el" aria-invalid={field.invalid || undefined} {...rest} {...field.controlProps}>
+      <select ref={ref} className="ef-select__el" aria-invalid={field.invalid || undefined} {...rest} {...field.controlProps}>
         {options ? options.map(o => typeof o === 'string' ? <option key={o} value={o}>{o}</option> : <option key={o.value} value={o.value}>{o.label}</option>) : children}
       </select>
       <span className="ef-select__chevron"><Icon name="chevron-down" size={16} /></span>
@@ -37,4 +37,4 @@ export function Select({ label, hint, options, size = 'md', invalid, children, s
       {hint ? <span className="ef-field__hint">{hint}</span> : null}
     </label>
   );
-}
+});

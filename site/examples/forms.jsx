@@ -216,6 +216,22 @@ export function SelectDemo() {
   );
 }
 
+// @demo NativeSelect Native options and groups
+export function NativeSelectDemo() {
+  const { NativeSelect, NativeSelectOptGroup, NativeSelectOption } = window.EfolusiDesignSystem_4ffc3d;
+  return (
+    <NativeSelect defaultValue="banana" aria-label="Fruit">
+      <NativeSelectOptGroup label="Fruit">
+        <NativeSelectOption value="apple">Apple</NativeSelectOption>
+        <NativeSelectOption value="banana">Banana</NativeSelectOption>
+      </NativeSelectOptGroup>
+      <NativeSelectOptGroup label="Vegetables">
+        <NativeSelectOption value="carrot">Carrot</NativeSelectOption>
+      </NativeSelectOptGroup>
+    </NativeSelect>
+  );
+}
+
 // @demo Slider Value formatting
 export function SliderDemo() {
   const { Slider } = window.EfolusiDesignSystem_4ffc3d;

@@ -1875,6 +1875,36 @@
       ]
     },
     {
+      "name": "separator",
+      "type": "registry:ui",
+      "title": "Separator",
+      "description": "Use `Separator` for an unlabelled dividing rule with no built-in spacing. It is",
+      "dependencies": [
+        "react"
+      ],
+      "registryDependencies": [
+        "https://meridian.efolusi.com/site/registry/meridian-base.json",
+        "https://meridian.efolusi.com/site/registry/button.json"
+      ],
+      "files": [
+        {
+          "path": "components/display/Separator.jsx",
+          "type": "registry:ui"
+        },
+        {
+          "path": "components/display/Separator.d.ts",
+          "type": "registry:component"
+        },
+        {
+          "path": "components/display/Separator.prompt.md",
+          "type": "registry:component"
+        }
+      ],
+      "categories": [
+        "display"
+      ]
+    },
+    {
       "name": "tag",
       "type": "registry:ui",
       "title": "Tag",
@@ -2743,6 +2773,36 @@
         },
         {
           "path": "components/forms/Label.prompt.md",
+          "type": "registry:component"
+        }
+      ],
+      "categories": [
+        "forms"
+      ]
+    },
+    {
+      "name": "nativeselect",
+      "type": "registry:ui",
+      "title": "NativeSelect + NativeSelectOption + NativeSelectOptGroup",
+      "description": "Use `NativeSelect` when browser-native selection behavior, mobile pickers, and",
+      "dependencies": [
+        "react"
+      ],
+      "registryDependencies": [
+        "https://meridian.efolusi.com/site/registry/meridian-base.json",
+        "https://meridian.efolusi.com/site/registry/select.json"
+      ],
+      "files": [
+        {
+          "path": "components/forms/NativeSelect.jsx",
+          "type": "registry:ui"
+        },
+        {
+          "path": "components/forms/NativeSelect.d.ts",
+          "type": "registry:component"
+        },
+        {
+          "path": "components/forms/NativeSelect.prompt.md",
           "type": "registry:component"
         }
       ],

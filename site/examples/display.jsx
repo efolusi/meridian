@@ -125,6 +125,18 @@ export function DividerDemo() {
   );
 }
 
+// @demo Separator Semantic and decorative rules
+export function SeparatorDemo() {
+  const { Separator } = window.EfolusiDesignSystem_4ffc3d;
+  return (
+    <div style={{ display: 'grid', gap: 16 }}>
+      <span>Account details</span>
+      <Separator decorative={false} />
+      <span>Billing details</span>
+    </div>
+  );
+}
+
 // @demo Kbd Keyboard hints
 export function KbdDemo() {
   const { Kbd } = window.EfolusiDesignSystem_4ffc3d;

@@ -1,0 +1,34 @@
+{
+  "name": "separator",
+  "type": "registry:ui",
+  "title": "Separator",
+  "description": "Use `Separator` for an unlabelled dividing rule with no built-in spacing. It is",
+  "dependencies": [
+    "react"
+  ],
+  "registryDependencies": [
+    "https://meridian.efolusi.com/site/registry/meridian-base.json",
+    "https://meridian.efolusi.com/site/registry/button.json"
+  ],
+  "files": [
+    {
+      "path": "components/display/Separator.jsx",
+      "type": "registry:ui",
+      "content": "import React from 'react';\nimport { injectEfCss } from '../forms/Button.jsx';\n\nconst CSS = `\n.ef-separator{flex:none;border:0;background:var(--border-default)}\n.ef-separator[data-orientation=\"horizontal\"]{width:100%;height:1px}\n.ef-separator[data-orientation=\"vertical\"]{width:1px;height:100%;min-height:1em;align-self:stretch}\n`;\n\nexport const Separator = React.forwardRef(function Separator(\n  { orientation = 'horizontal', decorative = true, className, ...rest },\n  ref,\n) {\n  injectEfCss('ef-css-separator', CSS);\n  const axis = orientation === 'vertical' ? 'vertical' : 'horizontal';\n  return (\n    <div\n      {...rest}\n      ref={ref}\n      role={decorative ? 'none' : 'separator'}\n      aria-orientation={!decorative && axis === 'vertical' ? 'vertical' : undefined}\n      data-orientation={axis}\n      className={`ef-separator${className ? ` ${className}` : ''}`}\n    />\n  );\n});\n"
+    },
+    {
+      "path": "components/display/Separator.d.ts",
+      "type": "registry:component",
+      "content": "export interface SeparatorProps extends React.HTMLAttributes<HTMLDivElement> {\n  /** Axis of the dividing rule. @default 'horizontal' */\n  orientation?: 'horizontal' | 'vertical';\n  /** Remove separator semantics when the rule is only visual. @default true */\n  decorative?: boolean;\n}\nexport declare const Separator: React.ForwardRefExoticComponent<\n  SeparatorProps & React.RefAttributes<HTMLDivElement>\n>;\n"
+    },
+    {
+      "path": "components/display/Separator.prompt.md",
+      "type": "registry:component",
+      "content": "# Separator\n\nUse `Separator` for an unlabelled dividing rule with no built-in spacing. It is\ndecorative by default; set `decorative={false}` when the divider marks a real\nsection boundary. Use `orientation=\"vertical\"` inside a container with a defined\nheight. Add surrounding space on the parent so the rule remains composable.\n"
+    }
+  ],
+  "categories": [
+    "display"
+  ],
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json"
+}

@@ -30,7 +30,7 @@ Dark mode: set data-theme="dark" on any subtree. Compact density: data-density="
 
 ## Components
 
-111 components across 12 groups: ai, code, data, dates, display, feedback, files, finance, forms, icons, navigation, overlay. Each entry lists the component's public exports, its usage guidance (.prompt.md), and its typed props interface (.d.ts).
+113 components across 12 groups: ai, code, data, dates, display, feedback, files, finance, forms, icons, navigation, overlay. Each entry lists the component's public exports, its usage guidance (.prompt.md), and its typed props interface (.d.ts).
 
 ### ai
 
@@ -2080,6 +2080,29 @@ export interface ScrollAreaProps extends React.HTMLAttributes<HTMLDivElement> {
 export declare function ScrollArea(props: ScrollAreaProps): React.JSX.Element;
 ```
 
+#### Separator
+
+Group: display · Source: /components/display/Separator.jsx · Exports: Separator
+
+# Separator
+
+Use `Separator` for an unlabelled dividing rule with no built-in spacing. It is
+decorative by default; set `decorative={false}` when the divider marks a real
+section boundary. Use `orientation="vertical"` inside a container with a defined
+height. Add surrounding space on the parent so the rule remains composable.
+
+```ts
+export interface SeparatorProps extends React.HTMLAttributes<HTMLDivElement> {
+  /** Axis of the dividing rule. @default 'horizontal' */
+  orientation?: 'horizontal' | 'vertical';
+  /** Remove separator semantics when the rule is only visual. @default true */
+  decorative?: boolean;
+}
+export declare const Separator: React.ForwardRefExoticComponent<
+  SeparatorProps & React.RefAttributes<HTMLDivElement>
+>;
+```
+
 #### Tag
 
 Group: display · Source: /components/display/Tag.jsx · Exports: Tag
@@ -3142,6 +3165,36 @@ export interface LabelProps {
 export declare function Label(props: LabelProps): React.JSX.Element;
 ```
 
+#### NativeSelect
+
+Group: forms · Source: /components/forms/NativeSelect.jsx · Exports: NativeSelect, NativeSelectOption, NativeSelectOptGroup
+
+# NativeSelect
+
+Use `NativeSelect` when browser-native selection behavior, mobile pickers, and
+low interaction cost matter most. Compose `NativeSelectOption` directly, or
+group related choices with `NativeSelectOptGroup`. Use `aria-invalid` for an
+invalid control and provide its visible label through `FormField` or `Label`.
+
+```ts
+export type NativeSelectProps = Omit<React.ComponentPropsWithoutRef<'select'>, 'size'> & {
+  /** Meridian control height. @default 'md' */
+  size?: 'sm' | 'md' | 'lg';
+};
+export type NativeSelectOptionProps = React.ComponentPropsWithoutRef<'option'>;
+export type NativeSelectOptGroupProps = React.ComponentPropsWithoutRef<'optgroup'>;
+
+export declare const NativeSelect: React.ForwardRefExoticComponent<
+  NativeSelectProps & React.RefAttributes<HTMLSelectElement>
+>;
+export declare const NativeSelectOption: React.ForwardRefExoticComponent<
+  NativeSelectOptionProps & React.RefAttributes<HTMLOptionElement>
+>;
+export declare const NativeSelectOptGroup: React.ForwardRefExoticComponent<
+  NativeSelectOptGroupProps & React.RefAttributes<HTMLOptGroupElement>
+>;
+```
+
 #### NumberInput
 
 Group: forms · Source: /components/forms/NumberInput.jsx · Exports: NumberInput
@@ -3268,7 +3321,9 @@ export interface SelectProps extends Omit<React.SelectHTMLAttributes<HTMLSelectE
   size?: 'sm' | 'md' | 'lg';
   invalid?: boolean;
 }
-export declare function Select(props: SelectProps): React.JSX.Element;
+export declare const Select: React.ForwardRefExoticComponent<
+  SelectProps & React.RefAttributes<HTMLSelectElement>
+>;
 ```
 
 #### Slider
