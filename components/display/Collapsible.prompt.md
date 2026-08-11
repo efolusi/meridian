@@ -1,7 +1,12 @@
 # Collapsible
 
-A single disclosure row: chevron trigger + revealed body. Use for advanced options, long descriptions, log detail.
+Panel disclosure composable dengan state controlled maupun uncontrolled, dukungan keyboard native, kondisi disabled, dan content yang dapat dipaksa tetap terpasang.
 
-`<Collapsible title="Advanced settings" defaultOpen={false}>…</Collapsible>`
+```jsx
+<Collapsible defaultOpen>
+  <CollapsibleTrigger>Advanced settings</CollapsibleTrigger>
+  <CollapsibleContent>…</CollapsibleContent>
+</Collapsible>
+```
 
-For a stacked set with one-open behavior use Accordion instead.
+Untuk permukaan Meridian yang ringkas, shorthand lama tetap tersedia: `<Collapsible title="Advanced settings">…</Collapsible>`.

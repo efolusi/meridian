@@ -82,7 +82,14 @@
       "registryItems": ["site/registry/checkbox.json"],
       "tests": ["tests/checkbox-compatibility.test.jsx"]
     },
-    { "name": "Collapsible", "status": "unverified" },
+    {
+      "name": "Collapsible",
+      "status": "proven",
+      "requiredExports": ["Collapsible", "CollapsibleTrigger", "CollapsibleContent"],
+      "sourceFiles": ["components/display/Collapsible.jsx", "components/display/Collapsible.d.ts"],
+      "registryItems": ["site/registry/collapsible.json"],
+      "tests": ["tests/collapsible-compatibility.test.jsx"]
+    },
     { "name": "Combobox", "status": "unverified" },
     { "name": "Command", "status": "unverified" },
     { "name": "Context Menu", "status": "unverified" },

@@ -1664,8 +1664,8 @@
     {
       "name": "collapsible",
       "type": "registry:ui",
-      "title": "Collapsible",
-      "description": "A single disclosure row: chevron trigger + revealed body. Use for advanced options, long descriptions, log detail.",
+      "title": "Collapsible + CollapsibleTrigger + CollapsibleContent",
+      "description": "Panel disclosure composable dengan state controlled maupun uncontrolled, dukungan keyboard native, kondisi disabled, dan content yang dapat dipaksa tetap terpasang.",
       "dependencies": [
         "react"
       ],

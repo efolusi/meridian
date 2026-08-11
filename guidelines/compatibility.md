@@ -47,6 +47,12 @@ similarity.
 
 ## Proven adapters
 
+- `Collapsible`, `CollapsibleTrigger`, and `CollapsibleContent` support
+  controlled and uncontrolled disclosure state, native keyboard activation,
+  disabled roots, polymorphic triggers, force-mounted content, accessible
+  trigger/content relationships, ref forwarding, state attributes, types,
+  registry installation, demos, and tests. Meridian's original `title`
+  shorthand remains available for existing surfaces.
 - `Checkbox` supports controlled and uncontrolled state, indeterminate state,
   pointer and keyboard interaction, accessible and invalid state data, disabled
   behavior, form submission, native button attributes, ref forwarding, types,

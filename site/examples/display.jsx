@@ -114,14 +114,19 @@ export function CarouselDemo() {
 
 // @demo Collapsible Advanced options
 export function CollapsibleDemo() {
-  const { Collapsible, Switch } = window.EfolusiDesignSystem_4ffc3d;
+  const { Collapsible, CollapsibleTrigger, CollapsibleContent, Icon, Switch } = window.EfolusiDesignSystem_4ffc3d;
   return (
     <div style={{ width: 340 }}>
-      <Collapsible title="Advanced settings" defaultOpen>
-        <div style={{ display: 'flex', flexDirection: 'column', gap: 10 }}>
+      <Collapsible defaultOpen>
+        <CollapsibleTrigger className="ef-collapsible__trigger">
+          <Icon name="settings" size={16} /> Advanced settings
+        </CollapsibleTrigger>
+        <CollapsibleContent style={{ paddingBlock: 8 }}>
+          <div style={{ display: 'flex', flexDirection: 'column', gap: 10 }}>
           <Switch size="sm" defaultChecked label="Verbose logs" />
           <Switch size="sm" label="Beta features" />
-        </div>
+          </div>
+        </CollapsibleContent>
       </Collapsible>
     </div>
   );

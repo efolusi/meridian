@@ -92,9 +92,13 @@ describe(`SSR sweep over ${cases.length} public exports`, () => {
     // 115 exports ship; a broken glob silently sweeping nothing must fail.
     expect(cases.length).toBeGreaterThanOrEqual(100);
   });
-  for (const [name, Comp] of cases) {
+  for (const [name, Comp, file] of cases) {
     it(`${name} server-renders with parser-safe styles`, () => {
-      const html = renderToString(React.createElement(Comp, PROPS[name] || {}));
+      const component = React.createElement(Comp, PROPS[name] || {});
+      const element = name === 'CollapsibleTrigger' || name === 'CollapsibleContent'
+        ? React.createElement(modules[file].Collapsible, { defaultOpen: true }, component)
+        : component;
+      const html = renderToString(element);
       decimalsOk(html, name);
     });
   }
