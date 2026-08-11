@@ -2,12 +2,18 @@
 
 // @demo Breadcrumbs Path trail
 export function BreadcrumbsDemo() {
-  const { Breadcrumbs } = window.EfolusiDesignSystem_4ffc3d;
-  return <Breadcrumbs items={[
-    { label: 'Workspace', onClick: () => {} },
-    { label: 'Agents', onClick: () => {} },
-    { label: 'Flight rebooking' },
-  ]} />;
+  const { Breadcrumb, BreadcrumbList, BreadcrumbItem, BreadcrumbLink, BreadcrumbPage, BreadcrumbSeparator, BreadcrumbEllipsis } = window.EfolusiDesignSystem_4ffc3d;
+  return (
+    <Breadcrumb>
+      <BreadcrumbList>
+        <BreadcrumbItem><BreadcrumbLink href="#">Workspace</BreadcrumbLink></BreadcrumbItem>
+        <BreadcrumbSeparator />
+        <BreadcrumbItem><BreadcrumbEllipsis /></BreadcrumbItem>
+        <BreadcrumbSeparator />
+        <BreadcrumbItem><BreadcrumbPage>Flight rebooking</BreadcrumbPage></BreadcrumbItem>
+      </BreadcrumbList>
+    </Breadcrumb>
+  );
 }
 
 // @demo Menubar Application menus

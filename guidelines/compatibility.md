@@ -47,6 +47,13 @@ similarity.
 
 ## Proven adapters
 
+- `Breadcrumb`, `BreadcrumbList`, `BreadcrumbItem`, `BreadcrumbLink`,
+  `BreadcrumbPage`, `BreadcrumbSeparator`, and `BreadcrumbEllipsis` support
+  semantic path composition, polymorphic links, current-page semantics,
+  decorative default or custom separators, ellipsis output, native attributes,
+  consumer classes and styles, ref forwarding, RTL, types, registry
+  installation, demos, and tests. Meridian's array-based `Breadcrumbs`
+  adapter remains available for existing surfaces.
 - `Accordion`, `AccordionItem`, `AccordionTrigger`, and `AccordionContent`
   support single and multiple disclosure state, controlled and uncontrolled
   values, collapsible and disabled behavior, vertical and direction-aware

@@ -1,5 +1,15 @@
-Path trail with chevron separators; last item is the current page.
+# Breadcrumb
+
+Path trail composable dengan root navigasi, ordered list, item, link, halaman aktif, separator, dan ellipsis.
 
 ```jsx
-<Breadcrumbs items={[{ label: 'Getting started', href: '#' }, { label: 'Quickstart' }]} />
+<Breadcrumb>
+  <BreadcrumbList>
+    <BreadcrumbItem><BreadcrumbLink href="/docs">Docs</BreadcrumbLink></BreadcrumbItem>
+    <BreadcrumbSeparator />
+    <BreadcrumbItem><BreadcrumbPage>Components</BreadcrumbPage></BreadcrumbItem>
+  </BreadcrumbList>
+</Breadcrumb>
 ```
+
+Adapter array `Breadcrumbs items={…}` tetap tersedia untuk permukaan Meridian lama.

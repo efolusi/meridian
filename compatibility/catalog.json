@@ -69,7 +69,14 @@
       "registryItems": ["site/registry/badge.json"],
       "tests": ["tests/simple-primitives-compatibility.test.jsx"]
     },
-    { "name": "Breadcrumb", "status": "unverified" },
+    {
+      "name": "Breadcrumb",
+      "status": "proven",
+      "requiredExports": ["Breadcrumb", "BreadcrumbList", "BreadcrumbItem", "BreadcrumbLink", "BreadcrumbPage", "BreadcrumbSeparator", "BreadcrumbEllipsis"],
+      "sourceFiles": ["components/navigation/Breadcrumbs.jsx", "components/navigation/Breadcrumbs.d.ts"],
+      "registryItems": ["site/registry/breadcrumb.json"],
+      "tests": ["tests/breadcrumb-compatibility.test.jsx"]
+    },
     { "name": "Bubble", "status": "unverified" },
     {
       "name": "Button",

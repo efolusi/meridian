@@ -3119,10 +3119,10 @@
       ]
     },
     {
-      "name": "breadcrumbs",
+      "name": "breadcrumb",
       "type": "registry:ui",
-      "title": "Breadcrumbs",
-      "description": "Path trail with chevron separators; last item is the current page.",
+      "title": "Breadcrumb + BreadcrumbList + BreadcrumbItem + BreadcrumbLink + BreadcrumbPage + BreadcrumbSeparator + BreadcrumbEllipsis + Breadcrumbs",
+      "description": "Path trail composable dengan root navigasi, ordered list, item, link, halaman aktif, separator, dan ellipsis.",
       "dependencies": [
         "react"
       ],
