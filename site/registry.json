@@ -2750,7 +2750,7 @@
       "name": "input",
       "type": "registry:ui",
       "title": "Input",
-      "description": "Text input; renders bare, or as a full field when `label`/`hint`/`error` are set.",
+      "description": "Native text input with ref forwarding, file-input styling, disabled and invalid states. It renders bare by default, or as a full field when `label`/`hint`/`error` are set.",
       "dependencies": [
         "react"
       ],

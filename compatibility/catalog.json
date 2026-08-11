@@ -88,7 +88,14 @@
     { "name": "Empty", "status": "unverified" },
     { "name": "Field", "status": "unverified" },
     { "name": "Hover Card", "status": "unverified" },
-    { "name": "Input", "status": "unverified" },
+    {
+      "name": "Input",
+      "status": "proven",
+      "requiredExports": ["Input"],
+      "sourceFiles": ["components/forms/Input.jsx", "components/forms/Input.d.ts"],
+      "registryItems": ["site/registry/input.json"],
+      "tests": ["tests/input-compatibility.test.jsx"]
+    },
     { "name": "Input Group", "status": "unverified" },
     { "name": "Input OTP", "status": "unverified" },
     { "name": "Item", "status": "unverified" },

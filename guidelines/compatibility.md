@@ -47,6 +47,11 @@ similarity.
 
 ## Proven adapters
 
+- `Input` renders a native input and supports text, file, required, disabled,
+  invalid, and native numeric-size attributes; native events; consumer classes
+  and styles; ref forwarding; accessible labels and descriptions; types;
+  registry installation; demos; and tests. Meridian's integrated field chrome,
+  icons, password reveal, and visual sizes remain additive extensions.
 - `Progress` supports determinate, complete, and indeterminate states; clamped
   values; accessible range semantics; native attributes; consumer classes and
   styles; ref forwarding; RTL-safe motion; types; registry installation; demos;

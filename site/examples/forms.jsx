@@ -141,12 +141,14 @@ export function IconButtonDemo() {
   );
 }
 
-// @demo Input Label and hint
+// @demo Input Native and assisted fields
 export function InputDemo() {
   const { Input } = window.EfolusiDesignSystem_4ffc3d;
   return (
-    <div style={{ width: 320 }}>
+    <div style={{ width: 320, display: 'grid', gap: 14 }}>
+      <Input aria-label="Project name" placeholder="Project name" />
       <Input label="Work email" placeholder="ada@company.com" iconLeft="mail" hint="We only use this for run alerts." />
+      <Input type="file" aria-label="Upload receipt" />
     </div>
   );
 }
