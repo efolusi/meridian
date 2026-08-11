@@ -1,4 +1,4 @@
-Centered modal with dimmed overlay, springy scale-in, ESC/overlay/✕ close.
+Compose `Dialog`, `DialogTrigger`, `DialogContent`, `DialogHeader`, `DialogTitle`, `DialogDescription`, `DialogFooter`, and `DialogClose` for a centered modal with focus containment, ESC/overlay/close dismissal, and focus restoration.
 
 ```jsx
 <Dialog open={open} onClose={close} title="Rename project" description="This updates the URL for everyone."

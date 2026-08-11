@@ -1,4 +1,4 @@
-/* @ds-bundle: {"format":4,"namespace":"EfolusiDesignSystem_4ffc3d","components":[{"name":"AgentRun","sourcePath":"components/ai/AgentRun.jsx"},{"name":"BubbleGroup","sourcePath":"components/ai/Bubble.jsx"},{"name":"Bubble","sourcePath":"components/ai/Bubble.jsx"},{"name":"BubbleContent","sourcePath":"components/ai/Bubble.jsx"},{"name":"BubbleReactions","sourcePath":"components/ai/Bubble.jsx"},{"name":"ChatMessage","sourcePath":"components/ai/ChatMessage.jsx"},{"name":"Citation","sourcePath":"components/ai/Citation.jsx"},{"name":"SourceList","sourcePath":"components/ai/Citation.jsx"},{"name":"Confirmation","sourcePath":"components/ai/Confirmation.jsx"},{"name":"Conversation","sourcePath":"components/ai/Conversation.jsx"},{"name":"DocumentCard","sourcePath":"components/ai/DocumentCard.jsx"},{"name":"FeedbackBar","sourcePath":"components/ai/FeedbackBar.jsx"},{"name":"GeneratedImage","sourcePath":"components/ai/GeneratedImage.jsx"},{"name":"Marker","sourcePath":"components/ai/Marker.jsx"},{"name":"MarkerIcon","sourcePath":"components/ai/Marker.jsx"},{"name":"MarkerContent","sourcePath":"components/ai/Marker.jsx"},{"name":"ModelSelector","sourcePath":"components/ai/ModelSelector.jsx"},{"name":"Player","sourcePath":"components/ai/Player.jsx"},{"name":"PromptComposer","sourcePath":"components/ai/PromptComposer.jsx"},{"name":"PromptSteps","sourcePath":"components/ai/PromptSteps.jsx"},{"name":"Reasoning","sourcePath":"components/ai/Reasoning.jsx"},{"name":"RichComposer","sourcePath":"components/ai/RichComposer.jsx"},{"name":"Sandbox","sourcePath":"components/ai/Sandbox.jsx"},{"name":"SelectionQuote","sourcePath":"components/ai/SelectionQuote.jsx"},{"name":"SourceCard","sourcePath":"components/ai/SourceCard.jsx"},{"name":"Suggestions","sourcePath":"components/ai/Suggestions.jsx"},{"name":"Task","sourcePath":"components/ai/Task.jsx"},{"name":"Todo","sourcePath":"components/ai/Todo.jsx"},{"name":"ToolCall","sourcePath":"components/ai/ToolCall.jsx"},{"name":"Transcript","sourcePath":"components/ai/Transcript.jsx"},{"name":"UsageMeter","sourcePath":"components/ai/UsageMeter.jsx"},{"name":"WebPreview","sourcePath":"components/ai/WebPreview.jsx"},{"name":"CodeBlock","sourcePath":"components/code/CodeBlock.jsx"},{"name":"Console","sourcePath":"components/code/Console.jsx"},{"name":"CopyField","sourcePath":"components/code/CopyField.jsx"},{"name":"Diff","sourcePath":"components/code/Diff.jsx"},{"name":"EnvList","sourcePath":"components/code/EnvList.jsx"},{"name":"Exception","sourcePath":"components/code/Exception.jsx"},{"name":"Terminal","sourcePath":"components/code/Terminal.jsx"},{"name":"BarChart","sourcePath":"components/data/BarChart.jsx"},{"name":"DonutChart","sourcePath":"components/data/DonutChart.jsx"},{"name":"EmptyState","sourcePath":"components/data/EmptyState.jsx"},{"name":"KeyValueList","sourcePath":"components/data/KeyValueList.jsx"},{"name":"LineChart","sourcePath":"components/data/LineChart.jsx"},{"name":"Skeleton","sourcePath":"components/data/Skeleton.jsx"},{"name":"Sparkline","sourcePath":"components/data/Sparkline.jsx"},{"name":"Stat","sourcePath":"components/data/Stat.jsx"},{"name":"StatusDot","sourcePath":"components/data/StatusDot.jsx"},{"name":"Table","sourcePath":"components/data/Table.jsx"},{"name":"Calendar","sourcePath":"components/dates/Calendar.jsx"},{"name":"DatePicker","sourcePath":"components/dates/DatePicker.jsx"},{"name":"DateRangePicker","sourcePath":"components/dates/DateRangePicker.jsx"},{"name":"TimePicker","sourcePath":"components/dates/TimePicker.jsx"},{"name":"Accordion","sourcePath":"components/display/Accordion.jsx"},{"name":"AccordionItem","sourcePath":"components/display/Accordion.jsx"},{"name":"AccordionTrigger","sourcePath":"components/display/Accordion.jsx"},{"name":"AccordionContent","sourcePath":"components/display/Accordion.jsx"},{"name":"AspectRatio","sourcePath":"components/display/AspectRatio.jsx"},{"name":"Avatar","sourcePath":"components/display/Avatar.jsx"},{"name":"AvatarImage","sourcePath":"components/display/Avatar.jsx"},{"name":"AvatarFallback","sourcePath":"components/display/Avatar.jsx"},{"name":"AvatarBadge","sourcePath":"components/display/Avatar.jsx"},{"name":"AvatarGroup","sourcePath":"components/display/Avatar.jsx"},{"name":"AvatarGroupCount","sourcePath":"components/display/Avatar.jsx"},{"name":"Badge","sourcePath":"components/display/Badge.jsx"},{"name":"CardHeader","sourcePath":"components/display/Card.jsx"},{"name":"CardTitle","sourcePath":"components/display/Card.jsx"},{"name":"CardDescription","sourcePath":"components/display/Card.jsx"},{"name":"CardAction","sourcePath":"components/display/Card.jsx"},{"name":"CardContent","sourcePath":"components/display/Card.jsx"},{"name":"CardFooter","sourcePath":"components/display/Card.jsx"},{"name":"Card","sourcePath":"components/display/Card.jsx"},{"name":"Carousel","sourcePath":"components/display/Carousel.jsx"},{"name":"Collapsible","sourcePath":"components/display/Collapsible.jsx"},{"name":"CollapsibleTrigger","sourcePath":"components/display/Collapsible.jsx"},{"name":"CollapsibleContent","sourcePath":"components/display/Collapsible.jsx"},{"name":"DirectionProvider","sourcePath":"components/display/Direction.jsx"},{"name":"Divider","sourcePath":"components/display/Divider.jsx"},{"name":"Kbd","sourcePath":"components/display/Kbd.jsx"},{"name":"KbdGroup","sourcePath":"components/display/Kbd.jsx"},{"name":"Link","sourcePath":"components/display/Link.jsx"},{"name":"ListItem","sourcePath":"components/display/ListItem.jsx"},{"name":"Resizable","sourcePath":"components/display/Resizable.jsx"},{"name":"ScrollArea","sourcePath":"components/display/ScrollArea.jsx"},{"name":"Separator","sourcePath":"components/display/Separator.jsx"},{"name":"Tag","sourcePath":"components/display/Tag.jsx"},{"name":"Timeline","sourcePath":"components/display/Timeline.jsx"},{"name":"Toolbar","sourcePath":"components/display/Toolbar.jsx"},{"name":"TreeList","sourcePath":"components/display/TreeList.jsx"},{"name":"Alert","sourcePath":"components/feedback/Alert.jsx"},{"name":"AlertTitle","sourcePath":"components/feedback/Alert.jsx"},{"name":"AlertDescription","sourcePath":"components/feedback/Alert.jsx"},{"name":"AlertDialog","sourcePath":"components/feedback/AlertDialog.jsx"},{"name":"AlertDialogTrigger","sourcePath":"components/feedback/AlertDialog.jsx"},{"name":"AlertDialogPortal","sourcePath":"components/feedback/AlertDialog.jsx"},{"name":"AlertDialogOverlay","sourcePath":"components/feedback/AlertDialog.jsx"},{"name":"AlertDialogContent","sourcePath":"components/feedback/AlertDialog.jsx"},{"name":"AlertDialogHeader","sourcePath":"components/feedback/AlertDialog.jsx"},{"name":"AlertDialogFooter","sourcePath":"components/feedback/AlertDialog.jsx"},{"name":"AlertDialogMedia","sourcePath":"components/feedback/AlertDialog.jsx"},{"name":"AlertDialogTitle","sourcePath":"components/feedback/AlertDialog.jsx"},{"name":"AlertDialogDescription","sourcePath":"components/feedback/AlertDialog.jsx"},{"name":"AlertDialogCancel","sourcePath":"components/feedback/AlertDialog.jsx"},{"name":"AlertDialogAction","sourcePath":"components/feedback/AlertDialog.jsx"},{"name":"Banner","sourcePath":"components/feedback/Banner.jsx"},{"name":"ConfirmDialog","sourcePath":"components/feedback/ConfirmDialog.jsx"},{"name":"Dialog","sourcePath":"components/feedback/Dialog.jsx"},{"name":"Loader","sourcePath":"components/feedback/Loader.jsx"},{"name":"Progress","sourcePath":"components/feedback/Progress.jsx"},{"name":"Spinner","sourcePath":"components/feedback/Spinner.jsx"},{"name":"Toast","sourcePath":"components/feedback/Toast.jsx"},{"name":"ToastStack","sourcePath":"components/feedback/Toast.jsx"},{"name":"Toaster","sourcePath":"components/feedback/Toast.jsx"},{"name":"Tooltip","sourcePath":"components/feedback/Tooltip.jsx"},{"name":"Attachment","sourcePath":"components/files/Attachment.jsx"},{"name":"AttachmentMedia","sourcePath":"components/files/Attachment.jsx"},{"name":"AttachmentContent","sourcePath":"components/files/Attachment.jsx"},{"name":"AttachmentTitle","sourcePath":"components/files/Attachment.jsx"},{"name":"AttachmentDescription","sourcePath":"components/files/Attachment.jsx"},{"name":"AttachmentActions","sourcePath":"components/files/Attachment.jsx"},{"name":"AttachmentAction","sourcePath":"components/files/Attachment.jsx"},{"name":"AttachmentTrigger","sourcePath":"components/files/Attachment.jsx"},{"name":"AttachmentGroup","sourcePath":"components/files/Attachment.jsx"},{"name":"FileDrop","sourcePath":"components/files/FileDrop.jsx"},{"name":"FileTile","sourcePath":"components/files/FileTile.jsx"},{"name":"FileTypeIcon","sourcePath":"components/files/FileTypeIcon.jsx"},{"name":"PaymentCard","sourcePath":"components/finance/PaymentCard.jsx"},{"name":"Button","sourcePath":"components/forms/Button.jsx"},{"name":"ButtonGroup","sourcePath":"components/forms/ButtonGroup.jsx"},{"name":"ButtonGroupText","sourcePath":"components/forms/ButtonGroup.jsx"},{"name":"ButtonGroupSeparator","sourcePath":"components/forms/ButtonGroup.jsx"},{"name":"ButtonTile","sourcePath":"components/forms/ButtonTile.jsx"},{"name":"ButtonTileGroup","sourcePath":"components/forms/ButtonTile.jsx"},{"name":"Checkbox","sourcePath":"components/forms/Checkbox.jsx"},{"name":"Combobox","sourcePath":"components/forms/Combobox.jsx"},{"name":"DigitEntry","sourcePath":"components/forms/DigitEntry.jsx"},{"name":"FormField","sourcePath":"components/forms/FormField.jsx"},{"name":"IconButton","sourcePath":"components/forms/IconButton.jsx"},{"name":"Input","sourcePath":"components/forms/Input.jsx"},{"name":"InputGroup","sourcePath":"components/forms/InputGroup.jsx"},{"name":"Label","sourcePath":"components/forms/Label.jsx"},{"name":"NativeSelect","sourcePath":"components/forms/NativeSelect.jsx"},{"name":"NativeSelectOption","sourcePath":"components/forms/NativeSelect.jsx"},{"name":"NativeSelectOptGroup","sourcePath":"components/forms/NativeSelect.jsx"},{"name":"NumberInput","sourcePath":"components/forms/NumberInput.jsx"},{"name":"Radio","sourcePath":"components/forms/Radio.jsx"},{"name":"Select","sourcePath":"components/forms/Select.jsx"},{"name":"Slider","sourcePath":"components/forms/Slider.jsx"},{"name":"Switch","sourcePath":"components/forms/Switch.jsx"},{"name":"Textarea","sourcePath":"components/forms/Textarea.jsx"},{"name":"Toggle","sourcePath":"components/forms/Toggle.jsx"},{"name":"ToggleGroup","sourcePath":"components/forms/Toggle.jsx"},{"name":"Icon","sourcePath":"components/icons/Icon.jsx"},{"name":"Breadcrumb","sourcePath":"components/navigation/Breadcrumbs.jsx"},{"name":"BreadcrumbList","sourcePath":"components/navigation/Breadcrumbs.jsx"},{"name":"BreadcrumbItem","sourcePath":"components/navigation/Breadcrumbs.jsx"},{"name":"BreadcrumbLink","sourcePath":"components/navigation/Breadcrumbs.jsx"},{"name":"BreadcrumbPage","sourcePath":"components/navigation/Breadcrumbs.jsx"},{"name":"BreadcrumbSeparator","sourcePath":"components/navigation/Breadcrumbs.jsx"},{"name":"BreadcrumbEllipsis","sourcePath":"components/navigation/Breadcrumbs.jsx"},{"name":"Breadcrumbs","sourcePath":"components/navigation/Breadcrumbs.jsx"},{"name":"Menubar","sourcePath":"components/navigation/Menubar.jsx"},{"name":"PageControl","sourcePath":"components/navigation/PageControl.jsx"},{"name":"Pagination","sourcePath":"components/navigation/Pagination.jsx"},{"name":"SegmentedControl","sourcePath":"components/navigation/SegmentedControl.jsx"},{"name":"SideNav","sourcePath":"components/navigation/SideNav.jsx"},{"name":"Steps","sourcePath":"components/navigation/Steps.jsx"},{"name":"Tabs","sourcePath":"components/navigation/Tabs.jsx"},{"name":"TopNav","sourcePath":"components/navigation/TopNav.jsx"},{"name":"CommandPalette","sourcePath":"components/overlay/CommandPalette.jsx"},{"name":"ContextMenu","sourcePath":"components/overlay/ContextMenu.jsx"},{"name":"Drawer","sourcePath":"components/overlay/Drawer.jsx"},{"name":"HoverCard","sourcePath":"components/overlay/HoverCard.jsx"},{"name":"Menu","sourcePath":"components/overlay/Menu.jsx"},{"name":"Popover","sourcePath":"components/overlay/Popover.jsx"},{"name":"Portal","sourcePath":"components/overlay/Portal.jsx"}],"publicHelpers":[{"name":"markerVariants","sourcePath":"components/ai/Marker.jsx"},{"name":"badgeVariants","sourcePath":"components/display/Badge.jsx"},{"name":"useDirection","sourcePath":"components/display/Direction.jsx"},{"name":"buttonVariants","sourcePath":"components/forms/Button.jsx"},{"name":"buttonGroupVariants","sourcePath":"components/forms/ButtonGroup.jsx"},{"name":"toggleVariants","sourcePath":"components/forms/Toggle.jsx"}],"sourceHashes":{"components/ai/AgentRun.jsx":"9740e0e168e0","components/ai/Bubble.jsx":"1fbd306ae6c7","components/ai/ChatMessage.jsx":"98920e696206","components/ai/Citation.jsx":"bdfe512cd8b0","components/ai/Confirmation.jsx":"e6baaf9f3831","components/ai/Conversation.jsx":"811020760647","components/ai/DocumentCard.jsx":"a7159ec86c9a","components/ai/FeedbackBar.jsx":"76ce9048b0f8","components/ai/GeneratedImage.jsx":"700da56ce3b7","components/ai/Marker.jsx":"4a8e54cf1022","components/ai/ModelSelector.jsx":"275bb7ef8ddc","components/ai/Player.jsx":"a8a820c1e259","components/ai/PromptComposer.jsx":"37273e81af0a","components/ai/PromptSteps.jsx":"428074df6cd1","components/ai/Reasoning.jsx":"6a54640d743d","components/ai/RichComposer.jsx":"cf26b89fd54b","components/ai/Sandbox.jsx":"78eacd199e92","components/ai/SelectionQuote.jsx":"2ba728772ad9","components/ai/SourceCard.jsx":"ca0d3eedf981","components/ai/Suggestions.jsx":"49b23d064460","components/ai/Task.jsx":"613d6bf8d05a","components/ai/Todo.jsx":"5c8653be0ea4","components/ai/ToolCall.jsx":"3c36ce2c9aab","components/ai/Transcript.jsx":"3ecad5218a37","components/ai/UsageMeter.jsx":"75c7a916706a","components/ai/WebPreview.jsx":"83ced5843df1","components/code/CodeBlock.jsx":"2160ce0d755d","components/code/Console.jsx":"5a150480bfb5","components/code/CopyField.jsx":"61f56f69d3d3","components/code/Diff.jsx":"0590d197b3b0","components/code/EnvList.jsx":"e25c72e2863c","components/code/Exception.jsx":"7c9828556417","components/code/Terminal.jsx":"5eda66e465b6","components/data/BarChart.jsx":"af57088eee06","components/data/DonutChart.jsx":"13aa95392d7a","components/data/EmptyState.jsx":"45244a08b427","components/data/KeyValueList.jsx":"3876b7c9581e","components/data/LineChart.jsx":"7cce718ff267","components/data/Skeleton.jsx":"1f61553d59d1","components/data/Sparkline.jsx":"5b2a0e67cdae","components/data/Stat.jsx":"aba92e72a0f8","components/data/StatusDot.jsx":"51ac4e89dcc7","components/data/Table.jsx":"fa81db0310bc","components/dates/Calendar.jsx":"f0174dbb465b","components/dates/DatePicker.jsx":"9ce510965f1b","components/dates/DateRangePicker.jsx":"7eb2f9c9a088","components/dates/TimePicker.jsx":"3fd5e28936c7","components/display/Accordion.jsx":"d1599a676217","components/display/AspectRatio.jsx":"91558029d648","components/display/Avatar.jsx":"4aa383ee6c4b","components/display/Badge.jsx":"5a1248c43eaf","components/display/Card.jsx":"3c59a39074d9","components/display/Carousel.jsx":"e42c6cf9c3fc","components/display/Collapsible.jsx":"cb3eb298cff5","components/display/Direction.jsx":"538f2d4cbf23","components/display/Divider.jsx":"ee51ca336cc7","components/display/Kbd.jsx":"443f2a9b8f89","components/display/Link.jsx":"4f2fc59ae0db","components/display/ListItem.jsx":"8528c6e482bb","components/display/Resizable.jsx":"e471c791a17c","components/display/ScrollArea.jsx":"2dbb55595939","components/display/Separator.jsx":"5c2b62cf7532","components/display/Tag.jsx":"e9dadb374567","components/display/Timeline.jsx":"6c5bff5f4dcf","components/display/Toolbar.jsx":"bbe6cffbcbab","components/display/TreeList.jsx":"69be2d21b8ad","components/feedback/Alert.jsx":"e05249f7f5a2","components/feedback/AlertDialog.jsx":"d31e73948f4f","components/feedback/Banner.jsx":"d1e818e8451a","components/feedback/ConfirmDialog.jsx":"ae69cb48e209","components/feedback/Dialog.jsx":"ce9ee42cf8f2","components/feedback/Loader.jsx":"02efacc86905","components/feedback/Progress.jsx":"0964f54f5644","components/feedback/Spinner.jsx":"8f26ebaeaed1","components/feedback/Toast.jsx":"3ce2ec55ef4d","components/feedback/Tooltip.jsx":"b39f872b1a14","components/files/Attachment.jsx":"bd63ebd29171","components/files/FileDrop.jsx":"737632ac07db","components/files/FileTile.jsx":"28af04d1303b","components/files/FileTypeIcon.jsx":"3bcdf5ca7eb9","components/finance/PaymentCard.jsx":"74fa271e12f2","components/forms/Button.jsx":"b75f2a023e92","components/forms/ButtonGroup.jsx":"df7d04210646","components/forms/ButtonTile.jsx":"1508984c0c5c","components/forms/Checkbox.jsx":"e2735e29e843","components/forms/Combobox.jsx":"724b03db0032","components/forms/DigitEntry.jsx":"74f16f2d7bf8","components/forms/FormField.jsx":"4219a23c3754","components/forms/IconButton.jsx":"7843bc8a3740","components/forms/Input.jsx":"614640ceb8db","components/forms/InputGroup.jsx":"6d438fb0a2ea","components/forms/Label.jsx":"f0bfcb5ae210","components/forms/NativeSelect.jsx":"caa858aa46d0","components/forms/NumberInput.jsx":"134d8cf88a75","components/forms/Radio.jsx":"c07e4cb51feb","components/forms/Select.jsx":"ac3b6f4a2b4f","components/forms/Slider.jsx":"a2c5c56d442b","components/forms/Switch.jsx":"5391a0cdb9f9","components/forms/Textarea.jsx":"928735f70e65","components/forms/Toggle.jsx":"a004dd57c133","components/icons/Icon.jsx":"65c4206c8479","components/navigation/Breadcrumbs.jsx":"2e53cdf7a4e9","components/navigation/Menubar.jsx":"950604788590","components/navigation/PageControl.jsx":"8c5bfdc21407","components/navigation/Pagination.jsx":"09d35b923287","components/navigation/SegmentedControl.jsx":"ae08ad97a9a2","components/navigation/SideNav.jsx":"00851e64baa2","components/navigation/Steps.jsx":"45c6c1162b22","components/navigation/Tabs.jsx":"d5fa83661ffc","components/navigation/TopNav.jsx":"967b11093c20","components/overlay/CommandPalette.jsx":"b07b4f28cb8c","components/overlay/ContextMenu.jsx":"5053709a1ee5","components/overlay/Drawer.jsx":"18c562fe05c3","components/overlay/HoverCard.jsx":"7438ba615e77","components/overlay/Menu.jsx":"3119fa73b187","components/overlay/Popover.jsx":"cdede0714d8e","components/overlay/Portal.jsx":"3819af4bd7c7","showcases/agent/AgentScreen.jsx":"87f60f9116cc","showcases/auth/AuthScreens.jsx":"b3583b149df5","showcases/console/CustomersScreen.jsx":"a8a080a80d9e","showcases/console/ExtraScreens.jsx":"1e7a048ab690","showcases/console/OverviewScreen.jsx":"34b01f22bb52","showcases/console/SettingsScreen.jsx":"1d67397e26b4","showcases/console/Shell.jsx":"f5dd862d2098","showcases/docs/DocsScreen.jsx":"faa44c30040d","showcases/infra/InfraScreen.jsx":"f95eefa85b8d","showcases/tools/ToolsScreen.jsx":"bc6efc0184c2","showcases/trader/TraderScreen.jsx":"12e5273b9894","showcases/website/Sections.jsx":"3f14d6a12c71"},"inlinedExternals":[],"unexposedExports":[{"name":"computeDiff","sourcePath":"components/code/Diff.jsx"},{"name":"cssPct","sourcePath":"components/forms/Button.jsx"},{"name":"formatTime","sourcePath":"components/ai/Player.jsx"},{"name":"injectEfCss","sourcePath":"components/forms/Button.jsx"},{"name":"mergeRefs","sourcePath":"components/forms/Button.jsx"},{"name":"prefersReducedMotion","sourcePath":"components/forms/Button.jsx"},{"name":"useAnchoredStyle","sourcePath":"components/overlay/Portal.jsx"},{"name":"useFieldProps","sourcePath":"components/forms/FormField.jsx"},{"name":"useFormState","sourcePath":"components/forms/FormField.jsx"},{"name":"useIsoLayoutEffect","sourcePath":"components/forms/Button.jsx"},{"name":"useToast","sourcePath":"components/feedback/Toast.jsx"}]} */
+/* @ds-bundle: {"format":4,"namespace":"EfolusiDesignSystem_4ffc3d","components":[{"name":"AgentRun","sourcePath":"components/ai/AgentRun.jsx"},{"name":"BubbleGroup","sourcePath":"components/ai/Bubble.jsx"},{"name":"Bubble","sourcePath":"components/ai/Bubble.jsx"},{"name":"BubbleContent","sourcePath":"components/ai/Bubble.jsx"},{"name":"BubbleReactions","sourcePath":"components/ai/Bubble.jsx"},{"name":"ChatMessage","sourcePath":"components/ai/ChatMessage.jsx"},{"name":"Citation","sourcePath":"components/ai/Citation.jsx"},{"name":"SourceList","sourcePath":"components/ai/Citation.jsx"},{"name":"Confirmation","sourcePath":"components/ai/Confirmation.jsx"},{"name":"Conversation","sourcePath":"components/ai/Conversation.jsx"},{"name":"DocumentCard","sourcePath":"components/ai/DocumentCard.jsx"},{"name":"FeedbackBar","sourcePath":"components/ai/FeedbackBar.jsx"},{"name":"GeneratedImage","sourcePath":"components/ai/GeneratedImage.jsx"},{"name":"Marker","sourcePath":"components/ai/Marker.jsx"},{"name":"MarkerIcon","sourcePath":"components/ai/Marker.jsx"},{"name":"MarkerContent","sourcePath":"components/ai/Marker.jsx"},{"name":"ModelSelector","sourcePath":"components/ai/ModelSelector.jsx"},{"name":"Player","sourcePath":"components/ai/Player.jsx"},{"name":"PromptComposer","sourcePath":"components/ai/PromptComposer.jsx"},{"name":"PromptSteps","sourcePath":"components/ai/PromptSteps.jsx"},{"name":"Reasoning","sourcePath":"components/ai/Reasoning.jsx"},{"name":"RichComposer","sourcePath":"components/ai/RichComposer.jsx"},{"name":"Sandbox","sourcePath":"components/ai/Sandbox.jsx"},{"name":"SelectionQuote","sourcePath":"components/ai/SelectionQuote.jsx"},{"name":"SourceCard","sourcePath":"components/ai/SourceCard.jsx"},{"name":"Suggestions","sourcePath":"components/ai/Suggestions.jsx"},{"name":"Task","sourcePath":"components/ai/Task.jsx"},{"name":"Todo","sourcePath":"components/ai/Todo.jsx"},{"name":"ToolCall","sourcePath":"components/ai/ToolCall.jsx"},{"name":"Transcript","sourcePath":"components/ai/Transcript.jsx"},{"name":"UsageMeter","sourcePath":"components/ai/UsageMeter.jsx"},{"name":"WebPreview","sourcePath":"components/ai/WebPreview.jsx"},{"name":"CodeBlock","sourcePath":"components/code/CodeBlock.jsx"},{"name":"Console","sourcePath":"components/code/Console.jsx"},{"name":"CopyField","sourcePath":"components/code/CopyField.jsx"},{"name":"Diff","sourcePath":"components/code/Diff.jsx"},{"name":"EnvList","sourcePath":"components/code/EnvList.jsx"},{"name":"Exception","sourcePath":"components/code/Exception.jsx"},{"name":"Terminal","sourcePath":"components/code/Terminal.jsx"},{"name":"BarChart","sourcePath":"components/data/BarChart.jsx"},{"name":"DonutChart","sourcePath":"components/data/DonutChart.jsx"},{"name":"Empty","sourcePath":"components/data/EmptyState.jsx"},{"name":"EmptyHeader","sourcePath":"components/data/EmptyState.jsx"},{"name":"EmptyMedia","sourcePath":"components/data/EmptyState.jsx"},{"name":"EmptyTitle","sourcePath":"components/data/EmptyState.jsx"},{"name":"EmptyDescription","sourcePath":"components/data/EmptyState.jsx"},{"name":"EmptyContent","sourcePath":"components/data/EmptyState.jsx"},{"name":"EmptyState","sourcePath":"components/data/EmptyState.jsx"},{"name":"KeyValueList","sourcePath":"components/data/KeyValueList.jsx"},{"name":"LineChart","sourcePath":"components/data/LineChart.jsx"},{"name":"Skeleton","sourcePath":"components/data/Skeleton.jsx"},{"name":"Sparkline","sourcePath":"components/data/Sparkline.jsx"},{"name":"Stat","sourcePath":"components/data/Stat.jsx"},{"name":"StatusDot","sourcePath":"components/data/StatusDot.jsx"},{"name":"Table","sourcePath":"components/data/Table.jsx"},{"name":"Calendar","sourcePath":"components/dates/Calendar.jsx"},{"name":"DatePicker","sourcePath":"components/dates/DatePicker.jsx"},{"name":"DateRangePicker","sourcePath":"components/dates/DateRangePicker.jsx"},{"name":"TimePicker","sourcePath":"components/dates/TimePicker.jsx"},{"name":"Accordion","sourcePath":"components/display/Accordion.jsx"},{"name":"AccordionItem","sourcePath":"components/display/Accordion.jsx"},{"name":"AccordionTrigger","sourcePath":"components/display/Accordion.jsx"},{"name":"AccordionContent","sourcePath":"components/display/Accordion.jsx"},{"name":"AspectRatio","sourcePath":"components/display/AspectRatio.jsx"},{"name":"Avatar","sourcePath":"components/display/Avatar.jsx"},{"name":"AvatarImage","sourcePath":"components/display/Avatar.jsx"},{"name":"AvatarFallback","sourcePath":"components/display/Avatar.jsx"},{"name":"AvatarBadge","sourcePath":"components/display/Avatar.jsx"},{"name":"AvatarGroup","sourcePath":"components/display/Avatar.jsx"},{"name":"AvatarGroupCount","sourcePath":"components/display/Avatar.jsx"},{"name":"Badge","sourcePath":"components/display/Badge.jsx"},{"name":"CardHeader","sourcePath":"components/display/Card.jsx"},{"name":"CardTitle","sourcePath":"components/display/Card.jsx"},{"name":"CardDescription","sourcePath":"components/display/Card.jsx"},{"name":"CardAction","sourcePath":"components/display/Card.jsx"},{"name":"CardContent","sourcePath":"components/display/Card.jsx"},{"name":"CardFooter","sourcePath":"components/display/Card.jsx"},{"name":"Card","sourcePath":"components/display/Card.jsx"},{"name":"Carousel","sourcePath":"components/display/Carousel.jsx"},{"name":"Collapsible","sourcePath":"components/display/Collapsible.jsx"},{"name":"CollapsibleTrigger","sourcePath":"components/display/Collapsible.jsx"},{"name":"CollapsibleContent","sourcePath":"components/display/Collapsible.jsx"},{"name":"DirectionProvider","sourcePath":"components/display/Direction.jsx"},{"name":"Divider","sourcePath":"components/display/Divider.jsx"},{"name":"Kbd","sourcePath":"components/display/Kbd.jsx"},{"name":"KbdGroup","sourcePath":"components/display/Kbd.jsx"},{"name":"Link","sourcePath":"components/display/Link.jsx"},{"name":"ListItem","sourcePath":"components/display/ListItem.jsx"},{"name":"Resizable","sourcePath":"components/display/Resizable.jsx"},{"name":"ScrollArea","sourcePath":"components/display/ScrollArea.jsx"},{"name":"Separator","sourcePath":"components/display/Separator.jsx"},{"name":"Tag","sourcePath":"components/display/Tag.jsx"},{"name":"Timeline","sourcePath":"components/display/Timeline.jsx"},{"name":"Toolbar","sourcePath":"components/display/Toolbar.jsx"},{"name":"TreeList","sourcePath":"components/display/TreeList.jsx"},{"name":"Alert","sourcePath":"components/feedback/Alert.jsx"},{"name":"AlertTitle","sourcePath":"components/feedback/Alert.jsx"},{"name":"AlertDescription","sourcePath":"components/feedback/Alert.jsx"},{"name":"AlertDialog","sourcePath":"components/feedback/AlertDialog.jsx"},{"name":"AlertDialogTrigger","sourcePath":"components/feedback/AlertDialog.jsx"},{"name":"AlertDialogPortal","sourcePath":"components/feedback/AlertDialog.jsx"},{"name":"AlertDialogOverlay","sourcePath":"components/feedback/AlertDialog.jsx"},{"name":"AlertDialogContent","sourcePath":"components/feedback/AlertDialog.jsx"},{"name":"AlertDialogHeader","sourcePath":"components/feedback/AlertDialog.jsx"},{"name":"AlertDialogFooter","sourcePath":"components/feedback/AlertDialog.jsx"},{"name":"AlertDialogMedia","sourcePath":"components/feedback/AlertDialog.jsx"},{"name":"AlertDialogTitle","sourcePath":"components/feedback/AlertDialog.jsx"},{"name":"AlertDialogDescription","sourcePath":"components/feedback/AlertDialog.jsx"},{"name":"AlertDialogCancel","sourcePath":"components/feedback/AlertDialog.jsx"},{"name":"AlertDialogAction","sourcePath":"components/feedback/AlertDialog.jsx"},{"name":"Banner","sourcePath":"components/feedback/Banner.jsx"},{"name":"ConfirmDialog","sourcePath":"components/feedback/ConfirmDialog.jsx"},{"name":"Dialog","sourcePath":"components/feedback/Dialog.jsx"},{"name":"DialogTrigger","sourcePath":"components/feedback/Dialog.jsx"},{"name":"DialogPortal","sourcePath":"components/feedback/Dialog.jsx"},{"name":"DialogOverlay","sourcePath":"components/feedback/Dialog.jsx"},{"name":"DialogClose","sourcePath":"components/feedback/Dialog.jsx"},{"name":"DialogContent","sourcePath":"components/feedback/Dialog.jsx"},{"name":"DialogHeader","sourcePath":"components/feedback/Dialog.jsx"},{"name":"DialogFooter","sourcePath":"components/feedback/Dialog.jsx"},{"name":"DialogTitle","sourcePath":"components/feedback/Dialog.jsx"},{"name":"DialogDescription","sourcePath":"components/feedback/Dialog.jsx"},{"name":"Loader","sourcePath":"components/feedback/Loader.jsx"},{"name":"Progress","sourcePath":"components/feedback/Progress.jsx"},{"name":"Spinner","sourcePath":"components/feedback/Spinner.jsx"},{"name":"Toast","sourcePath":"components/feedback/Toast.jsx"},{"name":"ToastStack","sourcePath":"components/feedback/Toast.jsx"},{"name":"Toaster","sourcePath":"components/feedback/Toast.jsx"},{"name":"Tooltip","sourcePath":"components/feedback/Tooltip.jsx"},{"name":"Attachment","sourcePath":"components/files/Attachment.jsx"},{"name":"AttachmentMedia","sourcePath":"components/files/Attachment.jsx"},{"name":"AttachmentContent","sourcePath":"components/files/Attachment.jsx"},{"name":"AttachmentTitle","sourcePath":"components/files/Attachment.jsx"},{"name":"AttachmentDescription","sourcePath":"components/files/Attachment.jsx"},{"name":"AttachmentActions","sourcePath":"components/files/Attachment.jsx"},{"name":"AttachmentAction","sourcePath":"components/files/Attachment.jsx"},{"name":"AttachmentTrigger","sourcePath":"components/files/Attachment.jsx"},{"name":"AttachmentGroup","sourcePath":"components/files/Attachment.jsx"},{"name":"FileDrop","sourcePath":"components/files/FileDrop.jsx"},{"name":"FileTile","sourcePath":"components/files/FileTile.jsx"},{"name":"FileTypeIcon","sourcePath":"components/files/FileTypeIcon.jsx"},{"name":"PaymentCard","sourcePath":"components/finance/PaymentCard.jsx"},{"name":"Button","sourcePath":"components/forms/Button.jsx"},{"name":"ButtonGroup","sourcePath":"components/forms/ButtonGroup.jsx"},{"name":"ButtonGroupText","sourcePath":"components/forms/ButtonGroup.jsx"},{"name":"ButtonGroupSeparator","sourcePath":"components/forms/ButtonGroup.jsx"},{"name":"ButtonTile","sourcePath":"components/forms/ButtonTile.jsx"},{"name":"ButtonTileGroup","sourcePath":"components/forms/ButtonTile.jsx"},{"name":"Checkbox","sourcePath":"components/forms/Checkbox.jsx"},{"name":"Combobox","sourcePath":"components/forms/Combobox.jsx"},{"name":"DigitEntry","sourcePath":"components/forms/DigitEntry.jsx"},{"name":"FormField","sourcePath":"components/forms/FormField.jsx"},{"name":"IconButton","sourcePath":"components/forms/IconButton.jsx"},{"name":"Input","sourcePath":"components/forms/Input.jsx"},{"name":"InputGroup","sourcePath":"components/forms/InputGroup.jsx"},{"name":"InputGroupAddon","sourcePath":"components/forms/InputGroup.jsx"},{"name":"InputGroupButton","sourcePath":"components/forms/InputGroup.jsx"},{"name":"InputGroupInput","sourcePath":"components/forms/InputGroup.jsx"},{"name":"InputGroupTextarea","sourcePath":"components/forms/InputGroup.jsx"},{"name":"InputGroupText","sourcePath":"components/forms/InputGroup.jsx"},{"name":"Label","sourcePath":"components/forms/Label.jsx"},{"name":"NativeSelect","sourcePath":"components/forms/NativeSelect.jsx"},{"name":"NativeSelectOption","sourcePath":"components/forms/NativeSelect.jsx"},{"name":"NativeSelectOptGroup","sourcePath":"components/forms/NativeSelect.jsx"},{"name":"NumberInput","sourcePath":"components/forms/NumberInput.jsx"},{"name":"Radio","sourcePath":"components/forms/Radio.jsx"},{"name":"Select","sourcePath":"components/forms/Select.jsx"},{"name":"Slider","sourcePath":"components/forms/Slider.jsx"},{"name":"Switch","sourcePath":"components/forms/Switch.jsx"},{"name":"Textarea","sourcePath":"components/forms/Textarea.jsx"},{"name":"Toggle","sourcePath":"components/forms/Toggle.jsx"},{"name":"ToggleGroup","sourcePath":"components/forms/Toggle.jsx"},{"name":"Icon","sourcePath":"components/icons/Icon.jsx"},{"name":"Breadcrumb","sourcePath":"components/navigation/Breadcrumbs.jsx"},{"name":"BreadcrumbList","sourcePath":"components/navigation/Breadcrumbs.jsx"},{"name":"BreadcrumbItem","sourcePath":"components/navigation/Breadcrumbs.jsx"},{"name":"BreadcrumbLink","sourcePath":"components/navigation/Breadcrumbs.jsx"},{"name":"BreadcrumbPage","sourcePath":"components/navigation/Breadcrumbs.jsx"},{"name":"BreadcrumbSeparator","sourcePath":"components/navigation/Breadcrumbs.jsx"},{"name":"BreadcrumbEllipsis","sourcePath":"components/navigation/Breadcrumbs.jsx"},{"name":"Breadcrumbs","sourcePath":"components/navigation/Breadcrumbs.jsx"},{"name":"Menubar","sourcePath":"components/navigation/Menubar.jsx"},{"name":"PageControl","sourcePath":"components/navigation/PageControl.jsx"},{"name":"Pagination","sourcePath":"components/navigation/Pagination.jsx"},{"name":"SegmentedControl","sourcePath":"components/navigation/SegmentedControl.jsx"},{"name":"SideNav","sourcePath":"components/navigation/SideNav.jsx"},{"name":"Steps","sourcePath":"components/navigation/Steps.jsx"},{"name":"Tabs","sourcePath":"components/navigation/Tabs.jsx"},{"name":"TopNav","sourcePath":"components/navigation/TopNav.jsx"},{"name":"CommandPalette","sourcePath":"components/overlay/CommandPalette.jsx"},{"name":"ContextMenu","sourcePath":"components/overlay/ContextMenu.jsx"},{"name":"Drawer","sourcePath":"components/overlay/Drawer.jsx"},{"name":"HoverCard","sourcePath":"components/overlay/HoverCard.jsx"},{"name":"Menu","sourcePath":"components/overlay/Menu.jsx"},{"name":"Popover","sourcePath":"components/overlay/Popover.jsx"},{"name":"Portal","sourcePath":"components/overlay/Portal.jsx"}],"publicHelpers":[{"name":"markerVariants","sourcePath":"components/ai/Marker.jsx"},{"name":"badgeVariants","sourcePath":"components/display/Badge.jsx"},{"name":"useDirection","sourcePath":"components/display/Direction.jsx"},{"name":"buttonVariants","sourcePath":"components/forms/Button.jsx"},{"name":"buttonGroupVariants","sourcePath":"components/forms/ButtonGroup.jsx"},{"name":"toggleVariants","sourcePath":"components/forms/Toggle.jsx"}],"sourceHashes":{"components/ai/AgentRun.jsx":"9740e0e168e0","components/ai/Bubble.jsx":"1fbd306ae6c7","components/ai/ChatMessage.jsx":"98920e696206","components/ai/Citation.jsx":"bdfe512cd8b0","components/ai/Confirmation.jsx":"e6baaf9f3831","components/ai/Conversation.jsx":"811020760647","components/ai/DocumentCard.jsx":"a7159ec86c9a","components/ai/FeedbackBar.jsx":"76ce9048b0f8","components/ai/GeneratedImage.jsx":"700da56ce3b7","components/ai/Marker.jsx":"4a8e54cf1022","components/ai/ModelSelector.jsx":"275bb7ef8ddc","components/ai/Player.jsx":"a8a820c1e259","components/ai/PromptComposer.jsx":"37273e81af0a","components/ai/PromptSteps.jsx":"428074df6cd1","components/ai/Reasoning.jsx":"6a54640d743d","components/ai/RichComposer.jsx":"cf26b89fd54b","components/ai/Sandbox.jsx":"78eacd199e92","components/ai/SelectionQuote.jsx":"2ba728772ad9","components/ai/SourceCard.jsx":"ca0d3eedf981","components/ai/Suggestions.jsx":"49b23d064460","components/ai/Task.jsx":"613d6bf8d05a","components/ai/Todo.jsx":"5c8653be0ea4","components/ai/ToolCall.jsx":"3c36ce2c9aab","components/ai/Transcript.jsx":"3ecad5218a37","components/ai/UsageMeter.jsx":"75c7a916706a","components/ai/WebPreview.jsx":"83ced5843df1","components/code/CodeBlock.jsx":"2160ce0d755d","components/code/Console.jsx":"5a150480bfb5","components/code/CopyField.jsx":"61f56f69d3d3","components/code/Diff.jsx":"0590d197b3b0","components/code/EnvList.jsx":"e25c72e2863c","components/code/Exception.jsx":"7c9828556417","components/code/Terminal.jsx":"5eda66e465b6","components/data/BarChart.jsx":"af57088eee06","components/data/DonutChart.jsx":"13aa95392d7a","components/data/EmptyState.jsx":"dfddad4e80a3","components/data/KeyValueList.jsx":"3876b7c9581e","components/data/LineChart.jsx":"7cce718ff267","components/data/Skeleton.jsx":"1f61553d59d1","components/data/Sparkline.jsx":"5b2a0e67cdae","components/data/Stat.jsx":"aba92e72a0f8","components/data/StatusDot.jsx":"51ac4e89dcc7","components/data/Table.jsx":"fa81db0310bc","components/dates/Calendar.jsx":"f0174dbb465b","components/dates/DatePicker.jsx":"9ce510965f1b","components/dates/DateRangePicker.jsx":"7eb2f9c9a088","components/dates/TimePicker.jsx":"3fd5e28936c7","components/display/Accordion.jsx":"d1599a676217","components/display/AspectRatio.jsx":"91558029d648","components/display/Avatar.jsx":"4aa383ee6c4b","components/display/Badge.jsx":"5a1248c43eaf","components/display/Card.jsx":"3c59a39074d9","components/display/Carousel.jsx":"e42c6cf9c3fc","components/display/Collapsible.jsx":"cb3eb298cff5","components/display/Direction.jsx":"538f2d4cbf23","components/display/Divider.jsx":"ee51ca336cc7","components/display/Kbd.jsx":"443f2a9b8f89","components/display/Link.jsx":"4f2fc59ae0db","components/display/ListItem.jsx":"8528c6e482bb","components/display/Resizable.jsx":"e471c791a17c","components/display/ScrollArea.jsx":"2dbb55595939","components/display/Separator.jsx":"5c2b62cf7532","components/display/Tag.jsx":"e9dadb374567","components/display/Timeline.jsx":"6c5bff5f4dcf","components/display/Toolbar.jsx":"bbe6cffbcbab","components/display/TreeList.jsx":"69be2d21b8ad","components/feedback/Alert.jsx":"e05249f7f5a2","components/feedback/AlertDialog.jsx":"d31e73948f4f","components/feedback/Banner.jsx":"d1e818e8451a","components/feedback/ConfirmDialog.jsx":"ae69cb48e209","components/feedback/Dialog.jsx":"aeb4a8707687","components/feedback/Loader.jsx":"02efacc86905","components/feedback/Progress.jsx":"0964f54f5644","components/feedback/Spinner.jsx":"8f26ebaeaed1","components/feedback/Toast.jsx":"3ce2ec55ef4d","components/feedback/Tooltip.jsx":"b39f872b1a14","components/files/Attachment.jsx":"bd63ebd29171","components/files/FileDrop.jsx":"737632ac07db","components/files/FileTile.jsx":"28af04d1303b","components/files/FileTypeIcon.jsx":"3bcdf5ca7eb9","components/finance/PaymentCard.jsx":"74fa271e12f2","components/forms/Button.jsx":"b75f2a023e92","components/forms/ButtonGroup.jsx":"df7d04210646","components/forms/ButtonTile.jsx":"1508984c0c5c","components/forms/Checkbox.jsx":"e2735e29e843","components/forms/Combobox.jsx":"724b03db0032","components/forms/DigitEntry.jsx":"74f16f2d7bf8","components/forms/FormField.jsx":"4219a23c3754","components/forms/IconButton.jsx":"7843bc8a3740","components/forms/Input.jsx":"614640ceb8db","components/forms/InputGroup.jsx":"757871abd9a7","components/forms/Label.jsx":"f0bfcb5ae210","components/forms/NativeSelect.jsx":"caa858aa46d0","components/forms/NumberInput.jsx":"134d8cf88a75","components/forms/Radio.jsx":"c07e4cb51feb","components/forms/Select.jsx":"ac3b6f4a2b4f","components/forms/Slider.jsx":"a2c5c56d442b","components/forms/Switch.jsx":"5391a0cdb9f9","components/forms/Textarea.jsx":"928735f70e65","components/forms/Toggle.jsx":"a004dd57c133","components/icons/Icon.jsx":"65c4206c8479","components/navigation/Breadcrumbs.jsx":"2e53cdf7a4e9","components/navigation/Menubar.jsx":"950604788590","components/navigation/PageControl.jsx":"8c5bfdc21407","components/navigation/Pagination.jsx":"09d35b923287","components/navigation/SegmentedControl.jsx":"ae08ad97a9a2","components/navigation/SideNav.jsx":"00851e64baa2","components/navigation/Steps.jsx":"45c6c1162b22","components/navigation/Tabs.jsx":"d5fa83661ffc","components/navigation/TopNav.jsx":"967b11093c20","components/overlay/CommandPalette.jsx":"b07b4f28cb8c","components/overlay/ContextMenu.jsx":"5053709a1ee5","components/overlay/Drawer.jsx":"18c562fe05c3","components/overlay/HoverCard.jsx":"7438ba615e77","components/overlay/Menu.jsx":"3119fa73b187","components/overlay/Popover.jsx":"cdede0714d8e","components/overlay/Portal.jsx":"3819af4bd7c7","showcases/agent/AgentScreen.jsx":"87f60f9116cc","showcases/auth/AuthScreens.jsx":"b3583b149df5","showcases/console/CustomersScreen.jsx":"a8a080a80d9e","showcases/console/ExtraScreens.jsx":"1e7a048ab690","showcases/console/OverviewScreen.jsx":"34b01f22bb52","showcases/console/SettingsScreen.jsx":"1d67397e26b4","showcases/console/Shell.jsx":"f5dd862d2098","showcases/docs/DocsScreen.jsx":"faa44c30040d","showcases/infra/InfraScreen.jsx":"f95eefa85b8d","showcases/tools/ToolsScreen.jsx":"bc6efc0184c2","showcases/trader/TraderScreen.jsx":"12e5273b9894","showcases/website/Sections.jsx":"3f14d6a12c71"},"inlinedExternals":[],"unexposedExports":[{"name":"computeDiff","sourcePath":"components/code/Diff.jsx"},{"name":"cssPct","sourcePath":"components/forms/Button.jsx"},{"name":"formatTime","sourcePath":"components/ai/Player.jsx"},{"name":"injectEfCss","sourcePath":"components/forms/Button.jsx"},{"name":"mergeRefs","sourcePath":"components/forms/Button.jsx"},{"name":"prefersReducedMotion","sourcePath":"components/forms/Button.jsx"},{"name":"useAnchoredStyle","sourcePath":"components/overlay/Portal.jsx"},{"name":"useFieldProps","sourcePath":"components/forms/FormField.jsx"},{"name":"useFormState","sourcePath":"components/forms/FormField.jsx"},{"name":"useIsoLayoutEffect","sourcePath":"components/forms/Button.jsx"},{"name":"useToast","sourcePath":"components/feedback/Toast.jsx"}]} */
 
 (() => {
 
@@ -3950,41 +3950,102 @@ Object.assign(__ds_scope, { DonutChart });
 try { (() => {
 function _extends() { return _extends = Object.assign ? Object.assign.bind() : function (n) { for (var e = 1; e < arguments.length; e++) { var t = arguments[e]; for (var r in t) ({}).hasOwnProperty.call(t, r) && (n[r] = t[r]); } return n; }, _extends.apply(null, arguments); }
 const CSS = `
-.ef-empty{display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:48px 24px;gap:4px}
-.ef-empty--bordered{border:1px dashed var(--sand-300);border-radius:var(--radius-md)}
-.ef-empty__icon{color:var(--sand-400);margin-bottom:10px}
-.ef-empty__title{font-size:var(--text-lg);font-weight:var(--weight-semibold);color:var(--text-primary)}
-.ef-empty__desc{font-size:var(--text-sm);color:var(--text-muted);max-width:340px;line-height:1.55}
-.ef-empty__action{margin-top:14px}
+.ef-empty{display:flex;min-width:0;flex-direction:column;align-items:center;justify-content:center;gap:24px;padding:48px 24px;text-align:center}
+.ef-empty--bordered{border:1px dashed var(--border-default);border-radius:var(--radius-md)}
+.ef-empty__header{display:flex;max-width:420px;flex-direction:column;align-items:center;gap:6px}
+.ef-empty__media{display:flex;align-items:center;justify-content:center;color:var(--text-muted)}
+.ef-empty__media[data-variant="icon"]{width:40px;height:40px;margin-block-end:6px;border-radius:var(--radius-md);background:var(--surface-sunken);color:var(--text-secondary)}
+.ef-empty__title{margin:0;font-size:var(--text-lg);font-weight:var(--weight-semibold);line-height:var(--leading-tight);color:var(--text-primary)}
+.ef-empty__description{max-width:380px;font-size:var(--text-sm);line-height:var(--leading-relaxed);color:var(--text-muted);text-wrap:balance}
+.ef-empty__content{display:flex;max-width:420px;flex-direction:column;align-items:center;gap:8px}
 `;
-function EmptyState({
+function cx(base, className) {
+  return base + (className ? ` ${className}` : '');
+}
+const Empty = React.forwardRef(function Empty({
+  className,
+  ...rest
+}, ref) {
+  __ds_scope.injectEfCss('ef-css-empty', CSS);
+  return /*#__PURE__*/React.createElement("div", _extends({}, rest, {
+    ref: ref,
+    "data-slot": "empty",
+    className: cx('ef-empty', className)
+  }));
+});
+const EmptyHeader = React.forwardRef(function EmptyHeader({
+  className,
+  ...rest
+}, ref) {
+  return /*#__PURE__*/React.createElement("div", _extends({}, rest, {
+    ref: ref,
+    "data-slot": "empty-header",
+    className: cx('ef-empty__header', className)
+  }));
+});
+const EmptyMedia = React.forwardRef(function EmptyMedia({
+  variant = 'default',
+  className,
+  ...rest
+}, ref) {
+  return /*#__PURE__*/React.createElement("div", _extends({}, rest, {
+    ref: ref,
+    "data-slot": "empty-media",
+    "data-variant": variant === 'icon' ? 'icon' : 'default',
+    className: cx('ef-empty__media', className)
+  }));
+});
+const EmptyTitle = React.forwardRef(function EmptyTitle({
+  className,
+  ...rest
+}, ref) {
+  return /*#__PURE__*/React.createElement("div", _extends({}, rest, {
+    ref: ref,
+    "data-slot": "empty-title",
+    className: cx('ef-empty__title', className)
+  }));
+});
+const EmptyDescription = React.forwardRef(function EmptyDescription({
+  className,
+  ...rest
+}, ref) {
+  return /*#__PURE__*/React.createElement("div", _extends({}, rest, {
+    ref: ref,
+    "data-slot": "empty-description",
+    className: cx('ef-empty__description', className)
+  }));
+});
+const EmptyContent = React.forwardRef(function EmptyContent({
+  className,
+  ...rest
+}, ref) {
+  return /*#__PURE__*/React.createElement("div", _extends({}, rest, {
+    ref: ref,
+    "data-slot": "empty-content",
+    className: cx('ef-empty__content', className)
+  }));
+});
+/** Legacy convenience adapter retained for existing Meridian applications. */
+const EmptyState = React.forwardRef(function EmptyState({
   icon = 'inbox',
   title,
   description,
   action,
   bordered,
-  style,
   className,
   ...rest
-}) {
-  __ds_scope.injectEfCss('ef-css-empty', CSS);
-  return /*#__PURE__*/React.createElement("div", _extends({}, rest, {
-    className: `ef-empty${bordered ? ' ef-empty--bordered' : ''}${className ? ' ' + className : ''}`,
-    style: style
-  }), /*#__PURE__*/React.createElement("span", {
-    className: "ef-empty__icon"
+}, ref) {
+  return /*#__PURE__*/React.createElement(Empty, _extends({}, rest, {
+    ref: ref,
+    className: `${bordered ? 'ef-empty--bordered' : ''}${className ? ` ${className}` : ''}`
+  }), /*#__PURE__*/React.createElement(EmptyHeader, null, /*#__PURE__*/React.createElement(EmptyMedia, {
+    variant: "icon"
   }, /*#__PURE__*/React.createElement(__ds_scope.Icon, {
     name: icon,
-    size: 28
-  })), /*#__PURE__*/React.createElement("div", {
-    className: "ef-empty__title"
-  }, title), description ? /*#__PURE__*/React.createElement("div", {
-    className: "ef-empty__desc"
-  }, description) : null, action ? /*#__PURE__*/React.createElement("div", {
-    className: "ef-empty__action"
-  }, action) : null);
-}
-Object.assign(__ds_scope, { EmptyState });
+    size: 24
+  })), /*#__PURE__*/React.createElement(EmptyTitle, null, title), description ? /*#__PURE__*/React.createElement(EmptyDescription, null, description) : null), action ? /*#__PURE__*/React.createElement(EmptyContent, null, action) : null);
+});
+Object.assign(__ds_scope, { Empty, EmptyHeader, EmptyMedia, EmptyTitle, EmptyDescription, EmptyContent, EmptyState });
 })(); } catch (e) { __ds_ns.__errors.push({ path: "components/data/EmptyState.jsx", error: String((e && e.message) || e) }); }
 
 // components/data/KeyValueList.jsx
@@ -7827,118 +7888,6 @@ function Banner({
 Object.assign(__ds_scope, { Banner });
 })(); } catch (e) { __ds_ns.__errors.push({ path: "components/feedback/Banner.jsx", error: String((e && e.message) || e) }); }
 
-// components/feedback/Dialog.jsx
-try { (() => {
-function _extends() { return _extends = Object.assign ? Object.assign.bind() : function (n) { for (var e = 1; e < arguments.length; e++) { var t = arguments[e]; for (var r in t) ({}).hasOwnProperty.call(t, r) && (n[r] = t[r]); } return n; }, _extends.apply(null, arguments); }
-const CSS = `
-.ef-dialog__overlay{position:fixed;inset:0;background:var(--overlay-scrim);display:flex;align-items:center;justify-content:center;padding:24px;z-index:var(--z-overlay);animation:ef-fade var(--dur-med) var(--ease-out)}
-.ef-dialog{width:100%;max-width:440px;background:var(--surface-card);border-radius:var(--radius-lg);box-shadow:var(--shadow-pop);animation:ef-pop var(--dur-slow) var(--ease-spring);overflow:hidden}
-.ef-dialog:focus{outline:none}
-.ef-dialog__head{display:flex;align-items:flex-start;justify-content:space-between;gap:12px;padding:20px 24px 0}
-.ef-dialog__title{font-family:var(--font-display);font-size:var(--text-xl);font-weight:var(--weight-bold);letter-spacing:var(--tracking-tight);color:var(--text-primary)}
-.ef-dialog__desc{font-size:var(--text-md);color:var(--text-secondary);margin-top:6px}
-.ef-dialog__body{padding:16px 24px 24px}
-.ef-dialog__foot{display:flex;justify-content:flex-end;gap:8px;padding:14px 24px;background:var(--surface-subtle);border-top:1px solid var(--border-default)}
-@keyframes ef-fade{from{opacity:0}}
-@keyframes ef-pop{from{opacity:0;transform:scale(.94) translateY(8px)}}
-`;
-const FOCUSABLE = 'button,[href],input,select,textarea,[tabindex]:not([tabindex="-1"])';
-const Dialog = React.forwardRef(function Dialog({
-  open,
-  onClose,
-  closeLabel = 'Close',
-  title,
-  description,
-  footer,
-  width = 440,
-  children,
-  style,
-  className,
-  ...rest
-}, ref) {
-  __ds_scope.injectEfCss('ef-css-dialog', CSS);
-  const panelRef = React.useRef(null);
-  const prevFocus = React.useRef(null);
-  const titleId = React.useId();
-  const descId = React.useId();
-  React.useEffect(() => {
-    if (!open) return;
-    prevFocus.current = document.activeElement;
-    const panel = panelRef.current;
-    const first = panel && panel.querySelector(FOCUSABLE);
-    (first || panel).focus();
-    return () => {
-      if (prevFocus.current && prevFocus.current.focus) prevFocus.current.focus();
-    };
-  }, [open]);
-  React.useEffect(() => {
-    if (!open) return;
-    const onKey = e => {
-      if (e.key === 'Escape') {
-        if (onClose) onClose();
-        return;
-      }
-      if (e.key !== 'Tab') return;
-      const panel = panelRef.current;
-      const f = panel ? Array.from(panel.querySelectorAll(FOCUSABLE)).filter(el => !el.disabled) : [];
-      if (!f.length) {
-        e.preventDefault();
-        return;
-      }
-      const i = f.indexOf(document.activeElement);
-      if (e.shiftKey && i <= 0) {
-        e.preventDefault();
-        f[f.length - 1].focus();
-      } else if (!e.shiftKey && (i === -1 || i === f.length - 1)) {
-        e.preventDefault();
-        f[0].focus();
-      }
-    };
-    document.addEventListener('keydown', onKey);
-    return () => document.removeEventListener('keydown', onKey);
-  }, [open, onClose]);
-  if (!open) return null;
-  return /*#__PURE__*/React.createElement("div", _extends({
-    ref: ref
-  }, rest, {
-    className: `ef-dialog__overlay${className ? ' ' + className : ''}`,
-    style: style,
-    onMouseDown: e => {
-      if (e.target === e.currentTarget && onClose) onClose();
-    }
-  }), /*#__PURE__*/React.createElement("div", {
-    className: "ef-dialog",
-    role: "dialog",
-    "aria-modal": "true",
-    ref: panelRef,
-    tabIndex: -1,
-    "aria-labelledby": title ? titleId : undefined,
-    "aria-describedby": description ? descId : undefined,
-    style: {
-      maxWidth: width
-    }
-  }, /*#__PURE__*/React.createElement("div", {
-    className: "ef-dialog__head"
-  }, /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement("div", {
-    className: "ef-dialog__title",
-    id: titleId
-  }, title), description ? /*#__PURE__*/React.createElement("div", {
-    className: "ef-dialog__desc",
-    id: descId
-  }, description) : null), onClose ? /*#__PURE__*/React.createElement(__ds_scope.IconButton, {
-    icon: "x",
-    label: closeLabel,
-    size: "sm",
-    onClick: onClose
-  }) : null), /*#__PURE__*/React.createElement("div", {
-    className: "ef-dialog__body"
-  }, children), footer ? /*#__PURE__*/React.createElement("div", {
-    className: "ef-dialog__foot"
-  }, footer) : null));
-});
-Object.assign(__ds_scope, { Dialog });
-})(); } catch (e) { __ds_ns.__errors.push({ path: "components/feedback/Dialog.jsx", error: String((e && e.message) || e) }); }
-
 // components/files/FileTile.jsx
 try { (() => {
 function _extends() { return _extends = Object.assign ? Object.assign.bind() : function (n) { for (var e = 1; e < arguments.length; e++) { var t = arguments[e]; for (var r in t) ({}).hasOwnProperty.call(t, r) && (n[r] = t[r]); } return n; }, _extends.apply(null, arguments); }
@@ -8150,115 +8099,135 @@ const Input = React.forwardRef(function Input({
 Object.assign(__ds_scope, { Input });
 })(); } catch (e) { __ds_ns.__errors.push({ path: "components/forms/Input.jsx", error: String((e && e.message) || e) }); }
 
-// components/feedback/ConfirmDialog.jsx
-try { (() => {
-function _extends() { return _extends = Object.assign ? Object.assign.bind() : function (n) { for (var e = 1; e < arguments.length; e++) { var t = arguments[e]; for (var r in t) ({}).hasOwnProperty.call(t, r) && (n[r] = t[r]); } return n; }, _extends.apply(null, arguments); }
-function ConfirmDialog({
-  open,
-  onClose,
-  onConfirm,
-  title,
-  description,
-  confirmLabel = 'Delete',
-  cancelLabel = 'Cancel',
-  tone = 'danger',
-  typeToConfirm,
-  children,
-  ...rest
-}) {
-  const [typed, setTyped] = React.useState('');
-  React.useEffect(() => {
-    if (!open) setTyped('');
-  }, [open]);
-  const blocked = typeToConfirm ? typed !== typeToConfirm : false;
-  return /*#__PURE__*/React.createElement(__ds_scope.Dialog, _extends({}, rest, {
-    open: open,
-    onClose: onClose,
-    title: title,
-    description: description,
-    footer: /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement(__ds_scope.Button, {
-      variant: "ghost",
-      onClick: onClose
-    }, cancelLabel), /*#__PURE__*/React.createElement(__ds_scope.Button, {
-      variant: tone === 'danger' ? 'danger' : 'primary',
-      disabled: blocked,
-      onClick: () => {
-        if (onConfirm) onConfirm();
-        if (onClose) onClose();
-      }
-    }, confirmLabel))
-  }), children, typeToConfirm ? /*#__PURE__*/React.createElement(__ds_scope.Input, {
-    label: `Type “${typeToConfirm}” to confirm`,
-    value: typed,
-    onChange: e => setTyped(e.target.value),
-    placeholder: typeToConfirm,
-    style: children ? {
-      marginTop: 14
-    } : undefined
-  }) : null);
-}
-Object.assign(__ds_scope, { ConfirmDialog });
-})(); } catch (e) { __ds_ns.__errors.push({ path: "components/feedback/ConfirmDialog.jsx", error: String((e && e.message) || e) }); }
-
 // components/forms/InputGroup.jsx
 try { (() => {
 function _extends() { return _extends = Object.assign ? Object.assign.bind() : function (n) { for (var e = 1; e < arguments.length; e++) { var t = arguments[e]; for (var r in t) ({}).hasOwnProperty.call(t, r) && (n[r] = t[r]); } return n; }, _extends.apply(null, arguments); }
 const CSS = `
-.ef-igroup{display:flex;flex-direction:column;gap:6px;width:100%}
-.ef-igroup__label{font-size:var(--text-sm);font-weight:600;color:var(--text-primary)}
-.ef-igroup__row{display:flex;align-items:stretch;width:100%;border:1px solid var(--border-strong);border-radius:var(--radius-sm);background:var(--surface-card);transition:box-shadow var(--dur-fast) var(--ease-out)}
-.ef-igroup__row:focus-within{box-shadow:var(--focus-ring)}
-.ef-igroup--invalid .ef-igroup__row{border-color:var(--danger-600)}
-.ef-igroup__addon{display:flex;align-items:center;gap:6px;padding:0 11px;background:var(--surface-sunken);color:var(--text-muted);font-size:var(--text-sm);white-space:nowrap;flex:none}
-.ef-igroup__addon--lead{border-inline-end:1px solid var(--border-default);border-start-start-radius:calc(var(--radius-sm) - 1px);border-end-start-radius:calc(var(--radius-sm) - 1px)}
-.ef-igroup__addon--trail{border-inline-start:1px solid var(--border-default);border-start-end-radius:calc(var(--radius-sm) - 1px);border-end-end-radius:calc(var(--radius-sm) - 1px)}
-.ef-igroup__addon--bare{background:none;border:none;padding:0 4px}
-.ef-igroup__input{flex:1;min-width:0;height:34px;padding:0 11px;border:none;background:transparent;font-family:var(--font-sans);font-size:var(--text-md);color:var(--text-primary)}
-.ef-igroup__input:focus{outline:none}
-.ef-igroup__input::placeholder{color:var(--text-muted)}
-.ef-igroup--sm .ef-igroup__input{height:26px;font-size:var(--text-sm)}
-.ef-igroup--lg .ef-igroup__input{height:42px}
-.ef-igroup__note{font-size:12.5px;color:var(--text-muted)}
-.ef-igroup__note--error{color:var(--danger-600)}
+.ef-input-group{display:flex;min-width:0;width:100%;align-items:center;border:1px solid var(--border-strong);border-radius:var(--radius-sm);background:var(--surface-card);transition:border-color var(--dur-fast) var(--ease-out),box-shadow var(--dur-fast) var(--ease-out)}
+.ef-input-group:focus-within{border-color:var(--accent);box-shadow:var(--focus-ring)}.ef-input-group:has([aria-invalid="true"]){border-color:var(--danger-600)}
+.ef-input-group:has(textarea){flex-wrap:wrap}.ef-input-group__control{min-width:0;flex:1;border:0;background:transparent;font:inherit;color:var(--text-primary)}
+input.ef-input-group__control{height:34px;padding:0 11px}textarea.ef-input-group__control{min-height:80px;padding:10px 11px;resize:vertical}.ef-input-group__control:focus{outline:none}.ef-input-group__control::placeholder{color:var(--text-muted)}
+.ef-input-group__addon{display:flex;flex:none;align-items:center;gap:6px;padding:0 10px;color:var(--text-muted);font-size:var(--text-sm);white-space:nowrap}
+.ef-input-group__addon[data-align="inline-start"]{order:-1;border-inline-end:1px solid var(--border-default)}.ef-input-group__addon[data-align="inline-end"]{order:2;border-inline-start:1px solid var(--border-default)}
+.ef-input-group__addon[data-align="block-start"],.ef-input-group__addon[data-align="block-end"]{width:100%;min-height:34px}.ef-input-group__addon[data-align="block-start"]{order:-1;border-block-end:1px solid var(--border-default)}.ef-input-group__addon[data-align="block-end"]{order:3;border-block-start:1px solid var(--border-default)}
+.ef-input-group__button{display:inline-flex;height:26px;align-items:center;justify-content:center;gap:5px;padding:0 8px;border:0;border-radius:var(--radius-xs);background:transparent;color:var(--text-secondary);font:inherit;font-size:var(--text-xs);cursor:pointer}.ef-input-group__button:hover{background:var(--surface-sunken);color:var(--text-primary)}.ef-input-group__button:focus-visible{outline:none;box-shadow:var(--focus-ring)}
+.ef-input-group__button[data-size^="icon"]{width:26px;padding:0}.ef-input-group__text{font-size:var(--text-sm);color:var(--text-muted)}
+.ef-input-group-legacy{display:flex;flex-direction:column;gap:6px;width:100%}.ef-input-group-legacy__label{font-size:var(--text-sm);font-weight:600}.ef-input-group-legacy__note{font-size:var(--text-xs);color:var(--text-muted)}.ef-input-group-legacy__note[data-error="true"]{color:var(--danger-600)}
 `;
-function InputGroup({
+function cx(base, className) {
+  return base + (className ? ` ${className}` : '');
+}
+const InputGroup = React.forwardRef(function InputGroup({
   label,
   hint,
   error,
   prefix,
   suffix,
   size = 'md',
-  style,
   className,
+  children,
   ...rest
-}) {
-  __ds_scope.injectEfCss('ef-css-igroup', CSS);
-  // Picks up id / aria wiring when nested in a FormField; standalone this is a no-op.
+}, ref) {
+  __ds_scope.injectEfCss('ef-css-input-group', CSS);
+  const legacy = label !== undefined || hint !== undefined || error !== undefined || prefix !== undefined || suffix !== undefined || rest.placeholder !== undefined || rest.value !== undefined || rest.defaultValue !== undefined;
+  if (!legacy) return /*#__PURE__*/React.createElement("div", _extends({}, rest, {
+    ref: ref,
+    "data-slot": "input-group",
+    role: "group",
+    className: cx('ef-input-group', className)
+  }), children);
+  const inputProps = {
+    ...rest
+  };
   const field = __ds_scope.useFieldProps({
     error,
-    id: rest.id,
-    'aria-describedby': rest['aria-describedby']
+    id: inputProps.id,
+    'aria-describedby': inputProps['aria-describedby']
   });
-  const addon = (node, where) => node == null ? null : /*#__PURE__*/React.createElement("span", {
-    className: `ef-igroup__addon ef-igroup__addon--${where}${typeof node !== 'string' ? ' ef-igroup__addon--bare' : ''}`
-  }, node);
   return /*#__PURE__*/React.createElement("label", {
-    className: `ef-igroup ef-igroup--${size}${error ? ' ef-igroup--invalid' : ''}${className ? ' ' + className : ''}`,
-    style: style
+    ref: ref,
+    className: cx('ef-input-group-legacy', className)
   }, label ? /*#__PURE__*/React.createElement("span", {
-    className: "ef-igroup__label"
-  }, label) : null, /*#__PURE__*/React.createElement("span", {
-    className: "ef-igroup__row"
-  }, addon(prefix, 'lead'), /*#__PURE__*/React.createElement("input", _extends({
-    className: "ef-igroup__input",
+    className: "ef-input-group-legacy__label"
+  }, label) : null, /*#__PURE__*/React.createElement("div", {
+    "data-slot": "input-group",
+    role: "group",
+    className: "ef-input-group"
+  }, prefix != null ? /*#__PURE__*/React.createElement(InputGroupAddon, {
+    align: "inline-start"
+  }, /*#__PURE__*/React.createElement(InputGroupText, null, prefix)) : null, /*#__PURE__*/React.createElement(InputGroupInput, _extends({}, inputProps, field.controlProps, {
     "aria-invalid": field.invalid || undefined
-  }, rest, field.controlProps)), addon(suffix, 'trail')), error ? /*#__PURE__*/React.createElement("span", {
-    className: "ef-igroup__note ef-igroup__note--error"
+  })), suffix != null ? /*#__PURE__*/React.createElement(InputGroupAddon, {
+    align: "inline-end"
+  }, /*#__PURE__*/React.createElement(InputGroupText, null, suffix)) : null), error ? /*#__PURE__*/React.createElement("span", {
+    className: "ef-input-group-legacy__note",
+    "data-error": "true"
   }, error) : hint ? /*#__PURE__*/React.createElement("span", {
-    className: "ef-igroup__note"
+    className: "ef-input-group-legacy__note"
   }, hint) : null);
-}
-Object.assign(__ds_scope, { InputGroup });
+});
+const InputGroupAddon = React.forwardRef(function InputGroupAddon({
+  align = 'inline-start',
+  className,
+  ...rest
+}, ref) {
+  const valid = ['inline-start', 'inline-end', 'block-start', 'block-end'].includes(align) ? align : 'inline-start';
+  return /*#__PURE__*/React.createElement("div", _extends({}, rest, {
+    ref: ref,
+    "data-slot": "input-group-addon",
+    "data-align": valid,
+    className: cx('ef-input-group__addon', className)
+  }));
+});
+const InputGroupButton = React.forwardRef(function InputGroupButton({
+  size = 'xs',
+  variant = 'ghost',
+  className,
+  type = 'button',
+  ...rest
+}, ref) {
+  return /*#__PURE__*/React.createElement("button", _extends({}, rest, {
+    ref: ref,
+    type: type,
+    "data-slot": "input-group-button",
+    "data-size": size,
+    "data-variant": variant,
+    className: cx('ef-input-group__button', className)
+  }));
+});
+const InputGroupInput = React.forwardRef(function InputGroupInput({
+  className,
+  ...rest
+}, ref) {
+  const field = __ds_scope.useFieldProps(rest);
+  return /*#__PURE__*/React.createElement("input", _extends({}, rest, field.controlProps, {
+    ref: ref,
+    "data-slot": "input-group-control",
+    className: cx('ef-input-group__control', className)
+  }));
+});
+const InputGroupTextarea = React.forwardRef(function InputGroupTextarea({
+  className,
+  ...rest
+}, ref) {
+  const field = __ds_scope.useFieldProps(rest);
+  return /*#__PURE__*/React.createElement("textarea", _extends({}, rest, field.controlProps, {
+    ref: ref,
+    "data-slot": "input-group-control",
+    className: cx('ef-input-group__control', className)
+  }));
+});
+const InputGroupText = React.forwardRef(function InputGroupText({
+  className,
+  ...rest
+}, ref) {
+  return /*#__PURE__*/React.createElement("span", _extends({}, rest, {
+    ref: ref,
+    "data-slot": "input-group-text",
+    className: cx('ef-input-group__text', className)
+  }));
+});
+Object.assign(__ds_scope, { InputGroup, InputGroupAddon, InputGroupButton, InputGroupInput, InputGroupTextarea, InputGroupText });
 })(); } catch (e) { __ds_ns.__errors.push({ path: "components/forms/InputGroup.jsx", error: String((e && e.message) || e) }); }
 
 // components/forms/Label.jsx
@@ -11005,6 +10974,329 @@ const AlertDialogCancel = createAction('AlertDialogCancel', 'alert-dialog-cancel
 const AlertDialogAction = createAction('AlertDialogAction', 'alert-dialog-action', 'default', true);
 Object.assign(__ds_scope, { AlertDialog, AlertDialogTrigger, AlertDialogPortal, AlertDialogOverlay, AlertDialogContent, AlertDialogHeader, AlertDialogFooter, AlertDialogMedia, AlertDialogTitle, AlertDialogDescription, AlertDialogCancel, AlertDialogAction });
 })(); } catch (e) { __ds_ns.__errors.push({ path: "components/feedback/AlertDialog.jsx", error: String((e && e.message) || e) }); }
+
+// components/feedback/Dialog.jsx
+try { (() => {
+function _extends() { return _extends = Object.assign ? Object.assign.bind() : function (n) { for (var e = 1; e < arguments.length; e++) { var t = arguments[e]; for (var r in t) ({}).hasOwnProperty.call(t, r) && (n[r] = t[r]); } return n; }, _extends.apply(null, arguments); }
+const CSS = `
+.ef-dialog__overlay{position:fixed;inset:0;z-index:var(--z-overlay);display:flex;align-items:center;justify-content:center;padding:24px;background:var(--overlay-scrim);animation:ef-fade var(--dur-med) var(--ease-out)}
+.ef-dialog__content{width:100%;max-width:440px;max-height:min(85vh,720px);overflow:auto;border:1px solid var(--border-default);border-radius:var(--radius-lg);background:var(--surface-card);box-shadow:var(--shadow-pop);animation:ef-pop var(--dur-slow) var(--ease-spring)}
+.ef-dialog__content:focus{outline:none}.ef-dialog__close{position:absolute;inset-block-start:14px;inset-inline-end:14px}
+.ef-dialog__header{display:flex;flex-direction:column;gap:6px;padding:24px 24px 0;padding-inline-end:56px}
+.ef-dialog__title{margin:0;font-family:var(--font-display);font-size:var(--text-xl);font-weight:var(--weight-bold);line-height:var(--leading-tight);letter-spacing:var(--tracking-tight);color:var(--text-primary)}
+.ef-dialog__description{font-size:var(--text-md);line-height:var(--leading-relaxed);color:var(--text-secondary)}
+.ef-dialog__body{padding:16px 24px 24px}.ef-dialog__footer{display:flex;flex-direction:column-reverse;gap:8px;padding:14px 24px;border-top:1px solid var(--border-default);background:var(--surface-subtle)}
+@media(min-width:480px){.ef-dialog__footer{flex-direction:row;justify-content:flex-end}}
+@keyframes ef-fade{from{opacity:0}}@keyframes ef-pop{from{opacity:0;transform:scale(.96) translateY(6px)}}
+`;
+const DialogContext = React.createContext(null);
+const FOCUSABLE = 'button,[href],input,select,textarea,[tabindex]:not([tabindex="-1"])';
+function cx(base, className) {
+  return base + (className ? ` ${className}` : '');
+}
+function compose(first, second) {
+  return e => {
+    if (first) first(e);
+    if (!e.defaultPrevented && second) second(e);
+  };
+}
+const Dialog = React.forwardRef(function Dialog({
+  open: controlled,
+  defaultOpen = false,
+  onOpenChange,
+  children,
+  ...legacy
+}, ref) {
+  __ds_scope.injectEfCss('ef-css-dialog', CSS);
+  const {
+    title,
+    description,
+    footer,
+    onClose,
+    closeLabel,
+    width,
+    className,
+    style,
+    ...legacyRest
+  } = legacy;
+  const isLegacy = title !== undefined || description !== undefined || footer !== undefined || onClose !== undefined;
+  const [internal, setInternal] = React.useState(defaultOpen);
+  const titleId = React.useId();
+  const descriptionId = React.useId();
+  const open = controlled === undefined ? internal : controlled;
+  const setOpen = React.useCallback(next => {
+    if (controlled === undefined) setInternal(next);
+    if (onOpenChange) onOpenChange(next);
+    if (!next && onClose) onClose();
+  }, [controlled, onOpenChange, onClose]);
+  const value = React.useMemo(() => ({
+    open,
+    setOpen,
+    titleId,
+    descriptionId
+  }), [open, setOpen, titleId, descriptionId]);
+  if (isLegacy) return /*#__PURE__*/React.createElement(DialogContext.Provider, {
+    value: value
+  }, open ? /*#__PURE__*/React.createElement(DialogContent, {
+    width: width,
+    showCloseButton: !!onClose,
+    closeLabel: closeLabel,
+    overlayRef: ref,
+    overlayProps: {
+      ...legacyRest,
+      className,
+      style
+    }
+  }, /*#__PURE__*/React.createElement(DialogHeader, null, /*#__PURE__*/React.createElement(DialogTitle, null, title), description ? /*#__PURE__*/React.createElement(DialogDescription, null, description) : null), /*#__PURE__*/React.createElement("div", {
+    className: "ef-dialog__body"
+  }, children), footer ? /*#__PURE__*/React.createElement(DialogFooter, null, footer) : null) : null);
+  return /*#__PURE__*/React.createElement(DialogContext.Provider, {
+    value: value
+  }, children);
+});
+const DialogTrigger = React.forwardRef(function DialogTrigger({
+  asChild = false,
+  children,
+  onClick,
+  ...rest
+}, ref) {
+  const ctx = React.useContext(DialogContext);
+  const props = {
+    ...rest,
+    'data-slot': 'dialog-trigger',
+    onClick: compose(onClick, () => ctx && ctx.setOpen(true))
+  };
+  if (asChild) {
+    const child = React.Children.only(children);
+    return React.cloneElement(child, {
+      ...props,
+      ref: __ds_scope.mergeRefs(ref, child.ref),
+      className: child.props.className
+    });
+  }
+  return /*#__PURE__*/React.createElement("button", _extends({}, props, {
+    ref: ref,
+    type: rest.type || 'button'
+  }), children);
+});
+function DialogPortal({
+  children,
+  container
+}) {
+  return /*#__PURE__*/React.createElement(__ds_scope.Portal, {
+    container: container
+  }, children);
+}
+const DialogOverlay = React.forwardRef(function DialogOverlay({
+  className,
+  onMouseDown,
+  ...rest
+}, ref) {
+  const ctx = React.useContext(DialogContext);
+  return /*#__PURE__*/React.createElement("div", _extends({}, rest, {
+    ref: ref,
+    "data-slot": "dialog-overlay",
+    className: cx('ef-dialog__overlay', className),
+    onMouseDown: compose(onMouseDown, e => {
+      if (e.target === e.currentTarget && ctx) ctx.setOpen(false);
+    })
+  }));
+});
+const DialogClose = React.forwardRef(function DialogClose({
+  asChild = false,
+  children,
+  onClick,
+  ...rest
+}, ref) {
+  const ctx = React.useContext(DialogContext);
+  const props = {
+    ...rest,
+    'data-slot': 'dialog-close',
+    onClick: compose(onClick, () => ctx && ctx.setOpen(false))
+  };
+  if (asChild) {
+    const child = React.Children.only(children);
+    return React.cloneElement(child, {
+      ...props,
+      ref: __ds_scope.mergeRefs(ref, child.ref),
+      className: child.props.className
+    });
+  }
+  return /*#__PURE__*/React.createElement("button", _extends({}, props, {
+    ref: ref,
+    type: rest.type || 'button'
+  }), children);
+});
+const DialogContent = React.forwardRef(function DialogContent({
+  children,
+  className,
+  style,
+  width = 440,
+  showCloseButton = true,
+  closeLabel = 'Close',
+  onEscapeKeyDown,
+  overlayProps,
+  overlayRef,
+  ...rest
+}, ref) {
+  const ctx = React.useContext(DialogContext);
+  const panelRef = React.useRef(null);
+  const previous = React.useRef(null);
+  React.useEffect(() => {
+    if (!ctx || !ctx.open) return;
+    previous.current = document.activeElement;
+    const panel = panelRef.current;
+    const first = panel && panel.querySelector(FOCUSABLE);
+    (first || panel).focus();
+    return () => previous.current && previous.current.focus && previous.current.focus();
+  }, [ctx && ctx.open]);
+  React.useEffect(() => {
+    if (!ctx || !ctx.open) return;
+    const key = e => {
+      if (e.key === 'Escape') {
+        if (onEscapeKeyDown) onEscapeKeyDown(e);
+        if (!e.defaultPrevented) ctx.setOpen(false);
+        return;
+      }
+      if (e.key !== 'Tab') return;
+      const f = [...panelRef.current.querySelectorAll(FOCUSABLE)].filter(x => !x.disabled);
+      if (!f.length) return e.preventDefault();
+      const i = f.indexOf(document.activeElement);
+      if (e.shiftKey && i <= 0) {
+        e.preventDefault();
+        f[f.length - 1].focus();
+      } else if (!e.shiftKey && (i < 0 || i === f.length - 1)) {
+        e.preventDefault();
+        f[0].focus();
+      }
+    };
+    document.addEventListener('keydown', key);
+    return () => document.removeEventListener('keydown', key);
+  }, [ctx && ctx.open, onEscapeKeyDown]);
+  if (!ctx || !ctx.open) return null;
+  return /*#__PURE__*/React.createElement(DialogPortal, null, /*#__PURE__*/React.createElement(DialogOverlay, _extends({}, overlayProps, {
+    ref: overlayRef
+  }), /*#__PURE__*/React.createElement("div", _extends({}, rest, {
+    ref: __ds_scope.mergeRefs(ref, panelRef),
+    "data-slot": "dialog-content",
+    role: "dialog",
+    "aria-modal": "true",
+    "aria-labelledby": rest['aria-label'] ? undefined : ctx.titleId,
+    "aria-describedby": ctx.descriptionId,
+    tabIndex: -1,
+    className: cx('ef-dialog__content', className),
+    style: {
+      ...style,
+      maxWidth: width,
+      position: 'relative'
+    }
+  }), children, showCloseButton ? /*#__PURE__*/React.createElement("div", {
+    className: "ef-dialog__close"
+  }, /*#__PURE__*/React.createElement(__ds_scope.IconButton, {
+    icon: "x",
+    label: closeLabel,
+    size: "sm",
+    onClick: () => ctx.setOpen(false)
+  })) : null)));
+});
+const DialogHeader = React.forwardRef(function DialogHeader({
+  className,
+  ...rest
+}, ref) {
+  return /*#__PURE__*/React.createElement("div", _extends({}, rest, {
+    ref: ref,
+    "data-slot": "dialog-header",
+    className: cx('ef-dialog__header', className)
+  }));
+});
+const DialogFooter = React.forwardRef(function DialogFooter({
+  className,
+  ...rest
+}, ref) {
+  return /*#__PURE__*/React.createElement("div", _extends({}, rest, {
+    ref: ref,
+    "data-slot": "dialog-footer",
+    className: cx('ef-dialog__footer', className)
+  }));
+});
+const DialogTitle = React.forwardRef(function DialogTitle({
+  className,
+  id,
+  ...rest
+}, ref) {
+  const ctx = React.useContext(DialogContext);
+  return /*#__PURE__*/React.createElement("div", _extends({}, rest, {
+    ref: ref,
+    id: id || ctx && ctx.titleId,
+    "data-slot": "dialog-title",
+    className: cx('ef-dialog__title', className)
+  }));
+});
+const DialogDescription = React.forwardRef(function DialogDescription({
+  className,
+  id,
+  ...rest
+}, ref) {
+  const ctx = React.useContext(DialogContext);
+  return /*#__PURE__*/React.createElement("div", _extends({}, rest, {
+    ref: ref,
+    id: id || ctx && ctx.descriptionId,
+    "data-slot": "dialog-description",
+    className: cx('ef-dialog__description', className)
+  }));
+});
+Object.assign(__ds_scope, { Dialog, DialogTrigger, DialogPortal, DialogOverlay, DialogClose, DialogContent, DialogHeader, DialogFooter, DialogTitle, DialogDescription });
+})(); } catch (e) { __ds_ns.__errors.push({ path: "components/feedback/Dialog.jsx", error: String((e && e.message) || e) }); }
+
+// components/feedback/ConfirmDialog.jsx
+try { (() => {
+function _extends() { return _extends = Object.assign ? Object.assign.bind() : function (n) { for (var e = 1; e < arguments.length; e++) { var t = arguments[e]; for (var r in t) ({}).hasOwnProperty.call(t, r) && (n[r] = t[r]); } return n; }, _extends.apply(null, arguments); }
+function ConfirmDialog({
+  open,
+  onClose,
+  onConfirm,
+  title,
+  description,
+  confirmLabel = 'Delete',
+  cancelLabel = 'Cancel',
+  tone = 'danger',
+  typeToConfirm,
+  children,
+  ...rest
+}) {
+  const [typed, setTyped] = React.useState('');
+  React.useEffect(() => {
+    if (!open) setTyped('');
+  }, [open]);
+  const blocked = typeToConfirm ? typed !== typeToConfirm : false;
+  return /*#__PURE__*/React.createElement(__ds_scope.Dialog, _extends({}, rest, {
+    open: open,
+    onClose: onClose,
+    title: title,
+    description: description,
+    footer: /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement(__ds_scope.Button, {
+      variant: "ghost",
+      onClick: onClose
+    }, cancelLabel), /*#__PURE__*/React.createElement(__ds_scope.Button, {
+      variant: tone === 'danger' ? 'danger' : 'primary',
+      disabled: blocked,
+      onClick: () => {
+        if (onConfirm) onConfirm();
+        if (onClose) onClose();
+      }
+    }, confirmLabel))
+  }), children, typeToConfirm ? /*#__PURE__*/React.createElement(__ds_scope.Input, {
+    label: `Type “${typeToConfirm}” to confirm`,
+    value: typed,
+    onChange: e => setTyped(e.target.value),
+    placeholder: typeToConfirm,
+    style: children ? {
+      marginTop: 14
+    } : undefined
+  }) : null);
+}
+Object.assign(__ds_scope, { ConfirmDialog });
+})(); } catch (e) { __ds_ns.__errors.push({ path: "components/feedback/ConfirmDialog.jsx", error: String((e && e.message) || e) }); }
 
 // components/feedback/Toast.jsx
 try { (() => {
@@ -17216,6 +17508,18 @@ __ds_ns.BarChart = __ds_scope.BarChart;
 
 __ds_ns.DonutChart = __ds_scope.DonutChart;
 
+__ds_ns.Empty = __ds_scope.Empty;
+
+__ds_ns.EmptyHeader = __ds_scope.EmptyHeader;
+
+__ds_ns.EmptyMedia = __ds_scope.EmptyMedia;
+
+__ds_ns.EmptyTitle = __ds_scope.EmptyTitle;
+
+__ds_ns.EmptyDescription = __ds_scope.EmptyDescription;
+
+__ds_ns.EmptyContent = __ds_scope.EmptyContent;
+
 __ds_ns.EmptyState = __ds_scope.EmptyState;
 
 __ds_ns.KeyValueList = __ds_scope.KeyValueList;
@@ -17348,6 +17652,24 @@ __ds_ns.ConfirmDialog = __ds_scope.ConfirmDialog;
 
 __ds_ns.Dialog = __ds_scope.Dialog;
 
+__ds_ns.DialogTrigger = __ds_scope.DialogTrigger;
+
+__ds_ns.DialogPortal = __ds_scope.DialogPortal;
+
+__ds_ns.DialogOverlay = __ds_scope.DialogOverlay;
+
+__ds_ns.DialogClose = __ds_scope.DialogClose;
+
+__ds_ns.DialogContent = __ds_scope.DialogContent;
+
+__ds_ns.DialogHeader = __ds_scope.DialogHeader;
+
+__ds_ns.DialogFooter = __ds_scope.DialogFooter;
+
+__ds_ns.DialogTitle = __ds_scope.DialogTitle;
+
+__ds_ns.DialogDescription = __ds_scope.DialogDescription;
+
 __ds_ns.Loader = __ds_scope.Loader;
 
 __ds_ns.Progress = __ds_scope.Progress;
@@ -17413,6 +17735,16 @@ __ds_ns.IconButton = __ds_scope.IconButton;
 __ds_ns.Input = __ds_scope.Input;
 
 __ds_ns.InputGroup = __ds_scope.InputGroup;
+
+__ds_ns.InputGroupAddon = __ds_scope.InputGroupAddon;
+
+__ds_ns.InputGroupButton = __ds_scope.InputGroupButton;
+
+__ds_ns.InputGroupInput = __ds_scope.InputGroupInput;
+
+__ds_ns.InputGroupTextarea = __ds_scope.InputGroupTextarea;
+
+__ds_ns.InputGroupText = __ds_scope.InputGroupText;
 
 __ds_ns.Label = __ds_scope.Label;
 

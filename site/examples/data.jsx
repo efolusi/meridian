@@ -22,14 +22,15 @@ export function DonutChartDemo() {
     ]} format={(v) => '$' + v.toLocaleString()} />;
 }
 
-// @demo EmptyState Nothing here yet
+// @demo Empty Nothing here yet
 export function EmptyStateDemo() {
-  const { EmptyState, Button } = window.EfolusiDesignSystem_4ffc3d;
+  const { Empty, EmptyContent, EmptyDescription, EmptyHeader, EmptyMedia, EmptyTitle, Button, Icon } = window.EfolusiDesignSystem_4ffc3d;
   return (
     <div style={{ width: '100%', maxWidth: 460 }}>
-      <EmptyState bordered icon="bot" title="No agents yet"
-        description="Create your first agent from a template — most teams start with the inbox triager."
-        action={<Button iconLeft="plus">New agent</Button>} />
+      <Empty className="ef-empty--bordered">
+        <EmptyHeader><EmptyMedia variant="icon"><Icon name="bot" /></EmptyMedia><EmptyTitle>No agents yet</EmptyTitle><EmptyDescription>Create your first agent from a template — most teams start with the inbox triager.</EmptyDescription></EmptyHeader>
+        <EmptyContent><Button iconLeft="plus">New agent</Button></EmptyContent>
+      </Empty>
     </div>
   );
 }

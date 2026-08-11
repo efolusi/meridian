@@ -169,11 +169,11 @@ export function InputInvalid() {
 
 // @demo InputGroup Addons
 export function InputGroupDemo() {
-  const { InputGroup } = window.EfolusiDesignSystem_4ffc3d;
+  const { InputGroup, InputGroupAddon, InputGroupButton, InputGroupInput, InputGroupText } = window.EfolusiDesignSystem_4ffc3d;
   return (
     <div style={{ display: 'flex', flexDirection: 'column', gap: 14, width: 360 }}>
-      <InputGroup label="Workspace URL" prefix="https://" suffix=".efolusi.com" defaultValue="acme" />
-      <InputGroup label="Budget cap" prefix="$" suffix="USD / mo" placeholder="0.00" hint="Runs pause when the cap is hit." />
+      <InputGroup><InputGroupInput aria-label="Search projects" placeholder="Search projects…" /><InputGroupAddon><InputGroupText>⌕</InputGroupText></InputGroupAddon><InputGroupAddon align="inline-end"><InputGroupText>12 results</InputGroupText></InputGroupAddon></InputGroup>
+      <InputGroup><InputGroupInput aria-label="Workspace URL" defaultValue="acme" /><InputGroupAddon><InputGroupText>https://</InputGroupText></InputGroupAddon><InputGroupAddon align="inline-end"><InputGroupButton>Copy</InputGroupButton></InputGroupAddon></InputGroup>
     </div>
   );
 }

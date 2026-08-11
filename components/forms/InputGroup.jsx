@@ -2,39 +2,38 @@ import React from 'react';
 import { injectEfCss } from './Button.jsx';
 import { useFieldProps } from './FormField.jsx';
 const CSS = `
-.ef-igroup{display:flex;flex-direction:column;gap:6px;width:100%}
-.ef-igroup__label{font-size:var(--text-sm);font-weight:600;color:var(--text-primary)}
-.ef-igroup__row{display:flex;align-items:stretch;width:100%;border:1px solid var(--border-strong);border-radius:var(--radius-sm);background:var(--surface-card);transition:box-shadow var(--dur-fast) var(--ease-out)}
-.ef-igroup__row:focus-within{box-shadow:var(--focus-ring)}
-.ef-igroup--invalid .ef-igroup__row{border-color:var(--danger-600)}
-.ef-igroup__addon{display:flex;align-items:center;gap:6px;padding:0 11px;background:var(--surface-sunken);color:var(--text-muted);font-size:var(--text-sm);white-space:nowrap;flex:none}
-.ef-igroup__addon--lead{border-inline-end:1px solid var(--border-default);border-start-start-radius:calc(var(--radius-sm) - 1px);border-end-start-radius:calc(var(--radius-sm) - 1px)}
-.ef-igroup__addon--trail{border-inline-start:1px solid var(--border-default);border-start-end-radius:calc(var(--radius-sm) - 1px);border-end-end-radius:calc(var(--radius-sm) - 1px)}
-.ef-igroup__addon--bare{background:none;border:none;padding:0 4px}
-.ef-igroup__input{flex:1;min-width:0;height:34px;padding:0 11px;border:none;background:transparent;font-family:var(--font-sans);font-size:var(--text-md);color:var(--text-primary)}
-.ef-igroup__input:focus{outline:none}
-.ef-igroup__input::placeholder{color:var(--text-muted)}
-.ef-igroup--sm .ef-igroup__input{height:26px;font-size:var(--text-sm)}
-.ef-igroup--lg .ef-igroup__input{height:42px}
-.ef-igroup__note{font-size:12.5px;color:var(--text-muted)}
-.ef-igroup__note--error{color:var(--danger-600)}
+.ef-input-group{display:flex;min-width:0;width:100%;align-items:center;border:1px solid var(--border-strong);border-radius:var(--radius-sm);background:var(--surface-card);transition:border-color var(--dur-fast) var(--ease-out),box-shadow var(--dur-fast) var(--ease-out)}
+.ef-input-group:focus-within{border-color:var(--accent);box-shadow:var(--focus-ring)}.ef-input-group:has([aria-invalid="true"]){border-color:var(--danger-600)}
+.ef-input-group:has(textarea){flex-wrap:wrap}.ef-input-group__control{min-width:0;flex:1;border:0;background:transparent;font:inherit;color:var(--text-primary)}
+input.ef-input-group__control{height:34px;padding:0 11px}textarea.ef-input-group__control{min-height:80px;padding:10px 11px;resize:vertical}.ef-input-group__control:focus{outline:none}.ef-input-group__control::placeholder{color:var(--text-muted)}
+.ef-input-group__addon{display:flex;flex:none;align-items:center;gap:6px;padding:0 10px;color:var(--text-muted);font-size:var(--text-sm);white-space:nowrap}
+.ef-input-group__addon[data-align="inline-start"]{order:-1;border-inline-end:1px solid var(--border-default)}.ef-input-group__addon[data-align="inline-end"]{order:2;border-inline-start:1px solid var(--border-default)}
+.ef-input-group__addon[data-align="block-start"],.ef-input-group__addon[data-align="block-end"]{width:100%;min-height:34px}.ef-input-group__addon[data-align="block-start"]{order:-1;border-block-end:1px solid var(--border-default)}.ef-input-group__addon[data-align="block-end"]{order:3;border-block-start:1px solid var(--border-default)}
+.ef-input-group__button{display:inline-flex;height:26px;align-items:center;justify-content:center;gap:5px;padding:0 8px;border:0;border-radius:var(--radius-xs);background:transparent;color:var(--text-secondary);font:inherit;font-size:var(--text-xs);cursor:pointer}.ef-input-group__button:hover{background:var(--surface-sunken);color:var(--text-primary)}.ef-input-group__button:focus-visible{outline:none;box-shadow:var(--focus-ring)}
+.ef-input-group__button[data-size^="icon"]{width:26px;padding:0}.ef-input-group__text{font-size:var(--text-sm);color:var(--text-muted)}
+.ef-input-group-legacy{display:flex;flex-direction:column;gap:6px;width:100%}.ef-input-group-legacy__label{font-size:var(--text-sm);font-weight:600}.ef-input-group-legacy__note{font-size:var(--text-xs);color:var(--text-muted)}.ef-input-group-legacy__note[data-error="true"]{color:var(--danger-600)}
 `;
-export function InputGroup({ label, hint, error, prefix, suffix, size = 'md', style, className, ...rest }) {
-  injectEfCss('ef-css-igroup', CSS);
-  // Picks up id / aria wiring when nested in a FormField; standalone this is a no-op.
-  const field = useFieldProps({ error, id: rest.id, 'aria-describedby': rest['aria-describedby'] });
-  const addon = (node, where) => node == null ? null : (
-    <span className={`ef-igroup__addon ef-igroup__addon--${where}${typeof node !== 'string' ? ' ef-igroup__addon--bare' : ''}`}>{node}</span>
-  );
-  return (
-    <label className={`ef-igroup ef-igroup--${size}${error ? ' ef-igroup--invalid' : ''}${className ? ' ' + className : ''}`} style={style}>
-      {label ? <span className="ef-igroup__label">{label}</span> : null}
-      <span className="ef-igroup__row">
-        {addon(prefix, 'lead')}
-        <input className="ef-igroup__input" aria-invalid={field.invalid || undefined} {...rest} {...field.controlProps} />
-        {addon(suffix, 'trail')}
-      </span>
-      {error ? <span className="ef-igroup__note ef-igroup__note--error">{error}</span> : hint ? <span className="ef-igroup__note">{hint}</span> : null}
-    </label>
-  );
-}
+function cx(base, className) { return base + (className ? ` ${className}` : ''); }
+export const InputGroup = React.forwardRef(function InputGroup({ label, hint, error, prefix, suffix, size = 'md', className, children, ...rest }, ref) {
+  injectEfCss('ef-css-input-group', CSS);
+  const legacy = label !== undefined || hint !== undefined || error !== undefined || prefix !== undefined || suffix !== undefined || rest.placeholder !== undefined || rest.value !== undefined || rest.defaultValue !== undefined;
+  if (!legacy) return <div {...rest} ref={ref} data-slot="input-group" role="group" className={cx('ef-input-group', className)}>{children}</div>;
+  const inputProps = { ...rest }; const field = useFieldProps({ error, id: inputProps.id, 'aria-describedby': inputProps['aria-describedby'] });
+  return <label ref={ref} className={cx('ef-input-group-legacy', className)}>{label ? <span className="ef-input-group-legacy__label">{label}</span> : null}<div data-slot="input-group" role="group" className="ef-input-group">{prefix != null ? <InputGroupAddon align="inline-start"><InputGroupText>{prefix}</InputGroupText></InputGroupAddon> : null}<InputGroupInput {...inputProps} {...field.controlProps} aria-invalid={field.invalid || undefined} />{suffix != null ? <InputGroupAddon align="inline-end"><InputGroupText>{suffix}</InputGroupText></InputGroupAddon> : null}</div>{error ? <span className="ef-input-group-legacy__note" data-error="true">{error}</span> : hint ? <span className="ef-input-group-legacy__note">{hint}</span> : null}</label>;
+});
+export const InputGroupAddon = React.forwardRef(function InputGroupAddon({ align = 'inline-start', className, ...rest }, ref) {
+  const valid = ['inline-start','inline-end','block-start','block-end'].includes(align) ? align : 'inline-start';
+  return <div {...rest} ref={ref} data-slot="input-group-addon" data-align={valid} className={cx('ef-input-group__addon', className)} />;
+});
+export const InputGroupButton = React.forwardRef(function InputGroupButton({ size = 'xs', variant = 'ghost', className, type = 'button', ...rest }, ref) {
+  return <button {...rest} ref={ref} type={type} data-slot="input-group-button" data-size={size} data-variant={variant} className={cx('ef-input-group__button', className)} />;
+});
+export const InputGroupInput = React.forwardRef(function InputGroupInput({ className, ...rest }, ref) {
+  const field = useFieldProps(rest); return <input {...rest} {...field.controlProps} ref={ref} data-slot="input-group-control" className={cx('ef-input-group__control', className)} />;
+});
+export const InputGroupTextarea = React.forwardRef(function InputGroupTextarea({ className, ...rest }, ref) {
+  const field = useFieldProps(rest); return <textarea {...rest} {...field.controlProps} ref={ref} data-slot="input-group-control" className={cx('ef-input-group__control', className)} />;
+});
+export const InputGroupText = React.forwardRef(function InputGroupText({ className, ...rest }, ref) {
+  return <span {...rest} ref={ref} data-slot="input-group-text" className={cx('ef-input-group__text', className)} />;
+});

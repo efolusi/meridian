@@ -168,6 +168,23 @@ similarity.
   the additive `direction` alias, nested context, document fallback, mirrored
   keyboard behavior, types, registry installation, demos, and tests.
 
+- `Dialog` and its trigger, portal, overlay, close, content, header, footer,
+  title, and description parts support controlled and uncontrolled state,
+  semantic child composition, focus containment and restoration, native props,
+  refs, types, registry installation, demos, and tests. Meridian's shorthand
+  modal props remain an additive adapter.
+
+- `Empty`, `EmptyHeader`, `EmptyMedia`, `EmptyTitle`, `EmptyDescription`, and
+  `EmptyContent` support compositional empty states, native props, refs, types,
+  registry installation, demos, and tests. `EmptyState` remains an additive
+  convenience adapter.
+
+- `InputGroup`, `InputGroupAddon`, `InputGroupButton`, `InputGroupInput`,
+  `InputGroupTextarea`, and `InputGroupText` support inline and block addons,
+  unified focus and invalid states, native props, refs, types, registry
+  installation, demos, and tests. Meridian's label/prefix/suffix shorthand
+  remains an additive adapter.
+
 ## Release gate
 
 Before claiming complete compatibility:

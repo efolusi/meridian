@@ -1,65 +1,64 @@
 import React from 'react';
-import { Icon } from '../icons/Icon.jsx';
 import { IconButton } from '../forms/IconButton.jsx';
-import { injectEfCss } from '../forms/Button.jsx';
+import { injectEfCss, mergeRefs } from '../forms/Button.jsx';
+import { Portal } from '../overlay/Portal.jsx';
 const CSS = `
-.ef-dialog__overlay{position:fixed;inset:0;background:var(--overlay-scrim);display:flex;align-items:center;justify-content:center;padding:24px;z-index:var(--z-overlay);animation:ef-fade var(--dur-med) var(--ease-out)}
-.ef-dialog{width:100%;max-width:440px;background:var(--surface-card);border-radius:var(--radius-lg);box-shadow:var(--shadow-pop);animation:ef-pop var(--dur-slow) var(--ease-spring);overflow:hidden}
-.ef-dialog:focus{outline:none}
-.ef-dialog__head{display:flex;align-items:flex-start;justify-content:space-between;gap:12px;padding:20px 24px 0}
-.ef-dialog__title{font-family:var(--font-display);font-size:var(--text-xl);font-weight:var(--weight-bold);letter-spacing:var(--tracking-tight);color:var(--text-primary)}
-.ef-dialog__desc{font-size:var(--text-md);color:var(--text-secondary);margin-top:6px}
-.ef-dialog__body{padding:16px 24px 24px}
-.ef-dialog__foot{display:flex;justify-content:flex-end;gap:8px;padding:14px 24px;background:var(--surface-subtle);border-top:1px solid var(--border-default)}
-@keyframes ef-fade{from{opacity:0}}
-@keyframes ef-pop{from{opacity:0;transform:scale(.94) translateY(8px)}}
+.ef-dialog__overlay{position:fixed;inset:0;z-index:var(--z-overlay);display:flex;align-items:center;justify-content:center;padding:24px;background:var(--overlay-scrim);animation:ef-fade var(--dur-med) var(--ease-out)}
+.ef-dialog__content{width:100%;max-width:440px;max-height:min(85vh,720px);overflow:auto;border:1px solid var(--border-default);border-radius:var(--radius-lg);background:var(--surface-card);box-shadow:var(--shadow-pop);animation:ef-pop var(--dur-slow) var(--ease-spring)}
+.ef-dialog__content:focus{outline:none}.ef-dialog__close{position:absolute;inset-block-start:14px;inset-inline-end:14px}
+.ef-dialog__header{display:flex;flex-direction:column;gap:6px;padding:24px 24px 0;padding-inline-end:56px}
+.ef-dialog__title{margin:0;font-family:var(--font-display);font-size:var(--text-xl);font-weight:var(--weight-bold);line-height:var(--leading-tight);letter-spacing:var(--tracking-tight);color:var(--text-primary)}
+.ef-dialog__description{font-size:var(--text-md);line-height:var(--leading-relaxed);color:var(--text-secondary)}
+.ef-dialog__body{padding:16px 24px 24px}.ef-dialog__footer{display:flex;flex-direction:column-reverse;gap:8px;padding:14px 24px;border-top:1px solid var(--border-default);background:var(--surface-subtle)}
+@media(min-width:480px){.ef-dialog__footer{flex-direction:row;justify-content:flex-end}}
+@keyframes ef-fade{from{opacity:0}}@keyframes ef-pop{from{opacity:0;transform:scale(.96) translateY(6px)}}
 `;
+const DialogContext = React.createContext(null);
 const FOCUSABLE = 'button,[href],input,select,textarea,[tabindex]:not([tabindex="-1"])';
-export const Dialog = React.forwardRef(function Dialog({ open, onClose, closeLabel = 'Close', title, description, footer, width = 440, children, style, className, ...rest }, ref) {
+function cx(base, className) { return base + (className ? ` ${className}` : ''); }
+function compose(first, second) { return e => { if (first) first(e); if (!e.defaultPrevented && second) second(e); }; }
+
+export const Dialog = React.forwardRef(function Dialog({ open: controlled, defaultOpen = false, onOpenChange, children, ...legacy }, ref) {
   injectEfCss('ef-css-dialog', CSS);
-  const panelRef = React.useRef(null);
-  const prevFocus = React.useRef(null);
+  const { title, description, footer, onClose, closeLabel, width, className, style, ...legacyRest } = legacy;
+  const isLegacy = title !== undefined || description !== undefined || footer !== undefined || onClose !== undefined;
+  const [internal, setInternal] = React.useState(defaultOpen);
   const titleId = React.useId();
-  const descId = React.useId();
-  React.useEffect(() => {
-    if (!open) return;
-    prevFocus.current = document.activeElement;
-    const panel = panelRef.current;
-    const first = panel && panel.querySelector(FOCUSABLE);
-    (first || panel).focus();
-    return () => { if (prevFocus.current && prevFocus.current.focus) prevFocus.current.focus(); };
-  }, [open]);
-  React.useEffect(() => {
-    if (!open) return;
-    const onKey = e => {
-      if (e.key === 'Escape') { if (onClose) onClose(); return; }
-      if (e.key !== 'Tab') return;
-      const panel = panelRef.current;
-      const f = panel ? Array.from(panel.querySelectorAll(FOCUSABLE)).filter(el => !el.disabled) : [];
-      if (!f.length) { e.preventDefault(); return; }
-      const i = f.indexOf(document.activeElement);
-      if (e.shiftKey && i <= 0) { e.preventDefault(); f[f.length - 1].focus(); }
-      else if (!e.shiftKey && (i === -1 || i === f.length - 1)) { e.preventDefault(); f[0].focus(); }
-    };
-    document.addEventListener('keydown', onKey);
-    return () => document.removeEventListener('keydown', onKey);
-  }, [open, onClose]);
-  if (!open) return null;
-  return (
-    <div ref={ref} {...rest} className={`ef-dialog__overlay${className ? ' ' + className : ''}`} style={style} onMouseDown={e => { if (e.target === e.currentTarget && onClose) onClose(); }}>
-      <div className="ef-dialog" role="dialog" aria-modal="true" ref={panelRef} tabIndex={-1}
-        aria-labelledby={title ? titleId : undefined} aria-describedby={description ? descId : undefined}
-        style={{ maxWidth: width }}>
-        <div className="ef-dialog__head">
-          <div>
-            <div className="ef-dialog__title" id={titleId}>{title}</div>
-            {description ? <div className="ef-dialog__desc" id={descId}>{description}</div> : null}
-          </div>
-          {onClose ? <IconButton icon="x" label={closeLabel} size="sm" onClick={onClose} /> : null}
-        </div>
-        <div className="ef-dialog__body">{children}</div>
-        {footer ? <div className="ef-dialog__foot">{footer}</div> : null}
-      </div>
-    </div>
-  );
+  const descriptionId = React.useId();
+  const open = controlled === undefined ? internal : controlled;
+  const setOpen = React.useCallback(next => { if (controlled === undefined) setInternal(next); if (onOpenChange) onOpenChange(next); if (!next && onClose) onClose(); }, [controlled, onOpenChange, onClose]);
+  const value = React.useMemo(() => ({ open, setOpen, titleId, descriptionId }), [open, setOpen, titleId, descriptionId]);
+  if (isLegacy) return <DialogContext.Provider value={value}>{open ? <DialogContent width={width} showCloseButton={!!onClose} closeLabel={closeLabel} overlayRef={ref} overlayProps={{ ...legacyRest, className, style }}>
+    <DialogHeader><DialogTitle>{title}</DialogTitle>{description ? <DialogDescription>{description}</DialogDescription> : null}</DialogHeader>
+    <div className="ef-dialog__body">{children}</div>{footer ? <DialogFooter>{footer}</DialogFooter> : null}
+  </DialogContent> : null}</DialogContext.Provider>;
+  return <DialogContext.Provider value={value}>{children}</DialogContext.Provider>;
 });
+
+export const DialogTrigger = React.forwardRef(function DialogTrigger({ asChild = false, children, onClick, ...rest }, ref) {
+  const ctx = React.useContext(DialogContext);
+  const props = { ...rest, 'data-slot': 'dialog-trigger', onClick: compose(onClick, () => ctx && ctx.setOpen(true)) };
+  if (asChild) { const child = React.Children.only(children); return React.cloneElement(child, { ...props, ref: mergeRefs(ref, child.ref), className: child.props.className }); }
+  return <button {...props} ref={ref} type={rest.type || 'button'}>{children}</button>;
+});
+export function DialogPortal({ children, container }) { return <Portal container={container}>{children}</Portal>; }
+export const DialogOverlay = React.forwardRef(function DialogOverlay({ className, onMouseDown, ...rest }, ref) {
+  const ctx = React.useContext(DialogContext);
+  return <div {...rest} ref={ref} data-slot="dialog-overlay" className={cx('ef-dialog__overlay', className)} onMouseDown={compose(onMouseDown, e => { if (e.target === e.currentTarget && ctx) ctx.setOpen(false); })} />;
+});
+export const DialogClose = React.forwardRef(function DialogClose({ asChild = false, children, onClick, ...rest }, ref) {
+  const ctx = React.useContext(DialogContext); const props = { ...rest, 'data-slot': 'dialog-close', onClick: compose(onClick, () => ctx && ctx.setOpen(false)) };
+  if (asChild) { const child = React.Children.only(children); return React.cloneElement(child, { ...props, ref: mergeRefs(ref, child.ref), className: child.props.className }); }
+  return <button {...props} ref={ref} type={rest.type || 'button'}>{children}</button>;
+});
+export const DialogContent = React.forwardRef(function DialogContent({ children, className, style, width = 440, showCloseButton = true, closeLabel = 'Close', onEscapeKeyDown, overlayProps, overlayRef, ...rest }, ref) {
+  const ctx = React.useContext(DialogContext); const panelRef = React.useRef(null); const previous = React.useRef(null);
+  React.useEffect(() => { if (!ctx || !ctx.open) return; previous.current = document.activeElement; const panel = panelRef.current; const first = panel && panel.querySelector(FOCUSABLE); (first || panel).focus(); return () => previous.current && previous.current.focus && previous.current.focus(); }, [ctx && ctx.open]);
+  React.useEffect(() => { if (!ctx || !ctx.open) return; const key = e => { if (e.key === 'Escape') { if (onEscapeKeyDown) onEscapeKeyDown(e); if (!e.defaultPrevented) ctx.setOpen(false); return; } if (e.key !== 'Tab') return; const f = [...panelRef.current.querySelectorAll(FOCUSABLE)].filter(x => !x.disabled); if (!f.length) return e.preventDefault(); const i=f.indexOf(document.activeElement); if (e.shiftKey && i<=0) { e.preventDefault(); f[f.length-1].focus(); } else if (!e.shiftKey && (i<0 || i===f.length-1)) { e.preventDefault(); f[0].focus(); } }; document.addEventListener('keydown', key); return () => document.removeEventListener('keydown', key); }, [ctx && ctx.open, onEscapeKeyDown]);
+  if (!ctx || !ctx.open) return null;
+  return <DialogPortal><DialogOverlay {...overlayProps} ref={overlayRef}><div {...rest} ref={mergeRefs(ref, panelRef)} data-slot="dialog-content" role="dialog" aria-modal="true" aria-labelledby={rest['aria-label'] ? undefined : ctx.titleId} aria-describedby={ctx.descriptionId} tabIndex={-1} className={cx('ef-dialog__content', className)} style={{ ...style, maxWidth: width, position:'relative' }}>{children}{showCloseButton ? <div className="ef-dialog__close"><IconButton icon="x" label={closeLabel} size="sm" onClick={() => ctx.setOpen(false)} /></div> : null}</div></DialogOverlay></DialogPortal>;
+});
+export const DialogHeader = React.forwardRef(function DialogHeader({ className, ...rest }, ref) { return <div {...rest} ref={ref} data-slot="dialog-header" className={cx('ef-dialog__header', className)} />; });
+export const DialogFooter = React.forwardRef(function DialogFooter({ className, ...rest }, ref) { return <div {...rest} ref={ref} data-slot="dialog-footer" className={cx('ef-dialog__footer', className)} />; });
+export const DialogTitle = React.forwardRef(function DialogTitle({ className, id, ...rest }, ref) { const ctx=React.useContext(DialogContext); return <div {...rest} ref={ref} id={id || (ctx && ctx.titleId)} data-slot="dialog-title" className={cx('ef-dialog__title', className)} />; });
+export const DialogDescription = React.forwardRef(function DialogDescription({ className, id, ...rest }, ref) { const ctx=React.useContext(DialogContext); return <div {...rest} ref={ref} id={id || (ctx && ctx.descriptionId)} data-slot="dialog-description" className={cx('ef-dialog__description', className)} />; });

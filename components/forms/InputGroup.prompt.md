@@ -1,7 +1,7 @@
-# InputGroup
+# Input Group
 
-An input with leading/trailing addons inside one bordered row. String addons render as tinted cells (units, protocols); node addons render bare (ghost Buttons, Icons).
+Compose `InputGroup`, `InputGroupInput` or `InputGroupTextarea`, `InputGroupAddon`, `InputGroupButton`, and `InputGroupText` inside one bordered focus surface.
 
-`<InputGroup label="Site" prefix="https://" suffix=".efolusi.com" placeholder="acme" />`
+`<InputGroup><InputGroupInput placeholder="Search…" /><InputGroupAddon align="inline-end"><InputGroupText>12 results</InputGroupText></InputGroupAddon></InputGroup>`
 
-Accepts all native input props plus label/hint/error like Input. Use plain Input when there are no addons.
+The prior label/prefix/suffix shorthand remains supported. Use plain Input when there are no addons.

@@ -1328,9 +1328,9 @@ export declare function DonutChart(props: DonutChartProps): React.JSX.Element;
 
 #### EmptyState
 
-Group: data · Source: /components/data/EmptyState.jsx · Exports: EmptyState
+Group: data · Source: /components/data/EmptyState.jsx · Exports: Empty, EmptyHeader, EmptyMedia, EmptyTitle, EmptyDescription, EmptyContent, EmptyState
 
-Centered empty view — leads with the action, not the absence.
+Compose `Empty`, `EmptyHeader`, `EmptyMedia`, `EmptyTitle`, `EmptyDescription`, and `EmptyContent` for a centered empty view that leads with the action, not the absence. `EmptyState` remains as a convenience adapter.
 
 ```jsx
 <EmptyState bordered icon="folder" title="Create your first project"
@@ -1339,19 +1339,16 @@ Centered empty view — leads with the action, not the absence.
 ```
 
 ```ts
-export interface EmptyStateProps {
-  /** Lucide icon name @default 'inbox' */
-  icon?: string;
-  title: React.ReactNode;
-  description?: React.ReactNode;
-  /** Action slot, usually a primary Button */
-  action?: React.ReactNode;
-  /** Dashed hairline container */
-  bordered?: boolean;
-  style?: React.CSSProperties;
-  className?: string;
-}
-export declare function EmptyState(props: EmptyStateProps): React.JSX.Element;
+export type EmptyElementProps = React.HTMLAttributes<HTMLDivElement>;
+export declare const Empty: React.ForwardRefExoticComponent<EmptyElementProps & React.RefAttributes<HTMLDivElement>>;
+export declare const EmptyHeader: React.ForwardRefExoticComponent<EmptyElementProps & React.RefAttributes<HTMLDivElement>>;
+export interface EmptyMediaProps extends EmptyElementProps { variant?: 'default' | 'icon'; }
+export declare const EmptyMedia: React.ForwardRefExoticComponent<EmptyMediaProps & React.RefAttributes<HTMLDivElement>>;
+export declare const EmptyTitle: React.ForwardRefExoticComponent<EmptyElementProps & React.RefAttributes<HTMLDivElement>>;
+export declare const EmptyDescription: React.ForwardRefExoticComponent<EmptyElementProps & React.RefAttributes<HTMLDivElement>>;
+export declare const EmptyContent: React.ForwardRefExoticComponent<EmptyElementProps & React.RefAttributes<HTMLDivElement>>;
+export interface EmptyStateProps extends Omit<EmptyElementProps, 'title'> { icon?: string; title: React.ReactNode; description?: React.ReactNode; action?: React.ReactNode; bordered?: boolean; }
+export declare const EmptyState: React.ForwardRefExoticComponent<EmptyStateProps & React.RefAttributes<HTMLDivElement>>;
 ```
 
 #### KeyValueList
@@ -2612,9 +2609,9 @@ export declare function ConfirmDialog(props: ConfirmDialogProps): React.JSX.Elem
 
 #### Dialog
 
-Group: feedback · Source: /components/feedback/Dialog.jsx · Exports: Dialog
+Group: feedback · Source: /components/feedback/Dialog.jsx · Exports: Dialog, DialogTrigger, DialogPortal, DialogOverlay, DialogClose, DialogContent, DialogHeader, DialogFooter, DialogTitle, DialogDescription
 
-Centered modal with dimmed overlay, springy scale-in, ESC/overlay/✕ close.
+Compose `Dialog`, `DialogTrigger`, `DialogContent`, `DialogHeader`, `DialogTitle`, `DialogDescription`, `DialogFooter`, and `DialogClose` for a centered modal with focus containment, ESC/overlay/close dismissal, and focus restoration.
 
 ```jsx
 <Dialog open={open} onClose={close} title="Rename project" description="This updates the URL for everyone."
@@ -2626,22 +2623,20 @@ Centered modal with dimmed overlay, springy scale-in, ESC/overlay/✕ close.
 `width` caps max-width (default 440). Footer sits on a sunken sand strip.
 
 ```ts
-export interface DialogProps {
-  open: boolean;
-  /** Called on ✕, ESC, or overlay click; omit to hide ✕ */
-  onClose?: () => void;
-  /** Accessible name of the ✕ button. Pass a translated string in a
-   *  non-English UI. @default 'Close' */
-  closeLabel?: string;
-  title: React.ReactNode;
-  description?: React.ReactNode;
-  /** Right-aligned action row on sunken strip */
-  footer?: React.ReactNode;
-  /** Max width px @default 440 */
-  width?: number;
-  children?: React.ReactNode;
-}
-export declare const Dialog: React.ForwardRefExoticComponent<DialogProps & React.RefAttributes<HTMLDivElement>>;
+export interface DialogRootProps { open?: boolean; defaultOpen?: boolean; onOpenChange?: (open: boolean) => void; children?: React.ReactNode; }
+export interface DialogLegacyProps extends DialogRootProps { onClose?: () => void; closeLabel?: string; title?: React.ReactNode; description?: React.ReactNode; footer?: React.ReactNode; width?: number; }
+export declare const Dialog: React.ForwardRefExoticComponent<DialogLegacyProps & React.RefAttributes<HTMLDivElement>>;
+export interface DialogSlotProps extends React.HTMLAttributes<HTMLDivElement> { asChild?: boolean; }
+export declare const DialogTrigger: React.ForwardRefExoticComponent<React.ButtonHTMLAttributes<HTMLButtonElement> & { asChild?: boolean } & React.RefAttributes<HTMLButtonElement>>;
+export declare function DialogPortal(props: { children?: React.ReactNode; container?: HTMLElement }): React.JSX.Element | null;
+export declare const DialogOverlay: React.ForwardRefExoticComponent<React.HTMLAttributes<HTMLDivElement> & React.RefAttributes<HTMLDivElement>>;
+export declare const DialogClose: React.ForwardRefExoticComponent<React.ButtonHTMLAttributes<HTMLButtonElement> & { asChild?: boolean } & React.RefAttributes<HTMLButtonElement>>;
+export interface DialogContentProps extends React.HTMLAttributes<HTMLDivElement> { width?: number; showCloseButton?: boolean; closeLabel?: string; onEscapeKeyDown?: (event: KeyboardEvent) => void; }
+export declare const DialogContent: React.ForwardRefExoticComponent<DialogContentProps & React.RefAttributes<HTMLDivElement>>;
+export declare const DialogHeader: React.ForwardRefExoticComponent<DialogSlotProps & React.RefAttributes<HTMLDivElement>>;
+export declare const DialogFooter: React.ForwardRefExoticComponent<DialogSlotProps & React.RefAttributes<HTMLDivElement>>;
+export declare const DialogTitle: React.ForwardRefExoticComponent<DialogSlotProps & React.RefAttributes<HTMLDivElement>>;
+export declare const DialogDescription: React.ForwardRefExoticComponent<DialogSlotProps & React.RefAttributes<HTMLDivElement>>;
 ```
 
 #### Loader
@@ -3439,32 +3434,26 @@ export declare const Input: React.ForwardRefExoticComponent<InputProps & React.R
 
 #### InputGroup
 
-Group: forms · Source: /components/forms/InputGroup.jsx · Exports: InputGroup
+Group: forms · Source: /components/forms/InputGroup.jsx · Exports: InputGroup, InputGroupAddon, InputGroupButton, InputGroupInput, InputGroupTextarea, InputGroupText
 
-# InputGroup
+# Input Group
 
-An input with leading/trailing addons inside one bordered row. String addons render as tinted cells (units, protocols); node addons render bare (ghost Buttons, Icons).
+Compose `InputGroup`, `InputGroupInput` or `InputGroupTextarea`, `InputGroupAddon`, `InputGroupButton`, and `InputGroupText` inside one bordered focus surface.
 
-`<InputGroup label="Site" prefix="https://" suffix=".efolusi.com" placeholder="acme" />`
+`<InputGroup><InputGroupInput placeholder="Search…" /><InputGroupAddon align="inline-end"><InputGroupText>12 results</InputGroupText></InputGroupAddon></InputGroup>`
 
-Accepts all native input props plus label/hint/error like Input. Use plain Input when there are no addons.
+The prior label/prefix/suffix shorthand remains supported. Use plain Input when there are no addons.
 
 ```ts
-export interface InputGroupProps extends Omit<React.InputHTMLAttributes<HTMLInputElement>, 'size' | 'prefix'> {
-  /** Field label rendered above */
-  label?: string;
-  /** Muted helper text below */
-  hint?: string;
-  /** Error message below — also sets invalid styling */
-  error?: string;
-  /** Leading addon: string renders a tinted cell, a node renders bare */
-  prefix?: React.ReactNode;
-  /** Trailing addon: string renders a tinted cell, a node renders bare */
-  suffix?: React.ReactNode;
-  /** @default 'md' */
-  size?: 'sm' | 'md' | 'lg';
-}
-export declare function InputGroup(props: InputGroupProps): React.JSX.Element;
+export interface InputGroupProps extends Omit<React.InputHTMLAttributes<HTMLInputElement>, 'prefix'|'size'> { label?: React.ReactNode; hint?: React.ReactNode; error?: React.ReactNode; prefix?: React.ReactNode; suffix?: React.ReactNode; size?: 'sm'|'md'|'lg'; }
+export declare const InputGroup: React.ForwardRefExoticComponent<InputGroupProps & React.RefAttributes<HTMLElement>>;
+export interface InputGroupAddonProps extends React.HTMLAttributes<HTMLDivElement> { align?: 'inline-start'|'inline-end'|'block-start'|'block-end'; }
+export declare const InputGroupAddon: React.ForwardRefExoticComponent<InputGroupAddonProps & React.RefAttributes<HTMLDivElement>>;
+export interface InputGroupButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> { size?: 'xs'|'icon-xs'|'sm'|'icon-sm'; variant?: 'default'|'destructive'|'outline'|'secondary'|'ghost'|'link'; }
+export declare const InputGroupButton: React.ForwardRefExoticComponent<InputGroupButtonProps & React.RefAttributes<HTMLButtonElement>>;
+export declare const InputGroupInput: React.ForwardRefExoticComponent<React.InputHTMLAttributes<HTMLInputElement> & React.RefAttributes<HTMLInputElement>>;
+export declare const InputGroupTextarea: React.ForwardRefExoticComponent<React.TextareaHTMLAttributes<HTMLTextAreaElement> & React.RefAttributes<HTMLTextAreaElement>>;
+export declare const InputGroupText: React.ForwardRefExoticComponent<React.HTMLAttributes<HTMLSpanElement> & React.RefAttributes<HTMLSpanElement>>;
 ```
 
 #### Label

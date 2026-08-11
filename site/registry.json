@@ -1135,10 +1135,10 @@
       ]
     },
     {
-      "name": "emptystate",
+      "name": "empty",
       "type": "registry:ui",
-      "title": "EmptyState",
-      "description": "Centered empty view \u2014 leads with the action, not the absence.",
+      "title": "Empty + EmptyHeader + EmptyMedia + EmptyTitle + EmptyDescription + EmptyContent + EmptyState",
+      "description": "Compose `Empty`, `EmptyHeader`, `EmptyMedia`, `EmptyTitle`, `EmptyDescription`, and `EmptyContent` for a centered empty view that leads with the action, not the absence. `EmptyState` remains as a convenience adapter.",
       "dependencies": [
         "react"
       ],
@@ -2218,16 +2218,16 @@
     {
       "name": "dialog",
       "type": "registry:ui",
-      "title": "Dialog",
-      "description": "Centered modal with dimmed overlay, springy scale-in, ESC/overlay/\u2715 close.",
+      "title": "Dialog + DialogTrigger + DialogPortal + DialogOverlay + DialogClose + DialogContent + DialogHeader + DialogFooter + DialogTitle + DialogDescription",
+      "description": "Compose `Dialog`, `DialogTrigger`, `DialogContent`, `DialogHeader`, `DialogTitle`, `DialogDescription`, `DialogFooter`, and `DialogClose` for a centered modal with focus containment, ESC/overlay/close dismissal, and focus restoration.",
       "dependencies": [
         "react"
       ],
       "registryDependencies": [
         "https://meridian.efolusi.com/site/registry/meridian-base.json",
         "https://meridian.efolusi.com/site/registry/button.json",
-        "https://meridian.efolusi.com/site/registry/icon.json",
-        "https://meridian.efolusi.com/site/registry/iconbutton.json"
+        "https://meridian.efolusi.com/site/registry/iconbutton.json",
+        "https://meridian.efolusi.com/site/registry/portal.json"
       ],
       "files": [
         {
@@ -2843,8 +2843,8 @@
     {
       "name": "inputgroup",
       "type": "registry:ui",
-      "title": "InputGroup",
-      "description": "An input with leading/trailing addons inside one bordered row. String addons render as tinted cells (units, protocols); node addons render bare (ghost Buttons, Icons).",
+      "title": "InputGroup + InputGroupAddon + InputGroupButton + InputGroupInput + InputGroupTextarea + InputGroupText",
+      "description": "Compose `InputGroup`, `InputGroupInput` or `InputGroupTextarea`, `InputGroupAddon`, `InputGroupButton`, and `InputGroupText` inside one bordered focus surface.",
       "dependencies": [
         "react"
       ],

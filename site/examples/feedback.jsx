@@ -77,16 +77,13 @@ export function ConfirmDialogDemo() {
 
 // @demo Dialog Modal form
 export function DialogDemo() {
-  const { Dialog, Button, Input } = window.EfolusiDesignSystem_4ffc3d;
-  const [open, setOpen] = React.useState(false);
+  const { Dialog, DialogClose, DialogContent, DialogDescription, DialogFooter, DialogHeader, DialogTitle, DialogTrigger, Button, Input } = window.EfolusiDesignSystem_4ffc3d;
   return (
-    <div>
-      <Button variant="secondary" onClick={() => setOpen(true)}>Invite member</Button>
-      <Dialog open={open} onClose={() => setOpen(false)} title="Invite a member" description="They get Editor access by default."
-        footer={<React.Fragment><Button variant="ghost" onClick={() => setOpen(false)}>Cancel</Button><Button onClick={() => setOpen(false)}>Send invite</Button></React.Fragment>}>
-        <Input label="Email" placeholder="kofi@company.com" iconLeft="mail" />
-      </Dialog>
-    </div>
+    <Dialog><DialogTrigger asChild><Button variant="secondary">Invite member</Button></DialogTrigger><DialogContent>
+      <DialogHeader><DialogTitle>Invite a member</DialogTitle><DialogDescription>They get Editor access by default.</DialogDescription></DialogHeader>
+      <div className="ef-dialog__body"><Input label="Email" placeholder="kofi@company.com" iconLeft="mail" /></div>
+      <DialogFooter><DialogClose asChild><Button variant="ghost">Cancel</Button></DialogClose><DialogClose asChild><Button>Send invite</Button></DialogClose></DialogFooter>
+    </DialogContent></Dialog>
   );
 }
 

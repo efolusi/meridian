@@ -158,7 +158,11 @@
     { "name": "Context Menu", "status": "unverified" },
     { "name": "Data Table", "status": "unverified" },
     { "name": "Date Picker", "status": "unverified" },
-    { "name": "Dialog", "status": "unverified" },
+    {
+      "name": "Dialog", "status": "proven",
+      "requiredExports": ["Dialog", "DialogTrigger", "DialogPortal", "DialogOverlay", "DialogClose", "DialogContent", "DialogHeader", "DialogFooter", "DialogTitle", "DialogDescription"],
+      "sourceFiles": ["components/feedback/Dialog.jsx", "components/feedback/Dialog.d.ts"], "registryItems": ["site/registry/dialog.json"], "tests": ["tests/dialog-compatibility.test.jsx"]
+    },
     {
       "name": "Direction",
       "status": "proven",
@@ -170,7 +174,11 @@
     },
     { "name": "Drawer", "status": "unverified" },
     { "name": "Dropdown Menu", "status": "unverified" },
-    { "name": "Empty", "status": "unverified" },
+    {
+      "name": "Empty", "status": "proven",
+      "requiredExports": ["Empty", "EmptyHeader", "EmptyMedia", "EmptyTitle", "EmptyDescription", "EmptyContent"],
+      "sourceFiles": ["components/data/EmptyState.jsx", "components/data/EmptyState.d.ts"], "registryItems": ["site/registry/empty.json"], "tests": ["tests/empty-compatibility.test.jsx"]
+    },
     { "name": "Field", "status": "unverified" },
     { "name": "Hover Card", "status": "unverified" },
     {
@@ -181,7 +189,11 @@
       "registryItems": ["site/registry/input.json"],
       "tests": ["tests/input-compatibility.test.jsx"]
     },
-    { "name": "Input Group", "status": "unverified" },
+    {
+      "name": "Input Group", "status": "proven",
+      "requiredExports": ["InputGroup", "InputGroupAddon", "InputGroupButton", "InputGroupInput", "InputGroupText", "InputGroupTextarea"],
+      "sourceFiles": ["components/forms/InputGroup.jsx", "components/forms/InputGroup.d.ts"], "registryItems": ["site/registry/inputgroup.json"], "tests": ["tests/input-group-compatibility.test.jsx"]
+    },
     { "name": "Input OTP", "status": "unverified" },
     { "name": "Item", "status": "unverified" },
     {
