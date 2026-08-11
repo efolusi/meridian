@@ -2,7 +2,7 @@
 
 Goal: take Meridian from a complete internal system (v1.x) to a professional, enterprise-adoptable open-source design system.
 
-**Baseline today:** 117 components (source + `.d.ts` + `.prompt.md`), 166 unique token names in light/dark/compact, 118 icons, 9 blocks, 8 example apps, 9 starter journeys, docs site with live demos and search, guidelines (accessibility, forms, governance), MIT license, llms.txt + agent skill.
+**Baseline today:** 115 components (source + `.d.ts` + `.prompt.md`), 166 unique token names in light/dark/compact, 118 icons, 9 blocks, 8 example apps, 9 starter journeys, docs site with live demos and search, guidelines (accessibility, forms, governance), MIT license, llms.txt + agent skill.
 
 ---
 
@@ -10,7 +10,7 @@ Goal: take Meridian from a complete internal system (v1.x) to a professional, en
 
 The credibility layer: nothing markets a system like correctness.
 
-- **Accessibility conformance.** Audit every interactive component against WCAG 2.2 AA: keyboard map, focus order, ARIA roles, `prefers-reduced-motion`. Publish a per-component a11y note on its docs page ("Keyboard", "Screen reader", "Known limits"). Priority: Combobox, CommandPalette, Dialog/Drawer, Menu, DatePicker, RichComposer, Player.
+- **Accessibility conformance.** Audit every interactive component against WCAG 2.2 AA: keyboard map, focus order, ARIA roles, `prefers-reduced-motion`. Publish a per-component a11y note on its docs page ("Keyboard", "Screen reader", "Known limits"). Priority: Combobox, CommandPalette, Dialog/Drawer, Menu, Calendar and its picker composition, RichComposer, Player.
 - **Contrast verification.** Scripted check of every semantic token pair (text-on-surface, accent-contrast, states) in light *and* dark; publish results on the Colors page.
 - ~~**API consistency audit.**~~ Landed 2026-07-24: the drifted props are unified with one-major deprecated aliases — onChange for state-selection, onSelect for command menus, side for placement, format for chart formatting (1.9.0); status for a component's condition, and action=ReactNode across Alert/Banner/Toast (this sweep). Severity stays `tone`, controlled uses `defaultX`, events use `onX`. Every alias is tested (canonical works, alias works, canonical wins).
 - **Browser support matrix + RTL statement.** DirectionProvider, mirrored behavior, logical CSS, a static direction-safety gate, representative visual review and bidirectional 128-demo smoke landed in 1.x. Still open: test the last 2 versions of Safari, Firefox and Edge before claiming full cross-browser RTL support.
@@ -72,7 +72,7 @@ Meet developers where they are; keep the zero-build path as the flagship.
 
 1. Write the API conventions doc and run the 106-component audit against it.
 2. ~~Script the contrast check; fix any failing token pair.~~ Done 2026-07-17: `--text-muted`, `--success-600`, `--danger-600` retuned to ≥4.5:1 in both themes (see CHANGELOG § 1.4.0).
-3. ~~A11y pass on the priority-seven interactive components.~~ Done 2026-07-18: keyboard and focus contracts shipped and verified for Menu, Popover, Dialog, Drawer, ConfirmDialog, CommandPalette, Calendar/DatePicker, Tabs, Tooltip, HoverCard — see `guidelines/accessibility.md` § component keyboard contracts. Per-component notes on docs pages still open.
+3. ~~A11y pass on the priority-seven interactive components.~~ Done 2026-07-18: keyboard and focus contracts shipped and verified for Menu, Popover, Dialog, Drawer, ConfirmDialog, CommandPalette, Calendar and its picker composition, Tabs, Tooltip, HoverCard — see `guidelines/accessibility.md` § component keyboard contracts. Per-component notes on docs pages still open.
 4. ~~Cut `tokens.json` (DTCG) from the CSS source.~~ Done 2026-07-18: `scripts/build_tokens.py` generates `tokens.json` and `tailwind.preset.js` from `tokens/*.css`; CI regenerates and diffs both on every push.
 5. ~~Add supported-versions table in SECURITY.md + issue-template gaps.~~ Done 2026-07-17 (CODE_OF_CONDUCT.md and bug/proposal templates already existed; added config.yml, docs-issue template, SUPPORT.md, THIRD_PARTY_NOTICES.md).
 
@@ -89,7 +89,7 @@ Concrete items surfaced by the five-area audit (components, tokens, docs site, k
 - npm publishing (decision point 1/2).
 
 **Phase 1 — components (a11y release shipped 2026-07-18; contracts in `guidelines/accessibility.md`)**
-- ~~Focus trap, focus-in, restore, labelling for Dialog, Drawer, ConfirmDialog, CommandPalette; keyboard Menu/Popover triggers with arrow navigation; Calendar/DatePicker grid + keyboard; Tabs roving tabindex; Tooltip `aria-describedby`; HoverCard role fix.~~ Done and verified in-browser.
+- ~~Focus trap, focus-in, restore, labelling for Dialog, Drawer, ConfirmDialog, CommandPalette; keyboard Menu/Popover triggers with arrow navigation; Calendar grid + picker composition; Tabs roving tabindex; Tooltip `aria-describedby`; HoverCard role fix.~~ Done and verified in-browser.
 - ~~Menu typeahead; arrow-key navigation for ContextMenu and Menubar.~~ Done 2026-07-18: full arrow/Home/End/typeahead keyboard support across Menu, ContextMenu, and Menubar (verified in-browser).
 - ~~Specimen-card coverage for the 7 uncarded components.~~ Done 2026-07-18: Confirmation, Conversation, BarChart, KeyValueList, StatusDot, Loader, Steps added to their group cards (verified in-browser). Every public component now appears in a card.
 

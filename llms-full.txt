@@ -30,7 +30,7 @@ Dark mode: set data-theme="dark" on any subtree. Compact density: data-density="
 
 ## Components
 
-117 components across 12 groups: ai, code, data, dates, display, feedback, files, finance, forms, icons, navigation, overlay. Each entry lists the component's public exports, its usage guidance (.prompt.md), and its typed props interface (.d.ts).
+115 components across 12 groups: ai, code, data, dates, display, feedback, files, finance, forms, icons, navigation, overlay. Each entry lists the component's public exports, its usage guidance (.prompt.md), and its typed props interface (.d.ts).
 
 ### ai
 
@@ -1630,116 +1630,31 @@ export declare const TableCaption: React.ForwardRefExoticComponent<React.HTMLAtt
 
 #### Calendar
 
-Group: dates · Source: /components/dates/Calendar.jsx · Exports: Calendar
+Group: dates · Source: /components/dates/Calendar.jsx · Exports: CalendarDayButton, Calendar
 
-Month grid — hairline today ring, ink selected day, ISO string in/out. `range` switches to a {from,to} pair: first pick sets from, second sets to (swapped when earlier), a third starts over; the days between paint as a tinted band.
+# Calendar
 
-```jsx
-<Calendar value={date} onChange={setDate} />
-<Calendar range value={{ from, to }} onChange={setRange} />
-```
-
-Pass `locale` (a BCP 47 tag) to localise month and weekday names via Intl — `locale="id"` renders "Januari", "Sen". Omit it for English. The grid stays Monday-first for every locale. `DatePicker` and `DateRangePicker` take the same `locale` and forward it to the calendar.
+Calendar follows the DayPicker-style contract: `mode`, `selected`, and `onSelect` use JavaScript `Date` values. Use `mode="range"` for `{ from, to }`, `mode="multiple"` for arrays, `captionLayout="dropdown"` for month/year selection, and `disabled` matchers for unavailable days.
 
 ```jsx
-<Calendar value={date} locale="id" onChange={setDate} />
+<Calendar mode="single" selected={date} onSelect={setDate} />
+<Calendar mode="range" selected={range} onSelect={setRange} />
 ```
+
+Date pickers are compositions of `Popover`, `Button`, and `Calendar`; there is no separate picker root. `CalendarDayButton` is exported for custom day rendering.
 
 ```ts
-export interface DateRange {
-  /** Range start as YYYY-MM-DD, or null while unset */
-  from: string | null;
-  /** Range end as YYYY-MM-DD, or null while unset */
-  to: string | null;
+export interface DateRange { from?: Date; to?: Date }
+export type DateMatcher = Date | Date[] | ((date: Date) => boolean) | { before?: Date; after?: Date; from?: Date; to?: Date; dayOfWeek?: number[] };
+export interface CalendarDayButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> { day: { date: Date } | Date; modifiers?: Record<string, boolean>; locale?: string | { code?: string } }
+export declare const CalendarDayButton: React.ForwardRefExoticComponent<CalendarDayButtonProps & React.RefAttributes<HTMLButtonElement>>;
+export interface CalendarProps extends Omit<React.HTMLAttributes<HTMLDivElement>, 'onSelect'> {
+  mode?: 'single' | 'multiple' | 'range'; selected?: Date | Date[] | DateRange; onSelect?: (selected: any, triggerDate: Date, modifiers: Record<string, boolean>, event: unknown) => void;
+  month?: Date; defaultMonth?: Date; onMonthChange?: (month: Date) => void; disabled?: DateMatcher; required?: boolean; showOutsideDays?: boolean; fixedWeeks?: boolean; numberOfMonths?: number;
+  captionLayout?: 'label' | 'dropdown' | 'dropdown-months' | 'dropdown-years'; startMonth?: Date; endMonth?: Date; locale?: string | { code?: string }; dir?: 'ltr' | 'rtl'; buttonVariant?: string;
+  classNames?: Record<string, string>; formatters?: { formatCaption?: (date: Date) => string; formatWeekdayName?: (date: Date) => string }; components?: { DayButton?: React.ComponentType<CalendarDayButtonProps> };
 }
-export interface CalendarProps extends Omit<React.HTMLAttributes<HTMLDivElement>, 'onChange'> {
-  /** Single-date mode (the default) */
-  range?: false;
-  /** Selected date as YYYY-MM-DD */
-  value?: string;
-  onChange?: (date: string) => void;
-  /** BCP 47 locale for month and weekday names via Intl (e.g. 'id', 'en'); omit for English. The grid stays Monday-first for every locale. */
-  locale?: string;
-  style?: React.CSSProperties;
-  className?: string;
-}
-export interface CalendarRangeProps extends Omit<React.HTMLAttributes<HTMLDivElement>, 'onChange'> {
-  /** Range mode: value/onChange carry a {from,to} pair; first pick sets from, second sets to (swapped when earlier), third starts over */
-  range: true;
-  value?: DateRange;
-  onChange?: (range: DateRange) => void;
-  /** BCP 47 locale for month and weekday names via Intl (e.g. 'id', 'en'); omit for English. The grid stays Monday-first for every locale. */
-  locale?: string;
-  style?: React.CSSProperties;
-  className?: string;
-}
-export declare function Calendar(props: CalendarProps | CalendarRangeProps): React.JSX.Element;
-```
-
-#### DatePicker
-
-Group: dates · Source: /components/dates/DatePicker.jsx · Exports: DatePicker
-
-Field-style trigger + Calendar popover; closes on pick, outside click, ESC.
-
-```jsx
-<DatePicker label="Renewal date" defaultValue="2026-08-01" onChange={setDate} />
-```
-
-```ts
-export interface DatePickerProps {
-  label?: string;
-  /** Controlled YYYY-MM-DD */
-  value?: string;
-  defaultValue?: string;
-  onChange?: (date: string) => void;
-  /** @default 'Pick a date' */
-  placeholder?: string;
-  /** BCP 47 locale for the trigger's date label and the calendar's names via Intl (e.g. 'id', 'en'); omit for en-US. */
-  locale?: string;
-  style?: React.CSSProperties;
-  className?: string;
-}
-export declare function DatePicker(props: DatePickerProps): React.JSX.Element;
-```
-
-#### DateRangePicker
-
-Group: dates · Source: /components/dates/DateRangePicker.jsx · Exports: DateRangePicker
-
-Field-style trigger + range Calendar popover for a check-in/check-out pair. Shows "from — to" once picked, an inline clear button while a range exists; closes when both ends are set, on outside click, ESC. `min`/`max` (ISO) drop picks outside the window.
-
-Use it for a stay, a report window, a billing period — two dates that belong together. Not for a single date (DatePicker) or two unrelated dates (two DatePickers).
-
-```jsx
-<DateRangePicker label="Stay" value={range} onChange={setRange} />
-<DateRangePicker label="Report window" min="2026-01-01" max="2026-12-31" value={r} onChange={setR} hint="This fiscal year." />
-```
-
-```ts
-import type { DateRange } from './Calendar.js';
-
-export interface DateRangePickerProps extends Omit<React.HTMLAttributes<HTMLSpanElement>, 'onChange'> {
-  /** Field label rendered above the trigger */
-  label?: string;
-  /** Muted helper line rendered below */
-  hint?: string;
-  /** Controlled {from,to} of YYYY-MM-DD strings; either may be null */
-  value?: DateRange;
-  onChange?: (range: DateRange) => void;
-  /** Earliest pickable day as YYYY-MM-DD; earlier picks are ignored */
-  min?: string;
-  /** Latest pickable day as YYYY-MM-DD; later picks are ignored */
-  max?: string;
-  /** @default 'Pick a date range' */
-  placeholder?: string;
-  disabled?: boolean;
-  /** BCP 47 locale for the trigger's date labels and the calendar's names via Intl (e.g. 'id', 'en'); omit for en-US. */
-  locale?: string;
-  style?: React.CSSProperties;
-  className?: string;
-}
-export declare function DateRangePicker(props: DateRangePickerProps): React.JSX.Element;
+export declare function Calendar(props: CalendarProps): React.JSX.Element;
 ```
 
 #### TimePicker
@@ -4287,7 +4202,7 @@ export declare const PopoverDescription: React.ForwardRefExoticComponent<React.H
 
 Group: overlay · Source: /components/overlay/Portal.jsx · Exports: Portal
 
-Escape hatch for floating content: renders children into `document.body` so no ancestor's `overflow` can clip them. Menu, Popover, Tooltip, HoverCard, ContextMenu, Combobox and DatePicker all sit on it.
+Escape hatch for floating content: renders children into `document.body` so no ancestor's `overflow` can clip them. Menu, Popover, Tooltip, HoverCard, ContextMenu, Combobox and composed calendar pickers all sit on it.
 
 Reach for it when you build your own floating surface. If you are placing that surface against a trigger, position it in viewport coordinates rather than `position:absolute`, or it will drift when an ancestor scrolls.
 

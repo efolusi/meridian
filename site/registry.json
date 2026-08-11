@@ -1379,8 +1379,8 @@
     {
       "name": "calendar",
       "type": "registry:ui",
-      "title": "Calendar",
-      "description": "Month grid \u2014 hairline today ring, ink selected day, ISO string in/out. `range` switches to a {from,to} pair: first pick sets from, second sets to (swapped when earlier), a third starts over; the days between paint as a tinted band.",
+      "title": "CalendarDayButton + Calendar",
+      "description": "Calendar follows the DayPicker-style contract: `mode`, `selected`, and `onSelect` use JavaScript `Date` values. Use `mode=\"range\"` for `{ from, to }`, `mode=\"multiple\"` for arrays, `captionLayout=\"dropdown\"` for month/year selection, and `disabled` matchers for unavailable days.",
       "dependencies": [
         "react"
       ],
@@ -1388,7 +1388,8 @@
         "https://meridian.efolusi.com/site/registry/meridian-base.json",
         "https://meridian.efolusi.com/site/registry/button.json",
         "https://meridian.efolusi.com/site/registry/direction.json",
-        "https://meridian.efolusi.com/site/registry/iconbutton.json"
+        "https://meridian.efolusi.com/site/registry/iconbutton.json",
+        "https://meridian.efolusi.com/site/registry/nativeselect.json"
       ],
       "files": [
         {
@@ -1401,74 +1402,6 @@
         },
         {
           "path": "components/dates/Calendar.prompt.md",
-          "type": "registry:component"
-        }
-      ],
-      "categories": [
-        "dates"
-      ]
-    },
-    {
-      "name": "datepicker",
-      "type": "registry:ui",
-      "title": "DatePicker",
-      "description": "Field-style trigger + Calendar popover; closes on pick, outside click, ESC.",
-      "dependencies": [
-        "react"
-      ],
-      "registryDependencies": [
-        "https://meridian.efolusi.com/site/registry/meridian-base.json",
-        "https://meridian.efolusi.com/site/registry/button.json",
-        "https://meridian.efolusi.com/site/registry/calendar.json",
-        "https://meridian.efolusi.com/site/registry/field.json",
-        "https://meridian.efolusi.com/site/registry/icon.json",
-        "https://meridian.efolusi.com/site/registry/portal.json"
-      ],
-      "files": [
-        {
-          "path": "components/dates/DatePicker.jsx",
-          "type": "registry:ui"
-        },
-        {
-          "path": "components/dates/DatePicker.d.ts",
-          "type": "registry:component"
-        },
-        {
-          "path": "components/dates/DatePicker.prompt.md",
-          "type": "registry:component"
-        }
-      ],
-      "categories": [
-        "dates"
-      ]
-    },
-    {
-      "name": "daterangepicker",
-      "type": "registry:ui",
-      "title": "DateRangePicker",
-      "description": "Field-style trigger + range Calendar popover for a check-in/check-out pair. Shows \"from \u2014 to\" once picked, an inline clear button while a range exists; closes when both ends are set, on outside click, ESC. `min`/`max` (ISO) drop picks outside the window.",
-      "dependencies": [
-        "react"
-      ],
-      "registryDependencies": [
-        "https://meridian.efolusi.com/site/registry/meridian-base.json",
-        "https://meridian.efolusi.com/site/registry/button.json",
-        "https://meridian.efolusi.com/site/registry/calendar.json",
-        "https://meridian.efolusi.com/site/registry/field.json",
-        "https://meridian.efolusi.com/site/registry/icon.json",
-        "https://meridian.efolusi.com/site/registry/portal.json"
-      ],
-      "files": [
-        {
-          "path": "components/dates/DateRangePicker.jsx",
-          "type": "registry:ui"
-        },
-        {
-          "path": "components/dates/DateRangePicker.d.ts",
-          "type": "registry:component"
-        },
-        {
-          "path": "components/dates/DateRangePicker.prompt.md",
           "type": "registry:component"
         }
       ],
@@ -3682,7 +3615,7 @@
       "name": "portal",
       "type": "registry:ui",
       "title": "Portal",
-      "description": "Escape hatch for floating content: renders children into `document.body` so no ancestor's `overflow` can clip them. Menu, Popover, Tooltip, HoverCard, ContextMenu, Combobox and DatePicker all sit on it.",
+      "description": "Escape hatch for floating content: renders children into `document.body` so no ancestor's `overflow` can clip them. Menu, Popover, Tooltip, HoverCard, ContextMenu, Combobox and composed calendar pickers all sit on it.",
       "dependencies": [
         "react"
       ],

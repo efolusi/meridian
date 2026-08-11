@@ -102,8 +102,6 @@
  "FileTile": "Baris berkas dengan ikon tipe (disimpulkan dari ekstensi), meta ukuran/status, status progres atau error.",
  "FileTypeIcon": "Glyph berkas bertipe dengan chip ekstensi berwarna — memetakan 20 ekstensi umum ke ikon + warna.",
  "Calendar": "Grid bulan — cincin hari-ini setipis rambut, hari terpilih tinta, string ISO masuk/keluar.",
- "DatePicker": "Pemicu bergaya-field + popover Calendar; menutup saat memilih, klik di luar, ESC.",
- "DateRangePicker": "Pemicu bergaya-field + popover Calendar rentang untuk pasangan check-in/check-out. Menampilkan \"from — to\" setelah dipilih, tombol bersihkan inline selama rentang ada; menutup saat kedua ujung diset, saat klik di luar, ESC. `min`/`max` (ISO) membuang pilihan di luar jendela.",
  "TimePicker": "Input + listbox slot waktu setiap `stepMinutes` antara `minTime`/`maxTime`. Mengetik menyaring daftar; Enter memilih slot tersorot; waktu valid yang diketik ('9:5' jadi '09:05') di-commit saat blur meski di luar grid. Nilai selalu 'HH:MM' 24 jam — `format24={false}` hanya mengubah label ke 12 jam AM/PM.",
  "PaymentCard": "Visual kartu pembayaran untuk Trader / Social Finance — espresso, karamel, atau kertas; frozen membuatnya kelabu.",
  "Icon": "Menampilkan satu dari 108 ikon Lucide terkurasi yang dikirim di assets/icons/, mewarisi currentColor."

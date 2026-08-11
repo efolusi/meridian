@@ -1,138 +1,153 @@
 import React from 'react';
 import { IconButton } from '../forms/IconButton.jsx';
 import { injectEfCss } from '../forms/Button.jsx';
+import { NativeSelect, NativeSelectOption } from '../forms/NativeSelect.jsx';
 import { useDirection } from '../display/Direction.jsx';
+
 const CSS = `
-.ef-cal{width:252px;user-select:none}
-.ef-cal__head{display:flex;align-items:center;gap:4px;margin-bottom:8px}
-.ef-cal__month{flex:1;text-align:center;font-size:var(--text-sm);font-weight:var(--weight-semibold)}
-.ef-cal__grid{display:grid;grid-template-columns:repeat(7,1fr);gap:2px}
+.ef-cal{width:max-content;min-width:280px;user-select:none;color:var(--text-primary)}
+.ef-cal__months{display:flex;gap:18px;flex-wrap:wrap}
+.ef-cal__month-wrap{width:280px}
+.ef-cal__head{display:flex;min-height:34px;align-items:center;gap:6px;margin-bottom:8px}
+.ef-cal__caption{flex:1;text-align:center;font-size:var(--text-sm);font-weight:var(--weight-semibold)}
+.ef-cal__dropdowns{display:flex;flex:1;justify-content:center;gap:5px}.ef-cal__dropdowns .ef-native-select{width:auto}.ef-cal__dropdowns select{height:30px}
+.ef-cal__grid{display:grid;grid-template-columns:repeat(7,36px);gap:2px}
 .ef-cal__row{display:contents}
-.ef-cal__dow{text-align:center;font-size:10px;font-weight:var(--weight-semibold);letter-spacing:0.06em;text-transform:uppercase;color:var(--text-muted);padding:4px 0}
-.ef-cal__day{height:32px;border:1px solid transparent;border-radius:var(--radius-sm);background:none;cursor:pointer;font-family:var(--font-sans);font-size:var(--text-sm);color:var(--text-primary);transition:background var(--dur-fast) var(--ease-out)}
-.ef-cal__day:hover{background:var(--sand-100)}
+.ef-cal__dow{text-align:center;font-size:10px;font-weight:var(--weight-semibold);letter-spacing:.06em;text-transform:uppercase;color:var(--text-muted);padding:5px 0}
+.ef-cal__day{position:relative;display:grid;width:36px;height:34px;place-items:center;border:1px solid transparent;border-radius:var(--radius-sm);background:none;color:var(--text-primary);font:inherit;font-size:var(--text-sm);cursor:pointer}
+.ef-cal__day:hover:not(:disabled){background:var(--surface-sunken)}
 .ef-cal__day:focus-visible{outline:none;box-shadow:var(--focus-ring)}
-.ef-cal__day--out{color:var(--sand-400)}
-.ef-cal__day--today{border-color:var(--sand-400)}
-.ef-cal__day--sel{background:var(--accent);color:var(--accent-contrast);font-weight:var(--weight-semibold)}
-.ef-cal__day--sel:hover{background:var(--sand-900)}
-.ef-cal__day--band{background:var(--brand-100);color:var(--brand-950);border-radius:0}
-.ef-cal__day--band:hover{background:var(--brand-200)}
+.ef-cal__day:disabled{cursor:not-allowed;opacity:.35}
+.ef-cal__day[data-outside="true"]{color:var(--text-muted)}
+.ef-cal__day[data-today="true"]{border-color:var(--border-strong)}
+.ef-cal__day[data-selected="true"]{background:var(--accent);color:var(--accent-contrast);font-weight:var(--weight-semibold)}
+.ef-cal__day[data-range-middle="true"]{border-radius:0;background:var(--brand-100);color:var(--brand-950)}
+.ef-cal__day[data-range-start="true"]{border-start-end-radius:0;border-end-end-radius:0}
+.ef-cal__day[data-range-end="true"]{border-start-start-radius:0;border-end-start-radius:0}
 `;
-const DOW = ['Mo', 'Tu', 'We', 'Th', 'Fr', 'Sa', 'Su'];
-const DOW_FULL = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'];
-const MONTHS = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
-const iso = d => d.getFullYear() + '-' + String(d.getMonth() + 1).padStart(2, '0') + '-' + String(d.getDate()).padStart(2, '0');
-// Month, weekday and full-date names for a locale, from Intl. Reference dates:
-// 2024-01-01 is a Monday, so index 0..6 is Monday..Sunday — matching the grid,
-// which stays Monday-first for every locale (week-start localisation depends on
-// Intl.Locale weekInfo, which is not portable, so it is deliberately out of scope).
-const EN = { months: MONTHS, dow: DOW, dowFull: DOW_FULL, dayLabel: d => `${d.getDate()} ${MONTHS[d.getMonth()]} ${d.getFullYear()}` };
-function localeNames(locale) {
-  if (!locale) return EN;
-  const mLong = new Intl.DateTimeFormat(locale, { month: 'long' });
-  const dShort = new Intl.DateTimeFormat(locale, { weekday: 'short' });
-  const dLong = new Intl.DateTimeFormat(locale, { weekday: 'long' });
-  const dayFmt = new Intl.DateTimeFormat(locale, { day: 'numeric', month: 'long', year: 'numeric' });
-  return {
-    months: Array.from({ length: 12 }, (_, i) => mLong.format(new Date(2024, i, 1))),
-    dow: Array.from({ length: 7 }, (_, i) => dShort.format(new Date(2024, 0, 1 + i))),
-    dowFull: Array.from({ length: 7 }, (_, i) => dLong.format(new Date(2024, 0, 1 + i))),
-    dayLabel: d => dayFmt.format(d),
-  };
-}
-export function Calendar({ value, onChange, range, locale, style, className, ...rest }) {
+const sameDay = (a, b) => !!a && !!b && a.getFullYear() === b.getFullYear() && a.getMonth() === b.getMonth() && a.getDate() === b.getDate();
+const startDay = date => new Date(date.getFullYear(), date.getMonth(), date.getDate());
+const addDays = (date, amount) => new Date(date.getFullYear(), date.getMonth(), date.getDate() + amount);
+const addMonths = (date, amount) => new Date(date.getFullYear(), date.getMonth() + amount, 1);
+const dayKey = date => `${date.getFullYear()}-${String(date.getMonth() + 1).padStart(2, '0')}-${String(date.getDate()).padStart(2, '0')}`;
+const normalizeLocale = locale => typeof locale === 'string' ? locale : locale?.code;
+const matcherHit = (matcher, date) => {
+  if (!matcher) return false;
+  if (Array.isArray(matcher)) return matcher.some(item => matcherHit(item, date));
+  if (typeof matcher === 'function') return !!matcher(date);
+  if (matcher instanceof Date) return sameDay(matcher, date);
+  if (matcher.before && date < startDay(matcher.before)) return true;
+  if (matcher.after && date > startDay(matcher.after)) return true;
+  if (matcher.from && matcher.to && date >= startDay(matcher.from) && date <= startDay(matcher.to)) return true;
+  if (matcher.dayOfWeek?.includes(date.getDay())) return true;
+  return false;
+};
+
+export const CalendarDayButton = React.forwardRef(function CalendarDayButton({ day, modifiers = {}, locale, className, children, ...props }, ref) {
+  const date = day?.date || day;
+  return <button {...props} ref={ref} type="button" data-day={date?.toLocaleDateString(normalizeLocale(locale))} data-selected={modifiers.selected || undefined} data-today={modifiers.today || undefined} data-outside={modifiers.outside || undefined} data-range-start={modifiers.range_start || undefined} data-range-middle={modifiers.range_middle || undefined} data-range-end={modifiers.range_end || undefined} className={`ef-cal__day${className ? ` ${className}` : ''}`}>{children ?? date?.getDate()}</button>;
+});
+
+export function Calendar({
+  mode = 'single', selected, onSelect, month: controlledMonth, defaultMonth, onMonthChange,
+  disabled, required = false, showOutsideDays = true, fixedWeeks = true, numberOfMonths = 1,
+  captionLayout = 'label', startMonth, endMonth, locale, dir, className, classNames = {},
+  formatters = {}, components = {}, buttonVariant, style, ...rest
+}) {
   injectEfCss('ef-css-cal', CSS);
-  const direction = useDirection();
-  // Names localise when `locale` is set; without it the English constants are
-  // used unchanged, so this is additive.
-  const L = React.useMemo(() => localeNames(locale), [locale]);
-  const { months: MONTHS_L, dow: DOW_L, dowFull: DOW_FULL_L, dayLabel } = L;
-  // In range mode value is { from, to } of ISO strings (either may be null);
-  // without the prop everything below behaves exactly as before.
-  const from = range && value ? value.from || null : null;
-  const to = range && value ? value.to || null : null;
-  const sel = !range && value ? new Date(value + 'T00:00:00') : null;
-  const [view, setView] = React.useState(() => { const b = sel || (from ? new Date(from + 'T00:00:00') : new Date()); return [b.getFullYear(), b.getMonth()]; });
-  const [y, m] = view;
-  const first = new Date(y, m, 1);
-  const offset = (first.getDay() + 6) % 7;
-  const start = new Date(y, m, 1 - offset);
-  const today = iso(new Date());
-  const cells = Array.from({ length: 42 }, (_, i) => new Date(start.getFullYear(), start.getMonth(), start.getDate() + i));
+  const contextDirection = useDirection();
+  const direction = dir || contextDirection;
+  const localeCode = normalizeLocale(locale);
+  const selectedMonth = mode === 'range' ? selected?.from : mode === 'multiple' ? selected?.[0] : selected;
+  const initial = controlledMonth || defaultMonth || selectedMonth || new Date();
+  const [innerMonth, setInnerMonth] = React.useState(() => new Date(initial.getFullYear(), initial.getMonth(), 1));
+  const visibleMonth = controlledMonth || innerMonth;
+  const DayButton = components.DayButton || CalendarDayButton;
   const gridRef = React.useRef(null);
-  const [focusIso, setFocusIso] = React.useState(() => (sel ? iso(sel) : from || today));
-  const focusTarget = cells.some(d => iso(d) === focusIso) ? focusIso : iso(first);
-  const move = days => {
-    const base = new Date(focusTarget + 'T00:00:00');
-    const next = new Date(base.getFullYear(), base.getMonth(), base.getDate() + days);
-    setFocusIso(iso(next));
-    if (next.getMonth() !== m || next.getFullYear() !== y) setView([next.getFullYear(), next.getMonth()]);
+  const selectedStart = mode === 'range' ? selected?.from : mode === 'multiple' ? selected?.[0] : selected;
+  const [focusDate, setFocusDate] = React.useState(() => startDay(selectedStart || new Date()));
+  const setMonth = next => {
+    const bounded = startMonth && next < new Date(startMonth.getFullYear(), startMonth.getMonth(), 1) ? new Date(startMonth.getFullYear(), startMonth.getMonth(), 1)
+      : endMonth && next > new Date(endMonth.getFullYear(), endMonth.getMonth(), 1) ? new Date(endMonth.getFullYear(), endMonth.getMonth(), 1) : next;
+    if (!controlledMonth) setInnerMonth(bounded);
+    onMonthChange?.(bounded);
+  };
+  const pick = date => {
+    if (matcherHit(disabled, date)) return;
+    setFocusDate(date);
+    if (mode === 'range') {
+      const from = selected?.from;
+      const to = selected?.to;
+      if (!from || to) onSelect?.({ from: date, to: undefined }, date, {}, null);
+      else if (date < from) onSelect?.({ from: date, to: from }, date, {}, null);
+      else onSelect?.({ from, to: date }, date, {}, null);
+    } else if (mode === 'multiple') {
+      const values = selected || [];
+      const exists = values.some(item => sameDay(item, date));
+      onSelect?.(exists ? (required && values.length === 1 ? values : values.filter(item => !sameDay(item, date))) : [...values, date], date, {}, null);
+    } else onSelect?.(sameDay(selected, date) && !required ? undefined : date, date, {}, null);
+  };
+  const isSelected = date => mode === 'range' ? sameDay(date, selected?.from) || sameDay(date, selected?.to) : mode === 'multiple' ? (selected || []).some(item => sameDay(item, date)) : sameDay(date, selected);
+  const monthViews = Array.from({ length: numberOfMonths }, (_, index) => addMonths(visibleMonth, index));
+  const moveFocus = amount => {
+    const next = addDays(focusDate, amount);
+    setFocusDate(next);
+    if (next.getMonth() !== visibleMonth.getMonth() || next.getFullYear() !== visibleMonth.getFullYear()) setMonth(new Date(next.getFullYear(), next.getMonth(), 1));
   };
   React.useEffect(() => {
-    const g = gridRef.current;
-    if (!g) return;
-    // A month change unmounts the focused day and drops focus to <body>;
-    // reclaiming it from there is restoration, not stealing.
-    const ae = document.activeElement;
-    if (!(g.contains(ae) || ae === document.body)) return;
-    const btn = g.querySelector(`[data-iso="${focusTarget}"]`);
-    if (btn) btn.focus();
-  }, [focusTarget, y, m]);
-  const onGridKey = e => {
-    const map = { ArrowLeft: direction === 'rtl' ? 1 : -1, ArrowRight: direction === 'rtl' ? -1 : 1, ArrowUp: -7, ArrowDown: 7 };
-    if (e.key in map) { e.preventDefault(); move(map[e.key]); return; }
-    const dow = () => (new Date(focusTarget + 'T00:00:00').getDay() + 6) % 7;
-    if (e.key === 'Home') { e.preventDefault(); move(-dow()); }
-    else if (e.key === 'End') { e.preventDefault(); move(6 - dow()); }
-    else if (e.key === 'PageUp' || e.key === 'PageDown') {
-      e.preventDefault();
-      const base = new Date(focusTarget + 'T00:00:00');
-      const [ty, tm] = e.key === 'PageUp' ? (m === 0 ? [y - 1, 11] : [y, m - 1]) : (m === 11 ? [y + 1, 0] : [y, m + 1]);
-      const clamped = Math.min(base.getDate(), new Date(ty, tm + 1, 0).getDate());
-      setFocusIso(iso(new Date(ty, tm, clamped)));
-      setView([ty, tm]);
-    }
+    const target = gridRef.current?.querySelector(`[data-key="${dayKey(focusDate)}"]`);
+    if (target && (gridRef.current.contains(document.activeElement) || document.activeElement === document.body)) target.focus();
+  }, [focusDate, visibleMonth]);
+  const keydown = event => {
+    const horizontal = direction === 'rtl' ? { ArrowLeft: 1, ArrowRight: -1 } : { ArrowLeft: -1, ArrowRight: 1 };
+    if (horizontal[event.key]) { event.preventDefault(); moveFocus(horizontal[event.key]); }
+    else if (event.key === 'ArrowUp' || event.key === 'ArrowDown') { event.preventDefault(); moveFocus(event.key === 'ArrowUp' ? -7 : 7); }
+    else if (event.key === 'Home' || event.key === 'End') { event.preventDefault(); moveFocus((event.key === 'Home' ? 0 : 6) - focusDate.getDay()); }
+    else if (event.key === 'PageUp' || event.key === 'PageDown') { event.preventDefault(); const next = addMonths(focusDate, event.key === 'PageUp' ? -1 : 1); setFocusDate(new Date(next.getFullYear(), next.getMonth(), Math.min(focusDate.getDate(), new Date(next.getFullYear(), next.getMonth() + 1, 0).getDate()))); setMonth(next); }
   };
-  // Range selection: first pick opens a range, the second closes it (swapped
-  // when it lands earlier — ISO strings compare correctly), a third starts over.
-  const pick = id => {
-    setFocusIso(id);
-    if (!onChange) return;
-    if (!range) { onChange(id); return; }
-    if (!from || to) onChange({ from: id, to: null });
-    else if (id < from) onChange({ from: id, to: from });
-    else onChange({ from, to: id });
-  };
-  const rows = Array.from({ length: 6 }, (_, r) => cells.slice(r * 7, r * 7 + 7));
+  const monthLabel = date => formatters.formatCaption?.(date) || new Intl.DateTimeFormat(localeCode, { month: 'long', year: 'numeric' }).format(date);
+  const weekday = date => formatters.formatWeekdayName?.(date) || new Intl.DateTimeFormat(localeCode, { weekday: 'short' }).format(date);
+  const years = Array.from({ length: (endMonth?.getFullYear() || visibleMonth.getFullYear() + 10) - (startMonth?.getFullYear() || visibleMonth.getFullYear() - 100) + 1 }, (_, i) => (startMonth?.getFullYear() || visibleMonth.getFullYear() - 100) + i);
   return (
-    <div {...rest} className={`ef-cal${className ? ' ' + className : ''}`} style={style}>
-      <div className="ef-cal__head">
-        <IconButton icon={direction === 'rtl' ? 'chevron-right' : 'chevron-left'} label="Previous month" size="sm" onClick={() => setView(m === 0 ? [y - 1, 11] : [y, m - 1])} />
-        <span className="ef-cal__month" aria-live="polite">{MONTHS_L[m]} {y}</span>
-        <IconButton icon={direction === 'rtl' ? 'chevron-left' : 'chevron-right'} label="Next month" size="sm" onClick={() => setView(m === 11 ? [y + 1, 0] : [y, m + 1])} />
-      </div>
-      <div role="grid" ref={gridRef} onKeyDown={onGridKey} aria-label={`${MONTHS_L[m]} ${y}`} className="ef-cal__grid">
-        <div role="row" className="ef-cal__row">
-          {DOW_L.map((d, i) => <span key={i} role="columnheader" aria-label={DOW_FULL_L[i]} className="ef-cal__dow">{d}</span>)}
-        </div>
-        {rows.map((row, ri) => (
-          <div role="row" className="ef-cal__row" key={ri}>
-            {row.map(d => {
-              const id = iso(d);
-              const isEnd = range && (id === from || id === to);
-              const inBand = range && from && to && id > from && id < to;
-              return (
-                <button key={id} role="gridcell" data-iso={id} tabIndex={id === focusTarget ? 0 : -1}
-                  aria-selected={range ? (from || to ? isEnd : undefined) : sel ? id === iso(sel) : undefined}
-                  aria-current={id === today ? 'date' : undefined}
-                  aria-label={dayLabel(d)}
-                  className={`ef-cal__day${d.getMonth() !== m ? ' ef-cal__day--out' : ''}${id === today ? ' ef-cal__day--today' : ''}${(range ? isEnd : sel && id === iso(sel)) ? ' ef-cal__day--sel' : ''}${inBand ? ' ef-cal__day--band' : ''}`}
-                  onClick={() => pick(id)}>{d.getDate()}</button>
-              );
-            })}
-          </div>
-        ))}
+    <div {...rest} dir={direction} data-slot="calendar" className={`ef-cal${className ? ` ${className}` : ''}`} style={style}>
+      <div className={`ef-cal__months${classNames.months ? ` ${classNames.months}` : ''}`}>
+        {monthViews.map((view, viewIndex) => {
+          const first = new Date(view.getFullYear(), view.getMonth(), 1);
+          const nextDisabled = !!endMonth && view.getTime() >= new Date(endMonth.getFullYear(), endMonth.getMonth(), 1).getTime();
+          const start = addDays(first, -first.getDay());
+          const count = fixedWeeks ? 42 : Math.ceil((first.getDay() + new Date(view.getFullYear(), view.getMonth() + 1, 0).getDate()) / 7) * 7;
+          const cells = Array.from({ length: count }, (_, index) => addDays(start, index));
+          return <div className="ef-cal__month-wrap" key={dayKey(view)}>
+            <div className="ef-cal__head">
+              {viewIndex === 0 ? <IconButton icon={direction === 'rtl' ? 'chevron-right' : 'chevron-left'} label="Previous month" size="sm" disabled={!!startMonth && view <= new Date(startMonth.getFullYear(), startMonth.getMonth(), 1)} onClick={() => setMonth(addMonths(visibleMonth, -1))} /> : null}
+              {captionLayout === 'dropdown' || captionLayout === 'dropdown-months' || captionLayout === 'dropdown-years' ? <div className="ef-cal__dropdowns">
+                {captionLayout !== 'dropdown-years' ? <NativeSelect aria-label="Month" value={String(view.getMonth())} onChange={event => setMonth(new Date(view.getFullYear(), Number(event.target.value), 1))}>{Array.from({ length: 12 }, (_, index) => <NativeSelectOption key={index} value={String(index)}>{new Intl.DateTimeFormat(localeCode, { month: 'short' }).format(new Date(2024, index, 1))}</NativeSelectOption>)}</NativeSelect> : null}
+                {captionLayout !== 'dropdown-months' ? <NativeSelect aria-label="Year" value={String(view.getFullYear())} onChange={event => setMonth(new Date(Number(event.target.value), view.getMonth(), 1))}>{years.map(year => <NativeSelectOption key={year} value={String(year)}>{year}</NativeSelectOption>)}</NativeSelect> : null}
+              </div> : <div className="ef-cal__caption" aria-live="polite">{monthLabel(view)}</div>}
+              {viewIndex === monthViews.length - 1 ? (
+                <IconButton
+                  icon={direction === 'rtl' ? 'chevron-left' : 'chevron-right'}
+                  label="Next month"
+                  size="sm"
+                  disabled={nextDisabled}
+                  onClick={() => setMonth(addMonths(visibleMonth, 1))}
+                />
+              ) : null}
+            </div>
+            <div role="grid" ref={viewIndex === 0 ? gridRef : undefined} onKeyDown={keydown} aria-label={monthLabel(view)} className="ef-cal__grid">
+              <div role="row" className="ef-cal__row">{Array.from({ length: 7 }, (_, index) => { const date = addDays(new Date(2024, 0, 7), index); return <span key={index} role="columnheader" className="ef-cal__dow">{weekday(date)}</span>; })}</div>
+              {Array.from({ length: count / 7 }, (_, row) => <div role="row" className="ef-cal__row" key={row}>{cells.slice(row * 7, row * 7 + 7).map(date => {
+                const outside = date.getMonth() !== view.getMonth();
+                if (outside && !showOutsideDays) return <span key={dayKey(date)} />;
+                const rangeStart = mode === 'range' && sameDay(date, selected?.from);
+                const rangeEnd = mode === 'range' && sameDay(date, selected?.to);
+                const rangeMiddle = mode === 'range' && selected?.from && selected?.to && date > selected.from && date < selected.to;
+                const modifiers = { selected: isSelected(date), today: sameDay(date, new Date()), outside, disabled: matcherHit(disabled, date), range_start: rangeStart, range_end: rangeEnd, range_middle: rangeMiddle };
+                return <DayButton key={dayKey(date)} day={{ date }} modifiers={modifiers} locale={locale} role="gridcell" data-key={dayKey(date)} tabIndex={sameDay(date, focusDate) ? 0 : -1} aria-label={date.toLocaleDateString(localeCode, { dateStyle: 'long' })} aria-selected={modifiers.selected || undefined} disabled={modifiers.disabled} onClick={() => pick(date)}>{date.getDate()}</DayButton>;
+              })}</div>)}
+            </div>
+          </div>;
+        })}
       </div>
     </div>
   );

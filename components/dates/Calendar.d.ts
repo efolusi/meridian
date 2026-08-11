@@ -1,28 +1,11 @@
-export interface DateRange {
-  /** Range start as YYYY-MM-DD, or null while unset */
-  from: string | null;
-  /** Range end as YYYY-MM-DD, or null while unset */
-  to: string | null;
+export interface DateRange { from?: Date; to?: Date }
+export type DateMatcher = Date | Date[] | ((date: Date) => boolean) | { before?: Date; after?: Date; from?: Date; to?: Date; dayOfWeek?: number[] };
+export interface CalendarDayButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> { day: { date: Date } | Date; modifiers?: Record<string, boolean>; locale?: string | { code?: string } }
+export declare const CalendarDayButton: React.ForwardRefExoticComponent<CalendarDayButtonProps & React.RefAttributes<HTMLButtonElement>>;
+export interface CalendarProps extends Omit<React.HTMLAttributes<HTMLDivElement>, 'onSelect'> {
+  mode?: 'single' | 'multiple' | 'range'; selected?: Date | Date[] | DateRange; onSelect?: (selected: any, triggerDate: Date, modifiers: Record<string, boolean>, event: unknown) => void;
+  month?: Date; defaultMonth?: Date; onMonthChange?: (month: Date) => void; disabled?: DateMatcher; required?: boolean; showOutsideDays?: boolean; fixedWeeks?: boolean; numberOfMonths?: number;
+  captionLayout?: 'label' | 'dropdown' | 'dropdown-months' | 'dropdown-years'; startMonth?: Date; endMonth?: Date; locale?: string | { code?: string }; dir?: 'ltr' | 'rtl'; buttonVariant?: string;
+  classNames?: Record<string, string>; formatters?: { formatCaption?: (date: Date) => string; formatWeekdayName?: (date: Date) => string }; components?: { DayButton?: React.ComponentType<CalendarDayButtonProps> };
 }
-export interface CalendarProps extends Omit<React.HTMLAttributes<HTMLDivElement>, 'onChange'> {
-  /** Single-date mode (the default) */
-  range?: false;
-  /** Selected date as YYYY-MM-DD */
-  value?: string;
-  onChange?: (date: string) => void;
-  /** BCP 47 locale for month and weekday names via Intl (e.g. 'id', 'en'); omit for English. The grid stays Monday-first for every locale. */
-  locale?: string;
-  style?: React.CSSProperties;
-  className?: string;
-}
-export interface CalendarRangeProps extends Omit<React.HTMLAttributes<HTMLDivElement>, 'onChange'> {
-  /** Range mode: value/onChange carry a {from,to} pair; first pick sets from, second sets to (swapped when earlier), third starts over */
-  range: true;
-  value?: DateRange;
-  onChange?: (range: DateRange) => void;
-  /** BCP 47 locale for month and weekday names via Intl (e.g. 'id', 'en'); omit for English. The grid stays Monday-first for every locale. */
-  locale?: string;
-  style?: React.CSSProperties;
-  className?: string;
-}
-export declare function Calendar(props: CalendarProps | CalendarRangeProps): React.JSX.Element;
+export declare function Calendar(props: CalendarProps): React.JSX.Element;

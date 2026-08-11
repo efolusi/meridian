@@ -65,13 +65,13 @@ describe('RTL horizontal keyboard behavior', () => {
 
   it('moves Calendar days in visual direction', async () => {
     const user = userEvent.setup();
-    render(<DirectionProvider direction="rtl"><Calendar value="2026-07-16" onChange={() => {}} /></DirectionProvider>);
-    const selected = screen.getByRole('gridcell', { name: '16 July 2026' });
+    render(<DirectionProvider direction="rtl"><Calendar mode="single" selected={new Date(2026, 6, 16)} onSelect={() => {}} /></DirectionProvider>);
+    const selected = screen.getByRole('gridcell', { name: 'July 16, 2026' });
     selected.focus();
     await user.keyboard('{ArrowLeft}');
-    expect(document.activeElement.getAttribute('data-iso')).toBe('2026-07-17');
+    expect(document.activeElement.getAttribute('data-key')).toBe('2026-07-17');
     await user.keyboard('{ArrowRight}');
-    expect(document.activeElement.getAttribute('data-iso')).toBe('2026-07-16');
+    expect(document.activeElement.getAttribute('data-key')).toBe('2026-07-16');
   });
 
   it('resizes the inline-start pane in visual direction', async () => {

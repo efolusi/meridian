@@ -126,7 +126,14 @@
       "registryItems": ["site/registry/buttongroup.json"],
       "tests": ["tests/button-group-compatibility.test.jsx"]
     },
-    { "name": "Calendar", "status": "unverified" },
+    {
+      "name": "Calendar",
+      "status": "proven",
+      "requiredExports": ["Calendar", "CalendarDayButton"],
+      "sourceFiles": ["components/dates/Calendar.jsx", "components/dates/Calendar.d.ts"],
+      "registryItems": ["site/registry/calendar.json"],
+      "tests": ["tests/calendar-compatibility.test.jsx", "tests/dates-additions.test.jsx", "tests/direction.test.jsx"]
+    },
     {
       "name": "Card",
       "status": "proven",
@@ -164,7 +171,14 @@
     { "name": "Command", "status": "unverified" },
     { "name": "Context Menu", "status": "unverified" },
     { "name": "Data Table", "status": "unverified" },
-    { "name": "Date Picker", "status": "unverified" },
+    {
+      "name": "Date Picker",
+      "status": "proven",
+      "requiredExports": ["Calendar", "Popover", "PopoverTrigger", "PopoverContent", "Button"],
+      "sourceFiles": ["components/dates/Calendar.jsx", "components/overlay/Popover.jsx", "components/forms/Button.jsx", "site/examples/dates.jsx"],
+      "registryItems": ["site/registry/calendar.json", "site/registry/popover.json", "site/registry/button.json"],
+      "tests": ["tests/calendar-compatibility.test.jsx"]
+    },
     {
       "name": "Dialog", "status": "proven",
       "requiredExports": ["Dialog", "DialogTrigger", "DialogPortal", "DialogOverlay", "DialogClose", "DialogContent", "DialogHeader", "DialogFooter", "DialogTitle", "DialogDescription"],

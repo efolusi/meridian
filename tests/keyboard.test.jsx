@@ -112,14 +112,14 @@ describe('Tabs', () => {
 describe('Calendar', () => {
   it('is a grid and moves focus a week at a time', async () => {
     const user = userEvent.setup();
-    render(<Calendar value="2026-07-16" onChange={() => {}} />);
+    render(<Calendar mode="single" selected={new Date(2026, 6, 16)} onSelect={() => {}} />);
     const grid = screen.getByRole('grid');
     expect(grid).toBeTruthy();
-    const start = grid.querySelector('[data-iso="2026-07-16"]');
+    const start = grid.querySelector('[data-key="2026-07-16"]');
     start.focus();
     await user.keyboard('{ArrowDown}');
-    expect(document.activeElement.getAttribute('data-iso')).toBe('2026-07-23');
+    expect(document.activeElement.getAttribute('data-key')).toBe('2026-07-23');
     await user.keyboard('{ArrowLeft}');
-    expect(document.activeElement.getAttribute('data-iso')).toBe('2026-07-22');
+    expect(document.activeElement.getAttribute('data-key')).toBe('2026-07-22');
   });
 });

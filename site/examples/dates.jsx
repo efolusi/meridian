@@ -3,11 +3,11 @@
 // @demo Calendar Month grid
 export function CalendarDemo() {
   const { Calendar } = window.EfolusiDesignSystem_4ffc3d;
-  const [d, setD] = React.useState('2026-07-17');
+  const [d, setD] = React.useState(new Date(2026, 6, 17));
   return (
     <div style={{ display: 'flex', flexDirection: 'column', gap: 10, alignItems: 'center' }}>
-      <Calendar value={d} onChange={setD} />
-      <span style={{ fontSize: 13, fontFamily: 'var(--font-mono)', color: 'var(--text-muted)' }}>{d}</span>
+      <Calendar mode="single" selected={d} onSelect={setD} />
+      <span style={{ fontSize: 13, fontFamily: 'var(--font-mono)', color: 'var(--text-muted)' }}>{d?.toLocaleDateString()}</span>
     </div>
   );
 }
@@ -15,34 +15,21 @@ export function CalendarDemo() {
 // @demo Calendar Range selection
 export function CalendarRangeDemo() {
   const { Calendar } = window.EfolusiDesignSystem_4ffc3d;
-  const [r, setR] = React.useState({ from: '2026-07-14', to: '2026-07-21' });
+  const [r, setR] = React.useState({ from: new Date(2026, 6, 14), to: new Date(2026, 6, 21) });
   return (
     <div style={{ display: 'flex', flexDirection: 'column', gap: 10, alignItems: 'center' }}>
-      <Calendar range value={r} onChange={setR} />
-      <span style={{ fontSize: 13, fontFamily: 'var(--font-mono)', color: 'var(--text-muted)' }}>{(r.from || '…') + ' → ' + (r.to || '…')}</span>
+      <Calendar mode="range" selected={r} onSelect={setR} />
+      <span style={{ fontSize: 13, fontFamily: 'var(--font-mono)', color: 'var(--text-muted)' }}>{(r?.from?.toLocaleDateString() || '…') + ' → ' + (r?.to?.toLocaleDateString() || '…')}</span>
     </div>
   );
 }
 
-// @demo DatePicker Input with calendar
-export function DatePickerDemo() {
-  const { DatePicker } = window.EfolusiDesignSystem_4ffc3d;
-  const [d, setD] = React.useState('');
+// @demo Calendar Date picker composition
+export function CalendarDatePickerDemo() {
+  const { Button, Calendar, Field, FieldLabel, Popover, PopoverContent, PopoverTrigger } = window.EfolusiDesignSystem_4ffc3d;
+  const [d, setD] = React.useState();
   return (
-    <div style={{ width: 260 }}>
-      <DatePicker label="Renewal date" value={d} onChange={setD} placeholder="Pick a date" />
-    </div>
-  );
-}
-
-// @demo DateRangePicker Check-in to check-out
-export function DateRangePickerDemo() {
-  const { DateRangePicker } = window.EfolusiDesignSystem_4ffc3d;
-  const [r, setR] = React.useState({ from: null, to: null });
-  return (
-    <div style={{ width: 300 }}>
-      <DateRangePicker label="Stay" hint="Check-in to check-out." value={r} onChange={setR} placeholder="Pick a range" />
-    </div>
+    <Field style={{ width: 260 }}><FieldLabel htmlFor="renewal-date">Renewal date</FieldLabel><Popover><PopoverTrigger asChild><Button id="renewal-date" variant="outline" iconLeft="calendar">{d ? d.toLocaleDateString(undefined, { dateStyle: 'medium' }) : 'Pick a date'}</Button></PopoverTrigger><PopoverContent style={{ width: 'auto', padding: 12 }}><Calendar mode="single" selected={d} onSelect={setD} /></PopoverContent></Popover></Field>
   );
 }
 

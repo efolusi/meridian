@@ -3,7 +3,6 @@ import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { NumberInput } from '../components/forms/NumberInput.jsx';
 import { Calendar } from '../components/dates/Calendar.jsx';
-import { DatePicker } from '../components/dates/DatePicker.jsx';
 
 // First i18n slice: locale-aware number formatting and parsing. The default
 // (no locale) stays plain and unchanged; locale is purely additive.
@@ -40,25 +39,14 @@ describe('NumberInput locale (i18n)', () => {
 
 describe('Calendar locale (i18n)', () => {
   it('localises month and weekday names for id', () => {
-    render(<Calendar value="2026-01-15" locale="id" onChange={() => {}} />);
+    render(<Calendar mode="single" selected={new Date(2026, 0, 15)} locale={{ code: 'id' }} onSelect={() => {}} />);
     expect(screen.getByText('Januari 2026')).toBeTruthy();
-    // weekday column header: short text "Sen", accessible name "Senin"
-    expect(screen.getByRole('columnheader', { name: 'Senin' })).toBeTruthy();
+    expect(screen.getByRole('columnheader', { name: 'Min' })).toBeTruthy();
   });
 
   it('keeps English names without a locale (unchanged default)', () => {
-    render(<Calendar value="2026-01-15" onChange={() => {}} />);
+    render(<Calendar mode="single" selected={new Date(2026, 0, 15)} onSelect={() => {}} />);
     expect(screen.getByText('January 2026')).toBeTruthy();
-    expect(screen.getByRole('columnheader', { name: 'Monday' })).toBeTruthy();
-  });
-});
-
-describe('DatePicker locale (i18n)', () => {
-  it('formats the trigger label per locale, en-US by default', () => {
-    const { unmount } = render(<DatePicker value="2026-01-15" onChange={() => {}} />);
-    expect(screen.getByRole('button').textContent).toContain('Jan 15, 2026');
-    unmount();
-    render(<DatePicker value="2026-01-15" locale="id" onChange={() => {}} />);
-    expect(screen.getByRole('button').textContent).toContain('15 Jan 2026');
+    expect(screen.getByRole('columnheader', { name: 'Sun' })).toBeTruthy();
   });
 });

@@ -48,7 +48,7 @@ claude mcp add meridian -- npx -y @efolusi/meridian-mcp
 ```
 
 Then ask your agent things like *"list Meridian form components"*, *"show me the
-DatePicker props and usage"*, or *"build an Efolusi settings page with Meridian"* —
+Calendar props and date-picker composition"*, or *"build an Efolusi settings page with Meridian"* —
 it will pull the real source and tokens before writing code.
 
 ## Run locally / develop

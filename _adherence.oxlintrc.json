@@ -668,13 +668,10 @@
       "TableCaption": {
         "replaces": []
       },
+      "CalendarDayButton": {
+        "replaces": []
+      },
       "Calendar": {
-        "replaces": []
-      },
-      "DatePicker": {
-        "replaces": []
-      },
-      "DateRangePicker": {
         "replaces": []
       },
       "TimePicker": {

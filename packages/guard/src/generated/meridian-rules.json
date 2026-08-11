@@ -235,6 +235,10 @@
       "sourcePath": "components/dates/Calendar.jsx"
     },
     {
+      "name": "CalendarDayButton",
+      "sourcePath": "components/dates/Calendar.jsx"
+    },
+    {
       "name": "Card",
       "sourcePath": "components/display/Card.jsx"
     },
@@ -341,14 +345,6 @@
     {
       "name": "CopyField",
       "sourcePath": "components/code/CopyField.jsx"
-    },
-    {
-      "name": "DatePicker",
-      "sourcePath": "components/dates/DatePicker.jsx"
-    },
-    {
-      "name": "DateRangePicker",
-      "sourcePath": "components/dates/DateRangePicker.jsx"
     },
     {
       "name": "Dialog",

@@ -4,16 +4,11 @@ import { render, screen, within } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 
 import { Calendar } from '../components/dates/Calendar.jsx';
-import { DateRangePicker } from '../components/dates/DateRangePicker.jsx';
 import { TimePicker } from '../components/dates/TimePicker.jsx';
 
-// The date-time additions: Calendar range mode, DateRangePicker, TimePicker.
-// Single-date Calendar behaviour is covered by keyboard.test.jsx and
-// keyboard-datepicker.test.jsx, which must keep passing untouched.
-
 function RangeCalHarness({ spy, initial }) {
-  const [r, setR] = React.useState(initial || { from: null, to: null });
-  return <Calendar range value={r} onChange={x => { setR(x); spy(x); }} />;
+  const [r, setR] = React.useState(initial);
+  return <Calendar mode="range" defaultMonth={new Date(2026, 6, 1)} selected={r} onSelect={x => { setR(x); spy(x); }} />;
 }
 
 describe('Calendar range mode', () => {
@@ -21,86 +16,36 @@ describe('Calendar range mode', () => {
     const user = userEvent.setup();
     const spy = vi.fn();
     render(<RangeCalHarness spy={spy} />);
-    const cells = [...screen.getByRole('grid').querySelectorAll('[data-iso]')];
-    const a = cells[15].getAttribute('data-iso');
-    const b = cells[10].getAttribute('data-iso'); // earlier than a
-    await user.click(cells[15]);
-    expect(spy).toHaveBeenLastCalledWith({ from: a, to: null });
-    await user.click(cells[10]);
-    expect(spy).toHaveBeenLastCalledWith({ from: b, to: a });
+    await user.click(screen.getByRole('gridcell', { name: 'July 16, 2026' }));
+    expect(spy.mock.calls.at(-1)[0].from.getDate()).toBe(16);
+    expect(spy.mock.calls.at(-1)[0].to).toBeUndefined();
+    await user.click(screen.getByRole('gridcell', { name: 'July 11, 2026' }));
+    expect(spy.mock.calls.at(-1)[0].from.getDate()).toBe(11);
+    expect(spy.mock.calls.at(-1)[0].to.getDate()).toBe(16);
   });
 
   it('starts a fresh range on the third pick', async () => {
     const user = userEvent.setup();
     const spy = vi.fn();
-    render(<RangeCalHarness spy={spy} initial={{ from: '2026-07-14', to: '2026-07-17' }} />);
-    const grid = screen.getByRole('grid');
-    await user.click(grid.querySelector('[data-iso="2026-07-21"]'));
-    expect(spy).toHaveBeenLastCalledWith({ from: '2026-07-21', to: null });
+    render(<RangeCalHarness spy={spy} initial={{ from: new Date(2026, 6, 14), to: new Date(2026, 6, 17) }} />);
+    await user.click(screen.getByRole('gridcell', { name: 'July 21, 2026' }));
+    expect(spy.mock.calls.at(-1)[0].from.getDate()).toBe(21);
+    expect(spy.mock.calls.at(-1)[0].to).toBeUndefined();
   });
 
   it('marks both ends selected and paints the days between as a band', () => {
-    render(<Calendar range value={{ from: '2026-07-14', to: '2026-07-17' }} />);
-    const grid = screen.getByRole('grid');
-    const day = d => grid.querySelector(`[data-iso="${d}"]`);
-    expect(day('2026-07-14').getAttribute('aria-selected')).toBe('true');
-    expect(day('2026-07-17').getAttribute('aria-selected')).toBe('true');
-    expect(day('2026-07-14').className).toContain('ef-cal__day--sel');
-    expect(day('2026-07-15').className).toContain('ef-cal__day--band');
-    expect(day('2026-07-15').getAttribute('aria-selected')).toBe('false');
-    expect(day('2026-07-13').className).not.toContain('ef-cal__day--band');
+    render(<Calendar mode="range" selected={{ from: new Date(2026, 6, 14), to: new Date(2026, 6, 17) }} />);
+    expect(screen.getByRole('gridcell', { name: 'July 14, 2026' }).getAttribute('data-range-start')).toBe('true');
+    expect(screen.getByRole('gridcell', { name: 'July 15, 2026' }).getAttribute('data-range-middle')).toBe('true');
+    expect(screen.getByRole('gridcell', { name: 'July 17, 2026' }).getAttribute('data-range-end')).toBe('true');
   });
 
-  it('without the range prop still fires a plain ISO string', async () => {
+  it('single mode fires a Date', async () => {
     const user = userEvent.setup();
     const spy = vi.fn();
-    render(<Calendar value="2026-07-16" onChange={spy} />);
-    await user.click(screen.getByRole('gridcell', { name: '17 July 2026' }));
-    expect(spy).toHaveBeenCalledWith('2026-07-17');
-  });
-});
-
-function RangePickerHarness({ spy, initial }) {
-  const [r, setR] = React.useState(initial);
-  return <DateRangePicker label="Stay" value={r} onChange={x => { setR(x); if (spy) spy(x); }} />;
-}
-
-describe('DateRangePicker', () => {
-  it('opens focused on the open end, completes the range, closes and returns focus', async () => {
-    const user = userEvent.setup();
-    const spy = vi.fn();
-    render(<RangePickerHarness spy={spy} initial={{ from: '2026-07-10', to: null }} />);
-    const trigger = screen.getByRole('button', { name: /Jul 10, 2026/ });
-    await user.click(trigger);
-    await screen.findByRole('grid');
-    expect(document.activeElement.getAttribute('data-iso')).toBe('2026-07-10');
-    await user.click(screen.getByRole('gridcell', { name: '15 July 2026' }));
-    expect(spy).toHaveBeenLastCalledWith({ from: '2026-07-10', to: '2026-07-15' });
-    expect(screen.queryByRole('grid')).toBeNull();
-    expect(document.activeElement).toBe(trigger);
-    expect(trigger.textContent).toContain('Jul 10, 2026 — Jul 15, 2026');
-  });
-
-  it('Escape closes without selecting and returns focus to the trigger', async () => {
-    const user = userEvent.setup();
-    const spy = vi.fn();
-    render(<DateRangePicker label="Stay" onChange={spy} />);
-    const trigger = screen.getByRole('button', { name: /Pick a date range/ });
-    await user.click(trigger);
-    await screen.findByRole('grid');
-    await user.keyboard('{Escape}');
-    expect(spy).not.toHaveBeenCalled();
-    expect(screen.queryByRole('grid')).toBeNull();
-    expect(document.activeElement).toBe(trigger);
-  });
-
-  it('clears an existing range with the inline clear button', async () => {
-    const user = userEvent.setup();
-    const spy = vi.fn();
-    render(<RangePickerHarness spy={spy} initial={{ from: '2026-07-10', to: '2026-07-15' }} />);
-    await user.click(screen.getByRole('button', { name: 'Clear date range' }));
-    expect(spy).toHaveBeenCalledWith({ from: null, to: null });
-    expect(screen.getByRole('button', { name: /Pick a date range/ })).toBeTruthy();
+    render(<Calendar mode="single" selected={new Date(2026, 6, 16)} onSelect={spy} />);
+    await user.click(screen.getByRole('gridcell', { name: 'July 17, 2026' }));
+    expect(spy.mock.calls[0][0]).toEqual(new Date(2026, 6, 17));
   });
 });
 

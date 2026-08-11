@@ -42,6 +42,7 @@ BASE_ITEM = "meridian-base"
 # gains compositional exports whose declaration order differs from the root.
 REGISTRY_NAME_OVERRIDES = {
     "components/ai/Bubble.jsx": "bubble",
+    "components/dates/Calendar.jsx": "calendar",
     "components/display/Card.jsx": "card",
     "components/display/Direction.jsx": "direction",
     "components/forms/Radio.jsx": "radio-group",

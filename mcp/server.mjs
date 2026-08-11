@@ -66,7 +66,7 @@ server.registerTool(
   {
     title: 'Get a Meridian component',
     description: "Full detail for one component by name: description, dependencies, and every file's real content — the .jsx source, the .d.ts types, and the .prompt.md usage guide. Use this before writing code that uses the component.",
-    inputSchema: { name: z.string().describe('Component name, e.g. "Button", "DatePicker", "NumberInput".') },
+    inputSchema: { name: z.string().describe('Component name, e.g. "Button", "Calendar", "NumberInput".') },
   },
   async ({ name }) => {
     let c;
