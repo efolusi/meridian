@@ -1,0 +1,34 @@
+{
+  "name": "nativeselect",
+  "type": "registry:ui",
+  "title": "NativeSelect + NativeSelectOption + NativeSelectOptGroup",
+  "description": "Use `NativeSelect` when browser-native selection behavior, mobile pickers, and",
+  "dependencies": [
+    "react"
+  ],
+  "registryDependencies": [
+    "https://meridian.efolusi.com/site/registry/meridian-base.json",
+    "https://meridian.efolusi.com/site/registry/select.json"
+  ],
+  "files": [
+    {
+      "path": "components/forms/NativeSelect.jsx",
+      "type": "registry:ui",
+      "content": "import React from 'react';\nimport { Select } from './Select.jsx';\n\nexport const NativeSelect = React.forwardRef(function NativeSelect(\n  { children, ...props },\n  ref,\n) {\n  return <Select {...props} ref={ref}>{children}</Select>;\n});\n\nexport const NativeSelectOption = React.forwardRef(function NativeSelectOption(\n  props,\n  ref,\n) {\n  return <option {...props} ref={ref} />;\n});\n\nexport const NativeSelectOptGroup = React.forwardRef(function NativeSelectOptGroup(\n  props,\n  ref,\n) {\n  return <optgroup {...props} ref={ref} />;\n});\n"
+    },
+    {
+      "path": "components/forms/NativeSelect.d.ts",
+      "type": "registry:component",
+      "content": "export type NativeSelectProps = Omit<React.ComponentPropsWithoutRef<'select'>, 'size'> & {\n  /** Meridian control height. @default 'md' */\n  size?: 'sm' | 'md' | 'lg';\n};\nexport type NativeSelectOptionProps = React.ComponentPropsWithoutRef<'option'>;\nexport type NativeSelectOptGroupProps = React.ComponentPropsWithoutRef<'optgroup'>;\n\nexport declare const NativeSelect: React.ForwardRefExoticComponent<\n  NativeSelectProps & React.RefAttributes<HTMLSelectElement>\n>;\nexport declare const NativeSelectOption: React.ForwardRefExoticComponent<\n  NativeSelectOptionProps & React.RefAttributes<HTMLOptionElement>\n>;\nexport declare const NativeSelectOptGroup: React.ForwardRefExoticComponent<\n  NativeSelectOptGroupProps & React.RefAttributes<HTMLOptGroupElement>\n>;\n"
+    },
+    {
+      "path": "components/forms/NativeSelect.prompt.md",
+      "type": "registry:component",
+      "content": "# NativeSelect\n\nUse `NativeSelect` when browser-native selection behavior, mobile pickers, and\nlow interaction cost matter most. Compose `NativeSelectOption` directly, or\ngroup related choices with `NativeSelectOptGroup`. Use `aria-invalid` for an\ninvalid control and provide its visible label through `FormField` or `Label`.\n"
+    }
+  ],
+  "categories": [
+    "forms"
+  ],
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json"
+}
