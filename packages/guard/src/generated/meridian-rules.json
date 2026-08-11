@@ -959,6 +959,54 @@
       "sourcePath": "components/navigation/Menubar.jsx"
     },
     {
+      "name": "Message",
+      "sourcePath": "components/ai/Message.jsx"
+    },
+    {
+      "name": "MessageAvatar",
+      "sourcePath": "components/ai/Message.jsx"
+    },
+    {
+      "name": "MessageContent",
+      "sourcePath": "components/ai/Message.jsx"
+    },
+    {
+      "name": "MessageFooter",
+      "sourcePath": "components/ai/Message.jsx"
+    },
+    {
+      "name": "MessageGroup",
+      "sourcePath": "components/ai/Message.jsx"
+    },
+    {
+      "name": "MessageHeader",
+      "sourcePath": "components/ai/Message.jsx"
+    },
+    {
+      "name": "MessageScroller",
+      "sourcePath": "components/ai/MessageScroller.jsx"
+    },
+    {
+      "name": "MessageScrollerButton",
+      "sourcePath": "components/ai/MessageScroller.jsx"
+    },
+    {
+      "name": "MessageScrollerContent",
+      "sourcePath": "components/ai/MessageScroller.jsx"
+    },
+    {
+      "name": "MessageScrollerItem",
+      "sourcePath": "components/ai/MessageScroller.jsx"
+    },
+    {
+      "name": "MessageScrollerProvider",
+      "sourcePath": "components/ai/MessageScroller.jsx"
+    },
+    {
+      "name": "MessageScrollerViewport",
+      "sourcePath": "components/ai/MessageScroller.jsx"
+    },
+    {
       "name": "ModelSelector",
       "sourcePath": "components/ai/ModelSelector.jsx"
     },

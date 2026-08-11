@@ -41,6 +41,8 @@ const PROPS = {
   DropdownMenu: { children: React.createElement('span', null, 'Menu') },
   Sheet: { children: React.createElement('span', null, 'Sheet') },
   Menubar: { children: React.createElement('span', null, 'Menu') },
+  Message: { children: React.createElement('span', null, 'Message') },
+  MessageScrollerProvider: { children: React.createElement('span', null, 'Scroller') },
   NavigationMenu: { children: React.createElement('span', null, 'Navigation') },
   PageControl: { count: 3 },
   Pagination: { page: 1, pageCount: 3 },
@@ -107,6 +109,8 @@ describe(`SSR sweep over ${cases.length} public exports`, () => {
           { type: 'single', defaultValue: 'item' },
           React.createElement(modules[file].AccordionItem, { value: 'item' }, component),
         );
+      } else if (name.startsWith('MessageScroller') && name !== 'MessageScrollerProvider') {
+        element = React.createElement(modules[file].MessageScrollerProvider, null, component);
       }
       const html = renderToString(element);
       decimalsOk(html, name);

@@ -1223,6 +1223,42 @@
       "NavigationMenuViewport": {
         "replaces": []
       },
+      "Message": {
+        "replaces": []
+      },
+      "MessageAvatar": {
+        "replaces": []
+      },
+      "MessageContent": {
+        "replaces": []
+      },
+      "MessageFooter": {
+        "replaces": []
+      },
+      "MessageGroup": {
+        "replaces": []
+      },
+      "MessageHeader": {
+        "replaces": []
+      },
+      "MessageScroller": {
+        "replaces": []
+      },
+      "MessageScrollerButton": {
+        "replaces": []
+      },
+      "MessageScrollerContent": {
+        "replaces": []
+      },
+      "MessageScrollerItem": {
+        "replaces": []
+      },
+      "MessageScrollerProvider": {
+        "replaces": []
+      },
+      "MessageScrollerViewport": {
+        "replaces": []
+      },
       "ModelSelector": {
         "replaces": []
       },

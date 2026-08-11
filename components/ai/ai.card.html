@@ -1,4 +1,4 @@
-<!-- @dsCard group="Components" viewport="700x1060" name="AI" subtitle="ChatMessage, Reasoning, ToolCall, AgentRun, Citations, ModelSelector, UsageMeter" -->
+<!-- @dsCard group="Components" viewport="700x1400" name="AI" subtitle="Message, MessageScroller, Bubble, Reasoning, ToolCall, AgentRun, Citations, ModelSelector, UsageMeter" -->
 <!DOCTYPE html><html><head><meta charset="utf-8"><link rel="stylesheet" href="../../styles.css">
 <script src="https://unpkg.com/react@18.3.1/umd/react.production.min.js" integrity="sha384-DGyLxAyjq0f9SPpVevD6IgztCFlnMF6oW/XQGmfe+IsZ8TqEiDrcHkMLKI6fiB/Z" crossorigin="anonymous"></script>
 <script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.production.min.js" integrity="sha384-gTGxhz21lVGYNMcdJOyq01Edg0jhn/c22nsx0kyqP0TxaV5WVdsSH1fSDUf5YJj1" crossorigin="anonymous"></script>
@@ -7,11 +7,13 @@
 </head><body style="background:var(--surface-page)">
 <div id="root"></div>
 <script type="text/babel">
-const { ChatMessage, PromptComposer, FileTile, Badge, Reasoning, ToolCall, AgentRun, Citation, SourceList, Suggestions, ModelSelector, UsageMeter, FeedbackBar, Confirmation, Conversation } = window.EfolusiDesignSystem_4ffc3d;
+const { ChatMessage, Message, MessageAvatar, MessageContent, MessageHeader, MessageFooter, MessageScrollerProvider, MessageScroller, MessageScrollerViewport, MessageScrollerContent, MessageScrollerItem, MessageScrollerButton, Bubble, BubbleContent, Avatar, PromptComposer, FileTile, Badge, Reasoning, ToolCall, AgentRun, Citation, SourceList, Suggestions, ModelSelector, UsageMeter, FeedbackBar, Confirmation, Conversation } = window.EfolusiDesignSystem_4ffc3d;
 function Demo() {
   const [att, setAtt] = React.useState(true);
   return (
     <div style={{ padding: 24, display: 'flex', flexDirection: 'column', gap: 20, maxWidth: 620 }}>
+      <Message><MessageAvatar><Avatar name="June Park" size={34} /></MessageAvatar><MessageContent><MessageHeader>June Park · Support</MessageHeader><Bubble><BubbleContent>All regions are healthy and the release is ready.</BubbleContent></Bubble><MessageFooter>Read 2m ago</MessageFooter></MessageContent></Message>
+      <div style={{ height: 220, border: '1px solid var(--border-default)', borderRadius: 'var(--radius-md)', overflow: 'hidden' }}><MessageScrollerProvider defaultScrollPosition="end"><MessageScroller><MessageScrollerViewport><MessageScrollerContent>{['Review the release health.', 'All regions are healthy.', 'Prepare a summary for the team.', 'Summary is ready to send.'].map((text, index) => <MessageScrollerItem key={text} messageId={`card-${index}`} scrollAnchor={index % 2 === 0}><Message align={index % 2 === 0 ? 'end' : 'start'}><MessageContent><Bubble align={index % 2 === 0 ? 'end' : 'start'}><BubbleContent>{text}</BubbleContent></Bubble></MessageContent></Message></MessageScrollerItem>)}</MessageScrollerContent></MessageScrollerViewport><MessageScrollerButton /></MessageScroller></MessageScrollerProvider></div>
       <ChatMessage role="user" name="Ada Obi" time="14:02">Connect the prod database and check yesterday's failed webhooks.</ChatMessage>
       <Reasoning duration="3s" defaultOpen={false}>Need read access first; then filter deliveries by status=failed between 02:00–03:00.</Reasoning>
       <ToolCall name="query_webhooks" status="success" args={{ status: 'failed', since: 'yesterday' }} result="12 failed deliveries, all 503s to the same endpoint." />

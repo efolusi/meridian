@@ -70,6 +70,8 @@
  "Popover": "Panel mengambang berlabuh untuk filter, pemilih, bantuan. Menutup saat klik di luar / ESC.",
  "AgentRun": "Jejak eksekusi vertikal: satu baris per langkah dengan status done/active/pending/error, rel penghubung, stempel waktu mono.",
  "ChatMessage": "Pesan thread-agen: chip bot atau avatar pengguna, baris meta, aksi salin/ulang saat hover, caret streaming.",
+ "Message": "Tata letak baris percakapan composable dengan avatar, header, footer, pengelompokan, serta perataan awal atau akhir.",
+ "MessageScroller": "Scroller transkrip composable yang menjaga posisi saat riwayat ditambahkan, mengikuti output live tanpa melawan pembaca, serta menyediakan anchor dan kontrol lompat.",
  "Citation": "Chip sumber superskrip inline + daftar sumber yang dirujuknya.",
  "Confirmation": "Kartu persetujuan inline untuk aksi agen — pending menampilkan Approve/Reject, selesai menampilkan baris status. Border bercincin accent (atau danger) selama pending.",
  "Conversation": "Viewport thread menempel-di-bawah: tetap terpaku ke pesan terbaru selama streaming (ResizeObserver), menampilkan pil \"Jump to latest\" saat pembaca menggulir ke atas.",

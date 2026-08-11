@@ -352,8 +352,23 @@
       "registryItems": ["site/registry/menubar.json"],
       "tests": ["tests/keyboard-menubar.test.jsx", "tests/direction.test.jsx"]
     },
-    { "name": "Message", "status": "unverified" },
-    { "name": "Message Scroller", "status": "unverified" },
+    {
+      "name": "Message",
+      "status": "proven",
+      "requiredExports": ["Message", "MessageGroup", "MessageAvatar", "MessageContent", "MessageHeader", "MessageFooter"],
+      "sourceFiles": ["components/ai/Message.jsx", "components/ai/Message.d.ts"],
+      "registryItems": ["site/registry/message.json"],
+      "tests": ["tests/message-compatibility.test.jsx"]
+    },
+    {
+      "name": "Message Scroller",
+      "status": "proven",
+      "requiredExports": ["MessageScrollerProvider", "MessageScroller", "MessageScrollerViewport", "MessageScrollerContent", "MessageScrollerItem", "MessageScrollerButton"],
+      "requiredModuleExports": ["useMessageScroller", "useMessageScrollerVisibility", "useMessageScrollerScrollable"],
+      "sourceFiles": ["components/ai/MessageScroller.jsx", "components/ai/MessageScroller.d.ts"],
+      "registryItems": ["site/registry/message-scroller.json"],
+      "tests": ["tests/message-scroller-compatibility.test.jsx"]
+    },
     {
       "name": "Native Select",
       "status": "proven",

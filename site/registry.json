@@ -360,6 +360,67 @@
       ]
     },
     {
+      "name": "message",
+      "type": "registry:ui",
+      "title": "Message + MessageGroup + MessageAvatar + MessageContent + MessageHeader + MessageFooter",
+      "description": "Composable conversation-row layout with optional avatar, header, footer, grouping, and start/end alignment. Message owns layout only; render a `Bubble` inside `MessageContent` for the visible surface.",
+      "dependencies": [
+        "react"
+      ],
+      "registryDependencies": [
+        "https://meridian.efolusi.com/site/registry/meridian-base.json",
+        "https://meridian.efolusi.com/site/registry/button.json"
+      ],
+      "files": [
+        {
+          "path": "components/ai/Message.jsx",
+          "type": "registry:ui"
+        },
+        {
+          "path": "components/ai/Message.d.ts",
+          "type": "registry:component"
+        },
+        {
+          "path": "components/ai/Message.prompt.md",
+          "type": "registry:component"
+        }
+      ],
+      "categories": [
+        "ai"
+      ]
+    },
+    {
+      "name": "message-scroller",
+      "type": "registry:ui",
+      "title": "MessageScrollerProvider + MessageScroller + MessageScrollerViewport + MessageScrollerContent + MessageScrollerItem + MessageScrollerButton",
+      "description": "A composable transcript scroller for saved threads and streamed responses. It preserves position when history is prepended, follows output only while the reader remains at the live edge, anchors new turns, and exposes scroll, visibility, and edge-state hooks.",
+      "dependencies": [
+        "react"
+      ],
+      "registryDependencies": [
+        "https://meridian.efolusi.com/site/registry/meridian-base.json",
+        "https://meridian.efolusi.com/site/registry/button.json",
+        "https://meridian.efolusi.com/site/registry/icon.json"
+      ],
+      "files": [
+        {
+          "path": "components/ai/MessageScroller.jsx",
+          "type": "registry:ui"
+        },
+        {
+          "path": "components/ai/MessageScroller.d.ts",
+          "type": "registry:component"
+        },
+        {
+          "path": "components/ai/MessageScroller.prompt.md",
+          "type": "registry:component"
+        }
+      ],
+      "categories": [
+        "ai"
+      ]
+    },
+    {
       "name": "modelselector",
       "type": "registry:ui",
       "title": "ModelSelector",

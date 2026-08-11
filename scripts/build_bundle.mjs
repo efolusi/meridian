@@ -33,6 +33,9 @@ const PUBLIC_HELPERS = new Set([
   'toggleVariants',
   'useComboboxAnchor',
   'useDirection',
+  'useMessageScroller',
+  'useMessageScrollerScrollable',
+  'useMessageScrollerVisibility',
 ]);
 
 let Babel;

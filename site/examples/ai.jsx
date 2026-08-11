@@ -15,6 +15,55 @@ export function BubbleDemo() {
   );
 }
 
+// @demo Message Composable conversation rows
+export function MessageDemo() {
+  const { Message, MessageGroup, MessageAvatar, MessageContent, MessageHeader, MessageFooter, Avatar, Bubble, BubbleContent, IconButton } = window.EfolusiDesignSystem_4ffc3d;
+  return <MessageGroup style={{ width: '100%', maxWidth: 520, gap: 14 }}>
+    <Message>
+      <MessageAvatar><Avatar name="June Park" size={34} /></MessageAvatar>
+      <MessageContent>
+        <MessageHeader>June Park · Support</MessageHeader>
+        <Bubble><BubbleContent>I checked the release. All regions are healthy.</BubbleContent></Bubble>
+        <MessageFooter>Read 2m ago <IconButton icon="copy" label="Copy message" size="sm" /></MessageFooter>
+      </MessageContent>
+    </Message>
+    <Message align="end">
+      <MessageAvatar><Avatar name="Ada Obi" size={34} /></MessageAvatar>
+      <MessageContent>
+        <Bubble align="end"><BubbleContent>Perfect. Send the summary to the team.</BubbleContent></Bubble>
+        <MessageFooter>Delivered</MessageFooter>
+      </MessageContent>
+    </Message>
+  </MessageGroup>;
+}
+
+// @demo MessageScroller Anchored transcript
+export function MessageScrollerDemo() {
+  const { MessageScrollerProvider, MessageScroller, MessageScrollerViewport, MessageScrollerContent, MessageScrollerItem, MessageScrollerButton, Message, MessageContent, Bubble, BubbleContent } = window.EfolusiDesignSystem_4ffc3d;
+  const rows = [
+    ['user', 'Review the release health and tell me what needs attention.'],
+    ['assistant', 'All regions are healthy. The only open item is the delayed analytics backfill.'],
+    ['user', 'Does it affect customer-facing reports?'],
+    ['assistant', 'No. Live reports are current; only historical attribution is catching up.'],
+    ['user', 'Keep watching it and prepare a summary.'],
+    ['assistant', 'I will monitor the queue and post a summary when the backfill reaches the live edge.'],
+  ];
+  return <div style={{ width: '100%', maxWidth: 560, height: 300, border: '1px solid var(--border-default)', borderRadius: 'var(--radius-md)', overflow: 'hidden' }}>
+    <MessageScrollerProvider defaultScrollPosition="last-anchor" autoScroll>
+      <MessageScroller>
+        <MessageScrollerViewport>
+          <MessageScrollerContent>
+            {rows.map(([role, text], index) => <MessageScrollerItem key={index} messageId={`demo-${index}`} scrollAnchor={role === 'user'}>
+              <Message align={role === 'user' ? 'end' : 'start'}><MessageContent><Bubble align={role === 'user' ? 'end' : 'start'}><BubbleContent>{text}</BubbleContent></Bubble></MessageContent></Message>
+            </MessageScrollerItem>)}
+          </MessageScrollerContent>
+        </MessageScrollerViewport>
+        <MessageScrollerButton />
+      </MessageScroller>
+    </MessageScrollerProvider>
+  </div>;
+}
+
 // @demo Marker Status, separator, and action
 export function MarkerDemo() {
   const { Marker, MarkerContent, MarkerIcon, Icon } = window.EfolusiDesignSystem_4ffc3d;

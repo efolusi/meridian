@@ -30,7 +30,7 @@ Dark mode: set data-theme="dark" on any subtree. Compact density: data-density="
 
 ## Components
 
-117 components across 12 groups: ai, code, data, dates, display, feedback, files, finance, forms, icons, navigation, overlay. Each entry lists the component's public exports, its usage guidance (.prompt.md), and its typed props interface (.d.ts).
+119 components across 12 groups: ai, code, data, dates, display, feedback, files, finance, forms, icons, navigation, overlay. Each entry lists the component's public exports, its usage guidance (.prompt.md), and its typed props interface (.d.ts).
 
 ### ai
 
@@ -410,6 +410,96 @@ export declare const MarkerIcon: React.ForwardRefExoticComponent<
 export declare const MarkerContent: React.ForwardRefExoticComponent<
   React.HTMLAttributes<HTMLSpanElement> & React.RefAttributes<HTMLSpanElement>
 >;
+```
+
+#### Message
+
+Group: ai · Source: /components/ai/Message.jsx · Exports: Message, MessageGroup, MessageAvatar, MessageContent, MessageHeader, MessageFooter
+
+# Message
+
+Composable conversation-row layout with optional avatar, header, footer, grouping, and start/end alignment. Message owns layout only; render a `Bubble` inside `MessageContent` for the visible surface.
+
+```jsx
+<Message align="start">
+  <MessageAvatar><Avatar name="June Park" /></MessageAvatar>
+  <MessageContent>
+    <MessageHeader>June · Support</MessageHeader>
+    <Bubble><BubbleContent>The deployment is healthy.</BubbleContent></Bubble>
+    <MessageFooter>Read 2m ago</MessageFooter>
+  </MessageContent>
+</Message>
+```
+
+Use `MessageGroup` for consecutive rows from one sender. Keep an empty `MessageAvatar` on earlier rows when the final row carries the visible avatar so every bubble stays aligned.
+
+```ts
+import type * as React from 'react';
+
+export interface MessageProps extends React.HTMLAttributes<HTMLDivElement> {
+  /** Alignment within the conversation. @default 'start' */
+  align?: 'start' | 'end';
+}
+
+export declare const Message: React.ForwardRefExoticComponent<MessageProps & React.RefAttributes<HTMLDivElement>>;
+export declare const MessageGroup: React.ForwardRefExoticComponent<MessageProps & React.RefAttributes<HTMLDivElement>>;
+export declare const MessageAvatar: React.ForwardRefExoticComponent<React.HTMLAttributes<HTMLDivElement> & React.RefAttributes<HTMLDivElement>>;
+export declare const MessageContent: React.ForwardRefExoticComponent<React.HTMLAttributes<HTMLDivElement> & React.RefAttributes<HTMLDivElement>>;
+export declare const MessageHeader: React.ForwardRefExoticComponent<React.HTMLAttributes<HTMLDivElement> & React.RefAttributes<HTMLDivElement>>;
+export declare const MessageFooter: React.ForwardRefExoticComponent<React.HTMLAttributes<HTMLDivElement> & React.RefAttributes<HTMLDivElement>>;
+```
+
+#### MessageScroller
+
+Group: ai · Source: /components/ai/MessageScroller.jsx · Exports: MessageScrollerProvider, MessageScroller, MessageScrollerViewport, MessageScrollerContent, MessageScrollerItem, MessageScrollerButton
+
+# Message Scroller
+
+A composable transcript scroller for saved threads and streamed responses. It preserves position when history is prepended, follows output only while the reader remains at the live edge, anchors new turns, and exposes scroll, visibility, and edge-state hooks.
+
+```jsx
+<MessageScrollerProvider autoScroll>
+  <MessageScroller style={{ height: 420 }}>
+    <MessageScrollerViewport>
+      <MessageScrollerContent>
+        {messages.map(message => (
+          <MessageScrollerItem key={message.id} messageId={message.id} scrollAnchor={message.role === 'user'}>
+            <Message>{message.content}</Message>
+          </MessageScrollerItem>
+        ))}
+      </MessageScrollerContent>
+    </MessageScrollerViewport>
+    <MessageScrollerButton />
+  </MessageScroller>
+</MessageScrollerProvider>
+```
+
+Give every row a stable `messageId`. Enable `autoScroll` only when streamed output should follow the live edge; scrolling away releases it. The viewport is a labelled keyboard-focusable region and content is a polite additions-only log by default.
+
+`MessageScrollerButton` defaults to `direction="end"`. Add a second button with `direction="start"` when the interface needs both edge controls; each becomes inert when there is no content in its direction.
+
+```ts
+import type * as React from 'react';
+
+export interface MessageScrollerProviderProps {
+  autoScroll?: boolean;
+  defaultScrollPosition?: 'start' | 'end' | 'last-anchor';
+  preserveScrollOnPrepend?: boolean;
+  scrollPreviousItemPeek?: number;
+  children?: React.ReactNode;
+}
+export declare function MessageScrollerProvider(props: MessageScrollerProviderProps): React.JSX.Element;
+export declare const MessageScroller: React.ForwardRefExoticComponent<React.HTMLAttributes<HTMLDivElement> & React.RefAttributes<HTMLDivElement>>;
+export declare const MessageScrollerViewport: React.ForwardRefExoticComponent<React.HTMLAttributes<HTMLDivElement> & React.RefAttributes<HTMLDivElement>>;
+export declare const MessageScrollerContent: React.ForwardRefExoticComponent<React.HTMLAttributes<HTMLDivElement> & React.RefAttributes<HTMLDivElement>>;
+export interface MessageScrollerItemProps extends React.HTMLAttributes<HTMLDivElement> { messageId?: string | number; scrollAnchor?: boolean; }
+export declare const MessageScrollerItem: React.ForwardRefExoticComponent<MessageScrollerItemProps & React.RefAttributes<HTMLDivElement>>;
+export interface MessageScrollerButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> { direction?: 'start' | 'end'; }
+export declare const MessageScrollerButton: React.ForwardRefExoticComponent<MessageScrollerButtonProps & React.RefAttributes<HTMLButtonElement>>;
+export interface MessageScrollerCommands { scrollToStart: (options?: ScrollToOptions) => void; scrollToEnd: (options?: ScrollToOptions) => void; scrollToMessage: (messageId: string | number, options?: ScrollToOptions & { offset?: number }) => boolean; }
+export declare function useMessageScroller(): MessageScrollerCommands;
+export declare function useMessageScrollerVisibility(): { currentAnchorId: string | null; visibleMessageIds: string[] };
+export declare function useMessageScrollerScrollable(): { start: boolean; end: boolean };
 ```
 
 #### ModelSelector
