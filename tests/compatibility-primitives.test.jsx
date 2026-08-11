@@ -7,6 +7,12 @@ import {
   NativeSelectOptGroup,
   NativeSelectOption,
 } from '../components/forms/NativeSelect.jsx';
+import {
+  Marker,
+  MarkerContent,
+  MarkerIcon,
+  markerVariants,
+} from '../components/ai/Marker.jsx';
 
 describe('Separator', () => {
   it('is decorative by default and exposes semantic vertical orientation', () => {
@@ -33,5 +39,39 @@ describe('NativeSelect', () => {
     expect(ref.current).toBe(screen.getByRole('combobox'));
     expect(ref.current.value).toBe('banana');
     expect(screen.getByRole('group', { name: 'Fruit' })).toBeTruthy();
+  });
+});
+
+describe('Marker', () => {
+  it('is presentational by default and hides its icon from assistive technology', () => {
+    render(
+      <Marker data-testid="marker">
+        <MarkerIcon data-testid="icon">*</MarkerIcon>
+        <MarkerContent>Indexed 4 files</MarkerContent>
+      </Marker>,
+    );
+    expect(screen.getByTestId('marker').getAttribute('role')).toBeNull();
+    expect(screen.getByTestId('icon').getAttribute('aria-hidden')).toBe('true');
+    expect(markerVariants({ variant: 'separator' })).toContain('ef-marker--separator');
+  });
+
+  it('renders a semantic custom root and forwards its ref', () => {
+    const ref = React.createRef();
+    render(
+      <Marker ref={ref} render={<a href="/files" />}>
+        <MarkerContent>Open files</MarkerContent>
+      </Marker>,
+    );
+    expect(ref.current).toBe(screen.getByRole('link', { name: 'Open files' }));
+    expect(ref.current.getAttribute('href')).toBe('/files');
+  });
+
+  it('supports a render function root', () => {
+    render(
+      <Marker render={(props) => <button {...props} type="button" />}>
+        Retry
+      </Marker>,
+    );
+    expect(screen.getByRole('button', { name: 'Retry' }).dataset.variant).toBe('default');
   });
 });

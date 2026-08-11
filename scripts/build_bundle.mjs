@@ -24,6 +24,7 @@ const require = createRequire(import.meta.url);
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const NAMESPACE = 'EfolusiDesignSystem_4ffc3d';
 const OUT = path.join(ROOT, '_ds_bundle.js');
+const PUBLIC_HELPERS = new Set(['markerVariants']);
 
 let Babel;
 try {
@@ -151,15 +152,18 @@ function build() {
     exportsBySource.set(rel, exportNames);
   }
 
-  // A capitalised export from components/ is a public component; a lowercase one
-  // (injectEfCss, computeDiff, formatTime) is an internal helper that stays off
-  // the namespace. Showcases export screens that are never exposed globally.
+  // A capitalised export from components/ is a public component. Lowercase
+  // exports stay private unless an explicit compatibility contract exposes
+  // them; this allowlist keeps implementation helpers off the namespace.
   const components = [];
+  const publicHelpers = [];
   const unexposedExports = [];
   for (const rel of [...files].sort()) {
     for (const name of exportsBySource.get(rel) || []) {
       if (name[0] === name[0].toUpperCase()) {
         if (rel.startsWith('components/')) components.push({ name, sourcePath: rel });
+      } else if (rel.startsWith('components/') && PUBLIC_HELPERS.has(name)) {
+        publicHelpers.push({ name, sourcePath: rel });
       } else {
         unexposedExports.push({ name, sourcePath: rel });
       }
@@ -180,12 +184,14 @@ function build() {
     format: 4,
     namespace: NAMESPACE,
     components,
+    publicHelpers,
     sourceHashes,
     inlinedExternals: [],
     unexposedExports,
   };
 
-  const epilogue = components.map(c => `__ds_ns.${c.name} = __ds_scope.${c.name};`);
+  const epilogue = [...components, ...publicHelpers]
+    .map(c => `__ds_ns.${c.name} = __ds_scope.${c.name};`);
 
   return [
     `/* @ds-bundle: ${JSON.stringify(header)} */`,

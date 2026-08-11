@@ -1,5 +1,23 @@
 // Meridian docs demos — ai.
 
+// @demo Marker Status, separator, and action
+export function MarkerDemo() {
+  const { Marker, MarkerContent, MarkerIcon, Icon } = window.EfolusiDesignSystem_4ffc3d;
+  return (
+    <div style={{ display: 'grid', gap: 14, width: '100%', maxWidth: 520 }}>
+      <Marker role="status">
+        <MarkerIcon><Icon name="loader-circle" size={14} /></MarkerIcon>
+        <MarkerContent>Compacting conversation</MarkerContent>
+      </Marker>
+      <Marker variant="separator"><MarkerContent>Today</MarkerContent></Marker>
+      <Marker variant="border" render={<a href="#marker-action" />}>
+        <MarkerIcon><Icon name="file-text" size={14} /></MarkerIcon>
+        <MarkerContent>View the latest branch</MarkerContent>
+      </Marker>
+    </div>
+  );
+}
+
 // @demo Reasoning Streaming and settled
 export function ReasoningDemo() {
   const { Reasoning } = window.EfolusiDesignSystem_4ffc3d;

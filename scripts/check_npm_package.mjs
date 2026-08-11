@@ -26,6 +26,10 @@ if (missing.length) {
   console.error('missing or unrenderable exports:', missing.join(', '));
   process.exit(1);
 }
+if (typeof barrel.markerVariants !== 'function') {
+  console.error('missing public style helper: markerVariants');
+  process.exit(1);
+}
 
 // Deep imports must be checked THROUGH the package name, not by file path.
 // Importing dist/forms/Button.js directly bypasses the "exports" map entirely,

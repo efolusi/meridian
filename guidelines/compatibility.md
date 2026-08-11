@@ -29,6 +29,12 @@ claim needs source, type, interaction, registry, and browser proof.
 
 Only **Proven** items may count toward the migration percentage.
 
+The machine-readable source of truth is `compatibility/catalog.json`. The
+`scripts/check_compatibility.mjs` gate rejects missing families, duplicate
+entries, unsupported statuses, missing exports, and missing proof files. This
+keeps the percentage grounded in committed evidence rather than naming
+similarity.
+
 ## Known gaps
 
 1. Renamed equivalents still require an adapter or application rewrite.
@@ -46,6 +52,9 @@ Only **Proven** items may count toward the migration percentage.
 - `NativeSelect`, `NativeSelectOption`, and `NativeSelectOptGroup` support native
   option composition, disabled/invalid browser behavior, ref forwarding, types,
   registry installation, demos, and tests.
+- `Marker`, `MarkerIcon`, `MarkerContent`, and `markerVariants` support inline,
+  bordered, and labeled-divider layouts; decorative icons; semantic custom
+  roots; ref forwarding; types; registry installation; demos; and tests.
 
 ## Release gate
 
