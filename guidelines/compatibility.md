@@ -47,6 +47,10 @@ similarity.
 
 ## Proven adapters
 
+- `Attachment` and its eight compositional parts support upload states, sizes,
+  orientations, icon/image media, independent actions, polymorphic full-card
+  triggers, scrollable groups, ref forwarding, types, registry installation,
+  demos, and tests.
 - `Separator` supports horizontal/vertical orientation, decorative or semantic
   output, ref forwarding, types, registry installation, demos, and tests.
 - `NativeSelect`, `NativeSelectOption`, and `NativeSelectOptGroup` support native

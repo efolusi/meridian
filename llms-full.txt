@@ -30,7 +30,7 @@ Dark mode: set data-theme="dark" on any subtree. Compact density: data-density="
 
 ## Components
 
-114 components across 12 groups: ai, code, data, dates, display, feedback, files, finance, forms, icons, navigation, overlay. Each entry lists the component's public exports, its usage guidance (.prompt.md), and its typed props interface (.d.ts).
+115 components across 12 groups: ai, code, data, dates, display, feedback, files, finance, forms, icons, navigation, overlay. Each entry lists the component's public exports, its usage guidance (.prompt.md), and its typed props interface (.d.ts).
 
 ### ai
 
@@ -2660,6 +2660,44 @@ export declare function Tooltip(props: TooltipProps): React.JSX.Element;
 
 ### files
 
+#### Attachment
+
+Group: files · Source: /components/files/Attachment.jsx · Exports: Attachment, AttachmentMedia, AttachmentContent, AttachmentTitle, AttachmentDescription, AttachmentActions, AttachmentAction, AttachmentTrigger, AttachmentGroup
+
+# Attachment
+
+Compose a file attachment from `Attachment`, `AttachmentMedia`, `AttachmentContent`, `AttachmentTitle`, `AttachmentDescription`, and optional `AttachmentActions`. Use `AttachmentTrigger` for a full-card action and `AttachmentGroup` for a horizontally scrollable collection. Label icon-only actions and triggers with `aria-label`; include a written failure reason when `state="error"`.
+
+```ts
+import * as React from 'react';
+import type { ButtonProps } from '../forms/Button.js';
+
+export type AttachmentState = 'idle' | 'uploading' | 'processing' | 'error' | 'done';
+export type AttachmentSize = 'default' | 'sm' | 'xs';
+export type AttachmentOrientation = 'horizontal' | 'vertical';
+
+export interface AttachmentProps extends React.HTMLAttributes<HTMLDivElement> {
+  state?: AttachmentState;
+  size?: AttachmentSize;
+  orientation?: AttachmentOrientation;
+}
+export declare const Attachment: React.ForwardRefExoticComponent<AttachmentProps & React.RefAttributes<HTMLDivElement>>;
+
+export interface AttachmentMediaProps extends React.HTMLAttributes<HTMLDivElement> { variant?: 'icon' | 'image'; }
+export declare const AttachmentMedia: React.ForwardRefExoticComponent<AttachmentMediaProps & React.RefAttributes<HTMLDivElement>>;
+export declare const AttachmentContent: React.ForwardRefExoticComponent<React.HTMLAttributes<HTMLDivElement> & React.RefAttributes<HTMLDivElement>>;
+export declare const AttachmentTitle: React.ForwardRefExoticComponent<React.HTMLAttributes<HTMLDivElement> & React.RefAttributes<HTMLDivElement>>;
+export declare const AttachmentDescription: React.ForwardRefExoticComponent<React.HTMLAttributes<HTMLDivElement> & React.RefAttributes<HTMLDivElement>>;
+export declare const AttachmentActions: React.ForwardRefExoticComponent<React.HTMLAttributes<HTMLDivElement> & React.RefAttributes<HTMLDivElement>>;
+export declare const AttachmentAction: React.ForwardRefExoticComponent<ButtonProps & React.RefAttributes<HTMLButtonElement>>;
+
+export interface AttachmentTriggerProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
+  render?: React.ReactElement | ((props: React.ButtonHTMLAttributes<HTMLButtonElement> & { ref?: React.ForwardedRef<HTMLElement> }) => React.ReactElement);
+}
+export declare const AttachmentTrigger: React.ForwardRefExoticComponent<AttachmentTriggerProps & React.RefAttributes<HTMLElement>>;
+export declare const AttachmentGroup: React.ForwardRefExoticComponent<React.HTMLAttributes<HTMLDivElement> & React.RefAttributes<HTMLDivElement>>;
+```
+
 #### FileDrop
 
 Group: files · Source: /components/files/FileDrop.jsx · Exports: FileDrop
@@ -2797,10 +2835,10 @@ Variants: `primary` (espresso ink), `secondary` (white + border), `ghost`, `dang
 
 ```ts
 export interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
-  /** @default 'primary' */
-  variant?: 'primary' | 'secondary' | 'ghost' | 'danger' | 'brand';
-  /** @default 'md' */
-  size?: 'sm' | 'md' | 'lg';
+  /** @default 'default' */
+  variant?: 'default' | 'outline' | 'ghost' | 'destructive' | 'secondary' | 'link' | 'primary' | 'danger' | 'brand';
+  /** @default 'default' */
+  size?: 'default' | 'xs' | 'sm' | 'lg' | 'icon' | 'icon-xs' | 'icon-sm' | 'icon-lg' | 'md';
   /** Lucide icon name rendered before the label */
   iconLeft?: string;
   /** Lucide icon name rendered after the label */
@@ -2810,7 +2848,8 @@ export interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElemen
   loading?: boolean;
   children?: React.ReactNode;
 }
-export declare function Button(props: ButtonProps): React.JSX.Element;
+export declare function buttonVariants(options?: Pick<ButtonProps, 'variant' | 'size'> & { className?: string }): string;
+export declare const Button: React.ForwardRefExoticComponent<ButtonProps & React.RefAttributes<HTMLButtonElement>>;
 ```
 
 #### ButtonGroup

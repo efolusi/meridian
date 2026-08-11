@@ -1,4 +1,4 @@
-/* @ds-bundle: {"format":4,"namespace":"EfolusiDesignSystem_4ffc3d","components":[{"name":"AgentRun","sourcePath":"components/ai/AgentRun.jsx"},{"name":"ChatMessage","sourcePath":"components/ai/ChatMessage.jsx"},{"name":"Citation","sourcePath":"components/ai/Citation.jsx"},{"name":"SourceList","sourcePath":"components/ai/Citation.jsx"},{"name":"Confirmation","sourcePath":"components/ai/Confirmation.jsx"},{"name":"Conversation","sourcePath":"components/ai/Conversation.jsx"},{"name":"DocumentCard","sourcePath":"components/ai/DocumentCard.jsx"},{"name":"FeedbackBar","sourcePath":"components/ai/FeedbackBar.jsx"},{"name":"GeneratedImage","sourcePath":"components/ai/GeneratedImage.jsx"},{"name":"Marker","sourcePath":"components/ai/Marker.jsx"},{"name":"MarkerIcon","sourcePath":"components/ai/Marker.jsx"},{"name":"MarkerContent","sourcePath":"components/ai/Marker.jsx"},{"name":"ModelSelector","sourcePath":"components/ai/ModelSelector.jsx"},{"name":"Player","sourcePath":"components/ai/Player.jsx"},{"name":"PromptComposer","sourcePath":"components/ai/PromptComposer.jsx"},{"name":"PromptSteps","sourcePath":"components/ai/PromptSteps.jsx"},{"name":"Reasoning","sourcePath":"components/ai/Reasoning.jsx"},{"name":"RichComposer","sourcePath":"components/ai/RichComposer.jsx"},{"name":"Sandbox","sourcePath":"components/ai/Sandbox.jsx"},{"name":"SelectionQuote","sourcePath":"components/ai/SelectionQuote.jsx"},{"name":"SourceCard","sourcePath":"components/ai/SourceCard.jsx"},{"name":"Suggestions","sourcePath":"components/ai/Suggestions.jsx"},{"name":"Task","sourcePath":"components/ai/Task.jsx"},{"name":"Todo","sourcePath":"components/ai/Todo.jsx"},{"name":"ToolCall","sourcePath":"components/ai/ToolCall.jsx"},{"name":"Transcript","sourcePath":"components/ai/Transcript.jsx"},{"name":"UsageMeter","sourcePath":"components/ai/UsageMeter.jsx"},{"name":"WebPreview","sourcePath":"components/ai/WebPreview.jsx"},{"name":"CodeBlock","sourcePath":"components/code/CodeBlock.jsx"},{"name":"Console","sourcePath":"components/code/Console.jsx"},{"name":"CopyField","sourcePath":"components/code/CopyField.jsx"},{"name":"Diff","sourcePath":"components/code/Diff.jsx"},{"name":"EnvList","sourcePath":"components/code/EnvList.jsx"},{"name":"Exception","sourcePath":"components/code/Exception.jsx"},{"name":"Terminal","sourcePath":"components/code/Terminal.jsx"},{"name":"BarChart","sourcePath":"components/data/BarChart.jsx"},{"name":"DonutChart","sourcePath":"components/data/DonutChart.jsx"},{"name":"EmptyState","sourcePath":"components/data/EmptyState.jsx"},{"name":"KeyValueList","sourcePath":"components/data/KeyValueList.jsx"},{"name":"LineChart","sourcePath":"components/data/LineChart.jsx"},{"name":"Skeleton","sourcePath":"components/data/Skeleton.jsx"},{"name":"Sparkline","sourcePath":"components/data/Sparkline.jsx"},{"name":"Stat","sourcePath":"components/data/Stat.jsx"},{"name":"StatusDot","sourcePath":"components/data/StatusDot.jsx"},{"name":"Table","sourcePath":"components/data/Table.jsx"},{"name":"Calendar","sourcePath":"components/dates/Calendar.jsx"},{"name":"DatePicker","sourcePath":"components/dates/DatePicker.jsx"},{"name":"DateRangePicker","sourcePath":"components/dates/DateRangePicker.jsx"},{"name":"TimePicker","sourcePath":"components/dates/TimePicker.jsx"},{"name":"Accordion","sourcePath":"components/display/Accordion.jsx"},{"name":"AspectRatio","sourcePath":"components/display/AspectRatio.jsx"},{"name":"Avatar","sourcePath":"components/display/Avatar.jsx"},{"name":"AvatarGroup","sourcePath":"components/display/Avatar.jsx"},{"name":"Badge","sourcePath":"components/display/Badge.jsx"},{"name":"Card","sourcePath":"components/display/Card.jsx"},{"name":"Carousel","sourcePath":"components/display/Carousel.jsx"},{"name":"Collapsible","sourcePath":"components/display/Collapsible.jsx"},{"name":"DirectionProvider","sourcePath":"components/display/Direction.jsx"},{"name":"Divider","sourcePath":"components/display/Divider.jsx"},{"name":"Kbd","sourcePath":"components/display/Kbd.jsx"},{"name":"Link","sourcePath":"components/display/Link.jsx"},{"name":"ListItem","sourcePath":"components/display/ListItem.jsx"},{"name":"Resizable","sourcePath":"components/display/Resizable.jsx"},{"name":"ScrollArea","sourcePath":"components/display/ScrollArea.jsx"},{"name":"Separator","sourcePath":"components/display/Separator.jsx"},{"name":"Tag","sourcePath":"components/display/Tag.jsx"},{"name":"Timeline","sourcePath":"components/display/Timeline.jsx"},{"name":"Toolbar","sourcePath":"components/display/Toolbar.jsx"},{"name":"TreeList","sourcePath":"components/display/TreeList.jsx"},{"name":"Alert","sourcePath":"components/feedback/Alert.jsx"},{"name":"Banner","sourcePath":"components/feedback/Banner.jsx"},{"name":"ConfirmDialog","sourcePath":"components/feedback/ConfirmDialog.jsx"},{"name":"Dialog","sourcePath":"components/feedback/Dialog.jsx"},{"name":"Loader","sourcePath":"components/feedback/Loader.jsx"},{"name":"Progress","sourcePath":"components/feedback/Progress.jsx"},{"name":"Spinner","sourcePath":"components/feedback/Spinner.jsx"},{"name":"Toast","sourcePath":"components/feedback/Toast.jsx"},{"name":"ToastStack","sourcePath":"components/feedback/Toast.jsx"},{"name":"Toaster","sourcePath":"components/feedback/Toast.jsx"},{"name":"Tooltip","sourcePath":"components/feedback/Tooltip.jsx"},{"name":"FileDrop","sourcePath":"components/files/FileDrop.jsx"},{"name":"FileTile","sourcePath":"components/files/FileTile.jsx"},{"name":"FileTypeIcon","sourcePath":"components/files/FileTypeIcon.jsx"},{"name":"PaymentCard","sourcePath":"components/finance/PaymentCard.jsx"},{"name":"Button","sourcePath":"components/forms/Button.jsx"},{"name":"ButtonGroup","sourcePath":"components/forms/ButtonGroup.jsx"},{"name":"ButtonTile","sourcePath":"components/forms/ButtonTile.jsx"},{"name":"ButtonTileGroup","sourcePath":"components/forms/ButtonTile.jsx"},{"name":"Checkbox","sourcePath":"components/forms/Checkbox.jsx"},{"name":"Combobox","sourcePath":"components/forms/Combobox.jsx"},{"name":"DigitEntry","sourcePath":"components/forms/DigitEntry.jsx"},{"name":"FormField","sourcePath":"components/forms/FormField.jsx"},{"name":"IconButton","sourcePath":"components/forms/IconButton.jsx"},{"name":"Input","sourcePath":"components/forms/Input.jsx"},{"name":"InputGroup","sourcePath":"components/forms/InputGroup.jsx"},{"name":"Label","sourcePath":"components/forms/Label.jsx"},{"name":"NativeSelect","sourcePath":"components/forms/NativeSelect.jsx"},{"name":"NativeSelectOption","sourcePath":"components/forms/NativeSelect.jsx"},{"name":"NativeSelectOptGroup","sourcePath":"components/forms/NativeSelect.jsx"},{"name":"NumberInput","sourcePath":"components/forms/NumberInput.jsx"},{"name":"Radio","sourcePath":"components/forms/Radio.jsx"},{"name":"Select","sourcePath":"components/forms/Select.jsx"},{"name":"Slider","sourcePath":"components/forms/Slider.jsx"},{"name":"Switch","sourcePath":"components/forms/Switch.jsx"},{"name":"Textarea","sourcePath":"components/forms/Textarea.jsx"},{"name":"Toggle","sourcePath":"components/forms/Toggle.jsx"},{"name":"ToggleGroup","sourcePath":"components/forms/Toggle.jsx"},{"name":"Icon","sourcePath":"components/icons/Icon.jsx"},{"name":"Breadcrumbs","sourcePath":"components/navigation/Breadcrumbs.jsx"},{"name":"Menubar","sourcePath":"components/navigation/Menubar.jsx"},{"name":"PageControl","sourcePath":"components/navigation/PageControl.jsx"},{"name":"Pagination","sourcePath":"components/navigation/Pagination.jsx"},{"name":"SegmentedControl","sourcePath":"components/navigation/SegmentedControl.jsx"},{"name":"SideNav","sourcePath":"components/navigation/SideNav.jsx"},{"name":"Steps","sourcePath":"components/navigation/Steps.jsx"},{"name":"Tabs","sourcePath":"components/navigation/Tabs.jsx"},{"name":"TopNav","sourcePath":"components/navigation/TopNav.jsx"},{"name":"CommandPalette","sourcePath":"components/overlay/CommandPalette.jsx"},{"name":"ContextMenu","sourcePath":"components/overlay/ContextMenu.jsx"},{"name":"Drawer","sourcePath":"components/overlay/Drawer.jsx"},{"name":"HoverCard","sourcePath":"components/overlay/HoverCard.jsx"},{"name":"Menu","sourcePath":"components/overlay/Menu.jsx"},{"name":"Popover","sourcePath":"components/overlay/Popover.jsx"},{"name":"Portal","sourcePath":"components/overlay/Portal.jsx"}],"publicHelpers":[{"name":"markerVariants","sourcePath":"components/ai/Marker.jsx"}],"sourceHashes":{"components/ai/AgentRun.jsx":"9740e0e168e0","components/ai/ChatMessage.jsx":"98920e696206","components/ai/Citation.jsx":"bdfe512cd8b0","components/ai/Confirmation.jsx":"e6baaf9f3831","components/ai/Conversation.jsx":"811020760647","components/ai/DocumentCard.jsx":"a7159ec86c9a","components/ai/FeedbackBar.jsx":"76ce9048b0f8","components/ai/GeneratedImage.jsx":"700da56ce3b7","components/ai/Marker.jsx":"4a8e54cf1022","components/ai/ModelSelector.jsx":"275bb7ef8ddc","components/ai/Player.jsx":"a8a820c1e259","components/ai/PromptComposer.jsx":"37273e81af0a","components/ai/PromptSteps.jsx":"428074df6cd1","components/ai/Reasoning.jsx":"6a54640d743d","components/ai/RichComposer.jsx":"cf26b89fd54b","components/ai/Sandbox.jsx":"78eacd199e92","components/ai/SelectionQuote.jsx":"2ba728772ad9","components/ai/SourceCard.jsx":"ca0d3eedf981","components/ai/Suggestions.jsx":"49b23d064460","components/ai/Task.jsx":"613d6bf8d05a","components/ai/Todo.jsx":"5c8653be0ea4","components/ai/ToolCall.jsx":"3c36ce2c9aab","components/ai/Transcript.jsx":"3ecad5218a37","components/ai/UsageMeter.jsx":"75c7a916706a","components/ai/WebPreview.jsx":"83ced5843df1","components/code/CodeBlock.jsx":"2160ce0d755d","components/code/Console.jsx":"5a150480bfb5","components/code/CopyField.jsx":"61f56f69d3d3","components/code/Diff.jsx":"0590d197b3b0","components/code/EnvList.jsx":"e25c72e2863c","components/code/Exception.jsx":"7c9828556417","components/code/Terminal.jsx":"5eda66e465b6","components/data/BarChart.jsx":"af57088eee06","components/data/DonutChart.jsx":"13aa95392d7a","components/data/EmptyState.jsx":"45244a08b427","components/data/KeyValueList.jsx":"3876b7c9581e","components/data/LineChart.jsx":"7cce718ff267","components/data/Skeleton.jsx":"7aa04d6e8a82","components/data/Sparkline.jsx":"5b2a0e67cdae","components/data/Stat.jsx":"aba92e72a0f8","components/data/StatusDot.jsx":"51ac4e89dcc7","components/data/Table.jsx":"6234ee374ca6","components/dates/Calendar.jsx":"f0174dbb465b","components/dates/DatePicker.jsx":"9ce510965f1b","components/dates/DateRangePicker.jsx":"7eb2f9c9a088","components/dates/TimePicker.jsx":"3fd5e28936c7","components/display/Accordion.jsx":"e2c89407c2e9","components/display/AspectRatio.jsx":"7c3585ca2961","components/display/Avatar.jsx":"b7cee1ff1dca","components/display/Badge.jsx":"7fa632ec5b2a","components/display/Card.jsx":"f40832620fe4","components/display/Carousel.jsx":"e42c6cf9c3fc","components/display/Collapsible.jsx":"ced441be2411","components/display/Direction.jsx":"04bd05450dcd","components/display/Divider.jsx":"ee51ca336cc7","components/display/Kbd.jsx":"3953794bd3c5","components/display/Link.jsx":"4f2fc59ae0db","components/display/ListItem.jsx":"8528c6e482bb","components/display/Resizable.jsx":"e471c791a17c","components/display/ScrollArea.jsx":"2dbb55595939","components/display/Separator.jsx":"5c2b62cf7532","components/display/Tag.jsx":"e9dadb374567","components/display/Timeline.jsx":"6c5bff5f4dcf","components/display/Toolbar.jsx":"bbe6cffbcbab","components/display/TreeList.jsx":"69be2d21b8ad","components/feedback/Alert.jsx":"1744e9ba7260","components/feedback/Banner.jsx":"d1e818e8451a","components/feedback/ConfirmDialog.jsx":"ae69cb48e209","components/feedback/Dialog.jsx":"ce9ee42cf8f2","components/feedback/Loader.jsx":"02efacc86905","components/feedback/Progress.jsx":"6902d7932dbd","components/feedback/Spinner.jsx":"5e2c9c05ca9d","components/feedback/Toast.jsx":"3ce2ec55ef4d","components/feedback/Tooltip.jsx":"b39f872b1a14","components/files/FileDrop.jsx":"737632ac07db","components/files/FileTile.jsx":"28af04d1303b","components/files/FileTypeIcon.jsx":"3bcdf5ca7eb9","components/finance/PaymentCard.jsx":"74fa271e12f2","components/forms/Button.jsx":"6cc728db9620","components/forms/ButtonGroup.jsx":"b8b5033d5122","components/forms/ButtonTile.jsx":"1508984c0c5c","components/forms/Checkbox.jsx":"2898578cf1eb","components/forms/Combobox.jsx":"724b03db0032","components/forms/DigitEntry.jsx":"74f16f2d7bf8","components/forms/FormField.jsx":"4219a23c3754","components/forms/IconButton.jsx":"7843bc8a3740","components/forms/Input.jsx":"4a667a0ee664","components/forms/InputGroup.jsx":"6d438fb0a2ea","components/forms/Label.jsx":"83c5cf662fb3","components/forms/NativeSelect.jsx":"caa858aa46d0","components/forms/NumberInput.jsx":"134d8cf88a75","components/forms/Radio.jsx":"c07e4cb51feb","components/forms/Select.jsx":"ac3b6f4a2b4f","components/forms/Slider.jsx":"a2c5c56d442b","components/forms/Switch.jsx":"5391a0cdb9f9","components/forms/Textarea.jsx":"3ff8cac70e1e","components/forms/Toggle.jsx":"7e6f51814f81","components/icons/Icon.jsx":"65c4206c8479","components/navigation/Breadcrumbs.jsx":"aa413c3db363","components/navigation/Menubar.jsx":"950604788590","components/navigation/PageControl.jsx":"8c5bfdc21407","components/navigation/Pagination.jsx":"09d35b923287","components/navigation/SegmentedControl.jsx":"ae08ad97a9a2","components/navigation/SideNav.jsx":"00851e64baa2","components/navigation/Steps.jsx":"45c6c1162b22","components/navigation/Tabs.jsx":"d5fa83661ffc","components/navigation/TopNav.jsx":"967b11093c20","components/overlay/CommandPalette.jsx":"b07b4f28cb8c","components/overlay/ContextMenu.jsx":"5053709a1ee5","components/overlay/Drawer.jsx":"18c562fe05c3","components/overlay/HoverCard.jsx":"7438ba615e77","components/overlay/Menu.jsx":"3119fa73b187","components/overlay/Popover.jsx":"cdede0714d8e","components/overlay/Portal.jsx":"3819af4bd7c7","showcases/agent/AgentScreen.jsx":"87f60f9116cc","showcases/auth/AuthScreens.jsx":"b3583b149df5","showcases/console/CustomersScreen.jsx":"a8a080a80d9e","showcases/console/ExtraScreens.jsx":"1e7a048ab690","showcases/console/OverviewScreen.jsx":"34b01f22bb52","showcases/console/SettingsScreen.jsx":"1d67397e26b4","showcases/console/Shell.jsx":"f5dd862d2098","showcases/docs/DocsScreen.jsx":"faa44c30040d","showcases/infra/InfraScreen.jsx":"f95eefa85b8d","showcases/tools/ToolsScreen.jsx":"bc6efc0184c2","showcases/trader/TraderScreen.jsx":"12e5273b9894","showcases/website/Sections.jsx":"3f14d6a12c71"},"inlinedExternals":[],"unexposedExports":[{"name":"computeDiff","sourcePath":"components/code/Diff.jsx"},{"name":"cssPct","sourcePath":"components/forms/Button.jsx"},{"name":"formatTime","sourcePath":"components/ai/Player.jsx"},{"name":"injectEfCss","sourcePath":"components/forms/Button.jsx"},{"name":"mergeRefs","sourcePath":"components/forms/Button.jsx"},{"name":"prefersReducedMotion","sourcePath":"components/forms/Button.jsx"},{"name":"useAnchoredStyle","sourcePath":"components/overlay/Portal.jsx"},{"name":"useDirection","sourcePath":"components/display/Direction.jsx"},{"name":"useFieldProps","sourcePath":"components/forms/FormField.jsx"},{"name":"useFormState","sourcePath":"components/forms/FormField.jsx"},{"name":"useIsoLayoutEffect","sourcePath":"components/forms/Button.jsx"},{"name":"useToast","sourcePath":"components/feedback/Toast.jsx"}]} */
+/* @ds-bundle: {"format":4,"namespace":"EfolusiDesignSystem_4ffc3d","components":[{"name":"AgentRun","sourcePath":"components/ai/AgentRun.jsx"},{"name":"ChatMessage","sourcePath":"components/ai/ChatMessage.jsx"},{"name":"Citation","sourcePath":"components/ai/Citation.jsx"},{"name":"SourceList","sourcePath":"components/ai/Citation.jsx"},{"name":"Confirmation","sourcePath":"components/ai/Confirmation.jsx"},{"name":"Conversation","sourcePath":"components/ai/Conversation.jsx"},{"name":"DocumentCard","sourcePath":"components/ai/DocumentCard.jsx"},{"name":"FeedbackBar","sourcePath":"components/ai/FeedbackBar.jsx"},{"name":"GeneratedImage","sourcePath":"components/ai/GeneratedImage.jsx"},{"name":"Marker","sourcePath":"components/ai/Marker.jsx"},{"name":"MarkerIcon","sourcePath":"components/ai/Marker.jsx"},{"name":"MarkerContent","sourcePath":"components/ai/Marker.jsx"},{"name":"ModelSelector","sourcePath":"components/ai/ModelSelector.jsx"},{"name":"Player","sourcePath":"components/ai/Player.jsx"},{"name":"PromptComposer","sourcePath":"components/ai/PromptComposer.jsx"},{"name":"PromptSteps","sourcePath":"components/ai/PromptSteps.jsx"},{"name":"Reasoning","sourcePath":"components/ai/Reasoning.jsx"},{"name":"RichComposer","sourcePath":"components/ai/RichComposer.jsx"},{"name":"Sandbox","sourcePath":"components/ai/Sandbox.jsx"},{"name":"SelectionQuote","sourcePath":"components/ai/SelectionQuote.jsx"},{"name":"SourceCard","sourcePath":"components/ai/SourceCard.jsx"},{"name":"Suggestions","sourcePath":"components/ai/Suggestions.jsx"},{"name":"Task","sourcePath":"components/ai/Task.jsx"},{"name":"Todo","sourcePath":"components/ai/Todo.jsx"},{"name":"ToolCall","sourcePath":"components/ai/ToolCall.jsx"},{"name":"Transcript","sourcePath":"components/ai/Transcript.jsx"},{"name":"UsageMeter","sourcePath":"components/ai/UsageMeter.jsx"},{"name":"WebPreview","sourcePath":"components/ai/WebPreview.jsx"},{"name":"CodeBlock","sourcePath":"components/code/CodeBlock.jsx"},{"name":"Console","sourcePath":"components/code/Console.jsx"},{"name":"CopyField","sourcePath":"components/code/CopyField.jsx"},{"name":"Diff","sourcePath":"components/code/Diff.jsx"},{"name":"EnvList","sourcePath":"components/code/EnvList.jsx"},{"name":"Exception","sourcePath":"components/code/Exception.jsx"},{"name":"Terminal","sourcePath":"components/code/Terminal.jsx"},{"name":"BarChart","sourcePath":"components/data/BarChart.jsx"},{"name":"DonutChart","sourcePath":"components/data/DonutChart.jsx"},{"name":"EmptyState","sourcePath":"components/data/EmptyState.jsx"},{"name":"KeyValueList","sourcePath":"components/data/KeyValueList.jsx"},{"name":"LineChart","sourcePath":"components/data/LineChart.jsx"},{"name":"Skeleton","sourcePath":"components/data/Skeleton.jsx"},{"name":"Sparkline","sourcePath":"components/data/Sparkline.jsx"},{"name":"Stat","sourcePath":"components/data/Stat.jsx"},{"name":"StatusDot","sourcePath":"components/data/StatusDot.jsx"},{"name":"Table","sourcePath":"components/data/Table.jsx"},{"name":"Calendar","sourcePath":"components/dates/Calendar.jsx"},{"name":"DatePicker","sourcePath":"components/dates/DatePicker.jsx"},{"name":"DateRangePicker","sourcePath":"components/dates/DateRangePicker.jsx"},{"name":"TimePicker","sourcePath":"components/dates/TimePicker.jsx"},{"name":"Accordion","sourcePath":"components/display/Accordion.jsx"},{"name":"AspectRatio","sourcePath":"components/display/AspectRatio.jsx"},{"name":"Avatar","sourcePath":"components/display/Avatar.jsx"},{"name":"AvatarGroup","sourcePath":"components/display/Avatar.jsx"},{"name":"Badge","sourcePath":"components/display/Badge.jsx"},{"name":"Card","sourcePath":"components/display/Card.jsx"},{"name":"Carousel","sourcePath":"components/display/Carousel.jsx"},{"name":"Collapsible","sourcePath":"components/display/Collapsible.jsx"},{"name":"DirectionProvider","sourcePath":"components/display/Direction.jsx"},{"name":"Divider","sourcePath":"components/display/Divider.jsx"},{"name":"Kbd","sourcePath":"components/display/Kbd.jsx"},{"name":"Link","sourcePath":"components/display/Link.jsx"},{"name":"ListItem","sourcePath":"components/display/ListItem.jsx"},{"name":"Resizable","sourcePath":"components/display/Resizable.jsx"},{"name":"ScrollArea","sourcePath":"components/display/ScrollArea.jsx"},{"name":"Separator","sourcePath":"components/display/Separator.jsx"},{"name":"Tag","sourcePath":"components/display/Tag.jsx"},{"name":"Timeline","sourcePath":"components/display/Timeline.jsx"},{"name":"Toolbar","sourcePath":"components/display/Toolbar.jsx"},{"name":"TreeList","sourcePath":"components/display/TreeList.jsx"},{"name":"Alert","sourcePath":"components/feedback/Alert.jsx"},{"name":"Banner","sourcePath":"components/feedback/Banner.jsx"},{"name":"ConfirmDialog","sourcePath":"components/feedback/ConfirmDialog.jsx"},{"name":"Dialog","sourcePath":"components/feedback/Dialog.jsx"},{"name":"Loader","sourcePath":"components/feedback/Loader.jsx"},{"name":"Progress","sourcePath":"components/feedback/Progress.jsx"},{"name":"Spinner","sourcePath":"components/feedback/Spinner.jsx"},{"name":"Toast","sourcePath":"components/feedback/Toast.jsx"},{"name":"ToastStack","sourcePath":"components/feedback/Toast.jsx"},{"name":"Toaster","sourcePath":"components/feedback/Toast.jsx"},{"name":"Tooltip","sourcePath":"components/feedback/Tooltip.jsx"},{"name":"Attachment","sourcePath":"components/files/Attachment.jsx"},{"name":"AttachmentMedia","sourcePath":"components/files/Attachment.jsx"},{"name":"AttachmentContent","sourcePath":"components/files/Attachment.jsx"},{"name":"AttachmentTitle","sourcePath":"components/files/Attachment.jsx"},{"name":"AttachmentDescription","sourcePath":"components/files/Attachment.jsx"},{"name":"AttachmentActions","sourcePath":"components/files/Attachment.jsx"},{"name":"AttachmentAction","sourcePath":"components/files/Attachment.jsx"},{"name":"AttachmentTrigger","sourcePath":"components/files/Attachment.jsx"},{"name":"AttachmentGroup","sourcePath":"components/files/Attachment.jsx"},{"name":"FileDrop","sourcePath":"components/files/FileDrop.jsx"},{"name":"FileTile","sourcePath":"components/files/FileTile.jsx"},{"name":"FileTypeIcon","sourcePath":"components/files/FileTypeIcon.jsx"},{"name":"PaymentCard","sourcePath":"components/finance/PaymentCard.jsx"},{"name":"Button","sourcePath":"components/forms/Button.jsx"},{"name":"ButtonGroup","sourcePath":"components/forms/ButtonGroup.jsx"},{"name":"ButtonTile","sourcePath":"components/forms/ButtonTile.jsx"},{"name":"ButtonTileGroup","sourcePath":"components/forms/ButtonTile.jsx"},{"name":"Checkbox","sourcePath":"components/forms/Checkbox.jsx"},{"name":"Combobox","sourcePath":"components/forms/Combobox.jsx"},{"name":"DigitEntry","sourcePath":"components/forms/DigitEntry.jsx"},{"name":"FormField","sourcePath":"components/forms/FormField.jsx"},{"name":"IconButton","sourcePath":"components/forms/IconButton.jsx"},{"name":"Input","sourcePath":"components/forms/Input.jsx"},{"name":"InputGroup","sourcePath":"components/forms/InputGroup.jsx"},{"name":"Label","sourcePath":"components/forms/Label.jsx"},{"name":"NativeSelect","sourcePath":"components/forms/NativeSelect.jsx"},{"name":"NativeSelectOption","sourcePath":"components/forms/NativeSelect.jsx"},{"name":"NativeSelectOptGroup","sourcePath":"components/forms/NativeSelect.jsx"},{"name":"NumberInput","sourcePath":"components/forms/NumberInput.jsx"},{"name":"Radio","sourcePath":"components/forms/Radio.jsx"},{"name":"Select","sourcePath":"components/forms/Select.jsx"},{"name":"Slider","sourcePath":"components/forms/Slider.jsx"},{"name":"Switch","sourcePath":"components/forms/Switch.jsx"},{"name":"Textarea","sourcePath":"components/forms/Textarea.jsx"},{"name":"Toggle","sourcePath":"components/forms/Toggle.jsx"},{"name":"ToggleGroup","sourcePath":"components/forms/Toggle.jsx"},{"name":"Icon","sourcePath":"components/icons/Icon.jsx"},{"name":"Breadcrumbs","sourcePath":"components/navigation/Breadcrumbs.jsx"},{"name":"Menubar","sourcePath":"components/navigation/Menubar.jsx"},{"name":"PageControl","sourcePath":"components/navigation/PageControl.jsx"},{"name":"Pagination","sourcePath":"components/navigation/Pagination.jsx"},{"name":"SegmentedControl","sourcePath":"components/navigation/SegmentedControl.jsx"},{"name":"SideNav","sourcePath":"components/navigation/SideNav.jsx"},{"name":"Steps","sourcePath":"components/navigation/Steps.jsx"},{"name":"Tabs","sourcePath":"components/navigation/Tabs.jsx"},{"name":"TopNav","sourcePath":"components/navigation/TopNav.jsx"},{"name":"CommandPalette","sourcePath":"components/overlay/CommandPalette.jsx"},{"name":"ContextMenu","sourcePath":"components/overlay/ContextMenu.jsx"},{"name":"Drawer","sourcePath":"components/overlay/Drawer.jsx"},{"name":"HoverCard","sourcePath":"components/overlay/HoverCard.jsx"},{"name":"Menu","sourcePath":"components/overlay/Menu.jsx"},{"name":"Popover","sourcePath":"components/overlay/Popover.jsx"},{"name":"Portal","sourcePath":"components/overlay/Portal.jsx"}],"publicHelpers":[{"name":"markerVariants","sourcePath":"components/ai/Marker.jsx"},{"name":"buttonVariants","sourcePath":"components/forms/Button.jsx"}],"sourceHashes":{"components/ai/AgentRun.jsx":"9740e0e168e0","components/ai/ChatMessage.jsx":"98920e696206","components/ai/Citation.jsx":"bdfe512cd8b0","components/ai/Confirmation.jsx":"e6baaf9f3831","components/ai/Conversation.jsx":"811020760647","components/ai/DocumentCard.jsx":"a7159ec86c9a","components/ai/FeedbackBar.jsx":"76ce9048b0f8","components/ai/GeneratedImage.jsx":"700da56ce3b7","components/ai/Marker.jsx":"4a8e54cf1022","components/ai/ModelSelector.jsx":"275bb7ef8ddc","components/ai/Player.jsx":"a8a820c1e259","components/ai/PromptComposer.jsx":"37273e81af0a","components/ai/PromptSteps.jsx":"428074df6cd1","components/ai/Reasoning.jsx":"6a54640d743d","components/ai/RichComposer.jsx":"cf26b89fd54b","components/ai/Sandbox.jsx":"78eacd199e92","components/ai/SelectionQuote.jsx":"2ba728772ad9","components/ai/SourceCard.jsx":"ca0d3eedf981","components/ai/Suggestions.jsx":"49b23d064460","components/ai/Task.jsx":"613d6bf8d05a","components/ai/Todo.jsx":"5c8653be0ea4","components/ai/ToolCall.jsx":"3c36ce2c9aab","components/ai/Transcript.jsx":"3ecad5218a37","components/ai/UsageMeter.jsx":"75c7a916706a","components/ai/WebPreview.jsx":"83ced5843df1","components/code/CodeBlock.jsx":"2160ce0d755d","components/code/Console.jsx":"5a150480bfb5","components/code/CopyField.jsx":"61f56f69d3d3","components/code/Diff.jsx":"0590d197b3b0","components/code/EnvList.jsx":"e25c72e2863c","components/code/Exception.jsx":"7c9828556417","components/code/Terminal.jsx":"5eda66e465b6","components/data/BarChart.jsx":"af57088eee06","components/data/DonutChart.jsx":"13aa95392d7a","components/data/EmptyState.jsx":"45244a08b427","components/data/KeyValueList.jsx":"3876b7c9581e","components/data/LineChart.jsx":"7cce718ff267","components/data/Skeleton.jsx":"7aa04d6e8a82","components/data/Sparkline.jsx":"5b2a0e67cdae","components/data/Stat.jsx":"aba92e72a0f8","components/data/StatusDot.jsx":"51ac4e89dcc7","components/data/Table.jsx":"6234ee374ca6","components/dates/Calendar.jsx":"f0174dbb465b","components/dates/DatePicker.jsx":"9ce510965f1b","components/dates/DateRangePicker.jsx":"7eb2f9c9a088","components/dates/TimePicker.jsx":"3fd5e28936c7","components/display/Accordion.jsx":"e2c89407c2e9","components/display/AspectRatio.jsx":"7c3585ca2961","components/display/Avatar.jsx":"b7cee1ff1dca","components/display/Badge.jsx":"7fa632ec5b2a","components/display/Card.jsx":"f40832620fe4","components/display/Carousel.jsx":"e42c6cf9c3fc","components/display/Collapsible.jsx":"ced441be2411","components/display/Direction.jsx":"04bd05450dcd","components/display/Divider.jsx":"ee51ca336cc7","components/display/Kbd.jsx":"3953794bd3c5","components/display/Link.jsx":"4f2fc59ae0db","components/display/ListItem.jsx":"8528c6e482bb","components/display/Resizable.jsx":"e471c791a17c","components/display/ScrollArea.jsx":"2dbb55595939","components/display/Separator.jsx":"5c2b62cf7532","components/display/Tag.jsx":"e9dadb374567","components/display/Timeline.jsx":"6c5bff5f4dcf","components/display/Toolbar.jsx":"bbe6cffbcbab","components/display/TreeList.jsx":"69be2d21b8ad","components/feedback/Alert.jsx":"1744e9ba7260","components/feedback/Banner.jsx":"d1e818e8451a","components/feedback/ConfirmDialog.jsx":"ae69cb48e209","components/feedback/Dialog.jsx":"ce9ee42cf8f2","components/feedback/Loader.jsx":"02efacc86905","components/feedback/Progress.jsx":"6902d7932dbd","components/feedback/Spinner.jsx":"5e2c9c05ca9d","components/feedback/Toast.jsx":"3ce2ec55ef4d","components/feedback/Tooltip.jsx":"b39f872b1a14","components/files/Attachment.jsx":"bd63ebd29171","components/files/FileDrop.jsx":"737632ac07db","components/files/FileTile.jsx":"28af04d1303b","components/files/FileTypeIcon.jsx":"3bcdf5ca7eb9","components/finance/PaymentCard.jsx":"74fa271e12f2","components/forms/Button.jsx":"b75f2a023e92","components/forms/ButtonGroup.jsx":"b8b5033d5122","components/forms/ButtonTile.jsx":"1508984c0c5c","components/forms/Checkbox.jsx":"2898578cf1eb","components/forms/Combobox.jsx":"724b03db0032","components/forms/DigitEntry.jsx":"74f16f2d7bf8","components/forms/FormField.jsx":"4219a23c3754","components/forms/IconButton.jsx":"7843bc8a3740","components/forms/Input.jsx":"4a667a0ee664","components/forms/InputGroup.jsx":"6d438fb0a2ea","components/forms/Label.jsx":"83c5cf662fb3","components/forms/NativeSelect.jsx":"caa858aa46d0","components/forms/NumberInput.jsx":"134d8cf88a75","components/forms/Radio.jsx":"c07e4cb51feb","components/forms/Select.jsx":"ac3b6f4a2b4f","components/forms/Slider.jsx":"a2c5c56d442b","components/forms/Switch.jsx":"5391a0cdb9f9","components/forms/Textarea.jsx":"3ff8cac70e1e","components/forms/Toggle.jsx":"7e6f51814f81","components/icons/Icon.jsx":"65c4206c8479","components/navigation/Breadcrumbs.jsx":"aa413c3db363","components/navigation/Menubar.jsx":"950604788590","components/navigation/PageControl.jsx":"8c5bfdc21407","components/navigation/Pagination.jsx":"09d35b923287","components/navigation/SegmentedControl.jsx":"ae08ad97a9a2","components/navigation/SideNav.jsx":"00851e64baa2","components/navigation/Steps.jsx":"45c6c1162b22","components/navigation/Tabs.jsx":"d5fa83661ffc","components/navigation/TopNav.jsx":"967b11093c20","components/overlay/CommandPalette.jsx":"b07b4f28cb8c","components/overlay/ContextMenu.jsx":"5053709a1ee5","components/overlay/Drawer.jsx":"18c562fe05c3","components/overlay/HoverCard.jsx":"7438ba615e77","components/overlay/Menu.jsx":"3119fa73b187","components/overlay/Popover.jsx":"cdede0714d8e","components/overlay/Portal.jsx":"3819af4bd7c7","showcases/agent/AgentScreen.jsx":"87f60f9116cc","showcases/auth/AuthScreens.jsx":"b3583b149df5","showcases/console/CustomersScreen.jsx":"a8a080a80d9e","showcases/console/ExtraScreens.jsx":"1e7a048ab690","showcases/console/OverviewScreen.jsx":"34b01f22bb52","showcases/console/SettingsScreen.jsx":"1d67397e26b4","showcases/console/Shell.jsx":"f5dd862d2098","showcases/docs/DocsScreen.jsx":"faa44c30040d","showcases/infra/InfraScreen.jsx":"f95eefa85b8d","showcases/tools/ToolsScreen.jsx":"bc6efc0184c2","showcases/trader/TraderScreen.jsx":"12e5273b9894","showcases/website/Sections.jsx":"3f14d6a12c71"},"inlinedExternals":[],"unexposedExports":[{"name":"computeDiff","sourcePath":"components/code/Diff.jsx"},{"name":"cssPct","sourcePath":"components/forms/Button.jsx"},{"name":"formatTime","sourcePath":"components/ai/Player.jsx"},{"name":"injectEfCss","sourcePath":"components/forms/Button.jsx"},{"name":"mergeRefs","sourcePath":"components/forms/Button.jsx"},{"name":"prefersReducedMotion","sourcePath":"components/forms/Button.jsx"},{"name":"useAnchoredStyle","sourcePath":"components/overlay/Portal.jsx"},{"name":"useDirection","sourcePath":"components/display/Direction.jsx"},{"name":"useFieldProps","sourcePath":"components/forms/FormField.jsx"},{"name":"useFormState","sourcePath":"components/forms/FormField.jsx"},{"name":"useIsoLayoutEffect","sourcePath":"components/forms/Button.jsx"},{"name":"useToast","sourcePath":"components/feedback/Toast.jsx"}]} */
 
 (() => {
 
@@ -202,6 +202,11 @@ const CSS = `
 .ef-btn--sm{height:var(--control-h-sm);padding:0 10px;font-size:var(--text-sm)}
 .ef-btn--md{height:var(--control-h-md);padding:0 14px;font-size:var(--text-md)}
 .ef-btn--lg{height:var(--control-h-lg);padding:0 20px;font-size:var(--text-lg)}
+.ef-btn--xs{height:28px;padding:0 9px;font-size:var(--text-xs);gap:6px}
+.ef-btn--icon,.ef-btn--icon-md{width:var(--control-h-md);height:var(--control-h-md);padding:0}
+.ef-btn--icon-xs{width:24px;height:24px;padding:0}
+.ef-btn--icon-sm{width:var(--control-h-sm);height:var(--control-h-sm);padding:0}
+.ef-btn--icon-lg{width:var(--control-h-lg);height:var(--control-h-lg);padding:0}
 .ef-btn--primary{background:var(--accent);color:var(--accent-contrast)}
 .ef-btn--primary:hover:not(:disabled){background:var(--accent-hover)}
 .ef-btn--primary:active:not(:disabled){background:var(--accent-active)}
@@ -213,6 +218,12 @@ const CSS = `
 .ef-btn--danger:hover:not(:disabled){background:var(--danger-700)}
 .ef-btn--brand{background:var(--brand-700);color:var(--text-on-brand)}
 .ef-btn--brand:hover:not(:disabled){background:var(--brand-800)}
+.ef-btn--outline{background:transparent;color:var(--text-primary);border-color:var(--border-strong)}
+.ef-btn--outline:hover:not(:disabled){background:var(--surface-sunken)}
+.ef-btn--destructive{background:var(--danger-600);color:var(--danger-contrast)}
+.ef-btn--destructive:hover:not(:disabled){background:var(--danger-700)}
+.ef-btn--link{height:auto;padding:0;background:transparent;color:var(--text-link);text-underline-offset:4px}
+.ef-btn--link:hover:not(:disabled){text-decoration:underline}
 @keyframes ef-spin{to{transform:rotate(360deg)}}
 .ef-btn__spin{display:inline-flex;animation:ef-spin .7s linear infinite}
 `;
@@ -294,9 +305,18 @@ function mergeRefs(...refs) {
     }
   };
 }
-function Button({
-  variant = 'primary',
-  size = 'md',
+function buttonVariants({
+  variant = 'default',
+  size = 'default',
+  className = ''
+} = {}) {
+  const mappedVariant = variant === 'default' ? 'primary' : variant;
+  const mappedSize = size === 'default' ? 'md' : size;
+  return `ef-btn ef-btn--${mappedVariant} ef-btn--${mappedSize}${className ? ' ' + className : ''}`;
+}
+const Button = React.forwardRef(function Button({
+  variant = 'default',
+  size = 'default',
   iconLeft,
   iconRight,
   fullWidth,
@@ -306,11 +326,16 @@ function Button({
   style,
   className,
   ...rest
-}) {
+}, ref) {
   injectEfCss('ef-css-btn', CSS);
-  const isz = size === 'sm' ? 14 : size === 'lg' ? 18 : 16;
+  const isz = size === 'xs' || size === 'icon-xs' ? 12 : size === 'sm' || size === 'icon-sm' ? 14 : size === 'lg' || size === 'icon-lg' ? 18 : 16;
   return /*#__PURE__*/React.createElement("button", _extends({
-    className: `ef-btn ef-btn--${variant} ef-btn--${size}${className ? ' ' + className : ''}`,
+    ref: ref,
+    className: buttonVariants({
+      variant,
+      size,
+      className
+    }),
     disabled: disabled || loading,
     style: {
       width: fullWidth ? '100%' : undefined,
@@ -328,8 +353,8 @@ function Button({
     name: iconRight,
     size: isz
   }) : null);
-}
-Object.assign(__ds_scope, { injectEfCss, cssPct, useIsoLayoutEffect, prefersReducedMotion, mergeRefs, Button });
+});
+Object.assign(__ds_scope, { injectEfCss, cssPct, useIsoLayoutEffect, prefersReducedMotion, mergeRefs, buttonVariants, Button });
 })(); } catch (e) { __ds_ns.__errors.push({ path: "components/forms/Button.jsx", error: String((e && e.message) || e) }); }
 
 // components/ai/AgentRun.jsx
@@ -5265,6 +5290,147 @@ function Spinner({
 }
 Object.assign(__ds_scope, { Spinner });
 })(); } catch (e) { __ds_ns.__errors.push({ path: "components/feedback/Spinner.jsx", error: String((e && e.message) || e) }); }
+
+// components/files/Attachment.jsx
+try { (() => {
+function _extends() { return _extends = Object.assign ? Object.assign.bind() : function (n) { for (var e = 1; e < arguments.length; e++) { var t = arguments[e]; for (var r in t) ({}).hasOwnProperty.call(t, r) && (n[r] = t[r]); } return n; }, _extends.apply(null, arguments); }
+const CSS = `
+.ef-attachment{position:relative;display:flex;align-items:center;gap:10px;min-width:0;padding:10px;border:1px solid var(--border-default);border-radius:var(--radius-md);background:var(--surface-card);color:var(--text-primary)}
+.ef-attachment[data-orientation="vertical"]{flex-direction:column;align-items:stretch}
+.ef-attachment[data-size="sm"]{gap:8px;padding:8px}
+.ef-attachment[data-size="xs"]{gap:6px;padding:6px;border-radius:var(--radius-sm)}
+.ef-attachment[data-state="error"]{border-color:var(--danger-600)}
+.ef-attachment__media{display:flex;align-items:center;justify-content:center;flex:none;width:36px;height:36px;border-radius:var(--radius-sm);overflow:hidden;background:var(--surface-sunken);color:var(--text-secondary)}
+.ef-attachment[data-size="sm"] .ef-attachment__media{width:32px;height:32px}
+.ef-attachment[data-size="xs"] .ef-attachment__media{width:24px;height:24px}
+.ef-attachment[data-orientation="vertical"] .ef-attachment__media{width:100%;height:auto;aspect-ratio:16/9}
+.ef-attachment__media[data-variant="image"] img{width:100%;height:100%;object-fit:cover}
+.ef-attachment__content{flex:1;min-width:0}
+.ef-attachment__title{overflow:hidden;color:var(--text-primary);font-size:var(--text-sm);font-weight:var(--weight-semibold);line-height:1.35;text-overflow:ellipsis;white-space:nowrap}
+.ef-attachment[data-size="xs"] .ef-attachment__title{font-size:var(--text-xs)}
+.ef-attachment__description{overflow:hidden;margin-top:2px;color:var(--text-muted);font-size:var(--text-xs);line-height:1.35;text-overflow:ellipsis;white-space:nowrap}
+.ef-attachment[data-state="error"] .ef-attachment__description{color:var(--danger-600)}
+.ef-attachment__actions{position:relative;z-index:3;display:flex;align-items:center;gap:4px;flex:none}
+.ef-attachment__trigger{position:absolute;z-index:1;inset:0;width:100%;height:100%;padding:0;border:0;border-radius:inherit;background:transparent;cursor:pointer}
+.ef-attachment__trigger:focus-visible{outline:none;box-shadow:inset var(--focus-ring)}
+.ef-attachment:has(.ef-attachment__trigger) .ef-attachment__media,.ef-attachment:has(.ef-attachment__trigger) .ef-attachment__content{pointer-events:none}
+.ef-attachment[data-state="uploading"] .ef-attachment__title,.ef-attachment[data-state="processing"] .ef-attachment__title{background:linear-gradient(90deg,var(--text-muted),var(--text-primary),var(--text-muted));background-size:200% 100%;background-clip:text;color:transparent;animation:ef-attachment-shimmer 1.5s linear infinite}
+.ef-attachment-group{display:flex;gap:8px;max-width:100%;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:thin;mask-image:linear-gradient(to right,transparent,currentColor 14px,currentColor calc(100% - 14px),transparent);padding-inline:14px}
+.ef-attachment-group>.ef-attachment{flex:0 0 auto;min-width:220px;scroll-snap-align:start}
+@keyframes ef-attachment-shimmer{to{background-position:-200% 0}}
+@media (prefers-reduced-motion:reduce){.ef-attachment[data-state="uploading"] .ef-attachment__title,.ef-attachment[data-state="processing"] .ef-attachment__title{animation:none;color:var(--text-primary);background:none}}
+`;
+const classes = (base, className) => base + (className ? ' ' + className : '');
+const Attachment = React.forwardRef(function Attachment({
+  state = 'done',
+  size = 'default',
+  orientation = 'horizontal',
+  className,
+  ...props
+}, ref) {
+  __ds_scope.injectEfCss('ef-css-attachment', CSS);
+  return /*#__PURE__*/React.createElement("div", _extends({
+    ref: ref,
+    "data-state": state,
+    "data-size": size,
+    "data-orientation": orientation,
+    className: classes('ef-attachment', className)
+  }, props));
+});
+const AttachmentMedia = React.forwardRef(function AttachmentMedia({
+  variant = 'icon',
+  className,
+  ...props
+}, ref) {
+  return /*#__PURE__*/React.createElement("div", _extends({
+    ref: ref,
+    "data-variant": variant,
+    className: classes('ef-attachment__media', className)
+  }, props));
+});
+const AttachmentContent = React.forwardRef(function AttachmentContent({
+  className,
+  ...props
+}, ref) {
+  return /*#__PURE__*/React.createElement("div", _extends({
+    ref: ref,
+    className: classes('ef-attachment__content', className)
+  }, props));
+});
+const AttachmentTitle = React.forwardRef(function AttachmentTitle({
+  className,
+  ...props
+}, ref) {
+  return /*#__PURE__*/React.createElement("div", _extends({
+    ref: ref,
+    className: classes('ef-attachment__title', className)
+  }, props));
+});
+const AttachmentDescription = React.forwardRef(function AttachmentDescription({
+  className,
+  ...props
+}, ref) {
+  return /*#__PURE__*/React.createElement("div", _extends({
+    ref: ref,
+    className: classes('ef-attachment__description', className)
+  }, props));
+});
+const AttachmentActions = React.forwardRef(function AttachmentActions({
+  className,
+  ...props
+}, ref) {
+  return /*#__PURE__*/React.createElement("div", _extends({
+    ref: ref,
+    className: classes('ef-attachment__actions', className)
+  }, props));
+});
+const AttachmentAction = React.forwardRef(function AttachmentAction({
+  size = 'icon-xs',
+  ...props
+}, ref) {
+  return /*#__PURE__*/React.createElement(__ds_scope.Button, _extends({
+    ref: ref,
+    size: size
+  }, props));
+});
+const AttachmentTrigger = React.forwardRef(function AttachmentTrigger({
+  render,
+  className,
+  ...props
+}, ref) {
+  const triggerProps = {
+    ...props,
+    className: classes('ef-attachment__trigger', className)
+  };
+  if (typeof render === 'function') return render({
+    ...triggerProps,
+    ref
+  });
+  if (React.isValidElement(render)) {
+    return React.cloneElement(render, {
+      ...triggerProps,
+      ...render.props,
+      className: classes(triggerProps.className, render.props.className),
+      ref: __ds_scope.mergeRefs(ref, render.ref)
+    });
+  }
+  return /*#__PURE__*/React.createElement("button", _extends({
+    ref: ref,
+    type: "button"
+  }, triggerProps));
+});
+const AttachmentGroup = React.forwardRef(function AttachmentGroup({
+  className,
+  ...props
+}, ref) {
+  __ds_scope.injectEfCss('ef-css-attachment', CSS);
+  return /*#__PURE__*/React.createElement("div", _extends({
+    ref: ref,
+    className: classes('ef-attachment-group', className)
+  }, props));
+});
+Object.assign(__ds_scope, { Attachment, AttachmentMedia, AttachmentContent, AttachmentTitle, AttachmentDescription, AttachmentActions, AttachmentAction, AttachmentTrigger, AttachmentGroup });
+})(); } catch (e) { __ds_ns.__errors.push({ path: "components/files/Attachment.jsx", error: String((e && e.message) || e) }); }
 
 // components/files/FileDrop.jsx
 try { (() => {
@@ -15886,6 +16052,24 @@ __ds_ns.Toaster = __ds_scope.Toaster;
 
 __ds_ns.Tooltip = __ds_scope.Tooltip;
 
+__ds_ns.Attachment = __ds_scope.Attachment;
+
+__ds_ns.AttachmentMedia = __ds_scope.AttachmentMedia;
+
+__ds_ns.AttachmentContent = __ds_scope.AttachmentContent;
+
+__ds_ns.AttachmentTitle = __ds_scope.AttachmentTitle;
+
+__ds_ns.AttachmentDescription = __ds_scope.AttachmentDescription;
+
+__ds_ns.AttachmentActions = __ds_scope.AttachmentActions;
+
+__ds_ns.AttachmentAction = __ds_scope.AttachmentAction;
+
+__ds_ns.AttachmentTrigger = __ds_scope.AttachmentTrigger;
+
+__ds_ns.AttachmentGroup = __ds_scope.AttachmentGroup;
+
 __ds_ns.FileDrop = __ds_scope.FileDrop;
 
 __ds_ns.FileTile = __ds_scope.FileTile;
@@ -15975,5 +16159,7 @@ __ds_ns.Popover = __ds_scope.Popover;
 __ds_ns.Portal = __ds_scope.Portal;
 
 __ds_ns.markerVariants = __ds_scope.markerVariants;
+
+__ds_ns.buttonVariants = __ds_scope.buttonVariants;
 
 })();

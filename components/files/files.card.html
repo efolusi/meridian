@@ -1,4 +1,4 @@
-<!-- @dsCard group="Components" viewport="700x500" name="Files" subtitle="FileDrop, FileTile, FileTypeIcon" -->
+<!-- @dsCard group="Components" viewport="700x500" name="Files" subtitle="Attachment, FileDrop, FileTile, FileTypeIcon" -->
 <!DOCTYPE html><html><head><meta charset="utf-8"><link rel="stylesheet" href="../../styles.css">
 <script src="https://unpkg.com/react@18.3.1/umd/react.production.min.js" integrity="sha384-DGyLxAyjq0f9SPpVevD6IgztCFlnMF6oW/XQGmfe+IsZ8TqEiDrcHkMLKI6fiB/Z" crossorigin="anonymous"></script>
 <script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.production.min.js" integrity="sha384-gTGxhz21lVGYNMcdJOyq01Edg0jhn/c22nsx0kyqP0TxaV5WVdsSH1fSDUf5YJj1" crossorigin="anonymous"></script>
@@ -7,10 +7,11 @@
 </head><body style="background:var(--surface-page)">
 <div id="root"></div>
 <script type="text/babel">
-const { FileDrop, FileTile, Button, FileTypeIcon } = window.EfolusiDesignSystem_4ffc3d;
+const { Attachment, AttachmentMedia, AttachmentContent, AttachmentTitle, AttachmentDescription, FileDrop, FileTile, Button, FileTypeIcon, Icon } = window.EfolusiDesignSystem_4ffc3d;
 function Demo() {
   return (
     <div style={{ padding: 20, display: 'flex', flexDirection: 'column', gap: 12, maxWidth: 560 }}>
+      <Attachment state="uploading"><AttachmentMedia><Icon name="file-text" /></AttachmentMedia><AttachmentContent><AttachmentTitle>design-system.zip</AttachmentTitle><AttachmentDescription>Uploading · 64%</AttachmentDescription></AttachmentContent></Attachment>
       <FileDrop accept="image/*,video/*,.pdf" hint="PNG, MP4, PDF — up to 2 GB" onFiles={() => {}} />
       <FileTile name="hero-final.mp4" size="48 MB" progress={62} />
       <FileTile name="q3-deck.pdf" size="1.2 MB" status="Converted to DOCX" actions={<Button size="sm" variant="secondary" iconLeft="download">Download</Button>} />
