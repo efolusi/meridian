@@ -39,6 +39,14 @@ Only **Proven** items may count toward the migration percentage.
 5. Blocks and starters need more realistic end-to-end product journeys, not
    isolated component collages.
 
+## Proven adapters
+
+- `Separator` supports horizontal/vertical orientation, decorative or semantic
+  output, ref forwarding, types, registry installation, demos, and tests.
+- `NativeSelect`, `NativeSelectOption`, and `NativeSelectOptGroup` support native
+  option composition, disabled/invalid browser behavior, ref forwarding, types,
+  registry installation, demos, and tests.
+
 ## Release gate
 
 Before claiming complete compatibility:
