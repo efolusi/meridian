@@ -1,78 +1,12 @@
-export interface ToastProps {
-  /** @default 'info' */
-  tone?: 'info' | 'success' | 'warning' | 'danger';
-  title: React.ReactNode;
-  description?: React.ReactNode;
-  /** Action slot, a node rendered as-is (prevents auto-dismiss per WCAG 2.2.1). */
-  action?: React.ReactNode;
-  /** @deprecated pass a node to `action` instead */
-  actionLabel?: string;
-  /** @deprecated pass a node to `action` instead */
-  onAction?: () => void;
-  /** Shows a dismiss ✕ */
-  onClose?: () => void;
-  /**
-   * Live-region role. Inside a `Toaster` the stack owns the live region and each
-   * toast renders with `null`, so a queue announces once rather than as N
-   * competing regions. @default 'status'
-   */
-  role?: 'status' | 'alert' | null;
-  style?: React.CSSProperties;
-  className?: string;
-}
-export declare function Toast(props: ToastProps): React.JSX.Element;
-
-export interface ToastStackProps {
-  /** Toasts, stacked fixed bottom-right */
-  children?: React.ReactNode;
-  style?: React.CSSProperties;
-  className?: string;
-}
-export declare function ToastStack(props: ToastStackProps): React.JSX.Element;
-
-export interface ToastOptions {
-  title: React.ReactNode;
-  description?: React.ReactNode;
-  /** @default 'info' */
-  tone?: 'info' | 'success' | 'warning' | 'danger';
-  /** Action slot, a node rendered as-is (prevents auto-dismiss per WCAG 2.2.1). */
-  action?: React.ReactNode;
-  /** @deprecated pass a node to `action` instead */
-  actionLabel?: string;
-  /** @deprecated pass a node to `action` instead */
-  onAction?: () => void;
-  /**
-   * ms before auto-dismiss; 0 never dismisses.
-   * @default the Toaster's `duration`, or 0 when `action`/`actionLabel` is set — a
-   * control must not vanish on a timer the user cannot adjust (WCAG 2.2.1).
-   */
-  duration?: number;
-}
-export interface ToastApi {
-  /** Queue a toast; returns its id. */
-  notify: (options: ToastOptions) => string;
-  dismiss: (id: string) => void;
-  dismissAll: () => void;
-}
-export interface ToasterProps {
-  /** ms before a toast auto-dismisses; 0 never. @default 5000 */
-  duration?: number;
-  /** aria-label of the live region. @default 'Notifications' */
-  label?: string;
-  /** Your app. Toaster renders a Fragment, never a wrapper element. */
-  children?: React.ReactNode;
-  style?: React.CSSProperties;
-  className?: string;
-}
-/**
- * Owns the toast queue: ids, timers, the live region and the portal. Timers
- * pause while the stack is hovered or focused.
- *
- * The hook is published as a static — `Toaster.useToast()` — because only
- * capitalised exports reach the global namespace.
- */
-export declare function Toaster(props: ToasterProps): React.JSX.Element;
-export declare namespace Toaster {
-  /** Must be called inside a `<Toaster>`; throws otherwise. */
-  function useToast(): ToastApi;
-}
+import * as React from 'react';
+export type ToastPosition = 'top-left' | 'top-center' | 'top-right' | 'bottom-left' | 'bottom-center' | 'bottom-right';
+export interface ToastAction { label: React.ReactNode; onClick: () => void }
+export interface ToastProps extends Omit<React.HTMLAttributes<HTMLDivElement>, 'title'> { tone?: 'info' | 'success' | 'warning' | 'danger'; title: React.ReactNode; description?: React.ReactNode; action?: React.ReactNode | ToastAction; actionLabel?: string; onAction?: () => void; onClose?: () => void; role?: 'status' | 'alert' | null }
+export function Toast(props: ToastProps): React.JSX.Element;
+export interface ToastStackProps extends React.HTMLAttributes<HTMLDivElement> { position?: ToastPosition }
+export function ToastStack(props: ToastStackProps): React.JSX.Element;
+export interface ExternalToast { id?: string | number; description?: React.ReactNode | ((value: unknown) => React.ReactNode); duration?: number; action?: React.ReactNode | ToastAction; closeButton?: boolean }
+export interface ToastFunction { (message: React.ReactNode, options?: ExternalToast): string | number; success(message: React.ReactNode, options?: ExternalToast): string | number; info(message: React.ReactNode, options?: ExternalToast): string | number; warning(message: React.ReactNode, options?: ExternalToast): string | number; error(message: React.ReactNode, options?: ExternalToast): string | number; loading(message: React.ReactNode, options?: ExternalToast): string | number; custom(message: React.ReactElement, options?: ExternalToast): string | number; message(message: React.ReactNode, options?: ExternalToast): string | number; dismiss(id?: string | number): void; promise<T>(promise: Promise<T> | (() => Promise<T>), data: { loading?: React.ReactNode; success?: React.ReactNode | ((value: T) => React.ReactNode); error?: React.ReactNode | ((error: unknown) => React.ReactNode); description?: React.ReactNode | ((value: T) => React.ReactNode); duration?: number }): string | number }
+export const toast: ToastFunction;
+export interface ToasterProps extends React.HTMLAttributes<HTMLDivElement> { position?: ToastPosition; visibleToasts?: number; closeButton?: boolean; richColors?: boolean; duration?: number; toastOptions?: ExternalToast; expand?: boolean; theme?: 'light' | 'dark' | 'system'; dir?: 'ltr' | 'rtl'; gap?: number; offset?: number | string; mobileOffset?: number | string; label?: string; children?: React.ReactNode }
+export function Toaster(props: ToasterProps): React.JSX.Element;

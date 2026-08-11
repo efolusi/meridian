@@ -31,6 +31,7 @@ const PUBLIC_HELPERS = new Set([
   'markerVariants',
   'navigationMenuTriggerStyle',
   'toggleVariants',
+  'toast',
   'useComboboxAnchor',
   'useDirection',
   'useMessageScroller',

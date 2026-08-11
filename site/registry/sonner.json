@@ -1,7 +1,7 @@
 {
-  "name": "toast",
+  "name": "sonner",
   "type": "registry:ui",
-  "title": "Toast + ToastStack + Toaster",
+  "title": "Toast + ToastStack + Toaster (legacy registry alias)",
   "description": "Mount one `Toaster` near the application root, then call the imperative `toast` API from any event handler.",
   "dependencies": [
     "react"

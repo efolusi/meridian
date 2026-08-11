@@ -26,7 +26,7 @@ if (missing.length) {
   console.error('missing or unrenderable exports:', missing.join(', '));
   process.exit(1);
 }
-for (const helper of ['badgeVariants', 'buttonVariants', 'markerVariants', 'navigationMenuTriggerStyle', 'toggleVariants', 'useMessageScroller', 'useMessageScrollerScrollable', 'useMessageScrollerVisibility', 'useSidebar']) {
+for (const helper of ['badgeVariants', 'buttonVariants', 'markerVariants', 'navigationMenuTriggerStyle', 'toast', 'toggleVariants', 'useMessageScroller', 'useMessageScrollerScrollable', 'useMessageScrollerVisibility', 'useSidebar']) {
   if (typeof barrel[helper] !== 'function') {
     console.error(`missing public style helper: ${helper}`);
     process.exit(1);

@@ -12,7 +12,7 @@
 </head><body>
 <div id="root"></div>
 <script type="text/babel">
-const { Dialog, Toaster, Button, Input, NativeSelect, NativeSelectOption, Field, FieldLabel, Textarea, CommandDialog, CommandInput, CommandList, CommandEmpty, CommandGroup, CommandItem, CommandShortcut, Icon } = window.EfolusiDesignSystem_4ffc3d;
+const { Dialog, Toaster, toast, Button, Input, NativeSelect, NativeSelectOption, Field, FieldLabel, Textarea, CommandDialog, CommandInput, CommandList, CommandEmpty, CommandGroup, CommandItem, CommandShortcut, Icon } = window.EfolusiDesignSystem_4ffc3d;
 const TITLES = { overview: 'Overview', customers: 'Customers', projects: 'Projects', usage: 'Usage', billing: 'Billing', settings: 'Workspace settings' };
 const CONSOLE_COMMANDS = [
   { heading: 'Actions', items: [['new', 'New project', 'plus'], ['invite', 'Invite teammate', 'mail', 'Settings']] },
@@ -31,8 +31,7 @@ function App() {
     document.addEventListener('keydown', key);
     return () => document.removeEventListener('keydown', key);
   }, []);
-  const toast = Toaster.useToast();
-  const notify = (title, description, tone = 'success') => toast.notify({ tone, title, description });
+  const notify = (title, description, tone = 'success') => (toast[tone] || toast)(title, { description });
   const runCommand = id => {
     setCmdk(false);
     if (id === 'new') setDialog(true);

@@ -2335,7 +2335,40 @@
       "name": "toast",
       "type": "registry:ui",
       "title": "Toast + ToastStack + Toaster",
-      "description": "Dark (espresso) notification card. Reach for `Toaster` first \u2014 it owns the queue, so you do not hand-roll ids, timers and a stack in every screen.",
+      "description": "Mount one `Toaster` near the application root, then call the imperative `toast` API from any event handler.",
+      "dependencies": [
+        "react"
+      ],
+      "registryDependencies": [
+        "https://meridian.efolusi.com/site/registry/meridian-base.json",
+        "https://meridian.efolusi.com/site/registry/button.json",
+        "https://meridian.efolusi.com/site/registry/icon.json",
+        "https://meridian.efolusi.com/site/registry/iconbutton.json",
+        "https://meridian.efolusi.com/site/registry/portal.json"
+      ],
+      "files": [
+        {
+          "path": "components/feedback/Toast.jsx",
+          "type": "registry:ui"
+        },
+        {
+          "path": "components/feedback/Toast.d.ts",
+          "type": "registry:component"
+        },
+        {
+          "path": "components/feedback/Toast.prompt.md",
+          "type": "registry:component"
+        }
+      ],
+      "categories": [
+        "feedback"
+      ]
+    },
+    {
+      "name": "sonner",
+      "type": "registry:ui",
+      "title": "Toast + ToastStack + Toaster (legacy registry alias)",
+      "description": "Mount one `Toaster` near the application root, then call the imperative `toast` API from any event handler.",
       "dependencies": [
         "react"
       ],

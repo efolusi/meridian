@@ -1,4 +1,4 @@
-const { Banner, Stat, Sparkline, SegmentedControl, Table, StatusDot, Drawer, DrawerContent, DrawerHeader, DrawerTitle, DrawerDescription, DrawerFooter, DrawerClose, KeyValueList, CopyField, Terminal, Dialog, Card, Button, NativeSelect, NativeSelectOption, Field, FieldLabel, Input, Badge, Icon, Toaster } = window.EfolusiDesignSystem_4ffc3d;
+const { Banner, Stat, Sparkline, SegmentedControl, Table, StatusDot, Drawer, DrawerContent, DrawerHeader, DrawerTitle, DrawerDescription, DrawerFooter, DrawerClose, KeyValueList, CopyField, Terminal, Dialog, Card, Button, NativeSelect, NativeSelectOption, Field, FieldLabel, Input, Badge, Icon, Toaster, toast } = window.EfolusiDesignSystem_4ffc3d;
 
 const RESOURCES = [
   { id: 'pg', name: 'pg-prod-eu', kind: 'PostgreSQL', icon: 'database', region: 'eu-west-1', status: 'ok', latency: '38 ms' },
@@ -26,8 +26,7 @@ function InfraScreen() {
   const [connect, setConnect] = React.useState(false);
   const [cli, setCli] = React.useState(false);
   const [extra, setExtra] = React.useState([]);
-  const toast = Toaster.useToast();
-  const notify = (title, description) => toast.notify({ tone: 'success', title, description });
+  const notify = (title, description) => toast.success(title, { description });
   const rows = tab === 'resources' ? [...RESOURCES, ...extra] : tab === 'domains' ? DOMAINS : CERTS;
   return (
     <div style={{ height: '100vh', display: 'flex', flexDirection: 'column' }}>

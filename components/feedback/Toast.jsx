@@ -3,153 +3,94 @@ import { Icon } from '../icons/Icon.jsx';
 import { IconButton } from '../forms/IconButton.jsx';
 import { injectEfCss } from '../forms/Button.jsx';
 import { Portal } from '../overlay/Portal.jsx';
+
 const CSS = `
 .ef-toast{display:flex;align-items:flex-start;gap:10px;width:360px;max-width:100%;padding:12px 14px;background:var(--surface-inverse);color:var(--text-inverse);border-radius:var(--radius-md);box-shadow:var(--shadow-lg);animation:ef-toast-in var(--dur-slow) var(--ease-spring)}
-.ef-toast__icon{display:inline-flex;margin-top:1px}
-.ef-toast--success .ef-toast__icon{color:var(--success-on-dark)}
-.ef-toast--danger .ef-toast__icon{color:var(--danger-on-dark)}
-.ef-toast--warning .ef-toast__icon{color:var(--warning-on-dark)}
-.ef-toast--info .ef-toast__icon{color:var(--peach-200)}
-.ef-toast__title{font-size:var(--text-md);font-weight:var(--weight-semibold);line-height:1.35}
-.ef-toast__desc{font-size:var(--text-sm);color:var(--text-inverse);opacity:.75;margin-top:2px;line-height:1.4}
-.ef-toast__action{margin-top:8px;background:none;border:none;padding:0;color:var(--peach-200);font-family:var(--font-sans);font-size:var(--text-sm);font-weight:var(--weight-semibold);cursor:pointer}
-.ef-toast__action:hover{color:var(--cream-50);text-decoration:underline}
-.ef-toast .ef-iconbtn{color:var(--text-inverse-muted)}
-.ef-toast .ef-iconbtn:hover:not(:disabled){background:color-mix(in srgb,var(--text-inverse) 12%,transparent);color:var(--text-inverse)}
-.ef-toast-stack{position:fixed;bottom:24px;inset-inline-end:24px;display:flex;flex-direction:column;gap:10px;z-index:var(--z-toast)}
-[data-theme="dark"] .ef-toast--success .ef-toast__icon{color:var(--success-600)}
-[data-theme="dark"] .ef-toast--danger .ef-toast__icon{color:var(--danger-600)}
-[data-theme="dark"] .ef-toast--warning .ef-toast__icon{color:var(--warning-600)}
-[data-theme="dark"] .ef-toast--info .ef-toast__icon{color:var(--brand-600)}
-[data-theme="dark"] .ef-toast__action{color:var(--brand-700)}
-[data-theme="dark"] .ef-toast .ef-iconbtn{color:var(--text-inverse-muted)}
+.ef-toast__icon{display:inline-flex;margin-top:1px}.ef-toast--success .ef-toast__icon{color:var(--success-on-dark)}.ef-toast--danger .ef-toast__icon{color:var(--danger-on-dark)}.ef-toast--warning .ef-toast__icon{color:var(--warning-on-dark)}.ef-toast--info .ef-toast__icon{color:var(--peach-200)}
+.ef-toast__title{font-size:var(--text-md);font-weight:var(--weight-semibold);line-height:1.35}.ef-toast__desc{margin-top:2px;color:var(--text-inverse);font-size:var(--text-sm);line-height:1.4;opacity:.75}.ef-toast__action{margin-top:8px;padding:0;border:0;background:none;color:var(--peach-200);font-family:var(--font-sans);font-size:var(--text-sm);font-weight:var(--weight-semibold);cursor:pointer}.ef-toast__action:hover{color:var(--cream-50);text-decoration:underline}.ef-toast .ef-iconbtn{color:var(--text-inverse-muted)}.ef-toast .ef-iconbtn:hover:not(:disabled){background:color-mix(in srgb,var(--text-inverse) 12%,transparent);color:var(--text-inverse)}
+.ef-toast-stack{position:fixed;z-index:var(--z-toast);display:flex;width:360px;max-width:calc(100vw - 32px);flex-direction:column;gap:10px;pointer-events:none}.ef-toast-stack>*{pointer-events:auto}.ef-toast-stack[data-position^=top]{top:24px}.ef-toast-stack[data-position^=bottom]{bottom:24px}.ef-toast-stack[data-position$=left]{inset-inline-start:24px}.ef-toast-stack[data-position$=right]{inset-inline-end:24px}.ef-toast-stack[data-position$=center]{inset-inline-start:50%;transform:translateX(-50%)}
+[data-theme="dark"] .ef-toast--success .ef-toast__icon{color:var(--success-600)}[data-theme="dark"] .ef-toast--danger .ef-toast__icon{color:var(--danger-600)}[data-theme="dark"] .ef-toast--warning .ef-toast__icon{color:var(--warning-600)}[data-theme="dark"] .ef-toast--info .ef-toast__icon{color:var(--brand-600)}[data-theme="dark"] .ef-toast__action{color:var(--brand-700)}
+@media(max-width:599px){.ef-toast-stack{inset-inline:16px!important;width:auto;max-width:none;transform:none!important}.ef-toast-stack[data-position^=top]{top:16px}.ef-toast-stack[data-position^=bottom]{bottom:16px}}
 @keyframes ef-toast-in{from{opacity:0;transform:translateY(12px) scale(.96)}}
 `;
 const ICONS = { success: 'circle-check', danger: 'circle-alert', warning: 'triangle-alert', info: 'info' };
+
 export function Toast({ tone = 'info', title, description, action, actionLabel, onAction, onClose, role = 'status', style, className, ...rest }) {
   injectEfCss('ef-css-toast', CSS);
-  return (
-    <div {...rest} className={`ef-toast ef-toast--${tone}${className ? ' ' + className : ''}`} role={role || undefined} style={style}>
-      <span className="ef-toast__icon"><Icon name={ICONS[tone] || 'info'} size={18} /></span>
-      <div style={{ flex: 1 }}>
-        <div className="ef-toast__title">{title}</div>
-        {description ? <div className="ef-toast__desc">{description}</div> : null}
-        {action ? action : actionLabel ? <button className="ef-toast__action" onClick={onAction}>{actionLabel}</button> : null}
-      </div>
-      {onClose ? <IconButton icon="x" label="Dismiss" size="sm" onClick={onClose} /> : null}
-    </div>
-  );
+  const actionNode = React.isValidElement(action) ? action : action && typeof action === 'object'
+    ? <button className="ef-toast__action" onClick={action.onClick}>{action.label}</button>
+    : action ? <span className="ef-toast__action">{action}</span>
+    : actionLabel ? <button className="ef-toast__action" onClick={onAction}>{actionLabel}</button> : null;
+  return <div {...rest} data-slot="toast" className={`ef-toast ef-toast--${tone}${className ? ` ${className}` : ''}`} role={role || undefined} style={style}>
+    <span className="ef-toast__icon" aria-hidden="true"><Icon name={ICONS[tone] || 'info'} size={18} /></span>
+    <div style={{ flex: 1 }}><div className="ef-toast__title">{title}</div>{description ? <div className="ef-toast__desc">{description}</div> : null}{actionNode}</div>
+    {onClose ? <IconButton icon="x" label="Dismiss" size="sm" onClick={onClose} /> : null}
+  </div>;
 }
-export function ToastStack({ children, style, className, ...rest }) {
+
+export function ToastStack({ children, position = 'bottom-right', style, className, ...rest }) {
   injectEfCss('ef-css-toast', CSS);
-  return <div {...rest} className={`ef-toast-stack${className ? ' ' + className : ''}`} style={style}>{children}</div>;
+  return <div {...rest} data-slot="toaster" data-position={position} className={`ef-toast-stack${className ? ` ${className}` : ''}`} style={style}>{children}</div>;
 }
 
-const ToastCtx = React.createContext(null);
+let records = [];
+let sequence = 0;
+let defaultDuration = 5000;
+let defaultToastOptions = {};
+const listeners = new Set();
+const timers = new Map();
+const emit = () => listeners.forEach(listener => listener(records));
+const resolve = (value, payload) => typeof value === 'function' ? value(payload) : value;
 
-/**
- * The toast queue API: notify, dismiss, dismissAll.
- *
- * Lowercase, so the compiler files it under unexposedExports and it never
- * reaches the global namespace directly. Consumers get it as `Toaster.useToast`
- * (assigned at the bottom of this file), which is the one sanctioned way to
- * publish a hook when only capitalised exports are exposed.
- *
- * Throws outside a <Toaster> rather than degrading to a no-op: a notification
- * that silently never appears is the harder bug to find.
- */
-export function useToast() {
-  const ctx = React.useContext(ToastCtx);
-  if (!ctx) throw new Error('useToast must be called inside a <Toaster>');
-  return ctx;
+function dismiss(id) {
+  if (id == null) { timers.forEach(timer => clearTimeout(timer.handle)); timers.clear(); records = []; }
+  else { const timer = timers.get(id); if (timer?.handle) clearTimeout(timer.handle); timers.delete(id); records = records.filter(item => item.id !== id); }
+  emit();
+}
+function schedule(id, duration) {
+  if (!(duration > 0)) return;
+  const timer = { remaining: duration, startedAt: Date.now(), handle: null };
+  timer.handle = setTimeout(() => dismiss(id), duration); timers.set(id, timer);
+}
+function create(message, options = {}, type = 'default') {
+  const merged = { ...defaultToastOptions, ...options };
+  const id = merged.id ?? `toast-${++sequence}`;
+  const next = { ...merged, id, title: message, type };
+  const previous = timers.get(id); if (previous?.handle) clearTimeout(previous.handle); timers.delete(id);
+  records = records.some(item => item.id === id) ? records.map(item => item.id === id ? next : item) : [...records, next];
+  schedule(id, merged.duration ?? (type === 'loading' ? 0 : defaultDuration)); emit(); return id;
 }
 
-/**
- * Owns the toast queue: ids, timers, the live region, and the portal.
- *
- * Renders a Fragment around your app plus one portaled stack, so it can sit at
- * the root without introducing a wrapper element.
- */
-export function Toaster({ duration = 5000, label = 'Notifications', children, ...rest }) {
-  injectEfCss('ef-css-toast', CSS);
-  const uid = React.useId();
-  const seq = React.useRef(0);
-  const [toasts, setToasts] = React.useState([]);
-  const timers = React.useRef(new Map());
-
-  const dismiss = React.useCallback(id => {
-    const rec = timers.current.get(id);
-    if (rec && rec.handle) clearTimeout(rec.handle);
-    timers.current.delete(id);
-    setToasts(list => list.filter(x => x.id !== id));
-  }, []);
-
-  const arm = React.useCallback((id, ms) => {
-    const rec = { remaining: ms, startedAt: Date.now(), handle: null };
-    rec.handle = setTimeout(() => dismiss(id), ms);
-    timers.current.set(id, rec);
-  }, [dismiss]);
-
-  const notify = React.useCallback(options => {
-    const id = uid + (seq.current++);
-    const { duration: own, ...props } = options || {};
-    // A toast carrying an action must not time out: WCAG 2.2.1 does not allow a
-    // control to disappear on a timer the user cannot adjust.
-    const ms = own != null ? own : ((props.action || props.actionLabel) ? 0 : duration);
-    setToasts(list => [...list, { id, props }]);
-    if (ms > 0) arm(id, ms);
-    return id;
-  }, [uid, duration, arm]);
-
-  const dismissAll = React.useCallback(() => {
-    timers.current.forEach(rec => { if (rec.handle) clearTimeout(rec.handle); });
-    timers.current.clear();
-    setToasts([]);
-  }, []);
-
-  React.useEffect(() => () => {
-    timers.current.forEach(rec => { if (rec.handle) clearTimeout(rec.handle); });
-    timers.current.clear();
-  }, []);
-
-  // Hovering or focusing the stack holds every pending timer, so a slow reader
-  // or a keyboard user can actually reach the action inside a toast.
-  const pause = () => {
-    timers.current.forEach(rec => {
-      if (!rec.handle) return;
-      clearTimeout(rec.handle);
-      rec.remaining = Math.max(0, rec.remaining - (Date.now() - rec.startedAt));
-      rec.handle = null;
-    });
-  };
-  const resume = () => {
-    // A toast whose time ran out while paused must go on unpause, not become
-    // permanent. Collect them first: dismiss() mutates the map being iterated.
-    const expired = [];
-    timers.current.forEach((rec, id) => {
-      if (rec.handle) return;
-      if (rec.remaining <= 0) { expired.push(id); return; }
-      rec.startedAt = Date.now();
-      rec.handle = setTimeout(() => dismiss(id), rec.remaining);
-    });
-    expired.forEach(dismiss);
-  };
-
-  const api = React.useMemo(() => ({ notify, dismiss, dismissAll }), [notify, dismiss, dismissAll]);
-
-  return (
-    <ToastCtx.Provider value={api}>
-      {children}
-      <Portal>
-        <ToastStack {...rest} aria-label={label} role="log" aria-live="polite" aria-relevant="additions"
-          onMouseEnter={pause} onMouseLeave={resume} onFocusCapture={pause} onBlurCapture={resume}>
-          {toasts.map(t => (
-            <Toast key={t.id} {...t.props} role={null} onClose={() => dismiss(t.id)} />
-          ))}
-        </ToastStack>
-      </Portal>
-    </ToastCtx.Provider>
+export function toast(message, options) { return create(message, options); }
+toast.success = (message, options) => create(message, options, 'success');
+toast.info = (message, options) => create(message, options, 'info');
+toast.warning = (message, options) => create(message, options, 'warning');
+toast.error = (message, options) => create(message, options, 'error');
+toast.loading = (message, options) => create(message, { ...options, duration: options?.duration ?? 0 }, 'loading');
+toast.custom = (message, options) => create(message, options, 'custom');
+toast.message = toast;
+toast.dismiss = dismiss;
+toast.promise = (promise, data = {}) => {
+  const id = toast.loading(resolve(data.loading));
+  Promise.resolve(typeof promise === 'function' ? promise() : promise).then(
+    value => create(resolve(data.success, value), { id, description: resolve(data.description, value), duration: data.duration }, 'success'),
+    error => create(resolve(data.error, error), { id, description: error?.message, duration: data.duration }, 'error'),
   );
-}
+  return id;
+};
 
-Toaster.useToast = useToast;
+function pause() { timers.forEach(timer => { if (!timer.handle) return; clearTimeout(timer.handle); timer.remaining = Math.max(0, timer.remaining - (Date.now() - timer.startedAt)); timer.handle = null; }); }
+function resume() { const expired = []; timers.forEach((timer, id) => { if (timer.handle) return; if (timer.remaining <= 0) { expired.push(id); return; } timer.startedAt = Date.now(); timer.handle = setTimeout(() => dismiss(id), timer.remaining); }); expired.forEach(dismiss); }
+
+export function Toaster({ position = 'bottom-right', visibleToasts = 3, closeButton = false, richColors = false, duration = 5000, toastOptions = {}, expand = false, theme = 'system', dir, gap = 10, offset, mobileOffset, label = 'Notifications', children, style, ...rest }) {
+  injectEfCss('ef-css-toast', CSS);
+  const [items, setItems] = React.useState(records);
+  React.useEffect(() => { const listener = value => setItems(value); listeners.add(listener); listener(records); return () => listeners.delete(listener); }, []);
+  React.useEffect(() => { defaultDuration = duration; defaultToastOptions = toastOptions; return () => { defaultDuration = 5000; defaultToastOptions = {}; }; }, [duration, toastOptions]);
+  const resolvedOffset = typeof offset === 'number' ? `${offset}px` : offset;
+  return <>{children}<Portal><ToastStack {...rest} dir={dir} position={position} data-rich-colors={richColors ? 'true' : 'false'} data-expand={expand ? 'true' : 'false'} data-theme={theme} data-mobile-offset={typeof mobileOffset === 'number' ? `${mobileOffset}px` : mobileOffset} style={{ gap, ...(position.startsWith('top') ? { top: resolvedOffset } : { bottom: resolvedOffset }), ...style }} aria-label={label} role="log" aria-live="polite" aria-relevant="additions" onMouseEnter={pause} onMouseLeave={resume} onFocusCapture={pause} onBlurCapture={resume}>
+    {items.slice(-visibleToasts).map(item => item.type === 'custom' && React.isValidElement(item.title)
+      ? React.cloneElement(item.title, { key: item.id })
+      : <Toast key={item.id} tone={item.type === 'error' ? 'danger' : ['success', 'warning', 'info'].includes(item.type) ? item.type : 'info'} title={item.title} description={item.description} action={item.action} role={null} onClose={closeButton || item.closeButton ? () => dismiss(item.id) : undefined} />)}
+  </ToastStack></Portal></>;
+}

@@ -124,6 +124,12 @@ export function ToastDemo() {
   );
 }
 
+// @demo Toaster Imperative notifications
+export function ToasterDemo() {
+  const { Toaster, toast, Button } = window.EfolusiDesignSystem_4ffc3d;
+  return <div style={{ display: 'flex', gap: 8 }}><Toaster position="bottom-right" closeButton /><Button variant="outline" onClick={() => toast.success('Release published', { description: 'All production regions are healthy.' })}>Show toast</Button><Button variant="outline" onClick={() => toast.promise(Promise.resolve('ready'), { loading: 'Checking regions…', success: value => `Release ${value}`, error: 'Check failed' })}>Promise toast</Button></div>;
+}
+
 // @demo Tooltip Hover hint
 export function TooltipDemo() {
   const { TooltipProvider, Tooltip, TooltipTrigger, TooltipContent, IconButton } = window.EfolusiDesignSystem_4ffc3d;

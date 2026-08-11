@@ -1,4 +1,4 @@
-const { ChatMessage, PromptComposer, Terminal, Steps, FileTile, StatusDot, KeyValueList, CommandDialog, CommandInput, CommandList, CommandEmpty, CommandGroup, CommandItem, DropdownMenu, DropdownMenuTrigger, DropdownMenuContent, DropdownMenuItem, DropdownMenuSeparator, Card, Button, IconButton, Badge, Kbd, Icon, Toaster } = window.EfolusiDesignSystem_4ffc3d;
+const { ChatMessage, PromptComposer, Terminal, Steps, FileTile, StatusDot, KeyValueList, CommandDialog, CommandInput, CommandList, CommandEmpty, CommandGroup, CommandItem, DropdownMenu, DropdownMenuTrigger, DropdownMenuContent, DropdownMenuItem, DropdownMenuSeparator, Card, Button, IconButton, Badge, Kbd, Icon, Toaster, toast } = window.EfolusiDesignSystem_4ffc3d;
 
 function AgentActionMenu({ trigger, items, onSelect }) { return <DropdownMenu><DropdownMenuTrigger asChild>{trigger}</DropdownMenuTrigger><DropdownMenuContent align="end">{items.map((item, index) => item === 'separator' ? <DropdownMenuSeparator key={'separator-' + index} /> : <DropdownMenuItem key={item.id} variant={item.danger ? 'destructive' : 'default'} onSelect={() => onSelect?.(item.id)}>{item.icon ? <Icon name={item.icon} size={15} /> : null}{item.label}</DropdownMenuItem>)}</DropdownMenuContent></DropdownMenu>; }
 
@@ -72,8 +72,7 @@ const CMD_GROUPS = [
 function AgentScreen() {
   const [running, setRunning] = React.useState(true);
   const [cmdk, setCmdk] = React.useState(false);
-  const toast = Toaster.useToast();
-  const notify = (title, description) => toast.notify({ tone: 'success', title, description });
+  const notify = (title, description) => toast.success(title, { description });
   const runCommand = id => {
     setCmdk(false);
     if (id === 'new-task') notify('New task', 'Describe the outcome in the composer below.');

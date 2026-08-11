@@ -16,7 +16,7 @@ const EXPECTED_NAMES = [
   'Dropdown Menu', 'Empty', 'Field', 'Hover Card', 'Input', 'Input Group',
   'Input OTP', 'Item', 'Kbd', 'Label', 'Marker', 'Menubar', 'Message',
   'Message Scroller', 'Native Select', 'Navigation Menu', 'Pagination', 'Popover',
-  'Progress', 'Questionnaire', 'Radio Group', 'Resizable', 'Scroll Area', 'Select',
+  'Progress', 'Radio Group', 'Resizable', 'Scroll Area', 'Select', 'Sonner',
   'Separator', 'Sheet', 'Sidebar', 'Skeleton', 'Slider', 'Spinner', 'Switch',
   'Table', 'Tabs', 'Textarea', 'Toast', 'Toggle', 'Toggle Group', 'Tooltip',
   'Typography',

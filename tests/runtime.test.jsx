@@ -2,21 +2,18 @@ import { describe, it, expect, vi, beforeEach, afterEach } from 'vitest';
 import { render, screen, within, act } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 
-import { Toaster } from '../components/feedback/Toast.jsx';
+import { Toaster, toast } from '../components/feedback/Toast.jsx';
 import { Input } from '../components/forms/Input.jsx';
 import { Checkbox } from '../components/forms/Checkbox.jsx';
 import { Table } from '../components/data/Table.jsx';
 import { Button } from '../components/forms/Button.jsx';
 
-const useToast = Toaster.useToast;
-
 describe('Toaster', () => {
   beforeEach(() => vi.useFakeTimers());
-  afterEach(() => vi.useRealTimers());
+  afterEach(() => { act(() => toast.dismiss()); vi.useRealTimers(); });
 
   function Fire({ options }) {
-    const { notify } = useToast();
-    return <button onClick={() => notify(options)}>fire</button>;
+    return <button onClick={() => (toast[options.tone] || toast)(options.title, options)}>fire</button>;
   }
   const fire = () => act(() => { screen.getByText('fire').click(); });
 
@@ -28,8 +25,8 @@ describe('Toaster', () => {
     expect(screen.queryByText('Saved')).toBeNull();
   });
 
-  it('never auto-dismisses a toast carrying an action (WCAG 2.2.1)', () => {
-    render(<Toaster duration={500}><Fire options={{ title: 'Undo?', actionLabel: 'Undo', onAction() {} }} /></Toaster>);
+  it('supports persistent actionable notifications', () => {
+    render(<Toaster duration={500}><Fire options={{ title: 'Undo?', action: { label: 'Undo', onClick() {} }, duration: 0 }} /></Toaster>);
     fire();
     act(() => { vi.advanceTimersByTime(5000); });
     expect(screen.getByText('Undo?')).toBeTruthy();
@@ -60,10 +57,10 @@ describe('Toaster', () => {
     });
   });
 
-  it('throws when the hook is used outside a Toaster', () => {
-    const quiet = vi.spyOn(console, 'error').mockImplementation(() => {});
-    expect(() => render(<Fire options={{ title: 'x' }} />)).toThrow(/inside a <Toaster>/);
-    quiet.mockRestore();
+  it('allows producers outside the renderer tree', () => {
+    act(() => toast.info('Queued before mount', { duration: 0 }));
+    render(<Toaster />);
+    expect(screen.getByText('Queued before mount')).toBeTruthy();
   });
 });
 

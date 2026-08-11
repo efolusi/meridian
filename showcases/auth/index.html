@@ -8,18 +8,15 @@
 </head><body>
 <div id="root"></div>
 <script type="text/babel">
-const { Toaster } = window.EfolusiDesignSystem_4ffc3d;
+const { Toaster, toast } = window.EfolusiDesignSystem_4ffc3d;
 function App() {
   const [mode, setMode] = React.useState('signin');
-  const { notify } = Toaster.useToast();
   const done = kind => {
     if (kind === 'sso') {
-      notify({ tone: 'info', title: 'Redirecting to your identity provider', description: 'SSO is configured by your workspace admin.' });
+      toast.info('Redirecting to your identity provider', { description: 'SSO is configured by your workspace admin.' });
       return;
     }
-    notify(kind === true
-      ? { tone: 'success', title: 'Account created', description: 'Check your inbox to verify your email.' }
-      : { tone: 'success', title: 'Signed in', description: 'Taking you to Acme Workspace…' });
+    toast.success(kind === true ? 'Account created' : 'Signed in', { description: kind === true ? 'Check your inbox to verify your email.' : 'Taking you to Acme Workspace…' });
     setTimeout(() => { window.location.href = '../console/index.html'; }, 1600);
   };
   return (

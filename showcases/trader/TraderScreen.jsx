@@ -1,4 +1,4 @@
-const { Stat, Sparkline, BarChart, SegmentedControl, Table, Badge, Switch, Slider, Progress, Avatar, Card, Button, StatusDot, Divider, Icon, DropdownMenu, DropdownMenuTrigger, DropdownMenuContent, DropdownMenuItem, DropdownMenuSeparator, IconButton, Toaster } = window.EfolusiDesignSystem_4ffc3d;
+const { Stat, Sparkline, BarChart, SegmentedControl, Table, Badge, Switch, Slider, Progress, Avatar, Card, Button, StatusDot, Divider, Icon, DropdownMenu, DropdownMenuTrigger, DropdownMenuContent, DropdownMenuItem, DropdownMenuSeparator, IconButton, Toaster, toast } = window.EfolusiDesignSystem_4ffc3d;
 
 function PositionActionMenu({ trigger, items, onSelect }) { return <DropdownMenu><DropdownMenuTrigger asChild>{trigger}</DropdownMenuTrigger><DropdownMenuContent align="end">{items.map((item, index) => item === 'separator' ? <DropdownMenuSeparator key={'separator-' + index} /> : <DropdownMenuItem key={item.id} variant={item.danger ? 'destructive' : 'default'} onSelect={() => onSelect?.(item.id)}>{item.icon ? <Icon name={item.icon} size={15} /> : null}{item.label}</DropdownMenuItem>)}</DropdownMenuContent></DropdownMenu>; }
 
@@ -15,8 +15,7 @@ function TraderScreen() {
   const [risk, setRisk] = React.useState(4);
   const [followed, setFollowed] = React.useState([]);
   const [positions, setPositions] = React.useState(POSITIONS);
-  const toast = Toaster.useToast();
-  const notify = (t, tone = 'success') => toast.notify({ tone, title: t, description: 'Change applies to the next trade.' });
+  const notify = (title, tone = 'success') => (toast[tone] || toast)(title, { description: 'Change applies to the next trade.' });
   const follow = n => { setFollowed(f => f.includes(n) ? f.filter(x => x !== n) : [...f, n]); };
   return (
     <div style={{ minHeight: '100vh' }}>

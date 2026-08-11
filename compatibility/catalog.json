@@ -410,7 +410,15 @@
       "registryItems": ["site/registry/progress.json"],
       "tests": ["tests/progress-compatibility.test.jsx"]
     },
-    { "name": "Questionnaire", "status": "unverified" },
+    {
+      "name": "Sonner",
+      "status": "proven",
+      "requiredExports": ["Toaster"],
+      "requiredModuleExports": ["toast"],
+      "sourceFiles": ["components/feedback/Toast.jsx", "components/feedback/Toast.d.ts"],
+      "registryItems": ["site/registry/sonner.json"],
+      "tests": ["tests/sonner-compatibility.test.jsx"]
+    },
     {
       "name": "Radio Group",
       "status": "proven",

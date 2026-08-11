@@ -55,6 +55,7 @@ REGISTRY_NAME_OVERRIDES = {
 # contract uses a different slug.
 REGISTRY_ALIASES = {
     "components/forms/Radio.jsx": ["radio"],
+    "components/feedback/Toast.jsx": ["sonner"],
 }
 
 

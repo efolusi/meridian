@@ -1899,18 +1899,6 @@
       "message": "@deprecated Use `onSelect`. Alias kept for one major; `onSelect` wins when both are passed."
     },
     {
-      "component": "Toast",
-      "prop": "actionLabel",
-      "replacement": "action",
-      "message": "@deprecated pass a node to `action` instead"
-    },
-    {
-      "component": "Toast",
-      "prop": "onAction",
-      "replacement": "action",
-      "message": "@deprecated pass a node to `action` instead"
-    },
-    {
       "component": "ToggleGroup",
       "prop": "onChange",
       "replacement": "onValueChange",

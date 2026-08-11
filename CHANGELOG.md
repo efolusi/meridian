@@ -4,6 +4,16 @@ All notable changes to Meridian are documented here. Format follows [Keep a Chan
 
 > **On the versions below 1.4.0:** Meridian was built in the open but released to nobody. Versions 1.0.0 through 1.3.0 are development milestones recorded as they happened; they were never tagged, published, or installable, so there is no artefact to go back to. They are kept because they are an accurate record of how the system was built, not because you can depend on them. The first tagged, publicly consumable release is 1.4.0.
 
+## 1.20.0 — 2026-08-12
+
+### Added
+- **Stable compositional migration surface.** Modern application primitives now include the complete Sidebar composition, conversation Message and Message Scroller families, and the current imperative Sonner contract alongside the existing accessible component catalog.
+- **Meridian Guard.** The workspace package validates public exports, tokens, icons, deprecated usage, and authored consumer code against the generated Meridian rule pack.
+
+### Changed
+- **Notifications now use `Toaster` plus `toast`.** The provider-bound `Toaster.useToast()` queue was removed from current source and every bundled showcase migrated to the stable imperative lifecycle, including typed status, promise, action, position, timer pause, and dismiss behavior.
+- **Compatibility inventory follows the current upstream surface.** The removed Questionnaire entry was replaced by Sonner; deprecated Toast remains tracked separately for migration audits.
+
 ## 1.19.1 — 2026-08-03
 
 ### Changed
