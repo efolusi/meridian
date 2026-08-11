@@ -61,6 +61,7 @@ const GENERATED_PATHS = [
 
 const GATES = [
   ['Independent repository naming', 'node', ['scripts/check_independent_brand.mjs']],
+  ['Workspace structure', 'node', ['scripts/check_workspaces.mjs']],
   ['Contrast (WCAG AA token pairs)', 'python3', ['scripts/check_contrast.py']],
   ['Runtime copies', 'python3', ['scripts/check_runtime_copies.py']],
   ['Relative paths resolve', 'python3', ['scripts/check_paths.py']],

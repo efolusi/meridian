@@ -14,6 +14,8 @@ meridian/
 ├── showcases/<app>/                     # example apps: see the system in use
 ├── starters/<journey>/                  # copyable journeys: start a surface here
 ├── site/                                # the docs website: consumes all of the above
+├── packages/{tokens,icons}/              # standalone source workspaces
+├── mcp/                                 # independently versioned server workspace
 ├── guidelines/ · skills/ · scripts/
 └── governance docs (README, STYLEGUIDE, CONTRIBUTING, …)
 ```
@@ -23,6 +25,25 @@ Three principles produced this layout:
 1. **The root is a contract.** `styles.css`, `tokens/`, and `assets/` are what consumers link when they vendor the folder, and the compiled artifacts (`_ds_bundle.js`, `_ds_manifest.json`, `registry.json`, `_adherence.oxlintrc.json`, `thumbnail.html`) sit beside them. `registry.json` is the source catalog used by compatible registry clients; `site/registry.json` is its byte-identical hosted discovery copy. Consumers, the CDN, and `Icon`'s asset resolution all depend on these paths. They never move.
 2. **Shallow beats deep.** Pages resolve the root by counted `../` segments, so every authored page lives at most two directories down. Depth is a bug factory here; keep it flat.
 3. **The site consumes, it does not own.** Component, block, and example-app source live in their own directories; `site/` renders them. An earlier layout nested source inside the docs app and buried half the repo six levels deep; it was reverted.
+
+## Workspace boundaries
+
+The private root package orchestrates builds and verification. npm workspaces
+cover `packages/*` and `mcp/`: tokens and icons follow the Meridian release
+version, while the server workspace versions independently. Their source
+workspace manifests are private so an accidental root-level publish cannot ship
+an incomplete package; release builds generate the public package manifests in
+`dist/` and `packages/*/dist/`.
+
+The component source intentionally remains at the repository root. That shallow
+layout is both a public vendoring contract and the static-site source tree, so
+moving it under a package folder would break existing registry files, CDN URLs,
+and copied pages. The root is therefore the source workspace for the umbrella
+package even though its build output is generated into `dist/`.
+
+`skills/SKILL.md` is Meridian's built-in design-system skill. External design
+skills, their lock files, and their runtime metadata do not belong in this
+monorepo.
 
 ## The pipeline
 
@@ -71,7 +92,7 @@ Two gates protect this. `scripts/check_bundle_hashes.py` is a fast check of the 
 1. **Bundle lockstep.** Any change to `components/**/*.jsx` or `showcases/**/*.jsx` requires a matching `_ds_bundle.js` recompile (`node scripts/build_bundle.mjs`). Source-only component edits silently ship stale behaviour; CI blocks them by rebuilding and diffing.
 2. **Path depth table.** Root references by location: `blocks/*.html` and `site/*` are one directory down and use `../`; `components/<g>/*.card.html`, `showcases/<p>/*`, and `starters/<j>/*` are two down and use `../../`. When adding a page, copy an existing neighbor and keep its prefix.
 3. **Namespace collisions.** Local helpers must never share a name with a DS export (the runtime resolves against the namespace first). See CLAUDE.md and STYLEGUIDE.md.
-4. **Verification gate.** `site/_smoke.html` must report 121/121 (or the new total) rendered with zero console errors; `scripts/check_contrast.py` and `scripts/check_runtime_copies.py` must pass before any push.
+4. **Verification gate.** `site/_smoke.html` must render every registered demo with zero console errors; `scripts/check_contrast.py` and `scripts/check_runtime_copies.py` must pass before any push.
 
 ## Verifying locally
 
