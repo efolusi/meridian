@@ -203,12 +203,12 @@ export function NumberInputDemo() {
 
 // @demo Radio Exclusive choice
 export function RadioDemo() {
-  const { Radio } = window.EfolusiDesignSystem_4ffc3d;
+  const { RadioGroup, RadioGroupItem, Label } = window.EfolusiDesignSystem_4ffc3d;
   return (
-    <div style={{ display: 'flex', flexDirection: 'column', gap: 12 }}>
-      <Radio name="deploy" defaultChecked label="Deploy on merge" description="Every merge to main ships automatically." />
-      <Radio name="deploy" label="Manual approval" description="A reviewer promotes each release." />
-    </div>
+    <RadioGroup defaultValue="merge" name="deploy">
+      <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}><RadioGroupItem id="deploy-merge" value="merge" /><Label htmlFor="deploy-merge">Deploy on merge</Label></div>
+      <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}><RadioGroupItem id="deploy-review" value="review" /><Label htmlFor="deploy-review">Manual approval</Label></div>
+    </RadioGroup>
   );
 }
 
@@ -244,7 +244,7 @@ export function SliderDemo() {
   const [v, setV] = React.useState(40);
   return (
     <div style={{ width: 320 }}>
-      <Slider label="Memory limit" min={0} max={128} step={8} value={v} onChange={setV} showValue format={(n) => n + ' GB'} />
+      <Slider label="Memory limit" min={0} max={128} step={8} value={[v]} onValueChange={([next]) => setV(next)} showValue format={(n) => n + ' GB'} />
     </div>
   );
 }
@@ -252,9 +252,10 @@ export function SliderDemo() {
 // @demo Switch Settings toggle
 export function SwitchDemo() {
   const { Switch } = window.EfolusiDesignSystem_4ffc3d;
+  const [retry, setRetry] = React.useState(true);
   return (
     <div style={{ display: 'flex', flexDirection: 'column', gap: 12 }}>
-      <Switch defaultChecked label="Auto-retry failed runs" />
+      <Switch checked={retry} onCheckedChange={setRetry} label="Auto-retry failed runs" />
       <Switch size="sm" label="Verbose logging" />
     </div>
   );

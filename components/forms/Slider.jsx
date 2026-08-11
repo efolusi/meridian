@@ -17,15 +17,18 @@ const CSS = `
 .ef-slider__input::-moz-range-progress{height:2px;border-radius:2px;background:var(--accent)}
 .ef-slider__input::-moz-range-thumb{width:12px;height:12px;border-radius:var(--radius-full);background:var(--surface-card);border:1.5px solid var(--accent)}
 `;
-export function Slider({ label, showValue, format, min = 0, max = 100, step = 1, value, defaultValue, onChange, disabled, style, className, ...rest }) {
+export const Slider = React.forwardRef(function Slider({ label, showValue, format, min = 0, max = 100, step = 1, value: valueProp, defaultValue, onValueChange, onValueCommit, onChange, disabled, style, className, ...rest }, ref) {
   injectEfCss('ef-css-slider', CSS);
   // Picks up id / aria wiring when nested in a FormField; standalone this is a no-op.
   const field = useFieldProps({ id: rest.id, 'aria-describedby': rest['aria-describedby'] });
-  const [inner, setInner] = React.useState(defaultValue != null ? defaultValue : (min + max) / 2);
-  const v = value != null ? value : inner;
+  const arrays = Array.isArray(valueProp) || Array.isArray(defaultValue);
+  const initial = defaultValue != null ? defaultValue : (arrays ? [(min + max) / 2] : (min + max) / 2);
+  const [inner, setInner] = React.useState(initial);
+  const current = valueProp != null ? valueProp : inner;
+  const v = Array.isArray(current) ? current[0] : current;
   const pct = ((v - min) / (max - min)) * 100;
-  const handle = e => { const n = +e.target.value; if (value == null) setInner(n); if (onChange) onChange(n, e); };
-  const input = <input type="range" className="ef-slider__input" style={{ '--ef-fill': pct + '%' }} min={min} max={max} step={step} value={v} onChange={handle} disabled={disabled} {...rest} {...field.controlProps} />;
+  const handle = e => { const n = +e.target.value; const next = arrays ? [n] : n; if (valueProp == null) setInner(next); if (onValueChange) onValueChange(arrays ? [n] : [n]); if (onChange) onChange(n, e); };
+  const input = <input ref={ref} type="range" data-slot="slider" className="ef-slider__input" style={{ '--ef-fill': pct + '%' }} min={min} max={max} step={step} value={v} onChange={handle} onPointerUp={() => onValueCommit && onValueCommit(Array.isArray(current) ? current : [current])} disabled={disabled} {...rest} {...field.controlProps} />;
   if (!label && !showValue) return <span className={`ef-slider${className ? ' ' + className : ''}`} style={style}>{input}</span>;
   return (
     <label className={`ef-slider${className ? ' ' + className : ''}`} style={style}>
@@ -33,4 +36,4 @@ export function Slider({ label, showValue, format, min = 0, max = 100, step = 1,
       {input}
     </label>
   );
-}
+});

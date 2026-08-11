@@ -2,6 +2,7 @@ import React from 'react';
 import { injectEfCss } from './Button.jsx';
 import { useFieldProps } from './FormField.jsx';
 const CSS = `
+.ef-radio-group{display:grid;gap:var(--space-3)}
 .ef-radio{display:inline-flex;align-items:flex-start;gap:10px;cursor:pointer;user-select:none}
 .ef-radio--disabled{opacity:.45;cursor:not-allowed}
 .ef-radio__input{position:absolute;opacity:0;width:0;height:0}
@@ -14,15 +15,27 @@ const CSS = `
 .ef-radio__label{font-size:var(--text-md);color:var(--text-primary);line-height:1.4}
 .ef-radio__desc{display:block;font-size:var(--text-sm);color:var(--text-muted)}
 `;
-export function Radio({ label, description, disabled, style, className, ...rest }) {
+const RadioGroupContext = React.createContext(null);
+export const RadioGroup = React.forwardRef(function RadioGroup({ value: valueProp, defaultValue, onValueChange, name, required, disabled, orientation = 'vertical', className, style, children, ...rest }, ref) {
+  injectEfCss('ef-css-radio', CSS);
+  const [inner, setInner] = React.useState(defaultValue);
+  const value = valueProp !== undefined ? valueProp : inner;
+  const change = next => { if (valueProp === undefined) setInner(next); if (onValueChange) onValueChange(next); };
+  return <RadioGroupContext.Provider value={{ value, change, name, required, disabled }}><div {...rest} ref={ref} role="radiogroup" aria-orientation={orientation} data-slot="radio-group" data-orientation={orientation} className={`ef-radio-group${className ? ' ' + className : ''}`} style={style}>{children}</div></RadioGroupContext.Provider>;
+});
+export const RadioGroupItem = React.forwardRef(function RadioGroupItem({ value, disabled, onChange, className, style, ...rest }, ref) {
+  const group = React.useContext(RadioGroupContext);
+  return <Radio ref={ref} value={value} name={group && group.name} required={group && group.required} disabled={disabled || (group && group.disabled)} checked={group ? group.value === value : rest.checked} onChange={e => { if (group) group.change(value); if (onChange) onChange(e); }} className={className} style={style} {...rest} />;
+});
+export const Radio = React.forwardRef(function Radio({ label, description, disabled, style, className, ...rest }, ref) {
   injectEfCss('ef-css-radio', CSS);
   // Picks up id / aria wiring when nested in a FormField; standalone this is a no-op.
   const field = useFieldProps({ id: rest.id, 'aria-describedby': rest['aria-describedby'] });
   return (
     <label className={`ef-radio${disabled ? ' ef-radio--disabled' : ''}${className ? ' ' + className : ''}`} style={style}>
-      <input type="radio" className="ef-radio__input" disabled={disabled} {...rest} {...field.controlProps} />
-      <span className="ef-radio__dot"></span>
+      <input ref={ref} type="radio" data-slot="radio-group-item" data-state={rest.checked ? 'checked' : 'unchecked'} className="ef-radio__input" disabled={disabled} {...rest} {...field.controlProps} />
+      <span className="ef-radio__dot" aria-hidden="true"></span>
       {label ? <span className="ef-radio__label">{label}{description ? <span className="ef-radio__desc">{description}</span> : null}</span> : null}
     </label>
   );
-}
+});

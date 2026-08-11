@@ -278,9 +278,27 @@
       "registryItems": ["site/registry/spinner.json"],
       "tests": ["tests/simple-primitives-compatibility.test.jsx"]
     },
-    { "name": "Switch", "status": "unverified" },
-    { "name": "Table", "status": "unverified" },
-    { "name": "Tabs", "status": "unverified" },
+    {
+      "name": "Switch", "status": "proven",
+      "requiredExports": ["Switch"],
+      "sourceFiles": ["components/forms/Switch.jsx", "components/forms/Switch.d.ts"],
+      "registryItems": ["site/registry/switch.json"],
+      "tests": ["tests/five-primitives-compatibility.test.jsx"]
+    },
+    {
+      "name": "Table", "status": "proven",
+      "requiredExports": ["Table", "TableHeader", "TableBody", "TableFooter", "TableRow", "TableHead", "TableCell", "TableCaption"],
+      "sourceFiles": ["components/data/Table.jsx", "components/data/Table.d.ts"],
+      "registryItems": ["site/registry/table.json"],
+      "tests": ["tests/five-primitives-compatibility.test.jsx"]
+    },
+    {
+      "name": "Tabs", "status": "proven",
+      "requiredExports": ["Tabs", "TabsList", "TabsTrigger", "TabsContent"],
+      "sourceFiles": ["components/navigation/Tabs.jsx", "components/navigation/Tabs.d.ts"],
+      "registryItems": ["site/registry/tabs.json"],
+      "tests": ["tests/five-primitives-compatibility.test.jsx"]
+    },
     {
       "name": "Textarea",
       "status": "proven",

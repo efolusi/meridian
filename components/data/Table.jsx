@@ -10,6 +10,8 @@ const CSS = `
 .ef-table--sticky thead th{position:sticky;top:0;z-index:1;background:var(--surface-card)}
 .ef-table td{padding:var(--table-pad-y) var(--table-pad-x);font-size:var(--text-md);border-bottom:1px solid var(--border-default);vertical-align:middle}
 .ef-table tr:last-child td{border-bottom:none}
+.ef-table tfoot{border-top:1px solid var(--border-default);font-weight:var(--weight-medium)}
+.ef-table caption{caption-side:bottom;padding-block:var(--space-3);color:var(--text-muted);font-size:var(--text-sm);text-align:start}
 .ef-table--dense td{padding:8px var(--table-pad-x);font-size:var(--text-sm)}
 .ef-table__row--click{cursor:pointer;transition:background var(--dur-fast) var(--ease-out)}
 .ef-table__row--click:hover{background:var(--surface-subtle)}
@@ -35,13 +37,18 @@ const compare = (a, b) => {
 };
 
 export const Table = React.forwardRef(function Table({
-  columns, rows, rowKey, onRowClick, dense,
+  columns, rows, rowKey, onRowClick, dense, children,
   sort: sortProp, defaultSort, onSortChange,
   selectable, selected: selectedProp, defaultSelected, onSelectionChange,
   stickyHeader, maxHeight, loading, loadingRows = 3, empty = 'Nothing to show yet.',
   style, className, ...rest
 }, ref) {
   injectEfCss('ef-css-table', CSS);
+  if (!columns || !rows) {
+    return <div data-slot="table-container" className="ef-table-wrap">
+      <table ref={ref} {...rest} data-slot="table" className={`ef-table${dense ? ' ef-table--dense' : ''}${className ? ' ' + className : ''}`} style={style}>{children}</table>
+    </div>;
+  }
   const key = (row, i) => rowKey ? (typeof rowKey === 'function' ? rowKey(row) : row[rowKey]) : i;
 
   const [innerSort, setInnerSort] = React.useState(defaultSort || null);
@@ -146,3 +153,20 @@ export const Table = React.forwardRef(function Table({
     </div>
   );
 });
+
+const tablePart = (tag, slot, displayName) => {
+  const Part = React.forwardRef(function TablePart({ className, ...props }, ref) {
+    injectEfCss('ef-css-table', CSS);
+    return React.createElement(tag, { ref, 'data-slot': slot, className, ...props });
+  });
+  Part.displayName = displayName;
+  return Part;
+};
+
+export const TableHeader = tablePart('thead', 'table-header', 'TableHeader');
+export const TableBody = tablePart('tbody', 'table-body', 'TableBody');
+export const TableFooter = tablePart('tfoot', 'table-footer', 'TableFooter');
+export const TableRow = tablePart('tr', 'table-row', 'TableRow');
+export const TableHead = tablePart('th', 'table-head', 'TableHead');
+export const TableCell = tablePart('td', 'table-cell', 'TableCell');
+export const TableCaption = tablePart('caption', 'table-caption', 'TableCaption');

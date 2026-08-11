@@ -8,11 +8,13 @@ export interface SliderProps {
   /** @default 100 */ max?: number;
   /** @default 1 */ step?: number;
   /** Controlled value */
-  value?: number;
-  defaultValue?: number;
+  value?: number | number[];
+  defaultValue?: number | number[];
   onChange?: (value: number, e: React.ChangeEvent) => void;
+  onValueChange?: (value: number[]) => void;
+  onValueCommit?: (value: number[]) => void;
   disabled?: boolean;
   style?: React.CSSProperties;
   className?: string;
 }
-export declare function Slider(props: SliderProps): React.JSX.Element;
+export declare const Slider: React.ForwardRefExoticComponent<SliderProps & Omit<React.InputHTMLAttributes<HTMLInputElement>, keyof SliderProps> & React.RefAttributes<HTMLInputElement>>;

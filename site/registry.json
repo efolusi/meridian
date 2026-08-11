@@ -1347,7 +1347,7 @@
     {
       "name": "table",
       "type": "registry:ui",
-      "title": "Table",
+      "title": "Table + TableHeader + TableBody + TableFooter + TableRow + TableHead + TableCell + TableCaption",
       "description": "Data table: uppercase micro headers, hairline rows, optional row click. Borderless \u2014 nest in `<Card padding={0}>` for a framed table. Sorting, selection, sticky header, and empty/loading states are built in, so the common admin table does not have to be hand-rolled around it.",
       "dependencies": [
         "react"
@@ -2964,9 +2964,40 @@
       ]
     },
     {
+      "name": "radio-group",
+      "type": "registry:ui",
+      "title": "RadioGroup + RadioGroupItem + Radio",
+      "description": "Radio for 2\u20135 mutually exclusive options; group with a shared `name`.",
+      "dependencies": [
+        "react"
+      ],
+      "registryDependencies": [
+        "https://meridian.efolusi.com/site/registry/meridian-base.json",
+        "https://meridian.efolusi.com/site/registry/button.json",
+        "https://meridian.efolusi.com/site/registry/formfield.json"
+      ],
+      "files": [
+        {
+          "path": "components/forms/Radio.jsx",
+          "type": "registry:ui"
+        },
+        {
+          "path": "components/forms/Radio.d.ts",
+          "type": "registry:component"
+        },
+        {
+          "path": "components/forms/Radio.prompt.md",
+          "type": "registry:component"
+        }
+      ],
+      "categories": [
+        "forms"
+      ]
+    },
+    {
       "name": "radio",
       "type": "registry:ui",
-      "title": "Radio",
+      "title": "RadioGroup + RadioGroupItem + Radio (legacy registry alias)",
       "description": "Radio for 2\u20135 mutually exclusive options; group with a shared `name`.",
       "dependencies": [
         "react"
@@ -3401,7 +3432,7 @@
     {
       "name": "tabs",
       "type": "registry:ui",
-      "title": "Tabs",
+      "title": "Tabs + TabsList + TabsTrigger + TabsContent",
       "description": "Underline tabs with a spring-sliding caramel ink bar. Controlled: pass `value` + `onChange`.",
       "dependencies": [
         "react"

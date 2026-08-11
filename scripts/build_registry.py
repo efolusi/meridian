@@ -44,6 +44,13 @@ REGISTRY_NAME_OVERRIDES = {
     "components/ai/Bubble.jsx": "bubble",
     "components/display/Card.jsx": "card",
     "components/display/Direction.jsx": "direction",
+    "components/forms/Radio.jsx": "radio-group",
+}
+
+# Older Meridian item URLs remain installable when the canonical migration
+# contract uses a different slug.
+REGISTRY_ALIASES = {
+    "components/forms/Radio.jsx": ["radio"],
 }
 
 
@@ -117,7 +124,7 @@ def component_items(embed):
         reg_deps = [f"{HOST}/{BASE_ITEM}.json"] + [
             f"{HOST}/{d}.json" for d in deps if d != self_name
         ]
-        items.append({
+        item = {
             "name": self_name,
             "type": "registry:ui",
             "title": " + ".join(names) if len(names) > 1 else names[0],
@@ -126,7 +133,10 @@ def component_items(embed):
             "registryDependencies": reg_deps,
             "files": files,
             "categories": [group],
-        })
+        }
+        items.append(item)
+        for alias in REGISTRY_ALIASES.get(source, []):
+            items.append({**item, "name": alias, "title": f"{item['title']} (legacy registry alias)"})
     return items
 
 def block_items(embed):

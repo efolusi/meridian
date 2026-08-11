@@ -17,9 +17,9 @@ export interface TableSort {
   key: string;
   direction: 'asc' | 'desc';
 }
-export interface TableProps extends React.HTMLAttributes<HTMLDivElement> {
-  columns: TableColumn[];
-  rows: any[];
+export interface TableProps extends React.TableHTMLAttributes<HTMLTableElement> {
+  columns?: TableColumn[];
+  rows?: any[];
   /** Field name or fn for React keys @default index */
   rowKey?: string | ((row: any) => string);
   onRowClick?: (row: any) => void;
@@ -49,5 +49,12 @@ export interface TableProps extends React.HTMLAttributes<HTMLDivElement> {
 }
 /** Ref lands on the scrolling wrapper element. */
 export declare const Table: React.ForwardRefExoticComponent<
-  TableProps & React.RefAttributes<HTMLDivElement>
+  TableProps & React.RefAttributes<HTMLTableElement>
 >;
+export declare const TableHeader: React.ForwardRefExoticComponent<React.HTMLAttributes<HTMLTableSectionElement> & React.RefAttributes<HTMLTableSectionElement>>;
+export declare const TableBody: typeof TableHeader;
+export declare const TableFooter: typeof TableHeader;
+export declare const TableRow: React.ForwardRefExoticComponent<React.HTMLAttributes<HTMLTableRowElement> & React.RefAttributes<HTMLTableRowElement>>;
+export declare const TableHead: React.ForwardRefExoticComponent<React.ThHTMLAttributes<HTMLTableCellElement> & React.RefAttributes<HTMLTableCellElement>>;
+export declare const TableCell: React.ForwardRefExoticComponent<React.TdHTMLAttributes<HTMLTableCellElement> & React.RefAttributes<HTMLTableCellElement>>;
+export declare const TableCaption: React.ForwardRefExoticComponent<React.HTMLAttributes<HTMLTableCaptionElement> & React.RefAttributes<HTMLTableCaptionElement>>;

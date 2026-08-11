@@ -1,7 +1,7 @@
 {
-  "name": "radio",
+  "name": "radio-group",
   "type": "registry:ui",
-  "title": "RadioGroup + RadioGroupItem + Radio (legacy registry alias)",
+  "title": "RadioGroup + RadioGroupItem + Radio",
   "description": "Radio for 2\u20135 mutually exclusive options; group with a shared `name`.",
   "dependencies": [
     "react"

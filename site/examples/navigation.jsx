@@ -111,16 +111,15 @@ export function StepsHorizontal() {
 
 // @demo Tabs With counts
 export function TabsDemo() {
-  const { Tabs } = window.EfolusiDesignSystem_4ffc3d;
-  const [v, setV] = React.useState('active');
+  const { Tabs, TabsList, TabsTrigger, TabsContent } = window.EfolusiDesignSystem_4ffc3d;
   return (
     <div style={{ width: '100%', maxWidth: 480 }}>
-      <Tabs value={v} onChange={setV} items={[
-        { id: 'active', label: 'Active', count: 12 },
-        { id: 'scheduled', label: 'Scheduled', count: 4 },
-        { id: 'archived', label: 'Archived' },
-      ]} />
-      <p style={{ fontSize: 13.5, color: 'var(--text-muted)', margin: '14px 2px 0' }}>Showing the {v} runs.</p>
+      <Tabs defaultValue="active">
+        <TabsList variant="line"><TabsTrigger value="active">Active · 12</TabsTrigger><TabsTrigger value="scheduled">Scheduled · 4</TabsTrigger><TabsTrigger value="archived">Archived</TabsTrigger></TabsList>
+        <TabsContent value="active">Showing production runs that are active now.</TabsContent>
+        <TabsContent value="scheduled">Showing runs waiting for their next window.</TabsContent>
+        <TabsContent value="archived">Showing retained run history.</TabsContent>
+      </Tabs>
     </div>
   );
 }

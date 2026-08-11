@@ -117,19 +117,18 @@ export function StatusDotDemo() {
 
 // @demo Table Sortable-looking data grid
 export function TableDemo() {
-  const { Table, Badge } = window.EfolusiDesignSystem_4ffc3d;
+  const { Table, TableHeader, TableBody, TableRow, TableHead, TableCell, TableCaption, Badge } = window.EfolusiDesignSystem_4ffc3d;
   return (
     <div style={{ width: '100%' }}>
-      <Table rowKey="id" onRowClick={() => {}} columns={[
-        { key: 'name', label: 'Agent' },
-        { key: 'runs', label: 'Runs', numeric: true, align: 'right' },
-        { key: 'p95', label: 'P95', numeric: true, align: 'right' },
-        { key: 'status', label: 'Status', render: (v) => <Badge tone={v === 'Live' ? 'success' : 'neutral'} dot={v === 'Live'}>{v}</Badge> },
-      ]} rows={[
-        { id: 'a', name: 'Inbox triager', runs: 412, p95: '180 ms', status: 'Live' },
-        { id: 'b', name: 'Flight rebooking', runs: 128, p95: '2.4 s', status: 'Live' },
-        { id: 'c', name: 'Refund handler', runs: 36, p95: '640 ms', status: 'Paused' },
-      ]} />
+      <Table>
+        <TableCaption>Agent runs from the current release window.</TableCaption>
+        <TableHeader><TableRow><TableHead>Agent</TableHead><TableHead>Runs</TableHead><TableHead>P95</TableHead><TableHead>Status</TableHead></TableRow></TableHeader>
+        <TableBody>
+          <TableRow><TableCell>Inbox triager</TableCell><TableCell>412</TableCell><TableCell>180 ms</TableCell><TableCell><Badge tone="success" dot>Live</Badge></TableCell></TableRow>
+          <TableRow><TableCell>Flight rebooking</TableCell><TableCell>128</TableCell><TableCell>2.4 s</TableCell><TableCell><Badge tone="success" dot>Live</Badge></TableCell></TableRow>
+          <TableRow><TableCell>Refund handler</TableCell><TableCell>36</TableCell><TableCell>640 ms</TableCell><TableCell><Badge tone="neutral">Paused</Badge></TableCell></TableRow>
+        </TableBody>
+      </Table>
     </div>
   );
 }

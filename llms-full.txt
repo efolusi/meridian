@@ -1533,7 +1533,7 @@ export declare function StatusDot(props: StatusDotProps): React.JSX.Element;
 
 #### Table
 
-Group: data · Source: /components/data/Table.jsx · Exports: Table
+Group: data · Source: /components/data/Table.jsx · Exports: Table, TableHeader, TableBody, TableFooter, TableRow, TableHead, TableCell, TableCaption
 
 Data table: uppercase micro headers, hairline rows, optional row click. Borderless — nest in `<Card padding={0}>` for a framed table. Sorting, selection, sticky header, and empty/loading states are built in, so the common admin table does not have to be hand-rolled around it.
 
@@ -1583,9 +1583,9 @@ export interface TableSort {
   key: string;
   direction: 'asc' | 'desc';
 }
-export interface TableProps extends React.HTMLAttributes<HTMLDivElement> {
-  columns: TableColumn[];
-  rows: any[];
+export interface TableProps extends React.TableHTMLAttributes<HTMLTableElement> {
+  columns?: TableColumn[];
+  rows?: any[];
   /** Field name or fn for React keys @default index */
   rowKey?: string | ((row: any) => string);
   onRowClick?: (row: any) => void;
@@ -1615,8 +1615,15 @@ export interface TableProps extends React.HTMLAttributes<HTMLDivElement> {
 }
 /** Ref lands on the scrolling wrapper element. */
 export declare const Table: React.ForwardRefExoticComponent<
-  TableProps & React.RefAttributes<HTMLDivElement>
+  TableProps & React.RefAttributes<HTMLTableElement>
 >;
+export declare const TableHeader: React.ForwardRefExoticComponent<React.HTMLAttributes<HTMLTableSectionElement> & React.RefAttributes<HTMLTableSectionElement>>;
+export declare const TableBody: typeof TableHeader;
+export declare const TableFooter: typeof TableHeader;
+export declare const TableRow: React.ForwardRefExoticComponent<React.HTMLAttributes<HTMLTableRowElement> & React.RefAttributes<HTMLTableRowElement>>;
+export declare const TableHead: React.ForwardRefExoticComponent<React.ThHTMLAttributes<HTMLTableCellElement> & React.RefAttributes<HTMLTableCellElement>>;
+export declare const TableCell: React.ForwardRefExoticComponent<React.TdHTMLAttributes<HTMLTableCellElement> & React.RefAttributes<HTMLTableCellElement>>;
+export declare const TableCaption: React.ForwardRefExoticComponent<React.HTMLAttributes<HTMLTableCaptionElement> & React.RefAttributes<HTMLTableCaptionElement>>;
 ```
 
 ### dates
@@ -3594,7 +3601,7 @@ export declare function NumberInput(props: NumberInputProps): React.JSX.Element;
 
 #### Radio
 
-Group: forms · Source: /components/forms/Radio.jsx · Exports: Radio
+Group: forms · Source: /components/forms/Radio.jsx · Exports: RadioGroup, RadioGroupItem, Radio
 
 Radio for 2–5 mutually exclusive options; group with a shared `name`.
 
@@ -3609,7 +3616,18 @@ export interface RadioProps extends React.InputHTMLAttributes<HTMLInputElement> 
   /** Muted second line under the label */
   description?: string;
 }
-export declare function Radio(props: RadioProps): React.JSX.Element;
+export declare const Radio: React.ForwardRefExoticComponent<RadioProps & React.RefAttributes<HTMLInputElement>>;
+export interface RadioGroupProps extends React.HTMLAttributes<HTMLDivElement> {
+  value?: string;
+  defaultValue?: string;
+  onValueChange?: (value: string) => void;
+  name?: string;
+  required?: boolean;
+  disabled?: boolean;
+  orientation?: 'horizontal' | 'vertical';
+}
+export declare const RadioGroup: React.ForwardRefExoticComponent<RadioGroupProps & React.RefAttributes<HTMLDivElement>>;
+export declare const RadioGroupItem: React.ForwardRefExoticComponent<Omit<RadioProps, 'type'> & { value: string } & React.RefAttributes<HTMLInputElement>>;
 ```
 
 #### Select
@@ -3662,14 +3680,16 @@ export interface SliderProps {
   /** @default 100 */ max?: number;
   /** @default 1 */ step?: number;
   /** Controlled value */
-  value?: number;
-  defaultValue?: number;
+  value?: number | number[];
+  defaultValue?: number | number[];
   onChange?: (value: number, e: React.ChangeEvent) => void;
+  onValueChange?: (value: number[]) => void;
+  onValueCommit?: (value: number[]) => void;
   disabled?: boolean;
   style?: React.CSSProperties;
   className?: string;
 }
-export declare function Slider(props: SliderProps): React.JSX.Element;
+export declare const Slider: React.ForwardRefExoticComponent<SliderProps & Omit<React.InputHTMLAttributes<HTMLInputElement>, keyof SliderProps> & React.RefAttributes<HTMLInputElement>>;
 ```
 
 #### Switch
@@ -3684,12 +3704,18 @@ On/off toggle with springy thumb — for settings that apply immediately (otherw
 ```
 
 ```ts
-export interface SwitchProps extends Omit<React.InputHTMLAttributes<HTMLInputElement>, 'size'> {
+export interface SwitchProps extends Omit<React.ButtonHTMLAttributes<HTMLButtonElement>, 'size' | 'value' | 'defaultValue' | 'onChange'> {
   label?: React.ReactNode;
   /** @default 'md' */
   size?: 'sm' | 'md';
+  onCheckedChange?: (checked: boolean) => void;
+  checked?: boolean;
+  defaultChecked?: boolean;
+  name?: string;
+  value?: string;
+  required?: boolean;
 }
-export declare function Switch(props: SwitchProps): React.JSX.Element;
+export declare const Switch: React.ForwardRefExoticComponent<SwitchProps & React.RefAttributes<HTMLButtonElement>>;
 ```
 
 #### Textarea
@@ -4017,7 +4043,7 @@ export declare function Steps(props: StepsProps): React.JSX.Element;
 
 #### Tabs
 
-Group: navigation · Source: /components/navigation/Tabs.jsx · Exports: Tabs
+Group: navigation · Source: /components/navigation/Tabs.jsx · Exports: Tabs, TabsList, TabsTrigger, TabsContent
 
 Underline tabs with a spring-sliding caramel ink bar. Controlled: pass `value` + `onChange`.
 
@@ -4037,15 +4063,19 @@ export interface TabItem {
   /** Count pill */
   count?: number;
 }
-export interface TabsProps {
-  items: TabItem[];
+export interface TabsProps extends Omit<React.HTMLAttributes<HTMLDivElement>, 'onChange'> {
+  items?: TabItem[];
   /** Active item id (controlled) */
-  value: string;
+  value?: string;
+  defaultValue?: string;
+  onValueChange?: (id: string) => void;
   onChange?: (id: string) => void;
-  style?: React.CSSProperties;
-  className?: string;
+  orientation?: 'horizontal' | 'vertical';
 }
 export declare const Tabs: React.ForwardRefExoticComponent<TabsProps & React.RefAttributes<HTMLDivElement>>;
+export declare const TabsList: React.ForwardRefExoticComponent<React.HTMLAttributes<HTMLDivElement> & { variant?: 'default' | 'line' } & React.RefAttributes<HTMLDivElement>>;
+export declare const TabsTrigger: React.ForwardRefExoticComponent<React.ButtonHTMLAttributes<HTMLButtonElement> & { value: string } & React.RefAttributes<HTMLButtonElement>>;
+export declare const TabsContent: React.ForwardRefExoticComponent<React.HTMLAttributes<HTMLDivElement> & { value: string; forceMount?: boolean } & React.RefAttributes<HTMLDivElement>>;
 ```
 
 #### TopNav

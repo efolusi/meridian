@@ -185,6 +185,23 @@ similarity.
   installation, demos, and tests. Meridian's label/prefix/suffix shorthand
   remains an additive adapter.
 
+- `Table` and its header, body, footer, row, head, cell, and caption parts
+  provide semantic table composition, scroll containment, native props, refs,
+  types, registry installation, demos, and tests. Meridian's sortable,
+  selectable data-array adapter remains available for existing products.
+
+- `Tabs`, `TabsList`, `TabsTrigger`, and `TabsContent` support controlled and
+  uncontrolled state, horizontal and vertical orientation, line styling,
+  disabled triggers, direction-aware keyboard navigation, native props, refs,
+  types, registry installation, demos, and tests. Meridian's item-array adapter
+  remains available for existing products.
+
+- `Switch` supports controlled and uncontrolled checked state, native form
+  participation, keyboard and pointer interaction, state attributes, refs,
+  types, registry installation, demos, and tests. Meridian's integrated label
+  and size helpers remain additive extensions.
+
+
 ## Release gate
 
 Before claiming complete compatibility:
