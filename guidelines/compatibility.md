@@ -47,6 +47,13 @@ similarity.
 
 ## Proven adapters
 
+- `Accordion`, `AccordionItem`, `AccordionTrigger`, and `AccordionContent`
+  support single and multiple disclosure state, controlled and uncontrolled
+  values, collapsible and disabled behavior, vertical and direction-aware
+  horizontal keyboard navigation with configurable focus looping, polymorphic composition, force-mounted
+  content, accessible trigger/content relationships, ref forwarding, state
+  attributes, types, registry installation, demos, and tests. Meridian's
+  data-array shorthand remains available for existing surfaces.
 - `Alert`, `AlertTitle`, and `AlertDescription` support composable alert
   structure, default and destructive variants, alert semantics, native
   attributes, consumer classes and styles, ref forwarding, types, registry

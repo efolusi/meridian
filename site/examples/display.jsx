@@ -2,14 +2,23 @@
 
 // @demo Accordion Disclosure list
 export function AccordionDemo() {
-  const { Accordion } = window.EfolusiDesignSystem_4ffc3d;
+  const { Accordion, AccordionItem, AccordionTrigger, AccordionContent } = window.EfolusiDesignSystem_4ffc3d;
   return (
     <div style={{ width: '100%', maxWidth: 520 }}>
-      <Accordion items={[
-        { id: 'limits', title: 'What are the run limits?', content: 'Free workspaces get 100 agent runs per month. Paid plans are metered per run.' },
-        { id: 'data', title: 'Where does my data live?', content: 'In your region. Artifacts are encrypted at rest and never used for training.' },
-        { id: 'cancel', title: 'Can I cancel anytime?', content: 'Yes — your workspace stays readable forever.' },
-      ]} />
+      <Accordion type="single" defaultValue="limits" collapsible>
+        <AccordionItem value="limits">
+          <AccordionTrigger>What are the run limits?</AccordionTrigger>
+          <AccordionContent>Free workspaces get 100 agent runs per month. Paid plans are metered per run.</AccordionContent>
+        </AccordionItem>
+        <AccordionItem value="data">
+          <AccordionTrigger>Where does my data live?</AccordionTrigger>
+          <AccordionContent>In your region. Artifacts are encrypted at rest and never used for training.</AccordionContent>
+        </AccordionItem>
+        <AccordionItem value="cancel">
+          <AccordionTrigger>Can I cancel anytime?</AccordionTrigger>
+          <AccordionContent>Yes — your workspace stays readable forever.</AccordionContent>
+        </AccordionItem>
+      </Accordion>
     </div>
   );
 }

@@ -95,9 +95,18 @@ describe(`SSR sweep over ${cases.length} public exports`, () => {
   for (const [name, Comp, file] of cases) {
     it(`${name} server-renders with parser-safe styles`, () => {
       const component = React.createElement(Comp, PROPS[name] || {});
-      const element = name === 'CollapsibleTrigger' || name === 'CollapsibleContent'
-        ? React.createElement(modules[file].Collapsible, { defaultOpen: true }, component)
-        : component;
+      let element = component;
+      if (name === 'CollapsibleTrigger' || name === 'CollapsibleContent') {
+        element = React.createElement(modules[file].Collapsible, { defaultOpen: true }, component);
+      } else if (name === 'AccordionItem') {
+        element = React.createElement(modules[file].Accordion, { type: 'single' }, React.cloneElement(component, { value: 'item' }));
+      } else if (name === 'AccordionTrigger' || name === 'AccordionContent') {
+        element = React.createElement(
+          modules[file].Accordion,
+          { type: 'single', defaultValue: 'item' },
+          React.createElement(modules[file].AccordionItem, { value: 'item' }, component),
+        );
+      }
       const html = renderToString(element);
       decimalsOk(html, name);
     });

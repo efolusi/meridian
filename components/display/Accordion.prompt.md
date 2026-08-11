@@ -1,8 +1,14 @@
-Hairline disclosure list (FAQs, docs). Single-open by default; `multiple` allows several.
+# Accordion
+
+Disclosure list composable dengan mode `single` atau `multiple`, state controlled maupun uncontrolled, navigasi keyboard, dan dukungan disabled.
 
 ```jsx
-<Accordion defaultOpen={['billing']} items={[
-  { id: 'billing', title: 'How does billing work?', content: 'Per seat, monthly. Usage is metered daily.' },
-  { id: 'cancel', title: 'Can I cancel anytime?', content: 'Yes — your workspace stays readable forever.' },
-]} />
+<Accordion type="single" collapsible>
+  <AccordionItem value="billing">
+    <AccordionTrigger>How does billing work?</AccordionTrigger>
+    <AccordionContent>Per seat, monthly.</AccordionContent>
+  </AccordionItem>
+</Accordion>
 ```
+
+Shorthand Meridian berbasis prop `items`, `multiple`, dan `defaultOpen` tetap tersedia untuk permukaan lama.

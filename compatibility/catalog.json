@@ -3,7 +3,14 @@
   "snapshot": "2026-08-11",
   "policy": "Only entries with source, API, interaction, registry, and test evidence may be marked proven.",
   "components": [
-    { "name": "Accordion", "status": "unverified" },
+    {
+      "name": "Accordion",
+      "status": "proven",
+      "requiredExports": ["Accordion", "AccordionItem", "AccordionTrigger", "AccordionContent"],
+      "sourceFiles": ["components/display/Accordion.jsx", "components/display/Accordion.d.ts"],
+      "registryItems": ["site/registry/accordion.json"],
+      "tests": ["tests/accordion-compatibility.test.jsx"]
+    },
     {
       "name": "Alert",
       "status": "proven",

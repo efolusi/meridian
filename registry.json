@@ -1482,8 +1482,8 @@
     {
       "name": "accordion",
       "type": "registry:ui",
-      "title": "Accordion",
-      "description": "Hairline disclosure list (FAQs, docs). Single-open by default; `multiple` allows several.",
+      "title": "Accordion + AccordionItem + AccordionTrigger + AccordionContent",
+      "description": "Disclosure list composable dengan mode `single` atau `multiple`, state controlled maupun uncontrolled, navigasi keyboard, dan dukungan disabled.",
       "dependencies": [
         "react"
       ],
