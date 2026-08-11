@@ -1,4 +1,4 @@
-const { Button, Badge, Icon, Card, CardContent, Avatar, AvatarGroup, Input } = window.EfolusiDesignSystem_4ffc3d;
+const { Button, Badge, Icon, Card, CardContent, Avatar, AvatarFallback, AvatarGroup, Input } = window.EfolusiDesignSystem_4ffc3d;
 const wrap = { maxWidth: 1200, margin: '0 auto', padding: '0 32px' };
 
 function SiteHeader() {
@@ -68,7 +68,7 @@ function Hero() {
           </div>
           <div style={{ display: 'flex', alignItems: 'center', gap: 12, marginTop: 28 }}>
             <AvatarGroup>
-              <Avatar name="Ada Obi" size={28} /><Avatar name="Femi Alade" size={28} /><Avatar name="June Park" size={28} /><Avatar name="Sol Reyes" size={28} />
+              <Avatar><AvatarFallback>AO</AvatarFallback></Avatar><Avatar><AvatarFallback>FA</AvatarFallback></Avatar><Avatar><AvatarFallback>JP</AvatarFallback></Avatar><Avatar><AvatarFallback>SR</AvatarFallback></Avatar>
             </AvatarGroup>
             <span style={{ fontSize: 13, color: 'var(--text-muted)' }}>4,200+ teams ship with Efolusi</span>
           </div>
@@ -120,7 +120,7 @@ function BrandBand() {
           “We deleted 40k lines of billing code the week we adopted Efolusi. I'm still a little emotional about it.”
         </div>
         <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 10, marginTop: 24 }}>
-          <Avatar name="June Park" size={36} />
+          <Avatar><AvatarFallback>JP</AvatarFallback></Avatar>
           <span style={{ fontSize: 14, color: 'color-mix(in srgb, var(--cream-50) 75%, transparent)' }}><strong style={{ color: 'var(--cream-50)' }}>June Park</strong> · CTO, Bloom Health</span>
         </div>
       </div>

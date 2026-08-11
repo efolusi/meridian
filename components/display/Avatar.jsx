@@ -13,55 +13,23 @@ const CSS = `
 .ef-avatar-count{position:relative;display:inline-flex;width:32px;height:32px;align-items:center;justify-content:center;flex:none;border:2px solid var(--surface-card);border-radius:var(--radius-full);background:var(--sand-100);color:var(--text-secondary);font-size:11px;font-weight:var(--weight-semibold)}
 `;
 
-const TONES = [
-  ['var(--peach-200)', 'var(--cocoa-700)'],
-  ['var(--brand-100)', 'var(--brand-800)'],
-  ['var(--sand-200)', 'var(--sand-800)'],
-  ['var(--cream-50)', 'var(--caramel-500)'],
-  ['var(--success-100)', 'var(--success-600)'],
-];
-
 function classes(...values) {
   return values.filter(Boolean).join(' ');
 }
 
-function initialsFor(name) {
-  return name.trim().split(/\s+/).map((word) => word[0]).slice(0, 2).join('').toUpperCase();
-}
-
-function toneFor(name) {
-  let hash = 0;
-  for (let index = 0; index < name.length; index += 1) hash = (hash * 31 + name.charCodeAt(index)) >>> 0;
-  return TONES[hash % TONES.length];
-}
-
 export const Avatar = React.forwardRef(function Avatar({
-  name = '', src, size = 'default', children, style, className, ...rest
+  size = 'default', className, ...rest
 }, ref) {
   injectEfCss('ef-css-avatar', CSS);
-  const numericSize = typeof size === 'number' ? size : null;
-  const sizeName = numericSize == null && ['sm', 'lg'].includes(size) ? size : 'default';
-  const [background, color] = toneFor(name);
-  const legacyContent = src
-    ? <><AvatarFallback>{initialsFor(name) || '•'}</AvatarFallback><AvatarImage src={src} alt={name} /></>
-    : <AvatarFallback>{initialsFor(name) || '•'}</AvatarFallback>;
+  const sizeName = ['sm', 'lg'].includes(size) ? size : 'default';
   return (
     <span
       {...rest}
       ref={ref}
       data-slot="avatar"
       data-size={sizeName}
-      title={name || rest.title}
       className={classes('ef-avatar', sizeName !== 'default' && `ef-avatar--${sizeName}`, className)}
-      style={{
-        background,
-        color,
-        ...(numericSize == null ? null : { width: numericSize, height: numericSize, fontSize: Math.round(numericSize * 0.38) }),
-        ...style,
-      }}
-    >
-      {children ?? legacyContent}
-    </span>
+    />
   );
 });
 

@@ -1,4 +1,4 @@
-const { Stat, Sparkline, BarChart, SegmentedControl, Table, Badge, Switch, Slider, Progress, Avatar, Card, CardAction, CardContent, CardDescription, CardHeader, CardTitle, Button, StatusDot, Divider, Icon, DropdownMenu, DropdownMenuTrigger, DropdownMenuContent, DropdownMenuItem, DropdownMenuSeparator, IconButton, Toaster, toast } = window.EfolusiDesignSystem_4ffc3d;
+const { Stat, Sparkline, BarChart, SegmentedControl, Table, Badge, Switch, Slider, Progress, Avatar, AvatarFallback, Card, CardAction, CardContent, CardDescription, CardHeader, CardTitle, Button, StatusDot, Divider, Icon, DropdownMenu, DropdownMenuTrigger, DropdownMenuContent, DropdownMenuItem, DropdownMenuSeparator, IconButton, Toaster, toast } = window.EfolusiDesignSystem_4ffc3d;
 
 function PositionActionMenu({ trigger, items, onSelect }) { return <DropdownMenu><DropdownMenuTrigger asChild>{trigger}</DropdownMenuTrigger><DropdownMenuContent align="end">{items.map((item, index) => item === 'separator' ? <DropdownMenuSeparator key={'separator-' + index} /> : <DropdownMenuItem key={item.id} variant={item.danger ? 'destructive' : 'default'} onSelect={() => onSelect?.(item.id)}>{item.icon ? <Icon name={item.icon} size={15} /> : null}{item.label}</DropdownMenuItem>)}</DropdownMenuContent></DropdownMenu>; }
 
@@ -69,7 +69,7 @@ function TraderScreen() {
               <CardContent><div style={{ display: 'flex', flexDirection: 'column' }}>
                 {[['Femi Alade', '+31.2% this quarter \u00b7 low risk', 'up'], ['June Park', '+18.7% this quarter \u00b7 medium risk', 'up'], ['Sol Reyes', '\u22124.2% this quarter \u00b7 high risk', 'down']].map(([n, meta, dir]) => (
                   <div key={n} style={{ display: 'flex', alignItems: 'center', gap: 10, padding: '9px 8px' }}>
-                    <Avatar name={n} size={30} />
+                    <Avatar><AvatarFallback>{n.split(/\s+/).map(part => part[0]).slice(0, 2).join('')}</AvatarFallback></Avatar>
                     <div style={{ flex: 1, minWidth: 0 }}>
                       <div style={{ fontSize: 13, fontWeight: 600 }}>{n}</div>
                       <div style={{ fontSize: 12, color: dir === 'up' ? 'var(--success-600)' : 'var(--danger-600)' }}>{meta}</div>

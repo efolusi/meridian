@@ -413,7 +413,7 @@ Composable conversation-row layout with optional avatar, header, footer, groupin
 
 ```jsx
 <Message align="start">
-  <MessageAvatar><Avatar name="June Park" /></MessageAvatar>
+  <MessageAvatar><Avatar><AvatarFallback>JP</AvatarFallback></Avatar></MessageAvatar>
   <MessageContent>
     <MessageHeader>June · Support</MessageHeader>
     <Bubble><BubbleContent>The deployment is healthy.</BubbleContent></Bubble>
@@ -1898,21 +1898,17 @@ export declare const AspectRatio: React.ForwardRefExoticComponent<AspectRatioPro
 
 Group: display · Source: /components/display/Avatar.jsx · Exports: Avatar, AvatarImage, AvatarFallback, AvatarBadge, AvatarGroup, AvatarGroupCount
 
-Composable identity image with fallback, status badge, named sizes, and overlapping groups. The legacy `name`, `src`, and numeric `size` shortcuts remain supported.
+Compose identity images explicitly from image, fallback, badge, and group parts. Avatar supports the `default`, `sm`, and `lg` sizes.
 
 ```jsx
 <Avatar size="lg"><AvatarImage src={user.photo} alt={user.name} /><AvatarFallback>AO</AvatarFallback><AvatarBadge /></Avatar>
-<AvatarGroup><Avatar name="Ada Obi" /><Avatar name="Femi Alade" /><AvatarGroupCount>+3</AvatarGroupCount></AvatarGroup>
+<AvatarGroup><Avatar><AvatarFallback>AO</AvatarFallback></Avatar><Avatar><AvatarFallback>FA</AvatarFallback></Avatar><AvatarGroupCount>+3</AvatarGroupCount></AvatarGroup>
 ```
 
 ```ts
 export interface AvatarProps extends React.HTMLAttributes<HTMLSpanElement> {
-  /** Optional legacy name used to derive initials and a deterministic tone. */
-  name?: string;
-  /** Optional legacy image shortcut. Prefer AvatarImage for composition. */
-  src?: string;
-  /** Named contract sizes or a legacy pixel value. @default "default" */
-  size?: 'default' | 'sm' | 'lg' | number;
+  /** Named avatar size. @default "default" */
+  size?: 'default' | 'sm' | 'lg';
 }
 export declare const Avatar: React.ForwardRefExoticComponent<AvatarProps & React.RefAttributes<HTMLSpanElement>>;
 
@@ -3978,7 +3974,7 @@ The product sidebar: brand row, grouped nav with icons/badges, pinned footer. 24
     { items: [{ id: 'overview', label: 'Overview', icon: 'layout-dashboard' }, { id: 'customers', label: 'Customers', icon: 'users', badge: 128 }] },
 { label: 'Products', items: [{ id: 'agent', label: 'AI agents', icon: 'bot' }] },
   ]}
-  footer={<Item size="sm"><ItemMedia><Avatar name="Ada Obi" size={30} /></ItemMedia><ItemContent><ItemTitle>Ada Obi</ItemTitle><ItemDescription>Acme Workspace</ItemDescription></ItemContent></Item>} />
+  footer={<Item size="sm"><ItemMedia><Avatar><AvatarFallback>AO</AvatarFallback></Avatar></ItemMedia><ItemContent><ItemTitle>Ada Obi</ItemTitle><ItemDescription>Acme Workspace</ItemDescription></ItemContent></Item>} />
 ```
 
 ```ts
@@ -4146,7 +4142,7 @@ Sticky blurred header: optional leading slot, display-font title, right-aligned 
 <TopNav title="Customers">
   <Input size="sm" placeholder="Search… ⌘K" iconLeft="search" style={{ width: 300 }} />
   <IconButton icon="bell" label="Notifications" />
-  <Avatar name="Ada Obi" size={30} />
+  <Avatar><AvatarFallback>AO</AvatarFallback></Avatar>
 </TopNav>
 ```
 

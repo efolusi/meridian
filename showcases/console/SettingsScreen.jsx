@@ -1,4 +1,4 @@
-const { Card, CardAction, CardContent, CardDescription, CardHeader, CardTitle, Badge, Button, Input, Textarea, NativeSelect, NativeSelectOption, Switch, Tabs, Avatar, IconButton, Tag, Icon, Dialog, DialogClose, DialogContent, DialogDescription, DialogFooter, DialogHeader, DialogTitle } = window.EfolusiDesignSystem_4ffc3d;
+const { Card, CardAction, CardContent, CardDescription, CardHeader, CardTitle, Badge, Button, Input, Textarea, NativeSelect, NativeSelectOption, Switch, Tabs, Avatar, AvatarFallback, IconButton, Tag, Icon, Dialog, DialogClose, DialogContent, DialogDescription, DialogFooter, DialogHeader, DialogTitle } = window.EfolusiDesignSystem_4ffc3d;
 
 function SectionRow({ title, desc, children }) {
   return (
@@ -45,7 +45,7 @@ function MembersTab({ notify }) {
     <Card><CardHeader><CardTitle>Members</CardTitle><CardDescription>4 of 5 seats used on the Growth plan.</CardDescription><CardAction><Button size="sm" iconLeft="plus" onClick={() => notify('Invite sent', "We'll email them a join link.")}>Invite</Button></CardAction></CardHeader><CardContent style={{ paddingInline: 0, marginBlockEnd: 'calc(var(--card-spacing) * -1)' }}><div>
         {MEMBERS.map(([name, email, role]) => (
           <div key={email} style={{ display: 'flex', alignItems: 'center', gap: 12, padding: '12px 20px', borderTop: '1px solid var(--sand-100)' }}>
-            <Avatar name={name} size={32} />
+            <Avatar><AvatarFallback>{name.split(/\s+/).map(part => part[0]).slice(0, 2).join('')}</AvatarFallback></Avatar>
             <div style={{ flex: 1 }}>
               <div style={{ fontSize: 14, fontWeight: 600 }}>{name}</div>
               <div style={{ fontSize: 12, color: 'var(--text-muted)' }}>{email}</div>

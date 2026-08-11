@@ -1598,7 +1598,7 @@
       "name": "avatar",
       "type": "registry:ui",
       "title": "Avatar + AvatarImage + AvatarFallback + AvatarBadge + AvatarGroup + AvatarGroupCount",
-      "description": "Composable identity image with fallback, status badge, named sizes, and overlapping groups. The legacy `name`, `src`, and numeric `size` shortcuts remain supported.",
+      "description": "Compose identity images explicitly from image, fallback, badge, and group parts. Avatar supports the `default`, `sm`, and `lg` sizes.",
       "dependencies": [
         "react"
       ],

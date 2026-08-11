@@ -7,7 +7,7 @@
 </head><body style="background:var(--surface-page)">
 <div id="root"></div>
 <script type="text/babel">
-const { DropdownMenu, DropdownMenuTrigger, DropdownMenuContent, DropdownMenuItem, DropdownMenuSeparator, DropdownMenuShortcut, Popover, PopoverTrigger, PopoverContent, Drawer, DrawerContent, DrawerHeader, DrawerTitle, DrawerDescription, DrawerFooter, DrawerClose, CommandDialog, CommandInput, CommandList, CommandEmpty, CommandGroup, CommandItem, CommandShortcut, ContextMenu, ContextMenuTrigger, ContextMenuContent, ContextMenuItem, ContextMenuCheckboxItem, ContextMenuSeparator, ContextMenuShortcut, ContextMenuSub, ContextMenuSubTrigger, ContextMenuSubContent, HoverCard, HoverCardTrigger, HoverCardContent, Button, IconButton, Input, Select, Checkbox, Divider, Kbd, Avatar, Icon } = window.EfolusiDesignSystem_4ffc3d;
+const { DropdownMenu, DropdownMenuTrigger, DropdownMenuContent, DropdownMenuItem, DropdownMenuSeparator, DropdownMenuShortcut, Popover, PopoverTrigger, PopoverContent, Drawer, DrawerContent, DrawerHeader, DrawerTitle, DrawerDescription, DrawerFooter, DrawerClose, CommandDialog, CommandInput, CommandList, CommandEmpty, CommandGroup, CommandItem, CommandShortcut, ContextMenu, ContextMenuTrigger, ContextMenuContent, ContextMenuItem, ContextMenuCheckboxItem, ContextMenuSeparator, ContextMenuShortcut, ContextMenuSub, ContextMenuSubTrigger, ContextMenuSubContent, HoverCard, HoverCardTrigger, HoverCardContent, Button, IconButton, Input, Select, Checkbox, Divider, Kbd, Avatar, AvatarFallback, Icon } = window.EfolusiDesignSystem_4ffc3d;
 function Demo() {
   const [drawer, setDrawer] = React.useState(true);
   const [cmdk, setCmdk] = React.useState(false);
@@ -56,7 +56,7 @@ function Demo() {
         <HoverCardTrigger asChild><Button variant="ghost">@ada</Button></HoverCardTrigger>
         <HoverCardContent align="start" style={{ width: 280 }}>
           <div style={{ display: 'flex', gap: 12 }}>
-            <Avatar name="Ada Obi" size={40} />
+            <Avatar size="lg"><AvatarFallback>AO</AvatarFallback></Avatar>
             <div style={{ fontSize: 13.5 }}>
               <div style={{ fontWeight: 600 }}>Ada Obi</div>
               <div style={{ color: 'var(--text-muted)' }}>Owner · Acme Workspace</div>

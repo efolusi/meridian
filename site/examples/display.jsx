@@ -61,13 +61,13 @@ export function AvatarDemo() {
       <AvatarGroup aria-label="Project members">
         <Avatar size="lg"><AvatarImage src="https://i.pravatar.cc/96?img=47" alt="Ada Obi" /><AvatarFallback>AO</AvatarFallback><AvatarBadge aria-label="Online" /></Avatar>
         <Avatar size="lg"><AvatarFallback>KM</AvatarFallback></Avatar>
-        <Avatar name="June Park" size="lg" />
+        <Avatar size="lg"><AvatarFallback>JP</AvatarFallback></Avatar>
         <AvatarGroupCount aria-label="3 more members">+3</AvatarGroupCount>
       </AvatarGroup>
       <div style={{ display: 'flex', gap: 12, alignItems: 'center' }}>
-        <Avatar name="Ada Obi" size="sm" />
-        <Avatar name="Ada Obi" />
-        <Avatar name="Ada Obi" size="lg" />
+        <Avatar size="sm"><AvatarFallback>AO</AvatarFallback></Avatar>
+        <Avatar><AvatarFallback>AO</AvatarFallback></Avatar>
+        <Avatar size="lg"><AvatarFallback>AO</AvatarFallback></Avatar>
       </div>
     </div>
   );

@@ -17,10 +17,10 @@ export function BubbleDemo() {
 
 // @demo Message Composable conversation rows
 export function MessageDemo() {
-  const { Message, MessageGroup, MessageAvatar, MessageContent, MessageHeader, MessageFooter, Avatar, Bubble, BubbleContent, IconButton } = window.EfolusiDesignSystem_4ffc3d;
+  const { Message, MessageGroup, MessageAvatar, MessageContent, MessageHeader, MessageFooter, Avatar, AvatarFallback, Bubble, BubbleContent, IconButton } = window.EfolusiDesignSystem_4ffc3d;
   return <MessageGroup style={{ width: '100%', maxWidth: 520, gap: 14 }}>
     <Message>
-      <MessageAvatar><Avatar name="June Park" size={34} /></MessageAvatar>
+      <MessageAvatar><Avatar><AvatarFallback>JP</AvatarFallback></Avatar></MessageAvatar>
       <MessageContent>
         <MessageHeader>June Park · Support</MessageHeader>
         <Bubble><BubbleContent>I checked the release. All regions are healthy.</BubbleContent></Bubble>
@@ -28,7 +28,7 @@ export function MessageDemo() {
       </MessageContent>
     </Message>
     <Message align="end">
-      <MessageAvatar><Avatar name="Ada Obi" size={34} /></MessageAvatar>
+      <MessageAvatar><Avatar><AvatarFallback>AO</AvatarFallback></Avatar></MessageAvatar>
       <MessageContent>
         <Bubble align="end"><BubbleContent>Perfect. Send the summary to the team.</BubbleContent></Bubble>
         <MessageFooter>Delivered</MessageFooter>

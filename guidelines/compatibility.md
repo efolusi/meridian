@@ -91,8 +91,8 @@ similarity.
   `AvatarGroupCount` support compositional identity images, three named sizes,
   failed-image fallback, status indicators, overlapping groups, native
   attributes, ref forwarding, RTL, types, registry installation, demos, and
-  tests. Meridian's `name`, `src`, and numeric-size shortcuts remain additive
-  extensions.
+  tests. Maintained consumers use explicit image and fallback parts; there is no
+  parallel name/source or numeric-size renderer.
 - `Toggle` and `toggleVariants` support default and outline variants, the
   complete size contract, controlled and uncontrolled pressed state, composed
   click handlers, disabled behavior, native button props, ref forwarding,

@@ -1,4 +1,4 @@
-const { Card, CardContent, Badge, Button, Input, NativeSelect, NativeSelectOption, Checkbox, Avatar, Icon, IconButton, Tag, DropdownMenu, DropdownMenuTrigger, DropdownMenuContent, DropdownMenuItem, DropdownMenuSeparator, Pagination, Drawer, DrawerContent, DrawerHeader, DrawerTitle, DrawerDescription, DrawerFooter, DrawerClose, KeyValueList, Dialog, DialogClose, DialogContent, DialogDescription, DialogFooter, DialogHeader, DialogTitle, Sparkline, Field, FieldLabel } = window.EfolusiDesignSystem_4ffc3d;
+const { Card, CardContent, Badge, Button, Input, NativeSelect, NativeSelectOption, Checkbox, Avatar, AvatarFallback, Icon, IconButton, Tag, DropdownMenu, DropdownMenuTrigger, DropdownMenuContent, DropdownMenuItem, DropdownMenuSeparator, Pagination, Drawer, DrawerContent, DrawerHeader, DrawerTitle, DrawerDescription, DrawerFooter, DrawerClose, KeyValueList, Dialog, DialogClose, DialogContent, DialogDescription, DialogFooter, DialogHeader, DialogTitle, Sparkline, Field, FieldLabel } = window.EfolusiDesignSystem_4ffc3d;
 
 function CustomerActionMenu({ trigger, items, onSelect, align = 'start' }) { return <DropdownMenu><DropdownMenuTrigger asChild>{trigger}</DropdownMenuTrigger><DropdownMenuContent align={align}>{items.map((item, index) => item === 'separator' ? <DropdownMenuSeparator key={'separator-' + index} /> : <DropdownMenuItem key={item.id} disabled={item.disabled} variant={item.danger ? 'destructive' : 'default'} onSelect={() => { onSelect?.(item.id); item.onClick?.(); }}>{item.icon ? <Icon name={item.icon} size={15} /> : null}{item.label}</DropdownMenuItem>)}</DropdownMenuContent></DropdownMenu>; }
 
@@ -58,7 +58,7 @@ function CustomersScreen({ notify }) {
                 <td style={{ ...td, paddingRight: 0 }} onClick={e => e.stopPropagation()}><Checkbox checked={checked.includes(r.id)} onChange={() => toggle(r.id)} /></td>
                 <td style={td} onClick={() => setSel(r)}>
                   <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
-                    <Avatar name={r.name} size={30} />
+                    <Avatar><AvatarFallback>{r.name.split(/\s+/).map(part => part[0]).slice(0, 2).join('')}</AvatarFallback></Avatar>
                     <div><div style={{ fontWeight: 600 }}>{r.name}</div><div style={{ fontSize: 12, color: 'var(--text-muted)' }}>{r.email}</div></div>
                   </div>
                 </td>
@@ -88,7 +88,7 @@ function CustomersScreen({ notify }) {
         {sel && (
           <div style={{ display: 'flex', flexDirection: 'column', gap: 18, padding: 20 }}>
             <div style={{ display: 'flex', alignItems: 'center', gap: 12 }}>
-              <Avatar name={sel.name} size={44} />
+              <Avatar size="lg"><AvatarFallback>{sel.name.split(/\s+/).map(part => part[0]).slice(0, 2).join('')}</AvatarFallback></Avatar>
               <div>
                 <div style={{ fontSize: 16, fontWeight: 600 }}>{sel.name}</div>
                 <Badge tone={TONE[sel.status]} dot>{sel.status}</Badge>

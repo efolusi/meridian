@@ -1,10 +1,6 @@
 export interface AvatarProps extends React.HTMLAttributes<HTMLSpanElement> {
-  /** Optional legacy name used to derive initials and a deterministic tone. */
-  name?: string;
-  /** Optional legacy image shortcut. Prefer AvatarImage for composition. */
-  src?: string;
-  /** Named contract sizes or a legacy pixel value. @default "default" */
-  size?: 'default' | 'sm' | 'lg' | number;
+  /** Named avatar size. @default "default" */
+  size?: 'default' | 'sm' | 'lg';
 }
 export declare const Avatar: React.ForwardRefExoticComponent<AvatarProps & React.RefAttributes<HTMLSpanElement>>;
 

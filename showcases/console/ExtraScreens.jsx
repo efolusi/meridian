@@ -1,4 +1,4 @@
-const { Card, CardAction, CardContent, CardDescription, CardHeader, CardTitle, Badge, Button, Icon, IconButton, Avatar, AvatarGroup, Stat, BarChart, Progress, Table, EmptyState, DropdownMenu, DropdownMenuTrigger, DropdownMenuContent, DropdownMenuItem, DropdownMenuSeparator, DropdownMenuShortcut, KeyValueList } = window.EfolusiDesignSystem_4ffc3d;
+const { Card, CardAction, CardContent, CardDescription, CardHeader, CardTitle, Badge, Button, Icon, IconButton, Avatar, AvatarFallback, AvatarGroup, Stat, BarChart, Progress, Table, EmptyState, DropdownMenu, DropdownMenuTrigger, DropdownMenuContent, DropdownMenuItem, DropdownMenuSeparator, DropdownMenuShortcut, KeyValueList } = window.EfolusiDesignSystem_4ffc3d;
 
 function ProjectActionMenu({ trigger, items, onSelect, align = 'end' }) { return <DropdownMenu><DropdownMenuTrigger asChild>{trigger}</DropdownMenuTrigger><DropdownMenuContent align={align}>{items.map((item, index) => item === 'separator' ? <DropdownMenuSeparator key={'separator-' + index} /> : <DropdownMenuItem key={item.id} disabled={item.disabled} variant={item.danger ? 'destructive' : 'default'} onSelect={() => { onSelect?.(item.id); item.onClick?.(); }}>{item.icon ? <Icon name={item.icon} size={15} /> : null}{item.label}{item.kbd ? <DropdownMenuShortcut>{item.kbd}</DropdownMenuShortcut> : null}</DropdownMenuItem>)}</DropdownMenuContent></DropdownMenu>; }
 
@@ -30,7 +30,7 @@ function ProjectsScreen({ onNewProject, notify }) {
               {state === 'busy' && <Badge tone="success" dot>Running</Badge>}
             </div>
             <div style={{ display: 'flex', alignItems: 'center', marginTop: 16 }}>
-              <AvatarGroup>{people.map(p => <Avatar key={p} name={p} size={26} />)}</AvatarGroup>
+              <AvatarGroup>{people.map(p => <Avatar key={p} size="sm"><AvatarFallback>{p.split(/\s+/).map(part => part[0]).slice(0, 2).join('')}</AvatarFallback></Avatar>)}</AvatarGroup>
               <span style={{ marginLeft: 'auto', fontSize: 12, color: 'var(--text-muted)' }}>{when}</span>
             </div>
           </CardContent></Card>

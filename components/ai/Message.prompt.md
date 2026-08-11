@@ -4,7 +4,7 @@ Composable conversation-row layout with optional avatar, header, footer, groupin
 
 ```jsx
 <Message align="start">
-  <MessageAvatar><Avatar name="June Park" /></MessageAvatar>
+  <MessageAvatar><Avatar><AvatarFallback>JP</AvatarFallback></Avatar></MessageAvatar>
   <MessageContent>
     <MessageHeader>June · Support</MessageHeader>
     <Bubble><BubbleContent>The deployment is healthy.</BubbleContent></Bubble>

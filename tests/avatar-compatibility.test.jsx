@@ -47,7 +47,7 @@ describe('Avatar compatibility contract', () => {
     const ref = React.createRef();
     render(
       <AvatarGroup ref={ref} dir="rtl" aria-label="Members">
-        <Avatar name="Ada Obi" />
+        <Avatar><AvatarFallback>AO</AvatarFallback></Avatar>
         <AvatarGroupCount>+4</AvatarGroupCount>
       </AvatarGroup>,
     );
@@ -56,11 +56,4 @@ describe('Avatar compatibility contract', () => {
     expect(screen.getByText('+4').dataset.slot).toBe('avatar-group-count');
   });
 
-  it('keeps legacy name, source, and numeric size shortcuts additive', () => {
-    render(<Avatar name="June Park" src="june.png" size={48} data-testid="legacy-avatar" />);
-    const avatar = screen.getByTestId('legacy-avatar');
-    expect(avatar.style.width).toBe('48px');
-    expect(screen.getByText('JP')).toBeTruthy();
-    expect(screen.getByAltText('June Park')).toBeTruthy();
-  });
 });

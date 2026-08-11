@@ -24,7 +24,7 @@
     {
       "path": "components/ai/Message.prompt.md",
       "type": "registry:component",
-      "content": "# Message\n\nComposable conversation-row layout with optional avatar, header, footer, grouping, and start/end alignment. Message owns layout only; render a `Bubble` inside `MessageContent` for the visible surface.\n\n```jsx\n<Message align=\"start\">\n  <MessageAvatar><Avatar name=\"June Park\" /></MessageAvatar>\n  <MessageContent>\n    <MessageHeader>June \u00b7 Support</MessageHeader>\n    <Bubble><BubbleContent>The deployment is healthy.</BubbleContent></Bubble>\n    <MessageFooter>Read 2m ago</MessageFooter>\n  </MessageContent>\n</Message>\n```\n\nUse `MessageGroup` for consecutive rows from one sender. Keep an empty `MessageAvatar` on earlier rows when the final row carries the visible avatar so every bubble stays aligned.\n"
+      "content": "# Message\n\nComposable conversation-row layout with optional avatar, header, footer, grouping, and start/end alignment. Message owns layout only; render a `Bubble` inside `MessageContent` for the visible surface.\n\n```jsx\n<Message align=\"start\">\n  <MessageAvatar><Avatar><AvatarFallback>JP</AvatarFallback></Avatar></MessageAvatar>\n  <MessageContent>\n    <MessageHeader>June \u00b7 Support</MessageHeader>\n    <Bubble><BubbleContent>The deployment is healthy.</BubbleContent></Bubble>\n    <MessageFooter>Read 2m ago</MessageFooter>\n  </MessageContent>\n</Message>\n```\n\nUse `MessageGroup` for consecutive rows from one sender. Keep an empty `MessageAvatar` on earlier rows when the final row carries the visible avatar so every bubble stays aligned.\n"
     }
   ],
   "categories": [

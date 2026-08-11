@@ -8,7 +8,7 @@
 </head><body style="background:var(--surface-page)">
 <div id="root"></div>
 <script type="text/babel">
-const { SideNav, TopNav, Breadcrumbs, Button, IconButton, Avatar, EmptyState } = window.EfolusiDesignSystem_4ffc3d;
+const { SideNav, TopNav, Breadcrumbs, Button, IconButton, Avatar, AvatarFallback, EmptyState } = window.EfolusiDesignSystem_4ffc3d;
 function Block() {
   const [nav, setNav] = React.useState('runs');
   return (
@@ -31,7 +31,7 @@ function Block() {
         <TopNav leading={<Breadcrumbs items={[{ label: 'Acme Ops', onClick: () => {} }, { label: 'Runs' }]} />}>
           <IconButton variant="quiet" icon="bell" label="Notifications" />
           <Button size="sm" iconLeft="plus">New run</Button>
-          <Avatar name="Ada Obi" size={28} />
+          <Avatar><AvatarFallback>AO</AvatarFallback></Avatar>
         </TopNav>
         <main style={{ flex: 1, overflow: 'auto', padding: 28, display: 'grid', placeItems: 'center' }}>
           <EmptyState bordered icon="bot" title="No runs yet"

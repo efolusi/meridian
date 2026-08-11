@@ -24,7 +24,7 @@
     {
       "path": "components/navigation/TopNav.prompt.md",
       "type": "registry:component",
-      "content": "Sticky blurred header: optional leading slot, display-font title, right-aligned actions.\n\n```jsx\n<TopNav title=\"Customers\">\n  <Input size=\"sm\" placeholder=\"Search\u2026 \u2318K\" iconLeft=\"search\" style={{ width: 300 }} />\n  <IconButton icon=\"bell\" label=\"Notifications\" />\n  <Avatar name=\"Ada Obi\" size={30} />\n</TopNav>\n```\n"
+      "content": "Sticky blurred header: optional leading slot, display-font title, right-aligned actions.\n\n```jsx\n<TopNav title=\"Customers\">\n  <Input size=\"sm\" placeholder=\"Search\u2026 \u2318K\" iconLeft=\"search\" style={{ width: 300 }} />\n  <IconButton icon=\"bell\" label=\"Notifications\" />\n  <Avatar><AvatarFallback>AO</AvatarFallback></Avatar>\n</TopNav>\n```\n"
     }
   ],
   "categories": [

@@ -1,4 +1,4 @@
-const { Icon, IconButton, Input, Avatar, Tooltip, Badge, DropdownMenu, DropdownMenuTrigger, DropdownMenuContent, DropdownMenuItem, DropdownMenuSeparator, DropdownMenuShortcut, Popover, PopoverTrigger, PopoverContent, Kbd, Divider } = window.EfolusiDesignSystem_4ffc3d;
+const { Icon, IconButton, Input, Avatar, AvatarFallback, Tooltip, Badge, DropdownMenu, DropdownMenuTrigger, DropdownMenuContent, DropdownMenuItem, DropdownMenuSeparator, DropdownMenuShortcut, Popover, PopoverTrigger, PopoverContent, Kbd, Divider } = window.EfolusiDesignSystem_4ffc3d;
 
 function ShellActionMenu({ trigger, items, onSelect }) { return <DropdownMenu><DropdownMenuTrigger asChild>{trigger}</DropdownMenuTrigger><DropdownMenuContent align="end">{items.map((item, index) => item === 'separator' ? <DropdownMenuSeparator key={'separator-' + index} /> : <DropdownMenuItem key={item.id} disabled={item.disabled} variant={item.danger ? 'destructive' : 'default'} onSelect={() => { onSelect?.(item.id); item.onClick?.(); }}>{item.icon ? <Icon name={item.icon} size={15} /> : null}{item.label}{item.kbd ? <DropdownMenuShortcut>{item.kbd}</DropdownMenuShortcut> : null}</DropdownMenuItem>)}</DropdownMenuContent></DropdownMenu>; }
 
@@ -53,7 +53,7 @@ function Sidebar({ nav, onNav }) {
       </div>
       <div style={{ marginTop: 'auto', padding: 12 }}>
         <div style={{ display: 'flex', alignItems: 'center', gap: 10, padding: 10, borderRadius: 'var(--radius-md)', background: 'var(--surface-card)', border: '1px solid var(--border-default)' }}>
-          <Avatar name="Ada Obi" size={30} />
+          <Avatar><AvatarFallback>AO</AvatarFallback></Avatar>
           <div style={{ flex: 1, minWidth: 0 }}>
             <div style={{ fontSize: 13, fontWeight: 600, whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>Ada Obi</div>
             <div style={{ fontSize: 11, color: 'var(--text-muted)' }}>Acme Workspace</div>
@@ -103,7 +103,7 @@ function Topbar({ title, onSearch, notify }) {
         ))}
         <button onClick={() => notify('All caught up', 'Notifications cleared.')} style={{ marginTop: 8, background: 'none', border: 'none', padding: 0, fontFamily: 'var(--font-sans)', fontSize: 13, fontWeight: 600, color: 'var(--text-link)', cursor: 'pointer' }}>Mark all as read</button>
       </PopoverContent></Popover>
-      <ShellActionMenu trigger={<button style={{ border: 'none', background: 'none', padding: 0, cursor: 'pointer', display: 'inline-flex' }}><Avatar name="Ada Obi" size={30} /></button>} items={[
+      <ShellActionMenu trigger={<button style={{ border: 'none', background: 'none', padding: 0, cursor: 'pointer', display: 'inline-flex' }}><Avatar><AvatarFallback>AO</AvatarFallback></Avatar></button>} items={[
         { id: 'profile', label: 'Profile', icon: 'user' },
         { id: 'settings', label: 'Workspace settings', icon: 'settings' },
         'separator',

@@ -7,7 +7,7 @@
 </head><body style="background:var(--surface-page)">
 <div id="root"></div>
 <script type="text/babel">
-const { Table, Stat, EmptyState, Skeleton, Card, CardContent, CardDescription, CardHeader, CardTitle, Badge, Button, Avatar, LineChart, DonutChart, Sparkline, BarChart, KeyValueList, StatusDot } = window.EfolusiDesignSystem_4ffc3d;
+const { Table, Stat, EmptyState, Skeleton, Card, CardContent, CardDescription, CardHeader, CardTitle, Badge, Button, Avatar, AvatarFallback, LineChart, DonutChart, Sparkline, BarChart, KeyValueList, StatusDot } = window.EfolusiDesignSystem_4ffc3d;
 const rows = [
   { id: 1, name: 'Acme Robotics', plan: 'Growth', mrr: '$1,240', status: 'Active' },
   { id: 2, name: 'Bloom Health', plan: 'Scale', mrr: '$3,860', status: 'Active' },
@@ -30,7 +30,7 @@ function Demo() {
       </div>
       <Card><CardContent style={{ paddingInline: 0, marginBlock: 'calc(var(--card-spacing) * -1)' }}>
         <Table rowKey="id" onRowClick={() => {}} columns={[
-          { key: 'name', label: 'Customer', render: (v) => <span style={{ display: 'inline-flex', alignItems: 'center', gap: 8, fontWeight: 600 }}><Avatar name={v} size={24} />{v}</span> },
+          { key: 'name', label: 'Customer', render: (v) => <span style={{ display: 'inline-flex', alignItems: 'center', gap: 8, fontWeight: 600 }}><Avatar size="sm"><AvatarFallback>{v.split(/\s+/).map(part => part[0]).slice(0, 2).join('')}</AvatarFallback></Avatar>{v}</span> },
           { key: 'plan', label: 'Plan' },
           { key: 'status', label: 'Status', render: v => <Badge tone={v === 'Active' ? 'success' : 'warning'} dot>{v}</Badge> },
           { key: 'mrr', label: 'MRR', numeric: true, align: 'right' },

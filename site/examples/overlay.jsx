@@ -69,13 +69,13 @@ export function SheetDemo() {
 
 // @demo HoverCard Person preview
 export function HoverCardDemo() {
-  const { HoverCard, HoverCardTrigger, HoverCardContent, Button, Avatar } = window.EfolusiDesignSystem_4ffc3d;
+  const { HoverCard, HoverCardTrigger, HoverCardContent, Button, Avatar, AvatarFallback } = window.EfolusiDesignSystem_4ffc3d;
   return (
     <HoverCard>
       <HoverCardTrigger asChild><Button variant="ghost">@ada</Button></HoverCardTrigger>
       <HoverCardContent align="start" style={{ width: 280 }}>
         <div style={{ display: 'flex', gap: 12 }}>
-          <Avatar name="Ada Obi" size={40} />
+          <Avatar size="lg"><AvatarFallback>AO</AvatarFallback></Avatar>
           <div style={{ fontSize: 13.5 }}>
             <div style={{ fontWeight: 600 }}>Ada Obi</div>
             <div style={{ color: 'var(--text-muted)' }}>Owner · Acme Workspace</div>
