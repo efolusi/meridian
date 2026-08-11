@@ -4,7 +4,7 @@
  "ButtonTile": "Ubin besar yang bisa dipilih — pemilih paket, pilihan onboarding. Bungkus dalam ButtonTileGroup columns={n}.",
  "Checkbox": "Checkbox dengan pop centang yang lentur; mendukung baris deskripsi kedua yang redup.",
  "Combobox": "Select yang bisa dicari — tunggal, atau multi dengan chip yang bisa dihapus. Keyboard: panah + Enter, Backspace menghapus chip terakhir.",
- "DigitEntry": "Input OTP/PIN — satu sel per digit, maju otomatis, sadar-tempel, autocomplete=\"one-time-code\".",
+ "InputOTP": "Input kode sekali pakai dengan satu input semantik, slot visual yang dapat disusun, dukungan tempel, pola, dan status lengkap.",
  "IconButton": "Tombol persegi khusus-ikon untuk toolbar, aksi kartu, dan baris padat; label wajib (a11y + tooltip).",
  "Input": "Input teks; tampil polos, atau sebagai field lengkap saat label/hint/error diisi.",
  "InputGroup": "Input dengan addon di awal/akhir dalam satu baris berbingkai. Addon berupa string tampil sebagai sel bernuansa (satuan, protokol); addon berupa node tampil polos (Button ghost, Icon).",

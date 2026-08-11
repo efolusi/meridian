@@ -1662,8 +1662,8 @@
     {
       "name": "carousel",
       "type": "registry:ui",
-      "title": "Carousel",
-      "description": "Scroll-snap strip with arrow controls and position dots. Use for galleries, template pickers, testimonial strips.",
+      "title": "Carousel + CarouselContent + CarouselItem + CarouselPrevious + CarouselNext",
+      "description": "Composable, swipe-friendly scroll-snap carousel with keyboard controls and an event API.",
       "dependencies": [
         "react"
       ],
@@ -2715,38 +2715,6 @@
       ]
     },
     {
-      "name": "digitentry",
-      "type": "registry:ui",
-      "title": "DigitEntry",
-      "description": "OTP/PIN input \u2014 one cell per digit, auto-advance, paste-aware, `autocomplete=\"one-time-code\"`.",
-      "dependencies": [
-        "react"
-      ],
-      "registryDependencies": [
-        "https://meridian.efolusi.com/site/registry/meridian-base.json",
-        "https://meridian.efolusi.com/site/registry/button.json",
-        "https://meridian.efolusi.com/site/registry/direction.json",
-        "https://meridian.efolusi.com/site/registry/formfield.json"
-      ],
-      "files": [
-        {
-          "path": "components/forms/DigitEntry.jsx",
-          "type": "registry:ui"
-        },
-        {
-          "path": "components/forms/DigitEntry.d.ts",
-          "type": "registry:component"
-        },
-        {
-          "path": "components/forms/DigitEntry.prompt.md",
-          "type": "registry:component"
-        }
-      ],
-      "categories": [
-        "forms"
-      ]
-    },
-    {
       "name": "formfield",
       "type": "registry:ui",
       "title": "FormField",
@@ -2864,6 +2832,36 @@
         },
         {
           "path": "components/forms/InputGroup.prompt.md",
+          "type": "registry:component"
+        }
+      ],
+      "categories": [
+        "forms"
+      ]
+    },
+    {
+      "name": "inputotp",
+      "type": "registry:ui",
+      "title": "InputOTP + InputOTPGroup + InputOTPSlot + InputOTPSeparator",
+      "description": "Use one semantic input with composable visual slots for verification codes and PINs.",
+      "dependencies": [
+        "react"
+      ],
+      "registryDependencies": [
+        "https://meridian.efolusi.com/site/registry/meridian-base.json",
+        "https://meridian.efolusi.com/site/registry/button.json"
+      ],
+      "files": [
+        {
+          "path": "components/forms/InputOTP.jsx",
+          "type": "registry:ui"
+        },
+        {
+          "path": "components/forms/InputOTP.d.ts",
+          "type": "registry:component"
+        },
+        {
+          "path": "components/forms/InputOTP.prompt.md",
           "type": "registry:component"
         }
       ],

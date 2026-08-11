@@ -7,7 +7,7 @@
 </head><body style="background:var(--surface-page)">
 <div id="root"></div>
 <script type="text/babel">
-const { Button, IconButton, Input, Textarea, Select, Checkbox, Radio, Switch, Slider, Combobox, DigitEntry, NumberInput, ButtonTile, ButtonTileGroup, Toggle, ToggleGroup, ButtonGroup, InputGroup, Label } = window.EfolusiDesignSystem_4ffc3d;
+const { Button, IconButton, Input, Textarea, Select, Checkbox, Radio, Switch, Slider, Combobox, InputOTP, InputOTPGroup, InputOTPSlot, InputOTPSeparator, NumberInput, ButtonTile, ButtonTileGroup, Toggle, ToggleGroup, ButtonGroup, InputGroup, Label } = window.EfolusiDesignSystem_4ffc3d;
 const row = { display: 'flex', alignItems: 'center', gap: 10, flexWrap: 'wrap' };
 const lbl = { fontSize: 11, fontWeight: 600, letterSpacing: '0.06em', textTransform: 'uppercase', color: 'var(--text-muted)', marginBottom: 8 };
 function Demo() {
@@ -81,7 +81,7 @@ function Demo() {
           <NumberInput label="Retries" defaultValue={12} min={0} max={10} error="At most 10." />
         </div>
       </div>
-      <div><div style={lbl}>DigitEntry</div><DigitEntry length={6} /></div>
+      <div><div style={lbl}>InputOTP</div><InputOTP maxLength={6} pattern="[0-9]*"><InputOTPGroup>{[0,1,2].map(i => <InputOTPSlot key={i} index={i} />)}</InputOTPGroup><InputOTPSeparator /><InputOTPGroup>{[3,4,5].map(i => <InputOTPSlot key={i} index={i} />)}</InputOTPGroup></InputOTP></div>
       <div><div style={lbl}>ButtonTile</div>
         <ButtonTileGroup columns={3}>
           <ButtonTile icon="rocket" title="Starter" description="Free forever" selected={plan === 'starter'} onClick={() => setPlan('starter')} />

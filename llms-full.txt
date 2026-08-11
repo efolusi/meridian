@@ -2013,33 +2013,49 @@ export declare const CardFooter: React.ForwardRefExoticComponent<React.HTMLAttri
 
 #### Carousel
 
-Group: display · Source: /components/display/Carousel.jsx · Exports: Carousel
+Group: display · Source: /components/display/Carousel.jsx · Exports: Carousel, CarouselContent, CarouselItem, CarouselPrevious, CarouselNext
 
 # Carousel
 
-Scroll-snap strip with arrow controls and position dots. Use for galleries, template pickers, testimonial strips.
+Composable, swipe-friendly scroll-snap carousel with keyboard controls and an event API.
 
-`<Carousel itemWidth="300px">{cards}</Carousel>`
+```jsx
+<Carousel opts={{ align: 'start', loop: true }}>
+  <CarouselContent>
+    {cards.map(card => <CarouselItem key={card.id}>{card}</CarouselItem>)}
+  </CarouselContent>
+  <CarouselPrevious />
+  <CarouselNext />
+</Carousel>
+```
 
-Each child becomes one snap item. Keep items self-contained (Cards, images). Not for primary navigation.
+Use `orientation="vertical"` for vertical collections and `setApi` for slide counts or selection events. Size items through their `style.flexBasis` or a project utility class. Not for primary navigation.
 
 ```ts
-export interface CarouselProps {
-  /** One slide per child */
-  children: React.ReactNode;
-  /** CSS width of each item @default '280px' */
-  itemWidth?: string;
-  /** Px between items @default 14 */
-  gap?: number;
-  /** Prev / next arrows @default true */
-  showControls?: boolean;
-  /** Position dots below @default true */
-  showDots?: boolean;
-  ariaLabel?: string;
-  style?: React.CSSProperties;
-  className?: string;
+export interface CarouselApi {
+  canScrollNext(): boolean;
+  canScrollPrev(): boolean;
+  containerNode(): HTMLElement | null;
+  destroy(): void;
+  off(event: string, callback: (api: CarouselApi) => void): CarouselApi;
+  on(event: string, callback: (api: CarouselApi) => void): CarouselApi;
+  reInit(): void;
+  rootNode(): HTMLElement | null;
+  scrollNext(): void;
+  scrollPrev(): void;
+  scrollSnapList(): number[];
+  scrollTo(index: number): void;
+  selectedScrollSnap(): number;
+  slideNodes(): HTMLElement[];
 }
-export declare function Carousel(props: CarouselProps): React.JSX.Element;
+export interface CarouselOptions { align?: 'start' | 'center' | 'end'; loop?: boolean; direction?: 'ltr' | 'rtl'; }
+export interface CarouselPlugin { init?(api: CarouselApi): void; destroy?(): void; }
+export interface CarouselProps extends React.HTMLAttributes<HTMLDivElement> { orientation?: 'horizontal' | 'vertical'; opts?: CarouselOptions; plugins?: CarouselPlugin[]; setApi?: (api: CarouselApi | undefined) => void; }
+export declare const Carousel: React.ForwardRefExoticComponent<CarouselProps & React.RefAttributes<HTMLDivElement>>;
+export declare const CarouselContent: React.ForwardRefExoticComponent<React.HTMLAttributes<HTMLDivElement> & React.RefAttributes<HTMLDivElement>>;
+export declare const CarouselItem: React.ForwardRefExoticComponent<React.HTMLAttributes<HTMLDivElement> & React.RefAttributes<HTMLDivElement>>;
+export declare const CarouselPrevious: React.ForwardRefExoticComponent<React.ButtonHTMLAttributes<HTMLButtonElement> & React.RefAttributes<HTMLButtonElement>>;
+export declare const CarouselNext: React.ForwardRefExoticComponent<React.ButtonHTMLAttributes<HTMLButtonElement> & React.RefAttributes<HTMLButtonElement>>;
 ```
 
 #### Collapsible
@@ -3209,41 +3225,13 @@ export interface ComboboxProps {
 export declare function Combobox(props: ComboboxProps): React.JSX.Element;
 ```
 
-#### DigitEntry
-
-Group: forms · Source: /components/forms/DigitEntry.jsx · Exports: DigitEntry
-
-OTP/PIN input — one cell per digit, auto-advance, paste-aware, `autocomplete="one-time-code"`.
-
-```jsx
-<DigitEntry label="Enter the 6-digit code" onComplete={verify} />
-```
-
-```ts
-export interface DigitEntryProps {
-  /** Number of cells @default 6 */
-  length?: number;
-  /** Controlled value (digits only) */
-  value?: string;
-  onChange?: (value: string) => void;
-  /** Fires when all cells are filled */
-  onComplete?: (value: string) => void;
-  label?: string;
-  invalid?: boolean;
-  disabled?: boolean;
-  style?: React.CSSProperties;
-  className?: string;
-}
-export declare function DigitEntry(props: DigitEntryProps): React.JSX.Element;
-```
-
 #### FormField
 
 Group: forms · Source: /components/forms/FormField.jsx · Exports: FormField
 
 Label, hint, error and required chrome around a control, and the owner of the `id` that ties them together. Use it when a control has no `label` prop of its own, when several controls share one label, or when the control is not from this system.
 
-Input, Textarea and InputGroup already take `label` / `hint` / `error` directly, Select and Combobox take `label` / `hint`, and DigitEntry takes `label` — for a single one of those, keep using the prop. `FormField` is the general case underneath.
+Input, Textarea and InputGroup already take `label` / `hint` / `error` directly, while Select and Combobox take `label` / `hint`. `FormField` is the general case for composed controls such as InputOTP.
 
 ```jsx
 <FormField label="Work email" hint="We only use this for receipts." required>
@@ -3473,6 +3461,48 @@ export declare const InputGroupTextarea: React.ForwardRefExoticComponent<React.T
 export declare const InputGroupText: React.ForwardRefExoticComponent<React.HTMLAttributes<HTMLSpanElement> & React.RefAttributes<HTMLSpanElement>>;
 ```
 
+#### InputOTP
+
+Group: forms · Source: /components/forms/InputOTP.jsx · Exports: InputOTP, InputOTPGroup, InputOTPSlot, InputOTPSeparator
+
+# Input OTP
+
+Use one semantic input with composable visual slots for verification codes and PINs.
+
+```jsx
+<InputOTP maxLength={6} pattern="[0-9]*" onComplete={verify}>
+  <InputOTPGroup>
+    <InputOTPSlot index={0} />
+    <InputOTPSlot index={1} />
+    <InputOTPSlot index={2} />
+  </InputOTPGroup>
+  <InputOTPSeparator />
+  <InputOTPGroup>
+    <InputOTPSlot index={3} />
+    <InputOTPSlot index={4} />
+    <InputOTPSlot index={5} />
+  </InputOTPGroup>
+</InputOTP>
+```
+
+Use `value` with `onChange` for controlled state. Set `aria-invalid` on slots when the code is rejected.
+
+```ts
+export interface InputOTPProps extends Omit<React.InputHTMLAttributes<HTMLInputElement>, 'maxLength' | 'onChange' | 'value' | 'defaultValue'> {
+  maxLength: number;
+  value?: string;
+  defaultValue?: string;
+  onChange?: (value: string) => void;
+  onComplete?: (value: string) => void;
+  containerClassName?: string;
+}
+export declare const InputOTP: React.ForwardRefExoticComponent<InputOTPProps & React.RefAttributes<HTMLInputElement>>;
+export declare const InputOTPGroup: React.ForwardRefExoticComponent<React.HTMLAttributes<HTMLDivElement> & React.RefAttributes<HTMLDivElement>>;
+export interface InputOTPSlotProps extends React.HTMLAttributes<HTMLDivElement> { index: number; }
+export declare const InputOTPSlot: React.ForwardRefExoticComponent<InputOTPSlotProps & React.RefAttributes<HTMLDivElement>>;
+export declare const InputOTPSeparator: React.ForwardRefExoticComponent<React.HTMLAttributes<HTMLDivElement> & React.RefAttributes<HTMLDivElement>>;
+```
+
 #### Label
 
 Group: forms · Source: /components/forms/Label.jsx · Exports: Label
@@ -3558,7 +3588,7 @@ Pairs with `FormField.useFormState` — `field()` hands it `value` / `onChange` 
 <NumberInput label="Seats" min={1} max={50} {...form.field('seats')} />
 ```
 
-Use when the value is a number a user tunes in small moves (quantities, limits, thresholds). Not for phone numbers, codes or IDs (use `Input` or `DigitEntry` — those are digit strings, not quantities), and not for coarse picks along a visual range (use `Slider`).
+Use when the value is a number a user tunes in small moves (quantities, limits, thresholds). Not for phone numbers, codes or IDs (use `Input` or `InputOTP` — those are strings, not quantities), and not for coarse picks along a visual range (use `Slider`).
 
 ```ts
 export interface NumberInputProps extends Omit<React.InputHTMLAttributes<HTMLInputElement>, 'size' | 'value' | 'defaultValue' | 'onChange' | 'min' | 'max' | 'step'> {

@@ -55,7 +55,7 @@ that path is pinned to 18 while the npm build tracks `react >= 18`.
 
 **RTL layout is implemented, but the cross-browser support claim remains
 provisional in 1.x.** Set `dir="rtl"` on the document and wrap the app in
-`<DirectionProvider direction="rtl">`. Tabs, Menubar, DigitEntry, Calendar,
+`<DirectionProvider direction="rtl">`. Tabs, Menubar, Calendar,
 Resizable, PromptSteps and Carousel mirror their horizontal behavior. Semantic
 component spacing, alignment, borders and insets use logical properties; a
 static gate admits physical coordinates only for reviewed geometry such as

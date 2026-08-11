@@ -135,7 +135,14 @@
       "registryItems": ["site/registry/card.json"],
       "tests": ["tests/card-compatibility.test.jsx"]
     },
-    { "name": "Carousel", "status": "unverified" },
+    {
+      "name": "Carousel",
+      "status": "proven",
+      "requiredExports": ["Carousel", "CarouselContent", "CarouselItem", "CarouselPrevious", "CarouselNext"],
+      "sourceFiles": ["components/display/Carousel.jsx", "components/display/Carousel.d.ts"],
+      "registryItems": ["site/registry/carousel.json"],
+      "tests": ["tests/carousel-compatibility.test.jsx", "tests/direction.test.jsx"]
+    },
     { "name": "Chart", "status": "unverified" },
     {
       "name": "Checkbox",
@@ -194,7 +201,14 @@
       "requiredExports": ["InputGroup", "InputGroupAddon", "InputGroupButton", "InputGroupInput", "InputGroupText", "InputGroupTextarea"],
       "sourceFiles": ["components/forms/InputGroup.jsx", "components/forms/InputGroup.d.ts"], "registryItems": ["site/registry/inputgroup.json"], "tests": ["tests/input-group-compatibility.test.jsx"]
     },
-    { "name": "Input OTP", "status": "unverified" },
+    {
+      "name": "Input OTP",
+      "status": "proven",
+      "requiredExports": ["InputOTP", "InputOTPGroup", "InputOTPSeparator", "InputOTPSlot"],
+      "sourceFiles": ["components/forms/InputOTP.jsx", "components/forms/InputOTP.d.ts"],
+      "registryItems": ["site/registry/inputotp.json"],
+      "tests": ["tests/input-otp-compatibility.test.jsx"]
+    },
     { "name": "Item", "status": "unverified" },
     {
       "name": "Kbd",

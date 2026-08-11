@@ -114,13 +114,19 @@ export function CardDemo() {
 
 // @demo Carousel Scroll-snap strip
 export function CarouselDemo() {
-  const { Carousel, Card } = window.EfolusiDesignSystem_4ffc3d;
+  const { Carousel, CarouselContent, CarouselItem, CarouselPrevious, CarouselNext, Card } = window.EfolusiDesignSystem_4ffc3d;
   return (
-    <div style={{ width: '100%', maxWidth: 560 }}>
-      <Carousel itemWidth="180px">
-        {['Analytics', 'Billing', 'Identity', 'Storage', 'Search', 'Webhooks'].map(p => (
-          <Card key={p} title={p} subtitle="Module"><div style={{ height: 28 }}></div></Card>
-        ))}
+    <div style={{ width: '100%', maxWidth: 560, paddingInline: 14 }}>
+      <Carousel opts={{ align: 'start' }} aria-label="Workspace modules">
+        <CarouselContent>
+          {['Analytics', 'Billing', 'Identity', 'Storage', 'Search', 'Webhooks'].map(p => (
+            <CarouselItem key={p} style={{ flexBasis: 180 }}>
+              <Card title={p} subtitle="Module"><div style={{ height: 28 }}></div></Card>
+            </CarouselItem>
+          ))}
+        </CarouselContent>
+        <CarouselPrevious />
+        <CarouselNext />
       </Carousel>
     </div>
   );

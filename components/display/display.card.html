@@ -7,7 +7,7 @@
 </head><body style="background:var(--surface-page)">
 <div id="root"></div>
 <script type="text/babel">
-const { Card, Badge, Tag, Avatar, AvatarGroup, Button, Kbd, Divider, Accordion, Link, Toolbar, ListItem, TreeList, Switch, Collapsible, AspectRatio, ScrollArea, Carousel, ResizablePanelGroup, ResizablePanel, ResizableHandle } = window.EfolusiDesignSystem_4ffc3d;
+const { Card, Badge, Tag, Avatar, AvatarGroup, Button, Kbd, Divider, Accordion, Link, Toolbar, ListItem, TreeList, Switch, Collapsible, AspectRatio, ScrollArea, Carousel, CarouselContent, CarouselItem, CarouselPrevious, CarouselNext, ResizablePanelGroup, ResizablePanel, ResizableHandle } = window.EfolusiDesignSystem_4ffc3d;
 const lbl = { fontSize: 11, fontWeight: 600, letterSpacing: '0.06em', textTransform: 'uppercase', color: 'var(--text-muted)', marginBottom: 8 };
 function Demo() {
   const [tags, setTags] = React.useState(['Billing', 'API']);
@@ -103,8 +103,12 @@ function Demo() {
       </div>
       <div style={{ gridColumn: 'span 2', padding: '0 14px' }}>
         <div style={lbl}>Carousel</div>
-        <Carousel itemWidth="200px">
-          {['Analytics', 'Billing', 'Identity', 'Storage', 'Search', 'Webhooks'].map(p => <Card key={p} title={p} subtitle="Module"><div style={{ height: 34 }}></div></Card>)}
+        <Carousel aria-label="Product modules">
+          <CarouselContent>
+            {['Analytics', 'Billing', 'Identity', 'Storage', 'Search', 'Webhooks'].map(p => <CarouselItem key={p} style={{ flexBasis: 200 }}><Card title={p} subtitle="Module"><div style={{ height: 34 }}></div></Card></CarouselItem>)}
+          </CarouselContent>
+          <CarouselPrevious />
+          <CarouselNext />
         </Carousel>
       </div>
       <div style={{ gridColumn: 'span 2' }}>

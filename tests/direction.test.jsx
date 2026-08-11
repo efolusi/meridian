@@ -7,10 +7,9 @@ import { DirectionProvider, useDirection } from '../components/display/Direction
 import { Tabs } from '../components/navigation/Tabs.jsx';
 import { Menubar } from '../components/navigation/Menubar.jsx';
 import { Calendar } from '../components/dates/Calendar.jsx';
-import { DigitEntry } from '../components/forms/DigitEntry.jsx';
 import { ResizableHandle, ResizablePanel, ResizablePanelGroup } from '../components/display/Resizable.jsx';
 import { PromptSteps } from '../components/ai/PromptSteps.jsx';
-import { Carousel } from '../components/display/Carousel.jsx';
+import { Carousel, CarouselContent, CarouselItem, CarouselNext } from '../components/display/Carousel.jsx';
 
 function DirectionValue() {
   return <output>{useDirection()}</output>;
@@ -75,16 +74,6 @@ describe('RTL horizontal keyboard behavior', () => {
     expect(document.activeElement.getAttribute('data-iso')).toBe('2026-07-16');
   });
 
-  it('moves DigitEntry focus in visual direction', async () => {
-    const user = userEvent.setup();
-    render(<DirectionProvider direction="rtl"><DigitEntry length={3} value="123" onChange={() => {}} /></DirectionProvider>);
-    screen.getByRole('textbox', { name: 'Digit 2 of 3' }).focus();
-    await user.keyboard('{ArrowLeft}');
-    expect(document.activeElement).toBe(screen.getByRole('textbox', { name: 'Digit 3 of 3' }));
-    await user.keyboard('{ArrowRight}');
-    expect(document.activeElement).toBe(screen.getByRole('textbox', { name: 'Digit 2 of 3' }));
-  });
-
   it('resizes the inline-start pane in visual direction', async () => {
     const user = userEvent.setup();
     const { container } = render(
@@ -122,13 +111,17 @@ describe('RTL horizontal keyboard behavior', () => {
     const user = userEvent.setup();
     const { container } = render(
       <DirectionProvider direction="rtl">
-        <Carousel gap={14}><div>A</div><div>B</div></Carousel>
+        <Carousel>
+          <CarouselContent><CarouselItem>A</CarouselItem><CarouselItem>B</CarouselItem></CarouselContent>
+          <CarouselNext />
+        </Carousel>
       </DirectionProvider>,
     );
-    const track = container.querySelector('.ef-carousel__track');
-    track.scrollTo = vi.fn();
-    track.firstChild.getBoundingClientRect = () => ({ width: 100 });
-    await user.click(screen.getByRole('button', { name: 'Next' }));
-    expect(track.scrollTo).toHaveBeenCalledWith({ left: -114, behavior: 'smooth' });
+    const content = container.querySelector('[data-slot="carousel-content"]');
+    const slides = container.querySelectorAll('[data-slot="carousel-item"]');
+    Object.defineProperty(slides[1], 'offsetLeft', { configurable: true, value: 114 });
+    content.scrollTo = vi.fn();
+    await user.click(screen.getByRole('button', { name: 'Next slide' }));
+    expect(content.scrollTo).toHaveBeenCalledWith({ left: -114, behavior: 'smooth' });
   });
 });

@@ -267,6 +267,22 @@
       "sourcePath": "components/display/Carousel.jsx"
     },
     {
+      "name": "CarouselContent",
+      "sourcePath": "components/display/Carousel.jsx"
+    },
+    {
+      "name": "CarouselItem",
+      "sourcePath": "components/display/Carousel.jsx"
+    },
+    {
+      "name": "CarouselNext",
+      "sourcePath": "components/display/Carousel.jsx"
+    },
+    {
+      "name": "CarouselPrevious",
+      "sourcePath": "components/display/Carousel.jsx"
+    },
+    {
       "name": "ChatMessage",
       "sourcePath": "components/ai/ChatMessage.jsx"
     },
@@ -377,10 +393,6 @@
     {
       "name": "Diff",
       "sourcePath": "components/code/Diff.jsx"
-    },
-    {
-      "name": "DigitEntry",
-      "sourcePath": "components/forms/DigitEntry.jsx"
     },
     {
       "name": "DirectionProvider",
@@ -501,6 +513,22 @@
     {
       "name": "InputGroupTextarea",
       "sourcePath": "components/forms/InputGroup.jsx"
+    },
+    {
+      "name": "InputOTP",
+      "sourcePath": "components/forms/InputOTP.jsx"
+    },
+    {
+      "name": "InputOTPGroup",
+      "sourcePath": "components/forms/InputOTP.jsx"
+    },
+    {
+      "name": "InputOTPSeparator",
+      "sourcePath": "components/forms/InputOTP.jsx"
+    },
+    {
+      "name": "InputOTPSlot",
+      "sourcePath": "components/forms/InputOTP.jsx"
     },
     {
       "name": "Kbd",

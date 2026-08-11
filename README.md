@@ -113,7 +113,7 @@ Pre-composed sections in `blocks/` (Blocks group in the Design System tab): App 
 
 Authored from scratch (no source inventory existed). Namespace: `window.EfolusiDesignSystem_4ffc3d`.
 
-- `components/forms/` — Button, IconButton, Input, Textarea, Select, NativeSelect (+Option, +OptGroup), Checkbox, Radio, Switch, Slider, Combobox, NumberInput, DigitEntry, ButtonTile (+Group), Toggle (+Group), ButtonGroup, InputGroup, FormField, Label
+- `components/forms/` — Button, IconButton, Input, Textarea, Select, NativeSelect (+Option, +OptGroup), Checkbox, Radio, Switch, Slider, Combobox, NumberInput, InputOTP (+Group, +Slot, +Separator), ButtonTile (+Group), Toggle (+Group), ButtonGroup, InputGroup, FormField, Label
 - `components/display/` — Card, Badge, Tag, Avatar (+AvatarGroup), Kbd, Divider, Separator, Accordion, Link, Toolbar, TreeList, ListItem, Collapsible, AspectRatio, ScrollArea, Carousel, Resizable
 - `components/navigation/` — Tabs, Breadcrumbs, Pagination, SegmentedControl, PageControl, SideNav, TopNav, Steps, Menubar
 - `components/feedback/` — Dialog, ConfirmDialog, Toast (+ToastStack), Tooltip, Alert, Banner, Progress, Spinner, Loader

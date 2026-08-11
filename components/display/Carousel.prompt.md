@@ -1,7 +1,15 @@
 # Carousel
 
-Scroll-snap strip with arrow controls and position dots. Use for galleries, template pickers, testimonial strips.
+Composable, swipe-friendly scroll-snap carousel with keyboard controls and an event API.
 
-`<Carousel itemWidth="300px">{cards}</Carousel>`
+```jsx
+<Carousel opts={{ align: 'start', loop: true }}>
+  <CarouselContent>
+    {cards.map(card => <CarouselItem key={card.id}>{card}</CarouselItem>)}
+  </CarouselContent>
+  <CarouselPrevious />
+  <CarouselNext />
+</Carousel>
+```
 
-Each child becomes one snap item. Keep items self-contained (Cards, images). Not for primary navigation.
+Use `orientation="vertical"` for vertical collections and `setApi` for slide counts or selection events. Size items through their `style.flexBasis` or a project utility class. Not for primary navigation.

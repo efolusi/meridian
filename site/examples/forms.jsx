@@ -92,13 +92,18 @@ export function ComboboxDemo() {
   );
 }
 
-// @demo DigitEntry One-time code
-export function DigitEntryDemo() {
-  const { DigitEntry } = window.EfolusiDesignSystem_4ffc3d;
+// @demo InputOTP One-time code
+export function InputOTPDemo() {
+  const { InputOTP, InputOTPGroup, InputOTPSlot, InputOTPSeparator } = window.EfolusiDesignSystem_4ffc3d;
   const [done, setDone] = React.useState('');
   return (
     <div style={{ display: 'flex', flexDirection: 'column', gap: 10, alignItems: 'center' }}>
-      <DigitEntry length={6} label="Enter the code we sent" onComplete={setDone} />
+      <label htmlFor="demo-otp" style={{ fontSize: 13, fontWeight: 600 }}>Enter the code we sent</label>
+      <InputOTP id="demo-otp" maxLength={6} pattern="[0-9]*" onComplete={setDone}>
+        <InputOTPGroup>{[0, 1, 2].map(index => <InputOTPSlot key={index} index={index} />)}</InputOTPGroup>
+        <InputOTPSeparator />
+        <InputOTPGroup>{[3, 4, 5].map(index => <InputOTPSlot key={index} index={index} />)}</InputOTPGroup>
+      </InputOTP>
       {done ? <span style={{ fontSize: 13, color: 'var(--text-muted)', fontFamily: 'var(--font-mono)' }}>received: {done}</span> : null}
     </div>
   );

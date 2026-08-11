@@ -246,6 +246,17 @@ similarity.
   horizontal and vertical orientation markers, themed platform scrollbars,
   bounded-height helpers, refs, types, registry installation, demos, and tests.
 
+- `Carousel`, `CarouselContent`, `CarouselItem`, `CarouselPrevious`, and
+  `CarouselNext` provide semantic slide composition, horizontal and vertical
+  orientation, direction-aware controls, keyboard navigation, looping and
+  alignment options, a stable event API, plugin lifecycle, refs, types,
+  registry installation, demos, and tests.
+
+- `InputOTP`, `InputOTPGroup`, `InputOTPSlot`, and `InputOTPSeparator` provide
+  one semantic input with composable visual slots, controlled and uncontrolled
+  state, paste-sized changes, pattern filtering, completion callbacks, invalid
+  and disabled states, refs, types, registry installation, demos, and tests.
+
 
 ## Release gate
 

@@ -27,4 +27,4 @@ Pairs with `FormField.useFormState` — `field()` hands it `value` / `onChange` 
 <NumberInput label="Seats" min={1} max={50} {...form.field('seats')} />
 ```
 
-Use when the value is a number a user tunes in small moves (quantities, limits, thresholds). Not for phone numbers, codes or IDs (use `Input` or `DigitEntry` — those are digit strings, not quantities), and not for coarse picks along a visual range (use `Slider`).
+Use when the value is a number a user tunes in small moves (quantities, limits, thresholds). Not for phone numbers, codes or IDs (use `Input` or `InputOTP` — those are strings, not quantities), and not for coarse picks along a visual range (use `Slider`).
