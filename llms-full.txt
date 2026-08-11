@@ -2346,31 +2346,45 @@ export declare function TreeList(props: TreeListProps): React.JSX.Element;
 
 #### Alert
 
-Group: feedback · Source: /components/feedback/Alert.jsx · Exports: Alert
+Group: feedback · Source: /components/feedback/Alert.jsx · Exports: Alert, AlertTitle, AlertDescription
 
-Inline banner: white surface, hairline border, tone-colored icon. For page-level notices — use Toast for transient events.
+# Alert
+
+Notifikasi inline composable dengan varian `default` dan `destructive`. Susun ikon, `AlertTitle`, dan `AlertDescription` sebagai children untuk kontrol penuh.
 
 ```jsx
-<Alert tone="warning" title="Trial ends in 3 days" description="Add a card to keep your workspace running." action={<Button size="sm" variant="secondary">Add card</Button>} />
+<Alert variant="destructive">
+  <Icon name="circle-alert" />
+  <AlertTitle>Deploy failed</AlertTitle>
+  <AlertDescription>Image digest mismatch.</AlertDescription>
+</Alert>
 ```
 
-Tones: `info | success | warning | danger` (danger also tints the border).
+Prop shorthand Meridian `tone`, `icon`, `title`, `description`, dan `action` tetap tersedia untuk permukaan lama.
 
 ```ts
-export interface AlertProps {
-  /** @default 'info' */
+import type * as React from 'react';
+
+export interface AlertProps extends Omit<React.HTMLAttributes<HTMLDivElement>, 'title'> {
+  variant?: 'default' | 'destructive';
+  /** Meridian semantic-tone extension. */
   tone?: 'info' | 'success' | 'warning' | 'danger';
-  /** Override the tone icon (Lucide name) */
+  /** Meridian shorthand icon name. */
   icon?: string;
+  /** Meridian shorthand title. */
   title?: React.ReactNode;
+  /** Meridian shorthand description. */
   description?: React.ReactNode;
-  /** Right-aligned slot (button/link) */
+  /** Meridian shorthand action slot. */
   action?: React.ReactNode;
-  children?: React.ReactNode;
-  style?: React.CSSProperties;
-  className?: string;
 }
-export declare function Alert(props: AlertProps): React.JSX.Element;
+
+export type AlertTitleProps = React.HTMLAttributes<HTMLDivElement>;
+export type AlertDescriptionProps = React.HTMLAttributes<HTMLDivElement>;
+
+export declare const Alert: React.ForwardRefExoticComponent<AlertProps & React.RefAttributes<HTMLDivElement>>;
+export declare const AlertTitle: React.ForwardRefExoticComponent<AlertTitleProps & React.RefAttributes<HTMLDivElement>>;
+export declare const AlertDescription: React.ForwardRefExoticComponent<AlertDescriptionProps & React.RefAttributes<HTMLDivElement>>;
 ```
 
 #### Banner

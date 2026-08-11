@@ -47,6 +47,11 @@ similarity.
 
 ## Proven adapters
 
+- `Alert`, `AlertTitle`, and `AlertDescription` support composable alert
+  structure, default and destructive variants, alert semantics, native
+  attributes, consumer classes and styles, ref forwarding, types, registry
+  installation, demos, and tests. Meridian's semantic tones and content
+  shorthands remain additive extensions.
 - `Collapsible`, `CollapsibleTrigger`, and `CollapsibleContent` support
   controlled and uncontrolled disclosure state, native keyboard activation,
   disabled roots, polymorphic triggers, force-mounted content, accessible

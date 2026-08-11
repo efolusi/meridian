@@ -1,7 +1,13 @@
-Inline banner: white surface, hairline border, tone-colored icon. For page-level notices — use Toast for transient events.
+# Alert
+
+Notifikasi inline composable dengan varian `default` dan `destructive`. Susun ikon, `AlertTitle`, dan `AlertDescription` sebagai children untuk kontrol penuh.
 
 ```jsx
-<Alert tone="warning" title="Trial ends in 3 days" description="Add a card to keep your workspace running." action={<Button size="sm" variant="secondary">Add card</Button>} />
+<Alert variant="destructive">
+  <Icon name="circle-alert" />
+  <AlertTitle>Deploy failed</AlertTitle>
+  <AlertDescription>Image digest mismatch.</AlertDescription>
+</Alert>
 ```
 
-Tones: `info | success | warning | danger` (danger also tints the border).
+Prop shorthand Meridian `tone`, `icon`, `title`, `description`, dan `action` tetap tersedia untuk permukaan lama.

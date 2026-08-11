@@ -4,7 +4,14 @@
   "policy": "Only entries with source, API, interaction, registry, and test evidence may be marked proven.",
   "components": [
     { "name": "Accordion", "status": "unverified" },
-    { "name": "Alert", "status": "unverified" },
+    {
+      "name": "Alert",
+      "status": "proven",
+      "requiredExports": ["Alert", "AlertTitle", "AlertDescription"],
+      "sourceFiles": ["components/feedback/Alert.jsx", "components/feedback/Alert.d.ts"],
+      "registryItems": ["site/registry/alert.json"],
+      "tests": ["tests/alert-compatibility.test.jsx"]
+    },
     { "name": "Alert Dialog", "status": "unverified" },
     {
       "name": "Aspect Ratio",

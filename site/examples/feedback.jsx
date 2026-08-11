@@ -2,10 +2,14 @@
 
 // @demo Alert Inline callout
 export function AlertDemo() {
-  const { Alert } = window.EfolusiDesignSystem_4ffc3d;
+  const { Alert, AlertTitle, AlertDescription, Icon } = window.EfolusiDesignSystem_4ffc3d;
   return (
     <div style={{ width: '100%', maxWidth: 520 }}>
-      <Alert tone="info" title="Scheduled maintenance" description="The EU region pauses for ~10 minutes on Sunday 02:00 UTC. Queued runs resume automatically." />
+      <Alert>
+        <Icon name="info" size={16} />
+        <AlertTitle>Scheduled maintenance</AlertTitle>
+        <AlertDescription>The EU region pauses for ~10 minutes on Sunday 02:00 UTC. Queued runs resume automatically.</AlertDescription>
+      </Alert>
     </div>
   );
 }

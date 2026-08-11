@@ -2062,8 +2062,8 @@
     {
       "name": "alert",
       "type": "registry:ui",
-      "title": "Alert",
-      "description": "Inline banner: white surface, hairline border, tone-colored icon. For page-level notices \u2014 use Toast for transient events.",
+      "title": "Alert + AlertTitle + AlertDescription",
+      "description": "Notifikasi inline composable dengan varian `default` dan `destructive`. Susun ikon, `AlertTitle`, dan `AlertDescription` sebagai children untuk kontrol penuh.",
       "dependencies": [
         "react"
       ],
