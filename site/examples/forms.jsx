@@ -82,13 +82,16 @@ export function CheckboxDemo() {
 
 // @demo Combobox Searchable select
 export function ComboboxDemo() {
-  const { Combobox } = window.EfolusiDesignSystem_4ffc3d;
+  const { Combobox, ComboboxInput, ComboboxContent, ComboboxEmpty, ComboboxList, ComboboxItem, Field, FieldLabel } = window.EfolusiDesignSystem_4ffc3d;
   const [region, setRegion] = React.useState('eu-west-1');
+  const regions = ['us-east-1', 'us-west-2', 'eu-west-1', 'eu-central-1', 'ap-southeast-1'];
   return (
-    <div style={{ width: 300 }}>
-      <Combobox label="Region" value={region} onChange={setRegion}
-        options={['us-east-1', 'us-west-2', 'eu-west-1', 'eu-central-1', 'ap-southeast-1']} />
-    </div>
+    <Field style={{ width: 300 }}><FieldLabel>Region</FieldLabel>
+      <Combobox items={regions} value={region} onValueChange={setRegion}>
+        <ComboboxInput placeholder="Select a region" showClear />
+        <ComboboxContent><ComboboxEmpty>No regions found.</ComboboxEmpty><ComboboxList>{item => <ComboboxItem value={item}>{item}</ComboboxItem>}</ComboboxList></ComboboxContent>
+      </Combobox>
+    </Field>
   );
 }
 

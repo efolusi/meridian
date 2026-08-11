@@ -6,7 +6,7 @@ import { Dialog } from '../components/feedback/Dialog.jsx';
 import { ConfirmDialog } from '../components/feedback/ConfirmDialog.jsx';
 import { Drawer } from '../components/overlay/Drawer.jsx';
 import { CommandDialog, CommandInput, CommandList, CommandItem } from '../components/overlay/Command.jsx';
-import { Combobox } from '../components/forms/Combobox.jsx';
+import { Combobox, ComboboxInput, ComboboxContent, ComboboxList, ComboboxItem } from '../components/forms/Combobox.jsx';
 import { StatusDot } from '../components/data/StatusDot.jsx';
 
 // These four were the only components of the 106 that silently dropped a
@@ -46,7 +46,7 @@ describe('className/style forwarding on the modal four', () => {
 describe('Combobox ARIA pattern', () => {
   it('wires aria-controls, aria-autocomplete and aria-activedescendant to the highlighted option', async () => {
     const user = userEvent.setup();
-    render(<Combobox options={['Alpha', 'Beta', 'Gamma']} value={null} onChange={() => {}} />);
+    render(<Combobox items={['Alpha', 'Beta', 'Gamma']}><ComboboxInput /><ComboboxContent><ComboboxList>{item => <ComboboxItem value={item}>{item}</ComboboxItem>}</ComboboxList></ComboboxContent></Combobox>);
     const input = screen.getByRole('combobox');
     expect(input.getAttribute('aria-autocomplete')).toBe('list');
     const listId = input.getAttribute('aria-controls');

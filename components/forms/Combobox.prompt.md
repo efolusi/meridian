@@ -1,6 +1,13 @@
-Searchable select — single, or multi with removable chips. Keyboard: arrows + Enter, Backspace removes last chip.
+Composable autocomplete with single or multiple selection, grouped results, clear controls, chips, controlled state, and complete listbox keyboard semantics.
 
 ```jsx
-<Combobox label="Assignee" options={people} value={who} onChange={setWho} />
-<Combobox label="Surfaces" multiple options={['AI agents','Infrastructure','Automation']} value={sel} onChange={setSel} />
+<Combobox items={regions} value={region} onValueChange={setRegion}>
+  <ComboboxInput placeholder="Select a region" showClear />
+  <ComboboxContent>
+    <ComboboxEmpty>No regions found.</ComboboxEmpty>
+    <ComboboxList>{region => <ComboboxItem value={region}>{region}</ComboboxItem>}</ComboboxList>
+  </ComboboxContent>
+</Combobox>
 ```
+
+For multiple selection, set `multiple`, render current values with `ComboboxChips` and `ComboboxChip`, and use `ComboboxChipsInput`. Compose groups from `ComboboxGroup`, `ComboboxLabel`, and `ComboboxSeparator`. `useComboboxAnchor()` supports an external popup anchor.

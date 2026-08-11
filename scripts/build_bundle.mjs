@@ -30,6 +30,7 @@ const PUBLIC_HELPERS = new Set([
   'buttonVariants',
   'markerVariants',
   'toggleVariants',
+  'useComboboxAnchor',
   'useDirection',
 ]);
 

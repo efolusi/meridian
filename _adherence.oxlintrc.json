@@ -723,6 +723,51 @@
       "Combobox": {
         "replaces": []
       },
+      "ComboboxChip": {
+        "replaces": []
+      },
+      "ComboboxChips": {
+        "replaces": []
+      },
+      "ComboboxChipsInput": {
+        "replaces": []
+      },
+      "ComboboxClear": {
+        "replaces": []
+      },
+      "ComboboxCollection": {
+        "replaces": []
+      },
+      "ComboboxContent": {
+        "replaces": []
+      },
+      "ComboboxEmpty": {
+        "replaces": []
+      },
+      "ComboboxGroup": {
+        "replaces": []
+      },
+      "ComboboxInput": {
+        "replaces": []
+      },
+      "ComboboxItem": {
+        "replaces": []
+      },
+      "ComboboxLabel": {
+        "replaces": []
+      },
+      "ComboboxList": {
+        "replaces": []
+      },
+      "ComboboxSeparator": {
+        "replaces": []
+      },
+      "ComboboxTrigger": {
+        "replaces": []
+      },
+      "ComboboxValue": {
+        "replaces": []
+      },
       "Command": {
         "replaces": []
       },

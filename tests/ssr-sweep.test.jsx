@@ -30,7 +30,6 @@ const PROPS = {
   ChatMessage: { role: 'assistant', children: 'Hi' },
   Citation: { n: 1 },
   CommandDialog: { open: true, title: 'Commands' },
-  Combobox: { options: ['a', 'b'] },
   ConfirmDialog: { open: true, title: 'T' },
   ContextMenu: { items: [{ id: 'a', label: 'A' }], children: React.createElement('div') },
   Dialog: { open: true, title: 'T' },

@@ -167,7 +167,15 @@
       "registryItems": ["site/registry/collapsible.json"],
       "tests": ["tests/collapsible-compatibility.test.jsx"]
     },
-    { "name": "Combobox", "status": "unverified" },
+    {
+      "name": "Combobox",
+      "status": "proven",
+      "requiredExports": ["Combobox", "ComboboxValue", "ComboboxTrigger", "ComboboxClear", "ComboboxInput", "ComboboxContent", "ComboboxList", "ComboboxItem", "ComboboxGroup", "ComboboxLabel", "ComboboxCollection", "ComboboxEmpty", "ComboboxSeparator", "ComboboxChips", "ComboboxChip", "ComboboxChipsInput"],
+      "requiredModuleExports": ["useComboboxAnchor"],
+      "sourceFiles": ["components/forms/Combobox.jsx", "components/forms/Combobox.d.ts"],
+      "registryItems": ["site/registry/combobox.json"],
+      "tests": ["tests/combobox-compatibility.test.jsx", "tests/wave1.test.jsx"]
+    },
     {
       "name": "Command",
       "status": "proven",

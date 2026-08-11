@@ -47,7 +47,7 @@ export function Portal({ children, container }) {
  * Not exported on the namespace — it is a building block for the overlay
  * components, and is only useful with a panel ref you already control.
  */
-export function useAnchoredStyle(anchorRef, panelRef, { open, placement = 'bottom', align = 'start', offset = 6, matchWidth = false } = {}) {
+export function useAnchoredStyle(anchorRef, panelRef, { open, placement = 'bottom', align = 'start', offset = 6, crossOffset = 0, matchWidth = false } = {}) {
   const [state, setState] = React.useState({
     // `right`/`bottom` are pinned to auto from the very first frame. A panel
     // whose class also sets `right: 0` (every align="right" menu) would
@@ -72,20 +72,35 @@ export function useAnchoredStyle(anchorRef, panelRef, { open, placement = 'botto
       const vh = document.documentElement.clientHeight;
       const edge = 8;
 
-      const roomBelow = vh - a.bottom - offset;
-      const roomAbove = a.top - offset;
-      const wantsTop = placement === 'top';
-      const side = wantsTop
-        ? (roomAbove >= p.height || roomAbove >= roomBelow ? 'top' : 'bottom')
-        : (roomBelow >= p.height || roomBelow >= roomAbove ? 'bottom' : 'top');
+      const horizontal = placement === 'left' || placement === 'right';
+      const roomAfter = horizontal ? vw - a.right - offset : vh - a.bottom - offset;
+      const roomBefore = horizontal ? a.left - offset : a.top - offset;
+      const panelSize = horizontal ? p.width : p.height;
+      const wantsBefore = placement === 'top' || placement === 'left';
+      const beforeSide = horizontal ? 'left' : 'top';
+      const afterSide = horizontal ? 'right' : 'bottom';
+      const side = wantsBefore
+        ? (roomBefore >= panelSize || roomBefore >= roomAfter ? beforeSide : afterSide)
+        : (roomAfter >= panelSize || roomAfter >= roomBefore ? afterSide : beforeSide);
 
       // a width-matched panel (a listbox under its input) is measured at the
       // anchor's width, not its own, or the clamp below uses the wrong number
       const width = matchWidth ? a.width : p.width;
-      let top = side === 'bottom' ? a.bottom + offset : a.top - offset - p.height;
-      let left = align === 'end' ? a.right - width
-        : align === 'center' ? a.left + a.width / 2 - width / 2
-        : a.left;
+      let top;
+      let left;
+      if (horizontal) {
+        left = side === 'right' ? a.right + offset : a.left - offset - width;
+        top = align === 'end' ? a.bottom - p.height
+          : align === 'center' ? a.top + a.height / 2 - p.height / 2
+          : a.top;
+        top += crossOffset;
+      } else {
+        top = side === 'bottom' ? a.bottom + offset : a.top - offset - p.height;
+        left = align === 'end' ? a.right - width
+          : align === 'center' ? a.left + a.width / 2 - width / 2
+          : a.left;
+        left += crossOffset;
+      }
 
       left = Math.max(edge, Math.min(left, vw - width - edge));
       top = Math.max(edge, Math.min(top, vh - p.height - edge));
@@ -102,6 +117,6 @@ export function useAnchoredStyle(anchorRef, panelRef, { open, placement = 'botto
       window.removeEventListener('scroll', place, true);
       window.removeEventListener('resize', place);
     };
-  }, [open, placement, align, offset, matchWidth, anchorRef, panelRef]);
+  }, [open, placement, align, offset, crossOffset, matchWidth, anchorRef, panelRef]);
   return state;
 }

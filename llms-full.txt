@@ -3121,33 +3121,48 @@ export declare const Checkbox: React.ForwardRefExoticComponent<CheckboxProps & R
 
 #### Combobox
 
-Group: forms · Source: /components/forms/Combobox.jsx · Exports: Combobox
+Group: forms · Source: /components/forms/Combobox.jsx · Exports: Combobox, ComboboxValue, ComboboxTrigger, ComboboxClear, ComboboxInput, ComboboxContent, ComboboxList, ComboboxItem, ComboboxGroup, ComboboxLabel, ComboboxCollection, ComboboxEmpty, ComboboxSeparator, ComboboxChips, ComboboxChip, ComboboxChipsInput
 
-Searchable select — single, or multi with removable chips. Keyboard: arrows + Enter, Backspace removes last chip.
+Composable autocomplete with single or multiple selection, grouped results, clear controls, chips, controlled state, and complete listbox keyboard semantics.
 
 ```jsx
-<Combobox label="Assignee" options={people} value={who} onChange={setWho} />
-<Combobox label="Surfaces" multiple options={['AI agents','Infrastructure','Automation']} value={sel} onChange={setSel} />
+<Combobox items={regions} value={region} onValueChange={setRegion}>
+  <ComboboxInput placeholder="Select a region" showClear />
+  <ComboboxContent>
+    <ComboboxEmpty>No regions found.</ComboboxEmpty>
+    <ComboboxList>{region => <ComboboxItem value={region}>{region}</ComboboxItem>}</ComboboxList>
+  </ComboboxContent>
+</Combobox>
 ```
 
+For multiple selection, set `multiple`, render current values with `ComboboxChips` and `ComboboxChip`, and use `ComboboxChipsInput`. Compose groups from `ComboboxGroup`, `ComboboxLabel`, and `ComboboxSeparator`. `useComboboxAnchor()` supports an external popup anchor.
+
 ```ts
-export interface ComboOption { value: string; label: string; icon?: string; }
-export interface ComboboxProps {
-  label?: string;
-  hint?: string;
-  /** Options as strings or {value,label,icon} */
-  options: Array<string | ComboOption>;
-  /** Selected value (single) or values (multiple) */
-  value?: string | string[] | null;
-  onChange?: (value: any) => void;
-  /** Multi-select with removable chips */
-  multiple?: boolean;
-  /** @default 'Search…' */
-  placeholder?: string;
-  style?: React.CSSProperties;
-  className?: string;
+export interface ComboboxProps<T = string> {
+  items?: T[]; value?: T | T[] | null; defaultValue?: T | T[] | null;
+  onValueChange?: (value: T | T[] | null) => void; multiple?: boolean;
+  open?: boolean; defaultOpen?: boolean; onOpenChange?: (open: boolean) => void;
+  inputValue?: string; defaultInputValue?: string; onInputValueChange?: (value: string) => void;
+  disabled?: boolean; autoHighlight?: boolean; children?: React.ReactNode;
 }
-export declare function Combobox(props: ComboboxProps): React.JSX.Element;
+export declare function Combobox<T = string>(props: ComboboxProps<T>): React.JSX.Element;
+export declare const ComboboxValue: React.ForwardRefExoticComponent<React.HTMLAttributes<HTMLSpanElement> & { children?: React.ReactNode | ((value: unknown) => React.ReactNode) } & React.RefAttributes<HTMLSpanElement>>;
+export declare const ComboboxTrigger: React.ForwardRefExoticComponent<React.ButtonHTMLAttributes<HTMLButtonElement> & React.RefAttributes<HTMLButtonElement>>;
+export declare const ComboboxClear: React.ForwardRefExoticComponent<React.ButtonHTMLAttributes<HTMLButtonElement> & React.RefAttributes<HTMLButtonElement>>;
+export declare const ComboboxInput: React.ForwardRefExoticComponent<React.InputHTMLAttributes<HTMLInputElement> & { showTrigger?: boolean; showClear?: boolean } & React.RefAttributes<HTMLInputElement>>;
+export declare const ComboboxContent: React.ForwardRefExoticComponent<React.HTMLAttributes<HTMLDivElement> & { side?: 'top' | 'bottom' | 'left' | 'right'; sideOffset?: number; align?: 'start' | 'center' | 'end'; alignOffset?: number; anchor?: React.RefObject<HTMLElement | null> } & React.RefAttributes<HTMLDivElement>>;
+export declare const ComboboxList: React.ForwardRefExoticComponent<React.HTMLAttributes<HTMLDivElement> & { children?: React.ReactNode | ((item: unknown) => React.ReactNode) } & React.RefAttributes<HTMLDivElement>>;
+export interface ComboboxItemProps extends Omit<React.ButtonHTMLAttributes<HTMLButtonElement>, 'value'> { value?: unknown; keywords?: string[]; }
+export declare const ComboboxItem: React.ForwardRefExoticComponent<ComboboxItemProps & React.RefAttributes<HTMLButtonElement>>;
+export declare const ComboboxGroup: React.ForwardRefExoticComponent<React.HTMLAttributes<HTMLDivElement> & React.RefAttributes<HTMLDivElement>>;
+export declare const ComboboxLabel: React.ForwardRefExoticComponent<React.HTMLAttributes<HTMLDivElement> & React.RefAttributes<HTMLDivElement>>;
+export declare function ComboboxCollection(props: { children?: React.ReactNode }): React.JSX.Element;
+export declare const ComboboxEmpty: React.ForwardRefExoticComponent<React.HTMLAttributes<HTMLDivElement> & React.RefAttributes<HTMLDivElement>>;
+export declare const ComboboxSeparator: React.ForwardRefExoticComponent<React.HTMLAttributes<HTMLDivElement> & React.RefAttributes<HTMLDivElement>>;
+export declare const ComboboxChips: React.ForwardRefExoticComponent<React.HTMLAttributes<HTMLDivElement> & React.RefAttributes<HTMLDivElement>>;
+export declare const ComboboxChip: React.ForwardRefExoticComponent<React.HTMLAttributes<HTMLSpanElement> & { value?: unknown; showRemove?: boolean } & React.RefAttributes<HTMLSpanElement>>;
+export declare const ComboboxChipsInput: React.ForwardRefExoticComponent<React.InputHTMLAttributes<HTMLInputElement> & React.RefAttributes<HTMLInputElement>>;
+export declare function useComboboxAnchor(): React.RefObject<HTMLDivElement | null>;
 ```
 
 #### Field

@@ -3,7 +3,7 @@
  "ButtonGroup": "Menyatukan Button/IconButton bersebelahan jadi satu segmen (border berbagi, sudut dalam disikukan). Untuk aksi yang erat berhubungan dan setara: zoom in/out, prev/next, …",
  "ButtonTile": "Ubin besar yang bisa dipilih — pemilih paket, pilihan onboarding. Bungkus dalam ButtonTileGroup columns={n}.",
  "Checkbox": "Checkbox dengan pop centang yang lentur; mendukung baris deskripsi kedua yang redup.",
- "Combobox": "Select yang bisa dicari — tunggal, atau multi dengan chip yang bisa dihapus. Keyboard: panah + Enter, Backspace menghapus chip terakhir.",
+ "Combobox": "Autocomplete komposabel untuk pilihan tunggal atau jamak, grup, hasil kosong, tombol hapus, dan chip yang dapat dilepas.",
  "InputOTP": "Input kode sekali pakai dengan satu input semantik, slot visual yang dapat disusun, dukungan tempel, pola, dan status lengkap.",
  "IconButton": "Tombol persegi khusus-ikon untuk toolbar, aksi kartu, dan baris padat; label wajib (a11y + tooltip).",
  "Input": "Input teks; tampil polos, atau sebagai field lengkap saat label/hint/error diisi.",

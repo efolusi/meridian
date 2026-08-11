@@ -319,6 +319,66 @@
       "sourcePath": "components/forms/Combobox.jsx"
     },
     {
+      "name": "ComboboxChip",
+      "sourcePath": "components/forms/Combobox.jsx"
+    },
+    {
+      "name": "ComboboxChips",
+      "sourcePath": "components/forms/Combobox.jsx"
+    },
+    {
+      "name": "ComboboxChipsInput",
+      "sourcePath": "components/forms/Combobox.jsx"
+    },
+    {
+      "name": "ComboboxClear",
+      "sourcePath": "components/forms/Combobox.jsx"
+    },
+    {
+      "name": "ComboboxCollection",
+      "sourcePath": "components/forms/Combobox.jsx"
+    },
+    {
+      "name": "ComboboxContent",
+      "sourcePath": "components/forms/Combobox.jsx"
+    },
+    {
+      "name": "ComboboxEmpty",
+      "sourcePath": "components/forms/Combobox.jsx"
+    },
+    {
+      "name": "ComboboxGroup",
+      "sourcePath": "components/forms/Combobox.jsx"
+    },
+    {
+      "name": "ComboboxInput",
+      "sourcePath": "components/forms/Combobox.jsx"
+    },
+    {
+      "name": "ComboboxItem",
+      "sourcePath": "components/forms/Combobox.jsx"
+    },
+    {
+      "name": "ComboboxLabel",
+      "sourcePath": "components/forms/Combobox.jsx"
+    },
+    {
+      "name": "ComboboxList",
+      "sourcePath": "components/forms/Combobox.jsx"
+    },
+    {
+      "name": "ComboboxSeparator",
+      "sourcePath": "components/forms/Combobox.jsx"
+    },
+    {
+      "name": "ComboboxTrigger",
+      "sourcePath": "components/forms/Combobox.jsx"
+    },
+    {
+      "name": "ComboboxValue",
+      "sourcePath": "components/forms/Combobox.jsx"
+    },
+    {
       "name": "Command",
       "sourcePath": "components/overlay/Command.jsx"
     },

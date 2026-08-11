@@ -2616,18 +2616,17 @@
     {
       "name": "combobox",
       "type": "registry:ui",
-      "title": "Combobox",
-      "description": "Searchable select \u2014 single, or multi with removable chips. Keyboard: arrows + Enter, Backspace removes last chip.",
+      "title": "Combobox + ComboboxValue + ComboboxTrigger + ComboboxClear + ComboboxInput + ComboboxContent + ComboboxList + ComboboxItem + ComboboxGroup + ComboboxLabel + ComboboxCollection + ComboboxEmpty + ComboboxSeparator + ComboboxChips + ComboboxChip + ComboboxChipsInput",
+      "description": "Composable autocomplete with single or multiple selection, grouped results, clear controls, chips, controlled state, and complete listbox keyboard semantics.",
       "dependencies": [
         "react"
       ],
       "registryDependencies": [
         "https://meridian.efolusi.com/site/registry/meridian-base.json",
         "https://meridian.efolusi.com/site/registry/button.json",
-        "https://meridian.efolusi.com/site/registry/field.json",
         "https://meridian.efolusi.com/site/registry/icon.json",
-        "https://meridian.efolusi.com/site/registry/portal.json",
-        "https://meridian.efolusi.com/site/registry/tag.json"
+        "https://meridian.efolusi.com/site/registry/inputgroup.json",
+        "https://meridian.efolusi.com/site/registry/portal.json"
       ],
       "files": [
         {
