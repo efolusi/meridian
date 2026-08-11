@@ -88,9 +88,8 @@ export const Table = React.forwardRef(function Table({
           {selectable ? (
             <th className="ef-table__sel">
               <Checkbox aria-label={allOn ? 'Deselect all rows' : 'Select all rows'}
-                checked={allOn}
-                ref={el => { if (el) el.indeterminate = someOn; }}
-                onChange={e => applySel(e.target.checked ? allKeys : [])} />
+                checked={allOn ? true : someOn ? 'indeterminate' : false}
+                onCheckedChange={next => applySel(next === true ? allKeys : [])} />
             </th>
           ) : null}
           {columns.map(c => {
@@ -131,7 +130,7 @@ export const Table = React.forwardRef(function Table({
                       {selectable ? (
                         <td className="ef-table__sel" onClick={e => e.stopPropagation()}>
                           <Checkbox aria-label={`Select row ${i + 1}`} checked={!!isSel}
-                            onChange={e => applySel(e.target.checked ? [...selected, k] : selected.filter(x => x !== k))} />
+                            onCheckedChange={next => applySel(next === true ? [...selected, k] : selected.filter(x => x !== k))} />
                         </td>
                       ) : null}
                       {columns.map(c => (

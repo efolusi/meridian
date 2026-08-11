@@ -74,7 +74,14 @@
     { "name": "Card", "status": "unverified" },
     { "name": "Carousel", "status": "unverified" },
     { "name": "Chart", "status": "unverified" },
-    { "name": "Checkbox", "status": "unverified" },
+    {
+      "name": "Checkbox",
+      "status": "proven",
+      "requiredExports": ["Checkbox"],
+      "sourceFiles": ["components/forms/Checkbox.jsx", "components/forms/Checkbox.d.ts"],
+      "registryItems": ["site/registry/checkbox.json"],
+      "tests": ["tests/checkbox-compatibility.test.jsx"]
+    },
     { "name": "Collapsible", "status": "unverified" },
     { "name": "Combobox", "status": "unverified" },
     { "name": "Command", "status": "unverified" },

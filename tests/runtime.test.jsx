@@ -147,11 +147,12 @@ describe('Table', () => {
   it('select-all goes indeterminate for a partial selection', async () => {
     const user = userEvent.setup();
     render(<Table rowKey="id" columns={columns} rows={rows} selectable />);
-    const boxes = document.querySelectorAll('input[type="checkbox"]');
+    const boxes = screen.getAllByRole('checkbox');
     await user.click(boxes[1]);
-    expect(boxes[0].indeterminate).toBe(true);
+    expect(boxes[0].getAttribute('aria-checked')).toBe('mixed');
+    expect(boxes[0].dataset.state).toBe('indeterminate');
     await user.click(boxes[0]);
-    expect(boxes[0].checked).toBe(true);
+    expect(boxes[0].getAttribute('aria-checked')).toBe('true');
   });
 
   it('shows the empty message instead of a bare header', () => {

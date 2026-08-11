@@ -64,12 +64,13 @@ export function ButtonTileDemo() {
   );
 }
 
-// @demo Checkbox With description
+// @demo Checkbox Selection states
 export function CheckboxDemo() {
   const { Checkbox } = window.EfolusiDesignSystem_4ffc3d;
+  const [selected, setSelected] = React.useState('indeterminate');
   return (
     <div style={{ display: 'flex', flexDirection: 'column', gap: 12 }}>
-      <Checkbox defaultChecked label="Email me on failed runs" description="One digest per hour at most." />
+      <Checkbox checked={selected} onCheckedChange={setSelected} label="Email me on failed runs" description="One digest per hour at most." />
       <Checkbox label="Include usage report" />
       <Checkbox disabled label="SSO required (managed by admin)" />
     </div>

@@ -2938,20 +2938,32 @@ export declare function ButtonTileGroup(props: ButtonTileGroupProps): React.JSX.
 
 Group: forms · Source: /components/forms/Checkbox.jsx · Exports: Checkbox
 
-Checkbox with springy check pop; supports a muted `description` second line.
+Accessible checkbox supporting controlled, uncontrolled, and indeterminate states, form submission, and native button attributes. Meridian also provides integrated label and description helpers.
 
 ```jsx
 <Checkbox defaultChecked label="Email me receipts" />
 <Checkbox label="Weekly digest" description="One summary, every Monday." />
+<Checkbox checked="indeterminate" aria-label="Select all rows" />
 ```
 
 ```ts
-export interface CheckboxProps extends React.InputHTMLAttributes<HTMLInputElement> {
+export type CheckedState = boolean | 'indeterminate';
+
+export interface CheckboxProps extends Omit<React.ButtonHTMLAttributes<HTMLButtonElement>, 'defaultChecked' | 'value' | 'onChange'> {
+  checked?: CheckedState;
+  defaultChecked?: CheckedState;
+  onCheckedChange?: (checked: CheckedState) => void;
+  /** Native-form change callback from the hidden checkbox input. */
+  onChange?: React.ChangeEventHandler<HTMLInputElement>;
+  name?: string;
+  value?: string;
+  required?: boolean;
+  form?: string;
   label?: React.ReactNode;
-  /** Muted second line under the label */
+  /** Muted second line under the integrated label. */
   description?: string;
 }
-export declare const Checkbox: React.ForwardRefExoticComponent<CheckboxProps & React.RefAttributes<HTMLInputElement>>;
+export declare const Checkbox: React.ForwardRefExoticComponent<CheckboxProps & React.RefAttributes<HTMLButtonElement>>;
 ```
 
 #### Combobox

@@ -47,6 +47,11 @@ similarity.
 
 ## Proven adapters
 
+- `Checkbox` supports controlled and uncontrolled state, indeterminate state,
+  pointer and keyboard interaction, accessible and invalid state data, disabled
+  behavior, form submission, native button attributes, ref forwarding, types,
+  registry installation, demos, and tests. Meridian's integrated label and
+  description remain additive extensions.
 - `Input` renders a native input and supports text, file, required, disabled,
   invalid, and native numeric-size attributes; native events; consumer classes
   and styles; ref forwarding; accessible labels and descriptions; types;
