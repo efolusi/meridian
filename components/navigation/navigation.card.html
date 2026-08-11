@@ -1,4 +1,4 @@
-<!-- @dsCard group="Components" viewport="700x660" name="Navigation" subtitle="Tabs, Breadcrumbs, SegmentedControl, Pagination, Menubar, SideNav, TopNav" -->
+<!-- @dsCard group="Components" viewport="700x760" name="Navigation" subtitle="Tabs, Breadcrumbs, SegmentedControl, Pagination, Menubar, NavigationMenu, SideNav, TopNav" -->
 <!DOCTYPE html><html><head><meta charset="utf-8"><link rel="stylesheet" href="../../styles.css">
 <script src="https://unpkg.com/react@18.3.1/umd/react.production.min.js" integrity="sha384-DGyLxAyjq0f9SPpVevD6IgztCFlnMF6oW/XQGmfe+IsZ8TqEiDrcHkMLKI6fiB/Z" crossorigin="anonymous"></script>
 <script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.production.min.js" integrity="sha384-gTGxhz21lVGYNMcdJOyq01Edg0jhn/c22nsx0kyqP0TxaV5WVdsSH1fSDUf5YJj1" crossorigin="anonymous"></script>
@@ -7,7 +7,7 @@
 </head><body style="background:var(--surface-page)">
 <div id="root"></div>
 <script type="text/babel">
-const { Tabs, Breadcrumbs, SegmentedControl, Pagination, PageControl, SideNav, TopNav, Menubar, MenubarMenu, MenubarTrigger, MenubarContent, MenubarItem, MenubarSeparator, MenubarShortcut, Input, IconButton, Avatar, Item, ItemContent, ItemDescription, ItemMedia, ItemTitle, Steps } = window.EfolusiDesignSystem_4ffc3d;
+const { Tabs, Breadcrumbs, SegmentedControl, Pagination, PageControl, SideNav, TopNav, Menubar, MenubarMenu, MenubarTrigger, MenubarContent, MenubarItem, MenubarSeparator, MenubarShortcut, NavigationMenu, NavigationMenuList, NavigationMenuItem, NavigationMenuTrigger, NavigationMenuContent, NavigationMenuLink, NavigationMenuIndicator, Input, IconButton, Avatar, Item, ItemContent, ItemDescription, ItemMedia, ItemTitle, Steps } = window.EfolusiDesignSystem_4ffc3d;
 const lbl = { fontSize: 11, fontWeight: 600, letterSpacing: '0.06em', textTransform: 'uppercase', color: 'var(--text-muted)', marginBottom: 8 };
 function Demo() {
   const [tab, setTab] = React.useState('overview');
@@ -44,6 +44,16 @@ function Demo() {
           <MenubarMenu><MenubarTrigger>Edit</MenubarTrigger><MenubarContent><MenubarItem>Undo <MenubarShortcut>⌘Z</MenubarShortcut></MenubarItem><MenubarItem>Redo <MenubarShortcut>⇧⌘Z</MenubarShortcut></MenubarItem></MenubarContent></MenubarMenu>
           <MenubarMenu><MenubarTrigger>View</MenubarTrigger><MenubarContent><MenubarItem>Zoom in <MenubarShortcut>⌘+</MenubarShortcut></MenubarItem><MenubarItem>Full screen</MenubarItem></MenubarContent></MenubarMenu>
         </Menubar>
+      </div>
+      <div><div style={lbl}>NavigationMenu</div>
+        <NavigationMenu>
+          <NavigationMenuList>
+            <NavigationMenuItem value="platform"><NavigationMenuTrigger>Platform</NavigationMenuTrigger><NavigationMenuContent><NavigationMenuLink href="#automation"><strong>Automation</strong><span style={{ color: 'var(--text-secondary)' }}>Build dependable workflows.</span></NavigationMenuLink><NavigationMenuLink href="#observability"><strong>Observability</strong><span style={{ color: 'var(--text-secondary)' }}>Trace every production run.</span></NavigationMenuLink></NavigationMenuContent></NavigationMenuItem>
+            <NavigationMenuItem value="resources"><NavigationMenuTrigger>Resources</NavigationMenuTrigger><NavigationMenuContent><NavigationMenuLink href="#guides">Guides</NavigationMenuLink><NavigationMenuLink href="#changelog">Changelog</NavigationMenuLink></NavigationMenuContent></NavigationMenuItem>
+            <NavigationMenuItem><NavigationMenuLink href="#pricing">Pricing</NavigationMenuLink></NavigationMenuItem>
+            <NavigationMenuIndicator />
+          </NavigationMenuList>
+        </NavigationMenu>
       </div>
       <div><div style={lbl}>SideNav + TopNav</div>
         <div style={{ display: 'flex', border: '1px solid var(--border-default)', borderRadius: 'var(--radius-md)', overflow: 'hidden', height: 260 }}>

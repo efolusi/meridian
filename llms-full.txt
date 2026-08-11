@@ -30,7 +30,7 @@ Dark mode: set data-theme="dark" on any subtree. Compact density: data-density="
 
 ## Components
 
-116 components across 12 groups: ai, code, data, dates, display, feedback, files, finance, forms, icons, navigation, overlay. Each entry lists the component's public exports, its usage guidance (.prompt.md), and its typed props interface (.d.ts).
+117 components across 12 groups: ai, code, data, dates, display, feedback, files, finance, forms, icons, navigation, overlay. Each entry lists the component's public exports, its usage guidance (.prompt.md), and its typed props interface (.d.ts).
 
 ### ai
 
@@ -3831,6 +3831,52 @@ export interface MenubarSubTriggerProps extends DropdownMenuSubTriggerProps {}
 export declare const MenubarSubTrigger: React.ForwardRefExoticComponent<MenubarSubTriggerProps & React.RefAttributes<HTMLButtonElement>>;
 export interface MenubarSubContentProps extends DropdownMenuSubContentProps {}
 export declare const MenubarSubContent: React.ForwardRefExoticComponent<MenubarSubContentProps & React.RefAttributes<HTMLDivElement>>;
+```
+
+#### NavigationMenu
+
+Group: navigation · Source: /components/navigation/NavigationMenu.jsx · Exports: NavigationMenu, NavigationMenuList, NavigationMenuItem, NavigationMenuTrigger, NavigationMenuContent, NavigationMenuLink, NavigationMenuIndicator, NavigationMenuViewport
+
+# Navigation Menu
+
+A composable site-navigation menu for product areas, resources, and direct links. It supports a shared animated viewport, trigger indicator, controlled state, delayed hover opening, roving keyboard focus, RTL-aware arrows, and `asChild` links.
+
+```jsx
+<NavigationMenu>
+  <NavigationMenuList>
+    <NavigationMenuItem value="platform">
+      <NavigationMenuTrigger>Platform</NavigationMenuTrigger>
+      <NavigationMenuContent>
+        <NavigationMenuLink href="/automation">Automation</NavigationMenuLink>
+        <NavigationMenuLink href="/observability">Observability</NavigationMenuLink>
+      </NavigationMenuContent>
+    </NavigationMenuItem>
+    <NavigationMenuItem>
+      <NavigationMenuLink href="/pricing">Pricing</NavigationMenuLink>
+    </NavigationMenuItem>
+    <NavigationMenuIndicator />
+  </NavigationMenuList>
+</NavigationMenu>
+```
+
+Set `viewport={false}` for content positioned directly below each trigger. Use Menubar for application commands; use Navigation Menu for destinations and product discovery.
+
+```ts
+import type * as React from 'react';
+
+export interface NavigationMenuProps extends React.HTMLAttributes<HTMLElement> { value?: string; defaultValue?: string; onValueChange?: (value: string) => void; viewport?: boolean; delayDuration?: number; skipDelayDuration?: number; orientation?: 'horizontal' | 'vertical'; }
+export declare const NavigationMenu: React.ForwardRefExoticComponent<NavigationMenuProps & React.RefAttributes<HTMLElement>>;
+export declare const NavigationMenuList: React.ForwardRefExoticComponent<React.HTMLAttributes<HTMLUListElement> & React.RefAttributes<HTMLUListElement>>;
+export interface NavigationMenuItemProps extends React.LiHTMLAttributes<HTMLLIElement> { value?: string; }
+export declare const NavigationMenuItem: React.ForwardRefExoticComponent<NavigationMenuItemProps & React.RefAttributes<HTMLLIElement>>;
+export declare const NavigationMenuTrigger: React.ForwardRefExoticComponent<React.ButtonHTMLAttributes<HTMLButtonElement> & React.RefAttributes<HTMLButtonElement>>;
+export interface NavigationMenuContentProps extends React.HTMLAttributes<HTMLDivElement> { forceMount?: boolean; }
+export declare const NavigationMenuContent: React.ForwardRefExoticComponent<NavigationMenuContentProps & React.RefAttributes<HTMLDivElement>>;
+export interface NavigationMenuLinkProps extends React.AnchorHTMLAttributes<HTMLAnchorElement> { asChild?: boolean; active?: boolean; }
+export declare const NavigationMenuLink: React.ForwardRefExoticComponent<NavigationMenuLinkProps & React.RefAttributes<HTMLAnchorElement>>;
+export declare const NavigationMenuIndicator: React.ForwardRefExoticComponent<React.HTMLAttributes<HTMLDivElement> & React.RefAttributes<HTMLDivElement>>;
+export declare const NavigationMenuViewport: React.ForwardRefExoticComponent<React.HTMLAttributes<HTMLDivElement> & React.RefAttributes<HTMLDivElement>>;
+export declare function navigationMenuTriggerStyle(): string;
 ```
 
 #### PageControl

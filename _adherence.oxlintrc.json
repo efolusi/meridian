@@ -1199,6 +1199,30 @@
       "MenubarTrigger": {
         "replaces": []
       },
+      "NavigationMenu": {
+        "replaces": []
+      },
+      "NavigationMenuContent": {
+        "replaces": []
+      },
+      "NavigationMenuIndicator": {
+        "replaces": []
+      },
+      "NavigationMenuItem": {
+        "replaces": []
+      },
+      "NavigationMenuLink": {
+        "replaces": []
+      },
+      "NavigationMenuList": {
+        "replaces": []
+      },
+      "NavigationMenuTrigger": {
+        "replaces": []
+      },
+      "NavigationMenuViewport": {
+        "replaces": []
+      },
       "ModelSelector": {
         "replaces": []
       },

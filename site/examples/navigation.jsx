@@ -36,6 +36,34 @@ export function MenubarDemo() {
   </Menubar>;
 }
 
+// @demo NavigationMenu Product discovery
+export function NavigationMenuDemo() {
+  const { NavigationMenu, NavigationMenuList, NavigationMenuItem, NavigationMenuTrigger, NavigationMenuContent, NavigationMenuLink, NavigationMenuIndicator } = window.EfolusiDesignSystem_4ffc3d;
+  const linkStyle = { width: 220 };
+  return <div style={{ minHeight: 210, display: 'flex', alignItems: 'flex-start', justifyContent: 'center' }}>
+    <NavigationMenu>
+      <NavigationMenuList>
+        <NavigationMenuItem value="platform">
+          <NavigationMenuTrigger>Platform</NavigationMenuTrigger>
+          <NavigationMenuContent>
+            <NavigationMenuLink href="#automation" style={linkStyle}><strong>Automation</strong><span style={{ color: 'var(--text-secondary)' }}>Build dependable operational workflows.</span></NavigationMenuLink>
+            <NavigationMenuLink href="#observability" style={linkStyle}><strong>Observability</strong><span style={{ color: 'var(--text-secondary)' }}>Trace every run and investigate failures.</span></NavigationMenuLink>
+          </NavigationMenuContent>
+        </NavigationMenuItem>
+        <NavigationMenuItem value="resources">
+          <NavigationMenuTrigger>Resources</NavigationMenuTrigger>
+          <NavigationMenuContent>
+            <NavigationMenuLink href="#guides" style={linkStyle}><strong>Guides</strong><span style={{ color: 'var(--text-secondary)' }}>Patterns for shipping production workflows.</span></NavigationMenuLink>
+            <NavigationMenuLink href="#changelog" style={linkStyle}><strong>Changelog</strong><span style={{ color: 'var(--text-secondary)' }}>Follow improvements across the platform.</span></NavigationMenuLink>
+          </NavigationMenuContent>
+        </NavigationMenuItem>
+        <NavigationMenuItem><NavigationMenuLink href="#pricing">Pricing</NavigationMenuLink></NavigationMenuItem>
+        <NavigationMenuIndicator />
+      </NavigationMenuList>
+    </NavigationMenu>
+  </div>;
+}
+
 // @demo PageControl Dots pager
 export function PageControlDemo() {
   const { PageControl } = window.EfolusiDesignSystem_4ffc3d;

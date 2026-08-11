@@ -3204,6 +3204,38 @@
       ]
     },
     {
+      "name": "navigationmenu",
+      "type": "registry:ui",
+      "title": "NavigationMenu + NavigationMenuList + NavigationMenuItem + NavigationMenuTrigger + NavigationMenuContent + NavigationMenuLink + NavigationMenuIndicator + NavigationMenuViewport",
+      "description": "A composable site-navigation menu for product areas, resources, and direct links. It supports a shared animated viewport, trigger indicator, controlled state, delayed hover opening, roving keyboard focus, RTL-aware arrows, and `asChild` links.",
+      "dependencies": [
+        "react"
+      ],
+      "registryDependencies": [
+        "https://meridian.efolusi.com/site/registry/meridian-base.json",
+        "https://meridian.efolusi.com/site/registry/button.json",
+        "https://meridian.efolusi.com/site/registry/direction.json",
+        "https://meridian.efolusi.com/site/registry/icon.json"
+      ],
+      "files": [
+        {
+          "path": "components/navigation/NavigationMenu.jsx",
+          "type": "registry:ui"
+        },
+        {
+          "path": "components/navigation/NavigationMenu.d.ts",
+          "type": "registry:component"
+        },
+        {
+          "path": "components/navigation/NavigationMenu.prompt.md",
+          "type": "registry:component"
+        }
+      ],
+      "categories": [
+        "navigation"
+      ]
+    },
+    {
       "name": "pagecontrol",
       "type": "registry:ui",
       "title": "PageControl",

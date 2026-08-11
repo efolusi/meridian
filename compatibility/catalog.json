@@ -362,7 +362,15 @@
       "registryItems": ["site/registry/nativeselect.json"],
       "tests": ["tests/compatibility-primitives.test.jsx"]
     },
-    { "name": "Navigation Menu", "status": "unverified" },
+    {
+      "name": "Navigation Menu",
+      "status": "proven",
+      "requiredExports": ["NavigationMenu", "NavigationMenuList", "NavigationMenuItem", "NavigationMenuContent", "NavigationMenuTrigger", "NavigationMenuLink", "NavigationMenuIndicator", "NavigationMenuViewport"],
+      "requiredModuleExports": ["navigationMenuTriggerStyle"],
+      "sourceFiles": ["components/navigation/NavigationMenu.jsx", "components/navigation/NavigationMenu.d.ts"],
+      "registryItems": ["site/registry/navigationmenu.json"],
+      "tests": ["tests/navigation-menu-compatibility.test.jsx"]
+    },
     {
       "name": "Pagination",
       "status": "proven",

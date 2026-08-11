@@ -41,6 +41,7 @@ const PROPS = {
   DropdownMenu: { children: React.createElement('span', null, 'Menu') },
   Sheet: { children: React.createElement('span', null, 'Sheet') },
   Menubar: { children: React.createElement('span', null, 'Menu') },
+  NavigationMenu: { children: React.createElement('span', null, 'Navigation') },
   PageControl: { count: 3 },
   Pagination: { page: 1, pageCount: 3 },
   Player: { src: 'x.mp3', title: 'T' },

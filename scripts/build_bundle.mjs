@@ -29,6 +29,7 @@ const PUBLIC_HELPERS = new Set([
   'buttonGroupVariants',
   'buttonVariants',
   'markerVariants',
+  'navigationMenuTriggerStyle',
   'toggleVariants',
   'useComboboxAnchor',
   'useDirection',

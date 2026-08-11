@@ -34,6 +34,7 @@
  "TreeList": "Pohon yang bisa dilipat untuk hierarki berkas/navigasi. Baris menerima ikon + hitungan mono; cabang di-toggle saat diklik.",
  "Breadcrumbs": "Jejak jalur dengan pemisah chevron; item terakhir adalah halaman saat ini.",
  "Menubar": "Bar menu aplikasi yang composable dengan navigasi keyboard, checkbox, pilihan radio, submenu, shortcut, dan perpindahan menu yang sadar arah baca.",
+ "NavigationMenu": "Navigasi situs composable untuk area produk, resource, dan tautan langsung dengan viewport bersama, indikator aktif, keyboard, serta dukungan RTL.",
  "PageControl": "Titik carousel — titik aktif memanjang jadi pil tinta.",
  "Pagination": "Pager bernomor dengan elipsis yang meringkas; halaman aktif adalah chip tinta.",
  "SegmentedControl": "Toggle inline 2–5 arah pada trek pasir; segmen aktif adalah chip putih setipis rambut. Untuk tampilan/rentang — pakai Tabs untuk bagian halaman.",

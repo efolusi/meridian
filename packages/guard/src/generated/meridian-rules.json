@@ -975,6 +975,38 @@
       "sourcePath": "components/forms/NativeSelect.jsx"
     },
     {
+      "name": "NavigationMenu",
+      "sourcePath": "components/navigation/NavigationMenu.jsx"
+    },
+    {
+      "name": "NavigationMenuContent",
+      "sourcePath": "components/navigation/NavigationMenu.jsx"
+    },
+    {
+      "name": "NavigationMenuIndicator",
+      "sourcePath": "components/navigation/NavigationMenu.jsx"
+    },
+    {
+      "name": "NavigationMenuItem",
+      "sourcePath": "components/navigation/NavigationMenu.jsx"
+    },
+    {
+      "name": "NavigationMenuLink",
+      "sourcePath": "components/navigation/NavigationMenu.jsx"
+    },
+    {
+      "name": "NavigationMenuList",
+      "sourcePath": "components/navigation/NavigationMenu.jsx"
+    },
+    {
+      "name": "NavigationMenuTrigger",
+      "sourcePath": "components/navigation/NavigationMenu.jsx"
+    },
+    {
+      "name": "NavigationMenuViewport",
+      "sourcePath": "components/navigation/NavigationMenu.jsx"
+    },
+    {
       "name": "NumberInput",
       "sourcePath": "components/forms/NumberInput.jsx"
     },
