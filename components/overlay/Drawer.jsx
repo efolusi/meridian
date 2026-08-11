@@ -1,61 +1,94 @@
 import React from 'react';
-import { IconButton } from '../forms/IconButton.jsx';
-import { injectEfCss, mergeRefs } from '../forms/Button.jsx';
+import { injectEfCss } from '../forms/Button.jsx';
+import {
+  Dialog,
+  DialogClose,
+  DialogContent,
+  DialogDescription,
+  DialogFooter,
+  DialogHeader,
+  DialogOverlay,
+  DialogPortal,
+  DialogTitle,
+  DialogTrigger,
+} from '../feedback/Dialog.jsx';
+
 const CSS = `
-.ef-drawer__overlay{position:fixed;inset:0;background:var(--overlay-scrim);z-index:var(--z-overlay);animation:ef-fade-in var(--dur-med) var(--ease-out)}
-@keyframes ef-fade-in{from{opacity:0}}
-.ef-drawer{position:fixed;top:0;bottom:0;background:var(--surface-card);z-index:var(--z-modal);display:flex;flex-direction:column;box-shadow:var(--shadow-pop)}
-.ef-drawer:focus{outline:none}
-.ef-drawer--right{right:0;border-left:1px solid var(--border-default);animation:ef-drawer-r var(--dur-slow) var(--ease-out)}
-.ef-drawer--left{left:0;border-right:1px solid var(--border-default);animation:ef-drawer-l var(--dur-slow) var(--ease-out)}
-@keyframes ef-drawer-r{from{transform:translateX(24px);opacity:0}}
-@keyframes ef-drawer-l{from{transform:translateX(-24px);opacity:0}}
-.ef-drawer__head{display:flex;align-items:center;gap:12px;padding:16px 20px;border-bottom:1px solid var(--border-default)}
-.ef-drawer__title{font-family:var(--font-display);font-size:var(--text-lg);font-weight:var(--weight-bold);letter-spacing:var(--tracking-tight);flex:1}
-.ef-drawer__body{flex:1;overflow-y:auto;padding:20px}
-.ef-drawer__foot{display:flex;justify-content:flex-end;gap:8px;padding:14px 20px;border-top:1px solid var(--border-default);background:var(--surface-subtle)}
+.ef-drawer__overlay{padding:0}
+.ef-drawer{position:fixed;z-index:var(--z-modal);display:flex;max-width:none;max-height:none;flex-direction:column;overflow:auto;border-radius:0;background:var(--surface-card);box-shadow:var(--shadow-pop);touch-action:none;will-change:transform}
+.ef-drawer[data-vaul-drawer-direction=right]{top:0;right:0;bottom:0;width:min(75vw,384px);border-width:0 0 0 1px;animation:ef-drawer-right var(--dur-slow) var(--ease-out)}
+.ef-drawer[data-vaul-drawer-direction=left]{top:0;left:0;bottom:0;width:min(75vw,384px);border-width:0 1px 0 0;animation:ef-drawer-left var(--dur-slow) var(--ease-out)}
+.ef-drawer[data-vaul-drawer-direction=top]{top:0;left:0;right:0;width:100%;max-height:80vh;border-width:0 0 1px;border-radius:0 0 var(--radius-lg) var(--radius-lg);animation:ef-drawer-top var(--dur-slow) var(--ease-out)}
+.ef-drawer[data-vaul-drawer-direction=bottom]{bottom:0;left:0;right:0;width:100%;max-height:80vh;border-width:1px 0 0;border-radius:var(--radius-lg) var(--radius-lg) 0 0;animation:ef-drawer-bottom var(--dur-slow) var(--ease-out)}
+.ef-drawer__handle{display:none;width:100px;height:8px;flex:none;margin:16px auto 0;border-radius:var(--radius-full);background:var(--surface-sunken);cursor:grab;touch-action:none}
+.ef-drawer[data-vaul-drawer-direction=bottom]>.ef-drawer__handle{display:block}
+.ef-drawer__header{gap:6px;padding:20px 24px 12px;text-align:start}.ef-drawer__footer{margin-top:auto;padding:16px 24px}.ef-drawer__description{margin-top:2px}
+@keyframes ef-drawer-right{from{transform:translateX(24px);opacity:0}}@keyframes ef-drawer-left{from{transform:translateX(-24px);opacity:0}}@keyframes ef-drawer-top{from{transform:translateY(-24px);opacity:0}}@keyframes ef-drawer-bottom{from{transform:translateY(24px);opacity:0}}
 `;
-const FOCUSABLE = 'button,[href],input,select,textarea,[tabindex]:not([tabindex="-1"])';
-export const Drawer = React.forwardRef(function Drawer({ open, onClose, closeLabel = 'Close', title, footer, width = 400, side = 'right', children, style, className, ...rest }, ref) {
+
+const DrawerContext = React.createContext(null);
+const join = (...values) => values.filter(Boolean).join(' ');
+const compose = (first, second) => event => { first?.(event); if (!event.defaultPrevented) second?.(event); };
+
+export function Drawer({ open: controlled, defaultOpen = false, onOpenChange, direction = 'bottom', dismissible = true, modal = true, handleOnly = false, children }) {
   injectEfCss('ef-css-drawer', CSS);
-  const panelRef = React.useRef(null);
-  const prevFocus = React.useRef(null);
-  const titleId = React.useId();
-  React.useEffect(() => {
-    if (!open) return;
-    prevFocus.current = document.activeElement;
-    const panel = panelRef.current;
-    const first = panel && panel.querySelector(FOCUSABLE);
-    (first || panel).focus();
-    return () => { if (prevFocus.current && prevFocus.current.focus) prevFocus.current.focus(); };
-  }, [open]);
-  React.useEffect(() => {
-    if (!open) return;
-    const key = e => {
-      if (e.key === 'Escape') { if (onClose) onClose(); return; }
-      if (e.key !== 'Tab') return;
-      const panel = panelRef.current;
-      const f = panel ? Array.from(panel.querySelectorAll(FOCUSABLE)).filter(el => !el.disabled) : [];
-      if (!f.length) { e.preventDefault(); return; }
-      const i = f.indexOf(document.activeElement);
-      if (e.shiftKey && i <= 0) { e.preventDefault(); f[f.length - 1].focus(); }
-      else if (!e.shiftKey && (i === -1 || i === f.length - 1)) { e.preventDefault(); f[0].focus(); }
-    };
-    document.addEventListener('keydown', key);
-    return () => document.removeEventListener('keydown', key);
-  }, [open, onClose]);
-  if (!open) return null;
-  return (
-    <React.Fragment>
-      <div className="ef-drawer__overlay" onMouseDown={onClose}></div>
-      <div {...rest} className={`ef-drawer ef-drawer--${side}${className ? ' ' + className : ''}`} role="dialog" aria-modal="true" ref={mergeRefs(ref, panelRef)} tabIndex={-1} aria-labelledby={title ? titleId : undefined} style={{ width, ...style }}>
-        <div className="ef-drawer__head">
-          <div className="ef-drawer__title" id={titleId}>{title}</div>
-          {onClose ? <IconButton icon="x" label={closeLabel} size="sm" onClick={onClose} /> : null}
-        </div>
-        <div className="ef-drawer__body">{children}</div>
-        {footer ? <div className="ef-drawer__foot">{footer}</div> : null}
-      </div>
-    </React.Fragment>
-  );
+  const [internal, setInternal] = React.useState(defaultOpen);
+  const open = controlled === undefined ? internal : controlled;
+  const setOpen = React.useCallback(next => {
+    if (controlled === undefined) setInternal(next);
+    onOpenChange?.(next);
+  }, [controlled, onOpenChange]);
+  const context = React.useMemo(() => ({ direction, dismissible, handleOnly, open, setOpen }), [direction, dismissible, handleOnly, open, setOpen]);
+  return <DrawerContext.Provider value={context}><Dialog open={open} onOpenChange={setOpen} modal={modal}>{children}</Dialog></DrawerContext.Provider>;
+}
+
+export const DrawerTrigger = React.forwardRef(function DrawerTrigger(props, ref) { return <DialogTrigger {...props} ref={ref} slot="drawer-trigger" />; });
+export function DrawerPortal(props) { return <DialogPortal {...props} />; }
+export const DrawerClose = React.forwardRef(function DrawerClose(props, ref) { return <DialogClose {...props} ref={ref} slot="drawer-close" />; });
+export const DrawerOverlay = React.forwardRef(function DrawerOverlay({ className, onMouseDown, ...props }, ref) {
+  const drawer = React.useContext(DrawerContext);
+  const dismiss = event => { if (!drawer?.dismissible) event.preventDefault(); };
+  return <DialogOverlay {...props} ref={ref} slot="drawer-overlay" className={join('ef-drawer__overlay', className)} onMouseDown={compose(onMouseDown, dismiss)} />;
 });
+
+export const DrawerContent = React.forwardRef(function DrawerContent({ className, style, children, onEscapeKeyDown, onPointerDown, onPointerMove, onPointerUp, overlayProps, ...props }, ref) {
+  const drawer = React.useContext(DrawerContext);
+  const gesture = React.useRef(null);
+  const offsetRef = React.useRef(0);
+  const [offset, setOffset] = React.useState(0);
+  const direction = drawer?.direction || 'bottom';
+  const axis = direction === 'left' || direction === 'right' ? 'clientX' : 'clientY';
+  const sign = direction === 'top' || direction === 'left' ? -1 : 1;
+  const start = event => {
+    onPointerDown?.(event);
+    if (event.defaultPrevented || !drawer?.dismissible || (drawer.handleOnly && event.target.dataset.slot !== 'drawer-handle') || event.target.closest('button,a,input,select,textarea')) return;
+    gesture.current = { pointerId: event.pointerId, start: event[axis] };
+    event.currentTarget.setPointerCapture?.(event.pointerId);
+  };
+  const move = event => {
+    onPointerMove?.(event);
+    if (!gesture.current || gesture.current.pointerId !== event.pointerId) return;
+    const next = Math.max(0, (event[axis] - gesture.current.start) * sign);
+    offsetRef.current = next;
+    setOffset(next);
+  };
+  const end = event => {
+    onPointerUp?.(event);
+    if (!gesture.current || gesture.current.pointerId !== event.pointerId) return;
+    gesture.current = null;
+    if (offsetRef.current > 80) drawer?.setOpen(false);
+    offsetRef.current = 0;
+    setOffset(0);
+  };
+  const transform = offset ? (axis === 'clientX' ? `translateX(${offset * sign}px)` : `translateY(${offset * sign}px)`) : undefined;
+  const escape = event => { onEscapeKeyDown?.(event); if (!drawer?.dismissible) event.preventDefault(); };
+  const dismissOverlay = event => { overlayProps?.onMouseDown?.(event); if (!drawer?.dismissible) event.preventDefault(); };
+  return <DialogContent {...props} ref={ref} slot="drawer-content" data-vaul-drawer-direction={direction} className={join('ef-drawer', className)} width="none" showCloseButton={false} onEscapeKeyDown={escape} overlayProps={{ ...overlayProps, slot: 'drawer-overlay', className: join('ef-drawer__overlay', overlayProps?.className), onMouseDown: dismissOverlay }} style={{ ...style, position: 'fixed', transform: transform || style?.transform, transition: offset ? 'none' : style?.transition }} onPointerDown={start} onPointerMove={move} onPointerUp={end}>
+    <div data-slot="drawer-handle" className="ef-drawer__handle" />{children}
+  </DialogContent>;
+});
+
+export const DrawerHeader = React.forwardRef(function DrawerHeader({ className, ...props }, ref) { return <DialogHeader {...props} ref={ref} slot="drawer-header" className={join('ef-drawer__header', className)} />; });
+export const DrawerFooter = React.forwardRef(function DrawerFooter({ className, ...props }, ref) { return <DialogFooter {...props} ref={ref} slot="drawer-footer" className={join('ef-drawer__footer', className)} />; });
+export const DrawerTitle = React.forwardRef(function DrawerTitle(props, ref) { return <DialogTitle {...props} ref={ref} slot="drawer-title" />; });
+export const DrawerDescription = React.forwardRef(function DrawerDescription({ className, ...props }, ref) { return <DialogDescription {...props} ref={ref} slot="drawer-description" className={join('ef-drawer__description', className)} />; });

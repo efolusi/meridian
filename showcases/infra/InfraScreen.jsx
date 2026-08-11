@@ -1,4 +1,4 @@
-const { Banner, Stat, Sparkline, SegmentedControl, Table, StatusDot, Drawer, KeyValueList, CopyField, Terminal, Dialog, Card, Button, NativeSelect, NativeSelectOption, Field, FieldLabel, Input, Badge, Icon, Toaster } = window.EfolusiDesignSystem_4ffc3d;
+const { Banner, Stat, Sparkline, SegmentedControl, Table, StatusDot, Drawer, DrawerContent, DrawerHeader, DrawerTitle, DrawerDescription, DrawerFooter, DrawerClose, KeyValueList, CopyField, Terminal, Dialog, Card, Button, NativeSelect, NativeSelectOption, Field, FieldLabel, Input, Badge, Icon, Toaster } = window.EfolusiDesignSystem_4ffc3d;
 
 const RESOURCES = [
   { id: 'pg', name: 'pg-prod-eu', kind: 'PostgreSQL', icon: 'database', region: 'eu-west-1', status: 'ok', latency: '38 ms' },
@@ -68,10 +68,9 @@ function InfraScreen() {
           </Card>
         </div>
       </div>
-      <Drawer open={!!sel} onClose={() => setSel(null)} title={sel ? sel.name : ''} width={420}
-        footer={<React.Fragment><Button variant="ghost" onClick={() => setSel(null)}>Close</Button><Button variant="danger" iconLeft="plug" onClick={() => { notify(sel.name + ' disconnected', 'The tunnel closed cleanly.'); setSel(null); }}>Disconnect</Button></React.Fragment>}>
+      <Drawer open={!!sel} onOpenChange={open => { if (!open) setSel(null); }} direction="right"><DrawerContent style={{ width: 420 }}><DrawerHeader><DrawerTitle>{sel ? sel.name : ''}</DrawerTitle><DrawerDescription>Connection health and recent activity.</DrawerDescription></DrawerHeader>
         {sel && (
-          <div style={{ display: 'flex', flexDirection: 'column', gap: 18 }}>
+          <div style={{ display: 'flex', flexDirection: 'column', gap: 18, padding: 20 }}>
             <StatusDot state={sel.status} pulse={sel.status !== 'ok'} label={STATUS_LABEL[sel.status]} />
             <KeyValueList labelWidth={110} items={[
               { label: 'Type', value: sel.kind },
@@ -90,7 +89,8 @@ function InfraScreen() {
             </div>
           </div>
         )}
-      </Drawer>
+        {sel && <DrawerFooter><DrawerClose asChild><Button variant="ghost">Close</Button></DrawerClose><Button variant="danger" iconLeft="plug" onClick={() => { notify(sel.name + ' disconnected', 'The tunnel closed cleanly.'); setSel(null); }}>Disconnect</Button></DrawerFooter>}
+      </DrawerContent></Drawer>
       <Dialog open={connect} onClose={() => setConnect(false)} title="Connect a resource" description="Efolusi talks to it through an encrypted tunnel — nothing is stored."
         footer={<React.Fragment><Button variant="ghost" onClick={() => setConnect(false)}>Cancel</Button><Button iconRight="arrow-right" onClick={() => { setConnect(false); setTab('resources'); setExtra(x => [...x, { id: 'new' + x.length, name: 'db-replica-' + (x.length + 1), kind: 'PostgreSQL', icon: 'database', region: 'eu-west-1', status: 'ok', latency: '41 ms' }]); notify('Tunnel created', 'db-replica is connected and healthy.'); }}>Create tunnel</Button></React.Fragment>}>
         <div style={{ display: 'flex', flexDirection: 'column', gap: 14 }}>
@@ -99,8 +99,8 @@ function InfraScreen() {
           <Field><FieldLabel htmlFor="connection-region">Region</FieldLabel><NativeSelect id="connection-region">{['eu-west-1', 'us-east-1', 'fra1', 'sgp1'].map(value => <NativeSelectOption key={value} value={value}>{value}</NativeSelectOption>)}</NativeSelect></Field>
         </div>
       </Dialog>
-      <Drawer open={cli} onClose={() => setCli(false)} title="Efolusi CLI" width={480}>
-        <div style={{ display: 'flex', flexDirection: 'column', gap: 14 }}>
+      <Drawer open={cli} onOpenChange={setCli} direction="right"><DrawerContent style={{ width: 480 }}><DrawerHeader><DrawerTitle>Efolusi CLI</DrawerTitle><DrawerDescription>Install commands and live infrastructure output.</DrawerDescription></DrawerHeader>
+        <div style={{ display: 'flex', flexDirection: 'column', gap: 14, padding: 20 }}>
           <CopyField label="Install" value="curl -fsSL cli.efolusi.com | sh" />
           <Terminal host="ada@acme-workspace" live maxHeight={280} lines={[
             { type: 'cmd', text: 'efolusi infra ls' },
@@ -110,7 +110,7 @@ function InfraScreen() {
             { type: 'info', text: 'Suggestion: drain + restart with efolusi infra restart worker-04', time: '09:41:12' },
           ]} />
         </div>
-      </Drawer>
+        <DrawerFooter><DrawerClose asChild><Button variant="secondary">Close</Button></DrawerClose></DrawerFooter></DrawerContent></Drawer>
     </div>
   );
 }

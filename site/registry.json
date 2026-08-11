@@ -3487,15 +3487,14 @@
     {
       "name": "drawer",
       "type": "registry:ui",
-      "title": "Drawer",
-      "description": "Side panel for details and multi-field edits that shouldn't leave the page.",
+      "title": "Drawer + DrawerTrigger + DrawerPortal + DrawerClose + DrawerOverlay + DrawerContent + DrawerHeader + DrawerFooter + DrawerTitle + DrawerDescription",
+      "description": "A composable, gesture-dismissable surface for mobile details and short workflows. It supports top, right, bottom, and left directions; controlled or uncontrolled state; focus trapping; Escape/overlay dismissal; and focus return.",
       "dependencies": [
         "react"
       ],
       "registryDependencies": [
         "https://meridian.efolusi.com/site/registry/meridian-base.json",
-        "https://meridian.efolusi.com/site/registry/button.json",
-        "https://meridian.efolusi.com/site/registry/iconbutton.json"
+        "https://meridian.efolusi.com/site/registry/button.json"
       ],
       "files": [
         {

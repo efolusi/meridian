@@ -1,7 +1,7 @@
 import { describe, it, expect } from 'vitest';
 import { render, screen } from '@testing-library/react';
 import { Dialog } from '../components/feedback/Dialog.jsx';
-import { Drawer } from '../components/overlay/Drawer.jsx';
+import { Drawer, DrawerClose, DrawerContent, DrawerTitle } from '../components/overlay/Drawer.jsx';
 
 // The ✕ on Dialog and Drawer had its accessible name written in English in the
 // source. Every other visible string in these components comes from the caller,
@@ -16,7 +16,7 @@ describe('closing controls can be named in the reader’s language', () => {
   });
 
   it('Drawer uses the label it is given', () => {
-    render(<Drawer open onClose={() => {}} closeLabel="Tutup" title="Judul" />);
+    render(<Drawer open><DrawerContent><DrawerTitle>Judul</DrawerTitle><DrawerClose aria-label="Tutup" /></DrawerContent></Drawer>);
     expect(screen.getByLabelText('Tutup')).toBeTruthy();
     expect(screen.queryByLabelText('Close')).toBeNull();
   });

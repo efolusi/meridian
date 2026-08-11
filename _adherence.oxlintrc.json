@@ -201,12 +201,12 @@
         "message": "<DocumentCard> doesn't accept that prop. Declared props: title, meta, icon, collapsedHeight, defaultOpen, onCopy, actions, children, style, className."
       },
       {
-        "selector": "JSXOpeningElement[name.name='Drawer'] > JSXAttribute > JSXIdentifier[name!=/^(?:open|onClose|title|footer|width|side|children|key|ref|className|style|children)$/]",
-        "message": "<Drawer> doesn't accept that prop. Declared props: open, onClose, title, footer, width, side, children."
+        "selector": "JSXOpeningElement[name.name='Drawer'] > JSXAttribute > JSXIdentifier[name!=/^(?:open|defaultOpen|onOpenChange|direction|dismissible|modal|handleOnly|children|key)$/]",
+        "message": "<Drawer> doesn't accept that prop. Declared props: open, defaultOpen, onOpenChange, direction, dismissible, modal, handleOnly, children."
       },
       {
-        "selector": "JSXOpeningElement[name.name='Drawer'] > JSXAttribute[name.name='side'] > Literal[value!=/^(?:left|right)$/]",
-        "message": "<Drawer> side must be one of 'left' | 'right'."
+        "selector": "JSXOpeningElement[name.name='Drawer'] > JSXAttribute[name.name='direction'] > Literal[value!=/^(?:top|right|bottom|left)$/]",
+        "message": "<Drawer> direction must be one of 'top' | 'right' | 'bottom' | 'left'."
       },
       {
         "selector": "JSXOpeningElement[name.name='EmptyState'] > JSXAttribute > JSXIdentifier[name!=/^(?:icon|title|description|action|bordered|style|className|key|ref|className|style|children)$/]",
@@ -897,6 +897,33 @@
         "replaces": []
       },
       "Drawer": {
+        "replaces": []
+      },
+      "DrawerClose": {
+        "replaces": []
+      },
+      "DrawerContent": {
+        "replaces": []
+      },
+      "DrawerDescription": {
+        "replaces": []
+      },
+      "DrawerFooter": {
+        "replaces": []
+      },
+      "DrawerHeader": {
+        "replaces": []
+      },
+      "DrawerOverlay": {
+        "replaces": []
+      },
+      "DrawerPortal": {
+        "replaces": []
+      },
+      "DrawerTitle": {
+        "replaces": []
+      },
+      "DrawerTrigger": {
         "replaces": []
       },
       "Empty": {

@@ -7,7 +7,7 @@
 </head><body style="background:var(--surface-page)">
 <div id="root"></div>
 <script type="text/babel">
-const { DropdownMenu, DropdownMenuTrigger, DropdownMenuContent, DropdownMenuItem, DropdownMenuSeparator, DropdownMenuShortcut, Popover, Drawer, CommandDialog, CommandInput, CommandList, CommandEmpty, CommandGroup, CommandItem, CommandShortcut, ContextMenu, ContextMenuTrigger, ContextMenuContent, ContextMenuItem, ContextMenuCheckboxItem, ContextMenuSeparator, ContextMenuShortcut, ContextMenuSub, ContextMenuSubTrigger, ContextMenuSubContent, HoverCard, HoverCardTrigger, HoverCardContent, Button, IconButton, Input, Select, Checkbox, Divider, Kbd, Avatar, Icon } = window.EfolusiDesignSystem_4ffc3d;
+const { DropdownMenu, DropdownMenuTrigger, DropdownMenuContent, DropdownMenuItem, DropdownMenuSeparator, DropdownMenuShortcut, Popover, Drawer, DrawerContent, DrawerHeader, DrawerTitle, DrawerDescription, DrawerFooter, DrawerClose, CommandDialog, CommandInput, CommandList, CommandEmpty, CommandGroup, CommandItem, CommandShortcut, ContextMenu, ContextMenuTrigger, ContextMenuContent, ContextMenuItem, ContextMenuCheckboxItem, ContextMenuSeparator, ContextMenuShortcut, ContextMenuSub, ContextMenuSubTrigger, ContextMenuSubContent, HoverCard, HoverCardTrigger, HoverCardContent, Button, IconButton, Input, Select, Checkbox, Divider, Kbd, Avatar, Icon } = window.EfolusiDesignSystem_4ffc3d;
 function Demo() {
   const [drawer, setDrawer] = React.useState(true);
   const [cmdk, setCmdk] = React.useState(false);
@@ -65,14 +65,13 @@ function Demo() {
           </div>
         </HoverCardContent>
       </HoverCard>
-      <Drawer open={drawer} onClose={() => setDrawer(false)} title="Customer details" width={340}
-        footer={<React.Fragment><Button variant="ghost" onClick={() => setDrawer(false)}>Cancel</Button><Button onClick={() => setDrawer(false)}>Save changes</Button></React.Fragment>}>
-        <div style={{ display: 'flex', flexDirection: 'column', gap: 14 }}>
+      <Drawer open={drawer} onOpenChange={setDrawer} direction="right"><DrawerContent style={{ width: 340 }}><DrawerHeader><DrawerTitle>Customer details</DrawerTitle><DrawerDescription>Update the account record.</DrawerDescription></DrawerHeader>
+        <div style={{ display: 'flex', flexDirection: 'column', gap: 14, padding: 20 }}>
           <Input label="Company" defaultValue="Acme Robotics" />
           <Select label="Plan" options={['Starter', 'Growth', 'Scale']} defaultValue="Growth" />
           <Input label="Billing email" defaultValue="ada@acmerobotics.com" iconLeft="mail" />
         </div>
-      </Drawer>
+        <DrawerFooter><DrawerClose asChild><Button variant="ghost">Cancel</Button></DrawerClose><DrawerClose asChild><Button>Save changes</Button></DrawerClose></DrawerFooter></DrawerContent></Drawer>
     </div>
   );
 }

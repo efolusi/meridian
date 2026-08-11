@@ -215,7 +215,14 @@
       "registryItems": ["site/registry/direction.json"],
       "tests": ["tests/direction.test.jsx"]
     },
-    { "name": "Drawer", "status": "unverified" },
+    {
+      "name": "Drawer",
+      "status": "proven",
+      "requiredExports": ["Drawer", "DrawerPortal", "DrawerOverlay", "DrawerTrigger", "DrawerClose", "DrawerContent", "DrawerHeader", "DrawerFooter", "DrawerTitle", "DrawerDescription"],
+      "sourceFiles": ["components/overlay/Drawer.jsx", "components/overlay/Drawer.d.ts"],
+      "registryItems": ["site/registry/drawer.json"],
+      "tests": ["tests/keyboard-drawer.test.jsx", "tests/dialog-escape.test.jsx"]
+    },
     {
       "name": "Dropdown Menu",
       "status": "proven",

@@ -2578,10 +2578,10 @@ export interface DialogRootProps { open?: boolean; defaultOpen?: boolean; onOpen
 export interface DialogLegacyProps extends DialogRootProps { onClose?: () => void; closeLabel?: string; title?: React.ReactNode; description?: React.ReactNode; footer?: React.ReactNode; width?: number; }
 export declare const Dialog: React.ForwardRefExoticComponent<DialogLegacyProps & React.RefAttributes<HTMLDivElement>>;
 export interface DialogSlotProps extends React.HTMLAttributes<HTMLDivElement> { asChild?: boolean; slot?: string; }
-export declare const DialogTrigger: React.ForwardRefExoticComponent<React.ButtonHTMLAttributes<HTMLButtonElement> & { asChild?: boolean } & React.RefAttributes<HTMLButtonElement>>;
+export declare const DialogTrigger: React.ForwardRefExoticComponent<React.ButtonHTMLAttributes<HTMLButtonElement> & { asChild?: boolean; slot?: string } & React.RefAttributes<HTMLButtonElement>>;
 export declare function DialogPortal(props: { children?: React.ReactNode; container?: HTMLElement }): React.JSX.Element | null;
-export declare const DialogOverlay: React.ForwardRefExoticComponent<React.HTMLAttributes<HTMLDivElement> & React.RefAttributes<HTMLDivElement>>;
-export declare const DialogClose: React.ForwardRefExoticComponent<React.ButtonHTMLAttributes<HTMLButtonElement> & { asChild?: boolean } & React.RefAttributes<HTMLButtonElement>>;
+export declare const DialogOverlay: React.ForwardRefExoticComponent<React.HTMLAttributes<HTMLDivElement> & { slot?: string } & React.RefAttributes<HTMLDivElement>>;
+export declare const DialogClose: React.ForwardRefExoticComponent<React.ButtonHTMLAttributes<HTMLButtonElement> & { asChild?: boolean; slot?: string } & React.RefAttributes<HTMLButtonElement>>;
 export interface DialogContentProps extends React.HTMLAttributes<HTMLDivElement> { width?: number | string; showCloseButton?: boolean; closeLabel?: string; onEscapeKeyDown?: (event: KeyboardEvent) => void; slot?: string; }
 export declare const DialogContent: React.ForwardRefExoticComponent<DialogContentProps & React.RefAttributes<HTMLDivElement>>;
 export declare const DialogHeader: React.ForwardRefExoticComponent<DialogSlotProps & React.RefAttributes<HTMLDivElement>>;
@@ -4185,37 +4185,64 @@ export declare const ContextMenuSubContent: React.ForwardRefExoticComponent<Cont
 
 #### Drawer
 
-Group: overlay · Source: /components/overlay/Drawer.jsx · Exports: Drawer
+Group: overlay · Source: /components/overlay/Drawer.jsx · Exports: Drawer, DrawerTrigger, DrawerPortal, DrawerClose, DrawerOverlay, DrawerContent, DrawerHeader, DrawerFooter, DrawerTitle, DrawerDescription
 
-Side panel for details and multi-field edits that shouldn't leave the page.
+# Drawer
+
+A composable, gesture-dismissable surface for mobile details and short workflows. It supports top, right, bottom, and left directions; controlled or uncontrolled state; focus trapping; Escape/overlay dismissal; and focus return.
 
 ```jsx
-<Drawer open={open} onClose={close} title="Customer details"
-  footer={<><Button variant="ghost" onClick={close}>Cancel</Button><Button onClick={save}>Save changes</Button></>}>
-  …content…
+<Drawer>
+  <DrawerTrigger asChild><Button>Review order</Button></DrawerTrigger>
+  <DrawerContent>
+    <DrawerHeader>
+      <DrawerTitle>Order review</DrawerTitle>
+      <DrawerDescription>Confirm the shipment before dispatch.</DrawerDescription>
+    </DrawerHeader>
+    <div style={{ padding: 24 }}>…</div>
+    <DrawerFooter>
+      <DrawerClose asChild><Button variant="secondary">Cancel</Button></DrawerClose>
+      <Button>Dispatch</Button>
+    </DrawerFooter>
+  </DrawerContent>
 </Drawer>
 ```
 
-`width` (default 400), `side` left/right.
+Set `direction` on `Drawer`; bottom is the default and displays a drag handle. Set `dismissible={false}` for a decision that must be completed explicitly. Use Sheet for a non-gesture desktop side panel.
 
 ```ts
+import type * as React from 'react';
+
+export type DrawerDirection = 'top' | 'right' | 'bottom' | 'left';
 export interface DrawerProps {
-  open: boolean;
-  /** Called on ✕, ESC, or overlay click */
-  onClose?: () => void;
-  /** Accessible name of the ✕ button. Pass a translated string in a
-   *  non-English UI. @default 'Close' */
-  closeLabel?: string;
-  title: React.ReactNode;
-  /** Right-aligned action row on sunken strip */
-  footer?: React.ReactNode;
-  /** Px @default 400 */
-  width?: number;
-  /** @default 'right' */
-  side?: 'left' | 'right';
+  open?: boolean;
+  defaultOpen?: boolean;
+  onOpenChange?: (open: boolean) => void;
+  direction?: DrawerDirection;
+  dismissible?: boolean;
+  modal?: boolean;
+  handleOnly?: boolean;
   children?: React.ReactNode;
 }
-export declare const Drawer: React.ForwardRefExoticComponent<DrawerProps & React.RefAttributes<HTMLDivElement>>;
+export declare function Drawer(props: DrawerProps): React.JSX.Element;
+
+export interface DrawerTriggerProps extends React.ButtonHTMLAttributes<HTMLButtonElement> { asChild?: boolean; }
+export declare const DrawerTrigger: React.ForwardRefExoticComponent<DrawerTriggerProps & React.RefAttributes<HTMLButtonElement>>;
+export interface DrawerCloseProps extends React.ButtonHTMLAttributes<HTMLButtonElement> { asChild?: boolean; }
+export declare const DrawerClose: React.ForwardRefExoticComponent<DrawerCloseProps & React.RefAttributes<HTMLButtonElement>>;
+export interface DrawerPortalProps { children?: React.ReactNode; container?: HTMLElement; }
+export declare function DrawerPortal(props: DrawerPortalProps): React.JSX.Element | null;
+export declare const DrawerOverlay: React.ForwardRefExoticComponent<React.HTMLAttributes<HTMLDivElement> & React.RefAttributes<HTMLDivElement>>;
+
+export interface DrawerContentProps extends React.HTMLAttributes<HTMLDivElement> {
+  onEscapeKeyDown?: (event: KeyboardEvent) => void;
+  overlayProps?: React.HTMLAttributes<HTMLDivElement>;
+}
+export declare const DrawerContent: React.ForwardRefExoticComponent<DrawerContentProps & React.RefAttributes<HTMLDivElement>>;
+export declare const DrawerHeader: React.ForwardRefExoticComponent<React.HTMLAttributes<HTMLDivElement> & React.RefAttributes<HTMLDivElement>>;
+export declare const DrawerFooter: React.ForwardRefExoticComponent<React.HTMLAttributes<HTMLDivElement> & React.RefAttributes<HTMLDivElement>>;
+export declare const DrawerTitle: React.ForwardRefExoticComponent<React.HTMLAttributes<HTMLDivElement> & React.RefAttributes<HTMLDivElement>>;
+export declare const DrawerDescription: React.ForwardRefExoticComponent<React.HTMLAttributes<HTMLDivElement> & React.RefAttributes<HTMLDivElement>>;
 ```
 
 #### DropdownMenu

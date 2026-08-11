@@ -35,19 +35,19 @@ export const Dialog = React.forwardRef(function Dialog({ open: controlled, defau
   return <DialogContext.Provider value={value}>{children}</DialogContext.Provider>;
 });
 
-export const DialogTrigger = React.forwardRef(function DialogTrigger({ asChild = false, children, onClick, ...rest }, ref) {
+export const DialogTrigger = React.forwardRef(function DialogTrigger({ asChild = false, children, onClick, slot = 'dialog-trigger', ...rest }, ref) {
   const ctx = React.useContext(DialogContext);
-  const props = { ...rest, 'data-slot': 'dialog-trigger', onClick: compose(onClick, () => ctx && ctx.setOpen(true)) };
+  const props = { ...rest, 'data-slot': slot, onClick: compose(onClick, () => ctx && ctx.setOpen(true)) };
   if (asChild) { const child = React.Children.only(children); return React.cloneElement(child, { ...props, ref: mergeRefs(ref, child.ref), className: child.props.className }); }
   return <button {...props} ref={ref} type={rest.type || 'button'}>{children}</button>;
 });
 export function DialogPortal({ children, container }) { return <Portal container={container}>{children}</Portal>; }
-export const DialogOverlay = React.forwardRef(function DialogOverlay({ className, onMouseDown, ...rest }, ref) {
+export const DialogOverlay = React.forwardRef(function DialogOverlay({ className, onMouseDown, slot = 'dialog-overlay', ...rest }, ref) {
   const ctx = React.useContext(DialogContext);
-  return <div {...rest} ref={ref} data-slot="dialog-overlay" className={cx('ef-dialog__overlay', className)} onMouseDown={compose(onMouseDown, e => { if (e.target === e.currentTarget && ctx) ctx.setOpen(false); })} />;
+  return <div {...rest} ref={ref} data-slot={slot} className={cx('ef-dialog__overlay', className)} onMouseDown={compose(onMouseDown, e => { if (e.target === e.currentTarget && ctx) ctx.setOpen(false); })} />;
 });
-export const DialogClose = React.forwardRef(function DialogClose({ asChild = false, children, onClick, ...rest }, ref) {
-  const ctx = React.useContext(DialogContext); const props = { ...rest, 'data-slot': 'dialog-close', onClick: compose(onClick, () => ctx && ctx.setOpen(false)) };
+export const DialogClose = React.forwardRef(function DialogClose({ asChild = false, children, onClick, slot = 'dialog-close', ...rest }, ref) {
+  const ctx = React.useContext(DialogContext); const props = { ...rest, 'data-slot': slot, onClick: compose(onClick, () => ctx && ctx.setOpen(false)) };
   if (asChild) { const child = React.Children.only(children); return React.cloneElement(child, { ...props, ref: mergeRefs(ref, child.ref), className: child.props.className }); }
   return <button {...props} ref={ref} type={rest.type || 'button'}>{children}</button>;
 });

@@ -559,6 +559,42 @@
       "sourcePath": "components/overlay/Drawer.jsx"
     },
     {
+      "name": "DrawerClose",
+      "sourcePath": "components/overlay/Drawer.jsx"
+    },
+    {
+      "name": "DrawerContent",
+      "sourcePath": "components/overlay/Drawer.jsx"
+    },
+    {
+      "name": "DrawerDescription",
+      "sourcePath": "components/overlay/Drawer.jsx"
+    },
+    {
+      "name": "DrawerFooter",
+      "sourcePath": "components/overlay/Drawer.jsx"
+    },
+    {
+      "name": "DrawerHeader",
+      "sourcePath": "components/overlay/Drawer.jsx"
+    },
+    {
+      "name": "DrawerOverlay",
+      "sourcePath": "components/overlay/Drawer.jsx"
+    },
+    {
+      "name": "DrawerPortal",
+      "sourcePath": "components/overlay/Drawer.jsx"
+    },
+    {
+      "name": "DrawerTitle",
+      "sourcePath": "components/overlay/Drawer.jsx"
+    },
+    {
+      "name": "DrawerTrigger",
+      "sourcePath": "components/overlay/Drawer.jsx"
+    },
+    {
       "name": "DropdownMenu",
       "sourcePath": "components/overlay/DropdownMenu.jsx"
     },

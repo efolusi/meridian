@@ -1,4 +1,4 @@
-const { Card, Badge, Button, Input, NativeSelect, NativeSelectOption, Checkbox, Avatar, Icon, IconButton, Tag, DropdownMenu, DropdownMenuTrigger, DropdownMenuContent, DropdownMenuItem, DropdownMenuSeparator, Pagination, Drawer, KeyValueList, Dialog, Sparkline, Field, FieldLabel } = window.EfolusiDesignSystem_4ffc3d;
+const { Card, Badge, Button, Input, NativeSelect, NativeSelectOption, Checkbox, Avatar, Icon, IconButton, Tag, DropdownMenu, DropdownMenuTrigger, DropdownMenuContent, DropdownMenuItem, DropdownMenuSeparator, Pagination, Drawer, DrawerContent, DrawerHeader, DrawerTitle, DrawerDescription, DrawerFooter, DrawerClose, KeyValueList, Dialog, Sparkline, Field, FieldLabel } = window.EfolusiDesignSystem_4ffc3d;
 
 function CustomerActionMenu({ trigger, items, onSelect, align = 'start' }) { return <DropdownMenu><DropdownMenuTrigger asChild>{trigger}</DropdownMenuTrigger><DropdownMenuContent align={align}>{items.map((item, index) => item === 'separator' ? <DropdownMenuSeparator key={'separator-' + index} /> : <DropdownMenuItem key={item.id} disabled={item.disabled} variant={item.danger ? 'destructive' : 'default'} onSelect={() => { onSelect?.(item.id); item.onClick?.(); }}>{item.icon ? <Icon name={item.icon} size={15} /> : null}{item.label}</DropdownMenuItem>)}</DropdownMenuContent></DropdownMenu>; }
 
@@ -84,10 +84,9 @@ function CustomersScreen({ notify }) {
           <Pagination page={page} pageCount={19} onChange={setPage} style={{ marginLeft: 'auto' }} />
         </div>
       </Card>
-      <Drawer open={!!sel} onClose={() => setSel(null)} title={sel ? sel.name : ''} width={400}
-        footer={sel && <React.Fragment><Button variant="ghost" onClick={() => setSel(null)}>Close</Button><Button variant="secondary" iconLeft="mail" onClick={() => { notify('Email drafted', 'To ' + sel.email); setSel(null); }}>Email</Button></React.Fragment>}>
+      <Drawer open={!!sel} onOpenChange={open => { if (!open) setSel(null); }} direction="right"><DrawerContent style={{ width: 400 }}><DrawerHeader><DrawerTitle>{sel ? sel.name : ''}</DrawerTitle><DrawerDescription>Customer account and recent usage.</DrawerDescription></DrawerHeader>
         {sel && (
-          <div style={{ display: 'flex', flexDirection: 'column', gap: 18 }}>
+          <div style={{ display: 'flex', flexDirection: 'column', gap: 18, padding: 20 }}>
             <div style={{ display: 'flex', alignItems: 'center', gap: 12 }}>
               <Avatar name={sel.name} size={44} />
               <div>
@@ -108,7 +107,8 @@ function CustomersScreen({ notify }) {
             </div>
           </div>
         )}
-      </Drawer>
+        {sel && <DrawerFooter><DrawerClose asChild><Button variant="ghost">Close</Button></DrawerClose><Button variant="secondary" iconLeft="mail" onClick={() => { notify('Email drafted', 'To ' + sel.email); setSel(null); }}>Email</Button></DrawerFooter>}
+      </DrawerContent></Drawer>
       <Dialog open={adding} onClose={() => setAdding(false)} title="Add customer" description="They'll start on a 14-day trial."
         footer={<React.Fragment><Button variant="ghost" onClick={() => setAdding(false)}>Cancel</Button><Button onClick={addCustomer}>Add customer</Button></React.Fragment>}>
         <div style={{ display: 'flex', flexDirection: 'column', gap: 14 }}>

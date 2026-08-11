@@ -1,79 +1,75 @@
-import { describe, it, expect } from 'vitest';
-import { render, screen } from '@testing-library/react';
+import { describe, expect, it } from 'vitest';
+import { fireEvent, render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
-
-import { Drawer } from '../components/overlay/Drawer.jsx';
 import { Button } from '../components/forms/Button.jsx';
+import { Drawer, DrawerClose, DrawerContent, DrawerDescription, DrawerFooter, DrawerHeader, DrawerTitle, DrawerTrigger } from '../components/overlay/Drawer.jsx';
 
-// The Drawer contract from guidelines/accessibility.md: focus in on open,
-// Tab/Shift+Tab wrap, Escape closes and restores the invoker, aria-labelledby.
+function DrawerHarness({ direction = 'bottom', dismissible = true }) {
+  return <Drawer direction={direction} dismissible={dismissible}>
+    <DrawerTrigger asChild><Button>Open order</Button></DrawerTrigger>
+    <DrawerContent>
+      <DrawerHeader><DrawerTitle>Order review</DrawerTitle><DrawerDescription>Confirm before dispatch.</DrawerDescription></DrawerHeader>
+      <div style={{ padding: 24 }}><Button>Inspect</Button></div>
+      <DrawerFooter><DrawerClose asChild><Button>Cancel</Button></DrawerClose><Button>Dispatch</Button></DrawerFooter>
+    </DrawerContent>
+  </Drawer>;
+}
 
-describe('Drawer', () => {
-  function Harness({ children, footer }) {
-    const [open, setOpen] = React.useState(false);
-    return (
-      <>
-        <Button onClick={() => setOpen(true)}>Open</Button>
-        <Drawer open={open} onClose={() => setOpen(false)} title="Settings" footer={footer}>
-          {children}
-        </Drawer>
-      </>
-    );
-  }
-
-  it('moves focus into the panel on open', async () => {
+describe('Drawer composition', () => {
+  it('opens from an asChild trigger, exposes slots, and closes explicitly', async () => {
     const user = userEvent.setup();
-    render(
-      <Harness>
-        <Button>Body</Button>
-      </Harness>
-    );
-    await user.click(screen.getByRole('button', { name: 'Open' }));
-    const dialog = await screen.findByRole('dialog');
-    expect(dialog.contains(document.activeElement)).toBe(true);
+    render(<DrawerHarness direction="right" />);
+    await user.click(screen.getByRole('button', { name: 'Open order' }));
+    const dialog = screen.getByRole('dialog', { name: 'Order review' });
+    expect(dialog.dataset.slot).toBe('drawer-content');
+    expect(dialog.dataset.vaulDrawerDirection).toBe('right');
+    expect(document.querySelector('[data-slot="drawer-overlay"]')).toBeTruthy();
+    for (const slot of ['drawer-handle', 'drawer-header', 'drawer-title', 'drawer-description', 'drawer-footer', 'drawer-close']) expect(dialog.querySelector(`[data-slot="${slot}"]`), slot).toBeTruthy();
+    await user.click(screen.getByRole('button', { name: 'Cancel' }));
+    expect(screen.queryByRole('dialog')).toBeNull();
   });
 
-  it('wraps Tab and Shift+Tab inside the panel', async () => {
+  it('traps focus, closes on Escape, and restores the trigger', async () => {
     const user = userEvent.setup();
-    render(
-      <Harness footer={<Button>Last</Button>}>
-        <Button>Body</Button>
-      </Harness>
-    );
-    await user.click(screen.getByRole('button', { name: 'Open' }));
-    const close = screen.getByRole('button', { name: 'Close' });
-    const last = screen.getByRole('button', { name: 'Last' });
-    expect(document.activeElement).toBe(close); // first focusable: head close button
-    await user.tab();
-    expect(document.activeElement).toBe(screen.getByRole('button', { name: 'Body' }));
-    await user.tab();
-    expect(document.activeElement).toBe(last);
-    await user.tab(); // wraps forward past the end
-    expect(document.activeElement).toBe(close);
-    await user.tab({ shift: true }); // wraps backward past the start
-    expect(document.activeElement).toBe(last);
-  });
-
-  it('closes on Escape and returns focus to the invoker', async () => {
-    const user = userEvent.setup();
-    render(
-      <Harness>
-        <Button>Body</Button>
-      </Harness>
-    );
-    const trigger = screen.getByRole('button', { name: 'Open' });
+    render(<DrawerHarness />);
+    const trigger = screen.getByRole('button', { name: 'Open order' });
     await user.click(trigger);
-    await screen.findByRole('dialog');
+    expect(document.activeElement).toBe(screen.getByRole('button', { name: 'Inspect' }));
+    await user.tab();
+    expect(document.activeElement).toBe(screen.getByRole('button', { name: 'Cancel' }));
+    await user.tab();
+    expect(document.activeElement).toBe(screen.getByRole('button', { name: 'Dispatch' }));
+    await user.tab();
+    expect(document.activeElement).toBe(screen.getByRole('button', { name: 'Inspect' }));
     await user.keyboard('{Escape}');
     expect(screen.queryByRole('dialog')).toBeNull();
     expect(document.activeElement).toBe(trigger);
   });
 
-  it('labels the panel via aria-labelledby pointing at the title', () => {
-    render(<Drawer open onClose={() => {}} title="Settings" />);
-    const dialog = screen.getByRole('dialog');
-    const id = dialog.getAttribute('aria-labelledby');
-    expect(id).toBeTruthy();
-    expect(document.getElementById(id).textContent).toBe('Settings');
+  it('keeps a non-dismissible drawer open on Escape and overlay interaction', async () => {
+    const user = userEvent.setup();
+    render(<DrawerHarness dismissible={false} />);
+    await user.click(screen.getByRole('button', { name: 'Open order' }));
+    await user.keyboard('{Escape}');
+    expect(screen.getByRole('dialog')).toBeTruthy();
+    await user.click(document.querySelector('[data-slot="drawer-overlay"]'));
+    expect(screen.getByRole('dialog')).toBeTruthy();
+  });
+
+  it('dismisses a bottom drawer after an outward drag', async () => {
+    const user = userEvent.setup();
+    render(<DrawerHarness />);
+    await user.click(screen.getByRole('button', { name: 'Open order' }));
+    const panel = screen.getByRole('dialog');
+    const handle = panel.querySelector('[data-slot="drawer-handle"]');
+    const pointer = (target, type, clientY) => {
+      const event = new Event(type, { bubbles: true });
+      Object.defineProperties(event, { pointerId: { value: 1 }, clientY: { value: clientY } });
+      fireEvent(target, event);
+    };
+    pointer(handle, 'pointerdown', 100);
+    pointer(panel, 'pointermove', 220);
+    pointer(panel, 'pointerup', 220);
+    expect(screen.queryByRole('dialog')).toBeNull();
   });
 });

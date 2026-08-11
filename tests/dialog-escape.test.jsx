@@ -2,7 +2,7 @@ import { describe, it, expect, vi } from 'vitest';
 import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { Dialog } from '../components/feedback/Dialog.jsx';
-import { Drawer } from '../components/overlay/Drawer.jsx';
+import { Drawer, DrawerContent, DrawerTitle } from '../components/overlay/Drawer.jsx';
 
 // Escape is the keyboard user's way out of a modal, and a focus trap makes it
 // the ONLY way out. So the rule has to cut both ways:
@@ -34,7 +34,7 @@ describe('Escape and the modals', () => {
 
   it('closes a drawer on Escape', async () => {
     const onClose = vi.fn();
-    render(<Drawer open onClose={onClose} title="Menu" />);
+    render(<Drawer open onOpenChange={open => { if (!open) onClose(); }}><DrawerContent><DrawerTitle>Menu</DrawerTitle></DrawerContent></Drawer>);
     await userEvent.keyboard('{Escape}');
     expect(onClose).toHaveBeenCalledTimes(1);
   });

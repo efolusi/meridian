@@ -4,7 +4,7 @@ import userEvent from '@testing-library/user-event';
 
 import { Dialog } from '../components/feedback/Dialog.jsx';
 import { ConfirmDialog } from '../components/feedback/ConfirmDialog.jsx';
-import { Drawer } from '../components/overlay/Drawer.jsx';
+import { Drawer, DrawerContent, DrawerTitle } from '../components/overlay/Drawer.jsx';
 import { CommandDialog, CommandInput, CommandList, CommandItem } from '../components/overlay/Command.jsx';
 import { Combobox, ComboboxInput, ComboboxContent, ComboboxList, ComboboxItem } from '../components/forms/Combobox.jsx';
 import { StatusDot } from '../components/data/StatusDot.jsx';
@@ -21,7 +21,7 @@ describe('className/style forwarding on the modal four', () => {
     expect(root.style.zIndex).toBe('9');
   });
   it('Drawer composes className and lets caller style win over width', () => {
-    render(<Drawer open title="T" width={400} className="mine" style={{ width: 320 }} data-testid="dr" />);
+    render(<Drawer open direction="right"><DrawerContent className="mine" style={{ width: 320 }} data-testid="dr"><DrawerTitle>T</DrawerTitle></DrawerContent></Drawer>);
     const panel = screen.getByTestId('dr');
     expect(panel.className).toContain('ef-drawer');
     expect(panel.className).toContain('mine');
