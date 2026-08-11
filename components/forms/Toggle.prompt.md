@@ -1,7 +1,11 @@
-# Toggle / ToggleGroup
+# Toggle
 
-A pressed-state button for on/off formatting-style options (bold, grid view, mute). Use `icon` alone for toolbars, or icon + children for labeled toggles.
+A two-state button with default and outline variants and `default`, `sm`, and `lg` sizes.
 
-- Standalone: `<Toggle icon="sparkles" pressed={b} onPressedChange={setB} />`
-- Grouped: `<ToggleGroup type="multiple" value={views} onChange={setViews}><Toggle value="list" icon="menu" />…</ToggleGroup>` — single type deselects on re-click.
-- Not for navigation (use Tabs/SegmentedControl) or settings that save (use Switch).
+```jsx
+<Toggle pressed={bookmarked} onPressedChange={setBookmarked}>Bookmark</Toggle>
+<Toggle variant="outline" size="sm">Italic</Toggle>
+```
+
+`toggleVariants` returns class names for custom compositions. Meridian's icon-name helper,
+legacy `md` size, and `ToggleGroup` remain additive; use Tabs for navigation and Switch for saved settings.

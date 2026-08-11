@@ -1,5 +1,7 @@
-Multiline input with the same field wrapper as Input (`label`/`hint`/`error`).
+Native multiline input. It accepts textarea attributes and forwards its ref.
 
 ```jsx
-<Textarea label="Description" placeholder="What is this project for?" rows={4} />
+<Textarea placeholder="Type your message here." rows={4} />
 ```
+
+Meridian's `label`, `hint`, `error`, and `invalid` props remain additive field helpers.

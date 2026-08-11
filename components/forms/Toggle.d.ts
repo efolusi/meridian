@@ -3,24 +3,22 @@ export interface ToggleProps extends React.ButtonHTMLAttributes<HTMLButtonElemen
   pressed?: boolean;
   defaultPressed?: boolean;
   onPressedChange?: (pressed: boolean) => void;
-  /** Identity when used inside a ToggleGroup */
+  /** @default 'default' */
+  variant?: 'default' | 'outline';
+  /** @default 'default' */
+  size?: 'default' | 'sm' | 'lg' | 'md';
+  /** Identity when used inside Meridian's legacy ToggleGroup. */
   value?: string;
-  /** Lucide icon name */
+  /** Additive Meridian icon-name helper. */
   icon?: string;
-  /** @default 'md' */
-  size?: 'sm' | 'md';
-  children?: React.ReactNode;
 }
-export interface ToggleGroupProps {
+export interface ToggleGroupProps extends Omit<React.HTMLAttributes<HTMLDivElement>, 'onChange'> {
   /** @default 'single' */
   type?: 'single' | 'multiple';
-  /** Controlled: string (single) or string[] (multiple) */
   value?: string | string[] | null;
   defaultValue?: string | string[] | null;
   onChange?: (value: string | string[] | null) => void;
-  children?: React.ReactNode;
-  style?: React.CSSProperties;
-  className?: string;
 }
-export declare function Toggle(props: ToggleProps): React.JSX.Element;
+export declare function toggleVariants(options?: Pick<ToggleProps, 'variant' | 'size'> & { className?: string }): string;
+export declare const Toggle: React.ForwardRefExoticComponent<ToggleProps & React.RefAttributes<HTMLButtonElement>>;
 export declare function ToggleGroup(props: ToggleGroupProps): React.JSX.Element;

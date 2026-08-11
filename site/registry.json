@@ -1754,8 +1754,8 @@
     {
       "name": "kbd",
       "type": "registry:ui",
-      "title": "Kbd",
-      "description": "Keycap for shortcut hints \u2014 mono 11px, hairline with a 2px base.",
+      "title": "Kbd + KbdGroup",
+      "description": "Keyboard key and shortcut-group primitives. Both accept native attributes and forward refs.",
       "dependencies": [
         "react"
       ],
@@ -3030,7 +3030,7 @@
       "name": "textarea",
       "type": "registry:ui",
       "title": "Textarea",
-      "description": "Multiline input with the same field wrapper as Input (`label`/`hint`/`error`).",
+      "description": "Native multiline input. It accepts textarea attributes and forwards its ref.",
       "dependencies": [
         "react"
       ],
@@ -3062,7 +3062,7 @@
       "name": "toggle",
       "type": "registry:ui",
       "title": "Toggle + ToggleGroup",
-      "description": "A pressed-state button for on/off formatting-style options (bold, grid view, mute). Use `icon` alone for toolbars, or icon + children for labeled toggles.",
+      "description": "A two-state button with default and outline variants and `default`, `sm`, and `lg` sizes.",
       "dependencies": [
         "react"
       ],

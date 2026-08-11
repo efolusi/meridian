@@ -1,5 +1,7 @@
-Keycap for shortcut hints — mono 11px, hairline with a 2px base.
+Keyboard key and shortcut-group primitives. Both accept native attributes and forward refs.
 
 ```jsx
-<Kbd>⌘</Kbd> <Kbd>K</Kbd>
+<KbdGroup aria-label="Open command palette">
+  <Kbd>Ctrl</Kbd><span>+</span><Kbd>K</Kbd>
+</KbdGroup>
 ```

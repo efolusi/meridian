@@ -146,10 +146,10 @@ export function SeparatorDemo() {
 
 // @demo Kbd Keyboard hints
 export function KbdDemo() {
-  const { Kbd } = window.EfolusiDesignSystem_4ffc3d;
+  const { Kbd, KbdGroup } = window.EfolusiDesignSystem_4ffc3d;
   return (
     <p style={{ margin: 0, fontSize: 14.5, color: 'var(--text-secondary)' }}>
-      Press <Kbd>⌘</Kbd> <Kbd>K</Kbd> to open the command palette, or <Kbd>?</Kbd> for shortcuts.
+      Press <KbdGroup aria-label="Command K"><Kbd>⌘</Kbd><span>+</span><Kbd>K</Kbd></KbdGroup> to open the command palette, or <Kbd>?</Kbd> for shortcuts.
     </p>
   );
 }

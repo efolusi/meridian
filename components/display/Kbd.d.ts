@@ -1,7 +1,5 @@
-export interface KbdProps {
-  /** Key label, e.g. "⌘", "K", "Esc" */
-  children?: React.ReactNode;
-  style?: React.CSSProperties;
-  className?: string;
-}
-export declare function Kbd(props: KbdProps): React.JSX.Element;
+export type KbdProps = React.HTMLAttributes<HTMLElement>;
+export type KbdGroupProps = React.HTMLAttributes<HTMLSpanElement>;
+
+export declare const Kbd: React.ForwardRefExoticComponent<KbdProps & React.RefAttributes<HTMLElement>>;
+export declare const KbdGroup: React.ForwardRefExoticComponent<KbdGroupProps & React.RefAttributes<HTMLSpanElement>>;

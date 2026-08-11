@@ -270,6 +270,7 @@ export function ToggleDemo() {
   return (
     <div style={{ display: 'flex', gap: 16, alignItems: 'center', flexWrap: 'wrap' }}>
       <Toggle icon="sparkles" defaultPressed>Auto-fix</Toggle>
+      <Toggle variant="outline" size="sm">Preview</Toggle>
       <ToggleGroup type="single" defaultValue="list">
         <Toggle value="list" icon="menu" aria-label="List view" />
         <Toggle value="board" icon="layout-dashboard" aria-label="Board view" />

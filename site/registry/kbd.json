@@ -1,8 +1,8 @@
 {
   "name": "kbd",
   "type": "registry:ui",
-  "title": "Kbd",
-  "description": "Keycap for shortcut hints \u2014 mono 11px, hairline with a 2px base.",
+  "title": "Kbd + KbdGroup",
+  "description": "Keyboard key and shortcut-group primitives. Both accept native attributes and forward refs.",
   "dependencies": [
     "react"
   ],
@@ -14,17 +14,17 @@
     {
       "path": "components/display/Kbd.jsx",
       "type": "registry:ui",
-      "content": "import React from 'react';\nimport { injectEfCss } from '../forms/Button.jsx';\nconst CSS = `\n.ef-kbd{display:inline-flex;align-items:center;justify-content:center;min-width:18px;height:19px;padding:0 5px;border:1px solid var(--border-strong);border-bottom-width:2px;border-radius:var(--radius-sm);background:var(--surface-card);font-family:var(--font-mono);font-size:11px;color:var(--text-secondary);line-height:1}\n`;\nexport function Kbd({ children, style, className, ...rest }) {\n  injectEfCss('ef-css-kbd', CSS);\n  return <kbd {...rest} className={`ef-kbd${className ? ' ' + className : ''}`} style={style}>{children}</kbd>;\n}\n"
+      "content": "import React from 'react';\nimport { injectEfCss } from '../forms/Button.jsx';\n\nconst CSS = `\n.ef-kbd{display:inline-flex;align-items:center;justify-content:center;min-width:18px;height:19px;padding:0 5px;border:1px solid var(--border-strong);border-bottom-width:2px;border-radius:var(--radius-sm);background:var(--surface-card);font-family:var(--font-mono);font-size:11px;color:var(--text-secondary);line-height:1}\n.ef-kbd-group{display:inline-flex;align-items:center;gap:4px}\n`;\n\nfunction joinClasses(base, className) {\n  return `${base}${className ? ' ' + className : ''}`;\n}\n\nexport const Kbd = React.forwardRef(function Kbd({ className, ...props }, ref) {\n  injectEfCss('ef-css-kbd', CSS);\n  return <kbd {...props} ref={ref} data-slot=\"kbd\" className={joinClasses('ef-kbd', className)} />;\n});\n\nexport const KbdGroup = React.forwardRef(function KbdGroup({ className, ...props }, ref) {\n  injectEfCss('ef-css-kbd', CSS);\n  return <span {...props} ref={ref} data-slot=\"kbd-group\" className={joinClasses('ef-kbd-group', className)} />;\n});\n"
     },
     {
       "path": "components/display/Kbd.d.ts",
       "type": "registry:component",
-      "content": "export interface KbdProps {\n  /** Key label, e.g. \"\u2318\", \"K\", \"Esc\" */\n  children?: React.ReactNode;\n  style?: React.CSSProperties;\n  className?: string;\n}\nexport declare function Kbd(props: KbdProps): React.JSX.Element;\n"
+      "content": "export type KbdProps = React.HTMLAttributes<HTMLElement>;\nexport type KbdGroupProps = React.HTMLAttributes<HTMLSpanElement>;\n\nexport declare const Kbd: React.ForwardRefExoticComponent<KbdProps & React.RefAttributes<HTMLElement>>;\nexport declare const KbdGroup: React.ForwardRefExoticComponent<KbdGroupProps & React.RefAttributes<HTMLSpanElement>>;\n"
     },
     {
       "path": "components/display/Kbd.prompt.md",
       "type": "registry:component",
-      "content": "Keycap for shortcut hints \u2014 mono 11px, hairline with a 2px base.\n\n```jsx\n<Kbd>\u2318</Kbd> <Kbd>K</Kbd>\n```\n"
+      "content": "Keyboard key and shortcut-group primitives. Both accept native attributes and forward refs.\n\n```jsx\n<KbdGroup aria-label=\"Open command palette\">\n  <Kbd>Ctrl</Kbd><span>+</span><Kbd>K</Kbd>\n</KbdGroup>\n```\n"
     }
   ],
   "categories": [

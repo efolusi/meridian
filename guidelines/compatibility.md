@@ -47,6 +47,18 @@ similarity.
 
 ## Proven adapters
 
+- `Toggle` and `toggleVariants` support default and outline variants, the
+  complete size contract, controlled and uncontrolled pressed state, composed
+  click handlers, disabled behavior, native button props, ref forwarding,
+  types, registry installation, demos, and tests. Meridian's icon, `md`, and
+  legacy grouping helpers remain additive extensions.
+- `Textarea` renders a native textarea, forwards native attributes, events,
+  styles, classes, and refs, and includes types, registry installation, demos,
+  and tests. Meridian's integrated label, hint, error, and invalid helpers
+  remain additive and use explicit accessible relationships.
+- `Kbd` and `KbdGroup` support key and shortcut-group composition, native
+  attributes, consumer classes, ref forwarding, types, registry installation,
+  demos, and tests.
 - `Badge` and `badgeVariants` support the complete six-variant contract,
   semantic link composition through `asChild`, native attributes, consumer
   classes, ref forwarding, types, registry installation, demos, and tests.

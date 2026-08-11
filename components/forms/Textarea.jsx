@@ -2,6 +2,7 @@ import React from 'react';
 import { Icon } from '../icons/Icon.jsx';
 import { injectEfCss } from './Button.jsx';
 import { useFieldProps } from './FormField.jsx';
+
 const CSS = `
 .ef-field{display:flex;flex-direction:column;gap:6px}
 .ef-field__label{font-size:var(--text-sm);font-weight:var(--weight-semibold);color:var(--text-primary)}
@@ -15,18 +16,38 @@ const CSS = `
 .ef-textarea--invalid{border-color:var(--danger-600)}
 .ef-textarea--invalid:focus{box-shadow:var(--focus-ring-danger)}
 `;
-export function Textarea({ label, hint, error, invalid, style, className, ...rest }) {
+
+export const Textarea = React.forwardRef(function Textarea(
+  { label, hint, error, invalid, style, className, ...rest },
+  ref,
+) {
   injectEfCss('ef-css-textarea', CSS);
-  // Picks up id / aria wiring when nested in a FormField; standalone this is a no-op.
+  const uid = React.useId();
   const field = useFieldProps({ invalid, error, id: rest.id, 'aria-describedby': rest['aria-describedby'] });
   const bad = field.invalid;
-  const el = <textarea className={`ef-textarea${bad ? ' ef-textarea--invalid' : ''}`} aria-invalid={bad || undefined} {...rest} {...field.controlProps} />;
-  if (!label && !hint && !error) return React.cloneElement(el, { style, className: el.props.className + (className ? ' ' + className : '') });
-  return (
-    <label className={`ef-field${className ? ' ' + className : ''}`} style={style}>
-      {label ? <span className="ef-field__label">{label}</span> : null}
-      {el}
-      {error ? <span className="ef-field__error"><Icon name="circle-alert" size={12} />{error}</span> : hint ? <span className="ef-field__hint">{hint}</span> : null}
-    </label>
+  const controlId = field.id || rest.id || ((label || hint || error) ? `${uid}c` : undefined);
+  const noteId = (hint || error) ? `${uid}n` : undefined;
+  const describedBy = [...new Set([field.controlProps['aria-describedby'], rest['aria-describedby'], noteId].filter(Boolean))].join(' ') || undefined;
+  const control = (
+    <textarea
+      {...rest}
+      {...field.controlProps}
+      ref={ref}
+      id={controlId}
+      data-slot="textarea"
+      aria-describedby={describedBy}
+      aria-invalid={bad || rest['aria-invalid'] || undefined}
+      className={`ef-textarea${bad ? ' ef-textarea--invalid' : ''}${className ? ' ' + className : ''}`}
+      style={style}
+    />
   );
-}
+
+  if (!label && !hint && !error) return control;
+  return (
+    <div className="ef-field">
+      {label ? <label className="ef-field__label" htmlFor={controlId}>{label}</label> : null}
+      {control}
+      {error ? <span id={noteId} role="alert" className="ef-field__error"><Icon name="circle-alert" size={12} />{error}</span> : hint ? <span id={noteId} className="ef-field__hint">{hint}</span> : null}
+    </div>
+  );
+});

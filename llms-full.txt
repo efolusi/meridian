@@ -2017,22 +2017,22 @@ export declare function Divider(props: DividerProps): React.JSX.Element;
 
 #### Kbd
 
-Group: display · Source: /components/display/Kbd.jsx · Exports: Kbd
+Group: display · Source: /components/display/Kbd.jsx · Exports: Kbd, KbdGroup
 
-Keycap for shortcut hints — mono 11px, hairline with a 2px base.
+Keyboard key and shortcut-group primitives. Both accept native attributes and forward refs.
 
 ```jsx
-<Kbd>⌘</Kbd> <Kbd>K</Kbd>
+<KbdGroup aria-label="Open command palette">
+  <Kbd>Ctrl</Kbd><span>+</span><Kbd>K</Kbd>
+</KbdGroup>
 ```
 
 ```ts
-export interface KbdProps {
-  /** Key label, e.g. "⌘", "K", "Esc" */
-  children?: React.ReactNode;
-  style?: React.CSSProperties;
-  className?: string;
-}
-export declare function Kbd(props: KbdProps): React.JSX.Element;
+export type KbdProps = React.HTMLAttributes<HTMLElement>;
+export type KbdGroupProps = React.HTMLAttributes<HTMLSpanElement>;
+
+export declare const Kbd: React.ForwardRefExoticComponent<KbdProps & React.RefAttributes<HTMLElement>>;
+export declare const KbdGroup: React.ForwardRefExoticComponent<KbdGroupProps & React.RefAttributes<HTMLSpanElement>>;
 ```
 
 #### Link
@@ -3487,11 +3487,13 @@ export declare function Switch(props: SwitchProps): React.JSX.Element;
 
 Group: forms · Source: /components/forms/Textarea.jsx · Exports: Textarea
 
-Multiline input with the same field wrapper as Input (`label`/`hint`/`error`).
+Native multiline input. It accepts textarea attributes and forwards its ref.
 
 ```jsx
-<Textarea label="Description" placeholder="What is this project for?" rows={4} />
+<Textarea placeholder="Type your message here." rows={4} />
 ```
+
+Meridian's `label`, `hint`, `error`, and `invalid` props remain additive field helpers.
 
 ```ts
 export interface TextareaProps extends React.TextareaHTMLAttributes<HTMLTextAreaElement> {
@@ -3501,20 +3503,24 @@ export interface TextareaProps extends React.TextareaHTMLAttributes<HTMLTextArea
   error?: string;
   invalid?: boolean;
 }
-export declare function Textarea(props: TextareaProps): React.JSX.Element;
+export declare const Textarea: React.ForwardRefExoticComponent<TextareaProps & React.RefAttributes<HTMLTextAreaElement>>;
 ```
 
 #### Toggle
 
 Group: forms · Source: /components/forms/Toggle.jsx · Exports: Toggle, ToggleGroup
 
-# Toggle / ToggleGroup
+# Toggle
 
-A pressed-state button for on/off formatting-style options (bold, grid view, mute). Use `icon` alone for toolbars, or icon + children for labeled toggles.
+A two-state button with default and outline variants and `default`, `sm`, and `lg` sizes.
 
-- Standalone: `<Toggle icon="sparkles" pressed={b} onPressedChange={setB} />`
-- Grouped: `<ToggleGroup type="multiple" value={views} onChange={setViews}><Toggle value="list" icon="menu" />…</ToggleGroup>` — single type deselects on re-click.
-- Not for navigation (use Tabs/SegmentedControl) or settings that save (use Switch).
+```jsx
+<Toggle pressed={bookmarked} onPressedChange={setBookmarked}>Bookmark</Toggle>
+<Toggle variant="outline" size="sm">Italic</Toggle>
+```
+
+`toggleVariants` returns class names for custom compositions. Meridian's icon-name helper,
+legacy `md` size, and `ToggleGroup` remain additive; use Tabs for navigation and Switch for saved settings.
 
 ```ts
 export interface ToggleProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
@@ -3522,26 +3528,24 @@ export interface ToggleProps extends React.ButtonHTMLAttributes<HTMLButtonElemen
   pressed?: boolean;
   defaultPressed?: boolean;
   onPressedChange?: (pressed: boolean) => void;
-  /** Identity when used inside a ToggleGroup */
+  /** @default 'default' */
+  variant?: 'default' | 'outline';
+  /** @default 'default' */
+  size?: 'default' | 'sm' | 'lg' | 'md';
+  /** Identity when used inside Meridian's legacy ToggleGroup. */
   value?: string;
-  /** Lucide icon name */
+  /** Additive Meridian icon-name helper. */
   icon?: string;
-  /** @default 'md' */
-  size?: 'sm' | 'md';
-  children?: React.ReactNode;
 }
-export interface ToggleGroupProps {
+export interface ToggleGroupProps extends Omit<React.HTMLAttributes<HTMLDivElement>, 'onChange'> {
   /** @default 'single' */
   type?: 'single' | 'multiple';
-  /** Controlled: string (single) or string[] (multiple) */
   value?: string | string[] | null;
   defaultValue?: string | string[] | null;
   onChange?: (value: string | string[] | null) => void;
-  children?: React.ReactNode;
-  style?: React.CSSProperties;
-  className?: string;
 }
-export declare function Toggle(props: ToggleProps): React.JSX.Element;
+export declare function toggleVariants(options?: Pick<ToggleProps, 'variant' | 'size'> & { className?: string }): string;
+export declare const Toggle: React.ForwardRefExoticComponent<ToggleProps & React.RefAttributes<HTMLButtonElement>>;
 export declare function ToggleGroup(props: ToggleGroupProps): React.JSX.Element;
 ```
 

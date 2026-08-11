@@ -85,7 +85,14 @@
     { "name": "Input Group", "status": "unverified" },
     { "name": "Input OTP", "status": "unverified" },
     { "name": "Item", "status": "unverified" },
-    { "name": "Kbd", "status": "unverified" },
+    {
+      "name": "Kbd",
+      "status": "proven",
+      "requiredExports": ["Kbd", "KbdGroup"],
+      "sourceFiles": ["components/display/Kbd.jsx", "components/display/Kbd.d.ts"],
+      "registryItems": ["site/registry/kbd.json"],
+      "tests": ["tests/form-display-primitives-compatibility.test.jsx"]
+    },
     {
       "name": "Label",
       "status": "proven",
@@ -156,9 +163,24 @@
     { "name": "Switch", "status": "unverified" },
     { "name": "Table", "status": "unverified" },
     { "name": "Tabs", "status": "unverified" },
-    { "name": "Textarea", "status": "unverified" },
+    {
+      "name": "Textarea",
+      "status": "proven",
+      "requiredExports": ["Textarea"],
+      "sourceFiles": ["components/forms/Textarea.jsx", "components/forms/Textarea.d.ts"],
+      "registryItems": ["site/registry/textarea.json"],
+      "tests": ["tests/form-display-primitives-compatibility.test.jsx"]
+    },
     { "name": "Toast", "status": "unverified" },
-    { "name": "Toggle", "status": "unverified" },
+    {
+      "name": "Toggle",
+      "status": "proven",
+      "requiredExports": ["Toggle"],
+      "requiredModuleExports": ["toggleVariants"],
+      "sourceFiles": ["components/forms/Toggle.jsx", "components/forms/Toggle.d.ts"],
+      "registryItems": ["site/registry/toggle.json"],
+      "tests": ["tests/form-display-primitives-compatibility.test.jsx"]
+    },
     { "name": "Toggle Group", "status": "unverified" },
     { "name": "Tooltip", "status": "unverified" },
     { "name": "Typography", "status": "unverified" }
