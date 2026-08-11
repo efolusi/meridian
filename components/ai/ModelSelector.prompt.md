@@ -6,4 +6,4 @@ Compact model picker for composers: current model + provider on the trigger, pan
 
 Panel opens upward by default (composers sit at the bottom); side="bottom" for toolbars. For arbitrary options use Select.
 
-Vocabulary: state-carrying selection fires `onChange`; command menus fire `onSelect`; placement is `side` (top/bottom/left/right). The `side` values 'up'/'down' are deprecated aliases for 'top'/'bottom' (one major).
+Vocabulary: state-carrying selection fires `onChange`; command menus fire `onSelect`; placement is `side` (top/bottom/left/right).

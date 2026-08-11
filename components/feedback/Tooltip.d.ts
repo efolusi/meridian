@@ -3,7 +3,6 @@ export interface TooltipProps {
   /** Legacy shorthand content. Prefer TooltipContent for composition. */
   label?: React.ReactNode;
   side?: 'top' | 'bottom' | 'left' | 'right';
-  /** @deprecated Use side. */ position?: 'top' | 'bottom';
   /** Legacy delay alias. */ delay?: number;
   open?: boolean; defaultOpen?: boolean; onOpenChange?: (open: boolean) => void;
   children?: React.ReactNode;

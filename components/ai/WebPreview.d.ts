@@ -12,8 +12,6 @@ export interface WebPreviewProps {
   logs?: WebPreviewLog[];
   /** Console starts open */
   defaultOpen?: boolean;
-  /** @deprecated Use `defaultOpen`. Alias kept for one major; `defaultOpen` wins when both are passed. */
-  defaultConsoleOpen?: boolean;
   /** Rendered instead of an iframe (mock content) */
   children?: React.ReactNode;
   onUrlChange?: (url: string) => void;

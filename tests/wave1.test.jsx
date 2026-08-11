@@ -67,19 +67,19 @@ describe('Combobox ARIA pattern', () => {
 
 describe('StatusDot accessible state', () => {
   it('with a label, prepends the state as visually hidden text', () => {
-    render(<StatusDot state="err" label="API" />);
+    render(<StatusDot status="err" label="API" />);
     const el = screen.getByText('API').closest('.ef-status');
     expect(el.textContent).toBe('Error: API');
     expect(el.querySelector('.ef-status__sr')).toBeTruthy();
     expect(el.getAttribute('role')).toBeNull();
   });
   it('without a label, becomes an image named after the state', () => {
-    render(<StatusDot state="busy" />);
+    render(<StatusDot status="busy" />);
     const img = screen.getByRole('img', { name: 'Busy' });
     expect(img.className).toContain('ef-status--busy');
   });
-  it('stateLabel overrides the announced wording', () => {
-    render(<StatusDot state="warn" stateLabel="Degraded" />);
+  it('statusLabel overrides the announced wording', () => {
+    render(<StatusDot status="warn" statusLabel="Degraded" />);
     expect(screen.getByRole('img', { name: 'Degraded' })).toBeTruthy();
   });
 });

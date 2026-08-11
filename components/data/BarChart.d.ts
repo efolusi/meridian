@@ -9,8 +9,6 @@ export interface BarChartProps {
   labels?: string[];
   /** Hover value formatter */
   format?: (v: number) => string;
-  /** @deprecated Use `format`. Alias kept for one major; `format` wins when both are passed. */
-  formatValue?: (v: number) => string;
   style?: React.CSSProperties;
   className?: string;
 }

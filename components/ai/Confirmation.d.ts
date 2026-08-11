@@ -5,16 +5,9 @@ export interface ConfirmationProps {
   tone?: 'default' | 'danger';
   /** Controlled status */
   status?: 'pending' | 'approved' | 'rejected';
-  /** @deprecated use `status` */
-  state?: 'pending' | 'approved' | 'rejected';
-  /** @default 'pending' */
   /** @default 'pending' */
   defaultStatus?: 'pending' | 'approved' | 'rejected';
-  /** @deprecated use `defaultStatus` */
-  defaultState?: 'pending' | 'approved' | 'rejected';
   onStatusChange?: (status: 'pending' | 'approved' | 'rejected') => void;
-  /** @deprecated use `onStatusChange` */
-  onStateChange?: (state: 'pending' | 'approved' | 'rejected') => void;
   /** Lucide icon; defaults by tone */
   icon?: string;
   /** @default 'Approve' */

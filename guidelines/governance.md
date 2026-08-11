@@ -22,4 +22,4 @@ Rules for evolving this open-source design system.
 - **Don't** introduce gradients, emoji icons, or cool grays — they are outside the language.
 
 ## Deprecation
-Mark the prop/component `@deprecated` in `.d.ts` with the replacement, keep it working for one major version, delete in the next.
+Publish the replacement and migrate all maintained consumers before removing the obsolete prop or component. Stable releases expose only the canonical contract; migration notes belong in the changelog rather than runtime aliases.

@@ -27,8 +27,8 @@ const CSS = `
 .ef-sandbox__panel pre{margin:0;white-space:pre-wrap;word-break:break-word}
 `;
 const STATES = { running: 'Running', success: 'Done', error: 'Failed' };
-export function Sandbox({ title, status, state, meta, tabs = [], defaultOpen, defaultTab, style, className, ...rest }) {
-  const s = status ?? state ?? 'success'; // `state` is a deprecated alias for `status`
+export function Sandbox({ title, status = 'success', meta, tabs = [], defaultOpen, defaultTab, style, className, ...rest }) {
+  const s = status;
   injectEfCss('ef-css-sandbox', CSS);
   const [open, setOpen] = React.useState(defaultOpen !== undefined ? !!defaultOpen : s === 'error');
   const [tab, setTab] = React.useState(defaultTab || (tabs[0] && tabs[0].id));

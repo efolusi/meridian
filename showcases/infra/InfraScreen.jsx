@@ -30,13 +30,13 @@ function InfraScreen() {
   const rows = tab === 'resources' ? [...RESOURCES, ...extra] : tab === 'domains' ? DOMAINS : CERTS;
   return (
     <div style={{ height: '100vh', display: 'flex', flexDirection: 'column' }}>
-      {banner && <Banner tone="warning" icon="triangle-alert" action="View incident" onAction={() => { setTab('resources'); setSel(RESOURCES[3]); }} onDismiss={() => setBanner(false)}><strong>worker-04 is degraded.</strong> P95 latency up 4× since 08:12 UTC.</Banner>}
+      {banner && <Banner tone="warning" icon="triangle-alert" action={<button className="ef-banner__action" onClick={() => { setTab('resources'); setSel(RESOURCES[3]); }}>View incident</button>} onDismiss={() => setBanner(false)}><strong>worker-04 is degraded.</strong> P95 latency up 4× since 08:12 UTC.</Banner>}
       <div style={{ flex: 1, overflowY: 'auto' }}>
         <div style={{ maxWidth: 1180, margin: '0 auto', padding: '28px 32px 60px' }}>
           <div style={{ display: 'flex', alignItems: 'center', gap: 12 }}>
             <a href="../console/index.html" title="Back to Console" style={{ display: 'inline-flex' }}><img src="../../assets/logo.png" alt="" style={{ width: 30, height: 30 }} /></a>
             <h1 style={{ fontSize: 24, fontWeight: 680 }}>Infrastructure</h1>
-            <StatusDot state="warn" pulse label="1 incident" />
+            <StatusDot status="warn" pulse label="1 incident" />
             <div style={{ marginLeft: 'auto', display: 'flex', gap: 8 }}>
               <Button variant="secondary" iconLeft="terminal" onClick={() => setCli(true)}>Open CLI</Button>
               <Button iconLeft="plus" onClick={() => setConnect(true)}>Connect resource</Button>
@@ -61,7 +61,7 @@ function InfraScreen() {
               { key: 'name', label: 'Name', render: (v, r) => <span style={{ display: 'inline-flex', alignItems: 'center', gap: 10, fontWeight: 600 }}><span style={{ display: 'inline-flex', width: 30, height: 30, alignItems: 'center', justifyContent: 'center', borderRadius: 'var(--radius-sm)', background: 'var(--surface-sunken)', color: 'var(--sand-700)' }}><Icon name={r.icon} size={15} /></span>{v}</span> },
               { key: 'kind', label: 'Type' },
               { key: 'region', label: tab === 'resources' ? 'Region' : 'Notes' },
-              { key: 'status', label: 'Status', render: v => <StatusDot state={v} pulse={v !== 'ok'} label={STATUS_LABEL[v]} /> },
+              { key: 'status', label: 'Status', render: v => <StatusDot status={v} pulse={v !== 'ok'} label={STATUS_LABEL[v]} /> },
               { key: 'latency', label: COLS_LAST[tab], numeric: true, align: 'right' },
             ]} rows={rows} />
           </Card>
@@ -70,7 +70,7 @@ function InfraScreen() {
       <Drawer open={!!sel} onOpenChange={open => { if (!open) setSel(null); }} direction="right"><DrawerContent style={{ width: 420 }}><DrawerHeader><DrawerTitle>{sel ? sel.name : ''}</DrawerTitle><DrawerDescription>Connection health and recent activity.</DrawerDescription></DrawerHeader>
         {sel && (
           <div style={{ display: 'flex', flexDirection: 'column', gap: 18, padding: 20 }}>
-            <StatusDot state={sel.status} pulse={sel.status !== 'ok'} label={STATUS_LABEL[sel.status]} />
+            <StatusDot status={sel.status} pulse={sel.status !== 'ok'} label={STATUS_LABEL[sel.status]} />
             <KeyValueList labelWidth={110} items={[
               { label: 'Type', value: sel.kind },
               { label: tab === 'resources' ? 'Region' : 'Notes', value: sel.region },

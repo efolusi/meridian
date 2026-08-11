@@ -8,4 +8,4 @@ Collapsible tree for file/nav hierarchies. Rows take icons + mono counts; branch
 ]} />
 ```
 
-Vocabulary: state-carrying selection fires `onChange`; command menus fire `onSelect`; placement is `side` (top/bottom/left/right). `onSelect` here is a deprecated alias for `onChange` (one major); `onChange` wins when both are passed.
+Tree selection is state-bearing, so changes are reported through `onChange`.

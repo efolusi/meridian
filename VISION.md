@@ -40,7 +40,7 @@ Meridian lives inside PT. Efolusi Dunia Teknologi's thesis (see the portfolio
 - **One system, many surfaces.** The same source compiles to a CDN bundle and an ESM package, renders on a server and a client, and reads correctly to a human and a model. Correctness is proven for every surface, not assumed from one.
 - **Accessible by default, not by opt-in.** WCAG 2.1 AA is the floor: visible focus everywhere, full keyboard operability, contrast in both themes, reduced-motion honoured including JS-driven motion, status never carried by colour alone. A component that names an ARIA role owns that role's whole keyboard contract.
 - **Craft means correctness you can prove.** Every claim is gated. "Accessible", "reproducible", "the types compile", "the icons render" are not adjectives in a README, they are checks that fail the build when they stop being true.
-- **Deprecate, never break.** An API changes by adding the new name and keeping the old one working for one major, marked `@deprecated`. Consumers upgrade on a minor without a rewrite.
+- **Migrate, then remove.** API changes ship with an explicit migration and consumer updates; obsolete adapters do not remain in the stable surface.
 
 ## What "production-ready" means
 
@@ -134,7 +134,7 @@ Releasing is a human act. The loop's output is reviewed diffs, never a shipped v
 - After any `components/**/*.jsx` or `showcases/**/*.jsx` edit, recompile the bundle: `node scripts/build_bundle.mjs`. Never ship a source-only component edit; the "bundle reproducible" gate will fail.
 - Never hand-edit a generated file. Fix the source, then regenerate. Generated outputs are: `_ds_bundle.js`, `_ds_manifest.json`, `dist/`, `site/registry/`, `site/registry.json`, `site/interfaces.json`, `tokens.json`, `tailwind.preset.js`, `llms-full.txt`.
 - Semantic tokens only in component CSS; no raw hex. The token-adherence baseline is 0 and is gated.
-- Deprecate, never break. An API change adds the new name and keeps the old one working for one major, marked `@deprecated`. Prove canonical-and-alias with a test.
+- Migrate every consumer to the canonical contract, then remove the obsolete API and its tests from the stable surface.
 - Every icon used must already exist in `assets/icons/` (Lucide, 24x24, stroke 2). Add the SVG before referencing a new name.
 - Never name a local helper after a design-system export (`Stat`, `Card`, `Divider`); the page runtime hijacks it. Prefix locals.
 - The `// @demo <Component> <Title>` marker is load-bearing; never place that literal in prose.
@@ -164,7 +164,7 @@ Ordered by value. Each is verifiable by the existing gates plus its own new test
 
 1. ~~**Size budget gate.**~~ Shipped: `scripts/check_size.mjs` records the built bundle and npm `dist/` sizes and fails on a regression past `scripts/size_budget.json`, wired into `check_all.mjs`.
 2. ~~**Interaction tests for the still-uncovered stateful components.**~~ Shipped: `tests/interaction-stateful.test.jsx` covers Slider, RichComposer, PromptSteps and Player.
-3. ~~**Finish the API-conventions sweep, with aliases.**~~ Shipped: `action` is a `ReactNode` across Alert / Banner / Toast; `status` is canonical over `state`; `defaultOpen` is canonical over `defaultVisible` (EnvList). Deprecated aliases, canonical-wins tests in `tests/api-aliases.test.jsx`.
+3. ~~**Finish the API-conventions sweep.**~~ Shipped: `action` is a `ReactNode` across Alert / Banner / Toast; `status` is canonical for component condition; `defaultOpen` is canonical for disclosures. Obsolete aliases and their compatibility tests were removed after migration.
 4. ~~**Remove the last hand-maintained lists.**~~ Shipped: `scripts/build_site_nav.mjs` generates `site/nav.json` — pages derived from the actual `site/*.dc.html` files (label from each `<title>`, icon from a mapped-or-fallback table), so a new page appears in search with no array edit (proven with a synthetic page). SiteSearch reads `nav.json` instead of its own hardcoded `PAGES`/`DOCS`; the generator is wired into `check_all.mjs` with a stale gate. (Docs section labels remain a maintained list in the generator; their true source is the Docs page's own runtime, out of proportion to lift.)
 5. ~~**Patterns docs.**~~ Shipped: `guidelines/patterns.md` (product-state playbook) and `guidelines/frameworks.md`, linked from the README.
 6. ~~**Framework guide pages.**~~ Shipped as `guidelines/frameworks.md`: Next.js App Router (`use client`), Vite, Remix, plain HTML/CDN.

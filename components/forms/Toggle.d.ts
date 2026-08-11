@@ -12,14 +12,12 @@ export interface ToggleProps extends React.ButtonHTMLAttributes<HTMLButtonElemen
   /** Additive Meridian icon-name helper. */
   icon?: string;
 }
-export interface ToggleGroupProps extends Omit<React.HTMLAttributes<HTMLDivElement>, 'onChange'> {
+export interface ToggleGroupProps extends React.HTMLAttributes<HTMLDivElement> {
   /** @default 'single' */
   type?: 'single' | 'multiple';
   value?: string | string[] | null;
   defaultValue?: string | string[] | null;
   onValueChange?: (value: string | string[] | null) => void;
-  /** @deprecated Use onValueChange. */
-  onChange?: (value: string | string[] | null) => void;
   variant?: 'default' | 'outline';
   size?: 'default' | 'sm' | 'lg' | 'md';
   /** Gap in 4px units. @default 2 */

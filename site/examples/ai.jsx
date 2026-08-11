@@ -329,9 +329,9 @@ export function GeneratedImageDemo() {
   const { GeneratedImage } = window.EfolusiDesignSystem_4ffc3d;
   return (
     <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 1fr', gap: 12, width: '100%', maxWidth: 640 }}>
-      <GeneratedImage state="queued" prompt="Espresso machine, isometric" />
-      <GeneratedImage state="generating" prompt="Espresso machine, isometric" />
-      <GeneratedImage state="error" prompt="Espresso machine, isometric" error="Rate limit hit" onRetry={() => {}} />
+      <GeneratedImage status="queued" prompt="Espresso machine, isometric" />
+      <GeneratedImage status="generating" prompt="Espresso machine, isometric" />
+      <GeneratedImage status="error" prompt="Espresso machine, isometric" error="Rate limit hit" onRetry={() => {}} />
     </div>
   );
 }
@@ -347,7 +347,7 @@ export function SandboxDemo() {
   }, []);
   return (
     <div style={{ width: '100%', maxWidth: 520 }}>
-      <Sandbox title="python analyze_failures.py" state={state} defaultOpen tabs={[
+      <Sandbox title="python analyze_failures.py" status={state} defaultOpen tabs={[
         { id: 'out', label: 'Output', content: <pre>Loaded 12 failed deliveries{'\n'}Grouping by endpoint… 1 host{'\n'}Computing backoff windows…</pre> },
         { id: 'code', label: 'Code', content: <pre>{'rows = load("failures.csv")\nby_host = group(rows, "endpoint")\nprint(backoff(by_host))'}</pre> },
       ]} />

@@ -19,7 +19,7 @@ function compose(theirs, ours) {
   return event => { theirs?.(event); if (!event.defaultPrevented) ours?.(event); };
 }
 
-export function Tooltip({ label, side, position, delay, open: controlled, defaultOpen = false, onOpenChange, children }) {
+export function Tooltip({ label, side, delay, open: controlled, defaultOpen = false, onOpenChange, children }) {
   injectEfCss('ef-css-tooltip', CSS);
   const provider = React.useContext(TooltipProviderCtx);
   const [inner, setInner] = React.useState(defaultOpen);
@@ -42,12 +42,11 @@ export function Tooltip({ label, side, position, delay, open: controlled, defaul
   const value = React.useMemo(() => ({ open, show, hide, triggerRef, contentId }), [open, show, hide, contentId]);
 
   if (label !== undefined) {
-    const asked = side ?? position;
     return (
       <TooltipCtx.Provider value={value}>
         <span className="ef-tooltip">
           <TooltipTrigger asChild>{children}</TooltipTrigger>
-          <TooltipContent side={SIDES.includes(asked) ? asked : 'top'}>{label}</TooltipContent>
+          <TooltipContent side={SIDES.includes(side) ? side : 'top'}>{label}</TooltipContent>
         </span>
       </TooltipCtx.Provider>
     );

@@ -263,7 +263,7 @@ class Component extends DCLogic {
         this.setState({ dark: next === 'dark' });
       },
       barProps: { data: [42, 38, 51, 46, 62, 58, 71, 66, 80, 92], labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct'], highlightLast: 3, height: 150, formatValue: v => '$' + v + 'k' },
-      barCode: "<BarChart data={[42, 38, 51, …]} labels={months}\n  highlightLast={3} formatValue={v => `$${v}k`} />",
+      barCode: "<BarChart data={[42, 38, 51, …]} labels={months}\n  highlightLast={3} format={v => `$${v}k`} />",
       lineProps: { data: [118, 126, 121, 134, 142, 138, 155, 161, 158, 174, 182, 196].map((value, i) => ({ value, label: 'Week ' + (i + 1) })), height: 150, format: v => v + ' runs' },
       lineCode: "<LineChart data={weeks} showArea\n  format={v => `${v} runs`} />",
       donutProps: { data: [{ label: 'AI agents', value: 38 }, { label: 'Infrastructure', value: 26 }, { label: 'Trading', value: 19 }, { label: 'File tools', value: 17 }], size: 160, centerValue: '$82k', centerLabel: 'MRR', format: v => v + '%' },

@@ -10,8 +10,6 @@ export interface SandboxProps {
   /** 'running' | 'success' | 'error' */
   /** @default 'success' */
   status?: 'running' | 'success' | 'error';
-  /** @deprecated use `status` */
-  state?: 'running' | 'success' | 'error';
   /** Right-side meta, e.g. duration */
   meta?: React.ReactNode;
   tabs: SandboxTab[];

@@ -11,7 +11,7 @@ function AgentHeader({ running, onToggle, notify }) {
       </a>
       <span style={{ color: 'var(--sand-300)' }}>/</span>
       <span style={{ fontSize: 14, fontWeight: 600 }}>Retry failed webhooks</span>
-      <StatusDot state={running ? 'busy' : 'off'} pulse={running} label={running ? 'Running' : 'Paused'} />
+      <StatusDot status={running ? 'busy' : 'off'} pulse={running} label={running ? 'Running' : 'Paused'} />
       <div style={{ marginLeft: 'auto', display: 'flex', alignItems: 'center', gap: 8 }}>
         <span style={{ display: 'inline-flex', alignItems: 'center', gap: 5, fontSize: 12, color: 'var(--text-muted)' }}><Kbd>⌘</Kbd><Kbd>K</Kbd></span>
         <Button size="sm" variant="secondary" iconLeft={running ? 'pause' : 'play'} onClick={onToggle}>{running ? 'Pause' : 'Resume'}</Button>
@@ -44,7 +44,7 @@ function TaskRail({ running }) {
         </div>
       </Card>
       <Card title="Run">
-        <div style={{ marginBottom: 8 }}><StatusDot state={running ? 'busy' : 'off'} pulse={running} label={running ? 'Agent active' : 'Paused by you'} /></div>
+        <div style={{ marginBottom: 8 }}><StatusDot status={running ? 'busy' : 'off'} pulse={running} label={running ? 'Agent active' : 'Paused by you'} /></div>
         <KeyValueList labelWidth={88} items={[
           { label: 'Model', value: 'efolusi-1' },
           { label: 'Tokens', value: '48.1k', mono: true },

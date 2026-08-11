@@ -186,7 +186,7 @@ Group: ai · Source: /components/ai/Confirmation.jsx · Exports: Confirmation
 
 Inline approval card for agent actions — pending shows Approve/Reject, settled shows a status line. Ringed accent (or danger) border while pending.
 
-`<Confirmation title="Send 12 refund emails?" description="Covers every failed webhook customer." onStateChange={apply} />`
+`<Confirmation title="Send 12 refund emails?" description="Covers every failed webhook customer." onStatusChange={apply} />`
 `<Confirmation tone="danger" title="Drop table archived_runs?" approveLabel="Drop it" />`
 
 Use in the thread when the agent needs permission; use ConfirmDialog only for app-level modals. Nest a ToolCall or Diff as children to show exactly what runs.
@@ -199,16 +199,9 @@ export interface ConfirmationProps {
   tone?: 'default' | 'danger';
   /** Controlled status */
   status?: 'pending' | 'approved' | 'rejected';
-  /** @deprecated use `status` */
-  state?: 'pending' | 'approved' | 'rejected';
-  /** @default 'pending' */
   /** @default 'pending' */
   defaultStatus?: 'pending' | 'approved' | 'rejected';
-  /** @deprecated use `defaultStatus` */
-  defaultState?: 'pending' | 'approved' | 'rejected';
   onStatusChange?: (status: 'pending' | 'approved' | 'rejected') => void;
-  /** @deprecated use `onStatusChange` */
-  onStateChange?: (state: 'pending' | 'approved' | 'rejected') => void;
   /** Lucide icon; defaults by tone */
   icon?: string;
   /** @default 'Approve' */
@@ -343,8 +336,6 @@ export interface GeneratedImageProps {
   /** 'queued' | 'generating' | 'complete' | 'error' */
   /** @default 'complete' */
   status?: 'queued' | 'generating' | 'complete' | 'error';
-  /** @deprecated use `status` */
-  state?: 'queued' | 'generating' | 'complete' | 'error';
   src?: string;
   alt?: string;
   /** Prompt shown top-left over the image */
@@ -514,7 +505,7 @@ Compact model picker for composers: current model + provider on the trigger, pan
 
 Panel opens upward by default (composers sit at the bottom); side="bottom" for toolbars. For arbitrary options use Select.
 
-Vocabulary: state-carrying selection fires `onChange`; command menus fire `onSelect`; placement is `side` (top/bottom/left/right). The `side` values 'up'/'down' are deprecated aliases for 'top'/'bottom' (one major).
+Vocabulary: state-carrying selection fires `onChange`; command menus fire `onSelect`; placement is `side` (top/bottom/left/right).
 
 ```ts
 export interface ModelOption {
@@ -532,8 +523,8 @@ export interface ModelSelectorProps {
   /** Selected model id */
   value?: string;
   onChange?: (id: string) => void;
-  /** Panel direction @default 'top'. 'up'/'down' are deprecated aliases for 'top'/'bottom' (one major). */
-  side?: 'top' | 'bottom' | 'up' | 'down';
+  /** Panel direction @default 'top'. */
+  side?: 'top' | 'bottom';
   style?: React.CSSProperties;
   className?: string;
 }
@@ -759,8 +750,6 @@ export interface SandboxProps {
   /** 'running' | 'success' | 'error' */
   /** @default 'success' */
   status?: 'running' | 'success' | 'error';
-  /** @deprecated use `status` */
-  state?: 'running' | 'success' | 'error';
   /** Right-side meta, e.g. duration */
   meta?: React.ReactNode;
   tabs: SandboxTab[];
@@ -849,7 +838,7 @@ Prompt-suggestion chip row for empty chats and follow-ups.
 
 3–5 chips max, verb-first labels. Picking a chip should send it, not just fill the composer.
 
-Vocabulary: state-carrying selection fires `onChange`; command menus fire `onSelect`; placement is `side` (top/bottom/left/right). `onPick` is a deprecated alias for `onSelect` (one major); `onSelect` wins when both are passed.
+Suggestion commands report the chosen item through `onSelect`.
 
 ```ts
 export interface SuggestionItem { label: string; /** Lucide icon */ icon?: string; }
@@ -858,8 +847,6 @@ export interface SuggestionsProps {
   items: Array<string | SuggestionItem>;
   /** Fires with the picked label */
   onSelect?: (label: string, index: number) => void;
-  /** @deprecated Use `onSelect`. Alias kept for one major; `onSelect` wins when both are passed. */
-  onPick?: (label: string, index: number) => void;
   style?: React.CSSProperties;
   className?: string;
 }
@@ -1072,7 +1059,7 @@ Browser pane for agent-built UIs — reload, draft-state address bar (Enter comm
 </WebPreview>
 ```
 
-Vocabulary: state-carrying selection fires `onChange`; command menus fire `onSelect`; placement is `side` (top/bottom/left/right). `defaultConsoleOpen` is a deprecated alias for `defaultOpen` (one major); `defaultOpen` wins when both are passed.
+Use `defaultOpen` for the console's initial uncontrolled state.
 
 ```ts
 export interface WebPreviewLog {
@@ -1089,8 +1076,6 @@ export interface WebPreviewProps {
   logs?: WebPreviewLog[];
   /** Console starts open */
   defaultOpen?: boolean;
-  /** @deprecated Use `defaultOpen`. Alias kept for one major; `defaultOpen` wins when both are passed. */
-  defaultConsoleOpen?: boolean;
   /** Rendered instead of an iframe (mock content) */
   children?: React.ReactNode;
   onUrlChange?: (url: string) => void;
@@ -1262,8 +1247,6 @@ export interface EnvListProps {
   vars: EnvVar[];
   /** Reveal secret values on mount. @default false */
   defaultOpen?: boolean;
-  /** @deprecated use `defaultOpen` */
-  defaultVisible?: boolean;
   style?: React.CSSProperties;
   className?: string;
 }
@@ -1362,7 +1345,7 @@ Hairline-minimal bar chart: sand bars, ink highlight window, hover tint + title 
 <BarChart data={requests} height={150} highlightLast={4} labels={['Jun 18', 'Jul 2', 'Jul 16']} format={v => v.toLocaleString() + ' req'} />
 ```
 
-Vocabulary: state-carrying selection fires `onChange`; command menus fire `onSelect`; placement is `side` (top/bottom/left/right). `formatValue` is a deprecated alias for `format` (one major, matching the other charts); `format` wins when both are passed.
+Format displayed values with `format`, matching the other chart components.
 
 ```ts
 export interface BarChartProps {
@@ -1376,8 +1359,6 @@ export interface BarChartProps {
   labels?: string[];
   /** Hover value formatter */
   format?: (v: number) => string;
-  /** @deprecated Use `format`. Alias kept for one major; `format` wins when both are passed. */
-  formatValue?: (v: number) => string;
   style?: React.CSSProperties;
   className?: string;
 }
@@ -1645,13 +1626,9 @@ Live status dot with label; `pulse` radiates for running/connected states. The s
 export interface StatusDotProps extends Omit<React.HTMLAttributes<HTMLSpanElement>, 'children'> {
   /** @default 'ok' */
   status?: 'ok' | 'warn' | 'err' | 'busy' | 'off';
-  /** @deprecated use `status` */
-  state?: 'ok' | 'warn' | 'err' | 'busy' | 'off';
   label?: React.ReactNode;
   /** Text announced for the status; defaults to OK / Warning / Error / Busy / Offline */
   statusLabel?: string;
-  /** @deprecated use `statusLabel` */
-  stateLabel?: string;
   /** Radiating pulse for live states */
   pulse?: boolean;
   style?: React.CSSProperties;
@@ -2491,7 +2468,7 @@ Collapsible tree for file/nav hierarchies. Rows take icons + mono counts; branch
 ]} />
 ```
 
-Vocabulary: state-carrying selection fires `onChange`; command menus fire `onSelect`; placement is `side` (top/bottom/left/right). `onSelect` here is a deprecated alias for `onChange` (one major); `onChange` wins when both are passed.
+Tree selection is state-bearing, so changes are reported through `onChange`.
 
 ```ts
 export interface TreeNode {
@@ -2509,8 +2486,6 @@ export interface TreeListProps {
   value?: string;
   /** Fires with the clicked row's id and node */
   onChange?: (id: string, node: TreeNode) => void;
-  /** @deprecated Use `onChange`. Alias kept for one major; `onChange` wins when both are passed. */
-  onSelect?: (id: string, node: TreeNode) => void;
   /** Branch ids open initially (default: all top-level) */
   defaultOpen?: string[];
   style?: React.CSSProperties;
@@ -2628,12 +2603,12 @@ Group: feedback · Source: /components/feedback/Banner.jsx · Exports: Banner
 Full-width strip above the app chrome — trials, incidents, announcements. One per view, max.
 
 ```jsx
-<Banner tone="warning" icon="triangle-alert" action="Add card" onAction={billing} onDismiss={hide}>
+<Banner tone="warning" icon="triangle-alert" action={<button className="ef-banner__action" onClick={billing}>Add card</button>} onDismiss={hide}>
   <strong>Trial ends in 3 days.</strong> Your workspace pauses after that.
 </Banner>
 ```
 
-`action` takes a node (rendered as-is); a string label with `onAction` is the legacy form.
+`action` takes a node and renders it as-is, so the caller owns its interaction.
 
 ```ts
 export interface BannerProps {
@@ -2641,10 +2616,8 @@ export interface BannerProps {
   tone?: 'neutral' | 'brand' | 'warning' | 'danger';
   /** Lucide icon name */
   icon?: string;
-  /** Action slot: a node (rendered as-is) or, deprecated, a string label used with `onAction`. */
+  /** Action slot, rendered as-is. */
   action?: React.ReactNode;
-  /** @deprecated pass a node to `action` instead */
-  onAction?: () => void;
   /** Shows a dismiss ✕ */
   onDismiss?: () => void;
   children?: React.ReactNode;
@@ -2852,7 +2825,7 @@ Hover/focus tooltip with collision-aware placement. Prefer the compositional API
 
 `side`: `top` (default), `bottom`, `left`, or `right`; flips when there is no room. Keep labels short; no interactive content inside.
 
-The `label` shorthand and deprecated `position` alias remain available for existing products.
+Use `side` to place composed tooltip content on the top, bottom, left, or right.
 
 ```ts
 export interface TooltipProviderProps { delayDuration?: number; children?: React.ReactNode; }
@@ -2860,7 +2833,6 @@ export interface TooltipProps {
   /** Legacy shorthand content. Prefer TooltipContent for composition. */
   label?: React.ReactNode;
   side?: 'top' | 'bottom' | 'left' | 'right';
-  /** @deprecated Use side. */ position?: 'top' | 'bottom';
   /** Legacy delay alias. */ delay?: number;
   open?: boolean; defaultOpen?: boolean; onOpenChange?: (open: boolean) => void;
   children?: React.ReactNode;
@@ -3694,14 +3666,12 @@ export interface ToggleProps extends React.ButtonHTMLAttributes<HTMLButtonElemen
   /** Additive Meridian icon-name helper. */
   icon?: string;
 }
-export interface ToggleGroupProps extends Omit<React.HTMLAttributes<HTMLDivElement>, 'onChange'> {
+export interface ToggleGroupProps extends React.HTMLAttributes<HTMLDivElement> {
   /** @default 'single' */
   type?: 'single' | 'multiple';
   value?: string | string[] | null;
   defaultValue?: string | string[] | null;
   onValueChange?: (value: string | string[] | null) => void;
-  /** @deprecated Use onValueChange. */
-  onChange?: (value: string | string[] | null) => void;
   variant?: 'default' | 'outline';
   size?: 'default' | 'sm' | 'lg' | 'md';
   /** Gap in 4px units. @default 2 */

@@ -13,13 +13,13 @@ const CSS = `
 .ef-banner__text strong{font-weight:var(--weight-semibold)}
 .ef-banner__action{flex:none;font-weight:var(--weight-semibold);font-size:var(--text-sm);color:inherit;text-decoration:underline;text-underline-offset:3px;background:none;border:none;cursor:pointer;font-family:var(--font-sans);padding:0}
 `;
-export function Banner({ tone = 'neutral', icon, action, onAction, onDismiss, children, style, className, ...rest }) {
+export function Banner({ tone = 'neutral', icon, action, onDismiss, children, style, className, ...rest }) {
   injectEfCss('ef-css-banner', CSS);
   return (
     <div {...rest} role="status" className={`ef-banner ef-banner--${tone}${className ? ' ' + className : ''}`} style={style}>
       {icon ? <span className="ef-banner__icon"><Icon name={icon} size={15} /></span> : null}
       <span className="ef-banner__text">{children}</span>
-      {action ? (React.isValidElement(action) ? action : <button className="ef-banner__action" onClick={onAction}>{action}</button>) : null}
+      {action || null}
       {onDismiss ? <IconButton icon="x" label="Dismiss" size="sm" onClick={onDismiss} /> : null}
     </div>
   );

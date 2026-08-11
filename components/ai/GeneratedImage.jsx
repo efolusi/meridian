@@ -29,8 +29,8 @@ const CSS = `
 .ef-genimg__retry{display:inline-flex;align-items:center;gap:6px;padding:7px 13px;border:1px solid var(--border-strong);border-radius:var(--radius-full);background:var(--surface-card);cursor:pointer;font-family:var(--font-sans);font-size:12.5px;font-weight:var(--weight-semibold);color:var(--text-primary)}
 .ef-genimg__err{color:var(--danger-600)}
 `;
-export function GeneratedImage({ status, state, src, alt, prompt, aspect = 'square', error, onRetry, actions, style, className, ...rest }) {
-  const s = status ?? state ?? 'complete'; // `state` is a deprecated alias for `status`
+export function GeneratedImage({ status = 'complete', src, alt, prompt, aspect = 'square', error, onRetry, actions, style, className, ...rest }) {
+  const s = status;
   injectEfCss('ef-css-genimg', CSS);
   return (
     <div {...rest} className={`ef-genimg ef-genimg--${aspect} ef-genimg--${s}${className ? ' ' + className : ''}`} style={style} data-state={s}>

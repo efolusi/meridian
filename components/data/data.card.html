@@ -54,7 +54,7 @@ function Demo() {
       </div>
       <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 16 }}>
         <Card title="Weekly runs" padding={16}>
-          <BarChart height={130} highlightLast={1} labels={['Mon','Tue','Wed','Thu','Fri','Sat','Sun']} data={[42,58,51,74,66,30,89]} formatValue={v => v + ' runs'} />
+          <BarChart height={130} highlightLast={1} labels={['Mon','Tue','Wed','Thu','Fri','Sat','Sun']} data={[42,58,51,74,66,30,89]} format={v => v + ' runs'} />
         </Card>
         <Card title="Resource" padding={16}>
           <KeyValueList labelWidth={120} items={[
@@ -65,11 +65,11 @@ function Demo() {
         </Card>
       </div>
       <div style={{ display: 'flex', gap: 22, flexWrap: 'wrap' }}>
-        <StatusDot state="ok" label="API" />
-        <StatusDot state="busy" pulse label="Deploying" />
-        <StatusDot state="warn" label="Queue depth" />
-        <StatusDot state="err" label="Webhooks" />
-        <StatusDot state="off" label="Sandbox" />
+        <StatusDot status="ok" label="API" />
+        <StatusDot status="busy" pulse label="Deploying" />
+        <StatusDot status="warn" label="Queue depth" />
+        <StatusDot status="err" label="Webhooks" />
+        <StatusDot status="off" label="Sandbox" />
       </div>
     </div>
   );

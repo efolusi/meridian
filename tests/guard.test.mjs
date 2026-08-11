@@ -63,11 +63,8 @@ describe('Meridian Guard rules', () => {
     expect(rules('const cardCss = `.card { color: #fff; }`; export const issue = cardCss;')).toEqual(['MDG003']);
   });
 
-  it('reports deprecated props with their canonical replacements', () => {
-    expect(rules(`
-      import { StatusDot } from '@efolusi/meridian';
-      export const Example = () => <StatusDot state="ok" />;
-    `)).toEqual(['MDG004']);
+  it('ships no deprecated prop contracts in the stable surface', () => {
+    expect(contracts.deprecated).toEqual([]);
   });
 
   it('enforces deterministic accessibility contracts', () => {
@@ -77,10 +74,10 @@ describe('Meridian Guard rules', () => {
     `)).toEqual(['MDG005', 'MDG005', 'MDG005', 'MDG005']);
   });
 
-  it('accepts legacy and compositional Dialog titles', () => {
+  it('accepts compositional Dialog titles', () => {
     expect(rules(`
       import { Dialog, DialogContent, DialogHeader, DialogTitle } from '@efolusi/meridian';
-      export const Example = () => <><Dialog open title="Legacy" /><Dialog><DialogContent><DialogHeader><DialogTitle>Composed</DialogTitle></DialogHeader></DialogContent></Dialog></>;
+      export const Example = () => <Dialog><DialogContent><DialogHeader><DialogTitle>Composed</DialogTitle></DialogHeader></DialogContent></Dialog>;
     `)).toEqual([]);
   });
 

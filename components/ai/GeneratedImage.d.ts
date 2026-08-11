@@ -7,8 +7,6 @@ export interface GeneratedImageProps {
   /** 'queued' | 'generating' | 'complete' | 'error' */
   /** @default 'complete' */
   status?: 'queued' | 'generating' | 'complete' | 'error';
-  /** @deprecated use `status` */
-  state?: 'queued' | 'generating' | 'complete' | 'error';
   src?: string;
   alt?: string;
   /** Prompt shown top-left over the image */

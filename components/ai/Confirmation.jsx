@@ -22,15 +22,14 @@ const CSS = `
 .ef-confirm__status--approved{color:var(--success-600,var(--text-secondary))}
 .ef-confirm__status--rejected{color:var(--text-muted)}
 `;
-export function Confirmation({ title, description, tone = 'default', status, state, defaultStatus, defaultState, onStatusChange, onStateChange, icon, approveLabel = 'Approve', rejectLabel = 'Reject', approvedNote = 'Approved — continuing.', rejectedNote = 'Rejected — the agent will skip this.', children, style, className, ...rest }) {
+export function Confirmation({ title, description, tone = 'default', status, defaultStatus, onStatusChange, icon, approveLabel = 'Approve', rejectLabel = 'Reject', approvedNote = 'Approved — continuing.', rejectedNote = 'Rejected — the agent will skip this.', children, style, className, ...rest }) {
   injectEfCss('ef-css-confirm', CSS);
-  const [un, setUn] = React.useState(defaultStatus ?? defaultState ?? 'pending'); // `defaultState`/`state`/`onStateChange` are deprecated aliases
-  const controlled = status ?? state;
+  const [un, setUn] = React.useState(defaultStatus ?? 'pending');
+  const controlled = status;
   const cur = controlled !== undefined ? controlled : un;
   const set = next => {
     if (controlled === undefined) setUn(next);
-    if (onStatusChange) onStatusChange(next);
-    else if (onStateChange) onStateChange(next);
+    onStatusChange?.(next);
   };
   const settled = cur !== 'pending';
   return (

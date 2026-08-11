@@ -25,7 +25,7 @@ function TraderScreen() {
             <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
               <a href="../console/index.html" title="Back to Console" style={{ display: 'inline-flex' }}><img src="../../assets/logo.png" alt="" style={{ width: 30, height: 30 }} /></a>
               <h1 style={{ fontSize: 24, fontWeight: 680 }}>Trading</h1>
-              <StatusDot state={auto ? 'busy' : 'off'} pulse={auto} label={auto ? 'Robot active' : 'Robot paused'} />
+              <StatusDot status={auto ? 'busy' : 'off'} pulse={auto} label={auto ? 'Robot active' : 'Robot paused'} />
             </div>
             <div style={{ display: 'flex', alignItems: 'baseline', gap: 12, marginTop: 16 }}>
               <span style={{ fontFamily: 'var(--font-mono)', fontSize: 40, fontWeight: 600, letterSpacing: '-0.01em' }}>€24,318.90</span>
@@ -37,7 +37,7 @@ function TraderScreen() {
             <SegmentedControl options={['24h', '7d', '30d']} value={range} onChange={setRange} />
             <Card padding={14} style={{ width: 240 }}>
               <div style={{ fontSize: 11, fontWeight: 600, letterSpacing: '0.06em', textTransform: 'uppercase', color: 'var(--text-muted)', marginBottom: 8 }}>Daily volume</div>
-              <BarChart height={64} data={[42, 61, 38, 74, 52, 88, 66, 91, 58, 80, 96, 71, 84, 104]} highlightLast={3} labels={['Jul 3', 'Jul 16']} formatValue={v => '€' + (v * 113).toLocaleString()} />
+              <BarChart height={64} data={[42, 61, 38, 74, 52, 88, 66, 91, 58, 80, 96, 71, 84, 104]} highlightLast={3} labels={['Jul 3', 'Jul 16']} format={v => '€' + (v * 113).toLocaleString()} />
             </Card>
           </div>
         </div>

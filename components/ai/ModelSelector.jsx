@@ -23,8 +23,7 @@ const CSS = `
 `;
 export function ModelSelector({ models = [], value, onChange, side = 'top', style, className, ...rest }) {
   injectEfCss('ef-css-modelsel', CSS);
-  // 'up'/'down' are deprecated value aliases for 'top'/'bottom' (the house placement vocabulary).
-  const dir = side === 'down' || side === 'bottom' ? 'bottom' : 'top';
+  const dir = side === 'bottom' ? 'bottom' : 'top';
   const [open, setOpen] = React.useState(false);
   const ref = React.useRef(null);
   const panelRef = React.useRef(null);

@@ -8,7 +8,7 @@
 Meridian Guard scanned **3,065 authored files across 12 consumers**. The final sweep reported **0 errors** and **320 warnings**:
 
 - 317 `MDG003` raw-color warnings;
-- 3 `MDG004` deprecated-prop warnings;
+- 3 `MDG004` obsolete-prop warnings at audit time;
 - 0 unknown components (`MDG001`);
 - 0 unknown icons (`MDG002`);
 - 0 deterministic accessibility violations (`MDG005`).
@@ -17,7 +17,7 @@ Seven consumers currently reference Meridian. Five do not; their raw-color count
 
 ## Actionable classes
 
-The three deterministic API warnings use the deprecated `StatusDot.state` prop and should migrate to `StatusDot.status`.
+The three deterministic API warnings used `StatusDot.state`; they were migrated to `StatusDot.status` before the stable alias was removed.
 
 Raw-color findings need product-aware triage. They include application chrome as well as domain output such as generated images, email markup, media, manifests, and color-processing tools. Those categories must not be bulk-replaced with semantic UI tokens.
 
@@ -33,7 +33,7 @@ Guard now skips standard generated, test, and vendor paths; never follows symlin
 
 ## Next migration pass
 
-1. Migrate the three deterministic deprecated props.
+1. Keep maintained consumers on canonical props before removing obsolete aliases.
 2. Decide adoption scope before treating non-consumer raw colors as failures.
 3. Add consumer-local allowlists for domain colors that are not application chrome.
 4. Gate only the remaining application-chrome findings in each consumer's CI.

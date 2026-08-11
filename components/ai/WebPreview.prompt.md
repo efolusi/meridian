@@ -8,4 +8,4 @@ Browser pane for agent-built UIs — reload, draft-state address bar (Enter comm
 </WebPreview>
 ```
 
-Vocabulary: state-carrying selection fires `onChange`; command menus fire `onSelect`; placement is `side` (top/bottom/left/right). `defaultConsoleOpen` is a deprecated alias for `defaultOpen` (one major); `defaultOpen` wins when both are passed.
+Use `defaultOpen` for the console's initial uncontrolled state.

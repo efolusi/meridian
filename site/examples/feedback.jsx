@@ -54,7 +54,7 @@ export function BannerDemo() {
   if (!open) return <span style={{ fontSize: 13, color: 'var(--text-muted)' }}>Banner dismissed.</span>;
   return (
     <div style={{ width: '100%', maxWidth: 560 }}>
-      <Banner tone="brand" icon="sparkles" action="See what's new" onAction={() => {}} onDismiss={() => setOpen(false)}>
+      <Banner tone="brand" icon="sparkles" action={<button className="ef-banner__action" onClick={() => {}}>See what's new</button>} onDismiss={() => setOpen(false)}>
 Meridian 1.4 is the first public release.
       </Banner>
     </div>

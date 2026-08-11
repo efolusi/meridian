@@ -11,4 +11,4 @@ Hover/focus tooltip with collision-aware placement. Prefer the compositional API
 
 `side`: `top` (default), `bottom`, `left`, or `right`; flips when there is no room. Keep labels short; no interactive content inside.
 
-The `label` shorthand and deprecated `position` alias remain available for existing products.
+Use `side` to place composed tooltip content on the top, bottom, left, or right.

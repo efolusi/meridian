@@ -12,7 +12,7 @@ The credibility layer: nothing markets a system like correctness.
 
 - **Accessibility conformance.** Audit every interactive component against WCAG 2.2 AA: keyboard map, focus order, ARIA roles, `prefers-reduced-motion`. Publish a per-component a11y note on its docs page ("Keyboard", "Screen reader", "Known limits"). Priority: Combobox, Command, Dialog/Drawer, Menu, Calendar and its picker composition, RichComposer, Player.
 - **Contrast verification.** Scripted check of every semantic token pair (text-on-surface, accent-contrast, states) in light *and* dark; publish results on the Colors page.
-- ~~**API consistency audit.**~~ Landed 2026-07-24: the drifted props are unified with one-major deprecated aliases — onChange for state-selection, onSelect for command menus, side for placement, format for chart formatting (1.9.0); status for a component's condition, and action=ReactNode across Alert/Banner/Toast (this sweep). Severity stays `tone`, controlled uses `defaultX`, events use `onX`. Every alias is tested (canonical works, alias works, canonical wins).
+- ~~**API consistency audit.**~~ Landed 2026-07-24 and hardened 2026-08-12: state selection uses `onChange`, command menus use `onSelect`, placement uses `side`, charts use `format`, component condition uses `status`, and action slots accept React nodes. Maintained consumers now use the canonical contracts and the superseded aliases are removed.
 - **Browser support matrix + RTL statement.** DirectionProvider, mirrored behavior, logical CSS, a static direction-safety gate, representative visual review and bidirectional 128-demo smoke landed in 1.x. Still open: test the last 2 versions of Safari, Firefox and Edge before claiming full cross-browser RTL support.
 
 **Exit:** an ACCESSIBILITY.md conformance statement an enterprise buyer can hand to their compliance team.
@@ -96,7 +96,7 @@ Concrete items surfaced by the five-area audit (components, tokens, docs site, k
 **Phase 1 — tokens (additive, wire in the same bundled release)**
 - `--z-*` elevation scale replacing the 15 raw z-indexes (today: five overlays tie at 80; Tooltip at 60 loses to Drawer at 100).
 - `--overlay-scrim` for the repeated `rgba(31,26,20,.45)` scrims; `--text-on-brand-muted` for the 6 hard-coded `rgba(248,244,230,.75)` sites; `--text-2xs` (or similar) so the 134 raw px font sizes can snap to the scale; route raw hex in Toast/Terminal/CodeBlock/Badge through semantic tokens; rename `--shadow-pop` → `--shadow-xl` (alias kept one major).
-- API conventions sweep, partially landed 2026-07-22 (choose-an-item events unified on onChange/onSelect, placement unified on `side`, `formatValue`→`format`, WebPreview controlled-capable + `defaultOpen` — all with one-major deprecated aliases). Still open: one action-prop shape across Alert/Banner/Toast, `status` vs `state`, `defaultVisible`, `size` enum-vs-pixel doc.
+- API conventions sweep landed: choose-an-item events use `onChange`/`onSelect`, placement uses `side`, charts use `format`, WebPreview uses `defaultOpen`, condition props use `status`, and action slots accept nodes. Remaining adapter removals are tracked as explicit migrations, not permanent compatibility aliases.
 
 **Phase 3 — quality infrastructure**
 - CI on every PR: manifest↔source sync check (the committed bundle's one real risk is silent staleness), oxlint adherence run (first fix the config: empty `forbid-elements` rule, and the `no-restricted-imports` message assumes an `index.js` barrel that doesn't exist), dead-link check, headless smoke run.

@@ -70,13 +70,13 @@ describe('Toggle Group composition compatibility', () => {
     expect(screen.getByRole('button', { name: 'Grid' }).className).toContain('ef-toggle--sm');
   });
 
-  it('supports multiple values and preserves the legacy Toggle child adapter', async () => {
+  it('supports multiple values with canonical value changes and Toggle children', async () => {
     const user = userEvent.setup();
-    const onChange = vi.fn();
-    render(<ToggleGroup type="multiple" defaultValue={['bold']} onChange={onChange}><Toggle value="bold">Bold</Toggle><ToggleGroupItem value="italic">Italic</ToggleGroupItem></ToggleGroup>);
+    const onValueChange = vi.fn();
+    render(<ToggleGroup type="multiple" defaultValue={['bold']} onValueChange={onValueChange}><Toggle value="bold">Bold</Toggle><ToggleGroupItem value="italic">Italic</ToggleGroupItem></ToggleGroup>);
     expect(screen.getByRole('button', { name: 'Bold' }).getAttribute('aria-pressed')).toBe('true');
     await user.click(screen.getByRole('button', { name: 'Italic' }));
-    expect(onChange).toHaveBeenCalledWith(['bold', 'italic']);
+    expect(onValueChange).toHaveBeenCalledWith(['bold', 'italic']);
   });
 
   it('moves focus with orientation-aware arrow keys and honors disabled state', async () => {

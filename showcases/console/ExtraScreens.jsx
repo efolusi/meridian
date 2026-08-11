@@ -56,7 +56,7 @@ function UsageScreen() {
         <Card padding={16} style={{ flex: 1 }}><Stat label="Plan quota used" value="61%" hint="Resets Aug 1" /></Card>
       </div>
       <Card title="Requests per day" subtitle="Last 30 days · ink bars are this week">
-        <BarChart height={150} highlightLast={7} labels={['Jun 17', 'Jul 1', 'Jul 16']} formatValue={v => (v / 10).toFixed(1) + 'M requests'}
+        <BarChart height={150} highlightLast={7} labels={['Jun 17', 'Jul 1', 'Jul 16']} format={v => (v / 10).toFixed(1) + 'M requests'}
           data={[82, 95, 88, 101, 98, 112, 106, 120, 114, 128, 132, 124, 136, 130, 144, 138, 152, 148, 158, 151, 164, 170, 162, 178, 172, 184, 190, 181, 196, 214]} />
       </Card>
       <Card title="By surface" padding={20}>

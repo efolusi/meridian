@@ -75,7 +75,7 @@ export const Toggle = React.forwardRef(function Toggle(
   );
 });
 
-export const ToggleGroup = React.forwardRef(function ToggleGroup({ type = 'single', value, defaultValue, onValueChange, onChange, variant = 'default', size = 'default', spacing = 2, orientation = 'horizontal', disabled = false, dir, children, style, className, onKeyDown, ...rest }, ref) {
+export const ToggleGroup = React.forwardRef(function ToggleGroup({ type = 'single', value, defaultValue, onValueChange, variant = 'default', size = 'default', spacing = 2, orientation = 'horizontal', disabled = false, dir, children, style, className, onKeyDown, ...rest }, ref) {
   injectEfCss('ef-css-toggle', CSS);
   const [uncontrolled, setUncontrolled] = React.useState(defaultValue !== undefined ? defaultValue : (type === 'multiple' ? [] : null));
   const current = value !== undefined ? value : uncontrolled;
@@ -88,7 +88,6 @@ export const ToggleGroup = React.forwardRef(function ToggleGroup({ type = 'singl
     } else next = current === itemValue ? null : itemValue;
     if (value === undefined) setUncontrolled(next);
     onValueChange?.(next);
-    onChange?.(next);
   };
   const keyNav = event => {
     onKeyDown?.(event);

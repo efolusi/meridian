@@ -17,13 +17,13 @@ const CSS = `
 .ef-status--busy .ef-status__dot::after{color:var(--caramel-500)}
 `;
 const STATE_TEXT = { ok: 'OK', warn: 'Warning', err: 'Error', busy: 'Busy', off: 'Offline' };
-export function StatusDot({ status, state, statusLabel, stateLabel, label, pulse, style, className, ...rest }) {
-  const s = status ?? state ?? 'ok'; // `state` is a deprecated alias for `status`
+export function StatusDot({ status = 'ok', statusLabel, label, pulse, style, className, ...rest }) {
+  const s = status;
   injectEfCss('ef-css-status', CSS);
   // The dot itself is colour-only, so the state must also exist as text. With a
   // visible label the state rides along visually hidden ("Error: API"); without
   // one the whole span becomes an image whose accessible name is the state.
-  const stateText = (statusLabel ?? stateLabel) || STATE_TEXT[s] || s;
+  const stateText = statusLabel || STATE_TEXT[s] || s;
   return (
     <span {...rest} className={`ef-status ef-status--${s}${pulse ? ' ef-status--pulse' : ''}${className ? ' ' + className : ''}`} style={style}
       role={label ? undefined : 'img'} aria-label={label ? undefined : stateText}>

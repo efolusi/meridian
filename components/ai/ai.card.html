@@ -32,8 +32,8 @@ function Demo() {
           <SourceList sources={[{ index: 1, title: 'webhook-log.csv', domain: 'workspace' }]} />
         </div>
       </div>
-      <Suggestions items={[{ icon: 'refresh-cw', label: 'Retry all now' }, 'Only retry 5xx', 'Pause the endpoint']} onPick={() => {}} />
-      <div style={{ display: 'flex', justifyContent: 'flex-start' }}><ModelSelector side="down" value="ef-2" onChange={() => {}} models={[
+      <Suggestions items={[{ icon: 'refresh-cw', label: 'Retry all now' }, 'Only retry 5xx', 'Pause the endpoint']} onSelect={() => {}} />
+      <div style={{ display: 'flex', justifyContent: 'flex-start' }}><ModelSelector side="bottom" value="ef-2" onChange={() => {}} models={[
         { id: 'ef-2', name: 'Efolusi 2', provider: 'Efolusi', hint: 'Best for agent runs', badge: 'New' },
         { id: 'ef-2-mini', name: 'Efolusi 2 Mini', provider: 'Efolusi', hint: 'Fast and cheap for chat' },
       ]} /></div>
