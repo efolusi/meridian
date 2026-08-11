@@ -32,7 +32,18 @@
     { "name": "Badge", "status": "unverified" },
     { "name": "Breadcrumb", "status": "unverified" },
     { "name": "Bubble", "status": "unverified" },
-    { "name": "Button", "status": "unverified" },
+    {
+      "name": "Button",
+      "status": "proven",
+      "requiredExports": ["Button"],
+      "requiredModuleExports": ["buttonVariants"],
+      "sourceFiles": [
+        "components/forms/Button.jsx",
+        "components/forms/Button.d.ts"
+      ],
+      "registryItems": ["site/registry/button.json"],
+      "tests": ["tests/button-compatibility.test.jsx"]
+    },
     { "name": "Button Group", "status": "unverified" },
     { "name": "Calendar", "status": "unverified" },
     { "name": "Card", "status": "unverified" },

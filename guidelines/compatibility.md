@@ -47,6 +47,11 @@ similarity.
 
 ## Proven adapters
 
+- `Button` and `buttonVariants` support the complete public variant and size
+  matrices, documented defaults, semantic-link styling, native button props,
+  events, disabled behavior, ref forwarding, types, registry installation,
+  demos, and tests. Meridian's older aliases remain available for existing
+  consumers.
 - `Attachment` and its eight compositional parts support upload states, sizes,
   orientations, icon/image media, independent actions, polymorphic full-card
   triggers, scrollable groups, ref forwarding, types, registry installation,
