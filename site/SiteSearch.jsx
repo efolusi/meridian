@@ -39,8 +39,26 @@ function SiteSearch() {
     });
   }, [open, groups]);
   const ds = window[NS] || {};
-  const CP = ds.CommandPalette;
+  const { CommandDialog, CommandInput, CommandList, CommandEmpty, CommandGroup, CommandItem, CommandShortcut } = ds;
   const Icon = ds.Icon;
+  const command = CommandDialog && groups ? R.createElement(CommandDialog, {
+    open, onOpenChange: setOpen, title: 'Search Meridian documentation',
+  },
+    R.createElement(CommandInput, { placeholder: 'Search components, docs, pages…' }),
+    R.createElement(CommandList, null,
+      R.createElement(CommandEmpty, null, 'No documentation found.'),
+      groups.map(group => R.createElement(CommandGroup, { key: group.group, heading: group.group },
+        group.items.map(item => R.createElement(CommandItem, {
+          key: item.id, value: item.id, keywords: [item.hint || group.group],
+          onSelect: () => { setOpen(false); location.href = item.id; },
+        },
+          item.icon && Icon ? R.createElement(Icon, { name: item.icon, size: 16 }) : null,
+          item.label,
+          item.hint && CommandShortcut ? R.createElement(CommandShortcut, null, item.hint) : null
+        ))
+      ))
+    )
+  ) : null;
   return R.createElement('span', null,
     R.createElement('button', {
       onClick: () => setOpen(true), 'aria-label': 'Search documentation', className: 'site-search',
@@ -50,11 +68,7 @@ function SiteSearch() {
       R.createElement('span', { className: 'site-search-label', style: { flex: 1, textAlign: 'left', whiteSpace: 'nowrap', overflow: 'hidden' } }, 'Search docs…'),
       R.createElement('span', { className: 'site-search-kbd', style: { fontFamily: 'var(--font-mono)', fontSize: 11, border: '1px solid var(--border-default)', borderRadius: 4, padding: '1px 5px', background: 'var(--surface-page)' } }, '⌘K')
     ),
-    CP && groups ? R.createElement(CP, {
-      open, onClose: () => setOpen(false), groups,
-      placeholder: 'Search components, docs, pages…',
-      onSelect: id => { setOpen(false); location.href = id; },
-    }) : null
+    command
   );
 }
 module.exports = { SiteSearch };

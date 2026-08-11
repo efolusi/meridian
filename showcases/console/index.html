@@ -12,8 +12,13 @@
 </head><body>
 <div id="root"></div>
 <script type="text/babel">
-const { Dialog, Toaster, Button, Input, NativeSelect, NativeSelectOption, Field, FieldLabel, Textarea, CommandPalette } = window.EfolusiDesignSystem_4ffc3d;
+const { Dialog, Toaster, Button, Input, NativeSelect, NativeSelectOption, Field, FieldLabel, Textarea, CommandDialog, CommandInput, CommandList, CommandEmpty, CommandGroup, CommandItem, CommandShortcut, Icon } = window.EfolusiDesignSystem_4ffc3d;
 const TITLES = { overview: 'Overview', customers: 'Customers', projects: 'Projects', usage: 'Usage', billing: 'Billing', settings: 'Workspace settings' };
+const CONSOLE_COMMANDS = [
+  { heading: 'Actions', items: [['new', 'New project', 'plus'], ['invite', 'Invite teammate', 'mail', 'Settings']] },
+  { heading: 'Go to', items: [['go-customers', 'Customers', 'users'], ['go-usage', 'Usage', 'activity'], ['go-billing', 'Billing', 'credit-card']] },
+  { heading: 'Platform', items: [['kit-agent', 'AI agents', 'bot'], ['kit-infra', 'Infrastructure', 'server'], ['kit-trader', 'Trading', 'chart-candlestick'], ['kit-tools', 'File tools', 'package']] },
+];
 function Placeholder({ name }) {
   return <div style={{ padding: 24 }}><div style={{ border: '1px dashed var(--sand-300)', borderRadius: 'var(--radius-md)', padding: 48, textAlign: 'center', color: 'var(--text-muted)', fontSize: 14 }}>{name} — intentionally omitted from this kit.</div></div>;
 }
@@ -28,6 +33,13 @@ function App() {
   }, []);
   const toast = Toaster.useToast();
   const notify = (title, description, tone = 'success') => toast.notify({ tone, title, description });
+  const runCommand = id => {
+    setCmdk(false);
+    if (id === 'new') setDialog(true);
+    else if (id === 'invite') { setNav('settings'); notify('Members opened', 'Invite from the Members tab.'); }
+    else if (id.startsWith('go-')) setNav(id.slice(3));
+    else if (id.startsWith('kit-')) window.location.href = '../' + id.slice(4) + '/index.html';
+  };
   return (
     <div style={{ display: 'flex', height: '100vh', overflow: 'hidden' }}>
       <Sidebar nav={nav} onNav={setNav} />
@@ -40,28 +52,12 @@ function App() {
         {nav === 'usage' && <UsageScreen />}
         {nav === 'billing' && <BillingScreen notify={notify} />}
       </main>
-      <CommandPalette open={cmdk} onClose={() => setCmdk(false)} onSelect={id => {
-        if (id === 'new') setDialog(true);
-        else if (id === 'invite') { setNav('settings'); notify('Members opened', 'Invite from the Members tab.'); }
-        else if (id.startsWith('go-')) setNav(id.slice(3));
-        else if (id.startsWith('kit-')) window.location.href = '../' + id.slice(4) + '/index.html';
-      }} groups={[
-        { group: 'Actions', items: [
-          { id: 'new', label: 'New project', icon: 'plus' },
-          { id: 'invite', label: 'Invite teammate', icon: 'mail', hint: 'Settings' },
-        ]},
-        { group: 'Go to', items: [
-          { id: 'go-customers', label: 'Customers', icon: 'users' },
-          { id: 'go-usage', label: 'Usage', icon: 'activity' },
-          { id: 'go-billing', label: 'Billing', icon: 'credit-card' },
-        ]},
-        { group: 'Platform', items: [
-          { id: 'kit-agent', label: 'AI agents', icon: 'bot' },
-          { id: 'kit-infra', label: 'Infrastructure', icon: 'server' },
-          { id: 'kit-trader', label: 'Trading', icon: 'chart-candlestick' },
-          { id: 'kit-tools', label: 'File tools', icon: 'package' },
-        ]},
-      ]} />
+      <CommandDialog open={cmdk} onOpenChange={setCmdk} title="Console commands">
+        <CommandInput placeholder="Search actions and destinations…" />
+        <CommandList><CommandEmpty>No matching commands.</CommandEmpty>
+          {CONSOLE_COMMANDS.map(group => <CommandGroup key={group.heading} heading={group.heading}>{group.items.map(([id, label, icon, shortcut]) => <CommandItem key={id} value={id} keywords={[group.heading]} onSelect={runCommand}><Icon name={icon} size={16} />{label}{shortcut ? <CommandShortcut>{shortcut}</CommandShortcut> : null}</CommandItem>)}</CommandGroup>)}
+        </CommandList>
+      </CommandDialog>
       <Dialog open={dialog} onClose={() => setDialog(false)} title="New project" description="Projects group keys, environments, and usage."
         footer={<React.Fragment><Button variant="ghost" onClick={() => setDialog(false)}>Cancel</Button><Button onClick={() => { setDialog(false); notify('Project created', 'Q3 launch plan is ready to go.'); }}>Create project</Button></React.Fragment>}>        <div style={{ display: 'flex', flexDirection: 'column', gap: 14 }}>
           <Input label="Project name" placeholder="Q3 launch plan" autoFocus />

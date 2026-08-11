@@ -29,7 +29,7 @@ const PROPS = {
   Carousel: { children: [React.createElement('div', { key: 1 }, 'x')] },
   ChatMessage: { role: 'assistant', children: 'Hi' },
   Citation: { n: 1 },
-  CommandPalette: { open: true, groups: [{ group: 'G', items: [{ id: 'a', label: 'A' }] }] },
+  CommandDialog: { open: true, title: 'Commands' },
   Combobox: { options: ['a', 'b'] },
   ConfirmDialog: { open: true, title: 'T' },
   ContextMenu: { items: [{ id: 'a', label: 'A' }], children: React.createElement('div') },

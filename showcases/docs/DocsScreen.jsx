@@ -1,4 +1,4 @@
-const { Icon, IconButton, Input, Badge, Button, Tag, Alert, Breadcrumbs, CodeBlock, Kbd, CommandPalette } = window.EfolusiDesignSystem_4ffc3d;
+const { Icon, IconButton, Input, Badge, Button, Tag, Alert, Breadcrumbs, CodeBlock, Kbd, CommandDialog, CommandInput, CommandList, CommandEmpty, CommandGroup, CommandItem, CommandShortcut } = window.EfolusiDesignSystem_4ffc3d;
 
 function DocsHeader({ onSearch }) {
   return (
@@ -215,8 +215,12 @@ function DocsApp() {
         </main>
         {page === 'quickstart' && <Toc />}
       </div>
-      <CommandPalette open={cmdk} onClose={() => setCmdk(false)} placeholder="Search docs…" onSelect={go}
-        groups={NAV.map(([g, items]) => ({ group: g, items: items.map(([id, label]) => ({ id, label, icon: 'file-text', hint: g })) }))} />
+      <CommandDialog open={cmdk} onOpenChange={setCmdk} title="Documentation search">
+        <CommandInput placeholder="Search docs…" />
+        <CommandList><CommandEmpty>No documentation found.</CommandEmpty>
+          {NAV.map(([group, items]) => <CommandGroup key={group} heading={group}>{items.map(([id, label]) => <CommandItem key={id} value={id} keywords={[group]} onSelect={() => { go(id); setCmdk(false); }}><Icon name="file-text" size={16} />{label}<CommandShortcut>{group}</CommandShortcut></CommandItem>)}</CommandGroup>)}
+        </CommandList>
+      </CommandDialog>
     </div>
   );
 }

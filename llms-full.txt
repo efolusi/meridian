@@ -3990,44 +3990,62 @@ export declare function TopNav(props: TopNavProps): React.JSX.Element;
 
 ### overlay
 
-#### CommandPalette
+#### Command
 
-Group: overlay · Source: /components/overlay/CommandPalette.jsx · Exports: CommandPalette
+Group: overlay · Source: /components/overlay/Command.jsx · Exports: Command, CommandDialog, CommandInput, CommandList, CommandEmpty, CommandGroup, CommandItem, CommandShortcut, CommandSeparator
 
-⌘K palette: search, grouped commands, full keyboard nav (↑↓, ↵, Esc), Kbd-hinted footer.
+# Command
+
+Composable command menu for search and quick actions. Command handles filtering, active selection, and Arrow/Home/End/Enter keyboard navigation; CommandDialog composes it with the stable Dialog API.
 
 ```jsx
-<CommandPalette open={open} onClose={close} onSelect={run} groups={[
-  { group: 'Actions', items: [
-    { id: 'new', label: 'New project', icon: 'plus' },
-    { id: 'invite', label: 'Invite teammate', icon: 'mail', hint: 'Settings' },
-  ]},
-  { group: 'Go to', items: [{ id: 'infra', label: 'Infrastructure', icon: 'server' }] },
-]} />
+<Command>
+  <CommandInput placeholder="Type a command or search…" />
+  <CommandList>
+    <CommandEmpty>No results found.</CommandEmpty>
+    <CommandGroup heading="Suggestions">
+      <CommandItem value="calendar">Calendar</CommandItem>
+      <CommandItem value="settings">Settings<CommandShortcut>⌘S</CommandShortcut></CommandItem>
+    </CommandGroup>
+  </CommandList>
+</Command>
 ```
 
+Use `CommandDialog open={open} onOpenChange={setOpen}` for the modal palette. `value`/`onValueChange`, `shouldFilter`, `filter`, `loop`, item `keywords`, and disabled items follow the stable command contract.
+
 ```ts
-export interface CommandItem {
-  id: string;
-  label: string;
-  /** Lucide icon name */
-  icon?: string;
-  /** Right-aligned hint, e.g. a shortcut or product name */
-  hint?: string;
+export interface CommandProps extends React.HTMLAttributes<HTMLDivElement> {
+  value?: string;
+  defaultValue?: string;
+  onValueChange?: (value: string) => void;
+  shouldFilter?: boolean;
+  filter?: (value: string, search: string, keywords?: string[]) => number;
+  loop?: boolean;
 }
-export interface CommandGroup {
-  group: string;
-  items: CommandItem[];
+export interface CommandDialogProps {
+  open?: boolean;
+  defaultOpen?: boolean;
+  onOpenChange?: (open: boolean) => void;
+  title?: string;
+  description?: string;
+  showCloseButton?: boolean;
+  className?: string;
+  children?: React.ReactNode;
 }
-export interface CommandPaletteProps {
-  open: boolean;
-  onClose?: () => void;
-  groups: CommandGroup[];
-  onSelect?: (id: string) => void;
-  /** @default 'Type a command or search…' */
-  placeholder?: string;
+export interface CommandItemProps extends Omit<React.ButtonHTMLAttributes<HTMLButtonElement>, 'onSelect'> {
+  value?: string;
+  keywords?: string[];
+  onSelect?: (value: string) => void;
 }
-export declare function CommandPalette(props: CommandPaletteProps): React.JSX.Element;
+export declare const Command: React.ForwardRefExoticComponent<CommandProps & React.RefAttributes<HTMLDivElement>>;
+export declare function CommandDialog(props: CommandDialogProps): React.JSX.Element;
+export declare const CommandInput: React.ForwardRefExoticComponent<React.InputHTMLAttributes<HTMLInputElement> & React.RefAttributes<HTMLInputElement>>;
+export declare const CommandList: React.ForwardRefExoticComponent<React.HTMLAttributes<HTMLDivElement> & React.RefAttributes<HTMLDivElement>>;
+export declare const CommandEmpty: React.ForwardRefExoticComponent<React.HTMLAttributes<HTMLDivElement> & React.RefAttributes<HTMLDivElement>>;
+export declare const CommandGroup: React.ForwardRefExoticComponent<React.HTMLAttributes<HTMLDivElement> & { heading?: React.ReactNode } & React.RefAttributes<HTMLDivElement>>;
+export declare const CommandItem: React.ForwardRefExoticComponent<CommandItemProps & React.RefAttributes<HTMLButtonElement>>;
+export declare const CommandShortcut: React.ForwardRefExoticComponent<React.HTMLAttributes<HTMLSpanElement> & React.RefAttributes<HTMLSpanElement>>;
+export declare const CommandSeparator: React.ForwardRefExoticComponent<React.HTMLAttributes<HTMLDivElement> & React.RefAttributes<HTMLDivElement>>;
 ```
 
 #### ContextMenu

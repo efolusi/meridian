@@ -1,23 +1,28 @@
 // Meridian docs demos — overlay.
 
-// @demo CommandPalette Global search
-export function CommandPaletteDemo() {
-  const { CommandPalette, Button, Kbd } = window.EfolusiDesignSystem_4ffc3d;
+// @demo Command Composable palette
+export function CommandDemo() {
+  const { CommandDialog, CommandInput, CommandList, CommandEmpty, CommandGroup, CommandItem, CommandShortcut, Button, Kbd, Icon } = window.EfolusiDesignSystem_4ffc3d;
   const [open, setOpen] = React.useState(false);
+  const run = () => setOpen(false);
   return (
     <div style={{ display: 'flex', alignItems: 'center', gap: 12 }}>
       <Button variant="secondary" onClick={() => setOpen(true)}>Open palette</Button>
       <span style={{ fontSize: 13, color: 'var(--text-muted)' }}>or press <Kbd>⌘</Kbd> <Kbd>K</Kbd></span>
-      <CommandPalette open={open} onClose={() => setOpen(false)} onSelect={() => setOpen(false)} groups={[
-        { group: 'Actions', items: [
-          { id: 'new', label: 'New agent', icon: 'plus', hint: '⌘N' },
-          { id: 'run', label: 'Run current agent', icon: 'play', hint: '⌘⏎' },
-        ] },
-        { group: 'Go to', items: [
-          { id: 'runs', label: 'Runs', icon: 'bot' },
-          { id: 'billing', label: 'Billing', icon: 'credit-card' },
-        ] },
-      ]} />
+      <CommandDialog open={open} onOpenChange={setOpen} title="Workspace commands">
+        <CommandInput placeholder="Type a command or search…" />
+        <CommandList>
+          <CommandEmpty>No matching commands.</CommandEmpty>
+          <CommandGroup heading="Actions">
+            <CommandItem value="new-agent" onSelect={run}><Icon name="plus" size={16} />New agent<CommandShortcut>⌘N</CommandShortcut></CommandItem>
+            <CommandItem value="run-agent" onSelect={run}><Icon name="play" size={16} />Run current agent<CommandShortcut>⌘↵</CommandShortcut></CommandItem>
+          </CommandGroup>
+          <CommandGroup heading="Go to">
+            <CommandItem value="runs" onSelect={run}><Icon name="bot" size={16} />Runs</CommandItem>
+            <CommandItem value="billing" onSelect={run}><Icon name="credit-card" size={16} />Billing</CommandItem>
+          </CommandGroup>
+        </CommandList>
+      </CommandDialog>
     </div>
   );
 }

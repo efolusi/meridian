@@ -5,7 +5,7 @@ import userEvent from '@testing-library/user-event';
 import { Dialog } from '../components/feedback/Dialog.jsx';
 import { ConfirmDialog } from '../components/feedback/ConfirmDialog.jsx';
 import { Drawer } from '../components/overlay/Drawer.jsx';
-import { CommandPalette } from '../components/overlay/CommandPalette.jsx';
+import { CommandDialog, CommandInput, CommandList, CommandItem } from '../components/overlay/Command.jsx';
 import { Combobox } from '../components/forms/Combobox.jsx';
 import { StatusDot } from '../components/data/StatusDot.jsx';
 
@@ -27,10 +27,10 @@ describe('className/style forwarding on the modal four', () => {
     expect(panel.className).toContain('mine');
     expect(panel.style.width).toBe('320px');
   });
-  it('CommandPalette composes className onto the overlay', () => {
-    render(<CommandPalette open groups={[{ group: 'G', items: [{ id: 'a', label: 'A' }] }]} className="mine" data-testid="cp" />);
-    const root = screen.getByTestId('cp');
-    expect(root.className).toContain('ef-cmdk__overlay');
+  it('CommandDialog composes className onto its content', () => {
+    render(<CommandDialog open title="Commands" className="mine"><CommandInput /><CommandList><CommandItem>A</CommandItem></CommandList></CommandDialog>);
+    const root = screen.getByRole('dialog', { name: 'Commands' });
+    expect(root.className).toContain('ef-command-dialog');
     expect(root.className).toContain('mine');
   });
   it('ConfirmDialog forwards className through to Dialog', () => {

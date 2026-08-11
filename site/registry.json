@@ -3423,30 +3423,30 @@
       ]
     },
     {
-      "name": "commandpalette",
+      "name": "command",
       "type": "registry:ui",
-      "title": "CommandPalette",
-      "description": "\u2318K palette: search, grouped commands, full keyboard nav (\u2191\u2193, \u21b5, Esc), Kbd-hinted footer.",
+      "title": "Command + CommandDialog + CommandInput + CommandList + CommandEmpty + CommandGroup + CommandItem + CommandShortcut + CommandSeparator",
+      "description": "Composable command menu for search and quick actions. Command handles filtering, active selection, and Arrow/Home/End/Enter keyboard navigation; CommandDialog composes it with the stable Dialog API.",
       "dependencies": [
         "react"
       ],
       "registryDependencies": [
         "https://meridian.efolusi.com/site/registry/meridian-base.json",
         "https://meridian.efolusi.com/site/registry/button.json",
-        "https://meridian.efolusi.com/site/registry/icon.json",
-        "https://meridian.efolusi.com/site/registry/kbd.json"
+        "https://meridian.efolusi.com/site/registry/dialog.json",
+        "https://meridian.efolusi.com/site/registry/icon.json"
       ],
       "files": [
         {
-          "path": "components/overlay/CommandPalette.jsx",
+          "path": "components/overlay/Command.jsx",
           "type": "registry:ui"
         },
         {
-          "path": "components/overlay/CommandPalette.d.ts",
+          "path": "components/overlay/Command.d.ts",
           "type": "registry:component"
         },
         {
-          "path": "components/overlay/CommandPalette.prompt.md",
+          "path": "components/overlay/Command.prompt.md",
           "type": "registry:component"
         }
       ],

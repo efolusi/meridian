@@ -1,4 +1,4 @@
-<!-- @dsCard group="Components" viewport="700x520" name="Overlay" subtitle="Menu, Popover, Drawer, CommandPalette, ContextMenu, HoverCard" -->
+<!-- @dsCard group="Components" viewport="700x520" name="Overlay" subtitle="Menu, Popover, Drawer, Command, ContextMenu, HoverCard" -->
 <!DOCTYPE html><html><head><meta charset="utf-8"><link rel="stylesheet" href="../../styles.css">
 <script src="https://unpkg.com/react@18.3.1/umd/react.production.min.js" integrity="sha384-DGyLxAyjq0f9SPpVevD6IgztCFlnMF6oW/XQGmfe+IsZ8TqEiDrcHkMLKI6fiB/Z" crossorigin="anonymous"></script>
 <script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.production.min.js" integrity="sha384-gTGxhz21lVGYNMcdJOyq01Edg0jhn/c22nsx0kyqP0TxaV5WVdsSH1fSDUf5YJj1" crossorigin="anonymous"></script>
@@ -7,7 +7,7 @@
 </head><body style="background:var(--surface-page)">
 <div id="root"></div>
 <script type="text/babel">
-const { Menu, Popover, Drawer, CommandPalette, ContextMenu, HoverCard, Button, IconButton, Input, Select, Checkbox, Divider, Kbd, Avatar } = window.EfolusiDesignSystem_4ffc3d;
+const { Menu, Popover, Drawer, CommandDialog, CommandInput, CommandList, CommandEmpty, CommandGroup, CommandItem, CommandShortcut, ContextMenu, HoverCard, Button, IconButton, Input, Select, Checkbox, Divider, Kbd, Avatar, Icon } = window.EfolusiDesignSystem_4ffc3d;
 function Demo() {
   const [drawer, setDrawer] = React.useState(true);
   const [cmdk, setCmdk] = React.useState(false);
@@ -31,18 +31,21 @@ function Demo() {
       </Popover>
       <Button variant="secondary" iconLeft="panel-left" onClick={() => setDrawer(true)}>Open drawer</Button>
       <Button variant="secondary" iconLeft="search" onClick={() => setCmdk(true)}>Command palette&nbsp;<Kbd>⌘</Kbd><Kbd>K</Kbd></Button>
-      <CommandPalette open={cmdk} onClose={() => setCmdk(false)} onSelect={() => {}} groups={[
-        { group: 'Actions', items: [
-          { id: 'new', label: 'New project', icon: 'plus' },
-          { id: 'invite', label: 'Invite teammate', icon: 'mail', hint: 'Settings' },
-          { id: 'key', label: 'Rotate API key', icon: 'key', hint: 'Infrastructure' },
-        ]},
-        { group: 'Go to', items: [
-          { id: 'agent', label: 'AI agents', icon: 'bot' },
-          { id: 'infra', label: 'Infrastructure', icon: 'server' },
-          { id: 'trader', label: 'Trading', icon: 'chart-candlestick' },
-        ]},
-      ]} />
+      <CommandDialog open={cmdk} onOpenChange={setCmdk} title="Workspace commands">
+        <CommandInput placeholder="Type a command or search…" />
+        <CommandList><CommandEmpty>No matching commands.</CommandEmpty>
+          <CommandGroup heading="Actions">
+            <CommandItem value="new-project" onSelect={() => setCmdk(false)}><Icon name="plus" size={16} />New project</CommandItem>
+            <CommandItem value="invite" onSelect={() => setCmdk(false)}><Icon name="mail" size={16} />Invite teammate<CommandShortcut>Settings</CommandShortcut></CommandItem>
+            <CommandItem value="rotate-key" onSelect={() => setCmdk(false)}><Icon name="key" size={16} />Rotate API key<CommandShortcut>Infrastructure</CommandShortcut></CommandItem>
+          </CommandGroup>
+          <CommandGroup heading="Go to">
+            <CommandItem value="agents" onSelect={() => setCmdk(false)}><Icon name="bot" size={16} />AI agents</CommandItem>
+            <CommandItem value="infrastructure" onSelect={() => setCmdk(false)}><Icon name="server" size={16} />Infrastructure</CommandItem>
+            <CommandItem value="trading" onSelect={() => setCmdk(false)}><Icon name="chart-candlestick" size={16} />Trading</CommandItem>
+          </CommandGroup>
+        </CommandList>
+      </CommandDialog>
       <ContextMenu onSelect={() => {}} items={[{ id: 'rename', label: 'Rename', icon: 'pencil' }, { id: 'dup', label: 'Duplicate', icon: 'copy' }, 'separator', { id: 'del', label: 'Delete', icon: 'trash-2', danger: true }]}>
         <div style={{ padding: '8px 14px', border: '1px dashed var(--border-strong)', borderRadius: 'var(--radius-sm)', fontSize: 13, color: 'var(--text-secondary)', userSelect: 'none' }}>Right-click me</div>
       </ContextMenu>

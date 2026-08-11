@@ -1,4 +1,4 @@
-const { ChatMessage, PromptComposer, Terminal, Steps, FileTile, StatusDot, KeyValueList, CommandPalette, Menu, Card, Button, IconButton, Badge, Kbd, Icon, Toaster } = window.EfolusiDesignSystem_4ffc3d;
+const { ChatMessage, PromptComposer, Terminal, Steps, FileTile, StatusDot, KeyValueList, CommandDialog, CommandInput, CommandList, CommandEmpty, CommandGroup, CommandItem, Menu, Card, Button, IconButton, Badge, Kbd, Icon, Toaster } = window.EfolusiDesignSystem_4ffc3d;
 
 function AgentHeader({ running, onToggle, notify }) {
   return (
@@ -72,6 +72,15 @@ function AgentScreen() {
   const [cmdk, setCmdk] = React.useState(false);
   const toast = Toaster.useToast();
   const notify = (title, description) => toast.notify({ tone: 'success', title, description });
+  const runCommand = id => {
+    setCmdk(false);
+    if (id === 'new-task') notify('New task', 'Describe the outcome in the composer below.');
+    else if (id === 'pause') { setRunning(false); notify('Task paused', 'Resume any time.'); }
+    else if (id === 'export') notify('Transcript exported', 'Markdown file in your downloads.');
+    else if (id === 'infra') window.location.href = '../infra/index.html';
+    else if (id === 'trader') window.location.href = '../trader/index.html';
+    else if (id === 'settings') window.location.href = '../console/index.html';
+  };
   const [msgs, setMsgs] = React.useState([
     { id: 1, role: 'user', text: 'Connect the prod database and retry yesterday\u2019s failed webhooks.', time: '14:02' },
     { id: 2, role: 'assistant', time: '14:02', body: 'terminal' },
@@ -128,14 +137,12 @@ function AgentScreen() {
         </main>
         <TaskRail running={running} />
       </div>
-      <CommandPalette open={cmdk} onClose={() => setCmdk(false)} onSelect={id => {
-        if (id === 'new-task') notify('New task', 'Describe the outcome in the composer below.');
-        else if (id === 'pause') { setRunning(false); notify('Task paused', 'Resume any time.'); }
-        else if (id === 'export') notify('Transcript exported', 'Markdown file in your downloads.');
-        else if (id === 'infra') window.location.href = '../infra/index.html';
-        else if (id === 'trader') window.location.href = '../trader/index.html';
-        else if (id === 'settings') window.location.href = '../console/index.html';
-      }} groups={CMD_GROUPS} />
+      <CommandDialog open={cmdk} onOpenChange={setCmdk} title="Agent commands">
+        <CommandInput placeholder="Search agent commands…" />
+        <CommandList><CommandEmpty>No matching commands.</CommandEmpty>
+          {CMD_GROUPS.map(group => <CommandGroup key={group.group} heading={group.group}>{group.items.map(item => <CommandItem key={item.id} value={item.id} keywords={[group.group]} onSelect={runCommand}><Icon name={item.icon} size={16} />{item.label}</CommandItem>)}</CommandGroup>)}
+        </CommandList>
+      </CommandDialog>
     </div>
   );
 }

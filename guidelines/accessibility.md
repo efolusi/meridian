@@ -9,10 +9,10 @@ Efolusi ships WCAG 2.1 AA. The rules, per concern:
 ## Keyboard map
 - `Tab` / `Shift+Tab` — move between controls
 - `Enter` / `Space` — activate buttons, toggle checkboxes/switches
-- `Esc` — closes Dialog, Drawer, Menu, Popover, CommandPalette (all built in)
-- `↑ ↓` — navigate Menu and CommandPalette items; `Enter` selects
+- `Esc` — closes Dialog, Drawer, Menu, Popover, and CommandDialog (all built in)
+- `↑ ↓` — navigate Menu and Command items; `Enter` selects
 - `← →` — Tabs and SegmentedControl options; Slider value (native)
-- `⌘K` — CommandPalette (document the hint with `Kbd`)
+- `⌘K` — a common trigger for CommandDialog (document the hint with `Kbd`)
 
 ## Contrast (light and dark)
 - Body text ≥ 4.5:1: `--text-primary`, `--text-secondary`, and `--text-muted` all pass on page, card, and sunken surfaces in both themes; status `*-600` foregrounds pass on their `*-100` tints and on white.
@@ -34,7 +34,7 @@ Efolusi ships WCAG 2.1 AA. The rules, per concern:
 ## Component keyboard contracts (verified in-browser)
 - Dialog, Drawer, ConfirmDialog: focus moves in on open, Tab and Shift+Tab wrap inside, Escape closes, focus returns to the invoker; panels carry `aria-labelledby`/`aria-describedby`.
 - Menu, Popover: triggers are keyboard-operable with `aria-haspopup`/`aria-expanded`; Menu opens focused with `↑ ↓ Home End` navigation, Escape restores the trigger.
-- CommandPalette: `role="combobox"` input with `aria-activedescendant` over a `listbox` of options; arrows scroll the active option into view.
+- Command: `role="combobox"` input with `aria-controls` and `aria-activedescendant` over a `listbox` of options; arrows scroll the active option into view. CommandDialog adds modal focus trapping, Escape dismissal, and focus restoration.
 - Calendar: `role="grid"` with labelled columnheaders, per-day full-date labels, `aria-selected`/`aria-current`, and `← → ↑ ↓ Home End PageUp PageDown` navigation. When composed inside Popover as a date picker, opening moves focus into the grid and closing restores the trigger.
 - Tabs: roving tabindex, `← → Home End` move focus and selection together.
 - Tooltip links to its trigger via `aria-describedby` and dismisses on Escape; HoverCard is a non-modal panel (no dialog role) and dismisses on Escape.

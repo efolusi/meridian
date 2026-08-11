@@ -1,4 +1,4 @@
-/* @ds-bundle: {"format":4,"namespace":"EfolusiDesignSystem_4ffc3d","components":[{"name":"AgentRun","sourcePath":"components/ai/AgentRun.jsx"},{"name":"BubbleGroup","sourcePath":"components/ai/Bubble.jsx"},{"name":"Bubble","sourcePath":"components/ai/Bubble.jsx"},{"name":"BubbleContent","sourcePath":"components/ai/Bubble.jsx"},{"name":"BubbleReactions","sourcePath":"components/ai/Bubble.jsx"},{"name":"ChatMessage","sourcePath":"components/ai/ChatMessage.jsx"},{"name":"Citation","sourcePath":"components/ai/Citation.jsx"},{"name":"SourceList","sourcePath":"components/ai/Citation.jsx"},{"name":"Confirmation","sourcePath":"components/ai/Confirmation.jsx"},{"name":"Conversation","sourcePath":"components/ai/Conversation.jsx"},{"name":"DocumentCard","sourcePath":"components/ai/DocumentCard.jsx"},{"name":"FeedbackBar","sourcePath":"components/ai/FeedbackBar.jsx"},{"name":"GeneratedImage","sourcePath":"components/ai/GeneratedImage.jsx"},{"name":"Marker","sourcePath":"components/ai/Marker.jsx"},{"name":"MarkerIcon","sourcePath":"components/ai/Marker.jsx"},{"name":"MarkerContent","sourcePath":"components/ai/Marker.jsx"},{"name":"ModelSelector","sourcePath":"components/ai/ModelSelector.jsx"},{"name":"Player","sourcePath":"components/ai/Player.jsx"},{"name":"PromptComposer","sourcePath":"components/ai/PromptComposer.jsx"},{"name":"PromptSteps","sourcePath":"components/ai/PromptSteps.jsx"},{"name":"Reasoning","sourcePath":"components/ai/Reasoning.jsx"},{"name":"RichComposer","sourcePath":"components/ai/RichComposer.jsx"},{"name":"Sandbox","sourcePath":"components/ai/Sandbox.jsx"},{"name":"SelectionQuote","sourcePath":"components/ai/SelectionQuote.jsx"},{"name":"SourceCard","sourcePath":"components/ai/SourceCard.jsx"},{"name":"Suggestions","sourcePath":"components/ai/Suggestions.jsx"},{"name":"Task","sourcePath":"components/ai/Task.jsx"},{"name":"Todo","sourcePath":"components/ai/Todo.jsx"},{"name":"ToolCall","sourcePath":"components/ai/ToolCall.jsx"},{"name":"Transcript","sourcePath":"components/ai/Transcript.jsx"},{"name":"UsageMeter","sourcePath":"components/ai/UsageMeter.jsx"},{"name":"WebPreview","sourcePath":"components/ai/WebPreview.jsx"},{"name":"CodeBlock","sourcePath":"components/code/CodeBlock.jsx"},{"name":"Console","sourcePath":"components/code/Console.jsx"},{"name":"CopyField","sourcePath":"components/code/CopyField.jsx"},{"name":"Diff","sourcePath":"components/code/Diff.jsx"},{"name":"EnvList","sourcePath":"components/code/EnvList.jsx"},{"name":"Exception","sourcePath":"components/code/Exception.jsx"},{"name":"Terminal","sourcePath":"components/code/Terminal.jsx"},{"name":"BarChart","sourcePath":"components/data/BarChart.jsx"},{"name":"DonutChart","sourcePath":"components/data/DonutChart.jsx"},{"name":"Empty","sourcePath":"components/data/EmptyState.jsx"},{"name":"EmptyHeader","sourcePath":"components/data/EmptyState.jsx"},{"name":"EmptyMedia","sourcePath":"components/data/EmptyState.jsx"},{"name":"EmptyTitle","sourcePath":"components/data/EmptyState.jsx"},{"name":"EmptyDescription","sourcePath":"components/data/EmptyState.jsx"},{"name":"EmptyContent","sourcePath":"components/data/EmptyState.jsx"},{"name":"EmptyState","sourcePath":"components/data/EmptyState.jsx"},{"name":"KeyValueList","sourcePath":"components/data/KeyValueList.jsx"},{"name":"LineChart","sourcePath":"components/data/LineChart.jsx"},{"name":"Skeleton","sourcePath":"components/data/Skeleton.jsx"},{"name":"Sparkline","sourcePath":"components/data/Sparkline.jsx"},{"name":"Stat","sourcePath":"components/data/Stat.jsx"},{"name":"StatusDot","sourcePath":"components/data/StatusDot.jsx"},{"name":"Table","sourcePath":"components/data/Table.jsx"},{"name":"TableHeader","sourcePath":"components/data/Table.jsx"},{"name":"TableBody","sourcePath":"components/data/Table.jsx"},{"name":"TableFooter","sourcePath":"components/data/Table.jsx"},{"name":"TableRow","sourcePath":"components/data/Table.jsx"},{"name":"TableHead","sourcePath":"components/data/Table.jsx"},{"name":"TableCell","sourcePath":"components/data/Table.jsx"},{"name":"TableCaption","sourcePath":"components/data/Table.jsx"},{"name":"CalendarDayButton","sourcePath":"components/dates/Calendar.jsx"},{"name":"Calendar","sourcePath":"components/dates/Calendar.jsx"},{"name":"TimePicker","sourcePath":"components/dates/TimePicker.jsx"},{"name":"Accordion","sourcePath":"components/display/Accordion.jsx"},{"name":"AccordionItem","sourcePath":"components/display/Accordion.jsx"},{"name":"AccordionTrigger","sourcePath":"components/display/Accordion.jsx"},{"name":"AccordionContent","sourcePath":"components/display/Accordion.jsx"},{"name":"AspectRatio","sourcePath":"components/display/AspectRatio.jsx"},{"name":"Avatar","sourcePath":"components/display/Avatar.jsx"},{"name":"AvatarImage","sourcePath":"components/display/Avatar.jsx"},{"name":"AvatarFallback","sourcePath":"components/display/Avatar.jsx"},{"name":"AvatarBadge","sourcePath":"components/display/Avatar.jsx"},{"name":"AvatarGroup","sourcePath":"components/display/Avatar.jsx"},{"name":"AvatarGroupCount","sourcePath":"components/display/Avatar.jsx"},{"name":"Badge","sourcePath":"components/display/Badge.jsx"},{"name":"CardHeader","sourcePath":"components/display/Card.jsx"},{"name":"CardTitle","sourcePath":"components/display/Card.jsx"},{"name":"CardDescription","sourcePath":"components/display/Card.jsx"},{"name":"CardAction","sourcePath":"components/display/Card.jsx"},{"name":"CardContent","sourcePath":"components/display/Card.jsx"},{"name":"CardFooter","sourcePath":"components/display/Card.jsx"},{"name":"Card","sourcePath":"components/display/Card.jsx"},{"name":"Carousel","sourcePath":"components/display/Carousel.jsx"},{"name":"CarouselContent","sourcePath":"components/display/Carousel.jsx"},{"name":"CarouselItem","sourcePath":"components/display/Carousel.jsx"},{"name":"CarouselPrevious","sourcePath":"components/display/Carousel.jsx"},{"name":"CarouselNext","sourcePath":"components/display/Carousel.jsx"},{"name":"Collapsible","sourcePath":"components/display/Collapsible.jsx"},{"name":"CollapsibleTrigger","sourcePath":"components/display/Collapsible.jsx"},{"name":"CollapsibleContent","sourcePath":"components/display/Collapsible.jsx"},{"name":"DirectionProvider","sourcePath":"components/display/Direction.jsx"},{"name":"Divider","sourcePath":"components/display/Divider.jsx"},{"name":"ItemGroup","sourcePath":"components/display/Item.jsx"},{"name":"ItemSeparator","sourcePath":"components/display/Item.jsx"},{"name":"Item","sourcePath":"components/display/Item.jsx"},{"name":"ItemMedia","sourcePath":"components/display/Item.jsx"},{"name":"ItemContent","sourcePath":"components/display/Item.jsx"},{"name":"ItemTitle","sourcePath":"components/display/Item.jsx"},{"name":"ItemDescription","sourcePath":"components/display/Item.jsx"},{"name":"ItemActions","sourcePath":"components/display/Item.jsx"},{"name":"ItemHeader","sourcePath":"components/display/Item.jsx"},{"name":"ItemFooter","sourcePath":"components/display/Item.jsx"},{"name":"Kbd","sourcePath":"components/display/Kbd.jsx"},{"name":"KbdGroup","sourcePath":"components/display/Kbd.jsx"},{"name":"Link","sourcePath":"components/display/Link.jsx"},{"name":"ResizablePanelGroup","sourcePath":"components/display/Resizable.jsx"},{"name":"ResizablePanel","sourcePath":"components/display/Resizable.jsx"},{"name":"ResizableHandle","sourcePath":"components/display/Resizable.jsx"},{"name":"ScrollArea","sourcePath":"components/display/ScrollArea.jsx"},{"name":"ScrollBar","sourcePath":"components/display/ScrollArea.jsx"},{"name":"Separator","sourcePath":"components/display/Separator.jsx"},{"name":"Tag","sourcePath":"components/display/Tag.jsx"},{"name":"Timeline","sourcePath":"components/display/Timeline.jsx"},{"name":"Toolbar","sourcePath":"components/display/Toolbar.jsx"},{"name":"TreeList","sourcePath":"components/display/TreeList.jsx"},{"name":"Alert","sourcePath":"components/feedback/Alert.jsx"},{"name":"AlertTitle","sourcePath":"components/feedback/Alert.jsx"},{"name":"AlertDescription","sourcePath":"components/feedback/Alert.jsx"},{"name":"AlertDialog","sourcePath":"components/feedback/AlertDialog.jsx"},{"name":"AlertDialogTrigger","sourcePath":"components/feedback/AlertDialog.jsx"},{"name":"AlertDialogPortal","sourcePath":"components/feedback/AlertDialog.jsx"},{"name":"AlertDialogOverlay","sourcePath":"components/feedback/AlertDialog.jsx"},{"name":"AlertDialogContent","sourcePath":"components/feedback/AlertDialog.jsx"},{"name":"AlertDialogHeader","sourcePath":"components/feedback/AlertDialog.jsx"},{"name":"AlertDialogFooter","sourcePath":"components/feedback/AlertDialog.jsx"},{"name":"AlertDialogMedia","sourcePath":"components/feedback/AlertDialog.jsx"},{"name":"AlertDialogTitle","sourcePath":"components/feedback/AlertDialog.jsx"},{"name":"AlertDialogDescription","sourcePath":"components/feedback/AlertDialog.jsx"},{"name":"AlertDialogCancel","sourcePath":"components/feedback/AlertDialog.jsx"},{"name":"AlertDialogAction","sourcePath":"components/feedback/AlertDialog.jsx"},{"name":"Banner","sourcePath":"components/feedback/Banner.jsx"},{"name":"ConfirmDialog","sourcePath":"components/feedback/ConfirmDialog.jsx"},{"name":"Dialog","sourcePath":"components/feedback/Dialog.jsx"},{"name":"DialogTrigger","sourcePath":"components/feedback/Dialog.jsx"},{"name":"DialogPortal","sourcePath":"components/feedback/Dialog.jsx"},{"name":"DialogOverlay","sourcePath":"components/feedback/Dialog.jsx"},{"name":"DialogClose","sourcePath":"components/feedback/Dialog.jsx"},{"name":"DialogContent","sourcePath":"components/feedback/Dialog.jsx"},{"name":"DialogHeader","sourcePath":"components/feedback/Dialog.jsx"},{"name":"DialogFooter","sourcePath":"components/feedback/Dialog.jsx"},{"name":"DialogTitle","sourcePath":"components/feedback/Dialog.jsx"},{"name":"DialogDescription","sourcePath":"components/feedback/Dialog.jsx"},{"name":"Loader","sourcePath":"components/feedback/Loader.jsx"},{"name":"Progress","sourcePath":"components/feedback/Progress.jsx"},{"name":"Spinner","sourcePath":"components/feedback/Spinner.jsx"},{"name":"Toast","sourcePath":"components/feedback/Toast.jsx"},{"name":"ToastStack","sourcePath":"components/feedback/Toast.jsx"},{"name":"Toaster","sourcePath":"components/feedback/Toast.jsx"},{"name":"Tooltip","sourcePath":"components/feedback/Tooltip.jsx"},{"name":"TooltipProvider","sourcePath":"components/feedback/Tooltip.jsx"},{"name":"TooltipTrigger","sourcePath":"components/feedback/Tooltip.jsx"},{"name":"TooltipContent","sourcePath":"components/feedback/Tooltip.jsx"},{"name":"Attachment","sourcePath":"components/files/Attachment.jsx"},{"name":"AttachmentMedia","sourcePath":"components/files/Attachment.jsx"},{"name":"AttachmentContent","sourcePath":"components/files/Attachment.jsx"},{"name":"AttachmentTitle","sourcePath":"components/files/Attachment.jsx"},{"name":"AttachmentDescription","sourcePath":"components/files/Attachment.jsx"},{"name":"AttachmentActions","sourcePath":"components/files/Attachment.jsx"},{"name":"AttachmentAction","sourcePath":"components/files/Attachment.jsx"},{"name":"AttachmentTrigger","sourcePath":"components/files/Attachment.jsx"},{"name":"AttachmentGroup","sourcePath":"components/files/Attachment.jsx"},{"name":"FileDrop","sourcePath":"components/files/FileDrop.jsx"},{"name":"FileTile","sourcePath":"components/files/FileTile.jsx"},{"name":"FileTypeIcon","sourcePath":"components/files/FileTypeIcon.jsx"},{"name":"PaymentCard","sourcePath":"components/finance/PaymentCard.jsx"},{"name":"Button","sourcePath":"components/forms/Button.jsx"},{"name":"ButtonGroup","sourcePath":"components/forms/ButtonGroup.jsx"},{"name":"ButtonGroupText","sourcePath":"components/forms/ButtonGroup.jsx"},{"name":"ButtonGroupSeparator","sourcePath":"components/forms/ButtonGroup.jsx"},{"name":"ButtonTile","sourcePath":"components/forms/ButtonTile.jsx"},{"name":"ButtonTileGroup","sourcePath":"components/forms/ButtonTile.jsx"},{"name":"Checkbox","sourcePath":"components/forms/Checkbox.jsx"},{"name":"Combobox","sourcePath":"components/forms/Combobox.jsx"},{"name":"Field","sourcePath":"components/forms/Field.jsx"},{"name":"FieldSet","sourcePath":"components/forms/Field.jsx"},{"name":"FieldGroup","sourcePath":"components/forms/Field.jsx"},{"name":"FieldContent","sourcePath":"components/forms/Field.jsx"},{"name":"FieldLabel","sourcePath":"components/forms/Field.jsx"},{"name":"FieldTitle","sourcePath":"components/forms/Field.jsx"},{"name":"FieldDescription","sourcePath":"components/forms/Field.jsx"},{"name":"FieldLegend","sourcePath":"components/forms/Field.jsx"},{"name":"FieldSeparator","sourcePath":"components/forms/Field.jsx"},{"name":"FieldError","sourcePath":"components/forms/Field.jsx"},{"name":"IconButton","sourcePath":"components/forms/IconButton.jsx"},{"name":"Input","sourcePath":"components/forms/Input.jsx"},{"name":"InputGroup","sourcePath":"components/forms/InputGroup.jsx"},{"name":"InputGroupAddon","sourcePath":"components/forms/InputGroup.jsx"},{"name":"InputGroupButton","sourcePath":"components/forms/InputGroup.jsx"},{"name":"InputGroupInput","sourcePath":"components/forms/InputGroup.jsx"},{"name":"InputGroupTextarea","sourcePath":"components/forms/InputGroup.jsx"},{"name":"InputGroupText","sourcePath":"components/forms/InputGroup.jsx"},{"name":"InputOTP","sourcePath":"components/forms/InputOTP.jsx"},{"name":"InputOTPGroup","sourcePath":"components/forms/InputOTP.jsx"},{"name":"InputOTPSlot","sourcePath":"components/forms/InputOTP.jsx"},{"name":"InputOTPSeparator","sourcePath":"components/forms/InputOTP.jsx"},{"name":"Label","sourcePath":"components/forms/Label.jsx"},{"name":"NativeSelect","sourcePath":"components/forms/NativeSelect.jsx"},{"name":"NativeSelectOption","sourcePath":"components/forms/NativeSelect.jsx"},{"name":"NativeSelectOptGroup","sourcePath":"components/forms/NativeSelect.jsx"},{"name":"NumberInput","sourcePath":"components/forms/NumberInput.jsx"},{"name":"RadioGroup","sourcePath":"components/forms/Radio.jsx"},{"name":"RadioGroupItem","sourcePath":"components/forms/Radio.jsx"},{"name":"Radio","sourcePath":"components/forms/Radio.jsx"},{"name":"Select","sourcePath":"components/forms/Select.jsx"},{"name":"SelectTrigger","sourcePath":"components/forms/Select.jsx"},{"name":"SelectValue","sourcePath":"components/forms/Select.jsx"},{"name":"SelectContent","sourcePath":"components/forms/Select.jsx"},{"name":"SelectGroup","sourcePath":"components/forms/Select.jsx"},{"name":"SelectLabel","sourcePath":"components/forms/Select.jsx"},{"name":"SelectSeparator","sourcePath":"components/forms/Select.jsx"},{"name":"SelectItem","sourcePath":"components/forms/Select.jsx"},{"name":"Slider","sourcePath":"components/forms/Slider.jsx"},{"name":"Switch","sourcePath":"components/forms/Switch.jsx"},{"name":"Textarea","sourcePath":"components/forms/Textarea.jsx"},{"name":"Toggle","sourcePath":"components/forms/Toggle.jsx"},{"name":"ToggleGroup","sourcePath":"components/forms/Toggle.jsx"},{"name":"ToggleGroupItem","sourcePath":"components/forms/Toggle.jsx"},{"name":"Icon","sourcePath":"components/icons/Icon.jsx"},{"name":"Breadcrumb","sourcePath":"components/navigation/Breadcrumbs.jsx"},{"name":"BreadcrumbList","sourcePath":"components/navigation/Breadcrumbs.jsx"},{"name":"BreadcrumbItem","sourcePath":"components/navigation/Breadcrumbs.jsx"},{"name":"BreadcrumbLink","sourcePath":"components/navigation/Breadcrumbs.jsx"},{"name":"BreadcrumbPage","sourcePath":"components/navigation/Breadcrumbs.jsx"},{"name":"BreadcrumbSeparator","sourcePath":"components/navigation/Breadcrumbs.jsx"},{"name":"BreadcrumbEllipsis","sourcePath":"components/navigation/Breadcrumbs.jsx"},{"name":"Breadcrumbs","sourcePath":"components/navigation/Breadcrumbs.jsx"},{"name":"Menubar","sourcePath":"components/navigation/Menubar.jsx"},{"name":"PageControl","sourcePath":"components/navigation/PageControl.jsx"},{"name":"Pagination","sourcePath":"components/navigation/Pagination.jsx"},{"name":"PaginationContent","sourcePath":"components/navigation/Pagination.jsx"},{"name":"PaginationItem","sourcePath":"components/navigation/Pagination.jsx"},{"name":"PaginationLink","sourcePath":"components/navigation/Pagination.jsx"},{"name":"PaginationPrevious","sourcePath":"components/navigation/Pagination.jsx"},{"name":"PaginationNext","sourcePath":"components/navigation/Pagination.jsx"},{"name":"PaginationEllipsis","sourcePath":"components/navigation/Pagination.jsx"},{"name":"SegmentedControl","sourcePath":"components/navigation/SegmentedControl.jsx"},{"name":"SideNav","sourcePath":"components/navigation/SideNav.jsx"},{"name":"Steps","sourcePath":"components/navigation/Steps.jsx"},{"name":"Tabs","sourcePath":"components/navigation/Tabs.jsx"},{"name":"TabsList","sourcePath":"components/navigation/Tabs.jsx"},{"name":"TabsTrigger","sourcePath":"components/navigation/Tabs.jsx"},{"name":"TabsContent","sourcePath":"components/navigation/Tabs.jsx"},{"name":"TopNav","sourcePath":"components/navigation/TopNav.jsx"},{"name":"CommandPalette","sourcePath":"components/overlay/CommandPalette.jsx"},{"name":"ContextMenu","sourcePath":"components/overlay/ContextMenu.jsx"},{"name":"Drawer","sourcePath":"components/overlay/Drawer.jsx"},{"name":"HoverCard","sourcePath":"components/overlay/HoverCard.jsx"},{"name":"Menu","sourcePath":"components/overlay/Menu.jsx"},{"name":"Popover","sourcePath":"components/overlay/Popover.jsx"},{"name":"PopoverTrigger","sourcePath":"components/overlay/Popover.jsx"},{"name":"PopoverContent","sourcePath":"components/overlay/Popover.jsx"},{"name":"PopoverHeader","sourcePath":"components/overlay/Popover.jsx"},{"name":"PopoverTitle","sourcePath":"components/overlay/Popover.jsx"},{"name":"PopoverDescription","sourcePath":"components/overlay/Popover.jsx"},{"name":"Portal","sourcePath":"components/overlay/Portal.jsx"}],"publicHelpers":[{"name":"markerVariants","sourcePath":"components/ai/Marker.jsx"},{"name":"badgeVariants","sourcePath":"components/display/Badge.jsx"},{"name":"useDirection","sourcePath":"components/display/Direction.jsx"},{"name":"buttonVariants","sourcePath":"components/forms/Button.jsx"},{"name":"buttonGroupVariants","sourcePath":"components/forms/ButtonGroup.jsx"},{"name":"toggleVariants","sourcePath":"components/forms/Toggle.jsx"}],"sourceHashes":{"components/ai/AgentRun.jsx":"9740e0e168e0","components/ai/Bubble.jsx":"1fbd306ae6c7","components/ai/ChatMessage.jsx":"98920e696206","components/ai/Citation.jsx":"bdfe512cd8b0","components/ai/Confirmation.jsx":"e6baaf9f3831","components/ai/Conversation.jsx":"811020760647","components/ai/DocumentCard.jsx":"a7159ec86c9a","components/ai/FeedbackBar.jsx":"76ce9048b0f8","components/ai/GeneratedImage.jsx":"700da56ce3b7","components/ai/Marker.jsx":"4a8e54cf1022","components/ai/ModelSelector.jsx":"275bb7ef8ddc","components/ai/Player.jsx":"a8a820c1e259","components/ai/PromptComposer.jsx":"37273e81af0a","components/ai/PromptSteps.jsx":"428074df6cd1","components/ai/Reasoning.jsx":"6a54640d743d","components/ai/RichComposer.jsx":"cf26b89fd54b","components/ai/Sandbox.jsx":"78eacd199e92","components/ai/SelectionQuote.jsx":"2ba728772ad9","components/ai/SourceCard.jsx":"ca0d3eedf981","components/ai/Suggestions.jsx":"49b23d064460","components/ai/Task.jsx":"613d6bf8d05a","components/ai/Todo.jsx":"5c8653be0ea4","components/ai/ToolCall.jsx":"3c36ce2c9aab","components/ai/Transcript.jsx":"3ecad5218a37","components/ai/UsageMeter.jsx":"75c7a916706a","components/ai/WebPreview.jsx":"83ced5843df1","components/code/CodeBlock.jsx":"2160ce0d755d","components/code/Console.jsx":"5a150480bfb5","components/code/CopyField.jsx":"61f56f69d3d3","components/code/Diff.jsx":"0590d197b3b0","components/code/EnvList.jsx":"e25c72e2863c","components/code/Exception.jsx":"7c9828556417","components/code/Terminal.jsx":"5eda66e465b6","components/data/BarChart.jsx":"af57088eee06","components/data/DonutChart.jsx":"13aa95392d7a","components/data/EmptyState.jsx":"dfddad4e80a3","components/data/KeyValueList.jsx":"3876b7c9581e","components/data/LineChart.jsx":"7cce718ff267","components/data/Skeleton.jsx":"1f61553d59d1","components/data/Sparkline.jsx":"5b2a0e67cdae","components/data/Stat.jsx":"aba92e72a0f8","components/data/StatusDot.jsx":"51ac4e89dcc7","components/data/Table.jsx":"b2bb4dafe5e1","components/dates/Calendar.jsx":"29304518e5f9","components/dates/TimePicker.jsx":"197760d69fd7","components/display/Accordion.jsx":"d1599a676217","components/display/AspectRatio.jsx":"91558029d648","components/display/Avatar.jsx":"4aa383ee6c4b","components/display/Badge.jsx":"5a1248c43eaf","components/display/Card.jsx":"3c59a39074d9","components/display/Carousel.jsx":"d10ba2744373","components/display/Collapsible.jsx":"cb3eb298cff5","components/display/Direction.jsx":"538f2d4cbf23","components/display/Divider.jsx":"ee51ca336cc7","components/display/Item.jsx":"517df3ae775f","components/display/Kbd.jsx":"443f2a9b8f89","components/display/Link.jsx":"4f2fc59ae0db","components/display/Resizable.jsx":"74bc54184023","components/display/ScrollArea.jsx":"6c71af1111a2","components/display/Separator.jsx":"5c2b62cf7532","components/display/Tag.jsx":"e9dadb374567","components/display/Timeline.jsx":"6c5bff5f4dcf","components/display/Toolbar.jsx":"bbe6cffbcbab","components/display/TreeList.jsx":"69be2d21b8ad","components/feedback/Alert.jsx":"e05249f7f5a2","components/feedback/AlertDialog.jsx":"d31e73948f4f","components/feedback/Banner.jsx":"d1e818e8451a","components/feedback/ConfirmDialog.jsx":"ae69cb48e209","components/feedback/Dialog.jsx":"aeb4a8707687","components/feedback/Loader.jsx":"02efacc86905","components/feedback/Progress.jsx":"0964f54f5644","components/feedback/Spinner.jsx":"8f26ebaeaed1","components/feedback/Toast.jsx":"3ce2ec55ef4d","components/feedback/Tooltip.jsx":"2358a8b5f657","components/files/Attachment.jsx":"bd63ebd29171","components/files/FileDrop.jsx":"737632ac07db","components/files/FileTile.jsx":"28af04d1303b","components/files/FileTypeIcon.jsx":"3bcdf5ca7eb9","components/finance/PaymentCard.jsx":"74fa271e12f2","components/forms/Button.jsx":"b75f2a023e92","components/forms/ButtonGroup.jsx":"df7d04210646","components/forms/ButtonTile.jsx":"1508984c0c5c","components/forms/Checkbox.jsx":"027d94ccb5a9","components/forms/Combobox.jsx":"6ec40e1f8b36","components/forms/Field.jsx":"adf061cacd94","components/forms/IconButton.jsx":"967b0b3312fe","components/forms/Input.jsx":"727982a67f29","components/forms/InputGroup.jsx":"d58e90c419ae","components/forms/InputOTP.jsx":"275c5ea31342","components/forms/Label.jsx":"f0bfcb5ae210","components/forms/NativeSelect.jsx":"a3d4a9d8eeb3","components/forms/NumberInput.jsx":"27fe9faa2091","components/forms/Radio.jsx":"fd805667ed84","components/forms/Select.jsx":"c8373842d395","components/forms/Slider.jsx":"2904722ea54e","components/forms/Switch.jsx":"1c87f39efc97","components/forms/Textarea.jsx":"5c8934e2ecbf","components/forms/Toggle.jsx":"75a66e225060","components/icons/Icon.jsx":"65c4206c8479","components/navigation/Breadcrumbs.jsx":"2e53cdf7a4e9","components/navigation/Menubar.jsx":"950604788590","components/navigation/PageControl.jsx":"8c5bfdc21407","components/navigation/Pagination.jsx":"127bcfba7d9e","components/navigation/SegmentedControl.jsx":"ae08ad97a9a2","components/navigation/SideNav.jsx":"00851e64baa2","components/navigation/Steps.jsx":"45c6c1162b22","components/navigation/Tabs.jsx":"1af60f8cf9d8","components/navigation/TopNav.jsx":"967b11093c20","components/overlay/CommandPalette.jsx":"b07b4f28cb8c","components/overlay/ContextMenu.jsx":"5053709a1ee5","components/overlay/Drawer.jsx":"18c562fe05c3","components/overlay/HoverCard.jsx":"7438ba615e77","components/overlay/Menu.jsx":"3119fa73b187","components/overlay/Popover.jsx":"09e245cb8d48","components/overlay/Portal.jsx":"3819af4bd7c7","showcases/agent/AgentScreen.jsx":"87f60f9116cc","showcases/auth/AuthScreens.jsx":"b3583b149df5","showcases/console/CustomersScreen.jsx":"f010864726f1","showcases/console/ExtraScreens.jsx":"1e7a048ab690","showcases/console/OverviewScreen.jsx":"34b01f22bb52","showcases/console/SettingsScreen.jsx":"862f176ffd6a","showcases/console/Shell.jsx":"f5dd862d2098","showcases/docs/DocsScreen.jsx":"faa44c30040d","showcases/infra/InfraScreen.jsx":"e4d2729ee39b","showcases/tools/ToolsScreen.jsx":"f783037f212b","showcases/trader/TraderScreen.jsx":"12e5273b9894","showcases/website/Sections.jsx":"3f14d6a12c71"},"inlinedExternals":[],"unexposedExports":[{"name":"computeDiff","sourcePath":"components/code/Diff.jsx"},{"name":"cssPct","sourcePath":"components/forms/Button.jsx"},{"name":"formatTime","sourcePath":"components/ai/Player.jsx"},{"name":"injectEfCss","sourcePath":"components/forms/Button.jsx"},{"name":"mergeRefs","sourcePath":"components/forms/Button.jsx"},{"name":"prefersReducedMotion","sourcePath":"components/forms/Button.jsx"},{"name":"useAnchoredStyle","sourcePath":"components/overlay/Portal.jsx"},{"name":"useFieldProps","sourcePath":"components/forms/Field.jsx"},{"name":"useIsoLayoutEffect","sourcePath":"components/forms/Button.jsx"},{"name":"useToast","sourcePath":"components/feedback/Toast.jsx"}]} */
+/* @ds-bundle: {"format":4,"namespace":"EfolusiDesignSystem_4ffc3d","components":[{"name":"AgentRun","sourcePath":"components/ai/AgentRun.jsx"},{"name":"BubbleGroup","sourcePath":"components/ai/Bubble.jsx"},{"name":"Bubble","sourcePath":"components/ai/Bubble.jsx"},{"name":"BubbleContent","sourcePath":"components/ai/Bubble.jsx"},{"name":"BubbleReactions","sourcePath":"components/ai/Bubble.jsx"},{"name":"ChatMessage","sourcePath":"components/ai/ChatMessage.jsx"},{"name":"Citation","sourcePath":"components/ai/Citation.jsx"},{"name":"SourceList","sourcePath":"components/ai/Citation.jsx"},{"name":"Confirmation","sourcePath":"components/ai/Confirmation.jsx"},{"name":"Conversation","sourcePath":"components/ai/Conversation.jsx"},{"name":"DocumentCard","sourcePath":"components/ai/DocumentCard.jsx"},{"name":"FeedbackBar","sourcePath":"components/ai/FeedbackBar.jsx"},{"name":"GeneratedImage","sourcePath":"components/ai/GeneratedImage.jsx"},{"name":"Marker","sourcePath":"components/ai/Marker.jsx"},{"name":"MarkerIcon","sourcePath":"components/ai/Marker.jsx"},{"name":"MarkerContent","sourcePath":"components/ai/Marker.jsx"},{"name":"ModelSelector","sourcePath":"components/ai/ModelSelector.jsx"},{"name":"Player","sourcePath":"components/ai/Player.jsx"},{"name":"PromptComposer","sourcePath":"components/ai/PromptComposer.jsx"},{"name":"PromptSteps","sourcePath":"components/ai/PromptSteps.jsx"},{"name":"Reasoning","sourcePath":"components/ai/Reasoning.jsx"},{"name":"RichComposer","sourcePath":"components/ai/RichComposer.jsx"},{"name":"Sandbox","sourcePath":"components/ai/Sandbox.jsx"},{"name":"SelectionQuote","sourcePath":"components/ai/SelectionQuote.jsx"},{"name":"SourceCard","sourcePath":"components/ai/SourceCard.jsx"},{"name":"Suggestions","sourcePath":"components/ai/Suggestions.jsx"},{"name":"Task","sourcePath":"components/ai/Task.jsx"},{"name":"Todo","sourcePath":"components/ai/Todo.jsx"},{"name":"ToolCall","sourcePath":"components/ai/ToolCall.jsx"},{"name":"Transcript","sourcePath":"components/ai/Transcript.jsx"},{"name":"UsageMeter","sourcePath":"components/ai/UsageMeter.jsx"},{"name":"WebPreview","sourcePath":"components/ai/WebPreview.jsx"},{"name":"CodeBlock","sourcePath":"components/code/CodeBlock.jsx"},{"name":"Console","sourcePath":"components/code/Console.jsx"},{"name":"CopyField","sourcePath":"components/code/CopyField.jsx"},{"name":"Diff","sourcePath":"components/code/Diff.jsx"},{"name":"EnvList","sourcePath":"components/code/EnvList.jsx"},{"name":"Exception","sourcePath":"components/code/Exception.jsx"},{"name":"Terminal","sourcePath":"components/code/Terminal.jsx"},{"name":"BarChart","sourcePath":"components/data/BarChart.jsx"},{"name":"DonutChart","sourcePath":"components/data/DonutChart.jsx"},{"name":"Empty","sourcePath":"components/data/EmptyState.jsx"},{"name":"EmptyHeader","sourcePath":"components/data/EmptyState.jsx"},{"name":"EmptyMedia","sourcePath":"components/data/EmptyState.jsx"},{"name":"EmptyTitle","sourcePath":"components/data/EmptyState.jsx"},{"name":"EmptyDescription","sourcePath":"components/data/EmptyState.jsx"},{"name":"EmptyContent","sourcePath":"components/data/EmptyState.jsx"},{"name":"EmptyState","sourcePath":"components/data/EmptyState.jsx"},{"name":"KeyValueList","sourcePath":"components/data/KeyValueList.jsx"},{"name":"LineChart","sourcePath":"components/data/LineChart.jsx"},{"name":"Skeleton","sourcePath":"components/data/Skeleton.jsx"},{"name":"Sparkline","sourcePath":"components/data/Sparkline.jsx"},{"name":"Stat","sourcePath":"components/data/Stat.jsx"},{"name":"StatusDot","sourcePath":"components/data/StatusDot.jsx"},{"name":"Table","sourcePath":"components/data/Table.jsx"},{"name":"TableHeader","sourcePath":"components/data/Table.jsx"},{"name":"TableBody","sourcePath":"components/data/Table.jsx"},{"name":"TableFooter","sourcePath":"components/data/Table.jsx"},{"name":"TableRow","sourcePath":"components/data/Table.jsx"},{"name":"TableHead","sourcePath":"components/data/Table.jsx"},{"name":"TableCell","sourcePath":"components/data/Table.jsx"},{"name":"TableCaption","sourcePath":"components/data/Table.jsx"},{"name":"CalendarDayButton","sourcePath":"components/dates/Calendar.jsx"},{"name":"Calendar","sourcePath":"components/dates/Calendar.jsx"},{"name":"TimePicker","sourcePath":"components/dates/TimePicker.jsx"},{"name":"Accordion","sourcePath":"components/display/Accordion.jsx"},{"name":"AccordionItem","sourcePath":"components/display/Accordion.jsx"},{"name":"AccordionTrigger","sourcePath":"components/display/Accordion.jsx"},{"name":"AccordionContent","sourcePath":"components/display/Accordion.jsx"},{"name":"AspectRatio","sourcePath":"components/display/AspectRatio.jsx"},{"name":"Avatar","sourcePath":"components/display/Avatar.jsx"},{"name":"AvatarImage","sourcePath":"components/display/Avatar.jsx"},{"name":"AvatarFallback","sourcePath":"components/display/Avatar.jsx"},{"name":"AvatarBadge","sourcePath":"components/display/Avatar.jsx"},{"name":"AvatarGroup","sourcePath":"components/display/Avatar.jsx"},{"name":"AvatarGroupCount","sourcePath":"components/display/Avatar.jsx"},{"name":"Badge","sourcePath":"components/display/Badge.jsx"},{"name":"CardHeader","sourcePath":"components/display/Card.jsx"},{"name":"CardTitle","sourcePath":"components/display/Card.jsx"},{"name":"CardDescription","sourcePath":"components/display/Card.jsx"},{"name":"CardAction","sourcePath":"components/display/Card.jsx"},{"name":"CardContent","sourcePath":"components/display/Card.jsx"},{"name":"CardFooter","sourcePath":"components/display/Card.jsx"},{"name":"Card","sourcePath":"components/display/Card.jsx"},{"name":"Carousel","sourcePath":"components/display/Carousel.jsx"},{"name":"CarouselContent","sourcePath":"components/display/Carousel.jsx"},{"name":"CarouselItem","sourcePath":"components/display/Carousel.jsx"},{"name":"CarouselPrevious","sourcePath":"components/display/Carousel.jsx"},{"name":"CarouselNext","sourcePath":"components/display/Carousel.jsx"},{"name":"Collapsible","sourcePath":"components/display/Collapsible.jsx"},{"name":"CollapsibleTrigger","sourcePath":"components/display/Collapsible.jsx"},{"name":"CollapsibleContent","sourcePath":"components/display/Collapsible.jsx"},{"name":"DirectionProvider","sourcePath":"components/display/Direction.jsx"},{"name":"Divider","sourcePath":"components/display/Divider.jsx"},{"name":"ItemGroup","sourcePath":"components/display/Item.jsx"},{"name":"ItemSeparator","sourcePath":"components/display/Item.jsx"},{"name":"Item","sourcePath":"components/display/Item.jsx"},{"name":"ItemMedia","sourcePath":"components/display/Item.jsx"},{"name":"ItemContent","sourcePath":"components/display/Item.jsx"},{"name":"ItemTitle","sourcePath":"components/display/Item.jsx"},{"name":"ItemDescription","sourcePath":"components/display/Item.jsx"},{"name":"ItemActions","sourcePath":"components/display/Item.jsx"},{"name":"ItemHeader","sourcePath":"components/display/Item.jsx"},{"name":"ItemFooter","sourcePath":"components/display/Item.jsx"},{"name":"Kbd","sourcePath":"components/display/Kbd.jsx"},{"name":"KbdGroup","sourcePath":"components/display/Kbd.jsx"},{"name":"Link","sourcePath":"components/display/Link.jsx"},{"name":"ResizablePanelGroup","sourcePath":"components/display/Resizable.jsx"},{"name":"ResizablePanel","sourcePath":"components/display/Resizable.jsx"},{"name":"ResizableHandle","sourcePath":"components/display/Resizable.jsx"},{"name":"ScrollArea","sourcePath":"components/display/ScrollArea.jsx"},{"name":"ScrollBar","sourcePath":"components/display/ScrollArea.jsx"},{"name":"Separator","sourcePath":"components/display/Separator.jsx"},{"name":"Tag","sourcePath":"components/display/Tag.jsx"},{"name":"Timeline","sourcePath":"components/display/Timeline.jsx"},{"name":"Toolbar","sourcePath":"components/display/Toolbar.jsx"},{"name":"TreeList","sourcePath":"components/display/TreeList.jsx"},{"name":"Alert","sourcePath":"components/feedback/Alert.jsx"},{"name":"AlertTitle","sourcePath":"components/feedback/Alert.jsx"},{"name":"AlertDescription","sourcePath":"components/feedback/Alert.jsx"},{"name":"AlertDialog","sourcePath":"components/feedback/AlertDialog.jsx"},{"name":"AlertDialogTrigger","sourcePath":"components/feedback/AlertDialog.jsx"},{"name":"AlertDialogPortal","sourcePath":"components/feedback/AlertDialog.jsx"},{"name":"AlertDialogOverlay","sourcePath":"components/feedback/AlertDialog.jsx"},{"name":"AlertDialogContent","sourcePath":"components/feedback/AlertDialog.jsx"},{"name":"AlertDialogHeader","sourcePath":"components/feedback/AlertDialog.jsx"},{"name":"AlertDialogFooter","sourcePath":"components/feedback/AlertDialog.jsx"},{"name":"AlertDialogMedia","sourcePath":"components/feedback/AlertDialog.jsx"},{"name":"AlertDialogTitle","sourcePath":"components/feedback/AlertDialog.jsx"},{"name":"AlertDialogDescription","sourcePath":"components/feedback/AlertDialog.jsx"},{"name":"AlertDialogCancel","sourcePath":"components/feedback/AlertDialog.jsx"},{"name":"AlertDialogAction","sourcePath":"components/feedback/AlertDialog.jsx"},{"name":"Banner","sourcePath":"components/feedback/Banner.jsx"},{"name":"ConfirmDialog","sourcePath":"components/feedback/ConfirmDialog.jsx"},{"name":"Dialog","sourcePath":"components/feedback/Dialog.jsx"},{"name":"DialogTrigger","sourcePath":"components/feedback/Dialog.jsx"},{"name":"DialogPortal","sourcePath":"components/feedback/Dialog.jsx"},{"name":"DialogOverlay","sourcePath":"components/feedback/Dialog.jsx"},{"name":"DialogClose","sourcePath":"components/feedback/Dialog.jsx"},{"name":"DialogContent","sourcePath":"components/feedback/Dialog.jsx"},{"name":"DialogHeader","sourcePath":"components/feedback/Dialog.jsx"},{"name":"DialogFooter","sourcePath":"components/feedback/Dialog.jsx"},{"name":"DialogTitle","sourcePath":"components/feedback/Dialog.jsx"},{"name":"DialogDescription","sourcePath":"components/feedback/Dialog.jsx"},{"name":"Loader","sourcePath":"components/feedback/Loader.jsx"},{"name":"Progress","sourcePath":"components/feedback/Progress.jsx"},{"name":"Spinner","sourcePath":"components/feedback/Spinner.jsx"},{"name":"Toast","sourcePath":"components/feedback/Toast.jsx"},{"name":"ToastStack","sourcePath":"components/feedback/Toast.jsx"},{"name":"Toaster","sourcePath":"components/feedback/Toast.jsx"},{"name":"Tooltip","sourcePath":"components/feedback/Tooltip.jsx"},{"name":"TooltipProvider","sourcePath":"components/feedback/Tooltip.jsx"},{"name":"TooltipTrigger","sourcePath":"components/feedback/Tooltip.jsx"},{"name":"TooltipContent","sourcePath":"components/feedback/Tooltip.jsx"},{"name":"Attachment","sourcePath":"components/files/Attachment.jsx"},{"name":"AttachmentMedia","sourcePath":"components/files/Attachment.jsx"},{"name":"AttachmentContent","sourcePath":"components/files/Attachment.jsx"},{"name":"AttachmentTitle","sourcePath":"components/files/Attachment.jsx"},{"name":"AttachmentDescription","sourcePath":"components/files/Attachment.jsx"},{"name":"AttachmentActions","sourcePath":"components/files/Attachment.jsx"},{"name":"AttachmentAction","sourcePath":"components/files/Attachment.jsx"},{"name":"AttachmentTrigger","sourcePath":"components/files/Attachment.jsx"},{"name":"AttachmentGroup","sourcePath":"components/files/Attachment.jsx"},{"name":"FileDrop","sourcePath":"components/files/FileDrop.jsx"},{"name":"FileTile","sourcePath":"components/files/FileTile.jsx"},{"name":"FileTypeIcon","sourcePath":"components/files/FileTypeIcon.jsx"},{"name":"PaymentCard","sourcePath":"components/finance/PaymentCard.jsx"},{"name":"Button","sourcePath":"components/forms/Button.jsx"},{"name":"ButtonGroup","sourcePath":"components/forms/ButtonGroup.jsx"},{"name":"ButtonGroupText","sourcePath":"components/forms/ButtonGroup.jsx"},{"name":"ButtonGroupSeparator","sourcePath":"components/forms/ButtonGroup.jsx"},{"name":"ButtonTile","sourcePath":"components/forms/ButtonTile.jsx"},{"name":"ButtonTileGroup","sourcePath":"components/forms/ButtonTile.jsx"},{"name":"Checkbox","sourcePath":"components/forms/Checkbox.jsx"},{"name":"Combobox","sourcePath":"components/forms/Combobox.jsx"},{"name":"Field","sourcePath":"components/forms/Field.jsx"},{"name":"FieldSet","sourcePath":"components/forms/Field.jsx"},{"name":"FieldGroup","sourcePath":"components/forms/Field.jsx"},{"name":"FieldContent","sourcePath":"components/forms/Field.jsx"},{"name":"FieldLabel","sourcePath":"components/forms/Field.jsx"},{"name":"FieldTitle","sourcePath":"components/forms/Field.jsx"},{"name":"FieldDescription","sourcePath":"components/forms/Field.jsx"},{"name":"FieldLegend","sourcePath":"components/forms/Field.jsx"},{"name":"FieldSeparator","sourcePath":"components/forms/Field.jsx"},{"name":"FieldError","sourcePath":"components/forms/Field.jsx"},{"name":"IconButton","sourcePath":"components/forms/IconButton.jsx"},{"name":"Input","sourcePath":"components/forms/Input.jsx"},{"name":"InputGroup","sourcePath":"components/forms/InputGroup.jsx"},{"name":"InputGroupAddon","sourcePath":"components/forms/InputGroup.jsx"},{"name":"InputGroupButton","sourcePath":"components/forms/InputGroup.jsx"},{"name":"InputGroupInput","sourcePath":"components/forms/InputGroup.jsx"},{"name":"InputGroupTextarea","sourcePath":"components/forms/InputGroup.jsx"},{"name":"InputGroupText","sourcePath":"components/forms/InputGroup.jsx"},{"name":"InputOTP","sourcePath":"components/forms/InputOTP.jsx"},{"name":"InputOTPGroup","sourcePath":"components/forms/InputOTP.jsx"},{"name":"InputOTPSlot","sourcePath":"components/forms/InputOTP.jsx"},{"name":"InputOTPSeparator","sourcePath":"components/forms/InputOTP.jsx"},{"name":"Label","sourcePath":"components/forms/Label.jsx"},{"name":"NativeSelect","sourcePath":"components/forms/NativeSelect.jsx"},{"name":"NativeSelectOption","sourcePath":"components/forms/NativeSelect.jsx"},{"name":"NativeSelectOptGroup","sourcePath":"components/forms/NativeSelect.jsx"},{"name":"NumberInput","sourcePath":"components/forms/NumberInput.jsx"},{"name":"RadioGroup","sourcePath":"components/forms/Radio.jsx"},{"name":"RadioGroupItem","sourcePath":"components/forms/Radio.jsx"},{"name":"Radio","sourcePath":"components/forms/Radio.jsx"},{"name":"Select","sourcePath":"components/forms/Select.jsx"},{"name":"SelectTrigger","sourcePath":"components/forms/Select.jsx"},{"name":"SelectValue","sourcePath":"components/forms/Select.jsx"},{"name":"SelectContent","sourcePath":"components/forms/Select.jsx"},{"name":"SelectGroup","sourcePath":"components/forms/Select.jsx"},{"name":"SelectLabel","sourcePath":"components/forms/Select.jsx"},{"name":"SelectSeparator","sourcePath":"components/forms/Select.jsx"},{"name":"SelectItem","sourcePath":"components/forms/Select.jsx"},{"name":"Slider","sourcePath":"components/forms/Slider.jsx"},{"name":"Switch","sourcePath":"components/forms/Switch.jsx"},{"name":"Textarea","sourcePath":"components/forms/Textarea.jsx"},{"name":"Toggle","sourcePath":"components/forms/Toggle.jsx"},{"name":"ToggleGroup","sourcePath":"components/forms/Toggle.jsx"},{"name":"ToggleGroupItem","sourcePath":"components/forms/Toggle.jsx"},{"name":"Icon","sourcePath":"components/icons/Icon.jsx"},{"name":"Breadcrumb","sourcePath":"components/navigation/Breadcrumbs.jsx"},{"name":"BreadcrumbList","sourcePath":"components/navigation/Breadcrumbs.jsx"},{"name":"BreadcrumbItem","sourcePath":"components/navigation/Breadcrumbs.jsx"},{"name":"BreadcrumbLink","sourcePath":"components/navigation/Breadcrumbs.jsx"},{"name":"BreadcrumbPage","sourcePath":"components/navigation/Breadcrumbs.jsx"},{"name":"BreadcrumbSeparator","sourcePath":"components/navigation/Breadcrumbs.jsx"},{"name":"BreadcrumbEllipsis","sourcePath":"components/navigation/Breadcrumbs.jsx"},{"name":"Breadcrumbs","sourcePath":"components/navigation/Breadcrumbs.jsx"},{"name":"Menubar","sourcePath":"components/navigation/Menubar.jsx"},{"name":"PageControl","sourcePath":"components/navigation/PageControl.jsx"},{"name":"Pagination","sourcePath":"components/navigation/Pagination.jsx"},{"name":"PaginationContent","sourcePath":"components/navigation/Pagination.jsx"},{"name":"PaginationItem","sourcePath":"components/navigation/Pagination.jsx"},{"name":"PaginationLink","sourcePath":"components/navigation/Pagination.jsx"},{"name":"PaginationPrevious","sourcePath":"components/navigation/Pagination.jsx"},{"name":"PaginationNext","sourcePath":"components/navigation/Pagination.jsx"},{"name":"PaginationEllipsis","sourcePath":"components/navigation/Pagination.jsx"},{"name":"SegmentedControl","sourcePath":"components/navigation/SegmentedControl.jsx"},{"name":"SideNav","sourcePath":"components/navigation/SideNav.jsx"},{"name":"Steps","sourcePath":"components/navigation/Steps.jsx"},{"name":"Tabs","sourcePath":"components/navigation/Tabs.jsx"},{"name":"TabsList","sourcePath":"components/navigation/Tabs.jsx"},{"name":"TabsTrigger","sourcePath":"components/navigation/Tabs.jsx"},{"name":"TabsContent","sourcePath":"components/navigation/Tabs.jsx"},{"name":"TopNav","sourcePath":"components/navigation/TopNav.jsx"},{"name":"Command","sourcePath":"components/overlay/Command.jsx"},{"name":"CommandDialog","sourcePath":"components/overlay/Command.jsx"},{"name":"CommandInput","sourcePath":"components/overlay/Command.jsx"},{"name":"CommandList","sourcePath":"components/overlay/Command.jsx"},{"name":"CommandEmpty","sourcePath":"components/overlay/Command.jsx"},{"name":"CommandGroup","sourcePath":"components/overlay/Command.jsx"},{"name":"CommandItem","sourcePath":"components/overlay/Command.jsx"},{"name":"CommandShortcut","sourcePath":"components/overlay/Command.jsx"},{"name":"CommandSeparator","sourcePath":"components/overlay/Command.jsx"},{"name":"ContextMenu","sourcePath":"components/overlay/ContextMenu.jsx"},{"name":"Drawer","sourcePath":"components/overlay/Drawer.jsx"},{"name":"HoverCard","sourcePath":"components/overlay/HoverCard.jsx"},{"name":"Menu","sourcePath":"components/overlay/Menu.jsx"},{"name":"Popover","sourcePath":"components/overlay/Popover.jsx"},{"name":"PopoverTrigger","sourcePath":"components/overlay/Popover.jsx"},{"name":"PopoverContent","sourcePath":"components/overlay/Popover.jsx"},{"name":"PopoverHeader","sourcePath":"components/overlay/Popover.jsx"},{"name":"PopoverTitle","sourcePath":"components/overlay/Popover.jsx"},{"name":"PopoverDescription","sourcePath":"components/overlay/Popover.jsx"},{"name":"Portal","sourcePath":"components/overlay/Portal.jsx"}],"publicHelpers":[{"name":"markerVariants","sourcePath":"components/ai/Marker.jsx"},{"name":"badgeVariants","sourcePath":"components/display/Badge.jsx"},{"name":"useDirection","sourcePath":"components/display/Direction.jsx"},{"name":"buttonVariants","sourcePath":"components/forms/Button.jsx"},{"name":"buttonGroupVariants","sourcePath":"components/forms/ButtonGroup.jsx"},{"name":"toggleVariants","sourcePath":"components/forms/Toggle.jsx"}],"sourceHashes":{"components/ai/AgentRun.jsx":"9740e0e168e0","components/ai/Bubble.jsx":"1fbd306ae6c7","components/ai/ChatMessage.jsx":"98920e696206","components/ai/Citation.jsx":"bdfe512cd8b0","components/ai/Confirmation.jsx":"e6baaf9f3831","components/ai/Conversation.jsx":"811020760647","components/ai/DocumentCard.jsx":"a7159ec86c9a","components/ai/FeedbackBar.jsx":"76ce9048b0f8","components/ai/GeneratedImage.jsx":"700da56ce3b7","components/ai/Marker.jsx":"4a8e54cf1022","components/ai/ModelSelector.jsx":"275bb7ef8ddc","components/ai/Player.jsx":"a8a820c1e259","components/ai/PromptComposer.jsx":"37273e81af0a","components/ai/PromptSteps.jsx":"428074df6cd1","components/ai/Reasoning.jsx":"6a54640d743d","components/ai/RichComposer.jsx":"cf26b89fd54b","components/ai/Sandbox.jsx":"78eacd199e92","components/ai/SelectionQuote.jsx":"2ba728772ad9","components/ai/SourceCard.jsx":"ca0d3eedf981","components/ai/Suggestions.jsx":"49b23d064460","components/ai/Task.jsx":"613d6bf8d05a","components/ai/Todo.jsx":"5c8653be0ea4","components/ai/ToolCall.jsx":"3c36ce2c9aab","components/ai/Transcript.jsx":"3ecad5218a37","components/ai/UsageMeter.jsx":"75c7a916706a","components/ai/WebPreview.jsx":"83ced5843df1","components/code/CodeBlock.jsx":"2160ce0d755d","components/code/Console.jsx":"5a150480bfb5","components/code/CopyField.jsx":"61f56f69d3d3","components/code/Diff.jsx":"0590d197b3b0","components/code/EnvList.jsx":"e25c72e2863c","components/code/Exception.jsx":"7c9828556417","components/code/Terminal.jsx":"5eda66e465b6","components/data/BarChart.jsx":"af57088eee06","components/data/DonutChart.jsx":"13aa95392d7a","components/data/EmptyState.jsx":"dfddad4e80a3","components/data/KeyValueList.jsx":"3876b7c9581e","components/data/LineChart.jsx":"7cce718ff267","components/data/Skeleton.jsx":"1f61553d59d1","components/data/Sparkline.jsx":"5b2a0e67cdae","components/data/Stat.jsx":"aba92e72a0f8","components/data/StatusDot.jsx":"51ac4e89dcc7","components/data/Table.jsx":"b2bb4dafe5e1","components/dates/Calendar.jsx":"29304518e5f9","components/dates/TimePicker.jsx":"197760d69fd7","components/display/Accordion.jsx":"d1599a676217","components/display/AspectRatio.jsx":"91558029d648","components/display/Avatar.jsx":"4aa383ee6c4b","components/display/Badge.jsx":"5a1248c43eaf","components/display/Card.jsx":"3c59a39074d9","components/display/Carousel.jsx":"d10ba2744373","components/display/Collapsible.jsx":"cb3eb298cff5","components/display/Direction.jsx":"538f2d4cbf23","components/display/Divider.jsx":"ee51ca336cc7","components/display/Item.jsx":"517df3ae775f","components/display/Kbd.jsx":"443f2a9b8f89","components/display/Link.jsx":"4f2fc59ae0db","components/display/Resizable.jsx":"74bc54184023","components/display/ScrollArea.jsx":"6c71af1111a2","components/display/Separator.jsx":"5c2b62cf7532","components/display/Tag.jsx":"e9dadb374567","components/display/Timeline.jsx":"6c5bff5f4dcf","components/display/Toolbar.jsx":"bbe6cffbcbab","components/display/TreeList.jsx":"69be2d21b8ad","components/feedback/Alert.jsx":"e05249f7f5a2","components/feedback/AlertDialog.jsx":"d31e73948f4f","components/feedback/Banner.jsx":"d1e818e8451a","components/feedback/ConfirmDialog.jsx":"ae69cb48e209","components/feedback/Dialog.jsx":"aeb4a8707687","components/feedback/Loader.jsx":"02efacc86905","components/feedback/Progress.jsx":"0964f54f5644","components/feedback/Spinner.jsx":"8f26ebaeaed1","components/feedback/Toast.jsx":"3ce2ec55ef4d","components/feedback/Tooltip.jsx":"2358a8b5f657","components/files/Attachment.jsx":"bd63ebd29171","components/files/FileDrop.jsx":"737632ac07db","components/files/FileTile.jsx":"28af04d1303b","components/files/FileTypeIcon.jsx":"3bcdf5ca7eb9","components/finance/PaymentCard.jsx":"74fa271e12f2","components/forms/Button.jsx":"b75f2a023e92","components/forms/ButtonGroup.jsx":"df7d04210646","components/forms/ButtonTile.jsx":"1508984c0c5c","components/forms/Checkbox.jsx":"027d94ccb5a9","components/forms/Combobox.jsx":"6ec40e1f8b36","components/forms/Field.jsx":"adf061cacd94","components/forms/IconButton.jsx":"967b0b3312fe","components/forms/Input.jsx":"727982a67f29","components/forms/InputGroup.jsx":"d58e90c419ae","components/forms/InputOTP.jsx":"275c5ea31342","components/forms/Label.jsx":"f0bfcb5ae210","components/forms/NativeSelect.jsx":"a3d4a9d8eeb3","components/forms/NumberInput.jsx":"27fe9faa2091","components/forms/Radio.jsx":"fd805667ed84","components/forms/Select.jsx":"c8373842d395","components/forms/Slider.jsx":"2904722ea54e","components/forms/Switch.jsx":"1c87f39efc97","components/forms/Textarea.jsx":"5c8934e2ecbf","components/forms/Toggle.jsx":"75a66e225060","components/icons/Icon.jsx":"65c4206c8479","components/navigation/Breadcrumbs.jsx":"2e53cdf7a4e9","components/navigation/Menubar.jsx":"950604788590","components/navigation/PageControl.jsx":"8c5bfdc21407","components/navigation/Pagination.jsx":"127bcfba7d9e","components/navigation/SegmentedControl.jsx":"ae08ad97a9a2","components/navigation/SideNav.jsx":"00851e64baa2","components/navigation/Steps.jsx":"45c6c1162b22","components/navigation/Tabs.jsx":"1af60f8cf9d8","components/navigation/TopNav.jsx":"967b11093c20","components/overlay/Command.jsx":"c0fd7633d67a","components/overlay/ContextMenu.jsx":"5053709a1ee5","components/overlay/Drawer.jsx":"18c562fe05c3","components/overlay/HoverCard.jsx":"7438ba615e77","components/overlay/Menu.jsx":"3119fa73b187","components/overlay/Popover.jsx":"09e245cb8d48","components/overlay/Portal.jsx":"3819af4bd7c7","showcases/agent/AgentScreen.jsx":"a5d1eabcc5cb","showcases/auth/AuthScreens.jsx":"b3583b149df5","showcases/console/CustomersScreen.jsx":"f010864726f1","showcases/console/ExtraScreens.jsx":"1e7a048ab690","showcases/console/OverviewScreen.jsx":"34b01f22bb52","showcases/console/SettingsScreen.jsx":"862f176ffd6a","showcases/console/Shell.jsx":"f5dd862d2098","showcases/docs/DocsScreen.jsx":"752784197115","showcases/infra/InfraScreen.jsx":"e4d2729ee39b","showcases/tools/ToolsScreen.jsx":"f783037f212b","showcases/trader/TraderScreen.jsx":"12e5273b9894","showcases/website/Sections.jsx":"3f14d6a12c71"},"inlinedExternals":[],"unexposedExports":[{"name":"computeDiff","sourcePath":"components/code/Diff.jsx"},{"name":"cssPct","sourcePath":"components/forms/Button.jsx"},{"name":"formatTime","sourcePath":"components/ai/Player.jsx"},{"name":"injectEfCss","sourcePath":"components/forms/Button.jsx"},{"name":"mergeRefs","sourcePath":"components/forms/Button.jsx"},{"name":"prefersReducedMotion","sourcePath":"components/forms/Button.jsx"},{"name":"useAnchoredStyle","sourcePath":"components/overlay/Portal.jsx"},{"name":"useFieldProps","sourcePath":"components/forms/Field.jsx"},{"name":"useIsoLayoutEffect","sourcePath":"components/forms/Button.jsx"},{"name":"useToast","sourcePath":"components/feedback/Toast.jsx"}]} */
 
 (() => {
 
@@ -10440,174 +10440,6 @@ function TopNav({
 Object.assign(__ds_scope, { TopNav });
 })(); } catch (e) { __ds_ns.__errors.push({ path: "components/navigation/TopNav.jsx", error: String((e && e.message) || e) }); }
 
-// components/overlay/CommandPalette.jsx
-try { (() => {
-function _extends() { return _extends = Object.assign ? Object.assign.bind() : function (n) { for (var e = 1; e < arguments.length; e++) { var t = arguments[e]; for (var r in t) ({}).hasOwnProperty.call(t, r) && (n[r] = t[r]); } return n; }, _extends.apply(null, arguments); }
-const CSS = `
-.ef-cmdk__overlay{position:fixed;inset:0;background:var(--overlay-scrim);display:flex;justify-content:center;align-items:flex-start;padding:100px 24px 24px;z-index:var(--z-modal);animation:ef-cmdk-fade var(--dur-fast) var(--ease-out)}
-@keyframes ef-cmdk-fade{from{opacity:0}}
-.ef-cmdk{width:100%;max-width:560px;background:var(--surface-card);border:1px solid var(--border-strong);border-radius:var(--radius-lg);box-shadow:var(--shadow-pop);overflow:hidden;animation:ef-cmdk-in var(--dur-med) var(--ease-out)}
-@keyframes ef-cmdk-in{from{opacity:0;transform:translateY(-6px)}}
-.ef-cmdk__inputrow{display:flex;align-items:center;gap:10px;padding:14px 16px;border-bottom:1px solid var(--border-default)}
-.ef-cmdk__input{flex:1;border:none;outline:none;background:none;font-family:var(--font-sans);font-size:var(--text-lg);color:var(--text-primary)}
-.ef-cmdk__input::placeholder{color:var(--text-muted)}
-.ef-cmdk__list{max-height:320px;overflow-y:auto;padding:6px}
-.ef-cmdk__group{font-size:10px;font-weight:var(--weight-semibold);letter-spacing:0.06em;text-transform:uppercase;color:var(--text-muted);padding:10px 10px 4px}
-.ef-cmdk__item{display:flex;align-items:center;gap:10px;width:100%;padding:9px 10px;border:none;border-radius:var(--radius-sm);background:none;cursor:pointer;text-align:start;font-family:var(--font-sans);font-size:var(--text-md);color:var(--text-primary)}
-.ef-cmdk__item--active{background:var(--surface-sunken)}
-.ef-cmdk__item__icon{color:var(--text-muted);display:inline-flex}
-.ef-cmdk__item__hint{margin-inline-start:auto;font-size:var(--text-xs);color:var(--text-muted)}
-.ef-cmdk__empty{padding:32px;text-align:center;color:var(--text-muted);font-size:var(--text-sm)}
-.ef-cmdk__foot{display:flex;align-items:center;gap:14px;padding:9px 14px;border-top:1px solid var(--border-default);background:var(--surface-subtle);font-size:var(--text-xs);color:var(--text-muted)}
-.ef-cmdk__foot span{display:inline-flex;align-items:center;gap:5px}
-`;
-function CommandPalette({
-  open,
-  onClose,
-  groups,
-  onSelect,
-  placeholder = 'Type a command or search…',
-  style,
-  className,
-  ...rest
-}) {
-  __ds_scope.injectEfCss('ef-css-cmdk', CSS);
-  const [q, setQ] = React.useState('');
-  const [idx, setIdx] = React.useState(0);
-  const listId = React.useId();
-  const prevFocus = React.useRef(null);
-  const inputRef = React.useRef(null);
-  React.useEffect(() => {
-    if (!open) return;
-    setQ('');
-    setIdx(0);
-    prevFocus.current = document.activeElement;
-    if (inputRef.current) inputRef.current.focus();
-    return () => {
-      if (prevFocus.current && prevFocus.current.focus) prevFocus.current.focus();
-    };
-  }, [open]);
-  const flat = [];
-  const shown = (groups || []).map(g => {
-    const items = g.items.filter(it => !q || (it.label + ' ' + (it.hint || '')).toLowerCase().includes(q.toLowerCase()));
-    items.forEach(it => flat.push(it));
-    return {
-      ...g,
-      items
-    };
-  }).filter(g => g.items.length);
-  React.useEffect(() => {
-    setIdx(0);
-  }, [q]);
-  const flatRef = React.useRef(flat);
-  flatRef.current = flat;
-  const idxRef = React.useRef(idx);
-  idxRef.current = idx;
-  React.useEffect(() => {
-    if (!open) return;
-    const key = e => {
-      if (e.key === 'Escape') onClose && onClose();
-      if (e.key === 'ArrowDown') {
-        e.preventDefault();
-        setIdx(i => Math.min(i + 1, flatRef.current.length - 1));
-      }
-      if (e.key === 'ArrowUp') {
-        e.preventDefault();
-        setIdx(i => Math.max(i - 1, 0));
-      }
-      if (e.key === 'Enter') {
-        const it = flatRef.current[idxRef.current];
-        if (it) {
-          onSelect && onSelect(it.id);
-          onClose && onClose();
-        }
-      }
-    };
-    document.addEventListener('keydown', key);
-    return () => document.removeEventListener('keydown', key);
-  }, [open, onClose, onSelect]);
-  React.useEffect(() => {
-    if (!open) return;
-    const el = document.getElementById(listId + '-opt-' + idx);
-    if (el && el.scrollIntoView) el.scrollIntoView({
-      block: 'nearest'
-    });
-  }, [open, idx, listId]);
-  if (!open) return null;
-  return /*#__PURE__*/React.createElement("div", _extends({}, rest, {
-    className: `ef-cmdk__overlay${className ? ' ' + className : ''}`,
-    style: style,
-    onMouseDown: e => {
-      if (e.target === e.currentTarget && onClose) onClose();
-    }
-  }), /*#__PURE__*/React.createElement("div", {
-    className: "ef-cmdk",
-    role: "dialog",
-    "aria-modal": "true",
-    "aria-label": "Command palette"
-  }, /*#__PURE__*/React.createElement("div", {
-    className: "ef-cmdk__inputrow"
-  }, /*#__PURE__*/React.createElement(__ds_scope.Icon, {
-    name: "search",
-    size: 17,
-    style: {
-      color: 'var(--text-muted)'
-    }
-  }), /*#__PURE__*/React.createElement("input", {
-    className: "ef-cmdk__input",
-    ref: inputRef,
-    placeholder: placeholder,
-    value: q,
-    onChange: e => setQ(e.target.value),
-    role: "combobox",
-    "aria-expanded": "true",
-    "aria-controls": listId,
-    "aria-autocomplete": "list",
-    "aria-label": placeholder,
-    "aria-activedescendant": flat.length ? `${listId}-opt-${idx}` : undefined
-  }), /*#__PURE__*/React.createElement(__ds_scope.Kbd, null, "Esc")), /*#__PURE__*/React.createElement("div", {
-    className: "ef-cmdk__list",
-    role: "listbox",
-    id: listId
-  }, shown.length === 0 && /*#__PURE__*/React.createElement("div", {
-    className: "ef-cmdk__empty"
-  }, "Nothing matches \"", q, "\" \u2014 try a product or action name."), shown.map(g => /*#__PURE__*/React.createElement(React.Fragment, {
-    key: g.group
-  }, /*#__PURE__*/React.createElement("div", {
-    className: "ef-cmdk__group"
-  }, g.group), g.items.map(it => {
-    const fi = flat.indexOf(it);
-    const active = fi === idx;
-    return /*#__PURE__*/React.createElement("button", {
-      key: it.id,
-      role: "option",
-      id: `${listId}-opt-${fi}`,
-      "aria-selected": active,
-      className: `ef-cmdk__item${active ? ' ef-cmdk__item--active' : ''}`,
-      onMouseEnter: () => setIdx(fi),
-      onClick: () => {
-        onSelect && onSelect(it.id);
-        onClose && onClose();
-      }
-    }, it.icon ? /*#__PURE__*/React.createElement("span", {
-      className: "ef-cmdk__item__icon"
-    }, /*#__PURE__*/React.createElement(__ds_scope.Icon, {
-      name: it.icon,
-      size: 16
-    })) : null, it.label, it.hint ? /*#__PURE__*/React.createElement("span", {
-      className: "ef-cmdk__item__hint"
-    }, it.hint) : null);
-  })))), /*#__PURE__*/React.createElement("div", {
-    className: "ef-cmdk__foot"
-  }, /*#__PURE__*/React.createElement("span", null, /*#__PURE__*/React.createElement(__ds_scope.Kbd, null, "\u2191"), /*#__PURE__*/React.createElement(__ds_scope.Kbd, null, "\u2193"), " navigate"), /*#__PURE__*/React.createElement("span", null, /*#__PURE__*/React.createElement(__ds_scope.Kbd, null, "\u21B5"), " run"), /*#__PURE__*/React.createElement("span", {
-    style: {
-      marginInlineStart: 'auto'
-    }
-  }, /*#__PURE__*/React.createElement(__ds_scope.Kbd, null, "\u2318"), /*#__PURE__*/React.createElement(__ds_scope.Kbd, null, "K"), " anywhere"))));
-}
-Object.assign(__ds_scope, { CommandPalette });
-})(); } catch (e) { __ds_ns.__errors.push({ path: "components/overlay/CommandPalette.jsx", error: String((e && e.message) || e) }); }
-
 // components/overlay/Drawer.jsx
 try { (() => {
 function _extends() { return _extends = Object.assign ? Object.assign.bind() : function (n) { for (var e = 1; e < arguments.length; e++) { var t = arguments[e]; for (var r in t) ({}).hasOwnProperty.call(t, r) && (n[r] = t[r]); } return n; }, _extends.apply(null, arguments); }
@@ -12731,6 +12563,279 @@ const SelectItem = React.forwardRef(function SelectItem({
 Object.assign(__ds_scope, { Select, SelectTrigger, SelectValue, SelectContent, SelectGroup, SelectLabel, SelectSeparator, SelectItem });
 })(); } catch (e) { __ds_ns.__errors.push({ path: "components/forms/Select.jsx", error: String((e && e.message) || e) }); }
 
+// components/overlay/Command.jsx
+try { (() => {
+function _extends() { return _extends = Object.assign ? Object.assign.bind() : function (n) { for (var e = 1; e < arguments.length; e++) { var t = arguments[e]; for (var r in t) ({}).hasOwnProperty.call(t, r) && (n[r] = t[r]); } return n; }, _extends.apply(null, arguments); }
+const CSS = `
+.ef-command{display:flex;width:100%;height:100%;flex-direction:column;overflow:hidden;border-radius:var(--radius-md);background:var(--surface-card);color:var(--text-primary);font-family:var(--font-sans)}
+.ef-command__input-wrap{display:flex;height:44px;align-items:center;gap:8px;padding-inline:12px;border-bottom:1px solid var(--border-default);color:var(--text-muted)}
+.ef-command__input{display:flex;width:100%;height:40px;border:0;outline:0;background:transparent;color:var(--text-primary);font:inherit;font-size:var(--text-sm)}.ef-command__input::placeholder{color:var(--text-muted)}.ef-command__input:disabled{cursor:not-allowed;opacity:.5}
+.ef-command__list{max-height:300px;overflow-x:hidden;overflow-y:auto;scroll-padding-block:4px;padding:4px}
+.ef-command__empty{padding:24px;text-align:center;color:var(--text-muted);font-size:var(--text-sm)}
+.ef-command__group{overflow:hidden;padding:4px}.ef-command__group[hidden],.ef-command__group:not(:has(.ef-command__item:not([hidden]))){display:none}.ef-command__heading{padding:6px 8px;color:var(--text-muted);font-size:var(--text-xs);font-weight:var(--weight-medium)}
+.ef-command__item{position:relative;display:flex;width:100%;align-items:center;gap:8px;padding:7px 8px;border:0;border-radius:var(--radius-sm);outline:0;background:transparent;color:var(--text-primary);font:inherit;font-size:var(--text-sm);text-align:start;cursor:default;user-select:none}.ef-command__item[data-selected="true"]{background:var(--surface-sunken)}.ef-command__item[data-disabled="true"]{pointer-events:none;opacity:.5}.ef-command__item[hidden]{display:none}
+.ef-command__shortcut{margin-inline-start:auto;color:var(--text-muted);font-size:var(--text-xs);letter-spacing:.08em}
+.ef-command__separator{height:1px;margin-inline:-4px;background:var(--border-default)}
+.ef-command-dialog{overflow:hidden;padding:0}.ef-command-dialog>.ef-dialog__close{z-index:1}.ef-command-dialog .ef-command__input-wrap{height:48px}.ef-command-dialog .ef-command__item{padding-block:10px}
+.ef-command__sr{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+`;
+const CommandContext = React.createContext(null);
+const textOf = node => React.Children.toArray(node).map(child => typeof child === 'string' || typeof child === 'number' ? String(child) : React.isValidElement(child) ? textOf(child.props.children) : '').join(' ');
+const join = (...values) => values.filter(Boolean).join(' ');
+const Command = React.forwardRef(function Command({
+  value,
+  defaultValue = '',
+  onValueChange,
+  shouldFilter = true,
+  filter,
+  loop = false,
+  className,
+  children,
+  onKeyDown,
+  ...props
+}, ref) {
+  __ds_scope.injectEfCss('ef-css-command', CSS);
+  const [search, setSearch] = React.useState('');
+  const [internalValue, setInternalValue] = React.useState(defaultValue);
+  const [version, setVersion] = React.useState(0);
+  const listId = React.useId();
+  const items = React.useRef(new Map());
+  const selected = value === undefined ? internalValue : value;
+  const setSelected = React.useCallback(next => {
+    if (value === undefined) setInternalValue(next);
+    onValueChange?.(next);
+  }, [value, onValueChange]);
+  const register = React.useCallback((id, record) => {
+    items.current.set(id, record);
+    setVersion(v => v + 1);
+    return () => {
+      items.current.delete(id);
+      setVersion(v => v + 1);
+    };
+  }, []);
+  const score = React.useCallback(record => {
+    if (!shouldFilter || !search) return 1;
+    if (filter) return filter(record.value, search, record.keywords) || 0;
+    const haystack = `${record.value} ${record.label} ${(record.keywords || []).join(' ')}`.toLocaleLowerCase();
+    return haystack.includes(search.toLocaleLowerCase()) ? 1 : 0;
+  }, [filter, search, shouldFilter]);
+  const visible = React.useCallback(record => score(record) > 0, [score]);
+  const visibleItems = [...items.current.values()].filter(record => !record.disabled && visible(record));
+  const activeId = visibleItems.find(record => record.value === selected)?.id;
+  React.useEffect(() => {
+    if (!visibleItems.length) return setSelected('');
+    if (!visibleItems.some(record => record.value === selected)) setSelected(visibleItems[0].value);
+  }, [search, version]);
+  const keydown = event => {
+    onKeyDown?.(event);
+    if (event.defaultPrevented) return;
+    const current = [...items.current.values()].filter(record => !record.disabled && visible(record));
+    if (!current.length) return;
+    const index = Math.max(0, current.findIndex(record => record.value === selected));
+    if (event.key === 'ArrowDown' || event.key === 'ArrowUp') {
+      event.preventDefault();
+      const delta = event.key === 'ArrowDown' ? 1 : -1;
+      const next = loop ? (index + delta + current.length) % current.length : Math.max(0, Math.min(current.length - 1, index + delta));
+      setSelected(current[next].value);
+      current[next].ref.current?.scrollIntoView?.({
+        block: 'nearest'
+      });
+    } else if (event.key === 'Home' || event.key === 'End') {
+      event.preventDefault();
+      setSelected(current[event.key === 'Home' ? 0 : current.length - 1].value);
+    } else if (event.key === 'Enter') {
+      event.preventDefault();
+      current[index].ref.current?.click();
+    }
+  };
+  const context = React.useMemo(() => ({
+    register,
+    search,
+    setSearch,
+    selected,
+    setSelected,
+    visible,
+    visibleCount: visibleItems.length,
+    version,
+    listId,
+    activeId
+  }), [register, search, selected, setSelected, visible, visibleItems.length, version, listId, activeId]);
+  return /*#__PURE__*/React.createElement(CommandContext.Provider, {
+    value: context
+  }, /*#__PURE__*/React.createElement("div", _extends({
+    ref: ref,
+    "data-slot": "command",
+    className: join('ef-command', className),
+    onKeyDown: keydown
+  }, props), children));
+});
+function CommandDialog({
+  title = 'Command Palette',
+  description = 'Search for a command to run…',
+  children,
+  className,
+  showCloseButton = true,
+  ...props
+}) {
+  __ds_scope.injectEfCss('ef-css-command', CSS);
+  return /*#__PURE__*/React.createElement(__ds_scope.Dialog, props, /*#__PURE__*/React.createElement(__ds_scope.DialogContent, {
+    className: join('ef-command-dialog', className),
+    showCloseButton: showCloseButton,
+    width: 560
+  }, /*#__PURE__*/React.createElement(__ds_scope.DialogHeader, {
+    className: "ef-command__sr"
+  }, /*#__PURE__*/React.createElement(__ds_scope.DialogTitle, null, title), /*#__PURE__*/React.createElement(__ds_scope.DialogDescription, null, description)), /*#__PURE__*/React.createElement(Command, null, children)));
+}
+const CommandInput = React.forwardRef(function CommandInput({
+  className,
+  value,
+  onChange,
+  ...props
+}, ref) {
+  const context = React.useContext(CommandContext);
+  const current = value === undefined ? context?.search || '' : value;
+  return /*#__PURE__*/React.createElement("div", {
+    "data-slot": "command-input-wrapper",
+    className: "ef-command__input-wrap"
+  }, /*#__PURE__*/React.createElement(__ds_scope.Icon, {
+    name: "search",
+    size: 16
+  }), /*#__PURE__*/React.createElement("input", _extends({
+    ref: ref,
+    "data-slot": "command-input",
+    className: join('ef-command__input', className),
+    value: current,
+    onChange: event => {
+      if (value === undefined) context?.setSearch(event.target.value);
+      onChange?.(event);
+    },
+    role: "combobox",
+    "aria-expanded": "true",
+    "aria-autocomplete": "list",
+    "aria-controls": context?.listId,
+    "aria-activedescendant": context?.activeId,
+    "aria-label": props['aria-label'] || props.placeholder
+  }, props)));
+});
+const CommandList = React.forwardRef(function CommandList({
+  className,
+  ...props
+}, ref) {
+  const context = React.useContext(CommandContext);
+  return /*#__PURE__*/React.createElement("div", _extends({
+    ref: ref,
+    id: props.id || context?.listId,
+    "data-slot": "command-list",
+    role: "listbox",
+    className: join('ef-command__list', className)
+  }, props));
+});
+const CommandEmpty = React.forwardRef(function CommandEmpty({
+  className,
+  ...props
+}, ref) {
+  const context = React.useContext(CommandContext);
+  return context?.visibleCount === 0 ? /*#__PURE__*/React.createElement("div", _extends({
+    ref: ref,
+    "data-slot": "command-empty",
+    className: join('ef-command__empty', className)
+  }, props)) : null;
+});
+const CommandGroup = React.forwardRef(function CommandGroup({
+  heading,
+  className,
+  children,
+  ...props
+}, ref) {
+  return /*#__PURE__*/React.createElement("div", _extends({
+    ref: ref,
+    "data-slot": "command-group",
+    role: "group",
+    "aria-label": typeof heading === 'string' ? heading : undefined,
+    className: join('ef-command__group', className)
+  }, props), heading ? /*#__PURE__*/React.createElement("div", {
+    "data-slot": "command-group-heading",
+    className: "ef-command__heading"
+  }, heading) : null, children);
+});
+const CommandItem = React.forwardRef(function CommandItem({
+  value,
+  keywords = [],
+  disabled = false,
+  onSelect,
+  onClick,
+  className,
+  children,
+  ...props
+}, forwardedRef) {
+  const context = React.useContext(CommandContext);
+  const id = React.useId();
+  const localRef = React.useRef(null);
+  React.useImperativeHandle(forwardedRef, () => localRef.current);
+  const itemValue = value || textOf(children).trim();
+  React.useEffect(() => context?.register(id, {
+    id,
+    value: itemValue,
+    label: textOf(children),
+    keywords,
+    disabled,
+    ref: localRef
+  }), [context?.register, id, itemValue, keywords.join('\0'), disabled]);
+  const hidden = context ? !context.visible({
+    value: itemValue,
+    label: textOf(children),
+    keywords,
+    disabled
+  }) : false;
+  const selected = context?.selected === itemValue;
+  const activate = event => {
+    onClick?.(event);
+    if (!event.defaultPrevented && !disabled) {
+      context?.setSelected(itemValue);
+      onSelect?.(itemValue);
+    }
+  };
+  return /*#__PURE__*/React.createElement("button", _extends({
+    ref: localRef,
+    type: "button",
+    id: id,
+    "data-slot": "command-item",
+    "data-value": itemValue,
+    "data-selected": selected ? 'true' : 'false',
+    "data-disabled": disabled ? 'true' : 'false',
+    role: "option",
+    "aria-selected": selected,
+    disabled: disabled,
+    hidden: hidden,
+    className: join('ef-command__item', className),
+    onMouseEnter: () => !disabled && context?.setSelected(itemValue),
+    onClick: activate
+  }, props), children);
+});
+const CommandShortcut = React.forwardRef(function CommandShortcut({
+  className,
+  ...props
+}, ref) {
+  return /*#__PURE__*/React.createElement("span", _extends({
+    ref: ref,
+    "data-slot": "command-shortcut",
+    className: join('ef-command__shortcut', className)
+  }, props));
+});
+const CommandSeparator = React.forwardRef(function CommandSeparator({
+  className,
+  ...props
+}, ref) {
+  return /*#__PURE__*/React.createElement("div", _extends({
+    ref: ref,
+    "data-slot": "command-separator",
+    role: "separator",
+    className: join('ef-command__separator', className)
+  }, props));
+});
+Object.assign(__ds_scope, { Command, CommandDialog, CommandInput, CommandList, CommandEmpty, CommandGroup, CommandItem, CommandShortcut, CommandSeparator });
+})(); } catch (e) { __ds_ns.__errors.push({ path: "components/overlay/Command.jsx", error: String((e && e.message) || e) }); }
+
 // components/overlay/ContextMenu.jsx
 try { (() => {
 function _extends() { return _extends = Object.assign ? Object.assign.bind() : function (n) { for (var e = 1; e < arguments.length; e++) { var t = arguments[e]; for (var r in t) ({}).hasOwnProperty.call(t, r) && (n[r] = t[r]); } return n; }, _extends.apply(null, arguments); }
@@ -13318,7 +13423,12 @@ const {
   FileTile,
   StatusDot,
   KeyValueList,
-  CommandPalette,
+  CommandDialog,
+  CommandInput,
+  CommandList,
+  CommandEmpty,
+  CommandGroup,
+  CommandItem,
   Menu,
   Card,
   Button,
@@ -13547,6 +13657,13 @@ function AgentScreen() {
     title,
     description
   });
+  const runCommand = id => {
+    setCmdk(false);
+    if (id === 'new-task') notify('New task', 'Describe the outcome in the composer below.');else if (id === 'pause') {
+      setRunning(false);
+      notify('Task paused', 'Resume any time.');
+    } else if (id === 'export') notify('Transcript exported', 'Markdown file in your downloads.');else if (id === 'infra') window.location.href = '../infra/index.html';else if (id === 'trader') window.location.href = '../trader/index.html';else if (id === 'settings') window.location.href = '../console/index.html';
+  };
   const [msgs, setMsgs] = React.useState([{
     id: 1,
     role: 'user',
@@ -13677,17 +13794,24 @@ function AgentScreen() {
     onStop: () => setStreaming(false)
   })))), /*#__PURE__*/React.createElement(TaskRail, {
     running: running
-  })), /*#__PURE__*/React.createElement(CommandPalette, {
+  })), /*#__PURE__*/React.createElement(CommandDialog, {
     open: cmdk,
-    onClose: () => setCmdk(false),
-    onSelect: id => {
-      if (id === 'new-task') notify('New task', 'Describe the outcome in the composer below.');else if (id === 'pause') {
-        setRunning(false);
-        notify('Task paused', 'Resume any time.');
-      } else if (id === 'export') notify('Transcript exported', 'Markdown file in your downloads.');else if (id === 'infra') window.location.href = '../infra/index.html';else if (id === 'trader') window.location.href = '../trader/index.html';else if (id === 'settings') window.location.href = '../console/index.html';
-    },
-    groups: CMD_GROUPS
-  }));
+    onOpenChange: setCmdk,
+    title: "Agent commands"
+  }, /*#__PURE__*/React.createElement(CommandInput, {
+    placeholder: "Search agent commands\u2026"
+  }), /*#__PURE__*/React.createElement(CommandList, null, /*#__PURE__*/React.createElement(CommandEmpty, null, "No matching commands."), CMD_GROUPS.map(group => /*#__PURE__*/React.createElement(CommandGroup, {
+    key: group.group,
+    heading: group.group
+  }, group.items.map(item => /*#__PURE__*/React.createElement(CommandItem, {
+    key: item.id,
+    value: item.id,
+    keywords: [group.group],
+    onSelect: runCommand
+  }, /*#__PURE__*/React.createElement(Icon, {
+    name: item.icon,
+    size: 16
+  }), item.label)))))));
 }
 Object.assign(window, {
   AgentScreen
@@ -15984,7 +16108,13 @@ const {
   Breadcrumbs,
   CodeBlock,
   Kbd,
-  CommandPalette
+  CommandDialog,
+  CommandInput,
+  CommandList,
+  CommandEmpty,
+  CommandGroup,
+  CommandItem,
+  CommandShortcut
 } = window.EfolusiDesignSystem_4ffc3d;
 function DocsHeader({
   onSearch
@@ -16555,21 +16685,27 @@ function DocsApp() {
   }) : /*#__PURE__*/React.createElement(Article, {
     page: page,
     onPage: go
-  })), page === 'quickstart' && /*#__PURE__*/React.createElement(Toc, null)), /*#__PURE__*/React.createElement(CommandPalette, {
+  })), page === 'quickstart' && /*#__PURE__*/React.createElement(Toc, null)), /*#__PURE__*/React.createElement(CommandDialog, {
     open: cmdk,
-    onClose: () => setCmdk(false),
-    placeholder: "Search docs\u2026",
-    onSelect: go,
-    groups: NAV.map(([g, items]) => ({
-      group: g,
-      items: items.map(([id, label]) => ({
-        id,
-        label,
-        icon: 'file-text',
-        hint: g
-      }))
-    }))
-  }));
+    onOpenChange: setCmdk,
+    title: "Documentation search"
+  }, /*#__PURE__*/React.createElement(CommandInput, {
+    placeholder: "Search docs\u2026"
+  }), /*#__PURE__*/React.createElement(CommandList, null, /*#__PURE__*/React.createElement(CommandEmpty, null, "No documentation found."), NAV.map(([group, items]) => /*#__PURE__*/React.createElement(CommandGroup, {
+    key: group,
+    heading: group
+  }, items.map(([id, label]) => /*#__PURE__*/React.createElement(CommandItem, {
+    key: id,
+    value: id,
+    keywords: [group],
+    onSelect: () => {
+      go(id);
+      setCmdk(false);
+    }
+  }, /*#__PURE__*/React.createElement(Icon, {
+    name: "file-text",
+    size: 16
+  }), label, /*#__PURE__*/React.createElement(CommandShortcut, null, group))))))));
 }
 Object.assign(window, {
   DocsApp
@@ -18878,7 +19014,23 @@ __ds_ns.TabsContent = __ds_scope.TabsContent;
 
 __ds_ns.TopNav = __ds_scope.TopNav;
 
-__ds_ns.CommandPalette = __ds_scope.CommandPalette;
+__ds_ns.Command = __ds_scope.Command;
+
+__ds_ns.CommandDialog = __ds_scope.CommandDialog;
+
+__ds_ns.CommandInput = __ds_scope.CommandInput;
+
+__ds_ns.CommandList = __ds_scope.CommandList;
+
+__ds_ns.CommandEmpty = __ds_scope.CommandEmpty;
+
+__ds_ns.CommandGroup = __ds_scope.CommandGroup;
+
+__ds_ns.CommandItem = __ds_scope.CommandItem;
+
+__ds_ns.CommandShortcut = __ds_scope.CommandShortcut;
+
+__ds_ns.CommandSeparator = __ds_scope.CommandSeparator;
 
 __ds_ns.ContextMenu = __ds_scope.ContextMenu;
 

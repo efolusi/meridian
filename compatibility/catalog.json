@@ -168,7 +168,14 @@
       "tests": ["tests/collapsible-compatibility.test.jsx"]
     },
     { "name": "Combobox", "status": "unverified" },
-    { "name": "Command", "status": "unverified" },
+    {
+      "name": "Command",
+      "status": "proven",
+      "requiredExports": ["Command", "CommandDialog", "CommandInput", "CommandList", "CommandEmpty", "CommandGroup", "CommandItem", "CommandShortcut", "CommandSeparator"],
+      "sourceFiles": ["components/overlay/Command.jsx", "components/overlay/Command.d.ts"],
+      "registryItems": ["site/registry/command.json"],
+      "tests": ["tests/command-compatibility.test.jsx", "tests/keyboard-command.test.jsx"]
+    },
     { "name": "Context Menu", "status": "unverified" },
     { "name": "Data Table", "status": "unverified" },
     {

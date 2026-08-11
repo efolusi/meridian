@@ -319,8 +319,40 @@
       "sourcePath": "components/forms/Combobox.jsx"
     },
     {
-      "name": "CommandPalette",
-      "sourcePath": "components/overlay/CommandPalette.jsx"
+      "name": "Command",
+      "sourcePath": "components/overlay/Command.jsx"
+    },
+    {
+      "name": "CommandDialog",
+      "sourcePath": "components/overlay/Command.jsx"
+    },
+    {
+      "name": "CommandEmpty",
+      "sourcePath": "components/overlay/Command.jsx"
+    },
+    {
+      "name": "CommandGroup",
+      "sourcePath": "components/overlay/Command.jsx"
+    },
+    {
+      "name": "CommandInput",
+      "sourcePath": "components/overlay/Command.jsx"
+    },
+    {
+      "name": "CommandItem",
+      "sourcePath": "components/overlay/Command.jsx"
+    },
+    {
+      "name": "CommandList",
+      "sourcePath": "components/overlay/Command.jsx"
+    },
+    {
+      "name": "CommandSeparator",
+      "sourcePath": "components/overlay/Command.jsx"
+    },
+    {
+      "name": "CommandShortcut",
+      "sourcePath": "components/overlay/Command.jsx"
     },
     {
       "name": "Confirmation",

@@ -60,7 +60,7 @@
  "Stat": "Blok KPI: label redup, nilai mono, delta berwarna.",
  "StatusDot": "Titik status langsung dengan label; pulse memancar untuk status berjalan/terhubung.",
  "Table": "Tabel data: header mikro huruf besar, baris setipis rambut, klik baris opsional. Tanpa border — sarangkan dalam <Card padding={0}> untuk tabel berbingkai.",
- "CommandPalette": "Palet ⌘K: pencarian, perintah berkelompok, navigasi keyboard penuh (↑↓, ↵, Esc), footer berpetunjuk Kbd.",
+ "Command": "Menu perintah komposabel dengan pencarian, grup, shortcut, dan navigasi keyboard penuh.",
  "ContextMenu": "Menu klik-kanan yang berlabuh di kursor. Bungkus targetnya; item berbagi bentuk item Menu.",
  "Drawer": "Panel samping untuk detail dan penyuntingan multi-field yang tak perlu meninggalkan halaman.",
  "HoverCard": "Pratinjau kaya saat hover/fokus (350ms masuk, 150ms keluar). Untuk orang, repo, tiket — di mana pun tautan layak dapat pratinjau-sekilas.",
