@@ -47,6 +47,11 @@ similarity.
 
 ## Proven adapters
 
+- `Progress` supports determinate, complete, and indeterminate states; clamped
+  values; accessible range semantics; native attributes; consumer classes and
+  styles; ref forwarding; RTL-safe motion; types; registry installation; demos;
+  and tests. Meridian's integrated label, formatted value, and semantic tones
+  remain additive extensions.
 - `Avatar`, `AvatarImage`, `AvatarFallback`, `AvatarBadge`, `AvatarGroup`, and
   `AvatarGroupCount` support compositional identity images, three named sizes,
   failed-image fallback, status indicators, overlapping groups, native

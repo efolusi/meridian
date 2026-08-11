@@ -134,7 +134,14 @@
     { "name": "Navigation Menu", "status": "unverified" },
     { "name": "Pagination", "status": "unverified" },
     { "name": "Popover", "status": "unverified" },
-    { "name": "Progress", "status": "unverified" },
+    {
+      "name": "Progress",
+      "status": "proven",
+      "requiredExports": ["Progress"],
+      "sourceFiles": ["components/feedback/Progress.jsx", "components/feedback/Progress.d.ts"],
+      "registryItems": ["site/registry/progress.json"],
+      "tests": ["tests/progress-compatibility.test.jsx"]
+    },
     { "name": "Questionnaire", "status": "unverified" },
     { "name": "Radio Group", "status": "unverified" },
     { "name": "Resizable", "status": "unverified" },

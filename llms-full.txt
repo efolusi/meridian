@@ -2488,29 +2488,29 @@ export declare function Loader(props: LoaderProps): React.JSX.Element;
 
 Group: feedback · Source: /components/feedback/Progress.jsx · Exports: Progress
 
-4px ink progress bar for usage meters and multi-step flows.
+Accessible progress bar for determinate, complete, and indeterminate tasks. Add a label externally with `aria-labelledby`, or use Meridian's integrated label helpers.
 
 ```jsx
 <Progress label="Seats used" value={4} max={5} showValue format={(v, m) => v + ' of ' + m} />
 <Progress value={92} tone="danger" label="API quota" showValue />
+<Progress aria-label="Preparing export" />
 ```
 
 ```ts
-export interface ProgressProps {
-  /** @default 0 */
-  value?: number;
-  /** @default 100 */
+export interface ProgressProps extends React.HTMLAttributes<HTMLDivElement> {
+  /** Current value. Omit or pass null for an indeterminate progress bar. */
+  value?: number | null;
+  /** Positive maximum value. @default 100 */
   max?: number;
+  /** Optional integrated label retained for Meridian consumers. */
   label?: string;
-  /** Show value right of the label (default = percent) */
+  /** Show a formatted value beside the integrated label. */
   showValue?: boolean;
   format?: (value: number, max: number) => string;
-  /** @default 'default' (ink) */
+  /** Optional semantic tone retained for Meridian consumers. @default 'default' */
   tone?: 'default' | 'warning' | 'danger';
-  style?: React.CSSProperties;
-  className?: string;
 }
-export declare function Progress(props: ProgressProps): React.JSX.Element;
+export declare const Progress: React.ForwardRefExoticComponent<ProgressProps & React.RefAttributes<HTMLDivElement>>;
 ```
 
 #### Spinner

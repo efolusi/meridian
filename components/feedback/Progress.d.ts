@@ -1,15 +1,14 @@
-export interface ProgressProps {
-  /** @default 0 */
-  value?: number;
-  /** @default 100 */
+export interface ProgressProps extends React.HTMLAttributes<HTMLDivElement> {
+  /** Current value. Omit or pass null for an indeterminate progress bar. */
+  value?: number | null;
+  /** Positive maximum value. @default 100 */
   max?: number;
+  /** Optional integrated label retained for Meridian consumers. */
   label?: string;
-  /** Show value right of the label (default = percent) */
+  /** Show a formatted value beside the integrated label. */
   showValue?: boolean;
   format?: (value: number, max: number) => string;
-  /** @default 'default' (ink) */
+  /** Optional semantic tone retained for Meridian consumers. @default 'default' */
   tone?: 'default' | 'warning' | 'danger';
-  style?: React.CSSProperties;
-  className?: string;
 }
-export declare function Progress(props: ProgressProps): React.JSX.Element;
+export declare const Progress: React.ForwardRefExoticComponent<ProgressProps & React.RefAttributes<HTMLDivElement>>;

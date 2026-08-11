@@ -65,13 +65,14 @@ export function DialogDemo() {
   );
 }
 
-// @demo Progress Determinate bar
+// @demo Progress Task completion states
 export function ProgressDemo() {
   const { Progress } = window.EfolusiDesignSystem_4ffc3d;
   return (
     <div style={{ display: 'flex', flexDirection: 'column', gap: 18, width: 340 }}>
       <Progress value={64} label="Importing rows" showValue />
       <Progress value={86} max={100} label="Monthly budget" tone="warning" showValue format={(v) => '$' + v + ' of $100'} />
+      <Progress aria-label="Preparing export" />
     </div>
   );
 }

@@ -2220,7 +2220,7 @@
       "name": "progress",
       "type": "registry:ui",
       "title": "Progress",
-      "description": "4px ink progress bar for usage meters and multi-step flows.",
+      "description": "Accessible progress bar for determinate, complete, and indeterminate tasks. Add a label externally with `aria-labelledby`, or use Meridian's integrated label helpers.",
       "dependencies": [
         "react"
       ],
