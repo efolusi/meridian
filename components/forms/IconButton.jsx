@@ -15,12 +15,12 @@ const CSS = `
 .ef-iconbtn--solid{background:var(--accent);color:var(--accent-contrast)}
 .ef-iconbtn--solid:hover:not(:disabled){background:var(--accent-hover)}
 `;
-export function IconButton({ icon, label, variant = 'quiet', size = 'md', disabled, style, className, ...rest }) {
+export const IconButton = React.forwardRef(function IconButton({ icon, label, variant = 'quiet', size = 'md', disabled, style, className, ...rest }, ref) {
   injectEfCss('ef-css-iconbtn', CSS);
   const isz = size === 'sm' ? 16 : size === 'lg' ? 20 : 18;
   return (
-    <button aria-label={label} title={label} className={`ef-iconbtn ef-iconbtn--${variant} ef-iconbtn--${size}${className ? ' ' + className : ''}`} disabled={disabled} style={style} {...rest}>
+    <button ref={ref} aria-label={label} title={label} className={`ef-iconbtn ef-iconbtn--${variant} ef-iconbtn--${size}${className ? ' ' + className : ''}`} disabled={disabled} style={style} {...rest}>
       <Icon name={icon} size={isz} />
     </button>
   );
-}
+});

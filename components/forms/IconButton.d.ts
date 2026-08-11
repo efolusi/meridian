@@ -8,4 +8,4 @@ export interface IconButtonProps extends React.ButtonHTMLAttributes<HTMLButtonEl
   /** @default 'md' */
   size?: 'sm' | 'md' | 'lg';
 }
-export declare function IconButton(props: IconButtonProps): React.JSX.Element;
+export declare const IconButton: React.ForwardRefExoticComponent<IconButtonProps & React.RefAttributes<HTMLButtonElement>>;

@@ -5,6 +5,7 @@ import userEvent from '@testing-library/user-event';
 import { Tooltip, TooltipProvider, TooltipTrigger, TooltipContent } from '../components/feedback/Tooltip.jsx';
 import { Popover, PopoverTrigger, PopoverContent, PopoverHeader, PopoverTitle, PopoverDescription } from '../components/overlay/Popover.jsx';
 import { Toggle, ToggleGroup, ToggleGroupItem } from '../components/forms/Toggle.jsx';
+import { IconButton } from '../components/forms/IconButton.jsx';
 
 describe('Tooltip composition compatibility', () => {
   it('composes provider, trigger, and content while forwarding trigger semantics', async () => {
@@ -26,6 +27,15 @@ describe('Tooltip composition compatibility', () => {
   it('supports controlled state', () => {
     render(<Tooltip open><TooltipTrigger>Inspect</TooltipTrigger><TooltipContent>Always open</TooltipContent></Tooltip>);
     expect(screen.getByRole('tooltip').textContent).toBe('Always open');
+  });
+
+  it('composes with the icon-only trigger without losing its ref', async () => {
+    const ref = React.createRef();
+    const user = userEvent.setup();
+    render(<Tooltip><TooltipTrigger asChild><IconButton ref={ref} icon="copy" label="Copy" /></TooltipTrigger><TooltipContent>Copy item</TooltipContent></Tooltip>);
+    expect(ref.current?.tagName).toBe('BUTTON');
+    await user.tab();
+    expect((await screen.findByRole('tooltip')).textContent).toBe('Copy item');
   });
 });
 
