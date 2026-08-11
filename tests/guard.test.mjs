@@ -44,6 +44,12 @@ describe('Meridian Guard rules', () => {
       import { Button } from '@efolusi/meridian/forms/Button.js';
       export const Example = () => <Button>Save</Button>;
     `)).toEqual([]);
+    expect(rules(`
+      import preset from '@efolusi/meridian/tailwind.preset.cjs';
+      import { Player, type PlayerHandle } from '@efolusi/meridian/ai/Player.js';
+      import type { DialogProps } from '@efolusi/meridian/feedback/Dialog.js';
+      export const Example = () => <Player />;
+    `)).toEqual([]);
     expect(rules('export const broken = <')).toEqual(['MDG000']);
   });
 
@@ -92,9 +98,18 @@ describe('Meridian Guard scanning and reporting', () => {
     temporaryDirectories.push(directory);
     await fs.mkdir(path.join(directory, 'src'));
     await fs.mkdir(path.join(directory, 'dist'));
+    await fs.mkdir(path.join(directory, '.next'));
+    await fs.mkdir(path.join(directory, '.turbo'));
+    await fs.mkdir(path.join(directory, '__tests__'));
     await fs.writeFile(path.join(directory, 'src', 'valid.tsx'), "import { Icon } from '@efolusi/meridian'; export const A = () => <Icon name='check' />;");
     await fs.writeFile(path.join(directory, 'src', 'invalid.jsx'), "import { Icon } from '@efolusi/meridian'; export const B = () => <Icon name='missing-icon' />;");
     await fs.writeFile(path.join(directory, 'dist', 'ignored.jsx'), 'this is not valid jsx {{{');
+    await fs.writeFile(path.join(directory, '.next', 'ignored.js'), 'this is not valid jsx {{{');
+    await fs.writeFile(path.join(directory, '.turbo', 'ignored.ts'), 'this is not valid jsx {{{');
+    await fs.writeFile(path.join(directory, '__tests__', 'ignored.jsx'), 'this is not valid jsx {{{');
+    await fs.writeFile(path.join(directory, 'ignored.test.tsx'), 'this is not valid jsx {{{');
+    await fs.writeFile(path.join(directory, 'vendor.min.mjs'), 'this is not valid jsx {{{');
+    await fs.symlink(path.join(directory, 'does-not-exist'), path.join(directory, 'broken-link'));
     const result = await guard([directory]);
     expect(result.filesScanned).toBe(2);
     expect(result.diagnostics.map(item => item.ruleId)).toEqual(['MDG002']);

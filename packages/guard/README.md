@@ -13,7 +13,12 @@ npx @efolusi/meridian-guard src pages --format json
 
 Guard exits `0` when no diagnostics are found, `1` when a contract violation is
 found, and `2` for CLI or runtime failures. Directories are scanned recursively;
-`.git`, `node_modules`, `dist`, `build`, and `coverage` are ignored.
+common dependency, framework-output, build, and coverage directories are
+ignored (`node_modules`, `.next`, `.turbo`, `.open-next`, `.wrangler`, `dist`,
+`build`, `coverage`, and their equivalents). Symbolic links are not followed,
+keeping a scan inside the requested source tree and safely skipping broken links.
+Test/spec fixtures and minified vendor scripts are also excluded because they are
+not shipped interface source.
 
 ## Rules
 

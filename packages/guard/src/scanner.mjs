@@ -5,8 +5,33 @@ import { RULES } from './rules.mjs';
 import defaultContracts from './generated/meridian-rules.json' with { type: 'json' };
 
 const SOURCE_EXTENSIONS = new Set(['.js', '.jsx', '.mjs', '.cjs', '.ts', '.tsx']);
-const IGNORED_DIRECTORIES = new Set(['.git', 'node_modules', 'dist', 'build', 'coverage']);
+const IGNORED_DIRECTORIES = new Set([
+  '.git',
+  '.next',
+  '.nuxt',
+  '.open-next',
+  '.output',
+  '.svelte-kit',
+  '.turbo',
+  '.vercel',
+  '.wrangler',
+  '__fixtures__',
+  '__tests__',
+  'build',
+  'coverage',
+  'dist',
+  'fixtures',
+  'node_modules',
+  'out',
+  'target',
+  'vendor',
+]);
 const HEX_COLOR = /#[0-9a-fA-F]{3,8}\b/g;
+
+function ignoredSourceFile(target) {
+  const name = path.basename(target);
+  return /\.min\.(?:[cm]?[jt]sx?)$/i.test(name) || /\.(?:spec|test)\.[cm]?[jt]sx?$/i.test(name);
+}
 
 function diagnostic(file, node, rule, message) {
   return {
@@ -22,14 +47,16 @@ function diagnostic(file, node, rule, message) {
 async function collectFiles(targets) {
   const files = [];
   async function visit(target) {
-    const stat = await fs.stat(target);
+    const stat = await fs.lstat(target);
+    if (stat.isSymbolicLink()) return;
     if (stat.isFile()) {
-      if (SOURCE_EXTENSIONS.has(path.extname(target))) files.push(path.resolve(target));
+      if (SOURCE_EXTENSIONS.has(path.extname(target)) && !ignoredSourceFile(target)) files.push(path.resolve(target));
       return;
     }
     if (!stat.isDirectory()) return;
     const entries = await fs.readdir(target, { withFileTypes: true });
     for (const entry of entries.sort((a, b) => a.name.localeCompare(b.name))) {
+      if (entry.isSymbolicLink()) continue;
       if (entry.isDirectory() && IGNORED_DIRECTORIES.has(entry.name)) continue;
       await visit(path.join(target, entry.name));
     }
@@ -134,12 +161,16 @@ export function scanSource(source, file, contracts) {
   for (const statement of ast.program.body) {
     if (statement.type !== 'ImportDeclaration' || !isMeridianImport(statement.source.value)) continue;
     for (const specifier of statement.specifiers) {
+      if (statement.importKind === 'type' || specifier.importKind === 'type' || specifier.importKind === 'typeof') continue;
       if (specifier.type === 'ImportNamespaceSpecifier') {
         namespaces.add(specifier.local.name);
         continue;
       }
+      const deepDefault = specifier.type === 'ImportDefaultSpecifier' && statement.source.value !== '@efolusi/meridian';
+      const deepBasename = path.basename(statement.source.value);
+      if (deepDefault && !/^[A-Z][A-Za-z0-9_$]*\.(?:jsx?|tsx?)$/.test(deepBasename)) continue;
       const imported = specifier.type === 'ImportDefaultSpecifier'
-        ? path.basename(statement.source.value).replace(/\.(?:jsx?|tsx?)$/, '')
+        ? deepBasename.replace(/\.(?:jsx?|tsx?)$/, '')
         : specifier.imported.name || specifier.imported.value;
       if (!validComponents.has(imported)) {
         diagnostics.push(diagnostic(file, specifier, RULES.unknownComponent,

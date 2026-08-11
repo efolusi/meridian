@@ -615,6 +615,14 @@
       "sourcePath": "components/forms/Radio.jsx"
     },
     {
+      "name": "RadioGroup",
+      "sourcePath": "components/forms/Radio.jsx"
+    },
+    {
+      "name": "RadioGroupItem",
+      "sourcePath": "components/forms/Radio.jsx"
+    },
+    {
       "name": "Reasoning",
       "sourcePath": "components/ai/Reasoning.jsx"
     },
@@ -703,7 +711,47 @@
       "sourcePath": "components/data/Table.jsx"
     },
     {
+      "name": "TableBody",
+      "sourcePath": "components/data/Table.jsx"
+    },
+    {
+      "name": "TableCaption",
+      "sourcePath": "components/data/Table.jsx"
+    },
+    {
+      "name": "TableCell",
+      "sourcePath": "components/data/Table.jsx"
+    },
+    {
+      "name": "TableFooter",
+      "sourcePath": "components/data/Table.jsx"
+    },
+    {
+      "name": "TableHead",
+      "sourcePath": "components/data/Table.jsx"
+    },
+    {
+      "name": "TableHeader",
+      "sourcePath": "components/data/Table.jsx"
+    },
+    {
+      "name": "TableRow",
+      "sourcePath": "components/data/Table.jsx"
+    },
+    {
       "name": "Tabs",
+      "sourcePath": "components/navigation/Tabs.jsx"
+    },
+    {
+      "name": "TabsContent",
+      "sourcePath": "components/navigation/Tabs.jsx"
+    },
+    {
+      "name": "TabsList",
+      "sourcePath": "components/navigation/Tabs.jsx"
+    },
+    {
+      "name": "TabsTrigger",
       "sourcePath": "components/navigation/Tabs.jsx"
     },
     {
