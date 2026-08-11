@@ -1,17 +1,26 @@
+import type * as React from 'react';
+
 export interface HoverCardProps {
-  /** Hover / focus target */
-  trigger: React.ReactNode;
-  /** Panel contents */
-  children: React.ReactNode;
-  /** @default 'bottom' */
-  side?: 'top' | 'bottom';
-  /** Ms before opening @default 350 */
+  open?: boolean;
+  defaultOpen?: boolean;
+  onOpenChange?: (open: boolean) => void;
+  /** Delay before a pointer opens the card. @default 700 */
   openDelay?: number;
-  /** Ms before closing @default 150 */
+  /** Delay before a pointer closes the card. @default 300 */
   closeDelay?: number;
-  /** Panel width px @default 300 */
-  width?: number;
-  style?: React.CSSProperties;
-  className?: string;
+  children?: React.ReactNode;
 }
 export declare function HoverCard(props: HoverCardProps): React.JSX.Element;
+
+export interface HoverCardTriggerProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
+  asChild?: boolean;
+}
+export declare const HoverCardTrigger: React.ForwardRefExoticComponent<HoverCardTriggerProps & React.RefAttributes<HTMLElement>>;
+
+export interface HoverCardContentProps extends React.HTMLAttributes<HTMLDivElement> {
+  align?: 'start' | 'center' | 'end';
+  side?: 'top' | 'right' | 'bottom' | 'left';
+  sideOffset?: number;
+  alignOffset?: number;
+}
+export declare const HoverCardContent: React.ForwardRefExoticComponent<HoverCardContentProps & React.RefAttributes<HTMLDivElement>>;

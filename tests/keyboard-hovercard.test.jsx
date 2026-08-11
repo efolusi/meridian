@@ -2,7 +2,7 @@ import { describe, it, expect } from 'vitest';
 import { render, screen, waitFor } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 
-import { HoverCard } from '../components/overlay/HoverCard.jsx';
+import { HoverCard, HoverCardContent, HoverCardTrigger } from '../components/overlay/HoverCard.jsx';
 import { Button } from '../components/forms/Button.jsx';
 
 // guidelines/accessibility.md: "HoverCard is a non-modal panel (no dialog role)
@@ -12,8 +12,9 @@ describe('HoverCard', () => {
   it('opens on focus without moving focus, and the panel is not a dialog', async () => {
     const user = userEvent.setup();
     render(
-      <HoverCard trigger={<Button variant="ghost">@ada</Button>}>
-        <p>Ada Lovelace</p>
+      <HoverCard>
+        <HoverCardTrigger asChild><Button variant="ghost">@ada</Button></HoverCardTrigger>
+        <HoverCardContent><p>Ada Lovelace</p></HoverCardContent>
       </HoverCard>
     );
     await user.tab();
@@ -27,8 +28,9 @@ describe('HoverCard', () => {
   it('opens on hover and closes when the pointer leaves', async () => {
     const user = userEvent.setup();
     render(
-      <HoverCard openDelay={0} closeDelay={0} trigger={<Button variant="ghost">@ada</Button>}>
-        <p>Ada Lovelace</p>
+      <HoverCard openDelay={0} closeDelay={0}>
+        <HoverCardTrigger asChild><Button variant="ghost">@ada</Button></HoverCardTrigger>
+        <HoverCardContent><p>Ada Lovelace</p></HoverCardContent>
       </HoverCard>
     );
     await user.hover(screen.getByRole('button', { name: '@ada' }));
@@ -41,8 +43,9 @@ describe('HoverCard', () => {
   it('Escape dismisses a focus-opened card and focus stays on the trigger', async () => {
     const user = userEvent.setup();
     render(
-      <HoverCard trigger={<Button variant="ghost">@ada</Button>}>
-        <p>Ada Lovelace</p>
+      <HoverCard>
+        <HoverCardTrigger asChild><Button variant="ghost">@ada</Button></HoverCardTrigger>
+        <HoverCardContent><p>Ada Lovelace</p></HoverCardContent>
       </HoverCard>
     );
     await user.tab();

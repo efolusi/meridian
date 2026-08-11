@@ -603,6 +603,14 @@
       "sourcePath": "components/overlay/HoverCard.jsx"
     },
     {
+      "name": "HoverCardContent",
+      "sourcePath": "components/overlay/HoverCard.jsx"
+    },
+    {
+      "name": "HoverCardTrigger",
+      "sourcePath": "components/overlay/HoverCard.jsx"
+    },
+    {
       "name": "Icon",
       "sourcePath": "components/icons/Icon.jsx"
     },

@@ -3519,8 +3519,8 @@
     {
       "name": "hovercard",
       "type": "registry:ui",
-      "title": "HoverCard",
-      "description": "Rich preview on hover/focus (350ms in, 150ms out). Use for people, repos, tickets \u2014 anywhere a link deserves a glance-preview.",
+      "title": "HoverCard + HoverCardTrigger + HoverCardContent",
+      "description": "Composable rich preview for supplementary information about a link or other focusable target. Use `HoverCard`, `HoverCardTrigger`, and `HoverCardContent`; use `asChild` when the trigger already supplies its own semantic element.",
       "dependencies": [
         "react"
       ],

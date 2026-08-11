@@ -1,7 +1,12 @@
-# HoverCard
+# Hover Card
 
-Rich preview on hover/focus (350ms in, 150ms out). Use for people, repos, tickets — anywhere a link deserves a glance-preview.
+Composable rich preview for supplementary information about a link or other focusable target. Use `HoverCard`, `HoverCardTrigger`, and `HoverCardContent`; use `asChild` when the trigger already supplies its own semantic element.
 
-`<HoverCard trigger={<Link>@amara</Link>} width={300}>…profile summary…</HoverCard>`
+```jsx
+<HoverCard>
+  <HoverCardTrigger asChild><a href="/people/amara">@amara</a></HoverCardTrigger>
+  <HoverCardContent align="start">…profile summary…</HoverCardContent>
+</HoverCard>
+```
 
-Content must be supplementary — never the only way to reach it. For plain text hints use Tooltip.
+Content must be supplementary, never the only way to reach information or an action. For plain text hints use Tooltip.

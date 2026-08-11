@@ -63,17 +63,20 @@ export function DrawerDemo() {
 
 // @demo HoverCard Person preview
 export function HoverCardDemo() {
-  const { HoverCard, Button, Avatar } = window.EfolusiDesignSystem_4ffc3d;
+  const { HoverCard, HoverCardTrigger, HoverCardContent, Button, Avatar } = window.EfolusiDesignSystem_4ffc3d;
   return (
-    <HoverCard width={280} trigger={<Button variant="ghost">@ada</Button>}>
-      <div style={{ display: 'flex', gap: 12 }}>
-        <Avatar name="Ada Obi" size={40} />
-        <div style={{ fontSize: 13.5 }}>
-          <div style={{ fontWeight: 600 }}>Ada Obi</div>
-          <div style={{ color: 'var(--text-muted)' }}>Owner · Acme Workspace</div>
-          <div style={{ marginTop: 6, color: 'var(--text-secondary)' }}>Shipped 12 agent runs this week.</div>
+    <HoverCard>
+      <HoverCardTrigger asChild><Button variant="ghost">@ada</Button></HoverCardTrigger>
+      <HoverCardContent align="start" style={{ width: 280 }}>
+        <div style={{ display: 'flex', gap: 12 }}>
+          <Avatar name="Ada Obi" size={40} />
+          <div style={{ fontSize: 13.5 }}>
+            <div style={{ fontWeight: 600 }}>Ada Obi</div>
+            <div style={{ color: 'var(--text-muted)' }}>Owner · Acme Workspace</div>
+            <div style={{ marginTop: 6, color: 'var(--text-secondary)' }}>Shipped 12 agent runs this week.</div>
+          </div>
         </div>
-      </div>
+      </HoverCardContent>
     </HoverCard>
   );
 }

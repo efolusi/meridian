@@ -233,12 +233,8 @@
         "message": "<FileTypeIcon> doesn't accept that prop. Declared props: ext, size, showExt, style, className."
       },
       {
-        "selector": "JSXOpeningElement[name.name='HoverCard'] > JSXAttribute > JSXIdentifier[name!=/^(?:trigger|children|side|openDelay|closeDelay|width|style|className|key|ref|className|style|children)$/]",
-        "message": "<HoverCard> doesn't accept that prop. Declared props: trigger, children, side, openDelay, closeDelay, width, style, className."
-      },
-      {
-        "selector": "JSXOpeningElement[name.name='HoverCard'] > JSXAttribute[name.name='side'] > Literal[value!=/^(?:top|bottom)$/]",
-        "message": "<HoverCard> side must be one of 'top' | 'bottom'."
+        "selector": "JSXOpeningElement[name.name='HoverCard'] > JSXAttribute > JSXIdentifier[name!=/^(?:open|defaultOpen|onOpenChange|openDelay|closeDelay|key|ref|className|style|children)$/]",
+        "message": "<HoverCard> doesn't accept that prop. Declared props: open, defaultOpen, onOpenChange, openDelay, closeDelay, children."
       },
       {
         "selector": "JSXOpeningElement[name.name='Icon'] > JSXAttribute > JSXIdentifier[name!=/^(?:name|size|strokeWidth|title|className|style|key|ref|className|style|children)$/]",
@@ -934,6 +930,12 @@
         "replaces": []
       },
       "HoverCard": {
+        "replaces": []
+      },
+      "HoverCardContent": {
+        "replaces": []
+      },
+      "HoverCardTrigger": {
         "replaces": []
       },
       "Icon": {

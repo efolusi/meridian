@@ -223,7 +223,14 @@
       "registryItems": ["site/registry/field.json"],
       "tests": ["tests/select-field-compatibility.test.jsx"]
     },
-    { "name": "Hover Card", "status": "unverified" },
+    {
+      "name": "Hover Card",
+      "status": "proven",
+      "requiredExports": ["HoverCard", "HoverCardTrigger", "HoverCardContent"],
+      "sourceFiles": ["components/overlay/HoverCard.jsx", "components/overlay/HoverCard.d.ts"],
+      "registryItems": ["site/registry/hovercard.json"],
+      "tests": ["tests/keyboard-hovercard.test.jsx", "tests/anchored-align-right.test.jsx"]
+    },
     {
       "name": "Input",
       "status": "proven",

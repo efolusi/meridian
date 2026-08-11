@@ -35,7 +35,7 @@ const PROPS = {
   Dialog: { open: true, title: 'T' },
   DonutChart: { data: [{ label: 'a', value: 1 }, { label: 'b', value: 2 }] },
   Drawer: { open: true, title: 'T' },
-  HoverCard: { content: 'tip', children: React.createElement('span', null, 'x') },
+  HoverCard: { children: React.createElement('span', null, 'x') },
   KeyValueList: { items: [{ key: 'k', value: 'v' }] },
   LineChart: { data: [{ label: 'a', value: 1 }, { label: 'b', value: 2 }] },
   Menu: { items: [{ id: 'a', label: 'A' }], trigger: React.createElement('button', null, 'Open') },

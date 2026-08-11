@@ -7,7 +7,7 @@
 </head><body style="background:var(--surface-page)">
 <div id="root"></div>
 <script type="text/babel">
-const { Menu, Popover, Drawer, CommandDialog, CommandInput, CommandList, CommandEmpty, CommandGroup, CommandItem, CommandShortcut, ContextMenu, HoverCard, Button, IconButton, Input, Select, Checkbox, Divider, Kbd, Avatar, Icon } = window.EfolusiDesignSystem_4ffc3d;
+const { Menu, Popover, Drawer, CommandDialog, CommandInput, CommandList, CommandEmpty, CommandGroup, CommandItem, CommandShortcut, ContextMenu, HoverCard, HoverCardTrigger, HoverCardContent, Button, IconButton, Input, Select, Checkbox, Divider, Kbd, Avatar, Icon } = window.EfolusiDesignSystem_4ffc3d;
 function Demo() {
   const [drawer, setDrawer] = React.useState(true);
   const [cmdk, setCmdk] = React.useState(false);
@@ -49,15 +49,18 @@ function Demo() {
       <ContextMenu onSelect={() => {}} items={[{ id: 'rename', label: 'Rename', icon: 'pencil' }, { id: 'dup', label: 'Duplicate', icon: 'copy' }, 'separator', { id: 'del', label: 'Delete', icon: 'trash-2', danger: true }]}>
         <div style={{ padding: '8px 14px', border: '1px dashed var(--border-strong)', borderRadius: 'var(--radius-sm)', fontSize: 13, color: 'var(--text-secondary)', userSelect: 'none' }}>Right-click me</div>
       </ContextMenu>
-      <HoverCard width={280} trigger={<Button variant="ghost">@ada</Button>}>
-        <div style={{ display: 'flex', gap: 12 }}>
-          <Avatar name="Ada Obi" size={40} />
-          <div style={{ fontSize: 13.5 }}>
-            <div style={{ fontWeight: 600 }}>Ada Obi</div>
-            <div style={{ color: 'var(--text-muted)' }}>Owner · Acme Workspace</div>
-            <div style={{ marginTop: 6, color: 'var(--text-secondary)' }}>Shipped 12 agent runs this week.</div>
+      <HoverCard>
+        <HoverCardTrigger asChild><Button variant="ghost">@ada</Button></HoverCardTrigger>
+        <HoverCardContent align="start" style={{ width: 280 }}>
+          <div style={{ display: 'flex', gap: 12 }}>
+            <Avatar name="Ada Obi" size={40} />
+            <div style={{ fontSize: 13.5 }}>
+              <div style={{ fontWeight: 600 }}>Ada Obi</div>
+              <div style={{ color: 'var(--text-muted)' }}>Owner · Acme Workspace</div>
+              <div style={{ marginTop: 6, color: 'var(--text-secondary)' }}>Shipped 12 agent runs this week.</div>
+            </div>
           </div>
-        </div>
+        </HoverCardContent>
       </HoverCard>
       <Drawer open={drawer} onClose={() => setDrawer(false)} title="Customer details" width={340}
         footer={<React.Fragment><Button variant="ghost" onClick={() => setDrawer(false)}>Cancel</Button><Button onClick={() => setDrawer(false)}>Save changes</Button></React.Fragment>}>

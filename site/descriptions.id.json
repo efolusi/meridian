@@ -63,7 +63,7 @@
  "Command": "Menu perintah komposabel dengan pencarian, grup, shortcut, dan navigasi keyboard penuh.",
  "ContextMenu": "Menu klik-kanan yang berlabuh di kursor. Bungkus targetnya; item berbagi bentuk item Menu.",
  "Drawer": "Panel samping untuk detail dan penyuntingan multi-field yang tak perlu meninggalkan halaman.",
- "HoverCard": "Pratinjau kaya saat hover/fokus (350ms masuk, 150ms keluar). Untuk orang, repo, tiket — di mana pun tautan layak dapat pratinjau-sekilas.",
+ "HoverCard": "Pratinjau kaya yang tersusun dari trigger dan content, dengan state terkontrol, posisi empat arah, serta interaksi hover, fokus, dan Escape.",
  "Menu": "Menu aksi dropdown pada pemicu apa pun. Item menerima ikon, petunjuk pintasan, pemisah, dan gaya danger.",
  "Popover": "Panel mengambang berlabuh untuk filter, pemilih, bantuan. Menutup saat klik di luar / ESC.",
  "AgentRun": "Jejak eksekusi vertikal: satu baris per langkah dengan status done/active/pending/error, rel penghubung, stempel waktu mono.",
