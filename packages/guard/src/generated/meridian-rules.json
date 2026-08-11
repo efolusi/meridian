@@ -431,6 +431,62 @@
       "sourcePath": "components/overlay/ContextMenu.jsx"
     },
     {
+      "name": "ContextMenuCheckboxItem",
+      "sourcePath": "components/overlay/ContextMenu.jsx"
+    },
+    {
+      "name": "ContextMenuContent",
+      "sourcePath": "components/overlay/ContextMenu.jsx"
+    },
+    {
+      "name": "ContextMenuGroup",
+      "sourcePath": "components/overlay/ContextMenu.jsx"
+    },
+    {
+      "name": "ContextMenuItem",
+      "sourcePath": "components/overlay/ContextMenu.jsx"
+    },
+    {
+      "name": "ContextMenuLabel",
+      "sourcePath": "components/overlay/ContextMenu.jsx"
+    },
+    {
+      "name": "ContextMenuPortal",
+      "sourcePath": "components/overlay/ContextMenu.jsx"
+    },
+    {
+      "name": "ContextMenuRadioGroup",
+      "sourcePath": "components/overlay/ContextMenu.jsx"
+    },
+    {
+      "name": "ContextMenuRadioItem",
+      "sourcePath": "components/overlay/ContextMenu.jsx"
+    },
+    {
+      "name": "ContextMenuSeparator",
+      "sourcePath": "components/overlay/ContextMenu.jsx"
+    },
+    {
+      "name": "ContextMenuShortcut",
+      "sourcePath": "components/overlay/ContextMenu.jsx"
+    },
+    {
+      "name": "ContextMenuSub",
+      "sourcePath": "components/overlay/ContextMenu.jsx"
+    },
+    {
+      "name": "ContextMenuSubContent",
+      "sourcePath": "components/overlay/ContextMenu.jsx"
+    },
+    {
+      "name": "ContextMenuSubTrigger",
+      "sourcePath": "components/overlay/ContextMenu.jsx"
+    },
+    {
+      "name": "ContextMenuTrigger",
+      "sourcePath": "components/overlay/ContextMenu.jsx"
+    },
+    {
       "name": "Conversation",
       "sourcePath": "components/ai/Conversation.jsx"
     },

@@ -43,7 +43,8 @@ COORDINATE_EXCEPTIONS = {
     ],
     "components/files/FileTypeIcon.jsx": ["left:50%"],
     "components/navigation/PageControl.jsx": ["left:50%"],
-    "components/overlay/ContextMenu.jsx": ["left: pos.x"],
+    # Context menus open at a physical pointer coordinate, independent of text direction.
+    "components/overlay/ContextMenu.jsx": ["left: root.point.x"],
     "components/overlay/Drawer.jsx": ["right:0", "left:0"],
     "components/overlay/Portal.jsx": [
         "left:0",

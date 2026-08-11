@@ -118,7 +118,7 @@ Authored from scratch (no source inventory existed). Namespace: `window.EfolusiD
 - `components/navigation/` — Tabs, Breadcrumbs, Pagination, SegmentedControl, PageControl, SideNav, TopNav, Steps, Menubar
 - `components/feedback/` — Dialog, ConfirmDialog, Toast (+ToastStack), Tooltip, Alert, Banner, Progress, Spinner, Loader
 - `components/data/` — Table, Stat, EmptyState, Skeleton, BarChart, LineChart, DonutChart, Sparkline, KeyValueList, StatusDot
-- `components/overlay/` — Menu, Popover, Drawer, Command (+Dialog, +Input, +List, +Empty, +Group, +Item, +Shortcut, +Separator), ContextMenu, HoverCard (+Trigger, +Content), Portal
+- `components/overlay/` — Menu, Popover, Drawer, Command (+Dialog, +Input, +List, +Empty, +Group, +Item, +Shortcut, +Separator), composable ContextMenu, HoverCard (+Trigger, +Content), Portal
 - `components/ai/` — ChatMessage, PromptComposer, RichComposer, Reasoning, ToolCall, AgentRun, Task, Todo, Confirmation, Conversation, Citation (+SourceList), SourceCard, Suggestions, PromptSteps, SelectionQuote, Marker, ModelSelector, UsageMeter, FeedbackBar, DocumentCard, GeneratedImage, Sandbox, WebPreview, Player, Transcript
 - `components/code/` — CodeBlock, Terminal, CopyField, Diff, Console, Exception, EnvList
 - `components/files/` — Attachment (compound family), FileDrop, FileTile, FileTypeIcon

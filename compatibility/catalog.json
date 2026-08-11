@@ -184,7 +184,14 @@
       "registryItems": ["site/registry/command.json"],
       "tests": ["tests/command-compatibility.test.jsx", "tests/keyboard-command.test.jsx"]
     },
-    { "name": "Context Menu", "status": "unverified" },
+    {
+      "name": "Context Menu",
+      "status": "proven",
+      "requiredExports": ["ContextMenu", "ContextMenuTrigger", "ContextMenuContent", "ContextMenuItem", "ContextMenuCheckboxItem", "ContextMenuRadioItem", "ContextMenuLabel", "ContextMenuSeparator", "ContextMenuShortcut", "ContextMenuGroup", "ContextMenuPortal", "ContextMenuSub", "ContextMenuSubContent", "ContextMenuSubTrigger", "ContextMenuRadioGroup"],
+      "sourceFiles": ["components/overlay/ContextMenu.jsx", "components/overlay/ContextMenu.d.ts"],
+      "registryItems": ["site/registry/contextmenu.json"],
+      "tests": ["tests/keyboard-contextmenu.test.jsx"]
+    },
     { "name": "Data Table", "status": "unverified" },
     {
       "name": "Date Picker",

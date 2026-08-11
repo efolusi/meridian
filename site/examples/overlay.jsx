@@ -29,15 +29,24 @@ export function CommandDemo() {
 
 // @demo ContextMenu Right-click actions
 export function ContextMenuDemo() {
-  const { ContextMenu } = window.EfolusiDesignSystem_4ffc3d;
+  const { ContextMenu, ContextMenuTrigger, ContextMenuContent, ContextMenuItem, ContextMenuCheckboxItem, ContextMenuSeparator, ContextMenuShortcut, ContextMenuSub, ContextMenuSubTrigger, ContextMenuSubContent } = window.EfolusiDesignSystem_4ffc3d;
   return (
-    <ContextMenu onSelect={() => {}} items={[
-      { id: 'rename', label: 'Rename', icon: 'pencil' },
-      { id: 'dup', label: 'Duplicate', icon: 'copy', kbd: '⌘D' },
-      'separator',
-      { id: 'del', label: 'Delete', icon: 'trash-2', danger: true },
-    ]}>
-      <div style={{ padding: '26px 44px', border: '1px dashed var(--border-strong)', borderRadius: 'var(--radius-md)', fontSize: 13.5, color: 'var(--text-secondary)', userSelect: 'none' }}>Right-click me</div>
+    <ContextMenu>
+      <ContextMenuTrigger asChild><div tabIndex={0} style={{ padding: '26px 44px', border: '1px dashed var(--border-strong)', borderRadius: 'var(--radius-md)', fontSize: 13.5, color: 'var(--text-secondary)', userSelect: 'none' }}>Right-click project</div></ContextMenuTrigger>
+      <ContextMenuContent>
+        <ContextMenuItem>Rename<ContextMenuShortcut>F2</ContextMenuShortcut></ContextMenuItem>
+        <ContextMenuItem>Duplicate<ContextMenuShortcut>⌘D</ContextMenuShortcut></ContextMenuItem>
+        <ContextMenuCheckboxItem defaultChecked>Pin to sidebar</ContextMenuCheckboxItem>
+        <ContextMenuSub>
+          <ContextMenuSubTrigger>Move to workspace</ContextMenuSubTrigger>
+          <ContextMenuSubContent>
+            <ContextMenuItem>Operations</ContextMenuItem>
+            <ContextMenuItem>Research</ContextMenuItem>
+          </ContextMenuSubContent>
+        </ContextMenuSub>
+        <ContextMenuSeparator />
+        <ContextMenuItem variant="destructive">Delete</ContextMenuItem>
+      </ContextMenuContent>
     </ContextMenu>
   );
 }

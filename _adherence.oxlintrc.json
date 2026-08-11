@@ -803,6 +803,48 @@
       "ContextMenu": {
         "replaces": []
       },
+      "ContextMenuCheckboxItem": {
+        "replaces": []
+      },
+      "ContextMenuContent": {
+        "replaces": []
+      },
+      "ContextMenuGroup": {
+        "replaces": []
+      },
+      "ContextMenuItem": {
+        "replaces": []
+      },
+      "ContextMenuLabel": {
+        "replaces": []
+      },
+      "ContextMenuPortal": {
+        "replaces": []
+      },
+      "ContextMenuRadioGroup": {
+        "replaces": []
+      },
+      "ContextMenuRadioItem": {
+        "replaces": []
+      },
+      "ContextMenuSeparator": {
+        "replaces": []
+      },
+      "ContextMenuShortcut": {
+        "replaces": []
+      },
+      "ContextMenuSub": {
+        "replaces": []
+      },
+      "ContextMenuSubContent": {
+        "replaces": []
+      },
+      "ContextMenuSubTrigger": {
+        "replaces": []
+      },
+      "ContextMenuTrigger": {
+        "replaces": []
+      },
       "Conversation": {
         "replaces": []
       },

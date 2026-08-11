@@ -7,7 +7,7 @@
 </head><body style="background:var(--surface-page)">
 <div id="root"></div>
 <script type="text/babel">
-const { Menu, Popover, Drawer, CommandDialog, CommandInput, CommandList, CommandEmpty, CommandGroup, CommandItem, CommandShortcut, ContextMenu, HoverCard, HoverCardTrigger, HoverCardContent, Button, IconButton, Input, Select, Checkbox, Divider, Kbd, Avatar, Icon } = window.EfolusiDesignSystem_4ffc3d;
+const { Menu, Popover, Drawer, CommandDialog, CommandInput, CommandList, CommandEmpty, CommandGroup, CommandItem, CommandShortcut, ContextMenu, ContextMenuTrigger, ContextMenuContent, ContextMenuItem, ContextMenuCheckboxItem, ContextMenuSeparator, ContextMenuShortcut, ContextMenuSub, ContextMenuSubTrigger, ContextMenuSubContent, HoverCard, HoverCardTrigger, HoverCardContent, Button, IconButton, Input, Select, Checkbox, Divider, Kbd, Avatar, Icon } = window.EfolusiDesignSystem_4ffc3d;
 function Demo() {
   const [drawer, setDrawer] = React.useState(true);
   const [cmdk, setCmdk] = React.useState(false);
@@ -46,8 +46,16 @@ function Demo() {
           </CommandGroup>
         </CommandList>
       </CommandDialog>
-      <ContextMenu onSelect={() => {}} items={[{ id: 'rename', label: 'Rename', icon: 'pencil' }, { id: 'dup', label: 'Duplicate', icon: 'copy' }, 'separator', { id: 'del', label: 'Delete', icon: 'trash-2', danger: true }]}>
-        <div style={{ padding: '8px 14px', border: '1px dashed var(--border-strong)', borderRadius: 'var(--radius-sm)', fontSize: 13, color: 'var(--text-secondary)', userSelect: 'none' }}>Right-click me</div>
+      <ContextMenu>
+        <ContextMenuTrigger asChild><div tabIndex={0} style={{ padding: '8px 14px', border: '1px dashed var(--border-strong)', borderRadius: 'var(--radius-sm)', fontSize: 13, color: 'var(--text-secondary)', userSelect: 'none' }}>Right-click project</div></ContextMenuTrigger>
+        <ContextMenuContent>
+          <ContextMenuItem>Rename<ContextMenuShortcut>F2</ContextMenuShortcut></ContextMenuItem>
+          <ContextMenuItem>Duplicate<ContextMenuShortcut>⌘D</ContextMenuShortcut></ContextMenuItem>
+          <ContextMenuCheckboxItem defaultChecked>Pin to sidebar</ContextMenuCheckboxItem>
+          <ContextMenuSub><ContextMenuSubTrigger>Move to workspace</ContextMenuSubTrigger><ContextMenuSubContent><ContextMenuItem>Operations</ContextMenuItem><ContextMenuItem>Research</ContextMenuItem></ContextMenuSubContent></ContextMenuSub>
+          <ContextMenuSeparator />
+          <ContextMenuItem variant="destructive">Delete</ContextMenuItem>
+        </ContextMenuContent>
       </ContextMenu>
       <HoverCard>
         <HoverCardTrigger asChild><Button variant="ghost">@ada</Button></HoverCardTrigger>

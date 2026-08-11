@@ -31,7 +31,7 @@ const PROPS = {
   Citation: { n: 1 },
   CommandDialog: { open: true, title: 'Commands' },
   ConfirmDialog: { open: true, title: 'T' },
-  ContextMenu: { items: [{ id: 'a', label: 'A' }], children: React.createElement('div') },
+  ContextMenu: { children: React.createElement('div') },
   Dialog: { open: true, title: 'T' },
   DonutChart: { data: [{ label: 'a', value: 1 }, { label: 'b', value: 2 }] },
   Drawer: { open: true, title: 'T' },

@@ -3456,8 +3456,8 @@
     {
       "name": "contextmenu",
       "type": "registry:ui",
-      "title": "ContextMenu",
-      "description": "Right-click menu anchored at the cursor. Wrap the target; items share the Menu item shape.",
+      "title": "ContextMenu + ContextMenuTrigger + ContextMenuPortal + ContextMenuContent + ContextMenuGroup + ContextMenuLabel + ContextMenuSeparator + ContextMenuShortcut + ContextMenuItem + ContextMenuCheckboxItem + ContextMenuRadioGroup + ContextMenuRadioItem + ContextMenuSub + ContextMenuSubTrigger + ContextMenuSubContent",
+      "description": "Composable right-click menu with items, checkbox and radio choices, groups, labels, shortcuts, separators, and nested submenus.",
       "dependencies": [
         "react"
       ],
