@@ -47,6 +47,9 @@ similarity.
 
 ## Proven adapters
 
+- `AspectRatio` requires an explicit numeric ratio and supports landscape,
+  square, and portrait media, native wrapper props, consumer styles, ref
+  forwarding, types, registry installation, demos, and tests.
 - `Button` and `buttonVariants` support the complete public variant and size
   matrices, documented defaults, semantic-link styling, native button props,
   events, disabled behavior, ref forwarding, types, registry installation,

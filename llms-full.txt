@@ -1782,14 +1782,12 @@ Locks children to a fixed ratio box (fills width). Use for media, embeds, map pl
 `<AspectRatio ratio={16/9}><img style={{width:"100%",height:"100%",objectFit:"cover"}} … /></AspectRatio>`
 
 ```ts
-export interface AspectRatioProps {
-  /** width / height @default 16/9 */
-  ratio?: number;
+export interface AspectRatioProps extends React.HTMLAttributes<HTMLDivElement> {
+  /** Required width / height ratio. */
+  ratio: number;
   children?: React.ReactNode;
-  style?: React.CSSProperties;
-  className?: string;
 }
-export declare function AspectRatio(props: AspectRatioProps): React.JSX.Element;
+export declare const AspectRatio: React.ForwardRefExoticComponent<AspectRatioProps & React.RefAttributes<HTMLDivElement>>;
 ```
 
 #### Avatar

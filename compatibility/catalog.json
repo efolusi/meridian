@@ -6,7 +6,17 @@
     { "name": "Accordion", "status": "unverified" },
     { "name": "Alert", "status": "unverified" },
     { "name": "Alert Dialog", "status": "unverified" },
-    { "name": "Aspect Ratio", "status": "unverified" },
+    {
+      "name": "Aspect Ratio",
+      "status": "proven",
+      "requiredExports": ["AspectRatio"],
+      "sourceFiles": [
+        "components/display/AspectRatio.jsx",
+        "components/display/AspectRatio.d.ts"
+      ],
+      "registryItems": ["site/registry/aspectratio.json"],
+      "tests": ["tests/aspect-ratio-compatibility.test.jsx"]
+    },
     {
       "name": "Attachment",
       "status": "proven",

@@ -13,12 +13,12 @@
     {
       "path": "components/display/AspectRatio.jsx",
       "type": "registry:ui",
-      "content": "import React from 'react';\nexport function AspectRatio({ ratio = 16 / 9, children, style, className, ...rest }) {\n  return (\n    <div {...rest} className={className} style={{ position: 'relative', width: '100%', aspectRatio: String(Math.round(ratio * 1000) / 1000), ...style }}>\n      <div style={{ position: 'absolute', inset: 0 }}>{children}</div>\n    </div>\n  );\n}\n"
+      "content": "import React from 'react';\nexport const AspectRatio = React.forwardRef(function AspectRatio({ ratio, children, style, className, ...rest }, ref) {\n  return (\n    <div ref={ref} {...rest} className={className} style={{ position: 'relative', width: '100%', aspectRatio: String(Math.round(ratio * 1000) / 1000), ...style }}>\n      <div style={{ position: 'absolute', inset: 0 }}>{children}</div>\n    </div>\n  );\n});\n"
     },
     {
       "path": "components/display/AspectRatio.d.ts",
       "type": "registry:component",
-      "content": "export interface AspectRatioProps {\n  /** width / height @default 16/9 */\n  ratio?: number;\n  children?: React.ReactNode;\n  style?: React.CSSProperties;\n  className?: string;\n}\nexport declare function AspectRatio(props: AspectRatioProps): React.JSX.Element;\n"
+      "content": "export interface AspectRatioProps extends React.HTMLAttributes<HTMLDivElement> {\n  /** Required width / height ratio. */\n  ratio: number;\n  children?: React.ReactNode;\n}\nexport declare const AspectRatio: React.ForwardRefExoticComponent<AspectRatioProps & React.RefAttributes<HTMLDivElement>>;\n"
     },
     {
       "path": "components/display/AspectRatio.prompt.md",

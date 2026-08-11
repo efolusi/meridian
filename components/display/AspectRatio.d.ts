@@ -1,8 +1,6 @@
-export interface AspectRatioProps {
-  /** width / height @default 16/9 */
-  ratio?: number;
+export interface AspectRatioProps extends React.HTMLAttributes<HTMLDivElement> {
+  /** Required width / height ratio. */
+  ratio: number;
   children?: React.ReactNode;
-  style?: React.CSSProperties;
-  className?: string;
 }
-export declare function AspectRatio(props: AspectRatioProps): React.JSX.Element;
+export declare const AspectRatio: React.ForwardRefExoticComponent<AspectRatioProps & React.RefAttributes<HTMLDivElement>>;
