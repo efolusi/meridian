@@ -2,7 +2,7 @@
   "name": "portal",
   "type": "registry:ui",
   "title": "Portal",
-  "description": "Escape hatch for floating content: renders children into `document.body` so no ancestor's `overflow` can clip them. Menu, Popover, Tooltip, HoverCard, ContextMenu, Combobox and composed calendar pickers all sit on it.",
+  "description": "Escape hatch for floating content: renders children into `document.body` so no ancestor's `overflow` can clip them. DropdownMenu, Popover, Tooltip, HoverCard, ContextMenu, Combobox and composed calendar pickers all sit on it.",
   "dependencies": [
     "react"
   ],
@@ -24,7 +24,7 @@
     {
       "path": "components/overlay/Portal.prompt.md",
       "type": "registry:component",
-      "content": "Escape hatch for floating content: renders children into `document.body` so no ancestor's `overflow` can clip them. Menu, Popover, Tooltip, HoverCard, ContextMenu, Combobox and composed calendar pickers all sit on it.\n\nReach for it when you build your own floating surface. If you are placing that surface against a trigger, position it in viewport coordinates rather than `position:absolute`, or it will drift when an ancestor scrolls.\n\n```jsx\n<Portal>\n  <div style={{ position: 'fixed', top: 120, left: 80, zIndex: 'var(--z-popover)' }}>\n    Floating, and never clipped.\n  </div>\n</Portal>\n```\n"
+      "content": "Escape hatch for floating content: renders children into `document.body` so no ancestor's `overflow` can clip them. DropdownMenu, Popover, Tooltip, HoverCard, ContextMenu, Combobox and composed calendar pickers all sit on it.\n\nReach for it when you build your own floating surface. If you are placing that surface against a trigger, position it in viewport coordinates rather than `position:absolute`, or it will drift when an ancestor scrolls.\n\n```jsx\n<Portal>\n  <div style={{ position: 'fixed', top: 120, left: 80, zIndex: 'var(--z-popover)' }}>\n    Floating, and never clipped.\n  </div>\n</Portal>\n```\n"
     }
   ],
   "categories": [

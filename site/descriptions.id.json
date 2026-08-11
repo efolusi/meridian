@@ -64,7 +64,7 @@
  "ContextMenu": "Menu klik-kanan composable dengan item, checkbox, radio, grup, shortcut, separator, serta submenu bertingkat.",
  "Drawer": "Panel samping untuk detail dan penyuntingan multi-field yang tak perlu meninggalkan halaman.",
  "HoverCard": "Pratinjau kaya yang tersusun dari trigger dan content, dengan state terkontrol, posisi empat arah, serta interaksi hover, fokus, dan Escape.",
- "Menu": "Menu aksi dropdown pada pemicu apa pun. Item menerima ikon, petunjuk pintasan, pemisah, dan gaya danger.",
+ "DropdownMenu": "Menu aksi composable dengan trigger, item, checkbox, radio, grup, shortcut, separator, serta submenu bertingkat.",
  "Popover": "Panel mengambang berlabuh untuk filter, pemilih, bantuan. Menutup saat klik di luar / ESC.",
  "AgentRun": "Jejak eksekusi vertikal: satu baris per langkah dengan status done/active/pending/error, rel penghubung, stempel waktu mono.",
  "ChatMessage": "Pesan thread-agen: chip bot atau avatar pengguna, baris meta, aksi salin/ulang saat hover, caret streaming.",

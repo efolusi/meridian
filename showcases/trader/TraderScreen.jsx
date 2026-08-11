@@ -1,4 +1,6 @@
-const { Stat, Sparkline, BarChart, SegmentedControl, Table, Badge, Switch, Slider, Progress, Avatar, Card, Button, StatusDot, Divider, Icon, Menu, IconButton, Toaster } = window.EfolusiDesignSystem_4ffc3d;
+const { Stat, Sparkline, BarChart, SegmentedControl, Table, Badge, Switch, Slider, Progress, Avatar, Card, Button, StatusDot, Divider, Icon, DropdownMenu, DropdownMenuTrigger, DropdownMenuContent, DropdownMenuItem, DropdownMenuSeparator, IconButton, Toaster } = window.EfolusiDesignSystem_4ffc3d;
+
+function PositionActionMenu({ trigger, items, onSelect }) { return <DropdownMenu><DropdownMenuTrigger asChild>{trigger}</DropdownMenuTrigger><DropdownMenuContent align="end">{items.map((item, index) => item === 'separator' ? <DropdownMenuSeparator key={'separator-' + index} /> : <DropdownMenuItem key={item.id} variant={item.danger ? 'destructive' : 'default'} onSelect={() => onSelect?.(item.id)}>{item.icon ? <Icon name={item.icon} size={15} /> : null}{item.label}</DropdownMenuItem>)}</DropdownMenuContent></DropdownMenu>; }
 
 const SERIES = { '24h': [98, 99, 97, 101, 103, 102, 105, 104, 107, 106, 109, 112], '7d': [88, 92, 90, 95, 93, 99, 104, 101, 106, 110, 108, 112], '30d': [72, 78, 75, 82, 86, 84, 90, 95, 92, 101, 107, 112] };
 const POSITIONS = [
@@ -50,7 +52,7 @@ function TraderScreen() {
               { key: 'mark', label: 'Mark', numeric: true, align: 'right' },
               { key: 'pnl', label: 'P&L (€)', numeric: true, align: 'right', render: (v, r) => <span style={{ color: r.up ? 'var(--success-600)' : 'var(--danger-600)', fontFamily: 'var(--font-mono)', fontSize: 13 }}>{v}</span> },
               { key: 'spark', label: '', width: 100, render: (v, r) => <Sparkline data={v} width={84} height={24} direction={r.up ? 'up' : 'down'} /> },
-              { key: 'menu', label: '', width: 44, render: (v, r) => <Menu align="right" trigger={<IconButton icon="ellipsis" label="More" size="sm" />} onSelect={id => { if (id === 'close') { setPositions(ps => ps.filter(p => p.id !== r.id)); notify('Position closed', 'info'); } else notify('Order ticket opened'); }} items={[{ id: 'ticket', label: 'Adjust position', icon: 'pencil' }, 'separator', { id: 'close', label: 'Close position', icon: 'x', danger: true }]} /> },
+              { key: 'menu', label: '', width: 44, render: (v, r) => <PositionActionMenu trigger={<IconButton icon="ellipsis" label="More" size="sm" />} onSelect={id => { if (id === 'close') { setPositions(ps => ps.filter(p => p.id !== r.id)); notify('Position closed', 'info'); } else notify('Order ticket opened'); }} items={[{ id: 'ticket', label: 'Adjust position', icon: 'pencil' }, 'separator', { id: 'close', label: 'Close position', icon: 'x', danger: true }]} /> },
             ]} rows={positions} />
           </Card>
           <div style={{ flex: 1, display: 'flex', flexDirection: 'column', gap: 16 }}>

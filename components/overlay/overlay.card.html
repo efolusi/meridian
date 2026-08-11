@@ -1,4 +1,4 @@
-<!-- @dsCard group="Components" viewport="700x520" name="Overlay" subtitle="Menu, Popover, Drawer, Command, ContextMenu, HoverCard" -->
+<!-- @dsCard group="Components" viewport="700x520" name="Overlay" subtitle="DropdownMenu, Popover, Drawer, Command, ContextMenu, HoverCard" -->
 <!DOCTYPE html><html><head><meta charset="utf-8"><link rel="stylesheet" href="../../styles.css">
 <script src="https://unpkg.com/react@18.3.1/umd/react.production.min.js" integrity="sha384-DGyLxAyjq0f9SPpVevD6IgztCFlnMF6oW/XQGmfe+IsZ8TqEiDrcHkMLKI6fiB/Z" crossorigin="anonymous"></script>
 <script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.production.min.js" integrity="sha384-gTGxhz21lVGYNMcdJOyq01Edg0jhn/c22nsx0kyqP0TxaV5WVdsSH1fSDUf5YJj1" crossorigin="anonymous"></script>
@@ -7,20 +7,15 @@
 </head><body style="background:var(--surface-page)">
 <div id="root"></div>
 <script type="text/babel">
-const { Menu, Popover, Drawer, CommandDialog, CommandInput, CommandList, CommandEmpty, CommandGroup, CommandItem, CommandShortcut, ContextMenu, ContextMenuTrigger, ContextMenuContent, ContextMenuItem, ContextMenuCheckboxItem, ContextMenuSeparator, ContextMenuShortcut, ContextMenuSub, ContextMenuSubTrigger, ContextMenuSubContent, HoverCard, HoverCardTrigger, HoverCardContent, Button, IconButton, Input, Select, Checkbox, Divider, Kbd, Avatar, Icon } = window.EfolusiDesignSystem_4ffc3d;
+const { DropdownMenu, DropdownMenuTrigger, DropdownMenuContent, DropdownMenuItem, DropdownMenuSeparator, DropdownMenuShortcut, Popover, Drawer, CommandDialog, CommandInput, CommandList, CommandEmpty, CommandGroup, CommandItem, CommandShortcut, ContextMenu, ContextMenuTrigger, ContextMenuContent, ContextMenuItem, ContextMenuCheckboxItem, ContextMenuSeparator, ContextMenuShortcut, ContextMenuSub, ContextMenuSubTrigger, ContextMenuSubContent, HoverCard, HoverCardTrigger, HoverCardContent, Button, IconButton, Input, Select, Checkbox, Divider, Kbd, Avatar, Icon } = window.EfolusiDesignSystem_4ffc3d;
 function Demo() {
   const [drawer, setDrawer] = React.useState(true);
   const [cmdk, setCmdk] = React.useState(false);
   return (
     <div style={{ padding: 20, display: 'flex', gap: 12, alignItems: 'flex-start', flexWrap: 'wrap' }}>
-      <Menu trigger={<Button variant="secondary" iconRight="chevron-down">Actions</Button>} onSelect={() => {}}
-        items={[
-          { id: 'edit', label: 'Edit', icon: 'pencil' },
-          { id: 'copy', label: 'Duplicate', icon: 'copy', kbd: '⌘D' },
-          { id: 'export', label: 'Export CSV', icon: 'download' },
-          'separator',
-          { id: 'delete', label: 'Delete', icon: 'trash-2', danger: true },
-        ]} />
+      <DropdownMenu><DropdownMenuTrigger asChild><Button variant="secondary" iconRight="chevron-down">Actions</Button></DropdownMenuTrigger><DropdownMenuContent align="start">
+        <DropdownMenuItem>Edit</DropdownMenuItem><DropdownMenuItem>Duplicate<DropdownMenuShortcut>⌘D</DropdownMenuShortcut></DropdownMenuItem><DropdownMenuItem>Export CSV</DropdownMenuItem><DropdownMenuSeparator /><DropdownMenuItem variant="destructive">Delete</DropdownMenuItem>
+      </DropdownMenuContent></DropdownMenu>
       <Popover trigger={<Button variant="secondary" iconLeft="funnel">Filter</Button>} width={260}>
         <div style={{ display: 'flex', flexDirection: 'column', gap: 12 }}>
           <Select label="Plan" size="sm" options={['Any', 'Starter', 'Growth', 'Scale']} />

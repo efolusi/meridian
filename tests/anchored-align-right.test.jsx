@@ -2,7 +2,7 @@ import { describe, it, expect } from 'vitest';
 import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 
-import { Menu } from '../components/overlay/Menu.jsx';
+import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from '../components/overlay/DropdownMenu.jsx';
 import { Button } from '../components/forms/Button.jsx';
 
 // An align="right" panel opened at the far right of the viewport landed against
@@ -22,7 +22,7 @@ import { join } from 'node:path';
 
 describe('anchored panels, align="right"', () => {
   it('does not pin panel edges in CSS, for any anchored overlay', () => {
-    for (const file of ['Menu', 'Popover', 'HoverCard']) {
+    for (const file of ['DropdownMenu', 'Popover', 'HoverCard']) {
       const src = readFileSync(join(process.cwd(), 'components', 'overlay', `${file}.jsx`), 'utf8');
       const css = src.slice(src.indexOf('const CSS = `'), src.indexOf('`;'));
       const offenders = [...css.matchAll(/__panel--(?:left|right|top|bottom)\s*\{[^}]*\b(?:left|right|top|bottom)\s*:/g)];
@@ -32,15 +32,11 @@ describe('anchored panels, align="right"', () => {
 
   it('pins right/bottom to auto so the panel is never stretched between both edges', async () => {
     render(
-      <Menu
-        align="right"
-        trigger={<Button>Manage</Button>}
-        items={[{ id: 'a', label: 'Suspend account' }]}
-      />,
+      <DropdownMenu><DropdownMenuTrigger asChild><Button>Manage</Button></DropdownMenuTrigger><DropdownMenuContent align="end"><DropdownMenuItem>Suspend account</DropdownMenuItem></DropdownMenuContent></DropdownMenu>,
     );
     await userEvent.click(screen.getByRole('button', { name: 'Manage' }));
     const panel = screen.getByRole('menu');
-    expect(panel.className).toContain('ef-menu__panel--right');
+    expect(panel.getAttribute('data-align')).toBe('end');
     expect(panel.style.right, 'the class sets right: 0; the inline style must win').toBe('auto');
     expect(panel.style.bottom).toBe('auto');
     expect(panel.style.position).toBe('fixed');

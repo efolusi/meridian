@@ -90,17 +90,15 @@ export function HoverCardDemo() {
   );
 }
 
-// @demo Menu Dropdown actions
-export function MenuDemo() {
-  const { Menu, Button } = window.EfolusiDesignSystem_4ffc3d;
+// @demo DropdownMenu Composable actions
+export function DropdownMenuDemo() {
+  const { DropdownMenu, DropdownMenuTrigger, DropdownMenuContent, DropdownMenuItem, DropdownMenuSeparator, DropdownMenuShortcut, Button } = window.EfolusiDesignSystem_4ffc3d;
   return (
-    <Menu trigger={<Button variant="secondary" iconRight="chevron-down">Actions</Button>} onSelect={() => {}} items={[
-      { id: 'edit', label: 'Edit', icon: 'pencil', kbd: '⌘E' },
-      { id: 'dup', label: 'Duplicate', icon: 'copy' },
-      'separator',
-      { id: 'archive', label: 'Archive', icon: 'inbox' },
-      { id: 'del', label: 'Delete', icon: 'trash-2', danger: true },
-    ]} />
+    <DropdownMenu><DropdownMenuTrigger asChild><Button variant="secondary" iconRight="chevron-down">Actions</Button></DropdownMenuTrigger><DropdownMenuContent align="start">
+      <DropdownMenuItem>Edit<DropdownMenuShortcut>⌘E</DropdownMenuShortcut></DropdownMenuItem>
+      <DropdownMenuItem>Duplicate</DropdownMenuItem><DropdownMenuSeparator />
+      <DropdownMenuItem>Archive</DropdownMenuItem><DropdownMenuItem variant="destructive">Delete</DropdownMenuItem>
+    </DropdownMenuContent></DropdownMenu>
   );
 }
 

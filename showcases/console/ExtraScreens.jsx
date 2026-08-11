@@ -1,4 +1,6 @@
-const { Card, Badge, Button, Icon, IconButton, Avatar, AvatarGroup, Stat, BarChart, Progress, Table, EmptyState, Menu, KeyValueList } = window.EfolusiDesignSystem_4ffc3d;
+const { Card, Badge, Button, Icon, IconButton, Avatar, AvatarGroup, Stat, BarChart, Progress, Table, EmptyState, DropdownMenu, DropdownMenuTrigger, DropdownMenuContent, DropdownMenuItem, DropdownMenuSeparator, DropdownMenuShortcut, KeyValueList } = window.EfolusiDesignSystem_4ffc3d;
+
+function ProjectActionMenu({ trigger, items, onSelect, align = 'end' }) { return <DropdownMenu><DropdownMenuTrigger asChild>{trigger}</DropdownMenuTrigger><DropdownMenuContent align={align}>{items.map((item, index) => item === 'separator' ? <DropdownMenuSeparator key={'separator-' + index} /> : <DropdownMenuItem key={item.id} disabled={item.disabled} variant={item.danger ? 'destructive' : 'default'} onSelect={() => { onSelect?.(item.id); item.onClick?.(); }}>{item.icon ? <Icon name={item.icon} size={15} /> : null}{item.label}{item.kbd ? <DropdownMenuShortcut>{item.kbd}</DropdownMenuShortcut> : null}</DropdownMenuItem>)}</DropdownMenuContent></DropdownMenu>; }
 
 const PROJECTS = [
   ['Q3 launch plan', 'AI agents', '2 hours ago', ['Ada Obi', 'Femi Alade'], 'busy'],
@@ -18,7 +20,7 @@ function ProjectsScreen({ onNewProject, notify }) {
           <Card key={name} interactive padding={18} onClick={() => notify('Opening ' + name, 'Projects are a demo surface in this kit.')}>
             <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
               <span style={{ fontSize: 15, fontWeight: 600, flex: 1 }}>{name}</span>
-              <Menu align="right" trigger={<IconButton icon="ellipsis" label="More" size="sm" />} onSelect={id => notify(id === 'archive' ? 'Project archived' : 'Link copied', name)} items={[
+              <ProjectActionMenu trigger={<IconButton icon="ellipsis" label="More" size="sm" />} onSelect={id => notify(id === 'archive' ? 'Project archived' : 'Link copied', name)} items={[
                 { id: 'copy', label: 'Copy link', icon: 'link' },
                 { id: 'archive', label: 'Archive', icon: 'package', danger: true },
               ]} />

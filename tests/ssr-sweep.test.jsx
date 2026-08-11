@@ -38,7 +38,7 @@ const PROPS = {
   HoverCard: { children: React.createElement('span', null, 'x') },
   KeyValueList: { items: [{ key: 'k', value: 'v' }] },
   LineChart: { data: [{ label: 'a', value: 1 }, { label: 'b', value: 2 }] },
-  Menu: { items: [{ id: 'a', label: 'A' }], trigger: React.createElement('button', null, 'Open') },
+  DropdownMenu: { children: React.createElement('span', null, 'Menu') },
   Menubar: { menus: [{ label: 'File', items: [{ id: 'n', label: 'New' }] }] },
   PageControl: { count: 3 },
   Pagination: { page: 1, pageCount: 3 },

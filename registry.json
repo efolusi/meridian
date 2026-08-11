@@ -3517,6 +3517,38 @@
       ]
     },
     {
+      "name": "dropdownmenu",
+      "type": "registry:ui",
+      "title": "DropdownMenu + DropdownMenuTrigger + DropdownMenuPortal + DropdownMenuContent + DropdownMenuGroup + DropdownMenuLabel + DropdownMenuSeparator + DropdownMenuShortcut + DropdownMenuItem + DropdownMenuCheckboxItem + DropdownMenuRadioGroup + DropdownMenuRadioItem + DropdownMenuSub + DropdownMenuSubTrigger + DropdownMenuSubContent",
+      "description": "Composable action menu for a button or other trigger. Supports items, checkbox and radio choices, labels, groups, separators, shortcuts, and nested submenus.",
+      "dependencies": [
+        "react"
+      ],
+      "registryDependencies": [
+        "https://meridian.efolusi.com/site/registry/meridian-base.json",
+        "https://meridian.efolusi.com/site/registry/button.json",
+        "https://meridian.efolusi.com/site/registry/icon.json",
+        "https://meridian.efolusi.com/site/registry/portal.json"
+      ],
+      "files": [
+        {
+          "path": "components/overlay/DropdownMenu.jsx",
+          "type": "registry:ui"
+        },
+        {
+          "path": "components/overlay/DropdownMenu.d.ts",
+          "type": "registry:component"
+        },
+        {
+          "path": "components/overlay/DropdownMenu.prompt.md",
+          "type": "registry:component"
+        }
+      ],
+      "categories": [
+        "overlay"
+      ]
+    },
+    {
       "name": "hovercard",
       "type": "registry:ui",
       "title": "HoverCard + HoverCardTrigger + HoverCardContent",
@@ -3540,38 +3572,6 @@
         },
         {
           "path": "components/overlay/HoverCard.prompt.md",
-          "type": "registry:component"
-        }
-      ],
-      "categories": [
-        "overlay"
-      ]
-    },
-    {
-      "name": "menu",
-      "type": "registry:ui",
-      "title": "Menu",
-      "description": "Dropdown action menu on any trigger. Items take icons, shortcut hints, separators, and a danger style.",
-      "dependencies": [
-        "react"
-      ],
-      "registryDependencies": [
-        "https://meridian.efolusi.com/site/registry/meridian-base.json",
-        "https://meridian.efolusi.com/site/registry/button.json",
-        "https://meridian.efolusi.com/site/registry/icon.json",
-        "https://meridian.efolusi.com/site/registry/portal.json"
-      ],
-      "files": [
-        {
-          "path": "components/overlay/Menu.jsx",
-          "type": "registry:ui"
-        },
-        {
-          "path": "components/overlay/Menu.d.ts",
-          "type": "registry:component"
-        },
-        {
-          "path": "components/overlay/Menu.prompt.md",
           "type": "registry:component"
         }
       ],
@@ -3614,7 +3614,7 @@
       "name": "portal",
       "type": "registry:ui",
       "title": "Portal",
-      "description": "Escape hatch for floating content: renders children into `document.body` so no ancestor's `overflow` can clip them. Menu, Popover, Tooltip, HoverCard, ContextMenu, Combobox and composed calendar pickers all sit on it.",
+      "description": "Escape hatch for floating content: renders children into `document.body` so no ancestor's `overflow` can clip them. DropdownMenu, Popover, Tooltip, HoverCard, ContextMenu, Combobox and composed calendar pickers all sit on it.",
       "dependencies": [
         "react"
       ],

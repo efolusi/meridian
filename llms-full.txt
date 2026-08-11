@@ -4165,6 +4165,71 @@ export interface DrawerProps {
 export declare const Drawer: React.ForwardRefExoticComponent<DrawerProps & React.RefAttributes<HTMLDivElement>>;
 ```
 
+#### DropdownMenu
+
+Group: overlay · Source: /components/overlay/DropdownMenu.jsx · Exports: DropdownMenu, DropdownMenuTrigger, DropdownMenuPortal, DropdownMenuContent, DropdownMenuGroup, DropdownMenuLabel, DropdownMenuSeparator, DropdownMenuShortcut, DropdownMenuItem, DropdownMenuCheckboxItem, DropdownMenuRadioGroup, DropdownMenuRadioItem, DropdownMenuSub, DropdownMenuSubTrigger, DropdownMenuSubContent
+
+# Dropdown Menu
+
+Composable action menu for a button or other trigger. Supports items, checkbox and radio choices, labels, groups, separators, shortcuts, and nested submenus.
+
+```jsx
+<DropdownMenu>
+  <DropdownMenuTrigger asChild><Button>Actions</Button></DropdownMenuTrigger>
+  <DropdownMenuContent align="end">
+    <DropdownMenuItem>Duplicate<DropdownMenuShortcut>⌘D</DropdownMenuShortcut></DropdownMenuItem>
+    <DropdownMenuSeparator />
+    <DropdownMenuItem variant="destructive">Delete</DropdownMenuItem>
+  </DropdownMenuContent>
+</DropdownMenu>
+```
+
+```ts
+import type * as React from 'react';
+
+export interface DropdownMenuProps {
+  open?: boolean;
+  defaultOpen?: boolean;
+  onOpenChange?: (open: boolean) => void;
+  modal?: boolean;
+  children?: React.ReactNode;
+}
+export declare function DropdownMenu(props: DropdownMenuProps): React.JSX.Element;
+
+export interface DropdownMenuTriggerProps extends React.HTMLAttributes<HTMLElement> { asChild?: boolean; disabled?: boolean; }
+export declare const DropdownMenuTrigger: React.ForwardRefExoticComponent<DropdownMenuTriggerProps & React.RefAttributes<HTMLElement>>;
+
+export interface DropdownMenuPortalProps { children?: React.ReactNode; container?: HTMLElement | null; }
+export declare function DropdownMenuPortal(props: DropdownMenuPortalProps): React.JSX.Element;
+
+export interface DropdownMenuContentProps extends React.HTMLAttributes<HTMLDivElement> { loop?: boolean; align?: 'start' | 'center' | 'end'; side?: 'top' | 'right' | 'bottom' | 'left'; sideOffset?: number; alignOffset?: number; onCloseAutoFocus?: (event: { defaultPrevented: boolean; preventDefault(): void }) => void; }
+export declare const DropdownMenuContent: React.ForwardRefExoticComponent<DropdownMenuContentProps & React.RefAttributes<HTMLDivElement>>;
+
+export declare const DropdownMenuGroup: React.ForwardRefExoticComponent<React.HTMLAttributes<HTMLDivElement> & React.RefAttributes<HTMLDivElement>>;
+export interface DropdownMenuLabelProps extends React.HTMLAttributes<HTMLDivElement> { inset?: boolean; }
+export declare const DropdownMenuLabel: React.ForwardRefExoticComponent<DropdownMenuLabelProps & React.RefAttributes<HTMLDivElement>>;
+export declare const DropdownMenuSeparator: React.ForwardRefExoticComponent<React.HTMLAttributes<HTMLDivElement> & React.RefAttributes<HTMLDivElement>>;
+export declare const DropdownMenuShortcut: React.ForwardRefExoticComponent<React.HTMLAttributes<HTMLSpanElement> & React.RefAttributes<HTMLSpanElement>>;
+
+export interface DropdownMenuItemProps extends React.ButtonHTMLAttributes<HTMLButtonElement> { inset?: boolean; variant?: 'default' | 'destructive'; onSelect?: (event: React.SyntheticEvent) => void; }
+export declare const DropdownMenuItem: React.ForwardRefExoticComponent<DropdownMenuItemProps & React.RefAttributes<HTMLButtonElement>>;
+
+export interface DropdownMenuCheckboxItemProps extends Omit<DropdownMenuItemProps, 'onCheckedChange'> { checked?: boolean; defaultChecked?: boolean; onCheckedChange?: (checked: boolean) => void; }
+export declare const DropdownMenuCheckboxItem: React.ForwardRefExoticComponent<DropdownMenuCheckboxItemProps & React.RefAttributes<HTMLButtonElement>>;
+
+export interface DropdownMenuRadioGroupProps extends React.HTMLAttributes<HTMLDivElement> { value?: string; defaultValue?: string; onValueChange?: (value: string) => void; }
+export declare function DropdownMenuRadioGroup(props: DropdownMenuRadioGroupProps): React.JSX.Element;
+export interface DropdownMenuRadioItemProps extends DropdownMenuItemProps { value: string; }
+export declare const DropdownMenuRadioItem: React.ForwardRefExoticComponent<DropdownMenuRadioItemProps & React.RefAttributes<HTMLButtonElement>>;
+
+export interface DropdownMenuSubProps { open?: boolean; defaultOpen?: boolean; onOpenChange?: (open: boolean) => void; children?: React.ReactNode; }
+export declare function DropdownMenuSub(props: DropdownMenuSubProps): React.JSX.Element;
+export interface DropdownMenuSubTriggerProps extends DropdownMenuItemProps {}
+export declare const DropdownMenuSubTrigger: React.ForwardRefExoticComponent<DropdownMenuSubTriggerProps & React.RefAttributes<HTMLButtonElement>>;
+export interface DropdownMenuSubContentProps extends React.HTMLAttributes<HTMLDivElement> { sideOffset?: number; alignOffset?: number; loop?: boolean; }
+export declare const DropdownMenuSubContent: React.ForwardRefExoticComponent<DropdownMenuSubContentProps & React.RefAttributes<HTMLDivElement>>;
+```
+
 #### HoverCard
 
 Group: overlay · Source: /components/overlay/HoverCard.jsx · Exports: HoverCard, HoverCardTrigger, HoverCardContent
@@ -4209,49 +4274,6 @@ export interface HoverCardContentProps extends React.HTMLAttributes<HTMLDivEleme
   alignOffset?: number;
 }
 export declare const HoverCardContent: React.ForwardRefExoticComponent<HoverCardContentProps & React.RefAttributes<HTMLDivElement>>;
-```
-
-#### Menu
-
-Group: overlay · Source: /components/overlay/Menu.jsx · Exports: Menu
-
-Dropdown action menu on any trigger. Items take icons, shortcut hints, separators, and a danger style.
-
-```jsx
-<Menu align="right" onSelect={handle} trigger={<IconButton icon="ellipsis" label="More" />}
-  items={[
-    { id: 'edit', label: 'Edit', icon: 'pencil' },
-    { id: 'copy', label: 'Duplicate', icon: 'copy', kbd: '⌘D' },
-    'separator',
-    { id: 'delete', label: 'Delete', icon: 'trash-2', danger: true },
-  ]} />
-```
-
-```ts
-export interface MenuItem {
-  id: string;
-  label: React.ReactNode;
-  /** Lucide icon name */
-  icon?: string;
-  /** Red destructive styling */
-  danger?: boolean;
-  disabled?: boolean;
-  /** Shortcut hint, e.g. "⌘D" */
-  kbd?: string;
-  onClick?: () => void;
-}
-export interface MenuProps {
-  /** The element that toggles the menu (Button, IconButton, …) */
-  trigger: React.ReactNode;
-  /** Items; the string 'separator' inserts a rule */
-  items: Array<MenuItem | 'separator'>;
-  onSelect?: (id: string) => void;
-  /** Panel edge alignment @default 'left' */
-  align?: 'left' | 'right';
-  style?: React.CSSProperties;
-  className?: string;
-}
-export declare const Menu: React.ForwardRefExoticComponent<MenuProps & React.RefAttributes<HTMLSpanElement>>;
 ```
 
 #### Popover
@@ -4300,7 +4322,7 @@ export declare const PopoverDescription: React.ForwardRefExoticComponent<React.H
 
 Group: overlay · Source: /components/overlay/Portal.jsx · Exports: Portal
 
-Escape hatch for floating content: renders children into `document.body` so no ancestor's `overflow` can clip them. Menu, Popover, Tooltip, HoverCard, ContextMenu, Combobox and composed calendar pickers all sit on it.
+Escape hatch for floating content: renders children into `document.body` so no ancestor's `overflow` can clip them. DropdownMenu, Popover, Tooltip, HoverCard, ContextMenu, Combobox and composed calendar pickers all sit on it.
 
 Reach for it when you build your own floating surface. If you are placing that surface against a trigger, position it in viewport coordinates rather than `position:absolute`, or it will drift when an ancestor scrolls.
 

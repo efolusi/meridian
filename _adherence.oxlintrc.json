@@ -1079,7 +1079,49 @@
       "MarkerIcon": {
         "replaces": []
       },
-      "Menu": {
+      "DropdownMenu": {
+        "replaces": []
+      },
+      "DropdownMenuCheckboxItem": {
+        "replaces": []
+      },
+      "DropdownMenuContent": {
+        "replaces": []
+      },
+      "DropdownMenuGroup": {
+        "replaces": []
+      },
+      "DropdownMenuItem": {
+        "replaces": []
+      },
+      "DropdownMenuLabel": {
+        "replaces": []
+      },
+      "DropdownMenuPortal": {
+        "replaces": []
+      },
+      "DropdownMenuRadioGroup": {
+        "replaces": []
+      },
+      "DropdownMenuRadioItem": {
+        "replaces": []
+      },
+      "DropdownMenuSeparator": {
+        "replaces": []
+      },
+      "DropdownMenuShortcut": {
+        "replaces": []
+      },
+      "DropdownMenuSub": {
+        "replaces": []
+      },
+      "DropdownMenuSubContent": {
+        "replaces": []
+      },
+      "DropdownMenuSubTrigger": {
+        "replaces": []
+      },
+      "DropdownMenuTrigger": {
         "replaces": []
       },
       "Menubar": {

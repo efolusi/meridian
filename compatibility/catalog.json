@@ -216,7 +216,14 @@
       "tests": ["tests/direction.test.jsx"]
     },
     { "name": "Drawer", "status": "unverified" },
-    { "name": "Dropdown Menu", "status": "unverified" },
+    {
+      "name": "Dropdown Menu",
+      "status": "proven",
+      "requiredExports": ["DropdownMenu", "DropdownMenuPortal", "DropdownMenuTrigger", "DropdownMenuContent", "DropdownMenuGroup", "DropdownMenuLabel", "DropdownMenuItem", "DropdownMenuCheckboxItem", "DropdownMenuRadioGroup", "DropdownMenuRadioItem", "DropdownMenuSeparator", "DropdownMenuShortcut", "DropdownMenuSub", "DropdownMenuSubTrigger", "DropdownMenuSubContent"],
+      "sourceFiles": ["components/overlay/DropdownMenu.jsx", "components/overlay/DropdownMenu.d.ts"],
+      "registryItems": ["site/registry/dropdownmenu.json"],
+      "tests": ["tests/keyboard.test.jsx", "tests/anchored-align-right.test.jsx"]
+    },
     {
       "name": "Empty", "status": "proven",
       "requiredExports": ["Empty", "EmptyHeader", "EmptyMedia", "EmptyTitle", "EmptyDescription", "EmptyContent"],

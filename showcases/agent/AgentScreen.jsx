@@ -1,4 +1,6 @@
-const { ChatMessage, PromptComposer, Terminal, Steps, FileTile, StatusDot, KeyValueList, CommandDialog, CommandInput, CommandList, CommandEmpty, CommandGroup, CommandItem, Menu, Card, Button, IconButton, Badge, Kbd, Icon, Toaster } = window.EfolusiDesignSystem_4ffc3d;
+const { ChatMessage, PromptComposer, Terminal, Steps, FileTile, StatusDot, KeyValueList, CommandDialog, CommandInput, CommandList, CommandEmpty, CommandGroup, CommandItem, DropdownMenu, DropdownMenuTrigger, DropdownMenuContent, DropdownMenuItem, DropdownMenuSeparator, Card, Button, IconButton, Badge, Kbd, Icon, Toaster } = window.EfolusiDesignSystem_4ffc3d;
+
+function AgentActionMenu({ trigger, items, onSelect }) { return <DropdownMenu><DropdownMenuTrigger asChild>{trigger}</DropdownMenuTrigger><DropdownMenuContent align="end">{items.map((item, index) => item === 'separator' ? <DropdownMenuSeparator key={'separator-' + index} /> : <DropdownMenuItem key={item.id} variant={item.danger ? 'destructive' : 'default'} onSelect={() => onSelect?.(item.id)}>{item.icon ? <Icon name={item.icon} size={15} /> : null}{item.label}</DropdownMenuItem>)}</DropdownMenuContent></DropdownMenu>; }
 
 function AgentHeader({ running, onToggle, notify }) {
   return (
@@ -13,7 +15,7 @@ function AgentHeader({ running, onToggle, notify }) {
       <div style={{ marginLeft: 'auto', display: 'flex', alignItems: 'center', gap: 8 }}>
         <span style={{ display: 'inline-flex', alignItems: 'center', gap: 5, fontSize: 12, color: 'var(--text-muted)' }}><Kbd>⌘</Kbd><Kbd>K</Kbd></span>
         <Button size="sm" variant="secondary" iconLeft={running ? 'pause' : 'play'} onClick={onToggle}>{running ? 'Pause' : 'Resume'}</Button>
-        <Menu align="right" trigger={<IconButton icon="ellipsis" label="More" size="sm" />} onSelect={id => notify(id === 'rerun' ? 'Re-running task' : id === 'export' ? 'Transcript exported' : 'Task stopped', id === 'stop' ? 'Everything is logged up to this point.' : 'Done.')} items={[
+        <AgentActionMenu trigger={<IconButton icon="ellipsis" label="More" size="sm" />} onSelect={id => notify(id === 'rerun' ? 'Re-running task' : id === 'export' ? 'Transcript exported' : 'Task stopped', id === 'stop' ? 'Everything is logged up to this point.' : 'Done.')} items={[
           { id: 'rerun', label: 'Re-run from start', icon: 'refresh-cw' },
           { id: 'export', label: 'Export transcript', icon: 'download' },
           'separator',

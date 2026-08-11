@@ -1,4 +1,6 @@
-const { Card, Badge, Button, Input, NativeSelect, NativeSelectOption, Checkbox, Avatar, IconButton, Tag, Menu, Pagination, Drawer, KeyValueList, Dialog, Sparkline, Field, FieldLabel } = window.EfolusiDesignSystem_4ffc3d;
+const { Card, Badge, Button, Input, NativeSelect, NativeSelectOption, Checkbox, Avatar, Icon, IconButton, Tag, DropdownMenu, DropdownMenuTrigger, DropdownMenuContent, DropdownMenuItem, DropdownMenuSeparator, Pagination, Drawer, KeyValueList, Dialog, Sparkline, Field, FieldLabel } = window.EfolusiDesignSystem_4ffc3d;
+
+function CustomerActionMenu({ trigger, items, onSelect, align = 'start' }) { return <DropdownMenu><DropdownMenuTrigger asChild>{trigger}</DropdownMenuTrigger><DropdownMenuContent align={align}>{items.map((item, index) => item === 'separator' ? <DropdownMenuSeparator key={'separator-' + index} /> : <DropdownMenuItem key={item.id} disabled={item.disabled} variant={item.danger ? 'destructive' : 'default'} onSelect={() => { onSelect?.(item.id); item.onClick?.(); }}>{item.icon ? <Icon name={item.icon} size={15} /> : null}{item.label}</DropdownMenuItem>)}</DropdownMenuContent></DropdownMenu>; }
 
 const SEED = [
   ['Acme Robotics', 'ada@acmerobotics.com', 'Growth', 'Active', '$1,240', 'AI agents'],
@@ -38,7 +40,7 @@ function CustomersScreen({ notify }) {
       <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
         <div style={{ width: 280 }}><Input size="sm" placeholder="Search customers…" iconLeft="search" value={q} onChange={e => setQ(e.target.value)} /></div>
         <NativeSelect size="sm" value={plan} onChange={e => setPlan(e.target.value)} aria-label="Plan filter" style={{ width: 130 }}>{['All plans', 'Starter', 'Growth', 'Scale'].map(value => <NativeSelectOption key={value} value={value}>{value}</NativeSelectOption>)}</NativeSelect>
-        <Menu trigger={<Tag icon="funnel" onClick={() => {}}>{status}</Tag>} items={STATUSES.map(s => ({ id: s, label: s, icon: s === status ? 'check' : undefined }))} onSelect={setStatus} />
+        <CustomerActionMenu trigger={<Tag icon="funnel" onClick={() => {}}>{status}</Tag>} items={STATUSES.map(s => ({ id: s, label: s, icon: s === status ? 'check' : undefined }))} onSelect={setStatus} />
         <div style={{ marginLeft: 'auto', display: 'flex', gap: 8, alignItems: 'center' }}>
           {checked.length > 0 && <Button size="sm" variant="secondary" iconLeft="mail" onClick={() => { notify('Email drafted', checked.length + ' recipients added to the draft.'); setChecked([]); }}>Email {checked.length} selected</Button>}
           <Button size="sm" iconLeft="plus" onClick={() => setAdding(true)}>Add customer</Button>
@@ -65,7 +67,7 @@ function CustomersScreen({ notify }) {
                 <td style={{ ...td, fontFamily: 'var(--font-mono)', fontSize: 13 }} onClick={() => setSel(r)}>{r.mrr}</td>
                 <td style={td} onClick={() => setSel(r)}><span style={{ fontSize: 13, color: 'var(--text-secondary)' }}>{r.product}</span></td>
                 <td style={td} onClick={e => e.stopPropagation()}>
-                  <Menu align="right" trigger={<IconButton icon="ellipsis" label="More" size="sm" />} onSelect={id => { if (id === 'view') setSel(r); if (id === 'email') notify('Email drafted', 'To ' + r.email); if (id === 'churn') markChurned(r.id); }} items={[
+                  <CustomerActionMenu align="end" trigger={<IconButton icon="ellipsis" label="More" size="sm" />} onSelect={id => { if (id === 'view') setSel(r); if (id === 'email') notify('Email drafted', 'To ' + r.email); if (id === 'churn') markChurned(r.id); }} items={[
                     { id: 'view', label: 'View details', icon: 'external-link' },
                     { id: 'email', label: 'Email customer', icon: 'mail' },
                     'separator',

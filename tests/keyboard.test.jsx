@@ -3,7 +3,7 @@ import { render, screen, within } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 
 import { Dialog } from '../components/feedback/Dialog.jsx';
-import { Menu } from '../components/overlay/Menu.jsx';
+import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from '../components/overlay/DropdownMenu.jsx';
 import { Tabs } from '../components/navigation/Tabs.jsx';
 import { Calendar } from '../components/dates/Calendar.jsx';
 import { Button } from '../components/forms/Button.jsx';
@@ -38,16 +38,14 @@ describe('Dialog', () => {
   });
 });
 
-describe('Menu', () => {
-  const items = [
-    { id: 'rename', label: 'Rename' },
-    { id: 'duplicate', label: 'Duplicate' },
-    { id: 'delete', label: 'Delete' },
-  ];
+describe('DropdownMenu', () => {
+  function DropdownTestMenu() {
+    return <DropdownMenu><DropdownMenuTrigger asChild><Button>More</Button></DropdownMenuTrigger><DropdownMenuContent><DropdownMenuItem>Rename</DropdownMenuItem><DropdownMenuItem>Duplicate</DropdownMenuItem><DropdownMenuItem>Delete</DropdownMenuItem></DropdownMenuContent></DropdownMenu>;
+  }
 
   it('opens on ArrowDown and focuses the first item', async () => {
     const user = userEvent.setup();
-    render(<Menu trigger={<Button>More</Button>} items={items} onSelect={() => {}} />);
+    render(<DropdownTestMenu />);
     await user.tab();
     await user.keyboard('{ArrowDown}');
     const menu = await screen.findByRole('menu');
@@ -56,7 +54,7 @@ describe('Menu', () => {
 
   it('moves with arrows and wraps', async () => {
     const user = userEvent.setup();
-    render(<Menu trigger={<Button>More</Button>} items={items} onSelect={() => {}} />);
+    render(<DropdownTestMenu />);
     await user.tab();
     await user.keyboard('{ArrowDown}');
     await user.keyboard('{ArrowDown}');
@@ -67,7 +65,7 @@ describe('Menu', () => {
 
   it('jumps to an item by typeahead', async () => {
     const user = userEvent.setup();
-    render(<Menu trigger={<Button>More</Button>} items={items} onSelect={() => {}} />);
+    render(<DropdownTestMenu />);
     await user.tab();
     await user.keyboard('{ArrowDown}');
     await user.keyboard('d');
@@ -78,7 +76,7 @@ describe('Menu', () => {
     const user = userEvent.setup();
     const { container } = render(
       <div style={{ overflow: 'auto' }}>
-        <Menu trigger={<Button>More</Button>} items={items} onSelect={() => {}} />
+        <DropdownTestMenu />
       </div>
     );
     await user.click(screen.getByRole('button', { name: 'More' }));

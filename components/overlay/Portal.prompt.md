@@ -1,4 +1,4 @@
-Escape hatch for floating content: renders children into `document.body` so no ancestor's `overflow` can clip them. Menu, Popover, Tooltip, HoverCard, ContextMenu, Combobox and composed calendar pickers all sit on it.
+Escape hatch for floating content: renders children into `document.body` so no ancestor's `overflow` can clip them. DropdownMenu, Popover, Tooltip, HoverCard, ContextMenu, Combobox and composed calendar pickers all sit on it.
 
 Reach for it when you build your own floating surface. If you are placing that surface against a trigger, position it in viewport coordinates rather than `position:absolute`, or it will drift when an ancestor scrolls.
 

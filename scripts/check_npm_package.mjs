@@ -16,7 +16,7 @@ const dist = p => pathToFileURL(path.join(ROOT, 'dist', p)).href;
 const renderable = v => typeof v === 'function' || (v && typeof v === 'object' && v.$$typeof);
 
 const MUST_EXPORT = [
-  'Button', 'Input', 'Field', 'FieldLabel', 'Table', 'Toaster', 'Menu', 'Checkbox',
+  'Button', 'Input', 'Field', 'FieldLabel', 'Table', 'Toaster', 'DropdownMenu', 'Checkbox',
   'Dialog', 'Portal', 'Tooltip', 'Combobox',
 ];
 

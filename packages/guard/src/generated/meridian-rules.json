@@ -559,6 +559,66 @@
       "sourcePath": "components/overlay/Drawer.jsx"
     },
     {
+      "name": "DropdownMenu",
+      "sourcePath": "components/overlay/DropdownMenu.jsx"
+    },
+    {
+      "name": "DropdownMenuCheckboxItem",
+      "sourcePath": "components/overlay/DropdownMenu.jsx"
+    },
+    {
+      "name": "DropdownMenuContent",
+      "sourcePath": "components/overlay/DropdownMenu.jsx"
+    },
+    {
+      "name": "DropdownMenuGroup",
+      "sourcePath": "components/overlay/DropdownMenu.jsx"
+    },
+    {
+      "name": "DropdownMenuItem",
+      "sourcePath": "components/overlay/DropdownMenu.jsx"
+    },
+    {
+      "name": "DropdownMenuLabel",
+      "sourcePath": "components/overlay/DropdownMenu.jsx"
+    },
+    {
+      "name": "DropdownMenuPortal",
+      "sourcePath": "components/overlay/DropdownMenu.jsx"
+    },
+    {
+      "name": "DropdownMenuRadioGroup",
+      "sourcePath": "components/overlay/DropdownMenu.jsx"
+    },
+    {
+      "name": "DropdownMenuRadioItem",
+      "sourcePath": "components/overlay/DropdownMenu.jsx"
+    },
+    {
+      "name": "DropdownMenuSeparator",
+      "sourcePath": "components/overlay/DropdownMenu.jsx"
+    },
+    {
+      "name": "DropdownMenuShortcut",
+      "sourcePath": "components/overlay/DropdownMenu.jsx"
+    },
+    {
+      "name": "DropdownMenuSub",
+      "sourcePath": "components/overlay/DropdownMenu.jsx"
+    },
+    {
+      "name": "DropdownMenuSubContent",
+      "sourcePath": "components/overlay/DropdownMenu.jsx"
+    },
+    {
+      "name": "DropdownMenuSubTrigger",
+      "sourcePath": "components/overlay/DropdownMenu.jsx"
+    },
+    {
+      "name": "DropdownMenuTrigger",
+      "sourcePath": "components/overlay/DropdownMenu.jsx"
+    },
+    {
       "name": "Empty",
       "sourcePath": "components/data/EmptyState.jsx"
     },
@@ -797,10 +857,6 @@
     {
       "name": "MarkerIcon",
       "sourcePath": "components/ai/Marker.jsx"
-    },
-    {
-      "name": "Menu",
-      "sourcePath": "components/overlay/Menu.jsx"
     },
     {
       "name": "Menubar",
