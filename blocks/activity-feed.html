@@ -9,7 +9,7 @@
 <div id="root"></div>
 <script type="text/babel">
 
-const { Card, Avatar, Badge, Icon } = window.EfolusiDesignSystem_4ffc3d;
+const { Card, CardContent, CardHeader, CardTitle, Avatar, Badge, Icon } = window.EfolusiDesignSystem_4ffc3d;
 const EVENTS = [
   ['Femi Alade', 'rotated the production API key', '2m ago', 'lock', null],
   ['June Park', 'invited sam@acme.co as Admin', '18m ago', 'mail', null],
@@ -20,7 +20,7 @@ const EVENTS = [
 function Block() {
   return (
     <section className="bk-sec" style={{ padding: '40px 48px', maxWidth: 640, margin: '0 auto' }}>
-      <Card padding={8} title="Activity">
+      <Card style={{ '--card-spacing': '8px' }}><CardHeader><CardTitle>Activity</CardTitle></CardHeader><CardContent>
         {EVENTS.map(([who, what, when, icon, badge], i) => (
           <div key={i} style={{ display: 'flex', gap: 12, alignItems: 'flex-start', padding: '10px 12px', borderTop: i ? '1px solid var(--border-default)' : 'none' }}>
             <span style={{ display: 'inline-flex', width: 28, height: 28, alignItems: 'center', justifyContent: 'center', flex: 'none', borderRadius: 'var(--radius-full)', background: 'var(--surface-sunken)', color: 'var(--text-secondary)' }}><Icon name={icon} size={14} /></span>
@@ -31,7 +31,7 @@ function Block() {
             {badge && <Badge tone={badge[0]}>{badge[1]}</Badge>}
           </div>
         ))}
-      </Card>
+      </CardContent></Card>
     </section>
   );
 }

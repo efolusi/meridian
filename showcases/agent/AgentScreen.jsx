@@ -1,4 +1,4 @@
-const { ChatMessage, PromptComposer, Terminal, Steps, FileTile, StatusDot, KeyValueList, CommandDialog, CommandInput, CommandList, CommandEmpty, CommandGroup, CommandItem, DropdownMenu, DropdownMenuTrigger, DropdownMenuContent, DropdownMenuItem, DropdownMenuSeparator, Card, Button, IconButton, Badge, Kbd, Icon, Toaster, toast } = window.EfolusiDesignSystem_4ffc3d;
+const { ChatMessage, PromptComposer, Terminal, Steps, FileTile, StatusDot, KeyValueList, CommandDialog, CommandInput, CommandList, CommandEmpty, CommandGroup, CommandItem, DropdownMenu, DropdownMenuTrigger, DropdownMenuContent, DropdownMenuItem, DropdownMenuSeparator, Card, CardContent, CardDescription, CardHeader, CardTitle, Button, IconButton, Badge, Kbd, Icon, Toaster, toast } = window.EfolusiDesignSystem_4ffc3d;
 
 function AgentActionMenu({ trigger, items, onSelect }) { return <DropdownMenu><DropdownMenuTrigger asChild>{trigger}</DropdownMenuTrigger><DropdownMenuContent align="end">{items.map((item, index) => item === 'separator' ? <DropdownMenuSeparator key={'separator-' + index} /> : <DropdownMenuItem key={item.id} variant={item.danger ? 'destructive' : 'default'} onSelect={() => onSelect?.(item.id)}>{item.icon ? <Icon name={item.icon} size={15} /> : null}{item.label}</DropdownMenuItem>)}</DropdownMenuContent></DropdownMenu>; }
 
@@ -29,28 +29,31 @@ function AgentHeader({ running, onToggle, notify }) {
 function TaskRail({ running }) {
   return (
     <aside style={{ width: 304, flex: 'none', borderLeft: '1px solid var(--border-default)', overflowY: 'auto', padding: 16, display: 'flex', flexDirection: 'column', gap: 14 }}>
-      <Card title="Task" subtitle="4 steps planned">
-        <Steps current={2} items={[
+      <Card>
+        <CardHeader><CardTitle>Task</CardTitle><CardDescription>4 steps planned</CardDescription></CardHeader>
+        <CardContent><Steps current={2} items={[
           { title: 'Connect to pg-prod-eu', description: 'Read-only session' },
           { title: 'Find failed deliveries', description: '12 found · all 503s' },
           { title: 'Retry in batches', description: 'Batch 2 of 3 running' },
           { title: 'Report + close' },
-        ]} />
+        ]} /></CardContent>
       </Card>
-      <Card title="Context">
-        <div style={{ display: 'flex', flexDirection: 'column', gap: 8 }}>
+      <Card>
+        <CardHeader><CardTitle>Context</CardTitle></CardHeader>
+        <CardContent><div style={{ display: 'flex', flexDirection: 'column', gap: 8 }}>
           <FileTile name="webhook-log.csv" size="82 KB" style={{ padding: '6px 8px' }} />
           <FileTile name="retry-policy.md" size="3 KB" style={{ padding: '6px 8px' }} />
-        </div>
+        </div></CardContent>
       </Card>
-      <Card title="Run">
-        <div style={{ marginBottom: 8 }}><StatusDot status={running ? 'busy' : 'off'} pulse={running} label={running ? 'Agent active' : 'Paused by you'} /></div>
+      <Card>
+        <CardHeader><CardTitle>Run</CardTitle></CardHeader>
+        <CardContent><div style={{ marginBottom: 8 }}><StatusDot status={running ? 'busy' : 'off'} pulse={running} label={running ? 'Agent active' : 'Paused by you'} /></div>
         <KeyValueList labelWidth={88} items={[
           { label: 'Model', value: 'efolusi-1' },
           { label: 'Tokens', value: '48.1k', mono: true },
           { label: 'Cost', value: '$0.42', mono: true },
           { label: 'Started', value: '14:02', mono: true },
-        ]} />
+        ]} /></CardContent>
       </Card>
     </aside>
   );

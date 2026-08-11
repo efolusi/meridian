@@ -1,4 +1,4 @@
-const { Banner, Stat, Sparkline, SegmentedControl, Table, StatusDot, Drawer, DrawerContent, DrawerHeader, DrawerTitle, DrawerDescription, DrawerFooter, DrawerClose, KeyValueList, CopyField, Terminal, Dialog, DialogClose, DialogContent, DialogDescription, DialogFooter, DialogHeader, DialogTitle, Card, Button, NativeSelect, NativeSelectOption, Field, FieldLabel, Input, Badge, Icon, Toaster, toast } = window.EfolusiDesignSystem_4ffc3d;
+const { Banner, Stat, Sparkline, SegmentedControl, Table, StatusDot, Drawer, DrawerContent, DrawerHeader, DrawerTitle, DrawerDescription, DrawerFooter, DrawerClose, KeyValueList, CopyField, Terminal, Dialog, DialogClose, DialogContent, DialogDescription, DialogFooter, DialogHeader, DialogTitle, Card, CardContent, Button, NativeSelect, NativeSelectOption, Field, FieldLabel, Input, Badge, Icon, Toaster, toast } = window.EfolusiDesignSystem_4ffc3d;
 
 const RESOURCES = [
   { id: 'pg', name: 'pg-prod-eu', kind: 'PostgreSQL', icon: 'database', region: 'eu-west-1', status: 'ok', latency: '38 ms' },
@@ -43,10 +43,10 @@ function InfraScreen() {
             </div>
           </div>
           <div style={{ display: 'flex', gap: 16, marginTop: 22 }}>
-            <Card padding={16} style={{ flex: 1 }}><Stat label="Connected resources" value="14" hint="5 kinds · 3 regions" /></Card>
-            <Card padding={16} style={{ flex: 1 }}><Stat label="Uptime · 90 days" value="99.98%" delta="0.01pt" direction="up" /></Card>
-            <Card padding={16} style={{ flex: 1 }}><Stat label="P50 latency" value="38 ms" delta="6 ms" direction="down" /><Sparkline data={[52, 49, 51, 47, 44, 46, 41, 40, 42, 38]} direction="up" width={150} style={{ marginTop: 10 }} /></Card>
-            <Card padding={16} style={{ flex: 1 }}><Stat label="Open incidents" value="1" hint="worker-04 · degraded" /></Card>
+            <Card style={{ flex: 1, '--card-spacing': '16px' }}><CardContent><Stat label="Connected resources" value="14" hint="5 kinds · 3 regions" /></CardContent></Card>
+            <Card style={{ flex: 1, '--card-spacing': '16px' }}><CardContent><Stat label="Uptime · 90 days" value="99.98%" delta="0.01pt" direction="up" /></CardContent></Card>
+            <Card style={{ flex: 1, '--card-spacing': '16px' }}><CardContent><Stat label="P50 latency" value="38 ms" delta="6 ms" direction="down" /><Sparkline data={[52, 49, 51, 47, 44, 46, 41, 40, 42, 38]} direction="up" width={150} style={{ marginTop: 10 }} /></CardContent></Card>
+            <Card style={{ flex: 1, '--card-spacing': '16px' }}><CardContent><Stat label="Open incidents" value="1" hint="worker-04 · degraded" /></CardContent></Card>
           </div>
           <div style={{ display: 'flex', alignItems: 'center', gap: 12, marginTop: 26 }}>
             <SegmentedControl value={tab} onChange={t => { setTab(t); setSel(null); }} options={[
@@ -56,7 +56,7 @@ function InfraScreen() {
             ]} />
             <span style={{ fontSize: 13, color: 'var(--text-muted)' }}>{rows.length} shown</span>
           </div>
-          <Card padding={0} style={{ marginTop: 14 }}>
+          <Card style={{ marginTop: 14 }}><CardContent style={{ paddingInline: 0, marginBlock: 'calc(var(--card-spacing) * -1)' }}>
             <Table rowKey="id" onRowClick={r => setSel(r)} columns={[
               { key: 'name', label: 'Name', render: (v, r) => <span style={{ display: 'inline-flex', alignItems: 'center', gap: 10, fontWeight: 600 }}><span style={{ display: 'inline-flex', width: 30, height: 30, alignItems: 'center', justifyContent: 'center', borderRadius: 'var(--radius-sm)', background: 'var(--surface-sunken)', color: 'var(--sand-700)' }}><Icon name={r.icon} size={15} /></span>{v}</span> },
               { key: 'kind', label: 'Type' },
@@ -64,7 +64,7 @@ function InfraScreen() {
               { key: 'status', label: 'Status', render: v => <StatusDot status={v} pulse={v !== 'ok'} label={STATUS_LABEL[v]} /> },
               { key: 'latency', label: COLS_LAST[tab], numeric: true, align: 'right' },
             ]} rows={rows} />
-          </Card>
+          </CardContent></Card>
         </div>
       </div>
       <Drawer open={!!sel} onOpenChange={open => { if (!open) setSel(null); }} direction="right"><DrawerContent style={{ width: 420 }}><DrawerHeader><DrawerTitle>{sel ? sel.name : ''}</DrawerTitle><DrawerDescription>Connection health and recent activity.</DrawerDescription></DrawerHeader>

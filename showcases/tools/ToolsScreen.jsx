@@ -1,4 +1,4 @@
-const { Steps, FileDrop, FileTile, NativeSelect, NativeSelectOption, Field, FieldLabel, Slider, Button, EmptyState, Card, Divider, SegmentedControl, Icon, Textarea, CopyField, Toaster, toast } = window.EfolusiDesignSystem_4ffc3d;
+const { Steps, FileDrop, FileTile, NativeSelect, NativeSelectOption, Field, FieldLabel, Slider, Button, EmptyState, Card, CardContent, Divider, SegmentedControl, Icon, Textarea, CopyField, Toaster, toast } = window.EfolusiDesignSystem_4ffc3d;
 
 function EncodePane() {
   const [scheme, setScheme] = React.useState('base64');
@@ -71,7 +71,7 @@ function ToolsScreen() {
             { id: 'scan', label: 'Scan', icon: 'scan' },
           ]} />
         </div>
-        <Card padding={24} style={{ marginTop: 24 }}>
+        <Card style={{ marginTop: 24, '--card-spacing': '24px' }}><CardContent>
           <Steps orientation="horizontal" current={phase} items={[
             { title: 'Upload', description: files.length + (files.length === 1 ? ' file' : ' files') },
             { title: 'Convert', description: 'to ' + format },
@@ -100,7 +100,7 @@ function ToolsScreen() {
           ) : (
             <EmptyState bordered icon="scan" title="Scanner" description="Intentionally omitted from this kit — the Convert flow is the reference layout." />
           )}
-        </Card>
+        </CardContent></Card>
       </div>
     </div>
   );

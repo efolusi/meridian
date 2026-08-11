@@ -7,14 +7,14 @@
 </head><body style="background:var(--surface-page)">
 <div id="root"></div>
 <script type="text/babel">
-const { Button, Calendar, Field, FieldLabel, Popover, PopoverContent, PopoverTrigger, TimePicker, Card } = window.EfolusiDesignSystem_4ffc3d;
+const { Button, Calendar, Field, FieldLabel, Popover, PopoverContent, PopoverTrigger, TimePicker, Card, CardContent } = window.EfolusiDesignSystem_4ffc3d;
 function Demo() {
   const [d, setD] = React.useState(new Date(2026, 6, 16));
   const [r, setR] = React.useState({ from: new Date(2026, 6, 14), to: new Date(2026, 6, 21) });
   const [t, setT] = React.useState('09:30');
   return (
     <div style={{ padding: 20, display: 'flex', gap: 24, alignItems: 'flex-start' }}>
-      <Card padding={12}><Calendar mode="range" selected={r} onSelect={setR} /></Card>
+      <Card style={{ '--card-spacing': '12px' }}><CardContent><Calendar mode="range" selected={r} onSelect={setR} /></CardContent></Card>
       <div style={{ display: 'flex', flexDirection: 'column', gap: 14 }}>
         <Field><FieldLabel htmlFor="card-renewal">Renewal date</FieldLabel><Popover><PopoverTrigger asChild><Button id="card-renewal" variant="outline" iconLeft="calendar">{d.toLocaleDateString()}</Button></PopoverTrigger><PopoverContent style={{ width: 'auto', padding: 12 }}><Calendar mode="single" selected={d} onSelect={setD} /></PopoverContent></Popover></Field>
         <TimePicker label="Starts at" value={t} onChange={setT} minTime="08:00" maxTime="18:00" />

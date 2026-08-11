@@ -8,7 +8,7 @@
 </head><body style="background:var(--surface-page)">
 <div id="root"></div>
 <script type="text/babel">
-const { Card, Stat, BarChart, Table, Badge, Button, SegmentedControl } = window.EfolusiDesignSystem_4ffc3d;
+const { Card, CardContent, CardHeader, CardTitle, Stat, BarChart, Table, Badge, Button, SegmentedControl } = window.EfolusiDesignSystem_4ffc3d;
 function Block() {
   const [range, setRange] = React.useState('30d');
   return (
@@ -21,16 +21,17 @@ function Block() {
         </div>
       </div>
       <div className="bk-kpis" style={{ display: 'grid', gridTemplateColumns: 'repeat(4,1fr)', gap: 14, marginTop: 18 }}>
-        <Card padding={16}><Stat label="Total runs" value="12,480" delta="+12.4%" direction="up" hint="vs previous period" /></Card>
-        <Card padding={16}><Stat label="Success rate" value="98.2%" delta="+0.4pt" direction="up" /></Card>
-        <Card padding={16}><Stat label="P95 latency" value="212 ms" delta="−8 ms" direction="down" /></Card>
-        <Card padding={16}><Stat label="Spend" value="$4,820" delta="+6.1%" direction="up" hint="of $6,000 budget" /></Card>
+        <Card style={{ '--card-spacing': '16px' }}><CardContent><Stat label="Total runs" value="12,480" delta="+12.4%" direction="up" hint="vs previous period" /></CardContent></Card>
+        <Card style={{ '--card-spacing': '16px' }}><CardContent><Stat label="Success rate" value="98.2%" delta="+0.4pt" direction="up" /></CardContent></Card>
+        <Card style={{ '--card-spacing': '16px' }}><CardContent><Stat label="P95 latency" value="212 ms" delta="−8 ms" direction="down" /></CardContent></Card>
+        <Card style={{ '--card-spacing': '16px' }}><CardContent><Stat label="Spend" value="$4,820" delta="+6.1%" direction="up" hint="of $6,000 budget" /></CardContent></Card>
       </div>
       <div className="bk-panels" style={{ display: 'grid', gridTemplateColumns: '1.4fr 1fr', gap: 14, marginTop: 14 }}>
-        <Card title="Runs per week" padding={18}>
+        <Card style={{ '--card-spacing': '18px' }}><CardHeader><CardTitle>Runs per week</CardTitle></CardHeader><CardContent>
           <BarChart height={170} highlightLast={1} labels={['W1','W2','W3','W4','W5','W6','W7','W8']} data={[820, 940, 1010, 890, 1180, 1260, 1340, 1520]} />
+        </CardContent>
         </Card>
-        <Card title="Top agents" padding={0}>
+        <Card><CardHeader><CardTitle>Top agents</CardTitle></CardHeader><CardContent style={{ paddingInline: 0, marginBlockEnd: 'calc(var(--card-spacing) * -1)' }}>
           <Table rowKey="id" columns={[
             { key: 'name', label: 'Agent' },
             { key: 'runs', label: 'Runs', numeric: true, align: 'right' },
@@ -41,7 +42,7 @@ function Block() {
             { id: 'c', name: 'Refund handler', runs: 960, status: 'Live' },
             { id: 'd', name: 'Weekly digest', runs: 340, status: 'Paused' },
           ]} />
-        </Card>
+        </CardContent></Card>
       </div>
     </main>
   );

@@ -24,11 +24,12 @@ Four tags. No install, no bundler, no config — every component lands on one gl
 ```
 
 ```jsx
-const { Button, Card, Stat } = window.EfolusiDesignSystem_4ffc3d;
+const { Button, Card, CardContent, CardHeader, CardTitle, Stat } = window.EfolusiDesignSystem_4ffc3d;
 
-<Card title="Revenue" padding={20}>
-  <Stat label="MRR" value="$48.2k" delta="12.4%" direction="up" />
-  <Button onClick={save}>Save changes</Button>
+<Card style={{ '--card-spacing': '20px' }}>
+  <CardHeader><CardTitle>Revenue</CardTitle></CardHeader>
+  <CardContent><Stat label="MRR" value="$48.2k" delta="12.4%" direction="up" /></CardContent>
+  <CardContent><Button onClick={save}>Save changes</Button></CardContent>
 </Card>
 ```
 

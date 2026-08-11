@@ -58,12 +58,4 @@ describe('Card compatibility contract', () => {
     expect(card.lastElementChild.getAttribute('data-slot')).toBe('card-content');
   });
 
-  it('preserves the Meridian shorthand adapter', () => {
-    render(<Card title="Legacy" subtitle="Helper" actions="Menu" footer="Foot" padding={7}>Body</Card>);
-    expect(screen.getByText('Legacy')).toBeTruthy();
-    expect(screen.getByText('Helper')).toBeTruthy();
-    expect(screen.getByText('Menu')).toBeTruthy();
-    expect(screen.getByText('Foot')).toBeTruthy();
-    expect(screen.getByText('Body').style.padding).toBe('7px');
-  });
 });

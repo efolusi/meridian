@@ -2,7 +2,7 @@ import { describe, it, expect } from 'vitest';
 import { renderToString } from 'react-dom/server';
 
 import { injectEfCss, Button } from '../components/forms/Button.jsx';
-import { Card } from '../components/display/Card.jsx';
+import { Card, CardContent, CardHeader, CardTitle } from '../components/display/Card.jsx';
 
 // The npm build extracts every CSS literal into a static components.css and
 // strips injection; the CDN bundle keeps injecting. Both worlds only coexist
@@ -24,7 +24,7 @@ describe('injectEfCss contract', () => {
 
   it('never leaks a <style> tag into rendered markup', () => {
     const html = renderToString(
-      <Card title="T"><Button iconLeft="plus">Add</Button></Card>,
+      <Card><CardHeader><CardTitle>T</CardTitle></CardHeader><CardContent><Button iconLeft="plus">Add</Button></CardContent></Card>,
     );
     expect(html).not.toContain('<style');
     expect(html).toContain('ef-btn');

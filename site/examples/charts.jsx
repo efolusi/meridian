@@ -2,25 +2,22 @@
 
 // @demo BarChart Revenue with range switch
 export function RevenueBars() {
-  const { Card, BarChart, SegmentedControl } = window.EfolusiDesignSystem_4ffc3d;
+  const { Card, CardAction, CardContent, CardDescription, CardHeader, CardTitle, BarChart, SegmentedControl } = window.EfolusiDesignSystem_4ffc3d;
   const [range, setRange] = React.useState('12m');
   const series = {
     '30d': { labels: ['W1', 'W2', 'W3', 'W4'], data: [18, 22, 19, 26] },
     '12m': { labels: ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'], data: [42, 38, 51, 46, 62, 58, 71, 66, 80, 92, 88, 104] },
   }[range];
   return (
-    <Card title="Revenue" subtitle="Recognized, USD thousands" padding={18} style={{ width: '100%', maxWidth: 560 }}
-      actions={<SegmentedControl value={range} onChange={setRange} options={[{ id: '30d', label: '30d' }, { id: '12m', label: '12m' }]} />}>
-      <BarChart height={160} data={series.data} labels={series.labels} highlightLast={3} format={(v) => '$' + v + 'k'} />
-    </Card>
+    <Card style={{ width: '100%', maxWidth: 560, '--card-spacing': '18px' }}><CardHeader><CardTitle>Revenue</CardTitle><CardDescription>Recognized, USD thousands</CardDescription><CardAction><SegmentedControl value={range} onChange={setRange} options={[{ id: '30d', label: '30d' }, { id: '12m', label: '12m' }]} /></CardAction></CardHeader><CardContent><BarChart height={160} data={series.data} labels={series.labels} highlightLast={3} format={(v) => '$' + v + 'k'} /></CardContent></Card>
   );
 }
 
 // @demo LineChart Latency with headline stat
 export function LatencyTrend() {
-  const { Card, LineChart, Stat } = window.EfolusiDesignSystem_4ffc3d;
+  const { Card, CardContent, LineChart, Stat } = window.EfolusiDesignSystem_4ffc3d;
   return (
-    <Card padding={18} style={{ width: '100%', maxWidth: 560 }}>
+    <Card style={{ width: '100%', maxWidth: 560, '--card-spacing': '18px' }}><CardContent>
       <Stat label="P95 latency" value="171 ms" delta="−27 ms" direction="down" hint="last 6 months" />
       <div style={{ marginTop: 14 }}>
         <LineChart height={140} showDots format={(v) => v + ' ms'} data={[
@@ -28,13 +25,13 @@ export function LatencyTrend() {
           { label: 'Apr', value: 232 }, { label: 'May', value: 198 }, { label: 'Jun', value: 171 },
         ]} />
       </div>
-    </Card>
+    </CardContent></Card>
   );
 }
 
 // @demo DonutChart Center figure and formatting
 export function SpendDonut() {
-  const { Card, DonutChart } = window.EfolusiDesignSystem_4ffc3d;
+  const { Card, CardContent, CardHeader, CardTitle, DonutChart } = window.EfolusiDesignSystem_4ffc3d;
   const data = [
     { label: 'Agent runs', value: 2900 },
     { label: 'Storage', value: 1100 },
@@ -42,17 +39,15 @@ export function SpendDonut() {
   ];
   const total = data.reduce((a, d) => a + d.value, 0);
   return (
-    <Card title="Spend this month" padding={18} style={{ width: '100%', maxWidth: 420 }}>
-      <div style={{ display: 'flex', justifyContent: 'center' }}>
+    <Card style={{ width: '100%', maxWidth: 420, '--card-spacing': '18px' }}><CardHeader><CardTitle>Spend this month</CardTitle></CardHeader><CardContent><div style={{ display: 'flex', justifyContent: 'center' }}>
         <DonutChart size={150} data={data} centerValue={'$' + (total / 1000).toFixed(1) + 'k'} centerLabel="total" format={(v) => '$' + v.toLocaleString()} />
-      </div>
-    </Card>
+      </div></CardContent></Card>
   );
 }
 
 // @demo Sparkline KPI cards
 export function KpiRow() {
-  const { Card, Stat, Sparkline } = window.EfolusiDesignSystem_4ffc3d;
+  const { Card, CardContent, Stat, Sparkline } = window.EfolusiDesignSystem_4ffc3d;
   const kpis = [
     { label: 'Runs', value: '12,480', delta: '+12.4%', direction: 'up', series: [3, 4, 3.6, 5, 5.4, 6.2, 6, 7.1] },
     { label: 'Success rate', value: '98.2%', delta: '+0.4pt', direction: 'up', series: [5, 5.1, 5.4, 5.2, 5.6, 5.8, 5.7, 6] },
@@ -61,10 +56,10 @@ export function KpiRow() {
   return (
     <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3,1fr)', gap: 14, width: '100%', maxWidth: 640 }}>
       {kpis.map((k) => (
-        <Card key={k.label} padding={16}>
+        <Card key={k.label} style={{ '--card-spacing': '16px' }}><CardContent>
           <Stat label={k.label} value={k.value} delta={k.delta} direction={k.direction} />
           <div style={{ marginTop: 10 }}><Sparkline data={k.series} width={140} height={30} /></div>
-        </Card>
+        </CardContent></Card>
       ))}
     </div>
   );
@@ -91,13 +86,11 @@ export function PositionsTable() {
 
 // @demo BarChart Dark-scoped panel
 export function DarkPanel() {
-  const { Card, BarChart } = window.EfolusiDesignSystem_4ffc3d;
+  const { Card, CardContent, CardDescription, CardHeader, CardTitle, BarChart } = window.EfolusiDesignSystem_4ffc3d;
   return (
     <div data-theme="dark" style={{ width: '100%', maxWidth: 560, borderRadius: 'var(--radius-lg)', overflow: 'hidden' }}>
       <div style={{ background: 'var(--surface-page)', padding: 18 }}>
-        <Card title="Night shift" subtitle="Same component, data-theme=&quot;dark&quot; on the wrapper" padding={18}>
-          <BarChart height={140} data={[42, 38, 51, 46, 62, 58, 71, 80]} labels={['Mar','Apr','May','Jun','Jul','Aug','Sep','Oct']} highlightLast={2} />
-        </Card>
+        <Card style={{ '--card-spacing': '18px' }}><CardHeader><CardTitle>Night shift</CardTitle><CardDescription>Same component, data-theme=&quot;dark&quot; on the wrapper</CardDescription></CardHeader><CardContent><BarChart height={140} data={[42, 38, 51, 46, 62, 58, 71, 80]} labels={['Mar','Apr','May','Jun','Jul','Aug','Sep','Oct']} highlightLast={2} /></CardContent></Card>
       </div>
     </div>
   );

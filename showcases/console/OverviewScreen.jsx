@@ -1,10 +1,8 @@
-const { Card, Badge, Button, Icon, IconButton, Avatar, Tooltip, Stat: EfStat } = window.EfolusiDesignSystem_4ffc3d;
+const { Card, CardAction, CardContent, CardDescription, CardHeader, CardTitle, Badge, Button, Icon, IconButton, Avatar, Tooltip, Stat: EfStat } = window.EfolusiDesignSystem_4ffc3d;
 
 function KpiCard({ label, value, delta, up }) {
   return (
-    <Card padding={16} style={{ flex: 1 }}>
-      <EfStat label={label} value={value} delta={delta} direction={up ? 'up' : 'down'} />
-    </Card>
+    <Card style={{ flex: 1, '--card-spacing': '16px' }}><CardContent><EfStat label={label} value={value} delta={delta} direction={up ? 'up' : 'down'} /></CardContent></Card>
   );
 }
 
@@ -13,7 +11,7 @@ function UsageChart({ notify }) {
   const [hov, setHov] = React.useState(null);
   const max = Math.max(...BARS);
   return (
-    <Card title="API requests" subtitle="Last 28 days · all surfaces" actions={<Button size="sm" variant="secondary" iconLeft="download" onClick={() => notify && notify('Export ready', 'requests-28d.csv is downloading.')}>Export</Button>} style={{ flex: 2 }}>
+    <Card style={{ flex: 2 }}><CardHeader><CardTitle>API requests</CardTitle><CardDescription>Last 28 days · all surfaces</CardDescription><CardAction><Button size="sm" variant="secondary" iconLeft="download" onClick={() => notify && notify('Export ready', 'requests-28d.csv is downloading.')}>Export</Button></CardAction></CardHeader><CardContent>
       <div style={{ display: 'flex', alignItems: 'flex-end', gap: 4, height: 150 }}>
         {BARS.map((v, i) => (
           <Tooltip key={i} label={(v * 113).toLocaleString() + ' requests'} style={{ flex: 1, height: '100%', alignItems: 'flex-end' }}>
@@ -25,7 +23,7 @@ function UsageChart({ notify }) {
       <div style={{ display: 'flex', justifyContent: 'space-between', marginTop: 8, fontFamily: 'var(--font-mono)', fontSize: 10, color: 'var(--text-muted)' }}>
         <span>Jun 18</span><span>Jul 2</span><span>Jul 16</span>
       </div>
-    </Card>
+    </CardContent></Card>
   );
 }
 
@@ -38,7 +36,7 @@ const EVENTS = [
 ];
 function Activity() {
   return (
-    <Card title="Activity" actions={<IconButton icon="ellipsis" label="More" size="sm" />} padding={8} style={{ flex: 1 }}>
+    <Card style={{ flex: 1, '--card-spacing': '8px' }}><CardHeader><CardTitle>Activity</CardTitle><CardAction><IconButton icon="ellipsis" label="More" size="sm" /></CardAction></CardHeader><CardContent>
       <div style={{ display: 'flex', flexDirection: 'column' }}>
         {EVENTS.map(([who, what, when, icon], i) => (
           <div key={i} style={{ display: 'flex', gap: 10, alignItems: 'flex-start', padding: '9px 12px', borderRadius: 'var(--radius-sm)' }}>
@@ -50,7 +48,7 @@ function Activity() {
           </div>
         ))}
       </div>
-    </Card>
+    </CardContent></Card>
   );
 }
 

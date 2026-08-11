@@ -7,20 +7,18 @@
 </head><body style="background:var(--surface-page)">
 <div id="root"></div>
 <script type="text/babel">
-const { Card, Badge, Tag, Avatar, AvatarGroup, Button, Kbd, Divider, Accordion, AccordionItem, AccordionTrigger, AccordionContent, Link, Toolbar, Item, ItemActions, ItemContent, ItemDescription, ItemGroup, ItemMedia, ItemSeparator, ItemTitle, Icon, TreeList, Switch, Collapsible, CollapsibleTrigger, CollapsibleContent, AspectRatio, ScrollArea, Carousel, CarouselContent, CarouselItem, CarouselPrevious, CarouselNext, ResizablePanelGroup, ResizablePanel, ResizableHandle } = window.EfolusiDesignSystem_4ffc3d;
+const { Card, CardAction, CardContent, CardDescription, CardFooter, CardHeader, CardTitle, Badge, Tag, Avatar, AvatarGroup, Button, Kbd, Divider, Accordion, AccordionItem, AccordionTrigger, AccordionContent, Link, Toolbar, Item, ItemActions, ItemContent, ItemDescription, ItemGroup, ItemMedia, ItemSeparator, ItemTitle, Icon, TreeList, Switch, Collapsible, CollapsibleTrigger, CollapsibleContent, AspectRatio, ScrollArea, Carousel, CarouselContent, CarouselItem, CarouselPrevious, CarouselNext, ResizablePanelGroup, ResizablePanel, ResizableHandle } = window.EfolusiDesignSystem_4ffc3d;
 const lbl = { fontSize: 11, fontWeight: 600, letterSpacing: '0.06em', textTransform: 'uppercase', color: 'var(--text-muted)', marginBottom: 8 };
 function Demo() {
   const [tags, setTags] = React.useState(['Billing', 'API']);
   const [view, setView] = React.useState('list');
   return (
     <div style={{ padding: 20, display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 18 }}>
-      <Card title="Invite your team" subtitle="Efolusi works better together." actions={<Button size="sm" variant="secondary" iconLeft="plus">Invite</Button>} footer={<span style={{ fontSize: 13, color: 'var(--text-muted)' }}>3 of 5 seats used</span>}>
-        <AvatarGroup>
+      <Card><CardHeader><CardTitle>Invite your team</CardTitle><CardDescription>Efolusi works better together.</CardDescription><CardAction><Button size="sm" variant="secondary" iconLeft="plus">Invite</Button></CardAction></CardHeader><CardContent><AvatarGroup>
           <Avatar name="Ada Obi" size={36} />
           <Avatar name="Femi Alade" size={36} />
           <Avatar name="June Park" size={36} />
-        </AvatarGroup>
-      </Card>
+        </AvatarGroup></CardContent><CardFooter><span style={{ fontSize: 13, color: 'var(--text-muted)' }}>3 of 5 seats used</span></CardFooter></Card>
       <div>
         <div style={lbl}>Badge · Tag</div>
         <div style={{ display: 'flex', gap: 8, flexWrap: 'wrap' }}>
@@ -48,17 +46,17 @@ function Demo() {
       </div>
       <div>
         <div style={lbl}>Item</div>
-        <Card padding={6}>
+        <Card style={{ '--card-spacing': '6px' }}><CardContent>
           <ItemGroup>
             <Item size="sm"><ItemMedia variant="icon"><Icon name="bell" /></ItemMedia><ItemContent><ItemTitle>Usage alerts</ItemTitle><ItemDescription>At 80% of plan</ItemDescription></ItemContent><ItemActions><Switch defaultChecked /></ItemActions></Item>
             <ItemSeparator />
             <Item size="sm"><ItemMedia><Avatar name="Ada Obi" size={32} /></ItemMedia><ItemContent><ItemTitle>Ada Obi</ItemTitle><ItemDescription>Owner</ItemDescription></ItemContent><ItemActions>2m ago</ItemActions></Item>
           </ItemGroup>
-        </Card>
+        </CardContent></Card>
       </div>
       <div>
         <div style={lbl}>TreeList</div>
-        <Card padding={8}>
+        <Card style={{ '--card-spacing': '8px' }}><CardContent>
           <TreeList nodes={[
             { id: 'ws', label: 'Acme Workspace', icon: 'folder', children: [
               { id: 'agent', label: 'AI agents', icon: 'sparkles', count: 12 },
@@ -68,7 +66,7 @@ function Demo() {
               ]},
             ]},
           ]} />
-        </Card>
+        </CardContent></Card>
       </div>
       <div style={{ gridColumn: 'span 2', display: 'flex', flexDirection: 'column', gap: 14 }}>
         <div style={{ display: 'flex', alignItems: 'center', gap: 8, fontSize: 13, color: 'var(--text-secondary)' }}>Quick search anywhere <Kbd>⌘</Kbd><Kbd>K</Kbd></div>
@@ -80,7 +78,7 @@ function Demo() {
       </div>
       <div>
         <div style={lbl}>Collapsible</div>
-        <Card padding={14}>
+        <Card style={{ '--card-spacing': '14px' }}><CardContent>
           <Collapsible defaultOpen>
             <CollapsibleTrigger className="ef-collapsible__trigger"><Icon name="chevron-right" size={16} />Advanced settings</CollapsibleTrigger>
             <CollapsibleContent style={{ padding: '2px 0 10px 24px' }}><div style={{ display: 'flex', flexDirection: 'column', gap: 8 }}>
@@ -88,15 +86,15 @@ function Demo() {
               <Switch size="sm" label="Beta features" />
             </div></CollapsibleContent>
           </Collapsible>
-        </Card>
+        </CardContent></Card>
         <div style={{ ...lbl, marginTop: 14 }}>ScrollArea</div>
-        <Card padding={0}>
+        <Card><CardContent style={{ paddingInline: 0, marginBlock: 'calc(var(--card-spacing) * -1)' }}>
           <ScrollArea maxHeight={110}>
             <div style={{ padding: 12, display: 'flex', flexDirection: 'column', gap: 8, fontFamily: 'var(--font-mono)', fontSize: 12 }}>
               {['agent.run started', 'plan drafted (4 steps)', 'tool: search_flights', 'tool: book_hotel', 'review requested', 'approved by Ada', 'agent.run finished', 'artifact saved', 'notified #ops', 'usage: 1,240 tokens'].map((l, i) => <span key={i} style={{ color: 'var(--text-secondary)' }}>{l}</span>)}
             </div>
           </ScrollArea>
-        </Card>
+        </CardContent></Card>
       </div>
       <div>
         <div style={lbl}>AspectRatio</div>
@@ -108,7 +106,7 @@ function Demo() {
         <div style={lbl}>Carousel</div>
         <Carousel aria-label="Product modules">
           <CarouselContent>
-            {['Analytics', 'Billing', 'Identity', 'Storage', 'Search', 'Webhooks'].map(p => <CarouselItem key={p} style={{ flexBasis: 200 }}><Card title={p} subtitle="Module"><div style={{ height: 34 }}></div></Card></CarouselItem>)}
+            {['Analytics', 'Billing', 'Identity', 'Storage', 'Search', 'Webhooks'].map(p => <CarouselItem key={p} style={{ flexBasis: 200 }}><Card><CardHeader><CardTitle>{p}</CardTitle><CardDescription>Module</CardDescription></CardHeader><CardContent><div style={{ height: 34 }} /></CardContent></Card></CarouselItem>)}
           </CarouselContent>
           <CarouselPrevious />
           <CarouselNext />

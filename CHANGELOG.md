@@ -2,6 +2,7 @@
 
 ## Unreleased
 
+- **Card is composition-only.** The parallel `title`, `subtitle`, `actions`, `footer`, and `padding` shorthand renderer has been removed. Maintained blocks, demos, showcases, docs, prompts, and tests now use the explicit Card part family and its shared spacing contract.
 - **Hover never introduces an underline.** Base links, `Link`, link-style `Button` and `Badge`, and toast actions now keep text decoration stable while changing color on hover. A repository gate scans authored CSS/JSX/HTML so the behavior cannot regress in a new component or template.
 - **Composition-only disclosure and overlay roots.** `Accordion`, `Collapsible`, `Dialog`, and `Popover` no longer maintain parallel prop-shorthand renderers. Every maintained block, showcase, demo, prompt, and test now uses their explicit item/trigger/content parts; `ConfirmDialog` follows the canonical `onOpenChange` state contract.
 - **Canonical component contracts no longer carry the first alias wave.** Maintained consumers now use `status`, `defaultStatus`, `onStatusChange`, `onSelect`, `onChange`, `onValueChange`, `side`, `format`, `defaultOpen`, and explicit action nodes. The superseded prop and placement aliases were removed from runtime source, types, demos, prompts, generated registry items, and Guard's stable contract.

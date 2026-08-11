@@ -1,4 +1,4 @@
-const { Button, Badge, Icon, Card, Avatar, AvatarGroup, Input } = window.EfolusiDesignSystem_4ffc3d;
+const { Button, Badge, Icon, Card, CardContent, Avatar, AvatarGroup, Input } = window.EfolusiDesignSystem_4ffc3d;
 const wrap = { maxWidth: 1200, margin: '0 auto', padding: '0 32px' };
 
 function SiteHeader() {
@@ -95,7 +95,7 @@ function Products() {
         <h2 style={{ fontSize: 40, fontWeight: 680, marginTop: 10, maxWidth: 560 }}>Every surface, one account</h2>
         <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 1fr', gap: 20, marginTop: 40 }}>
           {PRODUCTS.map(([icon, name, desc, href]) => (
-            <Card key={name} interactive padding={24} onClick={() => { window.location.href = href; }}>
+            <Card key={name} interactive style={{ '--card-spacing': '24px' }} onClick={() => { window.location.href = href; }}><CardContent>
               <span style={{ display: 'inline-flex', color: 'var(--text-primary)' }}>
                 <Icon name={icon} size={22} />
               </span>
@@ -104,7 +104,7 @@ function Products() {
               <div style={{ display: 'flex', alignItems: 'center', gap: 6, marginTop: 16, fontSize: 14, fontWeight: 600, color: 'var(--text-link)' }}>
                 Explore {name} <Icon name="arrow-right" size={15} />
               </div>
-            </Card>
+            </CardContent></Card>
           ))}
         </div>
       </div>
@@ -141,7 +141,7 @@ function Pricing() {
         <p style={{ fontSize: 16, color: 'var(--text-secondary)', marginTop: 10 }}>No usage cliffs, no surprise line items. Cancel anytime.</p>
         <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 1fr', gap: 20, marginTop: 44, textAlign: 'left' }}>
           {TIERS.map(([name, price, desc, feats, cta]) => (
-            <Card key={name} padding={28} elevated={cta === 'primary'} style={cta === 'primary' ? { borderColor: 'var(--accent)' } : {}}>
+            <Card key={name} elevated={cta === 'primary'} style={{ '--card-spacing': '28px', ...(cta === 'primary' ? { borderColor: 'var(--accent)' } : {}) }}><CardContent>
               <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
                 <h3 style={{ fontSize: 18, fontWeight: 700 }}>{name}</h3>
                 {cta === 'primary' && <Badge tone="accent">Popular</Badge>}
@@ -159,7 +159,7 @@ function Pricing() {
                 ))}
               </div>
               <Button fullWidth variant={cta} iconRight="arrow-right" onClick={() => { window.location.href = price === 'Custom' ? 'mailto:hello@efolusi.com' : '../auth/index.html'; }}>{price === 'Custom' ? 'Talk to us' : 'Start free'}</Button>
-            </Card>
+            </CardContent></Card>
           ))}
         </div>
       </div>

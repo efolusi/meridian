@@ -7,7 +7,7 @@
 </head><body style="background:var(--surface-page)">
 <div id="root"></div>
 <script type="text/babel">
-const { Table, Stat, EmptyState, Skeleton, Card, Badge, Button, Avatar, LineChart, DonutChart, Sparkline, BarChart, KeyValueList, StatusDot } = window.EfolusiDesignSystem_4ffc3d;
+const { Table, Stat, EmptyState, Skeleton, Card, CardContent, CardDescription, CardHeader, CardTitle, Badge, Button, Avatar, LineChart, DonutChart, Sparkline, BarChart, KeyValueList, StatusDot } = window.EfolusiDesignSystem_4ffc3d;
 const rows = [
   { id: 1, name: 'Acme Robotics', plan: 'Growth', mrr: '$1,240', status: 'Active' },
   { id: 2, name: 'Bloom Health', plan: 'Scale', mrr: '$3,860', status: 'Active' },
@@ -18,51 +18,41 @@ function Demo() {
   return (
     <div style={{ padding: 20, display: 'flex', flexDirection: 'column', gap: 18 }}>
       <div style={{ display: 'flex', gap: 16 }}>
-        <Card padding={16} style={{ flex: 1 }}><Stat label="Monthly recurring revenue" value="$48.2k" delta="12.4%" direction="up" /></Card>
-        <Card padding={16} style={{ flex: 1 }}><Stat label="Churn" value="1.9%" delta="0.4pt" direction="down" hint="Rolling 30 days" /></Card>
-        <Card padding={16} style={{ flex: 1, display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: 12 }}>
-          <Stat label="Requests / day" value="16.3M" />
-        </Card>
+        <Card style={{ flex: 1, '--card-spacing': '16px' }}><CardContent><Stat label="Monthly recurring revenue" value="$48.2k" delta="12.4%" direction="up" /></CardContent></Card>
+        <Card style={{ flex: 1, '--card-spacing': '16px' }}><CardContent><Stat label="Churn" value="1.9%" delta="0.4pt" direction="down" hint="Rolling 30 days" /></CardContent></Card>
+        <Card style={{ flex: 1, '--card-spacing': '16px' }}><CardContent><Stat label="Requests / day" value="16.3M" /></CardContent></Card>
       </div>
       <div style={{ display: 'grid', gridTemplateColumns: '1.4fr 1fr', gap: 16 }}>
-        <Card title="API requests" subtitle="Last 22 days" padding={16}>
-          <LineChart data={days} height={130} format={v => v.toLocaleString()} />
-        </Card>
-        <Card title="Revenue by surface" padding={16}>
-          <DonutChart size={124} centerValue="$48.2k" centerLabel="MRR" data={[
+        <Card style={{ '--card-spacing': '16px' }}><CardHeader><CardTitle>API requests</CardTitle><CardDescription>Last 22 days</CardDescription></CardHeader><CardContent><LineChart data={days} height={130} format={v => v.toLocaleString()} /></CardContent></Card>
+        <Card style={{ '--card-spacing': '16px' }}><CardHeader><CardTitle>Revenue by surface</CardTitle></CardHeader><CardContent><DonutChart size={124} centerValue="$48.2k" centerLabel="MRR" data={[
             { label: 'AI agents', value: 21000 }, { label: 'Infrastructure', value: 14000 }, { label: 'Trading', value: 8200 }, { label: 'Automation', value: 5000 },
-          ]} />
-        </Card>
+          ]} /></CardContent></Card>
       </div>
-      <Card padding={0}>
+      <Card><CardContent style={{ paddingInline: 0, marginBlock: 'calc(var(--card-spacing) * -1)' }}>
         <Table rowKey="id" onRowClick={() => {}} columns={[
           { key: 'name', label: 'Customer', render: (v) => <span style={{ display: 'inline-flex', alignItems: 'center', gap: 8, fontWeight: 600 }}><Avatar name={v} size={24} />{v}</span> },
           { key: 'plan', label: 'Plan' },
           { key: 'status', label: 'Status', render: v => <Badge tone={v === 'Active' ? 'success' : 'warning'} dot>{v}</Badge> },
           { key: 'mrr', label: 'MRR', numeric: true, align: 'right' },
         ]} rows={rows} />
-      </Card>
+      </CardContent></Card>
       <div style={{ display: 'grid', gridTemplateColumns: '1.2fr 1fr', gap: 16 }}>
         <EmptyState bordered icon="folder" title="Create your first project" description="Projects group keys, environments, and usage." action={<Button size="sm" iconLeft="plus">New project</Button>} />
-        <Card padding={16}>
+        <Card style={{ '--card-spacing': '16px' }}><CardContent>
           <div style={{ display: 'flex', gap: 12, alignItems: 'center' }}>
             <Skeleton variant="circle" width={32} />
             <div style={{ flex: 1 }}><Skeleton lines={2} /></div>
           </div>
           <Skeleton variant="rect" height={56} style={{ marginTop: 14 }} />
-        </Card>
+        </CardContent></Card>
       </div>
       <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 16 }}>
-        <Card title="Weekly runs" padding={16}>
-          <BarChart height={130} highlightLast={1} labels={['Mon','Tue','Wed','Thu','Fri','Sat','Sun']} data={[42,58,51,74,66,30,89]} format={v => v + ' runs'} />
-        </Card>
-        <Card title="Resource" padding={16}>
-          <KeyValueList labelWidth={120} items={[
+        <Card style={{ '--card-spacing': '16px' }}><CardHeader><CardTitle>Weekly runs</CardTitle></CardHeader><CardContent><BarChart height={130} highlightLast={1} labels={['Mon','Tue','Wed','Thu','Fri','Sat','Sun']} data={[42,58,51,74,66,30,89]} format={v => v + ' runs'} /></CardContent></Card>
+        <Card style={{ '--card-spacing': '16px' }}><CardHeader><CardTitle>Resource</CardTitle></CardHeader><CardContent><KeyValueList labelWidth={120} items={[
             { label: 'Status', value: <Badge tone="success" dot>Healthy</Badge> },
             { label: 'Region', value: 'eu-west-1' },
             { label: 'Endpoint', value: 'api.acme.efolusi.com', mono: true },
-          ]} />
-        </Card>
+          ]} /></CardContent></Card>
       </div>
       <div style={{ display: 'flex', gap: 22, flexWrap: 'wrap' }}>
         <StatusDot status="ok" label="API" />

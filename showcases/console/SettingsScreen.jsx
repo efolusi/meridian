@@ -1,4 +1,4 @@
-const { Card, Badge, Button, Input, Textarea, NativeSelect, NativeSelectOption, Switch, Tabs, Avatar, IconButton, Tag, Icon, Dialog, DialogClose, DialogContent, DialogDescription, DialogFooter, DialogHeader, DialogTitle } = window.EfolusiDesignSystem_4ffc3d;
+const { Card, CardAction, CardContent, CardDescription, CardHeader, CardTitle, Badge, Button, Input, Textarea, NativeSelect, NativeSelectOption, Switch, Tabs, Avatar, IconButton, Tag, Icon, Dialog, DialogClose, DialogContent, DialogDescription, DialogFooter, DialogHeader, DialogTitle } = window.EfolusiDesignSystem_4ffc3d;
 
 function SectionRow({ title, desc, children }) {
   return (
@@ -14,7 +14,7 @@ function SectionRow({ title, desc, children }) {
 
 function GeneralTab({ notify }) {
   return (
-    <Card padding={24}>
+    <Card style={{ '--card-spacing': '24px' }}><CardContent>
       <SectionRow title="Workspace name" desc="Shown in the sidebar and on invoices.">
         <Input defaultValue="Acme Workspace" />
       </SectionRow>
@@ -35,15 +35,14 @@ function GeneralTab({ notify }) {
         <Button variant="ghost">Discard</Button>
         <Button onClick={() => notify('Settings saved', 'Changes apply to everyone in Acme Workspace.')}>Save changes</Button>
       </div>
-    </Card>
+    </CardContent></Card>
   );
 }
 
 const MEMBERS = [['Ada Obi', 'ada@acme.co', 'Owner'], ['Femi Alade', 'femi@acme.co', 'Admin'], ['June Park', 'june@acme.co', 'Member'], ['Sol Reyes', 'sol@acme.co', 'Member']];
 function MembersTab({ notify }) {
   return (
-    <Card padding={0} title="Members" subtitle="4 of 5 seats used on the Growth plan." actions={<Button size="sm" iconLeft="plus" onClick={() => notify('Invite sent', "We'll email them a join link.")}>Invite</Button>}>
-      <div>
+    <Card><CardHeader><CardTitle>Members</CardTitle><CardDescription>4 of 5 seats used on the Growth plan.</CardDescription><CardAction><Button size="sm" iconLeft="plus" onClick={() => notify('Invite sent', "We'll email them a join link.")}>Invite</Button></CardAction></CardHeader><CardContent style={{ paddingInline: 0, marginBlockEnd: 'calc(var(--card-spacing) * -1)' }}><div>
         {MEMBERS.map(([name, email, role]) => (
           <div key={email} style={{ display: 'flex', alignItems: 'center', gap: 12, padding: '12px 20px', borderTop: '1px solid var(--sand-100)' }}>
             <Avatar name={name} size={32} />
@@ -55,8 +54,7 @@ function MembersTab({ notify }) {
             <IconButton icon="ellipsis" label="More" size="sm" disabled={role === 'Owner'} />
           </div>
         ))}
-      </div>
-    </Card>
+      </div></CardContent></Card>
   );
 }
 
@@ -71,8 +69,7 @@ function ApiTab({ notify }) {
   };
   return (
     <div style={{ display: 'flex', flexDirection: 'column', gap: 16 }}>
-      <Card padding={0} title="API keys" subtitle="Keys grant full access — rotate them quarterly." actions={<Button size="sm" variant="secondary" iconLeft="plus" onClick={createKey}>Create key</Button>}>
-        {keys.map(([env, key, date, live]) => (
+      <Card><CardHeader><CardTitle>API keys</CardTitle><CardDescription>Keys grant full access — rotate them quarterly.</CardDescription><CardAction><Button size="sm" variant="secondary" iconLeft="plus" onClick={createKey}>Create key</Button></CardAction></CardHeader><CardContent style={{ paddingInline: 0, marginBlockEnd: 'calc(var(--card-spacing) * -1)' }}>{keys.map(([env, key, date, live]) => (
           <div key={env} style={{ display: 'flex', alignItems: 'center', gap: 12, padding: '12px 20px', borderTop: '1px solid var(--sand-100)' }}>
             <span style={{ display: 'inline-flex', width: 32, height: 32, alignItems: 'center', justifyContent: 'center', borderRadius: 'var(--radius-sm)', background: 'var(--sand-100)', color: 'var(--sand-700)' }}><Icon name="terminal" size={16} /></span>
             <div style={{ flex: 1 }}>
@@ -82,9 +79,8 @@ function ApiTab({ notify }) {
             <Button size="sm" variant="secondary" iconLeft="copy" onClick={() => notify('Key copied', 'Paste it somewhere safe — it expires from your clipboard in 60s.')}>Copy</Button>
             <Button size="sm" variant="ghost" iconLeft="refresh-cw" onClick={() => notify(env + ' key rotated', 'The old key keeps working for 24 hours.')}>Rotate</Button>
           </div>
-        ))}
-      </Card>
-      <Card padding={20} style={{ borderColor: 'var(--danger-300)' }}>
+        ))}</CardContent></Card>
+      <Card style={{ borderColor: 'var(--danger-300)', '--card-spacing': '20px' }}><CardContent>
         <div style={{ display: 'flex', alignItems: 'center', gap: 16 }}>
           <div style={{ flex: 1 }}>
             <div style={{ fontSize: 14, fontWeight: 600, color: 'var(--danger-600)' }}>Delete workspace</div>
@@ -92,7 +88,7 @@ function ApiTab({ notify }) {
           </div>
           <Button variant="danger" iconLeft="trash-2" onClick={() => setConfirm(true)}>Delete workspace</Button>
         </div>
-      </Card>
+      </CardContent></Card>
       <Dialog open={confirm} onOpenChange={setConfirm}><DialogContent><DialogHeader><DialogTitle>Delete Acme Workspace?</DialogTitle><DialogDescription>All projects, keys, and member access disappear. There is no undo.</DialogDescription></DialogHeader>
         <div className="ef-dialog__body"><Input label='Type "Acme Workspace" to confirm' placeholder="Acme Workspace" autoFocus /></div>
         <DialogFooter><DialogClose asChild><Button variant="ghost">Keep workspace</Button></DialogClose><Button variant="danger" iconLeft="trash-2" onClick={() => { setConfirm(false); notify('Deletion requested', 'Owners get a confirmation email first.', 'warning'); }}>Delete forever</Button></DialogFooter>

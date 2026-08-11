@@ -24,7 +24,7 @@
     {
       "path": "components/data/Stat.prompt.md",
       "type": "registry:component",
-      "content": "KPI block: muted label, mono value, colored delta.\n\n```jsx\n<Stat label=\"Monthly recurring revenue\" value=\"$48.2k\" delta=\"12.4%\" direction=\"up\" />\n```\n\nWrap in `<Card padding={16}>` for dashboard stat rows.\n"
+      "content": "KPI block: muted label, mono value, colored delta.\n\n```jsx\n<Stat label=\"Monthly recurring revenue\" value=\"$48.2k\" delta=\"12.4%\" direction=\"up\" />\n```\n\nWrap in `<Card><CardContent>\u2026</CardContent></Card>` for dashboard stat rows.\n"
     }
   ],
   "categories": [

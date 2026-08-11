@@ -1,4 +1,4 @@
-const { Card, Badge, Button, Input, NativeSelect, NativeSelectOption, Checkbox, Avatar, Icon, IconButton, Tag, DropdownMenu, DropdownMenuTrigger, DropdownMenuContent, DropdownMenuItem, DropdownMenuSeparator, Pagination, Drawer, DrawerContent, DrawerHeader, DrawerTitle, DrawerDescription, DrawerFooter, DrawerClose, KeyValueList, Dialog, DialogClose, DialogContent, DialogDescription, DialogFooter, DialogHeader, DialogTitle, Sparkline, Field, FieldLabel } = window.EfolusiDesignSystem_4ffc3d;
+const { Card, CardContent, Badge, Button, Input, NativeSelect, NativeSelectOption, Checkbox, Avatar, Icon, IconButton, Tag, DropdownMenu, DropdownMenuTrigger, DropdownMenuContent, DropdownMenuItem, DropdownMenuSeparator, Pagination, Drawer, DrawerContent, DrawerHeader, DrawerTitle, DrawerDescription, DrawerFooter, DrawerClose, KeyValueList, Dialog, DialogClose, DialogContent, DialogDescription, DialogFooter, DialogHeader, DialogTitle, Sparkline, Field, FieldLabel } = window.EfolusiDesignSystem_4ffc3d;
 
 function CustomerActionMenu({ trigger, items, onSelect, align = 'start' }) { return <DropdownMenu><DropdownMenuTrigger asChild>{trigger}</DropdownMenuTrigger><DropdownMenuContent align={align}>{items.map((item, index) => item === 'separator' ? <DropdownMenuSeparator key={'separator-' + index} /> : <DropdownMenuItem key={item.id} disabled={item.disabled} variant={item.danger ? 'destructive' : 'default'} onSelect={() => { onSelect?.(item.id); item.onClick?.(); }}>{item.icon ? <Icon name={item.icon} size={15} /> : null}{item.label}</DropdownMenuItem>)}</DropdownMenuContent></DropdownMenu>; }
 
@@ -46,7 +46,7 @@ function CustomersScreen({ notify }) {
           <Button size="sm" iconLeft="plus" onClick={() => setAdding(true)}>Add customer</Button>
         </div>
       </div>
-      <Card padding={0}>
+      <Card><CardContent style={{ paddingInline: 0, marginBlock: 'calc(var(--card-spacing) * -1)' }}>
         <table style={{ width: '100%', borderCollapse: 'collapse' }}>
           <thead><tr>
             <th style={{ ...th, width: 40, paddingRight: 0 }}><Checkbox checked={checked.length === shown.length && shown.length > 0} onChange={() => setChecked(checked.length === shown.length ? [] : shown.map(r => r.id))} /></th>
@@ -83,7 +83,7 @@ function CustomersScreen({ notify }) {
           <span>{shown.length} of 128 customers</span>
           <Pagination page={page} pageCount={19} onChange={setPage} style={{ marginLeft: 'auto' }} />
         </div>
-      </Card>
+      </CardContent></Card>
       <Drawer open={!!sel} onOpenChange={open => { if (!open) setSel(null); }} direction="right"><DrawerContent style={{ width: 400 }}><DrawerHeader><DrawerTitle>{sel ? sel.name : ''}</DrawerTitle><DrawerDescription>Customer account and recent usage.</DrawerDescription></DrawerHeader>
         {sel && (
           <div style={{ display: 'flex', flexDirection: 'column', gap: 18, padding: 20 }}>

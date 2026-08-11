@@ -265,7 +265,7 @@ class Component extends DCLogic {
         ]),
         h2('why', 'Why it works', 'Mengapa berhasil'),
         p('One namespace and one prop grammar mean a model that has seen three Meridian components can write the other 106. Semantic tokens mean generated screens inherit dark mode and density for free. And because components are flat source files, a model can read the implementation instead of guessing.', 'Satu namespace dan satu tata bahasa props berarti model yang telah melihat tiga komponen Meridian bisa menulis 106 lainnya. Token semantik berarti layar hasil generate mewarisi mode gelap dan densitas secara gratis. Dan karena komponen adalah berkas source datar, model bisa membaca implementasinya alih-alih menebak.'),
-        code('javascript', 'agent-output.js', "const { Card, Stat, BarChart } = window.EfolusiDesignSystem_4ffc3d;\n// a model that knows the grammar composes correctly:\n<Card title=\"Runs this week\">\n  <Stat label=\"Total\" value=\"1,284\" delta=\"+12.4%\" direction=\"up\" />\n  <BarChart data={[42, 58, 51, 74, 66, 30, 89]} />\n</Card>"),
+        code('javascript', 'agent-output.js', "const { Card, CardContent, CardHeader, CardTitle, Stat, BarChart } = window.EfolusiDesignSystem_4ffc3d;\n// a model that knows the grammar composes correctly:\n<Card><CardHeader><CardTitle>Runs this week</CardTitle></CardHeader><CardContent>\n  <Stat label=\"Total\" value=\"1,284\" delta=\"+12.4%\" direction=\"up\" />\n  <BarChart data={[42, 58, 51, 74, 66, 30, 89]} />\n</CardContent></Card>"),
       ] },
       { group: 'Guides', id: 'contributing', title: 'Contributing', lede: 'Meridian is MIT-licensed and open to contributions. The bar: it must feel settled.', blocks: [
         h2('rules', 'Ground rules', 'Aturan dasar'),

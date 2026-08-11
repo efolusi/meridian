@@ -1,4 +1,4 @@
-const { Card, Badge, Button, Icon, IconButton, Avatar, AvatarGroup, Stat, BarChart, Progress, Table, EmptyState, DropdownMenu, DropdownMenuTrigger, DropdownMenuContent, DropdownMenuItem, DropdownMenuSeparator, DropdownMenuShortcut, KeyValueList } = window.EfolusiDesignSystem_4ffc3d;
+const { Card, CardAction, CardContent, CardDescription, CardHeader, CardTitle, Badge, Button, Icon, IconButton, Avatar, AvatarGroup, Stat, BarChart, Progress, Table, EmptyState, DropdownMenu, DropdownMenuTrigger, DropdownMenuContent, DropdownMenuItem, DropdownMenuSeparator, DropdownMenuShortcut, KeyValueList } = window.EfolusiDesignSystem_4ffc3d;
 
 function ProjectActionMenu({ trigger, items, onSelect, align = 'end' }) { return <DropdownMenu><DropdownMenuTrigger asChild>{trigger}</DropdownMenuTrigger><DropdownMenuContent align={align}>{items.map((item, index) => item === 'separator' ? <DropdownMenuSeparator key={'separator-' + index} /> : <DropdownMenuItem key={item.id} disabled={item.disabled} variant={item.danger ? 'destructive' : 'default'} onSelect={() => { onSelect?.(item.id); item.onClick?.(); }}>{item.icon ? <Icon name={item.icon} size={15} /> : null}{item.label}{item.kbd ? <DropdownMenuShortcut>{item.kbd}</DropdownMenuShortcut> : null}</DropdownMenuItem>)}</DropdownMenuContent></DropdownMenu>; }
 
@@ -17,7 +17,7 @@ function ProjectsScreen({ onNewProject, notify }) {
       </div>
       <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 1fr', gap: 16 }}>
         {PROJECTS.map(([name, product, when, people, state]) => (
-          <Card key={name} interactive padding={18} onClick={() => notify('Opening ' + name, 'Projects are a demo surface in this kit.')}>
+          <Card key={name} interactive style={{ '--card-spacing': '18px' }} onClick={() => notify('Opening ' + name, 'Projects are a demo surface in this kit.')}><CardContent>
             <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
               <span style={{ fontSize: 15, fontWeight: 600, flex: 1 }}>{name}</span>
               <ProjectActionMenu trigger={<IconButton icon="ellipsis" label="More" size="sm" />} onSelect={id => notify(id === 'archive' ? 'Project archived' : 'Link copied', name)} items={[
@@ -33,7 +33,7 @@ function ProjectsScreen({ onNewProject, notify }) {
               <AvatarGroup>{people.map(p => <Avatar key={p} name={p} size={26} />)}</AvatarGroup>
               <span style={{ marginLeft: 'auto', fontSize: 12, color: 'var(--text-muted)' }}>{when}</span>
             </div>
-          </Card>
+          </CardContent></Card>
         ))}
         <EmptyState bordered icon="plus" title="New project" description="Group keys, environments, and usage." action={<Button size="sm" variant="secondary" iconLeft="plus" onClick={onNewProject}>Create</Button>} style={{ padding: '28px 24px' }} />
       </div>
@@ -51,21 +51,19 @@ function UsageScreen() {
   return (
     <div style={{ padding: 24, display: 'flex', flexDirection: 'column', gap: 16 }}>
       <div style={{ display: 'flex', gap: 16 }}>
-        <Card padding={16} style={{ flex: 1 }}><Stat label="API requests · 30 days" value="489M" delta="8.9%" direction="up" /></Card>
-        <Card padding={16} style={{ flex: 1 }}><Stat label="Peak day" value="21.4M" hint="Jul 9 · product launch" /></Card>
-        <Card padding={16} style={{ flex: 1 }}><Stat label="Plan quota used" value="61%" hint="Resets Aug 1" /></Card>
+        <Card style={{ flex: 1, '--card-spacing': '16px' }}><CardContent><Stat label="API requests · 30 days" value="489M" delta="8.9%" direction="up" /></CardContent></Card>
+        <Card style={{ flex: 1, '--card-spacing': '16px' }}><CardContent><Stat label="Peak day" value="21.4M" hint="Jul 9 · product launch" /></CardContent></Card>
+        <Card style={{ flex: 1, '--card-spacing': '16px' }}><CardContent><Stat label="Plan quota used" value="61%" hint="Resets Aug 1" /></CardContent></Card>
       </div>
-      <Card title="Requests per day" subtitle="Last 30 days · ink bars are this week">
-        <BarChart height={150} highlightLast={7} labels={['Jun 17', 'Jul 1', 'Jul 16']} format={v => (v / 10).toFixed(1) + 'M requests'}
-          data={[82, 95, 88, 101, 98, 112, 106, 120, 114, 128, 132, 124, 136, 130, 144, 138, 152, 148, 158, 151, 164, 170, 162, 178, 172, 184, 190, 181, 196, 214]} />
-      </Card>
-      <Card title="By surface" padding={20}>
+      <Card><CardHeader><CardTitle>Requests per day</CardTitle><CardDescription>Last 30 days · ink bars are this week</CardDescription></CardHeader><CardContent><BarChart height={150} highlightLast={7} labels={['Jun 17', 'Jul 1', 'Jul 16']} format={v => (v / 10).toFixed(1) + 'M requests'}
+          data={[82, 95, 88, 101, 98, 112, 106, 120, 114, 128, 132, 124, 136, 130, 144, 138, 152, 148, 158, 151, 164, 170, 162, 178, 172, 184, 190, 181, 196, 214]} /></CardContent></Card>
+      <Card style={{ '--card-spacing': '20px' }}><CardHeader><CardTitle>By surface</CardTitle></CardHeader><CardContent>
         <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '16px 40px' }}>
           {USAGE_BY_PRODUCT.map(u => (
             <Progress key={u.id} label={u.product} value={u.pct} showValue tone={u.pct > 85 ? 'warning' : 'default'} format={() => u.used + ' of ' + u.quota + ' ' + u.unit} />
           ))}
         </div>
-      </Card>
+      </CardContent></Card>
     </div>
   );
 }
@@ -80,7 +78,7 @@ function BillingScreen({ notify }) {
   return (
     <div style={{ padding: 24, display: 'flex', flexDirection: 'column', gap: 16, maxWidth: 860 }}>
       <div style={{ display: 'flex', gap: 16 }}>
-        <Card padding={20} style={{ flex: 1.2 }} title="Plan" actions={<Badge tone="accent">Growth</Badge>}>
+        <Card style={{ flex: 1.2, '--card-spacing': '20px' }}><CardHeader><CardTitle>Plan</CardTitle><CardAction><Badge tone="accent">Growth</Badge></CardAction></CardHeader><CardContent>
           <KeyValueList labelWidth={130} items={[
             { label: 'Price', value: '€12 per seat / month', mono: true },
             { label: 'Seats', value: '4 of 5 used' },
@@ -90,8 +88,8 @@ function BillingScreen({ notify }) {
             <Button size="sm" variant="secondary" onClick={() => notify('Plan options sent', 'Compare Growth vs Scale in your inbox.')}>Change plan</Button>
             <Button size="sm" variant="ghost" onClick={() => notify('Seats updated', 'You now have 6 seats.')}>Add seats</Button>
           </div>
-        </Card>
-        <Card padding={20} style={{ flex: 1 }} title="Payment method">
+        </CardContent></Card>
+        <Card style={{ flex: 1, '--card-spacing': '20px' }}><CardHeader><CardTitle>Payment method</CardTitle></CardHeader><CardContent>
           <div style={{ display: 'flex', alignItems: 'center', gap: 12 }}>
             <span style={{ display: 'inline-flex', width: 38, height: 38, alignItems: 'center', justifyContent: 'center', borderRadius: 'var(--radius-sm)', background: 'var(--surface-sunken)', color: 'var(--sand-700)' }}><Icon name="credit-card" size={18} /></span>
             <div>
@@ -100,17 +98,15 @@ function BillingScreen({ notify }) {
             </div>
           </div>
           <Button size="sm" variant="secondary" iconLeft="pencil" style={{ marginTop: 16 }} onClick={() => notify('Secure link sent', 'Update your card from the email we just sent.')}>Update card</Button>
-        </Card>
+        </CardContent></Card>
       </div>
-      <Card padding={0} title="Invoices" subtitle="Also emailed to billing@acme.co on the 1st.">
-        <Table rowKey="id" columns={[
+      <Card><CardHeader><CardTitle>Invoices</CardTitle><CardDescription>Also emailed to billing@acme.co on the 1st.</CardDescription></CardHeader><CardContent style={{ paddingInline: 0, marginBlockEnd: 'calc(var(--card-spacing) * -1)' }}><Table rowKey="id" columns={[
           { key: 'id', label: 'Invoice', render: v => <strong>#{v}</strong> },
           { key: 'date', label: 'Date' },
           { key: 'amount', label: 'Amount', numeric: true, align: 'right' },
           { key: 'status', label: 'Status', render: v => <Badge tone={v === 'Paid' ? 'success' : 'neutral'} dot>{v}</Badge> },
           { key: 'dl', label: '', width: 50, render: (v, r) => <IconButton icon="download" label="Download PDF" size="sm" onClick={() => notify('Invoice #' + r.id + ' downloading', 'PDF on its way.')} /> },
-        ]} rows={INVOICES} />
-      </Card>
+        ]} rows={INVOICES} /></CardContent></Card>
     </div>
   );
 }

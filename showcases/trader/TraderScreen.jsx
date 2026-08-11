@@ -1,4 +1,4 @@
-const { Stat, Sparkline, BarChart, SegmentedControl, Table, Badge, Switch, Slider, Progress, Avatar, Card, Button, StatusDot, Divider, Icon, DropdownMenu, DropdownMenuTrigger, DropdownMenuContent, DropdownMenuItem, DropdownMenuSeparator, IconButton, Toaster, toast } = window.EfolusiDesignSystem_4ffc3d;
+const { Stat, Sparkline, BarChart, SegmentedControl, Table, Badge, Switch, Slider, Progress, Avatar, Card, CardAction, CardContent, CardDescription, CardHeader, CardTitle, Button, StatusDot, Divider, Icon, DropdownMenu, DropdownMenuTrigger, DropdownMenuContent, DropdownMenuItem, DropdownMenuSeparator, IconButton, Toaster, toast } = window.EfolusiDesignSystem_4ffc3d;
 
 function PositionActionMenu({ trigger, items, onSelect }) { return <DropdownMenu><DropdownMenuTrigger asChild>{trigger}</DropdownMenuTrigger><DropdownMenuContent align="end">{items.map((item, index) => item === 'separator' ? <DropdownMenuSeparator key={'separator-' + index} /> : <DropdownMenuItem key={item.id} variant={item.danger ? 'destructive' : 'default'} onSelect={() => onSelect?.(item.id)}>{item.icon ? <Icon name={item.icon} size={15} /> : null}{item.label}</DropdownMenuItem>)}</DropdownMenuContent></DropdownMenu>; }
 
@@ -35,15 +35,16 @@ function TraderScreen() {
           </div>
           <div style={{ marginLeft: 'auto', display: 'flex', flexDirection: 'column', alignItems: 'flex-end', gap: 12 }}>
             <SegmentedControl options={['24h', '7d', '30d']} value={range} onChange={setRange} />
-            <Card padding={14} style={{ width: 240 }}>
+            <Card style={{ width: 240, '--card-spacing': '14px' }}><CardContent>
               <div style={{ fontSize: 11, fontWeight: 600, letterSpacing: '0.06em', textTransform: 'uppercase', color: 'var(--text-muted)', marginBottom: 8 }}>Daily volume</div>
               <BarChart height={64} data={[42, 61, 38, 74, 52, 88, 66, 91, 58, 80, 96, 71, 84, 104]} highlightLast={3} labels={['Jul 3', 'Jul 16']} format={v => '€' + (v * 113).toLocaleString()} />
-            </Card>
+            </CardContent></Card>
           </div>
         </div>
         <div style={{ display: 'flex', gap: 20, marginTop: 28, alignItems: 'flex-start' }}>
-          <Card padding={0} title="Open positions" subtitle="Robot manages exits inside your risk cap." style={{ flex: 1.8 }}>
-            <Table rowKey="id" columns={[
+          <Card style={{ flex: 1.8 }}>
+            <CardHeader><CardTitle>Open positions</CardTitle><CardDescription>Robot manages exits inside your risk cap.</CardDescription></CardHeader>
+            <CardContent style={{ paddingInline: 0, marginBlockEnd: 'calc(var(--card-spacing) * -1)' }}><Table rowKey="id" columns={[
               { key: 'pair', label: 'Pair', render: v => <strong>{v}</strong> },
               { key: 'side', label: 'Side', render: v => <Badge tone={v === 'Long' ? 'success' : 'warning'}>{v}</Badge> },
               { key: 'size', label: 'Size', numeric: true, align: 'right' },
@@ -52,18 +53,20 @@ function TraderScreen() {
               { key: 'pnl', label: 'P&L (€)', numeric: true, align: 'right', render: (v, r) => <span style={{ color: r.up ? 'var(--success-600)' : 'var(--danger-600)', fontFamily: 'var(--font-mono)', fontSize: 13 }}>{v}</span> },
               { key: 'spark', label: '', width: 100, render: (v, r) => <Sparkline data={v} width={84} height={24} direction={r.up ? 'up' : 'down'} /> },
               { key: 'menu', label: '', width: 44, render: (v, r) => <PositionActionMenu trigger={<IconButton icon="ellipsis" label="More" size="sm" />} onSelect={id => { if (id === 'close') { setPositions(ps => ps.filter(p => p.id !== r.id)); notify('Position closed', 'info'); } else notify('Order ticket opened'); }} items={[{ id: 'ticket', label: 'Adjust position', icon: 'pencil' }, 'separator', { id: 'close', label: 'Close position', icon: 'x', danger: true }]} /> },
-            ]} rows={positions} />
+            ]} rows={positions} /></CardContent>
           </Card>
           <div style={{ flex: 1, display: 'flex', flexDirection: 'column', gap: 16 }}>
-            <Card padding={18} title="Strategy" actions={<Switch checked={auto} onChange={e => { setAuto(e.target.checked); notify(e.target.checked ? 'Robot resumed' : 'Robot paused', e.target.checked ? 'success' : 'info'); }} />}>
-              <div style={{ display: 'flex', flexDirection: 'column', gap: 16 }}>
+            <Card style={{ '--card-spacing': '18px' }}>
+              <CardHeader><CardTitle>Strategy</CardTitle><CardAction><Switch checked={auto} onChange={e => { setAuto(e.target.checked); notify(e.target.checked ? 'Robot resumed' : 'Robot paused', e.target.checked ? 'success' : 'info'); }} /></CardAction></CardHeader>
+              <CardContent><div style={{ display: 'flex', flexDirection: 'column', gap: 16 }}>
                 <div style={{ fontSize: 13, color: 'var(--text-secondary)' }}>Momentum · EUR pairs · max 3 open positions. Every trade is logged and auditable.</div>
                 <Slider label="Risk per trade" showValue format={v => v + '%'} min={1} max={10} value={risk} onChange={setRisk} />
                 <Progress label="Monthly drawdown cap" value={31} showValue tone={risk > 7 ? 'warning' : 'default'} format={() => '\u22123.1% of \u221210%'} />
-              </div>
+              </div></CardContent>
             </Card>
-            <Card padding={12} title="Social signals" subtitle="Traders you can mirror — with their real track record.">
-              <div style={{ display: 'flex', flexDirection: 'column' }}>
+            <Card style={{ '--card-spacing': '12px' }}>
+              <CardHeader><CardTitle>Social signals</CardTitle><CardDescription>Traders you can mirror — with their real track record.</CardDescription></CardHeader>
+              <CardContent><div style={{ display: 'flex', flexDirection: 'column' }}>
                 {[['Femi Alade', '+31.2% this quarter \u00b7 low risk', 'up'], ['June Park', '+18.7% this quarter \u00b7 medium risk', 'up'], ['Sol Reyes', '\u22124.2% this quarter \u00b7 high risk', 'down']].map(([n, meta, dir]) => (
                   <div key={n} style={{ display: 'flex', alignItems: 'center', gap: 10, padding: '9px 8px' }}>
                     <Avatar name={n} size={30} />
@@ -74,7 +77,7 @@ function TraderScreen() {
                     <Button size="sm" variant={followed.includes(n) ? 'secondary' : 'ghost'} iconLeft={followed.includes(n) ? 'check' : 'plus'} onClick={() => follow(n)}>{followed.includes(n) ? 'Mirroring' : 'Mirror'}</Button>
                   </div>
                 ))}
-              </div>
+              </div></CardContent>
             </Card>
           </div>
         </div>

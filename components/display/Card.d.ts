@@ -2,16 +2,6 @@ import type * as React from 'react';
 
 export interface CardProps extends Omit<React.HTMLAttributes<HTMLDivElement>, 'title'> {
   size?: 'default' | 'sm';
-  /** Meridian shorthand: renders a legacy header. */
-  title?: React.ReactNode;
-  /** Meridian shorthand: helper text below title. */
-  subtitle?: React.ReactNode;
-  /** Meridian shorthand: right-aligned header content. */
-  actions?: React.ReactNode;
-  /** Meridian shorthand: footer content. */
-  footer?: React.ReactNode;
-  /** Meridian shorthand: body padding in pixels. */
-  padding?: number;
   elevated?: boolean;
   interactive?: boolean;
 }
