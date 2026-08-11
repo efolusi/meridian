@@ -33,7 +33,7 @@
  "Toolbar": "Aksi ikon berkelompok pada chip setipis rambut — editor, kontrol chart, bar massal. value menandai yang aktif (tinta).",
  "TreeList": "Pohon yang bisa dilipat untuk hierarki berkas/navigasi. Baris menerima ikon + hitungan mono; cabang di-toggle saat diklik.",
  "Breadcrumbs": "Jejak jalur dengan pemisah chevron; item terakhir adalah halaman saat ini.",
- "Menubar": "Bar menu gaya aplikasi desktop (File / Edit / View). Klik membuka; hover melintasi bar mengganti menu saat terbuka. Item berbagi bentuk item Menu (ikon, kbd, danger, pemisah…",
+ "Menubar": "Bar menu aplikasi yang composable dengan navigasi keyboard, checkbox, pilihan radio, submenu, shortcut, dan perpindahan menu yang sadar arah baca.",
  "PageControl": "Titik carousel — titik aktif memanjang jadi pil tinta.",
  "Pagination": "Pager bernomor dengan elipsis yang meringkas; halaman aktif adalah chip tinta.",
  "SegmentedControl": "Toggle inline 2–5 arah pada trek pasir; segmen aktif adalah chip putih setipis rambut. Untuk tampilan/rentang — pakai Tabs untuk bagian halaman.",

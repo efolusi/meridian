@@ -863,6 +863,66 @@
       "sourcePath": "components/navigation/Menubar.jsx"
     },
     {
+      "name": "MenubarCheckboxItem",
+      "sourcePath": "components/navigation/Menubar.jsx"
+    },
+    {
+      "name": "MenubarContent",
+      "sourcePath": "components/navigation/Menubar.jsx"
+    },
+    {
+      "name": "MenubarGroup",
+      "sourcePath": "components/navigation/Menubar.jsx"
+    },
+    {
+      "name": "MenubarItem",
+      "sourcePath": "components/navigation/Menubar.jsx"
+    },
+    {
+      "name": "MenubarLabel",
+      "sourcePath": "components/navigation/Menubar.jsx"
+    },
+    {
+      "name": "MenubarMenu",
+      "sourcePath": "components/navigation/Menubar.jsx"
+    },
+    {
+      "name": "MenubarPortal",
+      "sourcePath": "components/navigation/Menubar.jsx"
+    },
+    {
+      "name": "MenubarRadioGroup",
+      "sourcePath": "components/navigation/Menubar.jsx"
+    },
+    {
+      "name": "MenubarRadioItem",
+      "sourcePath": "components/navigation/Menubar.jsx"
+    },
+    {
+      "name": "MenubarSeparator",
+      "sourcePath": "components/navigation/Menubar.jsx"
+    },
+    {
+      "name": "MenubarShortcut",
+      "sourcePath": "components/navigation/Menubar.jsx"
+    },
+    {
+      "name": "MenubarSub",
+      "sourcePath": "components/navigation/Menubar.jsx"
+    },
+    {
+      "name": "MenubarSubContent",
+      "sourcePath": "components/navigation/Menubar.jsx"
+    },
+    {
+      "name": "MenubarSubTrigger",
+      "sourcePath": "components/navigation/Menubar.jsx"
+    },
+    {
+      "name": "MenubarTrigger",
+      "sourcePath": "components/navigation/Menubar.jsx"
+    },
+    {
       "name": "ModelSelector",
       "sourcePath": "components/ai/ModelSelector.jsx"
     },

@@ -79,7 +79,7 @@ export function DropdownMenu({ open: controlled, defaultOpen = false, onOpenChan
   return <RootCtx.Provider value={value}>{children}</RootCtx.Provider>;
 }
 
-export const DropdownMenuTrigger = React.forwardRef(function DropdownMenuTrigger({ asChild = false, disabled = false, children, ...rest }, forwardedRef) {
+export const DropdownMenuTrigger = React.forwardRef(function DropdownMenuTrigger({ asChild = false, disabled = false, children, slot = 'dropdown-menu-trigger', ...rest }, forwardedRef) {
   const root = React.useContext(RootCtx);
   const toggle = () => { if (!disabled) root?.setOpen(!root.open); };
   const keyboard = event => {
@@ -87,7 +87,7 @@ export const DropdownMenuTrigger = React.forwardRef(function DropdownMenuTrigger
     event.preventDefault();
     root?.setOpen(true);
   };
-  const props = { ...rest, ref: mergeRefs(forwardedRef, root?.triggerRef), 'data-slot': 'dropdown-menu-trigger', 'data-state': root?.open ? 'open' : 'closed', 'data-disabled': disabled ? 'true' : undefined, 'aria-haspopup': 'menu', 'aria-expanded': !!root?.open, onClick: compose(rest.onClick, toggle), onKeyDown: compose(rest.onKeyDown, keyboard) };
+  const props = { ...rest, ref: mergeRefs(forwardedRef, root?.triggerRef), 'data-slot': slot, 'data-state': root?.open ? 'open' : 'closed', 'data-disabled': disabled ? 'true' : undefined, 'aria-haspopup': 'menu', 'aria-expanded': !!root?.open, onClick: compose(rest.onClick, toggle), onKeyDown: compose(rest.onKeyDown, keyboard) };
   if (asChild && React.isValidElement(children)) {
     return React.cloneElement(children, { ...props, ...children.props, ref: mergeRefs(children.ref, props.ref), onClick: compose(children.props.onClick, props.onClick), onKeyDown: compose(children.props.onKeyDown, props.onKeyDown), 'data-slot': props['data-slot'], 'data-state': props['data-state'], 'data-disabled': props['data-disabled'], 'aria-haspopup': 'menu', 'aria-expanded': !!root?.open });
   }
@@ -98,7 +98,7 @@ export function DropdownMenuPortal({ children, container }) {
   return <Portal container={container}>{children}</Portal>;
 }
 
-export const DropdownMenuContent = React.forwardRef(function DropdownMenuContent({ loop = true, align = 'center', side = 'bottom', sideOffset = 4, alignOffset = 0, className, style, onKeyDown, onCloseAutoFocus, children, ...rest }, forwardedRef) {
+export const DropdownMenuContent = React.forwardRef(function DropdownMenuContent({ loop = true, align = 'center', side = 'bottom', sideOffset = 4, alignOffset = 0, className, style, onKeyDown, onCloseAutoFocus, children, slot = 'dropdown-menu-content', ...rest }, forwardedRef) {
   const root = React.useContext(RootCtx);
   const localRef = React.useRef(null);
   const ref = mergeRefs(forwardedRef, localRef, root?.contentRef);
@@ -122,52 +122,52 @@ export const DropdownMenuContent = React.forwardRef(function DropdownMenuContent
     return () => { document.removeEventListener('pointerdown', away); window.removeEventListener('blur', blur); };
   }, [root?.open, close]);
   if (!root?.open) return null;
-  return <DropdownMenuPortal><div {...rest} ref={ref} role="menu" data-slot="dropdown-menu-content" data-state="open" data-side={resolvedSide} data-align={align} className={join('ef-dropdown-menu__content', className)} style={{ ...anchored, ...style }} onKeyDown={compose(onKeyDown, keyboard)}>{children}</div></DropdownMenuPortal>;
+  return <DropdownMenuPortal><div {...rest} ref={ref} role="menu" data-slot={slot} data-state="open" data-side={resolvedSide} data-align={align} className={join('ef-dropdown-menu__content', className)} style={{ ...anchored, ...style }} onKeyDown={compose(onKeyDown, keyboard)}>{children}</div></DropdownMenuPortal>;
 });
 
-export const DropdownMenuGroup = React.forwardRef(function DropdownMenuGroup(props, ref) {
-  return <div {...props} ref={ref} role="group" data-slot="dropdown-menu-group" />;
+export const DropdownMenuGroup = React.forwardRef(function DropdownMenuGroup({ slot = 'dropdown-menu-group', ...props }, ref) {
+  return <div {...props} ref={ref} role="group" data-slot={slot} />;
 });
 
-export const DropdownMenuLabel = React.forwardRef(function DropdownMenuLabel({ inset = false, className, ...props }, ref) {
-  return <div {...props} ref={ref} data-slot="dropdown-menu-label" data-inset={inset ? 'true' : undefined} className={join('ef-dropdown-menu__label', className)} />;
+export const DropdownMenuLabel = React.forwardRef(function DropdownMenuLabel({ inset = false, className, slot = 'dropdown-menu-label', ...props }, ref) {
+  return <div {...props} ref={ref} data-slot={slot} data-inset={inset ? 'true' : undefined} className={join('ef-dropdown-menu__label', className)} />;
 });
 
-export const DropdownMenuSeparator = React.forwardRef(function DropdownMenuSeparator({ className, ...props }, ref) {
-  return <div {...props} ref={ref} role="separator" data-slot="dropdown-menu-separator" className={join('ef-dropdown-menu__separator', className)} />;
+export const DropdownMenuSeparator = React.forwardRef(function DropdownMenuSeparator({ className, slot = 'dropdown-menu-separator', ...props }, ref) {
+  return <div {...props} ref={ref} role="separator" data-slot={slot} className={join('ef-dropdown-menu__separator', className)} />;
 });
 
-export const DropdownMenuShortcut = React.forwardRef(function DropdownMenuShortcut({ className, ...props }, ref) {
-  return <span {...props} ref={ref} data-slot="dropdown-menu-shortcut" className={join('ef-dropdown-menu__shortcut', className)} />;
+export const DropdownMenuShortcut = React.forwardRef(function DropdownMenuShortcut({ className, slot = 'dropdown-menu-shortcut', ...props }, ref) {
+  return <span {...props} ref={ref} data-slot={slot} className={join('ef-dropdown-menu__shortcut', className)} />;
 });
 
-export const DropdownMenuItem = React.forwardRef(function DropdownMenuItem({ inset = false, variant = 'default', disabled = false, onSelect, onClick, className, children, ...props }, ref) {
+export const DropdownMenuItem = React.forwardRef(function DropdownMenuItem({ inset = false, variant = 'default', disabled = false, onSelect, onClick, className, children, slot = 'dropdown-menu-item', ...props }, ref) {
   const root = React.useContext(RootCtx);
   const activate = event => { onClick?.(event); if (!event.defaultPrevented && !disabled) { onSelect?.(event); if (!event.defaultPrevented) root?.setOpen(false); } };
-  return <button {...props} ref={ref} type="button" role="menuitem" disabled={disabled} data-slot="dropdown-menu-item" data-inset={inset ? 'true' : undefined} data-variant={variant} data-disabled={disabled ? 'true' : undefined} className={join('ef-dropdown-menu__item', className)} onClick={activate}>{children}</button>;
+  return <button {...props} ref={ref} type="button" role="menuitem" disabled={disabled} data-slot={slot} data-inset={inset ? 'true' : undefined} data-variant={variant} data-disabled={disabled ? 'true' : undefined} className={join('ef-dropdown-menu__item', className)} onClick={activate}>{children}</button>;
 });
 
-export const DropdownMenuCheckboxItem = React.forwardRef(function DropdownMenuCheckboxItem({ checked: controlled, defaultChecked = false, onCheckedChange, disabled = false, onSelect, onClick, className, children, ...props }, ref) {
+export const DropdownMenuCheckboxItem = React.forwardRef(function DropdownMenuCheckboxItem({ checked: controlled, defaultChecked = false, onCheckedChange, disabled = false, onSelect, onClick, className, children, slot = 'dropdown-menu-checkbox-item', ...props }, ref) {
   const root = React.useContext(RootCtx);
   const [inner, setInner] = React.useState(defaultChecked);
   const checked = controlled !== undefined ? controlled : inner;
   const activate = event => { onClick?.(event); if (event.defaultPrevented || disabled) return; const next = !checked; if (controlled === undefined) setInner(next); onCheckedChange?.(next); onSelect?.(event); if (!event.defaultPrevented) root?.setOpen(false); };
-  return <button {...props} ref={ref} type="button" role="menuitemcheckbox" aria-checked={checked} disabled={disabled} data-slot="dropdown-menu-checkbox-item" data-state={checked ? 'checked' : 'unchecked'} data-disabled={disabled ? 'true' : undefined} className={join('ef-dropdown-menu__item', className)} onClick={activate}><span className="ef-dropdown-menu__indicator">{checked ? <Icon name="check" size={14} /> : null}</span>{children}</button>;
+  return <button {...props} ref={ref} type="button" role="menuitemcheckbox" aria-checked={checked} disabled={disabled} data-slot={slot} data-state={checked ? 'checked' : 'unchecked'} data-disabled={disabled ? 'true' : undefined} className={join('ef-dropdown-menu__item', className)} onClick={activate}><span className="ef-dropdown-menu__indicator">{checked ? <Icon name="check" size={14} /> : null}</span>{children}</button>;
 });
 
-export function DropdownMenuRadioGroup({ value: controlled, defaultValue = '', onValueChange, children, ...props }) {
+export function DropdownMenuRadioGroup({ value: controlled, defaultValue = '', onValueChange, children, slot = 'dropdown-menu-radio-group', ...props }) {
   const [inner, setInner] = React.useState(defaultValue);
   const value = controlled !== undefined ? controlled : inner;
   const setValue = next => { if (controlled === undefined) setInner(next); onValueChange?.(next); };
-  return <RadioCtx.Provider value={{ value, setValue }}><div {...props} role="group" data-slot="dropdown-menu-radio-group">{children}</div></RadioCtx.Provider>;
+  return <RadioCtx.Provider value={{ value, setValue }}><div {...props} role="group" data-slot={slot}>{children}</div></RadioCtx.Provider>;
 }
 
-export const DropdownMenuRadioItem = React.forwardRef(function DropdownMenuRadioItem({ value, disabled = false, onSelect, onClick, className, children, ...props }, ref) {
+export const DropdownMenuRadioItem = React.forwardRef(function DropdownMenuRadioItem({ value, disabled = false, onSelect, onClick, className, children, slot = 'dropdown-menu-radio-item', ...props }, ref) {
   const root = React.useContext(RootCtx);
   const radio = React.useContext(RadioCtx);
   const checked = radio?.value === value;
   const activate = event => { onClick?.(event); if (event.defaultPrevented || disabled) return; radio?.setValue(value); onSelect?.(event); if (!event.defaultPrevented) root?.setOpen(false); };
-  return <button {...props} ref={ref} type="button" role="menuitemradio" aria-checked={checked} disabled={disabled} data-slot="dropdown-menu-radio-item" data-state={checked ? 'checked' : 'unchecked'} data-disabled={disabled ? 'true' : undefined} className={join('ef-dropdown-menu__item', className)} onClick={activate}><span className="ef-dropdown-menu__indicator">{checked ? <Icon name="circle" size={8} /> : null}</span>{children}</button>;
+  return <button {...props} ref={ref} type="button" role="menuitemradio" aria-checked={checked} disabled={disabled} data-slot={slot} data-state={checked ? 'checked' : 'unchecked'} data-disabled={disabled ? 'true' : undefined} className={join('ef-dropdown-menu__item', className)} onClick={activate}><span className="ef-dropdown-menu__indicator">{checked ? <Icon name="circle" size={8} /> : null}</span>{children}</button>;
 });
 
 export function DropdownMenuSub({ open: controlled, defaultOpen = false, onOpenChange, children }) {
@@ -179,13 +179,13 @@ export function DropdownMenuSub({ open: controlled, defaultOpen = false, onOpenC
   return <SubCtx.Provider value={{ open, setOpen, triggerRef, contentRef }}>{children}</SubCtx.Provider>;
 }
 
-export const DropdownMenuSubTrigger = React.forwardRef(function DropdownMenuSubTrigger({ inset = false, disabled = false, className, children, onKeyDown, ...props }, forwardedRef) {
+export const DropdownMenuSubTrigger = React.forwardRef(function DropdownMenuSubTrigger({ inset = false, disabled = false, className, children, onKeyDown, slot = 'dropdown-menu-sub-trigger', ...props }, forwardedRef) {
   const sub = React.useContext(SubCtx);
   const keyboard = event => { if (!disabled && event.key === 'ArrowRight') { event.preventDefault(); sub?.setOpen(true); requestAnimationFrame(() => menuItems(sub?.contentRef.current)[0]?.focus()); } };
-  return <button {...props} ref={mergeRefs(forwardedRef, sub?.triggerRef)} type="button" role="menuitem" disabled={disabled} data-slot="dropdown-menu-sub-trigger" data-state={sub?.open ? 'open' : 'closed'} data-inset={inset ? 'true' : undefined} data-disabled={disabled ? 'true' : undefined} className={join('ef-dropdown-menu__item', className)} onMouseEnter={() => !disabled && sub?.setOpen(true)} onKeyDown={compose(onKeyDown, keyboard)}>{children}<span className="ef-dropdown-menu__chevron"><Icon name="chevron-right" size={14} /></span></button>;
+  return <button {...props} ref={mergeRefs(forwardedRef, sub?.triggerRef)} type="button" role="menuitem" disabled={disabled} data-slot={slot} data-state={sub?.open ? 'open' : 'closed'} data-inset={inset ? 'true' : undefined} data-disabled={disabled ? 'true' : undefined} className={join('ef-dropdown-menu__item', className)} onMouseEnter={() => !disabled && sub?.setOpen(true)} onKeyDown={compose(onKeyDown, keyboard)}>{children}<span className="ef-dropdown-menu__chevron"><Icon name="chevron-right" size={14} /></span></button>;
 });
 
-export const DropdownMenuSubContent = React.forwardRef(function DropdownMenuSubContent({ sideOffset = 4, alignOffset = -4, loop = true, className, style, onKeyDown, children, ...props }, forwardedRef) {
+export const DropdownMenuSubContent = React.forwardRef(function DropdownMenuSubContent({ sideOffset = 4, alignOffset = -4, loop = true, className, style, onKeyDown, children, slot = 'dropdown-menu-sub-content', ...props }, forwardedRef) {
   const sub = React.useContext(SubCtx);
   const localRef = React.useRef(null);
   const fallbackTriggerRef = React.useRef(null);
@@ -195,5 +195,5 @@ export const DropdownMenuSubContent = React.forwardRef(function DropdownMenuSubC
   const keyboard = useMenuKeyboard(localRef, close, { sub: true, loop });
   useIsoLayoutEffect(() => { if (sub?.open) menuItems(localRef.current)[0]?.focus(); }, [sub?.open]);
   if (!sub?.open) return null;
-  return <DropdownMenuPortal><div {...props} ref={mergeRefs(forwardedRef, localRef, sub.contentRef)} role="menu" data-slot="dropdown-menu-sub-content" data-state="open" data-side={side} className={join('ef-dropdown-menu__content', className)} style={{ ...anchored, ...style }} onMouseLeave={() => sub.setOpen(false)} onKeyDown={compose(onKeyDown, keyboard)}>{children}</div></DropdownMenuPortal>;
+  return <DropdownMenuPortal><div {...props} ref={mergeRefs(forwardedRef, localRef, sub.contentRef)} role="menu" data-slot={slot} data-state="open" data-side={side} className={join('ef-dropdown-menu__content', className)} style={{ ...anchored, ...style }} onMouseLeave={() => sub.setOpen(false)} onKeyDown={compose(onKeyDown, keyboard)}>{children}</div></DropdownMenuPortal>;
 });

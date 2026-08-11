@@ -43,7 +43,7 @@ Efolusi ships WCAG 2.1 AA. The rules, per concern:
 - **Calendar (range picker composition)** — pair `mode="range"` with Popover and a labelled trigger. Opening moves focus into the grid on the open end of the range; the pick that completes the range may close the popover and restore the trigger; Escape closes without selecting.
 - **TimePicker** — APG combobox-with-listbox: input is `role="combobox"` with `aria-expanded`, `aria-controls`, `aria-autocomplete="list"`, and `aria-activedescendant` tracking the highlighted `role="option"`; ArrowDown/ArrowUp move the highlight (ArrowDown opens when closed), Enter picks the highlighted slot, Escape closes and reverts typing; a typed valid time commits on blur.
 
-Full keyboard coverage across overlays: Menu, ContextMenu, and Menubar support arrow-key navigation, Home/End, and single-character typeahead; Menubar adds Left/Right between menus and Down to open.
+Full keyboard coverage across overlays: DropdownMenu, ContextMenu, and Menubar support arrow-key navigation, Home/End, and single-character typeahead; Menubar adds Left/Right between menus and Down to open.
 
 ## Browser support and RTL
 

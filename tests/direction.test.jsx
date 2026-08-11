@@ -5,7 +5,7 @@ import userEvent from '@testing-library/user-event';
 
 import { DirectionProvider, useDirection } from '../components/display/Direction.jsx';
 import { Tabs } from '../components/navigation/Tabs.jsx';
-import { Menubar } from '../components/navigation/Menubar.jsx';
+import { Menubar, MenubarContent, MenubarItem, MenubarMenu, MenubarTrigger } from '../components/navigation/Menubar.jsx';
 import { Calendar } from '../components/dates/Calendar.jsx';
 import { ResizableHandle, ResizablePanel, ResizablePanelGroup } from '../components/display/Resizable.jsx';
 import { PromptSteps } from '../components/ai/PromptSteps.jsx';
@@ -56,11 +56,10 @@ describe('RTL horizontal keyboard behavior', () => {
 
   it('moves Menubar in visual direction', async () => {
     const user = userEvent.setup();
-    const menus = ['A', 'B', 'C'].map(label => ({ label, items: [{ id: label, label }] }));
-    render(<DirectionProvider direction="rtl"><Menubar menus={menus} /></DirectionProvider>);
-    screen.getByRole('button', { name: 'A' }).focus();
+    render(<DirectionProvider direction="rtl"><Menubar>{['A', 'B', 'C'].map(label => <MenubarMenu key={label}><MenubarTrigger>{label}</MenubarTrigger><MenubarContent><MenubarItem>{label}</MenubarItem></MenubarContent></MenubarMenu>)}</Menubar></DirectionProvider>);
+    screen.getByRole('menuitem', { name: 'A' }).focus();
     await user.keyboard('{ArrowLeft}');
-    expect(document.activeElement).toBe(screen.getByRole('button', { name: 'B' }));
+    expect(document.activeElement).toBe(screen.getByRole('menuitem', { name: 'B' }));
   });
 
   it('moves Calendar days in visual direction', async () => {

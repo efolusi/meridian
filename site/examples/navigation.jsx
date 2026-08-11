@@ -18,23 +18,22 @@ export function BreadcrumbsDemo() {
 
 // @demo Menubar Application menus
 export function MenubarDemo() {
-  const { Menubar } = window.EfolusiDesignSystem_4ffc3d;
-  return <Menubar onSelect={() => {}} menus={[
-    { label: 'File', items: [
-      { id: 'new', label: 'New task', icon: 'plus', kbd: '⌘N' },
-      { id: 'open', label: 'Open…', kbd: '⌘O' },
-      'separator',
-      { id: 'close', label: 'Close workspace' },
-    ] },
-    { label: 'Edit', items: [
-      { id: 'undo', label: 'Undo', kbd: '⌘Z' },
-      { id: 'redo', label: 'Redo', kbd: '⇧⌘Z' },
-    ] },
-    { label: 'View', items: [
-      { id: 'zoom', label: 'Zoom in', kbd: '⌘+' },
-      { id: 'full', label: 'Full screen' },
-    ] },
-  ]} />;
+  const { Menubar, MenubarMenu, MenubarTrigger, MenubarContent, MenubarItem, MenubarCheckboxItem, MenubarRadioGroup, MenubarRadioItem, MenubarSeparator, MenubarShortcut, MenubarSub, MenubarSubTrigger, MenubarSubContent } = window.EfolusiDesignSystem_4ffc3d;
+  const [statusBar, setStatusBar] = React.useState(true);
+  const [zoom, setZoom] = React.useState('100');
+  return <Menubar>
+    <MenubarMenu><MenubarTrigger>File</MenubarTrigger><MenubarContent>
+      <MenubarItem>New incident <MenubarShortcut>⌘N</MenubarShortcut></MenubarItem>
+      <MenubarItem>Open runbook… <MenubarShortcut>⌘O</MenubarShortcut></MenubarItem>
+      <MenubarSeparator />
+      <MenubarSub><MenubarSubTrigger>Share</MenubarSubTrigger><MenubarSubContent><MenubarItem>Copy link</MenubarItem><MenubarItem>Invite responder</MenubarItem></MenubarSubContent></MenubarSub>
+    </MenubarContent></MenubarMenu>
+    <MenubarMenu><MenubarTrigger>View</MenubarTrigger><MenubarContent>
+      <MenubarCheckboxItem checked={statusBar} onCheckedChange={setStatusBar}>Status bar</MenubarCheckboxItem>
+      <MenubarSeparator />
+      <MenubarRadioGroup value={zoom} onValueChange={setZoom}><MenubarRadioItem value="90">90%</MenubarRadioItem><MenubarRadioItem value="100">100%</MenubarRadioItem><MenubarRadioItem value="110">110%</MenubarRadioItem></MenubarRadioGroup>
+    </MenubarContent></MenubarMenu>
+  </Menubar>;
 }
 
 // @demo PageControl Dots pager

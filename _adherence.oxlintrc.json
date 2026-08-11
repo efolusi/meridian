@@ -1127,6 +1127,51 @@
       "Menubar": {
         "replaces": []
       },
+      "MenubarCheckboxItem": {
+        "replaces": []
+      },
+      "MenubarContent": {
+        "replaces": []
+      },
+      "MenubarGroup": {
+        "replaces": []
+      },
+      "MenubarItem": {
+        "replaces": []
+      },
+      "MenubarLabel": {
+        "replaces": []
+      },
+      "MenubarMenu": {
+        "replaces": []
+      },
+      "MenubarPortal": {
+        "replaces": []
+      },
+      "MenubarRadioGroup": {
+        "replaces": []
+      },
+      "MenubarRadioItem": {
+        "replaces": []
+      },
+      "MenubarSeparator": {
+        "replaces": []
+      },
+      "MenubarShortcut": {
+        "replaces": []
+      },
+      "MenubarSub": {
+        "replaces": []
+      },
+      "MenubarSubContent": {
+        "replaces": []
+      },
+      "MenubarSubTrigger": {
+        "replaces": []
+      },
+      "MenubarTrigger": {
+        "replaces": []
+      },
       "ModelSelector": {
         "replaces": []
       },

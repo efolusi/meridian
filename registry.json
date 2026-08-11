@@ -3175,16 +3175,15 @@
     {
       "name": "menubar",
       "type": "registry:ui",
-      "title": "Menubar",
-      "description": "Desktop-app style menu bar (File / Edit / View). Click opens; hovering across bar switches menus while open. Items share the Menu item shape (icon, kbd, danger, separator).",
+      "title": "Menubar + MenubarMenu + MenubarTrigger + MenubarContent + MenubarPortal + MenubarGroup + MenubarRadioGroup + MenubarLabel + MenubarSeparator + MenubarShortcut + MenubarItem + MenubarCheckboxItem + MenubarRadioItem + MenubarSub + MenubarSubTrigger + MenubarSubContent",
+      "description": "A composable application menu bar with roving top-level focus, arrow-key menu switching, typeahead, checkbox/radio items, nested submenus, and portal positioning.",
       "dependencies": [
         "react"
       ],
       "registryDependencies": [
         "https://meridian.efolusi.com/site/registry/meridian-base.json",
         "https://meridian.efolusi.com/site/registry/button.json",
-        "https://meridian.efolusi.com/site/registry/direction.json",
-        "https://meridian.efolusi.com/site/registry/icon.json"
+        "https://meridian.efolusi.com/site/registry/direction.json"
       ],
       "files": [
         {

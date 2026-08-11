@@ -320,7 +320,31 @@
       "registryItems": ["site/registry/marker.json"],
       "tests": ["tests/compatibility-primitives.test.jsx"]
     },
-    { "name": "Menubar", "status": "unverified" },
+    {
+      "name": "Menubar",
+      "status": "proven",
+      "requiredExports": [
+        "Menubar",
+        "MenubarPortal",
+        "MenubarMenu",
+        "MenubarTrigger",
+        "MenubarContent",
+        "MenubarGroup",
+        "MenubarSeparator",
+        "MenubarLabel",
+        "MenubarItem",
+        "MenubarShortcut",
+        "MenubarCheckboxItem",
+        "MenubarRadioGroup",
+        "MenubarRadioItem",
+        "MenubarSub",
+        "MenubarSubTrigger",
+        "MenubarSubContent"
+      ],
+      "sourceFiles": ["components/navigation/Menubar.jsx", "components/navigation/Menubar.d.ts"],
+      "registryItems": ["site/registry/menubar.json"],
+      "tests": ["tests/keyboard-menubar.test.jsx", "tests/direction.test.jsx"]
+    },
     { "name": "Message", "status": "unverified" },
     { "name": "Message Scroller", "status": "unverified" },
     {

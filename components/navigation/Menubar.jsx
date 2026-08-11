@@ -1,94 +1,112 @@
 import React from 'react';
-import { injectEfCss } from '../forms/Button.jsx';
-import { Icon } from '../icons/Icon.jsx';
+import { injectEfCss, mergeRefs } from '../forms/Button.jsx';
 import { useDirection } from '../display/Direction.jsx';
+import {
+  DropdownMenu,
+  DropdownMenuCheckboxItem,
+  DropdownMenuContent,
+  DropdownMenuGroup,
+  DropdownMenuItem,
+  DropdownMenuLabel,
+  DropdownMenuPortal,
+  DropdownMenuRadioGroup,
+  DropdownMenuRadioItem,
+  DropdownMenuSeparator,
+  DropdownMenuShortcut,
+  DropdownMenuSub,
+  DropdownMenuSubContent,
+  DropdownMenuSubTrigger,
+  DropdownMenuTrigger,
+} from '../overlay/DropdownMenu.jsx';
+
 const CSS = `
-.ef-menubar{display:inline-flex;gap:2px;padding:2px;border:1px solid var(--border-default);border-radius:var(--radius-sm);background:var(--surface-card)}
-.ef-menubar__wrap{position:relative}
-.ef-menubar__btn{height:28px;padding:0 10px;border:none;border-radius:calc(var(--radius-sm) - 1px);background:none;cursor:pointer;font-family:var(--font-sans);font-size:var(--text-sm);font-weight:500;color:var(--text-primary);transition:background var(--dur-fast) var(--ease-out)}
-.ef-menubar__btn:hover,.ef-menubar__btn--on{background:var(--surface-sunken)}
-.ef-menubar__btn:focus-visible{outline:none;box-shadow:var(--focus-ring)}
-.ef-menubar__panel{position:absolute;top:calc(100% + 6px);inset-inline-start:0;min-width:200px;background:var(--surface-card);border:1px solid var(--border-strong);border-radius:var(--radius-md);box-shadow:var(--shadow-md);padding:4px;z-index:var(--z-dropdown);animation:ef-menubar-in var(--dur-fast) var(--ease-out)}
-@keyframes ef-menubar-in{from{opacity:0;transform:translateY(-3px)}}
-.ef-menubar__item{display:flex;align-items:center;gap:9px;width:100%;height:32px;padding:0 10px;border:none;border-radius:var(--radius-sm);background:none;cursor:pointer;text-align:start;font-family:var(--font-sans);font-size:var(--text-sm);color:var(--text-primary);transition:background var(--dur-fast) var(--ease-out)}
-.ef-menubar__item:hover:not(:disabled){background:var(--surface-sunken)}
-.ef-menubar__item:disabled{opacity:.4;cursor:not-allowed}
-.ef-menubar__item--danger{color:var(--danger-600)}
-.ef-menubar__item__icon{color:var(--text-muted);display:inline-flex}
-.ef-menubar__item--danger .ef-menubar__item__icon{color:var(--danger-600)}
-.ef-menubar__sep{height:1px;background:var(--border-default);margin:4px 6px}
-.ef-menubar__kbd{margin-inline-start:auto;font-family:var(--font-mono);font-size:11px;color:var(--text-muted)}
+.ef-menubar{display:flex;width:max-content;height:36px;align-items:center;gap:2px;padding:3px;border:1px solid var(--border-default);border-radius:var(--radius-md);background:var(--surface-card);box-shadow:var(--shadow-xs)}
+.ef-menubar__trigger{display:flex;height:28px;align-items:center;padding:0 8px;border:0;border-radius:var(--radius-sm);outline:0;background:transparent;color:var(--text-primary);font:inherit;font-size:var(--text-sm);font-weight:var(--weight-medium);cursor:default;user-select:none}
+.ef-menubar__trigger:hover,.ef-menubar__trigger:focus,.ef-menubar__trigger[data-state=open]{background:var(--surface-sunken)}
+.ef-menubar__trigger:focus-visible{box-shadow:var(--focus-ring)}
 `;
-export function Menubar({ menus, onSelect, style, className, ...rest }) {
+
+const MenubarRootContext = React.createContext(null);
+const MenubarMenuContext = React.createContext(null);
+const join = (...values) => values.filter(Boolean).join(' ');
+
+export const Menubar = React.forwardRef(function Menubar({ loop = true, className, children, onKeyDown, ...props }, forwardedRef) {
   injectEfCss('ef-css-menubar', CSS);
   const direction = useDirection();
-  const horizontalStep = key => key === 'ArrowRight' ? (direction === 'rtl' ? -1 : 1) : (direction === 'rtl' ? 1 : -1);
-  const [open, setOpen] = React.useState(null);
-  const ref = React.useRef(null);
-  React.useEffect(() => {
-    if (open === null) return;
-    const away = e => { if (ref.current && !ref.current.contains(e.target)) setOpen(null); };
-    const key = e => {
-      if (e.key !== 'Escape') return;
-      const btns = ref.current ? ref.current.querySelectorAll('.ef-menubar__btn') : [];
-      if (btns[open]) btns[open].focus();
-      setOpen(null);
-    };
-    document.addEventListener('mousedown', away);
-    document.addEventListener('keydown', key);
-    return () => { document.removeEventListener('mousedown', away); document.removeEventListener('keydown', key); };
-  }, [open]);
-  const kbdOpen = React.useRef(false);
-  React.useEffect(() => {
-    if (open === null || !kbdOpen.current) return;
-    const panel = ref.current && ref.current.querySelector('.ef-menubar__panel');
-    const first = panel && panel.querySelector('[role="menuitem"]:not(:disabled)');
-    if (first) first.focus();
-    kbdOpen.current = false;
-  }, [open]);
-  const btns = () => (ref.current ? Array.from(ref.current.querySelectorAll('.ef-menubar__btn')) : []);
-  const focusBtn = i => { const b = btns(); const t = b[(i + b.length) % b.length]; if (t) t.focus(); };
-  const panelItems = () => { const p = ref.current && ref.current.querySelector('.ef-menubar__panel'); return p ? Array.from(p.querySelectorAll('[role="menuitem"]:not(:disabled)')) : []; };
-  const focusItem = which => { const nodes = panelItems(); if (!nodes.length) return; const i = nodes.indexOf(document.activeElement); const n = which === 'first' ? 0 : which === 'last' ? nodes.length - 1 : (i + which + nodes.length) % nodes.length; nodes[n].focus(); };
-  const typeahead = e => {
-    const nodes = panelItems(), cur = nodes.indexOf(document.activeElement), ch = e.key.toLowerCase();
-    for (let k = 1; k <= nodes.length; k++) { const n = nodes[(cur + k) % nodes.length]; if ((n.textContent || '').trim().toLowerCase().startsWith(ch)) { e.preventDefault(); n.focus(); break; } }
+  const rootRef = React.useRef(null);
+  const [value, setValue] = React.useState(null);
+  const [tabStop, setTabStop] = React.useState(null);
+  const move = React.useCallback((current, delta, openNext = false) => {
+    const triggers = rootRef.current ? Array.from(rootRef.current.querySelectorAll('[data-slot="menubar-trigger"]:not(:disabled)')) : [];
+    if (!triggers.length) return;
+    const currentIndex = triggers.findIndex(trigger => trigger.dataset.menuId === current);
+    const raw = Math.max(0, currentIndex) + delta;
+    const nextIndex = loop ? (raw + triggers.length) % triggers.length : Math.max(0, Math.min(triggers.length - 1, raw));
+    const next = triggers[nextIndex];
+    next?.focus();
+    if (openNext && next?.dataset.menuId) setValue(next.dataset.menuId);
+  }, [loop]);
+  const context = React.useMemo(() => ({ value, setValue, move, direction, tabStop, setTabStop }), [value, move, direction, tabStop]);
+  return <MenubarRootContext.Provider value={context}><div {...props} ref={mergeRefs(forwardedRef, rootRef)} role="menubar" data-slot="menubar" className={join('ef-menubar', className)} onKeyDown={onKeyDown}>{children}</div></MenubarRootContext.Provider>;
+});
+
+export function MenubarMenu({ children, onOpenChange }) {
+  const root = React.useContext(MenubarRootContext);
+  const id = React.useId();
+  const open = root?.value === id;
+  const setOpen = next => {
+    root?.setValue(next ? id : null);
+    onOpenChange?.(next);
   };
-  const onBtnKey = (e, i) => {
-    if (e.key === 'ArrowRight' || e.key === 'ArrowLeft') { const step = horizontalStep(e.key); e.preventDefault(); if (open !== null) { kbdOpen.current = true; setOpen((i + step + menus.length) % menus.length); } focusBtn(i + step); }
-    else if (e.key === 'ArrowDown') { e.preventDefault(); kbdOpen.current = true; setOpen(i); }
-  };
-  const onPanelKey = (e, i) => {
-    if (e.key === 'ArrowDown') { e.preventDefault(); focusItem(1); }
-    else if (e.key === 'ArrowUp') { e.preventDefault(); focusItem(-1); }
-    else if (e.key === 'Home') { e.preventDefault(); focusItem('first'); }
-    else if (e.key === 'End') { e.preventDefault(); focusItem('last'); }
-    else if (e.key === 'ArrowRight' || e.key === 'ArrowLeft') { const step = horizontalStep(e.key); e.preventDefault(); kbdOpen.current = true; setOpen((i + step + menus.length) % menus.length); }
-    else if (e.key.length === 1 && /\S/.test(e.key) && !e.metaKey && !e.ctrlKey && !e.altKey) typeahead(e);
-  };
-  return (
-    <div {...rest} ref={ref} role="menubar" className={`ef-menubar${className ? ' ' + className : ''}`} style={style}>
-      {menus.map((m, i) => (
-        <span key={m.label} className="ef-menubar__wrap">
-          <button type="button" aria-haspopup="menu" aria-expanded={open === i} className={`ef-menubar__btn${open === i ? ' ef-menubar__btn--on' : ''}`}
-            onKeyDown={e => onBtnKey(e, i)}
-            onClick={() => setOpen(open === i ? null : i)} onMouseEnter={() => { if (open !== null) setOpen(i); }}>{m.label}</button>
-          {open === i ? (
-            <div role="menu" className="ef-menubar__panel" onKeyDown={e => onPanelKey(e, i)}>
-              {m.items.map((it, j) => it === 'separator'
-                ? <div key={'s' + j} className="ef-menubar__sep"></div>
-                : (
-                  <button key={it.id} type="button" role="menuitem" disabled={it.disabled} className={`ef-menubar__item${it.danger ? ' ef-menubar__item--danger' : ''}`}
-                    onClick={() => { setOpen(null); if (onSelect) onSelect(it.id); if (it.onClick) it.onClick(); }}>
-                    {it.icon ? <span className="ef-menubar__item__icon"><Icon name={it.icon} size={15} /></span> : null}
-                    {it.label}
-                    {it.kbd ? <span className="ef-menubar__kbd">{it.kbd}</span> : null}
-                  </button>
-                ))}
-            </div>
-          ) : null}
-        </span>
-      ))}
-    </div>
-  );
+  return <MenubarMenuContext.Provider value={{ id }}><DropdownMenu open={open} onOpenChange={setOpen}>{children}</DropdownMenu></MenubarMenuContext.Provider>;
 }
+
+export const MenubarTrigger = React.forwardRef(function MenubarTrigger({ className, onKeyDown, onMouseEnter, onFocus, tabIndex, ...props }, ref) {
+  const root = React.useContext(MenubarRootContext);
+  const menu = React.useContext(MenubarMenuContext);
+  React.useEffect(() => { root?.setTabStop(current => current ?? menu?.id); }, [root?.setTabStop, menu?.id]);
+  const keyboard = event => {
+    onKeyDown?.(event);
+    if (event.defaultPrevented) return;
+    if (event.key === 'ArrowDown') {
+      event.preventDefault();
+      root?.setValue(menu?.id);
+    } else if (event.key === 'ArrowRight' || event.key === 'ArrowLeft') {
+      event.preventDefault();
+      const visualDelta = event.key === 'ArrowRight' ? 1 : -1;
+      root?.move(menu?.id, root.direction === 'rtl' ? -visualDelta : visualDelta, root.value !== null);
+    }
+  };
+  const enter = event => {
+    onMouseEnter?.(event);
+    if (!event.defaultPrevented && root?.value !== null) root.setValue(menu?.id);
+  };
+  const focus = event => { root?.setTabStop(menu?.id); onFocus?.(event); };
+  return <DropdownMenuTrigger {...props} ref={ref} role="menuitem" slot="menubar-trigger" data-menu-id={menu?.id} tabIndex={tabIndex ?? (root?.tabStop === null || root?.tabStop === menu?.id ? 0 : -1)} className={join('ef-menubar__trigger', className)} onKeyDown={keyboard} onMouseEnter={enter} onFocus={focus} />;
+});
+
+export const MenubarContent = React.forwardRef(function MenubarContent({ align = 'start', alignOffset = -4, sideOffset = 8, onKeyDown, ...props }, ref) {
+  const root = React.useContext(MenubarRootContext);
+  const menu = React.useContext(MenubarMenuContext);
+  const keyboard = event => {
+    onKeyDown?.(event);
+    if (event.defaultPrevented || (event.key !== 'ArrowRight' && event.key !== 'ArrowLeft')) return;
+    event.preventDefault();
+    const visualDelta = event.key === 'ArrowRight' ? 1 : -1;
+    root?.move(menu?.id, root.direction === 'rtl' ? -visualDelta : visualDelta, true);
+  };
+  return <DropdownMenuContent {...props} ref={ref} slot="menubar-content" align={align} alignOffset={alignOffset} sideOffset={sideOffset} onKeyDown={keyboard} />;
+});
+
+export function MenubarPortal(props) { return <DropdownMenuPortal {...props} />; }
+export const MenubarGroup = React.forwardRef(function MenubarGroup(props, ref) { return <DropdownMenuGroup {...props} ref={ref} slot="menubar-group" />; });
+export function MenubarRadioGroup(props) { return <DropdownMenuRadioGroup {...props} slot="menubar-radio-group" />; }
+export const MenubarLabel = React.forwardRef(function MenubarLabel(props, ref) { return <DropdownMenuLabel {...props} ref={ref} slot="menubar-label" />; });
+export const MenubarSeparator = React.forwardRef(function MenubarSeparator(props, ref) { return <DropdownMenuSeparator {...props} ref={ref} slot="menubar-separator" />; });
+export const MenubarShortcut = React.forwardRef(function MenubarShortcut(props, ref) { return <DropdownMenuShortcut {...props} ref={ref} slot="menubar-shortcut" />; });
+export const MenubarItem = React.forwardRef(function MenubarItem(props, ref) { return <DropdownMenuItem {...props} ref={ref} slot="menubar-item" />; });
+export const MenubarCheckboxItem = React.forwardRef(function MenubarCheckboxItem(props, ref) { return <DropdownMenuCheckboxItem {...props} ref={ref} slot="menubar-checkbox-item" />; });
+export const MenubarRadioItem = React.forwardRef(function MenubarRadioItem(props, ref) { return <DropdownMenuRadioItem {...props} ref={ref} slot="menubar-radio-item" />; });
+export function MenubarSub(props) { return <DropdownMenuSub {...props} />; }
+export const MenubarSubTrigger = React.forwardRef(function MenubarSubTrigger(props, ref) { return <DropdownMenuSubTrigger {...props} ref={ref} slot="menubar-sub-trigger" />; });
+export const MenubarSubContent = React.forwardRef(function MenubarSubContent(props, ref) { return <DropdownMenuSubContent {...props} ref={ref} slot="menubar-sub-content" />; });
