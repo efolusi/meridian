@@ -1,8 +1,13 @@
-Small status pill; `dot` adds a leading status dot.
+Compact status or category label.
 
 ```jsx
-<Badge tone="success" dot>Active</Badge>
-<Badge tone="accent">Beta</Badge>
+<Badge>Default</Badge>
+<Badge variant="secondary">Secondary</Badge>
+<Badge variant="destructive">Destructive</Badge>
+<Badge variant="outline">Outline</Badge>
+<Badge variant="ghost">Ghost</Badge>
+<Badge asChild variant="link"><a href="/updates">Updates</a></Badge>
 ```
 
-Tones: `neutral | accent | success | warning | danger | brand`. Sizes `sm` (20px) / `md` (24px).
+`badgeVariants` returns the root class names for semantic custom elements.
+Meridian's `tone`, `size`, and `dot` props remain additive helpers.

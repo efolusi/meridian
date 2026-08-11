@@ -2,7 +2,7 @@
   "name": "skeleton",
   "type": "registry:ui",
   "title": "Skeleton",
-  "description": "Loading placeholder \u2014 soft pulse, no shimmer.",
+  "description": "Loading placeholder that accepts native div attributes, consumer classes, and refs.",
   "dependencies": [
     "react"
   ],
@@ -14,17 +14,17 @@
     {
       "path": "components/data/Skeleton.jsx",
       "type": "registry:ui",
-      "content": "import React from 'react';\nimport { injectEfCss } from '../forms/Button.jsx';\nconst CSS = `\n@keyframes ef-skel{0%,100%{opacity:1}50%{opacity:.45}}\n.ef-skel{display:block;background:var(--border-default);border-radius:var(--radius-sm);animation:ef-skel 1.4s var(--ease-in-out) infinite}\n.ef-skel--circle{border-radius:var(--radius-full)}\n`;\nexport function Skeleton({ variant = 'text', width, height, lines = 1, style, className, ...rest }) {\n  injectEfCss('ef-css-skel', CSS);\n  const h = height != null ? height : variant === 'text' ? 12 : variant === 'circle' ? (width || 32) : 64;\n  const w = width != null ? width : variant === 'circle' ? h : '100%';\n  if (variant === 'text' && lines > 1) {\n    return (\n      <span {...rest} style={{ display: 'flex', flexDirection: 'column', gap: 8, ...style }} className={className}>\n        {Array.from({ length: lines }, (_, i) => (\n          <span key={i} className=\"ef-skel\" style={{ width: i === lines - 1 ? '60%' : w, height: h }}></span>\n        ))}\n      </span>\n    );\n  }\n  return <span className={`ef-skel${variant === 'circle' ? ' ef-skel--circle' : ''}${className ? ' ' + className : ''}`} style={{ width: w, height: h, ...style }}></span>;\n}\n"
+      "content": "import React from 'react';\nimport { injectEfCss } from '../forms/Button.jsx';\n\nconst CSS = `\n@keyframes ef-skel{0%,100%{opacity:1}50%{opacity:.45}}\n.ef-skel{display:block;background:var(--border-default);border-radius:var(--radius-sm);animation:ef-skel 1.4s var(--ease-in-out) infinite}\n.ef-skel--circle{border-radius:var(--radius-full)}\n.ef-skel__lines{display:flex;flex-direction:column;gap:8px}\n`;\n\nexport const Skeleton = React.forwardRef(function Skeleton(\n  { variant = 'text', width, height, lines = 1, style, className, ...rest },\n  ref,\n) {\n  injectEfCss('ef-css-skel', CSS);\n  const h = height != null ? height : variant === 'text' ? 12 : variant === 'circle' ? (width || 32) : 64;\n  const w = width != null ? width : variant === 'circle' ? h : '100%';\n\n  if (variant === 'text' && lines > 1) {\n    return (\n      <div\n        {...rest}\n        ref={ref}\n        data-slot=\"skeleton\"\n        className={`ef-skel__lines${className ? ' ' + className : ''}`}\n        style={style}\n      >\n        {Array.from({ length: lines }, (_, index) => (\n          <div\n            aria-hidden=\"true\"\n            className=\"ef-skel\"\n            key={index}\n            style={{ width: index === lines - 1 ? '60%' : w, height: h }}\n          />\n        ))}\n      </div>\n    );\n  }\n\n  return (\n    <div\n      {...rest}\n      ref={ref}\n      data-slot=\"skeleton\"\n      className={`ef-skel${variant === 'circle' ? ' ef-skel--circle' : ''}${className ? ' ' + className : ''}`}\n      style={{ width: w, height: h, ...style }}\n    />\n  );\n});\n"
     },
     {
       "path": "components/data/Skeleton.d.ts",
       "type": "registry:component",
-      "content": "export interface SkeletonProps {\n  /** @default 'text' */\n  variant?: 'text' | 'rect' | 'circle';\n  width?: number | string;\n  height?: number | string;\n  /** Stacked text lines (last one 60% wide) @default 1 */\n  lines?: number;\n  style?: React.CSSProperties;\n  className?: string;\n}\nexport declare function Skeleton(props: SkeletonProps): React.JSX.Element;\n"
+      "content": "export interface SkeletonProps extends React.HTMLAttributes<HTMLDivElement> {\n  /** Meridian legacy shape helper. @default 'text' */\n  variant?: 'text' | 'rect' | 'circle';\n  /** Meridian legacy width helper. */\n  width?: number | string;\n  /** Meridian legacy height helper. */\n  height?: number | string;\n  /** Meridian legacy stacked text lines helper. @default 1 */\n  lines?: number;\n}\nexport declare const Skeleton: React.ForwardRefExoticComponent<SkeletonProps & React.RefAttributes<HTMLDivElement>>;\n"
     },
     {
       "path": "components/data/Skeleton.prompt.md",
       "type": "registry:component",
-      "content": "Loading placeholder \u2014 soft pulse, no shimmer.\n\n```jsx\n<Skeleton variant=\"circle\" width={32} />\n<Skeleton lines={3} />\n<Skeleton variant=\"rect\" height={120} />\n```\n"
+      "content": "Loading placeholder that accepts native div attributes, consumer classes, and refs.\n\n```jsx\n<Skeleton className=\"profile-avatar\" />\n<Skeleton aria-label=\"Loading account details\" />\n```\n\nMeridian also provides additive shape helpers:\n\n```jsx\n<Skeleton variant=\"circle\" width={32} />\n<Skeleton lines={3} />\n<Skeleton variant=\"rect\" height={120} />\n```\n"
     }
   ],
   "categories": [

@@ -1,16 +1,33 @@
 import React from 'react';
-import { Icon } from '../icons/Icon.jsx';
 import { injectEfCss } from '../forms/Button.jsx';
+
 const CSS = `
 @keyframes ef-spinner{to{transform:rotate(360deg)}}
-.ef-spinner{display:inline-flex;color:var(--text-muted);animation:ef-spinner .7s linear infinite}
+.ef-spinner{display:inline-block;flex:none;color:var(--text-muted);animation:ef-spinner .7s linear infinite}
 `;
-export function Spinner({ size = 16, label, style, className, ...rest }) {
+
+export const Spinner = React.forwardRef(function Spinner(
+  { size = 16, label, className, width, height, ...props },
+  ref,
+) {
   injectEfCss('ef-css-spinner', CSS);
   return (
-    <span {...rest} role="status" aria-label={label || 'Loading'} style={{ display: 'inline-flex', alignItems: 'center', gap: 8, ...style }} className={className}>
-      <span className="ef-spinner"><Icon name="loader-circle" size={size} /></span>
-      {label ? <span style={{ fontSize: 'var(--text-sm)', color: 'var(--text-muted)' }}>{label}</span> : null}
-    </span>
+    <svg
+      ref={ref}
+      role="status"
+      aria-label={label || 'Loading'}
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      width={width ?? size}
+      height={height ?? size}
+      className={`ef-spinner${className ? ' ' + className : ''}`}
+      {...props}
+    >
+      <path d="M21 12a9 9 0 1 1-6.219-8.56" />
+    </svg>
   );
-}
+});

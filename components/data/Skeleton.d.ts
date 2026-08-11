@@ -1,11 +1,11 @@
-export interface SkeletonProps {
-  /** @default 'text' */
+export interface SkeletonProps extends React.HTMLAttributes<HTMLDivElement> {
+  /** Meridian legacy shape helper. @default 'text' */
   variant?: 'text' | 'rect' | 'circle';
+  /** Meridian legacy width helper. */
   width?: number | string;
+  /** Meridian legacy height helper. */
   height?: number | string;
-  /** Stacked text lines (last one 60% wide) @default 1 */
+  /** Meridian legacy stacked text lines helper. @default 1 */
   lines?: number;
-  style?: React.CSSProperties;
-  className?: string;
 }
-export declare function Skeleton(props: SkeletonProps): React.JSX.Element;
+export declare const Skeleton: React.ForwardRefExoticComponent<SkeletonProps & React.RefAttributes<HTMLDivElement>>;

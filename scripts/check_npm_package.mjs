@@ -26,7 +26,7 @@ if (missing.length) {
   console.error('missing or unrenderable exports:', missing.join(', '));
   process.exit(1);
 }
-for (const helper of ['buttonVariants', 'markerVariants']) {
+for (const helper of ['badgeVariants', 'buttonVariants', 'markerVariants']) {
   if (typeof barrel[helper] !== 'function') {
     console.error(`missing public style helper: ${helper}`);
     process.exit(1);

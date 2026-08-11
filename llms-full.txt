@@ -1382,7 +1382,14 @@ export declare function LineChart(props: LineChartProps): React.JSX.Element;
 
 Group: data · Source: /components/data/Skeleton.jsx · Exports: Skeleton
 
-Loading placeholder — soft pulse, no shimmer.
+Loading placeholder that accepts native div attributes, consumer classes, and refs.
+
+```jsx
+<Skeleton className="profile-avatar" />
+<Skeleton aria-label="Loading account details" />
+```
+
+Meridian also provides additive shape helpers:
 
 ```jsx
 <Skeleton variant="circle" width={32} />
@@ -1391,17 +1398,17 @@ Loading placeholder — soft pulse, no shimmer.
 ```
 
 ```ts
-export interface SkeletonProps {
-  /** @default 'text' */
+export interface SkeletonProps extends React.HTMLAttributes<HTMLDivElement> {
+  /** Meridian legacy shape helper. @default 'text' */
   variant?: 'text' | 'rect' | 'circle';
+  /** Meridian legacy width helper. */
   width?: number | string;
+  /** Meridian legacy height helper. */
   height?: number | string;
-  /** Stacked text lines (last one 60% wide) @default 1 */
+  /** Meridian legacy stacked text lines helper. @default 1 */
   lines?: number;
-  style?: React.CSSProperties;
-  className?: string;
 }
-export declare function Skeleton(props: SkeletonProps): React.JSX.Element;
+export declare const Skeleton: React.ForwardRefExoticComponent<SkeletonProps & React.RefAttributes<HTMLDivElement>>;
 ```
 
 #### Sparkline
@@ -1825,26 +1832,39 @@ export declare function AvatarGroup(props: AvatarGroupProps): React.JSX.Element;
 
 Group: display · Source: /components/display/Badge.jsx · Exports: Badge
 
-Small status pill; `dot` adds a leading status dot.
+Compact status or category label.
 
 ```jsx
-<Badge tone="success" dot>Active</Badge>
-<Badge tone="accent">Beta</Badge>
+<Badge>Default</Badge>
+<Badge variant="secondary">Secondary</Badge>
+<Badge variant="destructive">Destructive</Badge>
+<Badge variant="outline">Outline</Badge>
+<Badge variant="ghost">Ghost</Badge>
+<Badge asChild variant="link"><a href="/updates">Updates</a></Badge>
 ```
 
-Tones: `neutral | accent | success | warning | danger | brand`. Sizes `sm` (20px) / `md` (24px).
+`badgeVariants` returns the root class names for semantic custom elements.
+Meridian's `tone`, `size`, and `dot` props remain additive helpers.
 
 ```ts
+export type BadgeVariant = 'default' | 'secondary' | 'destructive' | 'outline' | 'ghost' | 'link';
+export type BadgeTone = 'neutral' | 'accent' | 'success' | 'warning' | 'danger' | 'brand';
+
 export interface BadgeProps extends React.HTMLAttributes<HTMLSpanElement> {
-  /** @default 'neutral' */
-  tone?: 'neutral' | 'accent' | 'success' | 'warning' | 'danger' | 'brand';
-  /** @default 'sm' */
+  /** @default 'default' */
+  variant?: BadgeVariant;
+  /** Meridian legacy color alias. */
+  tone?: BadgeTone;
+  /** Meridian legacy size helper. @default 'sm' */
   size?: 'sm' | 'md';
-  /** Leading status dot */
+  /** Meridian legacy leading status dot. */
   dot?: boolean;
-  children?: React.ReactNode;
+  /** Render the single child as the badge root. */
+  asChild?: boolean;
 }
-export declare function Badge(props: BadgeProps): React.JSX.Element;
+
+export declare function badgeVariants(options?: Pick<BadgeProps, 'variant' | 'tone' | 'size'> & { className?: string }): string;
+export declare const Badge: React.ForwardRefExoticComponent<BadgeProps & React.RefAttributes<HTMLElement>>;
 ```
 
 #### Card
@@ -2490,23 +2510,23 @@ export declare function Progress(props: ProgressProps): React.JSX.Element;
 
 Group: feedback · Source: /components/feedback/Spinner.jsx · Exports: Spinner
 
-Standalone loading indicator (Button has its own via `loading`).
+Accessible SVG loading indicator. It accepts native SVG attributes and forwards its ref.
 
 ```jsx
 <Spinner />
-<Spinner size={20} label="Loading customers…" />
+<Spinner aria-label="Saving changes" width={20} height={20} />
 ```
 
+The additive `size` and `label` aliases remain available for existing Meridian code.
+
 ```ts
-export interface SpinnerProps {
-  /** Px @default 16 */
+export interface SpinnerProps extends React.SVGProps<SVGSVGElement> {
+  /** Meridian legacy pixel-size helper. @default 16 */
   size?: number;
-  /** Optional text right of the spinner (also the aria-label) */
+  /** Meridian legacy accessible-label alias. */
   label?: string;
-  style?: React.CSSProperties;
-  className?: string;
 }
-export declare function Spinner(props: SpinnerProps): React.JSX.Element;
+export declare const Spinner: React.ForwardRefExoticComponent<SpinnerProps & React.RefAttributes<SVGSVGElement>>;
 ```
 
 #### Toast

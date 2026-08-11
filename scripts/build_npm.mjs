@@ -22,7 +22,7 @@ const Babel = require('@babel/standalone');
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const DIST = path.join(ROOT, 'dist');
 const CHECK = process.argv.includes('--check');
-const PUBLIC_HELPERS = new Set(['buttonVariants', 'markerVariants']);
+const PUBLIC_HELPERS = new Set(['badgeVariants', 'buttonVariants', 'markerVariants']);
 
 const pkg = JSON.parse(fs.readFileSync(path.join(ROOT, 'package.json'), 'utf8'));
 const version = JSON.parse(fs.readFileSync(path.join(ROOT, '_ds_manifest.json'), 'utf8')).version;

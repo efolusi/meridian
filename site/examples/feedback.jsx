@@ -83,7 +83,9 @@ export function SpinnerDemo() {
     <div style={{ display: 'flex', gap: 22, alignItems: 'center' }}>
       <Spinner size={14} />
       <Spinner size={20} />
-      <Spinner size={28} label="Restoring backup…" />
+      <span style={{ display: 'inline-flex', alignItems: 'center', gap: 8, fontSize: 'var(--text-sm)', color: 'var(--text-muted)' }}>
+        <Spinner size={28} aria-label="Restoring backup" /> Restoring backup…
+      </span>
     </div>
   );
 }

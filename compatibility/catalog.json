@@ -39,7 +39,15 @@
       "tests": ["tests/attachment-compatibility.test.jsx"]
     },
     { "name": "Avatar", "status": "unverified" },
-    { "name": "Badge", "status": "unverified" },
+    {
+      "name": "Badge",
+      "status": "proven",
+      "requiredExports": ["Badge"],
+      "requiredModuleExports": ["badgeVariants"],
+      "sourceFiles": ["components/display/Badge.jsx", "components/display/Badge.d.ts"],
+      "registryItems": ["site/registry/badge.json"],
+      "tests": ["tests/simple-primitives-compatibility.test.jsx"]
+    },
     { "name": "Breadcrumb", "status": "unverified" },
     { "name": "Bubble", "status": "unverified" },
     {
@@ -128,9 +136,23 @@
     },
     { "name": "Sheet", "status": "unverified" },
     { "name": "Sidebar", "status": "unverified" },
-    { "name": "Skeleton", "status": "unverified" },
+    {
+      "name": "Skeleton",
+      "status": "proven",
+      "requiredExports": ["Skeleton"],
+      "sourceFiles": ["components/data/Skeleton.jsx", "components/data/Skeleton.d.ts"],
+      "registryItems": ["site/registry/skeleton.json"],
+      "tests": ["tests/simple-primitives-compatibility.test.jsx"]
+    },
     { "name": "Slider", "status": "unverified" },
-    { "name": "Spinner", "status": "unverified" },
+    {
+      "name": "Spinner",
+      "status": "proven",
+      "requiredExports": ["Spinner"],
+      "sourceFiles": ["components/feedback/Spinner.jsx", "components/feedback/Spinner.d.ts"],
+      "registryItems": ["site/registry/spinner.json"],
+      "tests": ["tests/simple-primitives-compatibility.test.jsx"]
+    },
     { "name": "Switch", "status": "unverified" },
     { "name": "Table", "status": "unverified" },
     { "name": "Tabs", "status": "unverified" },

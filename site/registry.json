@@ -1199,7 +1199,7 @@
       "name": "skeleton",
       "type": "registry:ui",
       "title": "Skeleton",
-      "description": "Loading placeholder \u2014 soft pulse, no shimmer.",
+      "description": "Loading placeholder that accepts native div attributes, consumer classes, and refs.",
       "dependencies": [
         "react"
       ],
@@ -1573,7 +1573,7 @@
       "name": "badge",
       "type": "registry:ui",
       "title": "Badge",
-      "description": "Small status pill; `dot` adds a leading status dot.",
+      "description": "Compact status or category label.",
       "dependencies": [
         "react"
       ],
@@ -2250,14 +2250,13 @@
       "name": "spinner",
       "type": "registry:ui",
       "title": "Spinner",
-      "description": "Standalone loading indicator (Button has its own via `loading`).",
+      "description": "Accessible SVG loading indicator. It accepts native SVG attributes and forwards its ref.",
       "dependencies": [
         "react"
       ],
       "registryDependencies": [
         "https://meridian.efolusi.com/site/registry/meridian-base.json",
-        "https://meridian.efolusi.com/site/registry/button.json",
-        "https://meridian.efolusi.com/site/registry/icon.json"
+        "https://meridian.efolusi.com/site/registry/button.json"
       ],
       "files": [
         {

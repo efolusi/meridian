@@ -47,6 +47,17 @@ similarity.
 
 ## Proven adapters
 
+- `Badge` and `badgeVariants` support the complete six-variant contract,
+  semantic link composition through `asChild`, native attributes, consumer
+  classes, ref forwarding, types, registry installation, demos, and tests.
+  Meridian's tone, size, and status-dot helpers remain additive extensions.
+- `Spinner` renders an accessible SVG status indicator, accepts native SVG
+  props and accessible-name overrides, forwards refs, and includes types,
+  registry installation, demos, and tests. Meridian's numeric size and label
+  aliases remain additive extensions.
+- `Skeleton` renders a native div, forwards refs and HTML attributes, and
+  includes types, registry installation, demos, and tests. Meridian's shape,
+  dimension, and multi-line helpers remain additive extensions.
 - `Label` preserves native label attributes and click-to-focus association,
   forwards refs, supports consumer classes/styles, and includes types, registry
   installation, demos, and tests. Meridian's required marker and hint remain

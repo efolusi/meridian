@@ -57,16 +57,23 @@ export function AvatarDemo() {
   );
 }
 
-// @demo Badge Tones
+// @demo Badge Variants and status tones
 export function BadgeDemo() {
   const { Badge } = window.EfolusiDesignSystem_4ffc3d;
   return (
-    <div style={{ display: 'flex', gap: 10, alignItems: 'center', flexWrap: 'wrap' }}>
-      <Badge tone="neutral">Draft</Badge>
-      <Badge tone="accent">Beta</Badge>
-      <Badge tone="success" dot>Live</Badge>
-      <Badge tone="warning" dot>Degraded</Badge>
-      <Badge tone="danger">Failed</Badge>
+    <div style={{ display: 'grid', gap: 12 }}>
+      <div style={{ display: 'flex', gap: 10, alignItems: 'center', flexWrap: 'wrap' }}>
+        <Badge>Default</Badge>
+        <Badge variant="secondary">Secondary</Badge>
+        <Badge variant="destructive">Destructive</Badge>
+        <Badge variant="outline">Outline</Badge>
+        <Badge variant="ghost">Ghost</Badge>
+      </div>
+      <div style={{ display: 'flex', gap: 10, alignItems: 'center', flexWrap: 'wrap' }}>
+        <Badge tone="success" dot>Live</Badge>
+        <Badge tone="warning" dot>Degraded</Badge>
+        <Badge tone="danger">Failed</Badge>
+      </div>
     </div>
   );
 }

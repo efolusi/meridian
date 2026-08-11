@@ -1,9 +1,7 @@
-export interface SpinnerProps {
-  /** Px @default 16 */
+export interface SpinnerProps extends React.SVGProps<SVGSVGElement> {
+  /** Meridian legacy pixel-size helper. @default 16 */
   size?: number;
-  /** Optional text right of the spinner (also the aria-label) */
+  /** Meridian legacy accessible-label alias. */
   label?: string;
-  style?: React.CSSProperties;
-  className?: string;
 }
-export declare function Spinner(props: SpinnerProps): React.JSX.Element;
+export declare const Spinner: React.ForwardRefExoticComponent<SpinnerProps & React.RefAttributes<SVGSVGElement>>;
