@@ -97,7 +97,14 @@
       "registryItems": ["site/registry/breadcrumb.json"],
       "tests": ["tests/breadcrumb-compatibility.test.jsx"]
     },
-    { "name": "Bubble", "status": "unverified" },
+    {
+      "name": "Bubble",
+      "status": "proven",
+      "requiredExports": ["BubbleGroup", "Bubble", "BubbleContent", "BubbleReactions"],
+      "sourceFiles": ["components/ai/Bubble.jsx", "components/ai/Bubble.d.ts"],
+      "registryItems": ["site/registry/bubble.json"],
+      "tests": ["tests/bubble-compatibility.test.jsx"]
+    },
     {
       "name": "Button",
       "status": "proven",
@@ -110,9 +117,24 @@
       "registryItems": ["site/registry/button.json"],
       "tests": ["tests/button-compatibility.test.jsx"]
     },
-    { "name": "Button Group", "status": "unverified" },
+    {
+      "name": "Button Group",
+      "status": "proven",
+      "requiredExports": ["ButtonGroup", "ButtonGroupText", "ButtonGroupSeparator"],
+      "requiredModuleExports": ["buttonGroupVariants"],
+      "sourceFiles": ["components/forms/ButtonGroup.jsx", "components/forms/ButtonGroup.d.ts"],
+      "registryItems": ["site/registry/buttongroup.json"],
+      "tests": ["tests/button-group-compatibility.test.jsx"]
+    },
     { "name": "Calendar", "status": "unverified" },
-    { "name": "Card", "status": "unverified" },
+    {
+      "name": "Card",
+      "status": "proven",
+      "requiredExports": ["Card", "CardHeader", "CardTitle", "CardDescription", "CardAction", "CardContent", "CardFooter"],
+      "sourceFiles": ["components/display/Card.jsx", "components/display/Card.d.ts"],
+      "registryItems": ["site/registry/card.json"],
+      "tests": ["tests/card-compatibility.test.jsx"]
+    },
     { "name": "Carousel", "status": "unverified" },
     { "name": "Chart", "status": "unverified" },
     {
@@ -137,7 +159,15 @@
     { "name": "Data Table", "status": "unverified" },
     { "name": "Date Picker", "status": "unverified" },
     { "name": "Dialog", "status": "unverified" },
-    { "name": "Direction", "status": "unverified" },
+    {
+      "name": "Direction",
+      "status": "proven",
+      "requiredExports": ["DirectionProvider"],
+      "requiredModuleExports": ["useDirection"],
+      "sourceFiles": ["components/display/Direction.jsx", "components/display/Direction.d.ts"],
+      "registryItems": ["site/registry/direction.json"],
+      "tests": ["tests/direction.test.jsx"]
+    },
     { "name": "Drawer", "status": "unverified" },
     { "name": "Dropdown Menu", "status": "unverified" },
     { "name": "Empty", "status": "unverified" },

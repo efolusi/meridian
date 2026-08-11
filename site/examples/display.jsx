@@ -41,7 +41,7 @@ export function DirectionProviderDemo() {
   const [value, setValue] = React.useState('overview');
   return (
     <div dir="rtl" lang="ar" style={{ width: '100%', maxWidth: 420 }}>
-      <DirectionProvider direction="rtl">
+      <DirectionProvider dir="rtl">
         <Tabs value={value} onChange={setValue} items={[
           { id: 'overview', label: 'نظرة عامة' },
           { id: 'activity', label: 'النشاط' },
@@ -96,12 +96,17 @@ export function BadgeDemo() {
 
 // @demo Card Header, body, footer
 export function CardDemo() {
-  const { Card, Badge, Button } = window.EfolusiDesignSystem_4ffc3d;
+  const { Card, CardAction, CardContent, CardDescription, CardFooter, CardHeader, CardTitle, Badge, Button } = window.EfolusiDesignSystem_4ffc3d;
   return (
     <div style={{ width: 380 }}>
-      <Card title="Nightly export" subtitle="Runs at 02:00 UTC" actions={<Badge tone="success" dot>Live</Badge>}
-        footer={<Button variant="ghost" size="sm">View history</Button>}>
-        <p style={{ margin: 0, fontSize: 14, lineHeight: 1.6, color: 'var(--text-secondary)' }}>Exports every closed conversation to your warehouse as Parquet.</p>
+      <Card>
+        <CardHeader>
+          <CardTitle>Nightly export</CardTitle>
+          <CardDescription>Runs at 02:00 UTC</CardDescription>
+          <CardAction><Badge tone="success" dot>Live</Badge></CardAction>
+        </CardHeader>
+        <CardContent>Exports every closed conversation to your warehouse as Parquet.</CardContent>
+        <CardFooter><Button variant="ghost" size="sm">View history</Button></CardFooter>
       </Card>
     </div>
   );

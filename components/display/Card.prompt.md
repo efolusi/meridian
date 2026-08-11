@@ -1,10 +1,15 @@
-The surface container: white, 1px sand border, 8px radius, warm shadow.
+# Card
+
+Compose Card from header, title, description, action, content, and footer parts. Use `size="sm"` for compact surfaces or set `--card-spacing` on the root when a layout needs a deliberate custom inset.
 
 ```jsx
-<Card title="Invite your team" subtitle="Works better together." actions={<Button size="sm" variant="secondary">Invite</Button>} footer={<span>3 of 5 seats used</span>}>
-  …content…
+<Card>
+  <CardHeader>
+    <CardTitle>Deployment</CardTitle>
+    <CardDescription>Production release readiness.</CardDescription>
+    <CardAction><Button size="sm">Review</Button></CardAction>
+  </CardHeader>
+  <CardContent>All checks passed.</CardContent>
+  <CardFooter><Button>Deploy</Button></CardFooter>
 </Card>
-<Card interactive>Hover-lifts 2px — use for clickable cards.</Card>
 ```
-
-`padding` (default 20), `elevated`, `interactive`. Header renders only when `title`/`actions` set.

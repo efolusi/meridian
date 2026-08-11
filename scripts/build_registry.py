@@ -38,6 +38,14 @@ def file_entry(path, ftype, embed):
 HOST = "https://meridian.efolusi.com/site/registry"
 BASE_ITEM = "meridian-base"
 
+# Registry item names are install contracts. Keep them stable when a source
+# gains compositional exports whose declaration order differs from the root.
+REGISTRY_NAME_OVERRIDES = {
+    "components/ai/Bubble.jsx": "bubble",
+    "components/display/Card.jsx": "card",
+    "components/display/Direction.jsx": "direction",
+}
+
 
 def _source_to_item_name():
     """Map a component sourcePath to the registry item name that ships it."""
@@ -45,7 +53,10 @@ def _source_to_item_name():
     by_source = {}
     for c in manifest["components"]:
         by_source.setdefault(c["sourcePath"], []).append(c["name"])
-    return {src: names[0].lower() for src, names in by_source.items()}, by_source
+    return {
+        src: REGISTRY_NAME_OVERRIDES.get(src, names[0].lower())
+        for src, names in by_source.items()
+    }, by_source
 
 
 def _registry_deps(jsx, name_of_source):
@@ -102,7 +113,7 @@ def component_items(embed):
             if extra.exists():
                 files.append(file_entry(extra, "registry:component", embed))
         deps = _registry_deps(jsx, name_of_source)
-        self_name = names[0].lower()
+        self_name = name_of_source[source]
         reg_deps = [f"{HOST}/{BASE_ITEM}.json"] + [
             f"{HOST}/{d}.json" for d in deps if d != self_name
         ]

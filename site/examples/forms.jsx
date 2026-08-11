@@ -36,7 +36,7 @@ export function ButtonLoading() {
 
 // @demo ButtonGroup Attached actions
 export function ButtonGroupDemo() {
-  const { ButtonGroup, Button, IconButton } = window.EfolusiDesignSystem_4ffc3d;
+  const { ButtonGroup, ButtonGroupSeparator, ButtonGroupText, Button, IconButton } = window.EfolusiDesignSystem_4ffc3d;
   return (
     <div style={{ display: 'flex', gap: 16, flexWrap: 'wrap', alignItems: 'center' }}>
       <ButtonGroup>
@@ -46,6 +46,9 @@ export function ButtonGroupDemo() {
       </ButtonGroup>
       <ButtonGroup>
         <IconButton variant="outline" icon="chevron-left" label="Previous" />
+        <ButtonGroupSeparator />
+        <ButtonGroupText>3 / 12</ButtonGroupText>
+        <ButtonGroupSeparator />
         <IconButton variant="outline" icon="chevron-right" label="Next" />
       </ButtonGroup>
     </div>

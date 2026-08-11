@@ -5,7 +5,7 @@ Supplies `ltr` or `rtl` to Meridian components whose horizontal keyboard behavio
 ```jsx
 <html dir="rtl">
   <body>
-    <DirectionProvider direction="rtl">
+<DirectionProvider dir="rtl">
       <App />
     </DirectionProvider>
   </body>

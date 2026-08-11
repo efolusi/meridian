@@ -81,6 +81,36 @@
       ]
     },
     {
+      "name": "bubble",
+      "type": "registry:ui",
+      "title": "BubbleGroup + Bubble + BubbleContent + BubbleReactions",
+      "description": "Use Bubble for compact conversational content. Group related bubbles, choose a semantic visual variant, align a sender's content to the end, and add reactions only when they remain useful after the message is read.",
+      "dependencies": [
+        "react"
+      ],
+      "registryDependencies": [
+        "https://meridian.efolusi.com/site/registry/meridian-base.json",
+        "https://meridian.efolusi.com/site/registry/button.json"
+      ],
+      "files": [
+        {
+          "path": "components/ai/Bubble.jsx",
+          "type": "registry:ui"
+        },
+        {
+          "path": "components/ai/Bubble.d.ts",
+          "type": "registry:component"
+        },
+        {
+          "path": "components/ai/Bubble.prompt.md",
+          "type": "registry:component"
+        }
+      ],
+      "categories": [
+        "ai"
+      ]
+    },
+    {
       "name": "chatmessage",
       "type": "registry:ui",
       "title": "ChatMessage",
@@ -435,7 +465,7 @@
       "registryDependencies": [
         "https://meridian.efolusi.com/site/registry/meridian-base.json",
         "https://meridian.efolusi.com/site/registry/button.json",
-        "https://meridian.efolusi.com/site/registry/directionprovider.json",
+        "https://meridian.efolusi.com/site/registry/direction.json",
         "https://meridian.efolusi.com/site/registry/icon.json"
       ],
       "files": [
@@ -1357,7 +1387,7 @@
       "registryDependencies": [
         "https://meridian.efolusi.com/site/registry/meridian-base.json",
         "https://meridian.efolusi.com/site/registry/button.json",
-        "https://meridian.efolusi.com/site/registry/directionprovider.json",
+        "https://meridian.efolusi.com/site/registry/direction.json",
         "https://meridian.efolusi.com/site/registry/iconbutton.json"
       ],
       "files": [
@@ -1602,8 +1632,8 @@
     {
       "name": "card",
       "type": "registry:ui",
-      "title": "Card",
-      "description": "The surface container: white, 1px sand border, 8px radius, warm shadow.",
+      "title": "CardHeader + CardTitle + CardDescription + CardAction + CardContent + CardFooter + Card",
+      "description": "Compose Card from header, title, description, action, content, and footer parts. Use `size=\"sm\"` for compact surfaces or set `--card-spacing` on the root when a layout needs a deliberate custom inset.",
       "dependencies": [
         "react"
       ],
@@ -1640,7 +1670,7 @@
       "registryDependencies": [
         "https://meridian.efolusi.com/site/registry/meridian-base.json",
         "https://meridian.efolusi.com/site/registry/button.json",
-        "https://meridian.efolusi.com/site/registry/directionprovider.json",
+        "https://meridian.efolusi.com/site/registry/direction.json",
         "https://meridian.efolusi.com/site/registry/icon.json"
       ],
       "files": [
@@ -1693,7 +1723,7 @@
       ]
     },
     {
-      "name": "directionprovider",
+      "name": "direction",
       "type": "registry:ui",
       "title": "DirectionProvider",
       "description": "Supplies `ltr` or `rtl` to Meridian components whose horizontal keyboard behavior must mirror. Set the same direction on the document so CSS and text flow agree with the component context.",
@@ -1854,7 +1884,7 @@
       "registryDependencies": [
         "https://meridian.efolusi.com/site/registry/meridian-base.json",
         "https://meridian.efolusi.com/site/registry/button.json",
-        "https://meridian.efolusi.com/site/registry/directionprovider.json"
+        "https://meridian.efolusi.com/site/registry/direction.json"
       ],
       "files": [
         {
@@ -2559,14 +2589,15 @@
     {
       "name": "buttongroup",
       "type": "registry:ui",
-      "title": "ButtonGroup",
-      "description": "Attaches adjacent Buttons/IconButtons into one segment (shared borders, squared inner corners). Use for tightly related actions of equal rank: zoom in/out, prev/next, split-button patterns.",
+      "title": "ButtonGroup + ButtonGroupText + ButtonGroupSeparator",
+      "description": "Group related controls horizontally or vertically. Use `ButtonGroupText` for a connected label or value and `ButtonGroupSeparator` for a visual division inside a shared control.",
       "dependencies": [
         "react"
       ],
       "registryDependencies": [
         "https://meridian.efolusi.com/site/registry/meridian-base.json",
-        "https://meridian.efolusi.com/site/registry/button.json"
+        "https://meridian.efolusi.com/site/registry/button.json",
+        "https://meridian.efolusi.com/site/registry/separator.json"
       ],
       "files": [
         {
@@ -2694,7 +2725,7 @@
       "registryDependencies": [
         "https://meridian.efolusi.com/site/registry/meridian-base.json",
         "https://meridian.efolusi.com/site/registry/button.json",
-        "https://meridian.efolusi.com/site/registry/directionprovider.json",
+        "https://meridian.efolusi.com/site/registry/direction.json",
         "https://meridian.efolusi.com/site/registry/formfield.json"
       ],
       "files": [
@@ -3191,7 +3222,7 @@
       "registryDependencies": [
         "https://meridian.efolusi.com/site/registry/meridian-base.json",
         "https://meridian.efolusi.com/site/registry/button.json",
-        "https://meridian.efolusi.com/site/registry/directionprovider.json",
+        "https://meridian.efolusi.com/site/registry/direction.json",
         "https://meridian.efolusi.com/site/registry/icon.json"
       ],
       "files": [
@@ -3378,7 +3409,7 @@
       "registryDependencies": [
         "https://meridian.efolusi.com/site/registry/meridian-base.json",
         "https://meridian.efolusi.com/site/registry/button.json",
-        "https://meridian.efolusi.com/site/registry/directionprovider.json",
+        "https://meridian.efolusi.com/site/registry/direction.json",
         "https://meridian.efolusi.com/site/registry/icon.json"
       ],
       "files": [

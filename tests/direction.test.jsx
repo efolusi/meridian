@@ -24,6 +24,13 @@ describe('DirectionProvider', () => {
     expect(screen.getByText('ltr')).toBeTruthy();
   });
 
+  it('accepts dir while keeping direction as an additive alias', () => {
+    const { rerender } = render(<DirectionProvider dir="rtl"><DirectionValue /></DirectionProvider>);
+    expect(screen.getByText('rtl')).toBeTruthy();
+    rerender(<DirectionProvider dir="rtl" direction="ltr"><DirectionValue /></DirectionProvider>);
+    expect(screen.getByText('ltr')).toBeTruthy();
+  });
+
   it('uses document direction when there is no provider', () => {
     const previous = document.documentElement.dir;
     document.documentElement.dir = 'rtl';

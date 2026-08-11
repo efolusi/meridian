@@ -3,8 +3,9 @@ import React from 'react';
 const DirectionContext = React.createContext(undefined);
 
 /** Supply reading direction to components whose keyboard behavior must mirror. */
-export function DirectionProvider({ direction = 'ltr', children }) {
-  const value = direction === 'rtl' ? 'rtl' : 'ltr';
+export function DirectionProvider({ dir, direction, children }) {
+  const requested = direction ?? dir ?? 'ltr';
+  const value = requested === 'rtl' ? 'rtl' : 'ltr';
   return <DirectionContext.Provider value={value}>{children}</DirectionContext.Provider>;
 }
 

@@ -1,5 +1,20 @@
 // Meridian docs demos — ai.
 
+// @demo Bubble Conversation bubbles
+export function BubbleDemo() {
+  const { Bubble, BubbleContent, BubbleGroup, BubbleReactions } = window.EfolusiDesignSystem_4ffc3d;
+  return (
+    <BubbleGroup style={{ width: 420 }}>
+      <Bubble variant="secondary"><BubbleContent>Did the production checks finish?</BubbleContent></Bubble>
+      <Bubble align="end">
+        <BubbleContent>Yes. All regions are healthy and the release is ready.</BubbleContent>
+        <BubbleReactions>✓ 3</BubbleReactions>
+      </Bubble>
+      <Bubble variant="ghost"><BubbleContent>Updated just now · deployment 8f21</BubbleContent></Bubble>
+    </BubbleGroup>
+  );
+}
+
 // @demo Marker Status, separator, and action
 export function MarkerDemo() {
   const { Marker, MarkerContent, MarkerIcon, Icon } = window.EfolusiDesignSystem_4ffc3d;

@@ -147,6 +147,27 @@ similarity.
   trapping and restoration, deliberate dismissal, native props, refs, types,
   registry installation, demos, and tests.
 
+- `Card`, `CardHeader`, `CardTitle`, `CardDescription`, `CardAction`,
+  `CardContent`, and `CardFooter` support complete section composition, default
+  and small sizes, a shared spacing variable, edge-to-edge media, RTL-safe
+  layout, native props, refs, types, registry installation, demos, and tests.
+  Meridian's shorthand header, body-padding, footer, elevation, and interactive
+  props remain additive adapters.
+
+- `ButtonGroup`, `ButtonGroupText`, `ButtonGroupSeparator`, and
+  `buttonGroupVariants` support horizontal and vertical attached controls,
+  semantic child composition, orientation-aware separators, native props,
+  refs, types, registry installation, demos, and tests.
+
+- `BubbleGroup`, `Bubble`, `BubbleContent`, and `BubbleReactions` support all
+  seven visual variants, start/end alignment, semantic child composition,
+  logical reaction placement, native props, refs, types, registry installation,
+  demos, and tests.
+
+- `DirectionProvider` and `useDirection` support the standard `dir` contract,
+  the additive `direction` alias, nested context, document fallback, mirrored
+  keyboard behavior, types, registry installation, demos, and tests.
+
 ## Release gate
 
 Before claiming complete compatibility:

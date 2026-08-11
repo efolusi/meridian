@@ -1,0 +1,33 @@
+{
+  "name": "direction",
+  "type": "registry:ui",
+  "title": "DirectionProvider",
+  "description": "Supplies `ltr` or `rtl` to Meridian components whose horizontal keyboard behavior must mirror. Set the same direction on the document so CSS and text flow agree with the component context.",
+  "dependencies": [
+    "react"
+  ],
+  "registryDependencies": [
+    "https://meridian.efolusi.com/site/registry/meridian-base.json"
+  ],
+  "files": [
+    {
+      "path": "components/display/Direction.jsx",
+      "type": "registry:ui",
+      "content": "import React from 'react';\n\nconst DirectionContext = React.createContext(undefined);\n\n/** Supply reading direction to components whose keyboard behavior must mirror. */\nexport function DirectionProvider({ dir, direction, children }) {\n  const requested = direction ?? dir ?? 'ltr';\n  const value = requested === 'rtl' ? 'rtl' : 'ltr';\n  return <DirectionContext.Provider value={value}>{children}</DirectionContext.Provider>;\n}\n\n/** Read the nearest provider, falling back to the document direction. */\nexport function useDirection() {\n  const provided = React.useContext(DirectionContext);\n  if (provided) return provided;\n  if (typeof document !== 'undefined' && document.documentElement.dir === 'rtl') return 'rtl';\n  return 'ltr';\n}\n"
+    },
+    {
+      "path": "components/display/Direction.d.ts",
+      "type": "registry:component",
+      "content": "export interface DirectionProviderProps {\n  /** Standard reading-direction prop. */\n  dir?: 'ltr' | 'rtl';\n  /** Reading direction supplied to direction-aware Meridian components. @default 'ltr' */\n  direction?: 'ltr' | 'rtl';\n  children?: React.ReactNode;\n}\n\nexport declare function DirectionProvider(props: DirectionProviderProps): React.JSX.Element;\nexport declare function useDirection(): 'ltr' | 'rtl';\n"
+    },
+    {
+      "path": "components/display/Direction.prompt.md",
+      "type": "registry:component",
+      "content": "# DirectionProvider\n\nSupplies `ltr` or `rtl` to Meridian components whose horizontal keyboard behavior must mirror. Set the same direction on the document so CSS and text flow agree with the component context.\n\n```jsx\n<html dir=\"rtl\">\n  <body>\n<DirectionProvider dir=\"rtl\">\n      <App />\n    </DirectionProvider>\n  </body>\n</html>\n```\n\nUse `useDirection()` in custom components that need the current Meridian direction. Invalid provider values fall back to `ltr`.\n"
+    }
+  ],
+  "categories": [
+    "display"
+  ],
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json"
+}

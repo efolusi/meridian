@@ -1,17 +1,25 @@
+import type * as React from 'react';
+
 export interface CardProps extends Omit<React.HTMLAttributes<HTMLDivElement>, 'title'> {
-  /** Header title (header renders only if title or actions set) */
+  size?: 'default' | 'sm';
+  /** Meridian shorthand: renders a legacy header. */
   title?: React.ReactNode;
+  /** Meridian shorthand: helper text below title. */
   subtitle?: React.ReactNode;
-  /** Right-aligned header slot (buttons etc.) */
+  /** Meridian shorthand: right-aligned header content. */
   actions?: React.ReactNode;
-  /** Footer slot on a sunken strip */
+  /** Meridian shorthand: footer content. */
   footer?: React.ReactNode;
-  /** Body padding in px @default 20 */
+  /** Meridian shorthand: body padding in pixels. */
   padding?: number;
-  /** Slightly stronger shadow */
   elevated?: boolean;
-  /** Hover lift + pointer */
   interactive?: boolean;
-  children?: React.ReactNode;
 }
-export declare function Card(props: CardProps): React.JSX.Element;
+
+export declare const Card: React.ForwardRefExoticComponent<CardProps & React.RefAttributes<HTMLDivElement>>;
+export declare const CardHeader: React.ForwardRefExoticComponent<React.HTMLAttributes<HTMLDivElement> & React.RefAttributes<HTMLDivElement>>;
+export declare const CardTitle: React.ForwardRefExoticComponent<React.HTMLAttributes<HTMLDivElement> & React.RefAttributes<HTMLDivElement>>;
+export declare const CardDescription: React.ForwardRefExoticComponent<React.HTMLAttributes<HTMLDivElement> & React.RefAttributes<HTMLDivElement>>;
+export declare const CardAction: React.ForwardRefExoticComponent<React.HTMLAttributes<HTMLDivElement> & React.RefAttributes<HTMLDivElement>>;
+export declare const CardContent: React.ForwardRefExoticComponent<React.HTMLAttributes<HTMLDivElement> & React.RefAttributes<HTMLDivElement>>;
+export declare const CardFooter: React.ForwardRefExoticComponent<React.HTMLAttributes<HTMLDivElement> & React.RefAttributes<HTMLDivElement>>;

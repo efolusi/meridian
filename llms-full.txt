@@ -30,7 +30,7 @@ Dark mode: set data-theme="dark" on any subtree. Compact density: data-density="
 
 ## Components
 
-116 components across 12 groups: ai, code, data, dates, display, feedback, files, finance, forms, icons, navigation, overlay. Each entry lists the component's public exports, its usage guidance (.prompt.md), and its typed props interface (.d.ts).
+117 components across 12 groups: ai, code, data, dates, display, feedback, files, finance, forms, icons, navigation, overlay. Each entry lists the component's public exports, its usage guidance (.prompt.md), and its typed props interface (.d.ts).
 
 ### ai
 
@@ -67,6 +67,40 @@ export interface AgentRunProps {
   className?: string;
 }
 export declare function AgentRun(props: AgentRunProps): React.JSX.Element;
+```
+
+#### Bubble
+
+Group: ai · Source: /components/ai/Bubble.jsx · Exports: BubbleGroup, Bubble, BubbleContent, BubbleReactions
+
+# Bubble
+
+Use Bubble for compact conversational content. Group related bubbles, choose a semantic visual variant, align a sender's content to the end, and add reactions only when they remain useful after the message is read.
+
+```jsx
+<BubbleGroup>
+  <Bubble variant="secondary"><BubbleContent>Can you review the release?</BubbleContent></Bubble>
+  <Bubble align="end"><BubbleContent>Yes, all checks passed.</BubbleContent></Bubble>
+</BubbleGroup>
+```
+
+```ts
+import type * as React from 'react';
+
+export interface BubbleProps extends React.HTMLAttributes<HTMLDivElement> {
+  variant?: 'default' | 'secondary' | 'muted' | 'tinted' | 'outline' | 'ghost' | 'destructive';
+  align?: 'start' | 'end';
+}
+export interface BubbleContentProps extends React.HTMLAttributes<HTMLDivElement> { asChild?: boolean; }
+export interface BubbleReactionsProps extends React.HTMLAttributes<HTMLDivElement> {
+  side?: 'top' | 'bottom';
+  align?: 'start' | 'end';
+}
+
+export declare const BubbleGroup: React.ForwardRefExoticComponent<React.HTMLAttributes<HTMLDivElement> & React.RefAttributes<HTMLDivElement>>;
+export declare const Bubble: React.ForwardRefExoticComponent<BubbleProps & React.RefAttributes<HTMLDivElement>>;
+export declare const BubbleContent: React.ForwardRefExoticComponent<BubbleContentProps & React.RefAttributes<HTMLDivElement>>;
+export declare const BubbleReactions: React.ForwardRefExoticComponent<BubbleReactionsProps & React.RefAttributes<HTMLDivElement>>;
 ```
 
 #### ChatMessage
@@ -1927,37 +1961,50 @@ export declare const Badge: React.ForwardRefExoticComponent<BadgeProps & React.R
 
 #### Card
 
-Group: display · Source: /components/display/Card.jsx · Exports: Card
+Group: display · Source: /components/display/Card.jsx · Exports: CardHeader, CardTitle, CardDescription, CardAction, CardContent, CardFooter, Card
 
-The surface container: white, 1px sand border, 8px radius, warm shadow.
+# Card
+
+Compose Card from header, title, description, action, content, and footer parts. Use `size="sm"` for compact surfaces or set `--card-spacing` on the root when a layout needs a deliberate custom inset.
 
 ```jsx
-<Card title="Invite your team" subtitle="Works better together." actions={<Button size="sm" variant="secondary">Invite</Button>} footer={<span>3 of 5 seats used</span>}>
-  …content…
+<Card>
+  <CardHeader>
+    <CardTitle>Deployment</CardTitle>
+    <CardDescription>Production release readiness.</CardDescription>
+    <CardAction><Button size="sm">Review</Button></CardAction>
+  </CardHeader>
+  <CardContent>All checks passed.</CardContent>
+  <CardFooter><Button>Deploy</Button></CardFooter>
 </Card>
-<Card interactive>Hover-lifts 2px — use for clickable cards.</Card>
 ```
 
-`padding` (default 20), `elevated`, `interactive`. Header renders only when `title`/`actions` set.
-
 ```ts
+import type * as React from 'react';
+
 export interface CardProps extends Omit<React.HTMLAttributes<HTMLDivElement>, 'title'> {
-  /** Header title (header renders only if title or actions set) */
+  size?: 'default' | 'sm';
+  /** Meridian shorthand: renders a legacy header. */
   title?: React.ReactNode;
+  /** Meridian shorthand: helper text below title. */
   subtitle?: React.ReactNode;
-  /** Right-aligned header slot (buttons etc.) */
+  /** Meridian shorthand: right-aligned header content. */
   actions?: React.ReactNode;
-  /** Footer slot on a sunken strip */
+  /** Meridian shorthand: footer content. */
   footer?: React.ReactNode;
-  /** Body padding in px @default 20 */
+  /** Meridian shorthand: body padding in pixels. */
   padding?: number;
-  /** Slightly stronger shadow */
   elevated?: boolean;
-  /** Hover lift + pointer */
   interactive?: boolean;
-  children?: React.ReactNode;
 }
-export declare function Card(props: CardProps): React.JSX.Element;
+
+export declare const Card: React.ForwardRefExoticComponent<CardProps & React.RefAttributes<HTMLDivElement>>;
+export declare const CardHeader: React.ForwardRefExoticComponent<React.HTMLAttributes<HTMLDivElement> & React.RefAttributes<HTMLDivElement>>;
+export declare const CardTitle: React.ForwardRefExoticComponent<React.HTMLAttributes<HTMLDivElement> & React.RefAttributes<HTMLDivElement>>;
+export declare const CardDescription: React.ForwardRefExoticComponent<React.HTMLAttributes<HTMLDivElement> & React.RefAttributes<HTMLDivElement>>;
+export declare const CardAction: React.ForwardRefExoticComponent<React.HTMLAttributes<HTMLDivElement> & React.RefAttributes<HTMLDivElement>>;
+export declare const CardContent: React.ForwardRefExoticComponent<React.HTMLAttributes<HTMLDivElement> & React.RefAttributes<HTMLDivElement>>;
+export declare const CardFooter: React.ForwardRefExoticComponent<React.HTMLAttributes<HTMLDivElement> & React.RefAttributes<HTMLDivElement>>;
 ```
 
 #### Carousel
@@ -2046,7 +2093,7 @@ Supplies `ltr` or `rtl` to Meridian components whose horizontal keyboard behavio
 ```jsx
 <html dir="rtl">
   <body>
-    <DirectionProvider direction="rtl">
+<DirectionProvider dir="rtl">
       <App />
     </DirectionProvider>
   </body>
@@ -2057,6 +2104,8 @@ Use `useDirection()` in custom components that need the current Meridian directi
 
 ```ts
 export interface DirectionProviderProps {
+  /** Standard reading-direction prop. */
+  dir?: 'ltr' | 'rtl';
   /** Reading direction supplied to direction-aware Meridian components. @default 'ltr' */
   direction?: 'ltr' | 'rtl';
   children?: React.ReactNode;
@@ -3018,22 +3067,34 @@ export declare const Button: React.ForwardRefExoticComponent<ButtonProps & React
 
 #### ButtonGroup
 
-Group: forms · Source: /components/forms/ButtonGroup.jsx · Exports: ButtonGroup
+Group: forms · Source: /components/forms/ButtonGroup.jsx · Exports: ButtonGroup, ButtonGroupText, ButtonGroupSeparator
 
-# ButtonGroup
+# Button Group
 
-Attaches adjacent Buttons/IconButtons into one segment (shared borders, squared inner corners). Use for tightly related actions of equal rank: zoom in/out, prev/next, split-button patterns.
+Group related controls horizontally or vertically. Use `ButtonGroupText` for a connected label or value and `ButtonGroupSeparator` for a visual division inside a shared control.
 
-`<ButtonGroup><Button variant="secondary">Day</Button><Button variant="secondary">Week</Button></ButtonGroup>`
-
-Keep 2–4 children, same variant + size. For exclusive selection use SegmentedControl instead.
+```jsx
+<ButtonGroup>
+  <ButtonGroupText>https://</ButtonGroupText>
+  <Input aria-label="Domain" />
+  <Button>Copy</Button>
+</ButtonGroup>
+```
 
 ```ts
+import type * as React from 'react';
+import type { SeparatorProps } from '../display/Separator.jsx';
+
 export interface ButtonGroupProps extends React.HTMLAttributes<HTMLDivElement> {
-  /** Buttons / IconButtons rendered as one attached segment */
-  children: React.ReactNode;
+  orientation?: 'horizontal' | 'vertical';
 }
-export declare function ButtonGroup(props: ButtonGroupProps): React.JSX.Element;
+export interface ButtonGroupTextProps extends React.HTMLAttributes<HTMLDivElement> { asChild?: boolean; }
+export interface ButtonGroupSeparatorProps extends SeparatorProps {}
+
+export declare function buttonGroupVariants(options?: Pick<ButtonGroupProps, 'orientation'> & { className?: string }): string;
+export declare const ButtonGroup: React.ForwardRefExoticComponent<ButtonGroupProps & React.RefAttributes<HTMLDivElement>>;
+export declare const ButtonGroupText: React.ForwardRefExoticComponent<ButtonGroupTextProps & React.RefAttributes<HTMLDivElement>>;
+export declare const ButtonGroupSeparator: React.ForwardRefExoticComponent<ButtonGroupSeparatorProps & React.RefAttributes<HTMLDivElement>>;
 ```
 
 #### ButtonTile
