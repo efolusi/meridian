@@ -78,7 +78,17 @@
     { "name": "Input OTP", "status": "unverified" },
     { "name": "Item", "status": "unverified" },
     { "name": "Kbd", "status": "unverified" },
-    { "name": "Label", "status": "unverified" },
+    {
+      "name": "Label",
+      "status": "proven",
+      "requiredExports": ["Label"],
+      "sourceFiles": [
+        "components/forms/Label.jsx",
+        "components/forms/Label.d.ts"
+      ],
+      "registryItems": ["site/registry/label.json"],
+      "tests": ["tests/label-compatibility.test.jsx"]
+    },
     {
       "name": "Marker",
       "status": "proven",

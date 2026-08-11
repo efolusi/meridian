@@ -47,6 +47,10 @@ similarity.
 
 ## Proven adapters
 
+- `Label` preserves native label attributes and click-to-focus association,
+  forwards refs, supports consumer classes/styles, and includes types, registry
+  installation, demos, and tests. Meridian's required marker and hint remain
+  additive extensions.
 - `AspectRatio` requires an explicit numeric ratio and supports landscape,
   square, and portrait media, native wrapper props, consumer styles, ref
   forwarding, types, registry installation, demos, and tests.

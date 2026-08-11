@@ -1,11 +1,7 @@
-export interface LabelProps {
-  htmlFor?: string;
+export interface LabelProps extends React.LabelHTMLAttributes<HTMLLabelElement> {
   /** Red asterisk */
   required?: boolean;
   /** Muted inline hint after the text */
   hint?: React.ReactNode;
-  children: React.ReactNode;
-  style?: React.CSSProperties;
-  className?: string;
 }
-export declare function Label(props: LabelProps): React.JSX.Element;
+export declare const Label: React.ForwardRefExoticComponent<LabelProps & React.RefAttributes<HTMLLabelElement>>;
