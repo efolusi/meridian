@@ -38,7 +38,14 @@
       "registryItems": ["site/registry/attachment.json"],
       "tests": ["tests/attachment-compatibility.test.jsx"]
     },
-    { "name": "Avatar", "status": "unverified" },
+    {
+      "name": "Avatar",
+      "status": "proven",
+      "requiredExports": ["Avatar", "AvatarImage", "AvatarFallback", "AvatarBadge", "AvatarGroup", "AvatarGroupCount"],
+      "sourceFiles": ["components/display/Avatar.jsx", "components/display/Avatar.d.ts"],
+      "registryItems": ["site/registry/avatar.json"],
+      "tests": ["tests/avatar-compatibility.test.jsx"]
+    },
     {
       "name": "Badge",
       "status": "proven",

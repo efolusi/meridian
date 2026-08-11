@@ -44,15 +44,22 @@ export function DirectionProviderDemo() {
   );
 }
 
-// @demo Avatar Initials and sizes
+// @demo Avatar Identity group with fallbacks
 export function AvatarDemo() {
-  const { Avatar } = window.EfolusiDesignSystem_4ffc3d;
+  const { Avatar, AvatarImage, AvatarFallback, AvatarBadge, AvatarGroup, AvatarGroupCount } = window.EfolusiDesignSystem_4ffc3d;
   return (
-    <div style={{ display: 'flex', gap: 14, alignItems: 'center' }}>
-      <Avatar name="Ada Obi" size={24} />
-      <Avatar name="Ada Obi" size={32} />
-      <Avatar name="Kofi Mensah" size={40} />
-      <Avatar name="June Park" size={48} />
+    <div style={{ display: 'grid', gap: 14 }}>
+      <AvatarGroup aria-label="Project members">
+        <Avatar size="lg"><AvatarImage src="https://i.pravatar.cc/96?img=47" alt="Ada Obi" /><AvatarFallback>AO</AvatarFallback><AvatarBadge aria-label="Online" /></Avatar>
+        <Avatar size="lg"><AvatarFallback>KM</AvatarFallback></Avatar>
+        <Avatar name="June Park" size="lg" />
+        <AvatarGroupCount aria-label="3 more members">+3</AvatarGroupCount>
+      </AvatarGroup>
+      <div style={{ display: 'flex', gap: 12, alignItems: 'center' }}>
+        <Avatar name="Ada Obi" size="sm" />
+        <Avatar name="Ada Obi" />
+        <Avatar name="Ada Obi" size="lg" />
+      </div>
     </div>
   );
 }

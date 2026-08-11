@@ -1799,33 +1799,40 @@ export declare const AspectRatio: React.ForwardRefExoticComponent<AspectRatioPro
 
 #### Avatar
 
-Group: display · Source: /components/display/Avatar.jsx · Exports: Avatar, AvatarGroup
+Group: display · Source: /components/display/Avatar.jsx · Exports: Avatar, AvatarImage, AvatarFallback, AvatarBadge, AvatarGroup, AvatarGroupCount
 
-Circular avatar — image or initials with a deterministic warm tone from `name`. `AvatarGroup` overlaps them with white keylines.
+Composable identity image with fallback, status badge, named sizes, and overlapping groups. The legacy `name`, `src`, and numeric `size` shortcuts remain supported.
 
 ```jsx
-<Avatar name="Ada Obi" size={36} />
-<AvatarGroup><Avatar name="Ada Obi" /><Avatar name="Femi Alade" /></AvatarGroup>
+<Avatar size="lg"><AvatarImage src={user.photo} alt={user.name} /><AvatarFallback>AO</AvatarFallback><AvatarBadge /></Avatar>
+<AvatarGroup><Avatar name="Ada Obi" /><Avatar name="Femi Alade" /><AvatarGroupCount>+3</AvatarGroupCount></AvatarGroup>
 ```
 
 ```ts
 export interface AvatarProps extends React.HTMLAttributes<HTMLSpanElement> {
-  /** Full name — initials + deterministic tone derive from it */
+  /** Optional legacy name used to derive initials and a deterministic tone. */
   name?: string;
-  /** Image URL; falls back to initials */
+  /** Optional legacy image shortcut. Prefer AvatarImage for composition. */
   src?: string;
-  /** Px @default 32 */
-  size?: number;
+  /** Named contract sizes or a legacy pixel value. @default "default" */
+  size?: 'default' | 'sm' | 'lg' | number;
 }
-export declare function Avatar(props: AvatarProps): React.JSX.Element;
+export declare const Avatar: React.ForwardRefExoticComponent<AvatarProps & React.RefAttributes<HTMLSpanElement>>;
 
-export interface AvatarGroupProps {
-  /** Avatar elements; overlap with white keylines */
-  children?: React.ReactNode;
-  style?: React.CSSProperties;
-  className?: string;
-}
-export declare function AvatarGroup(props: AvatarGroupProps): React.JSX.Element;
+export type AvatarImageProps = React.ImgHTMLAttributes<HTMLImageElement>;
+export declare const AvatarImage: React.ForwardRefExoticComponent<AvatarImageProps & React.RefAttributes<HTMLImageElement>>;
+
+export type AvatarFallbackProps = React.HTMLAttributes<HTMLSpanElement>;
+export declare const AvatarFallback: React.ForwardRefExoticComponent<AvatarFallbackProps & React.RefAttributes<HTMLSpanElement>>;
+
+export type AvatarBadgeProps = React.HTMLAttributes<HTMLSpanElement>;
+export declare const AvatarBadge: React.ForwardRefExoticComponent<AvatarBadgeProps & React.RefAttributes<HTMLSpanElement>>;
+
+export type AvatarGroupProps = React.HTMLAttributes<HTMLDivElement>;
+export declare const AvatarGroup: React.ForwardRefExoticComponent<AvatarGroupProps & React.RefAttributes<HTMLDivElement>>;
+
+export type AvatarGroupCountProps = React.HTMLAttributes<HTMLSpanElement>;
+export declare const AvatarGroupCount: React.ForwardRefExoticComponent<AvatarGroupCountProps & React.RefAttributes<HTMLSpanElement>>;
 ```
 
 #### Badge

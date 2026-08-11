@@ -1542,8 +1542,8 @@
     {
       "name": "avatar",
       "type": "registry:ui",
-      "title": "Avatar + AvatarGroup",
-      "description": "Circular avatar \u2014 image or initials with a deterministic warm tone from `name`. `AvatarGroup` overlaps them with white keylines.",
+      "title": "Avatar + AvatarImage + AvatarFallback + AvatarBadge + AvatarGroup + AvatarGroupCount",
+      "description": "Composable identity image with fallback, status badge, named sizes, and overlapping groups. The legacy `name`, `src`, and numeric `size` shortcuts remain supported.",
       "dependencies": [
         "react"
       ],
