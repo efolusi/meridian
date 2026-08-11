@@ -44,11 +44,16 @@ REGISTRY_NAME_OVERRIDES = {
     "components/ai/Bubble.jsx": "bubble",
     "components/ai/MessageScroller.jsx": "message-scroller",
     "components/dates/Calendar.jsx": "calendar",
+    "components/data/Chart.jsx": "chart",
     "components/display/Card.jsx": "card",
     "components/display/Item.jsx": "item",
     "components/display/Direction.jsx": "direction",
     "components/forms/Radio.jsx": "radio-group",
     "components/navigation/Sidebar.jsx": "sidebar",
+}
+
+EXTERNAL_DEPENDENCIES = {
+    "components/data/Chart.jsx": ["recharts@^3.8.0"],
 }
 
 # Older Meridian item URLs remain installable when the canonical migration
@@ -136,7 +141,7 @@ def component_items(embed):
             "type": "registry:ui",
             "title": " + ".join(ordered_names),
             "description": prompt_summary(prompt) or f"{names[0]} ({group}) from the Meridian design system.",
-            "dependencies": ["react"],
+            "dependencies": ["react", *EXTERNAL_DEPENDENCIES.get(source, [])],
             "registryDependencies": reg_deps,
             "files": files,
             "categories": [group],

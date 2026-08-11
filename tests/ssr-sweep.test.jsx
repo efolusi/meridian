@@ -114,6 +114,8 @@ describe(`SSR sweep over ${cases.length} public exports`, () => {
         element = React.createElement(modules[file].MessageScrollerProvider, null, component);
       } else if (name.startsWith('Sidebar') && name !== 'SidebarProvider') {
         element = React.createElement(modules[file].SidebarProvider, null, component);
+      } else if (name === 'ChartTooltipContent' || name === 'ChartLegendContent') {
+        element = React.createElement(modules[file].ChartContainer, { config: {} }, component);
       }
       const html = renderToString(element);
       decimalsOk(html, name);

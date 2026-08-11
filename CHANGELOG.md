@@ -1,5 +1,10 @@
 # Changelog
 
+## Unreleased
+
+- **The current compatibility inventory is fully evidenced.** Chart now ships the Recharts 3 composition contract (`ChartContainer`, tooltip, legend, scoped theme variables, and `useChart`). Data Table and Typography are explicitly verified as upstream-style authored guides without fabricated runtime exports, while deprecated Toast is pinned to the tested Sonner migration path.
+- **Registry and package installs carry Chart's engine dependency.** The `chart` registry item declares Recharts 3, and the ESM package publishes it as a runtime dependency; the browser bundle resolves the optional Recharts UMD namespace only when chart composition is rendered.
+
 All notable changes to Meridian are documented here. Format follows [Keep a Changelog](https://keepachangelog.com); versioning follows the policy in `guidelines/governance.md`.
 
 > **On the versions below 1.4.0:** Meridian was built in the open but released to nobody. Versions 1.0.0 through 1.3.0 are development milestones recorded as they happened; they were never tagged, published, or installable, so there is no artefact to go back to. They are kept because they are an accurate record of how the system was built, not because you can depend on them. The first tagged, publicly consumable release is 1.4.0.

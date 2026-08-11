@@ -1,7 +1,7 @@
 {
   "version": 1,
-  "snapshot": "2026-08-11",
-  "policy": "Only entries with source, API, interaction, registry, and test evidence may be marked proven.",
+  "snapshot": "2026-08-12",
+  "policy": "Runtime components require source, API, interaction, registry, and test evidence. Upstream guides require authored recipe and test evidence without invented exports. Deprecated families require a tested migration target.",
   "components": [
     {
       "name": "Accordion",
@@ -150,7 +150,15 @@
       "registryItems": ["site/registry/carousel.json"],
       "tests": ["tests/carousel-compatibility.test.jsx", "tests/direction.test.jsx"]
     },
-    { "name": "Chart", "status": "unverified" },
+    {
+      "name": "Chart",
+      "status": "proven",
+      "requiredExports": ["ChartContainer", "ChartTooltip", "ChartTooltipContent", "ChartLegend", "ChartLegendContent", "ChartStyle"],
+      "requiredModuleExports": ["useChart"],
+      "sourceFiles": ["components/data/Chart.jsx", "components/data/Chart.d.ts"],
+      "registryItems": ["site/registry/chart.json"],
+      "tests": ["tests/chart-compatibility.test.jsx"]
+    },
     {
       "name": "Checkbox",
       "status": "proven",
@@ -192,7 +200,15 @@
       "registryItems": ["site/registry/contextmenu.json"],
       "tests": ["tests/keyboard-contextmenu.test.jsx"]
     },
-    { "name": "Data Table", "status": "unverified" },
+    {
+      "name": "Data Table",
+      "status": "proven",
+      "kind": "guide",
+      "requiredExports": [],
+      "sourceFiles": ["site/examples/data-table.jsx"],
+      "registryItems": ["site/registry/table.json"],
+      "tests": ["tests/guide-compatibility.test.mjs"]
+    },
     {
       "name": "Date Picker",
       "status": "proven",
@@ -529,7 +545,16 @@
       "registryItems": ["site/registry/textarea.json"],
       "tests": ["tests/form-display-primitives-compatibility.test.jsx"]
     },
-    { "name": "Toast", "status": "unverified" },
+    {
+      "name": "Toast",
+      "status": "proven",
+      "kind": "deprecated",
+      "migrationTarget": "Sonner",
+      "requiredExports": ["Toast", "ToastStack"],
+      "sourceFiles": ["components/feedback/Toast.jsx", "components/feedback/Toast.d.ts", "components/feedback/Toast.prompt.md"],
+      "registryItems": ["site/registry/toast.json", "site/registry/sonner.json"],
+      "tests": ["tests/guide-compatibility.test.mjs", "tests/sonner-compatibility.test.jsx"]
+    },
     {
       "name": "Toggle",
       "status": "proven",
@@ -555,6 +580,14 @@
       "registryItems": ["site/registry/tooltip.json"],
       "tests": ["tests/tooltip-popover-toggle-compatibility.test.jsx", "tests/keyboard-tooltip.test.jsx"]
     },
-    { "name": "Typography", "status": "unverified" }
+    {
+      "name": "Typography",
+      "status": "proven",
+      "kind": "guide",
+      "requiredExports": [],
+      "sourceFiles": ["site/examples/typography.jsx"],
+      "registryItems": [],
+      "tests": ["tests/guide-compatibility.test.mjs"]
+    }
   ]
 }

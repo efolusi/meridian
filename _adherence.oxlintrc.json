@@ -695,6 +695,24 @@
       "CarouselPrevious": {
         "replaces": []
       },
+      "ChartContainer": {
+        "replaces": []
+      },
+      "ChartLegend": {
+        "replaces": []
+      },
+      "ChartLegendContent": {
+        "replaces": []
+      },
+      "ChartStyle": {
+        "replaces": []
+      },
+      "ChartTooltip": {
+        "replaces": []
+      },
+      "ChartTooltipContent": {
+        "replaces": []
+      },
       "ChatMessage": {
         "replaces": []
       },

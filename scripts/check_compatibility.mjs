@@ -23,6 +23,7 @@ const EXPECTED_NAMES = [
 ]
 
 const VALID_STATUSES = new Set(['unverified', 'proven'])
+const VALID_KINDS = new Set(['component', 'guide', 'deprecated'])
 const entries = catalog.components
 const names = entries.map((entry) => entry.name)
 const failures = []
@@ -48,9 +49,30 @@ for (const entry of entries) {
   }
   if (entry.status !== 'proven') continue
 
-  for (const field of ['requiredExports', 'sourceFiles', 'registryItems', 'tests']) {
+  const kind = entry.kind ?? 'component'
+  if (!VALID_KINDS.has(kind)) {
+    failures.push(`${entry.name}: invalid compatibility kind ${kind}`)
+    continue
+  }
+
+  const requiredFields = kind === 'guide'
+    ? ['sourceFiles', 'tests']
+    : ['requiredExports', 'sourceFiles', 'registryItems', 'tests']
+  for (const field of requiredFields) {
     if (!Array.isArray(entry[field]) || entry[field].length === 0) {
       failures.push(`${entry.name}: proven entries require non-empty ${field}`)
+    }
+  }
+  if (kind === 'guide' && (entry.requiredExports ?? []).length > 0) {
+    failures.push(`${entry.name}: guide entries must not invent public exports`)
+  }
+  if (kind === 'deprecated') {
+    if (!entry.migrationTarget) failures.push(`${entry.name}: deprecated entries require migrationTarget`)
+    else {
+      const target = entries.find((candidate) => candidate.name === entry.migrationTarget)
+      if (!target || target.status !== 'proven') {
+        failures.push(`${entry.name}: migrationTarget ${entry.migrationTarget} must be a proven family`)
+      }
     }
   }
   for (const exportName of entry.requiredExports ?? []) {

@@ -1166,6 +1166,37 @@
       ]
     },
     {
+      "name": "chart",
+      "type": "registry:ui",
+      "title": "ChartStyle + ChartContainer + ChartTooltip + ChartTooltipContent + ChartLegend + ChartLegendContent",
+      "description": "Meridian's Chart family composes directly with Recharts 3. It does not wrap the chart engine: use Recharts primitives for marks, axes, grids, and accessibility, then add Meridian's container, tooltip content, and legend content.",
+      "dependencies": [
+        "react",
+        "recharts@^3.8.0"
+      ],
+      "registryDependencies": [
+        "https://meridian.efolusi.com/site/registry/meridian-base.json",
+        "https://meridian.efolusi.com/site/registry/button.json"
+      ],
+      "files": [
+        {
+          "path": "components/data/Chart.jsx",
+          "type": "registry:ui"
+        },
+        {
+          "path": "components/data/Chart.d.ts",
+          "type": "registry:component"
+        },
+        {
+          "path": "components/data/Chart.prompt.md",
+          "type": "registry:component"
+        }
+      ],
+      "categories": [
+        "data"
+      ]
+    },
+    {
       "name": "donutchart",
       "type": "registry:ui",
       "title": "DonutChart",

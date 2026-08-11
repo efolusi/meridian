@@ -32,6 +32,7 @@ const PUBLIC_HELPERS = new Set([
   'navigationMenuTriggerStyle',
   'toggleVariants',
   'toast',
+  'useChart',
   'useComboboxAnchor',
   'useDirection',
   'useMessageScroller',
@@ -115,7 +116,19 @@ function compileUnit(rel) {
   const plugin = ({ types: t }) => ({
     visitor: {
       ImportDeclaration(p) {
-        if (!p.node.source.value.startsWith('.')) { p.remove(); return; }
+        if (!p.node.source.value.startsWith('.')) {
+          if (p.node.source.value === 'recharts') {
+            for (const spec of p.node.specifiers) {
+              const binding = p.scope.getBinding(spec.local.name);
+              if (!binding) continue;
+              for (const ref of binding.referencePaths) {
+                ref.replaceWith(t.memberExpression(t.identifier('window'), t.identifier('Recharts')));
+              }
+            }
+          }
+          p.remove();
+          return;
+        }
         for (const spec of p.node.specifiers) {
           const local = spec.local.name;
           const binding = p.scope.getBinding(local);

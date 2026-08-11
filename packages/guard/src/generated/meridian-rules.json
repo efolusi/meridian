@@ -287,6 +287,30 @@
       "sourcePath": "components/display/Carousel.jsx"
     },
     {
+      "name": "ChartContainer",
+      "sourcePath": "components/data/Chart.jsx"
+    },
+    {
+      "name": "ChartLegend",
+      "sourcePath": "components/data/Chart.jsx"
+    },
+    {
+      "name": "ChartLegendContent",
+      "sourcePath": "components/data/Chart.jsx"
+    },
+    {
+      "name": "ChartStyle",
+      "sourcePath": "components/data/Chart.jsx"
+    },
+    {
+      "name": "ChartTooltip",
+      "sourcePath": "components/data/Chart.jsx"
+    },
+    {
+      "name": "ChartTooltipContent",
+      "sourcePath": "components/data/Chart.jsx"
+    },
+    {
       "name": "ChatMessage",
       "sourcePath": "components/ai/ChatMessage.jsx"
     },

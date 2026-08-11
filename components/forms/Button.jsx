@@ -39,7 +39,7 @@ const CSS = `
  *
  * THE LAYER IS THE POINT. This appends a <style> at runtime, so it always
  * lands after whatever stylesheet the app shipped, and at equal specificity
- * later wins. Every product paid for that: Trady doubles its selectors
+ * later wins. Consumer applications otherwise have to double their selectors
  * (`.hide-sm.hide-sm`) because a one-class utility lost to
  * `.ef-badge { display: inline-flex }`, and Efolusi restates radii and colours
  * to get its own back. A design system that has to be out-specified by its

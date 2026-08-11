@@ -22,7 +22,7 @@ const Babel = require('@babel/standalone');
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const DIST = path.join(ROOT, 'dist');
 const CHECK = process.argv.includes('--check');
-const PUBLIC_HELPERS = new Set(['badgeVariants', 'buttonVariants', 'markerVariants', 'navigationMenuTriggerStyle', 'toast', 'toggleVariants', 'useMessageScroller', 'useMessageScrollerScrollable', 'useMessageScrollerVisibility', 'useSidebar']);
+const PUBLIC_HELPERS = new Set(['badgeVariants', 'buttonVariants', 'markerVariants', 'navigationMenuTriggerStyle', 'toast', 'toggleVariants', 'useChart', 'useMessageScroller', 'useMessageScrollerScrollable', 'useMessageScrollerVisibility', 'useSidebar']);
 
 const pkg = JSON.parse(fs.readFileSync(path.join(ROOT, 'package.json'), 'utf8'));
 const version = JSON.parse(fs.readFileSync(path.join(ROOT, '_ds_manifest.json'), 'utf8')).version;
@@ -266,6 +266,7 @@ files.set('package.json', JSON.stringify({
     './*': { types: './*.d.ts', default: './*.js' },
   },
   peerDependencies: { react: '>=18', 'react-dom': '>=18' },
+  dependencies: { recharts: '^3.8.0' },
   keywords: ['design-system', 'react', 'components', 'accessible', 'design-tokens', 'meridian'],
 }, null, 2) + '\n');
 

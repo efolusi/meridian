@@ -30,7 +30,7 @@ Dark mode: set data-theme="dark" on any subtree. Compact density: data-density="
 
 ## Components
 
-120 components across 12 groups: ai, code, data, dates, display, feedback, files, finance, forms, icons, navigation, overlay. Each entry lists the component's public exports, its usage guidance (.prompt.md), and its typed props interface (.d.ts).
+121 components across 12 groups: ai, code, data, dates, display, feedback, files, finance, forms, icons, navigation, overlay. Each entry lists the component's public exports, its usage guidance (.prompt.md), and its typed props interface (.d.ts).
 
 ### ai
 
@@ -1382,6 +1382,45 @@ export interface BarChartProps {
   className?: string;
 }
 export declare function BarChart(props: BarChartProps): React.JSX.Element;
+```
+
+#### Chart
+
+Group: data · Source: /components/data/Chart.jsx · Exports: ChartStyle, ChartContainer, ChartTooltip, ChartTooltipContent, ChartLegend, ChartLegendContent
+
+# Chart
+
+Meridian's Chart family composes directly with Recharts 3. It does not wrap the chart engine: use Recharts primitives for marks, axes, grids, and accessibility, then add Meridian's container, tooltip content, and legend content.
+
+```jsx
+<ChartContainer config={chartConfig} style={{ minHeight: 240 }}>
+  <BarChart accessibilityLayer data={data}>
+    <CartesianGrid vertical={false} />
+    <XAxis dataKey="month" />
+    <ChartTooltip content={<ChartTooltipContent />} />
+    <ChartLegend content={<ChartLegendContent />} />
+    <Bar dataKey="desktop" fill="var(--color-desktop)" radius={4} />
+  </BarChart>
+</ChartContainer>
+```
+
+Give `ChartContainer` a measurable height or minimum height. Configure labels, icons, and either `color` or light/dark `theme` values in `ChartConfig`; reference them as `var(--color-KEY)` from Recharts.
+
+```ts
+import type * as React from 'react';
+import type { DefaultLegendContentProps, DefaultTooltipContentProps, LegendProps, ResponsiveContainerProps, TooltipProps, TooltipValueType } from 'recharts';
+
+export type ChartConfig = Record<string, { label?: React.ReactNode; icon?: React.ComponentType } & ({ color?: string; theme?: never } | { color?: never; theme: { light: string; dark: string } })>;
+export declare function useChart(): { config: ChartConfig };
+export interface ChartContainerProps extends React.HTMLAttributes<HTMLDivElement> { config: ChartConfig; children: ResponsiveContainerProps['children']; initialDimension?: { width: number; height: number } }
+export declare const ChartContainer: React.ForwardRefExoticComponent<ChartContainerProps & React.RefAttributes<HTMLDivElement>>;
+export declare function ChartStyle(props: { id: string; config: ChartConfig }): React.JSX.Element | null;
+export declare function ChartTooltip(props: TooltipProps<any, any>): React.JSX.Element | null;
+export interface ChartTooltipContentProps extends Omit<DefaultTooltipContentProps<TooltipValueType, string | number>, 'accessibilityLayer'> { active?: boolean; className?: string; hideLabel?: boolean; hideIndicator?: boolean; indicator?: 'line' | 'dot' | 'dashed'; nameKey?: string; labelKey?: string; color?: string }
+export declare function ChartTooltipContent(props: ChartTooltipContentProps): React.JSX.Element | null;
+export declare function ChartLegend(props: LegendProps): React.JSX.Element | null;
+export interface ChartLegendContentProps extends DefaultLegendContentProps { className?: string; hideIcon?: boolean; nameKey?: string }
+export declare function ChartLegendContent(props: ChartLegendContentProps): React.JSX.Element | null;
 ```
 
 #### DonutChart
