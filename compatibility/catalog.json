@@ -237,7 +237,14 @@
     },
     { "name": "Navigation Menu", "status": "unverified" },
     { "name": "Pagination", "status": "unverified" },
-    { "name": "Popover", "status": "unverified" },
+    {
+      "name": "Popover",
+      "status": "proven",
+      "requiredExports": ["Popover", "PopoverTrigger", "PopoverContent", "PopoverHeader", "PopoverTitle", "PopoverDescription"],
+      "sourceFiles": ["components/overlay/Popover.jsx", "components/overlay/Popover.d.ts"],
+      "registryItems": ["site/registry/popover.json"],
+      "tests": ["tests/tooltip-popover-toggle-compatibility.test.jsx", "tests/keyboard-popover.test.jsx"]
+    },
     {
       "name": "Progress",
       "status": "proven",
@@ -317,8 +324,22 @@
       "registryItems": ["site/registry/toggle.json"],
       "tests": ["tests/form-display-primitives-compatibility.test.jsx"]
     },
-    { "name": "Toggle Group", "status": "unverified" },
-    { "name": "Tooltip", "status": "unverified" },
+    {
+      "name": "Toggle Group",
+      "status": "proven",
+      "requiredExports": ["ToggleGroup", "ToggleGroupItem"],
+      "sourceFiles": ["components/forms/Toggle.jsx", "components/forms/Toggle.d.ts"],
+      "registryItems": ["site/registry/toggle.json"],
+      "tests": ["tests/tooltip-popover-toggle-compatibility.test.jsx"]
+    },
+    {
+      "name": "Tooltip",
+      "status": "proven",
+      "requiredExports": ["TooltipProvider", "Tooltip", "TooltipTrigger", "TooltipContent"],
+      "sourceFiles": ["components/feedback/Tooltip.jsx", "components/feedback/Tooltip.d.ts"],
+      "registryItems": ["site/registry/tooltip.json"],
+      "tests": ["tests/tooltip-popover-toggle-compatibility.test.jsx", "tests/keyboard-tooltip.test.jsx"]
+    },
     { "name": "Typography", "status": "unverified" }
   ]
 }

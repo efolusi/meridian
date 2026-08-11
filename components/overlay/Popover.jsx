@@ -1,52 +1,116 @@
 import React from 'react';
 import { injectEfCss, mergeRefs } from '../forms/Button.jsx';
 import { Portal, useAnchoredStyle } from './Portal.jsx';
-// Panel modifiers pin no edge on purpose; see useAnchoredStyle in Portal.jsx.
+
 const CSS = `
 .ef-popover{position:relative;display:inline-flex}
-.ef-popover__panel{position:absolute;top:calc(100% + 8px);width:280px;background:var(--surface-card);border:1px solid var(--border-strong);border-radius:var(--radius-md);box-shadow:var(--shadow-md);padding:14px;z-index:var(--z-dropdown);animation:ef-pop-in var(--dur-fast) var(--ease-out)}
+.ef-popover__panel{position:fixed;width:280px;background:var(--surface-card);border:1px solid var(--border-strong);border-radius:var(--radius-md);box-shadow:var(--shadow-md);padding:14px;z-index:var(--z-dropdown);animation:ef-pop-in var(--dur-fast) var(--ease-out)}
+.ef-popover__header{display:grid;gap:4px;margin-bottom:12px}
+.ef-popover__title{margin:0;color:var(--text-primary);font-size:var(--text-md);font-weight:var(--weight-semibold);line-height:1.35}
+.ef-popover__description{margin:0;color:var(--text-muted);font-size:var(--text-sm);line-height:1.45}
 @keyframes ef-pop-in{from{opacity:0;transform:translateY(-3px)}}
 `;
-export const Popover = React.forwardRef(function Popover({ trigger, children, align = 'left', width = 280, open: controlled, onOpenChange, style, className, ...rest }, fRef) {
+const PopoverCtx = React.createContext(null);
+
+function compose(theirs, ours) {
+  return event => { theirs?.(event); if (!event.defaultPrevented) ours?.(event); };
+}
+
+export const Popover = React.forwardRef(function Popover({ trigger, children, align = 'left', width = 280, open: controlled, defaultOpen = false, onOpenChange, style, className, ...rest }, forwardedRef) {
   injectEfCss('ef-css-popover', CSS);
-  const [inner, setInner] = React.useState(false);
-  const open = controlled != null ? controlled : inner;
-  const setOpen = v => { if (controlled == null) setInner(v); if (onOpenChange) onOpenChange(v); };
-  const ref = React.useRef(null);
-  const panelRef = React.useRef(null);
-  const { style: anchored } = useAnchoredStyle(ref, panelRef, { open, placement: 'bottom', align: align === 'right' ? 'end' : 'start', offset: 8 });
-  const restoreFocus = () => {
-    const t = ref.current && ref.current.querySelector('button,[href],[tabindex]');
-    if (t) t.focus();
-  };
+  const [inner, setInner] = React.useState(defaultOpen);
+  const open = controlled !== undefined ? controlled : inner;
+  const triggerRef = React.useRef(null);
+  const contentRef = React.useRef(null);
+  const contentId = React.useId();
+  const setOpen = React.useCallback(next => {
+    if (controlled === undefined) setInner(next);
+    onOpenChange?.(next);
+  }, [controlled, onOpenChange]);
+  const value = React.useMemo(() => ({ open, setOpen, triggerRef, contentRef, contentId }), [open, setOpen, contentId]);
   React.useEffect(() => {
     if (!open) return;
-    const away = e => {
-      const inTrigger = ref.current && ref.current.contains(e.target);
-      const inPanel = panelRef.current && panelRef.current.contains(e.target);
-      if (!inTrigger && !inPanel) setOpen(false);
+    const away = event => {
+      if (!triggerRef.current?.contains(event.target) && !contentRef.current?.contains(event.target)) setOpen(false);
     };
-    const key = e => { if (e.key === 'Escape') { setOpen(false); restoreFocus(); } };
+    const key = event => {
+      if (event.key === 'Escape') {
+        setOpen(false);
+        triggerRef.current?.focus();
+      }
+    };
+    document.addEventListener('pointerdown', away);
     document.addEventListener('mousedown', away);
     document.addEventListener('keydown', key);
-    return () => { document.removeEventListener('mousedown', away); document.removeEventListener('keydown', key); };
-  }, [open]);
-  const triggerProps = {
-    onClick: e => { if (React.isValidElement(trigger) && trigger.props.onClick) trigger.props.onClick(e); setOpen(!open); },
-    onKeyDown: e => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); setOpen(!open); } },
+    return () => {
+      document.removeEventListener('pointerdown', away);
+      document.removeEventListener('mousedown', away);
+      document.removeEventListener('keydown', key);
+    };
+  }, [open, setOpen]);
+
+  if (trigger !== undefined) {
+    const legacyAlign = align === 'right' ? 'end' : align === 'center' ? 'center' : 'start';
+    return (
+      <PopoverCtx.Provider value={value}>
+        <span {...rest} ref={forwardedRef} className={`ef-popover${className ? ' ' + className : ''}`} style={style}>
+          <PopoverTrigger asChild={React.isValidElement(trigger)}>{trigger}</PopoverTrigger>
+          <PopoverContent align={legacyAlign} style={{ width }}>{children}</PopoverContent>
+        </span>
+      </PopoverCtx.Provider>
+    );
+  }
+  return <PopoverCtx.Provider value={value}>{children}</PopoverCtx.Provider>;
+});
+
+export const PopoverTrigger = React.forwardRef(function PopoverTrigger({ asChild = false, children, ...rest }, forwardedRef) {
+  const ctx = React.useContext(PopoverCtx);
+  if (!ctx) return <button type="button" {...rest} ref={forwardedRef}>{children}</button>;
+  const props = {
+    ...rest,
+    ref: mergeRefs(forwardedRef, ctx.triggerRef),
+    'data-slot': 'popover-trigger',
     'aria-haspopup': 'dialog',
-    'aria-expanded': open,
+    'aria-expanded': ctx.open,
+    'aria-controls': ctx.open ? ctx.contentId : undefined,
+    onClick: compose(rest.onClick, () => ctx.setOpen(!ctx.open)),
   };
+  if (asChild && React.isValidElement(children)) {
+    return React.cloneElement(children, {
+      ...props,
+      ...children.props,
+      ref: mergeRefs(children.ref, props.ref),
+      onClick: compose(children.props.onClick, props.onClick),
+      'data-slot': 'popover-trigger',
+      'aria-haspopup': 'dialog',
+      'aria-expanded': ctx.open,
+      'aria-controls': props['aria-controls'],
+    });
+  }
+  return <button type="button" {...props}>{children}</button>;
+});
+
+export const PopoverContent = React.forwardRef(function PopoverContent({ align = 'center', side = 'bottom', sideOffset = 8, width, role = 'dialog', className, style, children, ...rest }, forwardedRef) {
+  const ctx = React.useContext(PopoverCtx);
+  const fallbackTriggerRef = React.useRef(null);
+  const fallbackContentRef = React.useRef(null);
+  const placement = side === 'top' ? 'top' : 'bottom';
+  const { style: anchored } = useAnchoredStyle(ctx?.triggerRef ?? fallbackTriggerRef, ctx?.contentRef ?? fallbackContentRef, { open: !!ctx?.open, placement, align, offset: sideOffset });
+  if (!ctx?.open) return null;
   return (
-    <span {...rest} ref={mergeRefs(fRef, ref)} className={`ef-popover${className ? ' ' + className : ''}`} style={style}>
-      {React.isValidElement(trigger)
-        ? React.cloneElement(trigger, triggerProps)
-        : <span role="button" tabIndex={0} style={{ display: 'inline-flex' }} {...triggerProps}>{trigger}</span>}
-      {open && (
-        <Portal>
-          <div ref={panelRef} className={`ef-popover__panel ef-popover__panel--${align}`} style={{ ...anchored, width }}>{children}</div>
-        </Portal>
-      )}
-    </span>
+    <Portal>
+      <div {...rest} ref={mergeRefs(forwardedRef, ctx.contentRef)} id={ctx.contentId} role={role} data-slot="popover-content" data-state="open" data-side={placement} data-align={align}
+        className={`ef-popover__panel${className ? ' ' + className : ''}`} style={{ ...anchored, width: width ?? undefined, ...style }}>{children}</div>
+    </Portal>
   );
+});
+
+export const PopoverHeader = React.forwardRef(function PopoverHeader({ className, ...props }, ref) {
+  return <div {...props} ref={ref} data-slot="popover-header" className={`ef-popover__header${className ? ' ' + className : ''}`} />;
+});
+export const PopoverTitle = React.forwardRef(function PopoverTitle({ className, ...props }, ref) {
+  return <h2 {...props} ref={ref} data-slot="popover-title" className={`ef-popover__title${className ? ' ' + className : ''}`} />;
+});
+export const PopoverDescription = React.forwardRef(function PopoverDescription({ className, ...props }, ref) {
+  return <p {...props} ref={ref} data-slot="popover-description" className={`ef-popover__description${className ? ' ' + className : ''}`} />;
 });

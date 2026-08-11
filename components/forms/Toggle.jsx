@@ -12,7 +12,8 @@ const CSS = `
 .ef-toggle--sm{height:32px;min-width:32px;padding:0 8px;font-size:var(--text-xs)}
 .ef-toggle--lg{height:40px;min-width:40px;padding:0 16px;font-size:var(--text-md)}
 .ef-toggle--md{height:32px;min-width:32px}
-.ef-toggle-group{display:inline-flex;gap:2px;padding:2px;border:1px solid var(--border-strong);border-radius:var(--radius-sm);background:var(--surface-card)}
+.ef-toggle-group{display:inline-flex;gap:var(--ef-toggle-gap,8px);align-items:center}
+.ef-toggle-group[data-orientation="vertical"]{flex-direction:column;align-items:stretch}
 `;
 
 const GroupCtx = React.createContext(null);
@@ -52,19 +53,21 @@ export const Toggle = React.forwardRef(function Toggle(
       onPressedChange?.(!isOn);
     }
   };
-  const iconSize = size === 'sm' ? 14 : size === 'lg' ? 18 : 16;
+  const actualVariant = context?.variant ?? variant;
+  const actualSize = context?.size ?? size;
+  const iconSize = actualSize === 'sm' ? 14 : actualSize === 'lg' ? 18 : 16;
 
   return (
     <button
       {...rest}
       ref={ref}
       type="button"
-      data-slot="toggle"
+      data-slot={context ? 'toggle-group-item' : 'toggle'}
       data-state={isOn ? 'on' : 'off'}
       aria-pressed={isOn}
-      disabled={disabled}
+      disabled={disabled || context?.disabled}
       onClick={press}
-      className={`${toggleVariants({ variant, size, className })}${isOn ? ' ef-toggle--on' : ''}`}
+      className={`${toggleVariants({ variant: actualVariant, size: actualSize, className })}${isOn ? ' ef-toggle--on' : ''}`}
     >
       {icon ? <Icon name={icon} size={iconSize} /> : null}
       {children}
@@ -72,7 +75,7 @@ export const Toggle = React.forwardRef(function Toggle(
   );
 });
 
-export function ToggleGroup({ type = 'single', value, defaultValue, onChange, children, style, className, ...rest }) {
+export const ToggleGroup = React.forwardRef(function ToggleGroup({ type = 'single', value, defaultValue, onValueChange, onChange, variant = 'default', size = 'default', spacing = 2, orientation = 'horizontal', disabled = false, dir, children, style, className, onKeyDown, ...rest }, ref) {
   injectEfCss('ef-css-toggle', CSS);
   const [uncontrolled, setUncontrolled] = React.useState(defaultValue !== undefined ? defaultValue : (type === 'multiple' ? [] : null));
   const current = value !== undefined ? value : uncontrolled;
@@ -84,7 +87,33 @@ export function ToggleGroup({ type = 'single', value, defaultValue, onChange, ch
       next = selected.includes(itemValue) ? selected.filter(item => item !== itemValue) : [...selected, itemValue];
     } else next = current === itemValue ? null : itemValue;
     if (value === undefined) setUncontrolled(next);
+    onValueChange?.(next);
     onChange?.(next);
   };
-  return <div {...rest} role="group" className={`ef-toggle-group${className ? ' ' + className : ''}`} style={style}><GroupCtx.Provider value={{ isOn, toggle }}>{children}</GroupCtx.Provider></div>;
-}
+  const keyNav = event => {
+    onKeyDown?.(event);
+    if (event.defaultPrevented) return;
+    const rtl = (dir || document.documentElement.dir) === 'rtl';
+    const previous = orientation === 'vertical' ? event.key === 'ArrowUp' : event.key === (rtl ? 'ArrowRight' : 'ArrowLeft');
+    const next = orientation === 'vertical' ? event.key === 'ArrowDown' : event.key === (rtl ? 'ArrowLeft' : 'ArrowRight');
+    if (!previous && !next && event.key !== 'Home' && event.key !== 'End') return;
+    const items = [...event.currentTarget.querySelectorAll('[data-slot="toggle-group-item"]:not(:disabled)')];
+    if (!items.length) return;
+    event.preventDefault();
+    const index = items.indexOf(document.activeElement);
+    const target = event.key === 'Home' ? items[0] : event.key === 'End' ? items.at(-1) : items[(index + (previous ? -1 : 1) + items.length) % items.length];
+    target?.focus();
+  };
+  const ctx = React.useMemo(() => ({ isOn, toggle, variant, size, disabled }), [current, type, variant, size, disabled]);
+  return (
+    <div {...rest} ref={ref} role="group" data-slot="toggle-group" data-orientation={orientation} dir={dir}
+      className={`ef-toggle-group${className ? ' ' + className : ''}`}
+      style={{ '--ef-toggle-gap': `${spacing * 4}px`, ...style }} onKeyDown={keyNav}>
+      <GroupCtx.Provider value={ctx}>{children}</GroupCtx.Provider>
+    </div>
+  );
+});
+
+export const ToggleGroupItem = React.forwardRef(function ToggleGroupItem(props, ref) {
+  return <Toggle {...props} ref={ref} data-slot="toggle-group-item" />;
+});

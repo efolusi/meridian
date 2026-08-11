@@ -2373,8 +2373,8 @@
     {
       "name": "tooltip",
       "type": "registry:ui",
-      "title": "Tooltip",
-      "description": "Hover/focus tooltip with 200ms delay and spring pop. Wrap any trigger element.",
+      "title": "Tooltip + TooltipProvider + TooltipTrigger + TooltipContent",
+      "description": "Hover/focus tooltip with collision-aware placement. Prefer the compositional API.",
       "dependencies": [
         "react"
       ],
@@ -3154,7 +3154,7 @@
     {
       "name": "toggle",
       "type": "registry:ui",
-      "title": "Toggle + ToggleGroup",
+      "title": "Toggle + ToggleGroup + ToggleGroupItem",
       "description": "A two-state button with default and outline variants and `default`, `sm`, and `lg` sizes.",
       "dependencies": [
         "react"
@@ -3652,7 +3652,7 @@
     {
       "name": "popover",
       "type": "registry:ui",
-      "title": "Popover",
+      "title": "Popover + PopoverTrigger + PopoverContent + PopoverHeader + PopoverTitle + PopoverDescription",
       "description": "Anchored floating panel for filters, pickers, help. Closes on outside click / ESC.",
       "dependencies": [
         "react"

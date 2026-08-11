@@ -8,4 +8,5 @@ A two-state button with default and outline variants and `default`, `sm`, and `l
 ```
 
 `toggleVariants` returns class names for custom compositions. Meridian's icon-name helper,
-legacy `md` size, and `ToggleGroup` remain additive; use Tabs for navigation and Switch for saved settings.
+legacy `md` size, and direct Toggle children remain additive. Compose grouped controls with
+`ToggleGroup` and `ToggleGroupItem`; use Tabs for navigation and Switch for saved settings.

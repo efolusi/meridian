@@ -126,12 +126,20 @@ export function ToastDemo() {
 
 // @demo Tooltip Hover hint
 export function TooltipDemo() {
-  const { Tooltip, IconButton } = window.EfolusiDesignSystem_4ffc3d;
+  const { TooltipProvider, Tooltip, TooltipTrigger, TooltipContent, IconButton } = window.EfolusiDesignSystem_4ffc3d;
   return (
-    <div style={{ display: 'flex', gap: 14, alignItems: 'center' }}>
-      <Tooltip label="Duplicate run"><IconButton variant="outline" icon="copy" label="Duplicate" /></Tooltip>
-      <Tooltip label="Runs again with the same inputs" side="bottom"><IconButton variant="outline" icon="refresh-cw" label="Retry" /></Tooltip>
-    </div>
+    <TooltipProvider delayDuration={150}>
+      <div style={{ display: 'flex', gap: 14, alignItems: 'center' }}>
+        <Tooltip>
+          <TooltipTrigger asChild><IconButton variant="outline" icon="copy" label="Duplicate" /></TooltipTrigger>
+          <TooltipContent>Duplicate run</TooltipContent>
+        </Tooltip>
+        <Tooltip>
+          <TooltipTrigger asChild><IconButton variant="outline" icon="refresh-cw" label="Retry" /></TooltipTrigger>
+          <TooltipContent side="bottom">Runs again with the same inputs</TooltipContent>
+        </Tooltip>
+      </div>
+    </TooltipProvider>
   );
 }
 

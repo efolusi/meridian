@@ -1,6 +1,7 @@
 import React from 'react';
-import { injectEfCss, useIsoLayoutEffect } from '../forms/Button.jsx';
+import { injectEfCss, mergeRefs, useIsoLayoutEffect } from '../forms/Button.jsx';
 import { Portal } from '../overlay/Portal.jsx';
+
 const CSS = `
 .ef-tooltip{position:relative;display:inline-flex}
 .ef-tooltip__bubble{position:fixed;background:var(--surface-inverse);color:var(--text-inverse);font-size:var(--text-xs);font-weight:var(--weight-medium);line-height:1.35;padding:5px 9px;border-radius:6px;white-space:nowrap;pointer-events:none;z-index:var(--z-tooltip);animation:ef-tooltip-in var(--dur-fast) var(--ease-out)}
@@ -11,28 +12,94 @@ const CSS = `
 @keyframes ef-tooltip-in{from{opacity:0}to{opacity:1}}
 `;
 const SIDES = ['top', 'bottom', 'left', 'right'];
-export function Tooltip({ label, side: sideProp, position, delay = 200, children, style, className, ...rest }) {
-  injectEfCss('ef-css-tooltip', CSS);
-  const id = React.useId();
-  const [open, setOpen] = React.useState(false);
-  const ref = React.useRef(null);
-  const bubbleRef = React.useRef(null);
-  const timer = React.useRef(null);
-  // position is the deprecated alias; side (the house placement prop) wins when both are passed.
-  const asked = sideProp ?? position;
-  const want = SIDES.includes(asked) ? asked : 'top';
+const TooltipProviderCtx = React.createContext({ delayDuration: 200 });
+const TooltipCtx = React.createContext(null);
 
-  // Portal's useAnchoredStyle only resolves top/bottom, so the tooltip places
-  // itself: the same flip-then-clamp behaviour, extended to left/right. Hidden
-  // for the first frame so the measurement never flashes at the origin.
-  const [placed, setPlaced] = React.useState({ style: { position: 'fixed', top: 0, left: 0, visibility: 'hidden' }, side: want });
+function compose(theirs, ours) {
+  return event => { theirs?.(event); if (!event.defaultPrevented) ours?.(event); };
+}
+
+export function Tooltip({ label, side, position, delay, open: controlled, defaultOpen = false, onOpenChange, children }) {
+  injectEfCss('ef-css-tooltip', CSS);
+  const provider = React.useContext(TooltipProviderCtx);
+  const [inner, setInner] = React.useState(defaultOpen);
+  const open = controlled !== undefined ? controlled : inner;
+  const triggerRef = React.useRef(null);
+  const timerRef = React.useRef(null);
+  const contentId = React.useId();
+  const setOpen = React.useCallback(next => {
+    if (controlled === undefined) setInner(next);
+    onOpenChange?.(next);
+  }, [controlled, onOpenChange]);
+  const show = React.useCallback(immediate => {
+    clearTimeout(timerRef.current);
+    const wait = delay ?? provider.delayDuration;
+    if (immediate || wait <= 0) setOpen(true);
+    else timerRef.current = setTimeout(() => setOpen(true), wait);
+  }, [delay, provider.delayDuration, setOpen]);
+  const hide = React.useCallback(() => { clearTimeout(timerRef.current); setOpen(false); }, [setOpen]);
+  React.useEffect(() => () => clearTimeout(timerRef.current), []);
+  const value = React.useMemo(() => ({ open, show, hide, triggerRef, contentId }), [open, show, hide, contentId]);
+
+  if (label !== undefined) {
+    const asked = side ?? position;
+    return (
+      <TooltipCtx.Provider value={value}>
+        <span className="ef-tooltip">
+          <TooltipTrigger asChild>{children}</TooltipTrigger>
+          <TooltipContent side={SIDES.includes(asked) ? asked : 'top'}>{label}</TooltipContent>
+        </span>
+      </TooltipCtx.Provider>
+    );
+  }
+  return <TooltipCtx.Provider value={value}>{children}</TooltipCtx.Provider>;
+}
+
+export function TooltipProvider({ delayDuration = 200, children }) {
+  return <TooltipProviderCtx.Provider value={{ delayDuration }}>{children}</TooltipProviderCtx.Provider>;
+}
+
+export const TooltipTrigger = React.forwardRef(function TooltipTrigger({ asChild = false, children, ...rest }, forwardedRef) {
+  const ctx = React.useContext(TooltipCtx);
+  if (!ctx) return <button type="button" {...rest} ref={forwardedRef}>{children}</button>;
+  const props = {
+    ...rest,
+    ref: mergeRefs(forwardedRef, ctx.triggerRef),
+    'data-slot': 'tooltip-trigger',
+    'aria-describedby': ctx.open ? ctx.contentId : undefined,
+    onMouseEnter: compose(rest.onMouseEnter, () => ctx.show(false)),
+    onMouseLeave: compose(rest.onMouseLeave, ctx.hide),
+    onFocus: compose(rest.onFocus, () => ctx.show(true)),
+    onBlur: compose(rest.onBlur, ctx.hide),
+    onKeyDown: compose(rest.onKeyDown, event => { if (event.key === 'Escape') ctx.hide(); }),
+  };
+  if (asChild && React.isValidElement(children)) {
+    return React.cloneElement(children, {
+      ...props,
+      ...children.props,
+      ref: mergeRefs(children.ref, props.ref),
+      onMouseEnter: compose(children.props.onMouseEnter, props.onMouseEnter),
+      onMouseLeave: compose(children.props.onMouseLeave, props.onMouseLeave),
+      onFocus: compose(children.props.onFocus, props.onFocus),
+      onBlur: compose(children.props.onBlur, props.onBlur),
+      onKeyDown: compose(children.props.onKeyDown, props.onKeyDown),
+      'aria-describedby': props['aria-describedby'],
+      'data-slot': 'tooltip-trigger',
+    });
+  }
+  return <button type="button" {...props}>{children}</button>;
+});
+
+export const TooltipContent = React.forwardRef(function TooltipContent({ side = 'top', sideOffset = 8, className, style, children, ...rest }, forwardedRef) {
+  const ctx = React.useContext(TooltipCtx);
+  const bubbleRef = React.useRef(null);
+  const want = SIDES.includes(side) ? side : 'top';
+  const [placed, setPlaced] = React.useState({ style: { position: 'fixed', top: 0, left: 0, visibility: 'hidden' }, side: want, arrow: null });
   useIsoLayoutEffect(() => {
-    if (!open) {
-      setPlaced(s => (s.style.visibility === 'hidden' ? s : { ...s, style: { ...s.style, visibility: 'hidden' } }));
-      return;
-    }
+    if (!ctx) return;
+    if (!ctx.open) return;
     const move = () => {
-      const anchor = ref.current;
+      const anchor = ctx.triggerRef.current;
       const bubble = bubbleRef.current;
       if (!anchor || !bubble) return;
       const a = anchor.getBoundingClientRect();
@@ -40,79 +107,35 @@ export function Tooltip({ label, side: sideProp, position, delay = 200, children
       const vw = document.documentElement.clientWidth;
       const vh = document.documentElement.clientHeight;
       const edge = 8;
-      const offset = 8;
-      let side = want;
+      let actual = want;
       if (want === 'left' || want === 'right') {
-        const roomLeft = a.left - offset;
-        const roomRight = vw - a.right - offset;
-        side = want === 'left'
-          ? (roomLeft >= b.width || roomLeft >= roomRight ? 'left' : 'right')
-          : (roomRight >= b.width || roomRight >= roomLeft ? 'right' : 'left');
+        const left = a.left - sideOffset;
+        const right = vw - a.right - sideOffset;
+        actual = want === 'left' ? (left >= b.width || left >= right ? 'left' : 'right') : (right >= b.width || right >= left ? 'right' : 'left');
       } else {
-        const roomAbove = a.top - offset;
-        const roomBelow = vh - a.bottom - offset;
-        side = want === 'top'
-          ? (roomAbove >= b.height || roomAbove >= roomBelow ? 'top' : 'bottom')
-          : (roomBelow >= b.height || roomBelow >= roomAbove ? 'bottom' : 'top');
+        const above = a.top - sideOffset;
+        const below = vh - a.bottom - sideOffset;
+        actual = want === 'top' ? (above >= b.height || above >= below ? 'top' : 'bottom') : (below >= b.height || below >= above ? 'bottom' : 'top');
       }
-      let top = side === 'top' ? a.top - offset - b.height
-        : side === 'bottom' ? a.bottom + offset
-        : a.top + a.height / 2 - b.height / 2;
-      let left = side === 'left' ? a.left - offset - b.width
-        : side === 'right' ? a.right + offset
-        : a.left + a.width / 2 - b.width / 2;
+      let top = actual === 'top' ? a.top - sideOffset - b.height : actual === 'bottom' ? a.bottom + sideOffset : a.top + a.height / 2 - b.height / 2;
+      let left = actual === 'left' ? a.left - sideOffset - b.width : actual === 'right' ? a.right + sideOffset : a.left + a.width / 2 - b.width / 2;
       left = Math.max(edge, Math.min(left, vw - b.width - edge));
       top = Math.max(edge, Math.min(top, vh - b.height - edge));
-      setPlaced({ style: { position: 'fixed', top: Math.round(top), left: Math.round(left), visibility: 'visible' }, side });
+      const across = actual === 'left' || actual === 'right';
+      const arrow = across ? a.top + a.height / 2 - top : a.left + a.width / 2 - left;
+      setPlaced({ style: { position: 'fixed', top: Math.round(top), left: Math.round(left), visibility: 'visible' }, side: actual, arrow: Math.max(8, Math.min(arrow, (across ? b.height : b.width) - 8)) });
     };
     move();
-    // capture phase: any scrolling ancestor moves the anchor, not just the window
     window.addEventListener('scroll', move, true);
     window.addEventListener('resize', move);
     return () => { window.removeEventListener('scroll', move, true); window.removeEventListener('resize', move); };
-  }, [open, want]);
-  const { style: anchored, side } = placed;
-
-  // Keep the arrow over the trigger's centre even when the bubble has been
-  // shifted to stay on screen, so it never points at empty space.
-  const [arrow, setArrow] = React.useState(null);
-  useIsoLayoutEffect(() => {
-    if (!open || !ref.current || !bubbleRef.current) { setArrow(null); return; }
-    const a = ref.current.getBoundingClientRect();
-    const b = bubbleRef.current.getBoundingClientRect();
-    if (!b.width) return;
-    const across = side === 'left' || side === 'right';
-    const v = across ? a.top + a.height / 2 - b.top : a.left + a.width / 2 - b.left;
-    setArrow(Math.max(8, Math.min(v, (across ? b.height : b.width) - 8)));
-  }, [open, side, anchored.left, anchored.top]);
-
-  const show = immediate => {
-    clearTimeout(timer.current);
-    if (immediate) setOpen(true);
-    else timer.current = setTimeout(() => setOpen(true), delay);
-  };
-  const hide = () => { clearTimeout(timer.current); setOpen(false); };
-  React.useEffect(() => () => clearTimeout(timer.current), []);
-
-  const child = React.Children.count(children) === 1 && React.isValidElement(children)
-    ? React.cloneElement(children, { 'aria-describedby': open ? id : undefined })
-    : children;
-
+  }, [ctx?.open, ctx?.triggerRef, want, sideOffset]);
+  if (!ctx?.open) return null;
   return (
-    <span {...rest} ref={ref} className={`ef-tooltip${className ? ' ' + className : ''}`} style={style}
-      onMouseEnter={() => show(false)}
-      onMouseLeave={hide}
-      onFocus={() => show(true)}
-      onBlur={hide}
-      onKeyDown={e => { if (e.key === 'Escape') hide(); }}>
-      {child}
-      {open ? (
-        <Portal>
-          <span ref={bubbleRef} role="tooltip" id={id}
-            className={`ef-tooltip__bubble${side !== 'top' ? ' ef-tooltip__bubble--' + side : ''}`}
-            style={{ ...anchored, ...(arrow == null ? null : { '--ef-tt-arrow': arrow + 'px' }) }}>{label}</span>
-        </Portal>
-      ) : null}
-    </span>
+    <Portal>
+      <span {...rest} ref={mergeRefs(forwardedRef, bubbleRef)} role="tooltip" id={ctx.contentId} data-slot="tooltip-content" data-state="open" data-side={placed.side}
+        className={`ef-tooltip__bubble${placed.side !== 'top' ? ' ef-tooltip__bubble--' + placed.side : ''}${className ? ' ' + className : ''}`}
+        style={{ ...placed.style, '--ef-tt-arrow': placed.arrow == null ? undefined : placed.arrow + 'px', ...style }}>{children}</span>
+    </Portal>
   );
-}
+});

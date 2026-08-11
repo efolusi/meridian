@@ -595,6 +595,26 @@
       "sourcePath": "components/overlay/Popover.jsx"
     },
     {
+      "name": "PopoverContent",
+      "sourcePath": "components/overlay/Popover.jsx"
+    },
+    {
+      "name": "PopoverDescription",
+      "sourcePath": "components/overlay/Popover.jsx"
+    },
+    {
+      "name": "PopoverHeader",
+      "sourcePath": "components/overlay/Popover.jsx"
+    },
+    {
+      "name": "PopoverTitle",
+      "sourcePath": "components/overlay/Popover.jsx"
+    },
+    {
+      "name": "PopoverTrigger",
+      "sourcePath": "components/overlay/Popover.jsx"
+    },
+    {
       "name": "Portal",
       "sourcePath": "components/overlay/Portal.jsx"
     },
@@ -803,6 +823,10 @@
       "sourcePath": "components/forms/Toggle.jsx"
     },
     {
+      "name": "ToggleGroupItem",
+      "sourcePath": "components/forms/Toggle.jsx"
+    },
+    {
       "name": "Toolbar",
       "sourcePath": "components/display/Toolbar.jsx"
     },
@@ -812,6 +836,18 @@
     },
     {
       "name": "Tooltip",
+      "sourcePath": "components/feedback/Tooltip.jsx"
+    },
+    {
+      "name": "TooltipContent",
+      "sourcePath": "components/feedback/Tooltip.jsx"
+    },
+    {
+      "name": "TooltipProvider",
+      "sourcePath": "components/feedback/Tooltip.jsx"
+    },
+    {
+      "name": "TooltipTrigger",
       "sourcePath": "components/feedback/Tooltip.jsx"
     },
     {
@@ -1203,10 +1239,16 @@
       "message": "@deprecated pass a node to `action` instead"
     },
     {
+      "component": "ToggleGroup",
+      "prop": "onChange",
+      "replacement": "onValueChange",
+      "message": "@deprecated Use onValueChange."
+    },
+    {
       "component": "Tooltip",
       "prop": "position",
       "replacement": "side",
-      "message": "@deprecated Use `side`. Alias kept for one major; `side` wins when both are passed."
+      "message": "@deprecated Use side."
     },
     {
       "component": "TreeList",

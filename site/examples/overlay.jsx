@@ -89,15 +89,22 @@ export function MenuDemo() {
 
 // @demo Popover Anchored panel
 export function PopoverDemo() {
-  const { Popover, Button, Checkbox } = window.EfolusiDesignSystem_4ffc3d;
+  const { Popover, PopoverTrigger, PopoverContent, PopoverHeader, PopoverTitle, PopoverDescription, Button, Checkbox } = window.EfolusiDesignSystem_4ffc3d;
   return (
-    <Popover trigger={<Button variant="secondary" iconLeft="funnel">Filter</Button>} width={240}>
-      <div style={{ display: 'flex', flexDirection: 'column', gap: 10 }}>
+    <Popover>
+      <PopoverTrigger asChild><Button variant="secondary" iconLeft="funnel">Filter</Button></PopoverTrigger>
+      <PopoverContent align="start" width={260}>
+        <PopoverHeader>
+          <PopoverTitle>Filter runs</PopoverTitle>
+          <PopoverDescription>Choose which operational states appear.</PopoverDescription>
+        </PopoverHeader>
+        <div style={{ display: 'flex', flexDirection: 'column', gap: 10 }}>
         <span style={{ fontSize: 12, fontWeight: 600, letterSpacing: '0.05em', textTransform: 'uppercase', color: 'var(--text-muted)' }}>Status</span>
         <Checkbox defaultChecked label="Live" />
         <Checkbox defaultChecked label="Paused" />
         <Checkbox label="Archived" />
-      </div>
+        </div>
+      </PopoverContent>
     </Popover>
   );
 }

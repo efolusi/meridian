@@ -201,6 +201,25 @@ similarity.
   types, registry installation, demos, and tests. Meridian's integrated label
   and size helpers remain additive extensions.
 
+- `TooltipProvider`, `Tooltip`, `TooltipTrigger`, and `TooltipContent` support
+  composed triggers, controlled and uncontrolled state, configurable delay,
+  four-sided collision-aware placement, keyboard dismissal, linked accessible
+  descriptions, refs, types, registry installation, demos, and tests.
+  Meridian's `label`, `delay`, and `position` shorthand remains available.
+
+- `Popover`, `PopoverTrigger`, `PopoverContent`, `PopoverHeader`,
+  `PopoverTitle`, and `PopoverDescription` support controlled and uncontrolled
+  state, semantic child composition, aligned portal placement, outside and
+  keyboard dismissal, focus restoration, refs, types, registry installation,
+  demos, and tests. Meridian's `trigger`, `width`, and left/right alignment
+  shorthand remains available.
+
+- `ToggleGroup` and `ToggleGroupItem` support single and multiple selection,
+  controlled and uncontrolled values, inherited variant and size, configurable
+  spacing, horizontal and vertical orientation, RTL-aware keyboard movement,
+  disabled state, refs, types, registry installation, demos, and tests.
+  Meridian's `onChange` callback and direct `Toggle` children remain adapters.
+
 
 ## Release gate
 

@@ -1,9 +1,14 @@
-Hover/focus tooltip with 200ms delay and spring pop. Wrap any trigger element.
+Hover/focus tooltip with collision-aware placement. Prefer the compositional API.
 
 ```jsx
-<Tooltip label="Copy to clipboard"><IconButton icon="copy" label="Copy" /></Tooltip>
+<TooltipProvider delayDuration={200}>
+  <Tooltip>
+    <TooltipTrigger asChild><IconButton icon="copy" label="Copy" /></TooltipTrigger>
+    <TooltipContent>Copy to clipboard</TooltipContent>
+  </Tooltip>
+</TooltipProvider>
 ```
 
 `side`: `top` (default), `bottom`, `left`, or `right`; flips when there is no room. Keep labels short; no interactive content inside.
 
-Vocabulary: state-carrying selection fires `onChange`; command menus fire `onSelect`; placement is `side` (top/bottom/left/right). `position` is a deprecated alias for `side` (one major); `side` wins when both are passed.
+The `label` shorthand and deprecated `position` alias remain available for existing products.

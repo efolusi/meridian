@@ -273,15 +273,15 @@ export function TextareaDemo() {
 
 // @demo Toggle Pressed state
 export function ToggleDemo() {
-  const { Toggle, ToggleGroup } = window.EfolusiDesignSystem_4ffc3d;
+  const { Toggle, ToggleGroup, ToggleGroupItem } = window.EfolusiDesignSystem_4ffc3d;
   return (
     <div style={{ display: 'flex', gap: 16, alignItems: 'center', flexWrap: 'wrap' }}>
       <Toggle icon="sparkles" defaultPressed>Auto-fix</Toggle>
       <Toggle variant="outline" size="sm">Preview</Toggle>
-      <ToggleGroup type="single" defaultValue="list">
-        <Toggle value="list" icon="menu" aria-label="List view" />
-        <Toggle value="board" icon="layout-dashboard" aria-label="Board view" />
-        <Toggle value="grid" icon="square" aria-label="Grid view" />
+      <ToggleGroup type="single" defaultValue="list" variant="outline" aria-label="Workspace view">
+        <ToggleGroupItem value="list" icon="menu" aria-label="List view" />
+        <ToggleGroupItem value="board" icon="layout-dashboard" aria-label="Board view" />
+        <ToggleGroupItem value="grid" icon="square" aria-label="Grid view" />
       </ToggleGroup>
     </div>
   );
