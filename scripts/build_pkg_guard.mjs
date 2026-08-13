@@ -32,7 +32,7 @@ files.set('package.json', `${JSON.stringify({
   repository: { type: 'git', url: 'git+https://github.com/efolusi/meridian.git', directory: 'packages/guard' },
   type: 'module',
   engines: { node: '>=20.10' },
-  bin: { 'meridian-guard': './bin/meridian-guard.js' },
+  bin: { 'meridian-guard': 'bin/meridian-guard.js' },
   main: './src/index.mjs',
   exports: { '.': './src/index.mjs', './package.json': './package.json' },
   files: ['bin', 'src', 'README.md', 'LICENSE'],
