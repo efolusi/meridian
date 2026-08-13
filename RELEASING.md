@@ -6,9 +6,10 @@ publishes via npm Trusted Publishing (OIDC, no token anywhere), and then creates
 the `vX.Y.Z` tag and the GitHub Release itself. Pushes whose version is already
 published are a no-op for the workflow.
 
-**This is a monorepo of three lockstep packages.** One version bump publishes all
-three at the same version: the `@efolusi/meridian` umbrella plus the standalone
-`@efolusi/meridian-tokens` and `@efolusi/meridian-icons`. Each publish is
+**This is a monorepo of four lockstep packages.** One version bump publishes all
+four at the same version: the `@efolusi/meridian` umbrella plus the standalone
+`@efolusi/meridian-tokens`, `@efolusi/meridian-icons`, and
+`@efolusi/meridian-guard`. Each publish is
 idempotent (a version already on the registry is skipped), so a run that fails
 partway re-runs cleanly. Each package needs its own Trusted Publisher configured
 on npmjs.com (all pointing at `publish.yml`); a brand-new sub-package must be

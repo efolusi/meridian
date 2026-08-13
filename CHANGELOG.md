@@ -2,6 +2,8 @@
 
 ## Unreleased
 
+## 1.21.0 — 2026-08-13
+
 - **Deprecated Toast was removed completely.** Meridian now ships one notification system: canonical `Toaster` plus the imperative `toast` API. The old `Toast`, `ToastStack`, duplicate registry item, adapter documentation, and direct-render demos were deleted, and the implementation now lives under `Sonner`.
 
 - **InputGroup and Toggle families are composition-only.** InputGroup's label/prefix/suffix/hint renderer was removed in favor of explicit `Field` and `InputGroup*` parts. Toggle's icon-name helper, `md` size alias, and implicit participation as a direct `ToggleGroup` child were removed; grouped controls now use `ToggleGroupItem` exclusively.
