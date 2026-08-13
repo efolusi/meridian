@@ -8,7 +8,7 @@
 </head><body style="background:var(--surface-page)">
 <div id="root"></div>
 <script type="text/babel">
-const { Card, CardContent, CardHeader, CardTitle, Stat, BarChart, Table, Badge, Button, SegmentedControl } = window.EfolusiDesignSystem_4ffc3d;
+const { Card, CardContent, CardHeader, CardTitle, Stat, BarChart, Table, Badge, Button, SegmentedControl, Icon } = window.EfolusiDesignSystem_4ffc3d;
 function Block() {
   const [range, setRange] = React.useState('30d');
   return (
@@ -35,7 +35,7 @@ function Block() {
           <Table rowKey="id" columns={[
             { key: 'name', label: 'Agent' },
             { key: 'runs', label: 'Runs', numeric: true, align: 'right' },
-            { key: 'status', label: 'Status', render: (v) => <Badge tone={v === 'Live' ? 'success' : 'neutral'} dot={v === 'Live'}>{v}</Badge> },
+            { key: 'status', label: 'Status', render: (v) => <Badge variant={v === 'Live' ? 'default' : 'secondary'} className={v === 'Live' ? 'ef-badge--success' : undefined}>{v === 'Live' && <Icon name="circle" size={7} strokeWidth={4} data-icon="inline-start" />}{v}</Badge> },
           ]} rows={[
             { id: 'a', name: 'Inbox triager', runs: 4120, status: 'Live' },
             { id: 'b', name: 'Flight rebooking', runs: 1280, status: 'Live' },

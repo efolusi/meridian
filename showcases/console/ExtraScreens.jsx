@@ -26,8 +26,8 @@ function ProjectsScreen({ onNewProject, notify }) {
               ]} />
             </div>
             <div style={{ display: 'flex', gap: 6, marginTop: 8 }}>
-              <Badge tone={state === 'busy' ? 'accent' : 'neutral'} dot={state === 'busy'}>{product}</Badge>
-              {state === 'busy' && <Badge tone="success" dot>Running</Badge>}
+              <Badge variant={state === 'busy' ? 'default' : 'secondary'} className={state === 'busy' ? 'ef-badge--accent' : undefined}>{state === 'busy' && <Icon name="circle" size={7} strokeWidth={4} data-icon="inline-start" />}{product}</Badge>
+              {state === 'busy' && <Badge className="ef-badge--success"><Icon name="circle" size={7} strokeWidth={4} data-icon="inline-start" />Running</Badge>}
             </div>
             <div style={{ display: 'flex', alignItems: 'center', marginTop: 16 }}>
               <AvatarGroup>{people.map(p => <Avatar key={p} size="sm"><AvatarFallback>{p.split(/\s+/).map(part => part[0]).slice(0, 2).join('')}</AvatarFallback></Avatar>)}</AvatarGroup>
@@ -78,7 +78,7 @@ function BillingScreen({ notify }) {
   return (
     <div style={{ padding: 24, display: 'flex', flexDirection: 'column', gap: 16, maxWidth: 860 }}>
       <div style={{ display: 'flex', gap: 16 }}>
-        <Card style={{ flex: 1.2, '--card-spacing': '20px' }}><CardHeader><CardTitle>Plan</CardTitle><CardAction><Badge tone="accent">Growth</Badge></CardAction></CardHeader><CardContent>
+        <Card style={{ flex: 1.2, '--card-spacing': '20px' }}><CardHeader><CardTitle>Plan</CardTitle><CardAction><Badge className="ef-badge--accent">Growth</Badge></CardAction></CardHeader><CardContent>
           <KeyValueList labelWidth={130} items={[
             { label: 'Price', value: '€12 per seat / month', mono: true },
             { label: 'Seats', value: '4 of 5 used' },
@@ -104,7 +104,7 @@ function BillingScreen({ notify }) {
           { key: 'id', label: 'Invoice', render: v => <strong>#{v}</strong> },
           { key: 'date', label: 'Date' },
           { key: 'amount', label: 'Amount', numeric: true, align: 'right' },
-          { key: 'status', label: 'Status', render: v => <Badge tone={v === 'Paid' ? 'success' : 'neutral'} dot>{v}</Badge> },
+          { key: 'status', label: 'Status', render: v => <Badge variant={v === 'Paid' ? 'default' : 'secondary'} className={v === 'Paid' ? 'ef-badge--success' : undefined}><Icon name="circle" size={7} strokeWidth={4} data-icon="inline-start" />{v}</Badge> },
           { key: 'dl', label: '', width: 50, render: (v, r) => <IconButton icon="download" label="Download PDF" size="sm" onClick={() => notify('Invoice #' + r.id + ' downloading', 'PDF on its way.')} /> },
         ]} rows={INVOICES} /></CardContent></Card>
     </div>

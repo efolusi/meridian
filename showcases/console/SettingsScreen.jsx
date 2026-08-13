@@ -50,7 +50,7 @@ function MembersTab({ notify }) {
               <div style={{ fontSize: 14, fontWeight: 600 }}>{name}</div>
               <div style={{ fontSize: 12, color: 'var(--text-muted)' }}>{email}</div>
             </div>
-            {role === 'Owner' ? <Badge tone="brand">Owner</Badge> : <NativeSelect size="sm" defaultValue={role} aria-label={`Role for ${email}`} style={{ width: 110 }}>{['Admin', 'Member', 'Viewer'].map(value => <NativeSelectOption key={value} value={value}>{value}</NativeSelectOption>)}</NativeSelect>}
+            {role === 'Owner' ? <Badge className="ef-badge--brand">Owner</Badge> : <NativeSelect size="sm" defaultValue={role} aria-label={`Role for ${email}`} style={{ width: 110 }}>{['Admin', 'Member', 'Viewer'].map(value => <NativeSelectOption key={value} value={value}>{value}</NativeSelectOption>)}</NativeSelect>}
             <IconButton icon="ellipsis" label="More" size="sm" disabled={role === 'Owner'} />
           </div>
         ))}
@@ -73,7 +73,7 @@ function ApiTab({ notify }) {
           <div key={env} style={{ display: 'flex', alignItems: 'center', gap: 12, padding: '12px 20px', borderTop: '1px solid var(--sand-100)' }}>
             <span style={{ display: 'inline-flex', width: 32, height: 32, alignItems: 'center', justifyContent: 'center', borderRadius: 'var(--radius-sm)', background: 'var(--sand-100)', color: 'var(--sand-700)' }}><Icon name="terminal" size={16} /></span>
             <div style={{ flex: 1 }}>
-              <div style={{ fontSize: 14, fontWeight: 600 }}>{env} {live && <Badge tone="success" dot style={{ marginLeft: 6 }}>Live</Badge>}</div>
+              <div style={{ fontSize: 14, fontWeight: 600 }}>{env} {live && <Badge className="ef-badge--success" style={{ marginLeft: 6 }}><Icon name="circle" size={7} strokeWidth={4} data-icon="inline-start" />Live</Badge>}</div>
               <div style={{ fontSize: 12, fontFamily: 'var(--font-mono)', color: 'var(--text-muted)', marginTop: 2 }}>{key} · created {date}</div>
             </div>
             <Button size="sm" variant="secondary" iconLeft="copy" onClick={() => notify('Key copied', 'Paste it somewhere safe — it expires from your clipboard in 60s.')}>Copy</Button>

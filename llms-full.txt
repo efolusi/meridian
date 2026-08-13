@@ -1650,7 +1650,7 @@ Selection behaves the same: `selectable` alone works, and `selected` + `onSelect
     { key: 'plan', label: 'Plan' },
     { key: 'mrr', label: 'MRR', numeric: true, align: 'right', sortable: true,
       sortAccessor: r => Number(String(r.mrr).replace(/[^0-9.]/g, '')) },
-    { key: 'status', label: 'Status', render: v => <Badge tone="success" dot>{v}</Badge> },
+    { key: 'status', label: 'Status', render: v => <Badge className="ef-badge--success"><Icon name="circle" size={7} strokeWidth={4} data-icon="inline-start" />{v}</Badge> },
   ]}
   rows={customers}
   empty="No customers yet."
@@ -1933,29 +1933,25 @@ Compact status or category label.
 <Badge variant="outline">Outline</Badge>
 <Badge variant="ghost">Ghost</Badge>
 <Badge asChild variant="link"><a href="/updates">Updates</a></Badge>
+<Badge className="ef-badge--success"><Icon name="circle-check" size={12} data-icon="inline-start" />Verified</Badge>
 ```
 
 `badgeVariants` returns the root class names for semantic custom elements.
-Meridian's `tone`, `size`, and `dot` props remain additive helpers.
+Compose icons as children with `data-icon="inline-start"` or
+`data-icon="inline-end"`. Custom color classes can be supplied through
+`className` without expanding the variant contract.
 
 ```ts
 export type BadgeVariant = 'default' | 'secondary' | 'destructive' | 'outline' | 'ghost' | 'link';
-export type BadgeTone = 'neutral' | 'accent' | 'success' | 'warning' | 'danger' | 'brand';
 
 export interface BadgeProps extends React.HTMLAttributes<HTMLSpanElement> {
   /** @default 'default' */
   variant?: BadgeVariant;
-  /** Meridian legacy color alias. */
-  tone?: BadgeTone;
-  /** Meridian legacy size helper. @default 'sm' */
-  size?: 'sm' | 'md';
-  /** Meridian legacy leading status dot. */
-  dot?: boolean;
   /** Render the single child as the badge root. */
   asChild?: boolean;
 }
 
-export declare function badgeVariants(options?: Pick<BadgeProps, 'variant' | 'tone' | 'size'> & { className?: string }): string;
+export declare function badgeVariants(options?: Pick<BadgeProps, 'variant'> & { className?: string }): string;
 export declare const Badge: React.ForwardRefExoticComponent<BadgeProps & React.RefAttributes<HTMLElement>>;
 ```
 

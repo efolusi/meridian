@@ -23,7 +23,7 @@
 <div id="root"></div>
 
 <script type="text/babel">
-const { Button, Card, CardContent, CardDescription, CardHeader, CardTitle, Stat, Badge, Input, Toast, ToastStack } = window.EfolusiDesignSystem_4ffc3d;
+const { Button, Card, CardContent, CardDescription, CardHeader, CardTitle, Stat, Badge, Icon, Input, Toast, ToastStack } = window.EfolusiDesignSystem_4ffc3d;
 
 function App() {
   const [toasts, setToasts] = React.useState([]);
@@ -46,8 +46,8 @@ function App() {
       <Card style={{ marginTop: 28, '--card-spacing': '20px' }}><CardHeader><CardTitle>Live component</CardTitle><CardDescription>Everything below is Meridian</CardDescription></CardHeader><CardContent>
         <Stat label="Monthly recurring revenue" value="$48.2k" delta="12.4%" direction="up" />
         <div style={{ display: 'flex', gap: 8, marginTop: 18, flexWrap: 'wrap' }}>
-          <Badge tone="success" dot>Healthy</Badge>
-          <Badge tone="warning">2 warnings</Badge>
+          <Badge className="ef-badge--success"><Icon name="circle" size={7} strokeWidth={4} data-icon="inline-start" />Healthy</Badge>
+          <Badge className="ef-badge--warning">2 warnings</Badge>
         </div>
         <Input label="Your name" placeholder="Ada Obi" value={name} onChange={e => setName(e.target.value)} style={{ marginTop: 18 }} />
       </CardContent></Card>

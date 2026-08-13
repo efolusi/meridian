@@ -74,7 +74,7 @@ export function PositionsTable() {
         { key: 'name', label: 'Position' },
         { key: 'pl', label: 'P&L', numeric: true, align: 'right', render: (v) => <span style={{ color: v.startsWith('+') ? 'var(--success-600, var(--text-primary))' : 'var(--danger-600)' }}>{v}</span> },
         { key: 'trend', label: '30d', render: (v) => <Sparkline data={v} width={96} height={24} /> },
-        { key: 'status', label: '', render: (v) => <Badge tone={v === 'Auto' ? 'accent' : 'neutral'}>{v}</Badge> },
+        { key: 'status', label: '', render: (v) => <Badge variant={v === 'Auto' ? 'default' : 'secondary'} className={v === 'Auto' ? 'ef-badge--accent' : undefined}>{v}</Badge> },
       ]} rows={[
         { id: 'a', name: 'EUR / USD', pl: '+$1,240', trend: [3, 4, 3.6, 5, 5.4, 6.2, 6, 7.1], status: 'Auto' },
         { id: 'b', name: 'Gold spot', pl: '+$310', trend: [4, 4.4, 4.2, 4.8, 5, 5.2, 5.1, 5.6], status: 'Manual' },

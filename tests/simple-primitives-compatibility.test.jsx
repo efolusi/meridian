@@ -55,12 +55,15 @@ describe('Badge compatibility contract', () => {
     },
   );
 
-  it('exports badgeVariants and preserves legacy tone helpers', () => {
+  it('exports badgeVariants with custom classes', () => {
     expect(badgeVariants()).toBe('ef-badge ef-badge--default');
     expect(badgeVariants({ variant: 'outline', className: 'custom' }))
       .toBe('ef-badge ef-badge--outline custom');
-    expect(badgeVariants({ tone: 'success', size: 'md' }))
-      .toBe('ef-badge ef-badge--success ef-badge--md');
+  });
+
+  it('preserves explicitly composed icon children', () => {
+    render(<Badge><span data-icon="inline-start" data-testid="badge-icon" />Verified</Badge>);
+    expect(screen.getByTestId('badge-icon').getAttribute('data-icon')).toBe('inline-start');
   });
 
   it('renders a semantic child and forwards its ref with asChild', () => {

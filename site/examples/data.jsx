@@ -37,11 +37,11 @@ export function EmptyStateDemo() {
 
 // @demo KeyValueList Metadata pairs
 export function KeyValueListDemo() {
-  const { KeyValueList, Badge } = window.EfolusiDesignSystem_4ffc3d;
+  const { KeyValueList, Badge, Icon } = window.EfolusiDesignSystem_4ffc3d;
   return (
     <div style={{ width: '100%', maxWidth: 440 }}>
       <KeyValueList labelWidth={130} items={[
-        { label: 'Status', value: <Badge tone="success" dot>Healthy</Badge> },
+        { label: 'Status', value: <Badge className="ef-badge--success"><Icon name="circle" size={7} strokeWidth={4} data-icon="inline-start" />Healthy</Badge> },
         { label: 'Region', value: 'eu-west-1' },
         { label: 'Endpoint', value: 'api.acme.efolusi.com', mono: true },
         { label: 'Last deploy', value: '2h ago by ada@acme.com' },
@@ -117,16 +117,16 @@ export function StatusDotDemo() {
 
 // @demo Table Sortable-looking data grid
 export function TableDemo() {
-  const { Table, TableHeader, TableBody, TableRow, TableHead, TableCell, TableCaption, Badge } = window.EfolusiDesignSystem_4ffc3d;
+  const { Table, TableHeader, TableBody, TableRow, TableHead, TableCell, TableCaption, Badge, Icon } = window.EfolusiDesignSystem_4ffc3d;
   return (
     <div style={{ width: '100%' }}>
       <Table>
         <TableCaption>Agent runs from the current release window.</TableCaption>
         <TableHeader><TableRow><TableHead>Agent</TableHead><TableHead>Runs</TableHead><TableHead>P95</TableHead><TableHead>Status</TableHead></TableRow></TableHeader>
         <TableBody>
-          <TableRow><TableCell>Inbox triager</TableCell><TableCell>412</TableCell><TableCell>180 ms</TableCell><TableCell><Badge tone="success" dot>Live</Badge></TableCell></TableRow>
-          <TableRow><TableCell>Flight rebooking</TableCell><TableCell>128</TableCell><TableCell>2.4 s</TableCell><TableCell><Badge tone="success" dot>Live</Badge></TableCell></TableRow>
-          <TableRow><TableCell>Refund handler</TableCell><TableCell>36</TableCell><TableCell>640 ms</TableCell><TableCell><Badge tone="neutral">Paused</Badge></TableCell></TableRow>
+          <TableRow><TableCell>Inbox triager</TableCell><TableCell>412</TableCell><TableCell>180 ms</TableCell><TableCell><Badge className="ef-badge--success"><Icon name="circle" size={7} strokeWidth={4} data-icon="inline-start" />Live</Badge></TableCell></TableRow>
+          <TableRow><TableCell>Flight rebooking</TableCell><TableCell>128</TableCell><TableCell>2.4 s</TableCell><TableCell><Badge className="ef-badge--success"><Icon name="circle" size={7} strokeWidth={4} data-icon="inline-start" />Live</Badge></TableCell></TableRow>
+          <TableRow><TableCell>Refund handler</TableCell><TableCell>36</TableCell><TableCell>640 ms</TableCell><TableCell><Badge variant="secondary">Paused</Badge></TableCell></TableRow>
         </TableBody>
       </Table>
     </div>

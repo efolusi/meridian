@@ -25,7 +25,7 @@ function Block() {
             <div style={{ display: 'flex', flexDirection: 'column', height: '100%' }}>
             <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
               <h3 style={{ fontSize: 17, fontWeight: 700, margin: 0 }}>{name}</h3>
-              {cta === 'primary' && <Badge tone="accent">Popular</Badge>}
+              {cta === 'primary' && <Badge className="ef-badge--accent">Popular</Badge>}
             </div>
             <div style={{ display: 'flex', alignItems: 'baseline', gap: 6, marginTop: 12 }}>
               <span style={{ fontFamily: 'var(--font-display)', fontSize: 34, fontWeight: 680, letterSpacing: '-0.02em' }}>{price}</span>

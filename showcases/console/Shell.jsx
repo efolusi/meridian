@@ -12,7 +12,7 @@ function SideItem({ icon, label, active, badge, onClick, href }) {
     <React.Fragment>
       <span style={{ color: active ? 'var(--accent)' : 'inherit', display: 'inline-flex' }}><Icon name={icon} size={17} /></span>
       <span style={{ flex: 1 }}>{label}</span>
-      {badge != null && <Badge tone={active ? 'accent' : 'neutral'}>{badge}</Badge>}
+      {badge != null && <Badge variant={active ? 'default' : 'secondary'} className={active ? 'ef-badge--accent' : undefined}>{badge}</Badge>}
       {href && hov && <Icon name="arrow-up-right" size={13} style={{ color: 'var(--text-muted)' }} />}
     </React.Fragment>
   );
@@ -42,7 +42,7 @@ function Sidebar({ nav, onNav }) {
       <div style={{ display: 'flex', alignItems: 'center', gap: 10, padding: '16px 16px 14px' }}>
         <a href="../website/index.html" style={{ display: 'inline-flex' }} title="efolusi.com"><img src="../../assets/logo.png" alt="Efolusi" style={{ width: 30, height: 30 }} /></a>
         <span style={{ fontFamily: 'var(--font-display)', fontWeight: 680, letterSpacing: '-0.02em', fontSize: 19 }}>Efolusi</span>
-        <Badge tone="brand" style={{ marginLeft: 'auto' }}>Console</Badge>
+        <Badge className="ef-badge--brand" style={{ marginLeft: 'auto' }}>Console</Badge>
       </div>
       <nav style={{ display: 'flex', flexDirection: 'column', gap: 2, padding: '4px 12px' }}>
         {items.map(([id, icon, label, badge]) => <SideItem key={id} icon={icon} label={label} badge={badge} active={nav === id} onClick={() => onNav(id)} />)}

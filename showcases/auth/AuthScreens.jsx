@@ -13,8 +13,8 @@ function BrandPanel() {
         <div style={{ fontFamily: 'var(--font-display)', fontWeight: 700, letterSpacing: '-0.02em', fontSize: 34, lineHeight: 1.15 }}>One account for your whole workspace.</div>
         <p style={{ marginTop: 14, fontSize: 15, lineHeight: 1.6, color: 'color-mix(in srgb, var(--cream-50) 75%, transparent)' }}>Every surface your team runs, one workspace, one bill, one login. Pick up right where you left off.</p>
         <div style={{ display: 'flex', gap: 8, marginTop: 20 }}>
-          <Badge tone="brand">SOC 2 Type II</Badge>
-          <Badge tone="brand">SSO & SCIM</Badge>
+          <Badge className="ef-badge--brand">SOC 2 Type II</Badge>
+          <Badge className="ef-badge--brand">SSO & SCIM</Badge>
         </div>
       </div>
       </div>

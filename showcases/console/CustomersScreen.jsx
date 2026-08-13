@@ -11,7 +11,7 @@ const SEED = [
   ['Foundry Labs', 'team@foundrylabs.dev', 'Growth', 'Active', '$1,870', 'File tools'],
   ['Golden Gate Coffee', 'sam@ggcoffee.com', 'Starter', 'Churned', '$0', 'AI agents'],
 ].map(([name, email, plan, status, mrr, product], i) => ({ id: i + 1, name, email, plan, status, mrr, product }));
-const TONE = { Active: 'success', Trial: 'accent', 'Past due': 'warning', Churned: 'neutral' };
+const BADGE_CLASS = { Active: 'ef-badge--success', Trial: 'ef-badge--accent', 'Past due': 'ef-badge--warning' };
 const STATUSES = ['Any status', 'Active', 'Trial', 'Past due', 'Churned'];
 
 function CustomersScreen({ notify }) {
@@ -63,7 +63,7 @@ function CustomersScreen({ notify }) {
                   </div>
                 </td>
                 <td style={td} onClick={() => setSel(r)}>{r.plan}</td>
-                <td style={td} onClick={() => setSel(r)}><Badge tone={TONE[r.status]} dot>{r.status}</Badge></td>
+                <td style={td} onClick={() => setSel(r)}><Badge variant={r.status === 'Churned' ? 'secondary' : 'default'} className={BADGE_CLASS[r.status]}><Icon name="circle" size={7} strokeWidth={4} data-icon="inline-start" />{r.status}</Badge></td>
                 <td style={{ ...td, fontFamily: 'var(--font-mono)', fontSize: 13 }} onClick={() => setSel(r)}>{r.mrr}</td>
                 <td style={td} onClick={() => setSel(r)}><span style={{ fontSize: 13, color: 'var(--text-secondary)' }}>{r.product}</span></td>
                 <td style={td} onClick={e => e.stopPropagation()}>
@@ -99,7 +99,7 @@ function CustomersScreen({ notify }) {
               <Avatar size="lg"><AvatarFallback>{sel.name.split(/\s+/).map(part => part[0]).slice(0, 2).join('')}</AvatarFallback></Avatar>
               <div>
                 <div style={{ fontSize: 16, fontWeight: 600 }}>{sel.name}</div>
-                <Badge tone={TONE[sel.status]} dot>{sel.status}</Badge>
+                <Badge variant={sel.status === 'Churned' ? 'secondary' : 'default'} className={BADGE_CLASS[sel.status]}><Icon name="circle" size={7} strokeWidth={4} data-icon="inline-start" />{sel.status}</Badge>
               </div>
             </div>
             <KeyValueList labelWidth={110} items={[

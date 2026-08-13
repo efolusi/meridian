@@ -7,7 +7,7 @@
 </head><body style="background:var(--surface-page)">
 <div id="root"></div>
 <script type="text/babel">
-const { Table, Stat, EmptyState, Skeleton, Card, CardContent, CardDescription, CardHeader, CardTitle, Badge, Button, Avatar, AvatarFallback, LineChart, DonutChart, Sparkline, BarChart, KeyValueList, StatusDot } = window.EfolusiDesignSystem_4ffc3d;
+const { Table, Stat, EmptyState, Skeleton, Card, CardContent, CardDescription, CardHeader, CardTitle, Badge, Button, Avatar, AvatarFallback, LineChart, DonutChart, Sparkline, BarChart, KeyValueList, StatusDot, Icon } = window.EfolusiDesignSystem_4ffc3d;
 const rows = [
   { id: 1, name: 'Acme Robotics', plan: 'Growth', mrr: '$1,240', status: 'Active' },
   { id: 2, name: 'Bloom Health', plan: 'Scale', mrr: '$3,860', status: 'Active' },
@@ -32,7 +32,7 @@ function Demo() {
         <Table rowKey="id" onRowClick={() => {}} columns={[
           { key: 'name', label: 'Customer', render: (v) => <span style={{ display: 'inline-flex', alignItems: 'center', gap: 8, fontWeight: 600 }}><Avatar size="sm"><AvatarFallback>{v.split(/\s+/).map(part => part[0]).slice(0, 2).join('')}</AvatarFallback></Avatar>{v}</span> },
           { key: 'plan', label: 'Plan' },
-          { key: 'status', label: 'Status', render: v => <Badge tone={v === 'Active' ? 'success' : 'warning'} dot>{v}</Badge> },
+          { key: 'status', label: 'Status', render: v => <Badge className={v === 'Active' ? 'ef-badge--success' : 'ef-badge--warning'}><Icon name="circle" size={7} strokeWidth={4} data-icon="inline-start" />{v}</Badge> },
           { key: 'mrr', label: 'MRR', numeric: true, align: 'right' },
         ]} rows={rows} />
       </CardContent></Card>
@@ -49,7 +49,7 @@ function Demo() {
       <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 16 }}>
         <Card style={{ '--card-spacing': '16px' }}><CardHeader><CardTitle>Weekly runs</CardTitle></CardHeader><CardContent><BarChart height={130} highlightLast={1} labels={['Mon','Tue','Wed','Thu','Fri','Sat','Sun']} data={[42,58,51,74,66,30,89]} format={v => v + ' runs'} /></CardContent></Card>
         <Card style={{ '--card-spacing': '16px' }}><CardHeader><CardTitle>Resource</CardTitle></CardHeader><CardContent><KeyValueList labelWidth={120} items={[
-            { label: 'Status', value: <Badge tone="success" dot>Healthy</Badge> },
+            { label: 'Status', value: <Badge className="ef-badge--success"><Icon name="circle" size={7} strokeWidth={4} data-icon="inline-start" />Healthy</Badge> },
             { label: 'Region', value: 'eu-west-1' },
             { label: 'Endpoint', value: 'api.acme.efolusi.com', mono: true },
           ]} /></CardContent></Card>

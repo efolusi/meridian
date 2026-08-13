@@ -46,7 +46,7 @@ function ThemeCustomizer() {
     return () => clearInterval(t);
   }, [ds]);
   if (!ds) return R.createElement('div', { style: { height: 600, display: 'flex', alignItems: 'center', justifyContent: 'center', color: 'var(--text-muted)', fontSize: 13.5 } }, 'Loading customizer…');
-  const { SegmentedControl, Button, Badge, Stat, Input, Switch, BarChart, CodeBlock, Tag, Progress, Tabs, Link } = ds;
+  const { SegmentedControl, Button, Badge, Icon, Stat, Input, Switch, BarChart, CodeBlock, Tag, Progress, Tabs, Link } = ds;
   const accent = ACCENTS.find(a => a.id === accentId);
   const radius = RADII.find(r => r.id === radiusId);
   const css = buildCss(accent, radius);
@@ -78,7 +78,9 @@ function ThemeCustomizer() {
           h('div', { style: { background: 'var(--surface-card)', border: '1px solid var(--border-default)', borderRadius: 'var(--radius-md)', padding: 20 } },
             h('div', { style: { display: 'flex', alignItems: 'center', gap: 10, flexWrap: 'wrap' } },
               h('h3', { style: { fontFamily: 'var(--font-display)', fontWeight: 650, fontSize: 17, letterSpacing: '-0.01em', margin: 0 } }, 'Workspace overview'),
-              h(Badge, { tone: 'success', dot: true }, 'Live'),
+              h(Badge, { className: 'ef-badge--success' },
+                h(Icon, { name: 'circle', size: 7, strokeWidth: 4, 'data-icon': 'inline-start' }),
+                'Live'),
               h('div', { style: { marginLeft: 'auto', display: 'flex', gap: 8 } },
                 h(Button, { variant: 'secondary', size: 'sm' }, 'Export'),
                 h(Button, { size: 'sm', iconLeft: 'plus' }, 'New task'))),

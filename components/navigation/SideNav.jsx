@@ -19,7 +19,7 @@ export function SideNav({ brand = 'Efolusi', brandBadge, logoSrc, groups, value,
       <div className="ef-sidenav__brand">
         {logoSrc ? <img src={logoSrc} alt="" style={{ width: 30, height: 30 }} /> : null}
         <span style={{ fontFamily: 'var(--font-display)', fontWeight: 680, letterSpacing: '-0.02em', fontSize: 19 }}>{brand}</span>
-        {brandBadge ? <Badge tone="brand" style={{ marginInlineStart: 'auto' }}>{brandBadge}</Badge> : null}
+        {brandBadge ? <Badge className="ef-badge--brand" style={{ marginInlineStart: 'auto' }}>{brandBadge}</Badge> : null}
       </div>
       {groups.map((g, gi) => (
         <React.Fragment key={gi}>
@@ -29,7 +29,7 @@ export function SideNav({ brand = 'Efolusi', brandBadge, logoSrc, groups, value,
               <button key={it.id} className={`ef-sidenav__item${value === it.id ? ' ef-sidenav__item--on' : ''}`} onClick={() => onChange && onChange(it.id)}>
                 <span style={{ display: 'inline-flex', color: 'inherit' }}><Icon name={it.icon} size={17} /></span>
                 <span style={{ flex: 1, whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>{it.label}</span>
-                {it.badge != null ? <Badge tone={value === it.id ? 'accent' : 'neutral'}>{it.badge}</Badge> : null}
+                {it.badge != null ? <Badge variant={value === it.id ? 'default' : 'secondary'} className={value === it.id ? 'ef-badge--accent' : undefined}>{it.badge}</Badge> : null}
               </button>
             ))}
           </nav>

@@ -29,7 +29,7 @@ function TraderScreen() {
             </div>
             <div style={{ display: 'flex', alignItems: 'baseline', gap: 12, marginTop: 16 }}>
               <span style={{ fontFamily: 'var(--font-mono)', fontSize: 40, fontWeight: 600, letterSpacing: '-0.01em' }}>€24,318.90</span>
-              <Badge tone="success" dot>+12.4% · {range}</Badge>
+              <Badge className="ef-badge--success"><Icon name="circle" size={7} strokeWidth={4} data-icon="inline-start" />+12.4% · {range}</Badge>
             </div>
             <Sparkline data={SERIES[range]} width={420} height={72} strokeWidth={1.75} style={{ marginTop: 12 }} />
           </div>
@@ -46,7 +46,7 @@ function TraderScreen() {
             <CardHeader><CardTitle>Open positions</CardTitle><CardDescription>Robot manages exits inside your risk cap.</CardDescription></CardHeader>
             <CardContent style={{ paddingInline: 0, marginBlockEnd: 'calc(var(--card-spacing) * -1)' }}><Table rowKey="id" columns={[
               { key: 'pair', label: 'Pair', render: v => <strong>{v}</strong> },
-              { key: 'side', label: 'Side', render: v => <Badge tone={v === 'Long' ? 'success' : 'warning'}>{v}</Badge> },
+              { key: 'side', label: 'Side', render: v => <Badge className={v === 'Long' ? 'ef-badge--success' : 'ef-badge--warning'}>{v}</Badge> },
               { key: 'size', label: 'Size', numeric: true, align: 'right' },
               { key: 'entry', label: 'Entry', numeric: true, align: 'right' },
               { key: 'mark', label: 'Mark', numeric: true, align: 'right' },

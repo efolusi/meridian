@@ -19,7 +19,7 @@
  "Accordion": "Daftar disclosure setipis rambut (FAQ, docs). Buka-tunggal secara bawaan; multiple mengizinkan beberapa terbuka.",
  "AspectRatio": "Mengunci children ke kotak rasio tetap (mengisi lebar). Untuk media, embed, placeholder peta.",
  "Avatar": "Avatar bulat — gambar atau inisial dengan nada hangat deterministik dari nama. AvatarGroup menumpuknya dengan garis putih.",
- "Badge": "Pil status kecil; dot menambah titik status di depan.",
+ "Badge": "Label ringkas dengan enam varian kanonis; warna khusus memakai className dan ikon ditulis sebagai child eksplisit.",
  "Card": "Wadah permukaan: putih, border pasir 1px, radius 8px, bayangan hangat.",
  "Carousel": "Strip scroll-snap dengan kontrol panah dan titik posisi. Untuk galeri, pemilih templat, strip testimoni.",
  "Collapsible": "Satu baris disclosure: pemicu chevron + isi yang ditampilkan. Untuk opsi lanjutan, deskripsi panjang, detail log.",

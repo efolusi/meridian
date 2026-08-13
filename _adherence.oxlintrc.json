@@ -73,18 +73,6 @@
         "message": "<AspectRatio> doesn't accept that prop. Declared props: ratio, children, style, className."
       },
       {
-        "selector": "JSXOpeningElement[name.name='Badge'] > JSXAttribute > JSXIdentifier[name!=/^(?:tone|size|dot|children|key|ref|className|style|children)$/]",
-        "message": "<Badge> doesn't accept that prop. Declared props: tone, size, dot, children."
-      },
-      {
-        "selector": "JSXOpeningElement[name.name='Badge'] > JSXAttribute[name.name='tone'] > Literal[value!=/^(?:neutral|accent|success|warning|danger|brand)$/]",
-        "message": "<Badge> tone must be one of 'neutral' | 'accent' | 'success' | 'warning' | 'danger' | 'brand'."
-      },
-      {
-        "selector": "JSXOpeningElement[name.name='Badge'] > JSXAttribute[name.name='size'] > Literal[value!=/^(?:sm|md)$/]",
-        "message": "<Badge> size must be one of 'sm' | 'md'."
-      },
-      {
         "selector": "JSXOpeningElement[name.name='Banner'] > JSXAttribute > JSXIdentifier[name!=/^(?:tone|icon|action|onAction|onDismiss|children|style|className|key|ref|className|style|children)$/]",
         "message": "<Banner> doesn't accept that prop. Declared props: tone, icon, action, onAction, onDismiss, children, style, className."
       },

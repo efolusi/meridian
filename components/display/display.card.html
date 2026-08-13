@@ -22,8 +22,8 @@ function Demo() {
       <div>
         <div style={lbl}>Badge · Tag</div>
         <div style={{ display: 'flex', gap: 8, flexWrap: 'wrap' }}>
-          <Badge>Neutral</Badge><Badge tone="accent">Beta</Badge><Badge tone="success" dot>Active</Badge>
-          <Badge tone="warning" dot>Degraded</Badge><Badge tone="danger">Overdue</Badge><Badge tone="brand">New</Badge>
+          <Badge variant="secondary">Neutral</Badge><Badge className="ef-badge--accent">Beta</Badge><Badge className="ef-badge--success"><Icon name="circle" size={7} strokeWidth={4} data-icon="inline-start" />Active</Badge>
+          <Badge className="ef-badge--warning"><Icon name="circle" size={7} strokeWidth={4} data-icon="inline-start" />Degraded</Badge><Badge variant="destructive">Overdue</Badge><Badge className="ef-badge--brand">New</Badge>
         </div>
         <div style={{ display: 'flex', gap: 8, flexWrap: 'wrap', marginTop: 10 }}>
           {tags.map(t => <Tag key={t} icon="funnel" onRemove={() => setTags(tags.filter(x => x !== t))}>{t}</Tag>)}

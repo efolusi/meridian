@@ -107,7 +107,7 @@ similarity.
 - `Badge` and `badgeVariants` support the complete six-variant contract,
   semantic link composition through `asChild`, native attributes, consumer
   classes, ref forwarding, types, registry installation, demos, and tests.
-  Meridian's tone, size, and status-dot helpers remain additive extensions.
+  Semantic status colors use custom classes, and icons are explicit children.
 - `Spinner` renders an accessible SVG status indicator, accepts native SVG
   props and accessible-name overrides, forwards refs, and includes types,
   registry installation, demos, and tests. Dimensions and accessible naming use

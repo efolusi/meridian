@@ -39,7 +39,7 @@ function MiniConsole() {
           <div key={l} style={{ flex: 1, border: '1px solid var(--border-default)', borderRadius: 'var(--radius-md)', padding: 12 }}>
             <div style={{ fontSize: 11, color: 'var(--text-muted)', fontWeight: 500 }}>{l}</div>
             <div style={{ fontFamily: 'var(--font-mono)', fontSize: 19, fontWeight: 600, marginTop: 3 }}>{v}</div>
-            <Badge tone={t} style={{ marginTop: 6 }}>{d}</Badge>
+            <Badge className={t === 'success' ? 'ef-badge--success' : undefined} style={{ marginTop: 6 }}>{d}</Badge>
           </div>
         ))}
       </div>
@@ -141,10 +141,10 @@ function Pricing() {
         <p style={{ fontSize: 16, color: 'var(--text-secondary)', marginTop: 10 }}>No usage cliffs, no surprise line items. Cancel anytime.</p>
         <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 1fr', gap: 20, marginTop: 44, textAlign: 'left' }}>
           {TIERS.map(([name, price, desc, feats, cta]) => (
-            <Card key={name} elevated={cta === 'primary'} style={{ '--card-spacing': '28px', ...(cta === 'primary' ? { borderColor: 'var(--accent)' } : {}) }}><CardContent>
+            <Card key={name} style={{ '--card-spacing': '28px', ...(cta === 'primary' ? { borderColor: 'var(--accent)', boxShadow: 'var(--shadow-sm)' } : {}) }}><CardContent>
               <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
                 <h3 style={{ fontSize: 18, fontWeight: 700 }}>{name}</h3>
-                {cta === 'primary' && <Badge tone="accent">Popular</Badge>}
+                {cta === 'primary' && <Badge className="ef-badge--accent">Popular</Badge>}
               </div>
               <div style={{ display: 'flex', alignItems: 'baseline', gap: 6, marginTop: 14 }}>
                 <span style={{ fontFamily: 'var(--font-display)', fontSize: 40, fontWeight: 680, letterSpacing: '-0.02em' }}>{price}</span>

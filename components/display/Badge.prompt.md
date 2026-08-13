@@ -7,7 +7,10 @@ Compact status or category label.
 <Badge variant="outline">Outline</Badge>
 <Badge variant="ghost">Ghost</Badge>
 <Badge asChild variant="link"><a href="/updates">Updates</a></Badge>
+<Badge className="ef-badge--success"><Icon name="circle-check" size={12} data-icon="inline-start" />Verified</Badge>
 ```
 
 `badgeVariants` returns the root class names for semantic custom elements.
-Meridian's `tone`, `size`, and `dot` props remain additive helpers.
+Compose icons as children with `data-icon="inline-start"` or
+`data-icon="inline-end"`. Custom color classes can be supplied through
+`className` without expanding the variant contract.
