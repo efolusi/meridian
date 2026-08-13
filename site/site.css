@@ -2,7 +2,7 @@
 .site-nav{min-width:0;overflow-x:auto;scrollbar-width:none;-webkit-overflow-scrolling:touch}
 .site-top a{white-space:nowrap}
 .meridian-mark{display:block;width:30px;height:16px;object-fit:contain;flex:none}
-.meridian-lockup{display:block;width:120px;height:auto;flex:none}
+.meridian-lockup{display:block;width:136px;height:auto;flex:none}
 .meridian-lockup--dark{display:none}
 [data-theme="dark"] .meridian-mark{filter:brightness(0) invert(1)}
 [data-theme="dark"] .meridian-lockup--light{display:none}
@@ -23,6 +23,7 @@
 }
 @media (max-width:760px){
 .hide-sm{display:none!important}
+.meridian-lockup{width:128px}
 .site-search{width:36px!important;justify-content:center!important;padding:0!important;border-color:var(--border-strong)!important;background:transparent!important}
 .site-search .site-search-label,.site-search .site-search-kbd{display:none}
 .grid-3,.grid-4{grid-template-columns:1fr!important}
