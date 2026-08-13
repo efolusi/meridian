@@ -2,6 +2,8 @@
 
 ## Unreleased
 
+- **Meridian Guard is public.** Install `@efolusi/meridian-guard` as a development dependency to check authored applications against Meridian's generated component, token, icon, and deprecation contract.
+
 ## 1.21.2 — 2026-08-14
 
 - **Meridian has a complete original brand system.** The former owl identity is replaced across the documentation, components, blocks, examples, starters, dashboards, favicon, social artwork, and empty brand surfaces by the production `///` mark and Bricolage Grotesque wordmark.

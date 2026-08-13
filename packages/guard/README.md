@@ -1,5 +1,11 @@
 # Meridian Guard
 
+Install the public CLI as a development dependency:
+
+```sh
+npm install --save-dev @efolusi/meridian-guard
+```
+
 Meridian Guard validates React source against Meridian's component, icon,
 token, deprecation, and accessibility contracts. It is deterministic: the CLI
 does not upload source or call an AI model.
