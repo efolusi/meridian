@@ -2,6 +2,10 @@
 
 ## Unreleased
 
+## 1.21.1 — 2026-08-13
+
+- Render `DialogTitle` as a semantic level-two heading while preserving its styling and accessible-name wiring.
+
 ## 1.21.0 — 2026-08-13
 
 - **Deprecated Toast was removed completely.** Meridian now ships one notification system: canonical `Toaster` plus the imperative `toast` API. The old `Toast`, `ToastStack`, duplicate registry item, adapter documentation, and direct-render demos were deleted, and the implementation now lives under `Sonner`.
