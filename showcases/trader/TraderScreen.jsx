@@ -60,7 +60,7 @@ function TraderScreen() {
               <CardHeader><CardTitle>Strategy</CardTitle><CardAction><Switch checked={auto} onChange={e => { setAuto(e.target.checked); notify(e.target.checked ? 'Robot resumed' : 'Robot paused', e.target.checked ? 'success' : 'info'); }} /></CardAction></CardHeader>
               <CardContent><div style={{ display: 'flex', flexDirection: 'column', gap: 16 }}>
                 <div style={{ fontSize: 13, color: 'var(--text-secondary)' }}>Momentum · EUR pairs · max 3 open positions. Every trade is logged and auditable.</div>
-                <Slider label="Risk per trade" showValue format={v => v + '%'} min={1} max={10} value={risk} onChange={setRisk} />
+                <div><div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: 8, fontSize: 13, fontWeight: 600 }}><span>Risk per trade</span><span style={{ color: 'var(--text-muted)', fontFamily: 'var(--font-mono)', fontWeight: 400 }}>{risk}%</span></div><Slider aria-label="Risk per trade" min={1} max={10} value={[risk]} onValueChange={([next]) => setRisk(next)} /></div>
                 <Progress label="Monthly drawdown cap" value={31} showValue tone={risk > 7 ? 'warning' : 'default'} format={() => '\u22123.1% of \u221210%'} />
               </div></CardContent>
             </Card>

@@ -46,7 +46,7 @@ const PROPS = {
   SidebarProvider: { children: React.createElement('span', null, 'Sidebar') },
   NavigationMenu: { children: React.createElement('span', null, 'Navigation') },
   PageControl: { count: 3 },
-  Pagination: { page: 1, pageCount: 3 },
+  Pagination: { children: React.createElement('span', null, 'Pagination') },
   Player: { src: 'x.mp3', title: 'T' },
   Popover: { content: 'body', children: React.createElement('button', null, 'Open') },
   SegmentedControl: { options: ['a', 'b'] },

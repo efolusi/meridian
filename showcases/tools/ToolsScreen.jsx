@@ -91,7 +91,7 @@ function ToolsScreen() {
               ))}
               <div style={{ display: 'flex', gap: 14, alignItems: 'flex-end', marginTop: 6 }}>
                 <Field style={{ width: 160 }}><FieldLabel htmlFor="convert-format">Convert to</FieldLabel><NativeSelect id="convert-format" value={format} onChange={e => setFormat(e.target.value)}>{['DOCX', 'PDF', 'PNG', 'WEBM', 'MP3', 'TXT'].map(value => <NativeSelectOption key={value} value={value}>{value}</NativeSelectOption>)}</NativeSelect></Field>
-                <Slider label="Quality" showValue format={v => v + '%'} value={quality} onChange={setQuality} style={{ flex: 1 }} />
+                <div style={{ flex: 1 }}><div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: 8, fontSize: 13, fontWeight: 600 }}><span>Quality</span><span style={{ color: 'var(--text-muted)', fontFamily: 'var(--font-mono)', fontWeight: 400 }}>{quality}%</span></div><Slider aria-label="Quality" value={[quality]} onValueChange={([next]) => setQuality(next)} /></div>
                 <Button iconLeft="refresh-cw" disabled={files.length === 0 || phase === 1} loading={phase === 1} onClick={convert}>{phase === 1 ? 'Converting' : 'Convert all'}</Button>
               </div>
             </div>

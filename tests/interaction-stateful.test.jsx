@@ -13,29 +13,28 @@ import { Player } from '../components/ai/Player.jsx';
 // (this repo does not load them); DOM properties and plain expectations only.
 
 describe('Slider', () => {
-  it('reports a number to onChange and updates when uncontrolled', () => {
-    const onChange = vi.fn();
-    render(<Slider label="Volume" defaultValue={20} min={0} max={100} step={5} onChange={onChange} />);
+  it('reports an array to onValueChange and updates when uncontrolled', () => {
+    const onValueChange = vi.fn();
+    render(<Slider aria-label="Volume" defaultValue={[20]} min={0} max={100} step={5} onValueChange={onValueChange} />);
     const input = screen.getByRole('slider');
     fireEvent.change(input, { target: { value: '40' } });
-    expect(onChange).toHaveBeenCalled();
-    expect(onChange.mock.calls[0][0]).toBe(40);
+    expect(onValueChange).toHaveBeenCalledWith([40]);
     expect(input.value).toBe('40');
   });
 
-  it('is controllable: onChange fires, the displayed value follows the prop', () => {
-    const onChange = vi.fn();
-    const { rerender } = render(<Slider value={30} onChange={onChange} />);
+  it('is controllable: onValueChange fires and the thumb follows the array prop', () => {
+    const onValueChange = vi.fn();
+    const { rerender } = render(<Slider aria-label="Volume" value={[30]} onValueChange={onValueChange} />);
     const input = screen.getByRole('slider');
     expect(input.value).toBe('30');
     fireEvent.change(input, { target: { value: '80' } });
-    expect(onChange).toHaveBeenCalledWith(80, expect.anything());
-    rerender(<Slider value={80} onChange={onChange} />);
+    expect(onValueChange).toHaveBeenCalledWith([80]);
+    rerender(<Slider aria-label="Volume" value={[80]} onValueChange={onValueChange} />);
     expect(input.value).toBe('80');
   });
 
   it('forwards min, max, step and disables', () => {
-    render(<Slider min={10} max={20} step={2} disabled value={12} onChange={() => {}} />);
+    render(<Slider aria-label="Capacity" min={10} max={20} step={2} disabled value={[12]} />);
     const input = screen.getByRole('slider');
     expect(input.min).toBe('10');
     expect(input.max).toBe('20');

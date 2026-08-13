@@ -3527,22 +3527,20 @@ Single, range, or multi-thumb numeric selection with horizontal and vertical lay
 
 Canonical values and callbacks are arrays: `value`, `defaultValue`,
 `onValueChange`, and `onValueCommit`. Use `orientation="vertical"` when space is
-tall rather than wide. Scalar values and `onChange` remain legacy adapters.
+tall rather than wide. Compose labels and formatted values beside the Slider.
 
 ```ts
 export interface SliderProps extends Omit<React.InputHTMLAttributes<HTMLInputElement>, 'value' | 'defaultValue' | 'onChange' | 'min' | 'max' | 'step' | 'size'> {
-  label?: string; showValue?: boolean; format?: (value: number) => string;
   min?: number; max?: number; step?: number;
-  value?: number | number[]; defaultValue?: number | number[];
+  value?: number[]; defaultValue?: number[];
   onValueChange?: (value: number[]) => void;
   onValueCommit?: (value: number[]) => void;
-  /** Legacy callback: scalar for scalar input, array for array input. */ onChange?: (value: number | number[], event: React.ChangeEvent<HTMLInputElement>) => void;
   orientation?: 'horizontal' | 'vertical';
   minStepsBetweenThumbs?: number;
   inverted?: boolean;
   dir?: 'ltr' | 'rtl';
 }
-export declare const Slider: React.ForwardRefExoticComponent<SliderProps & React.RefAttributes<HTMLInputElement>>;
+export declare const Slider: React.ForwardRefExoticComponent<SliderProps & React.RefAttributes<HTMLSpanElement>>;
 ```
 
 #### Switch
@@ -3900,21 +3898,19 @@ Semantic page navigation composed from links and list items.
 ```
 
 Links are real anchors so routing, modified clicks, and copy-link behavior stay
-native. The `page`/`pageCount`/`onChange` shorthand remains available.
+native. Compose the visible page range explicitly from application state. Use the
+`text` prop on `PaginationPrevious` and `PaginationNext` to localize their labels.
 
 ```ts
-export interface PaginationProps extends Omit<React.HTMLAttributes<HTMLElement>, 'onChange'> {
-  /** Legacy controlled page adapter. */ page?: number;
-  /** Legacy total-pages adapter. */ pageCount?: number;
-  /** Legacy page callback. */ onChange?: (page: number) => void;
-}
+export type PaginationProps = React.HTMLAttributes<HTMLElement>;
 export interface PaginationLinkProps extends React.AnchorHTMLAttributes<HTMLAnchorElement> { isActive?: boolean; size?: 'default' | 'icon'; }
+export interface PaginationDirectionProps extends PaginationLinkProps { text?: string; }
 export declare const Pagination: React.ForwardRefExoticComponent<PaginationProps & React.RefAttributes<HTMLElement>>;
 export declare const PaginationContent: React.ForwardRefExoticComponent<React.HTMLAttributes<HTMLUListElement> & React.RefAttributes<HTMLUListElement>>;
 export declare const PaginationItem: React.ForwardRefExoticComponent<React.LiHTMLAttributes<HTMLLIElement> & React.RefAttributes<HTMLLIElement>>;
 export declare const PaginationLink: React.ForwardRefExoticComponent<PaginationLinkProps & React.RefAttributes<HTMLAnchorElement>>;
-export declare const PaginationPrevious: React.ForwardRefExoticComponent<PaginationLinkProps & React.RefAttributes<HTMLAnchorElement>>;
-export declare const PaginationNext: React.ForwardRefExoticComponent<PaginationLinkProps & React.RefAttributes<HTMLAnchorElement>>;
+export declare const PaginationPrevious: React.ForwardRefExoticComponent<PaginationDirectionProps & React.RefAttributes<HTMLAnchorElement>>;
+export declare const PaginationNext: React.ForwardRefExoticComponent<PaginationDirectionProps & React.RefAttributes<HTMLAnchorElement>>;
 export declare const PaginationEllipsis: React.ForwardRefExoticComponent<React.HTMLAttributes<HTMLSpanElement> & React.RefAttributes<HTMLSpanElement>>;
 ```
 

@@ -46,11 +46,12 @@ describe('Slider compatibility contract', () => {
     expect(change).toHaveBeenCalledWith([35, 80]);
   });
 
-  it('supports vertical orientation, disabled state, and first-thumb refs', () => {
+  it('supports vertical orientation, disabled state, and root refs', () => {
     const ref = React.createRef();
     const { container } = render(<Slider ref={ref} orientation="vertical" defaultValue={[25, 75]} disabled aria-label="Window" />);
     expect(container.firstChild.getAttribute('data-orientation')).toBe('vertical');
-    expect(ref.current).toBe(screen.getAllByRole('slider')[0]);
+    expect(ref.current).toBe(container.firstChild);
+    expect(ref.current.getAttribute('data-slot')).toBe('slider');
     expect(screen.getAllByRole('slider').every(input => input.disabled)).toBe(true);
   });
 });
@@ -65,11 +66,9 @@ describe('Pagination compatibility contract', () => {
     expect(screen.getByRole('link', { name: 'Go to previous page' }).getAttribute('href')).toBe('/page/1');
   });
 
-  it('preserves the legacy controlled page adapter', async () => {
-    const user = userEvent.setup();
-    const change = vi.fn();
-    render(<Pagination page={2} pageCount={4} onChange={change} />);
-    await user.click(screen.getByRole('link', { name: 'Go to next page' }));
-    expect(change).toHaveBeenCalledWith(3);
+  it('supports localized previous and next text without replacing link semantics', () => {
+    render(<Pagination><PaginationContent><PaginationItem><PaginationPrevious href="/halaman/1" text="Sebelumnya" /></PaginationItem><PaginationItem><PaginationNext href="/halaman/3" text="Berikutnya" /></PaginationItem></PaginationContent></Pagination>);
+    expect(screen.getByRole('link', { name: 'Go to previous page' }).textContent).toContain('Sebelumnya');
+    expect(screen.getByRole('link', { name: 'Go to next page' }).textContent).toContain('Berikutnya');
   });
 });

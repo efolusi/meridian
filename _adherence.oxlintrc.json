@@ -73,10 +73,6 @@
         "message": "<AspectRatio> doesn't accept that prop. Declared props: ratio, children, style, className."
       },
       {
-        "selector": "JSXOpeningElement[name.name='Avatar'] > JSXAttribute > JSXIdentifier[name!=/^(?:name|src|size|key|ref|className|style|children)$/]",
-        "message": "<Avatar> doesn't accept that prop. Declared props: name, src, size."
-      },
-      {
         "selector": "JSXOpeningElement[name.name='Badge'] > JSXAttribute > JSXIdentifier[name!=/^(?:tone|size|dot|children|key|ref|className|style|children)$/]",
         "message": "<Badge> doesn't accept that prop. Declared props: tone, size, dot, children."
       },
@@ -129,10 +125,6 @@
         "message": "<Calendar> doesn't accept that prop. Declared props: value, onChange, style, className."
       },
       {
-        "selector": "JSXOpeningElement[name.name='Card'] > JSXAttribute > JSXIdentifier[name!=/^(?:title|subtitle|actions|footer|padding|elevated|interactive|children|key|ref|className|style|children)$/]",
-        "message": "<Card> doesn't accept that prop. Declared props: title, subtitle, actions, footer, padding, elevated, interactive, children."
-      },
-      {
         "selector": "JSXOpeningElement[name.name='Carousel'] > JSXAttribute > JSXIdentifier[name!=/^(?:orientation|opts|plugins|setApi|children|dir|role|aria-label|aria-labelledby|className|style|id|tabIndex|onKeyDown|key|ref)$/]",
         "message": "<Carousel> accepts the stable composition props orientation, opts, plugins, setApi, children, and native region attributes."
       },
@@ -151,10 +143,6 @@
       {
         "selector": "JSXOpeningElement[name.name='CodeBlock'] > JSXAttribute > JSXIdentifier[name!=/^(?:lang|title|maxHeight|children|style|className|key|ref|className|style|children)$/]",
         "message": "<CodeBlock> doesn't accept that prop. Declared props: lang, title, maxHeight, children, style, className."
-      },
-      {
-        "selector": "JSXOpeningElement[name.name='Collapsible'] > JSXAttribute > JSXIdentifier[name!=/^(?:title|defaultOpen|open|onOpenChange|children|style|className|key|ref|className|style|children)$/]",
-        "message": "<Collapsible> doesn't accept that prop. Declared props: title, defaultOpen, open, onOpenChange, children, style, className."
       },
       {
         "selector": "JSXOpeningElement[name.name='Confirmation'] > JSXAttribute > JSXIdentifier[name!=/^(?:title|description|tone|state|defaultState|onStateChange|icon|approveLabel|rejectLabel|approvedNote|rejectedNote|children|style|className|key|ref|className|style|children)$/]",
@@ -187,10 +175,6 @@
       {
         "selector": "JSXOpeningElement[name.name='CopyField'] > JSXAttribute > JSXIdentifier[name!=/^(?:label|value|secret|style|className|key|ref|className|style|children)$/]",
         "message": "<CopyField> doesn't accept that prop. Declared props: label, value, secret, style, className."
-      },
-      {
-        "selector": "JSXOpeningElement[name.name='Dialog'] > JSXAttribute > JSXIdentifier[name!=/^(?:open|onClose|title|description|footer|width|children|key|ref|className|style|children)$/]",
-        "message": "<Dialog> doesn't accept that prop. Declared props: open, onClose, title, description, footer, width, children."
       },
       {
         "selector": "JSXOpeningElement[name.name='Divider'] > JSXAttribute > JSXIdentifier[name!=/^(?:label|vertical|style|className|key|ref|className|style|children)$/]",
@@ -309,24 +293,12 @@
         "message": "<PageControl> doesn't accept that prop. Declared props: count, index, onChange, label, style, className."
       },
       {
-        "selector": "JSXOpeningElement[name.name='Pagination'] > JSXAttribute > JSXIdentifier[name!=/^(?:page|pageCount|onChange|style|className|key|ref|className|style|children)$/]",
-        "message": "<Pagination> doesn't accept that prop. Declared props: page, pageCount, onChange, style, className."
-      },
-      {
         "selector": "JSXOpeningElement[name.name='PaymentCard'] > JSXAttribute > JSXIdentifier[name!=/^(?:name|number|expiry|network|variant|frozen|style|className|key|ref|className|style|children)$/]",
         "message": "<PaymentCard> doesn't accept that prop. Declared props: name, number, expiry, network, variant, frozen, style, className."
       },
       {
         "selector": "JSXOpeningElement[name.name='PaymentCard'] > JSXAttribute[name.name='variant'] > Literal[value!=/^(?:espresso|caramel|paper)$/]",
         "message": "<PaymentCard> variant must be one of 'espresso' | 'caramel' | 'paper'."
-      },
-      {
-        "selector": "JSXOpeningElement[name.name='Popover'] > JSXAttribute > JSXIdentifier[name!=/^(?:trigger|children|align|width|open|onOpenChange|style|className|key|ref|className|style|children)$/]",
-        "message": "<Popover> doesn't accept that prop. Declared props: trigger, children, align, width, open, onOpenChange, style, className."
-      },
-      {
-        "selector": "JSXOpeningElement[name.name='Popover'] > JSXAttribute[name.name='align'] > Literal[value!=/^(?:left|right)$/]",
-        "message": "<Popover> align must be one of 'left' | 'right'."
       },
       {
         "selector": "JSXOpeningElement[name.name='Progress'] > JSXAttribute > JSXIdentifier[name!=/^(?:value|max|label|showValue|format|tone|style|className|key|ref|className|style|children)$/]",
@@ -361,18 +333,6 @@
         "message": "<Select> size must be one of 'sm' | 'md' | 'lg'."
       },
       {
-        "selector": "JSXOpeningElement[name.name='Skeleton'] > JSXAttribute > JSXIdentifier[name!=/^(?:variant|width|height|lines|style|className|key|ref|className|style|children)$/]",
-        "message": "<Skeleton> doesn't accept that prop. Declared props: variant, width, height, lines, style, className."
-      },
-      {
-        "selector": "JSXOpeningElement[name.name='Skeleton'] > JSXAttribute[name.name='variant'] > Literal[value!=/^(?:text|rect|circle)$/]",
-        "message": "<Skeleton> variant must be one of 'text' | 'rect' | 'circle'."
-      },
-      {
-        "selector": "JSXOpeningElement[name.name='Slider'] > JSXAttribute > JSXIdentifier[name!=/^(?:label|showValue|format|min|max|step|value|defaultValue|onChange|disabled|style|className|key|ref|className|style|children)$/]",
-        "message": "<Slider> doesn't accept that prop. Declared props: label, showValue, format, min, max, step, value, defaultValue, onChange, disabled, style, className."
-      },
-      {
         "selector": "JSXOpeningElement[name.name='SourceCard'] > JSXAttribute > JSXIdentifier[name!=/^(?:href|title|description|domain|favicon|icon|thumbnail|variant|onClick|style|className|key|ref|className|style|children)$/]",
         "message": "<SourceCard> doesn't accept that prop. Declared props: href, title, description, domain, favicon, icon, thumbnail, variant, onClick, style, className."
       },
@@ -387,10 +347,6 @@
       {
         "selector": "JSXOpeningElement[name.name='Sparkline'] > JSXAttribute[name.name='direction'] > Literal[value!=/^(?:up|down|flat)$/]",
         "message": "<Sparkline> direction must be one of 'up' | 'down' | 'flat'."
-      },
-      {
-        "selector": "JSXOpeningElement[name.name='Spinner'] > JSXAttribute > JSXIdentifier[name!=/^(?:size|label|style|className|key|ref|className|style|children)$/]",
-        "message": "<Spinner> doesn't accept that prop. Declared props: size, label, style, className."
       },
       {
         "selector": "JSXOpeningElement[name.name='Stat'] > JSXAttribute > JSXIdentifier[name!=/^(?:label|value|delta|direction|hint|style|className|key|ref|className|style|children)$/]",

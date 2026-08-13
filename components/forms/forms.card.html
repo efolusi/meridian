@@ -73,7 +73,7 @@ function Demo() {
         <div style={{ display: 'flex', flexDirection: 'column', gap: 12 }}>
           <Switch checked={on} onChange={e => setOn(e.target.checked)} label="Usage alerts" />
           <Switch size="sm" defaultChecked label="Auto-renew" />
-          <Slider label="Alert threshold" showValue format={v => v + '%'} defaultValue={80} />
+          <div><div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: 8, fontSize: 13, fontWeight: 600 }}><span>Alert threshold</span><span style={{ color: 'var(--text-muted)', fontFamily: 'var(--font-mono)', fontWeight: 400 }}>80%</span></div><Slider aria-label="Alert threshold" defaultValue={[80]} /></div>
         </div>
         <Textarea label="What happened?" placeholder="Tell us what happened…" style={{ minHeight: 90 }} />
       </div>

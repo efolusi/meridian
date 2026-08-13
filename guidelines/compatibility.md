@@ -59,8 +59,8 @@ similarity.
   values, collapsible and disabled behavior, vertical and direction-aware
   horizontal keyboard navigation with configurable focus looping, polymorphic composition, force-mounted
   content, accessible trigger/content relationships, ref forwarding, state
-  attributes, types, registry installation, demos, and tests. Meridian's
-  data-array shorthand remains available for existing surfaces.
+  attributes, types, registry installation, demos, and tests. The public root
+  is composition-only; maintained surfaces no longer use a data-array renderer.
 - `Alert`, `AlertTitle`, and `AlertDescription` support composable alert
   structure, default and destructive variants, alert semantics, native
   attributes, consumer classes and styles, ref forwarding, types, registry
@@ -70,8 +70,7 @@ similarity.
   controlled and uncontrolled disclosure state, native keyboard activation,
   disabled roots, polymorphic triggers, force-mounted content, accessible
   trigger/content relationships, ref forwarding, state attributes, types,
-  registry installation, demos, and tests. Meridian's original `title`
-  shorthand remains available for existing surfaces.
+  registry installation, demos, and tests. The public root is composition-only.
 - `Checkbox` supports controlled and uncontrolled state, indeterminate state,
   pointer and keyboard interaction, accessible and invalid state data, disabled
   behavior, form submission, native button attributes, ref forwarding, types,
@@ -151,8 +150,7 @@ similarity.
   `CardContent`, and `CardFooter` support complete section composition, default
   and small sizes, a shared spacing variable, edge-to-edge media, RTL-safe
   layout, native props, refs, types, registry installation, demos, and tests.
-  Meridian's shorthand header, body-padding, footer, elevation, and interactive
-  props remain additive adapters.
+  The public root is composition-only.
 
 - `ButtonGroup`, `ButtonGroupText`, `ButtonGroupSeparator`, and
   `buttonGroupVariants` support horizontal and vertical attached controls,
@@ -171,8 +169,8 @@ similarity.
 - `Dialog` and its trigger, portal, overlay, close, content, header, footer,
   title, and description parts support controlled and uncontrolled state,
   semantic child composition, focus containment and restoration, native props,
-  refs, types, registry installation, demos, and tests. Meridian's shorthand
-  modal props remain an additive adapter.
+  refs, types, registry installation, demos, and tests. The public root is
+  composition-only.
 
 - `Empty`, `EmptyHeader`, `EmptyMedia`, `EmptyTitle`, `EmptyDescription`, and
   `EmptyContent` support compositional empty states, native props, refs, types,
@@ -211,8 +209,7 @@ similarity.
   `PopoverTitle`, and `PopoverDescription` support controlled and uncontrolled
   state, semantic child composition, aligned portal placement, outside and
   keyboard dismissal, focus restoration, refs, types, registry installation,
-  demos, and tests. Meridian's `trigger`, `width`, and left/right alignment
-  shorthand remains available.
+  demos, and tests. The public root is composition-only.
 
 - `ToggleGroup` and `ToggleGroupItem` support single and multiple selection,
   controlled and uncontrolled values, inherited variant and size, configurable
@@ -228,13 +225,16 @@ similarity.
 - `Slider` supports single, range, and multiple thumbs; controlled and
   uncontrolled arrays; horizontal and vertical orientation; minimum thumb
   spacing; disabled state; commit callbacks; refs; types; registry
-  installation; demos; and tests. Scalar values and callbacks remain adapters.
+  installation; demos; and tests. Values and callbacks use the canonical array
+  contract, labels and formatted values are composed by the consumer, and refs
+  target the Slider root.
 
 - `Pagination`, `PaginationContent`, `PaginationItem`, `PaginationLink`,
   `PaginationPrevious`, `PaginationNext`, and `PaginationEllipsis` provide
   semantic navigation and native links, active state, logical RTL-safe layout,
-  refs, types, registry installation, demos, and tests. Meridian's controlled
-  numeric-page shorthand remains available.
+  refs, types, registry installation, demos, and tests. Page ranges are composed
+  explicitly from application state; previous and next labels support localized
+  `text` values.
 
 - `ResizablePanelGroup`, `ResizablePanel`, and `ResizableHandle` support
   horizontal and vertical multi-pane composition, percentage defaults and

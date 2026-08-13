@@ -1,12 +1,9 @@
 import React from 'react';
-import { injectEfCss, mergeRefs } from './Button.jsx';
+import { injectEfCss } from './Button.jsx';
 import { useFieldProps } from './Field.jsx';
 
 const CSS = `
 .ef-slider{display:flex;flex-direction:column;gap:8px;touch-action:none;user-select:none}
-.ef-slider__row{display:flex;align-items:center;gap:12px}
-.ef-slider__label{display:flex;justify-content:space-between;font-size:var(--text-sm);font-weight:var(--weight-semibold);color:var(--text-primary)}
-.ef-slider__val{font-family:var(--font-mono);font-size:var(--text-sm);font-weight:400;color:var(--text-muted)}
 .ef-slider__control{position:relative;display:flex;align-items:center;width:100%;height:24px}
 .ef-slider__rail{position:absolute;inset-inline:0;height:3px;border-radius:var(--radius-full);background:var(--border-strong);overflow:hidden}
 .ef-slider__range{position:absolute;inset-block:0;border-radius:inherit;background:var(--accent)}
@@ -28,25 +25,21 @@ const CSS = `
 `;
 
 function clamp(value, min, max) { return Math.max(min, Math.min(max, value)); }
-function asArray(value, fallback) { return Array.isArray(value) ? value : value == null ? fallback : [value]; }
+function asArray(value, fallback) { return Array.isArray(value) ? value : fallback; }
 
-export const Slider = React.forwardRef(function Slider({ label, showValue, format, min = 0, max = 100, step = 1, value: valueProp, defaultValue, onValueChange, onValueCommit, onChange, disabled, orientation = 'horizontal', minStepsBetweenThumbs = 0, inverted = false, dir, style, className, ...rest }, forwardedRef) {
+export const Slider = React.forwardRef(function Slider({ min = 0, max = 100, step = 1, value: valueProp, defaultValue, onValueChange, onValueCommit, disabled, orientation = 'horizontal', minStepsBetweenThumbs = 0, inverted = false, dir, style, className, ...rest }, forwardedRef) {
   injectEfCss('ef-css-slider', CSS);
   const field = useFieldProps({ id: rest.id, 'aria-describedby': rest['aria-describedby'] });
-  const canonical = Array.isArray(valueProp) || Array.isArray(defaultValue);
-  const fallback = [(min + max) / 2];
+  const fallback = [min];
   const [inner, setInner] = React.useState(() => asArray(defaultValue, fallback));
   const values = asArray(valueProp, inner).map(value => clamp(Number(value), min, max));
   const latestRef = React.useRef(values);
   latestRef.current = values;
-  const inputRefs = React.useRef([]);
   const span = max - min || 1;
   const percentages = values.map(value => ((value - min) / span) * 100);
   const low = values.length > 1 ? Math.min(...percentages) : 0;
   const high = values.length > 1 ? Math.max(...percentages) : percentages[0];
-  const displayValue = values.map(value => format ? format(value) : value).join(', ');
-
-  const update = (index, nextNumber, event) => {
+  const update = (index, nextNumber) => {
     const next = [...values];
     const gap = minStepsBetweenThumbs * step;
     const lower = index > 0 ? next[index - 1] + gap : min;
@@ -55,7 +48,6 @@ export const Slider = React.forwardRef(function Slider({ label, showValue, forma
     latestRef.current = next;
     if (valueProp === undefined) setInner(next);
     onValueChange?.(next);
-    onChange?.(canonical ? next : next[0], event);
   };
 
   const rangeStyle = orientation === 'vertical'
@@ -69,7 +61,6 @@ export const Slider = React.forwardRef(function Slider({ label, showValue, forma
           {...rest}
           {...field.controlProps}
           key={index}
-          ref={mergeRefs(index === 0 ? forwardedRef : null, node => { inputRefs.current[index] = node; })}
           type="range"
           data-slot="slider-thumb"
           aria-label={rest['aria-label'] ? `${rest['aria-label']}${values.length > 1 ? ` ${index + 1}` : ''}` : undefined}
@@ -80,7 +71,7 @@ export const Slider = React.forwardRef(function Slider({ label, showValue, forma
           disabled={disabled}
           dir={inverted ? (dir === 'rtl' ? 'ltr' : 'rtl') : dir}
           className="ef-slider__input"
-          onChange={event => update(index, Number(event.target.value), event)}
+          onChange={event => update(index, Number(event.target.value))}
           onPointerUp={() => onValueCommit?.(latestRef.current)}
           onKeyUp={event => { if (['ArrowLeft', 'ArrowRight', 'ArrowUp', 'ArrowDown', 'Home', 'End'].includes(event.key)) onValueCommit?.(latestRef.current); }}
         />
@@ -88,6 +79,5 @@ export const Slider = React.forwardRef(function Slider({ label, showValue, forma
     </span>
   );
   const rootProps = { 'data-slot': 'slider', 'data-orientation': orientation, 'data-disabled': disabled ? '' : undefined, dir, className: `ef-slider${className ? ' ' + className : ''}`, style };
-  if (!label && !showValue) return <span {...rootProps}>{control}</span>;
-  return <label {...rootProps}>{(label || showValue) ? <span className="ef-slider__label">{label}<span className="ef-slider__val">{showValue ? displayValue : ''}</span></span> : null}{control}</label>;
+  return <span {...rootProps} ref={forwardedRef}>{control}</span>;
 });

@@ -6,4 +6,4 @@ Single, range, or multi-thumb numeric selection with horizontal and vertical lay
 
 Canonical values and callbacks are arrays: `value`, `defaultValue`,
 `onValueChange`, and `onValueCommit`. Use `orientation="vertical"` when space is
-tall rather than wide. Scalar values and `onChange` remain legacy adapters.
+tall rather than wide. Compose labels and formatted values beside the Slider.

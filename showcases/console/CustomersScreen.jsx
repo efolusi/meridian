@@ -1,4 +1,4 @@
-const { Card, CardContent, Badge, Button, Input, NativeSelect, NativeSelectOption, Checkbox, Avatar, AvatarFallback, Icon, IconButton, Tag, DropdownMenu, DropdownMenuTrigger, DropdownMenuContent, DropdownMenuItem, DropdownMenuSeparator, Pagination, Drawer, DrawerContent, DrawerHeader, DrawerTitle, DrawerDescription, DrawerFooter, DrawerClose, KeyValueList, Dialog, DialogClose, DialogContent, DialogDescription, DialogFooter, DialogHeader, DialogTitle, Sparkline, Field, FieldLabel } = window.EfolusiDesignSystem_4ffc3d;
+const { Card, CardContent, Badge, Button, Input, NativeSelect, NativeSelectOption, Checkbox, Avatar, AvatarFallback, Icon, IconButton, Tag, DropdownMenu, DropdownMenuTrigger, DropdownMenuContent, DropdownMenuItem, DropdownMenuSeparator, Pagination, PaginationContent, PaginationEllipsis, PaginationItem, PaginationLink, PaginationNext, PaginationPrevious, Drawer, DrawerContent, DrawerHeader, DrawerTitle, DrawerDescription, DrawerFooter, DrawerClose, KeyValueList, Dialog, DialogClose, DialogContent, DialogDescription, DialogFooter, DialogHeader, DialogTitle, Sparkline, Field, FieldLabel } = window.EfolusiDesignSystem_4ffc3d;
 
 function CustomerActionMenu({ trigger, items, onSelect, align = 'start' }) { return <DropdownMenu><DropdownMenuTrigger asChild>{trigger}</DropdownMenuTrigger><DropdownMenuContent align={align}>{items.map((item, index) => item === 'separator' ? <DropdownMenuSeparator key={'separator-' + index} /> : <DropdownMenuItem key={item.id} disabled={item.disabled} variant={item.danger ? 'destructive' : 'default'} onSelect={() => { onSelect?.(item.id); item.onClick?.(); }}>{item.icon ? <Icon name={item.icon} size={15} /> : null}{item.label}</DropdownMenuItem>)}</DropdownMenuContent></DropdownMenu>; }
 
@@ -81,7 +81,15 @@ function CustomersScreen({ notify }) {
         {shown.length === 0 && <div style={{ padding: '28px 16px', textAlign: 'center', fontSize: 13, color: 'var(--text-muted)' }}>No customers match — clear the search or filters.</div>}
         <div style={{ display: 'flex', alignItems: 'center', padding: '10px 16px', fontSize: 13, color: 'var(--text-muted)' }}>
           <span>{shown.length} of 128 customers</span>
-          <Pagination page={page} pageCount={19} onChange={setPage} style={{ marginLeft: 'auto' }} />
+          <Pagination style={{ marginLeft: 'auto' }}><PaginationContent>
+            <PaginationItem><PaginationPrevious href={`#customers-page-${page - 1}`} aria-disabled={page === 1} onClick={event => { event.preventDefault(); setPage(value => Math.max(1, value - 1)); }} /></PaginationItem>
+            <PaginationItem><PaginationLink href="#customers-page-1" isActive={page === 1} onClick={event => { event.preventDefault(); setPage(1); }}>1</PaginationLink></PaginationItem>
+            {page > 2 && <PaginationItem><PaginationEllipsis /></PaginationItem>}
+            {page > 1 && page < 19 && <PaginationItem><PaginationLink href={`#customers-page-${page}`} isActive>{page}</PaginationLink></PaginationItem>}
+            {page < 18 && <PaginationItem><PaginationEllipsis /></PaginationItem>}
+            <PaginationItem><PaginationLink href="#customers-page-19" isActive={page === 19} onClick={event => { event.preventDefault(); setPage(19); }}>19</PaginationLink></PaginationItem>
+            <PaginationItem><PaginationNext href={`#customers-page-${page + 1}`} aria-disabled={page === 19} onClick={event => { event.preventDefault(); setPage(value => Math.min(19, value + 1)); }} /></PaginationItem>
+          </PaginationContent></Pagination>
         </div>
       </CardContent></Card>
       <Drawer open={!!sel} onOpenChange={open => { if (!open) setSel(null); }} direction="right"><DrawerContent style={{ width: 400 }}><DrawerHeader><DrawerTitle>{sel ? sel.name : ''}</DrawerTitle><DrawerDescription>Customer account and recent usage.</DrawerDescription></DrawerHeader>

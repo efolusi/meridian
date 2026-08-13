@@ -12,4 +12,5 @@ Semantic page navigation composed from links and list items.
 ```
 
 Links are real anchors so routing, modified clicks, and copy-link behavior stay
-native. The `page`/`pageCount`/`onChange` shorthand remains available.
+native. Compose the visible page range explicitly from application state. Use the
+`text` prop on `PaginationPrevious` and `PaginationNext` to localize their labels.
