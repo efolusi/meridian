@@ -173,10 +173,6 @@
         "message": "<Drawer> direction must be one of 'top' | 'right' | 'bottom' | 'left'."
       },
       {
-        "selector": "JSXOpeningElement[name.name='EmptyState'] > JSXAttribute > JSXIdentifier[name!=/^(?:icon|title|description|action|bordered|style|className|key|ref|className|style|children)$/]",
-        "message": "<EmptyState> doesn't accept that prop. Declared props: icon, title, description, action, bordered, style, className."
-      },
-      {
         "selector": "JSXOpeningElement[name.name='FeedbackBar'] > JSXAttribute > JSXIdentifier[name!=/^(?:onFeedback|copyText|onCopy|onRetry|note|style|className|key|ref|className|style|children)$/]",
         "message": "<FeedbackBar> doesn't accept that prop. Declared props: onFeedback, copyText, onCopy, onRetry, note, style, className."
       },
@@ -548,9 +544,6 @@
       "BreadcrumbPage": {
         "replaces": []
       },
-      "Breadcrumbs": {
-        "replaces": []
-      },
       "BreadcrumbSeparator": {
         "replaces": []
       },
@@ -888,9 +881,6 @@
         "replaces": []
       },
       "EmptyMedia": {
-        "replaces": []
-      },
-      "EmptyState": {
         "replaces": []
       },
       "EmptyTitle": {

@@ -10,16 +10,6 @@ export type BreadcrumbPageProps = React.ComponentPropsWithoutRef<'span'>;
 export type BreadcrumbSeparatorProps = React.ComponentPropsWithoutRef<'li'>;
 export type BreadcrumbEllipsisProps = React.ComponentPropsWithoutRef<'span'>;
 
-export interface BreadcrumbLegacyItem {
-  id?: React.Key;
-  label: React.ReactNode;
-  href?: string;
-  onClick?: React.MouseEventHandler<HTMLAnchorElement>;
-}
-export interface BreadcrumbsProps extends Omit<BreadcrumbProps, 'children'> {
-  items: BreadcrumbLegacyItem[];
-}
-
 export declare const Breadcrumb: React.ForwardRefExoticComponent<BreadcrumbProps & React.RefAttributes<HTMLElement>>;
 export declare const BreadcrumbList: React.ForwardRefExoticComponent<BreadcrumbListProps & React.RefAttributes<HTMLOListElement>>;
 export declare const BreadcrumbItem: React.ForwardRefExoticComponent<BreadcrumbItemProps & React.RefAttributes<HTMLLIElement>>;
@@ -27,4 +17,3 @@ export declare const BreadcrumbLink: React.ForwardRefExoticComponent<BreadcrumbL
 export declare const BreadcrumbPage: React.ForwardRefExoticComponent<BreadcrumbPageProps & React.RefAttributes<HTMLSpanElement>>;
 export declare const BreadcrumbSeparator: React.ForwardRefExoticComponent<BreadcrumbSeparatorProps & React.RefAttributes<HTMLLIElement>>;
 export declare const BreadcrumbEllipsis: React.ForwardRefExoticComponent<BreadcrumbEllipsisProps & React.RefAttributes<HTMLSpanElement>>;
-export declare const Breadcrumbs: React.ForwardRefExoticComponent<BreadcrumbsProps & React.RefAttributes<HTMLElement>>;

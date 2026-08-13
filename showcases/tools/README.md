@@ -5,4 +5,4 @@ A B2C all-in-one converter: upload → convert → download wizard with a live q
 - `index.html` — interactive: drop/browse files, pick a target format, convert (animated progress), download
 - `ToolsScreen.jsx` — steps, dropzone, queue, options
 
-Composes: Steps, FileDrop, FileTile, Select, Slider, Button, EmptyState, Toaster.
+Composes: Steps, FileDrop, FileTile, Select, Slider, Button, Empty, Toaster.

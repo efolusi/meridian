@@ -1,4 +1,4 @@
-const { Card, CardAction, CardContent, CardDescription, CardHeader, CardTitle, Badge, Button, Icon, IconButton, Avatar, AvatarFallback, AvatarGroup, Stat, BarChart, Progress, Table, EmptyState, DropdownMenu, DropdownMenuTrigger, DropdownMenuContent, DropdownMenuItem, DropdownMenuSeparator, DropdownMenuShortcut, KeyValueList } = window.EfolusiDesignSystem_4ffc3d;
+const { Card, CardAction, CardContent, CardDescription, CardHeader, CardTitle, Badge, Button, Icon, IconButton, Avatar, AvatarFallback, AvatarGroup, Stat, BarChart, Progress, Table, Empty, EmptyContent, EmptyDescription, EmptyHeader, EmptyMedia, EmptyTitle, DropdownMenu, DropdownMenuTrigger, DropdownMenuContent, DropdownMenuItem, DropdownMenuSeparator, DropdownMenuShortcut, KeyValueList } = window.EfolusiDesignSystem_4ffc3d;
 
 function ProjectActionMenu({ trigger, items, onSelect, align = 'end' }) { return <DropdownMenu><DropdownMenuTrigger asChild>{trigger}</DropdownMenuTrigger><DropdownMenuContent align={align}>{items.map((item, index) => item === 'separator' ? <DropdownMenuSeparator key={'separator-' + index} /> : <DropdownMenuItem key={item.id} disabled={item.disabled} variant={item.danger ? 'destructive' : 'default'} onSelect={() => { onSelect?.(item.id); item.onClick?.(); }}>{item.icon ? <Icon name={item.icon} size={15} /> : null}{item.label}{item.kbd ? <DropdownMenuShortcut>{item.kbd}</DropdownMenuShortcut> : null}</DropdownMenuItem>)}</DropdownMenuContent></DropdownMenu>; }
 
@@ -35,7 +35,7 @@ function ProjectsScreen({ onNewProject, notify }) {
             </div>
           </CardContent></Card>
         ))}
-        <EmptyState bordered icon="plus" title="New project" description="Group keys, environments, and usage." action={<Button size="sm" variant="secondary" iconLeft="plus" onClick={onNewProject}>Create</Button>} style={{ padding: '28px 24px' }} />
+        <Empty className="ef-empty--bordered" style={{ padding: '28px 24px' }}><EmptyHeader><EmptyMedia variant="icon"><Icon name="plus" size={24} /></EmptyMedia><EmptyTitle>New project</EmptyTitle><EmptyDescription>Group keys, environments, and usage.</EmptyDescription></EmptyHeader><EmptyContent><Button size="sm" variant="secondary" iconLeft="plus" onClick={onNewProject}>Create</Button></EmptyContent></Empty>
       </div>
     </div>
   );

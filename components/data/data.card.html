@@ -1,4 +1,4 @@
-<!-- @dsCard group="Components" viewport="700x760" name="Data & charts" subtitle="Table, Stat, charts, EmptyState, Skeleton" -->
+<!-- @dsCard group="Components" viewport="700x760" name="Data & charts" subtitle="Table, Stat, charts, Empty, Skeleton" -->
 <!DOCTYPE html><html><head><meta charset="utf-8"><link rel="stylesheet" href="../../styles.css">
 <script src="https://unpkg.com/react@18.3.1/umd/react.production.min.js" integrity="sha384-DGyLxAyjq0f9SPpVevD6IgztCFlnMF6oW/XQGmfe+IsZ8TqEiDrcHkMLKI6fiB/Z" crossorigin="anonymous"></script>
 <script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.production.min.js" integrity="sha384-gTGxhz21lVGYNMcdJOyq01Edg0jhn/c22nsx0kyqP0TxaV5WVdsSH1fSDUf5YJj1" crossorigin="anonymous"></script>
@@ -7,7 +7,7 @@
 </head><body style="background:var(--surface-page)">
 <div id="root"></div>
 <script type="text/babel">
-const { Table, Stat, EmptyState, Skeleton, Card, CardContent, CardDescription, CardHeader, CardTitle, Badge, Button, Avatar, AvatarFallback, LineChart, DonutChart, Sparkline, BarChart, KeyValueList, StatusDot, Icon } = window.EfolusiDesignSystem_4ffc3d;
+const { Table, Stat, Empty, EmptyContent, EmptyDescription, EmptyHeader, EmptyMedia, EmptyTitle, Skeleton, Card, CardContent, CardDescription, CardHeader, CardTitle, Badge, Button, Avatar, AvatarFallback, LineChart, DonutChart, Sparkline, BarChart, KeyValueList, StatusDot, Icon } = window.EfolusiDesignSystem_4ffc3d;
 const rows = [
   { id: 1, name: 'Acme Robotics', plan: 'Growth', mrr: '$1,240', status: 'Active' },
   { id: 2, name: 'Bloom Health', plan: 'Scale', mrr: '$3,860', status: 'Active' },
@@ -37,7 +37,7 @@ function Demo() {
         ]} rows={rows} />
       </CardContent></Card>
       <div style={{ display: 'grid', gridTemplateColumns: '1.2fr 1fr', gap: 16 }}>
-        <EmptyState bordered icon="folder" title="Create your first project" description="Projects group keys, environments, and usage." action={<Button size="sm" iconLeft="plus">New project</Button>} />
+        <Empty className="ef-empty--bordered"><EmptyHeader><EmptyMedia variant="icon"><Icon name="folder" size={24} /></EmptyMedia><EmptyTitle>Create your first project</EmptyTitle><EmptyDescription>Projects group keys, environments, and usage.</EmptyDescription></EmptyHeader><EmptyContent><Button size="sm" iconLeft="plus">New project</Button></EmptyContent></Empty>
         <Card style={{ '--card-spacing': '16px' }}><CardContent>
           <div style={{ display: 'flex', gap: 12, alignItems: 'center' }}>
             <Skeleton style={{ width: 32, height: 32, borderRadius: 'var(--radius-full)' }} />

@@ -187,10 +187,6 @@
       "sourcePath": "components/navigation/Breadcrumbs.jsx"
     },
     {
-      "name": "Breadcrumbs",
-      "sourcePath": "components/navigation/Breadcrumbs.jsx"
-    },
-    {
       "name": "BreadcrumbSeparator",
       "sourcePath": "components/navigation/Breadcrumbs.jsx"
     },
@@ -700,10 +696,6 @@
     },
     {
       "name": "EmptyMedia",
-      "sourcePath": "components/data/EmptyState.jsx"
-    },
-    {
-      "name": "EmptyState",
       "sourcePath": "components/data/EmptyState.jsx"
     },
     {

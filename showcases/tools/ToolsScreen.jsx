@@ -1,4 +1,4 @@
-const { Steps, FileDrop, FileTile, NativeSelect, NativeSelectOption, Field, FieldLabel, Slider, Button, EmptyState, Card, CardContent, Divider, SegmentedControl, Icon, Textarea, CopyField, Toaster, toast } = window.EfolusiDesignSystem_4ffc3d;
+const { Steps, FileDrop, FileTile, NativeSelect, NativeSelectOption, Field, FieldLabel, Slider, Button, Empty, EmptyDescription, EmptyHeader, EmptyMedia, EmptyTitle, Card, CardContent, Divider, SegmentedControl, Icon, Textarea, CopyField, Toaster, toast } = window.EfolusiDesignSystem_4ffc3d;
 
 function EncodePane() {
   const [scheme, setScheme] = React.useState('base64');
@@ -81,7 +81,7 @@ function ToolsScreen() {
           {tool === 'convert' ? (
             <div style={{ display: 'flex', flexDirection: 'column', gap: 12 }}>
               <FileDrop accept="*/*" hint="PDF, MP4, PNG, DOCX — up to 2 GB each" onFiles={addFiles} />
-              {files.length === 0 && <EmptyState icon="files" title="Add your first file" description="Everything you drop here stays in this workspace." />}
+              {files.length === 0 && <Empty><EmptyHeader><EmptyMedia variant="icon"><Icon name="files" size={24} /></EmptyMedia><EmptyTitle>Add your first file</EmptyTitle><EmptyDescription>Everything you drop here stays in this workspace.</EmptyDescription></EmptyHeader></Empty>}
               {files.map(f => (
                 <FileTile key={f.id} name={f.name} size={f.size}
                   progress={f.state === 'working' ? Math.min(99, f.pct) : undefined}
@@ -98,7 +98,7 @@ function ToolsScreen() {
           ) : tool === 'encode' ? (
             <EncodePane />
           ) : (
-            <EmptyState bordered icon="scan" title="Scanner" description="Intentionally omitted from this kit — the Convert flow is the reference layout." />
+            <Empty className="ef-empty--bordered"><EmptyHeader><EmptyMedia variant="icon"><Icon name="scan" size={24} /></EmptyMedia><EmptyTitle>Scanner</EmptyTitle><EmptyDescription>Intentionally omitted from this kit — the Convert flow is the reference layout.</EmptyDescription></EmptyHeader></Empty>
           )}
         </CardContent></Card>
       </div>

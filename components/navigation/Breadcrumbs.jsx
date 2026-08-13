@@ -63,25 +63,3 @@ export const BreadcrumbEllipsis = React.forwardRef(function BreadcrumbEllipsis({
     </span>
   );
 });
-
-export const Breadcrumbs = React.forwardRef(function Breadcrumbs({ items = [], className, ...rest }, ref) {
-  return (
-    <Breadcrumb {...rest} ref={ref} className={className}>
-      <BreadcrumbList>
-        {items.map((item, index) => {
-          const last = index === items.length - 1;
-          return (
-            <React.Fragment key={item.id || index}>
-              <BreadcrumbItem>
-                {last
-                  ? <BreadcrumbPage>{item.label}</BreadcrumbPage>
-                  : <BreadcrumbLink href={item.href || '#'} onClick={item.onClick}>{item.label}</BreadcrumbLink>}
-              </BreadcrumbItem>
-              {!last ? <BreadcrumbSeparator /> : null}
-            </React.Fragment>
-          );
-        })}
-      </BreadcrumbList>
-    </Breadcrumb>
-  );
-});

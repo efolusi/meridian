@@ -52,8 +52,8 @@ similarity.
   semantic path composition, polymorphic links, current-page semantics,
   decorative default or custom separators, ellipsis output, native attributes,
   consumer classes and styles, ref forwarding, RTL, types, registry
-  installation, demos, and tests. Meridian's array-based `Breadcrumbs`
-  adapter remains available for existing surfaces.
+  installation, demos, and tests. Maintained surfaces compose the full semantic
+  path explicitly; no parallel array renderer remains.
 - `Accordion`, `AccordionItem`, `AccordionTrigger`, and `AccordionContent`
   support single and multiple disclosure state, controlled and uncontrolled
   values, collapsible and disabled behavior, vertical and direction-aware
@@ -174,8 +174,8 @@ similarity.
 
 - `Empty`, `EmptyHeader`, `EmptyMedia`, `EmptyTitle`, `EmptyDescription`, and
   `EmptyContent` support compositional empty states, native props, refs, types,
-  registry installation, demos, and tests. `EmptyState` remains an additive
-  convenience adapter.
+  registry installation, demos, and tests. Maintained surfaces compose every
+  media, title, description, and action slot explicitly.
 
 - `InputGroup`, `InputGroupAddon`, `InputGroupButton`, `InputGroupInput`,
   `InputGroupTextarea`, and `InputGroupText` support inline and block addons,

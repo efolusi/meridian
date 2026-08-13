@@ -8,7 +8,7 @@
 </head><body style="background:var(--surface-page)">
 <div id="root"></div>
 <script type="text/babel">
-const { SideNav, TopNav, Breadcrumbs, Button, IconButton, Avatar, AvatarFallback, EmptyState } = window.EfolusiDesignSystem_4ffc3d;
+const { SideNav, TopNav, Breadcrumb, BreadcrumbItem, BreadcrumbLink, BreadcrumbList, BreadcrumbPage, BreadcrumbSeparator, Button, Icon, IconButton, Avatar, AvatarFallback, Empty, EmptyContent, EmptyDescription, EmptyHeader, EmptyMedia, EmptyTitle } = window.EfolusiDesignSystem_4ffc3d;
 function Block() {
   const [nav, setNav] = React.useState('runs');
   return (
@@ -28,15 +28,13 @@ function Block() {
         ]} />
       </div>
       <div style={{ flex: 1, minWidth: 0, display: 'flex', flexDirection: 'column' }}>
-        <TopNav leading={<Breadcrumbs items={[{ label: 'Acme Ops', onClick: () => {} }, { label: 'Runs' }]} />}>
+        <TopNav leading={<Breadcrumb><BreadcrumbList><BreadcrumbItem><BreadcrumbLink href="#" onClick={event => event.preventDefault()}>Acme Ops</BreadcrumbLink></BreadcrumbItem><BreadcrumbSeparator /><BreadcrumbItem><BreadcrumbPage>Runs</BreadcrumbPage></BreadcrumbItem></BreadcrumbList></Breadcrumb>}>
           <IconButton variant="quiet" icon="bell" label="Notifications" />
           <Button size="sm" iconLeft="plus">New run</Button>
           <Avatar><AvatarFallback>AO</AvatarFallback></Avatar>
         </TopNav>
         <main style={{ flex: 1, overflow: 'auto', padding: 28, display: 'grid', placeItems: 'center' }}>
-          <EmptyState bordered icon="bot" title="No runs yet"
-            description="Kick off your first agent run — it will show up here with live status."
-            action={<Button iconLeft="play">Start a run</Button>} />
+          <Empty className="ef-empty--bordered"><EmptyHeader><EmptyMedia variant="icon"><Icon name="bot" size={24} /></EmptyMedia><EmptyTitle>No runs yet</EmptyTitle><EmptyDescription>Kick off your first agent run — it will show up here with live status.</EmptyDescription></EmptyHeader><EmptyContent><Button iconLeft="play">Start a run</Button></EmptyContent></Empty>
         </main>
       </div>
     </div>

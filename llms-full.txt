@@ -1438,14 +1438,19 @@ export declare function DonutChart(props: DonutChartProps): React.JSX.Element;
 
 #### EmptyState
 
-Group: data · Source: /components/data/EmptyState.jsx · Exports: Empty, EmptyHeader, EmptyMedia, EmptyTitle, EmptyDescription, EmptyContent, EmptyState
+Group: data · Source: /components/data/EmptyState.jsx · Exports: Empty, EmptyHeader, EmptyMedia, EmptyTitle, EmptyDescription, EmptyContent
 
-Compose `Empty`, `EmptyHeader`, `EmptyMedia`, `EmptyTitle`, `EmptyDescription`, and `EmptyContent` for a centered empty view that leads with the action, not the absence. `EmptyState` remains as a convenience adapter.
+Compose `Empty`, `EmptyHeader`, `EmptyMedia`, `EmptyTitle`, `EmptyDescription`, and `EmptyContent` for a centered empty view that leads with the action, not the absence.
 
 ```jsx
-<EmptyState bordered icon="folder" title="Create your first project"
-  description="Projects group keys, environments, and usage."
-  action={<Button iconLeft="plus">New project</Button>} />
+<Empty className="ef-empty--bordered">
+  <EmptyHeader>
+    <EmptyMedia variant="icon"><Icon name="folder" size={24} /></EmptyMedia>
+    <EmptyTitle>Create your first project</EmptyTitle>
+    <EmptyDescription>Projects group keys, environments, and usage.</EmptyDescription>
+  </EmptyHeader>
+  <EmptyContent><Button iconLeft="plus">New project</Button></EmptyContent>
+</Empty>
 ```
 
 ```ts
@@ -1457,8 +1462,6 @@ export declare const EmptyMedia: React.ForwardRefExoticComponent<EmptyMediaProps
 export declare const EmptyTitle: React.ForwardRefExoticComponent<EmptyElementProps & React.RefAttributes<HTMLDivElement>>;
 export declare const EmptyDescription: React.ForwardRefExoticComponent<EmptyElementProps & React.RefAttributes<HTMLDivElement>>;
 export declare const EmptyContent: React.ForwardRefExoticComponent<EmptyElementProps & React.RefAttributes<HTMLDivElement>>;
-export interface EmptyStateProps extends Omit<EmptyElementProps, 'title'> { icon?: string; title: React.ReactNode; description?: React.ReactNode; action?: React.ReactNode; bordered?: boolean; }
-export declare const EmptyState: React.ForwardRefExoticComponent<EmptyStateProps & React.RefAttributes<HTMLDivElement>>;
 ```
 
 #### KeyValueList
@@ -3667,7 +3670,7 @@ export declare function Icon(props: IconProps): React.JSX.Element;
 
 #### Breadcrumbs
 
-Group: navigation · Source: /components/navigation/Breadcrumbs.jsx · Exports: Breadcrumb, BreadcrumbList, BreadcrumbItem, BreadcrumbLink, BreadcrumbPage, BreadcrumbSeparator, BreadcrumbEllipsis, Breadcrumbs
+Group: navigation · Source: /components/navigation/Breadcrumbs.jsx · Exports: Breadcrumb, BreadcrumbList, BreadcrumbItem, BreadcrumbLink, BreadcrumbPage, BreadcrumbSeparator, BreadcrumbEllipsis
 
 # Breadcrumb
 
@@ -3683,8 +3686,6 @@ Path trail composable dengan root navigasi, ordered list, item, link, halaman ak
 </Breadcrumb>
 ```
 
-Adapter array `Breadcrumbs items={…}` tetap tersedia untuk permukaan Meridian lama.
-
 ```ts
 import type * as React from 'react';
 
@@ -3698,16 +3699,6 @@ export type BreadcrumbPageProps = React.ComponentPropsWithoutRef<'span'>;
 export type BreadcrumbSeparatorProps = React.ComponentPropsWithoutRef<'li'>;
 export type BreadcrumbEllipsisProps = React.ComponentPropsWithoutRef<'span'>;
 
-export interface BreadcrumbLegacyItem {
-  id?: React.Key;
-  label: React.ReactNode;
-  href?: string;
-  onClick?: React.MouseEventHandler<HTMLAnchorElement>;
-}
-export interface BreadcrumbsProps extends Omit<BreadcrumbProps, 'children'> {
-  items: BreadcrumbLegacyItem[];
-}
-
 export declare const Breadcrumb: React.ForwardRefExoticComponent<BreadcrumbProps & React.RefAttributes<HTMLElement>>;
 export declare const BreadcrumbList: React.ForwardRefExoticComponent<BreadcrumbListProps & React.RefAttributes<HTMLOListElement>>;
 export declare const BreadcrumbItem: React.ForwardRefExoticComponent<BreadcrumbItemProps & React.RefAttributes<HTMLLIElement>>;
@@ -3715,7 +3706,6 @@ export declare const BreadcrumbLink: React.ForwardRefExoticComponent<BreadcrumbL
 export declare const BreadcrumbPage: React.ForwardRefExoticComponent<BreadcrumbPageProps & React.RefAttributes<HTMLSpanElement>>;
 export declare const BreadcrumbSeparator: React.ForwardRefExoticComponent<BreadcrumbSeparatorProps & React.RefAttributes<HTMLLIElement>>;
 export declare const BreadcrumbEllipsis: React.ForwardRefExoticComponent<BreadcrumbEllipsisProps & React.RefAttributes<HTMLSpanElement>>;
-export declare const Breadcrumbs: React.ForwardRefExoticComponent<BreadcrumbsProps & React.RefAttributes<HTMLElement>>;
 ```
 
 #### Menubar

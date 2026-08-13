@@ -1,5 +1,4 @@
 import React from 'react';
-import { Icon } from '../icons/Icon.jsx';
 import { injectEfCss } from '../forms/Button.jsx';
 const CSS = `
 .ef-empty{display:flex;min-width:0;flex-direction:column;align-items:center;justify-content:center;gap:24px;padding:48px 24px;text-align:center}
@@ -30,11 +29,4 @@ export const EmptyDescription = React.forwardRef(function EmptyDescription({ cla
 });
 export const EmptyContent = React.forwardRef(function EmptyContent({ className, ...rest }, ref) {
   return <div {...rest} ref={ref} data-slot="empty-content" className={cx('ef-empty__content', className)} />;
-});
-/** Legacy convenience adapter retained for existing Meridian applications. */
-export const EmptyState = React.forwardRef(function EmptyState({ icon = 'inbox', title, description, action, bordered, className, ...rest }, ref) {
-  return <Empty {...rest} ref={ref} className={`${bordered ? 'ef-empty--bordered' : ''}${className ? ` ${className}` : ''}`}>
-    <EmptyHeader><EmptyMedia variant="icon"><Icon name={icon} size={24} /></EmptyMedia><EmptyTitle>{title}</EmptyTitle>{description ? <EmptyDescription>{description}</EmptyDescription> : null}</EmptyHeader>
-    {action ? <EmptyContent>{action}</EmptyContent> : null}
-  </Empty>;
 });

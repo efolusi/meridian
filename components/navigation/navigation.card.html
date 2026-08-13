@@ -7,7 +7,7 @@
 </head><body style="background:var(--surface-page)">
 <div id="root"></div>
 <script type="text/babel">
-const { Tabs, Breadcrumbs, SegmentedControl, Pagination, PaginationContent, PaginationEllipsis, PaginationItem, PaginationLink, PaginationNext, PaginationPrevious, PageControl, SideNav, TopNav, Menubar, MenubarMenu, MenubarTrigger, MenubarContent, MenubarItem, MenubarSeparator, MenubarShortcut, NavigationMenu, NavigationMenuList, NavigationMenuItem, NavigationMenuTrigger, NavigationMenuContent, NavigationMenuLink, NavigationMenuIndicator, Input, IconButton, Avatar, AvatarFallback, Item, ItemContent, ItemDescription, ItemMedia, ItemTitle, Steps } = window.EfolusiDesignSystem_4ffc3d;
+const { Tabs, Breadcrumb, BreadcrumbItem, BreadcrumbLink, BreadcrumbList, BreadcrumbPage, BreadcrumbSeparator, SegmentedControl, Pagination, PaginationContent, PaginationEllipsis, PaginationItem, PaginationLink, PaginationNext, PaginationPrevious, PageControl, SideNav, TopNav, Menubar, MenubarMenu, MenubarTrigger, MenubarContent, MenubarItem, MenubarSeparator, MenubarShortcut, NavigationMenu, NavigationMenuList, NavigationMenuItem, NavigationMenuTrigger, NavigationMenuContent, NavigationMenuLink, NavigationMenuIndicator, Input, IconButton, Avatar, AvatarFallback, Item, ItemContent, ItemDescription, ItemMedia, ItemTitle, Steps } = window.EfolusiDesignSystem_4ffc3d;
 const lbl = { fontSize: 11, fontWeight: 600, letterSpacing: '0.06em', textTransform: 'uppercase', color: 'var(--text-muted)', marginBottom: 8 };
 function Demo() {
   const [tab, setTab] = React.useState('overview');
@@ -26,7 +26,7 @@ function Demo() {
       </div>
       <div style={{ display: 'flex', gap: 40, alignItems: 'flex-start', flexWrap: 'wrap' }}>
         <div><div style={lbl}>Breadcrumbs</div>
-          <Breadcrumbs items={[{ label: 'Docs', href: '#' }, { label: 'Getting started', href: '#' }, { label: 'Quickstart' }]} />
+          <Breadcrumb><BreadcrumbList><BreadcrumbItem><BreadcrumbLink href="#">Docs</BreadcrumbLink></BreadcrumbItem><BreadcrumbSeparator /><BreadcrumbItem><BreadcrumbLink href="#">Getting started</BreadcrumbLink></BreadcrumbItem><BreadcrumbSeparator /><BreadcrumbItem><BreadcrumbPage>Quickstart</BreadcrumbPage></BreadcrumbItem></BreadcrumbList></Breadcrumb>
         </div>
         <div><div style={lbl}>SegmentedControl</div>
           <SegmentedControl options={['7d', '30d', '90d']} value={range} onChange={setRange} />

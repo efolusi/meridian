@@ -9,7 +9,6 @@ import {
   BreadcrumbList,
   BreadcrumbPage,
   BreadcrumbSeparator,
-  Breadcrumbs,
 } from '../components/navigation/Breadcrumbs.jsx';
 
 describe('Breadcrumb compatibility contract', () => {
@@ -79,11 +78,4 @@ describe('Breadcrumb compatibility contract', () => {
     expect(refs[3].current.style.color).toBe('currentcolor');
   });
 
-  it('preserves the Meridian array adapter', () => {
-    render(<Breadcrumbs items={[{ label: 'Workspace', href: '/workspace' }, { label: 'Current' }]} />);
-    expect(screen.getByRole('link', { name: 'Workspace' }).getAttribute('href')).toBe('/workspace');
-    expect(screen.getByRole('link', { name: 'Current' }).getAttribute('aria-current')).toBe('page');
-    expect(screen.getAllByRole('listitem')).toHaveLength(2);
-    expect(document.querySelectorAll('[data-slot="breadcrumb-separator"]')).toHaveLength(1);
-  });
 });

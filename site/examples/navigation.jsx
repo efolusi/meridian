@@ -180,10 +180,30 @@ export function TabsDemo() {
 
 // @demo TopNav Page header bar
 export function TopNavDemo() {
-  const { TopNav, Breadcrumbs, Button, IconButton, Avatar, AvatarFallback } = window.EfolusiDesignSystem_4ffc3d;
+  const {
+    TopNav,
+    Breadcrumb,
+    BreadcrumbList,
+    BreadcrumbItem,
+    BreadcrumbLink,
+    BreadcrumbPage,
+    BreadcrumbSeparator,
+    Button,
+    IconButton,
+    Avatar,
+    AvatarFallback,
+  } = window.EfolusiDesignSystem_4ffc3d;
   return (
     <div style={{ width: '100%', maxWidth: 640, border: '1px solid var(--border-default)', borderRadius: 'var(--radius-md)', overflow: 'hidden' }}>
-      <TopNav leading={<Breadcrumbs items={[{ label: 'Agents', onClick: () => {} }, { label: 'Flight rebooking' }]} />}>
+      <TopNav leading={(
+        <Breadcrumb>
+          <BreadcrumbList>
+            <BreadcrumbItem><BreadcrumbLink href="#agents">Agents</BreadcrumbLink></BreadcrumbItem>
+            <BreadcrumbSeparator />
+            <BreadcrumbItem><BreadcrumbPage>Flight rebooking</BreadcrumbPage></BreadcrumbItem>
+          </BreadcrumbList>
+        </Breadcrumb>
+      )}>
         <IconButton variant="quiet" icon="bell" label="Notifications" />
         <Button size="sm" iconLeft="play">Run now</Button>
         <Avatar><AvatarFallback>AO</AvatarFallback></Avatar>

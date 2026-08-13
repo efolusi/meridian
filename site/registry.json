@@ -1229,15 +1229,14 @@
     {
       "name": "empty",
       "type": "registry:ui",
-      "title": "Empty + EmptyHeader + EmptyMedia + EmptyTitle + EmptyDescription + EmptyContent + EmptyState",
-      "description": "Compose `Empty`, `EmptyHeader`, `EmptyMedia`, `EmptyTitle`, `EmptyDescription`, and `EmptyContent` for a centered empty view that leads with the action, not the absence. `EmptyState` remains as a convenience adapter.",
+      "title": "Empty + EmptyHeader + EmptyMedia + EmptyTitle + EmptyDescription + EmptyContent",
+      "description": "Compose `Empty`, `EmptyHeader`, `EmptyMedia`, `EmptyTitle`, `EmptyDescription`, and `EmptyContent` for a centered empty view that leads with the action, not the absence.",
       "dependencies": [
         "react"
       ],
       "registryDependencies": [
         "https://meridian.efolusi.com/site/registry/meridian-base.json",
-        "https://meridian.efolusi.com/site/registry/button.json",
-        "https://meridian.efolusi.com/site/registry/icon.json"
+        "https://meridian.efolusi.com/site/registry/button.json"
       ],
       "files": [
         {
@@ -3267,7 +3266,7 @@
     {
       "name": "breadcrumb",
       "type": "registry:ui",
-      "title": "Breadcrumb + BreadcrumbList + BreadcrumbItem + BreadcrumbLink + BreadcrumbPage + BreadcrumbSeparator + BreadcrumbEllipsis + Breadcrumbs",
+      "title": "Breadcrumb + BreadcrumbList + BreadcrumbItem + BreadcrumbLink + BreadcrumbPage + BreadcrumbSeparator + BreadcrumbEllipsis",
       "description": "Path trail composable dengan root navigasi, ordered list, item, link, halaman aktif, separator, dan ellipsis.",
       "dependencies": [
         "react"

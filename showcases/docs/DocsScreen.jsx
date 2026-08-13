@@ -1,4 +1,4 @@
-const { Icon, IconButton, Input, Badge, Button, Tag, Alert, AlertDescription, AlertTitle, Breadcrumbs, CodeBlock, Kbd, CommandDialog, CommandInput, CommandList, CommandEmpty, CommandGroup, CommandItem, CommandShortcut } = window.EfolusiDesignSystem_4ffc3d;
+const { Icon, IconButton, Input, Badge, Button, Tag, Alert, AlertDescription, AlertTitle, Breadcrumb, BreadcrumbItem, BreadcrumbLink, BreadcrumbList, BreadcrumbPage, BreadcrumbSeparator, CodeBlock, Kbd, CommandDialog, CommandInput, CommandList, CommandEmpty, CommandGroup, CommandItem, CommandShortcut } = window.EfolusiDesignSystem_4ffc3d;
 
 function DocsHeader({ onSearch }) {
   return (
@@ -138,7 +138,7 @@ function Article({ page, onPage }) {
   const next = ORDER[idx + 1];
   return (
     <article style={{ maxWidth: 720 }}>
-      <Breadcrumbs items={[{ label: meta.group, href: '#', onClick: e => e.preventDefault() }, { label: meta.label }]} />
+      <Breadcrumb><BreadcrumbList><BreadcrumbItem><BreadcrumbLink href="#" onClick={event => event.preventDefault()}>{meta.group}</BreadcrumbLink></BreadcrumbItem><BreadcrumbSeparator /><BreadcrumbItem><BreadcrumbPage>{meta.label}</BreadcrumbPage></BreadcrumbItem></BreadcrumbList></Breadcrumb>
       <h1 style={{ fontSize: 38, fontWeight: 680, marginTop: 12 }}>{meta.label}</h1>
       <p style={{ fontSize: 17, lineHeight: 1.65, color: 'var(--text-secondary)', marginTop: 12 }}>{c.lede}</p>
       <div style={{ display: 'flex', gap: 8, marginTop: 16 }}>{c.tags.map(([i, t]) => <Tag key={t} icon={i}>{t}</Tag>)}</div>
@@ -156,7 +156,7 @@ function Article({ page, onPage }) {
 function QuickstartArticle({ onPage }) {
   return (
     <article style={{ maxWidth: 720 }}>
-      <Breadcrumbs items={[{ label: 'Getting started', href: '#', onClick: e => e.preventDefault() }, { label: 'Quickstart' }]} />
+      <Breadcrumb><BreadcrumbList><BreadcrumbItem><BreadcrumbLink href="#" onClick={event => event.preventDefault()}>Getting started</BreadcrumbLink></BreadcrumbItem><BreadcrumbSeparator /><BreadcrumbItem><BreadcrumbPage>Quickstart</BreadcrumbPage></BreadcrumbItem></BreadcrumbList></Breadcrumb>
       <h1 style={{ fontSize: 38, fontWeight: 680, marginTop: 12 }}>Quickstart</h1>
       <p style={{ fontSize: 17, lineHeight: 1.65, color: 'var(--text-secondary)', marginTop: 12 }}>Send your first API request in under five minutes. Everything in Efolusi — agent tasks, infrastructure, automation, trades — starts with the same key.</p>
       <div style={{ display: 'flex', gap: 8, marginTop: 16 }}><Tag icon="clock">5 min</Tag><Tag icon="terminal">curl or SDK</Tag></div>

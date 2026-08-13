@@ -13,9 +13,9 @@ Match the placeholder to what you know.
 
 ## Empty
 
-`EmptyState` (`icon`, `title`, `description`, `action`). Three empties, three tones:
+Compose `Empty`, `EmptyHeader`, `EmptyMedia`, `EmptyTitle`, `EmptyDescription`, and optional `EmptyContent`. Three empties, three tones:
 
-- **First run** (nothing created yet): warm, one clear `action` to create the first thing. Not an apology.
+- **First run** (nothing created yet): warm, one clear action in `EmptyContent` to create the first thing. Not an apology.
 - **No results** (a filter or search matched nothing): say what was searched, offer to clear it. No primary action to "create".
 - **Failed to load**: this is an error, not an empty. Use the error pattern below, with a retry.
 
