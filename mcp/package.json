@@ -1,6 +1,6 @@
 {
   "name": "@efolusi/meridian-mcp",
-  "version": "0.1.2",
+  "version": "0.1.3",
   "description": "MCP server exposing the Meridian design system registry (components, source, types, usage guides, tokens) to AI coding agents.",
   "license": "MIT",
   "homepage": "https://meridian.efolusi.com",

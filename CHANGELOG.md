@@ -2,6 +2,11 @@
 
 ## Unreleased
 
+## 1.21.2 — 2026-08-14
+
+- **Meridian has a complete original brand system.** The former owl identity is replaced across the documentation, components, blocks, examples, starters, dashboards, favicon, social artwork, and empty brand surfaces by the production `///` mark and Bricolage Grotesque wordmark.
+- **Brand lockups are optically aligned.** The mark now matches the wordmark cap height, keeps a shared baseline, and uses a consistent 6px compact or 8px large gap across the official horizontal assets, SideNav, examples, blocks, and starter journeys.
+- **Component presentation details were refined.** File input, search affordances, avatar counts, item dividers, removable tags, donut hover bounds, message alignment, and wizard width now follow the same spacing, sizing, and interaction contracts in source and demos.
 - **Diff is string-source only.** The precomputed `lines` adapter was removed; single and multi-file reviews now consistently derive rows, counts, context, and word marks from `from` and `to`.
 - **Repository facts and boundaries were tightened.** The built-in design skill now reflects the current icon and starter inventories, and consumer-specific audit detail no longer lives in the independent design-system repository.
 - **The final shadow and registry aliases were retired.** Floating surfaces now use `--shadow-xl` directly, the duplicate `radio` install item is removed in favor of `radio-group`, and manifest synchronization now keeps adherence token metadata aligned with the authored token inventory.
