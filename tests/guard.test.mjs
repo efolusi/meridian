@@ -125,7 +125,7 @@ describe('Meridian Guard scanning and reporting', () => {
     const directory = await fs.mkdtemp(path.join(os.tmpdir(), 'meridian-guard-cli-'));
     temporaryDirectories.push(directory);
     const sourceFile = path.join(directory, 'Example.jsx');
-    const binary = path.resolve('packages/guard/bin/meridian-guard.mjs');
+    const binary = path.resolve('packages/guard/bin/meridian-guard.js');
     await fs.writeFile(sourceFile, "import { Icon } from '@efolusi/meridian'; export const A = () => <Icon name='check' />;");
     const clean = spawnSync(process.execPath, [binary, sourceFile, '--format', 'json'], { encoding: 'utf8' });
     expect(clean.status).toBe(0);

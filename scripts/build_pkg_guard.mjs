@@ -11,7 +11,7 @@ const version = JSON.parse(fs.readFileSync(path.join(ROOT, '_ds_manifest.json'),
 const files = new Map();
 
 for (const rel of [
-  'bin/meridian-guard.mjs',
+  'bin/meridian-guard.js',
   'src/cli.mjs',
   'src/index.mjs',
   'src/reporter.mjs',
@@ -32,7 +32,7 @@ files.set('package.json', `${JSON.stringify({
   repository: { type: 'git', url: 'git+https://github.com/efolusi/meridian.git', directory: 'packages/guard' },
   type: 'module',
   engines: { node: '>=20.10' },
-  bin: { 'meridian-guard': './bin/meridian-guard.mjs' },
+  bin: { 'meridian-guard': './bin/meridian-guard.js' },
   main: './src/index.mjs',
   exports: { '.': './src/index.mjs', './package.json': './package.json' },
   files: ['bin', 'src', 'README.md', 'LICENSE'],
@@ -60,5 +60,5 @@ for (const [rel, content] of files) {
   fs.mkdirSync(path.dirname(target), { recursive: true });
   fs.writeFileSync(target, content);
 }
-fs.chmodSync(path.join(OUT, 'bin', 'meridian-guard.mjs'), 0o755);
+fs.chmodSync(path.join(OUT, 'bin', 'meridian-guard.js'), 0o755);
 console.log(`@efolusi/meridian-guard@${version}: ${files.size} files -> packages/guard/dist/`);

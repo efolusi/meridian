@@ -24,7 +24,7 @@ try {
 
   const invalid = path.join(temporary, 'Invalid.jsx');
   fs.writeFileSync(invalid, "import { Icon } from '@efolusi/meridian'; export const Invalid = () => <Icon name='definitely-missing' />;\n");
-  const cli = spawnSync(process.execPath, [path.join(DIST, 'bin', 'meridian-guard.mjs'), invalid, '--format', 'json'], {
+  const cli = spawnSync(process.execPath, [path.join(DIST, 'bin', 'meridian-guard.js'), invalid, '--format', 'json'], {
     cwd: ROOT,
     encoding: 'utf8',
   });
