@@ -43,7 +43,7 @@
  "Steps": "Rel progres bernomor — vertikal untuk log tugas agen, horizontal untuk wizard.",
  "Tabs": "Tab bergaris-bawah dengan bar tinta karamel yang meluncur lentur. Terkendali: berikan value + onChange.",
  "TopNav": "Header lengket berblur: slot depan opsional, judul font-display, aksi rata-kanan.",
- "Alert": "Banner inline: permukaan putih, border setipis rambut, ikon berwarna-tone. Untuk pemberitahuan tingkat-halaman — pakai Toast untuk peristiwa sesaat.",
+ "Alert": "Callout inline composable dengan judul, deskripsi, ikon, dan aksi eksplisit; gunakan varian destructive untuk kegagalan.",
  "Banner": "Strip selebar penuh di atas chrome aplikasi — masa coba, insiden, pengumuman. Maksimal satu per tampilan.",
  "ConfirmDialog": "Preset Dialog untuk aksi destruktif; gerbang ketik-untuk-konfirmasi opsional.",
  "Dialog": "Modal terpusat dengan overlay redup, scale-in lentur, tutup via ESC/overlay/✕.",

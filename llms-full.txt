@@ -2457,11 +2457,11 @@ export declare function TreeList(props: TreeListProps): React.JSX.Element;
 
 #### Alert
 
-Group: feedback · Source: /components/feedback/Alert.jsx · Exports: Alert, AlertTitle, AlertDescription
+Group: feedback · Source: /components/feedback/Alert.jsx · Exports: Alert, AlertTitle, AlertDescription, AlertAction
 
 # Alert
 
-Notifikasi inline composable dengan varian `default` dan `destructive`. Susun ikon, `AlertTitle`, dan `AlertDescription` sebagai children untuk kontrol penuh.
+Notifikasi inline composable dengan varian `default` dan `destructive`. Susun ikon, `AlertTitle`, `AlertDescription`, dan `AlertAction` sebagai children.
 
 ```jsx
 <Alert variant="destructive">
@@ -2471,31 +2471,23 @@ Notifikasi inline composable dengan varian `default` dan `destructive`. Susun ik
 </Alert>
 ```
 
-Prop shorthand Meridian `tone`, `icon`, `title`, `description`, dan `action` tetap tersedia untuk permukaan lama.
+Untuk warna status khusus, berikan `className` pada root dan tetap tulis ikon sebagai child eksplisit.
 
 ```ts
 import type * as React from 'react';
 
-export interface AlertProps extends Omit<React.HTMLAttributes<HTMLDivElement>, 'title'> {
+export interface AlertProps extends React.HTMLAttributes<HTMLDivElement> {
   variant?: 'default' | 'destructive';
-  /** Meridian semantic-tone extension. */
-  tone?: 'info' | 'success' | 'warning' | 'danger';
-  /** Meridian shorthand icon name. */
-  icon?: string;
-  /** Meridian shorthand title. */
-  title?: React.ReactNode;
-  /** Meridian shorthand description. */
-  description?: React.ReactNode;
-  /** Meridian shorthand action slot. */
-  action?: React.ReactNode;
 }
 
 export type AlertTitleProps = React.HTMLAttributes<HTMLDivElement>;
 export type AlertDescriptionProps = React.HTMLAttributes<HTMLDivElement>;
+export type AlertActionProps = React.HTMLAttributes<HTMLDivElement>;
 
 export declare const Alert: React.ForwardRefExoticComponent<AlertProps & React.RefAttributes<HTMLDivElement>>;
 export declare const AlertTitle: React.ForwardRefExoticComponent<AlertTitleProps & React.RefAttributes<HTMLDivElement>>;
 export declare const AlertDescription: React.ForwardRefExoticComponent<AlertDescriptionProps & React.RefAttributes<HTMLDivElement>>;
+export declare const AlertAction: React.ForwardRefExoticComponent<AlertActionProps & React.RefAttributes<HTMLDivElement>>;
 ```
 
 #### AlertDialog
@@ -2784,12 +2776,10 @@ Hover/focus tooltip with collision-aware placement. Prefer the compositional API
 Use `side` to place composed tooltip content on the top, bottom, left, or right.
 
 ```ts
-export interface TooltipProviderProps { delayDuration?: number; children?: React.ReactNode; }
+export interface TooltipProviderProps { delayDuration?: number; skipDelayDuration?: number; disableHoverableContent?: boolean; children?: React.ReactNode; }
 export interface TooltipProps {
-  /** Legacy shorthand content. Prefer TooltipContent for composition. */
-  label?: React.ReactNode;
-  side?: 'top' | 'bottom' | 'left' | 'right';
-  /** Legacy delay alias. */ delay?: number;
+  delayDuration?: number;
+  disableHoverableContent?: boolean;
   open?: boolean; defaultOpen?: boolean; onOpenChange?: (open: boolean) => void;
   children?: React.ReactNode;
 }

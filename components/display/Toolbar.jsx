@@ -1,6 +1,6 @@
 import React from 'react';
 import { Icon } from '../icons/Icon.jsx';
-import { Tooltip } from '../feedback/Tooltip.jsx';
+import { Tooltip, TooltipContent, TooltipTrigger } from '../feedback/Tooltip.jsx';
 import { injectEfCss } from '../forms/Button.jsx';
 const CSS = `
 .ef-toolbar{display:inline-flex;align-items:center;gap:2px;padding:3px;background:var(--surface-card);border:1px solid var(--border-strong);border-radius:var(--radius-md)}
@@ -27,7 +27,7 @@ export function Toolbar({ items, value, onChange, label, style, className, ...re
             {it.label || null}
           </button>
         );
-        return it.tip ? <Tooltip key={it.id} label={it.tip}>{btn}</Tooltip> : btn;
+        return it.tip ? <Tooltip key={it.id}><TooltipTrigger asChild>{btn}</TooltipTrigger><TooltipContent>{it.tip}</TooltipContent></Tooltip> : btn;
       })}
     </div>
   );

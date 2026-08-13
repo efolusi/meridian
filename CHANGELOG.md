@@ -2,6 +2,8 @@
 
 ## Unreleased
 
+- **Alert is composition-only and includes the current action part.** `AlertAction` now ships beside `AlertTitle` and `AlertDescription`; the parallel `tone`, `icon`, `title`, `description`, and `action` shorthand renderer was removed, and maintained consumers now compose explicit children with canonical variants or custom status classes.
+- **Tooltip is composition-only.** The parallel `label`, root `side`, and `delay` shorthand renderer was removed; maintained consumers now compose `TooltipTrigger` and `TooltipContent`, while canonical root/provider delay and hoverability options remain available.
 - **Badge uses the canonical variant and composition contract.** The `tone`, `size`, and generated `dot` helpers were removed; maintained consumers now use official variants, custom color classes, and explicit `data-icon` children for status indicators.
 - **Pagination is composition-only and current.** The generated `page`, `pageCount`, and `onChange` renderer was removed; maintained consumers now compose semantic links explicitly, and previous/next links support the current localizable `text` prop.
 - **Slider uses the array-only root contract.** Scalar values, DOM-style `onChange`, and the built-in label/value renderer were removed; maintained consumers compose their labels, use canonical array callbacks, and refs now target the Slider root rather than its first thumb.

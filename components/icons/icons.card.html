@@ -7,18 +7,18 @@
 </head><body style="background:var(--surface-page)">
 <div id="root"></div>
 <script type="text/babel">
-const { Icon, Tooltip } = window.EfolusiDesignSystem_4ffc3d;
+const { Icon, Tooltip, TooltipContent, TooltipTrigger } = window.EfolusiDesignSystem_4ffc3d;
 const names = ['house','search','settings','user','users','bell','mail','lock','calendar','clock','inbox','folder','file-text','credit-card','wallet','database','globe','link','send','message-square','plus','check','x','pencil','copy','trash-2','upload','download','refresh-cw','external-link','arrow-right','arrow-up-right','chevron-down','chevron-right','ellipsis','funnel','sliders-horizontal','panel-left','layout-dashboard','chart-column','chart-line','trending-up','activity','zap','sparkles','star','rocket','shield-check','badge-check','terminal','code','book-open','life-buoy','log-out','circle-check','circle-alert','triangle-alert','info','eye','eye-off','menu','chevron-left','chevron-up','loader-circle','github','github-brand','linkedin','x-brand'];
 function Demo() {
   return (
     <div style={{ padding: '18px 20px', display: 'grid', gridTemplateColumns: 'repeat(16, 1fr)', gap: 6 }}>
       {names.map(n => (
-        <Tooltip key={n} label={n}>
-          <span style={{ display: 'inline-flex', alignItems: 'center', justifyContent: 'center', width: 36, height: 36, borderRadius: 'var(--radius-sm)', color: 'var(--sand-700)', cursor: 'default' }}
+        <Tooltip key={n}>
+          <TooltipTrigger asChild><span style={{ display: 'inline-flex', alignItems: 'center', justifyContent: 'center', width: 36, height: 36, borderRadius: 'var(--radius-sm)', color: 'var(--sand-700)', cursor: 'default' }}
             onMouseEnter={e => { e.currentTarget.style.background = 'var(--sand-100)'; e.currentTarget.style.color = 'var(--text-primary)'; }}
             onMouseLeave={e => { e.currentTarget.style.background = ''; e.currentTarget.style.color = 'var(--sand-700)'; }}>
             <Icon name={n} size={18} />
-          </span>
+          </span></TooltipTrigger><TooltipContent>{n}</TooltipContent>
         </Tooltip>
       ))}
     </div>

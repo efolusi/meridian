@@ -8,7 +8,7 @@
 </head><body style="background:var(--surface-page)">
 <div id="root"></div>
 <script type="text/babel">
-const { Alert, Progress, Spinner, Dialog, DialogClose, DialogContent, DialogDescription, DialogFooter, DialogHeader, DialogTitle, Toast, ToastStack, Tooltip, Button, Input, Banner, ConfirmDialog, Loader } = window.EfolusiDesignSystem_4ffc3d;
+const { Alert, AlertAction, AlertDescription, AlertTitle, Progress, Spinner, Dialog, DialogClose, DialogContent, DialogDescription, DialogFooter, DialogHeader, DialogTitle, Toast, ToastStack, Tooltip, TooltipContent, TooltipTrigger, Button, Icon, Input, Banner, ConfirmDialog, Loader } = window.EfolusiDesignSystem_4ffc3d;
 function Demo() {
   const [open, setOpen] = React.useState(false);
   const [confirm, setConfirm] = React.useState(false);
@@ -16,13 +16,13 @@ function Demo() {
     <div style={{ display: 'flex', flexDirection: 'column' }}>
       <Banner tone="warning" icon="triangle-alert" action="Add card" onDismiss={() => {}}><strong>Trial ends in 3 days.</strong> Your workspace pauses after that.</Banner>
       <div style={{ padding: 20, display: 'flex', flexDirection: 'column', gap: 14, maxWidth: 420 }}>
-      <Alert tone="warning" title="Trial ends in 3 days" description="Add a card to keep your workspace running." action={<Button size="sm" variant="secondary">Add card</Button>} />
-      <Alert tone="danger" title="Payment failed" description="Your card ending 4242 was declined." />
+      <Alert className="ef-alert--warning"><Icon name="triangle-alert" size={16} /><AlertTitle>Trial ends in 3 days</AlertTitle><AlertDescription>Add a card to keep your workspace running.</AlertDescription><AlertAction><Button size="sm" variant="secondary">Add card</Button></AlertAction></Alert>
+      <Alert variant="destructive"><Icon name="circle-alert" size={16} /><AlertTitle>Payment failed</AlertTitle><AlertDescription>Your card ending 4242 was declined.</AlertDescription></Alert>
       <Progress label="Seats used" value={4} max={5} showValue format={(v, m) => v + ' of ' + m} />
       <Progress label="API quota" value={92} tone="danger" showValue />
       <div className="show-tip" style={{ display: 'flex', gap: 16, alignItems: 'center' }}>
         <Spinner aria-label="Loading customers…" />
-        <Tooltip label="Tooltips settle in fast"><Button size="sm" variant="secondary" iconLeft="info">Hover me</Button></Tooltip>
+        <Tooltip><TooltipTrigger asChild><Button size="sm" variant="secondary" iconLeft="info">Hover me</Button></TooltipTrigger><TooltipContent>Tooltips settle in fast</TooltipContent></Tooltip>
         <Button size="sm" onClick={() => setOpen(true)}>Open dialog</Button>
         <Button size="sm" variant="danger" onClick={() => setConfirm(true)}>Delete…</Button>
       </div>

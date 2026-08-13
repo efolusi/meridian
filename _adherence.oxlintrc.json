@@ -61,14 +61,6 @@
         "message": "<AccordionItem> doesn't accept that prop. Declared props: id, title, content."
       },
       {
-        "selector": "JSXOpeningElement[name.name='Alert'] > JSXAttribute > JSXIdentifier[name!=/^(?:tone|icon|title|description|action|children|style|className|key|ref|className|style|children)$/]",
-        "message": "<Alert> doesn't accept that prop. Declared props: tone, icon, title, description, action, children, style, className."
-      },
-      {
-        "selector": "JSXOpeningElement[name.name='Alert'] > JSXAttribute[name.name='tone'] > Literal[value!=/^(?:info|success|warning|danger)$/]",
-        "message": "<Alert> tone must be one of 'info' | 'success' | 'warning' | 'danger'."
-      },
-      {
         "selector": "JSXOpeningElement[name.name='AspectRatio'] > JSXAttribute > JSXIdentifier[name!=/^(?:ratio|children|style|className|key|ref|className|style|children)$/]",
         "message": "<AspectRatio> doesn't accept that prop. Declared props: ratio, children, style, className."
       },
@@ -393,14 +385,6 @@
         "message": "<ToolCall> status must be one of 'pending' | 'approval' | 'running' | 'success' | 'error'."
       },
       {
-        "selector": "JSXOpeningElement[name.name='Tooltip'] > JSXAttribute > JSXIdentifier[name!=/^(?:label|position|children|style|className|key|ref|className|style|children)$/]",
-        "message": "<Tooltip> doesn't accept that prop. Declared props: label, position, children, style, className."
-      },
-      {
-        "selector": "JSXOpeningElement[name.name='Tooltip'] > JSXAttribute[name.name='position'] > Literal[value!=/^(?:top|bottom)$/]",
-        "message": "<Tooltip> position must be one of 'top' | 'bottom'."
-      },
-      {
         "selector": "JSXOpeningElement[name.name='TopNav'] > JSXAttribute > JSXIdentifier[name!=/^(?:title|leading|children|style|className|key|ref|className|style|children)$/]",
         "message": "<TopNav> doesn't accept that prop. Declared props: title, leading, children, style, className."
       },
@@ -442,6 +426,9 @@
         "replaces": []
       },
       "Alert": {
+        "replaces": []
+      },
+      "AlertAction": {
         "replaces": []
       },
       "AlertDescription": {

@@ -2,7 +2,7 @@ import { describe, it, expect } from 'vitest';
 import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 
-import { Tooltip } from '../components/feedback/Tooltip.jsx';
+import { Tooltip, TooltipContent, TooltipTrigger } from '../components/feedback/Tooltip.jsx';
 import { Button } from '../components/forms/Button.jsx';
 
 // The contract guidelines/accessibility.md claims for Tooltip: linked to its
@@ -12,7 +12,7 @@ import { Button } from '../components/forms/Button.jsx';
 describe('Tooltip', () => {
   it('shows on keyboard focus alone, without hover', async () => {
     const user = userEvent.setup();
-    render(<Tooltip label="Save"><Button>Save file</Button></Tooltip>);
+    render(<Tooltip><TooltipTrigger asChild><Button>Save file</Button></TooltipTrigger><TooltipContent>Save</TooltipContent></Tooltip>);
     expect(screen.queryByRole('tooltip')).toBeNull();
     await user.tab(); // keyboard only — no pointer event ever fires
     const tip = await screen.findByRole('tooltip');
@@ -24,7 +24,7 @@ describe('Tooltip', () => {
     const user = userEvent.setup();
     render(
       <>
-        <Tooltip label="Save"><Button>Save file</Button></Tooltip>
+        <Tooltip><TooltipTrigger asChild><Button>Save file</Button></TooltipTrigger><TooltipContent>Save</TooltipContent></Tooltip>
         <Button>Elsewhere</Button>
       </>
     );
@@ -41,7 +41,7 @@ describe('Tooltip', () => {
 
   it('dismisses on Escape and leaves focus on the trigger', async () => {
     const user = userEvent.setup();
-    render(<Tooltip label="Save"><Button>Save file</Button></Tooltip>);
+    render(<Tooltip><TooltipTrigger asChild><Button>Save file</Button></TooltipTrigger><TooltipContent>Save</TooltipContent></Tooltip>);
     const trigger = screen.getByRole('button', { name: 'Save file' });
     await user.tab();
     await screen.findByRole('tooltip');

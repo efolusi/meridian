@@ -1,6 +1,6 @@
 # Alert
 
-Notifikasi inline composable dengan varian `default` dan `destructive`. Susun ikon, `AlertTitle`, dan `AlertDescription` sebagai children untuk kontrol penuh.
+Notifikasi inline composable dengan varian `default` dan `destructive`. Susun ikon, `AlertTitle`, `AlertDescription`, dan `AlertAction` sebagai children.
 
 ```jsx
 <Alert variant="destructive">
@@ -10,4 +10,4 @@ Notifikasi inline composable dengan varian `default` dan `destructive`. Susun ik
 </Alert>
 ```
 
-Prop shorthand Meridian `tone`, `icon`, `title`, `description`, dan `action` tetap tersedia untuk permukaan lama.
+Untuk warna status khusus, berikan `className` pada root dan tetap tulis ikon sebagai child eksplisit.

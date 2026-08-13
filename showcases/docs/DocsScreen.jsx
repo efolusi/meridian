@@ -1,4 +1,4 @@
-const { Icon, IconButton, Input, Badge, Button, Tag, Alert, Breadcrumbs, CodeBlock, Kbd, CommandDialog, CommandInput, CommandList, CommandEmpty, CommandGroup, CommandItem, CommandShortcut } = window.EfolusiDesignSystem_4ffc3d;
+const { Icon, IconButton, Input, Badge, Button, Tag, Alert, AlertDescription, AlertTitle, Breadcrumbs, CodeBlock, Kbd, CommandDialog, CommandInput, CommandList, CommandEmpty, CommandGroup, CommandItem, CommandShortcut } = window.EfolusiDesignSystem_4ffc3d;
 
 function DocsHeader({ onSearch }) {
   return (
@@ -147,7 +147,7 @@ function Article({ page, onPage }) {
       <CodeBlock lang={c.code[0]} style={{ margin: '18px 0' }}>{c.code[1]}</CodeBlock>
       <H2>{c.sections[1][0]}</H2>
       <P>{c.sections[1][1]}</P>
-      <Alert tone="info" title={c.tip[0]} description={c.tip[1]} style={{ margin: '18px 0' }} />
+      <Alert style={{ margin: '18px 0' }}><Icon name="info" size={16} /><AlertTitle>{c.tip[0]}</AlertTitle><AlertDescription>{c.tip[1]}</AlertDescription></Alert>
       <Helpful onNext={next ? () => onPage(next.id) : null} nextLabel={next ? next.label : ''} />
     </article>
   );
@@ -169,7 +169,7 @@ function QuickstartArticle({ onPage }) {
 
 const efolusi = new Efolusi('ef_test_a91xK…');
 const task = await efolusi.agent.tasks.run('retry failed webhooks');`}</CodeBlock>
-      <Alert tone="info" title="Keep keys server-side" description="Keys grant full workspace access — never ship them in browser code." style={{ margin: '18px 0' }} />
+      <Alert style={{ margin: '18px 0' }}><Icon name="info" size={16} /><AlertTitle>Keep keys server-side</AlertTitle><AlertDescription>Keys grant full workspace access — never ship them in browser code.</AlertDescription></Alert>
       <h2 id="first-request" style={{ fontSize: 24, fontWeight: 680, marginTop: 40 }}>3. Make it do something</h2>
       <P>Run your first agent task, connect your first cloud, or spin up an automation node. Each capability has its own five-minute guide from here.</P>
       <Helpful onNext={() => onPage('auth')} nextLabel="Authentication" />

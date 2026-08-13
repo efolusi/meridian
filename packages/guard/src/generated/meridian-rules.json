@@ -27,6 +27,10 @@
       "sourcePath": "components/feedback/Alert.jsx"
     },
     {
+      "name": "AlertAction",
+      "sourcePath": "components/feedback/Alert.jsx"
+    },
+    {
       "name": "AlertDescription",
       "sourcePath": "components/feedback/Alert.jsx"
     },

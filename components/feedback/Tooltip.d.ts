@@ -1,9 +1,7 @@
-export interface TooltipProviderProps { delayDuration?: number; children?: React.ReactNode; }
+export interface TooltipProviderProps { delayDuration?: number; skipDelayDuration?: number; disableHoverableContent?: boolean; children?: React.ReactNode; }
 export interface TooltipProps {
-  /** Legacy shorthand content. Prefer TooltipContent for composition. */
-  label?: React.ReactNode;
-  side?: 'top' | 'bottom' | 'left' | 'right';
-  /** Legacy delay alias. */ delay?: number;
+  delayDuration?: number;
+  disableHoverableContent?: boolean;
   open?: boolean; defaultOpen?: boolean; onOpenChange?: (open: boolean) => void;
   children?: React.ReactNode;
 }

@@ -57,7 +57,7 @@
 <x-import component-from-global-scope="EfolusiDesignSystem_4ffc3d.CodeBlock" lang="bash" hint-size="100%,120px">{{ curlCode }}</x-import>
 </div>
 <div style="margin:18px 0 0">
-<x-import component-from-global-scope="EfolusiDesignSystem_4ffc3d.Alert" tone="warning" title="Rotate on exposure" description="If a live key leaks, rotate it in Console → Settings → API keys. Old requests keep working for 60 seconds, then stop." hint-size="100%,70px"></x-import>
+<x-import component-from-global-scope="EfolusiDesignSystem_4ffc3d.Alert" class-name="ef-alert--warning" hint-size="100%,70px"><x-import component-from-global-scope="EfolusiDesignSystem_4ffc3d.Icon" name="triangle-alert" size="16"></x-import><x-import component-from-global-scope="EfolusiDesignSystem_4ffc3d.AlertTitle">Rotate on exposure</x-import><x-import component-from-global-scope="EfolusiDesignSystem_4ffc3d.AlertDescription">If a live key leaks, rotate it in Console → Settings → API keys. Old requests keep working for 60 seconds, then stop.</x-import></x-import>
 </div>
 <div style="display:flex;justify-content:space-between;margin-top:56px;padding-top:20px;border-top:1px solid var(--border-default)">
 <a href="./DocsPage.dc.html" style="font-size:14px;font-weight:600;color:var(--text-link);text-decoration:none"><span style="display:block;font-size:11px;font-weight:600;letter-spacing:0.06em;text-transform:uppercase;color:var(--text-muted)">Previous</span>← Quickstart</a>

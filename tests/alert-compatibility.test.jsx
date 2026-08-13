@@ -1,7 +1,7 @@
 import React from 'react';
 import { describe, expect, it } from 'vitest';
 import { render, screen } from '@testing-library/react';
-import { Alert, AlertDescription, AlertTitle } from '../components/feedback/Alert.jsx';
+import { Alert, AlertAction, AlertDescription, AlertTitle } from '../components/feedback/Alert.jsx';
 
 describe('Alert compatibility contract', () => {
   it('renders the composable default variant with alert semantics', () => {
@@ -47,13 +47,14 @@ describe('Alert compatibility contract', () => {
     expect(screen.getByText('Description').parentElement).toBe(root);
   });
 
-  it('preserves Meridian tone and content shorthands', () => {
-    render(<Alert tone="warning" title="Budget warning" description="Usage reached 85%." action={<button>Review</button>}>Extra context</Alert>);
+  it('supports the canonical action part and explicit custom status styling', () => {
+    const actionRef = React.createRef();
+    render(<Alert className="ef-alert--warning"><AlertTitle>Budget warning</AlertTitle><AlertDescription>Usage reached 85%.</AlertDescription><AlertAction ref={actionRef}><button>Review</button></AlertAction></Alert>);
     const root = screen.getByRole('alert');
     expect(root.className).toContain('ef-alert--warning');
     expect(screen.getByText('Budget warning')).not.toBeNull();
     expect(screen.getByText('Usage reached 85%.')).not.toBeNull();
-    expect(screen.getByText('Extra context').className).toBe('ef-alert__body');
     expect(screen.getByRole('button', { name: 'Review' })).not.toBeNull();
+    expect(actionRef.current.getAttribute('data-slot')).toBe('alert-action');
   });
 });

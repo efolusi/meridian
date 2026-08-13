@@ -3,7 +3,6 @@ import { injectEfCss, mergeRefs, useIsoLayoutEffect } from '../forms/Button.jsx'
 import { Portal } from '../overlay/Portal.jsx';
 
 const CSS = `
-.ef-tooltip{position:relative;display:inline-flex}
 .ef-tooltip__bubble{position:fixed;background:var(--surface-inverse);color:var(--text-inverse);font-size:var(--text-xs);font-weight:var(--weight-medium);line-height:1.35;padding:5px 9px;border-radius:6px;white-space:nowrap;pointer-events:none;z-index:var(--z-tooltip);animation:ef-tooltip-in var(--dur-fast) var(--ease-out)}
 .ef-tooltip__bubble::after{content:'';position:absolute;top:100%;left:var(--ef-tt-arrow,50%);transform:translateX(-50%);border:4px solid transparent;border-top-color:var(--surface-inverse)}
 .ef-tooltip__bubble--bottom::after{top:auto;bottom:100%;border-top-color:transparent;border-bottom-color:var(--surface-inverse)}
@@ -12,14 +11,14 @@ const CSS = `
 @keyframes ef-tooltip-in{from{opacity:0}to{opacity:1}}
 `;
 const SIDES = ['top', 'bottom', 'left', 'right'];
-const TooltipProviderCtx = React.createContext({ delayDuration: 200 });
+const TooltipProviderCtx = React.createContext({ delayDuration: 0, skipDelayDuration: 300, disableHoverableContent: false });
 const TooltipCtx = React.createContext(null);
 
 function compose(theirs, ours) {
   return event => { theirs?.(event); if (!event.defaultPrevented) ours?.(event); };
 }
 
-export function Tooltip({ label, side, delay, open: controlled, defaultOpen = false, onOpenChange, children }) {
+export function Tooltip({ delayDuration, disableHoverableContent, open: controlled, defaultOpen = false, onOpenChange, children }) {
   injectEfCss('ef-css-tooltip', CSS);
   const provider = React.useContext(TooltipProviderCtx);
   const [inner, setInner] = React.useState(defaultOpen);
@@ -33,29 +32,18 @@ export function Tooltip({ label, side, delay, open: controlled, defaultOpen = fa
   }, [controlled, onOpenChange]);
   const show = React.useCallback(immediate => {
     clearTimeout(timerRef.current);
-    const wait = delay ?? provider.delayDuration;
+    const wait = delayDuration ?? provider.delayDuration;
     if (immediate || wait <= 0) setOpen(true);
     else timerRef.current = setTimeout(() => setOpen(true), wait);
-  }, [delay, provider.delayDuration, setOpen]);
+  }, [delayDuration, provider.delayDuration, setOpen]);
   const hide = React.useCallback(() => { clearTimeout(timerRef.current); setOpen(false); }, [setOpen]);
   React.useEffect(() => () => clearTimeout(timerRef.current), []);
-  const value = React.useMemo(() => ({ open, show, hide, triggerRef, contentId }), [open, show, hide, contentId]);
-
-  if (label !== undefined) {
-    return (
-      <TooltipCtx.Provider value={value}>
-        <span className="ef-tooltip">
-          <TooltipTrigger asChild>{children}</TooltipTrigger>
-          <TooltipContent side={SIDES.includes(side) ? side : 'top'}>{label}</TooltipContent>
-        </span>
-      </TooltipCtx.Provider>
-    );
-  }
+  const value = React.useMemo(() => ({ open, show, hide, triggerRef, contentId, disableHoverableContent: disableHoverableContent ?? provider.disableHoverableContent }), [open, show, hide, contentId, disableHoverableContent, provider.disableHoverableContent]);
   return <TooltipCtx.Provider value={value}>{children}</TooltipCtx.Provider>;
 }
 
-export function TooltipProvider({ delayDuration = 200, children }) {
-  return <TooltipProviderCtx.Provider value={{ delayDuration }}>{children}</TooltipProviderCtx.Provider>;
+export function TooltipProvider({ delayDuration = 0, skipDelayDuration = 300, disableHoverableContent = false, children }) {
+  return <TooltipProviderCtx.Provider value={{ delayDuration, skipDelayDuration, disableHoverableContent }}>{children}</TooltipProviderCtx.Provider>;
 }
 
 export const TooltipTrigger = React.forwardRef(function TooltipTrigger({ asChild = false, children, ...rest }, forwardedRef) {

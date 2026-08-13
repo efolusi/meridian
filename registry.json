@@ -2116,15 +2116,14 @@
     {
       "name": "alert",
       "type": "registry:ui",
-      "title": "Alert + AlertTitle + AlertDescription",
-      "description": "Notifikasi inline composable dengan varian `default` dan `destructive`. Susun ikon, `AlertTitle`, dan `AlertDescription` sebagai children untuk kontrol penuh.",
+      "title": "Alert + AlertTitle + AlertDescription + AlertAction",
+      "description": "Notifikasi inline composable dengan varian `default` dan `destructive`. Susun ikon, `AlertTitle`, `AlertDescription`, dan `AlertAction` sebagai children.",
       "dependencies": [
         "react"
       ],
       "registryDependencies": [
         "https://meridian.efolusi.com/site/registry/meridian-base.json",
-        "https://meridian.efolusi.com/site/registry/button.json",
-        "https://meridian.efolusi.com/site/registry/icon.json"
+        "https://meridian.efolusi.com/site/registry/button.json"
       ],
       "files": [
         {

@@ -7,12 +7,12 @@
 </head><body style="background:var(--surface-page)">
 <div id="root"></div>
 <script type="text/babel">
-const { Alert, Input, Select, Button } = window.EfolusiDesignSystem_4ffc3d;
+const { Alert, AlertDescription, AlertTitle, Icon, Input, Select, Button } = window.EfolusiDesignSystem_4ffc3d;
 function Demo() {
   const [busy, setBusy] = React.useState(false);
   return (
     <div style={{ padding: 20, maxWidth: 420, display: 'flex', flexDirection: 'column', gap: 14 }}>
-      <Alert tone="danger" title="Fix 2 fields to continue" description="Errors are listed under each field. Nothing was saved." />
+      <Alert variant="destructive"><Icon name="circle-alert" size={16} /><AlertTitle>Fix 2 fields to continue</AlertTitle><AlertDescription>Errors are listed under each field. Nothing was saved.</AlertDescription></Alert>
       <Input label="Work email" defaultValue="ada@acme" iconLeft="mail" error="That doesn't look like a full email address." />
       <Input label="Password" type="password" defaultValue="hunter2" error="At least 12 characters needed." />
       <Select label="Role" options={['Owner', 'Admin', 'Member']} hint="Owners can delete the workspace." />

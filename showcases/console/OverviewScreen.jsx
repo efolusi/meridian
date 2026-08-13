@@ -1,4 +1,4 @@
-const { Card, CardAction, CardContent, CardDescription, CardHeader, CardTitle, Badge, Button, Icon, IconButton, Avatar, Tooltip, Stat: EfStat } = window.EfolusiDesignSystem_4ffc3d;
+const { Card, CardAction, CardContent, CardDescription, CardHeader, CardTitle, Badge, Button, Icon, IconButton, Avatar, Tooltip, TooltipContent, TooltipTrigger, Stat: EfStat } = window.EfolusiDesignSystem_4ffc3d;
 
 function KpiCard({ label, value, delta, up }) {
   return (
@@ -14,9 +14,12 @@ function UsageChart({ notify }) {
     <Card style={{ flex: 2 }}><CardHeader><CardTitle>API requests</CardTitle><CardDescription>Last 28 days · all surfaces</CardDescription><CardAction><Button size="sm" variant="secondary" iconLeft="download" onClick={() => notify && notify('Export ready', 'requests-28d.csv is downloading.')}>Export</Button></CardAction></CardHeader><CardContent>
       <div style={{ display: 'flex', alignItems: 'flex-end', gap: 4, height: 150 }}>
         {BARS.map((v, i) => (
-          <Tooltip key={i} label={(v * 113).toLocaleString() + ' requests'} style={{ flex: 1, height: '100%', alignItems: 'flex-end' }}>
-            <div onMouseEnter={() => setHov(i)} onMouseLeave={() => setHov(null)}
+          <Tooltip key={i}>
+            <TooltipTrigger asChild><div onMouseEnter={() => setHov(i)} onMouseLeave={() => setHov(null)}
+              style={{ display: 'flex', flex: 1, height: '100%', alignItems: 'flex-end' }}>
+            <div
               style={{ width: '100%', height: (v / max * 100) + '%', borderRadius: '3px 3px 0 0', background: hov === i ? 'var(--brand-700)' : i > 23 ? 'var(--brand-900)' : 'var(--sand-200)', transition: 'background var(--dur-fast) var(--ease-out)' }} />
+            </div></TooltipTrigger><TooltipContent>{(v * 113).toLocaleString()} requests</TooltipContent>
           </Tooltip>
         ))}
       </div>

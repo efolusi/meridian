@@ -61,11 +61,11 @@ similarity.
   content, accessible trigger/content relationships, ref forwarding, state
   attributes, types, registry installation, demos, and tests. The public root
   is composition-only; maintained surfaces no longer use a data-array renderer.
-- `Alert`, `AlertTitle`, and `AlertDescription` support composable alert
+- `Alert`, `AlertTitle`, `AlertDescription`, and `AlertAction` support composable alert
   structure, default and destructive variants, alert semantics, native
   attributes, consumer classes and styles, ref forwarding, types, registry
-  installation, demos, and tests. Meridian's semantic tones and content
-  shorthands remain additive extensions.
+  installation, demos, and tests. Custom status colors use consumer classes;
+  maintained surfaces compose every icon, title, description, and action explicitly.
 - `Collapsible`, `CollapsibleTrigger`, and `CollapsibleContent` support
   controlled and uncontrolled disclosure state, native keyboard activation,
   disabled roots, polymorphic triggers, force-mounted content, accessible
@@ -202,8 +202,8 @@ similarity.
 - `TooltipProvider`, `Tooltip`, `TooltipTrigger`, and `TooltipContent` support
   composed triggers, controlled and uncontrolled state, configurable delay,
   four-sided collision-aware placement, keyboard dismissal, linked accessible
-  descriptions, refs, types, registry installation, demos, and tests.
-  Meridian's `label`, `delay`, and `position` shorthand remains available.
+  descriptions, refs, types, registry installation, demos, and tests. The root
+  is composition-only; maintained surfaces use explicit triggers and content.
 
 - `Popover`, `PopoverTrigger`, `PopoverContent`, `PopoverHeader`,
   `PopoverTitle`, and `PopoverDescription` support controlled and uncontrolled
