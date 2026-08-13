@@ -8,7 +8,7 @@
 
 ## What Meridian is
 
-Meridian is a general-purpose, open-source design system by Efolusi: 110 accessible React components, 166 design tokens in light, dark and compact, 9 blocks, and full example apps. It ships two ways from one source. The flagship is zero-build: four tags, one global, no bundler, the way meridian.efolusi.com serves itself. The second is npm, a monorepo of lockstep packages: the `@efolusi/meridian` umbrella (everything: components, tokens, icons, types), plus `@efolusi/meridian-tokens` and `@efolusi/meridian-icons` for teams who want only one layer, real ES modules for Vite, Next and Remix. It is warm paper, espresso ink, hairline structure, derived entirely from the Efolusi owl mark, and it is the studio's own most demanding customer: Efolusi builds its products and its site on it.
+Meridian is a general-purpose, open-source design system by Efolusi: 121 accessible React components, 165 design tokens in light, dark and compact, 9 blocks, and full example apps. It ships two ways from one source. The flagship is zero-build: four tags, one global, no bundler, the way meridian.efolusi.com serves itself. The second is npm, a monorepo of lockstep packages: the `@efolusi/meridian` umbrella (everything: components, tokens, icons, types), plus `@efolusi/meridian-tokens` and `@efolusi/meridian-icons` for teams who want only one layer, real ES modules for Vite, Next and Remix. It is warm paper, espresso ink, hairline structure, derived entirely from the Efolusi owl mark, and it is the studio's own most demanding customer: Efolusi builds its products and its site on it.
 
 ## North star
 

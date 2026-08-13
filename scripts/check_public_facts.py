@@ -14,12 +14,19 @@ facts = {
     "icons": len(list((ROOT / "assets/icons").glob("*.svg"))),
     "blocks": len(list((ROOT / "blocks").glob("*.html"))),
     "starters": len([t for t in manifest.get("templates", []) if t["folder"].startswith("starters/")]),
+    "tokens": len({token["name"] for token in manifest.get("tokens", [])}),
     "version": manifest["version"],
 }
 
 checks = [
     (ROOT / "README.md", f"components-{facts['components']}-", "component badge"),
     (ROOT / "README.md", f"{facts['components']} accessible React components", "README component count"),
+    (ROOT / "README.md", f"{facts['tokens']} design tokens", "README token count"),
+    (ROOT / "ROADMAP.md", f"{facts['tokens']} unique token names", "roadmap token count"),
+    (ROOT / "VISION.md", f"{facts['tokens']} design tokens", "vision token count"),
+    (ROOT / "llms.txt", f"{facts['tokens']} design tokens", "llms token count"),
+    (ROOT / "site/Docs.dc.html", f"{facts['tokens']} tokens", "docs token count"),
+    (ROOT / "site/DsSite.dc.html", f"{facts['tokens']} tokens", "homepage token count"),
     (ROOT / "ROADMAP.md", f"{facts['icons']} icons", "roadmap icon count"),
     (ROOT / "ROADMAP.md", f"{facts['blocks']} blocks", "roadmap block count"),
     (ROOT / "ROADMAP.md", f"{facts['starters']} starter journeys", "roadmap starter count"),
@@ -45,6 +52,8 @@ public_surfaces = (
     ROOT / "site/Docs.dc.html",
     ROOT / "site/DsSite.dc.html",
     ROOT / "site/Examples.dc.html",
+    ROOT / "VISION.md",
+    ROOT / "llms.txt",
 )
 component_claim_patterns = (
     re.compile(r"\b(\d+)\s+accessible\s+(?:React\s+)?components\b", re.IGNORECASE),
@@ -67,6 +76,23 @@ for path in public_surfaces:
                     f"{match.group(1)} (expected {facts['components']})"
                 )
 
+token_claim_patterns = (
+    re.compile(r"\b(\d+)\s+(?:unique\s+)?design\s+tokens?\b", re.IGNORECASE),
+    re.compile(r"\b(\d+)\s+unique\s+token(?:\s+names?)?\b", re.IGNORECASE),
+    re.compile(r"\b(\d+)\s+token\s+unik\b", re.IGNORECASE),
+    re.compile(r"\b(\d+)\s+(?:tokens|token)\s+·", re.IGNORECASE),
+)
+for path in public_surfaces:
+    source = path.read_text()
+    for pattern in token_claim_patterns:
+        for match in pattern.finditer(source):
+            if int(match.group(1)) != facts["tokens"]:
+                line = source[: match.start()].count("\n") + 1
+                failures.append(
+                    f"{path.relative_to(ROOT)}:{line}: stale public token count "
+                    f"{match.group(1)} (expected {facts['tokens']})"
+                )
+
 # Catch the common partial-update failure even when the expected string appears
 # elsewhere on the same page.
 for path in (ROOT / "site/Components.dc.html", ROOT / "site/Docs.dc.html", ROOT / "site/DsSite.dc.html"):
@@ -81,5 +107,6 @@ if failures:
 print(
     "public facts synchronized "
     f"({facts['components']} components, {facts['icons']} icons, "
-    f"{facts['blocks']} blocks, {facts['starters']} starters, v{facts['version']})"
+    f"{facts['tokens']} tokens, {facts['blocks']} blocks, "
+    f"{facts['starters']} starters, v{facts['version']})"
 )
