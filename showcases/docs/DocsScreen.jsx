@@ -4,7 +4,7 @@ function DocsHeader({ onSearch }) {
   return (
     <header style={{ display: 'flex', alignItems: 'center', gap: 20, height: 58, padding: '0 24px', borderBottom: '1px solid var(--border-default)', background: 'rgba(250,249,246,.85)', backdropFilter: 'blur(12px)', position: 'sticky', top: 0, zIndex: 30 }}>
       <a href="../website/index.html" style={{ display: 'flex', alignItems: 'center', gap: 10, textDecoration: 'none', color: 'var(--text-primary)' }}>
-        <img src="../../assets/meridian-mark.svg" alt="" style={{ width: 30, height: 16 }} />
+        <img src="../../assets/meridian-mark.svg" alt="" style={{ width: 30, height: 16, marginRight: -4 }} />
         <span style={{ fontFamily: 'var(--font-display)', fontWeight: 680, letterSpacing: '-0.02em', fontSize: 17 }}>Meridian</span>
         <span style={{ fontSize: 15, color: 'var(--text-muted)', fontWeight: 500 }}>Docs</span>
       </a>

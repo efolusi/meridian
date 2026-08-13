@@ -5,7 +5,7 @@ function SiteHeader() {
   return (
     <header style={{ position: 'sticky', top: 0, zIndex: 50, background: 'color-mix(in srgb, var(--surface-page) 85%, transparent)', backdropFilter: 'blur(12px)', borderBottom: '1px solid var(--border-default)' }}>
       <div style={{ ...wrap, display: 'flex', alignItems: 'center', gap: 28, height: 64 }}>
-        <a href="#" style={{ display: 'flex', alignItems: 'center', gap: 10, color: 'var(--text-primary)', textDecoration: 'none' }}>
+        <a href="#" style={{ display: 'flex', alignItems: 'center', gap: 6, color: 'var(--text-primary)', textDecoration: 'none' }}>
           <img src="../../assets/meridian-mark.svg" alt="" style={{ width: 30, height: 16 }} />
           <span style={{ fontFamily: 'var(--font-display)', fontWeight: 680, letterSpacing: '-0.02em', fontSize: 20 }}>Meridian</span>
         </a>
@@ -198,7 +198,7 @@ function SiteFooter() {
     <footer style={{ borderTop: '1px solid var(--border-default)', background: 'var(--sand-25)', padding: '56px 0 40px' }}>
       <div style={{ ...wrap, display: 'grid', gridTemplateColumns: '2fr 1fr 1fr 1fr 1.4fr', gap: 32 }}>
         <div>
-          <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
+          <div style={{ display: 'flex', alignItems: 'center', gap: 6 }}>
             <img src="../../assets/meridian-mark.svg" alt="" style={{ width: 30, height: 16 }} />
             <span style={{ fontFamily: 'var(--font-display)', fontWeight: 680, letterSpacing: '-0.02em', fontSize: 18 }}>Meridian</span>
           </div>

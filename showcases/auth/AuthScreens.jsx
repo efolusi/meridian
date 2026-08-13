@@ -5,7 +5,7 @@ const standalone = typeof window !== 'undefined' && window.top === window.self;
 function BrandPanel() {
   return (
     <div style={{ flex: 1, background: 'var(--brand-950)', color: 'var(--cream-50)', display: 'flex', flexDirection: 'column', padding: 48, position: 'relative', overflow: 'hidden' }}>
-      <a href="../website/index.html" style={{ display: 'flex', alignItems: 'center', gap: 12, textDecoration: 'none', color: 'var(--cream-50)' }}>
+      <a href="../website/index.html" style={{ display: 'flex', alignItems: 'center', gap: 8, textDecoration: 'none', color: 'var(--cream-50)' }}>
         <img src="../../assets/meridian-mark.svg" alt="" style={{ width: 36, height: 19, filter: 'brightness(0) invert(1)' }} />
         <span style={{ fontFamily: 'var(--font-display)', fontWeight: 680, letterSpacing: '-0.02em', fontSize: 24 }}>Meridian</span>
       </a>

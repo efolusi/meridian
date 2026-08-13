@@ -40,7 +40,7 @@ function Sidebar({ nav, onNav }) {
   return (
     <aside style={{ width: 240, flex: 'none', display: 'flex', flexDirection: 'column', borderRight: '1px solid var(--border-default)', background: 'var(--sand-25)' }}>
       <div style={{ display: 'flex', alignItems: 'center', gap: 10, padding: '16px 16px 14px' }}>
-        <a href="../website/index.html" style={{ display: 'inline-flex' }} title="efolusi.com"><img src="../../assets/meridian-mark.svg" alt="Meridian" style={{ width: 30, height: 16 }} /></a>
+        <a href="../website/index.html" style={{ display: 'inline-flex', marginRight: -4 }} title="efolusi.com"><img src="../../assets/meridian-mark.svg" alt="Meridian" style={{ width: 30, height: 16 }} /></a>
         <span style={{ fontFamily: 'var(--font-display)', fontWeight: 680, letterSpacing: '-0.02em', fontSize: 19 }}>Meridian</span>
         <Badge className="ef-badge--brand" style={{ marginLeft: 'auto' }}>Console</Badge>
       </div>

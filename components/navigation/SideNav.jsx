@@ -4,7 +4,7 @@ import { Badge } from '../display/Badge.jsx';
 import { injectEfCss } from '../forms/Button.jsx';
 const CSS = `
 .ef-sidenav{display:flex;flex-direction:column;width:240px;flex:none;background:var(--surface-subtle);border-inline-end:1px solid var(--border-default);align-self:stretch}
-.ef-sidenav__brand{display:flex;align-items:center;gap:10px;padding:16px 16px 14px}
+.ef-sidenav__brand{display:flex;align-items:center;gap:6px;padding:16px 16px 14px}
 .ef-sidenav__group{font-size:11px;font-weight:600;letter-spacing:0.06em;text-transform:uppercase;color:var(--text-muted);padding:14px 22px 6px}
 .ef-sidenav__item{display:flex;align-items:center;gap:10px;width:calc(100% - 24px);margin:0 12px;height:34px;padding:0 10px;border:none;border-radius:var(--radius-sm);cursor:pointer;text-align:start;background:transparent;color:var(--text-secondary);font-family:var(--font-sans);font-size:var(--text-md);font-weight:500;transition:background var(--dur-fast) var(--ease-out),color var(--dur-fast) var(--ease-out)}
 .ef-sidenav__item:hover{background:var(--surface-sunken);color:var(--text-primary)}

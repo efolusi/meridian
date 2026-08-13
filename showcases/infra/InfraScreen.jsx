@@ -33,7 +33,7 @@ function InfraScreen() {
       {banner && <Banner tone="warning" icon="triangle-alert" action={<button className="ef-banner__action" onClick={() => { setTab('resources'); setSel(RESOURCES[3]); }}>View incident</button>} onDismiss={() => setBanner(false)}><strong>worker-04 is degraded.</strong> P95 latency up 4× since 08:12 UTC.</Banner>}
       <div style={{ flex: 1, overflowY: 'auto' }}>
         <div style={{ maxWidth: 1180, margin: '0 auto', padding: '28px 32px 60px' }}>
-          <div style={{ display: 'flex', alignItems: 'center', gap: 12 }}>
+          <div style={{ display: 'flex', alignItems: 'center', gap: 6 }}>
             <a href="../console/index.html" title="Back to Console" style={{ display: 'inline-flex' }}><img src="../../assets/meridian-mark.svg" alt="" style={{ width: 30, height: 16 }} /></a>
             <h1 style={{ fontSize: 24, fontWeight: 680 }}>Infrastructure</h1>
             <StatusDot status="warn" pulse label="1 incident" />
