@@ -27,6 +27,7 @@ const IGNORED_DIRECTORIES = new Set([
   'vendor',
 ]);
 const HEX_COLOR = /#[0-9a-fA-F]{3,8}\b/g;
+const RADIUS_TOKEN = /var\(\s*--(radius-[a-z0-9-]+)\b/gi;
 
 function ignoredSourceFile(target) {
   const name = path.basename(target);
@@ -155,6 +156,7 @@ export function scanSource(source, file, contracts) {
   const diagnostics = [];
   const validComponents = new Set(contracts.components.map(item => item.name));
   const validIcons = new Set(contracts.icons);
+  const validTokens = new Set(contracts.tokens);
   const imports = new Map();
   const namespaces = new Set();
 
@@ -191,6 +193,14 @@ export function scanSource(source, file, contracts) {
           `Raw color ${JSON.stringify(value.match(HEX_COLOR)?.[0])} bypasses Meridian semantic tokens. Use var(--token-name).`));
       }
       HEX_COLOR.lastIndex = 0;
+      if (rawColorContext(node, ancestors)) {
+        for (const match of value.matchAll(RADIUS_TOKEN)) {
+          if (!validTokens.has(match[1])) {
+            diagnostics.push(diagnostic(file, node, RULES.unknownToken,
+              `Unknown Meridian token "--${match[1]}". Choose a radius token from the generated token contract.`));
+          }
+        }
+      }
     }
     if (node.type !== 'JSXElement') return;
     const raw = jsxName(node.openingElement.name);

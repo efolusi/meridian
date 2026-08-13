@@ -12,6 +12,7 @@
 @media (max-width:900px){
 .site-side{display:none!important}
 .grid-2{grid-template-columns:1fr!important}
+.grid-2>*{min-width:0}
 .grid-4{grid-template-columns:1fr 1fr!important}
 }
 @media (max-width:760px){

@@ -30,6 +30,7 @@ not shipped interface source.
 | `MDG003` | warning | Inline and CSS-in-JS colors use semantic tokens, not hex. |
 | `MDG004` | warning | Deprecated props migrate to their canonical replacement. |
 | `MDG005` | error | Required accessible names and dialog titles are present. |
+| `MDG006` | error | Referenced Meridian radius tokens must exist in the generated token contract. |
 
 Dynamic icon names cannot be proven statically and are left to the application.
 Guard currently validates Meridian imports from the umbrella package and its

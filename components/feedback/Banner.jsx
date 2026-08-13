@@ -11,7 +11,7 @@ const CSS = `
 .ef-banner__icon{display:inline-flex;flex:none}
 .ef-banner__text{flex:1;min-width:0}
 .ef-banner__text strong{font-weight:var(--weight-semibold)}
-.ef-banner__action{flex:none;font-weight:var(--weight-semibold);font-size:var(--text-sm);color:inherit;text-decoration:underline;text-underline-offset:3px;background:none;border:none;cursor:pointer;font-family:var(--font-sans);padding:0}
+.ef-banner__action{flex:none;display:inline-flex;min-height:24px;align-items:center;font-weight:var(--weight-semibold);font-size:var(--text-sm);color:inherit;text-decoration:underline;text-underline-offset:3px;background:none;border:none;cursor:pointer;font-family:var(--font-sans);padding:4px 0}
 `;
 export function Banner({ tone = 'neutral', icon, action, onDismiss, children, style, className, ...rest }) {
   injectEfCss('ef-css-banner', CSS);

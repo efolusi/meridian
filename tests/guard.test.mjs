@@ -63,6 +63,11 @@ describe('Meridian Guard rules', () => {
     expect(rules('const cardCss = `.card { color: #fff; }`; export const issue = cardCss;')).toEqual(['MDG003']);
   });
 
+  it('rejects undefined Meridian radius tokens in authored styles', () => {
+    expect(rules('const cardCss = `.card { border-radius: var(--radius-xs); }`; export const card = cardCss;')).toEqual(['MDG006']);
+    expect(rules('const cardCss = `.card { border-radius: var(--radius-sm); }`; export const card = cardCss;')).toEqual([]);
+  });
+
   it('ships no deprecated prop contracts in the stable surface', () => {
     expect(contracts.deprecated).toEqual([]);
   });

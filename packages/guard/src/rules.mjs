@@ -29,4 +29,9 @@ export const RULES = Object.freeze({
     severity: 'error',
     description: 'Meridian accessibility contract is incomplete.',
   },
+  unknownToken: {
+    id: 'MDG006',
+    severity: 'error',
+    description: 'Referenced Meridian design token does not exist.',
+  },
 });

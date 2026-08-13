@@ -5,7 +5,7 @@ const CSS = `
 .ef-code{background:var(--surface-code);border:1px solid var(--border-code);border-radius:var(--radius-md);overflow:hidden}
 .ef-code__head{display:flex;align-items:center;padding:7px 8px 7px 14px;border-bottom:1px solid var(--code-divider)}
 .ef-code__lang{font-family:var(--font-mono);font-size:11px;color:var(--code-ink-subtle)}
-.ef-code__copy{margin-inline-start:auto;display:inline-flex;align-items:center;gap:5px;border:none;background:none;cursor:pointer;color:var(--code-ink-muted);font-family:var(--font-sans);font-size:12px;font-weight:var(--weight-semibold);padding:4px 8px;border-radius:var(--radius-sm);transition:color var(--dur-fast) var(--ease-out)}
+.ef-code__copy{margin-inline-start:auto;display:inline-flex;min-height:24px;align-items:center;gap:5px;border:none;background:none;cursor:pointer;color:var(--code-ink-muted);font-family:var(--font-sans);font-size:12px;font-weight:var(--weight-semibold);padding:4px 8px;border-radius:var(--radius-sm);transition:color var(--dur-fast) var(--ease-out)}
 .ef-code__copy:hover{color:var(--code-ink-bright)}
 .ef-code__copy--done{color:var(--success-on-dark)}
 .ef-code pre{margin:0;padding:14px 16px;overflow-x:auto;font-family:var(--font-mono);font-size:13px;line-height:1.6;color:var(--text-code)}
