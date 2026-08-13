@@ -12,8 +12,8 @@ describe('Input Group compatibility contract', () => {
     const changed=vi.fn(); render(<InputGroup><InputGroupTextarea aria-label="Message" onChange={changed}/><InputGroupAddon align="block-end">Footer</InputGroupAddon></InputGroup>);
     fireEvent.change(screen.getByLabelText('Message'), {target:{value:'Hello'}}); expect(changed).toHaveBeenCalledOnce(); expect(screen.getByText('Footer').getAttribute('data-align')).toBe('block-end');
   });
-  it('forwards refs and preserves the shorthand adapter', () => {
-    const ref=React.createRef(); render(<InputGroup ref={ref} label="Site" prefix="https://" suffix=".test" defaultValue="acme" hint="Public URL" />);
-    expect(ref.current instanceof HTMLLabelElement).toBe(true); expect(screen.getByDisplayValue('acme')).toBeTruthy(); expect(screen.getByText('https://')).toBeTruthy(); expect(screen.getByText('.test')).toBeTruthy();
+  it('forwards its root ref and native attributes', () => {
+    const ref=React.createRef(); render(<InputGroup ref={ref} aria-label="Site" data-surface="url"><InputGroupInput defaultValue="acme" /></InputGroup>);
+    expect(ref.current instanceof HTMLDivElement).toBe(true); expect(ref.current.dataset.surface).toBe('url'); expect(screen.getByDisplayValue('acme')).toBeTruthy();
   });
 });

@@ -70,10 +70,10 @@ describe('Toggle Group composition compatibility', () => {
     expect(screen.getByRole('button', { name: 'Grid' }).className).toContain('ef-toggle--sm');
   });
 
-  it('supports multiple values with canonical value changes and Toggle children', async () => {
+  it('supports multiple values with canonical group items', async () => {
     const user = userEvent.setup();
     const onValueChange = vi.fn();
-    render(<ToggleGroup type="multiple" defaultValue={['bold']} onValueChange={onValueChange}><Toggle value="bold">Bold</Toggle><ToggleGroupItem value="italic">Italic</ToggleGroupItem></ToggleGroup>);
+    render(<ToggleGroup type="multiple" defaultValue={['bold']} onValueChange={onValueChange}><ToggleGroupItem value="bold">Bold</ToggleGroupItem><ToggleGroupItem value="italic">Italic</ToggleGroupItem></ToggleGroup>);
     expect(screen.getByRole('button', { name: 'Bold' }).getAttribute('aria-pressed')).toBe('true');
     await user.click(screen.getByRole('button', { name: 'Italic' }));
     expect(onValueChange).toHaveBeenCalledWith(['bold', 'italic']);

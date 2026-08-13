@@ -4,4 +4,4 @@ Compose `InputGroup`, `InputGroupInput` or `InputGroupTextarea`, `InputGroupAddo
 
 `<InputGroup><InputGroupInput placeholder="Search…" /><InputGroupAddon align="inline-end"><InputGroupText>12 results</InputGroupText></InputGroupAddon></InputGroup>`
 
-The prior label/prefix/suffix shorthand remains supported. Use plain Input when there are no addons.
+Compose labels, descriptions, and validation messages with the `Field` family. Use plain `Input` when there are no addons.

@@ -11,15 +11,11 @@ input.ef-input-group__control{height:34px;padding:0 11px}textarea.ef-input-group
 .ef-input-group__addon[data-align="block-start"],.ef-input-group__addon[data-align="block-end"]{width:100%;min-height:34px}.ef-input-group__addon[data-align="block-start"]{order:-1;border-block-end:1px solid var(--border-default)}.ef-input-group__addon[data-align="block-end"]{order:3;border-block-start:1px solid var(--border-default)}
 .ef-input-group__button{display:inline-flex;height:26px;align-items:center;justify-content:center;gap:5px;padding:0 8px;border:0;border-radius:var(--radius-xs);background:transparent;color:var(--text-secondary);font:inherit;font-size:var(--text-xs);cursor:pointer}.ef-input-group__button:hover{background:var(--surface-sunken);color:var(--text-primary)}.ef-input-group__button:focus-visible{outline:none;box-shadow:var(--focus-ring)}
 .ef-input-group__button[data-size^="icon"]{width:26px;padding:0}.ef-input-group__text{font-size:var(--text-sm);color:var(--text-muted)}
-.ef-input-group-legacy{display:flex;flex-direction:column;gap:6px;width:100%}.ef-input-group-legacy__label{font-size:var(--text-sm);font-weight:600}.ef-input-group-legacy__note{font-size:var(--text-xs);color:var(--text-muted)}.ef-input-group-legacy__note[data-error="true"]{color:var(--danger-600)}
 `;
 function cx(base, className) { return base + (className ? ` ${className}` : ''); }
-export const InputGroup = React.forwardRef(function InputGroup({ label, hint, error, prefix, suffix, size = 'md', className, children, ...rest }, ref) {
+export const InputGroup = React.forwardRef(function InputGroup({ className, ...rest }, ref) {
   injectEfCss('ef-css-input-group', CSS);
-  const legacy = label !== undefined || hint !== undefined || error !== undefined || prefix !== undefined || suffix !== undefined || rest.placeholder !== undefined || rest.value !== undefined || rest.defaultValue !== undefined;
-  if (!legacy) return <div {...rest} ref={ref} data-slot="input-group" role="group" className={cx('ef-input-group', className)}>{children}</div>;
-  const inputProps = { ...rest }; const field = useFieldProps({ error, id: inputProps.id, 'aria-describedby': inputProps['aria-describedby'] });
-  return <label ref={ref} className={cx('ef-input-group-legacy', className)}>{label ? <span className="ef-input-group-legacy__label">{label}</span> : null}<div data-slot="input-group" role="group" className="ef-input-group">{prefix != null ? <InputGroupAddon align="inline-start"><InputGroupText>{prefix}</InputGroupText></InputGroupAddon> : null}<InputGroupInput {...inputProps} {...field.controlProps} aria-invalid={field.invalid || undefined} />{suffix != null ? <InputGroupAddon align="inline-end"><InputGroupText>{suffix}</InputGroupText></InputGroupAddon> : null}</div>{error ? <span className="ef-input-group-legacy__note" data-error="true">{error}</span> : hint ? <span className="ef-input-group-legacy__note">{hint}</span> : null}</label>;
+  return <div {...rest} ref={ref} data-slot="input-group" role="group" className={cx('ef-input-group', className)} />;
 });
 export const InputGroupAddon = React.forwardRef(function InputGroupAddon({ align = 'inline-start', className, ...rest }, ref) {
   const valid = ['inline-start','inline-end','block-start','block-end'].includes(align) ? align : 'inline-start';

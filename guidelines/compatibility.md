@@ -180,8 +180,8 @@ similarity.
 - `InputGroup`, `InputGroupAddon`, `InputGroupButton`, `InputGroupInput`,
   `InputGroupTextarea`, and `InputGroupText` support inline and block addons,
   unified focus and invalid states, native props, refs, types, registry
-  installation, demos, and tests. Meridian's label/prefix/suffix shorthand
-  remains an additive adapter.
+  installation, demos, and tests. Labels, descriptions, and errors compose
+  through the `Field` family; the root is composition-only.
 
 - `Table` and its header, body, footer, row, head, cell, and caption parts
   provide semantic table composition, scroll containment, native props, refs,
@@ -214,8 +214,8 @@ similarity.
 - `ToggleGroup` and `ToggleGroupItem` support single and multiple selection,
   controlled and uncontrolled values, inherited variant and size, configurable
   spacing, horizontal and vertical orientation, RTL-aware keyboard movement,
-  disabled state, refs, types, registry installation, demos, and tests.
-  Meridian's `onChange` callback and direct `Toggle` children remain adapters.
+  disabled state, refs, types, registry installation, demos, and tests. Grouped
+  controls compose exclusively through `ToggleGroupItem`.
 
 - `RadioGroup` and `RadioGroupItem` support controlled and uncontrolled state,
   native named grouping, required and disabled propagation, horizontal and

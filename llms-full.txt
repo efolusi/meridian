@@ -3242,11 +3242,10 @@ Compose `InputGroup`, `InputGroupInput` or `InputGroupTextarea`, `InputGroupAddo
 
 `<InputGroup><InputGroupInput placeholder="Search…" /><InputGroupAddon align="inline-end"><InputGroupText>12 results</InputGroupText></InputGroupAddon></InputGroup>`
 
-The prior label/prefix/suffix shorthand remains supported. Use plain Input when there are no addons.
+Compose labels, descriptions, and validation messages with the `Field` family. Use plain `Input` when there are no addons.
 
 ```ts
-export interface InputGroupProps extends Omit<React.InputHTMLAttributes<HTMLInputElement>, 'prefix'|'size'> { label?: React.ReactNode; hint?: React.ReactNode; error?: React.ReactNode; prefix?: React.ReactNode; suffix?: React.ReactNode; size?: 'sm'|'md'|'lg'; }
-export declare const InputGroup: React.ForwardRefExoticComponent<InputGroupProps & React.RefAttributes<HTMLElement>>;
+export declare const InputGroup: React.ForwardRefExoticComponent<React.HTMLAttributes<HTMLDivElement> & React.RefAttributes<HTMLDivElement>>;
 export interface InputGroupAddonProps extends React.HTMLAttributes<HTMLDivElement> { align?: 'inline-start'|'inline-end'|'block-start'|'block-end'; }
 export declare const InputGroupAddon: React.ForwardRefExoticComponent<InputGroupAddonProps & React.RefAttributes<HTMLDivElement>>;
 export interface InputGroupButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> { size?: 'xs'|'icon-xs'|'sm'|'icon-sm'; variant?: 'default'|'destructive'|'outline'|'secondary'|'ghost'|'link'; }
@@ -3594,9 +3593,9 @@ A two-state button with default and outline variants and `default`, `sm`, and `l
 <Toggle variant="outline" size="sm">Italic</Toggle>
 ```
 
-`toggleVariants` returns class names for custom compositions. Meridian's icon-name helper,
-legacy `md` size, and direct Toggle children remain additive. Compose grouped controls with
-`ToggleGroup` and `ToggleGroupItem`; use Tabs for navigation and Switch for saved settings.
+`toggleVariants` returns class names for custom compositions. Place `Icon` explicitly inside
+the button when needed. Compose grouped controls exclusively with `ToggleGroup` and
+`ToggleGroupItem`; use Tabs for navigation and Switch for saved settings.
 
 ```ts
 export interface ToggleProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
@@ -3607,11 +3606,7 @@ export interface ToggleProps extends React.ButtonHTMLAttributes<HTMLButtonElemen
   /** @default 'default' */
   variant?: 'default' | 'outline';
   /** @default 'default' */
-  size?: 'default' | 'sm' | 'lg' | 'md';
-  /** Identity when used inside Meridian's legacy ToggleGroup. */
-  value?: string;
-  /** Additive Meridian icon-name helper. */
-  icon?: string;
+  size?: 'default' | 'sm' | 'lg';
 }
 export interface ToggleGroupProps extends React.HTMLAttributes<HTMLDivElement> {
   /** @default 'single' */
@@ -3620,7 +3615,7 @@ export interface ToggleGroupProps extends React.HTMLAttributes<HTMLDivElement> {
   defaultValue?: string | string[] | null;
   onValueChange?: (value: string | string[] | null) => void;
   variant?: 'default' | 'outline';
-  size?: 'default' | 'sm' | 'lg' | 'md';
+  size?: 'default' | 'sm' | 'lg';
   /** Gap in 4px units. @default 2 */
   spacing?: number;
   orientation?: 'horizontal' | 'vertical';

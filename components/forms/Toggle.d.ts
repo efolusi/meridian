@@ -6,11 +6,7 @@ export interface ToggleProps extends React.ButtonHTMLAttributes<HTMLButtonElemen
   /** @default 'default' */
   variant?: 'default' | 'outline';
   /** @default 'default' */
-  size?: 'default' | 'sm' | 'lg' | 'md';
-  /** Identity when used inside Meridian's legacy ToggleGroup. */
-  value?: string;
-  /** Additive Meridian icon-name helper. */
-  icon?: string;
+  size?: 'default' | 'sm' | 'lg';
 }
 export interface ToggleGroupProps extends React.HTMLAttributes<HTMLDivElement> {
   /** @default 'single' */
@@ -19,7 +15,7 @@ export interface ToggleGroupProps extends React.HTMLAttributes<HTMLDivElement> {
   defaultValue?: string | string[] | null;
   onValueChange?: (value: string | string[] | null) => void;
   variant?: 'default' | 'outline';
-  size?: 'default' | 'sm' | 'lg' | 'md';
+  size?: 'default' | 'sm' | 'lg';
   /** Gap in 4px units. @default 2 */
   spacing?: number;
   orientation?: 'horizontal' | 'vertical';

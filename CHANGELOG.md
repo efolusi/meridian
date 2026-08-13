@@ -2,6 +2,8 @@
 
 ## Unreleased
 
+- **InputGroup and Toggle families are composition-only.** InputGroup's label/prefix/suffix/hint renderer was removed in favor of explicit `Field` and `InputGroup*` parts. Toggle's icon-name helper, `md` size alias, and implicit participation as a direct `ToggleGroup` child were removed; grouped controls now use `ToggleGroupItem` exclusively.
+
 - **Empty and Breadcrumb are composition-only.** The `EmptyState` prop renderer and array-based `Breadcrumbs` export were removed; maintained blocks, cards, showcases, starters, prompts, patterns, tests, manifests, and Guard rules now use the canonical part families directly.
 - **Alert is composition-only and includes the current action part.** `AlertAction` now ships beside `AlertTitle` and `AlertDescription`; the parallel `tone`, `icon`, `title`, `description`, and `action` shorthand renderer was removed, and maintained consumers now compose explicit children with canonical variants or custom status classes.
 - **Tooltip is composition-only.** The parallel `label`, root `side`, and `delay` shorthand renderer was removed; maintained consumers now compose `TooltipTrigger` and `TooltipContent`, while canonical root/provider delay and hoverability options remain available.

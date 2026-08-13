@@ -86,10 +86,9 @@ describe('Toggle compatibility contract', () => {
     expect(pressedChange).toHaveBeenCalledWith(false);
   });
 
-  it('exports the style helper and preserves the legacy md size', () => {
+  it('exports the style helper for canonical variants and sizes', () => {
     expect(toggleVariants()).toBe('ef-toggle ef-toggle--default ef-toggle--default');
     expect(toggleVariants({ variant: 'outline', size: 'lg', className: 'custom' }))
       .toBe('ef-toggle ef-toggle--outline ef-toggle--lg custom');
-    expect(toggleVariants({ size: 'md' })).toContain('ef-toggle--md');
   });
 });

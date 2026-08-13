@@ -8,7 +8,7 @@
 </head><body style="background:var(--surface-page)">
 <div id="root"></div>
 <script type="text/babel">
-const { Button, Input, InputGroup, NativeSelect, NativeSelectOption, Switch, Divider, Card, CardContent, CardDescription, CardHeader, CardTitle, Tabs } = window.EfolusiDesignSystem_4ffc3d;
+const { Button, Input, InputGroup, InputGroupAddon, InputGroupInput, InputGroupText, NativeSelect, NativeSelectOption, Switch, Divider, Card, CardContent, CardDescription, CardHeader, CardTitle, Tabs } = window.EfolusiDesignSystem_4ffc3d;
 function Row({ title, desc, children }) {
   return (
     <div className="bk-row" style={{ display: 'grid', gridTemplateColumns: '260px 1fr', gap: 28, padding: '22px 0', borderBottom: '1px solid var(--border-default)', alignItems: 'start' }}>
@@ -35,7 +35,7 @@ function Block() {
         <Input defaultValue="Acme Ops" />
       </Row>
       <Row title="Workspace URL" desc="Changing this breaks existing links.">
-        <InputGroup prefix="https://" suffix=".efolusi.com" defaultValue="acme" />
+        <InputGroup><InputGroupInput aria-label="Workspace URL" defaultValue="acme" /><InputGroupAddon><InputGroupText>https://</InputGroupText></InputGroupAddon><InputGroupAddon align="inline-end"><InputGroupText>.efolusi.com</InputGroupText></InputGroupAddon></InputGroup>
       </Row>
       <Row title="Default region" desc="Where new agents run and data lives.">
         <NativeSelect defaultValue="eu-west-1" aria-label="Default region">{['us-east-1', 'eu-west-1', 'ap-southeast-1'].map(value => <NativeSelectOption key={value} value={value}>{value}</NativeSelectOption>)}</NativeSelect>

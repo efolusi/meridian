@@ -1,6 +1,5 @@
 import React from 'react';
 import { injectEfCss } from './Button.jsx';
-import { Icon } from '../icons/Icon.jsx';
 
 const CSS = `
 .ef-toggle{display:inline-flex;align-items:center;justify-content:center;gap:7px;min-width:36px;height:36px;padding:0 10px;border:1px solid transparent;border-radius:var(--radius-sm);background:transparent;cursor:pointer;font-family:var(--font-sans);font-size:var(--text-sm);font-weight:500;color:var(--text-secondary);transition:background var(--dur-fast) var(--ease-out),border-color var(--dur-fast) var(--ease-out),color var(--dur-fast) var(--ease-out)}
@@ -11,7 +10,6 @@ const CSS = `
 .ef-toggle--outline{border-color:var(--border-strong)}
 .ef-toggle--sm{height:32px;min-width:32px;padding:0 8px;font-size:var(--text-xs)}
 .ef-toggle--lg{height:40px;min-width:40px;padding:0 16px;font-size:var(--text-md)}
-.ef-toggle--md{height:32px;min-width:32px}
 .ef-toggle-group{display:inline-flex;gap:var(--ef-toggle-gap,8px);align-items:center}
 .ef-toggle-group[data-orientation="vertical"]{flex-direction:column;align-items:stretch}
 `;
@@ -30,18 +28,19 @@ export const Toggle = React.forwardRef(function Toggle(
     onPressedChange,
     onClick,
     value,
-    icon,
     variant = 'default',
     size = 'default',
     disabled,
     children,
     className,
+    _groupItem = false,
     ...rest
   },
   ref,
 ) {
   injectEfCss('ef-css-toggle', CSS);
-  const context = React.useContext(GroupCtx);
+  const groupContext = React.useContext(GroupCtx);
+  const context = _groupItem ? groupContext : null;
   const [uncontrolled, setUncontrolled] = React.useState(!!defaultPressed);
   const isOn = context ? context.isOn(value) : (pressed !== undefined ? pressed : uncontrolled);
   const press = (event) => {
@@ -55,7 +54,6 @@ export const Toggle = React.forwardRef(function Toggle(
   };
   const actualVariant = context?.variant ?? variant;
   const actualSize = context?.size ?? size;
-  const iconSize = actualSize === 'sm' ? 14 : actualSize === 'lg' ? 18 : 16;
 
   return (
     <button
@@ -69,7 +67,6 @@ export const Toggle = React.forwardRef(function Toggle(
       onClick={press}
       className={`${toggleVariants({ variant: actualVariant, size: actualSize, className })}${isOn ? ' ef-toggle--on' : ''}`}
     >
-      {icon ? <Icon name={icon} size={iconSize} /> : null}
       {children}
     </button>
   );
@@ -114,5 +111,5 @@ export const ToggleGroup = React.forwardRef(function ToggleGroup({ type = 'singl
 });
 
 export const ToggleGroupItem = React.forwardRef(function ToggleGroupItem(props, ref) {
-  return <Toggle {...props} ref={ref} data-slot="toggle-group-item" />;
+  return <Toggle {...props} ref={ref} _groupItem data-slot="toggle-group-item" />;
 });

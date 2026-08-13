@@ -1,5 +1,4 @@
-export interface InputGroupProps extends Omit<React.InputHTMLAttributes<HTMLInputElement>, 'prefix'|'size'> { label?: React.ReactNode; hint?: React.ReactNode; error?: React.ReactNode; prefix?: React.ReactNode; suffix?: React.ReactNode; size?: 'sm'|'md'|'lg'; }
-export declare const InputGroup: React.ForwardRefExoticComponent<InputGroupProps & React.RefAttributes<HTMLElement>>;
+export declare const InputGroup: React.ForwardRefExoticComponent<React.HTMLAttributes<HTMLDivElement> & React.RefAttributes<HTMLDivElement>>;
 export interface InputGroupAddonProps extends React.HTMLAttributes<HTMLDivElement> { align?: 'inline-start'|'inline-end'|'block-start'|'block-end'; }
 export declare const InputGroupAddon: React.ForwardRefExoticComponent<InputGroupAddonProps & React.RefAttributes<HTMLDivElement>>;
 export interface InputGroupButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> { size?: 'xs'|'icon-xs'|'sm'|'icon-sm'; variant?: 'default'|'destructive'|'outline'|'secondary'|'ghost'|'link'; }
