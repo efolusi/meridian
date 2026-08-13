@@ -1,6 +1,6 @@
 {
   "name": "@efolusi/meridian-icons",
-  "version": "1.21.2",
+  "version": "1.21.3",
   "private": true,
   "description": "Workspace source for Meridian icons.",
   "type": "module",

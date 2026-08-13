@@ -2,7 +2,10 @@
 
 ## Unreleased
 
+## 1.21.3 — 2026-08-14
+
 - **Meridian Guard is public.** Install `@efolusi/meridian-guard` as a development dependency to check authored applications against Meridian's generated component, token, icon, and deprecation contract.
+- **Guard fails closed on empty scans.** A missing or misconfigured CI target now exits with a runtime error instead of reporting a false pass; intentional empty targets can opt in with `--allow-empty`. The public guide now covers Node requirements, project scripts, CI, output formats, exit codes, the programmatic API, limitations, and troubleshooting.
 
 ## 1.21.2 — 2026-08-14
 

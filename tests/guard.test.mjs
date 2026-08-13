@@ -141,4 +141,19 @@ describe('Meridian Guard scanning and reporting', () => {
     expect(invalid.status).toBe(1);
     expect(invalid.stdout).toContain('error MDG002');
   });
+
+  it('fails closed when a CLI target contains no supported source files', async () => {
+    const directory = await fs.mkdtemp(path.join(os.tmpdir(), 'meridian-guard-empty-'));
+    temporaryDirectories.push(directory);
+    await fs.writeFile(path.join(directory, 'README.md'), '# No authored source here\n');
+    const binary = path.resolve('packages/guard/bin/meridian-guard.js');
+
+    const empty = spawnSync(process.execPath, [binary, directory], { encoding: 'utf8' });
+    expect(empty.status).toBe(2);
+    expect(empty.stderr).toContain('no supported JavaScript or TypeScript source files found');
+
+    const allowed = spawnSync(process.execPath, [binary, directory, '--allow-empty', '--format', 'json'], { encoding: 'utf8' });
+    expect(allowed.status).toBe(0);
+    expect(JSON.parse(allowed.stdout)).toMatchObject({ filesScanned: 0, errors: 0, warnings: 0 });
+  });
 });

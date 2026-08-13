@@ -58,6 +58,19 @@ Dark mode and compact density are attribute scopes, not rebuilds:
 | **Vendor the folder** | you want to own and edit the source | copy the repo; link `styles.css` and `_ds_bundle.js` |
 | **Vendor one component** | you need Button, not 109 | copy `components/<group>/<Name>.jsx` + `.d.ts` — MIT, no attribution required |
 
+### Meridian Guard
+
+Guard checks authored React code against Meridian's generated component, icon,
+token, deprecation, and accessibility contracts:
+
+```bash
+npm install --save-dev @efolusi/meridian-guard
+npx meridian-guard src
+```
+
+See the [Guard guide](packages/guard/README.md) for CI, JSON output, exit codes,
+the programmatic API, and current static-analysis boundaries.
+
 ### npm
 
 ```bash
