@@ -28,6 +28,12 @@ for (const group of groups) {
     seen.add(item.name)
     if (!exports.has(item.name)) errors.push(`${item.name}: not exported by _ds_manifest.json`)
     if (!demoNames.has(item.name)) errors.push(`${item.name}: missing matching // @demo marker`)
+    if (/…$|\.\.\.$/.test(item.desc || '')) errors.push(`${item.name}: description is visibly truncated`)
+    const propNames = new Set()
+    for (const prop of item.props || []) {
+      if (propNames.has(prop.n)) errors.push(`${item.name}: duplicate documented prop ${prop.n}`)
+      propNames.add(prop.n)
+    }
   }
 }
 

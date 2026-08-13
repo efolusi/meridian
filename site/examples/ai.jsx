@@ -421,7 +421,7 @@ export function RichComposerDemo() {
   const { RichComposer } = window.EfolusiDesignSystem_4ffc3d;
   const [sent, setSent] = React.useState(null);
   return (
-    <div style={{ display: 'flex', flexDirection: 'column', gap: 10, width: '100%', maxWidth: 560 }}>
+    <div style={{ display: 'flex', flexDirection: 'column', gap: 10, width: '100%', maxWidth: 560, paddingBlockStart: 150 }}>
       <RichComposer hint="@ files · / commands" onSubmit={setSent} onCommand={() => {}} mentions={[
         { id: 'f1', label: 'gateway.md', icon: 'file-text', group: 'Files' },
         { id: 'f2', label: 'retry.ts', icon: 'code', group: 'Files' },

@@ -2,8 +2,13 @@ import React from 'react';
 import { describe, expect, it } from 'vitest';
 import { render, screen } from '@testing-library/react';
 import { Alert, AlertAction, AlertDescription, AlertTitle } from '../components/feedback/Alert.jsx';
+import { Icon } from '../components/icons/Icon.jsx';
 
 describe('Alert compatibility contract', () => {
+  it('recognizes the Icon wrapper as the icon column', () => {
+    render(<Alert data-testid="alert"><Icon name="info" /><AlertTitle>Heads up</AlertTitle><AlertDescription>Read this.</AlertDescription></Alert>);
+    expect(screen.getByTestId('alert').querySelector('[data-slot="icon"]')).not.toBeNull();
+  });
   it('renders the composable default variant with alert semantics', () => {
     render(
       <Alert>

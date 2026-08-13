@@ -3,9 +3,9 @@ import { injectEfCss } from '../forms/Button.jsx';
 
 const CSS = `
 .ef-alert{position:relative;display:grid;grid-template-columns:0 1fr;align-items:start;gap:2px 10px;width:100%;padding:12px 14px;border:1px solid var(--border-strong);border-radius:var(--radius-md);background:var(--surface-card);color:var(--text-primary)}
-.ef-alert:has(>svg){grid-template-columns:auto 1fr}
+.ef-alert:has(>[data-slot=icon]){grid-template-columns:auto 1fr}
 .ef-alert:has(>.ef-alert__action){padding-inline-end:96px}
-.ef-alert>svg{grid-column:1;grid-row:1/3;margin-top:2px;color:currentColor}
+.ef-alert>[data-slot=icon]{grid-column:1;grid-row:1/3;margin-top:2px;color:currentColor}
 .ef-alert>.ef-alert__title,.ef-alert>.ef-alert__description{grid-column:2}
 .ef-alert--success{border-color:var(--success-300);color:var(--success-600)}
 .ef-alert--warning{border-color:var(--warning-300);color:var(--warning-600)}

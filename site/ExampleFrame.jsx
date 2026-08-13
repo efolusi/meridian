@@ -2,7 +2,7 @@ const R = React;
 const NS = 'EfolusiDesignSystem_4ffc3d';
 const srcCache = {};
 function fetchSrc(file) {
-  if (!srcCache[file]) srcCache[file] = fetch(file).then(r => { if (!r.ok) throw new Error('Could not load ' + file); return r.text(); });
+  if (!srcCache[file]) srcCache[file] = fetch(file, { cache: 'no-store' }).then(r => { if (!r.ok) throw new Error('Could not load ' + file); return r.text(); });
   return srcCache[file];
 }
 function waitBabel() {

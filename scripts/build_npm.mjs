@@ -139,6 +139,7 @@ export function Icon({ name, size = 16, strokeWidth = 1.5, title, className, sty
     : '';
   return React.createElement('span', {
     ...rest,
+    'data-slot': 'icon',
     'aria-hidden': title ? undefined : true,
     'aria-label': title,
     role: title ? 'img' : undefined,

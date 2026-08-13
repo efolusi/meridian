@@ -279,6 +279,25 @@ class Component extends DCLogic {
         p('Open an issue describing the gap, agree on the API in the thread, then submit the three files plus a specimen entry. Versioning and release policy live in guidelines/governance.md; the full contribution guide is CONTRIBUTING.md at the repo root.', 'Buka issue yang menjelaskan celahnya, sepakati API di thread, lalu kirim ketiga berkas plus entri spesimen. Kebijakan versioning dan rilis ada di guidelines/governance.md; panduan kontribusi lengkap ada di CONTRIBUTING.md di root repo.'),
       ] },
       { group: 'Reference', id: 'changelog', title: 'Changelog', lede: 'Notable changes, newest first. Full history in CHANGELOG.md.', blocks: [
+        h2('unreleased', 'Unreleased', 'Belum dirilis'),
+        list([
+          ['Current contracts.', '— Diff now derives every review from from/to strings; Questionnaire covers the complete compositional multi-step flow; Toast uses one imperative manager contract.', 'Kontrak terkini.', '— Diff kini menyusun setiap review dari string from/to; Questionnaire mencakup alur multi-langkah composable lengkap; Toast memakai satu kontrak manager imperatif.'],
+          ['Generated facts.', '— component docs, interfaces, public counts, adherence metadata, and Guard rules regenerate from the authored sources.', 'Fakta hasil generate.', '— docs komponen, interface, hitungan publik, metadata adherence, dan aturan Guard di-generate ulang dari source yang ditulis.'],
+        ]),
+        h2('v1211', '1.21.1 — August 2026', '1.21.1 — Agustus 2026'),
+        list([
+          ['Dialog semantics.', '— DialogTitle renders as a semantic level-two heading while keeping its visual and accessible-name wiring.', 'Semantik dialog.', '— DialogTitle dirender sebagai heading tingkat dua yang semantik sambil mempertahankan tampilan dan wiring nama aksesibelnya.'],
+        ]),
+        h2('v1210', '1.21.0 — August 2026', '1.21.0 — Agustus 2026'),
+        list([
+          ['One canonical composition surface.', '— Alert, Tooltip, Avatar, Card, Empty, Breadcrumb, Pagination, Slider, Skeleton, Spinner, Accordion, Collapsible, Dialog, Popover, InputGroup, and Toggle retired parallel shorthand renderers.', 'Satu permukaan komposisi kanonis.', '— Alert, Tooltip, Avatar, Card, Empty, Breadcrumb, Pagination, Slider, Skeleton, Spinner, Accordion, Collapsible, Dialog, Popover, InputGroup, dan Toggle menghentikan renderer shorthand paralel.'],
+          ['Current compatibility.', '— Chart uses the Recharts 3 composition contract, Toast is the sole notification family, and all 64 tracked compatibility families carry executable evidence.', 'Kompatibilitas terkini.', '— Chart memakai kontrak komposisi Recharts 3, Toast menjadi satu-satunya keluarga notifikasi, dan seluruh 64 keluarga kompatibilitas memiliki bukti executable.'],
+        ]),
+        h2('v1200', '1.20.0 — August 2026', '1.20.0 — Agustus 2026'),
+        list([
+          ['Stable migration surface.', '— complete Sidebar, Message, MessageScroller, and imperative Toast families joined the accessible catalogue.', 'Permukaan migrasi stabil.', '— keluarga Sidebar, Message, MessageScroller, dan Toast imperatif lengkap bergabung ke katalog aksesibel.'],
+          ['Meridian Guard.', '— the workspace package validates exports, tokens, icons, deprecated usage, and authored consumer code against a generated rule pack.', 'Meridian Guard.', '— paket workspace memvalidasi export, token, ikon, penggunaan deprecated, dan kode konsumen terhadap rule pack hasil generate.'],
+        ]),
         h2('v160', '1.6.0 — July 2026', '1.6.0 — Juli 2026'),
         list([
           ['Static CSS for npm.', '— every component CSS literal ships in components.css, imported by the package stylesheet: server-rendered HTML is styled before hydration and the modules stop injecting at runtime. The CDN bundle is unchanged.', 'CSS statis untuk npm.', '— setiap literal CSS komponen dikirim di components.css, diimpor oleh stylesheet paket: HTML hasil render server bergaya sebelum hydration dan modul berhenti menyuntikkan gaya saat runtime. Bundle CDN tak berubah.'],

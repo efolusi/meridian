@@ -2,7 +2,7 @@ const R = React;
 const NS = 'EfolusiDesignSystem_4ffc3d';
 const srcCache2 = {};
 function fetchBlockSrc(file) {
-  if (!srcCache2[file]) srcCache2[file] = fetch(file).then(r => { if (!r.ok) throw new Error('Could not load ' + file); return r.text(); });
+  if (!srcCache2[file]) srcCache2[file] = fetch(file, { cache: 'no-store' }).then(r => { if (!r.ok) throw new Error('Could not load ' + file); return r.text(); });
   return srcCache2[file];
 }
 const WIDTHS = [

@@ -16,7 +16,7 @@
   // group is smoke-tested automatically instead of being silently skipped.
   let FILES;
   try {
-    const rt = await (await fetch('./registry.js')).text();
+    const rt = await (await fetch('./registry.js', { cache: 'no-store' })).text();
     const groups = JSON.parse(rt.slice(rt.indexOf('GROUPS = ') + 9, rt.lastIndexOf(';')));
     FILES = [...new Set(groups.map(g => g.id)), 'charts'];
   } catch (e) {
@@ -25,7 +25,7 @@
   const fails = [], all = [];
   for (const f of FILES) {
     let src = '';
-    try { src = await (await fetch('./examples/' + f + '.jsx')).text(); } catch (e) { fails.push(f + '.jsx: fetch failed'); continue; }
+    try { src = await (await fetch('./examples/' + f + '.jsx', { cache: 'no-store' })).text(); } catch (e) { fails.push(f + '.jsx: fetch failed'); continue; }
     const chunks = src.split('// @demo ').slice(1);
     for (const c of chunks) {
       const m = c.match(/export function (\w+)/);

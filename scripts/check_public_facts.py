@@ -34,6 +34,7 @@ checks = [
     (ROOT / "site/Docs.dc.html", f"{facts['components']} accessible components", "docs SEO count"),
     (ROOT / "site/DsSite.dc.html", f"{facts['components']} accessible React components", "homepage SEO count"),
     (ROOT / "site/DsSite.dc.html", f'"softwareVersion":"{facts["version"]}"', "JSON-LD version"),
+    (ROOT / "site/Docs.dc.html", f"{facts['version']} —", "docs changelog version"),
     (ROOT / "CITATION.cff", f"version: {facts['version']}", "citation version"),
 ]
 

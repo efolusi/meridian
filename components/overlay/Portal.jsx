@@ -4,7 +4,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { injectEfCss, useIsoLayoutEffect } from '../forms/Button.jsx';
 const CSS = `
-.ef-portal{position:fixed;top:0;left:0;width:0;height:0}
+.ef-portal{display:contents}
 `;
 
 /**
