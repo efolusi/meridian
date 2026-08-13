@@ -3014,37 +3014,6 @@
       ]
     },
     {
-      "name": "radio",
-      "type": "registry:ui",
-      "title": "RadioGroup + RadioGroupItem + Radio (legacy registry alias)",
-      "description": "Compose mutually exclusive choices with `RadioGroup` and `RadioGroupItem`.",
-      "dependencies": [
-        "react"
-      ],
-      "registryDependencies": [
-        "https://meridian.efolusi.com/site/registry/meridian-base.json",
-        "https://meridian.efolusi.com/site/registry/button.json",
-        "https://meridian.efolusi.com/site/registry/field.json"
-      ],
-      "files": [
-        {
-          "path": "components/forms/Radio.jsx",
-          "type": "registry:ui"
-        },
-        {
-          "path": "components/forms/Radio.d.ts",
-          "type": "registry:component"
-        },
-        {
-          "path": "components/forms/Radio.prompt.md",
-          "type": "registry:component"
-        }
-      ],
-      "categories": [
-        "forms"
-      ]
-    },
-    {
       "name": "select",
       "type": "registry:ui",
       "title": "Select + SelectTrigger + SelectValue + SelectContent + SelectGroup + SelectLabel + SelectSeparator + SelectItem",

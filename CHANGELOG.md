@@ -4,6 +4,7 @@
 
 - **Diff is string-source only.** The precomputed `lines` adapter was removed; single and multi-file reviews now consistently derive rows, counts, context, and word marks from `from` and `to`.
 - **Repository facts and boundaries were tightened.** The built-in design skill now reflects the current icon and starter inventories, and consumer-specific audit detail no longer lives in the independent design-system repository.
+- **The final shadow and registry aliases were retired.** Floating surfaces now use `--shadow-xl` directly, the duplicate `radio` install item is removed in favor of `radio-group`, and manifest synchronization now keeps adherence token metadata aligned with the authored token inventory.
 
 ## 1.21.1 — 2026-08-13
 

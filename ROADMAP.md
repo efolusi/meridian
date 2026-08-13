@@ -95,7 +95,7 @@ Concrete items surfaced by the five-area audit (components, tokens, docs site, k
 
 **Phase 1 — tokens (additive, wire in the same bundled release)**
 - `--z-*` elevation scale replacing the 15 raw z-indexes (today: five overlays tie at 80; Tooltip at 60 loses to Drawer at 100).
-- `--overlay-scrim` for the repeated `rgba(31,26,20,.45)` scrims; `--text-on-brand-muted` for the 6 hard-coded `rgba(248,244,230,.75)` sites; `--text-2xs` (or similar) so the 134 raw px font sizes can snap to the scale; route raw hex in Toast/Terminal/CodeBlock/Badge through semantic tokens; rename `--shadow-pop` → `--shadow-xl` (alias kept one major).
+- `--overlay-scrim` for the repeated `rgba(31,26,20,.45)` scrims; `--text-on-brand-muted` for the 6 hard-coded `rgba(248,244,230,.75)` sites; `--text-2xs` (or similar) so the 134 raw px font sizes can snap to the scale; route remaining raw hex through semantic tokens. The former modal-shadow alias has completed its migration to `--shadow-xl` and is removed.
 - API conventions sweep landed: choose-an-item events use `onChange`/`onSelect`, placement uses `side`, charts use `format`, WebPreview uses `defaultOpen`, condition props use `status`, and action slots accept nodes. Remaining adapter removals are tracked as explicit migrations, not permanent compatibility aliases.
 
 **Phase 3 — quality infrastructure**

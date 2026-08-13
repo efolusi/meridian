@@ -10,7 +10,7 @@
  "InputGroup": "Input dengan addon di awal/akhir dalam satu baris berbingkai. Addon berupa string tampil sebagai sel bernuansa (satuan, protokol); addon berupa node tampil polos (Button ghost, Icon).",
  "Label": "Label field mandiri untuk kontrol kustom yang tak punya prop label bawaan. Pasangkan via htmlFor; required menambah tanda bintang merah, hint catatan inline yang redup.",
  "NumberInput": "Field numerik dengan tombol stepper; tampil polos, atau sebagai field lengkap saat `label`/`hint`/`error` diisi. Ini input teks dengan `inputmode=\"decimal\"` — bukan `type=number` — jadi pengetikan tetap bebas dan nilai hanya di-commit saat blur: parse, klem ke `min`/`max`, snap ke grid `step` (noise float dibulatkan). Field yang dikosongkan meng-commit `null`.",
- "Radio": "Radio untuk 2–5 opsi yang saling eksklusif; kelompokkan dengan name yang sama.",
+ "Radio": "Kontrol pilihan tunggal; untuk kelompok pilihan eksklusif gunakan RadioGroup dan RadioGroupItem.",
  "Select": "Select native bergaya dengan chevron; opsi berupa string, objek {value,label}, atau anak <option>.",
  "Slider": "Input rentang dengan isian tinta dan trek setipis rambut; label + nilai langsung opsional.",
  "Switch": "Sakelar on/off dengan thumb lentur — untuk pengaturan yang langsung berlaku (jika tidak, pakai Checkbox).",

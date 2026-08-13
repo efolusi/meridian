@@ -4,7 +4,7 @@ import { injectEfCss, mergeRefs } from '../forms/Button.jsx';
 import { Portal } from '../overlay/Portal.jsx';
 const CSS = `
 .ef-dialog__overlay{position:fixed;inset:0;z-index:var(--z-overlay);display:flex;align-items:center;justify-content:center;padding:24px;background:var(--overlay-scrim);animation:ef-fade var(--dur-med) var(--ease-out)}
-.ef-dialog__content{width:100%;max-width:440px;max-height:min(85vh,720px);overflow:auto;border:1px solid var(--border-default);border-radius:var(--radius-lg);background:var(--surface-card);box-shadow:var(--shadow-pop);animation:ef-pop var(--dur-slow) var(--ease-spring)}
+.ef-dialog__content{width:100%;max-width:440px;max-height:min(85vh,720px);overflow:auto;border:1px solid var(--border-default);border-radius:var(--radius-lg);background:var(--surface-card);box-shadow:var(--shadow-xl);animation:ef-pop var(--dur-slow) var(--ease-spring)}
 .ef-dialog__content:focus{outline:none}.ef-dialog__close{position:absolute;inset-block-start:14px;inset-inline-end:14px}
 .ef-dialog__header{display:flex;flex-direction:column;gap:6px;padding:24px 24px 0;padding-inline-end:56px}
 .ef-dialog__title{margin:0;font-family:var(--font-display);font-size:var(--text-xl);font-weight:var(--weight-bold);line-height:var(--leading-tight);letter-spacing:var(--tracking-tight);color:var(--text-primary)}

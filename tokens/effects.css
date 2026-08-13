@@ -4,7 +4,6 @@
 --shadow-md:0 4px 12px rgba(46,41,34,.08);
 --shadow-lg:0 12px 28px rgba(46,41,34,.12);
 --shadow-xl:0 16px 40px rgba(31,26,20,.18),0 2px 8px rgba(31,26,20,.08);
---shadow-pop:var(--shadow-xl);/* deprecated alias of --shadow-xl; kept one major */
 /* Elevation scale — the single source of overlay stacking order */
 --z-dropdown:1000;/* @kind other */
 --z-sticky:1100;/* @kind other */

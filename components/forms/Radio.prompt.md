@@ -10,5 +10,4 @@ Compose mutually exclusive choices with `RadioGroup` and `RadioGroupItem`.
 ```
 
 Use `value`/`onValueChange` for controlled state. Group-level `name`, `required`,
-`disabled`, and `orientation` propagate to native radio inputs. `Radio` remains
-an additive shorthand with integrated label and description.
+`disabled`, and `orientation` propagate to native radio inputs.

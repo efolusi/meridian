@@ -119,8 +119,7 @@ module.exports = { theme: { extend: {
     "sm": "var(--shadow-sm)",
     "md": "var(--shadow-md)",
     "lg": "var(--shadow-lg)",
-    "xl": "var(--shadow-xl)",
-    "pop": "var(--shadow-pop)"
+    "xl": "var(--shadow-xl)"
   },
   "fontSize": {},
   "zIndex": {

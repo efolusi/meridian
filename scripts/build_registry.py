@@ -57,11 +57,6 @@ EXTERNAL_DEPENDENCIES = {
     "components/data/Chart.jsx": ["recharts@^3.8.0"],
 }
 
-REGISTRY_ALIASES = {
-    "components/forms/Radio.jsx": ["radio"],
-}
-
-
 def _source_to_item_name():
     """Map a component sourcePath to the registry item name that ships it."""
     manifest = json.loads((ROOT / "_ds_manifest.json").read_text())
@@ -145,8 +140,6 @@ def component_items(embed):
             "categories": [group],
         }
         items.append(item)
-        for alias in REGISTRY_ALIASES.get(source, []):
-            items.append({**item, "name": alias, "title": f"{item['title']} (legacy registry alias)"})
     return items
 
 def block_items(embed):

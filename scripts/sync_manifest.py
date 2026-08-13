@@ -40,6 +40,7 @@ ROOT = pathlib.Path(__file__).resolve().parent.parent
 MANIFEST = ROOT / "_ds_manifest.json"
 PACKAGE = ROOT / "package.json"
 BUNDLE = ROOT / "_ds_bundle.js"
+ADHERENCE = ROOT / "_adherence.oxlintrc.json"
 FILE_ORDER = ["colors.css", "typography.css", "spacing.css", "effects.css"]
 
 # Prefix rules for tokens the manifest has not classified before. Longest match wins.
@@ -123,6 +124,25 @@ def bundle_components():
     return [{"name": c["name"], "sourcePath": c["sourcePath"]} for c in meta["components"]]
 
 
+def sync_adherence_tokens(tokens, check=False):
+    """Keep the compiler-owned adherence token inventory aligned to token source."""
+    adherence = json.loads(ADHERENCE.read_text())
+    metadata = adherence["x-omelette"]
+    names = sorted({entry["name"] for entry in tokens})
+    kinds = {name: next(entry["kind"] for entry in tokens if entry["name"] == name) for name in names}
+    changed = metadata.get("tokens") != names or metadata.get("tokenKinds") != kinds
+    if not changed:
+        return False
+    if check:
+        print("adherence token inventory OUT OF DATE")
+        return True
+    metadata["tokens"] = names
+    metadata["tokenKinds"] = kinds
+    ADHERENCE.write_text(json.dumps(adherence, indent=2) + "\n")
+    print(f"adherence tokens: {len(names)} entries")
+    return True
+
+
 TEMPLATE_RE = re.compile(
     r'<!--\s*@template\s+name="([^"]+)"\s+description="([^"]+)"\s*-->'
 )
@@ -195,8 +215,10 @@ def main():
     existing_kinds = {e["name"]: e["kind"] for e in old}
     new = build(existing_kinds)
 
+    adherence_changed = sync_adherence_tokens(new, check=check)
+
     if (old == new and old_components == new_components and old_version == new_version
-            and old_templates == new_templates):
+            and old_templates == new_templates and not adherence_changed):
         print(f"manifest in sync (version {new_version}, "
               f"{len(new_components)} components, {len(new_templates)} templates, "
               f"{len(new)} token entries)")

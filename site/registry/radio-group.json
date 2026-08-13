@@ -25,7 +25,7 @@
     {
       "path": "components/forms/Radio.prompt.md",
       "type": "registry:component",
-      "content": "Compose mutually exclusive choices with `RadioGroup` and `RadioGroupItem`.\n\n```jsx\n<RadioGroup defaultValue=\"starter\" aria-label=\"Plan\">\n  <RadioGroupItem id=\"starter\" value=\"starter\" />\n  <Label htmlFor=\"starter\">Starter</Label>\n  <RadioGroupItem id=\"growth\" value=\"growth\" />\n  <Label htmlFor=\"growth\">Growth</Label>\n</RadioGroup>\n```\n\nUse `value`/`onValueChange` for controlled state. Group-level `name`, `required`,\n`disabled`, and `orientation` propagate to native radio inputs. `Radio` remains\nan additive shorthand with integrated label and description.\n"
+      "content": "Compose mutually exclusive choices with `RadioGroup` and `RadioGroupItem`.\n\n```jsx\n<RadioGroup defaultValue=\"starter\" aria-label=\"Plan\">\n  <RadioGroupItem id=\"starter\" value=\"starter\" />\n  <Label htmlFor=\"starter\">Starter</Label>\n  <RadioGroupItem id=\"growth\" value=\"growth\" />\n  <Label htmlFor=\"growth\">Growth</Label>\n</RadioGroup>\n```\n\nUse `value`/`onValueChange` for controlled state. Group-level `name`, `required`,\n`disabled`, and `orientation` propagate to native radio inputs.\n"
     }
   ],
   "categories": [

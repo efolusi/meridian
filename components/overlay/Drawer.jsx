@@ -15,7 +15,7 @@ import {
 
 const CSS = `
 .ef-drawer__overlay{padding:0}
-.ef-drawer{position:fixed;z-index:var(--z-modal);display:flex;max-width:none;max-height:none;flex-direction:column;overflow:auto;border-radius:0;background:var(--surface-card);box-shadow:var(--shadow-pop);touch-action:none;will-change:transform}
+.ef-drawer{position:fixed;z-index:var(--z-modal);display:flex;max-width:none;max-height:none;flex-direction:column;overflow:auto;border-radius:0;background:var(--surface-card);box-shadow:var(--shadow-xl);touch-action:none;will-change:transform}
 .ef-drawer[data-vaul-drawer-direction=right]{top:0;right:0;bottom:0;width:min(75vw,384px);border-width:0 0 0 1px;animation:ef-drawer-right var(--dur-slow) var(--ease-out)}
 .ef-drawer[data-vaul-drawer-direction=left]{top:0;left:0;bottom:0;width:min(75vw,384px);border-width:0 1px 0 0;animation:ef-drawer-left var(--dur-slow) var(--ease-out)}
 .ef-drawer[data-vaul-drawer-direction=top]{top:0;left:0;right:0;width:100%;max-height:80vh;border-width:0 0 1px;border-radius:0 0 var(--radius-lg) var(--radius-lg);animation:ef-drawer-top var(--dur-slow) var(--ease-out)}
