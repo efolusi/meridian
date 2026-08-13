@@ -200,6 +200,28 @@ export function RadioDemo() {
   );
 }
 
+// @demo Questionnaire Multi-step planning flow
+export function QuestionnaireDemo() {
+  const { Questionnaire, QuestionnaireProgress, QuestionnaireItem, QuestionnaireTitle, QuestionnaireDescription, QuestionnaireChoices, QuestionnaireChoice, QuestionnaireInput, QuestionnaireError, QuestionnaireActions, QuestionnairePrevious, QuestionnaireSkip, QuestionnaireNext, QuestionnaireSubmit } = window.EfolusiDesignSystem_4ffc3d;
+  const items = [
+    { name: 'scope', required: true, prompt: 'What should this release include?', description: 'Choose the clearest boundary.', choices: [{ value: 'component', label: 'Component and tests' }, { value: 'feature', label: 'Complete feature area' }] },
+    { name: 'notes', prompt: 'Any implementation constraints?', description: 'Add a note or skip this question.', choices: [{ value: 'dependencies', label: 'Do not add dependencies' }] },
+  ];
+  return <Questionnaire items={items} style={{ maxWidth: 560 }} onSubmit={event => event.preventDefault()}>
+    <QuestionnaireProgress />
+    {items.map(item => <QuestionnaireItem key={item.name} name={item.name} required={item.required}>
+      <QuestionnaireTitle>{item.prompt}</QuestionnaireTitle>
+      <QuestionnaireDescription>{item.description}</QuestionnaireDescription>
+      <QuestionnaireChoices>
+        {item.choices.map(choice => <QuestionnaireChoice key={choice.value} value={choice.value}>{choice.label}</QuestionnaireChoice>)}
+        {item.name === 'notes' ? <QuestionnaireInput aria-label="Other constraint" placeholder="Describe another constraint…" /> : null}
+      </QuestionnaireChoices>
+      <QuestionnaireError />
+    </QuestionnaireItem>)}
+    <QuestionnaireActions><QuestionnairePrevious /><QuestionnaireSkip /><QuestionnaireNext /><QuestionnaireSubmit>Save plan</QuestionnaireSubmit></QuestionnaireActions>
+  </Questionnaire>;
+}
+
 // @demo Select Composed popup select
 export function SelectDemo() {
   const { Field, FieldLabel, FieldDescription, Select, SelectTrigger, SelectValue, SelectContent, SelectGroup, SelectLabel, SelectItem } = window.EfolusiDesignSystem_4ffc3d;

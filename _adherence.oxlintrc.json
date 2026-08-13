@@ -390,145 +390,10 @@
   ],
   "x-omelette": {
     "components": {
-      "Accordion": {
-        "replaces": []
-      },
-      "AccordionContent": {
-        "replaces": []
-      },
-      "AccordionItem": {
-        "replaces": []
-      },
-      "AccordionTrigger": {
-        "replaces": []
-      },
       "AgentRun": {
         "replaces": []
       },
-      "Alert": {
-        "replaces": []
-      },
-      "AlertAction": {
-        "replaces": []
-      },
-      "AlertDescription": {
-        "replaces": []
-      },
-      "AlertDialog": {
-        "replaces": []
-      },
-      "AlertDialogAction": {
-        "replaces": []
-      },
-      "AlertDialogCancel": {
-        "replaces": []
-      },
-      "AlertDialogContent": {
-        "replaces": []
-      },
-      "AlertDialogDescription": {
-        "replaces": []
-      },
-      "AlertDialogFooter": {
-        "replaces": []
-      },
-      "AlertDialogHeader": {
-        "replaces": []
-      },
-      "AlertDialogMedia": {
-        "replaces": []
-      },
-      "AlertDialogOverlay": {
-        "replaces": []
-      },
-      "AlertDialogPortal": {
-        "replaces": []
-      },
-      "AlertDialogTitle": {
-        "replaces": []
-      },
-      "AlertDialogTrigger": {
-        "replaces": []
-      },
-      "AlertTitle": {
-        "replaces": []
-      },
-      "AspectRatio": {
-        "replaces": []
-      },
-      "Attachment": {
-        "replaces": []
-      },
-      "AttachmentAction": {
-        "replaces": []
-      },
-      "AttachmentActions": {
-        "replaces": []
-      },
-      "AttachmentContent": {
-        "replaces": []
-      },
-      "AttachmentDescription": {
-        "replaces": []
-      },
-      "AttachmentGroup": {
-        "replaces": []
-      },
-      "AttachmentMedia": {
-        "replaces": []
-      },
-      "AttachmentTitle": {
-        "replaces": []
-      },
-      "AttachmentTrigger": {
-        "replaces": []
-      },
-      "Avatar": {
-        "replaces": []
-      },
-      "AvatarBadge": {
-        "replaces": []
-      },
-      "AvatarFallback": {
-        "replaces": []
-      },
-      "AvatarGroup": {
-        "replaces": []
-      },
-      "AvatarGroupCount": {
-        "replaces": []
-      },
-      "AvatarImage": {
-        "replaces": []
-      },
-      "Badge": {
-        "replaces": []
-      },
-      "Banner": {
-        "replaces": []
-      },
-      "BarChart": {
-        "replaces": []
-      },
-      "Breadcrumb": {
-        "replaces": []
-      },
-      "BreadcrumbEllipsis": {
-        "replaces": []
-      },
-      "BreadcrumbItem": {
-        "replaces": []
-      },
-      "BreadcrumbLink": {
-        "replaces": []
-      },
-      "BreadcrumbList": {
-        "replaces": []
-      },
-      "BreadcrumbPage": {
-        "replaces": []
-      },
-      "BreadcrumbSeparator": {
+      "BubbleGroup": {
         "replaces": []
       },
       "Bubble": {
@@ -537,82 +402,154 @@
       "BubbleContent": {
         "replaces": []
       },
-      "BubbleGroup": {
-        "replaces": []
-      },
       "BubbleReactions": {
         "replaces": []
       },
-      "Button": {
+      "ChatMessage": {
         "replaces": []
       },
-      "ButtonGroup": {
+      "Citation": {
         "replaces": []
       },
-      "ButtonGroupSeparator": {
+      "SourceList": {
         "replaces": []
       },
-      "ButtonGroupText": {
+      "Confirmation": {
         "replaces": []
       },
-      "ButtonTile": {
+      "Conversation": {
         "replaces": []
       },
-      "ButtonTileGroup": {
+      "DocumentCard": {
         "replaces": []
       },
-      "Calendar": {
+      "FeedbackBar": {
         "replaces": []
       },
-      "CalendarDayButton": {
+      "GeneratedImage": {
         "replaces": []
       },
-      "Card": {
+      "Marker": {
         "replaces": []
       },
-      "CardAction": {
+      "MarkerIcon": {
         "replaces": []
       },
-      "CardContent": {
+      "MarkerContent": {
         "replaces": []
       },
-      "CardDescription": {
+      "Message": {
         "replaces": []
       },
-      "CardFooter": {
+      "MessageGroup": {
         "replaces": []
       },
-      "CardHeader": {
+      "MessageAvatar": {
         "replaces": []
       },
-      "CardTitle": {
+      "MessageContent": {
         "replaces": []
       },
-      "Carousel": {
+      "MessageHeader": {
         "replaces": []
       },
-      "CarouselContent": {
+      "MessageFooter": {
         "replaces": []
       },
-      "CarouselItem": {
+      "MessageScrollerProvider": {
         "replaces": []
       },
-      "CarouselNext": {
+      "MessageScroller": {
         "replaces": []
       },
-      "CarouselPrevious": {
+      "MessageScrollerViewport": {
         "replaces": []
       },
-      "ChartContainer": {
+      "MessageScrollerContent": {
         "replaces": []
       },
-      "ChartLegend": {
+      "MessageScrollerItem": {
         "replaces": []
       },
-      "ChartLegendContent": {
+      "MessageScrollerButton": {
+        "replaces": []
+      },
+      "ModelSelector": {
+        "replaces": []
+      },
+      "Player": {
+        "replaces": []
+      },
+      "PromptComposer": {
+        "replaces": []
+      },
+      "PromptSteps": {
+        "replaces": []
+      },
+      "Reasoning": {
+        "replaces": []
+      },
+      "RichComposer": {
+        "replaces": []
+      },
+      "Sandbox": {
+        "replaces": []
+      },
+      "SelectionQuote": {
+        "replaces": []
+      },
+      "SourceCard": {
+        "replaces": []
+      },
+      "Suggestions": {
+        "replaces": []
+      },
+      "Task": {
+        "replaces": []
+      },
+      "Todo": {
+        "replaces": []
+      },
+      "ToolCall": {
+        "replaces": []
+      },
+      "Transcript": {
+        "replaces": []
+      },
+      "UsageMeter": {
+        "replaces": []
+      },
+      "WebPreview": {
+        "replaces": []
+      },
+      "CodeBlock": {
+        "replaces": []
+      },
+      "Console": {
+        "replaces": []
+      },
+      "CopyField": {
+        "replaces": []
+      },
+      "Diff": {
+        "replaces": []
+      },
+      "EnvList": {
+        "replaces": []
+      },
+      "Exception": {
+        "replaces": []
+      },
+      "Terminal": {
+        "replaces": []
+      },
+      "BarChart": {
         "replaces": []
       },
       "ChartStyle": {
+        "replaces": []
+      },
+      "ChartContainer": {
         "replaces": []
       },
       "ChartTooltip": {
@@ -621,244 +558,16 @@
       "ChartTooltipContent": {
         "replaces": []
       },
-      "ChatMessage": {
+      "ChartLegend": {
         "replaces": []
       },
-      "Checkbox": {
-        "replaces": []
-      },
-      "Citation": {
-        "replaces": []
-      },
-      "CodeBlock": {
-        "replaces": []
-      },
-      "Collapsible": {
-        "replaces": []
-      },
-      "CollapsibleContent": {
-        "replaces": []
-      },
-      "CollapsibleTrigger": {
-        "replaces": []
-      },
-      "Combobox": {
-        "replaces": []
-      },
-      "ComboboxChip": {
-        "replaces": []
-      },
-      "ComboboxChips": {
-        "replaces": []
-      },
-      "ComboboxChipsInput": {
-        "replaces": []
-      },
-      "ComboboxClear": {
-        "replaces": []
-      },
-      "ComboboxCollection": {
-        "replaces": []
-      },
-      "ComboboxContent": {
-        "replaces": []
-      },
-      "ComboboxEmpty": {
-        "replaces": []
-      },
-      "ComboboxGroup": {
-        "replaces": []
-      },
-      "ComboboxInput": {
-        "replaces": []
-      },
-      "ComboboxItem": {
-        "replaces": []
-      },
-      "ComboboxLabel": {
-        "replaces": []
-      },
-      "ComboboxList": {
-        "replaces": []
-      },
-      "ComboboxSeparator": {
-        "replaces": []
-      },
-      "ComboboxTrigger": {
-        "replaces": []
-      },
-      "ComboboxValue": {
-        "replaces": []
-      },
-      "Command": {
-        "replaces": []
-      },
-      "CommandDialog": {
-        "replaces": []
-      },
-      "CommandEmpty": {
-        "replaces": []
-      },
-      "CommandGroup": {
-        "replaces": []
-      },
-      "CommandInput": {
-        "replaces": []
-      },
-      "CommandItem": {
-        "replaces": []
-      },
-      "CommandList": {
-        "replaces": []
-      },
-      "CommandSeparator": {
-        "replaces": []
-      },
-      "CommandShortcut": {
-        "replaces": []
-      },
-      "Confirmation": {
-        "replaces": []
-      },
-      "ConfirmDialog": {
-        "replaces": []
-      },
-      "Console": {
-        "replaces": []
-      },
-      "ContextMenu": {
-        "replaces": []
-      },
-      "ContextMenuCheckboxItem": {
-        "replaces": []
-      },
-      "ContextMenuContent": {
-        "replaces": []
-      },
-      "ContextMenuGroup": {
-        "replaces": []
-      },
-      "ContextMenuItem": {
-        "replaces": []
-      },
-      "ContextMenuLabel": {
-        "replaces": []
-      },
-      "ContextMenuPortal": {
-        "replaces": []
-      },
-      "ContextMenuRadioGroup": {
-        "replaces": []
-      },
-      "ContextMenuRadioItem": {
-        "replaces": []
-      },
-      "ContextMenuSeparator": {
-        "replaces": []
-      },
-      "ContextMenuShortcut": {
-        "replaces": []
-      },
-      "ContextMenuSub": {
-        "replaces": []
-      },
-      "ContextMenuSubContent": {
-        "replaces": []
-      },
-      "ContextMenuSubTrigger": {
-        "replaces": []
-      },
-      "ContextMenuTrigger": {
-        "replaces": []
-      },
-      "Conversation": {
-        "replaces": []
-      },
-      "CopyField": {
-        "replaces": []
-      },
-      "Dialog": {
-        "replaces": []
-      },
-      "DialogClose": {
-        "replaces": []
-      },
-      "DialogContent": {
-        "replaces": []
-      },
-      "DialogDescription": {
-        "replaces": []
-      },
-      "DialogFooter": {
-        "replaces": []
-      },
-      "DialogHeader": {
-        "replaces": []
-      },
-      "DialogOverlay": {
-        "replaces": []
-      },
-      "DialogPortal": {
-        "replaces": []
-      },
-      "DialogTitle": {
-        "replaces": []
-      },
-      "DialogTrigger": {
-        "replaces": []
-      },
-      "Diff": {
-        "replaces": []
-      },
-      "DirectionProvider": {
-        "replaces": []
-      },
-      "Divider": {
-        "replaces": []
-      },
-      "DocumentCard": {
+      "ChartLegendContent": {
         "replaces": []
       },
       "DonutChart": {
         "replaces": []
       },
-      "Drawer": {
-        "replaces": []
-      },
-      "DrawerClose": {
-        "replaces": []
-      },
-      "DrawerContent": {
-        "replaces": []
-      },
-      "DrawerDescription": {
-        "replaces": []
-      },
-      "DrawerFooter": {
-        "replaces": []
-      },
-      "DrawerHeader": {
-        "replaces": []
-      },
-      "DrawerOverlay": {
-        "replaces": []
-      },
-      "DrawerPortal": {
-        "replaces": []
-      },
-      "DrawerTitle": {
-        "replaces": []
-      },
-      "DrawerTrigger": {
-        "replaces": []
-      },
       "Empty": {
-        "replaces": []
-      },
-      "EmptyContent": {
-        "replaces": []
-      },
-      "EmptyDescription": {
         "replaces": []
       },
       "EmptyHeader": {
@@ -870,43 +579,352 @@
       "EmptyTitle": {
         "replaces": []
       },
-      "EnvList": {
+      "EmptyDescription": {
         "replaces": []
       },
-      "Exception": {
+      "EmptyContent": {
         "replaces": []
       },
-      "FeedbackBar": {
+      "KeyValueList": {
         "replaces": []
       },
-      "Field": {
+      "LineChart": {
         "replaces": []
       },
-      "FieldContent": {
+      "Skeleton": {
         "replaces": []
       },
-      "FieldDescription": {
+      "Sparkline": {
         "replaces": []
       },
-      "FieldError": {
+      "Stat": {
         "replaces": []
       },
-      "FieldGroup": {
+      "StatusDot": {
         "replaces": []
       },
-      "FieldLabel": {
+      "Table": {
         "replaces": []
       },
-      "FieldLegend": {
+      "TableHeader": {
         "replaces": []
       },
-      "FieldSeparator": {
+      "TableBody": {
         "replaces": []
       },
-      "FieldSet": {
+      "TableFooter": {
         "replaces": []
       },
-      "FieldTitle": {
+      "TableRow": {
+        "replaces": []
+      },
+      "TableHead": {
+        "replaces": []
+      },
+      "TableCell": {
+        "replaces": []
+      },
+      "TableCaption": {
+        "replaces": []
+      },
+      "CalendarDayButton": {
+        "replaces": []
+      },
+      "Calendar": {
+        "replaces": []
+      },
+      "TimePicker": {
+        "replaces": []
+      },
+      "Accordion": {
+        "replaces": []
+      },
+      "AccordionItem": {
+        "replaces": []
+      },
+      "AccordionTrigger": {
+        "replaces": []
+      },
+      "AccordionContent": {
+        "replaces": []
+      },
+      "AspectRatio": {
+        "replaces": []
+      },
+      "Avatar": {
+        "replaces": []
+      },
+      "AvatarImage": {
+        "replaces": []
+      },
+      "AvatarFallback": {
+        "replaces": []
+      },
+      "AvatarBadge": {
+        "replaces": []
+      },
+      "AvatarGroup": {
+        "replaces": []
+      },
+      "AvatarGroupCount": {
+        "replaces": []
+      },
+      "Badge": {
+        "replaces": []
+      },
+      "CardHeader": {
+        "replaces": []
+      },
+      "CardTitle": {
+        "replaces": []
+      },
+      "CardDescription": {
+        "replaces": []
+      },
+      "CardAction": {
+        "replaces": []
+      },
+      "CardContent": {
+        "replaces": []
+      },
+      "CardFooter": {
+        "replaces": []
+      },
+      "Card": {
+        "replaces": []
+      },
+      "Carousel": {
+        "replaces": []
+      },
+      "CarouselContent": {
+        "replaces": []
+      },
+      "CarouselItem": {
+        "replaces": []
+      },
+      "CarouselPrevious": {
+        "replaces": []
+      },
+      "CarouselNext": {
+        "replaces": []
+      },
+      "Collapsible": {
+        "replaces": []
+      },
+      "CollapsibleTrigger": {
+        "replaces": []
+      },
+      "CollapsibleContent": {
+        "replaces": []
+      },
+      "DirectionProvider": {
+        "replaces": []
+      },
+      "Divider": {
+        "replaces": []
+      },
+      "ItemGroup": {
+        "replaces": []
+      },
+      "ItemSeparator": {
+        "replaces": []
+      },
+      "Item": {
+        "replaces": []
+      },
+      "ItemMedia": {
+        "replaces": []
+      },
+      "ItemContent": {
+        "replaces": []
+      },
+      "ItemTitle": {
+        "replaces": []
+      },
+      "ItemDescription": {
+        "replaces": []
+      },
+      "ItemActions": {
+        "replaces": []
+      },
+      "ItemHeader": {
+        "replaces": []
+      },
+      "ItemFooter": {
+        "replaces": []
+      },
+      "Kbd": {
+        "replaces": []
+      },
+      "KbdGroup": {
+        "replaces": []
+      },
+      "Link": {
+        "replaces": []
+      },
+      "ResizablePanelGroup": {
+        "replaces": []
+      },
+      "ResizablePanel": {
+        "replaces": []
+      },
+      "ResizableHandle": {
+        "replaces": []
+      },
+      "ScrollArea": {
+        "replaces": []
+      },
+      "ScrollBar": {
+        "replaces": []
+      },
+      "Separator": {
+        "replaces": []
+      },
+      "Tag": {
+        "replaces": []
+      },
+      "Timeline": {
+        "replaces": []
+      },
+      "Toolbar": {
+        "replaces": []
+      },
+      "TreeList": {
+        "replaces": []
+      },
+      "Alert": {
+        "replaces": []
+      },
+      "AlertTitle": {
+        "replaces": []
+      },
+      "AlertDescription": {
+        "replaces": []
+      },
+      "AlertAction": {
+        "replaces": []
+      },
+      "AlertDialog": {
+        "replaces": []
+      },
+      "AlertDialogTrigger": {
+        "replaces": []
+      },
+      "AlertDialogPortal": {
+        "replaces": []
+      },
+      "AlertDialogOverlay": {
+        "replaces": []
+      },
+      "AlertDialogContent": {
+        "replaces": []
+      },
+      "AlertDialogHeader": {
+        "replaces": []
+      },
+      "AlertDialogFooter": {
+        "replaces": []
+      },
+      "AlertDialogMedia": {
+        "replaces": []
+      },
+      "AlertDialogTitle": {
+        "replaces": []
+      },
+      "AlertDialogDescription": {
+        "replaces": []
+      },
+      "AlertDialogCancel": {
+        "replaces": []
+      },
+      "AlertDialogAction": {
+        "replaces": []
+      },
+      "Banner": {
+        "replaces": []
+      },
+      "ConfirmDialog": {
+        "replaces": []
+      },
+      "Dialog": {
+        "replaces": []
+      },
+      "DialogTrigger": {
+        "replaces": []
+      },
+      "DialogPortal": {
+        "replaces": []
+      },
+      "DialogOverlay": {
+        "replaces": []
+      },
+      "DialogClose": {
+        "replaces": []
+      },
+      "DialogContent": {
+        "replaces": []
+      },
+      "DialogHeader": {
+        "replaces": []
+      },
+      "DialogFooter": {
+        "replaces": []
+      },
+      "DialogTitle": {
+        "replaces": []
+      },
+      "DialogDescription": {
+        "replaces": []
+      },
+      "Loader": {
+        "replaces": []
+      },
+      "Progress": {
+        "replaces": []
+      },
+      "Toaster": {
+        "replaces": []
+      },
+      "Spinner": {
+        "replaces": []
+      },
+      "Tooltip": {
+        "replaces": []
+      },
+      "TooltipProvider": {
+        "replaces": []
+      },
+      "TooltipTrigger": {
+        "replaces": []
+      },
+      "TooltipContent": {
+        "replaces": []
+      },
+      "Attachment": {
+        "replaces": []
+      },
+      "AttachmentMedia": {
+        "replaces": []
+      },
+      "AttachmentContent": {
+        "replaces": []
+      },
+      "AttachmentTitle": {
+        "replaces": []
+      },
+      "AttachmentDescription": {
+        "replaces": []
+      },
+      "AttachmentActions": {
+        "replaces": []
+      },
+      "AttachmentAction": {
+        "replaces": []
+      },
+      "AttachmentTrigger": {
+        "replaces": []
+      },
+      "AttachmentGroup": {
         "replaces": []
       },
       "FileDrop": {
@@ -918,19 +936,106 @@
       "FileTypeIcon": {
         "replaces": []
       },
-      "GeneratedImage": {
+      "PaymentCard": {
         "replaces": []
       },
-      "HoverCard": {
+      "Button": {
         "replaces": []
       },
-      "HoverCardContent": {
+      "ButtonGroup": {
         "replaces": []
       },
-      "HoverCardTrigger": {
+      "ButtonGroupText": {
         "replaces": []
       },
-      "Icon": {
+      "ButtonGroupSeparator": {
+        "replaces": []
+      },
+      "ButtonTile": {
+        "replaces": []
+      },
+      "ButtonTileGroup": {
+        "replaces": []
+      },
+      "Checkbox": {
+        "replaces": []
+      },
+      "Combobox": {
+        "replaces": []
+      },
+      "ComboboxValue": {
+        "replaces": []
+      },
+      "ComboboxTrigger": {
+        "replaces": []
+      },
+      "ComboboxClear": {
+        "replaces": []
+      },
+      "ComboboxInput": {
+        "replaces": []
+      },
+      "ComboboxContent": {
+        "replaces": []
+      },
+      "ComboboxList": {
+        "replaces": []
+      },
+      "ComboboxItem": {
+        "replaces": []
+      },
+      "ComboboxGroup": {
+        "replaces": []
+      },
+      "ComboboxLabel": {
+        "replaces": []
+      },
+      "ComboboxCollection": {
+        "replaces": []
+      },
+      "ComboboxEmpty": {
+        "replaces": []
+      },
+      "ComboboxSeparator": {
+        "replaces": []
+      },
+      "ComboboxChips": {
+        "replaces": []
+      },
+      "ComboboxChip": {
+        "replaces": []
+      },
+      "ComboboxChipsInput": {
+        "replaces": []
+      },
+      "Field": {
+        "replaces": []
+      },
+      "FieldSet": {
+        "replaces": []
+      },
+      "FieldGroup": {
+        "replaces": []
+      },
+      "FieldContent": {
+        "replaces": []
+      },
+      "FieldLabel": {
+        "replaces": []
+      },
+      "FieldTitle": {
+        "replaces": []
+      },
+      "FieldDescription": {
+        "replaces": []
+      },
+      "FieldLegend": {
+        "replaces": []
+      },
+      "FieldSeparator": {
+        "replaces": []
+      },
+      "FieldError": {
         "replaces": []
       },
       "IconButton": {
@@ -951,10 +1056,10 @@
       "InputGroupInput": {
         "replaces": []
       },
-      "InputGroupText": {
+      "InputGroupTextarea": {
         "replaces": []
       },
-      "InputGroupTextarea": {
+      "InputGroupText": {
         "replaces": []
       },
       "InputOTP": {
@@ -963,301 +1068,67 @@
       "InputOTPGroup": {
         "replaces": []
       },
-      "InputOTPSeparator": {
-        "replaces": []
-      },
       "InputOTPSlot": {
         "replaces": []
       },
-      "Item": {
-        "replaces": []
-      },
-      "ItemActions": {
-        "replaces": []
-      },
-      "ItemContent": {
-        "replaces": []
-      },
-      "ItemDescription": {
-        "replaces": []
-      },
-      "ItemFooter": {
-        "replaces": []
-      },
-      "ItemGroup": {
-        "replaces": []
-      },
-      "ItemHeader": {
-        "replaces": []
-      },
-      "ItemMedia": {
-        "replaces": []
-      },
-      "ItemSeparator": {
-        "replaces": []
-      },
-      "ItemTitle": {
-        "replaces": []
-      },
-      "Kbd": {
-        "replaces": []
-      },
-      "KbdGroup": {
-        "replaces": []
-      },
-      "KeyValueList": {
+      "InputOTPSeparator": {
         "replaces": []
       },
       "Label": {
         "replaces": []
       },
-      "LineChart": {
-        "replaces": []
-      },
-      "Link": {
-        "replaces": []
-      },
-      "Loader": {
-        "replaces": []
-      },
-      "Marker": {
-        "replaces": []
-      },
-      "MarkerContent": {
-        "replaces": []
-      },
-      "MarkerIcon": {
-        "replaces": []
-      },
-      "DropdownMenu": {
-        "replaces": []
-      },
-      "DropdownMenuCheckboxItem": {
-        "replaces": []
-      },
-      "DropdownMenuContent": {
-        "replaces": []
-      },
-      "DropdownMenuGroup": {
-        "replaces": []
-      },
-      "DropdownMenuItem": {
-        "replaces": []
-      },
-      "DropdownMenuLabel": {
-        "replaces": []
-      },
-      "DropdownMenuPortal": {
-        "replaces": []
-      },
-      "DropdownMenuRadioGroup": {
-        "replaces": []
-      },
-      "DropdownMenuRadioItem": {
-        "replaces": []
-      },
-      "DropdownMenuSeparator": {
-        "replaces": []
-      },
-      "DropdownMenuShortcut": {
-        "replaces": []
-      },
-      "DropdownMenuSub": {
-        "replaces": []
-      },
-      "DropdownMenuSubContent": {
-        "replaces": []
-      },
-      "DropdownMenuSubTrigger": {
-        "replaces": []
-      },
-      "DropdownMenuTrigger": {
-        "replaces": []
-      },
-      "Menubar": {
-        "replaces": []
-      },
-      "MenubarCheckboxItem": {
-        "replaces": []
-      },
-      "MenubarContent": {
-        "replaces": []
-      },
-      "MenubarGroup": {
-        "replaces": []
-      },
-      "MenubarItem": {
-        "replaces": []
-      },
-      "MenubarLabel": {
-        "replaces": []
-      },
-      "MenubarMenu": {
-        "replaces": []
-      },
-      "MenubarPortal": {
-        "replaces": []
-      },
-      "MenubarRadioGroup": {
-        "replaces": []
-      },
-      "MenubarRadioItem": {
-        "replaces": []
-      },
-      "MenubarSeparator": {
-        "replaces": []
-      },
-      "MenubarShortcut": {
-        "replaces": []
-      },
-      "MenubarSub": {
-        "replaces": []
-      },
-      "MenubarSubContent": {
-        "replaces": []
-      },
-      "MenubarSubTrigger": {
-        "replaces": []
-      },
-      "MenubarTrigger": {
-        "replaces": []
-      },
-      "NavigationMenu": {
-        "replaces": []
-      },
-      "NavigationMenuContent": {
-        "replaces": []
-      },
-      "NavigationMenuIndicator": {
-        "replaces": []
-      },
-      "NavigationMenuItem": {
-        "replaces": []
-      },
-      "NavigationMenuLink": {
-        "replaces": []
-      },
-      "NavigationMenuList": {
-        "replaces": []
-      },
-      "NavigationMenuTrigger": {
-        "replaces": []
-      },
-      "NavigationMenuViewport": {
-        "replaces": []
-      },
-      "Message": {
-        "replaces": []
-      },
-      "MessageAvatar": {
-        "replaces": []
-      },
-      "MessageContent": {
-        "replaces": []
-      },
-      "MessageFooter": {
-        "replaces": []
-      },
-      "MessageGroup": {
-        "replaces": []
-      },
-      "MessageHeader": {
-        "replaces": []
-      },
-      "MessageScroller": {
-        "replaces": []
-      },
-      "MessageScrollerButton": {
-        "replaces": []
-      },
-      "MessageScrollerContent": {
-        "replaces": []
-      },
-      "MessageScrollerItem": {
-        "replaces": []
-      },
-      "MessageScrollerProvider": {
-        "replaces": []
-      },
-      "MessageScrollerViewport": {
-        "replaces": []
-      },
-      "ModelSelector": {
-        "replaces": []
-      },
       "NativeSelect": {
-        "replaces": []
-      },
-      "NativeSelectOptGroup": {
         "replaces": []
       },
       "NativeSelectOption": {
         "replaces": []
       },
+      "NativeSelectOptGroup": {
+        "replaces": []
+      },
       "NumberInput": {
         "replaces": []
       },
-      "PageControl": {
+      "Questionnaire": {
         "replaces": []
       },
-      "Pagination": {
+      "QuestionnaireProgress": {
         "replaces": []
       },
-      "PaginationContent": {
+      "QuestionnaireItem": {
         "replaces": []
       },
-      "PaginationEllipsis": {
+      "QuestionnaireTitle": {
         "replaces": []
       },
-      "PaginationItem": {
+      "QuestionnaireDescription": {
         "replaces": []
       },
-      "PaginationLink": {
+      "QuestionnaireChoices": {
         "replaces": []
       },
-      "PaginationNext": {
+      "QuestionnaireChoice": {
         "replaces": []
       },
-      "PaginationPrevious": {
+      "QuestionnaireInput": {
         "replaces": []
       },
-      "PaymentCard": {
+      "QuestionnaireError": {
         "replaces": []
       },
-      "Player": {
+      "QuestionnaireActions": {
         "replaces": []
       },
-      "Popover": {
+      "QuestionnairePrevious": {
         "replaces": []
       },
-      "PopoverContent": {
+      "QuestionnaireSkip": {
         "replaces": []
       },
-      "PopoverDescription": {
+      "QuestionnaireNext": {
         "replaces": []
       },
-      "PopoverHeader": {
-        "replaces": []
-      },
-      "PopoverTitle": {
-        "replaces": []
-      },
-      "PopoverTrigger": {
-        "replaces": []
-      },
-      "Portal": {
-        "replaces": []
-      },
-      "Progress": {
-        "replaces": []
-      },
-      "PromptComposer": {
-        "replaces": []
-      },
-      "PromptSteps": {
-        "replaces": []
-      },
-      "Radio": {
+      "QuestionnaireSubmit": {
         "replaces": []
       },
       "RadioGroup": {
@@ -1266,52 +1137,10 @@
       "RadioGroupItem": {
         "replaces": []
       },
-      "Reasoning": {
-        "replaces": []
-      },
-      "ResizableHandle": {
-        "replaces": []
-      },
-      "ResizablePanel": {
-        "replaces": []
-      },
-      "ResizablePanelGroup": {
-        "replaces": []
-      },
-      "RichComposer": {
-        "replaces": []
-      },
-      "Sandbox": {
-        "replaces": []
-      },
-      "ScrollArea": {
-        "replaces": []
-      },
-      "ScrollBar": {
-        "replaces": []
-      },
-      "SegmentedControl": {
+      "Radio": {
         "replaces": []
       },
       "Select": {
-        "replaces": []
-      },
-      "SelectContent": {
-        "replaces": []
-      },
-      "SelectGroup": {
-        "replaces": []
-      },
-      "SelectionQuote": {
-        "replaces": []
-      },
-      "SelectItem": {
-        "replaces": []
-      },
-      "SelectLabel": {
-        "replaces": []
-      },
-      "SelectSeparator": {
         "replaces": []
       },
       "SelectTrigger": {
@@ -1320,127 +1149,28 @@
       "SelectValue": {
         "replaces": []
       },
-      "Separator": {
+      "SelectContent": {
         "replaces": []
       },
-      "SideNav": {
+      "SelectGroup": {
         "replaces": []
       },
-      "Skeleton": {
+      "SelectLabel": {
         "replaces": []
       },
-      "Sheet": {
+      "SelectSeparator": {
         "replaces": []
       },
-      "SheetClose": {
-        "replaces": []
-      },
-      "SheetContent": {
-        "replaces": []
-      },
-      "SheetDescription": {
-        "replaces": []
-      },
-      "SheetFooter": {
-        "replaces": []
-      },
-      "SheetHeader": {
-        "replaces": []
-      },
-      "SheetTitle": {
-        "replaces": []
-      },
-      "SheetTrigger": {
+      "SelectItem": {
         "replaces": []
       },
       "Slider": {
         "replaces": []
       },
-      "SourceCard": {
-        "replaces": []
-      },
-      "SourceList": {
-        "replaces": []
-      },
-      "Sparkline": {
-        "replaces": []
-      },
-      "Spinner": {
-        "replaces": []
-      },
-      "Stat": {
-        "replaces": []
-      },
-      "StatusDot": {
-        "replaces": []
-      },
-      "Steps": {
-        "replaces": []
-      },
-      "Suggestions": {
-        "replaces": []
-      },
       "Switch": {
         "replaces": []
       },
-      "Table": {
-        "replaces": []
-      },
-      "TableBody": {
-        "replaces": []
-      },
-      "TableCaption": {
-        "replaces": []
-      },
-      "TableCell": {
-        "replaces": []
-      },
-      "TableFooter": {
-        "replaces": []
-      },
-      "TableHead": {
-        "replaces": []
-      },
-      "TableHeader": {
-        "replaces": []
-      },
-      "TableRow": {
-        "replaces": []
-      },
-      "Tabs": {
-        "replaces": []
-      },
-      "TabsContent": {
-        "replaces": []
-      },
-      "TabsList": {
-        "replaces": []
-      },
-      "TabsTrigger": {
-        "replaces": []
-      },
-      "Tag": {
-        "replaces": []
-      },
-      "Task": {
-        "replaces": []
-      },
-      "Terminal": {
-        "replaces": []
-      },
       "Textarea": {
-        "replaces": []
-      },
-      "Timeline": {
-        "replaces": []
-      },
-      "TimePicker": {
-        "replaces": []
-      },
-      "Toaster": {
-        "replaces": []
-      },
-      "Todo": {
         "replaces": []
       },
       "Toggle": {
@@ -1452,70 +1182,187 @@
       "ToggleGroupItem": {
         "replaces": []
       },
-      "Toolbar": {
+      "Icon": {
         "replaces": []
       },
-      "ToolCall": {
+      "Breadcrumb": {
         "replaces": []
       },
-      "Tooltip": {
+      "BreadcrumbList": {
         "replaces": []
       },
-      "TooltipContent": {
+      "BreadcrumbItem": {
         "replaces": []
       },
-      "TooltipProvider": {
+      "BreadcrumbLink": {
         "replaces": []
       },
-      "TooltipTrigger": {
+      "BreadcrumbPage": {
         "replaces": []
       },
-      "TopNav": {
+      "BreadcrumbSeparator": {
         "replaces": []
       },
-      "Transcript": {
+      "BreadcrumbEllipsis": {
         "replaces": []
       },
-      "TreeList": {
+      "Menubar": {
         "replaces": []
       },
-      "UsageMeter": {
+      "MenubarMenu": {
         "replaces": []
       },
-      "WebPreview": {
+      "MenubarTrigger": {
+        "replaces": []
+      },
+      "MenubarContent": {
+        "replaces": []
+      },
+      "MenubarPortal": {
+        "replaces": []
+      },
+      "MenubarGroup": {
+        "replaces": []
+      },
+      "MenubarRadioGroup": {
+        "replaces": []
+      },
+      "MenubarLabel": {
+        "replaces": []
+      },
+      "MenubarSeparator": {
+        "replaces": []
+      },
+      "MenubarShortcut": {
+        "replaces": []
+      },
+      "MenubarItem": {
+        "replaces": []
+      },
+      "MenubarCheckboxItem": {
+        "replaces": []
+      },
+      "MenubarRadioItem": {
+        "replaces": []
+      },
+      "MenubarSub": {
+        "replaces": []
+      },
+      "MenubarSubTrigger": {
+        "replaces": []
+      },
+      "MenubarSubContent": {
+        "replaces": []
+      },
+      "NavigationMenu": {
+        "replaces": []
+      },
+      "NavigationMenuList": {
+        "replaces": []
+      },
+      "NavigationMenuItem": {
+        "replaces": []
+      },
+      "NavigationMenuTrigger": {
+        "replaces": []
+      },
+      "NavigationMenuContent": {
+        "replaces": []
+      },
+      "NavigationMenuLink": {
+        "replaces": []
+      },
+      "NavigationMenuIndicator": {
+        "replaces": []
+      },
+      "NavigationMenuViewport": {
+        "replaces": []
+      },
+      "PageControl": {
+        "replaces": []
+      },
+      "Pagination": {
+        "replaces": []
+      },
+      "PaginationContent": {
+        "replaces": []
+      },
+      "PaginationItem": {
+        "replaces": []
+      },
+      "PaginationLink": {
+        "replaces": []
+      },
+      "PaginationPrevious": {
+        "replaces": []
+      },
+      "PaginationNext": {
+        "replaces": []
+      },
+      "PaginationEllipsis": {
+        "replaces": []
+      },
+      "SegmentedControl": {
+        "replaces": []
+      },
+      "SideNav": {
+        "replaces": []
+      },
+      "SidebarProvider": {
         "replaces": []
       },
       "Sidebar": {
         "replaces": []
       },
-      "SidebarContent": {
+      "SidebarTrigger": {
         "replaces": []
       },
-      "SidebarFooter": {
-        "replaces": []
-      },
-      "SidebarGroup": {
-        "replaces": []
-      },
-      "SidebarGroupAction": {
-        "replaces": []
-      },
-      "SidebarGroupContent": {
-        "replaces": []
-      },
-      "SidebarGroupLabel": {
-        "replaces": []
-      },
-      "SidebarHeader": {
-        "replaces": []
-      },
-      "SidebarInput": {
+      "SidebarRail": {
         "replaces": []
       },
       "SidebarInset": {
         "replaces": []
       },
+      "SidebarHeader": {
+        "replaces": []
+      },
+      "SidebarFooter": {
+        "replaces": []
+      },
+      "SidebarContent": {
+        "replaces": []
+      },
+      "SidebarGroup": {
+        "replaces": []
+      },
+      "SidebarGroupContent": {
+        "replaces": []
+      },
       "SidebarMenu": {
+        "replaces": []
+      },
+      "SidebarMenuItem": {
+        "replaces": []
+      },
+      "SidebarMenuSub": {
+        "replaces": []
+      },
+      "SidebarMenuSubItem": {
+        "replaces": []
+      },
+      "SidebarInput": {
+        "replaces": []
+      },
+      "SidebarSeparator": {
+        "replaces": []
+      },
+      "SidebarGroupLabel": {
+        "replaces": []
+      },
+      "SidebarGroupAction": {
+        "replaces": []
+      },
+      "SidebarMenuButton": {
         "replaces": []
       },
       "SidebarMenuAction": {
@@ -1524,34 +1371,229 @@
       "SidebarMenuBadge": {
         "replaces": []
       },
-      "SidebarMenuButton": {
-        "replaces": []
-      },
-      "SidebarMenuItem": {
+      "SidebarMenuSubButton": {
         "replaces": []
       },
       "SidebarMenuSkeleton": {
         "replaces": []
       },
-      "SidebarMenuSub": {
+      "Steps": {
         "replaces": []
       },
-      "SidebarMenuSubButton": {
+      "Tabs": {
         "replaces": []
       },
-      "SidebarMenuSubItem": {
+      "TabsList": {
         "replaces": []
       },
-      "SidebarProvider": {
+      "TabsTrigger": {
         "replaces": []
       },
-      "SidebarRail": {
+      "TabsContent": {
         "replaces": []
       },
-      "SidebarSeparator": {
+      "TopNav": {
         "replaces": []
       },
-      "SidebarTrigger": {
+      "Command": {
+        "replaces": []
+      },
+      "CommandDialog": {
+        "replaces": []
+      },
+      "CommandInput": {
+        "replaces": []
+      },
+      "CommandList": {
+        "replaces": []
+      },
+      "CommandEmpty": {
+        "replaces": []
+      },
+      "CommandGroup": {
+        "replaces": []
+      },
+      "CommandItem": {
+        "replaces": []
+      },
+      "CommandShortcut": {
+        "replaces": []
+      },
+      "CommandSeparator": {
+        "replaces": []
+      },
+      "ContextMenu": {
+        "replaces": []
+      },
+      "ContextMenuTrigger": {
+        "replaces": []
+      },
+      "ContextMenuPortal": {
+        "replaces": []
+      },
+      "ContextMenuContent": {
+        "replaces": []
+      },
+      "ContextMenuGroup": {
+        "replaces": []
+      },
+      "ContextMenuLabel": {
+        "replaces": []
+      },
+      "ContextMenuSeparator": {
+        "replaces": []
+      },
+      "ContextMenuShortcut": {
+        "replaces": []
+      },
+      "ContextMenuItem": {
+        "replaces": []
+      },
+      "ContextMenuCheckboxItem": {
+        "replaces": []
+      },
+      "ContextMenuRadioGroup": {
+        "replaces": []
+      },
+      "ContextMenuRadioItem": {
+        "replaces": []
+      },
+      "ContextMenuSub": {
+        "replaces": []
+      },
+      "ContextMenuSubTrigger": {
+        "replaces": []
+      },
+      "ContextMenuSubContent": {
+        "replaces": []
+      },
+      "Drawer": {
+        "replaces": []
+      },
+      "DrawerTrigger": {
+        "replaces": []
+      },
+      "DrawerPortal": {
+        "replaces": []
+      },
+      "DrawerClose": {
+        "replaces": []
+      },
+      "DrawerOverlay": {
+        "replaces": []
+      },
+      "DrawerContent": {
+        "replaces": []
+      },
+      "DrawerHeader": {
+        "replaces": []
+      },
+      "DrawerFooter": {
+        "replaces": []
+      },
+      "DrawerTitle": {
+        "replaces": []
+      },
+      "DrawerDescription": {
+        "replaces": []
+      },
+      "DropdownMenu": {
+        "replaces": []
+      },
+      "DropdownMenuTrigger": {
+        "replaces": []
+      },
+      "DropdownMenuPortal": {
+        "replaces": []
+      },
+      "DropdownMenuContent": {
+        "replaces": []
+      },
+      "DropdownMenuGroup": {
+        "replaces": []
+      },
+      "DropdownMenuLabel": {
+        "replaces": []
+      },
+      "DropdownMenuSeparator": {
+        "replaces": []
+      },
+      "DropdownMenuShortcut": {
+        "replaces": []
+      },
+      "DropdownMenuItem": {
+        "replaces": []
+      },
+      "DropdownMenuCheckboxItem": {
+        "replaces": []
+      },
+      "DropdownMenuRadioGroup": {
+        "replaces": []
+      },
+      "DropdownMenuRadioItem": {
+        "replaces": []
+      },
+      "DropdownMenuSub": {
+        "replaces": []
+      },
+      "DropdownMenuSubTrigger": {
+        "replaces": []
+      },
+      "DropdownMenuSubContent": {
+        "replaces": []
+      },
+      "HoverCard": {
+        "replaces": []
+      },
+      "HoverCardTrigger": {
+        "replaces": []
+      },
+      "HoverCardContent": {
+        "replaces": []
+      },
+      "Popover": {
+        "replaces": []
+      },
+      "PopoverTrigger": {
+        "replaces": []
+      },
+      "PopoverContent": {
+        "replaces": []
+      },
+      "PopoverHeader": {
+        "replaces": []
+      },
+      "PopoverTitle": {
+        "replaces": []
+      },
+      "PopoverDescription": {
+        "replaces": []
+      },
+      "Portal": {
+        "replaces": []
+      },
+      "Sheet": {
+        "replaces": []
+      },
+      "SheetTrigger": {
+        "replaces": []
+      },
+      "SheetClose": {
+        "replaces": []
+      },
+      "SheetContent": {
+        "replaces": []
+      },
+      "SheetHeader": {
+        "replaces": []
+      },
+      "SheetFooter": {
+        "replaces": []
+      },
+      "SheetTitle": {
+        "replaces": []
+      },
+      "SheetDescription": {
         "replaces": []
       }
     },

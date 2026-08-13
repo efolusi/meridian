@@ -2,7 +2,7 @@ import { describe, it, expect, vi, beforeEach, afterEach } from 'vitest';
 import { render, screen, within, act } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 
-import { Toaster, toast } from '../components/feedback/Sonner.jsx';
+import { Toaster, toast } from '../components/feedback/Toast.jsx';
 import { Input } from '../components/forms/Input.jsx';
 import { Checkbox } from '../components/forms/Checkbox.jsx';
 import { Table } from '../components/data/Table.jsx';
@@ -10,10 +10,10 @@ import { Button } from '../components/forms/Button.jsx';
 
 describe('Toaster', () => {
   beforeEach(() => vi.useFakeTimers());
-  afterEach(() => { act(() => toast.dismiss()); vi.useRealTimers(); });
+  afterEach(() => { act(() => toast.close()); vi.useRealTimers(); });
 
   function Fire({ options }) {
-    return <button onClick={() => (toast[options.tone] || toast)(options.title, options)}>fire</button>;
+    return <button onClick={() => toast.add({ ...options, type: options.tone })}>fire</button>;
   }
   const fire = () => act(() => { screen.getByText('fire').click(); });
 
@@ -26,7 +26,7 @@ describe('Toaster', () => {
   });
 
   it('supports persistent actionable notifications', () => {
-    render(<Toaster duration={500}><Fire options={{ title: 'Undo?', action: { label: 'Undo', onClick() {} }, duration: 0 }} /></Toaster>);
+    render(<Toaster duration={500}><Fire options={{ title: 'Undo?', actionProps: { children: 'Undo', onClick() {} }, duration: 0 }} /></Toaster>);
     fire();
     act(() => { vi.advanceTimersByTime(5000); });
     expect(screen.getByText('Undo?')).toBeTruthy();
@@ -58,7 +58,7 @@ describe('Toaster', () => {
   });
 
   it('allows producers outside the renderer tree', () => {
-    act(() => toast.info('Queued before mount', { duration: 0 }));
+    act(() => toast.add({ title: 'Queued before mount', type: 'info', duration: 0 }));
     render(<Toaster />);
     expect(screen.getByText('Queued before mount')).toBeTruthy();
   });

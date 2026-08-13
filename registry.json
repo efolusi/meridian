@@ -2330,39 +2330,6 @@
       ]
     },
     {
-      "name": "sonner",
-      "type": "registry:ui",
-      "title": "Toaster",
-      "description": "Mount one `Toaster` near the application root, then call the imperative `toast` API from any event handler.",
-      "dependencies": [
-        "react"
-      ],
-      "registryDependencies": [
-        "https://meridian.efolusi.com/site/registry/meridian-base.json",
-        "https://meridian.efolusi.com/site/registry/button.json",
-        "https://meridian.efolusi.com/site/registry/icon.json",
-        "https://meridian.efolusi.com/site/registry/iconbutton.json",
-        "https://meridian.efolusi.com/site/registry/portal.json"
-      ],
-      "files": [
-        {
-          "path": "components/feedback/Sonner.jsx",
-          "type": "registry:ui"
-        },
-        {
-          "path": "components/feedback/Sonner.d.ts",
-          "type": "registry:component"
-        },
-        {
-          "path": "components/feedback/Sonner.prompt.md",
-          "type": "registry:component"
-        }
-      ],
-      "categories": [
-        "feedback"
-      ]
-    },
-    {
       "name": "spinner",
       "type": "registry:ui",
       "title": "Spinner",
@@ -2385,6 +2352,39 @@
         },
         {
           "path": "components/feedback/Spinner.prompt.md",
+          "type": "registry:component"
+        }
+      ],
+      "categories": [
+        "feedback"
+      ]
+    },
+    {
+      "name": "toast",
+      "type": "registry:ui",
+      "title": "Toaster",
+      "description": "Mount one `Toaster` near the application root, then publish succinct status updates through the manager.",
+      "dependencies": [
+        "react"
+      ],
+      "registryDependencies": [
+        "https://meridian.efolusi.com/site/registry/meridian-base.json",
+        "https://meridian.efolusi.com/site/registry/button.json",
+        "https://meridian.efolusi.com/site/registry/icon.json",
+        "https://meridian.efolusi.com/site/registry/iconbutton.json",
+        "https://meridian.efolusi.com/site/registry/portal.json"
+      ],
+      "files": [
+        {
+          "path": "components/feedback/Toast.jsx",
+          "type": "registry:ui"
+        },
+        {
+          "path": "components/feedback/Toast.d.ts",
+          "type": "registry:component"
+        },
+        {
+          "path": "components/feedback/Toast.prompt.md",
           "type": "registry:component"
         }
       ],
@@ -2975,6 +2975,36 @@
         },
         {
           "path": "components/forms/NumberInput.prompt.md",
+          "type": "registry:component"
+        }
+      ],
+      "categories": [
+        "forms"
+      ]
+    },
+    {
+      "name": "questionnaire",
+      "type": "registry:ui",
+      "title": "Questionnaire + QuestionnaireProgress + QuestionnaireItem + QuestionnaireTitle + QuestionnaireDescription + QuestionnaireChoices + QuestionnaireChoice + QuestionnaireInput + QuestionnaireError + QuestionnaireActions + QuestionnairePrevious + QuestionnaireSkip + QuestionnaireNext + QuestionnaireSubmit",
+      "description": "Compose a multi-step form with `Questionnaire` and its explicit parts. Pass the same ordered `items` collection to the root that you map into `QuestionnaireItem` children so progress, navigation, validation, shortcuts, and server output agree.",
+      "dependencies": [
+        "react"
+      ],
+      "registryDependencies": [
+        "https://meridian.efolusi.com/site/registry/meridian-base.json",
+        "https://meridian.efolusi.com/site/registry/button.json"
+      ],
+      "files": [
+        {
+          "path": "components/forms/Questionnaire.jsx",
+          "type": "registry:ui"
+        },
+        {
+          "path": "components/forms/Questionnaire.d.ts",
+          "type": "registry:component"
+        },
+        {
+          "path": "components/forms/Questionnaire.prompt.md",
           "type": "registry:component"
         }
       ],

@@ -22,7 +22,7 @@ Efolusi ships WCAG 2.1 AA. The rules, per concern:
 ## Semantics baked into components
 - Icon: `aria-hidden` unless `title` given (then `role="img"`)
 - IconButton: `label` prop is required → `aria-label` + `title`
-- Dialog/Drawer: `role="dialog" aria-modal="true"`; Alert: `role="status"`; Sonner uses one polite live region on `Toaster`.
+- Dialog/Drawer: `role="dialog" aria-modal="true"`; Alert: `role="status"`; Toast uses one polite live region on `Toaster`.
 - Tabs: `role="tablist"/"tab"` + `aria-selected`; Switch: `role="switch"`
 - Table: real `<table>` semantics; Pagination: `aria-current="page"`
 - Skeleton is decorative — pair with visually-hidden "Loading…" when it replaces content

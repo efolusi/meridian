@@ -2,7 +2,7 @@
 
 The entire design system in one file, generated from llms.txt, components/*/, and tokens/*.css by scripts/build_llms.py. Do not edit by hand. The short map of the repository is /llms.txt.
 
-> Meridian is a general-purpose open-source design system by Efolusi: 121 accessible React components, 165 design tokens (light, dark, compact), blocks, charts, and full example apps — served browser-native with zero build step. MIT licensed.
+> Meridian is a general-purpose open-source design system by Efolusi: 122 accessible React components, 165 design tokens (light, dark, compact), blocks, charts, and full example apps — served browser-native with zero build step. MIT licensed.
 
 Live docs: https://meridian.efolusi.com · Source: https://github.com/efolusi/meridian · License: MIT
 
@@ -30,7 +30,7 @@ Dark mode: set data-theme="dark" on any subtree. Compact density: data-density="
 
 ## Components
 
-121 components across 12 groups: ai, code, data, dates, display, feedback, files, finance, forms, icons, navigation, overlay. Each entry lists the component's public exports, its usage guidance (.prompt.md), and its typed props interface (.d.ts).
+122 components across 12 groups: ai, code, data, dates, display, feedback, files, finance, forms, icons, navigation, overlay. Each entry lists the component's public exports, its usage guidance (.prompt.md), and its typed props interface (.d.ts).
 
 ### ai
 
@@ -2698,36 +2698,6 @@ export interface ProgressProps extends React.HTMLAttributes<HTMLDivElement> {
 export declare const Progress: React.ForwardRefExoticComponent<ProgressProps & React.RefAttributes<HTMLDivElement>>;
 ```
 
-#### Sonner
-
-Group: feedback · Source: /components/feedback/Sonner.jsx · Exports: Toaster
-
-# Sonner
-
-Mount one `Toaster` near the application root, then call the imperative `toast` API from any event handler.
-
-```jsx
-<Toaster position="bottom-right" closeButton />
-
-toast.success('Run completed', {
-  description: 'All production regions are healthy.',
-  action: { label: 'View run', onClick: openRun },
-})
-```
-
-Use `toast.info`, `toast.warning`, `toast.error`, `toast.loading`, `toast.promise`, `toast.custom`, and `toast.dismiss` for the corresponding lifecycle. Hovering or focusing the stack pauses dismissal timers.
-
-```ts
-import * as React from 'react';
-export type ToastPosition = 'top-left' | 'top-center' | 'top-right' | 'bottom-left' | 'bottom-center' | 'bottom-right';
-export interface ToastAction { label: React.ReactNode; onClick: () => void }
-export interface ExternalToast { id?: string | number; description?: React.ReactNode | ((value: unknown) => React.ReactNode); duration?: number; action?: React.ReactNode | ToastAction; closeButton?: boolean }
-export interface ToastFunction { (message: React.ReactNode, options?: ExternalToast): string | number; success(message: React.ReactNode, options?: ExternalToast): string | number; info(message: React.ReactNode, options?: ExternalToast): string | number; warning(message: React.ReactNode, options?: ExternalToast): string | number; error(message: React.ReactNode, options?: ExternalToast): string | number; loading(message: React.ReactNode, options?: ExternalToast): string | number; custom(message: React.ReactElement, options?: ExternalToast): string | number; message(message: React.ReactNode, options?: ExternalToast): string | number; dismiss(id?: string | number): void; promise<T>(promise: Promise<T> | (() => Promise<T>), data: { loading?: React.ReactNode; success?: React.ReactNode | ((value: T) => React.ReactNode); error?: React.ReactNode | ((error: unknown) => React.ReactNode); description?: React.ReactNode | ((value: T) => React.ReactNode); duration?: number }): string | number }
-export const toast: ToastFunction;
-export interface ToasterProps extends React.HTMLAttributes<HTMLDivElement> { position?: ToastPosition; visibleToasts?: number; closeButton?: boolean; richColors?: boolean; duration?: number; toastOptions?: ExternalToast; expand?: boolean; theme?: 'light' | 'dark' | 'system'; dir?: 'ltr' | 'rtl'; gap?: number; offset?: number | string; mobileOffset?: number | string; label?: string; children?: React.ReactNode }
-export function Toaster(props: ToasterProps): React.JSX.Element;
-```
-
 #### Spinner
 
 Group: feedback · Source: /components/feedback/Spinner.jsx · Exports: Spinner
@@ -2744,6 +2714,59 @@ Use native `width` and `height` attributes to change dimensions and `aria-label`
 ```ts
 export type SpinnerProps = React.SVGProps<SVGSVGElement>;
 export declare const Spinner: React.ForwardRefExoticComponent<SpinnerProps & React.RefAttributes<SVGSVGElement>>;
+```
+
+#### Toast
+
+Group: feedback · Source: /components/feedback/Toast.jsx · Exports: Toaster
+
+# Toast
+
+Mount one `Toaster` near the application root, then publish succinct status updates through the manager.
+
+```jsx
+<Toaster position="bottom-right" closeButton />
+
+const id = toast.add({
+  title: 'Run completed',
+  description: 'All checks passed.',
+  type: 'success',
+  actionProps: { children: 'View report', onClick: openReport },
+})
+
+toast.close(id)
+```
+
+Use `toast.promise` to update the same notification through loading, success, and error states. Hovering or focusing the stack pauses dismissal timers.
+
+```ts
+import * as React from 'react';
+
+export type ToastPosition = 'top-left' | 'top-center' | 'top-right' | 'bottom-left' | 'bottom-center' | 'bottom-right';
+export type ToastType = 'default' | 'success' | 'info' | 'warning' | 'error' | 'loading';
+export interface ToastOptions {
+  id?: string | number;
+  title: React.ReactNode;
+  description?: React.ReactNode;
+  type?: ToastType;
+  duration?: number;
+  actionProps?: React.ButtonHTMLAttributes<HTMLButtonElement>;
+  closeButton?: boolean;
+}
+export interface ToastPromiseOptions<T> {
+  loading: React.ReactNode | Partial<ToastOptions>;
+  success: React.ReactNode | Partial<ToastOptions> | ((value: T) => React.ReactNode | Partial<ToastOptions>);
+  error: React.ReactNode | Partial<ToastOptions> | ((error: unknown) => React.ReactNode | Partial<ToastOptions>);
+  duration?: number;
+}
+export interface ToastManager {
+  add(options: ToastOptions): string | number;
+  close(id?: string | number): void;
+  promise<T>(promise: Promise<T> | (() => Promise<T>), options: ToastPromiseOptions<T>): string | number;
+}
+export const toast: ToastManager;
+export interface ToasterProps extends React.HTMLAttributes<HTMLDivElement> { position?: ToastPosition; visibleToasts?: number; closeButton?: boolean; richColors?: boolean; duration?: number; toastOptions?: Partial<ToastOptions>; expand?: boolean; theme?: 'light' | 'dark' | 'system'; dir?: 'ltr' | 'rtl'; gap?: number; offset?: number | string; mobileOffset?: number | string; label?: string; children?: React.ReactNode }
+export function Toaster(props: ToasterProps): React.JSX.Element;
 ```
 
 #### Tooltip
@@ -3412,6 +3435,50 @@ export interface NumberInputProps extends Omit<React.InputHTMLAttributes<HTMLInp
  * rails. Steppers disable at the rails.
  */
 export declare function NumberInput(props: NumberInputProps): React.JSX.Element;
+```
+
+#### Questionnaire
+
+Group: forms · Source: /components/forms/Questionnaire.jsx · Exports: Questionnaire, QuestionnaireProgress, QuestionnaireItem, QuestionnaireTitle, QuestionnaireDescription, QuestionnaireChoices, QuestionnaireChoice, QuestionnaireInput, QuestionnaireError, QuestionnaireActions, QuestionnairePrevious, QuestionnaireSkip, QuestionnaireNext, QuestionnaireSubmit
+
+Compose a multi-step form with `Questionnaire` and its explicit parts. Pass the same ordered `items` collection to the root that you map into `QuestionnaireItem` children so progress, navigation, validation, shortcuts, and server output agree.
+
+```jsx
+<Questionnaire items={items} onSubmit={save}>
+  <QuestionnaireProgress />
+  {items.map(item => <QuestionnaireItem key={item.name} name={item.name} required={item.required} multiple={item.multiple}>
+    <QuestionnaireTitle>{item.prompt}</QuestionnaireTitle>
+    <QuestionnaireDescription>{item.description}</QuestionnaireDescription>
+    <QuestionnaireChoices>{item.choices.map(choice => <QuestionnaireChoice key={choice.value} value={choice.value}>{choice.label}</QuestionnaireChoice>)}</QuestionnaireChoices>
+    <QuestionnaireError />
+  </QuestionnaireItem>)}
+  <QuestionnaireActions><QuestionnairePrevious /><QuestionnaireSkip /><QuestionnaireNext /><QuestionnaireSubmit /></QuestionnaireActions>
+</Questionnaire>
+```
+
+Items render semantic `fieldset`/`legend` pairs. Choices are native radios or checkboxes, freeform answers use `QuestionnaireInput`, optional questions can be explicitly skipped, and controlled navigation uses `item` with `onItemChange`.
+
+```ts
+import * as React from 'react';
+export type QuestionnaireItemStatus = 'unanswered' | 'answered' | 'skipped';
+export interface QuestionnaireItemDefinition { name: string; required?: boolean; multiple?: boolean; disabled?: boolean; choices?: Array<{ value: string; disabled?: boolean }>; }
+export interface QuestionnaireProps extends React.FormHTMLAttributes<HTMLFormElement> { items?: QuestionnaireItemDefinition[]; item?: string; defaultItem?: string; onItemChange?: (item: string) => void; shortcuts?: 'letters' | 'numbers'; }
+export declare const Questionnaire: React.ForwardRefExoticComponent<QuestionnaireProps & React.RefAttributes<HTMLFormElement>>;
+export declare const QuestionnaireProgress: React.ForwardRefExoticComponent<React.HTMLAttributes<HTMLDivElement> & React.RefAttributes<HTMLDivElement>>;
+export interface QuestionnaireItemProps extends React.FieldsetHTMLAttributes<HTMLFieldSetElement> { name: string; multiple?: boolean; invalid?: boolean; onStatusChange?: (status: QuestionnaireItemStatus) => void; }
+export declare const QuestionnaireItem: React.ForwardRefExoticComponent<QuestionnaireItemProps & React.RefAttributes<HTMLFieldSetElement>>;
+export declare const QuestionnaireTitle: React.ForwardRefExoticComponent<React.HTMLAttributes<HTMLLegendElement> & React.RefAttributes<HTMLLegendElement>>;
+export declare const QuestionnaireDescription: React.ForwardRefExoticComponent<React.HTMLAttributes<HTMLParagraphElement> & React.RefAttributes<HTMLParagraphElement>>;
+export declare const QuestionnaireChoices: React.ForwardRefExoticComponent<React.HTMLAttributes<HTMLDivElement> & React.RefAttributes<HTMLDivElement>>;
+export interface QuestionnaireChoiceProps extends Omit<React.LabelHTMLAttributes<HTMLLabelElement>, 'onChange'> { value: string; checked?: boolean; defaultChecked?: boolean; disabled?: boolean; onChange?: React.ChangeEventHandler<HTMLInputElement>; }
+export declare const QuestionnaireChoice: React.ForwardRefExoticComponent<QuestionnaireChoiceProps & React.RefAttributes<HTMLInputElement>>;
+export declare const QuestionnaireInput: React.ForwardRefExoticComponent<React.InputHTMLAttributes<HTMLInputElement> & React.RefAttributes<HTMLInputElement>>;
+export declare const QuestionnaireError: React.ForwardRefExoticComponent<React.HTMLAttributes<HTMLParagraphElement> & React.RefAttributes<HTMLParagraphElement>>;
+export declare const QuestionnaireActions: React.ForwardRefExoticComponent<React.HTMLAttributes<HTMLDivElement> & React.RefAttributes<HTMLDivElement>>;
+export declare const QuestionnairePrevious: React.ForwardRefExoticComponent<React.ButtonHTMLAttributes<HTMLButtonElement> & React.RefAttributes<HTMLButtonElement>>;
+export declare const QuestionnaireSkip: React.ForwardRefExoticComponent<React.ButtonHTMLAttributes<HTMLButtonElement> & React.RefAttributes<HTMLButtonElement>>;
+export declare const QuestionnaireNext: React.ForwardRefExoticComponent<React.ButtonHTMLAttributes<HTMLButtonElement> & React.RefAttributes<HTMLButtonElement>>;
+export declare const QuestionnaireSubmit: React.ForwardRefExoticComponent<React.ButtonHTMLAttributes<HTMLButtonElement> & React.RefAttributes<HTMLButtonElement>>;
 ```
 
 #### Radio

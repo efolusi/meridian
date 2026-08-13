@@ -1,4 +1,4 @@
-<!-- @dsCard group="Components" viewport="700x560" name="Feedback" subtitle="Banner, Alert, Progress, Sonner, Dialog, ConfirmDialog" -->
+<!-- @dsCard group="Components" viewport="700x560" name="Feedback" subtitle="Banner, Alert, Progress, Toast, Dialog, ConfirmDialog" -->
 <!DOCTYPE html><html><head><meta charset="utf-8"><link rel="stylesheet" href="../../styles.css">
 <script src="https://unpkg.com/react@18.3.1/umd/react.production.min.js" integrity="sha384-DGyLxAyjq0f9SPpVevD6IgztCFlnMF6oW/XQGmfe+IsZ8TqEiDrcHkMLKI6fiB/Z" crossorigin="anonymous"></script>
 <script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.production.min.js" integrity="sha384-gTGxhz21lVGYNMcdJOyq01Edg0jhn/c22nsx0kyqP0TxaV5WVdsSH1fSDUf5YJj1" crossorigin="anonymous"></script>
@@ -34,7 +34,7 @@ function Demo() {
         <DialogFooter><DialogClose asChild><Button variant="ghost">Cancel</Button></DialogClose><DialogClose asChild><Button>Save changes</Button></DialogClose></DialogFooter>
       </DialogContent></Dialog>
       <Toaster position="bottom-right" closeButton />
-      <Button variant="secondary" onClick={() => toast.success('Invite sent', { description: 'Ada will get an email in a minute.' })}>Preview notification</Button>
+      <Button variant="secondary" onClick={() => toast.add({ title: 'Invite sent', description: 'Ada will get an email in a minute.', type: 'success' })}>Preview notification</Button>
       </div>
       <div style={{ display: 'flex', flexDirection: 'column', gap: 12 }}>
         <Loader dots>Thinking</Loader>

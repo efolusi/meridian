@@ -124,22 +124,25 @@ def bundle_components():
     return [{"name": c["name"], "sourcePath": c["sourcePath"]} for c in meta["components"]]
 
 
-def sync_adherence_tokens(tokens, check=False):
-    """Keep the compiler-owned adherence token inventory aligned to token source."""
+def sync_adherence(components, tokens, check=False):
+    """Keep compiler-owned adherence inventories aligned to public source."""
     adherence = json.loads(ADHERENCE.read_text())
     metadata = adherence["x-omelette"]
     names = sorted({entry["name"] for entry in tokens})
     kinds = {name: next(entry["kind"] for entry in tokens if entry["name"] == name) for name in names}
-    changed = metadata.get("tokens") != names or metadata.get("tokenKinds") != kinds
+    component_metadata = {entry["name"]: {"replaces": []} for entry in components}
+    changed = (metadata.get("components") != component_metadata
+               or metadata.get("tokens") != names or metadata.get("tokenKinds") != kinds)
     if not changed:
         return False
     if check:
-        print("adherence token inventory OUT OF DATE")
+        print("adherence inventories OUT OF DATE")
         return True
+    metadata["components"] = component_metadata
     metadata["tokens"] = names
     metadata["tokenKinds"] = kinds
     ADHERENCE.write_text(json.dumps(adherence, indent=2) + "\n")
-    print(f"adherence tokens: {len(names)} entries")
+    print(f"adherence metadata: {len(component_metadata)} components, {len(names)} tokens")
     return True
 
 
@@ -215,7 +218,7 @@ def main():
     existing_kinds = {e["name"]: e["kind"] for e in old}
     new = build(existing_kinds)
 
-    adherence_changed = sync_adherence_tokens(new, check=check)
+    adherence_changed = sync_adherence(new_components, new, check=check)
 
     if (old == new and old_components == new_components and old_version == new_version
             and old_templates == new_templates and not adherence_changed):

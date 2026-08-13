@@ -13,10 +13,10 @@ function App() {
   const [mode, setMode] = React.useState('signin');
   const done = kind => {
     if (kind === 'sso') {
-      toast.info('Redirecting to your identity provider', { description: 'SSO is configured by your workspace admin.' });
+      toast.add({ title: 'Redirecting to your identity provider', description: 'SSO is configured by your workspace admin.', type: 'info' });
       return;
     }
-    toast.success(kind === true ? 'Account created' : 'Signed in', { description: kind === true ? 'Check your inbox to verify your email.' : 'Taking you to Acme Workspace…' });
+    toast.add({ title: kind === true ? 'Account created' : 'Signed in', description: kind === true ? 'Check your inbox to verify your email.' : 'Taking you to Acme Workspace…', type: 'success' });
     setTimeout(() => { window.location.href = '../console/index.html'; }, 1600);
   };
   return (

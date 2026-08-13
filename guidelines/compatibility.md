@@ -1,6 +1,6 @@
 # Meridian compatibility audit
 
-Snapshot: 2026-08-11. This document tracks migration compatibility against the
+Snapshot: 2026-08-13. This document tracks migration compatibility against the
 public component-registry contract without importing another system's identity
 into Meridian. A matching concept is not automatically a compatible API; every
 claim needs source, type, interaction, registry, and browser proof.
@@ -9,9 +9,9 @@ claim needs source, type, interaction, registry, and browser proof.
 
 - Meridian publishes editable source through a root GitHub registry and a
   byte-identical hosted registry.
-- The catalogue covers the common component responsibilities, but several are
-  expressed under Meridian terminology or as compositions.
-- Conceptual coverage is therefore not yet a 100% migration guarantee.
+- The current official inventory contains 64 families. Meridian has committed
+  source, type, registry, and executable proof for all 64, including the
+  Questionnaire composition and Toast manager contracts.
 - The registry schema URL is a machine protocol identifier, not repository
   branding. It is the only allowed external product identifier in
   Meridian-authored content.
@@ -37,13 +37,9 @@ similarity.
 
 ## Known gaps
 
-1. Renamed equivalents still require an adapter or application rewrite.
-2. Composed equivalents need canonical recipes and integration fixtures.
-3. Registry installation is covered, but migration fixtures do not yet exercise
-   the complete public API surface.
-4. Cross-browser proof remains incomplete for Safari, Firefox, and Edge.
-5. Blocks and starters need more realistic end-to-end product journeys, not
-   isolated component collages.
+1. Cross-browser proof remains incomplete for Safari, Firefox, and Edge.
+2. Complete migration fixtures still need to exercise every public prop and
+   state, rather than only representative contracts per family.
 
 ## Proven adapters
 
@@ -95,8 +91,8 @@ similarity.
 - `Toggle` and `toggleVariants` support default and outline variants, the
   complete size contract, controlled and uncontrolled pressed state, composed
   click handlers, disabled behavior, native button props, ref forwarding,
-  types, registry installation, demos, and tests. Meridian's icon, `md`, and
-  legacy grouping helpers remain additive extensions.
+  types, registry installation, demos, and tests. Meridian-specific icon and
+  layout helpers remain additive extensions outside the migration contract.
 - `Textarea` renders a native textarea, forwards native attributes, events,
   styles, classes, and refs, and includes types, registry installation, demos,
   and tests. Meridian's integrated label, hint, error, and invalid helpers
@@ -125,8 +121,7 @@ similarity.
 - `Button` and `buttonVariants` support the complete public variant and size
   matrices, documented defaults, semantic-link styling, native button props,
   events, disabled behavior, ref forwarding, types, registry installation,
-  demos, and tests. Meridian's older aliases remain available for existing
-  consumers.
+  demos, and tests. Meridian-specific loading and icon helpers are additive.
 - `Attachment` and its eight compositional parts support upload states, sizes,
   orientations, icon/image media, independent actions, polymorphic full-card
   triggers, scrollable groups, ref forwarding, types, registry installation,
@@ -186,13 +181,13 @@ similarity.
 - `Table` and its header, body, footer, row, head, cell, and caption parts
   provide semantic table composition, scroll containment, native props, refs,
   types, registry installation, demos, and tests. Meridian's sortable,
-  selectable data-array adapter remains available for existing products.
+  selectable data-array mode is an additive first-class contract.
 
 - `Tabs`, `TabsList`, `TabsTrigger`, and `TabsContent` support controlled and
   uncontrolled state, horizontal and vertical orientation, line styling,
   disabled triggers, direction-aware keyboard navigation, native props, refs,
-  types, registry installation, demos, and tests. Meridian's item-array adapter
-  remains available for existing products.
+  types, registry installation, demos, and tests. Meridian's item-array mode is
+  an additive first-class contract.
 
 - `Switch` supports controlled and uncontrolled checked state, native form
   participation, keyboard and pointer interaction, state attributes, refs,
@@ -256,6 +251,12 @@ similarity.
   one semantic input with composable visual slots, controlled and uncontrolled
   state, paste-sized changes, pattern filtering, completion callbacks, invalid
   and disabled states, refs, types, registry installation, demos, and tests.
+
+- `Questionnaire` and its progress, item, title, description, choices, choice,
+  input, error, actions, previous, skip, next, and submit parts provide ordered
+  multi-step forms, native radio and checkbox answers, freeform answers,
+  required-item validation, explicit skip state, controlled navigation,
+  progress semantics, refs, types, registry installation, demos, and tests.
 
 
 ## Release gate

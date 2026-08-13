@@ -27,7 +27,7 @@ const { Button, Card, CardContent, CardDescription, CardHeader, CardTitle, Stat,
 
 function App() {
   const [name, setName] = React.useState('');
-  const cheer = () => toast.success('It works', {
+  const cheer = () => toast.add({ title: 'It works', type: 'success',
     description: name ? `Nice to meet you, ${name}.` : 'You are running Meridian.',
   });
   return (

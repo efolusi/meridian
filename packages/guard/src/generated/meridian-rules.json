@@ -1159,6 +1159,62 @@
       "sourcePath": "components/ai/PromptSteps.jsx"
     },
     {
+      "name": "Questionnaire",
+      "sourcePath": "components/forms/Questionnaire.jsx"
+    },
+    {
+      "name": "QuestionnaireActions",
+      "sourcePath": "components/forms/Questionnaire.jsx"
+    },
+    {
+      "name": "QuestionnaireChoice",
+      "sourcePath": "components/forms/Questionnaire.jsx"
+    },
+    {
+      "name": "QuestionnaireChoices",
+      "sourcePath": "components/forms/Questionnaire.jsx"
+    },
+    {
+      "name": "QuestionnaireDescription",
+      "sourcePath": "components/forms/Questionnaire.jsx"
+    },
+    {
+      "name": "QuestionnaireError",
+      "sourcePath": "components/forms/Questionnaire.jsx"
+    },
+    {
+      "name": "QuestionnaireInput",
+      "sourcePath": "components/forms/Questionnaire.jsx"
+    },
+    {
+      "name": "QuestionnaireItem",
+      "sourcePath": "components/forms/Questionnaire.jsx"
+    },
+    {
+      "name": "QuestionnaireNext",
+      "sourcePath": "components/forms/Questionnaire.jsx"
+    },
+    {
+      "name": "QuestionnairePrevious",
+      "sourcePath": "components/forms/Questionnaire.jsx"
+    },
+    {
+      "name": "QuestionnaireProgress",
+      "sourcePath": "components/forms/Questionnaire.jsx"
+    },
+    {
+      "name": "QuestionnaireSkip",
+      "sourcePath": "components/forms/Questionnaire.jsx"
+    },
+    {
+      "name": "QuestionnaireSubmit",
+      "sourcePath": "components/forms/Questionnaire.jsx"
+    },
+    {
+      "name": "QuestionnaireTitle",
+      "sourcePath": "components/forms/Questionnaire.jsx"
+    },
+    {
       "name": "Radio",
       "sourcePath": "components/forms/Radio.jsx"
     },
@@ -1492,7 +1548,7 @@
     },
     {
       "name": "Toaster",
-      "sourcePath": "components/feedback/Sonner.jsx"
+      "sourcePath": "components/feedback/Toast.jsx"
     },
     {
       "name": "Todo",

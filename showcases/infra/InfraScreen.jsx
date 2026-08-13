@@ -26,7 +26,7 @@ function InfraScreen() {
   const [connect, setConnect] = React.useState(false);
   const [cli, setCli] = React.useState(false);
   const [extra, setExtra] = React.useState([]);
-  const notify = (title, description) => toast.success(title, { description });
+  const notify = (title, description) => toast.add({ title, description, type: 'success' });
   const rows = tab === 'resources' ? [...RESOURCES, ...extra] : tab === 'domains' ? DOMAINS : CERTS;
   return (
     <div style={{ height: '100vh', display: 'flex', flexDirection: 'column' }}>

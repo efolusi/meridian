@@ -32,6 +32,7 @@ const FIX = process.argv.includes('--fix')
  */
 const GENERATORS = [
   ['python3', ['scripts/build_registry.py']],
+  ['node', ['scripts/build_docs_registry.mjs']],
   ['python3', ['scripts/build_tokens.py']],
   ['python3', ['scripts/build_interfaces.py']],
   ['python3', ['scripts/build_llms.py']],
@@ -53,6 +54,7 @@ const GENERATED_PATHS = [
   'registry.json',
   'site/registry',
   'site/registry.json',
+  'site/registry.js',
   'site/interfaces.json',
   'tokens.json',
   'tailwind.preset.js',

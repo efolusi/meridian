@@ -75,7 +75,7 @@ const CMD_GROUPS = [
 function AgentScreen() {
   const [running, setRunning] = React.useState(true);
   const [cmdk, setCmdk] = React.useState(false);
-  const notify = (title, description) => toast.success(title, { description });
+  const notify = (title, description) => toast.add({ title, description, type: 'success' });
   const runCommand = id => {
     setCmdk(false);
     if (id === 'new-task') notify('New task', 'Describe the outcome in the composer below.');

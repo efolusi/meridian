@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "snapshot": "2026-08-12",
+  "snapshot": "2026-08-13",
   "policy": "Runtime components require source, API, interaction, registry, and test evidence. Upstream guides require authored recipe and test evidence without invented exports. Deprecated families require a tested migration target.",
   "components": [
     {
@@ -427,13 +427,21 @@
       "tests": ["tests/progress-compatibility.test.jsx"]
     },
     {
-      "name": "Sonner",
+      "name": "Questionnaire",
+      "status": "proven",
+      "requiredExports": ["Questionnaire", "QuestionnaireProgress", "QuestionnaireItem", "QuestionnaireTitle", "QuestionnaireDescription", "QuestionnaireChoices", "QuestionnaireChoice", "QuestionnaireInput", "QuestionnaireError", "QuestionnaireActions", "QuestionnairePrevious", "QuestionnaireSkip", "QuestionnaireNext", "QuestionnaireSubmit"],
+      "sourceFiles": ["components/forms/Questionnaire.jsx", "components/forms/Questionnaire.d.ts"],
+      "registryItems": ["site/registry/questionnaire.json"],
+      "tests": ["tests/questionnaire-compatibility.test.jsx"]
+    },
+    {
+      "name": "Toast",
       "status": "proven",
       "requiredExports": ["Toaster"],
       "requiredModuleExports": ["toast"],
-      "sourceFiles": ["components/feedback/Sonner.jsx", "components/feedback/Sonner.d.ts"],
-      "registryItems": ["site/registry/sonner.json"],
-      "tests": ["tests/sonner-compatibility.test.jsx"]
+      "sourceFiles": ["components/feedback/Toast.jsx", "components/feedback/Toast.d.ts"],
+      "registryItems": ["site/registry/toast.json"],
+      "tests": ["tests/toast-compatibility.test.jsx", "tests/runtime.test.jsx"]
     },
     {
       "name": "Radio Group",

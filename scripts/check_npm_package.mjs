@@ -26,11 +26,15 @@ if (missing.length) {
   console.error('missing or unrenderable exports:', missing.join(', '));
   process.exit(1);
 }
-for (const helper of ['badgeVariants', 'buttonVariants', 'markerVariants', 'navigationMenuTriggerStyle', 'toast', 'toggleVariants', 'useChart', 'useMessageScroller', 'useMessageScrollerScrollable', 'useMessageScrollerVisibility', 'useSidebar']) {
+for (const helper of ['badgeVariants', 'buttonVariants', 'markerVariants', 'navigationMenuTriggerStyle', 'toggleVariants', 'useChart', 'useMessageScroller', 'useMessageScrollerScrollable', 'useMessageScrollerVisibility', 'useSidebar']) {
   if (typeof barrel[helper] !== 'function') {
     console.error(`missing public style helper: ${helper}`);
     process.exit(1);
   }
+}
+if (!barrel.toast || typeof barrel.toast.add !== 'function' || typeof barrel.toast.close !== 'function' || typeof barrel.toast.promise !== 'function') {
+  console.error('missing public Toast manager');
+  process.exit(1);
 }
 
 // Deep imports must be checked THROUGH the package name, not by file path.
@@ -62,7 +66,7 @@ try {
     // both spellings, because both appear in the docs and in the wild
     `${NAME}/forms/Button.js`, `${NAME}/forms/Button`,
     `${NAME}/data/Table.js`, `${NAME}/data/Table`,
-    `${NAME}/overlay/Portal.js`, `${NAME}/feedback/Sonner.js`,
+    `${NAME}/overlay/Portal.js`, `${NAME}/feedback/Toast.js`,
   ];
   const unresolvable = [];
   for (const s of specs) if (!(await resolvesByName(s))) unresolvable.push(s);

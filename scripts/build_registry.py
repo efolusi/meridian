@@ -50,7 +50,7 @@ REGISTRY_NAME_OVERRIDES = {
     "components/display/Direction.jsx": "direction",
     "components/forms/Radio.jsx": "radio-group",
     "components/navigation/Sidebar.jsx": "sidebar",
-    "components/feedback/Sonner.jsx": "sonner",
+    "components/feedback/Toast.jsx": "toast",
 }
 
 EXTERNAL_DEPENDENCIES = {

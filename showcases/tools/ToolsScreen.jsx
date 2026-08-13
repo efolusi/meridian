@@ -48,7 +48,7 @@ function ToolsScreen() {
         if (out.every(f => f.state === 'done')) {
           clearInterval(t);
           setPhase(2);
-          toast.success('Everything converted', { description: 'Files are ready to download.' });
+          toast.add({ title: 'Everything converted', description: 'Files are ready to download.', type: 'success' });
         }
         return out;
       });

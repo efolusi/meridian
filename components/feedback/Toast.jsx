@@ -15,12 +15,9 @@ const CSS = `
 `;
 const ICONS = { success: 'circle-check', danger: 'circle-alert', warning: 'triangle-alert', info: 'info' };
 
-function SonnerToast({ tone = 'info', title, description, action, onClose, role = 'status', style, className, ...rest }) {
+function ToastItem({ tone = 'info', title, description, actionProps, onClose, role = 'status', style, className, ...rest }) {
   injectEfCss('ef-css-toast', CSS);
-  const actionNode = React.isValidElement(action) ? action : action && typeof action === 'object'
-    ? <button className="ef-toast__action" onClick={action.onClick}>{action.label}</button>
-    : action ? <span className="ef-toast__action">{action}</span>
-    : null;
+  const actionNode = actionProps ? <button type="button" {...actionProps} className={`ef-toast__action${actionProps.className ? ` ${actionProps.className}` : ''}`} /> : null;
   return <div {...rest} data-slot="toast" className={`ef-toast ef-toast--${tone}${className ? ` ${className}` : ''}`} role={role || undefined} style={style}>
     <span className="ef-toast__icon" aria-hidden="true"><Icon name={ICONS[tone] || 'info'} size={18} /></span>
     <div style={{ flex: 1 }}><div className="ef-toast__title">{title}</div>{description ? <div className="ef-toast__desc">{description}</div> : null}{actionNode}</div>
@@ -28,7 +25,7 @@ function SonnerToast({ tone = 'info', title, description, action, onClose, role 
   </div>;
 }
 
-function SonnerStack({ children, position = 'bottom-right', style, className, ...rest }) {
+function ToastStack({ children, position = 'bottom-right', style, className, ...rest }) {
   injectEfCss('ef-css-toast', CSS);
   return <div {...rest} data-slot="toaster" data-position={position} className={`ef-toast-stack${className ? ` ${className}` : ''}`} style={style}>{children}</div>;
 }
@@ -42,7 +39,7 @@ const timers = new Map();
 const emit = () => listeners.forEach(listener => listener(records));
 const resolve = (value, payload) => typeof value === 'function' ? value(payload) : value;
 
-function dismiss(id) {
+function close(id) {
   if (id == null) { timers.forEach(timer => clearTimeout(timer.handle)); timers.clear(); records = []; }
   else { const timer = timers.get(id); if (timer?.handle) clearTimeout(timer.handle); timers.delete(id); records = records.filter(item => item.id !== id); }
   emit();
@@ -50,37 +47,30 @@ function dismiss(id) {
 function schedule(id, duration) {
   if (!(duration > 0)) return;
   const timer = { remaining: duration, startedAt: Date.now(), handle: null };
-  timer.handle = setTimeout(() => dismiss(id), duration); timers.set(id, timer);
+  timer.handle = setTimeout(() => close(id), duration); timers.set(id, timer);
 }
-function create(message, options = {}, type = 'default') {
+function add(options = {}) {
   const merged = { ...defaultToastOptions, ...options };
   const id = merged.id ?? `toast-${++sequence}`;
-  const next = { ...merged, id, title: message, type };
+  const next = { ...merged, id, type: merged.type || 'default' };
   const previous = timers.get(id); if (previous?.handle) clearTimeout(previous.handle); timers.delete(id);
   records = records.some(item => item.id === id) ? records.map(item => item.id === id ? next : item) : [...records, next];
-  schedule(id, merged.duration ?? (type === 'loading' ? 0 : defaultDuration)); emit(); return id;
+  schedule(id, merged.duration ?? (next.type === 'loading' || next.actionProps ? 0 : defaultDuration)); emit(); return id;
 }
 
-export function toast(message, options) { return create(message, options); }
-toast.success = (message, options) => create(message, options, 'success');
-toast.info = (message, options) => create(message, options, 'info');
-toast.warning = (message, options) => create(message, options, 'warning');
-toast.error = (message, options) => create(message, options, 'error');
-toast.loading = (message, options) => create(message, { ...options, duration: options?.duration ?? 0 }, 'loading');
-toast.custom = (message, options) => create(message, options, 'custom');
-toast.message = toast;
-toast.dismiss = dismiss;
+export const toast = { add, close };
 toast.promise = (promise, data = {}) => {
-  const id = toast.loading(resolve(data.loading));
+  const loading = resolve(data.loading);
+  const id = add(typeof loading === 'object' && loading !== null ? { ...loading, type: 'loading', duration: 0 } : { title: loading, type: 'loading', duration: 0 });
   Promise.resolve(typeof promise === 'function' ? promise() : promise).then(
-    value => create(resolve(data.success, value), { id, description: resolve(data.description, value), duration: data.duration }, 'success'),
-    error => create(resolve(data.error, error), { id, description: error?.message, duration: data.duration }, 'error'),
+    value => { const result = resolve(data.success, value); add(typeof result === 'object' && result !== null ? { ...result, id, type: result.type || 'success' } : { id, title: result, type: 'success', duration: data.duration }); },
+    error => { const result = resolve(data.error, error); add(typeof result === 'object' && result !== null ? { ...result, id, type: result.type || 'error' } : { id, title: result, description: error?.message, type: 'error', duration: data.duration }); },
   );
   return id;
 };
 
 function pause() { timers.forEach(timer => { if (!timer.handle) return; clearTimeout(timer.handle); timer.remaining = Math.max(0, timer.remaining - (Date.now() - timer.startedAt)); timer.handle = null; }); }
-function resume() { const expired = []; timers.forEach((timer, id) => { if (timer.handle) return; if (timer.remaining <= 0) { expired.push(id); return; } timer.startedAt = Date.now(); timer.handle = setTimeout(() => dismiss(id), timer.remaining); }); expired.forEach(dismiss); }
+function resume() { const expired = []; timers.forEach((timer, id) => { if (timer.handle) return; if (timer.remaining <= 0) { expired.push(id); return; } timer.startedAt = Date.now(); timer.handle = setTimeout(() => close(id), timer.remaining); }); expired.forEach(close); }
 
 export function Toaster({ position = 'bottom-right', visibleToasts = 3, closeButton = false, richColors = false, duration = 5000, toastOptions = {}, expand = false, theme = 'system', dir, gap = 10, offset, mobileOffset, label = 'Notifications', children, style, ...rest }) {
   injectEfCss('ef-css-toast', CSS);
@@ -88,9 +78,9 @@ export function Toaster({ position = 'bottom-right', visibleToasts = 3, closeBut
   React.useEffect(() => { const listener = value => setItems(value); listeners.add(listener); listener(records); return () => listeners.delete(listener); }, []);
   React.useEffect(() => { defaultDuration = duration; defaultToastOptions = toastOptions; return () => { defaultDuration = 5000; defaultToastOptions = {}; }; }, [duration, toastOptions]);
   const resolvedOffset = typeof offset === 'number' ? `${offset}px` : offset;
-  return <>{children}<Portal><SonnerStack {...rest} dir={dir} position={position} data-rich-colors={richColors ? 'true' : 'false'} data-expand={expand ? 'true' : 'false'} data-theme={theme} data-mobile-offset={typeof mobileOffset === 'number' ? `${mobileOffset}px` : mobileOffset} style={{ gap, ...(position.startsWith('top') ? { top: resolvedOffset } : { bottom: resolvedOffset }), ...style }} aria-label={label} role="log" aria-live="polite" aria-relevant="additions" onMouseEnter={pause} onMouseLeave={resume} onFocusCapture={pause} onBlurCapture={resume}>
+  return <>{children}<Portal><ToastStack {...rest} dir={dir} position={position} data-rich-colors={richColors ? 'true' : 'false'} data-expand={expand ? 'true' : 'false'} data-theme={theme} data-mobile-offset={typeof mobileOffset === 'number' ? `${mobileOffset}px` : mobileOffset} style={{ gap, ...(position.startsWith('top') ? { top: resolvedOffset } : { bottom: resolvedOffset }), ...style }} aria-label={label} role="log" aria-live="polite" aria-relevant="additions" onMouseEnter={pause} onMouseLeave={resume} onFocusCapture={pause} onBlurCapture={resume}>
     {items.slice(-visibleToasts).map(item => item.type === 'custom' && React.isValidElement(item.title)
       ? React.cloneElement(item.title, { key: item.id })
-      : <SonnerToast key={item.id} tone={item.type === 'error' ? 'danger' : ['success', 'warning', 'info'].includes(item.type) ? item.type : 'info'} title={item.title} description={item.description} action={item.action} role={null} onClose={closeButton || item.closeButton ? () => dismiss(item.id) : undefined} />)}
-  </SonnerStack></Portal></>;
+      : <ToastItem key={item.id} tone={item.type === 'error' ? 'danger' : ['success', 'warning', 'info'].includes(item.type) ? item.type : 'info'} title={item.title} description={item.description} actionProps={item.actionProps} role={null} onClose={closeButton || item.closeButton ? () => close(item.id) : undefined} />)}
+  </ToastStack></Portal></>;
 }
