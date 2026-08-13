@@ -31,7 +31,7 @@ Meridian lives inside PT. Efolusi Dunia Teknologi's thesis (see the portfolio
 |---|---|
 | **Efolusi product teams** | One system across every product surface, so a screen looks and behaves like Efolusi without re-deciding anything. The dogfood loop feeds gaps found in consumer applications straight back into Meridian. |
 | **External React teams** | An install that works on the first try, on their stack, with types that compile and CSS that is styled before hydration. No lock-in: vendor a single component, MIT, no attribution. |
-| **AI agents and LLMs** | A system a model can read and write correctly. Flat source files, one prop grammar, per-component `.prompt.md`, `llms.txt` and a generated `llms-full.txt`, a machine-readable registry. A model that has seen three components can write the other 106. |
+| **AI agents and LLMs** | A system a model can read and write correctly. Flat source files, one prop grammar, per-component `.prompt.md`, `llms.txt` and a generated `llms-full.txt`, a machine-readable registry. A model that has seen three components can work across all 122. |
 | **Contributors** | A contract that is one command (`npm run check`) and gates that explain themselves, so a second contributor can land a change without breaking the bundle, the types, or a keyboard path. |
 
 ## Principles

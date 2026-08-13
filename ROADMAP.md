@@ -70,7 +70,7 @@ Meet developers where they are; keep the zero-build path as the flagship.
 
 ## First five actions
 
-1. Write the API conventions doc and run the 106-component audit against it.
+1. Write the API conventions doc and run the 122-component audit against it.
 2. ~~Script the contrast check; fix any failing token pair.~~ Done 2026-07-17: `--text-muted`, `--success-600`, `--danger-600` retuned to ≥4.5:1 in both themes (see CHANGELOG § 1.4.0).
 3. ~~A11y pass on the priority-seven interactive components.~~ Done 2026-07-18: keyboard and focus contracts shipped and verified for Menu, Popover, Dialog, Drawer, ConfirmDialog, Command, Calendar and its picker composition, Tabs, Tooltip, HoverCard — see `guidelines/accessibility.md` § component keyboard contracts. Per-component notes on docs pages still open.
 4. ~~Cut `tokens.json` (DTCG) from the CSS source.~~ Done 2026-07-18: `scripts/build_tokens.py` generates `tokens.json` and `tailwind.preset.js` from `tokens/*.css`; CI regenerates and diffs both on every push.

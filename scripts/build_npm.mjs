@@ -98,7 +98,7 @@ for (const { group, name } of sources()) {
 // <script src=".._ds_bundle.js"> tag on the page. That tag only exists on the
 // zero-build site: in an npm consumer the lookup returns '', the request goes
 // out page-relative, and it 404s — assuming the file were even in the tarball,
-// which it was not. 68 of the 106 components render an Icon, so this was every
+// which it was not. Most components render an Icon, so this affected the entire
 // icon in the package silently blank.
 //
 // Copying the SVGs in and keeping the fetch would not fix it: the URL still

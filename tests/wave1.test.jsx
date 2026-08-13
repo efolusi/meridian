@@ -9,7 +9,7 @@ import { CommandDialog, CommandInput, CommandList, CommandItem } from '../compon
 import { Combobox, ComboboxInput, ComboboxContent, ComboboxList, ComboboxItem } from '../components/forms/Combobox.jsx';
 import { StatusDot } from '../components/data/StatusDot.jsx';
 
-// These four were the only components of the 106 that silently dropped a
+// These four were the only audited components that silently dropped a
 // caller's className: it landed in ...rest, then a literal className= written
 // after the spread clobbered it.
 describe('className/style forwarding on the modal four', () => {
