@@ -157,10 +157,10 @@ export function InputInvalid() {
 
 // @demo InputGroup Addons
 export function InputGroupDemo() {
-  const { InputGroup, InputGroupAddon, InputGroupButton, InputGroupInput, InputGroupText } = window.EfolusiDesignSystem_4ffc3d;
+  const { Icon, InputGroup, InputGroupAddon, InputGroupButton, InputGroupInput, InputGroupText } = window.EfolusiDesignSystem_4ffc3d;
   return (
     <div style={{ display: 'flex', flexDirection: 'column', gap: 14, width: 360 }}>
-      <InputGroup><InputGroupInput aria-label="Search projects" placeholder="Search projects…" /><InputGroupAddon><InputGroupText>⌕</InputGroupText></InputGroupAddon><InputGroupAddon align="inline-end"><InputGroupText>12 results</InputGroupText></InputGroupAddon></InputGroup>
+      <InputGroup><InputGroupInput aria-label="Search projects" placeholder="Search projects…" /><InputGroupAddon><InputGroupText><Icon name="search" size={16} /></InputGroupText></InputGroupAddon><InputGroupAddon align="inline-end"><InputGroupText>12 results</InputGroupText></InputGroupAddon></InputGroup>
       <InputGroup><InputGroupInput aria-label="Workspace URL" defaultValue="acme" /><InputGroupAddon><InputGroupText>https://</InputGroupText></InputGroupAddon><InputGroupAddon align="inline-end"><InputGroupButton>Copy</InputGroupButton></InputGroupAddon></InputGroup>
     </div>
   );

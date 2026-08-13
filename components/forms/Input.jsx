@@ -14,8 +14,10 @@ const CSS = `
 .ef-input__el:hover:not(:disabled){border-color:var(--sand-400)}
 .ef-input__el:focus-visible{outline:none;border-color:var(--accent);box-shadow:var(--focus-ring)}
 .ef-input__el:disabled{background:var(--surface-subtle);color:var(--text-muted);cursor:not-allowed;opacity:.5}
-.ef-input__el[type="file"]{padding-block:7px;line-height:1}
-.ef-input__el[type="file"]::file-selector-button{margin-inline-end:10px;border:0;background:transparent;color:var(--text-primary);font:inherit;font-weight:var(--weight-medium)}
+.ef-input__el[type="file"]{padding-block:7px;line-height:1;cursor:pointer}
+.ef-input__el[type="file"]::file-selector-button{margin-block:-7px;margin-inline:-12px 12px;padding:7px 12px;border:0;border-inline-end:1px solid var(--border-strong);background:var(--sand-200);color:var(--text-primary);font:inherit;font-weight:var(--weight-semibold);cursor:pointer;transition:background var(--dur-fast) var(--ease-out)}
+.ef-input__el[type="file"]:hover::file-selector-button{background:var(--sand-300)}
+.ef-input__el[type="file"]:disabled::file-selector-button{cursor:not-allowed}
 .ef-input__el--sm{height:var(--control-h-sm);padding-inline:10px;font-size:var(--text-sm)}
 .ef-input__el--lg{height:var(--control-h-lg);padding-inline:14px;font-size:var(--text-lg)}
 .ef-input--icon .ef-input__el{padding-inline-start:36px}

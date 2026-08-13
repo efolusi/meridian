@@ -10,7 +10,7 @@ input.ef-input-group__control{height:34px;padding:0 11px}textarea.ef-input-group
 .ef-input-group__addon[data-align="inline-start"]{order:-1;border-inline-end:1px solid var(--border-default)}.ef-input-group__addon[data-align="inline-end"]{order:2;border-inline-start:1px solid var(--border-default)}
 .ef-input-group__addon[data-align="block-start"],.ef-input-group__addon[data-align="block-end"]{width:100%;min-height:34px}.ef-input-group__addon[data-align="block-start"]{order:-1;border-block-end:1px solid var(--border-default)}.ef-input-group__addon[data-align="block-end"]{order:3;border-block-start:1px solid var(--border-default)}
 .ef-input-group__button{display:inline-flex;height:26px;align-items:center;justify-content:center;gap:5px;padding:0 8px;border:0;border-radius:var(--radius-xs);background:transparent;color:var(--text-secondary);font:inherit;font-size:var(--text-xs);cursor:pointer}.ef-input-group__button:hover{background:var(--surface-sunken);color:var(--text-primary)}.ef-input-group__button:focus-visible{outline:none;box-shadow:var(--focus-ring)}
-.ef-input-group__button[data-size^="icon"]{width:26px;padding:0}.ef-input-group__text{font-size:var(--text-sm);color:var(--text-muted)}
+.ef-input-group__button[data-size^="icon"]{width:26px;padding:0}.ef-input-group__text{display:inline-flex;align-items:center;line-height:1;font-size:var(--text-sm);color:var(--text-muted)}.ef-input-group__text svg{width:16px;height:16px;stroke-width:2}
 `;
 function cx(base, className) { return base + (className ? ` ${className}` : ''); }
 export const InputGroup = React.forwardRef(function InputGroup({ className, ...rest }, ref) {

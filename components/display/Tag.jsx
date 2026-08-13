@@ -8,7 +8,7 @@ const CSS = `
 .ef-tag--interactive:focus-visible{outline:none;box-shadow:var(--focus-ring)}
 .ef-tag__body{display:inline-flex;align-items:center;gap:6px;border:none;background:transparent;padding:0;margin:0;font:inherit;color:inherit;cursor:pointer;border-radius:var(--radius-sm)}
 .ef-tag__body:focus-visible{outline:none;box-shadow:var(--focus-ring)}
-.ef-tag__x{display:inline-flex;align-items:center;justify-content:center;width:24px;height:24px;margin:-3px -9px -3px -5px;border:none;border-radius:var(--radius-sm);background:transparent;color:var(--text-muted);cursor:pointer;padding:0;transition:background var(--dur-fast) var(--ease-out),color var(--dur-fast) var(--ease-out)}
+.ef-tag__x{display:inline-flex;align-items:center;justify-content:center;width:22px;height:22px;margin-block:-2px;margin-inline:0 -8px;border:none;border-radius:var(--radius-sm);background:transparent;color:var(--text-muted);cursor:pointer;padding:0;transition:background var(--dur-fast) var(--ease-out),color var(--dur-fast) var(--ease-out)}
 .ef-tag__x:hover{background:var(--sand-200);color:var(--text-primary)}
 .ef-tag__x:focus-visible{outline:none;box-shadow:var(--focus-ring)}
 `;

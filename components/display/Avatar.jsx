@@ -11,6 +11,8 @@ const CSS = `
 .ef-avatar-group>.ef-avatar{border:2px solid var(--surface-card)}
 .ef-avatar-group>.ef-avatar+.ef-avatar,.ef-avatar-group>.ef-avatar+.ef-avatar-count,.ef-avatar-group>.ef-avatar-count+.ef-avatar{margin-inline-start:-8px}
 .ef-avatar-count{position:relative;display:inline-flex;width:32px;height:32px;align-items:center;justify-content:center;flex:none;border:2px solid var(--surface-card);border-radius:var(--radius-full);background:var(--sand-100);color:var(--text-secondary);font-size:11px;font-weight:var(--weight-semibold)}
+.ef-avatar-group:has(>.ef-avatar--sm)>.ef-avatar-count{width:24px;height:24px;font-size:9px}.ef-avatar-group:has(>.ef-avatar--lg)>.ef-avatar-count{width:40px;height:40px;font-size:13px}
+.ef-avatar-group:has(>.ef-avatar--sm)>*+*{margin-inline-start:-6px}.ef-avatar-group:has(>.ef-avatar--lg)>*+*{margin-inline-start:-10px}
 `;
 
 function classes(...values) {

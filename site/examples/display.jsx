@@ -200,11 +200,10 @@ export function LinkDemo() {
 
 // @demo Item Compositional content rows
 export function ItemDemo() {
-  const { Item, ItemActions, ItemContent, ItemDescription, ItemGroup, ItemMedia, ItemSeparator, ItemTitle, Badge, Icon } = window.EfolusiDesignSystem_4ffc3d;
+  const { Item, ItemActions, ItemContent, ItemDescription, ItemGroup, ItemMedia, ItemTitle, Badge, Icon } = window.EfolusiDesignSystem_4ffc3d;
   return (
-    <ItemGroup style={{ width: '100%', maxWidth: 460 }}>
+    <ItemGroup style={{ width: '100%', maxWidth: 460, gap: 8 }}>
       <Item variant="outline"><ItemMedia variant="icon"><Icon name="bot" /></ItemMedia><ItemContent><ItemTitle>Flight rebooking agent</ItemTitle><ItemDescription>Last run 4 min ago</ItemDescription></ItemContent><ItemActions><Badge className="ef-badge--success"><Icon name="circle" size={7} strokeWidth={4} data-icon="inline-start" />Live</Badge></ItemActions></Item>
-      <ItemSeparator />
       <Item variant="muted" size="sm"><ItemMedia variant="icon"><Icon name="database" /></ItemMedia><ItemContent><ItemTitle>Warehouse sync</ItemTitle><ItemDescription>Nightly at 02:00</ItemDescription></ItemContent><ItemActions><Badge variant="secondary">Paused</Badge></ItemActions></Item>
     </ItemGroup>
   );
