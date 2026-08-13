@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 62 33" role="img" aria-labelledby="title">
+  <title id="title">Meridian</title>
+  <defs>
+    <path id="meridian-bar" d="M16.9 3h9.2c1.1 0 1.7 1.1 1.1 2L13.5 29.5c-.3.6-.9.9-1.6.9H2.8c-1.1 0-1.7-1.1-1.1-2L15.3 3.9c.3-.6.9-.9 1.6-.9Z"/>
+  </defs>
+  <g fill="#2C1709">
+    <use href="#meridian-bar"/>
+    <use href="#meridian-bar" transform="translate(17)"/>
+    <use href="#meridian-bar" transform="translate(34)"/>
+  </g>
+</svg>

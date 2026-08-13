@@ -501,7 +501,7 @@ Group: ai · Source: /components/ai/ModelSelector.jsx · Exports: ModelSelector
 
 Compact model picker for composers: current model + provider on the trigger, panel with hint lines and badges.
 
-`<ModelSelector value={m} onChange={setM} models={[{ id: 'ef-2', name: 'Efolusi 2', provider: 'Efolusi', hint: 'Best for agent runs', badge: 'New' }]} />`
+`<ModelSelector value={m} onChange={setM} models={[{ id: 'ef-2', name: 'Meridian 2', provider: 'Meridian', hint: 'Best for agent runs', badge: 'New' }]} />`
 
 Panel opens upward by default (composers sit at the bottom); side="bottom" for toolbars. For arbitrary options use Select.
 
@@ -2951,7 +2951,7 @@ export interface PaymentCardProps {
   number?: string;
   /** @default '09/29' */
   expiry?: string;
-  /** Top-left brand text @default 'Efolusi' */
+  /** Top-left brand text @default 'Meridian' */
   network?: string;
   /** @default 'espresso' */
   variant?: 'espresso' | 'caramel' | 'paper';
@@ -3976,7 +3976,7 @@ Group: navigation · Source: /components/navigation/SideNav.jsx · Exports: Side
 The product sidebar: brand row, grouped nav with icons/badges, pinned footer. 240px on `--surface-subtle`.
 
 ```jsx
-<SideNav logoSrc="assets/logo.png" brandBadge="Console" value={nav} onChange={setNav}
+<SideNav logoSrc="assets/meridian-mark.svg" brandBadge="Console" value={nav} onChange={setNav}
   groups={[
     { items: [{ id: 'overview', label: 'Overview', icon: 'layout-dashboard' }, { id: 'customers', label: 'Customers', icon: 'users', badge: 128 }] },
 { label: 'Products', items: [{ id: 'agent', label: 'AI agents', icon: 'bot' }] },
@@ -3988,7 +3988,7 @@ The product sidebar: brand row, grouped nav with icons/badges, pinned footer. 24
 export interface SideNavItem { id: string; label: React.ReactNode; icon: string; badge?: React.ReactNode; }
 export interface SideNavGroup { /** Uppercase group heading (omit for main nav) */ label?: string; items: SideNavItem[]; }
 export interface SideNavProps {
-  /** @default 'Efolusi' */
+  /** @default 'Meridian' */
   brand?: string;
   /** Badge next to brand (e.g. 'Console') */
   brandBadge?: React.ReactNode;

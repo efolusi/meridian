@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 1260" role="img" aria-labelledby="title desc">
+  <title id="title">Meridian brand and logo system</title>
+  <desc id="desc">Editorial guideline board with the Meridian icon, horizontal logos, palette, and production size previews.</desc>
+  <rect width="1600" height="1260" fill="#FAF9F6"/>
+  <defs>
+    <path id="board-bar" d="M16.9 3h9.2c1.1 0 1.7 1.1 1.1 2L13.5 29.5c-.3.6-.9.9-1.6.9H2.8c-1.1 0-1.7-1.1-1.1-2L15.3 3.9c.3-.6.9-.9 1.6-.9Z"/>
+    <g id="board-mark"><use href="#board-bar"/><use href="#board-bar" transform="translate(17)"/><use href="#board-bar" transform="translate(34)"/></g>
+  </defs>
+  <style>
+    @font-face{font-family:'Bricolage Grotesque';src:url('fonts/BricolageGrotesque-Variable.woff2') format('woff2')}@font-face{font-family:Figtree;src:url('fonts/Figtree-Variable.woff2') format('woff2')}@font-face{font-family:'JetBrains Mono';src:url('fonts/JetBrainsMono-Variable.woff2') format('woff2')}
+    .eyebrow{font:600 16px 'JetBrains Mono',monospace;letter-spacing:3px;fill:#5C3A1F}.label{font:600 14px 'JetBrains Mono',monospace;letter-spacing:1.6px;fill:#7A6F5D}.word{font:620 64px 'Bricolage Grotesque',Arial,sans-serif;letter-spacing:-2px}.body{font:400 20px Figtree,Arial,sans-serif;fill:#7A6F5D}.rule{stroke:#DED8CC;stroke-width:1}
+  </style>
+  <text x="72" y="72" class="eyebrow">MERIDIAN BRAND / LOGO SYSTEM</text><line x1="430" y1="66" x2="1528" y2="66" class="rule"/>
+  <text x="72" y="142" class="label">01 / ICON ONLY</text>
+  <g fill="#2C1709" transform="translate(190 200) scale(5.5)"><use href="#board-mark"/></g>
+  <text x="780" y="142" class="label">02 / HORIZONTAL LIGHT</text>
+  <g fill="#2C1709" transform="translate(820 220) scale(2.4)"><use href="#board-mark"/></g><text x="990" y="294" class="word" fill="#1E1A14">Meridian</text>
+  <line x1="72" y1="420" x2="1528" y2="420" class="rule"/>
+  <text x="72" y="482" class="label">03 / HORIZONTAL DARK</text>
+  <rect x="72" y="516" width="1456" height="210" rx="12" fill="#1E1A14"/>
+  <g fill="#FAF9F6" transform="translate(430 565) scale(2.5)"><use href="#board-mark"/></g><text x="610" y="645" class="word" fill="#FAF9F6">Meridian</text>
+  <text x="72" y="794" class="label">04 / COFFEE PALETTE</text>
+  <g transform="translate(72 824)">
+    <g><rect width="170" height="96" rx="8" fill="#2C1709"/><text y="124" class="label">ESPRESSO</text><text y="150" class="body">#2C1709</text></g>
+    <g transform="translate(194)"><rect width="170" height="96" rx="8" fill="#482818"/><text y="124" class="label">DARK COFFEE</text><text y="150" class="body">#482818</text></g>
+    <g transform="translate(388)"><rect width="170" height="96" rx="8" fill="#5C3A1F"/><text y="124" class="label">COCOA</text><text y="150" class="body">#5C3A1F</text></g>
+    <g transform="translate(582)"><rect width="170" height="96" rx="8" fill="#A0693C"/><text y="124" class="label">CARAMEL</text><text y="150" class="body">#A0693C</text></g>
+    <g transform="translate(776)"><rect width="170" height="96" rx="8" fill="#C08A5A"/><text y="124" class="label">LATTE</text><text y="150" class="body">#C08A5A</text></g>
+    <g transform="translate(970)"><rect width="170" height="96" rx="8" fill="#F8F4E6" stroke="#DED8CC"/><text y="124" class="label">CREAM</text><text y="150" class="body">#F8F4E6</text></g>
+    <g transform="translate(1164)"><rect width="170" height="96" rx="8" fill="#1E1A14"/><text y="124" class="label">INK</text><text y="150" class="body">#1E1A14</text></g>
+  </g>
+  <line x1="72" y1="1012" x2="1528" y2="1012" class="rule"/>
+  <text x="72" y="1070" class="label">05 / ICON SIZES</text>
+  <g fill="#2C1709" transform="translate(260 1058)"><g transform="scale(.258)"><use href="#board-mark"/></g><g transform="translate(58) scale(.323)"><use href="#board-mark"/></g><g transform="translate(124) scale(.387)"><use href="#board-mark"/></g><g transform="translate(200) scale(.516)"><use href="#board-mark"/></g><g transform="translate(298) scale(.774)"><use href="#board-mark"/></g><g transform="translate(430) scale(1.032)"><use href="#board-mark"/></g></g>
+  <text x="258" y="1145" class="label">16</text><text x="316" y="1145" class="label">20</text><text x="383" y="1145" class="label">24</text><text x="459" y="1145" class="label">32</text><text x="557" y="1145" class="label">48</text><text x="690" y="1145" class="label">64 PX</text>
+  <text x="860" y="1070" class="label">06 / HORIZONTAL WIDTHS</text>
+  <image href="meridian-horizontal-light.svg" x="860" y="1090" width="120"/><text x="860" y="1140" class="label">120 PX</text>
+  <image href="meridian-horizontal-light.svg" x="1010" y="1084" width="160"/><text x="1010" y="1140" class="label">160 PX</text>
+  <image href="meridian-horizontal-light.svg" x="1200" y="1074" width="240"/><text x="1200" y="1140" class="label">240 PX</text>
+  <image href="meridian-horizontal-light.svg" x="860" y="1160" width="320"/><text x="1200" y="1210" class="label">320 PX</text>
+</svg>

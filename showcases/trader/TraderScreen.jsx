@@ -23,7 +23,7 @@ function TraderScreen() {
         <div style={{ display: 'flex', alignItems: 'flex-start', gap: 24 }}>
           <div>
             <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
-              <a href="../console/index.html" title="Back to Console" style={{ display: 'inline-flex' }}><img src="../../assets/logo.png" alt="" style={{ width: 30, height: 30 }} /></a>
+              <a href="../console/index.html" title="Back to Console" style={{ display: 'inline-flex' }}><img src="../../assets/meridian-mark.svg" alt="" style={{ width: 30, height: 16 }} /></a>
               <h1 style={{ fontSize: 24, fontWeight: 680 }}>Trading</h1>
               <StatusDot status={auto ? 'busy' : 'off'} pulse={auto} label={auto ? 'Robot active' : 'Robot paused'} />
             </div>

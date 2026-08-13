@@ -49,7 +49,7 @@ Meet developers where they are; keep the zero-build path as the flagship.
 
 - **Figma library** with parity: tokens as Variables (light/dark/compact modes), components with matching prop names, auto-layout mirroring flex gaps. Publish to Community.
 - ~~**Icon set** published standalone.~~ Landed 2026-07-24: `@efolusi/meridian-icons` (packages/icons) ships the 108 SVGs plus a name-to-svg index, built from assets/icons/ in lockstep with the umbrella. Published 2026-07-29 at 1.10.0 alongside `@efolusi/meridian-tokens` and the umbrella.
-- **Brand usage policy** for the owl mark and "Meridian" name (system is MIT; the mark is not).
+- **Brand usage policy** for the Meridian and Efolusi marks and the "Meridian" name (system is MIT; the marks are not).
 
 ## Phase 6 — Community & governance
 

@@ -34,7 +34,7 @@ function InfraScreen() {
       <div style={{ flex: 1, overflowY: 'auto' }}>
         <div style={{ maxWidth: 1180, margin: '0 auto', padding: '28px 32px 60px' }}>
           <div style={{ display: 'flex', alignItems: 'center', gap: 12 }}>
-            <a href="../console/index.html" title="Back to Console" style={{ display: 'inline-flex' }}><img src="../../assets/logo.png" alt="" style={{ width: 30, height: 30 }} /></a>
+            <a href="../console/index.html" title="Back to Console" style={{ display: 'inline-flex' }}><img src="../../assets/meridian-mark.svg" alt="" style={{ width: 30, height: 16 }} /></a>
             <h1 style={{ fontSize: 24, fontWeight: 680 }}>Infrastructure</h1>
             <StatusDot status="warn" pulse label="1 incident" />
             <div style={{ marginLeft: 'auto', display: 'flex', gap: 8 }}>
@@ -90,12 +90,12 @@ function InfraScreen() {
         )}
         {sel && <DrawerFooter><DrawerClose asChild><Button variant="ghost">Close</Button></DrawerClose><Button variant="danger" iconLeft="plug" onClick={() => { notify(sel.name + ' disconnected', 'The tunnel closed cleanly.'); setSel(null); }}>Disconnect</Button></DrawerFooter>}
       </DrawerContent></Drawer>
-      <Dialog open={connect} onOpenChange={setConnect}><DialogContent><DialogHeader><DialogTitle>Connect a resource</DialogTitle><DialogDescription>Efolusi talks to it through an encrypted tunnel — nothing is stored.</DialogDescription></DialogHeader><div className="ef-dialog__body"><div style={{ display: 'flex', flexDirection: 'column', gap: 14 }}>
+      <Dialog open={connect} onOpenChange={setConnect}><DialogContent><DialogHeader><DialogTitle>Connect a resource</DialogTitle><DialogDescription>Meridian talks to it through an encrypted tunnel — nothing is stored.</DialogDescription></DialogHeader><div className="ef-dialog__body"><div style={{ display: 'flex', flexDirection: 'column', gap: 14 }}>
           <Field><FieldLabel htmlFor="connection-kind">Kind</FieldLabel><NativeSelect id="connection-kind">{['PostgreSQL', 'MySQL', 'Redis', 'SSH host', 'Kubernetes', 'AWS account', 'Domain / DNS'].map(value => <NativeSelectOption key={value} value={value}>{value}</NativeSelectOption>)}</NativeSelect></Field>
           <Input label="Host" placeholder="db.internal.acme.co:5432" iconLeft="server" />
           <Field><FieldLabel htmlFor="connection-region">Region</FieldLabel><NativeSelect id="connection-region">{['eu-west-1', 'us-east-1', 'fra1', 'sgp1'].map(value => <NativeSelectOption key={value} value={value}>{value}</NativeSelectOption>)}</NativeSelect></Field>
         </div></div><DialogFooter><DialogClose asChild><Button variant="ghost">Cancel</Button></DialogClose><Button iconRight="arrow-right" onClick={() => { setConnect(false); setTab('resources'); setExtra(x => [...x, { id: 'new' + x.length, name: 'db-replica-' + (x.length + 1), kind: 'PostgreSQL', icon: 'database', region: 'eu-west-1', status: 'ok', latency: '41 ms' }]); notify('Tunnel created', 'db-replica is connected and healthy.'); }}>Create tunnel</Button></DialogFooter></DialogContent></Dialog>
-      <Drawer open={cli} onOpenChange={setCli} direction="right"><DrawerContent style={{ width: 480 }}><DrawerHeader><DrawerTitle>Efolusi CLI</DrawerTitle><DrawerDescription>Install commands and live infrastructure output.</DrawerDescription></DrawerHeader>
+      <Drawer open={cli} onOpenChange={setCli} direction="right"><DrawerContent style={{ width: 480 }}><DrawerHeader><DrawerTitle>Meridian CLI</DrawerTitle><DrawerDescription>Install commands and live infrastructure output.</DrawerDescription></DrawerHeader>
         <div style={{ display: 'flex', flexDirection: 'column', gap: 14, padding: 20 }}>
           <CopyField label="Install" value="curl -fsSL cli.efolusi.com | sh" />
           <Terminal host="ada@acme-workspace" live maxHeight={280} lines={[

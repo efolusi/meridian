@@ -1,7 +1,7 @@
 :root{
 /* Sand — warm neutrals */
 --sand-25:#FCFBF9;--sand-50:#FAF9F6;--sand-100:#F3F1EB;--sand-200:#E7E3D9;--sand-300:#D5CFC0;--sand-400:#B4AB97;--sand-500:#948A74;--sand-600:#786E59;--sand-700:#5E5545;--sand-800:#443D32;--sand-900:#2E2922;--sand-950:#1E1A14;
-/* Brand — cream→peach→caramel→cocoa ramp sampled from the owl mark */
+/* Brand — cream→latte→caramel→cocoa→espresso coffee ramp */
 --brand-50:#F8F4E6;--brand-100:#F4E9D2;--brand-200:#EFCFAC;--brand-300:#DFB585;--brand-400:#CE9C66;--brand-500:#C08A5A;--brand-600:#A0693C;--brand-700:#7A4E2B;--brand-800:#5C3A1F;--brand-900:#482818;--brand-950:#2C1709;
 /* Named logo tones (aliases into the ramp) */
 --cocoa-950:var(--brand-950);--cocoa-900:#3A2012;--cocoa-700:var(--brand-900);--caramel-500:var(--brand-500);--peach-200:var(--brand-200);--cream-50:var(--brand-50);

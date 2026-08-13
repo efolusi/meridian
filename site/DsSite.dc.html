@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Meridian — the design system by Efolusi</title>
 <meta name="description" content="Meridian: a general-purpose open-source design system — 122 accessible React components, warm design tokens, blocks, charts, and full example apps, zero build step, MIT licensed.">
-<link rel="icon" href="../assets/logo.png">
+<link rel="icon" type="image/svg+xml" href="../assets/favicon.svg">
 <link rel="canonical" href="https://meridian.efolusi.com/site/DsSite.dc.html">
 <meta name="robots" content="index,follow">
 <meta name="theme-color" content="#FAF9F6" media="(prefers-color-scheme: light)">
@@ -15,21 +15,21 @@
 <meta property="og:title" content="Meridian — the design system by Efolusi">
 <meta property="og:description" content="Meridian: a general-purpose open-source design system — 122 accessible React components, warm design tokens, blocks, charts, and full example apps, zero build step, MIT licensed.">
 <meta property="og:url" content="https://meridian.efolusi.com/site/DsSite.dc.html">
-<meta property="og:image" content="https://meridian.efolusi.com/assets/logo.png">
-<meta name="twitter:card" content="summary">
+<meta property="og:image" content="https://meridian.efolusi.com/assets/meridian-social.png">
+<meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Meridian — the design system by Efolusi">
 <meta name="twitter:description" content="Meridian: a general-purpose open-source design system — 122 accessible React components, warm design tokens, blocks, charts, and full example apps, zero build step, MIT licensed.">
-<meta name="twitter:image" content="https://meridian.efolusi.com/assets/logo.png">
+<meta name="twitter:image" content="https://meridian.efolusi.com/assets/meridian-social.png">
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"SoftwareApplication","name":"Meridian","applicationCategory":"DeveloperApplication","operatingSystem":"Web","description":"General-purpose open-source design system by Efolusi: 122 accessible React components, warm design tokens, blocks, charts, and full example apps, served browser-native with zero build step.","url":"https://meridian.efolusi.com/","softwareVersion":"1.21.1","license":"https://opensource.org/licenses/MIT","author":{"@type":"Organization","name":"Efolusi","url":"https://efolusi.com"},"offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}</script>
 <script src="./support.js"></script>
 </head>
 <body>
 <x-dc>
 <!-- @template name="DS site — open source" description="the design system's own docs site (8 pages): home, docs, components, blocks, examples, charts, themes, colors" -->
-<helmet><script src="./ds-base.js"></script><script src="./i18n.js"></script><link rel="stylesheet" href="./site.css"><style>@view-transition{navigation:auto}::view-transition-group(*){animation-duration:160ms}@media (prefers-reduced-motion:reduce){::view-transition-group(*),::view-transition-old(*),::view-transition-new(*){animation:none!important}}html{background:var(--surface-page,#FAF9F6)}</style></helmet>
+<helmet><script src="./ds-base.js"></script><script src="./i18n.js"></script><link rel="stylesheet" href="./site.css?v=20260814"><style>@view-transition{navigation:auto}::view-transition-group(*){animation-duration:160ms}@media (prefers-reduced-motion:reduce){::view-transition-group(*),::view-transition-old(*),::view-transition-new(*){animation:none!important}}html{background:var(--surface-page,#FAF9F6)}</style></helmet>
 <div style="min-height:100vh;background:var(--surface-page);color:var(--text-primary);font-family:var(--font-sans);display:flex;flex-direction:column">
 <header class="site-top" style="view-transition-name:site-top;position:sticky;top:0;z-index:50;display:flex;align-items:center;gap:26px;height:58px;padding:0 28px;border-bottom:1px solid var(--border-default);background:var(--surface-page)">
-<a href="./DsSite.dc.html" style="display:flex;align-items:center;gap:9px;text-decoration:none;color:var(--text-primary)"><img src="../assets/logo.png" alt="Meridian" style="width:24px;height:24px"><span style="font-family:var(--font-display);font-weight:680;letter-spacing:-0.02em;font-size:16px">Meridian</span><span class="hide-md" style="font-family:var(--font-mono);font-size:12.5px;color:var(--text-muted)">by Efolusi</span></a>
+<a href="./DsSite.dc.html" style="display:flex;align-items:center;gap:9px;text-decoration:none;color:var(--text-primary)"><img src="../assets/meridian-horizontal-light.svg" alt="Meridian" class="meridian-lockup meridian-lockup--light"><img src="../assets/meridian-horizontal-dark.svg" alt="" class="meridian-lockup meridian-lockup--dark"></a>
 <nav class="site-nav" style="display:flex;gap:20px;font-size:var(--text-md)">
 <a href="./Docs.dc.html" style="color:var(--text-secondary);text-decoration:none" style-hover="color:var(--text-primary)">Docs</a>
 <a href="./Components.dc.html" style="color:var(--text-secondary);text-decoration:none" style-hover="color:var(--text-primary)">Components</a>
@@ -104,15 +104,15 @@ class Component extends DCLogic {
   }
   renderVals() {
     const srcs = {
-      dashboard: '../starters/dashboard/Dashboard.dc.html',
-      app: '../starters/app-page/AppPage.dc.html',
-      marketing: '../starters/marketing-page/MarketingPage.dc.html',
-      docs: '../starters/docs-page/DocsPage.dc.html',
-      ai: '../starters/ai-workspace/Workspace.dc.html',
-      crm: '../starters/crm/Pipeline.dc.html',
-      finance: '../starters/finance-ops/Cashflow.dc.html',
-      support: '../starters/service-desk/Queue.dc.html',
-      auth: '../starters/auth-page/AuthPage.dc.html',
+      dashboard: '../starters/dashboard/Dashboard.dc.html?v=20260814',
+      app: '../starters/app-page/AppPage.dc.html?v=20260814',
+      marketing: '../starters/marketing-page/MarketingPage.dc.html?v=20260814',
+      docs: '../starters/docs-page/DocsPage.dc.html?v=20260814',
+      ai: '../starters/ai-workspace/Workspace.dc.html?v=20260814',
+      crm: '../starters/crm/Pipeline.dc.html?v=20260814',
+      finance: '../starters/finance-ops/Cashflow.dc.html?v=20260814',
+      support: '../starters/service-desk/Queue.dc.html?v=20260814',
+      auth: '../starters/auth-page/AuthPage.dc.html?v=20260814',
     };
     const frameScale = +(this.state.fw / 1440).toFixed(4);
     return {

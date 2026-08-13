@@ -1,2 +1,26 @@
-<!-- @dsCard group="Brand" viewport="700x140" name="Logo" subtitle="The owl on cream, caramel, espresso" -->
-<!DOCTYPE html><html><head><meta charset="utf-8"><link rel="stylesheet" href="../styles.css"><style>body{margin:0;background:var(--surface-page);font-family:var(--font-sans);color:var(--text-primary)}</style></head><body style="padding:14px 16px"><div style="display:flex;gap:12px;align-items:stretch"><div style="flex:1;background:#F8F4E6;border:1px solid var(--sand-200);border-radius:8px;display:flex;align-items:center;justify-content:center;padding:14px"><img src="../assets/logo.png" style="width:56px;height:56px"></div><div style="flex:1;background:var(--brand-500);border-radius:8px;display:flex;align-items:center;justify-content:center;padding:14px"><img src="../assets/logo.png" style="width:56px;height:56px"></div><div style="flex:1;background:var(--surface-inverse);border-radius:8px;display:flex;align-items:center;justify-content:center;padding:14px"><img src="../assets/logo.png" style="width:56px;height:56px"></div><div style="flex:2;display:flex;flex-direction:column;justify-content:center;gap:6px;padding-left:6px"><div style="display:flex;align-items:center;gap:10px"><img src="../assets/logo.png" style="width:28px;height:28px"><span style="font-family:var(--font-display);font-weight:680;letter-spacing:-0.02em;font-size:22px">Efolusi</span></div><div style="font-size:11px;color:var(--text-muted);line-height:1.55">Wordmark = the name in Bricolage 680. Min mark size 24px. Never redraw, recolor, or add effects.</div></div></div></body></html>
+<!-- @dsCard group="Brand" viewport="700x360" name="Meridian logo system" subtitle="Three abstract strokes, light and dark lockups, and minimum size" -->
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<link rel="stylesheet" href="../styles.css">
+<style>
+body{margin:0;padding:14px 16px;background:var(--surface-page);font-family:var(--font-sans);color:var(--text-primary)}
+.specimen{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.tile{min-height:112px;border:1px solid var(--border-default);border-radius:var(--radius-md);display:flex;align-items:center;justify-content:center;padding:18px;background:var(--surface-card)}
+.tile--inverse{background:#2C1709;border-color:#2C1709;color:#fff}
+.lockup{width:240px;height:auto}
+.mark{width:96px;height:auto}.inverse{filter:brightness(0) invert(1)}
+.note{grid-column:1/-1;color:var(--text-muted);font-size:11px;line-height:1.5;padding:0 2px}
+</style>
+</head>
+<body>
+<div class="specimen">
+  <div class="tile"><img class="lockup" src="../assets/meridian-horizontal-light.svg" alt="Meridian"></div>
+  <div class="tile"><img class="mark" src="../assets/meridian-mark.svg" alt="Meridian mark"></div>
+  <div class="tile tile--inverse"><img class="lockup" src="../assets/meridian-horizontal-dark.svg" alt="Meridian"></div>
+  <div class="tile"><img src="../assets/meridian-mark.svg" alt="" style="width:30px;height:16px"><span style="margin-left:12px;font-family:var(--font-mono);font-size:11px;color:var(--text-muted)">30 × 16 minimum</span></div>
+  <div class="note">Three identical rising strokes form the Meridian `///` signature. Use espresso on light surfaces and paper white on dark surfaces. Preserve its proportions, micro-rounded corners, spacing, and clear space; never outline, rotate, or add effects.</div>
+</div>
+</body>
+</html>

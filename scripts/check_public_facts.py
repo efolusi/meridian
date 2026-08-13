@@ -22,6 +22,7 @@ checks = [
     (ROOT / "README.md", f"components-{facts['components']}-", "component badge"),
     (ROOT / "README.md", f"{facts['components']} accessible React components", "README component count"),
     (ROOT / "README.md", f"{facts['tokens']} design tokens", "README token count"),
+    (ROOT / "index.html", f"{facts['components']} accessible React components", "root redirect SEO count"),
     (ROOT / "ROADMAP.md", f"{facts['tokens']} unique token names", "roadmap token count"),
     (ROOT / "VISION.md", f"{facts['tokens']} design tokens", "vision token count"),
     (ROOT / "llms.txt", f"{facts['tokens']} design tokens", "llms token count"),
@@ -47,6 +48,7 @@ for path, needle, label in checks:
 # stale count while another correct occurrence lets the page pass. Check every
 # authored component-count claim on the public surfaces in both languages.
 public_surfaces = (
+    ROOT / "index.html",
     ROOT / "README.md",
     ROOT / "ROADMAP.md",
     ROOT / "site/Components.dc.html",

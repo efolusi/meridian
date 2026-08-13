@@ -6,8 +6,8 @@ function BrandPanel() {
   return (
     <div style={{ flex: 1, background: 'var(--brand-950)', color: 'var(--cream-50)', display: 'flex', flexDirection: 'column', padding: 48, position: 'relative', overflow: 'hidden' }}>
       <a href="../website/index.html" style={{ display: 'flex', alignItems: 'center', gap: 12, textDecoration: 'none', color: 'var(--cream-50)' }}>
-        <img src="../../assets/logo.png" alt="" style={{ width: 36, height: 36 }} />
-        <span style={{ fontFamily: 'var(--font-display)', fontWeight: 680, letterSpacing: '-0.02em', fontSize: 24 }}>Efolusi</span>
+        <img src="../../assets/meridian-mark.svg" alt="" style={{ width: 36, height: 19, filter: 'brightness(0) invert(1)' }} />
+        <span style={{ fontFamily: 'var(--font-display)', fontWeight: 680, letterSpacing: '-0.02em', fontSize: 24 }}>Meridian</span>
       </a>
       <div style={{ marginTop: 'auto', maxWidth: 420 }}>
         <div style={{ fontFamily: 'var(--font-display)', fontWeight: 700, letterSpacing: '-0.02em', fontSize: 34, lineHeight: 1.15 }}>One account for your whole workspace.</div>
@@ -68,7 +68,7 @@ function AuthForm({ mode, onSwitch, onMode, onDone }) {
         <Button size="lg" fullWidth variant="secondary" iconLeft="mail" type="button" onClick={() => onMode && onMode('magic')}>Email me a magic link</Button>
       </form>
       <p style={{ marginTop: 22, fontSize: 13, color: 'var(--text-secondary)', textAlign: 'center' }}>
-        {signup ? 'Already have an account? ' : 'New to Efolusi? '}
+        {signup ? 'Already have an account? ' : 'New to Meridian? '}
         <a href="#" onClick={e => { e.preventDefault(); onSwitch(); }} style={{ fontWeight: 600 }}>{signup ? 'Sign in' : 'Create one'}</a>
       </p>
       {signup && <p style={{ marginTop: 10, fontSize: 11, color: 'var(--text-muted)', textAlign: 'center', lineHeight: 1.5 }}>By continuing you agree to the Terms of Service and Privacy Policy.</p>}

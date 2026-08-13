@@ -4,8 +4,8 @@ function DocsHeader({ onSearch }) {
   return (
     <header style={{ display: 'flex', alignItems: 'center', gap: 20, height: 58, padding: '0 24px', borderBottom: '1px solid var(--border-default)', background: 'rgba(250,249,246,.85)', backdropFilter: 'blur(12px)', position: 'sticky', top: 0, zIndex: 30 }}>
       <a href="../website/index.html" style={{ display: 'flex', alignItems: 'center', gap: 10, textDecoration: 'none', color: 'var(--text-primary)' }}>
-        <img src="../../assets/logo.png" alt="" style={{ width: 26, height: 26 }} />
-        <span style={{ fontFamily: 'var(--font-display)', fontWeight: 680, letterSpacing: '-0.02em', fontSize: 17 }}>Efolusi</span>
+        <img src="../../assets/meridian-mark.svg" alt="" style={{ width: 30, height: 16 }} />
+        <span style={{ fontFamily: 'var(--font-display)', fontWeight: 680, letterSpacing: '-0.02em', fontSize: 17 }}>Meridian</span>
         <span style={{ fontSize: 15, color: 'var(--text-muted)', fontWeight: 500 }}>Docs</span>
       </a>
       <button onClick={onSearch} style={{ display: 'flex', alignItems: 'center', gap: 8, width: 340, height: 32, padding: '0 10px', marginLeft: 12, border: '1px solid var(--border-strong)', borderRadius: 'var(--radius-sm)', background: 'var(--surface-card)', cursor: 'pointer', fontFamily: 'var(--font-sans)', fontSize: 13, color: 'var(--text-muted)' }}>
@@ -77,11 +77,11 @@ const CONTENT = {
     code: ['javascript', "efolusi.agent.tools.register({\n  name: 'refund',\n  url: 'https://api.acme.co/refund',\n  schema: { orderId: 'string', amountCents: 'number' },\n});"],
     tip: ['Danger levels', "Mark tools destructive: true and the agent always asks before calling them."] },
   connections: { lede: 'Connect clouds, databases, caches, and SSH hosts through encrypted tunnels — nothing is stored.', tags: [['clock', '4 min'], ['server', 'Infrastructure']], sections: [
-    ['Creating a tunnel', 'Console → Infrastructure → Connect resource, or the CLI below. Efolusi keeps a keepalive tunnel and health-checks it every 30 seconds.'],
+    ['Creating a tunnel', 'Console → Infrastructure → Connect resource, or the CLI below. Meridian keeps a keepalive tunnel and health-checks it every 30 seconds.'],
     ['Health & status', 'Resources report ok / degraded / down. Degraded fires a notification and shows amber in the console; the agent avoids degraded resources unless told otherwise.']],
     code: ['bash', 'efolusi infra connect postgres \\\n  --host db.internal.acme.co:5432 \\\n  --region eu-west-1'],
     tip: ['Least privilege', 'Connect with a read-only role first; add write roles per-project when needed.'] },
-  dns: { lede: 'Point domains at Efolusi, and DNS records, SSL certificates, and renewals manage themselves.', tags: [['clock', '3 min'], ['globe', 'Infrastructure']], sections: [
+  dns: { lede: 'Point domains at Meridian, and DNS records, SSL certificates, and renewals manage themselves.', tags: [['clock', '3 min'], ['globe', 'Infrastructure']], sections: [
     ['Adding a domain', 'Add the domain, copy the two records below into your registrar, and verification runs automatically — usually under a minute.'],
     ['Certificates', 'Certs issue and renew automatically for verified domains. Manual certs get an expiry warning at 30 days.']],
     code: ['text', 'A     efolusi.com        76.76.21.21\nCNAME app.efolusi.com    edge.efolusi.com'],
@@ -158,16 +158,16 @@ function QuickstartArticle({ onPage }) {
     <article style={{ maxWidth: 720 }}>
       <Breadcrumb><BreadcrumbList><BreadcrumbItem><BreadcrumbLink href="#" onClick={event => event.preventDefault()}>Getting started</BreadcrumbLink></BreadcrumbItem><BreadcrumbSeparator /><BreadcrumbItem><BreadcrumbPage>Quickstart</BreadcrumbPage></BreadcrumbItem></BreadcrumbList></Breadcrumb>
       <h1 style={{ fontSize: 38, fontWeight: 680, marginTop: 12 }}>Quickstart</h1>
-      <p style={{ fontSize: 17, lineHeight: 1.65, color: 'var(--text-secondary)', marginTop: 12 }}>Send your first API request in under five minutes. Everything in Efolusi — agent tasks, infrastructure, automation, trades — starts with the same key.</p>
+      <p style={{ fontSize: 17, lineHeight: 1.65, color: 'var(--text-secondary)', marginTop: 12 }}>Send your first API request in under five minutes. Everything in Meridian — agent tasks, infrastructure, automation, trades — starts with the same key.</p>
       <div style={{ display: 'flex', gap: 8, marginTop: 16 }}><Tag icon="clock">5 min</Tag><Tag icon="terminal">curl or SDK</Tag></div>
       <h2 id="install" style={{ fontSize: 24, fontWeight: 680, marginTop: 40 }}>1. Install the SDK</h2>
       <P>Grab the client for your stack — or skip straight to curl; the API is plain JSON over HTTPS.</P>
       <CodeBlock lang="bash" style={{ margin: '18px 0' }}>npm install @efolusi/sdk</CodeBlock>
       <h2 id="authenticate" style={{ fontSize: 24, fontWeight: 680, marginTop: 40 }}>2. Authenticate</h2>
       <P>Create a key in Console → Settings → API keys. Test keys are prefixed <code style={{ background: 'var(--sand-100)', padding: '2px 6px', borderRadius: 4, fontSize: 13 }}>ef_test_</code> and never touch live data.</P>
-      <CodeBlock lang="javascript" style={{ margin: '18px 0' }}>{`import Efolusi from '@efolusi/sdk';
+      <CodeBlock lang="javascript" style={{ margin: '18px 0' }}>{`import Meridian from '@efolusi/sdk';
 
-const efolusi = new Efolusi('ef_test_a91xK…');
+const efolusi = new Meridian('ef_test_a91xK…');
 const task = await efolusi.agent.tasks.run('retry failed webhooks');`}</CodeBlock>
       <Alert style={{ margin: '18px 0' }}><Icon name="info" size={16} /><AlertTitle>Keep keys server-side</AlertTitle><AlertDescription>Keys grant full workspace access — never ship them in browser code.</AlertDescription></Alert>
       <h2 id="first-request" style={{ fontSize: 24, fontWeight: 680, marginTop: 40 }}>3. Make it do something</h2>

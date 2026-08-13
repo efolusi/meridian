@@ -1,7 +1,7 @@
 export interface SideNavItem { id: string; label: React.ReactNode; icon: string; badge?: React.ReactNode; }
 export interface SideNavGroup { /** Uppercase group heading (omit for main nav) */ label?: string; items: SideNavItem[]; }
 export interface SideNavProps {
-  /** @default 'Efolusi' */
+  /** @default 'Meridian' */
   brand?: string;
   /** Badge next to brand (e.g. 'Console') */
   brandBadge?: React.ReactNode;

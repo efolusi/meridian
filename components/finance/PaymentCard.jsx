@@ -11,7 +11,7 @@ const CSS = `
 .ef-paycard__val{font-size:12.5px;font-weight:600;margin-top:2px}
 .ef-paycard__chip{width:34px;height:25px;border-radius:5px;background:linear-gradient(135deg,var(--brand-200),var(--brand-500));opacity:.9}
 `;
-export function PaymentCard({ name = 'ADA OBI', number = '•••• •••• •••• 4242', expiry = '09/29', network = 'Efolusi', variant = 'espresso', frozen, style, className, ...rest }) {
+export function PaymentCard({ name = 'ADA OBI', number = '•••• •••• •••• 4242', expiry = '09/29', network = 'Meridian', variant = 'espresso', frozen, style, className, ...rest }) {
   injectEfCss('ef-css-paycard', CSS);
   return (
     <div {...rest} className={`ef-paycard${variant === 'caramel' ? ' ef-paycard--caramel' : variant === 'paper' ? ' ef-paycard--paper' : ''}${className ? ' ' + className : ''}`} style={{ filter: frozen ? 'grayscale(.7) opacity(.75)' : undefined, ...style }}>

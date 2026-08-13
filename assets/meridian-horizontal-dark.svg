@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 292 64" role="img" aria-labelledby="title">
+  <title id="title">Meridian</title>
+  <defs><style>@font-face{font-family:'Bricolage Grotesque';src:url('fonts/BricolageGrotesque-Variable.woff2') format('woff2')}</style><path id="dark-bar" d="M16.9 3h9.2c1.1 0 1.7 1.1 1.1 2L13.5 29.5c-.3.6-.9.9-1.6.9H2.8c-1.1 0-1.7-1.1-1.1-2L15.3 3.9c.3-.6.9-.9 1.6-.9Z"/></defs>
+  <g fill="#FAF9F6" transform="translate(2 15)"><use href="#dark-bar"/><use href="#dark-bar" transform="translate(17)"/><use href="#dark-bar" transform="translate(34)"/></g>
+  <text x="82" y="45" fill="#FAF9F6" font-family="Bricolage Grotesque, Arial, sans-serif" font-size="42" font-weight="620" letter-spacing="-1.3">Meridian</text>
+</svg>

@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" role="img" aria-labelledby="title desc">
+  <title id="title">Meridian</title>
+  <desc id="desc">The Meridian open-source design system.</desc>
+  <rect width="1200" height="630" fill="#FAF9F6"/>
+  <defs><style>@font-face{font-family:Figtree;src:url('fonts/Figtree-Variable.woff2') format('woff2')}</style><path id="social-bar" d="M16.9 3h9.2c1.1 0 1.7 1.1 1.1 2L13.5 29.5c-.3.6-.9.9-1.6.9H2.8c-1.1 0-1.7-1.1-1.1-2L15.3 3.9c.3-.6.9-.9 1.6-.9Z"/></defs>
+  <g fill="#2C1709" transform="translate(128 155) scale(7.2)"><use href="#social-bar"/><use href="#social-bar" transform="translate(17)"/><use href="#social-bar" transform="translate(34)"/></g>
+  <text x="128" y="470" fill="#2C1709" font-family="Figtree, Arial, sans-serif" font-size="112" font-weight="600" letter-spacing="-4">Meridian</text>
+  <text x="132" y="530" fill="#7A6F5D" font-family="Figtree, Arial, sans-serif" font-size="28" letter-spacing="4">THE OPEN-SOURCE DESIGN SYSTEM</text>
+</svg>

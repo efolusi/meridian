@@ -1,6 +1,12 @@
 /* Meridian docs site — responsive layer. Inline styles carry the desktop layout; these overrides adapt it. */
 .site-nav{min-width:0;overflow-x:auto;scrollbar-width:none;-webkit-overflow-scrolling:touch}
 .site-top a{white-space:nowrap}
+.meridian-mark{display:block;width:30px;height:16px;object-fit:contain;flex:none}
+.meridian-lockup{display:block;width:120px;height:auto;flex:none}
+.meridian-lockup--dark{display:none}
+[data-theme="dark"] .meridian-mark{filter:brightness(0) invert(1)}
+[data-theme="dark"] .meridian-lockup--light{display:none}
+[data-theme="dark"] .meridian-lockup--dark{display:block}
 .site-nav::-webkit-scrollbar{display:none}
 .site-search{width:220px}
 @media (max-width:1080px){

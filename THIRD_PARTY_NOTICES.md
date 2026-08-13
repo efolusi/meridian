@@ -20,4 +20,4 @@ The three brand marks (`linkedin.svg`, `x-brand.svg`, `github-brand.svg`) are no
 
 ## Brand assets
 
-The Efolusi owl mark (`assets/logo.png`) and the names "Meridian" and "Efolusi" are **not** covered by the MIT license. See the brand usage note in [README.md](README.md).
+The Meridian mark (`assets/meridian-mark.svg`) and the names "Meridian" and "Efolusi" are **not** covered by the MIT license. See the brand usage note in [README.md](README.md).

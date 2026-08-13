@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Docs — Meridian</title>
 <meta name="description" content="Install Meridian, learn the token system, theming, and density, and build with 122 accessible components.">
-<link rel="icon" href="../assets/logo.png">
+<link rel="icon" type="image/svg+xml" href="../assets/favicon.svg">
 <link rel="canonical" href="https://meridian.efolusi.com/site/Docs.dc.html">
 <meta name="robots" content="index,follow">
 <meta name="theme-color" content="#FAF9F6" media="(prefers-color-scheme: light)">
@@ -15,19 +15,19 @@
 <meta property="og:title" content="Docs — Meridian">
 <meta property="og:description" content="Install Meridian, learn the token system, theming, and density, and build with 122 accessible components.">
 <meta property="og:url" content="https://meridian.efolusi.com/site/Docs.dc.html">
-<meta property="og:image" content="https://meridian.efolusi.com/assets/logo.png">
-<meta name="twitter:card" content="summary">
+<meta property="og:image" content="https://meridian.efolusi.com/assets/meridian-social.png">
+<meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Docs — Meridian">
 <meta name="twitter:description" content="Install Meridian, learn the token system, theming, and density, and build with 122 accessible components.">
-<meta name="twitter:image" content="https://meridian.efolusi.com/assets/logo.png">
+<meta name="twitter:image" content="https://meridian.efolusi.com/assets/meridian-social.png">
 <script src="./support.js"></script>
 </head>
 <body>
 <x-dc>
-<helmet><script src="./ds-base.js"></script><script src="./i18n.js"></script><link rel="stylesheet" href="./site.css"><style>@view-transition{navigation:auto}::view-transition-group(*){animation-duration:160ms}@media (prefers-reduced-motion:reduce){::view-transition-group(*),::view-transition-old(*),::view-transition-new(*){animation:none!important}}html{background:var(--surface-page,#FAF9F6)}</style></helmet>
+<helmet><script src="./ds-base.js"></script><script src="./i18n.js"></script><link rel="stylesheet" href="./site.css?v=20260814"><style>@view-transition{navigation:auto}::view-transition-group(*){animation-duration:160ms}@media (prefers-reduced-motion:reduce){::view-transition-group(*),::view-transition-old(*),::view-transition-new(*){animation:none!important}}html{background:var(--surface-page,#FAF9F6)}</style></helmet>
 <div style="min-height:100vh;background:var(--surface-page);color:var(--text-primary);font-family:var(--font-sans);display:flex;flex-direction:column">
 <header class="site-top" style="view-transition-name:site-top;position:sticky;top:0;z-index:50;display:flex;align-items:center;gap:26px;height:58px;padding:0 28px;border-bottom:1px solid var(--border-default);background:var(--surface-page)">
-<a href="./DsSite.dc.html" style="display:flex;align-items:center;gap:9px;text-decoration:none;color:var(--text-primary)"><img src="../assets/logo.png" alt="Meridian" style="width:24px;height:24px"><span style="font-family:var(--font-display);font-weight:680;letter-spacing:-0.02em;font-size:16px">Meridian</span><span class="hide-md" style="font-family:var(--font-mono);font-size:12.5px;color:var(--text-muted)">by Efolusi</span></a>
+<a href="./DsSite.dc.html" style="display:flex;align-items:center;gap:9px;text-decoration:none;color:var(--text-primary)"><img src="../assets/meridian-horizontal-light.svg" alt="Meridian" class="meridian-lockup meridian-lockup--light"><img src="../assets/meridian-horizontal-dark.svg" alt="" class="meridian-lockup meridian-lockup--dark"></a>
 <nav class="site-nav" style="display:flex;gap:20px;font-size:var(--text-md)">
 <a href="./Docs.dc.html" style="color:var(--text-primary);font-weight:600;text-decoration:none">Docs</a>
 <a href="./Components.dc.html" style="color:var(--text-secondary);text-decoration:none" style-hover="color:var(--text-primary)">Components</a>
@@ -206,7 +206,7 @@ class Component extends DCLogic {
       { group: 'Get started', id: 'theming', title: 'Theming', lede: 'Three token layers: raw ramps, semantic roles, component styles. You theme the middle layer.', blocks: [
         h2('layers', 'The three layers', 'Tiga lapisan'),
         list([
-          ['Ramps.', 'Raw scales like --brand-50 through --brand-950, derived from the Efolusi mark. Never referenced by components directly.', 'Ramp.', 'Skala mentah seperti --brand-50 hingga --brand-950, diturunkan dari logo Efolusi. Tak pernah dirujuk langsung oleh komponen.'],
+          ['Ramps.', 'Raw scales like --brand-50 through --brand-950, derived from the Meridian mark. Never referenced by components directly.', 'Ramp.', 'Skala mentah seperti --brand-50 hingga --brand-950, diturunkan dari logo Meridian. Tak pernah dirujuk langsung oleh komponen.'],
           ['Semantic roles.', '--surface-page, --text-primary, --border-strong, --accent … the vocabulary components actually use.', 'Peran semantik.', '--surface-page, --text-primary, --border-strong, --accent … kosakata yang benar-benar dipakai komponen.'],
           ['Component styles.', 'Each component reads only semantic tokens, so re-mapping the middle layer restyles everything.', 'Gaya komponen.', 'Tiap komponen hanya membaca token semantik, jadi memetakan ulang lapisan tengah menata ulang semuanya.'],
         ]),
@@ -338,7 +338,7 @@ class Component extends DCLogic {
         h2('v100', '1.0.0 — July 2026', '1.0.0 — Juli 2026'),
         list([
           ['65 components', 'across 12 groups, each with source, types, and prompt guide.', '65 komponen', 'dalam 12 grup, masing-masing dengan source, tipe, dan panduan prompt.'],
-          ['165 tokens', 'in light, dark, and compact, derived from the Efolusi mark.', '165 token', 'dalam terang, gelap, dan ringkas, diturunkan dari logo Efolusi.'],
+          ['165 tokens', 'in light, dark, and compact, derived from the Meridian mark.', '165 token', 'dalam terang, gelap, dan ringkas, diturunkan dari logo Meridian.'],
           ['8 product kits', 'with connected journeys, 5 blocks, 5 page templates.', '8 kit produk', 'dengan alur terhubung, 5 blok, 5 templat halaman.'],
           ['MIT license.', 'Copy freely, ship fast.', 'Lisensi MIT.', 'Salin bebas, rilis cepat.'],
         ]),

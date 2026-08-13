@@ -12,7 +12,7 @@
 html,body{overflow-x:clip}html{background:var(--surface-page)}
 .ai-shell{min-height:100dvh;background:var(--surface-page);color:var(--text-primary);font-family:var(--font-sans)}
 .ai-top{display:flex;align-items:center;gap:10px;min-height:60px;padding:8px 16px;border-bottom:1px solid var(--border-default);background:var(--surface-card)}
-.ai-brand{display:flex;align-items:center;gap:9px;min-width:0}.ai-brand img{width:28px;height:28px}.ai-brand strong{font-family:var(--font-display);font-size:17px;white-space:nowrap}
+.ai-brand{display:flex;align-items:center;gap:9px;min-width:0}.ai-brand img{width:30px;height:16px;object-fit:contain}.ai-brand strong{font-family:var(--font-display);font-size:17px;white-space:nowrap}.ai-shell[data-theme="dark"] .ai-brand img{filter:brightness(0) invert(1)}
 .ai-nav{display:none}.ai-actions{margin-inline-start:auto;display:flex;gap:8px}
 .ai-main{display:grid;gap:16px;padding:16px;max-width:1440px;margin-inline:auto}
 .ai-queue,.ai-sources,.ai-canvas{min-width:0;background:var(--surface-card);border:1px solid var(--border-default);border-radius:var(--radius-md)}
@@ -30,7 +30,7 @@ a:focus-visible{outline:none;box-shadow:var(--focus-ring)}.ai-nav a:hover{text-d
 </style></helmet>
 <div class="ai-shell" data-theme="{{ theme }}">
 <header class="ai-top">
-  <div class="ai-brand"><img src="../../assets/logo.png" alt=""><strong>Meridian AI</strong></div>
+  <div class="ai-brand"><img src="../../assets/meridian-mark.svg" alt=""><strong>Meridian AI</strong></div>
   <nav class="ai-nav" aria-label="Workspace"><a href="./Workspace.dc.html" aria-current="page">Workbench</a><a href="./Knowledge.dc.html">Knowledge</a><a href="./Evaluations.dc.html">Evaluations</a></nav>
   <div class="ai-actions"><x-import component-from-global-scope="EfolusiDesignSystem_4ffc3d.Button" variant="secondary" size="sm" icon-left="search" hint-size="90px,36px">Search</x-import><x-import component-from-global-scope="EfolusiDesignSystem_4ffc3d.Button" size="sm" icon-left="plus" hint-size="108px,36px">New run</x-import></div>
 </header>

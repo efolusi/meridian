@@ -6,7 +6,7 @@ function AgentHeader({ running, onToggle, notify }) {
   return (
     <header style={{ display: 'flex', alignItems: 'center', gap: 12, height: 58, padding: '0 24px', borderBottom: '1px solid var(--border-default)', background: 'rgba(250,249,246,.85)', backdropFilter: 'blur(12px)', flex: 'none' }}>
       <a href="../console/index.html" title="Back to Console" style={{ display: 'flex', alignItems: 'center', gap: 8, textDecoration: 'none', color: 'var(--text-primary)' }}>
-        <img src="../../assets/logo.png" alt="" style={{ width: 26, height: 26 }} />
+        <img src="../../assets/meridian-mark.svg" alt="" style={{ width: 30, height: 16 }} />
         <span style={{ fontFamily: 'var(--font-display)', fontWeight: 680, letterSpacing: '-0.02em', fontSize: 17 }}>AI agents</span>
       </a>
       <span style={{ color: 'var(--sand-300)' }}>/</span>

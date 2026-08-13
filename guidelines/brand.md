@@ -4,9 +4,9 @@ The visual and verbal rules behind Meridian: where the palette comes from, how t
 
 ## Brand identity
 
-The owl mark is the anchor: wise, warm, a little playful. The palette pairs the owl's **warm browns** (cocoa `#482818`, caramel `#C08A5A`, peach `#EFCFAC`, cream `#F8F4E6` — sampled from the mark) with **sand neutrals**. Interaction color comes from the mark too: **espresso ink** (`--brand-950` `#2C1709`) for primary actions, caramel (`--brand-700`) for links and focus. Design stance: beautiful, fast, minimalist, powerful — warm paper, espresso ink, hairline structure, motion that never performs.
+The Meridian mark is the anchor: three identical rising strokes, the literal shorthand `///`, with a quiet sense of forward motion. It stays deliberately abstract rather than resolving into a letter or pictogram. Its espresso form sits naturally in the system's warm palette: cocoa `#482818`, caramel `#A0693C`, latte `#C08A5A`, cream `#F8F4E6`, and sand neutrals. Interaction color uses **espresso ink** (`--brand-950` `#2C1709`) for primary actions and caramel (`--brand-700`) for links and focus. Design stance: beautiful, fast, minimalist, powerful — warm paper, espresso ink, hairline structure, motion that never performs.
 
-- **Wordmark:** "Efolusi" set in Bricolage Grotesque 650–700, tracking -0.02em, next to the owl. There is no separate logotype file; render the name in type.
+- **Wordmark:** "Meridian" set in Bricolage Grotesque 600–680, tracking -0.02em, beside the mark. Use the horizontal lockup in navigation and the stacked lockup only for spacious brand moments.
 - **Fonts (self-hosted, OFL):** Bricolage Grotesque (display), Figtree (UI/body), JetBrains Mono (code). Variable WOFF2 in `assets/fonts/`.
 
 ## Content fundamentals
@@ -17,7 +17,7 @@ The owl mark is the anchor: wise, warm, a little playful. The palette pairs the 
 - **Empty states** lead with the action, not the absence: "Create your first project" over "No projects found".
 - **Errors** say what happened + how to fix, no blame, no jargon: "That email is already in use. Try signing in instead."
 - **Numbers & data:** tabular figures in mono for tables/metrics; abbreviate at 10k+ ("12.4k", "$8.2M").
-- **Emoji:** never in product UI. Playfulness comes from motion and the owl, not emoji.
+- **Emoji:** never in product UI. Personality comes from typography, motion, and the three-stroke mark, not emoji.
 - **Vibe check:** precise, warm, unhurried. Marketing copy may be bolder ("Ship the boring parts faster.") but stays plain-spoken — no exclamation-mark enthusiasm.
 
 ## Visual foundations
@@ -38,4 +38,4 @@ The owl mark is the anchor: wise, warm, a little playful. The palette pairs the 
 - **System:** [Lucide](https://lucide.dev) (ISC), 24px grid, 2px stroke assets, round caps/joins — 108 curated glyphs copied as raw SVG into `assets/icons/`. Render via the `Icon` component (inlines the SVG, inherits `currentColor`, and re-strokes to 1.5px at render).
 - **Sizes:** 16px inline/buttons, 20px nav/list leading, 24px feature spots. Icon color follows text color; decorative feature icons may sit in a 40px `--sand-100` rounded square.
 - **No icon font, no emoji-as-icons, no hand-drawn SVGs.** Unicode glyphs (→, ×) allowed only inside mono/code contexts. Need a glyph we don't ship? Copy it from Lucide and keep the 2px stroke — the `Icon` component only re-strokes assets authored at exactly `stroke-width="2"`.
-- **Logo:** `assets/logo.png` (668×668, transparent). Don't redraw, recolor, or add effects. Minimum size 24px.
+- **Logo:** `assets/meridian-mark.svg`. Use espresso on light surfaces and white on espresso surfaces. Keep the mark's proportions and stroke rhythm intact; minimum digital width is 30px (16px high). Use the supplied horizontal light/dark assets where the wordmark is part of the composition.

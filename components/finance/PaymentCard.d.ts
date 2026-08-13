@@ -5,7 +5,7 @@ export interface PaymentCardProps {
   number?: string;
   /** @default '09/29' */
   expiry?: string;
-  /** Top-left brand text @default 'Efolusi' */
+  /** Top-left brand text @default 'Meridian' */
   network?: string;
   /** @default 'espresso' */
   variant?: 'espresso' | 'caramel' | 'paper';
