@@ -1,7 +1,7 @@
 import React from 'react';
 import { act, render, screen } from '@testing-library/react';
 import { afterEach, describe, expect, it, vi } from 'vitest';
-import { Toaster, toast } from '../components/feedback/Toast.jsx';
+import { Toaster, toast } from '../components/feedback/Sonner.jsx';
 
 afterEach(() => { act(() => toast.dismiss()); vi.useRealTimers(); });
 

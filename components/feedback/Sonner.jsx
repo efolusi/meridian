@@ -15,12 +15,12 @@ const CSS = `
 `;
 const ICONS = { success: 'circle-check', danger: 'circle-alert', warning: 'triangle-alert', info: 'info' };
 
-export function Toast({ tone = 'info', title, description, action, actionLabel, onAction, onClose, role = 'status', style, className, ...rest }) {
+function SonnerToast({ tone = 'info', title, description, action, onClose, role = 'status', style, className, ...rest }) {
   injectEfCss('ef-css-toast', CSS);
   const actionNode = React.isValidElement(action) ? action : action && typeof action === 'object'
     ? <button className="ef-toast__action" onClick={action.onClick}>{action.label}</button>
     : action ? <span className="ef-toast__action">{action}</span>
-    : actionLabel ? <button className="ef-toast__action" onClick={onAction}>{actionLabel}</button> : null;
+    : null;
   return <div {...rest} data-slot="toast" className={`ef-toast ef-toast--${tone}${className ? ` ${className}` : ''}`} role={role || undefined} style={style}>
     <span className="ef-toast__icon" aria-hidden="true"><Icon name={ICONS[tone] || 'info'} size={18} /></span>
     <div style={{ flex: 1 }}><div className="ef-toast__title">{title}</div>{description ? <div className="ef-toast__desc">{description}</div> : null}{actionNode}</div>
@@ -28,7 +28,7 @@ export function Toast({ tone = 'info', title, description, action, actionLabel, 
   </div>;
 }
 
-export function ToastStack({ children, position = 'bottom-right', style, className, ...rest }) {
+function SonnerStack({ children, position = 'bottom-right', style, className, ...rest }) {
   injectEfCss('ef-css-toast', CSS);
   return <div {...rest} data-slot="toaster" data-position={position} className={`ef-toast-stack${className ? ` ${className}` : ''}`} style={style}>{children}</div>;
 }
@@ -88,9 +88,9 @@ export function Toaster({ position = 'bottom-right', visibleToasts = 3, closeBut
   React.useEffect(() => { const listener = value => setItems(value); listeners.add(listener); listener(records); return () => listeners.delete(listener); }, []);
   React.useEffect(() => { defaultDuration = duration; defaultToastOptions = toastOptions; return () => { defaultDuration = 5000; defaultToastOptions = {}; }; }, [duration, toastOptions]);
   const resolvedOffset = typeof offset === 'number' ? `${offset}px` : offset;
-  return <>{children}<Portal><ToastStack {...rest} dir={dir} position={position} data-rich-colors={richColors ? 'true' : 'false'} data-expand={expand ? 'true' : 'false'} data-theme={theme} data-mobile-offset={typeof mobileOffset === 'number' ? `${mobileOffset}px` : mobileOffset} style={{ gap, ...(position.startsWith('top') ? { top: resolvedOffset } : { bottom: resolvedOffset }), ...style }} aria-label={label} role="log" aria-live="polite" aria-relevant="additions" onMouseEnter={pause} onMouseLeave={resume} onFocusCapture={pause} onBlurCapture={resume}>
+  return <>{children}<Portal><SonnerStack {...rest} dir={dir} position={position} data-rich-colors={richColors ? 'true' : 'false'} data-expand={expand ? 'true' : 'false'} data-theme={theme} data-mobile-offset={typeof mobileOffset === 'number' ? `${mobileOffset}px` : mobileOffset} style={{ gap, ...(position.startsWith('top') ? { top: resolvedOffset } : { bottom: resolvedOffset }), ...style }} aria-label={label} role="log" aria-live="polite" aria-relevant="additions" onMouseEnter={pause} onMouseLeave={resume} onFocusCapture={pause} onBlurCapture={resume}>
     {items.slice(-visibleToasts).map(item => item.type === 'custom' && React.isValidElement(item.title)
       ? React.cloneElement(item.title, { key: item.id })
-      : <Toast key={item.id} tone={item.type === 'error' ? 'danger' : ['success', 'warning', 'info'].includes(item.type) ? item.type : 'info'} title={item.title} description={item.description} action={item.action} role={null} onClose={closeButton || item.closeButton ? () => dismiss(item.id) : undefined} />)}
-  </ToastStack></Portal></>;
+      : <SonnerToast key={item.id} tone={item.type === 'error' ? 'danger' : ['success', 'warning', 'info'].includes(item.type) ? item.type : 'info'} title={item.title} description={item.description} action={item.action} role={null} onClose={closeButton || item.closeButton ? () => dismiss(item.id) : undefined} />)}
+  </SonnerStack></Portal></>;
 }

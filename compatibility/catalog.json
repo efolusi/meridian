@@ -431,7 +431,7 @@
       "status": "proven",
       "requiredExports": ["Toaster"],
       "requiredModuleExports": ["toast"],
-      "sourceFiles": ["components/feedback/Toast.jsx", "components/feedback/Toast.d.ts"],
+      "sourceFiles": ["components/feedback/Sonner.jsx", "components/feedback/Sonner.d.ts"],
       "registryItems": ["site/registry/sonner.json"],
       "tests": ["tests/sonner-compatibility.test.jsx"]
     },
@@ -544,16 +544,6 @@
       "sourceFiles": ["components/forms/Textarea.jsx", "components/forms/Textarea.d.ts"],
       "registryItems": ["site/registry/textarea.json"],
       "tests": ["tests/form-display-primitives-compatibility.test.jsx"]
-    },
-    {
-      "name": "Toast",
-      "status": "proven",
-      "kind": "deprecated",
-      "migrationTarget": "Sonner",
-      "requiredExports": ["Toast", "ToastStack"],
-      "sourceFiles": ["components/feedback/Toast.jsx", "components/feedback/Toast.d.ts", "components/feedback/Toast.prompt.md"],
-      "registryItems": ["site/registry/toast.json", "site/registry/sonner.json"],
-      "tests": ["tests/guide-compatibility.test.mjs", "tests/sonner-compatibility.test.jsx"]
     },
     {
       "name": "Toggle",

@@ -50,17 +50,15 @@ REGISTRY_NAME_OVERRIDES = {
     "components/display/Direction.jsx": "direction",
     "components/forms/Radio.jsx": "radio-group",
     "components/navigation/Sidebar.jsx": "sidebar",
+    "components/feedback/Sonner.jsx": "sonner",
 }
 
 EXTERNAL_DEPENDENCIES = {
     "components/data/Chart.jsx": ["recharts@^3.8.0"],
 }
 
-# Older Meridian item URLs remain installable when the canonical migration
-# contract uses a different slug.
 REGISTRY_ALIASES = {
     "components/forms/Radio.jsx": ["radio"],
-    "components/feedback/Toast.jsx": ["sonner"],
 }
 
 

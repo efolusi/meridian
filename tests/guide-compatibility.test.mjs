@@ -25,9 +25,4 @@ describe('guide-only compatibility families', () => {
     expect(recipe).toContain("'--font-body'");
   });
 
-  it('pins deprecated Toast to the proven Sonner migration path', () => {
-    const prompt = read('components/feedback/Toast.prompt.md');
-    expect(prompt).toContain('New product code should use `Toaster` plus `toast`.');
-    expect(read('tests/sonner-compatibility.test.jsx')).toContain('toast.promise');
-  });
 });

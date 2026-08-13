@@ -17,7 +17,7 @@ Field `error` prop: what happened + how to fix, ≤ 90 chars, no blame, no codes
 
 ## Submit states
 - Busy: `Button loading` (spinner replaces icon, button disables). Keep the label.
-- Success: navigate, or `Toast tone="success"` when staying put.
+- Success: navigate, or call `toast.success(message)` when staying put.
 - Server failure: `Alert tone="danger"` above the form with a retry path; keep user input intact.
 
 ## Async checks

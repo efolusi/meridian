@@ -1,10 +1,6 @@
 import * as React from 'react';
 export type ToastPosition = 'top-left' | 'top-center' | 'top-right' | 'bottom-left' | 'bottom-center' | 'bottom-right';
 export interface ToastAction { label: React.ReactNode; onClick: () => void }
-export interface ToastProps extends Omit<React.HTMLAttributes<HTMLDivElement>, 'title'> { tone?: 'info' | 'success' | 'warning' | 'danger'; title: React.ReactNode; description?: React.ReactNode; action?: React.ReactNode | ToastAction; actionLabel?: string; onAction?: () => void; onClose?: () => void; role?: 'status' | 'alert' | null }
-export function Toast(props: ToastProps): React.JSX.Element;
-export interface ToastStackProps extends React.HTMLAttributes<HTMLDivElement> { position?: ToastPosition }
-export function ToastStack(props: ToastStackProps): React.JSX.Element;
 export interface ExternalToast { id?: string | number; description?: React.ReactNode | ((value: unknown) => React.ReactNode); duration?: number; action?: React.ReactNode | ToastAction; closeButton?: boolean }
 export interface ToastFunction { (message: React.ReactNode, options?: ExternalToast): string | number; success(message: React.ReactNode, options?: ExternalToast): string | number; info(message: React.ReactNode, options?: ExternalToast): string | number; warning(message: React.ReactNode, options?: ExternalToast): string | number; error(message: React.ReactNode, options?: ExternalToast): string | number; loading(message: React.ReactNode, options?: ExternalToast): string | number; custom(message: React.ReactElement, options?: ExternalToast): string | number; message(message: React.ReactNode, options?: ExternalToast): string | number; dismiss(id?: string | number): void; promise<T>(promise: Promise<T> | (() => Promise<T>), data: { loading?: React.ReactNode; success?: React.ReactNode | ((value: T) => React.ReactNode); error?: React.ReactNode | ((error: unknown) => React.ReactNode); description?: React.ReactNode | ((value: T) => React.ReactNode); duration?: number }): string | number }
 export const toast: ToastFunction;

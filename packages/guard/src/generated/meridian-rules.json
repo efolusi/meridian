@@ -1491,16 +1491,8 @@
       "sourcePath": "components/dates/TimePicker.jsx"
     },
     {
-      "name": "Toast",
-      "sourcePath": "components/feedback/Toast.jsx"
-    },
-    {
       "name": "Toaster",
-      "sourcePath": "components/feedback/Toast.jsx"
-    },
-    {
-      "name": "ToastStack",
-      "sourcePath": "components/feedback/Toast.jsx"
+      "sourcePath": "components/feedback/Sonner.jsx"
     },
     {
       "name": "Todo",

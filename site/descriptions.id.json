@@ -51,7 +51,6 @@
  "Progress": "Bar progres tinta 4px untuk meter penggunaan dan alur multi-langkah.",
  "Spinner": "Indikator memuat mandiri (Button punya sendiri via loading).",
  "Sonner": "Notifikasi imperatif modern dengan tipe status, promise lifecycle, aksi, posisi, batas tampilan, dan timer yang berhenti saat di-hover atau difokuskan.",
- "Toast": "Kartu notifikasi gelap (espresso); bungkus dalam ToastStack untuk menyematkan di kanan-bawah.",
  "Tooltip": "Tooltip hover/fokus dengan jeda 200ms dan pop lentur. Bungkus elemen pemicu apa pun.",
  "BarChart": "Bar chart minimalis setipis rambut: batang pasir, jendela sorot tinta, nuansa hover + tooltip judul.",
  "DonutChart": "Donat dengan angka tengah + legenda; hover menyorot satu irisan. Warna bawaan mengikuti ramp brand.",

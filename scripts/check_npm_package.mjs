@@ -62,7 +62,7 @@ try {
     // both spellings, because both appear in the docs and in the wild
     `${NAME}/forms/Button.js`, `${NAME}/forms/Button`,
     `${NAME}/data/Table.js`, `${NAME}/data/Table`,
-    `${NAME}/overlay/Portal.js`, `${NAME}/feedback/Toast.js`,
+    `${NAME}/overlay/Portal.js`, `${NAME}/feedback/Sonner.js`,
   ];
   const unresolvable = [];
   for (const s of specs) if (!(await resolvesByName(s))) unresolvable.push(s);

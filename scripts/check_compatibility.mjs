@@ -18,7 +18,7 @@ const EXPECTED_NAMES = [
   'Message Scroller', 'Native Select', 'Navigation Menu', 'Pagination', 'Popover',
   'Progress', 'Radio Group', 'Resizable', 'Scroll Area', 'Select', 'Sonner',
   'Separator', 'Sheet', 'Sidebar', 'Skeleton', 'Slider', 'Spinner', 'Switch',
-  'Table', 'Tabs', 'Textarea', 'Toast', 'Toggle', 'Toggle Group', 'Tooltip',
+  'Table', 'Tabs', 'Textarea', 'Toggle', 'Toggle Group', 'Tooltip',
   'Typography',
 ]
 

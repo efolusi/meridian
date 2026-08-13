@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 import { execFileSync } from 'node:child_process';
-import { readFileSync } from 'node:fs';
+import { existsSync, readFileSync } from 'node:fs';
 import { extname } from 'node:path';
 
 const ROOT = new URL('..', import.meta.url).pathname;
@@ -8,7 +8,7 @@ const extensions = new Set(['.css', '.html', '.jsx']);
 const files = execFileSync('git', ['ls-files'], { cwd: ROOT, encoding: 'utf8' })
   .trim()
   .split('\n')
-  .filter(file => extensions.has(extname(file)) && file !== '_ds_bundle.js' && !file.startsWith('site/registry/'));
+  .filter(file => extensions.has(extname(file)) && file !== '_ds_bundle.js' && !file.startsWith('site/registry/') && existsSync(new URL(`../${file}`, import.meta.url)));
 
 const failures = [];
 const hoverRule = /([^{}]*:hover[^{}]*)\{([^{}]*)\}/g;

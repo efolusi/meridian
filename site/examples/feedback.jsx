@@ -113,17 +113,6 @@ export function SpinnerDemo() {
   );
 }
 
-// @demo Toast Notification
-export function ToastDemo() {
-  const { Toast } = window.EfolusiDesignSystem_4ffc3d;
-  return (
-    <div style={{ display: 'flex', flexDirection: 'column', gap: 12, width: 360 }}>
-      <Toast tone="success" title="Run finished" description="Flight rebooked, receipt saved." actionLabel="View" onAction={() => {}} onClose={() => {}} />
-      <Toast tone="danger" title="Payment failed" description="Card ending 4412 was declined." actionLabel="Retry" onAction={() => {}} onClose={() => {}} />
-    </div>
-  );
-}
-
 // @demo Toaster Imperative notifications
 export function ToasterDemo() {
   const { Toaster, toast, Button } = window.EfolusiDesignSystem_4ffc3d;

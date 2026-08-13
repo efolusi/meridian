@@ -2705,6 +2705,36 @@ export interface ProgressProps extends React.HTMLAttributes<HTMLDivElement> {
 export declare const Progress: React.ForwardRefExoticComponent<ProgressProps & React.RefAttributes<HTMLDivElement>>;
 ```
 
+#### Sonner
+
+Group: feedback · Source: /components/feedback/Sonner.jsx · Exports: Toaster
+
+# Sonner
+
+Mount one `Toaster` near the application root, then call the imperative `toast` API from any event handler.
+
+```jsx
+<Toaster position="bottom-right" closeButton />
+
+toast.success('Run completed', {
+  description: 'All production regions are healthy.',
+  action: { label: 'View run', onClick: openRun },
+})
+```
+
+Use `toast.info`, `toast.warning`, `toast.error`, `toast.loading`, `toast.promise`, `toast.custom`, and `toast.dismiss` for the corresponding lifecycle. Hovering or focusing the stack pauses dismissal timers.
+
+```ts
+import * as React from 'react';
+export type ToastPosition = 'top-left' | 'top-center' | 'top-right' | 'bottom-left' | 'bottom-center' | 'bottom-right';
+export interface ToastAction { label: React.ReactNode; onClick: () => void }
+export interface ExternalToast { id?: string | number; description?: React.ReactNode | ((value: unknown) => React.ReactNode); duration?: number; action?: React.ReactNode | ToastAction; closeButton?: boolean }
+export interface ToastFunction { (message: React.ReactNode, options?: ExternalToast): string | number; success(message: React.ReactNode, options?: ExternalToast): string | number; info(message: React.ReactNode, options?: ExternalToast): string | number; warning(message: React.ReactNode, options?: ExternalToast): string | number; error(message: React.ReactNode, options?: ExternalToast): string | number; loading(message: React.ReactNode, options?: ExternalToast): string | number; custom(message: React.ReactElement, options?: ExternalToast): string | number; message(message: React.ReactNode, options?: ExternalToast): string | number; dismiss(id?: string | number): void; promise<T>(promise: Promise<T> | (() => Promise<T>), data: { loading?: React.ReactNode; success?: React.ReactNode | ((value: T) => React.ReactNode); error?: React.ReactNode | ((error: unknown) => React.ReactNode); description?: React.ReactNode | ((value: T) => React.ReactNode); duration?: number }): string | number }
+export const toast: ToastFunction;
+export interface ToasterProps extends React.HTMLAttributes<HTMLDivElement> { position?: ToastPosition; visibleToasts?: number; closeButton?: boolean; richColors?: boolean; duration?: number; toastOptions?: ExternalToast; expand?: boolean; theme?: 'light' | 'dark' | 'system'; dir?: 'ltr' | 'rtl'; gap?: number; offset?: number | string; mobileOffset?: number | string; label?: string; children?: React.ReactNode }
+export function Toaster(props: ToasterProps): React.JSX.Element;
+```
+
 #### Spinner
 
 Group: feedback · Source: /components/feedback/Spinner.jsx · Exports: Spinner
@@ -2721,42 +2751,6 @@ Use native `width` and `height` attributes to change dimensions and `aria-label`
 ```ts
 export type SpinnerProps = React.SVGProps<SVGSVGElement>;
 export declare const Spinner: React.ForwardRefExoticComponent<SpinnerProps & React.RefAttributes<SVGSVGElement>>;
-```
-
-#### Toast
-
-Group: feedback · Source: /components/feedback/Toast.jsx · Exports: Toast, ToastStack, Toaster
-
-# Sonner and Toast
-
-Mount one `Toaster` near the application root, then call the imperative `toast` API from any event handler.
-
-```jsx
-<Toaster position="bottom-right" closeButton />
-
-toast.success('Run completed', {
-  description: 'All production regions are healthy.',
-  action: { label: 'View run', onClick: openRun },
-})
-```
-
-Use `toast.info`, `toast.warning`, `toast.error`, `toast.loading`, `toast.promise`, `toast.custom`, and `toast.dismiss` for the corresponding lifecycle. Hovering or focusing the stack pauses dismissal timers.
-
-`Toast` and `ToastStack` remain the composable deprecated toast surface for migrations that need direct rendering. New product code should use `Toaster` plus `toast`.
-
-```ts
-import * as React from 'react';
-export type ToastPosition = 'top-left' | 'top-center' | 'top-right' | 'bottom-left' | 'bottom-center' | 'bottom-right';
-export interface ToastAction { label: React.ReactNode; onClick: () => void }
-export interface ToastProps extends Omit<React.HTMLAttributes<HTMLDivElement>, 'title'> { tone?: 'info' | 'success' | 'warning' | 'danger'; title: React.ReactNode; description?: React.ReactNode; action?: React.ReactNode | ToastAction; actionLabel?: string; onAction?: () => void; onClose?: () => void; role?: 'status' | 'alert' | null }
-export function Toast(props: ToastProps): React.JSX.Element;
-export interface ToastStackProps extends React.HTMLAttributes<HTMLDivElement> { position?: ToastPosition }
-export function ToastStack(props: ToastStackProps): React.JSX.Element;
-export interface ExternalToast { id?: string | number; description?: React.ReactNode | ((value: unknown) => React.ReactNode); duration?: number; action?: React.ReactNode | ToastAction; closeButton?: boolean }
-export interface ToastFunction { (message: React.ReactNode, options?: ExternalToast): string | number; success(message: React.ReactNode, options?: ExternalToast): string | number; info(message: React.ReactNode, options?: ExternalToast): string | number; warning(message: React.ReactNode, options?: ExternalToast): string | number; error(message: React.ReactNode, options?: ExternalToast): string | number; loading(message: React.ReactNode, options?: ExternalToast): string | number; custom(message: React.ReactElement, options?: ExternalToast): string | number; message(message: React.ReactNode, options?: ExternalToast): string | number; dismiss(id?: string | number): void; promise<T>(promise: Promise<T> | (() => Promise<T>), data: { loading?: React.ReactNode; success?: React.ReactNode | ((value: T) => React.ReactNode); error?: React.ReactNode | ((error: unknown) => React.ReactNode); description?: React.ReactNode | ((value: T) => React.ReactNode); duration?: number }): string | number }
-export const toast: ToastFunction;
-export interface ToasterProps extends React.HTMLAttributes<HTMLDivElement> { position?: ToastPosition; visibleToasts?: number; closeButton?: boolean; richColors?: boolean; duration?: number; toastOptions?: ExternalToast; expand?: boolean; theme?: 'light' | 'dark' | 'system'; dir?: 'ltr' | 'rtl'; gap?: number; offset?: number | string; mobileOffset?: number | string; label?: string; children?: React.ReactNode }
-export function Toaster(props: ToasterProps): React.JSX.Element;
 ```
 
 #### Tooltip

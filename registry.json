@@ -2330,6 +2330,39 @@
       ]
     },
     {
+      "name": "sonner",
+      "type": "registry:ui",
+      "title": "Toaster",
+      "description": "Mount one `Toaster` near the application root, then call the imperative `toast` API from any event handler.",
+      "dependencies": [
+        "react"
+      ],
+      "registryDependencies": [
+        "https://meridian.efolusi.com/site/registry/meridian-base.json",
+        "https://meridian.efolusi.com/site/registry/button.json",
+        "https://meridian.efolusi.com/site/registry/icon.json",
+        "https://meridian.efolusi.com/site/registry/iconbutton.json",
+        "https://meridian.efolusi.com/site/registry/portal.json"
+      ],
+      "files": [
+        {
+          "path": "components/feedback/Sonner.jsx",
+          "type": "registry:ui"
+        },
+        {
+          "path": "components/feedback/Sonner.d.ts",
+          "type": "registry:component"
+        },
+        {
+          "path": "components/feedback/Sonner.prompt.md",
+          "type": "registry:component"
+        }
+      ],
+      "categories": [
+        "feedback"
+      ]
+    },
+    {
       "name": "spinner",
       "type": "registry:ui",
       "title": "Spinner",
@@ -2352,72 +2385,6 @@
         },
         {
           "path": "components/feedback/Spinner.prompt.md",
-          "type": "registry:component"
-        }
-      ],
-      "categories": [
-        "feedback"
-      ]
-    },
-    {
-      "name": "toast",
-      "type": "registry:ui",
-      "title": "Toast + ToastStack + Toaster",
-      "description": "Mount one `Toaster` near the application root, then call the imperative `toast` API from any event handler.",
-      "dependencies": [
-        "react"
-      ],
-      "registryDependencies": [
-        "https://meridian.efolusi.com/site/registry/meridian-base.json",
-        "https://meridian.efolusi.com/site/registry/button.json",
-        "https://meridian.efolusi.com/site/registry/icon.json",
-        "https://meridian.efolusi.com/site/registry/iconbutton.json",
-        "https://meridian.efolusi.com/site/registry/portal.json"
-      ],
-      "files": [
-        {
-          "path": "components/feedback/Toast.jsx",
-          "type": "registry:ui"
-        },
-        {
-          "path": "components/feedback/Toast.d.ts",
-          "type": "registry:component"
-        },
-        {
-          "path": "components/feedback/Toast.prompt.md",
-          "type": "registry:component"
-        }
-      ],
-      "categories": [
-        "feedback"
-      ]
-    },
-    {
-      "name": "sonner",
-      "type": "registry:ui",
-      "title": "Toast + ToastStack + Toaster (legacy registry alias)",
-      "description": "Mount one `Toaster` near the application root, then call the imperative `toast` API from any event handler.",
-      "dependencies": [
-        "react"
-      ],
-      "registryDependencies": [
-        "https://meridian.efolusi.com/site/registry/meridian-base.json",
-        "https://meridian.efolusi.com/site/registry/button.json",
-        "https://meridian.efolusi.com/site/registry/icon.json",
-        "https://meridian.efolusi.com/site/registry/iconbutton.json",
-        "https://meridian.efolusi.com/site/registry/portal.json"
-      ],
-      "files": [
-        {
-          "path": "components/feedback/Toast.jsx",
-          "type": "registry:ui"
-        },
-        {
-          "path": "components/feedback/Toast.d.ts",
-          "type": "registry:component"
-        },
-        {
-          "path": "components/feedback/Toast.prompt.md",
           "type": "registry:component"
         }
       ],

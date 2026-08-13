@@ -23,16 +23,13 @@
 <div id="root"></div>
 
 <script type="text/babel">
-const { Button, Card, CardContent, CardDescription, CardHeader, CardTitle, Stat, Badge, Icon, Input, Toast, ToastStack } = window.EfolusiDesignSystem_4ffc3d;
+const { Button, Card, CardContent, CardDescription, CardHeader, CardTitle, Stat, Badge, Icon, Input, Toaster, toast } = window.EfolusiDesignSystem_4ffc3d;
 
 function App() {
-  const [toasts, setToasts] = React.useState([]);
   const [name, setName] = React.useState('');
-  const cheer = () => {
-    const id = Date.now();
-    setToasts(t => [...t, id]);
-    setTimeout(() => setToasts(t => t.filter(x => x !== id)), 3200);
-  };
+  const cheer = () => toast.success('It works', {
+    description: name ? `Nice to meet you, ${name}.` : 'You are running Meridian.',
+  });
   return (
     <main style={{ maxWidth: 520, margin: '0 auto', padding: '64px 24px' }}>
       <h1 style={{ fontFamily: 'var(--font-display)', fontSize: 32, letterSpacing: '-0.02em', margin: 0 }}>
@@ -60,13 +57,7 @@ function App() {
         }}>Toggle theme</Button>
       </div>
 
-      <ToastStack>
-        {toasts.map(id => (
-          <Toast key={id} tone="success" title="It works"
-            description={name ? `Nice to meet you, ${name}.` : 'You are running Meridian.'}
-            onClose={() => setToasts(t => t.filter(x => x !== id))} />
-        ))}
-      </ToastStack>
+      <Toaster position="bottom-right" closeButton />
     </main>
   );
 }

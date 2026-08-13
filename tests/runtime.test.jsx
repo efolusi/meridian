@@ -2,7 +2,7 @@ import { describe, it, expect, vi, beforeEach, afterEach } from 'vitest';
 import { render, screen, within, act } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 
-import { Toaster, toast } from '../components/feedback/Toast.jsx';
+import { Toaster, toast } from '../components/feedback/Sonner.jsx';
 import { Input } from '../components/forms/Input.jsx';
 import { Checkbox } from '../components/forms/Checkbox.jsx';
 import { Table } from '../components/data/Table.jsx';

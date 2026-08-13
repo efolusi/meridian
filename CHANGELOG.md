@@ -2,6 +2,8 @@
 
 ## Unreleased
 
+- **Deprecated Toast was removed completely.** Meridian now ships one notification system: canonical `Toaster` plus the imperative `toast` API. The old `Toast`, `ToastStack`, duplicate registry item, adapter documentation, and direct-render demos were deleted, and the implementation now lives under `Sonner`.
+
 - **InputGroup and Toggle families are composition-only.** InputGroup's label/prefix/suffix/hint renderer was removed in favor of explicit `Field` and `InputGroup*` parts. Toggle's icon-name helper, `md` size alias, and implicit participation as a direct `ToggleGroup` child were removed; grouped controls now use `ToggleGroupItem` exclusively.
 
 - **Empty and Breadcrumb are composition-only.** The `EmptyState` prop renderer and array-based `Breadcrumbs` export were removed; maintained blocks, cards, showcases, starters, prompts, patterns, tests, manifests, and Guard rules now use the canonical part families directly.
@@ -17,7 +19,7 @@
 - **Hover never introduces an underline.** Base links, `Link`, link-style `Button` and `Badge`, and toast actions now keep text decoration stable while changing color on hover. A repository gate scans authored CSS/JSX/HTML so the behavior cannot regress in a new component or template.
 - **Composition-only disclosure and overlay roots.** `Accordion`, `Collapsible`, `Dialog`, and `Popover` no longer maintain parallel prop-shorthand renderers. Every maintained block, showcase, demo, prompt, and test now uses their explicit item/trigger/content parts; `ConfirmDialog` follows the canonical `onOpenChange` state contract.
 - **Canonical component contracts no longer carry the first alias wave.** Maintained consumers now use `status`, `defaultStatus`, `onStatusChange`, `onSelect`, `onChange`, `onValueChange`, `side`, `format`, `defaultOpen`, and explicit action nodes. The superseded prop and placement aliases were removed from runtime source, types, demos, prompts, generated registry items, and Guard's stable contract.
-- **The current compatibility inventory is fully evidenced.** Chart now ships the Recharts 3 composition contract (`ChartContainer`, tooltip, legend, scoped theme variables, and `useChart`). Data Table and Typography are explicitly verified as upstream-style authored guides without fabricated runtime exports, while deprecated Toast is pinned to the tested Sonner migration path.
+- **The current compatibility inventory is fully evidenced.** Chart now ships the Recharts 3 composition contract (`ChartContainer`, tooltip, legend, scoped theme variables, and `useChart`). Data Table and Typography are explicitly verified as upstream-style authored guides without fabricated runtime exports, and Sonner is the sole notification family.
 - **Registry and package installs carry Chart's engine dependency.** The `chart` registry item declares Recharts 3, and the ESM package publishes it as a runtime dependency; the browser bundle resolves the optional Recharts UMD namespace only when chart composition is rendered.
 
 All notable changes to Meridian are documented here. Format follows [Keep a Changelog](https://keepachangelog.com); versioning follows the policy in `guidelines/governance.md`.

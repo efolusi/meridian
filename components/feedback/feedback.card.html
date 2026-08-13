@@ -1,4 +1,4 @@
-<!-- @dsCard group="Components" viewport="700x560" name="Feedback" subtitle="Banner, Alert, Progress, Sonner, Toast, Dialog, ConfirmDialog" -->
+<!-- @dsCard group="Components" viewport="700x560" name="Feedback" subtitle="Banner, Alert, Progress, Sonner, Dialog, ConfirmDialog" -->
 <!DOCTYPE html><html><head><meta charset="utf-8"><link rel="stylesheet" href="../../styles.css">
 <script src="https://unpkg.com/react@18.3.1/umd/react.production.min.js" integrity="sha384-DGyLxAyjq0f9SPpVevD6IgztCFlnMF6oW/XQGmfe+IsZ8TqEiDrcHkMLKI6fiB/Z" crossorigin="anonymous"></script>
 <script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.production.min.js" integrity="sha384-gTGxhz21lVGYNMcdJOyq01Edg0jhn/c22nsx0kyqP0TxaV5WVdsSH1fSDUf5YJj1" crossorigin="anonymous"></script>
@@ -8,7 +8,7 @@
 </head><body style="background:var(--surface-page)">
 <div id="root"></div>
 <script type="text/babel">
-const { Alert, AlertAction, AlertDescription, AlertTitle, Progress, Spinner, Dialog, DialogClose, DialogContent, DialogDescription, DialogFooter, DialogHeader, DialogTitle, Toast, ToastStack, Tooltip, TooltipContent, TooltipTrigger, Button, Icon, Input, Banner, ConfirmDialog, Loader } = window.EfolusiDesignSystem_4ffc3d;
+const { Alert, AlertAction, AlertDescription, AlertTitle, Progress, Spinner, Dialog, DialogClose, DialogContent, DialogDescription, DialogFooter, DialogHeader, DialogTitle, Toaster, toast, Tooltip, TooltipContent, TooltipTrigger, Button, Icon, Input, Banner, ConfirmDialog, Loader } = window.EfolusiDesignSystem_4ffc3d;
 function Demo() {
   const [open, setOpen] = React.useState(false);
   const [confirm, setConfirm] = React.useState(false);
@@ -33,9 +33,8 @@ function Demo() {
         <div className="ef-dialog__body"><Input label="Project name" defaultValue="Q3 launch plan" /></div>
         <DialogFooter><DialogClose asChild><Button variant="ghost">Cancel</Button></DialogClose><DialogClose asChild><Button>Save changes</Button></DialogClose></DialogFooter>
       </DialogContent></Dialog>
-      <ToastStack>
-        <Toast tone="success" title="Invite sent" description="Ada will get an email in a minute." onClose={() => {}} />
-      </ToastStack>
+      <Toaster position="bottom-right" closeButton />
+      <Button variant="secondary" onClick={() => toast.success('Invite sent', { description: 'Ada will get an email in a minute.' })}>Preview notification</Button>
       </div>
       <div style={{ display: 'flex', flexDirection: 'column', gap: 12 }}>
         <Loader dots>Thinking</Loader>
