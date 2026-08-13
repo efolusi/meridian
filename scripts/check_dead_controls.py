@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Fail on interactive controls inside components/ that cannot do anything.
+"""Fail on controls that are inert or use non-semantic clickable elements.
 
 A Button or IconButton rendered with no onClick, no handler spread, and no
 type="submit" is a visible, labelled, focusable control that does nothing when
@@ -23,6 +23,7 @@ WIRED = re.compile(
     r"\{\.\.\.\w+\}|\btype\s*=\s*[\"{]?submit|\bhref\s*=|\bas\s*=\s*[\"{]?a\b"
 )
 TAG = re.compile(r"<(Button|IconButton)\b((?:[^<>]|\{[^{}]*\})*?)/?>", re.S)
+NON_SEMANTIC_CLICK = re.compile(r"<(div|span)\b[^>]*\bonClick\s*=", re.S)
 
 
 def main():
@@ -44,6 +45,15 @@ def main():
                 f"and no handler prop — it renders but does nothing"
             )
 
+    for path in sorted((ROOT / "site").glob("*.dc.html")):
+        src = path.read_text()
+        for match in NON_SEMANTIC_CLICK.finditer(src):
+            line = src[: match.start()].count("\n") + 1
+            problems.append(
+                f"{path.relative_to(ROOT)}:{line}: clickable <{match.group(1)}> is not "
+                "keyboard-semantic — use a button or link"
+            )
+
     if problems:
         print("Dead interactive controls found:\n")
         for p in problems:
@@ -55,7 +65,8 @@ def main():
         return 1
 
     n = sum(1 for _ in ROOT.glob("components/*/*.jsx"))
-    print(f"no dead Button/IconButton controls across {n} component sources")
+    pages = sum(1 for _ in (ROOT / "site").glob("*.dc.html"))
+    print(f"no dead or non-semantic controls across {n} component sources and {pages} site pages")
     return 0
 
 

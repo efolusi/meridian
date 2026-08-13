@@ -54,11 +54,11 @@
 <p style="font-size:14px;color:var(--text-secondary);margin:6px 0 0">{{ s.note }}</p>
 <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(108px,1fr));gap:12px;margin-top:16px">
 <sc-for list="{{ s.tokens }}" as="c" hint-placeholder-count="8">
-<div onClick="{{ c.copy }}" style="cursor:pointer" title="Copy CSS variable">
+<button type="button" onClick="{{ c.copy }}" style="display:block;width:100%;padding:0;border:0;background:transparent;text-align:left;font:inherit;color:inherit;cursor:pointer" title="Copy CSS variable">
 <span style="display:block;height:56px;border-radius:var(--radius-sm);border:1px solid var(--border-default);overflow:hidden"><svg width="100%" height="100%" aria-hidden="true"><rect width="100%" height="100%" fill="{{ c.v }}"></rect></svg></span>
 <span style="display:block;font-family:var(--font-mono);font-size:11px;color:var(--text-primary);margin-top:6px;word-break:break-all">{{ c.name }}</span>
 <span style="display:block;font-family:var(--font-mono);font-size:10.5px;color:var(--text-muted);margin-top:1px">{{ c.v }}</span>
-</div>
+</button>
 </sc-for>
 </div>
 </section>

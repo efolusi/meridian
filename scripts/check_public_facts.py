@@ -62,6 +62,7 @@ component_claim_patterns = (
     re.compile(r"\bthe\s+(\d+)\s+components\b", re.IGNORECASE),
     re.compile(r"\bsame\s+(\d+)\s+components\b", re.IGNORECASE),
     re.compile(r"\b(\d+)\s+components\s+in\s+12\s+groups\b", re.IGNORECASE),
+    re.compile(r"\b(\d+)\s+components\s+in\s+/components/<group>/\s+across\s+12\s+groups\b", re.IGNORECASE),
     re.compile(r"\b(\d+)\s+(?:components|primitives)\s+across\s+12\s+groups\b", re.IGNORECASE),
     re.compile(r"\b(\d+)\s+komponen\s+dalam\s+12\s+grup\b", re.IGNORECASE),
     re.compile(r"\b(?:all|seluruh)\s+(\d+)\s+(?:components|komponen)\b", re.IGNORECASE),

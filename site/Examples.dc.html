@@ -51,7 +51,7 @@
 <div style="display:flex;gap:2px;flex-wrap:wrap;margin-top:26px;border-bottom:1px solid var(--border-default)">
 <sc-for list="{{ tabs }}" as="t" hint-placeholder-count="8">
 <sc-if value="{{ t.on }}" hint-placeholder-val="{{ false }}"><span style="padding:8px 14px 9px;font-size:13.5px;font-weight:600;color:var(--text-primary);box-shadow:inset 0 -2px 0 var(--brand-700);cursor:default;user-select:none">{{ t.title }}</span></sc-if>
-<sc-if value="{{ t.off }}" hint-placeholder-val="{{ true }}"><span onClick="{{ t.pick }}" style="padding:8px 14px 9px;font-size:13.5px;font-weight:450;color:var(--text-muted);cursor:pointer;user-select:none" style-hover="color:var(--text-primary)">{{ t.title }}</span></sc-if>
+<sc-if value="{{ t.off }}" hint-placeholder-val="{{ true }}"><button type="button" onClick="{{ t.pick }}" style="padding:8px 14px 9px;border:0;background:transparent;font:inherit;font-size:13.5px;font-weight:450;color:var(--text-muted);cursor:pointer;user-select:none" style-hover="color:var(--text-primary)">{{ t.title }}</button></sc-if>
 </sc-for>
 </div>
 <div style="display:flex;align-items:baseline;gap:14px;margin-top:22px">

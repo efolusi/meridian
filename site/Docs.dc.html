@@ -53,7 +53,7 @@
 <div style="display:flex;flex-direction:column;gap:1px">
 <sc-for list="{{ g.items }}" as="it" hint-placeholder-count="4">
 <sc-if value="{{ it.on }}" hint-placeholder-val="{{ false }}"><span style="display:block;padding:4px 10px;border-radius:var(--radius-sm);font-size:13.5px;cursor:default;user-select:none;font-weight:600;color:var(--brand-700);background:var(--accent-subtle)">{{ it.name }}</span></sc-if>
-<sc-if value="{{ it.off }}" hint-placeholder-val="{{ true }}"><span onClick="{{ it.pick }}" style="display:block;padding:4px 10px;border-radius:var(--radius-sm);font-size:13.5px;cursor:pointer;user-select:none;font-weight:400;color:var(--text-secondary);background:transparent" style-hover="color:var(--text-primary)">{{ it.name }}</span></sc-if>
+<sc-if value="{{ it.off }}" hint-placeholder-val="{{ true }}"><button type="button" onClick="{{ it.pick }}" style="display:block;width:100%;padding:4px 10px;border:0;border-radius:var(--radius-sm);font:inherit;font-size:13.5px;text-align:left;cursor:pointer;user-select:none;font-weight:400;color:var(--text-secondary);background:transparent" style-hover="color:var(--text-primary)">{{ it.name }}</button></sc-if>
 </sc-for>
 </div>
 </div>
@@ -68,7 +68,7 @@
 <div style="display:flex;flex-direction:column;gap:1px">
 <sc-for list="{{ g.items }}" as="it" hint-placeholder-count="4">
 <sc-if value="{{ it.on }}" hint-placeholder-val="{{ false }}"><span style="display:block;padding:4px 10px;border-radius:var(--radius-sm);font-size:13.5px;cursor:default;user-select:none;font-weight:600;color:var(--brand-700);background:var(--accent-subtle)">{{ it.name }}</span></sc-if>
-<sc-if value="{{ it.off }}" hint-placeholder-val="{{ true }}"><span onClick="{{ it.pick }}" style="display:block;padding:4px 10px;border-radius:var(--radius-sm);font-size:13.5px;cursor:pointer;user-select:none;font-weight:400;color:var(--text-secondary);background:transparent" style-hover="color:var(--text-primary)">{{ it.name }}</span></sc-if>
+<sc-if value="{{ it.off }}" hint-placeholder-val="{{ true }}"><button type="button" onClick="{{ it.pick }}" style="display:block;width:100%;padding:4px 10px;border:0;border-radius:var(--radius-sm);font:inherit;font-size:13.5px;text-align:left;cursor:pointer;user-select:none;font-weight:400;color:var(--text-secondary);background:transparent" style-hover="color:var(--text-primary)">{{ it.name }}</button></sc-if>
 </sc-for>
 </div>
 </div>
@@ -91,23 +91,23 @@
 </sc-for>
 <div style="display:flex;justify-content:space-between;gap:14px;margin-top:44px">
 <sc-if value="{{ hasPrev }}" hint-placeholder-val="{{ false }}">
-<span onClick="{{ prevGo }}" style="display:flex;flex-direction:column;gap:3px;padding:12px 16px;border:1px solid var(--border-default);border-radius:var(--radius-md);cursor:pointer;min-width:170px" style-hover="border-color:var(--border-strong);background:var(--surface-card)">
+<button type="button" onClick="{{ prevGo }}" style="display:flex;flex-direction:column;gap:3px;padding:12px 16px;border:1px solid var(--border-default);border-radius:var(--radius-md);background:transparent;color:inherit;font:inherit;text-align:left;cursor:pointer;min-width:170px" style-hover="border-color:var(--border-strong);background:var(--surface-card)">
 <span style="font-size:11.5px;color:var(--text-muted)">← Previous</span>
 <span style="font-size:14.5px;font-weight:600;color:var(--text-primary)">{{ prevName }}</span>
-</span>
+</button>
 </sc-if>
 <sc-if value="{{ hasNext }}" hint-placeholder-val="{{ false }}">
-<span onClick="{{ nextGo }}" style="display:flex;flex-direction:column;gap:3px;align-items:flex-end;padding:12px 16px;border:1px solid var(--border-default);border-radius:var(--radius-md);cursor:pointer;min-width:170px;margin-left:auto" style-hover="border-color:var(--border-strong);background:var(--surface-card)">
+<button type="button" onClick="{{ nextGo }}" style="display:flex;flex-direction:column;gap:3px;align-items:flex-end;padding:12px 16px;border:1px solid var(--border-default);border-radius:var(--radius-md);background:transparent;color:inherit;font:inherit;text-align:right;cursor:pointer;min-width:170px;margin-left:auto" style-hover="border-color:var(--border-strong);background:var(--surface-card)">
 <span style="font-size:11.5px;color:var(--text-muted)">Next →</span>
 <span style="font-size:14.5px;font-weight:600;color:var(--text-primary)">{{ nextName }}</span>
-</span>
+</button>
 </sc-if>
 </div>
 </article>
 <aside class="site-toc" style="width:164px;flex:none;position:sticky;top:82px;align-self:flex-start">
 <div style="font-size:11px;font-weight:600;letter-spacing:0.06em;text-transform:uppercase;color:var(--text-muted);margin-bottom:8px">On this page</div>
 <sc-for list="{{ toc }}" as="t" hint-placeholder-count="4">
-<span onClick="{{ t.go }}" style="display:block;padding:3px 0;font-size:13px;color:var(--text-secondary);cursor:pointer;user-select:none" style-hover="color:var(--text-primary)">{{ t.label }}</span>
+<button type="button" onClick="{{ t.go }}" style="display:block;width:100%;padding:3px 0;border:0;background:transparent;font:inherit;font-size:13px;text-align:left;color:var(--text-secondary);cursor:pointer;user-select:none" style-hover="color:var(--text-primary)">{{ t.label }}</button>
 </sc-for>
 </aside>
 </main>
