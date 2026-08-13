@@ -6,9 +6,10 @@ const CSS = `
 .ef-tag--interactive{cursor:pointer}
 .ef-tag--interactive:hover{background:var(--surface-sunken);border-color:var(--sand-400)}
 .ef-tag--interactive:focus-visible{outline:none;box-shadow:var(--focus-ring)}
+.ef-tag:has(.ef-tag__x){padding-block:2px;padding-inline-end:2px}
 .ef-tag__body{display:inline-flex;align-items:center;gap:6px;border:none;background:transparent;padding:0;margin:0;font:inherit;color:inherit;cursor:pointer;border-radius:var(--radius-sm)}
 .ef-tag__body:focus-visible{outline:none;box-shadow:var(--focus-ring)}
-.ef-tag__x{display:inline-flex;align-items:center;justify-content:center;width:22px;height:22px;margin-block:-2px;margin-inline:0 -8px;border:none;border-radius:var(--radius-sm);background:transparent;color:var(--text-muted);cursor:pointer;padding:0;transition:background var(--dur-fast) var(--ease-out),color var(--dur-fast) var(--ease-out)}
+.ef-tag__x{display:inline-flex;align-items:center;justify-content:center;width:20px;height:20px;margin:0;border:none;border-radius:var(--radius-xs);background:transparent;color:var(--text-muted);cursor:pointer;padding:0;transition:background var(--dur-fast) var(--ease-out),color var(--dur-fast) var(--ease-out)}
 .ef-tag__x:hover{background:var(--sand-200);color:var(--text-primary)}
 .ef-tag__x:focus-visible{outline:none;box-shadow:var(--focus-ring)}
 `;

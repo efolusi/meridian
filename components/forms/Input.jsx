@@ -14,10 +14,12 @@ const CSS = `
 .ef-input__el:hover:not(:disabled){border-color:var(--sand-400)}
 .ef-input__el:focus-visible{outline:none;border-color:var(--accent);box-shadow:var(--focus-ring)}
 .ef-input__el:disabled{background:var(--surface-subtle);color:var(--text-muted);cursor:not-allowed;opacity:.5}
-.ef-input__el[type="file"]{padding-block:7px;line-height:1;cursor:pointer}
-.ef-input__el[type="file"]::file-selector-button{margin-block:-7px;margin-inline:-12px 12px;padding:7px 12px;border:0;border-inline-end:1px solid var(--border-strong);background:var(--sand-200);color:var(--text-primary);font:inherit;font-weight:var(--weight-semibold);cursor:pointer;transition:background var(--dur-fast) var(--ease-out)}
-.ef-input__el[type="file"]:hover::file-selector-button{background:var(--sand-300)}
-.ef-input__el[type="file"]:disabled::file-selector-button{cursor:not-allowed}
+.ef-file-input{position:relative;display:flex;width:100%;height:var(--control-h-md);align-items:center;gap:10px;padding:3px 12px 3px 3px;overflow:hidden;border:1px solid var(--border-strong);border-radius:var(--radius-sm);background:var(--surface-sunken);color:var(--text-muted);font-family:var(--font-sans);font-size:var(--text-md);transition:border-color var(--dur-fast) var(--ease-out),box-shadow var(--dur-fast) var(--ease-out)}
+.ef-file-input:hover{border-color:var(--sand-400)}.ef-file-input:focus-within{border-color:var(--accent);box-shadow:var(--focus-ring)}.ef-file-input:has(.ef-input__el:disabled){background:var(--surface-subtle);cursor:not-allowed;opacity:.5}
+.ef-file-input__button{display:inline-flex;height:28px;align-items:center;gap:6px;padding-inline:10px;border-radius:var(--radius-xs);background:var(--accent);color:var(--accent-contrast);font-size:var(--text-sm);font-weight:var(--weight-semibold);white-space:nowrap;transition:background var(--dur-fast) var(--ease-out),transform var(--dur-med) var(--ease-spring)}
+.ef-file-input:hover:not(:has(.ef-input__el:disabled)) .ef-file-input__button{background:var(--accent-hover)}.ef-file-input:active:not(:has(.ef-input__el:disabled)) .ef-file-input__button{background:var(--accent-active);transform:scale(.985)}
+.ef-file-input__name{min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.ef-file-input>.ef-input__el[type="file"]{position:absolute;inset:0;width:100%;height:100%;padding:0;border:0;opacity:0;cursor:pointer}.ef-file-input>.ef-input__el[type="file"]:disabled{cursor:not-allowed}
 .ef-input__el--sm{height:var(--control-h-sm);padding-inline:10px;font-size:var(--text-sm)}
 .ef-input__el--lg{height:var(--control-h-lg);padding-inline:14px;font-size:var(--text-lg)}
 .ef-input--icon .ef-input__el{padding-inline-start:36px}
@@ -55,6 +57,7 @@ export const Input = React.forwardRef(function Input({
   injectEfCss('ef-css-input', CSS);
   const uid = React.useId();
   const [revealed, setRevealed] = React.useState(false);
+  const [fileName, setFileName] = React.useState('No file chosen');
   const customSize = typeof size === 'string' && ['sm', 'md', 'lg'].includes(size) ? size : 'md';
   const nativeSize = typeof size === 'number' ? size : undefined;
   const showToggle = !!(revealable && rest.type === 'password');
@@ -75,10 +78,22 @@ export const Input = React.forwardRef(function Input({
       aria-invalid={bad || rest['aria-invalid'] || undefined}
       type={showToggle && revealed ? 'text' : rest.type}
       className={classes('ef-input__el', customSize !== 'md' && `ef-input__el--${customSize}`, className)}
-      style={style}
+      style={rest.type === 'file' ? undefined : style}
+      onChange={rest.type === 'file' ? (event) => {
+        setFileName(event.currentTarget.files?.[0]?.name || 'No file chosen');
+        rest.onChange?.(event);
+      } : rest.onChange}
     />
   );
-  const decorated = iconLeft || showToggle
+  const decorated = rest.type === 'file'
+    ? (
+      <span className="ef-file-input" style={style}>
+        {input}
+        <span className="ef-file-input__button" aria-hidden="true"><Icon name="upload" size={14} />Choose file</span>
+        <span className="ef-file-input__name" aria-hidden="true">{fileName}</span>
+      </span>
+    )
+    : iconLeft || showToggle
     ? (
       <span className={classes('ef-input', iconLeft && 'ef-input--icon', showToggle && 'ef-input--reveal')}>
         {iconLeft ? <span className="ef-input__icon" aria-hidden="true"><Icon name={iconLeft} size={customSize === 'lg' ? 18 : 16} /></span> : null}

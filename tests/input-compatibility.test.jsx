@@ -5,6 +5,14 @@ import { describe, expect, it, vi } from 'vitest';
 import { Input } from '../components/forms/Input.jsx';
 
 describe('Input compatibility contract', () => {
+  it('renders a button-like file picker and mirrors the selected filename', () => {
+    render(<Input type="file" aria-label="Upload receipt" />);
+    const input = screen.getByLabelText('Upload receipt');
+    expect(screen.getByText('Choose file')).toBeTruthy();
+    expect(screen.getByText('No file chosen')).toBeTruthy();
+    fireEvent.change(input, { target: { files: [new File(['receipt'], 'receipt.pdf', { type: 'application/pdf' })] } });
+    expect(screen.getByText('receipt.pdf')).toBeTruthy();
+  });
   it('forwards native props, events, classes, styles, and its ref', () => {
     const ref = React.createRef();
     const change = vi.fn();

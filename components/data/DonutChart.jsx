@@ -24,7 +24,7 @@ export function DonutChart({ data, size = 140, thickness = 16, centerLabel, cent
   return (
     <div {...rest} className={`ef-donut${className ? ' ' + className : ''}`} style={style}>
       <div style={{ position: 'relative', width: size, height: size, flex: 'none' }}>
-        <svg viewBox="0 0 100 100" width={size} height={size} style={{ transform: 'rotate(-90deg)' }}>
+        <svg viewBox="0 0 100 100" width={size} height={size} style={{ overflow: 'visible', transform: 'rotate(-90deg)' }}>
           {segs.map(s => (
             <circle key={s.i} cx="50" cy="50" r={R} fill="none" stroke={s.color} strokeWidth={thickness * (hov === s.i ? 1.15 : 1)}
               strokeDasharray={s.dash} strokeDashoffset={s.offset} style={{ transition: 'stroke-width 120ms var(--ease-out)' }}
