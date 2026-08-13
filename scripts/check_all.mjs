@@ -69,6 +69,7 @@ const GATES = [
   ['Runtime copies', 'python3', ['scripts/check_runtime_copies.py']],
   ['Relative paths resolve', 'python3', ['scripts/check_paths.py']],
   ['Manifest inventories', 'python3', ['scripts/sync_manifest.py', '--check']],
+  ['Docs registry matches manifest', 'node', ['scripts/check_docs_registry.mjs']],
   ['Adherence metadata matches manifest', 'node', ['scripts/check_adherence_manifest.mjs']],
   ['Public facts match inventories', 'python3', ['scripts/check_public_facts.py']],
   ['No dead interactive controls', 'python3', ['scripts/check_dead_controls.py']],

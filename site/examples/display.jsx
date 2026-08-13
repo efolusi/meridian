@@ -224,7 +224,7 @@ export function TimelineDemo() {
   );
 }
 
-// @demo Resizable Split panes
+// @demo ResizablePanelGroup Split panes
 export function ResizableDemo() {
   const { ResizablePanelGroup, ResizablePanel, ResizableHandle } = window.EfolusiDesignSystem_4ffc3d;
   return (

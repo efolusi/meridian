@@ -24,7 +24,6 @@ const PROPS = {
   AspectRatio: { ratio: 16 / 9, children: React.createElement('img') },
   Avatar: { name: 'Ada Obi' },
   BarChart: { data: [{ label: 'a', value: 1 }, { label: 'b', value: 3 }] },
-  Breadcrumbs: { items: [{ label: 'Home', href: '#' }, { label: 'Here' }] },
   Calendar: { mode: 'single', selected: new Date(2026, 6, 1) },
   Carousel: { children: [React.createElement('div', { key: 1 }, 'x')] },
   ChatMessage: { role: 'assistant', children: 'Hi' },

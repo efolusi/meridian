@@ -17,7 +17,7 @@ export function SidebarDemo() {
   </div>;
 }
 
-// @demo Breadcrumbs Path trail
+// @demo Breadcrumb Path trail
 export function BreadcrumbsDemo() {
   const { Breadcrumb, BreadcrumbList, BreadcrumbItem, BreadcrumbLink, BreadcrumbPage, BreadcrumbSeparator, BreadcrumbEllipsis } = window.EfolusiDesignSystem_4ffc3d;
   return (
