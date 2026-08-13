@@ -133,7 +133,7 @@ function Counts({ adds, dels }) {
 }
 function DiffFile({ file, wordLevel, contextLines }) {
   const [open, setOpen] = React.useState(file.defaultOpen !== false);
-  const r = React.useMemo(() => file.lines ? legacy(file.lines) : computeDiff(file.from || '', file.to || '', { wordLevel, contextLines }), [file, wordLevel, contextLines]);
+  const r = React.useMemo(() => computeDiff(file.from || '', file.to || '', { wordLevel, contextLines }), [file, wordLevel, contextLines]);
   return (
     <div className="ef-diff__file">
       <button type="button" className="ef-diff__filehead" aria-expanded={open} onClick={() => setOpen(!open)}>
@@ -145,25 +145,12 @@ function DiffFile({ file, wordLevel, contextLines }) {
     </div>
   );
 }
-function legacy(lines) {
-  let oldNo = 0, newNo = 0, adds = 0, dels = 0;
-  const rows = lines.map(l => {
-    const t = l.type || 'ctx';
-    if (t !== 'add') oldNo++;
-    if (t !== 'del') newNo++;
-    if (t === 'add') adds++;
-    if (t === 'del') dels++;
-    return { type: t, text: l.text, oldNo, newNo };
-  });
-  return { rows, adds, dels };
-}
-export function Diff({ title, lines, from, to, files, wordLevel = true, contextLines = 3, maxHeight, style, className, ...rest }) {
+export function Diff({ title, from, to, files, wordLevel = true, contextLines = 3, maxHeight, style, className, ...rest }) {
   injectEfCss('ef-css-diff', CSS);
   const single = React.useMemo(() => {
     if (files) return null;
-    if (lines) return legacy(lines);
     return computeDiff(from || '', to || '', { wordLevel, contextLines: from !== undefined ? contextLines : null });
-  }, [lines, from, to, files, wordLevel, contextLines]);
+  }, [from, to, files, wordLevel, contextLines]);
   return (
     <div {...rest} className={`ef-diff${className ? ' ' + className : ''}`} style={style}>
       {title && single ? (

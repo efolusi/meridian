@@ -5,14 +5,9 @@ export function DiffDemo() {
   const { Diff } = window.EfolusiDesignSystem_4ffc3d;
   return (
     <div style={{ width: '100%', maxWidth: 520 }}>
-      <Diff title="agents/retry.ts" lines={[
-        { text: "export function retry(run: Run) {" },
-        { text: "  const maxAttempts = 3;", type: 'del' },
-        { text: "  const maxAttempts = 5;", type: 'add' },
-        { text: "  const backoff = attempt ** 2 * 100;", type: 'add' },
-        { text: "  return schedule(run, maxAttempts);" },
-        { text: "}" },
-      ]} />
+      <Diff title="agents/retry.ts"
+        from={'export function retry(run: Run) {\n  const maxAttempts = 3;\n  return schedule(run, maxAttempts);\n}'}
+        to={'export function retry(run: Run) {\n  const maxAttempts = 5;\n  const backoff = attempt ** 2 * 100;\n  return schedule(run, maxAttempts);\n}'} />
     </div>
   );
 }

@@ -2,6 +2,6 @@
 
 Unified diff with dual line-number gutters, +/− signs, add/del row tints, and header counts.
 
-`<Diff title="agents/retry.ts" lines={[{ text: 'const max = 3;', type: 'del' }, { text: 'const max = 5;', type: 'add' }, { text: 'return run();' }]} />`
+`<Diff title="agents/retry.ts" from={'const max = 3;\nreturn run();'} to={'const max = 5;\nreturn run();'} />`
 
-Pass lines in display order; numbering is computed. For non-diff code use CodeBlock.
+Pass the original and changed text through `from` and `to`; line numbers, change counts, and word-level marks are computed. For non-diff code use CodeBlock.

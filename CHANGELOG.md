@@ -2,6 +2,9 @@
 
 ## Unreleased
 
+- **Diff is string-source only.** The precomputed `lines` adapter was removed; single and multi-file reviews now consistently derive rows, counts, context, and word marks from `from` and `to`.
+- **Repository facts and boundaries were tightened.** The built-in design skill now reflects the current icon and starter inventories, and consumer-specific audit detail no longer lives in the independent design-system repository.
+
 ## 1.21.1 — 2026-08-13
 
 - Render `DialogTitle` as a semantic level-two heading while preserving its styling and accessible-name wiring.
