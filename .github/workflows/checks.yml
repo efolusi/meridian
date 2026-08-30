@@ -67,7 +67,7 @@ jobs:
       # standard the registry and token generators are already held to.
       - uses: actions/setup-node@v5
         with:
-          node-version: '22'
+          node-version: '22.23.2'
       - name: Install build dependency
         run: npm ci --no-audit --no-fund
       - name: _ds_bundle.js is reproducible from source
@@ -97,7 +97,7 @@ jobs:
       - uses: actions/checkout@v5
       - uses: actions/setup-node@v5
         with:
-          node-version: '22'
+          node-version: '22.23.2'
       # smoke_headless.mjs does `import { chromium } from 'playwright'`, so the
       # package has to be resolvable from the repo. `npx --package=X node script`
       # does not put X on the module search path, which is why this job failed
