@@ -10,9 +10,19 @@ permissions:
 
 jobs:
   gates:
-    runs-on: ubuntu-latest
+    runs-on: [self-hosted, Linux, X64, efolusi]
     steps:
-      - uses: actions/checkout@v5
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
+
+      - name: Use NVM Node 22
+        run: |
+          set -Eeuo pipefail
+          test -s "$HOME/.nvm/nvm.sh"
+          source "$HOME/.nvm/nvm.sh"
+          nvm use 22
+          dirname "$(command -v node)" >>"$GITHUB_PATH"
+          node --version
+          npm --version
 
       - name: Contrast (WCAG AA token pairs)
         run: python3 scripts/check_contrast.py
@@ -65,9 +75,6 @@ jobs:
       # The real gate: recompile from source and require the committed artifact to
       # match byte for byte. This is reproduction, not self-attestation — the same
       # standard the registry and token generators are already held to.
-      - uses: actions/setup-node@v5
-        with:
-          node-version: '22'
       - name: Install build dependency
         run: npm ci --no-audit --no-fund
       - name: _ds_bundle.js is reproducible from source
@@ -92,12 +99,18 @@ jobs:
         run: node scripts/check_types.mjs
 
   smoke:
-    runs-on: ubuntu-latest
+    runs-on: [self-hosted, Linux, X64, efolusi]
     steps:
-      - uses: actions/checkout@v5
-      - uses: actions/setup-node@v5
-        with:
-          node-version: '22'
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
+      - name: Use NVM Node 22
+        run: |
+          set -Eeuo pipefail
+          test -s "$HOME/.nvm/nvm.sh"
+          source "$HOME/.nvm/nvm.sh"
+          nvm use 22
+          dirname "$(command -v node)" >>"$GITHUB_PATH"
+          node --version
+          npm --version
       # smoke_headless.mjs does `import { chromium } from 'playwright'`, so the
       # package has to be resolvable from the repo. `npx --package=X node script`
       # does not put X on the module search path, which is why this job failed
@@ -134,7 +147,7 @@ jobs:
 
       - name: Upload shots and diffs on failure
         if: failure()
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4.6.2
         with:
           name: visual-shots
           path: ${{ runner.temp }}/shots
