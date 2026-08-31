@@ -83,7 +83,7 @@ cleanup() {
 }
 
 rollback() {
-  local status=$?
+  local status="${1:-$?}"
   trap - ERR
   set +e
   if [[ "$deployment_started" == true ]]; then
@@ -125,15 +125,19 @@ release="$releases_root/$release_sha"
 if [[ -e "$release" ]]; then
   [[ -d "$release" && ! -L "$release" ]]
   [[ "$(cat "$release/meridian-release.txt")" == "$release_sha" ]]
+  chmod 0755 "$release"
+  [[ "$(stat -c '%U:%G:%a' "$release")" == "${runner_user}:${runner_user}:755" ]]
 else
   candidate="$releases_root/.$release_sha.$$"
-  mkdir "$candidate"
+  install -d -m 0755 "$candidate"
+  [[ "$(stat -c '%U:%G:%a' "$candidate")" == "${runner_user}:${runner_user}:755" ]]
   rsync -a --delete "${publication_dir}/" "${candidate}/"
   test -s "$candidate/index.html"
   test -s "$candidate/site/DsSite.dc.html"
   test -s "$candidate/_ds_bundle.js"
   mv "$candidate" "$release"
 fi
+[[ "$(stat -c '%U:%G:%a' "$release")" == "${runner_user}:${runner_user}:755" ]]
 
 next="$deploy_root/.current.$release_sha.$$"
 ln -s "$release" "$next"
@@ -163,10 +167,10 @@ for mode in origin public; do
     fi
     sleep 2
   done
-  [[ "$probe_result" == PASS ]] || {
+  if [[ "$probe_result" != PASS ]]; then
     echo "[meridian-dev] ${mode} release-marker probe failed" >&2
-    exit 68
-  }
+    rollback 68
+  fi
 done
 
 curl --fail --silent --show-error --insecure --max-time 5 \

@@ -1,4 +1,14 @@
-import { readFileSync } from 'node:fs'
+import { execFileSync } from 'node:child_process'
+import {
+  existsSync,
+  mkdtempSync,
+  readFileSync,
+  rmSync,
+  statSync,
+  symlinkSync,
+} from 'node:fs'
+import { tmpdir } from 'node:os'
+import { join } from 'node:path'
 import { describe, expect, it } from 'vitest'
 
 const workflow = readFileSync('.github/workflows/deploy-dev-static.yml', 'utf8')
@@ -36,6 +46,62 @@ describe('Meridian development static deployment', () => {
     expect(deploy).toContain('trap rollback ERR')
     expect(deploy).toContain('mv -Tf "$rollback_link" "$deploy_root/current"')
     expect(deploy).toContain('for mode in origin public')
+    expect(deploy).toContain('rollback 68')
+    expect(deploy).not.toContain('exit 68')
+  })
+
+  it('publishes traversable release directories under a restrictive umask', () => {
+    const fixture = mkdtempSync(join(tmpdir(), 'meridian-release-mode-'))
+
+    try {
+      execFileSync('/bin/bash', [
+        '-c',
+        'set -Eeuo pipefail; umask 077; install -d -m 0755 "$1/release"',
+        'bash',
+        fixture,
+      ])
+      expect(statSync(join(fixture, 'release')).mode & 0o777).toBe(0o755)
+      expect(deploy).toContain('install -d -m 0755 "$candidate"')
+      expect(deploy).toContain("stat -c '%U:%G:%a' \"$release\"")
+    } finally {
+      rmSync(fixture, { recursive: true, force: true })
+    }
+  })
+
+  it('uses the rollback function for explicit probe failures', () => {
+    const fixture = mkdtempSync(join(tmpdir(), 'meridian-release-rollback-'))
+    const deployRoot = join(fixture, 'deploy')
+    const newRelease = join(deployRoot, 'releases', 'new')
+
+    let exitStatus
+    try {
+      execFileSync('/bin/mkdir', ['-p', newRelease])
+
+      const rollbackSource = deploy.match(/rollback\(\) \{[\s\S]*?\n\}/)?.[0]
+      expect(rollbackSource).toBeTruthy()
+
+      execFileSync('/bin/bash', [
+        '-c',
+        `set -Eeuo pipefail
+archive_dir="$1/archive"
+publication_dir="$1/publication"
+deploy_root="$1/deploy"
+previous_current=""
+deployment_started=true
+cleanup() { rm -rf "$archive_dir" "$publication_dir"; }
+${rollbackSource}
+ln -sfn "$1/deploy/releases/new" "$1/deploy/current"
+rollback 68`,
+        'bash',
+        fixture,
+      ], { stdio: 'ignore' })
+    } catch (error) {
+      exitStatus = error.status
+    } finally {
+      expect(exitStatus).toBe(68)
+      expect(existsSync(join(deployRoot, 'current'))).toBe(false)
+      rmSync(fixture, { recursive: true, force: true })
+    }
   })
 
   it('has no privileged runtime or unrelated infrastructure access', () => {
