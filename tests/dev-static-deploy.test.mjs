@@ -56,12 +56,21 @@ describe('Meridian development static deployment', () => {
     try {
       execFileSync('/bin/bash', [
         '-c',
-        'set -Eeuo pipefail; umask 077; install -d -m 0755 "$1/release"',
+        `set -Eeuo pipefail
+umask 077
+mkdir "$1/source"
+printf 'fixture\n' >"$1/source/index.html"
+install -d -m 0755 "$1/release"
+rsync -a --delete "$1/source/" "$1/release/"
+chmod 0755 "$1/release"`,
         'bash',
         fixture,
       ])
       expect(statSync(join(fixture, 'release')).mode & 0o777).toBe(0o755)
       expect(deploy).toContain('install -d -m 0755 "$candidate"')
+      expect(deploy.indexOf('chmod 0755 "$candidate"')).toBeGreaterThan(
+        deploy.indexOf('rsync -a --delete "${publication_dir}/" "${candidate}/"'),
+      )
       expect(deploy).toContain("stat -c '%U:%G:%a' \"$release\"")
     } finally {
       rmSync(fixture, { recursive: true, force: true })

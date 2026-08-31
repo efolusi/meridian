@@ -130,8 +130,12 @@ if [[ -e "$release" ]]; then
 else
   candidate="$releases_root/.$release_sha.$$"
   install -d -m 0755 "$candidate"
-  [[ "$(stat -c '%U:%G:%a' "$candidate")" == "${runner_user}:${runner_user}:755" ]]
   rsync -a --delete "${publication_dir}/" "${candidate}/"
+  # rsync archive mode copies the mktemp source directory's restrictive mode
+  # onto the destination root. Restore and verify the public traversal mode
+  # only after the final byte copy.
+  chmod 0755 "$candidate"
+  [[ "$(stat -c '%U:%G:%a' "$candidate")" == "${runner_user}:${runner_user}:755" ]]
   test -s "$candidate/index.html"
   test -s "$candidate/site/DsSite.dc.html"
   test -s "$candidate/_ds_bundle.js"
