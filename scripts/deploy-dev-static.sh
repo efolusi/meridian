@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# Publish one immutable Meridian development release and install its exact vhost.
+# Publish one immutable Meridian development release as an unprivileged runner.
 
 set -Eeuo pipefail
 
@@ -8,6 +8,7 @@ deploy_root="/var/www/efolusi/meridian-dev"
 releases_root="${deploy_root}/releases"
 available="/etc/nginx/sites-available/dev-meridian.efolusi.com"
 enabled="/etc/nginx/sites-enabled/dev-meridian.efolusi.com"
+runner_user="meridian-deploy"
 
 [[ $# -eq 1 && "$1" =~ ^[0-9a-f]{40}$ ]] || {
   echo "usage: $0 <40-character-lowercase-git-sha>" >&2
@@ -26,29 +27,59 @@ actual_sha="$(git rev-parse HEAD)"
 git diff --quiet
 git diff --cached --quiet
 
-command -v sudo >/dev/null
-command -v rsync >/dev/null
-docker=(sudo -n /usr/bin/docker)
-"${docker[@]}" image inspect alpine:3.20 >/dev/null
+[[ "$(id -un)" == "$runner_user" ]] || {
+  echo "[meridian-dev] deployment must run as ${runner_user}" >&2
+  exit 69
+}
+
+for command_name in cmp curl readlink rsync stat tar; do
+  command -v "$command_name" >/dev/null
+done
+
+# Nginx is provisioned once by an administrator. The repository runner may
+# verify this control-plane state, but it cannot change or reload it.
+tracked_vhost="${repo_root}/nginx/dev-meridian.efolusi.com.conf"
+[[ -f "$available" && ! -L "$available" ]] || {
+  echo "[meridian-dev] root-owned available vhost is missing or is a symlink" >&2
+  exit 70
+}
+[[ "$(stat -c '%U:%G:%a' "$available")" == "root:root:644" ]] || {
+  echo "[meridian-dev] available vhost must be root:root mode 0644" >&2
+  exit 71
+}
+cmp --silent "$tracked_vhost" "$available" || {
+  echo "[meridian-dev] installed vhost differs from tracked configuration" >&2
+  exit 72
+}
+[[ -L "$enabled" && "$(readlink -f "$enabled")" == "$available" ]] || {
+  echo "[meridian-dev] enabled vhost must point to the available vhost" >&2
+  exit 73
+}
+[[ "$(stat -c '%U:%G' "$enabled")" == "root:root" ]] || {
+  echo "[meridian-dev] enabled vhost symlink must be root-owned" >&2
+  exit 74
+}
+[[ ! -w "$available" && ! -w "$enabled" ]] || {
+  echo "[meridian-dev] runner must not be able to mutate nginx configuration" >&2
+  exit 75
+}
+[[ -d "$deploy_root" && -w "$deploy_root" && -x "$deploy_root" ]] || {
+  echo "[meridian-dev] ${deploy_root} must be writable by ${runner_user}" >&2
+  exit 76
+}
+[[ "$(stat -c '%U:%G:%a' "$deploy_root")" == "${runner_user}:${runner_user}:755" ]] || {
+  echo "[meridian-dev] deploy root must be ${runner_user}:${runner_user} mode 0755" >&2
+  exit 77
+}
+mkdir -p "$releases_root"
 
 archive_dir="$(mktemp -d "${TMPDIR:-/tmp}/meridian-dev-archive.XXXXXX")"
 publication_dir="$(mktemp -d "${TMPDIR:-/tmp}/meridian-dev-publication.XXXXXX")"
-backup_dir="$(mktemp -d "${TMPDIR:-/tmp}/meridian-dev-nginx.XXXXXX")"
 previous_current=""
-had_available=false
-had_enabled=false
 deployment_started=false
 
-write_root_file() {
-  local source_file="$1"
-  local destination="$2"
-  # The redirect reads a deploy-owned source; only tee needs elevated rights.
-  # shellcheck disable=SC2024
-  sudo -n /usr/bin/tee "$destination" < "$source_file" >/dev/null
-}
-
 cleanup() {
-  rm -rf "$archive_dir" "$publication_dir" "$backup_dir"
+  rm -rf "$archive_dir" "$publication_dir"
 }
 
 rollback() {
@@ -56,38 +87,13 @@ rollback() {
   trap - ERR
   set +e
   if [[ "$deployment_started" == true ]]; then
-    # The variables below intentionally expand inside the isolated container.
-    # shellcheck disable=SC2016
-    "${docker[@]}" run --rm \
-      -v /var/www/efolusi:/var/www/efolusi \
-      -e PREVIOUS_CURRENT="$previous_current" \
-      alpine:3.20 sh -eu -c '
-        root=/var/www/efolusi/meridian-dev
-        mkdir -p "$root"
-        if [ -n "$PREVIOUS_CURRENT" ]; then
-          rollback_link="$root/.current.rollback.$$"
-          ln -s "$PREVIOUS_CURRENT" "$rollback_link"
-          mv -Tf "$rollback_link" "$root/current"
-        else
-          rm -f "$root/current"
-        fi
-      '
-
-    if [[ "$had_available" == true ]]; then
-      write_root_file "${backup_dir}/available" "$available"
+    if [[ -n "$previous_current" ]]; then
+      rollback_link="$deploy_root/.current.rollback.$$"
+      ln -s "$previous_current" "$rollback_link"
+      mv -Tf "$rollback_link" "$deploy_root/current"
     else
-      printf '%s\n' '# Meridian development vhost rollback: no prior config.' | \
-        sudo -n /usr/bin/tee "$available" >/dev/null
+      rm -f "$deploy_root/current"
     fi
-
-    if [[ "$had_enabled" == true ]]; then
-      write_root_file "${backup_dir}/enabled" "$enabled"
-    else
-      printf '%s\n' '# Meridian development vhost rollback: no prior config.' | \
-        sudo -n /usr/bin/tee "$enabled" >/dev/null
-    fi
-
-    sudo -n /usr/sbin/nginx -t && sudo -n /usr/bin/systemctl reload nginx
   fi
   cleanup
   exit "$status"
@@ -96,8 +102,8 @@ rollback() {
 trap cleanup EXIT
 trap rollback ERR
 
-# Archive the exact commit, not the working directory: npm's ignored build
-# outputs and runner leftovers can never leak into the published static tree.
+# Archive the exact commit, not the working directory: ignored build outputs
+# and runner leftovers can never leak into the published static tree.
 git archive --format=tar "$release_sha" | tar -xf - -C "$archive_dir"
 rsync -a --delete --exclude-from="${archive_dir}/.assetsignore" \
   "${archive_dir}/" "${publication_dir}/"
@@ -107,66 +113,32 @@ test -s "${publication_dir}/index.html"
 test -s "${publication_dir}/site/DsSite.dc.html"
 test -s "${publication_dir}/_ds_bundle.js"
 
-if sudo -n /usr/bin/test -e "$available"; then
-  cp "$available" "${backup_dir}/available"
-  had_available=true
+if [[ -L "$deploy_root/current" ]]; then
+  previous_current="$(readlink "$deploy_root/current")"
+elif [[ -e "$deploy_root/current" ]]; then
+  echo "[meridian-dev] current is not a symlink" >&2
+  exit 67
 fi
-if sudo -n /usr/bin/test -L "$enabled"; then
-  echo "[meridian-dev] refusing to replace symlink ${enabled}" >&2
-  exit 66
-elif sudo -n /usr/bin/test -e "$enabled"; then
-  cp "$enabled" "${backup_dir}/enabled"
-  had_enabled=true
-fi
-
-# The variables below intentionally expand inside the isolated container.
-# shellcheck disable=SC2016
-previous_current="$("${docker[@]}" run --rm \
-  -v /var/www/efolusi:/var/www/efolusi \
-  alpine:3.20 sh -eu -c '
-    current=/var/www/efolusi/meridian-dev/current
-    if [ -L "$current" ]; then
-      readlink "$current"
-    elif [ -e "$current" ]; then
-      echo "current is not a symlink" >&2
-      exit 67
-    fi
-  ')"
 
 deployment_started=true
-write_root_file "${repo_root}/nginx/dev-meridian.efolusi.com.conf" "$available"
-write_root_file "${repo_root}/nginx/dev-meridian.efolusi.com.conf" "$enabled"
+release="$releases_root/$release_sha"
+if [[ -e "$release" ]]; then
+  [[ -d "$release" && ! -L "$release" ]]
+  [[ "$(cat "$release/meridian-release.txt")" == "$release_sha" ]]
+else
+  candidate="$releases_root/.$release_sha.$$"
+  mkdir "$candidate"
+  rsync -a --delete "${publication_dir}/" "${candidate}/"
+  test -s "$candidate/index.html"
+  test -s "$candidate/site/DsSite.dc.html"
+  test -s "$candidate/_ds_bundle.js"
+  mv "$candidate" "$release"
+fi
 
-# The variables below intentionally expand inside the isolated container.
-# shellcheck disable=SC2016
-"${docker[@]}" run --rm \
-  -v "${publication_dir}:/source:ro" \
-  -v /var/www/efolusi:/var/www/efolusi \
-  -e RELEASE_SHA="$release_sha" \
-  alpine:3.20 sh -eu -c '
-    root=/var/www/efolusi/meridian-dev
-    releases="$root/releases"
-    release="$releases/$RELEASE_SHA"
-    mkdir -p "$releases"
-    if [ -e "$release" ]; then
-      [ "$(cat "$release/meridian-release.txt")" = "$RELEASE_SHA" ]
-    else
-      candidate="$releases/.$RELEASE_SHA.$$"
-      mkdir "$candidate"
-      cp -a /source/. "$candidate/"
-      test -s "$candidate/index.html"
-      test -s "$candidate/site/DsSite.dc.html"
-      test -s "$candidate/_ds_bundle.js"
-      mv "$candidate" "$release"
-    fi
-    next="$root/.current.$RELEASE_SHA.$$"
-    ln -s "$release" "$next"
-    mv -Tf "$next" "$root/current"
-  '
-
+next="$deploy_root/.current.$release_sha.$$"
+ln -s "$release" "$next"
+mv -Tf "$next" "$deploy_root/current"
 release_dir="${releases_root}/${release_sha}"
-sudo -n /usr/sbin/nginx -t
-sudo -n /usr/bin/systemctl reload nginx
 
 probe_marker() {
   local mode="$1"
