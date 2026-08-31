@@ -13,10 +13,10 @@ concurrency:
 
 jobs:
   deploy:
-    runs-on: [self-hosted, Linux, X64, efolusi]
+    runs-on: [self-hosted, Linux, X64, meridian-deploy]
     timeout-minutes: 30
     steps:
-      - uses: actions/checkout@v6
+      - uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803 # v6
 
       - name: Use exact NVM Node runtime
         shell: bash
