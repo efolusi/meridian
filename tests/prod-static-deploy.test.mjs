@@ -27,6 +27,9 @@ describe('Meridian production static deployment', () => {
 
   it('publishes exact committed bytes into an immutable SHA release', () => {
     expect(deploy).toContain('git archive --format=tar "$release_sha"')
+    expect(deploy).toContain('public_paths=(')
+    expect(deploy).toContain('tar -C "$archive_dir" -cf - "${public_paths[@]}"')
+    expect(deploy).not.toContain('--exclude-from=')
     expect(deploy).toContain('/var/www/efolusi/meridian-prod')
     expect(deploy).toContain('release="$releases_root/$release_sha"')
     expect(deploy).toContain('meridian-release.txt')
@@ -36,6 +39,31 @@ describe('Meridian production static deployment', () => {
     expect(deploy).toContain("stat -c '%U:%G:%a' \"$release\"")
     expect(deploy).toContain('mv -Tf "$next" "$deploy_root/current"')
     expect(deploy).not.toMatch(/git pull|git checkout|git reset/)
+  })
+
+  it('keeps repository and operator files outside the public document root', () => {
+    const allowlist = deploy.match(/public_paths=\((?<paths>[\s\S]*?)\n\)/)?.groups?.paths || ''
+    const forbidden = [
+      '.github',
+      '.nvmrc',
+      'CLAUDE.md',
+      'nginx',
+      'package.json',
+      'package-lock.json',
+      'scripts',
+      'tests',
+    ]
+
+    for (const path of forbidden) {
+      expect(allowlist.split(/\s+/)).not.toContain(path)
+      expect(deploy).toMatch(new RegExp(`(?:^|\\s)${path.replace('.', '\\.')}(?:\\s|; do)`))
+    }
+    expect(deploy).toContain('[[ ! -e "${publication_dir}/${forbidden_path}" ]]')
+    expect(deploy).toContain('find "$publication_dir" -type l -print -quit | grep -q .')
+    expect(deploy).toContain('public static tree must not contain symlinks')
+    expect(allowlist.split(/\s+/)).toEqual(
+      expect.arrayContaining(['index.html', '_ds_bundle.js', 'assets', 'site', 'tokens']),
+    )
   })
 
   it('validates installed Nginx before changing the release pointer', () => {

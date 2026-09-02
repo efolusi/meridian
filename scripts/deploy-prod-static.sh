@@ -30,7 +30,7 @@ git diff --cached --quiet
   exit 69
 }
 
-for command_name in cmp curl diff readlink rsync stat tar; do
+for command_name in cmp curl diff find grep readlink rsync stat tar; do
   command -v "$command_name" >/dev/null
 done
 [[ -x /usr/sbin/nginx ]]
@@ -106,16 +106,58 @@ rollback() {
 trap cleanup EXIT
 trap rollback ERR
 
-# Publish only bytes from the exact commit. Runner leftovers and ignored build
-# output cannot enter a production release.
+# Publish only the static website surface from the exact commit. This allowlist
+# is deliberately independent from .assetsignore: adding a tracked repository,
+# workflow, test, package, or operator file must never make it web-accessible.
+public_paths=(
+  404.html
+  hello.html
+  index.html
+  _ds_bundle.js
+  _ds_manifest.json
+  styles.css
+  tailwind.preset.js
+  registry.json
+  llms.txt
+  llms-full.txt
+  robots.txt
+  sitemap.xml
+  assets
+  blocks
+  compatibility
+  components
+  guidelines
+  showcases
+  site
+  skills
+  starters
+  tokens
+)
+
 git archive --format=tar "$release_sha" | tar -xf - -C "$archive_dir"
-rsync -a --delete --exclude-from="${archive_dir}/.assetsignore" \
-  "${archive_dir}/" "${publication_dir}/"
+for public_path in "${public_paths[@]}"; do
+  [[ -e "${archive_dir}/${public_path}" && ! -L "${archive_dir}/${public_path}" ]] || {
+    echo "[meridian-prod] required public path is absent or a symlink: ${public_path}" >&2
+    exit 78
+  }
+done
+tar -C "$archive_dir" -cf - "${public_paths[@]}" | tar -C "$publication_dir" -xf -
+if find "$publication_dir" -type l -print -quit | grep -q .; then
+  echo "[meridian-prod] public static tree must not contain symlinks" >&2
+  exit 80
+fi
 printf '%s\n' "$release_sha" > "${publication_dir}/meridian-release.txt"
 
 test -s "${publication_dir}/index.html"
 test -s "${publication_dir}/site/DsSite.dc.html"
 test -s "${publication_dir}/_ds_bundle.js"
+for forbidden_path in \
+  .github .nvmrc CLAUDE.md nginx package.json package-lock.json scripts tests; do
+  [[ ! -e "${publication_dir}/${forbidden_path}" ]] || {
+    echo "[meridian-prod] non-public repository path reached publication: ${forbidden_path}" >&2
+    exit 79
+  }
+done
 
 if [[ -L "$deploy_root/current" ]]; then
   previous_current="$(readlink "$deploy_root/current")"
