@@ -4,6 +4,11 @@
   "private": true,
   "description": "Build tooling for the Meridian design system. Not the published package — consumers use the CDN or vendor the folder; see README.md.",
   "type": "module",
+  "engines": {
+    "node": "22.23.2",
+    "npm": "10.9.8"
+  },
+  "packageManager": "npm@10.9.8",
   "workspaces": [
     "mcp",
     "packages/*"

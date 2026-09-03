@@ -1,0 +1,45 @@
+name: deploy development static site
+
+on:
+  push:
+    branches: [dev]
+
+permissions:
+  contents: read
+
+concurrency:
+  group: deploy-meridian-dev-static
+  cancel-in-progress: false
+
+jobs:
+  deploy:
+    runs-on: [self-hosted, Linux, X64, meridian-deploy]
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803 # v6
+
+      - name: Use exact NVM Node runtime
+        shell: bash
+        run: |
+          set -Eeuo pipefail
+          expected="$(tr -d '[:space:]' < .nvmrc)"
+          test -s "$HOME/.nvm/nvm.sh"
+          source "$HOME/.nvm/nvm.sh"
+          nvm use "$expected"
+          actual="$(node -p 'process.versions.node')"
+          [[ "$actual" == "$expected" ]]
+          dirname "$(command -v node)" >> "$GITHUB_PATH"
+          node --version
+          npm --version
+
+      - name: Install and verify exact static source
+        run: |
+          set -Eeuo pipefail
+          npm ci --no-audit --no-fund
+          npm run check
+          git diff --exit-code
+
+      - name: Publish development release atomically
+        env:
+          MERIDIAN_RELEASE_SHA: ${{ github.sha }}
+        run: bash scripts/deploy-dev-static.sh "$MERIDIAN_RELEASE_SHA"
