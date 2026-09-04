@@ -6,6 +6,7 @@ on:
 
 permissions:
   contents: read
+  actions: read
 
 concurrency:
   group: deploy-meridian-prod-static
@@ -35,6 +36,11 @@ jobs:
           dirname "$(command -v node)" >> "$GITHUB_PATH"
           node --version
           npm --version
+
+      - name: Require successful exact-SHA checks before production deploy
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
+        run: node scripts/require_successful_checks.mjs
 
       - name: Build and verify exact production source
         env:
