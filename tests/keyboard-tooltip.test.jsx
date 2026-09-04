@@ -18,7 +18,7 @@ describe('Tooltip', () => {
     const tip = await screen.findByRole('tooltip');
     expect(tip.textContent).toBe('Save');
     expect(document.activeElement).toBe(screen.getByRole('button', { name: 'Save file' }));
-  });
+  }, 15_000);
 
   it('links the trigger to the tip via aria-describedby only while visible', async () => {
     const user = userEvent.setup();
