@@ -1,6 +1,6 @@
 {
   "name": "@efolusi/meridian-guard",
-  "version": "1.21.3",
+  "version": "1.21.4",
   "private": true,
   "description": "Workspace source for the Meridian compliance CLI.",
   "type": "module",
