@@ -2,6 +2,12 @@
 
 ## Unreleased
 
+## 1.21.4 — 2026-09-04
+
+- Anchor buttons retain their variant foreground on hover and focus; base link rules now respect the Meridian cascade layer. Ordinary links preserve their default styling.
+- Button line-height uses the shared token so native buttons and anchor buttons align, including the link variant.
+- CI checks 48 anchor/native variant, theme and interaction-state combinations in Chromium.
+
 ## 1.21.3 — 2026-08-14
 
 - **Meridian Guard is public.** Install `@efolusi/meridian-guard` as a development dependency to check authored applications against Meridian's generated component, token, icon, and deprecation contract.
