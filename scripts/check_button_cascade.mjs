@@ -21,6 +21,9 @@ try {
   let checks=0;
   for(const theme of ['light','dark']) {
     await page.setContent(`<html data-theme="${theme}"><head><style>${tokens}\n@layer meridian{${css}}</style></head><body>${variants.map(v=>`<a id="a-${v}" href="#" class="ef-btn ef-btn--${v} ef-btn--md">Action</a><button id="b-${v}" class="ef-btn ef-btn--${v} ef-btn--md">Action</button>`).join('')}<a id="plain" href="#">Plain link</a></body></html>`);
+    // Releasing a tested anchor must not navigate/reload the synthetic document.
+    // Do not cancel mousedown: Chromium must establish the real :active state.
+    await page.evaluate(()=>document.addEventListener('click',event=>event.preventDefault()));
     for(const variant of variants) for(const state of ['normal','hover','focus','active']) {
       const observed=[];
       for(const prefix of ['a','b']) {
@@ -32,7 +35,7 @@ try {
         if(state==='active') { await target.hover(); await page.mouse.down(); }
         await page.waitForTimeout(30);
         try {
-          if(state==='active') assert.equal(await target.evaluate(el=>el.matches(':active')),true,'pointer must actually activate the tested control');
+          if(state==='active') assert.equal(await target.evaluate(el=>el.matches(':active')),true,`${theme}/${variant}/${prefix}: pointer must actually activate the tested control`);
           observed.push(await target.evaluate(el=>{const s=getComputedStyle(el);return Object.fromEntries(['color','backgroundColor','borderRadius','fontSize','padding','height'].map(k=>[k,s[k]]));}));
         } finally {
           if(state==='active') await page.mouse.up();
