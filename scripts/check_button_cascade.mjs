@@ -19,7 +19,7 @@ try {
   const variants=['primary','secondary','ghost','danger','brand','outline','destructive','link'];
   let checks=0;
   for(const theme of ['light','dark']) {
-    const fixture=`<html data-theme="${theme}"><head><style>${tokens}\n@layer meridian{${css}}</style></head><body>${variants.map(v=>`<a id="a-${v}" href="#" class="ef-btn ef-btn--${v} ef-btn--md">Action</a><button id="b-${v}" class="ef-btn ef-btn--${v} ef-btn--md">Action</button>`).join('')}<a id="plain" href="#">Plain link</a></body></html>`;
+    const fixture=`<!doctype html><html data-theme="${theme}"><head><style>${tokens}\n@layer meridian{${css}}</style></head><body>${variants.map(v=>`<a id="a-${v}" href="#" class="ef-btn ef-btn--${v} ef-btn--md">Action</a><button id="b-${v}" class="ef-btn ef-btn--${v} ef-btn--md">Action</button>`).join('')}<a id="plain" href="#">Plain link</a></body></html>`;
     for(const variant of variants) for(const state of ['normal','hover','focus','active']) {
       const observed=[];
       for(const prefix of ['a','b']) {
@@ -29,6 +29,7 @@ try {
         page=await browser.newPage({reducedMotion:'reduce'});
         await page.route('**/*',route=>route.abort());
         await page.setContent(fixture);
+        assert.equal(await page.evaluate(()=>document.compatMode),'CSS1Compat','test real standards-mode component behavior');
         await page.evaluate(()=>document.addEventListener('click',event=>event.preventDefault()));
         await page.mouse.move(0,0);
         await page.evaluate(()=>document.activeElement?.blur());
