@@ -70,6 +70,8 @@ jobs:
           node-version: '22.23.2'
       - name: Install build dependency
         run: npm ci --no-audit --no-fund
+      - name: Computed contrast helper
+        run: node --test scripts/contrast.test.mjs
       - name: _ds_bundle.js is reproducible from source
         run: node scripts/build_bundle.mjs --check
 

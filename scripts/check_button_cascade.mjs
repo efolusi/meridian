@@ -2,6 +2,7 @@
 // Optional argv[2] is an installed playwright entrypoint; no server/network needed.
 import { readFile } from 'node:fs/promises';
 import assert from 'node:assert/strict';
+import { contrast } from './contrast.mjs';
 const { chromium } = await import(process.argv[2] || 'playwright');
 const root = new URL('../', import.meta.url);
 const names = ['colors', 'typography', 'spacing', 'effects', 'base'];
@@ -9,6 +10,9 @@ const tokens = (await Promise.all(names.map(n=>readFile(new URL(`tokens/${n}.css
 const source = await readFile(new URL('components/forms/Button.jsx',root),'utf8');
 const css = source.match(/const CSS = `([\s\S]*?)`;/)?.[1];
 assert.ok(css, 'Button source CSS must be present');
+// Equal anchor/native styles are insufficient: both can be unreadable.
+// Filled variants have opaque computed colors; reject an unexpected format
+// instead of silently treating a transparent background as white.
 const browser = await chromium.launch(process.env.EXECUTABLE_PATH ? {executablePath:process.env.EXECUTABLE_PATH} : {});
 try {
   const page = await browser.newPage({reducedMotion:'reduce'});
@@ -29,6 +33,12 @@ try {
         observed.push(await target.evaluate(el=>{const s=getComputedStyle(el);return Object.fromEntries(['color','backgroundColor','borderRadius','fontSize','padding','height'].map(k=>[k,s[k]]));}));
       }
       assert.deepEqual(observed[0],observed[1],`${theme}/${variant}/${state} anchor/native mismatch`);
+      if (['primary','brand','danger','destructive'].includes(variant)) {
+        for (const styles of observed) {
+          const ratio = contrast(styles.color, styles.backgroundColor);
+          assert.ok(ratio >= 4.5, `${theme}/${variant}/${state} text contrast ${ratio.toFixed(2)}:1 is below 4.5:1`);
+        }
+      }
       checks++;
     }
     assert.equal(await page.locator('#plain').evaluate(el=>getComputedStyle(el).color),await page.evaluate(()=>{const el=document.createElement('span');el.style.color='var(--text-link)';document.body.append(el);const color=getComputedStyle(el).color;el.remove();return color;}));
