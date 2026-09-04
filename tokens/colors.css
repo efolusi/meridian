@@ -42,7 +42,7 @@
 --accent:#F3EFE7;--accent-hover:#FFFFFF;--accent-active:#D5CFC0;--accent-subtle:#2A2119;--accent-subtle-border:#453728;--accent-contrast:#1E1A14;
 --success-600:#5FB86E;--success-100:#1C2B1F;--success-300:#2E4A34;
 --warning-100:#2E2413;--warning-300:#4A3A1D;--warning-600:#D9822B;
---danger-100:#321B18;--danger-300:#54291F;--danger-600:#E85D4A;--danger-contrast:#1E1A14;--success-contrast:#1E1A14;--warning-contrast:#1E1A14;
+--danger-100:#321B18;--danger-300:#54291F;--danger-600:#E85D4A;--danger-700:#F47765;/* hover fill must retain contrast with dark-mode danger ink */--danger-contrast:#1E1A14;--success-contrast:#1E1A14;--warning-contrast:#1E1A14;
 --focus-ring-color:var(--brand-400);/* offset + composite inherit from :root and re-resolve here */
 }
 [data-theme="dark"] ::selection{background:#453728;color:#F3EFE7}

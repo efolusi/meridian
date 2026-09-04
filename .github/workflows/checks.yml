@@ -70,6 +70,8 @@ jobs:
           node-version: '22.23.2'
       - name: Install build dependency
         run: npm ci --no-audit --no-fund
+      - name: Computed contrast helper
+        run: node --test scripts/contrast.test.mjs
       - name: _ds_bundle.js is reproducible from source
         run: node scripts/build_bundle.mjs --check
 
@@ -106,6 +108,8 @@ jobs:
         run: |
           npm install --no-save --no-audit --no-fund playwright@1.48.0
           npx playwright install --with-deps chromium
+      - name: Button anchor cascade and state parity
+        run: node scripts/check_button_cascade.mjs
       - name: Serve repo and run headless smoke
         run: |
           python3 -m http.server 8000 --bind 127.0.0.1 &

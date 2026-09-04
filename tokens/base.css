@@ -1,9 +1,13 @@
 body{margin:0;font-family:var(--font-sans);font-size:var(--text-md);line-height:var(--leading-normal);color:var(--text-primary);background:var(--surface-page);-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
 h1,h2,h3,h4{font-family:var(--font-display);letter-spacing:var(--tracking-display);line-height:var(--leading-snug);margin:0}
 p{margin:0}
-a{color:var(--text-link);text-decoration:none;transition:color var(--dur-fast) var(--ease-out)}
-a:hover{color:var(--accent-hover);text-decoration:none}
-a:focus-visible{outline:none;box-shadow:var(--focus-ring);border-radius:var(--radius-sm)}
+/* Link defaults must not outrank layered component variants, including hover.
+   Zero specificity also lets .ef-btn keep its foreground within this layer. */
+@layer meridian{
+:where(a){color:var(--text-link);text-decoration:none;transition:color var(--dur-fast) var(--ease-out)}
+:where(a:hover){color:var(--accent-hover);text-decoration:none}
+:where(a:focus-visible){outline:none;box-shadow:var(--focus-ring);border-radius:var(--radius-sm)}
+}
 code,pre,kbd{font-family:var(--font-mono)}
 ::selection{background:var(--brand-100);color:var(--cocoa-900)}
 *,*::before,*::after{box-sizing:border-box}

@@ -111,6 +111,7 @@ PAIRS = [
     ("--warning-600", ["--warning-100", "--surface-card"], 4.5, "status text"),
     ("--danger-600", ["--danger-100", "--surface-card"], 4.5, "status text"),
     ("--accent-contrast", ["--accent"], 4.5, "text on accent"),
+    ("--danger-contrast", ["--danger-600", "--danger-700"], 4.5, "danger button normal and hover text"),
     # WCAG 1.4.11 — the focus indicator must be distinguishable from whatever it
     # sits on. The inner offset ring is surface-coloured, so the outer ring only
     # ever borders a surface, never a control fill.
