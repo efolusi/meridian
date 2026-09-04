@@ -15,18 +15,21 @@ assert.ok(css, 'Button source CSS must be present');
 // instead of silently treating a transparent background as white.
 const browser = await chromium.launch(process.env.EXECUTABLE_PATH ? {executablePath:process.env.EXECUTABLE_PATH} : {});
 try {
-  const page = await browser.newPage({reducedMotion:'reduce'});
-  await page.route('**/*',route=>route.abort());
+  let page;
   const variants=['primary','secondary','ghost','danger','brand','outline','destructive','link'];
   let checks=0;
   for(const theme of ['light','dark']) {
-    await page.setContent(`<html data-theme="${theme}"><head><style>${tokens}\n@layer meridian{${css}}</style></head><body>${variants.map(v=>`<a id="a-${v}" href="#" class="ef-btn ef-btn--${v} ef-btn--md">Action</a><button id="b-${v}" class="ef-btn ef-btn--${v} ef-btn--md">Action</button>`).join('')}<a id="plain" href="#">Plain link</a></body></html>`);
-    // Releasing a tested anchor must not navigate/reload the synthetic document.
-    // Do not cancel mousedown: Chromium must establish the real :active state.
-    await page.evaluate(()=>document.addEventListener('click',event=>event.preventDefault()));
+    const fixture=`<html data-theme="${theme}"><head><style>${tokens}\n@layer meridian{${css}}</style></head><body>${variants.map(v=>`<a id="a-${v}" href="#" class="ef-btn ef-btn--${v} ef-btn--md">Action</a><button id="b-${v}" class="ef-btn ef-btn--${v} ef-btn--md">Action</button>`).join('')}<a id="plain" href="#">Plain link</a></body></html>`;
     for(const variant of variants) for(const state of ['normal','hover','focus','active']) {
       const observed=[];
       for(const prefix of ['a','b']) {
+        // Each measurement starts with a fresh browsing context: no previous
+        // pressed anchor, focus, selection or pointer capture can leak into it.
+        await page?.close();
+        page=await browser.newPage({reducedMotion:'reduce'});
+        await page.route('**/*',route=>route.abort());
+        await page.setContent(fixture);
+        await page.evaluate(()=>document.addEventListener('click',event=>event.preventDefault()));
         await page.mouse.move(0,0);
         await page.evaluate(()=>document.activeElement?.blur());
         const target=page.locator(`#${prefix}-${variant}`);
