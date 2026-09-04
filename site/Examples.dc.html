@@ -63,7 +63,7 @@
 </div>
 <p style="font-size:14.5px;line-height:1.6;color:var(--text-secondary);margin:8px 0 0;max-width:680px">{{ curDesc }}</p>
 <div class="frame-scroll kit-frame" style="margin-top:16px;border:1px solid var(--border-default);border-radius:var(--radius-lg);overflow:hidden;background:var(--surface-card);height:{{ frameH }}px">
-<iframe src="{{ curFile }}" title="{{ curTitle }}" style="width:1440px;height:827px;border:0;transform:scale({{ frameScale }});transform-origin:top left;display:block"></iframe>
+<iframe data-kit-frame title="{{ curTitle }}" style="width:1440px;height:827px;border:0;transform:scale({{ frameScale }});transform-origin:top left;display:block"></iframe>
 </div>
 <p style="font-size:13px;color:var(--text-muted);margin:12px 2px 0">Interactive preview — click around. Source lives in {{ curPath }} as plain JSX screens; copy the folder to start your own product on it.</p>
 </main>
@@ -88,7 +88,17 @@ class Component extends DCLogic {
     { id: 'auth', title: 'Auth', desc: 'Shared sign-in and create-account screens: brand panel with rotating customer quote, form panel with SSO, validation, and password reveal.' },
     { id: 'website', title: 'Website', desc: 'The public marketing site: header, hero with live product preview, product trio, brand band, pricing, and footer.' },
   ];
+  /* The iframe src is set imperatively: a literal src="{{ ... }}" in the
+     template is fetched by the browser during the initial document parse,
+     before the runtime substitutes it, causing a phantom 404. */
+  _syncFrame() {
+    const el = document.querySelector('iframe[data-kit-frame]');
+    const src = '../showcases/' + this.KITS[this.state.ki].id + '/index.html';
+    if (el && el.getAttribute('src') !== src) el.setAttribute('src', src);
+  }
+  componentDidUpdate() { this._syncFrame(); }
   componentDidMount() {
+    this._syncFrame();
     try { const t = localStorage.getItem('efolusi-site-theme'); if (t) document.documentElement.setAttribute('data-theme', t); } catch (e) {}
     this.setState({ dark: document.documentElement.getAttribute('data-theme') === 'dark' });
     this._onHash = () => this.applyHash();

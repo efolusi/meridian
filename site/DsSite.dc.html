@@ -63,7 +63,7 @@
 <x-import component-from-global-scope="EfolusiDesignSystem_4ffc3d.Select" options="{{ exampleOptions }}" value="{{ example }}" onChange="{{ setExample }}" aria-label="Choose a starter journey" hint-size="220px,36px"></x-import>
 </div>
 <div class="home-frame" style="margin-top:18px;border:1px solid var(--border-default);border-radius:var(--radius-lg);overflow:hidden;background:var(--surface-card);height:{{ frameH }}px">
-<iframe src="{{ exampleSrc }}" title="Live example" style="width:1440px;height:780px;border:0;transform:scale({{ frameScale }});transform-origin:top left;display:block"></iframe>
+<iframe data-home-frame title="Live example" style="width:1440px;height:780px;border:0;transform:scale({{ frameScale }});transform-origin:top left;display:block"></iframe>
 </div>
 <p data-lang-id="Template langsung — jelajahi dengan klik, setiap halaman nyata." style="text-align:center;font-size:13px;color:var(--text-muted);margin-top:12px">Live template — click around, every page is real.</p>
 </section>
@@ -87,7 +87,28 @@
 <script type="text/x-dc" data-dc-script>
 class Component extends DCLogic {
   state = { dark: false, example: 'dashboard', fw: 1144 };
+  /* The iframe src is set imperatively: a literal src="{{ ... }}" in the
+     template is fetched by the browser during the initial document parse,
+     before the runtime substitutes it, causing a phantom 404. */
+  SRCS = {
+    dashboard: '../starters/dashboard/Dashboard.dc.html?v=20260814',
+    app: '../starters/app-page/AppPage.dc.html?v=20260814',
+    marketing: '../starters/marketing-page/MarketingPage.dc.html?v=20260814',
+    docs: '../starters/docs-page/DocsPage.dc.html?v=20260814',
+    ai: '../starters/ai-workspace/Workspace.dc.html?v=20260814',
+    crm: '../starters/crm/Pipeline.dc.html?v=20260814',
+    finance: '../starters/finance-ops/Cashflow.dc.html?v=20260814',
+    support: '../starters/service-desk/Queue.dc.html?v=20260814',
+    auth: '../starters/auth-page/AuthPage.dc.html?v=20260814',
+  };
+  _syncFrame() {
+    const el = document.querySelector('iframe[data-home-frame]');
+    const src = this.SRCS[this.state.example];
+    if (el && src && el.getAttribute('src') !== src) el.setAttribute('src', src);
+  }
+  componentDidUpdate() { this._syncFrame(); }
   componentDidMount() {
+    this._syncFrame();
     try { const t = localStorage.getItem('efolusi-site-theme'); if (t) document.documentElement.setAttribute('data-theme', t); } catch (e) {}
     this.setState({ dark: document.documentElement.getAttribute('data-theme') === 'dark' });
     this._measure = () => {
@@ -103,17 +124,6 @@ class Component extends DCLogic {
     }
   }
   renderVals() {
-    const srcs = {
-      dashboard: '../starters/dashboard/Dashboard.dc.html?v=20260814',
-      app: '../starters/app-page/AppPage.dc.html?v=20260814',
-      marketing: '../starters/marketing-page/MarketingPage.dc.html?v=20260814',
-      docs: '../starters/docs-page/DocsPage.dc.html?v=20260814',
-      ai: '../starters/ai-workspace/Workspace.dc.html?v=20260814',
-      crm: '../starters/crm/Pipeline.dc.html?v=20260814',
-      finance: '../starters/finance-ops/Cashflow.dc.html?v=20260814',
-      support: '../starters/service-desk/Queue.dc.html?v=20260814',
-      auth: '../starters/auth-page/AuthPage.dc.html?v=20260814',
-    };
     const frameScale = +(this.state.fw / 1440).toFixed(4);
     return {
       frameScale,
@@ -127,7 +137,6 @@ class Component extends DCLogic {
       example: this.state.example,
       exampleOptions: [{ value: 'dashboard', label: 'Dashboard' }, { value: 'app', label: 'App' }, { value: 'marketing', label: 'Marketing' }, { value: 'docs', label: 'Docs' }, { value: 'auth', label: 'Auth' }, { value: 'ai', label: 'AI workspace' }, { value: 'crm', label: 'CRM' }, { value: 'finance', label: 'Finance operations' }, { value: 'support', label: 'Service desk' }],
       setExample: (event) => this.setState({ example: event.target.value }),
-      exampleSrc: srcs[this.state.example],
     };
   }
 }
