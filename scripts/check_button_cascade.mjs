@@ -32,10 +32,16 @@ try {
         const target=page.locator(`#${prefix}-${variant}`);
         if(state==='hover') await target.hover();
         if(state==='focus') await target.focus();
-        if(state==='active') { await target.hover(); await page.mouse.down(); }
+        if(state==='active') {
+          await page.evaluate(()=>{
+            window.__pointerEvidence=[];
+            for(const name of ['pointerdown','mousedown','focusin','pointerup','mouseup']) document.addEventListener(name,event=>window.__pointerEvidence.push({type:event.type,target:event.target.id,active:[...document.querySelectorAll(':active')].map(el=>el.id||el.tagName)}),{once:true});
+          });
+          await target.hover(); await page.mouse.down();
+        }
         await page.waitForTimeout(30);
         try {
-          if(state==='active') assert.equal(await target.evaluate(el=>el.matches(':active')),true,`${theme}/${variant}/${prefix}: pointer must actually activate the tested control`);
+          if(state==='active') assert.equal(await target.evaluate(el=>el.matches(':active')),true,`${theme}/${variant}/${prefix}: pointer must actually activate the tested control; ${JSON.stringify(await page.evaluate(()=>window.__pointerEvidence))}`);
           observed.push(await target.evaluate(el=>{const s=getComputedStyle(el);return Object.fromEntries(['color','backgroundColor','borderRadius','fontSize','padding','height'].map(k=>[k,s[k]]));}));
         } finally {
           if(state==='active') await page.mouse.up();
