@@ -1,6 +1,6 @@
 {
   "name": "@efolusi/meridian-tokens",
-  "version": "1.21.5",
+  "version": "1.21.6",
   "private": true,
   "description": "Workspace source for Meridian design tokens.",
   "type": "module",
