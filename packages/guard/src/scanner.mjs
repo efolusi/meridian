@@ -4,7 +4,8 @@ import { parse } from '@babel/parser';
 import { RULES } from './rules.mjs';
 import defaultContracts from './generated/meridian-rules.json' with { type: 'json' };
 
-const SOURCE_EXTENSIONS = new Set(['.js', '.jsx', '.mjs', '.cjs', '.ts', '.tsx']);
+const SCRIPT_EXTENSIONS = new Set(['.js', '.jsx', '.mjs', '.cjs', '.ts', '.tsx']);
+const SOURCE_EXTENSIONS = new Set([...SCRIPT_EXTENSIONS, '.css']);
 const IGNORED_DIRECTORIES = new Set([
   '.git',
   '.next',
@@ -31,7 +32,7 @@ const RADIUS_TOKEN = /var\(\s*--(radius-[a-z0-9-]+)\b/gi;
 
 function ignoredSourceFile(target) {
   const name = path.basename(target);
-  return /\.min\.(?:[cm]?[jt]sx?)$/i.test(name) || /\.(?:spec|test)\.[cm]?[jt]sx?$/i.test(name);
+  return /\.min\.(?:css|[cm]?[jt]sx?)$/i.test(name) || /\.(?:spec|test)\.[cm]?[jt]sx?$/i.test(name);
 }
 
 function diagnostic(file, node, rule, message) {
@@ -86,6 +87,16 @@ function staticAttributeValue(item) {
     return item.value.expression.value;
   }
   return null;
+}
+
+function inlineStyleKeys(item) {
+  if (item?.value?.type !== 'JSXExpressionContainer'
+    || item.value.expression.type !== 'ObjectExpression') return [];
+  return item.value.expression.properties.flatMap(property => {
+    if (property.type !== 'ObjectProperty') return [];
+    const key = property.key?.name ?? property.key?.value;
+    return typeof key === 'string' ? [key] : [];
+  });
 }
 
 function walk(node, visitor, ancestors = []) {
@@ -249,8 +260,97 @@ export function scanSource(source, file, contracts) {
       diagnostics.push(diagnostic(file, node.openingElement, RULES.accessibility,
         '<AlertDialogContent> requires an <AlertDialogTitle> descendant.'));
     }
+
+    if (component === 'Button' || component === 'IconButton') {
+      const classAttribute = attribute(node, 'className');
+      const className = staticAttributeValue(classAttribute);
+      const chromeClass = className?.split(/\s+/).find(name =>
+        /^(?:(?:hover|focus|focus-visible|active|disabled|dark):)*(?:bg-|rounded(?:-|$)|text-(?:white|black|primary|secondary|muted|foreground|background|brand|danger|success|warning|\[))/.test(name),
+      );
+      if (chromeClass) {
+        diagnostics.push(diagnostic(file, classAttribute, RULES.componentChromeOverride,
+          `<${component}> class ${JSON.stringify(chromeClass)} overrides Meridian paint or radius. Use variant/size props and keep className structural.`));
+      }
+      const styleAttribute = attribute(node, 'style');
+      const chromeStyle = inlineStyleKeys(styleAttribute).find(key =>
+        ['background', 'backgroundColor', 'borderRadius', 'boxShadow', 'color', 'fontFamily', 'fontSize'].includes(key),
+      );
+      if (chromeStyle) {
+        diagnostics.push(diagnostic(file, styleAttribute, RULES.componentChromeOverride,
+          `<${component}> inline style ${JSON.stringify(chromeStyle)} overrides Meridian component chrome. Use the component contract instead.`));
+      }
+    }
   });
 
+  return diagnostics;
+}
+
+function lineAndColumn(source, offset) {
+  const before = source.slice(0, offset);
+  const lines = before.split('\n');
+  return { loc: { start: { line: lines.length, column: lines.at(-1).length } } };
+}
+
+function stripCssComments(source) {
+  return source.replace(/\/\*[\s\S]*?\*\//g, comment => comment.replace(/[^\n]/g, ' '));
+}
+
+function durationMs(value) {
+  const match = /(-?\d*\.?\d+)\s*(ms|s)\b/i.exec(value);
+  if (!match) return null;
+  const number = Number(match[1]);
+  return match[2].toLowerCase() === 's' ? number * 1000 : number;
+}
+
+export function scanStyleSource(source, file, contracts) {
+  const clean = stripCssComments(source);
+  const diagnostics = [];
+  const validTokens = new Set(contracts.tokens);
+  const declaration = /(^|[;{])\s*([a-z-]+)\s*:\s*([^;}]+)/gim;
+  for (const match of clean.matchAll(declaration)) {
+    const property = match[2].toLowerCase();
+    const value = match[3].trim();
+    const offset = match.index + match[0].indexOf(match[2]);
+    const node = lineAndColumn(source, offset);
+
+    const rawHex = value.match(HEX_COLOR)?.[0];
+    HEX_COLOR.lastIndex = 0;
+    if (rawHex) diagnostics.push(diagnostic(file, node, RULES.rawColor,
+      `Raw color ${JSON.stringify(rawHex)} bypasses Meridian semantic tokens. Use var(--token-name).`));
+
+    for (const tokenMatch of value.matchAll(RADIUS_TOKEN)) {
+      if (!validTokens.has(tokenMatch[1])) diagnostics.push(diagnostic(file, node, RULES.unknownToken,
+        `Unknown Meridian token "--${tokenMatch[1]}". Choose a radius token from the generated token contract.`));
+    }
+
+    if (/^(?:border-radius|border-(?:start|end)-(?:start|end)-radius|border-(?:top|right|bottom|left)-(?:left|right)-radius)$/.test(property)
+      && !/var\(\s*--radius-/.test(value)
+      && /(?:^|\s)(?!0(?:[\s/]|$))\d*\.?\d+(?:px|r?em)\b/i.test(value)) {
+      diagnostics.push(diagnostic(file, node, RULES.rawRadius,
+        `Raw ${property} value ${JSON.stringify(value)} bypasses the Meridian radius hierarchy.`));
+    }
+    if (property === 'box-shadow' && value !== 'none' && !/var\(\s*--shadow-/.test(value)) {
+      diagnostics.push(diagnostic(file, node, RULES.rawShadow,
+        `Raw box-shadow ${JSON.stringify(value)} bypasses Meridian elevation tokens.`));
+    }
+    if (/^(?:transition|transition-duration|animation|animation-duration)$/.test(property)) {
+      const durations = [...value.matchAll(/(-?\d*\.?\d+)\s*(ms|s)\b/gi)]
+        .map(item => durationMs(item[0])).filter(item => item !== null);
+      const slowest = Math.max(0, ...durations);
+      if (slowest > 240) diagnostics.push(diagnostic(file, node, RULES.slowMotion,
+        `Motion duration ${slowest}ms exceeds Meridian's 240ms interface budget.`));
+    }
+    if (property === 'font-family' && !/^(?:inherit|initial|unset)$/.test(value)
+      && !/var\(\s*--font-(?:sans|display|mono)/.test(value)) {
+      diagnostics.push(diagnostic(file, node, RULES.rawFontFamily,
+        `Raw font-family ${JSON.stringify(value)} bypasses Meridian typography roles.`));
+    }
+    if (property === 'font-size' && !/var\(\s*--text-/.test(value)
+      && /(?:\d*\.?\d+(?:px|r?em)\b|clamp\s*\()/i.test(value)) {
+      diagnostics.push(diagnostic(file, node, RULES.rawTypeSize,
+        `Raw font-size ${JSON.stringify(value)} bypasses the Meridian type scale.`));
+    }
+  }
   return diagnostics;
 }
 
@@ -259,7 +359,9 @@ export async function guard(targets, { contracts = defaultContracts } = {}) {
   const diagnostics = [];
   for (const file of files) {
     const source = await fs.readFile(file, 'utf8');
-    diagnostics.push(...scanSource(source, file, contracts));
+    diagnostics.push(...(path.extname(file) === '.css'
+      ? scanStyleSource(source, file, contracts)
+      : scanSource(source, file, contracts)));
   }
   diagnostics.sort((a, b) => a.file.localeCompare(b.file) || a.line - b.line || a.column - b.column || a.ruleId.localeCompare(b.ruleId));
   return { filesScanned: files.length, diagnostics };

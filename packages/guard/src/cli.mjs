@@ -57,7 +57,7 @@ export async function main(argv, io = process) {
   const targets = (options.paths.length ? options.paths : ['.']).map(target => path.resolve(cwd, target));
   const result = await guard(targets, { contracts });
   if (result.filesScanned === 0 && !options.allowEmpty) {
-    throw new Error('no supported JavaScript or TypeScript source files found; check the target path or pass --allow-empty');
+    throw new Error('no supported JavaScript, TypeScript, or CSS source files found; check the target path or pass --allow-empty');
   }
   io.stdout.write(options.format === 'json' ? formatJson(result) : formatPretty(result, cwd));
   if (result.diagnostics.length > 0) io.exitCode = 1;
