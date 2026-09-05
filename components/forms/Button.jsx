@@ -5,8 +5,8 @@ const CSS = `
 .ef-btn{line-height:var(--leading-normal)}
 .ef-btn:hover,.ef-btn:focus,.ef-btn:visited{text-decoration:none}
 .ef-btn:focus-visible{outline:none;box-shadow:var(--focus-ring)}
-.ef-btn:active:not(:disabled){transform:scale(.985)}
-.ef-btn:disabled{opacity:.45;cursor:not-allowed}
+.ef-btn:active{transform:scale(.985)}
+.ef-btn:is(:disabled,[aria-disabled="true"],[data-disabled]){opacity:.45;cursor:not-allowed;pointer-events:none}
 .ef-btn--sm{height:var(--control-h-sm);padding:0 10px;font-size:var(--text-sm)}
 .ef-btn--md{height:var(--control-h-md);padding:0 14px;font-size:var(--text-md)}
 .ef-btn--lg{height:var(--control-h-lg);padding:0 20px;font-size:var(--text-lg)}
@@ -16,22 +16,22 @@ const CSS = `
 .ef-btn--icon-sm{width:var(--control-h-sm);height:var(--control-h-sm);padding:0}
 .ef-btn--icon-lg{width:var(--control-h-lg);height:var(--control-h-lg);padding:0}
 .ef-btn--primary{background:var(--accent);color:var(--accent-contrast)}
-.ef-btn--primary:hover:not(:disabled){background:var(--accent-hover)}
-.ef-btn--primary:active:not(:disabled){background:var(--accent-active)}
+.ef-btn--primary:hover{background:var(--accent-hover)}
+.ef-btn--primary:active{background:var(--accent-active)}
 .ef-btn--secondary{background:transparent;color:var(--text-primary);border-color:var(--border-strong)}
-.ef-btn--secondary:hover:not(:disabled){background:var(--surface-sunken)}
+.ef-btn--secondary:hover{background:var(--surface-sunken)}
 .ef-btn--ghost{background:transparent;color:var(--text-secondary)}
-.ef-btn--ghost:hover:not(:disabled){background:var(--surface-sunken);color:var(--text-primary)}
+.ef-btn--ghost:hover{background:var(--surface-sunken);color:var(--text-primary)}
 .ef-btn--danger{background:var(--danger-600);color:var(--danger-contrast)}
-.ef-btn--danger:hover:not(:disabled){background:var(--danger-700)}
+.ef-btn--danger:hover{background:var(--danger-700)}
 .ef-btn--brand{background:var(--brand-700);color:var(--text-on-brand)}
-.ef-btn--brand:hover:not(:disabled){background:var(--brand-800)}
+.ef-btn--brand:hover{background:var(--brand-800)}
 .ef-btn--outline{background:transparent;color:var(--text-primary);border-color:var(--border-strong)}
-.ef-btn--outline:hover:not(:disabled){background:var(--surface-sunken)}
+.ef-btn--outline:hover{background:var(--surface-sunken)}
 .ef-btn--destructive{background:var(--danger-600);color:var(--danger-contrast)}
-.ef-btn--destructive:hover:not(:disabled){background:var(--danger-700)}
+.ef-btn--destructive:hover{background:var(--danger-700)}
 .ef-btn--link{height:auto;padding:0;background:transparent;color:var(--text-link);text-underline-offset:4px}
-.ef-btn--link:hover:not(:disabled){color:var(--text-link-hover);text-decoration:none}
+.ef-btn--link:hover{color:var(--text-link-hover);text-decoration:none}
 @keyframes ef-spin{to{transform:rotate(360deg)}}
 .ef-btn__spin{display:inline-flex;animation:ef-spin .7s linear infinite}
 `;
@@ -123,8 +123,8 @@ export const Button = React.forwardRef(function Button({ variant = 'default', si
   injectEfCss('ef-css-btn', CSS);
   const isz = size === 'xs' || size === 'icon-xs' ? 12 : size === 'sm' || size === 'icon-sm' ? 14 : size === 'lg' || size === 'icon-lg' ? 18 : 16;
   return (
-    <button ref={ref} className={buttonVariants({ variant, size, className })} disabled={disabled || loading} style={{ width: fullWidth ? '100%' : undefined, ...style }} {...rest}>
-      {loading ? <span className="ef-btn__spin"><Icon name="loader-circle" size={isz} /></span> : iconLeft ? <Icon name={iconLeft} size={isz} /> : null}
+    <button ref={ref} className={buttonVariants({ variant, size, className })} disabled={disabled || loading} aria-busy={loading || undefined} data-loading={loading ? '' : undefined} style={{ width: fullWidth ? '100%' : undefined, ...style }} {...rest}>
+      {loading ? <span className="ef-btn__spin" aria-hidden="true"><Icon name="loader-circle" size={isz} /></span> : iconLeft ? <Icon name={iconLeft} size={isz} /> : null}
       {children}
       {iconRight ? <Icon name={iconRight} size={isz} /> : null}
     </button>

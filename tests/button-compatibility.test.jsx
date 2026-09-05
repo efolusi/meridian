@@ -72,6 +72,9 @@ describe('Button compatibility contract', () => {
     fireEvent.click(loading);
     expect(disabled.disabled).toBe(true);
     expect(loading.disabled).toBe(true);
+    expect(loading.getAttribute('aria-busy')).toBe('true');
+    expect(loading.getAttribute('data-loading')).toBe('');
+    expect(loading.querySelector('.ef-btn__spin').getAttribute('aria-hidden')).toBe('true');
     expect(disabledClick).not.toHaveBeenCalled();
     expect(loadingClick).not.toHaveBeenCalled();
   });
