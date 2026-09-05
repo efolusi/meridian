@@ -185,6 +185,10 @@ export function scanSource(source, file, contracts) {
       const imported = specifier.type === 'ImportDefaultSpecifier'
         ? deepBasename.replace(/\.(?:jsx?|tsx?)$/, '')
         : specifier.imported.name || specifier.imported.value;
+      // The umbrella package also exposes lowercase helpers such as
+      // buttonVariants and toast. MDG001 validates React components, not every
+      // public JavaScript export.
+      if (!/^[A-Z]/.test(imported)) continue;
       if (!validComponents.has(imported)) {
         diagnostics.push(diagnostic(file, specifier, RULES.unknownComponent,
           `"${imported}" is not a Meridian component. Check the component registry or the import path.`));
