@@ -1,7 +1,8 @@
 // Real Chromium regression: anchor buttons must match native buttons in both themes.
 // Optional argv[2] is an installed playwright entrypoint; no server/network needed.
-import { readFile } from 'node:fs/promises';
+import { mkdir, readFile } from 'node:fs/promises';
 import assert from 'node:assert/strict';
+import path from 'node:path';
 import { contrast } from './contrast.mjs';
 const { chromium } = await import(process.argv[2] || 'playwright');
 const root = new URL('../', import.meta.url);
@@ -10,6 +11,12 @@ const tokens = (await Promise.all(names.map(n=>readFile(new URL(`tokens/${n}.css
 const source = await readFile(new URL('components/forms/Button.jsx',root),'utf8');
 const css = source.match(/const CSS = `([\s\S]*?)`;/)?.[1];
 assert.ok(css, 'Button source CSS must be present');
+const shots = process.env.BUTTON_SHOTS || '';
+const viewports = [
+  { name: 'mobile', width: 375, height: 812 },
+  { name: 'desktop', width: 1280, height: 800 },
+];
+if (shots) await mkdir(shots, { recursive: true });
 // Equal anchor/native styles are insufficient: both can be unreadable.
 // Filled variants have opaque computed colors; reject an unexpected format
 // instead of silently treating a transparent background as white.
@@ -18,15 +25,16 @@ try {
   let page;
   const variants=['primary','secondary','ghost','danger','brand','outline','destructive','link'];
   let checks=0;
-  for(const theme of ['light','dark']) {
-    const fixture=`<!doctype html><html data-theme="${theme}"><head><style>${tokens}\n@layer meridian{${css}}</style></head><body>${variants.map(v=>`<a id="a-${v}" href="#" class="ef-btn ef-btn--${v} ef-btn--md">Action</a><button id="b-${v}" class="ef-btn ef-btn--${v} ef-btn--md">Action</button><a id="ad-${v}" role="button" aria-disabled="true" class="ef-btn ef-btn--${v} ef-btn--md">Disabled</a><button id="bd-${v}" disabled class="ef-btn ef-btn--${v} ef-btn--md">Disabled</button>`).join('')}<button id="loading" disabled aria-busy="true" data-loading class="ef-btn ef-btn--primary ef-btn--md"><span class="ef-btn__spin" aria-hidden="true">⟳</span>Loading</button><a id="plain" href="#">Plain link</a></body></html>`;
+  for(const viewport of viewports) for(const theme of ['light','dark']) {
+    const receiptCss=`body{margin:0;padding:var(--space-6);background:var(--surface-page);color:var(--text-primary);font-family:var(--font-sans)}h1{margin:0 0 var(--space-6);font-family:var(--font-display);font-size:var(--text-2xl)}.matrix{display:grid;gap:var(--space-4);max-width:820px}.row{display:grid;grid-template-columns:96px repeat(4,max-content);gap:var(--space-2);align-items:center}.label{font-size:var(--text-sm);font-weight:var(--weight-semibold)}.extras{display:flex;align-items:center;gap:var(--space-4);margin-top:var(--space-6)}@media(max-width:600px){body{padding:var(--space-4)}.row{grid-template-columns:1fr 1fr}.label{grid-column:1/-1}.row .ef-btn{width:100%}.extras{align-items:flex-start;flex-direction:column}}`;
+    const fixture=`<!doctype html><html data-theme="${theme}"><head><style>${tokens}\n@layer meridian{${css}}\n${receiptCss}</style></head><body><h1>Button interaction contract</h1><main class="matrix">${variants.map(v=>`<div class="row"><span class="label">${v}</span><a id="a-${v}" href="#" class="ef-btn ef-btn--${v} ef-btn--md">Anchor</a><button id="b-${v}" class="ef-btn ef-btn--${v} ef-btn--md">Native</button><a id="ad-${v}" role="button" aria-disabled="true" class="ef-btn ef-btn--${v} ef-btn--md">Disabled</a><button id="bd-${v}" disabled class="ef-btn ef-btn--${v} ef-btn--md">Disabled</button></div>`).join('')}</main><div class="extras"><button id="loading" disabled aria-busy="true" data-loading class="ef-btn ef-btn--primary ef-btn--md"><span class="ef-btn__spin" aria-hidden="true">⟳</span>Loading</button><a id="plain" href="#">Plain link</a></div></body></html>`;
     for(const variant of variants) for(const state of ['normal','hover','focus','active']) {
       const observed=[];
       for(const prefix of ['a','b']) {
         // Each measurement starts with a fresh browsing context: no previous
         // pressed anchor, focus, selection or pointer capture can leak into it.
         await page?.close();
-        page=await browser.newPage({reducedMotion:'reduce'});
+        page=await browser.newPage({viewport,reducedMotion:'reduce'});
         await page.route('**/*',route=>route.abort());
         await page.setContent(fixture);
         assert.equal(await page.evaluate(()=>document.compatMode),'CSS1Compat','test real standards-mode component behavior');
@@ -61,7 +69,7 @@ try {
       checks++;
     }
     await page?.close();
-    page=await browser.newPage({reducedMotion:'reduce'});
+    page=await browser.newPage({viewport,reducedMotion:'reduce'});
     await page.setContent(fixture);
     const expected=await page.evaluate(()=>{const el=document.createElement('span');el.style.cssText='color:var(--text-link);border-radius:var(--radius-sm);font-family:var(--font-sans);font-size:var(--text-md);font-weight:var(--weight-semibold);line-height:var(--leading-normal)';const hover=document.createElement('span');hover.style.color='var(--text-link-hover)';document.body.append(el,hover);const s=getComputedStyle(el);const out={link:s.color,linkHover:getComputedStyle(hover).color,radius:s.borderRadius,fontFamily:s.fontFamily,fontSize:s.fontSize,fontWeight:s.fontWeight,lineHeight:s.lineHeight};el.remove();hover.remove();return out;});
     const plain=page.locator('#plain');
@@ -94,6 +102,9 @@ try {
     assert.equal(await loading.getAttribute('aria-busy'),'true',`${theme}: loading semantics`);
     assert.equal(await loading.isDisabled(),true,`${theme}: loading button must be inoperable`);
     assert.ok(parseFloat(await loading.locator('.ef-btn__spin').evaluate(el=>getComputedStyle(el).animationDuration))<=.01,`${theme}: reduced motion must collapse spinner animation`);
+    const overflow=await page.evaluate(()=>document.documentElement.scrollWidth-document.documentElement.clientWidth);
+    assert.ok(overflow<=1,`${theme}/${viewport.name}: button fixture overflows horizontally by ${overflow}px`);
+    if(shots) await page.screenshot({path:path.join(shots,`buttons-${viewport.name}-${theme}.png`),fullPage:true,animations:'disabled'});
   }
-  console.log(`button cascade: ${checks} theme/variant/state comparisons passed; plain links preserved`);
+  console.log(`button cascade: ${checks} breakpoint/theme/variant/state comparisons passed; plain links preserved; ${shots ? `${viewports.length * 2} visual receipts captured` : 'visual capture disabled'}`);
 } finally { await browser.close(); }
