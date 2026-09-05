@@ -35,6 +35,11 @@
           "target": "tokens/fonts.css"
         },
         {
+          "path": "tokens/layers.css",
+          "type": "registry:file",
+          "target": "tokens/layers.css"
+        },
+        {
           "path": "tokens/spacing.css",
           "type": "registry:file",
           "target": "tokens/spacing.css"

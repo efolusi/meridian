@@ -1,0 +1,6 @@
+/* Meridian's framework integration contract.
+   Load styles.css before Tailwind so this declaration is the first occurrence
+   of these layer names. Preflight/base stays below Meridian components, while
+   component and utility layers stay available above Meridian for deliberate
+   product composition. Unlayered product CSS still wins by CSS definition. */
+@layer theme,base,tw-preflight,meridian,components,utilities;
