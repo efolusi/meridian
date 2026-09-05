@@ -2,6 +2,12 @@
 
 ## Unreleased
 
+## 1.21.5 — 2026-09-05
+
+- **Meridian Guard now enforces visual-system contracts in authored CSS.** Raw interface radii, shadows, font families, font sizes, and motion above 240ms are reported so consumer applications cannot silently drift from the shared hierarchy.
+- **Button chrome stays owned by Meridian variants.** Static consumer classes and inline styles that repaint or reshape `Button` and `IconButton` are rejected, preventing low-contrast hover states and inconsistent radii.
+- **Guard understands the complete umbrella export shape.** Lowercase helpers such as `buttonVariants` and `toast` are accepted without weakening unknown-component checks.
+
 ## 1.21.4 — 2026-09-04
 
 - Anchor buttons retain their variant foreground on hover and focus; base link rules now respect the Meridian cascade layer. Ordinary links preserve their default styling.
