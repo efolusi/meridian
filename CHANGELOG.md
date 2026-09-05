@@ -2,6 +2,12 @@
 
 ## Unreleased
 
+## 1.21.6 — 2026-09-05
+
+- **Links and buttons now share a cascade-safe interaction contract.** Ordinary links use `--text-link-hover`, while every native and anchor Button variant retains its intended foreground through hover, focus, active, disabled, and loading states in light and dark themes.
+- **Disabled and loading semantics are consistent across element types.** Native disabled buttons, `aria-disabled` anchors, and `data-disabled` controls suppress interaction uniformly; loading Buttons expose `aria-busy` and an assistive-technology-safe spinner.
+- **Browser coverage now guards the complete Button contract.** Chromium checks all eight variants across both themes and interaction states, including keyboard focus, contrast, tokenized geometry, and reduced motion.
+
 ## 1.21.5 — 2026-09-05
 
 - **Meridian Guard now enforces visual-system contracts in authored CSS.** Raw interface radii, shadows, font families, font sizes, and motion above 240ms are reported so consumer applications cannot silently drift from the shared hierarchy.
