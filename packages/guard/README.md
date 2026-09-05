@@ -57,6 +57,12 @@ not shipped interface source.
 | `MDG004` | warning | Deprecated props migrate to their canonical replacement. |
 | `MDG005` | error | Required accessible names and dialog titles are present. |
 | `MDG006` | error | Referenced Meridian radius tokens must exist in the generated token contract. |
+| `MDG007` | warning | Non-zero interface radii use the shared Meridian radius hierarchy. |
+| `MDG008` | warning | Box shadows use the warm Meridian elevation scale. |
+| `MDG009` | warning | Interface animation and transition durations do not exceed 240 ms. |
+| `MDG010` | warning | Font families use the Figtree, Bricolage, or JetBrains role tokens. |
+| `MDG011` | warning | Font sizes use Meridian's named type scale. |
+| `MDG012` | error | Consumer classes/styles do not repaint or reshape Button and IconButton chrome. |
 
 Dynamic icon names cannot be proven statically and are left to the application.
 Guard currently validates Meridian imports from the umbrella package and its
@@ -101,7 +107,7 @@ or `guard()` so they receive the packaged Meridian contract automatically.
 
 ## Scope and troubleshooting
 
-- Guard parses JavaScript, JSX, TypeScript, TSX, MJS, and CJS. It is a focused
+- Guard parses JavaScript, JSX, TypeScript, TSX, MJS, CJS, and authored CSS. It is a focused
   Meridian contract checker, not a replacement for ESLint or TypeScript.
 - Dynamic component and icon names cannot be proven statically and are skipped.
 - Test/spec files, fixtures, generated output, dependencies, minified files, and

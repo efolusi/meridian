@@ -4,7 +4,7 @@ import path from 'node:path';
 import { spawnSync } from 'node:child_process';
 import { afterEach, describe, expect, it } from 'vitest';
 import contracts from '../packages/guard/src/generated/meridian-rules.json';
-import { guard, scanSource } from '../packages/guard/src/scanner.mjs';
+import { guard, scanSource, scanStyleSource } from '../packages/guard/src/scanner.mjs';
 import { formatJson, formatPretty } from '../packages/guard/src/reporter.mjs';
 
 const temporaryDirectories = [];
@@ -37,6 +37,15 @@ describe('Meridian Guard rules', () => {
       import * as Meridian from '@efolusi/meridian';
       export const Example = () => <Meridian.Imaginary />;
     `)).toEqual(['MDG001']);
+  });
+
+  it('allows lowercase utility exports from the Meridian package', () => {
+    const diagnostics = scanSource(`
+      import { buttonVariants, toast } from '@efolusi/meridian';
+      export const classes = buttonVariants({ variant: 'primary' });
+      export const notify = () => toast('Saved');
+    `, '/app/src/helpers.jsx', contracts);
+    expect(diagnostics).toEqual([]);
   });
 
   it('supports documented deep imports and reports parse failures', () => {
@@ -79,6 +88,17 @@ describe('Meridian Guard rules', () => {
     `)).toEqual(['MDG005', 'MDG005', 'MDG005', 'MDG005']);
   });
 
+  it('rejects consumer paint and radius overrides on Meridian actions', () => {
+    expect(rules(`
+      import { Button, IconButton } from '@efolusi/meridian';
+      export const Example = () => <><Button className="grow bg-red-500 rounded-xl">Delete</Button><IconButton icon="copy" label="Copy" style={{ color: 'var(--text-link)' }} /></>;
+    `)).toEqual(['MDG012', 'MDG012']);
+    expect(rules(`
+      import { Button } from '@efolusi/meridian';
+      export const Example = () => <Button className="w-full justify-between">Save</Button>;
+    `)).toEqual([]);
+  });
+
   it('accepts compositional Dialog titles', () => {
     expect(rules(`
       import { Dialog, DialogContent, DialogHeader, DialogTitle } from '@efolusi/meridian';
@@ -95,6 +115,16 @@ describe('Meridian Guard rules', () => {
 });
 
 describe('Meridian Guard scanning and reporting', () => {
+  it('checks CSS radius, elevation, motion and type hierarchy', () => {
+    const diagnostics = scanStyleSource(`
+      .good { border-radius: var(--radius-md); box-shadow: var(--shadow-lg); font-family: var(--font-sans); font-size: var(--text-md); transition: transform var(--dur-slow) var(--ease-out); }
+      .bad { color: #fff; border-radius: 13px; box-shadow: 0 8px 20px rgba(0,0,0,.2); font-family: Inter, sans-serif; font-size: 15px; animation: enter 480ms ease; }
+      .square { border-radius: 0; box-shadow: none; }
+    `, '/app/src/styles.css', contracts);
+    expect(diagnostics.map(item => item.ruleId)).toEqual(['MDG003', 'MDG007', 'MDG008', 'MDG010', 'MDG011', 'MDG009']);
+    expect(diagnostics.every(item => item.line === 3)).toBe(true);
+  });
+
   it('scans supported files recursively and ignores build directories', async () => {
     const directory = await fs.mkdtemp(path.join(os.tmpdir(), 'meridian-guard-'));
     temporaryDirectories.push(directory);
@@ -105,6 +135,7 @@ describe('Meridian Guard scanning and reporting', () => {
     await fs.mkdir(path.join(directory, '__tests__'));
     await fs.writeFile(path.join(directory, 'src', 'valid.tsx'), "import { Icon } from '@efolusi/meridian'; export const A = () => <Icon name='check' />;");
     await fs.writeFile(path.join(directory, 'src', 'invalid.jsx'), "import { Icon } from '@efolusi/meridian'; export const B = () => <Icon name='missing-icon' />;");
+    await fs.writeFile(path.join(directory, 'src', 'styles.css'), '.panel { border-radius: 13px; }');
     await fs.writeFile(path.join(directory, 'dist', 'ignored.jsx'), 'this is not valid jsx {{{');
     await fs.writeFile(path.join(directory, '.next', 'ignored.js'), 'this is not valid jsx {{{');
     await fs.writeFile(path.join(directory, '.turbo', 'ignored.ts'), 'this is not valid jsx {{{');
@@ -113,8 +144,8 @@ describe('Meridian Guard scanning and reporting', () => {
     await fs.writeFile(path.join(directory, 'vendor.min.mjs'), 'this is not valid jsx {{{');
     await fs.symlink(path.join(directory, 'does-not-exist'), path.join(directory, 'broken-link'));
     const result = await guard([directory]);
-    expect(result.filesScanned).toBe(2);
-    expect(result.diagnostics.map(item => item.ruleId)).toEqual(['MDG002']);
+    expect(result.filesScanned).toBe(3);
+    expect(result.diagnostics.map(item => item.ruleId)).toEqual(['MDG002', 'MDG007']);
   });
 
   it('emits stable human and machine-readable summaries', () => {
@@ -150,7 +181,7 @@ describe('Meridian Guard scanning and reporting', () => {
 
     const empty = spawnSync(process.execPath, [binary, directory], { encoding: 'utf8' });
     expect(empty.status).toBe(2);
-    expect(empty.stderr).toContain('no supported JavaScript or TypeScript source files found');
+    expect(empty.stderr).toContain('no supported JavaScript, TypeScript, or CSS source files found');
 
     const allowed = spawnSync(process.execPath, [binary, directory, '--allow-empty', '--format', 'json'], { encoding: 'utf8' });
     expect(allowed.status).toBe(0);
