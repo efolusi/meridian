@@ -34,4 +34,34 @@ export const RULES = Object.freeze({
     severity: 'error',
     description: 'Referenced Meridian design token does not exist.',
   },
+  rawRadius: {
+    id: 'MDG007',
+    severity: 'warning',
+    description: 'Non-zero radii use Meridian radius tokens.',
+  },
+  rawShadow: {
+    id: 'MDG008',
+    severity: 'warning',
+    description: 'Elevation uses Meridian shadow tokens.',
+  },
+  slowMotion: {
+    id: 'MDG009',
+    severity: 'warning',
+    description: 'Interface motion stays within Meridian\'s 240ms budget.',
+  },
+  rawFontFamily: {
+    id: 'MDG010',
+    severity: 'warning',
+    description: 'Typography uses Meridian font-family tokens.',
+  },
+  rawTypeSize: {
+    id: 'MDG011',
+    severity: 'warning',
+    description: 'Typography uses the Meridian type scale.',
+  },
+  componentChromeOverride: {
+    id: 'MDG012',
+    severity: 'error',
+    description: 'Consumer classes and inline styles must not override Meridian component paint or shape.',
+  },
 });
