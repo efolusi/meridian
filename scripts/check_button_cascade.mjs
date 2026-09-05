@@ -75,8 +75,10 @@ try {
     assert.equal(primaryStyle.gap,'8px',`${theme}: button gap must stay on the 4px spacing grid`);
     assert.ok(primaryStyle.transitionDuration.split(',').every(value=>parseFloat(value)<=.01),`${theme}: reduced motion must collapse button transitions`);
     await page.keyboard.press('Tab');
+    await page.waitForTimeout(30);
     const anchorFocus=await page.locator('#a-primary').evaluate(el=>getComputedStyle(el).boxShadow);
     await page.keyboard.press('Tab');
+    await page.waitForTimeout(30);
     const nativeFocus=await page.locator('#b-primary').evaluate(el=>getComputedStyle(el).boxShadow);
     assert.equal(anchorFocus,nativeFocus,`${theme}: keyboard focus ring must match for anchor/native buttons`);
     assert.notEqual(anchorFocus,'none',`${theme}: keyboard focus ring must remain visible`);
