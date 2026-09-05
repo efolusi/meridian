@@ -19,7 +19,7 @@ try {
   const variants=['primary','secondary','ghost','danger','brand','outline','destructive','link'];
   let checks=0;
   for(const theme of ['light','dark']) {
-    const fixture=`<!doctype html><html data-theme="${theme}"><head><style>${tokens}\n@layer meridian{${css}}</style></head><body>${variants.map(v=>`<a id="a-${v}" href="#" class="ef-btn ef-btn--${v} ef-btn--md">Action</a><button id="b-${v}" class="ef-btn ef-btn--${v} ef-btn--md">Action</button>`).join('')}<a id="plain" href="#">Plain link</a></body></html>`;
+    const fixture=`<!doctype html><html data-theme="${theme}"><head><style>${tokens}\n@layer meridian{${css}}</style></head><body>${variants.map(v=>`<a id="a-${v}" href="#" class="ef-btn ef-btn--${v} ef-btn--md">Action</a><button id="b-${v}" class="ef-btn ef-btn--${v} ef-btn--md">Action</button><a id="ad-${v}" role="button" aria-disabled="true" class="ef-btn ef-btn--${v} ef-btn--md">Disabled</a><button id="bd-${v}" disabled class="ef-btn ef-btn--${v} ef-btn--md">Disabled</button>`).join('')}<button id="loading" disabled aria-busy="true" data-loading class="ef-btn ef-btn--primary ef-btn--md"><span class="ef-btn__spin" aria-hidden="true">⟳</span>Loading</button><a id="plain" href="#">Plain link</a></body></html>`;
     for(const variant of variants) for(const state of ['normal','hover','focus','active']) {
       const observed=[];
       for(const prefix of ['a','b']) {
@@ -46,7 +46,7 @@ try {
         await page.waitForTimeout(30);
         try {
           if(state==='active') assert.equal(await target.evaluate(el=>el.matches(':active')),true,`${theme}/${variant}/${prefix}: pointer must actually activate the tested control; ${JSON.stringify(await page.evaluate(()=>window.__pointerEvidence))}`);
-          observed.push(await target.evaluate(el=>{const s=getComputedStyle(el);return Object.fromEntries(['color','backgroundColor','borderRadius','fontSize','padding','height'].map(k=>[k,s[k]]));}));
+          observed.push(await target.evaluate(el=>{const s=getComputedStyle(el);return Object.fromEntries(['color','backgroundColor','borderRadius','fontFamily','fontSize','fontWeight','lineHeight','gap','padding','height'].map(k=>[k,s[k]]));}));
         } finally {
           if(state==='active') await page.mouse.up();
         }
@@ -60,7 +60,40 @@ try {
       }
       checks++;
     }
-    assert.equal(await page.locator('#plain').evaluate(el=>getComputedStyle(el).color),await page.evaluate(()=>{const el=document.createElement('span');el.style.color='var(--text-link)';document.body.append(el);const color=getComputedStyle(el).color;el.remove();return color;}));
+    await page?.close();
+    page=await browser.newPage({reducedMotion:'reduce'});
+    await page.setContent(fixture);
+    const expected=await page.evaluate(()=>{const el=document.createElement('span');el.style.cssText='color:var(--text-link);border-radius:var(--radius-sm);font-family:var(--font-sans);font-size:var(--text-md);font-weight:var(--weight-semibold);line-height:var(--leading-normal)';const hover=document.createElement('span');hover.style.color='var(--text-link-hover)';document.body.append(el,hover);const s=getComputedStyle(el);const out={link:s.color,linkHover:getComputedStyle(hover).color,radius:s.borderRadius,fontFamily:s.fontFamily,fontSize:s.fontSize,fontWeight:s.fontWeight,lineHeight:s.lineHeight};el.remove();hover.remove();return out;});
+    const plain=page.locator('#plain');
+    assert.equal(await plain.evaluate(el=>getComputedStyle(el).color),expected.link,`${theme}: plain link token`);
+    await plain.hover();
+    await page.waitForTimeout(30);
+    assert.equal(await plain.evaluate(el=>getComputedStyle(el).color),expected.linkHover,`${theme}: plain link hover token`);
+    const primary=page.locator('#b-primary');
+    const primaryStyle=await primary.evaluate(el=>{const s=getComputedStyle(el);return {radius:s.borderRadius,fontFamily:s.fontFamily,fontSize:s.fontSize,fontWeight:s.fontWeight,lineHeight:s.lineHeight,gap:s.gap,transitionDuration:s.transitionDuration};});
+    for(const key of ['radius','fontFamily','fontSize','fontWeight','lineHeight']) assert.equal(primaryStyle[key],expected[key],`${theme}: button ${key} must resolve Meridian token`);
+    assert.equal(primaryStyle.gap,'8px',`${theme}: button gap must stay on the 4px spacing grid`);
+    assert.ok(primaryStyle.transitionDuration.split(',').every(value=>parseFloat(value)<=.01),`${theme}: reduced motion must collapse button transitions`);
+    await page.keyboard.press('Tab');
+    await page.waitForTimeout(30);
+    const anchorFocus=await page.locator('#a-primary').evaluate(el=>getComputedStyle(el).boxShadow);
+    await page.keyboard.press('Tab');
+    await page.waitForTimeout(30);
+    const nativeFocus=await page.locator('#b-primary').evaluate(el=>getComputedStyle(el).boxShadow);
+    assert.equal(anchorFocus,nativeFocus,`${theme}: keyboard focus ring must match for anchor/native buttons`);
+    assert.notEqual(anchorFocus,'none',`${theme}: keyboard focus ring must remain visible`);
+    for(const variant of variants) {
+      const anchor=page.locator(`#ad-${variant}`);
+      const native=page.locator(`#bd-${variant}`);
+      const pair=await Promise.all([anchor,native].map(target=>target.evaluate(el=>{const s=getComputedStyle(el);return {color:s.color,backgroundColor:s.backgroundColor,opacity:s.opacity,cursor:s.cursor,pointerEvents:s.pointerEvents,borderRadius:s.borderRadius,fontSize:s.fontSize,padding:s.padding,height:s.height};})));
+      assert.deepEqual(pair[0],pair[1],`${theme}/${variant}: disabled anchor/native mismatch`);
+      assert.equal(pair[0].pointerEvents,'none',`${theme}/${variant}: disabled anchor must reject pointer activation`);
+      assert.equal(await anchor.getAttribute('href'),null,`${theme}/${variant}: disabled anchor fixture must not remain navigable`);
+    }
+    const loading=page.locator('#loading');
+    assert.equal(await loading.getAttribute('aria-busy'),'true',`${theme}: loading semantics`);
+    assert.equal(await loading.isDisabled(),true,`${theme}: loading button must be inoperable`);
+    assert.ok(parseFloat(await loading.locator('.ef-btn__spin').evaluate(el=>getComputedStyle(el).animationDuration))<=.01,`${theme}: reduced motion must collapse spinner animation`);
   }
   console.log(`button cascade: ${checks} theme/variant/state comparisons passed; plain links preserved`);
 } finally { await browser.close(); }
