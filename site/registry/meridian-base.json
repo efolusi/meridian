@@ -8,7 +8,7 @@
       "path": "styles.css",
       "type": "registry:file",
       "target": "styles.css",
-      "content": "/* Relative specifiers are required, not cosmetic. A bare \"tokens/x.css\" is a\n   valid relative URL to a browser, so the CDN path never noticed, but css-loader\n   and other bundler CSS pipelines read a non-relative specifier as a module\n   request into node_modules and fail to resolve it. \"./\" works everywhere. */\n@import \"./tokens/fonts.css\";\n@import \"./tokens/colors.css\";\n@import \"./tokens/typography.css\";\n@import \"./tokens/spacing.css\";\n@import \"./tokens/effects.css\";\n@import \"./tokens/base.css\";\n"
+      "content": "/* Relative specifiers are required, not cosmetic. A bare \"tokens/x.css\" is a\n   valid relative URL to a browser, so the CDN path never noticed, but css-loader\n   and other bundler CSS pipelines read a non-relative specifier as a module\n   request into node_modules and fail to resolve it. \"./\" works everywhere. */\n@import \"./tokens/layers.css\";\n@import \"./tokens/fonts.css\";\n@import \"./tokens/colors.css\";\n@import \"./tokens/typography.css\";\n@import \"./tokens/spacing.css\";\n@import \"./tokens/effects.css\";\n@import \"./tokens/base.css\";\n"
     },
     {
       "path": "tokens/base.css",
@@ -33,6 +33,12 @@
       "type": "registry:file",
       "target": "tokens/fonts.css",
       "content": "@font-face{font-family:'Bricolage Grotesque';src:url('../assets/fonts/BricolageGrotesque-Variable.woff2') format('woff2-variations');font-weight:200 800;font-style:normal;font-display:swap}\n@font-face{font-family:'Figtree';src:url('../assets/fonts/Figtree-Variable.woff2') format('woff2-variations');font-weight:300 900;font-style:normal;font-display:swap}\n@font-face{font-family:'Figtree';src:url('../assets/fonts/Figtree-Italic-Variable.woff2') format('woff2-variations');font-weight:300 900;font-style:italic;font-display:swap}\n@font-face{font-family:'JetBrains Mono';src:url('../assets/fonts/JetBrainsMono-Variable.woff2') format('woff2-variations');font-weight:100 800;font-style:normal;font-display:swap}\n@font-face{font-family:'JetBrains Mono';src:url('../assets/fonts/JetBrainsMono-Italic-Variable.woff2') format('woff2-variations');font-weight:100 800;font-style:italic;font-display:swap}\n"
+    },
+    {
+      "path": "tokens/layers.css",
+      "type": "registry:file",
+      "target": "tokens/layers.css",
+      "content": "/* Meridian's framework integration contract.\n   Load styles.css before Tailwind so this declaration is the first occurrence\n   of these layer names. Preflight/base stays below Meridian components, while\n   component and utility layers stay available above Meridian for deliberate\n   product composition. Unlayered product CSS still wins by CSS definition. */\n@layer theme,base,tw-preflight,meridian,components,utilities;\n"
     },
     {
       "path": "tokens/spacing.css",

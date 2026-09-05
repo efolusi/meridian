@@ -6,7 +6,7 @@ import path from 'node:path';
 import { contrast } from './contrast.mjs';
 const { chromium } = await import(process.argv[2] || 'playwright');
 const root = new URL('../', import.meta.url);
-const names = ['colors', 'typography', 'spacing', 'effects', 'base'];
+const names = ['layers', 'colors', 'typography', 'spacing', 'effects', 'base'];
 const tokens = (await Promise.all(names.map(n=>readFile(new URL(`tokens/${n}.css`,root),'utf8')))).join('\n');
 const source = await readFile(new URL('components/forms/Button.jsx',root),'utf8');
 const css = source.match(/const CSS = `([\s\S]*?)`;/)?.[1];
@@ -27,7 +27,8 @@ try {
   let checks=0;
   for(const viewport of viewports) for(const theme of ['light','dark']) {
     const receiptCss=`body{margin:0;padding:var(--space-6);background:var(--surface-page);color:var(--text-primary);font-family:var(--font-sans)}h1{margin:0 0 var(--space-6);font-family:var(--font-display);font-size:var(--text-2xl)}.matrix{display:grid;gap:var(--space-4);max-width:820px}.row{display:grid;grid-template-columns:96px repeat(4,max-content);gap:var(--space-2);align-items:center}.label{font-size:var(--text-sm);font-weight:var(--weight-semibold)}.extras{display:flex;align-items:center;gap:var(--space-4);margin-top:var(--space-6)}@media(max-width:600px){body{padding:var(--space-4)}.row{grid-template-columns:1fr 1fr}.label{grid-column:1/-1}.row .ef-btn{width:100%}.extras{align-items:flex-start;flex-direction:column}}`;
-    const fixture=`<!doctype html><html data-theme="${theme}"><head><style>${tokens}\n@layer meridian{${css}}\n${receiptCss}</style></head><body><h1>Button interaction contract</h1><main class="matrix">${variants.map(v=>`<div class="row"><span class="label">${v}</span><a id="a-${v}" href="#" class="ef-btn ef-btn--${v} ef-btn--md">Anchor</a><button id="b-${v}" class="ef-btn ef-btn--${v} ef-btn--md">Native</button><a id="ad-${v}" role="button" aria-disabled="true" class="ef-btn ef-btn--${v} ef-btn--md">Disabled</a><button id="bd-${v}" disabled class="ef-btn ef-btn--${v} ef-btn--md">Disabled</button></div>`).join('')}</main><div class="extras"><button id="loading" disabled aria-busy="true" data-loading class="ef-btn ef-btn--primary ef-btn--md"><span class="ef-btn__spin" aria-hidden="true">⟳</span>Loading</button><a id="plain" href="#">Plain link</a></div></body></html>`;
+    const frameworkCss=`@layer base{*{border:0 solid currentColor;background-color:transparent;color:inherit;font:inherit;padding:0}}@layer utilities{.framework-radius{border-radius:var(--radius-lg)}}`;
+    const fixture=`<!doctype html><html data-theme="${theme}"><head><style>${tokens}\n${frameworkCss}\n@layer meridian{${css}}\n${receiptCss}</style></head><body><h1>Button interaction contract</h1><main class="matrix">${variants.map(v=>`<div class="row"><span class="label">${v}</span><a id="a-${v}" href="#" class="ef-btn ef-btn--${v} ef-btn--md">Anchor</a><button id="b-${v}" class="ef-btn ef-btn--${v} ef-btn--md">Native</button><a id="ad-${v}" role="button" aria-disabled="true" class="ef-btn ef-btn--${v} ef-btn--md">Disabled</a><button id="bd-${v}" disabled class="ef-btn ef-btn--${v} ef-btn--md">Disabled</button></div>`).join('')}</main><div class="extras"><button id="loading" disabled aria-busy="true" data-loading class="ef-btn ef-btn--primary ef-btn--md"><span class="ef-btn__spin" aria-hidden="true">⟳</span>Loading</button><button id="utility" class="ef-btn ef-btn--primary ef-btn--md framework-radius">Utility override</button><a id="plain" href="#">Plain link</a></div></body></html>`;
     for(const variant of variants) for(const state of ['normal','hover','focus','active']) {
       const observed=[];
       for(const prefix of ['a','b']) {
@@ -90,6 +91,8 @@ try {
     const nativeFocus=await page.locator('#b-primary').evaluate(el=>getComputedStyle(el).boxShadow);
     assert.equal(anchorFocus,nativeFocus,`${theme}: keyboard focus ring must match for anchor/native buttons`);
     assert.notEqual(anchorFocus,'none',`${theme}: keyboard focus ring must remain visible`);
+    const utilityRadius=await page.locator('#utility').evaluate(el=>getComputedStyle(el).borderRadius);
+    assert.equal(utilityRadius,'12px',`${theme}: framework utilities must remain above Meridian components`);
     for(const variant of variants) {
       const anchor=page.locator(`#ad-${variant}`);
       const native=page.locator(`#bd-${variant}`);
