@@ -39,6 +39,15 @@ describe('Meridian Guard rules', () => {
     `)).toEqual(['MDG001']);
   });
 
+  it('allows lowercase utility exports from the Meridian package', () => {
+    const diagnostics = scanSource(`
+      import { buttonVariants, toast } from '@efolusi/meridian';
+      export const classes = buttonVariants({ variant: 'primary' });
+      export const notify = () => toast('Saved');
+    `, '/app/src/helpers.jsx', contracts);
+    expect(diagnostics).toEqual([]);
+  });
+
   it('supports documented deep imports and reports parse failures', () => {
     expect(rules(`
       import { Button } from '@efolusi/meridian/forms/Button.js';
