@@ -17,12 +17,12 @@ const nginx = readFileSync('nginx/dev-meridian.efolusi.com.conf', 'utf8')
 const runnerPrerequisites = readFileSync('nginx/dev-meridian-runner-prerequisites.md', 'utf8')
 
 describe('Meridian development static deployment', () => {
-  it('is push-only dev and uses only the dedicated Meridian runner', () => {
+  it('is push-only dev and runs on the shared development runner', () => {
     expect(workflow).toContain('branches: [dev]')
     expect(workflow).not.toContain('branches: [main]')
     expect(workflow).not.toContain('pull_request:')
-    expect(workflow).toContain('runs-on: [self-hosted, Linux, X64, meridian-deploy]')
-    expect(workflow).not.toContain('runs-on: [self-hosted, Linux, X64, efolusi]')
+    expect(workflow).toContain('runs-on: [self-hosted, Linux, X64, efolusi-dev]')
+    expect(workflow).not.toContain('efolusi-prod')
     expect(workflow).toContain(
       'actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803 # v6',
     )
@@ -39,7 +39,7 @@ describe('Meridian development static deployment', () => {
     expect(deploy).toContain('release="$releases_root/$release_sha"')
     expect(deploy).toContain('meridian-release.txt')
     expect(deploy).toContain('mv -Tf "$next" "$deploy_root/current"')
-    expect(deploy).toContain('runner_user="meridian-deploy"')
+    expect(deploy).toContain('runner_user="deploy"')
   })
 
   it('rolls back only the release symlink when validation or probes fail', () => {
@@ -123,15 +123,11 @@ rollback 68`,
   })
 
   it('documents the exact one-time host ownership and environment boundary', () => {
-    expect(runnerPrerequisites).toContain('`meridian-deploy:meridian-deploy` mode `0755`')
+    expect(runnerPrerequisites).toContain('`deploy:deploy` mode `0755`')
     expect(runnerPrerequisites).toContain('`root:root` mode `0644`')
     expect(runnerPrerequisites).toContain('runner `2.327.1` or newer')
-    expect(runnerPrerequisites).toContain('No `sudo` permission')
-    expect(runnerPrerequisites).toContain('No Docker socket')
-    expect(runnerPrerequisites).toContain('No SSH private key')
-    expect(runnerPrerequisites).toContain(
-      'No database, object-storage, queue, or application secrets',
-    )
+    expect(runnerPrerequisites).toContain('`efolusi-dev`')
+    expect(runnerPrerequisites).toContain('No repository or environment secrets')
   })
 
   it('serves an exact static host and does not invent an application runtime', () => {

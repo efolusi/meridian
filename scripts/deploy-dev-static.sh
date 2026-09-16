@@ -8,7 +8,7 @@ deploy_root="/var/www/efolusi/meridian-dev"
 releases_root="${deploy_root}/releases"
 available="/etc/nginx/sites-available/dev-meridian.efolusi.com"
 enabled="/etc/nginx/sites-enabled/dev-meridian.efolusi.com"
-runner_user="meridian-deploy"
+runner_user="deploy"
 
 [[ $# -eq 1 && "$1" =~ ^[0-9a-f]{40}$ ]] || {
   echo "usage: $0 <40-character-lowercase-git-sha>" >&2

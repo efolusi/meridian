@@ -7,11 +7,11 @@ const nginx = readFileSync('nginx/meridian.efolusi.com.conf', 'utf8')
 const prerequisites = readFileSync('nginx/meridian-prod-runner-prerequisites.md', 'utf8')
 
 describe('Meridian production static deployment', () => {
-  it('is main-only and binds the exact push SHA on the dedicated runner', () => {
+  it('is main-only and binds the exact push SHA on the production runner', () => {
     expect(workflow).toContain('branches: [main]')
     expect(workflow).not.toContain('branches: [dev]')
     expect(workflow).not.toContain('pull_request:')
-    expect(workflow).toContain('runs-on: [self-hosted, Linux, X64, meridian-deploy]')
+    expect(workflow).toContain('runs-on: [self-hosted, Linux, X64, efolusi-prod]')
     expect(workflow).toContain('ref: ${{ github.sha }}')
     expect(workflow).toContain('[[ "$GITHUB_REF" == "refs/heads/main" ]]')
     expect(workflow).toContain('[[ "$(git rev-parse HEAD)" == "$MERIDIAN_RELEASE_SHA" ]]')
@@ -95,7 +95,7 @@ describe('Meridian production static deployment', () => {
     expect(prerequisites).toContain('`sudo -n /usr/sbin/nginx -t`')
     expect(prerequisites).toContain('Do not grant')
     expect(prerequisites).toContain('Nginx reload/restart')
-    expect(prerequisites).toContain('No Docker socket')
+    expect(prerequisites).toContain('`efolusi-prod`')
     expect(prerequisites).toContain('No repository/environment secret')
   })
 })
