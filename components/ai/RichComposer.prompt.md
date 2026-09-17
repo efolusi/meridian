@@ -1,6 +1,6 @@
 # RichComposer
 
-Composer with @-mention chips and /-commands — typing a trigger opens a filtered list above the composer (arrows + Enter, groups supported); mentions insert as atomic chips that delete as one unit; Enter submits, Shift+Enter breaks.
+Composer with @-mention chips and /-commands. Typing a trigger opens a filtered list above the composer (arrows + Enter, groups supported); mentions insert as atomic chips that delete as one unit; Enter submits, Shift+Enter breaks.
 
 ```jsx
 <RichComposer hint="@ files · / commands"

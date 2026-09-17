@@ -2,7 +2,7 @@
   "name": "player",
   "type": "registry:ui",
   "title": "Player",
-  "description": "Audio player \u2014 seekable waveform (drag or click), \u00b110s skip, play/pause, mute, tabular timestamps. Expose a ref for `jumpTo` and pair with Transcript via `onTimeChange`.",
+  "description": "Audio player with seekable waveform (drag or click), \u00b110s skip, play/pause, mute, tabular timestamps. Expose a ref for `jumpTo` and pair with Transcript via `onTimeChange`.",
   "dependencies": [
     "react"
   ],
@@ -25,7 +25,7 @@
     {
       "path": "components/ai/Player.prompt.md",
       "type": "registry:component",
-      "content": "# Player\n\nAudio player \u2014 seekable waveform (drag or click), \u00b110s skip, play/pause, mute, tabular timestamps. Expose a ref for `jumpTo` and pair with Transcript via `onTimeChange`.\n\n```jsx\nconst ref = React.useRef(null);\n<Player ref={ref} src=\"/call.mp3\" title=\"Call with Voit\" meta=\"12:40\" onTimeChange={setT} />\n```\n"
+      "content": "# Player\n\nAudio player with seekable waveform (drag or click), \u00b110s skip, play/pause, mute, tabular timestamps. Expose a ref for `jumpTo` and pair with Transcript via `onTimeChange`.\n\n```jsx\nconst ref = React.useRef(null);\n<Player ref={ref} src=\"/call.mp3\" title=\"Call with Voit\" meta=\"12:40\" onTimeChange={setT} />\n```\n"
     }
   ],
   "categories": [

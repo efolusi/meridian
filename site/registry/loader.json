@@ -2,7 +2,7 @@
   "name": "loader",
   "type": "registry:ui",
   "title": "Loader",
-  "description": "Text-treatment loading state (no spinner) \u2014 `pulse` breathes opacity, `shimmer` sweeps a highlight through the label; optional staggered dots.",
+  "description": "Text-treatment loading state (no spinner). `pulse` breathes opacity, `shimmer` sweeps a highlight through the label; optional staggered dots.",
   "dependencies": [
     "react"
   ],
@@ -24,7 +24,7 @@
     {
       "path": "components/feedback/Loader.prompt.md",
       "type": "registry:component",
-      "content": "# Loader\n\nText-treatment loading state (no spinner) \u2014 `pulse` breathes opacity, `shimmer` sweeps a highlight through the label; optional staggered dots.\n\n```jsx\n<Loader variant=\"shimmer\">Searching the workspace</Loader>\n<Loader dots>Thinking</Loader>\n```\n"
+      "content": "# Loader\n\nText-treatment loading state (no spinner). `pulse` breathes opacity, `shimmer` sweeps a highlight through the label; optional staggered dots.\n\n```jsx\n<Loader variant=\"shimmer\">Searching the workspace</Loader>\n<Loader dots>Thinking</Loader>\n```\n"
     }
   ],
   "categories": [

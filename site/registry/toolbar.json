@@ -2,7 +2,7 @@
   "name": "toolbar",
   "type": "registry:ui",
   "title": "Toolbar",
-  "description": "Grouped icon actions on a hairline chip \u2014 editors, chart controls, bulk bars. `value` marks active (ink).",
+  "description": "Grouped icon actions on a hairline chip for editors, chart controls, and bulk bars. `value` marks active (ink).",
   "dependencies": [
     "react"
   ],
@@ -26,7 +26,7 @@
     {
       "path": "components/display/Toolbar.prompt.md",
       "type": "registry:component",
-      "content": "Grouped icon actions on a hairline chip \u2014 editors, chart controls, bulk bars. `value` marks active (ink).\n\n```jsx\n<Toolbar label=\"View\" value={view} onChange={setView} items={[\n  { id: 'list', icon: 'menu', tip: 'List' },\n  { id: 'board', icon: 'layout-dashboard', tip: 'Board' },\n  'separator',\n  { id: 'export', icon: 'download', tip: 'Export' },\n]} />\n```\n"
+      "content": "Grouped icon actions on a hairline chip for editors, chart controls, and bulk bars. `value` marks active (ink).\n\n```jsx\n<Toolbar label=\"View\" value={view} onChange={setView} items={[\n  { id: 'list', icon: 'menu', tip: 'List' },\n  { id: 'board', icon: 'layout-dashboard', tip: 'Board' },\n  'separator',\n  { id: 'export', icon: 'download', tip: 'Export' },\n]} />\n```\n"
     }
   ],
   "categories": [

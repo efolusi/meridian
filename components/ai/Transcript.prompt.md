@@ -1,6 +1,6 @@
 # Transcript
 
-Time-synced transcript — active row derives from `currentTime`, auto-scroll keeps it centered (toggleable), timestamps jump the player, optional word-level highlight via `words`.
+Time-synced transcript. The active row derives from `currentTime`, auto-scroll keeps it centered (toggleable), timestamps jump the player, optional word-level highlight via `words`.
 
 ```jsx
 <Transcript currentTime={t} onJump={s => player.current.jumpTo(s)} items={[

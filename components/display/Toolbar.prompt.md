@@ -1,4 +1,4 @@
-Grouped icon actions on a hairline chip — editors, chart controls, bulk bars. `value` marks active (ink).
+Grouped icon actions on a hairline chip for editors, chart controls, and bulk bars. `value` marks active (ink).
 
 ```jsx
 <Toolbar label="View" value={view} onChange={setView} items={[

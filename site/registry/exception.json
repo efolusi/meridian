@@ -2,7 +2,7 @@
   "name": "exception",
   "type": "registry:ui",
   "title": "Exception",
-  "description": "Runtime-error card \u2014 mono type chip + message, collapsible stack frames (active frame flagged, internal frames dimmed) and an optional source excerpt with the failing line highlighted.",
+  "description": "Runtime-error card: mono type chip + message, collapsible stack frames (active frame flagged, internal frames dimmed) and an optional source excerpt with the failing line highlighted.",
   "dependencies": [
     "react"
   ],
@@ -25,7 +25,7 @@
     {
       "path": "components/code/Exception.prompt.md",
       "type": "registry:component",
-      "content": "# Exception\n\nRuntime-error card \u2014 mono type chip + message, collapsible stack frames (active frame flagged, internal frames dimmed) and an optional source excerpt with the failing line highlighted.\n\n```jsx\n<Exception type=\"TypeError\" message=\"Cannot read properties of undefined (reading 'id')\" frames={[\n  { fn: 'getUser', loc: 'api/users.ts:32:11', active: true },\n  { fn: 'renderApp', loc: 'react-dom.js:118', internal: true },\n]} />\n```\n"
+      "content": "# Exception\n\nRuntime-error card: mono type chip + message, collapsible stack frames (active frame flagged, internal frames dimmed) and an optional source excerpt with the failing line highlighted.\n\n```jsx\n<Exception type=\"TypeError\" message=\"Cannot read properties of undefined (reading 'id')\" frames={[\n  { fn: 'getUser', loc: 'api/users.ts:32:11', active: true },\n  { fn: 'renderApp', loc: 'react-dom.js:118', internal: true },\n]} />\n```\n"
     }
   ],
   "categories": [

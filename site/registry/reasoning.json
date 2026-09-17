@@ -2,7 +2,7 @@
   "name": "reasoning",
   "type": "registry:ui",
   "title": "Reasoning",
-  "description": "Collapsible \"thinking\" block for model reasoning \u2014 pulsing brain glyph while streaming, then \"Thought for Ns\".",
+  "description": "Collapsible \"thinking\" block for model reasoning: pulsing brain glyph while streaming, then \"Thought for Ns\".",
   "dependencies": [
     "react"
   ],
@@ -25,7 +25,7 @@
     {
       "path": "components/ai/Reasoning.prompt.md",
       "type": "registry:component",
-      "content": "# Reasoning\n\nCollapsible \"thinking\" block for model reasoning \u2014 pulsing brain glyph while streaming, then \"Thought for Ns\".\n\n`<Reasoning streaming>Comparing nonstop fares\u2026</Reasoning>`\n`<Reasoning duration=\"4s\" defaultOpen={false}>\u2026full chain\u2026</Reasoning>`\n\nPlace above the assistant reply inside the message column. Keep collapsed by default when done \u2014 reasoning is a receipt, not the answer."
+      "content": "# Reasoning\n\nCollapsible \"thinking\" block for model reasoning: pulsing brain glyph while streaming, then \"Thought for Ns\".\n\n`<Reasoning streaming>Comparing nonstop fares\u2026</Reasoning>`\n`<Reasoning duration=\"4s\" defaultOpen={false}>\u2026full chain\u2026</Reasoning>`\n\nPlace above the assistant reply inside the message column. Keep collapsed by default when done; reasoning is a receipt, not the answer."
     }
   ],
   "categories": [

@@ -4,4 +4,4 @@ Standalone field label for custom controls that lack a built-in `label` prop. Pa
 
 `<Label htmlFor="region" required hint="Cannot change later">Region</Label>`
 
-Input, Select, etc. already render their own labels — do not double-label them.
+Input, Select, etc. already render their own labels, so do not double-label them.

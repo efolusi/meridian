@@ -2,7 +2,7 @@
   "name": "envlist",
   "type": "registry:ui",
   "title": "EnvList",
-  "description": "Environment variables card \u2014 secrets masked as \u2022\u2022\u2022\u2022\u2022\u2022\u2022\u2022 with a single reveal toggle in the header; per-row copy always copies the real value.",
+  "description": "Environment variables card with secrets masked as \u2022\u2022\u2022\u2022\u2022\u2022\u2022\u2022 and a single reveal toggle in the header; per-row copy always copies the real value.",
   "dependencies": [
     "react"
   ],
@@ -25,7 +25,7 @@
     {
       "path": "components/code/EnvList.prompt.md",
       "type": "registry:component",
-      "content": "# EnvList\n\nEnvironment variables card \u2014 secrets masked as \u2022\u2022\u2022\u2022\u2022\u2022\u2022\u2022 with a single reveal toggle in the header; per-row copy always copies the real value.\n\n```jsx\n<EnvList vars={[\n  { name: 'DATABASE_URL', value: 'postgres://\u2026', secret: true },\n  { name: 'NODE_ENV', value: 'production' },\n]} />\n```\n"
+      "content": "# EnvList\n\nEnvironment variables card with secrets masked as \u2022\u2022\u2022\u2022\u2022\u2022\u2022\u2022 and a single reveal toggle in the header; per-row copy always copies the real value.\n\n```jsx\n<EnvList vars={[\n  { name: 'DATABASE_URL', value: 'postgres://\u2026', secret: true },\n  { name: 'NODE_ENV', value: 'production' },\n]} />\n```\n"
     }
   ],
   "categories": [

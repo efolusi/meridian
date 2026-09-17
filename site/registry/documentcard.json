@@ -2,7 +2,7 @@
   "name": "documentcard",
   "type": "registry:ui",
   "title": "DocumentCard",
-  "description": "Inline document artifact \u2014 header with copy + expand, content clipped at `collapsedHeight` with a paper fade; measured height animates open.",
+  "description": "Inline document artifact: header with copy + expand, content clipped at `collapsedHeight` with a paper fade; measured height animates open.",
   "dependencies": [
     "react"
   ],
@@ -25,7 +25,7 @@
     {
       "path": "components/ai/DocumentCard.prompt.md",
       "type": "registry:component",
-      "content": "# DocumentCard\n\nInline document artifact \u2014 header with copy + expand, content clipped at `collapsedHeight` with a paper fade; measured height animates open.\n\n```jsx\n<DocumentCard title=\"Q3 launch brief\" meta=\"840 words\">\n  <h3>Summary</h3><p>\u2026long generated document\u2026</p>\n</DocumentCard>\n```\n"
+      "content": "# DocumentCard\n\nInline document artifact: header with copy + expand, content clipped at `collapsedHeight` with a paper fade; measured height animates open.\n\n```jsx\n<DocumentCard title=\"Q3 launch brief\" meta=\"840 words\">\n  <h3>Summary</h3><p>\u2026long generated document\u2026</p>\n</DocumentCard>\n```\n"
     }
   ],
   "categories": [

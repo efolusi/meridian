@@ -1,4 +1,4 @@
-Numbered progress rail — vertical for agent task logs, horizontal for wizards.
+Numbered progress rail: vertical for agent task logs, horizontal for wizards.
 
 ```jsx
 <Steps current={1} items={[

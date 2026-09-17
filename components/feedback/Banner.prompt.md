@@ -1,4 +1,4 @@
-Full-width strip above the app chrome — trials, incidents, announcements. One per view, max.
+Full-width strip above the app chrome for trials, incidents, and announcements. One per view, max.
 
 ```jsx
 <Banner tone="warning" icon="triangle-alert" action={<button className="ef-banner__action" onClick={billing}>Add card</button>} onDismiss={hide}>

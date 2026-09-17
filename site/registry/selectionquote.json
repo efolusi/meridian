@@ -2,7 +2,7 @@
   "name": "selectionquote",
   "type": "registry:ui",
   "title": "SelectionQuote",
-  "description": "Select-to-quote affordance \u2014 wrap message content; selecting text floats a small toolbar above the selection (flips below near the top, clamped to the container). Actions receive the selected text.",
+  "description": "Select-to-quote affordance. Wrap message content; selecting text floats a small toolbar above the selection (flips below near the top, clamped to the container). Actions receive the selected text.",
   "dependencies": [
     "react"
   ],
@@ -25,7 +25,7 @@
     {
       "path": "components/ai/SelectionQuote.prompt.md",
       "type": "registry:component",
-      "content": "# SelectionQuote\n\nSelect-to-quote affordance \u2014 wrap message content; selecting text floats a small toolbar above the selection (flips below near the top, clamped to the container). Actions receive the selected text.\n\n```jsx\n<SelectionQuote onAction={(id, text) => quote(text)}\n  actions={[{ id: 'quote', label: 'Quote', icon: 'corner-up-left' }, { id: 'explain', label: 'Explain' }]}>\n  <p>\u2026assistant answer\u2026</p>\n</SelectionQuote>\n```\n"
+      "content": "# SelectionQuote\n\nSelect-to-quote affordance. Wrap message content; selecting text floats a small toolbar above the selection (flips below near the top, clamped to the container). Actions receive the selected text.\n\n```jsx\n<SelectionQuote onAction={(id, text) => quote(text)}\n  actions={[{ id: 'quote', label: 'Quote', icon: 'corner-up-left' }, { id: 'explain', label: 'Explain' }]}>\n  <p>\u2026assistant answer\u2026</p>\n</SelectionQuote>\n```\n"
     }
   ],
   "categories": [

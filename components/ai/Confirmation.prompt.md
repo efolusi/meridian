@@ -1,6 +1,6 @@
 # Confirmation
 
-Inline approval card for agent actions — pending shows Approve/Reject, settled shows a status line. Ringed accent (or danger) border while pending.
+Inline approval card for agent actions. Pending shows Approve/Reject, settled shows a status line. Ringed accent (or danger) border while pending.
 
 `<Confirmation title="Send 12 refund emails?" description="Covers every failed webhook customer." onStatusChange={apply} />`
 `<Confirmation tone="danger" title="Drop table archived_runs?" approveLabel="Drop it" />`

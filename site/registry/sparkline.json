@@ -2,7 +2,7 @@
   "name": "sparkline",
   "type": "registry:ui",
   "title": "Sparkline",
-  "description": "Inline trend line (SVG) \u2014 green up, red down, faint area fill. Pairs with Stat.",
+  "description": "Inline trend line (SVG): green up, red down, faint area fill. Pairs with Stat.",
   "dependencies": [
     "react"
   ],
@@ -23,7 +23,7 @@
     {
       "path": "components/data/Sparkline.prompt.md",
       "type": "registry:component",
-      "content": "Inline trend line (SVG) \u2014 green up, red down, faint area fill. Pairs with Stat.\n\n```jsx\n<Sparkline data={[42, 48, 45, 61, 58, 72, 84]} />\n<Sparkline data={prices} width={160} height={40} />\n```\n"
+      "content": "Inline trend line (SVG): green up, red down, faint area fill. Pairs with Stat.\n\n```jsx\n<Sparkline data={[42, 48, 45, 61, 58, 72, 84]} />\n<Sparkline data={prices} width={160} height={40} />\n```\n"
     }
   ],
   "categories": [

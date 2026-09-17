@@ -2,7 +2,7 @@
   "name": "timepicker",
   "type": "registry:ui",
   "title": "TimePicker",
-  "description": "Input + listbox of time slots every `stepMinutes` between `minTime`/`maxTime`. Typing filters the list; Enter picks the highlighted slot; a typed valid time ('9:5' becomes '09:05') commits on blur even off-grid. Value is always 24h 'HH:MM' \u2014 `format24={false}` only changes the labels to 12h AM/PM.",
+  "description": "Input + listbox of time slots every `stepMinutes` between `minTime`/`maxTime`. Typing filters the list; Enter picks the highlighted slot; a typed valid time ('9:5' becomes '09:05') commits on blur even off-grid. Value is always 24h 'HH:MM'; `format24={false}` only changes the labels to 12h AM/PM.",
   "dependencies": [
     "react"
   ],
@@ -27,7 +27,7 @@
     {
       "path": "components/dates/TimePicker.prompt.md",
       "type": "registry:component",
-      "content": "Input + listbox of time slots every `stepMinutes` between `minTime`/`maxTime`. Typing filters the list; Enter picks the highlighted slot; a typed valid time ('9:5' becomes '09:05') commits on blur even off-grid. Value is always 24h 'HH:MM' \u2014 `format24={false}` only changes the labels to 12h AM/PM.\n\nUse it for appointment starts, opening hours, reminders. Not for durations or seconds precision.\n\n```jsx\n<TimePicker label=\"Starts at\" value={time} onChange={setTime} minTime=\"08:00\" maxTime=\"18:00\" />\n<TimePicker label=\"Reminder\" format24={false} stepMinutes={15} value={t} onChange={setT} />\n```\n"
+      "content": "Input + listbox of time slots every `stepMinutes` between `minTime`/`maxTime`. Typing filters the list; Enter picks the highlighted slot; a typed valid time ('9:5' becomes '09:05') commits on blur even off-grid. Value is always 24h 'HH:MM'; `format24={false}` only changes the labels to 12h AM/PM.\n\nUse it for appointment starts, opening hours, reminders. Not for durations or seconds precision.\n\n```jsx\n<TimePicker label=\"Starts at\" value={time} onChange={setTime} minTime=\"08:00\" maxTime=\"18:00\" />\n<TimePicker label=\"Reminder\" format24={false} stepMinutes={15} value={t} onChange={setT} />\n```\n"
     }
   ],
   "categories": [

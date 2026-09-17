@@ -1,4 +1,4 @@
-Typed file glyph with colored extension chip — maps 20 common extensions to icon + color.
+Typed file glyph with a colored extension chip. Maps 20 common extensions to icon + color.
 
 ```jsx
 <FileTypeIcon ext="pdf" />

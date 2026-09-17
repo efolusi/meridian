@@ -2,7 +2,7 @@
   "name": "sandbox",
   "type": "registry:ui",
   "title": "Sandbox",
-  "description": "Collapsible code-run panel \u2014 mono title, soft ring while running / on error, tabbed Output & Code panes. Opens itself on error by default.",
+  "description": "Collapsible code-run panel: mono title, soft ring while running / on error, tabbed Output & Code panes. Opens itself on error by default.",
   "dependencies": [
     "react"
   ],
@@ -25,7 +25,7 @@
     {
       "path": "components/ai/Sandbox.prompt.md",
       "type": "registry:component",
-      "content": "# Sandbox\n\nCollapsible code-run panel \u2014 mono title, soft ring while running / on error, tabbed Output & Code panes. Opens itself on error by default.\n\n```jsx\n<Sandbox title=\"python analyze.py\" status=\"running\" tabs={[\n  { id: 'out', label: 'Output', content: <pre>Loading rows\u2026</pre> },\n  { id: 'code', label: 'Code', content: <pre>import pandas as pd</pre> },\n]} />\n```\n"
+      "content": "# Sandbox\n\nCollapsible code-run panel: mono title, soft ring while running / on error, tabbed Output & Code panes. Opens itself on error by default.\n\n```jsx\n<Sandbox title=\"python analyze.py\" status=\"running\" tabs={[\n  { id: 'out', label: 'Output', content: <pre>Loading rows\u2026</pre> },\n  { id: 'code', label: 'Code', content: <pre>import pandas as pd</pre> },\n]} />\n```\n"
     }
   ],
   "categories": [

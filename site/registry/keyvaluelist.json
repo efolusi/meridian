@@ -2,7 +2,7 @@
   "name": "keyvaluelist",
   "type": "registry:ui",
   "title": "KeyValueList",
-  "description": "Label/value rows with hairline separators \u2014 resource details, DNS records, trade info.",
+  "description": "Label/value rows with hairline separators for resource details, DNS records, and trade info.",
   "dependencies": [
     "react"
   ],
@@ -24,7 +24,7 @@
     {
       "path": "components/data/KeyValueList.prompt.md",
       "type": "registry:component",
-      "content": "Label/value rows with hairline separators \u2014 resource details, DNS records, trade info.\n\n```jsx\n<KeyValueList items={[\n  { label: 'Region', value: 'eu-west-1' },\n  { label: 'IPv4', value: '203.0.113.7', mono: true },\n]} />\n```\n"
+      "content": "Label/value rows with hairline separators for resource details, DNS records, and trade info.\n\n```jsx\n<KeyValueList items={[\n  { label: 'Region', value: 'eu-west-1' },\n  { label: 'IPv4', value: '203.0.113.7', mono: true },\n]} />\n```\n"
     }
   ],
   "categories": [
