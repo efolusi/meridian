@@ -25,7 +25,7 @@
     {
       "path": "components/ai/Transcript.prompt.md",
       "type": "registry:component",
-      "content": "# Transcript\n\nTime-synced transcript. The active row derives from `currentTime`, auto-scroll keeps it centered (toggleable), timestamps jump the player, optional word-level highlight via `words`.\n\n```jsx\n<Transcript currentTime={t} onJump={s => player.current.jumpTo(s)} items={[\n  { start: 0, speaker: 'Ada', text: 'Morning \u2014 shall we start?' },\n  { start: 4.2, speaker: 'Efe', words: [{ t: 4.2, w: 'Yes,' }, { t: 4.6, w: 'pulling' }, { t: 5.0, w: 'it' }, { t: 5.2, w: 'up.' }] },\n]} />\n```\n"
+      "content": "# Transcript\n\nTime-synced transcript. The active row derives from `currentTime`, auto-scroll keeps it centered (toggleable), timestamps jump the player, optional word-level highlight via `words`.\n\n```jsx\n<Transcript currentTime={t} onJump={s => player.current.jumpTo(s)} items={[\n  { start: 0, speaker: 'Ada', text: 'Morning. Shall we start?' },\n  { start: 4.2, speaker: 'Efe', words: [{ t: 4.2, w: 'Yes,' }, { t: 4.6, w: 'pulling' }, { t: 5.0, w: 'it' }, { t: 5.2, w: 'up.' }] },\n]} />\n```\n"
     }
   ],
   "categories": [
