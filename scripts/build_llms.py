@@ -94,7 +94,7 @@ def main():
     groups = sorted({g for g, *_ in components})
 
     parts = [
-        "# Meridian — llms-full.txt",
+        "# Meridian: llms-full.txt",
         "The entire design system in one file, generated from llms.txt, "
         "components/*/, and tokens/*.css by scripts/build_llms.py. "
         "Do not edit by hand. The short map of the repository is /llms.txt.",
@@ -122,19 +122,19 @@ def main():
     token_count = sum(len(v) for v in tokens.values())
     parts.append(
         f"## Design tokens\n\n{token_count} custom property names by file "
-        "(names only — resolve current values from /styles.css, which imports "
+        "(names only; resolve current values from /styles.css, which imports "
         "these files, or /tokens.json):"
     )
     for fname, names in tokens.items():
-        body = "\n".join(names) if names else "(no custom properties — font-face declarations only)"
+        body = "\n".join(names) if names else "(no custom properties, font-face declarations only)"
         parts.append(f"### /{fname}\n\n{body}")
 
     parts.append(
         "## More\n\n"
-        "- /llms.txt — the short map of this repository\n"
-        "- /site/registry.json — machine-readable registry index; "
+        "- /llms.txt: the short map of this repository\n"
+        "- /site/registry.json: machine-readable registry index; "
         "per-item install files in /site/registry/\n"
-        "- /guidelines/ — accessibility, forms, governance"
+        "- /guidelines/: accessibility, forms, governance"
     )
 
     OUT.write_text("\n\n".join(parts) + "\n")
