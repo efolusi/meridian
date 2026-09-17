@@ -3,7 +3,7 @@ export interface ToolCallProps {
   name: string;
   /** @default 'running' */
   status?: 'pending' | 'approval' | 'running' | 'success' | 'error';
-  /** Input args — object renders a key/value grid, string renders raw */
+  /** Input args: an object renders a key/value grid, a string renders raw */
   args?: object | string;
   /** Result body (also accepts children) */
   result?: React.ReactNode;
@@ -11,9 +11,9 @@ export interface ToolCallProps {
   error?: React.ReactNode;
   /** Pulses the last arg row while args stream in */
   streaming?: boolean;
-  /** Approve action — rendered when status is 'approval' */
+  /** Approve action, rendered when status is 'approval' */
   onApprove?: () => void;
-  /** Reject action — rendered when status is 'approval' */
+  /** Reject action, rendered when status is 'approval' */
   onReject?: () => void;
   /** @default 'Approve' */
   approveLabel?: string;

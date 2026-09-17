@@ -50,7 +50,7 @@ Use for live agent progress or the run detail page. For static onboarding checkl
 export interface AgentRunStep {
   id?: string;
   title: React.ReactNode;
-  /** Supporting line — text or nodes */
+  /** Supporting line: text or nodes */
   detail?: React.ReactNode;
   /** Collapsible panel (ToolCall, Diff…) behind a "Show detail" toggle */
   children?: React.ReactNode;
@@ -937,7 +937,7 @@ export interface ToolCallProps {
   name: string;
   /** @default 'running' */
   status?: 'pending' | 'approval' | 'running' | 'success' | 'error';
-  /** Input args — object renders a key/value grid, string renders raw */
+  /** Input args: an object renders a key/value grid, a string renders raw */
   args?: object | string;
   /** Result body (also accepts children) */
   result?: React.ReactNode;
@@ -945,9 +945,9 @@ export interface ToolCallProps {
   error?: React.ReactNode;
   /** Pulses the last arg row while args stream in */
   streaming?: boolean;
-  /** Approve action — rendered when status is 'approval' */
+  /** Approve action, rendered when status is 'approval' */
   onApprove?: () => void;
-  /** Reject action — rendered when status is 'approval' */
+  /** Reject action, rendered when status is 'approval' */
   onReject?: () => void;
   /** @default 'Approve' */
   approveLabel?: string;
@@ -2851,7 +2851,7 @@ Group: files · Source: /components/files/FileDrop.jsx · Exports: FileDrop
 Dashed dropzone: click or drag, with an ink border on hover/dragover.
 
 ```jsx
-<FileDrop accept="image/*,video/*,.pdf" hint="PNG, MP4, PDF — up to 2 GB" onFiles={enqueue} />
+<FileDrop accept="image/*,video/*,.pdf" hint="PNG, MP4, PDF, up to 2 GB" onFiles={enqueue} />
 ```
 
 ```ts
@@ -2864,7 +2864,7 @@ export interface FileDropProps {
   multiple?: boolean;
   /** Replaces "Drop files here or browse" */
   title?: React.ReactNode;
-  /** Muted line, e.g. "PNG, MP4, PDF — up to 2 GB" */
+  /** Muted line, e.g. "PNG, MP4, PDF, up to 2 GB" */
   hint?: React.ReactNode;
   style?: React.CSSProperties;
   className?: string;
@@ -3195,7 +3195,7 @@ Variants: `quiet` (default, transparent), `outline`, `solid` (espresso ink). Siz
 export interface IconButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   /** Lucide icon name */
   icon: string;
-  /** Accessible label (required — rendered as aria-label + title) */
+  /** Accessible label (required; rendered as aria-label + title) */
   label: string;
   /** @default 'quiet' */
   variant?: 'quiet' | 'outline' | 'solid';
@@ -3394,7 +3394,7 @@ export interface NumberInputProps extends Omit<React.InputHTMLAttributes<HTMLInp
   label?: string;
   /** Muted helper text below */
   hint?: string;
-  /** Error message below — also sets invalid styling */
+  /** Error message below; also sets invalid styling. */
   error?: string;
   /** Invalid styling with no message. @default false */
   invalid?: boolean;
@@ -3415,7 +3415,7 @@ export interface NumberInputProps extends Omit<React.InputHTMLAttributes<HTMLInp
   placeholder?: string;
   /**
    * BCP 47 locale (e.g. 'id', 'en-US') for locale-aware display and parsing via
-   * Intl.NumberFormat — 'id' groups with '.' and decimals with ',', 'en' the
+   * Intl.NumberFormat: 'id' groups with '.' and decimals with ',', 'en' the
    * reverse. Ignored when both `format` and `parse` are given. Omit for plain,
    * ungrouped formatting (the default).
    */
@@ -3428,8 +3428,8 @@ export interface NumberInputProps extends Omit<React.InputHTMLAttributes<HTMLInp
   className?: string;
 }
 /**
- * Numeric field with stepper buttons. A text input with inputmode="decimal" —
- * not type=number — so typing stays free-form; the value commits on blur:
+ * Numeric field with stepper buttons. A text input with inputmode="decimal"
+ * (not type=number), so typing stays free-form; the value commits on blur:
  * parse, clamp to min/max, snap to the step grid. Empty commits null.
  * ArrowUp/Down step, Shift+Arrow steps by 10× step, Home/End jump to finite
  * rails. Steppers disable at the rails.
@@ -3626,7 +3626,7 @@ Meridian's `label`, `hint`, `error`, and `invalid` props remain additive field h
 export interface TextareaProps extends React.TextareaHTMLAttributes<HTMLTextAreaElement> {
   label?: string;
   hint?: string;
-  /** Error message below — also sets invalid styling */
+  /** Error message below; also sets invalid styling. */
   error?: string;
   invalid?: boolean;
 }
