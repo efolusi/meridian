@@ -2,7 +2,7 @@
   "name": "task",
   "type": "registry:ui",
   "title": "Task",
-  "description": "Rail-connected list of agent actions \u2014 icon rows joined by hairline connectors; last row's rail is hidden. `streaming` pulses the newest row.",
+  "description": "Rail-connected list of agent actions: icon rows joined by hairline connectors; last row's rail is hidden. `streaming` pulses the newest row.",
   "dependencies": [
     "react"
   ],
@@ -25,7 +25,7 @@
     {
       "path": "components/ai/Task.prompt.md",
       "type": "registry:component",
-      "content": "# Task\n\nRail-connected list of agent actions \u2014 icon rows joined by hairline connectors; last row's rail is hidden. `streaming` pulses the newest row.\n\n```jsx\n<Task streaming items={[\n  { icon: 'search', label: 'Searched docs', detail: 'for \"rate limits\"' },\n  { icon: 'file-text', label: 'Read', detail: <code>gateway.md</code> },\n  { label: 'Drafting answer' },\n]} />\n```\n"
+      "content": "# Task\n\nRail-connected list of agent actions: icon rows joined by hairline connectors; last row's rail is hidden. `streaming` pulses the newest row.\n\n```jsx\n<Task streaming items={[\n  { icon: 'search', label: 'Searched docs', detail: 'for \"rate limits\"' },\n  { icon: 'file-text', label: 'Read', detail: <code>gateway.md</code> },\n  { label: 'Drafting answer' },\n]} />\n```\n"
     }
   ],
   "categories": [

@@ -2,7 +2,7 @@
   "name": "buttontile",
   "type": "registry:ui",
   "title": "ButtonTile + ButtonTileGroup",
-  "description": "Large selectable tile \u2014 plan pickers, onboarding choices. Wrap in `ButtonTileGroup columns={n}`.",
+  "description": "Large selectable tile for plan pickers and onboarding choices. Wrap in `ButtonTileGroup columns={n}`.",
   "dependencies": [
     "react"
   ],
@@ -25,7 +25,7 @@
     {
       "path": "components/forms/ButtonTile.prompt.md",
       "type": "registry:component",
-      "content": "Large selectable tile \u2014 plan pickers, onboarding choices. Wrap in `ButtonTileGroup columns={n}`.\n\n```jsx\n<ButtonTileGroup columns={3}>\n  <ButtonTile icon=\"rocket\" title=\"Starter\" description=\"Free forever\" selected={plan==='starter'} onClick={() => setPlan('starter')} />\n  <ButtonTile icon=\"zap\" title=\"Growth\" description=\"$12 per seat\" selected={plan==='growth'} onClick={() => setPlan('growth')} />\n</ButtonTileGroup>\n```\n"
+      "content": "Large selectable tile for plan pickers and onboarding choices. Wrap in `ButtonTileGroup columns={n}`.\n\n```jsx\n<ButtonTileGroup columns={3}>\n  <ButtonTile icon=\"rocket\" title=\"Starter\" description=\"Free forever\" selected={plan==='starter'} onClick={() => setPlan('starter')} />\n  <ButtonTile icon=\"zap\" title=\"Growth\" description=\"$12 per seat\" selected={plan==='growth'} onClick={() => setPlan('growth')} />\n</ButtonTileGroup>\n```\n"
     }
   ],
   "categories": [

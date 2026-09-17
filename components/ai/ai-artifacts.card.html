@@ -31,7 +31,7 @@ function Demo() {
         <GeneratedImage status="generating" prompt="Isometric espresso machine, warm paper light" />
         <GeneratedImage status="error" prompt="Same, at dusk" error="Rate limit hit" onRetry={() => {}} />
       </div>
-      <DocumentCard title="Incident summary — failed webhooks" meta="310 words" collapsedHeight={150}>
+      <DocumentCard title="Incident summary: failed webhooks" meta="310 words" collapsedHeight={150}>
         <h3>What happened</h3>
         <p>Between 02:10 and 02:14, 12 webhook deliveries to hooks.acme.io returned 503. The host was mid-deploy; our retry window (3 attempts over 40s) was shorter than the outage.</p>
         <h3>Fix</h3>
@@ -44,7 +44,7 @@ function Demo() {
       ]}>
         <div style={{ padding: 28, fontFamily: 'var(--font-sans)' }}>
           <div style={{ fontFamily: 'var(--font-display)', fontSize: 22, color: 'var(--text-primary)', marginBottom: 6 }}>All systems operational</div>
-          <div style={{ fontSize: 13, color: 'var(--text-muted)', marginBottom: 18 }}>Webhooks recovered at 14:06 — 12/12 replays delivered.</div>
+          <div style={{ fontSize: 13, color: 'var(--text-muted)', marginBottom: 18 }}>Webhooks recovered at 14:06, with 12/12 replays delivered.</div>
           <div style={{ display: 'flex', gap: 8 }}>
             {['API', 'Webhooks', 'Dashboard'].map(s => <span key={s} style={{ padding: '6px 12px', border: '1px solid var(--border-default)', borderRadius: 999, fontSize: 12.5, color: 'var(--text-secondary)' }}>{s} · OK</span>)}
           </div>

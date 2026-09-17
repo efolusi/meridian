@@ -90,7 +90,7 @@ function InfraScreen() {
         )}
         {sel && <DrawerFooter><DrawerClose asChild><Button variant="ghost">Close</Button></DrawerClose><Button variant="danger" iconLeft="plug" onClick={() => { notify(sel.name + ' disconnected', 'The tunnel closed cleanly.'); setSel(null); }}>Disconnect</Button></DrawerFooter>}
       </DrawerContent></Drawer>
-      <Dialog open={connect} onOpenChange={setConnect}><DialogContent><DialogHeader><DialogTitle>Connect a resource</DialogTitle><DialogDescription>Meridian talks to it through an encrypted tunnel — nothing is stored.</DialogDescription></DialogHeader><div className="ef-dialog__body"><div style={{ display: 'flex', flexDirection: 'column', gap: 14 }}>
+      <Dialog open={connect} onOpenChange={setConnect}><DialogContent><DialogHeader><DialogTitle>Connect a resource</DialogTitle><DialogDescription>Meridian talks to it through an encrypted tunnel. Nothing is stored.</DialogDescription></DialogHeader><div className="ef-dialog__body"><div style={{ display: 'flex', flexDirection: 'column', gap: 14 }}>
           <Field><FieldLabel htmlFor="connection-kind">Kind</FieldLabel><NativeSelect id="connection-kind">{['PostgreSQL', 'MySQL', 'Redis', 'SSH host', 'Kubernetes', 'AWS account', 'Domain / DNS'].map(value => <NativeSelectOption key={value} value={value}>{value}</NativeSelectOption>)}</NativeSelect></Field>
           <Input label="Host" placeholder="db.internal.acme.co:5432" iconLeft="server" />
           <Field><FieldLabel htmlFor="connection-region">Region</FieldLabel><NativeSelect id="connection-region">{['eu-west-1', 'us-east-1', 'fra1', 'sgp1'].map(value => <NativeSelectOption key={value} value={value}>{value}</NativeSelectOption>)}</NativeSelect></Field>

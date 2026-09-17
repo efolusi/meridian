@@ -3,7 +3,7 @@ export interface NumberInputProps extends Omit<React.InputHTMLAttributes<HTMLInp
   label?: string;
   /** Muted helper text below */
   hint?: string;
-  /** Error message below — also sets invalid styling */
+  /** Error message below; also sets invalid styling. */
   error?: string;
   /** Invalid styling with no message. @default false */
   invalid?: boolean;
@@ -24,7 +24,7 @@ export interface NumberInputProps extends Omit<React.InputHTMLAttributes<HTMLInp
   placeholder?: string;
   /**
    * BCP 47 locale (e.g. 'id', 'en-US') for locale-aware display and parsing via
-   * Intl.NumberFormat — 'id' groups with '.' and decimals with ',', 'en' the
+   * Intl.NumberFormat: 'id' groups with '.' and decimals with ',', 'en' the
    * reverse. Ignored when both `format` and `parse` are given. Omit for plain,
    * ungrouped formatting (the default).
    */
@@ -37,8 +37,8 @@ export interface NumberInputProps extends Omit<React.InputHTMLAttributes<HTMLInp
   className?: string;
 }
 /**
- * Numeric field with stepper buttons. A text input with inputmode="decimal" —
- * not type=number — so typing stays free-form; the value commits on blur:
+ * Numeric field with stepper buttons. A text input with inputmode="decimal"
+ * (not type=number), so typing stays free-form; the value commits on blur:
  * parse, clamp to min/max, snap to the step grid. Empty commits null.
  * ArrowUp/Down step, Shift+Arrow steps by 10× step, Home/End jump to finite
  * rails. Steppers disable at the rails.

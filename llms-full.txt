@@ -1,8 +1,8 @@
-# Meridian — llms-full.txt
+# Meridian: llms-full.txt
 
 The entire design system in one file, generated from llms.txt, components/*/, and tokens/*.css by scripts/build_llms.py. Do not edit by hand. The short map of the repository is /llms.txt.
 
-> Meridian is a general-purpose open-source design system by Efolusi: 122 accessible React components, 165 design tokens (light, dark, compact), blocks, charts, and full example apps — served browser-native with zero build step. MIT licensed.
+> Meridian is a general-purpose open-source design system by Efolusi: 122 accessible React components, 165 design tokens (light, dark, compact), blocks, charts, and full example apps, served browser-native with zero build step. MIT licensed.
 
 Live docs: https://meridian.efolusi.com · Source: https://github.com/efolusi/meridian · License: MIT
 
@@ -19,14 +19,14 @@ Or load both from the hosted site (no install):
     <link rel="stylesheet" href="https://meridian.efolusi.com/styles.css">
     <script src="https://meridian.efolusi.com/_ds_bundle.js"></script>
 
-Or install from npm for bundler projects (Vite, Next, Remix) — ESM modules, icons inlined, fonts included, types for @types/react 18 and 19:
+Or install from npm for bundler projects (Vite, Next, Remix). It ships ESM modules with icons inlined, fonts included, and types for @types/react 18 and 19:
 
     npm install @efolusi/meridian
 
     import '@efolusi/meridian/styles.css';
     import { Button, FormField } from '@efolusi/meridian';
 
-Dark mode: set data-theme="dark" on any subtree. Compact density: data-density="compact". Semantic tokens only — never raw ramp values.
+Dark mode: set data-theme="dark" on any subtree. Compact density: data-density="compact". Use semantic tokens only, never raw ramp values.
 
 ## Components
 
@@ -50,7 +50,7 @@ Use for live agent progress or the run detail page. For static onboarding checkl
 export interface AgentRunStep {
   id?: string;
   title: React.ReactNode;
-  /** Supporting line — text or nodes */
+  /** Supporting line: text or nodes */
   detail?: React.ReactNode;
   /** Collapsible panel (ToolCall, Diff…) behind a "Show detail" toggle */
   children?: React.ReactNode;
@@ -184,7 +184,7 @@ Group: ai · Source: /components/ai/Confirmation.jsx · Exports: Confirmation
 
 # Confirmation
 
-Inline approval card for agent actions — pending shows Approve/Reject, settled shows a status line. Ringed accent (or danger) border while pending.
+Inline approval card for agent actions. Pending shows Approve/Reject, settled shows a status line. Ringed accent (or danger) border while pending.
 
 `<Confirmation title="Send 12 refund emails?" description="Covers every failed webhook customer." onStatusChange={apply} />`
 `<Confirmation tone="danger" title="Drop table archived_runs?" approveLabel="Drop it" />`
@@ -256,7 +256,7 @@ Group: ai · Source: /components/ai/DocumentCard.jsx · Exports: DocumentCard
 
 # DocumentCard
 
-Inline document artifact — header with copy + expand, content clipped at `collapsedHeight` with a paper fade; measured height animates open.
+Inline document artifact: header with copy + expand, content clipped at `collapsedHeight` with a paper fade; measured height animates open.
 
 ```jsx
 <DocumentCard title="Q3 launch brief" meta="840 words">
@@ -294,7 +294,7 @@ Quiet action row under an assistant message: thumbs up/down (toggle), copy, rege
 
 `<FeedbackBar copyText={msg} onFeedback={log} onRetry={rerun} note="gpt-answer · 2.1s" />`
 
-Keep it ghost-quiet — it should disappear until hovered in dense threads. Wire onFeedback to your telemetry, not a toast.
+Keep it ghost-quiet: it should disappear until hovered in dense threads. Wire onFeedback to your telemetry, not a toast.
 
 ```ts
 export interface FeedbackBarProps {
@@ -537,7 +537,7 @@ Group: ai · Source: /components/ai/Player.jsx · Exports: Player
 
 # Player
 
-Audio player — seekable waveform (drag or click), ±10s skip, play/pause, mute, tabular timestamps. Expose a ref for `jumpTo` and pair with Transcript via `onTimeChange`.
+Audio player with seekable waveform (drag or click), ±10s skip, play/pause, mute, tabular timestamps. Expose a ref for `jumpTo` and pair with Transcript via `onTimeChange`.
 
 ```jsx
 const ref = React.useRef(null);
@@ -571,7 +571,7 @@ Group: ai · Source: /components/ai/PromptComposer.jsx · Exports: PromptCompose
 
 Agent input: auto textarea, optional attach + voice buttons, ink send. Enter sends, Shift+Enter breaks.
 
-The attach and voice buttons only render when you pass `onAttach` / `onVoice` — the composer never shows a control it cannot action. While `busy`, the send button becomes a stop button that calls `onStop`.
+The attach and voice buttons only render when you pass `onAttach` / `onVoice`; the composer never shows a control it cannot action. While `busy`, the send button becomes a stop button that calls `onStop`.
 
 ```jsx
 <PromptComposer onSend={run} hint="Agent can read your workspace"
@@ -616,7 +616,7 @@ Group: ai · Source: /components/ai/PromptSteps.jsx · Exports: PromptSteps
 
 # PromptSteps
 
-Keyboard-first inline question wizard — numbered options (1–9 keys), arrows to highlight, Enter to confirm, Esc dismisses, ←/Shift-Tab goes back; "Other" is an inline input. Calls `onComplete` with all answers.
+Keyboard-first inline question wizard: numbered options (1–9 keys), arrows to highlight, Enter to confirm, Esc dismisses, ←/Shift-Tab goes back; "Other" is an inline input. Calls `onComplete` with all answers.
 
 ```jsx
 <PromptSteps onComplete={console.log} steps={[
@@ -652,12 +652,12 @@ Group: ai · Source: /components/ai/Reasoning.jsx · Exports: Reasoning
 
 # Reasoning
 
-Collapsible "thinking" block for model reasoning — pulsing brain glyph while streaming, then "Thought for Ns".
+Collapsible "thinking" block for model reasoning: pulsing brain glyph while streaming, then "Thought for Ns".
 
 `<Reasoning streaming>Comparing nonstop fares…</Reasoning>`
 `<Reasoning duration="4s" defaultOpen={false}>…full chain…</Reasoning>`
 
-Place above the assistant reply inside the message column. Keep collapsed by default when done — reasoning is a receipt, not the answer.
+Place above the assistant reply inside the message column. Keep collapsed by default when done; reasoning is a receipt, not the answer.
 
 ```ts
 export interface ReasoningProps {
@@ -685,7 +685,7 @@ Group: ai · Source: /components/ai/RichComposer.jsx · Exports: RichComposer
 
 # RichComposer
 
-Composer with @-mention chips and /-commands — typing a trigger opens a filtered list above the composer (arrows + Enter, groups supported); mentions insert as atomic chips that delete as one unit; Enter submits, Shift+Enter breaks.
+Composer with @-mention chips and /-commands. Typing a trigger opens a filtered list above the composer (arrows + Enter, groups supported); mentions insert as atomic chips that delete as one unit; Enter submits, Shift+Enter breaks.
 
 ```jsx
 <RichComposer hint="@ files · / commands"
@@ -728,7 +728,7 @@ Group: ai · Source: /components/ai/Sandbox.jsx · Exports: Sandbox
 
 # Sandbox
 
-Collapsible code-run panel — mono title, soft ring while running / on error, tabbed Output & Code panes. Opens itself on error by default.
+Collapsible code-run panel: mono title, soft ring while running / on error, tabbed Output & Code panes. Opens itself on error by default.
 
 ```jsx
 <Sandbox title="python analyze.py" status="running" tabs={[
@@ -767,7 +767,7 @@ Group: ai · Source: /components/ai/SelectionQuote.jsx · Exports: SelectionQuot
 
 # SelectionQuote
 
-Select-to-quote affordance — wrap message content; selecting text floats a small toolbar above the selection (flips below near the top, clamped to the container). Actions receive the selected text.
+Select-to-quote affordance. Wrap message content; selecting text floats a small toolbar above the selection (flips below near the top, clamped to the container). Actions receive the selected text.
 
 ```jsx
 <SelectionQuote onAction={(id, text) => quote(text)}
@@ -800,7 +800,7 @@ Group: ai · Source: /components/ai/SourceCard.jsx · Exports: SourceCard
 
 # SourceCard
 
-Web-source card for grounded answers — optional 16:9 thumbnail, favicon + domain row, title, 3-line clamped description. `variant="plain"` for dense lists.
+Web-source card for grounded answers: optional 16:9 thumbnail, favicon + domain row, title, 3-line clamped description. `variant="plain"` for dense lists.
 
 ```jsx
 <SourceCard href="https://…" domain="efolusi.com" title="Rate limits" description="Default limits are…" thumbnail="/thumb.jpg" />
@@ -859,7 +859,7 @@ Group: ai · Source: /components/ai/Task.jsx · Exports: Task
 
 # Task
 
-Rail-connected list of agent actions — icon rows joined by hairline connectors; last row's rail is hidden. `streaming` pulses the newest row.
+Rail-connected list of agent actions: icon rows joined by hairline connectors; last row's rail is hidden. `streaming` pulses the newest row.
 
 ```jsx
 <Task streaming items={[
@@ -893,7 +893,7 @@ Group: ai · Source: /components/ai/Todo.jsx · Exports: Todo
 
 # Todo
 
-Collapsible agent checklist card — spinner while in progress, espresso check + strikethrough when done, n/total count in the header.
+Collapsible agent checklist card: spinner while in progress, espresso check + strikethrough when done, n/total count in the header.
 
 ```jsx
 <Todo title="Plan" items={[
@@ -937,7 +937,7 @@ export interface ToolCallProps {
   name: string;
   /** @default 'running' */
   status?: 'pending' | 'approval' | 'running' | 'success' | 'error';
-  /** Input args — object renders a key/value grid, string renders raw */
+  /** Input args: an object renders a key/value grid, a string renders raw */
   args?: object | string;
   /** Result body (also accepts children) */
   result?: React.ReactNode;
@@ -945,9 +945,9 @@ export interface ToolCallProps {
   error?: React.ReactNode;
   /** Pulses the last arg row while args stream in */
   streaming?: boolean;
-  /** Approve action — rendered when status is 'approval' */
+  /** Approve action, rendered when status is 'approval' */
   onApprove?: () => void;
-  /** Reject action — rendered when status is 'approval' */
+  /** Reject action, rendered when status is 'approval' */
   onReject?: () => void;
   /** @default 'Approve' */
   approveLabel?: string;
@@ -970,11 +970,11 @@ Group: ai · Source: /components/ai/Transcript.jsx · Exports: Transcript
 
 # Transcript
 
-Time-synced transcript — active row derives from `currentTime`, auto-scroll keeps it centered (toggleable), timestamps jump the player, optional word-level highlight via `words`.
+Time-synced transcript. The active row derives from `currentTime`, auto-scroll keeps it centered (toggleable), timestamps jump the player, optional word-level highlight via `words`.
 
 ```jsx
 <Transcript currentTime={t} onJump={s => player.current.jumpTo(s)} items={[
-  { start: 0, speaker: 'Ada', text: 'Morning — shall we start?' },
+  { start: 0, speaker: 'Ada', text: 'Morning. Shall we start?' },
   { start: 4.2, speaker: 'Efe', words: [{ t: 4.2, w: 'Yes,' }, { t: 4.6, w: 'pulling' }, { t: 5.0, w: 'it' }, { t: 5.2, w: 'up.' }] },
 ]} />
 ```
@@ -1051,7 +1051,7 @@ Group: ai · Source: /components/ai/WebPreview.jsx · Exports: WebPreview
 
 # WebPreview
 
-Browser pane for agent-built UIs — reload, draft-state address bar (Enter commits, Esc reverts), desktop/tablet/mobile widths (animated), collapsible console with error badge, open-in-new-tab. Pass `children` to mock the page without an iframe. Changing the `url` prop navigates the pane (parent-driven navigation); `defaultOpen` starts the console open.
+Browser pane for agent-built UIs: reload, draft-state address bar (Enter commits, Esc reverts), desktop/tablet/mobile widths (animated), collapsible console with error badge, open-in-new-tab. Pass `children` to mock the page without an iframe. Changing the `url` prop navigates the pane (parent-driven navigation); `defaultOpen` starts the console open.
 
 ```jsx
 <WebPreview url="https://demo.efolusi.dev" logs={[{ level: 'error', text: 'Uncaught TypeError…' }]}>
@@ -1124,7 +1124,7 @@ Group: code · Source: /components/code/Console.jsx · Exports: Console
 
 # Console
 
-Log viewer — level icons/colors, tabular timestamps, per-row collapsible stack traces, sticks to the bottom while streaming and shows a "Latest" pill when scrolled up.
+Log viewer with level icons/colors, tabular timestamps, and per-row collapsible stack traces. It sticks to the bottom while streaming and shows a "Latest" pill when scrolled up.
 
 ```jsx
 <Console entries={[
@@ -1219,7 +1219,7 @@ Group: code · Source: /components/code/EnvList.jsx · Exports: EnvList
 
 # EnvList
 
-Environment variables card — secrets masked as •••••••• with a single reveal toggle in the header; per-row copy always copies the real value.
+Environment variables card with secrets masked as •••••••• and a single reveal toggle in the header; per-row copy always copies the real value.
 
 ```jsx
 <EnvList vars={[
@@ -1252,7 +1252,7 @@ Group: code · Source: /components/code/Exception.jsx · Exports: Exception
 
 # Exception
 
-Runtime-error card — mono type chip + message, collapsible stack frames (active frame flagged, internal frames dimmed) and an optional source excerpt with the failing line highlighted.
+Runtime-error card: mono type chip + message, collapsible stack frames (active frame flagged, internal frames dimmed) and an optional source excerpt with the failing line highlighted.
 
 ```jsx
 <Exception type="TypeError" message="Cannot read properties of undefined (reading 'id')" frames={[
@@ -1461,7 +1461,7 @@ export declare const EmptyContent: React.ForwardRefExoticComponent<EmptyElementP
 
 Group: data · Source: /components/data/KeyValueList.jsx · Exports: KeyValueList
 
-Label/value rows with hairline separators — resource details, DNS records, trade info.
+Label/value rows with hairline separators for resource details, DNS records, and trade info.
 
 ```jsx
 <KeyValueList items={[
@@ -1544,7 +1544,7 @@ export declare const Skeleton: React.ForwardRefExoticComponent<SkeletonProps & R
 
 Group: data · Source: /components/data/Sparkline.jsx · Exports: Sparkline
 
-Inline trend line (SVG) — green up, red down, faint area fill. Pairs with Stat.
+Inline trend line (SVG): green up, red down, faint area fill. Pairs with Stat.
 
 ```jsx
 <Sparkline data={[42, 48, 45, 61, 58, 72, 84]} />
@@ -1629,7 +1629,7 @@ export declare function StatusDot(props: StatusDotProps): React.JSX.Element;
 
 Group: data · Source: /components/data/Table.jsx · Exports: Table, TableHeader, TableBody, TableFooter, TableRow, TableHead, TableCell, TableCaption
 
-Data table: uppercase micro headers, hairline rows, optional row click. Borderless — nest it in a flush `<CardContent>` for a framed table. Sorting, selection, sticky header, and empty/loading states are built in, so the common admin table does not have to be hand-rolled around it.
+Data table: uppercase micro headers, hairline rows, optional row click. Borderless, so nest it in a flush `<CardContent>` for a framed table. Sorting, selection, sticky header, and empty/loading states are built in, so the common admin table does not have to be hand-rolled around it.
 
 Sorting is applied by the table. Mark a column `sortable` and it sorts itself; pass `sort` + `onSortChange` only when the order lives elsewhere (a server query, a URL param). `sortAccessor` covers cells whose sort value differs from what is rendered.
 
@@ -1655,7 +1655,7 @@ Selection behaves the same: `selectable` alone works, and `selected` + `onSelect
 
 `dense` tightens row height; `render(value, row, i)` for custom cells; `loading` swaps the body for shimmer rows so the header and column widths stay put while the first page loads.
 
-For a genuinely large grid — virtualisation, column resizing, grouping — reach for a dedicated data grid. This covers the admin table, not that.
+For a genuinely large grid (virtualisation, column resizing, grouping), reach for a dedicated data grid. This covers the admin table, not that.
 
 ```ts
 export interface TableColumn {
@@ -1755,7 +1755,7 @@ export declare function Calendar(props: CalendarProps): React.JSX.Element;
 
 Group: dates · Source: /components/dates/TimePicker.jsx · Exports: TimePicker
 
-Input + listbox of time slots every `stepMinutes` between `minTime`/`maxTime`. Typing filters the list; Enter picks the highlighted slot; a typed valid time ('9:5' becomes '09:05') commits on blur even off-grid. Value is always 24h 'HH:MM' — `format24={false}` only changes the labels to 12h AM/PM.
+Input + listbox of time slots every `stepMinutes` between `minTime`/`maxTime`. Typing filters the list; Enter picks the highlighted slot; a typed valid time ('9:5' becomes '09:05') commits on blur even off-grid. Value is always 24h 'HH:MM'; `format24={false}` only changes the labels to 12h AM/PM.
 
 Use it for appointment starts, opening hours, reminders. Not for durations or seconds precision.
 
@@ -2373,7 +2373,7 @@ export declare function Timeline(props: TimelineProps): React.JSX.Element;
 
 Group: display · Source: /components/display/Toolbar.jsx · Exports: Toolbar
 
-Grouped icon actions on a hairline chip — editors, chart controls, bulk bars. `value` marks active (ink).
+Grouped icon actions on a hairline chip for editors, chart controls, and bulk bars. `value` marks active (ink).
 
 ```jsx
 <Toolbar label="View" value={view} onChange={setView} items={[
@@ -2547,7 +2547,7 @@ export declare const AlertDialogCancel: React.ForwardRefExoticComponent<AlertDia
 
 Group: feedback · Source: /components/feedback/Banner.jsx · Exports: Banner
 
-Full-width strip above the app chrome — trials, incidents, announcements. One per view, max.
+Full-width strip above the app chrome for trials, incidents, and announcements. One per view, max.
 
 ```jsx
 <Banner tone="warning" icon="triangle-alert" action={<button className="ef-banner__action" onClick={billing}>Add card</button>} onDismiss={hide}>
@@ -2647,7 +2647,7 @@ Group: feedback · Source: /components/feedback/Loader.jsx · Exports: Loader
 
 # Loader
 
-Text-treatment loading state (no spinner) — `pulse` breathes opacity, `shimmer` sweeps a highlight through the label; optional staggered dots.
+Text-treatment loading state (no spinner). `pulse` breathes opacity, `shimmer` sweeps a highlight through the label; optional staggered dots.
 
 ```jsx
 <Loader variant="shimmer">Searching the workspace</Loader>
@@ -2848,10 +2848,10 @@ export declare const AttachmentGroup: React.ForwardRefExoticComponent<React.HTML
 
 Group: files · Source: /components/files/FileDrop.jsx · Exports: FileDrop
 
-Dashed dropzone — click or drag; ink border on hover/dragover.
+Dashed dropzone: click or drag, with an ink border on hover/dragover.
 
 ```jsx
-<FileDrop accept="image/*,video/*,.pdf" hint="PNG, MP4, PDF — up to 2 GB" onFiles={enqueue} />
+<FileDrop accept="image/*,video/*,.pdf" hint="PNG, MP4, PDF, up to 2 GB" onFiles={enqueue} />
 ```
 
 ```ts
@@ -2864,7 +2864,7 @@ export interface FileDropProps {
   multiple?: boolean;
   /** Replaces "Drop files here or browse" */
   title?: React.ReactNode;
-  /** Muted line, e.g. "PNG, MP4, PDF — up to 2 GB" */
+  /** Muted line, e.g. "PNG, MP4, PDF, up to 2 GB" */
   hint?: React.ReactNode;
   style?: React.CSSProperties;
   className?: string;
@@ -2909,7 +2909,7 @@ export declare function FileTile(props: FileTileProps): React.JSX.Element;
 
 Group: files · Source: /components/files/FileTypeIcon.jsx · Exports: FileTypeIcon
 
-Typed file glyph with colored extension chip — maps 20 common extensions to icon + color.
+Typed file glyph with a colored extension chip. Maps 20 common extensions to icon + color.
 
 ```jsx
 <FileTypeIcon ext="pdf" />
@@ -2936,7 +2936,7 @@ export declare function FileTypeIcon(props: FileTypeIconProps): React.JSX.Elemen
 
 Group: finance · Source: /components/finance/PaymentCard.jsx · Exports: PaymentCard
 
-Payment card visual for trading / finance surfaces — espresso, caramel, or paper; `frozen` grays it out.
+Payment card visual for trading / finance surfaces in espresso, caramel, or paper; `frozen` grays it out.
 
 ```jsx
 <PaymentCard name="ADA OBI" number="•••• •••• •••• 4242" expiry="09/29" />
@@ -2969,7 +2969,7 @@ export declare function PaymentCard(props: PaymentCardProps): React.JSX.Element;
 
 Group: forms · Source: /components/forms/Button.jsx · Exports: Button
 
-The action button — primary for the one main action per view, secondary/ghost for the rest.
+The action button: primary for the one main action per view, secondary/ghost for the rest.
 
 ```jsx
 <Button iconRight="arrow-right">Create workspace</Button>
@@ -2977,7 +2977,7 @@ The action button — primary for the one main action per view, secondary/ghost 
 <Button variant="ghost">Cancel</Button>
 ```
 
-Variants: `primary` (espresso ink), `secondary` (white + border), `ghost`, `danger`, `brand` (cocoa — marketing/brand moments only). Sizes `sm|md|lg` (28/36/44px). `loading` swaps in a spinner; labels are verbs in sentence case ("Save changes", never "Submit").
+Variants: `primary` (espresso ink), `secondary` (white + border), `ghost`, `danger`, `brand` (cocoa, for marketing/brand moments only). Sizes `sm|md|lg` (28/36/44px). `loading` swaps in a spinner; labels are verbs in sentence case ("Save changes", never "Submit").
 
 ```ts
 export interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
@@ -3034,7 +3034,7 @@ export declare const ButtonGroupSeparator: React.ForwardRefExoticComponent<Butto
 
 Group: forms · Source: /components/forms/ButtonTile.jsx · Exports: ButtonTile, ButtonTileGroup
 
-Large selectable tile — plan pickers, onboarding choices. Wrap in `ButtonTileGroup columns={n}`.
+Large selectable tile for plan pickers and onboarding choices. Wrap in `ButtonTileGroup columns={n}`.
 
 ```jsx
 <ButtonTileGroup columns={3}>
@@ -3195,7 +3195,7 @@ Variants: `quiet` (default, transparent), `outline`, `solid` (espresso ink). Siz
 export interface IconButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   /** Lucide icon name */
   icon: string;
-  /** Accessible label (required — rendered as aria-label + title) */
+  /** Accessible label (required; rendered as aria-label + title) */
   label: string;
   /** @default 'quiet' */
   variant?: 'quiet' | 'outline' | 'solid';
@@ -3317,7 +3317,7 @@ Standalone field label for custom controls that lack a built-in `label` prop. Pa
 
 `<Label htmlFor="region" required hint="Cannot change later">Region</Label>`
 
-Input, Select, etc. already render their own labels — do not double-label them.
+Input, Select, etc. already render their own labels, so do not double-label them.
 
 ```ts
 export interface LabelProps extends React.LabelHTMLAttributes<HTMLLabelElement> {
@@ -3363,7 +3363,7 @@ export declare const NativeSelectOptGroup: React.ForwardRefExoticComponent<
 
 Group: forms · Source: /components/forms/NumberInput.jsx · Exports: NumberInput
 
-Numeric field with stepper buttons; renders bare, or as a full field when `label`/`hint`/`error` are set. It is a text input with `inputmode="decimal"` — not `type=number` — so typing stays free-form and the value only commits on blur: parse, clamp to `min`/`max`, snap to the `step` grid (float noise rounded away). An emptied field commits `null`.
+Numeric field with stepper buttons; renders bare, or as a full field when `label`/`hint`/`error` are set. It is a text input with `inputmode="decimal"` (not `type=number`), so typing stays free-form and the value only commits on blur: it parses, clamps to `min`/`max`, snap to the `step` grid (float noise rounded away). An emptied field commits `null`.
 
 ```jsx
 <NumberInput label="Seats" min={1} max={50} defaultValue={4} />
@@ -3372,7 +3372,7 @@ Numeric field with stepper buttons; renders bare, or as a full field when `label
 
 Keyboard: ArrowUp/ArrowDown step, Shift+Arrow steps by 10× `step`, Home/End jump to `min`/`max` when finite. The steppers disable at the rails and carry "Increase"/"Decrease" labels.
 
-`onChange(value, e)` fires with a number on every commit and `null` when cleared — guard for `null` before doing math. Controlled via `value` (where `null` means empty), or uncontrolled via `defaultValue`.
+`onChange(value, e)` fires with a number on every commit and `null` when cleared, so guard for `null` before doing math. Controlled via `value` (where `null` means empty), or uncontrolled via `defaultValue`.
 
 `format` renders the committed value ("128 GB"); if the formatted text is not parseable as a plain number, pass a matching `parse`:
 
@@ -3380,13 +3380,13 @@ Keyboard: ArrowUp/ArrowDown step, Shift+Arrow steps by 10× `step`, Home/End jum
 <NumberInput label="Price" format={n => '$' + n} parse={t => Number(t.replace(/[$,]/g, '')) || null} />
 ```
 
-For locale-aware grouping and decimals, pass `locale` (a BCP 47 tag) instead of writing `format`/`parse` by hand — `id` displays `1.234,5`, `en` displays `1,234.5`, and each parses its own format back correctly. An explicit `format`/`parse` still wins; omitting `locale` keeps plain ungrouped numbers.
+For locale-aware grouping and decimals, pass `locale` (a BCP 47 tag) instead of writing `format`/`parse` by hand: `id` displays `1.234,5`, `en` displays `1,234.5`, and each parses its own format back correctly. An explicit `format`/`parse` still wins; omitting `locale` keeps plain ungrouped numbers.
 
 ```jsx
 <NumberInput label="Harga" locale="id" step={0.01} />
 ```
 
-Use when the value is a number a user tunes in small moves (quantities, limits, thresholds). Not for phone numbers, codes or IDs (use `Input` or `InputOTP` — those are strings, not quantities), and not for coarse picks along a visual range (use `Slider`).
+Use when the value is a number a user tunes in small moves (quantities, limits, thresholds). Not for phone numbers, codes or IDs (use `Input` or `InputOTP`, since those are strings, not quantities), and not for coarse picks along a visual range (use `Slider`).
 
 ```ts
 export interface NumberInputProps extends Omit<React.InputHTMLAttributes<HTMLInputElement>, 'size' | 'value' | 'defaultValue' | 'onChange' | 'min' | 'max' | 'step'> {
@@ -3394,7 +3394,7 @@ export interface NumberInputProps extends Omit<React.InputHTMLAttributes<HTMLInp
   label?: string;
   /** Muted helper text below */
   hint?: string;
-  /** Error message below — also sets invalid styling */
+  /** Error message below; also sets invalid styling. */
   error?: string;
   /** Invalid styling with no message. @default false */
   invalid?: boolean;
@@ -3415,7 +3415,7 @@ export interface NumberInputProps extends Omit<React.InputHTMLAttributes<HTMLInp
   placeholder?: string;
   /**
    * BCP 47 locale (e.g. 'id', 'en-US') for locale-aware display and parsing via
-   * Intl.NumberFormat — 'id' groups with '.' and decimals with ',', 'en' the
+   * Intl.NumberFormat: 'id' groups with '.' and decimals with ',', 'en' the
    * reverse. Ignored when both `format` and `parse` are given. Omit for plain,
    * ungrouped formatting (the default).
    */
@@ -3428,8 +3428,8 @@ export interface NumberInputProps extends Omit<React.InputHTMLAttributes<HTMLInp
   className?: string;
 }
 /**
- * Numeric field with stepper buttons. A text input with inputmode="decimal" —
- * not type=number — so typing stays free-form; the value commits on blur:
+ * Numeric field with stepper buttons. A text input with inputmode="decimal"
+ * (not type=number), so typing stays free-form; the value commits on blur:
  * parse, clamp to min/max, snap to the step grid. Empty commits null.
  * ArrowUp/Down step, Shift+Arrow steps by 10× step, Home/End jump to finite
  * rails. Steppers disable at the rails.
@@ -3588,7 +3588,7 @@ export declare const Slider: React.ForwardRefExoticComponent<SliderProps & React
 
 Group: forms · Source: /components/forms/Switch.jsx · Exports: Switch
 
-On/off toggle with springy thumb — for settings that apply immediately (otherwise use Checkbox).
+On/off toggle with a springy thumb, for settings that apply immediately (otherwise use Checkbox).
 
 ```jsx
 <Switch defaultChecked label="Usage alerts" />
@@ -3626,7 +3626,7 @@ Meridian's `label`, `hint`, `error`, and `invalid` props remain additive field h
 export interface TextareaProps extends React.TextareaHTMLAttributes<HTMLTextAreaElement> {
   label?: string;
   hint?: string;
-  /** Error message below — also sets invalid styling */
+  /** Error message below; also sets invalid styling. */
   error?: string;
   invalid?: boolean;
 }
@@ -3688,7 +3688,7 @@ export declare const ToggleGroupItem: React.ForwardRefExoticComponent<ToggleGrou
 
 Group: icons · Source: /components/icons/Icon.jsx · Exports: Icon
 
-Renders one of the 117 glyphs shipped in `assets/icons/` (114 curated Lucide icons plus the `linkedin`, `x-brand` and `github-brand` marks), inheriting `currentColor`. Naming rule: when a Lucide name is taken, the filled brand mark gets a `-brand` suffix — `x` is the close mark and `github` the outline, so the logos are `x-brand` and `github-brand`.
+Renders one of the 117 glyphs shipped in `assets/icons/` (114 curated Lucide icons plus the `linkedin`, `x-brand` and `github-brand` marks), inheriting `currentColor`. Naming rule: when a Lucide name is taken, the filled brand mark gets a `-brand` suffix: `x` is the close mark and `github` the outline, so the logos are `x-brand` and `github-brand`.
 
 ```jsx
 <Icon name="arrow-right" />
@@ -3884,7 +3884,7 @@ export declare function navigationMenuTriggerStyle(): string;
 
 Group: navigation · Source: /components/navigation/PageControl.jsx · Exports: PageControl
 
-Carousel dots — active dot stretches to an ink pill.
+Carousel dots; the active dot stretches to an ink pill.
 
 ```jsx
 <PageControl count={4} index={i} onChange={setI} />
@@ -3942,7 +3942,7 @@ export declare const PaginationEllipsis: React.ForwardRefExoticComponent<React.H
 
 Group: navigation · Source: /components/navigation/SegmentedControl.jsx · Exports: SegmentedControl
 
-Inline 2–5-way toggle on a sand track; active segment is a white hairline chip. For views/ranges — use Tabs for page sections.
+Inline 2–5-way toggle on a sand track; active segment is a white hairline chip. Use it for views/ranges, and Tabs for page sections.
 
 ```jsx
 <SegmentedControl options={['7d', '30d', '90d']} value={range} onChange={setRange} />
@@ -4074,7 +4074,7 @@ export const SidebarRail: React.ForwardRefExoticComponent<React.ButtonHTMLAttrib
 
 Group: navigation · Source: /components/navigation/Steps.jsx · Exports: Steps
 
-Numbered progress rail — vertical for agent task logs, horizontal for wizards.
+Numbered progress rail: vertical for agent task logs, horizontal for wizards.
 
 ```jsx
 <Steps current={1} items={[
@@ -4559,11 +4559,11 @@ export declare const SheetDescription: React.ForwardRefExoticComponent<DialogSlo
 
 ## Design tokens
 
-165 custom property names by file (names only — resolve current values from /styles.css, which imports these files, or /tokens.json):
+165 custom property names by file (names only; resolve current values from /styles.css, which imports these files, or /tokens.json):
 
 ### /tokens/base.css
 
-(no custom properties — font-face declarations only)
+(no custom properties, font-face declarations only)
 
 ### /tokens/colors.css
 
@@ -4685,11 +4685,11 @@ export declare const SheetDescription: React.ForwardRefExoticComponent<DialogSlo
 
 ### /tokens/fonts.css
 
-(no custom properties — font-face declarations only)
+(no custom properties, font-face declarations only)
 
 ### /tokens/layers.css
 
-(no custom properties — font-face declarations only)
+(no custom properties, font-face declarations only)
 
 ### /tokens/spacing.css
 
@@ -4752,6 +4752,6 @@ export declare const SheetDescription: React.ForwardRefExoticComponent<DialogSlo
 
 ## More
 
-- /llms.txt — the short map of this repository
-- /site/registry.json — machine-readable registry index; per-item install files in /site/registry/
-- /guidelines/ — accessibility, forms, governance
+- /llms.txt: the short map of this repository
+- /site/registry.json: machine-readable registry index; per-item install files in /site/registry/
+- /guidelines/: accessibility, forms, governance

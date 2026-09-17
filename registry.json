@@ -183,7 +183,7 @@
       "name": "confirmation",
       "type": "registry:ui",
       "title": "Confirmation",
-      "description": "Inline approval card for agent actions \u2014 pending shows Approve/Reject, settled shows a status line. Ringed accent (or danger) border while pending.",
+      "description": "Inline approval card for agent actions. Pending shows Approve/Reject, settled shows a status line. Ringed accent (or danger) border while pending.",
       "dependencies": [
         "react"
       ],
@@ -245,7 +245,7 @@
       "name": "documentcard",
       "type": "registry:ui",
       "title": "DocumentCard",
-      "description": "Inline document artifact \u2014 header with copy + expand, content clipped at `collapsedHeight` with a paper fade; measured height animates open.",
+      "description": "Inline document artifact: header with copy + expand, content clipped at `collapsedHeight` with a paper fade; measured height animates open.",
       "dependencies": [
         "react"
       ],
@@ -461,7 +461,7 @@
       "name": "player",
       "type": "registry:ui",
       "title": "Player",
-      "description": "Audio player \u2014 seekable waveform (drag or click), \u00b110s skip, play/pause, mute, tabular timestamps. Expose a ref for `jumpTo` and pair with Transcript via `onTimeChange`.",
+      "description": "Audio player with seekable waveform (drag or click), \u00b110s skip, play/pause, mute, tabular timestamps. Expose a ref for `jumpTo` and pair with Transcript via `onTimeChange`.",
       "dependencies": [
         "react"
       ],
@@ -524,7 +524,7 @@
       "name": "promptsteps",
       "type": "registry:ui",
       "title": "PromptSteps",
-      "description": "Keyboard-first inline question wizard \u2014 numbered options (1\u20139 keys), arrows to highlight, Enter to confirm, Esc dismisses, \u2190/Shift-Tab goes back; \"Other\" is an inline input. Calls `onComplete` with all answers.",
+      "description": "Keyboard-first inline question wizard: numbered options (1\u20139 keys), arrows to highlight, Enter to confirm, Esc dismisses, \u2190/Shift-Tab goes back; \"Other\" is an inline input. Calls `onComplete` with all answers.",
       "dependencies": [
         "react"
       ],
@@ -556,7 +556,7 @@
       "name": "reasoning",
       "type": "registry:ui",
       "title": "Reasoning",
-      "description": "Collapsible \"thinking\" block for model reasoning \u2014 pulsing brain glyph while streaming, then \"Thought for Ns\".",
+      "description": "Collapsible \"thinking\" block for model reasoning: pulsing brain glyph while streaming, then \"Thought for Ns\".",
       "dependencies": [
         "react"
       ],
@@ -587,7 +587,7 @@
       "name": "richcomposer",
       "type": "registry:ui",
       "title": "RichComposer",
-      "description": "Composer with @-mention chips and /-commands \u2014 typing a trigger opens a filtered list above the composer (arrows + Enter, groups supported); mentions insert as atomic chips that delete as one unit; Enter submits, Shift+Enter breaks.",
+      "description": "Composer with @-mention chips and /-commands. Typing a trigger opens a filtered list above the composer (arrows + Enter, groups supported); mentions insert as atomic chips that delete as one unit; Enter submits, Shift+Enter breaks.",
       "dependencies": [
         "react"
       ],
@@ -618,7 +618,7 @@
       "name": "sandbox",
       "type": "registry:ui",
       "title": "Sandbox",
-      "description": "Collapsible code-run panel \u2014 mono title, soft ring while running / on error, tabbed Output & Code panes. Opens itself on error by default.",
+      "description": "Collapsible code-run panel: mono title, soft ring while running / on error, tabbed Output & Code panes. Opens itself on error by default.",
       "dependencies": [
         "react"
       ],
@@ -649,7 +649,7 @@
       "name": "selectionquote",
       "type": "registry:ui",
       "title": "SelectionQuote",
-      "description": "Select-to-quote affordance \u2014 wrap message content; selecting text floats a small toolbar above the selection (flips below near the top, clamped to the container). Actions receive the selected text.",
+      "description": "Select-to-quote affordance. Wrap message content; selecting text floats a small toolbar above the selection (flips below near the top, clamped to the container). Actions receive the selected text.",
       "dependencies": [
         "react"
       ],
@@ -680,7 +680,7 @@
       "name": "sourcecard",
       "type": "registry:ui",
       "title": "SourceCard",
-      "description": "Web-source card for grounded answers \u2014 optional 16:9 thumbnail, favicon + domain row, title, 3-line clamped description. `variant=\"plain\"` for dense lists.",
+      "description": "Web-source card for grounded answers: optional 16:9 thumbnail, favicon + domain row, title, 3-line clamped description. `variant=\"plain\"` for dense lists.",
       "dependencies": [
         "react"
       ],
@@ -742,7 +742,7 @@
       "name": "task",
       "type": "registry:ui",
       "title": "Task",
-      "description": "Rail-connected list of agent actions \u2014 icon rows joined by hairline connectors; last row's rail is hidden. `streaming` pulses the newest row.",
+      "description": "Rail-connected list of agent actions: icon rows joined by hairline connectors; last row's rail is hidden. `streaming` pulses the newest row.",
       "dependencies": [
         "react"
       ],
@@ -773,7 +773,7 @@
       "name": "todo",
       "type": "registry:ui",
       "title": "Todo",
-      "description": "Collapsible agent checklist card \u2014 spinner while in progress, espresso check + strikethrough when done, n/total count in the header.",
+      "description": "Collapsible agent checklist card: spinner while in progress, espresso check + strikethrough when done, n/total count in the header.",
       "dependencies": [
         "react"
       ],
@@ -835,7 +835,7 @@
       "name": "transcript",
       "type": "registry:ui",
       "title": "Transcript",
-      "description": "Time-synced transcript \u2014 active row derives from `currentTime`, auto-scroll keeps it centered (toggleable), timestamps jump the player, optional word-level highlight via `words`.",
+      "description": "Time-synced transcript. The active row derives from `currentTime`, auto-scroll keeps it centered (toggleable), timestamps jump the player, optional word-level highlight via `words`.",
       "dependencies": [
         "react"
       ],
@@ -896,7 +896,7 @@
       "name": "webpreview",
       "type": "registry:ui",
       "title": "WebPreview",
-      "description": "Browser pane for agent-built UIs \u2014 reload, draft-state address bar (Enter commits, Esc reverts), desktop/tablet/mobile widths (animated), collapsible console with error badge, open-in-new-tab. Pass `children` to mock the page without an iframe. Changing the `url` prop navigates the pane (parent-driv",
+      "description": "Browser pane for agent-built UIs: reload, draft-state address bar (Enter commits, Esc reverts), desktop/tablet/mobile widths (animated), collapsible console with error badge, open-in-new-tab. Pass `children` to mock the page without an iframe. Changing the `url` prop navigates the pane (parent-drive",
       "dependencies": [
         "react"
       ],
@@ -958,7 +958,7 @@
       "name": "console",
       "type": "registry:ui",
       "title": "Console",
-      "description": "Log viewer \u2014 level icons/colors, tabular timestamps, per-row collapsible stack traces, sticks to the bottom while streaming and shows a \"Latest\" pill when scrolled up.",
+      "description": "Log viewer with level icons/colors, tabular timestamps, and per-row collapsible stack traces. It sticks to the bottom while streaming and shows a \"Latest\" pill when scrolled up.",
       "dependencies": [
         "react"
       ],
@@ -1052,7 +1052,7 @@
       "name": "envlist",
       "type": "registry:ui",
       "title": "EnvList",
-      "description": "Environment variables card \u2014 secrets masked as \u2022\u2022\u2022\u2022\u2022\u2022\u2022\u2022 with a single reveal toggle in the header; per-row copy always copies the real value.",
+      "description": "Environment variables card with secrets masked as \u2022\u2022\u2022\u2022\u2022\u2022\u2022\u2022 and a single reveal toggle in the header; per-row copy always copies the real value.",
       "dependencies": [
         "react"
       ],
@@ -1083,7 +1083,7 @@
       "name": "exception",
       "type": "registry:ui",
       "title": "Exception",
-      "description": "Runtime-error card \u2014 mono type chip + message, collapsible stack frames (active frame flagged, internal frames dimmed) and an optional source excerpt with the failing line highlighted.",
+      "description": "Runtime-error card: mono type chip + message, collapsible stack frames (active frame flagged, internal frames dimmed) and an optional source excerpt with the failing line highlighted.",
       "dependencies": [
         "react"
       ],
@@ -1265,7 +1265,7 @@
       "name": "keyvaluelist",
       "type": "registry:ui",
       "title": "KeyValueList",
-      "description": "Label/value rows with hairline separators \u2014 resource details, DNS records, trade info.",
+      "description": "Label/value rows with hairline separators for resource details, DNS records, and trade info.",
       "dependencies": [
         "react"
       ],
@@ -1355,7 +1355,7 @@
       "name": "sparkline",
       "type": "registry:ui",
       "title": "Sparkline",
-      "description": "Inline trend line (SVG) \u2014 green up, red down, faint area fill. Pairs with Stat.",
+      "description": "Inline trend line (SVG): green up, red down, faint area fill. Pairs with Stat.",
       "dependencies": [
         "react"
       ],
@@ -1444,7 +1444,7 @@
       "name": "table",
       "type": "registry:ui",
       "title": "Table + TableHeader + TableBody + TableFooter + TableRow + TableHead + TableCell + TableCaption",
-      "description": "Data table: uppercase micro headers, hairline rows, optional row click. Borderless \u2014 nest it in a flush `<CardContent>` for a framed table. Sorting, selection, sticky header, and empty/loading states are built in, so the common admin table does not have to be hand-rolled around it.",
+      "description": "Data table: uppercase micro headers, hairline rows, optional row click. Borderless, so nest it in a flush `<CardContent>` for a framed table. Sorting, selection, sticky header, and empty/loading states are built in, so the common admin table does not have to be hand-rolled around it.",
       "dependencies": [
         "react"
       ],
@@ -1509,7 +1509,7 @@
       "name": "timepicker",
       "type": "registry:ui",
       "title": "TimePicker",
-      "description": "Input + listbox of time slots every `stepMinutes` between `minTime`/`maxTime`. Typing filters the list; Enter picks the highlighted slot; a typed valid time ('9:5' becomes '09:05') commits on blur even off-grid. Value is always 24h 'HH:MM' \u2014 `format24={false}` only changes the labels to 12h AM/PM.",
+      "description": "Input + listbox of time slots every `stepMinutes` between `minTime`/`maxTime`. Typing filters the list; Enter picks the highlighted slot; a typed valid time ('9:5' becomes '09:05') commits on blur even off-grid. Value is always 24h 'HH:MM'; `format24={false}` only changes the labels to 12h AM/PM.",
       "dependencies": [
         "react"
       ],
@@ -2058,7 +2058,7 @@
       "name": "toolbar",
       "type": "registry:ui",
       "title": "Toolbar",
-      "description": "Grouped icon actions on a hairline chip \u2014 editors, chart controls, bulk bars. `value` marks active (ink).",
+      "description": "Grouped icon actions on a hairline chip for editors, chart controls, and bulk bars. `value` marks active (ink).",
       "dependencies": [
         "react"
       ],
@@ -2182,7 +2182,7 @@
       "name": "banner",
       "type": "registry:ui",
       "title": "Banner",
-      "description": "Full-width strip above the app chrome \u2014 trials, incidents, announcements. One per view, max.",
+      "description": "Full-width strip above the app chrome for trials, incidents, and announcements. One per view, max.",
       "dependencies": [
         "react"
       ],
@@ -2278,7 +2278,7 @@
       "name": "loader",
       "type": "registry:ui",
       "title": "Loader",
-      "description": "Text-treatment loading state (no spinner) \u2014 `pulse` breathes opacity, `shimmer` sweeps a highlight through the label; optional staggered dots.",
+      "description": "Text-treatment loading state (no spinner). `pulse` breathes opacity, `shimmer` sweeps a highlight through the label; optional staggered dots.",
       "dependencies": [
         "react"
       ],
@@ -2462,7 +2462,7 @@
       "name": "filedrop",
       "type": "registry:ui",
       "title": "FileDrop",
-      "description": "Dashed dropzone \u2014 click or drag; ink border on hover/dragover.",
+      "description": "Dashed dropzone: click or drag, with an ink border on hover/dragover.",
       "dependencies": [
         "react"
       ],
@@ -2526,7 +2526,7 @@
       "name": "filetypeicon",
       "type": "registry:ui",
       "title": "FileTypeIcon",
-      "description": "Typed file glyph with colored extension chip \u2014 maps 20 common extensions to icon + color.",
+      "description": "Typed file glyph with a colored extension chip. Maps 20 common extensions to icon + color.",
       "dependencies": [
         "react"
       ],
@@ -2557,7 +2557,7 @@
       "name": "paymentcard",
       "type": "registry:ui",
       "title": "PaymentCard",
-      "description": "Payment card visual for trading / finance surfaces \u2014 espresso, caramel, or paper; `frozen` grays it out.",
+      "description": "Payment card visual for trading / finance surfaces in espresso, caramel, or paper; `frozen` grays it out.",
       "dependencies": [
         "react"
       ],
@@ -2587,7 +2587,7 @@
       "name": "button",
       "type": "registry:ui",
       "title": "Button",
-      "description": "The action button \u2014 primary for the one main action per view, secondary/ghost for the rest.",
+      "description": "The action button: primary for the one main action per view, secondary/ghost for the rest.",
       "dependencies": [
         "react"
       ],
@@ -2648,7 +2648,7 @@
       "name": "buttontile",
       "type": "registry:ui",
       "title": "ButtonTile + ButtonTileGroup",
-      "description": "Large selectable tile \u2014 plan pickers, onboarding choices. Wrap in `ButtonTileGroup columns={n}`.",
+      "description": "Large selectable tile for plan pickers and onboarding choices. Wrap in `ButtonTileGroup columns={n}`.",
       "dependencies": [
         "react"
       ],
@@ -2959,7 +2959,7 @@
       "name": "numberinput",
       "type": "registry:ui",
       "title": "NumberInput",
-      "description": "Numeric field with stepper buttons; renders bare, or as a full field when `label`/`hint`/`error` are set. It is a text input with `inputmode=\"decimal\"` \u2014 not `type=number` \u2014 so typing stays free-form and the value only commits on blur: parse, clamp to `min`/`max`, snap to the `step` grid (float nois",
+      "description": "Numeric field with stepper buttons; renders bare, or as a full field when `label`/`hint`/`error` are set. It is a text input with `inputmode=\"decimal\"` (not `type=number`), so typing stays free-form and the value only commits on blur: it parses, clamps to `min`/`max`, snap to the `step` grid (float ",
       "dependencies": [
         "react"
       ],
@@ -3115,7 +3115,7 @@
       "name": "switch",
       "type": "registry:ui",
       "title": "Switch",
-      "description": "On/off toggle with springy thumb \u2014 for settings that apply immediately (otherwise use Checkbox).",
+      "description": "On/off toggle with a springy thumb, for settings that apply immediately (otherwise use Checkbox).",
       "dependencies": [
         "react"
       ],
@@ -3208,7 +3208,7 @@
       "name": "icon",
       "type": "registry:ui",
       "title": "Icon",
-      "description": "Renders one of the 117 glyphs shipped in `assets/icons/` (114 curated Lucide icons plus the `linkedin`, `x-brand` and `github-brand` marks), inheriting `currentColor`. Naming rule: when a Lucide name is taken, the filled brand mark gets a `-brand` suffix \u2014 `x` is the close mark and `github` the outl",
+      "description": "Renders one of the 117 glyphs shipped in `assets/icons/` (114 curated Lucide icons plus the `linkedin`, `x-brand` and `github-brand` marks), inheriting `currentColor`. Naming rule: when a Lucide name is taken, the filled brand mark gets a `-brand` suffix: `x` is the close mark and `github` the outli",
       "dependencies": [
         "react"
       ],
@@ -3331,7 +3331,7 @@
       "name": "pagecontrol",
       "type": "registry:ui",
       "title": "PageControl",
-      "description": "Carousel dots \u2014 active dot stretches to an ink pill.",
+      "description": "Carousel dots; the active dot stretches to an ink pill.",
       "dependencies": [
         "react"
       ],
@@ -3392,7 +3392,7 @@
       "name": "segmentedcontrol",
       "type": "registry:ui",
       "title": "SegmentedControl",
-      "description": "Inline 2\u20135-way toggle on a sand track; active segment is a white hairline chip. For views/ranges \u2014 use Tabs for page sections.",
+      "description": "Inline 2\u20135-way toggle on a sand track; active segment is a white hairline chip. Use it for views/ranges, and Tabs for page sections.",
       "dependencies": [
         "react"
       ],
@@ -3486,7 +3486,7 @@
       "name": "steps",
       "type": "registry:ui",
       "title": "Steps",
-      "description": "Numbered progress rail \u2014 vertical for agent task logs, horizontal for wizards.",
+      "description": "Numbered progress rail: vertical for agent task logs, horizontal for wizards.",
       "dependencies": [
         "react"
       ],
@@ -4373,7 +4373,7 @@
       "name": "starter-marketing-page",
       "type": "registry:page",
       "title": "Marketing page",
-      "description": "Marketing journey (3 pages): home, pricing, contact \u2014 linked to auth + docs",
+      "description": "Marketing journey (3 pages): home, pricing, contact, linked to auth + docs",
       "dependencies": [
         "react",
         "react-dom"

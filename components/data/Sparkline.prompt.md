@@ -1,4 +1,4 @@
-Inline trend line (SVG) — green up, red down, faint area fill. Pairs with Stat.
+Inline trend line (SVG): green up, red down, faint area fill. Pairs with Stat.
 
 ```jsx
 <Sparkline data={[42, 48, 45, 61, 58, 72, 84]} />

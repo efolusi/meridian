@@ -2,7 +2,7 @@
   "name": "console",
   "type": "registry:ui",
   "title": "Console",
-  "description": "Log viewer \u2014 level icons/colors, tabular timestamps, per-row collapsible stack traces, sticks to the bottom while streaming and shows a \"Latest\" pill when scrolled up.",
+  "description": "Log viewer with level icons/colors, tabular timestamps, and per-row collapsible stack traces. It sticks to the bottom while streaming and shows a \"Latest\" pill when scrolled up.",
   "dependencies": [
     "react"
   ],
@@ -25,7 +25,7 @@
     {
       "path": "components/code/Console.prompt.md",
       "type": "registry:component",
-      "content": "# Console\n\nLog viewer \u2014 level icons/colors, tabular timestamps, per-row collapsible stack traces, sticks to the bottom while streaming and shows a \"Latest\" pill when scrolled up.\n\n```jsx\n<Console entries={[\n  { level: 'info', time: '14:02:11', text: 'Server started on :3000' },\n  { level: 'error', time: '14:02:19', text: 'Unhandled rejection', stack: 'at fetchUser (api.js:32)', source: 'api.js:32' },\n]} />\n```\n"
+      "content": "# Console\n\nLog viewer with level icons/colors, tabular timestamps, and per-row collapsible stack traces. It sticks to the bottom while streaming and shows a \"Latest\" pill when scrolled up.\n\n```jsx\n<Console entries={[\n  { level: 'info', time: '14:02:11', text: 'Server started on :3000' },\n  { level: 'error', time: '14:02:19', text: 'Unhandled rejection', stack: 'at fetchUser (api.js:32)', source: 'api.js:32' },\n]} />\n```\n"
     }
   ],
   "categories": [

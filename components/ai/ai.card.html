@@ -18,7 +18,7 @@ function Demo() {
       <Reasoning duration="3s" defaultOpen={false}>Need read access first; then filter deliveries by status=failed between 02:00–03:00.</Reasoning>
       <ToolCall name="query_webhooks" status="success" args={{ status: 'failed', since: 'yesterday' }} result="12 failed deliveries, all 503s to the same endpoint." />
       <ChatMessage time="14:02" onCopy={() => {}} onRetry={() => {}}>
-        Connected to <strong>pg-prod-eu</strong>. Found 12 failed deliveries between 02:10 and 02:14<Citation index={1} title="webhook-log.csv" /> — all to the same endpoint, all 503s. Want me to retry them now?
+        Connected to <strong>pg-prod-eu</strong>. Found 12 failed deliveries between 02:10 and 02:14<Citation index={1} title="webhook-log.csv" />, all to the same endpoint and all 503s. Want me to retry them now?
       </ChatMessage>
       <FeedbackBar copyText="12 failed deliveries found." onFeedback={() => {}} onRetry={() => {}} note="ef-2 · 1.8s" />
       <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 16, alignItems: 'start' }}>
@@ -44,7 +44,7 @@ function Demo() {
         <div style={{ border: '1px solid var(--border-default)', borderRadius: 'var(--radius-md)', padding: 4 }}>
           <Conversation height={190} padding={12}>
             <ChatMessage role="user" name="Ada">Rebook my Lisbon flight to arrive before 15:00.</ChatMessage>
-            <ChatMessage role="assistant" name="Assistant">Found 3 nonstops. Booking TP 1287 — arrives 13:05.</ChatMessage>
+            <ChatMessage role="assistant" name="Assistant">Found 3 nonstops. Booking TP 1287: arrives 13:05.</ChatMessage>
           </Conversation>
         </div>
       </div>

@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Colors — Meridian</title>
+<title>Colors | Meridian</title>
 <meta name="description" content="The sand and brand ramps, status trios, and semantic tokens behind Meridian.">
 <link rel="icon" type="image/svg+xml" href="../assets/favicon.svg">
 <link rel="canonical" href="https://meridian.efolusi.com/site/Colors.dc.html">
@@ -12,12 +12,12 @@
 <meta name="theme-color" content="#191512" media="(prefers-color-scheme: dark)">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Meridian">
-<meta property="og:title" content="Colors — Meridian">
+<meta property="og:title" content="Colors | Meridian">
 <meta property="og:description" content="The sand and brand ramps, status trios, and semantic tokens behind Meridian.">
 <meta property="og:url" content="https://meridian.efolusi.com/site/Colors.dc.html">
 <meta property="og:image" content="https://meridian.efolusi.com/assets/meridian-social.png">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Colors — Meridian">
+<meta name="twitter:title" content="Colors | Meridian">
 <meta name="twitter:description" content="The sand and brand ramps, status trios, and semantic tokens behind Meridian.">
 <meta name="twitter:image" content="https://meridian.efolusi.com/assets/meridian-social.png">
 <script src="./support.js"></script>
@@ -47,7 +47,7 @@
 </header>
 <main class="pad-sm" style="flex:1;max-width:1160px;margin:0 auto;width:100%;padding:40px 28px 90px">
 <h1 style="font-size:38px;font-weight:680;font-family:var(--font-display);letter-spacing:-0.02em;margin:0" data-lang-id="Warna">Colors</h1>
-<p style="font-size:16.5px;line-height:1.6;color:var(--text-secondary);margin:12px 0 0;max-width:640px" data-lang-id="Setiap warna adalah CSS custom property, diambil dari logo Efolusi. Klik swatch mana pun untuk menyalin variabelnya. Nilai teresolusi langsung — ganti tema untuk melihat alias semantik memetakan ulang.">Every color is a CSS custom property, sampled from the Efolusi mark. Click any swatch to copy its variable. Values resolve live — flip the theme to watch the semantic aliases remap.</p>
+<p style="font-size:16.5px;line-height:1.6;color:var(--text-secondary);margin:12px 0 0;max-width:640px" data-lang-id="Setiap warna adalah CSS custom property, diambil dari logo Efolusi. Klik swatch mana pun untuk menyalin variabelnya. Nilai teresolusi langsung, jadi ganti tema untuk melihat alias semantik memetakan ulang.">Every color is a CSS custom property, sampled from the Efolusi mark. Click any swatch to copy its variable. Values resolve live, so flip the theme to watch the semantic aliases remap.</p>
 <sc-for list="{{ sections }}" as="s" hint-placeholder-count="3">
 <section style="margin-top:44px">
 <h2 style="font-size:22px;font-weight:600;font-family:var(--font-display);letter-spacing:-0.02em;margin:0">{{ s.title }}</h2>
@@ -100,7 +100,7 @@ class Component extends DCLogic {
       { title: 'Brand ramp', note: 'Cream → peach → caramel → cocoa, sampled from the Efolusi mark. Fixed across themes.', tokens: ramp('brand') },
       { title: 'Sand neutrals', note: 'Warm paper surfaces and ink. Fixed across themes.', tokens: ramp('sand') },
       { title: 'Status', note: 'Each trio ships a 600 foreground, 100 background, 300 border.', tokens: [...ramp('success'), ...ramp('warning'), ...ramp('danger')] },
-      { title: 'Semantic aliases', note: 'What components actually consume — these remap under data-theme="dark".', tokens: probe(['surface-page', 'surface-card', 'surface-subtle', 'surface-inverse', 'text-primary', 'text-secondary', 'text-muted', 'text-link', 'text-inverse', 'accent', 'accent-hover', 'accent-subtle', 'accent-contrast', 'border-default', 'border-strong', 'focus-ring']) },
+      { title: 'Semantic aliases', note: 'What components actually consume. These remap under data-theme="dark".', tokens: probe(['surface-page', 'surface-card', 'surface-subtle', 'surface-inverse', 'text-primary', 'text-secondary', 'text-muted', 'text-link', 'text-inverse', 'accent', 'accent-hover', 'accent-subtle', 'accent-contrast', 'border-default', 'border-strong', 'focus-ring']) },
     ].filter(s => s.tokens.length) });
   }
   renderVals() {

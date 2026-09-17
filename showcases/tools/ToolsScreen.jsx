@@ -80,7 +80,7 @@ function ToolsScreen() {
           <Divider />
           {tool === 'convert' ? (
             <div style={{ display: 'flex', flexDirection: 'column', gap: 12 }}>
-              <FileDrop accept="*/*" hint="PDF, MP4, PNG, DOCX — up to 2 GB each" onFiles={addFiles} />
+              <FileDrop accept="*/*" hint="PDF, MP4, PNG, DOCX, up to 2 GB each" onFiles={addFiles} />
               {files.length === 0 && <Empty><EmptyHeader><EmptyMedia variant="icon"><Icon name="files" size={24} /></EmptyMedia><EmptyTitle>Add your first file</EmptyTitle><EmptyDescription>Everything you drop here stays in this workspace.</EmptyDescription></EmptyHeader></Empty>}
               {files.map(f => (
                 <FileTile key={f.id} name={f.name} size={f.size}
@@ -98,7 +98,7 @@ function ToolsScreen() {
           ) : tool === 'encode' ? (
             <EncodePane />
           ) : (
-            <Empty className="ef-empty--bordered"><EmptyHeader><EmptyMedia variant="icon"><Icon name="scan" size={24} /></EmptyMedia><EmptyTitle>Scanner</EmptyTitle><EmptyDescription>Intentionally omitted from this kit — the Convert flow is the reference layout.</EmptyDescription></EmptyHeader></Empty>
+            <Empty className="ef-empty--bordered"><EmptyHeader><EmptyMedia variant="icon"><Icon name="scan" size={24} /></EmptyMedia><EmptyTitle>Scanner</EmptyTitle><EmptyDescription>Intentionally omitted from this kit. The Convert flow is the reference layout.</EmptyDescription></EmptyHeader></Empty>
           )}
         </CardContent></Card>
       </div>

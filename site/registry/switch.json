@@ -2,7 +2,7 @@
   "name": "switch",
   "type": "registry:ui",
   "title": "Switch",
-  "description": "On/off toggle with springy thumb \u2014 for settings that apply immediately (otherwise use Checkbox).",
+  "description": "On/off toggle with a springy thumb, for settings that apply immediately (otherwise use Checkbox).",
   "dependencies": [
     "react"
   ],
@@ -25,7 +25,7 @@
     {
       "path": "components/forms/Switch.prompt.md",
       "type": "registry:component",
-      "content": "On/off toggle with springy thumb \u2014 for settings that apply immediately (otherwise use Checkbox).\n\n```jsx\n<Switch defaultChecked label=\"Usage alerts\" />\n<Switch size=\"sm\" label=\"Auto-renew\" />\n```\n"
+      "content": "On/off toggle with a springy thumb, for settings that apply immediately (otherwise use Checkbox).\n\n```jsx\n<Switch defaultChecked label=\"Usage alerts\" />\n<Switch size=\"sm\" label=\"Auto-renew\" />\n```\n"
     }
   ],
   "categories": [

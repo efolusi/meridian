@@ -2,7 +2,7 @@
   "name": "todo",
   "type": "registry:ui",
   "title": "Todo",
-  "description": "Collapsible agent checklist card \u2014 spinner while in progress, espresso check + strikethrough when done, n/total count in the header.",
+  "description": "Collapsible agent checklist card: spinner while in progress, espresso check + strikethrough when done, n/total count in the header.",
   "dependencies": [
     "react"
   ],
@@ -25,7 +25,7 @@
     {
       "path": "components/ai/Todo.prompt.md",
       "type": "registry:component",
-      "content": "# Todo\n\nCollapsible agent checklist card \u2014 spinner while in progress, espresso check + strikethrough when done, n/total count in the header.\n\n```jsx\n<Todo title=\"Plan\" items={[\n  { label: 'Read schema', status: 'done' },\n  { label: 'Write migration', status: 'progress' },\n  { label: 'Run tests', status: 'pending' },\n]} />\n```\n"
+      "content": "# Todo\n\nCollapsible agent checklist card: spinner while in progress, espresso check + strikethrough when done, n/total count in the header.\n\n```jsx\n<Todo title=\"Plan\" items={[\n  { label: 'Read schema', status: 'done' },\n  { label: 'Write migration', status: 'progress' },\n  { label: 'Run tests', status: 'pending' },\n]} />\n```\n"
     }
   ],
   "categories": [

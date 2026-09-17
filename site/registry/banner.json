@@ -2,7 +2,7 @@
   "name": "banner",
   "type": "registry:ui",
   "title": "Banner",
-  "description": "Full-width strip above the app chrome \u2014 trials, incidents, announcements. One per view, max.",
+  "description": "Full-width strip above the app chrome for trials, incidents, and announcements. One per view, max.",
   "dependencies": [
     "react"
   ],
@@ -26,7 +26,7 @@
     {
       "path": "components/feedback/Banner.prompt.md",
       "type": "registry:component",
-      "content": "Full-width strip above the app chrome \u2014 trials, incidents, announcements. One per view, max.\n\n```jsx\n<Banner tone=\"warning\" icon=\"triangle-alert\" action={<button className=\"ef-banner__action\" onClick={billing}>Add card</button>} onDismiss={hide}>\n  <strong>Trial ends in 3 days.</strong> Your workspace pauses after that.\n</Banner>\n```\n\n`action` takes a node and renders it as-is, so the caller owns its interaction.\n"
+      "content": "Full-width strip above the app chrome for trials, incidents, and announcements. One per view, max.\n\n```jsx\n<Banner tone=\"warning\" icon=\"triangle-alert\" action={<button className=\"ef-banner__action\" onClick={billing}>Add card</button>} onDismiss={hide}>\n  <strong>Trial ends in 3 days.</strong> Your workspace pauses after that.\n</Banner>\n```\n\n`action` takes a node and renders it as-is, so the caller owns its interaction.\n"
     }
   ],
   "categories": [

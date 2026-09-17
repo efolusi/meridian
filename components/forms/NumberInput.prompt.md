@@ -1,4 +1,4 @@
-Numeric field with stepper buttons; renders bare, or as a full field when `label`/`hint`/`error` are set. It is a text input with `inputmode="decimal"` — not `type=number` — so typing stays free-form and the value only commits on blur: parse, clamp to `min`/`max`, snap to the `step` grid (float noise rounded away). An emptied field commits `null`.
+Numeric field with stepper buttons; renders bare, or as a full field when `label`/`hint`/`error` are set. It is a text input with `inputmode="decimal"` (not `type=number`), so typing stays free-form and the value only commits on blur: it parses, clamps to `min`/`max`, snap to the `step` grid (float noise rounded away). An emptied field commits `null`.
 
 ```jsx
 <NumberInput label="Seats" min={1} max={50} defaultValue={4} />
@@ -7,7 +7,7 @@ Numeric field with stepper buttons; renders bare, or as a full field when `label
 
 Keyboard: ArrowUp/ArrowDown step, Shift+Arrow steps by 10× `step`, Home/End jump to `min`/`max` when finite. The steppers disable at the rails and carry "Increase"/"Decrease" labels.
 
-`onChange(value, e)` fires with a number on every commit and `null` when cleared — guard for `null` before doing math. Controlled via `value` (where `null` means empty), or uncontrolled via `defaultValue`.
+`onChange(value, e)` fires with a number on every commit and `null` when cleared, so guard for `null` before doing math. Controlled via `value` (where `null` means empty), or uncontrolled via `defaultValue`.
 
 `format` renders the committed value ("128 GB"); if the formatted text is not parseable as a plain number, pass a matching `parse`:
 
@@ -15,10 +15,10 @@ Keyboard: ArrowUp/ArrowDown step, Shift+Arrow steps by 10× `step`, Home/End jum
 <NumberInput label="Price" format={n => '$' + n} parse={t => Number(t.replace(/[$,]/g, '')) || null} />
 ```
 
-For locale-aware grouping and decimals, pass `locale` (a BCP 47 tag) instead of writing `format`/`parse` by hand — `id` displays `1.234,5`, `en` displays `1,234.5`, and each parses its own format back correctly. An explicit `format`/`parse` still wins; omitting `locale` keeps plain ungrouped numbers.
+For locale-aware grouping and decimals, pass `locale` (a BCP 47 tag) instead of writing `format`/`parse` by hand: `id` displays `1.234,5`, `en` displays `1,234.5`, and each parses its own format back correctly. An explicit `format`/`parse` still wins; omitting `locale` keeps plain ungrouped numbers.
 
 ```jsx
 <NumberInput label="Harga" locale="id" step={0.01} />
 ```
 
-Use when the value is a number a user tunes in small moves (quantities, limits, thresholds). Not for phone numbers, codes or IDs (use `Input` or `InputOTP` — those are strings, not quantities), and not for coarse picks along a visual range (use `Slider`).
+Use when the value is a number a user tunes in small moves (quantities, limits, thresholds). Not for phone numbers, codes or IDs (use `Input` or `InputOTP`, since those are strings, not quantities), and not for coarse picks along a visual range (use `Slider`).

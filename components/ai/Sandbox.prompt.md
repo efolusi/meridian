@@ -1,6 +1,6 @@
 # Sandbox
 
-Collapsible code-run panel — mono title, soft ring while running / on error, tabbed Output & Code panes. Opens itself on error by default.
+Collapsible code-run panel: mono title, soft ring while running / on error, tabbed Output & Code panes. Opens itself on error by default.
 
 ```jsx
 <Sandbox title="python analyze.py" status="running" tabs={[

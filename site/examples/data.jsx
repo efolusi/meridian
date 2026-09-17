@@ -28,7 +28,7 @@ export function EmptyStateDemo() {
   return (
     <div style={{ width: '100%', maxWidth: 460 }}>
       <Empty className="ef-empty--bordered">
-        <EmptyHeader><EmptyMedia variant="icon"><Icon name="bot" /></EmptyMedia><EmptyTitle>No agents yet</EmptyTitle><EmptyDescription>Create your first agent from a template — most teams start with the inbox triager.</EmptyDescription></EmptyHeader>
+        <EmptyHeader><EmptyMedia variant="icon"><Icon name="bot" /></EmptyMedia><EmptyTitle>No agents yet</EmptyTitle><EmptyDescription>Create your first agent from a template. Most teams start with the inbox triager.</EmptyDescription></EmptyHeader>
         <EmptyContent><Button iconLeft="plus">New agent</Button></EmptyContent>
       </Empty>
     </div>

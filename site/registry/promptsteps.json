@@ -2,7 +2,7 @@
   "name": "promptsteps",
   "type": "registry:ui",
   "title": "PromptSteps",
-  "description": "Keyboard-first inline question wizard \u2014 numbered options (1\u20139 keys), arrows to highlight, Enter to confirm, Esc dismisses, \u2190/Shift-Tab goes back; \"Other\" is an inline input. Calls `onComplete` with all answers.",
+  "description": "Keyboard-first inline question wizard: numbered options (1\u20139 keys), arrows to highlight, Enter to confirm, Esc dismisses, \u2190/Shift-Tab goes back; \"Other\" is an inline input. Calls `onComplete` with all answers.",
   "dependencies": [
     "react"
   ],
@@ -26,7 +26,7 @@
     {
       "path": "components/ai/PromptSteps.prompt.md",
       "type": "registry:component",
-      "content": "# PromptSteps\n\nKeyboard-first inline question wizard \u2014 numbered options (1\u20139 keys), arrows to highlight, Enter to confirm, Esc dismisses, \u2190/Shift-Tab goes back; \"Other\" is an inline input. Calls `onComplete` with all answers.\n\n```jsx\n<PromptSteps onComplete={console.log} steps={[\n  { name: 'tone', question: 'What tone should the draft use?', options: ['Formal', 'Friendly', 'Direct'], other: true },\n  { name: 'length', question: 'How long?', options: ['One paragraph', 'One page'] },\n]} />\n```\n"
+      "content": "# PromptSteps\n\nKeyboard-first inline question wizard: numbered options (1\u20139 keys), arrows to highlight, Enter to confirm, Esc dismisses, \u2190/Shift-Tab goes back; \"Other\" is an inline input. Calls `onComplete` with all answers.\n\n```jsx\n<PromptSteps onComplete={console.log} steps={[\n  { name: 'tone', question: 'What tone should the draft use?', options: ['Formal', 'Friendly', 'Direct'], other: true },\n  { name: 'length', question: 'How long?', options: ['One paragraph', 'One page'] },\n]} />\n```\n"
     }
   ],
   "categories": [

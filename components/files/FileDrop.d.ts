@@ -7,7 +7,7 @@ export interface FileDropProps {
   multiple?: boolean;
   /** Replaces "Drop files here or browse" */
   title?: React.ReactNode;
-  /** Muted line, e.g. "PNG, MP4, PDF — up to 2 GB" */
+  /** Muted line, e.g. "PNG, MP4, PDF, up to 2 GB" */
   hint?: React.ReactNode;
   style?: React.CSSProperties;
   className?: string;

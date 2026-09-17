@@ -1,6 +1,6 @@
 # Meridian
 
-> Meridian is a general-purpose open-source design system by Efolusi: 122 accessible React components, 165 design tokens (light, dark, compact), blocks, charts, and full example apps — served browser-native with zero build step. MIT licensed.
+> Meridian is a general-purpose open-source design system by Efolusi: 122 accessible React components, 165 design tokens (light, dark, compact), blocks, charts, and full example apps, served browser-native with zero build step. MIT licensed.
 
 Live docs: https://meridian.efolusi.com · Source: https://github.com/efolusi/meridian · License: MIT
 
@@ -8,14 +8,14 @@ The layout is Meridian's own, organized by purpose: /site is the docs website; /
 
 ## Start here
 
-- /README.md — overview, principles, content fundamentals
-- /llms-full.txt — the entire system in one fetch: every component's exports, usage guidance, and typed props, plus token names (generated)
-- /skills/SKILL.md — the agent skill: how to build product interfaces with Meridian
-- /styles.css — stylesheet entry (imports /tokens/*)
-- /_ds_bundle.js — compiled component bundle (all components on one global namespace)
-- /_ds_manifest.json — machine-readable manifest of components, tokens, cards
-- /tokens.json — design tokens in DTCG format (Style Dictionary / Figma Variables); /tailwind.preset.js — Tailwind preset
-- /site/registry.json — machine-readable registry index; per-item install files in /site/registry/
+- /README.md: overview, principles, content fundamentals
+- /llms-full.txt: the entire system in one fetch: every component's exports, usage guidance, and typed props, plus token names (generated)
+- /skills/SKILL.md: the agent skill: how to build product interfaces with Meridian
+- /styles.css: stylesheet entry (imports /tokens/*)
+- /_ds_bundle.js: compiled component bundle (all components on one global namespace)
+- /_ds_manifest.json: machine-readable manifest of components, tokens, cards
+- /tokens.json: design tokens in DTCG format (Style Dictionary / Figma Variables); /tailwind.preset.js: Tailwind preset
+- /site/registry.json: machine-readable registry index; per-item install files in /site/registry/
 
 ## Components
 
@@ -23,9 +23,9 @@ The layout is Meridian's own, organized by purpose: /site is the docs website; /
 
 Every component ships three per-component flat files (plus a shared per-group specimen card HTML):
 
-- <Name>.jsx — the source (vendor it freely)
-- <Name>.d.ts — typed props interface
-- <Name>.prompt.md — usage guidance for humans and LLMs
+- <Name>.jsx: the source (vendor it freely)
+- <Name>.d.ts: typed props interface
+- <Name>.prompt.md: usage guidance for humans and LLMs
 
 ## Usage
 
@@ -38,18 +38,18 @@ Or load both from the hosted site (no install):
     <link rel="stylesheet" href="https://meridian.efolusi.com/styles.css">
     <script src="https://meridian.efolusi.com/_ds_bundle.js"></script>
 
-Or install from npm for bundler projects (Vite, Next, Remix) — ESM modules, icons inlined, fonts included, types for @types/react 18 and 19:
+Or install from npm for bundler projects (Vite, Next, Remix). It ships ESM modules with icons inlined, fonts included, and types for @types/react 18 and 19:
 
     npm install @efolusi/meridian
 
     import '@efolusi/meridian/styles.css';
     import { Button, FormField } from '@efolusi/meridian';
 
-Dark mode: set data-theme="dark" on any subtree. Compact density: data-density="compact". Semantic tokens only — never raw ramp values.
+Dark mode: set data-theme="dark" on any subtree. Compact density: data-density="compact". Use semantic tokens only, never raw ramp values.
 
 ## More
 
-- /guidelines/ — accessibility, forms, governance
-- /site/ — the documentation site (open /index.html)
-- /blocks/ — pre-composed sections; /showcases/ — example apps (lift screen code); /starters/ — starter journeys (copy the folder)
+- /guidelines/: accessibility, forms, governance
+- /site/: the documentation site (open /index.html)
+- /blocks/: pre-composed sections; /showcases/: example apps (lift screen code); /starters/: starter journeys (copy the folder)
 - /CHANGELOG.md, /CONTRIBUTING.md, /SECURITY.md, /LICENSE

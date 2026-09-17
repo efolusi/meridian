@@ -2,7 +2,7 @@
   "name": "segmentedcontrol",
   "type": "registry:ui",
   "title": "SegmentedControl",
-  "description": "Inline 2\u20135-way toggle on a sand track; active segment is a white hairline chip. For views/ranges \u2014 use Tabs for page sections.",
+  "description": "Inline 2\u20135-way toggle on a sand track; active segment is a white hairline chip. Use it for views/ranges, and Tabs for page sections.",
   "dependencies": [
     "react"
   ],
@@ -25,7 +25,7 @@
     {
       "path": "components/navigation/SegmentedControl.prompt.md",
       "type": "registry:component",
-      "content": "Inline 2\u20135-way toggle on a sand track; active segment is a white hairline chip. For views/ranges \u2014 use Tabs for page sections.\n\n```jsx\n<SegmentedControl options={['7d', '30d', '90d']} value={range} onChange={setRange} />\n<SegmentedControl options={[{ id: 'list', label: 'List', icon: 'menu' }, { id: 'board', label: 'Board', icon: 'layout-dashboard' }]} value={view} onChange={setView} />\n```\n"
+      "content": "Inline 2\u20135-way toggle on a sand track; active segment is a white hairline chip. Use it for views/ranges, and Tabs for page sections.\n\n```jsx\n<SegmentedControl options={['7d', '30d', '90d']} value={range} onChange={setRange} />\n<SegmentedControl options={[{ id: 'list', label: 'List', icon: 'menu' }, { id: 'board', label: 'Board', icon: 'layout-dashboard' }]} value={view} onChange={setView} />\n```\n"
     }
   ],
   "categories": [

@@ -1,6 +1,6 @@
 # EnvList
 
-Environment variables card — secrets masked as •••••••• with a single reveal toggle in the header; per-row copy always copies the real value.
+Environment variables card with secrets masked as •••••••• and a single reveal toggle in the header; per-row copy always copies the real value.
 
 ```jsx
 <EnvList vars={[

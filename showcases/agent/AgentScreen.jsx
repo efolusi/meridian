@@ -88,7 +88,7 @@ function AgentScreen() {
   const [msgs, setMsgs] = React.useState([
     { id: 1, role: 'user', text: 'Connect the prod database and retry yesterday\u2019s failed webhooks.', time: '14:02' },
     { id: 2, role: 'assistant', time: '14:02', body: 'terminal' },
-    { id: 3, role: 'assistant', time: '14:03', text: 'Found 12 failed deliveries between 02:10 and 02:14 — all 503s to the billing endpoint. Retrying in 3 batches with backoff. Batch 1 is done (4/4 delivered).' },
+    { id: 3, role: 'assistant', time: '14:03', text: 'Found 12 failed deliveries between 02:10 and 02:14, all 503s to the billing endpoint. Retrying in 3 batches with backoff. Batch 1 is done (4/4 delivered).' },
   ]);
   const [streaming, setStreaming] = React.useState(false);
   const endRef = React.useRef(null);
@@ -103,7 +103,7 @@ function AgentScreen() {
     setStreaming(true);
     setTimeout(() => {
       setStreaming(false);
-      setMsgs(m => [...m, { id: Date.now() + 1, role: 'assistant', time: t, text: 'On it — I\u2019ll fold that into the current run and report back when batch 3 lands.' }]);
+      setMsgs(m => [...m, { id: Date.now() + 1, role: 'assistant', time: t, text: 'On it. I\u2019ll fold that into the current run and report back when batch 3 lands.' }]);
     }, 1600);
   };
   return (
