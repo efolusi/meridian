@@ -109,7 +109,14 @@ jobs:
           npm install --no-save --no-audit --no-fund playwright@1.48.0
           npx playwright install --with-deps chromium
       - name: Button anchor cascade and state parity
-        run: node scripts/check_button_cascade.mjs
+        run: BUTTON_SHOTS="$RUNNER_TEMP/button-shots" node scripts/check_button_cascade.mjs
+      - name: Upload button interaction receipts
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: button-interaction-receipts
+          path: ${{ runner.temp }}/button-shots
+          if-no-files-found: error
       - name: Serve repo and run headless smoke
         run: |
           python3 -m http.server 8000 --bind 127.0.0.1 &

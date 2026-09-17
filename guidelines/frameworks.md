@@ -2,6 +2,34 @@
 
 Meridian ships two ways from one source: the zero-build CDN bundle (the flagship) and `@efolusi/meridian` on npm (ES modules, types, for bundlers). `react` and `react-dom` are peer dependencies (`>=18`). Pick the row that matches your stack.
 
+## Tailwind cascade order
+
+Import Meridian before Tailwind. Meridian's `styles.css` registers the shared
+layer order `theme, base, tw-preflight, meridian, components, utilities`, so
+Tailwind base/preflight cannot erase component fills, foregrounds, padding, or
+borders, while product utilities can still make deliberate layout overrides.
+
+Tailwind v4:
+
+```css
+@import '@efolusi/meridian/styles.css';
+@import 'tailwindcss';
+```
+
+Tailwind v3 preflight is emitted unlayered unless you wrap it. Keep it below
+Meridian using the registered compatibility layer:
+
+```css
+@import '@efolusi/meridian/styles.css';
+@layer tw-preflight { @tailwind base; }
+@tailwind components;
+@tailwind utilities;
+```
+
+Do not add product-side `a.ef-btn` color overrides. Anchor and native buttons
+share one upstream interaction contract, including hover, focus, active,
+disabled, loading, dark mode, and reduced motion.
+
 ## Next.js (App Router)
 
 ```bash
