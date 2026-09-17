@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Docs — Meridian</title>
+<title>Docs | Meridian</title>
 <meta name="description" content="Install Meridian, learn the token system, theming, and density, and build with 122 accessible components.">
 <link rel="icon" type="image/svg+xml" href="../assets/favicon.svg">
 <link rel="canonical" href="https://meridian.efolusi.com/site/Docs.dc.html">
@@ -12,12 +12,12 @@
 <meta name="theme-color" content="#191512" media="(prefers-color-scheme: dark)">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Meridian">
-<meta property="og:title" content="Docs — Meridian">
+<meta property="og:title" content="Docs | Meridian">
 <meta property="og:description" content="Install Meridian, learn the token system, theming, and density, and build with 122 accessible components.">
 <meta property="og:url" content="https://meridian.efolusi.com/site/Docs.dc.html">
 <meta property="og:image" content="https://meridian.efolusi.com/assets/meridian-social.png">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Docs — Meridian">
+<meta name="twitter:title" content="Docs | Meridian">
 <meta name="twitter:description" content="Install Meridian, learn the token system, theming, and density, and build with 122 accessible components.">
 <meta name="twitter:image" content="https://meridian.efolusi.com/assets/meridian-social.png">
 <script src="./support.js"></script>
@@ -84,7 +84,7 @@
 <sc-if value="{{ b.isList }}" hint-placeholder-val="{{ false }}">
 <div style="margin:12px 0 0;display:flex;flex-direction:column;gap:8px">
 <sc-for list="{{ b.items }}" as="li" hint-placeholder-count="3">
-<div style="display:flex;gap:10px;font-size:14.5px;line-height:1.6;color:var(--text-secondary)"><span style="color:var(--brand-700);flex:none">—</span><span><strong style="color:var(--text-primary);font-weight:600">{{ li.k }}</strong> {{ li.v }}</span></div>
+<div style="display:flex;gap:10px;font-size:14.5px;line-height:1.6;color:var(--text-secondary)"><span aria-hidden="true" style="color:var(--brand-700);flex:none">•</span><span><strong style="color:var(--text-primary);font-weight:600">{{ li.k }}</strong> {{ li.v }}</span></div>
 </sc-for>
 </div>
 </sc-if>
@@ -149,21 +149,21 @@ class Component extends DCLogic {
     const bundleSnippet = '<link rel="stylesheet" href="meridian/styles.css">\n<' + SC + ' src="https://unpkg.com/react@18.3.1/umd/react.production.min.js"></' + SC + '>\n<' + SC + ' src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.production.min.js"></' + SC + '>\n<' + SC + ' src="meridian/_ds_bundle.js"></' + SC + '>';
     const hostedSnippet = '<link rel="stylesheet" href="https://meridian.efolusi.com/styles.css">\n<' + SC + ' src="https://unpkg.com/react@18.3.1/umd/react.production.min.js"></' + SC + '>\n<' + SC + ' src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.production.min.js"></' + SC + '>\n<' + SC + ' src="https://meridian.efolusi.com/_ds_bundle.js"></' + SC + '>';
     this._sections = [
-      { group: 'Get started', id: 'introduction', title: 'Introduction', lede: 'Meridian is a general-purpose open-source design system by Efolusi. 122 accessible components, 165 tokens, and full example apps — with no build step.', blocks: [
+      { group: 'Get started', id: 'introduction', title: 'Introduction', lede: 'Meridian is a general-purpose open-source design system by Efolusi. 122 accessible components, 165 tokens, and full example apps, with no build step.', blocks: [
         p('This is not just a component library. It is the complete working system: the tokens, the components, the blocks, and the example apps that use them, in one repository you can read end to end.',
           'Ini bukan sekadar pustaka komponen. Ini sistem kerja lengkap: token, komponen, blok, dan aplikasi contoh yang memakainya, dalam satu repositori yang bisa Anda baca dari ujung ke ujung.'),
         h2('principles', 'Principles', 'Prinsip'),
         list([
-          ['Open code.', 'Every component is plain source in the repo — vendor it, edit it, own it. No wrapper layers, no style overrides against a black box.', 'Kode terbuka.', 'Setiap komponen adalah source biasa di repo — vendor, sunting, miliki. Tanpa lapisan pembungkus, tanpa override gaya terhadap kotak hitam.'],
+          ['Open code.', 'Every component is plain source in the repo. Vendor it, edit it, own it. No wrapper layers, no style overrides against a black box.', 'Kode terbuka.', 'Setiap komponen adalah source biasa di repo. Vendor, sunting, miliki. Tanpa lapisan pembungkus, tanpa override gaya terhadap kotak hitam.'],
           ['One namespace.', 'Every component hangs off a single global with one predictable prop grammar. Learn one component, you have learned them all.', 'Satu namespace.', 'Setiap komponen bergantung pada satu global dengan tata bahasa props yang dapat ditebak. Pelajari satu komponen, Anda menguasai semuanya.'],
           ['Tokens first.', 'Components never hardcode color or spacing. 165 unique tokens in three layers mean dark mode and compact density come free.', 'Token dulu.', 'Komponen tak pernah menuliskan warna atau spasi secara kaku. 165 token unik dalam tiga lapis membuat mode gelap dan densitas ringkas datang gratis.'],
-          ['Zero build.', 'One stylesheet, one bundle. It runs in any stack — or no stack — straight from a static file server.', 'Tanpa build.', 'Satu stylesheet, satu bundle. Berjalan di stack apa pun — atau tanpa stack — langsung dari server berkas statis.'],
+          ['Zero build.', 'One stylesheet, one bundle. It runs in any stack (or no stack) straight from a static file server.', 'Tanpa build.', 'Satu stylesheet, satu bundle. Berjalan di stack apa pun (atau tanpa stack) langsung dari server berkas statis.'],
           ['AI-ready.', 'Each component ships a .prompt.md usage guide, the repo ships SKILL.md and llms.txt, and the registry is machine-readable.', 'Siap untuk AI.', 'Tiap komponen menyertakan panduan .prompt.md, repo menyertakan SKILL.md dan llms.txt, dan registry-nya dapat dibaca mesin.'],
         ]),
         h2('whats-inside', 'What is inside', 'Apa isinya'),
         list([
           ['components/', '122 components in 12 groups, each with .jsx source, .d.ts types, and a .prompt.md guide.', 'components/', '122 komponen dalam 12 grup, masing-masing dengan source .jsx, tipe .d.ts, dan panduan .prompt.md.'],
-          ['tokens/', 'Color ramps, semantic roles, typography, spacing, effects — light, dark, and compact.', 'tokens/', 'Ramp warna, peran semantik, tipografi, spasi, efek — terang, gelap, dan ringkas.'],
+          ['tokens/', 'Color ramps, semantic roles, typography, spacing, and effects for light, dark, and compact.', 'tokens/', 'Ramp warna, peran semantik, tipografi, spasi, dan efek untuk terang, gelap, dan ringkas.'],
           ['blocks/', 'Pre-composed marketing and app sections.', 'blocks/', 'Bagian marketing dan aplikasi siap-pakai.'],
           ['showcases/', 'Eight complete product interfaces with connected journeys.', 'showcases/', 'Delapan antarmuka produk lengkap dengan alur terhubung.'],
           ['starters/', '9 copyable journeys: dashboard, auth, marketing, docs, app, AI workspace, CRM, finance operations, service desk.', 'starters/', '9 alur yang bisa disalin: dashboard, autentikasi, pemasaran, dokumentasi, aplikasi, ruang kerja AI, CRM, operasi keuangan, meja layanan.'],
@@ -177,11 +177,11 @@ class Component extends DCLogic {
         p('Every component is now available on the global namespace:', 'Setiap komponen kini tersedia pada namespace global:'),
         code('javascript', 'app.js', "const { Button, Card, Dialog } = window.EfolusiDesignSystem_4ffc3d;"),
         h2('npm', 'Install from npm', 'Instal dari npm'),
-        p('For bundler projects — Vite, Next.js, Remix — the same system ships as ES modules on npm. Icons are inlined, fonts travel inside the package, and the types compile against @types/react 18 and 19. react and react-dom (>=18) are peer dependencies:', 'Untuk proyek bundler — Vite, Next.js, Remix — sistem yang sama hadir sebagai modul ES di npm. Ikon di-inline, font ikut di dalam paket, dan tipe-nya terkompilasi terhadap @types/react 18 dan 19. react dan react-dom (>=18) adalah peer dependency:'),
+        p('For bundler projects (Vite, Next.js, Remix), the same system ships as ES modules on npm. Icons are inlined, fonts travel inside the package, and the types compile against @types/react 18 and 19. react and react-dom (>=18) are peer dependencies:', 'Untuk proyek bundler (Vite, Next.js, Remix), sistem yang sama hadir sebagai modul ES di npm. Ikon di-inline, font ikut di dalam paket, dan tipe-nya terkompilasi terhadap @types/react 18 dan 19. react dan react-dom (>=18) adalah peer dependency:'),
         code('text', 'terminal', 'npm install @efolusi/meridian'),
         code('javascript', 'src/main.jsx', "import '@efolusi/meridian/styles.css'; // once, at the app root\nimport { Button, Field } from '@efolusi/meridian';\n// or per component, with or without the extension:\nimport { Button } from '@efolusi/meridian/forms/Button.js';"),
         h2('hosted', 'Load from the hosted site', 'Muat dari situs yang dihosting'),
-        p('The docs deployment doubles as a CDN. Point the stylesheet and bundle at meridian.efolusi.com instead of copying files — nothing to install, and the same two files every page here loads:', 'Deployment docs sekaligus berfungsi sebagai CDN. Arahkan stylesheet dan bundle ke meridian.efolusi.com alih-alih menyalin berkas — tak ada yang perlu diinstal, dan dua berkas yang sama yang dimuat setiap halaman di sini:'),
+        p('The docs deployment doubles as a CDN. Point the stylesheet and bundle at meridian.efolusi.com instead of copying files. There is nothing to install, and these are the same two files every page here loads:', 'Deployment docs sekaligus berfungsi sebagai CDN. Arahkan stylesheet dan bundle ke meridian.efolusi.com alih-alih menyalin berkas. Tak ada yang perlu diinstal, dan ini dua berkas yang sama yang dimuat setiap halaman di sini:'),
         code('html', 'index.html', hostedSnippet),
         h2('registry', 'Install from the registry', 'Instal dari registry'),
         p('The repository is a public GitHub Registry. Compatible registry clients can install editable component source, types, usage guidance, and required Meridian dependencies from efolusi/meridian/<item>.', 'Repositori ini adalah GitHub Registry publik. Klien registry yang kompatibel dapat menginstal source komponen yang dapat disunting, tipe, panduan penggunaan, dan dependensi Meridian dari efolusi/meridian/<item>.'),
@@ -190,17 +190,17 @@ class Component extends DCLogic {
         h2('deploy', 'Deploy your own', 'Deploy sendiri'),
         p('The repository ships deploy-ready for Cloudflare: connect it as a Git project with no build command and the root as output directory, and every push deploys. Cache headers, the root redirect, the 404 page, and registry CORS are already configured in _headers, _redirects, and wrangler.jsonc.', 'Repositori hadir siap-deploy untuk Cloudflare: hubungkan sebagai proyek Git tanpa perintah build dan root sebagai direktori output, dan setiap push men-deploy. Header cache, pengalihan root, halaman 404, dan CORS registry sudah dikonfigurasi di _headers, _redirects, dan wrangler.jsonc.'),
         h2('vendor', 'Vendor single components', 'Vendor komponen tunggal'),
-        p('Prefer owning the source? Copy the component file and its types straight into your codebase — MIT, no attribution required. Most components also import a few Meridian siblings (Icon, Button, IconButton, Field, Portal among them) plus the shared stylesheet tokens; each registry item lists those under registryDependencies, so copy them too.', 'Lebih suka memiliki source-nya? Salin berkas komponen dan tipenya langsung ke basis kode Anda — MIT, tanpa atribusi. Sebagian besar komponen juga mengimpor beberapa saudara Meridian (di antaranya Icon, Button, IconButton, Field, Portal) plus token stylesheet bersama; tiap item registry mendaftarnya di registryDependencies, jadi salin juga.'),
+        p('Prefer owning the source? Copy the component file and its types straight into your codebase. MIT, no attribution required. Most components also import a few Meridian siblings (Icon, Button, IconButton, Field, Portal among them) plus the shared stylesheet tokens; each registry item lists those under registryDependencies, so copy them too.', 'Lebih suka memiliki source-nya? Salin berkas komponen dan tipenya langsung ke basis kode Anda. MIT, tanpa atribusi. Sebagian besar komponen juga mengimpor beberapa saudara Meridian (di antaranya Icon, Button, IconButton, Field, Portal) plus token stylesheet bersama; tiap item registry mendaftarnya di registryDependencies, jadi salin juga.'),
         code('text', 'terminal', 'cp meridian/components/forms/Button.jsx  src/ui/\ncp meridian/components/forms/Button.d.ts src/ui/'),
         h2('fonts', 'Fonts', 'Font'),
-        p('Meridian uses Bricolage Grotesque for display, Figtree for text, and JetBrains Mono for code. The stylesheet loads them via @font-face from assets/fonts — swap the files to rebrand.', 'Meridian memakai Bricolage Grotesque untuk display, Figtree untuk teks, dan JetBrains Mono untuk kode. Stylesheet memuatnya via @font-face dari assets/fonts — ganti berkasnya untuk rebranding.'),
+        p('Meridian uses Bricolage Grotesque for display, Figtree for text, and JetBrains Mono for code. The stylesheet loads them via @font-face from assets/fonts; swap the files to rebrand.', 'Meridian memakai Bricolage Grotesque untuk display, Figtree untuk teks, dan JetBrains Mono untuk kode. Stylesheet memuatnya via @font-face dari assets/fonts; ganti berkasnya untuk rebranding.'),
         h2('frameworks', 'Framework recipes', 'Resep framework'),
-        p('Static HTML — the zero-build path. One stylesheet, one bundle, no tooling:', 'HTML statis — jalur tanpa-build. Satu stylesheet, satu bundle, tanpa tooling:'),
+        p('Static HTML: the zero-build path. One stylesheet, one bundle, no tooling:', 'HTML statis: jalur tanpa-build. Satu stylesheet, satu bundle, tanpa tooling:'),
         code('html', 'static.html', bundleSnippet),
-        p('Vite (or any bundler) — install from npm. Import the stylesheet once and components by name; vendoring stays available when you want to own the source:', 'Vite (atau bundler apa pun) — instal dari npm. Impor stylesheet sekali dan komponen berdasarkan nama; vendoring tetap tersedia saat Anda ingin memiliki source-nya:'),
-        code('javascript', 'src/main.jsx — Vite', "import '@efolusi/meridian/styles.css';\nimport { Button } from '@efolusi/meridian';"),
-        p('Next.js — the same install works from the App Router. Every module already carries the use client directive, so importing from a Server Component is fine:', 'Next.js — instalasi yang sama bekerja dari App Router. Setiap modul sudah membawa direktif use client, jadi mengimpor dari Server Component aman:'),
-        code('javascript', 'app/layout.tsx — Next.js', "import '@efolusi/meridian/styles.css';\n// any component file:\nimport { Button, Dialog } from '@efolusi/meridian';"),
+        p('Vite (or any bundler): install from npm. Import the stylesheet once and components by name; vendoring stays available when you want to own the source:', 'Vite (atau bundler apa pun): instal dari npm. Impor stylesheet sekali dan komponen berdasarkan nama; vendoring tetap tersedia saat Anda ingin memiliki source-nya:'),
+        code('javascript', 'src/main.jsx (Vite)', "import '@efolusi/meridian/styles.css';\nimport { Button } from '@efolusi/meridian';"),
+        p('Next.js: the same install works from the App Router. Every module already carries the use client directive, so importing from a Server Component is fine:', 'Next.js: instalasi yang sama bekerja dari App Router. Setiap modul sudah membawa direktif use client, jadi mengimpor dari Server Component aman:'),
+        code('javascript', 'app/layout.tsx (Next.js)', "import '@efolusi/meridian/styles.css';\n// any component file:\nimport { Button, Dialog } from '@efolusi/meridian';"),
         p('Components are plain JSX; the only third-party dependencies are React, and react-dom for the portal-based overlays. Internally they compose a few Meridian siblings (most often Icon, Button, IconButton, Field, Portal), so copy those alongside and the set survives vendoring intact.', 'Komponen adalah JSX biasa; satu-satunya dependensi pihak ketiga adalah React, dan react-dom untuk overlay berbasis portal. Secara internal mereka menyusun beberapa saudara Meridian (paling sering Icon, Button, IconButton, Field, Portal), jadi salin itu juga dan set-nya tetap utuh saat divendor.'),
       ] },
       { group: 'Get started', id: 'theming', title: 'Theming', lede: 'Three token layers: raw ramps, semantic roles, component styles. You theme the middle layer.', blocks: [
@@ -213,15 +213,15 @@ class Component extends DCLogic {
         h2('override', 'Override tokens', 'Override token'),
         p('Redefine semantic tokens after the stylesheet to rebrand without touching a component:', 'Definisikan ulang token semantik setelah stylesheet untuk rebranding tanpa menyentuh komponen:'),
         code('css', 'theme-override.css', ':root {\n  --accent: #1F6F54;\n  --accent-subtle: #E9F2EE;\n  --brand-700: #1F6F54;\n}'),
-        p('Scope overrides to a subtree to theme one area only — a marketing page, an embedded widget — while the rest of the app keeps the default look.', 'Batasi override ke subtree untuk menata satu area saja — halaman marketing, widget tersemat — sementara sisa aplikasi mempertahankan tampilan default.'),
+        p('Scope overrides to a subtree to theme one area only (a marketing page, an embedded widget) while the rest of the app keeps the default look.', 'Batasi override ke subtree untuk menata satu area saja (halaman marketing, widget tersemat) sementara sisa aplikasi mempertahankan tampilan default.'),
         h2('rebrand', 'Bring your own brand', 'Bawa brand Anda sendiri'),
-        p('The brand rides on a small token set: the accent group, the focus ring pair, and the link color, all resolving through the --brand-* ramp. Replace the ramp and those aliases in one override file and every component follows — no component code changes.', 'Brand bertumpu pada set token kecil: grup accent, pasangan focus ring, dan warna tautan, semuanya teresolusi lewat ramp --brand-*. Ganti ramp dan alias itu dalam satu berkas override dan setiap komponen mengikuti — tanpa mengubah kode komponen.'),
+        p('The brand rides on a small token set: the accent group, the focus ring pair, and the link color, all resolving through the --brand-* ramp. Replace the ramp and those aliases in one override file and every component follows, with no component code changes.', 'Brand bertumpu pada set token kecil: grup accent, pasangan focus ring, dan warna tautan, semuanya teresolusi lewat ramp --brand-*. Ganti ramp dan alias itu dalam satu berkas override dan setiap komponen mengikuti, tanpa mengubah kode komponen.'),
         code('css', 'brand.css', ':root {\n  /* your ramp, 50 lightest to 950 darkest */\n  --brand-700: #1F5A46;  /* links + focus, light theme */\n  --brand-400: #4F9D82;  /* links + focus, dark theme */\n  --accent: #0B2119;\n  --accent-hover: #071812;\n  --accent-active: #04100C;\n  --accent-contrast: #FFFFFF;\n}'),
-        p('Every replacement pair keeps the system guarantees — 4.5:1 for text, 3:1 for the focus indicator — and scripts/check_contrast.py verifies both themes in one run. The full walkthrough (the dark-theme block, font swaps via the --font-* tokens, and what never to touch) is guidelines/theming.md in the repo.', 'Setiap pasangan pengganti menjaga jaminan sistem — 4.5:1 untuk teks, 3:1 untuk indikator fokus — dan scripts/check_contrast.py memverifikasi kedua tema dalam satu jalan. Panduan lengkapnya (blok tema gelap, penggantian font via token --font-*, dan apa yang tak boleh disentuh) ada di guidelines/theming.md dalam repo.'),
+        p('Every replacement pair keeps the system guarantees (4.5:1 for text, 3:1 for the focus indicator), and scripts/check_contrast.py verifies both themes in one run. The full walkthrough (the dark-theme block, font swaps via the --font-* tokens, and what never to touch) is guidelines/theming.md in the repo.', 'Setiap pasangan pengganti menjaga jaminan sistem (4.5:1 untuk teks, 3:1 untuk indikator fokus), dan scripts/check_contrast.py memverifikasi kedua tema dalam satu jalan. Panduan lengkapnya (blok tema gelap, penggantian font via token --font-*, dan apa yang tak boleh disentuh) ada di guidelines/theming.md dalam repo.'),
       ] },
       { group: 'Get started', id: 'dark-mode', title: 'Dark mode & density', lede: 'Both are attribute switches. No component rewrites, no second stylesheet.', blocks: [
         h2('dark', 'Dark mode', 'Mode gelap'),
-        p('Set data-theme="dark" on any element. Everything inside re-maps to the dark semantic tokens — including nested components you wrote yourself, as long as they use semantic tokens.', 'Setel data-theme="dark" pada elemen mana pun. Semua di dalamnya memetakan ulang ke token semantik gelap — termasuk komponen bersarang yang Anda tulis sendiri, selama memakai token semantik.'),
+        p('Set data-theme="dark" on any element. Everything inside re-maps to the dark semantic tokens, including nested components you wrote yourself, as long as they use semantic tokens.', 'Setel data-theme="dark" pada elemen mana pun. Semua di dalamnya memetakan ulang ke token semantik gelap, termasuk komponen bersarang yang Anda tulis sendiri, selama memakai token semantik.'),
         code('html', 'index.html', '<html data-theme="dark">\n  …\n</html>\n\n<!-- or scope it to a subtree -->\n<aside data-theme="dark">…</aside>'),
         h2('persist', 'Persisting the choice', 'Menyimpan pilihan'),
         code('javascript', 'theme.js', "const saved = localStorage.getItem('theme');\nif (saved) document.documentElement.setAttribute('data-theme', saved);"),
@@ -232,16 +232,16 @@ class Component extends DCLogic {
       { group: 'Get started', id: 'typography', title: 'Typography', lede: 'Two families and a mono, on a settled scale. Sentence case everywhere.', blocks: [
         h2('families', 'Families', 'Keluarga huruf'),
         list([
-          ['Display — Bricolage Grotesque.', 'Headlines and numbers that want presence. Weight 600–700, tight letter-spacing.', 'Display — Bricolage Grotesque.', 'Judul dan angka yang ingin tampil. Bobot 600–700, letter-spacing rapat.'],
-          ['Text — Figtree.', 'Everything readable: body, labels, controls. Weights 400–600.', 'Teks — Figtree.', 'Segala yang terbaca: body, label, kontrol. Bobot 400–600.'],
-          ['Mono — JetBrains Mono.', 'Code, tokens, IDs, tabular figures.', 'Mono — JetBrains Mono.', 'Kode, token, ID, angka tabular.'],
+          ['Display: Bricolage Grotesque.', 'Headlines and numbers that want presence. Weight 600–700, tight letter-spacing.', 'Display: Bricolage Grotesque.', 'Judul dan angka yang ingin tampil. Bobot 600–700, letter-spacing rapat.'],
+          ['Text: Figtree.', 'Everything readable: body, labels, controls. Weights 400–600.', 'Teks: Figtree.', 'Segala yang terbaca: body, label, kontrol. Bobot 400–600.'],
+          ['Mono: JetBrains Mono.', 'Code, tokens, IDs, tabular figures.', 'Mono: JetBrains Mono.', 'Kode, token, ID, angka tabular.'],
         ]),
         code('css', 'usage.css', 'h1 { font-family: var(--font-display); }\nbody { font-family: var(--font-sans); }\ncode { font-family: var(--font-mono); }'),
         h2('voice', 'Voice', 'Gaya bahasa'),
         list([
           ['Sentence case', 'for every heading, label, and button.', 'Sentence case', 'untuk setiap judul, label, dan tombol.'],
-          ['Verbs on buttons', '— "Save changes", never "Submission".', 'Kata kerja pada tombol', '— "Simpan perubahan", jangan "Pengiriman".'],
-          ['We/you', '— direct, no third person, no emoji.', 'Kami/Anda', '— langsung, tanpa orang ketiga, tanpa emoji.'],
+          ['Verbs on buttons:', '"Save changes", never "Submission".', 'Kata kerja pada tombol:', '"Simpan perubahan", jangan "Pengiriman".'],
+          ['We/you:', 'direct, no third person, no emoji.', 'Kami/Anda:', 'langsung, tanpa orang ketiga, tanpa emoji.'],
         ]),
       ] },
       { group: 'Guides', id: 'monorepo', title: 'Repository', lede: 'One tree, organized by purpose: the system core at the root, one shallow directory per surface, and a docs site that consumes them all.', blocks: [
@@ -249,19 +249,19 @@ class Component extends DCLogic {
         code('text', 'meridian/', 'meridian\n├── styles.css          # stylesheet entry — imports tokens/\n├── _ds_bundle.js       # compiled component bundle (generated)\n├── _ds_manifest.json   # machine-readable manifest (generated)\n├── tokens/             # color, typography, spacing, effects\n├── assets/             # logo, 118 icons, fonts\n├── components/         # 12 groups × (.jsx + .d.ts + .prompt.md)\n├── blocks/             # pre-composed sections\n├── showcases/          # 8 product demos in plain JSX\n├── starters/           # 9 copyable page journeys\n├── site/               # this docs site + examples + registry.json\n├── guidelines/         # a11y, forms, governance\n├── skills/ · llms.txt  # AI entry points\n└── ARCHITECTURE.md · STYLEGUIDE.md · LICENSE · README.md'),
         p('The root is the vendoring API: styles.css, tokens, assets, and the compiled bundle keep stable paths so consumers link one folder. Everything you lift code from (components, blocks, showcases) sits one shallow directory down; starters are folders you copy wholesale; the site consumes all of it and owns none of it. ARCHITECTURE.md in the repo explains every directory and what is generated versus authored. Everything versions together, so a token change is visible in every showcase in the same commit.', 'Root adalah API vendoring: styles.css, token, aset, dan bundle terkompilasi menjaga jalur stabil sehingga konsumen menaut satu folder. Semua yang Anda ambil kodenya (komponen, blok, showcase) berada satu direktori dangkal di bawah; starter adalah folder yang Anda salin utuh; situs mengonsumsi semuanya dan tak memiliki apa pun. ARCHITECTURE.md di repo menjelaskan tiap direktori dan mana yang di-generate versus ditulis tangan. Semuanya diberi versi bersama, jadi perubahan token terlihat di setiap showcase pada commit yang sama.'),
         h2('flat-files', 'Flat-file schema', 'Skema berkas datar'),
-        p('Each component is three flat files side by side — source, types, usage guide. That is the whole distribution format: no package.json per component, no barrel files, nothing to resolve. Tools (and models) can read _ds_manifest.json to enumerate everything in the repo.', 'Tiap komponen adalah tiga berkas datar berdampingan — source, tipe, panduan pemakaian. Itulah seluruh format distribusinya: tanpa package.json per komponen, tanpa berkas barrel, tak ada yang perlu diresolusi. Alat (dan model) bisa membaca _ds_manifest.json untuk mengenumerasi semua isi repo.'),
+        p('Each component is three flat files side by side: source, types, usage guide. That is the whole distribution format: no package.json per component, no barrel files, nothing to resolve. Tools (and models) can read _ds_manifest.json to enumerate everything in the repo.', 'Tiap komponen adalah tiga berkas datar berdampingan: source, tipe, panduan pemakaian. Itulah seluruh format distribusinya: tanpa package.json per komponen, tanpa berkas barrel, tak ada yang perlu diresolusi. Alat (dan model) bisa membaca _ds_manifest.json untuk mengenumerasi semua isi repo.'),
         h2('consuming', 'Consuming from your monorepo', 'Mengonsumsi dari monorepo Anda'),
         p('Vendor the meridian folder as a shared package and point every app at it:', 'Vendor folder meridian sebagai paket bersama dan arahkan setiap app padanya:'),
         code('text', 'your-repo/', 'your-repo\n├── apps\n│   ├── web        → links ../../packages/meridian/styles.css\n│   └── console    → links ../../packages/meridian/styles.css\n└── packages\n    └── meridian   # this repo, vendored'),
-        p('Because the bundle is a plain file, there is no build coupling between your apps and the system — upgrading Meridian is replacing one folder.', 'Karena bundle adalah berkas biasa, tak ada kopling build antara app Anda dan sistem — memutakhirkan Meridian berarti mengganti satu folder.'),
+        p('Because the bundle is a plain file, there is no build coupling between your apps and the system. Upgrading Meridian is replacing one folder.', 'Karena bundle adalah berkas biasa, tak ada kopling build antara app Anda dan sistem. Memutakhirkan Meridian berarti mengganti satu folder.'),
       ] },
       { group: 'Guides', id: 'ai', title: 'AI & skills', lede: 'Meridian is written to be read by models as much as by people.', blocks: [
         h2('entry', 'Entry points', 'Titik masuk'),
         list([
-          ['llms.txt', '— repo map and usage rules at the root, the first thing an agent should read.', 'llms.txt', '— peta repo dan aturan pemakaian di root, hal pertama yang harus dibaca agen.'],
-          ['SKILL.md', '— the agent skill: brand voice, token rules, where to copy screens from.', 'SKILL.md', '— skill agen: gaya brand, aturan token, dari mana menyalin layar.'],
-          ['<Name>.prompt.md', '— per-component guidance: when to use it, when not to, one canonical snippet.', '<Name>.prompt.md', '— panduan per-komponen: kapan memakainya, kapan tidak, satu snippet kanonik.'],
-          ['_ds_manifest.json', '— machine-readable registry of components, tokens, and cards.', '_ds_manifest.json', '— registry dapat dibaca mesin berisi komponen, token, dan kartu.'],
+          ['llms.txt:', 'repo map and usage rules at the root, the first thing an agent should read.', 'llms.txt:', 'peta repo dan aturan pemakaian di root, hal pertama yang harus dibaca agen.'],
+          ['SKILL.md:', 'the agent skill, covering brand voice, token rules, where to copy screens from.', 'SKILL.md:', 'skill agen yang mencakup gaya brand, aturan token, dari mana menyalin layar.'],
+          ['<Name>.prompt.md:', 'per-component guidance on when to use it and when not to, plus one canonical snippet.', '<Name>.prompt.md:', 'panduan per-komponen tentang kapan memakainya dan kapan tidak, plus satu snippet kanonik.'],
+          ['_ds_manifest.json:', 'machine-readable registry of components, tokens, and cards.', '_ds_manifest.json:', 'registry dapat dibaca mesin berisi komponen, token, dan kartu.'],
         ]),
         h2('why', 'Why it works', 'Mengapa berhasil'),
         p('One namespace and one prop grammar mean a model that has seen three Meridian components can work across all 122. Semantic tokens mean generated screens inherit dark mode and density for free. And because components are flat source files, a model can read the implementation instead of guessing.', 'Satu namespace dan satu tata bahasa props berarti model yang telah melihat tiga komponen Meridian bisa bekerja dengan seluruh 122 komponen. Token semantik berarti layar hasil generate mewarisi mode gelap dan densitas secara gratis. Dan karena komponen adalah berkas source datar, model bisa membaca implementasinya alih-alih menebak.'),
@@ -271,7 +271,7 @@ class Component extends DCLogic {
         h2('rules', 'Ground rules', 'Aturan dasar'),
         list([
           ['Semantic tokens only.', 'A PR that hardcodes a hex value or references a raw ramp is returned.', 'Hanya token semantik.', 'PR yang menuliskan nilai hex secara kaku atau merujuk ramp mentah akan dikembalikan.'],
-          ['Three files per component.', 'Source, types, prompt guide — a component without all three is not done.', 'Tiga berkas per komponen.', 'Source, tipe, panduan prompt — komponen tanpa ketiganya belum selesai.'],
+          ['Three files per component.', 'Source, types, prompt guide. A component without all three is not done.', 'Tiga berkas per komponen.', 'Source, tipe, panduan prompt. Komponen tanpa ketiganya belum selesai.'],
           ['Both themes, both densities.', 'Every change is checked in light, dark, and compact before merge.', 'Kedua tema, kedua densitas.', 'Setiap perubahan dicek dalam terang, gelap, dan ringkas sebelum merge.'],
           ['No new dependencies.', 'Components import React, react-dom, and other Meridian components. Nothing else joins that list.', 'Tanpa dependensi baru.', 'Komponen mengimpor React, react-dom, dan komponen Meridian lain. Tak ada lagi yang masuk daftar itu.'],
         ]),
@@ -281,86 +281,86 @@ class Component extends DCLogic {
       { group: 'Reference', id: 'changelog', title: 'Changelog', lede: 'Notable changes, newest first. Full history in CHANGELOG.md.', blocks: [
         h2('unreleased', 'Unreleased', 'Belum dirilis'),
         list([
-          ['Current contracts.', '— Diff now derives every review from from/to strings; Questionnaire covers the complete compositional multi-step flow; Toast uses one imperative manager contract.', 'Kontrak terkini.', '— Diff kini menyusun setiap review dari string from/to; Questionnaire mencakup alur multi-langkah composable lengkap; Toast memakai satu kontrak manager imperatif.'],
-          ['Generated facts.', '— component docs, interfaces, public counts, adherence metadata, and Guard rules regenerate from the authored sources.', 'Fakta hasil generate.', '— docs komponen, interface, hitungan publik, metadata adherence, dan aturan Guard di-generate ulang dari source yang ditulis.'],
+          ['Current contracts.', 'Diff now derives every review from from/to strings; Questionnaire covers the complete compositional multi-step flow; Toast uses one imperative manager contract.', 'Kontrak terkini.', 'Diff kini menyusun setiap review dari string from/to; Questionnaire mencakup alur multi-langkah composable lengkap; Toast memakai satu kontrak manager imperatif.'],
+          ['Generated facts.', 'Component docs, interfaces, public counts, adherence metadata, and Guard rules regenerate from the authored sources.', 'Fakta hasil generate.', 'Docs komponen, interface, hitungan publik, metadata adherence, dan aturan Guard di-generate ulang dari source yang ditulis.'],
         ]),
-        h2('v1216', '1.21.6 — September 2026', '1.21.6 — September 2026'),
+        h2('v1216', '1.21.6 (September 2026)', '1.21.6 (September 2026)'),
         list([
-          ['Cascade-safe interactions.', '— ordinary links use the link-hover token while every native and anchor Button variant retains its intended foreground through hover, focus, active, disabled, and loading states.', 'Interaksi aman terhadap cascade.', '— link biasa memakai token link-hover sementara setiap varian Button native dan anchor mempertahankan warna teks yang semestinya saat hover, fokus, aktif, nonaktif, dan loading.'],
-          ['Complete browser evidence.', '— Chromium checks both themes, all eight variants, keyboard focus, contrast, tokenized geometry, disabled and loading semantics, and reduced motion.', 'Bukti browser lengkap.', '— Chromium memeriksa kedua tema, delapan varian, fokus keyboard, kontras, geometri berbasis token, semantik nonaktif dan loading, serta reduced motion.'],
+          ['Cascade-safe interactions.', 'Ordinary links use the link-hover token while every native and anchor Button variant retains its intended foreground through hover, focus, active, disabled, and loading states.', 'Interaksi aman terhadap cascade.', 'Link biasa memakai token link-hover sementara setiap varian Button native dan anchor mempertahankan warna teks yang semestinya saat hover, fokus, aktif, nonaktif, dan loading.'],
+          ['Complete browser evidence.', 'Chromium checks both themes, all eight variants, keyboard focus, contrast, tokenized geometry, disabled and loading semantics, and reduced motion.', 'Bukti browser lengkap.', 'Chromium memeriksa kedua tema, delapan varian, fokus keyboard, kontras, geometri berbasis token, semantik nonaktif dan loading, serta reduced motion.'],
         ]),
-        h2('v1215', '1.21.5 — September 2026', '1.21.5 — September 2026'),
+        h2('v1215', '1.21.5 (September 2026)', '1.21.5 (September 2026)'),
         list([
-          ['Executable visual contracts.', '— Guard scans authored CSS for raw radii, shadows, type, and motion above 240ms, and rejects consumer repainting of Button and IconButton chrome.', 'Kontrak visual yang dapat dijalankan.', '— Guard memindai CSS aplikasi untuk radius, bayangan, tipografi mentah, dan motion di atas 240ms, serta menolak pewarnaan ulang Button dan IconButton oleh aplikasi.'],
-          ['Precise export validation.', '— lowercase helpers such as buttonVariants and toast remain valid while unknown React components still fail closed.', 'Validasi ekspor yang presisi.', '— helper huruf kecil seperti buttonVariants dan toast tetap valid sementara komponen React yang tidak dikenal tetap gagal secara aman.'],
+          ['Executable visual contracts.', 'Guard scans authored CSS for raw radii, shadows, type, and motion above 240ms, and rejects consumer repainting of Button and IconButton chrome.', 'Kontrak visual yang dapat dijalankan.', 'Guard memindai CSS aplikasi untuk radius, bayangan, tipografi mentah, dan motion di atas 240ms, serta menolak pewarnaan ulang Button dan IconButton oleh aplikasi.'],
+          ['Precise export validation.', 'Lowercase helpers such as buttonVariants and toast remain valid while unknown React components still fail closed.', 'Validasi ekspor yang presisi.', 'Helper huruf kecil seperti buttonVariants dan toast tetap valid sementara komponen React yang tidak dikenal tetap gagal secara aman.'],
         ]),
-        h2('v1214', '1.21.4 — September 2026', '1.21.4 — September 2026'),
+        h2('v1214', '1.21.4 (September 2026)', '1.21.4 (September 2026)'),
         list([
-          ['Consistent button states.', '— anchor buttons keep their variant text color on hover and focus; native and anchor buttons share the same line-height.', 'State tombol konsisten.', '— tombol berbentuk link mempertahankan warna teks variannya saat hover dan fokus; tombol native dan link memakai line-height yang sama.'],
-          ['Browser regression coverage.', '— CI compares eight button variants across light/dark themes and normal, hover, and focus states.', 'Pengujian regresi browser.', '— CI membandingkan delapan varian tombol dalam tema terang/gelap serta state normal, hover, dan fokus.'],
+          ['Consistent button states.', 'Anchor buttons keep their variant text color on hover and focus; native and anchor buttons share the same line-height.', 'State tombol konsisten.', 'Tombol berbentuk link mempertahankan warna teks variannya saat hover dan fokus; tombol native dan link memakai line-height yang sama.'],
+          ['Browser regression coverage.', 'CI compares eight button variants across light/dark themes and normal, hover, and focus states.', 'Pengujian regresi browser.', 'CI membandingkan delapan varian tombol dalam tema terang/gelap serta state normal, hover, dan fokus.'],
         ]),
-        h2('v1213', '1.21.3 — August 2026', '1.21.3 — Agustus 2026'),
+        h2('v1213', '1.21.3 (August 2026)', '1.21.3 (Agustus 2026)'),
         list([
-          ['Public Meridian Guard.', '— the npm CLI now fails closed when a target scans zero source files, while --allow-empty supports intentional empty targets.', 'Meridian Guard publik.', '— CLI npm kini gagal secara aman saat target tidak memindai berkas source, sementara --allow-empty mendukung target kosong yang disengaja.'],
-          ['Complete onboarding.', '— installation, project scripts, CI, JSON output, exit codes, API usage, limitations, and troubleshooting are documented together.', 'Onboarding lengkap.', '— instalasi, script proyek, CI, output JSON, exit code, penggunaan API, batasan, dan troubleshooting didokumentasikan bersama.'],
+          ['Public Meridian Guard.', 'The npm CLI now fails closed when a target scans zero source files, while --allow-empty supports intentional empty targets.', 'Meridian Guard publik.', 'CLI npm kini gagal secara aman saat target tidak memindai berkas source, sementara --allow-empty mendukung target kosong yang disengaja.'],
+          ['Complete onboarding.', 'Installation, project scripts, CI, JSON output, exit codes, API usage, limitations, and troubleshooting are documented together.', 'Onboarding lengkap.', 'Instalasi, script proyek, CI, output JSON, exit code, penggunaan API, batasan, dan troubleshooting didokumentasikan bersama.'],
         ]),
-        h2('v1212', '1.21.2 — August 2026', '1.21.2 — Agustus 2026'),
+        h2('v1212', '1.21.2 (August 2026)', '1.21.2 (Agustus 2026)'),
         list([
-          ['Meridian brand system.', '— the production /// mark and wordmark replace the former owl across docs, components, blocks, examples, starters, favicon, social artwork, and product surfaces.', 'Sistem merek Meridian.', '— logo /// dan wordmark production menggantikan owl lama di docs, komponen, block, example, starter, favicon, artwork sosial, dan permukaan produk.'],
-          ['Optical lockups.', '— mark height, baseline, and mark-to-name spacing are synchronized across the official SVG assets, SideNav, examples, blocks, and starter journeys.', 'Lockup optis.', '— tinggi logo, baseline, dan jarak logo-ke-nama disinkronkan di aset SVG resmi, SideNav, example, block, dan journey starter.'],
+          ['Meridian brand system.', 'The production /// mark and wordmark replace the former owl across docs, components, blocks, examples, starters, favicon, social artwork, and product surfaces.', 'Sistem merek Meridian.', 'Logo /// dan wordmark production menggantikan owl lama di docs, komponen, block, example, starter, favicon, artwork sosial, dan permukaan produk.'],
+          ['Optical lockups.', 'Mark height, baseline, and mark-to-name spacing are synchronized across the official SVG assets, SideNav, examples, blocks, and starter journeys.', 'Lockup optis.', 'Tinggi logo, baseline, dan jarak logo-ke-nama disinkronkan di aset SVG resmi, SideNav, example, block, dan journey starter.'],
         ]),
-        h2('v1211', '1.21.1 — August 2026', '1.21.1 — Agustus 2026'),
+        h2('v1211', '1.21.1 (August 2026)', '1.21.1 (Agustus 2026)'),
         list([
-          ['Dialog semantics.', '— DialogTitle renders as a semantic level-two heading while keeping its visual and accessible-name wiring.', 'Semantik dialog.', '— DialogTitle dirender sebagai heading tingkat dua yang semantik sambil mempertahankan tampilan dan wiring nama aksesibelnya.'],
+          ['Dialog semantics.', 'DialogTitle renders as a semantic level-two heading while keeping its visual and accessible-name wiring.', 'Semantik dialog.', 'DialogTitle dirender sebagai heading tingkat dua yang semantik sambil mempertahankan tampilan dan wiring nama aksesibelnya.'],
         ]),
-        h2('v1210', '1.21.0 — August 2026', '1.21.0 — Agustus 2026'),
+        h2('v1210', '1.21.0 (August 2026)', '1.21.0 (Agustus 2026)'),
         list([
-          ['One canonical composition surface.', '— Alert, Tooltip, Avatar, Card, Empty, Breadcrumb, Pagination, Slider, Skeleton, Spinner, Accordion, Collapsible, Dialog, Popover, InputGroup, and Toggle retired parallel shorthand renderers.', 'Satu permukaan komposisi kanonis.', '— Alert, Tooltip, Avatar, Card, Empty, Breadcrumb, Pagination, Slider, Skeleton, Spinner, Accordion, Collapsible, Dialog, Popover, InputGroup, dan Toggle menghentikan renderer shorthand paralel.'],
-          ['Current compatibility.', '— Chart uses the Recharts 3 composition contract, Toast is the sole notification family, and all 64 tracked compatibility families carry executable evidence.', 'Kompatibilitas terkini.', '— Chart memakai kontrak komposisi Recharts 3, Toast menjadi satu-satunya keluarga notifikasi, dan seluruh 64 keluarga kompatibilitas memiliki bukti executable.'],
+          ['One canonical composition surface.', 'Alert, Tooltip, Avatar, Card, Empty, Breadcrumb, Pagination, Slider, Skeleton, Spinner, Accordion, Collapsible, Dialog, Popover, InputGroup, and Toggle retired parallel shorthand renderers.', 'Satu permukaan komposisi kanonis.', 'Alert, Tooltip, Avatar, Card, Empty, Breadcrumb, Pagination, Slider, Skeleton, Spinner, Accordion, Collapsible, Dialog, Popover, InputGroup, dan Toggle menghentikan renderer shorthand paralel.'],
+          ['Current compatibility.', 'Chart uses the Recharts 3 composition contract, Toast is the sole notification family, and all 64 tracked compatibility families carry executable evidence.', 'Kompatibilitas terkini.', 'Chart memakai kontrak komposisi Recharts 3, Toast menjadi satu-satunya keluarga notifikasi, dan seluruh 64 keluarga kompatibilitas memiliki bukti executable.'],
         ]),
-        h2('v1200', '1.20.0 — August 2026', '1.20.0 — Agustus 2026'),
+        h2('v1200', '1.20.0 (August 2026)', '1.20.0 (Agustus 2026)'),
         list([
-          ['Stable migration surface.', '— complete Sidebar, Message, MessageScroller, and imperative Toast families joined the accessible catalogue.', 'Permukaan migrasi stabil.', '— keluarga Sidebar, Message, MessageScroller, dan Toast imperatif lengkap bergabung ke katalog aksesibel.'],
-          ['Meridian Guard.', '— the public npm package validates exports, tokens, icons, deprecated usage, and authored consumer code against a generated rule pack.', 'Meridian Guard.', '— paket npm publik memvalidasi export, token, ikon, penggunaan deprecated, dan kode konsumen terhadap rule pack hasil generate.'],
+          ['Stable migration surface.', 'Complete Sidebar, Message, MessageScroller, and imperative Toast families joined the accessible catalogue.', 'Permukaan migrasi stabil.', 'Keluarga Sidebar, Message, MessageScroller, dan Toast imperatif lengkap bergabung ke katalog aksesibel.'],
+          ['Meridian Guard.', 'The public npm package validates exports, tokens, icons, deprecated usage, and authored consumer code against a generated rule pack.', 'Meridian Guard.', 'Paket npm publik memvalidasi export, token, ikon, penggunaan deprecated, dan kode konsumen terhadap rule pack hasil generate.'],
         ]),
-        h2('v160', '1.6.0 — July 2026', '1.6.0 — Juli 2026'),
+        h2('v160', '1.6.0 (July 2026)', '1.6.0 (Juli 2026)'),
         list([
-          ['Static CSS for npm.', '— every component CSS literal ships in components.css, imported by the package stylesheet: server-rendered HTML is styled before hydration and the modules stop injecting at runtime. The CDN bundle is unchanged.', 'CSS statis untuk npm.', '— setiap literal CSS komponen dikirim di components.css, diimpor oleh stylesheet paket: HTML hasil render server bergaya sebelum hydration dan modul berhenti menyuntikkan gaya saat runtime. Bundle CDN tak berubah.'],
-          ['Accessibility.', '— Combobox implements the full combobox ARIA pattern, StatusDot always carries its state as text, and dots, Tag remove and Slider meet the 24px touch-target minimum.', 'Aksesibilitas.', '— Combobox mengimplementasikan pola ARIA combobox penuh, StatusDot selalu membawa statusnya sebagai teks, dan titik, tombol hapus Tag, serta Slider memenuhi minimum target sentuh 24px.'],
-          ['Fixed and lighter.', '— Dialog, ConfirmDialog, Drawer and the command menu no longer drop a caller className/style; fonts repack losslessly to WOFF2 (912 → 409 kB).', 'Diperbaiki dan lebih ringan.', '— Dialog, ConfirmDialog, Drawer, dan menu perintah tak lagi membuang className/style pemanggil; font dikemas ulang tanpa kehilangan ke WOFF2 (912 → 409 kB).'],
+          ['Static CSS for npm.', 'Every component CSS literal ships in components.css, imported by the package stylesheet: server-rendered HTML is styled before hydration and the modules stop injecting at runtime. The CDN bundle is unchanged.', 'CSS statis untuk npm.', 'Setiap literal CSS komponen dikirim di components.css, diimpor oleh stylesheet paket: HTML hasil render server bergaya sebelum hydration dan modul berhenti menyuntikkan gaya saat runtime. Bundle CDN tak berubah.'],
+          ['Accessibility.', 'Combobox implements the full combobox ARIA pattern, StatusDot always carries its state as text, and dots, Tag remove and Slider meet the 24px touch-target minimum.', 'Aksesibilitas.', 'Combobox mengimplementasikan pola ARIA combobox penuh, StatusDot selalu membawa statusnya sebagai teks, dan titik, tombol hapus Tag, serta Slider memenuhi minimum target sentuh 24px.'],
+          ['Fixed and lighter.', 'Dialog, ConfirmDialog, Drawer and the command menu no longer drop a caller className/style; fonts repack losslessly to WOFF2 (912 → 409 kB).', 'Diperbaiki dan lebih ringan.', 'Dialog, ConfirmDialog, Drawer, dan menu perintah tak lagi membuang className/style pemanggil; font dikemas ulang tanpa kehilangan ke WOFF2 (912 → 409 kB).'],
         ]),
-        h2('v150', '1.5.0 — July 2026', '1.5.0 — Juli 2026'),
+        h2('v150', '1.5.0 (July 2026)', '1.5.0 (Juli 2026)'),
         list([
-          ['Runtime layer.', '— Toaster owns the toast queue (a toast with an action never auto-dismisses), Field unifies label, hint, error and id wiring across all eleven controls, and every floating surface flips and shifts through a shared Portal instead of being clipped.', 'Lapisan runtime.', '— Toaster memiliki antrean toast (toast dengan aksi tak pernah auto-tutup), Field menyatukan label, hint, error, dan id di sebelas kontrol, dan setiap permukaan mengambang membalik dan bergeser lewat Portal bersama alih-alih terpotong.'],
-          ['Table.', '— sorting, selection with an indeterminate select-all, sticky header, and empty and loading states.', 'Table.', '— pengurutan, seleksi dengan select-all indeterminate, header lengket, dan state kosong serta memuat.'],
-          ['Tested and packaged.', '— 22 vitest tests over the keyboard and wiring contracts, the compiler vendored in and diffed in CI, and an ESM npm package whose types compile on @types/react 18 and 19 and which ships the fonts its own CSS asks for.', 'Teruji dan terpaket.', '— 22 tes vitest atas kontrak keyboard dan wiring, kompiler divendor dan di-diff di CI, dan paket npm ESM yang tipenya terkompilasi pada @types/react 18 dan 19 serta mengirim font yang diminta CSS-nya sendiri.'],
+          ['Runtime layer.', 'Toaster owns the toast queue (a toast with an action never auto-dismisses), Field unifies label, hint, error and id wiring across all eleven controls, and every floating surface flips and shifts through a shared Portal instead of being clipped.', 'Lapisan runtime.', 'Toaster memiliki antrean toast (toast dengan aksi tak pernah auto-tutup), Field menyatukan label, hint, error, dan id di sebelas kontrol, dan setiap permukaan mengambang membalik dan bergeser lewat Portal bersama alih-alih terpotong.'],
+          ['Table.', 'Sorting, selection with an indeterminate select-all, sticky header, and empty and loading states.', 'Table.', 'Pengurutan, seleksi dengan select-all indeterminate, header lengket, dan state kosong serta memuat.'],
+          ['Tested and packaged.', '22 vitest tests over the keyboard and wiring contracts, the compiler vendored in and diffed in CI, and an ESM npm package whose types compile on @types/react 18 and 19 and which ships the fonts its own CSS asks for.', 'Teruji dan terpaket.', '22 tes vitest atas kontrak keyboard dan wiring, kompiler divendor dan di-diff di CI, dan paket npm ESM yang tipenya terkompilasi pada @types/react 18 dan 19 serta mengirim font yang diminta CSS-nya sendiri.'],
         ]),
-        h2('v140', '1.4.0 — July 2026', '1.4.0 — Juli 2026'),
+        h2('v140', '1.4.0 (July 2026)', '1.4.0 (Juli 2026)'),
         list([
-          ['First public release.', '— the first tagged, installable version; Meridian is positioned as a general-purpose design system.', 'Rilis publik pertama.', '— versi pertama yang di-tag dan bisa diinstal; Meridian diposisikan sebagai design system serba-guna.'],
-          ['Accessibility.', '— an opaque two-layer focus ring that meets WCAG 1.4.11 in both themes, eight dark-mode contrast pairs fixed, and keyboard/focus contracts for every interactive component.', 'Aksesibilitas.', '— focus ring dua-lapis buram yang memenuhi WCAG 1.4.11 di kedua tema, delapan pasang kontras mode gelap diperbaiki, dan kontrak keyboard/fokus untuk setiap komponen interaktif.'],
-          ['Install path.', '— machine-readable registry with real dependency edges, working per-component snippets, and CI gates for contrast, registry sync, and bundle hashes.', 'Jalur instalasi.', '— registry dapat dibaca mesin dengan hubungan dependensi nyata, snippet per-komponen yang berfungsi, dan gerbang CI untuk kontras, sinkronisasi registry, dan hash bundle.'],
+          ['First public release.', 'The first tagged, installable version; Meridian is positioned as a general-purpose design system.', 'Rilis publik pertama.', 'Versi pertama yang di-tag dan bisa diinstal; Meridian diposisikan sebagai design system serba-guna.'],
+          ['Accessibility.', 'An opaque two-layer focus ring that meets WCAG 1.4.11 in both themes, eight dark-mode contrast pairs fixed, and keyboard/focus contracts for every interactive component.', 'Aksesibilitas.', 'Focus ring dua-lapis buram yang memenuhi WCAG 1.4.11 di kedua tema, delapan pasang kontras mode gelap diperbaiki, dan kontrak keyboard/fokus untuk setiap komponen interaktif.'],
+          ['Install path.', 'Machine-readable registry with real dependency edges, working per-component snippets, and CI gates for contrast, registry sync, and bundle hashes.', 'Jalur instalasi.', 'Registry dapat dibaca mesin dengan hubungan dependensi nyata, snippet per-komponen yang berfungsi, dan gerbang CI untuk kontras, sinkronisasi registry, dan hash bundle.'],
         ]),
-        h2('v130', '1.3.0 — July 2026', '1.3.0 — Juli 2026'),
+        h2('v130', '1.3.0 (July 2026)', '1.3.0 (Juli 2026)'),
         list([
-          ['16 components', 'closing the AI-chat/agent surface — Task, Todo, DocumentCard, GeneratedImage, Sandbox, WebPreview, SourceCard, PromptSteps, SelectionQuote, RichComposer, Player, Transcript (ai); Console, Exception, EnvList (code); Loader (feedback). Total: 104.', '16 komponen', 'menutup permukaan AI-chat/agen — Task, Todo, DocumentCard, GeneratedImage, Sandbox, WebPreview, SourceCard, PromptSteps, SelectionQuote, RichComposer, Player, Transcript (ai); Console, Exception, EnvList (code); Loader (feedback). Total: 104.'],
-          ['8 icons', '— at-sign, bug, corner-up-left, list-todo, skip-back, skip-forward, volume-2, volume-x. Total: 107.', '8 ikon', '— at-sign, bug, corner-up-left, list-todo, skip-back, skip-forward, volume-2, volume-x. Total: 107.'],
-          ['Diff & CodeBlock', '— Diff accepts from/to strings with word-level marks and multi-file review; CodeBlock gains a clip prop.', 'Diff & CodeBlock', '— Diff menerima string from/to dengan penanda tingkat-kata dan review multi-berkas; CodeBlock mendapat prop clip.'],
+          ['16 components', 'closing the AI-chat/agent surface: Task, Todo, DocumentCard, GeneratedImage, Sandbox, WebPreview, SourceCard, PromptSteps, SelectionQuote, RichComposer, Player, Transcript (ai); Console, Exception, EnvList (code); Loader (feedback). Total: 104.', '16 komponen', 'menutup permukaan AI-chat/agen: Task, Todo, DocumentCard, GeneratedImage, Sandbox, WebPreview, SourceCard, PromptSteps, SelectionQuote, RichComposer, Player, Transcript (ai); Console, Exception, EnvList (code); Loader (feedback). Total: 104.'],
+          ['8 icons:', 'at-sign, bug, corner-up-left, list-todo, skip-back, skip-forward, volume-2, volume-x. Total: 107.', '8 ikon:', 'at-sign, bug, corner-up-left, list-todo, skip-back, skip-forward, volume-2, volume-x. Total: 107.'],
+          ['Diff & CodeBlock:', 'Diff accepts from/to strings with word-level marks and multi-file review; CodeBlock gains a clip prop.', 'Diff & CodeBlock:', 'Diff menerima string from/to dengan penanda tingkat-kata dan review multi-berkas; CodeBlock mendapat prop clip.'],
         ]),
-        h2('v120', '1.2.0 — July 2026', '1.2.0 — Juli 2026'),
+        h2('v120', '1.2.0 (July 2026)', '1.2.0 (Juli 2026)'),
         list([
-          ['11 AI-native components', '— Reasoning, ToolCall (approval gates, streaming args), AgentRun (collapsible steps), Confirmation, Conversation (stick-to-bottom), Citation (hover previews), Suggestions, ModelSelector, UsageMeter (count-up), FeedbackBar, Diff. Total: 88.', '11 komponen AI-native', '— Reasoning, ToolCall (gerbang persetujuan, argumen streaming), AgentRun (langkah dapat dilipat), Confirmation, Conversation (menempel di bawah), Citation (pratinjau hover), Suggestions, ModelSelector, UsageMeter (angka naik), FeedbackBar, Diff. Total: 88.'],
-          ['Responsive', '— the docs site and all 9 blocks now adapt to tablet and phone widths.', 'Responsif', '— situs docs dan semua 9 blok kini menyesuaikan lebar tablet dan ponsel.'],
+          ['11 AI-native components:', 'Reasoning, ToolCall (approval gates, streaming args), AgentRun (collapsible steps), Confirmation, Conversation (stick-to-bottom), Citation (hover previews), Suggestions, ModelSelector, UsageMeter (count-up), FeedbackBar, Diff. Total: 88.', '11 komponen AI-native:', 'Reasoning, ToolCall (gerbang persetujuan, argumen streaming), AgentRun (langkah dapat dilipat), Confirmation, Conversation (menempel di bawah), Citation (pratinjau hover), Suggestions, ModelSelector, UsageMeter (angka naik), FeedbackBar, Diff. Total: 88.'],
+          ['Responsive:', 'the docs site and all 9 blocks now adapt to tablet and phone widths.', 'Responsif:', 'situs docs dan semua 9 blok kini menyesuaikan lebar tablet dan ponsel.'],
         ]),
-        h2('v110', '1.1.0 — July 2026', '1.1.0 — Juli 2026'),
+        h2('v110', '1.1.0 (July 2026)', '1.1.0 (Juli 2026)'),
         list([
           ['12 new components', 'completing the primitive set: Toggle, ToggleGroup, ButtonGroup, InputGroup, Label, Collapsible, AspectRatio, ScrollArea, Carousel, Resizable, Menubar, ContextMenu, HoverCard. Total: 77.', '12 komponen baru', 'melengkapi set primitif: Toggle, ToggleGroup, ButtonGroup, InputGroup, Label, Collapsible, AspectRatio, ScrollArea, Carousel, Resizable, Menubar, ContextMenu, HoverCard. Total: 77.'],
-          ['Docs site', '— per-component pages with live Preview/Code examples, search (⌘K), and this manual.', 'Situs docs', '— halaman per-komponen dengan contoh Preview/Code langsung, pencarian (⌘K), dan manual ini.'],
-          ['Site upgrades', '— theme customizer with copyable CSS, Blocks with Preview/Code and responsive widths (4 new blocks, 9 total), Examples page for the 8 kits, chart recipes, framework install recipes.', 'Peningkatan situs', '— penyesuai tema dengan CSS yang bisa disalin, Blocks dengan Preview/Code dan lebar responsif (4 blok baru, 9 total), halaman Examples untuk 8 kit, resep chart, resep instalasi framework.'],
-          ['Renamed', '— Efolusi DS is now Meridian, by Efolusi.', 'Ganti nama', '— Efolusi DS kini Meridian, oleh Efolusi.'],
-          ['Governance', '— SECURITY.md, CHANGELOG.md, llms.txt.', 'Tata kelola', '— SECURITY.md, CHANGELOG.md, llms.txt.'],
+          ['Docs site:', 'per-component pages with live Preview/Code examples, search (⌘K), and this manual.', 'Situs docs:', 'halaman per-komponen dengan contoh Preview/Code langsung, pencarian (⌘K), dan manual ini.'],
+          ['Site upgrades:', 'theme customizer with copyable CSS, Blocks with Preview/Code and responsive widths (4 new blocks, 9 total), Examples page for the 8 kits, chart recipes, framework install recipes.', 'Peningkatan situs:', 'penyesuai tema dengan CSS yang bisa disalin, Blocks dengan Preview/Code dan lebar responsif (4 blok baru, 9 total), halaman Examples untuk 8 kit, resep chart, resep instalasi framework.'],
+          ['Renamed:', 'Efolusi DS is now Meridian, by Efolusi.', 'Ganti nama:', 'Efolusi DS kini Meridian, oleh Efolusi.'],
+          ['Governance:', 'SECURITY.md, CHANGELOG.md, llms.txt.', 'Tata kelola:', 'SECURITY.md, CHANGELOG.md, llms.txt.'],
         ]),
-        h2('v100', '1.0.0 — July 2026', '1.0.0 — Juli 2026'),
+        h2('v100', '1.0.0 (July 2026)', '1.0.0 (Juli 2026)'),
         list([
           ['65 components', 'across 12 groups, each with source, types, and prompt guide.', '65 komponen', 'dalam 12 grup, masing-masing dengan source, tipe, dan panduan prompt.'],
           ['165 tokens', 'in light, dark, and compact, derived from the Meridian mark.', '165 token', 'dalam terang, gelap, dan ringkas, diturunkan dari logo Meridian.'],
@@ -397,7 +397,7 @@ class Component extends DCLogic {
     const GROUP_ID = { 'Get started': 'Mulai', 'Guides': 'Panduan', 'Reference': 'Referensi' };
     const TITLE_ID = { introduction: 'Pendahuluan', installation: 'Instalasi', theming: 'Penataan tema', 'dark-mode': 'Mode gelap & densitas', typography: 'Tipografi', monorepo: 'Repositori', ai: 'AI & skills', contributing: 'Berkontribusi', changelog: 'Catatan perubahan' };
     const LEDE_ID = {
-      introduction: 'Meridian adalah design system open-source serba-guna oleh Efolusi. 122 komponen aksesibel, 165 token, dan aplikasi contoh lengkap — tanpa langkah build.',
+      introduction: 'Meridian adalah design system open-source serba-guna oleh Efolusi. 122 komponen aksesibel, 165 token, dan aplikasi contoh lengkap, tanpa langkah build.',
       installation: 'Muat satu stylesheet dan satu bundle. Itu saja seluruh instalasinya.',
       theming: 'Tiga lapis token: ramp mentah, peran semantik, gaya komponen. Anda menata lapisan tengah.',
       'dark-mode': 'Keduanya sakelar atribut. Tanpa menulis ulang komponen, tanpa stylesheet kedua.',

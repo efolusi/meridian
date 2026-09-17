@@ -1,6 +1,6 @@
 # SelectionQuote
 
-Select-to-quote affordance — wrap message content; selecting text floats a small toolbar above the selection (flips below near the top, clamped to the container). Actions receive the selected text.
+Select-to-quote affordance. Wrap message content; selecting text floats a small toolbar above the selection (flips below near the top, clamped to the container). Actions receive the selected text.
 
 ```jsx
 <SelectionQuote onAction={(id, text) => quote(text)}

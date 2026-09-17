@@ -24,7 +24,7 @@
     {
       "path": "components/forms/Label.prompt.md",
       "type": "registry:component",
-      "content": "# Label\n\nStandalone field label for custom controls that lack a built-in `label` prop. Pair via `htmlFor`; `required` adds the red asterisk, `hint` a muted inline note.\n\n`<Label htmlFor=\"region\" required hint=\"Cannot change later\">Region</Label>`\n\nInput, Select, etc. already render their own labels \u2014 do not double-label them."
+      "content": "# Label\n\nStandalone field label for custom controls that lack a built-in `label` prop. Pair via `htmlFor`; `required` adds the red asterisk, `hint` a muted inline note.\n\n`<Label htmlFor=\"region\" required hint=\"Cannot change later\">Region</Label>`\n\nInput, Select, etc. already render their own labels, so do not double-label them."
     }
   ],
   "categories": [

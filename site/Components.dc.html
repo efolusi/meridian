@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Components — Meridian</title>
+<title>Components | Meridian</title>
 <meta name="description" content="122 accessible React components with live demos, typed props, and usage guides.">
 <link rel="icon" type="image/svg+xml" href="../assets/favicon.svg">
 <link rel="canonical" href="https://meridian.efolusi.com/site/Components.dc.html">
@@ -12,12 +12,12 @@
 <meta name="theme-color" content="#191512" media="(prefers-color-scheme: dark)">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Meridian">
-<meta property="og:title" content="Components — Meridian">
+<meta property="og:title" content="Components | Meridian">
 <meta property="og:description" content="122 accessible React components with live demos, typed props, and usage guides.">
 <meta property="og:url" content="https://meridian.efolusi.com/site/Components.dc.html">
 <meta property="og:image" content="https://meridian.efolusi.com/assets/meridian-social.png">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Components — Meridian">
+<meta name="twitter:title" content="Components | Meridian">
 <meta name="twitter:description" content="122 accessible React components with live demos, typed props, and usage guides.">
 <meta name="twitter:image" content="https://meridian.efolusi.com/assets/meridian-social.png">
 <script src="./support.js"></script>
@@ -82,7 +82,7 @@
 <div id="sec-preview" style="margin-top:26px"><x-import component-from-global-scope="MeridianLiveFrame" file="{{ heroFile }}" exp="{{ heroExp }}" hint-size="100%,420px"></x-import></div>
 </sc-if>
 <h2 id="sec-install" style="font-size:22px;font-weight:600;font-family:var(--font-display);letter-spacing:-0.02em;margin:40px 0 0;padding-top:8px;border-top:1px solid var(--border-default)" data-lang-id="Instalasi">Installation</h2>
-<p style="font-size:14.5px;line-height:1.6;color:var(--text-secondary);margin:8px 0 12px" data-lang-id="Muat stylesheet dan bundle terkompilasi sekali — setiap komponen bergantung pada satu namespace global. Tanpa langkah build.">Load the stylesheet and the compiled bundle once — every component hangs off a single global namespace. No build step.</p>
+<p style="font-size:14.5px;line-height:1.6;color:var(--text-secondary);margin:8px 0 12px" data-lang-id="Muat stylesheet dan bundle terkompilasi sekali. Setiap komponen bergantung pada satu namespace global. Tanpa langkah build.">Load the stylesheet and the compiled bundle once. Every component hangs off a single global namespace. No build step.</p>
 <x-import component-from-global-scope="EfolusiDesignSystem_4ffc3d.CodeBlock" lang="html" hint-size="100%,90px">{{ installCode }}</x-import>
 <p style="font-size:13.5px;line-height:1.6;color:var(--text-muted);margin:10px 0 0">{{ manualNote }}</p>
 <h2 id="sec-usage" style="font-size:22px;font-weight:600;font-family:var(--font-display);letter-spacing:-0.02em;margin:36px 0 12px" data-lang-id="Penggunaan">Usage</h2>
@@ -437,10 +437,10 @@ class Component extends DCLogic {
       hasMore: more.length > 0,
       more,
       installCode: '<link rel="stylesheet" href="https://meridian.efolusi.com/styles.css">\n<' + SC + ' src="https://unpkg.com/react@18.3.1/umd/react.production.min.js"></' + SC + '>\n<' + SC + ' src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.production.min.js"></' + SC + '>\n<' + SC + ' src="https://meridian.efolusi.com/_ds_bundle.js"></' + SC + '>',
-      manualNote: a ? 'Prefer vendoring? Copy components/' + g.id + '/' + a.name + '.jsx and ' + a.name + '.d.ts into your project — MIT, no attribution required.' : '',
+      manualNote: a ? 'Prefer vendoring? Copy components/' + g.id + '/' + a.name + '.jsx and ' + a.name + '.d.ts into your project. MIT, no attribution required.' : '',
       usageCode: a ? 'const { ' + a.name + ' } = window.' + this.state.ns + ';' : '',
       hasExt: !!(a && a.ext),
-      extNote: a && a.ext ? 'Extends ' + a.ext + ' — every native prop passes through.' : '',
+      extNote: a && a.ext ? 'Extends ' + a.ext + ', so every native prop passes through.' : '',
       hasProps: shown.length > 0,
       noProps: !!a && shown.length === 0,
       hasStyleNote: !!a && a.props.length !== shown.length,

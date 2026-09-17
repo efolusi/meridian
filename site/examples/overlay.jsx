@@ -56,7 +56,7 @@ export function DrawerDemo() {
   const { Drawer, DrawerTrigger, DrawerContent, DrawerHeader, DrawerTitle, DrawerDescription, DrawerFooter, DrawerClose, Button, KeyValueList } = window.EfolusiDesignSystem_4ffc3d;
   return <Drawer><DrawerTrigger asChild><Button variant="secondary">Review order</Button></DrawerTrigger><DrawerContent>
     <DrawerHeader><DrawerTitle>Order review</DrawerTitle><DrawerDescription>Confirm the account details before dispatch.</DrawerDescription></DrawerHeader>
-    <div style={{ padding: 24 }}><KeyValueList labelWidth={110} items={[{ label: 'Plan', value: 'Scale — $499/mo' }, { label: 'Seats', value: '38 of 50' }, { label: 'Owner', value: 'ada@acme.com', mono: true }]} /></div>
+    <div style={{ padding: 24 }}><KeyValueList labelWidth={110} items={[{ label: 'Plan', value: 'Scale ($499/mo)' }, { label: 'Seats', value: '38 of 50' }, { label: 'Owner', value: 'ada@acme.com', mono: true }]} /></div>
     <DrawerFooter><DrawerClose asChild><Button variant="secondary">Cancel</Button></DrawerClose><DrawerClose asChild><Button>Dispatch</Button></DrawerClose></DrawerFooter>
   </DrawerContent></Drawer>;
 }

@@ -2,7 +2,7 @@
   "name": "pagecontrol",
   "type": "registry:ui",
   "title": "PageControl",
-  "description": "Carousel dots \u2014 active dot stretches to an ink pill.",
+  "description": "Carousel dots; the active dot stretches to an ink pill.",
   "dependencies": [
     "react"
   ],
@@ -24,7 +24,7 @@
     {
       "path": "components/navigation/PageControl.prompt.md",
       "type": "registry:component",
-      "content": "Carousel dots \u2014 active dot stretches to an ink pill.\n\n```jsx\n<PageControl count={4} index={i} onChange={setI} />\n```\n"
+      "content": "Carousel dots; the active dot stretches to an ink pill.\n\n```jsx\n<PageControl count={4} index={i} onChange={setI} />\n```\n"
     }
   ],
   "categories": [

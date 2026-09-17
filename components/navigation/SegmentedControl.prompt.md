@@ -1,4 +1,4 @@
-Inline 2–5-way toggle on a sand track; active segment is a white hairline chip. For views/ranges — use Tabs for page sections.
+Inline 2–5-way toggle on a sand track; active segment is a white hairline chip. Use it for views/ranges, and Tabs for page sections.
 
 ```jsx
 <SegmentedControl options={['7d', '30d', '90d']} value={range} onChange={setRange} />

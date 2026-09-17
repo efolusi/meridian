@@ -1,4 +1,4 @@
-Large selectable tile — plan pickers, onboarding choices. Wrap in `ButtonTileGroup columns={n}`.
+Large selectable tile for plan pickers and onboarding choices. Wrap in `ButtonTileGroup columns={n}`.
 
 ```jsx
 <ButtonTileGroup columns={3}>

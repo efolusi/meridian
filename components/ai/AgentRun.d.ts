@@ -1,7 +1,7 @@
 export interface AgentRunStep {
   id?: string;
   title: React.ReactNode;
-  /** Supporting line — text or nodes */
+  /** Supporting line: text or nodes */
   detail?: React.ReactNode;
   /** Collapsible panel (ToolCall, Diff…) behind a "Show detail" toggle */
   children?: React.ReactNode;

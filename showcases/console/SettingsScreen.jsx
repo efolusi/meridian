@@ -65,18 +65,18 @@ function ApiTab({ notify }) {
   const createKey = () => {
     const n = ['Preview', 'CI', 'Local dev'][keys.length - 2] || 'Key ' + keys.length;
     setKeys(k => [...k, [n, 'ef_test_…' + Math.random().toString(16).slice(2, 6), 'Jul 16, 2026', false]]);
-    notify('Key created', 'Copy it now — we only show it once.');
+    notify('Key created', 'Copy it now. We only show it once.');
   };
   return (
     <div style={{ display: 'flex', flexDirection: 'column', gap: 16 }}>
-      <Card><CardHeader><CardTitle>API keys</CardTitle><CardDescription>Keys grant full access — rotate them quarterly.</CardDescription><CardAction><Button size="sm" variant="secondary" iconLeft="plus" onClick={createKey}>Create key</Button></CardAction></CardHeader><CardContent style={{ paddingInline: 0, marginBlockEnd: 'calc(var(--card-spacing) * -1)' }}>{keys.map(([env, key, date, live]) => (
+      <Card><CardHeader><CardTitle>API keys</CardTitle><CardDescription>Keys grant full access. Rotate them quarterly.</CardDescription><CardAction><Button size="sm" variant="secondary" iconLeft="plus" onClick={createKey}>Create key</Button></CardAction></CardHeader><CardContent style={{ paddingInline: 0, marginBlockEnd: 'calc(var(--card-spacing) * -1)' }}>{keys.map(([env, key, date, live]) => (
           <div key={env} style={{ display: 'flex', alignItems: 'center', gap: 12, padding: '12px 20px', borderTop: '1px solid var(--sand-100)' }}>
             <span style={{ display: 'inline-flex', width: 32, height: 32, alignItems: 'center', justifyContent: 'center', borderRadius: 'var(--radius-sm)', background: 'var(--sand-100)', color: 'var(--sand-700)' }}><Icon name="terminal" size={16} /></span>
             <div style={{ flex: 1 }}>
               <div style={{ fontSize: 14, fontWeight: 600 }}>{env} {live && <Badge className="ef-badge--success" style={{ marginLeft: 6 }}><Icon name="circle" size={7} strokeWidth={4} data-icon="inline-start" />Live</Badge>}</div>
               <div style={{ fontSize: 12, fontFamily: 'var(--font-mono)', color: 'var(--text-muted)', marginTop: 2 }}>{key} · created {date}</div>
             </div>
-            <Button size="sm" variant="secondary" iconLeft="copy" onClick={() => notify('Key copied', 'Paste it somewhere safe — it expires from your clipboard in 60s.')}>Copy</Button>
+            <Button size="sm" variant="secondary" iconLeft="copy" onClick={() => notify('Key copied', 'Paste it somewhere safe. It expires from your clipboard in 60s.')}>Copy</Button>
             <Button size="sm" variant="ghost" iconLeft="refresh-cw" onClick={() => notify(env + ' key rotated', 'The old key keeps working for 24 hours.')}>Rotate</Button>
           </div>
         ))}</CardContent></Card>

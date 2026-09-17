@@ -1,4 +1,4 @@
-Label/value rows with hairline separators — resource details, DNS records, trade info.
+Label/value rows with hairline separators for resource details, DNS records, and trade info.
 
 ```jsx
 <KeyValueList items={[

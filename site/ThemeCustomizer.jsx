@@ -30,7 +30,7 @@ function buildCss(accent, radius) {
     cssBlock(':root', { ...accent.light, ...radius.vars }),
     cssBlock('[data-theme="dark"]', accent.dark),
   ].filter(Boolean);
-  return parts.length ? parts.join('\n\n') : '/* Meridian defaults — nothing to override. */';
+  return parts.length ? parts.join('\n\n') : '/* Meridian defaults: nothing to override. */';
 }
 function ThemeCustomizer() {
   const [ds, setDs] = R.useState(window[NS] || null);
@@ -101,6 +101,6 @@ function ThemeCustomizer() {
             h('p', { style: { fontSize: 13.5, margin: '14px 0 0', color: 'var(--text-secondary)' } }, 'Read the ', h(Link, { href: '#' }, 'billing docs'), ' before upgrading.')))),
       h('div', null,
         h(CodeBlock, { lang: 'css', title: 'theme-override.css', maxHeight: 560 }, css),
-        h('p', { style: { fontSize: 13, lineHeight: 1.6, color: 'var(--text-muted)', margin: '10px 2px 0' } }, 'Load this after styles.css. Semantic tokens only — components, kits, and blocks pick it up with no other change.'))));
+        h('p', { style: { fontSize: 13, lineHeight: 1.6, color: 'var(--text-muted)', margin: '10px 2px 0' } }, 'Load this after styles.css. Semantic tokens only: components, kits, and blocks pick it up with no other change.'))));
 }
 module.exports = { ThemeCustomizer };

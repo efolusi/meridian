@@ -3,8 +3,8 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Blocks — Meridian</title>
-<meta name="description" content="Pre-composed sections — app shell, login, pricing, FAQ, and more — ready to paste into a page.">
+<title>Blocks | Meridian</title>
+<meta name="description" content="Pre-composed sections (app shell, login, pricing, FAQ, and more) ready to paste into a page.">
 <link rel="icon" type="image/svg+xml" href="../assets/favicon.svg">
 <link rel="canonical" href="https://meridian.efolusi.com/site/Blocks.dc.html">
 <meta name="robots" content="index,follow">
@@ -12,13 +12,13 @@
 <meta name="theme-color" content="#191512" media="(prefers-color-scheme: dark)">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Meridian">
-<meta property="og:title" content="Blocks — Meridian">
-<meta property="og:description" content="Pre-composed sections — app shell, login, pricing, FAQ, and more — ready to paste into a page.">
+<meta property="og:title" content="Blocks | Meridian">
+<meta property="og:description" content="Pre-composed sections (app shell, login, pricing, FAQ, and more) ready to paste into a page.">
 <meta property="og:url" content="https://meridian.efolusi.com/site/Blocks.dc.html">
 <meta property="og:image" content="https://meridian.efolusi.com/assets/meridian-social.png">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Blocks — Meridian">
-<meta name="twitter:description" content="Pre-composed sections — app shell, login, pricing, FAQ, and more — ready to paste into a page.">
+<meta name="twitter:title" content="Blocks | Meridian">
+<meta name="twitter:description" content="Pre-composed sections (app shell, login, pricing, FAQ, and more) ready to paste into a page.">
 <meta name="twitter:image" content="https://meridian.efolusi.com/assets/meridian-social.png">
 <script src="./support.js"></script>
 </head>
@@ -47,7 +47,7 @@
 </header>
 <main class="pad-sm" style="flex:1;max-width:1160px;margin:0 auto;width:100%;padding:40px 28px 90px">
 <h1 style="font-size:38px;font-weight:680;font-family:var(--font-display);letter-spacing:-0.02em;margin:0" data-lang-id="Blok">Blocks</h1>
-<p style="font-size:16.5px;line-height:1.6;color:var(--text-secondary);margin:12px 0 0;max-width:640px" data-lang-id="Halaman dan bagian siap-pakai yang bisa Anda salin sebagai titik awal. Tiap blok adalah satu berkas mandiri — periksa di lebar desktop, tablet, dan mobile, lalu salin sumbernya.">Pre-composed pages and sections you can copy as a starting point. Each block is one self-contained file — check it at desktop, tablet, and mobile widths, then copy the source.</p>
+<p style="font-size:16.5px;line-height:1.6;color:var(--text-secondary);margin:12px 0 0;max-width:640px" data-lang-id="Halaman dan bagian siap-pakai yang bisa Anda salin sebagai titik awal. Tiap blok adalah satu berkas mandiri. Periksa di lebar desktop, tablet, dan mobile, lalu salin sumbernya.">Pre-composed pages and sections you can copy as a starting point. Each block is one self-contained file. Check it at desktop, tablet, and mobile widths, then copy the source.</p>
 <sc-for list="{{ blocks }}" as="b" hint-placeholder-count="3">
 <section style="margin-top:48px">
 <div style="display:flex;align-items:baseline;gap:12px"><h2 id="{{ b.anchor }}" style="font-size:22px;font-weight:600;font-family:var(--font-display);letter-spacing:-0.02em;margin:0">{{ b.title }}</h2><span style="font-family:var(--font-mono);font-size:12px;color:var(--text-muted)">{{ b.path }}</span></div>
@@ -75,7 +75,7 @@ class Component extends DCLogic {
     const mk = (title, slug, desc, height) => ({ title, anchor: slug, path: 'blocks/' + slug + '.html', file: '../blocks/' + slug + '.html', desc, height });
     return {
       blocks: [
-        mk('App shell', 'app-shell', 'SideNav, TopNav, and an empty content well — the scaffold every product screen starts from.', 620),
+        mk('App shell', 'app-shell', 'SideNav, TopNav, and an empty content well: the scaffold every product screen starts from.', 620),
         mk('Login', 'login', 'Auth card with SSO, email + password, and a create-workspace footer.', 600),
         mk('Stats dashboard', 'stats-dashboard', 'KPI row, weekly trend chart, and a top-agents table.', 660),
         mk('Settings', 'settings', 'Sectioned form page with tabs, grouped rows, and a danger zone.', 720),

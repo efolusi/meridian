@@ -1,4 +1,4 @@
-Input + listbox of time slots every `stepMinutes` between `minTime`/`maxTime`. Typing filters the list; Enter picks the highlighted slot; a typed valid time ('9:5' becomes '09:05') commits on blur even off-grid. Value is always 24h 'HH:MM' — `format24={false}` only changes the labels to 12h AM/PM.
+Input + listbox of time slots every `stepMinutes` between `minTime`/`maxTime`. Typing filters the list; Enter picks the highlighted slot; a typed valid time ('9:5' becomes '09:05') commits on blur even off-grid. Value is always 24h 'HH:MM'; `format24={false}` only changes the labels to 12h AM/PM.
 
 Use it for appointment starts, opening hours, reminders. Not for durations or seconds precision.
 

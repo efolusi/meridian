@@ -3,7 +3,7 @@
 // PAGES are DERIVED from the actual site/*.dc.html files, so a new page appears in
 // search without editing any array: add the .dc.html, run the generator (check:fix
 // does this), and it shows up with a title-derived label and a mapped-or-fallback
-// icon. Label comes from each page's <title> (minus the " — Meridian" suffix);
+// icon. Label comes from each page's <title> (minus the " | Meridian" suffix);
 // order and icon come from the small maps below, with a stable alphabetical tail
 // and a 'file' fallback icon for any page not yet mapped.
 //
@@ -48,7 +48,7 @@ function pageLabel(base, html) {
   if (LABEL_OVERRIDE[base]) return LABEL_OVERRIDE[base];
   const m = html.match(/<title>([^<]+)<\/title>/i);
   const title = m ? m[1].trim() : base;
-  return title.split('—')[0].trim() || base; // "Blocks — Meridian" -> "Blocks"
+  return title.split(/[|—]/)[0].trim() || base; // "Blocks | Meridian" -> "Blocks"
 }
 
 function build() {

@@ -2,7 +2,7 @@
   "name": "filetypeicon",
   "type": "registry:ui",
   "title": "FileTypeIcon",
-  "description": "Typed file glyph with colored extension chip \u2014 maps 20 common extensions to icon + color.",
+  "description": "Typed file glyph with a colored extension chip. Maps 20 common extensions to icon + color.",
   "dependencies": [
     "react"
   ],
@@ -25,7 +25,7 @@
     {
       "path": "components/files/FileTypeIcon.prompt.md",
       "type": "registry:component",
-      "content": "Typed file glyph with colored extension chip \u2014 maps 20 common extensions to icon + color.\n\n```jsx\n<FileTypeIcon ext=\"pdf\" />\n<FileTypeIcon ext=\"csv\" size={32} />\n```\n"
+      "content": "Typed file glyph with a colored extension chip. Maps 20 common extensions to icon + color.\n\n```jsx\n<FileTypeIcon ext=\"pdf\" />\n<FileTypeIcon ext=\"csv\" size={32} />\n```\n"
     }
   ],
   "categories": [

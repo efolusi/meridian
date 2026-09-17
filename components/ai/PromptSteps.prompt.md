@@ -1,6 +1,6 @@
 # PromptSteps
 
-Keyboard-first inline question wizard — numbered options (1–9 keys), arrows to highlight, Enter to confirm, Esc dismisses, ←/Shift-Tab goes back; "Other" is an inline input. Calls `onComplete` with all answers.
+Keyboard-first inline question wizard: numbered options (1–9 keys), arrows to highlight, Enter to confirm, Esc dismisses, ←/Shift-Tab goes back; "Other" is an inline input. Calls `onComplete` with all answers.
 
 ```jsx
 <PromptSteps onComplete={console.log} steps={[

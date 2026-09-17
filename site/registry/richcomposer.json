@@ -2,7 +2,7 @@
   "name": "richcomposer",
   "type": "registry:ui",
   "title": "RichComposer",
-  "description": "Composer with @-mention chips and /-commands \u2014 typing a trigger opens a filtered list above the composer (arrows + Enter, groups supported); mentions insert as atomic chips that delete as one unit; Enter submits, Shift+Enter breaks.",
+  "description": "Composer with @-mention chips and /-commands. Typing a trigger opens a filtered list above the composer (arrows + Enter, groups supported); mentions insert as atomic chips that delete as one unit; Enter submits, Shift+Enter breaks.",
   "dependencies": [
     "react"
   ],
@@ -25,7 +25,7 @@
     {
       "path": "components/ai/RichComposer.prompt.md",
       "type": "registry:component",
-      "content": "# RichComposer\n\nComposer with @-mention chips and /-commands \u2014 typing a trigger opens a filtered list above the composer (arrows + Enter, groups supported); mentions insert as atomic chips that delete as one unit; Enter submits, Shift+Enter breaks.\n\n```jsx\n<RichComposer hint=\"@ files \u00b7 / commands\"\n  mentions={[{ id: 'f1', label: 'gateway.md', icon: 'file-text', group: 'Files' }]}\n  commands={[{ id: 'clear', label: 'clear', description: 'Reset the thread' }]}\n  onSubmit={({ text, mentions }) => send(text, mentions)} />\n```\n"
+      "content": "# RichComposer\n\nComposer with @-mention chips and /-commands. Typing a trigger opens a filtered list above the composer (arrows + Enter, groups supported); mentions insert as atomic chips that delete as one unit; Enter submits, Shift+Enter breaks.\n\n```jsx\n<RichComposer hint=\"@ files \u00b7 / commands\"\n  mentions={[{ id: 'f1', label: 'gateway.md', icon: 'file-text', group: 'Files' }]}\n  commands={[{ id: 'clear', label: 'clear', description: 'Reset the thread' }]}\n  onSubmit={({ text, mentions }) => send(text, mentions)} />\n```\n"
     }
   ],
   "categories": [

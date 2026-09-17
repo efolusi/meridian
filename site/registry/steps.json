@@ -2,7 +2,7 @@
   "name": "steps",
   "type": "registry:ui",
   "title": "Steps",
-  "description": "Numbered progress rail \u2014 vertical for agent task logs, horizontal for wizards.",
+  "description": "Numbered progress rail: vertical for agent task logs, horizontal for wizards.",
   "dependencies": [
     "react"
   ],
@@ -25,7 +25,7 @@
     {
       "path": "components/navigation/Steps.prompt.md",
       "type": "registry:component",
-      "content": "Numbered progress rail \u2014 vertical for agent task logs, horizontal for wizards.\n\n```jsx\n<Steps current={1} items={[\n  { title: 'Upload', description: '3 files received' },\n  { title: 'Convert' },\n  { title: 'Download' },\n]} orientation=\"horizontal\" />\n```\n"
+      "content": "Numbered progress rail: vertical for agent task logs, horizontal for wizards.\n\n```jsx\n<Steps current={1} items={[\n  { title: 'Upload', description: '3 files received' },\n  { title: 'Convert' },\n  { title: 'Download' },\n]} orientation=\"horizontal\" />\n```\n"
     }
   ],
   "categories": [

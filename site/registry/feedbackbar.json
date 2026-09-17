@@ -25,7 +25,7 @@
     {
       "path": "components/ai/FeedbackBar.prompt.md",
       "type": "registry:component",
-      "content": "# FeedbackBar\n\nQuiet action row under an assistant message: thumbs up/down (toggle), copy, regenerate.\n\n`<FeedbackBar copyText={msg} onFeedback={log} onRetry={rerun} note=\"gpt-answer \u00b7 2.1s\" />`\n\nKeep it ghost-quiet \u2014 it should disappear until hovered in dense threads. Wire onFeedback to your telemetry, not a toast."
+      "content": "# FeedbackBar\n\nQuiet action row under an assistant message: thumbs up/down (toggle), copy, regenerate.\n\n`<FeedbackBar copyText={msg} onFeedback={log} onRetry={rerun} note=\"gpt-answer \u00b7 2.1s\" />`\n\nKeep it ghost-quiet: it should disappear until hovered in dense threads. Wire onFeedback to your telemetry, not a toast."
     }
   ],
   "categories": [

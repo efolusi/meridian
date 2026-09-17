@@ -57,67 +57,67 @@ const P = ({ children }) => <p style={{ fontSize: 15.5, lineHeight: 1.7, color: 
 
 const CONTENT = {
   auth: { lede: 'Every request authenticates with a bearer key. Keys are workspace-scoped and environment-prefixed.', tags: [['clock', '3 min']], sections: [
-    ['Key types', 'ef_live_ keys touch production; ef_test_ keys hit an isolated sandbox with the same shape. Create both in Console → Settings → API keys, and rotate quarterly — the old key keeps working for 24 hours after rotation.'],
+    ['Key types', 'ef_live_ keys touch production; ef_test_ keys hit an isolated sandbox with the same shape. Create both in Console → Settings → API keys, and rotate quarterly. The old key keeps working for 24 hours after rotation.'],
     ['Sending the header', 'Pass the key on every call. SDKs read EFOLUSI_API_KEY from the environment automatically.']],
     code: ['bash', 'curl https://api.efolusi.com/v1/me \\\n  -H "Authorization: Bearer $EFOLUSI_API_KEY"'],
-    tip: ['Keep keys server-side', 'Never ship keys in browser code — proxy through your backend instead.'] },
+    tip: ['Keep keys server-side', 'Never ship keys in browser code. Proxy through your backend instead.'] },
   errors: { lede: 'Errors are plain JSON with a stable code, a human message, and a hint that tells you how to fix it.', tags: [['clock', '2 min']], sections: [
-    ['The shape', 'Every non-2xx response carries { code, message, hint }. Codes are stable across versions; messages may improve over time — parse codes, show messages.'],
+    ['The shape', 'Every non-2xx response carries { code, message, hint }. Codes are stable across versions; messages may improve over time, so parse codes and show messages.'],
     ['Retries', '429 and 5xx are safe to retry with exponential backoff. The SDK retries three times automatically.']],
     code: ['json', '{\n  "code": "key_expired",\n  "message": "That API key was rotated on Jul 2.",\n  "hint": "Create a fresh key in Console → Settings → API keys."\n}'],
     tip: ['Idempotency', 'Send an Idempotency-Key header on writes to make retries safe.'] },
   tasks: { lede: 'A task is a goal you hand the agent. It plans steps, runs tools, and reports back for review.', tags: [['clock', '4 min'], ['bot', 'AI agents']], sections: [
     ['Starting a task', 'Describe the outcome, not the steps. The agent plans, shows its step rail, and pauses at anything destructive unless you pre-approve it.'],
-    ['Reviewing work', 'Every step is logged with its tool calls and output. Pause, redirect, or take over at any point — the transcript stays auditable.']],
+    ['Reviewing work', 'Every step is logged with its tool calls and output. Pause, redirect, or take over at any point. The transcript stays auditable.']],
     code: ['javascript', "const task = await efolusi.agent.tasks.run(\n  'retry failed webhooks from yesterday',\n  { approve: ['db.read'], pauseOn: ['db.write'] }\n);"],
-    tip: ['Scope access', 'Tasks inherit your infrastructure connections — grant the narrowest scopes that work.'] },
+    tip: ['Scope access', 'Tasks inherit your infrastructure connections, so grant the narrowest scopes that work.'] },
   tools: { lede: 'Tools are what the agent can touch: your infrastructure connections, file utilities, automation nodes, and HTTP.', tags: [['clock', '3 min'], ['bot', 'AI agents']], sections: [
     ['Built-in tools', 'db.read/db.write against connected databases, ssh.exec on connected hosts, files.convert, http.fetch, and automation.render. Each call is one line in the transcript.'],
-    ['Custom tools', 'Register any HTTPS endpoint as a tool with a JSON schema — the agent learns it immediately.']],
+    ['Custom tools', 'Register any HTTPS endpoint as a tool with a JSON schema. The agent learns it immediately.']],
     code: ['javascript', "efolusi.agent.tools.register({\n  name: 'refund',\n  url: 'https://api.acme.co/refund',\n  schema: { orderId: 'string', amountCents: 'number' },\n});"],
     tip: ['Danger levels', "Mark tools destructive: true and the agent always asks before calling them."] },
-  connections: { lede: 'Connect clouds, databases, caches, and SSH hosts through encrypted tunnels — nothing is stored.', tags: [['clock', '4 min'], ['server', 'Infrastructure']], sections: [
+  connections: { lede: 'Connect clouds, databases, caches, and SSH hosts through encrypted tunnels. Nothing is stored.', tags: [['clock', '4 min'], ['server', 'Infrastructure']], sections: [
     ['Creating a tunnel', 'Console → Infrastructure → Connect resource, or the CLI below. Meridian keeps a keepalive tunnel and health-checks it every 30 seconds.'],
     ['Health & status', 'Resources report ok / degraded / down. Degraded fires a notification and shows amber in the console; the agent avoids degraded resources unless told otherwise.']],
     code: ['bash', 'efolusi infra connect postgres \\\n  --host db.internal.acme.co:5432 \\\n  --region eu-west-1'],
     tip: ['Least privilege', 'Connect with a read-only role first; add write roles per-project when needed.'] },
   dns: { lede: 'Point domains at Meridian, and DNS records, SSL certificates, and renewals manage themselves.', tags: [['clock', '3 min'], ['globe', 'Infrastructure']], sections: [
-    ['Adding a domain', 'Add the domain, copy the two records below into your registrar, and verification runs automatically — usually under a minute.'],
+    ['Adding a domain', 'Add the domain, copy the two records below into your registrar, and verification runs automatically, usually in under a minute.'],
     ['Certificates', 'Certs issue and renew automatically for verified domains. Manual certs get an expiry warning at 30 days.']],
     code: ['text', 'A     efolusi.com        76.76.21.21\nCNAME app.efolusi.com    edge.efolusi.com'],
-    tip: ['Propagation', 'Registrars cache aggressively — a stuck verification usually clears with a lower TTL.'] },
+    tip: ['Propagation', 'Registrars cache aggressively, so a stuck verification usually clears with a lower TTL.'] },
   nodes: { lede: 'An automation node is a small AI worker with one job: turn an input into content across text, image, audio, or video.', tags: [['clock', '4 min'], ['sparkles', 'Automation']], sections: [
     ['Composing nodes', 'Chain nodes into pipelines: outline → draft → voiceover → subtitle. Each node is testable alone and versioned with its prompt.'],
     ['Scaling', 'Pipelines fan out: hand one a CSV of 500 rows and it renders 500 variants with per-row context.']],
     code: ['javascript', "const node = efolusi.automation.node('product-blurb');\nconst out = await node.render({ topic: 'launch', tone: 'plain' });"],
-    tip: ['Brand voice', 'Give nodes your voice guide once — every render inherits it.'] },
+    tip: ['Brand voice', 'Give nodes your voice guide once and every render inherits it.'] },
   media: { lede: 'Media pipelines handle the heavy lifting after render: transcode, subtitle, resize, and publish.', tags: [['clock', '3 min'], ['video', 'Automation']], sections: [
     ['Targets', 'Declare output targets (webm 1080p, mp3, png @2x) and the pipeline produces all of them from one source render.'],
     ['Delivery', 'Outputs land in your storage or CDN, connected through your infrastructure, so no extra credentials.']],
     code: ['javascript', "await efolusi.automation.pipeline('launch-video')\n  .targets(['webm/1080p', 'mp3', 'srt'])\n  .run({ source: render.id });"],
-    tip: ['Costs', 'Transcoding bills by output minute — check Usage → Automation before a big batch.'] },
-  convert: { lede: 'One endpoint converts anything: documents, images, audio, video, archives — 240 formats in, 80 out.', tags: [['clock', '2 min'], ['package', 'File tools']], sections: [
+    tip: ['Costs', 'Transcoding bills by output minute. Check Usage → Automation before a big batch.'] },
+  convert: { lede: 'One endpoint converts anything: documents, images, audio, video, and archives: 240 formats in, 80 out.', tags: [['clock', '2 min'], ['package', 'File tools']], sections: [
     ['Converting', 'Upload or point at a URL, name the target format, get a signed download link. Files are deleted after 24 hours.'],
     ['Batches', 'Send up to 500 files per batch; a webhook fires when the batch settles.']],
     code: ['bash', 'efolusi files convert q3-deck.pdf --to docx\n# → https://files.efolusi.com/d/8f2a…  (expires in 24h)'],
     tip: ['Quality flag', '--quality 1-100 trades size for fidelity on lossy targets.'] },
-  strategies: { lede: 'A strategy is a rulebook the trading robot follows — entries, exits, sizing — inside your risk caps.', tags: [['clock', '4 min'], ['chart-candlestick', 'Trading']], sections: [
+  strategies: { lede: 'A strategy is a rulebook the trading robot follows (entries, exits, sizing) inside your risk caps.', tags: [['clock', '4 min'], ['chart-candlestick', 'Trading']], sections: [
     ['Anatomy', 'Pick a template (momentum, mean-reversion, DCA), scope it to pairs and hours, and set sizing. Every decision the robot makes is logged with its reason.'],
-    ['Backtests', 'Strategies backtest against 5 years of data before going live — results show P&L, drawdown, and win rate with fees included.']],
+    ['Backtests', 'Strategies backtest against 5 years of data before going live. Results show P&L, drawdown, and win rate with fees included.']],
     code: ['javascript', "await efolusi.trading.strategies.create({\n  template: 'momentum',\n  pairs: ['BTC-EUR', 'ETH-EUR'],\n  riskPerTrade: 0.04,\n});"],
     tip: ['Paper first', 'New strategies default to paper trading for 7 days. Keep it that way until the log makes sense to you.'] },
-  risk: { lede: 'Risk limits are hard stops the robot cannot cross — per trade, per day, and per month.', tags: [['clock', '3 min'], ['shield-check', 'Trading']], sections: [
+  risk: { lede: 'Risk limits are hard stops the robot cannot cross: per trade, per day, and per month.', tags: [['clock', '3 min'], ['shield-check', 'Trading']], sections: [
     ['The three caps', 'Risk per trade (default 4%), daily loss cap (default 5%), monthly drawdown cap (default 10%). Hitting any cap pauses the robot and notifies you.'],
-    ['Overrides', 'Caps only move manually, from the console, with a confirmation — never from the API and never by the robot.']],
+    ['Overrides', 'Caps only move manually, from the console, with a confirmation, never from the API and never by the robot.']],
     code: ['javascript', "await efolusi.trading.risk.set({\n  perTrade: 0.04,\n  dailyLoss: 0.05,\n  monthlyDrawdown: 0.10,\n});"],
-    tip: ['Social mirrors', 'Mirrored traders run inside your caps too — their risk never overrides yours.'] },
+    tip: ['Social mirrors', 'Mirrored traders run inside your caps too. Their risk never overrides yours.'] },
 };
 
 function Helpful({ onNext, nextLabel }) {
   const [done, setDone] = React.useState(false);
   return (
     <div style={{ display: 'flex', gap: 20, marginTop: 32, paddingTop: 20, borderTop: '1px solid var(--border-default)', alignItems: 'center' }}>
-      {done ? <span style={{ fontSize: 13, color: 'var(--success-600)', display: 'inline-flex', alignItems: 'center', gap: 6 }}><Icon name="circle-check" size={14} />Thanks — noted.</span> : (
+      {done ? <span style={{ fontSize: 13, color: 'var(--success-600)', display: 'inline-flex', alignItems: 'center', gap: 6 }}><Icon name="circle-check" size={14} />Thanks, noted.</span> : (
         <React.Fragment>
           <span style={{ fontSize: 13, color: 'var(--text-muted)' }}>Was this helpful?</span>
           <div style={{ display: 'flex', gap: 4 }}>
@@ -158,10 +158,10 @@ function QuickstartArticle({ onPage }) {
     <article style={{ maxWidth: 720 }}>
       <Breadcrumb><BreadcrumbList><BreadcrumbItem><BreadcrumbLink href="#" onClick={event => event.preventDefault()}>Getting started</BreadcrumbLink></BreadcrumbItem><BreadcrumbSeparator /><BreadcrumbItem><BreadcrumbPage>Quickstart</BreadcrumbPage></BreadcrumbItem></BreadcrumbList></Breadcrumb>
       <h1 style={{ fontSize: 38, fontWeight: 680, marginTop: 12 }}>Quickstart</h1>
-      <p style={{ fontSize: 17, lineHeight: 1.65, color: 'var(--text-secondary)', marginTop: 12 }}>Send your first API request in under five minutes. Everything in Meridian — agent tasks, infrastructure, automation, trades — starts with the same key.</p>
+      <p style={{ fontSize: 17, lineHeight: 1.65, color: 'var(--text-secondary)', marginTop: 12 }}>Send your first API request in under five minutes. Everything in Meridian (agent tasks, infrastructure, automation, trades) starts with the same key.</p>
       <div style={{ display: 'flex', gap: 8, marginTop: 16 }}><Tag icon="clock">5 min</Tag><Tag icon="terminal">curl or SDK</Tag></div>
       <h2 id="install" style={{ fontSize: 24, fontWeight: 680, marginTop: 40 }}>1. Install the SDK</h2>
-      <P>Grab the client for your stack — or skip straight to curl; the API is plain JSON over HTTPS.</P>
+      <P>Grab the client for your stack, or skip straight to curl. The API is plain JSON over HTTPS.</P>
       <CodeBlock lang="bash" style={{ margin: '18px 0' }}>npm install @efolusi/sdk</CodeBlock>
       <h2 id="authenticate" style={{ fontSize: 24, fontWeight: 680, marginTop: 40 }}>2. Authenticate</h2>
       <P>Create a key in Console → Settings → API keys. Test keys are prefixed <code style={{ background: 'var(--sand-100)', padding: '2px 6px', borderRadius: 4, fontSize: 13 }}>ef_test_</code> and never touch live data.</P>
@@ -169,7 +169,7 @@ function QuickstartArticle({ onPage }) {
 
 const efolusi = new Meridian('ef_test_a91xK…');
 const task = await efolusi.agent.tasks.run('retry failed webhooks');`}</CodeBlock>
-      <Alert style={{ margin: '18px 0' }}><Icon name="info" size={16} /><AlertTitle>Keep keys server-side</AlertTitle><AlertDescription>Keys grant full workspace access — never ship them in browser code.</AlertDescription></Alert>
+      <Alert style={{ margin: '18px 0' }}><Icon name="info" size={16} /><AlertTitle>Keep keys server-side</AlertTitle><AlertDescription>Keys grant full workspace access. Never ship them in browser code.</AlertDescription></Alert>
       <h2 id="first-request" style={{ fontSize: 24, fontWeight: 680, marginTop: 40 }}>3. Make it do something</h2>
       <P>Run your first agent task, connect your first cloud, or spin up an automation node. Each capability has its own five-minute guide from here.</P>
       <Helpful onNext={() => onPage('auth')} nextLabel="Authentication" />

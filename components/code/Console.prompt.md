@@ -1,6 +1,6 @@
 # Console
 
-Log viewer — level icons/colors, tabular timestamps, per-row collapsible stack traces, sticks to the bottom while streaming and shows a "Latest" pill when scrolled up.
+Log viewer with level icons/colors, tabular timestamps, and per-row collapsible stack traces. It sticks to the bottom while streaming and shows a "Latest" pill when scrolled up.
 
 ```jsx
 <Console entries={[

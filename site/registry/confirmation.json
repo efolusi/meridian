@@ -2,7 +2,7 @@
   "name": "confirmation",
   "type": "registry:ui",
   "title": "Confirmation",
-  "description": "Inline approval card for agent actions \u2014 pending shows Approve/Reject, settled shows a status line. Ringed accent (or danger) border while pending.",
+  "description": "Inline approval card for agent actions. Pending shows Approve/Reject, settled shows a status line. Ringed accent (or danger) border while pending.",
   "dependencies": [
     "react"
   ],
@@ -25,7 +25,7 @@
     {
       "path": "components/ai/Confirmation.prompt.md",
       "type": "registry:component",
-      "content": "# Confirmation\n\nInline approval card for agent actions \u2014 pending shows Approve/Reject, settled shows a status line. Ringed accent (or danger) border while pending.\n\n`<Confirmation title=\"Send 12 refund emails?\" description=\"Covers every failed webhook customer.\" onStatusChange={apply} />`\n`<Confirmation tone=\"danger\" title=\"Drop table archived_runs?\" approveLabel=\"Drop it\" />`\n\nUse in the thread when the agent needs permission; use ConfirmDialog only for app-level modals. Nest a ToolCall or Diff as children to show exactly what runs.\n"
+      "content": "# Confirmation\n\nInline approval card for agent actions. Pending shows Approve/Reject, settled shows a status line. Ringed accent (or danger) border while pending.\n\n`<Confirmation title=\"Send 12 refund emails?\" description=\"Covers every failed webhook customer.\" onStatusChange={apply} />`\n`<Confirmation tone=\"danger\" title=\"Drop table archived_runs?\" approveLabel=\"Drop it\" />`\n\nUse in the thread when the agent needs permission; use ConfirmDialog only for app-level modals. Nest a ToolCall or Diff as children to show exactly what runs.\n"
     }
   ],
   "categories": [

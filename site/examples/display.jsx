@@ -16,7 +16,7 @@ export function AccordionDemo() {
         </AccordionItem>
         <AccordionItem value="cancel">
           <AccordionTrigger>Can I cancel anytime?</AccordionTrigger>
-          <AccordionContent>Yes — your workspace stays readable forever.</AccordionContent>
+          <AccordionContent>Yes. Your workspace stays readable forever.</AccordionContent>
         </AccordionItem>
       </Accordion>
     </div>
