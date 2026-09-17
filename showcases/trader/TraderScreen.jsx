@@ -65,7 +65,7 @@ function TraderScreen() {
               </div></CardContent>
             </Card>
             <Card style={{ '--card-spacing': '12px' }}>
-              <CardHeader><CardTitle>Social signals</CardTitle><CardDescription>Traders you can mirror — with their real track record.</CardDescription></CardHeader>
+              <CardHeader><CardTitle>Social signals</CardTitle><CardDescription>Traders you can mirror, with their real track record.</CardDescription></CardHeader>
               <CardContent><div style={{ display: 'flex', flexDirection: 'column' }}>
                 {[['Femi Alade', '+31.2% this quarter \u00b7 low risk', 'up'], ['June Park', '+18.7% this quarter \u00b7 medium risk', 'up'], ['Sol Reyes', '\u22124.2% this quarter \u00b7 high risk', 'down']].map(([n, meta, dir]) => (
                   <div key={n} style={{ display: 'flex', alignItems: 'center', gap: 10, padding: '9px 8px' }}>

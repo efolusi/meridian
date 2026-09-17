@@ -98,9 +98,9 @@ export function ToolCallDemo() {
   const { ToolCall } = window.EfolusiDesignSystem_4ffc3d;
   return (
     <div style={{ display: 'flex', flexDirection: 'column', gap: 10, width: '100%', maxWidth: 520 }}>
-      <ToolCall name="search_flights" status="success" defaultOpen args={{ from: 'LIS', arrive_before: '15:00' }} result="3 nonstops found — best: TP 1287, 10:20 → 13:05." />
+      <ToolCall name="search_flights" status="success" defaultOpen args={{ from: 'LIS', arrive_before: '15:00' }} result="3 nonstops found. Best: TP 1287, 10:20 → 13:05." />
       <ToolCall name="book_hotel" status="running" args={{ city: 'Lisbon', nights: 2 }} />
-      <ToolCall name="charge_card" status="error" args={{ amount: '$412.80' }} error="Card ending 4412 declined — retry with the backup method?" />
+      <ToolCall name="charge_card" status="error" args={{ amount: '$412.80' }} error="Card ending 4412 declined. Retry with the backup method?" />
     </div>
   );
 }
@@ -115,7 +115,7 @@ export function ToolCallApproval() {
         onApprove={() => { setStatus('running'); setTimeout(() => setStatus('success'), 1500); }}
         onReject={() => setStatus('error')}
         result={status === 'success' ? 'All 12 emails delivered.' : null}
-        error={status === 'error' ? 'Rejected by Ada — nothing was sent.' : null} />
+        error={status === 'error' ? 'Rejected by Ada. Nothing was sent.' : null} />
     </div>
   );
 }
@@ -126,7 +126,7 @@ export function ConfirmationDemo() {
   return (
     <div style={{ display: 'flex', flexDirection: 'column', gap: 12, width: '100%', maxWidth: 480 }}>
       <Confirmation title="Send 12 refund emails?" description="Covers every customer hit by yesterday's failed webhooks. Uses the refund-apology template." />
-      <Confirmation tone="danger" title="Drop table archived_runs?" description="1.2M rows. This cannot be undone." approveLabel="Drop it" rejectedNote="Rejected — table kept." />
+      <Confirmation tone="danger" title="Drop table archived_runs?" description="1.2M rows. This cannot be undone." approveLabel="Drop it" rejectedNote="Rejected. Table kept." />
     </div>
   );
 }
@@ -137,10 +137,10 @@ export function ConversationDemo() {
   const { Conversation, ChatMessage } = window.EfolusiDesignSystem_4ffc3d;
   const [msgs, setMsgs] = React.useState([
     ['user', 'Rebook my Lisbon flight to arrive before 15:00.'],
-    ['assistant', 'Found 3 nonstops. Booking TP 1287 — arrives 13:05, same fare class.'],
+    ['assistant', 'Found 3 nonstops. Booking TP 1287: arrives 13:05, same fare class.'],
   ]);
   React.useEffect(() => {
-    const lines = ['Seat 14C held.', 'Fare confirmed — no change fee.', 'Ticket reissued. Confirmation sent to ada@acme.com.', 'Anything else before I close the run?'];
+    const lines = ['Seat 14C held.', 'Fare confirmed, no change fee.', 'Ticket reissued. Confirmation sent to ada@acme.com.', 'Anything else before I close the run?'];
     let i = 0;
     const t = setInterval(() => { if (i < lines.length) { const line = lines[i]; setMsgs(m => [...m, ['assistant', line]]); i++; } else clearInterval(t); }, 1800);
     return () => clearInterval(t);
@@ -248,7 +248,7 @@ export function ChatMessageDemo() {
       <ChatMessage role="assistant" name="Assistant" time="09:41"
         onCopy={() => navigator.clipboard && navigator.clipboard.writeText('Booking TP 1287 (dep 10:20, arr 13:05).')}
         onRetry={() => {}}>
-        Found 3 nonstops arriving before 15:00. Booking TP 1287 (dep 10:20, arr 13:05) — same fare class, no change fee.
+        Found 3 nonstops arriving before 15:00. Booking TP 1287 (dep 10:20, arr 13:05), same fare class, no change fee.
       </ChatMessage>
       <ChatMessage role="assistant" name="Assistant" streaming>Confirming seat 14C…</ChatMessage>
     </div>
@@ -313,7 +313,7 @@ export function DocumentCardDemo() {
   const { DocumentCard } = window.EfolusiDesignSystem_4ffc3d;
   return (
     <div style={{ width: '100%', maxWidth: 520 }}>
-      <DocumentCard title="Incident summary — failed webhooks" meta="310 words" collapsedHeight={140}>
+      <DocumentCard title="Incident summary: failed webhooks" meta="310 words" collapsedHeight={140}>
         <h3>What happened</h3>
         <p>Between 02:10 and 02:14, 12 webhook deliveries to hooks.acme.io returned 503. The host was mid-deploy; our retry window (3 attempts over 40s) was shorter than the outage.</p>
         <h3>Fix</h3>
@@ -367,7 +367,7 @@ export function WebPreviewDemo() {
       ]}>
         <div style={{ padding: 28 }}>
           <div style={{ fontFamily: 'var(--font-display)', fontSize: 22, color: 'var(--text-primary)', marginBottom: 6 }}>All systems operational</div>
-          <div style={{ fontSize: 13, color: 'var(--text-muted)' }}>Webhooks recovered at 14:06 — 12/12 replays delivered.</div>
+          <div style={{ fontSize: 13, color: 'var(--text-muted)' }}>Webhooks recovered at 14:06, with 12/12 replays delivered.</div>
         </div>
       </WebPreview>
     </div>
@@ -380,7 +380,7 @@ export function SourceCardDemo() {
   return (
     <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 12, width: '100%', maxWidth: 560 }}>
       <SourceCard domain="docs.efolusi.dev" title="Webhook retry policy" description="Defaults, backoff windows, and how replays are deduplicated across attempts." />
-      <SourceCard variant="plain" domain="acme.statuspage.io" title="Acme — deploy window 02:00–02:20" description="Scheduled maintenance notice covering the outage." />
+      <SourceCard variant="plain" domain="acme.statuspage.io" title="Acme: deploy window 02:00–02:20" description="Scheduled maintenance notice covering the outage." />
     </div>
   );
 }
@@ -408,7 +408,7 @@ export function SelectionQuoteDemo() {
     <div style={{ display: 'flex', flexDirection: 'column', gap: 10, width: '100%', maxWidth: 520 }}>
       <SelectionQuote onAction={(id, text) => setQuoted(text)} actions={[{ id: 'quote', label: 'Quote', icon: 'corner-up-left' }, { id: 'explain', label: 'Explain' }]}>
         <div style={{ padding: '14px 16px', border: '1px solid var(--border-default)', borderRadius: 10, background: 'var(--surface-card)', fontSize: 13.5, lineHeight: 1.7, color: 'var(--text-secondary)' }}>
-          Select any part of this answer to quote it back — the retry window was shorter than the outage, so all three attempts landed inside the deploy.
+          Select any part of this answer to quote it back. The retry window was shorter than the outage, so all three attempts landed inside the deploy.
         </div>
       </SelectionQuote>
       {quoted ? <div style={{ fontSize: 12.5, color: 'var(--text-muted)' }}>Quoted: “{quoted}”</div> : null}
@@ -440,7 +440,7 @@ export function PlayerDemo() {
   const { Player } = window.EfolusiDesignSystem_4ffc3d;
   return (
     <div style={{ width: '100%', maxWidth: 520 }}>
-      <Player title="Standup — webhook incident" meta="03:12" />
+      <Player title="Standup: webhook incident" meta="03:12" />
     </div>
   );
 }
@@ -452,7 +452,7 @@ export function TranscriptDemo() {
   const ref = React.useRef(null);
   return (
     <div style={{ display: 'flex', flexDirection: 'column', gap: 12, width: '100%', maxWidth: 560 }}>
-      <Player ref={ref} title="Standup — webhook incident" meta="03:12" onTimeChange={setT} />
+      <Player ref={ref} title="Standup: webhook incident" meta="03:12" onTimeChange={setT} />
       <Transcript height={200} currentTime={t} onJump={s => { setT(s); if (ref.current) ref.current.jumpTo(s); }} items={[
         { start: 0, speaker: 'Ada', text: 'Quick recap of the webhook incident?' },
         { start: 4, speaker: 'Efe', words: [{ t: 4, w: 'Twelve' }, { t: 4.4, w: 'deliveries' }, { t: 5, w: 'failed' }, { t: 5.5, w: 'during' }, { t: 6, w: 'the' }, { t: 6.2, w: 'acme' }, { t: 6.6, w: 'deploy.' }] },

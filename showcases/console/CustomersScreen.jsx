@@ -78,7 +78,7 @@ function CustomersScreen({ notify }) {
             ))}
           </tbody>
         </table>
-        {shown.length === 0 && <div style={{ padding: '28px 16px', textAlign: 'center', fontSize: 13, color: 'var(--text-muted)' }}>No customers match — clear the search or filters.</div>}
+        {shown.length === 0 && <div style={{ padding: '28px 16px', textAlign: 'center', fontSize: 13, color: 'var(--text-muted)' }}>No customers match. Clear the search or filters.</div>}
         <div style={{ display: 'flex', alignItems: 'center', padding: '10px 16px', fontSize: 13, color: 'var(--text-muted)' }}>
           <span>{shown.length} of 128 customers</span>
           <Pagination style={{ marginLeft: 'auto' }}><PaginationContent>

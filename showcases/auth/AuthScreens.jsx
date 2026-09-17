@@ -118,12 +118,12 @@ function MagicForm({ onBack }) {
   const [busy, setBusy] = React.useState(false);
   const [sent, setSent] = React.useState(false);
   const [email, setEmail] = React.useState('');
-  if (sent) return <SentNotice title="Magic link sent" email={email || 'your email'} hint="Click it on this device to sign in — no password needed." onBack={onBack} />;
+  if (sent) return <SentNotice title="Magic link sent" email={email || 'your email'} hint="Click it on this device to sign in. No password needed." onBack={onBack} />;
   const submit = e => { e.preventDefault(); setBusy(true); setTimeout(() => { setBusy(false); setSent(true); }, 1000); };
   return (
     <div style={{ width: 360 }}>
       <h1 style={{ fontSize: 26, fontWeight: 680 }}>Sign in with a magic link</h1>
-      <p style={{ marginTop: 6, fontSize: 14, color: 'var(--text-secondary)' }}>No password — we'll email you a one-time sign-in link.</p>
+      <p style={{ marginTop: 6, fontSize: 14, color: 'var(--text-secondary)' }}>No password needed. We'll email you a one-time sign-in link.</p>
       <form onSubmit={submit} style={{ display: 'flex', flexDirection: 'column', gap: 14, marginTop: 24 }}>
         <Input size="lg" label="Work email" type="email" placeholder="you@company.com" iconLeft="mail" autoFocus value={email} onChange={e => setEmail(e.target.value)} />
         <Button size="lg" fullWidth loading={busy} iconRight={busy ? undefined : 'send'} type="submit">Email me a magic link</Button>

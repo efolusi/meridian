@@ -130,7 +130,7 @@ function BrandBand() {
 
 const TIERS = [
   ['Starter', '$0', 'For side projects and tinkering', ['1 surface', '2 seats', '10k requests/mo', 'Community support'], 'secondary'],
-  ['Growth', '$12', 'Per seat — most teams start here', ['Every surface', 'Unlimited seats', '1M requests/mo', 'Email support', 'SSO'], 'primary'],
+  ['Growth', '$12', 'Per seat, where most teams start', ['Every surface', 'Unlimited seats', '1M requests/mo', 'Email support', 'SSO'], 'primary'],
   ['Scale', 'Custom', 'For platforms and regulated teams', ['Everything in Growth', 'Unlimited requests', 'SCIM & audit log', 'Dedicated support'], 'brand'],
 ];
 function Pricing() {
@@ -173,7 +173,7 @@ function Newsletter() {
     <div>
       <div style={{ fontSize: 12, fontWeight: 600, letterSpacing: '0.06em', textTransform: 'uppercase', color: 'var(--text-muted)' }}>Stay in the loop</div>
       {done ? (
-        <p style={{ fontSize: 13, color: 'var(--success-600)', marginTop: 14, display: 'flex', alignItems: 'center', gap: 6 }}><Icon name="circle-check" size={15} />You're in — see you next month.</p>
+        <p style={{ fontSize: 13, color: 'var(--success-600)', marginTop: 14, display: 'flex', alignItems: 'center', gap: 6 }}><Icon name="circle-check" size={15} />You're in. See you next month.</p>
       ) : (
         <div style={{ display: 'flex', gap: 8, marginTop: 14 }}>
           <Input size="sm" placeholder="you@company.com" style={{ flex: 1 }} />
