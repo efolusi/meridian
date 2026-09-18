@@ -116,6 +116,7 @@ public_paths=(
   _ds_bundle.js
   _ds_manifest.json
   styles.css
+  landing.css
   tailwind.preset.js
   registry.json
   llms.txt
