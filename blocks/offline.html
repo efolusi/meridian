@@ -1,0 +1,30 @@
+<!-- @dsCard group="Blocks" viewport="1024x440" name="Offline state" subtitle="Connection-lost page with retry and saved work" -->
+<!DOCTYPE html><html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><link rel="stylesheet" href="../styles.css">
+<script src="https://unpkg.com/react@18.3.1/umd/react.production.min.js" integrity="sha384-DGyLxAyjq0f9SPpVevD6IgztCFlnMF6oW/XQGmfe+IsZ8TqEiDrcHkMLKI6fiB/Z" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.production.min.js" integrity="sha384-gTGxhz21lVGYNMcdJOyq01Edg0jhn/c22nsx0kyqP0TxaV5WVdsSH1fSDUf5YJj1" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+<script src="../_ds_bundle.js"></script>
+<style>@media(max-width:600px){.bk-sec{padding:48px 18px!important}.bk-h1{font-size:30px!important}}</style>
+</head><body style="background:var(--surface-page)">
+<div id="root"></div>
+<script type="text/babel">
+
+const { Button, Icon, Badge } = window.EfolusiDesignSystem_4ffc3d;
+function Block() {
+  return (
+    <section className="bk-sec" style={{ padding: '72px 48px', textAlign: 'center' }}>
+      <div style={{ width: 40, height: 40, margin: '0 auto', display: 'flex', alignItems: 'center', justifyContent: 'center', borderRadius: 'var(--radius-md)', background: 'var(--surface-sunken)', color: 'var(--text-secondary)' }}>
+        <Icon name="plug" size={20} />
+      </div>
+      <div style={{ marginTop: 14 }}><Badge variant="warning">Offline</Badge></div>
+      <h1 className="bk-h1" style={{ fontFamily: 'var(--font-display)', fontSize: 40, fontWeight: 680, letterSpacing: '-0.02em', margin: '12px 0 0' }}>You are offline.</h1>
+      <p style={{ fontSize: 15, lineHeight: 1.6, color: 'var(--text-secondary)', margin: '12px auto 0', maxWidth: 440 }}>We cannot reach the network right now. Your unsaved changes stay in this tab and sync as soon as the connection is back.</p>
+      <div style={{ display: 'flex', gap: 8, justifyContent: 'center', margin: '24px auto 0' }}>
+        <Button onClick={() => window.location.reload()} iconLeft="refresh-cw">Retry now</Button>
+      </div>
+      <div style={{ marginTop: 14, fontSize: 13, color: 'var(--text-muted)' }}>Retrying automatically every 30 seconds · <a href="#" style={{ fontWeight: 600 }}>Work offline</a></div>
+    </section>
+  );
+}
+ReactDOM.createRoot(document.getElementById('root')).render(<Block />);
+</script></body></html>
