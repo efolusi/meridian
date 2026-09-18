@@ -1,0 +1,34 @@
+{
+  "name": "skiplink",
+  "type": "registry:ui",
+  "title": "SkipLink",
+  "description": "First focusable element on the page: one Tab press jumps a keyboard user past the header into the content. Hidden until focused.",
+  "dependencies": [
+    "react"
+  ],
+  "registryDependencies": [
+    "https://meridian.efolusi.com/site/registry/meridian-base.json",
+    "https://meridian.efolusi.com/site/registry/button.json"
+  ],
+  "files": [
+    {
+      "path": "components/navigation/SkipLink.jsx",
+      "type": "registry:ui",
+      "content": "import React from 'react';\nimport { injectEfCss } from '../forms/Button.jsx';\nconst CSS = `\n/* Off-screen rather than display:none or visibility:hidden: both of those\n   remove the link from the focus order entirely, which is the one thing a skip\n   link must never do. Clip-path keeps it reachable by Tab while invisible. */\n.ef-skip{position:absolute;inset-inline-start:var(--space-4);inset-block-start:var(--space-4);z-index:var(--z-modal);display:inline-flex;align-items:center;height:var(--control-h-md);min-height:var(--tap-min);padding:0 14px;border:1px solid var(--border-strong);border-radius:var(--radius-sm);background:var(--surface-card);color:var(--text-primary);font-family:var(--font-sans);font-size:var(--text-md);font-weight:var(--weight-semibold);text-decoration:none;box-shadow:var(--shadow-md);clip-path:inset(50%);white-space:nowrap}\n.ef-skip:focus-visible{clip-path:none;outline:none;box-shadow:var(--focus-ring),var(--shadow-md)}\n/* Some browsers still focus a link on click without :focus-visible; keep the\n   plain :focus reveal so a pointer user never hits an invisible target. */\n.ef-skip:focus{clip-path:none}\n`;\n/**\n * First focusable element on the page: one Tab press moves a keyboard user past\n * the whole header into the content.\n *\n * The target must be focusable for the jump to move focus, not just scroll:\n * give the landmark `tabIndex={-1}` (`<main id=\"main\" tabIndex={-1}>`). Without\n * it Safari and Firefox scroll the page but leave focus in the header, so the\n * next Tab returns to the navigation the user just skipped.\n */\nexport function SkipLink({ href = '#main', children = 'Skip to content', style, className, ...rest }) {\n  injectEfCss('ef-css-skip', CSS);\n  return (\n    <a {...rest} href={href} className={`ef-skip${className ? ' ' + className : ''}`} style={style}>\n      {children}\n    </a>\n  );\n}\n"
+    },
+    {
+      "path": "components/navigation/SkipLink.d.ts",
+      "type": "registry:component",
+      "content": "export interface SkipLinkProps {\n  /** Target landmark; it needs tabIndex={-1} to receive focus @default '#main' */\n  href?: string;\n  children?: React.ReactNode;\n  style?: React.CSSProperties;\n  className?: string;\n}\nexport declare function SkipLink(props: SkipLinkProps): React.JSX.Element;\n"
+    },
+    {
+      "path": "components/navigation/SkipLink.prompt.md",
+      "type": "registry:component",
+      "content": "First focusable element on the page: one Tab press jumps a keyboard user past the header into the content. Hidden until focused.\n\n```jsx\n<SkipLink />\n<main id=\"main\" tabIndex={-1}>\u2026</main>\n```\n\nThe target needs `tabIndex={-1}`, or Safari and Firefox scroll without moving focus and the next Tab lands back in the navigation.\n"
+    }
+  ],
+  "categories": [
+    "navigation"
+  ],
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json"
+}

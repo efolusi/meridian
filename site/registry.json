@@ -3483,6 +3483,36 @@
       ]
     },
     {
+      "name": "skiplink",
+      "type": "registry:ui",
+      "title": "SkipLink",
+      "description": "First focusable element on the page: one Tab press jumps a keyboard user past the header into the content. Hidden until focused.",
+      "dependencies": [
+        "react"
+      ],
+      "registryDependencies": [
+        "https://meridian.efolusi.com/site/registry/meridian-base.json",
+        "https://meridian.efolusi.com/site/registry/button.json"
+      ],
+      "files": [
+        {
+          "path": "components/navigation/SkipLink.jsx",
+          "type": "registry:ui"
+        },
+        {
+          "path": "components/navigation/SkipLink.d.ts",
+          "type": "registry:component"
+        },
+        {
+          "path": "components/navigation/SkipLink.prompt.md",
+          "type": "registry:component"
+        }
+      ],
+      "categories": [
+        "navigation"
+      ]
+    },
+    {
       "name": "steps",
       "type": "registry:ui",
       "title": "Steps",
