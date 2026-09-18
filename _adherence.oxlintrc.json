@@ -882,10 +882,10 @@
       "Progress": {
         "replaces": []
       },
-      "Toaster": {
+      "Spinner": {
         "replaces": []
       },
-      "Spinner": {
+      "Toaster": {
         "replaces": []
       },
       "Tooltip": {
@@ -1674,6 +1674,7 @@
       "--radius-md",
       "--radius-sm",
       "--radius-xl",
+      "--radius-xs",
       "--sand-100",
       "--sand-200",
       "--sand-25",
@@ -1719,6 +1720,7 @@
       "--surface-sunken",
       "--table-pad-x",
       "--table-pad-y",
+      "--tap-min",
       "--text-2xl",
       "--text-2xs",
       "--text-3xl",
@@ -1841,6 +1843,7 @@
       "--radius-md": "radius",
       "--radius-sm": "radius",
       "--radius-xl": "radius",
+      "--radius-xs": "radius",
       "--sand-100": "color",
       "--sand-200": "color",
       "--sand-25": "color",
@@ -1886,6 +1889,7 @@
       "--surface-sunken": "color",
       "--table-pad-x": "spacing",
       "--table-pad-y": "spacing",
+      "--tap-min": "color",
       "--text-2xl": "font",
       "--text-2xs": "font",
       "--text-3xl": "font",
