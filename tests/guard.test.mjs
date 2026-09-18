@@ -73,7 +73,7 @@ describe('Meridian Guard rules', () => {
   });
 
   it('rejects undefined Meridian radius tokens in authored styles', () => {
-    expect(rules('const cardCss = `.card { border-radius: var(--radius-xs); }`; export const card = cardCss;')).toEqual(['MDG006']);
+    expect(rules('const cardCss = `.card { border-radius: var(--radius-tiny); }`; export const card = cardCss;')).toEqual(['MDG006']);
     expect(rules('const cardCss = `.card { border-radius: var(--radius-sm); }`; export const card = cardCss;')).toEqual([]);
   });
 

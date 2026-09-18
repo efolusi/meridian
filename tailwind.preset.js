@@ -108,6 +108,7 @@ module.exports = { theme: { extend: {
     "32": "var(--space-32)"
   },
   "borderRadius": {
+    "xs": "var(--radius-xs)",
     "sm": "var(--radius-sm)",
     "md": "var(--radius-md)",
     "lg": "var(--radius-lg)",

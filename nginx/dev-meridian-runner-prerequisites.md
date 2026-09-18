@@ -35,6 +35,19 @@ infrastructure.
   This workflow's boundary is enforced by the script checks below, not by an
   isolated OS user.
 
+## Required before merging a vhost change
+
+`scripts/deploy-dev-static.sh` compares the installed vhost byte-for-byte
+against `nginx/dev-meridian.efolusi.com.conf` and exits `72` when they differ.
+A change to that file therefore does **not** take effect on its own: an
+administrator must reinstall the tracked bytes at
+`/etc/nginx/sites-available/dev-meridian.efolusi.com`, run `nginx -t`, and
+reload Nginx out of band. Until they do, every development deploy fails at the
+control-plane check. The current change adds the `noindex` overrides
+(`location = /robots.txt`, `X-Robots-Tag`, and the `sub_filter` robots-meta
+rewrite) and needs `ngx_http_sub_module`, which is compiled into Debian's
+`nginx-full`/`nginx-extras` packages.
+
 The deploy script refuses to publish if the OS user, deploy-root ownership,
 installed vhost bytes, vhost ownership, or enabled-vhost symlink differs from
 this contract. Nginx configuration changes remain an administrator-reviewed,

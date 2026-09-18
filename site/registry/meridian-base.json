@@ -44,7 +44,7 @@
       "path": "tokens/spacing.css",
       "type": "registry:file",
       "target": "tokens/spacing.css",
-      "content": ":root{\n--space-0:0;--space-1:4px;--space-2:8px;--space-3:12px;--space-4:16px;--space-5:20px;--space-6:24px;--space-8:32px;--space-10:40px;--space-12:48px;--space-16:64px;--space-20:80px;--space-24:96px;--space-32:128px;\n--radius-sm:4px;--radius-md:8px;--radius-lg:12px;--radius-xl:16px;--radius-full:999px;\n--container-max:1200px;--container-text:720px;\n--control-h-sm:28px;--control-h-md:36px;--control-h-lg:44px;\n--table-pad-y:12px;--table-pad-x:16px;\n}\n/* Compact density \u2014 data-heavy B2B views */\n[data-density=\"compact\"]{\n--control-h-sm:24px;--control-h-md:30px;--control-h-lg:38px;\n--table-pad-y:7px;--table-pad-x:12px;\n}\n"
+      "content": ":root{\n--space-0:0;--space-1:4px;--space-2:8px;--space-3:12px;--space-4:16px;--space-5:20px;--space-6:24px;--space-8:32px;--space-10:40px;--space-12:48px;--space-16:64px;--space-20:80px;--space-24:96px;--space-32:128px;\n--radius-xs:4px;--radius-sm:8px;--radius-md:12px;--radius-lg:16px;--radius-xl:24px;--radius-full:999px;\n--container-max:1200px;--container-text:720px;\n--control-h-sm:28px;--control-h-md:36px;--control-h-lg:44px;\n--tap-min:44px;\n--table-pad-y:12px;--table-pad-x:16px;\n}\n/* Compact density \u2014 data-heavy B2B views */\n[data-density=\"compact\"]{\n--control-h-sm:24px;--control-h-md:30px;--control-h-lg:38px;\n--table-pad-y:7px;--table-pad-x:12px;\n}\n"
     },
     {
       "path": "tokens/typography.css",
