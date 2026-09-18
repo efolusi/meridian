@@ -8,12 +8,16 @@
 [data-theme="dark"] .meridian-lockup--light{display:none}
 [data-theme="dark"] .meridian-lockup--dark{display:block}
 .site-nav::-webkit-scrollbar{display:none}
-.site-search{width:220px}
+.site-search{width:220px;height:36px}
 @media (max-width:1080px){
 .site-toc{display:none!important}
 .site-top{gap:16px!important}
 .site-search{width:150px!important}
 .hide-md{display:none!important}
+/* The box is 150px here; the ⌘K hint no longer fits beside the label, and the
+   label is the part that tells you what the control does. Drop the hint first —
+   the same order the ≤760px rule already uses when both go. */
+.site-search .site-search-kbd{display:none}
 }
 @media (max-width:900px){
 .site-side{display:none!important}
@@ -73,3 +77,23 @@
 .site-theme .icon-moon{display:none}
 [data-theme="dark"] .site-theme .icon-sun{display:none}
 [data-theme="dark"] .site-theme .icon-moon{display:block}
+
+/* Touch pointers get the design system's own minimum target instead of the
+   36px mouse geometry. --tap-min ships in tokens/spacing.css; the fallback
+   keeps this file standalone if the docs chrome is ever served without it. */
+@media (pointer: coarse) {
+  .site-menu > summary,
+  .site-theme,
+  .site-gh,
+  .site-lang,
+  .site-search {
+    min-width: var(--tap-min, 44px);
+    height: var(--tap-min, 44px);
+  }
+
+  .site-menu > summary,
+  .site-theme,
+  .site-gh {
+    width: var(--tap-min, 44px);
+  }
+}
