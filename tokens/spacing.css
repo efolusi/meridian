@@ -11,3 +11,14 @@
 --control-h-sm:24px;--control-h-md:30px;--control-h-lg:38px;
 --table-pad-y:7px;--table-pad-x:12px;
 }
+
+/* Touch pointers: the default control height (36px) is below the 44px minimum
+   touch target, so raise sm and md to --tap-min there. Compact density keeps
+   its own scale: it exists for mouse-driven data views, and a coarse pointer
+   on a compact view still needs the larger target, so it is raised too.
+   Fine pointers keep the tighter scale — desktop layout does not move. */
+@media (pointer: coarse) {
+  :root, [data-density="compact"] {
+    --control-h-sm:var(--tap-min);--control-h-md:var(--tap-min);--control-h-lg:var(--tap-min);
+  }
+}
