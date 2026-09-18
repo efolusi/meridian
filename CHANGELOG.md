@@ -2,6 +2,10 @@
 
 ## Unreleased
 
+- **The radius scale now matches the Efolusi landing surface.** `--radius-sm` 8px, `--radius-md` 12px, `--radius-lg` 16px and `--radius-xl` 24px replace the tighter scale, so every product inherits the warmer corner language instead of overriding it. `--radius-full` is unchanged, so pill buttons do not move.
+- **`--radius-xs` (4px) keeps small square controls square.** Checkbox reads as a checkbox again rather than a near-circle beside a radio.
+- **`--tap-min` (44px) is now a core token.** The minimum touch-target size no longer lives only on the corporate surfaces.
+
 - **Error, offline, and empty states now have canonical blocks.** `server-error` carries the request ID a user can quote plus a retry, `offline` promises unsaved work is kept, and `empty-state` pairs a primary action with a sample, so products stop inventing these pages one at a time.
 
 ## 1.21.6 — 2026-09-05
