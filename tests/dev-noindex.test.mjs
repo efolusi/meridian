@@ -33,6 +33,13 @@ describe('dev-meridian.efolusi.com is never indexed', () => {
     expect(override.slice(0, override.indexOf('}'))).not.toMatch(/Sitemap/i)
   })
 
+  it('does not serve the production-URL sitemap from the dev host', () => {
+    expect(devNginx).toContain('location = /sitemap.xml {')
+    const block = devNginx.slice(devNginx.indexOf('location = /sitemap.xml {'))
+    expect(block.slice(0, block.indexOf('}'))).toContain('return 404;')
+    expect(prodNginx).not.toContain('location = /sitemap.xml')
+  })
+
   it('stamps X-Robots-Tag on every response the dev vhost can produce', () => {
     // add_header does not inherit into a location that declares its own, so
     // each such location repeats it. `location /` declares none and inherits.
