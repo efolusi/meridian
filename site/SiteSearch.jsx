@@ -62,7 +62,7 @@ function SiteSearch() {
   return R.createElement('span', null,
     R.createElement('button', {
       onClick: () => setOpen(true), 'aria-label': 'Search documentation', className: 'site-search',
-      style: { display: 'flex', alignItems: 'center', gap: 8, height: 36, padding: '0 8px 0 10px', border: '1px solid var(--border-default)', borderRadius: 'var(--radius-sm)', background: 'var(--surface-card)', color: 'var(--text-muted)', fontFamily: 'var(--font-sans)', fontSize: 13, cursor: 'pointer', flex: 'none', justifyContent: 'flex-start' },
+      style: { display: 'flex', alignItems: 'center', gap: 8, padding: '0 8px 0 10px', border: '1px solid var(--border-default)', borderRadius: 'var(--radius-sm)', background: 'var(--surface-card)', color: 'var(--text-muted)', fontFamily: 'var(--font-sans)', fontSize: 13, cursor: 'pointer', flex: 'none', justifyContent: 'flex-start' },
     },
       Icon ? R.createElement(Icon, { name: 'search', size: 14 }) : null,
       R.createElement('span', { className: 'site-search-label', style: { flex: 1, textAlign: 'left', whiteSpace: 'nowrap', overflow: 'hidden' } }, 'Search docs…'),
