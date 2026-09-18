@@ -92,7 +92,10 @@ try {
     assert.equal(anchorFocus,nativeFocus,`${theme}: keyboard focus ring must match for anchor/native buttons`);
     assert.notEqual(anchorFocus,'none',`${theme}: keyboard focus ring must remain visible`);
     const utilityRadius=await page.locator('#utility').evaluate(el=>getComputedStyle(el).borderRadius);
-    assert.equal(utilityRadius,'12px',`${theme}: framework utilities must remain above Meridian components`);
+    // The fixture's utility class resolves var(--radius-lg): read the token rather
+    // than pinning a literal, so raising the radius scale is not a false failure.
+    const radiusLg=await page.evaluate(()=>getComputedStyle(document.documentElement).getPropertyValue('--radius-lg').trim());
+    assert.equal(utilityRadius,radiusLg,`${theme}: framework utilities must remain above Meridian components`);
     for(const variant of variants) {
       const anchor=page.locator(`#ad-${variant}`);
       const native=page.locator(`#bd-${variant}`);
