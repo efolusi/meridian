@@ -209,6 +209,11 @@ for (const f of fs.readdirSync(path.join(ROOT, 'tokens')).sort()) {
 // Variables and Tailwind. The preset is CommonJS (tailwind.config.js does
 // require()), and dist/package.json says "type":"module", so it ships as .cjs
 // or Node would parse it as ESM and throw on module.exports.
+// The opt-in landing layer: page rhythm, deliberately outside the token
+// contract, so a product's marketing page can match efolusi.com without
+// every product re-deriving its own clamp.
+files.set('landing.css', fs.readFileSync(path.join(ROOT, 'landing.css'), 'utf8'));
+
 files.set('tokens.json', fs.readFileSync(path.join(ROOT, 'tokens.json'), 'utf8'));
 files.set('tailwind.preset.cjs', fs.readFileSync(path.join(ROOT, 'tailwind.preset.js'), 'utf8'));
 
@@ -249,6 +254,7 @@ files.set('package.json', JSON.stringify({
     './styles.css': './styles.css',
     // Explicit, because the './*' pattern would rewrite it to components.css.js.
     './components.css': './components.css',
+    './landing.css': './landing.css',
     './tokens/*': './tokens/*',
     // Tools read this directly; without an entry the './*' pattern rewrites it
     // to package.json.js and the read fails.

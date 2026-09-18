@@ -2,6 +2,10 @@
 
 ## Unreleased
 
+## 1.21.8 — 2026-09-19
+
+- **`landing.css`: an opt-in landing rhythm layer.** Section, hero and page-hero spacing at 64/80/96px across phone, tablet and desktop, matching efolusi.com at its real breakpoints (641px and 1021px), plus thin `.mrd-section` / `.mrd-hero` / `.mrd-page-hero` / `.mrd-container` classes. Page rhythm stays out of the token contract: import it only where you want it.
+
 ## 1.21.7 — 2026-09-19
 
 - **Controls meet the 44px touch target on touch devices.** Under `@media (pointer: coarse)` the small, medium and large control heights all resolve to `--tap-min`, so a phone or tablet gets a 44px tap area while mouse-driven layouts keep the tighter 28/36/44 scale. Compact density is raised too: it exists for dense mouse views, and a finger on that view still needs the larger target.

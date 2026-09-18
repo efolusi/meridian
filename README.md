@@ -105,7 +105,20 @@ Every component and screen here is original. Meridian has its own three-stroke m
 
 ## Blocks
 
-Pre-composed sections in `blocks/` (Blocks group in the Design System tab): App shell, Login, Stats dashboard, Settings, Hero, Pricing, FAQ, 404 page, Activity feed. Copy a block's markup as the starting point for a page — they compose the primitives, so they inherit theme + density automatically.
+Pre-composed sections in `blocks/` (Blocks group in the Design System tab): App shell, Login, Stats dashboard, Settings, Hero, Pricing, FAQ, 404 page, 500 page, Offline state, Empty state, Activity feed. Copy a block's markup as the starting point for a page — they compose the primitives, so they inherit theme + density automatically.
+
+## Landing rhythm (opt-in)
+
+`landing.css` is a separate, opt-in layer for marketing pages: `--section-y`, `--hero-top`, `--hero-bottom`, `--page-hero-top`, `--page-hero-bottom` (64/80/96px section rhythm across phone, tablet, desktop) plus thin `.mrd-section`, `.mrd-hero`, `.mrd-page-hero` and `.mrd-container` classes.
+
+It is deliberately **not** part of the token contract: how much air sits between marketing sections belongs to the page, not to a component. Import it only where you want that rhythm.
+
+```html
+<link rel="stylesheet" href="https://meridian.efolusi.com/landing.css">
+```
+```js
+import '@efolusi/meridian/landing.css'
+```
 
 ## Theming & density
 
