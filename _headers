@@ -13,6 +13,9 @@
 /styles.css
   Cache-Control: no-cache
 
+/landing.css
+  Cache-Control: no-cache
+
 /tokens/*
   Cache-Control: no-cache
 

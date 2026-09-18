@@ -1,0 +1,102 @@
+/* Meridian landing layer — OPT-IN, not part of the core token contract.
+ *
+ * Page rhythm is not a component contract: a Button must look the same
+ * everywhere, but how much air sits between marketing sections is a property
+ * of the page, so these values deliberately live outside tokens/.
+ *
+ * They exist because every Efolusi product landing page had reinvented the
+ * same fluid clamp and landed on a different number (~69–81px) that matched no
+ * step of the spacing scale, while efolusi.com — the reference — sat on the
+ * scale at 96px. This file is that reference, written down once.
+ *
+ * Usage (after the Meridian tokens, because it builds on --space-*):
+ *   <link rel="stylesheet" href="https://meridian.efolusi.com/landing.css">
+ *   or, from the npm package:  @import "@efolusi/meridian/landing.css";
+ *
+ * Then either use the tokens directly (padding-block: var(--section-y)) or the
+ * thin classes below. Both are fine; the classes only save the boilerplate.
+ */
+
+:root {
+  /* Phone. Matches efolusi.com at 375 and 640. */
+  --section-y: 64px;
+  --hero-top: 48px;
+  --hero-bottom: 56px;
+  --page-hero-top: 48px;
+  --page-hero-bottom: 40px;
+}
+
+/* Tablet. Matches efolusi.com at 768. */
+@media (min-width: 768px) {
+  :root {
+    --section-y: 80px;
+    --hero-top: 64px;
+    --hero-bottom: 72px;
+    --page-hero-top: 64px;
+    --page-hero-bottom: 48px;
+  }
+}
+
+/* Desktop. Matches efolusi.com at 1024 and above; --section-y is --space-24. */
+@media (min-width: 1024px) {
+  :root {
+    --section-y: 96px;
+    --hero-top: 80px;
+    --hero-bottom: 88px;
+    --page-hero-top: 80px;
+    --page-hero-bottom: 56px;
+  }
+}
+
+@layer meridian {
+  /* A marketing section: vertical rhythm plus the standard page gutter. The
+     gutter is 18px on phones because that is what the docs site and the
+     reference both use below 760px. */
+  .mrd-section {
+    padding-block: var(--section-y);
+    padding-inline: 18px;
+  }
+
+  @media (min-width: 768px) {
+    .mrd-section {
+      padding-inline: 32px;
+    }
+  }
+
+  /* The first section of a landing page: less air above (the nav is already
+     there), a little more below than a normal section. */
+  .mrd-hero {
+    padding-block: var(--hero-top) var(--hero-bottom);
+    padding-inline: 18px;
+  }
+
+  @media (min-width: 768px) {
+    .mrd-hero {
+      padding-inline: 32px;
+    }
+  }
+
+  /* The header of a sub-page (pricing, docs index, changelog): tighter than a
+     landing hero, because content follows immediately. */
+  .mrd-page-hero {
+    padding-block: var(--page-hero-top) var(--page-hero-bottom);
+    padding-inline: 18px;
+  }
+
+  @media (min-width: 768px) {
+    .mrd-page-hero {
+      padding-inline: 32px;
+    }
+  }
+
+  /* Centres the content of any of the above on the shared measure. */
+  .mrd-container {
+    max-width: var(--container-max);
+    margin-inline: auto;
+  }
+
+  .mrd-container--text {
+    max-width: var(--container-text);
+    margin-inline: auto;
+  }
+}
