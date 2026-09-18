@@ -212,3 +212,21 @@ export function TopNavDemo() {
     </div>
   );
 }
+
+// @demo SkipLink Skip to content
+export function SkipLinkDemo() {
+  const { SkipLink } = window.EfolusiDesignSystem_4ffc3d;
+  // Focus the link to reveal it: it is off-screen until it has focus, which is
+  // the whole point — it must be reachable by Tab without taking up space.
+  return (
+    <div style={{ position: 'relative', minHeight: 96, padding: 'var(--space-4)' }}>
+      <SkipLink href="#skiplink-demo-target" />
+      <p style={{ margin: 0, fontSize: 'var(--text-sm)', color: 'var(--text-muted)' }}>
+        Press Tab with this panel focused: the link appears at the top-left.
+      </p>
+      <p id="skiplink-demo-target" tabIndex={-1} style={{ marginBlockStart: 'var(--space-4)', fontSize: 'var(--text-sm)' }}>
+        The target carries tabIndex=-1 so focus actually lands here.
+      </p>
+    </div>
+  );
+}
