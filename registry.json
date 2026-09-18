@@ -3867,6 +3867,27 @@
       ]
     },
     {
+      "name": "block-empty-state",
+      "type": "registry:block",
+      "title": "Empty state block",
+      "description": "Pre-composed Meridian section: empty state.",
+      "dependencies": [
+        "react"
+      ],
+      "registryDependencies": [
+        "https://meridian.efolusi.com/site/registry/meridian-base.json"
+      ],
+      "files": [
+        {
+          "path": "blocks/empty-state.html",
+          "type": "registry:block"
+        }
+      ],
+      "categories": [
+        "blocks"
+      ]
+    },
+    {
       "name": "block-faq",
       "type": "registry:block",
       "title": "Faq block",
@@ -3951,6 +3972,27 @@
       ]
     },
     {
+      "name": "block-offline",
+      "type": "registry:block",
+      "title": "Offline block",
+      "description": "Pre-composed Meridian section: offline.",
+      "dependencies": [
+        "react"
+      ],
+      "registryDependencies": [
+        "https://meridian.efolusi.com/site/registry/meridian-base.json"
+      ],
+      "files": [
+        {
+          "path": "blocks/offline.html",
+          "type": "registry:block"
+        }
+      ],
+      "categories": [
+        "blocks"
+      ]
+    },
+    {
       "name": "block-pricing",
       "type": "registry:block",
       "title": "Pricing block",
@@ -3964,6 +4006,27 @@
       "files": [
         {
           "path": "blocks/pricing.html",
+          "type": "registry:block"
+        }
+      ],
+      "categories": [
+        "blocks"
+      ]
+    },
+    {
+      "name": "block-server-error",
+      "type": "registry:block",
+      "title": "Server error block",
+      "description": "Pre-composed Meridian section: server error.",
+      "dependencies": [
+        "react"
+      ],
+      "registryDependencies": [
+        "https://meridian.efolusi.com/site/registry/meridian-base.json"
+      ],
+      "files": [
+        {
+          "path": "blocks/server-error.html",
           "type": "registry:block"
         }
       ],

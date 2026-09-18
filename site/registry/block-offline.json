@@ -1,0 +1,23 @@
+{
+  "name": "block-offline",
+  "type": "registry:block",
+  "title": "Offline block",
+  "description": "Pre-composed Meridian section: offline.",
+  "dependencies": [
+    "react"
+  ],
+  "registryDependencies": [
+    "https://meridian.efolusi.com/site/registry/meridian-base.json"
+  ],
+  "files": [
+    {
+      "path": "blocks/offline.html",
+      "type": "registry:block",
+      "content": "<!-- @dsCard group=\"Blocks\" viewport=\"1024x440\" name=\"Offline state\" subtitle=\"Connection-lost page with retry and saved work\" -->\n<!DOCTYPE html><html><head><meta charset=\"utf-8\"><meta name=\"viewport\" content=\"width=device-width, initial-scale=1\"><link rel=\"stylesheet\" href=\"../styles.css\">\n<script src=\"https://unpkg.com/react@18.3.1/umd/react.production.min.js\" integrity=\"sha384-DGyLxAyjq0f9SPpVevD6IgztCFlnMF6oW/XQGmfe+IsZ8TqEiDrcHkMLKI6fiB/Z\" crossorigin=\"anonymous\"></script>\n<script src=\"https://unpkg.com/react-dom@18.3.1/umd/react-dom.production.min.js\" integrity=\"sha384-gTGxhz21lVGYNMcdJOyq01Edg0jhn/c22nsx0kyqP0TxaV5WVdsSH1fSDUf5YJj1\" crossorigin=\"anonymous\"></script>\n<script src=\"https://unpkg.com/@babel/standalone@7.29.0/babel.min.js\" integrity=\"sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y\" crossorigin=\"anonymous\"></script>\n<script src=\"../_ds_bundle.js\"></script>\n<style>@media(max-width:600px){.bk-sec{padding:48px 18px!important}.bk-h1{font-size:30px!important}}</style>\n</head><body style=\"background:var(--surface-page)\">\n<div id=\"root\"></div>\n<script type=\"text/babel\">\n\nconst { Button, Icon, Badge } = window.EfolusiDesignSystem_4ffc3d;\nfunction Block() {\n  return (\n    <section className=\"bk-sec\" style={{ padding: '72px 48px', textAlign: 'center' }}>\n      <div style={{ width: 40, height: 40, margin: '0 auto', display: 'flex', alignItems: 'center', justifyContent: 'center', borderRadius: 'var(--radius-md)', background: 'var(--surface-sunken)', color: 'var(--text-secondary)' }}>\n        <Icon name=\"plug\" size={20} />\n      </div>\n      <div style={{ marginTop: 14 }}><Badge variant=\"warning\">Offline</Badge></div>\n      <h1 className=\"bk-h1\" style={{ fontFamily: 'var(--font-display)', fontSize: 40, fontWeight: 680, letterSpacing: '-0.02em', margin: '12px 0 0' }}>You are offline.</h1>\n      <p style={{ fontSize: 15, lineHeight: 1.6, color: 'var(--text-secondary)', margin: '12px auto 0', maxWidth: 440 }}>We cannot reach the network right now. Your unsaved changes stay in this tab and sync as soon as the connection is back.</p>\n      <div style={{ display: 'flex', gap: 8, justifyContent: 'center', margin: '24px auto 0' }}>\n        <Button onClick={() => window.location.reload()} iconLeft=\"refresh-cw\">Retry now</Button>\n      </div>\n      <div style={{ marginTop: 14, fontSize: 13, color: 'var(--text-muted)' }}>Retrying automatically every 30 seconds \u00b7 <a href=\"#\" style={{ fontWeight: 600 }}>Work offline</a></div>\n    </section>\n  );\n}\nReactDOM.createRoot(document.getElementById('root')).render(<Block />);\n</script></body></html>\n"
+    }
+  ],
+  "categories": [
+    "blocks"
+  ],
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json"
+}

@@ -1,0 +1,34 @@
+<!-- @dsCard group="Blocks" viewport="1024x440" name="Empty state" subtitle="First-run empty list with a primary action" -->
+<!DOCTYPE html><html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><link rel="stylesheet" href="../styles.css">
+<script src="https://unpkg.com/react@18.3.1/umd/react.production.min.js" integrity="sha384-DGyLxAyjq0f9SPpVevD6IgztCFlnMF6oW/XQGmfe+IsZ8TqEiDrcHkMLKI6fiB/Z" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.production.min.js" integrity="sha384-gTGxhz21lVGYNMcdJOyq01Edg0jhn/c22nsx0kyqP0TxaV5WVdsSH1fSDUf5YJj1" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+<script src="../_ds_bundle.js"></script>
+<style>@media(max-width:600px){.bk-sec{padding:48px 18px!important}.bk-h1{font-size:30px!important}}</style>
+</head><body style="background:var(--surface-page)">
+<div id="root"></div>
+<script type="text/babel">
+
+const { Button, Icon, Empty, EmptyHeader, EmptyMedia, EmptyTitle, EmptyDescription, EmptyContent } = window.EfolusiDesignSystem_4ffc3d;
+function Block() {
+  return (
+    <section className="bk-sec" style={{ padding: '56px 48px' }}>
+      <Empty className="ef-empty--bordered">
+        <EmptyHeader>
+          <EmptyMedia variant="icon"><Icon name="inbox" size={20} /></EmptyMedia>
+          <EmptyTitle>No projects yet</EmptyTitle>
+          <EmptyDescription>Projects hold your specs, runs and artifacts. Create one, or import an existing folder to start from what you already have.</EmptyDescription>
+        </EmptyHeader>
+        <EmptyContent>
+          <div style={{ display: 'flex', gap: 8, justifyContent: 'center', flexWrap: 'wrap' }}>
+            <Button iconLeft="plus" onClick={() => {}}>New project</Button>
+            <Button variant="secondary" onClick={() => {}}>Import folder</Button>
+          </div>
+          <div style={{ fontSize: 13, color: 'var(--text-muted)' }}>Not sure where to begin? <a href="#" style={{ fontWeight: 600 }}>Open a sample project</a></div>
+        </EmptyContent>
+      </Empty>
+    </section>
+  );
+}
+ReactDOM.createRoot(document.getElementById('root')).render(<Block />);
+</script></body></html>

@@ -2,6 +2,8 @@
 
 ## Unreleased
 
+- **Error, offline, and empty states now have canonical blocks.** `server-error` carries the request ID a user can quote plus a retry, `offline` promises unsaved work is kept, and `empty-state` pairs a primary action with a sample, so products stop inventing these pages one at a time.
+
 ## 1.21.6 — 2026-09-05
 
 - **Links and buttons now share a cascade-safe interaction contract.** Ordinary links use `--text-link-hover`, while every native and anchor Button variant retains its intended foreground through hover, focus, active, disabled, and loading states in light and dark themes.
