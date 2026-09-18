@@ -18,7 +18,7 @@
  */
 
 :root {
-  /* Phone. Matches efolusi.com at 375 and 640. */
+  /* Phone. Matches efolusi.com at 375 through 640. */
   --section-y: 64px;
   --hero-top: 48px;
   --hero-bottom: 56px;
@@ -26,8 +26,8 @@
   --page-hero-bottom: 40px;
 }
 
-/* Tablet. Matches efolusi.com at 768. */
-@media (min-width: 768px) {
+/* Tablet. efolusi.com switches here: 640 is still 64px, 641 is 80px. */
+@media (min-width: 641px) {
   :root {
     --section-y: 80px;
     --hero-top: 64px;
@@ -37,8 +37,9 @@
   }
 }
 
-/* Desktop. Matches efolusi.com at 1024 and above; --section-y is --space-24. */
-@media (min-width: 1024px) {
+/* Desktop. efolusi.com switches here: 1020 is still 80px, 1021 is 96px.
+   --section-y is --space-24. */
+@media (min-width: 1021px) {
   :root {
     --section-y: 96px;
     --hero-top: 80px;
@@ -57,7 +58,7 @@
     padding-inline: 18px;
   }
 
-  @media (min-width: 768px) {
+  @media (min-width: 641px) {
     .mrd-section {
       padding-inline: 32px;
     }
@@ -70,7 +71,7 @@
     padding-inline: 18px;
   }
 
-  @media (min-width: 768px) {
+  @media (min-width: 641px) {
     .mrd-hero {
       padding-inline: 32px;
     }
@@ -83,7 +84,7 @@
     padding-inline: 18px;
   }
 
-  @media (min-width: 768px) {
+  @media (min-width: 641px) {
     .mrd-page-hero {
       padding-inline: 32px;
     }
