@@ -1377,6 +1377,9 @@
       "SidebarMenuSkeleton": {
         "replaces": []
       },
+      "SkipLink": {
+        "replaces": []
+      },
       "Steps": {
         "replaces": []
       },

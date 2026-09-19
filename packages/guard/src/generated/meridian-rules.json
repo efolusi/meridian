@@ -1435,6 +1435,10 @@
       "sourcePath": "components/data/Skeleton.jsx"
     },
     {
+      "name": "SkipLink",
+      "sourcePath": "components/navigation/SkipLink.jsx"
+    },
+    {
       "name": "Slider",
       "sourcePath": "components/forms/Slider.jsx"
     },
