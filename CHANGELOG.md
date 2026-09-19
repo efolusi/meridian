@@ -2,6 +2,10 @@
 
 ## Unreleased
 
+## 1.21.9 — 2026-09-19
+
+- **`SkipLink`: one Tab press past the header.** None of the Efolusi products had a skip link, so a keyboard user tabbed through the whole navigation on every page. The link stays in the focus order while invisible (clipped, not `display:none`) and reveals itself on focus; its target needs `tabIndex={-1}`, or Safari and Firefox scroll without moving focus.
+
 ## 1.21.8 — 2026-09-19
 
 - **`landing.css`: an opt-in landing rhythm layer.** Section, hero and page-hero spacing at 64/80/96px across phone, tablet and desktop, matching efolusi.com at its real breakpoints (641px and 1021px), plus thin `.mrd-section` / `.mrd-hero` / `.mrd-page-hero` / `.mrd-container` classes. Page rhythm stays out of the token contract: import it only where you want it.

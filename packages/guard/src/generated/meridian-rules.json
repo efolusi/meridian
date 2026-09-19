@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "version": "1.21.8",
+  "version": "1.21.9",
   "components": [
     {
       "name": "Accordion",
@@ -1433,6 +1433,10 @@
     {
       "name": "Skeleton",
       "sourcePath": "components/data/Skeleton.jsx"
+    },
+    {
+      "name": "SkipLink",
+      "sourcePath": "components/navigation/SkipLink.jsx"
     },
     {
       "name": "Slider",

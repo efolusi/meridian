@@ -2,7 +2,7 @@
 
 The entire design system in one file, generated from llms.txt, components/*/, and tokens/*.css by scripts/build_llms.py. Do not edit by hand. The short map of the repository is /llms.txt.
 
-> Meridian is a general-purpose open-source design system by Efolusi: 122 accessible React components, 167 design tokens (light, dark, compact), blocks, charts, and full example apps, served browser-native with zero build step. MIT licensed.
+> Meridian is a general-purpose open-source design system by Efolusi: 123 accessible React components, 167 design tokens (light, dark, compact), blocks, charts, and full example apps, served browser-native with zero build step. MIT licensed.
 
 Live docs: https://meridian.efolusi.com · Source: https://github.com/efolusi/meridian · License: MIT
 
@@ -30,7 +30,7 @@ Dark mode: set data-theme="dark" on any subtree. Compact density: data-density="
 
 ## Components
 
-122 components across 12 groups: ai, code, data, dates, display, feedback, files, finance, forms, icons, navigation, overlay. Each entry lists the component's public exports, its usage guidance (.prompt.md), and its typed props interface (.d.ts).
+123 components across 12 groups: ai, code, data, dates, display, feedback, files, finance, forms, icons, navigation, overlay. Each entry lists the component's public exports, its usage guidance (.prompt.md), and its typed props interface (.d.ts).
 
 ### ai
 
@@ -4068,6 +4068,30 @@ export interface SidebarMenuSkeletonProps extends React.HTMLAttributes<HTMLDivEl
 export const SidebarMenuSkeleton: React.ForwardRefExoticComponent<SidebarMenuSkeletonProps & React.RefAttributes<HTMLDivElement>>;
 export const SidebarTrigger: React.ForwardRefExoticComponent<SidebarComposableProps & React.RefAttributes<HTMLElement>>;
 export const SidebarRail: React.ForwardRefExoticComponent<React.ButtonHTMLAttributes<HTMLButtonElement> & React.RefAttributes<HTMLButtonElement>>;
+```
+
+#### SkipLink
+
+Group: navigation · Source: /components/navigation/SkipLink.jsx · Exports: SkipLink
+
+First focusable element on the page: one Tab press jumps a keyboard user past the header into the content. Hidden until focused.
+
+```jsx
+<SkipLink />
+<main id="main" tabIndex={-1}>…</main>
+```
+
+The target needs `tabIndex={-1}`, or Safari and Firefox scroll without moving focus and the next Tab lands back in the navigation.
+
+```ts
+export interface SkipLinkProps {
+  /** Target landmark; it needs tabIndex={-1} to receive focus @default '#main' */
+  href?: string;
+  children?: React.ReactNode;
+  style?: React.CSSProperties;
+  className?: string;
+}
+export declare function SkipLink(props: SkipLinkProps): React.JSX.Element;
 ```
 
 #### Steps
