@@ -1,4 +1,6 @@
-# Not part of the deployed site
+# Excluded from the development release: scripts/deploy-dev-static.sh uses this
+# file as its rsync exclude list. Production does not read it; it publishes the
+# explicit public_paths allowlist in scripts/deploy-prod-static.sh instead.
 .git
 .github
 .claude
@@ -6,7 +8,6 @@ uploads
 screenshots
 scripts
 node_modules
-wrangler.jsonc
 .assetsignore
 .editorconfig
 .gitignore
