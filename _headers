@@ -1,4 +1,6 @@
-# Cloudflare Pages headers. Later rules override earlier duplicates.
+# Header rules in the _headers format, for static hosts that read it. The
+# Meridian deploy does not: meridian.efolusi.com sets its headers in the
+# nginx/*.conf vhosts. Later rules override earlier duplicates.
 
 /assets/*
   Cache-Control: public, max-age=86400
