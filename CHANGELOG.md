@@ -2,6 +2,8 @@
 
 ## Unreleased
 
+## 1.21.10 — 2026-10-12
+
 - **`Alert`: the action never covers the text.** `AlertAction` was absolutely positioned with only 96px reserved on the right, so any action wider than that (every real one: "Send the link again", "I have read and accept") sat on top of the description, and on phones it covered half of it. The action is now a grid column beside the text and, below 560px, a full-width row under it. Measured on My Efolusi's account page at 375, 768 and 1440px: description and action rectangles no longer intersect (before: the action covered 66x20px of the verify-email text and 90x20px of the consent text at 375px, 66x12 and 90x12 at 768px; after: 0, and the phone action is 299x44px, full width).
 
 ## 1.21.9 — 2026-09-19
