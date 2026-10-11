@@ -36,6 +36,7 @@ carry it and must agree:
 | `CITATION.cff` | `version` (+ `date-released`) |
 | `site/DsSite.dc.html` | JSON-LD `softwareVersion` |
 | `CHANGELOG.md` | the release heading |
+| `site/Docs.dc.html` | the `X.Y.Z (Month YYYY)` changelog marker the public-facts gate checks |
 
 `npm run check` fails when the manifest and package.json disagree.
 
