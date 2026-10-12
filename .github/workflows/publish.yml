@@ -63,7 +63,7 @@ permissions:
 jobs:
   # Fast gate so routine pushes don't spin up the whole publish machinery.
   decide:
-    runs-on: ubuntu-latest
+    runs-on: [self-hosted, Linux, X64, efolusi-dev]
     outputs:
       go: ${{ steps.d.outputs.go }}
       version: ${{ steps.d.outputs.version }}
