@@ -108,6 +108,7 @@ jobs:
   publish:
     needs: decide
     if: needs.decide.outputs.go == 'true'
+    # GitHub-hosted on purpose: npm Trusted Publishing (OIDC) does not support self-hosted runners.
     runs-on: ubuntu-latest
     # Gives the publish a reviewable gate in repo settings, and scopes the OIDC
     # claim. Must match the Environment named in the trusted publisher config.
