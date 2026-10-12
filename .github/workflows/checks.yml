@@ -10,7 +10,7 @@ permissions:
 
 jobs:
   gates:
-    runs-on: ubuntu-latest
+    runs-on: [self-hosted, Linux, X64, efolusi-dev]
     steps:
       - uses: actions/checkout@v5
 
@@ -94,7 +94,13 @@ jobs:
         run: node scripts/check_types.mjs
 
   smoke:
-    runs-on: ubuntu-latest
+    runs-on: [self-hosted, Linux, X64, efolusi-dev]
+    env:
+      # Browsers and their system libs come from the Playwright image: the
+      # self-hosted runner user has no sudo, so `install --with-deps` cannot
+      # run. Same pattern as sanctum CI (docker run as the runner uid, so the
+      # workspace never gets root-owned files). Tag matches playwright@1.48.0.
+      PW_IMAGE: mcr.microsoft.com/playwright:v1.48.0-noble
     steps:
       - uses: actions/checkout@v5
       - uses: actions/setup-node@v5
@@ -104,12 +110,17 @@ jobs:
       # package has to be resolvable from the repo. `npx --package=X node script`
       # does not put X on the module search path, which is why this job failed
       # silently for weeks while the gates job stayed green. Install it for real.
-      - name: Install Playwright chromium
+      - name: Install Playwright package (browsers come from the image)
         run: |
           npm install --no-save --no-audit --no-fund playwright@1.48.0
-          npx playwright install --with-deps chromium
+          docker pull -q "$PW_IMAGE"
+          {
+            echo '#!/bin/sh'
+            echo 'exec docker run --rm --network host --ipc host --user "$(id -u):$(id -g)" -e HOME=/tmp -e BASE -e SHOTS -e BUTTON_SHOTS -e DIRECTION -v "$GITHUB_WORKSPACE:$GITHUB_WORKSPACE" -v "$RUNNER_TEMP:$RUNNER_TEMP" -w "$GITHUB_WORKSPACE" "$PW_IMAGE" node "$@"'
+          } > "$RUNNER_TEMP/pw-node"
+          chmod +x "$RUNNER_TEMP/pw-node"
       - name: Button anchor cascade and state parity
-        run: BUTTON_SHOTS="$RUNNER_TEMP/button-shots" node scripts/check_button_cascade.mjs
+        run: BUTTON_SHOTS="$RUNNER_TEMP/button-shots" "$RUNNER_TEMP/pw-node" scripts/check_button_cascade.mjs
       - name: Upload button interaction receipts
         if: always()
         uses: actions/upload-artifact@v4
@@ -123,14 +134,14 @@ jobs:
           SERVER=$!
           for i in $(seq 1 20); do curl -sf http://127.0.0.1:8000/site/_smoke.html >/dev/null && break || sleep 0.5; done
           set +e
-          BASE=http://127.0.0.1:8000 SHOTS="$RUNNER_TEMP/shots" node scripts/smoke_headless.mjs
+          BASE=http://127.0.0.1:8000 SHOTS="$RUNNER_TEMP/shots" "$RUNNER_TEMP/pw-node" scripts/smoke_headless.mjs
           CODE=$?
           if [ "$CODE" -eq 0 ]; then
-            BASE=http://127.0.0.1:8000 DIRECTION=rtl node scripts/smoke_headless.mjs
+            BASE=http://127.0.0.1:8000 DIRECTION=rtl "$RUNNER_TEMP/pw-node" scripts/smoke_headless.mjs
             CODE=$?
           fi
           if [ "$CODE" -eq 0 ]; then
-            BASE=http://127.0.0.1:8000 node scripts/smoke_starters.mjs
+            BASE=http://127.0.0.1:8000 "$RUNNER_TEMP/pw-node" scripts/smoke_starters.mjs
             CODE=$?
           fi
           set -e
@@ -141,7 +152,7 @@ jobs:
       # exist. Baselines are made by the update-visual-baselines workflow so
       # they always come from this same runner platform.
       - name: Visual regression (group screenshots vs baselines)
-        run: SHOTS="$RUNNER_TEMP/shots" node scripts/check_visual.mjs
+        run: SHOTS="$RUNNER_TEMP/shots" "$RUNNER_TEMP/pw-node" scripts/check_visual.mjs
 
       - name: Upload shots and diffs on failure
         if: failure()

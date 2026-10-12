@@ -63,7 +63,7 @@ permissions:
 jobs:
   # Fast gate so routine pushes don't spin up the whole publish machinery.
   decide:
-    runs-on: ubuntu-latest
+    runs-on: [self-hosted, Linux, X64, efolusi-dev]
     outputs:
       go: ${{ steps.d.outputs.go }}
       version: ${{ steps.d.outputs.version }}
@@ -108,6 +108,7 @@ jobs:
   publish:
     needs: decide
     if: needs.decide.outputs.go == 'true'
+    # GitHub-hosted on purpose: npm Trusted Publishing (OIDC) does not support self-hosted runners.
     runs-on: ubuntu-latest
     # Gives the publish a reviewable gate in repo settings, and scopes the OIDC
     # claim. Must match the Environment named in the trusted publisher config.

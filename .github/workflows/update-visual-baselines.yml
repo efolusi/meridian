@@ -15,7 +15,13 @@ permissions:
 
 jobs:
   baselines:
-    runs-on: ubuntu-latest
+    runs-on: [self-hosted, Linux, X64, efolusi-dev]
+    env:
+      # Browsers and their system libs come from the Playwright image: the
+      # self-hosted runner user has no sudo, so `install --with-deps` cannot
+      # run. Same pattern as sanctum CI (docker run as the runner uid, so the
+      # workspace never gets root-owned files). Tag matches playwright@1.48.0.
+      PW_IMAGE: mcr.microsoft.com/playwright:v1.48.0-noble
     steps:
       - uses: actions/checkout@v5
 
@@ -26,10 +32,15 @@ jobs:
       - name: Install
         run: npm ci --no-audit --no-fund
 
-      - name: Install Playwright chromium
+      - name: Install Playwright package (browsers come from the image)
         run: |
           npm install --no-save --no-audit --no-fund playwright@1.48.0
-          npx playwright install --with-deps chromium
+          docker pull -q "$PW_IMAGE"
+          {
+            echo '#!/bin/sh'
+            echo 'exec docker run --rm --network host --ipc host --user "$(id -u):$(id -g)" -e HOME=/tmp -e BASE -e SHOTS -e BUTTON_SHOTS -e DIRECTION -v "$GITHUB_WORKSPACE:$GITHUB_WORKSPACE" -v "$RUNNER_TEMP:$RUNNER_TEMP" -w "$GITHUB_WORKSPACE" "$PW_IMAGE" node "$@"'
+          } > "$RUNNER_TEMP/pw-node"
+          chmod +x "$RUNNER_TEMP/pw-node"
 
       - name: Capture group screenshots
         run: |
@@ -37,7 +48,7 @@ jobs:
           SERVER=$!
           for i in $(seq 1 20); do curl -sf http://127.0.0.1:8000/site/_smoke.html >/dev/null && break || sleep 0.5; done
           set +e
-          BASE=http://127.0.0.1:8000 SHOTS="$RUNNER_TEMP/shots" node scripts/smoke_headless.mjs
+          BASE=http://127.0.0.1:8000 SHOTS="$RUNNER_TEMP/shots" "$RUNNER_TEMP/pw-node" scripts/smoke_headless.mjs
           CODE=$?
           set -e
           kill $SERVER 2>/dev/null || true
