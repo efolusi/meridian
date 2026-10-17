@@ -37,6 +37,19 @@ page.on('console', m => {
 page.on('response', response => {
   if (response.status() >= 400) consoleErrors.push(`HTTP ${response.status()} ${response.url()}`);
 });
+// A request that never gets a response (reset connection, aborted fetch) is
+// not a 4xx and was invisible. Icon.jsx caches such a failure as an empty glyph.
+page.on('requestfailed', request => {
+  consoleErrors.push(`request failed ${request.url()} (${request.failure()?.errorText || 'unknown'})`);
+});
+// Icons arrive by fetch() after their demo has rendered, one request per name,
+// so the smoke signal can fire while some are still in flight. Track them so
+// captures wait for every glyph instead of racing the static server.
+const iconRequests = new Set();
+const isIcon = request => request.url().includes('/assets/icons/');
+page.on('request', request => { if (isIcon(request)) iconRequests.add(request); });
+page.on('requestfinished', request => iconRequests.delete(request));
+page.on('requestfailed', request => iconRequests.delete(request));
 
 await page.goto(URL, { waitUntil: 'load', timeout: 60000 });
 // Demos compile via in-browser Babel; wait for the smoke signal to settle.
@@ -72,6 +85,34 @@ if (SHOTS) {
   await page.addStyleTag({ content: '#summary, h1, [data-live] { display: none !important; } * { content-visibility: visible !important; }' });
   // Let layout observers (MessageScroller measures its items) settle on the real sizes.
   await page.evaluate(() => new Promise(r => requestAnimationFrame(() => requestAnimationFrame(r))));
+  // Everything a capture depends on, re-checked before every group shot: no icon
+  // request in flight, every icon span holding a painted <svg>, fonts loaded,
+  // and two frames for the paint. An icon that never fills fails the run rather
+  // than being baked into a baseline as a blank.
+  async function settle() {
+    const deadline = Date.now() + 30000;
+    while (iconRequests.size && Date.now() < deadline) await new Promise(r => setTimeout(r, 50));
+    if (iconRequests.size) throw new Error(`smoke: ${iconRequests.size} icon request(s) still pending after 30s`);
+    try {
+      await page.waitForFunction(() => [...document.querySelectorAll('[data-slot="icon"]')].every(span => {
+        const svg = span.querySelector('svg');
+        if (!svg) return false;
+        const box = svg.getBoundingClientRect();
+        // A hidden icon (display:none ancestor) has no box and nothing to paint.
+        return (box.width > 0 && box.height > 0) || span.getClientRects().length === 0;
+      }), null, { timeout: 30000, polling: 50 });
+    } catch {
+      const blanks = await page.evaluate(() => [...document.querySelectorAll('[data-slot="icon"]')]
+        .filter(span => !span.querySelector('svg'))
+        .map(span => span.closest('section[data-group]')?.getAttribute('data-group') || '?'));
+      throw new Error(`smoke: ${blanks.length} icon(s) never rendered an <svg> (groups: ${[...new Set(blanks)].join(', ')})`);
+    }
+    await page.evaluate(() => document.fonts.ready);
+    // Avatar photos and other <img>: decoded before paint, so a slow decode is not captured half-drawn.
+    await page.evaluate(() => Promise.all([...document.images].map(img => img.decode().catch(() => {}))));
+    await page.evaluate(() => new Promise(r => requestAnimationFrame(() => requestAnimationFrame(r))));
+  }
+
   let count = 0;
   for (const theme of ['light', 'dark']) {
     await page.evaluate(t => {
@@ -82,6 +123,7 @@ if (SHOTS) {
     await page.evaluate(() => new Promise(r => requestAnimationFrame(() => requestAnimationFrame(r))));
     for (const el of await page.locator('section[data-group]').all()) {
       const group = await el.getAttribute('data-group');
+      await settle();
       await el.screenshot({ path: path.join(SHOTS, `g-${group}-${theme}.png`), animations: 'disabled' });
       count++;
     }
