@@ -9,13 +9,13 @@ const CSS = `
 .ef-field__hint{font-size:var(--text-xs);color:var(--text-muted)}
 .ef-field__error{font-size:var(--text-xs);color:var(--danger-600);display:flex;align-items:center;gap:4px}
 .ef-input{position:relative;display:flex;align-items:center}
-.ef-input__el{width:100%;height:var(--control-h-md);padding:0 12px;border:1px solid var(--border-strong);border-radius:var(--radius-sm);background:var(--surface-sunken);color:var(--text-primary);font-family:var(--font-sans);font-size:var(--text-md);transition:border-color var(--dur-fast) var(--ease-out),box-shadow var(--dur-fast) var(--ease-out)}
+.ef-input__el{width:100%;height:var(--control-h-md);padding:0 12px;border:1px solid var(--border-control);border-radius:var(--radius-sm);background:var(--surface-sunken);color:var(--text-primary);font-family:var(--font-sans);font-size:var(--text-md);transition:border-color var(--dur-fast) var(--ease-out),box-shadow var(--dur-fast) var(--ease-out)}
 .ef-input__el::placeholder{color:var(--text-muted)}
-.ef-input__el:hover:not(:disabled){border-color:var(--sand-400)}
+.ef-input__el:hover:not(:disabled){border-color:var(--border-control-hover)}
 .ef-input__el:focus-visible{outline:none;border-color:var(--accent);box-shadow:var(--focus-ring)}
 .ef-input__el:disabled{background:var(--surface-subtle);color:var(--text-muted);cursor:not-allowed;opacity:.5}
-.ef-file-input{position:relative;display:flex;width:100%;height:var(--control-h-md);align-items:center;gap:10px;padding:3px 12px 3px 3px;overflow:hidden;border:1px solid var(--border-strong);border-radius:var(--radius-sm);background:var(--surface-sunken);color:var(--text-muted);font-family:var(--font-sans);font-size:var(--text-md);transition:border-color var(--dur-fast) var(--ease-out),box-shadow var(--dur-fast) var(--ease-out)}
-.ef-file-input:hover{border-color:var(--sand-400)}.ef-file-input:focus-within{border-color:var(--accent);box-shadow:var(--focus-ring)}.ef-file-input:has(.ef-input__el:disabled){background:var(--surface-subtle);cursor:not-allowed;opacity:.5}
+.ef-file-input{position:relative;display:flex;width:100%;height:var(--control-h-md);align-items:center;gap:10px;padding:3px 12px 3px 3px;overflow:hidden;border:1px solid var(--border-control);border-radius:var(--radius-sm);background:var(--surface-sunken);color:var(--text-muted);font-family:var(--font-sans);font-size:var(--text-md);transition:border-color var(--dur-fast) var(--ease-out),box-shadow var(--dur-fast) var(--ease-out)}
+.ef-file-input:hover{border-color:var(--border-control-hover)}.ef-file-input:focus-within{border-color:var(--accent);box-shadow:var(--focus-ring)}.ef-file-input:has(.ef-input__el:disabled){background:var(--surface-subtle);cursor:not-allowed;opacity:.5}
 .ef-file-input__button{display:inline-flex;height:28px;align-items:center;gap:6px;padding-inline:10px;border-radius:var(--radius-sm);background:var(--accent);color:var(--accent-contrast);font-size:var(--text-sm);font-weight:var(--weight-semibold);white-space:nowrap;transition:background var(--dur-fast) var(--ease-out),transform var(--dur-med) var(--ease-spring)}
 .ef-file-input:hover:not(:has(.ef-input__el:disabled)) .ef-file-input__button{background:var(--accent-hover)}.ef-file-input:active:not(:has(.ef-input__el:disabled)) .ef-file-input__button{background:var(--accent-active);transform:scale(.985)}
 .ef-file-input__name{min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}

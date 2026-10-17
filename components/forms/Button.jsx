@@ -32,6 +32,7 @@ const CSS = `
 .ef-btn--destructive:hover{background:var(--danger-700)}
 .ef-btn--link{height:auto;padding:0;background:transparent;color:var(--text-link);text-underline-offset:4px}
 .ef-btn--link:hover{color:var(--text-link-hover);text-decoration:none}
+@media (pointer:coarse){.ef-btn--xs{height:var(--tap-min)}.ef-btn:is(.ef-btn--icon,.ef-btn--icon-xs,.ef-btn--icon-sm,.ef-btn--icon-md,.ef-btn--icon-lg){min-inline-size:var(--tap-min);min-block-size:var(--tap-min)}.ef-btn--icon-xs{width:var(--tap-min);height:var(--tap-min)}}
 @keyframes ef-spin{to{transform:rotate(360deg)}}
 .ef-btn__spin{display:inline-flex;animation:ef-spin .7s linear infinite}
 `;
@@ -98,6 +99,26 @@ export function cssPct(value) {
  * to useEffect on the server is behaviour-identical. Lowercase: internal.
  */
 export const useIsoLayoutEffect = typeof window === 'undefined' ? React.useEffect : React.useLayoutEffect;
+/**
+ * Lock page scroll while a modal surface is open.
+ *
+ * Reference-counted so nested modals (an AlertDialog over a Dialog) unlock only
+ * when the last one closes, and the body's original overflow is restored, not
+ * guessed. Lowercase: internal.
+ */
+let scrollLocks = 0;
+let scrollLockPrevious = '';
+export function useScrollLock(active) {
+  React.useEffect(() => {
+    if (!active || typeof document === 'undefined') return undefined;
+    if (scrollLocks === 0) { scrollLockPrevious = document.body.style.overflow; document.body.style.overflow = 'hidden'; }
+    scrollLocks += 1;
+    return () => {
+      scrollLocks -= 1;
+      if (scrollLocks === 0) document.body.style.overflow = scrollLockPrevious;
+    };
+  }, [active]);
+}
 /**
  * The CSS kill-switch cannot reach JS-driven motion — rAF count-ups and
  * scrollTo({behavior:'smooth'}) — so those call sites ask here. Lowercase: internal.

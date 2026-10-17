@@ -123,6 +123,8 @@ public_paths=(
   llms-full.txt
   robots.txt
   sitemap.xml
+  LICENSE
+  CHANGELOG.md
   assets
   blocks
   compatibility

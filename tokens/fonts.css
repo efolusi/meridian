@@ -3,3 +3,8 @@
 @font-face{font-family:'Figtree';src:url('../assets/fonts/Figtree-Italic-Variable.woff2') format('woff2-variations');font-weight:300 900;font-style:italic;font-display:swap}
 @font-face{font-family:'JetBrains Mono';src:url('../assets/fonts/JetBrainsMono-Variable.woff2') format('woff2-variations');font-weight:100 800;font-style:normal;font-display:swap}
 @font-face{font-family:'JetBrains Mono';src:url('../assets/fonts/JetBrainsMono-Italic-Variable.woff2') format('woff2-variations');font-weight:100 800;font-style:italic;font-display:swap}
+/* Metric-matched fallbacks: while the web font downloads (font-display:swap), text renders in a
+   local Arial scaled to the brand face's width and vertical metrics, so the swap barely moves layout.
+   Values measured from the shipped woff2 files against Arial (sample-weighted advance width, typo metrics). */
+@font-face{font-family:'Figtree Fallback';src:local('Arial'),local('ArialMT'),local('Liberation Sans');size-adjust:99.29%;ascent-override:95.68%;descent-override:25.18%;line-gap-override:0%}
+@font-face{font-family:'Bricolage Grotesque Fallback';src:local('Arial'),local('ArialMT'),local('Liberation Sans');size-adjust:99.55%;ascent-override:93.42%;descent-override:27.12%;line-gap-override:0%}

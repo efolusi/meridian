@@ -2,7 +2,7 @@
 
 The entire design system in one file, generated from llms.txt, components/*/, and tokens/*.css by scripts/build_llms.py. Do not edit by hand. The short map of the repository is /llms.txt.
 
-> Meridian is a general-purpose open-source design system by Efolusi: 123 accessible React components, 167 design tokens (light, dark, compact), blocks, charts, and full example apps, served browser-native with zero build step. MIT licensed.
+> Meridian is a general-purpose open-source design system by Efolusi: 123 accessible React components, 169 design tokens (light, dark, compact), blocks, charts, and full example apps, served browser-native with zero build step. MIT licensed.
 
 Live docs: https://meridian.efolusi.com · Source: https://github.com/efolusi/meridian · License: MIT
 
@@ -4583,7 +4583,7 @@ export declare const SheetDescription: React.ForwardRefExoticComponent<DialogSlo
 
 ## Design tokens
 
-167 custom property names by file (names only; resolve current values from /styles.css, which imports these files, or /tokens.json):
+169 custom property names by file (names only; resolve current values from /styles.css, which imports these files, or /tokens.json):
 
 ### /tokens/base.css
 
@@ -4598,6 +4598,8 @@ export declare const SheetDescription: React.ForwardRefExoticComponent<DialogSlo
 --accent-subtle
 --accent-subtle-border
 --border-code
+--border-control
+--border-control-hover
 --border-default
 --border-inverse
 --border-strong

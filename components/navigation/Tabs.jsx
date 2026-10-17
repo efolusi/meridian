@@ -14,6 +14,7 @@ const CSS = `
 .ef-tabs__count{font-size:var(--text-xs);font-weight:var(--weight-medium);color:var(--text-muted)}
 .ef-tabs__tab--active .ef-tabs__count{color:var(--text-primary)}
 .ef-tabs__content{padding-block:var(--space-4)}
+@media (pointer:coarse){.ef-tabs__tab{height:auto;min-block-size:var(--tap-min);min-inline-size:var(--tap-min);justify-content:center}}
 `;
 const TabsContext = React.createContext(null);
 export const Tabs = React.forwardRef(function Tabs({ items, value: valueProp, defaultValue, onValueChange, onChange, orientation = 'horizontal', children, style, className, ...rest }, fRef) {

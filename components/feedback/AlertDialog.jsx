@@ -1,5 +1,5 @@
 import React from 'react';
-import { injectEfCss, mergeRefs, buttonVariants } from '../forms/Button.jsx';
+import { injectEfCss, mergeRefs, buttonVariants, useScrollLock } from '../forms/Button.jsx';
 import { Portal } from '../overlay/Portal.jsx';
 
 const CSS = `
@@ -94,15 +94,13 @@ export const AlertDialogContent = React.forwardRef(function AlertDialogContent({
   injectEfCss('ef-css-alertdialog', CSS);
   const ctx = useAlertDialog('AlertDialogContent');
   const panelRef = React.useRef(null);
+  useScrollLock(ctx.open);
   React.useEffect(() => {
     if (!ctx.open) return;
-    const previousOverflow = document.body.style.overflow;
-    document.body.style.overflow = 'hidden';
     const panel = panelRef.current;
     const preferred = panel && (panel.querySelector('[data-slot="alert-dialog-cancel"]') || panel.querySelector(FOCUSABLE));
     (preferred || panel)?.focus();
     return () => {
-      document.body.style.overflow = previousOverflow;
       ctx.triggerRef.current?.focus?.();
     };
   }, [ctx.open, ctx.triggerRef]);

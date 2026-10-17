@@ -86,6 +86,16 @@ From the block above, the dark-remapped tokens are the six accent tokens, `--tex
 }
 ```
 
+**Following the OS.** The stylesheet also applies its dark block under `@media (prefers-color-scheme: dark)` when `<html>` has no `data-theme` (selector `:root:not(:where([data-theme="light"]))`, which keeps `:root` specificity). If your product follows the OS too, repeat your dark overrides there:
+
+```css
+@media (prefers-color-scheme: dark) {
+  :root:not(:where([data-theme="light"])) { /* same declarations as your [data-theme="dark"] block */ }
+}
+```
+
+If it does not support dark at all, set `data-theme="light"` on `<html>`.
+
 The invariant: **only semantic aliases ever appear inside `[data-theme="dark"]`.** If you catch yourself writing `--brand-500` in the dark block, stop and remap the alias that points at it instead. One ramp, two semantic mappings is what keeps a single source of color truth — and what lets `scripts/check_contrast.py` reason about both themes from one file.
 
 ## Fonts

@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "version": "1.21.9",
+  "version": "1.22.0",
   "components": [
     {
       "name": "Accordion",
@@ -1743,6 +1743,8 @@
     "accent-subtle",
     "accent-subtle-border",
     "border-code",
+    "border-control",
+    "border-control-hover",
     "border-default",
     "border-inverse",
     "border-strong",

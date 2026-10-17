@@ -99,3 +99,19 @@ describe('Meridian production static deployment', () => {
     expect(prerequisites).toContain('No repository/environment secret')
   })
 })
+
+describe('Meridian production public files (DS-03, DS-12)', () => {
+  it('publishes the licence and changelog and serves them as plain text', () => {
+    const allowlist = deploy.match(/public_paths=\((?<paths>[\s\S]*?)\n\)/)?.groups?.paths || ''
+    expect(allowlist.split(/\s+/)).toEqual(expect.arrayContaining(['LICENSE', 'CHANGELOG.md']))
+    expect(nginx).toContain('location ~ ^/(LICENSE|CHANGELOG\\.md)$ {')
+  })
+
+  it('lets any origin load the self-hosted fonts', () => {
+    const fonts = nginx.slice(nginx.indexOf('location ^~ /assets/fonts/ {'))
+    const block = fonts.slice(0, fonts.indexOf('}'))
+    expect(block).toContain('add_header Access-Control-Allow-Origin "*" always;')
+    expect(block).toContain('add_header X-Meridian-Environment production always;')
+    expect(block).toContain('add_header Cache-Control "public, max-age=31536000" always;')
+  })
+})

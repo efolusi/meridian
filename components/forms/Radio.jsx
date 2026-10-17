@@ -7,7 +7,7 @@ const CSS = `
 .ef-radio{display:inline-flex;align-items:flex-start;gap:10px;cursor:pointer;user-select:none}
 .ef-radio--disabled{opacity:.45;cursor:not-allowed}
 .ef-radio__input{position:absolute;opacity:0;width:0;height:0}
-.ef-radio__dot{display:inline-flex;align-items:center;justify-content:center;flex:none;width:18px;height:18px;margin-top:1px;border:1.5px solid var(--border-strong);border-radius:var(--radius-full);background:var(--surface-card);transition:border-color var(--dur-fast) var(--ease-out),transform var(--dur-med) var(--ease-spring)}
+.ef-radio__dot{display:inline-flex;align-items:center;justify-content:center;flex:none;width:18px;height:18px;margin-top:1px;border:1.5px solid var(--border-control);border-radius:var(--radius-full);background:var(--surface-card);transition:border-color var(--dur-fast) var(--ease-out),transform var(--dur-med) var(--ease-spring)}
 .ef-radio__dot::after{content:'';width:8px;height:8px;border-radius:var(--radius-full);background:var(--accent);opacity:0;transform:scale(.4);transition:opacity var(--dur-fast) var(--ease-out),transform var(--dur-med) var(--ease-spring)}
 .ef-radio__input:checked+.ef-radio__dot{border-color:var(--accent)}
 .ef-radio__input:checked+.ef-radio__dot::after{opacity:1;transform:scale(1)}
@@ -16,6 +16,7 @@ const CSS = `
 .ef-radio__input[aria-invalid="true"]+.ef-radio__dot{border-color:var(--danger-600)}
 .ef-radio__label{font-size:var(--text-md);color:var(--text-primary);line-height:1.4}
 .ef-radio__desc{display:block;font-size:var(--text-sm);color:var(--text-muted)}
+@media (pointer:coarse){.ef-radio{min-block-size:var(--tap-min);min-inline-size:var(--tap-min);align-items:center}.ef-radio__dot{margin-top:0}}
 `;
 const RadioGroupContext = React.createContext(null);
 export const RadioGroup = React.forwardRef(function RadioGroup({ value: valueProp, defaultValue, onValueChange, name, required, disabled, orientation = 'vertical', className, style, children, ...rest }, ref) {

@@ -27,6 +27,7 @@ const CSS = `
 .ef-badge--link:hover{color:var(--text-link-hover);text-decoration:none}
 [data-theme="dark"] .ef-badge--accent{color:var(--brand-300)}
 [data-theme="dark"] .ef-badge--brand{background:var(--accent-subtle);color:var(--brand-300)}
+@media (prefers-color-scheme:dark){:root:not(:where([data-theme="light"])) .ef-badge--accent{color:var(--brand-300)}:root:not(:where([data-theme="light"])) .ef-badge--brand{background:var(--accent-subtle);color:var(--brand-300)}}
 `;
 
 export function badgeVariants({ variant = 'default', className = '' } = {}) {

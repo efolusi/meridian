@@ -7,7 +7,7 @@ const CSS = `
 .ef-otp__input:focus{outline:none}
 .ef-otp[data-disabled]{cursor:not-allowed;opacity:.5}
 .ef-otp__group{display:flex;align-items:center}
-.ef-otp__slot{position:relative;display:flex;width:40px;height:40px;align-items:center;justify-content:center;border:1px solid var(--border-strong);border-inline-end-width:0;background:var(--surface-card);color:var(--text-primary);font-family:var(--font-mono);font-size:var(--text-md);font-weight:var(--weight-semibold);transition:border-color var(--dur-fast) var(--ease-out),box-shadow var(--dur-fast) var(--ease-out)}
+.ef-otp__slot{position:relative;display:flex;width:40px;height:40px;align-items:center;justify-content:center;border:1px solid var(--border-control);border-inline-end-width:0;background:var(--surface-card);color:var(--text-primary);font-family:var(--font-mono);font-size:var(--text-md);font-weight:var(--weight-semibold);transition:border-color var(--dur-fast) var(--ease-out),box-shadow var(--dur-fast) var(--ease-out)}
 .ef-otp__slot:first-child{border-start-start-radius:var(--radius-md);border-end-start-radius:var(--radius-md)}
 .ef-otp__slot:last-child{border-inline-end-width:1px;border-start-end-radius:var(--radius-md);border-end-end-radius:var(--radius-md)}
 .ef-otp__slot[data-active]{z-index:1;border-color:var(--accent);box-shadow:var(--focus-ring)}
