@@ -69,6 +69,8 @@ module.exports = { theme: { extend: {
     "border-default": "var(--border-default)",
     "border-strong": "var(--border-strong)",
     "border-inverse": "var(--border-inverse)",
+    "border-control": "var(--border-control)",
+    "border-control-hover": "var(--border-control-hover)",
     "accent": "var(--accent)",
     "accent-hover": "var(--accent-hover)",
     "accent-active": "var(--accent-active)",

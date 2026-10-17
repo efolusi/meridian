@@ -14,6 +14,7 @@ const CSS = `
 .ef-iconbtn--outline:hover:not(:disabled){background:var(--surface-sunken)}
 .ef-iconbtn--solid{background:var(--accent);color:var(--accent-contrast)}
 .ef-iconbtn--solid:hover:not(:disabled){background:var(--accent-hover)}
+@media (pointer:coarse){.ef-iconbtn{min-inline-size:var(--tap-min);min-block-size:var(--tap-min)}}
 `;
 export const IconButton = React.forwardRef(function IconButton({ icon, label, variant = 'quiet', size = 'md', disabled, style, className, ...rest }, ref) {
   injectEfCss('ef-css-iconbtn', CSS);

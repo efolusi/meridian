@@ -3,7 +3,7 @@
 
 Parses tokens/colors.css (light :root and [data-theme="dark"] blocks) and asserts:
   - text/surface and status pairs hold >= 4.5:1 (WCAG 1.4.3 AA)
-  - non-text UI pairs (the focus indicator) hold >= 3:1 (WCAG 1.4.11)
+  - non-text UI pairs (the focus indicator, form control boundaries) hold >= 3:1 (WCAG 1.4.11)
 
 Alpha colours are composited over their background before measuring, so a
 semi-transparent token can no longer slip through unmeasured. A pair whose
@@ -116,6 +116,19 @@ PAIRS = [
     # sits on. The inner offset ring is surface-coloured, so the outer ring only
     # ever borders a surface, never a control fill.
     ("--focus-ring-color", SURFACES + ["--focus-ring-offset"], 3.0, "focus indicator"),
+    # WCAG 1.4.11: the edge of an empty input, select, textarea, checkbox, radio or
+    # switch track is the only thing that shows the control is there. Inputs fill
+    # with --surface-sunken and sit on page or card, so all three are measured.
+    ("--border-control", SURFACES, 3.0, "form control boundary"),
+    ("--border-control-hover", SURFACES, 3.0, "form control boundary, hover"),
+]
+
+# Text on the fixed dark code surface. These tokens are the same in both themes,
+# so they are measured once per theme table like everything else.
+PAIRS += [
+    ("--code-ink", ["--surface-code"], 4.5, "terminal output"),
+    ("--code-ink-subtle", ["--surface-code"], 4.5, "labels on code"),
+    ("--code-ink-faint", ["--surface-code"], 4.5, "timestamps on code"),
 ]
 
 light = tokens("light")
@@ -137,7 +150,7 @@ for theme, table, fallback in (("light", light, None), ("dark", dark, light)):
             r = ratio(fg, bg)
             checked += 1
             ok = r >= minimum
-            print(f"{'ok  ' if ok else 'FAIL'} {theme:5s} {fg_tok:20s} on {bg_tok:20s} "
+            print(f"{'ok  ' if ok else 'FAIL'} {theme:5s} {fg_tok:22s} on {bg_tok:20s} "
                   f"{r:5.2f}:1  (min {minimum}, {label})")
             if not ok:
                 failures.append((theme, fg_tok, bg_tok, r, minimum))

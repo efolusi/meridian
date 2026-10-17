@@ -4,7 +4,7 @@ import { injectEfCss, mergeRefs } from './Button.jsx';
 
 const CSS = `
 .ef-native-select{position:relative;display:flex;align-items:center;width:100%}
-.ef-native-select select{width:100%;height:var(--control-h-md);appearance:none;padding:0 32px 0 11px;border:1px solid var(--border-strong);border-radius:var(--radius-sm);background:var(--surface-sunken);color:var(--text-primary);font:inherit;font-size:var(--text-sm);cursor:pointer}
+.ef-native-select select{width:100%;height:var(--control-h-md);appearance:none;padding:0 32px 0 11px;border:1px solid var(--border-control);border-radius:var(--radius-sm);background:var(--surface-sunken);color:var(--text-primary);font:inherit;font-size:var(--text-sm);cursor:pointer}
 [dir="rtl"] .ef-native-select select{padding:0 11px 0 32px}
 .ef-native-select select:focus-visible{outline:none;box-shadow:var(--focus-ring)}
 .ef-native-select select:disabled{cursor:not-allowed;opacity:.5}

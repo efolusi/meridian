@@ -1,14 +1,28 @@
+/* Element defaults live in @layer meridian with the components. Unlayered, they
+   beat every layered rule, so Tailwind v4 utilities (mt-*, leading-*, font-*,
+   tracking-*) on h1-h4 and p silently lost. Inside the layer they sit below
+   `components` and `utilities` in the order tokens/layers.css registers, and
+   unlayered product CSS still wins by CSS definition. Element selectors carry
+   less specificity than any .ef-* class, so components in the same layer keep
+   their own margins, fonts and colours. */
+@layer meridian{
 body{margin:0;font-family:var(--font-sans);font-size:var(--text-md);line-height:var(--leading-normal);color:var(--text-primary);background:var(--surface-page);-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
 h1,h2,h3,h4{font-family:var(--font-display);letter-spacing:var(--tracking-display);line-height:var(--leading-snug);margin:0}
 p{margin:0}
 /* Link defaults must not outrank layered component variants, including hover.
    Zero specificity also lets .ef-btn keep its foreground within this layer. */
-@layer meridian{
 :where(a){color:var(--text-link);text-decoration:none;transition:color var(--dur-fast) var(--ease-out)}
 :where(a:hover){color:var(--text-link-hover);text-decoration:none}
 :where(a:focus-visible){outline:none;box-shadow:var(--focus-ring);border-radius:var(--radius-sm)}
-}
 code,pre,kbd{font-family:var(--font-mono)}
 ::selection{background:var(--brand-100);color:var(--cocoa-900)}
 *,*::before,*::after{box-sizing:border-box}
-@media (prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important;scroll-behavior:auto!important}}
+/* Forced colors (Windows High Contrast) drop box-shadow, which is how every
+   component draws focus. Paint a real outline in the system highlight colour.
+   !important is needed to beat component `outline:none` rules. */
+@media (forced-colors:active){
+:focus-visible{outline:2px solid Highlight!important;outline-offset:2px!important}
+}
+/* Delays are zeroed too: a delayed reveal must not keep content hidden under reduce. */
+@media (prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms!important;animation-delay:0s!important;animation-iteration-count:1!important;transition-duration:.01ms!important;transition-delay:0s!important;scroll-behavior:auto!important}}
+}
