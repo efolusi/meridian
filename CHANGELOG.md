@@ -2,6 +2,22 @@
 
 ## Unreleased
 
+## 1.22.0 — 2026-10-17
+
+Accessibility and integration fixes from the 2026-10-10 release readiness review (DS-01 to DS-12, except DS-06 which is a fleet task).
+
+- **Form controls have a visible edge (WCAG 1.4.11).** New tokens `--border-control` and `--border-control-hover` (light #8A806A, dark #807462) hold at least 3:1 against page, card and sunken surfaces in both themes. Input, file input, Textarea, Select, NativeSelect, Checkbox, Radio, the Switch off track, InputGroup, NumberInput, Combobox, InputOTP and TimePicker use them; before, their only edge was `--border-strong` at about 1.55:1. `scripts/check_contrast.py` now measures these pairs and the text on the code surface.
+- **Focus shows in forced-colors mode.** Components draw focus with `box-shadow`, which Windows High Contrast removes. Under `@media (forced-colors: active)` every `:focus-visible` element now gets a 2px `Highlight` outline.
+- **Element defaults moved into `@layer meridian`.** `body`, `h1`-`h4`, `p`, `code`, `::selection`, box-sizing and the reduced-motion rule were unlayered, so they beat Tailwind v4 utilities such as `mt-*` or `leading-*` on headings. They now sit in the `meridian` layer, below `components` and `utilities` when `styles.css` is imported first. The anchor default stays at zero specificity, so anchor buttons keep their variant colour.
+- **Touch targets on coarse pointers.** Under `@media (pointer: coarse)`: `Button` `xs` and `icon-xs` grow to 44px, every icon button size has a 44x44 minimum, `IconButton` and `Tabs` triggers reach 44px, Radio rows are 44px tall, and Checkbox and Switch rows are 44px tall with a 44x44 hit box that stays inside the row. Fine pointers render as before.
+- **Switch is at least 24px tall at both sizes.** `md` is now 42x24 (was 36x21) and `sm` 36x24 (was 30x18), with an 18px thumb.
+- **Metric-matched font fallbacks.** `Figtree Fallback` and `Bricolage Grotesque Fallback` faces (local Arial with `size-adjust`, `ascent-override`, `descent-override`) follow the brand face in `--font-sans` and `--font-display`, so the swap to the web font barely shifts layout. `guidelines/frameworks.md` has a preload snippet.
+- **Dark mode follows the OS when no theme is set.** With no `data-theme` on `<html>`, `prefers-color-scheme: dark` now applies the dark tokens (and the Badge, Toast and Chart dark rules). `data-theme="dark"` and `data-theme="light"` still win. Apps with no dark styling should set `data-theme="light"`.
+- **Terminal timestamps are readable.** `--code-ink-faint` alpha went from .35 to .5: 5.11:1 on the code surface (was 3.10:1).
+- **Reduced motion also clears delays.** The kill switch sets `animation-delay` and `transition-delay` to 0s, so delayed reveals no longer wait under reduce.
+- **Dialog locks page scroll and describes itself only when it can.** Dialog (and Sheet, which is built on it) locks body scroll while open, through a reference-counted lock shared with AlertDialog, so closing a nested alert keeps the page locked. `aria-describedby` is set only when a `DialogDescription` is rendered, and follows a custom `id`; a caller's own `aria-describedby` wins.
+- **Docs host.** `/LICENSE` and `/CHANGELOG.md` are published on meridian.efolusi.com and served as plain text, and `/assets/fonts/` sends `Access-Control-Allow-Origin: *` so the CDN stylesheet loads its fonts from any origin. Both nginx vhosts change, so the server vhosts need reinstalling when this reaches each branch.
+
 ## 1.21.10 — 2026-10-12
 
 - **`Alert`: the action never covers the text.** `AlertAction` was absolutely positioned with only 96px reserved on the right, so any action wider than that (every real one: "Send the link again", "I have read and accept") sat on top of the description, and on phones it covered half of it. The action is now a grid column beside the text and, below 560px, a full-width row under it. Measured on My Efolusi's account page at 375, 768 and 1440px: description and action rectangles no longer intersect (before: the action covered 66x20px of the verify-email text and 90x20px of the consent text at 375px, 66x12 and 90x12 at 768px; after: 0, and the phone action is 299x44px, full width).
