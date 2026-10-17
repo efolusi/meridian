@@ -62,7 +62,16 @@ if (SHOTS) {
   // The sticky summary banner paints over whichever section is scrolled under
   // it, so it was getting baked into the captures — carrying the live demo
   // count, which would churn every affected baseline whenever a demo is added.
-  await page.addStyleTag({ content: '#summary, h1, [data-live] { display: none !important; }' });
+  //
+  // content-visibility:auto (MessageScroller items) skips painting whatever the
+  // browser judges off-screen, and that judgement updates asynchronously as the
+  // element screenshots scroll the page. The same commit then captured the
+  // anchored transcript with or without its last two bubbles (and with or
+  // without the jump button, which follows the placeholder heights). Paint
+  // everything so a capture depends on the code, not on scroll timing.
+  await page.addStyleTag({ content: '#summary, h1, [data-live] { display: none !important; } * { content-visibility: visible !important; }' });
+  // Let layout observers (MessageScroller measures its items) settle on the real sizes.
+  await page.evaluate(() => new Promise(r => requestAnimationFrame(() => requestAnimationFrame(r))));
   let count = 0;
   for (const theme of ['light', 'dark']) {
     await page.evaluate(t => {
