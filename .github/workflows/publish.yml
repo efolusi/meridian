@@ -121,9 +121,7 @@ jobs:
       id-token: write # required for OIDC; without it npm cannot verify the workflow
 
     steps:
-      # No token in .git/config: `npm ci` and `npm run check` below execute
-      # third-party and repository code in a job holding contents: write. The
-      # one step that writes (the tag and Release) gets the token explicitly.
+      # npm ci and the gates run third-party code here; only the Release step gets the token.
       - uses: actions/checkout@fbc6f3992d24b796d5a048ff273f7fcc4a7b6c09 # v5.1.0
         with:
           persist-credentials: false
@@ -140,8 +138,7 @@ jobs:
         run: node scripts/require_successful_checks.mjs
 
       # Trusted publishing needs npm 11.5.1 or newer; node 22 still bundles 10.x.
-      # Exact version, never @latest: this job can mint an npm publish identity,
-      # and `latest` moved to npm 12 (a new major) without any change here.
+      # Exact version: this job can mint an npm publish identity.
       - name: Use an npm that understands trusted publishing
         run: |
           npm install -g npm@11.21.1
@@ -282,9 +279,7 @@ jobs:
           m = re.search(rf'^## {re.escape(ver)}[^\n]*\n(.*?)(?=^## |\Z)', t, re.S | re.M)
           print(m.group(1).strip() if m else f'Meridian {ver}. Details in CHANGELOG.md.')
           EOF
-          # gh creates the tag at the exact published commit through the API, so
-          # no git credential is needed. A tag left by an earlier run whose
-          # Release step failed is reused, and must point at this commit.
+          # gh tags the published commit via the API; a leftover tag must be at this SHA.
           if TAG_LINES="$(git ls-remote --exit-code origin "refs/tags/v$PKG")"; then
             # An annotated tag lists its commit on the peeled ^{} line.
             TAG_SHA="$(printf '%s\n' "$TAG_LINES" | awk '$2 ~ /\^\{\}$/ { peeled = $1 } $2 !~ /\^\{\}$/ { ref = $1 } END { print (peeled != "" ? peeled : ref) }')"

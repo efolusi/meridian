@@ -104,12 +104,7 @@ trap rollback ERR
 
 # Archive the exact commit, not the working directory: ignored build outputs
 # and runner leftovers can never leak into the published static tree.
-#
-# Publish the same allowlist as production (scripts/deploy-prod-static.sh;
-# tests/dev-static-deploy.test.mjs requires the two lists to be identical).
-# The dev host is the preview of the next production release, so a file that
-# production would not serve must 404 here too, and repository, operator and
-# test files never become web-accessible.
+# The allowlist must equal production's, so dev previews exactly what prod serves.
 public_paths=(
   404.html
   hello.html
