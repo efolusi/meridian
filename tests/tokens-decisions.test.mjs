@@ -31,3 +31,15 @@ describe('form-control edge and accent-subtle ink', () => {
     }
   })
 })
+
+describe('color-scheme follows the theme', () => {
+  it('declares light at :root and dark in the dark theme', () => {
+    expect(lightBlock).toMatch(/color-scheme:\s*light/)
+    expect(darkBlock).toMatch(/color-scheme:\s*dark/)
+  })
+
+  it('does not leak color-scheme into tokens.json or the preset', () => {
+    expect(readFileSync('tokens.json', 'utf8')).not.toMatch(/color-scheme/)
+    expect(readFileSync('tailwind.preset.js', 'utf8')).not.toMatch(/color-scheme/)
+  })
+})
