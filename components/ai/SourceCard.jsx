@@ -13,9 +13,7 @@ a.ef-sourcecard:focus-visible{outline:none;box-shadow:var(--focus-ring)}
 .ef-sourcecard__title{font-size:13.5px;font-weight:var(--weight-semibold);color:var(--text-primary);line-height:1.4}
 .ef-sourcecard__desc{font-size:12.5px;color:var(--text-muted);line-height:1.55;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}
 `;
-// Source and preview URLs usually come from model or tool output, so a
-// javascript:, vbscript: or data: URL must never reach an href or iframe src.
-// Relative, fragment, http(s) and mailto URLs pass through unchanged.
+// Model-supplied URL: only http(s), mailto and relative pass (see Citation.jsx).
 function safeUrl(url) {
   if (url == null || url === '') return undefined;
   const s = String(url);
