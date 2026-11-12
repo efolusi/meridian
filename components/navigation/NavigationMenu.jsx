@@ -38,6 +38,7 @@ export const NavigationMenu = React.forwardRef(function NavigationMenu({ value: 
   const [indicator, setIndicator] = React.useState({ start: 0, width: 0 });
   const rootRef = React.useRef(null);
   const timerRef = React.useRef(null);
+  const pendingFocusRef = React.useRef(null);
   const value = controlled === undefined ? internal : controlled;
   const setValue = React.useCallback(next => { if (controlled === undefined) setInternal(next); onValueChange?.(next); }, [controlled, onValueChange]);
   const updateIndicator = React.useCallback(trigger => {
@@ -45,8 +46,10 @@ export const NavigationMenu = React.forwardRef(function NavigationMenu({ value: 
     if (!root || !trigger) return;
     const rootRect = root.getBoundingClientRect();
     const triggerRect = trigger.getBoundingClientRect();
-    setIndicator({ start: triggerRect.left - rootRect.left, width: triggerRect.width });
-  }, []);
+    // inset-inline-start counts from the right edge in a right-to-left layout
+    const rtl = (root.closest('[dir]')?.getAttribute('dir') || direction) === 'rtl';
+    setIndicator({ start: rtl ? rootRect.right - triggerRect.right : triggerRect.left - rootRect.left, width: triggerRect.width });
+  }, [direction]);
   const openItem = React.useCallback((next, trigger, immediate = false) => {
     clearTimeout(timerRef.current);
     const open = () => { setValue(next); updateIndicator(trigger); };
@@ -71,7 +74,7 @@ export const NavigationMenu = React.forwardRef(function NavigationMenu({ value: 
     const triggers = rootRef.current ? Array.from(rootRef.current.querySelectorAll('[data-slot="navigation-menu-trigger"]')) : [];
     triggers.find(trigger => trigger.dataset.itemValue === itemValue)?.focus();
   }, []);
-  const context = React.useMemo(() => ({ value, setValue, viewport, viewportNode, setViewportNode, openItem, moveTrigger, focusTrigger, direction, orientation, tabStop, setTabStop, indicator, updateIndicator }), [value, setValue, viewport, viewportNode, openItem, moveTrigger, focusTrigger, direction, orientation, tabStop, indicator, updateIndicator]);
+  const context = React.useMemo(() => ({ value, setValue, viewport, viewportNode, setViewportNode, openItem, moveTrigger, focusTrigger, direction, orientation, tabStop, setTabStop, indicator, updateIndicator, pendingFocusRef }), [value, setValue, viewport, viewportNode, openItem, moveTrigger, focusTrigger, direction, orientation, tabStop, indicator, updateIndicator]);
   return <NavigationRootContext.Provider value={context}><nav {...props} ref={mergeRefs(forwardedRef, rootRef)} data-slot="navigation-menu" data-viewport={viewport ? 'true' : 'false'} aria-orientation={orientation} className={join('ef-navigation-menu', className)} onKeyDown={onKeyDown}>{children}{viewport ? <NavigationMenuViewport /> : null}</nav></NavigationRootContext.Provider>;
 });
 
@@ -95,8 +98,10 @@ export const NavigationMenuTrigger = React.forwardRef(function NavigationMenuTri
     if (event.defaultPrevented) return;
     if (event.key === 'Enter' || event.key === ' ' || event.key === 'ArrowDown') {
       event.preventDefault();
+      // the panel may not exist yet (the viewport mounts on first open), so the
+      // content moves focus into itself once it has rendered
+      if (root) root.pendingFocusRef.current = itemValue;
       root?.openItem(itemValue, localRef.current, true);
-      requestAnimationFrame(() => root?.viewportNode?.querySelector('a,button,[tabindex]:not([tabindex="-1"])')?.focus());
     } else if ((root?.orientation === 'horizontal' && (event.key === 'ArrowLeft' || event.key === 'ArrowRight')) || (root?.orientation === 'vertical' && (event.key === 'ArrowUp' || event.key === 'ArrowDown'))) {
       event.preventDefault();
       const visualDelta = event.key === 'ArrowRight' || event.key === 'ArrowDown' ? 1 : -1;
@@ -114,6 +119,12 @@ export const NavigationMenuContent = React.forwardRef(function NavigationMenuCon
   const root = React.useContext(NavigationRootContext);
   const itemValue = React.useContext(NavigationItemContext);
   const open = root?.value === itemValue;
+  const localRef = React.useRef(null);
+  useIsoLayoutEffect(() => {
+    if (!open || !localRef.current || root?.pendingFocusRef.current !== itemValue) return;
+    root.pendingFocusRef.current = null;
+    localRef.current.querySelector('a[href],button:not([disabled]),[tabindex]:not([tabindex="-1"])')?.focus();
+  });
   const keyboard = event => {
     onKeyDown?.(event);
     if (!event.defaultPrevented && event.key === 'Escape') {
@@ -123,7 +134,7 @@ export const NavigationMenuContent = React.forwardRef(function NavigationMenuCon
     }
   };
   if (!open && !forceMount) return null;
-  const content = <div {...props} ref={ref} data-slot="navigation-menu-content" data-state={open ? 'open' : 'closed'} hidden={!open} className={join('ef-navigation-menu__content', className)} onKeyDown={keyboard}>{children}</div>;
+  const content = <div {...props} ref={mergeRefs(ref, localRef)} data-slot="navigation-menu-content" data-state={open ? 'open' : 'closed'} hidden={!open} className={join('ef-navigation-menu__content', className)} onKeyDown={keyboard}>{children}</div>;
   return root?.viewport ? (root.viewportNode ? ReactDOM.createPortal(content, root.viewportNode) : null) : content;
 });
 
