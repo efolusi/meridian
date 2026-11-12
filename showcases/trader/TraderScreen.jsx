@@ -15,7 +15,7 @@ function TraderScreen() {
   const [risk, setRisk] = React.useState(4);
   const [followed, setFollowed] = React.useState([]);
   const [positions, setPositions] = React.useState(POSITIONS);
-  const notify = (title, tone = 'success') => (toast[tone] || toast)(title, { description: 'Change applies to the next trade.' });
+  const notify = (title, tone = 'success') => toast.add({ title, description: 'Change applies to the next trade.', type: tone });
   const follow = n => { setFollowed(f => f.includes(n) ? f.filter(x => x !== n) : [...f, n]); };
   return (
     <div style={{ minHeight: '100vh' }}>

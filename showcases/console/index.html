@@ -31,7 +31,7 @@ function App() {
     document.addEventListener('keydown', key);
     return () => document.removeEventListener('keydown', key);
   }, []);
-  const notify = (title, description, tone = 'success') => (toast[tone] || toast)(title, { description });
+  const notify = (title, description, tone = 'success') => toast.add({ title, description, type: tone });
   const runCommand = id => {
     setCmdk(false);
     if (id === 'new') setDialog(true);

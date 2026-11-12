@@ -41,3 +41,19 @@ describe('apps: control wiring', () => {
     expect(hits).toEqual([])
   })
 })
+
+describe('apps: toast manager', () => {
+  // cee1fb6 removed the callable toast() and toast.success/info/… surface; the
+  // manager is { add, close, promise }. A stale call throws on click.
+  it('only calls toast.add / toast.close / toast.promise', () => {
+    const allowed = new Set(['add', 'close', 'promise'])
+    const hits = []
+    for (const { file, text } of sources) {
+      for (const m of text.matchAll(/\btoast\s*(\.\s*(\w+)|\[|\(|\)\s*\()/g)) {
+        if (m[2] && allowed.has(m[2])) continue
+        hits.push(`${file}: ${text.slice(m.index, m.index + 40)}`)
+      }
+    }
+    expect(hits).toEqual([])
+  })
+})
