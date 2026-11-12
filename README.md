@@ -56,7 +56,7 @@ Dark mode and compact density are attribute scopes, not rebuilds:
 | **npm** | you have a bundler (Vite, Next, Remix) | `npm install @efolusi/meridian` |
 | **CDN** (above) | prototypes, demos, a single-file artifact | point the two tags at `meridian.efolusi.com` |
 | **Vendor the folder** | you want to own and edit the source | copy the repo; link `styles.css` and `_ds_bundle.js` |
-| **Vendor one component** | you need Button, not 109 | copy `components/<group>/<Name>.jsx` + `.d.ts` — MIT, no attribution required |
+| **Vendor one component** | you need Button, not all 123 | copy `components/<group>/<Name>.jsx` + `.d.ts` — MIT, no attribution required |
 
 ### Meridian Guard
 

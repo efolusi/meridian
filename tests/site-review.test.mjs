@@ -61,3 +61,27 @@ describe('docs site skip link', () => {
     expect(js).toContain('.focus(')
   })
 })
+
+describe('public copy stays current', () => {
+  const components = readdirSync('components', { withFileTypes: true })
+    .filter((d) => d.isDirectory())
+    .flatMap((d) => readdirSync('components/' + d.name).filter((f) => f.endsWith('.jsx')))
+  const docs = read('site/Docs.dc.html')
+
+  it('every "all N" / "not all N" component claim uses the real count', () => {
+    for (const file of ['site/Docs.dc.html', 'README.md']) {
+      // The Docs changelog is history: its counts were true when written.
+      const text = file === 'site/Docs.dc.html' ? docs.slice(0, docs.indexOf("id: 'changelog'")) : read(file)
+      for (const [claim, n] of text.matchAll(/\b(?:all|seluruh)\s+(\d{2,3})\b(?!\s*(?:px|ms|%))/g)) {
+        expect(Number(n), `${file}: "${claim}"`).toBe(components.length)
+      }
+    }
+  })
+
+  it('the Docs changelog shows an Unreleased section only when CHANGELOG.md has unreleased entries', () => {
+    const changelog = read('CHANGELOG.md')
+    const start = changelog.indexOf('## Unreleased') + '## Unreleased'.length
+    const unreleased = changelog.slice(start, changelog.indexOf('\n## ', start))
+    expect(docs.includes("h2('unreleased'")).toBe(/^\s*-\s/m.test(unreleased))
+  })
+})

@@ -266,7 +266,7 @@ class Component extends DCLogic {
           ['_ds_manifest.json:', 'machine-readable registry of components, tokens, and cards.', '_ds_manifest.json:', 'registry dapat dibaca mesin berisi komponen, token, dan kartu.'],
         ]),
         h2('why', 'Why it works', 'Mengapa berhasil'),
-        p('One namespace and one prop grammar mean a model that has seen three Meridian components can work across all 122. Semantic tokens mean generated screens inherit dark mode and density for free. And because components are flat source files, a model can read the implementation instead of guessing.', 'Satu namespace dan satu tata bahasa props berarti model yang telah melihat tiga komponen Meridian bisa bekerja dengan seluruh 123 komponen. Token semantik berarti layar hasil generate mewarisi mode gelap dan densitas secara gratis. Dan karena komponen adalah berkas source datar, model bisa membaca implementasinya alih-alih menebak.'),
+        p('One namespace and one prop grammar mean a model that has seen three Meridian components can work across all 123. Semantic tokens mean generated screens inherit dark mode and density for free. And because components are flat source files, a model can read the implementation instead of guessing.', 'Satu namespace dan satu tata bahasa props berarti model yang telah melihat tiga komponen Meridian bisa bekerja dengan seluruh 123 komponen. Token semantik berarti layar hasil generate mewarisi mode gelap dan densitas secara gratis. Dan karena komponen adalah berkas source datar, model bisa membaca implementasinya alih-alih menebak.'),
         code('javascript', 'agent-output.js', "const { Card, CardContent, CardHeader, CardTitle, Stat, BarChart } = window.EfolusiDesignSystem_4ffc3d;\n// a model that knows the grammar composes correctly:\n<Card><CardHeader><CardTitle>Runs this week</CardTitle></CardHeader><CardContent>\n  <Stat label=\"Total\" value=\"1,284\" delta=\"+12.4%\" direction=\"up\" />\n  <BarChart data={[42, 58, 51, 74, 66, 30, 89]} />\n</CardContent></Card>"),
       ] },
       { group: 'Guides', id: 'contributing', title: 'Contributing', lede: 'Meridian is MIT-licensed and open to contributions. The bar: it must feel settled.', blocks: [
@@ -281,11 +281,6 @@ class Component extends DCLogic {
         p('Open an issue describing the gap, agree on the API in the thread, then submit the three files plus a specimen entry. Versioning and release policy live in guidelines/governance.md; the full contribution guide is CONTRIBUTING.md at the repo root.', 'Buka issue yang menjelaskan celahnya, sepakati API di thread, lalu kirim ketiga berkas plus entri spesimen. Kebijakan versioning dan rilis ada di guidelines/governance.md; panduan kontribusi lengkap ada di CONTRIBUTING.md di root repo.'),
       ] },
       { group: 'Reference', id: 'changelog', title: 'Changelog', lede: 'Notable changes, newest first. Full history in CHANGELOG.md.', blocks: [
-        h2('unreleased', 'Unreleased', 'Belum dirilis'),
-        list([
-          ['Current contracts.', 'Diff now derives every review from from/to strings; Questionnaire covers the complete compositional multi-step flow; Toast uses one imperative manager contract.', 'Kontrak terkini.', 'Diff kini menyusun setiap review dari string from/to; Questionnaire mencakup alur multi-langkah composable lengkap; Toast memakai satu kontrak manager imperatif.'],
-          ['Generated facts.', 'Component docs, interfaces, public counts, adherence metadata, and Guard rules regenerate from the authored sources.', 'Fakta hasil generate.', 'Docs komponen, interface, hitungan publik, metadata adherence, dan aturan Guard di-generate ulang dari source yang ditulis.'],
-        ]),
         h2('v1219', '1.21.9 (September 2026)', '1.21.9 (September 2026)'),
         list([
           ['Skip to content.', 'SkipLink is the first focusable element on a page: one Tab press moves a keyboard user past the whole header into the content. It stays in the focus order while invisible and reveals itself on focus; the target landmark needs tabIndex={-1} or focus does not move.', 'Lewati ke konten.', 'SkipLink adalah elemen pertama yang bisa difokus di halaman: satu tekan Tab membawa pengguna keyboard melewati seluruh header langsung ke konten. Ia tetap ada di urutan fokus meski tak terlihat dan muncul saat difokus; landmark tujuannya perlu tabIndex={-1} atau fokusnya tidak berpindah.'],
@@ -324,6 +319,8 @@ class Component extends DCLogic {
         list([
           ['Meridian brand system.', 'The production /// mark and wordmark replace the former owl across docs, components, blocks, examples, starters, favicon, social artwork, and product surfaces.', 'Sistem merek Meridian.', 'Logo /// dan wordmark production menggantikan owl lama di docs, komponen, block, example, starter, favicon, artwork sosial, dan permukaan produk.'],
           ['Optical lockups.', 'Mark height, baseline, and mark-to-name spacing are synchronized across the official SVG assets, SideNav, examples, blocks, and starter journeys.', 'Lockup optis.', 'Tinggi logo, baseline, dan jarak logo-ke-nama disinkronkan di aset SVG resmi, SideNav, example, block, dan journey starter.'],
+          ['Current contracts.', 'Diff now derives every review from from/to strings; Questionnaire covers the complete compositional multi-step flow; Toast uses one imperative manager contract.', 'Kontrak terkini.', 'Diff kini menyusun setiap review dari string from/to; Questionnaire mencakup alur multi-langkah composable lengkap; Toast memakai satu kontrak manager imperatif.'],
+          ['Generated facts.', 'Component docs, interfaces, public counts, adherence metadata, and Guard rules regenerate from the authored sources.', 'Fakta hasil generate.', 'Docs komponen, interface, hitungan publik, metadata adherence, dan aturan Guard di-generate ulang dari source yang ditulis.'],
         ]),
         h2('v1211', '1.21.1 (August 2026)', '1.21.1 (Agustus 2026)'),
         list([
