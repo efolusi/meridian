@@ -41,10 +41,14 @@ const parseTyped = raw => {
   if (h > 23 || mm > 59) return null;
   return toHM(h * 60 + mm);
 };
-export function TimePicker({ label, hint, value, onChange, stepMinutes = 30, minTime, maxTime, format24 = true, placeholder = 'Pick a time', disabled, invalid, style, className, ...rest }) {
+export function TimePicker({ label, hint, value, onChange, stepMinutes = 30, minTime, maxTime, format24 = true, placeholder = 'Pick a time', disabled, invalid, style, className, id, 'aria-label': ariaLabel, 'aria-labelledby': ariaLabelledBy, 'aria-describedby': ariaDescribedBy, ...rest }) {
   injectEfCss('ef-css-timepicker', CSS);
   // Picks up id / aria wiring when nested in a Field; standalone this is a no-op.
-  const field = useFieldProps({ invalid, id: rest.id, 'aria-describedby': rest['aria-describedby'] });
+  const field = useFieldProps({ invalid, id, 'aria-describedby': ariaDescribedBy });
+  const uid = React.useId();
+  const inputId = field.id || (label ? `${uid}i` : undefined);
+  const hintId = hint ? `${uid}h` : undefined;
+  const describedBy = [...new Set([field.controlProps['aria-describedby'], hintId].filter(Boolean))].join(' ') || undefined;
   const bad = field.invalid;
   const [open, setOpen] = React.useState(false);
   const [q, setQ] = React.useState(null); // null = not editing, input mirrors `value`
@@ -98,6 +102,7 @@ export function TimePicker({ label, hint, value, onChange, stepMinutes = 30, min
   };
   const onBlur = () => { commitTyped(); setOpen(false); };
   const onKey = e => {
+    if (e.nativeEvent.isComposing || e.keyCode === 229) return;
     if (e.key === 'ArrowDown') { e.preventDefault(); if (!open) openList(); else setHi(h => Math.min(h + 1, shown.length - 1)); }
     else if (e.key === 'ArrowUp') { e.preventDefault(); setHi(h => Math.max(h - 1, 0)); }
     else if (e.key === 'Enter' && open && shown[hi]) { e.preventDefault(); pick(shown[hi]); }
@@ -105,7 +110,7 @@ export function TimePicker({ label, hint, value, onChange, stepMinutes = 30, min
   };
   const control = (
     <div ref={ref} className={`ef-timepicker${bad ? ' ef-timepicker--invalid' : ''}`}>
-      <input {...field.controlProps} className="ef-timepicker__input" role="combobox" aria-expanded={open}
+      <input {...field.controlProps} id={inputId} aria-label={ariaLabel} aria-labelledby={ariaLabelledBy} aria-describedby={describedBy} className="ef-timepicker__input" role="combobox" aria-expanded={open}
         aria-controls={listId} aria-autocomplete="list" aria-invalid={bad || undefined}
         aria-activedescendant={open && shown.length ? `${listId}-opt-${hi}` : undefined}
         placeholder={placeholder} disabled={disabled}
@@ -134,9 +139,9 @@ export function TimePicker({ label, hint, value, onChange, stepMinutes = 30, min
   if (!label && !hint) return <div {...rest} className={className} style={style}>{control}</div>;
   return (
     <div {...rest} className={`ef-field${className ? ' ' + className : ''}`} style={style}>
-      {label ? <span className="ef-field__label">{label}</span> : null}
+      {label ? <label htmlFor={inputId} className="ef-field__label">{label}</label> : null}
       {control}
-      {hint ? <span className="ef-field__hint">{hint}</span> : null}
+      {hint ? <span id={hintId} className="ef-field__hint">{hint}</span> : null}
     </div>
   );
 }
