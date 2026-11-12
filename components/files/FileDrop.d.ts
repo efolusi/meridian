@@ -1,7 +1,7 @@
 export interface FileDropProps {
   /** Receives the dropped/picked File[] */
   onFiles?: (files: File[]) => void;
-  /** input accept string, e.g. "image/*,.pdf" */
+  /** input accept string, e.g. "image/*,.pdf". Also filters dropped files; non-matching drops are ignored. */
   accept?: string;
   /** @default true */
   multiple?: boolean;
