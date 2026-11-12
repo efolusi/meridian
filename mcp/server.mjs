@@ -40,11 +40,17 @@ async function index() {
 async function components() {
   return (await index()).items.filter((it) => it.type === 'registry:ui');
 }
+// Registry item names are kebab-case words. Anything else is refused before it
+// becomes a path: the name used to be joined into the file path as given, so
+// "../../package" read the repository's package.json in local-checkout mode.
+const COMPONENT_NAME = /^[a-z][a-z0-9-]*$/i;
 async function component(name) {
-  return readJSON(`site/registry/${String(name).toLowerCase()}.json`);
+  if (!COMPONENT_NAME.test(name)) throw new Error(`invalid component name ${JSON.stringify(name)}`);
+  return readJSON(`site/registry/${name.toLowerCase()}.json`);
 }
 
-const server = new McpServer({ name: 'meridian', version: '0.1.0' });
+const { version } = JSON.parse(await fs.readFile(new URL('./package.json', import.meta.url), 'utf8'));
+const server = new McpServer({ name: 'meridian', version });
 
 server.registerTool(
   'list_components',
@@ -105,11 +111,14 @@ server.registerTool(
   {
     title: 'Get Meridian design tokens',
     description: 'The design tokens (colors, typography, spacing, effects) in light, dark and compact. Use semantic tokens in generated CSS — never hardcode hex.',
-    inputSchema: { group: z.string().optional().describe('Optional group filter, e.g. "color", "spacing", "typography".') },
+    inputSchema: { group: z.string().optional().describe('Optional top-level group, e.g. "brand", "surface", "text", "space", "radius", "font". An unknown group returns the list of groups.') },
   },
   async ({ group }) => {
     const tokens = await readJSON('tokens.json');
-    const text = JSON.stringify(group ? { [group]: tokens[group] ?? tokens } : tokens, null, 2);
+    if (group && !Object.hasOwn(tokens, group)) {
+      return { content: [{ type: 'text', text: `No token group "${group}". groups: ${Object.keys(tokens).join(', ')}` }], isError: true };
+    }
+    const text = JSON.stringify(group ? { [group]: tokens[group] } : tokens, null, 2);
     return { content: [{ type: 'text', text }] };
   }
 );
