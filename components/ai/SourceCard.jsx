@@ -13,12 +13,22 @@ a.ef-sourcecard:focus-visible{outline:none;box-shadow:var(--focus-ring)}
 .ef-sourcecard__title{font-size:13.5px;font-weight:var(--weight-semibold);color:var(--text-primary);line-height:1.4}
 .ef-sourcecard__desc{font-size:12.5px;color:var(--text-muted);line-height:1.55;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}
 `;
+// Source and preview URLs usually come from model or tool output, so a
+// javascript:, vbscript: or data: URL must never reach an href or iframe src.
+// Relative, fragment, http(s) and mailto URLs pass through unchanged.
+function safeUrl(url) {
+  if (url == null || url === '') return undefined;
+  const s = String(url);
+  const scheme = /^\s*([a-z][a-z0-9+.-]*):/i.exec(s.replace(/[\u0000-\u001F\u007F]/g, ''));
+  return !scheme || /^(https?|mailto)$/i.test(scheme[1]) ? s : undefined;
+}
 export function SourceCard({ href, title, description, domain, favicon, icon = 'globe', thumbnail, variant = 'card', onClick, style, className, ...rest }) {
   injectEfCss('ef-css-sourcecard', CSS);
-  const Tag = href || onClick ? 'a' : 'div';
+  const link = safeUrl(href);
+  const Tag = link || onClick ? 'a' : 'div';
   return (
     <Tag {...rest} className={`ef-sourcecard${variant === 'plain' ? ' ef-sourcecard--plain' : ''}${className ? ' ' + className : ''}`} style={style}
-      href={href} target={href ? '_blank' : undefined} rel={href ? 'noreferrer noopener' : undefined} onClick={onClick}>
+      href={link} target={link ? '_blank' : undefined} rel={link ? 'noreferrer noopener' : undefined} onClick={onClick}>
       {thumbnail ? <img className="ef-sourcecard__thumb" src={thumbnail} alt="" /> : null}
       {domain ? (
         <span className="ef-sourcecard__domain">
