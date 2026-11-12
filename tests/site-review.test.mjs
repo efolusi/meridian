@@ -231,3 +231,13 @@ describe('house copy rule: no em dashes in authored prose', () => {
     expect(hits, file).toEqual([])
   })
 })
+
+describe('house copy rule: specific calls to action, no buzzwords', () => {
+  const site = readdirSync('site').filter((f) => f.endsWith('.dc.html')).map((f) => 'site/' + f)
+  it.each(site)('%s has no template CTA label', (file) => {
+    expect(read(file)).not.toMatch(/>(Get started|Learn more|Try now|Explore|Discover)</)
+  })
+  it.each(['README.md', 'guidelines/brand.md', 'skills/SKILL.md', 'llms.txt', ...site])('%s avoids R-16 buzzwords', (file) => {
+    expect(read(file)).not.toMatch(/\b(seamless|powerful|effortless|revolutionary|cutting[- ]edge|next[- ]generation|world[- ]class)\b/i)
+  })
+})

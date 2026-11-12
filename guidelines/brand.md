@@ -4,7 +4,7 @@ The visual and verbal rules behind Meridian: where the palette comes from, how t
 
 ## Brand identity
 
-The Meridian mark is the anchor: three identical rising strokes, the literal shorthand `///`, with a quiet sense of forward motion. It stays deliberately abstract rather than resolving into a letter or pictogram. Its espresso form sits naturally in the system's warm palette: cocoa `#482818`, caramel `#A0693C`, latte `#C08A5A`, cream `#F8F4E6`, and sand neutrals. Interaction color uses **espresso ink** (`--brand-950` `#2C1709`) for primary actions and caramel (`--brand-700`) for links and focus. Design stance: beautiful, fast, minimalist, powerful; warm paper, espresso ink, hairline structure, motion that confirms an action and never plays for its own sake.
+The Meridian mark is the anchor: three identical rising strokes, the literal shorthand `///`, with a quiet sense of forward motion. It stays deliberately abstract rather than resolving into a letter or pictogram. Its espresso form sits naturally in the system's warm palette: cocoa `#482818`, caramel `#A0693C`, latte `#C08A5A`, cream `#F8F4E6`, and sand neutrals. Interaction color uses **espresso ink** (`--brand-950` `#2C1709`) for primary actions and caramel (`--brand-700`) for links and focus. Design stance: fast and minimal, with warm paper, espresso ink, hairline structure, and motion that confirms an action and never plays for its own sake.
 
 - **Wordmark:** "Meridian" set in Bricolage Grotesque 600–680, tracking -0.02em, beside the mark. Use the horizontal lockup in navigation and the stacked lockup only for spacious brand moments.
 - **Fonts (self-hosted, OFL):** Bricolage Grotesque (display), Figtree (UI/body), JetBrains Mono (code). Variable WOFF2 in `assets/fonts/`.
