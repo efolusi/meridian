@@ -1,4 +1,5 @@
-import { readFileSync } from 'node:fs'
+import { execFileSync } from 'node:child_process'
+import { existsSync, readFileSync } from 'node:fs'
 import { createRequire } from 'node:module'
 import { describe, expect, it } from 'vitest'
 
@@ -63,4 +64,16 @@ describe('forced colours keep a focus indicator', () => {
     const depth = [...before].reduce((d, ch) => d + (ch === '{') - (ch === '}'), 0)
     expect(depth, 'the forced-colors block must be at top level').toBe(0)
   })
+})
+
+describe('sub-packages ship their README and licence', () => {
+  for (const [name, script] of [['tokens', 'build_pkg_tokens.mjs'], ['icons', 'build_pkg_icons.mjs']]) {
+    it(`@efolusi/meridian-${name}`, () => {
+      execFileSync('node', [`scripts/${script}`], { stdio: 'pipe' })
+      const dist = `packages/${name}/dist`
+      expect(readFileSync(`${dist}/README.md`, 'utf8')).toBe(readFileSync(`packages/${name}/README.md`, 'utf8'))
+      expect(readFileSync(`${dist}/LICENSE`, 'utf8')).toBe(readFileSync('LICENSE', 'utf8'))
+      expect(existsSync(`${dist}/package.json`)).toBe(true)
+    })
+  }
 })

@@ -1,6 +1,6 @@
 // Build @efolusi/meridian-icons into packages/icons/dist/.
 //
-// The 108 Lucide-derived icons as a standalone package, for anyone who wants the
+// The Lucide-derived icons (plus three brand marks) as a standalone package, for anyone who wants the
 // raw SVGs without the React components: the SVG files themselves (for design
 // tools and build pipelines), plus a JS index mapping name -> svg string (for
 // programmatic use). Assembled from the same assets/icons/ the umbrella inlines,
@@ -49,6 +49,11 @@ files.set('index.d.ts',
 
 // Lucide licence travels with the icons it covers.
 files.set('LICENSE-Lucide.txt', fs.readFileSync(path.join(ICON_DIR, 'LICENSE-Lucide.txt'), 'utf8'));
+
+// npm shows the tarball's README on the package page, and the MIT grant has to
+// travel with the files it covers; the dist used to ship neither.
+files.set('README.md', fs.readFileSync(path.join(ROOT, 'packages', 'icons', 'README.md'), 'utf8'));
+files.set('LICENSE', fs.readFileSync(path.join(ROOT, 'LICENSE'), 'utf8'));
 
 files.set('package.json', JSON.stringify({
   name: '@efolusi/meridian-icons',
