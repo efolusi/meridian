@@ -89,7 +89,7 @@ export const Questionnaire = React.forwardRef(function Questionnaire({ items = [
     onReset?.(event);
   };
   const onKeyDown = event => {
-    if (!shortcuts || event.metaKey || event.ctrlKey || event.altKey || /input|textarea|select/i.test(event.target.tagName)) return;
+    if (!shortcuts || event.key.length !== 1 || event.metaKey || event.ctrlKey || event.altKey || /input|textarea|select/i.test(event.target.tagName)) return;
     const keyIndex = shortcuts === 'letters' ? event.key.toLowerCase().charCodeAt(0) - 97 : Number(event.key) - 1;
     if (keyIndex < 0) return;
     const controls = [...(formRef.current?.elements || [])].filter(control => control.name === activeItem && !control.disabled && /radio|checkbox/.test(control.type));
