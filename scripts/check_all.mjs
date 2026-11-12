@@ -2,8 +2,8 @@
 /**
  * Run every gate the release runs, in one command.
  *
- * publish.yml runs this script before publishing; checks.yml runs a shorter list,
- * so a branch green on checks.yml can still fail the release. Run it before every push.
+ * checks.yml, publish.yml and both deploys run this script, so CI and the release
+ * share one gate list. Run it before every push.
  *
  * Not covered: the Playwright smoke job, which needs a browser download and a
  * served repo. It is reported at the end rather than silently omitted, because
