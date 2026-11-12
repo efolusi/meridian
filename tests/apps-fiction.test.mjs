@@ -43,4 +43,11 @@ describe('apps: the fictional product', () => {
     expect(hits).toEqual([])
   })
 
+  it('makes no real-world compliance or uptime claim', () => {
+    const hits = []
+    for (const { file, text } of sources) {
+      for (const m of text.matchAll(/(?<!\[)\b(?:SOC ?2(?: Type I{1,2})?|ISO 27001|HIPAA|\d{2}\.\d+% uptime)/g)) hits.push(`${file}: ${m[0]}`)
+    }
+    expect(hits).toEqual([])
+  })
 })
