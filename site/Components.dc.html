@@ -129,7 +129,7 @@
 </sc-for>
 <sc-if value="{{ noProps }}" hint-placeholder-val="{{ false }}"><p style="font-size:14.5px;color:var(--text-secondary);margin:12px 0 0" data-lang-id="Komponen ini tak menerima props di luar atribut elemen native.">This component takes no props beyond native element attributes.</p></sc-if>
 <p style="font-size:12.5px;font-family:var(--font-mono);color:var(--text-muted);margin:22px 0 0">Source: components/{{ activeGroupId }}/{{ activeName }}.jsx · {{ activeName }}.d.ts · {{ activeName }}.prompt.md</p>
-<a href="{{ activeCard }}" style="display:inline-block;font-size:13.5px;color:var(--text-secondary);margin-top:6px" style-hover="color:var(--text-primary)">Open the {{ activeGroupLabel }} specimen sheet ↗</a>
+<a href="{{ activeCard }}" class="site-spec-link" style="display:inline-block;font-size:13.5px;color:var(--text-secondary);margin-top:6px" style-hover="color:var(--text-primary)"><span data-lang-id="Buka lembar spesimen">Open the</span> {{ activeGroupLabel }} <span data-lang-id="↗">specimen sheet ↗</span></a>
 <div style="display:flex;justify-content:space-between;gap:14px;margin-top:44px">
 <sc-if value="{{ hasPrev }}" hint-placeholder-val="{{ false }}">
 <button type="button" onClick="{{ prevGo }}" style="display:flex;flex-direction:column;gap:3px;padding:12px 16px;border:1px solid var(--border-default);border-radius:var(--radius-md);background:transparent;color:inherit;font:inherit;text-align:left;cursor:pointer;min-width:170px" style-hover="border-color:var(--border-strong);background:var(--surface-card)">
@@ -306,9 +306,9 @@ window.MeridianLiveFrame = (() => {
     }
     return h('div', { style: { marginTop: 4 } },
       h('div', { style: { display: 'flex', alignItems: 'center', borderBottom: '1px solid var(--border-default)' } },
-        h('button', { style: tabStyle(tab === 'preview'), onClick: () => setTab('preview') }, 'Preview'),
-        h('button', { style: tabStyle(tab === 'code'), onClick: () => setTab('code') }, 'Code'),
-        h('button', { style: tabStyle(tab === 'edit'), onClick: () => setTab('edit') }, 'Edit'),
+        h('button', { type: 'button', className: 'site-frame-tab', 'aria-pressed': tab === 'preview', style: tabStyle(tab === 'preview'), onClick: () => setTab('preview') }, 'Preview'),
+        h('button', { type: 'button', className: 'site-frame-tab', 'aria-pressed': tab === 'code', style: tabStyle(tab === 'code'), onClick: () => setTab('code') }, 'Code'),
+        h('button', { type: 'button', className: 'site-frame-tab', 'aria-pressed': tab === 'edit', style: tabStyle(tab === 'edit'), onClick: () => setTab('edit') }, 'Edit'),
         isEdited ? h('span', { style: { marginLeft: 'auto', display: 'flex', alignItems: 'center', gap: 12 } },
           h('span', { style: { fontFamily: 'var(--font-mono)', fontSize: 11, color: 'var(--text-muted)' } }, 'edited'),
           h('button', { style: { appearance: 'none', border: 'none', background: 'none', cursor: 'pointer', padding: '8px 2px 9px', fontFamily: 'var(--font-sans)', fontSize: 12.5, fontWeight: 500, color: 'var(--text-secondary)' }, onClick: doReset }, 'Reset')) : null),

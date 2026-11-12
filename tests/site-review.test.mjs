@@ -254,3 +254,18 @@ describe('README inventory', () => {
     for (const n of names) expect(line, n).toMatch(new RegExp(`\\b${n === 'Toast' ? 'Toast' : n}\\b`))
   })
 })
+
+describe('touch targets and frame tabs', () => {
+  const css = read('site/site.css')
+  const coarse = [...css.matchAll(/@media \(pointer: coarse\) \{([\s\S]*?)\n\}/g)].map((m) => m[1]).join('\n')
+  it.each(['.site-frame-tab', '.side-drawer__panel button', 'footer a', '.site-top > a:first-child', '.hero-pad > a', '.site-spec-link'])(
+    'coarse pointers give %s the 44px minimum', (sel) => expect(coarse).toContain(sel),
+  )
+  it.each(['site/Components.dc.html', 'site/Charts.dc.html', 'site/ExampleFrame.jsx', 'site/BlockFrame.jsx'])(
+    '%s marks its Preview/Code tabs with a class and aria-pressed', (file) => {
+      const src = read(file)
+      expect(src).not.toMatch(/\('button', \{ style: tabStyle\(/)
+      expect(src).toMatch(/className: 'site-frame-tab', 'aria-pressed': tab === 'preview'/)
+    },
+  )
+})

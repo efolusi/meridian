@@ -105,3 +105,19 @@
 .site-skip:focus{clip-path:none}
 .site-skip:focus-visible{outline:none;box-shadow:var(--focus-ring),var(--shadow-md)}
 #main:focus{outline:none}
+
+/* Touch targets the earlier coarse-pointer block missed: the demo frame tabs,
+   the mobile Browse drawer rows, and the small text links (logo, homepage
+   pill, footer). Links inside a sentence grow their hit area with padding and
+   a matching negative margin so the line itself does not move. */
+@media (pointer: coarse) {
+  .site-frame-tab { min-height: var(--tap-min, 44px); }
+  .side-drawer__panel button,
+  .side-drawer__panel span { display: flex !important; align-items: center; min-height: var(--tap-min, 44px); }
+  .side-drawer > summary { min-height: var(--tap-min, 44px); }
+  .site-top > a:first-child,
+  .hero-pad > a,
+  .site-spec-link,
+  footer a { display: inline-flex !important; align-items: center; min-height: var(--tap-min, 44px); }
+  footer .site-foot-row > span:first-child a { min-height: 0; padding-block: 14px; margin-block: -14px; }
+}

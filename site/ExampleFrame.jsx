@@ -72,8 +72,8 @@ function ExampleFrame({ file, exp, minHeight }) {
   });
   return R.createElement('div', { style: { marginTop: 4 } },
     R.createElement('div', { style: { display: 'flex', alignItems: 'center', borderBottom: '1px solid var(--border-default)' } },
-      R.createElement('button', { style: tabStyle(tab === 'preview'), onClick: () => setTab('preview') }, 'Preview'),
-      R.createElement('button', { style: tabStyle(tab === 'code'), onClick: () => setTab('code') }, 'Code')
+      R.createElement('button', { type: 'button', className: 'site-frame-tab', 'aria-pressed': tab === 'preview', style: tabStyle(tab === 'preview'), onClick: () => setTab('preview') }, 'Preview'),
+      R.createElement('button', { type: 'button', className: 'site-frame-tab', 'aria-pressed': tab === 'code', style: tabStyle(tab === 'code'), onClick: () => setTab('code') }, 'Code')
     ),
     tab === 'preview'
       ? R.createElement('div', { style: { border: '1px solid var(--border-default)', borderTop: 'none', borderRadius: '0 0 var(--radius-md) var(--radius-md)', background: 'var(--surface-card)', minHeight: minHeight || 300, padding: '44px 34px', display: 'flex', alignItems: 'center', justifyContent: 'center', overflow: 'auto' } },
