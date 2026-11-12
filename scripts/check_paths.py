@@ -13,12 +13,15 @@ ROOT = pathlib.Path(__file__).resolve().parent.parent
 # "meridian/" is the documented vendor prefix used inside install-snippet
 # code examples; it never refers to a file in this repo.
 SKIP_PREFIXES = ("http://", "https://", "data:", "mailto:", "#", "{{", "meridian/")
+SKIP_DIRS = {".git", "node_modules", ".claude", "dist", ".check-pkg-sandbox"}
 ATTR = re.compile(r'(?:href|src)="([^"]+)"')
 
 fail = []
 checked = 0
 for html in ROOT.rglob("*.html"):
-    if ".git" in html.parts or "node_modules" in html.parts:
+    # .claude/ holds other worktrees' whole copies of the repo when this is the
+    # main checkout; dist/ is build output. Neither is this tree's pages.
+    if SKIP_DIRS.intersection(html.relative_to(ROOT).parts):
         continue
     text = html.read_text(errors="ignore")
     for ref in ATTR.findall(text):
