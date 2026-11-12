@@ -18,7 +18,7 @@ beforeAll(async () => {
   });
   client = new Client({ name: 'meridian-test', version: '0' });
   await client.connect(transport);
-});
+}, 60000);
 afterAll(async () => { await client?.close(); });
 
 const text = result => result.content.map(c => c.text).join('');

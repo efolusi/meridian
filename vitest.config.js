@@ -11,5 +11,7 @@ export default defineConfig({
     include: ['tests/**/*.test.{jsx,mjs}'],
     // user-event calendar and picker tests take 5-7 s on a loaded runner.
     testTimeout: 30000,
+    // Hooks spawn processes (the MCP server's stdio client); a loaded runner needs the same headroom.
+    hookTimeout: 30000,
   },
 });
