@@ -1,6 +1,6 @@
 import React from 'react';
 import { injectEfCss, mergeRefs } from '../forms/Button.jsx';
-import { Portal, useAnchoredStyle } from './Portal.jsx';
+import { Portal, useAnchoredStyle, useEscapeLayer, escapeLayerContext } from './Portal.jsx';
 
 const CSS = `
 .ef-popover{position:relative;display:inline-flex}
@@ -33,23 +33,19 @@ export function Popover({ children, open: controlled, defaultOpen = false, onOpe
     const away = event => {
       if (!triggerRef.current?.contains(event.target) && !contentRef.current?.contains(event.target)) setOpen(false);
     };
-    const key = event => {
-      if (event.key === 'Escape') {
-        setOpen(false);
-        triggerRef.current?.focus();
-      }
-    };
     document.addEventListener('pointerdown', away);
     document.addEventListener('mousedown', away);
-    document.addEventListener('keydown', key);
     return () => {
       document.removeEventListener('pointerdown', away);
       document.removeEventListener('mousedown', away);
-      document.removeEventListener('keydown', key);
     };
   }, [open, setOpen]);
+  const layer = useEscapeLayer(open, () => {
+    setOpen(false);
+    triggerRef.current?.focus();
+  });
 
-  return <PopoverCtx.Provider value={value}>{children}</PopoverCtx.Provider>;
+  return <PopoverCtx.Provider value={value}><escapeLayerContext.Provider value={layer}>{children}</escapeLayerContext.Provider></PopoverCtx.Provider>;
 }
 
 export const PopoverTrigger = React.forwardRef(function PopoverTrigger({ asChild = false, children, ...rest }, forwardedRef) {

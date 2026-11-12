@@ -1,6 +1,6 @@
 import React from 'react';
 import { injectEfCss, mergeRefs } from '../forms/Button.jsx';
-import { Portal, useAnchoredStyle } from './Portal.jsx';
+import { Portal, useAnchoredStyle, useEscapeLayer, escapeLayerContext } from './Portal.jsx';
 
 const CSS = `
 .ef-hovercard__panel{position:fixed;width:256px;background:var(--surface-card);color:var(--text-primary);border:1px solid var(--border-strong);border-radius:var(--radius-md);box-shadow:var(--shadow-md);padding:16px;z-index:var(--z-popover);animation:ef-hovercard-in var(--dur-med) var(--ease-out)}
@@ -35,19 +35,12 @@ export function HoverCard({ open: controlled, defaultOpen = false, onOpenChange,
     timerRef.current = setTimeout(() => setOpen(false), closeDelay);
   }, [clearTimer, closeDelay, setOpen]);
   React.useEffect(() => clearTimer, [clearTimer]);
-  React.useEffect(() => {
-    if (!open) return;
-    const key = event => {
-      if (event.key === 'Escape') {
-        clearTimer();
-        setOpen(false);
-      }
-    };
-    document.addEventListener('keydown', key);
-    return () => document.removeEventListener('keydown', key);
-  }, [clearTimer, open, setOpen]);
+  const layer = useEscapeLayer(open, () => {
+    clearTimer();
+    setOpen(false);
+  });
   const value = React.useMemo(() => ({ open, setOpen, openSoon, closeSoon, clearTimer, triggerRef, contentRef, contentId }), [open, setOpen, openSoon, closeSoon, clearTimer, contentId]);
-  return <HoverCardCtx.Provider value={value}>{children}</HoverCardCtx.Provider>;
+  return <HoverCardCtx.Provider value={value}><escapeLayerContext.Provider value={layer}>{children}</escapeLayerContext.Provider></HoverCardCtx.Provider>;
 }
 
 export const HoverCardTrigger = React.forwardRef(function HoverCardTrigger({ asChild = false, children, ...rest }, forwardedRef) {

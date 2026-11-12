@@ -120,3 +120,64 @@ export function useAnchoredStyle(anchorRef, panelRef, { open, placement = 'botto
   }, [open, placement, align, offset, crossOffset, matchWidth, anchorRef, panelRef]);
   return state;
 }
+
+export const escapeLayerContext = React.createContext(null);
+const handledEscapes = new WeakSet();
+
+/**
+ * Escape dismisses the innermost open layer, and only that one.
+ *
+ * Every modal and popover used to listen on `document` for itself, so a
+ * Popover inside a Dialog, or a Dialog inside a Dialog, closed together on one
+ * key press. Layers rendered inside another layer's subtree register with it
+ * through context — React context follows portals, the DOM does not — and a
+ * layer with an open child leaves the key to the child. A layer whose caller
+ * cancels the key (`preventDefault`) or that has no way out still consumes it.
+ *
+ * Returns the layer; wrap the layer's children in
+ * `<escapeLayerContext.Provider value={layer}>`. Not exported on the namespace.
+ */
+export function useEscapeLayer(active, onEscape) {
+  const parent = React.useContext(escapeLayerContext);
+  const layerRef = React.useRef(null);
+  if (layerRef.current === null) layerRef.current = { children: 0 };
+  const handlerRef = React.useRef(onEscape);
+  handlerRef.current = onEscape;
+  React.useEffect(() => {
+    if (!active) return;
+    const layer = layerRef.current;
+    if (parent) parent.children += 1;
+    const key = event => {
+      if (event.key !== 'Escape' || event.defaultPrevented || layer.children > 0 || handledEscapes.has(event)) return;
+      handledEscapes.add(event);
+      handlerRef.current?.(event);
+    };
+    document.addEventListener('keydown', key);
+    return () => {
+      if (parent) parent.children -= 1;
+      document.removeEventListener('keydown', key);
+    };
+  }, [active, parent]);
+  return layerRef.current;
+}
+
+let scrollLocks = 0;
+let savedOverflow = '';
+/**
+ * Keep the page behind a modal from scrolling. Counted, so a dialog opened
+ * from a dialog does not restore scrolling when the inner one closes.
+ */
+export function useScrollLock(active) {
+  React.useEffect(() => {
+    if (!active) return;
+    if (scrollLocks === 0) {
+      savedOverflow = document.body.style.overflow;
+      document.body.style.overflow = 'hidden';
+    }
+    scrollLocks += 1;
+    return () => {
+      scrollLocks -= 1;
+      if (scrollLocks === 0) document.body.style.overflow = savedOverflow;
+    };
+  }, [active]);
+}

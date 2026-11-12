@@ -1,6 +1,6 @@
 import React from 'react';
 import { injectEfCss, mergeRefs, buttonVariants } from '../forms/Button.jsx';
-import { Portal } from '../overlay/Portal.jsx';
+import { Portal, useEscapeLayer, escapeLayerContext } from '../overlay/Portal.jsx';
 
 const CSS = `
 .ef-alertdialog__overlay{position:fixed;inset:0;z-index:var(--z-overlay);display:grid;place-items:center;padding:24px;background:var(--overlay-scrim);animation:ef-alertdialog-fade var(--dur-med) var(--ease-out)}
@@ -94,6 +94,7 @@ export const AlertDialogContent = React.forwardRef(function AlertDialogContent({
   injectEfCss('ef-css-alertdialog', CSS);
   const ctx = useAlertDialog('AlertDialogContent');
   const panelRef = React.useRef(null);
+  const layer = useEscapeLayer(ctx.open, event => { event.preventDefault(); ctx.setOpen(false); });
   React.useEffect(() => {
     if (!ctx.open) return;
     const previousOverflow = document.body.style.overflow;
@@ -109,13 +110,7 @@ export const AlertDialogContent = React.forwardRef(function AlertDialogContent({
   if (!ctx.open && !forceMount) return null;
   const handleKeyDown = event => {
     if (onKeyDown) onKeyDown(event);
-    if (event.defaultPrevented) return;
-    if (event.key === 'Escape') {
-      event.preventDefault();
-      ctx.setOpen(false);
-      return;
-    }
-    if (event.key !== 'Tab') return;
+    if (event.defaultPrevented || event.key !== 'Tab') return;
     const focusable = Array.from(panelRef.current?.querySelectorAll(FOCUSABLE) || []);
     if (!focusable.length) { event.preventDefault(); return; }
     const index = focusable.indexOf(document.activeElement);
@@ -128,7 +123,7 @@ export const AlertDialogContent = React.forwardRef(function AlertDialogContent({
         <div {...rest} ref={mergeRefs(ref, panelRef)} role="alertdialog" aria-modal="true" aria-labelledby={ctx.titleId} aria-describedby={ctx.descriptionId}
           tabIndex={-1} data-slot="alert-dialog-content" data-state={ctx.open ? 'open' : 'closed'} data-size={size}
           className={`ef-alertdialog__content ef-alertdialog__content--${size}${className ? ' ' + className : ''}`} onKeyDown={handleKeyDown}>
-          {children}
+          <escapeLayerContext.Provider value={layer}>{children}</escapeLayerContext.Provider>
         </div>
       </AlertDialogOverlay>
     </AlertDialogPortal>
