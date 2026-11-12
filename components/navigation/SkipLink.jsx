@@ -14,15 +14,25 @@ const CSS = `
  * First focusable element on the page: one Tab press moves a keyboard user past
  * the whole header into the content.
  *
- * The target must be focusable for the jump to move focus, not just scroll:
- * give the landmark `tabIndex={-1}` (`<main id="main" tabIndex={-1}>`). Without
- * it Safari and Firefox scroll the page but leave focus in the header, so the
- * next Tab returns to the navigation the user just skipped.
+ * The link moves focus to its target itself instead of following the hash:
+ * a plain jump changes location.hash, which a hash-based router reads as a
+ * route, and Safari and Firefox scroll without moving focus unless the target
+ * is focusable. The target gets `tabIndex=-1` when it has no tabindex, then
+ * receives focus. An onClick that calls preventDefault keeps full control.
  */
-export function SkipLink({ href = '#main', children = 'Skip to content', style, className, ...rest }) {
+export function SkipLink({ href = '#main', children = 'Skip to content', style, className, onClick, ...rest }) {
   injectEfCss('ef-css-skip', CSS);
+  const jump = event => {
+    onClick?.(event);
+    if (event.defaultPrevented || typeof href !== 'string' || href.length < 2 || href[0] !== '#') return;
+    const target = document.getElementById(decodeURIComponent(href.slice(1)));
+    if (!target) return;
+    event.preventDefault();
+    if (!target.hasAttribute('tabindex')) target.setAttribute('tabindex', '-1');
+    target.focus();
+  };
   return (
-    <a {...rest} href={href} className={`ef-skip${className ? ' ' + className : ''}`} style={style}>
+    <a {...rest} href={href} onClick={jump} className={`ef-skip${className ? ' ' + className : ''}`} style={style}>
       {children}
     </a>
   );

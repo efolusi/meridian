@@ -1,6 +1,7 @@
 export interface SkipLinkProps {
-  /** Target landmark; it needs tabIndex={-1} to receive focus @default '#main' */
+  /** Fragment of the target landmark. The link focuses it directly (adding tabIndex=-1 if needed) without changing location.hash. @default '#main' */
   href?: string;
+  onClick?: React.MouseEventHandler<HTMLAnchorElement>;
   children?: React.ReactNode;
   style?: React.CSSProperties;
   className?: string;
