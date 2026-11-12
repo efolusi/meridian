@@ -179,13 +179,86 @@ describe('publish workflow hardening', () => {
     // Trusted publishing (OIDC) needs npm 11.5.1 or newer.
     expect(major * 1e6 + minor * 1e3 + patch).toBeGreaterThanOrEqual(11_005_001)
   })
+})
 
-  it('keeps the contents: write token out of .git/config while running npm ci and the gates', () => {
-    const job = publish.slice(publish.indexOf('\n  publish:\n'))
-    const checkout = job.match(/uses: actions\/checkout@.*\n(?: {8}.*\n)*/)?.[0]
-    expect(checkout).toContain('persist-credentials: false')
-    expect(job).not.toMatch(/\bgit push\b/)
-    expect(job).toContain('gh release create "v$PKG" --target "$GITHUB_SHA"')
+// Body of one job in a workflow, up to the next job.
+function jobOf(src, job) {
+  const jobs = src.slice(src.search(/^jobs:\n/m))
+  const start = jobs.indexOf(`\n  ${job}:\n`)
+  if (start === -1) return null
+  const body = jobs.slice(start)
+  const next = body.slice(1).search(/\n {2}[A-Za-z0-9_-]+:\n/)
+  return next === -1 ? body : body.slice(0, next + 1)
+}
+
+// A job's `permissions:` map; null when the job declares none.
+function jobPermissions(block) {
+  const m = block?.match(/\n {4}permissions:\n((?: {6}[a-z-]+: [a-z]+.*\n)+)/)
+  if (!m) return null
+  return Object.fromEntries([...m[1].matchAll(/^ {6}([a-z-]+): ([a-z]+)/gm)].map(([, k, v]) => [k, v]))
+}
+
+const withoutComments = (block) => (block ?? '').replace(/^\s*#.*\n/gm, '')
+
+describe('publish keeps third-party code and publish rights in separate jobs', () => {
+  const publish = workflows['publish.yml']
+  const build = jobOf(publish, 'build')
+  const pub = jobOf(publish, 'publish')
+  const release = jobOf(publish, 'release')
+
+  it('has decide, build, publish and release jobs chained by needs', () => {
+    expect(Object.keys(runsOn(publish))).toEqual(['decide', 'build', 'publish', 'release'])
+    expect(build).toMatch(/\n {4}needs: decide\n/)
+    expect(pub).toMatch(/\n {4}needs: build\n/)
+    expect(release).toMatch(/\n {4}needs: \[build, publish\]\n/)
+  })
+
+  it('builds and verifies with read-only rights and no publish identity', () => {
+    expect(jobPermissions(build)).toEqual({ contents: 'read', actions: 'read' })
+    expect(build).not.toMatch(/\n {4}environment:/)
+    const code = withoutComments(build)
+    expect(code).toContain('npm ci --no-audit --no-fund')
+    expect(code).toContain('npm run check')
+    expect(code).toMatch(/npm pack "\.\/\$d" --pack-destination/)
+    expect(code).toContain('sha256sum')
+    expect(code).toMatch(/uses: actions\/upload-artifact@[0-9a-f]{40}/)
+    expect(build.match(/uses: actions\/checkout@.*\n(?: {8}.*\n)*/)?.[0]).toContain('persist-credentials: false')
+  })
+
+  it('publishes only the verified tarballs, holding id-token and nothing else', () => {
+    expect(jobPermissions(pub)).toEqual({ 'id-token': 'write' })
+    expect(pub).toMatch(/\n {4}environment: npm-publish\n/)
+    const code = withoutComments(pub)
+    // No repository or dependency code runs where the OIDC token can be minted.
+    expect(code).not.toMatch(/actions\/checkout@/)
+    expect(code).not.toMatch(/\bnpm (ci|run)\b/)
+    expect(code).not.toMatch(/\bnode scripts\//)
+    expect(code).toMatch(/uses: actions\/download-artifact@[0-9a-f]{40}/)
+    expect(code).toContain('sha256sum --check --strict')
+    expect(code).toContain('npm publish "./$file" --access public --provenance')
+    // A dry-run dispatch never enters the npm-publish environment.
+    expect(pub).toContain("if: github.event_name != 'workflow_dispatch' || inputs.dry_run == false")
+  })
+
+  it('tags and cuts the Release in its own job, the only one with a write token', () => {
+    expect(jobPermissions(release)).toEqual({ contents: 'write' })
+    const code = withoutComments(release)
+    expect(code).not.toMatch(/\bnpm (ci|run|publish)\b/)
+    expect(code).not.toMatch(/\bgit push\b/)
+    expect(code).toContain('gh release create "v$PKG" --target "$GITHUB_SHA"')
+    expect(release.match(/uses: actions\/checkout@.*\n(?: {8}.*\n)*/)?.[0]).toContain('persist-credentials: false')
+  })
+
+  it('grants id-token: write to that one job only, never workflow-wide', () => {
+    for (const [name, src] of Object.entries(workflows)) {
+      for (const job of Object.keys(runsOn(src))) {
+        if (jobPermissions(jobOf(src, job))?.['id-token'] === 'write') {
+          expect(`${name} ${job}`).toBe('publish.yml publish')
+        }
+      }
+      const top = src.match(/^permissions:\n((?: {2}.*\n)+)/m)?.[1] ?? ''
+      expect(top, name).not.toMatch(/id-token|: write/)
+    }
   })
 })
 
@@ -211,10 +284,7 @@ describe('CI queue hygiene on the shared runner', () => {
   it('bounds every job with a timeout', () => {
     for (const [name, src] of Object.entries(workflows)) {
       for (const job of Object.keys(runsOn(src))) {
-        const body = src.slice(src.indexOf(`\n  ${job}:\n`))
-        const next = body.slice(1).search(/\n {2}[A-Za-z0-9_-]+:\n/)
-        const block = next === -1 ? body : body.slice(0, next + 1)
-        expect(block, `${name} ${job}`).toMatch(/\n {4}timeout-minutes: \d+\n/)
+        expect(jobOf(src, job), `${name} ${job}`).toMatch(/\n {4}timeout-minutes: \d+\n/)
       }
     }
   })
