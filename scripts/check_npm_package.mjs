@@ -7,7 +7,10 @@
 
 import fs from 'node:fs';
 import path from 'node:path';
+import { createRequire } from 'node:module';
 import { fileURLToPath, pathToFileURL } from 'node:url';
+import { PUBLIC_HELPERS } from './public_helpers.mjs';
+import { resolvesByName } from './resolve_specifier.mjs';
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const dist = p => pathToFileURL(path.join(ROOT, 'dist', p)).href;
@@ -26,7 +29,7 @@ if (missing.length) {
   console.error('missing or unrenderable exports:', missing.join(', '));
   process.exit(1);
 }
-for (const helper of ['badgeVariants', 'buttonVariants', 'markerVariants', 'navigationMenuTriggerStyle', 'toggleVariants', 'useChart', 'useMessageScroller', 'useMessageScrollerScrollable', 'useMessageScrollerVisibility', 'useSidebar']) {
+for (const helper of PUBLIC_HELPERS.filter(name => name !== 'toast')) {
   if (typeof barrel[helper] !== 'function') {
     console.error(`missing public style helper: ${helper}`);
     process.exit(1);
@@ -53,12 +56,6 @@ fs.writeFileSync(path.join(sandbox, 'package.json'), '{"type":"module"}\n');
 const NAME = JSON.parse(fs.readFileSync(path.join(ROOT, 'dist', 'package.json'), 'utf8')).name;
 const probe = path.join(sandbox, 'probe.mjs');
 
-async function resolvesByName(specifier) {
-  fs.writeFileSync(probe, `export { default as m } from ${JSON.stringify(specifier)};\n`);
-  try { await import(pathToFileURL(probe).href + `?t=${specifier}`); return true; }
-  catch (err) { return err.code === 'ERR_MODULE_NOT_FOUND' ? false : true; }
-}
-
 try {
   const specs = [
     `${NAME}`,
@@ -69,7 +66,7 @@ try {
     `${NAME}/overlay/Portal.js`, `${NAME}/feedback/Toast.js`,
   ];
   const unresolvable = [];
-  for (const s of specs) if (!(await resolvesByName(s))) unresolvable.push(s);
+  for (const s of specs) if (!(await resolvesByName(sandbox, s))) unresolvable.push(s);
   if (unresolvable.length) {
     console.error('these specifiers do not resolve through the package "exports" map:');
     for (const s of unresolvable) console.error(`  ${s}`);
@@ -226,6 +223,40 @@ const leaked = ['injectEfCss', 'mergeRefs', 'useAnchoredStyle', 'useFieldProps']
 if (leaked.length) {
   console.error('internal helpers leaked onto the package barrel:', leaked.join(', '));
   process.exit(1);
+}
+
+// The type barrel re-exports every .d.ts; the runtime barrel is a filtered list.
+// Every value the types declare must exist at runtime, or consumer bundlers fail.
+{
+  const ts = createRequire(import.meta.url)('typescript');
+  const entry = path.join(ROOT, 'dist', 'index.d.ts');
+  const program = ts.createProgram([entry], {
+    noEmit: true, jsx: ts.JsxEmit.React, module: ts.ModuleKind.ESNext,
+    moduleResolution: ts.ModuleResolutionKind.Bundler, lib: ['lib.es2020.d.ts', 'lib.dom.d.ts'],
+  });
+  const checker = program.getTypeChecker();
+  const moduleSymbol = checker.getSymbolAtLocation(program.getSourceFile(entry));
+  if (!moduleSymbol) {
+    console.error('dist/index.d.ts is not a module');
+    process.exit(1);
+  }
+  const typedValues = checker.getExportsOfModule(moduleSymbol)
+    .filter(symbol => {
+      const target = symbol.flags & ts.SymbolFlags.Alias ? checker.getAliasedSymbol(symbol) : symbol;
+      return target.flags & ts.SymbolFlags.Value;
+    })
+    .map(symbol => symbol.name);
+  if (!typedValues.length) {
+    console.error('dist/index.d.ts declares no values; the type barrel is empty or unresolvable');
+    process.exit(1);
+  }
+  const untyped = typedValues.filter(name => !(name in barrel)).sort();
+  if (untyped.length) {
+    console.error(`dist/index.d.ts declares ${untyped.length} value(s) that dist/index.js does not export: ${untyped.join(', ')}`);
+    console.error('add them to scripts/public_helpers.mjs, or stop exporting them from the component .d.ts');
+    process.exit(1);
+  }
+  console.log(`all ${typedValues.length} values the type barrel declares exist at runtime`);
 }
 
 console.log(`dist/ imports cleanly: ${Object.keys(barrel).length} exports, deep imports resolve, ${cssFiles.length} css files with no dangling assets, no internals leaked`);
