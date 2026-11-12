@@ -73,6 +73,10 @@ export function useAnchoredStyle(anchorRef, panelRef, { open, placement = 'botto
       const edge = 8;
 
       const horizontal = placement === 'left' || placement === 'right';
+      // start/end are logical: in a right-to-left layout "start" is the anchor's right edge
+      const dirNode = anchor.closest('[dir]');
+      const rtl = (dirNode ? dirNode.getAttribute('dir') : document.documentElement.dir) === 'rtl';
+      const inline = !horizontal && rtl ? (align === 'start' ? 'end' : align === 'end' ? 'start' : align) : align;
       const roomAfter = horizontal ? vw - a.right - offset : vh - a.bottom - offset;
       const roomBefore = horizontal ? a.left - offset : a.top - offset;
       const panelSize = horizontal ? p.width : p.height;
@@ -96,10 +100,10 @@ export function useAnchoredStyle(anchorRef, panelRef, { open, placement = 'botto
         top += crossOffset;
       } else {
         top = side === 'bottom' ? a.bottom + offset : a.top - offset - p.height;
-        left = align === 'end' ? a.right - width
-          : align === 'center' ? a.left + a.width / 2 - width / 2
+        left = inline === 'end' ? a.right - width
+          : inline === 'center' ? a.left + a.width / 2 - width / 2
           : a.left;
-        left += crossOffset;
+        left += rtl ? -crossOffset : crossOffset;
       }
 
       left = Math.max(edge, Math.min(left, vw - width - edge));
