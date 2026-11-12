@@ -241,3 +241,16 @@ describe('house copy rule: specific calls to action, no buzzwords', () => {
     expect(read(file)).not.toMatch(/\b(seamless|powerful|effortless|revolutionary|cutting[- ]edge|next[- ]generation|world[- ]class)\b/i)
   })
 })
+
+describe('README inventory', () => {
+  const readme = read('README.md')
+  it('counts the blocks that ship', () => {
+    const blocks = readdirSync('blocks').filter((f) => f.endsWith('.html')).length
+    expect(readme).toContain(`\`blocks/\`: ${blocks} pre-composed sections`)
+  })
+  it.each(['navigation', 'feedback'])('lists every %s component', (group) => {
+    const line = readme.split('\n').find((l) => l.startsWith(`- \`components/${group}/\``))
+    const names = readdirSync('components/' + group).filter((f) => f.endsWith('.jsx')).map((f) => f.replace('.jsx', '').replace(/^Breadcrumbs$/, 'Breadcrumb'))
+    for (const n of names) expect(line, n).toMatch(new RegExp(`\\b${n === 'Toast' ? 'Toast' : n}\\b`))
+  })
+})
