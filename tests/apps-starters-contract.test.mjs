@@ -41,4 +41,11 @@ describe('starters', () => {
     }
     expect(hits).toEqual([])
   })
+  // tokens/spacing.css raises controls to --tap-min (44px) on coarse pointers;
+  // a starter's own page chrome (header, nav and footer links) must follow,
+  // or a phone gets 18-35px targets four pixels apart.
+  it('sizes its own header, nav and footer links for coarse pointers', () => {
+    const missing = pages.filter(({ text }) => !/@media \(pointer:coarse\)\{[^}]*\b(header|nav)\b[^{]*a[^{]*\{[^}]*min-height/.test(text) && !/@media \(pointer:coarse\)\{[^}]*-nav a/.test(text)).map(p => p.file)
+    expect(missing).toEqual([])
+  })
 })
