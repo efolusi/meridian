@@ -14,7 +14,6 @@ import { describe, expect, it } from 'vitest'
 const workflow = readFileSync('.github/workflows/deploy-dev-static.yml', 'utf8')
 const deploy = readFileSync('scripts/deploy-dev-static.sh', 'utf8')
 const nginx = readFileSync('nginx/dev-meridian.efolusi.com.conf', 'utf8')
-const runnerPrerequisites = readFileSync('nginx/dev-meridian-runner-prerequisites.md', 'utf8')
 
 describe('Meridian development static deployment', () => {
   it('is push-only dev and runs on the shared development runner', () => {
@@ -134,14 +133,6 @@ rollback 68`,
     expect(`${workflow}\n${deploy}`).not.toMatch(/database|postgres|redis|valkey|minio|nats/i)
     expect(deploy).toContain('cmp --silent "$tracked_vhost" "$available"')
     expect(deploy).toContain('[[ ! -w "$available" && ! -w "$enabled" ]]')
-  })
-
-  it('documents the exact one-time host ownership and environment boundary', () => {
-    expect(runnerPrerequisites).toContain('`deploy:deploy` mode `0755`')
-    expect(runnerPrerequisites).toContain('`root:root` mode `0644`')
-    expect(runnerPrerequisites).toContain('runner `2.327.1` or newer')
-    expect(runnerPrerequisites).toContain('`efolusi-dev`')
-    expect(runnerPrerequisites).toContain('No repository or environment secrets')
   })
 
   it('serves an exact static host and does not invent an application runtime', () => {

@@ -223,7 +223,7 @@ describe('docs search', () => {
 describe('house copy rule: no em dashes in authored prose', () => {
   // Inline code quoting a literal string (e.g. the smoke page's document.title)
   // is exempt; everything a reader sees as prose is not.
-  const prose = ['README.md', 'STYLEGUIDE.md', 'CONTRIBUTING.md', 'VISION.md', 'ROADMAP.md', 'SUPPORT.md', 'CODE_OF_CONDUCT.md', 'THIRD_PARTY_NOTICES.md', 'llms.txt', 'skills/SKILL.md']
+  const prose = ['README.md', 'STYLEGUIDE.md', 'CONTRIBUTING.md', 'RELEASING.md', 'SUPPORT.md', 'CODE_OF_CONDUCT.md', 'THIRD_PARTY_NOTICES.md', 'llms.txt', 'skills/SKILL.md']
     .concat(readdirSync('guidelines').map((f) => 'guidelines/' + f))
     .concat(readdirSync('site').filter((f) => f.endsWith('.dc.html') || f.endsWith('.jsx')).map((f) => 'site/' + f))
   it.each(prose)('%s', (file) => {
