@@ -13,8 +13,10 @@ export interface UsageMeterProps extends React.HTMLAttributes<HTMLDivElement> {
   warnAt?: number;
   /** Count the figure and bar up on mount/change */
   animated?: boolean;
-  /** Figure formatter @default toLocaleString */
+  /** Figure formatter @default Intl.NumberFormat(locale), whole numbers */
   format?: (v: number) => string;
+  /** BCP 47 locale for number formatting (fixed default keeps server and browser output identical) @default 'en-US' */
+  locale?: string;
   style?: React.CSSProperties;
   className?: string;
 }
