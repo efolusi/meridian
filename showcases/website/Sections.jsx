@@ -7,7 +7,7 @@ function SiteHeader() {
       <div style={{ ...wrap, display: 'flex', alignItems: 'center', gap: 28, height: 64 }}>
         <a href="#" style={{ display: 'flex', alignItems: 'center', gap: 6, color: 'var(--text-primary)', textDecoration: 'none' }}>
           <img src="../../assets/meridian-mark.svg" alt="" style={{ width: 30, height: 16 }} />
-          <span style={{ fontFamily: 'var(--font-display)', fontWeight: 680, letterSpacing: '-0.02em', fontSize: 20 }}>Meridian</span>
+          <span style={{ fontFamily: 'var(--font-display)', fontWeight: 680, letterSpacing: '-0.02em', fontSize: 20 }}>Fernwick</span>
         </a>
         <nav style={{ display: 'flex', gap: 4 }}>
           {[['Products', '#products'], ['Pricing', '#pricing'], ['Docs', '../docs/index.html'], ['Console', '../console/index.html']].map(([l, href]) => (
@@ -32,7 +32,7 @@ function MiniConsole() {
         <span style={{ width: 10, height: 10, borderRadius: 99, background: 'var(--sand-200)' }}></span>
         <span style={{ width: 10, height: 10, borderRadius: 99, background: 'var(--sand-200)' }}></span>
         <span style={{ width: 10, height: 10, borderRadius: 99, background: 'var(--sand-200)' }}></span>
-        <span style={{ marginLeft: 8, fontFamily: 'var(--font-mono)', fontSize: 11, color: 'var(--text-muted)' }}>console.efolusi.com</span>
+        <span style={{ marginLeft: 8, fontFamily: 'var(--font-mono)', fontSize: 11, color: 'var(--text-muted)' }}>console.fernwick.example</span>
       </div>
       <div style={{ display: 'flex', gap: 14, padding: 18 }}>
         {[['MRR', '$48.2k', '↑ 12.4%', 'success'], ['Customers', '1,284', '↑ 3.1%', 'success'], ['Requests', '16.3M', '↑ 8.9%', 'success']].map(([l, v, d, t]) => (
@@ -70,7 +70,7 @@ function Hero() {
             <AvatarGroup>
               <Avatar><AvatarFallback>AO</AvatarFallback></Avatar><Avatar><AvatarFallback>FA</AvatarFallback></Avatar><Avatar><AvatarFallback>JP</AvatarFallback></Avatar><Avatar><AvatarFallback>SR</AvatarFallback></Avatar>
             </AvatarGroup>
-            <span style={{ fontSize: 13, color: 'var(--text-muted)' }}>4,200+ teams ship with Meridian</span>
+            <span style={{ fontSize: 13, color: 'var(--text-muted)' }}>4,200+ teams ship with Fernwick</span>
           </div>
         </div>
         <div style={{ flex: 1.1 }}><MiniConsole /></div>
@@ -117,7 +117,7 @@ function BrandBand() {
     <section style={{ background: 'var(--cocoa-700)', color: 'var(--cream-50)', padding: '88px 0', position: 'relative', overflow: 'hidden' }}>
       <div style={{ ...wrap, textAlign: 'center' }}>
         <div style={{ fontFamily: 'var(--font-display)', fontSize: 34, fontWeight: 700, letterSpacing: '-0.02em', lineHeight: 1.3, maxWidth: 760, margin: '0 auto' }}>
-          “We deleted 40k lines of billing code the week we adopted Meridian. I'm still a little emotional about it.”
+          “We deleted 40k lines of billing code the week we adopted Fernwick. I'm still a little emotional about it.”
         </div>
         <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 10, marginTop: 24 }}>
           <Avatar><AvatarFallback>JP</AvatarFallback></Avatar>
@@ -158,7 +158,7 @@ function Pricing() {
                   </div>
                 ))}
               </div>
-              <Button fullWidth variant={cta} iconRight="arrow-right" onClick={() => { window.location.href = price === 'Custom' ? 'mailto:hello@efolusi.com' : '../auth/index.html'; }}>{price === 'Custom' ? 'Talk to us' : 'Start free'}</Button>
+              <Button fullWidth variant={cta} iconRight="arrow-right" onClick={() => { window.location.href = price === 'Custom' ? 'mailto:hello@fernwick.example' : '../auth/index.html'; }}>{price === 'Custom' ? 'Talk to us' : 'Start free'}</Button>
             </CardContent></Card>
           ))}
         </div>
@@ -203,7 +203,7 @@ function SiteFooter() {
         <div>
           <div style={{ display: 'flex', alignItems: 'center', gap: 6 }}>
             <img src="../../assets/meridian-mark.svg" alt="" style={{ width: 30, height: 16 }} />
-            <span style={{ fontFamily: 'var(--font-display)', fontWeight: 680, letterSpacing: '-0.02em', fontSize: 18 }}>Meridian</span>
+            <span style={{ fontFamily: 'var(--font-display)', fontWeight: 680, letterSpacing: '-0.02em', fontSize: 18 }}>Fernwick</span>
           </div>
           <p style={{ fontSize: 13, color: 'var(--text-muted)', marginTop: 12, maxWidth: 220, lineHeight: 1.55 }}>The boring parts of SaaS, shipped for you. Made with care in Lagos & Lisbon.</p>
         </div>
@@ -213,7 +213,7 @@ function SiteFooter() {
         <Newsletter />
       </div>
       <div style={{ ...wrap, marginTop: 40, paddingTop: 20, borderTop: '1px solid var(--border-default)', display: 'flex', fontSize: 12, color: 'var(--text-muted)' }}>
-        <span>© 2026 Meridian.</span>
+        <span>© 2026 Fernwick.</span>
         <div style={{ marginLeft: 'auto', display: 'flex', gap: 20 }}>
           <a href="#" style={{ color: 'var(--text-muted)', textDecoration: 'none' }}>Privacy</a>
           <a href="#" style={{ color: 'var(--text-muted)', textDecoration: 'none' }}>Terms</a>
