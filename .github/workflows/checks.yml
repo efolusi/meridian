@@ -26,84 +26,16 @@ jobs:
         with:
           persist-credentials: false
 
-      - name: Contrast (WCAG AA token pairs)
-        run: python3 scripts/check_contrast.py
-
-      - name: Runtime copies (support.js / ds-base.js drift)
-        run: python3 scripts/check_runtime_copies.py
-
-      - name: Relative paths resolve
-        run: python3 scripts/check_paths.py
-
-      - name: Registry is in sync with its generator
-        run: |
-          python3 scripts/build_registry.py
-          git diff --exit-code -- site/registry.json site/registry
-
-      - name: Generated tokens and interfaces are in sync
-        run: |
-          python3 scripts/build_tokens.py
-          python3 scripts/build_interfaces.py
-          git diff --exit-code -- tokens.json tailwind.preset.js site/interfaces.json
-
-      - name: Manifest inventories match the bundle and tokens
-        run: python3 scripts/sync_manifest.py --check
-
-      - name: Docs registry matches the manifest
-        run: node scripts/check_docs_registry.mjs
-
-      - name: Adherence rules match the manifest
-        run: node scripts/check_adherence_manifest.mjs
-
-      - name: No dead interactive controls
-        run: python3 scripts/check_dead_controls.py
-
-      - name: No new raw colour literals
-        run: python3 scripts/check_token_adherence.py
-
-      - name: Logical CSS direction safety
-        run: python3 scripts/check_logical_css.py
-
-      - name: Hover does not add underlines
-        run: node scripts/check_hover_decoration.mjs
-
-      - name: Template prop and attribute contracts
-        run: python3 scripts/check_template_props.py
-
-      # Fast pre-check: the header's recorded hashes vs the sources on disk.
-      - name: Bundle source hashes match source files
-        run: python3 scripts/check_bundle_hashes.py
-
-      # The real gate: recompile from source and require the committed artifact to
-      # match byte for byte. This is reproduction, not self-attestation — the same
-      # standard the registry and token generators are already held to.
       - uses: actions/setup-node@a0853c24544627f65ddf259abe73b1d18a591444 # v5.0.0
         with:
           node-version: '22.23.2'
       - name: Install build dependency
         run: npm ci --no-audit --no-fund
-      - name: Computed contrast helper
-        run: node --test scripts/contrast.test.mjs
-      - name: _ds_bundle.js is reproducible from source
-        run: node scripts/build_bundle.mjs --check
 
-      # Keyboard and wiring contracts, run against the component sources rather
-      # than the bundle. This is the one gate an outside contributor can turn
-      # green without understanding the compiler.
-      - name: Unit tests
-        run: npm test
-
-      # The ESM package must build and import for real, not just compile.
-      - name: npm package builds and imports
-        run: |
-          node scripts/build_npm.mjs
-          node scripts/check_npm_package.mjs
-
-      # The .d.ts layer is hand-maintained, so nothing else forces it to stay
-      # valid. Runs after the npm build so the dist/ barrel pass has something
-      # to check.
-      - name: Types compile (components and the package barrel)
-        run: node scripts/check_types.mjs
+      # The one gate list (scripts/check_all.mjs), the same command publish runs,
+      # so a green PR cannot fail the release on a gate CI skipped.
+      - name: All generators and gates (npm run check)
+        run: npm run check
 
   smoke:
     runs-on: ${{ (github.event_name != 'pull_request' || github.event.pull_request.head.repo.full_name == github.repository) && fromJSON('["self-hosted","Linux","X64","efolusi-dev"]') || 'ubuntu-24.04' }}
