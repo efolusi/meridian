@@ -4,7 +4,7 @@ import { Portal, useAnchoredStyle } from './Portal.jsx';
 
 const CSS = `
 .ef-popover{position:relative;display:inline-flex}
-.ef-popover__panel{position:fixed;width:280px;background:var(--surface-card);border:1px solid var(--border-strong);border-radius:var(--radius-md);box-shadow:var(--shadow-md);padding:14px;z-index:var(--z-dropdown);animation:ef-pop-in var(--dur-fast) var(--ease-out)}
+.ef-popover__panel{position:fixed;width:280px;background:var(--surface-card);border:1px solid var(--border-strong);border-radius:var(--radius-md);box-shadow:var(--shadow-md);padding:14px;z-index:var(--z-popover);animation:ef-pop-in var(--dur-fast) var(--ease-out)}
 .ef-popover__header{display:grid;gap:4px;margin-bottom:12px}
 .ef-popover__title{margin:0;color:var(--text-primary);font-size:var(--text-md);font-weight:var(--weight-semibold);line-height:1.35}
 .ef-popover__description{margin:0;color:var(--text-muted);font-size:var(--text-sm);line-height:1.45}

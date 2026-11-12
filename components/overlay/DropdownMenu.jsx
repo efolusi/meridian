@@ -4,7 +4,7 @@ import { Icon } from '../icons/Icon.jsx';
 import { Portal, useAnchoredStyle } from './Portal.jsx';
 
 const CSS = `
-.ef-dropdown-menu__content{position:fixed;min-width:128px;max-height:calc(100vh - 16px);overflow:auto;background:var(--surface-card);color:var(--text-primary);border:1px solid var(--border-strong);border-radius:var(--radius-md);box-shadow:var(--shadow-md);padding:4px;z-index:var(--z-dropdown);animation:ef-dropdown-menu-in var(--dur-fast) var(--ease-out)}
+.ef-dropdown-menu__content{position:fixed;min-width:128px;max-height:calc(100vh - 16px);overflow:auto;background:var(--surface-card);color:var(--text-primary);border:1px solid var(--border-strong);border-radius:var(--radius-md);box-shadow:var(--shadow-md);padding:4px;z-index:var(--z-popover);animation:ef-dropdown-menu-in var(--dur-fast) var(--ease-out)}
 @keyframes ef-dropdown-menu-in{from{opacity:0;transform:scale(.98)}}
 .ef-dropdown-menu__item{position:relative;display:flex;align-items:center;gap:8px;width:100%;min-height:32px;padding:6px 8px;border:0;border-radius:var(--radius-sm);outline:0;background:transparent;color:var(--text-primary);font:inherit;font-size:var(--text-sm);line-height:1.35;text-align:start;white-space:nowrap;cursor:default;user-select:none}
 .ef-dropdown-menu__item:hover,.ef-dropdown-menu__item:focus,.ef-dropdown-menu__item[data-highlighted=true],.ef-dropdown-menu__item[data-state=open]{background:var(--surface-sunken)}
