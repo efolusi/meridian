@@ -103,7 +103,7 @@ export const CommandItem = React.forwardRef(function CommandItem({ value, keywor
   const hidden = context ? !context.visible({ value: itemValue, label: textOf(children), keywords, disabled }) : false;
   const selected = context?.selected === itemValue;
   const activate = event => { onClick?.(event); if (!event.defaultPrevented && !disabled) { context?.setSelected(itemValue); onSelect?.(itemValue); } };
-  return <button ref={localRef} type="button" id={id} data-slot="command-item" data-value={itemValue} data-selected={selected ? 'true' : 'false'} data-disabled={disabled ? 'true' : 'false'} role="option" aria-selected={selected} disabled={disabled} hidden={hidden} className={join('ef-command__item', className)} onMouseEnter={() => !disabled && context?.setSelected(itemValue)} onClick={activate} {...props}>{children}</button>;
+  return <button ref={localRef} type="button" id={id} data-slot="command-item" data-value={itemValue} data-selected={selected ? 'true' : 'false'} data-disabled={disabled ? 'true' : 'false'} role="option" aria-selected={selected} tabIndex={-1} disabled={disabled} hidden={hidden} className={join('ef-command__item', className)} onMouseEnter={() => !disabled && context?.setSelected(itemValue)} onClick={activate} {...props}>{children}</button>;
 });
 
 export const CommandShortcut = React.forwardRef(function CommandShortcut({ className, ...props }, ref) {

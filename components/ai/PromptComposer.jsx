@@ -15,7 +15,7 @@ const CSS = `
 .ef-composer__send:focus-visible{outline:none;box-shadow:var(--focus-ring)}
 .ef-composer__hint{font-size:var(--text-xs);color:var(--text-muted);padding:0 4px}
 `;
-export const PromptComposer = React.forwardRef(function PromptComposer({ value, defaultValue, onChange, onSend, onAttach, onVoice, busy, onStop, placeholder = 'Ask the agent anything…', rows = 2, disabled, attachments, hint, style, className, ...rest }, ref) {
+export const PromptComposer = React.forwardRef(function PromptComposer({ value, defaultValue, onChange, onSend, onAttach, onVoice, busy, onStop, placeholder = 'Ask the agent anything…', rows = 2, disabled, attachments, hint, 'aria-label': ariaLabel, 'aria-labelledby': ariaLabelledby, style, className, ...rest }, ref) {
   injectEfCss('ef-css-composer', CSS);
   const [inner, setInner] = React.useState(defaultValue || '');
   const v = value != null ? value : inner;
@@ -25,17 +25,18 @@ export const PromptComposer = React.forwardRef(function PromptComposer({ value, 
     <div ref={ref} {...rest} className={`ef-composer${className ? ' ' + className : ''}`} style={style}>
       {attachments ? <div style={{ display: 'flex', gap: 6, flexWrap: 'wrap', padding: '10px 12px 0' }}>{attachments}</div> : null}
       <textarea className="ef-composer__input" rows={rows} placeholder={placeholder} value={v} disabled={disabled}
+        aria-label={ariaLabelledby ? undefined : ariaLabel || placeholder} aria-labelledby={ariaLabelledby}
         onChange={e => set(e.target.value, e)}
-        onKeyDown={e => { if (e.key === 'Enter' && !e.shiftKey) { e.preventDefault(); send(); } }} />
+        onKeyDown={e => { if (e.key === 'Enter' && !e.shiftKey && !e.nativeEvent.isComposing) { e.preventDefault(); send(); } }} />
       <div className="ef-composer__bar">
         {onAttach ? <IconButton icon="paperclip" label="Attach files" size="sm" onClick={onAttach} /> : null}
         {onVoice ? <IconButton icon="mic" label="Voice input" size="sm" onClick={onVoice} /> : null}
         {hint ? <span className="ef-composer__hint">{hint}</span> : null}
         {busy
-          ? <button className="ef-composer__send" aria-label="Stop generating" onClick={onStop} disabled={!onStop}>
+          ? <button type="button" className="ef-composer__send" aria-label="Stop generating" onClick={onStop} disabled={!onStop}>
               <Icon name="square" size={13} strokeWidth={2.5} />
             </button>
-          : <button className="ef-composer__send" aria-label="Send" disabled={disabled || !v.trim()} onClick={send}>
+          : <button type="button" className="ef-composer__send" aria-label="Send" disabled={disabled || !v.trim()} onClick={send}>
               <Icon name="arrow-up-right" size={16} strokeWidth={2} style={{ transform: 'rotate(-45deg)' }} />
             </button>}
       </div>

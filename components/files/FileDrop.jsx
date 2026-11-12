@@ -11,11 +11,24 @@ const CSS = `
 .ef-filedrop__action{color:var(--text-link);font-weight:var(--weight-semibold)}
 .ef-filedrop__hint{font-size:var(--text-xs);color:var(--text-muted)}
 `;
+// The file picker enforces accept and multiple; a drop does not, so apply the
+// same rules here. Matches the accept syntax: .ext, type/*, type/subtype.
+function accepts(file, accept) {
+  if (!accept) return true;
+  const name = (file.name || '').toLowerCase();
+  const type = (file.type || '').toLowerCase();
+  return accept.split(',').map(t => t.trim().toLowerCase()).filter(Boolean).some(t =>
+    t.startsWith('.') ? name.endsWith(t) : t.endsWith('/*') ? type.startsWith(t.slice(0, -1)) : type === t);
+}
 export function FileDrop({ onFiles, accept, multiple = true, title, hint, style, className, ...rest }) {
   injectEfCss('ef-css-filedrop', CSS);
   const [over, setOver] = React.useState(false);
   const inputRef = React.useRef(null);
-  const handle = files => { if (onFiles && files && files.length) onFiles([...files]); };
+  const handle = files => {
+    if (!onFiles || !files) return;
+    const ok = [...files].filter(f => accepts(f, accept));
+    if (ok.length) onFiles(multiple ? ok : ok.slice(0, 1));
+  };
   return (
     <div {...rest} role="button" tabIndex={0} className={`ef-filedrop${over ? ' ef-filedrop--over' : ''}${className ? ' ' + className : ''}`} style={style}
       onClick={() => inputRef.current && inputRef.current.click()}

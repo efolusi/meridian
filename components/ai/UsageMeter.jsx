@@ -38,7 +38,7 @@ export function UsageMeter({ used = 0, limit = 100, label = 'Usage', unit = '', 
         <span className="ef-usage__label">{label}</span>
         <span className="ef-usage__figures">{fmt(shown)} / {fmt(limit)}{unit ? ' ' + unit : ''}</span>
       </div>
-      <div className="ef-usage__track" role="progressbar" aria-valuenow={Math.round(ratio * 100)} aria-valuemin={0} aria-valuemax={100} aria-label={label}>
+      <div className="ef-usage__track" role="progressbar" aria-valuenow={Math.round(Math.min(1, Math.max(0, ratio)) * 100)} aria-valuemin={0} aria-valuemax={100} aria-valuetext={`${fmt(used)} / ${fmt(limit)}${unit ? " " + unit : ""}`} aria-label={label}>
         <span className="ef-usage__fill" style={{ width: cssPct(Math.min(100, (animated ? shownRatio : ratio) * 100)), display: 'block' }}></span>
       </div>
       {hint || cost ? (

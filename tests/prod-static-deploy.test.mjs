@@ -25,6 +25,24 @@ describe('Meridian production static deployment', () => {
     expect(workflow).toContain('git diff --exit-code')
   })
 
+  it('publishes every root file the hosted consumers fetch', () => {
+    const publicPaths = deploy.match(/^public_paths=\(\n([\s\S]*?)\n\)/m)[1]
+      .split('\n').map((p) => p.trim())
+    const servedBy = (rel) => publicPaths.some((p) => rel === p || rel.startsWith(`${p}/`))
+    // @efolusi/meridian-mcp reads these from https://meridian.efolusi.com by
+    // default; llms.txt advertises root paths to agents.
+    const mcp = readFileSync('mcp/server.mjs', 'utf8')
+    const mcpReads = [...mcp.matchAll(/readJSON\(['`]([^'`$]+)/g)].map(([, rel]) => rel)
+    const llms = readFileSync('llms.txt', 'utf8')
+    const llmsPaths = [...llms.matchAll(/(?:^|[\s(])\/([A-Za-z0-9_][\w.-]*\.(?:json|js|css|txt|html|xml))\b/gm)]
+      .map(([, rel]) => rel)
+    expect(mcpReads).toContain('tokens.json')
+    expect(llmsPaths).toContain('tokens.json')
+    for (const rel of [...mcpReads, ...llmsPaths]) {
+      expect(servedBy(rel), `${rel} is fetched from the host but not published`).toBe(true)
+    }
+  })
+
   it('publishes exact committed bytes into an immutable SHA release', () => {
     expect(deploy).toContain('git archive --format=tar "$release_sha"')
     expect(deploy).toContain('public_paths=(')

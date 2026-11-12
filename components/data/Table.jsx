@@ -49,7 +49,10 @@ export const Table = React.forwardRef(function Table({
       <table ref={ref} {...rest} data-slot="table" className={`ef-table${dense ? ' ef-table--dense' : ''}${className ? ' ' + className : ''}`} style={style}>{children}</table>
     </div>;
   }
-  const key = (row, i) => rowKey ? (typeof rowKey === 'function' ? rowKey(row) : row[rowKey]) : i;
+  // Without rowKey the key is the row's index in `rows`, not its sorted
+  // position, so a selection stays on the same row when the sort changes.
+  const order = React.useMemo(() => new Map(rows.map((row, i) => [row, i])), [rows]);
+  const key = (row, i) => rowKey ? (typeof rowKey === 'function' ? rowKey(row) : row[rowKey]) : order.has(row) ? order.get(row) : i;
 
   const [innerSort, setInnerSort] = React.useState(defaultSort || null);
   const sort = sortProp !== undefined ? sortProp : innerSort;
@@ -76,8 +79,9 @@ export const Table = React.forwardRef(function Table({
     const col = columns.find(c => c.key === sort.key);
     if (!col) return rows;
     const get = col.sortAccessor || (row => row[col.key]);
-    const out = rows.slice().sort((x, y) => compare(get(x), get(y)));
-    return sort.direction === 'desc' ? out.reverse() : out;
+    // Negate rather than reverse, so rows with equal keys keep their order.
+    const sign = sort.direction === 'desc' ? -1 : 1;
+    return rows.slice().sort((x, y) => sign * compare(get(x), get(y)));
   }, [rows, columns, sort]);
 
   const allKeys = sorted.map((r, i) => key(r, i));

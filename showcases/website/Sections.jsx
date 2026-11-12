@@ -176,7 +176,7 @@ function Newsletter() {
         <p style={{ fontSize: 13, color: 'var(--success-600)', marginTop: 14, display: 'flex', alignItems: 'center', gap: 6 }}><Icon name="circle-check" size={15} />You're in. See you next month.</p>
       ) : (
         <div style={{ display: 'flex', gap: 8, marginTop: 14 }}>
-          <Input size="sm" placeholder="you@company.com" style={{ flex: 1 }} />
+          <Input size="sm" type="email" aria-label="Email address" placeholder="you@company.com" style={{ flex: 1 }} />
           <Button size="sm" onClick={() => setDone(true)}>Subscribe</Button>
         </div>
       )}
@@ -185,12 +185,15 @@ function Newsletter() {
   );
 }
 
+// Footer entries that have a page in this kit link to it; the rest stay
+// placeholders for the consumer's own routes.
+const FOOTER_HREFS = { 'AI agents': '../agent/index.html', Infrastructure: '../infra/index.html', Automation: '../docs/index.html', 'File tools': '../tools/index.html', Trading: '../trader/index.html', Pricing: '#pricing', Docs: '../docs/index.html' };
 function SiteFooter() {
   const col = (title, links) => (
     <div>
       <div style={{ fontSize: 12, fontWeight: 600, letterSpacing: '0.06em', textTransform: 'uppercase', color: 'var(--text-muted)' }}>{title}</div>
       <div style={{ display: 'flex', flexDirection: 'column', gap: 10, marginTop: 14 }}>
-        {links.map(l => <a key={l} href="#" style={{ fontSize: 14, color: 'var(--text-secondary)', textDecoration: 'none' }}>{l}</a>)}
+        {links.map(l => <a key={l} href={FOOTER_HREFS[l] || '#'} style={{ fontSize: 14, color: 'var(--text-secondary)', textDecoration: 'none' }}>{l}</a>)}
       </div>
     </div>
   );

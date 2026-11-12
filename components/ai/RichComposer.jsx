@@ -140,7 +140,7 @@ export function RichComposer({ placeholder = 'Message… use @ to mention, / for
         </div>
       ) : null}
       <div ref={edRef} className="ef-richcomposer__input" contentEditable={!disabled} suppressContentEditableWarning data-placeholder={placeholder}
-        role="textbox" aria-multiline="true" spellCheck={false}
+        role="textbox" aria-multiline="true" aria-label={placeholder} aria-placeholder={placeholder} aria-disabled={disabled || undefined} spellCheck={false}
         onInput={refresh} onKeyUp={refresh} onClick={refresh} onKeyDown={onKey} onBlur={() => setTimeout(() => setPop(null), 120)}></div>
       <div className="ef-richcomposer__bar">
         {actions}

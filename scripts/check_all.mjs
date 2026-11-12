@@ -1,14 +1,9 @@
 #!/usr/bin/env node
 /**
- * Run every gate CI runs, in one command.
+ * Run every gate the release runs, in one command.
  *
- * The gates are split across two workflows with different lists: checks.yml runs
- * three generators that publish.yml does not. Running the publish list and
- * concluding the tree is clean is a mistake that has already been made twice,
- * and it is not a mistake anyone can be told out of, because the two lists look
- * interchangeable until one of them fails.
- *
- * So this is the list, in one place. `npm run check` before every push.
+ * checks.yml, publish.yml and both deploys run this script, so CI and the release
+ * share one gate list. Run it before every push.
  *
  * Not covered: the Playwright smoke job, which needs a browser download and a
  * served repo. It is reported at the end rather than silently omitted, because

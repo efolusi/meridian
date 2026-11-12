@@ -26,7 +26,7 @@ export function SideNav({ brand = 'Meridian', brandBadge, logoSrc, groups, value
           {g.label ? <div className="ef-sidenav__group">{g.label}</div> : null}
           <nav style={{ display: 'flex', flexDirection: 'column', gap: 2 }}>
             {g.items.map(it => (
-              <button key={it.id} className={`ef-sidenav__item${value === it.id ? ' ef-sidenav__item--on' : ''}`} onClick={() => onChange && onChange(it.id)}>
+              <button key={it.id} type="button" aria-current={value === it.id ? 'page' : undefined} className={`ef-sidenav__item${value === it.id ? ' ef-sidenav__item--on' : ''}`} onClick={() => onChange && onChange(it.id)}>
                 <span style={{ display: 'inline-flex', color: 'inherit' }}><Icon name={it.icon} size={17} /></span>
                 <span style={{ flex: 1, whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>{it.label}</span>
                 {it.badge != null ? <Badge variant={value === it.id ? 'default' : 'secondary'} className={value === it.id ? 'ef-badge--accent' : undefined}>{it.badge}</Badge> : null}

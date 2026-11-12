@@ -597,6 +597,10 @@ export interface PromptComposerProps {
   onStop?: (e: React.MouseEvent) => void;
   /** @default 'Ask the agent anything…' */
   placeholder?: string;
+  /** Accessible name for the textarea (not the wrapper). @default placeholder */
+  'aria-label'?: string;
+  /** Id of a visible label for the textarea; overrides aria-label */
+  'aria-labelledby'?: string;
   /** @default 2 */
   rows?: number;
   disabled?: boolean;
@@ -2145,7 +2149,7 @@ A compositional content row for lists and card-like collections. Use Field for f
 
 ```jsx
 <Item variant="outline">
-  <ItemMedia variant="icon"><Icon name="shield-alert" /></ItemMedia>
+  <ItemMedia variant="icon"><Icon name="shield" /></ItemMedia>
   <ItemContent>
     <ItemTitle>Security alert</ItemTitle>
     <ItemDescription>New login detected from an unknown device.</ItemDescription>
@@ -2739,6 +2743,8 @@ toast.close(id)
 
 Use `toast.promise` to update the same notification through loading, success, and error states. Hovering or focusing the stack pauses dismissal timers.
 
+A toast that never expires (one with `actionProps`, or `duration: 0`) always shows its Dismiss button, unless the toast itself passes `closeButton: false`.
+
 ```ts
 import * as React from 'react';
 
@@ -2858,7 +2864,7 @@ Dashed dropzone: click or drag, with an ink border on hover/dragover.
 export interface FileDropProps {
   /** Receives the dropped/picked File[] */
   onFiles?: (files: File[]) => void;
-  /** input accept string, e.g. "image/*,.pdf" */
+  /** input accept string, e.g. "image/*,.pdf". Also filters dropped files; non-matching drops are ignored. */
   accept?: string;
   /** @default true */
   multiple?: boolean;

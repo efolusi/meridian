@@ -70,7 +70,9 @@ The compiler used to live outside this repository, which meant no outside contri
 
 **File shape.** Line 1 is `/* @ds-bundle: {…} */` carrying `format: 4`, `namespace`, `components` (one entry per exported name, `{name, sourcePath}`, sorted by source path then declaration order), `sourceHashes` (path → first 12 hex of the source's SHA-256, keys sorted by path), `publicHelpers`, `inlinedExternals`, and `unexposedExports`. Then a single IIFE that defines `__ds_ns` (the window global), a private `__ds_scope = {}`, and `__ds_ns.__errors`. Then one unit per source file. Relative imports resolve through `__ds_scope`; the Chart family's bare `recharts` namespace resolves lazily through the optional `window.Recharts` UMD global, while the ESM build retains the real package import. Then an epilogue exposes public components and allowlisted lowercase helpers in declaration order.
 
-**What gets exposed.** A capitalised export from `components/` becomes a public component; a lowercase export is an internal helper and is listed in `unexposedExports` instead. Showcase screens are compiled into the bundle but never attached to the namespace.
+**What gets exposed.** A capitalised export from `components/` becomes a public component; a lowercase export is an internal helper and is listed in `unexposedExports` instead, unless it is on the public-helper allowlist (`scripts/public_helpers.mjs`, shared with the npm build). Showcase screens are compiled into the bundle but never attached to the namespace, and the compiler drops their top-level `Object.assign(window, …)` (which only their own pages need); a component that writes to `window` is a build error. They do share `__ds_scope` with the components, so every exported name must be unique across all units; the compiler fails the build on a clash rather than let a showcase's `Card` replace the component.
+
+**Supported module syntax.** Relative imports must be named and unaliased (`import { A, B } from './x.jsx'`, on one line or several); `export function`, `export const`, and `export class` with plain identifiers. Default, namespace, and aliased relative imports, `export { … }` lists, destructured exports, `export default`, and `export *` are build errors, because each of them used to compile cleanly and break only in the browser.
 
 **Unit shape.** Each unit is:
 
@@ -84,7 +86,7 @@ Object.assign(__ds_scope, { <exported names> });
 
 Bare imports (`react`) are dropped — React is read off the global. Relative imports are erased and every reference to the imported binding is rewritten to `__ds_scope.<local>` (including JSX identifiers, which become `<__ds_scope.Name>`). A unit that throws is caught and recorded in `__ds_ns.__errors` rather than taking the page down.
 
-**Unit order** is a greedy lexicographic topological sort: repeatedly emit the alphabetically-first file whose relative imports have all been emitted. (Because `components/…` sorts before `showcases/…`, showcases naturally land last.) Order is not load-bearing at runtime — every cross-unit reference resolves inside a function body, not at unit evaluation — but reproducing it keeps the artifact diff-stable against history.
+**Unit order** is a greedy lexicographic topological sort: repeatedly emit the alphabetically-first file whose relative imports have all been emitted. (Because `components/…` sorts before `showcases/…`, showcases naturally land last.) Today every cross-unit reference resolves inside a function body, so order is not yet load-bearing, but a unit that reads an import at evaluation time (`const MenubarPortal = DropdownMenuPortal`) depends on it, which is why multi-line imports count as edges too.
 
 Two gates protect this. `scripts/check_bundle_hashes.py` is a fast check of the recorded hashes against the sources; `node scripts/build_bundle.mjs --check` is the real one, recompiling from scratch and requiring a byte-identical result. CI runs both.
 

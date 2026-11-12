@@ -24,8 +24,9 @@
 </head>
 <body>
 <x-dc>
-<helmet><script src="./ds-base.js"></script><script src="./i18n.js"></script><link rel="stylesheet" href="./site.css?v=20260814b"><style>@view-transition{navigation:auto}::view-transition-group(*){animation-duration:160ms}@media (prefers-reduced-motion:reduce){::view-transition-group(*),::view-transition-old(*),::view-transition-new(*){animation:none!important}}html{background:var(--surface-page,#FAF9F6)}</style></helmet>
+<helmet><script src="./ds-base.js"></script><script src="./i18n.js"></script><script src="./skip-link.js"></script><link rel="stylesheet" href="./site.css?v=20261112"><style>@view-transition{navigation:auto}::view-transition-group(*){animation-duration:160ms}@media (prefers-reduced-motion:reduce){::view-transition-group(*),::view-transition-old(*),::view-transition-new(*){animation:none!important}}html{background:var(--surface-page,#FAF9F6)}</style></helmet>
 <div style="min-height:100vh;background:var(--surface-page);color:var(--text-primary);font-family:var(--font-sans);display:flex;flex-direction:column">
+<a class="site-skip" href="#main" data-lang-id="Lewati ke konten">Skip to content</a>
 <header class="site-top" style="view-transition-name:site-top;position:sticky;top:0;z-index:50;display:flex;align-items:center;gap:26px;height:58px;padding:0 28px;border-bottom:1px solid var(--border-default);background:var(--surface-page)">
 <a href="./DsSite.dc.html" style="display:flex;align-items:center;gap:9px;text-decoration:none;color:var(--text-primary)"><img src="../assets/meridian-horizontal-light.svg?v=20260814c" alt="Meridian" class="meridian-lockup meridian-lockup--light"><img src="../assets/meridian-horizontal-dark.svg?v=20260814c" alt="" class="meridian-lockup meridian-lockup--dark"></a>
 <nav class="site-nav" style="display:flex;gap:20px;font-size:var(--text-md)">
@@ -59,7 +60,7 @@
 </div>
 </sc-for>
 </aside>
-<main class="pad-sm" style="flex:1;min-width:0;padding:30px 36px 90px;display:flex;gap:34px">
+<main id="main" tabIndex="-1" class="pad-sm" style="flex:1;min-width:0;padding:30px 36px 90px;display:flex;gap:34px">
 <article style="flex:1;min-width:0;max-width:780px">
 <details class="side-drawer"><summary>Browse the docs<svg class="side-drawer__chev" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"></path></svg></summary><div class="site-menu__panel side-drawer__panel">
 <sc-for list="{{ navGroups }}" as="g" hint-placeholder-count="4">
@@ -105,7 +106,7 @@
 </div>
 </article>
 <aside class="site-toc" style="width:164px;flex:none;position:sticky;top:82px;align-self:flex-start">
-<div style="font-size:11px;font-weight:600;letter-spacing:0.06em;text-transform:uppercase;color:var(--text-muted);margin-bottom:8px">On this page</div>
+<div style="font-size:11px;font-weight:600;letter-spacing:0.06em;text-transform:uppercase;color:var(--text-muted);margin-bottom:8px" data-lang-id="Di halaman ini">On this page</div>
 <sc-for list="{{ toc }}" as="t" hint-placeholder-count="4">
 <button type="button" onClick="{{ t.go }}" style="display:block;width:100%;padding:3px 0;border:0;background:transparent;font:inherit;font-size:13px;text-align:left;color:var(--text-secondary);cursor:pointer;user-select:none" style-hover="color:var(--text-primary)">{{ t.label }}</button>
 </sc-for>
@@ -130,13 +131,16 @@ class Component extends DCLogic {
     window.addEventListener('hashchange', this._onHash);
     this.applyHash();
     // Re-render section titles, ledes and nav labels when the language changes.
-    // renderVals reads the language live, so this only needs to force a render.
+    // renderVals reads the language live, so this only needs to force a render. Listen
+    // for the ef:langchange event, not EfLang.onChange: i18n.js can load after
+    // this mount, and the subscription would silently never register.
     // Use an instance counter (not this.state, which can read stale in the
     // closure and then setState the same value twice, skipping the re-render).
     this._lt = 0;
-    this._offLang = window.EfLang && window.EfLang.onChange(() => { this._lt += 1; this.setState({ langTick: this._lt }); });
+    this._onLang = () => { this._lt += 1; this.setState({ langTick: this._lt }); };
+    window.addEventListener('ef:langchange', this._onLang);
   }
-  componentWillUnmount() { window.removeEventListener('hashchange', this._onHash); if (this._offLang) this._offLang(); }
+  componentWillUnmount() { window.removeEventListener('hashchange', this._onHash); window.removeEventListener('ef:langchange', this._onLang); }
   sections() {
     if (this._sections) return this._sections;
     const SC = 'scr' + 'ipt';
@@ -247,7 +251,7 @@ class Component extends DCLogic {
       ] },
       { group: 'Guides', id: 'monorepo', title: 'Repository', lede: 'One tree, organized by purpose: the system core at the root, one shallow directory per surface, and a docs site that consumes them all.', blocks: [
         h2('layout', 'Repository layout', 'Tata letak repositori'),
-        code('text', 'meridian/', 'meridian\n├── styles.css          # stylesheet entry — imports tokens/\n├── _ds_bundle.js       # compiled component bundle (generated)\n├── _ds_manifest.json   # machine-readable manifest (generated)\n├── tokens/             # color, typography, spacing, effects\n├── assets/             # logo, 118 icons, fonts\n├── components/         # 12 groups × (.jsx + .d.ts + .prompt.md)\n├── blocks/             # pre-composed sections\n├── showcases/          # 8 product demos in plain JSX\n├── starters/           # 9 copyable page journeys\n├── site/               # this docs site + examples + registry.json\n├── guidelines/         # a11y, forms, governance\n├── skills/ · llms.txt  # AI entry points\n└── ARCHITECTURE.md · STYLEGUIDE.md · LICENSE · README.md'),
+        code('text', 'meridian/', 'meridian\n├── styles.css          # stylesheet entry, imports tokens/\n├── _ds_bundle.js       # compiled component bundle (generated)\n├── _ds_manifest.json   # machine-readable manifest (generated)\n├── tokens/             # color, typography, spacing, effects\n├── assets/             # logo, 118 icons, fonts\n├── components/         # 12 groups × (.jsx + .d.ts + .prompt.md)\n├── blocks/             # pre-composed sections\n├── showcases/          # 8 product demos in plain JSX\n├── starters/           # 9 copyable page journeys\n├── site/               # this docs site + examples + registry.json\n├── guidelines/         # a11y, forms, governance\n├── skills/ · llms.txt  # AI entry points\n└── ARCHITECTURE.md · STYLEGUIDE.md · LICENSE · README.md'),
         p('The root is the vendoring API: styles.css, tokens, assets, and the compiled bundle keep stable paths so consumers link one folder. Everything you lift code from (components, blocks, showcases) sits one shallow directory down; starters are folders you copy wholesale; the site consumes all of it and owns none of it. ARCHITECTURE.md in the repo explains every directory and what is generated versus authored. Everything versions together, so a token change is visible in every showcase in the same commit.', 'Root adalah API vendoring: styles.css, token, aset, dan bundle terkompilasi menjaga jalur stabil sehingga konsumen menaut satu folder. Semua yang Anda ambil kodenya (komponen, blok, showcase) berada satu direktori dangkal di bawah; starter adalah folder yang Anda salin utuh; situs mengonsumsi semuanya dan tak memiliki apa pun. ARCHITECTURE.md di repo menjelaskan tiap direktori dan mana yang di-generate versus ditulis tangan. Semuanya diberi versi bersama, jadi perubahan token terlihat di setiap showcase pada commit yang sama.'),
         h2('flat-files', 'Flat-file schema', 'Skema berkas datar'),
         p('Each component is three flat files side by side: source, types, usage guide. That is the whole distribution format: no package.json per component, no barrel files, nothing to resolve. Tools (and models) can read _ds_manifest.json to enumerate everything in the repo.', 'Tiap komponen adalah tiga berkas datar berdampingan: source, tipe, panduan pemakaian. Itulah seluruh format distribusinya: tanpa package.json per komponen, tanpa berkas barrel, tak ada yang perlu diresolusi. Alat (dan model) bisa membaca _ds_manifest.json untuk mengenumerasi semua isi repo.'),
@@ -265,7 +269,7 @@ class Component extends DCLogic {
           ['_ds_manifest.json:', 'machine-readable registry of components, tokens, and cards.', '_ds_manifest.json:', 'registry dapat dibaca mesin berisi komponen, token, dan kartu.'],
         ]),
         h2('why', 'Why it works', 'Mengapa berhasil'),
-        p('One namespace and one prop grammar mean a model that has seen three Meridian components can work across all 122. Semantic tokens mean generated screens inherit dark mode and density for free. And because components are flat source files, a model can read the implementation instead of guessing.', 'Satu namespace dan satu tata bahasa props berarti model yang telah melihat tiga komponen Meridian bisa bekerja dengan seluruh 123 komponen. Token semantik berarti layar hasil generate mewarisi mode gelap dan densitas secara gratis. Dan karena komponen adalah berkas source datar, model bisa membaca implementasinya alih-alih menebak.'),
+        p('One namespace and one prop grammar mean a model that has seen three Meridian components can work across all 123. Semantic tokens mean generated screens inherit dark mode and density for free. And because components are flat source files, a model can read the implementation instead of guessing.', 'Satu namespace dan satu tata bahasa props berarti model yang telah melihat tiga komponen Meridian bisa bekerja dengan seluruh 123 komponen. Token semantik berarti layar hasil generate mewarisi mode gelap dan densitas secara gratis. Dan karena komponen adalah berkas source datar, model bisa membaca implementasinya alih-alih menebak.'),
         code('javascript', 'agent-output.js', "const { Card, CardContent, CardHeader, CardTitle, Stat, BarChart } = window.EfolusiDesignSystem_4ffc3d;\n// a model that knows the grammar composes correctly:\n<Card><CardHeader><CardTitle>Runs this week</CardTitle></CardHeader><CardContent>\n  <Stat label=\"Total\" value=\"1,284\" delta=\"+12.4%\" direction=\"up\" />\n  <BarChart data={[42, 58, 51, 74, 66, 30, 89]} />\n</CardContent></Card>"),
       ] },
       { group: 'Guides', id: 'contributing', title: 'Contributing', lede: 'Meridian is MIT-licensed and open to contributions. The bar: it must feel settled.', blocks: [
@@ -282,8 +286,10 @@ class Component extends DCLogic {
       { group: 'Reference', id: 'changelog', title: 'Changelog', lede: 'Notable changes, newest first. Full history in CHANGELOG.md.', blocks: [
         h2('unreleased', 'Unreleased', 'Belum dirilis'),
         list([
-          ['Current contracts.', 'Diff now derives every review from from/to strings; Questionnaire covers the complete compositional multi-step flow; Toast uses one imperative manager contract.', 'Kontrak terkini.', 'Diff kini menyusun setiap review dari string from/to; Questionnaire mencakup alur multi-langkah composable lengkap; Toast memakai satu kontrak manager imperatif.'],
-          ['Generated facts.', 'Component docs, interfaces, public counts, adherence metadata, and Guard rules regenerate from the authored sources.', 'Fakta hasil generate.', 'Docs komponen, interface, hitungan publik, metadata adherence, dan aturan Guard di-generate ulang dari source yang ditulis.'],
+          ['Overlays stack and close correctly.', 'Menus, popovers, Select, TimePicker and ModelSelector open above dialogs, Escape closes only the innermost layer, submenu items can be clicked, and modals lock page scroll.', 'Overlay bertumpuk dan menutup dengan benar.', 'Menu, popover, Select, TimePicker, dan ModelSelector terbuka di atas dialog, Escape hanya menutup lapisan terdalam, item submenu bisa diklik, dan modal mengunci scroll halaman.'],
+          ['Readable in dark mode and High Contrast.', 'Questionnaire buttons, the pressed Toggle and toast icons meet contrast in dark mode, focus stays visible in Windows High Contrast, and the contrast gate now measures every pair components paint.', 'Terbaca di mode gelap dan High Contrast.', 'Tombol Questionnaire, Toggle yang aktif, dan ikon toast memenuhi kontras di mode gelap, fokus tetap terlihat di Windows High Contrast, dan gate kontras kini mengukur setiap pasangan warna yang dipakai komponen.'],
+          ['Safer by default.', 'Citation and source components refuse script URLs, the MCP server refuses path-like names, fork pull requests no longer run on the shared runner, and the bundle no longer puts showcase screens on window.', 'Lebih aman sejak awal.', 'Komponen Citation dan sumber menolak URL script, server MCP menolak nama berbentuk path, pull request dari fork tidak lagi berjalan di runner bersama, dan bundle tidak lagi menaruh layar showcase di window.'],
+          ['Touch and keyboard.', 'SegmentedControl, the CodeBlock copy button and the docs site reach 44px on touch; Calendar stays keyboard-reachable and Combobox and PromptComposer ignore IME Enter.', 'Sentuh dan keyboard.', 'SegmentedControl, tombol salin CodeBlock, dan situs dokumentasi mencapai 44px di layar sentuh; Calendar tetap bisa dijangkau keyboard dan Combobox serta PromptComposer mengabaikan Enter dari IME.'],
         ]),
         h2('v1219', '1.21.9 (September 2026)', '1.21.9 (September 2026)'),
         list([
@@ -323,6 +329,8 @@ class Component extends DCLogic {
         list([
           ['Meridian brand system.', 'The production /// mark and wordmark replace the former owl across docs, components, blocks, examples, starters, favicon, social artwork, and product surfaces.', 'Sistem merek Meridian.', 'Logo /// dan wordmark production menggantikan owl lama di docs, komponen, block, example, starter, favicon, artwork sosial, dan permukaan produk.'],
           ['Optical lockups.', 'Mark height, baseline, and mark-to-name spacing are synchronized across the official SVG assets, SideNav, examples, blocks, and starter journeys.', 'Lockup optis.', 'Tinggi logo, baseline, dan jarak logo-ke-nama disinkronkan di aset SVG resmi, SideNav, example, block, dan journey starter.'],
+          ['Current contracts.', 'Diff now derives every review from from/to strings; Questionnaire covers the complete compositional multi-step flow; Toast uses one imperative manager contract.', 'Kontrak terkini.', 'Diff kini menyusun setiap review dari string from/to; Questionnaire mencakup alur multi-langkah composable lengkap; Toast memakai satu kontrak manager imperatif.'],
+          ['Generated facts.', 'Component docs, interfaces, public counts, adherence metadata, and Guard rules regenerate from the authored sources.', 'Fakta hasil generate.', 'Docs komponen, interface, hitungan publik, metadata adherence, dan aturan Guard di-generate ulang dari source yang ditulis.'],
         ]),
         h2('v1211', '1.21.1 (August 2026)', '1.21.1 (Agustus 2026)'),
         list([

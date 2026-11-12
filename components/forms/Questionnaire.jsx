@@ -21,7 +21,7 @@ const CSS = `
 .ef-questionnaire__error{font-size:var(--text-sm);color:var(--danger-600)}
 .ef-questionnaire__actions{display:flex;flex-wrap:wrap;align-items:center;justify-content:flex-end;gap:var(--space-2)}
 .ef-questionnaire__button{min-height:var(--control-h-md);padding:0 var(--space-4);border:1px solid var(--border-default);border-radius:var(--radius-md);background:var(--surface-card);color:var(--text-primary);font:inherit;font-weight:var(--weight-medium);cursor:pointer}
-.ef-questionnaire__button[data-primary]{border-color:var(--brand-950);background:var(--brand-950);color:var(--text-inverse)}
+.ef-questionnaire__button[data-primary]{border-color:var(--brand-950);background:var(--brand-950);color:var(--text-on-brand)}
 .ef-questionnaire__button:disabled{opacity:.45;cursor:not-allowed}
 `;
 
@@ -89,7 +89,7 @@ export const Questionnaire = React.forwardRef(function Questionnaire({ items = [
     onReset?.(event);
   };
   const onKeyDown = event => {
-    if (!shortcuts || event.metaKey || event.ctrlKey || event.altKey || /input|textarea|select/i.test(event.target.tagName)) return;
+    if (!shortcuts || event.key.length !== 1 || event.metaKey || event.ctrlKey || event.altKey || /input|textarea|select/i.test(event.target.tagName)) return;
     const keyIndex = shortcuts === 'letters' ? event.key.toLowerCase().charCodeAt(0) - 97 : Number(event.key) - 1;
     if (keyIndex < 0) return;
     const controls = [...(formRef.current?.elements || [])].filter(control => control.name === activeItem && !control.disabled && /radio|checkbox/.test(control.type));

@@ -20,7 +20,7 @@ function SideItem({ icon, label, active, badge, onClick, href }) {
   return <button onClick={onClick} onMouseEnter={() => setHov(true)} onMouseLeave={() => setHov(false)} style={style}>{inner}</button>;
 }
 
-function Sidebar({ nav, onNav }) {
+function ConsoleSidebar({ nav, onNav }) {
   const items = [
     ['overview', 'layout-dashboard', 'Overview'],
     ['customers', 'users', 'Customers', 128],
@@ -113,4 +113,4 @@ function Topbar({ title, onSearch, notify }) {
   );
 }
 
-Object.assign(window, { Sidebar, Topbar, SideItem });
+Object.assign(window, { ConsoleSidebar, Topbar, SideItem });

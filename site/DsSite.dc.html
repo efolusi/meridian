@@ -26,8 +26,9 @@
 <body>
 <x-dc>
 <!-- @template name="DS site: open source" description="the design system's own docs site (8 pages): home, docs, components, blocks, examples, charts, themes, colors" -->
-<helmet><script src="./ds-base.js"></script><script src="./i18n.js"></script><link rel="stylesheet" href="./site.css?v=20260814b"><style>@view-transition{navigation:auto}::view-transition-group(*){animation-duration:160ms}@media (prefers-reduced-motion:reduce){::view-transition-group(*),::view-transition-old(*),::view-transition-new(*){animation:none!important}}html{background:var(--surface-page,#FAF9F6)}</style></helmet>
+<helmet><script src="./ds-base.js"></script><script src="./i18n.js"></script><script src="./skip-link.js"></script><link rel="stylesheet" href="./site.css?v=20261112"><style>@view-transition{navigation:auto}::view-transition-group(*){animation-duration:160ms}@media (prefers-reduced-motion:reduce){::view-transition-group(*),::view-transition-old(*),::view-transition-new(*){animation:none!important}}html{background:var(--surface-page,#FAF9F6)}</style></helmet>
 <div style="min-height:100vh;background:var(--surface-page);color:var(--text-primary);font-family:var(--font-sans);display:flex;flex-direction:column">
+<a class="site-skip" href="#main" data-lang-id="Lewati ke konten">Skip to content</a>
 <header class="site-top" style="view-transition-name:site-top;position:sticky;top:0;z-index:50;display:flex;align-items:center;gap:26px;height:58px;padding:0 28px;border-bottom:1px solid var(--border-default);background:var(--surface-page)">
 <a href="./DsSite.dc.html" style="display:flex;align-items:center;gap:9px;text-decoration:none;color:var(--text-primary)"><img src="../assets/meridian-horizontal-light.svg?v=20260814c" alt="Meridian" class="meridian-lockup meridian-lockup--light"><img src="../assets/meridian-horizontal-dark.svg?v=20260814c" alt="" class="meridian-lockup meridian-lockup--dark"></a>
 <nav class="site-nav" style="display:flex;gap:20px;font-size:var(--text-md)">
@@ -47,13 +48,13 @@
 <button onClick="{{ toggleTheme }}" class="site-theme" aria-label="Switch theme" title="Switch theme" style-hover="color:var(--text-primary);background:var(--surface-sunken)"><svg class="icon-sun" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="4"></circle><path d="M12 2v2"></path><path d="M12 20v2"></path><path d="m4.93 4.93 1.41 1.41"></path><path d="m17.66 17.66 1.41 1.41"></path><path d="M2 12h2"></path><path d="M20 12h2"></path><path d="m6.34 17.66-1.41 1.41"></path><path d="m19.07 4.93-1.41 1.41"></path></svg><svg class="icon-moon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"></path></svg></button>
 </div>
 </header>
-<main style="flex:1">
+<main id="main" tabIndex="-1" style="flex:1">
 <section class="hero-pad pad-sm" style="max-width:860px;margin:0 auto;padding:88px 28px 0;text-align:center">
 <a href="./Docs.dc.html" style="display:inline-flex;align-items:center;gap:8px;font-size:13px;font-weight:500;color:var(--text-secondary);border:1px solid var(--border-default);border-radius:var(--radius-full);padding:5px 14px;text-decoration:none" style-hover="border-color:var(--border-strong);color:var(--text-primary)"><span style="width:6px;height:6px;border-radius:99px;background:var(--success-600,#2F7A40)"></span><span data-lang-id="Kini sepenuhnya open source di bawah MIT →">Now fully open source under MIT →</span></a>
 <h1 class="hero-h1" data-lang-id="Design system di balik produk Anda berikutnya." style="font-family:var(--font-display);font-weight:700;letter-spacing:-0.025em;font-size:58px;line-height:1.06;margin:26px 0 0;text-wrap:balance">The design system behind your next product.</h1>
 <p data-lang-id="Kertas hangat, tinta espresso, struktur setipis rambut. 123 komponen aksesibel, token, blok, dan aplikasi contoh lengkap, bebas disalin, diberi tema, dan dirilis." style="font-size:18px;line-height:1.6;color:var(--text-secondary);max-width:600px;margin:20px auto 0;text-wrap:pretty">Warm paper, espresso ink, hairline structure. 123 accessible components, tokens, blocks, and full example apps, free to copy, theme, and ship.</p>
 <div style="display:flex;gap:12px;justify-content:center;margin-top:30px">
-<a href="./Docs.dc.html" style="text-decoration:none"><x-import component-from-global-scope="EfolusiDesignSystem_4ffc3d.Button" size="lg" hint-size="140px,44px">Get started</x-import></a>
+<a href="./Docs.dc.html#installation" style="text-decoration:none"><x-import component-from-global-scope="EfolusiDesignSystem_4ffc3d.Button" size="lg" hint-size="150px,44px">Install Meridian</x-import></a>
 <a href="./Components.dc.html" style="text-decoration:none"><x-import component-from-global-scope="EfolusiDesignSystem_4ffc3d.Button" variant="secondary" size="lg" hint-size="180px,44px">Browse components</x-import></a>
 </div>
 <div data-lang-id="123 komponen · 167 token · 12 blok · 8 aplikasi contoh · MIT" style="font-family:var(--font-mono);font-size:12.5px;color:var(--text-muted);margin-top:26px">123 components · 167 tokens · 12 blocks · 8 example apps · MIT</div>

@@ -2,6 +2,22 @@
 
 ## Unreleased
 
+- **Fork pull requests no longer run on the shared self-hosted runner.** They run on GitHub-hosted `ubuntu-24.04`; pushes and same-repo branches stay on `efolusi-dev`.
+- **PR checks run the full `npm run check`.** A green PR can no longer fail the release on a gate CI skipped.
+- **The publish pipeline is pinned and holds fewer credentials.** Exact npm, action SHAs and an image digest; tags are made through the API with no git credential. CI cancels superseded PR runs and every job has a timeout.
+- **`/tokens.json` is published again**, so the MCP server's `get_tokens` and the `llms.txt` link resolve. **dev-meridian serves only what production serves**: repository, operator and test files are no longer web-accessible.
+- **The MCP server refuses path-like component names.** `get_component` could read any JSON file in a local checkout; `get_tokens` now says it returns the light, default-density set.
+- **The npm package exports `useDirection`, `useComboboxAnchor` and `buttonGroupVariants`**, which its types already declared.
+- **Pages loading `_ds_bundle.js` no longer get 25 showcase globals** such as `window.Hero` and `window.Sidebar`.
+- **Focus stays visible in Windows High Contrast**, and **the Tailwind preset maps the type scale to `fontSize`** instead of colours. The contrast gate measures 104 pairs components really paint, up from 44, and none fail.
+- **Submenu items can be clicked again**, **menus, popovers, Select, TimePicker and ModelSelector open above dialogs**, and **Escape closes only the innermost overlay.** Dialog, Sheet, Drawer and CommandDialog lock page scroll; Popover content is in the Tab order; the mobile Sidebar is a modal dialog.
+- **A toast that never expires always shows Dismiss**, and dark-theme toast success and warning icons reach 3:1.
+- **Questionnaire's Next and Submit and the pressed Toggle are readable in dark mode** (they were 1.02:1 and 2.22:1). Switch is named by its label, Calendar stays keyboard-reachable, Combobox and PromptComposer ignore IME Enter, and ButtonTile, SegmentedControl, PageControl and SideNav no longer submit forms.
+- **Citation, SourceList, SourceCard and WebPreview refuse script URLs**, and ChartStyle escapes `<` in SSR output. PromptComposer takes `aria-label`; Table keeps selection across sorts; FileDrop honours `accept` and `multiple` on drop.
+- **Touch targets reach 44px** on SegmentedControl, the CodeBlock copy button, the docs site and the starter page chrome.
+- **The docs site has a skip link and switches language live**; Blocks, Examples, Charts, Themes and Colors are translated into Indonesian.
+- **Showcase toasts work again, every example page declares its language and has a title, and copied-out starters no longer show a broken logo.**
+
 ## 1.21.9 — 2026-09-19
 
 - **`SkipLink`: one Tab press past the header.** None of the Efolusi products had a skip link, so a keyboard user tabbed through the whole navigation on every page. The link stays in the focus order while invisible (clipped, not `display:none`) and reveals itself on focus; its target needs `tabIndex={-1}`, or Safari and Firefox scroll without moving focus.

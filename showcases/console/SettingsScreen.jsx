@@ -16,10 +16,10 @@ function GeneralTab({ notify }) {
   return (
     <Card style={{ '--card-spacing': '24px' }}><CardContent>
       <SectionRow title="Workspace name" desc="Shown in the sidebar and on invoices.">
-        <Input defaultValue="Acme Workspace" />
+        <Input aria-label="Workspace name" defaultValue="Acme Workspace" />
       </SectionRow>
       <SectionRow title="Description" desc="Helps teammates pick the right workspace.">
-        <Textarea defaultValue="Robotics tooling for the Acme fleet." rows={3} />
+        <Textarea aria-label="Description" defaultValue="Robotics tooling for the Acme fleet." rows={3} />
       </SectionRow>
       <SectionRow title="Default surface" desc="Where new members land after sign-in.">
         <NativeSelect defaultValue="AI agents" aria-label="Default surface">{['AI agents', 'Infrastructure', 'Automation', 'File tools', 'Trading', 'Finance'].map(value => <NativeSelectOption key={value} value={value}>{value}</NativeSelectOption>)}</NativeSelect>

@@ -38,7 +38,7 @@ function CustomersScreen({ notify }) {
   return (
     <div style={{ padding: 24, display: 'flex', flexDirection: 'column', gap: 16 }}>
       <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
-        <div style={{ width: 280 }}><Input size="sm" placeholder="Search customers…" iconLeft="search" value={q} onChange={e => setQ(e.target.value)} /></div>
+        <div style={{ width: 280 }}><Input size="sm" type="search" aria-label="Search customers" placeholder="Search customers…" iconLeft="search" value={q} onChange={e => setQ(e.target.value)} /></div>
         <NativeSelect size="sm" value={plan} onChange={e => setPlan(e.target.value)} aria-label="Plan filter" style={{ width: 130 }}>{['All plans', 'Starter', 'Growth', 'Scale'].map(value => <NativeSelectOption key={value} value={value}>{value}</NativeSelectOption>)}</NativeSelect>
         <CustomerActionMenu trigger={<Tag icon="funnel" onClick={() => {}}>{status}</Tag>} items={STATUSES.map(s => ({ id: s, label: s, icon: s === status ? 'check' : undefined }))} onSelect={setStatus} />
         <div style={{ marginLeft: 'auto', display: 'flex', gap: 8, alignItems: 'center' }}>
@@ -49,13 +49,13 @@ function CustomersScreen({ notify }) {
       <Card><CardContent style={{ paddingInline: 0, marginBlock: 'calc(var(--card-spacing) * -1)' }}>
         <table style={{ width: '100%', borderCollapse: 'collapse' }}>
           <thead><tr>
-            <th style={{ ...th, width: 40, paddingRight: 0 }}><Checkbox checked={checked.length === shown.length && shown.length > 0} onChange={() => setChecked(checked.length === shown.length ? [] : shown.map(r => r.id))} /></th>
+            <th style={{ ...th, width: 40, paddingRight: 0 }}><Checkbox aria-label="Select all customers" checked={checked.length === shown.length && shown.length > 0} onChange={() => setChecked(checked.length === shown.length ? [] : shown.map(r => r.id))} /></th>
             <th style={th}>Customer</th><th style={th}>Plan</th><th style={th}>Status</th><th style={th}>MRR</th><th style={th}>Product</th><th style={{ ...th, width: 40 }}></th>
           </tr></thead>
           <tbody>
             {shown.map(r => (
               <tr key={r.id} style={{ background: checked.includes(r.id) ? 'var(--accent-subtle)' : 'transparent', cursor: 'pointer' }}>
-                <td style={{ ...td, paddingRight: 0 }} onClick={e => e.stopPropagation()}><Checkbox checked={checked.includes(r.id)} onChange={() => toggle(r.id)} /></td>
+                <td style={{ ...td, paddingRight: 0 }} onClick={e => e.stopPropagation()}><Checkbox aria-label={`Select ${r.name}`} checked={checked.includes(r.id)} onChange={() => toggle(r.id)} /></td>
                 <td style={td} onClick={() => setSel(r)}>
                   <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
                     <Avatar><AvatarFallback>{r.name.split(/\s+/).map(part => part[0]).slice(0, 2).join('')}</AvatarFallback></Avatar>

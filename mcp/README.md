@@ -11,7 +11,7 @@ UI instead of guessing. It exposes the same generated registry the docs site use
 | `list_components` | Every UI component with a one-line description and categories. Optional `category` filter. |
 | `get_component` | One component's full detail: description, Meridian dependencies, and each file's real content — the `.jsx` source, the `.d.ts` types, and the `.prompt.md` usage guide. |
 | `search_components` | Components matching a keyword across name, title, description and category. |
-| `get_tokens` | Design tokens (colour, typography, spacing, effects) in light, dark and compact. Optional `group` filter. |
+| `get_tokens` | Design tokens (colour, typography, spacing, effects) for the light theme at default density. Optional `group` filter; an unknown group returns the list of groups. |
 
 ## Data source
 

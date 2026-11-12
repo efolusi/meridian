@@ -4,8 +4,8 @@ How to put your own brand on Meridian without forking component code. Components
 
 Two ways to apply everything below:
 
-- **Vendored folder** — edit `tokens/colors.css` (and `tokens/fonts.css`) in place. `scripts/check_contrast.py` verifies your edits directly.
-- **CDN or npm** — leave the stylesheet untouched and load one override file after it:
+- **Vendored folder**: edit `tokens/colors.css` (and `tokens/fonts.css`) in place. `scripts/check_contrast.py` verifies your edits directly.
+- **CDN or npm**: leave the stylesheet untouched and load one override file after it:
 
 ```html
 <link rel="stylesheet" href="https://meridian.efolusi.com/styles.css">
@@ -14,11 +14,11 @@ Two ways to apply everything below:
 
 ## The three token layers
 
-1. **Ramps** — raw scales in `tokens/colors.css`: `--sand-25…950` (warm neutrals), `--brand-50…950` (the identity color, cream→cocoa), and the status hexes. Physical constants: the same value in light and dark.
-2. **Semantic aliases** — the vocabulary components actually use: `--surface-page`, `--text-primary`, `--accent`, `--focus-ring-color`, and friends. Each resolves to a ramp stop or a tuned hex. This is the only layer the dark theme remaps.
-3. **Component styles** — every component reads semantic tokens only. No component knows a hex.
+1. **Ramps**: raw scales in `tokens/colors.css`: `--sand-25…950` (warm neutrals), `--brand-50…950` (the identity color, cream→cocoa), and the status hexes. Physical constants: the same value in light and dark.
+2. **Semantic aliases**: the vocabulary components actually use: `--surface-page`, `--text-primary`, `--accent`, `--focus-ring-color`, and friends. Each resolves to a ramp stop or a tuned hex. This is the only layer the dark theme remaps.
+3. **Component styles**: every component reads semantic tokens only. No component knows a hex.
 
-A rebrand touches layer 2, plus the `--brand-*` stops in layer 1 when the identity color itself changes: links (`--text-link`), focus (`--focus-ring-color`), and the light-theme text selection (`--brand-100`) all resolve through that ramp, so replacing the ramp carries them at once. The sand neutrals can stay — a brand usually lives in the accent, not the paper.
+A rebrand touches layer 2, plus the `--brand-*` stops in layer 1 when the identity color itself changes: links (`--text-link`), focus (`--focus-ring-color`), and the light-theme text selection (`--brand-100`) all resolve through that ramp, so replacing the ramp carries them at once. The sand neutrals can stay: a brand usually lives in the accent, not the paper.
 
 ## The minimum viable rebrand
 
@@ -27,7 +27,7 @@ The brand rides on a small set of tokens: the accent group (`--accent`, `--accen
 Copy this block and swap in your values. The example is a deep teal; every pair in it passes the contrast duty below, in both themes.
 
 ```css
-/* brand.css — load after styles.css */
+/* brand.css: load after styles.css */
 :root {
   /* Brand ramp: your scale, 50 lightest to 950 darkest */
   --brand-50:  #EAF4F0;
@@ -50,7 +50,7 @@ Copy this block and swap in your values. The example is a deep teal; every pair 
   --accent-subtle: var(--brand-50);
   --accent-subtle-border: var(--brand-200);
 
-  /* Focus ring + links. These three repeat the stylesheet defaults —
+  /* Focus ring + links. These three repeat the stylesheet defaults;
      keep them so the brand contract is explicit in your file, or
      point them at something else entirely. */
   --focus-ring-color: var(--brand-700);
@@ -66,14 +66,14 @@ Copy this block and swap in your values. The example is a deep teal; every pair 
 Two facts drive the dark half of your override file:
 
 - **Only semantic aliases remap in dark.** The stylesheet's `[data-theme="dark"]` block re-points surfaces, text, borders, the accent group, status tints, and `--focus-ring-color`. Ramps never change: `--brand-400` is the same hex at midnight.
-- **Your `:root` block outranks the stylesheet's dark block.** Both selectors have equal specificity and your file loads later, so any dark-remapped token you set in `:root` needs a dark value in the same file — otherwise dark mode inherits your light value.
+- **Your `:root` block outranks the stylesheet's dark block.** Both selectors have equal specificity and your file loads later, so any dark-remapped token you set in `:root` needs a dark value in the same file, otherwise dark mode inherits your light value.
 
 From the block above, the dark-remapped tokens are the six accent tokens, `--text-link`, and `--focus-ring-color` (the ramp and `--focus-ring-offset` are not). So the dark half restores or retunes exactly those:
 
 ```css
 /* brand.css, continued */
 [data-theme="dark"] {
-  /* The first four restore the stylesheet's own dark accent — near-white,
+  /* The first four restore the stylesheet's own dark accent (near-white),
      so primary buttons stay the brightest thing on a dark page. */
   --accent: #F3EFE7;
   --accent-hover: #FFFFFF;
@@ -86,7 +86,7 @@ From the block above, the dark-remapped tokens are the six accent tokens, `--tex
 }
 ```
 
-The invariant: **only semantic aliases ever appear inside `[data-theme="dark"]`.** If you catch yourself writing `--brand-500` in the dark block, stop and remap the alias that points at it instead. One ramp, two semantic mappings is what keeps a single source of color truth — and what lets `scripts/check_contrast.py` reason about both themes from one file.
+The invariant: **only semantic aliases ever appear inside `[data-theme="dark"]`.** If you catch yourself writing `--brand-500` in the dark block, stop and remap the alias that points at it instead. One ramp, two semantic mappings is what keeps a single source of color truth, and what lets `scripts/check_contrast.py` reason about both themes from one file.
 
 ## Fonts
 
@@ -111,16 +111,16 @@ Vendored installs replace the WOFF2 files in `assets/fonts/` and update the `@fo
 }
 ```
 
-The `--font-*` tokens are not dark-remapped, so `:root` alone is safe. Keep the fallback stacks. One tuning knob: `--weight-display` (680) is tuned to Bricolage Grotesque's variable axis — if your display face is a static family, set it to a weight the face actually has.
+The `--font-*` tokens are not dark-remapped, so `:root` alone is safe. Keep the fallback stacks. One tuning knob: `--weight-display` (680) is tuned to Bricolage Grotesque's variable axis. If your display face is a static family, set it to a weight the face actually has.
 
 ## Contrast duty
 
 Any replacement value must keep the guarantees the stock palette ships with: **4.5:1 for text (WCAG 1.4.3), 3:1 for non-text UI (WCAG 1.4.11)**, in both themes. The pairs that must hold:
 
-- `--text-primary`, `--text-secondary`, `--text-muted` on `--surface-page`, `--surface-card`, and `--surface-sunken` — ≥ 4.5:1
-- each status foreground (`--success-600`, `--warning-600`, `--danger-600`) on its `*-100` tint and on `--surface-card` — ≥ 4.5:1
-- `--accent-contrast` on `--accent` — ≥ 4.5:1
-- `--focus-ring-color` on all three surfaces and on `--focus-ring-offset` — ≥ 3:1
+- `--text-primary`, `--text-secondary`, `--text-muted` on `--surface-page`, `--surface-card`, and `--surface-sunken`: ≥ 4.5:1
+- each status foreground (`--success-600`, `--warning-600`, `--danger-600`) on its `*-100` tint and on `--surface-card`: ≥ 4.5:1
+- `--accent-contrast` on `--accent`: ≥ 4.5:1
+- `--focus-ring-color` on all three surfaces and on `--focus-ring-offset`: ≥ 3:1
 
 The verifier is in the repo:
 
@@ -128,11 +128,11 @@ The verifier is in the repo:
 python3 scripts/check_contrast.py
 ```
 
-It parses `tokens/colors.css`, follows every `var()` chain per theme, composites translucent colors before measuring, and hard-fails any pair it cannot resolve. It reads that file only — vendored installs just run it; if you theme via a separate override file, mirror your values into `tokens/colors.css` in a checkout of this repo and run it there. Don't ship a brand it hasn't passed.
+It parses `tokens/colors.css`, follows every `var()` chain per theme, composites translucent colors before measuring, and hard-fails any pair it cannot resolve. It reads that file only: vendored installs just run it; if you theme via a separate override file, mirror your values into `tokens/colors.css` in a checkout of this repo and run it there. Don't ship a brand it hasn't passed.
 
 ## What not to touch
 
 - **Component CSS.** Components read semantic tokens only; that contract is the entire reason retheming works. The moment a component gains a hardcoded hex or a per-brand edit, you own a fork and the next Meridian release stops being a drop-in. Restyle by remapping tokens, never by editing `components/`.
-- **Ramp semantics.** 50 stays lightest, 950 darkest, steps evenly spaced. Derived tokens assume the ordering — `--brand-700` must be dark enough to hold 4.5:1 as text on light surfaces, `--brand-400` light enough to hold it on dark ones. Invert or skew the ramp and every derived guarantee fails at once.
+- **Ramp semantics.** 50 stays lightest, 950 darkest, steps evenly spaced. Derived tokens assume the ordering: `--brand-700` must be dark enough to hold 4.5:1 as text on light surfaces, `--brand-400` light enough to hold it on dark ones. Invert or skew the ramp and every derived guarantee fails at once.
 - **Status trios.** `--success-*`, `--warning-*`, and `--danger-*` each ship a 600 foreground, 100 tint, and 300 border, with the 600 holding 4.5:1 on the tint and on white. Retune the hues if your brand demands it, but keep the trio shape and re-run the checker.
-- **The code surface.** `--surface-code`, `--text-code`, and `--border-code` are fixed dark in both themes on purpose — terminals don't flip. Never remap them.
+- **The code surface.** `--surface-code`, `--text-code`, and `--border-code` are fixed dark in both themes on purpose: terminals don't flip. Never remap them.

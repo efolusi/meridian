@@ -8,6 +8,7 @@ const CSS = `
 .ef-seg__opt--active{background:var(--surface-card);border-color:var(--border-strong);color:var(--text-primary);font-weight:var(--weight-semibold)}
 .ef-seg__opt:focus-visible{outline:none;box-shadow:var(--focus-ring)}
 .ef-seg__opt:disabled{opacity:.4;cursor:not-allowed}
+@media (pointer:coarse){.ef-seg__opt{height:var(--tap-min)}}
 `;
 export function SegmentedControl({ options, value, onChange, style, className, ...rest }) {
   injectEfCss('ef-css-seg', CSS);
@@ -16,7 +17,7 @@ export function SegmentedControl({ options, value, onChange, style, className, .
       {options.map(o => {
         const opt = typeof o === 'string' ? { id: o, label: o } : o;
         return (
-          <button key={opt.id} className={`ef-seg__opt${value === opt.id ? ' ef-seg__opt--active' : ''}`} aria-pressed={value === opt.id} disabled={opt.disabled} onClick={() => onChange && onChange(opt.id)}>
+          <button key={opt.id} type="button" className={`ef-seg__opt${value === opt.id ? ' ef-seg__opt--active' : ''}`} aria-pressed={value === opt.id} disabled={opt.disabled} onClick={() => onChange && onChange(opt.id)}>
             {opt.icon ? <Icon name={opt.icon} size={14} /> : null}{opt.label}
           </button>
         );

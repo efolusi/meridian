@@ -16,11 +16,11 @@ on npmjs.com (all pointing at `publish.yml`); a brand-new sub-package must be
 created once with a manual `npm publish ./packages/<name>/dist --access public`
 before OIDC can take over, exactly as the umbrella was first published.
 
-The MCP server `@efolusi/meridian-mcp` (`mcp/`) is a **fourth** package the same
+The MCP server `@efolusi/meridian-mcp` (`mcp/`) is a **fifth** package the same
 pipeline maintains, but **versioned independently** in `mcp/package.json` — it is
 a dev tool, not part of the design-system surface. Bump `mcp/package.json` and
 push; the `decide` job gates it on its own version, so an mcp-only bump releases
-without touching the lockstep three (and a lockstep bump leaves mcp alone unless
+without touching the lockstep four (and a lockstep bump leaves mcp alone unless
 its version is new). It has its own Trusted Publisher; it was first published
 manually, so OIDC now maintains it.
 
@@ -32,7 +32,7 @@ carry it and must agree:
 | File | Field |
 |---|---|
 | `_ds_manifest.json` | `version` — **the source the build reads** |
-| `package.json` | `version` (tokens, icons, and Guard workspace versions match it) |
+| `package.json` | `version` (tokens, icons, and Guard workspace versions match it; refresh `package-lock.json` with `npm install --package-lock-only` so its workspace entries follow) |
 | `CITATION.cff` | `version` (+ `date-released`) |
 | `site/DsSite.dc.html` | JSON-LD `softwareVersion` |
 | `CHANGELOG.md` | the release heading |

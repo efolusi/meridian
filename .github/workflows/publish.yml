@@ -64,16 +64,17 @@ jobs:
   # Fast gate so routine pushes don't spin up the whole publish machinery.
   decide:
     runs-on: [self-hosted, Linux, X64, efolusi-dev]
+    timeout-minutes: 10
     outputs:
       go: ${{ steps.d.outputs.go }}
       version: ${{ steps.d.outputs.version }}
     steps:
-      - uses: actions/checkout@v5
+      - uses: actions/checkout@fbc6f3992d24b796d5a048ff273f7fcc4a7b6c09 # v5.1.0
       - id: d
         run: |
           VERSION="$(node -p "require('./_ds_manifest.json').version")"
           echo "version=$VERSION" >> "$GITHUB_OUTPUT"
-          if [ "${{ github.event_name }}" != "push" ]; then
+          if [ "$GITHUB_EVENT_NAME" != "push" ]; then
             echo "go=true" >> "$GITHUB_OUTPUT"
             exit 0
           fi
@@ -110,6 +111,7 @@ jobs:
     if: needs.decide.outputs.go == 'true'
     # GitHub-hosted on purpose: npm Trusted Publishing (OIDC) does not support self-hosted runners.
     runs-on: ubuntu-latest
+    timeout-minutes: 30
     # Gives the publish a reviewable gate in repo settings, and scopes the OIDC
     # claim. Must match the Environment named in the trusted publisher config.
     environment: npm-publish
@@ -119,9 +121,12 @@ jobs:
       id-token: write # required for OIDC; without it npm cannot verify the workflow
 
     steps:
-      - uses: actions/checkout@v5
+      # npm ci and the gates run third-party code here; only the Release step gets the token.
+      - uses: actions/checkout@fbc6f3992d24b796d5a048ff273f7fcc4a7b6c09 # v5.1.0
+        with:
+          persist-credentials: false
 
-      - uses: actions/setup-node@v5
+      - uses: actions/setup-node@a0853c24544627f65ddf259abe73b1d18a591444 # v5.0.0
         with:
           node-version: '22.23.2'
           registry-url: 'https://registry.npmjs.org'
@@ -133,9 +138,10 @@ jobs:
         run: node scripts/require_successful_checks.mjs
 
       # Trusted publishing needs npm 11.5.1 or newer; node 22 still bundles 10.x.
+      # Exact version: this job can mint an npm publish identity.
       - name: Use an npm that understands trusted publishing
         run: |
-          npm install -g npm@latest
+          npm install -g npm@11.21.1
           npm --version
 
       - name: Install
@@ -153,8 +159,9 @@ jobs:
       # under a name people will pin.
       - name: Tag and package version must agree
         if: github.event_name == 'release'
+        env:
+          TAG: ${{ github.event.release.tag_name }}
         run: |
-          TAG="${{ github.event.release.tag_name }}"
           PKG="$(node -p "require('./dist/package.json').version")"
           echo "release tag: $TAG"
           echo "package    : $PKG"
@@ -259,21 +266,31 @@ jobs:
           PKG="$(node -p "require('./dist/package.json').version")"
           # Idempotent: a run that only completes a lagging sub-package finds the
           # tag and Release already made by the run that shipped the umbrella, so
-          # `git tag` would otherwise abort the whole job. Skip when it exists.
-          if gh release view "v$PKG" >/dev/null 2>&1 || git rev-parse -q --verify "refs/tags/v$PKG" >/dev/null; then
-            echo "v$PKG tag/release already exists — nothing to cut"
+          # creating them again would abort the whole job. Skip when it exists.
+          if gh release view "v$PKG" >/dev/null 2>&1; then
+            echo "v$PKG release already exists — nothing to cut"
             exit 0
           fi
-          python3 - "$PKG" > /tmp/notes.md <<'EOF'
+          NOTES="$RUNNER_TEMP/notes.md"
+          python3 - "$PKG" > "$NOTES" <<'EOF'
           import re, sys
           ver = sys.argv[1]
           t = open('CHANGELOG.md', encoding='utf-8').read()
           m = re.search(rf'^## {re.escape(ver)}[^\n]*\n(.*?)(?=^## |\Z)', t, re.S | re.M)
           print(m.group(1).strip() if m else f'Meridian {ver}. Details in CHANGELOG.md.')
           EOF
-          git tag "v$PKG"
-          git push origin "v$PKG"
-          gh release create "v$PKG" --title "Meridian $PKG" --notes-file /tmp/notes.md
+          # gh tags the published commit via the API; a leftover tag must be at this SHA.
+          if TAG_LINES="$(git ls-remote --exit-code origin "refs/tags/v$PKG")"; then
+            # An annotated tag lists its commit on the peeled ^{} line.
+            TAG_SHA="$(printf '%s\n' "$TAG_LINES" | awk '$2 ~ /\^\{\}$/ { peeled = $1 } $2 !~ /\^\{\}$/ { ref = $1 } END { print (peeled != "" ? peeled : ref) }')"
+            if [ "$TAG_SHA" != "$GITHUB_SHA" ]; then
+              echo "::error::tag v$PKG exists at $TAG_SHA, not at the published commit $GITHUB_SHA."
+              exit 1
+            fi
+            gh release create "v$PKG" --verify-tag --title "Meridian $PKG" --notes-file "$NOTES"
+          else
+            gh release create "v$PKG" --target "$GITHUB_SHA" --title "Meridian $PKG" --notes-file "$NOTES"
+          fi
           echo "released v$PKG"
 
       - name: Dry run finished

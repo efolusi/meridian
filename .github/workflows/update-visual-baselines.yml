@@ -16,16 +16,18 @@ permissions:
 jobs:
   baselines:
     runs-on: [self-hosted, Linux, X64, efolusi-dev]
+    timeout-minutes: 30
     env:
       # Browsers and their system libs come from the Playwright image: the
       # self-hosted runner user has no sudo, so `install --with-deps` cannot
       # run. Same pattern as sanctum CI (docker run as the runner uid, so the
-      # workspace never gets root-owned files). Tag matches playwright@1.48.0.
-      PW_IMAGE: mcr.microsoft.com/playwright:v1.48.0-noble
+      # workspace never gets root-owned files). Tag matches playwright@1.48.0;
+      # the digest stops a re-pushed tag from changing the image.
+      PW_IMAGE: mcr.microsoft.com/playwright:v1.48.0-noble@sha256:d1e54d0cbb2d6b125b0bbd32536b2ed53953ea78159c27a56f22b10058e733c4
     steps:
-      - uses: actions/checkout@v5
+      - uses: actions/checkout@fbc6f3992d24b796d5a048ff273f7fcc4a7b6c09 # v5.1.0
 
-      - uses: actions/setup-node@v5
+      - uses: actions/setup-node@a0853c24544627f65ddf259abe73b1d18a591444 # v5.0.0
         with:
           node-version: '22.23.2'
 
@@ -79,9 +81,10 @@ jobs:
           # needs an org admin to change, so treat pr-create as best effort:
           # when it is refused, the branch is still pushed and the compare URL
           # lands in the run summary — one click away from the same PR.
-          if ! gh pr create --base main --head "$BRANCH" \
+          # dev is the integration branch; main only takes release merges.
+          if ! gh pr create --base dev --head "$BRANCH" \
             --title "Refresh visual baselines ($COUNT group shots)" \
             --body "Captured on this runner by the update-visual-baselines workflow (run ${GITHUB_RUN_ID}). Review the images in the diff — merging is the approval."; then
             echo "## Baselines captured — org policy blocks Actions from opening the PR" >> "$GITHUB_STEP_SUMMARY"
-            echo "Open it here: https://github.com/${GITHUB_REPOSITORY}/pull/new/$BRANCH" >> "$GITHUB_STEP_SUMMARY"
+            echo "Open it here: https://github.com/${GITHUB_REPOSITORY}/compare/dev...$BRANCH?expand=1" >> "$GITHUB_STEP_SUMMARY"
           fi
