@@ -128,8 +128,8 @@ PAIRS = [
     ("--code-ink", ["--surface-code"], 4.5, "terminal output"),
     ("--code-ink-strong", ["--surface-code"], 4.5, "control labels on code"),
     ("--code-ink-muted", ["--surface-code"], 4.5, "resting copy button"),
-    ("--code-ink-subtle", ["--surface-code"], 4.5, "language and host labels"),
-    ("--code-ink-faint", ["--surface-code"], 4.5, "Terminal timestamps"),
+    ("--code-ink-subtle", ["--surface-code"], 4.5, "language and host labels, Terminal timestamps"),
+    # Terminal timestamps moved to --code-ink-subtle (5.97:1); --code-ink-faint paints no text.
     ("--success-on-dark", ["--surface-code"], 4.5, "Terminal ok lines"),
     ("--danger-on-dark", ["--surface-code"], 4.5, "Terminal error lines"),
     ("--text-on-media", ["--media-backdrop"], 4.5, "GeneratedImage prompt"),
@@ -154,8 +154,6 @@ PAIRS = [
 # listed here that starts passing fails the gate until it is removed, so the
 # list can only shrink. Anything not listed fails as usual.
 KNOWN_FAILURES = {
-    ("light", "--code-ink-faint", "--surface-code"): "Terminal timestamps, 3.1:1",
-    ("dark", "--code-ink-faint", "--surface-code"): "Terminal timestamps, 3.1:1",
 }
 
 # Toast paints the -on-dark icon tokens only in light (on the dark inverse

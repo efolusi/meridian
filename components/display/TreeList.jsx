@@ -19,7 +19,8 @@ function Node({ node, depth, open, sel, toggle, select }) {
   const isOpen = open.includes(node.id);
   return (
     <React.Fragment>
-      <button className={`ef-tree__row${sel === node.id ? ' ef-tree__row--sel' : ''}`} style={{ paddingInlineStart: 8 + depth * 18 }}
+      <button type="button" className={`ef-tree__row${sel === node.id ? ' ef-tree__row--sel' : ''}`} style={{ paddingInlineStart: 8 + depth * 18 }}
+        aria-expanded={kids.length ? isOpen : undefined} aria-current={sel === node.id ? 'true' : undefined}
         onClick={() => { if (kids.length) toggle(node.id); select(node.id, node); }}>
         {kids.length ? <span className={`ef-tree__chev${isOpen ? ' ef-tree__chev--open' : ''}`}><Icon name="chevron-right" size={13} /></span> : <span style={{ width: 13, flex: 'none' }}></span>}
         {node.icon ? <span className="ef-tree__icon"><Icon name={node.icon} size={15} /></span> : null}
@@ -38,7 +39,9 @@ export function TreeList({ nodes, value, onChange, defaultOpen, style, className
   const toggle = id => setOpen(o => o.includes(id) ? o.filter(x => x !== id) : [...o, id]);
   const select = (id, node) => { if (value == null) setInnerSel(id); onChange?.(id, node); };
   return (
-    <div {...rest} role="tree" className={`ef-tree${className ? ' ' + className : ''}`} style={style}>
+    // Plain disclosure buttons, not role="tree": a tree promises treeitems and
+    // arrow-key navigation, which this list does not implement.
+    <div {...rest} className={`ef-tree${className ? ' ' + className : ''}`} style={style}>
       {nodes.map(n => <Node key={n.id} node={n} depth={0} open={open} sel={sel} toggle={toggle} select={select} />)}
     </div>
   );

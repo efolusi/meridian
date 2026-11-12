@@ -18,10 +18,10 @@ function gate(css) {
 }
 
 describe('contrast gate', () => {
-  it('passes the real tokens and still reports the known failures', () => {
+  it('passes the real tokens with no known failures left', () => {
     const { code, out } = gate()
     expect(code, out).toBe(0)
-    expect(out).toMatch(/KNOWN light --code-ink-faint/)
+    expect(out).toMatch(/0 known failure/)
   })
 
   it('measures links, which it used to skip', () => {
@@ -37,9 +37,9 @@ describe('contrast gate', () => {
     expect(out).toMatch(/FAIL\s+\w+\s+--text-on-brand\s+on --brand-800/)
   })
 
-  it('fails when a known failure is fixed but still listed, so the list only shrinks', () => {
-    const { code, out } = gate(source.replace('--code-ink-faint:rgba(250,249,246,.35)', '--code-ink-faint:rgba(250,249,246,.6)'))
-    expect(code).toBe(1)
-    expect(out).toMatch(/now passing, remove from KNOWN_FAILURES/)
+  it('measures the dark Toast icons as the color-mix they paint', () => {
+    const { out } = gate()
+    expect(out).toMatch(/ok\s+dark\s+mix\(--success-600 60%, --text-inverse\) on --surface-inverse\s+4\.88:1/)
+    expect(out).toMatch(/ok\s+dark\s+mix\(--warning-600 60%, --text-inverse\) on --surface-inverse\s+5\.59:1/)
   })
 })

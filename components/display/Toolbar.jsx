@@ -20,7 +20,7 @@ export function Toolbar({ items, value, onChange, label, style, className, ...re
       {items.map((it, i) => {
         if (it === 'separator') return <span key={'s' + i} className="ef-toolbar__sep"></span>;
         const btn = (
-          <button key={it.id} disabled={it.disabled} aria-pressed={active.includes(it.id) || undefined}
+          <button key={it.id} type="button" disabled={it.disabled} aria-pressed={active.includes(it.id) || undefined}
             className={`ef-toolbar__btn${active.includes(it.id) ? ' ef-toolbar__btn--active' : ''}`}
             onClick={() => { if (onChange) onChange(it.id); if (it.onClick) it.onClick(); }}>
             {it.icon ? <Icon name={it.icon} size={15} /> : null}

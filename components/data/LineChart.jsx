@@ -4,7 +4,7 @@ const CSS = `
 .ef-linechart{position:relative}
 .ef-linechart__tip{position:absolute;transform:translate(-50%,-130%);background:var(--surface-inverse);color:var(--text-inverse);font-size:11px;font-weight:500;padding:4px 8px;border-radius:6px;white-space:nowrap;pointer-events:none;z-index:5}
 `;
-export function LineChart({ data, height = 150, showArea = true, showDots = false, format, style, className, ...rest }) {
+export function LineChart({ data = [], height = 150, showArea = true, showDots = false, format, style, className, ...rest }) {
   injectEfCss('ef-css-linechart', CSS);
   const [hov, setHov] = React.useState(null);
   const ref = React.useRef(null);
@@ -17,13 +17,14 @@ export function LineChart({ data, height = 150, showArea = true, showDots = fals
   const y = v => n === 1 ? H / 2 : H - PAD - ((v - min) / span) * (H - PAD * 2);
   // One reading has no left-to-right span; draw it as a flat line across the
   // middle instead of dividing by zero, which put NaN in the path.
-  const path = n === 1
+  const path = n === 0 ? '' : n === 1
     ? `M${PAD.toFixed(1)},${y(data[0].value).toFixed(1)} L${(W - PAD).toFixed(1)},${y(data[0].value).toFixed(1)}`
     : data.map((d, i) => (i ? 'L' : 'M') + x(i).toFixed(1) + ',' + y(d.value).toFixed(1)).join(' ');
-  const area = n === 1
+  const area = n === 0 ? '' : n === 1
     ? `${path} L${(W - PAD).toFixed(1)},${(H - PAD).toFixed(1)} L${PAD.toFixed(1)},${(H - PAD).toFixed(1)} Z`
     : path + ` L${x(data.length - 1).toFixed(1)},${H - PAD} L${x(0).toFixed(1)},${H - PAD} Z`;
   const move = e => {
+    if (!n) return;
     const r = ref.current.getBoundingClientRect();
     const i = Math.round(((e.clientX - r.left) / r.width) * (data.length - 1));
     setHov(Math.max(0, Math.min(data.length - 1, i)));
@@ -31,8 +32,8 @@ export function LineChart({ data, height = 150, showArea = true, showDots = fals
   return (
     <div {...rest} ref={ref} className={`ef-linechart${className ? ' ' + className : ''}`} style={style} onMouseMove={move} onMouseLeave={() => setHov(null)}>
       <svg viewBox={`0 0 ${W} ${H}`} width="100%" height={H} preserveAspectRatio="none" style={{ display: 'block' }}>
-        {showArea && <path d={area} fill="var(--accent)" opacity=".07" />}
-        <path d={path} fill="none" stroke="var(--accent)" strokeWidth="1.5" vectorEffect="non-scaling-stroke" />
+        {showArea && area && <path d={area} fill="var(--accent)" opacity=".07" />}
+        {path && <path d={path} fill="none" stroke="var(--accent)" strokeWidth="1.5" vectorEffect="non-scaling-stroke" />}
         {(showDots ? data.map((_, i) => i) : hov != null ? [hov] : []).map(i => (
           <circle key={i} cx={x(i)} cy={y(data[i].value)} r="3" fill="var(--surface-card)" stroke="var(--accent)" strokeWidth="1.5" vectorEffect="non-scaling-stroke" />
         ))}

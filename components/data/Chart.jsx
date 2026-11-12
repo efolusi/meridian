@@ -26,7 +26,9 @@ export function ChartStyle({ id, config }) {
     const value = item.theme ? item.theme[theme] : item.color;
     return value ? `--color-${key}:${value};` : '';
   }).join('\n')}\n}`).join('\n');
-  return <style dangerouslySetInnerHTML={{ __html: css }} />;
+  // Raw text inside <style>: server-rendered, a `<` in a config value could
+  // close the element and open a script. CSS never needs a literal `<` here.
+  return <style dangerouslySetInnerHTML={{ __html: css.replace(/</g, '\\3c ') }} />;
 }
 
 export const ChartContainer = React.forwardRef(function ChartContainer({ id, className, children, config = {}, initialDimension = INITIAL_DIMENSION, ...props }, ref) {
