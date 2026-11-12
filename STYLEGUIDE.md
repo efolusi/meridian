@@ -23,7 +23,8 @@ The conventions that keep many hands producing one system. CONTRIBUTING.md says 
 - Radius follows the component role, not a fleet-wide forced shape: controls use `--radius-sm`, containers use `--radius-md/lg`, and pills/avatars may use `--radius-full`. A product may deliberately compose a different exported radius token; raw radii are not an exception.
 - Semantic state colors come from success/warning/danger roles. Categorical data visualization may keep a reviewed categorical palette when color distinguishes series rather than status; document that exception beside the palette and never reuse it for state or action meaning.
 - One `CSS` template string per component, injected via `injectEfCss(id, css)`. Class prefix `ef-<component>`.
-- No new dependencies. React and the DS namespace are the entire import surface.
+- States: hover, press (scale .985), focus-visible ring, disabled (.45 opacity), and loading where the action is async.
+- No new dependencies. React and the DS namespace are the entire import surface; icons come from the curated Lucide set in `assets/icons/`.
 
 ## Copy
 
@@ -37,5 +38,5 @@ Keyboard path, visible `--focus-ring`, and correct ARIA per `guidelines/accessib
 
 - API changes and new components start as an RFC issue (template in `.github/ISSUE_TEMPLATE/rfc.md`) before code.
 - Component `.jsx` changes ship with a bundle recompile (see ARCHITECTURE.md § invariants).
-- Before pushing: `site/_smoke.html` renders clean; `scripts/check_contrast.py` and `scripts/check_runtime_copies.py` pass.
-- Deprecate, don't break: old prop aliases live one major version with a console warning, per `guidelines/governance.md`.
+- Before pushing: `npm run check` is green, and `site/_smoke.html` renders clean after demo changes.
+- Deprecate, don't break: see [governance § Deprecation](guidelines/governance.md#deprecation).
