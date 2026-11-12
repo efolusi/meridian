@@ -24,8 +24,16 @@ def parse_root(css):
         out[name[2:]] = val.strip()
     return out
 
+# The type scale shares the text- prefix with the text colours, so it has to be
+# recognised before the colour families or every size lands under `colors`.
+FONT_SIZE = re.compile(r"^text-(\d?xs|sm|md|lg|\d?xl)$")
+
 def dtcg_type(name, value):
-    if re.match(r"^(sand|brand|cocoa|caramel|peach|cream|success|warning|danger|surface|text|border|accent|overlay)", name):
+    if FONT_SIZE.match(name):
+        return "dimension"
+    if name in ("focus-ring", "focus-ring-danger"):
+        return "shadow"
+    if re.match(r"^(sand|brand|cocoa|caramel|peach|cream|success|warning|danger|surface|text|border|accent|overlay|code|media|focus-ring)", name):
         return "color"
     if name.startswith("shadow"):
         return "shadow"
@@ -39,8 +47,6 @@ def dtcg_type(name, value):
         return "dimension"
     if name.startswith(("font", "weight")):
         return "fontFamily" if name.startswith("font-") and "family" not in name and value.find(",") != -1 else "other"
-    if name == "focus-ring":
-        return "shadow"
     return "other"
 
 def to_dtcg(tokens):
@@ -58,7 +64,9 @@ def tailwind_preset(tokens):
     colors, space, radius, shadow, fontsize, z = {}, {}, {}, {}, {}, {}
     for name, value in tokens.items():
         ref = f"var(--{name})"
-        if dtcg_type(name, value) == "color":
+        if FONT_SIZE.match(name):
+            fontsize[name[5:]] = ref
+        elif dtcg_type(name, value) == "color":
             colors[name] = ref
         elif name.startswith("space-"):
             space[name[6:]] = ref
@@ -66,8 +74,7 @@ def tailwind_preset(tokens):
             radius[name[7:]] = ref
         elif name.startswith("shadow-"):
             shadow[name[7:]] = ref
-        elif name.startswith("text-") and re.match(r"^text-(\d?xs|sm|md|lg|xl|\dxl)$", name):
-            fontsize[name[5:]] = ref
+
         elif name.startswith("z-"):
             z[name[2:]] = ref
     theme = {"colors": colors, "spacing": space, "borderRadius": radius,

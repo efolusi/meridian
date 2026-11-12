@@ -15,21 +15,25 @@ Usage:
   python3 scripts/check_token_adherence.py            # fail on regressions
   python3 scripts/check_token_adherence.py --update   # re-record the baseline
 """
-import json, pathlib, re, sys
+import json, os, pathlib, re, sys
 
 ROOT = pathlib.Path(__file__).resolve().parent.parent
 BASELINE = ROOT / "scripts" / "token_adherence_baseline.json"
 
 # A colour written as a literal rather than referenced through a token.
-LITERAL = re.compile(r"#[0-9a-fA-F]{3,8}\b|rgba?\(\s*\d")
+# Functional notations are matched by name: hsl(), oklch() and friends take
+# angles and percentages, so "starts with a digit" (enough for rgb) misses them.
+LITERAL = re.compile(r"#[0-9a-fA-F]{3,8}\b|rgba?\(\s*\d|\b(?:hsla?|hwb|lab|lch|oklab|oklch)\(")
 
 
 def counts():
+    # ADHERENCE_ROOT lets the gate's own test scan a scratch tree instead.
+    root = pathlib.Path(os.environ.get("ADHERENCE_ROOT") or ROOT)
     out = {}
-    for path in sorted(ROOT.glob("components/*/*.jsx")):
+    for path in sorted(root.glob("components/*/*.jsx")):
         n = len(LITERAL.findall(path.read_text()))
         if n:
-            out[str(path.relative_to(ROOT))] = n
+            out[str(path.relative_to(root))] = n
     return out
 
 
