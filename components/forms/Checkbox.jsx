@@ -17,6 +17,8 @@ const CSS = `
 .ef-check__box[aria-invalid="true"]{border-color:var(--danger-600)}
 .ef-check__label{font-size:var(--text-md);color:var(--text-primary);line-height:1.4;cursor:pointer}
 .ef-check__desc{display:block;font-size:var(--text-sm);color:var(--text-muted)}
+/* Touch: fixed-size targets grow to --tap-min; small glyph buttons keep their look and get a centred --tap-min hit area instead. */
+@media (pointer:coarse){.ef-check__box{position:relative}.ef-check__box::before{content:"";position:absolute;inset:calc(50% - var(--tap-min) / 2)}}
 `;
 
 function stateName(value) {

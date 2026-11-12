@@ -12,6 +12,8 @@ const CSS = `
 .ef-toggle--lg{height:40px;min-width:40px;padding:0 16px;font-size:var(--text-md)}
 .ef-toggle-group{display:inline-flex;gap:var(--ef-toggle-gap,8px);align-items:center}
 .ef-toggle-group[data-orientation="vertical"]{flex-direction:column;align-items:stretch}
+/* Touch: fixed-size targets grow to --tap-min; small glyph buttons keep their look and get a centred --tap-min hit area instead. */
+@media (pointer:coarse){.ef-toggle,.ef-toggle--sm,.ef-toggle--lg{height:var(--tap-min);min-width:var(--tap-min)}}
 `;
 
 const GroupCtx = React.createContext(null);

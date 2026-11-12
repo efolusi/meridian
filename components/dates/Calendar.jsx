@@ -24,6 +24,8 @@ const CSS = `
 .ef-cal__day[data-range-middle="true"]{border-radius:0;background:var(--brand-100);color:var(--brand-950)}
 .ef-cal__day[data-range-start="true"]{border-start-end-radius:0;border-end-end-radius:0}
 .ef-cal__day[data-range-end="true"]{border-start-start-radius:0;border-end-start-radius:0}
+/* Touch: fixed-size targets grow to --tap-min; small glyph buttons keep their look and get a centred --tap-min hit area instead. */
+@media (pointer:coarse){.ef-cal{min-width:0}.ef-cal__month-wrap{width:auto}.ef-cal__grid{grid-template-columns:repeat(7,var(--tap-min))}.ef-cal__day{width:var(--tap-min);height:var(--tap-min)}}
 `;
 const sameDay = (a, b) => !!a && !!b && a.getFullYear() === b.getFullYear() && a.getMonth() === b.getMonth() && a.getDate() === b.getDate();
 const startDay = date => new Date(date.getFullYear(), date.getMonth(), date.getDate());

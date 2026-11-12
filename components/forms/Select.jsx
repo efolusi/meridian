@@ -20,6 +20,8 @@ const CSS = `
 .ef-select-item:disabled{cursor:not-allowed;opacity:.45}
 .ef-select-check{position:absolute;inset-inline-end:9px;display:inline-flex}
 .ef-select-separator{height:1px;margin:4px 6px;background:var(--border-default)}
+/* Touch: fixed-size targets grow to --tap-min; small glyph buttons keep their look and get a centred --tap-min hit area instead. */
+@media (pointer:coarse){.ef-select-item{min-height:var(--tap-min)}}
 `;
 const SelectCtx = React.createContext(null);
 const itemText = children => typeof children === 'string' || typeof children === 'number' ? String(children) : '';

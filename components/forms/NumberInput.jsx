@@ -28,6 +28,8 @@ const CSS = `
 .ef-number__step+.ef-number__step{border-top:1px solid var(--border-default)}
 .ef-number--sm .ef-number__step{width:22px}
 .ef-number--lg .ef-number__step{width:28px}
+/* Touch: fixed-size targets grow to --tap-min; small glyph buttons keep their look and get a centred --tap-min hit area instead. */
+@media (pointer:coarse){.ef-number__steps{flex-direction:row}.ef-number .ef-number__step{width:var(--tap-min)}.ef-number__step+.ef-number__step{border-top:0;border-inline-start:1px solid var(--border-default)}}
 `;
 // How many decimal places a number carries, so a commit can round away float
 // noise: 0.1 + 0.2 must land as 0.3, not 0.30000000000000004.

@@ -34,6 +34,8 @@ const CSS = `
 .ef-input--reveal .ef-input__el--lg{padding-inline-end:42px}
 .ef-input__el[aria-invalid="true"]{border-color:var(--danger-600)}
 .ef-input__el[aria-invalid="true"]:focus-visible{box-shadow:var(--focus-ring-danger)}
+/* Touch: fixed-size targets grow to --tap-min; small glyph buttons keep their look and get a centred --tap-min hit area instead. */
+@media (pointer:coarse){.ef-input__reveal::before{content:"";position:absolute;inset:calc(50% - var(--tap-min) / 2)}}
 `;
 
 function classes(...values) {

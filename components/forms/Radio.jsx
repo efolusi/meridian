@@ -16,6 +16,8 @@ const CSS = `
 .ef-radio__input[aria-invalid="true"]+.ef-radio__dot{border-color:var(--danger-600)}
 .ef-radio__label{font-size:var(--text-md);color:var(--text-primary);line-height:1.4}
 .ef-radio__desc{display:block;font-size:var(--text-sm);color:var(--text-muted)}
+/* Touch: fixed-size targets grow to --tap-min; small glyph buttons keep their look and get a centred --tap-min hit area instead. */
+@media (pointer:coarse){.ef-radio__dot{position:relative}.ef-radio__dot::before{content:"";position:absolute;inset:calc(50% - var(--tap-min) / 2)}}
 `;
 const RadioGroupContext = React.createContext(null);
 export const RadioGroup = React.forwardRef(function RadioGroup({ value: valueProp, defaultValue, onValueChange, name, required, disabled, orientation = 'vertical', className, style, children, ...rest }, ref) {
