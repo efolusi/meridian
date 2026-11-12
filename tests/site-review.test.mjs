@@ -195,3 +195,15 @@ describe('live language switching', () => {
     }
   })
 })
+
+describe('docs search', () => {
+  const src = read('site/SiteSearch.jsx')
+  it('describes itself as documentation search, not the Command default', () => {
+    expect(src).toMatch(/description: '[^']+'/)
+  })
+  it('matches multi-word queries against PascalCase component names', () => {
+    const spaced = new Function(src.match(/const spaced = ([^;]+);/)[0] + '; return spaced;')()
+    expect(spaced('TimePicker')).toBe('time picker')
+    expect(spaced('InputOTP')).toBe('input otp')
+  })
+})

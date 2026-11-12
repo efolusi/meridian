@@ -16,6 +16,8 @@ function loadNav() {
   if (!navCache) navCache = fetch('./nav.json').then(r => r.json()).catch(() => ({ pages: [], docs: [] }));
   return navCache;
 }
+// 'TimePicker' -> 'time picker', so a query typed as words finds a component.
+const spaced = (s) => String(s).replace(/([a-z0-9])([A-Z])/g, '$1 $2').toLowerCase();
 function SiteSearch() {
   const [open, setOpen] = R.useState(false);
   const [groups, setGroups] = R.useState(null);
@@ -43,13 +45,14 @@ function SiteSearch() {
   const Icon = ds.Icon;
   const command = CommandDialog && groups ? R.createElement(CommandDialog, {
     open, onOpenChange: setOpen, title: 'Search Meridian documentation',
+    description: 'Find a component, a docs section, or a page.',
   },
     R.createElement(CommandInput, { placeholder: 'Search components, docs, pages…' }),
     R.createElement(CommandList, null,
       R.createElement(CommandEmpty, null, 'No documentation found.'),
       groups.map(group => R.createElement(CommandGroup, { key: group.group, heading: group.group },
         group.items.map(item => R.createElement(CommandItem, {
-          key: item.id, value: item.id, keywords: [item.hint || group.group],
+          key: item.id, value: item.id, keywords: [item.hint || group.group, spaced(item.label)],
           onSelect: () => { setOpen(false); location.href = item.id; },
         },
           item.icon && Icon ? R.createElement(Icon, { name: item.icon, size: 16 }) : null,
