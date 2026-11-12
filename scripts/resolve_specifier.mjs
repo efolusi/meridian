@@ -1,12 +1,5 @@
-// Does `specifier` resolve, through the package "exports" map, to a file that
-// exists, as seen from a module in `dir`?
-//
-// Resolution runs in a fresh node process, so no module cache or test-runner
-// resolver is involved. Any resolution error means "no": the earlier inline
-// version treated every error except ERR_MODULE_NOT_FOUND as success, which
-// passed ERR_PACKAGE_PATH_NOT_EXPORTED, the exact failure an exports-map check
-// exists to catch. import.meta.resolve does not check that a mapped target
-// exists, so that is checked here too.
+// Does `specifier` resolve through the exports map, from `dir`, to a file that exists?
+// A fresh process avoids module caches; import.meta.resolve does not check that the target exists.
 import { spawnSync } from 'node:child_process';
 import fs from 'node:fs';
 import { fileURLToPath } from 'node:url';

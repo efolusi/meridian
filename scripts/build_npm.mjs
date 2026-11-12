@@ -94,7 +94,7 @@ for (const { group, name } of sources()) {
   }
 }
 
-// --- icons -----------------------------------------------------------------
+// Icons.
 // The CDN build fetches each SVG at runtime, deriving a base URL from the
 // <script src=".._ds_bundle.js"> tag on the page. That tag only exists on the
 // zero-build site: in an npm consumer the lookup returns '', the request goes
@@ -172,7 +172,7 @@ for (const { group, name } of sources()) {
 files.set('index.js', barrel.join('\n') + '\n');
 files.set('index.d.ts', barrelTypes.join('\n') + '\n');
 
-// --- static component CSS ---------------------------------------------------
+// Static component CSS.
 // On the CDN path each component injects its CSS at runtime. In the npm build
 // the same rules ship as one static, cacheable stylesheet: server-rendered HTML
 // is styled before hydration, and the JS modules stop carrying 124 kB of CSS

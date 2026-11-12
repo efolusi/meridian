@@ -55,12 +55,7 @@ function discover() {
   return out;
 }
 
-/**
- * Relative-import edges between bundled sources. Bare imports (react) are dropped.
- * The specifier list may span lines (`import {\n  A,\n  B,\n} from './x.jsx';`);
- * a single-line pattern silently lost those edges and emitted Drawer before
- * Dialog and Menubar before DropdownMenu.
- */
+/** Relative-import edges between bundled sources; specifier lists may span lines. */
 export function depsOf(rel, src, known) {
   const deps = [];
   for (const m of src.matchAll(/^import\s+(?:[^'";]*?\s+from\s+)?['"]([^'"]+)['"]/gm)) {
@@ -100,14 +95,7 @@ export function order(files, graph) {
  * graph. React is read off the window global. A unit that throws is caught and
  * recorded rather than taking down the whole page.
  */
-/**
- * Throws on module syntax this scheme cannot represent. Each of these used to
- * compile without complaint and break only at runtime: an aliased import read
- * `__ds_scope.<alias>` (undefined), `export { A }` and destructured exports
- * never reached the scope, and `export default` / `export *` left an export
- * statement inside the unit's function body, a syntax error that takes the
- * whole bundle down with it.
- */
+// Module syntax the shared-scope scheme cannot represent; it would compile and break in the browser.
 function unsupported(rel, what) {
   return new Error(`${rel}: ${what} is not supported by the bundle compiler (see ARCHITECTURE.md, The bundle format)`);
 }
@@ -184,12 +172,7 @@ function compileUnit(rel) {
   return compileSource(rel, fs.readFileSync(path.join(ROOT, rel), 'utf8'));
 }
 
-/**
- * Every unit assigns its exports onto the one shared `__ds_scope`, so two units
- * exporting the same name do not coexist: the later one (a showcase, since those
- * sort last) silently replaces the component for every other unit and for the
- * public namespace. Fail the build instead.
- */
+// Units share one __ds_scope, so a duplicate name would silently replace the earlier export.
 export function assertUniqueExports(exportsBySource) {
   const owner = new Map();
   const clashes = [];

@@ -225,12 +225,8 @@ if (leaked.length) {
   process.exit(1);
 }
 
-// The barrel's types are `export *` over each component's .d.ts, while its
-// runtime is a hand-filtered name list. When the two disagree a consumer's
-// TypeScript accepts `import { useDirection } from '@efolusi/meridian'` and the
-// bundler then fails on a missing export, which is what 1.21.9 shipped for
-// useDirection, useComboboxAnchor and buttonGroupVariants. Every value the types
-// promise must exist at runtime.
+// The type barrel re-exports every .d.ts; the runtime barrel is a filtered list.
+// Every value the types declare must exist at runtime, or consumer bundlers fail.
 {
   const ts = createRequire(import.meta.url)('typescript');
   const entry = path.join(ROOT, 'dist', 'index.d.ts');

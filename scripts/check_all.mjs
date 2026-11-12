@@ -1,12 +1,9 @@
 #!/usr/bin/env node
 /**
- * Run every gate CI runs, in one command.
+ * Run every gate the release runs, in one command.
  *
- * This is the list, in one place. publish.yml runs exactly this script before
- * it publishes; checks.yml (every push and PR) still spells out its own shorter
- * list and skips several of the generators and gates below, so a branch can be
- * green on checks.yml and still fail the release. `npm run check` before every
- * push is what closes that gap.
+ * publish.yml runs this script before publishing; checks.yml runs a shorter list,
+ * so a branch green on checks.yml can still fail the release. Run it before every push.
  *
  * Not covered: the Playwright smoke job, which needs a browser download and a
  * served repo. It is reported at the end rather than silently omitted, because

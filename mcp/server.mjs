@@ -40,9 +40,7 @@ async function index() {
 async function components() {
   return (await index()).items.filter((it) => it.type === 'registry:ui');
 }
-// Registry item names are kebab-case words. Anything else is refused before it
-// becomes a path: the name used to be joined into the file path as given, so
-// "../../package" read the repository's package.json in local-checkout mode.
+// The name becomes a file path, so only registry item names get through.
 const COMPONENT_NAME = /^[a-z][a-z0-9-]*$/i;
 async function component(name) {
   if (!COMPONENT_NAME.test(name)) throw new Error(`invalid component name ${JSON.stringify(name)}`);

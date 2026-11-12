@@ -26,8 +26,7 @@ describe('package specifier resolution used by check_npm_package', () => {
   });
 
   it('rejects a subpath the exports map does not export', async () => {
-    // Node throws ERR_PACKAGE_PATH_NOT_EXPORTED here; the gate used to count
-    // every error other than ERR_MODULE_NOT_FOUND as "resolves".
+    // Node throws ERR_PACKAGE_PATH_NOT_EXPORTED here, which the old gate counted as resolved.
     const dir = sandbox({ '.': './index.js' }, ['index.js', 'forms/Button.js']);
     expect(await resolvesByName(dir, 'pkg/forms/Button.js')).toBe(false);
   });

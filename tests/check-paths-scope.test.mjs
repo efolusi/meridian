@@ -7,8 +7,7 @@ import { describe, expect, it } from 'vitest';
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 
 describe('check_paths.py scope', () => {
-  // In the main checkout, .claude/worktrees/ holds every other worktree's full
-  // copy of the site. Their half-finished pages are not this tree's links.
+  // In the main checkout .claude/worktrees/ holds other worktrees' copies of the site.
   it('ignores pages under .claude/ and dist/', () => {
     const probes = ['.claude/worktrees/__check_paths_probe__', 'dist/__check_paths_probe__']
       .map(rel => path.join(ROOT, rel));

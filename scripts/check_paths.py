@@ -19,8 +19,7 @@ ATTR = re.compile(r'(?:href|src)="([^"]+)"')
 fail = []
 checked = 0
 for html in ROOT.rglob("*.html"):
-    # .claude/ holds other worktrees' whole copies of the repo when this is the
-    # main checkout; dist/ is build output. Neither is this tree's pages.
+    # .claude/ holds other worktrees in the main checkout; dist/ is build output.
     if SKIP_DIRS.intersection(html.relative_to(ROOT).parts):
         continue
     text = html.read_text(errors="ignore")
