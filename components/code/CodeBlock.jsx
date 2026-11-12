@@ -39,7 +39,7 @@ export function CodeBlock({ lang, title, children, maxHeight, clip, clipHeight =
     <div {...rest} className={`ef-code${className ? ' ' + className : ''}`} style={style}>
       <div className="ef-code__head">
         <span className="ef-code__lang">{title || lang}</span>
-        <button className={`ef-code__copy${copied ? ' ef-code__copy--done' : ''}`} onClick={copy}>
+        <button type="button" className={`ef-code__copy${copied ? ' ef-code__copy--done' : ''}`} onClick={copy}>
           <Icon name={copied ? 'check' : 'copy'} size={13} />{copied ? 'Copied' : 'Copy'}
         </button>
       </div>

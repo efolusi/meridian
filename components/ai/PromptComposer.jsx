@@ -32,10 +32,10 @@ export const PromptComposer = React.forwardRef(function PromptComposer({ value, 
         {onVoice ? <IconButton icon="mic" label="Voice input" size="sm" onClick={onVoice} /> : null}
         {hint ? <span className="ef-composer__hint">{hint}</span> : null}
         {busy
-          ? <button className="ef-composer__send" aria-label="Stop generating" onClick={onStop} disabled={!onStop}>
+          ? <button type="button" className="ef-composer__send" aria-label="Stop generating" onClick={onStop} disabled={!onStop}>
               <Icon name="square" size={13} strokeWidth={2.5} />
             </button>
-          : <button className="ef-composer__send" aria-label="Send" disabled={disabled || !v.trim()} onClick={send}>
+          : <button type="button" className="ef-composer__send" aria-label="Send" disabled={disabled || !v.trim()} onClick={send}>
               <Icon name="arrow-up-right" size={16} strokeWidth={2} style={{ transform: 'rotate(-45deg)' }} />
             </button>}
       </div>
