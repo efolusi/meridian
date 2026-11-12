@@ -26,7 +26,7 @@ export const PromptComposer = React.forwardRef(function PromptComposer({ value, 
       {attachments ? <div style={{ display: 'flex', gap: 6, flexWrap: 'wrap', padding: '10px 12px 0' }}>{attachments}</div> : null}
       <textarea className="ef-composer__input" rows={rows} placeholder={placeholder} value={v} disabled={disabled}
         onChange={e => set(e.target.value, e)}
-        onKeyDown={e => { if (e.key === 'Enter' && !e.shiftKey) { e.preventDefault(); send(); } }} />
+        onKeyDown={e => { if (e.key === 'Enter' && !e.shiftKey && !e.nativeEvent.isComposing) { e.preventDefault(); send(); } }} />
       <div className="ef-composer__bar">
         {onAttach ? <IconButton icon="paperclip" label="Attach files" size="sm" onClick={onAttach} /> : null}
         {onVoice ? <IconButton icon="mic" label="Voice input" size="sm" onClick={onVoice} /> : null}
