@@ -136,7 +136,8 @@ import '@efolusi/meridian/landing.css'
 - `guidelines/patterns.md`: the product-state playbook: loading, empty, error, destructive flows, and agent surfaces
 - `guidelines/frameworks.md`: install and integration guides for Next.js, Vite, Remix, and the zero-build CDN path
 - `guidelines/accessibility.md`: focus rules, full keyboard map, contrast targets, per-component semantics
-- `guidelines/governance.md`: semver rules, contribution contract, do/don't, deprecation policy
+- `guidelines/governance.md`: scope, semver rules, when a component belongs, do/don't, deprecation policy
+- `guidelines/compatibility.md`: migrating from another registry-based component set, and how compatibility is proven
 
 ## Component library
 
