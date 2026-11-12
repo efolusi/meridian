@@ -1,7 +1,7 @@
 import React from 'react';
 import { IconButton } from '../forms/IconButton.jsx';
 import { injectEfCss, mergeRefs } from '../forms/Button.jsx';
-import { Portal, useEscapeLayer, escapeLayerContext } from '../overlay/Portal.jsx';
+import { Portal, useEscapeLayer, useScrollLock, escapeLayerContext } from '../overlay/Portal.jsx';
 const CSS = `
 .ef-dialog__overlay{position:fixed;inset:0;z-index:var(--z-overlay);display:flex;align-items:center;justify-content:center;padding:24px;background:var(--overlay-scrim);animation:ef-fade var(--dur-med) var(--ease-out)}
 .ef-dialog__content{width:100%;max-width:440px;max-height:min(85vh,720px);overflow:auto;border:1px solid var(--border-default);border-radius:var(--radius-lg);background:var(--surface-card);box-shadow:var(--shadow-xl);animation:ef-pop var(--dur-slow) var(--ease-spring)}
@@ -48,6 +48,7 @@ export const DialogClose = React.forwardRef(function DialogClose({ asChild = fal
 export const DialogContent = React.forwardRef(function DialogContent({ children, className, style, width = 440, showCloseButton = true, closeLabel = 'Close', onEscapeKeyDown, overlayProps, overlayRef, slot = 'dialog-content', ...rest }, ref) {
   const ctx = React.useContext(DialogContext); const panelRef = React.useRef(null); const previous = React.useRef(null);
   React.useEffect(() => { if (!ctx || !ctx.open) return; previous.current = document.activeElement; const panel = panelRef.current; const first = panel && panel.querySelector(FOCUSABLE); (first || panel).focus(); return () => previous.current && previous.current.focus && previous.current.focus(); }, [ctx && ctx.open]);
+  useScrollLock(!!(ctx && ctx.open));
   const layer = useEscapeLayer(!!(ctx && ctx.open), e => { if (onEscapeKeyDown) onEscapeKeyDown(e); if (!e.defaultPrevented) ctx.setOpen(false); });
   React.useEffect(() => { if (!ctx || !ctx.open) return; const key = e => { if (e.key !== 'Tab') return; const f = [...panelRef.current.querySelectorAll(FOCUSABLE)].filter(x => !x.disabled); if (!f.length) return e.preventDefault(); const i=f.indexOf(document.activeElement); if (e.shiftKey && i<=0) { e.preventDefault(); f[f.length-1].focus(); } else if (!e.shiftKey && (i<0 || i===f.length-1)) { e.preventDefault(); f[0].focus(); } }; document.addEventListener('keydown', key); return () => document.removeEventListener('keydown', key); }, [ctx && ctx.open]);
   if (!ctx || !ctx.open) return null;
