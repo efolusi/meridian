@@ -45,3 +45,22 @@ describe('tokens.json types', () => {
     expect(tokens.focus.ring.$type).toBe('shadow')
   })
 })
+
+describe('forced colours keep a focus indicator', () => {
+  // Every component draws focus with box-shadow: var(--focus-ring) after
+  // outline: none. Forced-colours mode (Windows High Contrast) drops
+  // box-shadow, so without this rule no control shows focus at all.
+  const base = readFileSync('tokens/base.css', 'utf8')
+  const block = base.match(/@media\s*\(forced-colors:\s*active\)\s*\{([\s\S]*?\})\s*\}/)
+
+  it('draws a real outline on :focus-visible', () => {
+    expect(block, 'tokens/base.css needs an @media (forced-colors: active) block').toBeTruthy()
+    expect(block[1]).toMatch(/:focus-visible\s*\{[^}]*outline:\s*2px solid/)
+  })
+
+  it('sits outside @layer meridian, so it outranks the layered outline: none', () => {
+    const before = base.slice(0, block.index)
+    const depth = [...before].reduce((d, ch) => d + (ch === '{') - (ch === '}'), 0)
+    expect(depth, 'the forced-colors block must be at top level').toBe(0)
+  })
+})
