@@ -448,7 +448,7 @@ class Component extends DCLogic {
       hasProps: shown.length > 0,
       noProps: !!a && shown.length === 0,
       hasStyleNote: !!a && a.props.length !== shown.length,
-      propRows: shown.map(p => ({ name: p.n + (p.req ? ' *' : ''), t: p.t, def: p.def || '—', d: p.d || '' })),
+      propRows: shown.map(p => ({ name: p.n + (p.req ? ' *' : ''), t: p.t, def: p.def || '-', d: p.d || '' })),
       subInterfaces: (() => {
         const ifs = this.state.interfaces || {}, seen = new Set(), out = [];
         shown.forEach(p => (String(p.t || '').match(/[A-Z]\w+/g) || []).forEach(nm => {
