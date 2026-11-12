@@ -1,4 +1,4 @@
-/* @ds-bundle: {"format":4,"namespace":"EfolusiDesignSystem_4ffc3d","components":[{"name":"AgentRun","sourcePath":"components/ai/AgentRun.jsx"},{"name":"BubbleGroup","sourcePath":"components/ai/Bubble.jsx"},{"name":"Bubble","sourcePath":"components/ai/Bubble.jsx"},{"name":"BubbleContent","sourcePath":"components/ai/Bubble.jsx"},{"name":"BubbleReactions","sourcePath":"components/ai/Bubble.jsx"},{"name":"ChatMessage","sourcePath":"components/ai/ChatMessage.jsx"},{"name":"Citation","sourcePath":"components/ai/Citation.jsx"},{"name":"SourceList","sourcePath":"components/ai/Citation.jsx"},{"name":"Confirmation","sourcePath":"components/ai/Confirmation.jsx"},{"name":"Conversation","sourcePath":"components/ai/Conversation.jsx"},{"name":"DocumentCard","sourcePath":"components/ai/DocumentCard.jsx"},{"name":"FeedbackBar","sourcePath":"components/ai/FeedbackBar.jsx"},{"name":"GeneratedImage","sourcePath":"components/ai/GeneratedImage.jsx"},{"name":"Marker","sourcePath":"components/ai/Marker.jsx"},{"name":"MarkerIcon","sourcePath":"components/ai/Marker.jsx"},{"name":"MarkerContent","sourcePath":"components/ai/Marker.jsx"},{"name":"Message","sourcePath":"components/ai/Message.jsx"},{"name":"MessageGroup","sourcePath":"components/ai/Message.jsx"},{"name":"MessageAvatar","sourcePath":"components/ai/Message.jsx"},{"name":"MessageContent","sourcePath":"components/ai/Message.jsx"},{"name":"MessageHeader","sourcePath":"components/ai/Message.jsx"},{"name":"MessageFooter","sourcePath":"components/ai/Message.jsx"},{"name":"MessageScrollerProvider","sourcePath":"components/ai/MessageScroller.jsx"},{"name":"MessageScroller","sourcePath":"components/ai/MessageScroller.jsx"},{"name":"MessageScrollerViewport","sourcePath":"components/ai/MessageScroller.jsx"},{"name":"MessageScrollerContent","sourcePath":"components/ai/MessageScroller.jsx"},{"name":"MessageScrollerItem","sourcePath":"components/ai/MessageScroller.jsx"},{"name":"MessageScrollerButton","sourcePath":"components/ai/MessageScroller.jsx"},{"name":"ModelSelector","sourcePath":"components/ai/ModelSelector.jsx"},{"name":"Player","sourcePath":"components/ai/Player.jsx"},{"name":"PromptComposer","sourcePath":"components/ai/PromptComposer.jsx"},{"name":"PromptSteps","sourcePath":"components/ai/PromptSteps.jsx"},{"name":"Reasoning","sourcePath":"components/ai/Reasoning.jsx"},{"name":"RichComposer","sourcePath":"components/ai/RichComposer.jsx"},{"name":"Sandbox","sourcePath":"components/ai/Sandbox.jsx"},{"name":"SelectionQuote","sourcePath":"components/ai/SelectionQuote.jsx"},{"name":"SourceCard","sourcePath":"components/ai/SourceCard.jsx"},{"name":"Suggestions","sourcePath":"components/ai/Suggestions.jsx"},{"name":"Task","sourcePath":"components/ai/Task.jsx"},{"name":"Todo","sourcePath":"components/ai/Todo.jsx"},{"name":"ToolCall","sourcePath":"components/ai/ToolCall.jsx"},{"name":"Transcript","sourcePath":"components/ai/Transcript.jsx"},{"name":"UsageMeter","sourcePath":"components/ai/UsageMeter.jsx"},{"name":"WebPreview","sourcePath":"components/ai/WebPreview.jsx"},{"name":"CodeBlock","sourcePath":"components/code/CodeBlock.jsx"},{"name":"Console","sourcePath":"components/code/Console.jsx"},{"name":"CopyField","sourcePath":"components/code/CopyField.jsx"},{"name":"Diff","sourcePath":"components/code/Diff.jsx"},{"name":"EnvList","sourcePath":"components/code/EnvList.jsx"},{"name":"Exception","sourcePath":"components/code/Exception.jsx"},{"name":"Terminal","sourcePath":"components/code/Terminal.jsx"},{"name":"BarChart","sourcePath":"components/data/BarChart.jsx"},{"name":"ChartStyle","sourcePath":"components/data/Chart.jsx"},{"name":"ChartContainer","sourcePath":"components/data/Chart.jsx"},{"name":"ChartTooltip","sourcePath":"components/data/Chart.jsx"},{"name":"ChartTooltipContent","sourcePath":"components/data/Chart.jsx"},{"name":"ChartLegend","sourcePath":"components/data/Chart.jsx"},{"name":"ChartLegendContent","sourcePath":"components/data/Chart.jsx"},{"name":"DonutChart","sourcePath":"components/data/DonutChart.jsx"},{"name":"Empty","sourcePath":"components/data/EmptyState.jsx"},{"name":"EmptyHeader","sourcePath":"components/data/EmptyState.jsx"},{"name":"EmptyMedia","sourcePath":"components/data/EmptyState.jsx"},{"name":"EmptyTitle","sourcePath":"components/data/EmptyState.jsx"},{"name":"EmptyDescription","sourcePath":"components/data/EmptyState.jsx"},{"name":"EmptyContent","sourcePath":"components/data/EmptyState.jsx"},{"name":"KeyValueList","sourcePath":"components/data/KeyValueList.jsx"},{"name":"LineChart","sourcePath":"components/data/LineChart.jsx"},{"name":"Skeleton","sourcePath":"components/data/Skeleton.jsx"},{"name":"Sparkline","sourcePath":"components/data/Sparkline.jsx"},{"name":"Stat","sourcePath":"components/data/Stat.jsx"},{"name":"StatusDot","sourcePath":"components/data/StatusDot.jsx"},{"name":"Table","sourcePath":"components/data/Table.jsx"},{"name":"TableHeader","sourcePath":"components/data/Table.jsx"},{"name":"TableBody","sourcePath":"components/data/Table.jsx"},{"name":"TableFooter","sourcePath":"components/data/Table.jsx"},{"name":"TableRow","sourcePath":"components/data/Table.jsx"},{"name":"TableHead","sourcePath":"components/data/Table.jsx"},{"name":"TableCell","sourcePath":"components/data/Table.jsx"},{"name":"TableCaption","sourcePath":"components/data/Table.jsx"},{"name":"CalendarDayButton","sourcePath":"components/dates/Calendar.jsx"},{"name":"Calendar","sourcePath":"components/dates/Calendar.jsx"},{"name":"TimePicker","sourcePath":"components/dates/TimePicker.jsx"},{"name":"Accordion","sourcePath":"components/display/Accordion.jsx"},{"name":"AccordionItem","sourcePath":"components/display/Accordion.jsx"},{"name":"AccordionTrigger","sourcePath":"components/display/Accordion.jsx"},{"name":"AccordionContent","sourcePath":"components/display/Accordion.jsx"},{"name":"AspectRatio","sourcePath":"components/display/AspectRatio.jsx"},{"name":"Avatar","sourcePath":"components/display/Avatar.jsx"},{"name":"AvatarImage","sourcePath":"components/display/Avatar.jsx"},{"name":"AvatarFallback","sourcePath":"components/display/Avatar.jsx"},{"name":"AvatarBadge","sourcePath":"components/display/Avatar.jsx"},{"name":"AvatarGroup","sourcePath":"components/display/Avatar.jsx"},{"name":"AvatarGroupCount","sourcePath":"components/display/Avatar.jsx"},{"name":"Badge","sourcePath":"components/display/Badge.jsx"},{"name":"CardHeader","sourcePath":"components/display/Card.jsx"},{"name":"CardTitle","sourcePath":"components/display/Card.jsx"},{"name":"CardDescription","sourcePath":"components/display/Card.jsx"},{"name":"CardAction","sourcePath":"components/display/Card.jsx"},{"name":"CardContent","sourcePath":"components/display/Card.jsx"},{"name":"CardFooter","sourcePath":"components/display/Card.jsx"},{"name":"Card","sourcePath":"components/display/Card.jsx"},{"name":"Carousel","sourcePath":"components/display/Carousel.jsx"},{"name":"CarouselContent","sourcePath":"components/display/Carousel.jsx"},{"name":"CarouselItem","sourcePath":"components/display/Carousel.jsx"},{"name":"CarouselPrevious","sourcePath":"components/display/Carousel.jsx"},{"name":"CarouselNext","sourcePath":"components/display/Carousel.jsx"},{"name":"Collapsible","sourcePath":"components/display/Collapsible.jsx"},{"name":"CollapsibleTrigger","sourcePath":"components/display/Collapsible.jsx"},{"name":"CollapsibleContent","sourcePath":"components/display/Collapsible.jsx"},{"name":"DirectionProvider","sourcePath":"components/display/Direction.jsx"},{"name":"Divider","sourcePath":"components/display/Divider.jsx"},{"name":"ItemGroup","sourcePath":"components/display/Item.jsx"},{"name":"ItemSeparator","sourcePath":"components/display/Item.jsx"},{"name":"Item","sourcePath":"components/display/Item.jsx"},{"name":"ItemMedia","sourcePath":"components/display/Item.jsx"},{"name":"ItemContent","sourcePath":"components/display/Item.jsx"},{"name":"ItemTitle","sourcePath":"components/display/Item.jsx"},{"name":"ItemDescription","sourcePath":"components/display/Item.jsx"},{"name":"ItemActions","sourcePath":"components/display/Item.jsx"},{"name":"ItemHeader","sourcePath":"components/display/Item.jsx"},{"name":"ItemFooter","sourcePath":"components/display/Item.jsx"},{"name":"Kbd","sourcePath":"components/display/Kbd.jsx"},{"name":"KbdGroup","sourcePath":"components/display/Kbd.jsx"},{"name":"Link","sourcePath":"components/display/Link.jsx"},{"name":"ResizablePanelGroup","sourcePath":"components/display/Resizable.jsx"},{"name":"ResizablePanel","sourcePath":"components/display/Resizable.jsx"},{"name":"ResizableHandle","sourcePath":"components/display/Resizable.jsx"},{"name":"ScrollArea","sourcePath":"components/display/ScrollArea.jsx"},{"name":"ScrollBar","sourcePath":"components/display/ScrollArea.jsx"},{"name":"Separator","sourcePath":"components/display/Separator.jsx"},{"name":"Tag","sourcePath":"components/display/Tag.jsx"},{"name":"Timeline","sourcePath":"components/display/Timeline.jsx"},{"name":"Toolbar","sourcePath":"components/display/Toolbar.jsx"},{"name":"TreeList","sourcePath":"components/display/TreeList.jsx"},{"name":"Alert","sourcePath":"components/feedback/Alert.jsx"},{"name":"AlertTitle","sourcePath":"components/feedback/Alert.jsx"},{"name":"AlertDescription","sourcePath":"components/feedback/Alert.jsx"},{"name":"AlertAction","sourcePath":"components/feedback/Alert.jsx"},{"name":"AlertDialog","sourcePath":"components/feedback/AlertDialog.jsx"},{"name":"AlertDialogTrigger","sourcePath":"components/feedback/AlertDialog.jsx"},{"name":"AlertDialogPortal","sourcePath":"components/feedback/AlertDialog.jsx"},{"name":"AlertDialogOverlay","sourcePath":"components/feedback/AlertDialog.jsx"},{"name":"AlertDialogContent","sourcePath":"components/feedback/AlertDialog.jsx"},{"name":"AlertDialogHeader","sourcePath":"components/feedback/AlertDialog.jsx"},{"name":"AlertDialogFooter","sourcePath":"components/feedback/AlertDialog.jsx"},{"name":"AlertDialogMedia","sourcePath":"components/feedback/AlertDialog.jsx"},{"name":"AlertDialogTitle","sourcePath":"components/feedback/AlertDialog.jsx"},{"name":"AlertDialogDescription","sourcePath":"components/feedback/AlertDialog.jsx"},{"name":"AlertDialogCancel","sourcePath":"components/feedback/AlertDialog.jsx"},{"name":"AlertDialogAction","sourcePath":"components/feedback/AlertDialog.jsx"},{"name":"Banner","sourcePath":"components/feedback/Banner.jsx"},{"name":"ConfirmDialog","sourcePath":"components/feedback/ConfirmDialog.jsx"},{"name":"Dialog","sourcePath":"components/feedback/Dialog.jsx"},{"name":"DialogTrigger","sourcePath":"components/feedback/Dialog.jsx"},{"name":"DialogPortal","sourcePath":"components/feedback/Dialog.jsx"},{"name":"DialogOverlay","sourcePath":"components/feedback/Dialog.jsx"},{"name":"DialogClose","sourcePath":"components/feedback/Dialog.jsx"},{"name":"DialogContent","sourcePath":"components/feedback/Dialog.jsx"},{"name":"DialogHeader","sourcePath":"components/feedback/Dialog.jsx"},{"name":"DialogFooter","sourcePath":"components/feedback/Dialog.jsx"},{"name":"DialogTitle","sourcePath":"components/feedback/Dialog.jsx"},{"name":"DialogDescription","sourcePath":"components/feedback/Dialog.jsx"},{"name":"Loader","sourcePath":"components/feedback/Loader.jsx"},{"name":"Progress","sourcePath":"components/feedback/Progress.jsx"},{"name":"Spinner","sourcePath":"components/feedback/Spinner.jsx"},{"name":"Toaster","sourcePath":"components/feedback/Toast.jsx"},{"name":"Tooltip","sourcePath":"components/feedback/Tooltip.jsx"},{"name":"TooltipProvider","sourcePath":"components/feedback/Tooltip.jsx"},{"name":"TooltipTrigger","sourcePath":"components/feedback/Tooltip.jsx"},{"name":"TooltipContent","sourcePath":"components/feedback/Tooltip.jsx"},{"name":"Attachment","sourcePath":"components/files/Attachment.jsx"},{"name":"AttachmentMedia","sourcePath":"components/files/Attachment.jsx"},{"name":"AttachmentContent","sourcePath":"components/files/Attachment.jsx"},{"name":"AttachmentTitle","sourcePath":"components/files/Attachment.jsx"},{"name":"AttachmentDescription","sourcePath":"components/files/Attachment.jsx"},{"name":"AttachmentActions","sourcePath":"components/files/Attachment.jsx"},{"name":"AttachmentAction","sourcePath":"components/files/Attachment.jsx"},{"name":"AttachmentTrigger","sourcePath":"components/files/Attachment.jsx"},{"name":"AttachmentGroup","sourcePath":"components/files/Attachment.jsx"},{"name":"FileDrop","sourcePath":"components/files/FileDrop.jsx"},{"name":"FileTile","sourcePath":"components/files/FileTile.jsx"},{"name":"FileTypeIcon","sourcePath":"components/files/FileTypeIcon.jsx"},{"name":"PaymentCard","sourcePath":"components/finance/PaymentCard.jsx"},{"name":"Button","sourcePath":"components/forms/Button.jsx"},{"name":"ButtonGroup","sourcePath":"components/forms/ButtonGroup.jsx"},{"name":"ButtonGroupText","sourcePath":"components/forms/ButtonGroup.jsx"},{"name":"ButtonGroupSeparator","sourcePath":"components/forms/ButtonGroup.jsx"},{"name":"ButtonTile","sourcePath":"components/forms/ButtonTile.jsx"},{"name":"ButtonTileGroup","sourcePath":"components/forms/ButtonTile.jsx"},{"name":"Checkbox","sourcePath":"components/forms/Checkbox.jsx"},{"name":"Combobox","sourcePath":"components/forms/Combobox.jsx"},{"name":"ComboboxValue","sourcePath":"components/forms/Combobox.jsx"},{"name":"ComboboxTrigger","sourcePath":"components/forms/Combobox.jsx"},{"name":"ComboboxClear","sourcePath":"components/forms/Combobox.jsx"},{"name":"ComboboxInput","sourcePath":"components/forms/Combobox.jsx"},{"name":"ComboboxContent","sourcePath":"components/forms/Combobox.jsx"},{"name":"ComboboxList","sourcePath":"components/forms/Combobox.jsx"},{"name":"ComboboxItem","sourcePath":"components/forms/Combobox.jsx"},{"name":"ComboboxGroup","sourcePath":"components/forms/Combobox.jsx"},{"name":"ComboboxLabel","sourcePath":"components/forms/Combobox.jsx"},{"name":"ComboboxCollection","sourcePath":"components/forms/Combobox.jsx"},{"name":"ComboboxEmpty","sourcePath":"components/forms/Combobox.jsx"},{"name":"ComboboxSeparator","sourcePath":"components/forms/Combobox.jsx"},{"name":"ComboboxChips","sourcePath":"components/forms/Combobox.jsx"},{"name":"ComboboxChip","sourcePath":"components/forms/Combobox.jsx"},{"name":"ComboboxChipsInput","sourcePath":"components/forms/Combobox.jsx"},{"name":"Field","sourcePath":"components/forms/Field.jsx"},{"name":"FieldSet","sourcePath":"components/forms/Field.jsx"},{"name":"FieldGroup","sourcePath":"components/forms/Field.jsx"},{"name":"FieldContent","sourcePath":"components/forms/Field.jsx"},{"name":"FieldLabel","sourcePath":"components/forms/Field.jsx"},{"name":"FieldTitle","sourcePath":"components/forms/Field.jsx"},{"name":"FieldDescription","sourcePath":"components/forms/Field.jsx"},{"name":"FieldLegend","sourcePath":"components/forms/Field.jsx"},{"name":"FieldSeparator","sourcePath":"components/forms/Field.jsx"},{"name":"FieldError","sourcePath":"components/forms/Field.jsx"},{"name":"IconButton","sourcePath":"components/forms/IconButton.jsx"},{"name":"Input","sourcePath":"components/forms/Input.jsx"},{"name":"InputGroup","sourcePath":"components/forms/InputGroup.jsx"},{"name":"InputGroupAddon","sourcePath":"components/forms/InputGroup.jsx"},{"name":"InputGroupButton","sourcePath":"components/forms/InputGroup.jsx"},{"name":"InputGroupInput","sourcePath":"components/forms/InputGroup.jsx"},{"name":"InputGroupTextarea","sourcePath":"components/forms/InputGroup.jsx"},{"name":"InputGroupText","sourcePath":"components/forms/InputGroup.jsx"},{"name":"InputOTP","sourcePath":"components/forms/InputOTP.jsx"},{"name":"InputOTPGroup","sourcePath":"components/forms/InputOTP.jsx"},{"name":"InputOTPSlot","sourcePath":"components/forms/InputOTP.jsx"},{"name":"InputOTPSeparator","sourcePath":"components/forms/InputOTP.jsx"},{"name":"Label","sourcePath":"components/forms/Label.jsx"},{"name":"NativeSelect","sourcePath":"components/forms/NativeSelect.jsx"},{"name":"NativeSelectOption","sourcePath":"components/forms/NativeSelect.jsx"},{"name":"NativeSelectOptGroup","sourcePath":"components/forms/NativeSelect.jsx"},{"name":"NumberInput","sourcePath":"components/forms/NumberInput.jsx"},{"name":"Questionnaire","sourcePath":"components/forms/Questionnaire.jsx"},{"name":"QuestionnaireProgress","sourcePath":"components/forms/Questionnaire.jsx"},{"name":"QuestionnaireItem","sourcePath":"components/forms/Questionnaire.jsx"},{"name":"QuestionnaireTitle","sourcePath":"components/forms/Questionnaire.jsx"},{"name":"QuestionnaireDescription","sourcePath":"components/forms/Questionnaire.jsx"},{"name":"QuestionnaireChoices","sourcePath":"components/forms/Questionnaire.jsx"},{"name":"QuestionnaireChoice","sourcePath":"components/forms/Questionnaire.jsx"},{"name":"QuestionnaireInput","sourcePath":"components/forms/Questionnaire.jsx"},{"name":"QuestionnaireError","sourcePath":"components/forms/Questionnaire.jsx"},{"name":"QuestionnaireActions","sourcePath":"components/forms/Questionnaire.jsx"},{"name":"QuestionnairePrevious","sourcePath":"components/forms/Questionnaire.jsx"},{"name":"QuestionnaireSkip","sourcePath":"components/forms/Questionnaire.jsx"},{"name":"QuestionnaireNext","sourcePath":"components/forms/Questionnaire.jsx"},{"name":"QuestionnaireSubmit","sourcePath":"components/forms/Questionnaire.jsx"},{"name":"RadioGroup","sourcePath":"components/forms/Radio.jsx"},{"name":"RadioGroupItem","sourcePath":"components/forms/Radio.jsx"},{"name":"Radio","sourcePath":"components/forms/Radio.jsx"},{"name":"Select","sourcePath":"components/forms/Select.jsx"},{"name":"SelectTrigger","sourcePath":"components/forms/Select.jsx"},{"name":"SelectValue","sourcePath":"components/forms/Select.jsx"},{"name":"SelectContent","sourcePath":"components/forms/Select.jsx"},{"name":"SelectGroup","sourcePath":"components/forms/Select.jsx"},{"name":"SelectLabel","sourcePath":"components/forms/Select.jsx"},{"name":"SelectSeparator","sourcePath":"components/forms/Select.jsx"},{"name":"SelectItem","sourcePath":"components/forms/Select.jsx"},{"name":"Slider","sourcePath":"components/forms/Slider.jsx"},{"name":"Switch","sourcePath":"components/forms/Switch.jsx"},{"name":"Textarea","sourcePath":"components/forms/Textarea.jsx"},{"name":"Toggle","sourcePath":"components/forms/Toggle.jsx"},{"name":"ToggleGroup","sourcePath":"components/forms/Toggle.jsx"},{"name":"ToggleGroupItem","sourcePath":"components/forms/Toggle.jsx"},{"name":"Icon","sourcePath":"components/icons/Icon.jsx"},{"name":"Breadcrumb","sourcePath":"components/navigation/Breadcrumbs.jsx"},{"name":"BreadcrumbList","sourcePath":"components/navigation/Breadcrumbs.jsx"},{"name":"BreadcrumbItem","sourcePath":"components/navigation/Breadcrumbs.jsx"},{"name":"BreadcrumbLink","sourcePath":"components/navigation/Breadcrumbs.jsx"},{"name":"BreadcrumbPage","sourcePath":"components/navigation/Breadcrumbs.jsx"},{"name":"BreadcrumbSeparator","sourcePath":"components/navigation/Breadcrumbs.jsx"},{"name":"BreadcrumbEllipsis","sourcePath":"components/navigation/Breadcrumbs.jsx"},{"name":"Menubar","sourcePath":"components/navigation/Menubar.jsx"},{"name":"MenubarMenu","sourcePath":"components/navigation/Menubar.jsx"},{"name":"MenubarTrigger","sourcePath":"components/navigation/Menubar.jsx"},{"name":"MenubarContent","sourcePath":"components/navigation/Menubar.jsx"},{"name":"MenubarPortal","sourcePath":"components/navigation/Menubar.jsx"},{"name":"MenubarGroup","sourcePath":"components/navigation/Menubar.jsx"},{"name":"MenubarRadioGroup","sourcePath":"components/navigation/Menubar.jsx"},{"name":"MenubarLabel","sourcePath":"components/navigation/Menubar.jsx"},{"name":"MenubarSeparator","sourcePath":"components/navigation/Menubar.jsx"},{"name":"MenubarShortcut","sourcePath":"components/navigation/Menubar.jsx"},{"name":"MenubarItem","sourcePath":"components/navigation/Menubar.jsx"},{"name":"MenubarCheckboxItem","sourcePath":"components/navigation/Menubar.jsx"},{"name":"MenubarRadioItem","sourcePath":"components/navigation/Menubar.jsx"},{"name":"MenubarSub","sourcePath":"components/navigation/Menubar.jsx"},{"name":"MenubarSubTrigger","sourcePath":"components/navigation/Menubar.jsx"},{"name":"MenubarSubContent","sourcePath":"components/navigation/Menubar.jsx"},{"name":"NavigationMenu","sourcePath":"components/navigation/NavigationMenu.jsx"},{"name":"NavigationMenuList","sourcePath":"components/navigation/NavigationMenu.jsx"},{"name":"NavigationMenuItem","sourcePath":"components/navigation/NavigationMenu.jsx"},{"name":"NavigationMenuTrigger","sourcePath":"components/navigation/NavigationMenu.jsx"},{"name":"NavigationMenuContent","sourcePath":"components/navigation/NavigationMenu.jsx"},{"name":"NavigationMenuLink","sourcePath":"components/navigation/NavigationMenu.jsx"},{"name":"NavigationMenuIndicator","sourcePath":"components/navigation/NavigationMenu.jsx"},{"name":"NavigationMenuViewport","sourcePath":"components/navigation/NavigationMenu.jsx"},{"name":"PageControl","sourcePath":"components/navigation/PageControl.jsx"},{"name":"Pagination","sourcePath":"components/navigation/Pagination.jsx"},{"name":"PaginationContent","sourcePath":"components/navigation/Pagination.jsx"},{"name":"PaginationItem","sourcePath":"components/navigation/Pagination.jsx"},{"name":"PaginationLink","sourcePath":"components/navigation/Pagination.jsx"},{"name":"PaginationPrevious","sourcePath":"components/navigation/Pagination.jsx"},{"name":"PaginationNext","sourcePath":"components/navigation/Pagination.jsx"},{"name":"PaginationEllipsis","sourcePath":"components/navigation/Pagination.jsx"},{"name":"SegmentedControl","sourcePath":"components/navigation/SegmentedControl.jsx"},{"name":"SideNav","sourcePath":"components/navigation/SideNav.jsx"},{"name":"SidebarProvider","sourcePath":"components/navigation/Sidebar.jsx"},{"name":"Sidebar","sourcePath":"components/navigation/Sidebar.jsx"},{"name":"SidebarTrigger","sourcePath":"components/navigation/Sidebar.jsx"},{"name":"SidebarRail","sourcePath":"components/navigation/Sidebar.jsx"},{"name":"SidebarInset","sourcePath":"components/navigation/Sidebar.jsx"},{"name":"SidebarHeader","sourcePath":"components/navigation/Sidebar.jsx"},{"name":"SidebarFooter","sourcePath":"components/navigation/Sidebar.jsx"},{"name":"SidebarContent","sourcePath":"components/navigation/Sidebar.jsx"},{"name":"SidebarGroup","sourcePath":"components/navigation/Sidebar.jsx"},{"name":"SidebarGroupContent","sourcePath":"components/navigation/Sidebar.jsx"},{"name":"SidebarMenu","sourcePath":"components/navigation/Sidebar.jsx"},{"name":"SidebarMenuItem","sourcePath":"components/navigation/Sidebar.jsx"},{"name":"SidebarMenuSub","sourcePath":"components/navigation/Sidebar.jsx"},{"name":"SidebarMenuSubItem","sourcePath":"components/navigation/Sidebar.jsx"},{"name":"SidebarInput","sourcePath":"components/navigation/Sidebar.jsx"},{"name":"SidebarSeparator","sourcePath":"components/navigation/Sidebar.jsx"},{"name":"SidebarGroupLabel","sourcePath":"components/navigation/Sidebar.jsx"},{"name":"SidebarGroupAction","sourcePath":"components/navigation/Sidebar.jsx"},{"name":"SidebarMenuButton","sourcePath":"components/navigation/Sidebar.jsx"},{"name":"SidebarMenuAction","sourcePath":"components/navigation/Sidebar.jsx"},{"name":"SidebarMenuBadge","sourcePath":"components/navigation/Sidebar.jsx"},{"name":"SidebarMenuSubButton","sourcePath":"components/navigation/Sidebar.jsx"},{"name":"SidebarMenuSkeleton","sourcePath":"components/navigation/Sidebar.jsx"},{"name":"SkipLink","sourcePath":"components/navigation/SkipLink.jsx"},{"name":"Steps","sourcePath":"components/navigation/Steps.jsx"},{"name":"Tabs","sourcePath":"components/navigation/Tabs.jsx"},{"name":"TabsList","sourcePath":"components/navigation/Tabs.jsx"},{"name":"TabsTrigger","sourcePath":"components/navigation/Tabs.jsx"},{"name":"TabsContent","sourcePath":"components/navigation/Tabs.jsx"},{"name":"TopNav","sourcePath":"components/navigation/TopNav.jsx"},{"name":"Command","sourcePath":"components/overlay/Command.jsx"},{"name":"CommandDialog","sourcePath":"components/overlay/Command.jsx"},{"name":"CommandInput","sourcePath":"components/overlay/Command.jsx"},{"name":"CommandList","sourcePath":"components/overlay/Command.jsx"},{"name":"CommandEmpty","sourcePath":"components/overlay/Command.jsx"},{"name":"CommandGroup","sourcePath":"components/overlay/Command.jsx"},{"name":"CommandItem","sourcePath":"components/overlay/Command.jsx"},{"name":"CommandShortcut","sourcePath":"components/overlay/Command.jsx"},{"name":"CommandSeparator","sourcePath":"components/overlay/Command.jsx"},{"name":"ContextMenu","sourcePath":"components/overlay/ContextMenu.jsx"},{"name":"ContextMenuTrigger","sourcePath":"components/overlay/ContextMenu.jsx"},{"name":"ContextMenuPortal","sourcePath":"components/overlay/ContextMenu.jsx"},{"name":"ContextMenuContent","sourcePath":"components/overlay/ContextMenu.jsx"},{"name":"ContextMenuGroup","sourcePath":"components/overlay/ContextMenu.jsx"},{"name":"ContextMenuLabel","sourcePath":"components/overlay/ContextMenu.jsx"},{"name":"ContextMenuSeparator","sourcePath":"components/overlay/ContextMenu.jsx"},{"name":"ContextMenuShortcut","sourcePath":"components/overlay/ContextMenu.jsx"},{"name":"ContextMenuItem","sourcePath":"components/overlay/ContextMenu.jsx"},{"name":"ContextMenuCheckboxItem","sourcePath":"components/overlay/ContextMenu.jsx"},{"name":"ContextMenuRadioGroup","sourcePath":"components/overlay/ContextMenu.jsx"},{"name":"ContextMenuRadioItem","sourcePath":"components/overlay/ContextMenu.jsx"},{"name":"ContextMenuSub","sourcePath":"components/overlay/ContextMenu.jsx"},{"name":"ContextMenuSubTrigger","sourcePath":"components/overlay/ContextMenu.jsx"},{"name":"ContextMenuSubContent","sourcePath":"components/overlay/ContextMenu.jsx"},{"name":"Drawer","sourcePath":"components/overlay/Drawer.jsx"},{"name":"DrawerTrigger","sourcePath":"components/overlay/Drawer.jsx"},{"name":"DrawerPortal","sourcePath":"components/overlay/Drawer.jsx"},{"name":"DrawerClose","sourcePath":"components/overlay/Drawer.jsx"},{"name":"DrawerOverlay","sourcePath":"components/overlay/Drawer.jsx"},{"name":"DrawerContent","sourcePath":"components/overlay/Drawer.jsx"},{"name":"DrawerHeader","sourcePath":"components/overlay/Drawer.jsx"},{"name":"DrawerFooter","sourcePath":"components/overlay/Drawer.jsx"},{"name":"DrawerTitle","sourcePath":"components/overlay/Drawer.jsx"},{"name":"DrawerDescription","sourcePath":"components/overlay/Drawer.jsx"},{"name":"DropdownMenu","sourcePath":"components/overlay/DropdownMenu.jsx"},{"name":"DropdownMenuTrigger","sourcePath":"components/overlay/DropdownMenu.jsx"},{"name":"DropdownMenuPortal","sourcePath":"components/overlay/DropdownMenu.jsx"},{"name":"DropdownMenuContent","sourcePath":"components/overlay/DropdownMenu.jsx"},{"name":"DropdownMenuGroup","sourcePath":"components/overlay/DropdownMenu.jsx"},{"name":"DropdownMenuLabel","sourcePath":"components/overlay/DropdownMenu.jsx"},{"name":"DropdownMenuSeparator","sourcePath":"components/overlay/DropdownMenu.jsx"},{"name":"DropdownMenuShortcut","sourcePath":"components/overlay/DropdownMenu.jsx"},{"name":"DropdownMenuItem","sourcePath":"components/overlay/DropdownMenu.jsx"},{"name":"DropdownMenuCheckboxItem","sourcePath":"components/overlay/DropdownMenu.jsx"},{"name":"DropdownMenuRadioGroup","sourcePath":"components/overlay/DropdownMenu.jsx"},{"name":"DropdownMenuRadioItem","sourcePath":"components/overlay/DropdownMenu.jsx"},{"name":"DropdownMenuSub","sourcePath":"components/overlay/DropdownMenu.jsx"},{"name":"DropdownMenuSubTrigger","sourcePath":"components/overlay/DropdownMenu.jsx"},{"name":"DropdownMenuSubContent","sourcePath":"components/overlay/DropdownMenu.jsx"},{"name":"HoverCard","sourcePath":"components/overlay/HoverCard.jsx"},{"name":"HoverCardTrigger","sourcePath":"components/overlay/HoverCard.jsx"},{"name":"HoverCardContent","sourcePath":"components/overlay/HoverCard.jsx"},{"name":"Popover","sourcePath":"components/overlay/Popover.jsx"},{"name":"PopoverTrigger","sourcePath":"components/overlay/Popover.jsx"},{"name":"PopoverContent","sourcePath":"components/overlay/Popover.jsx"},{"name":"PopoverHeader","sourcePath":"components/overlay/Popover.jsx"},{"name":"PopoverTitle","sourcePath":"components/overlay/Popover.jsx"},{"name":"PopoverDescription","sourcePath":"components/overlay/Popover.jsx"},{"name":"Portal","sourcePath":"components/overlay/Portal.jsx"},{"name":"Sheet","sourcePath":"components/overlay/Sheet.jsx"},{"name":"SheetTrigger","sourcePath":"components/overlay/Sheet.jsx"},{"name":"SheetClose","sourcePath":"components/overlay/Sheet.jsx"},{"name":"SheetContent","sourcePath":"components/overlay/Sheet.jsx"},{"name":"SheetHeader","sourcePath":"components/overlay/Sheet.jsx"},{"name":"SheetFooter","sourcePath":"components/overlay/Sheet.jsx"},{"name":"SheetTitle","sourcePath":"components/overlay/Sheet.jsx"},{"name":"SheetDescription","sourcePath":"components/overlay/Sheet.jsx"}],"publicHelpers":[{"name":"markerVariants","sourcePath":"components/ai/Marker.jsx"},{"name":"useMessageScroller","sourcePath":"components/ai/MessageScroller.jsx"},{"name":"useMessageScrollerVisibility","sourcePath":"components/ai/MessageScroller.jsx"},{"name":"useMessageScrollerScrollable","sourcePath":"components/ai/MessageScroller.jsx"},{"name":"useChart","sourcePath":"components/data/Chart.jsx"},{"name":"badgeVariants","sourcePath":"components/display/Badge.jsx"},{"name":"useDirection","sourcePath":"components/display/Direction.jsx"},{"name":"toast","sourcePath":"components/feedback/Toast.jsx"},{"name":"buttonVariants","sourcePath":"components/forms/Button.jsx"},{"name":"buttonGroupVariants","sourcePath":"components/forms/ButtonGroup.jsx"},{"name":"useComboboxAnchor","sourcePath":"components/forms/Combobox.jsx"},{"name":"toggleVariants","sourcePath":"components/forms/Toggle.jsx"},{"name":"navigationMenuTriggerStyle","sourcePath":"components/navigation/NavigationMenu.jsx"},{"name":"useSidebar","sourcePath":"components/navigation/Sidebar.jsx"}],"sourceHashes":{"components/ai/AgentRun.jsx":"9740e0e168e0","components/ai/Bubble.jsx":"1fbd306ae6c7","components/ai/ChatMessage.jsx":"340b11fa16a2","components/ai/Citation.jsx":"bdfe512cd8b0","components/ai/Confirmation.jsx":"6b4d2388924a","components/ai/Conversation.jsx":"811020760647","components/ai/DocumentCard.jsx":"a7159ec86c9a","components/ai/FeedbackBar.jsx":"76ce9048b0f8","components/ai/GeneratedImage.jsx":"6f5314103a20","components/ai/Marker.jsx":"4a8e54cf1022","components/ai/Message.jsx":"631188fe9acc","components/ai/MessageScroller.jsx":"4708fd0705dd","components/ai/ModelSelector.jsx":"5e5ccdd53e45","components/ai/Player.jsx":"a8a820c1e259","components/ai/PromptComposer.jsx":"37273e81af0a","components/ai/PromptSteps.jsx":"428074df6cd1","components/ai/Reasoning.jsx":"6a54640d743d","components/ai/RichComposer.jsx":"cf26b89fd54b","components/ai/Sandbox.jsx":"fb40c18aac5f","components/ai/SelectionQuote.jsx":"2ba728772ad9","components/ai/SourceCard.jsx":"ca0d3eedf981","components/ai/Suggestions.jsx":"11e4ed7c8075","components/ai/Task.jsx":"613d6bf8d05a","components/ai/Todo.jsx":"5c8653be0ea4","components/ai/ToolCall.jsx":"3c36ce2c9aab","components/ai/Transcript.jsx":"3ecad5218a37","components/ai/UsageMeter.jsx":"75c7a916706a","components/ai/WebPreview.jsx":"a42cea1ff185","components/code/CodeBlock.jsx":"404f379fc744","components/code/Console.jsx":"5a150480bfb5","components/code/CopyField.jsx":"61f56f69d3d3","components/code/Diff.jsx":"9ef7d550ba0a","components/code/EnvList.jsx":"525abe81eed5","components/code/Exception.jsx":"7c9828556417","components/code/Terminal.jsx":"5eda66e465b6","components/data/BarChart.jsx":"93b35c077e52","components/data/Chart.jsx":"dbf8e6938664","components/data/DonutChart.jsx":"694ebf62805d","components/data/EmptyState.jsx":"3cb763cd7519","components/data/KeyValueList.jsx":"3876b7c9581e","components/data/LineChart.jsx":"7cce718ff267","components/data/Skeleton.jsx":"51394e716271","components/data/Sparkline.jsx":"5b2a0e67cdae","components/data/Stat.jsx":"aba92e72a0f8","components/data/StatusDot.jsx":"197386782d10","components/data/Table.jsx":"b2bb4dafe5e1","components/dates/Calendar.jsx":"29304518e5f9","components/dates/TimePicker.jsx":"197760d69fd7","components/display/Accordion.jsx":"ac9b1ec3ce0f","components/display/AspectRatio.jsx":"91558029d648","components/display/Avatar.jsx":"c9fa67934411","components/display/Badge.jsx":"fa91bc378031","components/display/Card.jsx":"5a44823ed4d8","components/display/Carousel.jsx":"d10ba2744373","components/display/Collapsible.jsx":"59cbf5105219","components/display/Direction.jsx":"538f2d4cbf23","components/display/Divider.jsx":"ee51ca336cc7","components/display/Item.jsx":"517df3ae775f","components/display/Kbd.jsx":"443f2a9b8f89","components/display/Link.jsx":"a0907910192e","components/display/Resizable.jsx":"74bc54184023","components/display/ScrollArea.jsx":"6c71af1111a2","components/display/Separator.jsx":"5c2b62cf7532","components/display/Tag.jsx":"e09f00799da9","components/display/Timeline.jsx":"6c5bff5f4dcf","components/display/Toolbar.jsx":"60e90649c94a","components/display/TreeList.jsx":"12827e081da3","components/feedback/Alert.jsx":"cc86b5cf69b8","components/feedback/AlertDialog.jsx":"c3618036d21b","components/feedback/Banner.jsx":"347de11daca4","components/feedback/ConfirmDialog.jsx":"033b979e1aa6","components/feedback/Dialog.jsx":"1603d86ed37d","components/feedback/Loader.jsx":"02efacc86905","components/feedback/Progress.jsx":"0964f54f5644","components/feedback/Spinner.jsx":"8781f16bf6b8","components/feedback/Toast.jsx":"84a2cc89d181","components/feedback/Tooltip.jsx":"01d5d7eebc8a","components/files/Attachment.jsx":"bd63ebd29171","components/files/FileDrop.jsx":"737632ac07db","components/files/FileTile.jsx":"28af04d1303b","components/files/FileTypeIcon.jsx":"3bcdf5ca7eb9","components/finance/PaymentCard.jsx":"d748ed19cc19","components/forms/Button.jsx":"85a176fef054","components/forms/ButtonGroup.jsx":"df7d04210646","components/forms/ButtonTile.jsx":"1508984c0c5c","components/forms/Checkbox.jsx":"7ccbcc068cc4","components/forms/Combobox.jsx":"c9c2d6ded3ea","components/forms/Field.jsx":"adf061cacd94","components/forms/IconButton.jsx":"967b0b3312fe","components/forms/Input.jsx":"a654deabdd03","components/forms/InputGroup.jsx":"a524a366e701","components/forms/InputOTP.jsx":"275c5ea31342","components/forms/Label.jsx":"f0bfcb5ae210","components/forms/NativeSelect.jsx":"a3d4a9d8eeb3","components/forms/NumberInput.jsx":"27fe9faa2091","components/forms/Questionnaire.jsx":"b75b3fabf143","components/forms/Radio.jsx":"fd805667ed84","components/forms/Select.jsx":"c8373842d395","components/forms/Slider.jsx":"98589ef4bda1","components/forms/Switch.jsx":"1c87f39efc97","components/forms/Textarea.jsx":"5c8934e2ecbf","components/forms/Toggle.jsx":"5e9772c3c4f7","components/icons/Icon.jsx":"55545fb2d7d4","components/navigation/Breadcrumbs.jsx":"6d989a3f6a62","components/navigation/Menubar.jsx":"f1c8dc2f5a89","components/navigation/NavigationMenu.jsx":"b2cdff652ecb","components/navigation/PageControl.jsx":"fba140f65467","components/navigation/Pagination.jsx":"86c274d2598a","components/navigation/SegmentedControl.jsx":"63d751bc6b70","components/navigation/SideNav.jsx":"7716cde75e41","components/navigation/Sidebar.jsx":"722a97f6aeac","components/navigation/SkipLink.jsx":"718518ba69cc","components/navigation/Steps.jsx":"45c6c1162b22","components/navigation/Tabs.jsx":"1af60f8cf9d8","components/navigation/TopNav.jsx":"967b11093c20","components/overlay/Command.jsx":"c0fd7633d67a","components/overlay/ContextMenu.jsx":"a1fe0c53cbb4","components/overlay/Drawer.jsx":"49a8da8bc869","components/overlay/DropdownMenu.jsx":"f4ca2afa281b","components/overlay/HoverCard.jsx":"c5fdc7c37c0a","components/overlay/Popover.jsx":"e43f4d40c954","components/overlay/Portal.jsx":"5741d5821bf9","components/overlay/Sheet.jsx":"ecdd4f4758fa","showcases/agent/AgentScreen.jsx":"c6b18a3905d7","showcases/auth/AuthScreens.jsx":"ec956de82d05","showcases/console/CustomersScreen.jsx":"04d0b3732932","showcases/console/ExtraScreens.jsx":"ed8902dfe977","showcases/console/OverviewScreen.jsx":"d771731feaa8","showcases/console/SettingsScreen.jsx":"30672b8b2b76","showcases/console/Shell.jsx":"f5cf27eb1645","showcases/docs/DocsScreen.jsx":"b77626349122","showcases/infra/InfraScreen.jsx":"9551f992bf6b","showcases/tools/ToolsScreen.jsx":"f474e061f0d3","showcases/trader/TraderScreen.jsx":"f6594536790c","showcases/website/Sections.jsx":"2adab895c443"},"inlinedExternals":[],"unexposedExports":[{"name":"computeDiff","sourcePath":"components/code/Diff.jsx"},{"name":"cssPct","sourcePath":"components/forms/Button.jsx"},{"name":"escapeLayerContext","sourcePath":"components/overlay/Portal.jsx"},{"name":"formatTime","sourcePath":"components/ai/Player.jsx"},{"name":"injectEfCss","sourcePath":"components/forms/Button.jsx"},{"name":"mergeRefs","sourcePath":"components/forms/Button.jsx"},{"name":"prefersReducedMotion","sourcePath":"components/forms/Button.jsx"},{"name":"useAnchoredStyle","sourcePath":"components/overlay/Portal.jsx"},{"name":"useEscapeLayer","sourcePath":"components/overlay/Portal.jsx"},{"name":"useFieldProps","sourcePath":"components/forms/Field.jsx"},{"name":"useIsoLayoutEffect","sourcePath":"components/forms/Button.jsx"},{"name":"useScrollLock","sourcePath":"components/overlay/Portal.jsx"}]} */
+/* @ds-bundle: {"format":4,"namespace":"EfolusiDesignSystem_4ffc3d","components":[{"name":"AgentRun","sourcePath":"components/ai/AgentRun.jsx"},{"name":"BubbleGroup","sourcePath":"components/ai/Bubble.jsx"},{"name":"Bubble","sourcePath":"components/ai/Bubble.jsx"},{"name":"BubbleContent","sourcePath":"components/ai/Bubble.jsx"},{"name":"BubbleReactions","sourcePath":"components/ai/Bubble.jsx"},{"name":"ChatMessage","sourcePath":"components/ai/ChatMessage.jsx"},{"name":"Citation","sourcePath":"components/ai/Citation.jsx"},{"name":"SourceList","sourcePath":"components/ai/Citation.jsx"},{"name":"Confirmation","sourcePath":"components/ai/Confirmation.jsx"},{"name":"Conversation","sourcePath":"components/ai/Conversation.jsx"},{"name":"DocumentCard","sourcePath":"components/ai/DocumentCard.jsx"},{"name":"FeedbackBar","sourcePath":"components/ai/FeedbackBar.jsx"},{"name":"GeneratedImage","sourcePath":"components/ai/GeneratedImage.jsx"},{"name":"Marker","sourcePath":"components/ai/Marker.jsx"},{"name":"MarkerIcon","sourcePath":"components/ai/Marker.jsx"},{"name":"MarkerContent","sourcePath":"components/ai/Marker.jsx"},{"name":"Message","sourcePath":"components/ai/Message.jsx"},{"name":"MessageGroup","sourcePath":"components/ai/Message.jsx"},{"name":"MessageAvatar","sourcePath":"components/ai/Message.jsx"},{"name":"MessageContent","sourcePath":"components/ai/Message.jsx"},{"name":"MessageHeader","sourcePath":"components/ai/Message.jsx"},{"name":"MessageFooter","sourcePath":"components/ai/Message.jsx"},{"name":"MessageScrollerProvider","sourcePath":"components/ai/MessageScroller.jsx"},{"name":"MessageScroller","sourcePath":"components/ai/MessageScroller.jsx"},{"name":"MessageScrollerViewport","sourcePath":"components/ai/MessageScroller.jsx"},{"name":"MessageScrollerContent","sourcePath":"components/ai/MessageScroller.jsx"},{"name":"MessageScrollerItem","sourcePath":"components/ai/MessageScroller.jsx"},{"name":"MessageScrollerButton","sourcePath":"components/ai/MessageScroller.jsx"},{"name":"ModelSelector","sourcePath":"components/ai/ModelSelector.jsx"},{"name":"Player","sourcePath":"components/ai/Player.jsx"},{"name":"PromptComposer","sourcePath":"components/ai/PromptComposer.jsx"},{"name":"PromptSteps","sourcePath":"components/ai/PromptSteps.jsx"},{"name":"Reasoning","sourcePath":"components/ai/Reasoning.jsx"},{"name":"RichComposer","sourcePath":"components/ai/RichComposer.jsx"},{"name":"Sandbox","sourcePath":"components/ai/Sandbox.jsx"},{"name":"SelectionQuote","sourcePath":"components/ai/SelectionQuote.jsx"},{"name":"SourceCard","sourcePath":"components/ai/SourceCard.jsx"},{"name":"Suggestions","sourcePath":"components/ai/Suggestions.jsx"},{"name":"Task","sourcePath":"components/ai/Task.jsx"},{"name":"Todo","sourcePath":"components/ai/Todo.jsx"},{"name":"ToolCall","sourcePath":"components/ai/ToolCall.jsx"},{"name":"Transcript","sourcePath":"components/ai/Transcript.jsx"},{"name":"UsageMeter","sourcePath":"components/ai/UsageMeter.jsx"},{"name":"WebPreview","sourcePath":"components/ai/WebPreview.jsx"},{"name":"CodeBlock","sourcePath":"components/code/CodeBlock.jsx"},{"name":"Console","sourcePath":"components/code/Console.jsx"},{"name":"CopyField","sourcePath":"components/code/CopyField.jsx"},{"name":"Diff","sourcePath":"components/code/Diff.jsx"},{"name":"EnvList","sourcePath":"components/code/EnvList.jsx"},{"name":"Exception","sourcePath":"components/code/Exception.jsx"},{"name":"Terminal","sourcePath":"components/code/Terminal.jsx"},{"name":"BarChart","sourcePath":"components/data/BarChart.jsx"},{"name":"ChartStyle","sourcePath":"components/data/Chart.jsx"},{"name":"ChartContainer","sourcePath":"components/data/Chart.jsx"},{"name":"ChartTooltip","sourcePath":"components/data/Chart.jsx"},{"name":"ChartTooltipContent","sourcePath":"components/data/Chart.jsx"},{"name":"ChartLegend","sourcePath":"components/data/Chart.jsx"},{"name":"ChartLegendContent","sourcePath":"components/data/Chart.jsx"},{"name":"DonutChart","sourcePath":"components/data/DonutChart.jsx"},{"name":"Empty","sourcePath":"components/data/EmptyState.jsx"},{"name":"EmptyHeader","sourcePath":"components/data/EmptyState.jsx"},{"name":"EmptyMedia","sourcePath":"components/data/EmptyState.jsx"},{"name":"EmptyTitle","sourcePath":"components/data/EmptyState.jsx"},{"name":"EmptyDescription","sourcePath":"components/data/EmptyState.jsx"},{"name":"EmptyContent","sourcePath":"components/data/EmptyState.jsx"},{"name":"KeyValueList","sourcePath":"components/data/KeyValueList.jsx"},{"name":"LineChart","sourcePath":"components/data/LineChart.jsx"},{"name":"Skeleton","sourcePath":"components/data/Skeleton.jsx"},{"name":"Sparkline","sourcePath":"components/data/Sparkline.jsx"},{"name":"Stat","sourcePath":"components/data/Stat.jsx"},{"name":"StatusDot","sourcePath":"components/data/StatusDot.jsx"},{"name":"Table","sourcePath":"components/data/Table.jsx"},{"name":"TableHeader","sourcePath":"components/data/Table.jsx"},{"name":"TableBody","sourcePath":"components/data/Table.jsx"},{"name":"TableFooter","sourcePath":"components/data/Table.jsx"},{"name":"TableRow","sourcePath":"components/data/Table.jsx"},{"name":"TableHead","sourcePath":"components/data/Table.jsx"},{"name":"TableCell","sourcePath":"components/data/Table.jsx"},{"name":"TableCaption","sourcePath":"components/data/Table.jsx"},{"name":"CalendarDayButton","sourcePath":"components/dates/Calendar.jsx"},{"name":"Calendar","sourcePath":"components/dates/Calendar.jsx"},{"name":"TimePicker","sourcePath":"components/dates/TimePicker.jsx"},{"name":"Accordion","sourcePath":"components/display/Accordion.jsx"},{"name":"AccordionItem","sourcePath":"components/display/Accordion.jsx"},{"name":"AccordionTrigger","sourcePath":"components/display/Accordion.jsx"},{"name":"AccordionContent","sourcePath":"components/display/Accordion.jsx"},{"name":"AspectRatio","sourcePath":"components/display/AspectRatio.jsx"},{"name":"Avatar","sourcePath":"components/display/Avatar.jsx"},{"name":"AvatarImage","sourcePath":"components/display/Avatar.jsx"},{"name":"AvatarFallback","sourcePath":"components/display/Avatar.jsx"},{"name":"AvatarBadge","sourcePath":"components/display/Avatar.jsx"},{"name":"AvatarGroup","sourcePath":"components/display/Avatar.jsx"},{"name":"AvatarGroupCount","sourcePath":"components/display/Avatar.jsx"},{"name":"Badge","sourcePath":"components/display/Badge.jsx"},{"name":"CardHeader","sourcePath":"components/display/Card.jsx"},{"name":"CardTitle","sourcePath":"components/display/Card.jsx"},{"name":"CardDescription","sourcePath":"components/display/Card.jsx"},{"name":"CardAction","sourcePath":"components/display/Card.jsx"},{"name":"CardContent","sourcePath":"components/display/Card.jsx"},{"name":"CardFooter","sourcePath":"components/display/Card.jsx"},{"name":"Card","sourcePath":"components/display/Card.jsx"},{"name":"Carousel","sourcePath":"components/display/Carousel.jsx"},{"name":"CarouselContent","sourcePath":"components/display/Carousel.jsx"},{"name":"CarouselItem","sourcePath":"components/display/Carousel.jsx"},{"name":"CarouselPrevious","sourcePath":"components/display/Carousel.jsx"},{"name":"CarouselNext","sourcePath":"components/display/Carousel.jsx"},{"name":"Collapsible","sourcePath":"components/display/Collapsible.jsx"},{"name":"CollapsibleTrigger","sourcePath":"components/display/Collapsible.jsx"},{"name":"CollapsibleContent","sourcePath":"components/display/Collapsible.jsx"},{"name":"DirectionProvider","sourcePath":"components/display/Direction.jsx"},{"name":"Divider","sourcePath":"components/display/Divider.jsx"},{"name":"ItemGroup","sourcePath":"components/display/Item.jsx"},{"name":"ItemSeparator","sourcePath":"components/display/Item.jsx"},{"name":"Item","sourcePath":"components/display/Item.jsx"},{"name":"ItemMedia","sourcePath":"components/display/Item.jsx"},{"name":"ItemContent","sourcePath":"components/display/Item.jsx"},{"name":"ItemTitle","sourcePath":"components/display/Item.jsx"},{"name":"ItemDescription","sourcePath":"components/display/Item.jsx"},{"name":"ItemActions","sourcePath":"components/display/Item.jsx"},{"name":"ItemHeader","sourcePath":"components/display/Item.jsx"},{"name":"ItemFooter","sourcePath":"components/display/Item.jsx"},{"name":"Kbd","sourcePath":"components/display/Kbd.jsx"},{"name":"KbdGroup","sourcePath":"components/display/Kbd.jsx"},{"name":"Link","sourcePath":"components/display/Link.jsx"},{"name":"ResizablePanelGroup","sourcePath":"components/display/Resizable.jsx"},{"name":"ResizablePanel","sourcePath":"components/display/Resizable.jsx"},{"name":"ResizableHandle","sourcePath":"components/display/Resizable.jsx"},{"name":"ScrollArea","sourcePath":"components/display/ScrollArea.jsx"},{"name":"ScrollBar","sourcePath":"components/display/ScrollArea.jsx"},{"name":"Separator","sourcePath":"components/display/Separator.jsx"},{"name":"Tag","sourcePath":"components/display/Tag.jsx"},{"name":"Timeline","sourcePath":"components/display/Timeline.jsx"},{"name":"Toolbar","sourcePath":"components/display/Toolbar.jsx"},{"name":"TreeList","sourcePath":"components/display/TreeList.jsx"},{"name":"Alert","sourcePath":"components/feedback/Alert.jsx"},{"name":"AlertTitle","sourcePath":"components/feedback/Alert.jsx"},{"name":"AlertDescription","sourcePath":"components/feedback/Alert.jsx"},{"name":"AlertAction","sourcePath":"components/feedback/Alert.jsx"},{"name":"AlertDialog","sourcePath":"components/feedback/AlertDialog.jsx"},{"name":"AlertDialogTrigger","sourcePath":"components/feedback/AlertDialog.jsx"},{"name":"AlertDialogPortal","sourcePath":"components/feedback/AlertDialog.jsx"},{"name":"AlertDialogOverlay","sourcePath":"components/feedback/AlertDialog.jsx"},{"name":"AlertDialogContent","sourcePath":"components/feedback/AlertDialog.jsx"},{"name":"AlertDialogHeader","sourcePath":"components/feedback/AlertDialog.jsx"},{"name":"AlertDialogFooter","sourcePath":"components/feedback/AlertDialog.jsx"},{"name":"AlertDialogMedia","sourcePath":"components/feedback/AlertDialog.jsx"},{"name":"AlertDialogTitle","sourcePath":"components/feedback/AlertDialog.jsx"},{"name":"AlertDialogDescription","sourcePath":"components/feedback/AlertDialog.jsx"},{"name":"AlertDialogCancel","sourcePath":"components/feedback/AlertDialog.jsx"},{"name":"AlertDialogAction","sourcePath":"components/feedback/AlertDialog.jsx"},{"name":"Banner","sourcePath":"components/feedback/Banner.jsx"},{"name":"ConfirmDialog","sourcePath":"components/feedback/ConfirmDialog.jsx"},{"name":"Dialog","sourcePath":"components/feedback/Dialog.jsx"},{"name":"DialogTrigger","sourcePath":"components/feedback/Dialog.jsx"},{"name":"DialogPortal","sourcePath":"components/feedback/Dialog.jsx"},{"name":"DialogOverlay","sourcePath":"components/feedback/Dialog.jsx"},{"name":"DialogClose","sourcePath":"components/feedback/Dialog.jsx"},{"name":"DialogContent","sourcePath":"components/feedback/Dialog.jsx"},{"name":"DialogHeader","sourcePath":"components/feedback/Dialog.jsx"},{"name":"DialogFooter","sourcePath":"components/feedback/Dialog.jsx"},{"name":"DialogTitle","sourcePath":"components/feedback/Dialog.jsx"},{"name":"DialogDescription","sourcePath":"components/feedback/Dialog.jsx"},{"name":"Loader","sourcePath":"components/feedback/Loader.jsx"},{"name":"Progress","sourcePath":"components/feedback/Progress.jsx"},{"name":"Spinner","sourcePath":"components/feedback/Spinner.jsx"},{"name":"Toaster","sourcePath":"components/feedback/Toast.jsx"},{"name":"Tooltip","sourcePath":"components/feedback/Tooltip.jsx"},{"name":"TooltipProvider","sourcePath":"components/feedback/Tooltip.jsx"},{"name":"TooltipTrigger","sourcePath":"components/feedback/Tooltip.jsx"},{"name":"TooltipContent","sourcePath":"components/feedback/Tooltip.jsx"},{"name":"Attachment","sourcePath":"components/files/Attachment.jsx"},{"name":"AttachmentMedia","sourcePath":"components/files/Attachment.jsx"},{"name":"AttachmentContent","sourcePath":"components/files/Attachment.jsx"},{"name":"AttachmentTitle","sourcePath":"components/files/Attachment.jsx"},{"name":"AttachmentDescription","sourcePath":"components/files/Attachment.jsx"},{"name":"AttachmentActions","sourcePath":"components/files/Attachment.jsx"},{"name":"AttachmentAction","sourcePath":"components/files/Attachment.jsx"},{"name":"AttachmentTrigger","sourcePath":"components/files/Attachment.jsx"},{"name":"AttachmentGroup","sourcePath":"components/files/Attachment.jsx"},{"name":"FileDrop","sourcePath":"components/files/FileDrop.jsx"},{"name":"FileTile","sourcePath":"components/files/FileTile.jsx"},{"name":"FileTypeIcon","sourcePath":"components/files/FileTypeIcon.jsx"},{"name":"PaymentCard","sourcePath":"components/finance/PaymentCard.jsx"},{"name":"Button","sourcePath":"components/forms/Button.jsx"},{"name":"ButtonGroup","sourcePath":"components/forms/ButtonGroup.jsx"},{"name":"ButtonGroupText","sourcePath":"components/forms/ButtonGroup.jsx"},{"name":"ButtonGroupSeparator","sourcePath":"components/forms/ButtonGroup.jsx"},{"name":"ButtonTile","sourcePath":"components/forms/ButtonTile.jsx"},{"name":"ButtonTileGroup","sourcePath":"components/forms/ButtonTile.jsx"},{"name":"Checkbox","sourcePath":"components/forms/Checkbox.jsx"},{"name":"Combobox","sourcePath":"components/forms/Combobox.jsx"},{"name":"ComboboxValue","sourcePath":"components/forms/Combobox.jsx"},{"name":"ComboboxTrigger","sourcePath":"components/forms/Combobox.jsx"},{"name":"ComboboxClear","sourcePath":"components/forms/Combobox.jsx"},{"name":"ComboboxInput","sourcePath":"components/forms/Combobox.jsx"},{"name":"ComboboxContent","sourcePath":"components/forms/Combobox.jsx"},{"name":"ComboboxList","sourcePath":"components/forms/Combobox.jsx"},{"name":"ComboboxItem","sourcePath":"components/forms/Combobox.jsx"},{"name":"ComboboxGroup","sourcePath":"components/forms/Combobox.jsx"},{"name":"ComboboxLabel","sourcePath":"components/forms/Combobox.jsx"},{"name":"ComboboxCollection","sourcePath":"components/forms/Combobox.jsx"},{"name":"ComboboxEmpty","sourcePath":"components/forms/Combobox.jsx"},{"name":"ComboboxSeparator","sourcePath":"components/forms/Combobox.jsx"},{"name":"ComboboxChips","sourcePath":"components/forms/Combobox.jsx"},{"name":"ComboboxChip","sourcePath":"components/forms/Combobox.jsx"},{"name":"ComboboxChipsInput","sourcePath":"components/forms/Combobox.jsx"},{"name":"Field","sourcePath":"components/forms/Field.jsx"},{"name":"FieldSet","sourcePath":"components/forms/Field.jsx"},{"name":"FieldGroup","sourcePath":"components/forms/Field.jsx"},{"name":"FieldContent","sourcePath":"components/forms/Field.jsx"},{"name":"FieldLabel","sourcePath":"components/forms/Field.jsx"},{"name":"FieldTitle","sourcePath":"components/forms/Field.jsx"},{"name":"FieldDescription","sourcePath":"components/forms/Field.jsx"},{"name":"FieldLegend","sourcePath":"components/forms/Field.jsx"},{"name":"FieldSeparator","sourcePath":"components/forms/Field.jsx"},{"name":"FieldError","sourcePath":"components/forms/Field.jsx"},{"name":"IconButton","sourcePath":"components/forms/IconButton.jsx"},{"name":"Input","sourcePath":"components/forms/Input.jsx"},{"name":"InputGroup","sourcePath":"components/forms/InputGroup.jsx"},{"name":"InputGroupAddon","sourcePath":"components/forms/InputGroup.jsx"},{"name":"InputGroupButton","sourcePath":"components/forms/InputGroup.jsx"},{"name":"InputGroupInput","sourcePath":"components/forms/InputGroup.jsx"},{"name":"InputGroupTextarea","sourcePath":"components/forms/InputGroup.jsx"},{"name":"InputGroupText","sourcePath":"components/forms/InputGroup.jsx"},{"name":"InputOTP","sourcePath":"components/forms/InputOTP.jsx"},{"name":"InputOTPGroup","sourcePath":"components/forms/InputOTP.jsx"},{"name":"InputOTPSlot","sourcePath":"components/forms/InputOTP.jsx"},{"name":"InputOTPSeparator","sourcePath":"components/forms/InputOTP.jsx"},{"name":"Label","sourcePath":"components/forms/Label.jsx"},{"name":"NativeSelect","sourcePath":"components/forms/NativeSelect.jsx"},{"name":"NativeSelectOption","sourcePath":"components/forms/NativeSelect.jsx"},{"name":"NativeSelectOptGroup","sourcePath":"components/forms/NativeSelect.jsx"},{"name":"NumberInput","sourcePath":"components/forms/NumberInput.jsx"},{"name":"Questionnaire","sourcePath":"components/forms/Questionnaire.jsx"},{"name":"QuestionnaireProgress","sourcePath":"components/forms/Questionnaire.jsx"},{"name":"QuestionnaireItem","sourcePath":"components/forms/Questionnaire.jsx"},{"name":"QuestionnaireTitle","sourcePath":"components/forms/Questionnaire.jsx"},{"name":"QuestionnaireDescription","sourcePath":"components/forms/Questionnaire.jsx"},{"name":"QuestionnaireChoices","sourcePath":"components/forms/Questionnaire.jsx"},{"name":"QuestionnaireChoice","sourcePath":"components/forms/Questionnaire.jsx"},{"name":"QuestionnaireInput","sourcePath":"components/forms/Questionnaire.jsx"},{"name":"QuestionnaireError","sourcePath":"components/forms/Questionnaire.jsx"},{"name":"QuestionnaireActions","sourcePath":"components/forms/Questionnaire.jsx"},{"name":"QuestionnairePrevious","sourcePath":"components/forms/Questionnaire.jsx"},{"name":"QuestionnaireSkip","sourcePath":"components/forms/Questionnaire.jsx"},{"name":"QuestionnaireNext","sourcePath":"components/forms/Questionnaire.jsx"},{"name":"QuestionnaireSubmit","sourcePath":"components/forms/Questionnaire.jsx"},{"name":"RadioGroup","sourcePath":"components/forms/Radio.jsx"},{"name":"RadioGroupItem","sourcePath":"components/forms/Radio.jsx"},{"name":"Radio","sourcePath":"components/forms/Radio.jsx"},{"name":"Select","sourcePath":"components/forms/Select.jsx"},{"name":"SelectTrigger","sourcePath":"components/forms/Select.jsx"},{"name":"SelectValue","sourcePath":"components/forms/Select.jsx"},{"name":"SelectContent","sourcePath":"components/forms/Select.jsx"},{"name":"SelectGroup","sourcePath":"components/forms/Select.jsx"},{"name":"SelectLabel","sourcePath":"components/forms/Select.jsx"},{"name":"SelectSeparator","sourcePath":"components/forms/Select.jsx"},{"name":"SelectItem","sourcePath":"components/forms/Select.jsx"},{"name":"Slider","sourcePath":"components/forms/Slider.jsx"},{"name":"Switch","sourcePath":"components/forms/Switch.jsx"},{"name":"Textarea","sourcePath":"components/forms/Textarea.jsx"},{"name":"Toggle","sourcePath":"components/forms/Toggle.jsx"},{"name":"ToggleGroup","sourcePath":"components/forms/Toggle.jsx"},{"name":"ToggleGroupItem","sourcePath":"components/forms/Toggle.jsx"},{"name":"Icon","sourcePath":"components/icons/Icon.jsx"},{"name":"Breadcrumb","sourcePath":"components/navigation/Breadcrumbs.jsx"},{"name":"BreadcrumbList","sourcePath":"components/navigation/Breadcrumbs.jsx"},{"name":"BreadcrumbItem","sourcePath":"components/navigation/Breadcrumbs.jsx"},{"name":"BreadcrumbLink","sourcePath":"components/navigation/Breadcrumbs.jsx"},{"name":"BreadcrumbPage","sourcePath":"components/navigation/Breadcrumbs.jsx"},{"name":"BreadcrumbSeparator","sourcePath":"components/navigation/Breadcrumbs.jsx"},{"name":"BreadcrumbEllipsis","sourcePath":"components/navigation/Breadcrumbs.jsx"},{"name":"Menubar","sourcePath":"components/navigation/Menubar.jsx"},{"name":"MenubarMenu","sourcePath":"components/navigation/Menubar.jsx"},{"name":"MenubarTrigger","sourcePath":"components/navigation/Menubar.jsx"},{"name":"MenubarContent","sourcePath":"components/navigation/Menubar.jsx"},{"name":"MenubarPortal","sourcePath":"components/navigation/Menubar.jsx"},{"name":"MenubarGroup","sourcePath":"components/navigation/Menubar.jsx"},{"name":"MenubarRadioGroup","sourcePath":"components/navigation/Menubar.jsx"},{"name":"MenubarLabel","sourcePath":"components/navigation/Menubar.jsx"},{"name":"MenubarSeparator","sourcePath":"components/navigation/Menubar.jsx"},{"name":"MenubarShortcut","sourcePath":"components/navigation/Menubar.jsx"},{"name":"MenubarItem","sourcePath":"components/navigation/Menubar.jsx"},{"name":"MenubarCheckboxItem","sourcePath":"components/navigation/Menubar.jsx"},{"name":"MenubarRadioItem","sourcePath":"components/navigation/Menubar.jsx"},{"name":"MenubarSub","sourcePath":"components/navigation/Menubar.jsx"},{"name":"MenubarSubTrigger","sourcePath":"components/navigation/Menubar.jsx"},{"name":"MenubarSubContent","sourcePath":"components/navigation/Menubar.jsx"},{"name":"NavigationMenu","sourcePath":"components/navigation/NavigationMenu.jsx"},{"name":"NavigationMenuList","sourcePath":"components/navigation/NavigationMenu.jsx"},{"name":"NavigationMenuItem","sourcePath":"components/navigation/NavigationMenu.jsx"},{"name":"NavigationMenuTrigger","sourcePath":"components/navigation/NavigationMenu.jsx"},{"name":"NavigationMenuContent","sourcePath":"components/navigation/NavigationMenu.jsx"},{"name":"NavigationMenuLink","sourcePath":"components/navigation/NavigationMenu.jsx"},{"name":"NavigationMenuIndicator","sourcePath":"components/navigation/NavigationMenu.jsx"},{"name":"NavigationMenuViewport","sourcePath":"components/navigation/NavigationMenu.jsx"},{"name":"PageControl","sourcePath":"components/navigation/PageControl.jsx"},{"name":"Pagination","sourcePath":"components/navigation/Pagination.jsx"},{"name":"PaginationContent","sourcePath":"components/navigation/Pagination.jsx"},{"name":"PaginationItem","sourcePath":"components/navigation/Pagination.jsx"},{"name":"PaginationLink","sourcePath":"components/navigation/Pagination.jsx"},{"name":"PaginationPrevious","sourcePath":"components/navigation/Pagination.jsx"},{"name":"PaginationNext","sourcePath":"components/navigation/Pagination.jsx"},{"name":"PaginationEllipsis","sourcePath":"components/navigation/Pagination.jsx"},{"name":"SegmentedControl","sourcePath":"components/navigation/SegmentedControl.jsx"},{"name":"SideNav","sourcePath":"components/navigation/SideNav.jsx"},{"name":"SidebarProvider","sourcePath":"components/navigation/Sidebar.jsx"},{"name":"Sidebar","sourcePath":"components/navigation/Sidebar.jsx"},{"name":"SidebarTrigger","sourcePath":"components/navigation/Sidebar.jsx"},{"name":"SidebarRail","sourcePath":"components/navigation/Sidebar.jsx"},{"name":"SidebarInset","sourcePath":"components/navigation/Sidebar.jsx"},{"name":"SidebarHeader","sourcePath":"components/navigation/Sidebar.jsx"},{"name":"SidebarFooter","sourcePath":"components/navigation/Sidebar.jsx"},{"name":"SidebarContent","sourcePath":"components/navigation/Sidebar.jsx"},{"name":"SidebarGroup","sourcePath":"components/navigation/Sidebar.jsx"},{"name":"SidebarGroupContent","sourcePath":"components/navigation/Sidebar.jsx"},{"name":"SidebarMenu","sourcePath":"components/navigation/Sidebar.jsx"},{"name":"SidebarMenuItem","sourcePath":"components/navigation/Sidebar.jsx"},{"name":"SidebarMenuSub","sourcePath":"components/navigation/Sidebar.jsx"},{"name":"SidebarMenuSubItem","sourcePath":"components/navigation/Sidebar.jsx"},{"name":"SidebarInput","sourcePath":"components/navigation/Sidebar.jsx"},{"name":"SidebarSeparator","sourcePath":"components/navigation/Sidebar.jsx"},{"name":"SidebarGroupLabel","sourcePath":"components/navigation/Sidebar.jsx"},{"name":"SidebarGroupAction","sourcePath":"components/navigation/Sidebar.jsx"},{"name":"SidebarMenuButton","sourcePath":"components/navigation/Sidebar.jsx"},{"name":"SidebarMenuAction","sourcePath":"components/navigation/Sidebar.jsx"},{"name":"SidebarMenuBadge","sourcePath":"components/navigation/Sidebar.jsx"},{"name":"SidebarMenuSubButton","sourcePath":"components/navigation/Sidebar.jsx"},{"name":"SidebarMenuSkeleton","sourcePath":"components/navigation/Sidebar.jsx"},{"name":"SkipLink","sourcePath":"components/navigation/SkipLink.jsx"},{"name":"Steps","sourcePath":"components/navigation/Steps.jsx"},{"name":"Tabs","sourcePath":"components/navigation/Tabs.jsx"},{"name":"TabsList","sourcePath":"components/navigation/Tabs.jsx"},{"name":"TabsTrigger","sourcePath":"components/navigation/Tabs.jsx"},{"name":"TabsContent","sourcePath":"components/navigation/Tabs.jsx"},{"name":"TopNav","sourcePath":"components/navigation/TopNav.jsx"},{"name":"Command","sourcePath":"components/overlay/Command.jsx"},{"name":"CommandDialog","sourcePath":"components/overlay/Command.jsx"},{"name":"CommandInput","sourcePath":"components/overlay/Command.jsx"},{"name":"CommandList","sourcePath":"components/overlay/Command.jsx"},{"name":"CommandEmpty","sourcePath":"components/overlay/Command.jsx"},{"name":"CommandGroup","sourcePath":"components/overlay/Command.jsx"},{"name":"CommandItem","sourcePath":"components/overlay/Command.jsx"},{"name":"CommandShortcut","sourcePath":"components/overlay/Command.jsx"},{"name":"CommandSeparator","sourcePath":"components/overlay/Command.jsx"},{"name":"ContextMenu","sourcePath":"components/overlay/ContextMenu.jsx"},{"name":"ContextMenuTrigger","sourcePath":"components/overlay/ContextMenu.jsx"},{"name":"ContextMenuPortal","sourcePath":"components/overlay/ContextMenu.jsx"},{"name":"ContextMenuContent","sourcePath":"components/overlay/ContextMenu.jsx"},{"name":"ContextMenuGroup","sourcePath":"components/overlay/ContextMenu.jsx"},{"name":"ContextMenuLabel","sourcePath":"components/overlay/ContextMenu.jsx"},{"name":"ContextMenuSeparator","sourcePath":"components/overlay/ContextMenu.jsx"},{"name":"ContextMenuShortcut","sourcePath":"components/overlay/ContextMenu.jsx"},{"name":"ContextMenuItem","sourcePath":"components/overlay/ContextMenu.jsx"},{"name":"ContextMenuCheckboxItem","sourcePath":"components/overlay/ContextMenu.jsx"},{"name":"ContextMenuRadioGroup","sourcePath":"components/overlay/ContextMenu.jsx"},{"name":"ContextMenuRadioItem","sourcePath":"components/overlay/ContextMenu.jsx"},{"name":"ContextMenuSub","sourcePath":"components/overlay/ContextMenu.jsx"},{"name":"ContextMenuSubTrigger","sourcePath":"components/overlay/ContextMenu.jsx"},{"name":"ContextMenuSubContent","sourcePath":"components/overlay/ContextMenu.jsx"},{"name":"Drawer","sourcePath":"components/overlay/Drawer.jsx"},{"name":"DrawerTrigger","sourcePath":"components/overlay/Drawer.jsx"},{"name":"DrawerPortal","sourcePath":"components/overlay/Drawer.jsx"},{"name":"DrawerClose","sourcePath":"components/overlay/Drawer.jsx"},{"name":"DrawerOverlay","sourcePath":"components/overlay/Drawer.jsx"},{"name":"DrawerContent","sourcePath":"components/overlay/Drawer.jsx"},{"name":"DrawerHeader","sourcePath":"components/overlay/Drawer.jsx"},{"name":"DrawerFooter","sourcePath":"components/overlay/Drawer.jsx"},{"name":"DrawerTitle","sourcePath":"components/overlay/Drawer.jsx"},{"name":"DrawerDescription","sourcePath":"components/overlay/Drawer.jsx"},{"name":"DropdownMenu","sourcePath":"components/overlay/DropdownMenu.jsx"},{"name":"DropdownMenuTrigger","sourcePath":"components/overlay/DropdownMenu.jsx"},{"name":"DropdownMenuPortal","sourcePath":"components/overlay/DropdownMenu.jsx"},{"name":"DropdownMenuContent","sourcePath":"components/overlay/DropdownMenu.jsx"},{"name":"DropdownMenuGroup","sourcePath":"components/overlay/DropdownMenu.jsx"},{"name":"DropdownMenuLabel","sourcePath":"components/overlay/DropdownMenu.jsx"},{"name":"DropdownMenuSeparator","sourcePath":"components/overlay/DropdownMenu.jsx"},{"name":"DropdownMenuShortcut","sourcePath":"components/overlay/DropdownMenu.jsx"},{"name":"DropdownMenuItem","sourcePath":"components/overlay/DropdownMenu.jsx"},{"name":"DropdownMenuCheckboxItem","sourcePath":"components/overlay/DropdownMenu.jsx"},{"name":"DropdownMenuRadioGroup","sourcePath":"components/overlay/DropdownMenu.jsx"},{"name":"DropdownMenuRadioItem","sourcePath":"components/overlay/DropdownMenu.jsx"},{"name":"DropdownMenuSub","sourcePath":"components/overlay/DropdownMenu.jsx"},{"name":"DropdownMenuSubTrigger","sourcePath":"components/overlay/DropdownMenu.jsx"},{"name":"DropdownMenuSubContent","sourcePath":"components/overlay/DropdownMenu.jsx"},{"name":"HoverCard","sourcePath":"components/overlay/HoverCard.jsx"},{"name":"HoverCardTrigger","sourcePath":"components/overlay/HoverCard.jsx"},{"name":"HoverCardContent","sourcePath":"components/overlay/HoverCard.jsx"},{"name":"Popover","sourcePath":"components/overlay/Popover.jsx"},{"name":"PopoverTrigger","sourcePath":"components/overlay/Popover.jsx"},{"name":"PopoverContent","sourcePath":"components/overlay/Popover.jsx"},{"name":"PopoverHeader","sourcePath":"components/overlay/Popover.jsx"},{"name":"PopoverTitle","sourcePath":"components/overlay/Popover.jsx"},{"name":"PopoverDescription","sourcePath":"components/overlay/Popover.jsx"},{"name":"Portal","sourcePath":"components/overlay/Portal.jsx"},{"name":"Sheet","sourcePath":"components/overlay/Sheet.jsx"},{"name":"SheetTrigger","sourcePath":"components/overlay/Sheet.jsx"},{"name":"SheetClose","sourcePath":"components/overlay/Sheet.jsx"},{"name":"SheetContent","sourcePath":"components/overlay/Sheet.jsx"},{"name":"SheetHeader","sourcePath":"components/overlay/Sheet.jsx"},{"name":"SheetFooter","sourcePath":"components/overlay/Sheet.jsx"},{"name":"SheetTitle","sourcePath":"components/overlay/Sheet.jsx"},{"name":"SheetDescription","sourcePath":"components/overlay/Sheet.jsx"}],"publicHelpers":[{"name":"markerVariants","sourcePath":"components/ai/Marker.jsx"},{"name":"useMessageScroller","sourcePath":"components/ai/MessageScroller.jsx"},{"name":"useMessageScrollerVisibility","sourcePath":"components/ai/MessageScroller.jsx"},{"name":"useMessageScrollerScrollable","sourcePath":"components/ai/MessageScroller.jsx"},{"name":"useChart","sourcePath":"components/data/Chart.jsx"},{"name":"badgeVariants","sourcePath":"components/display/Badge.jsx"},{"name":"useDirection","sourcePath":"components/display/Direction.jsx"},{"name":"toast","sourcePath":"components/feedback/Toast.jsx"},{"name":"buttonVariants","sourcePath":"components/forms/Button.jsx"},{"name":"buttonGroupVariants","sourcePath":"components/forms/ButtonGroup.jsx"},{"name":"useComboboxAnchor","sourcePath":"components/forms/Combobox.jsx"},{"name":"toggleVariants","sourcePath":"components/forms/Toggle.jsx"},{"name":"navigationMenuTriggerStyle","sourcePath":"components/navigation/NavigationMenu.jsx"},{"name":"useSidebar","sourcePath":"components/navigation/Sidebar.jsx"}],"sourceHashes":{"components/ai/AgentRun.jsx":"9740e0e168e0","components/ai/Bubble.jsx":"1fbd306ae6c7","components/ai/ChatMessage.jsx":"340b11fa16a2","components/ai/Citation.jsx":"bdfe512cd8b0","components/ai/Confirmation.jsx":"6b4d2388924a","components/ai/Conversation.jsx":"811020760647","components/ai/DocumentCard.jsx":"a7159ec86c9a","components/ai/FeedbackBar.jsx":"76ce9048b0f8","components/ai/GeneratedImage.jsx":"6f5314103a20","components/ai/Marker.jsx":"4a8e54cf1022","components/ai/Message.jsx":"631188fe9acc","components/ai/MessageScroller.jsx":"4708fd0705dd","components/ai/ModelSelector.jsx":"5e5ccdd53e45","components/ai/Player.jsx":"a8a820c1e259","components/ai/PromptComposer.jsx":"37273e81af0a","components/ai/PromptSteps.jsx":"428074df6cd1","components/ai/Reasoning.jsx":"6a54640d743d","components/ai/RichComposer.jsx":"cf26b89fd54b","components/ai/Sandbox.jsx":"fb40c18aac5f","components/ai/SelectionQuote.jsx":"2ba728772ad9","components/ai/SourceCard.jsx":"ca0d3eedf981","components/ai/Suggestions.jsx":"11e4ed7c8075","components/ai/Task.jsx":"613d6bf8d05a","components/ai/Todo.jsx":"5c8653be0ea4","components/ai/ToolCall.jsx":"3c36ce2c9aab","components/ai/Transcript.jsx":"3ecad5218a37","components/ai/UsageMeter.jsx":"75c7a916706a","components/ai/WebPreview.jsx":"a42cea1ff185","components/code/CodeBlock.jsx":"404f379fc744","components/code/Console.jsx":"5a150480bfb5","components/code/CopyField.jsx":"61f56f69d3d3","components/code/Diff.jsx":"9ef7d550ba0a","components/code/EnvList.jsx":"525abe81eed5","components/code/Exception.jsx":"7c9828556417","components/code/Terminal.jsx":"5eda66e465b6","components/data/BarChart.jsx":"93b35c077e52","components/data/Chart.jsx":"dbf8e6938664","components/data/DonutChart.jsx":"694ebf62805d","components/data/EmptyState.jsx":"3cb763cd7519","components/data/KeyValueList.jsx":"3876b7c9581e","components/data/LineChart.jsx":"7cce718ff267","components/data/Skeleton.jsx":"51394e716271","components/data/Sparkline.jsx":"5b2a0e67cdae","components/data/Stat.jsx":"aba92e72a0f8","components/data/StatusDot.jsx":"197386782d10","components/data/Table.jsx":"b2bb4dafe5e1","components/dates/Calendar.jsx":"29304518e5f9","components/dates/TimePicker.jsx":"197760d69fd7","components/display/Accordion.jsx":"ac9b1ec3ce0f","components/display/AspectRatio.jsx":"91558029d648","components/display/Avatar.jsx":"c9fa67934411","components/display/Badge.jsx":"fa91bc378031","components/display/Card.jsx":"5a44823ed4d8","components/display/Carousel.jsx":"d10ba2744373","components/display/Collapsible.jsx":"59cbf5105219","components/display/Direction.jsx":"538f2d4cbf23","components/display/Divider.jsx":"ee51ca336cc7","components/display/Item.jsx":"517df3ae775f","components/display/Kbd.jsx":"443f2a9b8f89","components/display/Link.jsx":"a0907910192e","components/display/Resizable.jsx":"74bc54184023","components/display/ScrollArea.jsx":"6c71af1111a2","components/display/Separator.jsx":"5c2b62cf7532","components/display/Tag.jsx":"e09f00799da9","components/display/Timeline.jsx":"6c5bff5f4dcf","components/display/Toolbar.jsx":"60e90649c94a","components/display/TreeList.jsx":"12827e081da3","components/feedback/Alert.jsx":"cc86b5cf69b8","components/feedback/AlertDialog.jsx":"c3618036d21b","components/feedback/Banner.jsx":"347de11daca4","components/feedback/ConfirmDialog.jsx":"033b979e1aa6","components/feedback/Dialog.jsx":"1603d86ed37d","components/feedback/Loader.jsx":"02efacc86905","components/feedback/Progress.jsx":"0964f54f5644","components/feedback/Spinner.jsx":"8781f16bf6b8","components/feedback/Toast.jsx":"84a2cc89d181","components/feedback/Tooltip.jsx":"01d5d7eebc8a","components/files/Attachment.jsx":"bd63ebd29171","components/files/FileDrop.jsx":"737632ac07db","components/files/FileTile.jsx":"28af04d1303b","components/files/FileTypeIcon.jsx":"3bcdf5ca7eb9","components/finance/PaymentCard.jsx":"d748ed19cc19","components/forms/Button.jsx":"85a176fef054","components/forms/ButtonGroup.jsx":"df7d04210646","components/forms/ButtonTile.jsx":"1508984c0c5c","components/forms/Checkbox.jsx":"7ccbcc068cc4","components/forms/Combobox.jsx":"c9c2d6ded3ea","components/forms/Field.jsx":"adf061cacd94","components/forms/IconButton.jsx":"967b0b3312fe","components/forms/Input.jsx":"a654deabdd03","components/forms/InputGroup.jsx":"a524a366e701","components/forms/InputOTP.jsx":"275c5ea31342","components/forms/Label.jsx":"f0bfcb5ae210","components/forms/NativeSelect.jsx":"a3d4a9d8eeb3","components/forms/NumberInput.jsx":"27fe9faa2091","components/forms/Questionnaire.jsx":"b75b3fabf143","components/forms/Radio.jsx":"fd805667ed84","components/forms/Select.jsx":"c8373842d395","components/forms/Slider.jsx":"98589ef4bda1","components/forms/Switch.jsx":"1c87f39efc97","components/forms/Textarea.jsx":"5c8934e2ecbf","components/forms/Toggle.jsx":"5e9772c3c4f7","components/icons/Icon.jsx":"55545fb2d7d4","components/navigation/Breadcrumbs.jsx":"6d989a3f6a62","components/navigation/Menubar.jsx":"f1c8dc2f5a89","components/navigation/NavigationMenu.jsx":"b2cdff652ecb","components/navigation/PageControl.jsx":"fba140f65467","components/navigation/Pagination.jsx":"86c274d2598a","components/navigation/SegmentedControl.jsx":"63d751bc6b70","components/navigation/SideNav.jsx":"7716cde75e41","components/navigation/Sidebar.jsx":"3235c7709622","components/navigation/SkipLink.jsx":"718518ba69cc","components/navigation/Steps.jsx":"45c6c1162b22","components/navigation/Tabs.jsx":"1af60f8cf9d8","components/navigation/TopNav.jsx":"967b11093c20","components/overlay/Command.jsx":"c0fd7633d67a","components/overlay/ContextMenu.jsx":"a1fe0c53cbb4","components/overlay/Drawer.jsx":"49a8da8bc869","components/overlay/DropdownMenu.jsx":"f4ca2afa281b","components/overlay/HoverCard.jsx":"c5fdc7c37c0a","components/overlay/Popover.jsx":"e43f4d40c954","components/overlay/Portal.jsx":"5741d5821bf9","components/overlay/Sheet.jsx":"ecdd4f4758fa","showcases/agent/AgentScreen.jsx":"c6b18a3905d7","showcases/auth/AuthScreens.jsx":"ec956de82d05","showcases/console/CustomersScreen.jsx":"04d0b3732932","showcases/console/ExtraScreens.jsx":"ed8902dfe977","showcases/console/OverviewScreen.jsx":"d771731feaa8","showcases/console/SettingsScreen.jsx":"30672b8b2b76","showcases/console/Shell.jsx":"f5cf27eb1645","showcases/docs/DocsScreen.jsx":"b77626349122","showcases/infra/InfraScreen.jsx":"9551f992bf6b","showcases/tools/ToolsScreen.jsx":"f474e061f0d3","showcases/trader/TraderScreen.jsx":"f6594536790c","showcases/website/Sections.jsx":"2adab895c443"},"inlinedExternals":[],"unexposedExports":[{"name":"computeDiff","sourcePath":"components/code/Diff.jsx"},{"name":"cssPct","sourcePath":"components/forms/Button.jsx"},{"name":"escapeLayerContext","sourcePath":"components/overlay/Portal.jsx"},{"name":"formatTime","sourcePath":"components/ai/Player.jsx"},{"name":"injectEfCss","sourcePath":"components/forms/Button.jsx"},{"name":"mergeRefs","sourcePath":"components/forms/Button.jsx"},{"name":"prefersReducedMotion","sourcePath":"components/forms/Button.jsx"},{"name":"useAnchoredStyle","sourcePath":"components/overlay/Portal.jsx"},{"name":"useEscapeLayer","sourcePath":"components/overlay/Portal.jsx"},{"name":"useFieldProps","sourcePath":"components/forms/Field.jsx"},{"name":"useIsoLayoutEffect","sourcePath":"components/forms/Button.jsx"},{"name":"useScrollLock","sourcePath":"components/overlay/Portal.jsx"}]} */
 
 (() => {
 
@@ -11154,351 +11154,6 @@ function SideNav({
 Object.assign(__ds_scope, { SideNav });
 })(); } catch (e) { __ds_ns.__errors.push({ path: "components/navigation/SideNav.jsx", error: String((e && e.message) || e) }); }
 
-// components/navigation/Sidebar.jsx
-try { (() => {
-function _extends() { return _extends = Object.assign ? Object.assign.bind() : function (n) { for (var e = 1; e < arguments.length; e++) { var t = arguments[e]; for (var r in t) ({}).hasOwnProperty.call(t, r) && (n[r] = t[r]); } return n; }, _extends.apply(null, arguments); }
-const CSS = `
-.ef-sidebar-provider{--sidebar-width:16rem;--sidebar-width-icon:3rem;position:relative;display:flex;min-height:100%;width:100%;background:var(--surface-page);color:var(--text-primary)}
-.ef-sidebar{position:relative;flex:0 0 var(--sidebar-width);width:var(--sidebar-width);min-height:100%;transition:flex-basis var(--dur-med) var(--ease-out),width var(--dur-med) var(--ease-out)}
-.ef-sidebar__panel{position:absolute;inset-block:0;inset-inline-start:0;z-index:30;display:flex;width:var(--sidebar-width);flex-direction:column;border-inline-end:1px solid var(--border-default);background:var(--surface-card);color:var(--text-primary);transition:width var(--dur-med) var(--ease-out),transform var(--dur-med) var(--ease-out)}
-.ef-sidebar[data-side=right] .ef-sidebar__panel{inset-inline-start:auto;inset-inline-end:0;border-inline-end:0;border-inline-start:1px solid var(--border-default)}
-.ef-sidebar[data-variant=floating] .ef-sidebar__panel{inset-block:8px;border:1px solid var(--border-default);border-radius:var(--radius-lg);box-shadow:var(--shadow-sm)}
-.ef-sidebar[data-side=left][data-variant=floating] .ef-sidebar__panel{inset-inline-start:8px}.ef-sidebar[data-side=right][data-variant=floating] .ef-sidebar__panel{inset-inline-end:8px}
-.ef-sidebar[data-state=collapsed][data-collapsible=offcanvas]{flex-basis:0;width:0}.ef-sidebar[data-state=collapsed][data-collapsible=offcanvas] .ef-sidebar__panel{transform:translateX(calc(-100% - 10px))}
-[dir=rtl] .ef-sidebar[data-state=collapsed][data-collapsible=offcanvas] .ef-sidebar__panel,.ef-sidebar[data-side=right][data-state=collapsed][data-collapsible=offcanvas] .ef-sidebar__panel{transform:translateX(calc(100% + 10px))}
-[dir=rtl] .ef-sidebar[data-side=right][data-state=collapsed][data-collapsible=offcanvas] .ef-sidebar__panel{transform:translateX(calc(-100% - 10px))}
-.ef-sidebar[data-state=collapsed][data-collapsible=icon]{flex-basis:var(--sidebar-width-icon);width:var(--sidebar-width-icon)}.ef-sidebar[data-state=collapsed][data-collapsible=icon] .ef-sidebar__panel{width:var(--sidebar-width-icon)}
-.ef-sidebar[data-state=collapsed][data-collapsible=icon] .ef-sidebar__collapse-hide{display:none}.ef-sidebar[data-state=collapsed][data-collapsible=icon] .ef-sidebar-menu-button{justify-content:center;padding-inline:0}.ef-sidebar[data-state=collapsed][data-collapsible=icon] .ef-sidebar-menu-button>span:not(.ef-sidebar-menu-button__icon){display:none}
-.ef-sidebar[data-state=collapsed][data-collapsible=icon] .ef-sidebar-input,.ef-sidebar[data-state=collapsed][data-collapsible=icon] .ef-sidebar-menu-action,.ef-sidebar[data-state=collapsed][data-collapsible=icon] .ef-sidebar-menu-badge,.ef-sidebar[data-state=collapsed][data-collapsible=icon] .ef-sidebar-menu-sub{display:none}
-.ef-sidebar-header,.ef-sidebar-footer{display:flex;flex-direction:column;gap:8px;padding:8px}.ef-sidebar-content{display:flex;min-height:0;flex:1;flex-direction:column;gap:8px;overflow:auto;overscroll-behavior:contain}
-.ef-sidebar-group{position:relative;display:flex;min-width:0;flex-direction:column;padding:8px}.ef-sidebar-group-label{display:flex;height:32px;align-items:center;padding-inline:8px;color:var(--text-muted);font-size:var(--text-xs);font-weight:var(--weight-medium)}
-.ef-sidebar-group-action{position:absolute;inset-block-start:12px;inset-inline-end:12px;display:inline-flex;width:24px;height:24px;align-items:center;justify-content:center;border:0;border-radius:var(--radius-sm);background:transparent;color:var(--text-secondary);cursor:pointer}.ef-sidebar-group-action:hover{background:var(--surface-sunken);color:var(--text-primary)}
-.ef-sidebar-group-content{width:100%;font-size:var(--text-sm)}.ef-sidebar-menu,.ef-sidebar-menu-sub{display:flex;min-width:0;flex-direction:column;gap:2px;margin:0;padding:0;list-style:none}.ef-sidebar-menu-item,.ef-sidebar-menu-sub-item{position:relative;min-width:0}
-.ef-sidebar-menu-button,.ef-sidebar-menu-sub-button{display:flex;width:100%;min-width:0;align-items:center;gap:8px;border:0;border-radius:var(--radius-sm);background:transparent;color:var(--text-secondary);font:inherit;text-align:start;text-decoration:none;cursor:pointer}.ef-sidebar-menu-button{height:32px;padding-inline:8px}.ef-sidebar-menu-button[data-size=sm]{height:28px;font-size:var(--text-xs)}.ef-sidebar-menu-button[data-size=lg]{height:40px}.ef-sidebar-menu-button:hover,.ef-sidebar-menu-sub-button:hover,.ef-sidebar-menu-button[data-active=true],.ef-sidebar-menu-sub-button[data-active=true]{background:var(--surface-sunken);color:var(--text-primary);text-decoration:none}.ef-sidebar-menu-button:focus-visible,.ef-sidebar-menu-sub-button:focus-visible,.ef-sidebar-group-action:focus-visible,.ef-sidebar-trigger:focus-visible,.ef-sidebar-rail:focus-visible{outline:0;box-shadow:var(--focus-ring)}
-.ef-sidebar-menu-button__icon{display:inline-flex;flex:0 0 auto}.ef-sidebar-menu-action{position:absolute;inset-block-start:4px;inset-inline-end:4px;display:inline-flex;width:24px;height:24px;align-items:center;justify-content:center;border:0;border-radius:var(--radius-sm);background:transparent;color:var(--text-muted);cursor:pointer}.ef-sidebar-menu-action:hover{background:var(--surface-raised);color:var(--text-primary)}
-.ef-sidebar-menu-action[data-show-on-hover=true]{opacity:0}.ef-sidebar-menu-item:hover>.ef-sidebar-menu-action[data-show-on-hover=true],.ef-sidebar-menu-action[data-show-on-hover=true]:focus-visible{opacity:1}
-.ef-sidebar-menu-badge{position:absolute;inset-block-start:7px;inset-inline-end:8px;min-width:20px;padding-inline:5px;border-radius:var(--radius-full);background:var(--surface-sunken);color:var(--text-muted);font-size:10px;line-height:18px;text-align:center;pointer-events:none}
-.ef-sidebar-menu-sub{margin-inline-start:15px;padding:3px 0 3px 12px;border-inline-start:1px solid var(--border-default)}.ef-sidebar-menu-sub-button{min-height:28px;padding:5px 8px;font-size:var(--text-xs)}
-.ef-sidebar-input{width:100%;height:32px;padding-inline:10px;border:1px solid var(--border-strong);border-radius:var(--radius-sm);background:var(--surface-sunken);color:var(--text-primary);font:inherit;font-size:var(--text-sm)}.ef-sidebar-input:focus-visible{outline:0;box-shadow:var(--focus-ring)}
-.ef-sidebar-separator{height:1px;margin:4px 8px;border:0;background:var(--border-default)}.ef-sidebar-skeleton{height:32px;border-radius:var(--radius-sm);background:var(--surface-sunken)}
-.ef-sidebar-inset{position:relative;display:flex;min-width:0;flex:1;flex-direction:column;background:var(--surface-page)}.ef-sidebar-trigger{display:inline-flex;width:32px;height:32px;align-items:center;justify-content:center;border:0;border-radius:var(--radius-sm);background:transparent;color:var(--text-secondary);cursor:pointer}.ef-sidebar-trigger:hover{background:var(--surface-sunken);color:var(--text-primary)}
-.ef-sidebar-rail{position:absolute;inset-block:0;inset-inline-end:-6px;z-index:40;width:12px;border:0;background:transparent;cursor:ew-resize}.ef-sidebar-rail:hover:after{content:"";position:absolute;inset-block:0;inset-inline-start:5px;width:2px;background:var(--border-strong)}
-.ef-sidebar[data-side=right] .ef-sidebar-rail{inset-inline-end:auto;inset-inline-start:-6px}
-.ef-sidebar-mobile-backdrop{position:fixed;inset:0;z-index:49;background:var(--overlay-backdrop)}.ef-sidebar-mobile{position:fixed;inset-block:0;z-index:50;display:flex;width:min(var(--sidebar-width),calc(100vw - 48px));flex-direction:column;background:var(--surface-card);box-shadow:var(--shadow-lg)}.ef-sidebar-mobile[data-side=left]{inset-inline-start:0}.ef-sidebar-mobile[data-side=right]{inset-inline-end:0}
-@media(max-width:767px){.ef-sidebar:not([data-collapsible=none]){display:none}.ef-sidebar-provider{min-height:100%}}
-@media(min-width:768px){.ef-sidebar-mobile-backdrop,.ef-sidebar-mobile{display:none}}
-@media(prefers-reduced-motion:reduce){.ef-sidebar,.ef-sidebar__panel{transition:none}}
-`;
-const SidebarContext = React.createContext(null);
-const join = (...parts) => parts.filter(Boolean).join(' ');
-function compose(render, fallback, props, ref, children) {
-  if (React.isValidElement(render)) return React.cloneElement(render, {
-    ...props,
-    ...render.props,
-    ref: __ds_scope.mergeRefs(ref, render.ref),
-    className: join(props.className, render.props.className),
-    children: render.props.children ?? children
-  });
-  return React.createElement(fallback, {
-    ...props,
-    ref
-  }, children);
-}
-function useSidebar() {
-  const value = React.useContext(SidebarContext);
-  if (!value) throw new Error('useSidebar must be used within SidebarProvider.');
-  return value;
-}
-const SidebarProvider = React.forwardRef(function SidebarProvider({
-  defaultOpen = true,
-  open: controlledOpen,
-  onOpenChange,
-  style,
-  className,
-  children,
-  ...props
-}, ref) {
-  __ds_scope.injectEfCss('ef-css-sidebar', CSS);
-  const [internalOpen, setInternalOpen] = React.useState(defaultOpen);
-  const [openMobile, setOpenMobile] = React.useState(false);
-  const [isMobile, setIsMobile] = React.useState(false);
-  const open = controlledOpen ?? internalOpen;
-  const setOpen = React.useCallback(next => {
-    const value = typeof next === 'function' ? next(open) : next;
-    if (controlledOpen === undefined) setInternalOpen(value);
-    onOpenChange?.(value);
-  }, [controlledOpen, onOpenChange, open]);
-  const toggleSidebar = React.useCallback(() => isMobile ? setOpenMobile(value => !value) : setOpen(value => !value), [isMobile, setOpen]);
-  React.useEffect(() => {
-    if (!window.matchMedia) return;
-    const query = window.matchMedia('(max-width: 767px)');
-    const update = () => setIsMobile(query.matches);
-    update();
-    query.addEventListener?.('change', update);
-    return () => query.removeEventListener?.('change', update);
-  }, []);
-  React.useEffect(() => {
-    const onKeyDown = event => {
-      if (event.key === 'Escape' && openMobile) {
-        event.preventDefault();
-        setOpenMobile(false);
-      }
-      if (event.key.toLowerCase() === 'b' && (event.metaKey || event.ctrlKey)) {
-        event.preventDefault();
-        toggleSidebar();
-      }
-    };
-    window.addEventListener('keydown', onKeyDown);
-    return () => window.removeEventListener('keydown', onKeyDown);
-  }, [openMobile, toggleSidebar]);
-  const context = React.useMemo(() => ({
-    state: open ? 'expanded' : 'collapsed',
-    open,
-    setOpen,
-    openMobile,
-    setOpenMobile,
-    isMobile,
-    toggleSidebar
-  }), [open, setOpen, openMobile, isMobile, toggleSidebar]);
-  return /*#__PURE__*/React.createElement(SidebarContext.Provider, {
-    value: context
-  }, /*#__PURE__*/React.createElement("div", _extends({}, props, {
-    ref: ref,
-    "data-slot": "sidebar-wrapper",
-    style: {
-      '--sidebar-width': '16rem',
-      '--sidebar-width-icon': '3rem',
-      ...style
-    },
-    className: join('ef-sidebar-provider', className)
-  }), children));
-});
-const Sidebar = React.forwardRef(function Sidebar({
-  side = 'left',
-  variant = 'sidebar',
-  collapsible = 'offcanvas',
-  dir,
-  className,
-  children,
-  ...props
-}, ref) {
-  const context = useSidebar();
-  const common = {
-    'data-side': side,
-    'data-variant': variant,
-    'data-collapsible': collapsible,
-    'data-state': context.state
-  };
-  return /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement("aside", _extends({}, props, common, {
-    ref: ref,
-    dir: dir,
-    "data-slot": "sidebar",
-    className: join('ef-sidebar', className)
-  }), /*#__PURE__*/React.createElement("div", {
-    "data-slot": "sidebar-container",
-    className: "ef-sidebar__panel"
-  }, children)), context.openMobile ? /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement("button", {
-    type: "button",
-    className: "ef-sidebar-mobile-backdrop",
-    "aria-label": "Close sidebar",
-    onClick: () => context.setOpenMobile(false)
-  }), /*#__PURE__*/React.createElement("aside", _extends({}, common, {
-    dir: dir,
-    "data-mobile": "true",
-    className: "ef-sidebar-mobile"
-  }), children)) : null);
-});
-const SidebarTrigger = React.forwardRef(function SidebarTrigger({
-  render,
-  className,
-  onClick,
-  children,
-  ...props
-}, ref) {
-  const context = useSidebar();
-  const click = event => {
-    onClick?.(event);
-    if (!event.defaultPrevented) context.toggleSidebar();
-  };
-  return compose(render, 'button', {
-    ...props,
-    type: render ? undefined : 'button',
-    'data-slot': 'sidebar-trigger',
-    'aria-label': props['aria-label'] || 'Toggle sidebar',
-    'aria-expanded': context.isMobile ? context.openMobile : context.open,
-    className: join('ef-sidebar-trigger', className),
-    onClick: click
-  }, ref, children || /*#__PURE__*/React.createElement(__ds_scope.Icon, {
-    name: "panel-left",
-    size: 18
-  }));
-});
-const SidebarRail = React.forwardRef(function SidebarRail({
-  className,
-  onClick,
-  ...props
-}, ref) {
-  const context = useSidebar();
-  return /*#__PURE__*/React.createElement("button", _extends({}, props, {
-    ref: ref,
-    type: "button",
-    "data-slot": "sidebar-rail",
-    "aria-label": props['aria-label'] || 'Toggle sidebar',
-    tabIndex: -1,
-    className: join('ef-sidebar-rail', className),
-    onClick: event => {
-      onClick?.(event);
-      if (!event.defaultPrevented) context.toggleSidebar();
-    }
-  }));
-});
-function region(name, tag, base) {
-  return React.forwardRef(function SidebarRegion({
-    className,
-    ...props
-  }, ref) {
-    return React.createElement(tag, {
-      ...props,
-      ref,
-      'data-slot': name,
-      className: join(base, className)
-    });
-  });
-}
-const SidebarInset = region('sidebar-inset', 'main', 'ef-sidebar-inset');
-const SidebarHeader = region('sidebar-header', 'div', 'ef-sidebar-header');
-const SidebarFooter = region('sidebar-footer', 'div', 'ef-sidebar-footer');
-const SidebarContent = region('sidebar-content', 'div', 'ef-sidebar-content');
-const SidebarGroup = region('sidebar-group', 'div', 'ef-sidebar-group');
-const SidebarGroupContent = region('sidebar-group-content', 'div', 'ef-sidebar-group-content');
-const SidebarMenu = region('sidebar-menu', 'ul', 'ef-sidebar-menu');
-const SidebarMenuItem = region('sidebar-menu-item', 'li', 'ef-sidebar-menu-item');
-const SidebarMenuSub = region('sidebar-menu-sub', 'ul', 'ef-sidebar-menu-sub');
-const SidebarMenuSubItem = region('sidebar-menu-sub-item', 'li', 'ef-sidebar-menu-sub-item');
-const SidebarInput = React.forwardRef(function SidebarInput({
-  className,
-  ...props
-}, ref) {
-  return /*#__PURE__*/React.createElement("input", _extends({}, props, {
-    ref: ref,
-    "data-slot": "sidebar-input",
-    className: join('ef-sidebar-input', className)
-  }));
-});
-const SidebarSeparator = React.forwardRef(function SidebarSeparator({
-  className,
-  ...props
-}, ref) {
-  return /*#__PURE__*/React.createElement("hr", _extends({}, props, {
-    ref: ref,
-    "data-slot": "sidebar-separator",
-    className: join('ef-sidebar-separator', className)
-  }));
-});
-const SidebarGroupLabel = React.forwardRef(function SidebarGroupLabel({
-  render,
-  className,
-  children,
-  ...props
-}, ref) {
-  return compose(render, 'div', {
-    ...props,
-    'data-slot': 'sidebar-group-label',
-    className: join('ef-sidebar-group-label', 'ef-sidebar__collapse-hide', className)
-  }, ref, children);
-});
-const SidebarGroupAction = React.forwardRef(function SidebarGroupAction({
-  render,
-  className,
-  children,
-  ...props
-}, ref) {
-  return compose(render, 'button', {
-    ...props,
-    type: render ? undefined : 'button',
-    'data-slot': 'sidebar-group-action',
-    className: join('ef-sidebar-group-action', 'ef-sidebar__collapse-hide', className)
-  }, ref, children);
-});
-const SidebarMenuButton = React.forwardRef(function SidebarMenuButton({
-  render,
-  href,
-  isActive = false,
-  size = 'default',
-  tooltip,
-  className,
-  children,
-  ...props
-}, ref) {
-  const fallback = href ? 'a' : 'button';
-  const label = tooltip && typeof tooltip === 'string' ? tooltip : undefined;
-  return compose(render, fallback, {
-    ...props,
-    href,
-    type: fallback === 'button' && !render ? 'button' : undefined,
-    title: props.title || label,
-    'aria-current': props['aria-current'] || (href && isActive ? 'page' : undefined),
-    'data-slot': 'sidebar-menu-button',
-    'data-active': isActive ? 'true' : 'false',
-    'data-size': size,
-    className: join('ef-sidebar-menu-button', className)
-  }, ref, children);
-});
-const SidebarMenuAction = React.forwardRef(function SidebarMenuAction({
-  render,
-  showOnHover = false,
-  className,
-  children,
-  ...props
-}, ref) {
-  return compose(render, 'button', {
-    ...props,
-    type: render ? undefined : 'button',
-    'data-slot': 'sidebar-menu-action',
-    'data-show-on-hover': showOnHover ? 'true' : 'false',
-    className: join('ef-sidebar-menu-action', className)
-  }, ref, children);
-});
-const SidebarMenuBadge = region('sidebar-menu-badge', 'span', 'ef-sidebar-menu-badge');
-const SidebarMenuSubButton = React.forwardRef(function SidebarMenuSubButton({
-  render,
-  href,
-  isActive = false,
-  size = 'md',
-  className,
-  children,
-  ...props
-}, ref) {
-  const fallback = href ? 'a' : 'button';
-  return compose(render, fallback, {
-    ...props,
-    href,
-    type: fallback === 'button' && !render ? 'button' : undefined,
-    'data-slot': 'sidebar-menu-sub-button',
-    'data-active': isActive ? 'true' : 'false',
-    'data-size': size,
-    className: join('ef-sidebar-menu-sub-button', className)
-  }, ref, children);
-});
-const SidebarMenuSkeleton = React.forwardRef(function SidebarMenuSkeleton({
-  showIcon = false,
-  className,
-  ...props
-}, ref) {
-  return /*#__PURE__*/React.createElement("div", _extends({}, props, {
-    ref: ref,
-    "data-slot": "sidebar-menu-skeleton",
-    "aria-hidden": "true",
-    className: join('ef-sidebar-skeleton', className),
-    style: {
-      width: props.style?.width || (showIcon ? '84%' : '72%'),
-      ...props.style
-    }
-  }));
-});
-Object.assign(__ds_scope, { useSidebar, SidebarProvider, Sidebar, SidebarTrigger, SidebarRail, SidebarInset, SidebarHeader, SidebarFooter, SidebarContent, SidebarGroup, SidebarGroupContent, SidebarMenu, SidebarMenuItem, SidebarMenuSub, SidebarMenuSubItem, SidebarInput, SidebarSeparator, SidebarGroupLabel, SidebarGroupAction, SidebarMenuButton, SidebarMenuAction, SidebarMenuBadge, SidebarMenuSubButton, SidebarMenuSkeleton });
-})(); } catch (e) { __ds_ns.__errors.push({ path: "components/navigation/Sidebar.jsx", error: String((e && e.message) || e) }); }
-
 // components/navigation/SkipLink.jsx
 try { (() => {
 function _extends() { return _extends = Object.assign ? Object.assign.bind() : function (n) { for (var e = 1; e < arguments.length; e++) { var t = arguments[e]; for (var r in t) ({}).hasOwnProperty.call(t, r) && (n[r] = t[r]); } return n; }, _extends.apply(null, arguments); }
@@ -14443,6 +14098,403 @@ const SelectItem = React.forwardRef(function SelectItem({
 });
 Object.assign(__ds_scope, { Select, SelectTrigger, SelectValue, SelectContent, SelectGroup, SelectLabel, SelectSeparator, SelectItem });
 })(); } catch (e) { __ds_ns.__errors.push({ path: "components/forms/Select.jsx", error: String((e && e.message) || e) }); }
+
+// components/navigation/Sidebar.jsx
+try { (() => {
+function _extends() { return _extends = Object.assign ? Object.assign.bind() : function (n) { for (var e = 1; e < arguments.length; e++) { var t = arguments[e]; for (var r in t) ({}).hasOwnProperty.call(t, r) && (n[r] = t[r]); } return n; }, _extends.apply(null, arguments); }
+const CSS = `
+.ef-sidebar-provider{--sidebar-width:16rem;--sidebar-width-icon:3rem;position:relative;display:flex;min-height:100%;width:100%;background:var(--surface-page);color:var(--text-primary)}
+.ef-sidebar{position:relative;flex:0 0 var(--sidebar-width);width:var(--sidebar-width);min-height:100%;transition:flex-basis var(--dur-med) var(--ease-out),width var(--dur-med) var(--ease-out)}
+.ef-sidebar__panel{position:absolute;inset-block:0;inset-inline-start:0;z-index:30;display:flex;width:var(--sidebar-width);flex-direction:column;border-inline-end:1px solid var(--border-default);background:var(--surface-card);color:var(--text-primary);transition:width var(--dur-med) var(--ease-out),transform var(--dur-med) var(--ease-out)}
+.ef-sidebar[data-side=right] .ef-sidebar__panel{inset-inline-start:auto;inset-inline-end:0;border-inline-end:0;border-inline-start:1px solid var(--border-default)}
+.ef-sidebar[data-variant=floating] .ef-sidebar__panel{inset-block:8px;border:1px solid var(--border-default);border-radius:var(--radius-lg);box-shadow:var(--shadow-sm)}
+.ef-sidebar[data-side=left][data-variant=floating] .ef-sidebar__panel{inset-inline-start:8px}.ef-sidebar[data-side=right][data-variant=floating] .ef-sidebar__panel{inset-inline-end:8px}
+.ef-sidebar[data-state=collapsed][data-collapsible=offcanvas]{flex-basis:0;width:0}.ef-sidebar[data-state=collapsed][data-collapsible=offcanvas] .ef-sidebar__panel{transform:translateX(calc(-100% - 10px))}
+[dir=rtl] .ef-sidebar[data-state=collapsed][data-collapsible=offcanvas] .ef-sidebar__panel,.ef-sidebar[data-side=right][data-state=collapsed][data-collapsible=offcanvas] .ef-sidebar__panel{transform:translateX(calc(100% + 10px))}
+[dir=rtl] .ef-sidebar[data-side=right][data-state=collapsed][data-collapsible=offcanvas] .ef-sidebar__panel{transform:translateX(calc(-100% - 10px))}
+.ef-sidebar[data-state=collapsed][data-collapsible=icon]{flex-basis:var(--sidebar-width-icon);width:var(--sidebar-width-icon)}.ef-sidebar[data-state=collapsed][data-collapsible=icon] .ef-sidebar__panel{width:var(--sidebar-width-icon)}
+.ef-sidebar[data-state=collapsed][data-collapsible=icon] .ef-sidebar__collapse-hide{display:none}.ef-sidebar[data-state=collapsed][data-collapsible=icon] .ef-sidebar-menu-button{justify-content:center;padding-inline:0}.ef-sidebar[data-state=collapsed][data-collapsible=icon] .ef-sidebar-menu-button>span:not(.ef-sidebar-menu-button__icon){display:none}
+.ef-sidebar[data-state=collapsed][data-collapsible=icon] .ef-sidebar-input,.ef-sidebar[data-state=collapsed][data-collapsible=icon] .ef-sidebar-menu-action,.ef-sidebar[data-state=collapsed][data-collapsible=icon] .ef-sidebar-menu-badge,.ef-sidebar[data-state=collapsed][data-collapsible=icon] .ef-sidebar-menu-sub{display:none}
+.ef-sidebar-header,.ef-sidebar-footer{display:flex;flex-direction:column;gap:8px;padding:8px}.ef-sidebar-content{display:flex;min-height:0;flex:1;flex-direction:column;gap:8px;overflow:auto;overscroll-behavior:contain}
+.ef-sidebar-group{position:relative;display:flex;min-width:0;flex-direction:column;padding:8px}.ef-sidebar-group-label{display:flex;height:32px;align-items:center;padding-inline:8px;color:var(--text-muted);font-size:var(--text-xs);font-weight:var(--weight-medium)}
+.ef-sidebar-group-action{position:absolute;inset-block-start:12px;inset-inline-end:12px;display:inline-flex;width:24px;height:24px;align-items:center;justify-content:center;border:0;border-radius:var(--radius-sm);background:transparent;color:var(--text-secondary);cursor:pointer}.ef-sidebar-group-action:hover{background:var(--surface-sunken);color:var(--text-primary)}
+.ef-sidebar-group-content{width:100%;font-size:var(--text-sm)}.ef-sidebar-menu,.ef-sidebar-menu-sub{display:flex;min-width:0;flex-direction:column;gap:2px;margin:0;padding:0;list-style:none}.ef-sidebar-menu-item,.ef-sidebar-menu-sub-item{position:relative;min-width:0}
+.ef-sidebar-menu-button,.ef-sidebar-menu-sub-button{display:flex;width:100%;min-width:0;align-items:center;gap:8px;border:0;border-radius:var(--radius-sm);background:transparent;color:var(--text-secondary);font:inherit;text-align:start;text-decoration:none;cursor:pointer}.ef-sidebar-menu-button{height:32px;padding-inline:8px}.ef-sidebar-menu-button[data-size=sm]{height:28px;font-size:var(--text-xs)}.ef-sidebar-menu-button[data-size=lg]{height:40px}.ef-sidebar-menu-button:hover,.ef-sidebar-menu-sub-button:hover,.ef-sidebar-menu-button[data-active=true],.ef-sidebar-menu-sub-button[data-active=true]{background:var(--surface-sunken);color:var(--text-primary);text-decoration:none}.ef-sidebar-menu-button:focus-visible,.ef-sidebar-menu-sub-button:focus-visible,.ef-sidebar-group-action:focus-visible,.ef-sidebar-trigger:focus-visible,.ef-sidebar-rail:focus-visible{outline:0;box-shadow:var(--focus-ring)}
+.ef-sidebar-menu-button__icon{display:inline-flex;flex:0 0 auto}.ef-sidebar-menu-action{position:absolute;inset-block-start:4px;inset-inline-end:4px;display:inline-flex;width:24px;height:24px;align-items:center;justify-content:center;border:0;border-radius:var(--radius-sm);background:transparent;color:var(--text-muted);cursor:pointer}.ef-sidebar-menu-action:hover{background:var(--surface-raised);color:var(--text-primary)}
+.ef-sidebar-menu-action[data-show-on-hover=true]{opacity:0}.ef-sidebar-menu-item:hover>.ef-sidebar-menu-action[data-show-on-hover=true],.ef-sidebar-menu-action[data-show-on-hover=true]:focus-visible{opacity:1}
+.ef-sidebar-menu-badge{position:absolute;inset-block-start:7px;inset-inline-end:8px;min-width:20px;padding-inline:5px;border-radius:var(--radius-full);background:var(--surface-sunken);color:var(--text-muted);font-size:10px;line-height:18px;text-align:center;pointer-events:none}
+.ef-sidebar-menu-sub{margin-inline-start:15px;padding:3px 0 3px 12px;border-inline-start:1px solid var(--border-default)}.ef-sidebar-menu-sub-button{min-height:28px;padding:5px 8px;font-size:var(--text-xs)}
+.ef-sidebar-input{width:100%;height:32px;padding-inline:10px;border:1px solid var(--border-strong);border-radius:var(--radius-sm);background:var(--surface-sunken);color:var(--text-primary);font:inherit;font-size:var(--text-sm)}.ef-sidebar-input:focus-visible{outline:0;box-shadow:var(--focus-ring)}
+.ef-sidebar-separator{height:1px;margin:4px 8px;border:0;background:var(--border-default)}.ef-sidebar-skeleton{height:32px;border-radius:var(--radius-sm);background:var(--surface-sunken)}
+.ef-sidebar-inset{position:relative;display:flex;min-width:0;flex:1;flex-direction:column;background:var(--surface-page)}.ef-sidebar-trigger{display:inline-flex;width:32px;height:32px;align-items:center;justify-content:center;border:0;border-radius:var(--radius-sm);background:transparent;color:var(--text-secondary);cursor:pointer}.ef-sidebar-trigger:hover{background:var(--surface-sunken);color:var(--text-primary)}
+.ef-sidebar-rail{position:absolute;inset-block:0;inset-inline-end:-6px;z-index:40;width:12px;border:0;background:transparent;cursor:ew-resize}.ef-sidebar-rail:hover:after{content:"";position:absolute;inset-block:0;inset-inline-start:5px;width:2px;background:var(--border-strong)}
+.ef-sidebar[data-side=right] .ef-sidebar-rail{inset-inline-end:auto;inset-inline-start:-6px}
+.ef-sidebar-mobile-backdrop{position:fixed;inset:0;z-index:49;background:var(--overlay-backdrop)}.ef-sidebar-mobile{position:fixed;inset-block:0;z-index:50;display:flex;width:min(var(--sidebar-width),calc(100vw - 48px));flex-direction:column;background:var(--surface-card);box-shadow:var(--shadow-lg)}.ef-sidebar-mobile[data-side=left]{inset-inline-start:0}.ef-sidebar-mobile[data-side=right]{inset-inline-end:0}
+@media(max-width:767px){.ef-sidebar:not([data-collapsible=none]){display:none}.ef-sidebar-provider{min-height:100%}}
+@media(min-width:768px){.ef-sidebar-mobile-backdrop,.ef-sidebar-mobile{display:none}}
+@media(prefers-reduced-motion:reduce){.ef-sidebar,.ef-sidebar__panel{transition:none}}
+`;
+const SidebarContext = React.createContext(null);
+const join = (...parts) => parts.filter(Boolean).join(' ');
+function compose(render, fallback, props, ref, children) {
+  if (React.isValidElement(render)) return React.cloneElement(render, {
+    ...props,
+    ...render.props,
+    ref: __ds_scope.mergeRefs(ref, render.ref),
+    className: join(props.className, render.props.className),
+    children: render.props.children ?? children
+  });
+  return React.createElement(fallback, {
+    ...props,
+    ref
+  }, children);
+}
+function useSidebar() {
+  const value = React.useContext(SidebarContext);
+  if (!value) throw new Error('useSidebar must be used within SidebarProvider.');
+  return value;
+}
+const SidebarProvider = React.forwardRef(function SidebarProvider({
+  defaultOpen = true,
+  open: controlledOpen,
+  onOpenChange,
+  style,
+  className,
+  children,
+  ...props
+}, ref) {
+  __ds_scope.injectEfCss('ef-css-sidebar', CSS);
+  const [internalOpen, setInternalOpen] = React.useState(defaultOpen);
+  const [openMobile, setOpenMobile] = React.useState(false);
+  const [isMobile, setIsMobile] = React.useState(false);
+  const open = controlledOpen ?? internalOpen;
+  const setOpen = React.useCallback(next => {
+    const value = typeof next === 'function' ? next(open) : next;
+    if (controlledOpen === undefined) setInternalOpen(value);
+    onOpenChange?.(value);
+  }, [controlledOpen, onOpenChange, open]);
+  const toggleSidebar = React.useCallback(() => isMobile ? setOpenMobile(value => !value) : setOpen(value => !value), [isMobile, setOpen]);
+  React.useEffect(() => {
+    if (!window.matchMedia) return;
+    const query = window.matchMedia('(max-width: 767px)');
+    const update = () => setIsMobile(query.matches);
+    update();
+    query.addEventListener?.('change', update);
+    return () => query.removeEventListener?.('change', update);
+  }, []);
+  React.useEffect(() => {
+    const onKeyDown = event => {
+      if (event.key === 'Escape' && openMobile) {
+        event.preventDefault();
+        setOpenMobile(false);
+      }
+      if (typeof event.key === 'string' && event.key.toLowerCase() === 'b' && (event.metaKey || event.ctrlKey)) {
+        event.preventDefault();
+        toggleSidebar();
+      }
+    };
+    window.addEventListener('keydown', onKeyDown);
+    return () => window.removeEventListener('keydown', onKeyDown);
+  }, [openMobile, toggleSidebar]);
+  const context = React.useMemo(() => ({
+    state: open ? 'expanded' : 'collapsed',
+    open,
+    setOpen,
+    openMobile,
+    setOpenMobile,
+    isMobile,
+    toggleSidebar
+  }), [open, setOpen, openMobile, isMobile, toggleSidebar]);
+  return /*#__PURE__*/React.createElement(SidebarContext.Provider, {
+    value: context
+  }, /*#__PURE__*/React.createElement("div", _extends({}, props, {
+    ref: ref,
+    "data-slot": "sidebar-wrapper",
+    style: {
+      '--sidebar-width': '16rem',
+      '--sidebar-width-icon': '3rem',
+      ...style
+    },
+    className: join('ef-sidebar-provider', className)
+  }), children));
+});
+const Sidebar = React.forwardRef(function Sidebar({
+  side = 'left',
+  variant = 'sidebar',
+  collapsible = 'offcanvas',
+  dir,
+  className,
+  children,
+  ...props
+}, ref) {
+  const context = useSidebar();
+  const common = {
+    'data-side': side,
+    'data-variant': variant,
+    'data-collapsible': collapsible,
+    'data-state': context.state
+  };
+  return /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement("aside", _extends({}, props, common, {
+    ref: ref,
+    dir: dir,
+    "data-slot": "sidebar",
+    className: join('ef-sidebar', className)
+  }), /*#__PURE__*/React.createElement("div", {
+    "data-slot": "sidebar-container",
+    className: "ef-sidebar__panel"
+  }, children)), context.openMobile ? /*#__PURE__*/React.createElement(MobileSidebarPanel, {
+    common: common,
+    dir: dir,
+    label: props['aria-label'] || 'Sidebar',
+    onClose: () => context.setOpenMobile(false)
+  }, children) : null);
+});
+const FOCUSABLE = 'a[href],button:not([disabled]),input:not([disabled]),select:not([disabled]),textarea:not([disabled]),[tabindex]:not([tabindex="-1"])';
+
+// The off-canvas sidebar on a phone covers the page behind a backdrop, so it
+// behaves as a modal dialog: focus moves in, Tab stays in, the page does not
+// scroll, and closing returns focus to whatever opened it.
+function MobileSidebarPanel({
+  common,
+  dir,
+  label,
+  onClose,
+  children
+}) {
+  const panelRef = React.useRef(null);
+  __ds_scope.useScrollLock(true);
+  React.useEffect(() => {
+    const previous = document.activeElement;
+    const panel = panelRef.current;
+    (panel?.querySelector(FOCUSABLE) || panel)?.focus();
+    return () => {
+      if (previous && previous.isConnected && previous.focus) previous.focus();
+    };
+  }, []);
+  const keydown = event => {
+    if (event.key !== 'Tab') return;
+    const items = Array.from(panelRef.current?.querySelectorAll(FOCUSABLE) || []);
+    if (!items.length) {
+      event.preventDefault();
+      return;
+    }
+    const index = items.indexOf(document.activeElement);
+    if (event.shiftKey && index <= 0) {
+      event.preventDefault();
+      items[items.length - 1].focus();
+    } else if (!event.shiftKey && (index < 0 || index === items.length - 1)) {
+      event.preventDefault();
+      items[0].focus();
+    }
+  };
+  return /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement("button", {
+    type: "button",
+    className: "ef-sidebar-mobile-backdrop",
+    "aria-label": "Close sidebar",
+    tabIndex: -1,
+    onClick: onClose
+  }), /*#__PURE__*/React.createElement("aside", _extends({}, common, {
+    ref: panelRef,
+    dir: dir,
+    "data-mobile": "true",
+    role: "dialog",
+    "aria-modal": "true",
+    "aria-label": label,
+    tabIndex: -1,
+    className: "ef-sidebar-mobile",
+    onKeyDown: keydown
+  }), children));
+}
+const SidebarTrigger = React.forwardRef(function SidebarTrigger({
+  render,
+  className,
+  onClick,
+  children,
+  ...props
+}, ref) {
+  const context = useSidebar();
+  const click = event => {
+    onClick?.(event);
+    if (!event.defaultPrevented) context.toggleSidebar();
+  };
+  return compose(render, 'button', {
+    ...props,
+    type: render ? undefined : 'button',
+    'data-slot': 'sidebar-trigger',
+    'aria-label': props['aria-label'] || 'Toggle sidebar',
+    'aria-expanded': context.isMobile ? context.openMobile : context.open,
+    className: join('ef-sidebar-trigger', className),
+    onClick: click
+  }, ref, children || /*#__PURE__*/React.createElement(__ds_scope.Icon, {
+    name: "panel-left",
+    size: 18
+  }));
+});
+const SidebarRail = React.forwardRef(function SidebarRail({
+  className,
+  onClick,
+  ...props
+}, ref) {
+  const context = useSidebar();
+  return /*#__PURE__*/React.createElement("button", _extends({}, props, {
+    ref: ref,
+    type: "button",
+    "data-slot": "sidebar-rail",
+    "aria-label": props['aria-label'] || 'Toggle sidebar',
+    tabIndex: -1,
+    className: join('ef-sidebar-rail', className),
+    onClick: event => {
+      onClick?.(event);
+      if (!event.defaultPrevented) context.toggleSidebar();
+    }
+  }));
+});
+function region(name, tag, base) {
+  return React.forwardRef(function SidebarRegion({
+    className,
+    ...props
+  }, ref) {
+    return React.createElement(tag, {
+      ...props,
+      ref,
+      'data-slot': name,
+      className: join(base, className)
+    });
+  });
+}
+const SidebarInset = region('sidebar-inset', 'main', 'ef-sidebar-inset');
+const SidebarHeader = region('sidebar-header', 'div', 'ef-sidebar-header');
+const SidebarFooter = region('sidebar-footer', 'div', 'ef-sidebar-footer');
+const SidebarContent = region('sidebar-content', 'div', 'ef-sidebar-content');
+const SidebarGroup = region('sidebar-group', 'div', 'ef-sidebar-group');
+const SidebarGroupContent = region('sidebar-group-content', 'div', 'ef-sidebar-group-content');
+const SidebarMenu = region('sidebar-menu', 'ul', 'ef-sidebar-menu');
+const SidebarMenuItem = region('sidebar-menu-item', 'li', 'ef-sidebar-menu-item');
+const SidebarMenuSub = region('sidebar-menu-sub', 'ul', 'ef-sidebar-menu-sub');
+const SidebarMenuSubItem = region('sidebar-menu-sub-item', 'li', 'ef-sidebar-menu-sub-item');
+const SidebarInput = React.forwardRef(function SidebarInput({
+  className,
+  ...props
+}, ref) {
+  return /*#__PURE__*/React.createElement("input", _extends({}, props, {
+    ref: ref,
+    "data-slot": "sidebar-input",
+    className: join('ef-sidebar-input', className)
+  }));
+});
+const SidebarSeparator = React.forwardRef(function SidebarSeparator({
+  className,
+  ...props
+}, ref) {
+  return /*#__PURE__*/React.createElement("hr", _extends({}, props, {
+    ref: ref,
+    "data-slot": "sidebar-separator",
+    className: join('ef-sidebar-separator', className)
+  }));
+});
+const SidebarGroupLabel = React.forwardRef(function SidebarGroupLabel({
+  render,
+  className,
+  children,
+  ...props
+}, ref) {
+  return compose(render, 'div', {
+    ...props,
+    'data-slot': 'sidebar-group-label',
+    className: join('ef-sidebar-group-label', 'ef-sidebar__collapse-hide', className)
+  }, ref, children);
+});
+const SidebarGroupAction = React.forwardRef(function SidebarGroupAction({
+  render,
+  className,
+  children,
+  ...props
+}, ref) {
+  return compose(render, 'button', {
+    ...props,
+    type: render ? undefined : 'button',
+    'data-slot': 'sidebar-group-action',
+    className: join('ef-sidebar-group-action', 'ef-sidebar__collapse-hide', className)
+  }, ref, children);
+});
+const SidebarMenuButton = React.forwardRef(function SidebarMenuButton({
+  render,
+  href,
+  isActive = false,
+  size = 'default',
+  tooltip,
+  className,
+  children,
+  ...props
+}, ref) {
+  const fallback = href ? 'a' : 'button';
+  const label = tooltip && typeof tooltip === 'string' ? tooltip : undefined;
+  return compose(render, fallback, {
+    ...props,
+    href,
+    type: fallback === 'button' && !render ? 'button' : undefined,
+    title: props.title || label,
+    'aria-current': props['aria-current'] || (href && isActive ? 'page' : undefined),
+    'data-slot': 'sidebar-menu-button',
+    'data-active': isActive ? 'true' : 'false',
+    'data-size': size,
+    className: join('ef-sidebar-menu-button', className)
+  }, ref, children);
+});
+const SidebarMenuAction = React.forwardRef(function SidebarMenuAction({
+  render,
+  showOnHover = false,
+  className,
+  children,
+  ...props
+}, ref) {
+  return compose(render, 'button', {
+    ...props,
+    type: render ? undefined : 'button',
+    'data-slot': 'sidebar-menu-action',
+    'data-show-on-hover': showOnHover ? 'true' : 'false',
+    className: join('ef-sidebar-menu-action', className)
+  }, ref, children);
+});
+const SidebarMenuBadge = region('sidebar-menu-badge', 'span', 'ef-sidebar-menu-badge');
+const SidebarMenuSubButton = React.forwardRef(function SidebarMenuSubButton({
+  render,
+  href,
+  isActive = false,
+  size = 'md',
+  className,
+  children,
+  ...props
+}, ref) {
+  const fallback = href ? 'a' : 'button';
+  return compose(render, fallback, {
+    ...props,
+    href,
+    type: fallback === 'button' && !render ? 'button' : undefined,
+    'data-slot': 'sidebar-menu-sub-button',
+    'data-active': isActive ? 'true' : 'false',
+    'data-size': size,
+    className: join('ef-sidebar-menu-sub-button', className)
+  }, ref, children);
+});
+const SidebarMenuSkeleton = React.forwardRef(function SidebarMenuSkeleton({
+  showIcon = false,
+  className,
+  ...props
+}, ref) {
+  return /*#__PURE__*/React.createElement("div", _extends({}, props, {
+    ref: ref,
+    "data-slot": "sidebar-menu-skeleton",
+    "aria-hidden": "true",
+    className: join('ef-sidebar-skeleton', className),
+    style: {
+      width: props.style?.width || (showIcon ? '84%' : '72%'),
+      ...props.style
+    }
+  }));
+});
+Object.assign(__ds_scope, { useSidebar, SidebarProvider, Sidebar, SidebarTrigger, SidebarRail, SidebarInset, SidebarHeader, SidebarFooter, SidebarContent, SidebarGroup, SidebarGroupContent, SidebarMenu, SidebarMenuItem, SidebarMenuSub, SidebarMenuSubItem, SidebarInput, SidebarSeparator, SidebarGroupLabel, SidebarGroupAction, SidebarMenuButton, SidebarMenuAction, SidebarMenuBadge, SidebarMenuSubButton, SidebarMenuSkeleton });
+})(); } catch (e) { __ds_ns.__errors.push({ path: "components/navigation/Sidebar.jsx", error: String((e && e.message) || e) }); }
 
 // components/overlay/Command.jsx
 try { (() => {

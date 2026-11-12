@@ -1,6 +1,7 @@
 import React from 'react';
 import { Icon } from '../icons/Icon.jsx';
 import { injectEfCss, mergeRefs } from '../forms/Button.jsx';
+import { useScrollLock } from '../overlay/Portal.jsx';
 
 const CSS = `
 .ef-sidebar-provider{--sidebar-width:16rem;--sidebar-width-icon:3rem;position:relative;display:flex;min-height:100%;width:100%;background:var(--surface-page);color:var(--text-primary)}
@@ -71,7 +72,7 @@ export const SidebarProvider = React.forwardRef(function SidebarProvider({ defau
   React.useEffect(() => {
     const onKeyDown = event => {
       if (event.key === 'Escape' && openMobile) { event.preventDefault(); setOpenMobile(false); }
-      if (event.key.toLowerCase() === 'b' && (event.metaKey || event.ctrlKey)) { event.preventDefault(); toggleSidebar(); }
+      if (typeof event.key === 'string' && event.key.toLowerCase() === 'b' && (event.metaKey || event.ctrlKey)) { event.preventDefault(); toggleSidebar(); }
     };
     window.addEventListener('keydown', onKeyDown);
     return () => window.removeEventListener('keydown', onKeyDown);
@@ -85,9 +86,37 @@ export const Sidebar = React.forwardRef(function Sidebar({ side = 'left', varian
   const common = { 'data-side': side, 'data-variant': variant, 'data-collapsible': collapsible, 'data-state': context.state };
   return <>
     <aside {...props} {...common} ref={ref} dir={dir} data-slot="sidebar" className={join('ef-sidebar', className)}><div data-slot="sidebar-container" className="ef-sidebar__panel">{children}</div></aside>
-    {context.openMobile ? <><button type="button" className="ef-sidebar-mobile-backdrop" aria-label="Close sidebar" onClick={() => context.setOpenMobile(false)} /><aside {...common} dir={dir} data-mobile="true" className="ef-sidebar-mobile">{children}</aside></> : null}
+    {context.openMobile ? <MobileSidebarPanel common={common} dir={dir} label={props['aria-label'] || 'Sidebar'} onClose={() => context.setOpenMobile(false)}>{children}</MobileSidebarPanel> : null}
   </>;
 });
+
+const FOCUSABLE = 'a[href],button:not([disabled]),input:not([disabled]),select:not([disabled]),textarea:not([disabled]),[tabindex]:not([tabindex="-1"])';
+
+// The off-canvas sidebar on a phone covers the page behind a backdrop, so it
+// behaves as a modal dialog: focus moves in, Tab stays in, the page does not
+// scroll, and closing returns focus to whatever opened it.
+function MobileSidebarPanel({ common, dir, label, onClose, children }) {
+  const panelRef = React.useRef(null);
+  useScrollLock(true);
+  React.useEffect(() => {
+    const previous = document.activeElement;
+    const panel = panelRef.current;
+    (panel?.querySelector(FOCUSABLE) || panel)?.focus();
+    return () => { if (previous && previous.isConnected && previous.focus) previous.focus(); };
+  }, []);
+  const keydown = event => {
+    if (event.key !== 'Tab') return;
+    const items = Array.from(panelRef.current?.querySelectorAll(FOCUSABLE) || []);
+    if (!items.length) { event.preventDefault(); return; }
+    const index = items.indexOf(document.activeElement);
+    if (event.shiftKey && index <= 0) { event.preventDefault(); items[items.length - 1].focus(); }
+    else if (!event.shiftKey && (index < 0 || index === items.length - 1)) { event.preventDefault(); items[0].focus(); }
+  };
+  return <>
+    <button type="button" className="ef-sidebar-mobile-backdrop" aria-label="Close sidebar" tabIndex={-1} onClick={onClose} />
+    <aside {...common} ref={panelRef} dir={dir} data-mobile="true" role="dialog" aria-modal="true" aria-label={label} tabIndex={-1} className="ef-sidebar-mobile" onKeyDown={keydown}>{children}</aside>
+  </>;
+}
 
 export const SidebarTrigger = React.forwardRef(function SidebarTrigger({ render, className, onClick, children, ...props }, ref) { const context = useSidebar(); const click = event => { onClick?.(event); if (!event.defaultPrevented) context.toggleSidebar(); }; return compose(render, 'button', { ...props, type: render ? undefined : 'button', 'data-slot': 'sidebar-trigger', 'aria-label': props['aria-label'] || 'Toggle sidebar', 'aria-expanded': context.isMobile ? context.openMobile : context.open, className: join('ef-sidebar-trigger', className), onClick: click }, ref, children || <Icon name="panel-left" size={18} />); });
 export const SidebarRail = React.forwardRef(function SidebarRail({ className, onClick, ...props }, ref) { const context = useSidebar(); return <button {...props} ref={ref} type="button" data-slot="sidebar-rail" aria-label={props['aria-label'] || 'Toggle sidebar'} tabIndex={-1} className={join('ef-sidebar-rail', className)} onClick={event => { onClick?.(event); if (!event.defaultPrevented) context.toggleSidebar(); }} />; });
