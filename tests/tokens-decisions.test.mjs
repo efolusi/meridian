@@ -43,3 +43,53 @@ describe('color-scheme follows the theme', () => {
     expect(readFileSync('tailwind.preset.js', 'utf8')).not.toMatch(/color-scheme/)
   })
 })
+
+describe('tokens.json is DTCG with aliases and modes', () => {
+  const tokens = JSON.parse(readFileSync('tokens.json', 'utf8'))
+  const leaves = []
+  const walk = (node, path) => {
+    if (node && typeof node === 'object' && '$value' in node) return leaves.push([path.join('.'), node])
+    for (const [k, v] of Object.entries(node)) if (!k.startsWith('$')) walk(v, [...path, k])
+  }
+  walk(tokens, [])
+  const byPath = new Map(leaves)
+  const MODES = 'com.efolusi.meridian'
+
+  it('never writes a CSS var() in a value or a mode value', () => {
+    for (const [path, node] of leaves) {
+      expect(JSON.stringify(node.$value), path).not.toMatch(/var\(/)
+      for (const v of Object.values(node.$extensions?.[MODES]?.modes ?? {})) expect(JSON.stringify(v), path).not.toMatch(/var\(/)
+    }
+  })
+
+  it('writes aliases as {group.leaf} that resolve to a real token', () => {
+    expect(byPath.get('surface.page').$value).toBe('{sand.50}')
+    expect(byPath.get('text.primary').$value).toBe('{sand.950}')
+    for (const [path, node] of leaves) {
+      const values = [node.$value, ...Object.values(node.$extensions?.[MODES]?.modes ?? {})]
+      for (const value of values) {
+        for (const [, ref] of String(value).matchAll(/\{([^}]+)\}/g)) expect(byPath.has(ref), `${path} -> ${ref}`).toBe(true)
+      }
+    }
+  })
+
+  it('carries dark, compact and coarse-pointer values as modes', () => {
+    const mode = (path) => byPath.get(path).$extensions[MODES].modes
+    expect(mode('surface.page').dark).toBe('#191512')
+    expect(mode('text.link').dark).toBe('{brand.400}')
+    expect(mode('border.control').dark).toBeDefined()
+    expect(mode('control.h-md').compact).toBe('30px')
+    expect(mode('control.h-md').coarse).toBe('{tap.min}')
+    expect(mode('table.pad-y').compact).toBe('7px')
+    // A token with no override in any mode carries no extension at all.
+    expect(byPath.get('sand.50').$extensions).toBeUndefined()
+  })
+
+  it('documents the mode shape at the root', () => {
+    expect(tokens.$extensions[MODES].modes).toEqual({
+      dark: '[data-theme="dark"]',
+      compact: '[data-density="compact"]',
+      coarse: '@media (pointer: coarse)',
+    })
+  })
+})
