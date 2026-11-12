@@ -108,3 +108,25 @@ describe('radius and icon docs match the tokens', () => {
     expect(read('guidelines/brand.md')).toContain(`${icons} curated glyphs`)
   })
 })
+
+// Load a page's DCLogic class and call renderVals() without the runtime.
+function pageVals(page) {
+  const html = read('site/' + page)
+  const start = html.indexOf('class Component extends DCLogic')
+  const script = html.slice(start, html.indexOf('</script>', start))
+  const Component = new Function('DCLogic', script + '\nreturn Component;')(class { setState() {} })
+  return new Component().renderVals()
+}
+
+describe('Charts page demo props', () => {
+  const reg = read('site/registry.js')
+  const items = JSON.parse(reg.slice(reg.indexOf('GROUPS = ') + 9, reg.lastIndexOf(';'))).flatMap((g) => g.items)
+  const iface = Object.fromEntries(items.map((it) => [it.name, it.props || []]))
+  const vals = pageVals('Charts.dc.html')
+  const cases = { barProps: 'BarChart', lineProps: 'LineChart', donutProps: 'DonutChart', sparkUp: 'Sparkline', sparkDown: 'Sparkline', sparkFlat: 'Sparkline' }
+
+  it.each(Object.entries(cases))('%s only passes props %s declares', (key, comp) => {
+    const known = new Set(iface[comp].map((p) => p.n))
+    for (const prop of Object.keys(vals[key])) expect(known.has(prop), `${comp} has no "${prop}" prop`).toBe(true)
+  })
+})
