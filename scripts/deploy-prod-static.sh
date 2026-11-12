@@ -9,6 +9,7 @@ releases_root="${deploy_root}/releases"
 available="/etc/nginx/sites-available/meridian.efolusi.com"
 enabled="/etc/nginx/sites-enabled/meridian.efolusi.com"
 runner_user="deploy"
+keep_releases=5
 
 [[ $# -eq 1 && "$1" =~ ^[0-9a-f]{40}$ ]] || {
   echo "usage: $0 <40-character-lowercase-git-sha>" >&2
@@ -101,6 +102,23 @@ rollback() {
   fi
   cleanup
   exit "$status"
+}
+
+# Keep the newest N releases by mtime plus the one current points to; only
+# 40-hex release names are touched, never an in-flight .<sha>.<pid> candidate.
+prune_releases() {
+  local keep="$1" current_target kept=0 dir
+  current_target="$(cd "$deploy_root/current" 2>/dev/null && pwd -P || true)"
+  while IFS= read -r dir; do
+    dir="${dir%/}"
+    [[ "$(basename "$dir")" =~ ^[0-9a-f]{40}$ ]] || continue
+    [[ "$(cd "$dir" && pwd -P)" != "$current_target" ]] || continue
+    if (( kept < keep )); then
+      kept=$((kept + 1))
+      continue
+    fi
+    rm -rf -- "$dir"
+  done < <(ls -1td -- "$releases_root"/*/ 2>/dev/null)
 }
 
 trap cleanup EXIT
@@ -226,4 +244,5 @@ curl --fail --silent --show-error --insecure --max-time 5 \
 curl --fail --silent --show-error --max-time 10 "https://${domain}/" >/dev/null
 
 trap - ERR
+prune_releases "$keep_releases" || echo "[meridian-prod] warning: pruning old releases failed" >&2
 echo "[meridian-prod] deployed ${release_sha} to ${release}"
