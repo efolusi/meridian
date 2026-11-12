@@ -135,3 +135,51 @@ describe('CI supply chain pinning', () => {
     }
   })
 })
+
+// Every `run:` script body, with the workflow it came from.
+function runScripts(src) {
+  const out = []
+  const lines = src.split('\n')
+  for (let i = 0; i < lines.length; i++) {
+    const m = lines[i].match(/^(\s*)(?:- )?run:\s*(.*)$/)
+    if (!m) continue
+    if (m[2] && m[2] !== '|') { out.push(m[2]); continue }
+    const body = []
+    for (i++; i < lines.length && (lines[i].trim() === '' || lines[i].search(/\S/) > m[1].length); i++) {
+      body.push(lines[i])
+    }
+    i--
+    out.push(body.join('\n'))
+  }
+  return out
+}
+
+describe('publish workflow hardening', () => {
+  const publish = workflows['publish.yml']
+
+  it('never interpolates event or input data into shell scripts', () => {
+    for (const [name, src] of Object.entries(workflows)) {
+      for (const script of runScripts(src)) {
+        expect(script, name).not.toMatch(/\$\{\{\s*(github\.event|inputs)\./)
+        expect(script, name).not.toMatch(/\$\{\{\s*github\.(head_ref|event_name)/)
+      }
+    }
+  })
+
+  it('installs an exact npm, never a moving dist-tag', () => {
+    const install = publish.match(/npm install -g npm@(\S+)/)
+    expect(install).not.toBeNull()
+    expect(install[1]).toMatch(/^\d+\.\d+\.\d+$/)
+    const [major, minor, patch] = install[1].split('.').map(Number)
+    // Trusted publishing (OIDC) needs npm 11.5.1 or newer.
+    expect(major * 1e6 + minor * 1e3 + patch).toBeGreaterThanOrEqual(11_005_001)
+  })
+
+  it('keeps the contents: write token out of .git/config while running npm ci and the gates', () => {
+    const job = publish.slice(publish.indexOf('\n  publish:\n'))
+    const checkout = job.match(/uses: actions\/checkout@.*\n(?: {8}.*\n)*/)?.[0]
+    expect(checkout).toContain('persist-credentials: false')
+    expect(job).not.toMatch(/\bgit push\b/)
+    expect(job).toContain('gh release create "v$PKG" --target "$GITHUB_SHA"')
+  })
+})
