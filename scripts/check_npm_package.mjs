@@ -10,6 +10,7 @@ import path from 'node:path';
 import { createRequire } from 'node:module';
 import { fileURLToPath, pathToFileURL } from 'node:url';
 import { PUBLIC_HELPERS } from './public_helpers.mjs';
+import { resolvesByName } from './resolve_specifier.mjs';
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const dist = p => pathToFileURL(path.join(ROOT, 'dist', p)).href;
@@ -55,12 +56,6 @@ fs.writeFileSync(path.join(sandbox, 'package.json'), '{"type":"module"}\n');
 const NAME = JSON.parse(fs.readFileSync(path.join(ROOT, 'dist', 'package.json'), 'utf8')).name;
 const probe = path.join(sandbox, 'probe.mjs');
 
-async function resolvesByName(specifier) {
-  fs.writeFileSync(probe, `export { default as m } from ${JSON.stringify(specifier)};\n`);
-  try { await import(pathToFileURL(probe).href + `?t=${specifier}`); return true; }
-  catch (err) { return err.code === 'ERR_MODULE_NOT_FOUND' ? false : true; }
-}
-
 try {
   const specs = [
     `${NAME}`,
@@ -71,7 +66,7 @@ try {
     `${NAME}/overlay/Portal.js`, `${NAME}/feedback/Toast.js`,
   ];
   const unresolvable = [];
-  for (const s of specs) if (!(await resolvesByName(s))) unresolvable.push(s);
+  for (const s of specs) if (!(await resolvesByName(sandbox, s))) unresolvable.push(s);
   if (unresolvable.length) {
     console.error('these specifiers do not resolve through the package "exports" map:');
     for (const s of unresolvable) console.error(`  ${s}`);
