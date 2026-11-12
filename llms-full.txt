@@ -597,6 +597,10 @@ export interface PromptComposerProps {
   onStop?: (e: React.MouseEvent) => void;
   /** @default 'Ask the agent anything…' */
   placeholder?: string;
+  /** Accessible name for the textarea (not the wrapper). @default placeholder */
+  'aria-label'?: string;
+  /** Id of a visible label for the textarea; overrides aria-label */
+  'aria-labelledby'?: string;
   /** @default 2 */
   rows?: number;
   disabled?: boolean;
