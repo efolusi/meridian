@@ -112,3 +112,26 @@ describe('CI runner isolation', () => {
     for (const step of checkouts) expect(step).toContain('persist-credentials: false')
   })
 })
+
+describe('CI supply chain pinning', () => {
+  it('pins every third-party action to a full commit SHA', () => {
+    for (const [name, src] of Object.entries(workflows)) {
+      for (const [, ref] of src.matchAll(/^\s*-?\s*uses:\s*(\S+)/gm)) {
+        if (ref.startsWith('./')) continue
+        expect(ref, `${name}: ${ref}`).toMatch(/^[\w.-]+\/[\w./-]+@[0-9a-f]{40}$/)
+      }
+    }
+  })
+
+  it('pins the Playwright container image by digest, matching the npm package', () => {
+    const images = Object.entries(workflows).flatMap(([name, src]) =>
+      [...src.matchAll(/PW_IMAGE:\s*(\S+)/g)].map(([, image]) => [name, image]),
+    )
+    expect(images.length).toBeGreaterThan(0)
+    for (const [name, image] of images) {
+      expect(image, name).toMatch(/^mcr\.microsoft\.com\/playwright:v([\d.]+)-noble@sha256:[0-9a-f]{64}$/)
+      const version = image.match(/:v([\d.]+)-/)[1]
+      expect(workflows[name], name).toContain(`playwright@${version}`)
+    }
+  })
+})

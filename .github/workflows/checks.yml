@@ -21,7 +21,7 @@ jobs:
   gates:
     runs-on: ${{ (github.event_name != 'pull_request' || github.event.pull_request.head.repo.full_name == github.repository) && fromJSON('["self-hosted","Linux","X64","efolusi-dev"]') || 'ubuntu-24.04' }}
     steps:
-      - uses: actions/checkout@v5
+      - uses: actions/checkout@fbc6f3992d24b796d5a048ff273f7fcc4a7b6c09 # v5.1.0
         with:
           persist-credentials: false
 
@@ -76,7 +76,7 @@ jobs:
       # The real gate: recompile from source and require the committed artifact to
       # match byte for byte. This is reproduction, not self-attestation — the same
       # standard the registry and token generators are already held to.
-      - uses: actions/setup-node@v5
+      - uses: actions/setup-node@a0853c24544627f65ddf259abe73b1d18a591444 # v5.0.0
         with:
           node-version: '22.23.2'
       - name: Install build dependency
@@ -110,13 +110,15 @@ jobs:
       # Browsers and their system libs come from the Playwright image: the
       # self-hosted runner user has no sudo, so `install --with-deps` cannot
       # run. Same pattern as sanctum CI (docker run as the runner uid, so the
-      # workspace never gets root-owned files). Tag matches playwright@1.48.0.
-      PW_IMAGE: mcr.microsoft.com/playwright:v1.48.0-noble
+      # workspace never gets root-owned files). Tag matches playwright@1.48.0;
+      # the digest pins the exact image, so a re-pushed tag cannot change what
+      # runs with the workspace mounted.
+      PW_IMAGE: mcr.microsoft.com/playwright:v1.48.0-noble@sha256:d1e54d0cbb2d6b125b0bbd32536b2ed53953ea78159c27a56f22b10058e733c4
     steps:
-      - uses: actions/checkout@v5
+      - uses: actions/checkout@fbc6f3992d24b796d5a048ff273f7fcc4a7b6c09 # v5.1.0
         with:
           persist-credentials: false
-      - uses: actions/setup-node@v5
+      - uses: actions/setup-node@a0853c24544627f65ddf259abe73b1d18a591444 # v5.0.0
         with:
           node-version: '22.23.2'
       # smoke_headless.mjs does `import { chromium } from 'playwright'`, so the
@@ -136,7 +138,7 @@ jobs:
         run: BUTTON_SHOTS="$RUNNER_TEMP/button-shots" "$RUNNER_TEMP/pw-node" scripts/check_button_cascade.mjs
       - name: Upload button interaction receipts
         if: always()
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4.6.2
         with:
           name: button-interaction-receipts
           path: ${{ runner.temp }}/button-shots
@@ -169,7 +171,7 @@ jobs:
 
       - name: Upload shots and diffs on failure
         if: failure()
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4.6.2
         with:
           name: visual-shots
           path: ${{ runner.temp }}/shots

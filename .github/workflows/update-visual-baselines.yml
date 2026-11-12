@@ -20,12 +20,14 @@ jobs:
       # Browsers and their system libs come from the Playwright image: the
       # self-hosted runner user has no sudo, so `install --with-deps` cannot
       # run. Same pattern as sanctum CI (docker run as the runner uid, so the
-      # workspace never gets root-owned files). Tag matches playwright@1.48.0.
-      PW_IMAGE: mcr.microsoft.com/playwright:v1.48.0-noble
+      # workspace never gets root-owned files). Tag matches playwright@1.48.0;
+      # the digest pins the exact image, so a re-pushed tag cannot change what
+      # runs with the workspace mounted.
+      PW_IMAGE: mcr.microsoft.com/playwright:v1.48.0-noble@sha256:d1e54d0cbb2d6b125b0bbd32536b2ed53953ea78159c27a56f22b10058e733c4
     steps:
-      - uses: actions/checkout@v5
+      - uses: actions/checkout@fbc6f3992d24b796d5a048ff273f7fcc4a7b6c09 # v5.1.0
 
-      - uses: actions/setup-node@v5
+      - uses: actions/setup-node@a0853c24544627f65ddf259abe73b1d18a591444 # v5.0.0
         with:
           node-version: '22.23.2'
 
