@@ -140,9 +140,10 @@ PAIRS = [
     ("--focus-ring-color", SURFACES + ["--focus-ring-offset"], 3.0, "focus indicator"),
     # Toast status icons (non-text, 3:1). Light uses these on the dark inverse
     # surface; in dark Toast swaps to the strong status tokens on a light one.
-    ("--success-600", ["--surface-inverse"], 3.0, "Toast success icon (dark theme)"),
+    # Dark success and warning icons are color-mix(in srgb, <tone> 60%, --text-inverse).
+    ("mix(--success-600 60%, --text-inverse)", ["--surface-inverse"], 3.0, "Toast success icon (dark theme)"),
     ("--danger-600", ["--surface-inverse"], 3.0, "Toast danger icon (dark theme)"),
-    ("--warning-600", ["--surface-inverse"], 3.0, "Toast warning icon (dark theme)"),
+    ("mix(--warning-600 60%, --text-inverse)", ["--surface-inverse"], 3.0, "Toast warning icon (dark theme)"),
     ("--success-on-dark", ["--surface-inverse"], 3.0, "Toast success icon (light theme)"),
     ("--danger-on-dark", ["--surface-inverse"], 3.0, "Toast danger icon (light theme)"),
     ("--warning-on-dark", ["--surface-inverse"], 3.0, "Toast warning icon (light theme)"),
@@ -155,8 +156,6 @@ PAIRS = [
 KNOWN_FAILURES = {
     ("light", "--code-ink-faint", "--surface-code"): "Terminal timestamps, 3.1:1",
     ("dark", "--code-ink-faint", "--surface-code"): "Terminal timestamps, 3.1:1",
-    ("dark", "--success-600", "--surface-inverse"): "dark Toast success icon, 2.3:1",
-    ("dark", "--warning-600", "--surface-inverse"): "dark Toast warning icon, 2.8:1",
 }
 
 # Toast paints the -on-dark icon tokens only in light (on the dark inverse
@@ -164,6 +163,20 @@ KNOWN_FAILURES = {
 # combinations never reach a screen, so they are not measured.
 NOT_PAINTED = {("dark", f"--{tone}-on-dark", "--surface-inverse") for tone in ("success", "danger", "warning")}
 NOT_PAINTED |= {("light", f"--{tone}-600", "--surface-inverse") for tone in ("success", "danger", "warning")}
+NOT_PAINTED |= {("light", f"mix(--{tone}-600 60%, --text-inverse)", "--surface-inverse") for tone in ("success", "warning")}
+
+MIX = re.compile(r"mix\((--[\w-]+) (\d+)%, (--[\w-]+)\)")
+
+
+def mix_hex(spec, table, fallback, bg):
+    """color-mix(in srgb, A p%, B): per-channel interpolation of sRGB values."""
+    a_tok, pct, b_tok = MIX.fullmatch(spec).groups()
+    a, b = to_hex(resolve(a_tok, table, fallback), over=bg), to_hex(resolve(b_tok, table, fallback), over=bg)
+    if a is None or b is None:
+        return None
+    w = int(pct) / 100
+    ch = lambda h, i: int(h[1 + 2 * i:3 + 2 * i], 16)
+    return "#" + "".join(f"{round(ch(a, i) * w + ch(b, i) * (1 - w)):02x}" for i in range(3))
 
 light = tokens("light")
 dark = tokens("dark")
@@ -180,7 +193,7 @@ for theme, table, fallback in (("light", light, None), ("dark", dark, light)):
             if bg is None:
                 unresolved.append((theme, bg_tok, "background is not an opaque colour"))
                 continue
-            fg = to_hex(fg_raw, over=bg)
+            fg = mix_hex(fg_tok, table, fallback, bg) if fg_tok.startswith("mix(") else to_hex(fg_raw, over=bg)
             if fg is None:
                 unresolved.append((theme, fg_tok, "foreground did not resolve to a colour"))
                 continue

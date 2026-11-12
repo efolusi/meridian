@@ -58,7 +58,8 @@ export const TooltipTrigger = React.forwardRef(function TooltipTrigger({ asChild
     onMouseLeave: compose(rest.onMouseLeave, ctx.hide),
     onFocus: compose(rest.onFocus, () => ctx.show(true)),
     onBlur: compose(rest.onBlur, ctx.hide),
-    onKeyDown: compose(rest.onKeyDown, event => { if (event.key === 'Escape') ctx.hide(); }),
+    // an open tooltip takes the first Escape, so the dialog it sits in stays
+    onKeyDown: compose(rest.onKeyDown, event => { if (event.key === 'Escape' && ctx.open) { event.preventDefault(); ctx.hide(); } }),
   };
   if (asChild && React.isValidElement(children)) {
     return React.cloneElement(children, {

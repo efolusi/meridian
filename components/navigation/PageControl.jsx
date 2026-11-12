@@ -14,7 +14,7 @@ export function PageControl({ count, index = 0, onChange, label = 'Page', style,
   return (
     <div {...rest} role="tablist" aria-label={label} className={`ef-dots${className ? ' ' + className : ''}`} style={style}>
       {Array.from({ length: count }, (_, i) => (
-        <button key={i} role="tab" aria-selected={i === index} aria-label={`${label} ${i + 1} of ${count}`}
+        <button key={i} type="button" role="tab" aria-selected={i === index} aria-label={`${label} ${i + 1} of ${count}`}
           className={`ef-dots__dot${i === index ? ' ef-dots__dot--on' : ''}`} onClick={() => onChange && onChange(i)} />
       ))}
     </div>

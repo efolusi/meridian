@@ -19,7 +19,10 @@ describe('HoverCard', () => {
     );
     await user.tab();
     const anchor = document.activeElement;
-    expect(await screen.findByText('Ada Lovelace')).toBeTruthy();
+    // Focus opens the card synchronously (no openDelay timer on this path), so
+    // assert it directly instead of polling: a slow run under load then costs
+    // nothing extra, and a regression to a delayed open fails here by name.
+    expect(screen.getByText('Ada Lovelace')).toBeTruthy();
     // non-modal: focus stays on the trigger, nothing claims role=dialog
     expect(document.activeElement).toBe(anchor);
     expect(screen.queryByRole('dialog')).toBeNull();
