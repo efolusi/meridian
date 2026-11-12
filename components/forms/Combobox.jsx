@@ -43,11 +43,26 @@ export function Combobox({ items = [], value, defaultValue, onValueChange, multi
     if (!isOpen || !autoHighlight || !visibleRecords.length) return;
     if (!visibleRecords.some(record => record.id === active)) setActive(visibleRecords[0].id);
   }, [isOpen, query, version, autoHighlight]);
+  const labelOf = next => {
+    const found = items.find(item => same(itemValue(item), next));
+    if (found !== undefined) return itemText(found);
+    const record = [...records.current.values()].find(entry => same(entry.value, next));
+    return record ? record.text : undefined;
+  };
   React.useEffect(() => {
     if (multiple || isOpen || query || currentValue == null) return;
-    const found = items.find(item => same(itemValue(item), currentValue));
-    if (found !== undefined) setQuery(itemText(found));
+    const label = labelOf(currentValue);
+    if (label !== undefined) setQuery(label);
   }, [currentValue, items, isOpen, multiple]);
+  // A value changed from outside (a controlled reset, a programmatic pick)
+  // must also move the text in the input, or it keeps showing the old label.
+  const shownValue = React.useRef(currentValue);
+  React.useEffect(() => {
+    if (multiple || same(shownValue.current, currentValue)) return;
+    shownValue.current = currentValue;
+    const label = currentValue == null ? '' : labelOf(currentValue);
+    if (label !== undefined && label !== query) setQuery(label);
+  }, [currentValue, multiple]);
   const choose = React.useCallback((next, label) => {
     if (multiple) {
       const values = Array.isArray(selected) ? selected : [];
@@ -83,7 +98,8 @@ export const ComboboxClear = React.forwardRef(function ComboboxClear({ className
 function useInputKeyboard(context, onKeyDown) {
   return event => {
     onKeyDown?.(event);
-    if (event.defaultPrevented || !context) return;
+    // Keys typed while an IME composes text belong to the IME, not the list.
+    if (event.defaultPrevented || !context || event.nativeEvent?.isComposing || event.keyCode === 229) return;
     const current = [...context.records.current.values()].filter(record => !record.disabled && context.matches(record));
     if (event.key === 'ArrowDown' || event.key === 'ArrowUp') {
       event.preventDefault(); context.setOpen(true);
@@ -108,7 +124,7 @@ export const ComboboxInput = React.forwardRef(function ComboboxInput({ className
   const localRef = React.useRef(null);
   React.useImperativeHandle(forwardedRef, () => localRef.current);
   const hasSelection = context?.multiple ? context.selected.length > 0 : context?.selected != null;
-  return <div ref={context?.anchorRef} className="ef-combobox"><InputGroup className={join('ef-combobox__input-group', className)}><InputGroupInput ref={localRef} data-slot="combobox-input" role="combobox" aria-autocomplete="list" aria-expanded={context?.isOpen} aria-controls={context?.listId} aria-activedescendant={context?.active || undefined} disabled={disabled || context?.disabled} className="ef-combobox__input" value={context?.query ?? ''} onChange={event => { context?.setQuery(event.target.value); context?.setOpen(true); onChange?.(event); }} onFocus={event => { context?.setOpen(true); onFocus?.(event); }} onKeyDown={useInputKeyboard(context, onKeyDown)} {...props} /><InputGroupAddon align="inline-end" className="ef-combobox__actions">{showClear && hasSelection ? <ComboboxClear /> : showTrigger ? <ComboboxTrigger /> : null}</InputGroupAddon>{children}</InputGroup></div>;
+  return <div ref={context?.anchorRef} className="ef-combobox"><InputGroup className={join('ef-combobox__input-group', className)}><InputGroupInput ref={localRef} data-slot="combobox-input" role="combobox" aria-autocomplete="list" aria-expanded={context?.isOpen} aria-controls={context?.listId} aria-activedescendant={(context?.isOpen && context.active) || undefined} disabled={disabled || context?.disabled} className="ef-combobox__input" value={context?.query ?? ''} onChange={event => { context?.setQuery(event.target.value); context?.setOpen(true); onChange?.(event); }} onFocus={event => { context?.setOpen(true); onFocus?.(event); }} onKeyDown={useInputKeyboard(context, onKeyDown)} {...props} /><InputGroupAddon align="inline-end" className="ef-combobox__actions">{showClear && hasSelection ? <ComboboxClear /> : showTrigger ? <ComboboxTrigger /> : null}</InputGroupAddon>{children}</InputGroup></div>;
 });
 
 export const ComboboxContent = React.forwardRef(function ComboboxContent({ className, side = 'bottom', sideOffset = 6, align = 'start', alignOffset = 0, anchor, children, ...props }, forwardedRef) {
@@ -160,5 +176,5 @@ export const ComboboxChips = React.forwardRef(function ComboboxChips({ className
   return <div ref={localRef} data-slot="combobox-chips" className={join('ef-combobox__chips', className)} {...props} />;
 });
 export const ComboboxChip = React.forwardRef(function ComboboxChip({ value, className, children, showRemove = true, ...props }, ref) { const context = React.useContext(ComboboxContext); const nextValue = value ?? textOf(children); return <span ref={ref} data-slot="combobox-chip" className={join('ef-combobox__chip', className)} {...props}>{children}{showRemove ? <button type="button" data-slot="combobox-chip-remove" className="ef-combobox__chip-remove" aria-label={`Remove ${itemText(nextValue)}`} onClick={() => context?.remove(nextValue)}><Icon name="x" size={12} /></button> : null}</span>; });
-export const ComboboxChipsInput = React.forwardRef(function ComboboxChipsInput({ className, onChange, onFocus, onKeyDown, ...props }, ref) { const context = React.useContext(ComboboxContext); return <input ref={ref} data-slot="combobox-chips-input" role="combobox" aria-autocomplete="list" aria-expanded={context?.isOpen} aria-controls={context?.listId} aria-activedescendant={context?.active || undefined} className={join('ef-combobox__chips-input', className)} value={context?.query ?? ''} onChange={event => { context?.setQuery(event.target.value); context?.setOpen(true); onChange?.(event); }} onFocus={event => { context?.setOpen(true); onFocus?.(event); }} onKeyDown={useInputKeyboard(context, onKeyDown)} {...props} />; });
+export const ComboboxChipsInput = React.forwardRef(function ComboboxChipsInput({ className, onChange, onFocus, onKeyDown, ...props }, ref) { const context = React.useContext(ComboboxContext); return <input ref={ref} data-slot="combobox-chips-input" role="combobox" aria-autocomplete="list" aria-expanded={context?.isOpen} aria-controls={context?.listId} aria-activedescendant={(context?.isOpen && context.active) || undefined} className={join('ef-combobox__chips-input', className)} value={context?.query ?? ''} onChange={event => { context?.setQuery(event.target.value); context?.setOpen(true); onChange?.(event); }} onFocus={event => { context?.setOpen(true); onFocus?.(event); }} onKeyDown={useInputKeyboard(context, onKeyDown)} {...props} />; });
 export function useComboboxAnchor() { return React.useRef(null); }

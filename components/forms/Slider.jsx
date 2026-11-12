@@ -61,6 +61,7 @@ export const Slider = React.forwardRef(function Slider({ min = 0, max = 100, ste
           {...rest}
           {...field.controlProps}
           key={index}
+          id={index === 0 ? (field.controlProps.id || rest.id) : undefined}
           type="range"
           data-slot="slider-thumb"
           aria-label={rest['aria-label'] ? `${rest['aria-label']}${values.length > 1 ? ` ${index + 1}` : ''}` : undefined}
@@ -73,7 +74,7 @@ export const Slider = React.forwardRef(function Slider({ min = 0, max = 100, ste
           className="ef-slider__input"
           onChange={event => update(index, Number(event.target.value))}
           onPointerUp={() => onValueCommit?.(latestRef.current)}
-          onKeyUp={event => { if (['ArrowLeft', 'ArrowRight', 'ArrowUp', 'ArrowDown', 'Home', 'End'].includes(event.key)) onValueCommit?.(latestRef.current); }}
+          onKeyUp={event => { if (['ArrowLeft', 'ArrowRight', 'ArrowUp', 'ArrowDown', 'Home', 'End', 'PageUp', 'PageDown'].includes(event.key)) onValueCommit?.(latestRef.current); }}
         />
       ))}
     </span>
