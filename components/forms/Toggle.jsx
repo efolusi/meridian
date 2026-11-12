@@ -4,7 +4,7 @@ import { injectEfCss } from './Button.jsx';
 const CSS = `
 .ef-toggle{display:inline-flex;align-items:center;justify-content:center;gap:7px;min-width:36px;height:36px;padding:0 10px;border:1px solid transparent;border-radius:var(--radius-sm);background:transparent;cursor:pointer;font-family:var(--font-sans);font-size:var(--text-sm);font-weight:500;color:var(--text-secondary);transition:background var(--dur-fast) var(--ease-out),border-color var(--dur-fast) var(--ease-out),color var(--dur-fast) var(--ease-out)}
 .ef-toggle:hover:not(:disabled):not(.ef-toggle--on){background:var(--surface-sunken);color:var(--text-primary)}
-.ef-toggle--on{background:var(--accent-subtle);color:var(--brand-700)}
+.ef-toggle--on{background:var(--accent-subtle);color:var(--text-link)}
 .ef-toggle:focus-visible{outline:none;box-shadow:var(--focus-ring)}
 .ef-toggle:disabled{opacity:.45;cursor:not-allowed}
 .ef-toggle--outline{border-color:var(--border-strong)}
