@@ -19,27 +19,13 @@ import path from 'node:path';
 import crypto from 'node:crypto';
 import { createRequire } from 'node:module';
 import { fileURLToPath } from 'node:url';
+import { PUBLIC_HELPERS as PUBLIC_HELPER_NAMES } from './public_helpers.mjs';
 
 const require = createRequire(import.meta.url);
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const NAMESPACE = 'EfolusiDesignSystem_4ffc3d';
 const OUT = path.join(ROOT, '_ds_bundle.js');
-const PUBLIC_HELPERS = new Set([
-  'badgeVariants',
-  'buttonGroupVariants',
-  'buttonVariants',
-  'markerVariants',
-  'navigationMenuTriggerStyle',
-  'toggleVariants',
-  'toast',
-  'useChart',
-  'useComboboxAnchor',
-  'useDirection',
-  'useMessageScroller',
-  'useMessageScrollerScrollable',
-  'useMessageScrollerVisibility',
-  'useSidebar',
-]);
+const PUBLIC_HELPERS = new Set(PUBLIC_HELPER_NAMES);
 
 let Babel;
 try {

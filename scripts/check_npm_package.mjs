@@ -7,7 +7,9 @@
 
 import fs from 'node:fs';
 import path from 'node:path';
+import { createRequire } from 'node:module';
 import { fileURLToPath, pathToFileURL } from 'node:url';
+import { PUBLIC_HELPERS } from './public_helpers.mjs';
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const dist = p => pathToFileURL(path.join(ROOT, 'dist', p)).href;
@@ -26,7 +28,7 @@ if (missing.length) {
   console.error('missing or unrenderable exports:', missing.join(', '));
   process.exit(1);
 }
-for (const helper of ['badgeVariants', 'buttonVariants', 'markerVariants', 'navigationMenuTriggerStyle', 'toggleVariants', 'useChart', 'useMessageScroller', 'useMessageScrollerScrollable', 'useMessageScrollerVisibility', 'useSidebar']) {
+for (const helper of PUBLIC_HELPERS.filter(name => name !== 'toast')) {
   if (typeof barrel[helper] !== 'function') {
     console.error(`missing public style helper: ${helper}`);
     process.exit(1);
@@ -226,6 +228,44 @@ const leaked = ['injectEfCss', 'mergeRefs', 'useAnchoredStyle', 'useFieldProps']
 if (leaked.length) {
   console.error('internal helpers leaked onto the package barrel:', leaked.join(', '));
   process.exit(1);
+}
+
+// The barrel's types are `export *` over each component's .d.ts, while its
+// runtime is a hand-filtered name list. When the two disagree a consumer's
+// TypeScript accepts `import { useDirection } from '@efolusi/meridian'` and the
+// bundler then fails on a missing export, which is what 1.21.9 shipped for
+// useDirection, useComboboxAnchor and buttonGroupVariants. Every value the types
+// promise must exist at runtime.
+{
+  const ts = createRequire(import.meta.url)('typescript');
+  const entry = path.join(ROOT, 'dist', 'index.d.ts');
+  const program = ts.createProgram([entry], {
+    noEmit: true, jsx: ts.JsxEmit.React, module: ts.ModuleKind.ESNext,
+    moduleResolution: ts.ModuleResolutionKind.Bundler, lib: ['lib.es2020.d.ts', 'lib.dom.d.ts'],
+  });
+  const checker = program.getTypeChecker();
+  const moduleSymbol = checker.getSymbolAtLocation(program.getSourceFile(entry));
+  if (!moduleSymbol) {
+    console.error('dist/index.d.ts is not a module');
+    process.exit(1);
+  }
+  const typedValues = checker.getExportsOfModule(moduleSymbol)
+    .filter(symbol => {
+      const target = symbol.flags & ts.SymbolFlags.Alias ? checker.getAliasedSymbol(symbol) : symbol;
+      return target.flags & ts.SymbolFlags.Value;
+    })
+    .map(symbol => symbol.name);
+  if (!typedValues.length) {
+    console.error('dist/index.d.ts declares no values; the type barrel is empty or unresolvable');
+    process.exit(1);
+  }
+  const untyped = typedValues.filter(name => !(name in barrel)).sort();
+  if (untyped.length) {
+    console.error(`dist/index.d.ts declares ${untyped.length} value(s) that dist/index.js does not export: ${untyped.join(', ')}`);
+    console.error('add them to scripts/public_helpers.mjs, or stop exporting them from the component .d.ts');
+    process.exit(1);
+  }
+  console.log(`all ${typedValues.length} values the type barrel declares exist at runtime`);
 }
 
 console.log(`dist/ imports cleanly: ${Object.keys(barrel).length} exports, deep imports resolve, ${cssFiles.length} css files with no dangling assets, no internals leaked`);

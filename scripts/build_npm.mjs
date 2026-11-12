@@ -16,13 +16,14 @@ import fs from 'node:fs';
 import path from 'node:path';
 import { createRequire } from 'node:module';
 import { fileURLToPath } from 'node:url';
+import { PUBLIC_HELPERS as PUBLIC_HELPER_NAMES } from './public_helpers.mjs';
 
 const require = createRequire(import.meta.url);
 const Babel = require('@babel/standalone');
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const DIST = path.join(ROOT, 'dist');
 const CHECK = process.argv.includes('--check');
-const PUBLIC_HELPERS = new Set(['badgeVariants', 'buttonVariants', 'markerVariants', 'navigationMenuTriggerStyle', 'toast', 'toggleVariants', 'useChart', 'useMessageScroller', 'useMessageScrollerScrollable', 'useMessageScrollerVisibility', 'useSidebar']);
+const PUBLIC_HELPERS = new Set(PUBLIC_HELPER_NAMES);
 
 const pkg = JSON.parse(fs.readFileSync(path.join(ROOT, 'package.json'), 'utf8'));
 const version = JSON.parse(fs.readFileSync(path.join(ROOT, '_ds_manifest.json'), 'utf8')).version;
