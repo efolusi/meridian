@@ -119,6 +119,7 @@ public_paths=(
   styles.css
   landing.css
   tailwind.preset.js
+  tokens.json
   registry.json
   llms.txt
   llms-full.txt
