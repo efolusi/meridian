@@ -46,6 +46,16 @@ describe('meridian MCP server', () => {
     }
   });
 
+  it('describes get_tokens as what tokens.json holds', async () => {
+    const tokens = JSON.parse(fs.readFileSync(path.join(ROOT, 'tokens.json'), 'utf8'));
+    const tool = (await client.listTools()).tools.find(t => t.name === 'get_tokens');
+    // build_tokens.py reads only each file's first :root block: the light, default-density values.
+    expect(tool.description).not.toMatch(/dark and compact/);
+    const suggested = [...tool.inputSchema.properties.group.description.matchAll(/"([^"]+)"/g)].map(m => m[1]);
+    expect(suggested.length).toBeGreaterThan(0);
+    for (const group of suggested) expect(Object.hasOwn(tokens, group), group).toBe(true);
+  });
+
   it('reports the version it is published under', () => {
     expect(client.getServerVersion()).toMatchObject({ name: 'meridian', version: pkg.version });
   });

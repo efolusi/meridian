@@ -108,7 +108,7 @@ server.registerTool(
   'get_tokens',
   {
     title: 'Get Meridian design tokens',
-    description: 'The design tokens (colors, typography, spacing, effects) in light, dark and compact. Use semantic tokens in generated CSS — never hardcode hex.',
+    description: 'The design tokens (colors, typography, spacing, effects) as DTCG JSON, light theme at default density. Dark values live in tokens/colors.css under [data-theme="dark"] and compact spacing in tokens/spacing.css under [data-density="compact"]; reference tokens as var(--name) so both apply. Never hardcode hex.',
     inputSchema: { group: z.string().optional().describe('Optional top-level group, e.g. "brand", "surface", "text", "space", "radius", "font". An unknown group returns the list of groups.') },
   },
   async ({ group }) => {
