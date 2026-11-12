@@ -97,3 +97,11 @@
     width: var(--tap-min, 44px);
   }
 }
+
+/* Skip link: the first focusable element on every page. Clipped rather than
+   display:none so it stays in the focus order; revealed on focus. Mirrors the
+   DS SkipLink (.ef-skip), whose CSS is only injected when that component renders. */
+.site-skip{position:absolute;inset-inline-start:var(--space-4);inset-block-start:var(--space-3);z-index:100;display:inline-flex;align-items:center;min-height:var(--tap-min);padding:0 14px;border:1px solid var(--border-strong);border-radius:var(--radius-sm);background:var(--surface-card);color:var(--text-primary);font-family:var(--font-sans);font-size:var(--text-md);font-weight:600;text-decoration:none;box-shadow:var(--shadow-md);clip-path:inset(50%);white-space:nowrap}
+.site-skip:focus{clip-path:none}
+.site-skip:focus-visible{outline:none;box-shadow:var(--focus-ring),var(--shadow-md)}
+#main:focus{outline:none}

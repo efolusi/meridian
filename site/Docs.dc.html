@@ -24,8 +24,9 @@
 </head>
 <body>
 <x-dc>
-<helmet><script src="./ds-base.js"></script><script src="./i18n.js"></script><link rel="stylesheet" href="./site.css?v=20260814b"><style>@view-transition{navigation:auto}::view-transition-group(*){animation-duration:160ms}@media (prefers-reduced-motion:reduce){::view-transition-group(*),::view-transition-old(*),::view-transition-new(*){animation:none!important}}html{background:var(--surface-page,#FAF9F6)}</style></helmet>
+<helmet><script src="./ds-base.js"></script><script src="./i18n.js"></script><script src="./skip-link.js"></script><link rel="stylesheet" href="./site.css?v=20261112"><style>@view-transition{navigation:auto}::view-transition-group(*){animation-duration:160ms}@media (prefers-reduced-motion:reduce){::view-transition-group(*),::view-transition-old(*),::view-transition-new(*){animation:none!important}}html{background:var(--surface-page,#FAF9F6)}</style></helmet>
 <div style="min-height:100vh;background:var(--surface-page);color:var(--text-primary);font-family:var(--font-sans);display:flex;flex-direction:column">
+<a class="site-skip" href="#main" data-lang-id="Lewati ke konten">Skip to content</a>
 <header class="site-top" style="view-transition-name:site-top;position:sticky;top:0;z-index:50;display:flex;align-items:center;gap:26px;height:58px;padding:0 28px;border-bottom:1px solid var(--border-default);background:var(--surface-page)">
 <a href="./DsSite.dc.html" style="display:flex;align-items:center;gap:9px;text-decoration:none;color:var(--text-primary)"><img src="../assets/meridian-horizontal-light.svg?v=20260814c" alt="Meridian" class="meridian-lockup meridian-lockup--light"><img src="../assets/meridian-horizontal-dark.svg?v=20260814c" alt="" class="meridian-lockup meridian-lockup--dark"></a>
 <nav class="site-nav" style="display:flex;gap:20px;font-size:var(--text-md)">
@@ -59,7 +60,7 @@
 </div>
 </sc-for>
 </aside>
-<main class="pad-sm" style="flex:1;min-width:0;padding:30px 36px 90px;display:flex;gap:34px">
+<main id="main" tabIndex="-1" class="pad-sm" style="flex:1;min-width:0;padding:30px 36px 90px;display:flex;gap:34px">
 <article style="flex:1;min-width:0;max-width:780px">
 <details class="side-drawer"><summary>Browse the docs<svg class="side-drawer__chev" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"></path></svg></summary><div class="site-menu__panel side-drawer__panel">
 <sc-for list="{{ navGroups }}" as="g" hint-placeholder-count="4">

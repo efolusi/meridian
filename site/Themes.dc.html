@@ -24,8 +24,9 @@
 </head>
 <body>
 <x-dc>
-<helmet><script src="./ds-base.js"></script><script src="./i18n.js"></script><link rel="stylesheet" href="./site.css?v=20260814b"><style>@view-transition{navigation:auto}::view-transition-group(*){animation-duration:160ms}@media (prefers-reduced-motion:reduce){::view-transition-group(*),::view-transition-old(*),::view-transition-new(*){animation:none!important}}html{background:var(--surface-page,#FAF9F6)}</style></helmet>
+<helmet><script src="./ds-base.js"></script><script src="./i18n.js"></script><script src="./skip-link.js"></script><link rel="stylesheet" href="./site.css?v=20261112"><style>@view-transition{navigation:auto}::view-transition-group(*){animation-duration:160ms}@media (prefers-reduced-motion:reduce){::view-transition-group(*),::view-transition-old(*),::view-transition-new(*){animation:none!important}}html{background:var(--surface-page,#FAF9F6)}</style></helmet>
 <div style="min-height:100vh;background:var(--surface-page);color:var(--text-primary);font-family:var(--font-sans);display:flex;flex-direction:column">
+<a class="site-skip" href="#main" data-lang-id="Lewati ke konten">Skip to content</a>
 <header class="site-top" style="view-transition-name:site-top;position:sticky;top:0;z-index:50;display:flex;align-items:center;gap:26px;height:58px;padding:0 28px;border-bottom:1px solid var(--border-default);background:var(--surface-page)">
 <a href="./DsSite.dc.html" style="display:flex;align-items:center;gap:9px;text-decoration:none;color:var(--text-primary)"><img src="../assets/meridian-horizontal-light.svg?v=20260814c" alt="Meridian" class="meridian-lockup meridian-lockup--light"><img src="../assets/meridian-horizontal-dark.svg?v=20260814c" alt="" class="meridian-lockup meridian-lockup--dark"></a>
 <nav class="site-nav" style="display:flex;gap:20px;font-size:var(--text-md)">
@@ -45,7 +46,7 @@
 <button onClick="{{ toggleTheme }}" class="site-theme" aria-label="Switch theme" title="Switch theme" style-hover="color:var(--text-primary);background:var(--surface-sunken)"><svg class="icon-sun" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="4"></circle><path d="M12 2v2"></path><path d="M12 20v2"></path><path d="m4.93 4.93 1.41 1.41"></path><path d="m17.66 17.66 1.41 1.41"></path><path d="M2 12h2"></path><path d="M20 12h2"></path><path d="m6.34 17.66-1.41 1.41"></path><path d="m19.07 4.93-1.41 1.41"></path></svg><svg class="icon-moon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"></path></svg></button>
 </div>
 </header>
-<main class="pad-sm" style="flex:1;max-width:1160px;margin:0 auto;width:100%;padding:40px 28px 90px">
+<main id="main" tabIndex="-1" class="pad-sm" style="flex:1;max-width:1160px;margin:0 auto;width:100%;padding:40px 28px 90px">
 <h1 style="font-size:38px;font-weight:680;font-family:var(--font-display);letter-spacing:-0.02em;margin:0" data-lang-id="Tema">Themes</h1>
 <p style="font-size:16.5px;line-height:1.6;color:var(--text-secondary);margin:12px 0 0;max-width:640px" data-lang-id="Pilih aksen, radius, mode, dan densitas. Pratinjau berganti gaya secara langsung, dan CSS di kanan adalah semua yang Anda butuhkan untuk merilisnya. Hanya token semantik; tanpa mengubah komponen.">Pick an accent, radius, mode, and density. The preview restyles live, and the CSS on the right is everything you need to ship it. Semantic tokens only; no component changes.</p>
 <div style="margin-top:26px"><x-import component="ThemeCustomizer" from="./ThemeCustomizer.jsx" hint-size="100%,880px"></x-import></div>
