@@ -82,9 +82,11 @@ jobs:
           # needs an org admin to change, so treat pr-create as best effort:
           # when it is refused, the branch is still pushed and the compare URL
           # lands in the run summary — one click away from the same PR.
-          if ! gh pr create --base main --head "$BRANCH" \
+          # dev is the integration branch; main only receives release merges
+          # from dev, so a baseline PR into main would skip dev's checks.
+          if ! gh pr create --base dev --head "$BRANCH" \
             --title "Refresh visual baselines ($COUNT group shots)" \
             --body "Captured on this runner by the update-visual-baselines workflow (run ${GITHUB_RUN_ID}). Review the images in the diff — merging is the approval."; then
             echo "## Baselines captured — org policy blocks Actions from opening the PR" >> "$GITHUB_STEP_SUMMARY"
-            echo "Open it here: https://github.com/${GITHUB_REPOSITORY}/pull/new/$BRANCH" >> "$GITHUB_STEP_SUMMARY"
+            echo "Open it here: https://github.com/${GITHUB_REPOSITORY}/compare/dev...$BRANCH?expand=1" >> "$GITHUB_STEP_SUMMARY"
           fi
