@@ -11,6 +11,8 @@ const CSS = `
 @keyframes ef-pop-in{from{opacity:0;transform:translateY(-3px)}}
 `;
 const PopoverCtx = React.createContext(null);
+const TABBABLE = 'a[href],button,input,select,textarea,[tabindex]';
+const tabbable = root => [...root.querySelectorAll(TABBABLE)].filter(node => !node.disabled && node.tabIndex >= 0 && !node.closest('[hidden]'));
 
 function compose(theirs, ours) {
   return event => { theirs?.(event); if (!event.defaultPrevented) ours?.(event); };
@@ -39,6 +41,39 @@ export function Popover({ children, open: controlled, defaultOpen = false, onOpe
       document.removeEventListener('pointerdown', away);
       document.removeEventListener('mousedown', away);
     };
+  }, [open, setOpen]);
+  // The panel is portaled to the end of <body>, so the browser's Tab order
+  // runs from the trigger straight past it. Stitch it back in: Tab from the
+  // trigger enters the panel, Shift+Tab from its first stop returns to the
+  // trigger, and Tab past its last stop continues after the trigger.
+  React.useEffect(() => {
+    if (!open) return;
+    const tab = event => {
+      if (event.key !== 'Tab' || event.defaultPrevented) return;
+      const trigger = triggerRef.current;
+      const panel = contentRef.current;
+      if (!trigger || !panel) return;
+      const inside = tabbable(panel);
+      const active = document.activeElement;
+      if (active === trigger && !event.shiftKey && inside.length) {
+        event.preventDefault();
+        inside[0].focus();
+      } else if (event.shiftKey && inside.length && active === inside[0]) {
+        event.preventDefault();
+        trigger.focus();
+      } else if (!event.shiftKey && (inside.length ? active === inside[inside.length - 1] : active === panel)) {
+        // inside a modal the order wraps within that modal, not the page
+        const modal = trigger.closest('[aria-modal="true"]');
+        const page = tabbable(modal || document.body).filter(node => !panel.contains(node));
+        const next = page[page.indexOf(trigger) + 1] || (modal ? page[0] : undefined);
+        if (next) { event.preventDefault(); next.focus(); }
+        setOpen(false);
+      }
+    };
+    // capture phase: a dialog's focus trap listening on document must see the
+    // key already handled, or it would wrap focus away from the panel
+    document.addEventListener('keydown', tab, true);
+    return () => document.removeEventListener('keydown', tab, true);
   }, [open, setOpen]);
   const layer = useEscapeLayer(open, () => {
     setOpen(false);
