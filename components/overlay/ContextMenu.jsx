@@ -28,6 +28,13 @@ function menuItems(node) {
   return node ? Array.from(node.querySelectorAll('[role="menuitem"],[role="menuitemcheckbox"],[role="menuitemradio"]')).filter(item => !item.disabled && item.dataset.disabled !== 'true') : [];
 }
 
+// Submenus portal to their own host, so a pointerdown inside one is outside the
+// root panel's DOM subtree. Every panel of one menu carries the same id.
+function insideMenu(target, id) {
+  for (let node = target; node; node = node.parentNode) if (node.dataset && node.dataset.efMenu === id) return true;
+  return false;
+}
+
 function focusRelative(node, direction, loop = true) {
   const items = menuItems(node);
   if (!items.length) return;
@@ -72,12 +79,13 @@ export function ContextMenu({ open: controlled, defaultOpen = false, onOpenChang
   const open = controlled !== undefined ? controlled : inner;
   const triggerRef = React.useRef(null);
   const contentRef = React.useRef(null);
+  const menuId = React.useId();
   const setOpen = React.useCallback(next => {
     if (controlled === undefined) setInner(next);
     onOpenChange?.(next);
   }, [controlled, onOpenChange]);
   const openAt = React.useCallback((x, y) => { setPoint({ x, y }); setOpen(true); }, [setOpen]);
-  const value = React.useMemo(() => ({ open, setOpen, openAt, point, triggerRef, contentRef, modal }), [open, setOpen, openAt, point, modal]);
+  const value = React.useMemo(() => ({ open, setOpen, openAt, point, triggerRef, contentRef, modal, menuId }), [open, setOpen, openAt, point, modal, menuId]);
   return <RootCtx.Provider value={value}>{children}</RootCtx.Provider>;
 }
 
@@ -129,14 +137,14 @@ export const ContextMenuContent = React.forwardRef(function ContextMenuContent({
   }, [root?.open, root?.point.x, root?.point.y]);
   React.useEffect(() => {
     if (!root?.open) return;
-    const away = event => { if (!localRef.current?.contains(event.target) && !root.triggerRef.current?.contains(event.target)) close(); };
+    const away = event => { if (!insideMenu(event.target, root.menuId) && !root.triggerRef.current?.contains(event.target)) close(); };
     const blur = () => close();
     document.addEventListener('pointerdown', away);
     window.addEventListener('blur', blur);
     return () => { document.removeEventListener('pointerdown', away); window.removeEventListener('blur', blur); };
   }, [root?.open, close]);
   if (!root?.open) return null;
-  return <ContextMenuPortal><div {...rest} ref={ref} role="menu" data-slot="context-menu-content" data-state="open" className={join('ef-context-menu__content', className)} style={{ left: root.point.x, top: root.point.y, ...style }} onKeyDown={compose(onKeyDown, keyboard)}>{children}</div></ContextMenuPortal>;
+  return <ContextMenuPortal><div {...rest} ref={ref} role="menu" data-ef-menu={root.menuId} data-slot="context-menu-content" data-state="open" className={join('ef-context-menu__content', className)} style={{ left: root.point.x, top: root.point.y, ...style }} onKeyDown={compose(onKeyDown, keyboard)}>{children}</div></ContextMenuPortal>;
 });
 
 export const ContextMenuGroup = React.forwardRef(function ContextMenuGroup(props, ref) {
@@ -201,6 +209,7 @@ export const ContextMenuSubTrigger = React.forwardRef(function ContextMenuSubTri
 
 export const ContextMenuSubContent = React.forwardRef(function ContextMenuSubContent({ sideOffset = 4, alignOffset = -4, loop = true, className, style, onKeyDown, children, ...props }, forwardedRef) {
   const sub = React.useContext(SubCtx);
+  const root = React.useContext(RootCtx);
   const localRef = React.useRef(null);
   const fallbackTriggerRef = React.useRef(null);
   const fallbackContentRef = React.useRef(null);
@@ -209,5 +218,5 @@ export const ContextMenuSubContent = React.forwardRef(function ContextMenuSubCon
   const keyboard = useMenuKeyboard(localRef, close, { sub: true, loop });
   useIsoLayoutEffect(() => { if (sub?.open) menuItems(localRef.current)[0]?.focus(); }, [sub?.open]);
   if (!sub?.open) return null;
-  return <ContextMenuPortal><div {...props} ref={mergeRefs(forwardedRef, localRef, sub.contentRef)} role="menu" data-slot="context-menu-sub-content" data-state="open" data-side={side} className={join('ef-context-menu__content', className)} style={{ ...anchored, ...style }} onMouseLeave={() => sub.setOpen(false)} onKeyDown={compose(onKeyDown, keyboard)}>{children}</div></ContextMenuPortal>;
+  return <ContextMenuPortal><div {...props} ref={mergeRefs(forwardedRef, localRef, sub.contentRef)} role="menu" data-ef-menu={root?.menuId} data-slot="context-menu-sub-content" data-state="open" data-side={side} className={join('ef-context-menu__content', className)} style={{ ...anchored, ...style }} onMouseLeave={() => sub.setOpen(false)} onKeyDown={compose(onKeyDown, keyboard)}>{children}</div></ContextMenuPortal>;
 });
