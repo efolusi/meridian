@@ -25,7 +25,7 @@
     {
       "path": "components/display/Item.prompt.md",
       "type": "registry:component",
-      "content": "# Item\n\nA compositional content row for lists and card-like collections. Use Field for form controls; use Item for media, title, description, and actions. Group related rows with ItemGroup and ItemSeparator.\n\n```jsx\n<Item variant=\"outline\">\n  <ItemMedia variant=\"icon\"><Icon name=\"shield-alert\" /></ItemMedia>\n  <ItemContent>\n    <ItemTitle>Security alert</ItemTitle>\n    <ItemDescription>New login detected from an unknown device.</ItemDescription>\n  </ItemContent>\n  <ItemActions><Button variant=\"outline\">Review</Button></ItemActions>\n</Item>\n```\n\n`Item` supports `variant=\"default|outline|muted\"`, `size=\"default|sm|xs\"`, `asChild`, and the cross-primitive `render` prop. `ItemHeader` and `ItemFooter` span the full row.\n"
+      "content": "# Item\n\nA compositional content row for lists and card-like collections. Use Field for form controls; use Item for media, title, description, and actions. Group related rows with ItemGroup and ItemSeparator.\n\n```jsx\n<Item variant=\"outline\">\n  <ItemMedia variant=\"icon\"><Icon name=\"shield\" /></ItemMedia>\n  <ItemContent>\n    <ItemTitle>Security alert</ItemTitle>\n    <ItemDescription>New login detected from an unknown device.</ItemDescription>\n  </ItemContent>\n  <ItemActions><Button variant=\"outline\">Review</Button></ItemActions>\n</Item>\n```\n\n`Item` supports `variant=\"default|outline|muted\"`, `size=\"default|sm|xs\"`, `asChild`, and the cross-primitive `render` prop. `ItemHeader` and `ItemFooter` span the full row.\n"
     }
   ],
   "categories": [
