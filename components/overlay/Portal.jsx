@@ -134,7 +134,7 @@ const handledEscapes = new WeakSet();
  * Every modal and popover used to listen on `document` for itself, so a
  * Popover inside a Dialog, or a Dialog inside a Dialog, closed together on one
  * key press. Layers rendered inside another layer's subtree register with it
- * through context — React context follows portals, the DOM does not — and a
+ * through context (React context follows portals, the DOM does not), and a
  * layer with an open child leaves the key to the child. A layer whose caller
  * cancels the key (`preventDefault`) or that has no way out still consumes it.
  *

@@ -48,7 +48,7 @@ export const NavigationMenu = React.forwardRef(function NavigationMenu({ value: 
     const triggerRect = trigger.getBoundingClientRect();
     // inset-inline-start counts from the right edge in a right-to-left layout
     const rtl = (root.closest('[dir]')?.getAttribute('dir') || direction) === 'rtl';
-    setIndicator({ start: rtl ? rootRect.right - triggerRect.right : triggerRect.left - rootRect.left, width: triggerRect.width });
+    setIndicator({ start: rtl ? (rootRect.right - triggerRect.right) : (triggerRect.left - rootRect.left), width: triggerRect.width });
   }, [direction]);
   const openItem = React.useCallback((next, trigger, immediate = false) => {
     clearTimeout(timerRef.current);
