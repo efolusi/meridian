@@ -1,6 +1,6 @@
 # Support
 
-- **Usage questions** ("how do I…", "which component for…"): open a [GitHub Discussion](https://github.com/efolusi/meridian/discussions). Read `SKILL.md` and the docs site first; most answers live there.
+- **Usage questions** ("how do I…", "which component for…"): open a [GitHub Discussion](https://github.com/efolusi/meridian/discussions). Read the [docs site](https://meridian.efolusi.com) and [`skills/SKILL.md`](skills/SKILL.md) first; most answers live there.
 - **Bugs**: open a [bug report](https://github.com/efolusi/meridian/issues/new?template=bug_report.md) with a minimal reproduction.
 - **New components, variants, or tokens**: open a [proposal](https://github.com/efolusi/meridian/issues/new?template=component_proposal.md) before writing code.
 - **Docs problems**: open a [docs issue](https://github.com/efolusi/meridian/issues/new?template=docs_issue.md).

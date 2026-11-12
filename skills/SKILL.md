@@ -4,7 +4,7 @@ description: Use this skill to generate well-branded interfaces and assets with 
 user-invocable: true
 ---
 
-Read the repository README.md (at the repo root, one level up from this skill), and explore the other available files.
+Read the repository README.md (at the repo root, one level up from this skill). For component facts, prefer generated sources over guessing: `llms-full.txt` (every prompt guide, typed interface and token name in one file), `registry.json`, each component's `.prompt.md` and `.d.ts`, or the `@efolusi/meridian-mcp` server when it is installed.
 If creating visual artifacts (slides, mocks, throwaway prototypes, etc), copy assets out and create static HTML files for the user to view. If working on production code, you can copy assets and read the rules here to become an expert in designing with this brand.
 If the user invokes this skill without any other guidance, ask them what they want to build or design, ask some questions, and act as an expert designer who outputs HTML artifacts _or_ production code, depending on the need.
 
@@ -15,7 +15,7 @@ Quick orientation:
 - Palette: Meridian’s coffee ramp runs cream→latte→caramel→cocoa→espresso (`--brand-50…950`), espresso ink (`--brand-950` `#2C1709`) for primary actions, caramel (`--brand-700`) for links and focus, warm sand neutrals for everything else. Hairline borders, near-zero shadows, no gradients.
 - Components: React primitives in the 12 groups under `components/`, each with a `.prompt.md` for usage.
 - Use cases: the `ai/`, `code/`, `files/`, and `data/` groups exist for richer product surfaces: AI workspaces, infrastructure consoles, file tools, and trading/finance dashboards.
-- Icons: 118 Lucide SVGs in `assets/icons/`, 2px stroke, rendered via the Icon component or inlined.
+- Icons: the curated Lucide SVGs in `assets/icons/`, 2px stroke, rendered via the Icon component or inlined.
 - Full screens to copy from (showcases, plain JSX): `showcases/{console,auth,website,docs,agent,infra,trader,tools}/`; page-shell starter in `starters/app-page/`.
 - Voice: sentence case, verbs on buttons, "we/you", no emoji. See `guidelines/brand.md` § Content fundamentals.
 - Dark mode: `data-theme="dark"` on any subtree; compact density: `data-density="compact"`. Use semantic tokens only (never raw ramp values) and both themes come free.

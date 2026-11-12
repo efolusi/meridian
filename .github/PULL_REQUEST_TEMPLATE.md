@@ -4,6 +4,7 @@
 
 ## Checklist (from CONTRIBUTING.md)
 
+- [ ] `npm run check` is green
 - [ ] Works in light **and** dark (`data-theme="dark"`), comfortable **and** compact (`data-density="compact"`)
 - [ ] Keyboard operable, focus visible (`--focus-ring`)
 - [ ] Semantic tokens only, no raw colors/sizes/fonts
