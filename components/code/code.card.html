@@ -24,10 +24,10 @@ function Demo() {
       <Console height={170} entries={[
         { level: 'info', time: '14:02:11', text: 'Replaying 12 failed deliveries' },
         { level: 'log', time: '14:02:12', text: 'batch 1/3 → hooks.acme.io · 200 OK' },
-        { level: 'warn', time: '14:02:13', text: 'batch 2/3 slow (1.9s) — backing off' },
+        { level: 'warn', time: '14:02:13', text: 'batch 2/3 slow (1.9s), backing off' },
         { level: 'error', time: '14:02:19', text: 'delivery #9 failed once, retrying', stack: 'at deliver (webhooks.ts:88)\nat replay (batch.ts:31)', source: 'webhooks.ts:88' },
         { level: 'log', time: '14:02:24', text: 'batch 3/3 → hooks.acme.io · 200 OK' },
-        { level: 'info', time: '14:02:24', text: 'Replay complete — 12/12 delivered' },
+        { level: 'info', time: '14:02:24', text: 'Replay complete: 12/12 delivered' },
       ]} />
       <Exception type="TypeError" message="Cannot read properties of undefined (reading 'retries')" defaultOpen frames={[
         { fn: 'backoffFor', loc: 'webhooks.ts:88:19', active: true },

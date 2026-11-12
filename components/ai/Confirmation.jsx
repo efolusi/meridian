@@ -22,7 +22,7 @@ const CSS = `
 .ef-confirm__status--approved{color:var(--success-600,var(--text-secondary))}
 .ef-confirm__status--rejected{color:var(--text-muted)}
 `;
-export function Confirmation({ title, description, tone = 'default', status, defaultStatus, onStatusChange, icon, approveLabel = 'Approve', rejectLabel = 'Reject', approvedNote = 'Approved — continuing.', rejectedNote = 'Rejected — the agent will skip this.', children, style, className, ...rest }) {
+export function Confirmation({ title, description, tone = 'default', status, defaultStatus, onStatusChange, icon, approveLabel = 'Approve', rejectLabel = 'Reject', approvedNote = 'Approved. Continuing.', rejectedNote = 'Rejected. The agent will skip this.', children, style, className, ...rest }) {
   injectEfCss('ef-css-confirm', CSS);
   const [un, setUn] = React.useState(defaultStatus ?? 'pending');
   const controlled = status;
