@@ -41,7 +41,7 @@ function App() {
   };
   return (
     <div style={{ display: 'flex', height: '100vh', overflow: 'hidden' }}>
-      <Sidebar nav={nav} onNav={setNav} />
+      <ConsoleSidebar nav={nav} onNav={setNav} />
       <main style={{ flex: 1, overflowY: 'auto' }}>
         <Topbar title={TITLES[nav]} onSearch={() => setCmdk(true)} notify={notify} />
         {nav === 'overview' && <DashboardScreen onNewProject={() => setDialog(true)} notify={notify} />}
