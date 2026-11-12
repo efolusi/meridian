@@ -24,6 +24,8 @@ const CSS = `
 .ef-menubar__trigger{display:flex;height:28px;align-items:center;padding:0 8px;border:0;border-radius:var(--radius-sm);outline:0;background:transparent;color:var(--text-primary);font:inherit;font-size:var(--text-sm);font-weight:var(--weight-medium);cursor:pointer;user-select:none}
 .ef-menubar__trigger:hover,.ef-menubar__trigger:focus,.ef-menubar__trigger[data-state=open]{background:var(--surface-sunken)}
 .ef-menubar__trigger:focus-visible{box-shadow:var(--focus-ring)}
+/* coarse pointers get the 44px touch target, like form controls do through --control-h-* */
+@media (pointer:coarse){.ef-menubar{height:auto}.ef-menubar__trigger{height:var(--tap-min)}}
 `;
 
 const MenubarRootContext = React.createContext(null);

@@ -11,6 +11,8 @@ const CSS = `
 .ef-sidenav__item--on{background:var(--border-default);color:var(--text-primary);font-weight:600}
 .ef-sidenav__item:focus-visible{outline:none;box-shadow:var(--focus-ring)}
 .ef-sidenav__foot{margin-top:auto;padding:12px}
+/* coarse pointers get the 44px touch target, like form controls do through --control-h-* */
+@media (pointer:coarse){.ef-sidenav__item{height:var(--tap-min)}}
 `;
 export function SideNav({ brand = 'Meridian', brandBadge, logoSrc, groups, value, onChange, footer, style, className, ...rest }) {
   injectEfCss('ef-css-sidenav', CSS);

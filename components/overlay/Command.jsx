@@ -15,6 +15,8 @@ const CSS = `
 .ef-command__separator{height:1px;margin-inline:-4px;background:var(--border-default)}
 .ef-command-dialog{overflow:hidden;padding:0}.ef-command-dialog>.ef-dialog__close{z-index:1}.ef-command-dialog .ef-command__input-wrap{height:48px}.ef-command-dialog .ef-command__item{padding-block:10px}
 .ef-command__sr{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+/* coarse pointers get the 44px touch target, like form controls do through --control-h-* */
+@media (pointer:coarse){.ef-command__item{min-height:var(--tap-min)}}
 `;
 
 const CommandContext = React.createContext(null);

@@ -20,6 +20,8 @@ const CSS = `
 .ef-dropdown-menu__shortcut{margin-inline-start:auto;color:var(--text-muted);font-size:var(--text-xs);letter-spacing:.08em}
 .ef-dropdown-menu__chevron{display:inline-flex;margin-inline-start:auto;color:var(--text-muted)}
 [dir=rtl] .ef-dropdown-menu__chevron{transform:scaleX(-1)}
+/* coarse pointers get the 44px touch target, like form controls do through --control-h-* */
+@media (pointer:coarse){.ef-dropdown-menu__item{min-height:var(--tap-min)}}
 `;
 
 const RootCtx = React.createContext(null);

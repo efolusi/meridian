@@ -14,6 +14,8 @@ const CSS = `
 .ef-tabs__count{font-size:var(--text-xs);font-weight:var(--weight-medium);color:var(--text-muted)}
 .ef-tabs__tab--active .ef-tabs__count{color:var(--text-primary)}
 .ef-tabs__content{padding-block:var(--space-4)}
+/* coarse pointers get the 44px touch target, like form controls do through --control-h-* */
+@media (pointer:coarse){.ef-tabs__tab{height:var(--tap-min)}}
 `;
 const TabsContext = React.createContext(null);
 export const Tabs = React.forwardRef(function Tabs({ items, value: valueProp, defaultValue, onValueChange, onChange, orientation = 'horizontal', children, style, className, ...rest }, fRef) {

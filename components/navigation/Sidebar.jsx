@@ -34,6 +34,8 @@ const CSS = `
 @media(max-width:767px){.ef-sidebar:not([data-collapsible=none]){display:none}.ef-sidebar-provider{min-height:100%}}
 @media(min-width:768px){.ef-sidebar-mobile-backdrop,.ef-sidebar-mobile{display:none}}
 @media(prefers-reduced-motion:reduce){.ef-sidebar,.ef-sidebar__panel{transition:none}}
+/* coarse pointers get the 44px touch target, like form controls do through --control-h-* */
+@media (pointer:coarse){.ef-sidebar-menu-button,.ef-sidebar-menu-button[data-size=sm],.ef-sidebar-menu-button[data-size=lg]{height:var(--tap-min)}.ef-sidebar-menu-sub-button{min-height:var(--tap-min)}.ef-sidebar-input{height:var(--tap-min)}.ef-sidebar-trigger{width:var(--tap-min);height:var(--tap-min)}.ef-sidebar-group-action,.ef-sidebar-menu-action{width:var(--tap-min);height:var(--tap-min);inset-block-start:0;inset-inline-end:0}}
 `;
 
 const SidebarContext = React.createContext(null);
