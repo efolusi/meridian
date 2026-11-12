@@ -16485,9 +16485,6 @@ function AgentScreen() {
     size: 16
   }), item.label)))))));
 }
-Object.assign(window, {
-  AgentScreen
-});
 })(); } catch (e) { __ds_ns.__errors.push({ path: "showcases/agent/AgentScreen.jsx", error: String((e && e.message) || e) }); }
 
 // showcases/auth/AuthScreens.jsx
@@ -16741,12 +16738,6 @@ function AuthForm({
     }
   }, "By continuing you agree to the Terms of Service and Privacy Policy."));
 }
-Object.assign(window, {
-  BrandPanel,
-  AuthForm,
-  ForgotForm,
-  MagicForm
-});
 function SentNotice({
   title,
   email,
@@ -17484,9 +17475,6 @@ function CustomersScreen({
     onClick: addCustomer
   }, "Add customer")))));
 }
-Object.assign(window, {
-  CustomersScreen
-});
 })(); } catch (e) { __ds_ns.__errors.push({ path: "showcases/console/CustomersScreen.jsx", error: String((e && e.message) || e) }); }
 
 // showcases/console/ExtraScreens.jsx
@@ -17925,11 +17913,6 @@ function BillingScreen({
     rows: INVOICES
   }))));
 }
-Object.assign(window, {
-  ProjectsScreen,
-  UsageScreen,
-  BillingScreen
-});
 })(); } catch (e) { __ds_ns.__errors.push({ path: "showcases/console/ExtraScreens.jsx", error: String((e && e.message) || e) }); }
 
 // showcases/console/OverviewScreen.jsx
@@ -18158,9 +18141,6 @@ function DashboardScreen({
     notify: notify
   }), /*#__PURE__*/React.createElement(Activity, null)));
 }
-Object.assign(window, {
-  DashboardScreen
-});
 })(); } catch (e) { __ds_ns.__errors.push({ path: "showcases/console/OverviewScreen.jsx", error: String((e && e.message) || e) }); }
 
 // showcases/console/SettingsScreen.jsx
@@ -18520,9 +18500,6 @@ function SettingsScreen({
     notify: notify
   })));
 }
-Object.assign(window, {
-  SettingsScreen
-});
 })(); } catch (e) { __ds_ns.__errors.push({ path: "showcases/console/SettingsScreen.jsx", error: String((e && e.message) || e) }); }
 
 // showcases/console/Shell.jsx
@@ -18953,11 +18930,6 @@ function Topbar({
     }
   }));
 }
-Object.assign(window, {
-  Sidebar,
-  Topbar,
-  SideItem
-});
 })(); } catch (e) { __ds_ns.__errors.push({ path: "showcases/console/Shell.jsx", error: String((e && e.message) || e) }); }
 
 // showcases/docs/DocsScreen.jsx
@@ -19570,9 +19542,6 @@ function DocsApp() {
     size: 16
   }), label, /*#__PURE__*/React.createElement(CommandShortcut, null, group))))))));
 }
-Object.assign(window, {
-  DocsApp
-});
 })(); } catch (e) { __ds_ns.__errors.push({ path: "showcases/docs/DocsScreen.jsx", error: String((e && e.message) || e) }); }
 
 // showcases/infra/InfraScreen.jsx
@@ -20097,9 +20066,6 @@ function InfraScreen() {
     variant: "secondary"
   }, "Close"))))));
 }
-Object.assign(window, {
-  InfraScreen
-});
 })(); } catch (e) { __ds_ns.__errors.push({ path: "showcases/infra/InfraScreen.jsx", error: String((e && e.message) || e) }); }
 
 // showcases/tools/ToolsScreen.jsx
@@ -20405,9 +20371,6 @@ function ToolsScreen() {
     size: 24
   })), /*#__PURE__*/React.createElement(EmptyTitle, null, "Scanner"), /*#__PURE__*/React.createElement(EmptyDescription, null, "Intentionally omitted from this kit. The Convert flow is the reference layout.")))))));
 }
-Object.assign(window, {
-  ToolsScreen
-});
 })(); } catch (e) { __ds_ns.__errors.push({ path: "showcases/tools/ToolsScreen.jsx", error: String((e && e.message) || e) }); }
 
 // showcases/trader/TraderScreen.jsx
@@ -20803,9 +20766,6 @@ function TraderScreen() {
     onClick: () => follow(n)
   }, followed.includes(n) ? 'Mirroring' : 'Mirror'))))))))));
 }
-Object.assign(window, {
-  TraderScreen
-});
 })(); } catch (e) { __ds_ns.__errors.push({ path: "showcases/trader/TraderScreen.jsx", error: String((e && e.message) || e) }); }
 
 // showcases/website/Sections.jsx
@@ -21463,15 +21423,6 @@ function SiteFooter() {
     }
   }, "Security"))));
 }
-Object.assign(window, {
-  SiteHeader,
-  Hero,
-  Products,
-  BrandBand,
-  Pricing,
-  SiteFooter,
-  Newsletter
-});
 })(); } catch (e) { __ds_ns.__errors.push({ path: "showcases/website/Sections.jsx", error: String((e && e.message) || e) }); }
 
 __ds_ns.AgentRun = __ds_scope.AgentRun;

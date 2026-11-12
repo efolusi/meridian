@@ -100,6 +100,13 @@ function unsupported(rel, what) {
   return new Error(`${rel}: ${what} is not supported by the bundle compiler (see ARCHITECTURE.md, The bundle format)`);
 }
 
+function writesWindow(e) {
+  const isWindow = n => n && n.type === 'Identifier' && n.name === 'window';
+  if (e.type === 'CallExpression' && e.callee.type === 'MemberExpression'
+    && e.callee.object.name === 'Object' && e.callee.property.name === 'assign') return isWindow(e.arguments[0]);
+  return e.type === 'AssignmentExpression' && e.left.type === 'MemberExpression' && isWindow(e.left.object);
+}
+
 export function compileSource(rel, src) {
   const exportNames = [];
   const plugin = ({ types: t }) => ({
@@ -149,6 +156,13 @@ export function compileSource(rel, src) {
         } else {
           throw unsupported(rel, 'an export { … } list');
         }
+      },
+      // Showcase pages publish their screens with Object.assign(window, …) for their own
+      // script tags; inside the bundle that would leak them onto every page.
+      ExpressionStatement(p) {
+        if (p.parent.type !== 'Program' || !writesWindow(p.node.expression)) return;
+        if (!rel.startsWith('showcases/')) throw unsupported(rel, 'a top-level write to window');
+        p.remove();
       },
       ExportDefaultDeclaration() {
         throw unsupported(rel, 'export default');
