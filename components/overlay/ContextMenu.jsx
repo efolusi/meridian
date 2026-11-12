@@ -7,8 +7,10 @@ import { useDirection } from '../display/Direction.jsx';
 const CSS = `
 .ef-context-menu__content{position:fixed;min-width:128px;max-height:calc(100vh - 16px);overflow:auto;background:var(--surface-card);color:var(--text-primary);border:1px solid var(--border-strong);border-radius:var(--radius-md);box-shadow:var(--shadow-md);padding:4px;z-index:var(--z-popover);animation:ef-context-menu-in var(--dur-fast) var(--ease-out)}
 @keyframes ef-context-menu-in{from{opacity:0;transform:scale(.98)}}
-.ef-context-menu__item{position:relative;display:flex;align-items:center;gap:8px;width:100%;min-height:32px;padding:6px 8px;border:0;border-radius:var(--radius-sm);outline:0;background:transparent;color:var(--text-primary);font:inherit;font-size:var(--text-sm);line-height:1.35;text-align:start;white-space:nowrap;cursor:default;user-select:none}
+.ef-context-menu__item{position:relative;display:flex;align-items:center;gap:8px;width:100%;min-height:32px;padding:6px 8px;border:0;border-radius:var(--radius-sm);outline:0;background:transparent;color:var(--text-primary);font:inherit;font-size:var(--text-sm);line-height:1.35;text-align:start;white-space:nowrap;cursor:pointer;user-select:none}
 .ef-context-menu__item:hover,.ef-context-menu__item:focus,.ef-context-menu__item[data-highlighted=true],.ef-context-menu__item[data-state=open]{background:var(--surface-sunken)}
+/* the tint alone is ~1.1:1 against the panel; keyboard focus needs a 3:1 ring */
+.ef-context-menu__item:focus-visible{box-shadow:inset 0 0 0 2px var(--focus-ring-color)}
 .ef-context-menu__item:disabled,.ef-context-menu__item[data-disabled=true]{pointer-events:none;opacity:.5}
 .ef-context-menu__item[data-inset=true],.ef-context-menu__label[data-inset=true]{padding-inline-start:32px}
 .ef-context-menu__item[data-variant=destructive]{color:var(--danger-600)}
