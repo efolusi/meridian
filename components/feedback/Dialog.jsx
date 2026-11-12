@@ -14,7 +14,9 @@ const CSS = `
 @keyframes ef-fade{from{opacity:0}}@keyframes ef-pop{from{opacity:0;transform:scale(.96) translateY(6px)}}
 `;
 const DialogContext = React.createContext(null);
-const FOCUSABLE = 'button,[href],input,select,textarea,[tabindex]:not([tabindex="-1"])';
+const FOCUSABLE = 'button,[href],input,select,textarea,[tabindex]';
+// what Tab can actually reach: not disabled, not taken out with tabindex=-1, not hidden
+const tabbable = root => [...root.querySelectorAll(FOCUSABLE)].filter(x => !x.disabled && x.tabIndex >= 0 && !x.closest('[hidden]'));
 function cx(base, className) { return base + (className ? ` ${className}` : ''); }
 function compose(first, second) { return e => { if (first) first(e); if (!e.defaultPrevented && second) second(e); }; }
 
@@ -47,10 +49,10 @@ export const DialogClose = React.forwardRef(function DialogClose({ asChild = fal
 });
 export const DialogContent = React.forwardRef(function DialogContent({ children, className, style, width = 440, showCloseButton = true, closeLabel = 'Close', onEscapeKeyDown, overlayProps, overlayRef, slot = 'dialog-content', ...rest }, ref) {
   const ctx = React.useContext(DialogContext); const panelRef = React.useRef(null); const previous = React.useRef(null);
-  React.useEffect(() => { if (!ctx || !ctx.open) return; previous.current = document.activeElement; const panel = panelRef.current; const first = panel && panel.querySelector(FOCUSABLE); (first || panel).focus(); return () => previous.current && previous.current.focus && previous.current.focus(); }, [ctx && ctx.open]);
+  React.useEffect(() => { if (!ctx || !ctx.open) return; previous.current = document.activeElement; const panel = panelRef.current; const first = panel && tabbable(panel)[0]; (first || panel).focus(); return () => previous.current && previous.current.focus && previous.current.focus(); }, [ctx && ctx.open]);
   useScrollLock(!!(ctx && ctx.open));
   const layer = useEscapeLayer(!!(ctx && ctx.open), e => { if (onEscapeKeyDown) onEscapeKeyDown(e); if (!e.defaultPrevented) ctx.setOpen(false); });
-  React.useEffect(() => { if (!ctx || !ctx.open) return; const key = e => { if (e.key !== 'Tab') return; const f = [...panelRef.current.querySelectorAll(FOCUSABLE)].filter(x => !x.disabled); if (!f.length) return e.preventDefault(); const i=f.indexOf(document.activeElement); if (e.shiftKey && i<=0) { e.preventDefault(); f[f.length-1].focus(); } else if (!e.shiftKey && (i<0 || i===f.length-1)) { e.preventDefault(); f[0].focus(); } }; document.addEventListener('keydown', key); return () => document.removeEventListener('keydown', key); }, [ctx && ctx.open]);
+  React.useEffect(() => { if (!ctx || !ctx.open) return; const key = e => { if (e.key !== 'Tab') return; const f = tabbable(panelRef.current); if (!f.length) return e.preventDefault(); const i=f.indexOf(document.activeElement); if (e.shiftKey && i<=0) { e.preventDefault(); f[f.length-1].focus(); } else if (!e.shiftKey && (i<0 || i===f.length-1)) { e.preventDefault(); f[0].focus(); } }; document.addEventListener('keydown', key); return () => document.removeEventListener('keydown', key); }, [ctx && ctx.open]);
   if (!ctx || !ctx.open) return null;
   return <DialogPortal><DialogOverlay {...overlayProps} ref={overlayRef}><div {...rest} ref={mergeRefs(ref, panelRef)} data-slot={slot} role="dialog" aria-modal="true" aria-labelledby={rest['aria-label'] ? undefined : ctx.titleId} aria-describedby={ctx.descriptionId} tabIndex={-1} className={cx('ef-dialog__content', className)} style={{ position:'relative', maxWidth: width, ...style }}><escapeLayerContext.Provider value={layer}>{children}</escapeLayerContext.Provider>{showCloseButton ? <div className="ef-dialog__close"><IconButton icon="x" label={closeLabel} size="sm" onClick={() => ctx.setOpen(false)} /></div> : null}</div></DialogOverlay></DialogPortal>;
 });
