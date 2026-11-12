@@ -37,6 +37,10 @@ const CSS = `
 `;
 
 const SidebarContext = React.createContext(null);
+// Cmd/Ctrl+B is "bold" in every text field and rich-text editor; the sidebar
+// shortcut must not take it from them.
+const EDITABLE = 'input,textarea,select,[contenteditable]:not([contenteditable="false"])';
+const isEditable = target => !!(target && target.closest && target.closest(EDITABLE));
 const join = (...parts) => parts.filter(Boolean).join(' ');
 
 function compose(render, fallback, props, ref, children) {
@@ -72,7 +76,7 @@ export const SidebarProvider = React.forwardRef(function SidebarProvider({ defau
   React.useEffect(() => {
     const onKeyDown = event => {
       if (event.key === 'Escape' && openMobile) { event.preventDefault(); setOpenMobile(false); }
-      if (typeof event.key === 'string' && event.key.toLowerCase() === 'b' && (event.metaKey || event.ctrlKey)) { event.preventDefault(); toggleSidebar(); }
+      if (typeof event.key === 'string' && event.key.toLowerCase() === 'b' && (event.metaKey || event.ctrlKey) && !isEditable(event.target)) { event.preventDefault(); toggleSidebar(); }
     };
     window.addEventListener('keydown', onKeyDown);
     return () => window.removeEventListener('keydown', onKeyDown);
