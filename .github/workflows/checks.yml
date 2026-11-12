@@ -8,11 +8,22 @@ on:
 permissions:
   contents: read
 
+# Runner choice. efolusi-dev is an org-wide self-hosted host whose `deploy` user
+# also publishes dev-meridian.efolusi.com, is in the Docker group, and holds
+# other products' environment files. This repository is public, so a pull
+# request from a fork is untrusted code (package.json scripts, tests, gates)
+# and must never reach that host: it runs on a GitHub-hosted runner instead.
+# Only pushes and same-repository branches (writers only) use efolusi-dev. The
+# expression fails closed: a fork whose head repo was deleted still goes
+# hosted. tests/ci-security.test.mjs holds this contract.
+
 jobs:
   gates:
-    runs-on: [self-hosted, Linux, X64, efolusi-dev]
+    runs-on: ${{ (github.event_name != 'pull_request' || github.event.pull_request.head.repo.full_name == github.repository) && fromJSON('["self-hosted","Linux","X64","efolusi-dev"]') || 'ubuntu-24.04' }}
     steps:
       - uses: actions/checkout@v5
+        with:
+          persist-credentials: false
 
       - name: Contrast (WCAG AA token pairs)
         run: python3 scripts/check_contrast.py
@@ -94,7 +105,7 @@ jobs:
         run: node scripts/check_types.mjs
 
   smoke:
-    runs-on: [self-hosted, Linux, X64, efolusi-dev]
+    runs-on: ${{ (github.event_name != 'pull_request' || github.event.pull_request.head.repo.full_name == github.repository) && fromJSON('["self-hosted","Linux","X64","efolusi-dev"]') || 'ubuntu-24.04' }}
     env:
       # Browsers and their system libs come from the Playwright image: the
       # self-hosted runner user has no sudo, so `install --with-deps` cannot
@@ -103,6 +114,8 @@ jobs:
       PW_IMAGE: mcr.microsoft.com/playwright:v1.48.0-noble
     steps:
       - uses: actions/checkout@v5
+        with:
+          persist-credentials: false
       - uses: actions/setup-node@v5
         with:
           node-version: '22.23.2'
