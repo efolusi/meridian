@@ -16,7 +16,7 @@ export function SegmentedControl({ options, value, onChange, style, className, .
       {options.map(o => {
         const opt = typeof o === 'string' ? { id: o, label: o } : o;
         return (
-          <button key={opt.id} className={`ef-seg__opt${value === opt.id ? ' ef-seg__opt--active' : ''}`} aria-pressed={value === opt.id} disabled={opt.disabled} onClick={() => onChange && onChange(opt.id)}>
+          <button key={opt.id} type="button" className={`ef-seg__opt${value === opt.id ? ' ef-seg__opt--active' : ''}`} aria-pressed={value === opt.id} disabled={opt.disabled} onClick={() => onChange && onChange(opt.id)}>
             {opt.icon ? <Icon name={opt.icon} size={14} /> : null}{opt.label}
           </button>
         );
