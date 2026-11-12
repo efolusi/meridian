@@ -42,14 +42,6 @@ const { Button, Card, CardContent, CardHeader, CardTitle, Stat } = window.Efolus
 
 A complete runnable page is in [`hello.html`](hello.html). Open it in a browser; nothing else is required.
 
-### Install source from the registry
-
-Meridian is also a public GitHub Registry. Compatible registry clients can
-install editable component source, types, usage guidance, and required Meridian
-dependencies from `efolusi/meridian/<item>`. The same catalog is available over
-HTTP at `https://meridian.efolusi.com/site/registry.json`, with installable items
-under `https://meridian.efolusi.com/site/registry/<item>.json`.
-
 Dark mode and compact density are attribute scopes, not rebuilds:
 
 ```html
@@ -61,9 +53,11 @@ Dark mode and compact density are attribute scopes, not rebuilds:
 | Path | When to use it | How |
 |---|---|---|
 | **npm** | you have a bundler (Vite, Next, Remix) | `npm install @efolusi/meridian` |
-| **CDN** (above) | prototypes, demos, a single-file artifact | point the two tags at `meridian.efolusi.com` |
+| **CDN** (above) | prototypes, demos, a single-file artifact | the four tags above |
 | **Vendor the folder** | you want to own and edit the source | copy the repo; link `styles.css` and `_ds_bundle.js` |
 | **Vendor one component** | you need Button, not all 123 | copy `components/<group>/<Name>.jsx` + `.d.ts` (MIT, no attribution required) |
+
+**From the registry.** Compatible registry clients install editable component source, types, usage guidance, and the Meridian dependencies it needs from `efolusi/meridian/<item>`. The same catalog is served at `https://meridian.efolusi.com/site/registry.json`, with items under `https://meridian.efolusi.com/site/registry/<item>.json`.
 
 ### Meridian Guard
 
@@ -108,11 +102,11 @@ Meridian is general-purpose: the primitives and the patterns for an entire produ
 - **Trading & finance**: portfolios, positions, P&L, live signals → Sparkline, Stat, Table, PaymentCard.
 - **Admin & marketing**: dashboards, settings, pricing, docs → the full display, navigation, and data tiers.
 
-Every component and screen here is original. Meridian has its own three-stroke mark (`assets/meridian-mark.svg`): a minimal `///` symbol and forward path rendered in espresso. The visual brief pairs it with warm sand neutrals, humanist sans type, an 8px-to-24px radius scale, comfortable density, light and dark themes, Lucide icons, and springy motion. No prior codebase or product UI was recreated.
+Meridian has its own three-stroke mark (`assets/meridian-mark.svg`): a minimal `///` symbol and forward path rendered in espresso, paired with warm sand neutrals, humanist sans type, an 8px-to-24px radius scale, comfortable density, light and dark themes, Lucide icons, and springy motion.
 
 ## Blocks
 
-Pre-composed sections in `blocks/` (Blocks group in the Design System tab): App shell, Login, Stats dashboard, Settings, Hero, Pricing, FAQ, 404 page, 500 page, Offline state, Empty state, Activity feed. Copy a block's markup as the starting point for a page. They compose the primitives, so they inherit theme + density automatically.
+Pre-composed sections in `blocks/` ([preview them](https://meridian.efolusi.com/site/Blocks.dc.html)): App shell, Login, Stats dashboard, Settings, Hero, Pricing, FAQ, 404 page, 500 page, Offline state, Empty state, Activity feed. Copy a block's markup as the starting point for a page. They compose the primitives, so they inherit theme + density automatically.
 
 ## Landing rhythm (opt-in)
 
@@ -131,9 +125,10 @@ import '@efolusi/meridian/landing.css'
 
 - **Dark theme:** set `data-theme="dark"` on `<html>` or any subtree. Only semantic aliases remap (espresso surfaces, cream text, caramel links, retuned status tints); ramps stay fixed. Components are theme-safe because they style against semantic tokens only.
 - **Compact density:** set `data-density="compact"` for data-heavy ops views: control heights drop to 24/30/38px and table rows tighten via `--table-pad-y/x`.
-- Both are attribute scopes, so a dark page can host a light card and vice versa. Specimen: Theming group in the Design System tab.
+- Both are attribute scopes, so a dark page can host a light card and vice versa. See the [Themes page](https://meridian.efolusi.com/site/Themes.dc.html).
+- **Fonts:** Bricolage Grotesque, Figtree and JetBrains Mono (all OFL) ship as variable WOFF2 in `assets/fonts/`. Replace the files to swap faces; `guidelines/theming.md` covers the rest.
 
-## Patterns
+## Guidelines
 
 - `guidelines/brand.md`: palette derivation, type and spacing scales, motion, iconography, voice and copy rules
 - `guidelines/theming.md`: bring your own brand: token layers, the semantic override set, dark-mode invariants, font swaps, contrast duties
@@ -145,7 +140,7 @@ import '@efolusi/meridian/landing.css'
 
 ## Component library
 
-Authored from scratch (no source inventory existed). Namespace: `window.EfolusiDesignSystem_4ffc3d`.
+Namespace: `window.EfolusiDesignSystem_4ffc3d`.
 
 - `components/forms/`: Button, IconButton, Input, Textarea, Select (+Trigger, +Value, +Content, +Group, +Label, +Item, +Separator), NativeSelect (+Option, +OptGroup), Checkbox, RadioGroup (+Item), Switch, Slider, Combobox (+Value, +Trigger, +Clear, +Input, +Content, +List, +Item, +Group, +Label, +Collection, +Empty, +Separator, +Chips, +Chip, +ChipsInput), NumberInput, InputOTP (+Group, +Slot, +Separator), ButtonTile (+Group), Toggle (+Group), ButtonGroup, InputGroup, Field (+Set, +Legend, +Group, +Content, +Label, +Title, +Description, +Separator, +Error), Label
 - `components/display/`: Card, Badge, Tag, Avatar (+AvatarGroup), Kbd, Divider, Separator, Accordion, Link, Toolbar, TreeList, Item (+Group, +Separator, +Media, +Content, +Title, +Description, +Actions, +Header, +Footer), Collapsible, AspectRatio, ScrollArea, Carousel, Resizable
@@ -181,18 +176,12 @@ The layout is Meridian's own, organized by purpose: the system core stays at the
 - `skills/`: the agent skill entry point
 - `packages/`: source workspaces for the standalone public tokens, icons, and Meridian Guard packages; publishable output is generated under each `dist/`
 - `mcp/`: independently versioned Meridian registry server workspace
-- `scripts/`: registry generator, contrast check, runtime-copy drift check
+- `scripts/`: the generators and gates behind `npm run check`
 - `tokens.json` (DTCG) + `tailwind.preset.js`: design tokens for Style Dictionary, Figma Variables, and Tailwind (generated by `scripts/build_tokens.py`)
-- `ARCHITECTURE.md`: how the pieces fit · `STYLEGUIDE.md`: contributor conventions
-- `LICENSE`: MIT · `THIRD_PARTY_NOTICES.md` · `CONTRIBUTING.md`: component contract + PR checklist
+- `ARCHITECTURE.md`: how the pieces fit · `STYLEGUIDE.md`: contributor conventions · `CONTRIBUTING.md`: setup, component contract, PR checklist
+- `CHANGELOG.md` · `RELEASING.md` · `SECURITY.md` · `SUPPORT.md` · `LICENSE` (MIT) · `THIRD_PARTY_NOTICES.md`
 
 **Showcases vs starters:** showcases (`showcases/`) are rich screens written in plain JSX so you can lift code straight into a React app; starters (`starters/`) are self-contained multi-page journeys you copy wholesale. Four pairs intentionally cover the same category in both forms (console/dashboard, auth, website/marketing, docs); the AI workspace, CRM, finance operations, and service desk starters extend coverage into domain-specific enterprise workflows.
-
-## Caveats
-
-- No original font binaries were provided; Bricolage Grotesque, Figtree, and JetBrains Mono (all OFL, from google/fonts) are the chosen substitutes. Replace the files in `assets/fonts/` to swap.
-- Meridian's logo system is resolution-independent SVG; the social preview is also exported as a 1200×630 PNG for broad crawler support.
-- All showcase screens are original demonstrations of the system, since no existing product UI was available to recreate.
 
 ## License
 
