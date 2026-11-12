@@ -219,3 +219,27 @@ describe('CI queue hygiene on the shared runner', () => {
     }
   })
 })
+
+describe('one gate list', () => {
+  // Body of one job in a workflow, up to the next job.
+  function jobBlock(src, job) {
+    const body = src.slice(src.indexOf(`\n  ${job}:\n`))
+    const next = body.slice(1).search(/\n {2}[A-Za-z0-9_-]+:\n/)
+    return next === -1 ? body : body.slice(0, next + 1)
+  }
+
+  it('PR checks run the same npm run check that publish and the deploys run', () => {
+    const gates = jobBlock(workflows['checks.yml'], 'gates')
+    expect(gates).toMatch(/\n\s+run: npm run check\n/)
+    expect(JSON.parse(readFileSync('package.json', 'utf8')).scripts.check).toBe('node scripts/check_all.mjs')
+    for (const name of ['publish.yml', 'deploy-dev-static.yml', 'deploy-prod-static.yml']) {
+      expect(workflows[name], name).toMatch(/\bnpm run check\b/)
+    }
+  })
+
+  it('does not hand-pick gates beside it, where the two lists would drift', () => {
+    const gates = jobBlock(workflows['checks.yml'], 'gates').replace(/^\s*#.*\n/gm, '')
+    expect(gates).not.toMatch(/scripts\/(check_|build_|sync_)/)
+    expect(gates).not.toMatch(/git diff --exit-code/)
+  })
+})
