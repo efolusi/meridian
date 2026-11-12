@@ -8,6 +8,15 @@ on:
 permissions:
   contents: read
 
+# The shared runner serves one job at a time for every Efolusi product, so a
+# superseded PR run only delays everyone: a new push to a PR cancels it. Push
+# runs get a group of their own (run_id) and are never cancelled or replaced,
+# because deploy-prod-static and publish require a successful checks run for
+# their exact SHA.
+concurrency:
+  group: checks-${{ github.event_name == 'pull_request' && format('pr-{0}', github.event.pull_request.number) || github.run_id }}
+  cancel-in-progress: ${{ github.event_name == 'pull_request' }}
+
 # Runner choice. efolusi-dev is an org-wide self-hosted host whose `deploy` user
 # also publishes dev-meridian.efolusi.com, is in the Docker group, and holds
 # other products' environment files. This repository is public, so a pull
@@ -20,6 +29,9 @@ permissions:
 jobs:
   gates:
     runs-on: ${{ (github.event_name != 'pull_request' || github.event.pull_request.head.repo.full_name == github.repository) && fromJSON('["self-hosted","Linux","X64","efolusi-dev"]') || 'ubuntu-24.04' }}
+    # A healthy run takes 3 to 6 minutes; the default 6 hours would hold the
+    # shared runner hostage on a hang.
+    timeout-minutes: 30
     steps:
       - uses: actions/checkout@fbc6f3992d24b796d5a048ff273f7fcc4a7b6c09 # v5.1.0
         with:
@@ -106,6 +118,9 @@ jobs:
 
   smoke:
     runs-on: ${{ (github.event_name != 'pull_request' || github.event.pull_request.head.repo.full_name == github.repository) && fromJSON('["self-hosted","Linux","X64","efolusi-dev"]') || 'ubuntu-24.04' }}
+    # A healthy run takes 3 to 6 minutes; the default 6 hours would hold the
+    # shared runner hostage on a hang.
+    timeout-minutes: 30
     env:
       # Browsers and their system libs come from the Playwright image: the
       # self-hosted runner user has no sudo, so `install --with-deps` cannot

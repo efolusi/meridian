@@ -35,17 +35,22 @@ function runsOn(src) {
 // Evaluate a GitHub Actions `${{ }}` runs-on expression for one event context.
 // Covers the operators the workflow uses: && || == != fromJSON and string
 // literals, with the Actions rule that a missing property is null.
-function evaluateRunsOn(expr, github) {
+function evaluate(expr, github) {
   const inner = expr.match(/^\$\{\{\s*([\s\S]*?)\s*\}\}$/)?.[1]
-  if (!inner) return expr
+  if (!inner) {
+    // A string with embedded expressions: interpolate each one.
+    return expr.replace(/\$\{\{[\s\S]*?\}\}/g, (part) => String(evaluate(part, github)))
+  }
   const js = inner
     .replace(/fromJSON\(/g, 'JSON.parse(')
     .replace(/\bgithub((?:\.[A-Za-z_]+)+)/g, (_, chain) => `ctx.github${chain.replace(/\./g, '?.')}`)
     .replace(/==/g, '===')
     .replace(/!===/g, '!==')
-  return new Function('ctx', `return (${js}) ?? null`)({
-    github: { repository: 'efolusi/meridian', ...github },
-  })
+  const format = (template, ...args) => template.replace(/\{(\d+)\}/g, (_, n) => String(args[n] ?? ''))
+  return new Function('ctx', 'format', `return (${js}) ?? null`)(
+    { github: { repository: 'efolusi/meridian', run_id: 1, ...github } },
+    format,
+  )
 }
 
 const SELF_HOSTED = /self-hosted|efolusi-(dev|prod)/
@@ -85,7 +90,7 @@ describe('CI runner isolation', () => {
       expect(Object.keys(jobs).length, name).toBeGreaterThan(0)
       for (const [job, expr] of Object.entries(jobs)) {
         for (const ctx of ['fork', 'deletedForkHead']) {
-          const runner = evaluateRunsOn(expr, PR_CONTEXTS[ctx])
+          const runner = evaluate(expr, PR_CONTEXTS[ctx])
           expect(isSelfHosted(runner), `${name} ${job} on ${ctx}: ${runner}`).toBe(false)
           expect(runner, `${name} ${job} on ${ctx}`).toMatch(/^ubuntu-/)
         }
@@ -98,7 +103,7 @@ describe('CI runner isolation', () => {
     expect(Object.keys(jobs).sort()).toEqual(['gates', 'smoke'])
     for (const expr of Object.values(jobs)) {
       for (const ctx of ['sameRepo', 'push']) {
-        expect(evaluateRunsOn(expr, PR_CONTEXTS[ctx])).toEqual([
+        expect(evaluate(expr, PR_CONTEXTS[ctx])).toEqual([
           'self-hosted', 'Linux', 'X64', 'efolusi-dev',
         ])
       }
@@ -181,5 +186,36 @@ describe('publish workflow hardening', () => {
     expect(checkout).toContain('persist-credentials: false')
     expect(job).not.toMatch(/\bgit push\b/)
     expect(job).toContain('gh release create "v$PKG" --target "$GITHUB_SHA"')
+  })
+})
+
+describe('CI queue hygiene on the shared runner', () => {
+  const checks = workflows['checks.yml']
+  const group = checks.match(/^concurrency:\n {2}group: (.+)\n {2}cancel-in-progress: (.+)$/m)
+
+  it('cancels superseded runs of the same pull request only', () => {
+    expect(group).not.toBeNull()
+    const [, groupExpr, cancelExpr] = group
+    const g = (ctx) => evaluate(groupExpr, ctx)
+    const pushA = { ...PR_CONTEXTS.push, run_id: 101 }
+    const pushB = { ...PR_CONTEXTS.push, run_id: 102 }
+    expect(g(PR_CONTEXTS.fork)).toBe('checks-pr-1')
+    expect(g(PR_CONTEXTS.sameRepo)).toBe('checks-pr-3')
+    // A queued push run must never be replaced: prod deploy and publish wait
+    // for the checks run at their exact SHA.
+    expect(g(pushA)).not.toBe(g(pushB))
+    expect(evaluate(cancelExpr, PR_CONTEXTS.sameRepo)).toBe(true)
+    expect(evaluate(cancelExpr, pushA)).toBe(false)
+  })
+
+  it('bounds every job with a timeout', () => {
+    for (const [name, src] of Object.entries(workflows)) {
+      for (const job of Object.keys(runsOn(src))) {
+        const body = src.slice(src.indexOf(`\n  ${job}:\n`))
+        const next = body.slice(1).search(/\n {2}[A-Za-z0-9_-]+:\n/)
+        const block = next === -1 ? body : body.slice(0, next + 1)
+        expect(block, `${name} ${job}`).toMatch(/\n {4}timeout-minutes: \d+\n/)
+      }
+    }
   })
 })

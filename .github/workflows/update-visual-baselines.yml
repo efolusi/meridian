@@ -16,6 +16,7 @@ permissions:
 jobs:
   baselines:
     runs-on: [self-hosted, Linux, X64, efolusi-dev]
+    timeout-minutes: 30
     env:
       # Browsers and their system libs come from the Playwright image: the
       # self-hosted runner user has no sudo, so `install --with-deps` cannot
