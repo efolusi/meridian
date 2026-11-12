@@ -42,6 +42,20 @@ describe('Meridian development static deployment', () => {
     expect(deploy).toContain('runner_user="deploy"')
   })
 
+  it('publishes exactly the production allowlist, never the whole repository', () => {
+    const prodDeploy = readFileSync('scripts/deploy-prod-static.sh', 'utf8')
+    const paths = (src) => src.match(/^public_paths=\(\n([\s\S]*?)\n\)/m)?.[1].split('\n').map((p) => p.trim())
+    expect(paths(deploy)).toBeTruthy()
+    // Dev previews the next production release: a file production would not
+    // serve (CLAUDE.md, package.json, nginx/, tests/) must not be served here.
+    expect(paths(deploy)).toEqual(paths(prodDeploy))
+    expect(deploy).not.toContain('.assetsignore')
+    expect(deploy).toContain('tar -C "$archive_dir" -cf - "${public_paths[@]}"')
+    expect(deploy).toMatch(/for forbidden_path in \\\n\s+\.github \.nvmrc CLAUDE\.md nginx package\.json package-lock\.json scripts tests; do/)
+    expect(deploy).toContain('exit 79')
+    expect(deploy).toContain('exit 80')
+  })
+
   it('rolls back only the release symlink when validation or probes fail', () => {
     expect(deploy).toContain('trap rollback ERR')
     expect(deploy).toContain('mv -Tf "$rollback_link" "$deploy_root/current"')

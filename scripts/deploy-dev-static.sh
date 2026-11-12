@@ -32,7 +32,7 @@ git diff --cached --quiet
   exit 69
 }
 
-for command_name in cmp curl readlink rsync stat tar; do
+for command_name in cmp curl find grep readlink rsync stat tar; do
   command -v "$command_name" >/dev/null
 done
 
@@ -104,14 +104,62 @@ trap rollback ERR
 
 # Archive the exact commit, not the working directory: ignored build outputs
 # and runner leftovers can never leak into the published static tree.
+#
+# Publish the same allowlist as production (scripts/deploy-prod-static.sh;
+# tests/dev-static-deploy.test.mjs requires the two lists to be identical).
+# The dev host is the preview of the next production release, so a file that
+# production would not serve must 404 here too, and repository, operator and
+# test files never become web-accessible.
+public_paths=(
+  404.html
+  hello.html
+  index.html
+  _ds_bundle.js
+  _ds_manifest.json
+  styles.css
+  landing.css
+  tailwind.preset.js
+  registry.json
+  llms.txt
+  llms-full.txt
+  robots.txt
+  sitemap.xml
+  assets
+  blocks
+  compatibility
+  components
+  guidelines
+  showcases
+  site
+  skills
+  starters
+  tokens
+)
+
 git archive --format=tar "$release_sha" | tar -xf - -C "$archive_dir"
-rsync -a --delete --exclude-from="${archive_dir}/.assetsignore" \
-  "${archive_dir}/" "${publication_dir}/"
+for public_path in "${public_paths[@]}"; do
+  [[ -e "${archive_dir}/${public_path}" && ! -L "${archive_dir}/${public_path}" ]] || {
+    echo "[meridian-dev] required public path is absent or a symlink: ${public_path}" >&2
+    exit 78
+  }
+done
+tar -C "$archive_dir" -cf - "${public_paths[@]}" | tar -C "$publication_dir" -xf -
+if find "$publication_dir" -type l -print -quit | grep -q .; then
+  echo "[meridian-dev] public static tree must not contain symlinks" >&2
+  exit 80
+fi
 printf '%s\n' "$release_sha" > "${publication_dir}/meridian-release.txt"
 
 test -s "${publication_dir}/index.html"
 test -s "${publication_dir}/site/DsSite.dc.html"
 test -s "${publication_dir}/_ds_bundle.js"
+for forbidden_path in \
+  .github .nvmrc CLAUDE.md nginx package.json package-lock.json scripts tests; do
+  [[ ! -e "${publication_dir}/${forbidden_path}" ]] || {
+    echo "[meridian-dev] non-public repository path reached publication: ${forbidden_path}" >&2
+    exit 79
+  }
+done
 
 if [[ -L "$deploy_root/current" ]]; then
   previous_current="$(readlink "$deploy_root/current")"
