@@ -35,6 +35,9 @@
       btns[i].textContent = lang === 'id' ? 'EN' : 'ID';
       btns[i].setAttribute('aria-label', lang === 'id' ? 'Switch to English' : 'Ganti ke Bahasa Indonesia');
       btns[i].setAttribute('title', btns[i].getAttribute('aria-label'));
+      // The label is in the other language; say so, or a screen reader reads
+      // 'Ganti ke Bahasa Indonesia' with English pronunciation.
+      btns[i].setAttribute('lang', lang === 'id' ? 'en' : 'id');
     }
   }
 

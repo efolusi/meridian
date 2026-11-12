@@ -186,6 +186,17 @@ describe('live language switching', () => {
     expect(seen).toEqual(['id', 'en'])
   })
 
+  it('marks the language button with the language its label is written in', () => {
+    document.body.innerHTML = '<button class="site-lang">ID</button>'
+    new Function(read('site/i18n.js'))()
+    const btn = document.querySelector('.site-lang')
+    window.EfLang.set('en')
+    expect(btn.getAttribute('lang')).toBe('id')
+    window.EfLang.set('id')
+    expect(btn.getAttribute('lang')).toBe('en')
+    window.EfLang.set('en')
+  })
+
   it('pages listen for the event rather than subscribing before i18n.js may exist', () => {
     const files = readdirSync('site').filter((f) => f.endsWith('.dc.html') || f.endsWith('.jsx'))
     for (const f of files) {
