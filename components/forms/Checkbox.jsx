@@ -8,7 +8,7 @@ const CSS = `
 .ef-check--disabled{opacity:.45;cursor:not-allowed}
 .ef-check--disabled .ef-check__label{cursor:not-allowed}
 .ef-check__input{position:absolute;width:1px;height:1px;overflow:hidden;opacity:0;pointer-events:none}
-.ef-check__box{display:inline-flex;align-items:center;justify-content:center;flex:none;width:18px;height:18px;margin-top:1px;padding:0;border:1.5px solid var(--border-strong);border-radius:var(--radius-xs);background:var(--surface-card);color:var(--accent-contrast);cursor:pointer;transition:background var(--dur-fast) var(--ease-out),border-color var(--dur-fast) var(--ease-out),transform var(--dur-med) var(--ease-spring)}
+.ef-check__box{display:inline-flex;align-items:center;justify-content:center;flex:none;width:18px;height:18px;margin-top:1px;padding:0;border:1.5px solid var(--border-control,var(--border-strong));border-radius:var(--radius-xs);background:var(--surface-card);color:var(--accent-contrast);cursor:pointer;transition:background var(--dur-fast) var(--ease-out),border-color var(--dur-fast) var(--ease-out),transform var(--dur-med) var(--ease-spring)}
 .ef-check__box svg{opacity:0;transform:scale(.5);transition:opacity var(--dur-fast) var(--ease-out),transform var(--dur-med) var(--ease-spring)}
 .ef-check__box[data-state="checked"],.ef-check__box[data-state="indeterminate"]{background:var(--accent);border-color:var(--accent)}
 .ef-check__box[data-state="checked"] svg,.ef-check__box[data-state="indeterminate"] svg{opacity:1;transform:scale(1)}
