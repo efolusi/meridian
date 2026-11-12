@@ -10,7 +10,7 @@ const CSS = `
 .ef-select-trigger:disabled{cursor:not-allowed;opacity:.5}
 .ef-select-trigger[aria-invalid="true"]{border-color:var(--danger-600)}
 .ef-select-value[data-placeholder]{color:var(--text-muted)}
-.ef-select-content{position:fixed;z-index:var(--z-dropdown);min-width:var(--select-trigger-width);max-height:280px;overflow:auto;padding:4px;border:1px solid var(--border-strong);border-radius:var(--radius-md);background:var(--surface-card);box-shadow:var(--shadow-md);animation:ef-select-in var(--dur-fast) var(--ease-out)}
+.ef-select-content{position:fixed;z-index:var(--z-popover);min-width:var(--select-trigger-width);max-height:280px;overflow:auto;padding:4px;border:1px solid var(--border-strong);border-radius:var(--radius-md);background:var(--surface-card);box-shadow:var(--shadow-md);animation:ef-select-in var(--dur-fast) var(--ease-out)}
 @keyframes ef-select-in{from{opacity:0;transform:translateY(-3px)}}
 .ef-select-group{padding:2px 0}
 .ef-select-label{padding:6px 9px;color:var(--text-muted);font-size:var(--text-xs);font-weight:var(--weight-semibold)}
