@@ -20,8 +20,22 @@ describe('apps: control wiring', () => {
   it('wires Switch with onCheckedChange, never onChange', () => {
     const hits = []
     for (const { file, text } of sources) {
-      for (const m of text.matchAll(/<Switch\b[^>]*>/g)) {
+      for (const m of text.matchAll(/<Switch\b(?:=>|[^>])*>/g)) {
         if (/\bonChange=/.test(m[0])) hits.push(`${file}: ${m[0].slice(0, 80)}`)
+      }
+    }
+    expect(hits).toEqual([])
+  })
+
+  // A placeholder is not a label. Every text-like field needs `label`,
+  // `aria-label`, `aria-labelledby` or an `id` that a FieldLabel points at.
+  it('gives every form field an accessible name', () => {
+    const FIELD = /<(Input|Textarea|InputGroupInput|NativeSelect|Checkbox|Slider)\b(?:=>|[^>])*>|<x-import component-from-global-scope="[\w.]+\.(Input|Textarea|NativeSelect|Checkbox)"(?:=>|[^>])*>/g
+    const NAMED = /\b(label|aria-label|aria-labelledby|id)=/
+    const hits = []
+    for (const { file, text } of sources) {
+      for (const m of text.matchAll(FIELD)) {
+        if (!NAMED.test(m[0])) hits.push(`${file}: ${m[0].slice(0, 90)}`)
       }
     }
     expect(hits).toEqual([])

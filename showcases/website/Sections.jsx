@@ -176,7 +176,7 @@ function Newsletter() {
         <p style={{ fontSize: 13, color: 'var(--success-600)', marginTop: 14, display: 'flex', alignItems: 'center', gap: 6 }}><Icon name="circle-check" size={15} />You're in. See you next month.</p>
       ) : (
         <div style={{ display: 'flex', gap: 8, marginTop: 14 }}>
-          <Input size="sm" placeholder="you@company.com" style={{ flex: 1 }} />
+          <Input size="sm" type="email" aria-label="Email address" placeholder="you@company.com" style={{ flex: 1 }} />
           <Button size="sm" onClick={() => setDone(true)}>Subscribe</Button>
         </div>
       )}
