@@ -85,3 +85,26 @@ describe('public copy stays current', () => {
     expect(docs.includes("h2('unreleased'")).toBe(/^\s*-\s/m.test(unreleased))
   })
 })
+
+describe('radius and icon docs match the tokens', () => {
+  const defaults = defaultRadii()
+
+  it('guidelines/brand.md states the current px for every radius token', () => {
+    const brand = read('guidelines/brand.md')
+    const line = brand.split('\n').find((l) => l.startsWith('- **Radii:**'))
+    for (const [name, px] of Object.entries(defaults)) {
+      expect(line, name).toMatch(new RegExp(`${px}px[^(]*\\(\`${name}\`\\)`))
+    }
+  })
+
+  it('the corner radii card renders the tokens rather than hard-coded px', () => {
+    const card = read('guidelines/spacing-radius.html')
+    expect(card).not.toMatch(/border-radius:\d/)
+    for (const name of Object.keys(defaults)) expect(card).toContain(`border-radius:var(${name})`)
+  })
+
+  it('guidelines/brand.md counts the icons that ship', () => {
+    const icons = readdirSync('assets/icons').filter((f) => f.endsWith('.svg')).length
+    expect(read('guidelines/brand.md')).toContain(`${icons} curated glyphs`)
+  })
+})
