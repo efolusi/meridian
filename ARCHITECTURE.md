@@ -96,6 +96,7 @@ Two gates protect this. `scripts/check_bundle_hashes.py` is a fast check of the 
 2. **Path depth table.** Root references by location: `blocks/*.html` and `site/*` are one directory down and use `../`; `components/<g>/*.card.html`, `showcases/<p>/*`, and `starters/<j>/*` are two down and use `../../`. When adding a page, copy an existing neighbor and keep its prefix.
 3. **Namespace collisions.** Local helpers must never share a name with a DS export (the runtime resolves against the namespace first). See CLAUDE.md and STYLEGUIDE.md.
 4. **Verification gate.** `site/_smoke.html` must render every registered demo with zero console errors; `scripts/check_contrast.py` and `scripts/check_runtime_copies.py` must pass before any push.
+5. **Size budget.** `scripts/size_budget.json` records the size of `_ds_bundle.js` and the npm `dist/`. `scripts/check_size.mjs` allows each one 4 KiB (`TOLERANCE_BYTES`) over its record and fails past that. Growth beyond the tolerance is a decision: run `node scripts/check_size.mjs --update` and commit the new record with the change that caused it.
 
 ## Verifying locally
 
