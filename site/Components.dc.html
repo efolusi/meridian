@@ -338,9 +338,10 @@ class Component extends DCLogic {
     // reads the language live; an instance counter guarantees a state change so
     // the re-render never gets skipped.
     this._lt = 0;
-    this._offLang = window.EfLang && window.EfLang.onChange(() => { this._lt += 1; this.setState({ langTick: this._lt }); });
+    this._onLang = () => { this._lt += 1; this.setState({ langTick: this._lt }); };
+    window.addEventListener('ef:langchange', this._onLang);
   }
-  componentWillUnmount() { window.removeEventListener('hashchange', this._onHash); if (this._offLang) this._offLang(); }
+  componentWillUnmount() { window.removeEventListener('hashchange', this._onHash); window.removeEventListener('ef:langchange', this._onLang); }
   applyHash() {
     const gs = this.state.groups || [];
     const h = decodeURIComponent((location.hash || '').replace(/^#/, ''));

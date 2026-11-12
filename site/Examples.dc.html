@@ -118,7 +118,8 @@ class Component extends DCLogic {
     // Re-render when the language changes; renderVals reads it live. An
     // instance counter guarantees a state change so the render is never skipped.
     this._lt = 0;
-    this._offLang = window.EfLang && window.EfLang.onChange(() => { this._lt += 1; this.setState({ langTick: this._lt }); });
+    this._onLang = () => { this._lt += 1; this.setState({ langTick: this._lt }); };
+    window.addEventListener('ef:langchange', this._onLang);
     this._measure = () => {
       const el = document.querySelector('.kit-frame');
       if (el && el.clientWidth && el.clientWidth !== this.state.fw) this.setState({ fw: el.clientWidth });
@@ -131,7 +132,7 @@ class Component extends DCLogic {
       if (el) this._ro.observe(el);
     }
   }
-  componentWillUnmount() { window.removeEventListener('hashchange', this._onHash); window.removeEventListener('resize', this._measure); if (this._ro) this._ro.disconnect(); if (this._offLang) this._offLang(); }
+  componentWillUnmount() { window.removeEventListener('hashchange', this._onHash); window.removeEventListener('resize', this._measure); if (this._ro) this._ro.disconnect(); window.removeEventListener('ef:langchange', this._onLang); }
   applyHash() {
     const h = decodeURIComponent((location.hash || '').replace(/^#/, ''));
     const i = this.KITS.findIndex(k => k.id === h);

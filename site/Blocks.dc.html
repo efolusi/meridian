@@ -72,11 +72,12 @@ class Component extends DCLogic {
     // Re-render when the language changes; renderVals reads it live. An
     // instance counter guarantees a state change so the render is never skipped.
     this._lt = 0;
-    this._offLang = window.EfLang && window.EfLang.onChange(() => { this._lt += 1; this.setState({ langTick: this._lt }); });
+    this._onLang = () => { this._lt += 1; this.setState({ langTick: this._lt }); };
+    window.addEventListener('ef:langchange', this._onLang);
     try { const t = localStorage.getItem('efolusi-site-theme'); if (t) document.documentElement.setAttribute('data-theme', t); } catch (e) {}
     this.setState({ dark: document.documentElement.getAttribute('data-theme') === 'dark' });
   }
-  componentWillUnmount() { if (this._offLang) this._offLang(); }
+  componentWillUnmount() { window.removeEventListener('ef:langchange', this._onLang); }
   renderVals() {
     const lang = (window.EfLang && window.EfLang.get()) || 'en';
     const DESC_ID = {

@@ -131,13 +131,16 @@ class Component extends DCLogic {
     window.addEventListener('hashchange', this._onHash);
     this.applyHash();
     // Re-render section titles, ledes and nav labels when the language changes.
-    // renderVals reads the language live, so this only needs to force a render.
+    // renderVals reads the language live, so this only needs to force a render. Listen
+    // for the ef:langchange event, not EfLang.onChange: i18n.js can load after
+    // this mount, and the subscription would silently never register.
     // Use an instance counter (not this.state, which can read stale in the
     // closure and then setState the same value twice, skipping the re-render).
     this._lt = 0;
-    this._offLang = window.EfLang && window.EfLang.onChange(() => { this._lt += 1; this.setState({ langTick: this._lt }); });
+    this._onLang = () => { this._lt += 1; this.setState({ langTick: this._lt }); };
+    window.addEventListener('ef:langchange', this._onLang);
   }
-  componentWillUnmount() { window.removeEventListener('hashchange', this._onHash); if (this._offLang) this._offLang(); }
+  componentWillUnmount() { window.removeEventListener('hashchange', this._onHash); window.removeEventListener('ef:langchange', this._onLang); }
   sections() {
     if (this._sections) return this._sections;
     const SC = 'scr' + 'ipt';

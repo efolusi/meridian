@@ -92,7 +92,8 @@ class Component extends DCLogic {
     // Re-render when the language changes; renderVals reads it live. An
     // instance counter guarantees a state change so the render is never skipped.
     this._lt = 0;
-    this._offLang = window.EfLang && window.EfLang.onChange(() => { this._lt += 1; this.setState({ langTick: this._lt }); });
+    this._onLang = () => { this._lt += 1; this.setState({ langTick: this._lt }); };
+    window.addEventListener('ef:langchange', this._onLang);
     const wait = () => {
       const ready = getComputedStyle(document.documentElement).getPropertyValue('--brand-700').trim();
       if (ready) { this.resolveTokens(); return; }
@@ -100,7 +101,7 @@ class Component extends DCLogic {
     };
     wait();
   }
-  componentWillUnmount() { this._tries = 99; clearTimeout(this._ct); if (this._offLang) this._offLang(); }
+  componentWillUnmount() { this._tries = 99; clearTimeout(this._ct); window.removeEventListener('ef:langchange', this._onLang); }
   resolveTokens() {
     const cs = getComputedStyle(document.documentElement);
     const val = n => cs.getPropertyValue('--' + n).trim();

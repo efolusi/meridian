@@ -173,3 +173,25 @@ describe('Indonesian copy on state-rendered pages', () => {
     }
   })
 })
+
+describe('live language switching', () => {
+  it('i18n.js announces a language change as a window event', () => {
+    new Function(read('site/i18n.js'))()
+    const seen = []
+    const on = (e) => seen.push(e.detail.lang)
+    window.addEventListener('ef:langchange', on)
+    window.EfLang.set('id')
+    window.EfLang.set('en')
+    window.removeEventListener('ef:langchange', on)
+    expect(seen).toEqual(['id', 'en'])
+  })
+
+  it('pages listen for the event rather than subscribing before i18n.js may exist', () => {
+    const files = readdirSync('site').filter((f) => f.endsWith('.dc.html') || f.endsWith('.jsx'))
+    for (const f of files) {
+      const src = read('site/' + f)
+      expect(src, f).not.toMatch(/EfLang\.onChange\(/)
+      if (/langTick|EfLang\.get\(/.test(src)) expect(src, f).toContain("addEventListener('ef:langchange'")
+    }
+  })
+})

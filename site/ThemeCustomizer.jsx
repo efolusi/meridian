@@ -46,7 +46,13 @@ function ThemeCustomizer() {
   const [density, setDensity] = R.useState('comfortable');
   const [copied, setCopied] = R.useState(false);
   const [lang, setLang] = R.useState(() => (window.EfLang && window.EfLang.get()) || 'en');
-  R.useEffect(() => (window.EfLang ? window.EfLang.onChange(setLang) : undefined), []);
+  R.useEffect(() => {
+    // i18n.js may load after this mounts, so listen for its event instead of
+    // subscribing through window.EfLang (which may not exist yet).
+    const onLang = (e) => setLang((e.detail && e.detail.lang) || 'en');
+    window.addEventListener('ef:langchange', onLang);
+    return () => window.removeEventListener('ef:langchange', onLang);
+  }, []);
   R.useEffect(() => {
     if (ds) return;
     let n = 0;

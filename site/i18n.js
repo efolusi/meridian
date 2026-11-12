@@ -48,6 +48,11 @@
     // Notify subscribers (e.g. DCLogic pages that render text from state and so
     // cannot use data-lang-id) so they can re-render in the new language.
     for (var i = 0; i < subs.length; i++) { try { subs[i](lang); } catch (e) {} }
+    // The same notice as a window event. Pages should listen for this rather
+    // than call EfLang.onChange: this file arrives through the runtime's
+    // <helmet>, which can inject it after a page's componentDidMount has run,
+    // so window.EfLang may not exist yet when the page tries to subscribe.
+    try { window.dispatchEvent(new CustomEvent('ef:langchange', { detail: { lang: lang } })); } catch (e) {}
   }
 
   document.addEventListener('click', function (e) {
