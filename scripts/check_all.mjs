@@ -2,13 +2,11 @@
 /**
  * Run every gate CI runs, in one command.
  *
- * The gates are split across two workflows with different lists: checks.yml runs
- * three generators that publish.yml does not. Running the publish list and
- * concluding the tree is clean is a mistake that has already been made twice,
- * and it is not a mistake anyone can be told out of, because the two lists look
- * interchangeable until one of them fails.
- *
- * So this is the list, in one place. `npm run check` before every push.
+ * This is the list, in one place. publish.yml runs exactly this script before
+ * it publishes; checks.yml (every push and PR) still spells out its own shorter
+ * list and skips several of the generators and gates below, so a branch can be
+ * green on checks.yml and still fail the release. `npm run check` before every
+ * push is what closes that gap.
  *
  * Not covered: the Playwright smoke job, which needs a browser download and a
  * served repo. It is reported at the end rather than silently omitted, because
