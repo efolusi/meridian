@@ -15,7 +15,8 @@ const CSS = `
 .ef-select-group{padding:2px 0}
 .ef-select-label{padding:6px 9px;color:var(--text-muted);font-size:var(--text-xs);font-weight:var(--weight-semibold)}
 .ef-select-item{position:relative;display:flex;width:100%;min-height:32px;align-items:center;padding-block:6px;padding-inline:9px 30px;border:0;border-radius:var(--radius-sm);background:none;color:var(--text-primary);font:inherit;font-size:var(--text-sm);text-align:start;cursor:pointer}
-.ef-select-item:hover,.ef-select-item:focus-visible,.ef-select-item[data-highlighted]{outline:none;background:var(--surface-sunken)}
+.ef-select-item:hover{background:var(--surface-sunken)}
+.ef-select-item:focus-visible,.ef-select-item[data-highlighted]{outline:none;background:var(--surface-sunken);box-shadow:inset 0 0 0 2px var(--focus-ring-color)}
 .ef-select-item:disabled{cursor:not-allowed;opacity:.45}
 .ef-select-check{position:absolute;inset-inline-end:9px;display:inline-flex}
 .ef-select-separator{height:1px;margin:4px 6px;background:var(--border-default)}
