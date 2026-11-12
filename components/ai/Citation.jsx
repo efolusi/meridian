@@ -52,7 +52,9 @@ export function Citation({ index, href, title, sources, onClick, style, classNam
   if (!list) return chip;
   const cur = list[Math.abs(i) % list.length];
   return (
-    <span {...rest} className="ef-citation__wrap" style={style} onMouseEnter={enter} onMouseLeave={leave}>
+    <span {...rest} className="ef-citation__wrap" style={style} onMouseEnter={enter} onMouseLeave={leave}
+      onFocus={enter} onBlur={leave}
+      onKeyDown={e => { if (e.key === 'Escape' && open) { e.stopPropagation(); clearTimeout(t.current); setOpen(false); } }}>
       {chip}
       {open ? (
         <span className="ef-citation__pop" role="dialog">
