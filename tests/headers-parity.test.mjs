@@ -77,3 +77,29 @@ describe('_headers mirrors the nginx vhosts', () => {
     }
   })
 })
+
+describe('_redirects promises only redirects the served hosts perform', () => {
+  const rules = readFileSync('_redirects', 'utf8')
+    .split('\n')
+    .filter((line) => line.trim() && !line.trim().startsWith('#'))
+    .map((line) => line.trim().split(/\s+/))
+  const index = readFileSync('index.html', 'utf8')
+
+  it('lists at least the root forward', () => {
+    expect(rules.map(([from]) => from)).toContain('/')
+  })
+
+  for (const [host, conf] of Object.entries(vhosts)) {
+    it(`each rule resolves on the ${host} vhost`, () => {
+      for (const [from, to] of rules) {
+        if (from === '/') {
+          // nginx serves index.html at /, which forwards to the same target.
+          expect(index).toContain(`location.replace('.${to}')`)
+          continue
+        }
+        const block = conf.match(new RegExp(`location = ${from.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')} \\{([^}]*)\\}`))?.[1]
+        expect(block, `${from} has no nginx redirect on ${host}`).toMatch(new RegExp(`return 30[18] ${to.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')};`))
+      }
+    })
+  }
+})
