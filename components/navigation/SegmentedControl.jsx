@@ -8,6 +8,7 @@ const CSS = `
 .ef-seg__opt--active{background:var(--surface-card);border-color:var(--border-strong);color:var(--text-primary);font-weight:var(--weight-semibold)}
 .ef-seg__opt:focus-visible{outline:none;box-shadow:var(--focus-ring)}
 .ef-seg__opt:disabled{opacity:.4;cursor:not-allowed}
+@media (pointer:coarse){.ef-seg__opt{height:var(--tap-min)}}
 `;
 export function SegmentedControl({ options, value, onChange, style, className, ...rest }) {
   injectEfCss('ef-css-seg', CSS);
