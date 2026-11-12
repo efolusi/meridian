@@ -106,9 +106,9 @@ rollback() {
 trap cleanup EXIT
 trap rollback ERR
 
-# Publish only the static website surface from the exact commit. This allowlist
-# is deliberately independent from .assetsignore: adding a tracked repository,
-# workflow, test, package, or operator file must never make it web-accessible.
+# Publish only the static website surface from the exact commit. It is an
+# allowlist so that adding a tracked repository, workflow, test, package, or
+# operator file never makes it web-accessible.
 public_paths=(
   404.html
   hello.html
