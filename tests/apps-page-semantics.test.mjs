@@ -24,3 +24,16 @@ describe('apps: page semantics', () => {
     expect(missing).toEqual([])
   })
 })
+
+describe('apps: heading outline', () => {
+  // A heading never skips a level on the way down (h1 then h3): screen-reader
+  // users navigate by heading level and read the gap as missing content.
+  it('never skips a heading level in a block or starter page', () => {
+    const hits = []
+    for (const p of pages.filter(p => /^(blocks|starters)\//.test(p))) {
+      const levels = [...readFileSync(p, 'utf8').matchAll(/<h([1-6])\b/g)].map(m => Number(m[1]))
+      levels.forEach((level, i) => { if (i && level > levels[i - 1] + 1) hits.push(`${p}: h${levels[i - 1]} -> h${level}`) })
+    }
+    expect(hits).toEqual([])
+  })
+})
