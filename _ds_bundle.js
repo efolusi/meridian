@@ -10334,216 +10334,6 @@ const BreadcrumbEllipsis = React.forwardRef(function BreadcrumbEllipsis({
 Object.assign(__ds_scope, { Breadcrumb, BreadcrumbList, BreadcrumbItem, BreadcrumbLink, BreadcrumbPage, BreadcrumbSeparator, BreadcrumbEllipsis });
 })(); } catch (e) { __ds_ns.__errors.push({ path: "components/navigation/Breadcrumbs.jsx", error: String((e && e.message) || e) }); }
 
-// components/navigation/Menubar.jsx
-try { (() => {
-function _extends() { return _extends = Object.assign ? Object.assign.bind() : function (n) { for (var e = 1; e < arguments.length; e++) { var t = arguments[e]; for (var r in t) ({}).hasOwnProperty.call(t, r) && (n[r] = t[r]); } return n; }, _extends.apply(null, arguments); }
-const CSS = `
-.ef-menubar{display:flex;width:max-content;height:36px;align-items:center;gap:2px;padding:3px;border:1px solid var(--border-default);border-radius:var(--radius-md);background:var(--surface-card);box-shadow:var(--shadow-xs)}
-.ef-menubar__trigger{display:flex;height:28px;align-items:center;padding:0 8px;border:0;border-radius:var(--radius-sm);outline:0;background:transparent;color:var(--text-primary);font:inherit;font-size:var(--text-sm);font-weight:var(--weight-medium);cursor:default;user-select:none}
-.ef-menubar__trigger:hover,.ef-menubar__trigger:focus,.ef-menubar__trigger[data-state=open]{background:var(--surface-sunken)}
-.ef-menubar__trigger:focus-visible{box-shadow:var(--focus-ring)}
-`;
-const MenubarRootContext = React.createContext(null);
-const MenubarMenuContext = React.createContext(null);
-const join = (...values) => values.filter(Boolean).join(' ');
-const Menubar = React.forwardRef(function Menubar({
-  loop = true,
-  className,
-  children,
-  onKeyDown,
-  ...props
-}, forwardedRef) {
-  __ds_scope.injectEfCss('ef-css-menubar', CSS);
-  const direction = __ds_scope.useDirection();
-  const rootRef = React.useRef(null);
-  const [value, setValue] = React.useState(null);
-  const [tabStop, setTabStop] = React.useState(null);
-  const move = React.useCallback((current, delta, openNext = false) => {
-    const triggers = rootRef.current ? Array.from(rootRef.current.querySelectorAll('[data-slot="menubar-trigger"]:not(:disabled)')) : [];
-    if (!triggers.length) return;
-    const currentIndex = triggers.findIndex(trigger => trigger.dataset.menuId === current);
-    const raw = Math.max(0, currentIndex) + delta;
-    const nextIndex = loop ? (raw + triggers.length) % triggers.length : Math.max(0, Math.min(triggers.length - 1, raw));
-    const next = triggers[nextIndex];
-    next?.focus();
-    if (openNext && next?.dataset.menuId) setValue(next.dataset.menuId);
-  }, [loop]);
-  const context = React.useMemo(() => ({
-    value,
-    setValue,
-    move,
-    direction,
-    tabStop,
-    setTabStop
-  }), [value, move, direction, tabStop]);
-  return /*#__PURE__*/React.createElement(MenubarRootContext.Provider, {
-    value: context
-  }, /*#__PURE__*/React.createElement("div", _extends({}, props, {
-    ref: __ds_scope.mergeRefs(forwardedRef, rootRef),
-    role: "menubar",
-    "data-slot": "menubar",
-    className: join('ef-menubar', className),
-    onKeyDown: onKeyDown
-  }), children));
-});
-function MenubarMenu({
-  children,
-  onOpenChange
-}) {
-  const root = React.useContext(MenubarRootContext);
-  const id = React.useId();
-  const open = root?.value === id;
-  const setOpen = next => {
-    root?.setValue(next ? id : null);
-    onOpenChange?.(next);
-  };
-  return /*#__PURE__*/React.createElement(MenubarMenuContext.Provider, {
-    value: {
-      id
-    }
-  }, /*#__PURE__*/React.createElement(__ds_scope.DropdownMenu, {
-    open: open,
-    onOpenChange: setOpen
-  }, children));
-}
-const MenubarTrigger = React.forwardRef(function MenubarTrigger({
-  className,
-  onKeyDown,
-  onMouseEnter,
-  onFocus,
-  tabIndex,
-  ...props
-}, ref) {
-  const root = React.useContext(MenubarRootContext);
-  const menu = React.useContext(MenubarMenuContext);
-  React.useEffect(() => {
-    root?.setTabStop(current => current ?? menu?.id);
-  }, [root?.setTabStop, menu?.id]);
-  const keyboard = event => {
-    onKeyDown?.(event);
-    if (event.defaultPrevented) return;
-    if (event.key === 'ArrowDown') {
-      event.preventDefault();
-      root?.setValue(menu?.id);
-    } else if (event.key === 'ArrowRight' || event.key === 'ArrowLeft') {
-      event.preventDefault();
-      const visualDelta = event.key === 'ArrowRight' ? 1 : -1;
-      root?.move(menu?.id, root.direction === 'rtl' ? -visualDelta : visualDelta, root.value !== null);
-    }
-  };
-  const enter = event => {
-    onMouseEnter?.(event);
-    if (!event.defaultPrevented && root?.value !== null) root.setValue(menu?.id);
-  };
-  const focus = event => {
-    root?.setTabStop(menu?.id);
-    onFocus?.(event);
-  };
-  return /*#__PURE__*/React.createElement(__ds_scope.DropdownMenuTrigger, _extends({}, props, {
-    ref: ref,
-    role: "menuitem",
-    slot: "menubar-trigger",
-    "data-menu-id": menu?.id,
-    tabIndex: tabIndex ?? (root?.tabStop === null || root?.tabStop === menu?.id ? 0 : -1),
-    className: join('ef-menubar__trigger', className),
-    onKeyDown: keyboard,
-    onMouseEnter: enter,
-    onFocus: focus
-  }));
-});
-const MenubarContent = React.forwardRef(function MenubarContent({
-  align = 'start',
-  alignOffset = -4,
-  sideOffset = 8,
-  onKeyDown,
-  ...props
-}, ref) {
-  const root = React.useContext(MenubarRootContext);
-  const menu = React.useContext(MenubarMenuContext);
-  const keyboard = event => {
-    onKeyDown?.(event);
-    if (event.defaultPrevented || event.key !== 'ArrowRight' && event.key !== 'ArrowLeft') return;
-    event.preventDefault();
-    const visualDelta = event.key === 'ArrowRight' ? 1 : -1;
-    root?.move(menu?.id, root.direction === 'rtl' ? -visualDelta : visualDelta, true);
-  };
-  return /*#__PURE__*/React.createElement(__ds_scope.DropdownMenuContent, _extends({}, props, {
-    ref: ref,
-    slot: "menubar-content",
-    align: align,
-    alignOffset: alignOffset,
-    sideOffset: sideOffset,
-    onKeyDown: keyboard
-  }));
-});
-function MenubarPortal(props) {
-  return /*#__PURE__*/React.createElement(__ds_scope.DropdownMenuPortal, props);
-}
-const MenubarGroup = React.forwardRef(function MenubarGroup(props, ref) {
-  return /*#__PURE__*/React.createElement(__ds_scope.DropdownMenuGroup, _extends({}, props, {
-    ref: ref,
-    slot: "menubar-group"
-  }));
-});
-function MenubarRadioGroup(props) {
-  return /*#__PURE__*/React.createElement(__ds_scope.DropdownMenuRadioGroup, _extends({}, props, {
-    slot: "menubar-radio-group"
-  }));
-}
-const MenubarLabel = React.forwardRef(function MenubarLabel(props, ref) {
-  return /*#__PURE__*/React.createElement(__ds_scope.DropdownMenuLabel, _extends({}, props, {
-    ref: ref,
-    slot: "menubar-label"
-  }));
-});
-const MenubarSeparator = React.forwardRef(function MenubarSeparator(props, ref) {
-  return /*#__PURE__*/React.createElement(__ds_scope.DropdownMenuSeparator, _extends({}, props, {
-    ref: ref,
-    slot: "menubar-separator"
-  }));
-});
-const MenubarShortcut = React.forwardRef(function MenubarShortcut(props, ref) {
-  return /*#__PURE__*/React.createElement(__ds_scope.DropdownMenuShortcut, _extends({}, props, {
-    ref: ref,
-    slot: "menubar-shortcut"
-  }));
-});
-const MenubarItem = React.forwardRef(function MenubarItem(props, ref) {
-  return /*#__PURE__*/React.createElement(__ds_scope.DropdownMenuItem, _extends({}, props, {
-    ref: ref,
-    slot: "menubar-item"
-  }));
-});
-const MenubarCheckboxItem = React.forwardRef(function MenubarCheckboxItem(props, ref) {
-  return /*#__PURE__*/React.createElement(__ds_scope.DropdownMenuCheckboxItem, _extends({}, props, {
-    ref: ref,
-    slot: "menubar-checkbox-item"
-  }));
-});
-const MenubarRadioItem = React.forwardRef(function MenubarRadioItem(props, ref) {
-  return /*#__PURE__*/React.createElement(__ds_scope.DropdownMenuRadioItem, _extends({}, props, {
-    ref: ref,
-    slot: "menubar-radio-item"
-  }));
-});
-function MenubarSub(props) {
-  return /*#__PURE__*/React.createElement(__ds_scope.DropdownMenuSub, props);
-}
-const MenubarSubTrigger = React.forwardRef(function MenubarSubTrigger(props, ref) {
-  return /*#__PURE__*/React.createElement(__ds_scope.DropdownMenuSubTrigger, _extends({}, props, {
-    ref: ref,
-    slot: "menubar-sub-trigger"
-  }));
-});
-const MenubarSubContent = React.forwardRef(function MenubarSubContent(props, ref) {
-  return /*#__PURE__*/React.createElement(__ds_scope.DropdownMenuSubContent, _extends({}, props, {
-    ref: ref,
-    slot: "menubar-sub-content"
-  }));
-});
-Object.assign(__ds_scope, { Menubar, MenubarMenu, MenubarTrigger, MenubarContent, MenubarPortal, MenubarGroup, MenubarRadioGroup, MenubarLabel, MenubarSeparator, MenubarShortcut, MenubarItem, MenubarCheckboxItem, MenubarRadioItem, MenubarSub, MenubarSubTrigger, MenubarSubContent });
-})(); } catch (e) { __ds_ns.__errors.push({ path: "components/navigation/Menubar.jsx", error: String((e && e.message) || e) }); }
-
 // components/navigation/NavigationMenu.jsx
 try { (() => {
 function _extends() { return _extends = Object.assign ? Object.assign.bind() : function (n) { for (var e = 1; e < arguments.length; e++) { var t = arguments[e]; for (var r in t) ({}).hasOwnProperty.call(t, r) && (n[r] = t[r]); } return n; }, _extends.apply(null, arguments); }
@@ -11797,208 +11587,6 @@ function TopNav({
 }
 Object.assign(__ds_scope, { TopNav });
 })(); } catch (e) { __ds_ns.__errors.push({ path: "components/navigation/TopNav.jsx", error: String((e && e.message) || e) }); }
-
-// components/overlay/Drawer.jsx
-try { (() => {
-function _extends() { return _extends = Object.assign ? Object.assign.bind() : function (n) { for (var e = 1; e < arguments.length; e++) { var t = arguments[e]; for (var r in t) ({}).hasOwnProperty.call(t, r) && (n[r] = t[r]); } return n; }, _extends.apply(null, arguments); }
-const CSS = `
-.ef-drawer__overlay{padding:0}
-.ef-drawer{position:fixed;z-index:var(--z-modal);display:flex;max-width:none;max-height:none;flex-direction:column;overflow:auto;border-radius:0;background:var(--surface-card);box-shadow:var(--shadow-xl);touch-action:none;will-change:transform}
-.ef-drawer[data-vaul-drawer-direction=right]{top:0;right:0;bottom:0;width:min(75vw,384px);border-width:0 0 0 1px;animation:ef-drawer-right var(--dur-slow) var(--ease-out)}
-.ef-drawer[data-vaul-drawer-direction=left]{top:0;left:0;bottom:0;width:min(75vw,384px);border-width:0 1px 0 0;animation:ef-drawer-left var(--dur-slow) var(--ease-out)}
-.ef-drawer[data-vaul-drawer-direction=top]{top:0;left:0;right:0;width:100%;max-height:80vh;border-width:0 0 1px;border-radius:0 0 var(--radius-lg) var(--radius-lg);animation:ef-drawer-top var(--dur-slow) var(--ease-out)}
-.ef-drawer[data-vaul-drawer-direction=bottom]{bottom:0;left:0;right:0;width:100%;max-height:80vh;border-width:1px 0 0;border-radius:var(--radius-lg) var(--radius-lg) 0 0;animation:ef-drawer-bottom var(--dur-slow) var(--ease-out)}
-.ef-drawer__handle{display:none;width:100px;height:8px;flex:none;margin:16px auto 0;border-radius:var(--radius-full);background:var(--surface-sunken);cursor:grab;touch-action:none}
-.ef-drawer[data-vaul-drawer-direction=bottom]>.ef-drawer__handle{display:block}
-.ef-drawer__header{gap:6px;padding:20px 24px 12px;text-align:start}.ef-drawer__footer{margin-top:auto;padding:16px 24px}.ef-drawer__description{margin-top:2px}
-@keyframes ef-drawer-right{from{transform:translateX(24px);opacity:0}}@keyframes ef-drawer-left{from{transform:translateX(-24px);opacity:0}}@keyframes ef-drawer-top{from{transform:translateY(-24px);opacity:0}}@keyframes ef-drawer-bottom{from{transform:translateY(24px);opacity:0}}
-`;
-const DrawerContext = React.createContext(null);
-const join = (...values) => values.filter(Boolean).join(' ');
-const compose = (first, second) => event => {
-  first?.(event);
-  if (!event.defaultPrevented) second?.(event);
-};
-function Drawer({
-  open: controlled,
-  defaultOpen = false,
-  onOpenChange,
-  direction = 'bottom',
-  dismissible = true,
-  modal = true,
-  handleOnly = false,
-  children
-}) {
-  __ds_scope.injectEfCss('ef-css-drawer', CSS);
-  const [internal, setInternal] = React.useState(defaultOpen);
-  const open = controlled === undefined ? internal : controlled;
-  const setOpen = React.useCallback(next => {
-    if (controlled === undefined) setInternal(next);
-    onOpenChange?.(next);
-  }, [controlled, onOpenChange]);
-  const context = React.useMemo(() => ({
-    direction,
-    dismissible,
-    handleOnly,
-    open,
-    setOpen
-  }), [direction, dismissible, handleOnly, open, setOpen]);
-  return /*#__PURE__*/React.createElement(DrawerContext.Provider, {
-    value: context
-  }, /*#__PURE__*/React.createElement(__ds_scope.Dialog, {
-    open: open,
-    onOpenChange: setOpen,
-    modal: modal
-  }, children));
-}
-const DrawerTrigger = React.forwardRef(function DrawerTrigger(props, ref) {
-  return /*#__PURE__*/React.createElement(__ds_scope.DialogTrigger, _extends({}, props, {
-    ref: ref,
-    slot: "drawer-trigger"
-  }));
-});
-function DrawerPortal(props) {
-  return /*#__PURE__*/React.createElement(__ds_scope.DialogPortal, props);
-}
-const DrawerClose = React.forwardRef(function DrawerClose(props, ref) {
-  return /*#__PURE__*/React.createElement(__ds_scope.DialogClose, _extends({}, props, {
-    ref: ref,
-    slot: "drawer-close"
-  }));
-});
-const DrawerOverlay = React.forwardRef(function DrawerOverlay({
-  className,
-  onMouseDown,
-  ...props
-}, ref) {
-  const drawer = React.useContext(DrawerContext);
-  const dismiss = event => {
-    if (!drawer?.dismissible) event.preventDefault();
-  };
-  return /*#__PURE__*/React.createElement(__ds_scope.DialogOverlay, _extends({}, props, {
-    ref: ref,
-    slot: "drawer-overlay",
-    className: join('ef-drawer__overlay', className),
-    onMouseDown: compose(onMouseDown, dismiss)
-  }));
-});
-const DrawerContent = React.forwardRef(function DrawerContent({
-  className,
-  style,
-  children,
-  onEscapeKeyDown,
-  onPointerDown,
-  onPointerMove,
-  onPointerUp,
-  overlayProps,
-  ...props
-}, ref) {
-  const drawer = React.useContext(DrawerContext);
-  const gesture = React.useRef(null);
-  const offsetRef = React.useRef(0);
-  const [offset, setOffset] = React.useState(0);
-  const direction = drawer?.direction || 'bottom';
-  const axis = direction === 'left' || direction === 'right' ? 'clientX' : 'clientY';
-  const sign = direction === 'top' || direction === 'left' ? -1 : 1;
-  const start = event => {
-    onPointerDown?.(event);
-    if (event.defaultPrevented || !drawer?.dismissible || drawer.handleOnly && event.target.dataset.slot !== 'drawer-handle' || event.target.closest('button,a,input,select,textarea')) return;
-    gesture.current = {
-      pointerId: event.pointerId,
-      start: event[axis]
-    };
-    event.currentTarget.setPointerCapture?.(event.pointerId);
-  };
-  const move = event => {
-    onPointerMove?.(event);
-    if (!gesture.current || gesture.current.pointerId !== event.pointerId) return;
-    const next = Math.max(0, (event[axis] - gesture.current.start) * sign);
-    offsetRef.current = next;
-    setOffset(next);
-  };
-  const end = event => {
-    onPointerUp?.(event);
-    if (!gesture.current || gesture.current.pointerId !== event.pointerId) return;
-    gesture.current = null;
-    if (offsetRef.current > 80) drawer?.setOpen(false);
-    offsetRef.current = 0;
-    setOffset(0);
-  };
-  const transform = offset ? axis === 'clientX' ? `translateX(${offset * sign}px)` : `translateY(${offset * sign}px)` : undefined;
-  const escape = event => {
-    onEscapeKeyDown?.(event);
-    if (!drawer?.dismissible) event.preventDefault();
-  };
-  const dismissOverlay = event => {
-    overlayProps?.onMouseDown?.(event);
-    if (!drawer?.dismissible) event.preventDefault();
-  };
-  return /*#__PURE__*/React.createElement(__ds_scope.DialogContent, _extends({}, props, {
-    ref: ref,
-    slot: "drawer-content",
-    "data-vaul-drawer-direction": direction,
-    className: join('ef-drawer', className),
-    width: "none",
-    showCloseButton: false,
-    onEscapeKeyDown: escape,
-    overlayProps: {
-      ...overlayProps,
-      slot: 'drawer-overlay',
-      className: join('ef-drawer__overlay', overlayProps?.className),
-      onMouseDown: dismissOverlay
-    },
-    style: {
-      ...style,
-      position: 'fixed',
-      transform: transform || style?.transform,
-      transition: offset ? 'none' : style?.transition
-    },
-    onPointerDown: start,
-    onPointerMove: move,
-    onPointerUp: end
-  }), /*#__PURE__*/React.createElement("div", {
-    "data-slot": "drawer-handle",
-    className: "ef-drawer__handle"
-  }), children);
-});
-const DrawerHeader = React.forwardRef(function DrawerHeader({
-  className,
-  ...props
-}, ref) {
-  return /*#__PURE__*/React.createElement(__ds_scope.DialogHeader, _extends({}, props, {
-    ref: ref,
-    slot: "drawer-header",
-    className: join('ef-drawer__header', className)
-  }));
-});
-const DrawerFooter = React.forwardRef(function DrawerFooter({
-  className,
-  ...props
-}, ref) {
-  return /*#__PURE__*/React.createElement(__ds_scope.DialogFooter, _extends({}, props, {
-    ref: ref,
-    slot: "drawer-footer",
-    className: join('ef-drawer__footer', className)
-  }));
-});
-const DrawerTitle = React.forwardRef(function DrawerTitle(props, ref) {
-  return /*#__PURE__*/React.createElement(__ds_scope.DialogTitle, _extends({}, props, {
-    ref: ref,
-    slot: "drawer-title"
-  }));
-});
-const DrawerDescription = React.forwardRef(function DrawerDescription({
-  className,
-  ...props
-}, ref) {
-  return /*#__PURE__*/React.createElement(__ds_scope.DialogDescription, _extends({}, props, {
-    ref: ref,
-    slot: "drawer-description",
-    className: join('ef-drawer__description', className)
-  }));
-});
-Object.assign(__ds_scope, { Drawer, DrawerTrigger, DrawerPortal, DrawerClose, DrawerOverlay, DrawerContent, DrawerHeader, DrawerFooter, DrawerTitle, DrawerDescription });
-})(); } catch (e) { __ds_ns.__errors.push({ path: "components/overlay/Drawer.jsx", error: String((e && e.message) || e) }); }
 
 // components/overlay/Portal.jsx
 try { (() => {
@@ -15149,6 +14737,208 @@ const ContextMenuSubContent = React.forwardRef(function ContextMenuSubContent({
 Object.assign(__ds_scope, { ContextMenu, ContextMenuTrigger, ContextMenuPortal, ContextMenuContent, ContextMenuGroup, ContextMenuLabel, ContextMenuSeparator, ContextMenuShortcut, ContextMenuItem, ContextMenuCheckboxItem, ContextMenuRadioGroup, ContextMenuRadioItem, ContextMenuSub, ContextMenuSubTrigger, ContextMenuSubContent });
 })(); } catch (e) { __ds_ns.__errors.push({ path: "components/overlay/ContextMenu.jsx", error: String((e && e.message) || e) }); }
 
+// components/overlay/Drawer.jsx
+try { (() => {
+function _extends() { return _extends = Object.assign ? Object.assign.bind() : function (n) { for (var e = 1; e < arguments.length; e++) { var t = arguments[e]; for (var r in t) ({}).hasOwnProperty.call(t, r) && (n[r] = t[r]); } return n; }, _extends.apply(null, arguments); }
+const CSS = `
+.ef-drawer__overlay{padding:0}
+.ef-drawer{position:fixed;z-index:var(--z-modal);display:flex;max-width:none;max-height:none;flex-direction:column;overflow:auto;border-radius:0;background:var(--surface-card);box-shadow:var(--shadow-xl);touch-action:none;will-change:transform}
+.ef-drawer[data-vaul-drawer-direction=right]{top:0;right:0;bottom:0;width:min(75vw,384px);border-width:0 0 0 1px;animation:ef-drawer-right var(--dur-slow) var(--ease-out)}
+.ef-drawer[data-vaul-drawer-direction=left]{top:0;left:0;bottom:0;width:min(75vw,384px);border-width:0 1px 0 0;animation:ef-drawer-left var(--dur-slow) var(--ease-out)}
+.ef-drawer[data-vaul-drawer-direction=top]{top:0;left:0;right:0;width:100%;max-height:80vh;border-width:0 0 1px;border-radius:0 0 var(--radius-lg) var(--radius-lg);animation:ef-drawer-top var(--dur-slow) var(--ease-out)}
+.ef-drawer[data-vaul-drawer-direction=bottom]{bottom:0;left:0;right:0;width:100%;max-height:80vh;border-width:1px 0 0;border-radius:var(--radius-lg) var(--radius-lg) 0 0;animation:ef-drawer-bottom var(--dur-slow) var(--ease-out)}
+.ef-drawer__handle{display:none;width:100px;height:8px;flex:none;margin:16px auto 0;border-radius:var(--radius-full);background:var(--surface-sunken);cursor:grab;touch-action:none}
+.ef-drawer[data-vaul-drawer-direction=bottom]>.ef-drawer__handle{display:block}
+.ef-drawer__header{gap:6px;padding:20px 24px 12px;text-align:start}.ef-drawer__footer{margin-top:auto;padding:16px 24px}.ef-drawer__description{margin-top:2px}
+@keyframes ef-drawer-right{from{transform:translateX(24px);opacity:0}}@keyframes ef-drawer-left{from{transform:translateX(-24px);opacity:0}}@keyframes ef-drawer-top{from{transform:translateY(-24px);opacity:0}}@keyframes ef-drawer-bottom{from{transform:translateY(24px);opacity:0}}
+`;
+const DrawerContext = React.createContext(null);
+const join = (...values) => values.filter(Boolean).join(' ');
+const compose = (first, second) => event => {
+  first?.(event);
+  if (!event.defaultPrevented) second?.(event);
+};
+function Drawer({
+  open: controlled,
+  defaultOpen = false,
+  onOpenChange,
+  direction = 'bottom',
+  dismissible = true,
+  modal = true,
+  handleOnly = false,
+  children
+}) {
+  __ds_scope.injectEfCss('ef-css-drawer', CSS);
+  const [internal, setInternal] = React.useState(defaultOpen);
+  const open = controlled === undefined ? internal : controlled;
+  const setOpen = React.useCallback(next => {
+    if (controlled === undefined) setInternal(next);
+    onOpenChange?.(next);
+  }, [controlled, onOpenChange]);
+  const context = React.useMemo(() => ({
+    direction,
+    dismissible,
+    handleOnly,
+    open,
+    setOpen
+  }), [direction, dismissible, handleOnly, open, setOpen]);
+  return /*#__PURE__*/React.createElement(DrawerContext.Provider, {
+    value: context
+  }, /*#__PURE__*/React.createElement(__ds_scope.Dialog, {
+    open: open,
+    onOpenChange: setOpen,
+    modal: modal
+  }, children));
+}
+const DrawerTrigger = React.forwardRef(function DrawerTrigger(props, ref) {
+  return /*#__PURE__*/React.createElement(__ds_scope.DialogTrigger, _extends({}, props, {
+    ref: ref,
+    slot: "drawer-trigger"
+  }));
+});
+function DrawerPortal(props) {
+  return /*#__PURE__*/React.createElement(__ds_scope.DialogPortal, props);
+}
+const DrawerClose = React.forwardRef(function DrawerClose(props, ref) {
+  return /*#__PURE__*/React.createElement(__ds_scope.DialogClose, _extends({}, props, {
+    ref: ref,
+    slot: "drawer-close"
+  }));
+});
+const DrawerOverlay = React.forwardRef(function DrawerOverlay({
+  className,
+  onMouseDown,
+  ...props
+}, ref) {
+  const drawer = React.useContext(DrawerContext);
+  const dismiss = event => {
+    if (!drawer?.dismissible) event.preventDefault();
+  };
+  return /*#__PURE__*/React.createElement(__ds_scope.DialogOverlay, _extends({}, props, {
+    ref: ref,
+    slot: "drawer-overlay",
+    className: join('ef-drawer__overlay', className),
+    onMouseDown: compose(onMouseDown, dismiss)
+  }));
+});
+const DrawerContent = React.forwardRef(function DrawerContent({
+  className,
+  style,
+  children,
+  onEscapeKeyDown,
+  onPointerDown,
+  onPointerMove,
+  onPointerUp,
+  overlayProps,
+  ...props
+}, ref) {
+  const drawer = React.useContext(DrawerContext);
+  const gesture = React.useRef(null);
+  const offsetRef = React.useRef(0);
+  const [offset, setOffset] = React.useState(0);
+  const direction = drawer?.direction || 'bottom';
+  const axis = direction === 'left' || direction === 'right' ? 'clientX' : 'clientY';
+  const sign = direction === 'top' || direction === 'left' ? -1 : 1;
+  const start = event => {
+    onPointerDown?.(event);
+    if (event.defaultPrevented || !drawer?.dismissible || drawer.handleOnly && event.target.dataset.slot !== 'drawer-handle' || event.target.closest('button,a,input,select,textarea')) return;
+    gesture.current = {
+      pointerId: event.pointerId,
+      start: event[axis]
+    };
+    event.currentTarget.setPointerCapture?.(event.pointerId);
+  };
+  const move = event => {
+    onPointerMove?.(event);
+    if (!gesture.current || gesture.current.pointerId !== event.pointerId) return;
+    const next = Math.max(0, (event[axis] - gesture.current.start) * sign);
+    offsetRef.current = next;
+    setOffset(next);
+  };
+  const end = event => {
+    onPointerUp?.(event);
+    if (!gesture.current || gesture.current.pointerId !== event.pointerId) return;
+    gesture.current = null;
+    if (offsetRef.current > 80) drawer?.setOpen(false);
+    offsetRef.current = 0;
+    setOffset(0);
+  };
+  const transform = offset ? axis === 'clientX' ? `translateX(${offset * sign}px)` : `translateY(${offset * sign}px)` : undefined;
+  const escape = event => {
+    onEscapeKeyDown?.(event);
+    if (!drawer?.dismissible) event.preventDefault();
+  };
+  const dismissOverlay = event => {
+    overlayProps?.onMouseDown?.(event);
+    if (!drawer?.dismissible) event.preventDefault();
+  };
+  return /*#__PURE__*/React.createElement(__ds_scope.DialogContent, _extends({}, props, {
+    ref: ref,
+    slot: "drawer-content",
+    "data-vaul-drawer-direction": direction,
+    className: join('ef-drawer', className),
+    width: "none",
+    showCloseButton: false,
+    onEscapeKeyDown: escape,
+    overlayProps: {
+      ...overlayProps,
+      slot: 'drawer-overlay',
+      className: join('ef-drawer__overlay', overlayProps?.className),
+      onMouseDown: dismissOverlay
+    },
+    style: {
+      ...style,
+      position: 'fixed',
+      transform: transform || style?.transform,
+      transition: offset ? 'none' : style?.transition
+    },
+    onPointerDown: start,
+    onPointerMove: move,
+    onPointerUp: end
+  }), /*#__PURE__*/React.createElement("div", {
+    "data-slot": "drawer-handle",
+    className: "ef-drawer__handle"
+  }), children);
+});
+const DrawerHeader = React.forwardRef(function DrawerHeader({
+  className,
+  ...props
+}, ref) {
+  return /*#__PURE__*/React.createElement(__ds_scope.DialogHeader, _extends({}, props, {
+    ref: ref,
+    slot: "drawer-header",
+    className: join('ef-drawer__header', className)
+  }));
+});
+const DrawerFooter = React.forwardRef(function DrawerFooter({
+  className,
+  ...props
+}, ref) {
+  return /*#__PURE__*/React.createElement(__ds_scope.DialogFooter, _extends({}, props, {
+    ref: ref,
+    slot: "drawer-footer",
+    className: join('ef-drawer__footer', className)
+  }));
+});
+const DrawerTitle = React.forwardRef(function DrawerTitle(props, ref) {
+  return /*#__PURE__*/React.createElement(__ds_scope.DialogTitle, _extends({}, props, {
+    ref: ref,
+    slot: "drawer-title"
+  }));
+});
+const DrawerDescription = React.forwardRef(function DrawerDescription({
+  className,
+  ...props
+}, ref) {
+  return /*#__PURE__*/React.createElement(__ds_scope.DialogDescription, _extends({}, props, {
+    ref: ref,
+    slot: "drawer-description",
+    className: join('ef-drawer__description', className)
+  }));
+});
+Object.assign(__ds_scope, { Drawer, DrawerTrigger, DrawerPortal, DrawerClose, DrawerOverlay, DrawerContent, DrawerHeader, DrawerFooter, DrawerTitle, DrawerDescription });
+})(); } catch (e) { __ds_ns.__errors.push({ path: "components/overlay/Drawer.jsx", error: String((e && e.message) || e) }); }
+
 // components/overlay/DropdownMenu.jsx
 try { (() => {
 function _extends() { return _extends = Object.assign ? Object.assign.bind() : function (n) { for (var e = 1; e < arguments.length; e++) { var t = arguments[e]; for (var r in t) ({}).hasOwnProperty.call(t, r) && (n[r] = t[r]); } return n; }, _extends.apply(null, arguments); }
@@ -15665,6 +15455,216 @@ const DropdownMenuSubContent = React.forwardRef(function DropdownMenuSubContent(
 });
 Object.assign(__ds_scope, { DropdownMenu, DropdownMenuTrigger, DropdownMenuPortal, DropdownMenuContent, DropdownMenuGroup, DropdownMenuLabel, DropdownMenuSeparator, DropdownMenuShortcut, DropdownMenuItem, DropdownMenuCheckboxItem, DropdownMenuRadioGroup, DropdownMenuRadioItem, DropdownMenuSub, DropdownMenuSubTrigger, DropdownMenuSubContent });
 })(); } catch (e) { __ds_ns.__errors.push({ path: "components/overlay/DropdownMenu.jsx", error: String((e && e.message) || e) }); }
+
+// components/navigation/Menubar.jsx
+try { (() => {
+function _extends() { return _extends = Object.assign ? Object.assign.bind() : function (n) { for (var e = 1; e < arguments.length; e++) { var t = arguments[e]; for (var r in t) ({}).hasOwnProperty.call(t, r) && (n[r] = t[r]); } return n; }, _extends.apply(null, arguments); }
+const CSS = `
+.ef-menubar{display:flex;width:max-content;height:36px;align-items:center;gap:2px;padding:3px;border:1px solid var(--border-default);border-radius:var(--radius-md);background:var(--surface-card);box-shadow:var(--shadow-xs)}
+.ef-menubar__trigger{display:flex;height:28px;align-items:center;padding:0 8px;border:0;border-radius:var(--radius-sm);outline:0;background:transparent;color:var(--text-primary);font:inherit;font-size:var(--text-sm);font-weight:var(--weight-medium);cursor:default;user-select:none}
+.ef-menubar__trigger:hover,.ef-menubar__trigger:focus,.ef-menubar__trigger[data-state=open]{background:var(--surface-sunken)}
+.ef-menubar__trigger:focus-visible{box-shadow:var(--focus-ring)}
+`;
+const MenubarRootContext = React.createContext(null);
+const MenubarMenuContext = React.createContext(null);
+const join = (...values) => values.filter(Boolean).join(' ');
+const Menubar = React.forwardRef(function Menubar({
+  loop = true,
+  className,
+  children,
+  onKeyDown,
+  ...props
+}, forwardedRef) {
+  __ds_scope.injectEfCss('ef-css-menubar', CSS);
+  const direction = __ds_scope.useDirection();
+  const rootRef = React.useRef(null);
+  const [value, setValue] = React.useState(null);
+  const [tabStop, setTabStop] = React.useState(null);
+  const move = React.useCallback((current, delta, openNext = false) => {
+    const triggers = rootRef.current ? Array.from(rootRef.current.querySelectorAll('[data-slot="menubar-trigger"]:not(:disabled)')) : [];
+    if (!triggers.length) return;
+    const currentIndex = triggers.findIndex(trigger => trigger.dataset.menuId === current);
+    const raw = Math.max(0, currentIndex) + delta;
+    const nextIndex = loop ? (raw + triggers.length) % triggers.length : Math.max(0, Math.min(triggers.length - 1, raw));
+    const next = triggers[nextIndex];
+    next?.focus();
+    if (openNext && next?.dataset.menuId) setValue(next.dataset.menuId);
+  }, [loop]);
+  const context = React.useMemo(() => ({
+    value,
+    setValue,
+    move,
+    direction,
+    tabStop,
+    setTabStop
+  }), [value, move, direction, tabStop]);
+  return /*#__PURE__*/React.createElement(MenubarRootContext.Provider, {
+    value: context
+  }, /*#__PURE__*/React.createElement("div", _extends({}, props, {
+    ref: __ds_scope.mergeRefs(forwardedRef, rootRef),
+    role: "menubar",
+    "data-slot": "menubar",
+    className: join('ef-menubar', className),
+    onKeyDown: onKeyDown
+  }), children));
+});
+function MenubarMenu({
+  children,
+  onOpenChange
+}) {
+  const root = React.useContext(MenubarRootContext);
+  const id = React.useId();
+  const open = root?.value === id;
+  const setOpen = next => {
+    root?.setValue(next ? id : null);
+    onOpenChange?.(next);
+  };
+  return /*#__PURE__*/React.createElement(MenubarMenuContext.Provider, {
+    value: {
+      id
+    }
+  }, /*#__PURE__*/React.createElement(__ds_scope.DropdownMenu, {
+    open: open,
+    onOpenChange: setOpen
+  }, children));
+}
+const MenubarTrigger = React.forwardRef(function MenubarTrigger({
+  className,
+  onKeyDown,
+  onMouseEnter,
+  onFocus,
+  tabIndex,
+  ...props
+}, ref) {
+  const root = React.useContext(MenubarRootContext);
+  const menu = React.useContext(MenubarMenuContext);
+  React.useEffect(() => {
+    root?.setTabStop(current => current ?? menu?.id);
+  }, [root?.setTabStop, menu?.id]);
+  const keyboard = event => {
+    onKeyDown?.(event);
+    if (event.defaultPrevented) return;
+    if (event.key === 'ArrowDown') {
+      event.preventDefault();
+      root?.setValue(menu?.id);
+    } else if (event.key === 'ArrowRight' || event.key === 'ArrowLeft') {
+      event.preventDefault();
+      const visualDelta = event.key === 'ArrowRight' ? 1 : -1;
+      root?.move(menu?.id, root.direction === 'rtl' ? -visualDelta : visualDelta, root.value !== null);
+    }
+  };
+  const enter = event => {
+    onMouseEnter?.(event);
+    if (!event.defaultPrevented && root?.value !== null) root.setValue(menu?.id);
+  };
+  const focus = event => {
+    root?.setTabStop(menu?.id);
+    onFocus?.(event);
+  };
+  return /*#__PURE__*/React.createElement(__ds_scope.DropdownMenuTrigger, _extends({}, props, {
+    ref: ref,
+    role: "menuitem",
+    slot: "menubar-trigger",
+    "data-menu-id": menu?.id,
+    tabIndex: tabIndex ?? (root?.tabStop === null || root?.tabStop === menu?.id ? 0 : -1),
+    className: join('ef-menubar__trigger', className),
+    onKeyDown: keyboard,
+    onMouseEnter: enter,
+    onFocus: focus
+  }));
+});
+const MenubarContent = React.forwardRef(function MenubarContent({
+  align = 'start',
+  alignOffset = -4,
+  sideOffset = 8,
+  onKeyDown,
+  ...props
+}, ref) {
+  const root = React.useContext(MenubarRootContext);
+  const menu = React.useContext(MenubarMenuContext);
+  const keyboard = event => {
+    onKeyDown?.(event);
+    if (event.defaultPrevented || event.key !== 'ArrowRight' && event.key !== 'ArrowLeft') return;
+    event.preventDefault();
+    const visualDelta = event.key === 'ArrowRight' ? 1 : -1;
+    root?.move(menu?.id, root.direction === 'rtl' ? -visualDelta : visualDelta, true);
+  };
+  return /*#__PURE__*/React.createElement(__ds_scope.DropdownMenuContent, _extends({}, props, {
+    ref: ref,
+    slot: "menubar-content",
+    align: align,
+    alignOffset: alignOffset,
+    sideOffset: sideOffset,
+    onKeyDown: keyboard
+  }));
+});
+function MenubarPortal(props) {
+  return /*#__PURE__*/React.createElement(__ds_scope.DropdownMenuPortal, props);
+}
+const MenubarGroup = React.forwardRef(function MenubarGroup(props, ref) {
+  return /*#__PURE__*/React.createElement(__ds_scope.DropdownMenuGroup, _extends({}, props, {
+    ref: ref,
+    slot: "menubar-group"
+  }));
+});
+function MenubarRadioGroup(props) {
+  return /*#__PURE__*/React.createElement(__ds_scope.DropdownMenuRadioGroup, _extends({}, props, {
+    slot: "menubar-radio-group"
+  }));
+}
+const MenubarLabel = React.forwardRef(function MenubarLabel(props, ref) {
+  return /*#__PURE__*/React.createElement(__ds_scope.DropdownMenuLabel, _extends({}, props, {
+    ref: ref,
+    slot: "menubar-label"
+  }));
+});
+const MenubarSeparator = React.forwardRef(function MenubarSeparator(props, ref) {
+  return /*#__PURE__*/React.createElement(__ds_scope.DropdownMenuSeparator, _extends({}, props, {
+    ref: ref,
+    slot: "menubar-separator"
+  }));
+});
+const MenubarShortcut = React.forwardRef(function MenubarShortcut(props, ref) {
+  return /*#__PURE__*/React.createElement(__ds_scope.DropdownMenuShortcut, _extends({}, props, {
+    ref: ref,
+    slot: "menubar-shortcut"
+  }));
+});
+const MenubarItem = React.forwardRef(function MenubarItem(props, ref) {
+  return /*#__PURE__*/React.createElement(__ds_scope.DropdownMenuItem, _extends({}, props, {
+    ref: ref,
+    slot: "menubar-item"
+  }));
+});
+const MenubarCheckboxItem = React.forwardRef(function MenubarCheckboxItem(props, ref) {
+  return /*#__PURE__*/React.createElement(__ds_scope.DropdownMenuCheckboxItem, _extends({}, props, {
+    ref: ref,
+    slot: "menubar-checkbox-item"
+  }));
+});
+const MenubarRadioItem = React.forwardRef(function MenubarRadioItem(props, ref) {
+  return /*#__PURE__*/React.createElement(__ds_scope.DropdownMenuRadioItem, _extends({}, props, {
+    ref: ref,
+    slot: "menubar-radio-item"
+  }));
+});
+function MenubarSub(props) {
+  return /*#__PURE__*/React.createElement(__ds_scope.DropdownMenuSub, props);
+}
+const MenubarSubTrigger = React.forwardRef(function MenubarSubTrigger(props, ref) {
+  return /*#__PURE__*/React.createElement(__ds_scope.DropdownMenuSubTrigger, _extends({}, props, {
+    ref: ref,
+    slot: "menubar-sub-trigger"
+  }));
+});
+const MenubarSubContent = React.forwardRef(function MenubarSubContent(props, ref) {
+  return /*#__PURE__*/React.createElement(__ds_scope.DropdownMenuSubContent, _extends({}, props, {
+    ref: ref,
+    slot: "menubar-sub-content"
+  }));
+});
+Object.assign(__ds_scope, { Menubar, MenubarMenu, MenubarTrigger, MenubarContent, MenubarPortal, MenubarGroup, MenubarRadioGroup, MenubarLabel, MenubarSeparator, MenubarShortcut, MenubarItem, MenubarCheckboxItem, MenubarRadioItem, MenubarSub, MenubarSubTrigger, MenubarSubContent });
+})(); } catch (e) { __ds_ns.__errors.push({ path: "components/navigation/Menubar.jsx", error: String((e && e.message) || e) }); }
 
 // components/overlay/HoverCard.jsx
 try { (() => {
