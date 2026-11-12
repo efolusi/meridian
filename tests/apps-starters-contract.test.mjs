@@ -13,6 +13,20 @@ describe('starters', () => {
     expect(pages.length).toBeGreaterThan(20)
   })
 
+  // The README contract: copy the folder, edit the one `base` line in
+  // ds-base.js, and every page works. A page that reaches the DS root itself
+  // (src="../../assets/…") breaks the moment the folder is copied out.
+  // Links to a sibling journey (../auth-page/…) are deliberate and allowed.
+  it('reaches the design-system root only through ds-base.js', () => {
+    const hits = []
+    for (const { file, text } of pages) {
+      for (const m of text.matchAll(/(?:src|href)="(\.\.\/\.\.\/[^"]*)"|url\(\s*['"]?(\.\.\/\.\.\/[^)'"]*)/g)) {
+        hits.push(`${file}: ${m[1] || m[2]}`)
+      }
+    }
+    expect(hits).toEqual([])
+  })
+
   // The dc runtime's first render reads the browser-parsed <x-dc> markup, and
   // the HTML parser foster-parents unknown elements out of table context: an
   // <sc-for> inside <tbody> lands before the <table>, its {{ row.field }}
