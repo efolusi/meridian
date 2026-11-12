@@ -54,8 +54,11 @@ function add(options = {}) {
   const id = merged.id ?? `toast-${++sequence}`;
   const next = { ...merged, id, type: merged.type || 'default' };
   const previous = timers.get(id); if (previous?.handle) clearTimeout(previous.handle); timers.delete(id);
+  const duration = merged.duration ?? (next.type === 'loading' || next.actionProps ? 0 : defaultDuration);
+  // a toast that never expires must be dismissable, or it stays on screen for good
+  next.sticky = !(duration > 0) && next.type !== 'loading';
   records = records.some(item => item.id === id) ? records.map(item => item.id === id ? next : item) : [...records, next];
-  schedule(id, merged.duration ?? (next.type === 'loading' || next.actionProps ? 0 : defaultDuration)); emit(); return id;
+  schedule(id, duration); emit(); return id;
 }
 
 export const toast = { add, close };
@@ -81,6 +84,6 @@ export function Toaster({ position = 'bottom-right', visibleToasts = 3, closeBut
   return <>{children}<Portal><ToastStack {...rest} dir={dir} position={position} data-rich-colors={richColors ? 'true' : 'false'} data-expand={expand ? 'true' : 'false'} data-theme={theme} data-mobile-offset={typeof mobileOffset === 'number' ? `${mobileOffset}px` : mobileOffset} style={{ gap, ...(position.startsWith('top') ? { top: resolvedOffset } : { bottom: resolvedOffset }), ...style }} aria-label={label} role="log" aria-live="polite" aria-relevant="additions" onMouseEnter={pause} onMouseLeave={resume} onFocusCapture={pause} onBlurCapture={resume}>
     {items.slice(-visibleToasts).map(item => item.type === 'custom' && React.isValidElement(item.title)
       ? React.cloneElement(item.title, { key: item.id })
-      : <ToastItem key={item.id} tone={item.type === 'error' ? 'danger' : ['success', 'warning', 'info'].includes(item.type) ? item.type : 'info'} title={item.title} description={item.description} actionProps={item.actionProps} role={null} onClose={closeButton || item.closeButton ? () => close(item.id) : undefined} />)}
+      : <ToastItem key={item.id} tone={item.type === 'error' ? 'danger' : ['success', 'warning', 'info'].includes(item.type) ? item.type : 'info'} title={item.title} description={item.description} actionProps={item.actionProps} role={null} onClose={closeButton || item.closeButton || (item.sticky && item.closeButton !== false) ? () => close(item.id) : undefined} />)}
   </ToastStack></Portal></>;
 }
