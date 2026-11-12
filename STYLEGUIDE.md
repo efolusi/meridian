@@ -6,7 +6,7 @@ The conventions that keep many hands producing one system. CONTRIBUTING.md says 
 
 - Components: `PascalCase.jsx` + `PascalCase.d.ts` + `PascalCase.prompt.md` in `components/<group>/` (groups are lowercase). Every component appears in its group's `<group>.card.html`.
 - Blocks, showcases, starters: `kebab-case` directories and files.
-- Never name a local helper after a DS export (`Stat`, `Card`, `Divider`, …) — the runtime namespace wins and silently replaces your local. Prefix locals: `KpiCard`, `AuthDivider`, `SectionRow`.
+- Never name a local helper after a DS export (`Stat`, `Card`, `Divider`, …): the runtime namespace wins and silently replaces your local. Prefix locals: `KpiCard`, `AuthDivider`, `SectionRow`.
 - One component per file. Compound parts live with their parent (`Toggle` + `ToggleGroup` in `Toggle.jsx`) and are exported from it.
 
 ## Props

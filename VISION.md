@@ -1,4 +1,4 @@
-# Meridian — vision
+# Meridian: vision
 
 **Status:** living document · reflects 1.10.0 (2026-07-29)
 **Scope:** what Meridian is for, who it serves, the bar that keeps it production-grade, and the protocol for running an autonomous loop against it.
@@ -46,50 +46,50 @@ Meridian lives inside PT. Efolusi Dunia Teknologi's thesis (see the portfolio
 
 This is Meridian's definition of done, applied to every release. Most of it is met and enforced in CI today; the honest status is marked. Nothing ships red.
 
-### Correctness and reproducibility — met, gated
+### Correctness and reproducibility: met, gated
 - The committed `_ds_bundle.js` is byte-reproducible from source; CI rebuilds and diffs rather than trusting a recorded hash.
 - The manifest, registry, token exports, interfaces and `llms-full.txt` are generated, never hand-maintained, and a generator that leaves the tree dirty fails the run.
 - No dead interactive controls, no raw colour literals (the token-adherence baseline is 0), no unresolved relative paths.
 
-### Accessibility — met, gated
+### Accessibility: met, gated
 - Contrast verified for 40 token pairs against both themes (4.5:1 text, 3:1 non-text).
 - Every documented keyboard contract has a test enforcing it; when three components silently broke theirs, the tests caught it before release.
 - The published guideline in `guidelines/accessibility.md` is held true, not aspirational.
 
-### SSR and bundler compatibility — met, gated
+### SSR and bundler compatibility: met, gated
 - All public exports render under `renderToString` with parser-safe inline styles, so hydration never mismatches. Guarded for the whole surface, not a hand-picked few.
 - Every module carries `"use client"`, so importing from a Next.js Server Component is not a build error.
 - Component CSS is a static stylesheet, so server-rendered HTML is styled before hydration; the CDN path keeps runtime injection.
 
-### Distribution integrity — met, gated
+### Distribution integrity: met, gated
 - The npm package imports cleanly through its `exports` map (not by file path), deep imports resolve with and without extension, no internal helpers leak, and every asset the CSS references is in the tarball.
 - Fonts ship as WOFF2, licences travel with the fonts and icons, `LICENSE` and `THIRD_PARTY_NOTICES` are in the package.
 - Types compile against `@types/react` 18 and 19.
 
-### Testing and regression — met, gated
+### Testing and regression: met, gated
 - 250+ tests across 23 files: keyboard contracts, wiring, SSR, alias compatibility, hydration, stateful interaction.
 - Visual regression: 26 group screenshots per theme, gated against baselines with pixelmatch, refreshed through a reviewable PR.
 - Interaction tests cover the stateful components (Slider, RichComposer, PromptSteps, Player); a per-release size budget (`scripts/check_size.mjs`) fails the build on bundle or package bloat.
 
-### Release operations — met
+### Release operations: met
 - Published to npm with provenance via Trusted Publishing (OIDC): no token stored anywhere.
 - Releasing is a version bump pushed to main; CI re-runs every gate, publishes, tags, and cuts the GitHub Release from the changelog. `main` is protected; the same gates that guard a PR guard a release.
 - npm versions are immutable, so the rule is fix-forward, documented in [RELEASING.md](RELEASING.md).
 
-### Documentation and discoverability — met, expanding
-- Live docs with editable-in-place demos, a bring-your-own-brand theming guide, per-component prompt guides, `llms.txt` and `llms-full.txt`, a machine-readable registry, and an **MCP server** (`mcp/`, `@efolusi/meridian-mcp`) that hands an AI coding agent the component list, each component's real source / types / usage guide, and the tokens — reading the hosted registry so it needs no checkout.
-- **Open (ROADMAP Phase 4):** per-framework guides with maintained example repos, migration codemods. Versioned docs with a switcher are deferred until a 2.x exists — 1.x is all additive (deprecate-never-break), so there is nothing to switch between yet.
+### Documentation and discoverability: met, expanding
+- Live docs with editable-in-place demos, a bring-your-own-brand theming guide, per-component prompt guides, `llms.txt` and `llms-full.txt`, a machine-readable registry, and an **MCP server** (`mcp/`, `@efolusi/meridian-mcp`) that hands an AI coding agent the component list, each component's real source / types / usage guide, and the tokens, reading the hosted registry so it needs no checkout.
+- **Open (ROADMAP Phase 4):** per-framework guides with maintained example repos, migration codemods. Versioned docs with a switcher are deferred until a 2.x exists: 1.x is all additive (deprecate-never-break), so there is nothing to switch between yet.
 
-### Generative-engine discoverability (GEO) — met, growing
+### Generative-engine discoverability (GEO): met, growing
 - Meridian is built to be found and *correctly used* by generative engines, not only search crawlers. `llms.txt` and the generated `llms-full.txt` (every component's prompt guide plus its typed interface and the token names, in one file), the per-component `.prompt.md`, and the machine-readable registry give a model everything it needs to recommend Meridian and write correct Meridian code on the first try.
 - **Growing:** the AI corpus stays generated, never hand-drifted, so it cannot fall out of sync with the components; the studio, the install paths and the component facts are stated in plain prose a model can lift, never locked inside images.
 
-### Internationalization, id and en — landed, growing
+### Internationalization, id and en: landed, growing
 - The target is Indonesian and English as first-class: the docs available in both, and locale-aware behaviour where it actually matters (Calendar and NumberInput formatting and parsing). Both halves have shipped; what remains is depth, not foundations.
-- **Landed:** locale-aware formatting via `Intl`, all additive (no `locale` keeps the English/plain default). NumberInput takes a `locale` (BCP 47) and formats/parses numbers — `id` shows `1.234,5`, `en` shows `1,234.5`, each parsing its own format back exactly (an explicit `format`/`parse` still wins). Calendar takes a `locale` for month, weekday, and full-date labels — `id` renders "Januari", "Sen", "15 Jan 2026". Date pickers compose Calendar with Popover and Button, so their trigger labels remain consumer-owned. The calendar grid stays Sunday-first for every locale.
-- **Landed — bilingual docs site.** `site/i18n.js` is a decoupled en/id layer: a leaf element tagged `data-lang-id` keeps its English inline and carries the Indonesian in the attribute, and the layer swaps them on a language change, re-applying after DCLogic re-renders via a MutationObserver, so static prose needs no page-logic changes. For text rendered from DCLogic state, `EfLang.onChange` lets a page re-render in the new language. A `.site-lang` toggle sits in every page header, persists the choice to localStorage, and restores it on load. All eight pages are translated: the home and section-page hero prose; the whole of Docs (sidebar, header, and every section across Get started / Guides / Reference, changelog included); and Components (group labels, section headings, on-this-page TOC). The Indonesian was given a naturalness pass, not left as literal glosses.
+- **Landed:** locale-aware formatting via `Intl`, all additive (no `locale` keeps the English/plain default). NumberInput takes a `locale` (BCP 47) and formats/parses numbers: `id` shows `1.234,5`, `en` shows `1,234.5`, each parsing its own format back exactly (an explicit `format`/`parse` still wins). Calendar takes a `locale` for month, weekday, and full-date labels: `id` renders "Januari", "Sen", "15 Jan 2026". Date pickers compose Calendar with Popover and Button, so their trigger labels remain consumer-owned. The calendar grid stays Sunday-first for every locale.
+- **Landed: bilingual docs site.** `site/i18n.js` is a decoupled en/id layer: a leaf element tagged `data-lang-id` keeps its English inline and carries the Indonesian in the attribute, and the layer swaps them on a language change, re-applying after DCLogic re-renders via a MutationObserver, so static prose needs no page-logic changes. For text rendered from DCLogic state, `EfLang.onChange` lets a page re-render in the new language. A `.site-lang` toggle sits in every page header, persists the choice to localStorage, and restores it on load. All eight pages are translated: the home and section-page hero prose; the whole of Docs (sidebar, header, and every section across Get started / Guides / Reference, changelog included); and Components (group labels, section headings, on-this-page TOC). The Indonesian was given a naturalness pass, not left as literal glosses.
 - All 107 per-component descriptions are translated too: the English stays canonical in the registry (generated from each `.prompt.md`), and `site/descriptions.id.json` carries the Indonesian, keyed by component name, with a gate (`check_descriptions_id.mjs`) that fails if it ever falls out of coverage. **Kept English by design:** component names and code identifiers (proper nouns / API); the footer (required attribution copy that wraps links); the Preview/Code/Edit demo controls.
-- Every component already takes its text from the consumer — labels, empty-state copy, error copy are props — so an app can localise *around* Meridian today, even while the system itself is English-first.
+- Every component already takes its text from the consumer (labels, empty-state copy, error copy are props), so an app can localise *around* Meridian today, even while the system itself is English-first.
 - RTL is honestly **not supported in 1.x** (physical CSS properties in places); the path is logical properties, tracked in ROADMAP. i18n makes no RTL claim until a mirrored screen has been reviewed.
 
 ## What winning looks like
@@ -165,11 +165,11 @@ Ordered by value. Each is verifiable by the existing gates plus its own new test
 1. ~~**Size budget gate.**~~ Shipped: `scripts/check_size.mjs` records the built bundle and npm `dist/` sizes and fails on a regression past `scripts/size_budget.json`, wired into `check_all.mjs`.
 2. ~~**Interaction tests for the still-uncovered stateful components.**~~ Shipped: `tests/interaction-stateful.test.jsx` covers Slider, RichComposer, PromptSteps and Player.
 3. ~~**Finish the API-conventions sweep.**~~ Shipped: `action` is a `ReactNode` across Alert / Banner / Toast; `status` is canonical for component condition; `defaultOpen` is canonical for disclosures. Obsolete aliases and their compatibility tests were removed after migration.
-4. ~~**Remove the last hand-maintained lists.**~~ Shipped: `scripts/build_site_nav.mjs` generates `site/nav.json` — pages derived from the actual `site/*.dc.html` files (label from each `<title>`, icon from a mapped-or-fallback table), so a new page appears in search with no array edit (proven with a synthetic page). SiteSearch reads `nav.json` instead of its own hardcoded `PAGES`/`DOCS`; the generator is wired into `check_all.mjs` with a stale gate. (Docs section labels remain a maintained list in the generator; their true source is the Docs page's own runtime, out of proportion to lift.)
+4. ~~**Remove the last hand-maintained lists.**~~ Shipped: `scripts/build_site_nav.mjs` generates `site/nav.json`: pages derived from the actual `site/*.dc.html` files (label from each `<title>`, icon from a mapped-or-fallback table), so a new page appears in search with no array edit (proven with a synthetic page). SiteSearch reads `nav.json` instead of its own hardcoded `PAGES`/`DOCS`; the generator is wired into `check_all.mjs` with a stale gate. (Docs section labels remain a maintained list in the generator; their true source is the Docs page's own runtime, out of proportion to lift.)
 5. ~~**Patterns docs.**~~ Shipped: `guidelines/patterns.md` (product-state playbook) and `guidelines/frameworks.md`, linked from the README.
 6. ~~**Framework guide pages.**~~ Shipped as `guidelines/frameworks.md`: Next.js App Router (`use client`), Vite, Remix, plain HTML/CDN.
 
-**Still open, larger, needs an owner decision (not loop-safe):** internationalization (id/en) — bilingual docs and deeper locale-aware Calendar / NumberInput behavior; the i18n section above is the target.
+**Still open, larger, needs an owner decision (not loop-safe):** internationalization (id/en): bilingual docs and deeper locale-aware Calendar / NumberInput behavior; the i18n section above is the target.
 
 **Excluded from the loop (a human must decide first):** versioned-docs tooling, an MCP server, the Figma library, a standalone icon package, CLA vs DCO, and the analytics stance. These are in ROADMAP.md under decision points; the loop does not touch them.
 

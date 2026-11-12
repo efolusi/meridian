@@ -1,6 +1,6 @@
 # Meridian
 
-**A general-purpose open-source design system by [Efolusi](https://efolusi.com).** 123 accessible React components, 167 design tokens in light, dark and compact, 12 blocks, and 8 full example apps — served browser-native with **no build step**.
+**A general-purpose open-source design system by [Efolusi](https://efolusi.com).** 123 accessible React components, 167 design tokens in light, dark and compact, 12 blocks, and 8 full example apps, served browser-native with **no build step**.
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-7A4E2B.svg)](LICENSE)
 [![Docs](https://img.shields.io/badge/docs-meridian.efolusi.com-2C1709.svg)](https://meridian.efolusi.com)
@@ -14,7 +14,7 @@ Warm paper, espresso ink, hairline structure. Copy it, theme it, ship it.
 
 ## Quickstart
 
-Four tags. No install, no bundler, no config — every component lands on one global.
+Four tags. No install, no bundler, no config: every component lands on one global.
 
 ```html
 <link rel="stylesheet" href="https://meridian.efolusi.com/styles.css">
@@ -33,7 +33,7 @@ const { Button, Card, CardContent, CardHeader, CardTitle, Stat } = window.Efolus
 </Card>
 ```
 
-A complete runnable page is in [`hello.html`](hello.html) — open it in a browser, nothing else required.
+A complete runnable page is in [`hello.html`](hello.html). Open it in a browser; nothing else is required.
 
 ### Install source from the registry
 
@@ -56,7 +56,7 @@ Dark mode and compact density are attribute scopes, not rebuilds:
 | **npm** | you have a bundler (Vite, Next, Remix) | `npm install @efolusi/meridian` |
 | **CDN** (above) | prototypes, demos, a single-file artifact | point the two tags at `meridian.efolusi.com` |
 | **Vendor the folder** | you want to own and edit the source | copy the repo; link `styles.css` and `_ds_bundle.js` |
-| **Vendor one component** | you need Button, not 109 | copy `components/<group>/<Name>.jsx` + `.d.ts` — MIT, no attribution required |
+| **Vendor one component** | you need Button, not all 123 | copy `components/<group>/<Name>.jsx` + `.d.ts` (MIT, no attribution required) |
 
 ### Meridian Guard
 
@@ -81,7 +81,7 @@ npm install @efolusi/meridian
 import '@efolusi/meridian/styles.css';        // once, at the app root
 import { Button, Field, FieldLabel } from '@efolusi/meridian';
 
-// or per component, for the smallest graph — with or without the extension:
+// or per component, for the smallest graph, with or without the extension:
 import { Button } from '@efolusi/meridian/forms/Button.js';
 ```
 
@@ -95,17 +95,17 @@ Palette, type, spacing, motion, and the voice rules live in **[guidelines/brand.
 
 Meridian is general-purpose: the primitives and the patterns for an entire product surface, not just a component grab-bag. The example apps in `showcases/` put them to work across the archetypes most teams reach for:
 
-- **AI workspace** — chat threads, tool calls, run steps, an inline terminal → ChatMessage, PromptComposer, AgentRun, Terminal.
-- **Infrastructure console** — clouds, databases, SSL, DNS, health at a glance → StatusDot, KeyValueList, CopyField, Table, Terminal.
-- **File tools** — upload, convert, encode/decode, scan → FileDrop, FileTile, Progress.
-- **Trading & finance** — portfolios, positions, P&L, live signals → Sparkline, Stat, Table, PaymentCard.
-- **Admin & marketing** — dashboards, settings, pricing, docs → the full display, navigation, and data tiers.
+- **AI workspace**: chat threads, tool calls, run steps, an inline terminal → ChatMessage, PromptComposer, AgentRun, Terminal.
+- **Infrastructure console**: clouds, databases, SSL, DNS, health at a glance → StatusDot, KeyValueList, CopyField, Table, Terminal.
+- **File tools**: upload, convert, encode/decode, scan → FileDrop, FileTile, Progress.
+- **Trading & finance**: portfolios, positions, P&L, live signals → Sparkline, Stat, Table, PaymentCard.
+- **Admin & marketing**: dashboards, settings, pricing, docs → the full display, navigation, and data tiers.
 
-Every component and screen here is original. Meridian has its own three-stroke mark (`assets/meridian-mark.svg`): a minimal `///` symbol and forward path rendered in espresso. The visual brief pairs it with warm sand neutrals, humanist sans type, subtle 4px radii, comfortable density, light and dark themes, Lucide icons, and springy motion. No prior codebase or product UI was recreated.
+Every component and screen here is original. Meridian has its own three-stroke mark (`assets/meridian-mark.svg`): a minimal `///` symbol and forward path rendered in espresso. The visual brief pairs it with warm sand neutrals, humanist sans type, an 8px-to-24px radius scale, comfortable density, light and dark themes, Lucide icons, and springy motion. No prior codebase or product UI was recreated.
 
 ## Blocks
 
-Pre-composed sections in `blocks/` (Blocks group in the Design System tab): App shell, Login, Stats dashboard, Settings, Hero, Pricing, FAQ, 404 page, 500 page, Offline state, Empty state, Activity feed. Copy a block's markup as the starting point for a page — they compose the primitives, so they inherit theme + density automatically.
+Pre-composed sections in `blocks/` (Blocks group in the Design System tab): App shell, Login, Stats dashboard, Settings, Hero, Pricing, FAQ, 404 page, 500 page, Offline state, Empty state, Activity feed. Copy a block's markup as the starting point for a page. They compose the primitives, so they inherit theme + density automatically.
 
 ## Landing rhythm (opt-in)
 
@@ -123,61 +123,61 @@ import '@efolusi/meridian/landing.css'
 ## Theming & density
 
 - **Dark theme:** set `data-theme="dark"` on `<html>` or any subtree. Only semantic aliases remap (espresso surfaces, cream text, caramel links, retuned status tints); ramps stay fixed. Components are theme-safe because they style against semantic tokens only.
-- **Compact density:** set `data-density="compact"` for data-heavy ops views — control heights drop to 24/30/38px and table rows tighten via `--table-pad-y/x`.
+- **Compact density:** set `data-density="compact"` for data-heavy ops views: control heights drop to 24/30/38px and table rows tighten via `--table-pad-y/x`.
 - Both are attribute scopes, so a dark page can host a light card and vice versa. Specimen: Theming group in the Design System tab.
 
 ## Patterns
 
-- `guidelines/brand.md` — palette derivation, type and spacing scales, motion, iconography, voice and copy rules
-- `guidelines/theming.md` — bring your own brand: token layers, the semantic override set, dark-mode invariants, font swaps, contrast duties
-- `guidelines/forms.md` — validation timing (blur → change → submit), error copy, submit states, async checks
-- `guidelines/patterns.md` — the product-state playbook: loading, empty, error, destructive flows, and agent surfaces
-- `guidelines/frameworks.md` — install and integration guides for Next.js, Vite, Remix, and the zero-build CDN path
-- `guidelines/accessibility.md` — focus rules, full keyboard map, contrast targets, per-component semantics
-- `guidelines/governance.md` — semver rules, contribution contract, do/don't, deprecation policy
+- `guidelines/brand.md`: palette derivation, type and spacing scales, motion, iconography, voice and copy rules
+- `guidelines/theming.md`: bring your own brand: token layers, the semantic override set, dark-mode invariants, font swaps, contrast duties
+- `guidelines/forms.md`: validation timing (blur → change → submit), error copy, submit states, async checks
+- `guidelines/patterns.md`: the product-state playbook: loading, empty, error, destructive flows, and agent surfaces
+- `guidelines/frameworks.md`: install and integration guides for Next.js, Vite, Remix, and the zero-build CDN path
+- `guidelines/accessibility.md`: focus rules, full keyboard map, contrast targets, per-component semantics
+- `guidelines/governance.md`: semver rules, contribution contract, do/don't, deprecation policy
 
 ## Component library
 
 Authored from scratch (no source inventory existed). Namespace: `window.EfolusiDesignSystem_4ffc3d`.
 
-- `components/forms/` — Button, IconButton, Input, Textarea, Select (+Trigger, +Value, +Content, +Group, +Label, +Item, +Separator), NativeSelect (+Option, +OptGroup), Checkbox, RadioGroup (+Item), Switch, Slider, Combobox (+Value, +Trigger, +Clear, +Input, +Content, +List, +Item, +Group, +Label, +Collection, +Empty, +Separator, +Chips, +Chip, +ChipsInput), NumberInput, InputOTP (+Group, +Slot, +Separator), ButtonTile (+Group), Toggle (+Group), ButtonGroup, InputGroup, Field (+Set, +Legend, +Group, +Content, +Label, +Title, +Description, +Separator, +Error), Label
-- `components/display/` — Card, Badge, Tag, Avatar (+AvatarGroup), Kbd, Divider, Separator, Accordion, Link, Toolbar, TreeList, Item (+Group, +Separator, +Media, +Content, +Title, +Description, +Actions, +Header, +Footer), Collapsible, AspectRatio, ScrollArea, Carousel, Resizable
-- `components/navigation/` — Tabs, Breadcrumbs, Pagination, SegmentedControl, PageControl, SideNav, TopNav, Steps, Menubar, NavigationMenu
-- `components/feedback/` — Dialog, ConfirmDialog, Toast (`Toaster` + `toast`), Tooltip, Alert, Banner, Progress, Spinner, Loader
-- `components/data/` — composable Chart (Recharts 3), Table, Stat, Empty, Skeleton, BarChart, LineChart, DonutChart, Sparkline, KeyValueList, StatusDot
-- `components/overlay/` — composable DropdownMenu, Popover, Drawer, Sheet, Command (+Dialog, +Input, +List, +Empty, +Group, +Item, +Shortcut, +Separator), ContextMenu, HoverCard (+Trigger, +Content), Portal
-- `components/ai/` — Message (+Group, +Avatar, +Content, +Header, +Footer), MessageScroller (+Provider, +Viewport, +Content, +Item, +Button), Bubble, ChatMessage, PromptComposer, RichComposer, Reasoning, ToolCall, AgentRun, Task, Todo, Confirmation, Conversation, Citation (+SourceList), SourceCard, Suggestions, PromptSteps, SelectionQuote, Marker, ModelSelector, UsageMeter, FeedbackBar, DocumentCard, GeneratedImage, Sandbox, WebPreview, Player, Transcript
-- `components/code/` — CodeBlock, Terminal, CopyField, Diff, Console, Exception, EnvList
-- `components/files/` — Attachment (compound family), FileDrop, FileTile, FileTypeIcon
-- `components/dates/` — Calendar (+DayButton), TimePicker; date pickers compose Calendar with Popover and Field
-- `components/finance/` — PaymentCard
-- `components/icons/` — Icon (Lucide loader)
+- `components/forms/`: Button, IconButton, Input, Textarea, Select (+Trigger, +Value, +Content, +Group, +Label, +Item, +Separator), NativeSelect (+Option, +OptGroup), Checkbox, RadioGroup (+Item), Switch, Slider, Combobox (+Value, +Trigger, +Clear, +Input, +Content, +List, +Item, +Group, +Label, +Collection, +Empty, +Separator, +Chips, +Chip, +ChipsInput), NumberInput, InputOTP (+Group, +Slot, +Separator), ButtonTile (+Group), Toggle (+Group), ButtonGroup, InputGroup, Field (+Set, +Legend, +Group, +Content, +Label, +Title, +Description, +Separator, +Error), Label
+- `components/display/`: Card, Badge, Tag, Avatar (+AvatarGroup), Kbd, Divider, Separator, Accordion, Link, Toolbar, TreeList, Item (+Group, +Separator, +Media, +Content, +Title, +Description, +Actions, +Header, +Footer), Collapsible, AspectRatio, ScrollArea, Carousel, Resizable
+- `components/navigation/`: Tabs, Breadcrumb (composable), Pagination, SegmentedControl, PageControl, Sidebar, SideNav, TopNav, Steps, Menubar, NavigationMenu, SkipLink
+- `components/feedback/`: Dialog, AlertDialog, ConfirmDialog, Toast (`Toaster` + `toast`), Tooltip, Alert, Banner, Progress, Spinner, Loader
+- `components/data/`: composable Chart (Recharts 3), Table, Stat, Empty, Skeleton, BarChart, LineChart, DonutChart, Sparkline, KeyValueList, StatusDot
+- `components/overlay/`: composable DropdownMenu, Popover, Drawer, Sheet, Command (+Dialog, +Input, +List, +Empty, +Group, +Item, +Shortcut, +Separator), ContextMenu, HoverCard (+Trigger, +Content), Portal
+- `components/ai/`: Message (+Group, +Avatar, +Content, +Header, +Footer), MessageScroller (+Provider, +Viewport, +Content, +Item, +Button), Bubble, ChatMessage, PromptComposer, RichComposer, Reasoning, ToolCall, AgentRun, Task, Todo, Confirmation, Conversation, Citation (+SourceList), SourceCard, Suggestions, PromptSteps, SelectionQuote, Marker, ModelSelector, UsageMeter, FeedbackBar, DocumentCard, GeneratedImage, Sandbox, WebPreview, Player, Transcript
+- `components/code/`: CodeBlock, Terminal, CopyField, Diff, Console, Exception, EnvList
+- `components/files/`: Attachment (compound family), FileDrop, FileTile, FileTypeIcon
+- `components/dates/`: Calendar (+DayButton), TimePicker; date pickers compose Calendar with Popover and Field
+- `components/finance/`: PaymentCard
+- `components/icons/`: Icon (Lucide loader)
 
-**Intentional additions** beyond the classic starter set: `Icon` (required wrapper for the copied Lucide SVGs), plus the data/overlay tier (Table, Stat, Drawer, …) sized to what the console, docs, and marketing kits actually use — nothing speculative.
+**Intentional additions** beyond the classic starter set: `Icon` (required wrapper for the copied Lucide SVGs), plus the data/overlay tier (Table, Stat, Drawer, …) sized to what the console, docs, and marketing kits actually use, and nothing speculative.
 
 ## Index
 
 The layout is Meridian's own, organized by purpose: the system core stays at the root (that is the vendoring API and the compiler contract), the library and demo surfaces each get one shallow, self-describing directory, and the docs site consumes them all. Full rationale in `ARCHITECTURE.md`.
 
-- `styles.css` — global entry; imports everything under `tokens/` (link this one file and the system is live)
-- `registry.json` — source registry for compatible clients using `efolusi/meridian/<item>`
-- `tokens/` — fonts.css, colors.css, typography.css, spacing.css, effects.css, base.css
-- `assets/` — Meridian icon, horizontal light/dark lockups, favicon, brand board and social artwork; fonts/ (5 variable WOFF2 + OFL license texts); icons/ (118 curated SVGs + license)
-- `_ds_bundle.js` + `_ds_manifest.json` — compiled component bundle and machine-readable manifest (generated by the DS compiler; see `ARCHITECTURE.md`)
-- `components/<group>/` — the 123 components; each ships `.jsx` + `.d.ts` + `.prompt.md` + a group card HTML
-- `blocks/` — 9 pre-composed sections to paste into a page
-- `showcases/<app>/` — 8 example apps in plain JSX: agent, auth, console, docs, infra, tools, trader, website
-- `starters/<journey>/` — 9 journeys to copy wholesale, each with linked pages and a consistent shell: marketing, auth, dashboard, app, docs, AI workspace, CRM, finance operations, and service desk
-- `site/` — the docs website (home, docs, components, blocks, example apps, charts, themes, colors), plus `examples/` (the live demos), `registry.json`, and generated `registry/` install items
-- `guidelines/` — foundation specimen cards + brand (design language), accessibility, forms, governance
-- `hello.html` — a complete runnable page; open it in a browser to see the system working with nothing installed
-- `skills/` — the agent skill entry point
-- `packages/` — source workspaces for the standalone public tokens, icons, and Meridian Guard packages; publishable output is generated under each `dist/`
-- `mcp/` — independently versioned Meridian registry server workspace
-- `scripts/` — registry generator, contrast check, runtime-copy drift check
-- `tokens.json` (DTCG) + `tailwind.preset.js` — design tokens for Style Dictionary, Figma Variables, and Tailwind (generated by `scripts/build_tokens.py`)
-- `ARCHITECTURE.md` — how the pieces fit · `STYLEGUIDE.md` — contributor conventions
-- `LICENSE` — MIT · `THIRD_PARTY_NOTICES.md` · `CONTRIBUTING.md` — component contract + PR checklist
+- `styles.css`: global entry; imports everything under `tokens/` (link this one file and the system is live)
+- `registry.json`: source registry for compatible clients using `efolusi/meridian/<item>`
+- `tokens/`: fonts.css, colors.css, typography.css, spacing.css, effects.css, base.css
+- `assets/`: Meridian icon, horizontal light/dark lockups, favicon, brand board and social artwork; fonts/ (5 variable WOFF2 + OFL license texts); icons/ (118 curated SVGs + license)
+- `_ds_bundle.js` + `_ds_manifest.json`: compiled component bundle and machine-readable manifest (generated by the DS compiler; see `ARCHITECTURE.md`)
+- `components/<group>/`: the 123 components; each ships `.jsx` + `.d.ts` + `.prompt.md` + a group card HTML
+- `blocks/`: 12 pre-composed sections to paste into a page
+- `showcases/<app>/`: 8 example apps in plain JSX: agent, auth, console, docs, infra, tools, trader, website
+- `starters/<journey>/`: 9 journeys to copy wholesale, each with linked pages and a consistent shell: marketing, auth, dashboard, app, docs, AI workspace, CRM, finance operations, and service desk
+- `site/`: the docs website (home, docs, components, blocks, example apps, charts, themes, colors), plus `examples/` (the live demos), `registry.json`, and generated `registry/` install items
+- `guidelines/`: foundation specimen cards + brand (design language), accessibility, forms, governance
+- `hello.html`: a complete runnable page; open it in a browser to see the system working with nothing installed
+- `skills/`: the agent skill entry point
+- `packages/`: source workspaces for the standalone public tokens, icons, and Meridian Guard packages; publishable output is generated under each `dist/`
+- `mcp/`: independently versioned Meridian registry server workspace
+- `scripts/`: registry generator, contrast check, runtime-copy drift check
+- `tokens.json` (DTCG) + `tailwind.preset.js`: design tokens for Style Dictionary, Figma Variables, and Tailwind (generated by `scripts/build_tokens.py`)
+- `ARCHITECTURE.md`: how the pieces fit · `STYLEGUIDE.md`: contributor conventions
+- `LICENSE`: MIT · `THIRD_PARTY_NOTICES.md` · `CONTRIBUTING.md`: component contract + PR checklist
 
 **Showcases vs starters:** showcases (`showcases/`) are rich screens written in plain JSX so you can lift code straight into a React app; starters (`starters/`) are self-contained multi-page journeys you copy wholesale. Four pairs intentionally cover the same category in both forms (console/dashboard, auth, website/marketing, docs); the AI workspace, CRM, finance operations, and service desk starters extend coverage into domain-specific enterprise workflows.
 
@@ -189,4 +189,4 @@ The layout is Meridian's own, organized by purpose: the system core stays at the
 
 ## License
 
-MIT — free for commercial and personal use, modification, and redistribution. See `LICENSE`. Bundled fonts (SIL OFL 1.1) and Lucide-derived icons (ISC/MIT) keep their own licenses: `THIRD_PARTY_NOTICES.md`. The Meridian mark and the "Meridian"/"Efolusi" names are not covered by the MIT grant — don't use them to brand derived systems. Contributions welcome: `CONTRIBUTING.md`.
+MIT: free for commercial and personal use, modification, and redistribution. See `LICENSE`. Bundled fonts (SIL OFL 1.1) and Lucide-derived icons (ISC/MIT) keep their own licenses: `THIRD_PARTY_NOTICES.md`. The Meridian mark and the "Meridian"/"Efolusi" names are not covered by the MIT grant. Don't use them to brand derived systems. Contributions welcome: `CONTRIBUTING.md`.

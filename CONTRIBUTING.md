@@ -1,15 +1,15 @@
 # Contributing to Meridian
 
-Meridian is MIT-licensed and open to contributions. It is plain HTML + CSS + JSX. For most of the repo there is no build step and no npm install — open any `.html` in a browser and you are running the real thing.
+Meridian is MIT-licensed and open to contributions. It is plain HTML + CSS + JSX. For most of the repo there is no build step and no npm install. Open any `.html` in a browser and you are running the real thing.
 
 ## Read this first if you are changing a component
 
-`_ds_bundle.js` is a **compiled artifact**. Every `components/**/*.jsx` and `showcases/**/*.jsx` file is compiled into it, and pages load the bundle rather than your `.jsx` — so **editing a component source alone changes nothing at runtime until you rebuild.**
+`_ds_bundle.js` is a **compiled artifact**. Every `components/**/*.jsx` and `showcases/**/*.jsx` file is compiled into it, and pages load the bundle rather than your `.jsx`, so **editing a component source alone changes nothing at runtime until you rebuild.**
 
 Rebuilding takes one command:
 
 ```bash
-npm install                      # once — @babel/standalone is the only build dependency
+npm install                      # once; @babel/standalone is the only build dependency
 node scripts/build_bundle.mjs    # recompile _ds_bundle.js from source
 ```
 
@@ -27,18 +27,18 @@ npm run check        # every gate CI runs: three generators, then the full batte
 npm run check:fix    # same, but regenerate stale generated files first
 ```
 
-One command is the whole contract — it is the same script CI executes, so a green run here means a green run there. The only thing it cannot cover locally is the browser: open `site/_smoke.html` after demo changes; it renders every demo and reports pass/fail in the page title.
+One command is the whole contract: it is the same script CI executes, so a green run here means a green run there. The only thing it cannot cover locally is the browser: open `site/_smoke.html` after demo changes; it renders every demo and reports pass/fail in the page title.
 
 ## Component contract
 
 Every component ships four files in its group folder (`components/<group>/`):
 
-1. `<Name>.jsx` — the implementation. Styles against **semantic tokens only** (`var(--surface-card)`, never raw hex), so dark theme and compact density work for free.
-2. `<Name>.d.ts` — the public props interface. JSDoc every prop; mark defaults with `@default`.
-3. `<Name>.prompt.md` — usage guide: when to use it, when not to, prop recipes.
+1. `<Name>.jsx`: the implementation. Styles against **semantic tokens only** (`var(--surface-card)`, never raw hex), so dark theme and compact density work for free.
+2. `<Name>.d.ts`: the public props interface. JSDoc every prop; mark defaults with `@default`.
+3. `<Name>.prompt.md`: usage guide: when to use it, when not to, prop recipes.
 4. A specimen in the group's `<group>.card.html` showing every variant and state.
 
-**Naming rule:** never give a local helper (in kits, blocks, cards, or demos) the same name as a design-system export — locals like `Stat` or `Divider` get shadowed by the namespace at runtime. Prefix them (`KpiCard`, `AuthDivider`).
+**Naming rule:** never give a local helper (in kits, blocks, cards, or demos) the same name as a design-system export: locals like `Stat` or `Divider` get shadowed by the namespace at runtime. Prefix them (`KpiCard`, `AuthDivider`).
 
 ## Rules
 
