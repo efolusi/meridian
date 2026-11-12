@@ -43,13 +43,31 @@
 </tr>
 </thead>
 <tbody>
-<sc-for list="{{ codes }}" as="c" hint-placeholder-count="5">
 <tr>
-<td style="padding:10px 12px 10px 0;border-bottom:1px solid var(--border-default);font-family:var(--font-mono);font-size:13.5px">{{ c.code }}</td>
-<td style="padding:10px 12px;border-bottom:1px solid var(--border-default);font-family:var(--font-mono);font-size:13.5px">{{ c.type }}</td>
-<td style="padding:10px 0;border-bottom:1px solid var(--border-default);font-size:14.5px;color:var(--text-secondary)">{{ c.fix }}</td>
+<td style="padding:10px 12px 10px 0;border-bottom:1px solid var(--border-default);font-family:var(--font-mono);font-size:13.5px">400</td>
+<td style="padding:10px 12px;border-bottom:1px solid var(--border-default);font-family:var(--font-mono);font-size:13.5px">invalid_request</td>
+<td style="padding:10px 0;border-bottom:1px solid var(--border-default);font-size:14.5px;color:var(--text-secondary)">Fix the field named in message</td>
 </tr>
-</sc-for>
+<tr>
+<td style="padding:10px 12px 10px 0;border-bottom:1px solid var(--border-default);font-family:var(--font-mono);font-size:13.5px">401</td>
+<td style="padding:10px 12px;border-bottom:1px solid var(--border-default);font-family:var(--font-mono);font-size:13.5px">authentication_error</td>
+<td style="padding:10px 0;border-bottom:1px solid var(--border-default);font-size:14.5px;color:var(--text-secondary)">Check the key prefix and workspace</td>
+</tr>
+<tr>
+<td style="padding:10px 12px 10px 0;border-bottom:1px solid var(--border-default);font-family:var(--font-mono);font-size:13.5px">404</td>
+<td style="padding:10px 12px;border-bottom:1px solid var(--border-default);font-family:var(--font-mono);font-size:13.5px">not_found</td>
+<td style="padding:10px 0;border-bottom:1px solid var(--border-default);font-size:14.5px;color:var(--text-secondary)">The resource ID is wrong or deleted</td>
+</tr>
+<tr>
+<td style="padding:10px 12px 10px 0;border-bottom:1px solid var(--border-default);font-family:var(--font-mono);font-size:13.5px">429</td>
+<td style="padding:10px 12px;border-bottom:1px solid var(--border-default);font-family:var(--font-mono);font-size:13.5px">rate_limited</td>
+<td style="padding:10px 0;border-bottom:1px solid var(--border-default);font-size:14.5px;color:var(--text-secondary)">Back off; respect retry-after</td>
+</tr>
+<tr>
+<td style="padding:10px 12px 10px 0;border-bottom:1px solid var(--border-default);font-family:var(--font-mono);font-size:13.5px">500</td>
+<td style="padding:10px 12px;border-bottom:1px solid var(--border-default);font-family:var(--font-mono);font-size:13.5px">server_error</td>
+<td style="padding:10px 0;border-bottom:1px solid var(--border-default);font-size:14.5px;color:var(--text-secondary)">Retry; contact support with request_id</td>
+</tr>
 </tbody>
 </table></div>
 <p style="font-size:15.5px;line-height:1.7;color:var(--text-secondary);margin:14px 0 0">Retry <span style="font-family:var(--font-mono);font-size:13.5px">429</span> and <span style="font-family:var(--font-mono);font-size:13.5px">5xx</span> with exponential backoff; the SDKs do this for you.</p>
@@ -73,13 +91,6 @@ class Component extends DCLogic {
   renderVals() {
     return {
       errorJson: "{\n  \"error\": {\n    \"type\": \"rate_limited\",\n    \"message\": \"Too many requests — retry after 12s.\",\n    \"request_id\": \"req_9f2ka\"\n  }\n}",
-      codes: [
-        { code: '400', type: 'invalid_request', fix: 'Fix the field named in message' },
-        { code: '401', type: 'authentication_error', fix: 'Check the key prefix and workspace' },
-        { code: '404', type: 'not_found', fix: 'The resource ID is wrong or deleted' },
-        { code: '429', type: 'rate_limited', fix: 'Back off; respect retry-after' },
-        { code: '500', type: 'server_error', fix: 'Retry; contact support with request_id' },
-      ],
     };
   }
 }
