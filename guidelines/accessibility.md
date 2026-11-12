@@ -63,7 +63,8 @@ viewport-positioned overlays, chart points and explicitly left/right drawers.
 The browser smoke renders all 128 demos in both directions, and representative
 forms, navigation, display and overlay screens have been visually reviewed in
 light and dark themes. Do not call RTL fully supported across the browser matrix
-until the last-two-version Safari, Firefox and Edge pass in ROADMAP.md is done.
+until the last-two-version Safari, Firefox and Edge pass
+([#75](https://github.com/efolusi/meridian/issues/75)) is done.
 
 **Reduced motion** is honoured globally at `tokens/base.css:10`: under
 `prefers-reduced-motion: reduce` every animation and transition is collapsed to

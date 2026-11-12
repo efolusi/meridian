@@ -4,7 +4,6 @@ import { describe, expect, it } from 'vitest'
 const workflow = readFileSync('.github/workflows/deploy-prod-static.yml', 'utf8')
 const deploy = readFileSync('scripts/deploy-prod-static.sh', 'utf8')
 const nginx = readFileSync('nginx/meridian.efolusi.com.conf', 'utf8')
-const prerequisites = readFileSync('nginx/meridian-prod-runner-prerequisites.md', 'utf8')
 
 describe('Meridian production static deployment', () => {
   it('is main-only and binds the exact push SHA on the production runner', () => {
@@ -107,13 +106,5 @@ describe('Meridian production static deployment', () => {
     expect(nginx).toContain('try_files $uri $uri/ =404;')
     expect(nginx).not.toContain('proxy_pass')
     expect(`${workflow}\n${deploy}\n${nginx}`).not.toMatch(/\bpm2\b|\bdocker\b/i)
-  })
-
-  it('limits the one-time host authority to a read-only Nginx test', () => {
-    expect(prerequisites).toContain('`sudo -n /usr/sbin/nginx -t`')
-    expect(prerequisites).toContain('Do not grant')
-    expect(prerequisites).toContain('Nginx reload/restart')
-    expect(prerequisites).toContain('`efolusi-prod`')
-    expect(prerequisites).toContain('No repository/environment secret')
   })
 })

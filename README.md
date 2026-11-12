@@ -12,6 +12,13 @@
 
 Warm paper, espresso ink, hairline structure. Copy it, theme it, ship it.
 
+## Principles
+
+- **The zero-build path comes first.** The four-tag CDN page never regresses for the sake of the npm build; where the two differ, the difference is deliberate and documented.
+- **Accessible by default.** WCAG 2.1 AA is the floor: visible focus, full keyboard paths, contrast in both themes, reduced motion respected. A component that takes an ARIA role implements that role's whole keyboard contract.
+- **Every claim is a check.** "Accessible", "reproducible" and "the types compile" are gates in `npm run check`, not adjectives.
+- **Deprecate, then remove in a major.** A renamed prop keeps working with a warning until the next major version ([governance](guidelines/governance.md#deprecation)).
+
 ## Quickstart
 
 Four tags. No install, no bundler, no config: every component lands on one global.

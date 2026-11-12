@@ -27,6 +27,8 @@ npm run check        # every gate CI runs: three generators, then the full batte
 npm run check:fix    # same, but regenerate stale generated files first
 ```
 
+A green run proves that the committed bundle rebuilds byte for byte from source, that every generated file is fresh, that contrast, keyboard contracts, server rendering and types hold, and that the npm packages build and import cleanly.
+
 One command is the whole contract: it is the same script CI executes, so a green run here means a green run there. The only thing it cannot cover locally is the browser: open `site/_smoke.html` after demo changes; it renders every demo and reports pass/fail in the page title.
 
 ## Component contract

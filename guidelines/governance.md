@@ -2,6 +2,10 @@
 
 Rules for evolving this open-source design system.
 
+## Scope
+
+Meridian covers the common path of a real product surface and declines the speculative and the niche. It is components, tokens and patterns: it does not own routing, data, or state beyond a component's own. It ships no analytics or telemetry into a consumer's page. The npm packages are carved from the same flat sources as the CDN bundle and move in lockstep; the component sources never move into packages.
+
 ## Versioning
 - Semver. **Patch** = visual bugfix within the spec. **Minor** = new component, prop, or token (additive). **Major** = renamed/removed token or prop, changed default, visual language shift.
 - Never repurpose a token's meaning. Add a new one and deprecate the old (keep the alias one major version).
