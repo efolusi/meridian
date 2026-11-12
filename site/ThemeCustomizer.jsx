@@ -16,9 +16,12 @@ const ACCENTS = [
     dark: { '--accent': '#A9BCCC', '--accent-hover': '#BCCDDA', '--accent-active': '#93A9BB', '--accent-contrast': '#141B21', '--accent-subtle': '#232A31', '--accent-subtle-border': '#38434E', '--text-link': '#A9BCCC', '--brand-400': '#A9BCCC', '--focus-ring': '0 0 0 2px rgba(169,188,204,.5)' } },
 ];
 const RADII = [
-  { id: 'square', label: 'Square', vars: { '--radius-sm': '0px', '--radius-md': '0px', '--radius-lg': '0px', '--radius-xl': '0px' } },
+  // Every preset overrides the whole scale in tokens/spacing.css (xs…xl, not
+  // full) and Soft stays rounder than the default at every step; the site
+  // review test fails if the default scale moves past these.
+  { id: 'square', label: 'Square', vars: { '--radius-xs': '0px', '--radius-sm': '0px', '--radius-md': '0px', '--radius-lg': '0px', '--radius-xl': '0px' } },
   { id: 'default', label: 'Default', def: true, vars: {} },
-  { id: 'soft', label: 'Soft', vars: { '--radius-sm': '8px', '--radius-md': '12px', '--radius-lg': '16px', '--radius-xl': '22px' } },
+  { id: 'soft', label: 'Soft', vars: { '--radius-xs': '6px', '--radius-sm': '12px', '--radius-md': '16px', '--radius-lg': '22px', '--radius-xl': '32px' } },
 ];
 function cssBlock(sel, vars) {
   const keys = Object.keys(vars);
