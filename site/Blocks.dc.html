@@ -67,13 +67,33 @@
 </x-dc>
 <script type="text/x-dc" data-dc-script>
 class Component extends DCLogic {
-  state = { dark: false };
+  state = { dark: false, langTick: 0 };
   componentDidMount() {
+    // Re-render when the language changes; renderVals reads it live. An
+    // instance counter guarantees a state change so the render is never skipped.
+    this._lt = 0;
+    this._offLang = window.EfLang && window.EfLang.onChange(() => { this._lt += 1; this.setState({ langTick: this._lt }); });
     try { const t = localStorage.getItem('efolusi-site-theme'); if (t) document.documentElement.setAttribute('data-theme', t); } catch (e) {}
     this.setState({ dark: document.documentElement.getAttribute('data-theme') === 'dark' });
   }
+  componentWillUnmount() { if (this._offLang) this._offLang(); }
   renderVals() {
-    const mk = (title, slug, desc, height) => ({ title, anchor: slug, path: 'blocks/' + slug + '.html', file: '../blocks/' + slug + '.html', desc, height });
+    const lang = (window.EfLang && window.EfLang.get()) || 'en';
+    const DESC_ID = {
+      'App shell': 'Sidebar, bar atas, dan area konten kosong: kerangka awal setiap layar produk.',
+      'Login': 'Kartu autentikasi dengan SSO, email + kata sandi, dan footer buat-workspace.',
+      'Stats dashboard': 'Baris KPI, grafik tren mingguan, dan tabel agen teratas.',
+      'Settings': 'Halaman formulir bersection dengan tab, baris berkelompok, dan zona bahaya.',
+      'Hero': 'Pembuka marketing: eyebrow, judul display, dua CTA, strip bukti.',
+      'Pricing': 'Harga tiga tingkat dengan paket unggulan dan daftar fitur bercentang.',
+      'FAQ': 'FAQ akordeon dengan lebar baca teks.',
+      '404 page': 'Status halaman-tidak-ditemukan satu halaman penuh dengan jalan pulang.',
+      '500 page': 'Halaman galat server dengan ID permintaan untuk dikutip dan tombol coba lagi.',
+      'Offline state': 'Halaman koneksi terputus yang menjanjikan pekerjaan belum tersimpan tetap aman.',
+      'Empty state': 'Daftar kosong pertama kali dengan aksi utama dan contoh.',
+      'Activity feed': 'Linimasa kejadian workspace dengan ikon kejadian dan badge status.',
+    };
+    const mk = (title, slug, desc, height) => ({ title, anchor: slug, path: 'blocks/' + slug + '.html', file: '../blocks/' + slug + '.html', desc: (lang === 'id' && DESC_ID[title]) || desc, height });
     return {
       blocks: [
         mk('App shell', 'app-shell', 'SideNav, TopNav, and an empty content well: the scaffold every product screen starts from.', 620),

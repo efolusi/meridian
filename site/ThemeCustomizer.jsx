@@ -15,6 +15,9 @@ const ACCENTS = [
     light: { '--accent': '#33404D', '--accent-hover': '#2A3540', '--accent-active': '#202932', '--accent-subtle': '#ECEFF2', '--accent-subtle-border': '#C9D2DA', '--text-link': '#465866', '--brand-700': '#465866', '--focus-ring': '0 0 0 2px rgba(51,64,77,.45)' },
     dark: { '--accent': '#A9BCCC', '--accent-hover': '#BCCDDA', '--accent-active': '#93A9BB', '--accent-contrast': '#141B21', '--accent-subtle': '#232A31', '--accent-subtle-border': '#38434E', '--text-link': '#A9BCCC', '--brand-400': '#A9BCCC', '--focus-ring': '0 0 0 2px rgba(169,188,204,.5)' } },
 ];
+// Indonesian labels for the controls; the preview itself is sample content.
+const ID = { Accent: 'Aksen', Radius: 'Radius', Mode: 'Mode', Density: 'Densitas', Square: 'Persegi', Default: 'Bawaan', Soft: 'Lembut', Light: 'Terang', Dark: 'Gelap', Comfortable: 'Lega', Compact: 'Ringkas', 'Copy CSS': 'Salin CSS', Copied: 'Tersalin', accent: 'aksen',
+  'Load this after styles.css. Semantic tokens only: components, kits, and blocks pick it up with no other change.': 'Muat ini setelah styles.css. Hanya token semantik: komponen, kit, dan blok mengikutinya tanpa perubahan lain.' };
 const RADII = [
   // Every preset overrides the whole scale in tokens/spacing.css (xs…xl, not
   // full) and Soft stays rounder than the default at every step; the site
@@ -42,6 +45,8 @@ function ThemeCustomizer() {
   const [mode, setMode] = R.useState('light');
   const [density, setDensity] = R.useState('comfortable');
   const [copied, setCopied] = R.useState(false);
+  const [lang, setLang] = R.useState(() => (window.EfLang && window.EfLang.get()) || 'en');
+  R.useEffect(() => (window.EfLang ? window.EfLang.onChange(setLang) : undefined), []);
   R.useEffect(() => {
     if (ds) return;
     let n = 0;
@@ -55,25 +60,26 @@ function ThemeCustomizer() {
   const css = buildCss(accent, radius);
   const previewVars = { ...(mode === 'dark' ? accent.dark : accent.light), ...radius.vars };
   const copy = () => { try { navigator.clipboard.writeText(css); } catch (e) {} setCopied(true); setTimeout(() => setCopied(false), 1400); };
+  const t = (s) => (lang === 'id' && ID[s]) || s;
   const lbl = { fontSize: 11, fontWeight: 600, letterSpacing: '0.06em', textTransform: 'uppercase', color: 'var(--text-muted)', marginBottom: 8 };
   const h = R.createElement;
   return h('div', null,
     // controls bar
     h('div', { style: { display: 'flex', gap: 28, flexWrap: 'wrap', alignItems: 'flex-start', border: '1px solid var(--border-default)', borderRadius: 'var(--radius-lg)', background: 'var(--surface-card)', padding: '18px 22px' } },
-      h('div', null, h('div', { style: lbl }, 'Accent'),
+      h('div', null, h('div', { style: lbl }, t('Accent')),
         h('div', { style: { display: 'flex', gap: 8 } }, ACCENTS.map(a =>
           h('button', {
-            key: a.id, onClick: () => setAccentId(a.id), title: a.label, 'aria-label': a.label + ' accent', 'aria-pressed': a.id === accentId,
+            key: a.id, onClick: () => setAccentId(a.id), title: a.label, 'aria-label': lang === 'id' ? t('accent') + ' ' + a.label : a.label + ' accent', 'aria-pressed': a.id === accentId,
             style: { width: 30, height: 30, borderRadius: 'var(--radius-full)', background: a.chip, cursor: 'pointer', border: '2px solid ' + (a.id === accentId ? 'var(--text-primary)' : 'transparent'), boxShadow: a.id === accentId ? '0 0 0 2px var(--surface-card) inset' : 'inset 0 0 0 1px rgba(255,255,255,.25)' },
           })))),
-      h('div', null, h('div', { style: lbl }, 'Radius'),
-        h(SegmentedControl, { value: radiusId, onChange: setRadiusId, options: RADII.map(r => ({ id: r.id, label: r.label })) })),
-      h('div', null, h('div', { style: lbl }, 'Mode'),
-        h(SegmentedControl, { value: mode, onChange: setMode, options: [{ id: 'light', label: 'Light' }, { id: 'dark', label: 'Dark' }] })),
-      h('div', null, h('div', { style: lbl }, 'Density'),
-        h(SegmentedControl, { value: density, onChange: setDensity, options: [{ id: 'comfortable', label: 'Comfortable' }, { id: 'compact', label: 'Compact' }] })),
+      h('div', null, h('div', { style: lbl }, t('Radius')),
+        h(SegmentedControl, { value: radiusId, onChange: setRadiusId, options: RADII.map(r => ({ id: r.id, label: t(r.label) })) })),
+      h('div', null, h('div', { style: lbl }, t('Mode')),
+        h(SegmentedControl, { value: mode, onChange: setMode, options: [{ id: 'light', label: t('Light') }, { id: 'dark', label: t('Dark') }] })),
+      h('div', null, h('div', { style: lbl }, t('Density')),
+        h(SegmentedControl, { value: density, onChange: setDensity, options: [{ id: 'comfortable', label: t('Comfortable') }, { id: 'compact', label: t('Compact') }] })),
       h('div', { style: { marginLeft: 'auto', alignSelf: 'flex-end' } },
-        h(Button, { variant: 'secondary', iconLeft: copied ? 'check' : 'copy', onClick: copy }, copied ? 'Copied' : 'Copy CSS'))),
+        h(Button, { variant: 'secondary', iconLeft: copied ? 'check' : 'copy', onClick: copy }, copied ? t('Copied') : t('Copy CSS')))),
     // preview + css
     h('div', { className: 'grid-2', style: { display: 'grid', gridTemplateColumns: 'minmax(0,1.6fr) minmax(0,1fr)', gap: 18, marginTop: 18, alignItems: 'start' } },
       h('div', { 'data-theme': mode, 'data-density': density, style: { ...previewVars, border: '1px solid var(--border-default)', borderRadius: 'var(--radius-lg)', overflow: 'hidden' } },
@@ -104,6 +110,6 @@ function ThemeCustomizer() {
             h('p', { style: { fontSize: 13.5, margin: '14px 0 0', color: 'var(--text-secondary)' } }, 'Read the ', h(Link, { href: '#' }, 'billing docs'), ' before upgrading.')))),
       h('div', null,
         h(CodeBlock, { lang: 'css', title: 'theme-override.css', maxHeight: 560 }, css),
-        h('p', { style: { fontSize: 13, lineHeight: 1.6, color: 'var(--text-muted)', margin: '10px 2px 0' } }, 'Load this after styles.css. Semantic tokens only: components, kits, and blocks pick it up with no other change.'))));
+        h('p', { style: { fontSize: 13, lineHeight: 1.6, color: 'var(--text-muted)', margin: '10px 2px 0' } }, t('Load this after styles.css. Semantic tokens only: components, kits, and blocks pick it up with no other change.')))));
 }
 module.exports = { ThemeCustomizer };

@@ -52,40 +52,40 @@
 <div class="grid-2" style="display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:36px">
 <section style="border:1px solid var(--border-default);border-radius:var(--radius-md);background:var(--surface-card);padding:22px">
 <h2 style="font-size:18px;font-weight:600;font-family:var(--font-display);letter-spacing:-0.01em;margin:0">BarChart</h2>
-<p style="font-size:13.5px;color:var(--text-secondary);margin:5px 0 0">Categorical values; ink-fill the last N bars to focus attention.</p>
+<p style="font-size:13.5px;color:var(--text-secondary);margin:5px 0 0" data-lang-id="Nilai kategoris; beri tinta penuh pada N batang terakhir untuk memusatkan perhatian.">Categorical values; ink-fill the last N bars to focus attention.</p>
 <div style="margin-top:18px"><x-import component-from-global-scope="EfolusiDesignSystem_4ffc3d.BarChart" dc-props="{{ barProps }}" hint-size="100%,170px"></x-import></div>
 <div style="margin-top:16px"><x-import component-from-global-scope="EfolusiDesignSystem_4ffc3d.CodeBlock" lang="jsx" hint-size="100%,64px">{{ barCode }}</x-import></div>
 </section>
 <section style="border:1px solid var(--border-default);border-radius:var(--radius-md);background:var(--surface-card);padding:22px">
 <h2 style="font-size:18px;font-weight:600;font-family:var(--font-display);letter-spacing:-0.01em;margin:0">LineChart</h2>
-<p style="font-size:13.5px;color:var(--text-secondary);margin:5px 0 0">Trends over time, with a soft area fill under the line.</p>
+<p style="font-size:13.5px;color:var(--text-secondary);margin:5px 0 0" data-lang-id="Tren dari waktu ke waktu, dengan isian area lembut di bawah garis.">Trends over time, with a soft area fill under the line.</p>
 <div style="margin-top:18px"><x-import component-from-global-scope="EfolusiDesignSystem_4ffc3d.LineChart" dc-props="{{ lineProps }}" hint-size="100%,170px"></x-import></div>
 <div style="margin-top:16px"><x-import component-from-global-scope="EfolusiDesignSystem_4ffc3d.CodeBlock" lang="jsx" hint-size="100%,64px">{{ lineCode }}</x-import></div>
 </section>
 <section style="border:1px solid var(--border-default);border-radius:var(--radius-md);background:var(--surface-card);padding:22px">
 <h2 style="font-size:18px;font-weight:600;font-family:var(--font-display);letter-spacing:-0.01em;margin:0">DonutChart</h2>
-<p style="font-size:13.5px;color:var(--text-secondary);margin:5px 0 0">Share of a whole, with a center figure. Slices default to the brand palette.</p>
+<p style="font-size:13.5px;color:var(--text-secondary);margin:5px 0 0" data-lang-id="Porsi dari keseluruhan, dengan angka di tengah. Irisan memakai palet brand secara bawaan.">Share of a whole, with a center figure. Slices default to the brand palette.</p>
 <div style="margin-top:18px;display:flex;justify-content:center"><x-import component-from-global-scope="EfolusiDesignSystem_4ffc3d.DonutChart" dc-props="{{ donutProps }}" hint-size="160px,160px"></x-import></div>
 <div style="margin-top:16px"><x-import component-from-global-scope="EfolusiDesignSystem_4ffc3d.CodeBlock" lang="jsx" hint-size="100%,64px">{{ donutCode }}</x-import></div>
 </section>
 <section style="border:1px solid var(--border-default);border-radius:var(--radius-md);background:var(--surface-card);padding:22px">
 <h2 style="font-size:18px;font-weight:600;font-family:var(--font-display);letter-spacing:-0.01em;margin:0">Sparkline</h2>
-<p style="font-size:13.5px;color:var(--text-secondary);margin:5px 0 0">Inline trend for stats and table cells. Direction is inferred from the data.</p>
+<p style="font-size:13.5px;color:var(--text-secondary);margin:5px 0 0" data-lang-id="Tren inline untuk stat dan sel tabel. Arahnya disimpulkan dari data.">Inline trend for stats and table cells. Direction is inferred from the data.</p>
 <div class="stack-sm" style="display:flex;gap:36px;align-items:flex-end;margin-top:22px">
-<div><div style="font-size:12px;color:var(--text-muted);margin-bottom:8px">Up</div><x-import component-from-global-scope="EfolusiDesignSystem_4ffc3d.Sparkline" dc-props="{{ sparkUp }}" hint-size="120px,32px"></x-import></div>
-<div><div style="font-size:12px;color:var(--text-muted);margin-bottom:8px">Down</div><x-import component-from-global-scope="EfolusiDesignSystem_4ffc3d.Sparkline" dc-props="{{ sparkDown }}" hint-size="120px,32px"></x-import></div>
-<div><div style="font-size:12px;color:var(--text-muted);margin-bottom:8px">Flat</div><x-import component-from-global-scope="EfolusiDesignSystem_4ffc3d.Sparkline" dc-props="{{ sparkFlat }}" hint-size="120px,32px"></x-import></div>
+<div><div style="font-size:12px;color:var(--text-muted);margin-bottom:8px" data-lang-id="Naik">Up</div><x-import component-from-global-scope="EfolusiDesignSystem_4ffc3d.Sparkline" dc-props="{{ sparkUp }}" hint-size="120px,32px"></x-import></div>
+<div><div style="font-size:12px;color:var(--text-muted);margin-bottom:8px" data-lang-id="Turun">Down</div><x-import component-from-global-scope="EfolusiDesignSystem_4ffc3d.Sparkline" dc-props="{{ sparkDown }}" hint-size="120px,32px"></x-import></div>
+<div><div style="font-size:12px;color:var(--text-muted);margin-bottom:8px" data-lang-id="Datar">Flat</div><x-import component-from-global-scope="EfolusiDesignSystem_4ffc3d.Sparkline" dc-props="{{ sparkFlat }}" hint-size="120px,32px"></x-import></div>
 </div>
 <div style="margin-top:22px"><x-import component-from-global-scope="EfolusiDesignSystem_4ffc3d.CodeBlock" lang="jsx" hint-size="100%,64px">{{ sparkCode }}</x-import></div>
 </section>
 </div>
-<h2 style="font-size:26px;font-weight:650;font-family:var(--font-display);letter-spacing:-0.02em;margin:56px 0 0">Recipes</h2>
-<p style="font-size:15px;line-height:1.6;color:var(--text-secondary);margin:10px 0 0;max-width:640px">The primitives compose with Card, Stat, and Table into every dashboard pattern the showcases use. Preview, then copy the code.</p>
+<h2 style="font-size:26px;font-weight:650;font-family:var(--font-display);letter-spacing:-0.02em;margin:56px 0 0" data-lang-id="Resep">Recipes</h2>
+<p style="font-size:15px;line-height:1.6;color:var(--text-secondary);margin:10px 0 0;max-width:640px" data-lang-id="Primitif ini berpadu dengan Card, Stat, dan Table menjadi setiap pola dashboard yang dipakai etalase. Lihat pratinjaunya, lalu salin kodenya.">The primitives compose with Card, Stat, and Table into every dashboard pattern the showcases use. Preview, then copy the code.</p>
 <sc-for list="{{ recipes }}" as="r" hint-placeholder-count="2">
 <h3 style="font-size:16.5px;font-weight:600;margin:30px 0 8px">{{ r.title }}</h3>
 <div class="frame-scroll"><x-import component-from-global-scope="MeridianLiveFrame" file="./examples/charts.jsx" exp="{{ r.exp }}" hint-size="100%,380px"></x-import></div>
 </sc-for>
-<p style="font-size:14px;color:var(--text-secondary);margin:28px 0 0">Full prop tables live in <a href="./Components.dc.html#data/BarChart" style="color:var(--text-link);text-decoration:none">Components → Data</a>.</p>
+<p style="font-size:14px;color:var(--text-secondary);margin:28px 0 0"><span data-lang-id="Tabel props lengkap ada di">Full prop tables live in</span> <a href="./Components.dc.html#data/BarChart" style="color:var(--text-link);text-decoration:none">Components → Data</a>.</p>
 </main>
 <footer style="view-transition-name:site-foot;border-top:1px solid var(--border-default)">
 <div class="site-foot-row pad-sm" style="max-width:1200px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;padding:20px 28px;font-size:13px;color:var(--text-muted)">
@@ -250,12 +250,19 @@ window.MeridianLiveFrame = (() => {
   return MeridianLiveFrame;
 })();
 class Component extends DCLogic {
-  state = { dark: false };
+  state = { dark: false, langTick: 0 };
   componentDidMount() {
     try { const t = localStorage.getItem('efolusi-site-theme'); if (t) document.documentElement.setAttribute('data-theme', t); } catch (e) {}
     this.setState({ dark: document.documentElement.getAttribute('data-theme') === 'dark' });
+    // Re-render when the language changes; renderVals reads it live. An
+    // instance counter guarantees a state change so the render is never skipped.
+    this._lt = 0;
+    this._offLang = window.EfLang && window.EfLang.onChange(() => { this._lt += 1; this.setState({ langTick: this._lt }); });
   }
+  componentWillUnmount() { if (this._offLang) this._offLang(); }
   renderVals() {
+    const lang = (window.EfLang && window.EfLang.get()) || 'en';
+    const pick = (en, id) => (lang === 'id' ? id : en);
     return {
       toggleTheme: () => {
         const next = this.state.dark ? 'light' : 'dark';
@@ -274,12 +281,12 @@ class Component extends DCLogic {
       sparkFlat: { data: [5, 5.1, 4.9, 5, 5.05, 4.95, 5, 5.02], width: 120, direction: 'flat' },
       sparkCode: '<Sparkline data={series} width={120} />',
       recipes: [
-        { title: 'Revenue with a range switch', exp: 'RevenueBars' },
-        { title: 'Latency trend with a headline stat', exp: 'LatencyTrend' },
-        { title: 'Breakdown donut with a center figure', exp: 'SpendDonut' },
-        { title: 'KPI cards with sparklines', exp: 'KpiRow' },
-        { title: 'Sparklines in table cells', exp: 'PositionsTable' },
-        { title: 'Dark-scoped panel', exp: 'DarkPanel' },
+        { title: pick('Revenue with a range switch', 'Pendapatan dengan pengalih rentang'), exp: 'RevenueBars' },
+        { title: pick('Latency trend with a headline stat', 'Tren latensi dengan stat utama'), exp: 'LatencyTrend' },
+        { title: pick('Breakdown donut with a center figure', 'Donat rincian dengan angka di tengah'), exp: 'SpendDonut' },
+        { title: pick('KPI cards with sparklines', 'Kartu KPI dengan sparkline'), exp: 'KpiRow' },
+        { title: pick('Sparklines in table cells', 'Sparkline di sel tabel'), exp: 'PositionsTable' },
+        { title: pick('Dark-scoped panel', 'Panel bercakupan gelap'), exp: 'DarkPanel' },
       ],
     };
   }

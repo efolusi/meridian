@@ -110,12 +110,20 @@ describe('radius and icon docs match the tokens', () => {
 })
 
 // Load a page's DCLogic class and call renderVals() without the runtime.
-function pageVals(page) {
+function pageLogic(page) {
   const html = read('site/' + page)
   const start = html.indexOf('class Component extends DCLogic')
   const script = html.slice(start, html.indexOf('</script>', start))
   const Component = new Function('DCLogic', script + '\nreturn Component;')(class { setState() {} })
-  return new Component().renderVals()
+  return new Component()
+}
+const pageVals = (page) => pageLogic(page).renderVals()
+
+// renderVals() with the site language forced, as i18n.js reports it.
+function inLang(lang, fn) {
+  const prev = window.EfLang
+  window.EfLang = { get: () => lang }
+  try { return fn() } finally { window.EfLang = prev }
 }
 
 describe('Charts page demo props', () => {
@@ -128,5 +136,40 @@ describe('Charts page demo props', () => {
   it.each(Object.entries(cases))('%s only passes props %s declares', (key, comp) => {
     const known = new Set(iface[comp].map((p) => p.n))
     for (const prop of Object.keys(vals[key])) expect(known.has(prop), `${comp} has no "${prop}" prop`).toBe(true)
+  })
+})
+
+describe('Indonesian copy on state-rendered pages', () => {
+  it('Blocks translates every block description', () => {
+    const en = inLang('en', () => pageVals('Blocks.dc.html')).blocks
+    const id = inLang('id', () => pageVals('Blocks.dc.html')).blocks
+    expect(id).toHaveLength(en.length)
+    en.forEach((b, i) => expect(id[i].desc, b.title).not.toBe(b.desc))
+  })
+
+  it('Examples translates every kit title and description', () => {
+    const logic = pageLogic('Examples.dc.html')
+    expect(Object.keys(logic.KITS_ID).sort()).toEqual(logic.KITS.map((k) => k.id).sort())
+    for (const k of logic.KITS) expect(logic.KITS_ID[k.id].desc, k.id).not.toBe(k.desc)
+  })
+
+  it('Charts translates every recipe title', () => {
+    const en = inLang('en', () => pageVals('Charts.dc.html')).recipes
+    const id = inLang('id', () => pageVals('Charts.dc.html')).recipes
+    en.forEach((r, i) => expect(id[i].title, r.exp).not.toBe(r.title))
+  })
+
+  it('Colors translates every section title and note', () => {
+    const logic = pageLogic('Colors.dc.html')
+    const src = read('site/Colors.dc.html')
+    const titles = [...src.matchAll(/\{ title: '([^']+)', note: '[^']*', tokens:/g)].map((m) => m[1])
+    expect(titles.length).toBeGreaterThan(0)
+    for (const title of titles) expect(logic.SECTIONS_ID[title], title).toBeDefined()
+  })
+
+  it('Docs and Components translate the table-of-contents label', () => {
+    for (const page of ['Docs.dc.html', 'Components.dc.html']) {
+      expect(read('site/' + page)).toContain('data-lang-id="Di halaman ini">On this page<')
+    }
   })
 })

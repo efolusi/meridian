@@ -59,14 +59,14 @@
 <h2 style="font-size:21px;font-weight:600;font-family:var(--font-display);letter-spacing:-0.02em;margin:0">{{ curTitle }}</h2>
 <span style="font-family:var(--font-mono);font-size:12px;color:var(--text-muted)">{{ curPath }}</span>
 <span style="margin-left:auto;display:flex;gap:14px">
-<a href="{{ curFile }}" target="_blank" rel="noopener" style="font-size:13.5px;color:var(--text-secondary);text-decoration:none" style-hover="color:var(--text-primary)">Open full screen ↗</a>
+<a href="{{ curFile }}" target="_blank" rel="noopener" style="font-size:13.5px;color:var(--text-secondary);text-decoration:none" style-hover="color:var(--text-primary)" data-lang-id="Buka layar penuh ↗">Open full screen ↗</a>
 </span>
 </div>
 <p style="font-size:14.5px;line-height:1.6;color:var(--text-secondary);margin:8px 0 0;max-width:680px">{{ curDesc }}</p>
 <div class="frame-scroll kit-frame" style="margin-top:16px;border:1px solid var(--border-default);border-radius:var(--radius-lg);overflow:hidden;background:var(--surface-card);height:{{ frameH }}px">
 <iframe data-kit-frame title="{{ curTitle }}" style="width:1440px;height:827px;border:0;transform:scale({{ frameScale }});transform-origin:top left;display:block"></iframe>
 </div>
-<p style="font-size:13px;color:var(--text-muted);margin:12px 2px 0">Interactive preview. Click around. Source lives in {{ curPath }} as plain JSX screens; copy the folder to start your own product on it.</p>
+<p style="font-size:13px;color:var(--text-muted);margin:12px 2px 0"><span data-lang-id="Pratinjau interaktif. Klik ke mana saja. Source-nya ada di">Interactive preview. Click around. Source lives in</span> {{ curPath }} <span data-lang-id="sebagai layar JSX biasa; salin foldernya untuk memulai produk Anda sendiri di atasnya.">as plain JSX screens; copy the folder to start your own product on it.</span></p>
 </main>
 <footer style="view-transition-name:site-foot;border-top:1px solid var(--border-default)">
 <div class="site-foot-row pad-sm" style="max-width:1200px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;padding:20px 28px;font-size:13px;color:var(--text-muted)">
@@ -78,7 +78,17 @@
 </x-dc>
 <script type="text/x-dc" data-dc-script>
 class Component extends DCLogic {
-  state = { dark: false, ki: 0, fw: 1104 };
+  state = { dark: false, ki: 0, fw: 1104, langTick: 0 };
+  KITS_ID = {
+    agent: { title: 'Agen AI', desc: 'Workspace agen otonom: thread chat dengan balasan streaming dan output alat tersemat, rel langkah tugas, berkas konteks, metadata run, dan palet ⌘K.' },
+    console: { title: 'Konsol', desc: 'Permukaan admin bersama untuk produk B2B: dashboard ringkasan, tabel pelanggan dengan drawer detail, dan pengaturan workspace.' },
+    infra: { title: 'Infrastruktur', desc: 'Control plane infrastruktur: tabel resource, domain, dan sertifikat dengan status langsung, drawer detail berisi record dan log, serta alur koneksi.' },
+    trader: { title: 'Trading', desc: 'Permukaan trading B2C: header portofolio dengan tren, tabel posisi dengan P&L dan sparkline, kartu strategi dengan batas pengaman, dan feed sinyal sosial.' },
+    tools: { title: 'Alat berkas', desc: 'Konverter serba bisa: wizard unggah → konversi → unduh dengan antrean pemrosesan langsung.' },
+    docs: { title: 'Dokumentasi', desc: 'Produk dokumentasi: bar atas dengan pencarian, pohon navigasi kiri, tampilan artikel dengan blok kode dan callout, daftar isi di kanan.' },
+    auth: { title: 'Autentikasi', desc: 'Layar masuk dan buat akun bersama: panel brand dengan kutipan pelanggan bergilir, panel formulir dengan SSO, validasi, dan tampilkan kata sandi.' },
+    website: { title: 'Situs web', desc: 'Situs marketing publik: header, hero dengan pratinjau produk langsung, trio produk, pita brand, harga, dan footer.' },
+  };
   KITS = [
     { id: 'agent', title: 'AI agents', desc: 'The autonomous-agent workspace: chat thread with streaming replies and embedded tool output, task step rail, context files, run metadata, and a ⌘K palette.' },
     { id: 'console', title: 'Console', desc: 'A shared admin surface for a B2B product: overview dashboard, customers table with detail drawer, and workspace settings.' },
@@ -105,6 +115,10 @@ class Component extends DCLogic {
     this._onHash = () => this.applyHash();
     window.addEventListener('hashchange', this._onHash);
     this.applyHash();
+    // Re-render when the language changes; renderVals reads it live. An
+    // instance counter guarantees a state change so the render is never skipped.
+    this._lt = 0;
+    this._offLang = window.EfLang && window.EfLang.onChange(() => { this._lt += 1; this.setState({ langTick: this._lt }); });
     this._measure = () => {
       const el = document.querySelector('.kit-frame');
       if (el && el.clientWidth && el.clientWidth !== this.state.fw) this.setState({ fw: el.clientWidth });
@@ -117,7 +131,7 @@ class Component extends DCLogic {
       if (el) this._ro.observe(el);
     }
   }
-  componentWillUnmount() { window.removeEventListener('hashchange', this._onHash); window.removeEventListener('resize', this._measure); if (this._ro) this._ro.disconnect(); }
+  componentWillUnmount() { window.removeEventListener('hashchange', this._onHash); window.removeEventListener('resize', this._measure); if (this._ro) this._ro.disconnect(); if (this._offLang) this._offLang(); }
   applyHash() {
     const h = decodeURIComponent((location.hash || '').replace(/^#/, ''));
     const i = this.KITS.findIndex(k => k.id === h);
@@ -128,6 +142,8 @@ class Component extends DCLogic {
     try { history.pushState(null, '', '#' + this.KITS[i].id); } catch (e) {}
   }
   renderVals() {
+    const lang = (window.EfLang && window.EfLang.get()) || 'en';
+    const tr = (k) => (lang === 'id' && this.KITS_ID[k.id]) || k;
     const cur = this.KITS[this.state.ki];
     const frameScale = +(this.state.fw / 1440).toFixed(4);
     return {
@@ -139,9 +155,9 @@ class Component extends DCLogic {
         try { localStorage.setItem('efolusi-site-theme', next); } catch (e) {}
         this.setState({ dark: next === 'dark' });
       },
-      tabs: this.KITS.map((k, i) => ({ title: k.title, on: i === this.state.ki, off: i !== this.state.ki, pick: () => this.pick(i) })),
-      curTitle: cur.title,
-      curDesc: cur.desc,
+      tabs: this.KITS.map((k, i) => ({ title: tr(k).title, on: i === this.state.ki, off: i !== this.state.ki, pick: () => this.pick(i) })),
+      curTitle: tr(cur).title,
+      curDesc: tr(cur).desc,
       curPath: 'showcases/' + cur.id + '/',
       curFile: '../showcases/' + cur.id + '/index.html',
     };
