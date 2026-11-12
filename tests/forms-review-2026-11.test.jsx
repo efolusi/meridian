@@ -185,3 +185,13 @@ describe('select padding follows writing direction', () => {
     }
   });
 });
+
+describe('disabled labels do not advertise a click', () => {
+  it('drops the pointer cursor on disabled Checkbox and Switch labels', async () => {
+    const { Checkbox } = await import('../components/forms/Checkbox.jsx');
+    const { container } = render(<><Checkbox disabled label="Locked check" /><Switch disabled label="Locked switch" /></>);
+    expect(document.getElementById('ef-css-check').textContent).toContain('.ef-check--disabled .ef-check__label{cursor:not-allowed}');
+    expect(document.getElementById('ef-css-switch').textContent).toContain('.ef-switch-field[data-disabled]{cursor:not-allowed}');
+    expect(container.querySelector('.ef-switch-field').hasAttribute('data-disabled')).toBe(true);
+  });
+});
