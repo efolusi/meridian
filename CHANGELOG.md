@@ -2,6 +2,14 @@
 
 ## Unreleased
 
+- **Element defaults no longer override components.** All of `tokens/base.css` now sits in `@layer meridian`, so a component's own spacing (for example the Questionnaire description) is no longer flattened by the global `p` and heading resets. The forced-colours focus outline stays unlayered on purpose.
+- **Dark mode follows the operating system when no theme is set.** With no `data-theme` on the page, a dark OS gets the dark tokens; `data-theme="light"` or `"dark"` still wins. The docs site now records the OS choice as an explicit theme.
+- **Less layout shift while the brand fonts load.** Metric-matched `Figtree Fallback` and `Bricolage Grotesque Fallback` faces sit right after each brand face.
+- **Reduced motion also removes animation and transition delays.**
+- **Dialogs reference a description only when one renders**, follow a custom description `id`, and keep a caller's own `aria-describedby`.
+- **Icons retry a dropped request twice** before giving up; a missing glyph (404) is still remembered.
+- **The hosted site sends security headers** (nosniff, HSTS, Referrer-Policy, `frame-ancestors 'self'`), allows cross-origin font and registry loads, and serves Markdown and `LICENSE` as plain text.
+
 ## 1.22.0 — 2026-11-13
 
 - **Form controls have visible edges.** New `--border-control` token (at least 3:1 against field and card surfaces in both themes) is used by every input, select, checkbox, radio, switch and file drop edge. New `--accent-subtle-fg` keeps text on `--accent-subtle` at 4.5:1 in dark mode.
