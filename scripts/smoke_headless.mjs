@@ -89,6 +89,13 @@ if (SHOTS) {
       .map(s => s.closest('.demo')?.querySelector('h4')?.textContent || '?'));
     const counts = where.reduce((m, k) => (m[k] = (m[k] || 0) + 1, m), {});
     console.error('  blank icons by demo: ' + JSON.stringify(counts));
+    const probe = await page.evaluate(async () => {
+      const slot = [...document.querySelectorAll('section[data-group] [data-slot="icon"]')].find(s => !s.querySelector('svg'));
+      const bundles = [...document.scripts].filter(s => (s.src || '').includes('_ds_bundle')).map(s => s.src);
+      const r = await fetch((window.__efBase || '') + 'assets/icons/check.svg').then(x => `${x.status} ${x.headers.get('content-type')} ${(x.headers.get('content-length') || '?')}b`, e => String(e));
+      return { slot: slot ? slot.outerHTML.slice(0, 300) : null, parent: slot ? slot.parentElement.outerHTML.slice(0, 300) : null, efBase: window.__efBase, bundles, refetch: r, ua: navigator.userAgent };
+    });
+    console.error('  probe: ' + JSON.stringify(probe));
     if (failedRequests.length) console.error('  failed requests:\n    ' + failedRequests.slice(0, 40).join('\n    '));
     if (consoleErrors.length) console.error('  console:\n    ' + consoleErrors.slice(0, 20).join('\n    '));
     await browser.close();
