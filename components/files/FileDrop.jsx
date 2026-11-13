@@ -20,14 +20,27 @@ function accepts(file, accept) {
   return accept.split(',').map(t => t.trim().toLowerCase()).filter(Boolean).some(t =>
     t.startsWith('.') ? name.endsWith(t) : t.endsWith('/*') ? type.startsWith(t.slice(0, -1)) : type === t);
 }
-export function FileDrop({ onFiles, accept, multiple = true, title, hint, style, className, ...rest }) {
+export function FileDrop({ onFiles, onReject, accept, maxSize, multiple = true, title, hint, style, className, ...rest }) {
   injectEfCss('ef-css-filedrop', CSS);
   const [over, setOver] = React.useState(false);
   const inputRef = React.useRef(null);
+  // Every file ends up in onFiles or in one onReject(files, reason) call;
+  // reasons are checked in order: 'type', then 'size', then 'count'.
   const handle = files => {
-    if (!onFiles || !files) return;
-    const ok = [...files].filter(f => accepts(f, accept));
-    if (ok.length) onFiles(multiple ? ok : ok.slice(0, 1));
+    if (!files) return;
+    const all = [...files];
+    const wrongType = all.filter(f => !accepts(f, accept));
+    const typed = all.filter(f => accepts(f, accept));
+    const tooBig = maxSize != null ? typed.filter(f => f.size > maxSize) : [];
+    const sized = typed.filter(f => !tooBig.includes(f));
+    const ok = multiple ? sized : sized.slice(0, 1);
+    const extra = sized.slice(ok.length);
+    if (onReject) {
+      if (wrongType.length) onReject(wrongType, 'type');
+      if (tooBig.length) onReject(tooBig, 'size');
+      if (extra.length) onReject(extra, 'count');
+    }
+    if (onFiles && ok.length) onFiles(ok);
   };
   return (
     <div {...rest} role="button" tabIndex={0} className={`ef-filedrop${over ? ' ef-filedrop--over' : ''}${className ? ' ' + className : ''}`} style={style}
