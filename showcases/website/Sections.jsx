@@ -5,7 +5,7 @@ function SiteHeader() {
   return (
     <header style={{ position: 'sticky', top: 0, zIndex: 50, background: 'color-mix(in srgb, var(--surface-page) 85%, transparent)', backdropFilter: 'blur(12px)', borderBottom: '1px solid var(--border-default)' }}>
       <div style={{ ...wrap, display: 'flex', alignItems: 'center', gap: 28, height: 64 }}>
-        <a href="#" style={{ display: 'flex', alignItems: 'center', gap: 6, color: 'var(--text-primary)', textDecoration: 'none' }}>
+        <a href="./index.html" style={{ display: 'flex', alignItems: 'center', gap: 6, color: 'var(--text-primary)', textDecoration: 'none' }}>
           <img src="../../assets/meridian-mark.svg" alt="" style={{ width: 30, height: 16 }} />
           <span style={{ fontFamily: 'var(--font-display)', fontWeight: 680, letterSpacing: '-0.02em', fontSize: 20 }}>Fernwick</span>
         </a>
@@ -172,12 +172,12 @@ function Newsletter() {
   const [done, setDone] = React.useState(false);
   return (
     <div>
-      <div style={{ fontSize: 12, fontWeight: 600, letterSpacing: '0.06em', textTransform: 'uppercase', color: 'var(--text-muted)' }}>Stay in the loop</div>
+      <label htmlFor="newsletter-email" style={{ display: 'block', fontSize: 12, fontWeight: 600, letterSpacing: '0.06em', textTransform: 'uppercase', color: 'var(--text-muted)' }}>Newsletter email</label>
       {done ? (
         <p style={{ fontSize: 13, color: 'var(--success-600)', marginTop: 14, display: 'flex', alignItems: 'center', gap: 6 }}><Icon name="circle-check" size={15} />You're in. See you next month.</p>
       ) : (
         <div style={{ display: 'flex', gap: 8, marginTop: 14 }}>
-          <Input size="sm" type="email" aria-label="Email address" placeholder="you@company.com" style={{ flex: 1 }} />
+          <Input id="newsletter-email" size="sm" type="email" placeholder="you@company.com" style={{ flex: 1 }} />
           <Button size="sm" onClick={() => setDone(true)}>Subscribe</Button>
         </div>
       )}
@@ -186,21 +186,21 @@ function Newsletter() {
   );
 }
 
-// Footer entries that have a page in this kit link to it; the rest stay
-// placeholders for the consumer's own routes.
-const FOOTER_HREFS = { 'AI agents': '../agent/index.html', Infrastructure: '../infra/index.html', Automation: '../docs/index.html', 'File tools': '../tools/index.html', Trading: '../trader/index.html', Pricing: '#pricing', Docs: '../docs/index.html' };
+// Every footer entry points at a page in this kit or a real action; entries
+// with no destination are left out rather than linked to "#".
+const FOOTER_HREFS = { 'AI agents': '../agent/index.html', Infrastructure: '../infra/index.html', Automation: '../docs/index.html', 'File tools': '../tools/index.html', Trading: '../trader/index.html', Pricing: '#pricing', Docs: '../docs/index.html', Support: 'mailto:support@fernwick.example' };
 function SiteFooter() {
   const col = (title, links) => (
     <div>
       <div style={{ fontSize: 12, fontWeight: 600, letterSpacing: '0.06em', textTransform: 'uppercase', color: 'var(--text-muted)' }}>{title}</div>
       <div style={{ display: 'flex', flexDirection: 'column', gap: 10, marginTop: 14 }}>
-        {links.map(l => <a key={l} href={FOOTER_HREFS[l] || '#'} style={{ fontSize: 14, color: 'var(--text-secondary)', textDecoration: 'none' }}>{l}</a>)}
+        {links.map(l => <a key={l} href={FOOTER_HREFS[l]} style={{ fontSize: 14, color: 'var(--text-secondary)', textDecoration: 'none' }}>{l}</a>)}
       </div>
     </div>
   );
   return (
     <footer style={{ borderTop: '1px solid var(--border-default)', background: 'var(--sand-25)', padding: '56px 0 40px' }}>
-      <div style={{ ...wrap, display: 'grid', gridTemplateColumns: '2fr 1fr 1fr 1fr 1.4fr', gap: 32 }}>
+      <div style={{ ...wrap, display: 'grid', gridTemplateColumns: '2fr 1fr 1fr 1.4fr', gap: 32 }}>
         <div>
           <div style={{ display: 'flex', alignItems: 'center', gap: 6 }}>
             <img src="../../assets/meridian-mark.svg" alt="" style={{ width: 30, height: 16 }} />
@@ -209,17 +209,11 @@ function SiteFooter() {
           <p style={{ fontSize: 13, color: 'var(--text-muted)', marginTop: 12, maxWidth: 220, lineHeight: 1.55 }}>The boring parts of SaaS, shipped for you. Made with care in Lagos & Lisbon.</p>
         </div>
         {col('Platform', ['AI agents', 'Infrastructure', 'Automation', 'File tools', 'Trading', 'Pricing'])}
-        {col('Company', ['About', 'Blog', 'Careers', 'Brand'])}
-        {col('Resources', ['Docs', 'API status', 'Changelog', 'Support'])}
+        {col('Resources', ['Docs', 'Support'])}
         <Newsletter />
       </div>
       <div style={{ ...wrap, marginTop: 40, paddingTop: 20, borderTop: '1px solid var(--border-default)', display: 'flex', fontSize: 12, color: 'var(--text-muted)' }}>
         <span>© 2026 Fernwick.</span>
-        <div style={{ marginLeft: 'auto', display: 'flex', gap: 20 }}>
-          <a href="#" style={{ color: 'var(--text-muted)', textDecoration: 'none' }}>Privacy</a>
-          <a href="#" style={{ color: 'var(--text-muted)', textDecoration: 'none' }}>Terms</a>
-          <a href="#" style={{ color: 'var(--text-muted)', textDecoration: 'none' }}>Security</a>
-        </div>
       </div>
     </footer>
   );
