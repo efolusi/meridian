@@ -433,7 +433,9 @@ class Component extends DCLogic {
       ] } };
     }
     return { isTable: true, props: { dense: true, stickyHeader: true, maxHeight: 440, rowKey: 'module', rows: this.state.sizes.modules,
-      'aria-label': id ? 'Ukuran per komponen' : 'Size per component',
+      // These props land on the scrolling wrapper: a named, focusable region so
+      // keyboard users can scroll it (aria-label alone is not allowed on a div).
+      role: 'region', tabIndex: 0, 'aria-label': id ? 'Ukuran per komponen' : 'Size per component',
       columns: [{ key: 'module', label: id ? 'Impor' : 'Import', sortable: true }, num('bytes', id ? 'Minifikasi' : 'Minified', true), num('gzip', 'Gzip', true)] } };
   }
   flat() { return this.sections(); }
