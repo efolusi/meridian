@@ -14,8 +14,8 @@ concurrency:
   group: checks-${{ github.event_name == 'pull_request' && format('pr-{0}', github.event.pull_request.number) || github.run_id }}
   cancel-in-progress: ${{ github.event_name == 'pull_request' }}
 
-# Fork PRs are untrusted code and must never reach the shared efolusi-dev host
-# (Docker group, other products' env files); they run GitHub-hosted, fail-closed.
+# Fork PRs default to GitHub-hosted, but a fork can edit this file in its PR: the real
+# guard for efolusi-dev is approving outside contributors' runs only after reading the diff.
 
 jobs:
   gates:
