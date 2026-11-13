@@ -101,7 +101,8 @@ describe('font fallbacks (DS-07)', () => {
     for (const family of ['Figtree Fallback', 'Bricolage Grotesque Fallback']) {
       const face = fonts.match(new RegExp(`@font-face\\{font-family:'${family}';[^}]*\\}`))?.[0]
       expect(face, family).toBeTruthy()
-      expect(face).toContain("local('Arial')")
+      // Figtree (body) matches Arial Regular; Bricolage (headings) matches Arial Bold.
+      expect(face).toMatch(/local\('Arial( Bold)?'\)/)
       for (const descriptor of ['size-adjust', 'ascent-override', 'descent-override', 'line-gap-override']) {
         expect(face, `${family} ${descriptor}`).toMatch(new RegExp(`${descriptor}:\\d+(\\.\\d+)?%`))
       }
