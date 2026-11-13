@@ -21,6 +21,7 @@ const CSS = `
 .ef-confirm__status{display:flex;align-items:center;gap:8px;padding:10px 14px 12px;font-size:13px;color:var(--text-secondary)}
 .ef-confirm__status--approved{color:var(--success-600,var(--text-secondary))}
 .ef-confirm__status--rejected{color:var(--text-muted)}
+@media (pointer:coarse){.ef-confirm__btn{min-height:var(--tap-min)}}
 `;
 export function Confirmation({ title, description, tone = 'default', status, defaultStatus, onStatusChange, icon, approveLabel = 'Approve', rejectLabel = 'Reject', approvedNote = 'Approved. Continuing.', rejectedNote = 'Rejected. The agent will skip this.', children, style, className, ...rest }) {
   injectEfCss('ef-css-confirm', CSS);

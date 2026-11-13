@@ -22,6 +22,7 @@ export interface TableProps extends React.TableHTMLAttributes<HTMLTableElement> 
   rows?: any[];
   /** Field name or fn for React keys @default index */
   rowKey?: string | ((row: any) => string);
+  /** Makes rows clickable and focusable (tabIndex 0); Enter or Space on a focused row also calls it. */
   onRowClick?: (row: any) => void;
   dense?: boolean;
   /** Controlled sort. Omit and the table sorts itself. */

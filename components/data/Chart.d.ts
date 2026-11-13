@@ -7,7 +7,7 @@ export interface ChartContainerProps extends React.HTMLAttributes<HTMLDivElement
 export declare const ChartContainer: React.ForwardRefExoticComponent<ChartContainerProps & React.RefAttributes<HTMLDivElement>>;
 export declare function ChartStyle(props: { id: string; config: ChartConfig }): React.JSX.Element | null;
 export declare function ChartTooltip(props: TooltipProps<any, any>): React.JSX.Element | null;
-export interface ChartTooltipContentProps extends Omit<DefaultTooltipContentProps<TooltipValueType, string | number>, 'accessibilityLayer'> { active?: boolean; className?: string; hideLabel?: boolean; hideIndicator?: boolean; indicator?: 'line' | 'dot' | 'dashed'; nameKey?: string; labelKey?: string; color?: string }
+export interface ChartTooltipContentProps extends Omit<DefaultTooltipContentProps<TooltipValueType, string | number>, 'accessibilityLayer'> { active?: boolean; className?: string; hideLabel?: boolean; hideIndicator?: boolean; indicator?: 'line' | 'dot' | 'dashed'; nameKey?: string; labelKey?: string; color?: string; /** Number formatting locale @default 'en-US' */ locale?: string }
 export declare function ChartTooltipContent(props: ChartTooltipContentProps): React.JSX.Element | null;
 export declare function ChartLegend(props: LegendProps): React.JSX.Element | null;
 export interface ChartLegendContentProps extends DefaultLegendContentProps { className?: string; hideIcon?: boolean; nameKey?: string }
