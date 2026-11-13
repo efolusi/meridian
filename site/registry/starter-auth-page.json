@@ -33,7 +33,7 @@
       "path": "starters/auth-page/README.md",
       "type": "registry:page",
       "target": "starters/auth-page/README.md",
-      "content": "# Auth \u2014 starter journey\n\nCopyable authentication journey: sign in \u2192 sign up \u2192 onboarding, plus password reset. Copy this whole folder to start your own auth flow; `ds-base.js` has a single `base` line pointing at the design-system root \u2014 edit that one line and every page works.\n\n- `AuthPage.dc.html` \u2014 sign in (password + magic link)\n- `SignUp.dc.html` \u2014 account creation\n- `ForgotPassword.dc.html` \u2014 reset request\n- `Onboarding.dc.html` \u2014 first-run workspace setup\n\nShowcase twin: `showcases/auth/` covers the same category as plain JSX screens you can lift into a React app. When a screen changes in one, update the other.\n"
+      "content": "# Auth \u2014 starter journey\n\nCopyable authentication journey: sign in \u2192 sign up \u2192 onboarding, plus password reset. Copy this whole folder to start your own auth flow; `ds-base.js` has a single `base` line pointing at the design-system root \u2014 edit that one line and every page works.\n\n- `AuthPage.dc.html` \u2014 sign in (password + magic link)\n- `SignUp.dc.html` \u2014 account creation\n- `ForgotPassword.dc.html` \u2014 reset request\n- `Onboarding.dc.html` \u2014 first-run workspace setup\n\nShowcase twin: `showcases/auth/` covers the same category as plain JSX screens you can lift into a React app. When a screen changes in one, update the other.\n\nSibling journeys: `marketing-page/` (home, via the logo) and `dashboard/` (after sign-in and onboarding). Copy them beside this folder under the same names, or repoint those links.\n"
     },
     {
       "path": "starters/auth-page/SignUp.dc.html",

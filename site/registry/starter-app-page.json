@@ -45,7 +45,7 @@
       "path": "starters/app-page/README.md",
       "type": "registry:page",
       "target": "starters/app-page/README.md",
-      "content": "# App \u2014 starter journey\n\nCopyable product-app journey: overview \u2192 projects \u2192 project detail \u2192 new project \u2192 settings. Copy this whole folder to start your own app surface; `ds-base.js` has a single `base` line pointing at the design-system root \u2014 edit that one line and every page works.\n\n- `AppPage.dc.html` \u2014 overview with side navigation\n- `Projects.dc.html` \u2014 project list\n- `ProjectDetail.dc.html` \u2014 single project: run stats, recent runs table, configuration\n- `NewProject.dc.html` \u2014 creation flow\n- `AppSettings.dc.html` \u2014 app settings tabs\n\nNo showcase twin: this is the generic app shell every example app specializes.\n"
+      "content": "# App \u2014 starter journey\n\nCopyable product-app journey: overview \u2192 projects \u2192 project detail \u2192 new project \u2192 settings. Copy this whole folder to start your own app surface; `ds-base.js` has a single `base` line pointing at the design-system root \u2014 edit that one line and every page works.\n\n- `AppPage.dc.html` \u2014 overview with side navigation\n- `Projects.dc.html` \u2014 project list\n- `ProjectDetail.dc.html` \u2014 single project: run stats, recent runs table, configuration\n- `NewProject.dc.html` \u2014 creation flow\n- `AppSettings.dc.html` \u2014 app settings tabs\n\nNo showcase twin: this is the generic app shell every example app specializes.\n\nSibling journeys: none. Every link stays inside this folder, so it can be copied alone.\n"
     },
     {
       "path": "starters/app-page/ds-base.js",

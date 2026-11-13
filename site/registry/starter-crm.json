@@ -33,7 +33,7 @@
       "path": "starters/crm/README.md",
       "type": "registry:page",
       "target": "starters/crm/README.md",
-      "content": "# CRM \u2014 starter journey\n\nCopyable revenue-team journey: pipeline \u2192 accounts \u2192 account detail. All records are labelled sample data; replace them with connected customer data before production use.\n\n- `Pipeline.dc.html` \u2014 stage-based opportunity board with owner and next action\n- `Accounts.dc.html` \u2014 searchable account index\n- `AccountDetail.dc.html` \u2014 relationship timeline, contacts, and open work\n\nCopy this whole folder, then change the single `base` line in `ds-base.js` to point at your Meridian root.\n\n"
+      "content": "# CRM \u2014 starter journey\n\nCopyable revenue-team journey: pipeline \u2192 accounts \u2192 account detail. All records are labelled sample data; replace them with connected customer data before production use.\n\n- `Pipeline.dc.html` \u2014 stage-based opportunity board with owner and next action\n- `Accounts.dc.html` \u2014 searchable account index\n- `AccountDetail.dc.html` \u2014 relationship timeline, contacts, and open work\n\nCopy this whole folder, then change the single `base` line in `ds-base.js` to point at your Meridian root.\n\nSibling journeys: none. Every link stays inside this folder, so it can be copied alone.\n"
     },
     {
       "path": "starters/crm/ds-base.js",

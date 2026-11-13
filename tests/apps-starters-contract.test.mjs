@@ -48,4 +48,21 @@ describe('starters', () => {
     const missing = pages.filter(({ text }) => !/@media \(pointer:coarse\)\{[^}]*\b(header|nav)\b[^{]*a[^{]*\{[^}]*min-height/.test(text) && !/@media \(pointer:coarse\)\{[^}]*-nav a/.test(text)).map(p => p.file)
     expect(missing).toEqual([])
   })
+  // Owner decision 2026-11-13: cross-journey links stay, and each README says
+  // which sibling journeys its pages link to, so a team copying one folder
+  // knows which others to copy beside it (or that it stands alone).
+  it('lists in its README exactly the sibling journeys its pages link to', () => {
+    const wrong = []
+    for (const journey of journeys) {
+      const linked = new Set(pages.filter(p => p.file.startsWith(join('starters', journey) + '/'))
+        .flatMap(p => [...p.text.matchAll(/href="\.\.\/([a-z-]+)\//g)].map(m => m[1])))
+      const readme = readFileSync(join('starters', journey, 'README.md'), 'utf8')
+      const line = (readme.match(/^Sibling journeys: (.*)$/m) || [])[1]
+      if (line === undefined) { wrong.push(`${journey}: no "Sibling journeys:" line`); continue }
+      const listed = new Set([...line.matchAll(/`([a-z-]+)\/`/g)].map(m => m[1]))
+      const same = linked.size === listed.size && [...linked].every(j => listed.has(j))
+      if (!same) wrong.push(`${journey}: links ${[...linked].sort()} but README lists ${[...listed].sort()}`)
+    }
+    expect(wrong).toEqual([])
+  })
 })

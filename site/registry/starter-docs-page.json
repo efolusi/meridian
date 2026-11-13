@@ -33,7 +33,7 @@
       "path": "starters/docs-page/README.md",
       "type": "registry:page",
       "target": "starters/docs-page/README.md",
-      "content": "# Docs \u2014 starter journey\n\nCopyable documentation journey: quickstart \u2192 authentication \u2192 errors. Copy this whole folder to start your own docs; `ds-base.js` has a single `base` line pointing at the design-system root \u2014 edit that one line and every page works.\n\n- `DocsPage.dc.html` \u2014 quickstart with nav tree and table of contents\n- `Authentication.dc.html` \u2014 guide page with code blocks\n- `Errors.dc.html` \u2014 reference tables\n\nShowcase twin: `showcases/docs/` covers the same category as a plain JSX screen you can lift into a React app. When the layout changes in one, update the other.\n"
+      "content": "# Docs \u2014 starter journey\n\nCopyable documentation journey: quickstart \u2192 authentication \u2192 errors. Copy this whole folder to start your own docs; `ds-base.js` has a single `base` line pointing at the design-system root \u2014 edit that one line and every page works.\n\n- `DocsPage.dc.html` \u2014 quickstart with nav tree and table of contents\n- `Authentication.dc.html` \u2014 guide page with code blocks\n- `Errors.dc.html` \u2014 reference tables\n\nShowcase twin: `showcases/docs/` covers the same category as a plain JSX screen you can lift into a React app. When the layout changes in one, update the other.\n\nSibling journeys: none. Every link stays inside this folder, so it can be copied alone.\n"
     },
     {
       "path": "starters/docs-page/ds-base.js",

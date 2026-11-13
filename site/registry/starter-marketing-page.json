@@ -33,7 +33,7 @@
       "path": "starters/marketing-page/README.md",
       "type": "registry:page",
       "target": "starters/marketing-page/README.md",
-      "content": "# Marketing \u2014 starter journey\n\nCopyable marketing-site journey: home \u2192 pricing \u2192 contact. Copy this whole folder to start your own site; `ds-base.js` has a single `base` line pointing at the design-system root \u2014 edit that one line and every page works.\n\n- `MarketingPage.dc.html` \u2014 home: hero, product grid, brand band\n- `Pricing.dc.html` \u2014 three tiers with a monthly / annual toggle\n- `Contact.dc.html` \u2014 contact form + offices\n\nShowcase twin: `showcases/website/` covers the same category as plain JSX sections you can lift into a React app. When a section changes in one, update the other.\n"
+      "content": "# Marketing \u2014 starter journey\n\nCopyable marketing-site journey: home \u2192 pricing \u2192 contact. Copy this whole folder to start your own site; `ds-base.js` has a single `base` line pointing at the design-system root \u2014 edit that one line and every page works.\n\n- `MarketingPage.dc.html` \u2014 home: hero, product grid, brand band\n- `Pricing.dc.html` \u2014 three tiers with a monthly / annual toggle\n- `Contact.dc.html` \u2014 contact form + offices\n\nShowcase twin: `showcases/website/` covers the same category as plain JSX sections you can lift into a React app. When a section changes in one, update the other.\n\nSibling journeys: `auth-page/` (sign in, sign up) and `docs-page/` (quickstart). Copy them beside this folder under the same names, or repoint those links.\n"
     },
     {
       "path": "starters/marketing-page/ds-base.js",

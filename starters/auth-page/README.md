@@ -8,3 +8,5 @@ Copyable authentication journey: sign in → sign up → onboarding, plus passwo
 - `Onboarding.dc.html` — first-run workspace setup
 
 Showcase twin: `showcases/auth/` covers the same category as plain JSX screens you can lift into a React app. When a screen changes in one, update the other.
+
+Sibling journeys: `marketing-page/` (home, via the logo) and `dashboard/` (after sign-in and onboarding). Copy them beside this folder under the same names, or repoint those links.

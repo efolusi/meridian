@@ -27,7 +27,7 @@
       "path": "starters/ai-workspace/README.md",
       "type": "registry:page",
       "target": "starters/ai-workspace/README.md",
-      "content": "# AI workspace \u2014 starter journey\n\nCopyable AI operations journey: workspace \u2192 knowledge \u2192 evaluations. The records are explicitly sample data so teams can replace them without inheriting fictional performance claims.\n\n- `Workspace.dc.html` \u2014 review queue, active run, sources, and approval action\n- `Knowledge.dc.html` \u2014 source library and ingestion status\n- `Evaluations.dc.html` \u2014 evaluation suites and recent results\n\nCopy this whole folder, then change the single `base` line in `ds-base.js` to point at your Meridian root.\n\n"
+      "content": "# AI workspace \u2014 starter journey\n\nCopyable AI operations journey: workspace \u2192 knowledge \u2192 evaluations. The records are explicitly sample data so teams can replace them without inheriting fictional performance claims.\n\n- `Workspace.dc.html` \u2014 review queue, active run, sources, and approval action\n- `Knowledge.dc.html` \u2014 source library and ingestion status\n- `Evaluations.dc.html` \u2014 evaluation suites and recent results\n\nCopy this whole folder, then change the single `base` line in `ds-base.js` to point at your Meridian root.\n\nSibling journeys: none. Every link stays inside this folder, so it can be copied alone.\n"
     },
     {
       "path": "starters/ai-workspace/Workspace.dc.html",
