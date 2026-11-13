@@ -8,7 +8,10 @@ const CSS = `
 .ef-donut__sr{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;border:0}
 .ef-donut__val{margin-inline-start:auto;font-family:var(--font-mono);font-size:12px;color:var(--text-primary);padding-inline-start:14px}
 `;
-const PALETTE = ['var(--brand-950)', 'var(--brand-500)', 'var(--brand-200)', 'var(--sand-400)', 'var(--sand-200)'];
+// Categorical slots come from --chart-1..5 (tokens area). The fallbacks are the
+// old brand/sand steps, which fail the dataviz validator; they only apply until
+// the chart tokens are defined.
+const PALETTE = ['var(--chart-1, var(--brand-950))', 'var(--chart-2, var(--brand-500))', 'var(--chart-3, var(--brand-200))', 'var(--chart-4, var(--sand-400))', 'var(--chart-5, var(--sand-200))'];
 // Fixed default locale: the runtime default would differ between server and browser.
 export function DonutChart({ data = [], size = 140, thickness = 16, centerLabel, centerValue, format, locale = 'en-US', 'aria-label': ariaLabel, style, className, ...rest }) {
   injectEfCss('ef-css-donut', CSS);
@@ -22,10 +25,12 @@ export function DonutChart({ data = [], size = 140, thickness = 16, centerLabel,
     : 'Donut chart, no data');
   const R = 50 - thickness / 100 * 50;
   const C = 2 * Math.PI * R;
+  // A 2px surface gap between segments at any size (viewBox is 100 units wide).
+  const gap = 2 * 100 / size;
   let acc = 0;
   const segs = data.map((d, i) => {
     const frac = d.value / total;
-    const seg = { ...d, i, dash: `${Math.max(frac * C - 1.5, 0.5)} ${C}`, offset: -acc * C, color: d.color || PALETTE[i % PALETTE.length] };
+    const seg = { ...d, i, dash: `${Math.max(frac * C - gap, 0.5)} ${C}`, offset: -acc * C, color: d.color || PALETTE[i % PALETTE.length] };
     acc += frac;
     return seg;
   });
