@@ -64,6 +64,8 @@ const GENERATED_PATHS = [
 const GATES = [
   ['Computed contrast helper', 'node', ['--test', 'scripts/contrast.test.mjs']],
   ['Exact-SHA release gate', 'node', ['--test', 'scripts/require_successful_checks.test.mjs']],
+  ['CDN SRI gate', 'node', ['--test', 'scripts/check_cdn_sri.test.mjs']],
+  ['CDN snippets carry SRI hashes', 'node', ['scripts/check_cdn_sri.mjs']],
   ['Independent repository naming', 'node', ['scripts/check_independent_brand.mjs']],
   ['Workspace structure', 'node', ['scripts/check_workspaces.mjs']],
   ['Compatibility inventory', 'node', ['scripts/check_compatibility.mjs']],
