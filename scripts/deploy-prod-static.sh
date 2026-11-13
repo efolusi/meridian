@@ -140,6 +140,12 @@ public_paths=(
   registry.json
   llms.txt
   llms-full.txt
+  README.md
+  ARCHITECTURE.md
+  CHANGELOG.md
+  CONTRIBUTING.md
+  SECURITY.md
+  LICENSE
   robots.txt
   sitemap.xml
   assets

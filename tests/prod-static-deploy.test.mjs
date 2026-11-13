@@ -36,8 +36,16 @@ describe('Meridian production static deployment', () => {
     const mcp = readFileSync('mcp/server.mjs', 'utf8')
     const mcpReads = [...mcp.matchAll(/readJSON\(['`]([^'`$]+)/g)].map(([, rel]) => rel)
     const llms = readFileSync('llms.txt', 'utf8')
-    const llmsPaths = [...llms.matchAll(/(?:^|[\s(])\/([A-Za-z0-9_][\w.-]*\.(?:json|js|css|txt|html|xml))\b/gm)]
-      .map(([, rel]) => rel)
+    const llmsPaths = [
+      ...[...llms.matchAll(/(?:^|[\s(,])\/([A-Za-z0-9_][\w./-]*\.(?:json|js|css|txt|html|xml|md))\b/gm)].map(([, rel]) => rel),
+      ...[...llms.matchAll(/(?:^|[\s(,])\/(LICENSE)\b/gm)].map(([, rel]) => rel),
+    ]
+    // skills/SKILL.md sends agents to the README "one level up" from the skill.
+    expect(readFileSync('skills/SKILL.md', 'utf8')).toContain('repository README.md')
+    llmsPaths.push('README.md')
+    for (const doc of ['README.md', 'ARCHITECTURE.md', 'CHANGELOG.md', 'CONTRIBUTING.md', 'SECURITY.md', 'LICENSE']) {
+      expect(llmsPaths).toContain(doc)
+    }
     expect(mcpReads).toContain('tokens.json')
     expect(llmsPaths).toContain('tokens.json')
     for (const rel of [...mcpReads, ...llmsPaths]) {
