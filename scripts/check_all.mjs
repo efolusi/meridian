@@ -76,6 +76,7 @@ const GATES = [
   ['Docs registry matches manifest', 'node', ['scripts/check_docs_registry.mjs']],
   ['Adherence metadata matches manifest', 'node', ['scripts/check_adherence_manifest.mjs']],
   ['Public facts match inventories', 'python3', ['scripts/check_public_facts.py']],
+  ['Migration guide covers every deprecation', 'node', ['scripts/check_migration_guide.mjs']],
   ['No dead interactive controls', 'python3', ['scripts/check_dead_controls.py']],
   ['No new raw colour literals', 'python3', ['scripts/check_token_adherence.py']],
   ['Logical CSS direction safety', 'python3', ['scripts/check_logical_css.py']],

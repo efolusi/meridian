@@ -49,7 +49,7 @@ Dark mode: set data-theme="dark" on any subtree. Compact density: data-density="
 
 ## More
 
-- /guidelines/: accessibility, forms, governance
+- /guidelines/: accessibility, forms, governance, migration
 - /site/: the documentation site (open /index.html)
 - /blocks/: pre-composed sections; /showcases/: example apps (lift screen code); /starters/: starter journeys (copy the folder)
 - /CHANGELOG.md, /CONTRIBUTING.md, /SECURITY.md, /LICENSE

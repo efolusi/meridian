@@ -4375,7 +4375,7 @@ A composable, gesture-dismissable surface for mobile details and short workflows
 
 Set `direction` on `Drawer`; bottom is the default and displays a drag handle. Set `dismissible={false}` for a decision that must be completed explicitly. Use Sheet for a non-gesture desktop side panel.
 
-`modal` is deprecated and ignored: a Drawer is always modal (scrim, focus trap, scroll lock). Passing `modal={false}` logs a development warning; the prop will be removed in the next major version.
+`modal` is deprecated and ignored: a Drawer is always modal (scrim, focus trap, scroll lock). Passing `modal={false}` logs a development warning; the prop will be removed in the next major version. Delete it; [guidelines/migration.md](../../guidelines/migration.md) has the details.
 
 ```ts
 import type * as React from 'react';
@@ -4387,7 +4387,10 @@ export interface DrawerProps {
   onOpenChange?: (open: boolean) => void;
   direction?: DrawerDirection;
   dismissible?: boolean;
-  /** @deprecated Ignored: a Drawer is always modal. Passing `false` logs a development warning; the prop will be removed in the next major version. */
+  /**
+   * @deprecated Ignored: a Drawer is always modal. Passing `false` logs a development warning; the prop will be removed in the next major version. Migration: https://meridian.efolusi.com/guidelines/migration.md
+   * @codemod remove
+   */
   modal?: boolean;
   handleOnly?: boolean;
   children?: React.ReactNode;
@@ -4822,4 +4825,4 @@ export declare const SheetDescription: React.ForwardRefExoticComponent<DialogSlo
 
 - /llms.txt: the short map of this repository
 - /site/registry.json: machine-readable registry index; per-item install files in /site/registry/
-- /guidelines/: accessibility, forms, governance
+- /guidelines/: accessibility, forms, governance, migration

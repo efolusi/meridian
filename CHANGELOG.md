@@ -2,6 +2,8 @@
 
 ## Unreleased
 
+- **A migration guide lists every deprecation.** `guidelines/migration.md` has the policy and, for 2.0, the Drawer `modal` removal with before and after code. The Drawer warning and type link to it, and `npm run check` fails when a deprecation is missing from the guide.
+- **`meridian-guard --fix` removes ignored deprecated props.** It deletes Drawer `modal` from every call site Guard can see; JSON output marks fixable diagnostics with `fixable: true`.
 - **Element defaults no longer override components.** All of `tokens/base.css` now sits in `@layer meridian`, so a component's own spacing (for example the Questionnaire description) is no longer flattened by the global `p` and heading resets. The forced-colours focus outline stays unlayered on purpose.
 - **Dark mode follows the operating system when no theme is set.** With no `data-theme` on the page, a dark OS gets the dark tokens; `data-theme="light"` or `"dark"` still wins. The docs site now records the OS choice as an explicit theme.
 - **Less layout shift while the brand fonts load.** Metric-matched `Figtree Fallback` and `Bricolage Grotesque Fallback` faces sit right after each brand face.
