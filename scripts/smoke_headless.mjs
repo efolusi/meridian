@@ -14,6 +14,7 @@
 import { chromium } from 'playwright';
 import fs from 'node:fs';
 import path from 'node:path';
+import { CAPTURE_CSS, settleForCapture } from './capture_settle.mjs';
 
 const BASE = process.env.BASE || 'http://localhost:8000';
 const SHOTS = process.env.SHOTS || '';
@@ -67,21 +68,15 @@ if (SHOTS) {
   await page.evaluate(() => document.fonts.ready);
   // Icons arrive by fetch after the demos render, and on the self-hosted
   // runner (headless Chromium 130 in Docker) some of those requests stall and
-  // never finish, on plain dev as well, so a capture sometimes has blank
-  // glyphs. Give them a chance to land, report what is still missing, and
-  // hide every glyph in the captures so baselines never depend on that race.
-  // Whether icons render is covered by the component tests, not by pixels.
+  // never finish, so a capture sometimes has blank glyphs. Give them a chance to
+  // land and report what is still missing; CAPTURE_CSS hides the glyphs.
   await page.waitForLoadState('networkidle', { timeout: 30000 }).catch(() => {});
   const blankIcons = await page.evaluate(() =>
     [...document.querySelectorAll('section[data-group] [data-slot="icon"]')].filter(s => !s.querySelector('svg')).length);
   if (blankIcons) {
     console.warn(`smoke: ${blankIcons} icon slot(s) still empty (${pending.size} request(s) pending${failedRequests.length ? `, ${failedRequests.length} failed` : ''}); glyphs are hidden in the captures`);
   }
-  await page.addStyleTag({ content: '[data-slot="icon"] > svg { visibility: hidden !important; }' });
-  // The sticky summary banner paints over whichever section is scrolled under
-  // it, so it was getting baked into the captures — carrying the live demo
-  // count, which would churn every affected baseline whenever a demo is added.
-  await page.addStyleTag({ content: '#summary, h1, [data-live] { display: none !important; }' });
+  await page.addStyleTag({ content: CAPTURE_CSS });
   let count = 0;
   for (const theme of ['light', 'dark']) {
     await page.evaluate(t => {
@@ -92,6 +87,7 @@ if (SHOTS) {
     await page.evaluate(() => new Promise(r => requestAnimationFrame(() => requestAnimationFrame(r))));
     for (const el of await page.locator('section[data-group]').all()) {
       const group = await el.getAttribute('data-group');
+      await settleForCapture(page);
       await el.screenshot({ path: path.join(SHOTS, `g-${group}-${theme}.png`), animations: 'disabled' });
       count++;
     }
