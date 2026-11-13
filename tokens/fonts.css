@@ -3,3 +3,10 @@
 @font-face{font-family:'Figtree';src:url('../assets/fonts/Figtree-Italic-Variable.woff2') format('woff2-variations');font-weight:300 900;font-style:italic;font-display:swap}
 @font-face{font-family:'JetBrains Mono';src:url('../assets/fonts/JetBrainsMono-Variable.woff2') format('woff2-variations');font-weight:100 800;font-style:normal;font-display:swap}
 @font-face{font-family:'JetBrains Mono';src:url('../assets/fonts/JetBrainsMono-Italic-Variable.woff2') format('woff2-variations');font-weight:100 800;font-style:italic;font-display:swap}
+/* Metric-matched fallbacks: while a web font downloads (font-display:swap), text renders in local
+   Arial scaled to the brand face, so the swap barely moves layout. Measured from the shipped woff2
+   files with fontTools against Arial: size-adjust is the advance-width ratio over real English body
+   copy (Figtree at 400; Bricolage at weight 680, opsz 34, the heading default, against Arial Bold),
+   and ascent/descent are each face's typo metrics (950/250 and 930/270 per 1000) divided by it. */
+@font-face{font-family:'Figtree Fallback';src:local('Arial'),local('ArialMT'),local('Liberation Sans');size-adjust:100.48%;ascent-override:94.55%;descent-override:24.88%;line-gap-override:0%}
+@font-face{font-family:'Bricolage Grotesque Fallback';src:local('Arial'),local('ArialMT'),local('Liberation Sans');size-adjust:99.55%;ascent-override:93.42%;descent-override:27.12%;line-gap-override:0%}

@@ -81,7 +81,7 @@ if (SHOTS) {
   for (const theme of ['light', 'dark']) {
     await page.evaluate(t => {
       if (t === 'dark') document.documentElement.setAttribute('data-theme', 'dark');
-      else document.documentElement.removeAttribute('data-theme');
+      else document.documentElement.setAttribute('data-theme', 'light');
     }, theme);
     // One rAF pair lets the var() swap paint before the capture.
     await page.evaluate(() => new Promise(r => requestAnimationFrame(() => requestAnimationFrame(r))));
