@@ -1,6 +1,5 @@
 # Redirects in the _redirects format, for static hosts that read it. The
 # Meridian deploy does not: its nginx/*.conf vhosts define no redirects, and
-# the root forwards to the docs home through index.html.
+# the root forwards to the docs home through index.html. List only what those
+# hosts also do (tests/headers-parity.test.mjs).
 / /site/DsSite.dc.html 301
-/docs /site/Docs.dc.html 301
-/components /site/Components.dc.html 301
