@@ -46,7 +46,7 @@ describe('Sidebar compatibility', () => {
     fireEvent.click(screen.getByRole('button', { name: 'Toggle sidebar' }));
     expect(screen.getByTestId('state').textContent).toContain('true:true');
     expect(view.container.querySelector('[data-mobile="true"]')).toBeTruthy();
-    fireEvent.keyDown(window, { key: 'Escape' });
+    fireEvent.keyDown(document.activeElement, { key: 'Escape' });
     expect(view.container.querySelector('[data-mobile="true"]')).toBeFalsy();
     window.matchMedia = original;
   });

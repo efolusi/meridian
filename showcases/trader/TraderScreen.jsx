@@ -15,7 +15,7 @@ function TraderScreen() {
   const [risk, setRisk] = React.useState(4);
   const [followed, setFollowed] = React.useState([]);
   const [positions, setPositions] = React.useState(POSITIONS);
-  const notify = (title, tone = 'success') => (toast[tone] || toast)(title, { description: 'Change applies to the next trade.' });
+  const notify = (title, tone = 'success') => toast.add({ title, description: 'Change applies to the next trade.', type: tone });
   const follow = n => { setFollowed(f => f.includes(n) ? f.filter(x => x !== n) : [...f, n]); };
   return (
     <div style={{ minHeight: '100vh' }}>
@@ -26,6 +26,7 @@ function TraderScreen() {
               <a href="../console/index.html" title="Back to Console" style={{ display: 'inline-flex' }}><img src="../../assets/meridian-mark.svg" alt="" style={{ width: 30, height: 16 }} /></a>
               <h1 style={{ fontSize: 24, fontWeight: 680 }}>Trading</h1>
               <StatusDot status={auto ? 'busy' : 'off'} pulse={auto} label={auto ? 'Robot active' : 'Robot paused'} />
+              <Badge variant="secondary">Sample data</Badge>
             </div>
             <div style={{ display: 'flex', alignItems: 'baseline', gap: 12, marginTop: 16 }}>
               <span style={{ fontFamily: 'var(--font-mono)', fontSize: 40, fontWeight: 600, letterSpacing: '-0.01em' }}>€24,318.90</span>
@@ -57,7 +58,7 @@ function TraderScreen() {
           </Card>
           <div style={{ flex: 1, display: 'flex', flexDirection: 'column', gap: 16 }}>
             <Card style={{ '--card-spacing': '18px' }}>
-              <CardHeader><CardTitle>Strategy</CardTitle><CardAction><Switch checked={auto} onChange={e => { setAuto(e.target.checked); notify(e.target.checked ? 'Robot resumed' : 'Robot paused', e.target.checked ? 'success' : 'info'); }} /></CardAction></CardHeader>
+              <CardHeader><CardTitle>Strategy</CardTitle><CardAction><Switch aria-label="Strategy robot" checked={auto} onCheckedChange={next => { setAuto(next); notify(next ? 'Robot resumed' : 'Robot paused', next ? 'success' : 'info'); }} /></CardAction></CardHeader>
               <CardContent><div style={{ display: 'flex', flexDirection: 'column', gap: 16 }}>
                 <div style={{ fontSize: 13, color: 'var(--text-secondary)' }}>Momentum · EUR pairs · max 3 open positions. Every trade is logged and auditable.</div>
                 <div><div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: 8, fontSize: 13, fontWeight: 600 }}><span>Risk per trade</span><span style={{ color: 'var(--text-muted)', fontFamily: 'var(--font-mono)', fontWeight: 400 }}>{risk}%</span></div><Slider aria-label="Risk per trade" min={1} max={10} value={[risk]} onValueChange={([next]) => setRisk(next)} /></div>

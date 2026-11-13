@@ -13,9 +13,11 @@ Exit 1 with a report if any pair fails.
 
 Usage: python3 scripts/check_contrast.py
 """
-import pathlib, re, sys
+import os, pathlib, re, sys
 
-CSS = (pathlib.Path(__file__).resolve().parent.parent / "tokens" / "colors.css").read_text()
+# CONTRAST_CSS lets the gate's own test point it at a deliberately broken copy.
+CSS = pathlib.Path(os.environ.get("CONTRAST_CSS") or
+                   pathlib.Path(__file__).resolve().parent.parent / "tokens" / "colors.css").read_text()
 
 
 def block(name):
@@ -100,46 +102,116 @@ def ratio(fg, bg):
     return (l1 + 0.05) / (l2 + 0.05)
 
 
-SURFACES = ["--surface-page", "--surface-card", "--surface-sunken"]
+SURFACES = ["--surface-page", "--surface-card", "--surface-sunken", "--surface-subtle"]
 
 # (foreground, [backgrounds], minimum ratio, what the pair guarantees)
+# Every pair here is one a component actually paints; the comment names it.
 PAIRS = [
     ("--text-primary", SURFACES, 4.5, "body text"),
     ("--text-secondary", SURFACES, 4.5, "secondary text"),
     ("--text-muted", SURFACES, 4.5, "muted text"),
+    ("--text-link", SURFACES, 4.5, "links, Marker, Badge link"),
     ("--success-600", ["--success-100", "--surface-card"], 4.5, "status text"),
     ("--warning-600", ["--warning-100", "--surface-card"], 4.5, "status text"),
     ("--danger-600", ["--danger-100", "--surface-card"], 4.5, "status text"),
     ("--accent-contrast", ["--accent"], 4.5, "text on accent"),
+    ("--accent-subtle-fg", ["--accent-subtle"], 4.5, "text and icons on the accent tint"),
     ("--danger-contrast", ["--danger-600", "--danger-700"], 4.5, "danger button normal and hover text"),
+    ("--success-contrast", ["--success-600"], 4.5, "FileTypeIcon label on the green fill"),
+    ("--warning-contrast", ["--warning-600"], 4.5, "FileTypeIcon label on the amber fill"),
+    ("--text-on-brand", ["--brand-700", "--brand-800", "--sand-600", "--sand-800"], 4.5,
+     "brand Button (rest, hover) and FileTypeIcon labels on fixed fills"),
+    ("--brand-950", ["--brand-500", "--sand-500"], 4.5, "FileTypeIcon ink label on fixed light fills"),
+    ("--text-inverse", ["--surface-inverse"], 4.5, "Toast text"),
+    ("--text-on-brand-muted", ["--surface-brand"], 4.5, "muted text on the brand surface"),
+    # The code surface is fixed dark in both themes, so are these inks.
+    ("--text-code", ["--surface-code"], 4.5, "code text"),
+    ("--code-ink", ["--surface-code"], 4.5, "terminal output"),
+    ("--code-ink-strong", ["--surface-code"], 4.5, "control labels on code"),
+    ("--code-ink-muted", ["--surface-code"], 4.5, "resting copy button"),
+    ("--code-ink-subtle", ["--surface-code"], 4.5, "language and host labels, Terminal timestamps"),
+    # Terminal timestamps moved to --code-ink-subtle (5.97:1); --code-ink-faint paints no text.
+    ("--success-on-dark", ["--surface-code"], 4.5, "Terminal ok lines"),
+    ("--danger-on-dark", ["--surface-code"], 4.5, "Terminal error lines"),
+    ("--text-on-media", ["--media-backdrop"], 4.5, "GeneratedImage prompt"),
+    ("--text-on-media-muted", ["--media-backdrop"], 4.5, "GeneratedImage status line"),
+    # WCAG 1.4.11 — a form control's edge is its only boundary, so it needs 3:1
+    # on every surface a field can sit on.
+    ("--border-control", SURFACES, 3.0, "form-control edge"),
+    ("--border-control-hover", SURFACES, 3.0, "form-control edge on hover"),
     # WCAG 1.4.11 — the focus indicator must be distinguishable from whatever it
     # sits on. The inner offset ring is surface-coloured, so the outer ring only
     # ever borders a surface, never a control fill.
     ("--focus-ring-color", SURFACES + ["--focus-ring-offset"], 3.0, "focus indicator"),
+    # Toast status icons (non-text, 3:1). Light uses these on the dark inverse
+    # surface; in dark Toast swaps to the strong status tokens on a light one.
+    # Dark success and warning icons are color-mix(in srgb, <tone> 60%, --text-inverse).
+    ("mix(--success-600 60%, --text-inverse)", ["--surface-inverse"], 3.0, "Toast success icon (dark theme)"),
+    ("--danger-600", ["--surface-inverse"], 3.0, "Toast danger icon (dark theme)"),
+    ("mix(--warning-600 60%, --text-inverse)", ["--surface-inverse"], 3.0, "Toast warning icon (dark theme)"),
+    ("--success-on-dark", ["--surface-inverse"], 3.0, "Toast success icon (light theme)"),
+    ("--danger-on-dark", ["--surface-inverse"], 3.0, "Toast danger icon (light theme)"),
+    ("--warning-on-dark", ["--surface-inverse"], 3.0, "Toast warning icon (light theme)"),
 ]
+
+# Pairs that fail today and need a visual decision from the owner before the
+# token moves (see the 2026-11-12 review). They are reported, not hidden: a pair
+# listed here that starts passing fails the gate until it is removed, so the
+# list can only shrink. Anything not listed fails as usual.
+KNOWN_FAILURES = {
+}
+
+# Toast paints the -on-dark icon tokens only in light (on the dark inverse
+# surface) and the -600 tokens only in dark (on the light one). The other
+# combinations never reach a screen, so they are not measured.
+NOT_PAINTED = {("dark", f"--{tone}-on-dark", "--surface-inverse") for tone in ("success", "danger", "warning")}
+NOT_PAINTED |= {("light", f"--{tone}-600", "--surface-inverse") for tone in ("success", "danger", "warning")}
+NOT_PAINTED |= {("light", f"mix(--{tone}-600 60%, --text-inverse)", "--surface-inverse") for tone in ("success", "warning")}
+
+MIX = re.compile(r"mix\((--[\w-]+) (\d+)%, (--[\w-]+)\)")
+
+
+def mix_hex(spec, table, fallback, bg):
+    """color-mix(in srgb, A p%, B): per-channel interpolation of sRGB values."""
+    a_tok, pct, b_tok = MIX.fullmatch(spec).groups()
+    a, b = to_hex(resolve(a_tok, table, fallback), over=bg), to_hex(resolve(b_tok, table, fallback), over=bg)
+    if a is None or b is None:
+        return None
+    w = int(pct) / 100
+    ch = lambda h, i: int(h[1 + 2 * i:3 + 2 * i], 16)
+    return "#" + "".join(f"{round(ch(a, i) * w + ch(b, i) * (1 - w)):02x}" for i in range(3))
 
 light = tokens("light")
 dark = tokens("dark")
-failures, unresolved, checked = [], [], 0
+failures, unresolved, stale, tolerated, checked = [], [], [], [], 0
 
 for theme, table, fallback in (("light", light, None), ("dark", dark, light)):
     for fg_tok, bg_toks, minimum, label in PAIRS:
         fg_raw = resolve(fg_tok, table, fallback)
         for bg_tok in bg_toks:
+            key = (theme, fg_tok, bg_tok)
+            if key in NOT_PAINTED:
+                continue
             bg = to_hex(resolve(bg_tok, table, fallback))
             if bg is None:
                 unresolved.append((theme, bg_tok, "background is not an opaque colour"))
                 continue
-            fg = to_hex(fg_raw, over=bg)
+            fg = mix_hex(fg_tok, table, fallback, bg) if fg_tok.startswith("mix(") else to_hex(fg_raw, over=bg)
             if fg is None:
                 unresolved.append((theme, fg_tok, "foreground did not resolve to a colour"))
                 continue
             r = ratio(fg, bg)
             checked += 1
             ok = r >= minimum
-            print(f"{'ok  ' if ok else 'FAIL'} {theme:5s} {fg_tok:20s} on {bg_tok:20s} "
+            known = key in KNOWN_FAILURES
+            status = "ok  " if ok else ("KNOWN" if known else "FAIL")
+            print(f"{status:5s} {theme:5s} {fg_tok:22s} on {bg_tok:20s} "
                   f"{r:5.2f}:1  (min {minimum}, {label})")
-            if not ok:
+            if ok and known:
+                stale.append(key)
+            elif not ok and known:
+                tolerated.append(key)
+            elif not ok:
                 failures.append((theme, fg_tok, bg_tok, r, minimum))
 
 if unresolved:
@@ -147,9 +219,15 @@ if unresolved:
     for theme, tok, why in unresolved:
         print(f"  {theme:5s} {tok}: {why}")
 
-if failures or unresolved:
+if stale:
+    print("\nnow passing, remove from KNOWN_FAILURES:")
+    for key in stale:
+        print(f"  {key}")
+
+if failures or unresolved or stale:
     if failures:
         print(f"\n{len(failures)} pair(s) under their minimum ratio")
     sys.exit(1)
 
-print(f"\nall {checked} pairs pass (4.5:1 text, 3:1 non-text)")
+print(f"\nall {checked - len(tolerated)} pairs pass (4.5:1 text, 3:1 non-text); "
+      f"{len(tolerated)} known failure(s) await an owner decision")

@@ -8,3 +8,5 @@ Copyable admin-console journey: overview → customers → customer detail → s
 - `ConsoleSettings.dc.html` — workspace settings tabs
 
 Showcase twin: `showcases/console/` covers the same category as plain JSX screens you can lift into a React app. When a screen changes in one, update the other.
+
+Sibling journeys: none. Every link stays inside this folder, so it can be copied alone.

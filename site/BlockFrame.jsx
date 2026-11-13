@@ -46,8 +46,8 @@ function BlockFrame({ file, title, height = 640 }) {
   });
   return R.createElement('div', null,
     R.createElement('div', { style: { display: 'flex', alignItems: 'center', borderBottom: '1px solid var(--border-default)' } },
-      R.createElement('button', { style: tabStyle(tab === 'preview'), onClick: () => setTab('preview') }, 'Preview'),
-      R.createElement('button', { style: tabStyle(tab === 'code'), onClick: () => setTab('code') }, 'Code'),
+      R.createElement('button', { type: 'button', className: 'site-frame-tab', 'aria-pressed': tab === 'preview', style: tabStyle(tab === 'preview'), onClick: () => setTab('preview') }, 'Preview'),
+      R.createElement('button', { type: 'button', className: 'site-frame-tab', 'aria-pressed': tab === 'code', style: tabStyle(tab === 'code'), onClick: () => setTab('code') }, 'Code'),
       R.createElement('div', { style: { marginLeft: 'auto', display: 'flex', alignItems: 'center', gap: 4, paddingBottom: 4 } },
         tab === 'preview' ? WIDTHS.map(x => R.createElement('button', {
           key: x.id, title: x.label + ' · ' + x.w + 'px', 'aria-label': x.label, style: devBtn(size === x.id), onClick: () => setSize(x.id),

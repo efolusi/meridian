@@ -17,4 +17,6 @@ npm install @efolusi/meridian-tokens
 module.exports = { presets: [require('@efolusi/meridian-tokens/tailwind.preset.cjs')] };
 ```
 
-`tokens.json` is DTCG-format for Style Dictionary / Figma Variables. MIT licensed; the bundled fonts (SIL OFL) keep their own licences.
+`tokens.json` is DTCG-format for Style Dictionary / Figma Variables. Each `$value` is the light theme at default density, and references are DTCG aliases (`{sand.50}`). A token that changes under the dark theme, compact density or a coarse (touch) pointer also carries those values under `$extensions["com.efolusi.meridian"].modes`, keyed `dark`, `compact` and `coarse`. The root `$extensions` entry names the CSS selector or media query behind each mode. Coarse is applied after compact, so on touch it overrides compact control heights too.
+
+MIT licensed; the bundled fonts (SIL OFL) keep their own licences.

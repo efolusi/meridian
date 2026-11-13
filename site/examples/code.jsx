@@ -43,7 +43,7 @@ export function TerminalDemo() {
         { text: 'meridian deploy --env prod', type: 'cmd' },
         { text: 'Building bundle… done in 1.2s', type: 'out', time: '10:02:11' },
         { text: 'Health check passed (3/3)', type: 'ok', time: '10:02:14' },
-        { text: 'Cache warm skipped — low traffic window', type: 'info', time: '10:02:14' },
+        { text: 'Cache warm skipped: low traffic window', type: 'info', time: '10:02:14' },
         { text: 'Released v2.14.0 to 100%', type: 'ok', time: '10:02:19' },
       ]} />
     </div>
@@ -58,10 +58,10 @@ export function ConsoleDemo() {
       <Console height={190} entries={[
         { level: 'info', time: '14:02:11', text: 'Replaying 12 failed deliveries' },
         { level: 'log', time: '14:02:12', text: 'batch 1/3 → hooks.acme.io · 200 OK' },
-        { level: 'warn', time: '14:02:13', text: 'batch 2/3 slow (1.9s) — backing off' },
+        { level: 'warn', time: '14:02:13', text: 'batch 2/3 slow (1.9s), backing off' },
         { level: 'error', time: '14:02:19', text: 'delivery #9 failed once, retrying', stack: 'at deliver (webhooks.ts:88)\nat replay (batch.ts:31)', source: 'webhooks.ts:88' },
         { level: 'debug', time: '14:02:20', text: 'jitter window 1.2–2.8s' },
-        { level: 'info', time: '14:02:24', text: 'Replay complete — 12/12 delivered' },
+        { level: 'info', time: '14:02:24', text: 'Replay complete: 12/12 delivered' },
       ]} />
     </div>
   );

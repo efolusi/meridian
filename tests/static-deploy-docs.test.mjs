@@ -6,8 +6,6 @@ import { describe, expect, it } from 'vitest'
 // project and no wrangler config, so no public surface may tell a reader to
 // deploy that way.
 const docs = readFileSync('site/Docs.dc.html', 'utf8')
-const assetsignore = readFileSync('.assetsignore', 'utf8')
-const roadmap = readFileSync('ROADMAP.md', 'utf8')
 const headers = readFileSync('_headers', 'utf8')
 const redirects = readFileSync('_redirects', 'utf8')
 const prodVhost = readFileSync('nginx/meridian.efolusi.com.conf', 'utf8')
@@ -60,8 +58,6 @@ describe('public deployment docs', () => {
   })
 
   it('carry no wrangler configuration or Cloudflare hosting claims', () => {
-    expect(assetsignore).not.toMatch(/wrangler/i)
-    expect(roadmap).not.toMatch(/Cloudflare (Pages|dashboard)/)
     expect(headers).not.toMatch(/Cloudflare/)
     expect(redirects).not.toMatch(/Cloudflare/)
   })

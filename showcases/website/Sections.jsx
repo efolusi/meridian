@@ -5,9 +5,9 @@ function SiteHeader() {
   return (
     <header style={{ position: 'sticky', top: 0, zIndex: 50, background: 'color-mix(in srgb, var(--surface-page) 85%, transparent)', backdropFilter: 'blur(12px)', borderBottom: '1px solid var(--border-default)' }}>
       <div style={{ ...wrap, display: 'flex', alignItems: 'center', gap: 28, height: 64 }}>
-        <a href="#" style={{ display: 'flex', alignItems: 'center', gap: 6, color: 'var(--text-primary)', textDecoration: 'none' }}>
+        <a href="./index.html" style={{ display: 'flex', alignItems: 'center', gap: 6, color: 'var(--text-primary)', textDecoration: 'none' }}>
           <img src="../../assets/meridian-mark.svg" alt="" style={{ width: 30, height: 16 }} />
-          <span style={{ fontFamily: 'var(--font-display)', fontWeight: 680, letterSpacing: '-0.02em', fontSize: 20 }}>Meridian</span>
+          <span style={{ fontFamily: 'var(--font-display)', fontWeight: 680, letterSpacing: '-0.02em', fontSize: 20 }}>Fernwick</span>
         </a>
         <nav style={{ display: 'flex', gap: 4 }}>
           {[['Products', '#products'], ['Pricing', '#pricing'], ['Docs', '../docs/index.html'], ['Console', '../console/index.html']].map(([l, href]) => (
@@ -32,7 +32,8 @@ function MiniConsole() {
         <span style={{ width: 10, height: 10, borderRadius: 99, background: 'var(--sand-200)' }}></span>
         <span style={{ width: 10, height: 10, borderRadius: 99, background: 'var(--sand-200)' }}></span>
         <span style={{ width: 10, height: 10, borderRadius: 99, background: 'var(--sand-200)' }}></span>
-        <span style={{ marginLeft: 8, fontFamily: 'var(--font-mono)', fontSize: 11, color: 'var(--text-muted)' }}>console.efolusi.com</span>
+        <span style={{ marginLeft: 8, fontFamily: 'var(--font-mono)', fontSize: 11, color: 'var(--text-muted)' }}>console.fernwick.example</span>
+        <Badge variant="secondary" style={{ marginLeft: 'auto' }}>Sample data</Badge>
       </div>
       <div style={{ display: 'flex', gap: 14, padding: 18 }}>
         {[['MRR', '$48.2k', '↑ 12.4%', 'success'], ['Customers', '1,284', '↑ 3.1%', 'success'], ['Requests', '16.3M', '↑ 8.9%', 'success']].map(([l, v, d, t]) => (
@@ -70,7 +71,7 @@ function Hero() {
             <AvatarGroup>
               <Avatar><AvatarFallback>AO</AvatarFallback></Avatar><Avatar><AvatarFallback>FA</AvatarFallback></Avatar><Avatar><AvatarFallback>JP</AvatarFallback></Avatar><Avatar><AvatarFallback>SR</AvatarFallback></Avatar>
             </AvatarGroup>
-            <span style={{ fontSize: 13, color: 'var(--text-muted)' }}>4,200+ teams ship with Meridian</span>
+            <span style={{ fontSize: 13, color: 'var(--text-muted)' }}>4,200+ teams ship with Fernwick</span>
           </div>
         </div>
         <div style={{ flex: 1.1 }}><MiniConsole /></div>
@@ -117,7 +118,7 @@ function BrandBand() {
     <section style={{ background: 'var(--cocoa-700)', color: 'var(--cream-50)', padding: '88px 0', position: 'relative', overflow: 'hidden' }}>
       <div style={{ ...wrap, textAlign: 'center' }}>
         <div style={{ fontFamily: 'var(--font-display)', fontSize: 34, fontWeight: 700, letterSpacing: '-0.02em', lineHeight: 1.3, maxWidth: 760, margin: '0 auto' }}>
-          “We deleted 40k lines of billing code the week we adopted Meridian. I'm still a little emotional about it.”
+          “We deleted 40k lines of billing code the week we adopted Fernwick. I'm still a little emotional about it.”
         </div>
         <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 10, marginTop: 24 }}>
           <Avatar><AvatarFallback>JP</AvatarFallback></Avatar>
@@ -158,7 +159,7 @@ function Pricing() {
                   </div>
                 ))}
               </div>
-              <Button fullWidth variant={cta} iconRight="arrow-right" onClick={() => { window.location.href = price === 'Custom' ? 'mailto:hello@efolusi.com' : '../auth/index.html'; }}>{price === 'Custom' ? 'Talk to us' : 'Start free'}</Button>
+              <Button fullWidth variant={cta} iconRight="arrow-right" onClick={() => { window.location.href = price === 'Custom' ? 'mailto:hello@fernwick.example' : '../auth/index.html'; }}>{price === 'Custom' ? 'Talk to us' : 'Start free'}</Button>
             </CardContent></Card>
           ))}
         </div>
@@ -171,12 +172,12 @@ function Newsletter() {
   const [done, setDone] = React.useState(false);
   return (
     <div>
-      <div style={{ fontSize: 12, fontWeight: 600, letterSpacing: '0.06em', textTransform: 'uppercase', color: 'var(--text-muted)' }}>Stay in the loop</div>
+      <label htmlFor="newsletter-email" style={{ display: 'block', fontSize: 12, fontWeight: 600, letterSpacing: '0.06em', textTransform: 'uppercase', color: 'var(--text-muted)' }}>Newsletter email</label>
       {done ? (
         <p style={{ fontSize: 13, color: 'var(--success-600)', marginTop: 14, display: 'flex', alignItems: 'center', gap: 6 }}><Icon name="circle-check" size={15} />You're in. See you next month.</p>
       ) : (
         <div style={{ display: 'flex', gap: 8, marginTop: 14 }}>
-          <Input size="sm" placeholder="you@company.com" style={{ flex: 1 }} />
+          <Input id="newsletter-email" size="sm" type="email" placeholder="you@company.com" style={{ flex: 1 }} />
           <Button size="sm" onClick={() => setDone(true)}>Subscribe</Button>
         </div>
       )}
@@ -185,37 +186,34 @@ function Newsletter() {
   );
 }
 
+// Every footer entry points at a page in this kit or a real action; entries
+// with no destination are left out rather than linked to "#".
+const FOOTER_HREFS = { 'AI agents': '../agent/index.html', Infrastructure: '../infra/index.html', Automation: '../docs/index.html', 'File tools': '../tools/index.html', Trading: '../trader/index.html', Pricing: '#pricing', Docs: '../docs/index.html', Support: 'mailto:support@fernwick.example' };
 function SiteFooter() {
   const col = (title, links) => (
     <div>
       <div style={{ fontSize: 12, fontWeight: 600, letterSpacing: '0.06em', textTransform: 'uppercase', color: 'var(--text-muted)' }}>{title}</div>
       <div style={{ display: 'flex', flexDirection: 'column', gap: 10, marginTop: 14 }}>
-        {links.map(l => <a key={l} href="#" style={{ fontSize: 14, color: 'var(--text-secondary)', textDecoration: 'none' }}>{l}</a>)}
+        {links.map(l => <a key={l} href={FOOTER_HREFS[l]} style={{ fontSize: 14, color: 'var(--text-secondary)', textDecoration: 'none' }}>{l}</a>)}
       </div>
     </div>
   );
   return (
     <footer style={{ borderTop: '1px solid var(--border-default)', background: 'var(--sand-25)', padding: '56px 0 40px' }}>
-      <div style={{ ...wrap, display: 'grid', gridTemplateColumns: '2fr 1fr 1fr 1fr 1.4fr', gap: 32 }}>
+      <div style={{ ...wrap, display: 'grid', gridTemplateColumns: '2fr 1fr 1fr 1.4fr', gap: 32 }}>
         <div>
           <div style={{ display: 'flex', alignItems: 'center', gap: 6 }}>
             <img src="../../assets/meridian-mark.svg" alt="" style={{ width: 30, height: 16 }} />
-            <span style={{ fontFamily: 'var(--font-display)', fontWeight: 680, letterSpacing: '-0.02em', fontSize: 18 }}>Meridian</span>
+            <span style={{ fontFamily: 'var(--font-display)', fontWeight: 680, letterSpacing: '-0.02em', fontSize: 18 }}>Fernwick</span>
           </div>
           <p style={{ fontSize: 13, color: 'var(--text-muted)', marginTop: 12, maxWidth: 220, lineHeight: 1.55 }}>The boring parts of SaaS, shipped for you. Made with care in Lagos & Lisbon.</p>
         </div>
         {col('Platform', ['AI agents', 'Infrastructure', 'Automation', 'File tools', 'Trading', 'Pricing'])}
-        {col('Company', ['About', 'Blog', 'Careers', 'Brand'])}
-        {col('Resources', ['Docs', 'API status', 'Changelog', 'Support'])}
+        {col('Resources', ['Docs', 'Support'])}
         <Newsletter />
       </div>
       <div style={{ ...wrap, marginTop: 40, paddingTop: 20, borderTop: '1px solid var(--border-default)', display: 'flex', fontSize: 12, color: 'var(--text-muted)' }}>
-        <span>© 2026 Meridian.</span>
-        <div style={{ marginLeft: 'auto', display: 'flex', gap: 20 }}>
-          <a href="#" style={{ color: 'var(--text-muted)', textDecoration: 'none' }}>Privacy</a>
-          <a href="#" style={{ color: 'var(--text-muted)', textDecoration: 'none' }}>Terms</a>
-          <a href="#" style={{ color: 'var(--text-muted)', textDecoration: 'none' }}>Security</a>
-        </div>
+        <span>© 2026 Fernwick.</span>
       </div>
     </footer>
   );

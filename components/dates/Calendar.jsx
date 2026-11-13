@@ -13,7 +13,7 @@ const CSS = `
 .ef-cal__dropdowns{display:flex;flex:1;justify-content:center;gap:5px}.ef-cal__dropdowns .ef-native-select{width:auto}.ef-cal__dropdowns select{height:30px}
 .ef-cal__grid{display:grid;grid-template-columns:repeat(7,36px);gap:2px}
 .ef-cal__row{display:contents}
-.ef-cal__dow{text-align:center;font-size:10px;font-weight:var(--weight-semibold);letter-spacing:.06em;text-transform:uppercase;color:var(--text-muted);padding:5px 0}
+.ef-cal__dow{text-align:center;font-size:var(--text-xs);font-weight:var(--weight-semibold);color:var(--text-muted);padding:5px 0}
 .ef-cal__day{position:relative;display:grid;width:36px;height:34px;place-items:center;border:1px solid transparent;border-radius:var(--radius-sm);background:none;color:var(--text-primary);font:inherit;font-size:var(--text-sm);cursor:pointer}
 .ef-cal__day:hover:not(:disabled){background:var(--surface-sunken)}
 .ef-cal__day:focus-visible{outline:none;box-shadow:var(--focus-ring)}
@@ -21,9 +21,11 @@ const CSS = `
 .ef-cal__day[data-outside="true"]{color:var(--text-muted)}
 .ef-cal__day[data-today="true"]{border-color:var(--border-strong)}
 .ef-cal__day[data-selected="true"]{background:var(--accent);color:var(--accent-contrast);font-weight:var(--weight-semibold)}
-.ef-cal__day[data-range-middle="true"]{border-radius:0;background:var(--brand-100);color:var(--brand-950)}
+.ef-cal__day[data-range-middle="true"]{border-radius:0;background:var(--accent-subtle);color:var(--text-primary)}
 .ef-cal__day[data-range-start="true"]{border-start-end-radius:0;border-end-end-radius:0}
 .ef-cal__day[data-range-end="true"]{border-start-start-radius:0;border-end-start-radius:0}
+/* Touch: fixed-size targets grow to --tap-min; small glyph buttons keep their look and get a centred --tap-min hit area instead. */
+@media (pointer:coarse){.ef-cal{min-width:0}.ef-cal__month-wrap{width:auto}.ef-cal__grid{grid-template-columns:repeat(7,var(--tap-min))}.ef-cal__day{width:var(--tap-min);height:var(--tap-min)}}
 `;
 const sameDay = (a, b) => !!a && !!b && a.getFullYear() === b.getFullYear() && a.getMonth() === b.getMonth() && a.getDate() === b.getDate();
 const startDay = date => new Date(date.getFullYear(), date.getMonth(), date.getDate());
@@ -63,7 +65,10 @@ export function Calendar({
   const [innerMonth, setInnerMonth] = React.useState(() => new Date(initial.getFullYear(), initial.getMonth(), 1));
   const visibleMonth = controlledMonth || innerMonth;
   const DayButton = components.DayButton || CalendarDayButton;
-  const gridRef = React.useRef(null);
+  const monthsRef = React.useRef(null);
+  // Set by keyboard navigation only, so the calendar never pulls focus to
+  // itself on mount or when a month button changes the view.
+  const keyboardMove = React.useRef(false);
   const selectedStart = mode === 'range' ? selected?.from : mode === 'multiple' ? selected?.[0] : selected;
   const [focusDate, setFocusDate] = React.useState(() => startDay(selectedStart || new Date()));
   const setMonth = next => {
@@ -89,28 +94,54 @@ export function Calendar({
   };
   const isSelected = date => mode === 'range' ? sameDay(date, selected?.from) || sameDay(date, selected?.to) : mode === 'multiple' ? (selected || []).some(item => sameDay(item, date)) : sameDay(date, selected);
   const monthViews = Array.from({ length: numberOfMonths }, (_, index) => addMonths(visibleMonth, index));
-  const moveFocus = amount => {
-    const next = addDays(focusDate, amount);
+  const monthIndex = date => date.getFullYear() * 12 + date.getMonth();
+  const firstShown = monthIndex(visibleMonth);
+  const lastShown = firstShown + numberOfMonths - 1;
+  const isShown = date => monthIndex(date) >= firstShown && monthIndex(date) <= lastShown;
+  const usable = date => isShown(date) && !matcherHit(disabled, date);
+  // The one day that carries tabIndex=0. It has to be a real, enabled day in
+  // a shown month, or the grid drops out of the tab order altogether.
+  const tabDate = (() => {
+    if (usable(focusDate)) return focusDate;
+    const picked = mode === 'range' ? [selected?.from, selected?.to] : mode === 'multiple' ? (selected || []) : [selected];
+    const candidate = picked.filter(Boolean).map(startDay).find(usable) || [startDay(new Date())].find(usable);
+    if (candidate) return candidate;
+    for (let day = new Date(visibleMonth.getFullYear(), visibleMonth.getMonth(), 1); isShown(day); day = addDays(day, 1)) if (!matcherHit(disabled, day)) return day;
+    return focusDate;
+  })();
+  const inBounds = date => (!startMonth || monthIndex(date) >= monthIndex(startMonth)) && (!endMonth || monthIndex(date) <= monthIndex(endMonth));
+  // Move to `target`, stepping on by `skip` days past disabled ones, and page
+  // the view only when the day falls outside every shown month.
+  const focusOn = (target, skip) => {
+    let next = target;
+    for (let tries = 0; matcherHit(disabled, next) && tries < 62; tries += 1) next = addDays(next, skip);
+    if (matcherHit(disabled, next) || !inBounds(next)) return;
+    keyboardMove.current = true;
     setFocusDate(next);
-    if (next.getMonth() !== visibleMonth.getMonth() || next.getFullYear() !== visibleMonth.getFullYear()) setMonth(new Date(next.getFullYear(), next.getMonth(), 1));
+    if (monthIndex(next) < firstShown) setMonth(new Date(next.getFullYear(), next.getMonth(), 1));
+    else if (monthIndex(next) > lastShown) setMonth(new Date(next.getFullYear(), next.getMonth() - numberOfMonths + 1, 1));
   };
   React.useEffect(() => {
-    const target = gridRef.current?.querySelector(`[data-key="${dayKey(focusDate)}"]`);
-    if (target && (gridRef.current.contains(document.activeElement) || document.activeElement === document.body)) target.focus();
+    if (!keyboardMove.current) return;
+    keyboardMove.current = false;
+    const key = dayKey(focusDate);
+    const target = monthsRef.current?.querySelector(`[data-key="${key}"]:not([data-outside="true"])`) || monthsRef.current?.querySelector(`[data-key="${key}"]`);
+    target?.focus();
   }, [focusDate, visibleMonth]);
   const keydown = event => {
+    const from = tabDate;
     const horizontal = direction === 'rtl' ? { ArrowLeft: 1, ArrowRight: -1 } : { ArrowLeft: -1, ArrowRight: 1 };
-    if (horizontal[event.key]) { event.preventDefault(); moveFocus(horizontal[event.key]); }
-    else if (event.key === 'ArrowUp' || event.key === 'ArrowDown') { event.preventDefault(); moveFocus(event.key === 'ArrowUp' ? -7 : 7); }
-    else if (event.key === 'Home' || event.key === 'End') { event.preventDefault(); moveFocus((event.key === 'Home' ? 0 : 6) - focusDate.getDay()); }
-    else if (event.key === 'PageUp' || event.key === 'PageDown') { event.preventDefault(); const next = addMonths(focusDate, event.key === 'PageUp' ? -1 : 1); setFocusDate(new Date(next.getFullYear(), next.getMonth(), Math.min(focusDate.getDate(), new Date(next.getFullYear(), next.getMonth() + 1, 0).getDate()))); setMonth(next); }
+    if (horizontal[event.key]) { event.preventDefault(); focusOn(addDays(from, horizontal[event.key]), horizontal[event.key]); }
+    else if (event.key === 'ArrowUp' || event.key === 'ArrowDown') { const amount = event.key === 'ArrowUp' ? -7 : 7; event.preventDefault(); focusOn(addDays(from, amount), amount); }
+    else if (event.key === 'Home' || event.key === 'End') { event.preventDefault(); focusOn(addDays(from, (event.key === 'Home' ? 0 : 6) - from.getDay()), event.key === 'Home' ? 1 : -1); }
+    else if (event.key === 'PageUp' || event.key === 'PageDown') { event.preventDefault(); const next = addMonths(from, event.key === 'PageUp' ? -1 : 1); focusOn(new Date(next.getFullYear(), next.getMonth(), Math.min(from.getDate(), new Date(next.getFullYear(), next.getMonth() + 1, 0).getDate())), 1); }
   };
   const monthLabel = date => formatters.formatCaption?.(date) || new Intl.DateTimeFormat(localeCode, { month: 'long', year: 'numeric' }).format(date);
   const weekday = date => formatters.formatWeekdayName?.(date) || new Intl.DateTimeFormat(localeCode, { weekday: 'short' }).format(date);
   const years = Array.from({ length: (endMonth?.getFullYear() || visibleMonth.getFullYear() + 10) - (startMonth?.getFullYear() || visibleMonth.getFullYear() - 100) + 1 }, (_, i) => (startMonth?.getFullYear() || visibleMonth.getFullYear() - 100) + i);
   return (
     <div {...rest} dir={direction} data-slot="calendar" className={`ef-cal${className ? ` ${className}` : ''}`} style={style}>
-      <div className={`ef-cal__months${classNames.months ? ` ${classNames.months}` : ''}`}>
+      <div ref={monthsRef} className={`ef-cal__months${classNames.months ? ` ${classNames.months}` : ''}`}>
         {monthViews.map((view, viewIndex) => {
           const first = new Date(view.getFullYear(), view.getMonth(), 1);
           const nextDisabled = !!endMonth && view.getTime() >= new Date(endMonth.getFullYear(), endMonth.getMonth(), 1).getTime();
@@ -134,16 +165,16 @@ export function Calendar({
                 />
               ) : null}
             </div>
-            <div role="grid" ref={viewIndex === 0 ? gridRef : undefined} onKeyDown={keydown} aria-label={monthLabel(view)} className="ef-cal__grid">
+            <div role="grid" onKeyDown={keydown} aria-label={monthLabel(view)} className="ef-cal__grid">
               <div role="row" className="ef-cal__row">{Array.from({ length: 7 }, (_, index) => { const date = addDays(new Date(2024, 0, 7), index); return <span key={index} role="columnheader" className="ef-cal__dow">{weekday(date)}</span>; })}</div>
               {Array.from({ length: count / 7 }, (_, row) => <div role="row" className="ef-cal__row" key={row}>{cells.slice(row * 7, row * 7 + 7).map(date => {
                 const outside = date.getMonth() !== view.getMonth();
                 if (outside && !showOutsideDays) return <span key={dayKey(date)} />;
                 const rangeStart = mode === 'range' && sameDay(date, selected?.from);
                 const rangeEnd = mode === 'range' && sameDay(date, selected?.to);
-                const rangeMiddle = mode === 'range' && selected?.from && selected?.to && date > selected.from && date < selected.to;
+                const rangeMiddle = mode === 'range' && selected?.from && selected?.to && date > startDay(selected.from) && date < startDay(selected.to);
                 const modifiers = { selected: isSelected(date), today: sameDay(date, new Date()), outside, disabled: matcherHit(disabled, date), range_start: rangeStart, range_end: rangeEnd, range_middle: rangeMiddle };
-                return <DayButton key={dayKey(date)} day={{ date }} modifiers={modifiers} locale={locale} role="gridcell" data-key={dayKey(date)} tabIndex={sameDay(date, focusDate) ? 0 : -1} aria-label={date.toLocaleDateString(localeCode, { dateStyle: 'long' })} aria-selected={modifiers.selected || undefined} disabled={modifiers.disabled} onClick={() => pick(date)}>{date.getDate()}</DayButton>;
+                return <DayButton key={dayKey(date)} day={{ date }} modifiers={modifiers} locale={locale} role="gridcell" data-key={dayKey(date)} tabIndex={!outside && sameDay(date, tabDate) ? 0 : -1} aria-label={date.toLocaleDateString(localeCode, { dateStyle: 'long' })} aria-selected={modifiers.selected || undefined} disabled={modifiers.disabled} onClick={() => pick(date)}>{date.getDate()}</DayButton>;
               })}</div>)}
             </div>
           </div>;

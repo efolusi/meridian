@@ -9,6 +9,7 @@ releases_root="${deploy_root}/releases"
 available="/etc/nginx/sites-available/dev-meridian.efolusi.com"
 enabled="/etc/nginx/sites-enabled/dev-meridian.efolusi.com"
 runner_user="deploy"
+keep_releases=5
 
 [[ $# -eq 1 && "$1" =~ ^[0-9a-f]{40}$ ]] || {
   echo "usage: $0 <40-character-lowercase-git-sha>" >&2
@@ -32,7 +33,7 @@ git diff --cached --quiet
   exit 69
 }
 
-for command_name in cmp curl readlink rsync stat tar; do
+for command_name in cmp curl find grep readlink rsync stat tar; do
   command -v "$command_name" >/dev/null
 done
 
@@ -99,19 +100,86 @@ rollback() {
   exit "$status"
 }
 
+# Keep the newest N releases by mtime plus the one current points to; only
+# 40-hex release names are touched, never an in-flight .<sha>.<pid> candidate.
+prune_releases() {
+  local keep="$1" current_target kept=0 dir
+  current_target="$(cd "$deploy_root/current" 2>/dev/null && pwd -P || true)"
+  while IFS= read -r dir; do
+    dir="${dir%/}"
+    [[ "$(basename "$dir")" =~ ^[0-9a-f]{40}$ ]] || continue
+    [[ "$(cd "$dir" && pwd -P)" != "$current_target" ]] || continue
+    if (( kept < keep )); then
+      kept=$((kept + 1))
+      continue
+    fi
+    rm -rf -- "$dir"
+  done < <(ls -1td -- "$releases_root"/*/ 2>/dev/null)
+}
+
 trap cleanup EXIT
 trap rollback ERR
 
 # Archive the exact commit, not the working directory: ignored build outputs
 # and runner leftovers can never leak into the published static tree.
+# The allowlist must equal production's, so dev previews exactly what prod serves.
+public_paths=(
+  404.html
+  hello.html
+  index.html
+  _ds_bundle.js
+  _ds_manifest.json
+  styles.css
+  landing.css
+  tailwind.preset.js
+  tokens.json
+  registry.json
+  llms.txt
+  llms-full.txt
+  README.md
+  ARCHITECTURE.md
+  CHANGELOG.md
+  CONTRIBUTING.md
+  SECURITY.md
+  LICENSE
+  robots.txt
+  sitemap.xml
+  assets
+  blocks
+  compatibility
+  components
+  guidelines
+  showcases
+  site
+  skills
+  starters
+  tokens
+)
+
 git archive --format=tar "$release_sha" | tar -xf - -C "$archive_dir"
-rsync -a --delete --exclude-from="${archive_dir}/.assetsignore" \
-  "${archive_dir}/" "${publication_dir}/"
+for public_path in "${public_paths[@]}"; do
+  [[ -e "${archive_dir}/${public_path}" && ! -L "${archive_dir}/${public_path}" ]] || {
+    echo "[meridian-dev] required public path is absent or a symlink: ${public_path}" >&2
+    exit 78
+  }
+done
+tar -C "$archive_dir" -cf - "${public_paths[@]}" | tar -C "$publication_dir" -xf -
+if find "$publication_dir" -type l -print -quit | grep -q .; then
+  echo "[meridian-dev] public static tree must not contain symlinks" >&2
+  exit 80
+fi
 printf '%s\n' "$release_sha" > "${publication_dir}/meridian-release.txt"
 
 test -s "${publication_dir}/index.html"
 test -s "${publication_dir}/site/DsSite.dc.html"
 test -s "${publication_dir}/_ds_bundle.js"
+for forbidden_path in \
+  .github .nvmrc CLAUDE.md nginx package.json package-lock.json scripts tests; do
+  [[ ! -e "${publication_dir}/${forbidden_path}" ]] || {
+    echo "[meridian-dev] non-public repository path reached publication: ${forbidden_path}" >&2
+    exit 79
+  }
+done
 
 if [[ -L "$deploy_root/current" ]]; then
   previous_current="$(readlink "$deploy_root/current")"
@@ -182,4 +250,5 @@ curl --fail --silent --show-error --insecure --max-time 5 \
 curl --fail --silent --show-error --max-time 10 "https://${domain}/" >/dev/null
 
 trap - ERR
+prune_releases "$keep_releases" || echo "[meridian-dev] warning: pruning old releases failed" >&2
 echo "[meridian-dev] deployed ${release_sha} to ${release_dir}"

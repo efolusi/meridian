@@ -39,6 +39,11 @@ for (const f of fs.readdirSync(FONT_DIR).sort()) {
 files.set('tokens.json', fs.readFileSync(path.join(ROOT, 'tokens.json'), 'utf8'));
 files.set('tailwind.preset.cjs', fs.readFileSync(path.join(ROOT, 'tailwind.preset.js'), 'utf8'));
 
+// npm shows the tarball's README on the package page, and the MIT grant has to
+// travel with the files it covers; the dist used to ship neither.
+files.set('README.md', fs.readFileSync(path.join(ROOT, 'packages', 'tokens', 'README.md'), 'utf8'));
+files.set('LICENSE', fs.readFileSync(path.join(ROOT, 'LICENSE'), 'utf8'));
+
 // A tiny package.json inside dist so the published tarball is self-describing and
 // the version tracks the manifest without a second hand-edited field.
 files.set('package.json', JSON.stringify({

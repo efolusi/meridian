@@ -1,17 +1,17 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-<meta charset="utf-8">
+<meta charset="utf-8"><title>Customers | Fernwick</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <script src="./support.js"></script>
 </head>
 <body>
 <x-dc>
-<helmet><script src="./ds-base.js"></script><style>@view-transition{navigation:auto}::view-transition-group(*){animation-duration:160ms}@media (prefers-reduced-motion:reduce){::view-transition-group(*),::view-transition-old(*),::view-transition-new(*){animation:none!important}}html{background:#FAF9F6}@media(max-width:760px){.console-shell>header{height:auto!important;min-height:60px;padding:10px 16px!important;gap:8px!important;flex-wrap:wrap}.console-shell>header nav{order:3;width:100%;margin-left:0!important;overflow-x:auto}.console-shell>header>div:last-child x-import:first-child{display:none}.console-shell>main{padding:16px!important}}</style></helmet>
+<helmet><script src="./ds-base.js"></script><style>@view-transition{navigation:auto}::view-transition-group(*){animation-duration:160ms}@media (prefers-reduced-motion:reduce){::view-transition-group(*),::view-transition-old(*),::view-transition-new(*){animation:none!important}}html{background:#FAF9F6}@media(max-width:760px){.console-shell>header{height:auto!important;min-height:60px;padding:10px 16px!important;gap:8px!important;flex-wrap:wrap}.console-shell>header nav{order:3;width:100%;margin-left:0!important;overflow-x:auto}.console-shell>header>div:last-child x-import:first-child{display:none}.console-shell>main{padding:16px!important}}@media (pointer:coarse){header a[href],nav a[href],footer a[href]{min-height:var(--tap-min);display:inline-flex;align-items:center}}</style></helmet>
 <div class="console-shell" data-theme="{{ theme }}" data-density="{{ density }}" style="min-height:100vh;background:var(--surface-page);color:var(--text-primary);font-family:var(--font-sans)">
 <header style="view-transition-name:shell-top;display:flex;align-items:center;gap:12px;height:60px;padding:0 24px;border-bottom:1px solid var(--border-default)">
-<img src="../../assets/meridian-mark.svg" alt="" style="width:30px;height:16px;margin-right:-6px">
-<span style="font-family:var(--font-display);font-weight:680;letter-spacing:-0.02em;font-size:19px">Meridian</span>
+<svg viewBox="0 0 62 33" fill="currentColor" aria-hidden="true" focusable="false" style="width:30px;height:16px;margin-right:-6px"><path d="M16.9 3h9.2c1.1 0 1.7 1.1 1.1 2L13.5 29.5c-.3.6-.9.9-1.6.9H2.8c-1.1 0-1.7-1.1-1.1-2L15.3 3.9c.3-.6.9-.9 1.6-.9Z"></path><path transform="translate(17)" d="M16.9 3h9.2c1.1 0 1.7 1.1 1.1 2L13.5 29.5c-.3.6-.9.9-1.6.9H2.8c-1.1 0-1.7-1.1-1.1-2L15.3 3.9c.3-.6.9-.9 1.6-.9Z"></path><path transform="translate(34)" d="M16.9 3h9.2c1.1 0 1.7 1.1 1.1 2L13.5 29.5c-.3.6-.9.9-1.6.9H2.8c-1.1 0-1.7-1.1-1.1-2L15.3 3.9c.3-.6.9-.9 1.6-.9Z"></path></svg>
+<span style="font-family:var(--font-display);font-weight:680;letter-spacing:-0.02em;font-size:19px">Fernwick</span>
 <span style="font-size:14px;color:var(--text-muted)">Console</span>
 <nav style="display:flex;gap:2px;margin-left:16px">
 <a href="./Dashboard.dc.html" style="padding:6px 12px;border-radius:var(--radius-sm);font-size:14px;font-weight:500;color:var(--text-secondary);text-decoration:none" style-hover="background:var(--surface-sunken);color:var(--text-primary)">Overview</a>
@@ -26,7 +26,7 @@
 <main style="padding:24px;display:flex;flex-direction:column;gap:20px;max-width:1200px;margin:0 auto">
 <div style="display:flex;align-items:flex-end;gap:16px">
 <div>
-<h1 style="font-size:26px;font-weight:680;font-family:var(--font-display);letter-spacing:-0.02em;margin:0">Customers</h1>
+<div style="display:flex;align-items:center;gap:10px;flex-wrap:wrap"><h1 style="font-size:26px;font-weight:680;font-family:var(--font-display);letter-spacing:-0.02em;margin:0">Customers</h1><x-import component-from-global-scope="EfolusiDesignSystem_4ffc3d.Badge" variant="secondary" hint-size="104px,24px">Sample data</x-import></div>
 <p style="margin:4px 0 0;font-size:14px;color:var(--text-secondary)">1,284 accounts · 96 on trial</p>
 </div>
 <div style="margin-left:auto">
@@ -34,7 +34,7 @@
 </div>
 </div>
 <div style="display:flex;gap:8px;align-items:center">
-<div style="width:280px"><x-import component-from-global-scope="EfolusiDesignSystem_4ffc3d.Input" placeholder="Search customers…" icon-left="search" hint-size="280px,36px"></x-import></div>
+<div style="width:280px"><x-import component-from-global-scope="EfolusiDesignSystem_4ffc3d.Input" type="search" aria-label="Search customers" placeholder="Search customers…" icon-left="search" hint-size="280px,36px"></x-import></div>
 <x-import component-from-global-scope="EfolusiDesignSystem_4ffc3d.Button" variant="secondary" icon-left="funnel" hint-size="84px,36px">Filter</x-import>
 </div>
 <div style="background:var(--surface-card);border:1px solid var(--border-default);border-radius:var(--radius-md);overflow:hidden">

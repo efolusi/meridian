@@ -77,8 +77,11 @@ describe('Meridian Guard rules', () => {
     expect(rules('const cardCss = `.card { border-radius: var(--radius-sm); }`; export const card = cardCss;')).toEqual([]);
   });
 
-  it('ships no deprecated prop contracts in the stable surface', () => {
-    expect(contracts.deprecated).toEqual([]);
+  // Deprecation policy: a deprecated prop keeps working with a warning until the
+  // next major, so every entry must name its prop and say when it goes.
+  it('ships deprecated prop contracts only with a named prop and a next-major removal', () => {
+    expect(contracts.deprecated.map(d => `${d.component}.${d.prop}`)).toEqual(['Drawer.modal']);
+    for (const d of contracts.deprecated) expect(d.message).toMatch(/next major/);
   });
 
   it('enforces deterministic accessibility contracts', () => {

@@ -73,6 +73,10 @@ export function useAnchoredStyle(anchorRef, panelRef, { open, placement = 'botto
       const edge = 8;
 
       const horizontal = placement === 'left' || placement === 'right';
+      // start/end are logical: in a right-to-left layout "start" is the anchor's right edge
+      const dirNode = anchor.closest('[dir]');
+      const rtl = (dirNode ? dirNode.getAttribute('dir') : document.documentElement.dir) === 'rtl';
+      const inline = !horizontal && rtl ? (align === 'start' ? 'end' : align === 'end' ? 'start' : align) : align;
       const roomAfter = horizontal ? vw - a.right - offset : vh - a.bottom - offset;
       const roomBefore = horizontal ? a.left - offset : a.top - offset;
       const panelSize = horizontal ? p.width : p.height;
@@ -96,10 +100,10 @@ export function useAnchoredStyle(anchorRef, panelRef, { open, placement = 'botto
         top += crossOffset;
       } else {
         top = side === 'bottom' ? a.bottom + offset : a.top - offset - p.height;
-        left = align === 'end' ? a.right - width
-          : align === 'center' ? a.left + a.width / 2 - width / 2
+        left = inline === 'end' ? a.right - width
+          : inline === 'center' ? a.left + a.width / 2 - width / 2
           : a.left;
-        left += crossOffset;
+        left += rtl ? -crossOffset : crossOffset;
       }
 
       left = Math.max(edge, Math.min(left, vw - width - edge));
@@ -119,4 +123,65 @@ export function useAnchoredStyle(anchorRef, panelRef, { open, placement = 'botto
     };
   }, [open, placement, align, offset, crossOffset, matchWidth, anchorRef, panelRef]);
   return state;
+}
+
+export const escapeLayerContext = React.createContext(null);
+const handledEscapes = new WeakSet();
+
+/**
+ * Escape dismisses the innermost open layer, and only that one.
+ *
+ * Every modal and popover used to listen on `document` for itself, so a
+ * Popover inside a Dialog, or a Dialog inside a Dialog, closed together on one
+ * key press. Layers rendered inside another layer's subtree register with it
+ * through context (React context follows portals, the DOM does not), and a
+ * layer with an open child leaves the key to the child. A layer whose caller
+ * cancels the key (`preventDefault`) or that has no way out still consumes it.
+ *
+ * Returns the layer; wrap the layer's children in
+ * `<escapeLayerContext.Provider value={layer}>`. Not exported on the namespace.
+ */
+export function useEscapeLayer(active, onEscape) {
+  const parent = React.useContext(escapeLayerContext);
+  const layerRef = React.useRef(null);
+  if (layerRef.current === null) layerRef.current = { children: 0 };
+  const handlerRef = React.useRef(onEscape);
+  handlerRef.current = onEscape;
+  React.useEffect(() => {
+    if (!active) return;
+    const layer = layerRef.current;
+    if (parent) parent.children += 1;
+    const key = event => {
+      if (event.key !== 'Escape' || event.defaultPrevented || layer.children > 0 || handledEscapes.has(event)) return;
+      handledEscapes.add(event);
+      handlerRef.current?.(event);
+    };
+    document.addEventListener('keydown', key);
+    return () => {
+      if (parent) parent.children -= 1;
+      document.removeEventListener('keydown', key);
+    };
+  }, [active, parent]);
+  return layerRef.current;
+}
+
+let scrollLocks = 0;
+let savedOverflow = '';
+/**
+ * Keep the page behind a modal from scrolling. Counted, so a dialog opened
+ * from a dialog does not restore scrolling when the inner one closes.
+ */
+export function useScrollLock(active) {
+  React.useEffect(() => {
+    if (!active) return;
+    if (scrollLocks === 0) {
+      savedOverflow = document.body.style.overflow;
+      document.body.style.overflow = 'hidden';
+    }
+    scrollLocks += 1;
+    return () => {
+      scrollLocks -= 1;
+      if (scrollLocks === 0) document.body.style.overflow = savedOverflow;
+    };
+  }, [active]);
 }

@@ -20,7 +20,7 @@ function SideItem({ icon, label, active, badge, onClick, href }) {
   return <button onClick={onClick} onMouseEnter={() => setHov(true)} onMouseLeave={() => setHov(false)} style={style}>{inner}</button>;
 }
 
-function Sidebar({ nav, onNav }) {
+function ConsoleSidebar({ nav, onNav }) {
   const items = [
     ['overview', 'layout-dashboard', 'Overview'],
     ['customers', 'users', 'Customers', 128],
@@ -40,8 +40,8 @@ function Sidebar({ nav, onNav }) {
   return (
     <aside style={{ width: 240, flex: 'none', display: 'flex', flexDirection: 'column', borderRight: '1px solid var(--border-default)', background: 'var(--sand-25)' }}>
       <div style={{ display: 'flex', alignItems: 'center', gap: 10, padding: '16px 16px 14px' }}>
-        <a href="../website/index.html" style={{ display: 'inline-flex', marginRight: -4 }} title="efolusi.com"><img src="../../assets/meridian-mark.svg" alt="Meridian" style={{ width: 30, height: 16 }} /></a>
-        <span style={{ fontFamily: 'var(--font-display)', fontWeight: 680, letterSpacing: '-0.02em', fontSize: 19 }}>Meridian</span>
+        <a href="../website/index.html" style={{ display: 'inline-flex', marginRight: -4 }} title="fernwick.example"><img src="../../assets/meridian-mark.svg" alt="Fernwick" style={{ width: 30, height: 16 }} /></a>
+        <span style={{ fontFamily: 'var(--font-display)', fontWeight: 680, letterSpacing: '-0.02em', fontSize: 19 }}>Fernwick</span>
         <Badge className="ef-badge--brand" style={{ marginLeft: 'auto' }}>Console</Badge>
       </div>
       <nav style={{ display: 'flex', flexDirection: 'column', gap: 2, padding: '4px 12px' }}>
@@ -79,6 +79,7 @@ function Topbar({ title, onSearch, notify }) {
   return (
     <header style={{ display: 'flex', alignItems: 'center', gap: 12, height: 60, padding: '0 24px', borderBottom: '1px solid var(--border-default)', background: 'color-mix(in srgb, var(--surface-page) 85%, transparent)', backdropFilter: 'blur(12px)', position: 'sticky', top: 0, zIndex: 20 }}>
       <h1 style={{ fontSize: 18, fontWeight: 680, fontFamily: 'var(--font-display)', letterSpacing: '-0.02em' }}>{title}</h1>
+      <Badge variant="secondary">Sample data</Badge>
       <button onClick={onSearch} style={{ marginLeft: 'auto', display: 'flex', alignItems: 'center', gap: 8, width: 300, height: 32, padding: '0 10px', border: '1px solid var(--border-strong)', borderRadius: 'var(--radius-sm)', background: 'var(--surface-card)', cursor: 'pointer', fontFamily: 'var(--font-sans)', fontSize: 13, color: 'var(--text-muted)' }}>
         <Icon name="search" size={15} />Search anything…
         <span style={{ marginLeft: 'auto', display: 'inline-flex', gap: 3 }}><Kbd>⌘</Kbd><Kbd>K</Kbd></span>
@@ -113,4 +114,4 @@ function Topbar({ title, onSearch, notify }) {
   );
 }
 
-Object.assign(window, { Sidebar, Topbar, SideItem });
+Object.assign(window, { ConsoleSidebar, Topbar, SideItem });

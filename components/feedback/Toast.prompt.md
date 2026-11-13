@@ -16,3 +16,5 @@ toast.close(id)
 ```
 
 Use `toast.promise` to update the same notification through loading, success, and error states. Hovering or focusing the stack pauses dismissal timers.
+
+A toast that never expires (one with `actionProps`, or `duration: 0`) always shows its Dismiss button, unless the toast itself passes `closeButton: false`.

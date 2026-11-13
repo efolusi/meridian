@@ -12,7 +12,7 @@ const CSS = `
 .ef-badge--outline{background:transparent;border-color:var(--border-strong);color:var(--text-primary)}
 .ef-badge--ghost{background:transparent;color:var(--text-secondary)}
 .ef-badge--link{height:auto;padding:0;background:transparent;color:var(--text-link)}
-.ef-badge--accent{background:var(--accent-subtle);color:var(--brand-700)}
+.ef-badge--accent{background:var(--accent-subtle);color:var(--accent-subtle-fg, var(--brand-700))}
 .ef-badge--success{background:var(--success-100);color:var(--success-600)}
 .ef-badge--warning{background:var(--warning-100);color:var(--warning-600)}
 .ef-badge--danger{background:var(--danger-100);color:var(--danger-600)}

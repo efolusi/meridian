@@ -24,7 +24,15 @@ const CSS = `
 .ef-webprev__log--error{color:var(--danger-600)}
 .ef-webprev__logicon{display:inline-flex;flex:none;margin-top:2px}
 .ef-webprev__badge{position:absolute;top:3px;inset-inline-end:3px;min-width:14px;height:14px;padding:0 4px;border-radius:var(--radius-full);background:var(--danger-600);color:var(--danger-contrast);font-size:9.5px;font-weight:var(--weight-semibold);display:inline-flex;align-items:center;justify-content:center;font-family:var(--font-sans)}
+@media (pointer:coarse){.ef-webprev__btn{min-width:var(--tap-min);min-height:var(--tap-min)}}
 `;
+// Model-supplied URL: only http(s), mailto and relative pass (see Citation.jsx).
+function safeUrl(url) {
+  if (url == null || url === '') return undefined;
+  const s = String(url);
+  const scheme = /^\s*([a-z][a-z0-9+.-]*):/i.exec(s.replace(/[\u0000-\u001F\u007F]/g, ''));
+  return !scheme || /^(https?|mailto)$/i.test(scheme[1]) ? s : undefined;
+}
 const VIEWPORTS = [{ id: 'desktop', icon: 'monitor', width: null }, { id: 'tablet', icon: 'tablet', width: 768 }, { id: 'mobile', icon: 'smartphone', width: 390 }];
 export function WebPreview({ url: urlProp = '', height = 340, logs = [], defaultOpen = false, children, onUrlChange, style, className, ...rest }) {
   injectEfCss('ef-css-webprev', CSS);
@@ -43,6 +51,7 @@ export function WebPreview({ url: urlProp = '', height = 340, logs = [], default
     setDraft(next); setUrl(next);
     if (onUrlChange) onUrlChange(next);
   };
+  const safe = safeUrl(url);
   const width = (VIEWPORTS.find(v => v.id === vp) || {}).width;
   const LOG_ICON = { warn: 'triangle-alert', error: 'circle-alert', info: 'info' };
   return (
@@ -60,13 +69,13 @@ export function WebPreview({ url: urlProp = '', height = 340, logs = [], default
           <Icon name="terminal" size={14} />
           {errs ? <span className="ef-webprev__badge">{errs}</span> : null}
         </button>
-        <a className="ef-webprev__btn" aria-label="Open in new tab" href={url || undefined} target="_blank" rel="noreferrer noopener"><Icon name="external-link" size={13} /></a>
+        <a className="ef-webprev__btn" aria-label="Open in new tab" href={safe} target="_blank" rel="noreferrer noopener"><Icon name="external-link" size={13} /></a>
       </div>
       <div className="ef-webprev__stage" style={{ height }}>
         {children
           ? <div className="ef-webprev__fake" style={width ? { width } : null}>{children}</div>
-          : url
-            ? <iframe key={url + '-' + key} className="ef-webprev__frame" src={url} title="Web preview" sandbox="allow-scripts allow-same-origin allow-forms allow-popups" style={width ? { width } : null}></iframe>
+          : safe
+            ? <iframe key={safe + '-' + key} className="ef-webprev__frame" src={safe} title="Web preview" sandbox="allow-scripts allow-same-origin allow-forms allow-popups" style={width ? { width } : null}></iframe>
             : <div className="ef-webprev__empty">Enter a URL to preview</div>}
       </div>
       <div className="ef-webprev__consbody"><div className="ef-webprev__consclip">

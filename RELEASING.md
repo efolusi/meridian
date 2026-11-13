@@ -16,23 +16,23 @@ on npmjs.com (all pointing at `publish.yml`); a brand-new sub-package must be
 created once with a manual `npm publish ./packages/<name>/dist --access public`
 before OIDC can take over, exactly as the umbrella was first published.
 
-The MCP server `@efolusi/meridian-mcp` (`mcp/`) is a **fourth** package the same
-pipeline maintains, but **versioned independently** in `mcp/package.json` — it is
+The MCP server `@efolusi/meridian-mcp` (`mcp/`) is a **fifth** package the same
+pipeline maintains, but **versioned independently** in `mcp/package.json`: it is
 a dev tool, not part of the design-system surface. Bump `mcp/package.json` and
 push; the `decide` job gates it on its own version, so an mcp-only bump releases
-without touching the lockstep three (and a lockstep bump leaves mcp alone unless
+without touching the lockstep four (and a lockstep bump leaves mcp alone unless
 its version is new). It has its own Trusted Publisher; it was first published
 manually, so OIDC now maintains it.
 
 ## Where the version lives
 
-The npm build reads its version from `_ds_manifest.json`. Four other files
-carry it and must agree:
+The npm build reads its version from `_ds_manifest.json`. These files carry it
+and must agree:
 
 | File | Field |
 |---|---|
-| `_ds_manifest.json` | `version` — **the source the build reads** |
-| `package.json` | `version` (tokens, icons, and Guard workspace versions match it) |
+| `_ds_manifest.json` | `version`, **the source the build reads** |
+| `package.json` | `version` (tokens, icons, and Guard workspace versions match it; refresh `package-lock.json` with `npm install --package-lock-only` so its workspace entries follow) |
 | `CITATION.cff` | `version` (+ `date-released`) |
 | `site/DsSite.dc.html` | JSON-LD `softwareVersion` |
 | `CHANGELOG.md` | the release heading |
@@ -45,7 +45,7 @@ carry it and must agree:
 1. Move CHANGELOG's `Unreleased` content under a `## X.Y.Z — YYYY-MM-DD` heading.
    The workflow lifts this section verbatim into the GitHub Release notes.
 2. Bump the version in the five files above.
-3. `npm run check` — all gates green, locally, before anything is pushed.
+3. `npm run check`: all gates green, locally, before anything is pushed.
 4. Commit and push. That is the release: the publish workflow sees the new
    version, re-runs the gates, publishes to npm, then pushes the tag and cuts
    the GitHub Release on its own.
@@ -65,7 +65,7 @@ guard), and `workflow_dispatch` remains for dry-run rehearsals.
   bump instead.
 - **Manual dispatch defaults to a dry run.** A non-dry manual publish
   additionally requires the matching `vX.Y.Z` tag to exist and point at the
-  commit being built — an untagged tree cannot reach the registry.
+  commit being built, so an untagged tree cannot reach the registry.
 
 ## When something ships broken
 

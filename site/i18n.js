@@ -35,6 +35,9 @@
       btns[i].textContent = lang === 'id' ? 'EN' : 'ID';
       btns[i].setAttribute('aria-label', lang === 'id' ? 'Switch to English' : 'Ganti ke Bahasa Indonesia');
       btns[i].setAttribute('title', btns[i].getAttribute('aria-label'));
+      // The label is in the other language; say so, or a screen reader reads
+      // 'Ganti ke Bahasa Indonesia' with English pronunciation.
+      btns[i].setAttribute('lang', lang === 'id' ? 'en' : 'id');
     }
   }
 
@@ -48,6 +51,11 @@
     // Notify subscribers (e.g. DCLogic pages that render text from state and so
     // cannot use data-lang-id) so they can re-render in the new language.
     for (var i = 0; i < subs.length; i++) { try { subs[i](lang); } catch (e) {} }
+    // The same notice as a window event. Pages should listen for this rather
+    // than call EfLang.onChange: this file arrives through the runtime's
+    // <helmet>, which can inject it after a page's componentDidMount has run,
+    // so window.EfLang may not exist yet when the page tries to subscribe.
+    try { window.dispatchEvent(new CustomEvent('ef:langchange', { detail: { lang: lang } })); } catch (e) {}
   }
 
   document.addEventListener('click', function (e) {

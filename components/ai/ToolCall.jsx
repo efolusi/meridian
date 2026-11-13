@@ -39,6 +39,7 @@ const CSS = `
 .ef-toolcall__btn--accept{background:var(--accent);border-color:var(--accent);color:var(--accent-contrast)}
 .ef-toolcall__btn--accept:hover{background:var(--accent-hover)}
 .ef-toolcall__btn:focus-visible{outline:none;box-shadow:var(--focus-ring)}
+@media (pointer:coarse){.ef-toolcall__btn{min-height:var(--tap-min)}}
 `;
 const STATES = { pending: 'Queued', approval: 'Needs approval', running: 'Running', success: 'Done', error: 'Failed' };
 export function ToolCall({ name, status = 'running', args, result, error, icon = 'wrench', defaultOpen, streaming, onApprove, onReject, approveLabel = 'Approve', rejectLabel = 'Reject', children, style, className, ...rest }) {

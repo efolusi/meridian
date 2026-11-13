@@ -25,6 +25,7 @@ const CSS = `
 .ef-sandbox__tab:focus-visible{outline:none;box-shadow:var(--focus-ring)}
 .ef-sandbox__panel{padding:12px 14px;font-family:var(--font-mono);font-size:12.5px;line-height:1.7;color:var(--text-secondary);overflow-x:auto}
 .ef-sandbox__panel pre{margin:0;white-space:pre-wrap;word-break:break-word}
+@media (pointer:coarse){.ef-sandbox__tab{min-height:var(--tap-min)}}
 `;
 const STATES = { running: 'Running', success: 'Done', error: 'Failed' };
 export function Sandbox({ title, status = 'success', meta, tabs = [], defaultOpen, defaultTab, style, className, ...rest }) {

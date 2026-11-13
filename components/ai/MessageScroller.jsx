@@ -12,6 +12,7 @@ const CSS = `
 .ef-message-scroller__button:hover{background:var(--surface-sunken)}.ef-message-scroller__button:focus-visible{outline:0;box-shadow:var(--focus-ring)}
 .ef-message-scroller__button[data-active=false]{opacity:0;transform:translateY(4px);pointer-events:none}
 .ef-message-scroller__button[data-direction=start] .ef-message-scroller__button-icon{transform:rotate(180deg)}
+@media (pointer:coarse){.ef-message-scroller__button{min-width:var(--tap-min);min-height:var(--tap-min)}}
 `;
 
 const MessageScrollerContext = React.createContext(null);

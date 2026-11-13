@@ -1,17 +1,17 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-<meta charset="utf-8">
+<meta charset="utf-8"><title>Errors | Fernwick</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <script src="./support.js"></script>
 </head>
 <body>
 <x-dc>
-<helmet><script src="./ds-base.js"></script><style>@view-transition{navigation:auto}::view-transition-group(*){animation-duration:160ms}@media (prefers-reduced-motion:reduce){::view-transition-group(*),::view-transition-old(*),::view-transition-new(*){animation:none!important}}html{background:#FAF9F6}@media(max-width:900px){.docs-side,.docs-toc{display:none}}</style></helmet>
+<helmet><script src="./ds-base.js"></script><style>@view-transition{navigation:auto}::view-transition-group(*){animation-duration:160ms}@media (prefers-reduced-motion:reduce){::view-transition-group(*),::view-transition-old(*),::view-transition-new(*){animation:none!important}}html{background:#FAF9F6}@media(max-width:900px){.docs-side,.docs-toc{display:none}}@media (pointer:coarse){header a[href],nav a[href],footer a[href]{min-height:var(--tap-min);display:inline-flex;align-items:center}}</style></helmet>
 <div style="min-height:100vh;background:var(--surface-page);color:var(--text-primary);font-family:var(--font-sans)">
 <header style="view-transition-name:shell-top;display:flex;align-items:center;gap:14px;height:58px;padding:0 24px;border-bottom:1px solid var(--border-default)">
-<img src="../../assets/meridian-mark.svg" alt="" style="width:30px;height:16px;margin-right:-8px">
-<span style="font-family:var(--font-display);font-weight:680;letter-spacing:-0.02em;font-size:17px">Meridian</span>
+<svg viewBox="0 0 62 33" fill="currentColor" aria-hidden="true" focusable="false" style="width:30px;height:16px;margin-right:-8px"><path d="M16.9 3h9.2c1.1 0 1.7 1.1 1.1 2L13.5 29.5c-.3.6-.9.9-1.6.9H2.8c-1.1 0-1.7-1.1-1.1-2L15.3 3.9c.3-.6.9-.9 1.6-.9Z"></path><path transform="translate(17)" d="M16.9 3h9.2c1.1 0 1.7 1.1 1.1 2L13.5 29.5c-.3.6-.9.9-1.6.9H2.8c-1.1 0-1.7-1.1-1.1-2L15.3 3.9c.3-.6.9-.9 1.6-.9Z"></path><path transform="translate(34)" d="M16.9 3h9.2c1.1 0 1.7 1.1 1.1 2L13.5 29.5c-.3.6-.9.9-1.6.9H2.8c-1.1 0-1.7-1.1-1.1-2L15.3 3.9c.3-.6.9-.9 1.6-.9Z"></path></svg>
+<span style="font-family:var(--font-display);font-weight:680;letter-spacing:-0.02em;font-size:17px">Fernwick</span>
 <span style="font-size:15px;color:var(--text-muted);font-weight:500">Docs</span>
 <div style="margin-left:auto;display:flex;align-items:center;gap:8px;height:28px;padding:0 10px;border:1px solid var(--border-strong);border-radius:var(--radius-sm);background:var(--surface-card);color:var(--text-muted);font-size:13px">Search docs… <kbd style="font-family:var(--font-mono);font-size:10px;border:1px solid var(--border-strong);border-radius:3px;padding:0 4px">⌘K</kbd></div>
 </header>
@@ -43,13 +43,31 @@
 </tr>
 </thead>
 <tbody>
-<sc-for list="{{ codes }}" as="c" hint-placeholder-count="5">
 <tr>
-<td style="padding:10px 12px 10px 0;border-bottom:1px solid var(--border-default);font-family:var(--font-mono);font-size:13.5px">{{ c.code }}</td>
-<td style="padding:10px 12px;border-bottom:1px solid var(--border-default);font-family:var(--font-mono);font-size:13.5px">{{ c.type }}</td>
-<td style="padding:10px 0;border-bottom:1px solid var(--border-default);font-size:14.5px;color:var(--text-secondary)">{{ c.fix }}</td>
+<td style="padding:10px 12px 10px 0;border-bottom:1px solid var(--border-default);font-family:var(--font-mono);font-size:13.5px">400</td>
+<td style="padding:10px 12px;border-bottom:1px solid var(--border-default);font-family:var(--font-mono);font-size:13.5px">invalid_request</td>
+<td style="padding:10px 0;border-bottom:1px solid var(--border-default);font-size:14.5px;color:var(--text-secondary)">Fix the field named in message</td>
 </tr>
-</sc-for>
+<tr>
+<td style="padding:10px 12px 10px 0;border-bottom:1px solid var(--border-default);font-family:var(--font-mono);font-size:13.5px">401</td>
+<td style="padding:10px 12px;border-bottom:1px solid var(--border-default);font-family:var(--font-mono);font-size:13.5px">authentication_error</td>
+<td style="padding:10px 0;border-bottom:1px solid var(--border-default);font-size:14.5px;color:var(--text-secondary)">Check the key prefix and workspace</td>
+</tr>
+<tr>
+<td style="padding:10px 12px 10px 0;border-bottom:1px solid var(--border-default);font-family:var(--font-mono);font-size:13.5px">404</td>
+<td style="padding:10px 12px;border-bottom:1px solid var(--border-default);font-family:var(--font-mono);font-size:13.5px">not_found</td>
+<td style="padding:10px 0;border-bottom:1px solid var(--border-default);font-size:14.5px;color:var(--text-secondary)">The resource ID is wrong or deleted</td>
+</tr>
+<tr>
+<td style="padding:10px 12px 10px 0;border-bottom:1px solid var(--border-default);font-family:var(--font-mono);font-size:13.5px">429</td>
+<td style="padding:10px 12px;border-bottom:1px solid var(--border-default);font-family:var(--font-mono);font-size:13.5px">rate_limited</td>
+<td style="padding:10px 0;border-bottom:1px solid var(--border-default);font-size:14.5px;color:var(--text-secondary)">Back off; respect retry-after</td>
+</tr>
+<tr>
+<td style="padding:10px 12px 10px 0;border-bottom:1px solid var(--border-default);font-family:var(--font-mono);font-size:13.5px">500</td>
+<td style="padding:10px 12px;border-bottom:1px solid var(--border-default);font-family:var(--font-mono);font-size:13.5px">server_error</td>
+<td style="padding:10px 0;border-bottom:1px solid var(--border-default);font-size:14.5px;color:var(--text-secondary)">Retry; contact support with request_id</td>
+</tr>
 </tbody>
 </table></div>
 <p style="font-size:15.5px;line-height:1.7;color:var(--text-secondary);margin:14px 0 0">Retry <span style="font-family:var(--font-mono);font-size:13.5px">429</span> and <span style="font-family:var(--font-mono);font-size:13.5px">5xx</span> with exponential backoff; the SDKs do this for you.</p>
@@ -72,14 +90,7 @@
 class Component extends DCLogic {
   renderVals() {
     return {
-      errorJson: "{\n  \"error\": {\n    \"type\": \"rate_limited\",\n    \"message\": \"Too many requests — retry after 12s.\",\n    \"request_id\": \"req_9f2ka\"\n  }\n}",
-      codes: [
-        { code: '400', type: 'invalid_request', fix: 'Fix the field named in message' },
-        { code: '401', type: 'authentication_error', fix: 'Check the key prefix and workspace' },
-        { code: '404', type: 'not_found', fix: 'The resource ID is wrong or deleted' },
-        { code: '429', type: 'rate_limited', fix: 'Back off; respect retry-after' },
-        { code: '500', type: 'server_error', fix: 'Retry; contact support with request_id' },
-      ],
+      errorJson: "{\n  \"error\": {\n    \"type\": \"rate_limited\",\n    \"message\": \"Too many requests, retry after 12s.\",\n    \"request_id\": \"req_9f2ka\"\n  }\n}",
     };
   }
 }

@@ -1,4 +1,7 @@
-// Compile every component and showcase source into _ds_bundle.js.
+// Compile every component source into _ds_bundle.js.
+//
+// Showcases are not in it: each showcase page loads and compiles its own .jsx,
+// so a bundled copy was dead weight on every page.
 //
 // This is the DS compiler. It used to live outside the repository, which meant
 // nobody but the owner could regenerate the one artifact every page actually
@@ -19,27 +22,13 @@ import path from 'node:path';
 import crypto from 'node:crypto';
 import { createRequire } from 'node:module';
 import { fileURLToPath } from 'node:url';
+import { PUBLIC_HELPERS as PUBLIC_HELPER_NAMES } from './public_helpers.mjs';
 
 const require = createRequire(import.meta.url);
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const NAMESPACE = 'EfolusiDesignSystem_4ffc3d';
 const OUT = path.join(ROOT, '_ds_bundle.js');
-const PUBLIC_HELPERS = new Set([
-  'badgeVariants',
-  'buttonGroupVariants',
-  'buttonVariants',
-  'markerVariants',
-  'navigationMenuTriggerStyle',
-  'toggleVariants',
-  'toast',
-  'useChart',
-  'useComboboxAnchor',
-  'useDirection',
-  'useMessageScroller',
-  'useMessageScrollerScrollable',
-  'useMessageScrollerVisibility',
-  'useSidebar',
-]);
+const PUBLIC_HELPERS = new Set(PUBLIC_HELPER_NAMES);
 
 let Babel;
 try {
@@ -52,10 +41,10 @@ try {
   process.exit(2);
 }
 
-/** Every source the bundle is built from: components first, then showcases. */
+/** Every source the bundle is built from. */
 function discover() {
   const out = [];
-  for (const base of ['components', 'showcases']) {
+  for (const base of ['components']) {
     const dir = path.join(ROOT, base);
     if (!fs.existsSync(dir)) continue;
     for (const group of fs.readdirSync(dir).sort()) {
@@ -69,11 +58,10 @@ function discover() {
   return out;
 }
 
-/** Relative-import edges between bundled sources. Bare imports (react) are dropped. */
-function depsOf(rel, known) {
-  const src = fs.readFileSync(path.join(ROOT, rel), 'utf8');
+/** Relative-import edges between bundled sources; specifier lists may span lines. */
+export function depsOf(rel, src, known) {
   const deps = [];
-  for (const m of src.matchAll(/^import .* from '([^']+)';/gm)) {
+  for (const m of src.matchAll(/^import\s+(?:[^'";]*?\s+from\s+)?['"]([^'"]+)['"]/gm)) {
     const spec = m[1];
     if (!spec.startsWith('.')) continue;
     const target = path.posix.normalize(path.posix.join(path.posix.dirname(rel), spec));
@@ -88,7 +76,7 @@ function depsOf(rel, known) {
  * every cross-unit reference resolves inside a function body — but matching it
  * keeps the artifact diff-stable against the previous compiler.
  */
-function order(files, graph) {
+export function order(files, graph) {
   const done = new Set();
   const pending = [...files].sort();
   const out = [];
@@ -110,8 +98,19 @@ function order(files, graph) {
  * graph. React is read off the window global. A unit that throws is caught and
  * recorded rather than taking down the whole page.
  */
-function compileUnit(rel) {
-  const src = fs.readFileSync(path.join(ROOT, rel), 'utf8');
+// Module syntax the shared-scope scheme cannot represent; it would compile and break in the browser.
+function unsupported(rel, what) {
+  return new Error(`${rel}: ${what} is not supported by the bundle compiler (see ARCHITECTURE.md, The bundle format)`);
+}
+
+function writesWindow(e) {
+  const isWindow = n => n && n.type === 'Identifier' && n.name === 'window';
+  if (e.type === 'CallExpression' && e.callee.type === 'MemberExpression'
+    && e.callee.object.name === 'Object' && e.callee.property.name === 'assign') return isWindow(e.arguments[0]);
+  return e.type === 'AssignmentExpression' && e.left.type === 'MemberExpression' && isWindow(e.left.object);
+}
+
+export function compileSource(rel, src) {
   const exportNames = [];
   const plugin = ({ types: t }) => ({
     visitor: {
@@ -130,6 +129,9 @@ function compileUnit(rel) {
           return;
         }
         for (const spec of p.node.specifiers) {
+          if (spec.type !== 'ImportSpecifier') throw unsupported(rel, 'a relative default or namespace import');
+          const imported = spec.imported.name ?? spec.imported.value;
+          if (imported !== spec.local.name) throw unsupported(rel, `an aliased import (${imported} as ${spec.local.name})`);
           const local = spec.local.name;
           const binding = p.scope.getBinding(local);
           if (!binding) continue;
@@ -147,11 +149,26 @@ function compileUnit(rel) {
         const decl = p.node.declaration;
         if (decl) {
           if (decl.id) exportNames.push(decl.id.name);
-          else if (decl.declarations) decl.declarations.forEach(d => exportNames.push(d.id.name));
+          else if (decl.declarations) {
+            for (const d of decl.declarations) {
+              if (d.id.type !== 'Identifier') throw unsupported(rel, 'a destructured export');
+              exportNames.push(d.id.name);
+            }
+          }
           p.replaceWith(decl);
         } else {
-          p.remove();
+          throw unsupported(rel, 'an export { … } list');
         }
+      },
+      // The bundle's only global is the namespace; a unit publishing onto window leaks to every page.
+      ExpressionStatement(p) {
+        if (p.parent.type === 'Program' && writesWindow(p.node.expression)) throw unsupported(rel, 'a top-level write to window');
+      },
+      ExportDefaultDeclaration() {
+        throw unsupported(rel, 'export default');
+      },
+      ExportAllDeclaration() {
+        throw unsupported(rel, 'export *');
       },
     },
   });
@@ -165,10 +182,29 @@ function compileUnit(rel) {
   return { unit, exportNames };
 }
 
+function compileUnit(rel) {
+  return compileSource(rel, fs.readFileSync(path.join(ROOT, rel), 'utf8'));
+}
+
+// Units share one __ds_scope, so a duplicate name would silently replace the earlier export.
+export function assertUniqueExports(exportsBySource) {
+  const owner = new Map();
+  const clashes = [];
+  for (const [rel, names] of exportsBySource) {
+    for (const name of names) {
+      if (owner.has(name)) clashes.push(`${name}: ${owner.get(name)} and ${rel}`);
+      else owner.set(name, rel);
+    }
+  }
+  if (clashes.length) {
+    throw new Error(`exported names collide in the shared bundle scope:\n  ${clashes.join('\n  ')}`);
+  }
+}
+
 function build() {
   const files = discover();
   const known = new Set(files);
-  const graph = new Map(files.map(f => [f, depsOf(f, known)]));
+  const graph = new Map(files.map(f => [f, depsOf(f, fs.readFileSync(path.join(ROOT, f), 'utf8'), known)]));
   const emitOrder = order(files, graph);
 
   const units = [];
@@ -178,6 +214,7 @@ function build() {
     units.push(unit);
     exportsBySource.set(rel, exportNames);
   }
+  assertUniqueExports(exportsBySource);
 
   // A capitalised export from components/ is a public component. Lowercase
   // exports stay private unless an explicit compatibility contract exposes
@@ -238,25 +275,30 @@ function build() {
   ].join('\n');
 }
 
-const check = process.argv.includes('--check');
-const next = build();
-const current = fs.existsSync(OUT) ? fs.readFileSync(OUT, 'utf8') : null;
+// Only build when run as a script; tests import the functions above.
+if (process.argv[1] && path.resolve(process.argv[1]) === fileURLToPath(import.meta.url)) main();
 
-if (check) {
-  if (current === next) {
-    console.log('_ds_bundle.js is reproducible from source (byte-identical)');
-    process.exit(0);
+function main() {
+  const check = process.argv.includes('--check');
+  const next = build();
+  const current = fs.existsSync(OUT) ? fs.readFileSync(OUT, 'utf8') : null;
+
+  if (check) {
+    if (current === next) {
+      console.log('_ds_bundle.js is reproducible from source (byte-identical)');
+      process.exit(0);
+    }
+    console.error(
+      '_ds_bundle.js does not match a fresh compile of the sources.\n' +
+      'Run `node scripts/build_bundle.mjs` and commit the result.'
+    );
+    process.exit(1);
   }
-  console.error(
-    '_ds_bundle.js does not match a fresh compile of the sources.\n' +
-    'Run `node scripts/build_bundle.mjs` and commit the result.'
-  );
-  process.exit(1);
-}
 
-fs.writeFileSync(OUT, next);
-console.log(
-  current === next
-    ? `_ds_bundle.js unchanged (${Object.keys(JSON.parse(next.slice(next.indexOf('{'), next.indexOf(' */'))).sourceHashes).length} sources)`
-    : '_ds_bundle.js rewritten'
-);
+  fs.writeFileSync(OUT, next);
+  console.log(
+    current === next
+      ? `_ds_bundle.js unchanged (${Object.keys(JSON.parse(next.slice(next.indexOf('{'), next.indexOf(' */'))).sourceHashes).length} sources)`
+      : '_ds_bundle.js rewritten'
+  );
+}

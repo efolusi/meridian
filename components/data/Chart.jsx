@@ -26,7 +26,9 @@ export function ChartStyle({ id, config }) {
     const value = item.theme ? item.theme[theme] : item.color;
     return value ? `--color-${key}:${value};` : '';
   }).join('\n')}\n}`).join('\n');
-  return <style dangerouslySetInnerHTML={{ __html: css }} />;
+  // Raw text inside <style>: server-rendered, a `<` in a config value could
+  // close the element and open a script. CSS never needs a literal `<` here.
+  return <style dangerouslySetInnerHTML={{ __html: css.replace(/</g, '\\3c ') }} />;
 }
 
 export const ChartContainer = React.forwardRef(function ChartContainer({ id, className, children, config = {}, initialDimension = INITIAL_DIMENSION, ...props }, ref) {
@@ -52,7 +54,7 @@ function payloadConfig(config, payload, key) {
   return config[mapped] || config[key];
 }
 
-export function ChartTooltipContent({ active, payload, className, indicator = 'dot', hideLabel = false, hideIndicator = false, label, labelFormatter, labelClassName, formatter, color, nameKey, labelKey }) {
+export function ChartTooltipContent({ active, payload, locale = 'en-US', className, indicator = 'dot', hideLabel = false, hideIndicator = false, label, labelFormatter, labelClassName, formatter, color, nameKey, labelKey }) {
   injectEfCss('ef-css-chart', CSS);
   const { config } = useChart();
   if (!active || !payload || !payload.length) return null;
@@ -68,7 +70,7 @@ export function ChartTooltipContent({ active, payload, className, indicator = 'd
       return <div className="ef-chart-tooltip__item" key={index}>{formatter && item.value !== undefined && item.name ? formatter(item.value, item.name, item, index, item.payload) : <>
         {configItem?.icon ? React.createElement(configItem.icon) : !hideIndicator ? <span className={`ef-chart-tooltip__indicator ef-chart-tooltip__indicator--${indicator}`} style={{ '--chart-indicator': indicatorColor }} /> : null}
         <span className="ef-chart-tooltip__name">{nestLabel ? labelNode : null}{configItem?.label || item.name}</span>
-        {item.value != null ? <span className="ef-chart-tooltip__value">{typeof item.value === 'number' ? item.value.toLocaleString() : String(item.value)}</span> : null}
+        {item.value != null ? <span className="ef-chart-tooltip__value">{typeof item.value === 'number' ? new Intl.NumberFormat(locale).format(item.value) : String(item.value)}</span> : null}
       </>}</div>;
     })}
   </div></div>;

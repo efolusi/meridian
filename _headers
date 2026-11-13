@@ -1,12 +1,18 @@
 # Header rules in the _headers format, for static hosts that read it. The
 # Meridian deploy does not: meridian.efolusi.com sets its headers in the
-# nginx/*.conf vhosts. Later rules override earlier duplicates.
+# nginx/*.conf vhosts, and this file mirrors their cache policy so a fork
+# deployed elsewhere behaves the same (tests/headers-parity.test.mjs).
+# Later rules override earlier duplicates.
 
+# Icons, logos, favicon, social image: a week, so a replaced file without a
+# ?v= query still propagates on its own.
 /assets/*
-  Cache-Control: public, max-age=86400
+  Cache-Control: public, max-age=604800
 
+# Self-hosted fonts keep stable filenames: a year, but not immutable, so a
+# face replaced in place still reaches a returning visitor.
 /assets/fonts/*
-  Cache-Control: public, max-age=31536000, immutable
+  Cache-Control: public, max-age=31536000
 
 # Never let the compiled bundle or tokens go stale in browsers
 /_ds_bundle.js
@@ -25,9 +31,6 @@
 /site/*
   Cache-Control: no-cache
 
-# The registry is meant to be consumed by external tools
-/site/registry.json
-  Access-Control-Allow-Origin: *
-
-/site/registry/*
-  Access-Control-Allow-Origin: *
+# The release marker the deploy probes must never be cached
+/meridian-release.txt
+  Cache-Control: no-store, max-age=0

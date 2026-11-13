@@ -22,3 +22,12 @@ describe('Meridian integration and release isolation', () => {
     expect(publish).not.toMatch(/push:\n\s+branches: \[[^\]]*dev/);
   });
 });
+
+describe('visual baseline refreshes', () => {
+  it('target dev, the integration branch, never main', async () => {
+    const baselines = await readRepoFile('.github/workflows/update-visual-baselines.yml');
+    expect(baselines).toContain('gh pr create --base dev ');
+    expect(baselines).not.toMatch(/--base main\b/);
+    expect(baselines).toContain('/compare/dev...$BRANCH');
+  });
+});

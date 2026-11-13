@@ -7,9 +7,11 @@ import { Portal, useAnchoredStyle } from '../overlay/Portal.jsx';
 const CSS = `
 .ef-combobox{position:relative;width:100%}.ef-combobox__input-group{width:100%}.ef-combobox__input{min-width:0}.ef-combobox__actions{gap:2px;padding-inline:4px;border:0}.ef-combobox__button{display:inline-flex;width:26px;height:26px;align-items:center;justify-content:center;border:0;border-radius:var(--radius-sm);background:transparent;color:var(--text-muted);cursor:pointer}.ef-combobox__button:hover{background:var(--surface-sunken);color:var(--text-primary)}.ef-combobox__button:focus-visible{outline:none;box-shadow:var(--focus-ring)}.ef-combobox__button:disabled{cursor:not-allowed;opacity:.45}
 .ef-combobox__content{position:fixed;z-index:var(--z-popover);max-height:min(384px,var(--ef-available-height,384px));overflow:hidden;border:1px solid var(--border-default);border-radius:var(--radius-md);background:var(--surface-card);color:var(--text-primary);box-shadow:var(--shadow-md);animation:ef-combobox-in var(--dur-fast) var(--ease-out)}@keyframes ef-combobox-in{from{opacity:0;transform:translateY(-3px)}}
-.ef-combobox__list{max-height:min(340px,var(--ef-available-height,340px));overflow-y:auto;padding:4px;scroll-padding-block:4px}.ef-combobox__item{position:relative;display:flex;width:100%;align-items:center;gap:8px;padding:7px 30px 7px 8px;border:0;border-radius:var(--radius-sm);outline:0;background:transparent;color:var(--text-primary);font:inherit;font-size:var(--text-sm);text-align:start;cursor:default;user-select:none}.ef-combobox__item[data-highlighted="true"]{background:var(--surface-sunken)}.ef-combobox__item[data-disabled="true"]{pointer-events:none;opacity:.5}.ef-combobox__item[hidden]{display:none}.ef-combobox__indicator{position:absolute;inset-inline-end:8px;display:inline-flex;color:var(--accent)}
+.ef-combobox__list{max-height:min(340px,var(--ef-available-height,340px));overflow-y:auto;padding:4px;scroll-padding-block:4px}.ef-combobox__item{position:relative;display:flex;width:100%;align-items:center;gap:8px;padding:7px 30px 7px 8px;border:0;border-radius:var(--radius-sm);outline:0;background:transparent;color:var(--text-primary);font:inherit;font-size:var(--text-sm);text-align:start;cursor:pointer;user-select:none}.ef-combobox__item[data-highlighted="true"]{background:var(--surface-sunken);box-shadow:inset 0 0 0 2px var(--focus-ring-color)}.ef-combobox__item[data-disabled="true"]{pointer-events:none;opacity:.5}.ef-combobox__item[hidden]{display:none}.ef-combobox__indicator{position:absolute;inset-inline-end:8px;display:inline-flex;color:var(--accent)}
 .ef-combobox__group{padding:4px}.ef-combobox__group:not(:has(.ef-combobox__item:not([hidden]))){display:none}.ef-combobox__label{padding:6px 8px;color:var(--text-muted);font-size:var(--text-xs);font-weight:var(--weight-medium)}.ef-combobox__empty{display:flex;justify-content:center;padding:12px;color:var(--text-muted);font-size:var(--text-sm)}.ef-combobox__separator{height:1px;margin:4px -4px;background:var(--border-default)}
-.ef-combobox__chips{display:flex;min-height:var(--control-h-md);width:100%;flex-wrap:wrap;align-items:center;gap:6px;padding:5px 8px;border:1px solid var(--border-strong);border-radius:var(--radius-sm);background:var(--surface-card)}.ef-combobox__chips:focus-within{border-color:var(--accent);box-shadow:var(--focus-ring)}.ef-combobox__chip{display:inline-flex;height:24px;align-items:center;gap:3px;padding:0 4px 0 7px;border-radius:var(--radius-sm);background:var(--surface-sunken);font-size:var(--text-xs);font-weight:var(--weight-medium)}.ef-combobox__chip-remove{display:inline-flex;width:20px;height:20px;align-items:center;justify-content:center;border:0;border-radius:var(--radius-sm);background:transparent;color:var(--text-muted);cursor:pointer}.ef-combobox__chip-remove:hover{background:var(--surface-card);color:var(--text-primary)}.ef-combobox__chips-input{min-width:64px;flex:1;border:0;outline:0;background:transparent;color:var(--text-primary);font:inherit;font-size:var(--text-sm)}
+.ef-combobox__chips{display:flex;min-height:var(--control-h-md);width:100%;flex-wrap:wrap;align-items:center;gap:6px;padding:5px 8px;border:1px solid var(--border-control,var(--border-strong));border-radius:var(--radius-sm);background:var(--surface-card)}.ef-combobox__chips:focus-within{border-color:var(--accent);box-shadow:var(--focus-ring)}.ef-combobox__chip{display:inline-flex;height:24px;align-items:center;gap:3px;padding:0 4px 0 7px;border-radius:var(--radius-sm);background:var(--surface-sunken);font-size:var(--text-xs);font-weight:var(--weight-medium)}.ef-combobox__chip-remove{display:inline-flex;width:20px;height:20px;align-items:center;justify-content:center;border:0;border-radius:var(--radius-sm);background:transparent;color:var(--text-muted);cursor:pointer}.ef-combobox__chip-remove:hover{background:var(--surface-card);color:var(--text-primary)}.ef-combobox__chips-input{min-width:64px;flex:1;border:0;outline:0;background:transparent;color:var(--text-primary);font:inherit;font-size:var(--text-sm)}
+/* Touch: fixed-size targets grow to --tap-min; small glyph buttons keep their look and get a centred --tap-min hit area instead. */
+@media (pointer:coarse){.ef-combobox__item{min-height:var(--tap-min)}.ef-combobox__button,.ef-combobox__chip-remove{position:relative}.ef-combobox__button::before,.ef-combobox__chip-remove::before{content:"";position:absolute;inset:calc(50% - var(--tap-min) / 2)}}
 `;
 
 const ComboboxContext = React.createContext(null);
@@ -43,11 +45,26 @@ export function Combobox({ items = [], value, defaultValue, onValueChange, multi
     if (!isOpen || !autoHighlight || !visibleRecords.length) return;
     if (!visibleRecords.some(record => record.id === active)) setActive(visibleRecords[0].id);
   }, [isOpen, query, version, autoHighlight]);
+  const labelOf = next => {
+    const found = items.find(item => same(itemValue(item), next));
+    if (found !== undefined) return itemText(found);
+    const record = [...records.current.values()].find(entry => same(entry.value, next));
+    return record ? record.text : undefined;
+  };
   React.useEffect(() => {
     if (multiple || isOpen || query || currentValue == null) return;
-    const found = items.find(item => same(itemValue(item), currentValue));
-    if (found !== undefined) setQuery(itemText(found));
+    const label = labelOf(currentValue);
+    if (label !== undefined) setQuery(label);
   }, [currentValue, items, isOpen, multiple]);
+  // A value changed from outside (a controlled reset, a programmatic pick)
+  // must also move the text in the input, or it keeps showing the old label.
+  const shownValue = React.useRef(currentValue);
+  React.useEffect(() => {
+    if (multiple || same(shownValue.current, currentValue)) return;
+    shownValue.current = currentValue;
+    const label = currentValue == null ? '' : labelOf(currentValue);
+    if (label !== undefined && label !== query) setQuery(label);
+  }, [currentValue, multiple]);
   const choose = React.useCallback((next, label) => {
     if (multiple) {
       const values = Array.isArray(selected) ? selected : [];
@@ -83,7 +100,8 @@ export const ComboboxClear = React.forwardRef(function ComboboxClear({ className
 function useInputKeyboard(context, onKeyDown) {
   return event => {
     onKeyDown?.(event);
-    if (event.defaultPrevented || !context) return;
+    // Keys typed while an IME composes text belong to the IME, not the list.
+    if (event.defaultPrevented || !context || event.nativeEvent?.isComposing || event.keyCode === 229) return;
     const current = [...context.records.current.values()].filter(record => !record.disabled && context.matches(record));
     if (event.key === 'ArrowDown' || event.key === 'ArrowUp') {
       event.preventDefault(); context.setOpen(true);
@@ -108,7 +126,7 @@ export const ComboboxInput = React.forwardRef(function ComboboxInput({ className
   const localRef = React.useRef(null);
   React.useImperativeHandle(forwardedRef, () => localRef.current);
   const hasSelection = context?.multiple ? context.selected.length > 0 : context?.selected != null;
-  return <div ref={context?.anchorRef} className="ef-combobox"><InputGroup className={join('ef-combobox__input-group', className)}><InputGroupInput ref={localRef} data-slot="combobox-input" role="combobox" aria-autocomplete="list" aria-expanded={context?.isOpen} aria-controls={context?.listId} aria-activedescendant={context?.active || undefined} disabled={disabled || context?.disabled} className="ef-combobox__input" value={context?.query ?? ''} onChange={event => { context?.setQuery(event.target.value); context?.setOpen(true); onChange?.(event); }} onFocus={event => { context?.setOpen(true); onFocus?.(event); }} onKeyDown={useInputKeyboard(context, onKeyDown)} {...props} /><InputGroupAddon align="inline-end" className="ef-combobox__actions">{showClear && hasSelection ? <ComboboxClear /> : showTrigger ? <ComboboxTrigger /> : null}</InputGroupAddon>{children}</InputGroup></div>;
+  return <div ref={context?.anchorRef} className="ef-combobox"><InputGroup className={join('ef-combobox__input-group', className)}><InputGroupInput ref={localRef} data-slot="combobox-input" role="combobox" aria-autocomplete="list" aria-expanded={context?.isOpen} aria-controls={context?.listId} aria-activedescendant={(context?.isOpen && context.active) || undefined} disabled={disabled || context?.disabled} className="ef-combobox__input" value={context?.query ?? ''} onChange={event => { context?.setQuery(event.target.value); context?.setOpen(true); onChange?.(event); }} onFocus={event => { context?.setOpen(true); onFocus?.(event); }} onKeyDown={useInputKeyboard(context, onKeyDown)} {...props} /><InputGroupAddon align="inline-end" className="ef-combobox__actions">{showClear && hasSelection ? <ComboboxClear /> : showTrigger ? <ComboboxTrigger /> : null}</InputGroupAddon>{children}</InputGroup></div>;
 });
 
 export const ComboboxContent = React.forwardRef(function ComboboxContent({ className, side = 'bottom', sideOffset = 6, align = 'start', alignOffset = 0, anchor, children, ...props }, forwardedRef) {
@@ -160,5 +178,5 @@ export const ComboboxChips = React.forwardRef(function ComboboxChips({ className
   return <div ref={localRef} data-slot="combobox-chips" className={join('ef-combobox__chips', className)} {...props} />;
 });
 export const ComboboxChip = React.forwardRef(function ComboboxChip({ value, className, children, showRemove = true, ...props }, ref) { const context = React.useContext(ComboboxContext); const nextValue = value ?? textOf(children); return <span ref={ref} data-slot="combobox-chip" className={join('ef-combobox__chip', className)} {...props}>{children}{showRemove ? <button type="button" data-slot="combobox-chip-remove" className="ef-combobox__chip-remove" aria-label={`Remove ${itemText(nextValue)}`} onClick={() => context?.remove(nextValue)}><Icon name="x" size={12} /></button> : null}</span>; });
-export const ComboboxChipsInput = React.forwardRef(function ComboboxChipsInput({ className, onChange, onFocus, onKeyDown, ...props }, ref) { const context = React.useContext(ComboboxContext); return <input ref={ref} data-slot="combobox-chips-input" role="combobox" aria-autocomplete="list" aria-expanded={context?.isOpen} aria-controls={context?.listId} aria-activedescendant={context?.active || undefined} className={join('ef-combobox__chips-input', className)} value={context?.query ?? ''} onChange={event => { context?.setQuery(event.target.value); context?.setOpen(true); onChange?.(event); }} onFocus={event => { context?.setOpen(true); onFocus?.(event); }} onKeyDown={useInputKeyboard(context, onKeyDown)} {...props} />; });
+export const ComboboxChipsInput = React.forwardRef(function ComboboxChipsInput({ className, onChange, onFocus, onKeyDown, ...props }, ref) { const context = React.useContext(ComboboxContext); return <input ref={ref} data-slot="combobox-chips-input" role="combobox" aria-autocomplete="list" aria-expanded={context?.isOpen} aria-controls={context?.listId} aria-activedescendant={(context?.isOpen && context.active) || undefined} className={join('ef-combobox__chips-input', className)} value={context?.query ?? ''} onChange={event => { context?.setQuery(event.target.value); context?.setOpen(true); onChange?.(event); }} onFocus={event => { context?.setOpen(true); onFocus?.(event); }} onKeyDown={useInputKeyboard(context, onKeyDown)} {...props} />; });
 export function useComboboxAnchor() { return React.useRef(null); }

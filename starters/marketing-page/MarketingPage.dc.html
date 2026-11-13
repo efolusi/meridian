@@ -1,19 +1,19 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-<meta charset="utf-8">
+<meta charset="utf-8"><title>Home | Fernwick</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <script src="./support.js"></script>
 </head>
 <body>
 <x-dc>
 <!-- @template name="Marketing page" description="Marketing journey (3 pages): home, pricing, contact, linked to auth + docs" -->
-<helmet><script src="./ds-base.js"></script><style>@view-transition{navigation:auto}::view-transition-group(*){animation-duration:160ms}@media (prefers-reduced-motion:reduce){::view-transition-group(*),::view-transition-old(*),::view-transition-new(*){animation:none!important}}html{background:#FAF9F6}@media(max-width:760px){.mk-header{padding:12px 16px!important;gap:12px!important}.mk-header nav{order:3;width:100%;overflow-x:auto}.mk-header nav a{padding-left:8px!important;padding-right:8px!important}.mk-products{grid-template-columns:1fr!important}}</style></helmet>
+<helmet><script src="./ds-base.js"></script><style>@view-transition{navigation:auto}::view-transition-group(*){animation-duration:160ms}@media (prefers-reduced-motion:reduce){::view-transition-group(*),::view-transition-old(*),::view-transition-new(*){animation:none!important}}html{background:#FAF9F6}@media(max-width:760px){.mk-header{padding:12px 16px!important;gap:12px!important}.mk-header nav{order:3;width:100%;overflow-x:auto}.mk-header nav a{padding-left:8px!important;padding-right:8px!important}.mk-products{grid-template-columns:1fr!important}}@media (pointer:coarse){header a[href],nav a[href],footer a[href]{min-height:var(--tap-min);display:inline-flex;align-items:center}}</style></helmet>
 <div style="min-height:100vh;background:var(--surface-page);color:var(--text-primary);font-family:var(--font-sans)">
 <header class="mk-header" style="view-transition-name:shell-top;display:flex;flex-wrap:wrap;align-items:center;gap:28px;min-height:64px;padding:0 32px;border-bottom:1px solid var(--border-default);max-width:1200px;width:100%;box-sizing:border-box;margin:0 auto">
 <span style="display:flex;align-items:center;gap:6px">
-<img src="../../assets/meridian-mark.svg" alt="" style="width:30px;height:16px">
-<span style="font-family:var(--font-display);font-weight:680;letter-spacing:-0.02em;font-size:20px">Meridian</span>
+<svg viewBox="0 0 62 33" fill="currentColor" aria-hidden="true" focusable="false" style="width:30px;height:16px"><path d="M16.9 3h9.2c1.1 0 1.7 1.1 1.1 2L13.5 29.5c-.3.6-.9.9-1.6.9H2.8c-1.1 0-1.7-1.1-1.1-2L15.3 3.9c.3-.6.9-.9 1.6-.9Z"></path><path transform="translate(17)" d="M16.9 3h9.2c1.1 0 1.7 1.1 1.1 2L13.5 29.5c-.3.6-.9.9-1.6.9H2.8c-1.1 0-1.7-1.1-1.1-2L15.3 3.9c.3-.6.9-.9 1.6-.9Z"></path><path transform="translate(34)" d="M16.9 3h9.2c1.1 0 1.7 1.1 1.1 2L13.5 29.5c-.3.6-.9.9-1.6.9H2.8c-1.1 0-1.7-1.1-1.1-2L15.3 3.9c.3-.6.9-.9 1.6-.9Z"></path></svg>
+<span style="font-family:var(--font-display);font-weight:680;letter-spacing:-0.02em;font-size:20px">Fernwick</span>
 </span>
 <nav style="display:flex;gap:4px">
 <a href="./MarketingPage.dc.html" style="padding:7px 12px;font-size:14px;font-weight:600;color:var(--text-primary);text-decoration:none">Products</a>
@@ -38,28 +38,28 @@
 <section style="max-width:1200px;margin:0 auto;padding:0 32px 96px">
 <div class="mk-products" style="display:grid;grid-template-columns:repeat(3,1fr);gap:20px">
 <div style="background:var(--surface-card);border:1px solid var(--border-default);border-radius:var(--radius-md);padding:24px">
-<h3 style="font-size:21px;font-weight:600;font-family:var(--font-display);letter-spacing:-0.02em;margin:0">AI agents</h3>
+<h2 style="font-size:21px;font-weight:600;font-family:var(--font-display);letter-spacing:-0.02em;margin:0">AI agents</h2>
 <p style="font-size:14.5px;line-height:1.6;color:var(--text-secondary);margin:8px 0 0">Autonomous AI that plans, executes, and reports, with every step logged.</p>
 </div>
 <div style="background:var(--surface-card);border:1px solid var(--border-default);border-radius:var(--radius-md);padding:24px">
-<h3 style="font-size:21px;font-weight:600;font-family:var(--font-display);letter-spacing:-0.02em;margin:0">Infrastructure</h3>
+<h2 style="font-size:21px;font-weight:600;font-family:var(--font-display);letter-spacing:-0.02em;margin:0">Infrastructure</h2>
 <p style="font-size:14.5px;line-height:1.6;color:var(--text-secondary);margin:8px 0 0">Every cloud, database, domain, and cert behind one calm control plane.</p>
 </div>
 <div style="background:var(--surface-card);border:1px solid var(--border-default);border-radius:var(--radius-md);padding:24px">
-<h3 style="font-size:21px;font-weight:600;font-family:var(--font-display);letter-spacing:-0.02em;margin:0">Automation</h3>
+<h2 style="font-size:21px;font-weight:600;font-family:var(--font-display);letter-spacing:-0.02em;margin:0">Automation</h2>
 <p style="font-size:14.5px;line-height:1.6;color:var(--text-secondary);margin:8px 0 0">Content at scale: text, audio, image, and video from one brief.</p>
 </div>
 </div>
 </section>
 <sc-if value="{{ showQuote }}" hint-placeholder-val="{{ true }}">
 <section style="background:var(--brand-950);color:var(--brand-50);padding:88px 32px;text-align:center">
-<div style="font-family:var(--font-display);font-size:34px;font-weight:600;letter-spacing:-0.02em;line-height:1.3;max-width:760px;margin:0 auto">“We deleted 40k lines of billing code the week we adopted Meridian. I'm still a little emotional about it.”</div>
+<div style="font-family:var(--font-display);font-size:34px;font-weight:600;letter-spacing:-0.02em;line-height:1.3;max-width:760px;margin:0 auto">“We deleted 40k lines of billing code the week we adopted Fernwick. I'm still a little emotional about it.”</div>
 <div style="margin-top:24px;font-size:14px;color:var(--text-on-brand-muted)"><strong style="color:var(--brand-50)">June Park</strong> · CTO, Bloom Health</div>
 </section>
 </sc-if>
 <footer style="view-transition-name:shell-foot;border-top:1px solid var(--border-default);background:var(--surface-subtle)">
 <div style="max-width:1200px;margin:0 auto;padding:40px 32px;display:flex;align-items:center;font-size:12px;color:var(--text-muted)">
-<span>© 2026 Meridian.</span>
+<span>© 2026 Fernwick.</span>
 <div style="margin-left:auto;display:flex;gap:20px">
 <a href="#" style="color:var(--text-muted);text-decoration:none">Privacy</a>
 <a href="#" style="color:var(--text-muted);text-decoration:none">Terms</a>

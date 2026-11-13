@@ -9,3 +9,5 @@ Copyable product-app journey: overview → projects → project detail → new p
 - `AppSettings.dc.html` — app settings tabs
 
 No showcase twin: this is the generic app shell every example app specializes.
+
+Sibling journeys: none. Every link stays inside this folder, so it can be copied alone.

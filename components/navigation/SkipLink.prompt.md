@@ -5,4 +5,4 @@ First focusable element on the page: one Tab press jumps a keyboard user past th
 <main id="main" tabIndex={-1}>…</main>
 ```
 
-The target needs `tabIndex={-1}`, or Safari and Firefox scroll without moving focus and the next Tab lands back in the navigation.
+The link moves focus to the target itself and does not change `location.hash`, so hash-based routers are not triggered. A target without a `tabindex` gets `tabIndex={-1}` on first use; setting it yourself, as above, keeps the markup explicit.

@@ -16,10 +16,10 @@ function GeneralTab({ notify }) {
   return (
     <Card style={{ '--card-spacing': '24px' }}><CardContent>
       <SectionRow title="Workspace name" desc="Shown in the sidebar and on invoices.">
-        <Input defaultValue="Acme Workspace" />
+        <Input aria-label="Workspace name" defaultValue="Acme Workspace" />
       </SectionRow>
       <SectionRow title="Description" desc="Helps teammates pick the right workspace.">
-        <Textarea defaultValue="Robotics tooling for the Acme fleet." rows={3} />
+        <Textarea aria-label="Description" defaultValue="Robotics tooling for the Acme fleet." rows={3} />
       </SectionRow>
       <SectionRow title="Default surface" desc="Where new members land after sign-in.">
         <NativeSelect defaultValue="AI agents" aria-label="Default surface">{['AI agents', 'Infrastructure', 'Automation', 'File tools', 'Trading', 'Finance'].map(value => <NativeSelectOption key={value} value={value}>{value}</NativeSelectOption>)}</NativeSelect>
@@ -58,13 +58,13 @@ function MembersTab({ notify }) {
   );
 }
 
-const SEED_KEYS = [['Production', 'ef_live_…8f2a', 'Jul 2, 2026', true], ['Staging', 'ef_test_…c91d', 'May 14, 2026', false]];
+const SEED_KEYS = [['Production', 'fw_live_…8f2a', 'Jul 2, 2026', true], ['Staging', 'fw_test_…c91d', 'May 14, 2026', false]];
 function ApiTab({ notify }) {
   const [keys, setKeys] = React.useState(SEED_KEYS);
   const [confirm, setConfirm] = React.useState(false);
   const createKey = () => {
     const n = ['Preview', 'CI', 'Local dev'][keys.length - 2] || 'Key ' + keys.length;
-    setKeys(k => [...k, [n, 'ef_test_…' + Math.random().toString(16).slice(2, 6), 'Jul 16, 2026', false]]);
+    setKeys(k => [...k, [n, 'fw_test_…' + Math.random().toString(16).slice(2, 6), 'Jul 16, 2026', false]]);
     notify('Key created', 'Copy it now. We only show it once.');
   };
   return (

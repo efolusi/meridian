@@ -1,5 +1,7 @@
 import React from 'react';
 const _cache = {};
+// One request per glyph: instances mounting together share the in-flight fetch.
+const _inflight = {};
 function base(){
   if (window.__efBase !== undefined) return window.__efBase;
   const s = [...document.querySelectorAll('script')].find(el => el.src && el.src.includes('_ds_bundle.js'));
@@ -23,17 +25,22 @@ export function Icon({ name, size = 16, strokeWidth = 1.5, title, className, sty
     // remembered as '' instead of being refetched by every later mount.
     if (name in _cache) { setSvg(_cache[name]); return; }
     let live = true;
-    fetch(base() + 'assets/icons/' + name + '.svg')
-      .then(r => {
-        // A served 404 means the name is wrong; anything else — offline, a
-        // jsdom test with no base URL, a blocked request — is the environment,
-        // not the call site, so it stays quiet rather than crying wolf on
-        // every valid icon in a consumer's test run.
-        if (!r.ok) { warnMissing(name); return Promise.reject(new Error('HTTP ' + r.status)); }
-        return r.text();
-      })
-      .then(t => { _cache[name] = t; if (live) setSvg(t); })
-      .catch(() => { _cache[name] = ''; if (live) setSvg(''); });
+    if (!_inflight[name]) {
+      _inflight[name] = fetch(base() + 'assets/icons/' + name + '.svg')
+        .then(r => {
+          // A served 404 means the name is wrong; anything else — offline, a
+          // jsdom test with no base URL, a blocked request — is the environment,
+          // not the call site, so it stays quiet rather than crying wolf on
+          // every valid icon in a consumer's test run.
+          if (r.status === 404) { warnMissing(name); _cache[name] = ''; return ''; }
+          if (!r.ok) return '';
+          return r.text().then(t => (_cache[name] = t));
+        })
+        // A network failure is not remembered, so a later mount tries again.
+        .catch(() => '')
+        .finally(() => { delete _inflight[name]; });
+    }
+    _inflight[name].then(t => { if (live) setSvg(t); });
     return () => { live = false; };
   }, [name]);
   const html = svg

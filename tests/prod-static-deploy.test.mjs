@@ -1,10 +1,12 @@
-import { readFileSync } from 'node:fs'
+import { execFileSync } from 'node:child_process'
+import { mkdirSync, mkdtempSync, readFileSync, readdirSync, rmSync, symlinkSync, utimesSync } from 'node:fs'
+import { tmpdir } from 'node:os'
+import { join } from 'node:path'
 import { describe, expect, it } from 'vitest'
 
 const workflow = readFileSync('.github/workflows/deploy-prod-static.yml', 'utf8')
 const deploy = readFileSync('scripts/deploy-prod-static.sh', 'utf8')
 const nginx = readFileSync('nginx/meridian.efolusi.com.conf', 'utf8')
-const prerequisites = readFileSync('nginx/meridian-prod-runner-prerequisites.md', 'utf8')
 
 describe('Meridian production static deployment', () => {
   it('is main-only and binds the exact push SHA on the production runner', () => {
@@ -23,6 +25,32 @@ describe('Meridian production static deployment', () => {
     expect(workflow).toContain('npm ci --no-audit --no-fund')
     expect(workflow).toContain('npm run check')
     expect(workflow).toContain('git diff --exit-code')
+  })
+
+  it('publishes every root file the hosted consumers fetch', () => {
+    const publicPaths = deploy.match(/^public_paths=\(\n([\s\S]*?)\n\)/m)[1]
+      .split('\n').map((p) => p.trim())
+    const servedBy = (rel) => publicPaths.some((p) => rel === p || rel.startsWith(`${p}/`))
+    // @efolusi/meridian-mcp reads these from https://meridian.efolusi.com by
+    // default; llms.txt advertises root paths to agents.
+    const mcp = readFileSync('mcp/server.mjs', 'utf8')
+    const mcpReads = [...mcp.matchAll(/readJSON\(['`]([^'`$]+)/g)].map(([, rel]) => rel)
+    const llms = readFileSync('llms.txt', 'utf8')
+    const llmsPaths = [
+      ...[...llms.matchAll(/(?:^|[\s(,])\/([A-Za-z0-9_][\w./-]*\.(?:json|js|css|txt|html|xml|md))\b/gm)].map(([, rel]) => rel),
+      ...[...llms.matchAll(/(?:^|[\s(,])\/(LICENSE)\b/gm)].map(([, rel]) => rel),
+    ]
+    // skills/SKILL.md sends agents to the README "one level up" from the skill.
+    expect(readFileSync('skills/SKILL.md', 'utf8')).toContain('repository README.md')
+    llmsPaths.push('README.md')
+    for (const doc of ['README.md', 'ARCHITECTURE.md', 'CHANGELOG.md', 'CONTRIBUTING.md', 'SECURITY.md', 'LICENSE']) {
+      expect(llmsPaths).toContain(doc)
+    }
+    expect(mcpReads).toContain('tokens.json')
+    expect(llmsPaths).toContain('tokens.json')
+    for (const rel of [...mcpReads, ...llmsPaths]) {
+      expect(servedBy(rel), `${rel} is fetched from the host but not published`).toBe(true)
+    }
   })
 
   it('publishes exact committed bytes into an immutable SHA release', () => {
@@ -90,12 +118,49 @@ describe('Meridian production static deployment', () => {
     expect(nginx).not.toContain('proxy_pass')
     expect(`${workflow}\n${deploy}\n${nginx}`).not.toMatch(/\bpm2\b|\bdocker\b/i)
   })
+})
 
-  it('limits the one-time host authority to a read-only Nginx test', () => {
-    expect(prerequisites).toContain('`sudo -n /usr/sbin/nginx -t`')
-    expect(prerequisites).toContain('Do not grant')
-    expect(prerequisites).toContain('Nginx reload/restart')
-    expect(prerequisites).toContain('`efolusi-prod`')
-    expect(prerequisites).toContain('No repository/environment secret')
+describe('release pruning on both hosts', () => {
+  const scripts = {
+    prod: readFileSync('scripts/deploy-prod-static.sh', 'utf8'),
+    dev: readFileSync('scripts/deploy-dev-static.sh', 'utf8'),
+  }
+  const pruneSource = (src) => src.match(/^prune_releases\(\) \{[\s\S]*?\n\}/m)?.[0]
+
+  it('is the same function in both deploy scripts and runs only after a verified deploy', () => {
+    expect(pruneSource(scripts.prod)).toBeTruthy()
+    expect(pruneSource(scripts.dev)).toBe(pruneSource(scripts.prod))
+    for (const src of Object.values(scripts)) {
+      expect(src).toContain('keep_releases=5')
+      const call = src.indexOf('prune_releases "$keep_releases"')
+      expect(call).toBeGreaterThan(src.lastIndexOf('trap - ERR'))
+      // A failed prune warns; it never fails or rolls back a good deploy.
+      expect(src).toMatch(/prune_releases "\$keep_releases" \|\| echo .*warning/)
+    }
+  })
+
+  it('keeps the newest N releases plus whatever current points to', () => {
+    const fixture = mkdtempSync(join(tmpdir(), 'meridian-prune-'))
+    const releases = join(fixture, 'releases')
+    const sha = (n) => n.toString(16).padStart(40, '0')
+    try {
+      for (let n = 1; n <= 8; n++) {
+        mkdirSync(join(releases, sha(n)), { recursive: true })
+        // Older n gets an older mtime: release 1 is the oldest.
+        const t = new Date(Date.UTC(2026, 0, n))
+        utimesSync(join(releases, sha(n)), t, t)
+      }
+      mkdirSync(join(releases, `.${sha(9)}.123`)) // an in-flight candidate
+      symlinkSync(join(releases, sha(1)), join(fixture, 'current')) // rolled back to the oldest
+      execFileSync('/bin/bash', ['-c', `set -Eeuo pipefail
+deploy_root="$1"
+releases_root="$1/releases"
+${pruneSource(scripts.prod)}
+prune_releases 5`, 'bash', fixture])
+      const left = readdirSync(releases).sort()
+      expect(left).toEqual([`.${sha(9)}.123`, sha(1), sha(4), sha(5), sha(6), sha(7), sha(8)].sort())
+    } finally {
+      rmSync(fixture, { recursive: true, force: true })
+    }
   })
 })

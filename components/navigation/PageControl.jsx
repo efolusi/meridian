@@ -8,13 +8,15 @@ const CSS = `
 .ef-dots__dot--on::before{width:20px;background:var(--accent)}
 .ef-dots__dot:focus-visible{outline:none}
 .ef-dots__dot:focus-visible::before{box-shadow:var(--focus-ring)}
+/* coarse pointers get the 44px touch target, like form controls do through --control-h-* */
+@media (pointer:coarse){.ef-dots{flex-wrap:wrap;justify-content:center;max-width:100%}.ef-dots__dot{width:var(--tap-min);height:var(--tap-min)}}
 `;
 export function PageControl({ count, index = 0, onChange, label = 'Page', style, className, ...rest }) {
   injectEfCss('ef-css-dots', CSS);
   return (
     <div {...rest} role="tablist" aria-label={label} className={`ef-dots${className ? ' ' + className : ''}`} style={style}>
       {Array.from({ length: count }, (_, i) => (
-        <button key={i} role="tab" aria-selected={i === index} aria-label={`${label} ${i + 1} of ${count}`}
+        <button key={i} type="button" role="tab" aria-selected={i === index} aria-label={`${label} ${i + 1} of ${count}`}
           className={`ef-dots__dot${i === index ? ' ef-dots__dot--on' : ''}`} onClick={() => onChange && onChange(i)} />
       ))}
     </div>

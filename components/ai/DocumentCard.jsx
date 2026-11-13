@@ -17,6 +17,7 @@ const CSS = `
 .ef-doccard__content p{margin:0 0 .8em}
 .ef-doccard__fade{position:absolute;inset-inline:0;bottom:0;height:72px;background:linear-gradient(to top,var(--surface-card),transparent);pointer-events:none;transition:opacity var(--dur-med) var(--ease-out)}
 .ef-doccard--open .ef-doccard__fade{opacity:0}
+@media (pointer:coarse){.ef-doccard__btn{min-width:var(--tap-min);min-height:var(--tap-min)}}
 `;
 export function DocumentCard({ title, meta, icon = 'file-text', collapsedHeight = 200, defaultOpen = false, onCopy, actions, children, style, className, ...rest }) {
   injectEfCss('ef-css-doccard', CSS);

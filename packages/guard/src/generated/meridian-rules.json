@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "version": "1.21.10",
+  "version": "1.22.0",
   "components": [
     {
       "name": "Accordion",
@@ -1742,7 +1742,10 @@
     "accent-hover",
     "accent-subtle",
     "accent-subtle-border",
+    "accent-subtle-fg",
     "border-code",
+    "border-control",
+    "border-control-hover",
     "border-default",
     "border-inverse",
     "border-strong",
@@ -1904,5 +1907,12 @@
     "z-toast",
     "z-tooltip"
   ],
-  "deprecated": []
+  "deprecated": [
+    {
+      "component": "Drawer",
+      "prop": "modal",
+      "replacement": null,
+      "message": "@deprecated Ignored: a Drawer is always modal. Passing `false` logs a development warning; the prop will be removed in the next major version."
+    }
+  ]
 }

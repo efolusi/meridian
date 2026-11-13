@@ -12,7 +12,7 @@ const CSS = `
 .ef-usage__foot{display:flex;gap:8px;font-size:12px;color:var(--text-muted)}
 .ef-usage__cost{margin-inline-start:auto;font-family:var(--font-mono)}
 `;
-export function UsageMeter({ used = 0, limit = 100, label = 'Usage', unit = '', cost, hint, warnAt = 0.8, animated, format, style, className, ...rest }) {
+export function UsageMeter({ used = 0, limit = 100, label = 'Usage', unit = '', cost, hint, warnAt = 0.8, animated, format, locale = 'en-US', style, className, ...rest }) {
   injectEfCss('ef-css-usage', CSS);
   const [shown, setShown] = React.useState(animated ? 0 : used);
   React.useEffect(() => {
@@ -29,7 +29,9 @@ export function UsageMeter({ used = 0, limit = 100, label = 'Usage', unit = '', 
     return () => cancelAnimationFrame(raf);
   }, [used, animated]);
   const ratio = limit > 0 ? used / limit : 0;
-  const fmt = format || (v => Math.round(v).toLocaleString());
+  // Fixed default locale: the runtime default would differ between server and browser.
+  const nf = new Intl.NumberFormat(locale, { maximumFractionDigits: 0 });
+  const fmt = format || (v => nf.format(Math.round(v)));
   const tone = ratio >= 1 ? ' ef-usage--over' : ratio >= warnAt ? ' ef-usage--warn' : '';
   const shownRatio = limit > 0 ? shown / limit : 0;
   return (
@@ -38,7 +40,7 @@ export function UsageMeter({ used = 0, limit = 100, label = 'Usage', unit = '', 
         <span className="ef-usage__label">{label}</span>
         <span className="ef-usage__figures">{fmt(shown)} / {fmt(limit)}{unit ? ' ' + unit : ''}</span>
       </div>
-      <div className="ef-usage__track" role="progressbar" aria-valuenow={Math.round(ratio * 100)} aria-valuemin={0} aria-valuemax={100} aria-label={label}>
+      <div className="ef-usage__track" role="progressbar" aria-valuenow={Math.round(Math.min(1, Math.max(0, ratio)) * 100)} aria-valuemin={0} aria-valuemax={100} aria-valuetext={`${fmt(used)} / ${fmt(limit)}${unit ? " " + unit : ""}`} aria-label={label}>
         <span className="ef-usage__fill" style={{ width: cssPct(Math.min(100, (animated ? shownRatio : ratio) * 100)), display: 'block' }}></span>
       </div>
       {hint || cost ? (

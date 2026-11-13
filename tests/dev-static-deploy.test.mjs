@@ -14,7 +14,6 @@ import { describe, expect, it } from 'vitest'
 const workflow = readFileSync('.github/workflows/deploy-dev-static.yml', 'utf8')
 const deploy = readFileSync('scripts/deploy-dev-static.sh', 'utf8')
 const nginx = readFileSync('nginx/dev-meridian.efolusi.com.conf', 'utf8')
-const runnerPrerequisites = readFileSync('nginx/dev-meridian-runner-prerequisites.md', 'utf8')
 
 describe('Meridian development static deployment', () => {
   it('is push-only dev and runs on the shared development runner', () => {
@@ -40,6 +39,20 @@ describe('Meridian development static deployment', () => {
     expect(deploy).toContain('meridian-release.txt')
     expect(deploy).toContain('mv -Tf "$next" "$deploy_root/current"')
     expect(deploy).toContain('runner_user="deploy"')
+  })
+
+  it('publishes exactly the production allowlist, never the whole repository', () => {
+    const prodDeploy = readFileSync('scripts/deploy-prod-static.sh', 'utf8')
+    const paths = (src) => src.match(/^public_paths=\(\n([\s\S]*?)\n\)/m)?.[1].split('\n').map((p) => p.trim())
+    expect(paths(deploy)).toBeTruthy()
+    // Dev previews the next production release: a file production would not
+    // serve (CLAUDE.md, package.json, nginx/, tests/) must not be served here.
+    expect(paths(deploy)).toEqual(paths(prodDeploy))
+    expect(deploy).not.toContain('.assetsignore')
+    expect(deploy).toContain('tar -C "$archive_dir" -cf - "${public_paths[@]}"')
+    expect(deploy).toMatch(/for forbidden_path in \\\n\s+\.github \.nvmrc CLAUDE\.md nginx package\.json package-lock\.json scripts tests; do/)
+    expect(deploy).toContain('exit 79')
+    expect(deploy).toContain('exit 80')
   })
 
   it('rolls back only the release symlink when validation or probes fail', () => {
@@ -120,14 +133,6 @@ rollback 68`,
     expect(`${workflow}\n${deploy}`).not.toMatch(/database|postgres|redis|valkey|minio|nats/i)
     expect(deploy).toContain('cmp --silent "$tracked_vhost" "$available"')
     expect(deploy).toContain('[[ ! -w "$available" && ! -w "$enabled" ]]')
-  })
-
-  it('documents the exact one-time host ownership and environment boundary', () => {
-    expect(runnerPrerequisites).toContain('`deploy:deploy` mode `0755`')
-    expect(runnerPrerequisites).toContain('`root:root` mode `0644`')
-    expect(runnerPrerequisites).toContain('runner `2.327.1` or newer')
-    expect(runnerPrerequisites).toContain('`efolusi-dev`')
-    expect(runnerPrerequisites).toContain('No repository or environment secrets')
   })
 
   it('serves an exact static host and does not invent an application runtime', () => {

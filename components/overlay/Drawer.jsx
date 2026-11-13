@@ -30,8 +30,22 @@ const DrawerContext = React.createContext(null);
 const join = (...values) => values.filter(Boolean).join(' ');
 const compose = (first, second) => event => { first?.(event); if (!event.defaultPrevented) second?.(event); };
 
+// Deprecated props keep working until the next major, with one warning per
+// page outside production builds.
+let warnedModal = false;
+function warnModalIgnored() {
+  if (warnedModal || typeof console === 'undefined') return;
+  // Bare `process.env.NODE_ENV` so bundlers (Vite, webpack, esbuild) fold it to a
+  // literal; `typeof process` is not replaced and would keep the warning in
+  // production. Where nothing defines it, the read throws and we warn.
+  try { if (process.env.NODE_ENV === 'production') return; } catch (e) { /* no build-time env */ }
+  warnedModal = true;
+  console.warn('[meridian] <Drawer modal={false}> is deprecated and ignored: a Drawer is always modal. The prop will be removed in the next major version.');
+}
+
 export function Drawer({ open: controlled, defaultOpen = false, onOpenChange, direction = 'bottom', dismissible = true, modal = true, handleOnly = false, children }) {
   injectEfCss('ef-css-drawer', CSS);
+  React.useEffect(() => { if (modal === false) warnModalIgnored(); }, [modal]);
   const [internal, setInternal] = React.useState(defaultOpen);
   const open = controlled === undefined ? internal : controlled;
   const setOpen = React.useCallback(next => {
@@ -39,7 +53,7 @@ export function Drawer({ open: controlled, defaultOpen = false, onOpenChange, di
     onOpenChange?.(next);
   }, [controlled, onOpenChange]);
   const context = React.useMemo(() => ({ direction, dismissible, handleOnly, open, setOpen }), [direction, dismissible, handleOnly, open, setOpen]);
-  return <DrawerContext.Provider value={context}><Dialog open={open} onOpenChange={setOpen} modal={modal}>{children}</Dialog></DrawerContext.Provider>;
+  return <DrawerContext.Provider value={context}><Dialog open={open} onOpenChange={setOpen}>{children}</Dialog></DrawerContext.Provider>;
 }
 
 export const DrawerTrigger = React.forwardRef(function DrawerTrigger(props, ref) { return <DialogTrigger {...props} ref={ref} slot="drawer-trigger" />; });

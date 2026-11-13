@@ -8,20 +8,22 @@ const CSS = `
 .ef-field__label{font-size:var(--text-sm);font-weight:var(--weight-semibold);color:var(--text-primary)}
 .ef-field__hint{font-size:var(--text-xs);color:var(--text-muted)}
 .ef-timepicker{position:relative;display:flex;align-items:center}
-.ef-timepicker__input{width:100%;height:var(--control-h-md);padding:0 34px 0 12px;border:1px solid var(--border-strong);border-radius:var(--radius-sm);background:var(--surface-card);font-family:var(--font-sans);font-size:var(--text-md);color:var(--text-primary);transition:border-color var(--dur-fast) var(--ease-out),box-shadow var(--dur-fast) var(--ease-out)}
+.ef-timepicker__input{width:100%;height:var(--control-h-md);padding:0 34px 0 12px;border:1px solid var(--border-control,var(--border-strong));border-radius:var(--radius-sm);background:var(--surface-card);font-family:var(--font-sans);font-size:var(--text-md);color:var(--text-primary);transition:border-color var(--dur-fast) var(--ease-out),box-shadow var(--dur-fast) var(--ease-out)}
 .ef-timepicker__input::placeholder{color:var(--text-muted)}
-.ef-timepicker__input:hover:not(:disabled){border-color:var(--sand-400)}
+.ef-timepicker__input:hover:not(:disabled){border-color:var(--border-control-hover,var(--sand-400))}
 .ef-timepicker__input:focus{outline:none;border-color:var(--accent);box-shadow:var(--focus-ring)}
 .ef-timepicker__input:disabled{background:var(--surface-sunken);color:var(--text-muted);cursor:not-allowed}
 .ef-timepicker--invalid .ef-timepicker__input{border-color:var(--danger-600)}
 .ef-timepicker--invalid .ef-timepicker__input:focus{box-shadow:var(--focus-ring-danger)}
 .ef-timepicker__icon{position:absolute;inset-inline-end:11px;color:var(--text-muted);display:inline-flex;pointer-events:none}
-.ef-timepicker__panel{max-height:240px;overflow-y:auto;background:var(--surface-card);border:1px solid var(--border-strong);border-radius:var(--radius-md);box-shadow:var(--shadow-md);padding:4px;z-index:var(--z-dropdown);animation:ef-tp-in var(--dur-fast) var(--ease-out)}
+.ef-timepicker__panel{max-height:240px;overflow-y:auto;background:var(--surface-card);border:1px solid var(--border-strong);border-radius:var(--radius-md);box-shadow:var(--shadow-md);padding:4px;z-index:var(--z-popover);animation:ef-tp-in var(--dur-fast) var(--ease-out)}
 @keyframes ef-tp-in{from{opacity:0;transform:translateY(-3px)}}
 .ef-timepicker__opt{display:flex;align-items:center;gap:9px;width:100%;padding:7px 10px;border:none;border-radius:var(--radius-sm);background:none;cursor:pointer;text-align:start;font-family:var(--font-sans);font-size:var(--text-sm);color:var(--text-primary)}
-.ef-timepicker__opt--hi{background:var(--surface-sunken)}
+.ef-timepicker__opt--hi{background:var(--surface-sunken);box-shadow:inset 0 0 0 2px var(--focus-ring-color)}
 .ef-timepicker__opt__check{margin-inline-start:auto;color:var(--accent);display:inline-flex}
 .ef-timepicker__empty{padding:14px 10px;font-size:var(--text-sm);color:var(--text-muted);text-align:center}
+/* Touch: fixed-size targets grow to --tap-min; small glyph buttons keep their look and get a centred --tap-min hit area instead. */
+@media (pointer:coarse){.ef-timepicker__opt{min-height:var(--tap-min)}}
 `;
 const toMin = t => { const p = t.split(':'); return Number(p[0]) * 60 + Number(p[1] || 0); };
 const toHM = n => String(Math.floor(n / 60)).padStart(2, '0') + ':' + String(n % 60).padStart(2, '0');
@@ -41,10 +43,14 @@ const parseTyped = raw => {
   if (h > 23 || mm > 59) return null;
   return toHM(h * 60 + mm);
 };
-export function TimePicker({ label, hint, value, onChange, stepMinutes = 30, minTime, maxTime, format24 = true, placeholder = 'Pick a time', disabled, invalid, style, className, ...rest }) {
+export function TimePicker({ label, hint, value, onChange, stepMinutes = 30, minTime, maxTime, format24 = true, placeholder = 'Pick a time', disabled, invalid, style, className, id, 'aria-label': ariaLabel, 'aria-labelledby': ariaLabelledBy, 'aria-describedby': ariaDescribedBy, ...rest }) {
   injectEfCss('ef-css-timepicker', CSS);
   // Picks up id / aria wiring when nested in a Field; standalone this is a no-op.
-  const field = useFieldProps({ invalid, id: rest.id, 'aria-describedby': rest['aria-describedby'] });
+  const field = useFieldProps({ invalid, id, 'aria-describedby': ariaDescribedBy });
+  const uid = React.useId();
+  const inputId = field.id || (label ? `${uid}i` : undefined);
+  const hintId = hint ? `${uid}h` : undefined;
+  const describedBy = [...new Set([field.controlProps['aria-describedby'], hintId].filter(Boolean))].join(' ') || undefined;
   const bad = field.invalid;
   const [open, setOpen] = React.useState(false);
   const [q, setQ] = React.useState(null); // null = not editing, input mirrors `value`
@@ -98,6 +104,7 @@ export function TimePicker({ label, hint, value, onChange, stepMinutes = 30, min
   };
   const onBlur = () => { commitTyped(); setOpen(false); };
   const onKey = e => {
+    if (e.nativeEvent.isComposing || e.keyCode === 229) return;
     if (e.key === 'ArrowDown') { e.preventDefault(); if (!open) openList(); else setHi(h => Math.min(h + 1, shown.length - 1)); }
     else if (e.key === 'ArrowUp') { e.preventDefault(); setHi(h => Math.max(h - 1, 0)); }
     else if (e.key === 'Enter' && open && shown[hi]) { e.preventDefault(); pick(shown[hi]); }
@@ -105,7 +112,7 @@ export function TimePicker({ label, hint, value, onChange, stepMinutes = 30, min
   };
   const control = (
     <div ref={ref} className={`ef-timepicker${bad ? ' ef-timepicker--invalid' : ''}`}>
-      <input {...field.controlProps} className="ef-timepicker__input" role="combobox" aria-expanded={open}
+      <input {...field.controlProps} id={inputId} aria-label={ariaLabel} aria-labelledby={ariaLabelledBy} aria-describedby={describedBy} className="ef-timepicker__input" role="combobox" aria-expanded={open}
         aria-controls={listId} aria-autocomplete="list" aria-invalid={bad || undefined}
         aria-activedescendant={open && shown.length ? `${listId}-opt-${hi}` : undefined}
         placeholder={placeholder} disabled={disabled}
@@ -134,9 +141,9 @@ export function TimePicker({ label, hint, value, onChange, stepMinutes = 30, min
   if (!label && !hint) return <div {...rest} className={className} style={style}>{control}</div>;
   return (
     <div {...rest} className={`ef-field${className ? ' ' + className : ''}`} style={style}>
-      {label ? <span className="ef-field__label">{label}</span> : null}
+      {label ? <label htmlFor={inputId} className="ef-field__label">{label}</label> : null}
       {control}
-      {hint ? <span className="ef-field__hint">{hint}</span> : null}
+      {hint ? <span id={hintId} className="ef-field__hint">{hint}</span> : null}
     </div>
   );
 }

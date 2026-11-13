@@ -40,11 +40,15 @@ async function index() {
 async function components() {
   return (await index()).items.filter((it) => it.type === 'registry:ui');
 }
+// The name becomes a file path, so only registry item names get through.
+const COMPONENT_NAME = /^[a-z][a-z0-9-]*$/i;
 async function component(name) {
-  return readJSON(`site/registry/${String(name).toLowerCase()}.json`);
+  if (!COMPONENT_NAME.test(name)) throw new Error(`invalid component name ${JSON.stringify(name)}`);
+  return readJSON(`site/registry/${name.toLowerCase()}.json`);
 }
 
-const server = new McpServer({ name: 'meridian', version: '0.1.0' });
+const { version } = JSON.parse(await fs.readFile(new URL('./package.json', import.meta.url), 'utf8'));
+const server = new McpServer({ name: 'meridian', version });
 
 server.registerTool(
   'list_components',
@@ -104,12 +108,16 @@ server.registerTool(
   'get_tokens',
   {
     title: 'Get Meridian design tokens',
-    description: 'The design tokens (colors, typography, spacing, effects) in light, dark and compact. Use semantic tokens in generated CSS — never hardcode hex.',
-    inputSchema: { group: z.string().optional().describe('Optional group filter, e.g. "color", "spacing", "typography".') },
+    description: 'The design tokens (colors, typography, spacing, effects) as DTCG JSON. Each $value is the light theme at default density; a token that changes elsewhere also carries $extensions["com.efolusi.meridian"].modes with its dark, compact and coarse (touch pointer) values. References between tokens are DTCG aliases, {group.leaf}: the CSS custom property is --group-leaf (e.g. {surface.page} is --surface-page). In generated CSS use the custom property so the theme, density and pointer modes all apply; never hardcode hex.',
+    inputSchema: { group: z.string().optional().describe('Optional top-level group, e.g. "brand", "surface", "text", "space", "radius", "font". An unknown group returns the list of groups.') },
   },
   async ({ group }) => {
     const tokens = await readJSON('tokens.json');
-    const text = JSON.stringify(group ? { [group]: tokens[group] ?? tokens } : tokens, null, 2);
+    const groups = Object.keys(tokens).filter(k => !k.startsWith('$'));
+    if (group && !groups.includes(group)) {
+      return { content: [{ type: 'text', text: `No token group "${group}". groups: ${groups.join(', ')}` }], isError: true };
+    }
+    const text = JSON.stringify(group ? { [group]: tokens[group] } : tokens, null, 2);
     return { content: [{ type: 'text', text }] };
   }
 );

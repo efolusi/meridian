@@ -2,7 +2,7 @@ import React from 'react';
 import { injectEfCss } from '../forms/Button.jsx';
 import { Icon } from '../icons/Icon.jsx';
 const CSS = `
-.ef-citation{display:inline-flex;align-items:center;justify-content:center;min-width:16px;height:16px;padding:0 4px;margin:0 1px;vertical-align:super;border-radius:var(--radius-sm);border:1px solid var(--accent-subtle-border);background:var(--accent-subtle);color:var(--brand-700);font-family:var(--font-mono);font-size:10px;font-weight:600;text-decoration:none;cursor:pointer;line-height:1}
+.ef-citation{display:inline-flex;align-items:center;justify-content:center;min-width:16px;height:16px;padding:0 4px;margin:0 1px;vertical-align:super;border-radius:var(--radius-xs);border:1px solid var(--accent-subtle-border);background:var(--accent-subtle);color:var(--accent-subtle-fg, var(--brand-700));font-family:var(--font-mono);font-size:10px;font-weight:600;text-decoration:none;cursor:pointer;line-height:1}
 .ef-citation:hover{border-color:var(--brand-700)}
 .ef-citation:focus-visible{outline:none;box-shadow:var(--focus-ring)}
 .ef-citation__wrap{position:relative;display:inline}
@@ -21,28 +21,41 @@ const CSS = `
 .ef-sources__item:last-child{border-bottom:none}
 .ef-sources__item:hover{background:var(--surface-subtle)}
 .ef-sources__item:focus-visible{outline:none;box-shadow:var(--focus-ring)}
-.ef-sources__num{flex:none;display:inline-flex;align-items:center;justify-content:center;width:18px;height:18px;border-radius:var(--radius-sm);background:var(--accent-subtle);color:var(--brand-700);font-family:var(--font-mono);font-size:10.5px;font-weight:600}
+.ef-sources__num{flex:none;display:inline-flex;align-items:center;justify-content:center;width:18px;height:18px;border-radius:var(--radius-xs);background:var(--accent-subtle);color:var(--accent-subtle-fg, var(--brand-700));font-family:var(--font-mono);font-size:10.5px;font-weight:600}
 .ef-sources__title{flex:1;min-width:0;font-size:13.5px;font-weight:500;color:var(--text-primary);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .ef-sources__domain{flex:none;font-family:var(--font-mono);font-size:11.5px;color:var(--text-muted)}
 .ef-sources__ext{flex:none;display:inline-flex;color:var(--text-muted)}
+@media (pointer:coarse){.ef-citation__pop-btn{min-width:var(--tap-min);min-height:var(--tap-min)}}
 `;
+// Source and preview URLs usually come from model or tool output, so a
+// javascript:, vbscript: or data: URL must never reach an href or iframe src.
+// Relative, fragment, http(s) and mailto URLs pass through unchanged.
+function safeUrl(url) {
+  if (url == null || url === '') return undefined;
+  const s = String(url);
+  const scheme = /^\s*([a-z][a-z0-9+.-]*):/i.exec(s.replace(/[\u0000-\u001F\u007F]/g, ''));
+  return !scheme || /^(https?|mailto)$/i.test(scheme[1]) ? s : undefined;
+}
 export function Citation({ index, href, title, sources, onClick, style, className, ...rest }) {
   injectEfCss('ef-css-citation', CSS);
   const [open, setOpen] = React.useState(false);
   const [i, setI] = React.useState(0);
   const t = React.useRef(null);
   const list = sources && sources.length ? sources : null;
+  const link = safeUrl(href);
   const enter = () => { if (!list) return; clearTimeout(t.current); t.current = setTimeout(() => setOpen(true), 200); };
   const leave = () => { clearTimeout(t.current); t.current = setTimeout(() => setOpen(false), 180); };
   React.useEffect(() => () => clearTimeout(t.current), []);
   const chip = (
-    <a href={href || (list && list[0] && list[0].url) || '#'} title={title} onClick={onClick} target={href ? '_blank' : undefined} rel={href ? 'noopener' : undefined}
+    <a href={link || (list && list[0] && safeUrl(list[0].url)) || '#'} title={title} onClick={onClick} target={link ? '_blank' : undefined} rel={link ? 'noopener' : undefined}
       className={`ef-citation${className ? ' ' + className : ''}`} style={list ? null : style} aria-label={title ? 'Source ' + index + ': ' + title : 'Source ' + index}>{index}</a>
   );
   if (!list) return chip;
   const cur = list[Math.abs(i) % list.length];
   return (
-    <span {...rest} className="ef-citation__wrap" style={style} onMouseEnter={enter} onMouseLeave={leave}>
+    <span {...rest} className="ef-citation__wrap" style={style} onMouseEnter={enter} onMouseLeave={leave}
+      onFocus={enter} onBlur={leave}
+      onKeyDown={e => { if (e.key === 'Escape' && open) { e.stopPropagation(); clearTimeout(t.current); setOpen(false); } }}>
       {chip}
       {open ? (
         <span className="ef-citation__pop" role="dialog">
@@ -66,14 +79,17 @@ export function SourceList({ sources = [], title = 'Sources', style, className, 
   return (
     <div {...rest} className={`ef-sources${className ? ' ' + className : ''}`} style={style}>
       <div className="ef-sources__head">{title}</div>
-      {sources.map((s, i) => (
-        <a key={s.index || i} className="ef-sources__item" href={s.url || '#'} target={s.url ? '_blank' : undefined} rel={s.url ? 'noopener' : undefined}>
+      {sources.map((s, i) => {
+        const url = safeUrl(s.url);
+        return (
+        <a key={s.index || i} className="ef-sources__item" href={url || '#'} target={url ? '_blank' : undefined} rel={url ? 'noopener' : undefined}>
           <span className="ef-sources__num">{s.index || i + 1}</span>
           <span className="ef-sources__title">{s.title}</span>
           {s.domain ? <span className="ef-sources__domain">{s.domain}</span> : null}
           <span className="ef-sources__ext"><Icon name="external-link" size={12} /></span>
         </a>
-      ))}
+        );
+      })}
     </div>
   );
 }

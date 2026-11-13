@@ -1,20 +1,10 @@
-# Meridian compatibility audit
+# Migration compatibility
 
-Snapshot: 2026-08-13. This document tracks migration compatibility against the
-public component-registry contract without importing another system's identity
-into Meridian. A matching concept is not automatically a compatible API; every
-claim needs source, type, interaction, registry, and browser proof.
-
-## Current position
-
-- Meridian publishes editable source through a root GitHub registry and a
-  byte-identical hosted registry.
-- The current official inventory contains 64 families. Meridian has committed
-  source, type, registry, and executable proof for all 64, including the
-  Questionnaire composition and Toast manager contracts.
-- The registry schema URL is a machine protocol identifier, not repository
-  branding. It is the only allowed external product identifier in
-  Meridian-authored content.
+Meridian's components follow the public component-registry contract, so a team
+moving from another registry-based component set can install Meridian items with
+the same client and keep most of its composition. A matching concept is not
+automatically a compatible API: a family counts as compatible only when its
+source, types, interaction and registry install are all proven.
 
 ## Compatibility levels
 
@@ -27,248 +17,23 @@ claim needs source, type, interaction, registry, and browser proof.
 | Visual | Meridian tokens apply without broken layout, clipping, or state loss. |
 | Proven | Type fixtures, unit tests, full-demo smoke, and live-browser validation all pass. |
 
-Only **Proven** items may count toward the migration percentage.
+Only **Proven** families count as compatible.
 
-The machine-readable source of truth is `compatibility/catalog.json`. The
-`scripts/check_compatibility.mjs` gate rejects missing families, duplicate
-entries, unsupported statuses, missing exports, and missing proof files. This
-keeps the percentage grounded in committed evidence rather than naming
-similarity.
+## Where the status lives
+
+[`compatibility/catalog.json`](../compatibility/catalog.json) is the source of
+truth: one entry per component family with its status, the exports it must
+provide, its source files, registry items and the tests that prove it. The
+`scripts/check_compatibility.mjs` gate, part of `npm run check`, rejects missing
+families, duplicate entries, unsupported statuses, missing exports and missing
+proof files, so a claim cannot outlive its evidence.
+
+The registry schema URL in the catalog and registry files is a machine protocol
+identifier, not branding.
 
 ## Known gaps
 
-1. Cross-browser proof remains incomplete for Safari, Firefox, and Edge.
-2. Complete migration fixtures still need to exercise every public prop and
-   state, rather than only representative contracts per family.
-
-## Proven adapters
-
-- `Breadcrumb`, `BreadcrumbList`, `BreadcrumbItem`, `BreadcrumbLink`,
-  `BreadcrumbPage`, `BreadcrumbSeparator`, and `BreadcrumbEllipsis` support
-  semantic path composition, polymorphic links, current-page semantics,
-  decorative default or custom separators, ellipsis output, native attributes,
-  consumer classes and styles, ref forwarding, RTL, types, registry
-  installation, demos, and tests. Maintained surfaces compose the full semantic
-  path explicitly; no parallel array renderer remains.
-- `Accordion`, `AccordionItem`, `AccordionTrigger`, and `AccordionContent`
-  support single and multiple disclosure state, controlled and uncontrolled
-  values, collapsible and disabled behavior, vertical and direction-aware
-  horizontal keyboard navigation with configurable focus looping, polymorphic composition, force-mounted
-  content, accessible trigger/content relationships, ref forwarding, state
-  attributes, types, registry installation, demos, and tests. The public root
-  is composition-only; maintained surfaces no longer use a data-array renderer.
-- `Alert`, `AlertTitle`, `AlertDescription`, and `AlertAction` support composable alert
-  structure, default and destructive variants, alert semantics, native
-  attributes, consumer classes and styles, ref forwarding, types, registry
-  installation, demos, and tests. Custom status colors use consumer classes;
-  maintained surfaces compose every icon, title, description, and action explicitly.
-- `Collapsible`, `CollapsibleTrigger`, and `CollapsibleContent` support
-  controlled and uncontrolled disclosure state, native keyboard activation,
-  disabled roots, polymorphic triggers, force-mounted content, accessible
-  trigger/content relationships, ref forwarding, state attributes, types,
-  registry installation, demos, and tests. The public root is composition-only.
-- `Checkbox` supports controlled and uncontrolled state, indeterminate state,
-  pointer and keyboard interaction, accessible and invalid state data, disabled
-  behavior, form submission, native button attributes, ref forwarding, types,
-  registry installation, demos, and tests. Meridian's integrated label and
-  description remain additive extensions.
-- `Input` renders a native input and supports text, file, required, disabled,
-  invalid, and native numeric-size attributes; native events; consumer classes
-  and styles; ref forwarding; accessible labels and descriptions; types;
-  registry installation; demos; and tests. Meridian's integrated field chrome,
-  icons, password reveal, and visual sizes remain additive extensions.
-- `Progress` supports determinate, complete, and indeterminate states; clamped
-  values; accessible range semantics; native attributes; consumer classes and
-  styles; ref forwarding; RTL-safe motion; types; registry installation; demos;
-  and tests. Meridian's integrated label, formatted value, and semantic tones
-  remain additive extensions.
-- `Avatar`, `AvatarImage`, `AvatarFallback`, `AvatarBadge`, `AvatarGroup`, and
-  `AvatarGroupCount` support compositional identity images, three named sizes,
-  failed-image fallback, status indicators, overlapping groups, native
-  attributes, ref forwarding, RTL, types, registry installation, demos, and
-  tests. Maintained consumers use explicit image and fallback parts; there is no
-  parallel name/source or numeric-size renderer.
-- `Toggle` and `toggleVariants` support default and outline variants, the
-  complete size contract, controlled and uncontrolled pressed state, composed
-  click handlers, disabled behavior, native button props, ref forwarding,
-  types, registry installation, demos, and tests. Meridian-specific icon and
-  layout helpers remain additive extensions outside the migration contract.
-- `Textarea` renders a native textarea, forwards native attributes, events,
-  styles, classes, and refs, and includes types, registry installation, demos,
-  and tests. Meridian's integrated label, hint, error, and invalid helpers
-  remain additive and use explicit accessible relationships.
-- `Kbd` and `KbdGroup` support key and shortcut-group composition, native
-  attributes, consumer classes, ref forwarding, types, registry installation,
-  demos, and tests.
-- `Badge` and `badgeVariants` support the complete six-variant contract,
-  semantic link composition through `asChild`, native attributes, consumer
-  classes, ref forwarding, types, registry installation, demos, and tests.
-  Semantic status colors use custom classes, and icons are explicit children.
-- `Spinner` renders an accessible SVG status indicator, accepts native SVG
-  props and accessible-name overrides, forwards refs, and includes types,
-  registry installation, demos, and tests. Dimensions and accessible naming use
-  native SVG attributes without a parallel alias contract.
-- `Skeleton` renders a native div, forwards refs and HTML attributes, and
-  includes types, registry installation, demos, and tests. Shape, dimensions,
-  and repeated lines use native styles and explicit composition.
-- `Label` preserves native label attributes and click-to-focus association,
-  forwards refs, supports consumer classes/styles, and includes types, registry
-  installation, demos, and tests. Meridian's required marker and hint remain
-  additive extensions.
-- `AspectRatio` requires an explicit numeric ratio and supports landscape,
-  square, and portrait media, native wrapper props, consumer styles, ref
-  forwarding, types, registry installation, demos, and tests.
-- `Button` and `buttonVariants` support the complete public variant and size
-  matrices, documented defaults, semantic-link styling, native button props,
-  events, disabled behavior, ref forwarding, types, registry installation,
-  demos, and tests. Meridian-specific loading and icon helpers are additive.
-- `Attachment` and its eight compositional parts support upload states, sizes,
-  orientations, icon/image media, independent actions, polymorphic full-card
-  triggers, scrollable groups, ref forwarding, types, registry installation,
-  demos, and tests.
-- `Separator` supports horizontal/vertical orientation, decorative or semantic
-  output, ref forwarding, types, registry installation, demos, and tests.
-- `NativeSelect`, `NativeSelectOption`, and `NativeSelectOptGroup` support native
-  option composition, disabled/invalid browser behavior, ref forwarding, types,
-  registry installation, demos, and tests.
-- `Marker`, `MarkerIcon`, `MarkerContent`, and `markerVariants` support inline,
-  bordered, and labeled-divider layouts; decorative icons; semantic custom
-  roots; ref forwarding; types; registry installation; demos; and tests.
-
-- `AlertDialog` and its trigger, content, header, media, title, description,
-  footer, cancel, and action parts support controlled and uncontrolled state,
-  semantic child composition, portal rendering, default and small sizes, focus
-  trapping and restoration, deliberate dismissal, native props, refs, types,
-  registry installation, demos, and tests.
-
-- `Card`, `CardHeader`, `CardTitle`, `CardDescription`, `CardAction`,
-  `CardContent`, and `CardFooter` support complete section composition, default
-  and small sizes, a shared spacing variable, edge-to-edge media, RTL-safe
-  layout, native props, refs, types, registry installation, demos, and tests.
-  The public root is composition-only.
-
-- `ButtonGroup`, `ButtonGroupText`, `ButtonGroupSeparator`, and
-  `buttonGroupVariants` support horizontal and vertical attached controls,
-  semantic child composition, orientation-aware separators, native props,
-  refs, types, registry installation, demos, and tests.
-
-- `BubbleGroup`, `Bubble`, `BubbleContent`, and `BubbleReactions` support all
-  seven visual variants, start/end alignment, semantic child composition,
-  logical reaction placement, native props, refs, types, registry installation,
-  demos, and tests.
-
-- `DirectionProvider` and `useDirection` support the standard `dir` contract,
-  the additive `direction` alias, nested context, document fallback, mirrored
-  keyboard behavior, types, registry installation, demos, and tests.
-
-- `Dialog` and its trigger, portal, overlay, close, content, header, footer,
-  title, and description parts support controlled and uncontrolled state,
-  semantic child composition, focus containment and restoration, native props,
-  refs, types, registry installation, demos, and tests. The public root is
-  composition-only.
-
-- `Empty`, `EmptyHeader`, `EmptyMedia`, `EmptyTitle`, `EmptyDescription`, and
-  `EmptyContent` support compositional empty states, native props, refs, types,
-  registry installation, demos, and tests. Maintained surfaces compose every
-  media, title, description, and action slot explicitly.
-
-- `InputGroup`, `InputGroupAddon`, `InputGroupButton`, `InputGroupInput`,
-  `InputGroupTextarea`, and `InputGroupText` support inline and block addons,
-  unified focus and invalid states, native props, refs, types, registry
-  installation, demos, and tests. Labels, descriptions, and errors compose
-  through the `Field` family; the root is composition-only.
-
-- `Table` and its header, body, footer, row, head, cell, and caption parts
-  provide semantic table composition, scroll containment, native props, refs,
-  types, registry installation, demos, and tests. Meridian's sortable,
-  selectable data-array mode is an additive first-class contract.
-
-- `Tabs`, `TabsList`, `TabsTrigger`, and `TabsContent` support controlled and
-  uncontrolled state, horizontal and vertical orientation, line styling,
-  disabled triggers, direction-aware keyboard navigation, native props, refs,
-  types, registry installation, demos, and tests. Meridian's item-array mode is
-  an additive first-class contract.
-
-- `Switch` supports controlled and uncontrolled checked state, native form
-  participation, keyboard and pointer interaction, state attributes, refs,
-  types, registry installation, demos, and tests. Meridian's integrated label
-  and size helpers remain additive extensions.
-
-- `TooltipProvider`, `Tooltip`, `TooltipTrigger`, and `TooltipContent` support
-  composed triggers, controlled and uncontrolled state, configurable delay,
-  four-sided collision-aware placement, keyboard dismissal, linked accessible
-  descriptions, refs, types, registry installation, demos, and tests. The root
-  is composition-only; maintained surfaces use explicit triggers and content.
-
-- `Popover`, `PopoverTrigger`, `PopoverContent`, `PopoverHeader`,
-  `PopoverTitle`, and `PopoverDescription` support controlled and uncontrolled
-  state, semantic child composition, aligned portal placement, outside and
-  keyboard dismissal, focus restoration, refs, types, registry installation,
-  demos, and tests. The public root is composition-only.
-
-- `ToggleGroup` and `ToggleGroupItem` support single and multiple selection,
-  controlled and uncontrolled values, inherited variant and size, configurable
-  spacing, horizontal and vertical orientation, RTL-aware keyboard movement,
-  disabled state, refs, types, registry installation, demos, and tests. Grouped
-  controls compose exclusively through `ToggleGroupItem`.
-
-- `RadioGroup` and `RadioGroupItem` support controlled and uncontrolled state,
-  native named grouping, required and disabled propagation, horizontal and
-  vertical orientation, invalid state, refs, types, registry installation,
-  demos, and tests. Meridian's integrated-label `Radio` remains additive.
-
-- `Slider` supports single, range, and multiple thumbs; controlled and
-  uncontrolled arrays; horizontal and vertical orientation; minimum thumb
-  spacing; disabled state; commit callbacks; refs; types; registry
-  installation; demos; and tests. Values and callbacks use the canonical array
-  contract, labels and formatted values are composed by the consumer, and refs
-  target the Slider root.
-
-- `Pagination`, `PaginationContent`, `PaginationItem`, `PaginationLink`,
-  `PaginationPrevious`, `PaginationNext`, and `PaginationEllipsis` provide
-  semantic navigation and native links, active state, logical RTL-safe layout,
-  refs, types, registry installation, demos, and tests. Page ranges are composed
-  explicitly from application state; previous and next labels support localized
-  `text` values.
-
-- `ResizablePanelGroup`, `ResizablePanel`, and `ResizableHandle` support
-  horizontal and vertical multi-pane composition, percentage defaults and
-  constraints, pointer and keyboard resizing, direction-aware movement,
-  optional visible grips, disabled state, refs, types, registry installation,
-  demos, and tests.
-
-- `ScrollArea` and `ScrollBar` provide a composed native scrolling viewport,
-  horizontal and vertical orientation markers, themed platform scrollbars,
-  bounded-height helpers, refs, types, registry installation, demos, and tests.
-
-- `Carousel`, `CarouselContent`, `CarouselItem`, `CarouselPrevious`, and
-  `CarouselNext` provide semantic slide composition, horizontal and vertical
-  orientation, direction-aware controls, keyboard navigation, looping and
-  alignment options, a stable event API, plugin lifecycle, refs, types,
-  registry installation, demos, and tests.
-
-- `InputOTP`, `InputOTPGroup`, `InputOTPSlot`, and `InputOTPSeparator` provide
-  one semantic input with composable visual slots, controlled and uncontrolled
-  state, paste-sized changes, pattern filtering, completion callbacks, invalid
-  and disabled states, refs, types, registry installation, demos, and tests.
-
-- `Questionnaire` and its progress, item, title, description, choices, choice,
-  input, error, actions, previous, skip, next, and submit parts provide ordered
-  multi-step forms, native radio and checkbox answers, freeform answers,
-  required-item validation, explicit skip state, controlled navigation,
-  progress semantics, refs, types, registry installation, demos, and tests.
-
-
-## Release gate
-
-Before claiming complete compatibility:
-
-1. Generate a current external API inventory in CI without committing its brand
-   name or copy into the repository.
-2. Map every public component, subcomponent, prop, variant, and state to a
-   Meridian implementation or adapter.
-3. Install every registry item into a clean fixture and compile it.
-4. Run keyboard, focus, RTL, visual, and responsive checks in supported
-   browsers.
-5. Validate representative migrations for dashboard, settings, authentication,
-   data-table, chart, form, and conversational-product journeys.
+- Cross-browser proof for Safari, Firefox and Edge is not complete
+  ([#75](https://github.com/efolusi/meridian/issues/75)).
+- Migration fixtures exercise representative contracts per family, not yet every
+  public prop and state.

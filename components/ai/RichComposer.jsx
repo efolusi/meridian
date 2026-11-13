@@ -20,6 +20,7 @@ const CSS = `
 .ef-richcomposer__itemicon{display:inline-flex;flex:none;color:var(--text-muted)}
 .ef-richcomposer__itemdesc{margin-inline-start:auto;font-size:12px;color:var(--text-muted);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .ef-richcomposer__empty{padding:8px 10px;font-size:13px;color:var(--text-muted)}
+@media (pointer:coarse){.ef-richcomposer__send{min-width:var(--tap-min);min-height:var(--tap-min)}}
 `;
 function findTrigger(root) {
   const s = window.getSelection();
@@ -140,7 +141,7 @@ export function RichComposer({ placeholder = 'Message… use @ to mention, / for
         </div>
       ) : null}
       <div ref={edRef} className="ef-richcomposer__input" contentEditable={!disabled} suppressContentEditableWarning data-placeholder={placeholder}
-        role="textbox" aria-multiline="true" spellCheck={false}
+        role="textbox" aria-multiline="true" aria-label={placeholder} aria-placeholder={placeholder} aria-disabled={disabled || undefined} spellCheck={false}
         onInput={refresh} onKeyUp={refresh} onClick={refresh} onKeyDown={onKey} onBlur={() => setTimeout(() => setPop(null), 120)}></div>
       <div className="ef-richcomposer__bar">
         {actions}

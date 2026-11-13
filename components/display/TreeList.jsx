@@ -5,21 +5,23 @@ const CSS = `
 .ef-tree{display:flex;flex-direction:column;gap:1px;font-size:var(--text-sm)}
 .ef-tree__row{display:flex;align-items:center;gap:7px;height:30px;padding:0 8px;border:none;border-radius:var(--radius-sm);background:none;cursor:pointer;text-align:start;font-family:var(--font-sans);font-size:var(--text-sm);color:var(--text-secondary);width:100%;transition:background var(--dur-fast) var(--ease-out),color var(--dur-fast) var(--ease-out)}
 .ef-tree__row:hover{background:var(--surface-sunken);color:var(--text-primary)}
-.ef-tree__row--sel{background:var(--accent-subtle);color:var(--brand-700);font-weight:var(--weight-semibold)}
-.ef-tree__row--sel:hover{background:var(--accent-subtle);color:var(--brand-700)}
+.ef-tree__row--sel{background:var(--accent-subtle);color:var(--accent-subtle-fg, var(--brand-700));font-weight:var(--weight-semibold)}
+.ef-tree__row--sel:hover{background:var(--accent-subtle);color:var(--accent-subtle-fg, var(--brand-700))}
 .ef-tree__row:focus-visible{outline:none;box-shadow:var(--focus-ring)}
 .ef-tree__chev{display:inline-flex;color:var(--text-muted);transition:transform var(--dur-fast) var(--ease-out);flex:none}
 .ef-tree__chev--open{transform:rotate(90deg)}
 .ef-tree__icon{display:inline-flex;flex:none;color:var(--text-muted)}
 .ef-tree__row--sel .ef-tree__icon{color:inherit}
 .ef-tree__count{margin-inline-start:auto;font-family:var(--font-mono);font-size:11px;color:var(--text-muted)}
+@media (pointer:coarse){.ef-tree__row{min-height:var(--tap-min)}}
 `;
 function Node({ node, depth, open, sel, toggle, select }) {
   const kids = node.children || [];
   const isOpen = open.includes(node.id);
   return (
     <React.Fragment>
-      <button className={`ef-tree__row${sel === node.id ? ' ef-tree__row--sel' : ''}`} style={{ paddingInlineStart: 8 + depth * 18 }}
+      <button type="button" className={`ef-tree__row${sel === node.id ? ' ef-tree__row--sel' : ''}`} style={{ paddingInlineStart: 8 + depth * 18 }}
+        aria-expanded={kids.length ? isOpen : undefined} aria-current={sel === node.id ? 'true' : undefined}
         onClick={() => { if (kids.length) toggle(node.id); select(node.id, node); }}>
         {kids.length ? <span className={`ef-tree__chev${isOpen ? ' ef-tree__chev--open' : ''}`}><Icon name="chevron-right" size={13} /></span> : <span style={{ width: 13, flex: 'none' }}></span>}
         {node.icon ? <span className="ef-tree__icon"><Icon name={node.icon} size={15} /></span> : null}
@@ -38,7 +40,9 @@ export function TreeList({ nodes, value, onChange, defaultOpen, style, className
   const toggle = id => setOpen(o => o.includes(id) ? o.filter(x => x !== id) : [...o, id]);
   const select = (id, node) => { if (value == null) setInnerSel(id); onChange?.(id, node); };
   return (
-    <div {...rest} role="tree" className={`ef-tree${className ? ' ' + className : ''}`} style={style}>
+    // Plain disclosure buttons, not role="tree": a tree promises treeitems and
+    // arrow-key navigation, which this list does not implement.
+    <div {...rest} className={`ef-tree${className ? ' ' + className : ''}`} style={style}>
       {nodes.map(n => <Node key={n.id} node={n} depth={0} open={open} sel={sel} toggle={toggle} select={select} />)}
     </div>
   );

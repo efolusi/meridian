@@ -7,8 +7,8 @@ const CSS = `
 .ef-field__label{font-size:var(--text-sm);font-weight:var(--weight-semibold);color:var(--text-primary)}
 .ef-field__hint{font-size:var(--text-xs);color:var(--text-muted)}
 .ef-field__error{font-size:var(--text-xs);color:var(--danger-600);display:flex;align-items:center;gap:4px}
-.ef-number{display:flex;align-items:stretch;overflow:hidden;border:1px solid var(--border-strong);border-radius:var(--radius-sm);background:var(--surface-sunken);transition:border-color var(--dur-fast) var(--ease-out),box-shadow var(--dur-fast) var(--ease-out)}
-.ef-number:hover:not(.ef-number--disabled){border-color:var(--sand-400)}
+.ef-number{display:flex;align-items:stretch;overflow:hidden;border:1px solid var(--border-control,var(--border-strong));border-radius:var(--radius-sm);background:var(--surface-sunken);transition:border-color var(--dur-fast) var(--ease-out),box-shadow var(--dur-fast) var(--ease-out)}
+.ef-number:hover:not(.ef-number--disabled){border-color:var(--border-control-hover,var(--sand-400))}
 .ef-number:focus-within{border-color:var(--accent);box-shadow:var(--focus-ring)}
 .ef-number.ef-number--invalid{border-color:var(--danger-600)}
 .ef-number.ef-number--invalid:focus-within{box-shadow:var(--focus-ring-danger)}
@@ -28,6 +28,8 @@ const CSS = `
 .ef-number__step+.ef-number__step{border-top:1px solid var(--border-default)}
 .ef-number--sm .ef-number__step{width:22px}
 .ef-number--lg .ef-number__step{width:28px}
+/* Touch: fixed-size targets grow to --tap-min; small glyph buttons keep their look and get a centred --tap-min hit area instead. */
+@media (pointer:coarse){.ef-number__steps{flex-direction:row}.ef-number .ef-number__step{width:var(--tap-min)}.ef-number__step+.ef-number__step{border-top:0;border-inline-start:1px solid var(--border-default)}}
 `;
 // How many decimal places a number carries, so a commit can round away float
 // noise: 0.1 + 0.2 must land as 0.3, not 0.30000000000000004.
@@ -79,7 +81,10 @@ export function NumberInput({ label, hint, error, invalid, value, defaultValue, 
   const field = useFieldProps({ invalid, error, id: rest.id, 'aria-describedby': rest['aria-describedby'] });
   const uid = React.useId();
   const inputId = field.id || (label ? uid + 'n' : undefined);
+  const noteId = (hint || error) ? uid + 'h' : undefined;
+  const describedBy = [...new Set([field.controlProps['aria-describedby'], noteId].filter(Boolean))].join(' ') || undefined;
   const bad = field.invalid;
+  const locked = disabled || !!rest.readOnly;
 
   const [inner, setInner] = React.useState(defaultValue !== undefined ? defaultValue : null);
   const v = value !== undefined ? value : inner;
@@ -126,7 +131,11 @@ export function NumberInput({ label, hint, error, invalid, value, defaultValue, 
     emit(normalize(next), e);
   };
   const keys = e => {
-    if (disabled) return;
+    rest.onKeyDown?.(e);
+    if (e.defaultPrevented) return;
+    // Enter commits first so an implicit form submit reads the typed number.
+    if (e.key === 'Enter' && !e.nativeEvent.isComposing) { commit(e); return; }
+    if (locked) return;
     if (e.key === 'ArrowUp') { e.preventDefault(); stepBy(1, e.shiftKey ? 10 : 1, e); }
     else if (e.key === 'ArrowDown') { e.preventDefault(); stepBy(-1, e.shiftKey ? 10 : 1, e); }
     else if (e.key === 'Home' && Number.isFinite(min)) { e.preventDefault(); setDraft(null); emit(normalize(min), e); }
@@ -134,14 +143,14 @@ export function NumberInput({ label, hint, error, invalid, value, defaultValue, 
   };
 
   const shown = draft != null ? draft : v == null ? '' : fmt(v);
-  const upStuck = disabled || (v != null && Number.isFinite(max) && v >= max);
-  const downStuck = disabled || (v != null && Number.isFinite(min) && v <= min);
+  const upStuck = locked || (v != null && Number.isFinite(max) && v >= max);
+  const downStuck = locked || (v != null && Number.isFinite(min) && v <= min);
 
   const control = (
     <span className={`ef-number ef-number--${size}${bad ? ' ef-number--invalid' : ''}${disabled ? ' ef-number--disabled' : ''}`}>
       <input {...rest} {...field.controlProps} id={inputId} className="ef-number__el" type="text" inputMode="decimal" autoComplete="off"
-        placeholder={placeholder} disabled={disabled} value={shown} aria-invalid={bad || undefined}
-        onChange={e => setDraft(e.target.value)} onKeyDown={keys} onBlur={commit} />
+        placeholder={placeholder} disabled={disabled} value={shown} aria-invalid={bad || undefined} aria-describedby={describedBy}
+        onChange={e => setDraft(e.target.value)} onKeyDown={keys} onBlur={e => { commit(e); rest.onBlur?.(e); }} />
       <span className="ef-number__steps">
         <button type="button" className="ef-number__step" aria-label="Increase" tabIndex={-1} disabled={upStuck}
           onMouseDown={e => e.preventDefault()} onClick={e => stepBy(1, 1, e)}><Icon name="chevron-up" size={size === 'lg' ? 14 : 12} /></button>
@@ -155,7 +164,7 @@ export function NumberInput({ label, hint, error, invalid, value, defaultValue, 
     <div className={`ef-field${className ? ' ' + className : ''}`} style={style}>
       {label ? <label htmlFor={inputId} className="ef-field__label">{label}</label> : null}
       {control}
-      {error ? <span className="ef-field__error"><Icon name="circle-alert" size={12} />{error}</span> : hint ? <span className="ef-field__hint">{hint}</span> : null}
+      {error ? <span id={noteId} role="alert" className="ef-field__error"><Icon name="circle-alert" size={12} />{error}</span> : hint ? <span id={noteId} className="ef-field__hint">{hint}</span> : null}
     </div>
   );
 }

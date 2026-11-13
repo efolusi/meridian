@@ -23,14 +23,9 @@ checks = [
     (ROOT / "README.md", f"{facts['components']} accessible React components", "README component count"),
     (ROOT / "README.md", f"{facts['tokens']} design tokens", "README token count"),
     (ROOT / "index.html", f"{facts['components']} accessible React components", "root redirect SEO count"),
-    (ROOT / "ROADMAP.md", f"{facts['tokens']} unique token names", "roadmap token count"),
-    (ROOT / "VISION.md", f"{facts['tokens']} design tokens", "vision token count"),
     (ROOT / "llms.txt", f"{facts['tokens']} design tokens", "llms token count"),
     (ROOT / "site/Docs.dc.html", f"{facts['tokens']} tokens", "docs token count"),
     (ROOT / "site/DsSite.dc.html", f"{facts['tokens']} tokens", "homepage token count"),
-    (ROOT / "ROADMAP.md", f"{facts['icons']} icons", "roadmap icon count"),
-    (ROOT / "ROADMAP.md", f"{facts['blocks']} blocks", "roadmap block count"),
-    (ROOT / "ROADMAP.md", f"{facts['starters']} starter journeys", "roadmap starter count"),
     (ROOT / "site/Components.dc.html", f"{facts['components']} accessible React components", "components SEO count"),
     (ROOT / "site/Docs.dc.html", f"{facts['components']} accessible components", "docs SEO count"),
     (ROOT / "site/DsSite.dc.html", f"{facts['components']} accessible React components", "homepage SEO count"),
@@ -50,12 +45,10 @@ for path, needle, label in checks:
 public_surfaces = (
     ROOT / "index.html",
     ROOT / "README.md",
-    ROOT / "ROADMAP.md",
     ROOT / "site/Components.dc.html",
     ROOT / "site/Docs.dc.html",
     ROOT / "site/DsSite.dc.html",
     ROOT / "site/Examples.dc.html",
-    ROOT / "VISION.md",
     ROOT / "llms.txt",
 )
 component_claim_patterns = (

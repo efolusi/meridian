@@ -2,6 +2,36 @@
 
 ## Unreleased
 
+## 1.22.0 — 2026-11-13
+
+- **Form controls have visible edges.** New `--border-control` token (at least 3:1 against field and card surfaces in both themes) is used by every input, select, checkbox, radio, switch and file drop edge. New `--accent-subtle-fg` keeps text on `--accent-subtle` at 4.5:1 in dark mode.
+- **Keyboard focus is visible in every list.** Select, Combobox and TimePicker options, menu items, Command options and NavigationMenu links draw an inset focus ring instead of a faint tint.
+- **Touch targets reach 44px across components** under `(pointer: coarse)`: Calendar days, steppers, chip remove, password reveal, Toggle, small buttons, menu items, table controls and more. Mouse layouts are unchanged.
+- **Table rows with `onRowClick` work from the keyboard**, and a row object listed twice gets its own key and selection slot. **Charts have text alternatives** (`role="img"`, an `aria-label` and a hidden data table) and a `locale` prop; BarChart bars and the DonutChart gap meet 3:1.
+- **CodeBlock and CopyField only say "Copied" when the clipboard write succeeded.** FileDrop gains `maxSize` and `onReject`, and `accept="*/*"` accepts every file.
+- **Escape and Tab respect nested overlays everywhere.** The mobile Sidebar and AlertDialog join the escape layer stack and leave focus alone inside a child popover. Cmd/Ctrl+B ignores text fields, and SkipLink moves focus itself, so hash routers are not triggered.
+- **`Drawer` `modal={false}` is deprecated.** It was always ignored; it now logs a development warning and will be removed in the next major version.
+- **Dark theme sets `color-scheme: dark`**, so native scrollbars and pickers follow it. `tokens.json` uses DTCG `{alias}` references and carries dark, compact and coarse-pointer values as modes.
+- **`_ds_bundle.js` is about 170 KB smaller.** Showcase screens were compiled into it but never used; each showcase page compiles its own source. The size gate now allows 4 KiB of headroom.
+- **Releases publish from a job that holds only `id-token: write`** and verifies the built tarballs by checksum; old releases are pruned to the newest five; the root docs `llms.txt` links to are published.
+- **The example apps' fictional SaaS is called Fernwick**, with no real compliance claims, and pages with invented figures carry a "Sample data" badge.
+
+- **Fork pull requests no longer run on the shared self-hosted runner.** They run on GitHub-hosted `ubuntu-24.04`; pushes and same-repo branches stay on `efolusi-dev`.
+- **PR checks run the full `npm run check`.** A green PR can no longer fail the release on a gate CI skipped.
+- **The publish pipeline is pinned and holds fewer credentials.** Exact npm, action SHAs and an image digest; tags are made through the API with no git credential. CI cancels superseded PR runs and every job has a timeout.
+- **`/tokens.json` is published again**, so the MCP server's `get_tokens` and the `llms.txt` link resolve. **dev-meridian serves only what production serves**: repository, operator and test files are no longer web-accessible.
+- **The MCP server refuses path-like component names.** `get_component` could read any JSON file in a local checkout; `get_tokens` now says it returns the light, default-density set.
+- **The npm package exports `useDirection`, `useComboboxAnchor` and `buttonGroupVariants`**, which its types already declared.
+- **Pages loading `_ds_bundle.js` no longer get 25 showcase globals** such as `window.Hero` and `window.Sidebar`.
+- **Focus stays visible in Windows High Contrast**, and **the Tailwind preset maps the type scale to `fontSize`** instead of colours. The contrast gate measures 104 pairs components really paint, up from 44, and none fail.
+- **Submenu items can be clicked again**, **menus, popovers, Select, TimePicker and ModelSelector open above dialogs**, and **Escape closes only the innermost overlay.** Dialog, Sheet, Drawer and CommandDialog lock page scroll; Popover content is in the Tab order; the mobile Sidebar is a modal dialog.
+- **A toast that never expires always shows Dismiss**, and dark-theme toast success and warning icons reach 3:1.
+- **Questionnaire's Next and Submit and the pressed Toggle are readable in dark mode** (they were 1.02:1 and 2.22:1). Switch is named by its label, Calendar stays keyboard-reachable, Combobox and PromptComposer ignore IME Enter, and ButtonTile, SegmentedControl, PageControl and SideNav no longer submit forms.
+- **Citation, SourceList, SourceCard and WebPreview refuse script URLs**, and ChartStyle escapes `<` in SSR output. PromptComposer takes `aria-label`; Table keeps selection across sorts; FileDrop honours `accept` and `multiple` on drop.
+- **Touch targets reach 44px** on SegmentedControl, the CodeBlock copy button, the docs site and the starter page chrome.
+- **The docs site has a skip link and switches language live**; Blocks, Examples, Charts, Themes and Colors are translated into Indonesian.
+- **Showcase toasts work again, every example page declares its language and has a title, and copied-out starters no longer show a broken logo.**
+
 ## 1.21.10 — 2026-10-12
 
 - **`Alert`: the action never covers the text.** `AlertAction` was absolutely positioned with only 96px reserved on the right, so any action wider than that (every real one: "Send the link again", "I have read and accept") sat on top of the description, and on phones it covered half of it. The action is now a grid column beside the text and, below 560px, a full-width row under it. Measured on My Efolusi's account page at 375, 768 and 1440px: description and action rectangles no longer intersect (before: the action covered 66x20px of the verify-email text and 90x20px of the consent text at 375px, 66x12 and 90x12 at 768px; after: 0, and the phone action is 299x44px, full width).

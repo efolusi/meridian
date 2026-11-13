@@ -7,3 +7,5 @@ Copyable marketing-site journey: home → pricing → contact. Copy this whole f
 - `Contact.dc.html` — contact form + offices
 
 Showcase twin: `showcases/website/` covers the same category as plain JSX sections you can lift into a React app. When a section changes in one, update the other.
+
+Sibling journeys: `auth-page/` (sign in, sign up) and `docs-page/` (quickstart). Copy them beside this folder under the same names, or repoint those links.

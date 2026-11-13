@@ -12,3 +12,8 @@ code,pre,kbd{font-family:var(--font-mono)}
 ::selection{background:var(--brand-100);color:var(--cocoa-900)}
 *,*::before,*::after{box-sizing:border-box}
 @media (prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important;scroll-behavior:auto!important}}
+/* Forced colours (Windows High Contrast) remove box-shadow, and box-shadow is how
+   every component draws --focus-ring after outline:none, so focus would vanish.
+   Unlayered on purpose: it outranks the @layer meridian component rules without
+   !important. Highlight is a system colour, so it survives the forced palette. */
+@media (forced-colors:active){:focus-visible{outline:2px solid Highlight;outline-offset:2px}}

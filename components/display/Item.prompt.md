@@ -4,7 +4,7 @@ A compositional content row for lists and card-like collections. Use Field for f
 
 ```jsx
 <Item variant="outline">
-  <ItemMedia variant="icon"><Icon name="shield-alert" /></ItemMedia>
+  <ItemMedia variant="icon"><Icon name="shield" /></ItemMedia>
   <ItemContent>
     <ItemTitle>Security alert</ItemTitle>
     <ItemDescription>New login detected from an unknown device.</ItemDescription>
