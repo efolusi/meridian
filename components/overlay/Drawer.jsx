@@ -35,7 +35,10 @@ const compose = (first, second) => event => { first?.(event); if (!event.default
 let warnedModal = false;
 function warnModalIgnored() {
   if (warnedModal || typeof console === 'undefined') return;
-  if (typeof process !== 'undefined' && process.env && process.env.NODE_ENV === 'production') return;
+  // Bare `process.env.NODE_ENV` so bundlers (Vite, webpack, esbuild) fold it to a
+  // literal; `typeof process` is not replaced and would keep the warning in
+  // production. Where nothing defines it, the read throws and we warn.
+  try { if (process.env.NODE_ENV === 'production') return; } catch (e) { /* no build-time env */ }
   warnedModal = true;
   console.warn('[meridian] <Drawer modal={false}> is deprecated and ignored: a Drawer is always modal. The prop will be removed in the next major version.');
 }

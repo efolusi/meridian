@@ -138,6 +138,7 @@ PAIRS = [
     # WCAG 1.4.11 — a form control's edge is its only boundary, so it needs 3:1
     # on every surface a field can sit on.
     ("--border-control", SURFACES, 3.0, "form-control edge"),
+    ("--border-control-hover", SURFACES, 3.0, "form-control edge on hover"),
     # WCAG 1.4.11 — the focus indicator must be distinguishable from whatever it
     # sits on. The inner offset ring is surface-coloured, so the outer ring only
     # ever borders a surface, never a control fill.
