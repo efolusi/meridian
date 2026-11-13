@@ -25,8 +25,8 @@ Four tags. No install, no bundler, no config: every component lands on one globa
 
 ```html
 <link rel="stylesheet" href="https://meridian.efolusi.com/styles.css">
-<script src="https://unpkg.com/react@18.3.1/umd/react.production.min.js"></script>
-<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.production.min.js"></script>
+<script src="https://unpkg.com/react@18.3.1/umd/react.production.min.js" integrity="sha384-DGyLxAyjq0f9SPpVevD6IgztCFlnMF6oW/XQGmfe+IsZ8TqEiDrcHkMLKI6fiB/Z" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.production.min.js" integrity="sha384-gTGxhz21lVGYNMcdJOyq01Edg0jhn/c22nsx0kyqP0TxaV5WVdsSH1fSDUf5YJj1" crossorigin="anonymous"></script>
 <script src="https://meridian.efolusi.com/_ds_bundle.js"></script>
 ```
 
@@ -39,6 +39,8 @@ const { Button, Card, CardContent, CardHeader, CardTitle, Stat } = window.Efolus
   <CardContent><Button onClick={save}>Save changes</Button></CardContent>
 </Card>
 ```
+
+The React tags carry Subresource Integrity hashes, so the browser refuses a file that changed on the CDN. The two `meridian.efolusi.com` tags have none: those URLs always serve the newest release, so a fixed hash would break on the next deploy. To pin every file, self-host `styles.css` and `_ds_bundle.js` from a release and add your own hashes.
 
 A complete runnable page is in [`hello.html`](hello.html). Open it in a browser; nothing else is required.
 
