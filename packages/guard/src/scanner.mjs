@@ -152,6 +152,29 @@ function rawColorContext(node, ancestors) {
   return false;
 }
 
+// Deletes a JSX attribute and the whitespace before it, so
+// `<Drawer\n  modal={false}\n  open>` becomes `<Drawer\n  open>`.
+function removeAttribute(source, item) {
+  let start = item.start;
+  while (start > 0 && /\s/.test(source[start - 1])) start -= 1;
+  return { start, end: item.end, text: '' };
+}
+
+/** Applies the `fix` edits carried by diagnostics; overlapping edits keep the first. */
+export function applyFixes(source, diagnostics) {
+  const edits = diagnostics.map(item => item.fix).filter(Boolean).sort((a, b) => b.start - a.start);
+  let output = source;
+  let floor = Infinity;
+  let applied = 0;
+  for (const edit of edits) {
+    if (edit.end > floor) continue;
+    output = output.slice(0, edit.start) + edit.text + output.slice(edit.end);
+    floor = edit.start;
+    applied += 1;
+  }
+  return { output, applied };
+}
+
 export function scanSource(source, file, contracts) {
   let ast;
   try {
@@ -242,10 +265,12 @@ export function scanSource(source, file, contracts) {
       if (item.type !== 'JSXAttribute') continue;
       const contract = deprecated.get(`${component}:${item.name.name}`);
       if (!contract) continue;
-      diagnostics.push(diagnostic(file, item, RULES.deprecatedApi,
+      const found = diagnostic(file, item, RULES.deprecatedApi,
         contract.replacement
           ? `<${component}> prop "${contract.prop}" is deprecated; use "${contract.replacement}".`
-          : `<${component}> prop "${contract.prop}" is deprecated. ${contract.message}`));
+          : `<${component}> prop "${contract.prop}" is deprecated. ${contract.message}`);
+      if (contract.codemod === 'remove') found.fix = removeAttribute(source, item);
+      diagnostics.push(found);
     }
 
     if (component === 'IconButton' && !attribute(node, 'label')) {
@@ -358,15 +383,27 @@ export function scanStyleSource(source, file, contracts) {
   return diagnostics;
 }
 
-export async function guard(targets, { contracts = defaultContracts } = {}) {
+export async function guard(targets, { contracts = defaultContracts, fix = false } = {}) {
   const files = await collectFiles(targets);
   const diagnostics = [];
+  let fixed = 0;
   for (const file of files) {
-    const source = await fs.readFile(file, 'utf8');
-    diagnostics.push(...(path.extname(file) === '.css'
-      ? scanStyleSource(source, file, contracts)
-      : scanSource(source, file, contracts)));
+    const scan = text => (path.extname(file) === '.css'
+      ? scanStyleSource(text, file, contracts)
+      : scanSource(text, file, contracts));
+    let source = await fs.readFile(file, 'utf8');
+    let found = scan(source);
+    if (fix && found.some(item => item.fix)) {
+      const result = applyFixes(source, found);
+      await fs.writeFile(file, result.output);
+      fixed += result.applied;
+      source = result.output;
+      found = scan(source);
+    }
+    diagnostics.push(...found);
   }
   diagnostics.sort((a, b) => a.file.localeCompare(b.file) || a.line - b.line || a.column - b.column || a.ruleId.localeCompare(b.ruleId));
-  return { filesScanned: files.length, diagnostics };
+  return fix
+    ? { filesScanned: files.length, fixed, diagnostics }
+    : { filesScanned: files.length, diagnostics };
 }

@@ -17,7 +17,7 @@ Warm paper, espresso ink, hairline structure. Copy it, theme it, ship it.
 - **The zero-build path comes first.** The four-tag CDN page never regresses for the sake of the npm build; where the two differ, the difference is deliberate and documented.
 - **Accessible by default.** WCAG 2.1 AA is the floor: visible focus, full keyboard paths, contrast in both themes, reduced motion respected. A component that takes an ARIA role implements that role's whole keyboard contract.
 - **Every claim is a check.** "Accessible", "reproducible" and "the types compile" are gates in `npm run check`, not adjectives.
-- **Deprecate, then remove in a major.** A renamed prop keeps working with a warning until the next major version ([governance](guidelines/governance.md#deprecation)).
+- **Deprecate, then remove in a major.** A renamed prop keeps working with a warning until the next major version ([governance](guidelines/governance.md#deprecation)). The [migration guide](guidelines/migration.md) lists every deprecation with before and after code.
 
 ## Quickstart
 
@@ -137,6 +137,7 @@ import '@efolusi/meridian/landing.css'
 - `guidelines/frameworks.md`: install and integration guides for Next.js, Vite, Remix, and the zero-build CDN path
 - `guidelines/accessibility.md`: focus rules, full keyboard map, contrast targets, per-component semantics
 - `guidelines/governance.md`: scope, semver rules, when a component belongs, do/don't, deprecation policy
+- `guidelines/migration.md`: what to change before the next major, with before and after code and Guard's `--fix`
 - `guidelines/compatibility.md`: migrating from another registry-based component set, and how compatibility is proven
 
 ## Component library

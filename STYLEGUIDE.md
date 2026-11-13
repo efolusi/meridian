@@ -39,4 +39,4 @@ Keyboard path, visible `--focus-ring`, and correct ARIA per `guidelines/accessib
 - API changes and new components start as an RFC issue (template in `.github/ISSUE_TEMPLATE/rfc.md`) before code.
 - Component `.jsx` changes ship with a bundle recompile (see ARCHITECTURE.md § invariants).
 - Before pushing: `npm run check` is green, and `site/_smoke.html` renders clean after demo changes.
-- Deprecate, don't break: see [governance § Deprecation](guidelines/governance.md#deprecation).
+- Deprecate, don't break: see [governance § Deprecation](guidelines/governance.md#deprecation) and the [migration guide](guidelines/migration.md).
