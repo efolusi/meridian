@@ -1,3 +1,4 @@
+import { execFileSync } from 'node:child_process'
 import { readFileSync } from 'node:fs'
 import { describe, expect, it } from 'vitest'
 
@@ -37,6 +38,45 @@ function autoDarkRules(css) {
   const prefix = AUTO.replace(/[()[\]:"=]/g, '\\$&')
   return Object.fromEntries([...media.matchAll(new RegExp(`${prefix} ([^{]+)\\{([^}]*)\\}`, 'g'))].map((m) => [m[1].trim(), m[2]]))
 }
+
+describe('dark tokens follow the OS when no theme is set (DS-08)', () => {
+  const explicit = colors.match(/\[data-theme="dark"\]\{([\s\S]*?)\n\}/)?.[1]
+  const auto = colors.match(/@media \(prefers-color-scheme:dark\)\{\n:root:not\(:where\(\[data-theme="light"\]\)\)\{([\s\S]*?)\n\}/)?.[1]
+
+  it('mirrors every [data-theme="dark"] declaration exactly, color-scheme included', () => {
+    expect(explicit).toBeTruthy()
+    expect(auto, 'tokens/colors.css needs the prefers-color-scheme block').toBeTruthy()
+    expect(declarations(auto)).toEqual(declarations(explicit))
+    expect(declarations(auto)['color-scheme']).toBe('dark')
+  })
+
+  it('mirrors the dark ::selection colours', () => {
+    const rule = colors.match(/\[data-theme="dark"\] ::selection\{([^}]*)\}/)[1]
+    expect(colors).toContain(`${AUTO} ::selection{${rule}}`)
+  })
+
+  it('stays at :root specificity, so data-theme="light" opts out and a product :root remap still wins', () => {
+    expect(colors).toContain(`${AUTO}{`)
+    expect(colors).not.toMatch(/:root:not\(\[data-theme/)
+  })
+
+  for (const path of ['components/display/Badge.jsx', 'components/feedback/Toast.jsx']) {
+    it(`mirrors the component dark rules in ${path}`, () => {
+      const explicitRules = explicitDarkRules(read(path))
+      expect(Object.keys(explicitRules).length).toBeGreaterThan(0)
+      expect(autoDarkRules(read(path))).toEqual(explicitRules)
+    })
+  }
+
+  it('gives Chart an OS-dark colour block', () => {
+    expect(read('components/data/Chart.jsx')).toContain(`@media (prefers-color-scheme:dark){${AUTO} [data-chart=`)
+  })
+
+  it('leaves no other component with a [data-theme="dark"] rule and no OS-dark mirror', () => {
+    const files = execFileSync('git', ['grep', '-l', '\\[data-theme="dark"\\]', '--', 'components'], { encoding: 'utf8' }).trim().split('\n')
+    for (const file of files) expect(read(file), file).toContain('prefers-color-scheme:dark')
+  })
+})
 
 describe('base element rules (DS-04, DS-10)', () => {
   it('puts everything inside @layer meridian except the forced-colors outline', () => {

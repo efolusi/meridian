@@ -22,10 +22,13 @@ export function useChart() {
 export function ChartStyle({ id, config }) {
   const colors = Object.entries(config || {}).filter(([, item]) => item.theme || item.color);
   if (!colors.length) return null;
-  const css = Object.entries(THEMES).map(([theme, prefix]) => `${prefix} [data-chart="${id}"]{\n${colors.map(([key, item]) => {
+  const vars = theme => colors.map(([key, item]) => {
     const value = item.theme ? item.theme[theme] : item.color;
     return value ? `--color-${key}:${value};` : '';
-  }).join('\n')}\n}`).join('\n');
+  }).join('\n');
+  // With no data-theme on <html>, a dark OS means dark, as in tokens/colors.css.
+  const css = Object.entries(THEMES).map(([theme, prefix]) => `${prefix} [data-chart="${id}"]{\n${vars(theme)}\n}`).join('\n')
+    + `\n@media (prefers-color-scheme:dark){:root:not(:where([data-theme="light"])) [data-chart="${id}"]{\n${vars('dark')}\n}}`;
   // Raw text inside <style>: server-rendered, a `<` in a config value could
   // close the element and open a script. CSS never needs a literal `<` here.
   return <style dangerouslySetInnerHTML={{ __html: css.replace(/</g, '\\3c ') }} />;

@@ -117,7 +117,14 @@ Independent of framework, set attributes on `<html>` or any subtree:
 <html data-theme="dark" data-density="compact">
 ```
 
-Only semantic aliases remap, so a dark page can host a light card and back.
+Only semantic aliases remap. A `data-theme="dark"` subtree turns dark inside a light page. The reverse does not work yet: there is no `data-theme="light"` token block, so a light card inside a dark page stays dark.
+
+With no `data-theme` on `<html>`, Meridian follows the operating system:
+`prefers-color-scheme: dark` applies the dark tokens. `data-theme="dark"`
+forces dark, and `data-theme="light"` forces light. An app with no dark styling
+of its own should set `data-theme="light"` on `<html>`; otherwise a dark OS turns
+Meridian components dark inside a light page. A theme script that switches to
+light by removing the attribute must set `"light"` instead.
 
 ## Fonts
 
