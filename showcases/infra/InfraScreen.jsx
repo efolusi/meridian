@@ -37,6 +37,7 @@ function InfraScreen() {
             <a href="../console/index.html" title="Back to Console" style={{ display: 'inline-flex' }}><img src="../../assets/meridian-mark.svg" alt="" style={{ width: 30, height: 16 }} /></a>
             <h1 style={{ fontSize: 24, fontWeight: 680 }}>Infrastructure</h1>
             <StatusDot status="warn" pulse label="1 incident" />
+            <Badge variant="secondary">Sample data</Badge>
             <div style={{ marginLeft: 'auto', display: 'flex', gap: 8 }}>
               <Button variant="secondary" iconLeft="terminal" onClick={() => setCli(true)}>Open CLI</Button>
               <Button iconLeft="plus" onClick={() => setConnect(true)}>Connect resource</Button>

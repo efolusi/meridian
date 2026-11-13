@@ -33,6 +33,7 @@ function MiniConsole() {
         <span style={{ width: 10, height: 10, borderRadius: 99, background: 'var(--sand-200)' }}></span>
         <span style={{ width: 10, height: 10, borderRadius: 99, background: 'var(--sand-200)' }}></span>
         <span style={{ marginLeft: 8, fontFamily: 'var(--font-mono)', fontSize: 11, color: 'var(--text-muted)' }}>console.fernwick.example</span>
+        <Badge variant="secondary" style={{ marginLeft: 'auto' }}>Sample data</Badge>
       </div>
       <div style={{ display: 'flex', gap: 14, padding: 18 }}>
         {[['MRR', '$48.2k', '↑ 12.4%', 'success'], ['Customers', '1,284', '↑ 3.1%', 'success'], ['Requests', '16.3M', '↑ 8.9%', 'success']].map(([l, v, d, t]) => (

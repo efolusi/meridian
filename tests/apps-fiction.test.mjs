@@ -50,4 +50,20 @@ describe('apps: the fictional product', () => {
     }
     expect(hits).toEqual([])
   })
+  // Owner decision 2026-11-13: invented metrics carry a visible "Sample data"
+  // label, the way the finance starters badge their headings. A showcase is
+  // judged as a folder (its screens share one shell); a starter page alone.
+  it('labels every page with invented metrics as sample data', () => {
+    const METRIC = /\b(?:Stat|Sparkline|BarChart)\b|\bMRR\b/
+    const groups = {}
+    for (const { file, text } of sources) {
+      const key = file.startsWith('showcases/') ? file.split('/').slice(0, 2).join('/') : file
+      ;(groups[key] ||= []).push(text)
+    }
+    const missing = Object.entries(groups)
+      .filter(([, texts]) => texts.some(t => METRIC.test(t)) && !texts.some(t => />\s*Sample data\s*</.test(t) || /Sample data:/.test(t)))
+      .map(([key]) => key)
+      .filter(key => !key.startsWith('blocks/'))
+    expect(missing).toEqual([])
+  })
 })
