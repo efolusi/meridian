@@ -1,6 +1,6 @@
 import React from 'react';
 import { IconButton } from '../forms/IconButton.jsx';
-import { injectEfCss, mergeRefs } from '../forms/Button.jsx';
+import { injectEfCss, mergeRefs, useIsoLayoutEffect } from '../forms/Button.jsx';
 import { Portal, useEscapeLayer, useScrollLock, escapeLayerContext } from '../overlay/Portal.jsx';
 const CSS = `
 .ef-dialog__overlay{position:fixed;inset:0;z-index:var(--z-overlay);display:flex;align-items:center;justify-content:center;padding:24px;background:var(--overlay-scrim);animation:ef-fade var(--dur-med) var(--ease-out)}
@@ -27,7 +27,9 @@ export function Dialog({ open: controlled, defaultOpen = false, onOpenChange, ch
   const descriptionId = React.useId();
   const open = controlled === undefined ? internal : controlled;
   const setOpen = React.useCallback(next => { if (controlled === undefined) setInternal(next); onOpenChange?.(next); }, [controlled, onOpenChange]);
-  const value = React.useMemo(() => ({ open, setOpen, titleId, descriptionId }), [open, setOpen, titleId, descriptionId]);
+  // the id of the Description actually rendered, so aria-describedby never points at nothing
+  const [describedBy, setDescribedBy] = React.useState(undefined);
+  const value = React.useMemo(() => ({ open, setOpen, titleId, descriptionId, describedBy, setDescribedBy }), [open, setOpen, titleId, descriptionId, describedBy]);
   return <DialogContext.Provider value={value}>{children}</DialogContext.Provider>;
 }
 
@@ -54,9 +56,13 @@ export const DialogContent = React.forwardRef(function DialogContent({ children,
   const layer = useEscapeLayer(!!(ctx && ctx.open), e => { if (onEscapeKeyDown) onEscapeKeyDown(e); if (!e.defaultPrevented) ctx.setOpen(false); });
   React.useEffect(() => { if (!ctx || !ctx.open) return; const key = e => { if (e.key !== 'Tab' || e.defaultPrevented) return; if (layer.children > 0 && !panelRef.current.contains(document.activeElement)) return; const f = tabbable(panelRef.current); if (!f.length) return e.preventDefault(); const i=f.indexOf(document.activeElement); if (e.shiftKey && i<=0) { e.preventDefault(); f[f.length-1].focus(); } else if (!e.shiftKey && (i<0 || i===f.length-1)) { e.preventDefault(); f[0].focus(); } }; document.addEventListener('keydown', key); return () => document.removeEventListener('keydown', key); }, [ctx && ctx.open]);
   if (!ctx || !ctx.open) return null;
-  return <DialogPortal><DialogOverlay {...overlayProps} ref={overlayRef}><div {...rest} ref={mergeRefs(ref, panelRef)} data-slot={slot} role="dialog" aria-modal="true" aria-labelledby={rest['aria-label'] ? undefined : ctx.titleId} aria-describedby={ctx.descriptionId} tabIndex={-1} className={cx('ef-dialog__content', className)} style={{ position:'relative', maxWidth: width, ...style }}><escapeLayerContext.Provider value={layer}>{children}</escapeLayerContext.Provider>{showCloseButton ? <div className="ef-dialog__close"><IconButton icon="x" label={closeLabel} size="sm" onClick={() => ctx.setOpen(false)} /></div> : null}</div></DialogOverlay></DialogPortal>;
+  return <DialogPortal><DialogOverlay {...overlayProps} ref={overlayRef}><div {...rest} ref={mergeRefs(ref, panelRef)} data-slot={slot} role="dialog" aria-modal="true" aria-labelledby={rest['aria-label'] ? undefined : ctx.titleId} aria-describedby={rest['aria-describedby'] ?? ctx.describedBy} tabIndex={-1} className={cx('ef-dialog__content', className)} style={{ position:'relative', maxWidth: width, ...style }}><escapeLayerContext.Provider value={layer}>{children}</escapeLayerContext.Provider>{showCloseButton ? <div className="ef-dialog__close"><IconButton icon="x" label={closeLabel} size="sm" onClick={() => ctx.setOpen(false)} /></div> : null}</div></DialogOverlay></DialogPortal>;
 });
 export const DialogHeader = React.forwardRef(function DialogHeader({ className, slot = 'dialog-header', ...rest }, ref) { return <div {...rest} ref={ref} data-slot={slot} className={cx('ef-dialog__header', className)} />; });
 export const DialogFooter = React.forwardRef(function DialogFooter({ className, slot = 'dialog-footer', ...rest }, ref) { return <div {...rest} ref={ref} data-slot={slot} className={cx('ef-dialog__footer', className)} />; });
 export const DialogTitle = React.forwardRef(function DialogTitle({ className, id, slot = 'dialog-title', ...rest }, ref) { const ctx=React.useContext(DialogContext); return <h2 {...rest} ref={ref} id={id || (ctx && ctx.titleId)} data-slot={slot} className={cx('ef-dialog__title', className)} />; });
-export const DialogDescription = React.forwardRef(function DialogDescription({ className, id, slot = 'dialog-description', ...rest }, ref) { const ctx=React.useContext(DialogContext); return <div {...rest} ref={ref} id={id || (ctx && ctx.descriptionId)} data-slot={slot} className={cx('ef-dialog__description', className)} />; });
+export const DialogDescription = React.forwardRef(function DialogDescription({ className, id, slot = 'dialog-description', ...rest }, ref) {
+  const ctx = React.useContext(DialogContext); const resolved = id || (ctx && ctx.descriptionId); const register = ctx && ctx.setDescribedBy;
+  useIsoLayoutEffect(() => { if (!register) return; register(resolved); return () => register(undefined); }, [register, resolved]);
+  return <div {...rest} ref={ref} id={resolved} data-slot={slot} className={cx('ef-dialog__description', className)} />;
+});

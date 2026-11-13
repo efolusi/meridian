@@ -125,7 +125,7 @@
 class Component extends DCLogic {
   state = { dark: false, si: 0, langTick: 0 };
   componentDidMount() {
-    try { const t = localStorage.getItem('efolusi-site-theme'); if (t) document.documentElement.setAttribute('data-theme', t); } catch (e) {}
+    try { const t = localStorage.getItem('efolusi-site-theme') || (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'); document.documentElement.setAttribute('data-theme', t); } catch (e) {}
     this.setState({ dark: document.documentElement.getAttribute('data-theme') === 'dark' });
     this._onHash = () => this.applyHash();
     window.addEventListener('hashchange', this._onHash);
@@ -284,6 +284,12 @@ class Component extends DCLogic {
         p('Open an issue describing the gap, agree on the API in the thread, then submit the three files plus a specimen entry. Versioning and release policy live in guidelines/governance.md; the full contribution guide is CONTRIBUTING.md at the repo root.', 'Buka issue yang menjelaskan celahnya, sepakati API di thread, lalu kirim ketiga berkas plus entri spesimen. Kebijakan versioning dan rilis ada di guidelines/governance.md; panduan kontribusi lengkap ada di CONTRIBUTING.md di root repo.'),
       ] },
       { group: 'Reference', id: 'changelog', title: 'Changelog', lede: 'Notable changes, newest first. Full history in CHANGELOG.md.', blocks: [
+        h2('unreleased', 'Unreleased', 'Belum dirilis'),
+        list([
+          ['Components win over element defaults.', 'The base element rules now live in the meridian layer, so component spacing is no longer flattened by global resets.', 'Komponen menang atas default elemen.', 'Aturan elemen dasar kini berada di layer meridian, sehingga jarak milik komponen tidak lagi diratakan oleh reset global.'],
+          ['Dark mode follows the OS.', 'With no data-theme set, a dark operating system gets the dark tokens; an explicit theme still wins.', 'Mode gelap mengikuti OS.', 'Tanpa data-theme, sistem operasi gelap mendapat token gelap; tema eksplisit tetap menang.'],
+          ['Steadier text while fonts load.', 'Metric-matched fallback faces cut the layout shift when Figtree and Bricolage Grotesque arrive.', 'Teks lebih stabil saat font dimuat.', 'Font cadangan yang metriknya disamakan mengurangi pergeseran tata letak saat Figtree dan Bricolage Grotesque tiba.'],
+        ]),
         h2('v1220', '1.22.0 (November 2026)', '1.22.0 (November 2026)'),
         list([
           ['Overlays stack and close correctly.', 'Menus, popovers, Select, TimePicker and ModelSelector open above dialogs, Escape closes only the innermost layer, submenu items can be clicked, and modals lock page scroll.', 'Overlay bertumpuk dan menutup dengan benar.', 'Menu, popover, Select, TimePicker, dan ModelSelector terbuka di atas dialog, Escape hanya menutup lapisan terdalam, item submenu bisa diklik, dan modal mengunci scroll halaman.'],

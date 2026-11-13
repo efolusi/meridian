@@ -74,7 +74,7 @@ class Component extends DCLogic {
     this._lt = 0;
     this._onLang = () => { this._lt += 1; this.setState({ langTick: this._lt }); };
     window.addEventListener('ef:langchange', this._onLang);
-    try { const t = localStorage.getItem('efolusi-site-theme'); if (t) document.documentElement.setAttribute('data-theme', t); } catch (e) {}
+    try { const t = localStorage.getItem('efolusi-site-theme') || (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'); document.documentElement.setAttribute('data-theme', t); } catch (e) {}
     this.setState({ dark: document.documentElement.getAttribute('data-theme') === 'dark' });
   }
   componentWillUnmount() { window.removeEventListener('ef:langchange', this._onLang); }

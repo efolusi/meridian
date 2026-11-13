@@ -319,7 +319,7 @@ window.MeridianLiveFrame = (() => {
 class Component extends DCLogic {
   state = { dark: false, groups: null, ns: 'EfolusiDesignSystem_4ffc3d', gi: 0, ii: 0, demoMaps: {}, interfaces: {}, descId: {} };
   componentDidMount() {
-    try { const t = localStorage.getItem('efolusi-site-theme'); if (t) document.documentElement.setAttribute('data-theme', t); } catch (e) {}
+    try { const t = localStorage.getItem('efolusi-site-theme') || (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'); document.documentElement.setAttribute('data-theme', t); } catch (e) {}
     this.setState({ dark: document.documentElement.getAttribute('data-theme') === 'dark' });
     this._onHash = () => this.applyHash();
     window.addEventListener('hashchange', this._onHash);
