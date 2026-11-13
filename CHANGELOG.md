@@ -8,6 +8,7 @@
 - **Reduced motion also removes animation and transition delays.**
 - **Dialogs reference a description only when one renders**, follow a custom description `id`, and keep a caller's own `aria-describedby`.
 - **Icons retry a dropped request twice** before giving up; a missing glyph (404) is still remembered.
+- **Example apps no longer wear the Meridian mark.** The fictional products in the showcases, starters and blocks (Fernwick, Northstar CRM, Ledgerroom, Waypoint Support) show their name as a plain text wordmark, and the hero's invented user count reads `[4,200+]` as a placeholder.
 - **The hosted site sends security headers** (nosniff, HSTS, Referrer-Policy, `frame-ancestors 'self'`), allows cross-origin font and registry loads, and serves Markdown and `LICENSE` as plain text.
 
 ## 1.22.0 — 2026-11-13
