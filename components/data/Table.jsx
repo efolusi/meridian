@@ -47,10 +47,6 @@ export const Table = React.forwardRef(function Table({
   injectEfCss('ef-css-table', CSS);
   // Hooks first: the composition branch below returns early, and hooks after
   // it would drop sort and selection state whenever a table passes through it.
-  // Without rowKey the key is the row's index in `rows`, not its sorted
-  // position, so a selection stays on the same row when the sort changes.
-  const order = React.useMemo(() => new Map((rows || []).map((row, i) => [row, i])), [rows]);
-  const key = (row, i) => rowKey ? (typeof rowKey === 'function' ? rowKey(row) : row[rowKey]) : order.has(row) ? order.get(row) : i;
 
   const [innerSort, setInnerSort] = React.useState(defaultSort || null);
   const sort = sortProp !== undefined ? sortProp : innerSort;
@@ -72,15 +68,21 @@ export const Table = React.forwardRef(function Table({
 
   // Sorting is applied here, not expected of the caller: a table that renders
   // a sort affordance it does not honour is worse than one with no affordance.
-  const sorted = React.useMemo(() => {
-    if (!rows || !columns || !sort || !sort.key) return rows;
+  // Sort positions, not row objects: without rowKey a row's key is its index in
+  // `rows`, so a selection stays on the same row when the sort changes, and a
+  // row object listed twice still gets two keys.
+  const order = React.useMemo(() => {
+    const idx = (rows || []).map((_, i) => i);
+    if (!rows || !columns || !sort || !sort.key) return idx;
     const col = columns.find(c => c.key === sort.key);
-    if (!col) return rows;
+    if (!col) return idx;
     const get = col.sortAccessor || (row => row[col.key]);
     // Negate rather than reverse, so rows with equal keys keep their order.
     const sign = sort.direction === 'desc' ? -1 : 1;
-    return rows.slice().sort((x, y) => sign * compare(get(x), get(y)));
+    return idx.sort((x, y) => sign * compare(get(rows[x]), get(rows[y])));
   }, [rows, columns, sort]);
+  const sorted = rows ? order.map(i => rows[i]) : rows;
+  const key = (row, pos) => rowKey ? (typeof rowKey === 'function' ? rowKey(row) : row[rowKey]) : order[pos];
 
   if (!columns || !rows) {
     return <div data-slot="table-container" className="ef-table-wrap">
