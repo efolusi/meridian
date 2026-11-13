@@ -1,16 +1,16 @@
 {
   "totals": {
     "@efolusi/meridian": {
-      "bytes": 354647,
-      "gzip": 79490
+      "bytes": 354512,
+      "gzip": 79444
     },
     "dist/components.css": {
       "bytes": 198579,
       "gzip": 28179
     },
     "_ds_bundle.js": {
-      "bytes": 802808,
-      "gzip": 141929
+      "bytes": 802635,
+      "gzip": 141894
     }
   },
   "modules": [
@@ -374,8 +374,8 @@
       "exports": [
         "DonutChart"
       ],
-      "bytes": 3247,
-      "gzip": 1329
+      "bytes": 3112,
+      "gzip": 1300
     },
     {
       "module": "data/EmptyState.js",
