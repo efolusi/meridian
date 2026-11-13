@@ -1,0 +1,1405 @@
+{
+  "totals": {
+    "@efolusi/meridian": {
+      "bytes": 354576,
+      "gzip": 79490
+    },
+    "dist/components.css": {
+      "bytes": 198579,
+      "gzip": 28179
+    },
+    "_ds_bundle.js": {
+      "bytes": 802699,
+      "gzip": 141928
+    }
+  },
+  "modules": [
+    {
+      "module": "ai/AgentRun.js",
+      "group": "ai",
+      "exports": [
+        "AgentRun"
+      ],
+      "bytes": 46598,
+      "gzip": 7771
+    },
+    {
+      "module": "ai/Bubble.js",
+      "group": "ai",
+      "exports": [
+        "BubbleGroup",
+        "Bubble",
+        "BubbleContent",
+        "BubbleReactions"
+      ],
+      "bytes": 1767,
+      "gzip": 749
+    },
+    {
+      "module": "ai/ChatMessage.js",
+      "group": "ai",
+      "exports": [
+        "ChatMessage"
+      ],
+      "bytes": 47384,
+      "gzip": 8029
+    },
+    {
+      "module": "ai/Citation.js",
+      "group": "ai",
+      "exports": [
+        "Citation",
+        "SourceList"
+      ],
+      "bytes": 47631,
+      "gzip": 8200
+    },
+    {
+      "module": "ai/Confirmation.js",
+      "group": "ai",
+      "exports": [
+        "Confirmation"
+      ],
+      "bytes": 46188,
+      "gzip": 7718
+    },
+    {
+      "module": "ai/Conversation.js",
+      "group": "ai",
+      "exports": [
+        "Conversation"
+      ],
+      "bytes": 45990,
+      "gzip": 7781
+    },
+    {
+      "module": "ai/DocumentCard.js",
+      "group": "ai",
+      "exports": [
+        "DocumentCard"
+      ],
+      "bytes": 46389,
+      "gzip": 7853
+    },
+    {
+      "module": "ai/FeedbackBar.js",
+      "group": "ai",
+      "exports": [
+        "FeedbackBar"
+      ],
+      "bytes": 46066,
+      "gzip": 7632
+    },
+    {
+      "module": "ai/GeneratedImage.js",
+      "group": "ai",
+      "exports": [
+        "GeneratedImage"
+      ],
+      "bytes": 46451,
+      "gzip": 7689
+    },
+    {
+      "module": "ai/Marker.js",
+      "group": "ai",
+      "exports": [
+        "Marker",
+        "MarkerIcon",
+        "MarkerContent"
+      ],
+      "bytes": 1388,
+      "gzip": 626
+    },
+    {
+      "module": "ai/Message.js",
+      "group": "ai",
+      "exports": [
+        "Message",
+        "MessageGroup",
+        "MessageAvatar",
+        "MessageContent",
+        "MessageHeader",
+        "MessageFooter"
+      ],
+      "bytes": 1572,
+      "gzip": 480
+    },
+    {
+      "module": "ai/MessageScroller.js",
+      "group": "ai",
+      "exports": [
+        "MessageScrollerProvider",
+        "MessageScroller",
+        "MessageScrollerViewport",
+        "MessageScrollerContent",
+        "MessageScrollerItem",
+        "MessageScrollerButton"
+      ],
+      "bytes": 50805,
+      "gzip": 9399
+    },
+    {
+      "module": "ai/ModelSelector.js",
+      "group": "ai",
+      "exports": [
+        "ModelSelector"
+      ],
+      "bytes": 48593,
+      "gzip": 8754
+    },
+    {
+      "module": "ai/Player.js",
+      "group": "ai",
+      "exports": [
+        "Player"
+      ],
+      "bytes": 48805,
+      "gzip": 8692
+    },
+    {
+      "module": "ai/PromptComposer.js",
+      "group": "ai",
+      "exports": [
+        "PromptComposer"
+      ],
+      "bytes": 46921,
+      "gzip": 8043
+    },
+    {
+      "module": "ai/PromptSteps.js",
+      "group": "ai",
+      "exports": [
+        "PromptSteps"
+      ],
+      "bytes": 47666,
+      "gzip": 8377
+    },
+    {
+      "module": "ai/Reasoning.js",
+      "group": "ai",
+      "exports": [
+        "Reasoning"
+      ],
+      "bytes": 45489,
+      "gzip": 7550
+    },
+    {
+      "module": "ai/RichComposer.js",
+      "group": "ai",
+      "exports": [
+        "RichComposer"
+      ],
+      "bytes": 48970,
+      "gzip": 8984
+    },
+    {
+      "module": "ai/Sandbox.js",
+      "group": "ai",
+      "exports": [
+        "Sandbox"
+      ],
+      "bytes": 46307,
+      "gzip": 7747
+    },
+    {
+      "module": "ai/SelectionQuote.js",
+      "group": "ai",
+      "exports": [
+        "SelectionQuote"
+      ],
+      "bytes": 46687,
+      "gzip": 8095
+    },
+    {
+      "module": "ai/SourceCard.js",
+      "group": "ai",
+      "exports": [
+        "SourceCard"
+      ],
+      "bytes": 45622,
+      "gzip": 7626
+    },
+    {
+      "module": "ai/Suggestions.js",
+      "group": "ai",
+      "exports": [
+        "Suggestions"
+      ],
+      "bytes": 45115,
+      "gzip": 7389
+    },
+    {
+      "module": "ai/Task.js",
+      "group": "ai",
+      "exports": [
+        "Task"
+      ],
+      "bytes": 45468,
+      "gzip": 7427
+    },
+    {
+      "module": "ai/Todo.js",
+      "group": "ai",
+      "exports": [
+        "Todo"
+      ],
+      "bytes": 46136,
+      "gzip": 7629
+    },
+    {
+      "module": "ai/ToolCall.js",
+      "group": "ai",
+      "exports": [
+        "ToolCall"
+      ],
+      "bytes": 47785,
+      "gzip": 8039
+    },
+    {
+      "module": "ai/Transcript.js",
+      "group": "ai",
+      "exports": [
+        "Transcript"
+      ],
+      "bytes": 2353,
+      "gzip": 1018
+    },
+    {
+      "module": "ai/UsageMeter.js",
+      "group": "ai",
+      "exports": [
+        "UsageMeter"
+      ],
+      "bytes": 1982,
+      "gzip": 955
+    },
+    {
+      "module": "ai/WebPreview.js",
+      "group": "ai",
+      "exports": [
+        "WebPreview"
+      ],
+      "bytes": 48116,
+      "gzip": 8473
+    },
+    {
+      "module": "code/CodeBlock.js",
+      "group": "code",
+      "exports": [
+        "CodeBlock"
+      ],
+      "bytes": 46868,
+      "gzip": 8012
+    },
+    {
+      "module": "code/Console.js",
+      "group": "code",
+      "exports": [
+        "Console"
+      ],
+      "bytes": 47013,
+      "gzip": 8009
+    },
+    {
+      "module": "code/CopyField.js",
+      "group": "code",
+      "exports": [
+        "CopyField"
+      ],
+      "bytes": 46633,
+      "gzip": 7928
+    },
+    {
+      "module": "code/Diff.js",
+      "group": "code",
+      "exports": [
+        "Diff"
+      ],
+      "bytes": 49163,
+      "gzip": 8847
+    },
+    {
+      "module": "code/EnvList.js",
+      "group": "code",
+      "exports": [
+        "EnvList"
+      ],
+      "bytes": 46098,
+      "gzip": 7694
+    },
+    {
+      "module": "code/Exception.js",
+      "group": "code",
+      "exports": [
+        "Exception"
+      ],
+      "bytes": 46479,
+      "gzip": 7676
+    },
+    {
+      "module": "code/Terminal.js",
+      "group": "code",
+      "exports": [
+        "Terminal"
+      ],
+      "bytes": 1118,
+      "gzip": 508
+    },
+    {
+      "module": "data/BarChart.js",
+      "group": "data",
+      "exports": [
+        "BarChart"
+      ],
+      "bytes": 1868,
+      "gzip": 861
+    },
+    {
+      "module": "data/Chart.js",
+      "group": "data",
+      "exports": [
+        "ChartStyle",
+        "ChartContainer",
+        "ChartTooltip",
+        "ChartTooltipContent",
+        "ChartLegend",
+        "ChartLegendContent"
+      ],
+      "bytes": 4027,
+      "gzip": 1577
+    },
+    {
+      "module": "data/DonutChart.js",
+      "group": "data",
+      "exports": [
+        "DonutChart"
+      ],
+      "bytes": 3112,
+      "gzip": 1300
+    },
+    {
+      "module": "data/EmptyState.js",
+      "group": "data",
+      "exports": [
+        "Empty",
+        "EmptyHeader",
+        "EmptyMedia",
+        "EmptyTitle",
+        "EmptyDescription",
+        "EmptyContent"
+      ],
+      "bytes": 1552,
+      "gzip": 488
+    },
+    {
+      "module": "data/KeyValueList.js",
+      "group": "data",
+      "exports": [
+        "KeyValueList"
+      ],
+      "bytes": 710,
+      "gzip": 398
+    },
+    {
+      "module": "data/LineChart.js",
+      "group": "data",
+      "exports": [
+        "LineChart"
+      ],
+      "bytes": 3074,
+      "gzip": 1376
+    },
+    {
+      "module": "data/Skeleton.js",
+      "group": "data",
+      "exports": [
+        "Skeleton"
+      ],
+      "bytes": 455,
+      "gzip": 319
+    },
+    {
+      "module": "data/Sparkline.js",
+      "group": "data",
+      "exports": [
+        "Sparkline"
+      ],
+      "bytes": 1108,
+      "gzip": 667
+    },
+    {
+      "module": "data/Stat.js",
+      "group": "data",
+      "exports": [
+        "Stat"
+      ],
+      "bytes": 853,
+      "gzip": 423
+    },
+    {
+      "module": "data/StatusDot.js",
+      "group": "data",
+      "exports": [
+        "StatusDot"
+      ],
+      "bytes": 845,
+      "gzip": 479
+    },
+    {
+      "module": "data/Table.js",
+      "group": "data",
+      "exports": [
+        "Table",
+        "TableHeader",
+        "TableBody",
+        "TableFooter",
+        "TableRow",
+        "TableHead",
+        "TableCell",
+        "TableCaption"
+      ],
+      "bytes": 51288,
+      "gzip": 9684
+    },
+    {
+      "module": "dates/Calendar.js",
+      "group": "dates",
+      "exports": [
+        "CalendarDayButton",
+        "Calendar"
+      ],
+      "bytes": 53270,
+      "gzip": 10198
+    },
+    {
+      "module": "dates/TimePicker.js",
+      "group": "dates",
+      "exports": [
+        "TimePicker"
+      ],
+      "bytes": 50953,
+      "gzip": 10002
+    },
+    {
+      "module": "display/Accordion.js",
+      "group": "display",
+      "exports": [
+        "Accordion",
+        "AccordionItem",
+        "AccordionTrigger",
+        "AccordionContent"
+      ],
+      "bytes": 49803,
+      "gzip": 8905
+    },
+    {
+      "module": "display/AspectRatio.js",
+      "group": "display",
+      "exports": [
+        "AspectRatio"
+      ],
+      "bytes": 605,
+      "gzip": 388
+    },
+    {
+      "module": "display/Avatar.js",
+      "group": "display",
+      "exports": [
+        "Avatar",
+        "AvatarImage",
+        "AvatarFallback",
+        "AvatarBadge",
+        "AvatarGroup",
+        "AvatarGroupCount"
+      ],
+      "bytes": 1719,
+      "gzip": 609
+    },
+    {
+      "module": "display/Badge.js",
+      "group": "display",
+      "exports": [
+        "Badge"
+      ],
+      "bytes": 943,
+      "gzip": 532
+    },
+    {
+      "module": "display/Card.js",
+      "group": "display",
+      "exports": [
+        "CardHeader",
+        "CardTitle",
+        "CardDescription",
+        "CardAction",
+        "CardContent",
+        "CardFooter",
+        "Card"
+      ],
+      "bytes": 1850,
+      "gzip": 567
+    },
+    {
+      "module": "display/Carousel.js",
+      "group": "display",
+      "exports": [
+        "Carousel",
+        "CarouselContent",
+        "CarouselItem",
+        "CarouselPrevious",
+        "CarouselNext"
+      ],
+      "bytes": 49759,
+      "gzip": 9162
+    },
+    {
+      "module": "display/Collapsible.js",
+      "group": "display",
+      "exports": [
+        "Collapsible",
+        "CollapsibleTrigger",
+        "CollapsibleContent"
+      ],
+      "bytes": 2866,
+      "gzip": 1020
+    },
+    {
+      "module": "display/Direction.js",
+      "group": "display",
+      "exports": [
+        "DirectionProvider"
+      ],
+      "bytes": 381,
+      "gzip": 252
+    },
+    {
+      "module": "display/Divider.js",
+      "group": "display",
+      "exports": [
+        "Divider"
+      ],
+      "bytes": 804,
+      "gzip": 381
+    },
+    {
+      "module": "display/Item.js",
+      "group": "display",
+      "exports": [
+        "ItemGroup",
+        "ItemSeparator",
+        "Item",
+        "ItemMedia",
+        "ItemContent",
+        "ItemTitle",
+        "ItemDescription",
+        "ItemActions",
+        "ItemHeader",
+        "ItemFooter"
+      ],
+      "bytes": 3511,
+      "gzip": 1001
+    },
+    {
+      "module": "display/Kbd.js",
+      "group": "display",
+      "exports": [
+        "Kbd",
+        "KbdGroup"
+      ],
+      "bytes": 668,
+      "gzip": 361
+    },
+    {
+      "module": "display/Link.js",
+      "group": "display",
+      "exports": [
+        "Link"
+      ],
+      "bytes": 45135,
+      "gzip": 7398
+    },
+    {
+      "module": "display/Resizable.js",
+      "group": "display",
+      "exports": [
+        "ResizablePanelGroup",
+        "ResizablePanel",
+        "ResizableHandle"
+      ],
+      "bytes": 3856,
+      "gzip": 1645
+    },
+    {
+      "module": "display/ScrollArea.js",
+      "group": "display",
+      "exports": [
+        "ScrollArea",
+        "ScrollBar"
+      ],
+      "bytes": 1120,
+      "gzip": 533
+    },
+    {
+      "module": "display/Separator.js",
+      "group": "display",
+      "exports": [
+        "Separator"
+      ],
+      "bytes": 631,
+      "gzip": 399
+    },
+    {
+      "module": "display/Tag.js",
+      "group": "display",
+      "exports": [
+        "Tag"
+      ],
+      "bytes": 45441,
+      "gzip": 7424
+    },
+    {
+      "module": "display/Timeline.js",
+      "group": "display",
+      "exports": [
+        "Timeline"
+      ],
+      "bytes": 45942,
+      "gzip": 7597
+    },
+    {
+      "module": "display/Toolbar.js",
+      "group": "display",
+      "exports": [
+        "Toolbar"
+      ],
+      "bytes": 49976,
+      "gzip": 9253
+    },
+    {
+      "module": "display/TreeList.js",
+      "group": "display",
+      "exports": [
+        "TreeList"
+      ],
+      "bytes": 46171,
+      "gzip": 7793
+    },
+    {
+      "module": "feedback/Alert.js",
+      "group": "feedback",
+      "exports": [
+        "Alert",
+        "AlertTitle",
+        "AlertDescription",
+        "AlertAction"
+      ],
+      "bytes": 1175,
+      "gzip": 470
+    },
+    {
+      "module": "feedback/AlertDialog.js",
+      "group": "feedback",
+      "exports": [
+        "AlertDialog",
+        "AlertDialogTrigger",
+        "AlertDialogPortal",
+        "AlertDialogOverlay",
+        "AlertDialogContent",
+        "AlertDialogHeader",
+        "AlertDialogFooter",
+        "AlertDialogMedia",
+        "AlertDialogTitle",
+        "AlertDialogDescription",
+        "AlertDialogCancel",
+        "AlertDialogAction"
+      ],
+      "bytes": 6731,
+      "gzip": 2337
+    },
+    {
+      "module": "feedback/Banner.js",
+      "group": "feedback",
+      "exports": [
+        "Banner"
+      ],
+      "bytes": 45730,
+      "gzip": 7561
+    },
+    {
+      "module": "feedback/ConfirmDialog.js",
+      "group": "feedback",
+      "exports": [
+        "ConfirmDialog"
+      ],
+      "bytes": 55089,
+      "gzip": 10541
+    },
+    {
+      "module": "feedback/Dialog.js",
+      "group": "feedback",
+      "exports": [
+        "Dialog",
+        "DialogTrigger",
+        "DialogPortal",
+        "DialogOverlay",
+        "DialogClose",
+        "DialogContent",
+        "DialogHeader",
+        "DialogFooter",
+        "DialogTitle",
+        "DialogDescription"
+      ],
+      "bytes": 51048,
+      "gzip": 9293
+    },
+    {
+      "module": "feedback/Loader.js",
+      "group": "feedback",
+      "exports": [
+        "Loader"
+      ],
+      "bytes": 826,
+      "gzip": 447
+    },
+    {
+      "module": "feedback/Progress.js",
+      "group": "feedback",
+      "exports": [
+        "Progress"
+      ],
+      "bytes": 1480,
+      "gzip": 734
+    },
+    {
+      "module": "feedback/Spinner.js",
+      "group": "feedback",
+      "exports": [
+        "Spinner"
+      ],
+      "bytes": 678,
+      "gzip": 449
+    },
+    {
+      "module": "feedback/Toast.js",
+      "group": "feedback",
+      "exports": [
+        "Toaster"
+      ],
+      "bytes": 49697,
+      "gzip": 9247
+    },
+    {
+      "module": "feedback/Tooltip.js",
+      "group": "feedback",
+      "exports": [
+        "Tooltip",
+        "TooltipProvider",
+        "TooltipTrigger",
+        "TooltipContent"
+      ],
+      "bytes": 4843,
+      "gzip": 1923
+    },
+    {
+      "module": "files/Attachment.js",
+      "group": "files",
+      "exports": [
+        "Attachment",
+        "AttachmentMedia",
+        "AttachmentContent",
+        "AttachmentTitle",
+        "AttachmentDescription",
+        "AttachmentActions",
+        "AttachmentAction",
+        "AttachmentTrigger",
+        "AttachmentGroup"
+      ],
+      "bytes": 47826,
+      "gzip": 8062
+    },
+    {
+      "module": "files/FileDrop.js",
+      "group": "files",
+      "exports": [
+        "FileDrop"
+      ],
+      "bytes": 46325,
+      "gzip": 7967
+    },
+    {
+      "module": "files/FileTile.js",
+      "group": "files",
+      "exports": [
+        "FileTile"
+      ],
+      "bytes": 47939,
+      "gzip": 8367
+    },
+    {
+      "module": "files/FileTypeIcon.js",
+      "group": "files",
+      "exports": [
+        "FileTypeIcon"
+      ],
+      "bytes": 46437,
+      "gzip": 7666
+    },
+    {
+      "module": "finance/PaymentCard.js",
+      "group": "finance",
+      "exports": [
+        "PaymentCard"
+      ],
+      "bytes": 2112,
+      "gzip": 779
+    },
+    {
+      "module": "forms/Button.js",
+      "group": "forms",
+      "exports": [
+        "Button"
+      ],
+      "bytes": 46132,
+      "gzip": 7883
+    },
+    {
+      "module": "forms/ButtonGroup.js",
+      "group": "forms",
+      "exports": [
+        "ButtonGroup",
+        "ButtonGroupText",
+        "ButtonGroupSeparator"
+      ],
+      "bytes": 2178,
+      "gzip": 799
+    },
+    {
+      "module": "forms/ButtonTile.js",
+      "group": "forms",
+      "exports": [
+        "ButtonTile",
+        "ButtonTileGroup"
+      ],
+      "bytes": 45536,
+      "gzip": 7507
+    },
+    {
+      "module": "forms/Checkbox.js",
+      "group": "forms",
+      "exports": [
+        "Checkbox"
+      ],
+      "bytes": 46814,
+      "gzip": 8112
+    },
+    {
+      "module": "forms/Combobox.js",
+      "group": "forms",
+      "exports": [
+        "Combobox",
+        "ComboboxValue",
+        "ComboboxTrigger",
+        "ComboboxClear",
+        "ComboboxInput",
+        "ComboboxContent",
+        "ComboboxList",
+        "ComboboxItem",
+        "ComboboxGroup",
+        "ComboboxLabel",
+        "ComboboxCollection",
+        "ComboboxEmpty",
+        "ComboboxSeparator",
+        "ComboboxChips",
+        "ComboboxChip",
+        "ComboboxChipsInput"
+      ],
+      "bytes": 58377,
+      "gzip": 11716
+    },
+    {
+      "module": "forms/Field.js",
+      "group": "forms",
+      "exports": [
+        "Field",
+        "FieldSet",
+        "FieldGroup",
+        "FieldContent",
+        "FieldLabel",
+        "FieldTitle",
+        "FieldDescription",
+        "FieldLegend",
+        "FieldSeparator",
+        "FieldError"
+      ],
+      "bytes": 2626,
+      "gzip": 997
+    },
+    {
+      "module": "forms/IconButton.js",
+      "group": "forms",
+      "exports": [
+        "IconButton"
+      ],
+      "bytes": 45007,
+      "gzip": 7361
+    },
+    {
+      "module": "forms/Input.js",
+      "group": "forms",
+      "exports": [
+        "Input"
+      ],
+      "bytes": 47357,
+      "gzip": 8236
+    },
+    {
+      "module": "forms/InputGroup.js",
+      "group": "forms",
+      "exports": [
+        "InputGroup",
+        "InputGroupAddon",
+        "InputGroupButton",
+        "InputGroupInput",
+        "InputGroupTextarea",
+        "InputGroupText"
+      ],
+      "bytes": 2246,
+      "gzip": 777
+    },
+    {
+      "module": "forms/InputOTP.js",
+      "group": "forms",
+      "exports": [
+        "InputOTP",
+        "InputOTPGroup",
+        "InputOTPSlot",
+        "InputOTPSeparator"
+      ],
+      "bytes": 2565,
+      "gzip": 1148
+    },
+    {
+      "module": "forms/Label.js",
+      "group": "forms",
+      "exports": [
+        "Label"
+      ],
+      "bytes": 672,
+      "gzip": 394
+    },
+    {
+      "module": "forms/NativeSelect.js",
+      "group": "forms",
+      "exports": [
+        "NativeSelect",
+        "NativeSelectOption",
+        "NativeSelectOptGroup"
+      ],
+      "bytes": 45312,
+      "gzip": 7387
+    },
+    {
+      "module": "forms/NumberInput.js",
+      "group": "forms",
+      "exports": [
+        "NumberInput"
+      ],
+      "bytes": 48794,
+      "gzip": 8981
+    },
+    {
+      "module": "forms/Questionnaire.js",
+      "group": "forms",
+      "exports": [
+        "Questionnaire",
+        "QuestionnaireProgress",
+        "QuestionnaireItem",
+        "QuestionnaireTitle",
+        "QuestionnaireDescription",
+        "QuestionnaireChoices",
+        "QuestionnaireChoice",
+        "QuestionnaireInput",
+        "QuestionnaireError",
+        "QuestionnaireActions",
+        "QuestionnairePrevious",
+        "QuestionnaireSkip",
+        "QuestionnaireNext",
+        "QuestionnaireSubmit"
+      ],
+      "bytes": 7339,
+      "gzip": 2432
+    },
+    {
+      "module": "forms/Radio.js",
+      "group": "forms",
+      "exports": [
+        "RadioGroup",
+        "RadioGroupItem",
+        "Radio"
+      ],
+      "bytes": 2384,
+      "gzip": 975
+    },
+    {
+      "module": "forms/Select.js",
+      "group": "forms",
+      "exports": [
+        "Select",
+        "SelectTrigger",
+        "SelectValue",
+        "SelectContent",
+        "SelectGroup",
+        "SelectLabel",
+        "SelectSeparator",
+        "SelectItem"
+      ],
+      "bytes": 51824,
+      "gzip": 9993
+    },
+    {
+      "module": "forms/Slider.js",
+      "group": "forms",
+      "exports": [
+        "Slider"
+      ],
+      "bytes": 2512,
+      "gzip": 1249
+    },
+    {
+      "module": "forms/Switch.js",
+      "group": "forms",
+      "exports": [
+        "Switch"
+      ],
+      "bytes": 2036,
+      "gzip": 969
+    },
+    {
+      "module": "forms/Textarea.js",
+      "group": "forms",
+      "exports": [
+        "Textarea"
+      ],
+      "bytes": 46032,
+      "gzip": 7765
+    },
+    {
+      "module": "forms/Toggle.js",
+      "group": "forms",
+      "exports": [
+        "Toggle",
+        "ToggleGroup",
+        "ToggleGroupItem"
+      ],
+      "bytes": 2736,
+      "gzip": 1272
+    },
+    {
+      "module": "icons/Icon.js",
+      "group": "icons",
+      "exports": [
+        "Icon"
+      ],
+      "bytes": 44400,
+      "gzip": 7029
+    },
+    {
+      "module": "navigation/Breadcrumbs.js",
+      "group": "navigation",
+      "exports": [
+        "Breadcrumb",
+        "BreadcrumbList",
+        "BreadcrumbItem",
+        "BreadcrumbLink",
+        "BreadcrumbPage",
+        "BreadcrumbSeparator",
+        "BreadcrumbEllipsis"
+      ],
+      "bytes": 46874,
+      "gzip": 7758
+    },
+    {
+      "module": "navigation/Menubar.js",
+      "group": "navigation",
+      "exports": [
+        "Menubar",
+        "MenubarMenu",
+        "MenubarTrigger",
+        "MenubarContent",
+        "MenubarPortal",
+        "MenubarGroup",
+        "MenubarRadioGroup",
+        "MenubarLabel",
+        "MenubarSeparator",
+        "MenubarShortcut",
+        "MenubarItem",
+        "MenubarCheckboxItem",
+        "MenubarRadioItem",
+        "MenubarSub",
+        "MenubarSubTrigger",
+        "MenubarSubContent"
+      ],
+      "bytes": 60332,
+      "gzip": 11886
+    },
+    {
+      "module": "navigation/NavigationMenu.js",
+      "group": "navigation",
+      "exports": [
+        "NavigationMenu",
+        "NavigationMenuList",
+        "NavigationMenuItem",
+        "NavigationMenuTrigger",
+        "NavigationMenuContent",
+        "NavigationMenuLink",
+        "NavigationMenuIndicator",
+        "NavigationMenuViewport"
+      ],
+      "bytes": 51664,
+      "gzip": 9719
+    },
+    {
+      "module": "navigation/PageControl.js",
+      "group": "navigation",
+      "exports": [
+        "PageControl"
+      ],
+      "bytes": 718,
+      "gzip": 451
+    },
+    {
+      "module": "navigation/Pagination.js",
+      "group": "navigation",
+      "exports": [
+        "Pagination",
+        "PaginationContent",
+        "PaginationItem",
+        "PaginationLink",
+        "PaginationPrevious",
+        "PaginationNext",
+        "PaginationEllipsis"
+      ],
+      "bytes": 46787,
+      "gzip": 7685
+    },
+    {
+      "module": "navigation/SegmentedControl.js",
+      "group": "navigation",
+      "exports": [
+        "SegmentedControl"
+      ],
+      "bytes": 45130,
+      "gzip": 7431
+    },
+    {
+      "module": "navigation/SideNav.js",
+      "group": "navigation",
+      "exports": [
+        "SideNav"
+      ],
+      "bytes": 47064,
+      "gzip": 8076
+    },
+    {
+      "module": "navigation/Sidebar.js",
+      "group": "navigation",
+      "exports": [
+        "SidebarProvider",
+        "Sidebar",
+        "SidebarTrigger",
+        "SidebarRail",
+        "SidebarInset",
+        "SidebarHeader",
+        "SidebarFooter",
+        "SidebarContent",
+        "SidebarGroup",
+        "SidebarGroupContent",
+        "SidebarMenu",
+        "SidebarMenuItem",
+        "SidebarMenuSub",
+        "SidebarMenuSubItem",
+        "SidebarInput",
+        "SidebarSeparator",
+        "SidebarGroupLabel",
+        "SidebarGroupAction",
+        "SidebarMenuButton",
+        "SidebarMenuAction",
+        "SidebarMenuBadge",
+        "SidebarMenuSubButton",
+        "SidebarMenuSkeleton"
+      ],
+      "bytes": 53184,
+      "gzip": 10012
+    },
+    {
+      "module": "navigation/SkipLink.js",
+      "group": "navigation",
+      "exports": [
+        "SkipLink"
+      ],
+      "bytes": 715,
+      "gzip": 480
+    },
+    {
+      "module": "navigation/Steps.js",
+      "group": "navigation",
+      "exports": [
+        "Steps"
+      ],
+      "bytes": 45559,
+      "gzip": 7492
+    },
+    {
+      "module": "navigation/Tabs.js",
+      "group": "navigation",
+      "exports": [
+        "Tabs",
+        "TabsList",
+        "TabsTrigger",
+        "TabsContent"
+      ],
+      "bytes": 47860,
+      "gzip": 8420
+    },
+    {
+      "module": "navigation/TopNav.js",
+      "group": "navigation",
+      "exports": [
+        "TopNav"
+      ],
+      "bytes": 587,
+      "gzip": 352
+    },
+    {
+      "module": "overlay/Command.js",
+      "group": "overlay",
+      "exports": [
+        "Command",
+        "CommandDialog",
+        "CommandInput",
+        "CommandList",
+        "CommandEmpty",
+        "CommandGroup",
+        "CommandItem",
+        "CommandShortcut",
+        "CommandSeparator"
+      ],
+      "bytes": 55404,
+      "gzip": 10708
+    },
+    {
+      "module": "overlay/ContextMenu.js",
+      "group": "overlay",
+      "exports": [
+        "ContextMenu",
+        "ContextMenuTrigger",
+        "ContextMenuPortal",
+        "ContextMenuContent",
+        "ContextMenuGroup",
+        "ContextMenuLabel",
+        "ContextMenuSeparator",
+        "ContextMenuShortcut",
+        "ContextMenuItem",
+        "ContextMenuCheckboxItem",
+        "ContextMenuRadioGroup",
+        "ContextMenuRadioItem",
+        "ContextMenuSub",
+        "ContextMenuSubTrigger",
+        "ContextMenuSubContent"
+      ],
+      "bytes": 56471,
+      "gzip": 11050
+    },
+    {
+      "module": "overlay/Drawer.js",
+      "group": "overlay",
+      "exports": [
+        "Drawer",
+        "DrawerTrigger",
+        "DrawerPortal",
+        "DrawerClose",
+        "DrawerOverlay",
+        "DrawerContent",
+        "DrawerHeader",
+        "DrawerFooter",
+        "DrawerTitle",
+        "DrawerDescription"
+      ],
+      "bytes": 54921,
+      "gzip": 10346
+    },
+    {
+      "module": "overlay/DropdownMenu.js",
+      "group": "overlay",
+      "exports": [
+        "DropdownMenu",
+        "DropdownMenuTrigger",
+        "DropdownMenuPortal",
+        "DropdownMenuContent",
+        "DropdownMenuGroup",
+        "DropdownMenuLabel",
+        "DropdownMenuSeparator",
+        "DropdownMenuShortcut",
+        "DropdownMenuItem",
+        "DropdownMenuCheckboxItem",
+        "DropdownMenuRadioGroup",
+        "DropdownMenuRadioItem",
+        "DropdownMenuSub",
+        "DropdownMenuSubTrigger",
+        "DropdownMenuSubContent"
+      ],
+      "bytes": 56400,
+      "gzip": 11062
+    },
+    {
+      "module": "overlay/HoverCard.js",
+      "group": "overlay",
+      "exports": [
+        "HoverCard",
+        "HoverCardTrigger",
+        "HoverCardContent"
+      ],
+      "bytes": 5347,
+      "gzip": 2199
+    },
+    {
+      "module": "overlay/Popover.js",
+      "group": "overlay",
+      "exports": [
+        "Popover",
+        "PopoverTrigger",
+        "PopoverContent",
+        "PopoverHeader",
+        "PopoverTitle",
+        "PopoverDescription"
+      ],
+      "bytes": 6501,
+      "gzip": 2475
+    },
+    {
+      "module": "overlay/Portal.js",
+      "group": "overlay",
+      "exports": [
+        "Portal"
+      ],
+      "bytes": 2823,
+      "gzip": 1292
+    },
+    {
+      "module": "overlay/Sheet.js",
+      "group": "overlay",
+      "exports": [
+        "Sheet",
+        "SheetTrigger",
+        "SheetClose",
+        "SheetContent",
+        "SheetHeader",
+        "SheetFooter",
+        "SheetTitle",
+        "SheetDescription"
+      ],
+      "bytes": 52168,
+      "gzip": 9494
+    }
+  ]
+}

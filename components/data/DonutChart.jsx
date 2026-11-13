@@ -8,10 +8,9 @@ const CSS = `
 .ef-donut__sr{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;border:0}
 .ef-donut__val{margin-inline-start:auto;font-family:var(--font-mono);font-size:12px;color:var(--text-primary);padding-inline-start:14px}
 `;
-// Categorical slots come from --chart-1..5 (tokens area). The fallbacks are the
-// old brand/sand steps, which fail the dataviz validator; they only apply until
-// the chart tokens are defined.
-const PALETTE = ['var(--chart-1, var(--brand-950))', 'var(--chart-2, var(--brand-500))', 'var(--chart-3, var(--brand-200))', 'var(--chart-4, var(--sand-400))', 'var(--chart-5, var(--sand-200))'];
+// Categorical slots from tokens/colors.css, in fixed order. A sixth slice reuses
+// slot 1, so keep a donut to five slices or fold the rest into "Other".
+const PALETTE = [1, 2, 3, 4, 5].map(n => `var(--chart-${n})`);
 // Fixed default locale: the runtime default would differ between server and browser.
 export function DonutChart({ data = [], size = 140, thickness = 16, centerLabel, centerValue, format, locale = 'en-US', 'aria-label': ariaLabel, style, className, ...rest }) {
   injectEfCss('ef-css-donut', CSS);

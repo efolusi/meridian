@@ -77,7 +77,7 @@ for path in public_surfaces:
 
 token_claim_patterns = (
     re.compile(r"\b(\d+)\s+(?:unique\s+)?design\s+tokens?\b", re.IGNORECASE),
-    re.compile(r"\b(\d+)\s+unique\s+token(?:\s+names?)?\b", re.IGNORECASE),
+    re.compile(r"\b(\d+)\s+unique\s+tokens?(?:\s+names?)?\b", re.IGNORECASE),
     re.compile(r"\b(\d+)\s+token\s+unik\b", re.IGNORECASE),
     re.compile(r"\b(\d+)\s+(?:tokens|token)\s+·", re.IGNORECASE),
 )

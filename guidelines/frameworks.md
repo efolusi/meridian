@@ -94,8 +94,8 @@ No install, no bundler. Four tags, and every component lands on one global:
 
 ```html
 <link rel="stylesheet" href="https://meridian.efolusi.com/styles.css">
-<script src="https://unpkg.com/react@18.3.1/umd/react.production.min.js"></script>
-<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.production.min.js"></script>
+<script src="https://unpkg.com/react@18.3.1/umd/react.production.min.js" integrity="sha384-DGyLxAyjq0f9SPpVevD6IgztCFlnMF6oW/XQGmfe+IsZ8TqEiDrcHkMLKI6fiB/Z" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.production.min.js" integrity="sha384-gTGxhz21lVGYNMcdJOyq01Edg0jhn/c22nsx0kyqP0TxaV5WVdsSH1fSDUf5YJj1" crossorigin="anonymous"></script>
 <script src="https://meridian.efolusi.com/_ds_bundle.js"></script>
 ```
 
@@ -103,7 +103,7 @@ No install, no bundler. Four tags, and every component lands on one global:
 const { Button, Card } = window.EfolusiDesignSystem_4ffc3d;
 ```
 
-Pin React 18 for this path: React 19 dropped the UMD builds the bundle relies on. `hello.html` in the repo is a complete runnable page.
+Pin React 18 for this path: React 19 dropped the UMD builds the bundle relies on. The React tags carry SRI hashes; the `meridian.efolusi.com` tags do not, because those URLs always serve the newest release. Self-host `styles.css` and `_ds_bundle.js` if you need every file pinned. `hello.html` in the repo is a complete runnable page.
 
 ## Owning the source
 
