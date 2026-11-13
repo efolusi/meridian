@@ -108,13 +108,14 @@ server.registerTool(
   'get_tokens',
   {
     title: 'Get Meridian design tokens',
-    description: 'The design tokens (colors, typography, spacing, effects) as DTCG JSON, light theme at default density. Dark values live in tokens/colors.css under [data-theme="dark"] and compact spacing in tokens/spacing.css under [data-density="compact"]; reference tokens as var(--name) so both apply. Never hardcode hex.',
+    description: 'The design tokens (colors, typography, spacing, effects) as DTCG JSON. Each $value is the light theme at default density; a token that changes elsewhere also carries $extensions["com.efolusi.meridian"].modes with its dark, compact and coarse (touch pointer) values. References between tokens are DTCG aliases, {group.leaf}: the CSS custom property is --group-leaf (e.g. {surface.page} is --surface-page). In generated CSS use the custom property so the theme, density and pointer modes all apply; never hardcode hex.',
     inputSchema: { group: z.string().optional().describe('Optional top-level group, e.g. "brand", "surface", "text", "space", "radius", "font". An unknown group returns the list of groups.') },
   },
   async ({ group }) => {
     const tokens = await readJSON('tokens.json');
-    if (group && !Object.hasOwn(tokens, group)) {
-      return { content: [{ type: 'text', text: `No token group "${group}". groups: ${Object.keys(tokens).join(', ')}` }], isError: true };
+    const groups = Object.keys(tokens).filter(k => !k.startsWith('$'));
+    if (group && !groups.includes(group)) {
+      return { content: [{ type: 'text', text: `No token group "${group}". groups: ${groups.join(', ')}` }], isError: true };
     }
     const text = JSON.stringify(group ? { [group]: tokens[group] } : tokens, null, 2);
     return { content: [{ type: 'text', text }] };

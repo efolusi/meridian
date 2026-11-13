@@ -1,11 +1,19 @@
 #!/usr/bin/env python3
 """Generate DTCG tokens.json and a Tailwind preset from the CSS token source.
 
-Parses the :root block of every tokens/*.css file (the single source of
-truth) and emits:
+Parses tokens/*.css (the single source of truth) and emits:
   - tokens.json      — Design Tokens Community Group format (Style Dictionary,
                        Figma Variables, etc. consume this)
   - tailwind.preset.js — a Tailwind theme.extend preset mapping the same tokens
+
+tokens.json shape:
+  - $value is the light, default-density, fine-pointer value.
+  - A reference to another token is a DTCG alias, {group.leaf}, never var().
+    Inside a composite string (the focus-ring shadows) the alias is embedded,
+    which Style Dictionary resolves.
+  - Values that change under a theme, density or pointer live in
+    $extensions["com.efolusi.meridian"].modes.<mode>, only where they differ.
+    The root $extensions entry maps each mode name to the CSS that applies it.
 
 Usage: python3 scripts/build_tokens.py
 Idempotent; run after editing tokens/*.css.
@@ -15,14 +23,37 @@ import json, pathlib, re
 ROOT = pathlib.Path(__file__).resolve().parent.parent
 FILES = ["colors.css", "typography.css", "spacing.css", "effects.css"]
 
-def parse_root(css):
-    m = re.search(r":root\{(.*?)\}", css, re.S)
-    body = m.group(1) if m else ""
+def declarations(body):
     body = re.sub(r"/\*.*?\*/", "", body, flags=re.S)  # strip comments
-    out = {}
-    for name, val in re.findall(r"(--[\w-]+)\s*:\s*([^;]+);", body):
-        out[name[2:]] = val.strip()
-    return out
+    return {name[2:]: val.strip() for name, val in re.findall(r"(--[\w-]+)\s*:\s*([^;]+);", body)}
+
+def block(css, pattern):
+    m = re.search(pattern, css, re.S)
+    return declarations(m.group(1)) if m else {}
+
+def parse_root(css):
+    return block(css, r":root\{(.*?)\}")
+
+# Mode name -> (source file, block pattern, the CSS that applies it).
+MODES = {
+    "dark": ("colors.css", r'\[data-theme="dark"\]\{(.*?)\}', '[data-theme="dark"]'),
+    "compact": ("spacing.css", r'\[data-density="compact"\]\{(.*?)\}', '[data-density="compact"]'),
+    "coarse": ("spacing.css", r"@media \(pointer: coarse\) \{\s*[^{]*\{(.*?)\}", "@media (pointer: coarse)"),
+}
+VENDOR = "com.efolusi.meridian"
+
+def path_of(name):
+    group, _, leaf = name.partition("-")
+    return group, leaf or "_"
+
+def to_alias(value, known):
+    """Rewrite every var(--x) as the DTCG alias {group.leaf}."""
+    def ref(m):
+        name = m.group(1)
+        if name not in known:
+            raise SystemExit(f"var(--{name}) does not name a token")
+        return "{%s.%s}" % path_of(name)
+    return re.sub(r"var\(--([\w-]+)\)", ref, value)
 
 # The type scale shares the text- prefix with the text colours, so it has to be
 # recognised before the colour families or every size lands under `colors`.
@@ -49,14 +80,15 @@ def dtcg_type(name, value):
         return "fontFamily" if name.startswith("font-") and "family" not in name and value.find(",") != -1 else "other"
     return "other"
 
-def to_dtcg(tokens):
-    tree = {}
+def to_dtcg(tokens, modes):
+    tree = {"$extensions": {VENDOR: {"modes": {m: MODES[m][2] for m in MODES}}}}
     for name, value in tokens.items():
-        node = {"$value": value, "$type": dtcg_type(name, value)}
-        # group by first segment (color families etc.)
-        parts = name.split("-", 1)
-        group = parts[0]
-        leaf = parts[1] if len(parts) > 1 else "_"
+        node = {"$value": to_alias(value, tokens), "$type": dtcg_type(name, value)}
+        overrides = {m: to_alias(vals[name], tokens) for m, vals in modes.items()
+                     if name in vals and vals[name] != value}
+        if overrides:
+            node["$extensions"] = {VENDOR: {"modes": overrides}}
+        group, leaf = path_of(name)
         tree.setdefault(group, {})[leaf] = node
     return tree
 
@@ -89,7 +121,16 @@ def main():
     tokens = {}
     for f in FILES:
         tokens.update(parse_root((ROOT / "tokens" / f).read_text()))
-    dtcg = to_dtcg(tokens)
+    modes = {}
+    for mode, (fname, pattern, _) in MODES.items():
+        vals = block((ROOT / "tokens" / fname).read_text(), pattern)
+        if not vals:
+            raise SystemExit(f"no {mode} block found in tokens/{fname}")
+        stray = sorted(set(vals) - set(tokens))
+        if stray:
+            raise SystemExit(f"{mode} sets tokens with no default value: {', '.join(stray)}")
+        modes[mode] = vals
+    dtcg = to_dtcg(tokens, modes)
     (ROOT / "tokens.json").write_text(json.dumps(dtcg, indent=2) + "\n")
     (ROOT / "tailwind.preset.js").write_text(tailwind_preset(tokens))
     print(f"tokens.json: {len(tokens)} tokens (DTCG); tailwind.preset.js written")
