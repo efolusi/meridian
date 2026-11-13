@@ -33,6 +33,7 @@ const GENERATORS = [
   ['python3', ['scripts/build_llms.py']],
   ['node', ['scripts/build_site_nav.mjs']],
   ['node', ['scripts/build_guard_rules.mjs']],
+  ['node', ['scripts/build_size_table.mjs']],
 ]
 
 /**
@@ -56,6 +57,8 @@ const GENERATED_PATHS = [
   'llms-full.txt',
   'site/nav.json',
   'packages/guard/src/generated/meridian-rules.json',
+  'site/sizes.json',
+  'guidelines/bundle-size.md',
 ]
 
 const GATES = [
