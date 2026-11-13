@@ -176,7 +176,12 @@ describe('Meridian production public files (DS-03, DS-12)', () => {
     const spec = nginx.slice(at).match(/location ~ (\S+) \{/)[1]
     const re = new RegExp(spec)
     for (const doc of rootDocs) expect(re.test(`/${doc}`), doc).toBe(true)
-    for (const other of ['/CLAUDE.md', '/site/README.md', '/starters/crm/README.md', '/LICENSE.txt']) {
+    // Every published Markdown file reads as text, not only the root docs:
+    // llms.txt sends agents to /skills/SKILL.md and the guidelines.
+    for (const doc of ['/skills/SKILL.md', '/guidelines/forms.md', '/components/forms/Select.prompt.md']) {
+      expect(re.test(doc), doc).toBe(true)
+    }
+    for (const other of ['/LICENSE.txt', '/site/index.html', '/styles.css']) {
       expect(re.test(other), other).toBe(false)
     }
     const block = nginx.slice(at, nginx.indexOf('\n    }', at))

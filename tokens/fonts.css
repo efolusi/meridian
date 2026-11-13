@@ -9,4 +9,4 @@
    copy (Figtree at 400; Bricolage at weight 680, opsz 34, the heading default, against Arial Bold),
    and ascent/descent are each face's typo metrics (950/250 and 930/270 per 1000) divided by it. */
 @font-face{font-family:'Figtree Fallback';src:local('Arial'),local('ArialMT'),local('Liberation Sans');size-adjust:100.48%;ascent-override:94.55%;descent-override:24.88%;line-gap-override:0%}
-@font-face{font-family:'Bricolage Grotesque Fallback';src:local('Arial'),local('ArialMT'),local('Liberation Sans');size-adjust:99.55%;ascent-override:93.42%;descent-override:27.12%;line-gap-override:0%}
+@font-face{font-family:'Bricolage Grotesque Fallback';src:local('Arial Bold'),local('Arial-BoldMT'),local('Liberation Sans Bold');font-weight:100 900;size-adjust:99.55%;ascent-override:93.42%;descent-override:27.12%;line-gap-override:0%}

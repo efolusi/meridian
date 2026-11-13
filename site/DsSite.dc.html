@@ -110,7 +110,7 @@ class Component extends DCLogic {
   componentDidUpdate() { this._syncFrame(); }
   componentDidMount() {
     this._syncFrame();
-    try { const t = localStorage.getItem('efolusi-site-theme'); if (t) document.documentElement.setAttribute('data-theme', t); } catch (e) {}
+    try { const t = localStorage.getItem('efolusi-site-theme') || (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'); document.documentElement.setAttribute('data-theme', t); } catch (e) {}
     this.setState({ dark: document.documentElement.getAttribute('data-theme') === 'dark' });
     this._measure = () => {
       const el = document.querySelector('.home-frame');

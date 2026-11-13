@@ -252,7 +252,7 @@ window.MeridianLiveFrame = (() => {
 class Component extends DCLogic {
   state = { dark: false, langTick: 0 };
   componentDidMount() {
-    try { const t = localStorage.getItem('efolusi-site-theme'); if (t) document.documentElement.setAttribute('data-theme', t); } catch (e) {}
+    try { const t = localStorage.getItem('efolusi-site-theme') || (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'); document.documentElement.setAttribute('data-theme', t); } catch (e) {}
     this.setState({ dark: document.documentElement.getAttribute('data-theme') === 'dark' });
     // Re-render when the language changes; renderVals reads it live. An
     // instance counter guarantees a state change so the render is never skipped.
