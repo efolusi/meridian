@@ -3,7 +3,7 @@ import { Icon } from '../icons/Icon.jsx';
 import { IconButton } from '../forms/IconButton.jsx';
 import { injectEfCss } from '../forms/Button.jsx';
 const CSS = `
-.ef-copyfield{display:flex;flex-direction:column;gap:6px}
+.ef-copyfield{position:relative;display:flex;flex-direction:column;gap:6px}
 .ef-copyfield__label{font-size:var(--text-sm);font-weight:var(--weight-semibold);color:var(--text-primary)}
 .ef-copyfield{min-width:0}
 .ef-copyfield__box{display:flex;align-items:center;gap:8px;min-width:0;max-width:100%;height:var(--control-h-md);padding:0 4px 0 12px;border:1px solid var(--border-strong);border-radius:var(--radius-sm);background:var(--surface-sunken)}
