@@ -9,6 +9,7 @@
 - **Dialogs reference a description only when one renders**, follow a custom description `id`, and keep a caller's own `aria-describedby`.
 - **Icons retry a dropped request twice** before giving up; a missing glyph (404) is still remembered.
 - **Example apps no longer wear the Meridian mark.** The fictional products in the showcases, starters and blocks (Fernwick, Northstar CRM, Ledgerroom, Waypoint Support) show their name as a plain text wordmark, and the hero's invented user count reads `[4,200+]` as a placeholder.
+- **Carousel and Slider work in right-to-left layouts in every engine.** In RTL, Carousel measured slides from the physical left edge, so a second Next jumped back to the first slide. Slider thumbs on a two-thumb range now sit where the fill ends, and the Left and Right arrows move a horizontal thumb toward the arrow in Safari too (WebKit moved it the other way in RTL). RTL is now checked in Chromium, Firefox and WebKit; see `guidelines/accessibility.md`.
 - **The hosted site sends security headers** (nosniff, HSTS, Referrer-Policy, `frame-ancestors 'self'`), allows cross-origin font and registry loads, and serves Markdown and `LICENSE` as plain text.
 
 ## 1.22.0 — 2026-11-13

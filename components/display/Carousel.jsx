@@ -28,14 +28,28 @@ const CSS = `
 const CarouselCtx = React.createContext(null);
 const EMPTY_PLUGINS = [];
 
+function isRtlScroller(element) {
+  return typeof getComputedStyle === 'function' && getComputedStyle(element).direction === 'rtl';
+}
+
+// Distance from the scroll start edge to the slide's start edge. offsetLeft is
+// physical, so in RTL the start edge is measured from the right of the
+// offsetParent (the positioned .ef-carousel), mirroring what LTR gets for free.
+function slideStart(slide, orientation, rtl) {
+  if (orientation === 'vertical') return slide.offsetTop;
+  if (!rtl) return slide.offsetLeft;
+  return (slide.offsetParent ? slide.offsetParent.clientWidth : 0) - slide.offsetLeft - slide.offsetWidth;
+}
+
 function closestIndex(element, orientation) {
   const position = orientation === 'vertical' ? element.scrollTop : Math.abs(element.scrollLeft);
   const slides = [...element.querySelectorAll('[data-slot="carousel-item"]')];
   if (!slides.length) return 0;
+  const rtl = orientation !== 'vertical' && isRtlScroller(element);
   let best = 0;
   let distance = Infinity;
   slides.forEach((slide, index) => {
-    const offset = orientation === 'vertical' ? slide.offsetTop : slide.offsetLeft;
+    const offset = slideStart(slide, orientation, rtl);
     const nextDistance = Math.abs(offset - position);
     if (nextDistance < distance) { best = index; distance = nextDistance; }
   });
@@ -71,10 +85,14 @@ export const Carousel = React.forwardRef(function Carousel({ orientation = 'hori
       ? align === 'center' ? (element.clientHeight - slide.offsetHeight) / 2 : align === 'end' ? element.clientHeight - slide.offsetHeight : 0
       : align === 'center' ? (element.clientWidth - slide.offsetWidth) / 2 : align === 'end' ? element.clientWidth - slide.offsetWidth : 0;
     if (orientation === 'vertical') element.scrollTo({ top: slide.offsetTop - alignmentOffset, behavior });
-    else element.scrollTo({ left: (direction === 'rtl' ? -1 : 1) * (slide.offsetLeft - alignmentOffset), behavior });
+    else {
+      // Scroll coordinates follow the scroller's CSS direction, not opts.direction.
+      const rtl = isRtlScroller(element);
+      element.scrollTo({ left: (rtl ? -1 : 1) * (slideStart(slide, orientation, rtl) - alignmentOffset), behavior });
+    }
     setSelected(targetIndex);
     queueMicrotask(() => emit('select'));
-  }, [align, direction, emit, loop, orientation]);
+  }, [align, emit, loop, orientation]);
   const api = React.useMemo(() => ({
     canScrollNext: () => loop || selectedRef.current < slideCountRef.current - 1,
     canScrollPrev: () => loop || selectedRef.current > 0,

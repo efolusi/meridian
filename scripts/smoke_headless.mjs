@@ -1,8 +1,11 @@
 #!/usr/bin/env node
 // Headless smoke check: loads site/_smoke.html in a real browser, waits for the
 // machine-readable signal (html[data-smoke]), and fails if any demo threw.
-// Requires a static server on BASE and Playwright's chromium.
+// Requires a static server on BASE and a Playwright browser.
 //   BASE=http://localhost:8000 node scripts/smoke_headless.mjs
+// BROWSER picks the engine: chromium (default, what CI runs), firefox or
+// webkit (Safari's engine). Edge is Chromium, so chromium covers it.
+//   BASE=http://localhost:8000 BROWSER=webkit DIRECTION=rtl node scripts/smoke_headless.mjs
 // Set EXECUTABLE_PATH to use an installed Chrome/Chromium binary locally;
 // CI omits it and continues to use Playwright's pinned browser.
 //
@@ -11,7 +14,7 @@
 // scripts/check_visual.mjs. Capture runs with reduced motion and a fixed
 // viewport so the pixels are deterministic on a given platform; comparison is
 // only meaningful CI-to-CI, where the platform is constant.
-import { chromium } from 'playwright';
+import * as playwright from 'playwright';
 import fs from 'node:fs';
 import path from 'node:path';
 import { CAPTURE_CSS, settleForCapture } from './capture_settle.mjs';
@@ -20,9 +23,14 @@ const BASE = process.env.BASE || 'http://localhost:8000';
 const SHOTS = process.env.SHOTS || '';
 const EXECUTABLE_PATH = process.env.EXECUTABLE_PATH || '';
 const DIRECTION = process.env.DIRECTION === 'rtl' ? 'rtl' : 'ltr';
+const ENGINE = process.env.BROWSER || 'chromium';
+if (!['chromium', 'firefox', 'webkit'].includes(ENGINE)) {
+  console.error(`smoke: BROWSER must be chromium, firefox or webkit, not "${ENGINE}"`);
+  process.exit(1);
+}
 const URL = `${BASE}/site/_smoke.html?dir=${DIRECTION}`;
 
-const browser = await chromium.launch(EXECUTABLE_PATH ? { executablePath: EXECUTABLE_PATH } : {});
+const browser = await playwright[ENGINE].launch(EXECUTABLE_PATH ? { executablePath: EXECUTABLE_PATH } : {});
 const page = await browser.newPage({
   viewport: { width: 1280, height: 900 },
   deviceScaleFactor: 1,
@@ -51,7 +59,7 @@ await page.waitForFunction(() => document.documentElement.getAttribute('data-smo
 const result = await page.evaluate(() => window.__SMOKE__);
 
 if (!result) { console.error('smoke: no result signal'); await browser.close(); process.exit(1); }
-console.log(`smoke (${result.direction}): ${result.passed}/${result.total} rendered, ${result.failed} failed`);
+console.log(`smoke (${ENGINE} ${browser.version()}, ${result.direction}): ${result.passed}/${result.total} rendered, ${result.failed} failed`);
 if (result.direction !== DIRECTION) {
   console.error(`smoke: requested ${DIRECTION} but document rendered ${result.direction}`);
   await browser.close();
