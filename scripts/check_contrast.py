@@ -163,7 +163,8 @@ PAIRS = [
 # Light chart slots 3 (green) and 5 (pink) sit near 2.7:1. Darkening them would
 # break the palette's lightness band and colour-blind separation, so these marks
 # never carry identity alone: DonutChart always renders a text legend with values
-# and a hidden data table, and Chart configs pair series with ChartLegendContent.
+# and a hidden data table, and Chart.prompt.md tells callers to render
+# ChartLegendContent (or direct labels) for these slots.
 # Measured and printed; a pair that reaches 3:1 fails the gate until removed here.
 LABELLED_MARKS = {
     ("light", f"--chart-{n}", bg) for n in (3, 5) for bg in ("--surface-card", "--surface-page")
