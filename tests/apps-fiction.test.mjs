@@ -17,10 +17,10 @@ const sources = [...walk('showcases'), ...walk('blocks'), ...walk('starters')]
   .map(file => ({ file, text: readFileSync(file, 'utf8') }))
 
 // What may still say Meridian: the kit's own tab title on a block or showcase
-// page ("Pricing block | Meridian"), the mark's asset path, and sentences about
-// the design system itself ("composed from Meridian components").
+// page ("Pricing block | Meridian") and sentences about the design system
+// itself ("composed from Meridian components").
 function productText(file, text) {
-  let t = text.replace(/meridian-mark\.svg/g, '').replace(/Meridian components/g, '')
+  let t = text.replace(/Meridian components/g, '')
   if (!file.startsWith('starters/')) t = t.replace(/<title>[^<]*<\/title>/g, '')
   return t
 }
@@ -39,6 +39,23 @@ describe('apps: the fictional product', () => {
     const hits = []
     for (const { file, text } of sources) {
       for (const m of text.matchAll(/(?<![A-Za-z])efolusi(?![A-Za-z]*DesignSystem)|\bef_(?:live|test)_/g)) hits.push(`${file}: ${text.slice(m.index, m.index + 24)}`)
+    }
+    expect(hits).toEqual([])
+  })
+
+  // The fictional products have no logo, so they show their name as a text
+  // wordmark, never the Meridian mark (asset or inlined SVG).
+  it('never shows the Meridian mark next to a fictional product', () => {
+    const hits = sources
+      .filter(({ text }) => /meridian-mark\.svg|viewBox="0 0 62 33"/.test(text))
+      .map(({ file }) => file)
+    expect(hits).toEqual([])
+  })
+
+  it('brackets invented social-proof numbers as placeholders', () => {
+    const hits = []
+    for (const { file, text } of sources) {
+      for (const m of text.matchAll(/(?<!\[)\b\d[\d,.]*[kKM]?\+(?!\])\s+(?:teams|companies|customers|developers|users)\b/g)) hits.push(`${file}: ${m[0]}`)
     }
     expect(hits).toEqual([])
   })
