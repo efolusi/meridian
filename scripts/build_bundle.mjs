@@ -1,4 +1,7 @@
-// Compile every component and showcase source into _ds_bundle.js.
+// Compile every component source into _ds_bundle.js.
+//
+// Showcases are not in it: each showcase page loads and compiles its own .jsx,
+// so a bundled copy was dead weight on every page.
 //
 // This is the DS compiler. It used to live outside the repository, which meant
 // nobody but the owner could regenerate the one artifact every page actually
@@ -38,10 +41,10 @@ try {
   process.exit(2);
 }
 
-/** Every source the bundle is built from: components first, then showcases. */
+/** Every source the bundle is built from. */
 function discover() {
   const out = [];
-  for (const base of ['components', 'showcases']) {
+  for (const base of ['components']) {
     const dir = path.join(ROOT, base);
     if (!fs.existsSync(dir)) continue;
     for (const group of fs.readdirSync(dir).sort()) {
@@ -157,12 +160,9 @@ export function compileSource(rel, src) {
           throw unsupported(rel, 'an export { … } list');
         }
       },
-      // Showcase pages publish their screens with Object.assign(window, …) for their own
-      // script tags; inside the bundle that would leak them onto every page.
+      // The bundle's only global is the namespace; a unit publishing onto window leaks to every page.
       ExpressionStatement(p) {
-        if (p.parent.type !== 'Program' || !writesWindow(p.node.expression)) return;
-        if (!rel.startsWith('showcases/')) throw unsupported(rel, 'a top-level write to window');
-        p.remove();
+        if (p.parent.type === 'Program' && writesWindow(p.node.expression)) throw unsupported(rel, 'a top-level write to window');
       },
       ExportDefaultDeclaration() {
         throw unsupported(rel, 'export default');
