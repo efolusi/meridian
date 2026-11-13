@@ -8,6 +8,7 @@
 - **Reduced motion also removes animation and transition delays.**
 - **Dialogs reference a description only when one renders**, follow a custom description `id`, and keep a caller's own `aria-describedby`.
 - **Icons retry a dropped request twice** before giving up; a missing glyph (404) is still remembered.
+- **The CDN install snippets carry SRI hashes.** The React, ReactDOM and Babel tags in the README, `hello.html`, the framework guide and the docs site now have `integrity` and `crossorigin="anonymous"`, and a new gate fails when a CDN tag lacks the pinned hash. The `meridian.efolusi.com` tags stay unhashed because they always serve the newest release.
 - **The hosted site sends security headers** (nosniff, HSTS, Referrer-Policy, `frame-ancestors 'self'`), allows cross-origin font and registry loads, and serves Markdown and `LICENSE` as plain text.
 
 ## 1.22.0 — 2026-11-13

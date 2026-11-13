@@ -438,7 +438,7 @@ class Component extends DCLogic {
       heroExp: hero ? hero.exp : '',
       hasMore: more.length > 0,
       more,
-      installCode: '<link rel="stylesheet" href="https://meridian.efolusi.com/styles.css">\n<' + SC + ' src="https://unpkg.com/react@18.3.1/umd/react.production.min.js"></' + SC + '>\n<' + SC + ' src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.production.min.js"></' + SC + '>\n<' + SC + ' src="https://meridian.efolusi.com/_ds_bundle.js"></' + SC + '>',
+      installCode: '<link rel="stylesheet" href="https://meridian.efolusi.com/styles.css">\n<' + SC + ' src="https://unpkg.com/react@18.3.1/umd/react.production.min.js" integrity="sha384-DGyLxAyjq0f9SPpVevD6IgztCFlnMF6oW/XQGmfe+IsZ8TqEiDrcHkMLKI6fiB/Z" crossorigin="anonymous"></' + SC + '>\n<' + SC + ' src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.production.min.js" integrity="sha384-gTGxhz21lVGYNMcdJOyq01Edg0jhn/c22nsx0kyqP0TxaV5WVdsSH1fSDUf5YJj1" crossorigin="anonymous"></' + SC + '>\n<' + SC + ' src="https://meridian.efolusi.com/_ds_bundle.js"></' + SC + '>',
       manualNote: a ? (lang === 'id'
         ? 'Lebih suka vendoring? Salin components/' + g.id + '/' + a.name + '.jsx dan ' + a.name + '.d.ts ke proyek Anda. MIT, tanpa atribusi.'
         : 'Prefer vendoring? Copy components/' + g.id + '/' + a.name + '.jsx and ' + a.name + '.d.ts into your project. MIT, no attribution required.') : '',
