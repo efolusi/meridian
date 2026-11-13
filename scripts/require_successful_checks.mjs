@@ -15,7 +15,7 @@ export async function requireSuccessfulChecks({
   repository,
   sha,
   token,
-  timeoutMs = 20 * 60_000,
+  timeoutMs = 60 * 60_000,
   intervalMs = 10_000,
   fetchImpl = fetch,
   sleep = ms => new Promise(resolve => setTimeout(resolve, ms)),
@@ -57,6 +57,6 @@ if (process.argv[1] && import.meta.url === pathToFileURL(process.argv[1]).href) 
     repository: process.env.GITHUB_REPOSITORY ?? '',
     sha: process.env.GITHUB_SHA ?? '',
     token: process.env.GITHUB_TOKEN ?? '',
-    timeoutMs: Number(process.env.CHECKS_GATE_TIMEOUT_MS ?? 20 * 60_000),
+    timeoutMs: Number(process.env.CHECKS_GATE_TIMEOUT_MS ?? 60 * 60_000),
   });
 }

@@ -98,16 +98,12 @@ describe('CI runner isolation', () => {
     }
   })
 
-  it('keeps pushes and same-repository branches on the efolusi-dev runner', () => {
+  // TEMPORARY (2026-11-13): checks run GitHub-hosted for every event while the
+  // efolusi-dev runner is backed up. Revert together with checks.yml.
+  it('runs checks on GitHub-hosted runners for every event (temporary)', () => {
     const jobs = runsOn(workflows['checks.yml'])
     expect(Object.keys(jobs).sort()).toEqual(['gates', 'smoke'])
-    for (const expr of Object.values(jobs)) {
-      for (const ctx of ['sameRepo', 'push']) {
-        expect(evaluate(expr, PR_CONTEXTS[ctx])).toEqual([
-          'self-hosted', 'Linux', 'X64', 'efolusi-dev',
-        ])
-      }
-    }
+    for (const expr of Object.values(jobs)) expect(expr.trim()).toBe('ubuntu-24.04')
   })
 
   it('does not leave a checkout token in .git/config for PR code to read', () => {

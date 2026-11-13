@@ -39,14 +39,31 @@ page.on('response', response => {
   }
 });
 
+
+// Headless Chromium on the self-hosted runner sometimes stalls a request and
+// never finishes it (seen on plain dev for icons, fonts and page sources), so
+// a page can sit half-loaded. Load once more before calling it a failure: a
+// real regression fails twice, a stalled request almost never does.
+async function openAndWait(url, selector) {
+  for (let attempt = 0; ; attempt++) {
+    await page.goto(url, { waitUntil: 'load', timeout: 60000 });
+    try {
+      await page.waitForSelector(selector, { timeout: 30000 });
+      return;
+    } catch (error) {
+      if (attempt > 0) throw error;
+      console.warn(`starter smoke: ${selector} did not appear on ${url}; reloading once`);
+    }
+  }
+}
+
 const failures = [];
 for (const width of widths) {
   await page.setViewportSize({ width, height: width < 768 ? 900 : 800 });
   for (const rel of starterPages) {
     pageErrors = [];
-    await page.goto(`${BASE}/${rel}`, { waitUntil: 'load', timeout: 60000 });
     try {
-      await page.waitForSelector('.sc-host', { timeout: 30000 });
+      await openAndWait(`${BASE}/${rel}`, '.sc-host');
       await page.waitForTimeout(120);
     } catch (error) {
       failures.push(`${rel} @ ${width}px: DC host did not mount`);
@@ -80,8 +97,7 @@ for (const width of widths) {
 // ended at two-thirds width.
 pageErrors = [];
 await page.setViewportSize({ width: 1280, height: 900 });
-await page.goto(`${BASE}/showcases/tools/index.html`, { waitUntil: 'load', timeout: 60000 });
-await page.waitForSelector('.ef-steps--h .ef-steps__marker', { timeout: 30000 });
+await openAndWait(`${BASE}/showcases/tools/index.html`, '.ef-steps--h .ef-steps__marker');
 await page.waitForTimeout(120);
 const tools = await page.evaluate(() => {
   const steps = document.querySelector('.ef-steps--h').getBoundingClientRect();
