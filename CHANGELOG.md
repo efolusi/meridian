@@ -396,6 +396,8 @@ The first tagged, installable version. Meridian is repositioned as a general-pur
 
 ## 1.3.0 — 2026-07-17 — AI-native component expansion
 
+1.1.0, 1.2.0 and 1.3.0 were built before this repository existed. Its history starts on 2026-07-17 with an import of 1.3.0, whose changelog already dated 1.1.0 and 1.2.0 that same day. None of the three was tagged or published to npm (the first tag is v1.4.0, the first npm release 1.5.0), so no earlier date can be recovered and all three keep 2026-07-17.
+
 ### Added
 - 16 components closing the AI-chat/agent surface:
   - ai/: Task, Todo, DocumentCard, GeneratedImage, Sandbox, WebPreview, SourceCard, PromptSteps, SelectionQuote, RichComposer, Player, Transcript
