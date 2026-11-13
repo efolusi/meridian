@@ -92,7 +92,8 @@ const GATES = [
 
 function run(cmd, args) {
   try {
-    execFileSync(cmd, args, { cwd: ROOT, stdio: 'pipe', encoding: 'utf8' })
+    // jsdom logs ~1 MB of CSS-parse noise per test run; the 1 MiB default buffer turned that into a false FAIL.
+    execFileSync(cmd, args, { cwd: ROOT, stdio: 'pipe', encoding: 'utf8', maxBuffer: 64 * 1024 * 1024 })
     return { ok: true, output: '' }
   } catch (error) {
     return { ok: false, output: `${error.stdout ?? ''}${error.stderr ?? ''}`.trimEnd() }

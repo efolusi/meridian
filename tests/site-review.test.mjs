@@ -1,6 +1,6 @@
 // @vitest-environment jsdom
 import { readdirSync, readFileSync } from 'node:fs'
-import { describe, expect, it } from 'vitest'
+import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest'
 
 const read = (p) => readFileSync(p, 'utf8')
 
@@ -176,8 +176,17 @@ describe('Indonesian copy on state-rendered pages', () => {
 })
 
 describe('live language switching', () => {
+  // i18n.js re-applies translations on 60/250/600 ms timers. With real timers they outlive this
+  // file's jsdom and throw "document is not defined" in whatever the worker runs next.
+  beforeEach(() => { vi.useFakeTimers() })
+  afterEach(() => {
+    vi.clearAllTimers()
+    vi.useRealTimers()
+  })
+
   it('i18n.js announces a language change as a window event', () => {
     new Function(read('site/i18n.js'))()
+    expect(vi.getTimerCount()).toBe(3)
     const seen = []
     const on = (e) => seen.push(e.detail.lang)
     window.addEventListener('ef:langchange', on)
