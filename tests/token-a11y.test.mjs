@@ -1,4 +1,3 @@
-import { execFileSync } from 'node:child_process'
 import { readFileSync } from 'node:fs'
 import { describe, expect, it } from 'vitest'
 
@@ -54,5 +53,26 @@ describe('base element rules (DS-04, DS-10)', () => {
     const reduce = base.slice(base.indexOf('@media (prefers-reduced-motion:reduce)'))
     expect(reduce).toContain('animation-delay:0s!important')
     expect(reduce).toContain('transition-delay:0s!important')
+  })
+})
+
+describe('font fallbacks (DS-07)', () => {
+  it('ships metric-matched fallback faces and lists each right after its brand face', () => {
+    for (const family of ['Figtree Fallback', 'Bricolage Grotesque Fallback']) {
+      const face = fonts.match(new RegExp(`@font-face\\{font-family:'${family}';[^}]*\\}`))?.[0]
+      expect(face, family).toBeTruthy()
+      expect(face).toContain("local('Arial')")
+      for (const descriptor of ['size-adjust', 'ascent-override', 'descent-override', 'line-gap-override']) {
+        expect(face, `${family} ${descriptor}`).toMatch(new RegExp(`${descriptor}:\\d+(\\.\\d+)?%`))
+      }
+    }
+    expect(typography).toContain("--font-sans:'Figtree','Figtree Fallback',")
+    expect(typography).toContain("--font-display:'Bricolage Grotesque','Bricolage Grotesque Fallback',")
+  })
+
+  it('documents the preload in the frameworks guide', () => {
+    const guide = read('guidelines/frameworks.md')
+    expect(guide).toMatch(/rel="preload"[^>]*Figtree-Variable\.woff2[^>]*crossorigin/)
+    expect(guide).toContain('Figtree Fallback')
   })
 })

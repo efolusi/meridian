@@ -118,3 +118,22 @@ Independent of framework, set attributes on `<html>` or any subtree:
 ```
 
 Only semantic aliases remap, so a dark page can host a light card and back.
+
+## Fonts
+
+`styles.css` self-hosts Figtree, Bricolage Grotesque and JetBrains Mono with
+`font-display: swap`. It also ships metric-matched fallback faces,
+`Figtree Fallback` and `Bricolage Grotesque Fallback`: local Arial scaled with
+`size-adjust`, `ascent-override` and `descent-override`, so text barely moves
+when the web font arrives.
+
+To start the download earlier, preload the faces your first screen uses. Point
+the URL at wherever your build serves `assets/fonts/`:
+
+```html
+<link rel="preload" href="/assets/fonts/Figtree-Variable.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/assets/fonts/BricolageGrotesque-Variable.woff2" as="font" type="font/woff2" crossorigin>
+```
+
+`crossorigin` is required even on the same origin; without it the browser
+downloads the font twice.
