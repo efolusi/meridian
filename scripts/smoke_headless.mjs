@@ -39,7 +39,10 @@ page.on('response', response => {
 });
 // Network failures that never produce a response (refused, aborted, blocked).
 const failedRequests = [];
-page.on('requestfailed', request => failedRequests.push(`${request.failure()?.errorText || 'failed'} ${request.url()}`));
+const pending = new Set();
+page.on('request', request => pending.add(request.url()));
+page.on('requestfinished', request => pending.delete(request.url()));
+page.on('requestfailed', request => { pending.delete(request.url()); failedRequests.push(`${request.failure()?.errorText || 'failed'} ${request.url()}`); });
 
 await page.goto(URL, { waitUntil: 'load', timeout: 60000 });
 // Demos compile via in-browser Babel; wait for the smoke signal to settle.
@@ -66,10 +69,20 @@ if (SHOTS) {
   // captures used to beat them, so baselines and comparisons came out with
   // blank icon slots at random. Wait for the requests to settle, then refuse
   // to capture if any slot is still empty.
-  await page.waitForLoadState('networkidle', { timeout: 30000 }).catch(() => {});
-  const blankIcons = await page.evaluate(() =>
+  const countBlank = () => page.evaluate(() =>
     [...document.querySelectorAll('section[data-group] [data-slot="icon"]')].filter(s => !s.querySelector('svg')).length);
+  let idle = await page.waitForLoadState('networkidle', { timeout: 30000 }).then(() => true, () => false);
+  let blankIcons = await countBlank();
   if (blankIcons) {
+    // One reload: the second pass reads the icons from the HTTP cache.
+    console.error(`smoke: ${blankIcons} icon slot(s) empty after load (network idle: ${idle}; ${pending.size} request(s) pending: ${[...pending].slice(0, 10).join(', ')}); reloading once`);
+    await page.reload({ waitUntil: 'load', timeout: 60000 });
+    await page.waitForFunction(() => document.documentElement.getAttribute('data-smoke') !== null, { timeout: 60000 });
+    idle = await page.waitForLoadState('networkidle', { timeout: 30000 }).then(() => true, () => false);
+    blankIcons = await countBlank();
+  }
+  if (blankIcons) {
+    console.error(`  network idle: ${idle}; pending: ${pending.size} ${[...pending].slice(0, 20).join(', ')}`);
     console.error(`smoke: ${blankIcons} icon slot(s) still empty; refusing to capture screenshots`);
     const where = await page.evaluate(() => [...document.querySelectorAll('section[data-group] [data-slot="icon"]')]
       .filter(s => !s.querySelector('svg'))
