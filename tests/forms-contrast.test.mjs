@@ -27,9 +27,11 @@ function toRgb(hex) {
 function resolve(table, value) {
   let current = value;
   for (let i = 0; i < 10; i += 1) {
-    const ref = /^var\((--[\w-]+)\)$/.exec(current);
+    // var(--name) or var(--name,fallback): the fallback applies only while
+    // the token is undefined (e.g. before the tokens area defines it).
+    const ref = /^var\((--[\w-]+)(?:,(.+))?\)$/.exec(current);
     if (!ref) return toRgb(current);
-    current = table[ref[1]];
+    current = table[ref[1]] ?? ref[2];
   }
   return current;
 }
@@ -44,6 +46,7 @@ function rule(file, selector) {
 const PAIRS = [
   ['forms/Toggle.jsx', '.ef-toggle--on'],
   ['forms/Questionnaire.jsx', '.ef-questionnaire__button[data-primary]'],
+  ['dates/Calendar.jsx', '.ef-cal__day[data-range-middle="true"]'],
 ];
 
 describe('forms text-on-fill contrast', () => {

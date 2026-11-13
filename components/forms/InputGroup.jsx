@@ -2,7 +2,7 @@ import React from 'react';
 import { injectEfCss } from './Button.jsx';
 import { useFieldProps } from './Field.jsx';
 const CSS = `
-.ef-input-group{display:flex;min-width:0;width:100%;align-items:center;border:1px solid var(--border-strong);border-radius:var(--radius-sm);background:var(--surface-card);transition:border-color var(--dur-fast) var(--ease-out),box-shadow var(--dur-fast) var(--ease-out)}
+.ef-input-group{display:flex;min-width:0;width:100%;align-items:center;border:1px solid var(--border-control,var(--border-strong));border-radius:var(--radius-sm);background:var(--surface-card);transition:border-color var(--dur-fast) var(--ease-out),box-shadow var(--dur-fast) var(--ease-out)}
 .ef-input-group:focus-within{border-color:var(--accent);box-shadow:var(--focus-ring)}.ef-input-group:has([aria-invalid="true"]){border-color:var(--danger-600)}
 .ef-input-group:has(textarea){flex-wrap:wrap}.ef-input-group__control{min-width:0;flex:1;border:0;background:transparent;font:inherit;color:var(--text-primary)}
 input.ef-input-group__control{height:34px;padding:0 11px}textarea.ef-input-group__control{min-height:80px;padding:10px 11px;resize:vertical}.ef-input-group__control:focus{outline:none}.ef-input-group__control::placeholder{color:var(--text-muted)}
@@ -11,6 +11,8 @@ input.ef-input-group__control{height:34px;padding:0 11px}textarea.ef-input-group
 .ef-input-group__addon[data-align="block-start"],.ef-input-group__addon[data-align="block-end"]{width:100%;min-height:34px}.ef-input-group__addon[data-align="block-start"]{order:-1;border-block-end:1px solid var(--border-default)}.ef-input-group__addon[data-align="block-end"]{order:3;border-block-start:1px solid var(--border-default)}
 .ef-input-group__button{display:inline-flex;height:26px;align-items:center;justify-content:center;gap:5px;padding:0 8px;border:0;border-radius:var(--radius-sm);background:transparent;color:var(--text-secondary);font:inherit;font-size:var(--text-xs);cursor:pointer}.ef-input-group__button:hover{background:var(--surface-sunken);color:var(--text-primary)}.ef-input-group__button:focus-visible{outline:none;box-shadow:var(--focus-ring)}
 .ef-input-group__button[data-size^="icon"]{width:26px;padding:0}.ef-input-group__text{display:inline-flex;align-items:center;line-height:1;font-size:var(--text-sm);color:var(--text-muted)}.ef-input-group__text svg{width:16px;height:16px;stroke-width:2}
+/* Touch: fixed-size targets grow to --tap-min; small glyph buttons keep their look and get a centred --tap-min hit area instead. */
+@media (pointer:coarse){.ef-input-group__button{position:relative}.ef-input-group__button::before{content:"";position:absolute;inset:calc(50% - var(--tap-min) / 2)}}
 `;
 function cx(base, className) { return base + (className ? ` ${className}` : ''); }
 export const InputGroup = React.forwardRef(function InputGroup({ className, ...rest }, ref) {

@@ -13,7 +13,7 @@ const CSS = `
 .ef-cal__dropdowns{display:flex;flex:1;justify-content:center;gap:5px}.ef-cal__dropdowns .ef-native-select{width:auto}.ef-cal__dropdowns select{height:30px}
 .ef-cal__grid{display:grid;grid-template-columns:repeat(7,36px);gap:2px}
 .ef-cal__row{display:contents}
-.ef-cal__dow{text-align:center;font-size:10px;font-weight:var(--weight-semibold);letter-spacing:.06em;text-transform:uppercase;color:var(--text-muted);padding:5px 0}
+.ef-cal__dow{text-align:center;font-size:var(--text-xs);font-weight:var(--weight-semibold);color:var(--text-muted);padding:5px 0}
 .ef-cal__day{position:relative;display:grid;width:36px;height:34px;place-items:center;border:1px solid transparent;border-radius:var(--radius-sm);background:none;color:var(--text-primary);font:inherit;font-size:var(--text-sm);cursor:pointer}
 .ef-cal__day:hover:not(:disabled){background:var(--surface-sunken)}
 .ef-cal__day:focus-visible{outline:none;box-shadow:var(--focus-ring)}
@@ -21,9 +21,11 @@ const CSS = `
 .ef-cal__day[data-outside="true"]{color:var(--text-muted)}
 .ef-cal__day[data-today="true"]{border-color:var(--border-strong)}
 .ef-cal__day[data-selected="true"]{background:var(--accent);color:var(--accent-contrast);font-weight:var(--weight-semibold)}
-.ef-cal__day[data-range-middle="true"]{border-radius:0;background:var(--brand-100);color:var(--brand-950)}
+.ef-cal__day[data-range-middle="true"]{border-radius:0;background:var(--accent-subtle);color:var(--text-primary)}
 .ef-cal__day[data-range-start="true"]{border-start-end-radius:0;border-end-end-radius:0}
 .ef-cal__day[data-range-end="true"]{border-start-start-radius:0;border-end-start-radius:0}
+/* Touch: fixed-size targets grow to --tap-min; small glyph buttons keep their look and get a centred --tap-min hit area instead. */
+@media (pointer:coarse){.ef-cal{min-width:0}.ef-cal__month-wrap{width:auto}.ef-cal__grid{grid-template-columns:repeat(7,var(--tap-min))}.ef-cal__day{width:var(--tap-min);height:var(--tap-min)}}
 `;
 const sameDay = (a, b) => !!a && !!b && a.getFullYear() === b.getFullYear() && a.getMonth() === b.getMonth() && a.getDate() === b.getDate();
 const startDay = date => new Date(date.getFullYear(), date.getMonth(), date.getDate());

@@ -4,7 +4,7 @@ import { injectEfCss, mergeRefs } from './Button.jsx';
 import { Portal, useAnchoredStyle } from '../overlay/Portal.jsx';
 
 const CSS = `
-.ef-select-trigger{display:flex;width:100%;height:var(--control-h-md);align-items:center;justify-content:space-between;gap:8px;padding:0 11px;border:1px solid var(--border-strong);border-radius:var(--radius-sm);background:var(--surface-sunken);color:var(--text-primary);font:inherit;font-size:var(--text-sm);text-align:start;cursor:pointer}
+.ef-select-trigger{display:flex;width:100%;height:var(--control-h-md);align-items:center;justify-content:space-between;gap:8px;padding:0 11px;border:1px solid var(--border-control,var(--border-strong));border-radius:var(--radius-sm);background:var(--surface-sunken);color:var(--text-primary);font:inherit;font-size:var(--text-sm);text-align:start;cursor:pointer}
 .ef-select-trigger:hover:not(:disabled){border-color:var(--sand-400)}
 .ef-select-trigger:focus-visible{outline:none;box-shadow:var(--focus-ring)}
 .ef-select-trigger:disabled{cursor:not-allowed;opacity:.5}
@@ -15,10 +15,13 @@ const CSS = `
 .ef-select-group{padding:2px 0}
 .ef-select-label{padding:6px 9px;color:var(--text-muted);font-size:var(--text-xs);font-weight:var(--weight-semibold)}
 .ef-select-item{position:relative;display:flex;width:100%;min-height:32px;align-items:center;padding-block:6px;padding-inline:9px 30px;border:0;border-radius:var(--radius-sm);background:none;color:var(--text-primary);font:inherit;font-size:var(--text-sm);text-align:start;cursor:pointer}
-.ef-select-item:hover,.ef-select-item:focus-visible,.ef-select-item[data-highlighted]{outline:none;background:var(--surface-sunken)}
+.ef-select-item:hover{background:var(--surface-sunken)}
+.ef-select-item:focus-visible,.ef-select-item[data-highlighted]{outline:none;background:var(--surface-sunken);box-shadow:inset 0 0 0 2px var(--focus-ring-color)}
 .ef-select-item:disabled{cursor:not-allowed;opacity:.45}
 .ef-select-check{position:absolute;inset-inline-end:9px;display:inline-flex}
 .ef-select-separator{height:1px;margin:4px 6px;background:var(--border-default)}
+/* Touch: fixed-size targets grow to --tap-min; small glyph buttons keep their look and get a centred --tap-min hit area instead. */
+@media (pointer:coarse){.ef-select-item{min-height:var(--tap-min)}}
 `;
 const SelectCtx = React.createContext(null);
 const itemText = children => typeof children === 'string' || typeof children === 'number' ? String(children) : '';
