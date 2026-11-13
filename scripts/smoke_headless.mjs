@@ -59,6 +59,18 @@ if (!result.ok) {
 if (SHOTS) {
   fs.mkdirSync(SHOTS, { recursive: true });
   await page.evaluate(() => document.fonts.ready);
+  // Icons arrive by fetch after the demos render. On a loaded runner the
+  // captures used to beat them, so baselines and comparisons came out with
+  // blank icon slots at random. Wait for the requests to settle, then refuse
+  // to capture if any slot is still empty.
+  await page.waitForLoadState('networkidle', { timeout: 30000 }).catch(() => {});
+  const blankIcons = await page.evaluate(() =>
+    [...document.querySelectorAll('section[data-group] [data-slot="icon"]')].filter(s => !s.querySelector('svg')).length);
+  if (blankIcons) {
+    console.error(`smoke: ${blankIcons} icon slot(s) still empty; refusing to capture screenshots`);
+    await browser.close();
+    process.exit(1);
+  }
   // The sticky summary banner paints over whichever section is scrolled under
   // it, so it was getting baked into the captures — carrying the live demo
   // count, which would churn every affected baseline whenever a demo is added.
