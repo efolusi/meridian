@@ -9,6 +9,7 @@
 - **Dialogs reference a description only when one renders**, follow a custom description `id`, and keep a caller's own `aria-describedby`.
 - **Icons retry a dropped request twice** before giving up; a missing glyph (404) is still remembered.
 - **The CDN install snippets carry SRI hashes.** The React, ReactDOM and Babel tags in the README, `hello.html`, the framework guide and the docs site now have `integrity` and `crossorigin="anonymous"`, and a new gate fails when a CDN tag lacks the pinned hash. The `meridian.efolusi.com` tags stay unhashed because they always serve the newest release.
+- **Example apps no longer wear the Meridian mark.** The fictional products in the showcases, starters and blocks (Fernwick, Northstar CRM, Ledgerroom, Waypoint Support) show their name as a plain text wordmark, and the hero's invented user count reads `[4,200+]` as a placeholder.
 - **The hosted site sends security headers** (nosniff, HSTS, Referrer-Policy, `frame-ancestors 'self'`), allows cross-origin font and registry loads, and serves Markdown and `LICENSE` as plain text.
 
 ## 1.22.0 — 2026-11-13
@@ -396,6 +397,8 @@ The first tagged, installable version. Meridian is repositioned as a general-pur
 - Docs corrected: icon count (65 → 107) and stroke width (assets are 2px; `Icon` renders 1.5px), deduplicated README data-component list, docs-site component counts (88/77 → 104).
 
 ## 1.3.0 — 2026-07-17 — AI-native component expansion
+
+1.1.0, 1.2.0 and 1.3.0 were built before this repository existed. Its history starts on 2026-07-17 with an import of 1.3.0, whose changelog already dated 1.1.0 and 1.2.0 that same day. None of the three was tagged or published to npm (the first tag is v1.4.0, the first npm release 1.5.0), so no earlier date can be recovered and all three keep 2026-07-17.
 
 ### Added
 - 16 components closing the AI-chat/agent surface:
