@@ -8,6 +8,7 @@
 - **Reduced motion also removes animation and transition delays.**
 - **Dialogs reference a description only when one renders**, follow a custom description `id`, and keep a caller's own `aria-describedby`.
 - **Icons retry a dropped request twice** before giving up; a missing glyph (404) is still remembered.
+- **Charts get their own colour tokens.** `--chart-1` to `--chart-5` are a categorical palette (blue, orange, green, violet, pink) with separate dark-mode steps, checked for colour-blind separation. DonutChart uses them in order, and Chart configs should reference them for series. Brand colours stay for UI.
 - **The hosted site sends security headers** (nosniff, HSTS, Referrer-Policy, `frame-ancestors 'self'`), allows cross-origin font and registry loads, and serves Markdown and `LICENSE` as plain text.
 
 ## 1.22.0 — 2026-11-13

@@ -15,3 +15,5 @@ Meridian's Chart family composes directly with Recharts 3. It does not wrap the 
 ```
 
 Give `ChartContainer` a measurable height or minimum height. Configure labels, icons, and either `color` or light/dark `theme` values in `ChartConfig`; reference them as `var(--color-KEY)` from Recharts.
+
+For series colours use the categorical tokens in order: `color: 'var(--chart-1)'`, then `--chart-2` and so on up to `--chart-5`. They already switch for dark mode, so `theme` is only needed for colours outside that set. Keep brand colours for UI, not for series.

@@ -64,7 +64,7 @@ def dtcg_type(name, value):
         return "dimension"
     if name in ("focus-ring", "focus-ring-danger"):
         return "shadow"
-    if re.match(r"^(sand|brand|cocoa|caramel|peach|cream|success|warning|danger|surface|text|border|accent|overlay|code|media|focus-ring)", name):
+    if re.match(r"^(sand|brand|cocoa|caramel|peach|cream|success|warning|danger|surface|text|border|accent|overlay|code|media|chart|focus-ring)", name):
         return "color"
     if name.startswith("shadow"):
         return "shadow"
