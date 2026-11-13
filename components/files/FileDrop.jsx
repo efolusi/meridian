@@ -17,7 +17,9 @@ function accepts(file, accept) {
   if (!accept) return true;
   const name = (file.name || '').toLowerCase();
   const type = (file.type || '').toLowerCase();
-  return accept.split(',').map(t => t.trim().toLowerCase()).filter(Boolean).some(t =>
+  const tokens = accept.split(',').map(t => t.trim().toLowerCase()).filter(Boolean);
+  if (!tokens.length || tokens.includes('*/*') || tokens.includes('*')) return true;
+  return tokens.some(t =>
     t.startsWith('.') ? name.endsWith(t) : t.endsWith('/*') ? type.startsWith(t.slice(0, -1)) : type === t);
 }
 export function FileDrop({ onFiles, onReject, accept, maxSize, multiple = true, title, hint, style, className, ...rest }) {
