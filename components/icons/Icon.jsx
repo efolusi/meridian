@@ -26,7 +26,13 @@ export function Icon({ name, size = 16, strokeWidth = 1.5, title, className, sty
     if (name in _cache) { setSvg(_cache[name]); return; }
     let live = true;
     if (!_inflight[name]) {
-      _inflight[name] = fetch(base() + 'assets/icons/' + name + '.svg')
+      // A reset or dropped connection (busy static server, flaky network) is
+      // retried twice with a short backoff before the glyph is given up on.
+      const load = attempt => fetch(base() + 'assets/icons/' + name + '.svg')
+        .catch(error => attempt < 2
+          ? new Promise(r => setTimeout(r, 150 * (attempt + 1))).then(() => load(attempt + 1))
+          : Promise.reject(error));
+      _inflight[name] = load(0)
         .then(r => {
           // A served 404 means the name is wrong; anything else — offline, a
           // jsdom test with no base URL, a blocked request — is the environment,
