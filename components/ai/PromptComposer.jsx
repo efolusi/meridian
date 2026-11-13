@@ -14,6 +14,7 @@ const CSS = `
 .ef-composer__send:disabled{background:var(--sand-200);color:var(--sand-400);cursor:not-allowed}
 .ef-composer__send:focus-visible{outline:none;box-shadow:var(--focus-ring)}
 .ef-composer__hint{font-size:var(--text-xs);color:var(--text-muted);padding:0 4px}
+@media (pointer:coarse){.ef-composer__send{min-width:var(--tap-min);min-height:var(--tap-min)}}
 `;
 export const PromptComposer = React.forwardRef(function PromptComposer({ value, defaultValue, onChange, onSend, onAttach, onVoice, busy, onStop, placeholder = 'Ask the agent anything…', rows = 2, disabled, attachments, hint, 'aria-label': ariaLabel, 'aria-labelledby': ariaLabelledby, style, className, ...rest }, ref) {
   injectEfCss('ef-css-composer', CSS);

@@ -20,6 +20,7 @@ const CSS = `
 .ef-modelsel__badge{margin-inline-start:auto;flex:none;font-size:10.5px;font-weight:600;letter-spacing:.04em;text-transform:uppercase;color:var(--brand-700);background:var(--accent-subtle);border-radius:var(--radius-sm);padding:2px 6px}
 .ef-modelsel__check{margin-inline-start:auto;flex:none;display:inline-flex;color:var(--brand-700)}
 .ef-modelsel__badge+.ef-modelsel__check{margin-inline-start:8px}
+@media (pointer:coarse){.ef-modelsel__btn{min-height:var(--tap-min)}}
 `;
 export function ModelSelector({ models = [], value, onChange, side = 'top', style, className, ...rest }) {
   injectEfCss('ef-css-modelsel', CSS);

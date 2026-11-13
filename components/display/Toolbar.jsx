@@ -11,6 +11,7 @@ const CSS = `
 .ef-toolbar__btn:disabled{opacity:.4;cursor:not-allowed}
 .ef-toolbar__btn:focus-visible{outline:none;box-shadow:var(--focus-ring)}
 .ef-toolbar__sep{width:1px;height:18px;background:var(--border-default);margin:0 4px}
+@media (pointer:coarse){.ef-toolbar__btn{min-width:var(--tap-min);min-height:var(--tap-min)}}
 `;
 export function Toolbar({ items, value, onChange, label, style, className, ...rest }) {
   injectEfCss('ef-css-toolbar', CSS);

@@ -12,6 +12,7 @@ const CSS = `
 .ef-tag__x{display:inline-flex;align-items:center;justify-content:center;width:20px;height:20px;margin:0;border:none;border-radius:var(--radius-sm);background:transparent;color:var(--text-muted);cursor:pointer;padding:0;transition:background var(--dur-fast) var(--ease-out),color var(--dur-fast) var(--ease-out)}
 .ef-tag__x:hover{background:var(--sand-200);color:var(--text-primary)}
 .ef-tag__x:focus-visible{outline:none;box-shadow:var(--focus-ring)}
+@media (pointer:coarse){.ef-tag__x{position:relative}.ef-tag__x::after{content:'';position:absolute;inset:calc((20px - var(--tap-min)) / 2)}}
 `;
 export function Tag({ icon, onRemove, onClick, children, style, className, ...rest }) {
   injectEfCss('ef-css-tag', CSS);

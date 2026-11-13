@@ -9,6 +9,7 @@ const CSS = `
 .ef-feedback__btn--on{color:var(--brand-700);background:var(--accent-subtle)}
 .ef-feedback__sep{width:1px;height:14px;background:var(--border-default);margin:0 5px}
 .ef-feedback__note{font-size:11.5px;color:var(--text-muted);margin-inline-start:6px}
+@media (pointer:coarse){.ef-feedback__btn{min-width:var(--tap-min);min-height:var(--tap-min)}}
 `;
 export function FeedbackBar({ onFeedback, onCopy, onRetry, copyText, note, style, className, ...rest }) {
   injectEfCss('ef-css-feedback', CSS);
