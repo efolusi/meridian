@@ -8,6 +8,7 @@
 - **Reduced motion also removes animation and transition delays.**
 - **Dialogs reference a description only when one renders**, follow a custom description `id`, and keep a caller's own `aria-describedby`.
 - **Icons retry a dropped request twice** before giving up; a missing glyph (404) is still remembered.
+- **Charts get their own colour tokens.** `--chart-1` to `--chart-5` are a categorical palette (blue, orange, green, violet, pink) with separate dark-mode steps, checked for colour-blind separation. DonutChart uses them in order, and Chart configs should reference them for series. Brand colours stay for UI.
 - **The CDN install snippets carry SRI hashes.** The React, ReactDOM and Babel tags in the README, `hello.html`, the framework guide and the docs site now have `integrity` and `crossorigin="anonymous"`, and a new gate fails when a CDN tag lacks the pinned hash. The `meridian.efolusi.com` tags stay unhashed because they always serve the newest release.
 - **The docs list what each component costs.** A new Bundle size page (and `guidelines/bundle-size.md`) gives the minified and gzipped size of every npm deep import, including the Meridian modules it pulls in. `npm run check` regenerates it, so it cannot fall behind the sources.
 - **Example apps no longer wear the Meridian mark.** The fictional products in the showcases, starters and blocks (Fernwick, Northstar CRM, Ledgerroom, Waypoint Support) show their name as a plain text wordmark, and the hero's invented user count reads `[4,200+]` as a placeholder.

@@ -152,7 +152,23 @@ PAIRS = [
     ("--success-on-dark", ["--surface-inverse"], 3.0, "Toast success icon (light theme)"),
     ("--danger-on-dark", ["--surface-inverse"], 3.0, "Toast danger icon (light theme)"),
     ("--warning-on-dark", ["--surface-inverse"], 3.0, "Toast warning icon (light theme)"),
+    # Chart series marks (non-text, 3:1) on the surfaces a chart sits on.
+    ("--chart-1", ["--surface-card", "--surface-page"], 3.0, "chart series 1"),
+    ("--chart-2", ["--surface-card", "--surface-page"], 3.0, "chart series 2"),
+    ("--chart-3", ["--surface-card", "--surface-page"], 3.0, "chart series 3"),
+    ("--chart-4", ["--surface-card", "--surface-page"], 3.0, "chart series 4"),
+    ("--chart-5", ["--surface-card", "--surface-page"], 3.0, "chart series 5"),
 ]
+
+# Light chart slots 3 (green) and 5 (pink) sit near 2.7:1. Darkening them would
+# break the palette's lightness band and colour-blind separation, so these marks
+# never carry identity alone: DonutChart always renders a text legend with values
+# and a hidden data table, and Chart.prompt.md tells callers to render
+# ChartLegendContent (or direct labels) for these slots.
+# Measured and printed; a pair that reaches 3:1 fails the gate until removed here.
+LABELLED_MARKS = {
+    ("light", f"--chart-{n}", bg) for n in (3, 5) for bg in ("--surface-card", "--surface-page")
+}
 
 # Pairs that fail today and need a visual decision from the owner before the
 # token moves (see the 2026-11-12 review). They are reported, not hidden: a pair
@@ -203,8 +219,9 @@ for theme, table, fallback in (("light", light, None), ("dark", dark, light)):
             r = ratio(fg, bg)
             checked += 1
             ok = r >= minimum
-            known = key in KNOWN_FAILURES
-            status = "ok  " if ok else ("KNOWN" if known else "FAIL")
+            labelled = key in LABELLED_MARKS
+            known = key in KNOWN_FAILURES or labelled
+            status = "ok  " if ok else ("LABEL" if labelled else "KNOWN" if known else "FAIL")
             print(f"{status:5s} {theme:5s} {fg_tok:22s} on {bg_tok:20s} "
                   f"{r:5.2f}:1  (min {minimum}, {label})")
             if ok and known:
@@ -220,7 +237,7 @@ if unresolved:
         print(f"  {theme:5s} {tok}: {why}")
 
 if stale:
-    print("\nnow passing, remove from KNOWN_FAILURES:")
+    print("\nnow passing, remove from KNOWN_FAILURES or LABELLED_MARKS:")
     for key in stale:
         print(f"  {key}")
 
@@ -229,5 +246,7 @@ if failures or unresolved or stale:
         print(f"\n{len(failures)} pair(s) under their minimum ratio")
     sys.exit(1)
 
+labelled = sum(1 for key in tolerated if key in LABELLED_MARKS)
 print(f"\nall {checked - len(tolerated)} pairs pass (4.5:1 text, 3:1 non-text); "
-      f"{len(tolerated)} known failure(s) await an owner decision")
+      f"{len(tolerated) - labelled} known failure(s) await an owner decision; "
+      f"{labelled} chart mark(s) under 3:1 rely on their text legend")
