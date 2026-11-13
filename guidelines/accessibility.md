@@ -87,8 +87,8 @@ back to the first slide on its second step in RTL (every engine), and a
 two-thumb Slider drew its thumbs away from the ends of the fill (every engine,
 both directions). WebKit also stepped a native range the wrong way in RTL; Slider
 now handles Left and Right itself. To repeat a run:
-`BASE=http://127.0.0.1:8000 BROWSER=firefox DIRECTION=rtl node scripts/smoke_headless.mjs`
-(`BROWSER` is `chromium`, `firefox` or `webkit`; CI still runs Chromium only).
+`BASE=http://127.0.0.1:8000 SMOKE_BROWSER=firefox DIRECTION=rtl node scripts/smoke_headless.mjs`
+(`SMOKE_BROWSER` is `chromium`, `firefox` or `webkit`; CI still runs Chromium only).
 
 **Still open before calling RTL fully supported**
 ([#75](https://github.com/efolusi/meridian/issues/75)): Safari itself on macOS

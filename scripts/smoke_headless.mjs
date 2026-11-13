@@ -3,9 +3,9 @@
 // machine-readable signal (html[data-smoke]), and fails if any demo threw.
 // Requires a static server on BASE and a Playwright browser.
 //   BASE=http://localhost:8000 node scripts/smoke_headless.mjs
-// BROWSER picks the engine: chromium (default, what CI runs), firefox or
+// SMOKE_BROWSER picks the engine: chromium (default, what CI runs), firefox or
 // webkit (Safari's engine). Edge is Chromium, so chromium covers it.
-//   BASE=http://localhost:8000 BROWSER=webkit DIRECTION=rtl node scripts/smoke_headless.mjs
+//   BASE=http://localhost:8000 SMOKE_BROWSER=webkit DIRECTION=rtl node scripts/smoke_headless.mjs
 // Set EXECUTABLE_PATH to use an installed Chrome/Chromium binary locally;
 // CI omits it and continues to use Playwright's pinned browser.
 //
@@ -23,9 +23,9 @@ const BASE = process.env.BASE || 'http://localhost:8000';
 const SHOTS = process.env.SHOTS || '';
 const EXECUTABLE_PATH = process.env.EXECUTABLE_PATH || '';
 const DIRECTION = process.env.DIRECTION === 'rtl' ? 'rtl' : 'ltr';
-const ENGINE = process.env.BROWSER || 'chromium';
+const ENGINE = process.env.SMOKE_BROWSER || 'chromium';
 if (!['chromium', 'firefox', 'webkit'].includes(ENGINE)) {
-  console.error(`smoke: BROWSER must be chromium, firefox or webkit, not "${ENGINE}"`);
+  console.error(`smoke: SMOKE_BROWSER must be chromium, firefox or webkit, not "${ENGINE}"`);
   process.exit(1);
 }
 const URL = `${BASE}/site/_smoke.html?dir=${DIRECTION}`;
