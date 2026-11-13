@@ -37,6 +37,9 @@ page.on('console', m => {
 page.on('response', response => {
   if (response.status() >= 400) consoleErrors.push(`HTTP ${response.status()} ${response.url()}`);
 });
+// Network failures that never produce a response (refused, aborted, blocked).
+const failedRequests = [];
+page.on('requestfailed', request => failedRequests.push(`${request.failure()?.errorText || 'failed'} ${request.url()}`));
 
 await page.goto(URL, { waitUntil: 'load', timeout: 60000 });
 // Demos compile via in-browser Babel; wait for the smoke signal to settle.
@@ -68,6 +71,13 @@ if (SHOTS) {
     [...document.querySelectorAll('section[data-group] [data-slot="icon"]')].filter(s => !s.querySelector('svg')).length);
   if (blankIcons) {
     console.error(`smoke: ${blankIcons} icon slot(s) still empty; refusing to capture screenshots`);
+    const where = await page.evaluate(() => [...document.querySelectorAll('section[data-group] [data-slot="icon"]')]
+      .filter(s => !s.querySelector('svg'))
+      .map(s => s.closest('.demo')?.querySelector('h4')?.textContent || '?'));
+    const counts = where.reduce((m, k) => (m[k] = (m[k] || 0) + 1, m), {});
+    console.error('  blank icons by demo: ' + JSON.stringify(counts));
+    if (failedRequests.length) console.error('  failed requests:\n    ' + failedRequests.slice(0, 40).join('\n    '));
+    if (consoleErrors.length) console.error('  console:\n    ' + consoleErrors.slice(0, 20).join('\n    '));
     await browser.close();
     process.exit(1);
   }
