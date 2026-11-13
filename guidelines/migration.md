@@ -7,7 +7,7 @@ How Meridian retires an API, and what to change in your code before each major v
 A deprecated prop, component or token keeps working until the next major version. While it is deprecated:
 
 - it is marked `@deprecated` in its `.d.ts`, so your editor strikes it through;
-- it logs one development warning per page that names the call site and links here (production builds stay quiet);
+- it logs one development warning per page that names the component and prop, such as `<Drawer modal={false}>`, and links here (production builds stay quiet);
 - [Meridian Guard](https://www.npmjs.com/package/@efolusi/meridian-guard) reports it as `MDG004`;
 - it has a section below with the reason and the before and after code.
 
@@ -22,7 +22,7 @@ It is removed only in a major version, and only after at least one release that 
    npx @efolusi/meridian-guard src
    ```
 
-3. Where a section below says a fix is mechanical, Guard can apply it. `--fix` rewrites files in place, so commit or stash first and review the diff:
+3. Where a section below says a fix is mechanical, Guard can apply it. `--fix` needs a Guard release newer than 1.22.0 (older ones stop with "unknown option --fix"). It rewrites files in place, so commit or stash first and review the diff:
 
    ```sh
    npx @efolusi/meridian-guard src --fix
