@@ -2,6 +2,18 @@
 
 ## Unreleased
 
+- **Form controls have visible edges.** New `--border-control` token (at least 3:1 against field and card surfaces in both themes) is used by every input, select, checkbox, radio, switch and file drop edge. New `--accent-subtle-fg` keeps text on `--accent-subtle` at 4.5:1 in dark mode.
+- **Keyboard focus is visible in every list.** Select, Combobox and TimePicker options, menu items, Command options and NavigationMenu links draw an inset focus ring instead of a faint tint.
+- **Touch targets reach 44px across components** under `(pointer: coarse)`: Calendar days, steppers, chip remove, password reveal, Toggle, small buttons, menu items, table controls and more. Mouse layouts are unchanged.
+- **Table rows with `onRowClick` work from the keyboard**, and a row object listed twice gets its own key and selection slot. **Charts have text alternatives** (`role="img"`, an `aria-label` and a hidden data table) and a `locale` prop; BarChart bars and the DonutChart gap meet 3:1.
+- **CodeBlock and CopyField only say "Copied" when the clipboard write succeeded.** FileDrop gains `maxSize` and `onReject`, and `accept="*/*"` accepts every file.
+- **Escape and Tab respect nested overlays everywhere.** The mobile Sidebar and AlertDialog join the escape layer stack and leave focus alone inside a child popover. Cmd/Ctrl+B ignores text fields, and SkipLink moves focus itself, so hash routers are not triggered.
+- **`Drawer` `modal={false}` is deprecated.** It was always ignored; it now logs a development warning and will be removed in the next major version.
+- **Dark theme sets `color-scheme: dark`**, so native scrollbars and pickers follow it. `tokens.json` uses DTCG `{alias}` references and carries dark, compact and coarse-pointer values as modes.
+- **`_ds_bundle.js` is about 170 KB smaller.** Showcase screens were compiled into it but never used; each showcase page compiles its own source. The size gate now allows 4 KiB of headroom.
+- **Releases publish from a job that holds only `id-token: write`** and verifies the built tarballs by checksum; old releases are pruned to the newest five; the root docs `llms.txt` links to are published.
+- **The example apps' fictional SaaS is called Fernwick**, with no real compliance claims, and pages with invented figures carry a "Sample data" badge.
+
 - **Fork pull requests no longer run on the shared self-hosted runner.** They run on GitHub-hosted `ubuntu-24.04`; pushes and same-repo branches stay on `efolusi-dev`.
 - **PR checks run the full `npm run check`.** A green PR can no longer fail the release on a gate CI skipped.
 - **The publish pipeline is pinned and holds fewer credentials.** Exact npm, action SHAs and an image digest; tags are made through the API with no git credential. CI cancels superseded PR runs and every job has a timeout.
