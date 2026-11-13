@@ -4109,12 +4109,13 @@ First focusable element on the page: one Tab press jumps a keyboard user past th
 <main id="main" tabIndex={-1}>…</main>
 ```
 
-The target needs `tabIndex={-1}`, or Safari and Firefox scroll without moving focus and the next Tab lands back in the navigation.
+The link moves focus to the target itself and does not change `location.hash`, so hash-based routers are not triggered. A target without a `tabindex` gets `tabIndex={-1}` on first use; setting it yourself, as above, keeps the markup explicit.
 
 ```ts
 export interface SkipLinkProps {
-  /** Target landmark; it needs tabIndex={-1} to receive focus @default '#main' */
+  /** Fragment of the target landmark. The link focuses it directly (adding tabIndex=-1 if needed) without changing location.hash. @default '#main' */
   href?: string;
+  onClick?: React.MouseEventHandler<HTMLAnchorElement>;
   children?: React.ReactNode;
   style?: React.CSSProperties;
   className?: string;
@@ -4372,6 +4373,8 @@ A composable, gesture-dismissable surface for mobile details and short workflows
 
 Set `direction` on `Drawer`; bottom is the default and displays a drag handle. Set `dismissible={false}` for a decision that must be completed explicitly. Use Sheet for a non-gesture desktop side panel.
 
+`modal` is deprecated and ignored: a Drawer is always modal (scrim, focus trap, scroll lock). Passing `modal={false}` logs a development warning; the prop will be removed in the next major version.
+
 ```ts
 import type * as React from 'react';
 
@@ -4382,6 +4385,7 @@ export interface DrawerProps {
   onOpenChange?: (open: boolean) => void;
   direction?: DrawerDirection;
   dismissible?: boolean;
+  /** @deprecated Ignored: a Drawer is always modal. Passing `false` logs a development warning; the prop will be removed in the next major version. */
   modal?: boolean;
   handleOnly?: boolean;
   children?: React.ReactNode;

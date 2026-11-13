@@ -1,7 +1,7 @@
 import React from 'react';
 import { Icon } from '../icons/Icon.jsx';
 import { injectEfCss, mergeRefs } from '../forms/Button.jsx';
-import { useScrollLock } from '../overlay/Portal.jsx';
+import { useScrollLock, useEscapeLayer, escapeLayerContext } from '../overlay/Portal.jsx';
 
 const CSS = `
 .ef-sidebar-provider{--sidebar-width:16rem;--sidebar-width-icon:3rem;position:relative;display:flex;min-height:100%;width:100%;background:var(--surface-page);color:var(--text-primary)}
@@ -34,9 +34,15 @@ const CSS = `
 @media(max-width:767px){.ef-sidebar:not([data-collapsible=none]){display:none}.ef-sidebar-provider{min-height:100%}}
 @media(min-width:768px){.ef-sidebar-mobile-backdrop,.ef-sidebar-mobile{display:none}}
 @media(prefers-reduced-motion:reduce){.ef-sidebar,.ef-sidebar__panel{transition:none}}
+/* coarse pointers get the 44px touch target, like form controls do through --control-h-* */
+@media (pointer:coarse){.ef-sidebar-menu-button,.ef-sidebar-menu-button[data-size=sm],.ef-sidebar-menu-button[data-size=lg]{height:var(--tap-min)}.ef-sidebar-menu-sub-button{min-height:var(--tap-min)}.ef-sidebar-input{height:var(--tap-min)}.ef-sidebar-trigger{width:var(--tap-min);height:var(--tap-min)}.ef-sidebar-group-action,.ef-sidebar-menu-action{width:var(--tap-min);height:var(--tap-min);inset-block-start:0;inset-inline-end:0}}
 `;
 
 const SidebarContext = React.createContext(null);
+// Cmd/Ctrl+B is "bold" in every text field and rich-text editor; the sidebar
+// shortcut must not take it from them.
+const EDITABLE = 'input,textarea,select,[contenteditable]:not([contenteditable="false"])';
+const isEditable = target => !!(target && target.closest && target.closest(EDITABLE));
 const join = (...parts) => parts.filter(Boolean).join(' ');
 
 function compose(render, fallback, props, ref, children) {
@@ -71,12 +77,11 @@ export const SidebarProvider = React.forwardRef(function SidebarProvider({ defau
   }, []);
   React.useEffect(() => {
     const onKeyDown = event => {
-      if (event.key === 'Escape' && openMobile) { event.preventDefault(); setOpenMobile(false); }
-      if (typeof event.key === 'string' && event.key.toLowerCase() === 'b' && (event.metaKey || event.ctrlKey)) { event.preventDefault(); toggleSidebar(); }
+      if (typeof event.key === 'string' && event.key.toLowerCase() === 'b' && (event.metaKey || event.ctrlKey) && !isEditable(event.target)) { event.preventDefault(); toggleSidebar(); }
     };
     window.addEventListener('keydown', onKeyDown);
     return () => window.removeEventListener('keydown', onKeyDown);
-  }, [openMobile, toggleSidebar]);
+  }, [toggleSidebar]);
   const context = React.useMemo(() => ({ state: open ? 'expanded' : 'collapsed', open, setOpen, openMobile, setOpenMobile, isMobile, toggleSidebar }), [open, setOpen, openMobile, isMobile, toggleSidebar]);
   return <SidebarContext.Provider value={context}><div {...props} ref={ref} data-slot="sidebar-wrapper" style={{ '--sidebar-width': '16rem', '--sidebar-width-icon': '3rem', ...style }} className={join('ef-sidebar-provider', className)}>{children}</div></SidebarContext.Provider>;
 });
@@ -94,10 +99,13 @@ const FOCUSABLE = 'a[href],button:not([disabled]),input:not([disabled]),select:n
 
 // The off-canvas sidebar on a phone covers the page behind a backdrop, so it
 // behaves as a modal dialog: focus moves in, Tab stays in, the page does not
-// scroll, and closing returns focus to whatever opened it.
+// scroll, and closing returns focus to whatever opened it. Escape goes through
+// the shared layer stack, so a menu, popover or dialog opened inside the panel
+// closes first and the panel only on the next press.
 function MobileSidebarPanel({ common, dir, label, onClose, children }) {
   const panelRef = React.useRef(null);
   useScrollLock(true);
+  const layer = useEscapeLayer(true, event => { event.preventDefault(); onClose(); });
   React.useEffect(() => {
     const previous = document.activeElement;
     const panel = panelRef.current;
@@ -105,7 +113,9 @@ function MobileSidebarPanel({ common, dir, label, onClose, children }) {
     return () => { if (previous && previous.isConnected && previous.focus) previous.focus(); };
   }, []);
   const keydown = event => {
-    if (event.key !== 'Tab') return;
+    if (event.key !== 'Tab' || event.defaultPrevented) return;
+    // focus inside a portaled child layer (a popover) is that layer's business
+    if (layer.children > 0 && !panelRef.current?.contains(document.activeElement)) return;
     const items = Array.from(panelRef.current?.querySelectorAll(FOCUSABLE) || []);
     if (!items.length) { event.preventDefault(); return; }
     const index = items.indexOf(document.activeElement);
@@ -114,7 +124,7 @@ function MobileSidebarPanel({ common, dir, label, onClose, children }) {
   };
   return <>
     <button type="button" className="ef-sidebar-mobile-backdrop" aria-label="Close sidebar" tabIndex={-1} onClick={onClose} />
-    <aside {...common} ref={panelRef} dir={dir} data-mobile="true" role="dialog" aria-modal="true" aria-label={label} tabIndex={-1} className="ef-sidebar-mobile" onKeyDown={keydown}>{children}</aside>
+    <aside {...common} ref={panelRef} dir={dir} data-mobile="true" role="dialog" aria-modal="true" aria-label={label} tabIndex={-1} className="ef-sidebar-mobile" onKeyDown={keydown}><escapeLayerContext.Provider value={layer}>{children}</escapeLayerContext.Provider></aside>
   </>;
 }
 
