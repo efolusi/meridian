@@ -5,8 +5,8 @@ const CSS = `
 .ef-tree{display:flex;flex-direction:column;gap:1px;font-size:var(--text-sm)}
 .ef-tree__row{display:flex;align-items:center;gap:7px;height:30px;padding:0 8px;border:none;border-radius:var(--radius-sm);background:none;cursor:pointer;text-align:start;font-family:var(--font-sans);font-size:var(--text-sm);color:var(--text-secondary);width:100%;transition:background var(--dur-fast) var(--ease-out),color var(--dur-fast) var(--ease-out)}
 .ef-tree__row:hover{background:var(--surface-sunken);color:var(--text-primary)}
-.ef-tree__row--sel{background:var(--accent-subtle);color:var(--brand-700);font-weight:var(--weight-semibold)}
-.ef-tree__row--sel:hover{background:var(--accent-subtle);color:var(--brand-700)}
+.ef-tree__row--sel{background:var(--accent-subtle);color:var(--accent-subtle-fg, var(--brand-700));font-weight:var(--weight-semibold)}
+.ef-tree__row--sel:hover{background:var(--accent-subtle);color:var(--accent-subtle-fg, var(--brand-700))}
 .ef-tree__row:focus-visible{outline:none;box-shadow:var(--focus-ring)}
 .ef-tree__chev{display:inline-flex;color:var(--text-muted);transition:transform var(--dur-fast) var(--ease-out);flex:none}
 .ef-tree__chev--open{transform:rotate(90deg)}

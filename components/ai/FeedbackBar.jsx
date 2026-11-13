@@ -6,7 +6,7 @@ const CSS = `
 .ef-feedback__btn{display:inline-flex;align-items:center;justify-content:center;width:26px;height:26px;border:none;border-radius:var(--radius-sm);background:none;cursor:pointer;color:var(--text-muted);transition:color var(--dur-fast) var(--ease-out),background var(--dur-fast) var(--ease-out)}
 .ef-feedback__btn:hover{color:var(--text-primary);background:var(--surface-sunken)}
 .ef-feedback__btn:focus-visible{outline:none;box-shadow:var(--focus-ring)}
-.ef-feedback__btn--on{color:var(--brand-700);background:var(--accent-subtle)}
+.ef-feedback__btn--on{color:var(--accent-subtle-fg, var(--brand-700));background:var(--accent-subtle)}
 .ef-feedback__sep{width:1px;height:14px;background:var(--border-default);margin:0 5px}
 .ef-feedback__note{font-size:11.5px;color:var(--text-muted);margin-inline-start:6px}
 @media (pointer:coarse){.ef-feedback__btn{min-width:var(--tap-min);min-height:var(--tap-min)}}

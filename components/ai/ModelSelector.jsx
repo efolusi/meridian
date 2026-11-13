@@ -17,7 +17,7 @@ const CSS = `
 .ef-modelsel__item:focus-visible{outline:none;box-shadow:var(--focus-ring)}
 .ef-modelsel__name{font-size:13.5px;font-weight:500;color:var(--text-primary)}
 .ef-modelsel__hint{font-size:12px;color:var(--text-muted);margin-top:1px}
-.ef-modelsel__badge{margin-inline-start:auto;flex:none;font-size:10.5px;font-weight:600;letter-spacing:.04em;text-transform:uppercase;color:var(--brand-700);background:var(--accent-subtle);border-radius:var(--radius-sm);padding:2px 6px}
+.ef-modelsel__badge{margin-inline-start:auto;flex:none;font-size:10.5px;font-weight:600;letter-spacing:.04em;text-transform:uppercase;color:var(--accent-subtle-fg, var(--brand-700));background:var(--accent-subtle);border-radius:var(--radius-sm);padding:2px 6px}
 .ef-modelsel__check{margin-inline-start:auto;flex:none;display:inline-flex;color:var(--brand-700)}
 .ef-modelsel__badge+.ef-modelsel__check{margin-inline-start:8px}
 @media (pointer:coarse){.ef-modelsel__btn{min-height:var(--tap-min)}}
