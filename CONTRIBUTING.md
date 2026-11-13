@@ -4,7 +4,7 @@ Meridian is MIT-licensed and open to contributions. Pages are plain HTML, CSS an
 
 ## Read this first if you are changing a component
 
-`_ds_bundle.js` is a **compiled artifact**. Every `components/**/*.jsx` and `showcases/**/*.jsx` file is compiled into it, and pages load the bundle rather than your `.jsx`, so **editing a component source alone changes nothing at runtime until you rebuild.**
+`_ds_bundle.js` is a **compiled artifact**. Every `components/**/*.jsx` file is compiled into it, and pages load the bundle rather than your `.jsx`, so **editing a component source alone changes nothing at runtime until you rebuild.** Showcases are not in the bundle: each `showcases/<app>/index.html` compiles its own `.jsx` in the browser, so a showcase edit needs no rebuild.
 
 Rebuilding takes one command:
 
