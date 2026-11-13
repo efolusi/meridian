@@ -41,7 +41,7 @@ describe('mobile sidebar is a modal dialog', () => {
     await user.tab();
     await user.tab();
     expect(dialog.contains(document.activeElement)).toBe(true);
-    fireEvent.keyDown(window, { key: 'Escape' });
+    fireEvent.keyDown(document.activeElement, { key: 'Escape' });
     expect(screen.queryByRole('dialog')).toBeNull();
     expect(document.activeElement).toBe(trigger);
     expect(document.body.style.overflow).toBe('');
