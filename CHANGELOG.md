@@ -2,6 +2,8 @@
 
 ## Unreleased
 
+## 1.22.0 — 2026-11-13
+
 - **Form controls have visible edges.** New `--border-control` token (at least 3:1 against field and card surfaces in both themes) is used by every input, select, checkbox, radio, switch and file drop edge. New `--accent-subtle-fg` keeps text on `--accent-subtle` at 4.5:1 in dark mode.
 - **Keyboard focus is visible in every list.** Select, Combobox and TimePicker options, menu items, Command options and NavigationMenu links draw an inset focus ring instead of a faint tint.
 - **Touch targets reach 44px across components** under `(pointer: coarse)`: Calendar days, steppers, chip remove, password reveal, Toggle, small buttons, menu items, table controls and more. Mouse layouts are unchanged.
@@ -29,6 +31,10 @@
 - **Touch targets reach 44px** on SegmentedControl, the CodeBlock copy button, the docs site and the starter page chrome.
 - **The docs site has a skip link and switches language live**; Blocks, Examples, Charts, Themes and Colors are translated into Indonesian.
 - **Showcase toasts work again, every example page declares its language and has a title, and copied-out starters no longer show a broken logo.**
+
+## 1.21.10 — 2026-10-12
+
+- **`Alert`: the action never covers the text.** `AlertAction` was absolutely positioned with only 96px reserved on the right, so any action wider than that (every real one: "Send the link again", "I have read and accept") sat on top of the description, and on phones it covered half of it. The action is now a grid column beside the text and, below 560px, a full-width row under it. Measured on My Efolusi's account page at 375, 768 and 1440px: description and action rectangles no longer intersect (before: the action covered 66x20px of the verify-email text and 90x20px of the consent text at 375px, 66x12 and 90x12 at 768px; after: 0, and the phone action is 299x44px, full width).
 
 ## 1.21.9 — 2026-09-19
 
