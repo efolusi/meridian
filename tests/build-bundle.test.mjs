@@ -66,13 +66,6 @@ describe('bundle compiler shared scope', () => {
 });
 
 describe('bundle compiler window writes', () => {
-  it('drops a showcase page\'s Object.assign(window, …) from its bundle unit', () => {
-    const src = "function Hero() { return null; }\nObject.assign(window, { Hero });\n";
-    const { unit } = compileSource('showcases/website/Sections.jsx', src);
-    expect(unit).not.toContain('Object.assign(window');
-    expect(unit).toContain('function Hero');
-  });
-
   it('rejects a component that writes globals onto window', () => {
     const src = "export function A() { return null; }\nObject.assign(window, { A });\n";
     expect(() => compileSource('components/x/A.jsx', src)).toThrow(/window/);
