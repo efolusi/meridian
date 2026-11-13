@@ -8,3 +8,4 @@ Copyable support-operations journey: triage queue → ticket catalogue → incid
 
 Copy this whole folder, then change the single `base` line in `ds-base.js` to point at your Meridian root.
 
+Sibling journeys: none. Every link stays inside this folder, so it can be copied alone.

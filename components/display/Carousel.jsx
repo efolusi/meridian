@@ -22,6 +22,7 @@ const CSS = `
 .ef-carousel__nav--next{inset-inline-end:-14px;top:50%;transform:translateY(-50%)}
 .ef-carousel[data-orientation="vertical"]>.ef-carousel__nav--previous{inset-inline-start:50%;inset-block-start:-14px;top:auto;transform:translateX(-50%)}
 .ef-carousel[data-orientation="vertical"]>.ef-carousel__nav--next{inset-inline-end:auto;inset-inline-start:50%;inset-block-end:-14px;top:auto;transform:translateX(-50%)}
+@media (pointer:coarse){.ef-carousel__nav{min-width:var(--tap-min);min-height:var(--tap-min)}}
 `;
 
 const CarouselCtx = React.createContext(null);

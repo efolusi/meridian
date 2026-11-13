@@ -43,14 +43,19 @@ describe('meridian MCP server', () => {
       const result = await client.callTool({ name: 'get_tokens', arguments: { group } });
       expect(result.isError, group).toBe(true);
       expect(text(result), group).toMatch(/groups:/);
+      expect(text(result), group).not.toMatch(/\$extensions/);
     }
   });
 
   it('describes get_tokens as what tokens.json holds', async () => {
     const tokens = JSON.parse(fs.readFileSync(path.join(ROOT, 'tokens.json'), 'utf8'));
     const tool = (await client.listTools()).tools.find(t => t.name === 'get_tokens');
-    // build_tokens.py reads only each file's first :root block: the light, default-density values.
-    expect(tool.description).not.toMatch(/dark and compact/);
+    // $value is light at default density; dark, compact and coarse-pointer
+    // values are DTCG $extensions modes, and references are {group.leaf} aliases.
+    const modes = Object.keys(tokens.$extensions['com.efolusi.meridian'].modes);
+    for (const mode of modes) expect(tool.description, mode).toMatch(new RegExp(`\\b${mode}\\b`));
+    expect(tool.description).toMatch(/\{group\.leaf\}/);
+    expect(tool.description).not.toMatch(/var\(--name\)/);
     const suggested = [...tool.inputSchema.properties.group.description.matchAll(/"([^"]+)"/g)].map(m => m[1]);
     expect(suggested.length).toBeGreaterThan(0);
     for (const group of suggested) expect(Object.hasOwn(tokens, group), group).toBe(true);

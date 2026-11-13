@@ -7,8 +7,8 @@ const CSS = `
 .ef-field__label{font-size:var(--text-sm);font-weight:var(--weight-semibold);color:var(--text-primary)}
 .ef-field__hint{font-size:var(--text-xs);color:var(--text-muted)}
 .ef-field__error{font-size:var(--text-xs);color:var(--danger-600);display:flex;align-items:center;gap:4px}
-.ef-number{display:flex;align-items:stretch;overflow:hidden;border:1px solid var(--border-strong);border-radius:var(--radius-sm);background:var(--surface-sunken);transition:border-color var(--dur-fast) var(--ease-out),box-shadow var(--dur-fast) var(--ease-out)}
-.ef-number:hover:not(.ef-number--disabled){border-color:var(--sand-400)}
+.ef-number{display:flex;align-items:stretch;overflow:hidden;border:1px solid var(--border-control,var(--border-strong));border-radius:var(--radius-sm);background:var(--surface-sunken);transition:border-color var(--dur-fast) var(--ease-out),box-shadow var(--dur-fast) var(--ease-out)}
+.ef-number:hover:not(.ef-number--disabled){border-color:var(--border-control-hover,var(--sand-400))}
 .ef-number:focus-within{border-color:var(--accent);box-shadow:var(--focus-ring)}
 .ef-number.ef-number--invalid{border-color:var(--danger-600)}
 .ef-number.ef-number--invalid:focus-within{box-shadow:var(--focus-ring-danger)}
@@ -28,6 +28,8 @@ const CSS = `
 .ef-number__step+.ef-number__step{border-top:1px solid var(--border-default)}
 .ef-number--sm .ef-number__step{width:22px}
 .ef-number--lg .ef-number__step{width:28px}
+/* Touch: fixed-size targets grow to --tap-min; small glyph buttons keep their look and get a centred --tap-min hit area instead. */
+@media (pointer:coarse){.ef-number__steps{flex-direction:row}.ef-number .ef-number__step{width:var(--tap-min)}.ef-number__step+.ef-number__step{border-top:0;border-inline-start:1px solid var(--border-default)}}
 `;
 // How many decimal places a number carries, so a commit can round away float
 // noise: 0.1 + 0.2 must land as 0.3, not 0.30000000000000004.

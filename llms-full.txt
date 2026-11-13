@@ -2,7 +2,7 @@
 
 The entire design system in one file, generated from llms.txt, components/*/, and tokens/*.css by scripts/build_llms.py. Do not edit by hand. The short map of the repository is /llms.txt.
 
-> Meridian is a general-purpose open-source design system by Efolusi: 123 accessible React components, 167 design tokens (light, dark, compact), blocks, charts, and full example apps, served browser-native with zero build step. MIT licensed.
+> Meridian is a general-purpose open-source design system by Efolusi: 123 accessible React components, 170 design tokens (light, dark, compact), blocks, charts, and full example apps, served browser-native with zero build step. MIT licensed.
 
 Live docs: https://meridian.efolusi.com · Source: https://github.com/efolusi/meridian · License: MIT
 
@@ -1041,8 +1041,10 @@ export interface UsageMeterProps extends React.HTMLAttributes<HTMLDivElement> {
   warnAt?: number;
   /** Count the figure and bar up on mount/change */
   animated?: boolean;
-  /** Figure formatter @default toLocaleString */
+  /** Figure formatter @default Intl.NumberFormat(locale), whole numbers */
   format?: (v: number) => string;
+  /** BCP 47 locale for number formatting (fixed default keeps server and browser output identical) @default 'en-US' */
+  locale?: string;
   style?: React.CSSProperties;
   className?: string;
 }
@@ -1356,6 +1358,10 @@ export interface BarChartProps {
   labels?: string[];
   /** Hover value formatter */
   format?: (v: number) => string;
+  /** BCP 47 locale for number formatting (fixed default keeps server and browser output identical) @default 'en-US' */
+  locale?: string;
+  /** Accessible name for the chart (role=img); defaults to a summary of the series. A visually hidden table carries every value. */
+  'aria-label'?: string;
   style?: React.CSSProperties;
   className?: string;
 }
@@ -1394,7 +1400,7 @@ export interface ChartContainerProps extends React.HTMLAttributes<HTMLDivElement
 export declare const ChartContainer: React.ForwardRefExoticComponent<ChartContainerProps & React.RefAttributes<HTMLDivElement>>;
 export declare function ChartStyle(props: { id: string; config: ChartConfig }): React.JSX.Element | null;
 export declare function ChartTooltip(props: TooltipProps<any, any>): React.JSX.Element | null;
-export interface ChartTooltipContentProps extends Omit<DefaultTooltipContentProps<TooltipValueType, string | number>, 'accessibilityLayer'> { active?: boolean; className?: string; hideLabel?: boolean; hideIndicator?: boolean; indicator?: 'line' | 'dot' | 'dashed'; nameKey?: string; labelKey?: string; color?: string }
+export interface ChartTooltipContentProps extends Omit<DefaultTooltipContentProps<TooltipValueType, string | number>, 'accessibilityLayer'> { active?: boolean; className?: string; hideLabel?: boolean; hideIndicator?: boolean; indicator?: 'line' | 'dot' | 'dashed'; nameKey?: string; labelKey?: string; color?: string; /** Number formatting locale @default 'en-US' */ locale?: string }
 export declare function ChartTooltipContent(props: ChartTooltipContentProps): React.JSX.Element | null;
 export declare function ChartLegend(props: LegendProps): React.JSX.Element | null;
 export interface ChartLegendContentProps extends DefaultLegendContentProps { className?: string; hideIcon?: boolean; nameKey?: string }
@@ -1427,6 +1433,10 @@ export interface DonutChartProps {
   centerValue?: React.ReactNode;
   /** Hover value formatter */
   format?: (value: number) => string;
+  /** BCP 47 locale for number formatting (fixed default keeps server and browser output identical) @default 'en-US' */
+  locale?: string;
+  /** Accessible name for the chart (role=img); defaults to a summary of the series. A visually hidden table carries every value. */
+  'aria-label'?: string;
   style?: React.CSSProperties;
   className?: string;
 }
@@ -1513,6 +1523,10 @@ export interface LineChartProps {
   showDots?: boolean;
   /** Tooltip value formatter */
   format?: (value: number) => string;
+  /** BCP 47 locale for number formatting (fixed default keeps server and browser output identical) @default 'en-US' */
+  locale?: string;
+  /** Accessible name for the chart (role=img); defaults to a summary of the series. A visually hidden table carries every value. */
+  'aria-label'?: string;
   style?: React.CSSProperties;
   className?: string;
 }
@@ -1686,6 +1700,7 @@ export interface TableProps extends React.TableHTMLAttributes<HTMLTableElement> 
   rows?: any[];
   /** Field name or fn for React keys @default index */
   rowKey?: string | ((row: any) => string);
+  /** Makes rows clickable and focusable (tabIndex 0); Enter or Space on a focused row also calls it. */
   onRowClick?: (row: any) => void;
   dense?: boolean;
   /** Controlled sort. Omit and the table sorts itself. */
@@ -2857,13 +2872,20 @@ Group: files · Source: /components/files/FileDrop.jsx · Exports: FileDrop
 Dashed dropzone: click or drag, with an ink border on hover/dragover.
 
 ```jsx
-<FileDrop accept="image/*,video/*,.pdf" hint="PNG, MP4, PDF, up to 2 GB" onFiles={enqueue} />
+<FileDrop accept="image/*,video/*,.pdf" maxSize={2 * 1024 ** 3} hint="PNG, MP4, PDF, up to 2 GB"
+  onFiles={enqueue} onReject={(files, reason) => toast(`${files.length} file(s) skipped: ${reason}`)} />
 ```
+
+`accept`, `maxSize` and `multiple` apply to both the picker and drops. Anything left out goes to `onReject(files, reason)` with reason `'type'`, `'size'` or `'count'`, so say why a file did not arrive instead of dropping it silently.
 
 ```ts
 export interface FileDropProps {
   /** Receives the dropped/picked File[] */
   onFiles?: (files: File[]) => void;
+  /** Files left out, grouped by reason: 'type' (not in accept), 'size' (over maxSize), 'count' (beyond one when multiple is false) */
+  onReject?: (files: File[], reason: 'type' | 'size' | 'count') => void;
+  /** Largest accepted file, in bytes */
+  maxSize?: number;
   /** input accept string, e.g. "image/*,.pdf". Also filters dropped files; non-matching drops are ignored. */
   accept?: string;
   /** @default true */
@@ -4087,12 +4109,13 @@ First focusable element on the page: one Tab press jumps a keyboard user past th
 <main id="main" tabIndex={-1}>…</main>
 ```
 
-The target needs `tabIndex={-1}`, or Safari and Firefox scroll without moving focus and the next Tab lands back in the navigation.
+The link moves focus to the target itself and does not change `location.hash`, so hash-based routers are not triggered. A target without a `tabindex` gets `tabIndex={-1}` on first use; setting it yourself, as above, keeps the markup explicit.
 
 ```ts
 export interface SkipLinkProps {
-  /** Target landmark; it needs tabIndex={-1} to receive focus @default '#main' */
+  /** Fragment of the target landmark. The link focuses it directly (adding tabIndex=-1 if needed) without changing location.hash. @default '#main' */
   href?: string;
+  onClick?: React.MouseEventHandler<HTMLAnchorElement>;
   children?: React.ReactNode;
   style?: React.CSSProperties;
   className?: string;
@@ -4350,6 +4373,8 @@ A composable, gesture-dismissable surface for mobile details and short workflows
 
 Set `direction` on `Drawer`; bottom is the default and displays a drag handle. Set `dismissible={false}` for a decision that must be completed explicitly. Use Sheet for a non-gesture desktop side panel.
 
+`modal` is deprecated and ignored: a Drawer is always modal (scrim, focus trap, scroll lock). Passing `modal={false}` logs a development warning; the prop will be removed in the next major version.
+
 ```ts
 import type * as React from 'react';
 
@@ -4360,6 +4385,7 @@ export interface DrawerProps {
   onOpenChange?: (open: boolean) => void;
   direction?: DrawerDirection;
   dismissible?: boolean;
+  /** @deprecated Ignored: a Drawer is always modal. Passing `false` logs a development warning; the prop will be removed in the next major version. */
   modal?: boolean;
   handleOnly?: boolean;
   children?: React.ReactNode;
@@ -4589,7 +4615,7 @@ export declare const SheetDescription: React.ForwardRefExoticComponent<DialogSlo
 
 ## Design tokens
 
-167 custom property names by file (names only; resolve current values from /styles.css, which imports these files, or /tokens.json):
+170 custom property names by file (names only; resolve current values from /styles.css, which imports these files, or /tokens.json):
 
 ### /tokens/base.css
 
@@ -4603,7 +4629,10 @@ export declare const SheetDescription: React.ForwardRefExoticComponent<DialogSlo
 --accent-hover
 --accent-subtle
 --accent-subtle-border
+--accent-subtle-fg
 --border-code
+--border-control
+--border-control-hover
 --border-default
 --border-inverse
 --border-strong

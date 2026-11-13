@@ -35,7 +35,7 @@ function Block() {
         <Input aria-label="Workspace name" defaultValue="Acme Ops" />
       </Row>
       <Row title="Workspace URL" desc="Changing this breaks existing links.">
-        <InputGroup><InputGroupInput aria-label="Workspace URL" defaultValue="acme" /><InputGroupAddon><InputGroupText>https://</InputGroupText></InputGroupAddon><InputGroupAddon align="inline-end"><InputGroupText>.efolusi.com</InputGroupText></InputGroupAddon></InputGroup>
+        <InputGroup><InputGroupInput aria-label="Workspace URL" defaultValue="acme" /><InputGroupAddon><InputGroupText>https://</InputGroupText></InputGroupAddon><InputGroupAddon align="inline-end"><InputGroupText>.fernwick.example</InputGroupText></InputGroupAddon></InputGroup>
       </Row>
       <Row title="Default region" desc="Where new agents run and data lives.">
         <NativeSelect defaultValue="eu-west-1" aria-label="Default region">{['us-east-1', 'eu-west-1', 'ap-southeast-1'].map(value => <NativeSelectOption key={value} value={value}>{value}</NativeSelectOption>)}</NativeSelect>

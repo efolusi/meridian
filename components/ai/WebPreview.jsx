@@ -24,6 +24,7 @@ const CSS = `
 .ef-webprev__log--error{color:var(--danger-600)}
 .ef-webprev__logicon{display:inline-flex;flex:none;margin-top:2px}
 .ef-webprev__badge{position:absolute;top:3px;inset-inline-end:3px;min-width:14px;height:14px;padding:0 4px;border-radius:var(--radius-full);background:var(--danger-600);color:var(--danger-contrast);font-size:9.5px;font-weight:var(--weight-semibold);display:inline-flex;align-items:center;justify-content:center;font-family:var(--font-sans)}
+@media (pointer:coarse){.ef-webprev__btn{min-width:var(--tap-min);min-height:var(--tap-min)}}
 `;
 // Model-supplied URL: only http(s), mailto and relative pass (see Citation.jsx).
 function safeUrl(url) {

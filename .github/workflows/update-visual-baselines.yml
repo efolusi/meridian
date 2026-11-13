@@ -10,13 +10,15 @@ on:
   workflow_dispatch:
 
 permissions:
-  contents: write
-  pull-requests: write
+  contents: read
 
 jobs:
   baselines:
     runs-on: [self-hosted, Linux, X64, efolusi-dev]
     timeout-minutes: 30
+    permissions:
+      contents: write # pushes the baseline branch
+      pull-requests: write
     env:
       # Browsers and their system libs come from the Playwright image: the
       # self-hosted runner user has no sudo, so `install --with-deps` cannot
@@ -46,7 +48,7 @@ jobs:
 
       - name: Capture group screenshots
         run: |
-          python3 -m http.server 8000 --bind 127.0.0.1 &
+          python3 scripts/serve_static.py 8000 127.0.0.1 &
           SERVER=$!
           for i in $(seq 1 20); do curl -sf http://127.0.0.1:8000/site/_smoke.html >/dev/null && break || sleep 0.5; done
           set +e

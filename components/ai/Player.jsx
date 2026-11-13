@@ -19,6 +19,7 @@ const CSS = `
 .ef-player__play{width:38px;height:38px;background:var(--accent);color:var(--accent-contrast)}
 .ef-player__play:hover{background:var(--accent-hover);color:var(--accent-contrast)}
 .ef-player__time{font-size:12px;color:var(--text-muted);font-variant-numeric:tabular-nums}
+@media (pointer:coarse){.ef-player__btn{min-width:var(--tap-min);min-height:var(--tap-min)}}
 `;
 export function formatTime(s, hint) {
   const t = Math.max(0, Math.floor(s || 0));

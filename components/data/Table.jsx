@@ -15,6 +15,7 @@ const CSS = `
 .ef-table--dense td{padding:8px var(--table-pad-x);font-size:var(--text-sm)}
 .ef-table__row--click{cursor:pointer;transition:background var(--dur-fast) var(--ease-out)}
 .ef-table__row--click:hover{background:var(--surface-subtle)}
+.ef-table__row--click:focus-visible{outline:2px solid var(--focus-ring-color);outline-offset:-2px}
 .ef-table__row--sel{background:var(--accent-subtle)}
 .ef-table .ef-num{font-family:var(--font-mono);font-size:13px}
 .ef-table__sort{display:inline-flex;align-items:center;gap:4px;border:none;background:none;padding:0;margin:0;font:inherit;letter-spacing:inherit;text-transform:inherit;color:inherit;cursor:pointer}
@@ -44,15 +45,8 @@ export const Table = React.forwardRef(function Table({
   style, className, ...rest
 }, ref) {
   injectEfCss('ef-css-table', CSS);
-  if (!columns || !rows) {
-    return <div data-slot="table-container" className="ef-table-wrap">
-      <table ref={ref} {...rest} data-slot="table" className={`ef-table${dense ? ' ef-table--dense' : ''}${className ? ' ' + className : ''}`} style={style}>{children}</table>
-    </div>;
-  }
-  // Without rowKey the key is the row's index in `rows`, not its sorted
-  // position, so a selection stays on the same row when the sort changes.
-  const order = React.useMemo(() => new Map(rows.map((row, i) => [row, i])), [rows]);
-  const key = (row, i) => rowKey ? (typeof rowKey === 'function' ? rowKey(row) : row[rowKey]) : order.has(row) ? order.get(row) : i;
+  // Hooks first: the composition branch below returns early, and hooks after
+  // it would drop sort and selection state whenever a table passes through it.
 
   const [innerSort, setInnerSort] = React.useState(defaultSort || null);
   const sort = sortProp !== undefined ? sortProp : innerSort;
@@ -74,16 +68,27 @@ export const Table = React.forwardRef(function Table({
 
   // Sorting is applied here, not expected of the caller: a table that renders
   // a sort affordance it does not honour is worse than one with no affordance.
-  const sorted = React.useMemo(() => {
-    if (!sort || !sort.key) return rows;
+  // Sort positions, not row objects: without rowKey a row's key is its index in
+  // `rows`, so a selection stays on the same row when the sort changes, and a
+  // row object listed twice still gets two keys.
+  const order = React.useMemo(() => {
+    const idx = (rows || []).map((_, i) => i);
+    if (!rows || !columns || !sort || !sort.key) return idx;
     const col = columns.find(c => c.key === sort.key);
-    if (!col) return rows;
+    if (!col) return idx;
     const get = col.sortAccessor || (row => row[col.key]);
     // Negate rather than reverse, so rows with equal keys keep their order.
     const sign = sort.direction === 'desc' ? -1 : 1;
-    return rows.slice().sort((x, y) => sign * compare(get(x), get(y)));
+    return idx.sort((x, y) => sign * compare(get(rows[x]), get(rows[y])));
   }, [rows, columns, sort]);
+  const sorted = rows ? order.map(i => rows[i]) : rows;
+  const key = (row, pos) => rowKey ? (typeof rowKey === 'function' ? rowKey(row) : row[rowKey]) : order[pos];
 
+  if (!columns || !rows) {
+    return <div data-slot="table-container" className="ef-table-wrap">
+      <table ref={ref} {...rest} data-slot="table" className={`ef-table${dense ? ' ef-table--dense' : ''}${className ? ' ' + className : ''}`} style={style}>{children}</table>
+    </div>;
+  }
   const allKeys = sorted.map((r, i) => key(r, i));
   const allOn = allKeys.length > 0 && allKeys.every(k => selected.includes(k));
   const someOn = !allOn && allKeys.some(k => selected.includes(k));
@@ -137,7 +142,14 @@ export const Table = React.forwardRef(function Table({
                   return (
                     <tr key={k}
                       className={`${onRowClick ? 'ef-table__row--click' : ''}${isSel ? ' ef-table__row--sel' : ''}`.trim() || undefined}
-                      onClick={onRowClick ? () => onRowClick(row) : undefined}>
+                      onClick={onRowClick ? () => onRowClick(row) : undefined}
+                      tabIndex={onRowClick ? 0 : undefined}
+                      onKeyDown={onRowClick ? e => {
+                        // Only the row itself: Enter on a button or link inside it is that control's.
+                        if (e.target !== e.currentTarget || (e.key !== 'Enter' && e.key !== ' ')) return;
+                        e.preventDefault();
+                        onRowClick(row);
+                      } : undefined}>
                       {selectable ? (
                         <td className="ef-table__sel" onClick={e => e.stopPropagation()}>
                           <Checkbox aria-label={`Select row ${i + 1}`} checked={!!isSel}

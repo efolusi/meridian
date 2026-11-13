@@ -49,7 +49,7 @@ function TaskRail({ running }) {
         <CardHeader><CardTitle>Run</CardTitle></CardHeader>
         <CardContent><div style={{ marginBottom: 8 }}><StatusDot status={running ? 'busy' : 'off'} pulse={running} label={running ? 'Agent active' : 'Paused by you'} /></div>
         <KeyValueList labelWidth={88} items={[
-          { label: 'Model', value: 'efolusi-1' },
+          { label: 'Model', value: 'fernwick-1' },
           { label: 'Tokens', value: '48.1k', mono: true },
           { label: 'Cost', value: '$0.42', mono: true },
           { label: 'Started', value: '14:02', mono: true },

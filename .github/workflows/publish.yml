@@ -106,22 +106,20 @@ jobs:
           echo "go=$GO" >> "$GITHUB_OUTPUT"
           [ "$GO" = true ] || echo "all lockstep packages already at $VERSION — nothing to release."
 
-  publish:
+  # Everything that runs repository or dependency code: install, gates, pack.
+  # Read-only token, no OIDC identity, so a compromised devDependency cannot
+  # publish or push.
+  build:
     needs: decide
     if: needs.decide.outputs.go == 'true'
-    # GitHub-hosted on purpose: npm Trusted Publishing (OIDC) does not support self-hosted runners.
     runs-on: ubuntu-latest
     timeout-minutes: 30
-    # Gives the publish a reviewable gate in repo settings, and scopes the OIDC
-    # claim. Must match the Environment named in the trusted publisher config.
-    environment: npm-publish
     permissions:
-      contents: write # the auto path pushes the tag and creates the Release
+      contents: read
       actions: read # require the exact-SHA checks workflow before immutable publish
-      id-token: write # required for OIDC; without it npm cannot verify the workflow
-
+    outputs:
+      version: ${{ steps.pack.outputs.version }}
     steps:
-      # npm ci and the gates run third-party code here; only the Release step gets the token.
       - uses: actions/checkout@fbc6f3992d24b796d5a048ff273f7fcc4a7b6c09 # v5.1.0
         with:
           persist-credentials: false
@@ -129,7 +127,6 @@ jobs:
       - uses: actions/setup-node@a0853c24544627f65ddf259abe73b1d18a591444 # v5.0.0
         with:
           node-version: '22.23.2'
-          registry-url: 'https://registry.npmjs.org'
 
       - name: Require successful exact-SHA checks before publish
         if: github.event_name == 'push'
@@ -137,26 +134,17 @@ jobs:
           GITHUB_TOKEN: ${{ github.token }}
         run: node scripts/require_successful_checks.mjs
 
-      # Trusted publishing needs npm 11.5.1 or newer; node 22 still bundles 10.x.
-      # Exact version: this job can mint an npm publish identity.
-      - name: Use an npm that understands trusted publishing
-        run: |
-          npm install -g npm@11.21.1
-          npm --version
-
       - name: Install
         run: npm ci --no-audit --no-fund
 
       # A package that cannot pass its own checks has no business on a registry,
       # and a bad version cannot be unpublished after 72 hours. check_all.mjs is
-      # the single source of the gate list (it also builds dist/); keeping a
-      # second hand-maintained list here is how publish and CI drift apart.
+      # the single gate list, and it also builds every dist/.
       - name: Gates, tests, build and package validation
         run: npm run check
 
       # The tag is the release's claim about what this is; the manifest is what
-      # actually got built. If they disagree, the wrong thing is about to ship
-      # under a name people will pin.
+      # actually got built.
       - name: Tag and package version must agree
         if: github.event_name == 'release'
         env:
@@ -171,9 +159,7 @@ jobs:
             exit 1
           fi
 
-      # A manual non-dry publish must still be anchored to a tag: an untagged
-      # tree reaching the registry means a version nobody can check out later.
-      # (The push path creates its tag itself, after the publish succeeds.)
+      # A manual non-dry publish must be anchored to a tag nobody can lose.
       - name: Non-dry dispatch requires the matching tag at HEAD
         if: github.event_name == 'workflow_dispatch' && inputs.dry_run == false
         run: |
@@ -191,15 +177,9 @@ jobs:
           fi
           echo "tag v$PKG is at HEAD"
 
-      # Republishing an existing version fails at the registry anyway; failing
-      # here says why, instead of surfacing a bare 403. On the push path this
-      # re-checks what `decide` saw, after the slow steps — closing the race.
+      # Only an all-published run is an error ("you forgot to bump the version");
+      # a lagging sub-package is legitimate work for the idempotent publish job.
       - name: At least one package must still need publishing
-        # Monorepo-aware immutability guard. The publish step below is idempotent
-        # (already-published packages are skipped), so a run where the umbrella is
-        # already up but a sub-package lags is legitimate work, not an error. Only
-        # a run where ALL FOUR are already on the registry has nothing to do —
-        # that is the "you forgot to bump the version" case, and it hard-fails.
         run: |
           NEED=false
           for dir in dist packages/tokens/dist packages/icons/dist packages/guard/dist mcp; do
@@ -217,56 +197,105 @@ jobs:
             exit 1
           fi
 
-      - name: Pack (what would ship)
-        # The four lockstep packages (umbrella + three sub-packages, each built by
-        # npm run check above) plus the independently-versioned MCP server (mcp/,
-        # plain .mjs, no build). Its `files` field ships only server.mjs + README.
+      # The exact tarballs the publish job will upload, with their checksums.
+      # packages.tsv lists file, name and version so publish never reads the repo.
+      - name: Pack the verified packages
+        id: pack
         run: |
+          OUT="$RUNNER_TEMP/npm-packages"
+          mkdir -p "$OUT"
+          : > "$OUT/packages.tsv"
           for d in dist packages/tokens/dist packages/icons/dist packages/guard/dist mcp; do
             echo "== $d"
-            npm pack "./$d" --dry-run
+            FILE="$(npm pack "./$d" --pack-destination "$OUT" --json | node -e 'process.stdout.write(JSON.parse(require("fs").readFileSync(0, "utf8"))[0].filename)')"
+            NAME="$(node -p "require('./$d/package.json').name")"
+            VER="$(node -p "require('./$d/package.json').version")"
+            printf '%s\t%s\t%s\n' "$FILE" "$NAME" "$VER" >> "$OUT/packages.tsv"
           done
+          (cd "$OUT" && sha256sum ./*.tgz packages.tsv > SHA256SUMS)
+          cat "$OUT/packages.tsv" "$OUT/SHA256SUMS"
+          echo "version=$(node -p "require('./dist/package.json').version")" >> "$GITHUB_OUTPUT"
 
-      - name: Publish
-        if: github.event_name != 'workflow_dispatch' || inputs.dry_run == false
-        # No NODE_AUTH_TOKEN: the OIDC identity above is the credential.
-        # Provenance is attached automatically. Each publish is idempotent: a
-        # version already on the registry is skipped, so a run that failed
-        # partway (a sub-package's trusted publisher not yet set) re-runs cleanly
-        # instead of deadlocking on npm's immutability.
+      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4.6.2
+        with:
+          name: npm-packages
+          path: ${{ runner.temp }}/npm-packages
+          if-no-files-found: error
+          retention-days: 7
+
+      - name: Dry run finished
+        if: github.event_name == 'workflow_dispatch' && inputs.dry_run
+        run: echo "Dry run only. The packages above were built and verified; nothing was published."
+
+  # The only job that can mint the npm OIDC identity. It runs no repository or
+  # dependency code: it checks the tarballs against build's checksums and
+  # publishes them. Its environment must match the npm trusted publisher.
+  publish:
+    needs: build
+    if: github.event_name != 'workflow_dispatch' || inputs.dry_run == false
+    # GitHub-hosted on purpose: npm Trusted Publishing (OIDC) does not support self-hosted runners.
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    environment: npm-publish
+    permissions:
+      id-token: write
+    steps:
+      - uses: actions/setup-node@a0853c24544627f65ddf259abe73b1d18a591444 # v5.0.0
+        with:
+          node-version: '22.23.2'
+          registry-url: 'https://registry.npmjs.org'
+
+      # Trusted publishing needs npm 11.5.1 or newer; node 22 still bundles 10.x.
+      # Exact version: this job can mint an npm publish identity.
+      - name: Use an npm that understands trusted publishing
         run: |
-          publish_if_new() {
-            local dir="$1"
-            local name ver
-            name="$(node -p "require('./$dir/package.json').name")"
-            ver="$(node -p "require('./$dir/package.json').version")"
+          npm install -g npm@11.21.1
+          npm --version
+
+      - uses: actions/download-artifact@d3f86a106a0bac45b974a628896c90dbdf5c8093 # v4.3.0
+        with:
+          name: npm-packages
+          path: ${{ runner.temp }}/npm-packages
+
+      - name: Tarballs match what build verified
+        working-directory: ${{ runner.temp }}/npm-packages
+        run: sha256sum --check --strict SHA256SUMS
+
+      # No NODE_AUTH_TOKEN: the OIDC identity is the credential. Idempotent, so
+      # a run that failed partway re-runs cleanly despite npm's immutability.
+      - name: Publish
+        working-directory: ${{ runner.temp }}/npm-packages
+        run: |
+          while IFS="$(printf '\t')" read -r file name ver; do
             if npm view "$name@$ver" version >/dev/null 2>&1; then
               echo "$name@$ver already published — skipping"
             else
-              echo "publishing $name@$ver from $dir"
-              npm publish "./$dir" --access public
+              echo "publishing $name@$ver from $file"
+              npm publish "./$file" --access public --provenance
             fi
-          }
-          publish_if_new dist
-          publish_if_new packages/tokens/dist
-          publish_if_new packages/icons/dist
-          publish_if_new packages/guard/dist
-          # Independently versioned; publishes only when mcp/package.json carries a
-          # version not yet on the registry. Needs its own trusted publisher.
-          publish_if_new mcp
+          done < packages.tsv
 
-      # The auto path finishes the paperwork the human used to do. Releases
-      # created with GITHUB_TOKEN do not trigger other workflows, so this cannot
-      # re-enter the `release` path and double-publish.
-      - name: Tag and cut the GitHub Release (auto path)
-        if: github.event_name == 'push'
+  # Tag and GitHub Release for the auto path. Releases created with GITHUB_TOKEN
+  # do not trigger other workflows, so this cannot re-enter the release path.
+  release:
+    needs: [build, publish]
+    if: github.event_name == 'push'
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@fbc6f3992d24b796d5a048ff273f7fcc4a7b6c09 # v5.1.0
+        with:
+          persist-credentials: false
+
+      - name: Tag and cut the GitHub Release
         env:
           GH_TOKEN: ${{ github.token }}
+          PKG: ${{ needs.build.outputs.version }}
         run: |
-          PKG="$(node -p "require('./dist/package.json').version")"
-          # Idempotent: a run that only completes a lagging sub-package finds the
-          # tag and Release already made by the run that shipped the umbrella, so
-          # creating them again would abort the whole job. Skip when it exists.
+          # A run that only completes a lagging sub-package finds the Release
+          # already made by the run that shipped the umbrella.
           if gh release view "v$PKG" >/dev/null 2>&1; then
             echo "v$PKG release already exists — nothing to cut"
             exit 0
@@ -292,7 +321,3 @@ jobs:
             gh release create "v$PKG" --target "$GITHUB_SHA" --title "Meridian $PKG" --notes-file "$NOTES"
           fi
           echo "released v$PKG"
-
-      - name: Dry run finished
-        if: github.event_name == 'workflow_dispatch' && inputs.dry_run
-        run: echo "Dry run only. Nothing was published."

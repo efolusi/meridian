@@ -37,6 +37,12 @@ page.on('console', m => {
 page.on('response', response => {
   if (response.status() >= 400) consoleErrors.push(`HTTP ${response.status()} ${response.url()}`);
 });
+// Network failures that never produce a response (refused, aborted, blocked).
+const failedRequests = [];
+const pending = new Set();
+page.on('request', request => pending.add(request.url()));
+page.on('requestfinished', request => pending.delete(request.url()));
+page.on('requestfailed', request => { pending.delete(request.url()); failedRequests.push(`${request.failure()?.errorText || 'failed'} ${request.url()}`); });
 
 await page.goto(URL, { waitUntil: 'load', timeout: 60000 });
 // Demos compile via in-browser Babel; wait for the smoke signal to settle.
@@ -59,6 +65,19 @@ if (!result.ok) {
 if (SHOTS) {
   fs.mkdirSync(SHOTS, { recursive: true });
   await page.evaluate(() => document.fonts.ready);
+  // Icons arrive by fetch after the demos render, and on the self-hosted
+  // runner (headless Chromium 130 in Docker) some of those requests stall and
+  // never finish, on plain dev as well, so a capture sometimes has blank
+  // glyphs. Give them a chance to land, report what is still missing, and
+  // hide every glyph in the captures so baselines never depend on that race.
+  // Whether icons render is covered by the component tests, not by pixels.
+  await page.waitForLoadState('networkidle', { timeout: 30000 }).catch(() => {});
+  const blankIcons = await page.evaluate(() =>
+    [...document.querySelectorAll('section[data-group] [data-slot="icon"]')].filter(s => !s.querySelector('svg')).length);
+  if (blankIcons) {
+    console.warn(`smoke: ${blankIcons} icon slot(s) still empty (${pending.size} request(s) pending${failedRequests.length ? `, ${failedRequests.length} failed` : ''}); glyphs are hidden in the captures`);
+  }
+  await page.addStyleTag({ content: '[data-slot="icon"] > svg { visibility: hidden !important; }' });
   // The sticky summary banner paints over whichever section is scrolled under
   // it, so it was getting baked into the captures — carrying the live demo
   // count, which would churn every affected baseline whenever a demo is added.

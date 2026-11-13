@@ -14,6 +14,8 @@ const CSS = `
 .ef-pagination__previous svg,.ef-pagination__next svg{transition:transform var(--dur-fast) var(--ease-out)}
 [dir="rtl"] .ef-pagination__previous svg,[dir="rtl"] .ef-pagination__next svg{transform:scaleX(-1)}
 .ef-pagination__ellipsis{display:inline-flex;align-items:center;justify-content:center;width:36px;height:36px;color:var(--text-muted)}
+/* coarse pointers get the 44px touch target, like form controls do through --control-h-* */
+@media (pointer:coarse){.ef-pagination__link{min-width:var(--tap-min);height:var(--tap-min)}}
 `;
 
 export const Pagination = React.forwardRef(function Pagination({ className, ...props }, ref) {

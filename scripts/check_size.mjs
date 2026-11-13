@@ -1,11 +1,10 @@
 #!/usr/bin/env node
 // Fail when a built artifact grows past its recorded budget.
 //
-// The committed bundle and the npm dist/ are both byte-reproducible (there are
-// gates asserting exactly that), so their sizes are deterministic: an exact
-// ceiling is stable across machines, not flaky. A real size regression then
-// fails the build until someone runs --update and commits the new budget, which
-// turns every growth into a reviewed act instead of a silent drift.
+// The budget file records sizes; each artifact may exceed its record by
+// TOLERANCE_BYTES. An exact ceiling failed every branch on a few hundred bytes
+// of ordinary growth and made parallel branches conflict on the budget file.
+// Growth past the tolerance still fails until someone runs --update and commits.
 //
 // Raw bytes only. Gzip size depends on the tool and level, so it is reported for
 // context but never gated.
@@ -22,6 +21,7 @@ import zlib from 'node:zlib';
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const BUDGET = path.join(ROOT, 'scripts', 'size_budget.json');
+export const TOLERANCE_BYTES = 4096;
 
 function dirSize(dir) {
   let total = 0;
@@ -43,38 +43,48 @@ function measure() {
   return out;
 }
 
-const now = measure();
-
-if (process.argv.includes('--update')) {
-  fs.writeFileSync(BUDGET, JSON.stringify(now, null, 2) + '\n');
-  console.log('size budget recorded:');
-  for (const [k, v] of Object.entries(now)) console.log(`  ${k}: ${v} bytes`);
-  process.exit(0);
+/** Problems with `now` against the recorded `budget`; empty when within budget. */
+export function overBudget(now, budget, tolerance = TOLERANCE_BYTES) {
+  const over = [];
+  for (const [k, actual] of Object.entries(now)) {
+    const recorded = budget[k];
+    if (recorded == null) { over.push(`${k}: not in the budget (run --update to adopt it)`); continue; }
+    if (actual > recorded + tolerance) over.push(`${k}: ${actual} > ${recorded} + ${tolerance} bytes tolerance (+${actual - recorded})`);
+  }
+  // An artifact that vanishes from the build is a change too, not a pass.
+  for (const k of Object.keys(budget)) if (now[k] == null) over.push(`${k}: in the budget but not built`);
+  return over;
 }
 
-if (!fs.existsSync(BUDGET)) {
-  console.error('no size budget; run: node scripts/check_size.mjs --update');
-  process.exit(1);
-}
-const budget = JSON.parse(fs.readFileSync(BUDGET, 'utf8'));
+// Only measure when run as a script; tests import overBudget.
+if (process.argv[1] && path.resolve(process.argv[1]) === fileURLToPath(import.meta.url)) main();
 
-const over = [];
-for (const [k, actual] of Object.entries(now)) {
-  const ceil = budget[k];
-  if (ceil == null) { over.push(`${k}: not in the budget (run --update to adopt it)`); continue; }
-  if (actual > ceil) over.push(`${k}: ${actual} > ${ceil} bytes (+${actual - ceil})`);
-}
-// An artifact that vanishes from the build is a change too, not a pass.
-for (const k of Object.keys(budget)) if (now[k] == null) over.push(`${k}: in the budget but not built`);
+function main() {
+  const now = measure();
 
-if (over.length) {
-  console.error('size regression past budget:\n  ' + over.join('\n  '));
-  console.error('If intentional: node scripts/check_size.mjs --update, then commit scripts/size_budget.json.');
-  process.exit(1);
-}
+  if (process.argv.includes('--update')) {
+    fs.writeFileSync(BUDGET, JSON.stringify(now, null, 2) + '\n');
+    console.log('size budget recorded:');
+    for (const [k, v] of Object.entries(now)) console.log(`  ${k}: ${v} bytes`);
+    process.exit(0);
+  }
 
-const gz = zlib.gzipSync(fs.readFileSync(path.join(ROOT, '_ds_bundle.js'))).length;
-const headroom = Object.entries(now)
-  .map(([k, v]) => `${k} ${v}/${budget[k]}`)
-  .join(', ');
-console.log(`within size budget (${headroom}; bundle gzip ~${gz})`);
+  if (!fs.existsSync(BUDGET)) {
+    console.error('no size budget; run: node scripts/check_size.mjs --update');
+    process.exit(1);
+  }
+  const budget = JSON.parse(fs.readFileSync(BUDGET, 'utf8'));
+
+  const over = overBudget(now, budget);
+  if (over.length) {
+    console.error('size regression past budget:\n  ' + over.join('\n  '));
+    console.error('If intentional: node scripts/check_size.mjs --update, then commit scripts/size_budget.json.');
+    process.exit(1);
+  }
+
+  const gz = zlib.gzipSync(fs.readFileSync(path.join(ROOT, '_ds_bundle.js'))).length;
+  const headroom = Object.entries(now)
+    .map(([k, v]) => `${k} ${v}/${budget[k]}+${TOLERANCE_BYTES}`)
+    .join(', ');
+  console.log(`within size budget (${headroom}; bundle gzip ~${gz})`);
+}

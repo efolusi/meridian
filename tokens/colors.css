@@ -1,4 +1,6 @@
 :root{
+/* Native controls, scrollbars and pickers follow the theme */
+color-scheme:light;
 /* Sand — warm neutrals */
 --sand-25:#FCFBF9;--sand-50:#FAF9F6;--sand-100:#F3F1EB;--sand-200:#E7E3D9;--sand-300:#D5CFC0;--sand-400:#B4AB97;--sand-500:#948A74;--sand-600:#786E59;--sand-700:#5E5545;--sand-800:#443D32;--sand-900:#2E2922;--sand-950:#1E1A14;
 /* Brand — cream→latte→caramel→cocoa→espresso coffee ramp */
@@ -25,7 +27,8 @@
 --text-on-media:var(--sand-50);/* prompt text over imagery — stays light in both themes */--text-on-media-muted:rgba(250,249,246,.75);/* status line over imagery */
 --text-primary:var(--sand-950);--text-secondary:var(--sand-700);--text-muted:#746A55;/* between sand-600/700: ≥4.5:1 on page, card, and sunken */--text-inverse:var(--sand-50);--text-inverse-muted:rgba(250,249,246,.6);/* dim ink on --surface-inverse (toast close button); remapped in dark where the inverse surface flips light */--text-link:var(--brand-700);--text-link-hover:var(--brand-900);
 --border-default:var(--sand-200);--border-strong:var(--sand-300);--border-inverse:rgba(250,249,246,.18);
---accent:var(--brand-950);--accent-hover:#1D0E04;--accent-active:#120801;--accent-subtle:var(--brand-50);--accent-subtle-border:var(--brand-200);--accent-contrast:#FFFFFF;
+--border-control:var(--sand-500);--border-control-hover:var(--sand-700);/* form-control edge (Input, Select, Radio…) — ≥3:1 on page, card, sunken and subtle (WCAG 1.4.11); border-default/strong stay for decorative dividers */
+--accent:var(--brand-950);--accent-hover:#1D0E04;--accent-active:#120801;--accent-subtle:var(--brand-50);--accent-subtle-border:var(--brand-200);--accent-contrast:#FFFFFF;--accent-subtle-fg:var(--brand-700);/* text and icons on --accent-subtle — ≥4.5:1 */
 --danger-contrast:#FFFFFF;/* label on a solid --danger-600 fill; flips in dark where the red lightens */--success-contrast:#FFFFFF;--warning-contrast:#FFFFFF;/* same contract as --danger-contrast, for the green and amber fills */
 /* Focus ring — opaque, two-layer. The inner offset ring is surface-coloured so the
    indicator never sits directly against a control fill; the outer ring only ever needs
@@ -36,10 +39,11 @@
 }
 /* Dark theme — semantic remap only; ramps stay fixed */
 [data-theme="dark"]{
+color-scheme:dark;
 --surface-page:#191512;--surface-card:#211C17;--surface-sunken:#2A251E;--surface-subtle:#1D1814;--surface-inverse:var(--sand-50);--surface-brand:var(--brand-950);
 --text-primary:#F3EFE7;--text-secondary:#C9C0B2;--text-muted:#9C9280;--text-inverse:var(--sand-950);--text-inverse-muted:rgba(30,26,20,.55);--text-link:var(--brand-400);--text-link-hover:var(--brand-300);
---border-default:#332C24;--border-strong:#453C31;--border-inverse:rgba(30,26,20,.2);
---accent:#F3EFE7;--accent-hover:#FFFFFF;--accent-active:#D5CFC0;--accent-subtle:#2A2119;--accent-subtle-border:#453728;--accent-contrast:#1E1A14;
+--border-default:#332C24;--border-strong:#453C31;--border-inverse:rgba(30,26,20,.2);--border-control:var(--sand-600);--border-control-hover:var(--sand-400);
+--accent:#F3EFE7;--accent-hover:#FFFFFF;--accent-active:#D5CFC0;--accent-subtle:#2A2119;--accent-subtle-border:#453728;--accent-contrast:#1E1A14;--accent-subtle-fg:var(--brand-400);
 --success-600:#5FB86E;--success-100:#1C2B1F;--success-300:#2E4A34;
 --warning-100:#2E2413;--warning-300:#4A3A1D;--warning-600:#D9822B;
 --danger-100:#321B18;--danger-300:#54291F;--danger-600:#E85D4A;--danger-700:#F47765;/* hover fill must retain contrast with dark-mode danger ink */--danger-contrast:#1E1A14;--success-contrast:#1E1A14;--warning-contrast:#1E1A14;

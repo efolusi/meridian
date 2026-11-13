@@ -20,3 +20,5 @@ A composable, gesture-dismissable surface for mobile details and short workflows
 ```
 
 Set `direction` on `Drawer`; bottom is the default and displays a drag handle. Set `dismissible={false}` for a decision that must be completed explicitly. Use Sheet for a non-gesture desktop side panel.
+
+`modal` is deprecated and ignored: a Drawer is always modal (scrim, focus trap, scroll lock). Passing `modal={false}` logs a development warning; the prop will be removed in the next major version.

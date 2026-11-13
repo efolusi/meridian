@@ -1,4 +1,4 @@
-/* @ds-bundle: {"format":4,"namespace":"EfolusiDesignSystem_4ffc3d","components":[{"name":"AgentRun","sourcePath":"components/ai/AgentRun.jsx"},{"name":"BubbleGroup","sourcePath":"components/ai/Bubble.jsx"},{"name":"Bubble","sourcePath":"components/ai/Bubble.jsx"},{"name":"BubbleContent","sourcePath":"components/ai/Bubble.jsx"},{"name":"BubbleReactions","sourcePath":"components/ai/Bubble.jsx"},{"name":"ChatMessage","sourcePath":"components/ai/ChatMessage.jsx"},{"name":"Citation","sourcePath":"components/ai/Citation.jsx"},{"name":"SourceList","sourcePath":"components/ai/Citation.jsx"},{"name":"Confirmation","sourcePath":"components/ai/Confirmation.jsx"},{"name":"Conversation","sourcePath":"components/ai/Conversation.jsx"},{"name":"DocumentCard","sourcePath":"components/ai/DocumentCard.jsx"},{"name":"FeedbackBar","sourcePath":"components/ai/FeedbackBar.jsx"},{"name":"GeneratedImage","sourcePath":"components/ai/GeneratedImage.jsx"},{"name":"Marker","sourcePath":"components/ai/Marker.jsx"},{"name":"MarkerIcon","sourcePath":"components/ai/Marker.jsx"},{"name":"MarkerContent","sourcePath":"components/ai/Marker.jsx"},{"name":"Message","sourcePath":"components/ai/Message.jsx"},{"name":"MessageGroup","sourcePath":"components/ai/Message.jsx"},{"name":"MessageAvatar","sourcePath":"components/ai/Message.jsx"},{"name":"MessageContent","sourcePath":"components/ai/Message.jsx"},{"name":"MessageHeader","sourcePath":"components/ai/Message.jsx"},{"name":"MessageFooter","sourcePath":"components/ai/Message.jsx"},{"name":"MessageScrollerProvider","sourcePath":"components/ai/MessageScroller.jsx"},{"name":"MessageScroller","sourcePath":"components/ai/MessageScroller.jsx"},{"name":"MessageScrollerViewport","sourcePath":"components/ai/MessageScroller.jsx"},{"name":"MessageScrollerContent","sourcePath":"components/ai/MessageScroller.jsx"},{"name":"MessageScrollerItem","sourcePath":"components/ai/MessageScroller.jsx"},{"name":"MessageScrollerButton","sourcePath":"components/ai/MessageScroller.jsx"},{"name":"ModelSelector","sourcePath":"components/ai/ModelSelector.jsx"},{"name":"Player","sourcePath":"components/ai/Player.jsx"},{"name":"PromptComposer","sourcePath":"components/ai/PromptComposer.jsx"},{"name":"PromptSteps","sourcePath":"components/ai/PromptSteps.jsx"},{"name":"Reasoning","sourcePath":"components/ai/Reasoning.jsx"},{"name":"RichComposer","sourcePath":"components/ai/RichComposer.jsx"},{"name":"Sandbox","sourcePath":"components/ai/Sandbox.jsx"},{"name":"SelectionQuote","sourcePath":"components/ai/SelectionQuote.jsx"},{"name":"SourceCard","sourcePath":"components/ai/SourceCard.jsx"},{"name":"Suggestions","sourcePath":"components/ai/Suggestions.jsx"},{"name":"Task","sourcePath":"components/ai/Task.jsx"},{"name":"Todo","sourcePath":"components/ai/Todo.jsx"},{"name":"ToolCall","sourcePath":"components/ai/ToolCall.jsx"},{"name":"Transcript","sourcePath":"components/ai/Transcript.jsx"},{"name":"UsageMeter","sourcePath":"components/ai/UsageMeter.jsx"},{"name":"WebPreview","sourcePath":"components/ai/WebPreview.jsx"},{"name":"CodeBlock","sourcePath":"components/code/CodeBlock.jsx"},{"name":"Console","sourcePath":"components/code/Console.jsx"},{"name":"CopyField","sourcePath":"components/code/CopyField.jsx"},{"name":"Diff","sourcePath":"components/code/Diff.jsx"},{"name":"EnvList","sourcePath":"components/code/EnvList.jsx"},{"name":"Exception","sourcePath":"components/code/Exception.jsx"},{"name":"Terminal","sourcePath":"components/code/Terminal.jsx"},{"name":"BarChart","sourcePath":"components/data/BarChart.jsx"},{"name":"ChartStyle","sourcePath":"components/data/Chart.jsx"},{"name":"ChartContainer","sourcePath":"components/data/Chart.jsx"},{"name":"ChartTooltip","sourcePath":"components/data/Chart.jsx"},{"name":"ChartTooltipContent","sourcePath":"components/data/Chart.jsx"},{"name":"ChartLegend","sourcePath":"components/data/Chart.jsx"},{"name":"ChartLegendContent","sourcePath":"components/data/Chart.jsx"},{"name":"DonutChart","sourcePath":"components/data/DonutChart.jsx"},{"name":"Empty","sourcePath":"components/data/EmptyState.jsx"},{"name":"EmptyHeader","sourcePath":"components/data/EmptyState.jsx"},{"name":"EmptyMedia","sourcePath":"components/data/EmptyState.jsx"},{"name":"EmptyTitle","sourcePath":"components/data/EmptyState.jsx"},{"name":"EmptyDescription","sourcePath":"components/data/EmptyState.jsx"},{"name":"EmptyContent","sourcePath":"components/data/EmptyState.jsx"},{"name":"KeyValueList","sourcePath":"components/data/KeyValueList.jsx"},{"name":"LineChart","sourcePath":"components/data/LineChart.jsx"},{"name":"Skeleton","sourcePath":"components/data/Skeleton.jsx"},{"name":"Sparkline","sourcePath":"components/data/Sparkline.jsx"},{"name":"Stat","sourcePath":"components/data/Stat.jsx"},{"name":"StatusDot","sourcePath":"components/data/StatusDot.jsx"},{"name":"Table","sourcePath":"components/data/Table.jsx"},{"name":"TableHeader","sourcePath":"components/data/Table.jsx"},{"name":"TableBody","sourcePath":"components/data/Table.jsx"},{"name":"TableFooter","sourcePath":"components/data/Table.jsx"},{"name":"TableRow","sourcePath":"components/data/Table.jsx"},{"name":"TableHead","sourcePath":"components/data/Table.jsx"},{"name":"TableCell","sourcePath":"components/data/Table.jsx"},{"name":"TableCaption","sourcePath":"components/data/Table.jsx"},{"name":"CalendarDayButton","sourcePath":"components/dates/Calendar.jsx"},{"name":"Calendar","sourcePath":"components/dates/Calendar.jsx"},{"name":"TimePicker","sourcePath":"components/dates/TimePicker.jsx"},{"name":"Accordion","sourcePath":"components/display/Accordion.jsx"},{"name":"AccordionItem","sourcePath":"components/display/Accordion.jsx"},{"name":"AccordionTrigger","sourcePath":"components/display/Accordion.jsx"},{"name":"AccordionContent","sourcePath":"components/display/Accordion.jsx"},{"name":"AspectRatio","sourcePath":"components/display/AspectRatio.jsx"},{"name":"Avatar","sourcePath":"components/display/Avatar.jsx"},{"name":"AvatarImage","sourcePath":"components/display/Avatar.jsx"},{"name":"AvatarFallback","sourcePath":"components/display/Avatar.jsx"},{"name":"AvatarBadge","sourcePath":"components/display/Avatar.jsx"},{"name":"AvatarGroup","sourcePath":"components/display/Avatar.jsx"},{"name":"AvatarGroupCount","sourcePath":"components/display/Avatar.jsx"},{"name":"Badge","sourcePath":"components/display/Badge.jsx"},{"name":"CardHeader","sourcePath":"components/display/Card.jsx"},{"name":"CardTitle","sourcePath":"components/display/Card.jsx"},{"name":"CardDescription","sourcePath":"components/display/Card.jsx"},{"name":"CardAction","sourcePath":"components/display/Card.jsx"},{"name":"CardContent","sourcePath":"components/display/Card.jsx"},{"name":"CardFooter","sourcePath":"components/display/Card.jsx"},{"name":"Card","sourcePath":"components/display/Card.jsx"},{"name":"Carousel","sourcePath":"components/display/Carousel.jsx"},{"name":"CarouselContent","sourcePath":"components/display/Carousel.jsx"},{"name":"CarouselItem","sourcePath":"components/display/Carousel.jsx"},{"name":"CarouselPrevious","sourcePath":"components/display/Carousel.jsx"},{"name":"CarouselNext","sourcePath":"components/display/Carousel.jsx"},{"name":"Collapsible","sourcePath":"components/display/Collapsible.jsx"},{"name":"CollapsibleTrigger","sourcePath":"components/display/Collapsible.jsx"},{"name":"CollapsibleContent","sourcePath":"components/display/Collapsible.jsx"},{"name":"DirectionProvider","sourcePath":"components/display/Direction.jsx"},{"name":"Divider","sourcePath":"components/display/Divider.jsx"},{"name":"ItemGroup","sourcePath":"components/display/Item.jsx"},{"name":"ItemSeparator","sourcePath":"components/display/Item.jsx"},{"name":"Item","sourcePath":"components/display/Item.jsx"},{"name":"ItemMedia","sourcePath":"components/display/Item.jsx"},{"name":"ItemContent","sourcePath":"components/display/Item.jsx"},{"name":"ItemTitle","sourcePath":"components/display/Item.jsx"},{"name":"ItemDescription","sourcePath":"components/display/Item.jsx"},{"name":"ItemActions","sourcePath":"components/display/Item.jsx"},{"name":"ItemHeader","sourcePath":"components/display/Item.jsx"},{"name":"ItemFooter","sourcePath":"components/display/Item.jsx"},{"name":"Kbd","sourcePath":"components/display/Kbd.jsx"},{"name":"KbdGroup","sourcePath":"components/display/Kbd.jsx"},{"name":"Link","sourcePath":"components/display/Link.jsx"},{"name":"ResizablePanelGroup","sourcePath":"components/display/Resizable.jsx"},{"name":"ResizablePanel","sourcePath":"components/display/Resizable.jsx"},{"name":"ResizableHandle","sourcePath":"components/display/Resizable.jsx"},{"name":"ScrollArea","sourcePath":"components/display/ScrollArea.jsx"},{"name":"ScrollBar","sourcePath":"components/display/ScrollArea.jsx"},{"name":"Separator","sourcePath":"components/display/Separator.jsx"},{"name":"Tag","sourcePath":"components/display/Tag.jsx"},{"name":"Timeline","sourcePath":"components/display/Timeline.jsx"},{"name":"Toolbar","sourcePath":"components/display/Toolbar.jsx"},{"name":"TreeList","sourcePath":"components/display/TreeList.jsx"},{"name":"Alert","sourcePath":"components/feedback/Alert.jsx"},{"name":"AlertTitle","sourcePath":"components/feedback/Alert.jsx"},{"name":"AlertDescription","sourcePath":"components/feedback/Alert.jsx"},{"name":"AlertAction","sourcePath":"components/feedback/Alert.jsx"},{"name":"AlertDialog","sourcePath":"components/feedback/AlertDialog.jsx"},{"name":"AlertDialogTrigger","sourcePath":"components/feedback/AlertDialog.jsx"},{"name":"AlertDialogPortal","sourcePath":"components/feedback/AlertDialog.jsx"},{"name":"AlertDialogOverlay","sourcePath":"components/feedback/AlertDialog.jsx"},{"name":"AlertDialogContent","sourcePath":"components/feedback/AlertDialog.jsx"},{"name":"AlertDialogHeader","sourcePath":"components/feedback/AlertDialog.jsx"},{"name":"AlertDialogFooter","sourcePath":"components/feedback/AlertDialog.jsx"},{"name":"AlertDialogMedia","sourcePath":"components/feedback/AlertDialog.jsx"},{"name":"AlertDialogTitle","sourcePath":"components/feedback/AlertDialog.jsx"},{"name":"AlertDialogDescription","sourcePath":"components/feedback/AlertDialog.jsx"},{"name":"AlertDialogCancel","sourcePath":"components/feedback/AlertDialog.jsx"},{"name":"AlertDialogAction","sourcePath":"components/feedback/AlertDialog.jsx"},{"name":"Banner","sourcePath":"components/feedback/Banner.jsx"},{"name":"ConfirmDialog","sourcePath":"components/feedback/ConfirmDialog.jsx"},{"name":"Dialog","sourcePath":"components/feedback/Dialog.jsx"},{"name":"DialogTrigger","sourcePath":"components/feedback/Dialog.jsx"},{"name":"DialogPortal","sourcePath":"components/feedback/Dialog.jsx"},{"name":"DialogOverlay","sourcePath":"components/feedback/Dialog.jsx"},{"name":"DialogClose","sourcePath":"components/feedback/Dialog.jsx"},{"name":"DialogContent","sourcePath":"components/feedback/Dialog.jsx"},{"name":"DialogHeader","sourcePath":"components/feedback/Dialog.jsx"},{"name":"DialogFooter","sourcePath":"components/feedback/Dialog.jsx"},{"name":"DialogTitle","sourcePath":"components/feedback/Dialog.jsx"},{"name":"DialogDescription","sourcePath":"components/feedback/Dialog.jsx"},{"name":"Loader","sourcePath":"components/feedback/Loader.jsx"},{"name":"Progress","sourcePath":"components/feedback/Progress.jsx"},{"name":"Spinner","sourcePath":"components/feedback/Spinner.jsx"},{"name":"Toaster","sourcePath":"components/feedback/Toast.jsx"},{"name":"Tooltip","sourcePath":"components/feedback/Tooltip.jsx"},{"name":"TooltipProvider","sourcePath":"components/feedback/Tooltip.jsx"},{"name":"TooltipTrigger","sourcePath":"components/feedback/Tooltip.jsx"},{"name":"TooltipContent","sourcePath":"components/feedback/Tooltip.jsx"},{"name":"Attachment","sourcePath":"components/files/Attachment.jsx"},{"name":"AttachmentMedia","sourcePath":"components/files/Attachment.jsx"},{"name":"AttachmentContent","sourcePath":"components/files/Attachment.jsx"},{"name":"AttachmentTitle","sourcePath":"components/files/Attachment.jsx"},{"name":"AttachmentDescription","sourcePath":"components/files/Attachment.jsx"},{"name":"AttachmentActions","sourcePath":"components/files/Attachment.jsx"},{"name":"AttachmentAction","sourcePath":"components/files/Attachment.jsx"},{"name":"AttachmentTrigger","sourcePath":"components/files/Attachment.jsx"},{"name":"AttachmentGroup","sourcePath":"components/files/Attachment.jsx"},{"name":"FileDrop","sourcePath":"components/files/FileDrop.jsx"},{"name":"FileTile","sourcePath":"components/files/FileTile.jsx"},{"name":"FileTypeIcon","sourcePath":"components/files/FileTypeIcon.jsx"},{"name":"PaymentCard","sourcePath":"components/finance/PaymentCard.jsx"},{"name":"Button","sourcePath":"components/forms/Button.jsx"},{"name":"ButtonGroup","sourcePath":"components/forms/ButtonGroup.jsx"},{"name":"ButtonGroupText","sourcePath":"components/forms/ButtonGroup.jsx"},{"name":"ButtonGroupSeparator","sourcePath":"components/forms/ButtonGroup.jsx"},{"name":"ButtonTile","sourcePath":"components/forms/ButtonTile.jsx"},{"name":"ButtonTileGroup","sourcePath":"components/forms/ButtonTile.jsx"},{"name":"Checkbox","sourcePath":"components/forms/Checkbox.jsx"},{"name":"Combobox","sourcePath":"components/forms/Combobox.jsx"},{"name":"ComboboxValue","sourcePath":"components/forms/Combobox.jsx"},{"name":"ComboboxTrigger","sourcePath":"components/forms/Combobox.jsx"},{"name":"ComboboxClear","sourcePath":"components/forms/Combobox.jsx"},{"name":"ComboboxInput","sourcePath":"components/forms/Combobox.jsx"},{"name":"ComboboxContent","sourcePath":"components/forms/Combobox.jsx"},{"name":"ComboboxList","sourcePath":"components/forms/Combobox.jsx"},{"name":"ComboboxItem","sourcePath":"components/forms/Combobox.jsx"},{"name":"ComboboxGroup","sourcePath":"components/forms/Combobox.jsx"},{"name":"ComboboxLabel","sourcePath":"components/forms/Combobox.jsx"},{"name":"ComboboxCollection","sourcePath":"components/forms/Combobox.jsx"},{"name":"ComboboxEmpty","sourcePath":"components/forms/Combobox.jsx"},{"name":"ComboboxSeparator","sourcePath":"components/forms/Combobox.jsx"},{"name":"ComboboxChips","sourcePath":"components/forms/Combobox.jsx"},{"name":"ComboboxChip","sourcePath":"components/forms/Combobox.jsx"},{"name":"ComboboxChipsInput","sourcePath":"components/forms/Combobox.jsx"},{"name":"Field","sourcePath":"components/forms/Field.jsx"},{"name":"FieldSet","sourcePath":"components/forms/Field.jsx"},{"name":"FieldGroup","sourcePath":"components/forms/Field.jsx"},{"name":"FieldContent","sourcePath":"components/forms/Field.jsx"},{"name":"FieldLabel","sourcePath":"components/forms/Field.jsx"},{"name":"FieldTitle","sourcePath":"components/forms/Field.jsx"},{"name":"FieldDescription","sourcePath":"components/forms/Field.jsx"},{"name":"FieldLegend","sourcePath":"components/forms/Field.jsx"},{"name":"FieldSeparator","sourcePath":"components/forms/Field.jsx"},{"name":"FieldError","sourcePath":"components/forms/Field.jsx"},{"name":"IconButton","sourcePath":"components/forms/IconButton.jsx"},{"name":"Input","sourcePath":"components/forms/Input.jsx"},{"name":"InputGroup","sourcePath":"components/forms/InputGroup.jsx"},{"name":"InputGroupAddon","sourcePath":"components/forms/InputGroup.jsx"},{"name":"InputGroupButton","sourcePath":"components/forms/InputGroup.jsx"},{"name":"InputGroupInput","sourcePath":"components/forms/InputGroup.jsx"},{"name":"InputGroupTextarea","sourcePath":"components/forms/InputGroup.jsx"},{"name":"InputGroupText","sourcePath":"components/forms/InputGroup.jsx"},{"name":"InputOTP","sourcePath":"components/forms/InputOTP.jsx"},{"name":"InputOTPGroup","sourcePath":"components/forms/InputOTP.jsx"},{"name":"InputOTPSlot","sourcePath":"components/forms/InputOTP.jsx"},{"name":"InputOTPSeparator","sourcePath":"components/forms/InputOTP.jsx"},{"name":"Label","sourcePath":"components/forms/Label.jsx"},{"name":"NativeSelect","sourcePath":"components/forms/NativeSelect.jsx"},{"name":"NativeSelectOption","sourcePath":"components/forms/NativeSelect.jsx"},{"name":"NativeSelectOptGroup","sourcePath":"components/forms/NativeSelect.jsx"},{"name":"NumberInput","sourcePath":"components/forms/NumberInput.jsx"},{"name":"Questionnaire","sourcePath":"components/forms/Questionnaire.jsx"},{"name":"QuestionnaireProgress","sourcePath":"components/forms/Questionnaire.jsx"},{"name":"QuestionnaireItem","sourcePath":"components/forms/Questionnaire.jsx"},{"name":"QuestionnaireTitle","sourcePath":"components/forms/Questionnaire.jsx"},{"name":"QuestionnaireDescription","sourcePath":"components/forms/Questionnaire.jsx"},{"name":"QuestionnaireChoices","sourcePath":"components/forms/Questionnaire.jsx"},{"name":"QuestionnaireChoice","sourcePath":"components/forms/Questionnaire.jsx"},{"name":"QuestionnaireInput","sourcePath":"components/forms/Questionnaire.jsx"},{"name":"QuestionnaireError","sourcePath":"components/forms/Questionnaire.jsx"},{"name":"QuestionnaireActions","sourcePath":"components/forms/Questionnaire.jsx"},{"name":"QuestionnairePrevious","sourcePath":"components/forms/Questionnaire.jsx"},{"name":"QuestionnaireSkip","sourcePath":"components/forms/Questionnaire.jsx"},{"name":"QuestionnaireNext","sourcePath":"components/forms/Questionnaire.jsx"},{"name":"QuestionnaireSubmit","sourcePath":"components/forms/Questionnaire.jsx"},{"name":"RadioGroup","sourcePath":"components/forms/Radio.jsx"},{"name":"RadioGroupItem","sourcePath":"components/forms/Radio.jsx"},{"name":"Radio","sourcePath":"components/forms/Radio.jsx"},{"name":"Select","sourcePath":"components/forms/Select.jsx"},{"name":"SelectTrigger","sourcePath":"components/forms/Select.jsx"},{"name":"SelectValue","sourcePath":"components/forms/Select.jsx"},{"name":"SelectContent","sourcePath":"components/forms/Select.jsx"},{"name":"SelectGroup","sourcePath":"components/forms/Select.jsx"},{"name":"SelectLabel","sourcePath":"components/forms/Select.jsx"},{"name":"SelectSeparator","sourcePath":"components/forms/Select.jsx"},{"name":"SelectItem","sourcePath":"components/forms/Select.jsx"},{"name":"Slider","sourcePath":"components/forms/Slider.jsx"},{"name":"Switch","sourcePath":"components/forms/Switch.jsx"},{"name":"Textarea","sourcePath":"components/forms/Textarea.jsx"},{"name":"Toggle","sourcePath":"components/forms/Toggle.jsx"},{"name":"ToggleGroup","sourcePath":"components/forms/Toggle.jsx"},{"name":"ToggleGroupItem","sourcePath":"components/forms/Toggle.jsx"},{"name":"Icon","sourcePath":"components/icons/Icon.jsx"},{"name":"Breadcrumb","sourcePath":"components/navigation/Breadcrumbs.jsx"},{"name":"BreadcrumbList","sourcePath":"components/navigation/Breadcrumbs.jsx"},{"name":"BreadcrumbItem","sourcePath":"components/navigation/Breadcrumbs.jsx"},{"name":"BreadcrumbLink","sourcePath":"components/navigation/Breadcrumbs.jsx"},{"name":"BreadcrumbPage","sourcePath":"components/navigation/Breadcrumbs.jsx"},{"name":"BreadcrumbSeparator","sourcePath":"components/navigation/Breadcrumbs.jsx"},{"name":"BreadcrumbEllipsis","sourcePath":"components/navigation/Breadcrumbs.jsx"},{"name":"Menubar","sourcePath":"components/navigation/Menubar.jsx"},{"name":"MenubarMenu","sourcePath":"components/navigation/Menubar.jsx"},{"name":"MenubarTrigger","sourcePath":"components/navigation/Menubar.jsx"},{"name":"MenubarContent","sourcePath":"components/navigation/Menubar.jsx"},{"name":"MenubarPortal","sourcePath":"components/navigation/Menubar.jsx"},{"name":"MenubarGroup","sourcePath":"components/navigation/Menubar.jsx"},{"name":"MenubarRadioGroup","sourcePath":"components/navigation/Menubar.jsx"},{"name":"MenubarLabel","sourcePath":"components/navigation/Menubar.jsx"},{"name":"MenubarSeparator","sourcePath":"components/navigation/Menubar.jsx"},{"name":"MenubarShortcut","sourcePath":"components/navigation/Menubar.jsx"},{"name":"MenubarItem","sourcePath":"components/navigation/Menubar.jsx"},{"name":"MenubarCheckboxItem","sourcePath":"components/navigation/Menubar.jsx"},{"name":"MenubarRadioItem","sourcePath":"components/navigation/Menubar.jsx"},{"name":"MenubarSub","sourcePath":"components/navigation/Menubar.jsx"},{"name":"MenubarSubTrigger","sourcePath":"components/navigation/Menubar.jsx"},{"name":"MenubarSubContent","sourcePath":"components/navigation/Menubar.jsx"},{"name":"NavigationMenu","sourcePath":"components/navigation/NavigationMenu.jsx"},{"name":"NavigationMenuList","sourcePath":"components/navigation/NavigationMenu.jsx"},{"name":"NavigationMenuItem","sourcePath":"components/navigation/NavigationMenu.jsx"},{"name":"NavigationMenuTrigger","sourcePath":"components/navigation/NavigationMenu.jsx"},{"name":"NavigationMenuContent","sourcePath":"components/navigation/NavigationMenu.jsx"},{"name":"NavigationMenuLink","sourcePath":"components/navigation/NavigationMenu.jsx"},{"name":"NavigationMenuIndicator","sourcePath":"components/navigation/NavigationMenu.jsx"},{"name":"NavigationMenuViewport","sourcePath":"components/navigation/NavigationMenu.jsx"},{"name":"PageControl","sourcePath":"components/navigation/PageControl.jsx"},{"name":"Pagination","sourcePath":"components/navigation/Pagination.jsx"},{"name":"PaginationContent","sourcePath":"components/navigation/Pagination.jsx"},{"name":"PaginationItem","sourcePath":"components/navigation/Pagination.jsx"},{"name":"PaginationLink","sourcePath":"components/navigation/Pagination.jsx"},{"name":"PaginationPrevious","sourcePath":"components/navigation/Pagination.jsx"},{"name":"PaginationNext","sourcePath":"components/navigation/Pagination.jsx"},{"name":"PaginationEllipsis","sourcePath":"components/navigation/Pagination.jsx"},{"name":"SegmentedControl","sourcePath":"components/navigation/SegmentedControl.jsx"},{"name":"SideNav","sourcePath":"components/navigation/SideNav.jsx"},{"name":"SidebarProvider","sourcePath":"components/navigation/Sidebar.jsx"},{"name":"Sidebar","sourcePath":"components/navigation/Sidebar.jsx"},{"name":"SidebarTrigger","sourcePath":"components/navigation/Sidebar.jsx"},{"name":"SidebarRail","sourcePath":"components/navigation/Sidebar.jsx"},{"name":"SidebarInset","sourcePath":"components/navigation/Sidebar.jsx"},{"name":"SidebarHeader","sourcePath":"components/navigation/Sidebar.jsx"},{"name":"SidebarFooter","sourcePath":"components/navigation/Sidebar.jsx"},{"name":"SidebarContent","sourcePath":"components/navigation/Sidebar.jsx"},{"name":"SidebarGroup","sourcePath":"components/navigation/Sidebar.jsx"},{"name":"SidebarGroupContent","sourcePath":"components/navigation/Sidebar.jsx"},{"name":"SidebarMenu","sourcePath":"components/navigation/Sidebar.jsx"},{"name":"SidebarMenuItem","sourcePath":"components/navigation/Sidebar.jsx"},{"name":"SidebarMenuSub","sourcePath":"components/navigation/Sidebar.jsx"},{"name":"SidebarMenuSubItem","sourcePath":"components/navigation/Sidebar.jsx"},{"name":"SidebarInput","sourcePath":"components/navigation/Sidebar.jsx"},{"name":"SidebarSeparator","sourcePath":"components/navigation/Sidebar.jsx"},{"name":"SidebarGroupLabel","sourcePath":"components/navigation/Sidebar.jsx"},{"name":"SidebarGroupAction","sourcePath":"components/navigation/Sidebar.jsx"},{"name":"SidebarMenuButton","sourcePath":"components/navigation/Sidebar.jsx"},{"name":"SidebarMenuAction","sourcePath":"components/navigation/Sidebar.jsx"},{"name":"SidebarMenuBadge","sourcePath":"components/navigation/Sidebar.jsx"},{"name":"SidebarMenuSubButton","sourcePath":"components/navigation/Sidebar.jsx"},{"name":"SidebarMenuSkeleton","sourcePath":"components/navigation/Sidebar.jsx"},{"name":"SkipLink","sourcePath":"components/navigation/SkipLink.jsx"},{"name":"Steps","sourcePath":"components/navigation/Steps.jsx"},{"name":"Tabs","sourcePath":"components/navigation/Tabs.jsx"},{"name":"TabsList","sourcePath":"components/navigation/Tabs.jsx"},{"name":"TabsTrigger","sourcePath":"components/navigation/Tabs.jsx"},{"name":"TabsContent","sourcePath":"components/navigation/Tabs.jsx"},{"name":"TopNav","sourcePath":"components/navigation/TopNav.jsx"},{"name":"Command","sourcePath":"components/overlay/Command.jsx"},{"name":"CommandDialog","sourcePath":"components/overlay/Command.jsx"},{"name":"CommandInput","sourcePath":"components/overlay/Command.jsx"},{"name":"CommandList","sourcePath":"components/overlay/Command.jsx"},{"name":"CommandEmpty","sourcePath":"components/overlay/Command.jsx"},{"name":"CommandGroup","sourcePath":"components/overlay/Command.jsx"},{"name":"CommandItem","sourcePath":"components/overlay/Command.jsx"},{"name":"CommandShortcut","sourcePath":"components/overlay/Command.jsx"},{"name":"CommandSeparator","sourcePath":"components/overlay/Command.jsx"},{"name":"ContextMenu","sourcePath":"components/overlay/ContextMenu.jsx"},{"name":"ContextMenuTrigger","sourcePath":"components/overlay/ContextMenu.jsx"},{"name":"ContextMenuPortal","sourcePath":"components/overlay/ContextMenu.jsx"},{"name":"ContextMenuContent","sourcePath":"components/overlay/ContextMenu.jsx"},{"name":"ContextMenuGroup","sourcePath":"components/overlay/ContextMenu.jsx"},{"name":"ContextMenuLabel","sourcePath":"components/overlay/ContextMenu.jsx"},{"name":"ContextMenuSeparator","sourcePath":"components/overlay/ContextMenu.jsx"},{"name":"ContextMenuShortcut","sourcePath":"components/overlay/ContextMenu.jsx"},{"name":"ContextMenuItem","sourcePath":"components/overlay/ContextMenu.jsx"},{"name":"ContextMenuCheckboxItem","sourcePath":"components/overlay/ContextMenu.jsx"},{"name":"ContextMenuRadioGroup","sourcePath":"components/overlay/ContextMenu.jsx"},{"name":"ContextMenuRadioItem","sourcePath":"components/overlay/ContextMenu.jsx"},{"name":"ContextMenuSub","sourcePath":"components/overlay/ContextMenu.jsx"},{"name":"ContextMenuSubTrigger","sourcePath":"components/overlay/ContextMenu.jsx"},{"name":"ContextMenuSubContent","sourcePath":"components/overlay/ContextMenu.jsx"},{"name":"Drawer","sourcePath":"components/overlay/Drawer.jsx"},{"name":"DrawerTrigger","sourcePath":"components/overlay/Drawer.jsx"},{"name":"DrawerPortal","sourcePath":"components/overlay/Drawer.jsx"},{"name":"DrawerClose","sourcePath":"components/overlay/Drawer.jsx"},{"name":"DrawerOverlay","sourcePath":"components/overlay/Drawer.jsx"},{"name":"DrawerContent","sourcePath":"components/overlay/Drawer.jsx"},{"name":"DrawerHeader","sourcePath":"components/overlay/Drawer.jsx"},{"name":"DrawerFooter","sourcePath":"components/overlay/Drawer.jsx"},{"name":"DrawerTitle","sourcePath":"components/overlay/Drawer.jsx"},{"name":"DrawerDescription","sourcePath":"components/overlay/Drawer.jsx"},{"name":"DropdownMenu","sourcePath":"components/overlay/DropdownMenu.jsx"},{"name":"DropdownMenuTrigger","sourcePath":"components/overlay/DropdownMenu.jsx"},{"name":"DropdownMenuPortal","sourcePath":"components/overlay/DropdownMenu.jsx"},{"name":"DropdownMenuContent","sourcePath":"components/overlay/DropdownMenu.jsx"},{"name":"DropdownMenuGroup","sourcePath":"components/overlay/DropdownMenu.jsx"},{"name":"DropdownMenuLabel","sourcePath":"components/overlay/DropdownMenu.jsx"},{"name":"DropdownMenuSeparator","sourcePath":"components/overlay/DropdownMenu.jsx"},{"name":"DropdownMenuShortcut","sourcePath":"components/overlay/DropdownMenu.jsx"},{"name":"DropdownMenuItem","sourcePath":"components/overlay/DropdownMenu.jsx"},{"name":"DropdownMenuCheckboxItem","sourcePath":"components/overlay/DropdownMenu.jsx"},{"name":"DropdownMenuRadioGroup","sourcePath":"components/overlay/DropdownMenu.jsx"},{"name":"DropdownMenuRadioItem","sourcePath":"components/overlay/DropdownMenu.jsx"},{"name":"DropdownMenuSub","sourcePath":"components/overlay/DropdownMenu.jsx"},{"name":"DropdownMenuSubTrigger","sourcePath":"components/overlay/DropdownMenu.jsx"},{"name":"DropdownMenuSubContent","sourcePath":"components/overlay/DropdownMenu.jsx"},{"name":"HoverCard","sourcePath":"components/overlay/HoverCard.jsx"},{"name":"HoverCardTrigger","sourcePath":"components/overlay/HoverCard.jsx"},{"name":"HoverCardContent","sourcePath":"components/overlay/HoverCard.jsx"},{"name":"Popover","sourcePath":"components/overlay/Popover.jsx"},{"name":"PopoverTrigger","sourcePath":"components/overlay/Popover.jsx"},{"name":"PopoverContent","sourcePath":"components/overlay/Popover.jsx"},{"name":"PopoverHeader","sourcePath":"components/overlay/Popover.jsx"},{"name":"PopoverTitle","sourcePath":"components/overlay/Popover.jsx"},{"name":"PopoverDescription","sourcePath":"components/overlay/Popover.jsx"},{"name":"Portal","sourcePath":"components/overlay/Portal.jsx"},{"name":"Sheet","sourcePath":"components/overlay/Sheet.jsx"},{"name":"SheetTrigger","sourcePath":"components/overlay/Sheet.jsx"},{"name":"SheetClose","sourcePath":"components/overlay/Sheet.jsx"},{"name":"SheetContent","sourcePath":"components/overlay/Sheet.jsx"},{"name":"SheetHeader","sourcePath":"components/overlay/Sheet.jsx"},{"name":"SheetFooter","sourcePath":"components/overlay/Sheet.jsx"},{"name":"SheetTitle","sourcePath":"components/overlay/Sheet.jsx"},{"name":"SheetDescription","sourcePath":"components/overlay/Sheet.jsx"}],"publicHelpers":[{"name":"markerVariants","sourcePath":"components/ai/Marker.jsx"},{"name":"useMessageScroller","sourcePath":"components/ai/MessageScroller.jsx"},{"name":"useMessageScrollerVisibility","sourcePath":"components/ai/MessageScroller.jsx"},{"name":"useMessageScrollerScrollable","sourcePath":"components/ai/MessageScroller.jsx"},{"name":"useChart","sourcePath":"components/data/Chart.jsx"},{"name":"badgeVariants","sourcePath":"components/display/Badge.jsx"},{"name":"useDirection","sourcePath":"components/display/Direction.jsx"},{"name":"toast","sourcePath":"components/feedback/Toast.jsx"},{"name":"buttonVariants","sourcePath":"components/forms/Button.jsx"},{"name":"buttonGroupVariants","sourcePath":"components/forms/ButtonGroup.jsx"},{"name":"useComboboxAnchor","sourcePath":"components/forms/Combobox.jsx"},{"name":"toggleVariants","sourcePath":"components/forms/Toggle.jsx"},{"name":"navigationMenuTriggerStyle","sourcePath":"components/navigation/NavigationMenu.jsx"},{"name":"useSidebar","sourcePath":"components/navigation/Sidebar.jsx"}],"sourceHashes":{"components/ai/AgentRun.jsx":"9740e0e168e0","components/ai/Bubble.jsx":"1fbd306ae6c7","components/ai/ChatMessage.jsx":"340b11fa16a2","components/ai/Citation.jsx":"c880fa0ef4b0","components/ai/Confirmation.jsx":"a3eaa29db674","components/ai/Conversation.jsx":"811020760647","components/ai/DocumentCard.jsx":"a7159ec86c9a","components/ai/FeedbackBar.jsx":"76ce9048b0f8","components/ai/GeneratedImage.jsx":"6f5314103a20","components/ai/Marker.jsx":"4a8e54cf1022","components/ai/Message.jsx":"631188fe9acc","components/ai/MessageScroller.jsx":"4708fd0705dd","components/ai/ModelSelector.jsx":"38694e6b7644","components/ai/Player.jsx":"a8a820c1e259","components/ai/PromptComposer.jsx":"3733369a9005","components/ai/PromptSteps.jsx":"428074df6cd1","components/ai/Reasoning.jsx":"6a54640d743d","components/ai/RichComposer.jsx":"9dfeee623924","components/ai/Sandbox.jsx":"fb40c18aac5f","components/ai/SelectionQuote.jsx":"2ba728772ad9","components/ai/SourceCard.jsx":"a59aeb1e2ab7","components/ai/Suggestions.jsx":"11e4ed7c8075","components/ai/Task.jsx":"613d6bf8d05a","components/ai/Todo.jsx":"5c8653be0ea4","components/ai/ToolCall.jsx":"3c36ce2c9aab","components/ai/Transcript.jsx":"3ecad5218a37","components/ai/UsageMeter.jsx":"901b7eded9be","components/ai/WebPreview.jsx":"84f8201e80d7","components/code/CodeBlock.jsx":"3457945b35e5","components/code/Console.jsx":"5a150480bfb5","components/code/CopyField.jsx":"61f56f69d3d3","components/code/Diff.jsx":"9ef7d550ba0a","components/code/EnvList.jsx":"525abe81eed5","components/code/Exception.jsx":"7c9828556417","components/code/Terminal.jsx":"8ac53723a00b","components/data/BarChart.jsx":"93b35c077e52","components/data/Chart.jsx":"5c738458802b","components/data/DonutChart.jsx":"694ebf62805d","components/data/EmptyState.jsx":"3cb763cd7519","components/data/KeyValueList.jsx":"3876b7c9581e","components/data/LineChart.jsx":"3f1ac8ba106b","components/data/Skeleton.jsx":"51394e716271","components/data/Sparkline.jsx":"5b2a0e67cdae","components/data/Stat.jsx":"aba92e72a0f8","components/data/StatusDot.jsx":"197386782d10","components/data/Table.jsx":"2b0a6165244e","components/dates/Calendar.jsx":"0c108ac6bcc1","components/dates/TimePicker.jsx":"9b2d7fe6a1c4","components/display/Accordion.jsx":"ac9b1ec3ce0f","components/display/AspectRatio.jsx":"91558029d648","components/display/Avatar.jsx":"c9fa67934411","components/display/Badge.jsx":"fa91bc378031","components/display/Card.jsx":"5a44823ed4d8","components/display/Carousel.jsx":"d10ba2744373","components/display/Collapsible.jsx":"59cbf5105219","components/display/Direction.jsx":"538f2d4cbf23","components/display/Divider.jsx":"ee51ca336cc7","components/display/Item.jsx":"517df3ae775f","components/display/Kbd.jsx":"443f2a9b8f89","components/display/Link.jsx":"a0907910192e","components/display/Resizable.jsx":"74bc54184023","components/display/ScrollArea.jsx":"6c71af1111a2","components/display/Separator.jsx":"5c2b62cf7532","components/display/Tag.jsx":"e09f00799da9","components/display/Timeline.jsx":"6c5bff5f4dcf","components/display/Toolbar.jsx":"df507304c42e","components/display/TreeList.jsx":"ee19894c793f","components/feedback/Alert.jsx":"cc86b5cf69b8","components/feedback/AlertDialog.jsx":"c3618036d21b","components/feedback/Banner.jsx":"347de11daca4","components/feedback/ConfirmDialog.jsx":"033b979e1aa6","components/feedback/Dialog.jsx":"e64903bd736b","components/feedback/Loader.jsx":"02efacc86905","components/feedback/Progress.jsx":"0964f54f5644","components/feedback/Spinner.jsx":"8781f16bf6b8","components/feedback/Toast.jsx":"6950293206f1","components/feedback/Tooltip.jsx":"01d5d7eebc8a","components/files/Attachment.jsx":"bd63ebd29171","components/files/FileDrop.jsx":"ca735d59a668","components/files/FileTile.jsx":"28af04d1303b","components/files/FileTypeIcon.jsx":"3bcdf5ca7eb9","components/finance/PaymentCard.jsx":"d748ed19cc19","components/forms/Button.jsx":"85a176fef054","components/forms/ButtonGroup.jsx":"df7d04210646","components/forms/ButtonTile.jsx":"094423c09bb6","components/forms/Checkbox.jsx":"163f9c78fa7b","components/forms/Combobox.jsx":"71090ce63723","components/forms/Field.jsx":"adf061cacd94","components/forms/IconButton.jsx":"967b0b3312fe","components/forms/Input.jsx":"a654deabdd03","components/forms/InputGroup.jsx":"a524a366e701","components/forms/InputOTP.jsx":"275c5ea31342","components/forms/Label.jsx":"f0bfcb5ae210","components/forms/NativeSelect.jsx":"62b7a7580f0e","components/forms/NumberInput.jsx":"972fda20829e","components/forms/Questionnaire.jsx":"d7068436b50d","components/forms/Radio.jsx":"fd805667ed84","components/forms/Select.jsx":"2868eee5e49c","components/forms/Slider.jsx":"024c8968cc3f","components/forms/Switch.jsx":"d0ee7b510b1c","components/forms/Textarea.jsx":"5c8934e2ecbf","components/forms/Toggle.jsx":"6ca8c2585736","components/icons/Icon.jsx":"55545fb2d7d4","components/navigation/Breadcrumbs.jsx":"6d989a3f6a62","components/navigation/Menubar.jsx":"f1c8dc2f5a89","components/navigation/NavigationMenu.jsx":"25cb7b5ab54b","components/navigation/PageControl.jsx":"fba140f65467","components/navigation/Pagination.jsx":"86c274d2598a","components/navigation/SegmentedControl.jsx":"5fb840f28f4d","components/navigation/SideNav.jsx":"7716cde75e41","components/navigation/Sidebar.jsx":"3235c7709622","components/navigation/SkipLink.jsx":"718518ba69cc","components/navigation/Steps.jsx":"45c6c1162b22","components/navigation/Tabs.jsx":"1af60f8cf9d8","components/navigation/TopNav.jsx":"967b11093c20","components/overlay/Command.jsx":"79586a9a5663","components/overlay/ContextMenu.jsx":"a0306d490c95","components/overlay/Drawer.jsx":"49a8da8bc869","components/overlay/DropdownMenu.jsx":"da6f465a2fd7","components/overlay/HoverCard.jsx":"c5fdc7c37c0a","components/overlay/Popover.jsx":"5720287de557","components/overlay/Portal.jsx":"8295cec9f241","components/overlay/Sheet.jsx":"ecdd4f4758fa","showcases/agent/AgentScreen.jsx":"c6b18a3905d7","showcases/auth/AuthScreens.jsx":"ec956de82d05","showcases/console/CustomersScreen.jsx":"ed93fdbb7e64","showcases/console/ExtraScreens.jsx":"ed8902dfe977","showcases/console/OverviewScreen.jsx":"d771731feaa8","showcases/console/SettingsScreen.jsx":"ccdcc16cbe9f","showcases/console/Shell.jsx":"e59235a7b9c6","showcases/docs/DocsScreen.jsx":"b77626349122","showcases/infra/InfraScreen.jsx":"9551f992bf6b","showcases/tools/ToolsScreen.jsx":"f474e061f0d3","showcases/trader/TraderScreen.jsx":"9425e61cf9d9","showcases/website/Sections.jsx":"89d49e5a972d"},"inlinedExternals":[],"unexposedExports":[{"name":"computeDiff","sourcePath":"components/code/Diff.jsx"},{"name":"cssPct","sourcePath":"components/forms/Button.jsx"},{"name":"escapeLayerContext","sourcePath":"components/overlay/Portal.jsx"},{"name":"formatTime","sourcePath":"components/ai/Player.jsx"},{"name":"injectEfCss","sourcePath":"components/forms/Button.jsx"},{"name":"mergeRefs","sourcePath":"components/forms/Button.jsx"},{"name":"prefersReducedMotion","sourcePath":"components/forms/Button.jsx"},{"name":"useAnchoredStyle","sourcePath":"components/overlay/Portal.jsx"},{"name":"useEscapeLayer","sourcePath":"components/overlay/Portal.jsx"},{"name":"useFieldProps","sourcePath":"components/forms/Field.jsx"},{"name":"useIsoLayoutEffect","sourcePath":"components/forms/Button.jsx"},{"name":"useScrollLock","sourcePath":"components/overlay/Portal.jsx"}]} */
+/* @ds-bundle: {"format":4,"namespace":"EfolusiDesignSystem_4ffc3d","components":[{"name":"AgentRun","sourcePath":"components/ai/AgentRun.jsx"},{"name":"BubbleGroup","sourcePath":"components/ai/Bubble.jsx"},{"name":"Bubble","sourcePath":"components/ai/Bubble.jsx"},{"name":"BubbleContent","sourcePath":"components/ai/Bubble.jsx"},{"name":"BubbleReactions","sourcePath":"components/ai/Bubble.jsx"},{"name":"ChatMessage","sourcePath":"components/ai/ChatMessage.jsx"},{"name":"Citation","sourcePath":"components/ai/Citation.jsx"},{"name":"SourceList","sourcePath":"components/ai/Citation.jsx"},{"name":"Confirmation","sourcePath":"components/ai/Confirmation.jsx"},{"name":"Conversation","sourcePath":"components/ai/Conversation.jsx"},{"name":"DocumentCard","sourcePath":"components/ai/DocumentCard.jsx"},{"name":"FeedbackBar","sourcePath":"components/ai/FeedbackBar.jsx"},{"name":"GeneratedImage","sourcePath":"components/ai/GeneratedImage.jsx"},{"name":"Marker","sourcePath":"components/ai/Marker.jsx"},{"name":"MarkerIcon","sourcePath":"components/ai/Marker.jsx"},{"name":"MarkerContent","sourcePath":"components/ai/Marker.jsx"},{"name":"Message","sourcePath":"components/ai/Message.jsx"},{"name":"MessageGroup","sourcePath":"components/ai/Message.jsx"},{"name":"MessageAvatar","sourcePath":"components/ai/Message.jsx"},{"name":"MessageContent","sourcePath":"components/ai/Message.jsx"},{"name":"MessageHeader","sourcePath":"components/ai/Message.jsx"},{"name":"MessageFooter","sourcePath":"components/ai/Message.jsx"},{"name":"MessageScrollerProvider","sourcePath":"components/ai/MessageScroller.jsx"},{"name":"MessageScroller","sourcePath":"components/ai/MessageScroller.jsx"},{"name":"MessageScrollerViewport","sourcePath":"components/ai/MessageScroller.jsx"},{"name":"MessageScrollerContent","sourcePath":"components/ai/MessageScroller.jsx"},{"name":"MessageScrollerItem","sourcePath":"components/ai/MessageScroller.jsx"},{"name":"MessageScrollerButton","sourcePath":"components/ai/MessageScroller.jsx"},{"name":"ModelSelector","sourcePath":"components/ai/ModelSelector.jsx"},{"name":"Player","sourcePath":"components/ai/Player.jsx"},{"name":"PromptComposer","sourcePath":"components/ai/PromptComposer.jsx"},{"name":"PromptSteps","sourcePath":"components/ai/PromptSteps.jsx"},{"name":"Reasoning","sourcePath":"components/ai/Reasoning.jsx"},{"name":"RichComposer","sourcePath":"components/ai/RichComposer.jsx"},{"name":"Sandbox","sourcePath":"components/ai/Sandbox.jsx"},{"name":"SelectionQuote","sourcePath":"components/ai/SelectionQuote.jsx"},{"name":"SourceCard","sourcePath":"components/ai/SourceCard.jsx"},{"name":"Suggestions","sourcePath":"components/ai/Suggestions.jsx"},{"name":"Task","sourcePath":"components/ai/Task.jsx"},{"name":"Todo","sourcePath":"components/ai/Todo.jsx"},{"name":"ToolCall","sourcePath":"components/ai/ToolCall.jsx"},{"name":"Transcript","sourcePath":"components/ai/Transcript.jsx"},{"name":"UsageMeter","sourcePath":"components/ai/UsageMeter.jsx"},{"name":"WebPreview","sourcePath":"components/ai/WebPreview.jsx"},{"name":"CodeBlock","sourcePath":"components/code/CodeBlock.jsx"},{"name":"Console","sourcePath":"components/code/Console.jsx"},{"name":"CopyField","sourcePath":"components/code/CopyField.jsx"},{"name":"Diff","sourcePath":"components/code/Diff.jsx"},{"name":"EnvList","sourcePath":"components/code/EnvList.jsx"},{"name":"Exception","sourcePath":"components/code/Exception.jsx"},{"name":"Terminal","sourcePath":"components/code/Terminal.jsx"},{"name":"BarChart","sourcePath":"components/data/BarChart.jsx"},{"name":"ChartStyle","sourcePath":"components/data/Chart.jsx"},{"name":"ChartContainer","sourcePath":"components/data/Chart.jsx"},{"name":"ChartTooltip","sourcePath":"components/data/Chart.jsx"},{"name":"ChartTooltipContent","sourcePath":"components/data/Chart.jsx"},{"name":"ChartLegend","sourcePath":"components/data/Chart.jsx"},{"name":"ChartLegendContent","sourcePath":"components/data/Chart.jsx"},{"name":"DonutChart","sourcePath":"components/data/DonutChart.jsx"},{"name":"Empty","sourcePath":"components/data/EmptyState.jsx"},{"name":"EmptyHeader","sourcePath":"components/data/EmptyState.jsx"},{"name":"EmptyMedia","sourcePath":"components/data/EmptyState.jsx"},{"name":"EmptyTitle","sourcePath":"components/data/EmptyState.jsx"},{"name":"EmptyDescription","sourcePath":"components/data/EmptyState.jsx"},{"name":"EmptyContent","sourcePath":"components/data/EmptyState.jsx"},{"name":"KeyValueList","sourcePath":"components/data/KeyValueList.jsx"},{"name":"LineChart","sourcePath":"components/data/LineChart.jsx"},{"name":"Skeleton","sourcePath":"components/data/Skeleton.jsx"},{"name":"Sparkline","sourcePath":"components/data/Sparkline.jsx"},{"name":"Stat","sourcePath":"components/data/Stat.jsx"},{"name":"StatusDot","sourcePath":"components/data/StatusDot.jsx"},{"name":"Table","sourcePath":"components/data/Table.jsx"},{"name":"TableHeader","sourcePath":"components/data/Table.jsx"},{"name":"TableBody","sourcePath":"components/data/Table.jsx"},{"name":"TableFooter","sourcePath":"components/data/Table.jsx"},{"name":"TableRow","sourcePath":"components/data/Table.jsx"},{"name":"TableHead","sourcePath":"components/data/Table.jsx"},{"name":"TableCell","sourcePath":"components/data/Table.jsx"},{"name":"TableCaption","sourcePath":"components/data/Table.jsx"},{"name":"CalendarDayButton","sourcePath":"components/dates/Calendar.jsx"},{"name":"Calendar","sourcePath":"components/dates/Calendar.jsx"},{"name":"TimePicker","sourcePath":"components/dates/TimePicker.jsx"},{"name":"Accordion","sourcePath":"components/display/Accordion.jsx"},{"name":"AccordionItem","sourcePath":"components/display/Accordion.jsx"},{"name":"AccordionTrigger","sourcePath":"components/display/Accordion.jsx"},{"name":"AccordionContent","sourcePath":"components/display/Accordion.jsx"},{"name":"AspectRatio","sourcePath":"components/display/AspectRatio.jsx"},{"name":"Avatar","sourcePath":"components/display/Avatar.jsx"},{"name":"AvatarImage","sourcePath":"components/display/Avatar.jsx"},{"name":"AvatarFallback","sourcePath":"components/display/Avatar.jsx"},{"name":"AvatarBadge","sourcePath":"components/display/Avatar.jsx"},{"name":"AvatarGroup","sourcePath":"components/display/Avatar.jsx"},{"name":"AvatarGroupCount","sourcePath":"components/display/Avatar.jsx"},{"name":"Badge","sourcePath":"components/display/Badge.jsx"},{"name":"CardHeader","sourcePath":"components/display/Card.jsx"},{"name":"CardTitle","sourcePath":"components/display/Card.jsx"},{"name":"CardDescription","sourcePath":"components/display/Card.jsx"},{"name":"CardAction","sourcePath":"components/display/Card.jsx"},{"name":"CardContent","sourcePath":"components/display/Card.jsx"},{"name":"CardFooter","sourcePath":"components/display/Card.jsx"},{"name":"Card","sourcePath":"components/display/Card.jsx"},{"name":"Carousel","sourcePath":"components/display/Carousel.jsx"},{"name":"CarouselContent","sourcePath":"components/display/Carousel.jsx"},{"name":"CarouselItem","sourcePath":"components/display/Carousel.jsx"},{"name":"CarouselPrevious","sourcePath":"components/display/Carousel.jsx"},{"name":"CarouselNext","sourcePath":"components/display/Carousel.jsx"},{"name":"Collapsible","sourcePath":"components/display/Collapsible.jsx"},{"name":"CollapsibleTrigger","sourcePath":"components/display/Collapsible.jsx"},{"name":"CollapsibleContent","sourcePath":"components/display/Collapsible.jsx"},{"name":"DirectionProvider","sourcePath":"components/display/Direction.jsx"},{"name":"Divider","sourcePath":"components/display/Divider.jsx"},{"name":"ItemGroup","sourcePath":"components/display/Item.jsx"},{"name":"ItemSeparator","sourcePath":"components/display/Item.jsx"},{"name":"Item","sourcePath":"components/display/Item.jsx"},{"name":"ItemMedia","sourcePath":"components/display/Item.jsx"},{"name":"ItemContent","sourcePath":"components/display/Item.jsx"},{"name":"ItemTitle","sourcePath":"components/display/Item.jsx"},{"name":"ItemDescription","sourcePath":"components/display/Item.jsx"},{"name":"ItemActions","sourcePath":"components/display/Item.jsx"},{"name":"ItemHeader","sourcePath":"components/display/Item.jsx"},{"name":"ItemFooter","sourcePath":"components/display/Item.jsx"},{"name":"Kbd","sourcePath":"components/display/Kbd.jsx"},{"name":"KbdGroup","sourcePath":"components/display/Kbd.jsx"},{"name":"Link","sourcePath":"components/display/Link.jsx"},{"name":"ResizablePanelGroup","sourcePath":"components/display/Resizable.jsx"},{"name":"ResizablePanel","sourcePath":"components/display/Resizable.jsx"},{"name":"ResizableHandle","sourcePath":"components/display/Resizable.jsx"},{"name":"ScrollArea","sourcePath":"components/display/ScrollArea.jsx"},{"name":"ScrollBar","sourcePath":"components/display/ScrollArea.jsx"},{"name":"Separator","sourcePath":"components/display/Separator.jsx"},{"name":"Tag","sourcePath":"components/display/Tag.jsx"},{"name":"Timeline","sourcePath":"components/display/Timeline.jsx"},{"name":"Toolbar","sourcePath":"components/display/Toolbar.jsx"},{"name":"TreeList","sourcePath":"components/display/TreeList.jsx"},{"name":"Alert","sourcePath":"components/feedback/Alert.jsx"},{"name":"AlertTitle","sourcePath":"components/feedback/Alert.jsx"},{"name":"AlertDescription","sourcePath":"components/feedback/Alert.jsx"},{"name":"AlertAction","sourcePath":"components/feedback/Alert.jsx"},{"name":"AlertDialog","sourcePath":"components/feedback/AlertDialog.jsx"},{"name":"AlertDialogTrigger","sourcePath":"components/feedback/AlertDialog.jsx"},{"name":"AlertDialogPortal","sourcePath":"components/feedback/AlertDialog.jsx"},{"name":"AlertDialogOverlay","sourcePath":"components/feedback/AlertDialog.jsx"},{"name":"AlertDialogContent","sourcePath":"components/feedback/AlertDialog.jsx"},{"name":"AlertDialogHeader","sourcePath":"components/feedback/AlertDialog.jsx"},{"name":"AlertDialogFooter","sourcePath":"components/feedback/AlertDialog.jsx"},{"name":"AlertDialogMedia","sourcePath":"components/feedback/AlertDialog.jsx"},{"name":"AlertDialogTitle","sourcePath":"components/feedback/AlertDialog.jsx"},{"name":"AlertDialogDescription","sourcePath":"components/feedback/AlertDialog.jsx"},{"name":"AlertDialogCancel","sourcePath":"components/feedback/AlertDialog.jsx"},{"name":"AlertDialogAction","sourcePath":"components/feedback/AlertDialog.jsx"},{"name":"Banner","sourcePath":"components/feedback/Banner.jsx"},{"name":"ConfirmDialog","sourcePath":"components/feedback/ConfirmDialog.jsx"},{"name":"Dialog","sourcePath":"components/feedback/Dialog.jsx"},{"name":"DialogTrigger","sourcePath":"components/feedback/Dialog.jsx"},{"name":"DialogPortal","sourcePath":"components/feedback/Dialog.jsx"},{"name":"DialogOverlay","sourcePath":"components/feedback/Dialog.jsx"},{"name":"DialogClose","sourcePath":"components/feedback/Dialog.jsx"},{"name":"DialogContent","sourcePath":"components/feedback/Dialog.jsx"},{"name":"DialogHeader","sourcePath":"components/feedback/Dialog.jsx"},{"name":"DialogFooter","sourcePath":"components/feedback/Dialog.jsx"},{"name":"DialogTitle","sourcePath":"components/feedback/Dialog.jsx"},{"name":"DialogDescription","sourcePath":"components/feedback/Dialog.jsx"},{"name":"Loader","sourcePath":"components/feedback/Loader.jsx"},{"name":"Progress","sourcePath":"components/feedback/Progress.jsx"},{"name":"Spinner","sourcePath":"components/feedback/Spinner.jsx"},{"name":"Toaster","sourcePath":"components/feedback/Toast.jsx"},{"name":"Tooltip","sourcePath":"components/feedback/Tooltip.jsx"},{"name":"TooltipProvider","sourcePath":"components/feedback/Tooltip.jsx"},{"name":"TooltipTrigger","sourcePath":"components/feedback/Tooltip.jsx"},{"name":"TooltipContent","sourcePath":"components/feedback/Tooltip.jsx"},{"name":"Attachment","sourcePath":"components/files/Attachment.jsx"},{"name":"AttachmentMedia","sourcePath":"components/files/Attachment.jsx"},{"name":"AttachmentContent","sourcePath":"components/files/Attachment.jsx"},{"name":"AttachmentTitle","sourcePath":"components/files/Attachment.jsx"},{"name":"AttachmentDescription","sourcePath":"components/files/Attachment.jsx"},{"name":"AttachmentActions","sourcePath":"components/files/Attachment.jsx"},{"name":"AttachmentAction","sourcePath":"components/files/Attachment.jsx"},{"name":"AttachmentTrigger","sourcePath":"components/files/Attachment.jsx"},{"name":"AttachmentGroup","sourcePath":"components/files/Attachment.jsx"},{"name":"FileDrop","sourcePath":"components/files/FileDrop.jsx"},{"name":"FileTile","sourcePath":"components/files/FileTile.jsx"},{"name":"FileTypeIcon","sourcePath":"components/files/FileTypeIcon.jsx"},{"name":"PaymentCard","sourcePath":"components/finance/PaymentCard.jsx"},{"name":"Button","sourcePath":"components/forms/Button.jsx"},{"name":"ButtonGroup","sourcePath":"components/forms/ButtonGroup.jsx"},{"name":"ButtonGroupText","sourcePath":"components/forms/ButtonGroup.jsx"},{"name":"ButtonGroupSeparator","sourcePath":"components/forms/ButtonGroup.jsx"},{"name":"ButtonTile","sourcePath":"components/forms/ButtonTile.jsx"},{"name":"ButtonTileGroup","sourcePath":"components/forms/ButtonTile.jsx"},{"name":"Checkbox","sourcePath":"components/forms/Checkbox.jsx"},{"name":"Combobox","sourcePath":"components/forms/Combobox.jsx"},{"name":"ComboboxValue","sourcePath":"components/forms/Combobox.jsx"},{"name":"ComboboxTrigger","sourcePath":"components/forms/Combobox.jsx"},{"name":"ComboboxClear","sourcePath":"components/forms/Combobox.jsx"},{"name":"ComboboxInput","sourcePath":"components/forms/Combobox.jsx"},{"name":"ComboboxContent","sourcePath":"components/forms/Combobox.jsx"},{"name":"ComboboxList","sourcePath":"components/forms/Combobox.jsx"},{"name":"ComboboxItem","sourcePath":"components/forms/Combobox.jsx"},{"name":"ComboboxGroup","sourcePath":"components/forms/Combobox.jsx"},{"name":"ComboboxLabel","sourcePath":"components/forms/Combobox.jsx"},{"name":"ComboboxCollection","sourcePath":"components/forms/Combobox.jsx"},{"name":"ComboboxEmpty","sourcePath":"components/forms/Combobox.jsx"},{"name":"ComboboxSeparator","sourcePath":"components/forms/Combobox.jsx"},{"name":"ComboboxChips","sourcePath":"components/forms/Combobox.jsx"},{"name":"ComboboxChip","sourcePath":"components/forms/Combobox.jsx"},{"name":"ComboboxChipsInput","sourcePath":"components/forms/Combobox.jsx"},{"name":"Field","sourcePath":"components/forms/Field.jsx"},{"name":"FieldSet","sourcePath":"components/forms/Field.jsx"},{"name":"FieldGroup","sourcePath":"components/forms/Field.jsx"},{"name":"FieldContent","sourcePath":"components/forms/Field.jsx"},{"name":"FieldLabel","sourcePath":"components/forms/Field.jsx"},{"name":"FieldTitle","sourcePath":"components/forms/Field.jsx"},{"name":"FieldDescription","sourcePath":"components/forms/Field.jsx"},{"name":"FieldLegend","sourcePath":"components/forms/Field.jsx"},{"name":"FieldSeparator","sourcePath":"components/forms/Field.jsx"},{"name":"FieldError","sourcePath":"components/forms/Field.jsx"},{"name":"IconButton","sourcePath":"components/forms/IconButton.jsx"},{"name":"Input","sourcePath":"components/forms/Input.jsx"},{"name":"InputGroup","sourcePath":"components/forms/InputGroup.jsx"},{"name":"InputGroupAddon","sourcePath":"components/forms/InputGroup.jsx"},{"name":"InputGroupButton","sourcePath":"components/forms/InputGroup.jsx"},{"name":"InputGroupInput","sourcePath":"components/forms/InputGroup.jsx"},{"name":"InputGroupTextarea","sourcePath":"components/forms/InputGroup.jsx"},{"name":"InputGroupText","sourcePath":"components/forms/InputGroup.jsx"},{"name":"InputOTP","sourcePath":"components/forms/InputOTP.jsx"},{"name":"InputOTPGroup","sourcePath":"components/forms/InputOTP.jsx"},{"name":"InputOTPSlot","sourcePath":"components/forms/InputOTP.jsx"},{"name":"InputOTPSeparator","sourcePath":"components/forms/InputOTP.jsx"},{"name":"Label","sourcePath":"components/forms/Label.jsx"},{"name":"NativeSelect","sourcePath":"components/forms/NativeSelect.jsx"},{"name":"NativeSelectOption","sourcePath":"components/forms/NativeSelect.jsx"},{"name":"NativeSelectOptGroup","sourcePath":"components/forms/NativeSelect.jsx"},{"name":"NumberInput","sourcePath":"components/forms/NumberInput.jsx"},{"name":"Questionnaire","sourcePath":"components/forms/Questionnaire.jsx"},{"name":"QuestionnaireProgress","sourcePath":"components/forms/Questionnaire.jsx"},{"name":"QuestionnaireItem","sourcePath":"components/forms/Questionnaire.jsx"},{"name":"QuestionnaireTitle","sourcePath":"components/forms/Questionnaire.jsx"},{"name":"QuestionnaireDescription","sourcePath":"components/forms/Questionnaire.jsx"},{"name":"QuestionnaireChoices","sourcePath":"components/forms/Questionnaire.jsx"},{"name":"QuestionnaireChoice","sourcePath":"components/forms/Questionnaire.jsx"},{"name":"QuestionnaireInput","sourcePath":"components/forms/Questionnaire.jsx"},{"name":"QuestionnaireError","sourcePath":"components/forms/Questionnaire.jsx"},{"name":"QuestionnaireActions","sourcePath":"components/forms/Questionnaire.jsx"},{"name":"QuestionnairePrevious","sourcePath":"components/forms/Questionnaire.jsx"},{"name":"QuestionnaireSkip","sourcePath":"components/forms/Questionnaire.jsx"},{"name":"QuestionnaireNext","sourcePath":"components/forms/Questionnaire.jsx"},{"name":"QuestionnaireSubmit","sourcePath":"components/forms/Questionnaire.jsx"},{"name":"RadioGroup","sourcePath":"components/forms/Radio.jsx"},{"name":"RadioGroupItem","sourcePath":"components/forms/Radio.jsx"},{"name":"Radio","sourcePath":"components/forms/Radio.jsx"},{"name":"Select","sourcePath":"components/forms/Select.jsx"},{"name":"SelectTrigger","sourcePath":"components/forms/Select.jsx"},{"name":"SelectValue","sourcePath":"components/forms/Select.jsx"},{"name":"SelectContent","sourcePath":"components/forms/Select.jsx"},{"name":"SelectGroup","sourcePath":"components/forms/Select.jsx"},{"name":"SelectLabel","sourcePath":"components/forms/Select.jsx"},{"name":"SelectSeparator","sourcePath":"components/forms/Select.jsx"},{"name":"SelectItem","sourcePath":"components/forms/Select.jsx"},{"name":"Slider","sourcePath":"components/forms/Slider.jsx"},{"name":"Switch","sourcePath":"components/forms/Switch.jsx"},{"name":"Textarea","sourcePath":"components/forms/Textarea.jsx"},{"name":"Toggle","sourcePath":"components/forms/Toggle.jsx"},{"name":"ToggleGroup","sourcePath":"components/forms/Toggle.jsx"},{"name":"ToggleGroupItem","sourcePath":"components/forms/Toggle.jsx"},{"name":"Icon","sourcePath":"components/icons/Icon.jsx"},{"name":"Breadcrumb","sourcePath":"components/navigation/Breadcrumbs.jsx"},{"name":"BreadcrumbList","sourcePath":"components/navigation/Breadcrumbs.jsx"},{"name":"BreadcrumbItem","sourcePath":"components/navigation/Breadcrumbs.jsx"},{"name":"BreadcrumbLink","sourcePath":"components/navigation/Breadcrumbs.jsx"},{"name":"BreadcrumbPage","sourcePath":"components/navigation/Breadcrumbs.jsx"},{"name":"BreadcrumbSeparator","sourcePath":"components/navigation/Breadcrumbs.jsx"},{"name":"BreadcrumbEllipsis","sourcePath":"components/navigation/Breadcrumbs.jsx"},{"name":"Menubar","sourcePath":"components/navigation/Menubar.jsx"},{"name":"MenubarMenu","sourcePath":"components/navigation/Menubar.jsx"},{"name":"MenubarTrigger","sourcePath":"components/navigation/Menubar.jsx"},{"name":"MenubarContent","sourcePath":"components/navigation/Menubar.jsx"},{"name":"MenubarPortal","sourcePath":"components/navigation/Menubar.jsx"},{"name":"MenubarGroup","sourcePath":"components/navigation/Menubar.jsx"},{"name":"MenubarRadioGroup","sourcePath":"components/navigation/Menubar.jsx"},{"name":"MenubarLabel","sourcePath":"components/navigation/Menubar.jsx"},{"name":"MenubarSeparator","sourcePath":"components/navigation/Menubar.jsx"},{"name":"MenubarShortcut","sourcePath":"components/navigation/Menubar.jsx"},{"name":"MenubarItem","sourcePath":"components/navigation/Menubar.jsx"},{"name":"MenubarCheckboxItem","sourcePath":"components/navigation/Menubar.jsx"},{"name":"MenubarRadioItem","sourcePath":"components/navigation/Menubar.jsx"},{"name":"MenubarSub","sourcePath":"components/navigation/Menubar.jsx"},{"name":"MenubarSubTrigger","sourcePath":"components/navigation/Menubar.jsx"},{"name":"MenubarSubContent","sourcePath":"components/navigation/Menubar.jsx"},{"name":"NavigationMenu","sourcePath":"components/navigation/NavigationMenu.jsx"},{"name":"NavigationMenuList","sourcePath":"components/navigation/NavigationMenu.jsx"},{"name":"NavigationMenuItem","sourcePath":"components/navigation/NavigationMenu.jsx"},{"name":"NavigationMenuTrigger","sourcePath":"components/navigation/NavigationMenu.jsx"},{"name":"NavigationMenuContent","sourcePath":"components/navigation/NavigationMenu.jsx"},{"name":"NavigationMenuLink","sourcePath":"components/navigation/NavigationMenu.jsx"},{"name":"NavigationMenuIndicator","sourcePath":"components/navigation/NavigationMenu.jsx"},{"name":"NavigationMenuViewport","sourcePath":"components/navigation/NavigationMenu.jsx"},{"name":"PageControl","sourcePath":"components/navigation/PageControl.jsx"},{"name":"Pagination","sourcePath":"components/navigation/Pagination.jsx"},{"name":"PaginationContent","sourcePath":"components/navigation/Pagination.jsx"},{"name":"PaginationItem","sourcePath":"components/navigation/Pagination.jsx"},{"name":"PaginationLink","sourcePath":"components/navigation/Pagination.jsx"},{"name":"PaginationPrevious","sourcePath":"components/navigation/Pagination.jsx"},{"name":"PaginationNext","sourcePath":"components/navigation/Pagination.jsx"},{"name":"PaginationEllipsis","sourcePath":"components/navigation/Pagination.jsx"},{"name":"SegmentedControl","sourcePath":"components/navigation/SegmentedControl.jsx"},{"name":"SideNav","sourcePath":"components/navigation/SideNav.jsx"},{"name":"SidebarProvider","sourcePath":"components/navigation/Sidebar.jsx"},{"name":"Sidebar","sourcePath":"components/navigation/Sidebar.jsx"},{"name":"SidebarTrigger","sourcePath":"components/navigation/Sidebar.jsx"},{"name":"SidebarRail","sourcePath":"components/navigation/Sidebar.jsx"},{"name":"SidebarInset","sourcePath":"components/navigation/Sidebar.jsx"},{"name":"SidebarHeader","sourcePath":"components/navigation/Sidebar.jsx"},{"name":"SidebarFooter","sourcePath":"components/navigation/Sidebar.jsx"},{"name":"SidebarContent","sourcePath":"components/navigation/Sidebar.jsx"},{"name":"SidebarGroup","sourcePath":"components/navigation/Sidebar.jsx"},{"name":"SidebarGroupContent","sourcePath":"components/navigation/Sidebar.jsx"},{"name":"SidebarMenu","sourcePath":"components/navigation/Sidebar.jsx"},{"name":"SidebarMenuItem","sourcePath":"components/navigation/Sidebar.jsx"},{"name":"SidebarMenuSub","sourcePath":"components/navigation/Sidebar.jsx"},{"name":"SidebarMenuSubItem","sourcePath":"components/navigation/Sidebar.jsx"},{"name":"SidebarInput","sourcePath":"components/navigation/Sidebar.jsx"},{"name":"SidebarSeparator","sourcePath":"components/navigation/Sidebar.jsx"},{"name":"SidebarGroupLabel","sourcePath":"components/navigation/Sidebar.jsx"},{"name":"SidebarGroupAction","sourcePath":"components/navigation/Sidebar.jsx"},{"name":"SidebarMenuButton","sourcePath":"components/navigation/Sidebar.jsx"},{"name":"SidebarMenuAction","sourcePath":"components/navigation/Sidebar.jsx"},{"name":"SidebarMenuBadge","sourcePath":"components/navigation/Sidebar.jsx"},{"name":"SidebarMenuSubButton","sourcePath":"components/navigation/Sidebar.jsx"},{"name":"SidebarMenuSkeleton","sourcePath":"components/navigation/Sidebar.jsx"},{"name":"SkipLink","sourcePath":"components/navigation/SkipLink.jsx"},{"name":"Steps","sourcePath":"components/navigation/Steps.jsx"},{"name":"Tabs","sourcePath":"components/navigation/Tabs.jsx"},{"name":"TabsList","sourcePath":"components/navigation/Tabs.jsx"},{"name":"TabsTrigger","sourcePath":"components/navigation/Tabs.jsx"},{"name":"TabsContent","sourcePath":"components/navigation/Tabs.jsx"},{"name":"TopNav","sourcePath":"components/navigation/TopNav.jsx"},{"name":"Command","sourcePath":"components/overlay/Command.jsx"},{"name":"CommandDialog","sourcePath":"components/overlay/Command.jsx"},{"name":"CommandInput","sourcePath":"components/overlay/Command.jsx"},{"name":"CommandList","sourcePath":"components/overlay/Command.jsx"},{"name":"CommandEmpty","sourcePath":"components/overlay/Command.jsx"},{"name":"CommandGroup","sourcePath":"components/overlay/Command.jsx"},{"name":"CommandItem","sourcePath":"components/overlay/Command.jsx"},{"name":"CommandShortcut","sourcePath":"components/overlay/Command.jsx"},{"name":"CommandSeparator","sourcePath":"components/overlay/Command.jsx"},{"name":"ContextMenu","sourcePath":"components/overlay/ContextMenu.jsx"},{"name":"ContextMenuTrigger","sourcePath":"components/overlay/ContextMenu.jsx"},{"name":"ContextMenuPortal","sourcePath":"components/overlay/ContextMenu.jsx"},{"name":"ContextMenuContent","sourcePath":"components/overlay/ContextMenu.jsx"},{"name":"ContextMenuGroup","sourcePath":"components/overlay/ContextMenu.jsx"},{"name":"ContextMenuLabel","sourcePath":"components/overlay/ContextMenu.jsx"},{"name":"ContextMenuSeparator","sourcePath":"components/overlay/ContextMenu.jsx"},{"name":"ContextMenuShortcut","sourcePath":"components/overlay/ContextMenu.jsx"},{"name":"ContextMenuItem","sourcePath":"components/overlay/ContextMenu.jsx"},{"name":"ContextMenuCheckboxItem","sourcePath":"components/overlay/ContextMenu.jsx"},{"name":"ContextMenuRadioGroup","sourcePath":"components/overlay/ContextMenu.jsx"},{"name":"ContextMenuRadioItem","sourcePath":"components/overlay/ContextMenu.jsx"},{"name":"ContextMenuSub","sourcePath":"components/overlay/ContextMenu.jsx"},{"name":"ContextMenuSubTrigger","sourcePath":"components/overlay/ContextMenu.jsx"},{"name":"ContextMenuSubContent","sourcePath":"components/overlay/ContextMenu.jsx"},{"name":"Drawer","sourcePath":"components/overlay/Drawer.jsx"},{"name":"DrawerTrigger","sourcePath":"components/overlay/Drawer.jsx"},{"name":"DrawerPortal","sourcePath":"components/overlay/Drawer.jsx"},{"name":"DrawerClose","sourcePath":"components/overlay/Drawer.jsx"},{"name":"DrawerOverlay","sourcePath":"components/overlay/Drawer.jsx"},{"name":"DrawerContent","sourcePath":"components/overlay/Drawer.jsx"},{"name":"DrawerHeader","sourcePath":"components/overlay/Drawer.jsx"},{"name":"DrawerFooter","sourcePath":"components/overlay/Drawer.jsx"},{"name":"DrawerTitle","sourcePath":"components/overlay/Drawer.jsx"},{"name":"DrawerDescription","sourcePath":"components/overlay/Drawer.jsx"},{"name":"DropdownMenu","sourcePath":"components/overlay/DropdownMenu.jsx"},{"name":"DropdownMenuTrigger","sourcePath":"components/overlay/DropdownMenu.jsx"},{"name":"DropdownMenuPortal","sourcePath":"components/overlay/DropdownMenu.jsx"},{"name":"DropdownMenuContent","sourcePath":"components/overlay/DropdownMenu.jsx"},{"name":"DropdownMenuGroup","sourcePath":"components/overlay/DropdownMenu.jsx"},{"name":"DropdownMenuLabel","sourcePath":"components/overlay/DropdownMenu.jsx"},{"name":"DropdownMenuSeparator","sourcePath":"components/overlay/DropdownMenu.jsx"},{"name":"DropdownMenuShortcut","sourcePath":"components/overlay/DropdownMenu.jsx"},{"name":"DropdownMenuItem","sourcePath":"components/overlay/DropdownMenu.jsx"},{"name":"DropdownMenuCheckboxItem","sourcePath":"components/overlay/DropdownMenu.jsx"},{"name":"DropdownMenuRadioGroup","sourcePath":"components/overlay/DropdownMenu.jsx"},{"name":"DropdownMenuRadioItem","sourcePath":"components/overlay/DropdownMenu.jsx"},{"name":"DropdownMenuSub","sourcePath":"components/overlay/DropdownMenu.jsx"},{"name":"DropdownMenuSubTrigger","sourcePath":"components/overlay/DropdownMenu.jsx"},{"name":"DropdownMenuSubContent","sourcePath":"components/overlay/DropdownMenu.jsx"},{"name":"HoverCard","sourcePath":"components/overlay/HoverCard.jsx"},{"name":"HoverCardTrigger","sourcePath":"components/overlay/HoverCard.jsx"},{"name":"HoverCardContent","sourcePath":"components/overlay/HoverCard.jsx"},{"name":"Popover","sourcePath":"components/overlay/Popover.jsx"},{"name":"PopoverTrigger","sourcePath":"components/overlay/Popover.jsx"},{"name":"PopoverContent","sourcePath":"components/overlay/Popover.jsx"},{"name":"PopoverHeader","sourcePath":"components/overlay/Popover.jsx"},{"name":"PopoverTitle","sourcePath":"components/overlay/Popover.jsx"},{"name":"PopoverDescription","sourcePath":"components/overlay/Popover.jsx"},{"name":"Portal","sourcePath":"components/overlay/Portal.jsx"},{"name":"Sheet","sourcePath":"components/overlay/Sheet.jsx"},{"name":"SheetTrigger","sourcePath":"components/overlay/Sheet.jsx"},{"name":"SheetClose","sourcePath":"components/overlay/Sheet.jsx"},{"name":"SheetContent","sourcePath":"components/overlay/Sheet.jsx"},{"name":"SheetHeader","sourcePath":"components/overlay/Sheet.jsx"},{"name":"SheetFooter","sourcePath":"components/overlay/Sheet.jsx"},{"name":"SheetTitle","sourcePath":"components/overlay/Sheet.jsx"},{"name":"SheetDescription","sourcePath":"components/overlay/Sheet.jsx"}],"publicHelpers":[{"name":"markerVariants","sourcePath":"components/ai/Marker.jsx"},{"name":"useMessageScroller","sourcePath":"components/ai/MessageScroller.jsx"},{"name":"useMessageScrollerVisibility","sourcePath":"components/ai/MessageScroller.jsx"},{"name":"useMessageScrollerScrollable","sourcePath":"components/ai/MessageScroller.jsx"},{"name":"useChart","sourcePath":"components/data/Chart.jsx"},{"name":"badgeVariants","sourcePath":"components/display/Badge.jsx"},{"name":"useDirection","sourcePath":"components/display/Direction.jsx"},{"name":"toast","sourcePath":"components/feedback/Toast.jsx"},{"name":"buttonVariants","sourcePath":"components/forms/Button.jsx"},{"name":"buttonGroupVariants","sourcePath":"components/forms/ButtonGroup.jsx"},{"name":"useComboboxAnchor","sourcePath":"components/forms/Combobox.jsx"},{"name":"toggleVariants","sourcePath":"components/forms/Toggle.jsx"},{"name":"navigationMenuTriggerStyle","sourcePath":"components/navigation/NavigationMenu.jsx"},{"name":"useSidebar","sourcePath":"components/navigation/Sidebar.jsx"}],"sourceHashes":{"components/ai/AgentRun.jsx":"9740e0e168e0","components/ai/Bubble.jsx":"1fbd306ae6c7","components/ai/ChatMessage.jsx":"340b11fa16a2","components/ai/Citation.jsx":"fa347392b603","components/ai/Confirmation.jsx":"728506173c53","components/ai/Conversation.jsx":"65c94e62a6ad","components/ai/DocumentCard.jsx":"8f4f7d915078","components/ai/FeedbackBar.jsx":"62b6cfeaaffe","components/ai/GeneratedImage.jsx":"6234c002f0c6","components/ai/Marker.jsx":"4a8e54cf1022","components/ai/Message.jsx":"631188fe9acc","components/ai/MessageScroller.jsx":"6cb5b51e4754","components/ai/ModelSelector.jsx":"d548d17acb45","components/ai/Player.jsx":"19f96c3a6137","components/ai/PromptComposer.jsx":"c5ba2f241a58","components/ai/PromptSteps.jsx":"428074df6cd1","components/ai/Reasoning.jsx":"6a54640d743d","components/ai/RichComposer.jsx":"6ed2836e79ac","components/ai/Sandbox.jsx":"6fd416228194","components/ai/SelectionQuote.jsx":"2ba728772ad9","components/ai/SourceCard.jsx":"a59aeb1e2ab7","components/ai/Suggestions.jsx":"11e4ed7c8075","components/ai/Task.jsx":"613d6bf8d05a","components/ai/Todo.jsx":"5c8653be0ea4","components/ai/ToolCall.jsx":"db8a7622cdf3","components/ai/Transcript.jsx":"3ecad5218a37","components/ai/UsageMeter.jsx":"81f526487208","components/ai/WebPreview.jsx":"a687438cda4f","components/code/CodeBlock.jsx":"425aa3230ddd","components/code/Console.jsx":"5a150480bfb5","components/code/CopyField.jsx":"24388f5ecb22","components/code/Diff.jsx":"9ef7d550ba0a","components/code/EnvList.jsx":"a7f4c13538c4","components/code/Exception.jsx":"7c9828556417","components/code/Terminal.jsx":"8ac53723a00b","components/data/BarChart.jsx":"65cc53d800b4","components/data/Chart.jsx":"4116e1e52fcd","components/data/DonutChart.jsx":"8e01d4fb22c5","components/data/EmptyState.jsx":"3cb763cd7519","components/data/KeyValueList.jsx":"3876b7c9581e","components/data/LineChart.jsx":"d8f687560f46","components/data/Skeleton.jsx":"51394e716271","components/data/Sparkline.jsx":"5b2a0e67cdae","components/data/Stat.jsx":"aba92e72a0f8","components/data/StatusDot.jsx":"197386782d10","components/data/Table.jsx":"4c8e6d36c789","components/dates/Calendar.jsx":"7eef87c841b2","components/dates/TimePicker.jsx":"53ca08de7713","components/display/Accordion.jsx":"ac9b1ec3ce0f","components/display/AspectRatio.jsx":"91558029d648","components/display/Avatar.jsx":"c9fa67934411","components/display/Badge.jsx":"5add4d5abc49","components/display/Card.jsx":"5a44823ed4d8","components/display/Carousel.jsx":"42d6b81c6d94","components/display/Collapsible.jsx":"59cbf5105219","components/display/Direction.jsx":"538f2d4cbf23","components/display/Divider.jsx":"ee51ca336cc7","components/display/Item.jsx":"517df3ae775f","components/display/Kbd.jsx":"cdbc07443e53","components/display/Link.jsx":"a0907910192e","components/display/Resizable.jsx":"74bc54184023","components/display/ScrollArea.jsx":"6c71af1111a2","components/display/Separator.jsx":"5c2b62cf7532","components/display/Tag.jsx":"68ef63dd5376","components/display/Timeline.jsx":"6c5bff5f4dcf","components/display/Toolbar.jsx":"57b27153a16d","components/display/TreeList.jsx":"af4eea96011f","components/feedback/Alert.jsx":"cc86b5cf69b8","components/feedback/AlertDialog.jsx":"6de283caaf90","components/feedback/Banner.jsx":"bc574fe23791","components/feedback/ConfirmDialog.jsx":"033b979e1aa6","components/feedback/Dialog.jsx":"e64903bd736b","components/feedback/Loader.jsx":"02efacc86905","components/feedback/Progress.jsx":"0964f54f5644","components/feedback/Spinner.jsx":"8781f16bf6b8","components/feedback/Toast.jsx":"bcc36a5655b7","components/feedback/Tooltip.jsx":"01d5d7eebc8a","components/files/Attachment.jsx":"bd63ebd29171","components/files/FileDrop.jsx":"92fa38dccfca","components/files/FileTile.jsx":"28af04d1303b","components/files/FileTypeIcon.jsx":"3bcdf5ca7eb9","components/finance/PaymentCard.jsx":"d748ed19cc19","components/forms/Button.jsx":"333bad10c851","components/forms/ButtonGroup.jsx":"df7d04210646","components/forms/ButtonTile.jsx":"094423c09bb6","components/forms/Checkbox.jsx":"143035f2f927","components/forms/Combobox.jsx":"6dee0a09daf1","components/forms/Field.jsx":"adf061cacd94","components/forms/IconButton.jsx":"967b0b3312fe","components/forms/Input.jsx":"f1d9a276d0c3","components/forms/InputGroup.jsx":"83ffa2cbe9aa","components/forms/InputOTP.jsx":"a8ad88b27b7b","components/forms/Label.jsx":"f0bfcb5ae210","components/forms/NativeSelect.jsx":"3748d7b3c22e","components/forms/NumberInput.jsx":"8e70f556dd2a","components/forms/Questionnaire.jsx":"d7068436b50d","components/forms/Radio.jsx":"4260e74d29a8","components/forms/Select.jsx":"a8347dc71072","components/forms/Slider.jsx":"024c8968cc3f","components/forms/Switch.jsx":"2dfaf598f930","components/forms/Textarea.jsx":"4cff27339452","components/forms/Toggle.jsx":"34fb9bcb789a","components/icons/Icon.jsx":"665217c8deb9","components/navigation/Breadcrumbs.jsx":"6d989a3f6a62","components/navigation/Menubar.jsx":"750cb05907e9","components/navigation/NavigationMenu.jsx":"685eb5ae76da","components/navigation/PageControl.jsx":"bad71d198daa","components/navigation/Pagination.jsx":"cc33e98c48ec","components/navigation/SegmentedControl.jsx":"5fb840f28f4d","components/navigation/SideNav.jsx":"1f9f1a3c89b0","components/navigation/Sidebar.jsx":"6f59e2724dd2","components/navigation/SkipLink.jsx":"fecad7edf487","components/navigation/Steps.jsx":"45c6c1162b22","components/navigation/Tabs.jsx":"03e9ddee16a7","components/navigation/TopNav.jsx":"967b11093c20","components/overlay/Command.jsx":"94de37721fcd","components/overlay/ContextMenu.jsx":"3ad8614ffe44","components/overlay/Drawer.jsx":"d934bc3534cb","components/overlay/DropdownMenu.jsx":"4ce8b91ecc97","components/overlay/HoverCard.jsx":"c5fdc7c37c0a","components/overlay/Popover.jsx":"5720287de557","components/overlay/Portal.jsx":"8295cec9f241","components/overlay/Sheet.jsx":"ecdd4f4758fa"},"inlinedExternals":[],"unexposedExports":[{"name":"computeDiff","sourcePath":"components/code/Diff.jsx"},{"name":"cssPct","sourcePath":"components/forms/Button.jsx"},{"name":"escapeLayerContext","sourcePath":"components/overlay/Portal.jsx"},{"name":"formatTime","sourcePath":"components/ai/Player.jsx"},{"name":"injectEfCss","sourcePath":"components/forms/Button.jsx"},{"name":"mergeRefs","sourcePath":"components/forms/Button.jsx"},{"name":"prefersReducedMotion","sourcePath":"components/forms/Button.jsx"},{"name":"useAnchoredStyle","sourcePath":"components/overlay/Portal.jsx"},{"name":"useEscapeLayer","sourcePath":"components/overlay/Portal.jsx"},{"name":"useFieldProps","sourcePath":"components/forms/Field.jsx"},{"name":"useIsoLayoutEffect","sourcePath":"components/forms/Button.jsx"},{"name":"useScrollLock","sourcePath":"components/overlay/Portal.jsx"}]} */
 
 (() => {
 
@@ -118,6 +118,8 @@ Object.assign(__ds_scope, { DirectionProvider, useDirection });
 try { (() => {
 function _extends() { return _extends = Object.assign ? Object.assign.bind() : function (n) { for (var e = 1; e < arguments.length; e++) { var t = arguments[e]; for (var r in t) ({}).hasOwnProperty.call(t, r) && (n[r] = t[r]); } return n; }, _extends.apply(null, arguments); }
 const _cache = {};
+// One request per glyph: instances mounting together share the in-flight fetch.
+const _inflight = {};
 function base() {
   if (window.__efBase !== undefined) return window.__efBase;
   const s = [...document.querySelectorAll('script')].find(el => el.src && el.src.includes('_ds_bundle.js'));
@@ -151,22 +153,27 @@ function Icon({
       return;
     }
     let live = true;
-    fetch(base() + 'assets/icons/' + name + '.svg').then(r => {
-      // A served 404 means the name is wrong; anything else — offline, a
-      // jsdom test with no base URL, a blocked request — is the environment,
-      // not the call site, so it stays quiet rather than crying wolf on
-      // every valid icon in a consumer's test run.
-      if (!r.ok) {
-        warnMissing(name);
-        return Promise.reject(new Error('HTTP ' + r.status));
-      }
-      return r.text();
-    }).then(t => {
-      _cache[name] = t;
+    if (!_inflight[name]) {
+      _inflight[name] = fetch(base() + 'assets/icons/' + name + '.svg').then(r => {
+        // A served 404 means the name is wrong; anything else — offline, a
+        // jsdom test with no base URL, a blocked request — is the environment,
+        // not the call site, so it stays quiet rather than crying wolf on
+        // every valid icon in a consumer's test run.
+        if (r.status === 404) {
+          warnMissing(name);
+          _cache[name] = '';
+          return '';
+        }
+        if (!r.ok) return '';
+        return r.text().then(t => _cache[name] = t);
+      })
+      // A network failure is not remembered, so a later mount tries again.
+      .catch(() => '').finally(() => {
+        delete _inflight[name];
+      });
+    }
+    _inflight[name].then(t => {
       if (live) setSvg(t);
-    }).catch(() => {
-      _cache[name] = '';
-      if (live) setSvg('');
     });
     return () => {
       live = false;
@@ -232,6 +239,8 @@ const CSS = `
 .ef-btn--link:hover{color:var(--text-link-hover);text-decoration:none}
 @keyframes ef-spin{to{transform:rotate(360deg)}}
 .ef-btn__spin{display:inline-flex;animation:ef-spin .7s linear infinite}
+/* Touch: fixed-size targets grow to --tap-min; small glyph buttons keep their look and get a centred --tap-min hit area instead. */
+@media (pointer:coarse){.ef-btn--xs{height:var(--tap-min)}.ef-btn--icon-xs{width:var(--tap-min);height:var(--tap-min)}}
 `;
 /**
  * Put a component's CSS in the document, inside the `meridian` cascade layer.
@@ -571,7 +580,7 @@ Object.assign(__ds_scope, { BubbleGroup, Bubble, BubbleContent, BubbleReactions 
 try { (() => {
 function _extends() { return _extends = Object.assign ? Object.assign.bind() : function (n) { for (var e = 1; e < arguments.length; e++) { var t = arguments[e]; for (var r in t) ({}).hasOwnProperty.call(t, r) && (n[r] = t[r]); } return n; }, _extends.apply(null, arguments); }
 const CSS = `
-.ef-citation{display:inline-flex;align-items:center;justify-content:center;min-width:16px;height:16px;padding:0 4px;margin:0 1px;vertical-align:super;border-radius:var(--radius-sm);border:1px solid var(--accent-subtle-border);background:var(--accent-subtle);color:var(--brand-700);font-family:var(--font-mono);font-size:10px;font-weight:600;text-decoration:none;cursor:pointer;line-height:1}
+.ef-citation{display:inline-flex;align-items:center;justify-content:center;min-width:16px;height:16px;padding:0 4px;margin:0 1px;vertical-align:super;border-radius:var(--radius-xs);border:1px solid var(--accent-subtle-border);background:var(--accent-subtle);color:var(--accent-subtle-fg, var(--brand-700));font-family:var(--font-mono);font-size:10px;font-weight:600;text-decoration:none;cursor:pointer;line-height:1}
 .ef-citation:hover{border-color:var(--brand-700)}
 .ef-citation:focus-visible{outline:none;box-shadow:var(--focus-ring)}
 .ef-citation__wrap{position:relative;display:inline}
@@ -590,10 +599,11 @@ const CSS = `
 .ef-sources__item:last-child{border-bottom:none}
 .ef-sources__item:hover{background:var(--surface-subtle)}
 .ef-sources__item:focus-visible{outline:none;box-shadow:var(--focus-ring)}
-.ef-sources__num{flex:none;display:inline-flex;align-items:center;justify-content:center;width:18px;height:18px;border-radius:var(--radius-sm);background:var(--accent-subtle);color:var(--brand-700);font-family:var(--font-mono);font-size:10.5px;font-weight:600}
+.ef-sources__num{flex:none;display:inline-flex;align-items:center;justify-content:center;width:18px;height:18px;border-radius:var(--radius-xs);background:var(--accent-subtle);color:var(--accent-subtle-fg, var(--brand-700));font-family:var(--font-mono);font-size:10.5px;font-weight:600}
 .ef-sources__title{flex:1;min-width:0;font-size:13.5px;font-weight:500;color:var(--text-primary);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .ef-sources__domain{flex:none;font-family:var(--font-mono);font-size:11.5px;color:var(--text-muted)}
 .ef-sources__ext{flex:none;display:inline-flex;color:var(--text-muted)}
+@media (pointer:coarse){.ef-citation__pop-btn{min-width:var(--tap-min);min-height:var(--tap-min)}}
 `;
 // Source and preview URLs usually come from model or tool output, so a
 // javascript:, vbscript: or data: URL must never reach an href or iframe src.
@@ -760,6 +770,7 @@ const CSS = `
 .ef-confirm__status{display:flex;align-items:center;gap:8px;padding:10px 14px 12px;font-size:13px;color:var(--text-secondary)}
 .ef-confirm__status--approved{color:var(--success-600,var(--text-secondary))}
 .ef-confirm__status--rejected{color:var(--text-muted)}
+@media (pointer:coarse){.ef-confirm__btn{min-height:var(--tap-min)}}
 `;
 function Confirmation({
   title,
@@ -835,6 +846,7 @@ const CSS = `
 .ef-conversation__jump:hover{color:var(--text-primary)}
 .ef-conversation__jump:focus-visible{outline:none;box-shadow:var(--focus-ring)}
 @keyframes ef-conversation-in{from{opacity:0;transform:translateX(-50%) translateY(4px)}}
+@media (pointer:coarse){.ef-conversation__jump{min-height:var(--tap-min)}}
 `;
 const Conversation = React.forwardRef(function Conversation({
   height = 420,
@@ -926,6 +938,7 @@ const CSS = `
 .ef-doccard__content p{margin:0 0 .8em}
 .ef-doccard__fade{position:absolute;inset-inline:0;bottom:0;height:72px;background:linear-gradient(to top,var(--surface-card),transparent);pointer-events:none;transition:opacity var(--dur-med) var(--ease-out)}
 .ef-doccard--open .ef-doccard__fade{opacity:0}
+@media (pointer:coarse){.ef-doccard__btn{min-width:var(--tap-min);min-height:var(--tap-min)}}
 `;
 function DocumentCard({
   title,
@@ -1018,9 +1031,10 @@ const CSS = `
 .ef-feedback__btn{display:inline-flex;align-items:center;justify-content:center;width:26px;height:26px;border:none;border-radius:var(--radius-sm);background:none;cursor:pointer;color:var(--text-muted);transition:color var(--dur-fast) var(--ease-out),background var(--dur-fast) var(--ease-out)}
 .ef-feedback__btn:hover{color:var(--text-primary);background:var(--surface-sunken)}
 .ef-feedback__btn:focus-visible{outline:none;box-shadow:var(--focus-ring)}
-.ef-feedback__btn--on{color:var(--brand-700);background:var(--accent-subtle)}
+.ef-feedback__btn--on{color:var(--accent-subtle-fg, var(--brand-700));background:var(--accent-subtle)}
 .ef-feedback__sep{width:1px;height:14px;background:var(--border-default);margin:0 5px}
 .ef-feedback__note{font-size:11.5px;color:var(--text-muted);margin-inline-start:6px}
+@media (pointer:coarse){.ef-feedback__btn{min-width:var(--tap-min);min-height:var(--tap-min)}}
 `;
 function FeedbackBar({
   onFeedback,
@@ -1126,6 +1140,7 @@ const CSS = `
 .ef-genimg__act:focus-visible{outline:none;box-shadow:var(--focus-ring)}
 .ef-genimg__retry{display:inline-flex;align-items:center;gap:6px;padding:7px 13px;border:1px solid var(--border-strong);border-radius:var(--radius-full);background:var(--surface-card);cursor:pointer;font-family:var(--font-sans);font-size:12.5px;font-weight:var(--weight-semibold);color:var(--text-primary)}
 .ef-genimg__err{color:var(--danger-600)}
+@media (pointer:coarse){.ef-genimg__act{min-width:var(--tap-min);min-height:var(--tap-min)}}
 `;
 function GeneratedImage({
   status = 'complete',
@@ -1380,6 +1395,7 @@ const CSS = `
 .ef-message-scroller__button:hover{background:var(--surface-sunken)}.ef-message-scroller__button:focus-visible{outline:0;box-shadow:var(--focus-ring)}
 .ef-message-scroller__button[data-active=false]{opacity:0;transform:translateY(4px);pointer-events:none}
 .ef-message-scroller__button[data-direction=start] .ef-message-scroller__button-icon{transform:rotate(180deg)}
+@media (pointer:coarse){.ef-message-scroller__button{min-width:var(--tap-min);min-height:var(--tap-min)}}
 `;
 const MessageScrollerContext = React.createContext(null);
 const join = (...values) => values.filter(Boolean).join(' ');
@@ -1683,6 +1699,7 @@ const CSS = `
 .ef-player__play{width:38px;height:38px;background:var(--accent);color:var(--accent-contrast)}
 .ef-player__play:hover{background:var(--accent-hover);color:var(--accent-contrast)}
 .ef-player__time{font-size:12px;color:var(--text-muted);font-variant-numeric:tabular-nums}
+@media (pointer:coarse){.ef-player__btn{min-width:var(--tap-min);min-height:var(--tap-min)}}
 `;
 function formatTime(s, hint) {
   const t = Math.max(0, Math.floor(s || 0));
@@ -2135,6 +2152,7 @@ const CSS = `
 .ef-richcomposer__itemicon{display:inline-flex;flex:none;color:var(--text-muted)}
 .ef-richcomposer__itemdesc{margin-inline-start:auto;font-size:12px;color:var(--text-muted);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .ef-richcomposer__empty{padding:8px 10px;font-size:13px;color:var(--text-muted)}
+@media (pointer:coarse){.ef-richcomposer__send{min-width:var(--tap-min);min-height:var(--tap-min)}}
 `;
 function findTrigger(root) {
   const s = window.getSelection();
@@ -2392,6 +2410,7 @@ const CSS = `
 .ef-sandbox__tab:focus-visible{outline:none;box-shadow:var(--focus-ring)}
 .ef-sandbox__panel{padding:12px 14px;font-family:var(--font-mono);font-size:12.5px;line-height:1.7;color:var(--text-secondary);overflow-x:auto}
 .ef-sandbox__panel pre{margin:0;white-space:pre-wrap;word-break:break-word}
+@media (pointer:coarse){.ef-sandbox__tab{min-height:var(--tap-min)}}
 `;
 const STATES = {
   running: 'Running',
@@ -2877,6 +2896,7 @@ const CSS = `
 .ef-toolcall__btn--accept{background:var(--accent);border-color:var(--accent);color:var(--accent-contrast)}
 .ef-toolcall__btn--accept:hover{background:var(--accent-hover)}
 .ef-toolcall__btn:focus-visible{outline:none;box-shadow:var(--focus-ring)}
+@media (pointer:coarse){.ef-toolcall__btn{min-height:var(--tap-min)}}
 `;
 const STATES = {
   pending: 'Queued',
@@ -3108,6 +3128,7 @@ function UsageMeter({
   warnAt = 0.8,
   animated,
   format,
+  locale = 'en-US',
   style,
   className,
   ...rest
@@ -3133,7 +3154,11 @@ function UsageMeter({
     return () => cancelAnimationFrame(raf);
   }, [used, animated]);
   const ratio = limit > 0 ? used / limit : 0;
-  const fmt = format || (v => Math.round(v).toLocaleString());
+  // Fixed default locale: the runtime default would differ between server and browser.
+  const nf = new Intl.NumberFormat(locale, {
+    maximumFractionDigits: 0
+  });
+  const fmt = format || (v => nf.format(Math.round(v)));
   const tone = ratio >= 1 ? ' ef-usage--over' : ratio >= warnAt ? ' ef-usage--warn' : '';
   const shownRatio = limit > 0 ? shown / limit : 0;
   return /*#__PURE__*/React.createElement("div", _extends({}, rest, {
@@ -3194,6 +3219,7 @@ const CSS = `
 .ef-webprev__log--error{color:var(--danger-600)}
 .ef-webprev__logicon{display:inline-flex;flex:none;margin-top:2px}
 .ef-webprev__badge{position:absolute;top:3px;inset-inline-end:3px;min-width:14px;height:14px;padding:0 4px;border-radius:var(--radius-full);background:var(--danger-600);color:var(--danger-contrast);font-size:9.5px;font-weight:var(--weight-semibold);display:inline-flex;align-items:center;justify-content:center;font-family:var(--font-sans)}
+@media (pointer:coarse){.ef-webprev__btn{min-width:var(--tap-min);min-height:var(--tap-min)}}
 `;
 // Model-supplied URL: only http(s), mailto and relative pass (see Citation.jsx).
 function safeUrl(url) {
@@ -3367,12 +3393,14 @@ Object.assign(__ds_scope, { WebPreview });
 try { (() => {
 function _extends() { return _extends = Object.assign ? Object.assign.bind() : function (n) { for (var e = 1; e < arguments.length; e++) { var t = arguments[e]; for (var r in t) ({}).hasOwnProperty.call(t, r) && (n[r] = t[r]); } return n; }, _extends.apply(null, arguments); }
 const CSS = `
-.ef-code{background:var(--surface-code);border:1px solid var(--border-code);border-radius:var(--radius-md);overflow:hidden}
+.ef-code{position:relative;background:var(--surface-code);border:1px solid var(--border-code);border-radius:var(--radius-md);overflow:hidden}
 .ef-code__head{display:flex;align-items:center;padding:7px 8px 7px 14px;border-bottom:1px solid var(--code-divider)}
 .ef-code__lang{font-family:var(--font-mono);font-size:11px;color:var(--code-ink-subtle)}
 .ef-code__copy{margin-inline-start:auto;display:inline-flex;min-height:24px;align-items:center;gap:5px;border:none;background:none;cursor:pointer;color:var(--code-ink-muted);font-family:var(--font-sans);font-size:12px;font-weight:var(--weight-semibold);padding:4px 8px;border-radius:var(--radius-sm);transition:color var(--dur-fast) var(--ease-out)}
 .ef-code__copy:hover{color:var(--code-ink-bright)}
 .ef-code__copy--done{color:var(--success-on-dark)}
+.ef-code__copy--failed{color:var(--danger-on-dark)}
+.ef-code__sr{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;border:0}
 @media (pointer:coarse){.ef-code__copy{min-height:var(--tap-min);min-width:var(--tap-min);justify-content:center}}
 .ef-code pre{margin:0;padding:14px 16px;overflow-x:auto;font-family:var(--font-mono);font-size:13px;line-height:1.6;color:var(--text-code)}
 .ef-code__win{position:relative;overflow:hidden;transition:height .45s cubic-bezier(.32,.72,0,1)}
@@ -3392,7 +3420,17 @@ function CodeBlock({
   ...rest
 }) {
   __ds_scope.injectEfCss('ef-css-code', CSS);
-  const [copied, setCopied] = React.useState(false);
+  // 'idle' | 'done' | 'failed': only a resolved clipboard write counts as copied.
+  const [copied, setCopied] = React.useState('idle');
+  const timer = React.useRef(null);
+  const live = React.useRef(true);
+  React.useEffect(() => {
+    live.current = true;
+    return () => {
+      live.current = false;
+      clearTimeout(timer.current);
+    };
+  }, []);
   const [open, setOpen] = React.useState(false);
   const [full, setFull] = React.useState(null);
   const ref = React.useRef(null);
@@ -3408,9 +3446,14 @@ function CodeBlock({
   }, [clip]);
   const copy = () => {
     const text = ref.current ? ref.current.textContent : '';
-    if (navigator.clipboard) navigator.clipboard.writeText(text).catch(() => {});
-    setCopied(true);
-    setTimeout(() => setCopied(false), 1600);
+    const write = typeof navigator !== 'undefined' && navigator.clipboard ? navigator.clipboard.writeText(text) : Promise.reject(new Error('no clipboard'));
+    const settle = result => {
+      if (!live.current) return;
+      setCopied(result);
+      clearTimeout(timer.current);
+      timer.current = setTimeout(() => setCopied('idle'), 1600);
+    };
+    write.then(() => settle('done'), () => settle('failed'));
   };
   return /*#__PURE__*/React.createElement("div", _extends({}, rest, {
     className: `ef-code${className ? ' ' + className : ''}`,
@@ -3421,12 +3464,15 @@ function CodeBlock({
     className: "ef-code__lang"
   }, title || lang), /*#__PURE__*/React.createElement("button", {
     type: "button",
-    className: `ef-code__copy${copied ? ' ef-code__copy--done' : ''}`,
+    className: `ef-code__copy${copied !== 'idle' ? ' ef-code__copy--' + copied : ''}`,
     onClick: copy
   }, /*#__PURE__*/React.createElement(__ds_scope.Icon, {
-    name: copied ? 'check' : 'copy',
+    name: copied === 'done' ? 'check' : copied === 'failed' ? 'circle-alert' : 'copy',
     size: 13
-  }), copied ? 'Copied' : 'Copy')), clip ? /*#__PURE__*/React.createElement("div", {
+  }), copied === 'done' ? 'Copied' : copied === 'failed' ? 'Copy failed' : 'Copy'), /*#__PURE__*/React.createElement("span", {
+    className: "ef-code__sr",
+    role: "status"
+  }, copied === 'done' ? 'Copied to clipboard' : copied === 'failed' ? 'Copy failed' : '')), clip ? /*#__PURE__*/React.createElement("div", {
     className: "ef-code__win",
     style: {
       height: full === null ? open ? undefined : clipHeight : open ? full : Math.min(full, clipHeight)
@@ -3947,6 +3993,7 @@ const CSS = `
 .ef-env__val{flex:1;min-width:0;margin-inline-start:auto;text-align:end;font-family:var(--font-mono);font-size:12.5px;color:var(--text-primary);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .ef-env__row .ef-env__btn{opacity:0;width:24px;height:24px}
 .ef-env__row:hover .ef-env__btn,.ef-env__row .ef-env__btn:focus-visible,.ef-env__row .ef-env__btn--done{opacity:1}
+@media (pointer:coarse){.ef-env__btn{min-width:var(--tap-min);min-height:var(--tap-min)}}
 `;
 const MASK = '••••••••';
 function Row({
@@ -4179,17 +4226,21 @@ try { (() => {
 function _extends() { return _extends = Object.assign ? Object.assign.bind() : function (n) { for (var e = 1; e < arguments.length; e++) { var t = arguments[e]; for (var r in t) ({}).hasOwnProperty.call(t, r) && (n[r] = t[r]); } return n; }, _extends.apply(null, arguments); }
 const CSS = `
 .ef-bars{display:flex;align-items:flex-end;gap:3px;width:100%}
-.ef-bars__bar{flex:1;min-width:3px;border-radius:2px 2px 0 0;background:var(--sand-200);transition:background var(--dur-fast) var(--ease-out)}
+.ef-bars__bar{flex:1;min-width:3px;border-radius:2px 2px 0 0;background:var(--text-muted);transition:background var(--dur-fast) var(--ease-out)}
 .ef-bars__bar--hi{background:var(--accent)}
 .ef-bars__bar:hover{background:var(--brand-700)}
+.ef-bars__sr{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;border:0}
 .ef-bars__labels{display:flex;justify-content:space-between;margin-top:6px;font-family:var(--font-mono);font-size:10px;color:var(--text-muted)}
 `;
+// Fixed default locale: the runtime default would differ between server and browser.
 function BarChart({
   data = [],
   height = 140,
   highlightLast = 0,
   labels,
   format,
+  locale = 'en-US',
+  'aria-label': ariaLabel,
   style,
   className,
   ...rest
@@ -4197,11 +4248,21 @@ function BarChart({
   __ds_scope.injectEfCss('ef-css-bars', CSS);
   const vals = data.map(d => typeof d === 'number' ? d : d.value);
   const max = Math.max(...vals, 1);
+  const nf = new Intl.NumberFormat(locale);
+  const fmt = v => format ? format(v) : nf.format(v);
+  const name = i => data[i] && data[i].label || labels && labels[i] || String(i + 1);
+  const top = vals.reduce((best, v, i) => v > vals[best] ? i : best, 0);
+  const summary = ariaLabel || (vals.length ? `Bar chart, ${vals.length} bar${vals.length === 1 ? '' : 's'}, highest ${name(top)} ${fmt(vals[top])}` : 'Bar chart, no data');
   return /*#__PURE__*/React.createElement("div", _extends({}, rest, {
     className: className,
-    style: style
+    style: {
+      position: 'relative',
+      ...style
+    }
   }), /*#__PURE__*/React.createElement("div", {
     className: "ef-bars",
+    role: "img",
+    "aria-label": summary,
     style: {
       height
     }
@@ -4211,9 +4272,20 @@ function BarChart({
     style: {
       height: __ds_scope.cssPct(Math.max(2, v / max * 100))
     },
-    title: (data[i] && data[i].label ? data[i].label + ' · ' : '') + (format ? format(v) : v.toLocaleString())
-  }))), labels && labels.length ? /*#__PURE__*/React.createElement("div", {
-    className: "ef-bars__labels"
+    title: (data[i] && data[i].label ? data[i].label + ' · ' : '') + fmt(v)
+  }))), vals.length ? /*#__PURE__*/React.createElement("table", {
+    className: "ef-bars__sr"
+  }, /*#__PURE__*/React.createElement("thead", null, /*#__PURE__*/React.createElement("tr", null, /*#__PURE__*/React.createElement("th", {
+    scope: "col"
+  }, "Label"), /*#__PURE__*/React.createElement("th", {
+    scope: "col"
+  }, "Value"))), /*#__PURE__*/React.createElement("tbody", null, vals.map((v, i) => /*#__PURE__*/React.createElement("tr", {
+    key: i
+  }, /*#__PURE__*/React.createElement("th", {
+    scope: "row"
+  }, name(i)), /*#__PURE__*/React.createElement("td", null, fmt(v)))))) : null, labels && labels.length ? /*#__PURE__*/React.createElement("div", {
+    className: "ef-bars__labels",
+    "aria-hidden": "true"
   }, labels.map((l, i) => /*#__PURE__*/React.createElement("span", {
     key: i
   }, l))) : null);
@@ -4303,6 +4375,7 @@ function payloadConfig(config, payload, key) {
 function ChartTooltipContent({
   active,
   payload,
+  locale = 'en-US',
   className,
   indicator = 'dot',
   hideLabel = false,
@@ -4346,7 +4419,7 @@ function ChartTooltipContent({
       className: "ef-chart-tooltip__name"
     }, nestLabel ? labelNode : null, configItem?.label || item.name), item.value != null ? /*#__PURE__*/React.createElement("span", {
       className: "ef-chart-tooltip__value"
-    }, typeof item.value === 'number' ? item.value.toLocaleString() : String(item.value)) : null));
+    }, typeof item.value === 'number' ? new Intl.NumberFormat(locale).format(item.value) : String(item.value)) : null));
   })));
 }
 function ChartLegend(props) {
@@ -4391,16 +4464,23 @@ const CSS = `
 .ef-donut__legend{display:flex;flex-direction:column;gap:8px}
 .ef-donut__item{display:flex;align-items:center;gap:8px;font-size:var(--text-sm);color:var(--text-secondary);border:none;background:none;padding:0;cursor:default;font-family:var(--font-sans);text-align:start}
 .ef-donut__swatch{width:9px;height:9px;border-radius:2px;flex:none}
+.ef-donut__sr{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;border:0}
 .ef-donut__val{margin-inline-start:auto;font-family:var(--font-mono);font-size:12px;color:var(--text-primary);padding-inline-start:14px}
 `;
-const PALETTE = ['var(--brand-950)', 'var(--brand-500)', 'var(--brand-200)', 'var(--sand-400)', 'var(--sand-200)'];
+// Categorical slots come from --chart-1..5 (tokens area). The fallbacks are the
+// old brand/sand steps, which fail the dataviz validator; they only apply until
+// the chart tokens are defined.
+const PALETTE = ['var(--chart-1, var(--brand-950))', 'var(--chart-2, var(--brand-500))', 'var(--chart-3, var(--brand-200))', 'var(--chart-4, var(--sand-400))', 'var(--chart-5, var(--sand-200))'];
+// Fixed default locale: the runtime default would differ between server and browser.
 function DonutChart({
-  data,
+  data = [],
   size = 140,
   thickness = 16,
   centerLabel,
   centerValue,
   format,
+  locale = 'en-US',
+  'aria-label': ariaLabel,
   style,
   className,
   ...rest
@@ -4408,15 +4488,21 @@ function DonutChart({
   __ds_scope.injectEfCss('ef-css-donut', CSS);
   const [hov, setHov] = React.useState(null);
   const total = data.reduce((s, d) => s + d.value, 0) || 1;
+  const nf = new Intl.NumberFormat(locale);
+  const fmt = v => format ? format(v) : nf.format(v);
+  const pct = v => Math.round(v / total * 100) + '%';
+  const summary = ariaLabel || (data.length ? 'Donut chart' + (centerLabel ? ', ' + centerLabel : '') + ': ' + data.map(d => `${d.label} ${pct(d.value)}`).join(', ') : 'Donut chart, no data');
   const R = 50 - thickness / 100 * 50;
   const C = 2 * Math.PI * R;
+  // A 2px surface gap between segments at any size (viewBox is 100 units wide).
+  const gap = 2 * 100 / size;
   let acc = 0;
   const segs = data.map((d, i) => {
     const frac = d.value / total;
     const seg = {
       ...d,
       i,
-      dash: `${Math.max(frac * C - 1.5, 0.5)} ${C}`,
+      dash: `${Math.max(frac * C - gap, 0.5)} ${C}`,
       offset: -acc * C,
       color: d.color || PALETTE[i % PALETTE.length]
     };
@@ -4425,8 +4511,13 @@ function DonutChart({
   });
   return /*#__PURE__*/React.createElement("div", _extends({}, rest, {
     className: `ef-donut${className ? ' ' + className : ''}`,
-    style: style
+    style: {
+      position: 'relative',
+      ...style
+    }
   }), /*#__PURE__*/React.createElement("div", {
+    role: "img",
+    "aria-label": summary,
     style: {
       position: 'relative',
       width: size,
@@ -4473,13 +4564,26 @@ function DonutChart({
       fontWeight: 600,
       color: 'var(--text-primary)'
     }
-  }, hov != null ? format ? format(segs[hov].value) : segs[hov].value.toLocaleString() : centerValue), /*#__PURE__*/React.createElement("span", {
+  }, hov != null ? fmt(segs[hov].value) : centerValue), /*#__PURE__*/React.createElement("span", {
     style: {
       fontSize: 11,
       color: 'var(--text-muted)'
     }
-  }, hov != null ? segs[hov].label : centerLabel))), /*#__PURE__*/React.createElement("div", {
-    className: "ef-donut__legend"
+  }, hov != null ? segs[hov].label : centerLabel))), data.length ? /*#__PURE__*/React.createElement("table", {
+    className: "ef-donut__sr"
+  }, /*#__PURE__*/React.createElement("thead", null, /*#__PURE__*/React.createElement("tr", null, /*#__PURE__*/React.createElement("th", {
+    scope: "col"
+  }, "Label"), /*#__PURE__*/React.createElement("th", {
+    scope: "col"
+  }, "Value"), /*#__PURE__*/React.createElement("th", {
+    scope: "col"
+  }, "Share"))), /*#__PURE__*/React.createElement("tbody", null, segs.map(sg => /*#__PURE__*/React.createElement("tr", {
+    key: sg.i
+  }, /*#__PURE__*/React.createElement("th", {
+    scope: "row"
+  }, sg.label), /*#__PURE__*/React.createElement("td", null, fmt(sg.value)), /*#__PURE__*/React.createElement("td", null, pct(sg.value)))))) : null, /*#__PURE__*/React.createElement("div", {
+    className: "ef-donut__legend",
+    "aria-hidden": "true"
   }, segs.map(s => /*#__PURE__*/React.createElement("span", {
     key: s.i,
     className: "ef-donut__item",
@@ -4496,7 +4600,7 @@ function DonutChart({
     }
   }), s.label, /*#__PURE__*/React.createElement("span", {
     className: "ef-donut__val"
-  }, Math.round(s.value / total * 100), "%")))));
+  }, pct(s.value))))));
 }
 Object.assign(__ds_scope, { DonutChart });
 })(); } catch (e) { __ds_ns.__errors.push({ path: "components/data/DonutChart.jsx", error: String((e && e.message) || e) }); }
@@ -4625,14 +4729,19 @@ try { (() => {
 function _extends() { return _extends = Object.assign ? Object.assign.bind() : function (n) { for (var e = 1; e < arguments.length; e++) { var t = arguments[e]; for (var r in t) ({}).hasOwnProperty.call(t, r) && (n[r] = t[r]); } return n; }, _extends.apply(null, arguments); }
 const CSS = `
 .ef-linechart{position:relative}
+.ef-linechart__sr{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;border:0}
 .ef-linechart__tip{position:absolute;transform:translate(-50%,-130%);background:var(--surface-inverse);color:var(--text-inverse);font-size:11px;font-weight:500;padding:4px 8px;border-radius:6px;white-space:nowrap;pointer-events:none;z-index:5}
 `;
+// A fixed default locale: the runtime default differs between server and
+// browser and would make the first render mismatch on hydration.
 function LineChart({
   data = [],
   height = 150,
   showArea = true,
   showDots = false,
   format,
+  locale = 'en-US',
+  'aria-label': ariaLabel,
   style,
   className,
   ...rest
@@ -4648,6 +4757,10 @@ function LineChart({
     min = Math.min(...vals);
   const span = max - min || 1;
   const n = data.length;
+  const nf = new Intl.NumberFormat(locale);
+  const fmt = v => format ? format(v) : nf.format(v);
+  const name = (d, i) => d.label != null && d.label !== '' ? d.label : String(i + 1);
+  const summary = ariaLabel || (n ? `Line chart, ${n} point${n === 1 ? '' : 's'}: ${name(data[0], 0)} ${fmt(data[0].value)} to ${name(data[n - 1], n - 1)} ${fmt(data[n - 1].value)}, low ${fmt(min)}, high ${fmt(max)}` : 'Line chart, no data');
   const x = i => PAD + (n === 1 ? 0.5 : i / (n - 1)) * (W - PAD * 2);
   const y = v => n === 1 ? H / 2 : H - PAD - (v - min) / span * (H - PAD * 2);
   // One reading has no left-to-right span; draw it as a flat line across the
@@ -4667,6 +4780,8 @@ function LineChart({
     onMouseMove: move,
     onMouseLeave: () => setHov(null)
   }), /*#__PURE__*/React.createElement("svg", {
+    role: "img",
+    "aria-label": summary,
     viewBox: `0 0 ${W} ${H}`,
     width: "100%",
     height: H,
@@ -4701,13 +4816,24 @@ function LineChart({
     stroke: "var(--border-strong)",
     strokeDasharray: "3 3",
     vectorEffect: "non-scaling-stroke"
-  })), hov != null && /*#__PURE__*/React.createElement("div", {
+  })), n ? /*#__PURE__*/React.createElement("table", {
+    className: "ef-linechart__sr"
+  }, /*#__PURE__*/React.createElement("thead", null, /*#__PURE__*/React.createElement("tr", null, /*#__PURE__*/React.createElement("th", {
+    scope: "col"
+  }, "Label"), /*#__PURE__*/React.createElement("th", {
+    scope: "col"
+  }, "Value"))), /*#__PURE__*/React.createElement("tbody", null, data.map((d, i) => /*#__PURE__*/React.createElement("tr", {
+    key: i
+  }, /*#__PURE__*/React.createElement("th", {
+    scope: "row"
+  }, name(d, i)), /*#__PURE__*/React.createElement("td", null, fmt(d.value)))))) : null, hov != null && /*#__PURE__*/React.createElement("div", {
+    "aria-hidden": "true",
     className: "ef-linechart__tip",
     style: {
       left: __ds_scope.cssPct(x(hov) / W * 100),
       top: __ds_scope.cssPct(y(data[hov].value) / H * 100)
     }
-  }, data[hov].label, data[hov].label ? ' · ' : '', format ? format(data[hov].value) : data[hov].value.toLocaleString()));
+  }, data[hov].label, data[hov].label ? ' · ' : '', fmt(data[hov].value)));
 }
 Object.assign(__ds_scope, { LineChart });
 })(); } catch (e) { __ds_ns.__errors.push({ path: "components/data/LineChart.jsx", error: String((e && e.message) || e) }); }
@@ -5225,7 +5351,7 @@ const CSS = `
 .ef-badge--outline{background:transparent;border-color:var(--border-strong);color:var(--text-primary)}
 .ef-badge--ghost{background:transparent;color:var(--text-secondary)}
 .ef-badge--link{height:auto;padding:0;background:transparent;color:var(--text-link)}
-.ef-badge--accent{background:var(--accent-subtle);color:var(--brand-700)}
+.ef-badge--accent{background:var(--accent-subtle);color:var(--accent-subtle-fg, var(--brand-700))}
 .ef-badge--success{background:var(--success-100);color:var(--success-600)}
 .ef-badge--warning{background:var(--warning-100);color:var(--warning-600)}
 .ef-badge--danger{background:var(--danger-100);color:var(--danger-600)}
@@ -5408,6 +5534,7 @@ const CSS = `
 .ef-carousel__nav--next{inset-inline-end:-14px;top:50%;transform:translateY(-50%)}
 .ef-carousel[data-orientation="vertical"]>.ef-carousel__nav--previous{inset-inline-start:50%;inset-block-start:-14px;top:auto;transform:translateX(-50%)}
 .ef-carousel[data-orientation="vertical"]>.ef-carousel__nav--next{inset-inline-end:auto;inset-inline-start:50%;inset-block-end:-14px;top:auto;transform:translateX(-50%)}
+@media (pointer:coarse){.ef-carousel__nav{min-width:var(--tap-min);min-height:var(--tap-min)}}
 `;
 const CarouselCtx = React.createContext(null);
 const EMPTY_PLUGINS = [];
@@ -5840,7 +5967,7 @@ Object.assign(__ds_scope, { Divider });
 try { (() => {
 function _extends() { return _extends = Object.assign ? Object.assign.bind() : function (n) { for (var e = 1; e < arguments.length; e++) { var t = arguments[e]; for (var r in t) ({}).hasOwnProperty.call(t, r) && (n[r] = t[r]); } return n; }, _extends.apply(null, arguments); }
 const CSS = `
-.ef-kbd{display:inline-flex;align-items:center;justify-content:center;min-width:18px;height:19px;padding:0 5px;border:1px solid var(--border-strong);border-bottom-width:2px;border-radius:var(--radius-sm);background:var(--surface-card);font-family:var(--font-mono);font-size:11px;color:var(--text-secondary);line-height:1}
+.ef-kbd{display:inline-flex;align-items:center;justify-content:center;min-width:18px;height:19px;padding:0 5px;border:1px solid var(--border-strong);border-bottom-width:2px;border-radius:var(--radius-xs);background:var(--surface-card);font-family:var(--font-mono);font-size:11px;color:var(--text-secondary);line-height:1}
 .ef-kbd-group{display:inline-flex;align-items:center;gap:4px}
 `;
 function joinClasses(base, className) {
@@ -6364,6 +6491,7 @@ const CSS = `
 .ef-tag__x{display:inline-flex;align-items:center;justify-content:center;width:20px;height:20px;margin:0;border:none;border-radius:var(--radius-sm);background:transparent;color:var(--text-muted);cursor:pointer;padding:0;transition:background var(--dur-fast) var(--ease-out),color var(--dur-fast) var(--ease-out)}
 .ef-tag__x:hover{background:var(--sand-200);color:var(--text-primary)}
 .ef-tag__x:focus-visible{outline:none;box-shadow:var(--focus-ring)}
+@media (pointer:coarse){.ef-tag__x{position:relative}.ef-tag__x::after{content:'';position:absolute;inset:calc((20px - var(--tap-min)) / 2)}}
 `;
 function Tag({
   icon,
@@ -6500,14 +6628,15 @@ const CSS = `
 .ef-tree{display:flex;flex-direction:column;gap:1px;font-size:var(--text-sm)}
 .ef-tree__row{display:flex;align-items:center;gap:7px;height:30px;padding:0 8px;border:none;border-radius:var(--radius-sm);background:none;cursor:pointer;text-align:start;font-family:var(--font-sans);font-size:var(--text-sm);color:var(--text-secondary);width:100%;transition:background var(--dur-fast) var(--ease-out),color var(--dur-fast) var(--ease-out)}
 .ef-tree__row:hover{background:var(--surface-sunken);color:var(--text-primary)}
-.ef-tree__row--sel{background:var(--accent-subtle);color:var(--brand-700);font-weight:var(--weight-semibold)}
-.ef-tree__row--sel:hover{background:var(--accent-subtle);color:var(--brand-700)}
+.ef-tree__row--sel{background:var(--accent-subtle);color:var(--accent-subtle-fg, var(--brand-700));font-weight:var(--weight-semibold)}
+.ef-tree__row--sel:hover{background:var(--accent-subtle);color:var(--accent-subtle-fg, var(--brand-700))}
 .ef-tree__row:focus-visible{outline:none;box-shadow:var(--focus-ring)}
 .ef-tree__chev{display:inline-flex;color:var(--text-muted);transition:transform var(--dur-fast) var(--ease-out);flex:none}
 .ef-tree__chev--open{transform:rotate(90deg)}
 .ef-tree__icon{display:inline-flex;flex:none;color:var(--text-muted)}
 .ef-tree__row--sel .ef-tree__icon{color:inherit}
 .ef-tree__count{margin-inline-start:auto;font-family:var(--font-mono);font-size:11px;color:var(--text-muted)}
+@media (pointer:coarse){.ef-tree__row{min-height:var(--tap-min)}}
 `;
 function Node({
   node,
@@ -6965,10 +7094,10 @@ Object.assign(__ds_scope, { Attachment, AttachmentMedia, AttachmentContent, Atta
 try { (() => {
 function _extends() { return _extends = Object.assign ? Object.assign.bind() : function (n) { for (var e = 1; e < arguments.length; e++) { var t = arguments[e]; for (var r in t) ({}).hasOwnProperty.call(t, r) && (n[r] = t[r]); } return n; }, _extends.apply(null, arguments); }
 const CSS = `
-.ef-filedrop{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;padding:32px 24px;border:1px dashed var(--sand-300);border-radius:var(--radius-md);background:var(--surface-card);cursor:pointer;text-align:center;transition:border-color var(--dur-fast) var(--ease-out),background var(--dur-fast) var(--ease-out)}
+.ef-filedrop{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;padding:32px 24px;border:1px dashed var(--border-control, var(--border-strong));border-radius:var(--radius-md);background:var(--surface-card);cursor:pointer;text-align:center;transition:border-color var(--dur-fast) var(--ease-out),background var(--dur-fast) var(--ease-out)}
 .ef-filedrop:hover,.ef-filedrop--over{border-color:var(--accent);background:var(--surface-subtle)}
 .ef-filedrop:focus-visible{outline:none;box-shadow:var(--focus-ring)}
-.ef-filedrop__icon{color:var(--sand-400)}
+.ef-filedrop__icon{color:var(--text-muted)}
 .ef-filedrop--over .ef-filedrop__icon,.ef-filedrop:hover .ef-filedrop__icon{color:var(--text-primary)}
 .ef-filedrop__title{font-size:var(--text-md);font-weight:var(--weight-semibold);color:var(--text-primary)}
 .ef-filedrop__action{color:var(--text-link);font-weight:var(--weight-semibold)}
@@ -6980,11 +7109,15 @@ function accepts(file, accept) {
   if (!accept) return true;
   const name = (file.name || '').toLowerCase();
   const type = (file.type || '').toLowerCase();
-  return accept.split(',').map(t => t.trim().toLowerCase()).filter(Boolean).some(t => t.startsWith('.') ? name.endsWith(t) : t.endsWith('/*') ? type.startsWith(t.slice(0, -1)) : type === t);
+  const tokens = accept.split(',').map(t => t.trim().toLowerCase()).filter(Boolean);
+  if (!tokens.length || tokens.includes('*/*') || tokens.includes('*')) return true;
+  return tokens.some(t => t.startsWith('.') ? name.endsWith(t) : t.endsWith('/*') ? type.startsWith(t.slice(0, -1)) : type === t);
 }
 function FileDrop({
   onFiles,
+  onReject,
   accept,
+  maxSize,
   multiple = true,
   title,
   hint,
@@ -6995,10 +7128,23 @@ function FileDrop({
   __ds_scope.injectEfCss('ef-css-filedrop', CSS);
   const [over, setOver] = React.useState(false);
   const inputRef = React.useRef(null);
+  // Every file ends up in onFiles or in one onReject(files, reason) call;
+  // reasons are checked in order: 'type', then 'size', then 'count'.
   const handle = files => {
-    if (!onFiles || !files) return;
-    const ok = [...files].filter(f => accepts(f, accept));
-    if (ok.length) onFiles(multiple ? ok : ok.slice(0, 1));
+    if (!files) return;
+    const all = [...files];
+    const wrongType = all.filter(f => !accepts(f, accept));
+    const typed = all.filter(f => accepts(f, accept));
+    const tooBig = maxSize != null ? typed.filter(f => f.size > maxSize) : [];
+    const sized = typed.filter(f => !tooBig.includes(f));
+    const ok = multiple ? sized : sized.slice(0, 1);
+    const extra = sized.slice(ok.length);
+    if (onReject) {
+      if (wrongType.length) onReject(wrongType, 'type');
+      if (tooBig.length) onReject(tooBig, 'size');
+      if (extra.length) onReject(extra, 'count');
+    }
+    if (onFiles && ok.length) onFiles(ok);
   };
   return /*#__PURE__*/React.createElement("div", _extends({}, rest, {
     role: "button",
@@ -7608,7 +7754,7 @@ const CSS = `
 .ef-check--disabled{opacity:.45;cursor:not-allowed}
 .ef-check--disabled .ef-check__label{cursor:not-allowed}
 .ef-check__input{position:absolute;width:1px;height:1px;overflow:hidden;opacity:0;pointer-events:none}
-.ef-check__box{display:inline-flex;align-items:center;justify-content:center;flex:none;width:18px;height:18px;margin-top:1px;padding:0;border:1.5px solid var(--border-strong);border-radius:var(--radius-xs);background:var(--surface-card);color:var(--accent-contrast);cursor:pointer;transition:background var(--dur-fast) var(--ease-out),border-color var(--dur-fast) var(--ease-out),transform var(--dur-med) var(--ease-spring)}
+.ef-check__box{display:inline-flex;align-items:center;justify-content:center;flex:none;width:18px;height:18px;margin-top:1px;padding:0;border:1.5px solid var(--border-control,var(--border-strong));border-radius:var(--radius-xs);background:var(--surface-card);color:var(--accent-contrast);cursor:pointer;transition:background var(--dur-fast) var(--ease-out),border-color var(--dur-fast) var(--ease-out),transform var(--dur-med) var(--ease-spring)}
 .ef-check__box svg{opacity:0;transform:scale(.5);transition:opacity var(--dur-fast) var(--ease-out),transform var(--dur-med) var(--ease-spring)}
 .ef-check__box[data-state="checked"],.ef-check__box[data-state="indeterminate"]{background:var(--accent);border-color:var(--accent)}
 .ef-check__box[data-state="checked"] svg,.ef-check__box[data-state="indeterminate"] svg{opacity:1;transform:scale(1)}
@@ -7617,6 +7763,8 @@ const CSS = `
 .ef-check__box[aria-invalid="true"]{border-color:var(--danger-600)}
 .ef-check__label{font-size:var(--text-md);color:var(--text-primary);line-height:1.4;cursor:pointer}
 .ef-check__desc{display:block;font-size:var(--text-sm);color:var(--text-muted)}
+/* Touch: fixed-size targets grow to --tap-min; small glyph buttons keep their look and get a centred --tap-min hit area instead. */
+@media (pointer:coarse){.ef-check__box{position:relative}.ef-check__box::before{content:"";position:absolute;inset:calc(50% - var(--tap-min) / 2)}}
 `;
 function stateName(value) {
   return value === 'indeterminate' ? 'indeterminate' : value ? 'checked' : 'unchecked';
@@ -7739,6 +7887,7 @@ const CSS = `
 .ef-table--dense td{padding:8px var(--table-pad-x);font-size:var(--text-sm)}
 .ef-table__row--click{cursor:pointer;transition:background var(--dur-fast) var(--ease-out)}
 .ef-table__row--click:hover{background:var(--surface-subtle)}
+.ef-table__row--click:focus-visible{outline:2px solid var(--focus-ring-color);outline-offset:-2px}
 .ef-table__row--sel{background:var(--accent-subtle)}
 .ef-table .ef-num{font-family:var(--font-mono);font-size:13px}
 .ef-table__sort{display:inline-flex;align-items:center;gap:4px;border:none;background:none;padding:0;margin:0;font:inherit;letter-spacing:inherit;text-transform:inherit;color:inherit;cursor:pointer}
@@ -7785,22 +7934,9 @@ const Table = React.forwardRef(function Table({
   ...rest
 }, ref) {
   __ds_scope.injectEfCss('ef-css-table', CSS);
-  if (!columns || !rows) {
-    return /*#__PURE__*/React.createElement("div", {
-      "data-slot": "table-container",
-      className: "ef-table-wrap"
-    }, /*#__PURE__*/React.createElement("table", _extends({
-      ref: ref
-    }, rest, {
-      "data-slot": "table",
-      className: `ef-table${dense ? ' ef-table--dense' : ''}${className ? ' ' + className : ''}`,
-      style: style
-    }), children));
-  }
-  // Without rowKey the key is the row's index in `rows`, not its sorted
-  // position, so a selection stays on the same row when the sort changes.
-  const order = React.useMemo(() => new Map(rows.map((row, i) => [row, i])), [rows]);
-  const key = (row, i) => rowKey ? typeof rowKey === 'function' ? rowKey(row) : row[rowKey] : order.has(row) ? order.get(row) : i;
+  // Hooks first: the composition branch below returns early, and hooks after
+  // it would drop sort and selection state whenever a table passes through it.
+
   const [innerSort, setInnerSort] = React.useState(defaultSort || null);
   const sort = sortProp !== undefined ? sortProp : innerSort;
   const applySort = next => {
@@ -7823,15 +7959,33 @@ const Table = React.forwardRef(function Table({
 
   // Sorting is applied here, not expected of the caller: a table that renders
   // a sort affordance it does not honour is worse than one with no affordance.
-  const sorted = React.useMemo(() => {
-    if (!sort || !sort.key) return rows;
+  // Sort positions, not row objects: without rowKey a row's key is its index in
+  // `rows`, so a selection stays on the same row when the sort changes, and a
+  // row object listed twice still gets two keys.
+  const order = React.useMemo(() => {
+    const idx = (rows || []).map((_, i) => i);
+    if (!rows || !columns || !sort || !sort.key) return idx;
     const col = columns.find(c => c.key === sort.key);
-    if (!col) return rows;
+    if (!col) return idx;
     const get = col.sortAccessor || (row => row[col.key]);
     // Negate rather than reverse, so rows with equal keys keep their order.
     const sign = sort.direction === 'desc' ? -1 : 1;
-    return rows.slice().sort((x, y) => sign * compare(get(x), get(y)));
+    return idx.sort((x, y) => sign * compare(get(rows[x]), get(rows[y])));
   }, [rows, columns, sort]);
+  const sorted = rows ? order.map(i => rows[i]) : rows;
+  const key = (row, pos) => rowKey ? typeof rowKey === 'function' ? rowKey(row) : row[rowKey] : order[pos];
+  if (!columns || !rows) {
+    return /*#__PURE__*/React.createElement("div", {
+      "data-slot": "table-container",
+      className: "ef-table-wrap"
+    }, /*#__PURE__*/React.createElement("table", _extends({
+      ref: ref
+    }, rest, {
+      "data-slot": "table",
+      className: `ef-table${dense ? ' ef-table--dense' : ''}${className ? ' ' + className : ''}`,
+      style: style
+    }), children));
+  }
   const allKeys = sorted.map((r, i) => key(r, i));
   const allOn = allKeys.length > 0 && allKeys.every(k => selected.includes(k));
   const someOn = !allOn && allKeys.some(k => selected.includes(k));
@@ -7894,7 +8048,14 @@ const Table = React.forwardRef(function Table({
     return /*#__PURE__*/React.createElement("tr", {
       key: k,
       className: `${onRowClick ? 'ef-table__row--click' : ''}${isSel ? ' ef-table__row--sel' : ''}`.trim() || undefined,
-      onClick: onRowClick ? () => onRowClick(row) : undefined
+      onClick: onRowClick ? () => onRowClick(row) : undefined,
+      tabIndex: onRowClick ? 0 : undefined,
+      onKeyDown: onRowClick ? e => {
+        // Only the row itself: Enter on a button or link inside it is that control's.
+        if (e.target !== e.currentTarget || e.key !== 'Enter' && e.key !== ' ') return;
+        e.preventDefault();
+        onRowClick(row);
+      } : undefined
     }, selectable ? /*#__PURE__*/React.createElement("td", {
       className: "ef-table__sel",
       onClick: e => e.stopPropagation()
@@ -8074,6 +8235,7 @@ const CSS = `
 .ef-composer__send:disabled{background:var(--sand-200);color:var(--sand-400);cursor:not-allowed}
 .ef-composer__send:focus-visible{outline:none;box-shadow:var(--focus-ring)}
 .ef-composer__hint{font-size:var(--text-xs);color:var(--text-muted);padding:0 4px}
+@media (pointer:coarse){.ef-composer__send{min-width:var(--tap-min);min-height:var(--tap-min)}}
 `;
 const PromptComposer = React.forwardRef(function PromptComposer({
   value,
@@ -8181,10 +8343,11 @@ Object.assign(__ds_scope, { PromptComposer });
 try { (() => {
 function _extends() { return _extends = Object.assign ? Object.assign.bind() : function (n) { for (var e = 1; e < arguments.length; e++) { var t = arguments[e]; for (var r in t) ({}).hasOwnProperty.call(t, r) && (n[r] = t[r]); } return n; }, _extends.apply(null, arguments); }
 const CSS = `
-.ef-copyfield{display:flex;flex-direction:column;gap:6px}
+.ef-copyfield{position:relative;display:flex;flex-direction:column;gap:6px}
 .ef-copyfield__label{font-size:var(--text-sm);font-weight:var(--weight-semibold);color:var(--text-primary)}
 .ef-copyfield{min-width:0}
 .ef-copyfield__box{display:flex;align-items:center;gap:8px;min-width:0;max-width:100%;height:var(--control-h-md);padding:0 4px 0 12px;border:1px solid var(--border-strong);border-radius:var(--radius-sm);background:var(--surface-sunken)}
+.ef-copyfield__sr{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;border:0}
 .ef-copyfield__value{flex:1;min-width:0;font-family:var(--font-mono);font-size:13px;color:var(--text-primary);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;user-select:all}
 `;
 function CopyField({
@@ -8197,14 +8360,26 @@ function CopyField({
 }) {
   __ds_scope.injectEfCss('ef-css-copyfield', CSS);
   const [show, setShow] = React.useState(!secret);
-  const [copied, setCopied] = React.useState(false);
+  // 'idle' | 'done' | 'failed': only a resolved clipboard write counts as copied.
+  const [copied, setCopied] = React.useState('idle');
   const timer = React.useRef(null);
-  React.useEffect(() => () => clearTimeout(timer.current), []);
+  const live = React.useRef(true);
+  React.useEffect(() => {
+    live.current = true;
+    return () => {
+      live.current = false;
+      clearTimeout(timer.current);
+    };
+  }, []);
   const copy = () => {
-    if (navigator.clipboard) navigator.clipboard.writeText(value).catch(() => {});
-    setCopied(true);
-    clearTimeout(timer.current);
-    timer.current = setTimeout(() => setCopied(false), 1600);
+    const write = typeof navigator !== 'undefined' && navigator.clipboard ? navigator.clipboard.writeText(String(value)) : Promise.reject(new Error('no clipboard'));
+    const settle = result => {
+      if (!live.current) return;
+      setCopied(result);
+      clearTimeout(timer.current);
+      timer.current = setTimeout(() => setCopied('idle'), 1600);
+    };
+    write.then(() => settle('done'), () => settle('failed'));
   };
   const shown = show ? value : '•'.repeat(Math.min(24, String(value).length));
   const box = /*#__PURE__*/React.createElement("span", {
@@ -8217,11 +8392,14 @@ function CopyField({
     size: "sm",
     onClick: () => setShow(s => !s)
   }) : null, /*#__PURE__*/React.createElement(__ds_scope.IconButton, {
-    icon: copied ? 'check' : 'copy',
-    label: "Copy",
+    icon: copied === 'done' ? 'check' : copied === 'failed' ? 'circle-alert' : 'copy',
+    label: copied === 'done' ? 'Copied' : copied === 'failed' ? 'Copy failed' : 'Copy',
     size: "sm",
     onClick: copy
-  }));
+  }), /*#__PURE__*/React.createElement("span", {
+    className: "ef-copyfield__sr",
+    role: "status"
+  }, copied === 'done' ? 'Copied to clipboard' : copied === 'failed' ? 'Copy failed' : ''));
   if (!label) return React.cloneElement(box, {
     ...rest,
     className: 'ef-copyfield__box' + (className ? ' ' + className : ''),
@@ -8250,6 +8428,8 @@ const CSS = `
 .ef-banner__text{flex:1;min-width:0}
 .ef-banner__text strong{font-weight:var(--weight-semibold)}
 .ef-banner__action{flex:none;display:inline-flex;min-height:24px;align-items:center;font-weight:var(--weight-semibold);font-size:var(--text-sm);color:inherit;text-decoration:underline;text-underline-offset:3px;background:none;border:none;cursor:pointer;font-family:var(--font-sans);padding:4px 0}
+/* coarse pointers get the 44px touch target, like form controls do through --control-h-* */
+@media (pointer:coarse){.ef-banner__action{min-height:var(--tap-min)}}
 `;
 function Banner({
   tone = 'neutral',
@@ -8388,13 +8568,13 @@ const CSS = `
 .ef-field__hint{font-size:var(--text-xs);color:var(--text-muted)}
 .ef-field__error{font-size:var(--text-xs);color:var(--danger-600);display:flex;align-items:center;gap:4px}
 .ef-input{position:relative;display:flex;align-items:center}
-.ef-input__el{width:100%;height:var(--control-h-md);padding:0 12px;border:1px solid var(--border-strong);border-radius:var(--radius-sm);background:var(--surface-sunken);color:var(--text-primary);font-family:var(--font-sans);font-size:var(--text-md);transition:border-color var(--dur-fast) var(--ease-out),box-shadow var(--dur-fast) var(--ease-out)}
+.ef-input__el{width:100%;height:var(--control-h-md);padding:0 12px;border:1px solid var(--border-control,var(--border-strong));border-radius:var(--radius-sm);background:var(--surface-sunken);color:var(--text-primary);font-family:var(--font-sans);font-size:var(--text-md);transition:border-color var(--dur-fast) var(--ease-out),box-shadow var(--dur-fast) var(--ease-out)}
 .ef-input__el::placeholder{color:var(--text-muted)}
-.ef-input__el:hover:not(:disabled){border-color:var(--sand-400)}
+.ef-input__el:hover:not(:disabled){border-color:var(--border-control-hover,var(--sand-400))}
 .ef-input__el:focus-visible{outline:none;border-color:var(--accent);box-shadow:var(--focus-ring)}
 .ef-input__el:disabled{background:var(--surface-subtle);color:var(--text-muted);cursor:not-allowed;opacity:.5}
-.ef-file-input{position:relative;display:flex;width:100%;height:var(--control-h-md);align-items:center;gap:10px;padding:3px 12px 3px 3px;overflow:hidden;border:1px solid var(--border-strong);border-radius:var(--radius-sm);background:var(--surface-sunken);color:var(--text-muted);font-family:var(--font-sans);font-size:var(--text-md);transition:border-color var(--dur-fast) var(--ease-out),box-shadow var(--dur-fast) var(--ease-out)}
-.ef-file-input:hover{border-color:var(--sand-400)}.ef-file-input:focus-within{border-color:var(--accent);box-shadow:var(--focus-ring)}.ef-file-input:has(.ef-input__el:disabled){background:var(--surface-subtle);cursor:not-allowed;opacity:.5}
+.ef-file-input{position:relative;display:flex;width:100%;height:var(--control-h-md);align-items:center;gap:10px;padding:3px 12px 3px 3px;overflow:hidden;border:1px solid var(--border-control,var(--border-strong));border-radius:var(--radius-sm);background:var(--surface-sunken);color:var(--text-muted);font-family:var(--font-sans);font-size:var(--text-md);transition:border-color var(--dur-fast) var(--ease-out),box-shadow var(--dur-fast) var(--ease-out)}
+.ef-file-input:hover{border-color:var(--border-control-hover,var(--sand-400))}.ef-file-input:focus-within{border-color:var(--accent);box-shadow:var(--focus-ring)}.ef-file-input:has(.ef-input__el:disabled){background:var(--surface-subtle);cursor:not-allowed;opacity:.5}
 .ef-file-input__button{display:inline-flex;height:28px;align-items:center;gap:6px;padding-inline:10px;border-radius:var(--radius-sm);background:var(--accent);color:var(--accent-contrast);font-size:var(--text-sm);font-weight:var(--weight-semibold);white-space:nowrap;transition:background var(--dur-fast) var(--ease-out),transform var(--dur-med) var(--ease-spring)}
 .ef-file-input:hover:not(:has(.ef-input__el:disabled)) .ef-file-input__button{background:var(--accent-hover)}.ef-file-input:active:not(:has(.ef-input__el:disabled)) .ef-file-input__button{background:var(--accent-active);transform:scale(.985)}
 .ef-file-input__name{min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
@@ -8413,6 +8593,8 @@ const CSS = `
 .ef-input--reveal .ef-input__el--lg{padding-inline-end:42px}
 .ef-input__el[aria-invalid="true"]{border-color:var(--danger-600)}
 .ef-input__el[aria-invalid="true"]:focus-visible{box-shadow:var(--focus-ring-danger)}
+/* Touch: fixed-size targets grow to --tap-min; small glyph buttons keep their look and get a centred --tap-min hit area instead. */
+@media (pointer:coarse){.ef-input__reveal::before{content:"";position:absolute;inset:calc(50% - var(--tap-min) / 2)}}
 `;
 function classes(...values) {
   return values.filter(Boolean).join(' ');
@@ -8519,7 +8701,7 @@ Object.assign(__ds_scope, { Input });
 try { (() => {
 function _extends() { return _extends = Object.assign ? Object.assign.bind() : function (n) { for (var e = 1; e < arguments.length; e++) { var t = arguments[e]; for (var r in t) ({}).hasOwnProperty.call(t, r) && (n[r] = t[r]); } return n; }, _extends.apply(null, arguments); }
 const CSS = `
-.ef-input-group{display:flex;min-width:0;width:100%;align-items:center;border:1px solid var(--border-strong);border-radius:var(--radius-sm);background:var(--surface-card);transition:border-color var(--dur-fast) var(--ease-out),box-shadow var(--dur-fast) var(--ease-out)}
+.ef-input-group{display:flex;min-width:0;width:100%;align-items:center;border:1px solid var(--border-control,var(--border-strong));border-radius:var(--radius-sm);background:var(--surface-card);transition:border-color var(--dur-fast) var(--ease-out),box-shadow var(--dur-fast) var(--ease-out)}
 .ef-input-group:focus-within{border-color:var(--accent);box-shadow:var(--focus-ring)}.ef-input-group:has([aria-invalid="true"]){border-color:var(--danger-600)}
 .ef-input-group:has(textarea){flex-wrap:wrap}.ef-input-group__control{min-width:0;flex:1;border:0;background:transparent;font:inherit;color:var(--text-primary)}
 input.ef-input-group__control{height:34px;padding:0 11px}textarea.ef-input-group__control{min-height:80px;padding:10px 11px;resize:vertical}.ef-input-group__control:focus{outline:none}.ef-input-group__control::placeholder{color:var(--text-muted)}
@@ -8528,6 +8710,8 @@ input.ef-input-group__control{height:34px;padding:0 11px}textarea.ef-input-group
 .ef-input-group__addon[data-align="block-start"],.ef-input-group__addon[data-align="block-end"]{width:100%;min-height:34px}.ef-input-group__addon[data-align="block-start"]{order:-1;border-block-end:1px solid var(--border-default)}.ef-input-group__addon[data-align="block-end"]{order:3;border-block-start:1px solid var(--border-default)}
 .ef-input-group__button{display:inline-flex;height:26px;align-items:center;justify-content:center;gap:5px;padding:0 8px;border:0;border-radius:var(--radius-sm);background:transparent;color:var(--text-secondary);font:inherit;font-size:var(--text-xs);cursor:pointer}.ef-input-group__button:hover{background:var(--surface-sunken);color:var(--text-primary)}.ef-input-group__button:focus-visible{outline:none;box-shadow:var(--focus-ring)}
 .ef-input-group__button[data-size^="icon"]{width:26px;padding:0}.ef-input-group__text{display:inline-flex;align-items:center;line-height:1;font-size:var(--text-sm);color:var(--text-muted)}.ef-input-group__text svg{width:16px;height:16px;stroke-width:2}
+/* Touch: fixed-size targets grow to --tap-min; small glyph buttons keep their look and get a centred --tap-min hit area instead. */
+@media (pointer:coarse){.ef-input-group__button{position:relative}.ef-input-group__button::before{content:"";position:absolute;inset:calc(50% - var(--tap-min) / 2)}}
 `;
 function cx(base, className) {
   return base + (className ? ` ${className}` : '');
@@ -8617,7 +8801,7 @@ const CSS = `
 .ef-otp__input:focus{outline:none}
 .ef-otp[data-disabled]{cursor:not-allowed;opacity:.5}
 .ef-otp__group{display:flex;align-items:center}
-.ef-otp__slot{position:relative;display:flex;width:40px;height:40px;align-items:center;justify-content:center;border:1px solid var(--border-strong);border-inline-end-width:0;background:var(--surface-card);color:var(--text-primary);font-family:var(--font-mono);font-size:var(--text-md);font-weight:var(--weight-semibold);transition:border-color var(--dur-fast) var(--ease-out),box-shadow var(--dur-fast) var(--ease-out)}
+.ef-otp__slot{position:relative;display:flex;width:40px;height:40px;align-items:center;justify-content:center;border:1px solid var(--border-control,var(--border-strong));border-inline-end-width:0;background:var(--surface-card);color:var(--text-primary);font-family:var(--font-mono);font-size:var(--text-md);font-weight:var(--weight-semibold);transition:border-color var(--dur-fast) var(--ease-out),box-shadow var(--dur-fast) var(--ease-out)}
 .ef-otp__slot:first-child{border-start-start-radius:var(--radius-md);border-end-start-radius:var(--radius-md)}
 .ef-otp__slot:last-child{border-inline-end-width:1px;border-start-end-radius:var(--radius-md);border-end-end-radius:var(--radius-md)}
 .ef-otp__slot[data-active]{z-index:1;border-color:var(--accent);box-shadow:var(--focus-ring)}
@@ -8792,7 +8976,7 @@ try { (() => {
 function _extends() { return _extends = Object.assign ? Object.assign.bind() : function (n) { for (var e = 1; e < arguments.length; e++) { var t = arguments[e]; for (var r in t) ({}).hasOwnProperty.call(t, r) && (n[r] = t[r]); } return n; }, _extends.apply(null, arguments); }
 const CSS = `
 .ef-native-select{position:relative;display:flex;align-items:center;width:100%}
-.ef-native-select select{width:100%;height:var(--control-h-md);appearance:none;padding-block:0;padding-inline:11px 32px;border:1px solid var(--border-strong);border-radius:var(--radius-sm);background:var(--surface-sunken);color:var(--text-primary);font:inherit;font-size:var(--text-sm);cursor:pointer}
+.ef-native-select select{width:100%;height:var(--control-h-md);appearance:none;padding-block:0;padding-inline:11px 32px;border:1px solid var(--border-control,var(--border-strong));border-radius:var(--radius-sm);background:var(--surface-sunken);color:var(--text-primary);font:inherit;font-size:var(--text-sm);cursor:pointer}
 .ef-native-select select:focus-visible{outline:none;box-shadow:var(--focus-ring)}
 .ef-native-select select:disabled{cursor:not-allowed;opacity:.5}
 .ef-native-select[data-size="sm"] select{height:var(--control-h-sm)}
@@ -8845,7 +9029,7 @@ const CSS = `
 .ef-cal__dropdowns{display:flex;flex:1;justify-content:center;gap:5px}.ef-cal__dropdowns .ef-native-select{width:auto}.ef-cal__dropdowns select{height:30px}
 .ef-cal__grid{display:grid;grid-template-columns:repeat(7,36px);gap:2px}
 .ef-cal__row{display:contents}
-.ef-cal__dow{text-align:center;font-size:10px;font-weight:var(--weight-semibold);letter-spacing:.06em;text-transform:uppercase;color:var(--text-muted);padding:5px 0}
+.ef-cal__dow{text-align:center;font-size:var(--text-xs);font-weight:var(--weight-semibold);color:var(--text-muted);padding:5px 0}
 .ef-cal__day{position:relative;display:grid;width:36px;height:34px;place-items:center;border:1px solid transparent;border-radius:var(--radius-sm);background:none;color:var(--text-primary);font:inherit;font-size:var(--text-sm);cursor:pointer}
 .ef-cal__day:hover:not(:disabled){background:var(--surface-sunken)}
 .ef-cal__day:focus-visible{outline:none;box-shadow:var(--focus-ring)}
@@ -8853,9 +9037,11 @@ const CSS = `
 .ef-cal__day[data-outside="true"]{color:var(--text-muted)}
 .ef-cal__day[data-today="true"]{border-color:var(--border-strong)}
 .ef-cal__day[data-selected="true"]{background:var(--accent);color:var(--accent-contrast);font-weight:var(--weight-semibold)}
-.ef-cal__day[data-range-middle="true"]{border-radius:0;background:var(--brand-100);color:var(--brand-950)}
+.ef-cal__day[data-range-middle="true"]{border-radius:0;background:var(--accent-subtle);color:var(--text-primary)}
 .ef-cal__day[data-range-start="true"]{border-start-end-radius:0;border-end-end-radius:0}
 .ef-cal__day[data-range-end="true"]{border-start-start-radius:0;border-end-start-radius:0}
+/* Touch: fixed-size targets grow to --tap-min; small glyph buttons keep their look and get a centred --tap-min hit area instead. */
+@media (pointer:coarse){.ef-cal{min-width:0}.ef-cal__month-wrap{width:auto}.ef-cal__grid{grid-template-columns:repeat(7,var(--tap-min))}.ef-cal__day{width:var(--tap-min);height:var(--tap-min)}}
 `;
 const sameDay = (a, b) => !!a && !!b && a.getFullYear() === b.getFullYear() && a.getMonth() === b.getMonth() && a.getDate() === b.getDate();
 const startDay = date => new Date(date.getFullYear(), date.getMonth(), date.getDate());
@@ -9162,8 +9348,8 @@ const CSS = `
 .ef-field__label{font-size:var(--text-sm);font-weight:var(--weight-semibold);color:var(--text-primary)}
 .ef-field__hint{font-size:var(--text-xs);color:var(--text-muted)}
 .ef-field__error{font-size:var(--text-xs);color:var(--danger-600);display:flex;align-items:center;gap:4px}
-.ef-number{display:flex;align-items:stretch;overflow:hidden;border:1px solid var(--border-strong);border-radius:var(--radius-sm);background:var(--surface-sunken);transition:border-color var(--dur-fast) var(--ease-out),box-shadow var(--dur-fast) var(--ease-out)}
-.ef-number:hover:not(.ef-number--disabled){border-color:var(--sand-400)}
+.ef-number{display:flex;align-items:stretch;overflow:hidden;border:1px solid var(--border-control,var(--border-strong));border-radius:var(--radius-sm);background:var(--surface-sunken);transition:border-color var(--dur-fast) var(--ease-out),box-shadow var(--dur-fast) var(--ease-out)}
+.ef-number:hover:not(.ef-number--disabled){border-color:var(--border-control-hover,var(--sand-400))}
 .ef-number:focus-within{border-color:var(--accent);box-shadow:var(--focus-ring)}
 .ef-number.ef-number--invalid{border-color:var(--danger-600)}
 .ef-number.ef-number--invalid:focus-within{box-shadow:var(--focus-ring-danger)}
@@ -9183,6 +9369,8 @@ const CSS = `
 .ef-number__step+.ef-number__step{border-top:1px solid var(--border-default)}
 .ef-number--sm .ef-number__step{width:22px}
 .ef-number--lg .ef-number__step{width:28px}
+/* Touch: fixed-size targets grow to --tap-min; small glyph buttons keep their look and get a centred --tap-min hit area instead. */
+@media (pointer:coarse){.ef-number__steps{flex-direction:row}.ef-number .ef-number__step{width:var(--tap-min)}.ef-number__step+.ef-number__step{border-top:0;border-inline-start:1px solid var(--border-default)}}
 `;
 // How many decimal places a number carries, so a commit can round away float
 // noise: 0.1 + 0.2 must land as 0.3, not 0.30000000000000004.
@@ -9815,7 +10003,7 @@ const CSS = `
 .ef-radio{display:inline-flex;align-items:flex-start;gap:10px;cursor:pointer;user-select:none}
 .ef-radio--disabled{opacity:.45;cursor:not-allowed}
 .ef-radio__input{position:absolute;opacity:0;width:0;height:0}
-.ef-radio__dot{display:inline-flex;align-items:center;justify-content:center;flex:none;width:18px;height:18px;margin-top:1px;border:1.5px solid var(--border-strong);border-radius:var(--radius-full);background:var(--surface-card);transition:border-color var(--dur-fast) var(--ease-out),transform var(--dur-med) var(--ease-spring)}
+.ef-radio__dot{display:inline-flex;align-items:center;justify-content:center;flex:none;width:18px;height:18px;margin-top:1px;border:1.5px solid var(--border-control,var(--border-strong));border-radius:var(--radius-full);background:var(--surface-card);transition:border-color var(--dur-fast) var(--ease-out),transform var(--dur-med) var(--ease-spring)}
 .ef-radio__dot::after{content:'';width:8px;height:8px;border-radius:var(--radius-full);background:var(--accent);opacity:0;transform:scale(.4);transition:opacity var(--dur-fast) var(--ease-out),transform var(--dur-med) var(--ease-spring)}
 .ef-radio__input:checked+.ef-radio__dot{border-color:var(--accent)}
 .ef-radio__input:checked+.ef-radio__dot::after{opacity:1;transform:scale(1)}
@@ -9824,6 +10012,8 @@ const CSS = `
 .ef-radio__input[aria-invalid="true"]+.ef-radio__dot{border-color:var(--danger-600)}
 .ef-radio__label{font-size:var(--text-md);color:var(--text-primary);line-height:1.4}
 .ef-radio__desc{display:block;font-size:var(--text-sm);color:var(--text-muted)}
+/* Touch: fixed-size targets grow to --tap-min; small glyph buttons keep their look and get a centred --tap-min hit area instead. */
+@media (pointer:coarse){.ef-radio__dot{position:relative}.ef-radio__dot::before{content:"";position:absolute;inset:calc(50% - var(--tap-min) / 2)}}
 `;
 const RadioGroupContext = React.createContext(null);
 const RadioGroup = React.forwardRef(function RadioGroup({
@@ -10054,9 +10244,9 @@ Object.assign(__ds_scope, { Slider });
 try { (() => {
 function _extends() { return _extends = Object.assign ? Object.assign.bind() : function (n) { for (var e = 1; e < arguments.length; e++) { var t = arguments[e]; for (var r in t) ({}).hasOwnProperty.call(t, r) && (n[r] = t[r]); } return n; }, _extends.apply(null, arguments); }
 const CSS = `
-.ef-switch-field{display:inline-flex;align-items:center;gap:10px;cursor:pointer;user-select:none}.ef-switch{--ef-switch-shift:15px;position:relative;display:inline-flex;flex:none;width:36px;height:21px;padding:0;border:0;border-radius:var(--radius-full);background:var(--border-strong);cursor:pointer;transition:background var(--dur-med) var(--ease-out)}
+.ef-switch-field{display:inline-flex;align-items:center;gap:10px;cursor:pointer;user-select:none}.ef-switch{--ef-switch-shift:15px;position:relative;display:inline-flex;flex:none;width:36px;height:21px;padding:0;border:0;border-radius:var(--radius-full);background:var(--border-control,var(--border-strong));cursor:pointer;transition:background var(--dur-med) var(--ease-out)}
 .ef-switch--disabled{opacity:.45;cursor:not-allowed}
-.ef-switch-field[data-disabled]{cursor:not-allowed}
+.ef-switch-field[data-disabled]{cursor:not-allowed}.ef-switch-field[data-disabled] .ef-switch__label{opacity:.45}
 .ef-switch:dir(rtl){--ef-switch-shift:-15px}.ef-switch[data-state="checked"]{background:var(--accent)}
 .ef-switch__track::after{content:'';position:absolute;top:2.5px;inset-inline-start:2.5px;width:16px;height:16px;border-radius:var(--radius-full);background:var(--surface-card);box-shadow:var(--shadow-sm);transition:transform var(--dur-med) var(--ease-spring)}
 .ef-switch[data-state="checked"] .ef-switch__track::after{transform:translateX(var(--ef-switch-shift))}.ef-switch:focus-visible{outline:none;box-shadow:var(--focus-ring)}
@@ -10126,7 +10316,8 @@ const Switch = React.forwardRef(function Switch({
   }, control, /*#__PURE__*/React.createElement("span", {
     id: labelId,
     className: "ef-switch__label",
-    onClick: () => {
+    onClick: event => {
+      event.preventDefault();
       if (!disabled) buttonRef.current?.click();
     }
   }, label), formValue);
@@ -10142,9 +10333,9 @@ const CSS = `
 .ef-field__label{font-size:var(--text-sm);font-weight:var(--weight-semibold);color:var(--text-primary)}
 .ef-field__hint{font-size:var(--text-xs);color:var(--text-muted)}
 .ef-field__error{font-size:var(--text-xs);color:var(--danger-600);display:flex;align-items:center;gap:4px}
-.ef-textarea{width:100%;min-height:80px;padding:10px 12px;border:1px solid var(--border-strong);border-radius:var(--radius-sm);background:var(--surface-sunken);color:var(--text-primary);font-family:var(--font-sans);font-size:var(--text-md);line-height:var(--leading-normal);resize:vertical;transition:border-color var(--dur-fast) var(--ease-out),box-shadow var(--dur-fast) var(--ease-out)}
+.ef-textarea{width:100%;min-height:80px;padding:10px 12px;border:1px solid var(--border-control,var(--border-strong));border-radius:var(--radius-sm);background:var(--surface-sunken);color:var(--text-primary);font-family:var(--font-sans);font-size:var(--text-md);line-height:var(--leading-normal);resize:vertical;transition:border-color var(--dur-fast) var(--ease-out),box-shadow var(--dur-fast) var(--ease-out)}
 .ef-textarea::placeholder{color:var(--text-muted)}
-.ef-textarea:hover:not(:disabled){border-color:var(--sand-400)}
+.ef-textarea:hover:not(:disabled){border-color:var(--border-control-hover,var(--sand-400))}
 .ef-textarea:focus{outline:none;border-color:var(--accent);box-shadow:var(--focus-ring)}
 .ef-textarea:disabled{background:var(--surface-subtle);color:var(--text-muted);cursor:not-allowed}
 .ef-textarea--invalid{border-color:var(--danger-600)}
@@ -10207,7 +10398,7 @@ function _extends() { return _extends = Object.assign ? Object.assign.bind() : f
 const CSS = `
 .ef-toggle{display:inline-flex;align-items:center;justify-content:center;gap:7px;min-width:36px;height:36px;padding:0 10px;border:1px solid transparent;border-radius:var(--radius-sm);background:transparent;cursor:pointer;font-family:var(--font-sans);font-size:var(--text-sm);font-weight:500;color:var(--text-secondary);transition:background var(--dur-fast) var(--ease-out),border-color var(--dur-fast) var(--ease-out),color var(--dur-fast) var(--ease-out)}
 .ef-toggle:hover:not(:disabled):not(.ef-toggle--on){background:var(--surface-sunken);color:var(--text-primary)}
-.ef-toggle--on{background:var(--accent-subtle);color:var(--text-link)}
+.ef-toggle--on{background:var(--accent-subtle);color:var(--accent-subtle-fg,var(--text-link))}
 .ef-toggle:focus-visible{outline:none;box-shadow:var(--focus-ring)}
 .ef-toggle:disabled{opacity:.45;cursor:not-allowed}
 .ef-toggle--outline{border-color:var(--border-strong)}
@@ -10215,6 +10406,8 @@ const CSS = `
 .ef-toggle--lg{height:40px;min-width:40px;padding:0 16px;font-size:var(--text-md)}
 .ef-toggle-group{display:inline-flex;gap:var(--ef-toggle-gap,8px);align-items:center}
 .ef-toggle-group[data-orientation="vertical"]{flex-direction:column;align-items:stretch}
+/* Touch: fixed-size targets grow to --tap-min; small glyph buttons keep their look and get a centred --tap-min hit area instead. */
+@media (pointer:coarse){.ef-toggle,.ef-toggle--sm,.ef-toggle--lg{height:var(--tap-min);min-width:var(--tap-min)}}
 `;
 const GroupCtx = React.createContext(null);
 function toggleVariants({
@@ -10473,7 +10666,7 @@ const CSS = `
 .ef-navigation-menu{position:relative;display:flex;width:max-content;max-width:100%;align-items:center;justify-content:center}
 .ef-navigation-menu__list{display:flex;flex:1;list-style:none;align-items:center;justify-content:center;gap:4px;margin:0;padding:0}
 .ef-navigation-menu__item{position:relative}
-.ef-navigation-menu__trigger{display:inline-flex;width:max-content;height:36px;align-items:center;justify-content:center;gap:5px;padding:0 14px;border:0;border-radius:var(--radius-md);outline:0;background:transparent;color:var(--text-primary);font:inherit;font-size:var(--text-sm);font-weight:var(--weight-medium);cursor:default;transition:background var(--dur-fast) var(--ease-out),box-shadow var(--dur-fast) var(--ease-out)}
+.ef-navigation-menu__trigger{display:inline-flex;width:max-content;height:36px;align-items:center;justify-content:center;gap:5px;padding:0 14px;border:0;border-radius:var(--radius-md);outline:0;background:transparent;color:var(--text-primary);font:inherit;font-size:var(--text-sm);font-weight:var(--weight-medium);cursor:pointer;transition:background var(--dur-fast) var(--ease-out),box-shadow var(--dur-fast) var(--ease-out)}
 .ef-navigation-menu__trigger:hover,.ef-navigation-menu__trigger:focus,.ef-navigation-menu__trigger[data-state=open]{background:var(--surface-sunken)}.ef-navigation-menu__trigger:focus-visible{box-shadow:var(--focus-ring)}
 .ef-navigation-menu__chevron{display:inline-flex;transition:transform var(--dur-med) var(--ease-out)}.ef-navigation-menu__trigger[data-state=open] .ef-navigation-menu__chevron{transform:rotate(180deg)}
 .ef-navigation-menu__content{min-width:280px;padding:8px;color:var(--text-primary);animation:ef-navigation-menu-in var(--dur-med) var(--ease-out)}
@@ -10481,10 +10674,12 @@ const CSS = `
 .ef-navigation-menu__viewport-wrap{position:absolute;inset-block-start:100%;inset-inline-start:0;z-index:var(--z-dropdown);display:flex;justify-content:center;padding-top:6px}
 .ef-navigation-menu__viewport{position:relative;width:max-content;min-width:280px;overflow:hidden;border:1px solid var(--border-default);border-radius:var(--radius-md);background:var(--surface-card);color:var(--text-primary);box-shadow:var(--shadow-md);transform-origin:top center;animation:ef-navigation-menu-viewport var(--dur-med) var(--ease-out)}
 .ef-navigation-menu__link{display:flex;flex-direction:column;gap:3px;padding:9px 10px;border-radius:var(--radius-sm);outline:0;color:var(--text-primary);font-size:var(--text-sm);text-decoration:none;transition:background var(--dur-fast) var(--ease-out)}
-.ef-navigation-menu__link:hover,.ef-navigation-menu__link:focus,.ef-navigation-menu__link[data-active=true]{background:var(--surface-sunken);text-decoration:none}.ef-navigation-menu__link:focus-visible{box-shadow:var(--focus-ring)}
+.ef-navigation-menu__link:hover,.ef-navigation-menu__link:focus,.ef-navigation-menu__link[data-active=true]{background:var(--surface-sunken);text-decoration:none}.ef-navigation-menu__link:focus-visible{box-shadow:inset 0 0 0 2px var(--focus-ring-color)}
 .ef-navigation-menu__indicator{position:absolute;inset-block-start:calc(100% - 3px);z-index:calc(var(--z-dropdown) + 1);display:flex;height:9px;align-items:flex-end;justify-content:center;pointer-events:none;transition:inset-inline-start var(--dur-med) var(--ease-out),width var(--dur-med) var(--ease-out)}
 .ef-navigation-menu__indicator-mark{width:9px;height:9px;transform:translateY(55%) rotate(45deg);border:1px solid var(--border-default);border-inline-end:0;border-block-end:0;border-radius:2px 0 0;background:var(--surface-card)}
 @keyframes ef-navigation-menu-in{from{opacity:0;transform:translateY(-4px)}}@keyframes ef-navigation-menu-viewport{from{opacity:0;transform:scale(.98)}}
+/* coarse pointers get the 44px touch target, like form controls do through --control-h-* */
+@media (pointer:coarse){.ef-navigation-menu__trigger{height:var(--tap-min)}.ef-navigation-menu__link{min-height:var(--tap-min)}}
 `;
 const NavigationRootContext = React.createContext(null);
 const NavigationItemContext = React.createContext(null);
@@ -10802,6 +10997,8 @@ const CSS = `
 .ef-dots__dot--on::before{width:20px;background:var(--accent)}
 .ef-dots__dot:focus-visible{outline:none}
 .ef-dots__dot:focus-visible::before{box-shadow:var(--focus-ring)}
+/* coarse pointers get the 44px touch target, like form controls do through --control-h-* */
+@media (pointer:coarse){.ef-dots{flex-wrap:wrap;justify-content:center;max-width:100%}.ef-dots__dot{width:var(--tap-min);height:var(--tap-min)}}
 `;
 function PageControl({
   count,
@@ -10848,6 +11045,8 @@ const CSS = `
 .ef-pagination__previous svg,.ef-pagination__next svg{transition:transform var(--dur-fast) var(--ease-out)}
 [dir="rtl"] .ef-pagination__previous svg,[dir="rtl"] .ef-pagination__next svg{transform:scaleX(-1)}
 .ef-pagination__ellipsis{display:inline-flex;align-items:center;justify-content:center;width:36px;height:36px;color:var(--text-muted)}
+/* coarse pointers get the 44px touch target, like form controls do through --control-h-* */
+@media (pointer:coarse){.ef-pagination__link{min-width:var(--tap-min);height:var(--tap-min)}}
 `;
 const Pagination = React.forwardRef(function Pagination({
   className,
@@ -11009,6 +11208,8 @@ const CSS = `
 .ef-sidenav__item--on{background:var(--border-default);color:var(--text-primary);font-weight:600}
 .ef-sidenav__item:focus-visible{outline:none;box-shadow:var(--focus-ring)}
 .ef-sidenav__foot{margin-top:auto;padding:12px}
+/* coarse pointers get the 44px touch target, like form controls do through --control-h-* */
+@media (pointer:coarse){.ef-sidenav__item{height:var(--tap-min)}}
 `;
 function SideNav({
   brand = 'Meridian',
@@ -11106,21 +11307,33 @@ const CSS = `
  * First focusable element on the page: one Tab press moves a keyboard user past
  * the whole header into the content.
  *
- * The target must be focusable for the jump to move focus, not just scroll:
- * give the landmark `tabIndex={-1}` (`<main id="main" tabIndex={-1}>`). Without
- * it Safari and Firefox scroll the page but leave focus in the header, so the
- * next Tab returns to the navigation the user just skipped.
+ * The link moves focus to its target itself instead of following the hash:
+ * a plain jump changes location.hash, which a hash-based router reads as a
+ * route, and Safari and Firefox scroll without moving focus unless the target
+ * is focusable. The target gets `tabIndex=-1` when it has no tabindex, then
+ * receives focus. An onClick that calls preventDefault keeps full control.
  */
 function SkipLink({
   href = '#main',
   children = 'Skip to content',
   style,
   className,
+  onClick,
   ...rest
 }) {
   __ds_scope.injectEfCss('ef-css-skip', CSS);
+  const jump = event => {
+    onClick?.(event);
+    if (event.defaultPrevented || typeof href !== 'string' || href.length < 2 || href[0] !== '#') return;
+    const target = document.getElementById(decodeURIComponent(href.slice(1)));
+    if (!target) return;
+    event.preventDefault();
+    if (!target.hasAttribute('tabindex')) target.setAttribute('tabindex', '-1');
+    target.focus();
+  };
   return /*#__PURE__*/React.createElement("a", _extends({}, rest, {
     href: href,
+    onClick: jump,
     className: `ef-skip${className ? ' ' + className : ''}`,
     style: style
   }), children);
@@ -11209,6 +11422,8 @@ const CSS = `
 .ef-tabs__count{font-size:var(--text-xs);font-weight:var(--weight-medium);color:var(--text-muted)}
 .ef-tabs__tab--active .ef-tabs__count{color:var(--text-primary)}
 .ef-tabs__content{padding-block:var(--space-4)}
+/* coarse pointers get the 44px touch target, like form controls do through --control-h-* */
+@media (pointer:coarse){.ef-tabs__tab{height:var(--tap-min)}}
 `;
 const TabsContext = React.createContext(null);
 const Tabs = React.forwardRef(function Tabs({
@@ -11626,9 +11841,10 @@ const CSS = `
 .ef-modelsel__item:focus-visible{outline:none;box-shadow:var(--focus-ring)}
 .ef-modelsel__name{font-size:13.5px;font-weight:500;color:var(--text-primary)}
 .ef-modelsel__hint{font-size:12px;color:var(--text-muted);margin-top:1px}
-.ef-modelsel__badge{margin-inline-start:auto;flex:none;font-size:10.5px;font-weight:600;letter-spacing:.04em;text-transform:uppercase;color:var(--brand-700);background:var(--accent-subtle);border-radius:var(--radius-sm);padding:2px 6px}
+.ef-modelsel__badge{margin-inline-start:auto;flex:none;font-size:10.5px;font-weight:600;letter-spacing:.04em;text-transform:uppercase;color:var(--accent-subtle-fg, var(--brand-700));background:var(--accent-subtle);border-radius:var(--radius-sm);padding:2px 6px}
 .ef-modelsel__check{margin-inline-start:auto;flex:none;display:inline-flex;color:var(--brand-700)}
 .ef-modelsel__badge+.ef-modelsel__check{margin-inline-start:8px}
+@media (pointer:coarse){.ef-modelsel__btn{min-height:var(--tap-min)}}
 `;
 function ModelSelector({
   models = [],
@@ -11730,9 +11946,9 @@ const CSS = `
 .ef-field__label{font-size:var(--text-sm);font-weight:var(--weight-semibold);color:var(--text-primary)}
 .ef-field__hint{font-size:var(--text-xs);color:var(--text-muted)}
 .ef-timepicker{position:relative;display:flex;align-items:center}
-.ef-timepicker__input{width:100%;height:var(--control-h-md);padding:0 34px 0 12px;border:1px solid var(--border-strong);border-radius:var(--radius-sm);background:var(--surface-card);font-family:var(--font-sans);font-size:var(--text-md);color:var(--text-primary);transition:border-color var(--dur-fast) var(--ease-out),box-shadow var(--dur-fast) var(--ease-out)}
+.ef-timepicker__input{width:100%;height:var(--control-h-md);padding:0 34px 0 12px;border:1px solid var(--border-control,var(--border-strong));border-radius:var(--radius-sm);background:var(--surface-card);font-family:var(--font-sans);font-size:var(--text-md);color:var(--text-primary);transition:border-color var(--dur-fast) var(--ease-out),box-shadow var(--dur-fast) var(--ease-out)}
 .ef-timepicker__input::placeholder{color:var(--text-muted)}
-.ef-timepicker__input:hover:not(:disabled){border-color:var(--sand-400)}
+.ef-timepicker__input:hover:not(:disabled){border-color:var(--border-control-hover,var(--sand-400))}
 .ef-timepicker__input:focus{outline:none;border-color:var(--accent);box-shadow:var(--focus-ring)}
 .ef-timepicker__input:disabled{background:var(--surface-sunken);color:var(--text-muted);cursor:not-allowed}
 .ef-timepicker--invalid .ef-timepicker__input{border-color:var(--danger-600)}
@@ -11741,9 +11957,11 @@ const CSS = `
 .ef-timepicker__panel{max-height:240px;overflow-y:auto;background:var(--surface-card);border:1px solid var(--border-strong);border-radius:var(--radius-md);box-shadow:var(--shadow-md);padding:4px;z-index:var(--z-popover);animation:ef-tp-in var(--dur-fast) var(--ease-out)}
 @keyframes ef-tp-in{from{opacity:0;transform:translateY(-3px)}}
 .ef-timepicker__opt{display:flex;align-items:center;gap:9px;width:100%;padding:7px 10px;border:none;border-radius:var(--radius-sm);background:none;cursor:pointer;text-align:start;font-family:var(--font-sans);font-size:var(--text-sm);color:var(--text-primary)}
-.ef-timepicker__opt--hi{background:var(--surface-sunken)}
+.ef-timepicker__opt--hi{background:var(--surface-sunken);box-shadow:inset 0 0 0 2px var(--focus-ring-color)}
 .ef-timepicker__opt__check{margin-inline-start:auto;color:var(--accent);display:inline-flex}
 .ef-timepicker__empty{padding:14px 10px;font-size:var(--text-sm);color:var(--text-muted);text-align:center}
+/* Touch: fixed-size targets grow to --tap-min; small glyph buttons keep their look and get a centred --tap-min hit area instead. */
+@media (pointer:coarse){.ef-timepicker__opt{min-height:var(--tap-min)}}
 `;
 const toMin = t => {
   const p = t.split(':');
@@ -12111,6 +12329,8 @@ const AlertDialogContent = React.forwardRef(function AlertDialogContent({
   const handleKeyDown = event => {
     if (onKeyDown) onKeyDown(event);
     if (event.defaultPrevented || event.key !== 'Tab') return;
+    // focus inside a portaled child layer (a popover) is that layer's business
+    if (layer.children > 0 && !panelRef.current?.contains(document.activeElement)) return;
     const focusable = Array.from(panelRef.current?.querySelectorAll(FOCUSABLE) || []);
     if (!focusable.length) {
       event.preventDefault();
@@ -12546,6 +12766,8 @@ const CSS = `
 [data-theme="dark"] .ef-toast--success .ef-toast__icon{color:color-mix(in srgb,var(--success-600) 60%,var(--text-inverse))}[data-theme="dark"] .ef-toast--danger .ef-toast__icon{color:var(--danger-600)}[data-theme="dark"] .ef-toast--warning .ef-toast__icon{color:color-mix(in srgb,var(--warning-600) 60%,var(--text-inverse))}[data-theme="dark"] .ef-toast--info .ef-toast__icon{color:var(--brand-600)}[data-theme="dark"] .ef-toast__action{color:var(--brand-700)}
 @media(max-width:599px){.ef-toast-stack{inset-inline:16px!important;width:auto;max-width:none;transform:none!important}.ef-toast-stack[data-position^=top]{top:16px}.ef-toast-stack[data-position^=bottom]{bottom:16px}}
 @keyframes ef-toast-in{from{opacity:0;transform:translateY(12px) scale(.96)}}
+/* coarse pointers get the 44px touch target, like form controls do through --control-h-* */
+@media (pointer:coarse){.ef-toast__action{min-height:var(--tap-min)}}
 `;
 const ICONS = {
   success: 'circle-check',
@@ -13026,6 +13248,7 @@ const CSS = `
 .ef-toolbar__btn:disabled{opacity:.4;cursor:not-allowed}
 .ef-toolbar__btn:focus-visible{outline:none;box-shadow:var(--focus-ring)}
 .ef-toolbar__sep{width:1px;height:18px;background:var(--border-default);margin:0 4px}
+@media (pointer:coarse){.ef-toolbar__btn{min-width:var(--tap-min);min-height:var(--tap-min)}}
 `;
 function Toolbar({
   items,
@@ -13078,9 +13301,11 @@ function _extends() { return _extends = Object.assign ? Object.assign.bind() : f
 const CSS = `
 .ef-combobox{position:relative;width:100%}.ef-combobox__input-group{width:100%}.ef-combobox__input{min-width:0}.ef-combobox__actions{gap:2px;padding-inline:4px;border:0}.ef-combobox__button{display:inline-flex;width:26px;height:26px;align-items:center;justify-content:center;border:0;border-radius:var(--radius-sm);background:transparent;color:var(--text-muted);cursor:pointer}.ef-combobox__button:hover{background:var(--surface-sunken);color:var(--text-primary)}.ef-combobox__button:focus-visible{outline:none;box-shadow:var(--focus-ring)}.ef-combobox__button:disabled{cursor:not-allowed;opacity:.45}
 .ef-combobox__content{position:fixed;z-index:var(--z-popover);max-height:min(384px,var(--ef-available-height,384px));overflow:hidden;border:1px solid var(--border-default);border-radius:var(--radius-md);background:var(--surface-card);color:var(--text-primary);box-shadow:var(--shadow-md);animation:ef-combobox-in var(--dur-fast) var(--ease-out)}@keyframes ef-combobox-in{from{opacity:0;transform:translateY(-3px)}}
-.ef-combobox__list{max-height:min(340px,var(--ef-available-height,340px));overflow-y:auto;padding:4px;scroll-padding-block:4px}.ef-combobox__item{position:relative;display:flex;width:100%;align-items:center;gap:8px;padding:7px 30px 7px 8px;border:0;border-radius:var(--radius-sm);outline:0;background:transparent;color:var(--text-primary);font:inherit;font-size:var(--text-sm);text-align:start;cursor:default;user-select:none}.ef-combobox__item[data-highlighted="true"]{background:var(--surface-sunken)}.ef-combobox__item[data-disabled="true"]{pointer-events:none;opacity:.5}.ef-combobox__item[hidden]{display:none}.ef-combobox__indicator{position:absolute;inset-inline-end:8px;display:inline-flex;color:var(--accent)}
+.ef-combobox__list{max-height:min(340px,var(--ef-available-height,340px));overflow-y:auto;padding:4px;scroll-padding-block:4px}.ef-combobox__item{position:relative;display:flex;width:100%;align-items:center;gap:8px;padding:7px 30px 7px 8px;border:0;border-radius:var(--radius-sm);outline:0;background:transparent;color:var(--text-primary);font:inherit;font-size:var(--text-sm);text-align:start;cursor:pointer;user-select:none}.ef-combobox__item[data-highlighted="true"]{background:var(--surface-sunken);box-shadow:inset 0 0 0 2px var(--focus-ring-color)}.ef-combobox__item[data-disabled="true"]{pointer-events:none;opacity:.5}.ef-combobox__item[hidden]{display:none}.ef-combobox__indicator{position:absolute;inset-inline-end:8px;display:inline-flex;color:var(--accent)}
 .ef-combobox__group{padding:4px}.ef-combobox__group:not(:has(.ef-combobox__item:not([hidden]))){display:none}.ef-combobox__label{padding:6px 8px;color:var(--text-muted);font-size:var(--text-xs);font-weight:var(--weight-medium)}.ef-combobox__empty{display:flex;justify-content:center;padding:12px;color:var(--text-muted);font-size:var(--text-sm)}.ef-combobox__separator{height:1px;margin:4px -4px;background:var(--border-default)}
-.ef-combobox__chips{display:flex;min-height:var(--control-h-md);width:100%;flex-wrap:wrap;align-items:center;gap:6px;padding:5px 8px;border:1px solid var(--border-strong);border-radius:var(--radius-sm);background:var(--surface-card)}.ef-combobox__chips:focus-within{border-color:var(--accent);box-shadow:var(--focus-ring)}.ef-combobox__chip{display:inline-flex;height:24px;align-items:center;gap:3px;padding:0 4px 0 7px;border-radius:var(--radius-sm);background:var(--surface-sunken);font-size:var(--text-xs);font-weight:var(--weight-medium)}.ef-combobox__chip-remove{display:inline-flex;width:20px;height:20px;align-items:center;justify-content:center;border:0;border-radius:var(--radius-sm);background:transparent;color:var(--text-muted);cursor:pointer}.ef-combobox__chip-remove:hover{background:var(--surface-card);color:var(--text-primary)}.ef-combobox__chips-input{min-width:64px;flex:1;border:0;outline:0;background:transparent;color:var(--text-primary);font:inherit;font-size:var(--text-sm)}
+.ef-combobox__chips{display:flex;min-height:var(--control-h-md);width:100%;flex-wrap:wrap;align-items:center;gap:6px;padding:5px 8px;border:1px solid var(--border-control,var(--border-strong));border-radius:var(--radius-sm);background:var(--surface-card)}.ef-combobox__chips:focus-within{border-color:var(--accent);box-shadow:var(--focus-ring)}.ef-combobox__chip{display:inline-flex;height:24px;align-items:center;gap:3px;padding:0 4px 0 7px;border-radius:var(--radius-sm);background:var(--surface-sunken);font-size:var(--text-xs);font-weight:var(--weight-medium)}.ef-combobox__chip-remove{display:inline-flex;width:20px;height:20px;align-items:center;justify-content:center;border:0;border-radius:var(--radius-sm);background:transparent;color:var(--text-muted);cursor:pointer}.ef-combobox__chip-remove:hover{background:var(--surface-card);color:var(--text-primary)}.ef-combobox__chips-input{min-width:64px;flex:1;border:0;outline:0;background:transparent;color:var(--text-primary);font:inherit;font-size:var(--text-sm)}
+/* Touch: fixed-size targets grow to --tap-min; small glyph buttons keep their look and get a centred --tap-min hit area instead. */
+@media (pointer:coarse){.ef-combobox__item{min-height:var(--tap-min)}.ef-combobox__button,.ef-combobox__chip-remove{position:relative}.ef-combobox__button::before,.ef-combobox__chip-remove::before{content:"";position:absolute;inset:calc(50% - var(--tap-min) / 2)}}
 `;
 const ComboboxContext = React.createContext(null);
 const join = (...values) => values.filter(Boolean).join(' ');
@@ -13592,8 +13817,8 @@ Object.assign(__ds_scope, { Combobox, ComboboxValue, ComboboxTrigger, ComboboxCl
 try { (() => {
 function _extends() { return _extends = Object.assign ? Object.assign.bind() : function (n) { for (var e = 1; e < arguments.length; e++) { var t = arguments[e]; for (var r in t) ({}).hasOwnProperty.call(t, r) && (n[r] = t[r]); } return n; }, _extends.apply(null, arguments); }
 const CSS = `
-.ef-select-trigger{display:flex;width:100%;height:var(--control-h-md);align-items:center;justify-content:space-between;gap:8px;padding:0 11px;border:1px solid var(--border-strong);border-radius:var(--radius-sm);background:var(--surface-sunken);color:var(--text-primary);font:inherit;font-size:var(--text-sm);text-align:start;cursor:pointer}
-.ef-select-trigger:hover:not(:disabled){border-color:var(--sand-400)}
+.ef-select-trigger{display:flex;width:100%;height:var(--control-h-md);align-items:center;justify-content:space-between;gap:8px;padding:0 11px;border:1px solid var(--border-control,var(--border-strong));border-radius:var(--radius-sm);background:var(--surface-sunken);color:var(--text-primary);font:inherit;font-size:var(--text-sm);text-align:start;cursor:pointer}
+.ef-select-trigger:hover:not(:disabled){border-color:var(--border-control-hover,var(--sand-400))}
 .ef-select-trigger:focus-visible{outline:none;box-shadow:var(--focus-ring)}
 .ef-select-trigger:disabled{cursor:not-allowed;opacity:.5}
 .ef-select-trigger[aria-invalid="true"]{border-color:var(--danger-600)}
@@ -13603,10 +13828,13 @@ const CSS = `
 .ef-select-group{padding:2px 0}
 .ef-select-label{padding:6px 9px;color:var(--text-muted);font-size:var(--text-xs);font-weight:var(--weight-semibold)}
 .ef-select-item{position:relative;display:flex;width:100%;min-height:32px;align-items:center;padding-block:6px;padding-inline:9px 30px;border:0;border-radius:var(--radius-sm);background:none;color:var(--text-primary);font:inherit;font-size:var(--text-sm);text-align:start;cursor:pointer}
-.ef-select-item:hover,.ef-select-item:focus-visible,.ef-select-item[data-highlighted]{outline:none;background:var(--surface-sunken)}
+.ef-select-item:hover{background:var(--surface-sunken)}
+.ef-select-item:focus-visible,.ef-select-item[data-highlighted]{outline:none;background:var(--surface-sunken);box-shadow:inset 0 0 0 2px var(--focus-ring-color)}
 .ef-select-item:disabled{cursor:not-allowed;opacity:.45}
 .ef-select-check{position:absolute;inset-inline-end:9px;display:inline-flex}
 .ef-select-separator{height:1px;margin:4px 6px;background:var(--border-default)}
+/* Touch: fixed-size targets grow to --tap-min; small glyph buttons keep their look and get a centred --tap-min hit area instead. */
+@media (pointer:coarse){.ef-select-item{min-height:var(--tap-min)}}
 `;
 const SelectCtx = React.createContext(null);
 const itemText = children => typeof children === 'string' || typeof children === 'number' ? String(children) : '';
@@ -13904,8 +14132,14 @@ const CSS = `
 @media(max-width:767px){.ef-sidebar:not([data-collapsible=none]){display:none}.ef-sidebar-provider{min-height:100%}}
 @media(min-width:768px){.ef-sidebar-mobile-backdrop,.ef-sidebar-mobile{display:none}}
 @media(prefers-reduced-motion:reduce){.ef-sidebar,.ef-sidebar__panel{transition:none}}
+/* coarse pointers get the 44px touch target, like form controls do through --control-h-* */
+@media (pointer:coarse){.ef-sidebar-menu-button,.ef-sidebar-menu-button[data-size=sm],.ef-sidebar-menu-button[data-size=lg]{height:var(--tap-min)}.ef-sidebar-menu-sub-button{min-height:var(--tap-min)}.ef-sidebar-input{height:var(--tap-min)}.ef-sidebar-trigger{width:var(--tap-min);height:var(--tap-min)}.ef-sidebar-group-action,.ef-sidebar-menu-action{width:var(--tap-min);height:var(--tap-min);inset-block-start:0;inset-inline-end:0}}
 `;
 const SidebarContext = React.createContext(null);
+// Cmd/Ctrl+B is "bold" in every text field and rich-text editor; the sidebar
+// shortcut must not take it from them.
+const EDITABLE = 'input,textarea,select,[contenteditable]:not([contenteditable="false"])';
+const isEditable = target => !!(target && target.closest && target.closest(EDITABLE));
 const join = (...parts) => parts.filter(Boolean).join(' ');
 function compose(render, fallback, props, ref, children) {
   if (React.isValidElement(render)) return React.cloneElement(render, {
@@ -13955,18 +14189,14 @@ const SidebarProvider = React.forwardRef(function SidebarProvider({
   }, []);
   React.useEffect(() => {
     const onKeyDown = event => {
-      if (event.key === 'Escape' && openMobile) {
-        event.preventDefault();
-        setOpenMobile(false);
-      }
-      if (typeof event.key === 'string' && event.key.toLowerCase() === 'b' && (event.metaKey || event.ctrlKey)) {
+      if (typeof event.key === 'string' && event.key.toLowerCase() === 'b' && (event.metaKey || event.ctrlKey) && !isEditable(event.target)) {
         event.preventDefault();
         toggleSidebar();
       }
     };
     window.addEventListener('keydown', onKeyDown);
     return () => window.removeEventListener('keydown', onKeyDown);
-  }, [openMobile, toggleSidebar]);
+  }, [toggleSidebar]);
   const context = React.useMemo(() => ({
     state: open ? 'expanded' : 'collapsed',
     open,
@@ -14024,7 +14254,9 @@ const FOCUSABLE = 'a[href],button:not([disabled]),input:not([disabled]),select:n
 
 // The off-canvas sidebar on a phone covers the page behind a backdrop, so it
 // behaves as a modal dialog: focus moves in, Tab stays in, the page does not
-// scroll, and closing returns focus to whatever opened it.
+// scroll, and closing returns focus to whatever opened it. Escape goes through
+// the shared layer stack, so a menu, popover or dialog opened inside the panel
+// closes first and the panel only on the next press.
 function MobileSidebarPanel({
   common,
   dir,
@@ -14034,6 +14266,10 @@ function MobileSidebarPanel({
 }) {
   const panelRef = React.useRef(null);
   __ds_scope.useScrollLock(true);
+  const layer = __ds_scope.useEscapeLayer(true, event => {
+    event.preventDefault();
+    onClose();
+  });
   React.useEffect(() => {
     const previous = document.activeElement;
     const panel = panelRef.current;
@@ -14043,7 +14279,9 @@ function MobileSidebarPanel({
     };
   }, []);
   const keydown = event => {
-    if (event.key !== 'Tab') return;
+    if (event.key !== 'Tab' || event.defaultPrevented) return;
+    // focus inside a portaled child layer (a popover) is that layer's business
+    if (layer.children > 0 && !panelRef.current?.contains(document.activeElement)) return;
     const items = Array.from(panelRef.current?.querySelectorAll(FOCUSABLE) || []);
     if (!items.length) {
       event.preventDefault();
@@ -14074,7 +14312,9 @@ function MobileSidebarPanel({
     tabIndex: -1,
     className: "ef-sidebar-mobile",
     onKeyDown: keydown
-  }), children));
+  }), /*#__PURE__*/React.createElement(__ds_scope.escapeLayerContext.Provider, {
+    value: layer
+  }, children)));
 }
 const SidebarTrigger = React.forwardRef(function SidebarTrigger({
   render,
@@ -14277,11 +14517,13 @@ const CSS = `
 .ef-command__list{max-height:300px;overflow-x:hidden;overflow-y:auto;scroll-padding-block:4px;padding:4px}
 .ef-command__empty{padding:24px;text-align:center;color:var(--text-muted);font-size:var(--text-sm)}
 .ef-command__group{overflow:hidden;padding:4px}.ef-command__group[hidden],.ef-command__group:not(:has(.ef-command__item:not([hidden]))){display:none}.ef-command__heading{padding:6px 8px;color:var(--text-muted);font-size:var(--text-xs);font-weight:var(--weight-medium)}
-.ef-command__item{position:relative;display:flex;width:100%;align-items:center;gap:8px;padding:7px 8px;border:0;border-radius:var(--radius-sm);outline:0;background:transparent;color:var(--text-primary);font:inherit;font-size:var(--text-sm);text-align:start;cursor:default;user-select:none}.ef-command__item[data-selected="true"]{background:var(--surface-sunken)}.ef-command__item[data-disabled="true"]{pointer-events:none;opacity:.5}.ef-command__item[hidden]{display:none}
+.ef-command__item{position:relative;display:flex;width:100%;align-items:center;gap:8px;padding:7px 8px;border:0;border-radius:var(--radius-sm);outline:0;background:transparent;color:var(--text-primary);font:inherit;font-size:var(--text-sm);text-align:start;cursor:pointer;user-select:none}.ef-command__item[data-selected="true"]{background:var(--surface-sunken);box-shadow:inset 0 0 0 2px var(--focus-ring-color)}.ef-command__item[data-disabled="true"]{pointer-events:none;opacity:.5}.ef-command__item[hidden]{display:none}
 .ef-command__shortcut{margin-inline-start:auto;color:var(--text-muted);font-size:var(--text-xs);letter-spacing:.08em}
 .ef-command__separator{height:1px;margin-inline:-4px;background:var(--border-default)}
 .ef-command-dialog{overflow:hidden;padding:0}.ef-command-dialog>.ef-dialog__close{z-index:1}.ef-command-dialog .ef-command__input-wrap{height:48px}.ef-command-dialog .ef-command__item{padding-block:10px}
 .ef-command__sr{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+/* coarse pointers get the 44px touch target, like form controls do through --control-h-* */
+@media (pointer:coarse){.ef-command__item{min-height:var(--tap-min)}}
 `;
 const CommandContext = React.createContext(null);
 const textOf = node => React.Children.toArray(node).map(child => typeof child === 'string' || typeof child === 'number' ? String(child) : React.isValidElement(child) ? textOf(child.props.children) : '').join(' ');
@@ -14547,8 +14789,10 @@ function _extends() { return _extends = Object.assign ? Object.assign.bind() : f
 const CSS = `
 .ef-context-menu__content{position:fixed;min-width:128px;max-height:calc(100vh - 16px);overflow:auto;background:var(--surface-card);color:var(--text-primary);border:1px solid var(--border-strong);border-radius:var(--radius-md);box-shadow:var(--shadow-md);padding:4px;z-index:var(--z-popover);animation:ef-context-menu-in var(--dur-fast) var(--ease-out)}
 @keyframes ef-context-menu-in{from{opacity:0;transform:scale(.98)}}
-.ef-context-menu__item{position:relative;display:flex;align-items:center;gap:8px;width:100%;min-height:32px;padding:6px 8px;border:0;border-radius:var(--radius-sm);outline:0;background:transparent;color:var(--text-primary);font:inherit;font-size:var(--text-sm);line-height:1.35;text-align:start;white-space:nowrap;cursor:default;user-select:none}
+.ef-context-menu__item{position:relative;display:flex;align-items:center;gap:8px;width:100%;min-height:32px;padding:6px 8px;border:0;border-radius:var(--radius-sm);outline:0;background:transparent;color:var(--text-primary);font:inherit;font-size:var(--text-sm);line-height:1.35;text-align:start;white-space:nowrap;cursor:pointer;user-select:none}
 .ef-context-menu__item:hover,.ef-context-menu__item:focus,.ef-context-menu__item[data-highlighted=true],.ef-context-menu__item[data-state=open]{background:var(--surface-sunken)}
+/* the tint alone is ~1.1:1 against the panel; keyboard focus needs a 3:1 ring */
+.ef-context-menu__item:focus-visible{box-shadow:inset 0 0 0 2px var(--focus-ring-color)}
 .ef-context-menu__item:disabled,.ef-context-menu__item[data-disabled=true]{pointer-events:none;opacity:.5}
 .ef-context-menu__item[data-inset=true],.ef-context-menu__label[data-inset=true]{padding-inline-start:32px}
 .ef-context-menu__item[data-variant=destructive]{color:var(--danger-600)}
@@ -14558,6 +14802,8 @@ const CSS = `
 .ef-context-menu__shortcut{margin-inline-start:auto;color:var(--text-muted);font-size:var(--text-xs);letter-spacing:.08em}
 .ef-context-menu__chevron{display:inline-flex;margin-inline-start:auto;color:var(--text-muted)}
 [dir=rtl] .ef-context-menu__chevron{transform:scaleX(-1)}
+/* coarse pointers get the 44px touch target, like form controls do through --control-h-* */
+@media (pointer:coarse){.ef-context-menu__item{min-height:var(--tap-min)}}
 `;
 const RootCtx = React.createContext(null);
 const SubCtx = React.createContext(null);
@@ -15088,6 +15334,21 @@ const compose = (first, second) => event => {
   first?.(event);
   if (!event.defaultPrevented) second?.(event);
 };
+
+// Deprecated props keep working until the next major, with one warning per
+// page outside production builds.
+let warnedModal = false;
+function warnModalIgnored() {
+  if (warnedModal || typeof console === 'undefined') return;
+  // Bare `process.env.NODE_ENV` so bundlers (Vite, webpack, esbuild) fold it to a
+  // literal; `typeof process` is not replaced and would keep the warning in
+  // production. Where nothing defines it, the read throws and we warn.
+  try {
+    if (process.env.NODE_ENV === 'production') return;
+  } catch (e) {/* no build-time env */}
+  warnedModal = true;
+  console.warn('[meridian] <Drawer modal={false}> is deprecated and ignored: a Drawer is always modal. The prop will be removed in the next major version.');
+}
 function Drawer({
   open: controlled,
   defaultOpen = false,
@@ -15099,6 +15360,9 @@ function Drawer({
   children
 }) {
   __ds_scope.injectEfCss('ef-css-drawer', CSS);
+  React.useEffect(() => {
+    if (modal === false) warnModalIgnored();
+  }, [modal]);
   const [internal, setInternal] = React.useState(defaultOpen);
   const open = controlled === undefined ? internal : controlled;
   const setOpen = React.useCallback(next => {
@@ -15116,8 +15380,7 @@ function Drawer({
     value: context
   }, /*#__PURE__*/React.createElement(__ds_scope.Dialog, {
     open: open,
-    onOpenChange: setOpen,
-    modal: modal
+    onOpenChange: setOpen
   }, children));
 }
 const DrawerTrigger = React.forwardRef(function DrawerTrigger(props, ref) {
@@ -15275,8 +15538,10 @@ function _extends() { return _extends = Object.assign ? Object.assign.bind() : f
 const CSS = `
 .ef-dropdown-menu__content{position:fixed;min-width:128px;max-height:calc(100vh - 16px);overflow:auto;background:var(--surface-card);color:var(--text-primary);border:1px solid var(--border-strong);border-radius:var(--radius-md);box-shadow:var(--shadow-md);padding:4px;z-index:var(--z-popover);animation:ef-dropdown-menu-in var(--dur-fast) var(--ease-out)}
 @keyframes ef-dropdown-menu-in{from{opacity:0;transform:scale(.98)}}
-.ef-dropdown-menu__item{position:relative;display:flex;align-items:center;gap:8px;width:100%;min-height:32px;padding:6px 8px;border:0;border-radius:var(--radius-sm);outline:0;background:transparent;color:var(--text-primary);font:inherit;font-size:var(--text-sm);line-height:1.35;text-align:start;white-space:nowrap;cursor:default;user-select:none}
+.ef-dropdown-menu__item{position:relative;display:flex;align-items:center;gap:8px;width:100%;min-height:32px;padding:6px 8px;border:0;border-radius:var(--radius-sm);outline:0;background:transparent;color:var(--text-primary);font:inherit;font-size:var(--text-sm);line-height:1.35;text-align:start;white-space:nowrap;cursor:pointer;user-select:none}
 .ef-dropdown-menu__item:hover,.ef-dropdown-menu__item:focus,.ef-dropdown-menu__item[data-highlighted=true],.ef-dropdown-menu__item[data-state=open]{background:var(--surface-sunken)}
+/* the tint alone is ~1.1:1 against the panel; keyboard focus needs a 3:1 ring */
+.ef-dropdown-menu__item:focus-visible{box-shadow:inset 0 0 0 2px var(--focus-ring-color)}
 .ef-dropdown-menu__item:disabled,.ef-dropdown-menu__item[data-disabled=true]{pointer-events:none;opacity:.5}
 .ef-dropdown-menu__item[data-inset=true],.ef-dropdown-menu__label[data-inset=true]{padding-inline-start:32px}
 .ef-dropdown-menu__item[data-variant=destructive]{color:var(--danger-600)}
@@ -15286,6 +15551,8 @@ const CSS = `
 .ef-dropdown-menu__shortcut{margin-inline-start:auto;color:var(--text-muted);font-size:var(--text-xs);letter-spacing:.08em}
 .ef-dropdown-menu__chevron{display:inline-flex;margin-inline-start:auto;color:var(--text-muted)}
 [dir=rtl] .ef-dropdown-menu__chevron{transform:scaleX(-1)}
+/* coarse pointers get the 44px touch target, like form controls do through --control-h-* */
+@media (pointer:coarse){.ef-dropdown-menu__item{min-height:var(--tap-min)}}
 `;
 const RootCtx = React.createContext(null);
 const SubCtx = React.createContext(null);
@@ -15813,9 +16080,11 @@ try { (() => {
 function _extends() { return _extends = Object.assign ? Object.assign.bind() : function (n) { for (var e = 1; e < arguments.length; e++) { var t = arguments[e]; for (var r in t) ({}).hasOwnProperty.call(t, r) && (n[r] = t[r]); } return n; }, _extends.apply(null, arguments); }
 const CSS = `
 .ef-menubar{display:flex;width:max-content;height:36px;align-items:center;gap:2px;padding:3px;border:1px solid var(--border-default);border-radius:var(--radius-md);background:var(--surface-card);box-shadow:var(--shadow-xs)}
-.ef-menubar__trigger{display:flex;height:28px;align-items:center;padding:0 8px;border:0;border-radius:var(--radius-sm);outline:0;background:transparent;color:var(--text-primary);font:inherit;font-size:var(--text-sm);font-weight:var(--weight-medium);cursor:default;user-select:none}
+.ef-menubar__trigger{display:flex;height:28px;align-items:center;padding:0 8px;border:0;border-radius:var(--radius-sm);outline:0;background:transparent;color:var(--text-primary);font:inherit;font-size:var(--text-sm);font-weight:var(--weight-medium);cursor:pointer;user-select:none}
 .ef-menubar__trigger:hover,.ef-menubar__trigger:focus,.ef-menubar__trigger[data-state=open]{background:var(--surface-sunken)}
 .ef-menubar__trigger:focus-visible{box-shadow:var(--focus-ring)}
+/* coarse pointers get the 44px touch target, like form controls do through --control-h-* */
+@media (pointer:coarse){.ef-menubar{height:auto}.ef-menubar__trigger{height:var(--tap-min)}}
 `;
 const MenubarRootContext = React.createContext(null);
 const MenubarMenuContext = React.createContext(null);
@@ -16447,5389 +16716,6 @@ const SheetDescription = React.forwardRef(function SheetDescription({
 });
 Object.assign(__ds_scope, { Sheet, SheetTrigger, SheetClose, SheetContent, SheetHeader, SheetFooter, SheetTitle, SheetDescription });
 })(); } catch (e) { __ds_ns.__errors.push({ path: "components/overlay/Sheet.jsx", error: String((e && e.message) || e) }); }
-
-// showcases/agent/AgentScreen.jsx
-try { (() => {
-const {
-  ChatMessage,
-  PromptComposer,
-  Terminal,
-  Steps,
-  FileTile,
-  StatusDot,
-  KeyValueList,
-  CommandDialog,
-  CommandInput,
-  CommandList,
-  CommandEmpty,
-  CommandGroup,
-  CommandItem,
-  DropdownMenu,
-  DropdownMenuTrigger,
-  DropdownMenuContent,
-  DropdownMenuItem,
-  DropdownMenuSeparator,
-  Card,
-  CardContent,
-  CardDescription,
-  CardHeader,
-  CardTitle,
-  Button,
-  IconButton,
-  Badge,
-  Kbd,
-  Icon,
-  Toaster,
-  toast
-} = window.EfolusiDesignSystem_4ffc3d;
-function AgentActionMenu({
-  trigger,
-  items,
-  onSelect
-}) {
-  return /*#__PURE__*/React.createElement(DropdownMenu, null, /*#__PURE__*/React.createElement(DropdownMenuTrigger, {
-    asChild: true
-  }, trigger), /*#__PURE__*/React.createElement(DropdownMenuContent, {
-    align: "end"
-  }, items.map((item, index) => item === 'separator' ? /*#__PURE__*/React.createElement(DropdownMenuSeparator, {
-    key: 'separator-' + index
-  }) : /*#__PURE__*/React.createElement(DropdownMenuItem, {
-    key: item.id,
-    variant: item.danger ? 'destructive' : 'default',
-    onSelect: () => onSelect?.(item.id)
-  }, item.icon ? /*#__PURE__*/React.createElement(Icon, {
-    name: item.icon,
-    size: 15
-  }) : null, item.label))));
-}
-function AgentHeader({
-  running,
-  onToggle,
-  notify
-}) {
-  return /*#__PURE__*/React.createElement("header", {
-    style: {
-      display: 'flex',
-      alignItems: 'center',
-      gap: 12,
-      height: 58,
-      padding: '0 24px',
-      borderBottom: '1px solid var(--border-default)',
-      background: 'rgba(250,249,246,.85)',
-      backdropFilter: 'blur(12px)',
-      flex: 'none'
-    }
-  }, /*#__PURE__*/React.createElement("a", {
-    href: "../console/index.html",
-    title: "Back to Console",
-    style: {
-      display: 'flex',
-      alignItems: 'center',
-      gap: 6,
-      textDecoration: 'none',
-      color: 'var(--text-primary)'
-    }
-  }, /*#__PURE__*/React.createElement("img", {
-    src: "../../assets/meridian-mark.svg",
-    alt: "",
-    style: {
-      width: 30,
-      height: 16
-    }
-  }), /*#__PURE__*/React.createElement("span", {
-    style: {
-      fontFamily: 'var(--font-display)',
-      fontWeight: 680,
-      letterSpacing: '-0.02em',
-      fontSize: 17
-    }
-  }, "AI agents")), /*#__PURE__*/React.createElement("span", {
-    style: {
-      color: 'var(--sand-300)'
-    }
-  }, "/"), /*#__PURE__*/React.createElement("span", {
-    style: {
-      fontSize: 14,
-      fontWeight: 600
-    }
-  }, "Retry failed webhooks"), /*#__PURE__*/React.createElement(StatusDot, {
-    status: running ? 'busy' : 'off',
-    pulse: running,
-    label: running ? 'Running' : 'Paused'
-  }), /*#__PURE__*/React.createElement("div", {
-    style: {
-      marginLeft: 'auto',
-      display: 'flex',
-      alignItems: 'center',
-      gap: 8
-    }
-  }, /*#__PURE__*/React.createElement("span", {
-    style: {
-      display: 'inline-flex',
-      alignItems: 'center',
-      gap: 5,
-      fontSize: 12,
-      color: 'var(--text-muted)'
-    }
-  }, /*#__PURE__*/React.createElement(Kbd, null, "\u2318"), /*#__PURE__*/React.createElement(Kbd, null, "K")), /*#__PURE__*/React.createElement(Button, {
-    size: "sm",
-    variant: "secondary",
-    iconLeft: running ? 'pause' : 'play',
-    onClick: onToggle
-  }, running ? 'Pause' : 'Resume'), /*#__PURE__*/React.createElement(AgentActionMenu, {
-    trigger: /*#__PURE__*/React.createElement(IconButton, {
-      icon: "ellipsis",
-      label: "More",
-      size: "sm"
-    }),
-    onSelect: id => notify(id === 'rerun' ? 'Re-running task' : id === 'export' ? 'Transcript exported' : 'Task stopped', id === 'stop' ? 'Everything is logged up to this point.' : 'Done.'),
-    items: [{
-      id: 'rerun',
-      label: 'Re-run from start',
-      icon: 'refresh-cw'
-    }, {
-      id: 'export',
-      label: 'Export transcript',
-      icon: 'download'
-    }, 'separator', {
-      id: 'stop',
-      label: 'Stop task',
-      icon: 'square',
-      danger: true
-    }]
-  })));
-}
-function TaskRail({
-  running
-}) {
-  return /*#__PURE__*/React.createElement("aside", {
-    style: {
-      width: 304,
-      flex: 'none',
-      borderLeft: '1px solid var(--border-default)',
-      overflowY: 'auto',
-      padding: 16,
-      display: 'flex',
-      flexDirection: 'column',
-      gap: 14
-    }
-  }, /*#__PURE__*/React.createElement(Card, null, /*#__PURE__*/React.createElement(CardHeader, null, /*#__PURE__*/React.createElement(CardTitle, null, "Task"), /*#__PURE__*/React.createElement(CardDescription, null, "4 steps planned")), /*#__PURE__*/React.createElement(CardContent, null, /*#__PURE__*/React.createElement(Steps, {
-    current: 2,
-    items: [{
-      title: 'Connect to pg-prod-eu',
-      description: 'Read-only session'
-    }, {
-      title: 'Find failed deliveries',
-      description: '12 found · all 503s'
-    }, {
-      title: 'Retry in batches',
-      description: 'Batch 2 of 3 running'
-    }, {
-      title: 'Report + close'
-    }]
-  }))), /*#__PURE__*/React.createElement(Card, null, /*#__PURE__*/React.createElement(CardHeader, null, /*#__PURE__*/React.createElement(CardTitle, null, "Context")), /*#__PURE__*/React.createElement(CardContent, null, /*#__PURE__*/React.createElement("div", {
-    style: {
-      display: 'flex',
-      flexDirection: 'column',
-      gap: 8
-    }
-  }, /*#__PURE__*/React.createElement(FileTile, {
-    name: "webhook-log.csv",
-    size: "82 KB",
-    style: {
-      padding: '6px 8px'
-    }
-  }), /*#__PURE__*/React.createElement(FileTile, {
-    name: "retry-policy.md",
-    size: "3 KB",
-    style: {
-      padding: '6px 8px'
-    }
-  })))), /*#__PURE__*/React.createElement(Card, null, /*#__PURE__*/React.createElement(CardHeader, null, /*#__PURE__*/React.createElement(CardTitle, null, "Run")), /*#__PURE__*/React.createElement(CardContent, null, /*#__PURE__*/React.createElement("div", {
-    style: {
-      marginBottom: 8
-    }
-  }, /*#__PURE__*/React.createElement(StatusDot, {
-    status: running ? 'busy' : 'off',
-    pulse: running,
-    label: running ? 'Agent active' : 'Paused by you'
-  })), /*#__PURE__*/React.createElement(KeyValueList, {
-    labelWidth: 88,
-    items: [{
-      label: 'Model',
-      value: 'efolusi-1'
-    }, {
-      label: 'Tokens',
-      value: '48.1k',
-      mono: true
-    }, {
-      label: 'Cost',
-      value: '$0.42',
-      mono: true
-    }, {
-      label: 'Started',
-      value: '14:02',
-      mono: true
-    }]
-  }))));
-}
-const CMD_GROUPS = [{
-  group: 'Actions',
-  items: [{
-    id: 'new-task',
-    label: 'New task',
-    icon: 'plus'
-  }, {
-    id: 'pause',
-    label: 'Pause current task',
-    icon: 'pause'
-  }, {
-    id: 'export',
-    label: 'Export transcript',
-    icon: 'download'
-  }]
-}, {
-  group: 'Go to',
-  items: [{
-    id: 'infra',
-    label: 'Infrastructure',
-    icon: 'server'
-  }, {
-    id: 'trader',
-    label: 'Trading',
-    icon: 'chart-candlestick'
-  }, {
-    id: 'settings',
-    label: 'Workspace settings',
-    icon: 'settings'
-  }]
-}];
-function AgentScreen() {
-  const [running, setRunning] = React.useState(true);
-  const [cmdk, setCmdk] = React.useState(false);
-  const notify = (title, description) => toast.add({
-    title,
-    description,
-    type: 'success'
-  });
-  const runCommand = id => {
-    setCmdk(false);
-    if (id === 'new-task') notify('New task', 'Describe the outcome in the composer below.');else if (id === 'pause') {
-      setRunning(false);
-      notify('Task paused', 'Resume any time.');
-    } else if (id === 'export') notify('Transcript exported', 'Markdown file in your downloads.');else if (id === 'infra') window.location.href = '../infra/index.html';else if (id === 'trader') window.location.href = '../trader/index.html';else if (id === 'settings') window.location.href = '../console/index.html';
-  };
-  const [msgs, setMsgs] = React.useState([{
-    id: 1,
-    role: 'user',
-    text: 'Connect the prod database and retry yesterday\u2019s failed webhooks.',
-    time: '14:02'
-  }, {
-    id: 2,
-    role: 'assistant',
-    time: '14:02',
-    body: 'terminal'
-  }, {
-    id: 3,
-    role: 'assistant',
-    time: '14:03',
-    text: 'Found 12 failed deliveries between 02:10 and 02:14, all 503s to the billing endpoint. Retrying in 3 batches with backoff. Batch 1 is done (4/4 delivered).'
-  }]);
-  const [streaming, setStreaming] = React.useState(false);
-  const endRef = React.useRef(null);
-  React.useEffect(() => {
-    const key = e => {
-      if ((e.metaKey || e.ctrlKey) && e.key.toLowerCase() === 'k') {
-        e.preventDefault();
-        setCmdk(o => !o);
-      }
-    };
-    document.addEventListener('keydown', key);
-    return () => document.removeEventListener('keydown', key);
-  }, []);
-  const send = text => {
-    const t = new Date().toTimeString().slice(0, 5);
-    setMsgs(m => [...m, {
-      id: Date.now(),
-      role: 'user',
-      text,
-      time: t
-    }]);
-    setStreaming(true);
-    setTimeout(() => {
-      setStreaming(false);
-      setMsgs(m => [...m, {
-        id: Date.now() + 1,
-        role: 'assistant',
-        time: t,
-        text: 'On it. I\u2019ll fold that into the current run and report back when batch 3 lands.'
-      }]);
-    }, 1600);
-  };
-  return /*#__PURE__*/React.createElement("div", {
-    style: {
-      display: 'flex',
-      flexDirection: 'column',
-      height: '100vh'
-    }
-  }, /*#__PURE__*/React.createElement(AgentHeader, {
-    running: running,
-    onToggle: () => setRunning(r => !r),
-    notify: notify
-  }), /*#__PURE__*/React.createElement("div", {
-    style: {
-      display: 'flex',
-      flex: 1,
-      minHeight: 0
-    }
-  }, /*#__PURE__*/React.createElement("main", {
-    style: {
-      flex: 1,
-      display: 'flex',
-      flexDirection: 'column',
-      minWidth: 0
-    }
-  }, /*#__PURE__*/React.createElement("div", {
-    style: {
-      flex: 1,
-      overflowY: 'auto',
-      padding: '28px 32px'
-    }
-  }, /*#__PURE__*/React.createElement("div", {
-    style: {
-      maxWidth: 720,
-      margin: '0 auto',
-      display: 'flex',
-      flexDirection: 'column',
-      gap: 22
-    }
-  }, msgs.map(m => /*#__PURE__*/React.createElement(ChatMessage, {
-    key: m.id,
-    role: m.role,
-    name: m.role === 'user' ? 'Ada Obi' : undefined,
-    time: m.time
-  }, m.body === 'terminal' ? /*#__PURE__*/React.createElement("div", null, "Connected. Scanning delivery log:", /*#__PURE__*/React.createElement(Terminal, {
-    host: "agent@pg-prod-eu",
-    style: {
-      marginTop: 10
-    },
-    lines: [{
-      type: 'cmd',
-      text: 'SELECT count(*) FROM webhook_deliveries WHERE status = 503 AND day = yesterday'
-    }, {
-      type: 'ok',
-      text: '12 rows · 02:10\u201302:14 UTC',
-      time: '14:02:41'
-    }, {
-      type: 'info',
-      text: 'Grouping by endpoint\u2026 1 endpoint affected',
-      time: '14:02:42'
-    }]
-  })) : m.text)), streaming && /*#__PURE__*/React.createElement(ChatMessage, {
-    streaming: true,
-    time: "now"
-  }, "Working on it"), /*#__PURE__*/React.createElement("div", {
-    ref: endRef
-  }))), /*#__PURE__*/React.createElement("div", {
-    style: {
-      flex: 'none',
-      padding: '0 32px 24px'
-    }
-  }, /*#__PURE__*/React.createElement("div", {
-    style: {
-      maxWidth: 720,
-      margin: '0 auto'
-    }
-  }, /*#__PURE__*/React.createElement(PromptComposer, {
-    onSend: send,
-    hint: "Agent can read your workspace",
-    placeholder: "Tell the agent what to do next\u2026",
-    onAttach: () => notify('Attach files', 'Pick files from your workspace.'),
-    busy: streaming,
-    onStop: () => setStreaming(false)
-  })))), /*#__PURE__*/React.createElement(TaskRail, {
-    running: running
-  })), /*#__PURE__*/React.createElement(CommandDialog, {
-    open: cmdk,
-    onOpenChange: setCmdk,
-    title: "Agent commands"
-  }, /*#__PURE__*/React.createElement(CommandInput, {
-    placeholder: "Search agent commands\u2026"
-  }), /*#__PURE__*/React.createElement(CommandList, null, /*#__PURE__*/React.createElement(CommandEmpty, null, "No matching commands."), CMD_GROUPS.map(group => /*#__PURE__*/React.createElement(CommandGroup, {
-    key: group.group,
-    heading: group.group
-  }, group.items.map(item => /*#__PURE__*/React.createElement(CommandItem, {
-    key: item.id,
-    value: item.id,
-    keywords: [group.group],
-    onSelect: runCommand
-  }, /*#__PURE__*/React.createElement(Icon, {
-    name: item.icon,
-    size: 16
-  }), item.label)))))));
-}
-})(); } catch (e) { __ds_ns.__errors.push({ path: "showcases/agent/AgentScreen.jsx", error: String((e && e.message) || e) }); }
-
-// showcases/auth/AuthScreens.jsx
-try { (() => {
-const {
-  Button,
-  Input,
-  Checkbox,
-  Icon,
-  Badge
-} = window.EfolusiDesignSystem_4ffc3d;
-// Skip autofocus when embedded in a docs preview iframe (it would scroll the parent gallery).
-const standalone = typeof window !== 'undefined' && window.top === window.self;
-function BrandPanel() {
-  return /*#__PURE__*/React.createElement("div", {
-    style: {
-      flex: 1,
-      background: 'var(--brand-950)',
-      color: 'var(--cream-50)',
-      display: 'flex',
-      flexDirection: 'column',
-      padding: 48,
-      position: 'relative',
-      overflow: 'hidden'
-    }
-  }, /*#__PURE__*/React.createElement("a", {
-    href: "../website/index.html",
-    style: {
-      display: 'flex',
-      alignItems: 'center',
-      gap: 8,
-      textDecoration: 'none',
-      color: 'var(--cream-50)'
-    }
-  }, /*#__PURE__*/React.createElement("img", {
-    src: "../../assets/meridian-mark.svg",
-    alt: "",
-    style: {
-      width: 36,
-      height: 19,
-      filter: 'brightness(0) invert(1)'
-    }
-  }), /*#__PURE__*/React.createElement("span", {
-    style: {
-      fontFamily: 'var(--font-display)',
-      fontWeight: 680,
-      letterSpacing: '-0.02em',
-      fontSize: 24
-    }
-  }, "Meridian")), /*#__PURE__*/React.createElement("div", {
-    style: {
-      marginTop: 'auto',
-      maxWidth: 420
-    }
-  }, /*#__PURE__*/React.createElement("div", {
-    style: {
-      fontFamily: 'var(--font-display)',
-      fontWeight: 700,
-      letterSpacing: '-0.02em',
-      fontSize: 34,
-      lineHeight: 1.15
-    }
-  }, "One account for your whole workspace."), /*#__PURE__*/React.createElement("p", {
-    style: {
-      marginTop: 14,
-      fontSize: 15,
-      lineHeight: 1.6,
-      color: 'color-mix(in srgb, var(--cream-50) 75%, transparent)'
-    }
-  }, "Every surface your team runs, one workspace, one bill, one login. Pick up right where you left off."), /*#__PURE__*/React.createElement("div", {
-    style: {
-      display: 'flex',
-      gap: 8,
-      marginTop: 20
-    }
-  }, /*#__PURE__*/React.createElement(Badge, {
-    className: "ef-badge--brand"
-  }, "SOC 2 Type II"), /*#__PURE__*/React.createElement(Badge, {
-    className: "ef-badge--brand"
-  }, "SSO & SCIM"))));
-}
-function AuthDivider() {
-  return /*#__PURE__*/React.createElement("div", {
-    style: {
-      display: 'flex',
-      alignItems: 'center',
-      gap: 12,
-      color: 'var(--text-muted)',
-      fontSize: 12
-    }
-  }, /*#__PURE__*/React.createElement("span", {
-    style: {
-      flex: 1,
-      height: 1,
-      background: 'var(--border-default)'
-    }
-  }), "or", /*#__PURE__*/React.createElement("span", {
-    style: {
-      flex: 1,
-      height: 1,
-      background: 'var(--border-default)'
-    }
-  }));
-}
-function AuthForm({
-  mode,
-  onSwitch,
-  onMode,
-  onDone
-}) {
-  const [busy, setBusy] = React.useState(false);
-  const [show, setShow] = React.useState(false);
-  const signup = mode === 'signup';
-  const submit = e => {
-    e.preventDefault();
-    setBusy(true);
-    setTimeout(() => {
-      setBusy(false);
-      onDone(signup);
-    }, 1200);
-  };
-  return /*#__PURE__*/React.createElement("div", {
-    style: {
-      width: 360
-    }
-  }, /*#__PURE__*/React.createElement("h1", {
-    style: {
-      fontSize: 26,
-      fontWeight: 680
-    }
-  }, signup ? 'Create your account' : 'Welcome back'), /*#__PURE__*/React.createElement("p", {
-    style: {
-      marginTop: 6,
-      fontSize: 14,
-      color: 'var(--text-secondary)'
-    }
-  }, signup ? 'Free for 14 days. No card needed.' : 'Sign in to your workspace.'), /*#__PURE__*/React.createElement("form", {
-    onSubmit: submit,
-    style: {
-      display: 'flex',
-      flexDirection: 'column',
-      gap: 14,
-      marginTop: 24
-    }
-  }, signup && /*#__PURE__*/React.createElement(Input, {
-    size: "lg",
-    label: "Full name",
-    placeholder: "Ada Obi",
-    autoFocus: standalone,
-    autoComplete: "off"
-  }), /*#__PURE__*/React.createElement(Input, {
-    size: "lg",
-    label: "Work email",
-    type: "email",
-    placeholder: "you@company.com",
-    iconLeft: "mail",
-    autoFocus: standalone && !signup,
-    autoComplete: "off"
-  }), /*#__PURE__*/React.createElement("div", {
-    style: {
-      position: 'relative'
-    }
-  }, /*#__PURE__*/React.createElement(Input, {
-    size: "lg",
-    label: "Password",
-    type: show ? 'text' : 'password',
-    placeholder: signup ? '12+ characters' : '••••••••••••',
-    iconLeft: "lock",
-    hint: signup ? 'At least 12 characters.' : undefined,
-    autoComplete: "off"
-  }), /*#__PURE__*/React.createElement("button", {
-    type: "button",
-    onClick: () => setShow(!show),
-    "aria-label": show ? 'Hide password' : 'Show password',
-    style: {
-      position: 'absolute',
-      right: 10,
-      top: 36,
-      border: 'none',
-      background: 'none',
-      cursor: 'pointer',
-      color: 'var(--text-muted)',
-      display: 'inline-flex',
-      padding: 4
-    }
-  }, /*#__PURE__*/React.createElement(Icon, {
-    name: show ? 'eye-off' : 'eye',
-    size: 18
-  }))), !signup && /*#__PURE__*/React.createElement("div", {
-    style: {
-      display: 'flex',
-      alignItems: 'center',
-      justifyContent: 'space-between'
-    }
-  }, /*#__PURE__*/React.createElement(Checkbox, {
-    defaultChecked: true,
-    label: "Keep me signed in"
-  }), /*#__PURE__*/React.createElement("a", {
-    href: "#",
-    onClick: e => {
-      e.preventDefault();
-      onMode && onMode('forgot');
-    },
-    style: {
-      fontSize: 13,
-      fontWeight: 600
-    }
-  }, "Forgot password?")), /*#__PURE__*/React.createElement(Button, {
-    size: "lg",
-    fullWidth: true,
-    loading: busy,
-    iconRight: busy ? undefined : 'arrow-right',
-    type: "submit"
-  }, signup ? 'Create account' : 'Sign in'), /*#__PURE__*/React.createElement(AuthDivider, null), /*#__PURE__*/React.createElement(Button, {
-    size: "lg",
-    fullWidth: true,
-    variant: "secondary",
-    iconLeft: "shield-check",
-    type: "button",
-    onClick: () => onDone && onDone('sso')
-  }, "Continue with SSO"), /*#__PURE__*/React.createElement(Button, {
-    size: "lg",
-    fullWidth: true,
-    variant: "secondary",
-    iconLeft: "mail",
-    type: "button",
-    onClick: () => onMode && onMode('magic')
-  }, "Email me a magic link")), /*#__PURE__*/React.createElement("p", {
-    style: {
-      marginTop: 22,
-      fontSize: 13,
-      color: 'var(--text-secondary)',
-      textAlign: 'center'
-    }
-  }, signup ? 'Already have an account? ' : 'New to Meridian? ', /*#__PURE__*/React.createElement("a", {
-    href: "#",
-    onClick: e => {
-      e.preventDefault();
-      onSwitch();
-    },
-    style: {
-      fontWeight: 600
-    }
-  }, signup ? 'Sign in' : 'Create one')), signup && /*#__PURE__*/React.createElement("p", {
-    style: {
-      marginTop: 10,
-      fontSize: 11,
-      color: 'var(--text-muted)',
-      textAlign: 'center',
-      lineHeight: 1.5
-    }
-  }, "By continuing you agree to the Terms of Service and Privacy Policy."));
-}
-function SentNotice({
-  title,
-  email,
-  hint,
-  onBack
-}) {
-  const [resent, setResent] = React.useState(false);
-  return /*#__PURE__*/React.createElement("div", {
-    style: {
-      width: 360,
-      textAlign: 'center'
-    }
-  }, /*#__PURE__*/React.createElement("span", {
-    style: {
-      display: 'inline-flex',
-      alignItems: 'center',
-      justifyContent: 'center',
-      width: 48,
-      height: 48,
-      borderRadius: 'var(--radius-full)',
-      background: 'var(--sand-950)',
-      color: 'var(--sand-50)'
-    }
-  }, /*#__PURE__*/React.createElement(Icon, {
-    name: "mail",
-    size: 22
-  })), /*#__PURE__*/React.createElement("h1", {
-    style: {
-      fontSize: 24,
-      fontWeight: 680,
-      marginTop: 18
-    }
-  }, title), /*#__PURE__*/React.createElement("p", {
-    style: {
-      marginTop: 8,
-      fontSize: 14,
-      lineHeight: 1.6,
-      color: 'var(--text-secondary)'
-    }
-  }, "We sent it to ", /*#__PURE__*/React.createElement("strong", null, email), ".", /*#__PURE__*/React.createElement("br", null), hint), /*#__PURE__*/React.createElement(Button, {
-    size: "lg",
-    fullWidth: true,
-    variant: "secondary",
-    iconLeft: resent ? 'check' : 'refresh-cw',
-    style: {
-      marginTop: 22
-    },
-    onClick: () => {
-      setResent(true);
-      setTimeout(() => setResent(false), 2500);
-    }
-  }, resent ? 'Sent again' : 'Resend email'), /*#__PURE__*/React.createElement("p", {
-    style: {
-      marginTop: 18,
-      fontSize: 13
-    }
-  }, /*#__PURE__*/React.createElement("a", {
-    href: "#",
-    onClick: e => {
-      e.preventDefault();
-      onBack();
-    },
-    style: {
-      fontWeight: 600
-    }
-  }, "\u2190 Back to sign in")));
-}
-function ForgotForm({
-  onBack
-}) {
-  const [busy, setBusy] = React.useState(false);
-  const [sent, setSent] = React.useState(false);
-  const [email, setEmail] = React.useState('');
-  if (sent) return /*#__PURE__*/React.createElement(SentNotice, {
-    title: "Check your inbox",
-    email: email || 'your email',
-    hint: "The reset link expires in 15 minutes.",
-    onBack: onBack
-  });
-  const submit = e => {
-    e.preventDefault();
-    setBusy(true);
-    setTimeout(() => {
-      setBusy(false);
-      setSent(true);
-    }, 1000);
-  };
-  return /*#__PURE__*/React.createElement("div", {
-    style: {
-      width: 360
-    }
-  }, /*#__PURE__*/React.createElement("h1", {
-    style: {
-      fontSize: 26,
-      fontWeight: 680
-    }
-  }, "Reset your password"), /*#__PURE__*/React.createElement("p", {
-    style: {
-      marginTop: 6,
-      fontSize: 14,
-      color: 'var(--text-secondary)'
-    }
-  }, "Tell us your work email and we'll send a reset link."), /*#__PURE__*/React.createElement("form", {
-    onSubmit: submit,
-    style: {
-      display: 'flex',
-      flexDirection: 'column',
-      gap: 14,
-      marginTop: 24
-    }
-  }, /*#__PURE__*/React.createElement(Input, {
-    size: "lg",
-    label: "Work email",
-    type: "email",
-    placeholder: "you@company.com",
-    iconLeft: "mail",
-    autoFocus: true,
-    value: email,
-    onChange: e => setEmail(e.target.value)
-  }), /*#__PURE__*/React.createElement(Button, {
-    size: "lg",
-    fullWidth: true,
-    loading: busy,
-    iconRight: busy ? undefined : 'arrow-right',
-    type: "submit"
-  }, "Send reset link")), /*#__PURE__*/React.createElement("p", {
-    style: {
-      marginTop: 22,
-      fontSize: 13,
-      textAlign: 'center'
-    }
-  }, /*#__PURE__*/React.createElement("a", {
-    href: "#",
-    onClick: e => {
-      e.preventDefault();
-      onBack();
-    },
-    style: {
-      fontWeight: 600
-    }
-  }, "\u2190 Back to sign in")));
-}
-function MagicForm({
-  onBack
-}) {
-  const [busy, setBusy] = React.useState(false);
-  const [sent, setSent] = React.useState(false);
-  const [email, setEmail] = React.useState('');
-  if (sent) return /*#__PURE__*/React.createElement(SentNotice, {
-    title: "Magic link sent",
-    email: email || 'your email',
-    hint: "Click it on this device to sign in. No password needed.",
-    onBack: onBack
-  });
-  const submit = e => {
-    e.preventDefault();
-    setBusy(true);
-    setTimeout(() => {
-      setBusy(false);
-      setSent(true);
-    }, 1000);
-  };
-  return /*#__PURE__*/React.createElement("div", {
-    style: {
-      width: 360
-    }
-  }, /*#__PURE__*/React.createElement("h1", {
-    style: {
-      fontSize: 26,
-      fontWeight: 680
-    }
-  }, "Sign in with a magic link"), /*#__PURE__*/React.createElement("p", {
-    style: {
-      marginTop: 6,
-      fontSize: 14,
-      color: 'var(--text-secondary)'
-    }
-  }, "No password needed. We'll email you a one-time sign-in link."), /*#__PURE__*/React.createElement("form", {
-    onSubmit: submit,
-    style: {
-      display: 'flex',
-      flexDirection: 'column',
-      gap: 14,
-      marginTop: 24
-    }
-  }, /*#__PURE__*/React.createElement(Input, {
-    size: "lg",
-    label: "Work email",
-    type: "email",
-    placeholder: "you@company.com",
-    iconLeft: "mail",
-    autoFocus: true,
-    value: email,
-    onChange: e => setEmail(e.target.value)
-  }), /*#__PURE__*/React.createElement(Button, {
-    size: "lg",
-    fullWidth: true,
-    loading: busy,
-    iconRight: busy ? undefined : 'send',
-    type: "submit"
-  }, "Email me a magic link")), /*#__PURE__*/React.createElement("p", {
-    style: {
-      marginTop: 22,
-      fontSize: 13,
-      textAlign: 'center'
-    }
-  }, /*#__PURE__*/React.createElement("a", {
-    href: "#",
-    onClick: e => {
-      e.preventDefault();
-      onBack();
-    },
-    style: {
-      fontWeight: 600
-    }
-  }, "\u2190 Back to sign in")));
-}
-})(); } catch (e) { __ds_ns.__errors.push({ path: "showcases/auth/AuthScreens.jsx", error: String((e && e.message) || e) }); }
-
-// showcases/console/CustomersScreen.jsx
-try { (() => {
-const {
-  Card,
-  CardContent,
-  Badge,
-  Button,
-  Input,
-  NativeSelect,
-  NativeSelectOption,
-  Checkbox,
-  Avatar,
-  AvatarFallback,
-  Icon,
-  IconButton,
-  Tag,
-  DropdownMenu,
-  DropdownMenuTrigger,
-  DropdownMenuContent,
-  DropdownMenuItem,
-  DropdownMenuSeparator,
-  Pagination,
-  PaginationContent,
-  PaginationEllipsis,
-  PaginationItem,
-  PaginationLink,
-  PaginationNext,
-  PaginationPrevious,
-  Drawer,
-  DrawerContent,
-  DrawerHeader,
-  DrawerTitle,
-  DrawerDescription,
-  DrawerFooter,
-  DrawerClose,
-  KeyValueList,
-  Dialog,
-  DialogClose,
-  DialogContent,
-  DialogDescription,
-  DialogFooter,
-  DialogHeader,
-  DialogTitle,
-  Sparkline,
-  Field,
-  FieldLabel
-} = window.EfolusiDesignSystem_4ffc3d;
-function CustomerActionMenu({
-  trigger,
-  items,
-  onSelect,
-  align = 'start'
-}) {
-  return /*#__PURE__*/React.createElement(DropdownMenu, null, /*#__PURE__*/React.createElement(DropdownMenuTrigger, {
-    asChild: true
-  }, trigger), /*#__PURE__*/React.createElement(DropdownMenuContent, {
-    align: align
-  }, items.map((item, index) => item === 'separator' ? /*#__PURE__*/React.createElement(DropdownMenuSeparator, {
-    key: 'separator-' + index
-  }) : /*#__PURE__*/React.createElement(DropdownMenuItem, {
-    key: item.id,
-    disabled: item.disabled,
-    variant: item.danger ? 'destructive' : 'default',
-    onSelect: () => {
-      onSelect?.(item.id);
-      item.onClick?.();
-    }
-  }, item.icon ? /*#__PURE__*/React.createElement(Icon, {
-    name: item.icon,
-    size: 15
-  }) : null, item.label))));
-}
-const SEED = [['Acme Robotics', 'ada@acmerobotics.com', 'Growth', 'Active', '$1,240', 'AI agents'], ['Bloom Health', 'ops@bloomhealth.io', 'Scale', 'Active', '$3,860', 'Infrastructure'], ['Cardinal Freight', 'it@cardinalfreight.com', 'Growth', 'Trial', '$0', 'Trading'], ['Delta Studios', 'hello@deltastudios.tv', 'Starter', 'Active', '$96', 'Automation'], ['Everline', 'admin@everline.app', 'Scale', 'Past due', '$2,410', 'Finance'], ['Foundry Labs', 'team@foundrylabs.dev', 'Growth', 'Active', '$1,870', 'File tools'], ['Golden Gate Coffee', 'sam@ggcoffee.com', 'Starter', 'Churned', '$0', 'AI agents']].map(([name, email, plan, status, mrr, product], i) => ({
-  id: i + 1,
-  name,
-  email,
-  plan,
-  status,
-  mrr,
-  product
-}));
-const BADGE_CLASS = {
-  Active: 'ef-badge--success',
-  Trial: 'ef-badge--accent',
-  'Past due': 'ef-badge--warning'
-};
-const STATUSES = ['Any status', 'Active', 'Trial', 'Past due', 'Churned'];
-function CustomersScreen({
-  notify
-}) {
-  const [rows, setRows] = React.useState(SEED);
-  const [checked, setChecked] = React.useState([]);
-  const [q, setQ] = React.useState('');
-  const [plan, setPlan] = React.useState('All plans');
-  const [status, setStatus] = React.useState('Any status');
-  const [page, setPage] = React.useState(1);
-  const [sel, setSel] = React.useState(null);
-  const [adding, setAdding] = React.useState(false);
-  const [form, setForm] = React.useState({
-    name: '',
-    email: '',
-    plan: 'Starter'
-  });
-  const shown = rows.filter(r => r.name.toLowerCase().includes(q.toLowerCase()) && (plan === 'All plans' || r.plan === plan) && (status === 'Any status' || r.status === status));
-  const toggle = id => setChecked(c => c.includes(id) ? c.filter(x => x !== id) : [...c, id]);
-  const markChurned = id => {
-    setRows(rs => rs.map(r => r.id === id ? {
-      ...r,
-      status: 'Churned',
-      mrr: '$0'
-    } : r));
-    notify('Marked churned', 'MRR moved to $0 for this customer.');
-  };
-  const addCustomer = () => {
-    if (!form.name.trim()) return;
-    setRows(rs => [{
-      id: Date.now(),
-      name: form.name,
-      email: form.email || 'hello@' + form.name.toLowerCase().replace(/\s+/g, '') + '.com',
-      plan: form.plan,
-      status: 'Trial',
-      mrr: '$0',
-      product: 'AI agents'
-    }, ...rs]);
-    setAdding(false);
-    setForm({
-      name: '',
-      email: '',
-      plan: 'Starter'
-    });
-    notify('Customer added', form.name + ' starts on a 14-day trial.');
-  };
-  const th = {
-    textAlign: 'left',
-    padding: '10px 16px',
-    fontSize: 11,
-    fontWeight: 600,
-    letterSpacing: '0.06em',
-    textTransform: 'uppercase',
-    color: 'var(--text-muted)',
-    borderBottom: '1px solid var(--border-default)',
-    whiteSpace: 'nowrap'
-  };
-  const td = {
-    padding: '12px 16px',
-    fontSize: 14,
-    borderBottom: '1px solid var(--sand-100)',
-    whiteSpace: 'nowrap'
-  };
-  return /*#__PURE__*/React.createElement("div", {
-    style: {
-      padding: 24,
-      display: 'flex',
-      flexDirection: 'column',
-      gap: 16
-    }
-  }, /*#__PURE__*/React.createElement("div", {
-    style: {
-      display: 'flex',
-      alignItems: 'center',
-      gap: 10
-    }
-  }, /*#__PURE__*/React.createElement("div", {
-    style: {
-      width: 280
-    }
-  }, /*#__PURE__*/React.createElement(Input, {
-    size: "sm",
-    type: "search",
-    "aria-label": "Search customers",
-    placeholder: "Search customers\u2026",
-    iconLeft: "search",
-    value: q,
-    onChange: e => setQ(e.target.value)
-  })), /*#__PURE__*/React.createElement(NativeSelect, {
-    size: "sm",
-    value: plan,
-    onChange: e => setPlan(e.target.value),
-    "aria-label": "Plan filter",
-    style: {
-      width: 130
-    }
-  }, ['All plans', 'Starter', 'Growth', 'Scale'].map(value => /*#__PURE__*/React.createElement(NativeSelectOption, {
-    key: value,
-    value: value
-  }, value))), /*#__PURE__*/React.createElement(CustomerActionMenu, {
-    trigger: /*#__PURE__*/React.createElement(Tag, {
-      icon: "funnel",
-      onClick: () => {}
-    }, status),
-    items: STATUSES.map(s => ({
-      id: s,
-      label: s,
-      icon: s === status ? 'check' : undefined
-    })),
-    onSelect: setStatus
-  }), /*#__PURE__*/React.createElement("div", {
-    style: {
-      marginLeft: 'auto',
-      display: 'flex',
-      gap: 8,
-      alignItems: 'center'
-    }
-  }, checked.length > 0 && /*#__PURE__*/React.createElement(Button, {
-    size: "sm",
-    variant: "secondary",
-    iconLeft: "mail",
-    onClick: () => {
-      notify('Email drafted', checked.length + ' recipients added to the draft.');
-      setChecked([]);
-    }
-  }, "Email ", checked.length, " selected"), /*#__PURE__*/React.createElement(Button, {
-    size: "sm",
-    iconLeft: "plus",
-    onClick: () => setAdding(true)
-  }, "Add customer"))), /*#__PURE__*/React.createElement(Card, null, /*#__PURE__*/React.createElement(CardContent, {
-    style: {
-      paddingInline: 0,
-      marginBlock: 'calc(var(--card-spacing) * -1)'
-    }
-  }, /*#__PURE__*/React.createElement("table", {
-    style: {
-      width: '100%',
-      borderCollapse: 'collapse'
-    }
-  }, /*#__PURE__*/React.createElement("thead", null, /*#__PURE__*/React.createElement("tr", null, /*#__PURE__*/React.createElement("th", {
-    style: {
-      ...th,
-      width: 40,
-      paddingRight: 0
-    }
-  }, /*#__PURE__*/React.createElement(Checkbox, {
-    "aria-label": "Select all customers",
-    checked: checked.length === shown.length && shown.length > 0,
-    onChange: () => setChecked(checked.length === shown.length ? [] : shown.map(r => r.id))
-  })), /*#__PURE__*/React.createElement("th", {
-    style: th
-  }, "Customer"), /*#__PURE__*/React.createElement("th", {
-    style: th
-  }, "Plan"), /*#__PURE__*/React.createElement("th", {
-    style: th
-  }, "Status"), /*#__PURE__*/React.createElement("th", {
-    style: th
-  }, "MRR"), /*#__PURE__*/React.createElement("th", {
-    style: th
-  }, "Product"), /*#__PURE__*/React.createElement("th", {
-    style: {
-      ...th,
-      width: 40
-    }
-  }))), /*#__PURE__*/React.createElement("tbody", null, shown.map(r => /*#__PURE__*/React.createElement("tr", {
-    key: r.id,
-    style: {
-      background: checked.includes(r.id) ? 'var(--accent-subtle)' : 'transparent',
-      cursor: 'pointer'
-    }
-  }, /*#__PURE__*/React.createElement("td", {
-    style: {
-      ...td,
-      paddingRight: 0
-    },
-    onClick: e => e.stopPropagation()
-  }, /*#__PURE__*/React.createElement(Checkbox, {
-    "aria-label": `Select ${r.name}`,
-    checked: checked.includes(r.id),
-    onChange: () => toggle(r.id)
-  })), /*#__PURE__*/React.createElement("td", {
-    style: td,
-    onClick: () => setSel(r)
-  }, /*#__PURE__*/React.createElement("div", {
-    style: {
-      display: 'flex',
-      alignItems: 'center',
-      gap: 10
-    }
-  }, /*#__PURE__*/React.createElement(Avatar, null, /*#__PURE__*/React.createElement(AvatarFallback, null, r.name.split(/\s+/).map(part => part[0]).slice(0, 2).join(''))), /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement("div", {
-    style: {
-      fontWeight: 600
-    }
-  }, r.name), /*#__PURE__*/React.createElement("div", {
-    style: {
-      fontSize: 12,
-      color: 'var(--text-muted)'
-    }
-  }, r.email)))), /*#__PURE__*/React.createElement("td", {
-    style: td,
-    onClick: () => setSel(r)
-  }, r.plan), /*#__PURE__*/React.createElement("td", {
-    style: td,
-    onClick: () => setSel(r)
-  }, /*#__PURE__*/React.createElement(Badge, {
-    variant: r.status === 'Churned' ? 'secondary' : 'default',
-    className: BADGE_CLASS[r.status]
-  }, /*#__PURE__*/React.createElement(Icon, {
-    name: "circle",
-    size: 7,
-    strokeWidth: 4,
-    "data-icon": "inline-start"
-  }), r.status)), /*#__PURE__*/React.createElement("td", {
-    style: {
-      ...td,
-      fontFamily: 'var(--font-mono)',
-      fontSize: 13
-    },
-    onClick: () => setSel(r)
-  }, r.mrr), /*#__PURE__*/React.createElement("td", {
-    style: td,
-    onClick: () => setSel(r)
-  }, /*#__PURE__*/React.createElement("span", {
-    style: {
-      fontSize: 13,
-      color: 'var(--text-secondary)'
-    }
-  }, r.product)), /*#__PURE__*/React.createElement("td", {
-    style: td,
-    onClick: e => e.stopPropagation()
-  }, /*#__PURE__*/React.createElement(CustomerActionMenu, {
-    align: "end",
-    trigger: /*#__PURE__*/React.createElement(IconButton, {
-      icon: "ellipsis",
-      label: "More",
-      size: "sm"
-    }),
-    onSelect: id => {
-      if (id === 'view') setSel(r);
-      if (id === 'email') notify('Email drafted', 'To ' + r.email);
-      if (id === 'churn') markChurned(r.id);
-    },
-    items: [{
-      id: 'view',
-      label: 'View details',
-      icon: 'external-link'
-    }, {
-      id: 'email',
-      label: 'Email customer',
-      icon: 'mail'
-    }, 'separator', {
-      id: 'churn',
-      label: 'Mark churned',
-      icon: 'x',
-      danger: true,
-      disabled: r.status === 'Churned'
-    }]
-  })))))), shown.length === 0 && /*#__PURE__*/React.createElement("div", {
-    style: {
-      padding: '28px 16px',
-      textAlign: 'center',
-      fontSize: 13,
-      color: 'var(--text-muted)'
-    }
-  }, "No customers match. Clear the search or filters."), /*#__PURE__*/React.createElement("div", {
-    style: {
-      display: 'flex',
-      alignItems: 'center',
-      padding: '10px 16px',
-      fontSize: 13,
-      color: 'var(--text-muted)'
-    }
-  }, /*#__PURE__*/React.createElement("span", null, shown.length, " of 128 customers"), /*#__PURE__*/React.createElement(Pagination, {
-    style: {
-      marginLeft: 'auto'
-    }
-  }, /*#__PURE__*/React.createElement(PaginationContent, null, /*#__PURE__*/React.createElement(PaginationItem, null, /*#__PURE__*/React.createElement(PaginationPrevious, {
-    href: `#customers-page-${page - 1}`,
-    "aria-disabled": page === 1,
-    onClick: event => {
-      event.preventDefault();
-      setPage(value => Math.max(1, value - 1));
-    }
-  })), /*#__PURE__*/React.createElement(PaginationItem, null, /*#__PURE__*/React.createElement(PaginationLink, {
-    href: "#customers-page-1",
-    isActive: page === 1,
-    onClick: event => {
-      event.preventDefault();
-      setPage(1);
-    }
-  }, "1")), page > 2 && /*#__PURE__*/React.createElement(PaginationItem, null, /*#__PURE__*/React.createElement(PaginationEllipsis, null)), page > 1 && page < 19 && /*#__PURE__*/React.createElement(PaginationItem, null, /*#__PURE__*/React.createElement(PaginationLink, {
-    href: `#customers-page-${page}`,
-    isActive: true
-  }, page)), page < 18 && /*#__PURE__*/React.createElement(PaginationItem, null, /*#__PURE__*/React.createElement(PaginationEllipsis, null)), /*#__PURE__*/React.createElement(PaginationItem, null, /*#__PURE__*/React.createElement(PaginationLink, {
-    href: "#customers-page-19",
-    isActive: page === 19,
-    onClick: event => {
-      event.preventDefault();
-      setPage(19);
-    }
-  }, "19")), /*#__PURE__*/React.createElement(PaginationItem, null, /*#__PURE__*/React.createElement(PaginationNext, {
-    href: `#customers-page-${page + 1}`,
-    "aria-disabled": page === 19,
-    onClick: event => {
-      event.preventDefault();
-      setPage(value => Math.min(19, value + 1));
-    }
-  }))))))), /*#__PURE__*/React.createElement(Drawer, {
-    open: !!sel,
-    onOpenChange: open => {
-      if (!open) setSel(null);
-    },
-    direction: "right"
-  }, /*#__PURE__*/React.createElement(DrawerContent, {
-    style: {
-      width: 400
-    }
-  }, /*#__PURE__*/React.createElement(DrawerHeader, null, /*#__PURE__*/React.createElement(DrawerTitle, null, sel ? sel.name : ''), /*#__PURE__*/React.createElement(DrawerDescription, null, "Customer account and recent usage.")), sel && /*#__PURE__*/React.createElement("div", {
-    style: {
-      display: 'flex',
-      flexDirection: 'column',
-      gap: 18,
-      padding: 20
-    }
-  }, /*#__PURE__*/React.createElement("div", {
-    style: {
-      display: 'flex',
-      alignItems: 'center',
-      gap: 12
-    }
-  }, /*#__PURE__*/React.createElement(Avatar, {
-    size: "lg"
-  }, /*#__PURE__*/React.createElement(AvatarFallback, null, sel.name.split(/\s+/).map(part => part[0]).slice(0, 2).join(''))), /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement("div", {
-    style: {
-      fontSize: 16,
-      fontWeight: 600
-    }
-  }, sel.name), /*#__PURE__*/React.createElement(Badge, {
-    variant: sel.status === 'Churned' ? 'secondary' : 'default',
-    className: BADGE_CLASS[sel.status]
-  }, /*#__PURE__*/React.createElement(Icon, {
-    name: "circle",
-    size: 7,
-    strokeWidth: 4,
-    "data-icon": "inline-start"
-  }), sel.status))), /*#__PURE__*/React.createElement(KeyValueList, {
-    labelWidth: 110,
-    items: [{
-      label: 'Email',
-      value: sel.email,
-      mono: true
-    }, {
-      label: 'Plan',
-      value: sel.plan
-    }, {
-      label: 'MRR',
-      value: sel.mrr,
-      mono: true
-    }, {
-      label: 'Main product',
-      value: sel.product
-    }, {
-      label: 'Customer since',
-      value: 'Feb 12, 2026'
-    }]
-  }), /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement("div", {
-    style: {
-      fontSize: 13,
-      fontWeight: 600,
-      marginBottom: 6
-    }
-  }, "Usage \xB7 12 weeks"), /*#__PURE__*/React.createElement(Sparkline, {
-    data: [12, 18, 15, 22, 26, 24, 31, 29, 36, 34, 41, 46],
-    width: 340,
-    height: 56
-  }))), sel && /*#__PURE__*/React.createElement(DrawerFooter, null, /*#__PURE__*/React.createElement(DrawerClose, {
-    asChild: true
-  }, /*#__PURE__*/React.createElement(Button, {
-    variant: "ghost"
-  }, "Close")), /*#__PURE__*/React.createElement(Button, {
-    variant: "secondary",
-    iconLeft: "mail",
-    onClick: () => {
-      notify('Email drafted', 'To ' + sel.email);
-      setSel(null);
-    }
-  }, "Email")))), /*#__PURE__*/React.createElement(Dialog, {
-    open: adding,
-    onOpenChange: setAdding
-  }, /*#__PURE__*/React.createElement(DialogContent, null, /*#__PURE__*/React.createElement(DialogHeader, null, /*#__PURE__*/React.createElement(DialogTitle, null, "Add customer"), /*#__PURE__*/React.createElement(DialogDescription, null, "They'll start on a 14-day trial.")), /*#__PURE__*/React.createElement("div", {
-    className: "ef-dialog__body"
-  }, /*#__PURE__*/React.createElement("div", {
-    style: {
-      display: 'flex',
-      flexDirection: 'column',
-      gap: 14
-    }
-  }, /*#__PURE__*/React.createElement(Input, {
-    label: "Company",
-    placeholder: "Acme Robotics",
-    autoFocus: true,
-    value: form.name,
-    onChange: e => setForm({
-      ...form,
-      name: e.target.value
-    })
-  }), /*#__PURE__*/React.createElement(Input, {
-    label: "Billing email",
-    type: "email",
-    placeholder: "ops@acme.co",
-    iconLeft: "mail",
-    value: form.email,
-    onChange: e => setForm({
-      ...form,
-      email: e.target.value
-    })
-  }), /*#__PURE__*/React.createElement(Field, null, /*#__PURE__*/React.createElement(FieldLabel, {
-    htmlFor: "customer-plan"
-  }, "Plan"), /*#__PURE__*/React.createElement(NativeSelect, {
-    id: "customer-plan",
-    value: form.plan,
-    onChange: e => setForm({
-      ...form,
-      plan: e.target.value
-    })
-  }, ['Starter', 'Growth', 'Scale'].map(value => /*#__PURE__*/React.createElement(NativeSelectOption, {
-    key: value,
-    value: value
-  }, value)))))), /*#__PURE__*/React.createElement(DialogFooter, null, /*#__PURE__*/React.createElement(DialogClose, {
-    asChild: true
-  }, /*#__PURE__*/React.createElement(Button, {
-    variant: "ghost"
-  }, "Cancel")), /*#__PURE__*/React.createElement(Button, {
-    onClick: addCustomer
-  }, "Add customer")))));
-}
-})(); } catch (e) { __ds_ns.__errors.push({ path: "showcases/console/CustomersScreen.jsx", error: String((e && e.message) || e) }); }
-
-// showcases/console/ExtraScreens.jsx
-try { (() => {
-const {
-  Card,
-  CardAction,
-  CardContent,
-  CardDescription,
-  CardHeader,
-  CardTitle,
-  Badge,
-  Button,
-  Icon,
-  IconButton,
-  Avatar,
-  AvatarFallback,
-  AvatarGroup,
-  Stat,
-  BarChart,
-  Progress,
-  Table,
-  Empty,
-  EmptyContent,
-  EmptyDescription,
-  EmptyHeader,
-  EmptyMedia,
-  EmptyTitle,
-  DropdownMenu,
-  DropdownMenuTrigger,
-  DropdownMenuContent,
-  DropdownMenuItem,
-  DropdownMenuSeparator,
-  DropdownMenuShortcut,
-  KeyValueList
-} = window.EfolusiDesignSystem_4ffc3d;
-function ProjectActionMenu({
-  trigger,
-  items,
-  onSelect,
-  align = 'end'
-}) {
-  return /*#__PURE__*/React.createElement(DropdownMenu, null, /*#__PURE__*/React.createElement(DropdownMenuTrigger, {
-    asChild: true
-  }, trigger), /*#__PURE__*/React.createElement(DropdownMenuContent, {
-    align: align
-  }, items.map((item, index) => item === 'separator' ? /*#__PURE__*/React.createElement(DropdownMenuSeparator, {
-    key: 'separator-' + index
-  }) : /*#__PURE__*/React.createElement(DropdownMenuItem, {
-    key: item.id,
-    disabled: item.disabled,
-    variant: item.danger ? 'destructive' : 'default',
-    onSelect: () => {
-      onSelect?.(item.id);
-      item.onClick?.();
-    }
-  }, item.icon ? /*#__PURE__*/React.createElement(Icon, {
-    name: item.icon,
-    size: 15
-  }) : null, item.label, item.kbd ? /*#__PURE__*/React.createElement(DropdownMenuShortcut, null, item.kbd) : null))));
-}
-const PROJECTS = [['Q3 launch plan', 'AI agents', '2 hours ago', ['Ada Obi', 'Femi Alade'], 'busy'], ['Billing migration', 'Infrastructure', 'Yesterday', ['June Park', 'Ada Obi', 'Sol Reyes'], 'ok'], ['Onboarding videos', 'Automation', '3 days ago', ['Sol Reyes'], 'ok'], ['EUR momentum bot', 'Trading', 'Last week', ['Femi Alade', 'June Park'], 'ok']];
-function ProjectsScreen({
-  onNewProject,
-  notify
-}) {
-  return /*#__PURE__*/React.createElement("div", {
-    style: {
-      padding: 24
-    }
-  }, /*#__PURE__*/React.createElement("div", {
-    style: {
-      display: 'flex',
-      alignItems: 'center',
-      marginBottom: 16
-    }
-  }, /*#__PURE__*/React.createElement("span", {
-    style: {
-      fontSize: 13,
-      color: 'var(--text-muted)'
-    }
-  }, PROJECTS.length, " projects \xB7 all surfaces"), /*#__PURE__*/React.createElement(Button, {
-    style: {
-      marginLeft: 'auto'
-    },
-    iconLeft: "plus",
-    onClick: onNewProject
-  }, "New project")), /*#__PURE__*/React.createElement("div", {
-    style: {
-      display: 'grid',
-      gridTemplateColumns: '1fr 1fr 1fr',
-      gap: 16
-    }
-  }, PROJECTS.map(([name, product, when, people, state]) => /*#__PURE__*/React.createElement(Card, {
-    key: name,
-    interactive: true,
-    style: {
-      '--card-spacing': '18px'
-    },
-    onClick: () => notify('Opening ' + name, 'Projects are a demo surface in this kit.')
-  }, /*#__PURE__*/React.createElement(CardContent, null, /*#__PURE__*/React.createElement("div", {
-    style: {
-      display: 'flex',
-      alignItems: 'center',
-      gap: 8
-    }
-  }, /*#__PURE__*/React.createElement("span", {
-    style: {
-      fontSize: 15,
-      fontWeight: 600,
-      flex: 1
-    }
-  }, name), /*#__PURE__*/React.createElement(ProjectActionMenu, {
-    trigger: /*#__PURE__*/React.createElement(IconButton, {
-      icon: "ellipsis",
-      label: "More",
-      size: "sm"
-    }),
-    onSelect: id => notify(id === 'archive' ? 'Project archived' : 'Link copied', name),
-    items: [{
-      id: 'copy',
-      label: 'Copy link',
-      icon: 'link'
-    }, {
-      id: 'archive',
-      label: 'Archive',
-      icon: 'package',
-      danger: true
-    }]
-  })), /*#__PURE__*/React.createElement("div", {
-    style: {
-      display: 'flex',
-      gap: 6,
-      marginTop: 8
-    }
-  }, /*#__PURE__*/React.createElement(Badge, {
-    variant: state === 'busy' ? 'default' : 'secondary',
-    className: state === 'busy' ? 'ef-badge--accent' : undefined
-  }, state === 'busy' && /*#__PURE__*/React.createElement(Icon, {
-    name: "circle",
-    size: 7,
-    strokeWidth: 4,
-    "data-icon": "inline-start"
-  }), product), state === 'busy' && /*#__PURE__*/React.createElement(Badge, {
-    className: "ef-badge--success"
-  }, /*#__PURE__*/React.createElement(Icon, {
-    name: "circle",
-    size: 7,
-    strokeWidth: 4,
-    "data-icon": "inline-start"
-  }), "Running")), /*#__PURE__*/React.createElement("div", {
-    style: {
-      display: 'flex',
-      alignItems: 'center',
-      marginTop: 16
-    }
-  }, /*#__PURE__*/React.createElement(AvatarGroup, null, people.map(p => /*#__PURE__*/React.createElement(Avatar, {
-    key: p,
-    size: "sm"
-  }, /*#__PURE__*/React.createElement(AvatarFallback, null, p.split(/\s+/).map(part => part[0]).slice(0, 2).join(''))))), /*#__PURE__*/React.createElement("span", {
-    style: {
-      marginLeft: 'auto',
-      fontSize: 12,
-      color: 'var(--text-muted)'
-    }
-  }, when))))), /*#__PURE__*/React.createElement(Empty, {
-    className: "ef-empty--bordered",
-    style: {
-      padding: '28px 24px'
-    }
-  }, /*#__PURE__*/React.createElement(EmptyHeader, null, /*#__PURE__*/React.createElement(EmptyMedia, {
-    variant: "icon"
-  }, /*#__PURE__*/React.createElement(Icon, {
-    name: "plus",
-    size: 24
-  })), /*#__PURE__*/React.createElement(EmptyTitle, null, "New project"), /*#__PURE__*/React.createElement(EmptyDescription, null, "Group keys, environments, and usage.")), /*#__PURE__*/React.createElement(EmptyContent, null, /*#__PURE__*/React.createElement(Button, {
-    size: "sm",
-    variant: "secondary",
-    iconLeft: "plus",
-    onClick: onNewProject
-  }, "Create")))));
-}
-const USAGE_BY_PRODUCT = [{
-  id: 'agent',
-  product: 'AI agents',
-  unit: 'tasks',
-  used: '1,204',
-  quota: '5,000',
-  pct: 24
-}, {
-  id: 'infra',
-  product: 'Infrastructure',
-  unit: 'tunnels',
-  used: '14',
-  quota: '25',
-  pct: 56
-}, {
-  id: 'content',
-  product: 'Automation',
-  unit: 'renders',
-  used: '8,912',
-  quota: '10,000',
-  pct: 89
-}, {
-  id: 'tools',
-  product: 'File tools',
-  unit: 'conversions',
-  used: '412',
-  quota: '2,000',
-  pct: 21
-}];
-function UsageScreen() {
-  return /*#__PURE__*/React.createElement("div", {
-    style: {
-      padding: 24,
-      display: 'flex',
-      flexDirection: 'column',
-      gap: 16
-    }
-  }, /*#__PURE__*/React.createElement("div", {
-    style: {
-      display: 'flex',
-      gap: 16
-    }
-  }, /*#__PURE__*/React.createElement(Card, {
-    style: {
-      flex: 1,
-      '--card-spacing': '16px'
-    }
-  }, /*#__PURE__*/React.createElement(CardContent, null, /*#__PURE__*/React.createElement(Stat, {
-    label: "API requests \xB7 30 days",
-    value: "489M",
-    delta: "8.9%",
-    direction: "up"
-  }))), /*#__PURE__*/React.createElement(Card, {
-    style: {
-      flex: 1,
-      '--card-spacing': '16px'
-    }
-  }, /*#__PURE__*/React.createElement(CardContent, null, /*#__PURE__*/React.createElement(Stat, {
-    label: "Peak day",
-    value: "21.4M",
-    hint: "Jul 9 \xB7 product launch"
-  }))), /*#__PURE__*/React.createElement(Card, {
-    style: {
-      flex: 1,
-      '--card-spacing': '16px'
-    }
-  }, /*#__PURE__*/React.createElement(CardContent, null, /*#__PURE__*/React.createElement(Stat, {
-    label: "Plan quota used",
-    value: "61%",
-    hint: "Resets Aug 1"
-  })))), /*#__PURE__*/React.createElement(Card, null, /*#__PURE__*/React.createElement(CardHeader, null, /*#__PURE__*/React.createElement(CardTitle, null, "Requests per day"), /*#__PURE__*/React.createElement(CardDescription, null, "Last 30 days \xB7 ink bars are this week")), /*#__PURE__*/React.createElement(CardContent, null, /*#__PURE__*/React.createElement(BarChart, {
-    height: 150,
-    highlightLast: 7,
-    labels: ['Jun 17', 'Jul 1', 'Jul 16'],
-    format: v => (v / 10).toFixed(1) + 'M requests',
-    data: [82, 95, 88, 101, 98, 112, 106, 120, 114, 128, 132, 124, 136, 130, 144, 138, 152, 148, 158, 151, 164, 170, 162, 178, 172, 184, 190, 181, 196, 214]
-  }))), /*#__PURE__*/React.createElement(Card, {
-    style: {
-      '--card-spacing': '20px'
-    }
-  }, /*#__PURE__*/React.createElement(CardHeader, null, /*#__PURE__*/React.createElement(CardTitle, null, "By surface")), /*#__PURE__*/React.createElement(CardContent, null, /*#__PURE__*/React.createElement("div", {
-    style: {
-      display: 'grid',
-      gridTemplateColumns: '1fr 1fr',
-      gap: '16px 40px'
-    }
-  }, USAGE_BY_PRODUCT.map(u => /*#__PURE__*/React.createElement(Progress, {
-    key: u.id,
-    label: u.product,
-    value: u.pct,
-    showValue: true,
-    tone: u.pct > 85 ? 'warning' : 'default',
-    format: () => u.used + ' of ' + u.quota + ' ' + u.unit
-  }))))));
-}
-const INVOICES = [{
-  id: '10422',
-  date: 'Jul 1, 2026',
-  amount: '€1,240.00',
-  status: 'Paid'
-}, {
-  id: '10391',
-  date: 'Jun 1, 2026',
-  amount: '€1,240.00',
-  status: 'Paid'
-}, {
-  id: '10360',
-  date: 'May 1, 2026',
-  amount: '€1,116.00',
-  status: 'Paid'
-}, {
-  id: '10329',
-  date: 'Apr 1, 2026',
-  amount: '€992.00',
-  status: 'Refunded'
-}];
-function BillingScreen({
-  notify
-}) {
-  return /*#__PURE__*/React.createElement("div", {
-    style: {
-      padding: 24,
-      display: 'flex',
-      flexDirection: 'column',
-      gap: 16,
-      maxWidth: 860
-    }
-  }, /*#__PURE__*/React.createElement("div", {
-    style: {
-      display: 'flex',
-      gap: 16
-    }
-  }, /*#__PURE__*/React.createElement(Card, {
-    style: {
-      flex: 1.2,
-      '--card-spacing': '20px'
-    }
-  }, /*#__PURE__*/React.createElement(CardHeader, null, /*#__PURE__*/React.createElement(CardTitle, null, "Plan"), /*#__PURE__*/React.createElement(CardAction, null, /*#__PURE__*/React.createElement(Badge, {
-    className: "ef-badge--accent"
-  }, "Growth"))), /*#__PURE__*/React.createElement(CardContent, null, /*#__PURE__*/React.createElement(KeyValueList, {
-    labelWidth: 130,
-    items: [{
-      label: 'Price',
-      value: '€12 per seat / month',
-      mono: true
-    }, {
-      label: 'Seats',
-      value: '4 of 5 used'
-    }, {
-      label: 'Next invoice',
-      value: 'Aug 1, 2026 · ~€1,240',
-      mono: true
-    }]
-  }), /*#__PURE__*/React.createElement("div", {
-    style: {
-      display: 'flex',
-      gap: 8,
-      marginTop: 16
-    }
-  }, /*#__PURE__*/React.createElement(Button, {
-    size: "sm",
-    variant: "secondary",
-    onClick: () => notify('Plan options sent', 'Compare Growth vs Scale in your inbox.')
-  }, "Change plan"), /*#__PURE__*/React.createElement(Button, {
-    size: "sm",
-    variant: "ghost",
-    onClick: () => notify('Seats updated', 'You now have 6 seats.')
-  }, "Add seats")))), /*#__PURE__*/React.createElement(Card, {
-    style: {
-      flex: 1,
-      '--card-spacing': '20px'
-    }
-  }, /*#__PURE__*/React.createElement(CardHeader, null, /*#__PURE__*/React.createElement(CardTitle, null, "Payment method")), /*#__PURE__*/React.createElement(CardContent, null, /*#__PURE__*/React.createElement("div", {
-    style: {
-      display: 'flex',
-      alignItems: 'center',
-      gap: 12
-    }
-  }, /*#__PURE__*/React.createElement("span", {
-    style: {
-      display: 'inline-flex',
-      width: 38,
-      height: 38,
-      alignItems: 'center',
-      justifyContent: 'center',
-      borderRadius: 'var(--radius-sm)',
-      background: 'var(--surface-sunken)',
-      color: 'var(--sand-700)'
-    }
-  }, /*#__PURE__*/React.createElement(Icon, {
-    name: "credit-card",
-    size: 18
-  })), /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement("div", {
-    style: {
-      fontSize: 14,
-      fontWeight: 600,
-      fontFamily: 'var(--font-mono)'
-    }
-  }, "\u2022\u2022\u2022\u2022 4242"), /*#__PURE__*/React.createElement("div", {
-    style: {
-      fontSize: 12,
-      color: 'var(--text-muted)'
-    }
-  }, "Expires 08 / 28"))), /*#__PURE__*/React.createElement(Button, {
-    size: "sm",
-    variant: "secondary",
-    iconLeft: "pencil",
-    style: {
-      marginTop: 16
-    },
-    onClick: () => notify('Secure link sent', 'Update your card from the email we just sent.')
-  }, "Update card")))), /*#__PURE__*/React.createElement(Card, null, /*#__PURE__*/React.createElement(CardHeader, null, /*#__PURE__*/React.createElement(CardTitle, null, "Invoices"), /*#__PURE__*/React.createElement(CardDescription, null, "Also emailed to billing@acme.co on the 1st.")), /*#__PURE__*/React.createElement(CardContent, {
-    style: {
-      paddingInline: 0,
-      marginBlockEnd: 'calc(var(--card-spacing) * -1)'
-    }
-  }, /*#__PURE__*/React.createElement(Table, {
-    rowKey: "id",
-    columns: [{
-      key: 'id',
-      label: 'Invoice',
-      render: v => /*#__PURE__*/React.createElement("strong", null, "#", v)
-    }, {
-      key: 'date',
-      label: 'Date'
-    }, {
-      key: 'amount',
-      label: 'Amount',
-      numeric: true,
-      align: 'right'
-    }, {
-      key: 'status',
-      label: 'Status',
-      render: v => /*#__PURE__*/React.createElement(Badge, {
-        variant: v === 'Paid' ? 'default' : 'secondary',
-        className: v === 'Paid' ? 'ef-badge--success' : undefined
-      }, /*#__PURE__*/React.createElement(Icon, {
-        name: "circle",
-        size: 7,
-        strokeWidth: 4,
-        "data-icon": "inline-start"
-      }), v)
-    }, {
-      key: 'dl',
-      label: '',
-      width: 50,
-      render: (v, r) => /*#__PURE__*/React.createElement(IconButton, {
-        icon: "download",
-        label: "Download PDF",
-        size: "sm",
-        onClick: () => notify('Invoice #' + r.id + ' downloading', 'PDF on its way.')
-      })
-    }],
-    rows: INVOICES
-  }))));
-}
-})(); } catch (e) { __ds_ns.__errors.push({ path: "showcases/console/ExtraScreens.jsx", error: String((e && e.message) || e) }); }
-
-// showcases/console/OverviewScreen.jsx
-try { (() => {
-const {
-  Card,
-  CardAction,
-  CardContent,
-  CardDescription,
-  CardHeader,
-  CardTitle,
-  Badge,
-  Button,
-  Icon,
-  IconButton,
-  Avatar,
-  Tooltip,
-  TooltipContent,
-  TooltipTrigger,
-  Stat: EfStat
-} = window.EfolusiDesignSystem_4ffc3d;
-function KpiCard({
-  label,
-  value,
-  delta,
-  up
-}) {
-  return /*#__PURE__*/React.createElement(Card, {
-    style: {
-      flex: 1,
-      '--card-spacing': '16px'
-    }
-  }, /*#__PURE__*/React.createElement(CardContent, null, /*#__PURE__*/React.createElement(EfStat, {
-    label: label,
-    value: value,
-    delta: delta,
-    direction: up ? 'up' : 'down'
-  })));
-}
-const BARS = [42, 55, 48, 61, 58, 72, 66, 80, 74, 88, 92, 84, 96, 90, 104, 98, 112, 108, 118, 111, 124, 130, 122, 138, 132, 144, 150, 141];
-function UsageChart({
-  notify
-}) {
-  const [hov, setHov] = React.useState(null);
-  const max = Math.max(...BARS);
-  return /*#__PURE__*/React.createElement(Card, {
-    style: {
-      flex: 2
-    }
-  }, /*#__PURE__*/React.createElement(CardHeader, null, /*#__PURE__*/React.createElement(CardTitle, null, "API requests"), /*#__PURE__*/React.createElement(CardDescription, null, "Last 28 days \xB7 all surfaces"), /*#__PURE__*/React.createElement(CardAction, null, /*#__PURE__*/React.createElement(Button, {
-    size: "sm",
-    variant: "secondary",
-    iconLeft: "download",
-    onClick: () => notify && notify('Export ready', 'requests-28d.csv is downloading.')
-  }, "Export"))), /*#__PURE__*/React.createElement(CardContent, null, /*#__PURE__*/React.createElement("div", {
-    style: {
-      display: 'flex',
-      alignItems: 'flex-end',
-      gap: 4,
-      height: 150
-    }
-  }, BARS.map((v, i) => /*#__PURE__*/React.createElement(Tooltip, {
-    key: i
-  }, /*#__PURE__*/React.createElement(TooltipTrigger, {
-    asChild: true
-  }, /*#__PURE__*/React.createElement("div", {
-    onMouseEnter: () => setHov(i),
-    onMouseLeave: () => setHov(null),
-    style: {
-      display: 'flex',
-      flex: 1,
-      height: '100%',
-      alignItems: 'flex-end'
-    }
-  }, /*#__PURE__*/React.createElement("div", {
-    style: {
-      width: '100%',
-      height: v / max * 100 + '%',
-      borderRadius: '3px 3px 0 0',
-      background: hov === i ? 'var(--brand-700)' : i > 23 ? 'var(--brand-900)' : 'var(--sand-200)',
-      transition: 'background var(--dur-fast) var(--ease-out)'
-    }
-  }))), /*#__PURE__*/React.createElement(TooltipContent, null, (v * 113).toLocaleString(), " requests")))), /*#__PURE__*/React.createElement("div", {
-    style: {
-      display: 'flex',
-      justifyContent: 'space-between',
-      marginTop: 8,
-      fontFamily: 'var(--font-mono)',
-      fontSize: 10,
-      color: 'var(--text-muted)'
-    }
-  }, /*#__PURE__*/React.createElement("span", null, "Jun 18"), /*#__PURE__*/React.createElement("span", null, "Jul 2"), /*#__PURE__*/React.createElement("span", null, "Jul 16"))));
-}
-const EVENTS = [['Femi Alade', 'rotated the production API key', '2m ago', 'key-round'], ['June Park', 'invited sam@acme.co as Admin', '18m ago', 'mail'], ['Trading', 'closed BTC-EUR position at +2.4%', '1h ago', 'chart-candlestick'], ['Sol Reyes', 'created project Q3 launch plan', '3h ago', 'folder'], ['Infrastructure', 'pg-prod-eu failover completed', '5h ago', 'server']];
-function Activity() {
-  return /*#__PURE__*/React.createElement(Card, {
-    style: {
-      flex: 1,
-      '--card-spacing': '8px'
-    }
-  }, /*#__PURE__*/React.createElement(CardHeader, null, /*#__PURE__*/React.createElement(CardTitle, null, "Activity"), /*#__PURE__*/React.createElement(CardAction, null, /*#__PURE__*/React.createElement(IconButton, {
-    icon: "ellipsis",
-    label: "More",
-    size: "sm"
-  }))), /*#__PURE__*/React.createElement(CardContent, null, /*#__PURE__*/React.createElement("div", {
-    style: {
-      display: 'flex',
-      flexDirection: 'column'
-    }
-  }, EVENTS.map(([who, what, when, icon], i) => /*#__PURE__*/React.createElement("div", {
-    key: i,
-    style: {
-      display: 'flex',
-      gap: 10,
-      alignItems: 'flex-start',
-      padding: '9px 12px',
-      borderRadius: 'var(--radius-sm)'
-    }
-  }, /*#__PURE__*/React.createElement("span", {
-    style: {
-      display: 'inline-flex',
-      width: 28,
-      height: 28,
-      alignItems: 'center',
-      justifyContent: 'center',
-      flex: 'none',
-      borderRadius: 'var(--radius-full)',
-      background: 'var(--sand-100)',
-      color: 'var(--sand-700)'
-    }
-  }, /*#__PURE__*/React.createElement(Icon, {
-    name: icon === 'key-round' ? 'lock' : icon,
-    size: 14
-  })), /*#__PURE__*/React.createElement("div", {
-    style: {
-      fontSize: 13,
-      lineHeight: 1.45
-    }
-  }, /*#__PURE__*/React.createElement("span", {
-    style: {
-      fontWeight: 600
-    }
-  }, who), " ", /*#__PURE__*/React.createElement("span", {
-    style: {
-      color: 'var(--text-secondary)'
-    }
-  }, what), /*#__PURE__*/React.createElement("div", {
-    style: {
-      fontSize: 11,
-      color: 'var(--text-muted)',
-      marginTop: 1
-    }
-  }, when)))))));
-}
-function DashboardScreen({
-  onNewProject,
-  notify
-}) {
-  return /*#__PURE__*/React.createElement("div", {
-    style: {
-      padding: 24,
-      display: 'flex',
-      flexDirection: 'column',
-      gap: 20
-    }
-  }, /*#__PURE__*/React.createElement("div", {
-    style: {
-      display: 'flex',
-      alignItems: 'flex-end',
-      justifyContent: 'space-between'
-    }
-  }, /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement("h2", {
-    style: {
-      fontSize: 26,
-      fontWeight: 680
-    }
-  }, "Good morning, Ada"), /*#__PURE__*/React.createElement("p", {
-    style: {
-      color: 'var(--text-secondary)',
-      marginTop: 4,
-      fontSize: 14
-    }
-  }, "Acme Workspace is trending up across every surface.")), /*#__PURE__*/React.createElement("div", {
-    style: {
-      display: 'flex',
-      gap: 8
-    }
-  }, /*#__PURE__*/React.createElement(Button, {
-    variant: "secondary",
-    iconLeft: "upload",
-    onClick: () => notify && notify('Import started', "We'll email you when the CSV is mapped.")
-  }, "Import"), /*#__PURE__*/React.createElement(Button, {
-    iconLeft: "plus",
-    onClick: onNewProject
-  }, "New project"))), /*#__PURE__*/React.createElement("div", {
-    style: {
-      display: 'flex',
-      gap: 16
-    }
-  }, /*#__PURE__*/React.createElement(KpiCard, {
-    label: "Monthly recurring revenue",
-    value: "$48.2k",
-    delta: "12.4%",
-    up: true
-  }), /*#__PURE__*/React.createElement(KpiCard, {
-    label: "Active customers",
-    value: "1,284",
-    delta: "3.1%",
-    up: true
-  }), /*#__PURE__*/React.createElement(KpiCard, {
-    label: "API requests / day",
-    value: "16.3M",
-    delta: "8.9%",
-    up: true
-  }), /*#__PURE__*/React.createElement(KpiCard, {
-    label: "Churn",
-    value: "1.9%",
-    delta: "0.4pt"
-  })), /*#__PURE__*/React.createElement("div", {
-    style: {
-      display: 'flex',
-      gap: 16,
-      alignItems: 'stretch'
-    }
-  }, /*#__PURE__*/React.createElement(UsageChart, {
-    notify: notify
-  }), /*#__PURE__*/React.createElement(Activity, null)));
-}
-})(); } catch (e) { __ds_ns.__errors.push({ path: "showcases/console/OverviewScreen.jsx", error: String((e && e.message) || e) }); }
-
-// showcases/console/SettingsScreen.jsx
-try { (() => {
-const {
-  Card,
-  CardAction,
-  CardContent,
-  CardDescription,
-  CardHeader,
-  CardTitle,
-  Badge,
-  Button,
-  Input,
-  Textarea,
-  NativeSelect,
-  NativeSelectOption,
-  Switch,
-  Tabs,
-  Avatar,
-  AvatarFallback,
-  IconButton,
-  Tag,
-  Icon,
-  Dialog,
-  DialogClose,
-  DialogContent,
-  DialogDescription,
-  DialogFooter,
-  DialogHeader,
-  DialogTitle
-} = window.EfolusiDesignSystem_4ffc3d;
-function SectionRow({
-  title,
-  desc,
-  children
-}) {
-  return /*#__PURE__*/React.createElement("div", {
-    style: {
-      display: 'flex',
-      gap: 24,
-      padding: '18px 0',
-      borderBottom: '1px solid var(--sand-100)',
-      alignItems: 'flex-start'
-    }
-  }, /*#__PURE__*/React.createElement("div", {
-    style: {
-      width: 260,
-      flex: 'none'
-    }
-  }, /*#__PURE__*/React.createElement("div", {
-    style: {
-      fontSize: 14,
-      fontWeight: 600
-    }
-  }, title), /*#__PURE__*/React.createElement("div", {
-    style: {
-      fontSize: 13,
-      color: 'var(--text-muted)',
-      marginTop: 2,
-      lineHeight: 1.45
-    }
-  }, desc)), /*#__PURE__*/React.createElement("div", {
-    style: {
-      flex: 1,
-      maxWidth: 420
-    }
-  }, children));
-}
-function GeneralTab({
-  notify
-}) {
-  return /*#__PURE__*/React.createElement(Card, {
-    style: {
-      '--card-spacing': '24px'
-    }
-  }, /*#__PURE__*/React.createElement(CardContent, null, /*#__PURE__*/React.createElement(SectionRow, {
-    title: "Workspace name",
-    desc: "Shown in the sidebar and on invoices."
-  }, /*#__PURE__*/React.createElement(Input, {
-    "aria-label": "Workspace name",
-    defaultValue: "Acme Workspace"
-  })), /*#__PURE__*/React.createElement(SectionRow, {
-    title: "Description",
-    desc: "Helps teammates pick the right workspace."
-  }, /*#__PURE__*/React.createElement(Textarea, {
-    "aria-label": "Description",
-    defaultValue: "Robotics tooling for the Acme fleet.",
-    rows: 3
-  })), /*#__PURE__*/React.createElement(SectionRow, {
-    title: "Default surface",
-    desc: "Where new members land after sign-in."
-  }, /*#__PURE__*/React.createElement(NativeSelect, {
-    defaultValue: "AI agents",
-    "aria-label": "Default surface"
-  }, ['AI agents', 'Infrastructure', 'Automation', 'File tools', 'Trading', 'Finance'].map(value => /*#__PURE__*/React.createElement(NativeSelectOption, {
-    key: value,
-    value: value
-  }, value)))), /*#__PURE__*/React.createElement(SectionRow, {
-    title: "Notifications",
-    desc: "Workspace-wide defaults; members can override."
-  }, /*#__PURE__*/React.createElement("div", {
-    style: {
-      display: 'flex',
-      flexDirection: 'column',
-      gap: 12
-    }
-  }, /*#__PURE__*/React.createElement(Switch, {
-    defaultChecked: true,
-    label: "Usage alerts at 80% of plan"
-  }), /*#__PURE__*/React.createElement(Switch, {
-    defaultChecked: true,
-    label: "Weekly digest"
-  }), /*#__PURE__*/React.createElement(Switch, {
-    label: "Product announcements"
-  }))), /*#__PURE__*/React.createElement("div", {
-    style: {
-      display: 'flex',
-      justifyContent: 'flex-end',
-      gap: 8,
-      paddingTop: 18
-    }
-  }, /*#__PURE__*/React.createElement(Button, {
-    variant: "ghost"
-  }, "Discard"), /*#__PURE__*/React.createElement(Button, {
-    onClick: () => notify('Settings saved', 'Changes apply to everyone in Acme Workspace.')
-  }, "Save changes"))));
-}
-const MEMBERS = [['Ada Obi', 'ada@acme.co', 'Owner'], ['Femi Alade', 'femi@acme.co', 'Admin'], ['June Park', 'june@acme.co', 'Member'], ['Sol Reyes', 'sol@acme.co', 'Member']];
-function MembersTab({
-  notify
-}) {
-  return /*#__PURE__*/React.createElement(Card, null, /*#__PURE__*/React.createElement(CardHeader, null, /*#__PURE__*/React.createElement(CardTitle, null, "Members"), /*#__PURE__*/React.createElement(CardDescription, null, "4 of 5 seats used on the Growth plan."), /*#__PURE__*/React.createElement(CardAction, null, /*#__PURE__*/React.createElement(Button, {
-    size: "sm",
-    iconLeft: "plus",
-    onClick: () => notify('Invite sent', "We'll email them a join link.")
-  }, "Invite"))), /*#__PURE__*/React.createElement(CardContent, {
-    style: {
-      paddingInline: 0,
-      marginBlockEnd: 'calc(var(--card-spacing) * -1)'
-    }
-  }, /*#__PURE__*/React.createElement("div", null, MEMBERS.map(([name, email, role]) => /*#__PURE__*/React.createElement("div", {
-    key: email,
-    style: {
-      display: 'flex',
-      alignItems: 'center',
-      gap: 12,
-      padding: '12px 20px',
-      borderTop: '1px solid var(--sand-100)'
-    }
-  }, /*#__PURE__*/React.createElement(Avatar, null, /*#__PURE__*/React.createElement(AvatarFallback, null, name.split(/\s+/).map(part => part[0]).slice(0, 2).join(''))), /*#__PURE__*/React.createElement("div", {
-    style: {
-      flex: 1
-    }
-  }, /*#__PURE__*/React.createElement("div", {
-    style: {
-      fontSize: 14,
-      fontWeight: 600
-    }
-  }, name), /*#__PURE__*/React.createElement("div", {
-    style: {
-      fontSize: 12,
-      color: 'var(--text-muted)'
-    }
-  }, email)), role === 'Owner' ? /*#__PURE__*/React.createElement(Badge, {
-    className: "ef-badge--brand"
-  }, "Owner") : /*#__PURE__*/React.createElement(NativeSelect, {
-    size: "sm",
-    defaultValue: role,
-    "aria-label": `Role for ${email}`,
-    style: {
-      width: 110
-    }
-  }, ['Admin', 'Member', 'Viewer'].map(value => /*#__PURE__*/React.createElement(NativeSelectOption, {
-    key: value,
-    value: value
-  }, value))), /*#__PURE__*/React.createElement(IconButton, {
-    icon: "ellipsis",
-    label: "More",
-    size: "sm",
-    disabled: role === 'Owner'
-  }))))));
-}
-const SEED_KEYS = [['Production', 'ef_live_…8f2a', 'Jul 2, 2026', true], ['Staging', 'ef_test_…c91d', 'May 14, 2026', false]];
-function ApiTab({
-  notify
-}) {
-  const [keys, setKeys] = React.useState(SEED_KEYS);
-  const [confirm, setConfirm] = React.useState(false);
-  const createKey = () => {
-    const n = ['Preview', 'CI', 'Local dev'][keys.length - 2] || 'Key ' + keys.length;
-    setKeys(k => [...k, [n, 'ef_test_…' + Math.random().toString(16).slice(2, 6), 'Jul 16, 2026', false]]);
-    notify('Key created', 'Copy it now. We only show it once.');
-  };
-  return /*#__PURE__*/React.createElement("div", {
-    style: {
-      display: 'flex',
-      flexDirection: 'column',
-      gap: 16
-    }
-  }, /*#__PURE__*/React.createElement(Card, null, /*#__PURE__*/React.createElement(CardHeader, null, /*#__PURE__*/React.createElement(CardTitle, null, "API keys"), /*#__PURE__*/React.createElement(CardDescription, null, "Keys grant full access. Rotate them quarterly."), /*#__PURE__*/React.createElement(CardAction, null, /*#__PURE__*/React.createElement(Button, {
-    size: "sm",
-    variant: "secondary",
-    iconLeft: "plus",
-    onClick: createKey
-  }, "Create key"))), /*#__PURE__*/React.createElement(CardContent, {
-    style: {
-      paddingInline: 0,
-      marginBlockEnd: 'calc(var(--card-spacing) * -1)'
-    }
-  }, keys.map(([env, key, date, live]) => /*#__PURE__*/React.createElement("div", {
-    key: env,
-    style: {
-      display: 'flex',
-      alignItems: 'center',
-      gap: 12,
-      padding: '12px 20px',
-      borderTop: '1px solid var(--sand-100)'
-    }
-  }, /*#__PURE__*/React.createElement("span", {
-    style: {
-      display: 'inline-flex',
-      width: 32,
-      height: 32,
-      alignItems: 'center',
-      justifyContent: 'center',
-      borderRadius: 'var(--radius-sm)',
-      background: 'var(--sand-100)',
-      color: 'var(--sand-700)'
-    }
-  }, /*#__PURE__*/React.createElement(Icon, {
-    name: "terminal",
-    size: 16
-  })), /*#__PURE__*/React.createElement("div", {
-    style: {
-      flex: 1
-    }
-  }, /*#__PURE__*/React.createElement("div", {
-    style: {
-      fontSize: 14,
-      fontWeight: 600
-    }
-  }, env, " ", live && /*#__PURE__*/React.createElement(Badge, {
-    className: "ef-badge--success",
-    style: {
-      marginLeft: 6
-    }
-  }, /*#__PURE__*/React.createElement(Icon, {
-    name: "circle",
-    size: 7,
-    strokeWidth: 4,
-    "data-icon": "inline-start"
-  }), "Live")), /*#__PURE__*/React.createElement("div", {
-    style: {
-      fontSize: 12,
-      fontFamily: 'var(--font-mono)',
-      color: 'var(--text-muted)',
-      marginTop: 2
-    }
-  }, key, " \xB7 created ", date)), /*#__PURE__*/React.createElement(Button, {
-    size: "sm",
-    variant: "secondary",
-    iconLeft: "copy",
-    onClick: () => notify('Key copied', 'Paste it somewhere safe. It expires from your clipboard in 60s.')
-  }, "Copy"), /*#__PURE__*/React.createElement(Button, {
-    size: "sm",
-    variant: "ghost",
-    iconLeft: "refresh-cw",
-    onClick: () => notify(env + ' key rotated', 'The old key keeps working for 24 hours.')
-  }, "Rotate"))))), /*#__PURE__*/React.createElement(Card, {
-    style: {
-      borderColor: 'var(--danger-300)',
-      '--card-spacing': '20px'
-    }
-  }, /*#__PURE__*/React.createElement(CardContent, null, /*#__PURE__*/React.createElement("div", {
-    style: {
-      display: 'flex',
-      alignItems: 'center',
-      gap: 16
-    }
-  }, /*#__PURE__*/React.createElement("div", {
-    style: {
-      flex: 1
-    }
-  }, /*#__PURE__*/React.createElement("div", {
-    style: {
-      fontSize: 14,
-      fontWeight: 600,
-      color: 'var(--danger-600)'
-    }
-  }, "Delete workspace"), /*#__PURE__*/React.createElement("div", {
-    style: {
-      fontSize: 13,
-      color: 'var(--text-muted)',
-      marginTop: 2
-    }
-  }, "Removes all projects, keys, and member access. This can't be undone.")), /*#__PURE__*/React.createElement(Button, {
-    variant: "danger",
-    iconLeft: "trash-2",
-    onClick: () => setConfirm(true)
-  }, "Delete workspace")))), /*#__PURE__*/React.createElement(Dialog, {
-    open: confirm,
-    onOpenChange: setConfirm
-  }, /*#__PURE__*/React.createElement(DialogContent, null, /*#__PURE__*/React.createElement(DialogHeader, null, /*#__PURE__*/React.createElement(DialogTitle, null, "Delete Acme Workspace?"), /*#__PURE__*/React.createElement(DialogDescription, null, "All projects, keys, and member access disappear. There is no undo.")), /*#__PURE__*/React.createElement("div", {
-    className: "ef-dialog__body"
-  }, /*#__PURE__*/React.createElement(Input, {
-    label: "Type \"Acme Workspace\" to confirm",
-    placeholder: "Acme Workspace",
-    autoFocus: true
-  })), /*#__PURE__*/React.createElement(DialogFooter, null, /*#__PURE__*/React.createElement(DialogClose, {
-    asChild: true
-  }, /*#__PURE__*/React.createElement(Button, {
-    variant: "ghost"
-  }, "Keep workspace")), /*#__PURE__*/React.createElement(Button, {
-    variant: "danger",
-    iconLeft: "trash-2",
-    onClick: () => {
-      setConfirm(false);
-      notify('Deletion requested', 'Owners get a confirmation email first.', 'warning');
-    }
-  }, "Delete forever")))));
-}
-function SettingsScreen({
-  notify
-}) {
-  const [tab, setTab] = React.useState('general');
-  return /*#__PURE__*/React.createElement("div", {
-    style: {
-      padding: 24,
-      maxWidth: 860
-    }
-  }, /*#__PURE__*/React.createElement(Tabs, {
-    value: tab,
-    onChange: setTab,
-    items: [{
-      id: 'general',
-      label: 'General',
-      icon: 'settings'
-    }, {
-      id: 'members',
-      label: 'Members',
-      icon: 'users',
-      count: 4
-    }, {
-      id: 'api',
-      label: 'API keys',
-      icon: 'terminal',
-      count: 2
-    }]
-  }), /*#__PURE__*/React.createElement("div", {
-    style: {
-      marginTop: 20
-    }
-  }, tab === 'general' && /*#__PURE__*/React.createElement(GeneralTab, {
-    notify: notify
-  }), tab === 'members' && /*#__PURE__*/React.createElement(MembersTab, {
-    notify: notify
-  }), tab === 'api' && /*#__PURE__*/React.createElement(ApiTab, {
-    notify: notify
-  })));
-}
-})(); } catch (e) { __ds_ns.__errors.push({ path: "showcases/console/SettingsScreen.jsx", error: String((e && e.message) || e) }); }
-
-// showcases/console/Shell.jsx
-try { (() => {
-const {
-  Icon,
-  IconButton,
-  Input,
-  Avatar,
-  AvatarFallback,
-  Tooltip,
-  Badge,
-  DropdownMenu,
-  DropdownMenuTrigger,
-  DropdownMenuContent,
-  DropdownMenuItem,
-  DropdownMenuSeparator,
-  DropdownMenuShortcut,
-  Popover,
-  PopoverTrigger,
-  PopoverContent,
-  Kbd,
-  Divider
-} = window.EfolusiDesignSystem_4ffc3d;
-function ShellActionMenu({
-  trigger,
-  items,
-  onSelect
-}) {
-  return /*#__PURE__*/React.createElement(DropdownMenu, null, /*#__PURE__*/React.createElement(DropdownMenuTrigger, {
-    asChild: true
-  }, trigger), /*#__PURE__*/React.createElement(DropdownMenuContent, {
-    align: "end"
-  }, items.map((item, index) => item === 'separator' ? /*#__PURE__*/React.createElement(DropdownMenuSeparator, {
-    key: 'separator-' + index
-  }) : /*#__PURE__*/React.createElement(DropdownMenuItem, {
-    key: item.id,
-    disabled: item.disabled,
-    variant: item.danger ? 'destructive' : 'default',
-    onSelect: () => {
-      onSelect?.(item.id);
-      item.onClick?.();
-    }
-  }, item.icon ? /*#__PURE__*/React.createElement(Icon, {
-    name: item.icon,
-    size: 15
-  }) : null, item.label, item.kbd ? /*#__PURE__*/React.createElement(DropdownMenuShortcut, null, item.kbd) : null))));
-}
-function SideItem({
-  icon,
-  label,
-  active,
-  badge,
-  onClick,
-  href
-}) {
-  const [hov, setHov] = React.useState(false);
-  const style = {
-    display: 'flex',
-    alignItems: 'center',
-    gap: 10,
-    width: '100%',
-    height: 34,
-    padding: '0 10px',
-    border: 'none',
-    borderRadius: 'var(--radius-sm)',
-    cursor: 'pointer',
-    textAlign: 'left',
-    textDecoration: 'none',
-    background: active ? 'var(--sand-200)' : hov ? 'var(--sand-100)' : 'transparent',
-    color: active ? 'var(--text-primary)' : 'var(--text-secondary)',
-    fontFamily: 'var(--font-sans)',
-    fontSize: 14,
-    fontWeight: active ? 600 : 500,
-    transition: 'background var(--dur-fast) var(--ease-out)',
-    boxSizing: 'border-box'
-  };
-  const inner = /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement("span", {
-    style: {
-      color: active ? 'var(--accent)' : 'inherit',
-      display: 'inline-flex'
-    }
-  }, /*#__PURE__*/React.createElement(Icon, {
-    name: icon,
-    size: 17
-  })), /*#__PURE__*/React.createElement("span", {
-    style: {
-      flex: 1
-    }
-  }, label), badge != null && /*#__PURE__*/React.createElement(Badge, {
-    variant: active ? 'default' : 'secondary',
-    className: active ? 'ef-badge--accent' : undefined
-  }, badge), href && hov && /*#__PURE__*/React.createElement(Icon, {
-    name: "arrow-up-right",
-    size: 13,
-    style: {
-      color: 'var(--text-muted)'
-    }
-  }));
-  if (href) return /*#__PURE__*/React.createElement("a", {
-    href: href,
-    style: style,
-    onMouseEnter: () => setHov(true),
-    onMouseLeave: () => setHov(false)
-  }, inner);
-  return /*#__PURE__*/React.createElement("button", {
-    onClick: onClick,
-    onMouseEnter: () => setHov(true),
-    onMouseLeave: () => setHov(false),
-    style: style
-  }, inner);
-}
-function ConsoleSidebar({
-  nav,
-  onNav
-}) {
-  const items = [['overview', 'layout-dashboard', 'Overview'], ['customers', 'users', 'Customers', 128], ['projects', 'folder', 'Projects'], ['usage', 'activity', 'Usage'], ['billing', 'credit-card', 'Billing'], ['settings', 'settings', 'Settings']];
-  const products = [['bot', 'AI agents', '../agent/index.html'], ['server', 'Infrastructure', '../infra/index.html'], ['sparkles', 'Automation', '../docs/index.html'], ['package', 'File tools', '../tools/index.html'], ['chart-candlestick', 'Trading', '../trader/index.html'], ['wallet', 'Finance', '../trader/index.html']];
-  return /*#__PURE__*/React.createElement("aside", {
-    style: {
-      width: 240,
-      flex: 'none',
-      display: 'flex',
-      flexDirection: 'column',
-      borderRight: '1px solid var(--border-default)',
-      background: 'var(--sand-25)'
-    }
-  }, /*#__PURE__*/React.createElement("div", {
-    style: {
-      display: 'flex',
-      alignItems: 'center',
-      gap: 10,
-      padding: '16px 16px 14px'
-    }
-  }, /*#__PURE__*/React.createElement("a", {
-    href: "../website/index.html",
-    style: {
-      display: 'inline-flex',
-      marginRight: -4
-    },
-    title: "efolusi.com"
-  }, /*#__PURE__*/React.createElement("img", {
-    src: "../../assets/meridian-mark.svg",
-    alt: "Meridian",
-    style: {
-      width: 30,
-      height: 16
-    }
-  })), /*#__PURE__*/React.createElement("span", {
-    style: {
-      fontFamily: 'var(--font-display)',
-      fontWeight: 680,
-      letterSpacing: '-0.02em',
-      fontSize: 19
-    }
-  }, "Meridian"), /*#__PURE__*/React.createElement(Badge, {
-    className: "ef-badge--brand",
-    style: {
-      marginLeft: 'auto'
-    }
-  }, "Console")), /*#__PURE__*/React.createElement("nav", {
-    style: {
-      display: 'flex',
-      flexDirection: 'column',
-      gap: 2,
-      padding: '4px 12px'
-    }
-  }, items.map(([id, icon, label, badge]) => /*#__PURE__*/React.createElement(SideItem, {
-    key: id,
-    icon: icon,
-    label: label,
-    badge: badge,
-    active: nav === id,
-    onClick: () => onNav(id)
-  }))), /*#__PURE__*/React.createElement("div", {
-    style: {
-      margin: '14px 12px 0',
-      paddingTop: 12,
-      borderTop: '1px solid var(--border-default)',
-      display: 'flex',
-      flexDirection: 'column',
-      gap: 2
-    }
-  }, /*#__PURE__*/React.createElement("div", {
-    style: {
-      fontSize: 11,
-      fontWeight: 600,
-      letterSpacing: '0.06em',
-      textTransform: 'uppercase',
-      color: 'var(--text-muted)',
-      padding: '0 10px 6px'
-    }
-  }, "Platform"), products.map(([icon, label, href]) => /*#__PURE__*/React.createElement(SideItem, {
-    key: label,
-    icon: icon,
-    label: label,
-    href: href
-  }))), /*#__PURE__*/React.createElement("div", {
-    style: {
-      marginTop: 'auto',
-      padding: 12
-    }
-  }, /*#__PURE__*/React.createElement("div", {
-    style: {
-      display: 'flex',
-      alignItems: 'center',
-      gap: 10,
-      padding: 10,
-      borderRadius: 'var(--radius-md)',
-      background: 'var(--surface-card)',
-      border: '1px solid var(--border-default)'
-    }
-  }, /*#__PURE__*/React.createElement(Avatar, null, /*#__PURE__*/React.createElement(AvatarFallback, null, "AO")), /*#__PURE__*/React.createElement("div", {
-    style: {
-      flex: 1,
-      minWidth: 0
-    }
-  }, /*#__PURE__*/React.createElement("div", {
-    style: {
-      fontSize: 13,
-      fontWeight: 600,
-      whiteSpace: 'nowrap',
-      overflow: 'hidden',
-      textOverflow: 'ellipsis'
-    }
-  }, "Ada Obi"), /*#__PURE__*/React.createElement("div", {
-    style: {
-      fontSize: 11,
-      color: 'var(--text-muted)'
-    }
-  }, "Acme Workspace")), /*#__PURE__*/React.createElement(ShellActionMenu, {
-    trigger: /*#__PURE__*/React.createElement(IconButton, {
-      icon: "chevron-up",
-      label: "Switch workspace",
-      size: "sm"
-    }),
-    items: [{
-      id: 'acme',
-      label: 'Acme Workspace',
-      icon: 'check'
-    }, {
-      id: 'personal',
-      label: 'Personal',
-      icon: 'user'
-    }, 'separator', {
-      id: 'new',
-      label: 'Create workspace',
-      icon: 'plus'
-    }],
-    onSelect: () => {}
-  }))));
-}
-const NOTIFS = [['circle-check', 'Batch retry finished', 'AI agents · 12/12 webhooks delivered', '2m'], ['triangle-alert', 'worker-04 degraded', 'Infrastructure · P95 latency up 4×', '1h'], ['banknote', 'Invoice #10422 paid', 'Billing · €1,240.00', '3h']];
-function Topbar({
-  title,
-  onSearch,
-  notify
-}) {
-  return /*#__PURE__*/React.createElement("header", {
-    style: {
-      display: 'flex',
-      alignItems: 'center',
-      gap: 12,
-      height: 60,
-      padding: '0 24px',
-      borderBottom: '1px solid var(--border-default)',
-      background: 'color-mix(in srgb, var(--surface-page) 85%, transparent)',
-      backdropFilter: 'blur(12px)',
-      position: 'sticky',
-      top: 0,
-      zIndex: 20
-    }
-  }, /*#__PURE__*/React.createElement("h1", {
-    style: {
-      fontSize: 18,
-      fontWeight: 680,
-      fontFamily: 'var(--font-display)',
-      letterSpacing: '-0.02em'
-    }
-  }, title), /*#__PURE__*/React.createElement("button", {
-    onClick: onSearch,
-    style: {
-      marginLeft: 'auto',
-      display: 'flex',
-      alignItems: 'center',
-      gap: 8,
-      width: 300,
-      height: 32,
-      padding: '0 10px',
-      border: '1px solid var(--border-strong)',
-      borderRadius: 'var(--radius-sm)',
-      background: 'var(--surface-card)',
-      cursor: 'pointer',
-      fontFamily: 'var(--font-sans)',
-      fontSize: 13,
-      color: 'var(--text-muted)'
-    }
-  }, /*#__PURE__*/React.createElement(Icon, {
-    name: "search",
-    size: 15
-  }), "Search anything\u2026", /*#__PURE__*/React.createElement("span", {
-    style: {
-      marginLeft: 'auto',
-      display: 'inline-flex',
-      gap: 3
-    }
-  }, /*#__PURE__*/React.createElement(Kbd, null, "\u2318"), /*#__PURE__*/React.createElement(Kbd, null, "K"))), /*#__PURE__*/React.createElement(Popover, null, /*#__PURE__*/React.createElement(PopoverTrigger, {
-    asChild: true
-  }, /*#__PURE__*/React.createElement(IconButton, {
-    icon: "sparkles",
-    label: "What's new"
-  })), /*#__PURE__*/React.createElement(PopoverContent, {
-    align: "end",
-    width: 320
-  }, /*#__PURE__*/React.createElement("div", {
-    style: {
-      fontSize: 13,
-      fontWeight: 600,
-      marginBottom: 8
-    }
-  }, "What's new"), /*#__PURE__*/React.createElement("div", {
-    style: {
-      fontSize: 13,
-      color: 'var(--text-secondary)',
-      lineHeight: 1.55
-    }
-  }, "Trading now mirrors other traders with a risk cap, and AI agents can use your infrastructure connections directly."), /*#__PURE__*/React.createElement(Divider, null), /*#__PURE__*/React.createElement("a", {
-    href: "../docs/index.html",
-    style: {
-      fontSize: 13,
-      fontWeight: 600
-    }
-  }, "Read the changelog \u2192"))), /*#__PURE__*/React.createElement(Popover, null, /*#__PURE__*/React.createElement(PopoverTrigger, {
-    asChild: true
-  }, /*#__PURE__*/React.createElement(IconButton, {
-    icon: "bell",
-    label: "Notifications"
-  })), /*#__PURE__*/React.createElement(PopoverContent, {
-    align: "end",
-    width: 340
-  }, /*#__PURE__*/React.createElement("div", {
-    style: {
-      fontSize: 13,
-      fontWeight: 600,
-      marginBottom: 4
-    }
-  }, "Notifications"), NOTIFS.map(([icon, t, d, when]) => /*#__PURE__*/React.createElement("div", {
-    key: t,
-    style: {
-      display: 'flex',
-      gap: 10,
-      padding: '9px 0',
-      borderBottom: '1px solid var(--sand-100)'
-    }
-  }, /*#__PURE__*/React.createElement("span", {
-    style: {
-      display: 'inline-flex',
-      width: 28,
-      height: 28,
-      alignItems: 'center',
-      justifyContent: 'center',
-      flex: 'none',
-      borderRadius: 'var(--radius-full)',
-      background: 'var(--sand-100)',
-      color: 'var(--sand-700)'
-    }
-  }, /*#__PURE__*/React.createElement(Icon, {
-    name: icon,
-    size: 14
-  })), /*#__PURE__*/React.createElement("div", {
-    style: {
-      flex: 1,
-      minWidth: 0
-    }
-  }, /*#__PURE__*/React.createElement("div", {
-    style: {
-      fontSize: 13,
-      fontWeight: 600
-    }
-  }, t), /*#__PURE__*/React.createElement("div", {
-    style: {
-      fontSize: 12,
-      color: 'var(--text-muted)'
-    }
-  }, d)), /*#__PURE__*/React.createElement("span", {
-    style: {
-      fontSize: 11,
-      color: 'var(--text-muted)'
-    }
-  }, when))), /*#__PURE__*/React.createElement("button", {
-    onClick: () => notify('All caught up', 'Notifications cleared.'),
-    style: {
-      marginTop: 8,
-      background: 'none',
-      border: 'none',
-      padding: 0,
-      fontFamily: 'var(--font-sans)',
-      fontSize: 13,
-      fontWeight: 600,
-      color: 'var(--text-link)',
-      cursor: 'pointer'
-    }
-  }, "Mark all as read"))), /*#__PURE__*/React.createElement(ShellActionMenu, {
-    trigger: /*#__PURE__*/React.createElement("button", {
-      style: {
-        border: 'none',
-        background: 'none',
-        padding: 0,
-        cursor: 'pointer',
-        display: 'inline-flex'
-      }
-    }, /*#__PURE__*/React.createElement(Avatar, null, /*#__PURE__*/React.createElement(AvatarFallback, null, "AO"))),
-    items: [{
-      id: 'profile',
-      label: 'Profile',
-      icon: 'user'
-    }, {
-      id: 'settings',
-      label: 'Workspace settings',
-      icon: 'settings'
-    }, 'separator', {
-      id: 'signout',
-      label: 'Sign out',
-      icon: 'log-out'
-    }],
-    onSelect: id => {
-      if (id === 'signout') window.location.href = '../auth/index.html';
-    }
-  }));
-}
-})(); } catch (e) { __ds_ns.__errors.push({ path: "showcases/console/Shell.jsx", error: String((e && e.message) || e) }); }
-
-// showcases/docs/DocsScreen.jsx
-try { (() => {
-const {
-  Icon,
-  IconButton,
-  Input,
-  Badge,
-  Button,
-  Tag,
-  Alert,
-  AlertDescription,
-  AlertTitle,
-  Breadcrumb,
-  BreadcrumbItem,
-  BreadcrumbLink,
-  BreadcrumbList,
-  BreadcrumbPage,
-  BreadcrumbSeparator,
-  CodeBlock,
-  Kbd,
-  CommandDialog,
-  CommandInput,
-  CommandList,
-  CommandEmpty,
-  CommandGroup,
-  CommandItem,
-  CommandShortcut
-} = window.EfolusiDesignSystem_4ffc3d;
-function DocsHeader({
-  onSearch
-}) {
-  return /*#__PURE__*/React.createElement("header", {
-    style: {
-      display: 'flex',
-      alignItems: 'center',
-      gap: 20,
-      height: 58,
-      padding: '0 24px',
-      borderBottom: '1px solid var(--border-default)',
-      background: 'rgba(250,249,246,.85)',
-      backdropFilter: 'blur(12px)',
-      position: 'sticky',
-      top: 0,
-      zIndex: 30
-    }
-  }, /*#__PURE__*/React.createElement("a", {
-    href: "../website/index.html",
-    style: {
-      display: 'flex',
-      alignItems: 'center',
-      gap: 10,
-      textDecoration: 'none',
-      color: 'var(--text-primary)'
-    }
-  }, /*#__PURE__*/React.createElement("img", {
-    src: "../../assets/meridian-mark.svg",
-    alt: "",
-    style: {
-      width: 30,
-      height: 16,
-      marginRight: -4
-    }
-  }), /*#__PURE__*/React.createElement("span", {
-    style: {
-      fontFamily: 'var(--font-display)',
-      fontWeight: 680,
-      letterSpacing: '-0.02em',
-      fontSize: 17
-    }
-  }, "Meridian"), /*#__PURE__*/React.createElement("span", {
-    style: {
-      fontSize: 15,
-      color: 'var(--text-muted)',
-      fontWeight: 500
-    }
-  }, "Docs")), /*#__PURE__*/React.createElement("button", {
-    onClick: onSearch,
-    style: {
-      display: 'flex',
-      alignItems: 'center',
-      gap: 8,
-      width: 340,
-      height: 32,
-      padding: '0 10px',
-      marginLeft: 12,
-      border: '1px solid var(--border-strong)',
-      borderRadius: 'var(--radius-sm)',
-      background: 'var(--surface-card)',
-      cursor: 'pointer',
-      fontFamily: 'var(--font-sans)',
-      fontSize: 13,
-      color: 'var(--text-muted)'
-    }
-  }, /*#__PURE__*/React.createElement(Icon, {
-    name: "search",
-    size: 15
-  }), "Search docs\u2026", /*#__PURE__*/React.createElement("span", {
-    style: {
-      marginLeft: 'auto',
-      display: 'inline-flex',
-      gap: 3
-    }
-  }, /*#__PURE__*/React.createElement(Kbd, null, "\u2318"), /*#__PURE__*/React.createElement(Kbd, null, "K"))), /*#__PURE__*/React.createElement("nav", {
-    style: {
-      marginLeft: 'auto',
-      display: 'flex',
-      gap: 4,
-      alignItems: 'center'
-    }
-  }, /*#__PURE__*/React.createElement("a", {
-    href: "../console/index.html",
-    style: {
-      padding: '6px 10px',
-      fontSize: 13.5,
-      fontWeight: 500,
-      color: 'var(--text-secondary)',
-      textDecoration: 'none',
-      borderRadius: 'var(--radius-sm)'
-    }
-  }, "Console"), /*#__PURE__*/React.createElement("a", {
-    href: "mailto:support@efolusi.com",
-    style: {
-      padding: '6px 10px',
-      fontSize: 13.5,
-      fontWeight: 500,
-      color: 'var(--text-secondary)',
-      textDecoration: 'none',
-      borderRadius: 'var(--radius-sm)'
-    }
-  }, "Support"), /*#__PURE__*/React.createElement(Button, {
-    size: "sm",
-    variant: "secondary",
-    iconLeft: "terminal",
-    onClick: () => {
-      window.location.href = '../console/index.html';
-    }
-  }, "Get API key")));
-}
-const NAV = [['Getting started', [['quickstart', 'Quickstart'], ['auth', 'Authentication'], ['errors', 'Errors']]], ['AI agents', [['tasks', 'Running tasks'], ['tools', 'Tool use']]], ['Infrastructure', [['connections', 'Connections'], ['dns', 'Domains & DNS']]], ['Automation', [['nodes', 'Automation nodes'], ['media', 'Media pipelines']]], ['File tools', [['convert', 'Converting files']]], ['Trading', [['strategies', 'Strategies'], ['risk', 'Risk limits']]]];
-const ORDER = NAV.flatMap(([g, items]) => items.map(([id, label]) => ({
-  id,
-  label,
-  group: g
-})));
-function DocsNav({
-  page,
-  onPage
-}) {
-  return /*#__PURE__*/React.createElement("nav", {
-    style: {
-      width: 250,
-      flex: 'none',
-      padding: '20px 12px 20px 20px',
-      borderRight: '1px solid var(--border-default)',
-      overflowY: 'auto'
-    }
-  }, NAV.map(([group, items]) => /*#__PURE__*/React.createElement("div", {
-    key: group,
-    style: {
-      marginBottom: 20
-    }
-  }, /*#__PURE__*/React.createElement("div", {
-    style: {
-      fontSize: 11,
-      fontWeight: 600,
-      letterSpacing: '0.06em',
-      textTransform: 'uppercase',
-      color: 'var(--text-muted)',
-      padding: '0 10px 6px'
-    }
-  }, group), /*#__PURE__*/React.createElement("div", {
-    style: {
-      display: 'flex',
-      flexDirection: 'column',
-      gap: 1
-    }
-  }, items.map(([id, label]) => /*#__PURE__*/React.createElement("button", {
-    key: id,
-    onClick: () => onPage(id),
-    style: {
-      textAlign: 'left',
-      border: 'none',
-      cursor: 'pointer',
-      padding: '6px 10px',
-      borderRadius: 'var(--radius-sm)',
-      fontFamily: 'var(--font-sans)',
-      fontSize: 13.5,
-      fontWeight: page === id ? 600 : 450,
-      background: page === id ? 'var(--accent-subtle)' : 'transparent',
-      color: page === id ? 'var(--brand-700)' : 'var(--text-secondary)'
-    }
-  }, label))))));
-}
-const H2 = ({
-  children
-}) => /*#__PURE__*/React.createElement("h2", {
-  style: {
-    fontSize: 24,
-    fontWeight: 680,
-    marginTop: 40
-  }
-}, children);
-const P = ({
-  children
-}) => /*#__PURE__*/React.createElement("p", {
-  style: {
-    fontSize: 15.5,
-    lineHeight: 1.7,
-    color: 'var(--sand-800)',
-    marginTop: 14
-  }
-}, children);
-const CONTENT = {
-  auth: {
-    lede: 'Every request authenticates with a bearer key. Keys are workspace-scoped and environment-prefixed.',
-    tags: [['clock', '3 min']],
-    sections: [['Key types', 'ef_live_ keys touch production; ef_test_ keys hit an isolated sandbox with the same shape. Create both in Console → Settings → API keys, and rotate quarterly. The old key keeps working for 24 hours after rotation.'], ['Sending the header', 'Pass the key on every call. SDKs read EFOLUSI_API_KEY from the environment automatically.']],
-    code: ['bash', 'curl https://api.efolusi.com/v1/me \\\n  -H "Authorization: Bearer $EFOLUSI_API_KEY"'],
-    tip: ['Keep keys server-side', 'Never ship keys in browser code. Proxy through your backend instead.']
-  },
-  errors: {
-    lede: 'Errors are plain JSON with a stable code, a human message, and a hint that tells you how to fix it.',
-    tags: [['clock', '2 min']],
-    sections: [['The shape', 'Every non-2xx response carries { code, message, hint }. Codes are stable across versions; messages may improve over time, so parse codes and show messages.'], ['Retries', '429 and 5xx are safe to retry with exponential backoff. The SDK retries three times automatically.']],
-    code: ['json', '{\n  "code": "key_expired",\n  "message": "That API key was rotated on Jul 2.",\n  "hint": "Create a fresh key in Console → Settings → API keys."\n}'],
-    tip: ['Idempotency', 'Send an Idempotency-Key header on writes to make retries safe.']
-  },
-  tasks: {
-    lede: 'A task is a goal you hand the agent. It plans steps, runs tools, and reports back for review.',
-    tags: [['clock', '4 min'], ['bot', 'AI agents']],
-    sections: [['Starting a task', 'Describe the outcome, not the steps. The agent plans, shows its step rail, and pauses at anything destructive unless you pre-approve it.'], ['Reviewing work', 'Every step is logged with its tool calls and output. Pause, redirect, or take over at any point. The transcript stays auditable.']],
-    code: ['javascript', "const task = await efolusi.agent.tasks.run(\n  'retry failed webhooks from yesterday',\n  { approve: ['db.read'], pauseOn: ['db.write'] }\n);"],
-    tip: ['Scope access', 'Tasks inherit your infrastructure connections, so grant the narrowest scopes that work.']
-  },
-  tools: {
-    lede: 'Tools are what the agent can touch: your infrastructure connections, file utilities, automation nodes, and HTTP.',
-    tags: [['clock', '3 min'], ['bot', 'AI agents']],
-    sections: [['Built-in tools', 'db.read/db.write against connected databases, ssh.exec on connected hosts, files.convert, http.fetch, and automation.render. Each call is one line in the transcript.'], ['Custom tools', 'Register any HTTPS endpoint as a tool with a JSON schema. The agent learns it immediately.']],
-    code: ['javascript', "efolusi.agent.tools.register({\n  name: 'refund',\n  url: 'https://api.acme.co/refund',\n  schema: { orderId: 'string', amountCents: 'number' },\n});"],
-    tip: ['Danger levels', "Mark tools destructive: true and the agent always asks before calling them."]
-  },
-  connections: {
-    lede: 'Connect clouds, databases, caches, and SSH hosts through encrypted tunnels. Nothing is stored.',
-    tags: [['clock', '4 min'], ['server', 'Infrastructure']],
-    sections: [['Creating a tunnel', 'Console → Infrastructure → Connect resource, or the CLI below. Meridian keeps a keepalive tunnel and health-checks it every 30 seconds.'], ['Health & status', 'Resources report ok / degraded / down. Degraded fires a notification and shows amber in the console; the agent avoids degraded resources unless told otherwise.']],
-    code: ['bash', 'efolusi infra connect postgres \\\n  --host db.internal.acme.co:5432 \\\n  --region eu-west-1'],
-    tip: ['Least privilege', 'Connect with a read-only role first; add write roles per-project when needed.']
-  },
-  dns: {
-    lede: 'Point domains at Meridian, and DNS records, SSL certificates, and renewals manage themselves.',
-    tags: [['clock', '3 min'], ['globe', 'Infrastructure']],
-    sections: [['Adding a domain', 'Add the domain, copy the two records below into your registrar, and verification runs automatically, usually in under a minute.'], ['Certificates', 'Certs issue and renew automatically for verified domains. Manual certs get an expiry warning at 30 days.']],
-    code: ['text', 'A     efolusi.com        76.76.21.21\nCNAME app.efolusi.com    edge.efolusi.com'],
-    tip: ['Propagation', 'Registrars cache aggressively, so a stuck verification usually clears with a lower TTL.']
-  },
-  nodes: {
-    lede: 'An automation node is a small AI worker with one job: turn an input into content across text, image, audio, or video.',
-    tags: [['clock', '4 min'], ['sparkles', 'Automation']],
-    sections: [['Composing nodes', 'Chain nodes into pipelines: outline → draft → voiceover → subtitle. Each node is testable alone and versioned with its prompt.'], ['Scaling', 'Pipelines fan out: hand one a CSV of 500 rows and it renders 500 variants with per-row context.']],
-    code: ['javascript', "const node = efolusi.automation.node('product-blurb');\nconst out = await node.render({ topic: 'launch', tone: 'plain' });"],
-    tip: ['Brand voice', 'Give nodes your voice guide once and every render inherits it.']
-  },
-  media: {
-    lede: 'Media pipelines handle the heavy lifting after render: transcode, subtitle, resize, and publish.',
-    tags: [['clock', '3 min'], ['video', 'Automation']],
-    sections: [['Targets', 'Declare output targets (webm 1080p, mp3, png @2x) and the pipeline produces all of them from one source render.'], ['Delivery', 'Outputs land in your storage or CDN, connected through your infrastructure, so no extra credentials.']],
-    code: ['javascript', "await efolusi.automation.pipeline('launch-video')\n  .targets(['webm/1080p', 'mp3', 'srt'])\n  .run({ source: render.id });"],
-    tip: ['Costs', 'Transcoding bills by output minute. Check Usage → Automation before a big batch.']
-  },
-  convert: {
-    lede: 'One endpoint converts anything: documents, images, audio, video, and archives: 240 formats in, 80 out.',
-    tags: [['clock', '2 min'], ['package', 'File tools']],
-    sections: [['Converting', 'Upload or point at a URL, name the target format, get a signed download link. Files are deleted after 24 hours.'], ['Batches', 'Send up to 500 files per batch; a webhook fires when the batch settles.']],
-    code: ['bash', 'efolusi files convert q3-deck.pdf --to docx\n# → https://files.efolusi.com/d/8f2a…  (expires in 24h)'],
-    tip: ['Quality flag', '--quality 1-100 trades size for fidelity on lossy targets.']
-  },
-  strategies: {
-    lede: 'A strategy is a rulebook the trading robot follows (entries, exits, sizing) inside your risk caps.',
-    tags: [['clock', '4 min'], ['chart-candlestick', 'Trading']],
-    sections: [['Anatomy', 'Pick a template (momentum, mean-reversion, DCA), scope it to pairs and hours, and set sizing. Every decision the robot makes is logged with its reason.'], ['Backtests', 'Strategies backtest against 5 years of data before going live. Results show P&L, drawdown, and win rate with fees included.']],
-    code: ['javascript', "await efolusi.trading.strategies.create({\n  template: 'momentum',\n  pairs: ['BTC-EUR', 'ETH-EUR'],\n  riskPerTrade: 0.04,\n});"],
-    tip: ['Paper first', 'New strategies default to paper trading for 7 days. Keep it that way until the log makes sense to you.']
-  },
-  risk: {
-    lede: 'Risk limits are hard stops the robot cannot cross: per trade, per day, and per month.',
-    tags: [['clock', '3 min'], ['shield-check', 'Trading']],
-    sections: [['The three caps', 'Risk per trade (default 4%), daily loss cap (default 5%), monthly drawdown cap (default 10%). Hitting any cap pauses the robot and notifies you.'], ['Overrides', 'Caps only move manually, from the console, with a confirmation, never from the API and never by the robot.']],
-    code: ['javascript', "await efolusi.trading.risk.set({\n  perTrade: 0.04,\n  dailyLoss: 0.05,\n  monthlyDrawdown: 0.10,\n});"],
-    tip: ['Social mirrors', 'Mirrored traders run inside your caps too. Their risk never overrides yours.']
-  }
-};
-function Helpful({
-  onNext,
-  nextLabel
-}) {
-  const [done, setDone] = React.useState(false);
-  return /*#__PURE__*/React.createElement("div", {
-    style: {
-      display: 'flex',
-      gap: 20,
-      marginTop: 32,
-      paddingTop: 20,
-      borderTop: '1px solid var(--border-default)',
-      alignItems: 'center'
-    }
-  }, done ? /*#__PURE__*/React.createElement("span", {
-    style: {
-      fontSize: 13,
-      color: 'var(--success-600)',
-      display: 'inline-flex',
-      alignItems: 'center',
-      gap: 6
-    }
-  }, /*#__PURE__*/React.createElement(Icon, {
-    name: "circle-check",
-    size: 14
-  }), "Thanks, noted.") : /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement("span", {
-    style: {
-      fontSize: 13,
-      color: 'var(--text-muted)'
-    }
-  }, "Was this helpful?"), /*#__PURE__*/React.createElement("div", {
-    style: {
-      display: 'flex',
-      gap: 4
-    }
-  }, /*#__PURE__*/React.createElement(IconButton, {
-    icon: "check",
-    label: "Yes",
-    size: "sm",
-    variant: "outline",
-    onClick: () => setDone(true)
-  }), /*#__PURE__*/React.createElement(IconButton, {
-    icon: "x",
-    label: "No",
-    size: "sm",
-    variant: "outline",
-    onClick: () => setDone(true)
-  }))), onNext && /*#__PURE__*/React.createElement("a", {
-    href: "#",
-    onClick: e => {
-      e.preventDefault();
-      onNext();
-    },
-    style: {
-      marginLeft: 'auto',
-      fontSize: 13.5,
-      fontWeight: 600,
-      display: 'inline-flex',
-      alignItems: 'center',
-      gap: 6
-    }
-  }, "Next: ", nextLabel, " ", /*#__PURE__*/React.createElement(Icon, {
-    name: "arrow-right",
-    size: 14
-  })));
-}
-function Article({
-  page,
-  onPage
-}) {
-  const meta = ORDER.find(o => o.id === page);
-  const c = CONTENT[page];
-  const idx = ORDER.findIndex(o => o.id === page);
-  const next = ORDER[idx + 1];
-  return /*#__PURE__*/React.createElement("article", {
-    style: {
-      maxWidth: 720
-    }
-  }, /*#__PURE__*/React.createElement(Breadcrumb, null, /*#__PURE__*/React.createElement(BreadcrumbList, null, /*#__PURE__*/React.createElement(BreadcrumbItem, null, /*#__PURE__*/React.createElement(BreadcrumbLink, {
-    href: "#",
-    onClick: event => event.preventDefault()
-  }, meta.group)), /*#__PURE__*/React.createElement(BreadcrumbSeparator, null), /*#__PURE__*/React.createElement(BreadcrumbItem, null, /*#__PURE__*/React.createElement(BreadcrumbPage, null, meta.label)))), /*#__PURE__*/React.createElement("h1", {
-    style: {
-      fontSize: 38,
-      fontWeight: 680,
-      marginTop: 12
-    }
-  }, meta.label), /*#__PURE__*/React.createElement("p", {
-    style: {
-      fontSize: 17,
-      lineHeight: 1.65,
-      color: 'var(--text-secondary)',
-      marginTop: 12
-    }
-  }, c.lede), /*#__PURE__*/React.createElement("div", {
-    style: {
-      display: 'flex',
-      gap: 8,
-      marginTop: 16
-    }
-  }, c.tags.map(([i, t]) => /*#__PURE__*/React.createElement(Tag, {
-    key: t,
-    icon: i
-  }, t))), /*#__PURE__*/React.createElement(H2, null, c.sections[0][0]), /*#__PURE__*/React.createElement(P, null, c.sections[0][1]), /*#__PURE__*/React.createElement(CodeBlock, {
-    lang: c.code[0],
-    style: {
-      margin: '18px 0'
-    }
-  }, c.code[1]), /*#__PURE__*/React.createElement(H2, null, c.sections[1][0]), /*#__PURE__*/React.createElement(P, null, c.sections[1][1]), /*#__PURE__*/React.createElement(Alert, {
-    style: {
-      margin: '18px 0'
-    }
-  }, /*#__PURE__*/React.createElement(Icon, {
-    name: "info",
-    size: 16
-  }), /*#__PURE__*/React.createElement(AlertTitle, null, c.tip[0]), /*#__PURE__*/React.createElement(AlertDescription, null, c.tip[1])), /*#__PURE__*/React.createElement(Helpful, {
-    onNext: next ? () => onPage(next.id) : null,
-    nextLabel: next ? next.label : ''
-  }));
-}
-function QuickstartArticle({
-  onPage
-}) {
-  return /*#__PURE__*/React.createElement("article", {
-    style: {
-      maxWidth: 720
-    }
-  }, /*#__PURE__*/React.createElement(Breadcrumb, null, /*#__PURE__*/React.createElement(BreadcrumbList, null, /*#__PURE__*/React.createElement(BreadcrumbItem, null, /*#__PURE__*/React.createElement(BreadcrumbLink, {
-    href: "#",
-    onClick: event => event.preventDefault()
-  }, "Getting started")), /*#__PURE__*/React.createElement(BreadcrumbSeparator, null), /*#__PURE__*/React.createElement(BreadcrumbItem, null, /*#__PURE__*/React.createElement(BreadcrumbPage, null, "Quickstart")))), /*#__PURE__*/React.createElement("h1", {
-    style: {
-      fontSize: 38,
-      fontWeight: 680,
-      marginTop: 12
-    }
-  }, "Quickstart"), /*#__PURE__*/React.createElement("p", {
-    style: {
-      fontSize: 17,
-      lineHeight: 1.65,
-      color: 'var(--text-secondary)',
-      marginTop: 12
-    }
-  }, "Send your first API request in under five minutes. Everything in Meridian (agent tasks, infrastructure, automation, trades) starts with the same key."), /*#__PURE__*/React.createElement("div", {
-    style: {
-      display: 'flex',
-      gap: 8,
-      marginTop: 16
-    }
-  }, /*#__PURE__*/React.createElement(Tag, {
-    icon: "clock"
-  }, "5 min"), /*#__PURE__*/React.createElement(Tag, {
-    icon: "terminal"
-  }, "curl or SDK")), /*#__PURE__*/React.createElement("h2", {
-    id: "install",
-    style: {
-      fontSize: 24,
-      fontWeight: 680,
-      marginTop: 40
-    }
-  }, "1. Install the SDK"), /*#__PURE__*/React.createElement(P, null, "Grab the client for your stack, or skip straight to curl. The API is plain JSON over HTTPS."), /*#__PURE__*/React.createElement(CodeBlock, {
-    lang: "bash",
-    style: {
-      margin: '18px 0'
-    }
-  }, "npm install @efolusi/sdk"), /*#__PURE__*/React.createElement("h2", {
-    id: "authenticate",
-    style: {
-      fontSize: 24,
-      fontWeight: 680,
-      marginTop: 40
-    }
-  }, "2. Authenticate"), /*#__PURE__*/React.createElement(P, null, "Create a key in Console \u2192 Settings \u2192 API keys. Test keys are prefixed ", /*#__PURE__*/React.createElement("code", {
-    style: {
-      background: 'var(--sand-100)',
-      padding: '2px 6px',
-      borderRadius: 4,
-      fontSize: 13
-    }
-  }, "ef_test_"), " and never touch live data."), /*#__PURE__*/React.createElement(CodeBlock, {
-    lang: "javascript",
-    style: {
-      margin: '18px 0'
-    }
-  }, `import Meridian from '@efolusi/sdk';
-
-const efolusi = new Meridian('ef_test_a91xK…');
-const task = await efolusi.agent.tasks.run('retry failed webhooks');`), /*#__PURE__*/React.createElement(Alert, {
-    style: {
-      margin: '18px 0'
-    }
-  }, /*#__PURE__*/React.createElement(Icon, {
-    name: "info",
-    size: 16
-  }), /*#__PURE__*/React.createElement(AlertTitle, null, "Keep keys server-side"), /*#__PURE__*/React.createElement(AlertDescription, null, "Keys grant full workspace access. Never ship them in browser code.")), /*#__PURE__*/React.createElement("h2", {
-    id: "first-request",
-    style: {
-      fontSize: 24,
-      fontWeight: 680,
-      marginTop: 40
-    }
-  }, "3. Make it do something"), /*#__PURE__*/React.createElement(P, null, "Run your first agent task, connect your first cloud, or spin up an automation node. Each capability has its own five-minute guide from here."), /*#__PURE__*/React.createElement(Helpful, {
-    onNext: () => onPage('auth'),
-    nextLabel: "Authentication"
-  }));
-}
-function Toc() {
-  const items = [['#install', '1. Install the SDK'], ['#authenticate', '2. Authenticate'], ['#first-request', '3. Make it do something']];
-  const [active, setActive] = React.useState('#install');
-  return /*#__PURE__*/React.createElement("aside", {
-    style: {
-      width: 200,
-      flex: 'none',
-      padding: '28px 24px 0 0'
-    }
-  }, /*#__PURE__*/React.createElement("div", {
-    style: {
-      fontSize: 11,
-      fontWeight: 600,
-      letterSpacing: '0.06em',
-      textTransform: 'uppercase',
-      color: 'var(--text-muted)'
-    }
-  }, "On this page"), /*#__PURE__*/React.createElement("div", {
-    style: {
-      display: 'flex',
-      flexDirection: 'column',
-      gap: 8,
-      marginTop: 12,
-      borderLeft: '1px solid var(--border-default)'
-    }
-  }, items.map(([href, label]) => /*#__PURE__*/React.createElement("a", {
-    key: href,
-    href: href,
-    onClick: () => setActive(href),
-    style: {
-      fontSize: 13,
-      textDecoration: 'none',
-      paddingLeft: 12,
-      marginLeft: -1,
-      lineHeight: 1.4,
-      borderLeft: active === href ? '2px solid var(--accent)' : '2px solid transparent',
-      color: active === href ? 'var(--brand-700)' : 'var(--text-secondary)',
-      fontWeight: active === href ? 600 : 450
-    }
-  }, label))));
-}
-function DocsApp() {
-  const [page, setPage] = React.useState('quickstart');
-  const [cmdk, setCmdk] = React.useState(false);
-  const main = React.useRef(null);
-  React.useEffect(() => {
-    const key = e => {
-      if ((e.metaKey || e.ctrlKey) && e.key.toLowerCase() === 'k') {
-        e.preventDefault();
-        setCmdk(o => !o);
-      }
-    };
-    document.addEventListener('keydown', key);
-    return () => document.removeEventListener('keydown', key);
-  }, []);
-  const go = id => {
-    setPage(id);
-    if (main.current) main.current.scrollTop = 0;
-  };
-  return /*#__PURE__*/React.createElement("div", {
-    style: {
-      display: 'flex',
-      flexDirection: 'column',
-      height: '100vh'
-    }
-  }, /*#__PURE__*/React.createElement(DocsHeader, {
-    onSearch: () => setCmdk(true)
-  }), /*#__PURE__*/React.createElement("div", {
-    style: {
-      display: 'flex',
-      flex: 1,
-      overflow: 'hidden',
-      maxWidth: 1440,
-      width: '100%',
-      margin: '0 auto'
-    }
-  }, /*#__PURE__*/React.createElement(DocsNav, {
-    page: page,
-    onPage: go
-  }), /*#__PURE__*/React.createElement("main", {
-    ref: main,
-    style: {
-      flex: 1,
-      overflowY: 'auto',
-      padding: '28px 40px 80px'
-    }
-  }, page === 'quickstart' ? /*#__PURE__*/React.createElement(QuickstartArticle, {
-    onPage: go
-  }) : /*#__PURE__*/React.createElement(Article, {
-    page: page,
-    onPage: go
-  })), page === 'quickstart' && /*#__PURE__*/React.createElement(Toc, null)), /*#__PURE__*/React.createElement(CommandDialog, {
-    open: cmdk,
-    onOpenChange: setCmdk,
-    title: "Documentation search"
-  }, /*#__PURE__*/React.createElement(CommandInput, {
-    placeholder: "Search docs\u2026"
-  }), /*#__PURE__*/React.createElement(CommandList, null, /*#__PURE__*/React.createElement(CommandEmpty, null, "No documentation found."), NAV.map(([group, items]) => /*#__PURE__*/React.createElement(CommandGroup, {
-    key: group,
-    heading: group
-  }, items.map(([id, label]) => /*#__PURE__*/React.createElement(CommandItem, {
-    key: id,
-    value: id,
-    keywords: [group],
-    onSelect: () => {
-      go(id);
-      setCmdk(false);
-    }
-  }, /*#__PURE__*/React.createElement(Icon, {
-    name: "file-text",
-    size: 16
-  }), label, /*#__PURE__*/React.createElement(CommandShortcut, null, group))))))));
-}
-})(); } catch (e) { __ds_ns.__errors.push({ path: "showcases/docs/DocsScreen.jsx", error: String((e && e.message) || e) }); }
-
-// showcases/infra/InfraScreen.jsx
-try { (() => {
-const {
-  Banner,
-  Stat,
-  Sparkline,
-  SegmentedControl,
-  Table,
-  StatusDot,
-  Drawer,
-  DrawerContent,
-  DrawerHeader,
-  DrawerTitle,
-  DrawerDescription,
-  DrawerFooter,
-  DrawerClose,
-  KeyValueList,
-  CopyField,
-  Terminal,
-  Dialog,
-  DialogClose,
-  DialogContent,
-  DialogDescription,
-  DialogFooter,
-  DialogHeader,
-  DialogTitle,
-  Card,
-  CardContent,
-  Button,
-  NativeSelect,
-  NativeSelectOption,
-  Field,
-  FieldLabel,
-  Input,
-  Badge,
-  Icon,
-  Toaster,
-  toast
-} = window.EfolusiDesignSystem_4ffc3d;
-const RESOURCES = [{
-  id: 'pg',
-  name: 'pg-prod-eu',
-  kind: 'PostgreSQL',
-  icon: 'database',
-  region: 'eu-west-1',
-  status: 'ok',
-  latency: '38 ms'
-}, {
-  id: 'redis',
-  name: 'cache-main',
-  kind: 'Redis',
-  icon: 'hard-drive',
-  region: 'eu-west-1',
-  status: 'ok',
-  latency: '2 ms'
-}, {
-  id: 'aws',
-  name: 'aws-primary',
-  kind: 'AWS account',
-  icon: 'cloud',
-  region: 'eu-west-1',
-  status: 'ok',
-  latency: '—'
-}, {
-  id: 'ssh',
-  name: 'worker-04',
-  kind: 'SSH host',
-  icon: 'terminal',
-  region: 'fra1',
-  status: 'warn',
-  latency: '212 ms'
-}, {
-  id: 'k8s',
-  name: 'render-cluster',
-  kind: 'Kubernetes',
-  icon: 'server',
-  region: 'us-east-1',
-  status: 'ok',
-  latency: '61 ms'
-}];
-const DOMAINS = [{
-  id: 'apex',
-  name: 'efolusi.com',
-  kind: 'A record',
-  icon: 'globe',
-  region: '—',
-  status: 'ok',
-  latency: '76.76.21.21'
-}, {
-  id: 'app',
-  name: 'app.efolusi.com',
-  kind: 'CNAME',
-  icon: 'globe',
-  region: '—',
-  status: 'err',
-  latency: 'missing'
-}, {
-  id: 'docs',
-  name: 'docs.efolusi.com',
-  kind: 'CNAME',
-  icon: 'book-open',
-  region: '—',
-  status: 'ok',
-  latency: 'edge.efolusi.com'
-}];
-const CERTS = [{
-  id: 'c1',
-  name: '*.efolusi.com',
-  kind: 'Wildcard',
-  icon: 'shield-check',
-  region: 'Auto-renews',
-  status: 'ok',
-  latency: 'Oct 2, 2026'
-}, {
-  id: 'c2',
-  name: 'pay.efolusi.com',
-  kind: 'Single',
-  icon: 'shield-check',
-  region: 'Manual',
-  status: 'warn',
-  latency: 'Jul 29, 2026'
-}];
-const STATUS_LABEL = {
-  ok: 'Healthy',
-  warn: 'Degraded',
-  err: 'Action needed'
-};
-const COLS_LAST = {
-  resources: 'Latency',
-  domains: 'Value',
-  certificates: 'Expires'
-};
-function InfraScreen() {
-  const [tab, setTab] = React.useState('resources');
-  const [banner, setBanner] = React.useState(true);
-  const [sel, setSel] = React.useState(null);
-  const [connect, setConnect] = React.useState(false);
-  const [cli, setCli] = React.useState(false);
-  const [extra, setExtra] = React.useState([]);
-  const notify = (title, description) => toast.add({
-    title,
-    description,
-    type: 'success'
-  });
-  const rows = tab === 'resources' ? [...RESOURCES, ...extra] : tab === 'domains' ? DOMAINS : CERTS;
-  return /*#__PURE__*/React.createElement("div", {
-    style: {
-      height: '100vh',
-      display: 'flex',
-      flexDirection: 'column'
-    }
-  }, banner && /*#__PURE__*/React.createElement(Banner, {
-    tone: "warning",
-    icon: "triangle-alert",
-    action: /*#__PURE__*/React.createElement("button", {
-      className: "ef-banner__action",
-      onClick: () => {
-        setTab('resources');
-        setSel(RESOURCES[3]);
-      }
-    }, "View incident"),
-    onDismiss: () => setBanner(false)
-  }, /*#__PURE__*/React.createElement("strong", null, "worker-04 is degraded."), " P95 latency up 4\xD7 since 08:12 UTC."), /*#__PURE__*/React.createElement("div", {
-    style: {
-      flex: 1,
-      overflowY: 'auto'
-    }
-  }, /*#__PURE__*/React.createElement("div", {
-    style: {
-      maxWidth: 1180,
-      margin: '0 auto',
-      padding: '28px 32px 60px'
-    }
-  }, /*#__PURE__*/React.createElement("div", {
-    style: {
-      display: 'flex',
-      alignItems: 'center',
-      gap: 6
-    }
-  }, /*#__PURE__*/React.createElement("a", {
-    href: "../console/index.html",
-    title: "Back to Console",
-    style: {
-      display: 'inline-flex'
-    }
-  }, /*#__PURE__*/React.createElement("img", {
-    src: "../../assets/meridian-mark.svg",
-    alt: "",
-    style: {
-      width: 30,
-      height: 16
-    }
-  })), /*#__PURE__*/React.createElement("h1", {
-    style: {
-      fontSize: 24,
-      fontWeight: 680
-    }
-  }, "Infrastructure"), /*#__PURE__*/React.createElement(StatusDot, {
-    status: "warn",
-    pulse: true,
-    label: "1 incident"
-  }), /*#__PURE__*/React.createElement("div", {
-    style: {
-      marginLeft: 'auto',
-      display: 'flex',
-      gap: 8
-    }
-  }, /*#__PURE__*/React.createElement(Button, {
-    variant: "secondary",
-    iconLeft: "terminal",
-    onClick: () => setCli(true)
-  }, "Open CLI"), /*#__PURE__*/React.createElement(Button, {
-    iconLeft: "plus",
-    onClick: () => setConnect(true)
-  }, "Connect resource"))), /*#__PURE__*/React.createElement("div", {
-    style: {
-      display: 'flex',
-      gap: 16,
-      marginTop: 22
-    }
-  }, /*#__PURE__*/React.createElement(Card, {
-    style: {
-      flex: 1,
-      '--card-spacing': '16px'
-    }
-  }, /*#__PURE__*/React.createElement(CardContent, null, /*#__PURE__*/React.createElement(Stat, {
-    label: "Connected resources",
-    value: "14",
-    hint: "5 kinds \xB7 3 regions"
-  }))), /*#__PURE__*/React.createElement(Card, {
-    style: {
-      flex: 1,
-      '--card-spacing': '16px'
-    }
-  }, /*#__PURE__*/React.createElement(CardContent, null, /*#__PURE__*/React.createElement(Stat, {
-    label: "Uptime \xB7 90 days",
-    value: "99.98%",
-    delta: "0.01pt",
-    direction: "up"
-  }))), /*#__PURE__*/React.createElement(Card, {
-    style: {
-      flex: 1,
-      '--card-spacing': '16px'
-    }
-  }, /*#__PURE__*/React.createElement(CardContent, null, /*#__PURE__*/React.createElement(Stat, {
-    label: "P50 latency",
-    value: "38 ms",
-    delta: "6 ms",
-    direction: "down"
-  }), /*#__PURE__*/React.createElement(Sparkline, {
-    data: [52, 49, 51, 47, 44, 46, 41, 40, 42, 38],
-    direction: "up",
-    width: 150,
-    style: {
-      marginTop: 10
-    }
-  }))), /*#__PURE__*/React.createElement(Card, {
-    style: {
-      flex: 1,
-      '--card-spacing': '16px'
-    }
-  }, /*#__PURE__*/React.createElement(CardContent, null, /*#__PURE__*/React.createElement(Stat, {
-    label: "Open incidents",
-    value: "1",
-    hint: "worker-04 \xB7 degraded"
-  })))), /*#__PURE__*/React.createElement("div", {
-    style: {
-      display: 'flex',
-      alignItems: 'center',
-      gap: 12,
-      marginTop: 26
-    }
-  }, /*#__PURE__*/React.createElement(SegmentedControl, {
-    value: tab,
-    onChange: t => {
-      setTab(t);
-      setSel(null);
-    },
-    options: [{
-      id: 'resources',
-      label: 'Resources',
-      icon: 'server'
-    }, {
-      id: 'domains',
-      label: 'Domains & DNS',
-      icon: 'globe'
-    }, {
-      id: 'certificates',
-      label: 'Certificates',
-      icon: 'shield-check'
-    }]
-  }), /*#__PURE__*/React.createElement("span", {
-    style: {
-      fontSize: 13,
-      color: 'var(--text-muted)'
-    }
-  }, rows.length, " shown")), /*#__PURE__*/React.createElement(Card, {
-    style: {
-      marginTop: 14
-    }
-  }, /*#__PURE__*/React.createElement(CardContent, {
-    style: {
-      paddingInline: 0,
-      marginBlock: 'calc(var(--card-spacing) * -1)'
-    }
-  }, /*#__PURE__*/React.createElement(Table, {
-    rowKey: "id",
-    onRowClick: r => setSel(r),
-    columns: [{
-      key: 'name',
-      label: 'Name',
-      render: (v, r) => /*#__PURE__*/React.createElement("span", {
-        style: {
-          display: 'inline-flex',
-          alignItems: 'center',
-          gap: 10,
-          fontWeight: 600
-        }
-      }, /*#__PURE__*/React.createElement("span", {
-        style: {
-          display: 'inline-flex',
-          width: 30,
-          height: 30,
-          alignItems: 'center',
-          justifyContent: 'center',
-          borderRadius: 'var(--radius-sm)',
-          background: 'var(--surface-sunken)',
-          color: 'var(--sand-700)'
-        }
-      }, /*#__PURE__*/React.createElement(Icon, {
-        name: r.icon,
-        size: 15
-      })), v)
-    }, {
-      key: 'kind',
-      label: 'Type'
-    }, {
-      key: 'region',
-      label: tab === 'resources' ? 'Region' : 'Notes'
-    }, {
-      key: 'status',
-      label: 'Status',
-      render: v => /*#__PURE__*/React.createElement(StatusDot, {
-        status: v,
-        pulse: v !== 'ok',
-        label: STATUS_LABEL[v]
-      })
-    }, {
-      key: 'latency',
-      label: COLS_LAST[tab],
-      numeric: true,
-      align: 'right'
-    }],
-    rows: rows
-  }))))), /*#__PURE__*/React.createElement(Drawer, {
-    open: !!sel,
-    onOpenChange: open => {
-      if (!open) setSel(null);
-    },
-    direction: "right"
-  }, /*#__PURE__*/React.createElement(DrawerContent, {
-    style: {
-      width: 420
-    }
-  }, /*#__PURE__*/React.createElement(DrawerHeader, null, /*#__PURE__*/React.createElement(DrawerTitle, null, sel ? sel.name : ''), /*#__PURE__*/React.createElement(DrawerDescription, null, "Connection health and recent activity.")), sel && /*#__PURE__*/React.createElement("div", {
-    style: {
-      display: 'flex',
-      flexDirection: 'column',
-      gap: 18,
-      padding: 20
-    }
-  }, /*#__PURE__*/React.createElement(StatusDot, {
-    status: sel.status,
-    pulse: sel.status !== 'ok',
-    label: STATUS_LABEL[sel.status]
-  }), /*#__PURE__*/React.createElement(KeyValueList, {
-    labelWidth: 110,
-    items: [{
-      label: 'Type',
-      value: sel.kind
-    }, {
-      label: tab === 'resources' ? 'Region' : 'Notes',
-      value: sel.region
-    }, {
-      label: COLS_LAST[tab],
-      value: sel.latency,
-      mono: true
-    }, {
-      label: 'Connected',
-      value: 'May 3, 2026'
-    }]
-  }), /*#__PURE__*/React.createElement(CopyField, {
-    label: "Connection string",
-    value: 'efolusi://' + sel.id + '@edge.efolusi.com',
-    secret: true
-  }), /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement("div", {
-    style: {
-      fontSize: 13,
-      fontWeight: 600,
-      marginBottom: 8
-    }
-  }, "Recent activity"), /*#__PURE__*/React.createElement(Terminal, {
-    maxHeight: 160,
-    lines: [{
-      type: 'info',
-      text: 'Health check passed',
-      time: '09:41'
-    }, {
-      type: sel.status === 'ok' ? 'ok' : 'err',
-      text: sel.status === 'ok' ? '\u2713 Responding normally' : '\u2717 Slow responses detected',
-      time: '09:40'
-    }, {
-      type: 'info',
-      text: 'Config synced',
-      time: '08:12'
-    }]
-  }))), sel && /*#__PURE__*/React.createElement(DrawerFooter, null, /*#__PURE__*/React.createElement(DrawerClose, {
-    asChild: true
-  }, /*#__PURE__*/React.createElement(Button, {
-    variant: "ghost"
-  }, "Close")), /*#__PURE__*/React.createElement(Button, {
-    variant: "danger",
-    iconLeft: "plug",
-    onClick: () => {
-      notify(sel.name + ' disconnected', 'The tunnel closed cleanly.');
-      setSel(null);
-    }
-  }, "Disconnect")))), /*#__PURE__*/React.createElement(Dialog, {
-    open: connect,
-    onOpenChange: setConnect
-  }, /*#__PURE__*/React.createElement(DialogContent, null, /*#__PURE__*/React.createElement(DialogHeader, null, /*#__PURE__*/React.createElement(DialogTitle, null, "Connect a resource"), /*#__PURE__*/React.createElement(DialogDescription, null, "Meridian talks to it through an encrypted tunnel. Nothing is stored.")), /*#__PURE__*/React.createElement("div", {
-    className: "ef-dialog__body"
-  }, /*#__PURE__*/React.createElement("div", {
-    style: {
-      display: 'flex',
-      flexDirection: 'column',
-      gap: 14
-    }
-  }, /*#__PURE__*/React.createElement(Field, null, /*#__PURE__*/React.createElement(FieldLabel, {
-    htmlFor: "connection-kind"
-  }, "Kind"), /*#__PURE__*/React.createElement(NativeSelect, {
-    id: "connection-kind"
-  }, ['PostgreSQL', 'MySQL', 'Redis', 'SSH host', 'Kubernetes', 'AWS account', 'Domain / DNS'].map(value => /*#__PURE__*/React.createElement(NativeSelectOption, {
-    key: value,
-    value: value
-  }, value)))), /*#__PURE__*/React.createElement(Input, {
-    label: "Host",
-    placeholder: "db.internal.acme.co:5432",
-    iconLeft: "server"
-  }), /*#__PURE__*/React.createElement(Field, null, /*#__PURE__*/React.createElement(FieldLabel, {
-    htmlFor: "connection-region"
-  }, "Region"), /*#__PURE__*/React.createElement(NativeSelect, {
-    id: "connection-region"
-  }, ['eu-west-1', 'us-east-1', 'fra1', 'sgp1'].map(value => /*#__PURE__*/React.createElement(NativeSelectOption, {
-    key: value,
-    value: value
-  }, value)))))), /*#__PURE__*/React.createElement(DialogFooter, null, /*#__PURE__*/React.createElement(DialogClose, {
-    asChild: true
-  }, /*#__PURE__*/React.createElement(Button, {
-    variant: "ghost"
-  }, "Cancel")), /*#__PURE__*/React.createElement(Button, {
-    iconRight: "arrow-right",
-    onClick: () => {
-      setConnect(false);
-      setTab('resources');
-      setExtra(x => [...x, {
-        id: 'new' + x.length,
-        name: 'db-replica-' + (x.length + 1),
-        kind: 'PostgreSQL',
-        icon: 'database',
-        region: 'eu-west-1',
-        status: 'ok',
-        latency: '41 ms'
-      }]);
-      notify('Tunnel created', 'db-replica is connected and healthy.');
-    }
-  }, "Create tunnel")))), /*#__PURE__*/React.createElement(Drawer, {
-    open: cli,
-    onOpenChange: setCli,
-    direction: "right"
-  }, /*#__PURE__*/React.createElement(DrawerContent, {
-    style: {
-      width: 480
-    }
-  }, /*#__PURE__*/React.createElement(DrawerHeader, null, /*#__PURE__*/React.createElement(DrawerTitle, null, "Meridian CLI"), /*#__PURE__*/React.createElement(DrawerDescription, null, "Install commands and live infrastructure output.")), /*#__PURE__*/React.createElement("div", {
-    style: {
-      display: 'flex',
-      flexDirection: 'column',
-      gap: 14,
-      padding: 20
-    }
-  }, /*#__PURE__*/React.createElement(CopyField, {
-    label: "Install",
-    value: "curl -fsSL cli.efolusi.com | sh"
-  }), /*#__PURE__*/React.createElement(Terminal, {
-    host: "ada@acme-workspace",
-    live: true,
-    maxHeight: 280,
-    lines: [{
-      type: 'cmd',
-      text: 'efolusi infra ls'
-    }, {
-      type: 'out',
-      text: '14 resources \u00b7 3 regions \u00b7 1 degraded'
-    }, {
-      type: 'cmd',
-      text: 'efolusi infra logs worker-04 --tail'
-    }, {
-      type: 'err',
-      text: '\u2717 p95 812ms (baseline 190ms)',
-      time: '09:41:12'
-    }, {
-      type: 'info',
-      text: 'Suggestion: drain + restart with efolusi infra restart worker-04',
-      time: '09:41:12'
-    }]
-  })), /*#__PURE__*/React.createElement(DrawerFooter, null, /*#__PURE__*/React.createElement(DrawerClose, {
-    asChild: true
-  }, /*#__PURE__*/React.createElement(Button, {
-    variant: "secondary"
-  }, "Close"))))));
-}
-})(); } catch (e) { __ds_ns.__errors.push({ path: "showcases/infra/InfraScreen.jsx", error: String((e && e.message) || e) }); }
-
-// showcases/tools/ToolsScreen.jsx
-try { (() => {
-const {
-  Steps,
-  FileDrop,
-  FileTile,
-  NativeSelect,
-  NativeSelectOption,
-  Field,
-  FieldLabel,
-  Slider,
-  Button,
-  Empty,
-  EmptyDescription,
-  EmptyHeader,
-  EmptyMedia,
-  EmptyTitle,
-  Card,
-  CardContent,
-  Divider,
-  SegmentedControl,
-  Icon,
-  Textarea,
-  CopyField,
-  Toaster,
-  toast
-} = window.EfolusiDesignSystem_4ffc3d;
-function EncodePane() {
-  const [scheme, setScheme] = React.useState('base64');
-  const [text, setText] = React.useState('Wise moves, warm tools.');
-  const [out, setOut] = React.useState('');
-  const run = decode => {
-    try {
-      if (scheme === 'base64') setOut(decode ? atob(text) : btoa(text));else if (scheme === 'url') setOut(decode ? decodeURIComponent(text) : encodeURIComponent(text));else setOut(decode ? (text.match(/.{1,2}/g) || []).map(h => String.fromCharCode(parseInt(h, 16))).join('') : [...text].map(c => c.charCodeAt(0).toString(16).padStart(2, '0')).join(''));
-    } catch (e) {
-      setOut('Could not ' + (decode ? 'decode' : 'encode') + ' that input.');
-    }
-  };
-  return /*#__PURE__*/React.createElement("div", {
-    style: {
-      display: 'flex',
-      flexDirection: 'column',
-      gap: 14
-    }
-  }, /*#__PURE__*/React.createElement(SegmentedControl, {
-    value: scheme,
-    onChange: setScheme,
-    options: [{
-      id: 'base64',
-      label: 'Base64'
-    }, {
-      id: 'url',
-      label: 'URL'
-    }, {
-      id: 'hex',
-      label: 'Hex'
-    }]
-  }), /*#__PURE__*/React.createElement(Textarea, {
-    label: "Input",
-    rows: 3,
-    value: text,
-    onChange: e => setText(e.target.value)
-  }), /*#__PURE__*/React.createElement("div", {
-    style: {
-      display: 'flex',
-      gap: 8
-    }
-  }, /*#__PURE__*/React.createElement(Button, {
-    iconLeft: "code",
-    onClick: () => run(false)
-  }, "Encode"), /*#__PURE__*/React.createElement(Button, {
-    variant: "secondary",
-    iconLeft: "refresh-cw",
-    onClick: () => run(true)
-  }, "Decode")), out && /*#__PURE__*/React.createElement(CopyField, {
-    label: "Output",
-    value: out
-  }));
-}
-let nextId = 10;
-function ToolsScreen() {
-  const [tool, setTool] = React.useState('convert');
-  const [files, setFiles] = React.useState([{
-    id: 1,
-    name: 'q3-deck.pdf',
-    size: '1.2 MB',
-    state: 'ready'
-  }, {
-    id: 2,
-    name: 'hero-final.mp4',
-    size: '48 MB',
-    state: 'ready'
-  }]);
-  const [format, setFormat] = React.useState('DOCX');
-  const [quality, setQuality] = React.useState(80);
-  const [phase, setPhase] = React.useState(0); // 0 upload, 1 convert, 2 download
-  const timers = React.useRef([]);
-  React.useEffect(() => () => timers.current.forEach(clearInterval), []);
-  const addFiles = fs => setFiles(f => [...f, ...fs.map(x => ({
-    id: nextId++,
-    name: x.name,
-    size: (x.size / 1048576).toFixed(1) + ' MB',
-    state: 'ready'
-  }))]);
-  const convert = () => {
-    setPhase(1);
-    setFiles(fs => fs.map(f => f.state === 'done' ? f : {
-      ...f,
-      state: 'working',
-      pct: 0
-    }));
-    const t = setInterval(() => {
-      setFiles(fs => {
-        const out = fs.map(f => f.state === 'working' ? f.pct >= 100 ? {
-          ...f,
-          state: 'done',
-          pct: undefined
-        } : {
-          ...f,
-          pct: f.pct + 7 + Math.random() * 10
-        } : f);
-        if (out.every(f => f.state === 'done')) {
-          clearInterval(t);
-          setPhase(2);
-          toast.add({
-            title: 'Everything converted',
-            description: 'Files are ready to download.',
-            type: 'success'
-          });
-        }
-        return out;
-      });
-    }, 180);
-    timers.current.push(t);
-  };
-  const remove = id => setFiles(f => f.filter(x => x.id !== id));
-  return /*#__PURE__*/React.createElement("div", {
-    style: {
-      minHeight: '100vh',
-      display: 'flex',
-      flexDirection: 'column'
-    }
-  }, /*#__PURE__*/React.createElement("div", {
-    style: {
-      maxWidth: 1040,
-      width: '100%',
-      margin: '0 auto',
-      padding: '40px 32px 80px'
-    }
-  }, /*#__PURE__*/React.createElement("div", {
-    style: {
-      display: 'flex',
-      alignItems: 'center',
-      gap: 6,
-      justifyContent: 'center'
-    }
-  }, /*#__PURE__*/React.createElement("a", {
-    href: "../console/index.html",
-    title: "Back to Console",
-    style: {
-      display: 'inline-flex'
-    }
-  }, /*#__PURE__*/React.createElement("img", {
-    src: "../../assets/meridian-mark.svg",
-    alt: "",
-    style: {
-      width: 32,
-      height: 17
-    }
-  })), /*#__PURE__*/React.createElement("h1", {
-    style: {
-      fontSize: 26,
-      fontWeight: 680
-    }
-  }, "File tools")), /*#__PURE__*/React.createElement("p", {
-    style: {
-      textAlign: 'center',
-      color: 'var(--text-secondary)',
-      fontSize: 15,
-      marginTop: 8
-    }
-  }, "Convert, encode, and scan any file. Nothing leaves your workspace."), /*#__PURE__*/React.createElement("div", {
-    style: {
-      display: 'flex',
-      justifyContent: 'center',
-      marginTop: 18
-    }
-  }, /*#__PURE__*/React.createElement(SegmentedControl, {
-    value: tool,
-    onChange: setTool,
-    options: [{
-      id: 'convert',
-      label: 'Convert',
-      icon: 'refresh-cw'
-    }, {
-      id: 'encode',
-      label: 'Encode / decode',
-      icon: 'code'
-    }, {
-      id: 'scan',
-      label: 'Scan',
-      icon: 'scan'
-    }]
-  })), /*#__PURE__*/React.createElement(Card, {
-    style: {
-      marginTop: 24,
-      '--card-spacing': '24px'
-    }
-  }, /*#__PURE__*/React.createElement(CardContent, null, /*#__PURE__*/React.createElement(Steps, {
-    orientation: "horizontal",
-    current: phase,
-    items: [{
-      title: 'Upload',
-      description: files.length + (files.length === 1 ? ' file' : ' files')
-    }, {
-      title: 'Convert',
-      description: 'to ' + format
-    }, {
-      title: 'Download'
-    }]
-  }), /*#__PURE__*/React.createElement(Divider, null), tool === 'convert' ? /*#__PURE__*/React.createElement("div", {
-    style: {
-      display: 'flex',
-      flexDirection: 'column',
-      gap: 12
-    }
-  }, /*#__PURE__*/React.createElement(FileDrop, {
-    accept: "*/*",
-    hint: "PDF, MP4, PNG, DOCX, up to 2 GB each",
-    onFiles: addFiles
-  }), files.length === 0 && /*#__PURE__*/React.createElement(Empty, null, /*#__PURE__*/React.createElement(EmptyHeader, null, /*#__PURE__*/React.createElement(EmptyMedia, {
-    variant: "icon"
-  }, /*#__PURE__*/React.createElement(Icon, {
-    name: "files",
-    size: 24
-  })), /*#__PURE__*/React.createElement(EmptyTitle, null, "Add your first file"), /*#__PURE__*/React.createElement(EmptyDescription, null, "Everything you drop here stays in this workspace."))), files.map(f => /*#__PURE__*/React.createElement(FileTile, {
-    key: f.id,
-    name: f.name,
-    size: f.size,
-    progress: f.state === 'working' ? Math.min(99, f.pct) : undefined,
-    status: f.state === 'done' ? 'Converted to ' + format : f.state === 'ready' ? 'Queued' : undefined,
-    actions: f.state === 'done' ? /*#__PURE__*/React.createElement(Button, {
-      size: "sm",
-      variant: "secondary",
-      iconLeft: "download"
-    }, "Download") : null,
-    onRemove: f.state === 'working' ? undefined : () => remove(f.id)
-  })), /*#__PURE__*/React.createElement("div", {
-    style: {
-      display: 'flex',
-      gap: 14,
-      alignItems: 'flex-end',
-      marginTop: 6
-    }
-  }, /*#__PURE__*/React.createElement(Field, {
-    style: {
-      width: 160
-    }
-  }, /*#__PURE__*/React.createElement(FieldLabel, {
-    htmlFor: "convert-format"
-  }, "Convert to"), /*#__PURE__*/React.createElement(NativeSelect, {
-    id: "convert-format",
-    value: format,
-    onChange: e => setFormat(e.target.value)
-  }, ['DOCX', 'PDF', 'PNG', 'WEBM', 'MP3', 'TXT'].map(value => /*#__PURE__*/React.createElement(NativeSelectOption, {
-    key: value,
-    value: value
-  }, value)))), /*#__PURE__*/React.createElement("div", {
-    style: {
-      flex: 1
-    }
-  }, /*#__PURE__*/React.createElement("div", {
-    style: {
-      display: 'flex',
-      justifyContent: 'space-between',
-      marginBottom: 8,
-      fontSize: 13,
-      fontWeight: 600
-    }
-  }, /*#__PURE__*/React.createElement("span", null, "Quality"), /*#__PURE__*/React.createElement("span", {
-    style: {
-      color: 'var(--text-muted)',
-      fontFamily: 'var(--font-mono)',
-      fontWeight: 400
-    }
-  }, quality, "%")), /*#__PURE__*/React.createElement(Slider, {
-    "aria-label": "Quality",
-    value: [quality],
-    onValueChange: ([next]) => setQuality(next)
-  })), /*#__PURE__*/React.createElement(Button, {
-    iconLeft: "refresh-cw",
-    disabled: files.length === 0 || phase === 1,
-    loading: phase === 1,
-    onClick: convert
-  }, phase === 1 ? 'Converting' : 'Convert all'))) : tool === 'encode' ? /*#__PURE__*/React.createElement(EncodePane, null) : /*#__PURE__*/React.createElement(Empty, {
-    className: "ef-empty--bordered"
-  }, /*#__PURE__*/React.createElement(EmptyHeader, null, /*#__PURE__*/React.createElement(EmptyMedia, {
-    variant: "icon"
-  }, /*#__PURE__*/React.createElement(Icon, {
-    name: "scan",
-    size: 24
-  })), /*#__PURE__*/React.createElement(EmptyTitle, null, "Scanner"), /*#__PURE__*/React.createElement(EmptyDescription, null, "Intentionally omitted from this kit. The Convert flow is the reference layout.")))))));
-}
-})(); } catch (e) { __ds_ns.__errors.push({ path: "showcases/tools/ToolsScreen.jsx", error: String((e && e.message) || e) }); }
-
-// showcases/trader/TraderScreen.jsx
-try { (() => {
-const {
-  Stat,
-  Sparkline,
-  BarChart,
-  SegmentedControl,
-  Table,
-  Badge,
-  Switch,
-  Slider,
-  Progress,
-  Avatar,
-  AvatarFallback,
-  Card,
-  CardAction,
-  CardContent,
-  CardDescription,
-  CardHeader,
-  CardTitle,
-  Button,
-  StatusDot,
-  Divider,
-  Icon,
-  DropdownMenu,
-  DropdownMenuTrigger,
-  DropdownMenuContent,
-  DropdownMenuItem,
-  DropdownMenuSeparator,
-  IconButton,
-  Toaster,
-  toast
-} = window.EfolusiDesignSystem_4ffc3d;
-function PositionActionMenu({
-  trigger,
-  items,
-  onSelect
-}) {
-  return /*#__PURE__*/React.createElement(DropdownMenu, null, /*#__PURE__*/React.createElement(DropdownMenuTrigger, {
-    asChild: true
-  }, trigger), /*#__PURE__*/React.createElement(DropdownMenuContent, {
-    align: "end"
-  }, items.map((item, index) => item === 'separator' ? /*#__PURE__*/React.createElement(DropdownMenuSeparator, {
-    key: 'separator-' + index
-  }) : /*#__PURE__*/React.createElement(DropdownMenuItem, {
-    key: item.id,
-    variant: item.danger ? 'destructive' : 'default',
-    onSelect: () => onSelect?.(item.id)
-  }, item.icon ? /*#__PURE__*/React.createElement(Icon, {
-    name: item.icon,
-    size: 15
-  }) : null, item.label))));
-}
-const SERIES = {
-  '24h': [98, 99, 97, 101, 103, 102, 105, 104, 107, 106, 109, 112],
-  '7d': [88, 92, 90, 95, 93, 99, 104, 101, 106, 110, 108, 112],
-  '30d': [72, 78, 75, 82, 86, 84, 90, 95, 92, 101, 107, 112]
-};
-const POSITIONS = [{
-  id: 1,
-  pair: 'BTC-EUR',
-  side: 'Long',
-  size: '0.42',
-  entry: '58,120',
-  mark: '61,480',
-  pnl: '+2,410',
-  up: true,
-  spark: [58, 59, 58, 60, 61, 60, 61, 62]
-}, {
-  id: 2,
-  pair: 'ETH-EUR',
-  side: 'Long',
-  size: '6.10',
-  entry: '2,940',
-  mark: '3,065',
-  pnl: '+763',
-  up: true,
-  spark: [29, 30, 29, 30, 31, 30, 31, 31]
-}, {
-  id: 3,
-  pair: 'SOL-EUR',
-  side: 'Short',
-  size: '84.0',
-  entry: '132.40',
-  mark: '138.15',
-  pnl: '\u2212483',
-  up: false,
-  spark: [132, 133, 135, 134, 136, 137, 138, 138]
-}];
-function TraderScreen() {
-  const [range, setRange] = React.useState('7d');
-  const [auto, setAuto] = React.useState(true);
-  const [risk, setRisk] = React.useState(4);
-  const [followed, setFollowed] = React.useState([]);
-  const [positions, setPositions] = React.useState(POSITIONS);
-  const notify = (title, tone = 'success') => toast.add({
-    title,
-    description: 'Change applies to the next trade.',
-    type: tone
-  });
-  const follow = n => {
-    setFollowed(f => f.includes(n) ? f.filter(x => x !== n) : [...f, n]);
-  };
-  return /*#__PURE__*/React.createElement("div", {
-    style: {
-      minHeight: '100vh'
-    }
-  }, /*#__PURE__*/React.createElement("div", {
-    style: {
-      maxWidth: 1180,
-      margin: '0 auto',
-      padding: '28px 32px 60px'
-    }
-  }, /*#__PURE__*/React.createElement("div", {
-    style: {
-      display: 'flex',
-      alignItems: 'flex-start',
-      gap: 24
-    }
-  }, /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement("div", {
-    style: {
-      display: 'flex',
-      alignItems: 'center',
-      gap: 6
-    }
-  }, /*#__PURE__*/React.createElement("a", {
-    href: "../console/index.html",
-    title: "Back to Console",
-    style: {
-      display: 'inline-flex'
-    }
-  }, /*#__PURE__*/React.createElement("img", {
-    src: "../../assets/meridian-mark.svg",
-    alt: "",
-    style: {
-      width: 30,
-      height: 16
-    }
-  })), /*#__PURE__*/React.createElement("h1", {
-    style: {
-      fontSize: 24,
-      fontWeight: 680
-    }
-  }, "Trading"), /*#__PURE__*/React.createElement(StatusDot, {
-    status: auto ? 'busy' : 'off',
-    pulse: auto,
-    label: auto ? 'Robot active' : 'Robot paused'
-  })), /*#__PURE__*/React.createElement("div", {
-    style: {
-      display: 'flex',
-      alignItems: 'baseline',
-      gap: 12,
-      marginTop: 16
-    }
-  }, /*#__PURE__*/React.createElement("span", {
-    style: {
-      fontFamily: 'var(--font-mono)',
-      fontSize: 40,
-      fontWeight: 600,
-      letterSpacing: '-0.01em'
-    }
-  }, "\u20AC24,318.90"), /*#__PURE__*/React.createElement(Badge, {
-    className: "ef-badge--success"
-  }, /*#__PURE__*/React.createElement(Icon, {
-    name: "circle",
-    size: 7,
-    strokeWidth: 4,
-    "data-icon": "inline-start"
-  }), "+12.4% \xB7 ", range)), /*#__PURE__*/React.createElement(Sparkline, {
-    data: SERIES[range],
-    width: 420,
-    height: 72,
-    strokeWidth: 1.75,
-    style: {
-      marginTop: 12
-    }
-  })), /*#__PURE__*/React.createElement("div", {
-    style: {
-      marginLeft: 'auto',
-      display: 'flex',
-      flexDirection: 'column',
-      alignItems: 'flex-end',
-      gap: 12
-    }
-  }, /*#__PURE__*/React.createElement(SegmentedControl, {
-    options: ['24h', '7d', '30d'],
-    value: range,
-    onChange: setRange
-  }), /*#__PURE__*/React.createElement(Card, {
-    style: {
-      width: 240,
-      '--card-spacing': '14px'
-    }
-  }, /*#__PURE__*/React.createElement(CardContent, null, /*#__PURE__*/React.createElement("div", {
-    style: {
-      fontSize: 11,
-      fontWeight: 600,
-      letterSpacing: '0.06em',
-      textTransform: 'uppercase',
-      color: 'var(--text-muted)',
-      marginBottom: 8
-    }
-  }, "Daily volume"), /*#__PURE__*/React.createElement(BarChart, {
-    height: 64,
-    data: [42, 61, 38, 74, 52, 88, 66, 91, 58, 80, 96, 71, 84, 104],
-    highlightLast: 3,
-    labels: ['Jul 3', 'Jul 16'],
-    format: v => '€' + (v * 113).toLocaleString()
-  }))))), /*#__PURE__*/React.createElement("div", {
-    style: {
-      display: 'flex',
-      gap: 20,
-      marginTop: 28,
-      alignItems: 'flex-start'
-    }
-  }, /*#__PURE__*/React.createElement(Card, {
-    style: {
-      flex: 1.8
-    }
-  }, /*#__PURE__*/React.createElement(CardHeader, null, /*#__PURE__*/React.createElement(CardTitle, null, "Open positions"), /*#__PURE__*/React.createElement(CardDescription, null, "Robot manages exits inside your risk cap.")), /*#__PURE__*/React.createElement(CardContent, {
-    style: {
-      paddingInline: 0,
-      marginBlockEnd: 'calc(var(--card-spacing) * -1)'
-    }
-  }, /*#__PURE__*/React.createElement(Table, {
-    rowKey: "id",
-    columns: [{
-      key: 'pair',
-      label: 'Pair',
-      render: v => /*#__PURE__*/React.createElement("strong", null, v)
-    }, {
-      key: 'side',
-      label: 'Side',
-      render: v => /*#__PURE__*/React.createElement(Badge, {
-        className: v === 'Long' ? 'ef-badge--success' : 'ef-badge--warning'
-      }, v)
-    }, {
-      key: 'size',
-      label: 'Size',
-      numeric: true,
-      align: 'right'
-    }, {
-      key: 'entry',
-      label: 'Entry',
-      numeric: true,
-      align: 'right'
-    }, {
-      key: 'mark',
-      label: 'Mark',
-      numeric: true,
-      align: 'right'
-    }, {
-      key: 'pnl',
-      label: 'P&L (€)',
-      numeric: true,
-      align: 'right',
-      render: (v, r) => /*#__PURE__*/React.createElement("span", {
-        style: {
-          color: r.up ? 'var(--success-600)' : 'var(--danger-600)',
-          fontFamily: 'var(--font-mono)',
-          fontSize: 13
-        }
-      }, v)
-    }, {
-      key: 'spark',
-      label: '',
-      width: 100,
-      render: (v, r) => /*#__PURE__*/React.createElement(Sparkline, {
-        data: v,
-        width: 84,
-        height: 24,
-        direction: r.up ? 'up' : 'down'
-      })
-    }, {
-      key: 'menu',
-      label: '',
-      width: 44,
-      render: (v, r) => /*#__PURE__*/React.createElement(PositionActionMenu, {
-        trigger: /*#__PURE__*/React.createElement(IconButton, {
-          icon: "ellipsis",
-          label: "More",
-          size: "sm"
-        }),
-        onSelect: id => {
-          if (id === 'close') {
-            setPositions(ps => ps.filter(p => p.id !== r.id));
-            notify('Position closed', 'info');
-          } else notify('Order ticket opened');
-        },
-        items: [{
-          id: 'ticket',
-          label: 'Adjust position',
-          icon: 'pencil'
-        }, 'separator', {
-          id: 'close',
-          label: 'Close position',
-          icon: 'x',
-          danger: true
-        }]
-      })
-    }],
-    rows: positions
-  }))), /*#__PURE__*/React.createElement("div", {
-    style: {
-      flex: 1,
-      display: 'flex',
-      flexDirection: 'column',
-      gap: 16
-    }
-  }, /*#__PURE__*/React.createElement(Card, {
-    style: {
-      '--card-spacing': '18px'
-    }
-  }, /*#__PURE__*/React.createElement(CardHeader, null, /*#__PURE__*/React.createElement(CardTitle, null, "Strategy"), /*#__PURE__*/React.createElement(CardAction, null, /*#__PURE__*/React.createElement(Switch, {
-    "aria-label": "Strategy robot",
-    checked: auto,
-    onCheckedChange: next => {
-      setAuto(next);
-      notify(next ? 'Robot resumed' : 'Robot paused', next ? 'success' : 'info');
-    }
-  }))), /*#__PURE__*/React.createElement(CardContent, null, /*#__PURE__*/React.createElement("div", {
-    style: {
-      display: 'flex',
-      flexDirection: 'column',
-      gap: 16
-    }
-  }, /*#__PURE__*/React.createElement("div", {
-    style: {
-      fontSize: 13,
-      color: 'var(--text-secondary)'
-    }
-  }, "Momentum \xB7 EUR pairs \xB7 max 3 open positions. Every trade is logged and auditable."), /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement("div", {
-    style: {
-      display: 'flex',
-      justifyContent: 'space-between',
-      marginBottom: 8,
-      fontSize: 13,
-      fontWeight: 600
-    }
-  }, /*#__PURE__*/React.createElement("span", null, "Risk per trade"), /*#__PURE__*/React.createElement("span", {
-    style: {
-      color: 'var(--text-muted)',
-      fontFamily: 'var(--font-mono)',
-      fontWeight: 400
-    }
-  }, risk, "%")), /*#__PURE__*/React.createElement(Slider, {
-    "aria-label": "Risk per trade",
-    min: 1,
-    max: 10,
-    value: [risk],
-    onValueChange: ([next]) => setRisk(next)
-  })), /*#__PURE__*/React.createElement(Progress, {
-    label: "Monthly drawdown cap",
-    value: 31,
-    showValue: true,
-    tone: risk > 7 ? 'warning' : 'default',
-    format: () => '\u22123.1% of \u221210%'
-  })))), /*#__PURE__*/React.createElement(Card, {
-    style: {
-      '--card-spacing': '12px'
-    }
-  }, /*#__PURE__*/React.createElement(CardHeader, null, /*#__PURE__*/React.createElement(CardTitle, null, "Social signals"), /*#__PURE__*/React.createElement(CardDescription, null, "Traders you can mirror, with their real track record.")), /*#__PURE__*/React.createElement(CardContent, null, /*#__PURE__*/React.createElement("div", {
-    style: {
-      display: 'flex',
-      flexDirection: 'column'
-    }
-  }, [['Femi Alade', '+31.2% this quarter \u00b7 low risk', 'up'], ['June Park', '+18.7% this quarter \u00b7 medium risk', 'up'], ['Sol Reyes', '\u22124.2% this quarter \u00b7 high risk', 'down']].map(([n, meta, dir]) => /*#__PURE__*/React.createElement("div", {
-    key: n,
-    style: {
-      display: 'flex',
-      alignItems: 'center',
-      gap: 10,
-      padding: '9px 8px'
-    }
-  }, /*#__PURE__*/React.createElement(Avatar, null, /*#__PURE__*/React.createElement(AvatarFallback, null, n.split(/\s+/).map(part => part[0]).slice(0, 2).join(''))), /*#__PURE__*/React.createElement("div", {
-    style: {
-      flex: 1,
-      minWidth: 0
-    }
-  }, /*#__PURE__*/React.createElement("div", {
-    style: {
-      fontSize: 13,
-      fontWeight: 600
-    }
-  }, n), /*#__PURE__*/React.createElement("div", {
-    style: {
-      fontSize: 12,
-      color: dir === 'up' ? 'var(--success-600)' : 'var(--danger-600)'
-    }
-  }, meta)), /*#__PURE__*/React.createElement(Button, {
-    size: "sm",
-    variant: followed.includes(n) ? 'secondary' : 'ghost',
-    iconLeft: followed.includes(n) ? 'check' : 'plus',
-    onClick: () => follow(n)
-  }, followed.includes(n) ? 'Mirroring' : 'Mirror'))))))))));
-}
-})(); } catch (e) { __ds_ns.__errors.push({ path: "showcases/trader/TraderScreen.jsx", error: String((e && e.message) || e) }); }
-
-// showcases/website/Sections.jsx
-try { (() => {
-const {
-  Button,
-  Badge,
-  Icon,
-  Card,
-  CardContent,
-  Avatar,
-  AvatarFallback,
-  AvatarGroup,
-  Input
-} = window.EfolusiDesignSystem_4ffc3d;
-const wrap = {
-  maxWidth: 1200,
-  margin: '0 auto',
-  padding: '0 32px'
-};
-function SiteHeader() {
-  return /*#__PURE__*/React.createElement("header", {
-    style: {
-      position: 'sticky',
-      top: 0,
-      zIndex: 50,
-      background: 'color-mix(in srgb, var(--surface-page) 85%, transparent)',
-      backdropFilter: 'blur(12px)',
-      borderBottom: '1px solid var(--border-default)'
-    }
-  }, /*#__PURE__*/React.createElement("div", {
-    style: {
-      ...wrap,
-      display: 'flex',
-      alignItems: 'center',
-      gap: 28,
-      height: 64
-    }
-  }, /*#__PURE__*/React.createElement("a", {
-    href: "#",
-    style: {
-      display: 'flex',
-      alignItems: 'center',
-      gap: 6,
-      color: 'var(--text-primary)',
-      textDecoration: 'none'
-    }
-  }, /*#__PURE__*/React.createElement("img", {
-    src: "../../assets/meridian-mark.svg",
-    alt: "",
-    style: {
-      width: 30,
-      height: 16
-    }
-  }), /*#__PURE__*/React.createElement("span", {
-    style: {
-      fontFamily: 'var(--font-display)',
-      fontWeight: 680,
-      letterSpacing: '-0.02em',
-      fontSize: 20
-    }
-  }, "Meridian")), /*#__PURE__*/React.createElement("nav", {
-    style: {
-      display: 'flex',
-      gap: 4
-    }
-  }, [['Products', '#products'], ['Pricing', '#pricing'], ['Docs', '../docs/index.html'], ['Console', '../console/index.html']].map(([l, href]) => /*#__PURE__*/React.createElement("a", {
-    key: l,
-    href: href,
-    style: {
-      padding: '7px 12px',
-      borderRadius: 'var(--radius-sm)',
-      fontSize: 14,
-      fontWeight: 500,
-      color: 'var(--text-secondary)',
-      textDecoration: 'none'
-    },
-    onMouseEnter: e => {
-      e.currentTarget.style.background = 'var(--sand-100)';
-      e.currentTarget.style.color = 'var(--text-primary)';
-    },
-    onMouseLeave: e => {
-      e.currentTarget.style.background = '';
-      e.currentTarget.style.color = 'var(--text-secondary)';
-    }
-  }, l))), /*#__PURE__*/React.createElement("div", {
-    style: {
-      marginLeft: 'auto',
-      display: 'flex',
-      gap: 8
-    }
-  }, /*#__PURE__*/React.createElement(Button, {
-    variant: "ghost",
-    onClick: () => {
-      window.location.href = '../auth/index.html';
-    }
-  }, "Sign in"), /*#__PURE__*/React.createElement(Button, {
-    iconRight: "arrow-right",
-    onClick: () => {
-      window.location.href = '../auth/index.html';
-    }
-  }, "Start free"))));
-}
-function MiniConsole() {
-  return /*#__PURE__*/React.createElement("div", {
-    style: {
-      background: 'var(--surface-card)',
-      border: '1px solid var(--border-default)',
-      borderRadius: 'var(--radius-xl)',
-      boxShadow: 'var(--shadow-lg)',
-      overflow: 'hidden'
-    }
-  }, /*#__PURE__*/React.createElement("div", {
-    style: {
-      display: 'flex',
-      alignItems: 'center',
-      gap: 8,
-      padding: '10px 16px',
-      borderBottom: '1px solid var(--border-default)',
-      background: 'var(--sand-25)'
-    }
-  }, /*#__PURE__*/React.createElement("span", {
-    style: {
-      width: 10,
-      height: 10,
-      borderRadius: 99,
-      background: 'var(--sand-200)'
-    }
-  }), /*#__PURE__*/React.createElement("span", {
-    style: {
-      width: 10,
-      height: 10,
-      borderRadius: 99,
-      background: 'var(--sand-200)'
-    }
-  }), /*#__PURE__*/React.createElement("span", {
-    style: {
-      width: 10,
-      height: 10,
-      borderRadius: 99,
-      background: 'var(--sand-200)'
-    }
-  }), /*#__PURE__*/React.createElement("span", {
-    style: {
-      marginLeft: 8,
-      fontFamily: 'var(--font-mono)',
-      fontSize: 11,
-      color: 'var(--text-muted)'
-    }
-  }, "console.efolusi.com")), /*#__PURE__*/React.createElement("div", {
-    style: {
-      display: 'flex',
-      gap: 14,
-      padding: 18
-    }
-  }, [['MRR', '$48.2k', '↑ 12.4%', 'success'], ['Customers', '1,284', '↑ 3.1%', 'success'], ['Requests', '16.3M', '↑ 8.9%', 'success']].map(([l, v, d, t]) => /*#__PURE__*/React.createElement("div", {
-    key: l,
-    style: {
-      flex: 1,
-      border: '1px solid var(--border-default)',
-      borderRadius: 'var(--radius-md)',
-      padding: 12
-    }
-  }, /*#__PURE__*/React.createElement("div", {
-    style: {
-      fontSize: 11,
-      color: 'var(--text-muted)',
-      fontWeight: 500
-    }
-  }, l), /*#__PURE__*/React.createElement("div", {
-    style: {
-      fontFamily: 'var(--font-mono)',
-      fontSize: 19,
-      fontWeight: 600,
-      marginTop: 3
-    }
-  }, v), /*#__PURE__*/React.createElement(Badge, {
-    className: t === 'success' ? 'ef-badge--success' : undefined,
-    style: {
-      marginTop: 6
-    }
-  }, d)))), /*#__PURE__*/React.createElement("div", {
-    style: {
-      display: 'flex',
-      alignItems: 'flex-end',
-      gap: 3,
-      height: 90,
-      padding: '0 18px 18px'
-    }
-  }, [42, 55, 48, 61, 58, 72, 66, 80, 74, 88, 92, 84, 96, 104, 98, 112, 118, 124, 130, 138, 144, 150].map((v, i) => /*#__PURE__*/React.createElement("div", {
-    key: i,
-    style: {
-      flex: 1,
-      height: v / 150 * 100 + '%',
-      borderRadius: '2px 2px 0 0',
-      background: i > 17 ? 'var(--brand-900)' : 'var(--sand-200)'
-    }
-  }))));
-}
-function Hero() {
-  return /*#__PURE__*/React.createElement("section", {
-    style: {
-      background: 'var(--surface-page)',
-      paddingTop: 88,
-      paddingBottom: 96
-    }
-  }, /*#__PURE__*/React.createElement("div", {
-    style: {
-      ...wrap,
-      display: 'flex',
-      gap: 64,
-      alignItems: 'center'
-    }
-  }, /*#__PURE__*/React.createElement("div", {
-    style: {
-      flex: 1
-    }
-  }, /*#__PURE__*/React.createElement("div", {
-    style: {
-      fontSize: 12,
-      fontWeight: 600,
-      letterSpacing: '0.08em',
-      textTransform: 'uppercase',
-      color: 'var(--text-muted)'
-    }
-  }, "One workspace, every surface"), /*#__PURE__*/React.createElement("h1", {
-    style: {
-      fontSize: 62,
-      fontWeight: 700,
-      lineHeight: 1.04,
-      marginTop: 18
-    }
-  }, "Do more with fewer tabs."), /*#__PURE__*/React.createElement("p", {
-    style: {
-      fontSize: 19,
-      lineHeight: 1.6,
-      color: 'var(--text-secondary)',
-      marginTop: 20,
-      maxWidth: 460
-    }
-  }, "One account for every surface your team builds: AI agents, infrastructure, automation, file tools, and trading, in a single workspace."), /*#__PURE__*/React.createElement("div", {
-    style: {
-      display: 'flex',
-      gap: 10,
-      marginTop: 28
-    }
-  }, /*#__PURE__*/React.createElement(Button, {
-    size: "lg",
-    iconRight: "arrow-right",
-    onClick: () => {
-      window.location.href = '../auth/index.html';
-    }
-  }, "Start free"), /*#__PURE__*/React.createElement(Button, {
-    size: "lg",
-    variant: "secondary",
-    iconLeft: "book-open",
-    onClick: () => {
-      window.location.href = '../docs/index.html';
-    }
-  }, "Read the docs")), /*#__PURE__*/React.createElement("div", {
-    style: {
-      display: 'flex',
-      alignItems: 'center',
-      gap: 12,
-      marginTop: 28
-    }
-  }, /*#__PURE__*/React.createElement(AvatarGroup, null, /*#__PURE__*/React.createElement(Avatar, null, /*#__PURE__*/React.createElement(AvatarFallback, null, "AO")), /*#__PURE__*/React.createElement(Avatar, null, /*#__PURE__*/React.createElement(AvatarFallback, null, "FA")), /*#__PURE__*/React.createElement(Avatar, null, /*#__PURE__*/React.createElement(AvatarFallback, null, "JP")), /*#__PURE__*/React.createElement(Avatar, null, /*#__PURE__*/React.createElement(AvatarFallback, null, "SR"))), /*#__PURE__*/React.createElement("span", {
-    style: {
-      fontSize: 13,
-      color: 'var(--text-muted)'
-    }
-  }, "4,200+ teams ship with Meridian"))), /*#__PURE__*/React.createElement("div", {
-    style: {
-      flex: 1.1
-    }
-  }, /*#__PURE__*/React.createElement(MiniConsole, null))));
-}
-const PRODUCTS = [['bot', 'AI agents', 'An autonomous operator that plans, runs tools, and ships work you review, not prompts you babysit.', '../agent/index.html'], ['server', 'Infrastructure', 'Every cloud, SSH box, database, cache, cert, domain, and DNS record in one control plane.', '../infra/index.html'], ['sparkles', 'Automation', 'Node-based workflows that scale content across text, image, audio, and video.', '../docs/index.html'], ['package', 'File tools', 'Convert, encode, decode, and scan any file: one toolbox instead of forty tabs.', '../tools/index.html'], ['chart-candlestick', 'Trading', 'A trading desk with guardrails: strategies you set, risk you cap, logs you can audit.', '../trader/index.html'], ['wallet', 'Finance', 'Shared portfolios and social signals with real accounting underneath.', '../trader/index.html']];
-function Products() {
-  return /*#__PURE__*/React.createElement("section", {
-    id: "products",
-    style: {
-      padding: '96px 0',
-      background: 'var(--surface-page)',
-      scrollMarginTop: 64
-    }
-  }, /*#__PURE__*/React.createElement("div", {
-    style: wrap
-  }, /*#__PURE__*/React.createElement("div", {
-    style: {
-      fontSize: 12,
-      fontWeight: 600,
-      letterSpacing: '0.06em',
-      textTransform: 'uppercase',
-      color: 'var(--text-muted)'
-    }
-  }, "The platform"), /*#__PURE__*/React.createElement("h2", {
-    style: {
-      fontSize: 40,
-      fontWeight: 680,
-      marginTop: 10,
-      maxWidth: 560
-    }
-  }, "Every surface, one account"), /*#__PURE__*/React.createElement("div", {
-    style: {
-      display: 'grid',
-      gridTemplateColumns: '1fr 1fr 1fr',
-      gap: 20,
-      marginTop: 40
-    }
-  }, PRODUCTS.map(([icon, name, desc, href]) => /*#__PURE__*/React.createElement(Card, {
-    key: name,
-    interactive: true,
-    style: {
-      '--card-spacing': '24px'
-    },
-    onClick: () => {
-      window.location.href = href;
-    }
-  }, /*#__PURE__*/React.createElement(CardContent, null, /*#__PURE__*/React.createElement("span", {
-    style: {
-      display: 'inline-flex',
-      color: 'var(--text-primary)'
-    }
-  }, /*#__PURE__*/React.createElement(Icon, {
-    name: icon,
-    size: 22
-  })), /*#__PURE__*/React.createElement("h3", {
-    style: {
-      fontSize: 21,
-      fontWeight: 700,
-      marginTop: 16
-    }
-  }, name), /*#__PURE__*/React.createElement("p", {
-    style: {
-      fontSize: 14.5,
-      lineHeight: 1.6,
-      color: 'var(--text-secondary)',
-      marginTop: 8
-    }
-  }, desc), /*#__PURE__*/React.createElement("div", {
-    style: {
-      display: 'flex',
-      alignItems: 'center',
-      gap: 6,
-      marginTop: 16,
-      fontSize: 14,
-      fontWeight: 600,
-      color: 'var(--text-link)'
-    }
-  }, "Explore ", name, " ", /*#__PURE__*/React.createElement(Icon, {
-    name: "arrow-right",
-    size: 15
-  }))))))));
-}
-function BrandBand() {
-  return /*#__PURE__*/React.createElement("section", {
-    style: {
-      background: 'var(--cocoa-700)',
-      color: 'var(--cream-50)',
-      padding: '88px 0',
-      position: 'relative',
-      overflow: 'hidden'
-    }
-  }, /*#__PURE__*/React.createElement("div", {
-    style: {
-      ...wrap,
-      textAlign: 'center'
-    }
-  }, /*#__PURE__*/React.createElement("div", {
-    style: {
-      fontFamily: 'var(--font-display)',
-      fontSize: 34,
-      fontWeight: 700,
-      letterSpacing: '-0.02em',
-      lineHeight: 1.3,
-      maxWidth: 760,
-      margin: '0 auto'
-    }
-  }, "\u201CWe deleted 40k lines of billing code the week we adopted Meridian. I'm still a little emotional about it.\u201D"), /*#__PURE__*/React.createElement("div", {
-    style: {
-      display: 'flex',
-      alignItems: 'center',
-      justifyContent: 'center',
-      gap: 10,
-      marginTop: 24
-    }
-  }, /*#__PURE__*/React.createElement(Avatar, null, /*#__PURE__*/React.createElement(AvatarFallback, null, "JP")), /*#__PURE__*/React.createElement("span", {
-    style: {
-      fontSize: 14,
-      color: 'color-mix(in srgb, var(--cream-50) 75%, transparent)'
-    }
-  }, /*#__PURE__*/React.createElement("strong", {
-    style: {
-      color: 'var(--cream-50)'
-    }
-  }, "June Park"), " \xB7 CTO, Bloom Health"))));
-}
-const TIERS = [['Starter', '$0', 'For side projects and tinkering', ['1 surface', '2 seats', '10k requests/mo', 'Community support'], 'secondary'], ['Growth', '$12', 'Per seat, where most teams start', ['Every surface', 'Unlimited seats', '1M requests/mo', 'Email support', 'SSO'], 'primary'], ['Scale', 'Custom', 'For platforms and regulated teams', ['Everything in Growth', 'Unlimited requests', 'SCIM & audit log', 'Dedicated support'], 'brand']];
-function Pricing() {
-  return /*#__PURE__*/React.createElement("section", {
-    id: "pricing",
-    style: {
-      padding: '96px 0',
-      background: 'var(--surface-page)',
-      scrollMarginTop: 64
-    }
-  }, /*#__PURE__*/React.createElement("div", {
-    style: {
-      ...wrap,
-      textAlign: 'center'
-    }
-  }, /*#__PURE__*/React.createElement("h2", {
-    style: {
-      fontSize: 40,
-      fontWeight: 680
-    }
-  }, "Pricing that stays boring"), /*#__PURE__*/React.createElement("p", {
-    style: {
-      fontSize: 16,
-      color: 'var(--text-secondary)',
-      marginTop: 10
-    }
-  }, "No usage cliffs, no surprise line items. Cancel anytime."), /*#__PURE__*/React.createElement("div", {
-    style: {
-      display: 'grid',
-      gridTemplateColumns: '1fr 1fr 1fr',
-      gap: 20,
-      marginTop: 44,
-      textAlign: 'left'
-    }
-  }, TIERS.map(([name, price, desc, feats, cta]) => /*#__PURE__*/React.createElement(Card, {
-    key: name,
-    style: {
-      '--card-spacing': '28px',
-      ...(cta === 'primary' ? {
-        borderColor: 'var(--accent)',
-        boxShadow: 'var(--shadow-sm)'
-      } : {})
-    }
-  }, /*#__PURE__*/React.createElement(CardContent, null, /*#__PURE__*/React.createElement("div", {
-    style: {
-      display: 'flex',
-      alignItems: 'center',
-      gap: 8
-    }
-  }, /*#__PURE__*/React.createElement("h3", {
-    style: {
-      fontSize: 18,
-      fontWeight: 700
-    }
-  }, name), cta === 'primary' && /*#__PURE__*/React.createElement(Badge, {
-    className: "ef-badge--accent"
-  }, "Popular")), /*#__PURE__*/React.createElement("div", {
-    style: {
-      display: 'flex',
-      alignItems: 'baseline',
-      gap: 6,
-      marginTop: 14
-    }
-  }, /*#__PURE__*/React.createElement("span", {
-    style: {
-      fontFamily: 'var(--font-display)',
-      fontSize: 40,
-      fontWeight: 680,
-      letterSpacing: '-0.02em'
-    }
-  }, price), price === '$12' && /*#__PURE__*/React.createElement("span", {
-    style: {
-      fontSize: 13,
-      color: 'var(--text-muted)'
-    }
-  }, "/seat/mo")), /*#__PURE__*/React.createElement("p", {
-    style: {
-      fontSize: 13,
-      color: 'var(--text-muted)',
-      marginTop: 4
-    }
-  }, desc), /*#__PURE__*/React.createElement("div", {
-    style: {
-      display: 'flex',
-      flexDirection: 'column',
-      gap: 9,
-      margin: '20px 0 24px'
-    }
-  }, feats.map(f => /*#__PURE__*/React.createElement("div", {
-    key: f,
-    style: {
-      display: 'flex',
-      gap: 8,
-      alignItems: 'center',
-      fontSize: 14
-    }
-  }, /*#__PURE__*/React.createElement("span", {
-    style: {
-      color: 'var(--sand-600)',
-      display: 'inline-flex'
-    }
-  }, /*#__PURE__*/React.createElement(Icon, {
-    name: "check",
-    size: 15
-  })), f))), /*#__PURE__*/React.createElement(Button, {
-    fullWidth: true,
-    variant: cta,
-    iconRight: "arrow-right",
-    onClick: () => {
-      window.location.href = price === 'Custom' ? 'mailto:hello@efolusi.com' : '../auth/index.html';
-    }
-  }, price === 'Custom' ? 'Talk to us' : 'Start free')))))));
-}
-function Newsletter() {
-  const [done, setDone] = React.useState(false);
-  return /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement("div", {
-    style: {
-      fontSize: 12,
-      fontWeight: 600,
-      letterSpacing: '0.06em',
-      textTransform: 'uppercase',
-      color: 'var(--text-muted)'
-    }
-  }, "Stay in the loop"), done ? /*#__PURE__*/React.createElement("p", {
-    style: {
-      fontSize: 13,
-      color: 'var(--success-600)',
-      marginTop: 14,
-      display: 'flex',
-      alignItems: 'center',
-      gap: 6
-    }
-  }, /*#__PURE__*/React.createElement(Icon, {
-    name: "circle-check",
-    size: 15
-  }), "You're in. See you next month.") : /*#__PURE__*/React.createElement("div", {
-    style: {
-      display: 'flex',
-      gap: 8,
-      marginTop: 14
-    }
-  }, /*#__PURE__*/React.createElement(Input, {
-    size: "sm",
-    type: "email",
-    "aria-label": "Email address",
-    placeholder: "you@company.com",
-    style: {
-      flex: 1
-    }
-  }), /*#__PURE__*/React.createElement(Button, {
-    size: "sm",
-    onClick: () => setDone(true)
-  }, "Subscribe")), /*#__PURE__*/React.createElement("p", {
-    style: {
-      fontSize: 11,
-      color: 'var(--text-muted)',
-      marginTop: 8
-    }
-  }, "One email a month. No launches missed."));
-}
-
-// Footer entries that have a page in this kit link to it; the rest stay
-// placeholders for the consumer's own routes.
-const FOOTER_HREFS = {
-  'AI agents': '../agent/index.html',
-  Infrastructure: '../infra/index.html',
-  Automation: '../docs/index.html',
-  'File tools': '../tools/index.html',
-  Trading: '../trader/index.html',
-  Pricing: '#pricing',
-  Docs: '../docs/index.html'
-};
-function SiteFooter() {
-  const col = (title, links) => /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement("div", {
-    style: {
-      fontSize: 12,
-      fontWeight: 600,
-      letterSpacing: '0.06em',
-      textTransform: 'uppercase',
-      color: 'var(--text-muted)'
-    }
-  }, title), /*#__PURE__*/React.createElement("div", {
-    style: {
-      display: 'flex',
-      flexDirection: 'column',
-      gap: 10,
-      marginTop: 14
-    }
-  }, links.map(l => /*#__PURE__*/React.createElement("a", {
-    key: l,
-    href: FOOTER_HREFS[l] || '#',
-    style: {
-      fontSize: 14,
-      color: 'var(--text-secondary)',
-      textDecoration: 'none'
-    }
-  }, l))));
-  return /*#__PURE__*/React.createElement("footer", {
-    style: {
-      borderTop: '1px solid var(--border-default)',
-      background: 'var(--sand-25)',
-      padding: '56px 0 40px'
-    }
-  }, /*#__PURE__*/React.createElement("div", {
-    style: {
-      ...wrap,
-      display: 'grid',
-      gridTemplateColumns: '2fr 1fr 1fr 1fr 1.4fr',
-      gap: 32
-    }
-  }, /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement("div", {
-    style: {
-      display: 'flex',
-      alignItems: 'center',
-      gap: 6
-    }
-  }, /*#__PURE__*/React.createElement("img", {
-    src: "../../assets/meridian-mark.svg",
-    alt: "",
-    style: {
-      width: 30,
-      height: 16
-    }
-  }), /*#__PURE__*/React.createElement("span", {
-    style: {
-      fontFamily: 'var(--font-display)',
-      fontWeight: 680,
-      letterSpacing: '-0.02em',
-      fontSize: 18
-    }
-  }, "Meridian")), /*#__PURE__*/React.createElement("p", {
-    style: {
-      fontSize: 13,
-      color: 'var(--text-muted)',
-      marginTop: 12,
-      maxWidth: 220,
-      lineHeight: 1.55
-    }
-  }, "The boring parts of SaaS, shipped for you. Made with care in Lagos & Lisbon.")), col('Platform', ['AI agents', 'Infrastructure', 'Automation', 'File tools', 'Trading', 'Pricing']), col('Company', ['About', 'Blog', 'Careers', 'Brand']), col('Resources', ['Docs', 'API status', 'Changelog', 'Support']), /*#__PURE__*/React.createElement(Newsletter, null)), /*#__PURE__*/React.createElement("div", {
-    style: {
-      ...wrap,
-      marginTop: 40,
-      paddingTop: 20,
-      borderTop: '1px solid var(--border-default)',
-      display: 'flex',
-      fontSize: 12,
-      color: 'var(--text-muted)'
-    }
-  }, /*#__PURE__*/React.createElement("span", null, "\xA9 2026 Meridian."), /*#__PURE__*/React.createElement("div", {
-    style: {
-      marginLeft: 'auto',
-      display: 'flex',
-      gap: 20
-    }
-  }, /*#__PURE__*/React.createElement("a", {
-    href: "#",
-    style: {
-      color: 'var(--text-muted)',
-      textDecoration: 'none'
-    }
-  }, "Privacy"), /*#__PURE__*/React.createElement("a", {
-    href: "#",
-    style: {
-      color: 'var(--text-muted)',
-      textDecoration: 'none'
-    }
-  }, "Terms"), /*#__PURE__*/React.createElement("a", {
-    href: "#",
-    style: {
-      color: 'var(--text-muted)',
-      textDecoration: 'none'
-    }
-  }, "Security"))));
-}
-})(); } catch (e) { __ds_ns.__errors.push({ path: "showcases/website/Sections.jsx", error: String((e && e.message) || e) }); }
 
 __ds_ns.AgentRun = __ds_scope.AgentRun;
 

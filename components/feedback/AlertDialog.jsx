@@ -109,6 +109,8 @@ export const AlertDialogContent = React.forwardRef(function AlertDialogContent({
   const handleKeyDown = event => {
     if (onKeyDown) onKeyDown(event);
     if (event.defaultPrevented || event.key !== 'Tab') return;
+    // focus inside a portaled child layer (a popover) is that layer's business
+    if (layer.children > 0 && !panelRef.current?.contains(document.activeElement)) return;
     const focusable = Array.from(panelRef.current?.querySelectorAll(FOCUSABLE) || []);
     if (!focusable.length) { event.preventDefault(); return; }
     const index = focusable.indexOf(document.activeElement);

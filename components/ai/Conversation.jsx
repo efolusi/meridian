@@ -9,6 +9,7 @@ const CSS = `
 .ef-conversation__jump:hover{color:var(--text-primary)}
 .ef-conversation__jump:focus-visible{outline:none;box-shadow:var(--focus-ring)}
 @keyframes ef-conversation-in{from{opacity:0;transform:translateX(-50%) translateY(4px)}}
+@media (pointer:coarse){.ef-conversation__jump{min-height:var(--tap-min)}}
 `;
 export const Conversation = React.forwardRef(function Conversation({ height = 420, autoStick = true, jumpLabel = 'Jump to latest', padding = 4, children, style, className, ...rest }, ref) {
   injectEfCss('ef-css-conversation', CSS);
