@@ -62,6 +62,16 @@ cmp --silent "$tracked_vhost" "$available" || {
   echo "[meridian-prod] runner must not mutate nginx configuration" >&2
   exit 75
 }
+# The vhost includes these; a missing or stale copy changes the served headers.
+for snippet in meridian-cors.conf meridian-security-headers.conf; do
+  installed="/etc/nginx/snippets/${snippet}"
+  if ! { [[ -f "$installed" && ! -L "$installed" && ! -w "$installed" ]] \
+    && [[ "$(stat -c '%U:%G:%a' "$installed")" == "root:root:644" ]] \
+    && cmp --silent "${repo_root}/nginx/snippets/${snippet}" "$installed"; }; then
+    echo "[meridian-prod] installed snippet ${snippet} is missing, not root:root 0644, or differs from tracked" >&2
+    exit 81
+  fi
+done
 
 # Validate the complete installed Nginx graph, including the real TLS include,
 # before changing the production release pointer. The sudoers entry is limited
