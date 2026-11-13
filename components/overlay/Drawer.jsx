@@ -40,7 +40,7 @@ function warnModalIgnored() {
   // production. Where nothing defines it, the read throws and we warn.
   try { if (process.env.NODE_ENV === 'production') return; } catch (e) { /* no build-time env */ }
   warnedModal = true;
-  console.warn('[meridian] <Drawer modal={false}> is deprecated and ignored: a Drawer is always modal. The prop will be removed in the next major version.');
+  console.warn('[meridian] <Drawer modal={false}> is deprecated and ignored: a Drawer is always modal. The prop will be removed in the next major version. Migration: https://meridian.efolusi.com/guidelines/migration.md');
 }
 
 export function Drawer({ open: controlled, defaultOpen = false, onOpenChange, direction = 'bottom', dismissible = true, modal = true, handleOnly = false, children }) {

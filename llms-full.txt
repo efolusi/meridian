@@ -2,7 +2,7 @@
 
 The entire design system in one file, generated from llms.txt, components/*/, and tokens/*.css by scripts/build_llms.py. Do not edit by hand. The short map of the repository is /llms.txt.
 
-> Meridian is a general-purpose open-source design system by Efolusi: 123 accessible React components, 170 design tokens (light, dark, compact), blocks, charts, and full example apps, served browser-native with zero build step. MIT licensed.
+> Meridian is a general-purpose open-source design system by Efolusi: 123 accessible React components, 175 design tokens (light, dark, compact), blocks, charts, and full example apps, served browser-native with zero build step. MIT licensed.
 
 Live docs: https://meridian.efolusi.com · Source: https://github.com/efolusi/meridian · License: MIT
 
@@ -1390,6 +1390,8 @@ Meridian's Chart family composes directly with Recharts 3. It does not wrap the 
 
 Give `ChartContainer` a measurable height or minimum height. Configure labels, icons, and either `color` or light/dark `theme` values in `ChartConfig`; reference them as `var(--color-KEY)` from Recharts.
 
+For series colours use the categorical tokens in order: `color: 'var(--chart-1)'`, then `--chart-2` and so on up to `--chart-5`. They already switch for dark mode, so `theme` is only needed for colours outside that set. Keep brand colours for UI, not for series. In light mode `--chart-3` and `--chart-5` sit under 3:1 on the card and page surfaces, so always render `ChartLegendContent` (or label series directly) rather than relying on colour alone.
+
 ```ts
 import type * as React from 'react';
 import type { DefaultLegendContentProps, DefaultTooltipContentProps, LegendProps, ResponsiveContainerProps, TooltipProps, TooltipValueType } from 'recharts';
@@ -1411,7 +1413,7 @@ export declare function ChartLegendContent(props: ChartLegendContentProps): Reac
 
 Group: data · Source: /components/data/DonutChart.jsx · Exports: DonutChart
 
-Donut with center figure + legend; hover highlights a slice. Colors default to the brand ramp.
+Donut with center figure + legend; hover highlights a slice. Slices take `--chart-1`..`--chart-5` in order; keep it to five slices and fold the rest into "Other".
 
 ```jsx
 <DonutChart centerValue="$8.4k" centerLabel="This month" data={[
@@ -4373,7 +4375,7 @@ A composable, gesture-dismissable surface for mobile details and short workflows
 
 Set `direction` on `Drawer`; bottom is the default and displays a drag handle. Set `dismissible={false}` for a decision that must be completed explicitly. Use Sheet for a non-gesture desktop side panel.
 
-`modal` is deprecated and ignored: a Drawer is always modal (scrim, focus trap, scroll lock). Passing `modal={false}` logs a development warning; the prop will be removed in the next major version.
+`modal` is deprecated and ignored: a Drawer is always modal (scrim, focus trap, scroll lock). Passing `modal={false}` logs a development warning; the prop will be removed in the next major version. Delete it; [guidelines/migration.md](../../guidelines/migration.md) has the details.
 
 ```ts
 import type * as React from 'react';
@@ -4385,7 +4387,10 @@ export interface DrawerProps {
   onOpenChange?: (open: boolean) => void;
   direction?: DrawerDirection;
   dismissible?: boolean;
-  /** @deprecated Ignored: a Drawer is always modal. Passing `false` logs a development warning; the prop will be removed in the next major version. */
+  /**
+   * @deprecated Ignored: a Drawer is always modal. Passing `false` logs a development warning; the prop will be removed in the next major version. Migration: https://meridian.efolusi.com/guidelines/migration.md
+   * @codemod remove
+   */
   modal?: boolean;
   handleOnly?: boolean;
   children?: React.ReactNode;
@@ -4615,7 +4620,7 @@ export declare const SheetDescription: React.ForwardRefExoticComponent<DialogSlo
 
 ## Design tokens
 
-170 custom property names by file (names only; resolve current values from /styles.css, which imports these files, or /tokens.json):
+175 custom property names by file (names only; resolve current values from /styles.css, which imports these files, or /tokens.json):
 
 ### /tokens/base.css
 
@@ -4648,6 +4653,11 @@ export declare const SheetDescription: React.ForwardRefExoticComponent<DialogSlo
 --brand-900
 --brand-950
 --caramel-500
+--chart-1
+--chart-2
+--chart-3
+--chart-4
+--chart-5
 --cocoa-700
 --cocoa-900
 --cocoa-950
@@ -4815,4 +4825,4 @@ export declare const SheetDescription: React.ForwardRefExoticComponent<DialogSlo
 
 - /llms.txt: the short map of this repository
 - /site/registry.json: machine-readable registry index; per-item install files in /site/registry/
-- /guidelines/: accessibility, forms, governance
+- /guidelines/: accessibility, forms, governance, migration

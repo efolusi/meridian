@@ -2,12 +2,17 @@
 
 ## Unreleased
 
+- **A migration guide lists every deprecation.** `guidelines/migration.md` has the policy and, for 2.0, the Drawer `modal` removal with before and after code. The Drawer warning and type link to it, and `npm run check` fails when a deprecation is missing from the guide.
+- **`meridian-guard --fix` removes ignored deprecated props.** It deletes Drawer `modal` from every call site Guard can see; JSON output marks fixable diagnostics with `fixable: true`.
 - **Element defaults no longer override components.** All of `tokens/base.css` now sits in `@layer meridian`, so a component's own spacing (for example the Questionnaire description) is no longer flattened by the global `p` and heading resets. The forced-colours focus outline stays unlayered on purpose.
 - **Dark mode follows the operating system when no theme is set.** With no `data-theme` on the page, a dark OS gets the dark tokens; `data-theme="light"` or `"dark"` still wins. The docs site now records the OS choice as an explicit theme.
 - **Less layout shift while the brand fonts load.** Metric-matched `Figtree Fallback` and `Bricolage Grotesque Fallback` faces sit right after each brand face.
 - **Reduced motion also removes animation and transition delays.**
 - **Dialogs reference a description only when one renders**, follow a custom description `id`, and keep a caller's own `aria-describedby`.
 - **Icons retry a dropped request twice** before giving up; a missing glyph (404) is still remembered.
+- **Charts get their own colour tokens.** `--chart-1` to `--chart-5` are a categorical palette (blue, orange, green, violet, pink) with separate dark-mode steps, checked for colour-blind separation. DonutChart uses them in order, and Chart configs should reference them for series. Brand colours stay for UI.
+- **The CDN install snippets carry SRI hashes.** The React, ReactDOM and Babel tags in the README, `hello.html`, the framework guide and the docs site now have `integrity` and `crossorigin="anonymous"`, and a new gate fails when a CDN tag lacks the pinned hash. The `meridian.efolusi.com` tags stay unhashed because they always serve the newest release.
+- **The docs list what each component costs.** A new Bundle size page (and `guidelines/bundle-size.md`) gives the minified and gzipped size of every npm deep import, including the Meridian modules it pulls in. `npm run check` regenerates it, so it cannot fall behind the sources.
 - **Example apps no longer wear the Meridian mark.** The fictional products in the showcases, starters and blocks (Fernwick, Northstar CRM, Ledgerroom, Waypoint Support) show their name as a plain text wordmark, and the hero's invented user count reads `[4,200+]` as a placeholder.
 - **Carousel and Slider work in right-to-left layouts in every engine.** In RTL, Carousel measured slides from the physical left edge, so a second Next jumped back to the first slide. Slider thumbs on a two-thumb range now sit where the fill ends, and the Left and Right arrows move a horizontal thumb toward the arrow in Safari too (WebKit moved it the other way in RTL). RTL is now checked in Chromium, Firefox and WebKit; see `guidelines/accessibility.md`.
 - **The hosted site sends security headers** (nosniff, HSTS, Referrer-Policy, `frame-ancestors 'self'`), allows cross-origin font and registry loads, and serves Markdown and `LICENSE` as plain text.

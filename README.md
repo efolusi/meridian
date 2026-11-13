@@ -1,6 +1,6 @@
 # Meridian
 
-**A general-purpose open-source design system by [Efolusi](https://efolusi.com).** 123 accessible React components, 170 design tokens in light, dark and compact, 12 blocks, and 8 full example apps, served browser-native with **no build step**.
+**A general-purpose open-source design system by [Efolusi](https://efolusi.com).** 123 accessible React components, 175 design tokens in light, dark and compact, 12 blocks, and 8 full example apps, served browser-native with **no build step**.
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-7A4E2B.svg)](LICENSE)
 [![Docs](https://img.shields.io/badge/docs-meridian.efolusi.com-2C1709.svg)](https://meridian.efolusi.com)
@@ -17,7 +17,7 @@ Warm paper, espresso ink, hairline structure. Copy it, theme it, ship it.
 - **The zero-build path comes first.** The four-tag CDN page never regresses for the sake of the npm build; where the two differ, the difference is deliberate and documented.
 - **Accessible by default.** WCAG 2.1 AA is the floor: visible focus, full keyboard paths, contrast in both themes, reduced motion respected. A component that takes an ARIA role implements that role's whole keyboard contract.
 - **Every claim is a check.** "Accessible", "reproducible" and "the types compile" are gates in `npm run check`, not adjectives.
-- **Deprecate, then remove in a major.** A renamed prop keeps working with a warning until the next major version ([governance](guidelines/governance.md#deprecation)).
+- **Deprecate, then remove in a major.** A renamed prop keeps working with a warning until the next major version ([governance](guidelines/governance.md#deprecation)). The [migration guide](guidelines/migration.md) lists every deprecation with before and after code.
 
 ## Quickstart
 
@@ -25,8 +25,8 @@ Four tags. No install, no bundler, no config: every component lands on one globa
 
 ```html
 <link rel="stylesheet" href="https://meridian.efolusi.com/styles.css">
-<script src="https://unpkg.com/react@18.3.1/umd/react.production.min.js"></script>
-<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.production.min.js"></script>
+<script src="https://unpkg.com/react@18.3.1/umd/react.production.min.js" integrity="sha384-DGyLxAyjq0f9SPpVevD6IgztCFlnMF6oW/XQGmfe+IsZ8TqEiDrcHkMLKI6fiB/Z" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.production.min.js" integrity="sha384-gTGxhz21lVGYNMcdJOyq01Edg0jhn/c22nsx0kyqP0TxaV5WVdsSH1fSDUf5YJj1" crossorigin="anonymous"></script>
 <script src="https://meridian.efolusi.com/_ds_bundle.js"></script>
 ```
 
@@ -39,6 +39,8 @@ const { Button, Card, CardContent, CardHeader, CardTitle, Stat } = window.Efolus
   <CardContent><Button onClick={save}>Save changes</Button></CardContent>
 </Card>
 ```
+
+The React tags carry Subresource Integrity hashes, so the browser refuses a file that changed on the CDN. The two `meridian.efolusi.com` tags have none: those URLs always serve the newest release, so a fixed hash would break on the next deploy. To pin every file, self-host `styles.css` and `_ds_bundle.js` from a release and add your own hashes.
 
 A complete runnable page is in [`hello.html`](hello.html). Open it in a browser; nothing else is required.
 
@@ -137,6 +139,7 @@ import '@efolusi/meridian/landing.css'
 - `guidelines/frameworks.md`: install and integration guides for Next.js, Vite, Remix, and the zero-build CDN path
 - `guidelines/accessibility.md`: focus rules, full keyboard map, contrast targets, per-component semantics
 - `guidelines/governance.md`: scope, semver rules, when a component belongs, do/don't, deprecation policy
+- `guidelines/migration.md`: what to change before the next major, with before and after code and Guard's `--fix`
 - `guidelines/compatibility.md`: migrating from another registry-based component set, and how compatibility is proven
 
 ## Component library

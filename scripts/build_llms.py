@@ -134,7 +134,7 @@ def main():
         "- /llms.txt: the short map of this repository\n"
         "- /site/registry.json: machine-readable registry index; "
         "per-item install files in /site/registry/\n"
-        "- /guidelines/: accessibility, forms, governance"
+        "- /guidelines/: accessibility, forms, governance, migration"
     )
 
     OUT.write_text("\n\n".join(parts) + "\n")

@@ -4,7 +4,7 @@ import path from 'node:path';
 import { spawnSync } from 'node:child_process';
 import { afterEach, describe, expect, it } from 'vitest';
 import contracts from '../packages/guard/src/generated/meridian-rules.json';
-import { guard, scanSource, scanStyleSource } from '../packages/guard/src/scanner.mjs';
+import { applyFixes, guard, scanSource, scanStyleSource } from '../packages/guard/src/scanner.mjs';
 import { formatJson, formatPretty } from '../packages/guard/src/reporter.mjs';
 
 const temporaryDirectories = [];
@@ -81,7 +81,60 @@ describe('Meridian Guard rules', () => {
   // next major, so every entry must name its prop and say when it goes.
   it('ships deprecated prop contracts only with a named prop and a next-major removal', () => {
     expect(contracts.deprecated.map(d => `${d.component}.${d.prop}`)).toEqual(['Drawer.modal']);
-    for (const d of contracts.deprecated) expect(d.message).toMatch(/next major/);
+    for (const d of contracts.deprecated) {
+      expect(d.message).toMatch(/next major/);
+      expect(d.message).toContain('guidelines/migration.md');
+      expect(d.message).not.toContain('@codemod');
+    }
+    expect(contracts.deprecated.find(d => d.prop === 'modal').codemod).toBe('remove');
+  });
+
+  it('removes ignored deprecated props with --fix and leaves the rest of the element alone', () => {
+    const source = `
+      import { Drawer as Panel } from '@efolusi/meridian';
+      import * as M from '@efolusi/meridian';
+      export const A = () => <Panel modal={false} direction="right">x</Panel>;
+      export const B = () => (
+        <M.Drawer
+          open
+          modal
+          onOpenChange={() => {}}
+        />
+      );
+      export const C = ({ keep }) => <Panel modal={keep} />;
+    `;
+    const diagnostics = scanSource(source, '/app/src/Example.jsx', contracts);
+    expect(diagnostics.map(item => [item.ruleId, Boolean(item.fix)])).toEqual([['MDG004', true], ['MDG004', true], ['MDG004', true]]);
+    const { output, applied } = applyFixes(source, diagnostics);
+    expect(applied).toBe(3);
+    expect(output).toContain('<Panel direction="right">x</Panel>');
+    expect(output).toContain('<M.Drawer\n          open\n          onOpenChange={() => {}}\n        />');
+    expect(output).toContain('<Panel />');
+    expect(scanSource(output, '/app/src/Example.jsx', contracts)).toEqual([]);
+  });
+
+  it('does not rewrite a modal prop on a component that is not Meridian Drawer', () => {
+    const source = `import { Drawer } from 'vaul'; export const A = () => <Drawer modal={false} />;`;
+    const diagnostics = scanSource(source, '/app/src/Example.jsx', contracts);
+    expect(applyFixes(source, diagnostics).output).toBe(source);
+  });
+
+  it('applies fixes in place from the CLI and reports them as fixable in JSON', async () => {
+    const directory = await fs.mkdtemp(path.join(os.tmpdir(), 'meridian-guard-fix-'));
+    temporaryDirectories.push(directory);
+    const sourceFile = path.join(directory, 'Example.jsx');
+    const binary = path.resolve('packages/guard/bin/meridian-guard.js');
+    await fs.writeFile(sourceFile, "import { Drawer } from '@efolusi/meridian'; export const A = () => <Drawer modal={false} />;");
+
+    const report = spawnSync(process.execPath, [binary, sourceFile, '--format', 'json'], { encoding: 'utf8' });
+    expect(report.status).toBe(1);
+    expect(JSON.parse(report.stdout).diagnostics).toEqual([expect.objectContaining({ ruleId: 'MDG004', fixable: true })]);
+    expect(report.stdout).not.toContain('"start"');
+
+    const fixed = spawnSync(process.execPath, [binary, sourceFile, '--fix'], { encoding: 'utf8' });
+    expect(fixed.status).toBe(0);
+    expect(fixed.stdout).toContain('fixed 1 issue(s)');
+    expect(await fs.readFile(sourceFile, 'utf8')).toBe("import { Drawer } from '@efolusi/meridian'; export const A = () => <Drawer />;");
   });
 
   it('enforces deterministic accessibility contracts', () => {

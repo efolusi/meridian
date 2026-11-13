@@ -1761,6 +1761,11 @@
     "brand-900",
     "brand-950",
     "caramel-500",
+    "chart-1",
+    "chart-2",
+    "chart-3",
+    "chart-4",
+    "chart-5",
     "cocoa-700",
     "cocoa-900",
     "cocoa-950",
@@ -1912,7 +1917,8 @@
       "component": "Drawer",
       "prop": "modal",
       "replacement": null,
-      "message": "@deprecated Ignored: a Drawer is always modal. Passing `false` logs a development warning; the prop will be removed in the next major version."
+      "message": "@deprecated Ignored: a Drawer is always modal. Passing `false` logs a development warning; the prop will be removed in the next major version. Migration: https://meridian.efolusi.com/guidelines/migration.md",
+      "codemod": "remove"
     }
   ]
 }

@@ -5,11 +5,12 @@ import { formatJson, formatPretty } from './reporter.mjs';
 const HELP = `Meridian Guard — validate React code against Meridian contracts
 
 Usage:
-  meridian-guard [path ...] [--format pretty|json] [--allow-empty]
+  meridian-guard [path ...] [--format pretty|json] [--allow-empty] [--fix]
 
 Options:
   --format <name>  Output format: pretty (default) or json
   --allow-empty    Pass when no supported source files are found
+  --fix            Rewrite files to apply safe fixes (removes ignored deprecated props)
   --help           Show this help
   --version        Show the Guard rule-pack version
 `;
@@ -18,10 +19,15 @@ function parseArgs(argv) {
   const paths = [];
   let format = 'pretty';
   let allowEmpty = false;
+  let fix = false;
   for (let index = 0; index < argv.length; index += 1) {
     const arg = argv[index];
     if (arg === '--help' || arg === '-h') return { help: true, paths, format };
     if (arg === '--version' || arg === '-v') return { version: true, paths, format };
+    if (arg === '--fix') {
+      fix = true;
+      continue;
+    }
     if (arg === '--allow-empty') {
       allowEmpty = true;
       continue;
@@ -39,7 +45,7 @@ function parseArgs(argv) {
     paths.push(arg);
   }
   if (!['pretty', 'json'].includes(format)) throw new Error(`unknown format ${format}`);
-  return { paths, format, allowEmpty };
+  return { paths, format, allowEmpty, fix };
 }
 
 export async function main(argv, io = process) {
@@ -55,7 +61,7 @@ export async function main(argv, io = process) {
   }
   const cwd = process.cwd();
   const targets = (options.paths.length ? options.paths : ['.']).map(target => path.resolve(cwd, target));
-  const result = await guard(targets, { contracts });
+  const result = await guard(targets, { contracts, fix: options.fix });
   if (result.filesScanned === 0 && !options.allowEmpty) {
     throw new Error('no supported JavaScript, TypeScript, or CSS source files found; check the target path or pass --allow-empty');
   }
