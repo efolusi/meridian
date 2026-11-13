@@ -26,6 +26,12 @@ const CSS = `
 
 function clamp(value, min, max) { return Math.max(min, Math.min(max, value)); }
 function asArray(value, fallback) { return Array.isArray(value) ? value : fallback; }
+// value + step in floating point gives 0.30000000000000004 for 0.2 + 0.1; round
+// to the step's decimals so keyboard steps land where a native step would.
+function stepFrom(value, delta, step) {
+  const decimals = (String(step).split('.')[1] || '').length;
+  return Number((value + delta).toFixed(decimals));
+}
 
 export const Slider = React.forwardRef(function Slider({ min = 0, max = 100, step = 1, value: valueProp, defaultValue, onValueChange, onValueCommit, disabled, orientation = 'horizontal', minStepsBetweenThumbs = 0, inverted = false, dir, style, className, ...rest }, forwardedRef) {
   injectEfCss('ef-css-slider', CSS);
@@ -86,7 +92,7 @@ export const Slider = React.forwardRef(function Slider({ min = 0, max = 100, ste
             // side in every engine, as Chromium does natively.
             const rtl = event.currentTarget.closest('[dir]')?.getAttribute('dir') === 'rtl';
             event.preventDefault();
-            update(index, value + ((event.key === 'ArrowRight') !== rtl ? step : -step));
+            update(index, stepFrom(value, (event.key === 'ArrowRight') !== rtl ? step : -step, step));
           }}
           onPointerUp={() => onValueCommit?.(latestRef.current)}
           onKeyUp={event => { if (['ArrowLeft', 'ArrowRight', 'ArrowUp', 'ArrowDown', 'Home', 'End', 'PageUp', 'PageDown'].includes(event.key)) onValueCommit?.(latestRef.current); }}

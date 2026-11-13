@@ -54,7 +54,7 @@ jobs:
       - uses: actions/setup-node@a0853c24544627f65ddf259abe73b1d18a591444 # v5.0.0
         with:
           node-version: '22.23.2'
-      # smoke_headless.mjs does `import { chromium } from 'playwright'`, so the
+      # smoke_headless.mjs imports from 'playwright', so the
       # package has to be resolvable from the repo. `npx --package=X node script`
       # does not put X on the module search path, which is why this job failed
       # silently for weeks while the gates job stayed green. Install it for real.

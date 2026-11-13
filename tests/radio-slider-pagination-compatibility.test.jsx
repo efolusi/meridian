@@ -63,6 +63,13 @@ describe('Slider compatibility contract', () => {
     expect(change).toHaveBeenLastCalledWith([50]);
   });
 
+  it('keeps fractional keyboard steps on the step grid', () => {
+    const change = vi.fn();
+    render(<Slider aria-label="Opacity" defaultValue={[0.2]} min={0} max={1} step={0.1} onValueChange={change} />);
+    fireEvent.keyDown(screen.getByRole('slider'), { key: 'ArrowRight' });
+    expect(change).toHaveBeenLastCalledWith([0.3]);
+  });
+
   it('supports vertical orientation, disabled state, and root refs', () => {
     const ref = React.createRef();
     const { container } = render(<Slider ref={ref} orientation="vertical" defaultValue={[25, 75]} disabled aria-label="Window" />);
