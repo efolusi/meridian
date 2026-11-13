@@ -13,9 +13,9 @@ CSS is not counted per component: `styles.css` ships every component style in on
 
 | File | Size | Gzip |
 | --- | ---: | ---: |
-| `@efolusi/meridian` | 346.3 kB | 77.6 kB |
+| `@efolusi/meridian` | 346.9 kB | 77.8 kB |
 | `dist/components.css` | 193.9 kB | 27.5 kB |
-| `_ds_bundle.js` | 783.9 kB | 138.6 kB |
+| `_ds_bundle.js` | 785.8 kB | 139.2 kB |
 
 The root import, `@efolusi/meridian`, is every component. `_ds_bundle.js` is the zero-build CDN bundle, which also carries each component's CSS. The root import is minified; the CSS and the CDN bundle are measured as shipped.
 
@@ -76,7 +76,7 @@ The root import, `@efolusi/meridian`, is every component. `_ds_bundle.js` is the
 | `display/Avatar.js` | Avatar, AvatarImage, AvatarFallback, AvatarBadge, AvatarGroup, AvatarGroupCount | 1.7 kB | 0.6 kB |
 | `display/Badge.js` | Badge | 0.9 kB | 0.5 kB |
 | `display/Card.js` | CardHeader, CardTitle, CardDescription, CardAction, CardContent, CardFooter, Card | 1.8 kB | 0.6 kB |
-| `display/Carousel.js` | Carousel, CarouselContent, CarouselItem, CarouselPrevious, CarouselNext | 48.6 kB | 8.9 kB |
+| `display/Carousel.js` | Carousel, CarouselContent, CarouselItem, CarouselPrevious, CarouselNext | 48.8 kB | 9.0 kB |
 | `display/Collapsible.js` | Collapsible, CollapsibleTrigger, CollapsibleContent | 2.8 kB | 1.0 kB |
 | `display/Direction.js` | DirectionProvider | 0.4 kB | 0.2 kB |
 | `display/Divider.js` | Divider | 0.8 kB | 0.4 kB |
@@ -121,7 +121,7 @@ The root import, `@efolusi/meridian`, is every component. `_ds_bundle.js` is the
 | `forms/Questionnaire.js` | Questionnaire, QuestionnaireProgress, QuestionnaireItem, QuestionnaireTitle, QuestionnaireDescription, QuestionnaireChoices, QuestionnaireChoice, QuestionnaireInput, QuestionnaireError, QuestionnaireActions, QuestionnairePrevious, QuestionnaireSkip, QuestionnaireNext, QuestionnaireSubmit | 7.2 kB | 2.4 kB |
 | `forms/Radio.js` | RadioGroup, RadioGroupItem, Radio | 2.3 kB | 1.0 kB |
 | `forms/Select.js` | Select, SelectTrigger, SelectValue, SelectContent, SelectGroup, SelectLabel, SelectSeparator, SelectItem | 50.6 kB | 9.8 kB |
-| `forms/Slider.js` | Slider | 2.5 kB | 1.2 kB |
+| `forms/Slider.js` | Slider | 2.8 kB | 1.4 kB |
 | `forms/Switch.js` | Switch | 2.0 kB | 0.9 kB |
 | `forms/Textarea.js` | Textarea | 45.0 kB | 7.6 kB |
 | `forms/Toggle.js` | Toggle, ToggleGroup, ToggleGroupItem | 2.7 kB | 1.2 kB |

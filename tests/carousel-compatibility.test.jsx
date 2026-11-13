@@ -74,6 +74,31 @@ describe('Carousel compatibility contract', () => {
     expect(onSelect).toHaveBeenCalled();
   });
 
+  it('measures RTL slides from the right edge, since offsetLeft is physical', () => {
+    const { container, getByRole } = render(
+      <Carousel aria-label="Featured work" dir="rtl">
+        <CarouselContent style={{ direction: 'rtl' }}>
+          <CarouselItem>One</CarouselItem>
+          <CarouselItem>Two</CarouselItem>
+          <CarouselItem>Three</CarouselItem>
+        </CarouselContent>
+        <CarouselNext />
+      </Carousel>,
+    );
+    const content = container.querySelector('[data-slot="carousel-content"]');
+    const parent = { clientWidth: 720 };
+    [...container.querySelectorAll('[data-slot="carousel-item"]')].forEach((slide, index) => {
+      Object.defineProperty(slide, 'offsetParent', { configurable: true, value: parent });
+      Object.defineProperty(slide, 'offsetWidth', { configurable: true, value: 240 });
+      Object.defineProperty(slide, 'offsetLeft', { configurable: true, value: 720 - 240 * (index + 1) });
+    });
+    content.scrollTo = vi.fn();
+    fireEvent.click(getByRole('button', { name: 'Next slide' }));
+    expect(content.scrollTo).toHaveBeenLastCalledWith({ left: -240, behavior: 'smooth' });
+    fireEvent.click(getByRole('button', { name: 'Next slide' }));
+    expect(content.scrollTo).toHaveBeenLastCalledWith({ left: -480, behavior: 'smooth' });
+  });
+
   it('supports vertical orientation, keyboard navigation, loop, and alignment', () => {
     const { container, getByRole } = render(<Example orientation="vertical" opts={{ align: 'center', loop: true }} />);
     const { content } = prepareOffsets(container, 'offsetTop');
