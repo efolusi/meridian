@@ -19,7 +19,9 @@ concurrency:
 
 jobs:
   gates:
-    runs-on: ${{ (github.event_name != 'pull_request' || github.event.pull_request.head.repo.full_name == github.repository) && fromJSON('["self-hosted","Linux","X64","efolusi-dev"]') || 'ubuntu-24.04' }}
+    # TEMPORARY (2026-11-13): GitHub-hosted while the single efolusi-dev runner
+    # is backed up; revert to the fork-aware self-hosted expression afterwards.
+    runs-on: ubuntu-24.04
     timeout-minutes: 30
     steps:
       - uses: actions/checkout@fbc6f3992d24b796d5a048ff273f7fcc4a7b6c09 # v5.1.0
@@ -38,7 +40,9 @@ jobs:
         run: npm run check
 
   smoke:
-    runs-on: ${{ (github.event_name != 'pull_request' || github.event.pull_request.head.repo.full_name == github.repository) && fromJSON('["self-hosted","Linux","X64","efolusi-dev"]') || 'ubuntu-24.04' }}
+    # TEMPORARY (2026-11-13): GitHub-hosted while the single efolusi-dev runner
+    # is backed up; revert to the fork-aware self-hosted expression afterwards.
+    runs-on: ubuntu-24.04
     timeout-minutes: 30
     env:
       # Browsers and their system libs come from the Playwright image: the
