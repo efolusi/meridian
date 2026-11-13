@@ -58,8 +58,8 @@ const P = ({ children }) => <p style={{ fontSize: 15.5, lineHeight: 1.7, color: 
 const CONTENT = {
   auth: { lede: 'Every request authenticates with a bearer key. Keys are workspace-scoped and environment-prefixed.', tags: [['clock', '3 min']], sections: [
     ['Key types', 'fw_live_ keys touch production; fw_test_ keys hit an isolated sandbox with the same shape. Create both in Console → Settings → API keys, and rotate quarterly. The old key keeps working for 24 hours after rotation.'],
-    ['Sending the header', 'Pass the key on every call. SDKs read EFOLUSI_API_KEY from the environment automatically.']],
-    code: ['bash', 'curl https://api.fernwick.example/v1/me \\\n  -H "Authorization: Bearer $EFOLUSI_API_KEY"'],
+    ['Sending the header', 'Pass the key on every call. SDKs read FERNWICK_API_KEY from the environment automatically.']],
+    code: ['bash', 'curl https://api.fernwick.example/v1/me \\\n  -H "Authorization: Bearer $FERNWICK_API_KEY"'],
     tip: ['Keep keys server-side', 'Never ship keys in browser code. Proxy through your backend instead.'] },
   errors: { lede: 'Errors are plain JSON with a stable code, a human message, and a hint that tells you how to fix it.', tags: [['clock', '2 min']], sections: [
     ['The shape', 'Every non-2xx response carries { code, message, hint }. Codes are stable across versions; messages may improve over time, so parse codes and show messages.'],
