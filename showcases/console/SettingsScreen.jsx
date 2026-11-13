@@ -58,13 +58,13 @@ function MembersTab({ notify }) {
   );
 }
 
-const SEED_KEYS = [['Production', 'ef_live_…8f2a', 'Jul 2, 2026', true], ['Staging', 'ef_test_…c91d', 'May 14, 2026', false]];
+const SEED_KEYS = [['Production', 'fw_live_…8f2a', 'Jul 2, 2026', true], ['Staging', 'fw_test_…c91d', 'May 14, 2026', false]];
 function ApiTab({ notify }) {
   const [keys, setKeys] = React.useState(SEED_KEYS);
   const [confirm, setConfirm] = React.useState(false);
   const createKey = () => {
     const n = ['Preview', 'CI', 'Local dev'][keys.length - 2] || 'Key ' + keys.length;
-    setKeys(k => [...k, [n, 'ef_test_…' + Math.random().toString(16).slice(2, 6), 'Jul 16, 2026', false]]);
+    setKeys(k => [...k, [n, 'fw_test_…' + Math.random().toString(16).slice(2, 6), 'Jul 16, 2026', false]]);
     notify('Key created', 'Copy it now. We only show it once.');
   };
   return (

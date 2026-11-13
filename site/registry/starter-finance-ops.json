@@ -21,7 +21,7 @@
       "path": "starters/finance-ops/README.md",
       "type": "registry:page",
       "target": "starters/finance-ops/README.md",
-      "content": "# Finance operations \u2014 starter journey\n\nCopyable finance-team journey: cash-flow map \u2192 transactions \u2192 reconciliation. It presents operational sample records without asserting fictional company metrics.\n\n- `Cashflow.dc.html` \u2014 spatial map from collection accounts through controls to destinations\n- `Transactions.dc.html` \u2014 reviewable transaction index\n- `Reconciliation.dc.html` \u2014 staged close workflow with ownership and evidence\n\nCopy this whole folder, then change the single `base` line in `ds-base.js` to point at your Meridian root.\n\n"
+      "content": "# Finance operations \u2014 starter journey\n\nCopyable finance-team journey: cash-flow map \u2192 transactions \u2192 reconciliation. It presents operational sample records without asserting fictional company metrics.\n\n- `Cashflow.dc.html` \u2014 spatial map from collection accounts through controls to destinations\n- `Transactions.dc.html` \u2014 reviewable transaction index\n- `Reconciliation.dc.html` \u2014 staged close workflow with ownership and evidence\n\nCopy this whole folder, then change the single `base` line in `ds-base.js` to point at your Meridian root.\n\nSibling journeys: none. Every link stays inside this folder, so it can be copied alone.\n"
     },
     {
       "path": "starters/finance-ops/Reconciliation.dc.html",

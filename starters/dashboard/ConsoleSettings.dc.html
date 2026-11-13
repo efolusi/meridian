@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="utf-8"><title>Settings | Meridian</title>
+<meta charset="utf-8"><title>Settings | Fernwick</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <script src="./support.js"></script>
 </head>
@@ -11,7 +11,7 @@
 <div class="console-shell" data-theme="{{ theme }}" data-density="{{ density }}" style="min-height:100vh;background:var(--surface-page);color:var(--text-primary);font-family:var(--font-sans)">
 <header style="view-transition-name:shell-top;display:flex;align-items:center;gap:12px;height:60px;padding:0 24px;border-bottom:1px solid var(--border-default)">
 <svg viewBox="0 0 62 33" fill="currentColor" aria-hidden="true" focusable="false" style="width:30px;height:16px;margin-right:-6px"><path d="M16.9 3h9.2c1.1 0 1.7 1.1 1.1 2L13.5 29.5c-.3.6-.9.9-1.6.9H2.8c-1.1 0-1.7-1.1-1.1-2L15.3 3.9c.3-.6.9-.9 1.6-.9Z"></path><path transform="translate(17)" d="M16.9 3h9.2c1.1 0 1.7 1.1 1.1 2L13.5 29.5c-.3.6-.9.9-1.6.9H2.8c-1.1 0-1.7-1.1-1.1-2L15.3 3.9c.3-.6.9-.9 1.6-.9Z"></path><path transform="translate(34)" d="M16.9 3h9.2c1.1 0 1.7 1.1 1.1 2L13.5 29.5c-.3.6-.9.9-1.6.9H2.8c-1.1 0-1.7-1.1-1.1-2L15.3 3.9c.3-.6.9-.9 1.6-.9Z"></path></svg>
-<span style="font-family:var(--font-display);font-weight:680;letter-spacing:-0.02em;font-size:19px">Meridian</span>
+<span style="font-family:var(--font-display);font-weight:680;letter-spacing:-0.02em;font-size:19px">Fernwick</span>
 <span style="font-size:14px;color:var(--text-muted)">Console</span>
 <nav style="display:flex;gap:2px;margin-left:16px">
 <a href="./Dashboard.dc.html" style="padding:6px 12px;border-radius:var(--radius-sm);font-size:14px;font-weight:500;color:var(--text-secondary);text-decoration:none" style-hover="background:var(--surface-sunken);color:var(--text-primary)">Overview</a>
@@ -31,15 +31,15 @@
 <div style="background:var(--surface-card);border:1px solid var(--border-default);border-radius:var(--radius-md)">
 <div style="padding:16px 20px;border-bottom:1px solid var(--border-default);font-size:16px;font-weight:600">Workspace</div>
 <div style="padding:20px;display:flex;flex-direction:column;gap:16px">
-<x-import component-from-global-scope="EfolusiDesignSystem_4ffc3d.Input" label="Workspace name" placeholder="Meridian, Inc." hint-size="100%,64px"></x-import>
-<x-import component-from-global-scope="EfolusiDesignSystem_4ffc3d.Input" label="Billing email" placeholder="finance@efolusi.com" icon-left="mail" hint-size="100%,64px"></x-import>
+<x-import component-from-global-scope="EfolusiDesignSystem_4ffc3d.Input" label="Workspace name" placeholder="Fernwick, Inc." hint-size="100%,64px"></x-import>
+<x-import component-from-global-scope="EfolusiDesignSystem_4ffc3d.Input" label="Billing email" placeholder="finance@fernwick.example" icon-left="mail" hint-size="100%,64px"></x-import>
 <div><x-import component-from-global-scope="EfolusiDesignSystem_4ffc3d.Button" variant="secondary" size="sm" hint-size="110px,32px">Save changes</x-import></div>
 </div>
 </div>
 <div style="background:var(--surface-card);border:1px solid var(--border-default);border-radius:var(--radius-md)">
 <div style="padding:16px 20px;border-bottom:1px solid var(--border-default);font-size:16px;font-weight:600">API keys</div>
 <div style="padding:20px;display:flex;flex-direction:column;gap:12px">
-<x-import component-from-global-scope="EfolusiDesignSystem_4ffc3d.CopyField" label="Production key" value="ef_live_9a41kzt3m8q2c2d8" secret="{{ true }}" hint-size="100%,64px"></x-import>
+<x-import component-from-global-scope="EfolusiDesignSystem_4ffc3d.CopyField" label="Production key" value="fw_live_9a41kzt3m8q2c2d8" secret="{{ true }}" hint-size="100%,64px"></x-import>
 <div style="display:flex;align-items:center;gap:12px">
 <x-import component-from-global-scope="EfolusiDesignSystem_4ffc3d.Button" variant="secondary" size="sm" icon-left="refresh-cw" hint-size="100px,32px">Rotate</x-import>
 <span style="font-size:12.5px;color:var(--text-muted)">Last rotated 12 days ago by Femi Alade</span>
@@ -51,17 +51,17 @@
 <div style="display:flex;flex-direction:column">
 <div style="display:flex;align-items:center;gap:12px;padding:14px 20px;border-bottom:1px solid var(--border-default)">
 <span style="width:28px;height:28px;border-radius:999px;background:var(--brand-950);color:var(--brand-50);display:grid;place-items:center;font-size:11px;font-weight:600">AO</span>
-<span><span style="display:block;font-size:14px;font-weight:600">Ada Obi</span><span style="display:block;font-size:12.5px;color:var(--text-muted)">ada@efolusi.com</span></span>
+<span><span style="display:block;font-size:14px;font-weight:600">Ada Obi</span><span style="display:block;font-size:12.5px;color:var(--text-muted)">ada@fernwick.example</span></span>
 <span style="margin-left:auto;font-size:13px;color:var(--text-secondary)">Owner</span>
 </div>
 <div style="display:flex;align-items:center;gap:12px;padding:14px 20px;border-bottom:1px solid var(--border-default)">
 <span style="width:28px;height:28px;border-radius:999px;background:var(--brand-950);color:var(--brand-50);display:grid;place-items:center;font-size:11px;font-weight:600">FA</span>
-<span><span style="display:block;font-size:14px;font-weight:600">Femi Alade</span><span style="display:block;font-size:12.5px;color:var(--text-muted)">femi@efolusi.com</span></span>
+<span><span style="display:block;font-size:14px;font-weight:600">Femi Alade</span><span style="display:block;font-size:12.5px;color:var(--text-muted)">femi@fernwick.example</span></span>
 <span style="margin-left:auto;font-size:13px;color:var(--text-secondary)">Admin</span>
 </div>
 <div style="display:flex;align-items:center;gap:12px;padding:14px 20px">
 <span style="width:28px;height:28px;border-radius:999px;background:var(--brand-950);color:var(--brand-50);display:grid;place-items:center;font-size:11px;font-weight:600">JP</span>
-<span><span style="display:block;font-size:14px;font-weight:600">June Park</span><span style="display:block;font-size:12.5px;color:var(--text-muted)">june@efolusi.com</span></span>
+<span><span style="display:block;font-size:14px;font-weight:600">June Park</span><span style="display:block;font-size:12.5px;color:var(--text-muted)">june@fernwick.example</span></span>
 <span style="margin-left:auto;font-size:13px;color:var(--text-secondary)">Member</span>
 </div>
 </div>

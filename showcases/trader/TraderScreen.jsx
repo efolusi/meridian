@@ -26,6 +26,7 @@ function TraderScreen() {
               <a href="../console/index.html" title="Back to Console" style={{ display: 'inline-flex' }}><img src="../../assets/meridian-mark.svg" alt="" style={{ width: 30, height: 16 }} /></a>
               <h1 style={{ fontSize: 24, fontWeight: 680 }}>Trading</h1>
               <StatusDot status={auto ? 'busy' : 'off'} pulse={auto} label={auto ? 'Robot active' : 'Robot paused'} />
+              <Badge variant="secondary">Sample data</Badge>
             </div>
             <div style={{ display: 'flex', alignItems: 'baseline', gap: 12, marginTop: 16 }}>
               <span style={{ fontFamily: 'var(--font-mono)', fontSize: 40, fontWeight: 600, letterSpacing: '-0.01em' }}>€24,318.90</span>

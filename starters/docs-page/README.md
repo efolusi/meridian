@@ -7,3 +7,5 @@ Copyable documentation journey: quickstart → authentication → errors. Copy t
 - `Errors.dc.html` — reference tables
 
 Showcase twin: `showcases/docs/` covers the same category as a plain JSX screen you can lift into a React app. When the layout changes in one, update the other.
+
+Sibling journeys: none. Every link stays inside this folder, so it can be copied alone.

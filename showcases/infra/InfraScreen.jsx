@@ -8,13 +8,13 @@ const RESOURCES = [
   { id: 'k8s', name: 'render-cluster', kind: 'Kubernetes', icon: 'server', region: 'us-east-1', status: 'ok', latency: '61 ms' },
 ];
 const DOMAINS = [
-  { id: 'apex', name: 'efolusi.com', kind: 'A record', icon: 'globe', region: '—', status: 'ok', latency: '76.76.21.21' },
-  { id: 'app', name: 'app.efolusi.com', kind: 'CNAME', icon: 'globe', region: '—', status: 'err', latency: 'missing' },
-  { id: 'docs', name: 'docs.efolusi.com', kind: 'CNAME', icon: 'book-open', region: '—', status: 'ok', latency: 'edge.efolusi.com' },
+  { id: 'apex', name: 'fernwick.example', kind: 'A record', icon: 'globe', region: '—', status: 'ok', latency: '76.76.21.21' },
+  { id: 'app', name: 'app.fernwick.example', kind: 'CNAME', icon: 'globe', region: '—', status: 'err', latency: 'missing' },
+  { id: 'docs', name: 'docs.fernwick.example', kind: 'CNAME', icon: 'book-open', region: '—', status: 'ok', latency: 'edge.fernwick.example' },
 ];
 const CERTS = [
-  { id: 'c1', name: '*.efolusi.com', kind: 'Wildcard', icon: 'shield-check', region: 'Auto-renews', status: 'ok', latency: 'Oct 2, 2026' },
-  { id: 'c2', name: 'pay.efolusi.com', kind: 'Single', icon: 'shield-check', region: 'Manual', status: 'warn', latency: 'Jul 29, 2026' },
+  { id: 'c1', name: '*.fernwick.example', kind: 'Wildcard', icon: 'shield-check', region: 'Auto-renews', status: 'ok', latency: 'Oct 2, 2026' },
+  { id: 'c2', name: 'pay.fernwick.example', kind: 'Single', icon: 'shield-check', region: 'Manual', status: 'warn', latency: 'Jul 29, 2026' },
 ];
 const STATUS_LABEL = { ok: 'Healthy', warn: 'Degraded', err: 'Action needed' };
 const COLS_LAST = { resources: 'Latency', domains: 'Value', certificates: 'Expires' };
@@ -37,6 +37,7 @@ function InfraScreen() {
             <a href="../console/index.html" title="Back to Console" style={{ display: 'inline-flex' }}><img src="../../assets/meridian-mark.svg" alt="" style={{ width: 30, height: 16 }} /></a>
             <h1 style={{ fontSize: 24, fontWeight: 680 }}>Infrastructure</h1>
             <StatusDot status="warn" pulse label="1 incident" />
+            <Badge variant="secondary">Sample data</Badge>
             <div style={{ marginLeft: 'auto', display: 'flex', gap: 8 }}>
               <Button variant="secondary" iconLeft="terminal" onClick={() => setCli(true)}>Open CLI</Button>
               <Button iconLeft="plus" onClick={() => setConnect(true)}>Connect resource</Button>
@@ -77,7 +78,7 @@ function InfraScreen() {
               { label: COLS_LAST[tab], value: sel.latency, mono: true },
               { label: 'Connected', value: 'May 3, 2026' },
             ]} />
-            <CopyField label="Connection string" value={'efolusi://' + sel.id + '@edge.efolusi.com'} secret />
+            <CopyField label="Connection string" value={'fernwick://' + sel.id + '@edge.fernwick.example'} secret />
             <div>
               <div style={{ fontSize: 13, fontWeight: 600, marginBottom: 8 }}>Recent activity</div>
               <Terminal maxHeight={160} lines={[
@@ -90,20 +91,20 @@ function InfraScreen() {
         )}
         {sel && <DrawerFooter><DrawerClose asChild><Button variant="ghost">Close</Button></DrawerClose><Button variant="danger" iconLeft="plug" onClick={() => { notify(sel.name + ' disconnected', 'The tunnel closed cleanly.'); setSel(null); }}>Disconnect</Button></DrawerFooter>}
       </DrawerContent></Drawer>
-      <Dialog open={connect} onOpenChange={setConnect}><DialogContent><DialogHeader><DialogTitle>Connect a resource</DialogTitle><DialogDescription>Meridian talks to it through an encrypted tunnel. Nothing is stored.</DialogDescription></DialogHeader><div className="ef-dialog__body"><div style={{ display: 'flex', flexDirection: 'column', gap: 14 }}>
+      <Dialog open={connect} onOpenChange={setConnect}><DialogContent><DialogHeader><DialogTitle>Connect a resource</DialogTitle><DialogDescription>Fernwick talks to it through an encrypted tunnel. Nothing is stored.</DialogDescription></DialogHeader><div className="ef-dialog__body"><div style={{ display: 'flex', flexDirection: 'column', gap: 14 }}>
           <Field><FieldLabel htmlFor="connection-kind">Kind</FieldLabel><NativeSelect id="connection-kind">{['PostgreSQL', 'MySQL', 'Redis', 'SSH host', 'Kubernetes', 'AWS account', 'Domain / DNS'].map(value => <NativeSelectOption key={value} value={value}>{value}</NativeSelectOption>)}</NativeSelect></Field>
           <Input label="Host" placeholder="db.internal.acme.co:5432" iconLeft="server" />
           <Field><FieldLabel htmlFor="connection-region">Region</FieldLabel><NativeSelect id="connection-region">{['eu-west-1', 'us-east-1', 'fra1', 'sgp1'].map(value => <NativeSelectOption key={value} value={value}>{value}</NativeSelectOption>)}</NativeSelect></Field>
         </div></div><DialogFooter><DialogClose asChild><Button variant="ghost">Cancel</Button></DialogClose><Button iconRight="arrow-right" onClick={() => { setConnect(false); setTab('resources'); setExtra(x => [...x, { id: 'new' + x.length, name: 'db-replica-' + (x.length + 1), kind: 'PostgreSQL', icon: 'database', region: 'eu-west-1', status: 'ok', latency: '41 ms' }]); notify('Tunnel created', 'db-replica is connected and healthy.'); }}>Create tunnel</Button></DialogFooter></DialogContent></Dialog>
-      <Drawer open={cli} onOpenChange={setCli} direction="right"><DrawerContent style={{ width: 480 }}><DrawerHeader><DrawerTitle>Meridian CLI</DrawerTitle><DrawerDescription>Install commands and live infrastructure output.</DrawerDescription></DrawerHeader>
+      <Drawer open={cli} onOpenChange={setCli} direction="right"><DrawerContent style={{ width: 480 }}><DrawerHeader><DrawerTitle>Fernwick CLI</DrawerTitle><DrawerDescription>Install commands and live infrastructure output.</DrawerDescription></DrawerHeader>
         <div style={{ display: 'flex', flexDirection: 'column', gap: 14, padding: 20 }}>
-          <CopyField label="Install" value="curl -fsSL cli.efolusi.com | sh" />
+          <CopyField label="Install" value="curl -fsSL cli.fernwick.example | sh" />
           <Terminal host="ada@acme-workspace" live maxHeight={280} lines={[
-            { type: 'cmd', text: 'efolusi infra ls' },
+            { type: 'cmd', text: 'fernwick infra ls' },
             { type: 'out', text: '14 resources \u00b7 3 regions \u00b7 1 degraded' },
-            { type: 'cmd', text: 'efolusi infra logs worker-04 --tail' },
+            { type: 'cmd', text: 'fernwick infra logs worker-04 --tail' },
             { type: 'err', text: '\u2717 p95 812ms (baseline 190ms)', time: '09:41:12' },
-            { type: 'info', text: 'Suggestion: drain + restart with efolusi infra restart worker-04', time: '09:41:12' },
+            { type: 'info', text: 'Suggestion: drain + restart with fernwick infra restart worker-04', time: '09:41:12' },
           ]} />
         </div>
         <DrawerFooter><DrawerClose asChild><Button variant="secondary">Close</Button></DrawerClose></DrawerFooter></DrawerContent></Drawer>

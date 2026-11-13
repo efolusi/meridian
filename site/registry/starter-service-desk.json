@@ -21,7 +21,7 @@
       "path": "starters/service-desk/README.md",
       "type": "registry:page",
       "target": "starters/service-desk/README.md",
-      "content": "# Service desk \u2014 starter journey\n\nCopyable support-operations journey: triage queue \u2192 ticket catalogue \u2192 incident record. Sample tickets avoid fictional performance claims and keep ownership, urgency, and audit context visible.\n\n- `Queue.dc.html` \u2014 live triage workspace with next-action context\n- `Tickets.dc.html` \u2014 filterable ticket catalogue\n- `TicketDetail.dc.html` \u2014 complete incident record and response timeline\n\nCopy this whole folder, then change the single `base` line in `ds-base.js` to point at your Meridian root.\n\n"
+      "content": "# Service desk \u2014 starter journey\n\nCopyable support-operations journey: triage queue \u2192 ticket catalogue \u2192 incident record. Sample tickets avoid fictional performance claims and keep ownership, urgency, and audit context visible.\n\n- `Queue.dc.html` \u2014 live triage workspace with next-action context\n- `Tickets.dc.html` \u2014 filterable ticket catalogue\n- `TicketDetail.dc.html` \u2014 complete incident record and response timeline\n\nCopy this whole folder, then change the single `base` line in `ds-base.js` to point at your Meridian root.\n\nSibling journeys: none. Every link stays inside this folder, so it can be copied alone.\n"
     },
     {
       "path": "starters/service-desk/TicketDetail.dc.html",
