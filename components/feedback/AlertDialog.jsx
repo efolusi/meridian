@@ -1,5 +1,5 @@
 import React from 'react';
-import { injectEfCss, mergeRefs, buttonVariants } from '../forms/Button.jsx';
+import { injectEfCss, mergeRefs, buttonVariants, useIsoLayoutEffect } from '../forms/Button.jsx';
 import { Portal, useEscapeLayer, useScrollLock, escapeLayerContext } from '../overlay/Portal.jsx';
 
 const CSS = `
@@ -59,7 +59,9 @@ export function AlertDialog({ open, defaultOpen = false, onOpenChange, children 
     if (!controlled) setInternalOpen(next);
     if (onOpenChange) onOpenChange(next);
   }, [controlled, onOpenChange]);
-  const value = React.useMemo(() => ({ open: isOpen, setOpen, triggerRef, titleId, descriptionId }), [isOpen, setOpen, titleId, descriptionId]);
+  // the id of the Description actually rendered, so aria-describedby never points at nothing
+  const [describedBy, setDescribedBy] = React.useState(undefined);
+  const value = React.useMemo(() => ({ open: isOpen, setOpen, triggerRef, titleId, descriptionId, describedBy, setDescribedBy }), [isOpen, setOpen, titleId, descriptionId, describedBy]);
   return <AlertDialogContext.Provider value={value}>{children}</AlertDialogContext.Provider>;
 }
 
@@ -120,7 +122,7 @@ export const AlertDialogContent = React.forwardRef(function AlertDialogContent({
   return (
     <AlertDialogPortal forceMount={forceMount}>
       <AlertDialogOverlay forceMount={forceMount}>
-        <div {...rest} ref={mergeRefs(ref, panelRef)} role="alertdialog" aria-modal="true" aria-labelledby={ctx.titleId} aria-describedby={ctx.descriptionId}
+        <div {...rest} ref={mergeRefs(ref, panelRef)} role="alertdialog" aria-modal="true" aria-labelledby={ctx.titleId} aria-describedby={rest['aria-describedby'] ?? ctx.describedBy}
           tabIndex={-1} data-slot="alert-dialog-content" data-state={ctx.open ? 'open' : 'closed'} data-size={size}
           className={`ef-alertdialog__content ef-alertdialog__content--${size}${className ? ' ' + className : ''}`} onKeyDown={handleKeyDown}>
           <escapeLayerContext.Provider value={layer}>{children}</escapeLayerContext.Provider>
@@ -149,7 +151,10 @@ export const AlertDialogTitle = React.forwardRef(function AlertDialogTitle({ cla
 
 export const AlertDialogDescription = React.forwardRef(function AlertDialogDescription({ className, ...rest }, ref) {
   const ctx = useAlertDialog('AlertDialogDescription');
-  return <p {...rest} ref={ref} id={rest.id || ctx.descriptionId} data-slot="alert-dialog-description" className={`ef-alertdialog__description${className ? ' ' + className : ''}`} />;
+  const resolved = rest.id || ctx.descriptionId;
+  const register = ctx.setDescribedBy;
+  useIsoLayoutEffect(() => { register(resolved); return () => register(undefined); }, [register, resolved]);
+  return <p {...rest} ref={ref} id={resolved} data-slot="alert-dialog-description" className={`ef-alertdialog__description${className ? ' ' + className : ''}`} />;
 });
 
 function createAction(name, slot, variant, closes) {
