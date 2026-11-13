@@ -8,6 +8,7 @@
 - **Reduced motion also removes animation and transition delays.**
 - **Dialogs reference a description only when one renders**, follow a custom description `id`, and keep a caller's own `aria-describedby`.
 - **Icons retry a dropped request twice** before giving up; a missing glyph (404) is still remembered.
+- **The docs list what each component costs.** A new Bundle size page (and `guidelines/bundle-size.md`) gives the minified and gzipped size of every npm deep import, including the Meridian modules it pulls in. `npm run check` regenerates it, so it cannot fall behind the sources.
 - **The hosted site sends security headers** (nosniff, HSTS, Referrer-Policy, `frame-ancestors 'self'`), allows cross-origin font and registry loads, and serves Markdown and `LICENSE` as plain text.
 
 ## 1.22.0 — 2026-11-13

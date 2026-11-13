@@ -9,7 +9,7 @@
 //
 // DOCS is a maintained list here (its true source is the DCLogic runtime inside
 // Docs.dc.html; lifting it out would mean refactoring that page's runtime, which
-// is out of proportion for a nine-item list). Keeping it in nav.json still removes
+// is out of proportion for a ten-item list). Keeping it in nav.json still removes
 // the second hand-authored copy that used to live in SiteSearch.jsx.
 //
 //   node scripts/build_site_nav.mjs          # write site/nav.json
@@ -39,7 +39,8 @@ const LABEL_OVERRIDE = { DsSite: 'Home' }; // its <title> is the tagline, not a 
 
 // Docs sections — id (Docs.dc.html anchor) and its label. One maintained copy.
 const DOCS = [
-  ['introduction', 'Introduction'], ['installation', 'Installation'], ['theming', 'Theming'],
+  ['introduction', 'Introduction'], ['installation', 'Installation'], ['bundle-size', 'Bundle size'],
+  ['theming', 'Theming'],
   ['dark-mode', 'Dark mode & density'], ['typography', 'Typography'], ['monorepo', 'Repository'],
   ['ai', 'AI & skills'], ['contributing', 'Contributing'], ['changelog', 'Changelog'],
 ];
