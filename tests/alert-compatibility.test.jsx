@@ -63,3 +63,16 @@ describe('Alert compatibility contract', () => {
     expect(actionRef.current.getAttribute('data-slot')).toBe('alert-action');
   });
 });
+
+describe('Alert action layout contract', () => {
+  it('lays the action out in the grid instead of floating it over the text', async () => {
+    const source = await import('node:fs').then((fs) => fs.readFileSync('components/feedback/Alert.jsx', 'utf8'));
+    // The action was absolutely positioned with a fixed right padding, which any
+    // action wider than 96px overflowed onto the description.
+    expect(source).not.toMatch(/ef-alert__action\{position:absolute/);
+    expect(source).not.toMatch(/padding-inline-end:96px/);
+    expect(source).toMatch(/\.ef-alert>\.ef-alert__action\{grid-column:3;grid-row:1\/3/);
+    // Below 560px the action drops under the text as a full-width row.
+    expect(source).toMatch(/@media \(max-width:559px\)\{[^}]*\.ef-alert:has\(>\.ef-alert__action\)\{grid-template-columns:0 1fr\}/);
+  });
+});
