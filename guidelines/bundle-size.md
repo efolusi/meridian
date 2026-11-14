@@ -13,9 +13,9 @@ CSS is not counted per component: `styles.css` ships every component style in on
 
 | File | Size | Gzip |
 | --- | ---: | ---: |
-| `@efolusi/meridian` | 346.9 kB | 77.8 kB |
+| `@efolusi/meridian` | 347.2 kB | 78.0 kB |
 | `dist/components.css` | 193.9 kB | 27.5 kB |
-| `_ds_bundle.js` | 786.6 kB | 139.4 kB |
+| `_ds_bundle.js` | 787.9 kB | 139.7 kB |
 
 The root import, `@efolusi/meridian`, is every component. `_ds_bundle.js` is the zero-build CDN bundle, which also carries each component's CSS. The root import is minified; the CSS and the CDN bundle are measured as shipped.
 
@@ -88,7 +88,7 @@ The root import, `@efolusi/meridian`, is every component. `_ds_bundle.js` is the
 | `display/Separator.js` | Separator | 0.6 kB | 0.4 kB |
 | `display/Tag.js` | Tag | 44.4 kB | 7.3 kB |
 | `display/Timeline.js` | Timeline | 44.9 kB | 7.4 kB |
-| `display/Toolbar.js` | Toolbar | 48.8 kB | 9.0 kB |
+| `display/Toolbar.js` | Toolbar | 48.9 kB | 9.1 kB |
 | `display/TreeList.js` | TreeList | 45.1 kB | 7.6 kB |
 | `feedback/Alert.js` | Alert, AlertTitle, AlertDescription, AlertAction | 1.1 kB | 0.5 kB |
 | `feedback/AlertDialog.js` | AlertDialog, AlertDialogTrigger, AlertDialogPortal, AlertDialogOverlay, AlertDialogContent, AlertDialogHeader, AlertDialogFooter, AlertDialogMedia, AlertDialogTitle, AlertDialogDescription, AlertDialogCancel, AlertDialogAction | 6.6 kB | 2.3 kB |
@@ -99,7 +99,7 @@ The root import, `@efolusi/meridian`, is every component. `_ds_bundle.js` is the
 | `feedback/Progress.js` | Progress | 1.4 kB | 0.7 kB |
 | `feedback/Spinner.js` | Spinner | 0.7 kB | 0.4 kB |
 | `feedback/Toast.js` | Toaster | 48.5 kB | 9.0 kB |
-| `feedback/Tooltip.js` | Tooltip, TooltipProvider, TooltipTrigger, TooltipContent | 4.7 kB | 1.9 kB |
+| `feedback/Tooltip.js` | Tooltip, TooltipProvider, TooltipTrigger, TooltipContent | 4.8 kB | 1.9 kB |
 | `files/Attachment.js` | Attachment, AttachmentMedia, AttachmentContent, AttachmentTitle, AttachmentDescription, AttachmentActions, AttachmentAction, AttachmentTrigger, AttachmentGroup | 46.7 kB | 7.9 kB |
 | `files/FileDrop.js` | FileDrop | 45.2 kB | 7.8 kB |
 | `files/FileTile.js` | FileTile | 46.8 kB | 8.2 kB |
@@ -142,7 +142,7 @@ The root import, `@efolusi/meridian`, is every component. `_ds_bundle.js` is the
 | `overlay/ContextMenu.js` | ContextMenu, ContextMenuTrigger, ContextMenuPortal, ContextMenuContent, ContextMenuGroup, ContextMenuLabel, ContextMenuSeparator, ContextMenuShortcut, ContextMenuItem, ContextMenuCheckboxItem, ContextMenuRadioGroup, ContextMenuRadioItem, ContextMenuSub, ContextMenuSubTrigger, ContextMenuSubContent | 55.1 kB | 10.8 kB |
 | `overlay/Drawer.js` | Drawer, DrawerTrigger, DrawerPortal, DrawerClose, DrawerOverlay, DrawerContent, DrawerHeader, DrawerFooter, DrawerTitle, DrawerDescription | 53.6 kB | 10.1 kB |
 | `overlay/DropdownMenu.js` | DropdownMenu, DropdownMenuTrigger, DropdownMenuPortal, DropdownMenuContent, DropdownMenuGroup, DropdownMenuLabel, DropdownMenuSeparator, DropdownMenuShortcut, DropdownMenuItem, DropdownMenuCheckboxItem, DropdownMenuRadioGroup, DropdownMenuRadioItem, DropdownMenuSub, DropdownMenuSubTrigger, DropdownMenuSubContent | 55.1 kB | 10.8 kB |
-| `overlay/HoverCard.js` | HoverCard, HoverCardTrigger, HoverCardContent | 5.2 kB | 2.1 kB |
-| `overlay/Popover.js` | Popover, PopoverTrigger, PopoverContent, PopoverHeader, PopoverTitle, PopoverDescription | 6.3 kB | 2.4 kB |
+| `overlay/HoverCard.js` | HoverCard, HoverCardTrigger, HoverCardContent | 5.3 kB | 2.2 kB |
+| `overlay/Popover.js` | Popover, PopoverTrigger, PopoverContent, PopoverHeader, PopoverTitle, PopoverDescription | 6.5 kB | 2.5 kB |
 | `overlay/Portal.js` | Portal | 2.8 kB | 1.3 kB |
 | `overlay/Sheet.js` | Sheet, SheetTrigger, SheetClose, SheetContent, SheetHeader, SheetFooter, SheetTitle, SheetDescription | 50.9 kB | 9.3 kB |

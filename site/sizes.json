@@ -1,16 +1,16 @@
 {
   "totals": {
     "@efolusi/meridian": {
-      "bytes": 355195,
-      "gzip": 79671
+      "bytes": 355552,
+      "gzip": 79863
     },
     "dist/components.css": {
       "bytes": 198579,
       "gzip": 28179
     },
     "_ds_bundle.js": {
-      "bytes": 805485,
-      "gzip": 142755
+      "bytes": 806844,
+      "gzip": 143059
     }
   },
   "modules": [
@@ -672,8 +672,8 @@
       "exports": [
         "Toolbar"
       ],
-      "bytes": 49976,
-      "gzip": 9253
+      "bytes": 50095,
+      "gzip": 9313
     },
     {
       "module": "display/TreeList.js",
@@ -797,8 +797,8 @@
         "TooltipTrigger",
         "TooltipContent"
       ],
-      "bytes": 4843,
-      "gzip": 1923
+      "bytes": 4962,
+      "gzip": 1981
     },
     {
       "module": "files/Attachment.js",
@@ -1359,8 +1359,8 @@
         "HoverCardTrigger",
         "HoverCardContent"
       ],
-      "bytes": 5347,
-      "gzip": 2199
+      "bytes": 5466,
+      "gzip": 2249
     },
     {
       "module": "overlay/Popover.js",
@@ -1373,8 +1373,8 @@
         "PopoverTitle",
         "PopoverDescription"
       ],
-      "bytes": 6501,
-      "gzip": 2475
+      "bytes": 6620,
+      "gzip": 2527
     },
     {
       "module": "overlay/Portal.js",
