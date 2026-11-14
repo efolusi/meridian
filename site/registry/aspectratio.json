@@ -13,7 +13,7 @@
     {
       "path": "components/display/AspectRatio.jsx",
       "type": "registry:ui",
-      "content": "import React from 'react';\nexport const AspectRatio = React.forwardRef(function AspectRatio({ ratio, children, style, className, ...rest }, ref) {\n  return (\n    <div ref={ref} {...rest} className={className} style={{ position: 'relative', width: '100%', aspectRatio: String(Math.round(ratio * 1000) / 1000), ...style }}>\n      <div style={{ position: 'absolute', inset: 0 }}>{children}</div>\n    </div>\n  );\n});\n"
+      "content": "'use client';\nimport React from 'react';\nexport const AspectRatio = React.forwardRef(function AspectRatio({ ratio, children, style, className, ...rest }, ref) {\n  return (\n    <div ref={ref} {...rest} className={className} style={{ position: 'relative', width: '100%', aspectRatio: String(Math.round(ratio * 1000) / 1000), ...style }}>\n      <div style={{ position: 'absolute', inset: 0 }}>{children}</div>\n    </div>\n  );\n});\n"
     },
     {
       "path": "components/display/AspectRatio.d.ts",

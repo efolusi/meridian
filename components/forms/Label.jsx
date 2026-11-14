@@ -1,3 +1,4 @@
+'use client';
 import React from 'react';
 import { injectEfCss } from './Button.jsx';
 const CSS = `

@@ -1,3 +1,4 @@
+'use client';
 import React from 'react';
 // Bare imports are stripped by the bundle compiler, so this resolves to the
 // window global there; in an ESM consumer it resolves normally. Both work.
@@ -14,10 +15,21 @@ const CSS = `
  * subtree is clipped by the first ancestor with overflow:auto|hidden — which in
  * practice is the scrolling table, drawer, or card it was opened from.
  */
+// False only while React hydrates server HTML; true for every other client render.
+const noopSubscribe = () => () => {};
+const isClient = () => true;
+const isServer = () => false;
+
 export function Portal({ children, container }) {
   injectEfCss('ef-css-portal', CSS);
   const hostRef = React.useRef(null);
-  if (hostRef.current === null && typeof document !== 'undefined') {
+  // The server renders nothing here, so the hydrating render must too or React
+  // reports a mismatch (Toaster mounts a Portal on every page). The store hands
+  // hydration its server value and re-renders right after; an ordinary client
+  // mount (an overlay opening) gets true at once, so its children still exist
+  // on the first render.
+  const hydrated = React.useSyncExternalStore(noopSubscribe, isClient, isServer);
+  if (hostRef.current === null && hydrated && typeof document !== 'undefined') {
     hostRef.current = document.createElement('div');
     hostRef.current.className = 'ef-portal';
   }
@@ -30,8 +42,21 @@ export function Portal({ children, container }) {
     if (!host) return;
     const parent = container || document.body;
     parent.appendChild(host);
-    return () => { if (host.parentNode) host.parentNode.removeChild(host); };
-  }, [container]);
+    // StrictMode (on by default in Next.js dev) runs the cleanup and this effect
+    // again right after mount. Detaching the host blurs whatever a dialog just
+    // focused inside it, so put that focus back once the host is attached again.
+    const refocus = host.__efRefocus;
+    host.__efRefocus = null;
+    if (refocus && refocus.isConnected && host.contains(refocus)
+      && (document.activeElement === document.body || document.activeElement === null)) {
+      refocus.focus({ preventScroll: true });
+    }
+    return () => {
+      const active = document.activeElement;
+      host.__efRefocus = active && host.contains(active) ? active : null;
+      if (host.parentNode) host.parentNode.removeChild(host);
+    };
+  }, [container, hydrated]);
   if (!hostRef.current) return null;
   return ReactDOM.createPortal(children, hostRef.current);
 }
