@@ -1,16 +1,16 @@
 {
   "totals": {
     "@efolusi/meridian": {
-      "bytes": 355742,
-      "gzip": 79951
+      "bytes": 355749,
+      "gzip": 79955
     },
     "dist/components.css": {
       "bytes": 198579,
       "gzip": 28179
     },
     "_ds_bundle.js": {
-      "bytes": 811755,
-      "gzip": 144554
+      "bytes": 812025,
+      "gzip": 144657
     }
   },
   "modules": [
@@ -913,8 +913,8 @@
         "ComboboxChip",
         "ComboboxChipsInput"
       ],
-      "bytes": 58714,
-      "gzip": 11849
+      "bytes": 58716,
+      "gzip": 11855
     },
     {
       "module": "forms/Field.js",

@@ -66,6 +66,16 @@ describe('overlays open on first load hydrate without a mismatch', () => {
     expect(document.activeElement?.closest('[role="dialog"]')).not.toBeNull();
   });
 
+  it('a Combobox open on first load with a value hydrates like a client render', () => {
+    // The label sync must not treat the hydration pass as a close.
+    const log = vi.fn();
+    hydrate(<Combobox defaultOpen defaultValue="North" items={['North', 'South']} onInputValueChange={log}><ComboboxInput placeholder="Region" /><ComboboxContent><ComboboxList>{item => <ComboboxItem value={item}>{item}</ComboboxItem>}</ComboboxList></ComboboxContent></Combobox>);
+    expect(log).not.toHaveBeenCalled();
+    expect(document.querySelector('input').value).toBe('');
+    const visible = [...document.querySelectorAll('[role="option"]')].filter(o => !o.hidden).map(o => o.textContent);
+    expect(visible).toEqual(['North', 'South']);
+  });
+
   it('a Popover open on first load is placed and visible once hydrated', () => {
     hydrate(CASES[3][1]);
     const panel = document.querySelector('[data-slot="popover-content"]');

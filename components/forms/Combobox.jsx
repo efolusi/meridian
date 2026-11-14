@@ -35,7 +35,8 @@ export function Combobox({ items = [], value, defaultValue, onValueChange, multi
   const currentValue = value === undefined ? internalValue : value;
   // Closed while React hydrates server HTML (the server rendered no portal),
   // open right after, so effects keyed on it run with the panel present.
-  const isOpen = useHydrated() && (open === undefined ? internalOpen : open);
+  const requestedOpen = open === undefined ? internalOpen : open;
+  const isOpen = useHydrated() && requestedOpen;
   const query = inputValue === undefined ? internalInput : inputValue;
   const setOpen = React.useCallback(next => { if (open === undefined) setInternalOpen(next); onOpenChange?.(next); }, [open, onOpenChange]);
   const setQuery = React.useCallback(next => { if (inputValue === undefined) setInternalInput(next); onInputValueChange?.(next); }, [inputValue, onInputValueChange]);
@@ -54,11 +55,13 @@ export function Combobox({ items = [], value, defaultValue, onValueChange, multi
     const record = [...records.current.values()].find(entry => same(entry.value, next));
     return record ? record.text : undefined;
   };
+  // Keyed on the requested state, not isOpen: the hydration pass is not a
+  // close, and treating it as one filled the input and narrowed the list.
   React.useEffect(() => {
-    if (multiple || isOpen || query || currentValue == null) return;
+    if (multiple || requestedOpen || query || currentValue == null) return;
     const label = labelOf(currentValue);
     if (label !== undefined) setQuery(label);
-  }, [currentValue, items, isOpen, multiple]);
+  }, [currentValue, items, requestedOpen, multiple]);
   // A value changed from outside (a controlled reset, a programmatic pick)
   // must also move the text in the input, or it keeps showing the old label.
   const shownValue = React.useRef(currentValue);
