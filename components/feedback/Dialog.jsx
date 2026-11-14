@@ -2,7 +2,7 @@
 import React from 'react';
 import { IconButton } from '../forms/IconButton.jsx';
 import { injectEfCss, mergeRefs, useIsoLayoutEffect } from '../forms/Button.jsx';
-import { Portal, useEscapeLayer, useScrollLock, escapeLayerContext } from '../overlay/Portal.jsx';
+import { Portal, useEscapeLayer, useScrollLock, escapeLayerContext, useHydrated } from '../overlay/Portal.jsx';
 const CSS = `
 .ef-dialog__overlay{position:fixed;inset:0;z-index:var(--z-overlay);display:flex;align-items:center;justify-content:center;padding:24px;background:var(--overlay-scrim);animation:ef-fade var(--dur-med) var(--ease-out)}
 .ef-dialog__content{width:100%;max-width:440px;max-height:min(85vh,720px);overflow:auto;border:1px solid var(--border-default);border-radius:var(--radius-lg);background:var(--surface-card);box-shadow:var(--shadow-xl);animation:ef-pop var(--dur-slow) var(--ease-spring)}
@@ -26,7 +26,9 @@ export function Dialog({ open: controlled, defaultOpen = false, onOpenChange, ch
   const [internal, setInternal] = React.useState(defaultOpen);
   const titleId = React.useId();
   const descriptionId = React.useId();
-  const open = controlled === undefined ? internal : controlled;
+  // Closed while React hydrates server HTML (the server rendered no portal),
+  // open right after, so effects keyed on it run with the panel present.
+  const open = useHydrated() && (controlled === undefined ? internal : controlled);
   const setOpen = React.useCallback(next => { if (controlled === undefined) setInternal(next); onOpenChange?.(next); }, [controlled, onOpenChange]);
   // the id of the Description actually rendered, so aria-describedby never points at nothing
   const [describedBy, setDescribedBy] = React.useState(undefined);

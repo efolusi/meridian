@@ -15,10 +15,11 @@ const onServer = () => false;
  * False on the server and during hydration, true for every other client render.
  *
  * A Portal renders nothing on the server, so one mounted while React hydrates
- * server HTML is a mismatch. An owner that always mounts a portal on page load
- * (Toaster) renders it only once this is true. Overlays that open on first load
- * keep the plain Portal: their effects measure and focus the panel in the same
- * commit, which a deferred portal would not have rendered yet.
+ * server HTML is a mismatch. Owners gate on this instead of deferring Portal
+ * itself: Toaster renders its portal only once this is true, and each overlay
+ * root treats itself as closed until then (`useHydrated() && open`), so an
+ * overlay open on first load opens right after hydration and its focus and
+ * placement effects, keyed on open, run with the panel present.
  */
 export function useHydrated() {
   return React.useSyncExternalStore(noopSubscribe, onClient, onServer);

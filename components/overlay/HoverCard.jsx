@@ -1,7 +1,7 @@
 'use client';
 import React from 'react';
-import { injectEfCss, mergeRefs } from '../forms/Button.jsx';
-import { Portal, useAnchoredStyle, useEscapeLayer, escapeLayerContext } from './Portal.jsx';
+import { injectEfCss, mergeRefs, useIsoLayoutEffect } from '../forms/Button.jsx';
+import { Portal, useAnchoredStyle, useEscapeLayer, escapeLayerContext, useHydrated } from './Portal.jsx';
 
 const CSS = `
 .ef-hovercard__panel{position:fixed;width:256px;background:var(--surface-card);color:var(--text-primary);border:1px solid var(--border-strong);border-radius:var(--radius-md);box-shadow:var(--shadow-md);padding:16px;z-index:var(--z-popover);animation:ef-hovercard-in var(--dur-med) var(--ease-out)}
@@ -17,11 +17,17 @@ function compose(theirs, ours) {
 export function HoverCard({ open: controlled, defaultOpen = false, onOpenChange, openDelay = 700, closeDelay = 300, children }) {
   injectEfCss('ef-css-hovercard', CSS);
   const [inner, setInner] = React.useState(defaultOpen);
-  const open = controlled !== undefined ? controlled : inner;
+  // Closed while React hydrates server HTML (the server rendered no portal),
+  // open right after, so effects keyed on it run with the panel present.
+  const open = useHydrated() && (controlled !== undefined ? controlled : inner);
   const triggerRef = React.useRef(null);
   const contentRef = React.useRef(null);
   const timerRef = React.useRef(null);
-  const contentId = React.useId();
+  // The content's own `id` wins over the generated one, and the trigger's
+  // aria attribute follows whichever is rendered.
+  const baseId = React.useId();
+  const [customId, setContentId] = React.useState();
+  const contentId = customId || baseId;
   const setOpen = React.useCallback(next => {
     if (controlled === undefined) setInner(next);
     onOpenChange?.(next);
@@ -40,7 +46,7 @@ export function HoverCard({ open: controlled, defaultOpen = false, onOpenChange,
     clearTimer();
     setOpen(false);
   });
-  const value = React.useMemo(() => ({ open, setOpen, openSoon, closeSoon, clearTimer, triggerRef, contentRef, contentId }), [open, setOpen, openSoon, closeSoon, clearTimer, contentId]);
+  const value = React.useMemo(() => ({ open, setOpen, openSoon, closeSoon, clearTimer, triggerRef, contentRef, contentId, setContentId }), [open, setOpen, openSoon, closeSoon, clearTimer, contentId, setContentId]);
   return <HoverCardCtx.Provider value={value}><escapeLayerContext.Provider value={layer}>{children}</escapeLayerContext.Provider></HoverCardCtx.Provider>;
 }
 
@@ -76,8 +82,14 @@ export const HoverCardTrigger = React.forwardRef(function HoverCardTrigger({ asC
   return <button type="button" {...props}>{children}</button>;
 });
 
-export const HoverCardContent = React.forwardRef(function HoverCardContent({ align = 'center', side = 'bottom', sideOffset = 4, alignOffset = 0, className, style, children, ...rest }, forwardedRef) {
+export const HoverCardContent = React.forwardRef(function HoverCardContent({ align = 'center', side = 'bottom', sideOffset = 4, alignOffset = 0, className, style, children, id, ...rest }, forwardedRef) {
   const ctx = React.useContext(HoverCardCtx);
+  const registerId = ctx?.setContentId;
+  useIsoLayoutEffect(() => {
+    if (!registerId) return;
+    registerId(id);
+    return () => registerId(undefined);
+  }, [registerId, id]);
   const fallbackTriggerRef = React.useRef(null);
   const fallbackContentRef = React.useRef(null);
   const { style: anchored, side: resolvedSide } = useAnchoredStyle(ctx?.triggerRef ?? fallbackTriggerRef, ctx?.contentRef ?? fallbackContentRef, {
@@ -90,7 +102,7 @@ export const HoverCardContent = React.forwardRef(function HoverCardContent({ ali
   if (!ctx?.open) return null;
   return (
     <Portal>
-      <div {...rest} ref={mergeRefs(forwardedRef, ctx.contentRef)} id={ctx.contentId} data-slot="hover-card-content" data-state="open" data-side={resolvedSide} data-align={align}
+      <div {...rest} ref={mergeRefs(forwardedRef, ctx.contentRef)} id={id || ctx.contentId} data-slot="hover-card-content" data-state="open" data-side={resolvedSide} data-align={align}
         onMouseEnter={compose(rest.onMouseEnter, ctx.clearTimer)} onMouseLeave={compose(rest.onMouseLeave, ctx.closeSoon)}
         className={`ef-hovercard__panel${className ? ' ' + className : ''}`} style={{ ...anchored, ...style }}>{children}</div>
     </Portal>

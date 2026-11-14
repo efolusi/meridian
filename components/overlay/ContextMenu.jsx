@@ -2,7 +2,7 @@
 import React from 'react';
 import { injectEfCss, mergeRefs, useIsoLayoutEffect } from '../forms/Button.jsx';
 import { Icon } from '../icons/Icon.jsx';
-import { Portal, useAnchoredStyle } from './Portal.jsx';
+import { Portal, useAnchoredStyle, useHydrated } from './Portal.jsx';
 import { useDirection } from '../display/Direction.jsx';
 
 const CSS = `
@@ -83,7 +83,9 @@ export function ContextMenu({ open: controlled, defaultOpen = false, onOpenChang
   injectEfCss('ef-css-context-menu', CSS);
   const [inner, setInner] = React.useState(defaultOpen);
   const [point, setPoint] = React.useState({ x: 0, y: 0 });
-  const open = controlled !== undefined ? controlled : inner;
+  // Closed while React hydrates server HTML (the server rendered no portal),
+  // open right after, so effects keyed on it run with the panel present.
+  const open = useHydrated() && (controlled !== undefined ? controlled : inner);
   const triggerRef = React.useRef(null);
   const contentRef = React.useRef(null);
   const menuId = React.useId();
@@ -202,7 +204,9 @@ export const ContextMenuRadioItem = React.forwardRef(function ContextMenuRadioIt
 
 export function ContextMenuSub({ open: controlled, defaultOpen = false, onOpenChange, children }) {
   const [inner, setInner] = React.useState(defaultOpen);
-  const open = controlled !== undefined ? controlled : inner;
+  // Closed while React hydrates server HTML (the server rendered no portal),
+  // open right after, so effects keyed on it run with the panel present.
+  const open = useHydrated() && (controlled !== undefined ? controlled : inner);
   const triggerRef = React.useRef(null);
   const contentRef = React.useRef(null);
   const setOpen = next => { if (controlled === undefined) setInner(next); onOpenChange?.(next); };
