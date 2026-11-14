@@ -1,3 +1,4 @@
+'use client';
 import React from 'react';
 const _cache = {};
 // One request per glyph: instances mounting together share the in-flight fetch.

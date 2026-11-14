@@ -1,3 +1,4 @@
+'use client';
 import React from 'react';
 import { injectEfCss, mergeRefs, buttonVariants, useIsoLayoutEffect } from '../forms/Button.jsx';
 import { Portal, useEscapeLayer, useScrollLock, escapeLayerContext } from '../overlay/Portal.jsx';

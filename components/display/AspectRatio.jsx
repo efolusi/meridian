@@ -1,3 +1,4 @@
+'use client';
 import React from 'react';
 export const AspectRatio = React.forwardRef(function AspectRatio({ ratio, children, style, className, ...rest }, ref) {
   return (

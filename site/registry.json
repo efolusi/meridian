@@ -55,6 +55,25 @@
       ]
     },
     {
+      "name": "meridian-ssr-css",
+      "type": "registry:style",
+      "title": "Meridian component CSS for server rendering",
+      "description": "Every component's CSS as one static stylesheet. Import it after styles.css in a server-rendered app (Next.js, Remix, Vite SSR) so pages arrive styled instead of changing when they hydrate.",
+      "registryDependencies": [
+        "https://meridian.efolusi.com/site/registry/meridian-base.json"
+      ],
+      "files": [
+        {
+          "path": "registry/components.css",
+          "type": "registry:file",
+          "target": "components.css"
+        }
+      ],
+      "categories": [
+        "foundation"
+      ]
+    },
+    {
       "name": "agentrun",
       "type": "registry:ui",
       "title": "AgentRun",

@@ -80,8 +80,12 @@ function compile(rel) {
   }).code;
   // Every component calls hooks, so under the Next.js App Router these are
   // client components. Without the directive, importing the package from a
-  // Server Component is a build error. It is inert everywhere else.
-  return `'use client';\n${code}`;
+  // Server Component is a build error. The sources carry it (so registry copies
+  // do too) and Babel keeps it; check rather than trust that.
+  if (!code.startsWith("'use client';") && !code.startsWith('"use client";')) {
+    throw new Error(`${rel} lost its 'use client' directive; add it as the first line of the source`);
+  }
+  return code;
 }
 
 const files = new Map(); // dist-relative path -> contents

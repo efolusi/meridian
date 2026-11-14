@@ -29,12 +29,36 @@ npx meridian add button --dry-run
 relative path. When it finishes, `add` prints the npm packages the files
 import. It does not run `npm install` for you.
 
+Import `styles.css` once, from your app's entry or root layout.
+
 Two files differ from the repository so they work in a bundled app.
 `components/icons/Icon.jsx` reads every glyph from the generated
 `components/icons/_svg.js` instead of fetching SVG files. `tokens/fonts.css`
 loads the brand fonts from the published `@efolusi/meridian-tokens` package
 on jsDelivr, pinned to the release. To self-host the fonts, copy that package's
 `assets/fonts/` into your app and change the `url()`s.
+
+### Server-rendered apps
+
+Components add their CSS to the page when they render in the browser, so
+server-rendered HTML (Next.js, Remix, Vite SSR) has none until it hydrates.
+Add the static component stylesheet once and import it right after
+`styles.css`:
+
+```sh
+npx meridian add meridian-ssr-css
+```
+
+```js
+import './styles.css';
+import './components.css';
+```
+
+Components skip CSS this sheet already carries, matched by a hash of the
+exact rules, so nothing is added twice. A component you edit, or one copied
+from a newer release, adds its own CSS as before, so an older
+`components.css` never overrides it. Nothing depends on this item, so other
+`add` commands never touch it; re-add it with `--overwrite` after upgrading.
 
 ## Options
 

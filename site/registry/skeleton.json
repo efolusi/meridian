@@ -14,7 +14,7 @@
     {
       "path": "components/data/Skeleton.jsx",
       "type": "registry:ui",
-      "content": "import React from 'react';\nimport { injectEfCss } from '../forms/Button.jsx';\n\nconst CSS = `\n@keyframes ef-skel{0%,100%{opacity:1}50%{opacity:.45}}\n.ef-skel{display:block;background:var(--border-default);border-radius:var(--radius-sm);animation:ef-skel 1.4s var(--ease-in-out) infinite}\n`;\n\nexport const Skeleton = React.forwardRef(function Skeleton(\n  { className, ...rest },\n  ref,\n) {\n  injectEfCss('ef-css-skel', CSS);\n  return <div {...rest} ref={ref} data-slot=\"skeleton\" className={`ef-skel${className ? ' ' + className : ''}`} />;\n});\n"
+      "content": "'use client';\nimport React from 'react';\nimport { injectEfCss } from '../forms/Button.jsx';\n\nconst CSS = `\n@keyframes ef-skel{0%,100%{opacity:1}50%{opacity:.45}}\n.ef-skel{display:block;background:var(--border-default);border-radius:var(--radius-sm);animation:ef-skel 1.4s var(--ease-in-out) infinite}\n`;\n\nexport const Skeleton = React.forwardRef(function Skeleton(\n  { className, ...rest },\n  ref,\n) {\n  injectEfCss('ef-css-skel', CSS);\n  return <div {...rest} ref={ref} data-slot=\"skeleton\" className={`ef-skel${className ? ' ' + className : ''}`} />;\n});\n"
     },
     {
       "path": "components/data/Skeleton.d.ts",

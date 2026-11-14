@@ -1,3 +1,4 @@
+'use client';
 import React from 'react';
 import { injectEfCss } from '../forms/Button.jsx';
 import { Dialog, DialogClose, DialogContent, DialogDescription, DialogFooter, DialogHeader, DialogTitle, DialogTrigger } from '../feedback/Dialog.jsx';
