@@ -1,3 +1,4 @@
+'use client';
 import React from 'react';
 import * as RechartsPrimitive from 'recharts';
 import { injectEfCss } from '../forms/Button.jsx';

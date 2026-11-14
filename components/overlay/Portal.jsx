@@ -1,3 +1,4 @@
+'use client';
 import React from 'react';
 // Bare imports are stripped by the bundle compiler, so this resolves to the
 // window global there; in an ESM consumer it resolves normally. Both work.
@@ -6,6 +7,22 @@ import { injectEfCss, useIsoLayoutEffect } from '../forms/Button.jsx';
 const CSS = `
 .ef-portal{display:contents}
 `;
+
+const noopSubscribe = () => () => {};
+const onClient = () => true;
+const onServer = () => false;
+/**
+ * False on the server and during hydration, true for every other client render.
+ *
+ * A Portal renders nothing on the server, so one mounted while React hydrates
+ * server HTML is a mismatch. An owner that always mounts a portal on page load
+ * (Toaster) renders it only once this is true. Overlays that open on first load
+ * keep the plain Portal: their effects measure and focus the panel in the same
+ * commit, which a deferred portal would not have rendered yet.
+ */
+export function useHydrated() {
+  return React.useSyncExternalStore(noopSubscribe, onClient, onServer);
+}
 
 /**
  * Renders children into document.body (or `container`).
@@ -30,7 +47,20 @@ export function Portal({ children, container }) {
     if (!host) return;
     const parent = container || document.body;
     parent.appendChild(host);
-    return () => { if (host.parentNode) host.parentNode.removeChild(host); };
+    // StrictMode (on by default in Next.js dev) runs the cleanup and this effect
+    // again right after mount. Detaching the host blurs whatever a dialog just
+    // focused inside it, so put that focus back once the host is attached again.
+    const refocus = host.__efRefocus;
+    host.__efRefocus = null;
+    if (refocus && refocus.isConnected && host.contains(refocus)
+      && (document.activeElement === document.body || document.activeElement === null)) {
+      refocus.focus({ preventScroll: true });
+    }
+    return () => {
+      const active = document.activeElement;
+      host.__efRefocus = active && host.contains(active) ? active : null;
+      if (host.parentNode) host.parentNode.removeChild(host);
+    };
   }, [container]);
   if (!hostRef.current) return null;
   return ReactDOM.createPortal(children, hostRef.current);

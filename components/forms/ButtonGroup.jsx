@@ -1,3 +1,4 @@
+'use client';
 import React from 'react';
 import { injectEfCss, mergeRefs } from './Button.jsx';
 import { Separator } from '../display/Separator.jsx';

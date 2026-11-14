@@ -1,3 +1,4 @@
+'use client';
 import React from 'react';
 import { Icon } from '../icons/Icon.jsx';
 const CSS = `
@@ -100,6 +101,23 @@ export function cssPct(value) {
  * to useEffect on the server is behaviour-identical. Lowercase: internal.
  */
 export const useIsoLayoutEffect = typeof window === 'undefined' ? React.useEffect : React.useLayoutEffect;
+const LAZY_TYPE = Symbol.for('react.lazy');
+/**
+ * Whether `child` is an element of `Component`, for compound components that
+ * sort their children (Select items, Resizable panels, ScrollArea bars).
+ *
+ * Children written in a Next.js Server Component reach a client component with
+ * a lazy client reference as their type, not the function, so a plain
+ * `child.type === Component` is false there. Unwrap the lazy first. While its
+ * module is still loading, `_init` throws the module's promise, which suspends
+ * exactly as rendering the lazy element would.
+ */
+export function isElementOfType(child, Component) {
+  if (!React.isValidElement(child)) return false;
+  let type = child.type;
+  if (type && type.$$typeof === LAZY_TYPE && typeof type._init === 'function') type = type._init(type._payload);
+  return type === Component;
+}
 /**
  * The CSS kill-switch cannot reach JS-driven motion — rAF count-ups and
  * scrollTo({behavior:'smooth'}) — so those call sites ask here. Lowercase: internal.
