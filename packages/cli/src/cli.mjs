@@ -97,7 +97,8 @@ function plain(text) {
  * the spec pattern already excludes `"`, `$`, backtick, `\`, `!` and `%`.
  */
 function shellArg(spec) {
-  return /^[A-Za-z0-9@/._~^=+-]+$/.test(spec) ? spec : `"${spec}"`;
+  // '^' is quoted too: cmd.exe treats it as an escape and drops it unquoted.
+  return /^[A-Za-z0-9@/._~=+-]+$/.test(spec) ? spec : `"${spec}"`;
 }
 
 async function list(options, io) {
@@ -127,8 +128,17 @@ async function add(options, io) {
   }
 
   const verb = { create: options.dryRun ? 'would create' : 'created', overwrite: options.dryRun ? 'would replace' : 'replaced', unchanged: 'unchanged' };
-  if (!options.dryRun) await applyPlan(plan, dir);
   const width = Math.max(...Object.values(verb).map(word => word.length));
+  if (!options.dryRun) {
+    try {
+      await applyPlan(plan, dir);
+    } catch (error) {
+      // Say what is already on disk, so a half-finished run is not a mystery.
+      for (const entry of error.written ?? []) out(`  ${verb[entry.status].padEnd(width)}  ${entry.target}`);
+      if (error.written?.length) out(`${error.written.length} file(s) were written before the error. Fix it and run add again; written files then show as unchanged.`);
+      throw error;
+    }
+  }
   for (const entry of plan) out(`  ${verb[entry.status].padEnd(width)}  ${entry.target}`);
 
   const changed = plan.filter(entry => entry.status !== 'unchanged').length;

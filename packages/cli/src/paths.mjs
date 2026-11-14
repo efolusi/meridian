@@ -1,5 +1,7 @@
+import { realpath as realpathCallback } from 'node:fs';
 import fs from 'node:fs/promises';
 import path from 'node:path';
+import { promisify } from 'node:util';
 
 // Registry JSON is untrusted input: an item name becomes part of a URL or a
 // file name, and a file target becomes a path on the user's disk. Everything
@@ -54,7 +56,22 @@ export function checkTarget(target) {
 
 function isInside(root, candidate) {
   const rel = path.relative(root, candidate);
-  return rel === '' || (!rel.startsWith('..') && !path.isAbsolute(rel));
+  // A real parent step is '..' alone or followed by a separator; '..foo' is a
+  // folder name inside root.
+  return rel === '' || (rel !== '..' && !rel.startsWith(`..${path.sep}`) && !path.isAbsolute(rel));
+}
+
+// The native realpath fails with EISDIR on Windows volumes whose driver lacks
+// GetFinalPathNameByHandle (RAM disks, some virtual and network drives). The JS
+// implementation walks the path with lstat and readlink and works there.
+const jsRealpath = promisify(realpathCallback);
+async function realpath(p) {
+  try {
+    return await fs.realpath(p);
+  } catch (error) {
+    if (process.platform === 'win32' && (error.code === 'EISDIR' || error.code === 'EINVAL')) return jsRealpath(p);
+    throw error;
+  }
 }
 
 /**
@@ -73,7 +90,7 @@ export async function resolveInside(dir, target) {
 
   let realRoot;
   try {
-    realRoot = await fs.realpath(root);
+    realRoot = await realpath(root);
   } catch (error) {
     if (error.code !== 'ENOENT') throw error;
     // The directory does not exist yet, so nothing under it can be a link.
@@ -91,7 +108,7 @@ export async function resolveInside(dir, target) {
   let probe = path.dirname(absolute);
   for (;;) {
     try {
-      const real = await fs.realpath(probe);
+      const real = await realpath(probe);
       if (!isInside(realRoot, real)) {
         throw new DiskError(`file target resolves outside ${root} through a symlink: ${JSON.stringify(target)}`);
       }
