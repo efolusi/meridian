@@ -6,6 +6,8 @@ import path from 'node:path';
 // that reaches the file system goes through the checks in this module.
 
 const ITEM_NAME = /^[a-z0-9][a-z0-9-]{0,99}$/;
+const SEGMENT = /^[A-Za-z0-9._@+-]+$/;
+const WINDOWS_DEVICE = /^(con|prn|aux|nul|com[0-9]|lpt[0-9])(\.|$)/i;
 
 /** Throws unless `name` is a plain registry item name such as `button`. */
 export function assertItemName(name) {
@@ -19,7 +21,9 @@ export function assertItemName(name) {
  * Checks a file target from a registry item and returns it in normalised
  * POSIX form. Rejects anything that could land outside the target directory
  * before the disk is consulted: absolute paths, drive letters, backslashes,
- * NUL and other control characters, and `.` or `..` segments.
+ * NUL and other control characters, `.` or `..` segments, any character
+ * outside `A-Za-z0-9._@+-`, names ending in `.`, `.git`, and Windows device
+ * names such as `nul`.
  */
 export function checkTarget(target) {
   if (typeof target !== 'string' || target.length === 0 || target.length > 400) {
@@ -35,6 +39,15 @@ export function checkTarget(target) {
     if (segment === '..' || segment === '.' || segment === '') {
       throw new UnsafeError(`file target has an empty, "." or ".." segment: ${JSON.stringify(target)}`);
     }
+    // ASCII only: no lookalike dots or slashes, no bidi or zero-width
+    // characters, no `%` escapes, no `:` (an NTFS stream or drive).
+    if (!SEGMENT.test(segment)) {
+      throw new UnsafeError(`file target may only use A-Z a-z 0-9 . _ @ + - in each folder or file name: ${JSON.stringify(target)}`);
+    }
+    // Windows drops trailing dots, so `...` or `x.` would not name what it seems to.
+    if (segment.endsWith('.')) throw new UnsafeError(`file target has a name ending in ".": ${JSON.stringify(target)}`);
+    if (segment.toLowerCase() === '.git') throw new UnsafeError(`file target writes into .git: ${JSON.stringify(target)}`);
+    if (WINDOWS_DEVICE.test(segment)) throw new UnsafeError(`file target uses a Windows device name: ${JSON.stringify(target)}`);
   }
   return segments.join('/');
 }

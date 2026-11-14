@@ -1,8 +1,13 @@
+import { constants as fsConstants } from 'node:fs';
 import fs from 'node:fs/promises';
 import path from 'node:path';
 import { resolveInside, UnsafeError } from './paths.mjs';
 
 export const MAX_FILES = 2000;
+
+const { O_WRONLY, O_CREAT, O_EXCL, O_TRUNC, O_NOFOLLOW = 0 } = fsConstants;
+const CREATE_FLAGS = O_WRONLY | O_CREAT | O_EXCL | O_NOFOLLOW;
+const REPLACE_FLAGS = O_WRONLY | O_CREAT | O_TRUNC | O_NOFOLLOW;
 
 /**
  * Works out what `add` would do for each file without touching the disk:
@@ -54,7 +59,10 @@ export async function applyPlan(plan, dir) {
     const absolute = await resolveInside(dir, entry.target);
     await fs.mkdir(path.dirname(absolute), { recursive: true });
     await resolveInside(dir, entry.target);
-    await fs.writeFile(absolute, entry.content, { flag: entry.status === 'create' ? 'wx' : 'w' });
+    // O_NOFOLLOW: a link swapped in after the check above fails the write
+    // instead of redirecting it. O_EXCL does the same for new files.
+    const flag = entry.status === 'create' ? CREATE_FLAGS : REPLACE_FLAGS;
+    await fs.writeFile(absolute, entry.content, { flag });
     written.push(entry);
   }
   return written;

@@ -375,3 +375,92 @@ describe('meridian bin against site/registry', () => {
     expect(run('--version').stdout.trim()).toBe(pkg.version);
   });
 });
+
+describe('hostile registry content', () => {
+  it.each([
+    ['%2e%2e/outside.js', 'encoded dots'],
+    ['components/%2e%2e/x.js', 'encoded dots inside'],
+    ['․․/outside.js', 'one-dot-leader lookalike of ..'],
+    ['．．/outside.js', 'fullwidth dots'],
+    ['components∕..∕x.js', 'division slash lookalike'],
+    ['components/\u009b31mButton.jsx', 'C1 control (CSI)'],
+    ['components/‮Button.jsx', 'bidi override'],
+    ['components/Button.jsx​', 'zero-width space'],
+    ['components/Button.jsx:stream', 'NTFS alternate data stream'],
+    ['components/.. /x.js', 'dot-dot-space (Windows strips trailing spaces)'],
+    ['components/.../x.js', 'dots only'],
+    ['components/x./y.js', 'trailing dot'],
+    ['.git/hooks/pre-commit', '.git folder'],
+    ['sub/.GIT/config', '.git folder, other case'],
+    ['components/nul.jsx', 'Windows device name'],
+    ['COM1', 'Windows device name'],
+  ])('rejects %j (%s)', target => {
+    expect(() => checkTarget(target)).toThrow(UnsafeError);
+  });
+
+  it('keeps ordinary dotfiles and punctuation the registry uses', () => {
+    expect(checkTarget('components/forms/_shared.jsx')).toBe('components/forms/_shared.jsx');
+    expect(checkTarget('.meridian/prompt.md')).toBe('.meridian/prompt.md');
+    expect(checkTarget('docs/button.prompt.md')).toBe('docs/button.prompt.md');
+  });
+
+  it('quotes npm specs that a shell would read as operators in the install hint', async () => {
+    const registryDir = path.join(tmp, 'reg');
+    await writeRegistry(registryDir, [item('one', { npm: ['react', 'x@>=1 <2 | sh', 'y@1 > .bashrc'] })]);
+    const { io, out } = memoryIo();
+    expect(await main(['add', 'one', '--registry', registryDir, '--dir', 'out', '--dry-run'], io)).toBe(EXIT.OK);
+    expect(out.text).toContain('npm install react "x@>=1 <2 | sh" "y@1 > .bashrc"');
+  });
+
+  it('JSON __proto__ keys do not reach Object.prototype or the parsed item', () => {
+    const text = '{"__proto__":{"polluted":true,"files":[{"path":"../x","content":"x"}]},"name":"button","constructor":{"prototype":{"polluted":true}}}';
+    const parsed = parseItem(text, 'button');
+    expect(parsed.files).toEqual([]);
+    expect({}.polluted).toBeUndefined();
+    expect(Object.prototype.polluted).toBeUndefined();
+  });
+
+  it('strips terminal control and bidi characters from error messages', async () => {
+    const registryDir = path.join(tmp, 'reg');
+    await fs.mkdir(registryDir);
+    await fs.writeFile(path.join(registryDir, 'bad.json'), JSON.stringify({ name: 'x\u009b2J‮evil', files: [] }));
+    const { io, err } = memoryIo();
+    expect(await main(['add', 'bad', '--registry', registryDir], io)).toBe(EXIT.REGISTRY);
+    expect(err.text).toContain('names itself');
+    expect(err.text).not.toMatch(/[\u0080-\u009f‪-‮⁦-⁩]/);
+  });
+
+  it('strips bidi characters from list descriptions', async () => {
+    const fetchImpl = async () => new Response(JSON.stringify({ items: [{ name: 'button', description: 'safe‮dlrow' }] }));
+    const { io, out } = memoryIo({ fetchImpl });
+    expect(await main(['list', '--registry', 'https://registry.test/site/registry/'], io)).toBe(EXIT.OK);
+    expect(out.text).not.toMatch(/[‪-‮⁦-⁩]/);
+  });
+
+  it('--overwrite does not follow a symlink swapped in after the last check', async () => {
+    const dir = path.join(tmp, 'project');
+    await fs.mkdir(dir);
+    await fs.writeFile(path.join(dir, 'a.js'), 'old');
+    await fs.writeFile(path.join(tmp, 'secret'), 'keep');
+    const plan = await planWrites([item('a', { files: [{ target: 'a.js', content: 'new' }] })], dir, { overwrite: true });
+    expect(plan[0].status).toBe('overwrite');
+    const realLstat = fs.lstat;
+    let calls = 0;
+    fs.lstat = async (...args) => {
+      const result = await realLstat(...args);
+      calls += 1;
+      // applyPlan checks twice; swap the file for a link right after the second check.
+      if (calls === 2) {
+        await fs.rm(path.join(dir, 'a.js'));
+        await fs.symlink(path.join(tmp, 'secret'), path.join(dir, 'a.js'));
+      }
+      return result;
+    };
+    try {
+      await expect(applyPlan(plan, dir)).rejects.toThrow();
+    } finally {
+      fs.lstat = realLstat;
+    }
+    expect(await fs.readFile(path.join(tmp, 'secret'), 'utf8')).toBe('keep');
+  });
+});

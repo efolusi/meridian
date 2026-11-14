@@ -76,8 +76,13 @@ writes nothing, when:
 - an item name is anything other than lowercase letters, digits and hyphens;
 - a file target is absolute, starts with a drive letter, contains `..`, `.`,
   an empty segment, a backslash, or a control character such as NUL;
+- a folder or file name in a target uses anything other than ASCII letters,
+  digits and `. _ @ + -` (this rules out `%2e%2e`, lookalike dots and slashes,
+  bidi and zero-width characters, and `:`), ends in `.`, is `.git`, or is a
+  Windows device name such as `nul` or `com1`;
 - a target would resolve outside `--dir`, including through a symlinked folder
-  inside it, or the target file is itself a symlink;
+  inside it, or the target file is itself a symlink (writes also open the file
+  with `O_NOFOLLOW`, so a link swapped in after the check fails the write);
 - an item names itself differently from the file it came from, or lists an
   npm dependency that is not a plain package name;
 - a `registryDependencies` URL points anywhere other than the registry in use or
@@ -87,6 +92,11 @@ writes nothing, when:
   Same-origin redirects are followed, up to five.
 
 `--registry` accepts only `http://`, `https://` or a local directory.
+
+Registry text that reaches your terminal (`list` descriptions, error messages)
+has control, bidi and zero-width characters replaced with spaces. In the
+printed `npm install` line, a version range with shell operators such as
+`>=1 <2` is wrapped in double quotes.
 
 ## License
 

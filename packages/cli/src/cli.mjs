@@ -78,9 +78,24 @@ function version() {
   return pkg.version;
 }
 
-/** Registry text shown in a terminal: no control characters, one line. */
+/**
+ * Registry text shown in a terminal: one line, no control characters, and
+ * no bidi or zero-width characters that could make it read differently.
+ */
 function plain(text) {
-  return String(text).replace(/[\u0000-\u001f\u007f-\u009f]+/g, ' ').replace(/\s+/g, ' ').trim();
+  return String(text)
+    .replace(/[\u0000-\u001f\u007f-\u009f​-‏‪-‮⁠-⁩﻿]+/g, ' ')
+    .replace(/\s+/g, ' ')
+    .trim();
+}
+
+/**
+ * An npm spec for the printed install command. Ranges such as `>=1 <2` hold
+ * characters a shell treats as operators, so those specs are double-quoted;
+ * the spec pattern already excludes `"`, `$`, backtick, `\`, `!` and `%`.
+ */
+function shellArg(spec) {
+  return /^[A-Za-z0-9@/._~^=+-]+$/.test(spec) ? spec : `"${spec}"`;
 }
 
 async function list(options, io) {
@@ -120,7 +135,7 @@ async function add(options, io) {
   const packages = npmDependencies(items);
   if (packages.length) {
     out('These files import npm packages. Install them if your project does not have them yet:');
-    out(`  npm install ${packages.join(' ')}`);
+    out(`  npm install ${packages.map(shellArg).join(' ')}`);
   }
   return EXIT.OK;
 }
@@ -152,7 +167,8 @@ export async function main(argv, io = {}) {
   try {
     return options.command === 'list' ? await list(options, env) : await add(options, env);
   } catch (error) {
-    env.stderr.write(`meridian: ${error.message}\n`);
+    // Messages can quote registry text, so they get the same cleanup as list.
+    env.stderr.write(`meridian: ${plain(error.message)}\n`);
     if (error instanceof RegistryError || error instanceof UnsafeError) return EXIT.REGISTRY;
     return EXIT.DISK;
   }
