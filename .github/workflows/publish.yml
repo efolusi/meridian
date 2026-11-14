@@ -5,9 +5,10 @@ name: publish
 # short-lived identity token for this exact workflow, and npm verifies it against
 # the trusted publisher configured on the package.
 #
-# This is a monorepo. It publishes FOUR packages in lockstep at one version —
-# the @efolusi/meridian umbrella plus the standalone @efolusi/meridian-tokens and
-# @efolusi/meridian-icons and @efolusi/meridian-guard — and one independently
+# This is a monorepo. It publishes FIVE packages in lockstep at one version —
+# the @efolusi/meridian umbrella plus the standalone @efolusi/meridian-tokens,
+# @efolusi/meridian-icons, @efolusi/meridian-guard and @efolusi/meridian-cli —
+# and one independently
 # versioned package, the MCP
 # server @efolusi/meridian-mcp (version from mcp/package.json). Each is a separate
 # npm package and needs its OWN
@@ -78,14 +79,14 @@ jobs:
             echo "go=true" >> "$GITHUB_OUTPUT"
             exit 0
           fi
-          # Monorepo: four packages move in lockstep at one version. Release if
+          # Monorepo: five packages move in lockstep at one version. Release if
           # ANY of them is missing this version — not just the umbrella. Checking
           # only the umbrella is how a run that published the umbrella but failed
           # on a sub-package (e.g. its trusted publisher wasn't set yet) could
           # never be finished by CI, forcing a manual publish. Now the next push
           # re-runs and completes whatever is still missing.
           GO=false
-          for name in @efolusi/meridian @efolusi/meridian-tokens @efolusi/meridian-icons @efolusi/meridian-guard; do
+          for name in @efolusi/meridian @efolusi/meridian-tokens @efolusi/meridian-icons @efolusi/meridian-guard @efolusi/meridian-cli; do
             if npm view "$name@$VERSION" version >/dev/null 2>&1; then
               echo "$name@$VERSION already on the registry"
             else
@@ -93,7 +94,7 @@ jobs:
               GO=true
             fi
           done
-          # The MCP server (mcp/) is versioned independently of the lockstep four,
+          # The MCP server (mcp/) is versioned independently of the lockstep five,
           # so it is gated on its own version — a push that only bumps mcp still
           # releases.
           MCPVER="$(node -p "require('./mcp/package.json').version")"
@@ -182,7 +183,7 @@ jobs:
       - name: At least one package must still need publishing
         run: |
           NEED=false
-          for dir in dist packages/tokens/dist packages/icons/dist packages/guard/dist mcp; do
+          for dir in dist packages/tokens/dist packages/icons/dist packages/guard/dist mcp packages/cli/dist; do
             NAME="$(node -p "require('./$dir/package.json').name")"
             PKG="$(node -p "require('./$dir/package.json').version")"
             if npm view "$NAME@$PKG" version >/dev/null 2>&1; then
@@ -205,7 +206,9 @@ jobs:
           OUT="$RUNNER_TEMP/npm-packages"
           mkdir -p "$OUT"
           : > "$OUT/packages.tsv"
-          for d in dist packages/tokens/dist packages/icons/dist packages/guard/dist mcp; do
+          # The CLI goes last: until its first manual publish and trusted publisher
+          # exist (RELEASING.md), its 404 must not block the packages before it.
+          for d in dist packages/tokens/dist packages/icons/dist packages/guard/dist mcp packages/cli/dist; do
             echo "== $d"
             FILE="$(npm pack "./$d" --pack-destination "$OUT" --json | node -e 'process.stdout.write(JSON.parse(require("fs").readFileSync(0, "utf8"))[0].filename)')"
             NAME="$(node -p "require('./$d/package.json').name")"

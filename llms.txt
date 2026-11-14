@@ -45,6 +45,10 @@ Or install from npm for bundler projects (Vite, Next, Remix). It ships ESM modul
     import '@efolusi/meridian/styles.css';
     import { Button, FormField } from '@efolusi/meridian';
 
+Or copy single components into a project as editable source. The CLI writes the component, its types and usage notes, and every Meridian item it imports, then prints the npm packages to install:
+
+    npx @efolusi/meridian-cli add button
+
 Dark mode: set data-theme="dark" on any subtree. Compact density: data-density="compact". Use semantic tokens only, never raw ramp values.
 
 ## More
