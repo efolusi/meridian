@@ -10,6 +10,7 @@
 - **Select, Resizable and ScrollArea work with children written in a Server Component.** They matched children by function identity, which a Server Component's lazy client reference does not pass, so a Select showed its placeholder instead of the chosen label and Resizable panels could not resize. The new `isElementOfType` helper unwraps the reference first.
 - **Dialogs keep their initial focus under React StrictMode.** StrictMode's effect replay detached the portal host and blurred the button the dialog had just focused; the portal now restores it.
 - **MCP server 0.1.5: `get_component` shows where each file goes.** It printed the registry's source path, so the `Icon` files appeared under `registry/icons/` instead of `components/icons/`. Generated data files such as the glyph map are named instead of printed.
+- **Popover, HoverCard and Tooltip content keep a caller's `id`.** The generated id overwrote it, so a label, a test hook or an `aria-*` reference to that id found nothing. The trigger's `aria-controls` or `aria-describedby` now follows whichever id is rendered.
 - **The CLI behaves on Windows.** An audit against Windows file-system rules found and fixed nine problems:
   - Targets that differ only in letter case are refused (they are one file on NTFS).
   - A CRLF or byte-order-mark checkout of the same content counts as unchanged instead of a conflict.
