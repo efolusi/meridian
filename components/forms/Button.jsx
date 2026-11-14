@@ -57,9 +57,22 @@ const CSS = `
  * app rule accidentally collided with a component rule and lost, it now wins.
  * That is the intended direction, but it is a real change and worth looking at
  * a page or two after upgrading.
+ *
+ * Copied-in components (registry, CLI) also get a static components.css through
+ * styles.css, so server-rendered HTML is styled before hydration. That sheet
+ * lists the ids it carries in `--ef-css-static` on :root, and this skips them
+ * rather than adding the same rules twice. An id missing from the list (a
+ * component newer than the copied stylesheet, or no styles.css at all) still
+ * injects. The list is read once per page: reading it per call would force a
+ * style recalculation after every <style> this appends.
  */
+let efStaticCss;
 export function injectEfCss(id, text) {
   if (typeof document === 'undefined' || document.getElementById(id)) return;
+  if (!efStaticCss) {
+    efStaticCss = new Set(getComputedStyle(document.documentElement).getPropertyValue('--ef-css-static').trim().split(/\s+/));
+  }
+  if (efStaticCss.has(id)) return;
   const s = document.createElement('style');
   s.id = id;
   s.textContent = `@layer meridian{${text}}`;

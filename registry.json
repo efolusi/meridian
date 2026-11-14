@@ -7,12 +7,17 @@
       "name": "meridian-base",
       "type": "registry:style",
       "title": "Meridian base",
-      "description": "Stylesheet entry and the full token layer (colour, typography, spacing, effects) in light, dark and compact. Every other item depends on this.",
+      "description": "Stylesheet entry, the full token layer (colour, typography, spacing, effects) in light, dark and compact, and every component's CSS as a static sheet so server-rendered pages arrive styled. Every other item depends on this.",
       "files": [
         {
-          "path": "styles.css",
+          "path": "registry/styles.css",
           "type": "registry:file",
           "target": "styles.css"
+        },
+        {
+          "path": "registry/components.css",
+          "type": "registry:file",
+          "target": "components.css"
         },
         {
           "path": "tokens/base.css",
