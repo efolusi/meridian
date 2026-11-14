@@ -77,7 +77,8 @@ def _registry_deps(jsx, name_of_source):
     CLI writes a file whose imports resolve to nothing.
     """
     deps = set()
-    for spec in re.findall(r"^import .* from '([^']+)';", jsx.read_text(), re.M):
+    # [^;]* spans lines: `import {\n  Dialog,\n  ...\n} from '../feedback/Dialog.jsx';`
+    for spec in re.findall(r"^import\s[^;]*?\sfrom\s+'([^']+)';", jsx.read_text(), re.M):
         if not spec.endswith(".jsx"):
             continue
         target = (jsx.parent / spec).resolve()

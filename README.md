@@ -57,9 +57,25 @@ Dark mode and compact density are attribute scopes, not rebuilds:
 | **npm** | you have a bundler (Vite, Next, Remix) | `npm install @efolusi/meridian` |
 | **CDN** (above) | prototypes, demos, a single-file artifact | the four tags above |
 | **Vendor the folder** | you want to own and edit the source | copy the repo; link `styles.css` and `_ds_bundle.js` |
-| **Vendor one component** | you need Button, not all 123 | copy `components/<group>/<Name>.jsx` + `.d.ts` (MIT, no attribution required) |
+| **Vendor one component** | you need Button, not all 123 | `npx @efolusi/meridian-cli add button`, or copy `components/<group>/<Name>.jsx` + `.d.ts` by hand (MIT, no attribution required) |
 
 **From the registry.** Compatible registry clients install editable component source, types, usage guidance, and the Meridian dependencies it needs from `efolusi/meridian/<item>`. The same catalog is served at `https://meridian.efolusi.com/site/registry.json`, with items under `https://meridian.efolusi.com/site/registry/<item>.json`.
+
+### Meridian CLI
+
+The CLI copies a component's source, types and usage notes into your project,
+along with the Meridian items it imports, from the hosted registry:
+
+```bash
+npx @efolusi/meridian-cli add button
+npx @efolusi/meridian-cli add dialog tabs --dir src/ui --dry-run
+npx @efolusi/meridian-cli list
+```
+
+It refuses to overwrite files you changed unless you pass `--overwrite`, and it
+prints the npm packages to install instead of running npm. See the
+[CLI guide](packages/cli/README.md) for every option, exit code, and what it
+refuses to write.
 
 ### Meridian Guard
 

@@ -87,6 +87,9 @@ const GATES = [
   ['Unit tests', 'npm', ['test', '--silent']],
   ['npm package builds', 'node', ['scripts/build_npm.mjs']],
   ['npm package imports', 'node', ['scripts/check_npm_package.mjs']],
+  // The size gate measures packages/cli/dist, so the CLI builds first.
+  ['CLI sub-package builds', 'node', ['scripts/build_pkg_cli.mjs']],
+  ['CLI package imports and add/list contract', 'node', ['scripts/check_pkg_cli.mjs']],
   ['Bundle and package size budget', 'node', ['scripts/check_size.mjs']],
   ['Tokens sub-package builds', 'node', ['scripts/build_pkg_tokens.mjs']],
   ['Icons sub-package builds', 'node', ['scripts/build_pkg_icons.mjs']],
