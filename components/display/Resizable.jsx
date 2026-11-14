@@ -1,6 +1,6 @@
 'use client';
 import React from 'react';
-import { injectEfCss, cssPct } from '../forms/Button.jsx';
+import { injectEfCss, cssPct, isElementOfType } from '../forms/Button.jsx';
 import { useDirection } from './Direction.jsx';
 
 const CSS = `
@@ -39,7 +39,7 @@ export const ResizablePanelGroup = React.forwardRef(function ResizablePanelGroup
   injectEfCss('ef-css-resizable', CSS);
   const readingDirection = useDirection();
   const nodes = React.Children.toArray(children);
-  const panels = nodes.filter(child => React.isValidElement(child) && child.type === ResizablePanel);
+  const panels = nodes.filter(child => isElementOfType(child, ResizablePanel));
   const [sizes, setSizes] = React.useState(() => initialPanelSizes(panels));
   const updatePair = React.useCallback((index, delta) => {
     setSizes(current => {
@@ -67,8 +67,8 @@ export const ResizablePanelGroup = React.forwardRef(function ResizablePanelGroup
       <div {...props} ref={ref} data-slot="resizable-panel-group" data-orientation={orientation} aria-orientation={orientation} className={`ef-resizable${className ? ' ' + className : ''}`}>
         {nodes.map((child, index) => {
           if (!React.isValidElement(child)) return child;
-          if (child.type === ResizablePanel) return React.cloneElement(child, { key: child.key ?? index, _panelIndex: panelIndex++ });
-          if (child.type === ResizableHandle) return React.cloneElement(child, { key: child.key ?? index, _handleIndex: handleIndex++ });
+          if (isElementOfType(child, ResizablePanel)) return React.cloneElement(child, { key: child.key ?? index, _panelIndex: panelIndex++ });
+          if (isElementOfType(child, ResizableHandle)) return React.cloneElement(child, { key: child.key ?? index, _handleIndex: handleIndex++ });
           return child;
         })}
       </div>

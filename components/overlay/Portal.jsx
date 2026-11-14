@@ -8,6 +8,22 @@ const CSS = `
 .ef-portal{display:contents}
 `;
 
+const noopSubscribe = () => () => {};
+const onClient = () => true;
+const onServer = () => false;
+/**
+ * False on the server and during hydration, true for every other client render.
+ *
+ * A Portal renders nothing on the server, so one mounted while React hydrates
+ * server HTML is a mismatch. An owner that always mounts a portal on page load
+ * (Toaster) renders it only once this is true. Overlays that open on first load
+ * keep the plain Portal: their effects measure and focus the panel in the same
+ * commit, which a deferred portal would not have rendered yet.
+ */
+export function useHydrated() {
+  return React.useSyncExternalStore(noopSubscribe, onClient, onServer);
+}
+
 /**
  * Renders children into document.body (or `container`).
  *
@@ -15,21 +31,10 @@ const CSS = `
  * subtree is clipped by the first ancestor with overflow:auto|hidden — which in
  * practice is the scrolling table, drawer, or card it was opened from.
  */
-// False only while React hydrates server HTML; true for every other client render.
-const noopSubscribe = () => () => {};
-const isClient = () => true;
-const isServer = () => false;
-
 export function Portal({ children, container }) {
   injectEfCss('ef-css-portal', CSS);
   const hostRef = React.useRef(null);
-  // The server renders nothing here, so the hydrating render must too or React
-  // reports a mismatch (Toaster mounts a Portal on every page). The store hands
-  // hydration its server value and re-renders right after; an ordinary client
-  // mount (an overlay opening) gets true at once, so its children still exist
-  // on the first render.
-  const hydrated = React.useSyncExternalStore(noopSubscribe, isClient, isServer);
-  if (hostRef.current === null && hydrated && typeof document !== 'undefined') {
+  if (hostRef.current === null && typeof document !== 'undefined') {
     hostRef.current = document.createElement('div');
     hostRef.current.className = 'ef-portal';
   }
@@ -56,7 +61,7 @@ export function Portal({ children, container }) {
       host.__efRefocus = active && host.contains(active) ? active : null;
       if (host.parentNode) host.parentNode.removeChild(host);
     };
-  }, [container, hydrated]);
+  }, [container]);
   if (!hostRef.current) return null;
   return ReactDOM.createPortal(children, hostRef.current);
 }

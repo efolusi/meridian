@@ -5,6 +5,9 @@ import { hydrateRoot, createRoot } from 'react-dom/client';
 import { act } from '@testing-library/react';
 import { Portal } from '../components/overlay/Portal.jsx';
 import { Toaster } from '../components/feedback/Toast.jsx';
+import { Dialog, DialogContent, DialogTitle } from '../components/feedback/Dialog.jsx';
+import { Select, SelectTrigger, SelectValue, SelectContent, SelectItem } from '../components/forms/Select.jsx';
+import { isElementOfType } from '../components/forms/Button.jsx';
 
 // Found in a fresh Next.js app: the server rendered nothing for a Portal, the
 // hydrating client rendered the portal, and React reported a mismatch on every
@@ -17,8 +20,14 @@ describe('Portal hydration', () => {
   });
 
   function hydrate(element) {
+    // A real server has no document; jsdom does, so hide it for the server pass.
+    const doc = globalThis.document;
+    vi.stubGlobal('document', undefined);
+    let html;
+    try { html = renderToString(element); } finally { vi.unstubAllGlobals(); }
+    expect(globalThis.document).toBe(doc);
     container = document.createElement('div');
-    container.innerHTML = renderToString(element);
+    container.innerHTML = html;
     document.body.appendChild(container);
     const recoverable = vi.fn();
     let root;
@@ -33,6 +42,21 @@ describe('Portal hydration', () => {
     expect(recoverable).not.toHaveBeenCalled();
     expect(document.body.querySelector('.ef-portal [data-slot="toaster"]')).not.toBeNull();
     act(() => root.unmount());
+  });
+
+  it('hydrates a dialog that is open on first load without throwing, and focuses inside it', () => {
+    // A deferred portal would leave DialogContent's focus effect without a panel
+    // in the hydration commit. Portal keeps rendering on the first client render;
+    // React recovers the server/client difference for an open overlay itself.
+    const page = <Dialog defaultOpen><DialogContent><DialogTitle>Hi</DialogTitle><button>ok</button></DialogContent></Dialog>;
+    const errors = vi.spyOn(console, 'error').mockImplementation(() => {});
+    try {
+      const { root } = hydrate(page);
+      expect(document.activeElement?.closest('[role="dialog"]')).not.toBeNull();
+      act(() => root.unmount());
+    } finally {
+      errors.mockRestore();
+    }
   });
 
   it('renders children on the first client render outside hydration', () => {
@@ -88,5 +112,33 @@ describe('Portal under StrictMode', () => {
       Node.prototype.removeChild = removeChild;
       container.remove();
     }
+  });
+});
+
+describe('compound children composed in a Server Component', () => {
+  // Server Component children arrive with a lazy client reference as their type.
+  // React.lazy has the same shape ({ $$typeof: react.lazy, _payload, _init }).
+  async function lazyOf(Component) {
+    const Lazy = React.lazy(() => Promise.resolve({ default: Component }));
+    // Resolve it once so _init returns the component instead of throwing.
+    try { Lazy._init(Lazy._payload); } catch (pending) { await pending; }
+    return Lazy;
+  }
+
+  it('isElementOfType sees through a resolved lazy type', async () => {
+    const LazyItem = await lazyOf(SelectItem);
+    expect(isElementOfType(<LazyItem value="a">A</LazyItem>, SelectItem)).toBe(true);
+    expect(isElementOfType(<LazyItem value="a">A</LazyItem>, SelectTrigger)).toBe(false);
+    expect(isElementOfType('text', SelectItem)).toBe(false);
+  });
+
+  it('Select shows the selected label when its items are lazy references', async () => {
+    const LazyItem = await lazyOf(SelectItem);
+    const html = renderToString(
+      <Select defaultValue="one"><SelectTrigger><SelectValue placeholder="Pick one" /></SelectTrigger>
+        <SelectContent><LazyItem value="one">One</LazyItem><LazyItem value="two">Two</LazyItem></SelectContent></Select>
+    );
+    expect(html).toContain('>One<');
+    expect(html).not.toContain('Pick one');
   });
 });
