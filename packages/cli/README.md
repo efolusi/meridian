@@ -29,12 +29,18 @@ npx meridian add button --dry-run
 relative path. When it finishes, `add` prints the npm packages the files
 import. It does not run `npm install` for you.
 
-Two files differ from the repository so they work in a bundled app.
+Import `styles.css` once, from your app's entry or root layout. It carries the
+tokens and, through `components.css`, every component's CSS, so a
+server-rendered page (Next.js, Vite SSR) is styled before it hydrates.
+
+Three files differ from the repository so they work in a bundled app.
 `components/icons/Icon.jsx` reads every glyph from the generated
 `components/icons/_svg.js` instead of fetching SVG files. `tokens/fonts.css`
 loads the brand fonts from the published `@efolusi/meridian-tokens` package
 on jsDelivr, pinned to the release. To self-host the fonts, copy that package's
-`assets/fonts/` into your app and change the `url()`s.
+`assets/fonts/` into your app and change the `url()`s. `styles.css` adds an
+import of the generated `components.css`; components skip injecting CSS that
+this sheet already carries.
 
 ## Options
 
