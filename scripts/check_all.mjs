@@ -48,6 +48,8 @@ const GENERATORS = [
  */
 const GENERATED_PATHS = [
   'registry.json',
+  'registry/icons/_svg.js',
+  'registry/tokens/fonts.css',
   'site/registry',
   'site/registry.json',
   'site/registry.js',

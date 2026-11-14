@@ -30,7 +30,7 @@
           "target": "tokens/effects.css"
         },
         {
-          "path": "tokens/fonts.css",
+          "path": "registry/tokens/fonts.css",
           "type": "registry:file",
           "target": "tokens/fonts.css"
         },
@@ -3217,8 +3217,19 @@
       ],
       "files": [
         {
-          "path": "components/icons/Icon.jsx",
-          "type": "registry:ui"
+          "path": "registry/icons/Icon.jsx",
+          "type": "registry:ui",
+          "target": "components/icons/Icon.jsx"
+        },
+        {
+          "path": "registry/icons/_svg.js",
+          "type": "registry:file",
+          "target": "components/icons/_svg.js"
+        },
+        {
+          "path": "assets/icons/LICENSE-Lucide.txt",
+          "type": "registry:file",
+          "target": "components/icons/LICENSE-Lucide.txt"
         },
         {
           "path": "components/icons/Icon.d.ts",

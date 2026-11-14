@@ -35,6 +35,12 @@ try {
   for (const file of ['components/forms/Button.jsx', 'components/forms/Button.d.ts', 'components/forms/Button.prompt.md', 'components/icons/Icon.jsx', 'styles.css']) {
     if (!fs.existsSync(path.join(temporary, 'app', file))) throw new Error(`add button did not write ${file}`);
   }
+  for (const file of ['components/icons/_svg.js', 'components/icons/LICENSE-Lucide.txt', 'tokens/fonts.css']) {
+    if (!fs.existsSync(path.join(temporary, 'app', file))) throw new Error(`add button did not write ${file}`);
+  }
+  // Copied-in files must not depend on paths only the zero-build site serves.
+  if (fs.readFileSync(path.join(temporary, 'app', 'components/icons/Icon.jsx'), 'utf8').includes('fetch(')) throw new Error('the copied Icon fetches SVG files; it must use the inlined glyph map');
+  if (fs.readFileSync(path.join(temporary, 'app', 'tokens/fonts.css'), 'utf8').includes('../assets/fonts/')) throw new Error('the copied fonts.css points at ../assets/fonts/, which the registry does not ship');
   if (!added.stdout.includes('npm install react')) throw new Error(`add button did not print the npm packages:\n${added.stdout}`);
 
   fs.appendFileSync(path.join(temporary, 'app', 'components', 'forms', 'Button.jsx'), '// local edit\n');
