@@ -9,8 +9,8 @@
       "gzip": 28179
     },
     "_ds_bundle.js": {
-      "bytes": 808032,
-      "gzip": 143622
+      "bytes": 809571,
+      "gzip": 144327
     }
   },
   "modules": [
@@ -859,8 +859,8 @@
       "exports": [
         "Button"
       ],
-      "bytes": 46340,
-      "gzip": 8000
+      "bytes": 46804,
+      "gzip": 8283
     },
     {
       "module": "forms/ButtonGroup.js",

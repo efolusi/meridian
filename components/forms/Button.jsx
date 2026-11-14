@@ -57,9 +57,43 @@ const CSS = `
  * app rule accidentally collided with a component rule and lost, it now wins.
  * That is the intended direction, but it is a real change and worth looking at
  * a page or two after upgrading.
+ *
+ * Server-rendered apps can also import a static components.css (the registry's
+ * `meridian-ssr-css` item), so the HTML is styled before hydration. That sheet
+ * lists `<id>_<hash>` pairs in `--ef-css-static` on :root, the hash being
+ * FNV-1a over the exact text each component passes here. This skips an id only
+ * when the hash of `text` matches: an edited copy, or a component from another
+ * release than the sheet, injects its own CSS as before, so the static sheet
+ * can save work but never replace a component's CSS. The list is read once per
+ * page: reading it per call would force a style recalculation after every
+ * <style> this appends.
  */
+let efStaticCss;
+function efCssHash(text) {
+  let h = 0x811c9dc5;
+  for (let i = 0; i < text.length; i++) {
+    h ^= text.charCodeAt(i);
+    h = Math.imul(h, 0x01000193);
+  }
+  return (h >>> 0).toString(16).padStart(8, '0');
+}
 export function injectEfCss(id, text) {
   if (typeof document === 'undefined' || document.getElementById(id)) return;
+  if (!efStaticCss) {
+    efStaticCss = new Map();
+    const listed = getComputedStyle(document.documentElement).getPropertyValue('--ef-css-static').trim();
+    for (const pair of listed ? listed.split(/\s+/) : []) {
+      const at = pair.lastIndexOf('_');
+      if (at > 0) efStaticCss.set(pair.slice(0, at), pair.slice(at + 1));
+    }
+  }
+  const listedHash = efStaticCss.get(id);
+  if (listedHash === true) return;
+  if (listedHash !== undefined) {
+    // Settle each id once: the hash runs on first render, not on every one.
+    if (listedHash === efCssHash(text)) { efStaticCss.set(id, true); return; }
+    efStaticCss.delete(id);
+  }
   const s = document.createElement('style');
   s.id = id;
   s.textContent = `@layer meridian{${text}}`;

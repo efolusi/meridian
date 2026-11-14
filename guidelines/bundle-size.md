@@ -15,7 +15,7 @@ CSS is not counted per component: `styles.css` ships every component style in on
 | --- | ---: | ---: |
 | `@efolusi/meridian` | 347.3 kB | 78.0 kB |
 | `dist/components.css` | 193.9 kB | 27.5 kB |
-| `_ds_bundle.js` | 789.1 kB | 140.3 kB |
+| `_ds_bundle.js` | 790.6 kB | 140.9 kB |
 
 The root import, `@efolusi/meridian`, is every component. `_ds_bundle.js` is the zero-build CDN bundle, which also carries each component's CSS. The root import is minified; the CSS and the CDN bundle are measured as shipped.
 
@@ -105,7 +105,7 @@ The root import, `@efolusi/meridian`, is every component. `_ds_bundle.js` is the
 | `files/FileTile.js` | FileTile | 46.8 kB | 8.2 kB |
 | `files/FileTypeIcon.js` | FileTypeIcon | 45.3 kB | 7.5 kB |
 | `finance/PaymentCard.js` | PaymentCard | 2.1 kB | 0.8 kB |
-| `forms/Button.js` | Button | 45.3 kB | 7.8 kB |
+| `forms/Button.js` | Button | 45.7 kB | 8.1 kB |
 | `forms/ButtonGroup.js` | ButtonGroup, ButtonGroupText, ButtonGroupSeparator | 2.1 kB | 0.8 kB |
 | `forms/ButtonTile.js` | ButtonTile, ButtonTileGroup | 44.5 kB | 7.3 kB |
 | `forms/Checkbox.js` | Checkbox | 45.7 kB | 7.9 kB |
