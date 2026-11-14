@@ -87,6 +87,12 @@ jobs:
           # re-runs and completes whatever is still missing.
           GO=false
           for name in @efolusi/meridian @efolusi/meridian-tokens @efolusi/meridian-icons @efolusi/meridian-guard @efolusi/meridian-cli; do
+            # A package that has never been published needs its one-time manual
+            # publish first (RELEASING.md); until then it cannot hold a release.
+            if [ "$name" = @efolusi/meridian-cli ] && ! npm view "$name" name >/dev/null 2>&1; then
+              echo "::warning::$name is not on npm yet. Do the first publish in RELEASING.md; until then releases skip it."
+              continue
+            fi
             if npm view "$name@$VERSION" version >/dev/null 2>&1; then
               echo "$name@$VERSION already on the registry"
             else
@@ -270,6 +276,10 @@ jobs:
         working-directory: ${{ runner.temp }}/npm-packages
         run: |
           while IFS="$(printf '\t')" read -r file name ver; do
+            if [ "$name" = @efolusi/meridian-cli ] && ! npm view "$name" name >/dev/null 2>&1; then
+              echo "::warning::$name is not on npm yet, so it is skipped. Do the first publish in RELEASING.md."
+              continue
+            fi
             if npm view "$name@$ver" version >/dev/null 2>&1; then
               echo "$name@$ver already published — skipping"
             else

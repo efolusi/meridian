@@ -43,12 +43,9 @@ and must agree:
 ## First publish of `@efolusi/meridian-cli`
 
 The CLI package is new and has never been published, so npm has no Trusted
-Publisher for it yet. Until the steps below are done, the `decide` job sees
-`@efolusi/meridian-cli` missing at every version, so each push to `main` starts
-a publish run, and that run fails with a 404 at the CLI. The CLI is packed
-last, so the other five packages are already published when it fails, but the
-`release` job needs a successful publish, so no tag or GitHub Release is cut
-for that version until the CLI goes through.
+Publisher for it yet. Until the steps below are done, `publish.yml` skips
+`@efolusi/meridian-cli` with a warning: the other packages, the tag and the
+GitHub Release still go out, but the CLI is not on npm.
 
 Do this once, as the owner, before the first release that includes the CLI
 reaches `main`:
