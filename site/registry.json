@@ -3275,7 +3275,8 @@
       "registryDependencies": [
         "https://meridian.efolusi.com/site/registry/meridian-base.json",
         "https://meridian.efolusi.com/site/registry/button.json",
-        "https://meridian.efolusi.com/site/registry/direction.json"
+        "https://meridian.efolusi.com/site/registry/direction.json",
+        "https://meridian.efolusi.com/site/registry/dropdownmenu.json"
       ],
       "files": [
         {
@@ -3681,7 +3682,8 @@
       ],
       "registryDependencies": [
         "https://meridian.efolusi.com/site/registry/meridian-base.json",
-        "https://meridian.efolusi.com/site/registry/button.json"
+        "https://meridian.efolusi.com/site/registry/button.json",
+        "https://meridian.efolusi.com/site/registry/dialog.json"
       ],
       "files": [
         {

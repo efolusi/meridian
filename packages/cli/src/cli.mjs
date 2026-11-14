@@ -62,6 +62,8 @@ function parseArgs(argv) {
     else if (!options.command) options.command = arg;
     else options.names.push(arg);
   }
+  if (!options.registry) throw new UsageError('--registry needs a value');
+  if (!options.dir) throw new UsageError('--dir needs a value');
   if (!options.command) return { help: true, missing: true };
   if (options.command === 'ls') options.command = 'list';
   if (options.command !== 'add' && options.command !== 'list') throw new UsageError(`unknown command ${options.command}`);

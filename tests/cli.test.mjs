@@ -275,6 +275,8 @@ describe('arguments', () => {
     [['add', 'button', '--bogus'], EXIT.USAGE],
     [['add', 'button', '--registry', 'file:///etc'], EXIT.USAGE],
     [['add', 'button', '--registry'], EXIT.USAGE],
+    [['add', 'button', '--registry='], EXIT.USAGE],
+    [['add', 'button', '--dir='], EXIT.USAGE],
     [[], EXIT.USAGE],
     [['--help'], EXIT.OK],
   ])('%j exits %i', async (argv, code) => {
@@ -368,6 +370,26 @@ describe('meridian bin against site/registry', () => {
     const index = JSON.parse(await fs.readFile(path.resolve('site/registry.json'), 'utf8'));
     expect(result.stdout.trim().split('\n')).toHaveLength(index.items.length);
     expect(result.stdout).toMatch(/^button +The action button/m);
+  });
+
+  // Imports can span lines (`import {\n  Dialog,\n} from '../feedback/Dialog.jsx'`);
+  // Drawer and Menubar once shipped without the item they import.
+  it('every item brings the files its relative imports need', async () => {
+    const registry = await openRegistry(SITE_REGISTRY);
+    const names = (await fs.readdir(SITE_REGISTRY)).map(file => file.slice(0, -'.json'.length));
+    const missing = [];
+    for (const name of names) {
+      const items = await resolveItems([name], registry);
+      const targets = new Set(items.flatMap(entry => entry.files.map(file => file.target)));
+      for (const file of items.flatMap(entry => entry.files)) {
+        if (!/\.jsx?$/.test(file.target)) continue;
+        for (const [, spec] of file.content.matchAll(/^import\s[^;]*?\sfrom\s+'(\.[^']+)';/gm)) {
+          const wanted = path.posix.normalize(path.posix.join(path.posix.dirname(file.target), spec));
+          if (!['', '.jsx', '.js'].some(ext => targets.has(wanted + ext))) missing.push(`${name}: ${file.target} imports ${spec}`);
+        }
+      }
+    }
+    expect(missing).toEqual([]);
   });
 
   it('prints the version from its package.json', async () => {
