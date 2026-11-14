@@ -6,9 +6,10 @@ import fs from 'node:fs';
 import os from 'node:os';
 import path from 'node:path';
 import { spawnSync } from 'node:child_process';
-import { pathToFileURL } from 'node:url';
+import { fileURLToPath, pathToFileURL } from 'node:url';
 
-const ROOT = path.resolve(new URL('..', import.meta.url).pathname);
+// fileURLToPath, not URL.pathname: on Windows the pathname is /C:/...
+const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const DIST = path.join(ROOT, 'packages', 'cli', 'dist');
 const BIN = path.join(DIST, 'bin', 'meridian.js');
 const REGISTRY = path.join(ROOT, 'site', 'registry');

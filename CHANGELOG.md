@@ -11,6 +11,16 @@
 - **Dialogs keep their initial focus under React StrictMode.** StrictMode's effect replay detached the portal host and blurred the button the dialog had just focused; the portal now restores it.
 - **MCP server 0.1.5: `get_component` shows where each file goes.** It printed the registry's source path, so the `Icon` files appeared under `registry/icons/` instead of `components/icons/`. Generated data files such as the glyph map are named instead of printed.
 - **Popover, HoverCard and Tooltip content keep a caller's `id`.** The generated id overwrote it, so a label, a test hook or an `aria-*` reference to that id found nothing. The trigger's `aria-controls` or `aria-describedby` now follows whichever id is rendered.
+- **The CLI behaves on Windows.** An audit against Windows file-system rules found and fixed nine problems:
+  - Targets that differ only in letter case are refused (they are one file on NTFS).
+  - A CRLF or byte-order-mark checkout of the same content counts as unchanged instead of a conflict.
+  - `--overwrite` checks the open file against the path before truncating, since Windows has no `O_NOFOLLOW`.
+  - Realpath falls back to the JS walker on RAM and virtual drives.
+  - A folder named like `..foo` is no longer refused.
+  - Caret ranges in the `npm install` hint are quoted, because cmd.exe drops `^`.
+  - A failed write lists the files already written.
+  - `check_pkg_cli.mjs` resolves its root with `fileURLToPath`.
+  - The symlink tests use junctions on Windows.
 - **The `drawer` and `menubar` registry items now include what they import.** The registry generator missed imports written across several lines, so `drawer` came without `dialog` and `menubar` without `dropdownmenu`, and the copied files did not resolve.
 - **A migration guide lists every deprecation.** `guidelines/migration.md` has the policy and, for 2.0, the Drawer `modal` removal with before and after code. The Drawer warning and type link to it, and `npm run check` fails when a deprecation is missing from the guide.
 - **`meridian-guard --fix` removes ignored deprecated props.** It deletes Drawer `modal` from every call site Guard can see; JSON output marks fixable diagnostics with `fixable: true`.
