@@ -85,10 +85,14 @@ describe('Icon', () => {
     await act(async () => {
       render(<Icon name="not-a-real-glyph" />);
     });
-    const afterFirst = fetchMock.mock.calls.length;
+    // Count only this glyph's requests: retries from the network-failure test
+    // above can still be in their backoff and land on this mock.
+    const own = () => fetchMock.mock.calls.filter(([url]) => String(url).includes('not-a-real-glyph')).length;
+    const afterFirst = own();
+    expect(afterFirst).toBe(1);
     await act(async () => {
       render(<Icon name="not-a-real-glyph" />);
     });
-    expect(fetchMock.mock.calls.length).toBe(afterFirst);
+    expect(own()).toBe(afterFirst);
   });
 });
