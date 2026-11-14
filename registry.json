@@ -7,17 +7,12 @@
       "name": "meridian-base",
       "type": "registry:style",
       "title": "Meridian base",
-      "description": "Stylesheet entry, the full token layer (colour, typography, spacing, effects) in light, dark and compact, and every component's CSS as a static sheet so server-rendered pages arrive styled. Every other item depends on this.",
+      "description": "Stylesheet entry and the full token layer (colour, typography, spacing, effects) in light, dark and compact. Every other item depends on this.",
       "files": [
         {
-          "path": "registry/styles.css",
+          "path": "styles.css",
           "type": "registry:file",
           "target": "styles.css"
-        },
-        {
-          "path": "registry/components.css",
-          "type": "registry:file",
-          "target": "components.css"
         },
         {
           "path": "tokens/base.css",
@@ -53,6 +48,25 @@
           "path": "tokens/typography.css",
           "type": "registry:file",
           "target": "tokens/typography.css"
+        }
+      ],
+      "categories": [
+        "foundation"
+      ]
+    },
+    {
+      "name": "meridian-ssr-css",
+      "type": "registry:style",
+      "title": "Meridian component CSS for server rendering",
+      "description": "Every component's CSS as one static stylesheet. Import it after styles.css in a server-rendered app (Next.js, Remix, Vite SSR) so pages arrive styled instead of changing when they hydrate.",
+      "registryDependencies": [
+        "https://meridian.efolusi.com/site/registry/meridian-base.json"
+      ],
+      "files": [
+        {
+          "path": "registry/components.css",
+          "type": "registry:file",
+          "target": "components.css"
         }
       ],
       "categories": [
