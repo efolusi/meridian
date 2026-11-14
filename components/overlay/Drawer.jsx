@@ -1,5 +1,6 @@
 'use client';
 import React from 'react';
+import { useHydrated } from './Portal.jsx';
 import { injectEfCss } from '../forms/Button.jsx';
 import {
   Dialog,
@@ -48,7 +49,9 @@ export function Drawer({ open: controlled, defaultOpen = false, onOpenChange, di
   injectEfCss('ef-css-drawer', CSS);
   React.useEffect(() => { if (modal === false) warnModalIgnored(); }, [modal]);
   const [internal, setInternal] = React.useState(defaultOpen);
-  const open = controlled === undefined ? internal : controlled;
+  // Closed while React hydrates server HTML (the server rendered no portal),
+  // open right after, so effects keyed on it run with the panel present.
+  const open = useHydrated() && (controlled === undefined ? internal : controlled);
   const setOpen = React.useCallback(next => {
     if (controlled === undefined) setInternal(next);
     onOpenChange?.(next);

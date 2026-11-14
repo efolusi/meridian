@@ -3,7 +3,7 @@ import React from 'react';
 import { Icon } from '../icons/Icon.jsx';
 import { injectEfCss } from './Button.jsx';
 import { InputGroup, InputGroupAddon, InputGroupInput } from './InputGroup.jsx';
-import { Portal, useAnchoredStyle } from '../overlay/Portal.jsx';
+import { Portal, useAnchoredStyle, useHydrated } from '../overlay/Portal.jsx';
 
 const CSS = `
 .ef-combobox{position:relative;width:100%}.ef-combobox__input-group{width:100%}.ef-combobox__input{min-width:0}.ef-combobox__actions{gap:2px;padding-inline:4px;border:0}.ef-combobox__button{display:inline-flex;width:26px;height:26px;align-items:center;justify-content:center;border:0;border-radius:var(--radius-sm);background:transparent;color:var(--text-muted);cursor:pointer}.ef-combobox__button:hover{background:var(--surface-sunken);color:var(--text-primary)}.ef-combobox__button:focus-visible{outline:none;box-shadow:var(--focus-ring)}.ef-combobox__button:disabled{cursor:not-allowed;opacity:.45}
@@ -33,7 +33,9 @@ export function Combobox({ items = [], value, defaultValue, onValueChange, multi
   const records = React.useRef(new Map());
   const anchorRef = React.useRef(null);
   const currentValue = value === undefined ? internalValue : value;
-  const isOpen = open === undefined ? internalOpen : open;
+  // Closed while React hydrates server HTML (the server rendered no portal),
+  // open right after, so effects keyed on it run with the panel present.
+  const isOpen = useHydrated() && (open === undefined ? internalOpen : open);
   const query = inputValue === undefined ? internalInput : inputValue;
   const setOpen = React.useCallback(next => { if (open === undefined) setInternalOpen(next); onOpenChange?.(next); }, [open, onOpenChange]);
   const setQuery = React.useCallback(next => { if (inputValue === undefined) setInternalInput(next); onInputValueChange?.(next); }, [inputValue, onInputValueChange]);

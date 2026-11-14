@@ -1,16 +1,16 @@
 {
   "totals": {
     "@efolusi/meridian": {
-      "bytes": 355647,
-      "gzip": 79906
+      "bytes": 355742,
+      "gzip": 79951
     },
     "dist/components.css": {
       "bytes": 198579,
       "gzip": 28179
     },
     "_ds_bundle.js": {
-      "bytes": 809571,
-      "gzip": 144327
+      "bytes": 811755,
+      "gzip": 144554
     }
   },
   "modules": [
@@ -672,8 +672,8 @@
       "exports": [
         "Toolbar"
       ],
-      "bytes": 50225,
-      "gzip": 9345
+      "bytes": 50319,
+      "gzip": 9392
     },
     {
       "module": "display/TreeList.js",
@@ -713,8 +713,8 @@
         "AlertDialogCancel",
         "AlertDialogAction"
       ],
-      "bytes": 6980,
-      "gzip": 2418
+      "bytes": 7074,
+      "gzip": 2472
     },
     {
       "module": "feedback/Banner.js",
@@ -731,8 +731,8 @@
       "exports": [
         "ConfirmDialog"
       ],
-      "bytes": 55338,
-      "gzip": 10627
+      "bytes": 55426,
+      "gzip": 10685
     },
     {
       "module": "feedback/Dialog.js",
@@ -749,8 +749,8 @@
         "DialogTitle",
         "DialogDescription"
       ],
-      "bytes": 51297,
-      "gzip": 9379
+      "bytes": 51391,
+      "gzip": 9432
     },
     {
       "module": "feedback/Loader.js",
@@ -797,8 +797,8 @@
         "TooltipTrigger",
         "TooltipContent"
       ],
-      "bytes": 5092,
-      "gzip": 2012
+      "bytes": 5186,
+      "gzip": 2050
     },
     {
       "module": "files/Attachment.js",
@@ -913,8 +913,8 @@
         "ComboboxChip",
         "ComboboxChipsInput"
       ],
-      "bytes": 58626,
-      "gzip": 11802
+      "bytes": 58714,
+      "gzip": 11849
     },
     {
       "module": "forms/Field.js",
@@ -1053,8 +1053,8 @@
         "SelectSeparator",
         "SelectItem"
       ],
-      "bytes": 52256,
-      "gzip": 10161
+      "bytes": 52350,
+      "gzip": 10208
     },
     {
       "module": "forms/Slider.js",
@@ -1139,8 +1139,8 @@
         "MenubarSubTrigger",
         "MenubarSubContent"
       ],
-      "bytes": 60581,
-      "gzip": 11970
+      "bytes": 60690,
+      "gzip": 12007
     },
     {
       "module": "navigation/NavigationMenu.js",
@@ -1284,8 +1284,8 @@
         "CommandShortcut",
         "CommandSeparator"
       ],
-      "bytes": 55653,
-      "gzip": 10794
+      "bytes": 55747,
+      "gzip": 10847
     },
     {
       "module": "overlay/ContextMenu.js",
@@ -1307,8 +1307,8 @@
         "ContextMenuSubTrigger",
         "ContextMenuSubContent"
       ],
-      "bytes": 56720,
-      "gzip": 11133
+      "bytes": 56821,
+      "gzip": 11170
     },
     {
       "module": "overlay/Drawer.js",
@@ -1325,8 +1325,8 @@
         "DrawerTitle",
         "DrawerDescription"
       ],
-      "bytes": 55170,
-      "gzip": 10432
+      "bytes": 55277,
+      "gzip": 10483
     },
     {
       "module": "overlay/DropdownMenu.js",
@@ -1348,8 +1348,8 @@
         "DropdownMenuSubTrigger",
         "DropdownMenuSubContent"
       ],
-      "bytes": 56649,
-      "gzip": 11146
+      "bytes": 56750,
+      "gzip": 11174
     },
     {
       "module": "overlay/HoverCard.js",
@@ -1359,8 +1359,8 @@
         "HoverCardTrigger",
         "HoverCardContent"
       ],
-      "bytes": 5596,
-      "gzip": 2289
+      "bytes": 5690,
+      "gzip": 2339
     },
     {
       "module": "overlay/Popover.js",
@@ -1373,8 +1373,8 @@
         "PopoverTitle",
         "PopoverDescription"
       ],
-      "bytes": 6750,
-      "gzip": 2560
+      "bytes": 6844,
+      "gzip": 2604
     },
     {
       "module": "overlay/Portal.js",
@@ -1398,8 +1398,8 @@
         "SheetTitle",
         "SheetDescription"
       ],
-      "bytes": 52417,
-      "gzip": 9579
+      "bytes": 52511,
+      "gzip": 9630
     }
   ]
 }

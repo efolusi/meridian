@@ -1,7 +1,7 @@
 'use client';
 import React from 'react';
 import { injectEfCss, mergeRefs, useIsoLayoutEffect } from '../forms/Button.jsx';
-import { Portal } from '../overlay/Portal.jsx';
+import { Portal, useHydrated } from '../overlay/Portal.jsx';
 
 const CSS = `
 .ef-tooltip__bubble{position:fixed;background:var(--surface-inverse);color:var(--text-inverse);font-size:var(--text-xs);font-weight:var(--weight-medium);line-height:1.35;padding:5px 9px;border-radius:6px;white-space:nowrap;pointer-events:none;z-index:var(--z-tooltip);animation:ef-tooltip-in var(--dur-fast) var(--ease-out)}
@@ -23,7 +23,9 @@ export function Tooltip({ delayDuration, disableHoverableContent, open: controll
   injectEfCss('ef-css-tooltip', CSS);
   const provider = React.useContext(TooltipProviderCtx);
   const [inner, setInner] = React.useState(defaultOpen);
-  const open = controlled !== undefined ? controlled : inner;
+  // Closed while React hydrates server HTML (the server rendered no portal),
+  // open right after, so effects keyed on it run with the panel present.
+  const open = useHydrated() && (controlled !== undefined ? controlled : inner);
   const triggerRef = React.useRef(null);
   const timerRef = React.useRef(null);
   const contentId = React.useId();
