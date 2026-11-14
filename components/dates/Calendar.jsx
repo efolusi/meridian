@@ -1,3 +1,4 @@
+'use client';
 import React from 'react';
 import { IconButton } from '../forms/IconButton.jsx';
 import { injectEfCss } from '../forms/Button.jsx';

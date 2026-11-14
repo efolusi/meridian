@@ -1,3 +1,4 @@
+'use client';
 import React from 'react';
 import { injectEfCss, prefersReducedMotion } from '../forms/Button.jsx';
 import { Icon } from '../icons/Icon.jsx';

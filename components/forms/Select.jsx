@@ -1,6 +1,7 @@
+'use client';
 import React from 'react';
 import { Icon } from '../icons/Icon.jsx';
-import { injectEfCss, mergeRefs } from './Button.jsx';
+import { injectEfCss, mergeRefs, isElementOfType } from './Button.jsx';
 import { Portal, useAnchoredStyle } from '../overlay/Portal.jsx';
 
 const CSS = `
@@ -28,7 +29,7 @@ const itemText = children => typeof children === 'string' || typeof children ===
 function collectLabels(children, out = {}) {
   React.Children.forEach(children, child => {
     if (!React.isValidElement(child)) return;
-    if (child.type === SelectItem) out[child.props.value] = itemText(child.props.children) || child.props.value;
+    if (isElementOfType(child, SelectItem)) out[child.props.value] = itemText(child.props.children) || child.props.value;
     if (child.props.children) collectLabels(child.props.children, out);
   });
   return out;

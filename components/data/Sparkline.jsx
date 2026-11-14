@@ -1,3 +1,4 @@
+'use client';
 import React from 'react';
 export function Sparkline({ data = [], width = 120, height = 32, direction, strokeWidth = 1.5, area = true, style, className, ...rest }) {
   if (!data.length) return null;

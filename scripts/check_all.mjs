@@ -50,6 +50,7 @@ const GENERATED_PATHS = [
   'registry.json',
   'registry/icons/_svg.js',
   'registry/tokens/fonts.css',
+  'registry/components.css',
   'site/registry',
   'site/registry.json',
   'site/registry.js',

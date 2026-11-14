@@ -1,3 +1,4 @@
+'use client';
 import React from 'react';
 import { IconButton } from '../forms/IconButton.jsx';
 import { injectEfCss, mergeRefs, useIsoLayoutEffect } from '../forms/Button.jsx';

@@ -1,8 +1,9 @@
+'use client';
 import React from 'react';
 import { Icon } from '../icons/Icon.jsx';
 import { IconButton } from '../forms/IconButton.jsx';
 import { injectEfCss } from '../forms/Button.jsx';
-import { Portal } from '../overlay/Portal.jsx';
+import { Portal, useHydrated } from '../overlay/Portal.jsx';
 
 const CSS = `
 .ef-toast{display:flex;align-items:flex-start;gap:10px;width:360px;max-width:100%;padding:12px 14px;background:var(--surface-inverse);color:var(--text-inverse);border-radius:var(--radius-md);box-shadow:var(--shadow-lg);animation:ef-toast-in var(--dur-slow) var(--ease-spring)}
@@ -84,6 +85,9 @@ export function Toaster({ position = 'bottom-right', visibleToasts = 3, closeBut
   React.useEffect(() => { const listener = value => setItems(value); listeners.add(listener); listener(records); return () => listeners.delete(listener); }, []);
   React.useEffect(() => { defaultDuration = duration; defaultToastOptions = toastOptions; return () => { defaultDuration = 5000; defaultToastOptions = {}; }; }, [duration, toastOptions]);
   const resolvedOffset = typeof offset === 'number' ? `${offset}px` : offset;
+  // Mounted on every page load, so wait for hydration: see useHydrated.
+  const hydrated = useHydrated();
+  if (!hydrated) return <>{children}</>;
   return <>{children}<Portal><ToastStack {...rest} dir={dir} position={position} data-rich-colors={richColors ? 'true' : 'false'} data-expand={expand ? 'true' : 'false'} data-theme={theme} data-mobile-offset={typeof mobileOffset === 'number' ? `${mobileOffset}px` : mobileOffset} style={{ gap, ...(position.startsWith('top') ? { top: resolvedOffset } : { bottom: resolvedOffset }), ...style }} aria-label={label} role="log" aria-live="polite" aria-relevant="additions" onMouseEnter={pause} onMouseLeave={resume} onFocusCapture={pause} onBlurCapture={resume}>
     {items.slice(-visibleToasts).map(item => item.type === 'custom' && React.isValidElement(item.title)
       ? React.cloneElement(item.title, { key: item.id })
