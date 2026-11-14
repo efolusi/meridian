@@ -18,6 +18,12 @@ function warnMissing(name) {
   console.warn('[meridian] <Icon name="' + name + '"> is not a Meridian glyph, so nothing will render. Check the name against the icon gallery, or add ' + name + '.svg to assets/icons/.');
 }
 
+function warnNotSvg(name) {
+  if (_warned.has(name) || typeof console === 'undefined') return;
+  _warned.add(name);
+  console.warn('[meridian] ' + base() + 'assets/icons/' + name + '.svg answered with something that is not an SVG, often an app\'s index.html, so <Icon name="' + name + '"> renders nothing. Serve assets/icons/ beside _ds_bundle.js, or in a bundled app use the registry or npm Icon, which inlines every glyph.');
+}
+
 export function Icon({ name, size = 16, strokeWidth = 1.5, title, className, style, ...rest }) {
   const [svg, setSvg] = React.useState(name in _cache ? _cache[name] : null);
   React.useEffect(() => {
@@ -40,7 +46,14 @@ export function Icon({ name, size = 16, strokeWidth = 1.5, title, className, sty
           // every valid icon in a consumer's test run.
           if (r.status === 404) { warnMissing(name); _cache[name] = ''; return ''; }
           if (!r.ok) return '';
-          return r.text().then(t => (_cache[name] = t));
+          // Only markup that is an SVG gets injected. A server without the file
+          // can still answer 200 with its SPA fallback, index.html, which would
+          // otherwise land inside the button as a whole document.
+          return r.text().then(t => {
+            if (/^\s*<svg[\s>]/.test(t)) return (_cache[name] = t);
+            warnNotSvg(name);
+            return (_cache[name] = '');
+          });
         })
         // A network failure is not remembered, so a later mount tries again.
         .catch(() => '')
