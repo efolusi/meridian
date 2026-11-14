@@ -1,6 +1,6 @@
 'use client';
 import React from 'react';
-import { injectEfCss, mergeRefs } from '../forms/Button.jsx';
+import { injectEfCss, mergeRefs, useIsoLayoutEffect } from '../forms/Button.jsx';
 import { Portal, useAnchoredStyle, useEscapeLayer, escapeLayerContext, useHydrated } from './Portal.jsx';
 
 const CSS = `
@@ -27,12 +27,16 @@ export function Popover({ children, open: controlled, defaultOpen = false, onOpe
   const open = useHydrated() && (controlled !== undefined ? controlled : inner);
   const triggerRef = React.useRef(null);
   const contentRef = React.useRef(null);
-  const contentId = React.useId();
+  // The content's own `id` wins over the generated one, and the trigger's
+  // aria attribute follows whichever is rendered.
+  const baseId = React.useId();
+  const [customId, setContentId] = React.useState();
+  const contentId = customId || baseId;
   const setOpen = React.useCallback(next => {
     if (controlled === undefined) setInner(next);
     onOpenChange?.(next);
   }, [controlled, onOpenChange]);
-  const value = React.useMemo(() => ({ open, setOpen, triggerRef, contentRef, contentId }), [open, setOpen, contentId]);
+  const value = React.useMemo(() => ({ open, setOpen, triggerRef, contentRef, contentId, setContentId }), [open, setOpen, contentId, setContentId]);
   React.useEffect(() => {
     if (!open) return;
     const away = event => {
@@ -113,8 +117,14 @@ export const PopoverTrigger = React.forwardRef(function PopoverTrigger({ asChild
   return <button type="button" {...props}>{children}</button>;
 });
 
-export const PopoverContent = React.forwardRef(function PopoverContent({ align = 'center', side = 'bottom', sideOffset = 8, width, role = 'dialog', className, style, children, ...rest }, forwardedRef) {
+export const PopoverContent = React.forwardRef(function PopoverContent({ align = 'center', side = 'bottom', sideOffset = 8, width, role = 'dialog', className, style, children, id, ...rest }, forwardedRef) {
   const ctx = React.useContext(PopoverCtx);
+  const registerId = ctx?.setContentId;
+  useIsoLayoutEffect(() => {
+    if (!registerId) return;
+    registerId(id);
+    return () => registerId(undefined);
+  }, [registerId, id]);
   const fallbackTriggerRef = React.useRef(null);
   const fallbackContentRef = React.useRef(null);
   const placement = side === 'top' ? 'top' : 'bottom';
@@ -122,7 +132,7 @@ export const PopoverContent = React.forwardRef(function PopoverContent({ align =
   if (!ctx?.open) return null;
   return (
     <Portal>
-      <div {...rest} ref={mergeRefs(forwardedRef, ctx.contentRef)} id={ctx.contentId} role={role} data-slot="popover-content" data-state="open" data-side={placement} data-align={align}
+      <div {...rest} ref={mergeRefs(forwardedRef, ctx.contentRef)} id={id || ctx.contentId} role={role} data-slot="popover-content" data-state="open" data-side={placement} data-align={align}
         className={`ef-popover__panel${className ? ' ' + className : ''}`} style={{ ...anchored, width: width ?? undefined, ...style }}>{children}</div>
     </Portal>
   );

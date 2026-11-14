@@ -35,6 +35,20 @@ function memoryIo(extra = {}) {
   };
 }
 
+// Directory links as junctions on Windows: they need no privilege and resolve the
+// same way. File symlinks need Developer Mode or admin there, so skip when refused.
+async function linkDir(target, link) {
+  await fs.symlink(target, link, process.platform === 'win32' ? 'junction' : 'dir');
+}
+async function linkFileOrSkip(ctx, target, link) {
+  try {
+    await fs.symlink(target, link, 'file');
+  } catch (error) {
+    if (process.platform === 'win32' && error.code === 'EPERM') ctx.skip();
+    throw error;
+  }
+}
+
 function item(name, { deps = [], files = [{ target: `components/${name}.jsx`, content: `// ${name}\n` }], npm = [] } = {}) {
   return { name, type: 'registry:ui', description: `${name} item`, registryDependencies: deps, dependencies: npm, files };
 }
@@ -108,7 +122,7 @@ describe('file target safety', () => {
     const outside = path.join(tmp, 'outside');
     await fs.mkdir(dir);
     await fs.mkdir(outside);
-    await fs.symlink(outside, path.join(dir, 'components'));
+    await linkDir(outside, path.join(dir, 'components'));
     await expect(resolveInside(dir, 'components/Button.jsx')).rejects.toThrow(DiskError);
     await expect(resolveInside(dir, 'components/deep/Button.jsx')).rejects.toThrow('through a symlink');
   });
@@ -116,15 +130,15 @@ describe('file target safety', () => {
   it('allows a symlinked folder that stays inside --dir', async () => {
     const dir = path.join(tmp, 'project');
     await fs.mkdir(path.join(dir, 'real'), { recursive: true });
-    await fs.symlink(path.join(dir, 'real'), path.join(dir, 'components'));
+    await linkDir(path.join(dir, 'real'), path.join(dir, 'components'));
     expect(await resolveInside(dir, 'components/Button.jsx')).toBe(path.join(dir, 'components', 'Button.jsx'));
   });
 
-  it('refuses to write through a symlinked file', async () => {
+  it('refuses to write through a symlinked file', async ctx => {
     const dir = path.join(tmp, 'project');
     await fs.mkdir(dir);
     await fs.writeFile(path.join(tmp, 'secret'), 'x');
-    await fs.symlink(path.join(tmp, 'secret'), path.join(dir, 'styles.css'));
+    await linkFileOrSkip(ctx, path.join(tmp, 'secret'), path.join(dir, 'styles.css'));
     await expect(resolveInside(dir, 'styles.css')).rejects.toThrow('symlink');
   });
 });
@@ -459,7 +473,7 @@ describe('hostile registry content', () => {
     expect(out.text).not.toMatch(/[‪-‮⁦-⁩]/);
   });
 
-  it('--overwrite does not follow a symlink swapped in after the last check', async () => {
+  it('--overwrite does not follow a symlink swapped in after the last check', async ctx => {
     const dir = path.join(tmp, 'project');
     await fs.mkdir(dir);
     await fs.writeFile(path.join(dir, 'a.js'), 'old');
@@ -474,7 +488,7 @@ describe('hostile registry content', () => {
       // applyPlan checks twice; swap the file for a link right after the second check.
       if (calls === 2) {
         await fs.rm(path.join(dir, 'a.js'));
-        await fs.symlink(path.join(tmp, 'secret'), path.join(dir, 'a.js'));
+        await linkFileOrSkip(ctx, path.join(tmp, 'secret'), path.join(dir, 'a.js'));
       }
       return result;
     };
@@ -484,5 +498,122 @@ describe('hostile registry content', () => {
       fs.lstat = realLstat;
     }
     expect(await fs.readFile(path.join(tmp, 'secret'), 'utf8')).toBe('keep');
+  });
+
+  it('still refuses a swapped-in symlink where the platform has no O_NOFOLLOW (Windows)', async ctx => {
+    const dir = path.join(tmp, 'project');
+    await fs.mkdir(dir);
+    await fs.writeFile(path.join(dir, 'a.js'), 'old');
+    await fs.writeFile(path.join(tmp, 'secret'), 'keep');
+    const plan = await planWrites([item('a', { files: [{ target: 'a.js', content: 'new' }] })], dir, { overwrite: true });
+    const realLstat = fs.lstat;
+    let calls = 0;
+    fs.lstat = async (...args) => {
+      const result = await realLstat(...args);
+      calls += 1;
+      if (calls === 2) {
+        await fs.rm(path.join(dir, 'a.js'));
+        await linkFileOrSkip(ctx, path.join(tmp, 'secret'), path.join(dir, 'a.js'));
+      }
+      return result;
+    };
+    try {
+      await expect(applyPlan(plan, dir, { noFollow: 0 })).rejects.toThrow('changed while it was being written');
+    } finally {
+      fs.lstat = realLstat;
+    }
+    expect(await fs.readFile(path.join(tmp, 'secret'), 'utf8')).toBe('keep');
+  });
+
+  it('replaces a regular file through the handle check when there is no O_NOFOLLOW', async () => {
+    const dir = path.join(tmp, 'project');
+    await fs.mkdir(dir);
+    await fs.writeFile(path.join(dir, 'a.js'), 'a much longer old body');
+    const plan = await planWrites([item('a', { files: [{ target: 'a.js', content: 'new' }] })], dir, { overwrite: true });
+    await applyPlan(plan, dir, { noFollow: 0 });
+    expect(await fs.readFile(path.join(dir, 'a.js'), 'utf8')).toBe('new');
+  });
+});
+
+describe('Windows behaviour', () => {
+  it('refuses two targets that differ only in letter case', async () => {
+    const dir = path.join(tmp, 'project');
+    const items = [
+      item('a', { files: [{ target: 'ui/Button.jsx', content: 'A' }] }),
+      item('b', { files: [{ target: 'UI/button.jsx', content: 'A' }] }),
+    ];
+    await expect(planWrites(items, dir)).rejects.toThrow('case-insensitive');
+  });
+
+  it('treats a CRLF or BOM copy of the same content as unchanged', async () => {
+    const dir = path.join(tmp, 'project');
+    await fs.mkdir(dir);
+    await fs.writeFile(path.join(dir, 'a.js'), '\uFEFFline one\r\nline two\r\n');
+    const plan = await planWrites([item('a', { files: [{ target: 'a.js', content: 'line one\nline two\n' }] })], dir);
+    expect(plan[0].status).toBe('unchanged');
+  });
+
+  it('still reports a real change in a CRLF file as a conflict', async () => {
+    const dir = path.join(tmp, 'project');
+    await fs.mkdir(dir);
+    await fs.writeFile(path.join(dir, 'a.js'), 'line one\r\nedited\r\n');
+    const plan = await planWrites([item('a', { files: [{ target: 'a.js', content: 'line one\nline two\n' }] })], dir);
+    expect(plan[0].status).toBe('conflict');
+  });
+
+  it('falls back to the JS realpath when the native one fails with EISDIR on Windows', async () => {
+    // RAM disks and some virtual drives lack the Win32 call the native realpath uses.
+    const dir = path.join(tmp, 'project');
+    await fs.mkdir(dir);
+    const realRealpath = fs.realpath;
+    const platform = Object.getOwnPropertyDescriptor(process, 'platform');
+    fs.realpath = async () => { throw Object.assign(new Error('EISDIR: illegal operation on a directory, realpath'), { code: 'EISDIR' }); };
+    Object.defineProperty(process, 'platform', { value: 'win32' });
+    try {
+      expect(await resolveInside(dir, 'a/b.jsx')).toBe(path.join(dir, 'a', 'b.jsx'));
+    } finally {
+      fs.realpath = realRealpath;
+      Object.defineProperty(process, 'platform', platform);
+    }
+  });
+
+  it('allows a folder whose name starts with two dots', async () => {
+    const dir = path.join(tmp, 'project');
+    expect(await resolveInside(dir, '..foo/x.js')).toBe(path.join(dir, '..foo', 'x.js'));
+  });
+
+  it('quotes a caret range, which cmd.exe would otherwise strip', async () => {
+    const registryDir = path.join(tmp, 'reg');
+    await writeRegistry(registryDir, [item('one', { npm: ['react', 'recharts@^3.8.0'] })]);
+    const { io, out } = memoryIo();
+    expect(await main(['add', 'one', '--registry', registryDir, '--dir', 'out', '--dry-run'], io)).toBe(EXIT.OK);
+    expect(out.text).toContain('npm install react "recharts@^3.8.0"');
+  });
+
+  it('lists the files already written when a later write fails', async () => {
+    const registryDir = path.join(tmp, 'reg');
+    await writeRegistry(registryDir, [item('one', { files: [{ target: 'a.js', content: 'a' }, { target: 'b.js', content: 'b' }] })]);
+    const dir = path.join(tmp, 'out');
+    await fs.mkdir(dir);
+    // b.js becomes a folder after planning, so its write fails after a.js landed.
+    const realMkdir = fs.mkdir;
+    let made = false;
+    fs.mkdir = async (...args) => {
+      const result = await realMkdir(...args);
+      if (!made) { made = true; await realMkdir(path.join(dir, 'b.js')); }
+      return result;
+    };
+    const { io, out, err } = memoryIo();
+    let code;
+    try {
+      code = await main(['add', 'one', '--registry', registryDir, '--dir', dir], io);
+    } finally {
+      fs.mkdir = realMkdir;
+    }
+    expect(code).toBe(EXIT.DISK);
+    expect(out.text).toContain('created');
+    expect(out.text).toContain('a.js');
+    expect(out.text).toContain('1 file(s) were written before the error');
+    expect(err.text).toContain('b.js');
   });
 });
