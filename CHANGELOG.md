@@ -2,7 +2,7 @@
 
 ## Unreleased
 
-- **GeneratedImage's busy placeholder is a flat `--media-backdrop-dot` fill** instead of a dot pattern. It keeps its soft edge and its pulse, and the scrims stay.
+- **GeneratedImage's busy placeholder is a flat `--media-backdrop-dot` fill** instead of a dot pattern, and its class is `.ef-genimg__backdrop` (was `.ef-genimg__dots`, no alias). It keeps its soft edge and its pulse, and the scrims stay.
 - **CI checks run on GitHub-hosted `ubuntu-24.04`** until the new self-hosted runners exist. Deploy jobs stay self-hosted.
 
 - **`meridian-cli` refuses a plain `http://` registry** except on localhost, so files cannot be swapped on the network. Use https.

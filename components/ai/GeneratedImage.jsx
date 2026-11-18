@@ -13,7 +13,7 @@ const CSS = `
 .ef-genimg--error .ef-genimg__img{opacity:.3}
 .ef-genimg__dark{position:absolute;inset:0;background:var(--media-backdrop);opacity:0;transition:opacity var(--dur-med) var(--ease-out);pointer-events:none}
 .ef-genimg--generating .ef-genimg__dark{opacity:1}
-.ef-genimg__dots{position:absolute;inset:0;background:var(--media-backdrop-dot);-webkit-mask-image:radial-gradient(ellipse at center,black 10%,transparent 78%);mask-image:radial-gradient(ellipse at center,black 10%,transparent 78%);animation:ef-genimg-pulse 2.8s ease-in-out infinite}
+.ef-genimg__backdrop{position:absolute;inset:0;background:var(--media-backdrop-dot);-webkit-mask-image:radial-gradient(ellipse at center,black 10%,transparent 78%);mask-image:radial-gradient(ellipse at center,black 10%,transparent 78%);animation:ef-genimg-pulse 2.8s ease-in-out infinite}
 @keyframes ef-genimg-pulse{0%,100%{opacity:.45}50%{opacity:1}}
 .ef-genimg__scrim{position:absolute;inset-inline:0;pointer-events:none;opacity:0;transition:opacity var(--dur-med) var(--ease-out)}
 .ef-genimg--complete .ef-genimg__scrim{opacity:1}
@@ -37,7 +37,7 @@ export function GeneratedImage({ status = 'complete', src, alt, prompt, aspect =
   return (
     <div {...rest} className={`ef-genimg ef-genimg--${aspect} ef-genimg--${s}${className ? ' ' + className : ''}`} style={style} data-state={s}>
       {src && (s === 'complete' || s === 'error') ? <img className="ef-genimg__img" src={src} alt={alt || prompt || ''} /> : null}
-      <div className="ef-genimg__dark">{s === 'generating' ? <div className="ef-genimg__dots"></div> : null}</div>
+      <div className="ef-genimg__dark">{s === 'generating' ? <div className="ef-genimg__backdrop"></div> : null}</div>
       <div className="ef-genimg__scrim ef-genimg__scrim--top" aria-hidden="true"></div>
       {prompt ? <div className="ef-genimg__prompt">{prompt}</div> : null}
       {s === 'queued' ? <div className="ef-genimg__center"><Icon name="image" size={20} /><span>Queued…</span></div> : null}
