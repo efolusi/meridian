@@ -1,7 +1,10 @@
 # Changelog
 
-## Unreleased
+## 1.23.0 — 2026-11-18
 
+- **`@efolusi/meridian-cli` ships with the other packages.** Its first version (1.22.0) was published by hand; from 1.23.0 the publish workflow releases it in lockstep.
+- **Known dev-only advisory.** `npm audit` reports picomatch ≤4.0.7 (ReDoS on single-branch repeated extglobs) through vite, vitest, fdir and tinyglobby. No published package depends on them (`npm audit --omit=dev` is clean), and no fixed picomatch exists yet. It will be bumped when one is published.
+- **Size budget raised by 7 KB** (npm total 1,411,723 bytes) for the overlay hydrate fix in #106.
 - **Tokens come from efolusi/design-tokens.** `tokens.json` and `tokens/{colors,typography,spacing,effects}.css` are vendored from design-tokens v0.1.1 by `scripts/sync_tokens.mjs`, pinned in `tokens/design-tokens.lock.json`, and `npm run check` fails when they drift. No existing value changed. 26 tokens are new (`--surface-panel`, `--avatar-*`, `--state-*`, `--opacity-*`, `--space-0-5`, `--radius-xs-plus`, `--surface-inverse-hover`/`-active`). In `tokens.json`, `leading.*` are numbers, `weight.*` are `fontWeight`, `tap.min` is a `dimension`, and the root mode map lists each mode's selector and media blocks.
 - **Higher contrast when the OS asks for it.** Under `@media (prefers-contrast: more)`, `--border-default` steps up to `--border-control` and `--text-muted` to `--text-secondary`, in light and dark.
 
