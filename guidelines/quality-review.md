@@ -22,7 +22,7 @@ Where Meridian breaks its own design-system rules, and the fix for each. Nothing
 ## The ten worst
 
 1. Spacing is not on the token scale: 1,291 raw px values. Fix: replace with `--space-*`, and round off-scale values (6, 10, 14px) to the scale, group by group; each group is a visual change stated in the CHANGELOG.
-2. Status names split into four vocabularies. Fix: one set, `success`, `warning`, `danger`, `info`, `neutral`, `busy`, used by every status-bearing component; the others become plain synonyms in types only where they are already public, with no warning shim (no-legacy rule).
+2. Status names split into four vocabularies. Fix: one set, `success`, `warning`, `danger`, `info`, `neutral`, `busy`, used by every status-bearing component; the old names are removed in 1.24.0 with no aliases (owner, 2026-11-18).
 3. Sidebar: 53 raw px values, the most of any component. Fix: tokens, and the 4px scale.
 4. Combobox and Input: 32 and 23 raw values, with heights that do not follow `--control-h-*`. Fix: share Input's sizing with Select and Combobox through the control tokens.
 5. 11 interactive components with no focus style of their own. Fix: `:focus-visible` with `--focus-ring` on every focusable part; keyboard-test each.
@@ -49,26 +49,25 @@ Kept from the first pass, to show what is unused today. Unused is not a reason t
 ### How the consumers were searched
 
 - Repos searched (git grep, tracked files): cuwan, efolusi, komando, kongkow, pay, sso, toolips, toolips-cloud, trady. komando-cloud web and the -apps repos have no Meridian reference.
-- A component counts as used when a repo has `<Name` or imports `Name` from Meridian. A product with its own component of the same name can show as a false "used"; a dynamic import can show as a false "unused". Every remove row below was checked by hand.
-- Breaking means it removes a public export of a 1.x package. Those wait for 2.0.0.
+- A component counts as used when a repo has `<Name` or imports `Name` from Meridian. A product with its own component of the same name can show as a false "used"; a dynamic import can show as a false "unused".
 
 ### Components with no consumer
 
-49 of 123 component files have no consumer. Not every unused file goes: a design system keeps the basic controls a product will need.
+49 of 123 component files have no consumer. Every one stays (owner, 2026-11-18).
 
-| Item | Kind | Why | Used by | Note | |
-|---|---|---|---|---|---|
-| ai/AgentRun, ai/ToolCall, ai/Todo, ai/PromptSteps | component | Agent-trace widgets built for a demo; no product shows agent runs | none | remove | yes |
-| ai/GeneratedImage, ai/ModelSelector, ai/UsageMeter, ai/FeedbackBar | component | Chatbot-product furniture (image result, model picker, token meter, thumbs) | none | remove | yes |
-| ai/Citation, ai/SourceCard, ai/DocumentCard, ai/WebPreview, ai/SelectionQuote | component | Answer-engine pieces; no product cites sources | none | remove | yes |
-| ai/Bubble, ai/RichComposer | component | Duplicate `Message` and `PromptComposer` | none | remove | yes |
-| ai/PromptComposer, ai/MessageScroller | component | Unused today, but kongkow, toolips and cuwan render chats with `Message` and `Conversation` | none | keep (unsure: ask kongkow and toolips) | no |
-| forms/ButtonTile, forms/Questionnaire | component | Onboarding-quiz pieces from a showcase | none | remove | yes |
-| navigation/PageControl | component | Mobile dot pager; Meridian is web | none | remove | yes |
-| navigation/Menubar | component | Desktop app menubar; no web product has one | none | remove | yes |
-| display/Carousel | component | Carousels hide content and are a template tell | none | remove | yes |
-| finance/PaymentCard | component | Card-number display; pay may need it | none | keep (unsure: ask pay) | no |
-| forms/InputOTP | component | sso will need one-time codes | none | keep | no |
-| files/FileTile, files/FileTypeIcon, code/EnvList, display/TreeList, navigation/NavigationMenu | component | Unused, but plausible for toolips, komando web and docs | none | keep (unsure) | no |
-| forms/Checkbox, Radio, Combobox, NumberInput, InputGroup, ButtonGroup; overlay/Sheet, ContextMenu, HoverCard; display/Collapsible, Kbd, Resizable, Toolbar, Direction; feedback/Loader; navigation/Sidebar; code/CodeBlock; data/Chart, BarChart, DonutChart | component | Basic controls and charts every product will need | none yet | keep | no |
+| Item | Kind | What it is | Used by |
+|---|---|---|---|
+| ai/AgentRun, ai/ToolCall, ai/Todo, ai/PromptSteps | component | Agent-trace widgets built for a demo; no product shows agent runs | none |
+| ai/GeneratedImage, ai/ModelSelector, ai/UsageMeter, ai/FeedbackBar | component | Chatbot-product furniture (image result, model picker, token meter, thumbs) | none |
+| ai/Citation, ai/SourceCard, ai/DocumentCard, ai/WebPreview, ai/SelectionQuote | component | Answer-engine pieces; no product cites sources | none |
+| ai/Bubble, ai/RichComposer | component | Duplicate `Message` and `PromptComposer` | none |
+| ai/PromptComposer, ai/MessageScroller | component | Unused today, but kongkow, toolips and cuwan render chats with `Message` and `Conversation` | none |
+| forms/ButtonTile, forms/Questionnaire | component | Onboarding-quiz pieces from a showcase | none |
+| navigation/PageControl | component | Mobile dot pager; Meridian is web | none |
+| navigation/Menubar | component | Desktop app menubar; no web product has one | none |
+| display/Carousel | component | Carousels hide content and are a template tell | none |
+| finance/PaymentCard | component | Card-number display; pay may need it | none |
+| forms/InputOTP | component | sso will need one-time codes | none |
+| files/FileTile, files/FileTypeIcon, code/EnvList, display/TreeList, navigation/NavigationMenu | component | Unused, but plausible for toolips, komando web and docs | none |
+| forms/Checkbox, Radio, Combobox, NumberInput, InputGroup, ButtonGroup; overlay/Sheet, ContextMenu, HoverCard; display/Collapsible, Kbd, Resizable, Toolbar, Direction; feedback/Loader; navigation/Sidebar; code/CodeBlock; data/Chart, BarChart, DonutChart | component | Basic controls and charts every product will need | none yet |
 
