@@ -25,7 +25,7 @@ Meridian covers the common path of a real product surface and declines the specu
 ## Breaking changes
 Meridian keeps no legacy code: no aliases for renamed props or tokens, no deprecation warnings, no shims kept until a later release.
 
-1. Rename or remove in one change, and update every caller in the same change: components, showcases, starters, blocks, the docs site, tests and skills.
+1. Rename or remove in one change, and update every caller in the same change: components, showcases, starters, blocks, the docs site, tests, skills, and the product apps that use Meridian.
 2. Mark it **Breaking** in `CHANGELOG.md` with the old and new name.
 3. Add a section with before and after code to [migration.md](migration.md).
-4. List the product repos that use the old name, so each updates when it moves to that release.
+4. Open the product apps' pull requests together with it. The release waits until they are ready, and they land with it.
