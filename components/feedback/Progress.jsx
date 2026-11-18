@@ -3,7 +3,7 @@ import React from 'react';
 import { injectEfCss } from '../forms/Button.jsx';
 
 const CSS = `
-.ef-progress-shell{display:flex;flex-direction:column;gap:6px}
+.ef-progress-shell{display:flex;flex-direction:column;gap:var(--space-2)}
 .ef-progress__head{display:flex;justify-content:space-between;align-items:baseline}
 .ef-progress__label{font-size:var(--text-sm);font-weight:var(--weight-medium);color:var(--text-primary)}
 .ef-progress__val{font-family:var(--font-mono);font-size:var(--text-xs);color:var(--text-muted)}
