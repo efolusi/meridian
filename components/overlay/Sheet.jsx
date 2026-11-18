@@ -9,7 +9,7 @@ const CSS = `
 .ef-sheet[data-side=left]{top:0;left:0;bottom:0;width:min(75vw,384px);border-width:0 1px 0 0;animation:ef-sheet-left var(--dur-slow) var(--ease-out)}
 .ef-sheet[data-side=top]{top:0;left:0;right:0;width:100%;max-height:80vh;border-width:0 0 1px;animation:ef-sheet-top var(--dur-slow) var(--ease-out)}
 .ef-sheet[data-side=bottom]{bottom:0;left:0;right:0;width:100%;max-height:80vh;border-width:1px 0 0;animation:ef-sheet-bottom var(--dur-slow) var(--ease-out)}
-.ef-sheet__header{padding:24px 24px 12px}.ef-sheet__footer{margin-top:auto}.ef-sheet__description{margin-top:4px}
+.ef-sheet__header{padding:var(--space-6) var(--space-6) var(--space-3)}.ef-sheet__footer{margin-top:auto}.ef-sheet__description{margin-top:var(--space-1)}
 @keyframes ef-sheet-right{from{transform:translateX(24px);opacity:0}}@keyframes ef-sheet-left{from{transform:translateX(-24px);opacity:0}}@keyframes ef-sheet-top{from{transform:translateY(-24px);opacity:0}}@keyframes ef-sheet-bottom{from{transform:translateY(24px);opacity:0}}
 `;
 
