@@ -40,4 +40,4 @@ The site already depends on `@efolusi/meridian` (`^1.21.6`; latest is 1.22.0). I
 | 6 | Map Glamor names (`window`, `panel`, `text2`, …) to Meridian roles (`surface`, `text`, `border`) so both use one set of names | design-tokens + glamor | open |
 | 7 | efolusi/efolusi: bump to 1.22.0, audit hand-written CSS that a Meridian component or token covers | efolusi | done (efolusi branch chore/meridian-1.22.0) |
 | 8 | efolusi/efolusi: list missing components or tokens as Meridian issues | efolusi → meridian | open (4 gaps found, not filed yet) |
-| 9 | `build_tokens.py` writes the new root `$extensions` shape (`base`, `modes` with `blocks`); joint `$type` fixes (`leading.*` number, `weight.*` fontWeight, `tap.min` dimension) | meridian + design-tokens | open |
+| 9 | `build_tokens.py` writes the new root `$extensions` shape (`base`, `modes` with `blocks`); joint `$type` fixes (`leading.*` number, `weight.*` fontWeight, `tap.min` dimension) | meridian + design-tokens | done (design-tokens tokens/type-fixes; Meridian vendors tokens.json; repin to v0.1.1 once tagged) |
