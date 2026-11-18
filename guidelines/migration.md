@@ -34,7 +34,7 @@ Guard reads imports, so it does not see components used as CDN globals (`window.
 
 ### Drawer `modal`
 
-Deprecated in 1.22.0. Removed in 2.0.
+Deprecated in 1.22.0. Removed in 1.24.0.
 
 **Why.** A Drawer is always modal: it draws a scrim, traps focus and locks page scroll. The `modal` prop was accepted but never read, so `modal={false}` looked like a non-modal drawer and behaved like a modal one. Removing the prop makes the type say what the component does.
 

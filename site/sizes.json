@@ -1,16 +1,16 @@
 {
   "totals": {
     "@efolusi/meridian": {
-      "bytes": 356109,
-      "gzip": 80151
+      "bytes": 355764,
+      "gzip": 79925
     },
     "dist/components.css": {
       "bytes": 198379,
       "gzip": 28135
     },
     "_ds_bundle.js": {
-      "bytes": 813187,
-      "gzip": 144983
+      "bytes": 812276,
+      "gzip": 144513
     }
   },
   "modules": [
@@ -1325,8 +1325,8 @@
         "DrawerTitle",
         "DrawerDescription"
       ],
-      "bytes": 55277,
-      "gzip": 10483
+      "bytes": 54937,
+      "gzip": 10304
     },
     {
       "module": "overlay/DropdownMenu.js",

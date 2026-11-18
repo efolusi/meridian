@@ -13,9 +13,9 @@ CSS is not counted per component: `styles.css` ships every component style in on
 
 | File | Size | Gzip |
 | --- | ---: | ---: |
-| `@efolusi/meridian` | 347.8 kB | 78.3 kB |
+| `@efolusi/meridian` | 347.4 kB | 78.1 kB |
 | `dist/components.css` | 193.7 kB | 27.5 kB |
-| `_ds_bundle.js` | 794.1 kB | 141.6 kB |
+| `_ds_bundle.js` | 793.2 kB | 141.1 kB |
 
 The root import, `@efolusi/meridian`, is every component. `_ds_bundle.js` is the zero-build CDN bundle, which also carries each component's CSS. The root import is minified; the CSS and the CDN bundle are measured as shipped.
 
@@ -140,7 +140,7 @@ The root import, `@efolusi/meridian`, is every component. `_ds_bundle.js` is the
 | `navigation/TopNav.js` | TopNav | 0.6 kB | 0.3 kB |
 | `overlay/Command.js` | Command, CommandDialog, CommandInput, CommandList, CommandEmpty, CommandGroup, CommandItem, CommandShortcut, CommandSeparator | 54.4 kB | 10.6 kB |
 | `overlay/ContextMenu.js` | ContextMenu, ContextMenuTrigger, ContextMenuPortal, ContextMenuContent, ContextMenuGroup, ContextMenuLabel, ContextMenuSeparator, ContextMenuShortcut, ContextMenuItem, ContextMenuCheckboxItem, ContextMenuRadioGroup, ContextMenuRadioItem, ContextMenuSub, ContextMenuSubTrigger, ContextMenuSubContent | 55.5 kB | 10.9 kB |
-| `overlay/Drawer.js` | Drawer, DrawerTrigger, DrawerPortal, DrawerClose, DrawerOverlay, DrawerContent, DrawerHeader, DrawerFooter, DrawerTitle, DrawerDescription | 54.0 kB | 10.2 kB |
+| `overlay/Drawer.js` | Drawer, DrawerTrigger, DrawerPortal, DrawerClose, DrawerOverlay, DrawerContent, DrawerHeader, DrawerFooter, DrawerTitle, DrawerDescription | 53.6 kB | 10.1 kB |
 | `overlay/DropdownMenu.js` | DropdownMenu, DropdownMenuTrigger, DropdownMenuPortal, DropdownMenuContent, DropdownMenuGroup, DropdownMenuLabel, DropdownMenuSeparator, DropdownMenuShortcut, DropdownMenuItem, DropdownMenuCheckboxItem, DropdownMenuRadioGroup, DropdownMenuRadioItem, DropdownMenuSub, DropdownMenuSubTrigger, DropdownMenuSubContent | 55.4 kB | 10.9 kB |
 | `overlay/HoverCard.js` | HoverCard, HoverCardTrigger, HoverCardContent | 5.7 kB | 2.3 kB |
 | `overlay/Popover.js` | Popover, PopoverTrigger, PopoverContent, PopoverHeader, PopoverTitle, PopoverDescription | 6.8 kB | 2.6 kB |
