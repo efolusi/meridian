@@ -9,12 +9,12 @@ const CSS = `
 .ef-carousel__content{overflow-x:auto;overflow-y:hidden;scroll-behavior:smooth;scrollbar-width:none;scroll-snap-type:x mandatory;overscroll-behavior-inline:contain}
 .ef-carousel__content::-webkit-scrollbar{display:none}
 .ef-carousel__content[data-orientation="vertical"]{height:100%;overflow-x:hidden;overflow-y:auto;scroll-snap-type:y mandatory;overscroll-behavior-block:contain}
-.ef-carousel__track{display:flex;margin-inline-start:calc(var(--carousel-gap,16px)*-1)}
-.ef-carousel__content[data-orientation="vertical"]>.ef-carousel__track{height:100%;flex-direction:column;margin-inline-start:0;margin-block-start:calc(var(--carousel-gap,16px)*-1)}
-.ef-carousel__item{min-width:0;flex:0 0 100%;scroll-snap-align:start;padding-inline-start:var(--carousel-gap,16px)}
+.ef-carousel__track{display:flex;margin-inline-start:calc(var(--carousel-gap,var(--space-4))*-1)}
+.ef-carousel__content[data-orientation="vertical"]>.ef-carousel__track{height:100%;flex-direction:column;margin-inline-start:0;margin-block-start:calc(var(--carousel-gap,var(--space-4))*-1)}
+.ef-carousel__item{min-width:0;flex:0 0 100%;scroll-snap-align:start;padding-inline-start:var(--carousel-gap,var(--space-4))}
 .ef-carousel[data-align="center"] .ef-carousel__item{scroll-snap-align:center}
 .ef-carousel[data-align="end"] .ef-carousel__item{scroll-snap-align:end}
-.ef-carousel__content[data-orientation="vertical"] .ef-carousel__item{min-height:0;padding-inline-start:0;padding-block-start:var(--carousel-gap,16px)}
+.ef-carousel__content[data-orientation="vertical"] .ef-carousel__item{min-height:0;padding-inline-start:0;padding-block-start:var(--carousel-gap,var(--space-4))}
 .ef-carousel__nav{position:absolute;display:flex;align-items:center;justify-content:center;width:32px;height:32px;border:1px solid var(--border-strong);border-radius:var(--radius-full);background:var(--surface-card);color:var(--text-secondary);cursor:pointer;box-shadow:var(--shadow-sm);transition:color var(--dur-fast) var(--ease-out),transform var(--dur-fast) var(--ease-out);z-index:1}
 .ef-carousel__nav:hover:not(:disabled){color:var(--text-primary)}
 .ef-carousel__nav:focus-visible{outline:none;box-shadow:var(--focus-ring)}

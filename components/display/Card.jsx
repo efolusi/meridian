@@ -14,13 +14,13 @@ const CSS = `
 .ef-card--composed:has(>img:first-child){padding-block-start:0}
 .ef-card--composed>img:first-child{border-start-start-radius:var(--radius-md);border-start-end-radius:var(--radius-md)}
 .ef-card--composed>img:last-child{border-end-start-radius:var(--radius-md);border-end-end-radius:var(--radius-md)}
-.ef-card__header{display:grid;grid-template-columns:minmax(0,1fr);grid-auto-rows:min-content;align-items:start;gap:4px;padding-inline:var(--card-spacing,20px)}
+.ef-card__header{display:grid;grid-template-columns:minmax(0,1fr);grid-auto-rows:min-content;align-items:start;gap:var(--space-1);padding-inline:var(--card-spacing,var(--space-5))}
 .ef-card__header:has(.ef-card__action){grid-template-columns:minmax(0,1fr) auto}
 .ef-card__title{margin:0;font-family:var(--font-sans);font-size:var(--text-lg);font-weight:var(--weight-semibold);line-height:var(--leading-tight);letter-spacing:0;color:var(--text-primary)}
 .ef-card__description{font-size:var(--text-sm);line-height:var(--leading-relaxed);color:var(--text-muted)}
 .ef-card__action{grid-column:2;grid-row:1/span 2;align-self:start;justify-self:end}
 .ef-card__content{padding-inline:var(--card-spacing)}
-.ef-card__footer{display:flex;align-items:center;gap:8px;padding:var(--card-spacing);border-top:1px solid var(--border-default);background:var(--surface-subtle);border-end-start-radius:var(--radius-md);border-end-end-radius:var(--radius-md)}
+.ef-card__footer{display:flex;align-items:center;gap:var(--space-2);padding:var(--card-spacing);border-top:1px solid var(--border-default);background:var(--surface-subtle);border-end-start-radius:var(--radius-md);border-end-end-radius:var(--radius-md)}
 `;
 
 function cx(base, className) {

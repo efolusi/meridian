@@ -4,14 +4,14 @@ import { Icon } from '../icons/Icon.jsx';
 import { Tooltip, TooltipContent, TooltipTrigger } from '../feedback/Tooltip.jsx';
 import { injectEfCss } from '../forms/Button.jsx';
 const CSS = `
-.ef-toolbar{display:inline-flex;align-items:center;gap:2px;padding:3px;background:var(--surface-card);border:1px solid var(--border-strong);border-radius:var(--radius-md)}
-.ef-toolbar__btn{display:inline-flex;align-items:center;justify-content:center;gap:6px;height:28px;min-width:28px;padding:0 7px;border:none;border-radius:6px;background:none;cursor:pointer;color:var(--text-secondary);font-family:var(--font-sans);font-size:var(--text-sm);font-weight:var(--weight-medium);transition:background var(--dur-fast) var(--ease-out),color var(--dur-fast) var(--ease-out)}
+.ef-toolbar{display:inline-flex;align-items:center;gap:var(--space-0-5);padding:var(--space-1);background:var(--surface-card);border:1px solid var(--border-strong);border-radius:var(--radius-md)}
+.ef-toolbar__btn{display:inline-flex;align-items:center;justify-content:center;gap:var(--space-2);height:28px;min-width:28px;padding:0 var(--space-2);border:none;border-radius:6px;background:none;cursor:pointer;color:var(--text-secondary);font-family:var(--font-sans);font-size:var(--text-sm);font-weight:var(--weight-medium);transition:background var(--dur-fast) var(--ease-out),color var(--dur-fast) var(--ease-out)}
 .ef-toolbar__btn:hover:not(:disabled){background:var(--surface-sunken);color:var(--text-primary)}
 .ef-toolbar__btn--active{background:var(--accent);color:var(--accent-contrast)}
 .ef-toolbar__btn--active:hover:not(:disabled){background:var(--accent-hover);color:var(--accent-contrast)}
 .ef-toolbar__btn:disabled{opacity:.4;cursor:not-allowed}
 .ef-toolbar__btn:focus-visible{outline:none;box-shadow:var(--focus-ring)}
-.ef-toolbar__sep{width:1px;height:18px;background:var(--border-default);margin:0 4px}
+.ef-toolbar__sep{width:1px;height:18px;background:var(--border-default);margin:0 var(--space-1)}
 @media (pointer:coarse){.ef-toolbar__btn{min-width:var(--tap-min);min-height:var(--tap-min)}}
 `;
 export function Toolbar({ items, value, onChange, label, style, className, ...rest }) {
