@@ -2,6 +2,7 @@
 
 ## Unreleased
 
+- **Navigation spacing is on the token scale.** Breadcrumbs, Menubar, NavigationMenu, PageControl, Pagination, SegmentedControl, SideNav, Sidebar, SkipLink, Steps, Tabs and TopNav take their padding, margin and gap from `--space-*`. Values off the 4px scale moved to the nearest step, ties up: 3 and 5px to 4px, 6 and 9px to 8px, 10px to 12px, 14 and 15px to 16px, 22px to 24px. Gaps and padding in these components grow by up to 2px. 1px optical nudges stay.
 - **`meridian-cli` refuses a plain `http://` registry** except on localhost, so files cannot be swapped on the network. Use https.
 - **CI checks the vendored tokens against the pinned design-tokens tag.** `node scripts/sync_tokens.mjs --check-remote` re-fetches the tag in the lock and fails when the lock commit or any vendored file differs. `npm run check` runs it in CI (`CI=true`); locally it stays offline.
 
