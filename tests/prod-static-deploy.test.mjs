@@ -19,8 +19,8 @@ describe('Meridian production static deployment', () => {
     expect(workflow).toContain('[[ "$(git rev-parse HEAD)" == "$MERIDIAN_RELEASE_SHA" ]]')
   })
 
-  it('pins Node 22.23.2 through NVM and runs the complete repository gate', () => {
-    expect(workflow).toContain('[[ "$expected" == "22.23.2" ]]')
+  it('pins Node 26.13.1 through NVM and runs the complete repository gate', () => {
+    expect(workflow).toContain('[[ "$expected" == "26.13.1" ]]')
     expect(workflow).toContain('source "$HOME/.nvm/nvm.sh"')
     expect(workflow).toContain('npm ci --no-audit --no-fund')
     expect(workflow).toContain('npm run check')

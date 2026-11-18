@@ -2,6 +2,7 @@
 
 ## Unreleased
 
+- **Build tooling runs on Node.js 26.13.1 and npm 11.20.0** (was 22.23.2 and 10.9.8): `.nvmrc`, `package.json` `engines` and `packageManager`, every workflow and CONTRIBUTING.md. The published packages keep `engines: >=20.10`.
 - **`meridian-cli` refuses a plain `http://` registry** except on localhost, so files cannot be swapped on the network. Use https.
 - **CI checks the vendored tokens against the pinned design-tokens tag.** `node scripts/sync_tokens.mjs --check-remote` re-fetches the tag in the lock and fails when the lock commit or any vendored file differs. `npm run check` runs it in CI (`CI=true`); locally it stays offline.
 
