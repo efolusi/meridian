@@ -7,8 +7,7 @@ import fs from 'node:fs';
 import os from 'node:os';
 import path from 'node:path';
 
-// DESIGN_TOKENS_REPO points at a local clone to try an untagged change.
-const REPO = process.env.DESIGN_TOKENS_REPO || 'https://github.com/efolusi/design-tokens';
+const REPO = 'https://github.com/efolusi/design-tokens';
 // Path in design-tokens -> path here.
 const FILES = {
   'tokens.json': 'tokens.json',
@@ -38,6 +37,12 @@ if (arg === '--check') {
   process.exit(0);
 }
 
+const tags = execFileSync('git', ['ls-remote', '--tags', REPO, `refs/tags/${arg}`], { encoding: 'utf8' });
+if (!tags.trim()) {
+  console.error(`${arg} is not a tag in ${REPO}; pin a tag, not a branch`);
+  process.exit(2);
+}
+
 const tmp = fs.mkdtempSync(path.join(os.tmpdir(), 'design-tokens-'));
 try {
   execFileSync('git', ['clone', '-q', '--depth', '1', '--branch', arg, REPO, tmp], { stdio: 'inherit' });
@@ -48,8 +53,7 @@ try {
     fs.writeFileSync(to, buf);
     files[to] = sha256(buf);
   }
-  const repo = 'https://github.com/efolusi/design-tokens';
-  fs.writeFileSync(LOCK, JSON.stringify({ repo, ref: arg, commit, files }, null, 2) + '\n');
+  fs.writeFileSync(LOCK, JSON.stringify({ repo: REPO, ref: arg, commit, files }, null, 2) + '\n');
   console.log(`synced design-tokens ${arg} (${commit.slice(0, 7)})`);
 } finally {
   fs.rmSync(tmp, { recursive: true, force: true });
