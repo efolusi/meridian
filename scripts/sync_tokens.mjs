@@ -1,7 +1,8 @@
 // Vendor design-tokens' tokens.json and web CSS into this repo.
 //   node scripts/sync_tokens.mjs <tag>   copy the files from that tag, write the lock
 //   node scripts/sync_tokens.mjs --check verify the vendored files against the lock (no network)
-//   node scripts/sync_tokens.mjs --check-remote  also verify the lock against the pinned tag upstream (CI)
+//   node scripts/sync_tokens.mjs --check-remote  also verify the lock against the pinned tag upstream
+// In CI (CI=true) --check also runs the upstream check.
 import { execFileSync } from 'node:child_process';
 import { createHash } from 'node:crypto';
 import fs from 'node:fs';
@@ -54,10 +55,10 @@ if (arg === '--check') {
     process.exit(1);
   }
   console.log(`vendored tokens match design-tokens ${lock.ref}`);
-  process.exit(0);
+  if (process.env.CI !== 'true') process.exit(0);
 }
 
-if (arg === '--check-remote') {
+if (arg === '--check-remote' || arg === '--check') {
   const lock = JSON.parse(fs.readFileSync(LOCK, 'utf8'));
   const { commit, bufs } = fetchTag(lock.ref);
   const bad = Object.keys(bufs).filter((f) => sha256(bufs[f]) !== sha256(fs.readFileSync(f)));
