@@ -2,6 +2,7 @@
 
 ## Unreleased
 
+- **No deprecation period.** Governance and the migration guide now say that a rename or removal lands in one release, with no alias or warning, and every caller changes with it. The README, style guide, contributing guide, RFC template and skill say the same.
 - **Every overlay trigger and composite field shows its own focus.** Tooltip, HoverCard and Popover triggers draw `--focus-ring` when focused (a trigger with its own style, such as Button, keeps it). CopyField and FileTile colour their border while focus is inside. The Toast action uses `--focus-ring` instead of a hand-built ring.
 - **Six components show keyboard focus.** ChatMessage shows its action row when focus is inside it, not only on hover. The CodeBlock copy and show-all buttons, the Console stack toggle and jump button, the Banner action and the Toast action draw `--focus-ring`; the Toast ring matches its dark surface. Command underlines the search row while its input has focus.
 - **CI checks run on GitHub-hosted `ubuntu-24.04`** until the new self-hosted runners exist. Deploy jobs stay self-hosted.
