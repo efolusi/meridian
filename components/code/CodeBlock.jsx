@@ -4,18 +4,18 @@ import { Icon } from '../icons/Icon.jsx';
 import { injectEfCss } from '../forms/Button.jsx';
 const CSS = `
 .ef-code{position:relative;background:var(--surface-code);border:1px solid var(--border-code);border-radius:var(--radius-md);overflow:hidden}
-.ef-code__head{display:flex;align-items:center;padding:7px 8px 7px 14px;border-bottom:1px solid var(--code-divider)}
+.ef-code__head{display:flex;align-items:center;padding:var(--space-2) var(--space-2) var(--space-2) var(--space-4);border-bottom:1px solid var(--code-divider)}
 .ef-code__lang{font-family:var(--font-mono);font-size:11px;color:var(--code-ink-subtle)}
-.ef-code__copy{margin-inline-start:auto;display:inline-flex;min-height:24px;align-items:center;gap:5px;border:none;background:none;cursor:pointer;color:var(--code-ink-muted);font-family:var(--font-sans);font-size:12px;font-weight:var(--weight-semibold);padding:4px 8px;border-radius:var(--radius-sm);transition:color var(--dur-fast) var(--ease-out)}
+.ef-code__copy{margin-inline-start:auto;display:inline-flex;min-height:24px;align-items:center;gap:var(--space-1);border:none;background:none;cursor:pointer;color:var(--code-ink-muted);font-family:var(--font-sans);font-size:12px;font-weight:var(--weight-semibold);padding:var(--space-1) var(--space-2);border-radius:var(--radius-sm);transition:color var(--dur-fast) var(--ease-out)}
 .ef-code__copy:hover{color:var(--code-ink-bright)}
 .ef-code__copy--done{color:var(--success-on-dark)}
 .ef-code__copy--failed{color:var(--danger-on-dark)}
 .ef-code__sr{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;border:0}
 @media (pointer:coarse){.ef-code__copy{min-height:var(--tap-min);min-width:var(--tap-min);justify-content:center}}
-.ef-code pre{margin:0;padding:14px 16px;overflow-x:auto;font-family:var(--font-mono);font-size:13px;line-height:1.6;color:var(--text-code)}
+.ef-code pre{margin:0;padding:var(--space-4) var(--space-4);overflow-x:auto;font-family:var(--font-mono);font-size:13px;line-height:1.6;color:var(--text-code)}
 .ef-code__win{position:relative;overflow:hidden;transition:height .45s cubic-bezier(.32,.72,0,1)}
-.ef-code__fade{position:absolute;inset-inline:0;bottom:0;height:56px;display:flex;align-items:flex-end;justify-content:center;padding-bottom:8px;background:linear-gradient(to top,var(--surface-code),transparent)}
-.ef-code__more{display:inline-flex;align-items:center;gap:5px;border:1px solid var(--code-edge);border-radius:var(--radius-full);background:var(--code-raised);cursor:pointer;padding:4px 12px;font-family:var(--font-sans);font-size:11.5px;font-weight:var(--weight-semibold);color:var(--code-ink-strong)}
+.ef-code__fade{position:absolute;inset-inline:0;bottom:0;height:56px;display:flex;align-items:flex-end;justify-content:center;padding-bottom:var(--space-2);background:linear-gradient(to top,var(--surface-code),transparent)}
+.ef-code__more{display:inline-flex;align-items:center;gap:var(--space-1);border:1px solid var(--code-edge);border-radius:var(--radius-full);background:var(--code-raised);cursor:pointer;padding:var(--space-1) var(--space-3);font-family:var(--font-sans);font-size:11.5px;font-weight:var(--weight-semibold);color:var(--code-ink-strong)}
 .ef-code__more:hover{color:var(--code-ink-bright);border-color:var(--code-edge-hover)}
 `;
 export function CodeBlock({ lang, title, children, maxHeight, clip, clipHeight = 240, style, className, ...rest }) {
