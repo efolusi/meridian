@@ -1,7 +1,7 @@
 import * as React from 'react';
 
 export type ToastPosition = 'top-left' | 'top-center' | 'top-right' | 'bottom-left' | 'bottom-center' | 'bottom-right';
-export type ToastType = 'default' | 'success' | 'info' | 'warning' | 'error' | 'loading';
+export type ToastType = 'default' | 'success' | 'info' | 'warning' | 'danger' | 'loading';
 export interface ToastOptions {
   id?: string | number;
   title: React.ReactNode;

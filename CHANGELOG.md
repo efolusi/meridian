@@ -9,6 +9,7 @@
   - `Console` and `WebPreview` log `level`: `warn` → `warning`, `error` → `danger`.
   - `ToolCall` and `Sandbox` `status`: `running` → `busy`, `error` → `danger`. `ToolCall` now defaults to `busy`.
   - `GeneratedImage` `status`: `generating` → `busy`, `error` → `danger`.
+  - `toast.add` and `toast.promise` `type`: `error` → `danger`. A rejected `toast.promise` now gives a `danger` toast.
   - `variant="destructive"` → `variant="danger"` on Button, Alert, Badge, Bubble, DropdownMenuItem, ContextMenuItem and InputGroupButton. Button had both; `danger` stays.
 - **`meridian-cli` refuses a plain `http://` registry** except on localhost, so files cannot be swapped on the network. Use https.
 - **CI checks the vendored tokens against the pinned design-tokens tag.** `node scripts/sync_tokens.mjs --check-remote` re-fetches the tag in the lock and fails when the lock commit or any vendored file differs. `npm run check` runs it in CI (`CI=true`); locally it stays offline.

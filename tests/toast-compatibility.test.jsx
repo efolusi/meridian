@@ -40,6 +40,19 @@ describe('Toast compatibility', () => {
     expect(screen.getByText('Release ready')).toBeTruthy();
   });
 
+  it('marks a rejected promise as danger', async () => {
+    render(<Toaster />);
+    await act(async () => { toast.promise(Promise.reject(new Error('boom')), { loading: 'Checking…', success: 'Done', error: 'Release failed', duration: 0 }); await Promise.resolve(); await Promise.resolve(); });
+    expect(screen.getByText('Release failed').closest('[data-slot="toast"]').className).toContain('ef-toast--danger');
+  });
+
+  it('uses danger as the only failure type, with no error alias', () => {
+    render(<Toaster />);
+    act(() => { toast.add({ title: 'Deploy failed', type: 'danger', duration: 0 }); toast.add({ title: 'Old name', type: 'error', duration: 0 }); });
+    expect(screen.getByText('Deploy failed').closest('[data-slot="toast"]').className).toContain('ef-toast--danger');
+    expect(screen.getByText('Old name').closest('[data-slot="toast"]').className).toContain('ef-toast--info');
+  });
+
   it('limits visible records and expires timed notifications', () => {
     vi.useFakeTimers();
     render(<Toaster visibleToasts={2} />);

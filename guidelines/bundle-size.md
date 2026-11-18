@@ -13,7 +13,7 @@ CSS is not counted per component: `styles.css` ships every component style in on
 
 | File | Size | Gzip |
 | --- | ---: | ---: |
-| `@efolusi/meridian` | 347.4 kB | 78.1 kB |
+| `@efolusi/meridian` | 347.4 kB | 78.0 kB |
 | `dist/components.css` | 193.7 kB | 27.5 kB |
 | `_ds_bundle.js` | 793.2 kB | 141.1 kB |
 
