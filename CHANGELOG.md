@@ -2,7 +2,7 @@
 
 ## Unreleased
 
-- **The production site deploys from a `v*` tag, not from a push to `main`.** `deploy-prod-static.yml` runs on a `v*` tag push or by hand on a tag, checks that the tagged commit is on `main` and passed its checks, and publishes it. RELEASING.md says how to run it after a release.
+- **The production site deploys from a `v*` tag, not from a push to `main`.** `deploy-prod-static.yml` runs on a `v*` tag push or by hand on a tag, checks that the tagged commit is on `main` and passed its checks, and publishes it. After a release, `publish.yml` starts it on the new tag, from a job that is the only one with `actions: write`.
 - **`meridian-cli` refuses a plain `http://` registry** except on localhost, so files cannot be swapped on the network. Use https.
 - **CI checks the vendored tokens against the pinned design-tokens tag.** `node scripts/sync_tokens.mjs --check-remote` re-fetches the tag in the lock and fails when the lock commit or any vendored file differs. `npm run check` runs it in CI (`CI=true`); locally it stays offline.
 

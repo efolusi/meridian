@@ -10,9 +10,9 @@ published are a no-op for the workflow.
 `deploy-prod-static.yml` runs on a `v*` tag push, or by hand (`workflow_dispatch`)
 on a `v*` tag. It checks out the tagged commit, refuses a commit that is not on
 `main` or whose checks did not pass, runs `npm run check`, and publishes.
-The tag that `publish.yml` creates is pushed with `GITHUB_TOKEN`, which does not
-start other workflows, so after a release run the deploy by hand:
-`gh workflow run deploy-prod-static.yml --ref vX.Y.Z`.
+A tag pushed with `GITHUB_TOKEN` starts no workflow, so `publish.yml` starts the
+deploy itself: its `deploy` job, the only one with `actions: write`, runs
+`deploy-prod-static.yml` on the new tag after the release is cut.
 
 **This is a monorepo of five published lockstep packages.** One version bump
 publishes all five at the same version: the `@efolusi/meridian` umbrella plus
