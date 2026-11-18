@@ -6,15 +6,15 @@ import { injectEfCss } from '../forms/Button.jsx';
 const CSS = `
 .ef-composer{display:flex;flex-direction:column;background:var(--surface-card);border:1px solid var(--border-strong);border-radius:var(--radius-lg);transition:border-color var(--dur-fast) var(--ease-out),box-shadow var(--dur-fast) var(--ease-out)}
 .ef-composer:focus-within{border-color:var(--accent);box-shadow:var(--focus-ring)}
-.ef-composer__input{border:none;background:none;resize:none;padding:14px 16px 6px;font-family:var(--font-sans);font-size:var(--text-md);line-height:1.5;color:var(--text-primary);outline:none;min-height:24px}
+.ef-composer__input{border:none;background:none;resize:none;padding:var(--space-4) var(--space-4) var(--space-2);font-family:var(--font-sans);font-size:var(--text-md);line-height:1.5;color:var(--text-primary);outline:none;min-height:24px}
 .ef-composer__input::placeholder{color:var(--text-muted)}
-.ef-composer__bar{display:flex;align-items:center;gap:2px;padding:6px 8px 8px}
+.ef-composer__bar{display:flex;align-items:center;gap:var(--space-0-5);padding:var(--space-2) var(--space-2) var(--space-2)}
 .ef-composer__send{display:inline-flex;align-items:center;justify-content:center;width:32px;height:32px;margin-inline-start:auto;border:none;border-radius:var(--radius-md);background:var(--accent);color:var(--accent-contrast);cursor:pointer;transition:background var(--dur-fast) var(--ease-out),transform var(--dur-fast) var(--ease-out)}
 .ef-composer__send:hover:not(:disabled){background:var(--accent-hover)}
 .ef-composer__send:active:not(:disabled){transform:scale(.95)}
 .ef-composer__send:disabled{background:var(--sand-200);color:var(--sand-400);cursor:not-allowed}
 .ef-composer__send:focus-visible{outline:none;box-shadow:var(--focus-ring)}
-.ef-composer__hint{font-size:var(--text-xs);color:var(--text-muted);padding:0 4px}
+.ef-composer__hint{font-size:var(--text-xs);color:var(--text-muted);padding:0 var(--space-1)}
 @media (pointer:coarse){.ef-composer__send{min-width:var(--tap-min);min-height:var(--tap-min)}}
 `;
 export const PromptComposer = React.forwardRef(function PromptComposer({ value, defaultValue, onChange, onSend, onAttach, onVoice, busy, onStop, placeholder = 'Ask the agent anything…', rows = 2, disabled, attachments, hint, 'aria-label': ariaLabel, 'aria-labelledby': ariaLabelledby, style, className, ...rest }, ref) {
@@ -25,7 +25,7 @@ export const PromptComposer = React.forwardRef(function PromptComposer({ value, 
   const send = () => { if (v.trim() && onSend && !disabled) { onSend(v); if (value == null) setInner(''); } };
   return (
     <div ref={ref} {...rest} className={`ef-composer${className ? ' ' + className : ''}`} style={style}>
-      {attachments ? <div style={{ display: 'flex', gap: 6, flexWrap: 'wrap', padding: '10px 12px 0' }}>{attachments}</div> : null}
+      {attachments ? <div style={{ display: 'flex', gap: 'var(--space-2)', flexWrap: 'wrap', padding: '10px 12px 0' }}>{attachments}</div> : null}
       <textarea className="ef-composer__input" rows={rows} placeholder={placeholder} value={v} disabled={disabled}
         aria-label={ariaLabelledby ? undefined : ariaLabel || placeholder} aria-labelledby={ariaLabelledby}
         onChange={e => set(e.target.value, e)}

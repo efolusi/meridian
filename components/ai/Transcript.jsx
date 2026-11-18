@@ -4,13 +4,13 @@ import { injectEfCss, prefersReducedMotion } from '../forms/Button.jsx';
 import { formatTime } from './Player.jsx';
 const CSS = `
 .ef-transcript{display:flex;flex-direction:column;border:1px solid var(--border-default);border-radius:var(--radius-md);background:var(--surface-card);overflow:hidden;font-family:var(--font-sans)}
-.ef-transcript__head{display:flex;align-items:center;gap:9px;padding:10px 14px;border-bottom:1px solid var(--border-default)}
+.ef-transcript__head{display:flex;align-items:center;gap:var(--space-2);padding:var(--space-3) var(--space-4);border-bottom:1px solid var(--border-default)}
 .ef-transcript__title{flex:1;min-width:0;font-size:13.5px;font-weight:var(--weight-semibold);color:var(--text-primary)}
-.ef-transcript__auto{display:inline-flex;align-items:center;gap:6px;border:1px solid var(--border-default);background:none;cursor:pointer;padding:3px 10px;border-radius:var(--radius-full);font-family:var(--font-sans);font-size:11.5px;color:var(--text-muted);transition:color var(--dur-fast) var(--ease-out),border-color var(--dur-fast) var(--ease-out)}
+.ef-transcript__auto{display:inline-flex;align-items:center;gap:var(--space-2);border:1px solid var(--border-default);background:none;cursor:pointer;padding:var(--space-1) var(--space-3);border-radius:var(--radius-full);font-family:var(--font-sans);font-size:11.5px;color:var(--text-muted);transition:color var(--dur-fast) var(--ease-out),border-color var(--dur-fast) var(--ease-out)}
 .ef-transcript__auto--on{color:var(--text-primary);border-color:var(--border-strong)}
 .ef-transcript__auto:focus-visible{outline:none;box-shadow:var(--focus-ring)}
-.ef-transcript__scroll{overflow-y:auto;padding:5px}
-.ef-transcript__item{display:flex;gap:12px;padding:8px 10px;border-radius:var(--radius-sm);transition:background var(--dur-fast) var(--ease-out)}
+.ef-transcript__scroll{overflow-y:auto;padding:var(--space-1)}
+.ef-transcript__item{display:flex;gap:var(--space-3);padding:var(--space-2) var(--space-3);border-radius:var(--radius-sm);transition:background var(--dur-fast) var(--ease-out)}
 .ef-transcript__item--active{background:var(--surface-sunken)}
 .ef-transcript__time{flex:none;border:none;background:none;padding:0;cursor:pointer;font-family:var(--font-mono);font-size:11px;color:var(--text-muted);font-variant-numeric:tabular-nums;line-height:1.9;transition:color var(--dur-fast) var(--ease-out)}
 .ef-transcript__time:hover{color:var(--text-primary)}

@@ -1,16 +1,16 @@
 {
   "totals": {
     "@efolusi/meridian": {
-      "bytes": 356106,
-      "gzip": 80154
+      "bytes": 356121,
+      "gzip": 80170
     },
     "dist/components.css": {
-      "bytes": 198579,
-      "gzip": 28179
+      "bytes": 201063,
+      "gzip": 28216
     },
     "_ds_bundle.js": {
-      "bytes": 813384,
-      "gzip": 145009
+      "bytes": 815883,
+      "gzip": 145082
     }
   },
   "modules": [
@@ -162,8 +162,8 @@
       "exports": [
         "PromptComposer"
       ],
-      "bytes": 46921,
-      "gzip": 8043
+      "bytes": 46936,
+      "gzip": 8052
     },
     {
       "module": "ai/PromptSteps.js",

@@ -7,7 +7,7 @@ const CSS = `
 .ef-message-scroller{position:relative;display:flex;width:100%;height:100%;min-height:0;overflow:hidden}
 .ef-message-scroller__viewport{width:100%;height:100%;overflow:auto;overscroll-behavior:contain;scrollbar-width:thin;scrollbar-color:var(--border-strong) transparent}
 .ef-message-scroller__viewport:focus-visible{outline:0;box-shadow:inset var(--focus-ring)}
-.ef-message-scroller__content{display:flex;min-height:100%;flex-direction:column;gap:16px;padding:16px}
+.ef-message-scroller__content{display:flex;min-height:100%;flex-direction:column;gap:var(--space-4);padding:var(--space-4)}
 .ef-message-scroller__item{content-visibility:auto;contain-intrinsic-size:auto 88px}
 .ef-message-scroller__button{position:absolute;inset-inline-end:16px;inset-block-end:16px;display:inline-flex;width:34px;height:34px;align-items:center;justify-content:center;border:1px solid var(--border-default);border-radius:var(--radius-full);background:var(--surface-card);color:var(--text-primary);box-shadow:var(--shadow-sm);cursor:pointer;transition:opacity var(--dur-fast) var(--ease-out),transform var(--dur-fast) var(--ease-out),background var(--dur-fast) var(--ease-out)}
 .ef-message-scroller__button:hover{background:var(--surface-sunken)}.ef-message-scroller__button:focus-visible{outline:0;box-shadow:var(--focus-ring)}

@@ -3,16 +3,16 @@ import React from 'react';
 import { injectEfCss } from '../forms/Button.jsx';
 
 const CSS = `
-.ef-message{display:flex;width:100%;align-items:flex-end;gap:10px}
+.ef-message{display:flex;width:100%;align-items:flex-end;gap:var(--space-3)}
 .ef-message[data-align=end]{flex-direction:row-reverse}
 .ef-message__avatar{display:flex;flex:0 0 auto;align-items:flex-end}
 .ef-message:has(.ef-message__footer)>.ef-message__avatar{align-self:flex-end;margin-block-end:25px}
-.ef-message__content{display:flex;min-width:0;max-width:min(82%,680px);flex-direction:column;align-items:flex-start;gap:5px}
+.ef-message__content{display:flex;min-width:0;max-width:min(82%,680px);flex-direction:column;align-items:flex-start;gap:var(--space-1)}
 .ef-message[data-align=end]>.ef-message__content{align-items:flex-end}
-.ef-message__header{display:flex;min-width:0;align-items:center;gap:8px;padding-inline:2px;color:var(--text-secondary);font-size:var(--text-xs);line-height:1.4}
-.ef-message__footer{display:flex;min-height:20px;align-items:center;gap:8px;padding-inline:2px;color:var(--text-muted);font-size:var(--text-xs);line-height:1.4}
+.ef-message__header{display:flex;min-width:0;align-items:center;gap:var(--space-2);padding-inline:var(--space-0-5);color:var(--text-secondary);font-size:var(--text-xs);line-height:1.4}
+.ef-message__footer{display:flex;min-height:20px;align-items:center;gap:var(--space-2);padding-inline:var(--space-0-5);color:var(--text-muted);font-size:var(--text-xs);line-height:1.4}
 .ef-message[data-align=end] .ef-message__footer{justify-content:flex-end}
-.ef-message-group{display:flex;width:100%;flex-direction:column;gap:6px}
+.ef-message-group{display:flex;width:100%;flex-direction:column;gap:var(--space-2)}
 .ef-message-group[data-align=end]{align-items:flex-end}
 .ef-message-group[data-align=start]{align-items:flex-start}
 `;
