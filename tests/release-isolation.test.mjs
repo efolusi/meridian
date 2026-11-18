@@ -10,11 +10,11 @@ async function readRepoFile(relativePath) {
 }
 
 describe('Meridian integration and release isolation', () => {
-  it('validates dev changes while keeping publication main-only', async () => {
+  it('checks and publishes from main only', async () => {
     const checks = await readRepoFile('.github/workflows/checks.yml');
     const publish = await readRepoFile('.github/workflows/publish.yml');
 
-    expect(checks).toMatch(/push:\n\s+branches: \[main, dev\]/);
+    expect(checks).toMatch(/push:\n\s+branches: \[main\]/);
     expect(checks).toMatch(/pull_request:/);
     expect(checks).toMatch(/permissions:\n\s+contents: read/);
 
