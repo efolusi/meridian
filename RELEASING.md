@@ -42,26 +42,12 @@ and must agree:
 
 ## First publish of `@efolusi/meridian-cli`
 
-The CLI package is new and has never been published, so npm has no Trusted
-Publisher for it yet. Until the steps below are done, `publish.yml` skips
-`@efolusi/meridian-cli` with a warning: the other packages, the tag and the
-GitHub Release still go out, but the CLI is not on npm.
-
-Do this once, as the owner, before the first release that includes the CLI
-reaches `main`:
-
-1. On a clean checkout of the release commit, run `npm ci` and `npm run check`.
-   This builds `packages/cli/dist/`.
-2. Check the contents: `npm pack ./packages/cli/dist --dry-run`. It should list
-   `bin/meridian.js`, `src/*.mjs`, `README.md`, `LICENSE` and `package.json`.
-3. Log in to npm as an owner of the `@efolusi` scope and publish by hand:
-   `npm publish ./packages/cli/dist --access public`.
-4. On npmjs.com, open `@efolusi/meridian-cli`, Settings, Trusted Publisher, and
-   add GitHub Actions with repository `efolusi/meridian`, workflow
-   `publish.yml`, environment `npm-publish`, the same as the other packages.
-5. Confirm with `npx @efolusi/meridian-cli@<version> list | head`.
-
-After that the pipeline publishes the CLI with the others.
+Done: the owner published `@efolusi/meridian-cli@1.22.0` by hand on 2026-11-18
+and added its Trusted Publisher (repository `efolusi/meridian`, workflow
+`publish.yml`, environment `npm-publish`). npm keeps a new Trusted Publisher
+pending until one workflow publish succeeds, so 1.23.0 is the first release the
+pipeline publishes the CLI with. A manual publish of any package uses the Node
+version in `.nvmrc`: run `nvm use` (or install that version) before `npm ci`.
 
 ## The steps
 
