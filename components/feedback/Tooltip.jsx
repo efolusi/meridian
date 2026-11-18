@@ -26,7 +26,11 @@ export function Tooltip({ delayDuration, disableHoverableContent, open: controll
   const open = controlled !== undefined ? controlled : inner;
   const triggerRef = React.useRef(null);
   const timerRef = React.useRef(null);
-  const contentId = React.useId();
+  // The content's own `id` wins over the generated one, and the trigger's
+  // aria attribute follows whichever is rendered.
+  const baseId = React.useId();
+  const [customId, setContentId] = React.useState();
+  const contentId = customId || baseId;
   const setOpen = React.useCallback(next => {
     if (controlled === undefined) setInner(next);
     onOpenChange?.(next);
@@ -39,7 +43,7 @@ export function Tooltip({ delayDuration, disableHoverableContent, open: controll
   }, [delayDuration, provider.delayDuration, setOpen]);
   const hide = React.useCallback(() => { clearTimeout(timerRef.current); setOpen(false); }, [setOpen]);
   React.useEffect(() => () => clearTimeout(timerRef.current), []);
-  const value = React.useMemo(() => ({ open, show, hide, triggerRef, contentId, disableHoverableContent: disableHoverableContent ?? provider.disableHoverableContent }), [open, show, hide, contentId, disableHoverableContent, provider.disableHoverableContent]);
+  const value = React.useMemo(() => ({ open, show, hide, triggerRef, contentId, setContentId, disableHoverableContent: disableHoverableContent ?? provider.disableHoverableContent }), [open, show, hide, contentId, setContentId, disableHoverableContent, provider.disableHoverableContent]);
   return <TooltipCtx.Provider value={value}>{children}</TooltipCtx.Provider>;
 }
 
@@ -79,8 +83,14 @@ export const TooltipTrigger = React.forwardRef(function TooltipTrigger({ asChild
   return <button type="button" {...props}>{children}</button>;
 });
 
-export const TooltipContent = React.forwardRef(function TooltipContent({ side = 'top', sideOffset = 8, className, style, children, ...rest }, forwardedRef) {
+export const TooltipContent = React.forwardRef(function TooltipContent({ side = 'top', sideOffset = 8, className, style, children, id, ...rest }, forwardedRef) {
   const ctx = React.useContext(TooltipCtx);
+  const registerId = ctx?.setContentId;
+  useIsoLayoutEffect(() => {
+    if (!registerId) return;
+    registerId(id);
+    return () => registerId(undefined);
+  }, [registerId, id]);
   const bubbleRef = React.useRef(null);
   const want = SIDES.includes(side) ? side : 'top';
   const [placed, setPlaced] = React.useState({ style: { position: 'fixed', top: 0, left: 0, visibility: 'hidden' }, side: want, arrow: null });
@@ -122,7 +132,7 @@ export const TooltipContent = React.forwardRef(function TooltipContent({ side = 
   if (!ctx?.open) return null;
   return (
     <Portal>
-      <span {...rest} ref={mergeRefs(forwardedRef, bubbleRef)} role="tooltip" id={ctx.contentId} data-slot="tooltip-content" data-state="open" data-side={placed.side}
+      <span {...rest} ref={mergeRefs(forwardedRef, bubbleRef)} role="tooltip" id={id || ctx.contentId} data-slot="tooltip-content" data-state="open" data-side={placed.side}
         className={`ef-tooltip__bubble${placed.side !== 'top' ? ' ef-tooltip__bubble--' + placed.side : ''}${className ? ' ' + className : ''}`}
         style={{ ...placed.style, '--ef-tt-arrow': placed.arrow == null ? undefined : placed.arrow + 'px', ...style }}>{children}</span>
     </Portal>
