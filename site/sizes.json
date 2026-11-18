@@ -1,16 +1,16 @@
 {
   "totals": {
     "@efolusi/meridian": {
-      "bytes": 356106,
-      "gzip": 80154
+      "bytes": 356120,
+      "gzip": 80158
     },
     "dist/components.css": {
-      "bytes": 198579,
-      "gzip": 28179
+      "bytes": 198622,
+      "gzip": 28183
     },
     "_ds_bundle.js": {
-      "bytes": 813384,
-      "gzip": 145009
+      "bytes": 813441,
+      "gzip": 145023
     }
   },
   "modules": [
@@ -850,8 +850,8 @@
       "exports": [
         "PaymentCard"
       ],
-      "bytes": 2112,
-      "gzip": 779
+      "bytes": 2126,
+      "gzip": 785
     },
     {
       "module": "forms/Button.js",
