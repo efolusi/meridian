@@ -55,7 +55,6 @@ const GENERATED_PATHS = [
   'site/registry.json',
   'site/registry.js',
   'site/interfaces.json',
-  'tokens.json',
   'tailwind.preset.js',
   'llms-full.txt',
   'site/nav.json',
