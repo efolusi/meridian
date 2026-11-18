@@ -6,22 +6,24 @@ Where Meridian breaks its own design-system rules, and the fix for each. Nothing
 
 | Kind | Where | Count | Severity |
 |---|---|---|---|
-| Raw px instead of a space or size token | 113 of 123 component files | 1,291 values | high |
+| Raw px instead of a space or size token | 115 of 123 component files | 1,553 values | high |
 | Off-scale spacing (not on the 4px scale: 2, 3, 5, 6, 7, 9, 10, 14px) | most component files | about 300 values | high |
 | One status meaning, several names (`ok`/`success`, `err`/`error`/`danger`, `warn`/`warning`, `running`/`busy`/`generating`) | StatusDot, Terminal, Console, WebPreview vs Alert, Badge, Toast | 4 vocabularies | high |
 | Two variant names for one look (`danger` and `destructive`, `secondary` and `outline` on Button) | Button, Alert, Badge, DropdownMenu, ContextMenu, InputGroup | 6 components | medium |
 | Control size outside the size tokens (`--control-h-*`): Button `xs` 28px, icon `xs` 24px | Button, and siblings that copy it | 2 sizes | medium |
 | Raw border-radius instead of `--radius-*` | Chart, DonutChart, LineChart, Diff, Tabs, SegmentedControl, Tooltip, Toolbar, Task, Transcript, FileTypeIcon, PaymentCard | 16 values | medium |
-| Interactive part with no focus style of its own | ChatMessage, CodeBlock, Console, CopyField, Banner, Toast, Tooltip, FileTile, Command, HoverCard, Popover | 11 components | high (check each: some rely on Button inside) |
+| Interactive part with no focus style of its own | ChatMessage, CodeBlock, Console, CopyField, Banner, Toast, Tooltip, FileTile, HoverCard, Popover | 10 components | high (check each: some rely on Button inside) |
 | Decorative gradient | GeneratedImage (4), Attachment (2), DocumentCard, CodeBlock, Loader, PaymentCard | 10 | low (check each: shimmer and fades can be functional) |
 | Blur / glass | TopNav, GeneratedImage | 2 | low (TopNav: one sticky bar is within the R-10 dose) |
 | Motion without reduced-motion handling | none: `tokens/base.css` stops all animation under `prefers-reduced-motion` | 0 | none |
 | Emoji as icons | none | 0 | none |
 | README and docs claims | "123 accessible React components" without a stated test; badge counts | 2 | low |
 
+Raw px counted on dev, 2026-11-18: `git grep -hoE "[0-9]+(\.[0-9]+)?px" origin/dev -- 'components/*.jsx' | wc -l`.
+
 ## The ten worst
 
-1. Spacing is not on the token scale: 1,291 raw px values. Fix: replace with `--space-*`, and round off-scale values (6, 10, 14px) to the scale, group by group; each group is a visual change stated in the CHANGELOG.
+1. Spacing is not on the token scale: 1,553 raw px values. Fix: replace with `--space-*`, and round off-scale values (6, 10, 14px) to the scale, group by group; each group is a visual change stated in the CHANGELOG.
 2. Status names split into four vocabularies. Fix: one set, `success`, `warning`, `danger`, `info`, `neutral`, `busy`, used by every status-bearing component; the old names are removed in 1.24.0 with no aliases (owner, 2026-11-18).
 3. Sidebar: 53 raw px values, the most of any component. Fix: tokens, and the 4px scale.
 4. Combobox and Input: 32 and 23 raw values, with heights that do not follow `--control-h-*`. Fix: share Input's sizing with Select and Combobox through the control tokens.
