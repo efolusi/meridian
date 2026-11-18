@@ -14,7 +14,7 @@ Root paths in this repo (`styles.css`, `tokens/`, `assets/`, `components/`, `_ds
 
 ### How Meridian consumes design-tokens
 
-The source of truth is `design-tokens`. `scripts/sync_tokens.mjs <tag>` vendors its `tokens.json` and `tokens/web/{colors,typography,spacing,effects}.css` into this repo and pins them in `tokens/design-tokens.lock.json`. `scripts/build_tokens.py` only writes `tailwind.preset.js`.
+The source of truth is `design-tokens`. Every design-tokens tag is re-vendored here and in Glamor to the same tag before either releases ([rule](https://github.com/efolusi/design-tokens/blob/main/docs/consumers.md#releasing-a-new-version)). `scripts/sync_tokens.mjs <tag>` vendors its `tokens.json` and `tokens/web/{colors,typography,spacing,effects}.css` into this repo and pins them in `tokens/design-tokens.lock.json`. `scripts/build_tokens.py` only writes `tailwind.preset.js`.
 
 How it got there:
 
