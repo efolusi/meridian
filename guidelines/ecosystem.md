@@ -32,7 +32,7 @@ The site already depends on `@efolusi/meridian` (`^1.21.6`; latest is 1.22.0). I
 
 | # | Item | Repo | Status |
 |---|---|---|---|
-| 1 | Pick DTCG (Meridian shape) as the `design-tokens` format | design-tokens | open |
+| 1 | Pick DTCG (Meridian shape) as the `design-tokens` format; Komando-only tokens stay in komando-apps | design-tokens | done (branch tokens/dtcg) |
 | 2 | Move Meridian's token values into `design-tokens/tokens.json`; move Komando-only tokens back to Glamor/komando-apps | design-tokens | open |
 | 3 | Generator: `tokens.json` → `tokens/web/*.css` | design-tokens | open |
 | 4 | Sync script + pinned tag; `build_tokens.py` reads the vendored files | meridian | open |

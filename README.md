@@ -12,6 +12,10 @@
 
 Warm paper, espresso ink, hairline structure. Copy it, theme it, ship it.
 
+## Ecosystem
+
+Shared tokens: [design-tokens](https://github.com/efolusi/design-tokens). Native twin: [Glamor](https://github.com/efolusi/glamor). Short map: [guidelines/ecosystem.md](guidelines/ecosystem.md).
+
 ## Principles
 
 - **The zero-build path comes first.** The four-tag CDN page never regresses for the sake of the npm build; where the two differ, the difference is deliberate and documented.
