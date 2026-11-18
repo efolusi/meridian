@@ -7,9 +7,9 @@ Rules for evolving this open-source design system.
 Meridian covers the common path of a real product surface and declines the speculative and the niche. It is components, tokens and patterns: it does not own routing, data, or state beyond a component's own. It ships no analytics or telemetry into a consumer's page. The npm packages are carved from the same flat sources as the CDN bundle and move in lockstep; the component sources never move into packages.
 
 ## Versioning
-- Semver. **Patch** = visual bugfix within the spec. **Minor** = new component, prop, or token (additive). **Major** = renamed/removed token or prop, changed default, visual language shift.
-- Never repurpose a token's meaning. Add a new one and deprecate the old (see Deprecation).
-- Keep a `CHANGELOG.md` entry per release: Added / Changed / Deprecated / Removed.
+- Semver. **Patch** = visual bugfix within the spec. **Minor** = new component, prop, or token, or a breaking change while Meridian is used only inside Efolusi (see Breaking changes). **Major** = a breaking change once Meridian has outside users, or a visual language shift.
+- Never repurpose a token's meaning. Add a new one and remove the old in the same change.
+- Keep a `CHANGELOG.md` entry per release. Mark each breaking change **Breaking** and give the old and new name.
 
 ## Contributing a component
 1. Prove need: it must be used by ≥2 product surfaces, or be a documented pattern gap. One-offs stay in product code.
@@ -22,10 +22,10 @@ Meridian covers the common path of a real product surface and declines the specu
 - **Do** hairlines for structure. **Don't** add shadows to things that don't float.
 - **Don't** introduce gradients, emoji icons, or cool grays: they are outside the language.
 
-## Deprecation
-A deprecated prop, component or token keeps working, with a development console warning that names its replacement, until the next major version. Removing it is a major change, and the warning must ship in at least one release before the removal.
+## Breaking changes
+Meridian keeps no legacy code: no aliases for renamed props or tokens, no deprecation warnings, no shims kept until a later release.
 
-1. Publish the replacement.
-2. Migrate every maintained consumer: showcases, starters, blocks and the docs site.
-3. Add its section to [migration.md](migration.md), which lists the steps and the gate that checks them.
-4. Record it under **Deprecated** in `CHANGELOG.md` with the migration, and remove it in the next major.
+1. Rename or remove in one change, and update every caller in the same change: components, showcases, starters, blocks, the docs site, tests and skills.
+2. Mark it **Breaking** in `CHANGELOG.md` with the old and new name.
+3. Add a section with before and after code to [migration.md](migration.md).
+4. List the product repos that use the old name, so each updates when it moves to that release.

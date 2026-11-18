@@ -2,6 +2,7 @@
 
 ## Unreleased
 
+- **No deprecation period.** Governance and the migration guide now say that a rename or removal lands in one release, with no alias or warning, and every caller changes with it. The README, style guide, contributing guide, RFC template and skill say the same.
 - **`meridian-cli` refuses a plain `http://` registry** except on localhost, so files cannot be swapped on the network. Use https.
 - **CI checks the vendored tokens against the pinned design-tokens tag.** `node scripts/sync_tokens.mjs --check-remote` re-fetches the tag in the lock and fails when the lock commit or any vendored file differs. `npm run check` runs it in CI (`CI=true`); locally it stays offline.
 
