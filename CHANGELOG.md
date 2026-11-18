@@ -2,6 +2,7 @@
 
 ## Unreleased
 
+- **PaymentCard's chip is a flat `--brand-300`** instead of a decorative gradient. The other gradients stay, because each one does a job: the GeneratedImage placeholder and its text scrims, the Attachment upload shimmer and its scroll-edge mask, the DocumentCard and CodeBlock fades that show the text is cut off, and the Loader shimmer.
 - **`meridian-cli` refuses a plain `http://` registry** except on localhost, so files cannot be swapped on the network. Use https.
 - **CI checks the vendored tokens against the pinned design-tokens tag.** `node scripts/sync_tokens.mjs --check-remote` re-fetches the tag in the lock and fails when the lock commit or any vendored file differs. `npm run check` runs it in CI (`CI=true`); locally it stays offline.
 
