@@ -2,6 +2,7 @@
 
 ## Unreleased
 
+- **Six components show keyboard focus.** ChatMessage shows its action row when focus is inside it, not only on hover. The CodeBlock copy and show-all buttons, the Console stack toggle and jump button, the Banner action and the Toast action draw `--focus-ring`; the Toast ring matches its dark surface. Command underlines the search row while its input has focus.
 - **CI checks run on GitHub-hosted `ubuntu-24.04`** until the new self-hosted runners exist. Deploy jobs stay self-hosted.
 
 - **`meridian-cli` refuses a plain `http://` registry** except on localhost, so files cannot be swapped on the network. Use https.
