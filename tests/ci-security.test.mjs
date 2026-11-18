@@ -203,12 +203,19 @@ describe('publish keeps third-party code and publish rights in separate jobs', (
   const build = jobOf(publish, 'build')
   const pub = jobOf(publish, 'publish')
   const release = jobOf(publish, 'release')
+  const deploy = jobOf(publish, 'deploy')
 
-  it('has decide, build, publish and release jobs chained by needs', () => {
-    expect(Object.keys(runsOn(publish))).toEqual(['decide', 'build', 'publish', 'release'])
+  it('has decide, build, publish, release and deploy jobs chained by needs', () => {
+    expect(Object.keys(runsOn(publish))).toEqual(['decide', 'build', 'publish', 'release', 'deploy'])
     expect(build).toMatch(/\n {4}needs: decide\n/)
     expect(pub).toMatch(/\n {4}needs: build\n/)
     expect(release).toMatch(/\n {4}needs: \[build, publish\]\n/)
+    expect(deploy).toMatch(/\n {4}needs: \[build, release\]\n/)
+  })
+
+  it('starts the production deploy from a job that can only start workflows', () => {
+    expect(jobPermissions(deploy)).toEqual({ actions: 'write' })
+    expect(withoutComments(deploy)).not.toMatch(/actions\/checkout|npm /)
   })
 
   it('builds and verifies with read-only rights and no publish identity', () => {

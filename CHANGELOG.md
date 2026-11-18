@@ -2,6 +2,7 @@
 
 ## Unreleased
 
+- **The production site deploys from a `v*` tag, not from a push to `main`.** `deploy-prod-static.yml` runs on a `v*` tag push or by hand on a tag, checks that the tagged commit is on `main` and passed its checks, and publishes it. After a release, `publish.yml` starts it on the new tag, from a job that is the only one with `actions: write`.
 - **The production site deploys from a `v*` tag, not from a push to `main`.** `deploy-prod-static.yml` runs on a `v*` tag push or by hand on a tag, checks that the tagged commit is on `main` and passed its checks, and publishes it. RELEASING.md says how to run it after a release.
 - **No deprecation period.** Governance and the migration guide now say that a rename or removal lands in one release, with no alias or warning, and every caller changes with it. The README, style guide, contributing guide, RFC template and skill say the same.
 - **Every overlay trigger and composite field shows its own focus.** Tooltip, HoverCard and Popover triggers draw `--focus-ring` when focused (a trigger with its own style, such as Button, keeps it). CopyField and FileTile colour their border while focus is inside. The Toast action uses `--focus-ring` instead of a hand-built ring.

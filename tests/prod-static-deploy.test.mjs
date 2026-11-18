@@ -17,6 +17,15 @@ describe('Meridian production static deployment', () => {
     expect(on).not.toContain('pull_request')
   })
 
+  it('is started by publish.yml on the release tag, with actions: write on that job only', () => {
+    const publish = readFileSync('.github/workflows/publish.yml', 'utf8')
+    const job = publish.slice(publish.indexOf('\n  deploy:\n'))
+    expect(job).toContain('needs: [build, release]')
+    expect(job).toContain('actions: write')
+    expect(job).toContain('gh workflow run deploy-prod-static.yml --repo "$GITHUB_REPOSITORY" --ref "v$PKG"')
+    expect(publish.match(/actions: write/g)).toHaveLength(1)
+  })
+
   it('binds the exact tagged SHA, checks it is on main, and runs on the production runner', () => {
     expect(workflow).toContain('runs-on: [self-hosted, Linux, X64, efolusi-prod]')
     expect(workflow).toContain('ref: ${{ github.sha }}')
