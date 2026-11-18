@@ -98,14 +98,12 @@ describe('CI runner isolation', () => {
     }
   })
 
-  it('keeps pushes and same-repository branches on the efolusi-dev runner', () => {
+  it('runs checks on GitHub-hosted runners for every event while no self-hosted runner exists', () => {
     const jobs = runsOn(workflows['checks.yml'])
     expect(Object.keys(jobs).sort()).toEqual(['gates', 'smoke'])
     for (const expr of Object.values(jobs)) {
-      for (const ctx of ['sameRepo', 'push']) {
-        expect(evaluate(expr, PR_CONTEXTS[ctx])).toEqual([
-          'self-hosted', 'Linux', 'X64', 'efolusi-dev',
-        ])
+      for (const ctx of ['sameRepo', 'push', 'fork']) {
+        expect(evaluate(expr, PR_CONTEXTS[ctx])).toBe('ubuntu-24.04')
       }
     }
   })
