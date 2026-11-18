@@ -32,13 +32,13 @@ def block(css, pattern):
     return declarations(m.group(1)) if m else {}
 
 def parse_root(css):
-    return block(css, r":root\{(.*?)\}")
+    return block(css, r":root\s*\{(.*?)\}")
 
 # Mode name -> (source file, block pattern, the CSS that applies it).
 MODES = {
-    "dark": ("colors.css", r'\[data-theme="dark"\]\{(.*?)\}', '[data-theme="dark"]'),
-    "compact": ("spacing.css", r'\[data-density="compact"\]\{(.*?)\}', '[data-density="compact"]'),
-    "coarse": ("spacing.css", r"@media \(pointer: coarse\) \{\s*[^{]*\{(.*?)\}", "@media (pointer: coarse)"),
+    "dark": ("colors.css", r'\[data-theme="dark"\]\s*\{(.*?)\}', '[data-theme="dark"]'),
+    "compact": ("spacing.css", r'\[data-density="compact"\]\s*\{(.*?)\}', '[data-density="compact"]'),
+    "coarse": ("spacing.css", r"@media \(pointer:\s*coarse\)\s*\{\s*[^{]*\{(.*?)\}", "@media (pointer: coarse)"),
 }
 VENDOR = "com.efolusi.meridian"
 

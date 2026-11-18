@@ -1,11 +1,12 @@
+import { readTokenCss } from './helpers/token-css.mjs'
 import { spawnSync } from 'node:child_process'
 import { readFileSync } from 'node:fs'
 import { describe, expect, it } from 'vitest'
 
 // Owner decisions of 2026-11-13 for the token layer.
-const colors = readFileSync('tokens/colors.css', 'utf8')
-const lightBlock = colors.match(/:root\{([\s\S]*?)\n\}/)[1]
-const darkBlock = colors.match(/\[data-theme="dark"\]\{([\s\S]*?)\n\}/)[1]
+const colors = readTokenCss('colors.css')
+const lightBlock = colors.match(/:root\s*\{([\s\S]*?)\n\}/)[1]
+const darkBlock = colors.match(/\[data-theme="dark"\]\s*\{([\s\S]*?)\n\}/)[1]
 const gate = spawnSync('python3', ['scripts/check_contrast.py'], { encoding: 'utf8' })
 
 describe('form-control edge and accent-subtle ink', () => {

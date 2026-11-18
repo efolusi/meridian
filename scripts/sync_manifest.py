@@ -83,10 +83,10 @@ def infer_kind(name, value):
 def blocks(css, filename):
     """Yield (scope, [(name, value), ...]) for the :root block then each scoped block."""
     out = []
-    m = re.search(r":root\{(.*?)\n\}", css, re.S)
+    m = re.search(r":root\s*\{(.*?)\n\}", css, re.S)
     if m:
         out.append(("", m.group(1)))
-    for scope_m in re.finditer(r'(\[data-[\w-]+="[\w-]+"\])\{(.*?)\n\}', css, re.S):
+    for scope_m in re.finditer(r'^(\[data-[\w-]+="[\w-]+"\])\s*\{(.*?)\n\}', css, re.S | re.M):
         out.append((scope_m.group(1), scope_m.group(2)))
     for scope, body in out:
         decls = []
