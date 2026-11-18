@@ -1,8 +1,8 @@
 name: deploy development static site
 
+# Manual preview: run it on a branch to see that branch on the development site.
 on:
-  push:
-    branches: [dev]
+  workflow_dispatch:
 
 permissions:
   contents: read
