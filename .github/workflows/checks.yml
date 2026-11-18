@@ -37,6 +37,11 @@ jobs:
       - name: All generators and gates (npm run check)
         run: npm run check
 
+      # npm run check compares the vendored tokens with the lock offline; this also
+      # compares the lock and files with the pinned design-tokens tag upstream.
+      - name: Vendored tokens match the pinned design-tokens tag
+        run: node scripts/sync_tokens.mjs --check-remote
+
   smoke:
     runs-on: ${{ (github.event_name != 'pull_request' || github.event.pull_request.head.repo.full_name == github.repository) && fromJSON('["self-hosted","Linux","X64","efolusi-dev"]') || 'ubuntu-24.04' }}
     timeout-minutes: 30

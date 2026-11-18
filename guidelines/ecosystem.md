@@ -36,7 +36,7 @@ The site already depends on `@efolusi/meridian` (`^1.22.0`, the latest release).
 | 2 | Move Meridian's token values into `design-tokens/tokens.json`; move Komando-only tokens back to Glamor/komando-apps | design-tokens | done (v0.0.1) |
 | 3 | Generator: `tokens.json` → `tokens/web/*.css` | design-tokens | done (v0.0.1) |
 | 4 | Sync script + pinned tag; `build_tokens.py` reads the vendored files | meridian | done (pinned to v0.1.1) |
-| 5 | Check: vendored tokens equal pinned export | meridian | done (`sync_tokens.mjs --check` in `npm run check`) |
+| 5 | Check: vendored tokens equal pinned export | meridian | done (`sync_tokens.mjs --check` offline in `npm run check`; `--check-remote` against the pinned tag in CI) |
 | 6 | Map Glamor names (`window`, `panel`, `text2`, …) to Meridian roles (`surface`, `text`, `border`) so both use one set of names | design-tokens + glamor | open |
 | 7 | efolusi/efolusi: bump to 1.22.0, audit hand-written CSS that a Meridian component or token covers | efolusi | done (efolusi/efolusi#76) |
 | 8 | efolusi/efolusi: list missing components or tokens as Meridian issues | efolusi → meridian | done (#108, #109, #110, #111) |

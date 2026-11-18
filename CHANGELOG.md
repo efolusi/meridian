@@ -1,5 +1,9 @@
 # Changelog
 
+## Unreleased
+
+- **CI checks the vendored tokens against the pinned design-tokens tag.** `node scripts/sync_tokens.mjs --check-remote` re-fetches the tag in the lock and fails when the lock commit or any vendored file differs. `npm run check` keeps the offline check.
+
 ## 1.23.0 — 2026-11-18
 
 - **`@efolusi/meridian-cli` ships with the other packages.** Its first version (1.22.0) was published by hand; from 1.23.0 the publish workflow releases it in lockstep.
