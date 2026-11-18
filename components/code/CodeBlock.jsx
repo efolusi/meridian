@@ -17,6 +17,7 @@ const CSS = `
 .ef-code__fade{position:absolute;inset-inline:0;bottom:0;height:56px;display:flex;align-items:flex-end;justify-content:center;padding-bottom:8px;background:linear-gradient(to top,var(--surface-code),transparent)}
 .ef-code__more{display:inline-flex;align-items:center;gap:5px;border:1px solid var(--code-edge);border-radius:var(--radius-full);background:var(--code-raised);cursor:pointer;padding:4px 12px;font-family:var(--font-sans);font-size:11.5px;font-weight:var(--weight-semibold);color:var(--code-ink-strong)}
 .ef-code__more:hover{color:var(--code-ink-bright);border-color:var(--code-edge-hover)}
+.ef-code__copy:focus-visible,.ef-code__more:focus-visible{outline:none;box-shadow:var(--focus-ring)}
 `;
 export function CodeBlock({ lang, title, children, maxHeight, clip, clipHeight = 240, style, className, ...rest }) {
   injectEfCss('ef-css-code', CSS);
