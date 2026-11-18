@@ -19,7 +19,7 @@ export function SegmentedControl({ options, value, onChange, style, className, .
         const opt = typeof o === 'string' ? { id: o, label: o } : o;
         return (
           <button key={opt.id} type="button" className={`ef-seg__opt${value === opt.id ? ' ef-seg__opt--active' : ''}`} aria-pressed={value === opt.id} disabled={opt.disabled} onClick={() => onChange && onChange(opt.id)}>
-            {opt.icon ? <Icon name={opt.icon} size={14} /> : null}{opt.label}
+            {opt.icon ? <Icon name={opt.icon} size={16} /> : null}{opt.label}
           </button>
         );
       })}

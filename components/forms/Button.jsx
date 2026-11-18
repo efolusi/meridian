@@ -11,9 +11,9 @@ const CSS = `
 .ef-btn--sm{height:var(--control-h-sm);padding:0 10px;font-size:var(--text-sm)}
 .ef-btn--md{height:var(--control-h-md);padding:0 14px;font-size:var(--text-md)}
 .ef-btn--lg{height:var(--control-h-lg);padding:0 20px;font-size:var(--text-lg)}
-.ef-btn--xs{height:28px;padding:0 9px;font-size:var(--text-xs);gap:6px}
+.ef-btn--xs{height:var(--control-h-xs);padding:0 9px;font-size:var(--text-xs);gap:6px}
 .ef-btn--icon,.ef-btn--icon-md{width:var(--control-h-md);height:var(--control-h-md);padding:0}
-.ef-btn--icon-xs{width:24px;height:24px;padding:0}
+.ef-btn--icon-xs{width:var(--control-h-xs);height:var(--control-h-xs);padding:0}
 .ef-btn--icon-sm{width:var(--control-h-sm);height:var(--control-h-sm);padding:0}
 .ef-btn--icon-lg{width:var(--control-h-lg);height:var(--control-h-lg);padding:0}
 .ef-btn--primary{background:var(--accent);color:var(--accent-contrast)}

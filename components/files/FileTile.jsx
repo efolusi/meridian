@@ -19,7 +19,7 @@ export function FileTile({ name, size, kind, status, progress, error, onRemove, 
   const icon = KIND_ICON[kind || EXT_KIND[ext]] || 'file';
   return (
     <div {...rest} className={`ef-filetile${className ? ' ' + className : ''}`} style={style}>
-      <span className="ef-filetile__icon"><Icon name={icon} size={17} /></span>
+      <span className="ef-filetile__icon"><Icon name={icon} size={16} /></span>
       <div style={{ flex: 1, minWidth: 0 }}>
         <div className="ef-filetile__name">{name}</div>
         {error ? <div className="ef-filetile__meta ef-filetile__meta--err">{error}</div>

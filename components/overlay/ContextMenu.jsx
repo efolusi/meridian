@@ -184,7 +184,7 @@ export const ContextMenuCheckboxItem = React.forwardRef(function ContextMenuChec
   const [inner, setInner] = React.useState(defaultChecked);
   const checked = controlled !== undefined ? controlled : inner;
   const activate = event => { onClick?.(event); if (event.defaultPrevented || disabled) return; const next = !checked; if (controlled === undefined) setInner(next); onCheckedChange?.(next); onSelect?.(event); if (!event.defaultPrevented) root?.setOpen(false); };
-  return <button {...props} ref={ref} type="button" role="menuitemcheckbox" aria-checked={checked} disabled={disabled} data-slot="context-menu-checkbox-item" data-state={checked ? 'checked' : 'unchecked'} data-disabled={disabled ? 'true' : undefined} className={join('ef-context-menu__item', className)} onClick={activate}><span className="ef-context-menu__indicator">{checked ? <Icon name="check" size={14} /> : null}</span>{children}</button>;
+  return <button {...props} ref={ref} type="button" role="menuitemcheckbox" aria-checked={checked} disabled={disabled} data-slot="context-menu-checkbox-item" data-state={checked ? 'checked' : 'unchecked'} data-disabled={disabled ? 'true' : undefined} className={join('ef-context-menu__item', className)} onClick={activate}><span className="ef-context-menu__indicator">{checked ? <Icon name="check" size={16} /> : null}</span>{children}</button>;
 });
 
 export function ContextMenuRadioGroup({ value: controlled, defaultValue = '', onValueChange, children, ...props }) {
@@ -217,7 +217,7 @@ export const ContextMenuSubTrigger = React.forwardRef(function ContextMenuSubTri
   const sub = React.useContext(SubCtx);
   const rtl = useDirection() === 'rtl';
   const keyboard = event => { if (!disabled && event.key === (rtl ? 'ArrowLeft' : 'ArrowRight')) { event.preventDefault(); sub?.setOpen(true); requestAnimationFrame(() => menuItems(sub?.contentRef.current)[0]?.focus()); } };
-  return <button {...props} ref={mergeRefs(forwardedRef, sub?.triggerRef)} type="button" role="menuitem" disabled={disabled} data-slot="context-menu-sub-trigger" data-state={sub?.open ? 'open' : 'closed'} data-inset={inset ? 'true' : undefined} data-disabled={disabled ? 'true' : undefined} className={join('ef-context-menu__item', className)} onMouseEnter={() => !disabled && sub?.setOpen(true)} onKeyDown={compose(onKeyDown, keyboard)}>{children}<span className="ef-context-menu__chevron"><Icon name="chevron-right" size={14} /></span></button>;
+  return <button {...props} ref={mergeRefs(forwardedRef, sub?.triggerRef)} type="button" role="menuitem" disabled={disabled} data-slot="context-menu-sub-trigger" data-state={sub?.open ? 'open' : 'closed'} data-inset={inset ? 'true' : undefined} data-disabled={disabled ? 'true' : undefined} className={join('ef-context-menu__item', className)} onMouseEnter={() => !disabled && sub?.setOpen(true)} onKeyDown={compose(onKeyDown, keyboard)}>{children}<span className="ef-context-menu__chevron"><Icon name="chevron-right" size={16} /></span></button>;
 });
 
 export const ContextMenuSubContent = React.forwardRef(function ContextMenuSubContent({ sideOffset = 4, alignOffset = -4, loop = true, className, style, onKeyDown, children, ...props }, forwardedRef) {

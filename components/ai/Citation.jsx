@@ -60,7 +60,7 @@ export function Citation({ index, href, title, sources, onClick, style, classNam
       {chip}
       {open ? (
         <span className="ef-citation__pop" role="dialog">
-          <span className="ef-citation__pop-name"><Icon name="globe" size={11} />{cur.domain || 'source'}</span>
+          <span className="ef-citation__pop-name"><Icon name="globe" size={12} />{cur.domain || 'source'}</span>
           <span className="ef-citation__pop-title" style={{ display: 'block' }}>{cur.title}</span>
           {cur.description ? <span className="ef-citation__pop-desc" style={{ display: 'block' }}>{cur.description}</span> : null}
           {list.length > 1 ? (

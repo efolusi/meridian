@@ -59,7 +59,7 @@ function InfraScreen() {
           </div>
           <Card style={{ marginTop: 14 }}><CardContent style={{ paddingInline: 0, marginBlock: 'calc(var(--card-spacing) * -1)' }}>
             <Table rowKey="id" onRowClick={r => setSel(r)} columns={[
-              { key: 'name', label: 'Name', render: (v, r) => <span style={{ display: 'inline-flex', alignItems: 'center', gap: 10, fontWeight: 600 }}><span style={{ display: 'inline-flex', width: 30, height: 30, alignItems: 'center', justifyContent: 'center', borderRadius: 'var(--radius-sm)', background: 'var(--surface-sunken)', color: 'var(--sand-700)' }}><Icon name={r.icon} size={15} /></span>{v}</span> },
+              { key: 'name', label: 'Name', render: (v, r) => <span style={{ display: 'inline-flex', alignItems: 'center', gap: 10, fontWeight: 600 }}><span style={{ display: 'inline-flex', width: 30, height: 30, alignItems: 'center', justifyContent: 'center', borderRadius: 'var(--radius-sm)', background: 'var(--surface-sunken)', color: 'var(--sand-700)' }}><Icon name={r.icon} size={16} /></span>{v}</span> },
               { key: 'kind', label: 'Type' },
               { key: 'region', label: tab === 'resources' ? 'Region' : 'Notes' },
               { key: 'status', label: 'Status', render: v => <StatusDot status={v} pulse={v !== 'ok'} label={STATUS_LABEL[v]} /> },

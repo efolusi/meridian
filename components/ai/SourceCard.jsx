@@ -31,7 +31,7 @@ export function SourceCard({ href, title, description, domain, favicon, icon = '
       {thumbnail ? <img className="ef-sourcecard__thumb" src={thumbnail} alt="" /> : null}
       {domain ? (
         <span className="ef-sourcecard__domain">
-          {favicon ? <img src={favicon} alt="" /> : <Icon name={icon} size={13} />}
+          {favicon ? <img src={favicon} alt="" /> : <Icon name={icon} size={12} />}
           {domain}
         </span>
       ) : null}

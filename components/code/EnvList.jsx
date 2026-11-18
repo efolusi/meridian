@@ -32,7 +32,7 @@ function Row({ v, visible }) {
     <div className="ef-env__row">
       <span className="ef-env__name">{v.name}</span>
       <span className="ef-env__val">{masked ? MASK : v.value}</span>
-      <button type="button" className={`ef-env__btn${copied ? ' ef-env__btn--done' : ''}`} aria-label={'Copy ' + v.name} onClick={copy}><Icon name={copied ? 'check' : 'copy'} size={13} /></button>
+      <button type="button" className={`ef-env__btn${copied ? ' ef-env__btn--done' : ''}`} aria-label={'Copy ' + v.name} onClick={copy}><Icon name={copied ? 'check' : 'copy'} size={12} /></button>
     </div>
   );
 }
@@ -43,9 +43,9 @@ export function EnvList({ title = 'Environment', vars = [], defaultOpen = false,
   return (
     <div {...rest} className={`ef-env${className ? ' ' + className : ''}`} style={style}>
       <div className="ef-env__head">
-        <span className="ef-env__glyph"><Icon name="key" size={14} /></span>
+        <span className="ef-env__glyph"><Icon name="key" size={16} /></span>
         <span className="ef-env__title">{title}</span>
-        {hasSecrets ? <button type="button" className="ef-env__btn" aria-label={visible ? 'Hide secrets' : 'Reveal secrets'} aria-pressed={visible} onClick={() => setVisible(!visible)}><Icon name={visible ? 'eye-off' : 'eye'} size={14} /></button> : null}
+        {hasSecrets ? <button type="button" className="ef-env__btn" aria-label={visible ? 'Hide secrets' : 'Reveal secrets'} aria-pressed={visible} onClick={() => setVisible(!visible)}><Icon name={visible ? 'eye-off' : 'eye'} size={16} /></button> : null}
       </div>
       <div className="ef-env__list">
         {vars.map((v, i) => <Row key={i} v={v} visible={visible} />)}

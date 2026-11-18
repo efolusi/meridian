@@ -33,7 +33,7 @@ function Row({ e }) {
       <span className="ef-console__msg">
         {e.stack ? (
           <button type="button" className="ef-console__stackbtn" aria-expanded={open} onClick={() => setOpen(!open)}>
-            <span className={`ef-console__stackchev${open ? ' ef-console__stackchev--open' : ''}`}><Icon name="chevron-right" size={11} /></span>
+            <span className={`ef-console__stackchev${open ? ' ef-console__stackchev--open' : ''}`}><Icon name="chevron-right" size={12} /></span>
             <span>{e.text}</span>
           </button>
         ) : e.text}
@@ -62,7 +62,7 @@ export function Console({ title = 'Console', entries = [], height = 240, style, 
   }, [entries.length]);
   return (
     <div {...rest} className={`ef-console${className ? ' ' + className : ''}`} style={style}>
-      <div className="ef-console__head"><Icon name="terminal" size={13} />{title}<span style={{ marginInlineStart: 'auto', color: 'var(--text-muted)' }}>{entries.length} entries</span></div>
+      <div className="ef-console__head"><Icon name="terminal" size={12} />{title}<span style={{ marginInlineStart: 'auto', color: 'var(--text-muted)' }}>{entries.length} entries</span></div>
       <div ref={viewport} className="ef-console__scroll" role="log" aria-live="polite" style={{ height }} onScroll={recompute}>
         {entries.map((e, i) => <Row key={i} e={e} />)}
       </div>

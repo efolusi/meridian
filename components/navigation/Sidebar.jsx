@@ -84,7 +84,7 @@ export const SidebarProvider = React.forwardRef(function SidebarProvider({ defau
     return () => window.removeEventListener('keydown', onKeyDown);
   }, [toggleSidebar]);
   const context = React.useMemo(() => ({ state: open ? 'expanded' : 'collapsed', open, setOpen, openMobile, setOpenMobile, isMobile, toggleSidebar }), [open, setOpen, openMobile, isMobile, toggleSidebar]);
-  return <SidebarContext.Provider value={context}><div {...props} ref={ref} data-slot="sidebar-wrapper" style={{ '--sidebar-width': '16rem', '--sidebar-width-icon': '3rem', ...style }} className={join('ef-sidebar-provider', className)}>{children}</div></SidebarContext.Provider>;
+  return <SidebarContext.Provider value={context}><div {...props} ref={ref} data-slot="sidebar-wrapper" style={style} className={join('ef-sidebar-provider', className)}>{children}</div></SidebarContext.Provider>;
 });
 
 export const Sidebar = React.forwardRef(function Sidebar({ side = 'left', variant = 'sidebar', collapsible = 'offcanvas', dir, className, children, ...props }, ref) {
@@ -129,7 +129,7 @@ function MobileSidebarPanel({ common, dir, label, onClose, children }) {
   </>;
 }
 
-export const SidebarTrigger = React.forwardRef(function SidebarTrigger({ render, className, onClick, children, ...props }, ref) { const context = useSidebar(); const click = event => { onClick?.(event); if (!event.defaultPrevented) context.toggleSidebar(); }; return compose(render, 'button', { ...props, type: render ? undefined : 'button', 'data-slot': 'sidebar-trigger', 'aria-label': props['aria-label'] || 'Toggle sidebar', 'aria-expanded': context.isMobile ? context.openMobile : context.open, className: join('ef-sidebar-trigger', className), onClick: click }, ref, children || <Icon name="panel-left" size={18} />); });
+export const SidebarTrigger = React.forwardRef(function SidebarTrigger({ render, className, onClick, children, ...props }, ref) { const context = useSidebar(); const click = event => { onClick?.(event); if (!event.defaultPrevented) context.toggleSidebar(); }; return compose(render, 'button', { ...props, type: render ? undefined : 'button', 'data-slot': 'sidebar-trigger', 'aria-label': props['aria-label'] || 'Toggle sidebar', 'aria-expanded': context.isMobile ? context.openMobile : context.open, className: join('ef-sidebar-trigger', className), onClick: click }, ref, children || <Icon name="panel-left" size={20} />); });
 export const SidebarRail = React.forwardRef(function SidebarRail({ className, onClick, ...props }, ref) { const context = useSidebar(); return <button {...props} ref={ref} type="button" data-slot="sidebar-rail" aria-label={props['aria-label'] || 'Toggle sidebar'} tabIndex={-1} className={join('ef-sidebar-rail', className)} onClick={event => { onClick?.(event); if (!event.defaultPrevented) context.toggleSidebar(); }} />; });
 
 function region(name, tag, base) { return React.forwardRef(function SidebarRegion({ className, ...props }, ref) { return React.createElement(tag, { ...props, ref, 'data-slot': name, className: join(base, className) }); }); }

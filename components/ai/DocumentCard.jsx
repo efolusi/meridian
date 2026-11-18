@@ -46,13 +46,13 @@ export function DocumentCard({ title, meta, icon = 'file-text', collapsedHeight 
   return (
     <div {...rest} className={`ef-doccard${open ? ' ef-doccard--open' : ''}${className ? ' ' + className : ''}`} style={style}>
       <div className="ef-doccard__head">
-        <span className="ef-doccard__glyph"><Icon name={icon} size={15} /></span>
+        <span className="ef-doccard__glyph"><Icon name={icon} size={16} /></span>
         <span className="ef-doccard__title">{title}</span>
         {meta ? <span className="ef-doccard__meta">{meta}</span> : null}
         {actions}
-        <button type="button" className="ef-doccard__btn" aria-label="Copy document" onClick={copy}><Icon name={copied ? 'check' : 'copy'} size={14} /></button>
+        <button type="button" className="ef-doccard__btn" aria-label="Copy document" onClick={copy}><Icon name={copied ? 'check' : 'copy'} size={16} /></button>
         {overflows || !open ? (
-          <button type="button" className={`ef-doccard__btn${open ? ' ef-doccard__btn--open' : ''}`} aria-expanded={open} aria-label={open ? 'Collapse' : 'Expand'} onClick={() => setOpen(!open)}><Icon name="chevron-down" size={14} /></button>
+          <button type="button" className={`ef-doccard__btn${open ? ' ef-doccard__btn--open' : ''}`} aria-expanded={open} aria-label={open ? 'Collapse' : 'Expand'} onClick={() => setOpen(!open)}><Icon name="chevron-down" size={16} /></button>
         ) : null}
       </div>
       <div className="ef-doccard__win" style={{ height }}>

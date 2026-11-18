@@ -118,7 +118,7 @@ export const Table = React.forwardRef(function Table({
                   <button type="button" className={`ef-table__sort${on ? ' ef-table__sort--on' : ''}`} onClick={() => toggleSort(c.key)}>
                     {c.label}
                     <span className="ef-table__sort__i">
-                      <Icon name={on && sort.direction === 'desc' ? 'chevron-down' : 'chevron-up'} size={13} />
+                      <Icon name={on && sort.direction === 'desc' ? 'chevron-down' : 'chevron-up'} size={12} />
                     </span>
                   </button>
                 ) : c.label}

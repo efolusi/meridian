@@ -48,7 +48,7 @@ export const Conversation = React.forwardRef(function Conversation({ height = 42
       </div>
       {!atBottom ? (
         <button type="button" className="ef-conversation__jump" onClick={() => toBottom()}>
-          <Icon name="chevron-down" size={13} />
+          <Icon name="chevron-down" size={12} />
           {jumpLabel}
         </button>
       ) : null}

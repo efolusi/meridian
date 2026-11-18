@@ -23,7 +23,7 @@ function ToastItem({ tone = 'info', title, description, actionProps, onClose, ro
   injectEfCss('ef-css-toast', CSS);
   const actionNode = actionProps ? <button type="button" {...actionProps} className={`ef-toast__action${actionProps.className ? ` ${actionProps.className}` : ''}`} /> : null;
   return <div {...rest} data-slot="toast" className={`ef-toast ef-toast--${tone}${className ? ` ${className}` : ''}`} role={role || undefined} style={style}>
-    <span className="ef-toast__icon" aria-hidden="true"><Icon name={ICONS[tone] || 'info'} size={18} /></span>
+    <span className="ef-toast__icon" aria-hidden="true"><Icon name={ICONS[tone] || 'info'} size={20} /></span>
     <div style={{ flex: 1 }}><div className="ef-toast__title">{title}</div>{description ? <div className="ef-toast__desc">{description}</div> : null}{actionNode}</div>
     {onClose ? <IconButton icon="x" label="Dismiss" size="sm" onClick={onClose} /> : null}
   </div>;

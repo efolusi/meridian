@@ -55,7 +55,7 @@ export function CodeBlock({ lang, title, children, maxHeight, clip, clipHeight =
       <div className="ef-code__head">
         <span className="ef-code__lang">{title || lang}</span>
         <button type="button" className={`ef-code__copy${copied !== 'idle' ? ' ef-code__copy--' + copied : ''}`} onClick={copy}>
-          <Icon name={copied === 'done' ? 'check' : copied === 'failed' ? 'circle-alert' : 'copy'} size={13} />{copied === 'done' ? 'Copied' : copied === 'failed' ? 'Copy failed' : 'Copy'}
+          <Icon name={copied === 'done' ? 'check' : copied === 'failed' ? 'circle-alert' : 'copy'} size={12} />{copied === 'done' ? 'Copied' : copied === 'failed' ? 'Copy failed' : 'Copy'}
         </button>
         <span className="ef-code__sr" role="status">{copied === 'done' ? 'Copied to clipboard' : copied === 'failed' ? 'Copy failed' : ''}</span>
       </div>

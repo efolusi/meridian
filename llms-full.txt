@@ -2,7 +2,7 @@
 
 The entire design system in one file, generated from llms.txt, components/*/, and tokens/*.css by scripts/build_llms.py. Do not edit by hand. The short map of the repository is /llms.txt.
 
-> Meridian is a general-purpose open-source design system by Efolusi: 123 accessible React components, 201 design tokens (light, dark, compact), blocks, charts, and full example apps, served browser-native with zero build step. Apache-2.0 licensed.
+> Meridian is a general-purpose open-source design system by Efolusi: 123 accessible React components, 213 design tokens (light, dark, compact), blocks, charts, and full example apps, served browser-native with zero build step. Apache-2.0 licensed.
 
 Live docs: https://meridian.efolusi.com · Source: https://github.com/efolusi/meridian · License: Apache-2.0
 
@@ -1670,7 +1670,7 @@ Selection behaves the same: `selectable` alone works, and `selected` + `onSelect
     { key: 'plan', label: 'Plan' },
     { key: 'mrr', label: 'MRR', numeric: true, align: 'right', sortable: true,
       sortAccessor: r => Number(String(r.mrr).replace(/[^0-9.]/g, '')) },
-    { key: 'status', label: 'Status', render: v => <Badge className="ef-badge--success"><Icon name="circle" size={7} strokeWidth={4} data-icon="inline-start" />{v}</Badge> },
+    { key: 'status', label: 'Status', render: v => <Badge className="ef-badge--success"><Icon name="circle" size={8} strokeWidth={4} data-icon="inline-start" />{v}</Badge> },
   ]}
   rows={customers}
   empty="No customers yet."
@@ -4624,7 +4624,7 @@ export declare const SheetDescription: React.ForwardRefExoticComponent<DialogSlo
 
 ## Design tokens
 
-201 custom property names by file (names only; resolve current values from /styles.css, which imports these files, or /tokens.json):
+213 custom property names by file (names only; resolve current values from /styles.css, which imports these files, or /tokens.json):
 
 ### /tokens/base.css
 
@@ -4790,11 +4790,21 @@ export declare const SheetDescription: React.ForwardRefExoticComponent<DialogSlo
 
 ### /tokens/spacing.css
 
+--avatar-lg
+--avatar-md
+--avatar-sm
 --container-max
 --container-text
 --control-h-lg
 --control-h-md
 --control-h-sm
+--control-h-xs
+--icon-2xl
+--icon-lg
+--icon-md
+--icon-sm
+--icon-xl
+--icon-xs
 --radius-full
 --radius-lg
 --radius-md
@@ -4802,6 +4812,8 @@ export declare const SheetDescription: React.ForwardRefExoticComponent<DialogSlo
 --radius-xl
 --radius-xs
 --radius-xs-plus
+--sidebar-width
+--sidebar-width-icon
 --space-0
 --space-0-5
 --space-1

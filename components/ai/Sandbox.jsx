@@ -38,10 +38,10 @@ export function Sandbox({ title, status = 'success', meta, tabs = [], defaultOpe
   return (
     <div {...rest} className={`ef-sandbox ef-sandbox--${s}${open ? ' ef-sandbox--open' : ''}${className ? ' ' + className : ''}`} style={style} data-state={s}>
       <button type="button" className="ef-sandbox__head" aria-expanded={open} onClick={() => setOpen(!open)}>
-        <span className="ef-sandbox__chev"><Icon name="chevron-right" size={14} /></span>
+        <span className="ef-sandbox__chev"><Icon name="chevron-right" size={16} /></span>
         <span className="ef-sandbox__title">{title}</span>
         <span className="ef-sandbox__meta">
-          {s === 'running' ? <span className="ef-sandbox__spin"><Icon name="loader-circle" size={13} /></span> : null}
+          {s === 'running' ? <span className="ef-sandbox__spin"><Icon name="loader-circle" size={12} /></span> : null}
           {meta || STATES[s]}
         </span>
       </button>
@@ -50,7 +50,7 @@ export function Sandbox({ title, status = 'success', meta, tabs = [], defaultOpe
           <div className="ef-sandbox__tabs" role="tablist">
             {tabs.map(t => (
               <button key={t.id} type="button" role="tab" aria-selected={t.id === (active && active.id)} className={`ef-sandbox__tab${t.id === (active && active.id) ? ' ef-sandbox__tab--on' : ''}`} onClick={() => setTab(t.id)}>
-                {t.icon ? <Icon name={t.icon} size={13} /> : null}{t.label}
+                {t.icon ? <Icon name={t.icon} size={12} /> : null}{t.label}
               </button>
             ))}
           </div>

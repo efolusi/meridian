@@ -33,7 +33,7 @@ export function ChatMessage({ role = 'assistant', name, time, streaming, actions
   return (
     <div {...rest} className={`ef-msg ef-msg--${role}${className ? ' ' + className : ''}`} style={style}>
       {role === 'assistant' || role === 'system'
-        ? <span className="ef-msg__bot"><Icon name="bot" size={15} /></span>
+        ? <span className="ef-msg__bot"><Icon name="bot" size={16} /></span>
         : <span className="ef-msg__avatar"><Avatar><AvatarFallback>{who.split(/\s+/).map((part) => part[0]).slice(0, 2).join('').toUpperCase()}</AvatarFallback></Avatar></span>}
       <div style={{ flex: 1, minWidth: 0 }}>
         <div className="ef-msg__meta"><span className="ef-msg__name">{who}</span>{time ? <span className="ef-msg__time">{time}</span> : null}</div>

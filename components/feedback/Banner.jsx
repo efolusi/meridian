@@ -20,7 +20,7 @@ export function Banner({ tone = 'neutral', icon, action, onDismiss, children, st
   injectEfCss('ef-css-banner', CSS);
   return (
     <div {...rest} role="status" className={`ef-banner ef-banner--${tone}${className ? ' ' + className : ''}`} style={style}>
-      {icon ? <span className="ef-banner__icon"><Icon name={icon} size={15} /></span> : null}
+      {icon ? <span className="ef-banner__icon"><Icon name={icon} size={16} /></span> : null}
       <span className="ef-banner__text">{children}</span>
       {action || null}
       {onDismiss ? <IconButton icon="x" label="Dismiss" size="sm" onClick={onDismiss} /> : null}
