@@ -2,6 +2,7 @@
 
 ## Unreleased
 
+- **Build tooling runs on Node.js 26.13.1 and npm 11.20.0** (was 22.23.2 and 10.9.8): `.nvmrc`, `package.json` `engines` and `packageManager`, every workflow and CONTRIBUTING.md. The published packages keep `engines: >=20.10`.
 - **The production site deploys from a `v*` tag, not from a push to `main`.** `deploy-prod-static.yml` runs on a `v*` tag push or by hand on a tag, checks that the tagged commit is on `main` and passed its checks, and publishes it. After a release, `publish.yml` starts it on the new tag, from a job that is the only one with `actions: write`.
 - **The production site deploys from a `v*` tag, not from a push to `main`.** `deploy-prod-static.yml` runs on a `v*` tag push or by hand on a tag, checks that the tagged commit is on `main` and passed its checks, and publishes it. RELEASING.md says how to run it after a release.
 - **No deprecation period.** Governance and the migration guide now say that a rename or removal lands in one release, with no alias or warning, and every caller changes with it. The README, style guide, contributing guide, RFC template and skill say the same.

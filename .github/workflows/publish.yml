@@ -133,7 +133,7 @@ jobs:
 
       - uses: actions/setup-node@a0853c24544627f65ddf259abe73b1d18a591444 # v5.0.0
         with:
-          node-version: '22.23.2'
+          node-version: '26.13.1'
 
       - name: Require successful exact-SHA checks before publish
         if: github.event_name == 'push'
@@ -251,15 +251,19 @@ jobs:
     steps:
       - uses: actions/setup-node@a0853c24544627f65ddf259abe73b1d18a591444 # v5.0.0
         with:
-          node-version: '22.23.2'
+          node-version: '26.13.1'
           registry-url: 'https://registry.npmjs.org'
 
       # Trusted publishing needs npm 11.5.1 or newer; node 22 still bundles 10.x.
-      # Exact version: this job can mint an npm publish identity.
-      - name: Use an npm that understands trusted publishing
+      # Exact version: this job can mint an npm publish identity. Node's bundled
+      # npm is the pinned one (package.json packageManager; a test keeps the two equal) and supports trusted
+      # publishing, so nothing is installed here; a different npm stops the run.
+      - name: Require the pinned npm, which understands trusted publishing
         run: |
-          npm install -g npm@11.21.1
-          npm --version
+          expected="11.20.0"
+          actual="$(npm --version)"
+          echo "npm $actual (pinned $expected)"
+          [[ "$actual" == "$expected" ]]
 
       - uses: actions/download-artifact@d3f86a106a0bac45b974a628896c90dbdf5c8093 # v4.3.0
         with:

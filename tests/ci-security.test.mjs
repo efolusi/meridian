@@ -169,11 +169,15 @@ describe('publish workflow hardening', () => {
     }
   })
 
-  it('installs an exact npm, never a moving dist-tag', () => {
-    const install = publish.match(/npm install -g npm@(\S+)/)
-    expect(install).not.toBeNull()
-    expect(install[1]).toMatch(/^\d+\.\d+\.\d+$/)
-    const [major, minor, patch] = install[1].split('.').map(Number)
+  it('publishes with the one pinned npm, new enough for trusted publishing', () => {
+    expect(publish).not.toMatch(/npm install -g npm@/)
+    expect(publish).toContain('[[ "$actual" == "$expected" ]]')
+    expect(publish).toContain(`expected="${JSON.parse(readFileSync('package.json', 'utf8')).packageManager.split('@')[1]}"`)
+    const pkg = JSON.parse(readFileSync('package.json', 'utf8'))
+    const pinned = pkg.packageManager.split('@')[1]
+    expect(pinned).toMatch(/^\d+\.\d+\.\d+$/)
+    expect(pkg.engines.npm).toBe(pinned)
+    const [major, minor, patch] = pinned.split('.').map(Number)
     // Trusted publishing (OIDC) needs npm 11.5.1 or newer.
     expect(major * 1e6 + minor * 1e3 + patch).toBeGreaterThanOrEqual(11_005_001)
   })

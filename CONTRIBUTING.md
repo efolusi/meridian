@@ -19,7 +19,7 @@ The compiler is `scripts/build_bundle.mjs` and the format it emits is documented
 
 ## Running the checks locally
 
-Use Node.js 22.23.2 and npm 10.9.8, matching `.nvmrc`, `package.json`, and CI. With nvm, run `nvm use` before installing dependencies.
+Use Node.js 26.13.1 and npm 11.20.0, matching `.nvmrc`, `package.json`, and CI. With nvm, run `nvm use` before installing dependencies.
 
 ```bash
 npm ci               # install the exact package-lock.json dependency tree
