@@ -617,3 +617,14 @@ describe('Windows behaviour', () => {
     expect(err.text).toContain('b.js');
   });
 });
+
+describe('registry transport', () => {
+  const never = () => { throw new Error('fetch must not run'); };
+  it('refuses plain http to a remote host', async () => {
+    await expect(openRegistry('http://registry.example/site/registry/', { fetchImpl: never })).rejects.toThrow(RegistryError);
+  });
+  it('allows plain http on localhost', async () => {
+    await expect(openRegistry('http://localhost:4173/site/registry/', { fetchImpl: never })).resolves.toBeTruthy();
+    await expect(openRegistry('http://127.0.0.1:4173/site/registry/', { fetchImpl: never })).resolves.toBeTruthy();
+  });
+});
