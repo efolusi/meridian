@@ -2,16 +2,16 @@
 import React from 'react';
 import { Icon } from '../icons/Icon.jsx';
 const CSS = `
-.ef-btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;text-decoration:none;border:1px solid transparent;border-radius:var(--radius-sm);font-family:var(--font-sans);font-weight:var(--weight-semibold);cursor:pointer;white-space:nowrap;user-select:none;transition:background var(--dur-fast) var(--ease-out),border-color var(--dur-fast) var(--ease-out),color var(--dur-fast) var(--ease-out),box-shadow var(--dur-fast) var(--ease-out),transform var(--dur-med) var(--ease-spring)}
+.ef-btn{display:inline-flex;align-items:center;justify-content:center;gap:var(--space-2);text-decoration:none;border:1px solid transparent;border-radius:var(--radius-sm);font-family:var(--font-sans);font-weight:var(--weight-semibold);cursor:pointer;white-space:nowrap;user-select:none;transition:background var(--dur-fast) var(--ease-out),border-color var(--dur-fast) var(--ease-out),color var(--dur-fast) var(--ease-out),box-shadow var(--dur-fast) var(--ease-out),transform var(--dur-med) var(--ease-spring)}
 .ef-btn{line-height:var(--leading-normal)}
 .ef-btn:hover,.ef-btn:focus,.ef-btn:visited{text-decoration:none}
 .ef-btn:focus-visible{outline:none;box-shadow:var(--focus-ring)}
 .ef-btn:active{transform:scale(.985)}
 .ef-btn:is(:disabled,[aria-disabled="true"],[data-disabled]){opacity:.45;cursor:not-allowed;pointer-events:none}
-.ef-btn--sm{height:var(--control-h-sm);padding:0 10px;font-size:var(--text-sm)}
-.ef-btn--md{height:var(--control-h-md);padding:0 14px;font-size:var(--text-md)}
-.ef-btn--lg{height:var(--control-h-lg);padding:0 20px;font-size:var(--text-lg)}
-.ef-btn--xs{height:28px;padding:0 9px;font-size:var(--text-xs);gap:6px}
+.ef-btn--sm{height:var(--control-h-sm);padding:0 var(--space-3);font-size:var(--text-sm)}
+.ef-btn--md{height:var(--control-h-md);padding:0 var(--space-4);font-size:var(--text-md)}
+.ef-btn--lg{height:var(--control-h-lg);padding:0 var(--space-5);font-size:var(--text-lg)}
+.ef-btn--xs{height:28px;padding:0 var(--space-2);font-size:var(--text-xs);gap:var(--space-2)}
 .ef-btn--icon,.ef-btn--icon-md{width:var(--control-h-md);height:var(--control-h-md);padding:0}
 .ef-btn--icon-xs{width:24px;height:24px;padding:0}
 .ef-btn--icon-sm{width:var(--control-h-sm);height:var(--control-h-sm);padding:0}

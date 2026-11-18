@@ -5,7 +5,7 @@ import { injectEfCss } from './Button.jsx';
 import { useFieldProps } from './Field.jsx';
 
 const CSS = `
-.ef-check{display:inline-flex;align-items:flex-start;gap:10px;user-select:none}
+.ef-check{display:inline-flex;align-items:flex-start;gap:var(--space-3);user-select:none}
 .ef-check--disabled{opacity:.45;cursor:not-allowed}
 .ef-check--disabled .ef-check__label{cursor:not-allowed}
 .ef-check__input{position:absolute;width:1px;height:1px;overflow:hidden;opacity:0;pointer-events:none}

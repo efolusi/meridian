@@ -3,7 +3,7 @@ import React from 'react';
 import { injectEfCss, mergeRefs } from './Button.jsx';
 import { useFieldProps } from './Field.jsx';
 const CSS = `
-.ef-switch-field{display:inline-flex;align-items:center;gap:10px;cursor:pointer;user-select:none}.ef-switch{--ef-switch-shift:15px;position:relative;display:inline-flex;flex:none;width:36px;height:21px;padding:0;border:0;border-radius:var(--radius-full);background:var(--border-control,var(--border-strong));cursor:pointer;transition:background var(--dur-med) var(--ease-out)}
+.ef-switch-field{display:inline-flex;align-items:center;gap:var(--space-3);cursor:pointer;user-select:none}.ef-switch{--ef-switch-shift:15px;position:relative;display:inline-flex;flex:none;width:36px;height:21px;padding:0;border:0;border-radius:var(--radius-full);background:var(--border-control,var(--border-strong));cursor:pointer;transition:background var(--dur-med) var(--ease-out)}
 .ef-switch--disabled{opacity:.45;cursor:not-allowed}
 .ef-switch-field[data-disabled]{cursor:not-allowed}.ef-switch-field[data-disabled] .ef-switch__label{opacity:.45}
 .ef-switch:dir(rtl){--ef-switch-shift:-15px}.ef-switch[data-state="checked"]{background:var(--accent)}
