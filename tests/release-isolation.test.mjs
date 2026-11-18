@@ -10,11 +10,11 @@ async function readRepoFile(relativePath) {
 }
 
 describe('Meridian integration and release isolation', () => {
-  it('validates dev changes while keeping publication main-only', async () => {
+  it('checks and publishes from main only', async () => {
     const checks = await readRepoFile('.github/workflows/checks.yml');
     const publish = await readRepoFile('.github/workflows/publish.yml');
 
-    expect(checks).toMatch(/push:\n\s+branches: \[main, dev\]/);
+    expect(checks).toMatch(/push:\n\s+branches: \[main\]/);
     expect(checks).toMatch(/pull_request:/);
     expect(checks).toMatch(/permissions:\n\s+contents: read/);
 
@@ -24,10 +24,10 @@ describe('Meridian integration and release isolation', () => {
 });
 
 describe('visual baseline refreshes', () => {
-  it('target dev, the integration branch, never main', async () => {
+  it('open a pull request against main, the only branch', async () => {
     const baselines = await readRepoFile('.github/workflows/update-visual-baselines.yml');
-    expect(baselines).toContain('gh pr create --base dev ');
-    expect(baselines).not.toMatch(/--base main\b/);
-    expect(baselines).toContain('/compare/dev...$BRANCH');
+    expect(baselines).toContain('gh pr create --base main ');
+    expect(baselines).not.toMatch(/--base dev\b/);
+    expect(baselines).toContain('/compare/main...$BRANCH');
   });
 });
