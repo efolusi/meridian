@@ -34,7 +34,7 @@ The site already depends on `@efolusi/meridian` (`^1.21.6`; latest is 1.22.0). I
 |---|---|---|---|
 | 1 | Pick DTCG (Meridian shape) as the `design-tokens` format; Komando-only tokens stay in komando-apps | design-tokens | done (branch tokens/dtcg) |
 | 2 | Move Meridian's token values into `design-tokens/tokens.json`; move Komando-only tokens back to Glamor/komando-apps | design-tokens | open |
-| 3 | Generator: `tokens.json` → `tokens/web/*.css` | design-tokens | open |
+| 3 | Generator: `tokens.json` → `tokens/web/*.css` | design-tokens | done (branch tokens/build, 27607b4; 4-file split requested) |
 | 4 | Sync script + pinned tag; `build_tokens.py` reads the vendored files | meridian | open |
 | 5 | Check: vendored tokens equal pinned export | meridian | open |
 | 6 | Map Glamor names (`window`, `panel`, `text2`, …) to Meridian roles (`surface`, `text`, `border`) so both use one set of names | design-tokens + glamor | open |
