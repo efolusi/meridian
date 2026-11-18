@@ -9,14 +9,31 @@ const deploy = readFileSync('scripts/deploy-prod-static.sh', 'utf8')
 const nginx = readFileSync('nginx/meridian.efolusi.com.conf', 'utf8')
 
 describe('Meridian production static deployment', () => {
-  it('is main-only and binds the exact push SHA on the production runner', () => {
-    expect(workflow).toContain('branches: [main]')
-    expect(workflow).not.toContain('branches: [dev]')
-    expect(workflow).not.toContain('pull_request:')
+  it('deploys only from a v* tag or a manual run, never on a branch push', () => {
+    const on = workflow.slice(workflow.indexOf('\non:\n'), workflow.indexOf('\npermissions:'))
+    expect(on).toContain("tags: ['v*']")
+    expect(on).toContain('workflow_dispatch:')
+    expect(on).not.toMatch(/branches:/)
+    expect(on).not.toContain('pull_request')
+  })
+
+  it('is started by publish.yml on the release tag, with actions: write on that job only', () => {
+    const publish = readFileSync('.github/workflows/publish.yml', 'utf8')
+    const job = publish.slice(publish.indexOf('\n  deploy:\n'))
+    expect(job).toContain('needs: [build, release]')
+    expect(job).toContain('actions: write')
+    expect(job).toContain('gh workflow run deploy-prod-static.yml --repo "$GITHUB_REPOSITORY" --ref "v$PKG"')
+    expect(publish.match(/actions: write/g)).toHaveLength(1)
+  })
+
+  it('binds the exact tagged SHA, checks it is on main, and runs on the production runner', () => {
     expect(workflow).toContain('runs-on: [self-hosted, Linux, X64, efolusi-prod]')
     expect(workflow).toContain('ref: ${{ github.sha }}')
-    expect(workflow).toContain('[[ "$GITHUB_REF" == "refs/heads/main" ]]')
+    expect(workflow).toContain('[[ "$GITHUB_REF" == refs/tags/v* ]]')
+    expect(workflow).not.toContain('refs/heads/main')
     expect(workflow).toContain('[[ "$(git rev-parse HEAD)" == "$MERIDIAN_RELEASE_SHA" ]]')
+    expect(workflow).toContain('git merge-base --is-ancestor "$MERIDIAN_RELEASE_SHA" FETCH_HEAD')
+    expect(workflow).toContain('node scripts/require_successful_checks.mjs')
   })
 
   it('pins Node 26.13.1 through NVM and runs the complete repository gate', () => {

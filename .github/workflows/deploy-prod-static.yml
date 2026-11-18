@@ -1,8 +1,10 @@
 name: deploy production static site
 
+# Production deploys only from a v* tag on main, or a manual run on such a tag.
 on:
   push:
-    branches: [main]
+    tags: ['v*']
+  workflow_dispatch:
 
 permissions:
   contents: read
@@ -20,7 +22,7 @@ jobs:
       - uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803 # v6
         with:
           ref: ${{ github.sha }}
-          fetch-depth: 1
+          fetch-depth: 0
 
       - name: Use exact NVM Node runtime
         shell: bash
@@ -47,8 +49,10 @@ jobs:
           MERIDIAN_RELEASE_SHA: ${{ github.sha }}
         run: |
           set -Eeuo pipefail
-          [[ "$GITHUB_REF" == "refs/heads/main" ]]
+          [[ "$GITHUB_REF" == refs/tags/v* ]]
           [[ "$(git rev-parse HEAD)" == "$MERIDIAN_RELEASE_SHA" ]]
+          git fetch --no-tags origin main
+          git merge-base --is-ancestor "$MERIDIAN_RELEASE_SHA" FETCH_HEAD
           npm ci --no-audit --no-fund
           npm run check
           git diff --exit-code

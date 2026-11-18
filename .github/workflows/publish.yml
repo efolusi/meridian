@@ -338,3 +338,19 @@ jobs:
             gh release create "v$PKG" --target "$GITHUB_SHA" --title "Meridian $PKG" --notes-file "$NOTES"
           fi
           echo "released v$PKG"
+
+  # A tag pushed with GITHUB_TOKEN starts no workflow, so the release starts the
+  # production deploy itself, on the tag (deploys run only from a v* tag).
+  deploy:
+    needs: [build, release]
+    if: github.event_name == 'push'
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    permissions:
+      actions: write
+    steps:
+      - name: Start the production deploy on the release tag
+        env:
+          GH_TOKEN: ${{ github.token }}
+          PKG: ${{ needs.build.outputs.version }}
+        run: gh workflow run deploy-prod-static.yml --repo "$GITHUB_REPOSITORY" --ref "v$PKG"
