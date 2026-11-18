@@ -27,7 +27,7 @@ files.set('package.json', `${JSON.stringify({
   name: '@efolusi/meridian-cli',
   version,
   description: 'Copy Meridian design system components, types and usage notes into your project from the registry.',
-  license: 'MIT',
+  license: 'Apache-2.0',
   homepage: 'https://meridian.efolusi.com',
   repository: { type: 'git', url: 'git+https://github.com/efolusi/meridian.git', directory: 'packages/cli' },
   type: 'module',

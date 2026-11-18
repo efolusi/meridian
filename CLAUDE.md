@@ -6,4 +6,4 @@
 - The docs site lives in `site/`; component demos in `site/examples/<group>.jsx` use `// @demo <Component> <Title>` markers — never put that literal marker in prose comments.
 - **Run `npm run check` before every push.** It runs every generator and gate in `checks.yml` (`publish.yml` calls the same script). `npm run check:fix` regenerates first. The Playwright smoke job is the only thing it does not cover, and it says so.
 - `site/_smoke.html` renders every demo; run it after demo changes.
-- Site copy: system name is **Meridian** (by Efolusi); footer reads "Built by Efolusi. The source code is available on GitHub. MIT licensed."
+- Site copy: system name is **Meridian** (by Efolusi); footer reads "Built by Efolusi. The source code is available on GitHub. Apache-2.0 licensed."

@@ -39,7 +39,7 @@ for (const f of fs.readdirSync(FONT_DIR).sort()) {
 files.set('tokens.json', fs.readFileSync(path.join(ROOT, 'tokens.json'), 'utf8'));
 files.set('tailwind.preset.cjs', fs.readFileSync(path.join(ROOT, 'tailwind.preset.js'), 'utf8'));
 
-// npm shows the tarball's README on the package page, and the MIT grant has to
+// npm shows the tarball's README on the package page, and the Apache-2.0 grant has to
 // travel with the files it covers; the dist used to ship neither.
 files.set('README.md', fs.readFileSync(path.join(ROOT, 'packages', 'tokens', 'README.md'), 'utf8'));
 files.set('LICENSE', fs.readFileSync(path.join(ROOT, 'LICENSE'), 'utf8'));
@@ -50,7 +50,7 @@ files.set('package.json', JSON.stringify({
   name: '@efolusi/meridian-tokens',
   version,
   description: 'Meridian design tokens: CSS custom properties, DTCG tokens.json, and a Tailwind preset. The token layer of @efolusi/meridian, standalone.',
-  license: 'MIT',
+  license: 'Apache-2.0',
   homepage: 'https://meridian.efolusi.com',
   repository: { type: 'git', url: 'git+https://github.com/efolusi/meridian.git', directory: 'packages/tokens' },
   sideEffects: ['**/*.css'],

@@ -131,4 +131,4 @@ printed `npm install` line, a version range with shell operators such as
 
 ## License
 
-MIT. Copied component files are yours to edit; no attribution is required.
+Apache-2.0. Copied component files are yours to edit; keep the license notice.

@@ -197,8 +197,8 @@ for (const f of fs.readdirSync(FONT_DIR).sort()) {
   else if (f.startsWith('OFL')) files.set(`assets/fonts/${f}`, fs.readFileSync(path.join(FONT_DIR, f), 'utf8'));
 }
 
-// MIT requires the licence text to travel with the code; a package.json field
-// saying "MIT" is metadata, not the grant. THIRD_PARTY_NOTICES covers the fonts
+// Apache-2.0 requires the licence text to travel with the code; a package.json field
+// saying "Apache-2.0" is metadata, not the grant. THIRD_PARTY_NOTICES covers the fonts
 // this package redistributes.
 for (const f of ['LICENSE', 'THIRD_PARTY_NOTICES.md']) {
   files.set(f, fs.readFileSync(path.join(ROOT, f), 'utf8'));
@@ -208,7 +208,7 @@ files.set('package.json', JSON.stringify({
   name: '@efolusi/meridian',
   version,
   description: 'A general-purpose open-source design system by Efolusi: accessible React components, design tokens, blocks and example apps.',
-  license: 'MIT',
+  license: 'Apache-2.0',
   homepage: 'https://meridian.efolusi.com',
   repository: { type: 'git', url: 'git+https://github.com/efolusi/meridian.git' },
   type: 'module',

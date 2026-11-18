@@ -50,7 +50,7 @@ files.set('index.d.ts',
 // Lucide licence travels with the icons it covers.
 files.set('LICENSE-Lucide.txt', fs.readFileSync(path.join(ICON_DIR, 'LICENSE-Lucide.txt'), 'utf8'));
 
-// npm shows the tarball's README on the package page, and the MIT grant has to
+// npm shows the tarball's README on the package page, and the Apache-2.0 grant has to
 // travel with the files it covers; the dist used to ship neither.
 files.set('README.md', fs.readFileSync(path.join(ROOT, 'packages', 'icons', 'README.md'), 'utf8'));
 files.set('LICENSE', fs.readFileSync(path.join(ROOT, 'LICENSE'), 'utf8'));
@@ -59,7 +59,7 @@ files.set('package.json', JSON.stringify({
   name: '@efolusi/meridian-icons',
   version,
   description: `The ${names.length} Lucide-derived icons of @efolusi/meridian, standalone: raw SVGs plus a name-to-svg index. Framework-agnostic.`,
-  license: 'MIT',
+  license: 'Apache-2.0',
   homepage: 'https://meridian.efolusi.com',
   repository: { type: 'git', url: 'git+https://github.com/efolusi/meridian.git', directory: 'packages/icons' },
   type: 'module',
