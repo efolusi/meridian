@@ -325,12 +325,12 @@
         "message": "<Stat> direction must be one of 'up' | 'down' | 'flat'."
       },
       {
-        "selector": "JSXOpeningElement[name.name='StatusDot'] > JSXAttribute > JSXIdentifier[name!=/^(?:state|label|pulse|style|className|key|ref|className|style|children)$/]",
-        "message": "<StatusDot> doesn't accept that prop. Declared props: state, label, pulse, style, className."
+        "selector": "JSXOpeningElement[name.name='StatusDot'] > JSXAttribute > JSXIdentifier[name!=/^(?:status|statusLabel|label|pulse|style|className|key|ref|children)$/]",
+        "message": "<StatusDot> doesn't accept that prop. Declared props: status, statusLabel, label, pulse, style, className."
       },
       {
-        "selector": "JSXOpeningElement[name.name='StatusDot'] > JSXAttribute[name.name='state'] > Literal[value!=/^(?:success|warning|danger|busy|neutral)$/]",
-        "message": "<StatusDot> state must be one of 'success' | 'warning' | 'danger' | 'busy' | 'neutral'."
+        "selector": "JSXOpeningElement[name.name='StatusDot'] > JSXAttribute[name.name='status'] > Literal[value!=/^(?:success|warning|danger|busy|neutral)$/]",
+        "message": "<StatusDot> status must be one of 'success' | 'warning' | 'danger' | 'busy' | 'neutral'."
       },
       {
         "selector": "JSXOpeningElement[name.name='Switch'] > JSXAttribute > JSXIdentifier[name!=/^(?:label|size|key|ref|className|style|children)$/]",
