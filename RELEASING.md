@@ -6,6 +6,14 @@ publishes via npm Trusted Publishing (OIDC, no token anywhere), and then creates
 the `vX.Y.Z` tag and the GitHub Release itself. Pushes whose version is already
 published are a no-op for the workflow.
 
+**The production site deploys from the tag, never from a push.**
+`deploy-prod-static.yml` runs on a `v*` tag push, or by hand (`workflow_dispatch`)
+on a `v*` tag. It checks out the tagged commit, refuses a commit that is not on
+`main` or whose checks did not pass, runs `npm run check`, and publishes.
+The tag that `publish.yml` creates is pushed with `GITHUB_TOKEN`, which does not
+start other workflows, so after a release run the deploy by hand:
+`gh workflow run deploy-prod-static.yml --ref vX.Y.Z`.
+
 **This is a monorepo of five published lockstep packages.** One version bump
 publishes all five at the same version: the `@efolusi/meridian` umbrella plus
 the standalone `@efolusi/meridian-tokens`, `@efolusi/meridian-icons`,

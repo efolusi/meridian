@@ -2,6 +2,7 @@
 
 ## Unreleased
 
+- **The production site deploys from a `v*` tag, not from a push to `main`.** `deploy-prod-static.yml` runs on a `v*` tag push or by hand on a tag, checks that the tagged commit is on `main` and passed its checks, and publishes it. RELEASING.md says how to run it after a release.
 - **No deprecation period.** Governance and the migration guide now say that a rename or removal lands in one release, with no alias or warning, and every caller changes with it. The README, style guide, contributing guide, RFC template and skill say the same.
 - **Every overlay trigger and composite field shows its own focus.** Tooltip, HoverCard and Popover triggers draw `--focus-ring` when focused (a trigger with its own style, such as Button, keeps it). CopyField and FileTile colour their border while focus is inside. The Toast action uses `--focus-ring` instead of a hand-built ring.
 - **Six components show keyboard focus.** ChatMessage shows its action row when focus is inside it, not only on hover. The CodeBlock copy and show-all buttons, the Console stack toggle and jump button, the Banner action and the Toast action draw `--focus-ring`; the Toast ring matches its dark surface. Command underlines the search row while its input has focus.
