@@ -34,7 +34,7 @@ function InfraScreen() {
       <div style={{ flex: 1, overflowY: 'auto' }}>
         <div style={{ maxWidth: 1180, margin: '0 auto', padding: '28px 32px 60px' }}>
           <div style={{ display: 'flex', alignItems: 'center', gap: 6 }}>
-            <a href="../console/index.html" title="Back to Console" style={{ display: 'inline-flex' }}><img src="../../assets/meridian-mark.svg" alt="" style={{ width: 30, height: 16 }} /></a>
+            <a href="../console/index.html" title="Back to Console" style={{ fontFamily: 'var(--font-display)', fontWeight: 680, letterSpacing: '-0.02em', fontSize: 15, color: 'var(--text-secondary)', textDecoration: 'none' }}>Fernwick</a><span aria-hidden="true" style={{ color: 'var(--text-muted)' }}>/</span>
             <h1 style={{ fontSize: 24, fontWeight: 680 }}>Infrastructure</h1>
             <StatusDot status="warn" pulse label="1 incident" />
             <Badge variant="secondary">Sample data</Badge>

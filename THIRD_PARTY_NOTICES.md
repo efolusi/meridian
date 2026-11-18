@@ -1,6 +1,6 @@
 # Third-party notices
 
-Meridian's own source (components, tokens, blocks, showcases, starters, docs) is MIT licensed (see [LICENSE])(LICENSE). The repository also redistributes the following third-party assets under their own licenses. Their license texts ship alongside the assets and must travel with any redistribution.
+Meridian's own source (components, tokens, blocks, showcases, starters, docs) is licensed under the Apache License 2.0 (see [LICENSE](LICENSE)). The repository also redistributes the following third-party assets under their own licenses. Their license texts ship alongside the assets and must travel with any redistribution.
 
 ## Fonts (SIL Open Font License 1.1)
 
@@ -16,8 +16,8 @@ The five variable fonts in `assets/fonts/` are upstream builds obtained via [goo
 
 Of the SVGs in `assets/icons/`, 113 are derived from [Lucide](https://lucide.dev), licensed under the ISC License (Copyright (c) Lucide Icons and Contributors); icons that Lucide derived from the Feather project additionally carry the MIT License (Copyright (c) 2013-present Cole Bemis). Both texts: [assets/icons/LICENSE-Lucide.txt](assets/icons/LICENSE-Lucide.txt).
 
-The three brand marks (`linkedin.svg`, `x-brand.svg`, `github-brand.svg`) are not from Lucide: they depict the LinkedIn, X and GitHub logos, which are trademarks of their respective owners, and are included solely so products can link to their official profiles. Trademark rules of those owners apply; the repository's MIT license covers the files, not the marks.
+The three brand marks (`linkedin.svg`, `x-brand.svg`, `github-brand.svg`) are not from Lucide: they depict the LinkedIn, X and GitHub logos, which are trademarks of their respective owners, and are included solely so products can link to their official profiles. Trademark rules of those owners apply; the repository's Apache-2.0 license covers the files, not the marks.
 
 ## Brand assets
 
-The Meridian mark (`assets/meridian-mark.svg`) and the names "Meridian" and "Efolusi" are **not** covered by the MIT license. See the brand usage note in [README.md](README.md).
+The Meridian mark (`assets/meridian-mark.svg`) and the names "Meridian" and "Efolusi" are **not** covered by the Apache-2.0 license. See the brand usage note in [README.md](README.md).

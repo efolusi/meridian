@@ -60,10 +60,23 @@ describe('Icon', () => {
     // The bundle and the npm package have separate Icon implementations, so a
     // fix applied only to the .jsx source leaves every `npm install` consumer
     // failing in silence. That is exactly how 1.9.1 shipped incomplete.
-    const gen = readFileSync('scripts/build_npm.mjs', 'utf8');
-    const template = gen.slice(gen.indexOf("files.set('icons/Icon.js'"));
-    expect(template).toContain('console.warn');
-    expect(template).toContain('SVGS[name]');
+    // build_npm.mjs and the registry both ship registry/icons/Icon.jsx.
+    const inline = readFileSync('registry/icons/Icon.jsx', 'utf8');
+    expect(readFileSync('scripts/build_npm.mjs', 'utf8')).toContain("'registry', 'icons', 'Icon.jsx'");
+    expect(inline).toContain('console.warn');
+    expect(inline).toContain('SVGS[name]');
+  });
+
+  it('does not inject a 200 response that is not an SVG, such as an SPA index.html', async () => {
+    const page = '<!doctype html><html><head><script>window.x=1</script></head><body><div id="root"></div></body></html>';
+    vi.stubGlobal('fetch', vi.fn(() => Promise.resolve({ ok: true, status: 200, text: () => Promise.resolve(page) })));
+    let container;
+    await act(async () => {
+      ({ container } = render(<Icon name="spa-fallback-glyph" />));
+    });
+    expect(warn.mock.calls[0][0]).toContain('not an SVG');
+    expect(container.querySelector('script')).toBeNull();
+    expect(container.querySelector('[data-slot="icon"]').innerHTML).toBe('');
   });
 
   it('remembers a missing glyph so later mounts do not refetch it', async () => {
@@ -72,10 +85,14 @@ describe('Icon', () => {
     await act(async () => {
       render(<Icon name="not-a-real-glyph" />);
     });
-    const afterFirst = fetchMock.mock.calls.length;
+    // Count only this glyph's requests: retries from the network-failure test
+    // above can still be in their backoff and land on this mock.
+    const own = () => fetchMock.mock.calls.filter(([url]) => String(url).includes('not-a-real-glyph')).length;
+    const afterFirst = own();
+    expect(afterFirst).toBe(1);
     await act(async () => {
       render(<Icon name="not-a-real-glyph" />);
     });
-    expect(fetchMock.mock.calls.length).toBe(afterFirst);
+    expect(own()).toBe(afterFirst);
   });
 });

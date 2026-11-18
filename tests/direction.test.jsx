@@ -110,15 +110,18 @@ describe('RTL horizontal keyboard behavior', () => {
     const user = userEvent.setup();
     const { container } = render(
       <DirectionProvider direction="rtl">
-        <Carousel>
-          <CarouselContent><CarouselItem>A</CarouselItem><CarouselItem>B</CarouselItem></CarouselContent>
+        <Carousel dir="rtl">
+          <CarouselContent style={{ direction: 'rtl' }}><CarouselItem>A</CarouselItem><CarouselItem>B</CarouselItem></CarouselContent>
           <CarouselNext />
         </Carousel>
       </DirectionProvider>,
     );
     const content = container.querySelector('[data-slot="carousel-content"]');
     const slides = container.querySelectorAll('[data-slot="carousel-item"]');
-    Object.defineProperty(slides[1], 'offsetLeft', { configurable: true, value: 114 });
+    // Physical layout of a 228px carousel in RTL: B sits left of A.
+    Object.defineProperty(slides[1], 'offsetParent', { configurable: true, value: { clientWidth: 228 } });
+    Object.defineProperty(slides[1], 'offsetWidth', { configurable: true, value: 114 });
+    Object.defineProperty(slides[1], 'offsetLeft', { configurable: true, value: 0 });
     content.scrollTo = vi.fn();
     await user.click(screen.getByRole('button', { name: 'Next slide' }));
     expect(content.scrollTo).toHaveBeenCalledWith({ left: -114, behavior: 'smooth' });

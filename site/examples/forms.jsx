@@ -259,7 +259,7 @@ export function SliderDemo() {
   const [memoryWindow, setMemoryWindow] = React.useState([32, 96]);
   return (
     <div style={{ width: 320 }}>
-      <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: 8, fontSize: 13, fontWeight: 600 }}><span>Autoscaling window</span><span style={{ color: 'var(--text-muted)', fontFamily: 'var(--font-mono)', fontWeight: 400 }}>{memoryWindow.map(value => value + ' GB').join(' – ')}</span></div>
+      <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: 8, fontSize: 13, fontWeight: 600 }}><span>Autoscaling window</span><span style={{ color: 'var(--text-muted)', fontFamily: 'var(--font-mono)', fontWeight: 400 }}><bdi>{memoryWindow[0]} GB</bdi> – <bdi>{memoryWindow[1]} GB</bdi></span></div>
       <Slider aria-label="Autoscaling window" min={0} max={128} step={8} value={memoryWindow} onValueChange={setMemoryWindow} minStepsBetweenThumbs={1} />
     </div>
   );

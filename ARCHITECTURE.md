@@ -14,7 +14,7 @@ meridian/
 ├── showcases/<app>/                     # example apps: see the system in use
 ├── starters/<journey>/                  # copyable journeys: start a surface here
 ├── site/                                # the docs website: consumes all of the above
-├── packages/{tokens,icons,guard}/        # standalone source workspaces
+├── packages/{tokens,icons,guard,cli}/    # standalone source workspaces
 ├── mcp/                                 # independently versioned server workspace
 ├── guidelines/ · skills/ · scripts/
 └── governance docs (README, STYLEGUIDE, CONTRIBUTING, …)
@@ -29,7 +29,7 @@ Three principles produced this layout:
 ## Workspace boundaries
 
 The private root package orchestrates builds and verification. npm workspaces
-cover `packages/*` and `mcp/`: the publicly released tokens, icons, and Guard packages follow the Meridian release
+cover `packages/*` and `mcp/`: the publicly released tokens, icons, Guard, and CLI packages follow the Meridian release
 version, while the server workspace versions independently. Their source
 workspace manifests are private so an accidental root-level publish cannot ship
 an incomplete package; release builds generate the public package manifests in

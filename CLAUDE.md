@@ -4,6 +4,7 @@
 - All icon references must exist in `assets/icons/` (Lucide, 24×24, stroke 2). Add the SVG before using a new name.
 - Component source lives in `components/<group>/`; any `.jsx` change there requires recompiling `_ds_bundle.js` — never ship source-only component edits. Showcase `.jsx` is not bundled; its page compiles it, so no recompile. Read `ARCHITECTURE.md` before moving or renaming anything.
 - The docs site lives in `site/`; component demos in `site/examples/<group>.jsx` use `// @demo <Component> <Title>` markers — never put that literal marker in prose comments.
+- `tokens/{colors,typography,spacing,effects}.css` are vendored from efolusi/design-tokens. Do not edit them here: change design-tokens, tag it, then `node scripts/sync_tokens.mjs <tag>`.
 - **Run `npm run check` before every push.** It runs every generator and gate in `checks.yml` (`publish.yml` calls the same script). `npm run check:fix` regenerates first. The Playwright smoke job is the only thing it does not cover, and it says so.
 - `site/_smoke.html` renders every demo; run it after demo changes.
-- Site copy: system name is **Meridian** (by Efolusi); footer reads "Built by Efolusi. The source code is available on GitHub. MIT licensed."
+- Site copy: system name is **Meridian** (by Efolusi); footer reads "Built by Efolusi. The source code is available on GitHub. Apache-2.0 licensed."

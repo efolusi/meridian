@@ -33,6 +33,7 @@ const GENERATORS = [
   ['python3', ['scripts/build_llms.py']],
   ['node', ['scripts/build_site_nav.mjs']],
   ['node', ['scripts/build_guard_rules.mjs']],
+  ['node', ['scripts/build_size_table.mjs']],
 ]
 
 /**
@@ -47,23 +48,30 @@ const GENERATORS = [
  */
 const GENERATED_PATHS = [
   'registry.json',
+  'registry/icons/_svg.js',
+  'registry/tokens/fonts.css',
+  'registry/components.css',
   'site/registry',
   'site/registry.json',
   'site/registry.js',
   'site/interfaces.json',
-  'tokens.json',
   'tailwind.preset.js',
   'llms-full.txt',
   'site/nav.json',
   'packages/guard/src/generated/meridian-rules.json',
+  'site/sizes.json',
+  'guidelines/bundle-size.md',
 ]
 
 const GATES = [
   ['Computed contrast helper', 'node', ['--test', 'scripts/contrast.test.mjs']],
   ['Exact-SHA release gate', 'node', ['--test', 'scripts/require_successful_checks.test.mjs']],
+  ['CDN SRI gate', 'node', ['--test', 'scripts/check_cdn_sri.test.mjs']],
+  ['CDN snippets carry SRI hashes', 'node', ['scripts/check_cdn_sri.mjs']],
   ['Independent repository naming', 'node', ['scripts/check_independent_brand.mjs']],
   ['Workspace structure', 'node', ['scripts/check_workspaces.mjs']],
   ['Compatibility inventory', 'node', ['scripts/check_compatibility.mjs']],
+  ['Vendored tokens match design-tokens', 'node', ['scripts/sync_tokens.mjs', '--check']],
   ['Contrast (WCAG AA token pairs)', 'python3', ['scripts/check_contrast.py']],
   ['Runtime copies', 'python3', ['scripts/check_runtime_copies.py']],
   ['Relative paths resolve', 'python3', ['scripts/check_paths.py']],
@@ -71,6 +79,7 @@ const GATES = [
   ['Docs registry matches manifest', 'node', ['scripts/check_docs_registry.mjs']],
   ['Adherence metadata matches manifest', 'node', ['scripts/check_adherence_manifest.mjs']],
   ['Public facts match inventories', 'python3', ['scripts/check_public_facts.py']],
+  ['Migration guide covers every deprecation', 'node', ['scripts/check_migration_guide.mjs']],
   ['No dead interactive controls', 'python3', ['scripts/check_dead_controls.py']],
   ['No new raw colour literals', 'python3', ['scripts/check_token_adherence.py']],
   ['Logical CSS direction safety', 'python3', ['scripts/check_logical_css.py']],
@@ -81,6 +90,9 @@ const GATES = [
   ['Unit tests', 'npm', ['test', '--silent']],
   ['npm package builds', 'node', ['scripts/build_npm.mjs']],
   ['npm package imports', 'node', ['scripts/check_npm_package.mjs']],
+  // The size gate measures packages/cli/dist, so the CLI builds first.
+  ['CLI sub-package builds', 'node', ['scripts/build_pkg_cli.mjs']],
+  ['CLI package imports and add/list contract', 'node', ['scripts/check_pkg_cli.mjs']],
   ['Bundle and package size budget', 'node', ['scripts/check_size.mjs']],
   ['Tokens sub-package builds', 'node', ['scripts/build_pkg_tokens.mjs']],
   ['Icons sub-package builds', 'node', ['scripts/build_pkg_icons.mjs']],

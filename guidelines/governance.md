@@ -23,8 +23,9 @@ Meridian covers the common path of a real product surface and declines the specu
 - **Don't** introduce gradients, emoji icons, or cool grays: they are outside the language.
 
 ## Deprecation
-A deprecated prop, component or token keeps working, with a development console warning that names its replacement, until the next major version. Removing it is a major change.
+A deprecated prop, component or token keeps working, with a development console warning that names its replacement, until the next major version. Removing it is a major change, and the warning must ship in at least one release before the removal.
 
 1. Publish the replacement.
 2. Migrate every maintained consumer: showcases, starters, blocks and the docs site.
-3. Record it under **Deprecated** in `CHANGELOG.md` with the migration, and remove it in the next major.
+3. Add its section to [migration.md](migration.md), which lists the steps and the gate that checks them.
+4. Record it under **Deprecated** in `CHANGELOG.md` with the migration, and remove it in the next major.

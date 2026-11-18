@@ -114,6 +114,11 @@ export function compileSource(rel, src) {
   const exportNames = [];
   const plugin = ({ types: t }) => ({
     visitor: {
+      // 'use client' marks a module for bundler frameworks (Next.js). Units here
+      // share one script, where it would be an inert string, so drop it.
+      Program(p) {
+        p.node.directives = p.node.directives.filter(d => d.value.value !== 'use client');
+      },
       ImportDeclaration(p) {
         if (!p.node.source.value.startsWith('.')) {
           if (p.node.source.value === 'recharts') {

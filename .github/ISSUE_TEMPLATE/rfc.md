@@ -14,7 +14,7 @@ What can't be done today, or what inconsistency this removes. Link issues if any
 The proposed API/tokens/structure, with a usage example. Name the alternatives you rejected and why.
 
 **Compatibility**
-What breaks, what gets deprecated (deprecated names keep working until the next major, per guidelines/governance.md § Deprecation), what a migration looks like.
+What breaks, what gets deprecated (deprecated names keep working until the next major, per guidelines/governance.md § Deprecation), what a migration looks like (it becomes a section in guidelines/migration.md).
 
 **Scope check**
 - [ ] Follows STYLEGUIDE.md conventions (or proposes changing them explicitly)

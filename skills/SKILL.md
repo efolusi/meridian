@@ -19,6 +19,6 @@ Quick orientation:
 - Full screens to copy from (showcases, plain JSX): `showcases/{console,auth,website,docs,agent,infra,trader,tools}/`; page-shell starter in `starters/app-page/`.
 - Voice: sentence case, verbs on buttons, "we/you", no emoji. See `guidelines/brand.md` § Content fundamentals.
 - Dark mode: `data-theme="dark"` on any subtree; compact density: `data-density="compact"`. Use semantic tokens only (never raw ramp values) and both themes come free.
-- Patterns: `guidelines/forms.md` (validation), `guidelines/accessibility.md` (keyboard map, contrast), `guidelines/governance.md` (versioning, contribution).
+- Patterns: `guidelines/forms.md` (validation), `guidelines/accessibility.md` (keyboard map, contrast), `guidelines/governance.md` (versioning, contribution), `guidelines/migration.md` (deprecated props and their replacements).
 - Starters for new pages (copy the whole folder): `starters/{dashboard,auth-page,marketing-page,docs-page,app-page,ai-workspace,crm,finance-ops,service-desk}/`.
 - Pre-composed marketing/app sections in `blocks/` (hero, pricing, FAQ, 404, activity feed); copy and adapt.

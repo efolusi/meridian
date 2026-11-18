@@ -1,3 +1,4 @@
+import { readTokenCss } from './helpers/token-css.mjs'
 // Text-on-fill pairs that forms components declare themselves, checked in
 // both themes. The token gate (scripts/check_contrast.py) covers text on the
 // shared surfaces; these fills are component choices it never sees.
@@ -6,7 +7,7 @@ import { join } from 'node:path';
 import { describe, expect, it } from 'vitest';
 import { contrast } from '../scripts/contrast.mjs';
 
-const css = readFileSync(join(process.cwd(), 'tokens/colors.css'), 'utf8');
+const css = readTokenCss('colors.css');
 function block(selector) {
   const start = css.indexOf(`${selector}{`);
   return css.slice(start, css.indexOf('\n}', start));

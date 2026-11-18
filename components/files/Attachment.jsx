@@ -1,3 +1,4 @@
+'use client';
 import React from 'react';
 import { Button, injectEfCss, mergeRefs } from '../forms/Button.jsx';
 

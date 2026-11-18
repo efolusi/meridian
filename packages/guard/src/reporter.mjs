@@ -7,6 +7,9 @@ export function formatPretty(result, cwd = process.cwd()) {
   });
   const errors = result.diagnostics.filter(item => item.severity === 'error').length;
   const warnings = result.diagnostics.length - errors;
+  if (result.fixed) lines.push(`Meridian Guard fixed ${result.fixed} issue(s).`);
+  const fixable = result.diagnostics.filter(item => item.fix).length;
+  if (fixable) lines.push(`${fixable} of these can be fixed with --fix.`);
   lines.push(
     result.diagnostics.length
       ? `\nMeridian Guard found ${errors} error(s) and ${warnings} warning(s) in ${result.filesScanned} file(s).`
@@ -21,6 +24,7 @@ export function formatJson(result) {
     filesScanned: result.filesScanned,
     errors: result.diagnostics.filter(item => item.severity === 'error').length,
     warnings: result.diagnostics.filter(item => item.severity === 'warning').length,
-    diagnostics: result.diagnostics,
+    ...(result.fixed === undefined ? {} : { fixed: result.fixed }),
+    diagnostics: result.diagnostics.map(({ fix, ...item }) => (fix ? { ...item, fixable: true } : item)),
   }, null, 2)}\n`;
 }

@@ -12,7 +12,8 @@
 //   node scripts/check_size.mjs           # fail on regression past budget
 //   node scripts/check_size.mjs --update  # re-record the budget from current
 //
-// Runs after the npm build gate, so dist/ exists. The bundle is committed.
+// Runs after the npm and CLI build gates, so dist/ and packages/cli/dist/
+// exist. The bundle is committed.
 
 import fs from 'node:fs';
 import path from 'node:path';
@@ -40,6 +41,8 @@ function measure() {
   if (fs.existsSync(css)) out['dist/components.css'] = fs.statSync(css).size;
   const dist = path.join(ROOT, 'dist');
   if (fs.existsSync(dist)) out['dist/ (npm total)'] = dirSize(dist);
+  const cli = path.join(ROOT, 'packages', 'cli', 'dist');
+  if (fs.existsSync(cli)) out['packages/cli/dist/ (npm total)'] = dirSize(cli);
   return out;
 }
 

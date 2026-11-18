@@ -164,3 +164,40 @@ prune_releases 5`, 'bash', fixture])
     }
   })
 })
+
+describe('Meridian production public files (DS-03, DS-12)', () => {
+  const allowlist = deploy.match(/^public_paths=\(\n([\s\S]*?)\n\)/m)[1].split('\n').map((p) => p.trim())
+  const rootDocs = allowlist.filter((p) => p === 'LICENSE' || /^[A-Z]+\.md$/.test(p))
+
+  it('serves every published root doc as UTF-8 plain text instead of a download', () => {
+    expect(rootDocs.sort()).toEqual(['ARCHITECTURE.md', 'CHANGELOG.md', 'CONTRIBUTING.md', 'LICENSE', 'README.md', 'SECURITY.md'])
+    const at = nginx.indexOf('location ~ ^/(LICENSE|')
+    expect(at).toBeGreaterThan(-1)
+    const spec = nginx.slice(at).match(/location ~ (\S+) \{/)[1]
+    const re = new RegExp(spec)
+    for (const doc of rootDocs) expect(re.test(`/${doc}`), doc).toBe(true)
+    // Every published Markdown file reads as text, not only the root docs:
+    // llms.txt sends agents to /skills/SKILL.md and the guidelines.
+    for (const doc of ['/skills/SKILL.md', '/guidelines/forms.md', '/components/forms/Select.prompt.md']) {
+      expect(re.test(doc), doc).toBe(true)
+    }
+    for (const other of ['/LICENSE.txt', '/site/index.html', '/styles.css']) {
+      expect(re.test(other), other).toBe(false)
+    }
+    const block = nginx.slice(at, nginx.indexOf('\n    }', at))
+    expect(block).toContain('types { }')
+    expect(block).toContain('default_type text/plain;')
+    expect(block).toContain('charset utf-8;')
+    expect(block).toContain('add_header X-Meridian-Environment production always;')
+  })
+
+  it('lets any origin load the self-hosted fonts and keeps their cache policy', () => {
+    const fonts = nginx.slice(nginx.indexOf('location ^~ /assets/fonts/ {'))
+    const block = fonts.slice(0, fonts.indexOf('\n    }'))
+    // CORS comes from the shared snippet ($meridian_cors covers /assets/fonts/).
+    expect(block).toContain('include snippets/meridian-security-headers.conf;')
+    expect(readFileSync('nginx/snippets/meridian-cors.conf', 'utf8')).toContain('assets/fonts/')
+    expect(block).toContain('add_header X-Meridian-Environment production always;')
+    expect(block).toContain('add_header Cache-Control "public, max-age=31536000" always;')
+  })
+})

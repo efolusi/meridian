@@ -33,6 +33,16 @@ npx @efolusi/meridian-guard src pages --format json
 npx meridian-guard --help
 ```
 
+`--fix` rewrites files in place to apply the fixes Guard knows are safe, then
+reports what is left. Today that means deleting deprecated props the component
+already ignores, such as Drawer `modal`. Commit first and review the diff. The
+[migration guide](https://meridian.efolusi.com/guidelines/migration.md) says which
+deprecations have a mechanical fix and why the others do not.
+
+```sh
+npx @efolusi/meridian-guard src --fix
+```
+
 Guard exits `0` when no diagnostics are found, `1` when a contract violation is
 found (including warnings), and `2` for invalid options, missing targets, empty
 scans, or runtime failures. An empty scan fails closed so a misspelled CI target
@@ -54,7 +64,7 @@ not shipped interface source.
 | `MDG001` | error | Imported Meridian components must exist. |
 | `MDG002` | error | Static `Icon` and `IconButton` names must exist. |
 | `MDG003` | warning | Inline and CSS-in-JS colors use semantic tokens, not hex. |
-| `MDG004` | warning | Deprecated props migrate to their canonical replacement. |
+| `MDG004` | warning | Deprecated props migrate to their canonical replacement. Fixable with `--fix` when the prop is ignored. |
 | `MDG005` | error | Required accessible names and dialog titles are present. |
 | `MDG006` | error | Referenced Meridian radius tokens must exist in the generated token contract. |
 | `MDG007` | warning | Non-zero interface radii use the shared Meridian radius hierarchy. |

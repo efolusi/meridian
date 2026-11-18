@@ -19,4 +19,4 @@ Or reference a file directly (bundlers, `<img>`, build tools):
 import checkUrl from '@efolusi/meridian-icons/svg/check.svg';
 ```
 
-MIT for the packaging; the icons are Lucide-derived and carry the ISC/MIT Lucide licence (`LICENSE-Lucide.txt`). The three brand marks depict trademarks of GitHub, LinkedIn and X; use them only to link to those services.
+Apache-2.0 for the packaging; the icons are Lucide-derived and carry the ISC/MIT Lucide licence (`LICENSE-Lucide.txt`). The three brand marks depict trademarks of GitHub, LinkedIn and X; use them only to link to those services.

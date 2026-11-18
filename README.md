@@ -1,8 +1,8 @@
 # Meridian
 
-**A general-purpose open-source design system by [Efolusi](https://efolusi.com).** 123 accessible React components, 170 design tokens in light, dark and compact, 12 blocks, and 8 full example apps, served browser-native with **no build step**.
+**A general-purpose open-source design system by [Efolusi](https://efolusi.com).** 123 accessible React components, 201 design tokens in light, dark and compact, 12 blocks, and 8 full example apps, served browser-native with **no build step**.
 
-[![License: MIT](https://img.shields.io/badge/License-MIT-7A4E2B.svg)](LICENSE)
+[![License: Apache-2.0](https://img.shields.io/badge/License-Apache_2.0-7A4E2B.svg)](LICENSE)
 [![Docs](https://img.shields.io/badge/docs-meridian.efolusi.com-2C1709.svg)](https://meridian.efolusi.com)
 [![Components](https://img.shields.io/badge/components-123-A0693C.svg)](https://meridian.efolusi.com/site/Components.dc.html)
 [![npm](https://img.shields.io/npm/v/@efolusi/meridian?color=A0693C&label=npm)](https://www.npmjs.com/package/@efolusi/meridian)
@@ -12,12 +12,16 @@
 
 Warm paper, espresso ink, hairline structure. Copy it, theme it, ship it.
 
+## Ecosystem
+
+Shared tokens: [design-tokens](https://github.com/efolusi/design-tokens). Native twin: [Glamor](https://github.com/efolusi/glamor). Short map: [guidelines/ecosystem.md](guidelines/ecosystem.md).
+
 ## Principles
 
 - **The zero-build path comes first.** The four-tag CDN page never regresses for the sake of the npm build; where the two differ, the difference is deliberate and documented.
 - **Accessible by default.** WCAG 2.1 AA is the floor: visible focus, full keyboard paths, contrast in both themes, reduced motion respected. A component that takes an ARIA role implements that role's whole keyboard contract.
 - **Every claim is a check.** "Accessible", "reproducible" and "the types compile" are gates in `npm run check`, not adjectives.
-- **Deprecate, then remove in a major.** A renamed prop keeps working with a warning until the next major version ([governance](guidelines/governance.md#deprecation)).
+- **Deprecate, then remove in a major.** A renamed prop keeps working with a warning until the next major version ([governance](guidelines/governance.md#deprecation)). The [migration guide](guidelines/migration.md) lists every deprecation with before and after code.
 
 ## Quickstart
 
@@ -25,8 +29,8 @@ Four tags. No install, no bundler, no config: every component lands on one globa
 
 ```html
 <link rel="stylesheet" href="https://meridian.efolusi.com/styles.css">
-<script src="https://unpkg.com/react@18.3.1/umd/react.production.min.js"></script>
-<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.production.min.js"></script>
+<script src="https://unpkg.com/react@18.3.1/umd/react.production.min.js" integrity="sha384-DGyLxAyjq0f9SPpVevD6IgztCFlnMF6oW/XQGmfe+IsZ8TqEiDrcHkMLKI6fiB/Z" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.production.min.js" integrity="sha384-gTGxhz21lVGYNMcdJOyq01Edg0jhn/c22nsx0kyqP0TxaV5WVdsSH1fSDUf5YJj1" crossorigin="anonymous"></script>
 <script src="https://meridian.efolusi.com/_ds_bundle.js"></script>
 ```
 
@@ -39,6 +43,8 @@ const { Button, Card, CardContent, CardHeader, CardTitle, Stat } = window.Efolus
   <CardContent><Button onClick={save}>Save changes</Button></CardContent>
 </Card>
 ```
+
+The React tags carry Subresource Integrity hashes, so the browser refuses a file that changed on the CDN. The two `meridian.efolusi.com` tags have none: those URLs always serve the newest release, so a fixed hash would break on the next deploy. To pin every file, self-host `styles.css` and `_ds_bundle.js` from a release and add your own hashes.
 
 A complete runnable page is in [`hello.html`](hello.html). Open it in a browser; nothing else is required.
 
@@ -55,9 +61,25 @@ Dark mode and compact density are attribute scopes, not rebuilds:
 | **npm** | you have a bundler (Vite, Next, Remix) | `npm install @efolusi/meridian` |
 | **CDN** (above) | prototypes, demos, a single-file artifact | the four tags above |
 | **Vendor the folder** | you want to own and edit the source | copy the repo; link `styles.css` and `_ds_bundle.js` |
-| **Vendor one component** | you need Button, not all 123 | copy `components/<group>/<Name>.jsx` + `.d.ts` (MIT, no attribution required) |
+| **Vendor one component** | you need Button, not all 123 | `npx @efolusi/meridian-cli add button`, or copy `components/<group>/<Name>.jsx` + `.d.ts` by hand (Apache-2.0: keep the license notice) |
 
 **From the registry.** Compatible registry clients install editable component source, types, usage guidance, and the Meridian dependencies it needs from `efolusi/meridian/<item>`. The same catalog is served at `https://meridian.efolusi.com/site/registry.json`, with items under `https://meridian.efolusi.com/site/registry/<item>.json`.
+
+### Meridian CLI
+
+The CLI copies a component's source, types and usage notes into your project,
+along with the Meridian items it imports, from the hosted registry:
+
+```bash
+npx @efolusi/meridian-cli add button
+npx @efolusi/meridian-cli add dialog tabs --dir src/ui --dry-run
+npx @efolusi/meridian-cli list
+```
+
+It refuses to overwrite files you changed unless you pass `--overwrite`, and it
+prints the npm packages to install instead of running npm. See the
+[CLI guide](packages/cli/README.md) for every option, exit code, and what it
+refuses to write.
 
 ### Meridian Guard
 
@@ -137,6 +159,7 @@ import '@efolusi/meridian/landing.css'
 - `guidelines/frameworks.md`: install and integration guides for Next.js, Vite, Remix, and the zero-build CDN path
 - `guidelines/accessibility.md`: focus rules, full keyboard map, contrast targets, per-component semantics
 - `guidelines/governance.md`: scope, semver rules, when a component belongs, do/don't, deprecation policy
+- `guidelines/migration.md`: what to change before the next major, with before and after code and Guard's `--fix`
 - `guidelines/compatibility.md`: migrating from another registry-based component set, and how compatibility is proven
 
 ## Component library
@@ -180,10 +203,10 @@ The layout is Meridian's own, organized by purpose: the system core stays at the
 - `scripts/`: the generators and gates behind `npm run check`
 - `tokens.json` (DTCG) + `tailwind.preset.js`: design tokens for Style Dictionary, Figma Variables, and Tailwind (generated by `scripts/build_tokens.py`)
 - `ARCHITECTURE.md`: how the pieces fit · `STYLEGUIDE.md`: contributor conventions · `CONTRIBUTING.md`: setup, component contract, PR checklist
-- `CHANGELOG.md` · `RELEASING.md` · `SECURITY.md` · `SUPPORT.md` · `LICENSE` (MIT) · `THIRD_PARTY_NOTICES.md`
+- `CHANGELOG.md` · `RELEASING.md` · `SECURITY.md` · `SUPPORT.md` · `LICENSE` (Apache-2.0) · `THIRD_PARTY_NOTICES.md`
 
 **Showcases vs starters:** showcases (`showcases/`) are rich screens written in plain JSX so you can lift code straight into a React app; starters (`starters/`) are self-contained multi-page journeys you copy wholesale. Four pairs intentionally cover the same category in both forms (console/dashboard, auth, website/marketing, docs); the AI workspace, CRM, finance operations, and service desk starters extend coverage into domain-specific enterprise workflows.
 
 ## License
 
-MIT: free for commercial and personal use, modification, and redistribution. See `LICENSE`. Bundled fonts (SIL OFL 1.1) and Lucide-derived icons (ISC/MIT) keep their own licenses: `THIRD_PARTY_NOTICES.md`. The Meridian mark and the "Meridian"/"Efolusi" names are not covered by the MIT grant. Don't use them to brand derived systems. Contributions welcome: `CONTRIBUTING.md`.
+Apache-2.0: free for commercial and personal use, modification, and redistribution. See `LICENSE`. Bundled fonts (SIL OFL 1.1) and Lucide-derived icons (ISC/MIT) keep their own licenses: `THIRD_PARTY_NOTICES.md`. The Meridian mark and the "Meridian"/"Efolusi" names are not covered by the Apache-2.0 grant. Don't use them to brand derived systems. Contributions welcome: `CONTRIBUTING.md`.

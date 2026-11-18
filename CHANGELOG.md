@@ -1,6 +1,48 @@
 # Changelog
 
-## Unreleased
+## 1.23.0 — 2026-11-18
+
+- **`@efolusi/meridian-cli` ships with the other packages.** Its first version (1.22.0) was published by hand; from 1.23.0 the publish workflow releases it in lockstep.
+- **Known dev-only advisory.** `npm audit` reports picomatch ≤4.0.7 (ReDoS on single-branch repeated extglobs) through vite, vitest, fdir and tinyglobby. No published package depends on them (`npm audit --omit=dev` is clean), and no fixed picomatch exists yet. It will be bumped when one is published.
+- **Size budget raised by 7 KB** (npm total 1,411,723 bytes) for the overlay hydrate fix in #106.
+- **Tokens come from efolusi/design-tokens.** `tokens.json` and `tokens/{colors,typography,spacing,effects}.css` are vendored from design-tokens v0.1.1 by `scripts/sync_tokens.mjs`, pinned in `tokens/design-tokens.lock.json`, and `npm run check` fails when they drift. No existing value changed. 26 tokens are new (`--surface-panel`, `--avatar-*`, `--state-*`, `--opacity-*`, `--space-0-5`, `--radius-xs-plus`, `--surface-inverse-hover`/`-active`). In `tokens.json`, `leading.*` are numbers, `weight.*` are `fontWeight`, `tap.min` is a `dimension`, and the root mode map lists each mode's selector and media blocks.
+- **Higher contrast when the OS asks for it.** Under `@media (prefers-contrast: more)`, `--border-default` steps up to `--border-control` and `--text-muted` to `--text-secondary`, in light and dark.
+
+- **New package: `@efolusi/meridian-cli`.** `npx @efolusi/meridian-cli add button` copies a component's source, types and usage notes into your project from the hosted registry, with every Meridian item it depends on. It refuses to overwrite files you changed unless you pass `--overwrite`, supports `--dry-run`, `--dir` and `--registry` (a URL or a local directory), and prints the npm packages to install instead of running npm. `list` shows every item. It has no runtime dependencies and treats registry JSON as untrusted: absolute paths, `..` segments, backslashes, non-ASCII or `%`-encoded file names, targets inside `.git`, symlink escapes, cross-origin redirects and oversized responses are refused, and registry text is cleaned of terminal control and bidi characters before it is printed. See `packages/cli/README.md`.
+- **Copied components show their icons and brand fonts.** The registry's `Icon` fetched `assets/icons/<name>.svg`, which a copied-in app does not serve. Vite answered with its `index.html`, which was injected into every button, and the Dialog close button was invisible. The registry now ships the same `Icon` as the npm package, with every glyph inlined. Its `tokens/fonts.css` loads the fonts from the published `@efolusi/meridian-tokens`, pinned to the release, because registry files cannot carry the woff2 files. The zero-build `Icon` now only injects a response that is an SVG, and warns otherwise.
+- **Components work in the Next.js App Router when copied in.** Every component source now starts with `'use client'`, as the npm build already added, so registry copies can be imported from a Server Component file instead of failing the build with `createContext is not a function`. The CDN bundle strips the directive. As in the npm package, helpers such as `buttonVariants` are now client-only in copies too: call them from a client component.
+- **Copied components can be styled in server-rendered HTML.** Components put their CSS in the page from render, which does nothing on the server, so a Next.js or Vite SSR page built from registry copies arrived unstyled and changed when it hydrated. A new opt-in registry item, `meridian-ssr-css`, ships `components.css`, the same component stylesheet as the npm package. Import it after `styles.css` and the framework links it in the server HTML. `injectEfCss` skips CSS that sheet already carries, matched by a hash of the exact rules, so hydration adds no second copy. An edited component, or one from another release, still injects its own CSS. `meridian-base` is unchanged, so adding components never conflicts on the sheet. The CDN bundle and the npm package behave as before.
+- **`<Toaster />` no longer causes a hydration error on every page.** It mounts its portal once hydration is done, through the new `useHydrated` hook in `Portal.jsx`. Other overlays still portal on their first render, so ones that open on first load keep measuring and focusing their panel.
+- **Overlays open on first load hydrate cleanly.** A Dialog, AlertDialog, Drawer, Popover, HoverCard, Tooltip, Select, DropdownMenu, ContextMenu or Combobox with `defaultOpen` (or `open` from server state) rendered a portal while hydrating where the server had none, which React reports as a mismatch. They now stay closed until hydration is done and open right after, so focus and placement run with the panel present.
+- **Select, Resizable and ScrollArea work with children written in a Server Component.** They matched children by function identity, which a Server Component's lazy client reference does not pass, so a Select showed its placeholder instead of the chosen label and Resizable panels could not resize. The new `isElementOfType` helper unwraps the reference first.
+- **Dialogs keep their initial focus under React StrictMode.** StrictMode's effect replay detached the portal host and blurred the button the dialog had just focused; the portal now restores it.
+- **MCP server 0.1.5: `get_component` shows where each file goes.** It printed the registry's source path, so the `Icon` files appeared under `registry/icons/` instead of `components/icons/`. Generated data files such as the glyph map are named instead of printed.
+- **Popover, HoverCard and Tooltip content keep a caller's `id`.** The generated id overwrote it, so a label, a test hook or an `aria-*` reference to that id found nothing. The trigger's `aria-controls` or `aria-describedby` now follows whichever id is rendered.
+- **The CLI behaves on Windows.** An audit against Windows file-system rules found and fixed nine problems:
+  - Targets that differ only in letter case are refused (they are one file on NTFS).
+  - A CRLF or byte-order-mark checkout of the same content counts as unchanged instead of a conflict.
+  - `--overwrite` checks the open file against the path before truncating, since Windows has no `O_NOFOLLOW`.
+  - Realpath falls back to the JS walker on RAM and virtual drives.
+  - A folder named like `..foo` is no longer refused.
+  - Caret ranges in the `npm install` hint are quoted, because cmd.exe drops `^`.
+  - A failed write lists the files already written.
+  - `check_pkg_cli.mjs` resolves its root with `fileURLToPath`.
+  - The symlink tests use junctions on Windows.
+- **The `drawer` and `menubar` registry items now include what they import.** The registry generator missed imports written across several lines, so `drawer` came without `dialog` and `menubar` without `dropdownmenu`, and the copied files did not resolve.
+- **A migration guide lists every deprecation.** `guidelines/migration.md` has the policy and, for 2.0, the Drawer `modal` removal with before and after code. The Drawer warning and type link to it, and `npm run check` fails when a deprecation is missing from the guide.
+- **`meridian-guard --fix` removes ignored deprecated props.** It deletes Drawer `modal` from every call site Guard can see; JSON output marks fixable diagnostics with `fixable: true`.
+- **Element defaults no longer override components.** All of `tokens/base.css` now sits in `@layer meridian`, so a component's own spacing (for example the Questionnaire description) is no longer flattened by the global `p` and heading resets. The forced-colours focus outline stays unlayered on purpose.
+- **Dark mode follows the operating system when no theme is set.** With no `data-theme` on the page, a dark OS gets the dark tokens; `data-theme="light"` or `"dark"` still wins. The docs site now records the OS choice as an explicit theme.
+- **Less layout shift while the brand fonts load.** Metric-matched `Figtree Fallback` and `Bricolage Grotesque Fallback` faces sit right after each brand face.
+- **Reduced motion also removes animation and transition delays.**
+- **Dialogs reference a description only when one renders**, follow a custom description `id`, and keep a caller's own `aria-describedby`.
+- **Icons retry a dropped request twice** before giving up; a missing glyph (404) is still remembered.
+- **Charts get their own colour tokens.** `--chart-1` to `--chart-5` are a categorical palette (blue, orange, green, violet, pink) with separate dark-mode steps, checked for colour-blind separation. DonutChart uses them in order, and Chart configs should reference them for series. Brand colours stay for UI.
+- **The CDN install snippets carry SRI hashes.** The React, ReactDOM and Babel tags in the README, `hello.html`, the framework guide and the docs site now have `integrity` and `crossorigin="anonymous"`, and a new gate fails when a CDN tag lacks the pinned hash. The `meridian.efolusi.com` tags stay unhashed because they always serve the newest release.
+- **The docs list what each component costs.** A new Bundle size page (and `guidelines/bundle-size.md`) gives the minified and gzipped size of every npm deep import, including the Meridian modules it pulls in. `npm run check` regenerates it, so it cannot fall behind the sources.
+- **Example apps no longer wear the Meridian mark.** The fictional products in the showcases, starters and blocks (Fernwick, Northstar CRM, Ledgerroom, Waypoint Support) show their name as a plain text wordmark, and the hero's invented user count reads `[4,200+]` as a placeholder.
+- **Carousel and Slider work in right-to-left layouts in every engine.** In RTL, Carousel measured slides from the physical left edge, so a second Next jumped back to the first slide. Slider thumbs on a two-thumb range now sit where the fill ends, and the Left and Right arrows move a horizontal thumb toward the arrow in Safari too (WebKit moved it the other way in RTL). RTL is now checked in Chromium, Firefox and WebKit; see `guidelines/accessibility.md`.
+- **The hosted site sends security headers** (nosniff, HSTS, Referrer-Policy, `frame-ancestors 'self'`), allows cross-origin font and registry loads, and serves Markdown and `LICENSE` as plain text.
 
 ## 1.22.0 — 2026-11-13
 
@@ -387,6 +429,8 @@ The first tagged, installable version. Meridian is repositioned as a general-pur
 - Docs corrected: icon count (65 → 107) and stroke width (assets are 2px; `Icon` renders 1.5px), deduplicated README data-component list, docs-site component counts (88/77 → 104).
 
 ## 1.3.0 — 2026-07-17 — AI-native component expansion
+
+1.1.0, 1.2.0 and 1.3.0 were built before this repository existed. Its history starts on 2026-07-17 with an import of 1.3.0, whose changelog already dated 1.1.0 and 1.2.0 that same day. None of the three was tagged or published to npm (the first tag is v1.4.0, the first npm release 1.5.0), so no earlier date can be recovered and all three keep 2026-07-17.
 
 ### Added
 - 16 components closing the AI-chat/agent surface:

@@ -1,3 +1,4 @@
+import { readTokenCss } from './helpers/token-css.mjs'
 import { describe, it, expect } from 'vitest';
 import { readFileSync } from 'node:fs';
 import { render } from '@testing-library/react';
@@ -11,7 +12,7 @@ import { HoverCard, HoverCardTrigger, HoverCardContent } from '../components/ove
 // so only z-index decides which one is on top. A panel at --z-dropdown (1000)
 // opened from inside a Dialog (overlay at --z-overlay, 1200) painted under the
 // scrim: the menu was open, focused, and invisible.
-const tokens = Object.fromEntries([...readFileSync('tokens/effects.css', 'utf8').matchAll(/--(z-[a-z]+):(\d+)/g)].map(m => [m[1], Number(m[2])]));
+const tokens = Object.fromEntries([...readTokenCss('effects.css').matchAll(/--(z-[a-z]+):(\d+)/g)].map(m => [m[1], Number(m[2])]));
 const css = () => [...document.head.querySelectorAll('style')].map(s => s.textContent).join('\n');
 function zOf(selector) {
   const rule = css().split('}').find(r => r.includes(selector + '{'));

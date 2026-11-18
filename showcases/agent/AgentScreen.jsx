@@ -5,9 +5,9 @@ function AgentActionMenu({ trigger, items, onSelect }) { return <DropdownMenu><D
 function AgentHeader({ running, onToggle, notify }) {
   return (
     <header style={{ display: 'flex', alignItems: 'center', gap: 12, height: 58, padding: '0 24px', borderBottom: '1px solid var(--border-default)', background: 'rgba(250,249,246,.85)', backdropFilter: 'blur(12px)', flex: 'none' }}>
-      <a href="../console/index.html" title="Back to Console" style={{ display: 'flex', alignItems: 'center', gap: 6, textDecoration: 'none', color: 'var(--text-primary)' }}>
-        <img src="../../assets/meridian-mark.svg" alt="" style={{ width: 30, height: 16 }} />
-        <span style={{ fontFamily: 'var(--font-display)', fontWeight: 680, letterSpacing: '-0.02em', fontSize: 17 }}>AI agents</span>
+      <a href="../console/index.html" title="Back to Console" style={{ display: 'flex', alignItems: 'baseline', gap: 8, textDecoration: 'none', color: 'var(--text-primary)' }}>
+        <span style={{ fontFamily: 'var(--font-display)', fontWeight: 680, letterSpacing: '-0.02em', fontSize: 17 }}>Fernwick</span>
+        <span style={{ fontSize: 15, color: 'var(--text-muted)', fontWeight: 500 }}>AI agents</span>
       </a>
       <span style={{ color: 'var(--sand-300)' }}>/</span>
       <span style={{ fontSize: 14, fontWeight: 600 }}>Retry failed webhooks</span>

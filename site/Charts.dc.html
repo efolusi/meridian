@@ -89,7 +89,7 @@
 </main>
 <footer style="view-transition-name:site-foot;border-top:1px solid var(--border-default)">
 <div class="site-foot-row pad-sm" style="max-width:1200px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;padding:20px 28px;font-size:13px;color:var(--text-muted)">
-<span>Built by <a href="https://efolusi.com" style="color:var(--text-secondary);text-decoration:none">Efolusi</a>. The source code is available on <a href="https://github.com/efolusi/meridian" style="color:var(--text-secondary);text-decoration:none">GitHub</a>. MIT licensed.</span>
+<span>Built by <a href="https://efolusi.com" style="color:var(--text-secondary);text-decoration:none">Efolusi</a>. The source code is available on <a href="https://github.com/efolusi/meridian" style="color:var(--text-secondary);text-decoration:none">GitHub</a>. Apache-2.0 licensed.</span>
 <span style="display:flex;gap:16px"><a href="https://github.com/efolusi/meridian/blob/main/LICENSE" style="color:var(--text-secondary);text-decoration:none" style-hover="color:var(--text-primary)">License</a><a href="https://github.com/efolusi/meridian/blob/main/CONTRIBUTING.md" style="color:var(--text-secondary);text-decoration:none" style-hover="color:var(--text-primary)">Contributing</a><a href="https://github.com/efolusi/meridian/blob/main/README.md" style="color:var(--text-secondary);text-decoration:none" style-hover="color:var(--text-primary)">Readme</a></span>
 </div>
 </footer>
@@ -252,7 +252,7 @@ window.MeridianLiveFrame = (() => {
 class Component extends DCLogic {
   state = { dark: false, langTick: 0 };
   componentDidMount() {
-    try { const t = localStorage.getItem('efolusi-site-theme'); if (t) document.documentElement.setAttribute('data-theme', t); } catch (e) {}
+    try { const t = localStorage.getItem('efolusi-site-theme') || (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'); document.documentElement.setAttribute('data-theme', t); } catch (e) {}
     this.setState({ dark: document.documentElement.getAttribute('data-theme') === 'dark' });
     // Re-render when the language changes; renderVals reads it live. An
     // instance counter guarantees a state change so the render is never skipped.

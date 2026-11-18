@@ -1,3 +1,4 @@
+'use client';
 import React from 'react';
 const _cache = {};
 // One request per glyph: instances mounting together share the in-flight fetch.
@@ -18,6 +19,12 @@ function warnMissing(name) {
   console.warn('[meridian] <Icon name="' + name + '"> is not a Meridian glyph, so nothing will render. Check the name against the icon gallery, or add ' + name + '.svg to assets/icons/.');
 }
 
+function warnNotSvg(name) {
+  if (_warned.has(name) || typeof console === 'undefined') return;
+  _warned.add(name);
+  console.warn('[meridian] ' + base() + 'assets/icons/' + name + '.svg answered with something that is not an SVG, often an app\'s index.html, so <Icon name="' + name + '"> renders nothing. Serve assets/icons/ beside _ds_bundle.js, or in a bundled app use the registry or npm Icon, which inlines every glyph.');
+}
+
 export function Icon({ name, size = 16, strokeWidth = 1.5, title, className, style, ...rest }) {
   const [svg, setSvg] = React.useState(name in _cache ? _cache[name] : null);
   React.useEffect(() => {
@@ -26,7 +33,13 @@ export function Icon({ name, size = 16, strokeWidth = 1.5, title, className, sty
     if (name in _cache) { setSvg(_cache[name]); return; }
     let live = true;
     if (!_inflight[name]) {
-      _inflight[name] = fetch(base() + 'assets/icons/' + name + '.svg')
+      // A reset or dropped connection (busy static server, flaky network) is
+      // retried twice with a short backoff before the glyph is given up on.
+      const load = attempt => fetch(base() + 'assets/icons/' + name + '.svg')
+        .catch(error => attempt < 2
+          ? new Promise(r => setTimeout(r, 150 * (attempt + 1))).then(() => load(attempt + 1))
+          : Promise.reject(error));
+      _inflight[name] = load(0)
         .then(r => {
           // A served 404 means the name is wrong; anything else — offline, a
           // jsdom test with no base URL, a blocked request — is the environment,
@@ -34,7 +47,14 @@ export function Icon({ name, size = 16, strokeWidth = 1.5, title, className, sty
           // every valid icon in a consumer's test run.
           if (r.status === 404) { warnMissing(name); _cache[name] = ''; return ''; }
           if (!r.ok) return '';
-          return r.text().then(t => (_cache[name] = t));
+          // Only markup that is an SVG gets injected. A server without the file
+          // can still answer 200 with its SPA fallback, index.html, which would
+          // otherwise land inside the button as a whole document.
+          return r.text().then(t => {
+            if (/^\s*<svg[\s>]/.test(t)) return (_cache[name] = t);
+            warnNotSvg(name);
+            return (_cache[name] = '');
+          });
         })
         // A network failure is not remembered, so a later mount tries again.
         .catch(() => '')

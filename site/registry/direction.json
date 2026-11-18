@@ -13,7 +13,7 @@
     {
       "path": "components/display/Direction.jsx",
       "type": "registry:ui",
-      "content": "import React from 'react';\n\nconst DirectionContext = React.createContext(undefined);\n\n/** Supply reading direction to components whose keyboard behavior must mirror. */\nexport function DirectionProvider({ dir, direction, children }) {\n  const requested = direction ?? dir ?? 'ltr';\n  const value = requested === 'rtl' ? 'rtl' : 'ltr';\n  return <DirectionContext.Provider value={value}>{children}</DirectionContext.Provider>;\n}\n\n/** Read the nearest provider, falling back to the document direction. */\nexport function useDirection() {\n  const provided = React.useContext(DirectionContext);\n  if (provided) return provided;\n  if (typeof document !== 'undefined' && document.documentElement.dir === 'rtl') return 'rtl';\n  return 'ltr';\n}\n"
+      "content": "'use client';\nimport React from 'react';\n\nconst DirectionContext = React.createContext(undefined);\n\n/** Supply reading direction to components whose keyboard behavior must mirror. */\nexport function DirectionProvider({ dir, direction, children }) {\n  const requested = direction ?? dir ?? 'ltr';\n  const value = requested === 'rtl' ? 'rtl' : 'ltr';\n  return <DirectionContext.Provider value={value}>{children}</DirectionContext.Provider>;\n}\n\n/** Read the nearest provider, falling back to the document direction. */\nexport function useDirection() {\n  const provided = React.useContext(DirectionContext);\n  if (provided) return provided;\n  if (typeof document !== 'undefined' && document.documentElement.dir === 'rtl') return 'rtl';\n  return 'ltr';\n}\n"
     },
     {
       "path": "components/display/Direction.d.ts",

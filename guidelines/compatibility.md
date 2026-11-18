@@ -33,7 +33,9 @@ identifier, not branding.
 
 ## Known gaps
 
-- Cross-browser proof for Safari, Firefox and Edge is not complete
-  ([#75](https://github.com/efolusi/meridian/issues/75)).
+- Cross-browser RTL proof covers the Chromium (and so Edge), Firefox and WebKit
+  engines, but not Safari itself, Firefox on macOS or the previous version of
+  each browser ([#75](https://github.com/efolusi/meridian/issues/75); details in
+  `guidelines/accessibility.md`).
 - Migration fixtures exercise representative contracts per family, not yet every
   public prop and state.

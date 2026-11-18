@@ -60,11 +60,42 @@ Resizable, PromptSteps and Carousel mirror their horizontal behavior. Semantic
 component spacing, alignment, borders and insets use logical properties; a
 static gate admits physical coordinates only for reviewed geometry such as
 viewport-positioned overlays, chart points and explicitly left/right drawers.
-The browser smoke renders all 128 demos in both directions, and representative
+The browser smoke renders every demo in both directions, and representative
 forms, navigation, display and overlay screens have been visually reviewed in
-light and dark themes. Do not call RTL fully supported across the browser matrix
-until the last-two-version Safari, Firefox and Edge pass
-([#75](https://github.com/efolusi/meridian/issues/75)) is done.
+light and dark themes.
+
+**What was tested across engines (November 2026).** `site/_smoke.html?dir=rtl`
+and `?dir=ltr` rendered all 140 demos with a clean console in each engine below.
+A probe then stepped the Carousel, pressed the arrow keys on Slider and Tabs,
+opened DropdownMenu, Popover, HoverCard, Select, Combobox, Menubar and TimePicker
+to compare each panel's edges with its trigger, and pixel-compared every demo
+group against Chromium.
+
+| Engine | Playwright 1.65 | Playwright 1.48 (the CI image) |
+|---|---|---|
+| Chromium | 158.0, on macOS 27 and Linux | 130.0, on Linux |
+| WebKit (Safari's engine) | 27.2, on macOS 27 and Linux | 18.0, on Linux |
+| Firefox | 159.0, on Linux | 131.0, on Linux |
+
+Edge renders with Chromium, so the Chromium rows stand in for it; Edge itself
+was not opened. Layout, overlay placement, scroll direction and the Tabs arrow
+keys matched Chromium in every engine. The pixel differences were font
+anti-aliasing, plus MessageScroller rows that Firefox leaves unpainted in an
+off-screen element capture (`content-visibility: auto`; they render on
+screen). The pass found two component bugs, both fixed: Carousel jumped
+back to the first slide on its second step in RTL (every engine), and a
+two-thumb Slider drew its thumbs away from the ends of the fill (every engine,
+both directions). WebKit also stepped a native range the wrong way in RTL; Slider
+now handles Left and Right itself. To repeat a run:
+`BASE=http://127.0.0.1:8000 SMOKE_BROWSER=firefox DIRECTION=rtl node scripts/smoke_headless.mjs`
+(`SMOKE_BROWSER` is `chromium`, `firefox` or `webkit`; CI still runs Chromium only).
+
+**Still open before calling RTL fully supported**
+([#75](https://github.com/efolusi/meridian/issues/75)): Safari itself on macOS
+and iOS (Playwright's WebKit is the same engine, not the shipped browser),
+Firefox on macOS (Playwright's Firefox would not start on the macOS 27 test
+host), the release just before the current one in each browser (the 1.48
+builds are older than that), and touch input.
 
 **Reduced motion** is honoured globally at `tokens/base.css:10`: under
 `prefers-reduced-motion: reduce` every animation and transition is collapsed to

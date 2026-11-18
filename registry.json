@@ -30,7 +30,7 @@
           "target": "tokens/effects.css"
         },
         {
-          "path": "tokens/fonts.css",
+          "path": "registry/tokens/fonts.css",
           "type": "registry:file",
           "target": "tokens/fonts.css"
         },
@@ -48,6 +48,25 @@
           "path": "tokens/typography.css",
           "type": "registry:file",
           "target": "tokens/typography.css"
+        }
+      ],
+      "categories": [
+        "foundation"
+      ]
+    },
+    {
+      "name": "meridian-ssr-css",
+      "type": "registry:style",
+      "title": "Meridian component CSS for server rendering",
+      "description": "Every component's CSS as one static stylesheet. Import it after styles.css in a server-rendered app (Next.js, Remix, Vite SSR) so pages arrive styled instead of changing when they hydrate.",
+      "registryDependencies": [
+        "https://meridian.efolusi.com/site/registry/meridian-base.json"
+      ],
+      "files": [
+        {
+          "path": "registry/components.css",
+          "type": "registry:file",
+          "target": "components.css"
         }
       ],
       "categories": [
@@ -1205,7 +1224,7 @@
       "name": "donutchart",
       "type": "registry:ui",
       "title": "DonutChart",
-      "description": "Donut with center figure + legend; hover highlights a slice. Colors default to the brand ramp.",
+      "description": "Donut with center figure + legend; hover highlights a slice. Slices take `--chart-1`..`--chart-5` in order; keep it to five slices and fold the rest into \"Other\".",
       "dependencies": [
         "react"
       ],
@@ -3217,8 +3236,19 @@
       ],
       "files": [
         {
-          "path": "components/icons/Icon.jsx",
-          "type": "registry:ui"
+          "path": "registry/icons/Icon.jsx",
+          "type": "registry:ui",
+          "target": "components/icons/Icon.jsx"
+        },
+        {
+          "path": "registry/icons/_svg.js",
+          "type": "registry:file",
+          "target": "components/icons/_svg.js"
+        },
+        {
+          "path": "assets/icons/LICENSE-Lucide.txt",
+          "type": "registry:file",
+          "target": "components/icons/LICENSE-Lucide.txt"
         },
         {
           "path": "components/icons/Icon.d.ts",
@@ -3275,7 +3305,8 @@
       "registryDependencies": [
         "https://meridian.efolusi.com/site/registry/meridian-base.json",
         "https://meridian.efolusi.com/site/registry/button.json",
-        "https://meridian.efolusi.com/site/registry/direction.json"
+        "https://meridian.efolusi.com/site/registry/direction.json",
+        "https://meridian.efolusi.com/site/registry/dropdownmenu.json"
       ],
       "files": [
         {
@@ -3681,7 +3712,9 @@
       ],
       "registryDependencies": [
         "https://meridian.efolusi.com/site/registry/meridian-base.json",
-        "https://meridian.efolusi.com/site/registry/button.json"
+        "https://meridian.efolusi.com/site/registry/button.json",
+        "https://meridian.efolusi.com/site/registry/dialog.json",
+        "https://meridian.efolusi.com/site/registry/portal.json"
       ],
       "files": [
         {

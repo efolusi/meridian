@@ -1,4 +1,6 @@
+'use client';
 import React from 'react';
+import { useHydrated } from './Portal.jsx';
 import { injectEfCss } from '../forms/Button.jsx';
 import {
   Dialog,
@@ -40,14 +42,16 @@ function warnModalIgnored() {
   // production. Where nothing defines it, the read throws and we warn.
   try { if (process.env.NODE_ENV === 'production') return; } catch (e) { /* no build-time env */ }
   warnedModal = true;
-  console.warn('[meridian] <Drawer modal={false}> is deprecated and ignored: a Drawer is always modal. The prop will be removed in the next major version.');
+  console.warn('[meridian] <Drawer modal={false}> is deprecated and ignored: a Drawer is always modal. The prop will be removed in the next major version. Migration: https://meridian.efolusi.com/guidelines/migration.md');
 }
 
 export function Drawer({ open: controlled, defaultOpen = false, onOpenChange, direction = 'bottom', dismissible = true, modal = true, handleOnly = false, children }) {
   injectEfCss('ef-css-drawer', CSS);
   React.useEffect(() => { if (modal === false) warnModalIgnored(); }, [modal]);
   const [internal, setInternal] = React.useState(defaultOpen);
-  const open = controlled === undefined ? internal : controlled;
+  // Closed while React hydrates server HTML (the server rendered no portal),
+  // open right after, so effects keyed on it run with the panel present.
+  const open = useHydrated() && (controlled === undefined ? internal : controlled);
   const setOpen = React.useCallback(next => {
     if (controlled === undefined) setInternal(next);
     onOpenChange?.(next);

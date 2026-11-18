@@ -92,3 +92,27 @@ describe('meridian.efolusi.com keeps its production crawl policy', () => {
     expect(sitemap).not.toContain('dev-meridian.efolusi.com')
   })
 })
+
+describe('Meridian development vhost public files (DS-03, DS-12)', () => {
+  it('lets any origin load the self-hosted fonts and keeps the noindex header there', () => {
+    const fonts = devNginx.slice(devNginx.indexOf('location ^~ /assets/fonts/ {'))
+    const block = fonts.slice(0, fonts.indexOf('\n    }'))
+    expect(block).toContain('include snippets/meridian-security-headers.conf;')
+    expect(block).toContain('add_header X-Robots-Tag "noindex, nofollow" always;')
+  })
+
+  it('serves the root docs as plain text, still noindex', () => {
+    const at = devNginx.indexOf('location ~ ^/(LICENSE|')
+    expect(at).toBeGreaterThan(-1)
+    const block = devNginx.slice(at, devNginx.indexOf('\n    }', at))
+    expect(block).toContain('default_type text/plain;')
+    expect(block).toContain('charset utf-8;')
+    expect(block).toContain('add_header X-Robots-Tag "noindex, nofollow" always;')
+  })
+
+  it('serves the same root-doc pattern as production', () => {
+    const spec = (conf) => conf.slice(conf.indexOf('location ~ ^/(LICENSE|')).match(/location ~ (\S+) \{/)?.[1]
+    expect(spec(prodNginx)).toBeTruthy()
+    expect(spec(devNginx)).toBe(spec(prodNginx))
+  })
+})

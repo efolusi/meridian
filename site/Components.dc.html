@@ -156,7 +156,7 @@
 </div>
 <footer style="view-transition-name:site-foot;border-top:1px solid var(--border-default)">
 <div class="site-foot-row pad-sm" style="max-width:1200px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;padding:20px 28px;font-size:13px;color:var(--text-muted)">
-<span>Built by <a href="https://efolusi.com" style="color:var(--text-secondary);text-decoration:none">Efolusi</a>. The source code is available on <a href="https://github.com/efolusi/meridian" style="color:var(--text-secondary);text-decoration:none">GitHub</a>. MIT licensed.</span>
+<span>Built by <a href="https://efolusi.com" style="color:var(--text-secondary);text-decoration:none">Efolusi</a>. The source code is available on <a href="https://github.com/efolusi/meridian" style="color:var(--text-secondary);text-decoration:none">GitHub</a>. Apache-2.0 licensed.</span>
 <span style="display:flex;gap:16px"><a href="https://github.com/efolusi/meridian/blob/main/LICENSE" style="color:var(--text-secondary);text-decoration:none" style-hover="color:var(--text-primary)">License</a><a href="https://github.com/efolusi/meridian/blob/main/CONTRIBUTING.md" style="color:var(--text-secondary);text-decoration:none" style-hover="color:var(--text-primary)">Contributing</a><a href="https://github.com/efolusi/meridian/blob/main/README.md" style="color:var(--text-secondary);text-decoration:none" style-hover="color:var(--text-primary)">Readme</a></span>
 </div>
 </footer>
@@ -319,7 +319,7 @@ window.MeridianLiveFrame = (() => {
 class Component extends DCLogic {
   state = { dark: false, groups: null, ns: 'EfolusiDesignSystem_4ffc3d', gi: 0, ii: 0, demoMaps: {}, interfaces: {}, descId: {} };
   componentDidMount() {
-    try { const t = localStorage.getItem('efolusi-site-theme'); if (t) document.documentElement.setAttribute('data-theme', t); } catch (e) {}
+    try { const t = localStorage.getItem('efolusi-site-theme') || (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'); document.documentElement.setAttribute('data-theme', t); } catch (e) {}
     this.setState({ dark: document.documentElement.getAttribute('data-theme') === 'dark' });
     this._onHash = () => this.applyHash();
     window.addEventListener('hashchange', this._onHash);
@@ -438,10 +438,10 @@ class Component extends DCLogic {
       heroExp: hero ? hero.exp : '',
       hasMore: more.length > 0,
       more,
-      installCode: '<link rel="stylesheet" href="https://meridian.efolusi.com/styles.css">\n<' + SC + ' src="https://unpkg.com/react@18.3.1/umd/react.production.min.js"></' + SC + '>\n<' + SC + ' src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.production.min.js"></' + SC + '>\n<' + SC + ' src="https://meridian.efolusi.com/_ds_bundle.js"></' + SC + '>',
+      installCode: '<link rel="stylesheet" href="https://meridian.efolusi.com/styles.css">\n<' + SC + ' src="https://unpkg.com/react@18.3.1/umd/react.production.min.js" integrity="sha384-DGyLxAyjq0f9SPpVevD6IgztCFlnMF6oW/XQGmfe+IsZ8TqEiDrcHkMLKI6fiB/Z" crossorigin="anonymous"></' + SC + '>\n<' + SC + ' src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.production.min.js" integrity="sha384-gTGxhz21lVGYNMcdJOyq01Edg0jhn/c22nsx0kyqP0TxaV5WVdsSH1fSDUf5YJj1" crossorigin="anonymous"></' + SC + '>\n<' + SC + ' src="https://meridian.efolusi.com/_ds_bundle.js"></' + SC + '>',
       manualNote: a ? (lang === 'id'
-        ? 'Lebih suka vendoring? Salin components/' + g.id + '/' + a.name + '.jsx dan ' + a.name + '.d.ts ke proyek Anda. MIT, tanpa atribusi.'
-        : 'Prefer vendoring? Copy components/' + g.id + '/' + a.name + '.jsx and ' + a.name + '.d.ts into your project. MIT, no attribution required.') : '',
+        ? 'Lebih suka vendoring? Salin components/' + g.id + '/' + a.name + '.jsx dan ' + a.name + '.d.ts ke proyek Anda. Apache-2.0: sertakan pemberitahuan lisensinya.'
+        : 'Prefer vendoring? Copy components/' + g.id + '/' + a.name + '.jsx and ' + a.name + '.d.ts into your project. Apache-2.0: keep the license notice.') : '',
       usageCode: a ? 'const { ' + a.name + ' } = window.' + this.state.ns + ';' : '',
       hasExt: !!(a && a.ext),
       extNote: a && a.ext ? 'Extends ' + a.ext + ', so every native prop passes through.' : '',

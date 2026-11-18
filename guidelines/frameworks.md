@@ -94,8 +94,8 @@ No install, no bundler. Four tags, and every component lands on one global:
 
 ```html
 <link rel="stylesheet" href="https://meridian.efolusi.com/styles.css">
-<script src="https://unpkg.com/react@18.3.1/umd/react.production.min.js"></script>
-<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.production.min.js"></script>
+<script src="https://unpkg.com/react@18.3.1/umd/react.production.min.js" integrity="sha384-DGyLxAyjq0f9SPpVevD6IgztCFlnMF6oW/XQGmfe+IsZ8TqEiDrcHkMLKI6fiB/Z" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.production.min.js" integrity="sha384-gTGxhz21lVGYNMcdJOyq01Edg0jhn/c22nsx0kyqP0TxaV5WVdsSH1fSDUf5YJj1" crossorigin="anonymous"></script>
 <script src="https://meridian.efolusi.com/_ds_bundle.js"></script>
 ```
 
@@ -103,11 +103,11 @@ No install, no bundler. Four tags, and every component lands on one global:
 const { Button, Card } = window.EfolusiDesignSystem_4ffc3d;
 ```
 
-Pin React 18 for this path: React 19 dropped the UMD builds the bundle relies on. `hello.html` in the repo is a complete runnable page.
+Pin React 18 for this path: React 19 dropped the UMD builds the bundle relies on. The React tags carry SRI hashes; the `meridian.efolusi.com` tags do not, because those URLs always serve the newest release. Self-host `styles.css` and `_ds_bundle.js` if you need every file pinned. `hello.html` in the repo is a complete runnable page.
 
 ## Owning the source
 
-Any path can drop to vendoring: copy `components/<group>/<Name>.jsx` and its `.d.ts` straight into your codebase (MIT, no attribution). Each registry item at `site/registry/<name>.json` lists the sibling components it needs under `registryDependencies`, so a copied component brings its dependencies with it.
+Any path can drop to vendoring: copy `components/<group>/<Name>.jsx` and its `.d.ts` straight into your codebase (Apache-2.0: keep the license notice). Each registry item at `site/registry/<name>.json` lists the sibling components it needs under `registryDependencies`, so a copied component brings its dependencies with it.
 
 ## Dark mode and density, everywhere
 
@@ -117,4 +117,30 @@ Independent of framework, set attributes on `<html>` or any subtree:
 <html data-theme="dark" data-density="compact">
 ```
 
-Only semantic aliases remap, so a dark page can host a light card and back.
+Only semantic aliases remap. A `data-theme="dark"` subtree turns dark inside a light page. The reverse does not work yet: there is no `data-theme="light"` token block, so a light card inside a dark page stays dark.
+
+With no `data-theme` on `<html>`, Meridian follows the operating system:
+`prefers-color-scheme: dark` applies the dark tokens. `data-theme="dark"`
+forces dark, and `data-theme="light"` forces light. An app with no dark styling
+of its own should set `data-theme="light"` on `<html>`; otherwise a dark OS turns
+Meridian components dark inside a light page. A theme script that switches to
+light by removing the attribute must set `"light"` instead.
+
+## Fonts
+
+`styles.css` self-hosts Figtree, Bricolage Grotesque and JetBrains Mono with
+`font-display: swap`. It also ships metric-matched fallback faces,
+`Figtree Fallback` and `Bricolage Grotesque Fallback`: local Arial scaled with
+`size-adjust`, `ascent-override` and `descent-override`, so text barely moves
+when the web font arrives.
+
+To start the download earlier, preload the faces your first screen uses. Point
+the URL at wherever your build serves `assets/fonts/`:
+
+```html
+<link rel="preload" href="/assets/fonts/Figtree-Variable.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/assets/fonts/BricolageGrotesque-Variable.woff2" as="font" type="font/woff2" crossorigin>
+```
+
+`crossorigin` is required even on the same origin; without it the browser
+downloads the font twice.

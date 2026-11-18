@@ -1,6 +1,6 @@
 # Contributing to Meridian
 
-Meridian is MIT-licensed and open to contributions. Pages are plain HTML, CSS and JSX: open any `.html` in a browser and you are running the real thing. Component changes need one build step, below.
+Meridian is Apache-2.0 licensed and open to contributions. Pages are plain HTML, CSS and JSX: open any `.html` in a browser and you are running the real thing. Component changes need one build step, below.
 
 ## Read this first if you are changing a component
 
@@ -43,7 +43,7 @@ Every component ships four files in its group folder (`components/<group>/`):
 ## Rules
 
 - **Conventions** (naming, props, tokens, motion, copy, accessibility) are in [STYLEGUIDE.md](STYLEGUIDE.md). Reviewers block on them.
-- **When a component belongs in Meridian**, versioning and deprecation: [guidelines/governance.md](guidelines/governance.md).
+- **When a component belongs in Meridian**, versioning and deprecation: [guidelines/governance.md](guidelines/governance.md). Deprecating a prop also needs a section in [guidelines/migration.md](guidelines/migration.md); `npm run check` fails without it.
 - **Showcase or starter?** A new product category gets a showcase (`showcases/`, plain JSX). A new page journey people should copy gets a starter (`starters/`, self-contained folder). If both, build the starter first and let the showcase show its richest screen. Four twin pairs exist on purpose (console/dashboard, auth, website/marketing, docs); a change to a shared screen updates both sides.
 
 ## Checklist before you open a PR
@@ -57,4 +57,4 @@ Every component ships four files in its group folder (`components/<group>/`):
 
 ## License
 
-By contributing, you agree your contributions are licensed under the MIT License.
+By contributing, you agree your contributions are licensed under the Apache License 2.0.

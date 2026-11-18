@@ -1,3 +1,4 @@
+'use client';
 import React from 'react';
 import { Icon } from '../icons/Icon.jsx';
 import { injectEfCss, mergeRefs } from '../forms/Button.jsx';

@@ -181,7 +181,7 @@ if (noDirective.length) {
   process.exit(1);
 }
 
-// A "license": "MIT" field is metadata; the MIT grant itself requires the licence
+// A "license": "Apache-2.0" field is metadata; the Apache-2.0 grant itself requires the licence
 // text to ship with the code. THIRD_PARTY_NOTICES covers the redistributed fonts.
 const missingLegal = ['LICENSE', 'THIRD_PARTY_NOTICES.md']
   .filter(f => !fs.existsSync(path.join(ROOT, 'dist', f)));

@@ -43,11 +43,15 @@ for (const component of components) {
   if (!body) continue;
   const pattern = /\/\*\*((?:(?!\*\/)[\s\S])*?@deprecated(?:(?!\*\/)[\s\S])*)\*\/\s*([A-Za-z_$][\w$]*)\??\s*:/g;
   for (const match of body.matchAll(pattern)) {
-    const message = match[1].replace(/^\s*\*?\s?/gm, ' ').replace(/\s+/g, ' ').trim();
+    // `@codemod <action>` marks a deprecation `meridian-guard --fix` may rewrite.
+    // Only `remove` exists: it is safe solely for props the component ignores.
+    const codemod = match[1].match(/@codemod\s+([a-z-]+)/)?.[1] || null;
+    if (codemod && codemod !== 'remove') throw new Error(`${component.name}.${match[2]}: unknown @codemod action "${codemod}"`);
+    const message = match[1].replace(/@codemod\s+[a-z-]+/, '').replace(/^\s*\*?\s?/gm, ' ').replace(/\s+/g, ' ').trim();
     const replacement = message.match(/\buse\s+[`'"]?([A-Za-z_$][\w$]*)/i)?.[1]
       || message.match(/\bto\s+[`'"]?([A-Za-z_$][\w$]*)/i)?.[1]
       || null;
-    deprecated.push({ component: component.name, prop: match[2], replacement, message });
+    deprecated.push({ component: component.name, prop: match[2], replacement, message, codemod });
   }
 }
 deprecated.sort((a, b) => a.component.localeCompare(b.component) || a.prop.localeCompare(b.prop));

@@ -64,6 +64,16 @@ cmp --silent "$tracked_vhost" "$available" || {
   echo "[meridian-dev] runner must not be able to mutate nginx configuration" >&2
   exit 75
 }
+# The vhost includes these; a missing or stale copy changes the served headers.
+for snippet in meridian-cors.conf meridian-security-headers.conf; do
+  installed="/etc/nginx/snippets/${snippet}"
+  if ! { [[ -f "$installed" && ! -L "$installed" && ! -w "$installed" ]] \
+    && [[ "$(stat -c '%U:%G:%a' "$installed")" == "root:root:644" ]] \
+    && cmp --silent "${repo_root}/nginx/snippets/${snippet}" "$installed"; }; then
+    echo "[meridian-dev] installed snippet ${snippet} is missing, not root:root 0644, or differs from tracked" >&2
+    exit 81
+  fi
+done
 [[ -d "$deploy_root" && -w "$deploy_root" && -x "$deploy_root" ]] || {
   echo "[meridian-dev] ${deploy_root} must be writable by ${runner_user}" >&2
   exit 76

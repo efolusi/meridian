@@ -60,7 +60,7 @@ function ToolsScreen() {
     <div style={{ minHeight: '100vh', display: 'flex', flexDirection: 'column' }}>
       <div style={{ maxWidth: 1040, width: '100%', margin: '0 auto', padding: '40px 32px 80px' }}>
         <div style={{ display: 'flex', alignItems: 'center', gap: 6, justifyContent: 'center' }}>
-          <a href="../console/index.html" title="Back to Console" style={{ display: 'inline-flex' }}><img src="../../assets/meridian-mark.svg" alt="" style={{ width: 32, height: 17 }} /></a>
+          <a href="../console/index.html" title="Back to Console" style={{ fontFamily: 'var(--font-display)', fontWeight: 680, letterSpacing: '-0.02em', fontSize: 15, color: 'var(--text-secondary)', textDecoration: 'none' }}>Fernwick</a><span aria-hidden="true" style={{ color: 'var(--text-muted)' }}>/</span>
           <h1 style={{ fontSize: 26, fontWeight: 680 }}>File tools</h1>
         </div>
         <p style={{ textAlign: 'center', color: 'var(--text-secondary)', fontSize: 15, marginTop: 8 }}>Convert, encode, and scan any file. Nothing leaves your workspace.</p>

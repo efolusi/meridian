@@ -35,6 +35,17 @@ describe('Icon fetches each glyph once', () => {
     expect(fetchMock).toHaveBeenCalledTimes(2);
   });
 
+  it('retries a reset connection within the same mount before giving up', async () => {
+    const fetchMock = vi.fn()
+      .mockImplementationOnce(() => Promise.reject(new TypeError('net::ERR_CONNECTION_RESET')))
+      .mockImplementationOnce(() => Promise.reject(new TypeError('net::ERR_CONNECTION_RESET')))
+      .mockImplementation(() => Promise.resolve({ ok: true, status: 200, text: () => Promise.resolve('<svg></svg>') }));
+    vi.stubGlobal('fetch', fetchMock);
+    const { container } = render(<div><Icon name="star" /><Icon name="star" /></div>);
+    await waitFor(() => expect(container.querySelectorAll('svg')).toHaveLength(2), { timeout: 3000 });
+    expect(fetchMock).toHaveBeenCalledTimes(3);
+  });
+
   it('still remembers a 404 so a wrong name is not refetched', async () => {
     const warn = vi.spyOn(console, 'warn').mockImplementation(() => {});
     const fetchMock = vi.fn(() => Promise.resolve({ ok: false, status: 404, text: () => Promise.resolve('') }));

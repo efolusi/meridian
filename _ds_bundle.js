@@ -1,4 +1,4 @@
-/* @ds-bundle: {"format":4,"namespace":"EfolusiDesignSystem_4ffc3d","components":[{"name":"AgentRun","sourcePath":"components/ai/AgentRun.jsx"},{"name":"BubbleGroup","sourcePath":"components/ai/Bubble.jsx"},{"name":"Bubble","sourcePath":"components/ai/Bubble.jsx"},{"name":"BubbleContent","sourcePath":"components/ai/Bubble.jsx"},{"name":"BubbleReactions","sourcePath":"components/ai/Bubble.jsx"},{"name":"ChatMessage","sourcePath":"components/ai/ChatMessage.jsx"},{"name":"Citation","sourcePath":"components/ai/Citation.jsx"},{"name":"SourceList","sourcePath":"components/ai/Citation.jsx"},{"name":"Confirmation","sourcePath":"components/ai/Confirmation.jsx"},{"name":"Conversation","sourcePath":"components/ai/Conversation.jsx"},{"name":"DocumentCard","sourcePath":"components/ai/DocumentCard.jsx"},{"name":"FeedbackBar","sourcePath":"components/ai/FeedbackBar.jsx"},{"name":"GeneratedImage","sourcePath":"components/ai/GeneratedImage.jsx"},{"name":"Marker","sourcePath":"components/ai/Marker.jsx"},{"name":"MarkerIcon","sourcePath":"components/ai/Marker.jsx"},{"name":"MarkerContent","sourcePath":"components/ai/Marker.jsx"},{"name":"Message","sourcePath":"components/ai/Message.jsx"},{"name":"MessageGroup","sourcePath":"components/ai/Message.jsx"},{"name":"MessageAvatar","sourcePath":"components/ai/Message.jsx"},{"name":"MessageContent","sourcePath":"components/ai/Message.jsx"},{"name":"MessageHeader","sourcePath":"components/ai/Message.jsx"},{"name":"MessageFooter","sourcePath":"components/ai/Message.jsx"},{"name":"MessageScrollerProvider","sourcePath":"components/ai/MessageScroller.jsx"},{"name":"MessageScroller","sourcePath":"components/ai/MessageScroller.jsx"},{"name":"MessageScrollerViewport","sourcePath":"components/ai/MessageScroller.jsx"},{"name":"MessageScrollerContent","sourcePath":"components/ai/MessageScroller.jsx"},{"name":"MessageScrollerItem","sourcePath":"components/ai/MessageScroller.jsx"},{"name":"MessageScrollerButton","sourcePath":"components/ai/MessageScroller.jsx"},{"name":"ModelSelector","sourcePath":"components/ai/ModelSelector.jsx"},{"name":"Player","sourcePath":"components/ai/Player.jsx"},{"name":"PromptComposer","sourcePath":"components/ai/PromptComposer.jsx"},{"name":"PromptSteps","sourcePath":"components/ai/PromptSteps.jsx"},{"name":"Reasoning","sourcePath":"components/ai/Reasoning.jsx"},{"name":"RichComposer","sourcePath":"components/ai/RichComposer.jsx"},{"name":"Sandbox","sourcePath":"components/ai/Sandbox.jsx"},{"name":"SelectionQuote","sourcePath":"components/ai/SelectionQuote.jsx"},{"name":"SourceCard","sourcePath":"components/ai/SourceCard.jsx"},{"name":"Suggestions","sourcePath":"components/ai/Suggestions.jsx"},{"name":"Task","sourcePath":"components/ai/Task.jsx"},{"name":"Todo","sourcePath":"components/ai/Todo.jsx"},{"name":"ToolCall","sourcePath":"components/ai/ToolCall.jsx"},{"name":"Transcript","sourcePath":"components/ai/Transcript.jsx"},{"name":"UsageMeter","sourcePath":"components/ai/UsageMeter.jsx"},{"name":"WebPreview","sourcePath":"components/ai/WebPreview.jsx"},{"name":"CodeBlock","sourcePath":"components/code/CodeBlock.jsx"},{"name":"Console","sourcePath":"components/code/Console.jsx"},{"name":"CopyField","sourcePath":"components/code/CopyField.jsx"},{"name":"Diff","sourcePath":"components/code/Diff.jsx"},{"name":"EnvList","sourcePath":"components/code/EnvList.jsx"},{"name":"Exception","sourcePath":"components/code/Exception.jsx"},{"name":"Terminal","sourcePath":"components/code/Terminal.jsx"},{"name":"BarChart","sourcePath":"components/data/BarChart.jsx"},{"name":"ChartStyle","sourcePath":"components/data/Chart.jsx"},{"name":"ChartContainer","sourcePath":"components/data/Chart.jsx"},{"name":"ChartTooltip","sourcePath":"components/data/Chart.jsx"},{"name":"ChartTooltipContent","sourcePath":"components/data/Chart.jsx"},{"name":"ChartLegend","sourcePath":"components/data/Chart.jsx"},{"name":"ChartLegendContent","sourcePath":"components/data/Chart.jsx"},{"name":"DonutChart","sourcePath":"components/data/DonutChart.jsx"},{"name":"Empty","sourcePath":"components/data/EmptyState.jsx"},{"name":"EmptyHeader","sourcePath":"components/data/EmptyState.jsx"},{"name":"EmptyMedia","sourcePath":"components/data/EmptyState.jsx"},{"name":"EmptyTitle","sourcePath":"components/data/EmptyState.jsx"},{"name":"EmptyDescription","sourcePath":"components/data/EmptyState.jsx"},{"name":"EmptyContent","sourcePath":"components/data/EmptyState.jsx"},{"name":"KeyValueList","sourcePath":"components/data/KeyValueList.jsx"},{"name":"LineChart","sourcePath":"components/data/LineChart.jsx"},{"name":"Skeleton","sourcePath":"components/data/Skeleton.jsx"},{"name":"Sparkline","sourcePath":"components/data/Sparkline.jsx"},{"name":"Stat","sourcePath":"components/data/Stat.jsx"},{"name":"StatusDot","sourcePath":"components/data/StatusDot.jsx"},{"name":"Table","sourcePath":"components/data/Table.jsx"},{"name":"TableHeader","sourcePath":"components/data/Table.jsx"},{"name":"TableBody","sourcePath":"components/data/Table.jsx"},{"name":"TableFooter","sourcePath":"components/data/Table.jsx"},{"name":"TableRow","sourcePath":"components/data/Table.jsx"},{"name":"TableHead","sourcePath":"components/data/Table.jsx"},{"name":"TableCell","sourcePath":"components/data/Table.jsx"},{"name":"TableCaption","sourcePath":"components/data/Table.jsx"},{"name":"CalendarDayButton","sourcePath":"components/dates/Calendar.jsx"},{"name":"Calendar","sourcePath":"components/dates/Calendar.jsx"},{"name":"TimePicker","sourcePath":"components/dates/TimePicker.jsx"},{"name":"Accordion","sourcePath":"components/display/Accordion.jsx"},{"name":"AccordionItem","sourcePath":"components/display/Accordion.jsx"},{"name":"AccordionTrigger","sourcePath":"components/display/Accordion.jsx"},{"name":"AccordionContent","sourcePath":"components/display/Accordion.jsx"},{"name":"AspectRatio","sourcePath":"components/display/AspectRatio.jsx"},{"name":"Avatar","sourcePath":"components/display/Avatar.jsx"},{"name":"AvatarImage","sourcePath":"components/display/Avatar.jsx"},{"name":"AvatarFallback","sourcePath":"components/display/Avatar.jsx"},{"name":"AvatarBadge","sourcePath":"components/display/Avatar.jsx"},{"name":"AvatarGroup","sourcePath":"components/display/Avatar.jsx"},{"name":"AvatarGroupCount","sourcePath":"components/display/Avatar.jsx"},{"name":"Badge","sourcePath":"components/display/Badge.jsx"},{"name":"CardHeader","sourcePath":"components/display/Card.jsx"},{"name":"CardTitle","sourcePath":"components/display/Card.jsx"},{"name":"CardDescription","sourcePath":"components/display/Card.jsx"},{"name":"CardAction","sourcePath":"components/display/Card.jsx"},{"name":"CardContent","sourcePath":"components/display/Card.jsx"},{"name":"CardFooter","sourcePath":"components/display/Card.jsx"},{"name":"Card","sourcePath":"components/display/Card.jsx"},{"name":"Carousel","sourcePath":"components/display/Carousel.jsx"},{"name":"CarouselContent","sourcePath":"components/display/Carousel.jsx"},{"name":"CarouselItem","sourcePath":"components/display/Carousel.jsx"},{"name":"CarouselPrevious","sourcePath":"components/display/Carousel.jsx"},{"name":"CarouselNext","sourcePath":"components/display/Carousel.jsx"},{"name":"Collapsible","sourcePath":"components/display/Collapsible.jsx"},{"name":"CollapsibleTrigger","sourcePath":"components/display/Collapsible.jsx"},{"name":"CollapsibleContent","sourcePath":"components/display/Collapsible.jsx"},{"name":"DirectionProvider","sourcePath":"components/display/Direction.jsx"},{"name":"Divider","sourcePath":"components/display/Divider.jsx"},{"name":"ItemGroup","sourcePath":"components/display/Item.jsx"},{"name":"ItemSeparator","sourcePath":"components/display/Item.jsx"},{"name":"Item","sourcePath":"components/display/Item.jsx"},{"name":"ItemMedia","sourcePath":"components/display/Item.jsx"},{"name":"ItemContent","sourcePath":"components/display/Item.jsx"},{"name":"ItemTitle","sourcePath":"components/display/Item.jsx"},{"name":"ItemDescription","sourcePath":"components/display/Item.jsx"},{"name":"ItemActions","sourcePath":"components/display/Item.jsx"},{"name":"ItemHeader","sourcePath":"components/display/Item.jsx"},{"name":"ItemFooter","sourcePath":"components/display/Item.jsx"},{"name":"Kbd","sourcePath":"components/display/Kbd.jsx"},{"name":"KbdGroup","sourcePath":"components/display/Kbd.jsx"},{"name":"Link","sourcePath":"components/display/Link.jsx"},{"name":"ResizablePanelGroup","sourcePath":"components/display/Resizable.jsx"},{"name":"ResizablePanel","sourcePath":"components/display/Resizable.jsx"},{"name":"ResizableHandle","sourcePath":"components/display/Resizable.jsx"},{"name":"ScrollArea","sourcePath":"components/display/ScrollArea.jsx"},{"name":"ScrollBar","sourcePath":"components/display/ScrollArea.jsx"},{"name":"Separator","sourcePath":"components/display/Separator.jsx"},{"name":"Tag","sourcePath":"components/display/Tag.jsx"},{"name":"Timeline","sourcePath":"components/display/Timeline.jsx"},{"name":"Toolbar","sourcePath":"components/display/Toolbar.jsx"},{"name":"TreeList","sourcePath":"components/display/TreeList.jsx"},{"name":"Alert","sourcePath":"components/feedback/Alert.jsx"},{"name":"AlertTitle","sourcePath":"components/feedback/Alert.jsx"},{"name":"AlertDescription","sourcePath":"components/feedback/Alert.jsx"},{"name":"AlertAction","sourcePath":"components/feedback/Alert.jsx"},{"name":"AlertDialog","sourcePath":"components/feedback/AlertDialog.jsx"},{"name":"AlertDialogTrigger","sourcePath":"components/feedback/AlertDialog.jsx"},{"name":"AlertDialogPortal","sourcePath":"components/feedback/AlertDialog.jsx"},{"name":"AlertDialogOverlay","sourcePath":"components/feedback/AlertDialog.jsx"},{"name":"AlertDialogContent","sourcePath":"components/feedback/AlertDialog.jsx"},{"name":"AlertDialogHeader","sourcePath":"components/feedback/AlertDialog.jsx"},{"name":"AlertDialogFooter","sourcePath":"components/feedback/AlertDialog.jsx"},{"name":"AlertDialogMedia","sourcePath":"components/feedback/AlertDialog.jsx"},{"name":"AlertDialogTitle","sourcePath":"components/feedback/AlertDialog.jsx"},{"name":"AlertDialogDescription","sourcePath":"components/feedback/AlertDialog.jsx"},{"name":"AlertDialogCancel","sourcePath":"components/feedback/AlertDialog.jsx"},{"name":"AlertDialogAction","sourcePath":"components/feedback/AlertDialog.jsx"},{"name":"Banner","sourcePath":"components/feedback/Banner.jsx"},{"name":"ConfirmDialog","sourcePath":"components/feedback/ConfirmDialog.jsx"},{"name":"Dialog","sourcePath":"components/feedback/Dialog.jsx"},{"name":"DialogTrigger","sourcePath":"components/feedback/Dialog.jsx"},{"name":"DialogPortal","sourcePath":"components/feedback/Dialog.jsx"},{"name":"DialogOverlay","sourcePath":"components/feedback/Dialog.jsx"},{"name":"DialogClose","sourcePath":"components/feedback/Dialog.jsx"},{"name":"DialogContent","sourcePath":"components/feedback/Dialog.jsx"},{"name":"DialogHeader","sourcePath":"components/feedback/Dialog.jsx"},{"name":"DialogFooter","sourcePath":"components/feedback/Dialog.jsx"},{"name":"DialogTitle","sourcePath":"components/feedback/Dialog.jsx"},{"name":"DialogDescription","sourcePath":"components/feedback/Dialog.jsx"},{"name":"Loader","sourcePath":"components/feedback/Loader.jsx"},{"name":"Progress","sourcePath":"components/feedback/Progress.jsx"},{"name":"Spinner","sourcePath":"components/feedback/Spinner.jsx"},{"name":"Toaster","sourcePath":"components/feedback/Toast.jsx"},{"name":"Tooltip","sourcePath":"components/feedback/Tooltip.jsx"},{"name":"TooltipProvider","sourcePath":"components/feedback/Tooltip.jsx"},{"name":"TooltipTrigger","sourcePath":"components/feedback/Tooltip.jsx"},{"name":"TooltipContent","sourcePath":"components/feedback/Tooltip.jsx"},{"name":"Attachment","sourcePath":"components/files/Attachment.jsx"},{"name":"AttachmentMedia","sourcePath":"components/files/Attachment.jsx"},{"name":"AttachmentContent","sourcePath":"components/files/Attachment.jsx"},{"name":"AttachmentTitle","sourcePath":"components/files/Attachment.jsx"},{"name":"AttachmentDescription","sourcePath":"components/files/Attachment.jsx"},{"name":"AttachmentActions","sourcePath":"components/files/Attachment.jsx"},{"name":"AttachmentAction","sourcePath":"components/files/Attachment.jsx"},{"name":"AttachmentTrigger","sourcePath":"components/files/Attachment.jsx"},{"name":"AttachmentGroup","sourcePath":"components/files/Attachment.jsx"},{"name":"FileDrop","sourcePath":"components/files/FileDrop.jsx"},{"name":"FileTile","sourcePath":"components/files/FileTile.jsx"},{"name":"FileTypeIcon","sourcePath":"components/files/FileTypeIcon.jsx"},{"name":"PaymentCard","sourcePath":"components/finance/PaymentCard.jsx"},{"name":"Button","sourcePath":"components/forms/Button.jsx"},{"name":"ButtonGroup","sourcePath":"components/forms/ButtonGroup.jsx"},{"name":"ButtonGroupText","sourcePath":"components/forms/ButtonGroup.jsx"},{"name":"ButtonGroupSeparator","sourcePath":"components/forms/ButtonGroup.jsx"},{"name":"ButtonTile","sourcePath":"components/forms/ButtonTile.jsx"},{"name":"ButtonTileGroup","sourcePath":"components/forms/ButtonTile.jsx"},{"name":"Checkbox","sourcePath":"components/forms/Checkbox.jsx"},{"name":"Combobox","sourcePath":"components/forms/Combobox.jsx"},{"name":"ComboboxValue","sourcePath":"components/forms/Combobox.jsx"},{"name":"ComboboxTrigger","sourcePath":"components/forms/Combobox.jsx"},{"name":"ComboboxClear","sourcePath":"components/forms/Combobox.jsx"},{"name":"ComboboxInput","sourcePath":"components/forms/Combobox.jsx"},{"name":"ComboboxContent","sourcePath":"components/forms/Combobox.jsx"},{"name":"ComboboxList","sourcePath":"components/forms/Combobox.jsx"},{"name":"ComboboxItem","sourcePath":"components/forms/Combobox.jsx"},{"name":"ComboboxGroup","sourcePath":"components/forms/Combobox.jsx"},{"name":"ComboboxLabel","sourcePath":"components/forms/Combobox.jsx"},{"name":"ComboboxCollection","sourcePath":"components/forms/Combobox.jsx"},{"name":"ComboboxEmpty","sourcePath":"components/forms/Combobox.jsx"},{"name":"ComboboxSeparator","sourcePath":"components/forms/Combobox.jsx"},{"name":"ComboboxChips","sourcePath":"components/forms/Combobox.jsx"},{"name":"ComboboxChip","sourcePath":"components/forms/Combobox.jsx"},{"name":"ComboboxChipsInput","sourcePath":"components/forms/Combobox.jsx"},{"name":"Field","sourcePath":"components/forms/Field.jsx"},{"name":"FieldSet","sourcePath":"components/forms/Field.jsx"},{"name":"FieldGroup","sourcePath":"components/forms/Field.jsx"},{"name":"FieldContent","sourcePath":"components/forms/Field.jsx"},{"name":"FieldLabel","sourcePath":"components/forms/Field.jsx"},{"name":"FieldTitle","sourcePath":"components/forms/Field.jsx"},{"name":"FieldDescription","sourcePath":"components/forms/Field.jsx"},{"name":"FieldLegend","sourcePath":"components/forms/Field.jsx"},{"name":"FieldSeparator","sourcePath":"components/forms/Field.jsx"},{"name":"FieldError","sourcePath":"components/forms/Field.jsx"},{"name":"IconButton","sourcePath":"components/forms/IconButton.jsx"},{"name":"Input","sourcePath":"components/forms/Input.jsx"},{"name":"InputGroup","sourcePath":"components/forms/InputGroup.jsx"},{"name":"InputGroupAddon","sourcePath":"components/forms/InputGroup.jsx"},{"name":"InputGroupButton","sourcePath":"components/forms/InputGroup.jsx"},{"name":"InputGroupInput","sourcePath":"components/forms/InputGroup.jsx"},{"name":"InputGroupTextarea","sourcePath":"components/forms/InputGroup.jsx"},{"name":"InputGroupText","sourcePath":"components/forms/InputGroup.jsx"},{"name":"InputOTP","sourcePath":"components/forms/InputOTP.jsx"},{"name":"InputOTPGroup","sourcePath":"components/forms/InputOTP.jsx"},{"name":"InputOTPSlot","sourcePath":"components/forms/InputOTP.jsx"},{"name":"InputOTPSeparator","sourcePath":"components/forms/InputOTP.jsx"},{"name":"Label","sourcePath":"components/forms/Label.jsx"},{"name":"NativeSelect","sourcePath":"components/forms/NativeSelect.jsx"},{"name":"NativeSelectOption","sourcePath":"components/forms/NativeSelect.jsx"},{"name":"NativeSelectOptGroup","sourcePath":"components/forms/NativeSelect.jsx"},{"name":"NumberInput","sourcePath":"components/forms/NumberInput.jsx"},{"name":"Questionnaire","sourcePath":"components/forms/Questionnaire.jsx"},{"name":"QuestionnaireProgress","sourcePath":"components/forms/Questionnaire.jsx"},{"name":"QuestionnaireItem","sourcePath":"components/forms/Questionnaire.jsx"},{"name":"QuestionnaireTitle","sourcePath":"components/forms/Questionnaire.jsx"},{"name":"QuestionnaireDescription","sourcePath":"components/forms/Questionnaire.jsx"},{"name":"QuestionnaireChoices","sourcePath":"components/forms/Questionnaire.jsx"},{"name":"QuestionnaireChoice","sourcePath":"components/forms/Questionnaire.jsx"},{"name":"QuestionnaireInput","sourcePath":"components/forms/Questionnaire.jsx"},{"name":"QuestionnaireError","sourcePath":"components/forms/Questionnaire.jsx"},{"name":"QuestionnaireActions","sourcePath":"components/forms/Questionnaire.jsx"},{"name":"QuestionnairePrevious","sourcePath":"components/forms/Questionnaire.jsx"},{"name":"QuestionnaireSkip","sourcePath":"components/forms/Questionnaire.jsx"},{"name":"QuestionnaireNext","sourcePath":"components/forms/Questionnaire.jsx"},{"name":"QuestionnaireSubmit","sourcePath":"components/forms/Questionnaire.jsx"},{"name":"RadioGroup","sourcePath":"components/forms/Radio.jsx"},{"name":"RadioGroupItem","sourcePath":"components/forms/Radio.jsx"},{"name":"Radio","sourcePath":"components/forms/Radio.jsx"},{"name":"Select","sourcePath":"components/forms/Select.jsx"},{"name":"SelectTrigger","sourcePath":"components/forms/Select.jsx"},{"name":"SelectValue","sourcePath":"components/forms/Select.jsx"},{"name":"SelectContent","sourcePath":"components/forms/Select.jsx"},{"name":"SelectGroup","sourcePath":"components/forms/Select.jsx"},{"name":"SelectLabel","sourcePath":"components/forms/Select.jsx"},{"name":"SelectSeparator","sourcePath":"components/forms/Select.jsx"},{"name":"SelectItem","sourcePath":"components/forms/Select.jsx"},{"name":"Slider","sourcePath":"components/forms/Slider.jsx"},{"name":"Switch","sourcePath":"components/forms/Switch.jsx"},{"name":"Textarea","sourcePath":"components/forms/Textarea.jsx"},{"name":"Toggle","sourcePath":"components/forms/Toggle.jsx"},{"name":"ToggleGroup","sourcePath":"components/forms/Toggle.jsx"},{"name":"ToggleGroupItem","sourcePath":"components/forms/Toggle.jsx"},{"name":"Icon","sourcePath":"components/icons/Icon.jsx"},{"name":"Breadcrumb","sourcePath":"components/navigation/Breadcrumbs.jsx"},{"name":"BreadcrumbList","sourcePath":"components/navigation/Breadcrumbs.jsx"},{"name":"BreadcrumbItem","sourcePath":"components/navigation/Breadcrumbs.jsx"},{"name":"BreadcrumbLink","sourcePath":"components/navigation/Breadcrumbs.jsx"},{"name":"BreadcrumbPage","sourcePath":"components/navigation/Breadcrumbs.jsx"},{"name":"BreadcrumbSeparator","sourcePath":"components/navigation/Breadcrumbs.jsx"},{"name":"BreadcrumbEllipsis","sourcePath":"components/navigation/Breadcrumbs.jsx"},{"name":"Menubar","sourcePath":"components/navigation/Menubar.jsx"},{"name":"MenubarMenu","sourcePath":"components/navigation/Menubar.jsx"},{"name":"MenubarTrigger","sourcePath":"components/navigation/Menubar.jsx"},{"name":"MenubarContent","sourcePath":"components/navigation/Menubar.jsx"},{"name":"MenubarPortal","sourcePath":"components/navigation/Menubar.jsx"},{"name":"MenubarGroup","sourcePath":"components/navigation/Menubar.jsx"},{"name":"MenubarRadioGroup","sourcePath":"components/navigation/Menubar.jsx"},{"name":"MenubarLabel","sourcePath":"components/navigation/Menubar.jsx"},{"name":"MenubarSeparator","sourcePath":"components/navigation/Menubar.jsx"},{"name":"MenubarShortcut","sourcePath":"components/navigation/Menubar.jsx"},{"name":"MenubarItem","sourcePath":"components/navigation/Menubar.jsx"},{"name":"MenubarCheckboxItem","sourcePath":"components/navigation/Menubar.jsx"},{"name":"MenubarRadioItem","sourcePath":"components/navigation/Menubar.jsx"},{"name":"MenubarSub","sourcePath":"components/navigation/Menubar.jsx"},{"name":"MenubarSubTrigger","sourcePath":"components/navigation/Menubar.jsx"},{"name":"MenubarSubContent","sourcePath":"components/navigation/Menubar.jsx"},{"name":"NavigationMenu","sourcePath":"components/navigation/NavigationMenu.jsx"},{"name":"NavigationMenuList","sourcePath":"components/navigation/NavigationMenu.jsx"},{"name":"NavigationMenuItem","sourcePath":"components/navigation/NavigationMenu.jsx"},{"name":"NavigationMenuTrigger","sourcePath":"components/navigation/NavigationMenu.jsx"},{"name":"NavigationMenuContent","sourcePath":"components/navigation/NavigationMenu.jsx"},{"name":"NavigationMenuLink","sourcePath":"components/navigation/NavigationMenu.jsx"},{"name":"NavigationMenuIndicator","sourcePath":"components/navigation/NavigationMenu.jsx"},{"name":"NavigationMenuViewport","sourcePath":"components/navigation/NavigationMenu.jsx"},{"name":"PageControl","sourcePath":"components/navigation/PageControl.jsx"},{"name":"Pagination","sourcePath":"components/navigation/Pagination.jsx"},{"name":"PaginationContent","sourcePath":"components/navigation/Pagination.jsx"},{"name":"PaginationItem","sourcePath":"components/navigation/Pagination.jsx"},{"name":"PaginationLink","sourcePath":"components/navigation/Pagination.jsx"},{"name":"PaginationPrevious","sourcePath":"components/navigation/Pagination.jsx"},{"name":"PaginationNext","sourcePath":"components/navigation/Pagination.jsx"},{"name":"PaginationEllipsis","sourcePath":"components/navigation/Pagination.jsx"},{"name":"SegmentedControl","sourcePath":"components/navigation/SegmentedControl.jsx"},{"name":"SideNav","sourcePath":"components/navigation/SideNav.jsx"},{"name":"SidebarProvider","sourcePath":"components/navigation/Sidebar.jsx"},{"name":"Sidebar","sourcePath":"components/navigation/Sidebar.jsx"},{"name":"SidebarTrigger","sourcePath":"components/navigation/Sidebar.jsx"},{"name":"SidebarRail","sourcePath":"components/navigation/Sidebar.jsx"},{"name":"SidebarInset","sourcePath":"components/navigation/Sidebar.jsx"},{"name":"SidebarHeader","sourcePath":"components/navigation/Sidebar.jsx"},{"name":"SidebarFooter","sourcePath":"components/navigation/Sidebar.jsx"},{"name":"SidebarContent","sourcePath":"components/navigation/Sidebar.jsx"},{"name":"SidebarGroup","sourcePath":"components/navigation/Sidebar.jsx"},{"name":"SidebarGroupContent","sourcePath":"components/navigation/Sidebar.jsx"},{"name":"SidebarMenu","sourcePath":"components/navigation/Sidebar.jsx"},{"name":"SidebarMenuItem","sourcePath":"components/navigation/Sidebar.jsx"},{"name":"SidebarMenuSub","sourcePath":"components/navigation/Sidebar.jsx"},{"name":"SidebarMenuSubItem","sourcePath":"components/navigation/Sidebar.jsx"},{"name":"SidebarInput","sourcePath":"components/navigation/Sidebar.jsx"},{"name":"SidebarSeparator","sourcePath":"components/navigation/Sidebar.jsx"},{"name":"SidebarGroupLabel","sourcePath":"components/navigation/Sidebar.jsx"},{"name":"SidebarGroupAction","sourcePath":"components/navigation/Sidebar.jsx"},{"name":"SidebarMenuButton","sourcePath":"components/navigation/Sidebar.jsx"},{"name":"SidebarMenuAction","sourcePath":"components/navigation/Sidebar.jsx"},{"name":"SidebarMenuBadge","sourcePath":"components/navigation/Sidebar.jsx"},{"name":"SidebarMenuSubButton","sourcePath":"components/navigation/Sidebar.jsx"},{"name":"SidebarMenuSkeleton","sourcePath":"components/navigation/Sidebar.jsx"},{"name":"SkipLink","sourcePath":"components/navigation/SkipLink.jsx"},{"name":"Steps","sourcePath":"components/navigation/Steps.jsx"},{"name":"Tabs","sourcePath":"components/navigation/Tabs.jsx"},{"name":"TabsList","sourcePath":"components/navigation/Tabs.jsx"},{"name":"TabsTrigger","sourcePath":"components/navigation/Tabs.jsx"},{"name":"TabsContent","sourcePath":"components/navigation/Tabs.jsx"},{"name":"TopNav","sourcePath":"components/navigation/TopNav.jsx"},{"name":"Command","sourcePath":"components/overlay/Command.jsx"},{"name":"CommandDialog","sourcePath":"components/overlay/Command.jsx"},{"name":"CommandInput","sourcePath":"components/overlay/Command.jsx"},{"name":"CommandList","sourcePath":"components/overlay/Command.jsx"},{"name":"CommandEmpty","sourcePath":"components/overlay/Command.jsx"},{"name":"CommandGroup","sourcePath":"components/overlay/Command.jsx"},{"name":"CommandItem","sourcePath":"components/overlay/Command.jsx"},{"name":"CommandShortcut","sourcePath":"components/overlay/Command.jsx"},{"name":"CommandSeparator","sourcePath":"components/overlay/Command.jsx"},{"name":"ContextMenu","sourcePath":"components/overlay/ContextMenu.jsx"},{"name":"ContextMenuTrigger","sourcePath":"components/overlay/ContextMenu.jsx"},{"name":"ContextMenuPortal","sourcePath":"components/overlay/ContextMenu.jsx"},{"name":"ContextMenuContent","sourcePath":"components/overlay/ContextMenu.jsx"},{"name":"ContextMenuGroup","sourcePath":"components/overlay/ContextMenu.jsx"},{"name":"ContextMenuLabel","sourcePath":"components/overlay/ContextMenu.jsx"},{"name":"ContextMenuSeparator","sourcePath":"components/overlay/ContextMenu.jsx"},{"name":"ContextMenuShortcut","sourcePath":"components/overlay/ContextMenu.jsx"},{"name":"ContextMenuItem","sourcePath":"components/overlay/ContextMenu.jsx"},{"name":"ContextMenuCheckboxItem","sourcePath":"components/overlay/ContextMenu.jsx"},{"name":"ContextMenuRadioGroup","sourcePath":"components/overlay/ContextMenu.jsx"},{"name":"ContextMenuRadioItem","sourcePath":"components/overlay/ContextMenu.jsx"},{"name":"ContextMenuSub","sourcePath":"components/overlay/ContextMenu.jsx"},{"name":"ContextMenuSubTrigger","sourcePath":"components/overlay/ContextMenu.jsx"},{"name":"ContextMenuSubContent","sourcePath":"components/overlay/ContextMenu.jsx"},{"name":"Drawer","sourcePath":"components/overlay/Drawer.jsx"},{"name":"DrawerTrigger","sourcePath":"components/overlay/Drawer.jsx"},{"name":"DrawerPortal","sourcePath":"components/overlay/Drawer.jsx"},{"name":"DrawerClose","sourcePath":"components/overlay/Drawer.jsx"},{"name":"DrawerOverlay","sourcePath":"components/overlay/Drawer.jsx"},{"name":"DrawerContent","sourcePath":"components/overlay/Drawer.jsx"},{"name":"DrawerHeader","sourcePath":"components/overlay/Drawer.jsx"},{"name":"DrawerFooter","sourcePath":"components/overlay/Drawer.jsx"},{"name":"DrawerTitle","sourcePath":"components/overlay/Drawer.jsx"},{"name":"DrawerDescription","sourcePath":"components/overlay/Drawer.jsx"},{"name":"DropdownMenu","sourcePath":"components/overlay/DropdownMenu.jsx"},{"name":"DropdownMenuTrigger","sourcePath":"components/overlay/DropdownMenu.jsx"},{"name":"DropdownMenuPortal","sourcePath":"components/overlay/DropdownMenu.jsx"},{"name":"DropdownMenuContent","sourcePath":"components/overlay/DropdownMenu.jsx"},{"name":"DropdownMenuGroup","sourcePath":"components/overlay/DropdownMenu.jsx"},{"name":"DropdownMenuLabel","sourcePath":"components/overlay/DropdownMenu.jsx"},{"name":"DropdownMenuSeparator","sourcePath":"components/overlay/DropdownMenu.jsx"},{"name":"DropdownMenuShortcut","sourcePath":"components/overlay/DropdownMenu.jsx"},{"name":"DropdownMenuItem","sourcePath":"components/overlay/DropdownMenu.jsx"},{"name":"DropdownMenuCheckboxItem","sourcePath":"components/overlay/DropdownMenu.jsx"},{"name":"DropdownMenuRadioGroup","sourcePath":"components/overlay/DropdownMenu.jsx"},{"name":"DropdownMenuRadioItem","sourcePath":"components/overlay/DropdownMenu.jsx"},{"name":"DropdownMenuSub","sourcePath":"components/overlay/DropdownMenu.jsx"},{"name":"DropdownMenuSubTrigger","sourcePath":"components/overlay/DropdownMenu.jsx"},{"name":"DropdownMenuSubContent","sourcePath":"components/overlay/DropdownMenu.jsx"},{"name":"HoverCard","sourcePath":"components/overlay/HoverCard.jsx"},{"name":"HoverCardTrigger","sourcePath":"components/overlay/HoverCard.jsx"},{"name":"HoverCardContent","sourcePath":"components/overlay/HoverCard.jsx"},{"name":"Popover","sourcePath":"components/overlay/Popover.jsx"},{"name":"PopoverTrigger","sourcePath":"components/overlay/Popover.jsx"},{"name":"PopoverContent","sourcePath":"components/overlay/Popover.jsx"},{"name":"PopoverHeader","sourcePath":"components/overlay/Popover.jsx"},{"name":"PopoverTitle","sourcePath":"components/overlay/Popover.jsx"},{"name":"PopoverDescription","sourcePath":"components/overlay/Popover.jsx"},{"name":"Portal","sourcePath":"components/overlay/Portal.jsx"},{"name":"Sheet","sourcePath":"components/overlay/Sheet.jsx"},{"name":"SheetTrigger","sourcePath":"components/overlay/Sheet.jsx"},{"name":"SheetClose","sourcePath":"components/overlay/Sheet.jsx"},{"name":"SheetContent","sourcePath":"components/overlay/Sheet.jsx"},{"name":"SheetHeader","sourcePath":"components/overlay/Sheet.jsx"},{"name":"SheetFooter","sourcePath":"components/overlay/Sheet.jsx"},{"name":"SheetTitle","sourcePath":"components/overlay/Sheet.jsx"},{"name":"SheetDescription","sourcePath":"components/overlay/Sheet.jsx"}],"publicHelpers":[{"name":"markerVariants","sourcePath":"components/ai/Marker.jsx"},{"name":"useMessageScroller","sourcePath":"components/ai/MessageScroller.jsx"},{"name":"useMessageScrollerVisibility","sourcePath":"components/ai/MessageScroller.jsx"},{"name":"useMessageScrollerScrollable","sourcePath":"components/ai/MessageScroller.jsx"},{"name":"useChart","sourcePath":"components/data/Chart.jsx"},{"name":"badgeVariants","sourcePath":"components/display/Badge.jsx"},{"name":"useDirection","sourcePath":"components/display/Direction.jsx"},{"name":"toast","sourcePath":"components/feedback/Toast.jsx"},{"name":"buttonVariants","sourcePath":"components/forms/Button.jsx"},{"name":"buttonGroupVariants","sourcePath":"components/forms/ButtonGroup.jsx"},{"name":"useComboboxAnchor","sourcePath":"components/forms/Combobox.jsx"},{"name":"toggleVariants","sourcePath":"components/forms/Toggle.jsx"},{"name":"navigationMenuTriggerStyle","sourcePath":"components/navigation/NavigationMenu.jsx"},{"name":"useSidebar","sourcePath":"components/navigation/Sidebar.jsx"}],"sourceHashes":{"components/ai/AgentRun.jsx":"9740e0e168e0","components/ai/Bubble.jsx":"1fbd306ae6c7","components/ai/ChatMessage.jsx":"340b11fa16a2","components/ai/Citation.jsx":"fa347392b603","components/ai/Confirmation.jsx":"728506173c53","components/ai/Conversation.jsx":"65c94e62a6ad","components/ai/DocumentCard.jsx":"8f4f7d915078","components/ai/FeedbackBar.jsx":"62b6cfeaaffe","components/ai/GeneratedImage.jsx":"6234c002f0c6","components/ai/Marker.jsx":"4a8e54cf1022","components/ai/Message.jsx":"631188fe9acc","components/ai/MessageScroller.jsx":"6cb5b51e4754","components/ai/ModelSelector.jsx":"d548d17acb45","components/ai/Player.jsx":"19f96c3a6137","components/ai/PromptComposer.jsx":"c5ba2f241a58","components/ai/PromptSteps.jsx":"428074df6cd1","components/ai/Reasoning.jsx":"6a54640d743d","components/ai/RichComposer.jsx":"6ed2836e79ac","components/ai/Sandbox.jsx":"6fd416228194","components/ai/SelectionQuote.jsx":"2ba728772ad9","components/ai/SourceCard.jsx":"a59aeb1e2ab7","components/ai/Suggestions.jsx":"11e4ed7c8075","components/ai/Task.jsx":"613d6bf8d05a","components/ai/Todo.jsx":"5c8653be0ea4","components/ai/ToolCall.jsx":"db8a7622cdf3","components/ai/Transcript.jsx":"3ecad5218a37","components/ai/UsageMeter.jsx":"81f526487208","components/ai/WebPreview.jsx":"a687438cda4f","components/code/CodeBlock.jsx":"425aa3230ddd","components/code/Console.jsx":"5a150480bfb5","components/code/CopyField.jsx":"24388f5ecb22","components/code/Diff.jsx":"9ef7d550ba0a","components/code/EnvList.jsx":"a7f4c13538c4","components/code/Exception.jsx":"7c9828556417","components/code/Terminal.jsx":"8ac53723a00b","components/data/BarChart.jsx":"65cc53d800b4","components/data/Chart.jsx":"4116e1e52fcd","components/data/DonutChart.jsx":"8e01d4fb22c5","components/data/EmptyState.jsx":"3cb763cd7519","components/data/KeyValueList.jsx":"3876b7c9581e","components/data/LineChart.jsx":"d8f687560f46","components/data/Skeleton.jsx":"51394e716271","components/data/Sparkline.jsx":"5b2a0e67cdae","components/data/Stat.jsx":"aba92e72a0f8","components/data/StatusDot.jsx":"197386782d10","components/data/Table.jsx":"4c8e6d36c789","components/dates/Calendar.jsx":"7eef87c841b2","components/dates/TimePicker.jsx":"53ca08de7713","components/display/Accordion.jsx":"ac9b1ec3ce0f","components/display/AspectRatio.jsx":"91558029d648","components/display/Avatar.jsx":"c9fa67934411","components/display/Badge.jsx":"5add4d5abc49","components/display/Card.jsx":"5a44823ed4d8","components/display/Carousel.jsx":"42d6b81c6d94","components/display/Collapsible.jsx":"59cbf5105219","components/display/Direction.jsx":"538f2d4cbf23","components/display/Divider.jsx":"ee51ca336cc7","components/display/Item.jsx":"517df3ae775f","components/display/Kbd.jsx":"cdbc07443e53","components/display/Link.jsx":"a0907910192e","components/display/Resizable.jsx":"74bc54184023","components/display/ScrollArea.jsx":"6c71af1111a2","components/display/Separator.jsx":"5c2b62cf7532","components/display/Tag.jsx":"68ef63dd5376","components/display/Timeline.jsx":"6c5bff5f4dcf","components/display/Toolbar.jsx":"57b27153a16d","components/display/TreeList.jsx":"af4eea96011f","components/feedback/Alert.jsx":"4e7486f7db4f","components/feedback/AlertDialog.jsx":"6de283caaf90","components/feedback/Banner.jsx":"bc574fe23791","components/feedback/ConfirmDialog.jsx":"033b979e1aa6","components/feedback/Dialog.jsx":"e64903bd736b","components/feedback/Loader.jsx":"02efacc86905","components/feedback/Progress.jsx":"0964f54f5644","components/feedback/Spinner.jsx":"8781f16bf6b8","components/feedback/Toast.jsx":"bcc36a5655b7","components/feedback/Tooltip.jsx":"01d5d7eebc8a","components/files/Attachment.jsx":"bd63ebd29171","components/files/FileDrop.jsx":"92fa38dccfca","components/files/FileTile.jsx":"28af04d1303b","components/files/FileTypeIcon.jsx":"3bcdf5ca7eb9","components/finance/PaymentCard.jsx":"d748ed19cc19","components/forms/Button.jsx":"333bad10c851","components/forms/ButtonGroup.jsx":"df7d04210646","components/forms/ButtonTile.jsx":"094423c09bb6","components/forms/Checkbox.jsx":"143035f2f927","components/forms/Combobox.jsx":"6dee0a09daf1","components/forms/Field.jsx":"adf061cacd94","components/forms/IconButton.jsx":"967b0b3312fe","components/forms/Input.jsx":"f1d9a276d0c3","components/forms/InputGroup.jsx":"83ffa2cbe9aa","components/forms/InputOTP.jsx":"a8ad88b27b7b","components/forms/Label.jsx":"f0bfcb5ae210","components/forms/NativeSelect.jsx":"3748d7b3c22e","components/forms/NumberInput.jsx":"8e70f556dd2a","components/forms/Questionnaire.jsx":"d7068436b50d","components/forms/Radio.jsx":"4260e74d29a8","components/forms/Select.jsx":"a8347dc71072","components/forms/Slider.jsx":"024c8968cc3f","components/forms/Switch.jsx":"2dfaf598f930","components/forms/Textarea.jsx":"4cff27339452","components/forms/Toggle.jsx":"34fb9bcb789a","components/icons/Icon.jsx":"665217c8deb9","components/navigation/Breadcrumbs.jsx":"6d989a3f6a62","components/navigation/Menubar.jsx":"750cb05907e9","components/navigation/NavigationMenu.jsx":"685eb5ae76da","components/navigation/PageControl.jsx":"bad71d198daa","components/navigation/Pagination.jsx":"cc33e98c48ec","components/navigation/SegmentedControl.jsx":"5fb840f28f4d","components/navigation/SideNav.jsx":"1f9f1a3c89b0","components/navigation/Sidebar.jsx":"6f59e2724dd2","components/navigation/SkipLink.jsx":"fecad7edf487","components/navigation/Steps.jsx":"45c6c1162b22","components/navigation/Tabs.jsx":"03e9ddee16a7","components/navigation/TopNav.jsx":"967b11093c20","components/overlay/Command.jsx":"94de37721fcd","components/overlay/ContextMenu.jsx":"3ad8614ffe44","components/overlay/Drawer.jsx":"d934bc3534cb","components/overlay/DropdownMenu.jsx":"4ce8b91ecc97","components/overlay/HoverCard.jsx":"c5fdc7c37c0a","components/overlay/Popover.jsx":"5720287de557","components/overlay/Portal.jsx":"8295cec9f241","components/overlay/Sheet.jsx":"ecdd4f4758fa"},"inlinedExternals":[],"unexposedExports":[{"name":"computeDiff","sourcePath":"components/code/Diff.jsx"},{"name":"cssPct","sourcePath":"components/forms/Button.jsx"},{"name":"escapeLayerContext","sourcePath":"components/overlay/Portal.jsx"},{"name":"formatTime","sourcePath":"components/ai/Player.jsx"},{"name":"injectEfCss","sourcePath":"components/forms/Button.jsx"},{"name":"mergeRefs","sourcePath":"components/forms/Button.jsx"},{"name":"prefersReducedMotion","sourcePath":"components/forms/Button.jsx"},{"name":"useAnchoredStyle","sourcePath":"components/overlay/Portal.jsx"},{"name":"useEscapeLayer","sourcePath":"components/overlay/Portal.jsx"},{"name":"useFieldProps","sourcePath":"components/forms/Field.jsx"},{"name":"useIsoLayoutEffect","sourcePath":"components/forms/Button.jsx"},{"name":"useScrollLock","sourcePath":"components/overlay/Portal.jsx"}]} */
+/* @ds-bundle: {"format":4,"namespace":"EfolusiDesignSystem_4ffc3d","components":[{"name":"AgentRun","sourcePath":"components/ai/AgentRun.jsx"},{"name":"BubbleGroup","sourcePath":"components/ai/Bubble.jsx"},{"name":"Bubble","sourcePath":"components/ai/Bubble.jsx"},{"name":"BubbleContent","sourcePath":"components/ai/Bubble.jsx"},{"name":"BubbleReactions","sourcePath":"components/ai/Bubble.jsx"},{"name":"ChatMessage","sourcePath":"components/ai/ChatMessage.jsx"},{"name":"Citation","sourcePath":"components/ai/Citation.jsx"},{"name":"SourceList","sourcePath":"components/ai/Citation.jsx"},{"name":"Confirmation","sourcePath":"components/ai/Confirmation.jsx"},{"name":"Conversation","sourcePath":"components/ai/Conversation.jsx"},{"name":"DocumentCard","sourcePath":"components/ai/DocumentCard.jsx"},{"name":"FeedbackBar","sourcePath":"components/ai/FeedbackBar.jsx"},{"name":"GeneratedImage","sourcePath":"components/ai/GeneratedImage.jsx"},{"name":"Marker","sourcePath":"components/ai/Marker.jsx"},{"name":"MarkerIcon","sourcePath":"components/ai/Marker.jsx"},{"name":"MarkerContent","sourcePath":"components/ai/Marker.jsx"},{"name":"Message","sourcePath":"components/ai/Message.jsx"},{"name":"MessageGroup","sourcePath":"components/ai/Message.jsx"},{"name":"MessageAvatar","sourcePath":"components/ai/Message.jsx"},{"name":"MessageContent","sourcePath":"components/ai/Message.jsx"},{"name":"MessageHeader","sourcePath":"components/ai/Message.jsx"},{"name":"MessageFooter","sourcePath":"components/ai/Message.jsx"},{"name":"MessageScrollerProvider","sourcePath":"components/ai/MessageScroller.jsx"},{"name":"MessageScroller","sourcePath":"components/ai/MessageScroller.jsx"},{"name":"MessageScrollerViewport","sourcePath":"components/ai/MessageScroller.jsx"},{"name":"MessageScrollerContent","sourcePath":"components/ai/MessageScroller.jsx"},{"name":"MessageScrollerItem","sourcePath":"components/ai/MessageScroller.jsx"},{"name":"MessageScrollerButton","sourcePath":"components/ai/MessageScroller.jsx"},{"name":"ModelSelector","sourcePath":"components/ai/ModelSelector.jsx"},{"name":"Player","sourcePath":"components/ai/Player.jsx"},{"name":"PromptComposer","sourcePath":"components/ai/PromptComposer.jsx"},{"name":"PromptSteps","sourcePath":"components/ai/PromptSteps.jsx"},{"name":"Reasoning","sourcePath":"components/ai/Reasoning.jsx"},{"name":"RichComposer","sourcePath":"components/ai/RichComposer.jsx"},{"name":"Sandbox","sourcePath":"components/ai/Sandbox.jsx"},{"name":"SelectionQuote","sourcePath":"components/ai/SelectionQuote.jsx"},{"name":"SourceCard","sourcePath":"components/ai/SourceCard.jsx"},{"name":"Suggestions","sourcePath":"components/ai/Suggestions.jsx"},{"name":"Task","sourcePath":"components/ai/Task.jsx"},{"name":"Todo","sourcePath":"components/ai/Todo.jsx"},{"name":"ToolCall","sourcePath":"components/ai/ToolCall.jsx"},{"name":"Transcript","sourcePath":"components/ai/Transcript.jsx"},{"name":"UsageMeter","sourcePath":"components/ai/UsageMeter.jsx"},{"name":"WebPreview","sourcePath":"components/ai/WebPreview.jsx"},{"name":"CodeBlock","sourcePath":"components/code/CodeBlock.jsx"},{"name":"Console","sourcePath":"components/code/Console.jsx"},{"name":"CopyField","sourcePath":"components/code/CopyField.jsx"},{"name":"Diff","sourcePath":"components/code/Diff.jsx"},{"name":"EnvList","sourcePath":"components/code/EnvList.jsx"},{"name":"Exception","sourcePath":"components/code/Exception.jsx"},{"name":"Terminal","sourcePath":"components/code/Terminal.jsx"},{"name":"BarChart","sourcePath":"components/data/BarChart.jsx"},{"name":"ChartStyle","sourcePath":"components/data/Chart.jsx"},{"name":"ChartContainer","sourcePath":"components/data/Chart.jsx"},{"name":"ChartTooltip","sourcePath":"components/data/Chart.jsx"},{"name":"ChartTooltipContent","sourcePath":"components/data/Chart.jsx"},{"name":"ChartLegend","sourcePath":"components/data/Chart.jsx"},{"name":"ChartLegendContent","sourcePath":"components/data/Chart.jsx"},{"name":"DonutChart","sourcePath":"components/data/DonutChart.jsx"},{"name":"Empty","sourcePath":"components/data/EmptyState.jsx"},{"name":"EmptyHeader","sourcePath":"components/data/EmptyState.jsx"},{"name":"EmptyMedia","sourcePath":"components/data/EmptyState.jsx"},{"name":"EmptyTitle","sourcePath":"components/data/EmptyState.jsx"},{"name":"EmptyDescription","sourcePath":"components/data/EmptyState.jsx"},{"name":"EmptyContent","sourcePath":"components/data/EmptyState.jsx"},{"name":"KeyValueList","sourcePath":"components/data/KeyValueList.jsx"},{"name":"LineChart","sourcePath":"components/data/LineChart.jsx"},{"name":"Skeleton","sourcePath":"components/data/Skeleton.jsx"},{"name":"Sparkline","sourcePath":"components/data/Sparkline.jsx"},{"name":"Stat","sourcePath":"components/data/Stat.jsx"},{"name":"StatusDot","sourcePath":"components/data/StatusDot.jsx"},{"name":"Table","sourcePath":"components/data/Table.jsx"},{"name":"TableHeader","sourcePath":"components/data/Table.jsx"},{"name":"TableBody","sourcePath":"components/data/Table.jsx"},{"name":"TableFooter","sourcePath":"components/data/Table.jsx"},{"name":"TableRow","sourcePath":"components/data/Table.jsx"},{"name":"TableHead","sourcePath":"components/data/Table.jsx"},{"name":"TableCell","sourcePath":"components/data/Table.jsx"},{"name":"TableCaption","sourcePath":"components/data/Table.jsx"},{"name":"CalendarDayButton","sourcePath":"components/dates/Calendar.jsx"},{"name":"Calendar","sourcePath":"components/dates/Calendar.jsx"},{"name":"TimePicker","sourcePath":"components/dates/TimePicker.jsx"},{"name":"Accordion","sourcePath":"components/display/Accordion.jsx"},{"name":"AccordionItem","sourcePath":"components/display/Accordion.jsx"},{"name":"AccordionTrigger","sourcePath":"components/display/Accordion.jsx"},{"name":"AccordionContent","sourcePath":"components/display/Accordion.jsx"},{"name":"AspectRatio","sourcePath":"components/display/AspectRatio.jsx"},{"name":"Avatar","sourcePath":"components/display/Avatar.jsx"},{"name":"AvatarImage","sourcePath":"components/display/Avatar.jsx"},{"name":"AvatarFallback","sourcePath":"components/display/Avatar.jsx"},{"name":"AvatarBadge","sourcePath":"components/display/Avatar.jsx"},{"name":"AvatarGroup","sourcePath":"components/display/Avatar.jsx"},{"name":"AvatarGroupCount","sourcePath":"components/display/Avatar.jsx"},{"name":"Badge","sourcePath":"components/display/Badge.jsx"},{"name":"CardHeader","sourcePath":"components/display/Card.jsx"},{"name":"CardTitle","sourcePath":"components/display/Card.jsx"},{"name":"CardDescription","sourcePath":"components/display/Card.jsx"},{"name":"CardAction","sourcePath":"components/display/Card.jsx"},{"name":"CardContent","sourcePath":"components/display/Card.jsx"},{"name":"CardFooter","sourcePath":"components/display/Card.jsx"},{"name":"Card","sourcePath":"components/display/Card.jsx"},{"name":"Carousel","sourcePath":"components/display/Carousel.jsx"},{"name":"CarouselContent","sourcePath":"components/display/Carousel.jsx"},{"name":"CarouselItem","sourcePath":"components/display/Carousel.jsx"},{"name":"CarouselPrevious","sourcePath":"components/display/Carousel.jsx"},{"name":"CarouselNext","sourcePath":"components/display/Carousel.jsx"},{"name":"Collapsible","sourcePath":"components/display/Collapsible.jsx"},{"name":"CollapsibleTrigger","sourcePath":"components/display/Collapsible.jsx"},{"name":"CollapsibleContent","sourcePath":"components/display/Collapsible.jsx"},{"name":"DirectionProvider","sourcePath":"components/display/Direction.jsx"},{"name":"Divider","sourcePath":"components/display/Divider.jsx"},{"name":"ItemGroup","sourcePath":"components/display/Item.jsx"},{"name":"ItemSeparator","sourcePath":"components/display/Item.jsx"},{"name":"Item","sourcePath":"components/display/Item.jsx"},{"name":"ItemMedia","sourcePath":"components/display/Item.jsx"},{"name":"ItemContent","sourcePath":"components/display/Item.jsx"},{"name":"ItemTitle","sourcePath":"components/display/Item.jsx"},{"name":"ItemDescription","sourcePath":"components/display/Item.jsx"},{"name":"ItemActions","sourcePath":"components/display/Item.jsx"},{"name":"ItemHeader","sourcePath":"components/display/Item.jsx"},{"name":"ItemFooter","sourcePath":"components/display/Item.jsx"},{"name":"Kbd","sourcePath":"components/display/Kbd.jsx"},{"name":"KbdGroup","sourcePath":"components/display/Kbd.jsx"},{"name":"Link","sourcePath":"components/display/Link.jsx"},{"name":"ResizablePanelGroup","sourcePath":"components/display/Resizable.jsx"},{"name":"ResizablePanel","sourcePath":"components/display/Resizable.jsx"},{"name":"ResizableHandle","sourcePath":"components/display/Resizable.jsx"},{"name":"ScrollArea","sourcePath":"components/display/ScrollArea.jsx"},{"name":"ScrollBar","sourcePath":"components/display/ScrollArea.jsx"},{"name":"Separator","sourcePath":"components/display/Separator.jsx"},{"name":"Tag","sourcePath":"components/display/Tag.jsx"},{"name":"Timeline","sourcePath":"components/display/Timeline.jsx"},{"name":"Toolbar","sourcePath":"components/display/Toolbar.jsx"},{"name":"TreeList","sourcePath":"components/display/TreeList.jsx"},{"name":"Alert","sourcePath":"components/feedback/Alert.jsx"},{"name":"AlertTitle","sourcePath":"components/feedback/Alert.jsx"},{"name":"AlertDescription","sourcePath":"components/feedback/Alert.jsx"},{"name":"AlertAction","sourcePath":"components/feedback/Alert.jsx"},{"name":"AlertDialog","sourcePath":"components/feedback/AlertDialog.jsx"},{"name":"AlertDialogTrigger","sourcePath":"components/feedback/AlertDialog.jsx"},{"name":"AlertDialogPortal","sourcePath":"components/feedback/AlertDialog.jsx"},{"name":"AlertDialogOverlay","sourcePath":"components/feedback/AlertDialog.jsx"},{"name":"AlertDialogContent","sourcePath":"components/feedback/AlertDialog.jsx"},{"name":"AlertDialogHeader","sourcePath":"components/feedback/AlertDialog.jsx"},{"name":"AlertDialogFooter","sourcePath":"components/feedback/AlertDialog.jsx"},{"name":"AlertDialogMedia","sourcePath":"components/feedback/AlertDialog.jsx"},{"name":"AlertDialogTitle","sourcePath":"components/feedback/AlertDialog.jsx"},{"name":"AlertDialogDescription","sourcePath":"components/feedback/AlertDialog.jsx"},{"name":"AlertDialogCancel","sourcePath":"components/feedback/AlertDialog.jsx"},{"name":"AlertDialogAction","sourcePath":"components/feedback/AlertDialog.jsx"},{"name":"Banner","sourcePath":"components/feedback/Banner.jsx"},{"name":"ConfirmDialog","sourcePath":"components/feedback/ConfirmDialog.jsx"},{"name":"Dialog","sourcePath":"components/feedback/Dialog.jsx"},{"name":"DialogTrigger","sourcePath":"components/feedback/Dialog.jsx"},{"name":"DialogPortal","sourcePath":"components/feedback/Dialog.jsx"},{"name":"DialogOverlay","sourcePath":"components/feedback/Dialog.jsx"},{"name":"DialogClose","sourcePath":"components/feedback/Dialog.jsx"},{"name":"DialogContent","sourcePath":"components/feedback/Dialog.jsx"},{"name":"DialogHeader","sourcePath":"components/feedback/Dialog.jsx"},{"name":"DialogFooter","sourcePath":"components/feedback/Dialog.jsx"},{"name":"DialogTitle","sourcePath":"components/feedback/Dialog.jsx"},{"name":"DialogDescription","sourcePath":"components/feedback/Dialog.jsx"},{"name":"Loader","sourcePath":"components/feedback/Loader.jsx"},{"name":"Progress","sourcePath":"components/feedback/Progress.jsx"},{"name":"Spinner","sourcePath":"components/feedback/Spinner.jsx"},{"name":"Toaster","sourcePath":"components/feedback/Toast.jsx"},{"name":"Tooltip","sourcePath":"components/feedback/Tooltip.jsx"},{"name":"TooltipProvider","sourcePath":"components/feedback/Tooltip.jsx"},{"name":"TooltipTrigger","sourcePath":"components/feedback/Tooltip.jsx"},{"name":"TooltipContent","sourcePath":"components/feedback/Tooltip.jsx"},{"name":"Attachment","sourcePath":"components/files/Attachment.jsx"},{"name":"AttachmentMedia","sourcePath":"components/files/Attachment.jsx"},{"name":"AttachmentContent","sourcePath":"components/files/Attachment.jsx"},{"name":"AttachmentTitle","sourcePath":"components/files/Attachment.jsx"},{"name":"AttachmentDescription","sourcePath":"components/files/Attachment.jsx"},{"name":"AttachmentActions","sourcePath":"components/files/Attachment.jsx"},{"name":"AttachmentAction","sourcePath":"components/files/Attachment.jsx"},{"name":"AttachmentTrigger","sourcePath":"components/files/Attachment.jsx"},{"name":"AttachmentGroup","sourcePath":"components/files/Attachment.jsx"},{"name":"FileDrop","sourcePath":"components/files/FileDrop.jsx"},{"name":"FileTile","sourcePath":"components/files/FileTile.jsx"},{"name":"FileTypeIcon","sourcePath":"components/files/FileTypeIcon.jsx"},{"name":"PaymentCard","sourcePath":"components/finance/PaymentCard.jsx"},{"name":"Button","sourcePath":"components/forms/Button.jsx"},{"name":"ButtonGroup","sourcePath":"components/forms/ButtonGroup.jsx"},{"name":"ButtonGroupText","sourcePath":"components/forms/ButtonGroup.jsx"},{"name":"ButtonGroupSeparator","sourcePath":"components/forms/ButtonGroup.jsx"},{"name":"ButtonTile","sourcePath":"components/forms/ButtonTile.jsx"},{"name":"ButtonTileGroup","sourcePath":"components/forms/ButtonTile.jsx"},{"name":"Checkbox","sourcePath":"components/forms/Checkbox.jsx"},{"name":"Combobox","sourcePath":"components/forms/Combobox.jsx"},{"name":"ComboboxValue","sourcePath":"components/forms/Combobox.jsx"},{"name":"ComboboxTrigger","sourcePath":"components/forms/Combobox.jsx"},{"name":"ComboboxClear","sourcePath":"components/forms/Combobox.jsx"},{"name":"ComboboxInput","sourcePath":"components/forms/Combobox.jsx"},{"name":"ComboboxContent","sourcePath":"components/forms/Combobox.jsx"},{"name":"ComboboxList","sourcePath":"components/forms/Combobox.jsx"},{"name":"ComboboxItem","sourcePath":"components/forms/Combobox.jsx"},{"name":"ComboboxGroup","sourcePath":"components/forms/Combobox.jsx"},{"name":"ComboboxLabel","sourcePath":"components/forms/Combobox.jsx"},{"name":"ComboboxCollection","sourcePath":"components/forms/Combobox.jsx"},{"name":"ComboboxEmpty","sourcePath":"components/forms/Combobox.jsx"},{"name":"ComboboxSeparator","sourcePath":"components/forms/Combobox.jsx"},{"name":"ComboboxChips","sourcePath":"components/forms/Combobox.jsx"},{"name":"ComboboxChip","sourcePath":"components/forms/Combobox.jsx"},{"name":"ComboboxChipsInput","sourcePath":"components/forms/Combobox.jsx"},{"name":"Field","sourcePath":"components/forms/Field.jsx"},{"name":"FieldSet","sourcePath":"components/forms/Field.jsx"},{"name":"FieldGroup","sourcePath":"components/forms/Field.jsx"},{"name":"FieldContent","sourcePath":"components/forms/Field.jsx"},{"name":"FieldLabel","sourcePath":"components/forms/Field.jsx"},{"name":"FieldTitle","sourcePath":"components/forms/Field.jsx"},{"name":"FieldDescription","sourcePath":"components/forms/Field.jsx"},{"name":"FieldLegend","sourcePath":"components/forms/Field.jsx"},{"name":"FieldSeparator","sourcePath":"components/forms/Field.jsx"},{"name":"FieldError","sourcePath":"components/forms/Field.jsx"},{"name":"IconButton","sourcePath":"components/forms/IconButton.jsx"},{"name":"Input","sourcePath":"components/forms/Input.jsx"},{"name":"InputGroup","sourcePath":"components/forms/InputGroup.jsx"},{"name":"InputGroupAddon","sourcePath":"components/forms/InputGroup.jsx"},{"name":"InputGroupButton","sourcePath":"components/forms/InputGroup.jsx"},{"name":"InputGroupInput","sourcePath":"components/forms/InputGroup.jsx"},{"name":"InputGroupTextarea","sourcePath":"components/forms/InputGroup.jsx"},{"name":"InputGroupText","sourcePath":"components/forms/InputGroup.jsx"},{"name":"InputOTP","sourcePath":"components/forms/InputOTP.jsx"},{"name":"InputOTPGroup","sourcePath":"components/forms/InputOTP.jsx"},{"name":"InputOTPSlot","sourcePath":"components/forms/InputOTP.jsx"},{"name":"InputOTPSeparator","sourcePath":"components/forms/InputOTP.jsx"},{"name":"Label","sourcePath":"components/forms/Label.jsx"},{"name":"NativeSelect","sourcePath":"components/forms/NativeSelect.jsx"},{"name":"NativeSelectOption","sourcePath":"components/forms/NativeSelect.jsx"},{"name":"NativeSelectOptGroup","sourcePath":"components/forms/NativeSelect.jsx"},{"name":"NumberInput","sourcePath":"components/forms/NumberInput.jsx"},{"name":"Questionnaire","sourcePath":"components/forms/Questionnaire.jsx"},{"name":"QuestionnaireProgress","sourcePath":"components/forms/Questionnaire.jsx"},{"name":"QuestionnaireItem","sourcePath":"components/forms/Questionnaire.jsx"},{"name":"QuestionnaireTitle","sourcePath":"components/forms/Questionnaire.jsx"},{"name":"QuestionnaireDescription","sourcePath":"components/forms/Questionnaire.jsx"},{"name":"QuestionnaireChoices","sourcePath":"components/forms/Questionnaire.jsx"},{"name":"QuestionnaireChoice","sourcePath":"components/forms/Questionnaire.jsx"},{"name":"QuestionnaireInput","sourcePath":"components/forms/Questionnaire.jsx"},{"name":"QuestionnaireError","sourcePath":"components/forms/Questionnaire.jsx"},{"name":"QuestionnaireActions","sourcePath":"components/forms/Questionnaire.jsx"},{"name":"QuestionnairePrevious","sourcePath":"components/forms/Questionnaire.jsx"},{"name":"QuestionnaireSkip","sourcePath":"components/forms/Questionnaire.jsx"},{"name":"QuestionnaireNext","sourcePath":"components/forms/Questionnaire.jsx"},{"name":"QuestionnaireSubmit","sourcePath":"components/forms/Questionnaire.jsx"},{"name":"RadioGroup","sourcePath":"components/forms/Radio.jsx"},{"name":"RadioGroupItem","sourcePath":"components/forms/Radio.jsx"},{"name":"Radio","sourcePath":"components/forms/Radio.jsx"},{"name":"Select","sourcePath":"components/forms/Select.jsx"},{"name":"SelectTrigger","sourcePath":"components/forms/Select.jsx"},{"name":"SelectValue","sourcePath":"components/forms/Select.jsx"},{"name":"SelectContent","sourcePath":"components/forms/Select.jsx"},{"name":"SelectGroup","sourcePath":"components/forms/Select.jsx"},{"name":"SelectLabel","sourcePath":"components/forms/Select.jsx"},{"name":"SelectSeparator","sourcePath":"components/forms/Select.jsx"},{"name":"SelectItem","sourcePath":"components/forms/Select.jsx"},{"name":"Slider","sourcePath":"components/forms/Slider.jsx"},{"name":"Switch","sourcePath":"components/forms/Switch.jsx"},{"name":"Textarea","sourcePath":"components/forms/Textarea.jsx"},{"name":"Toggle","sourcePath":"components/forms/Toggle.jsx"},{"name":"ToggleGroup","sourcePath":"components/forms/Toggle.jsx"},{"name":"ToggleGroupItem","sourcePath":"components/forms/Toggle.jsx"},{"name":"Icon","sourcePath":"components/icons/Icon.jsx"},{"name":"Breadcrumb","sourcePath":"components/navigation/Breadcrumbs.jsx"},{"name":"BreadcrumbList","sourcePath":"components/navigation/Breadcrumbs.jsx"},{"name":"BreadcrumbItem","sourcePath":"components/navigation/Breadcrumbs.jsx"},{"name":"BreadcrumbLink","sourcePath":"components/navigation/Breadcrumbs.jsx"},{"name":"BreadcrumbPage","sourcePath":"components/navigation/Breadcrumbs.jsx"},{"name":"BreadcrumbSeparator","sourcePath":"components/navigation/Breadcrumbs.jsx"},{"name":"BreadcrumbEllipsis","sourcePath":"components/navigation/Breadcrumbs.jsx"},{"name":"Menubar","sourcePath":"components/navigation/Menubar.jsx"},{"name":"MenubarMenu","sourcePath":"components/navigation/Menubar.jsx"},{"name":"MenubarTrigger","sourcePath":"components/navigation/Menubar.jsx"},{"name":"MenubarContent","sourcePath":"components/navigation/Menubar.jsx"},{"name":"MenubarPortal","sourcePath":"components/navigation/Menubar.jsx"},{"name":"MenubarGroup","sourcePath":"components/navigation/Menubar.jsx"},{"name":"MenubarRadioGroup","sourcePath":"components/navigation/Menubar.jsx"},{"name":"MenubarLabel","sourcePath":"components/navigation/Menubar.jsx"},{"name":"MenubarSeparator","sourcePath":"components/navigation/Menubar.jsx"},{"name":"MenubarShortcut","sourcePath":"components/navigation/Menubar.jsx"},{"name":"MenubarItem","sourcePath":"components/navigation/Menubar.jsx"},{"name":"MenubarCheckboxItem","sourcePath":"components/navigation/Menubar.jsx"},{"name":"MenubarRadioItem","sourcePath":"components/navigation/Menubar.jsx"},{"name":"MenubarSub","sourcePath":"components/navigation/Menubar.jsx"},{"name":"MenubarSubTrigger","sourcePath":"components/navigation/Menubar.jsx"},{"name":"MenubarSubContent","sourcePath":"components/navigation/Menubar.jsx"},{"name":"NavigationMenu","sourcePath":"components/navigation/NavigationMenu.jsx"},{"name":"NavigationMenuList","sourcePath":"components/navigation/NavigationMenu.jsx"},{"name":"NavigationMenuItem","sourcePath":"components/navigation/NavigationMenu.jsx"},{"name":"NavigationMenuTrigger","sourcePath":"components/navigation/NavigationMenu.jsx"},{"name":"NavigationMenuContent","sourcePath":"components/navigation/NavigationMenu.jsx"},{"name":"NavigationMenuLink","sourcePath":"components/navigation/NavigationMenu.jsx"},{"name":"NavigationMenuIndicator","sourcePath":"components/navigation/NavigationMenu.jsx"},{"name":"NavigationMenuViewport","sourcePath":"components/navigation/NavigationMenu.jsx"},{"name":"PageControl","sourcePath":"components/navigation/PageControl.jsx"},{"name":"Pagination","sourcePath":"components/navigation/Pagination.jsx"},{"name":"PaginationContent","sourcePath":"components/navigation/Pagination.jsx"},{"name":"PaginationItem","sourcePath":"components/navigation/Pagination.jsx"},{"name":"PaginationLink","sourcePath":"components/navigation/Pagination.jsx"},{"name":"PaginationPrevious","sourcePath":"components/navigation/Pagination.jsx"},{"name":"PaginationNext","sourcePath":"components/navigation/Pagination.jsx"},{"name":"PaginationEllipsis","sourcePath":"components/navigation/Pagination.jsx"},{"name":"SegmentedControl","sourcePath":"components/navigation/SegmentedControl.jsx"},{"name":"SideNav","sourcePath":"components/navigation/SideNav.jsx"},{"name":"SidebarProvider","sourcePath":"components/navigation/Sidebar.jsx"},{"name":"Sidebar","sourcePath":"components/navigation/Sidebar.jsx"},{"name":"SidebarTrigger","sourcePath":"components/navigation/Sidebar.jsx"},{"name":"SidebarRail","sourcePath":"components/navigation/Sidebar.jsx"},{"name":"SidebarInset","sourcePath":"components/navigation/Sidebar.jsx"},{"name":"SidebarHeader","sourcePath":"components/navigation/Sidebar.jsx"},{"name":"SidebarFooter","sourcePath":"components/navigation/Sidebar.jsx"},{"name":"SidebarContent","sourcePath":"components/navigation/Sidebar.jsx"},{"name":"SidebarGroup","sourcePath":"components/navigation/Sidebar.jsx"},{"name":"SidebarGroupContent","sourcePath":"components/navigation/Sidebar.jsx"},{"name":"SidebarMenu","sourcePath":"components/navigation/Sidebar.jsx"},{"name":"SidebarMenuItem","sourcePath":"components/navigation/Sidebar.jsx"},{"name":"SidebarMenuSub","sourcePath":"components/navigation/Sidebar.jsx"},{"name":"SidebarMenuSubItem","sourcePath":"components/navigation/Sidebar.jsx"},{"name":"SidebarInput","sourcePath":"components/navigation/Sidebar.jsx"},{"name":"SidebarSeparator","sourcePath":"components/navigation/Sidebar.jsx"},{"name":"SidebarGroupLabel","sourcePath":"components/navigation/Sidebar.jsx"},{"name":"SidebarGroupAction","sourcePath":"components/navigation/Sidebar.jsx"},{"name":"SidebarMenuButton","sourcePath":"components/navigation/Sidebar.jsx"},{"name":"SidebarMenuAction","sourcePath":"components/navigation/Sidebar.jsx"},{"name":"SidebarMenuBadge","sourcePath":"components/navigation/Sidebar.jsx"},{"name":"SidebarMenuSubButton","sourcePath":"components/navigation/Sidebar.jsx"},{"name":"SidebarMenuSkeleton","sourcePath":"components/navigation/Sidebar.jsx"},{"name":"SkipLink","sourcePath":"components/navigation/SkipLink.jsx"},{"name":"Steps","sourcePath":"components/navigation/Steps.jsx"},{"name":"Tabs","sourcePath":"components/navigation/Tabs.jsx"},{"name":"TabsList","sourcePath":"components/navigation/Tabs.jsx"},{"name":"TabsTrigger","sourcePath":"components/navigation/Tabs.jsx"},{"name":"TabsContent","sourcePath":"components/navigation/Tabs.jsx"},{"name":"TopNav","sourcePath":"components/navigation/TopNav.jsx"},{"name":"Command","sourcePath":"components/overlay/Command.jsx"},{"name":"CommandDialog","sourcePath":"components/overlay/Command.jsx"},{"name":"CommandInput","sourcePath":"components/overlay/Command.jsx"},{"name":"CommandList","sourcePath":"components/overlay/Command.jsx"},{"name":"CommandEmpty","sourcePath":"components/overlay/Command.jsx"},{"name":"CommandGroup","sourcePath":"components/overlay/Command.jsx"},{"name":"CommandItem","sourcePath":"components/overlay/Command.jsx"},{"name":"CommandShortcut","sourcePath":"components/overlay/Command.jsx"},{"name":"CommandSeparator","sourcePath":"components/overlay/Command.jsx"},{"name":"ContextMenu","sourcePath":"components/overlay/ContextMenu.jsx"},{"name":"ContextMenuTrigger","sourcePath":"components/overlay/ContextMenu.jsx"},{"name":"ContextMenuPortal","sourcePath":"components/overlay/ContextMenu.jsx"},{"name":"ContextMenuContent","sourcePath":"components/overlay/ContextMenu.jsx"},{"name":"ContextMenuGroup","sourcePath":"components/overlay/ContextMenu.jsx"},{"name":"ContextMenuLabel","sourcePath":"components/overlay/ContextMenu.jsx"},{"name":"ContextMenuSeparator","sourcePath":"components/overlay/ContextMenu.jsx"},{"name":"ContextMenuShortcut","sourcePath":"components/overlay/ContextMenu.jsx"},{"name":"ContextMenuItem","sourcePath":"components/overlay/ContextMenu.jsx"},{"name":"ContextMenuCheckboxItem","sourcePath":"components/overlay/ContextMenu.jsx"},{"name":"ContextMenuRadioGroup","sourcePath":"components/overlay/ContextMenu.jsx"},{"name":"ContextMenuRadioItem","sourcePath":"components/overlay/ContextMenu.jsx"},{"name":"ContextMenuSub","sourcePath":"components/overlay/ContextMenu.jsx"},{"name":"ContextMenuSubTrigger","sourcePath":"components/overlay/ContextMenu.jsx"},{"name":"ContextMenuSubContent","sourcePath":"components/overlay/ContextMenu.jsx"},{"name":"Drawer","sourcePath":"components/overlay/Drawer.jsx"},{"name":"DrawerTrigger","sourcePath":"components/overlay/Drawer.jsx"},{"name":"DrawerPortal","sourcePath":"components/overlay/Drawer.jsx"},{"name":"DrawerClose","sourcePath":"components/overlay/Drawer.jsx"},{"name":"DrawerOverlay","sourcePath":"components/overlay/Drawer.jsx"},{"name":"DrawerContent","sourcePath":"components/overlay/Drawer.jsx"},{"name":"DrawerHeader","sourcePath":"components/overlay/Drawer.jsx"},{"name":"DrawerFooter","sourcePath":"components/overlay/Drawer.jsx"},{"name":"DrawerTitle","sourcePath":"components/overlay/Drawer.jsx"},{"name":"DrawerDescription","sourcePath":"components/overlay/Drawer.jsx"},{"name":"DropdownMenu","sourcePath":"components/overlay/DropdownMenu.jsx"},{"name":"DropdownMenuTrigger","sourcePath":"components/overlay/DropdownMenu.jsx"},{"name":"DropdownMenuPortal","sourcePath":"components/overlay/DropdownMenu.jsx"},{"name":"DropdownMenuContent","sourcePath":"components/overlay/DropdownMenu.jsx"},{"name":"DropdownMenuGroup","sourcePath":"components/overlay/DropdownMenu.jsx"},{"name":"DropdownMenuLabel","sourcePath":"components/overlay/DropdownMenu.jsx"},{"name":"DropdownMenuSeparator","sourcePath":"components/overlay/DropdownMenu.jsx"},{"name":"DropdownMenuShortcut","sourcePath":"components/overlay/DropdownMenu.jsx"},{"name":"DropdownMenuItem","sourcePath":"components/overlay/DropdownMenu.jsx"},{"name":"DropdownMenuCheckboxItem","sourcePath":"components/overlay/DropdownMenu.jsx"},{"name":"DropdownMenuRadioGroup","sourcePath":"components/overlay/DropdownMenu.jsx"},{"name":"DropdownMenuRadioItem","sourcePath":"components/overlay/DropdownMenu.jsx"},{"name":"DropdownMenuSub","sourcePath":"components/overlay/DropdownMenu.jsx"},{"name":"DropdownMenuSubTrigger","sourcePath":"components/overlay/DropdownMenu.jsx"},{"name":"DropdownMenuSubContent","sourcePath":"components/overlay/DropdownMenu.jsx"},{"name":"HoverCard","sourcePath":"components/overlay/HoverCard.jsx"},{"name":"HoverCardTrigger","sourcePath":"components/overlay/HoverCard.jsx"},{"name":"HoverCardContent","sourcePath":"components/overlay/HoverCard.jsx"},{"name":"Popover","sourcePath":"components/overlay/Popover.jsx"},{"name":"PopoverTrigger","sourcePath":"components/overlay/Popover.jsx"},{"name":"PopoverContent","sourcePath":"components/overlay/Popover.jsx"},{"name":"PopoverHeader","sourcePath":"components/overlay/Popover.jsx"},{"name":"PopoverTitle","sourcePath":"components/overlay/Popover.jsx"},{"name":"PopoverDescription","sourcePath":"components/overlay/Popover.jsx"},{"name":"Portal","sourcePath":"components/overlay/Portal.jsx"},{"name":"Sheet","sourcePath":"components/overlay/Sheet.jsx"},{"name":"SheetTrigger","sourcePath":"components/overlay/Sheet.jsx"},{"name":"SheetClose","sourcePath":"components/overlay/Sheet.jsx"},{"name":"SheetContent","sourcePath":"components/overlay/Sheet.jsx"},{"name":"SheetHeader","sourcePath":"components/overlay/Sheet.jsx"},{"name":"SheetFooter","sourcePath":"components/overlay/Sheet.jsx"},{"name":"SheetTitle","sourcePath":"components/overlay/Sheet.jsx"},{"name":"SheetDescription","sourcePath":"components/overlay/Sheet.jsx"}],"publicHelpers":[{"name":"markerVariants","sourcePath":"components/ai/Marker.jsx"},{"name":"useMessageScroller","sourcePath":"components/ai/MessageScroller.jsx"},{"name":"useMessageScrollerVisibility","sourcePath":"components/ai/MessageScroller.jsx"},{"name":"useMessageScrollerScrollable","sourcePath":"components/ai/MessageScroller.jsx"},{"name":"useChart","sourcePath":"components/data/Chart.jsx"},{"name":"badgeVariants","sourcePath":"components/display/Badge.jsx"},{"name":"useDirection","sourcePath":"components/display/Direction.jsx"},{"name":"toast","sourcePath":"components/feedback/Toast.jsx"},{"name":"buttonVariants","sourcePath":"components/forms/Button.jsx"},{"name":"buttonGroupVariants","sourcePath":"components/forms/ButtonGroup.jsx"},{"name":"useComboboxAnchor","sourcePath":"components/forms/Combobox.jsx"},{"name":"toggleVariants","sourcePath":"components/forms/Toggle.jsx"},{"name":"navigationMenuTriggerStyle","sourcePath":"components/navigation/NavigationMenu.jsx"},{"name":"useSidebar","sourcePath":"components/navigation/Sidebar.jsx"}],"sourceHashes":{"components/ai/AgentRun.jsx":"0df7eac8f8ef","components/ai/Bubble.jsx":"94daceea451e","components/ai/ChatMessage.jsx":"721e1341b7fa","components/ai/Citation.jsx":"102e8beb25c3","components/ai/Confirmation.jsx":"eccfc12d612b","components/ai/Conversation.jsx":"887838aa767c","components/ai/DocumentCard.jsx":"6f9484fdb1de","components/ai/FeedbackBar.jsx":"6f35bef6b1e5","components/ai/GeneratedImage.jsx":"86fa6ee91a2d","components/ai/Marker.jsx":"858cf553d63d","components/ai/Message.jsx":"7e2ad1183a44","components/ai/MessageScroller.jsx":"bc1e489d5482","components/ai/ModelSelector.jsx":"380bfb68d095","components/ai/Player.jsx":"df763e066c3a","components/ai/PromptComposer.jsx":"812269dc717b","components/ai/PromptSteps.jsx":"bb40c55a31f6","components/ai/Reasoning.jsx":"836d62f70dea","components/ai/RichComposer.jsx":"ce0528b27407","components/ai/Sandbox.jsx":"184773bbee0f","components/ai/SelectionQuote.jsx":"75f7f7aaf3df","components/ai/SourceCard.jsx":"1e0ab77e068c","components/ai/Suggestions.jsx":"6381ed8582d4","components/ai/Task.jsx":"0e0471975e8b","components/ai/Todo.jsx":"a5c5f36fda0c","components/ai/ToolCall.jsx":"f5a10be9be00","components/ai/Transcript.jsx":"ac501775d9f2","components/ai/UsageMeter.jsx":"d7a5ba2050a4","components/ai/WebPreview.jsx":"2f1c39b25263","components/code/CodeBlock.jsx":"b3f42e0303c8","components/code/Console.jsx":"73b5e15def7b","components/code/CopyField.jsx":"8fd33dff5402","components/code/Diff.jsx":"888cfc02151c","components/code/EnvList.jsx":"d5f56cf5a84f","components/code/Exception.jsx":"4029324593cc","components/code/Terminal.jsx":"d3c32dec3512","components/data/BarChart.jsx":"db9bf54f304c","components/data/Chart.jsx":"7c7061f2906d","components/data/DonutChart.jsx":"91bb81902351","components/data/EmptyState.jsx":"afa221d0e19a","components/data/KeyValueList.jsx":"0f23076c0eda","components/data/LineChart.jsx":"03e2adfab3e6","components/data/Skeleton.jsx":"0764d0dd3a8a","components/data/Sparkline.jsx":"5f8f035c3536","components/data/Stat.jsx":"2cd85d3dea9b","components/data/StatusDot.jsx":"7294e11d5634","components/data/Table.jsx":"39b2dcef3961","components/dates/Calendar.jsx":"0317397aa8bf","components/dates/TimePicker.jsx":"b611f9952ae2","components/display/Accordion.jsx":"37cdb6b9b7dd","components/display/AspectRatio.jsx":"e8a8c0e443d1","components/display/Avatar.jsx":"d9721ef8e861","components/display/Badge.jsx":"6a8e0ba68c8a","components/display/Card.jsx":"6650fe69c496","components/display/Carousel.jsx":"722bac4c2f36","components/display/Collapsible.jsx":"973e1e471113","components/display/Direction.jsx":"496b315ce934","components/display/Divider.jsx":"31235f62ae31","components/display/Item.jsx":"dc44f38cbff8","components/display/Kbd.jsx":"94dde08a6995","components/display/Link.jsx":"1d80cbd9f2f6","components/display/Resizable.jsx":"9db7a9b434e6","components/display/ScrollArea.jsx":"6b1fbbe63c74","components/display/Separator.jsx":"1879c0018b92","components/display/Tag.jsx":"f772791789eb","components/display/Timeline.jsx":"6cbd2cc166b3","components/display/Toolbar.jsx":"1d0ae2f9234b","components/display/TreeList.jsx":"52c7f2d23bde","components/feedback/Alert.jsx":"7945debed7a2","components/feedback/AlertDialog.jsx":"b964361f8e91","components/feedback/Banner.jsx":"0c02890a230d","components/feedback/ConfirmDialog.jsx":"c0e5bb3f41ad","components/feedback/Dialog.jsx":"103949b6902e","components/feedback/Loader.jsx":"adc34cb38672","components/feedback/Progress.jsx":"b13debdd6993","components/feedback/Spinner.jsx":"841bf3b5122e","components/feedback/Toast.jsx":"963cb75a9002","components/feedback/Tooltip.jsx":"a65d22bdaa1f","components/files/Attachment.jsx":"3ed6aafdd6a7","components/files/FileDrop.jsx":"c5c05205e8f5","components/files/FileTile.jsx":"ba46f3c128f8","components/files/FileTypeIcon.jsx":"9390abb277fc","components/finance/PaymentCard.jsx":"00acd1c21351","components/forms/Button.jsx":"d931b00c2d57","components/forms/ButtonGroup.jsx":"be79e774481b","components/forms/ButtonTile.jsx":"61c7fe656bd9","components/forms/Checkbox.jsx":"a234160c3c3b","components/forms/Combobox.jsx":"2d3ce0380736","components/forms/Field.jsx":"7855a4eb5229","components/forms/IconButton.jsx":"115662b25be2","components/forms/Input.jsx":"5066d6543ca6","components/forms/InputGroup.jsx":"47ab66fd53ca","components/forms/InputOTP.jsx":"8bf6b97d4043","components/forms/Label.jsx":"d8a588b0b484","components/forms/NativeSelect.jsx":"3610442fbb1c","components/forms/NumberInput.jsx":"13121810fb82","components/forms/Questionnaire.jsx":"e8fb4214ca8e","components/forms/Radio.jsx":"20b4863185f8","components/forms/Select.jsx":"e2b39f0151c1","components/forms/Slider.jsx":"f2f26f5ba9c5","components/forms/Switch.jsx":"b98f8a406173","components/forms/Textarea.jsx":"8a2b867a408e","components/forms/Toggle.jsx":"2e115df186c8","components/icons/Icon.jsx":"684f9ed8839c","components/navigation/Breadcrumbs.jsx":"bec0040be94e","components/navigation/Menubar.jsx":"70a5467aa284","components/navigation/NavigationMenu.jsx":"b44d81fe403c","components/navigation/PageControl.jsx":"f7e2aa792bcc","components/navigation/Pagination.jsx":"87c11612c340","components/navigation/SegmentedControl.jsx":"19ba0db465b2","components/navigation/SideNav.jsx":"a7bafe778fb6","components/navigation/Sidebar.jsx":"9635fbb38dfb","components/navigation/SkipLink.jsx":"bc9e2d1401a7","components/navigation/Steps.jsx":"5c7fc6434980","components/navigation/Tabs.jsx":"c2bde6a20351","components/navigation/TopNav.jsx":"688d028596d7","components/overlay/Command.jsx":"14d4aaccef77","components/overlay/ContextMenu.jsx":"b97115ebe44d","components/overlay/Drawer.jsx":"b5470ccecf21","components/overlay/DropdownMenu.jsx":"6b6454f445c5","components/overlay/HoverCard.jsx":"6607e1c779bf","components/overlay/Popover.jsx":"297152503e39","components/overlay/Portal.jsx":"006f089f2c03","components/overlay/Sheet.jsx":"cc890a05ad52"},"inlinedExternals":[],"unexposedExports":[{"name":"computeDiff","sourcePath":"components/code/Diff.jsx"},{"name":"cssPct","sourcePath":"components/forms/Button.jsx"},{"name":"escapeLayerContext","sourcePath":"components/overlay/Portal.jsx"},{"name":"formatTime","sourcePath":"components/ai/Player.jsx"},{"name":"injectEfCss","sourcePath":"components/forms/Button.jsx"},{"name":"isElementOfType","sourcePath":"components/forms/Button.jsx"},{"name":"mergeRefs","sourcePath":"components/forms/Button.jsx"},{"name":"prefersReducedMotion","sourcePath":"components/forms/Button.jsx"},{"name":"useAnchoredStyle","sourcePath":"components/overlay/Portal.jsx"},{"name":"useEscapeLayer","sourcePath":"components/overlay/Portal.jsx"},{"name":"useFieldProps","sourcePath":"components/forms/Field.jsx"},{"name":"useHydrated","sourcePath":"components/overlay/Portal.jsx"},{"name":"useIsoLayoutEffect","sourcePath":"components/forms/Button.jsx"},{"name":"useScrollLock","sourcePath":"components/overlay/Portal.jsx"}]} */
 
 (() => {
 
@@ -135,6 +135,11 @@ function warnMissing(name) {
   _warned.add(name);
   console.warn('[meridian] <Icon name="' + name + '"> is not a Meridian glyph, so nothing will render. Check the name against the icon gallery, or add ' + name + '.svg to assets/icons/.');
 }
+function warnNotSvg(name) {
+  if (_warned.has(name) || typeof console === 'undefined') return;
+  _warned.add(name);
+  console.warn('[meridian] ' + base() + 'assets/icons/' + name + '.svg answered with something that is not an SVG, often an app\'s index.html, so <Icon name="' + name + '"> renders nothing. Serve assets/icons/ beside _ds_bundle.js, or in a bundled app use the registry or npm Icon, which inlines every glyph.');
+}
 function Icon({
   name,
   size = 16,
@@ -154,7 +159,10 @@ function Icon({
     }
     let live = true;
     if (!_inflight[name]) {
-      _inflight[name] = fetch(base() + 'assets/icons/' + name + '.svg').then(r => {
+      // A reset or dropped connection (busy static server, flaky network) is
+      // retried twice with a short backoff before the glyph is given up on.
+      const load = attempt => fetch(base() + 'assets/icons/' + name + '.svg').catch(error => attempt < 2 ? new Promise(r => setTimeout(r, 150 * (attempt + 1))).then(() => load(attempt + 1)) : Promise.reject(error));
+      _inflight[name] = load(0).then(r => {
         // A served 404 means the name is wrong; anything else — offline, a
         // jsdom test with no base URL, a blocked request — is the environment,
         // not the call site, so it stays quiet rather than crying wolf on
@@ -165,7 +173,14 @@ function Icon({
           return '';
         }
         if (!r.ok) return '';
-        return r.text().then(t => _cache[name] = t);
+        // Only markup that is an SVG gets injected. A server without the file
+        // can still answer 200 with its SPA fallback, index.html, which would
+        // otherwise land inside the button as a whole document.
+        return r.text().then(t => {
+          if (/^\s*<svg[\s>]/.test(t)) return _cache[name] = t;
+          warnNotSvg(name);
+          return _cache[name] = '';
+        });
       })
       // A network failure is not remembered, so a later mount tries again.
       .catch(() => '').finally(() => {
@@ -261,9 +276,46 @@ const CSS = `
  * app rule accidentally collided with a component rule and lost, it now wins.
  * That is the intended direction, but it is a real change and worth looking at
  * a page or two after upgrading.
+ *
+ * Server-rendered apps can also import a static components.css (the registry's
+ * `meridian-ssr-css` item), so the HTML is styled before hydration. That sheet
+ * lists `<id>_<hash>` pairs in `--ef-css-static` on :root, the hash being
+ * FNV-1a over the exact text each component passes here. This skips an id only
+ * when the hash of `text` matches: an edited copy, or a component from another
+ * release than the sheet, injects its own CSS as before, so the static sheet
+ * can save work but never replace a component's CSS. The list is read once per
+ * page: reading it per call would force a style recalculation after every
+ * <style> this appends.
  */
+let efStaticCss;
+function efCssHash(text) {
+  let h = 0x811c9dc5;
+  for (let i = 0; i < text.length; i++) {
+    h ^= text.charCodeAt(i);
+    h = Math.imul(h, 0x01000193);
+  }
+  return (h >>> 0).toString(16).padStart(8, '0');
+}
 function injectEfCss(id, text) {
   if (typeof document === 'undefined' || document.getElementById(id)) return;
+  if (!efStaticCss) {
+    efStaticCss = new Map();
+    const listed = getComputedStyle(document.documentElement).getPropertyValue('--ef-css-static').trim();
+    for (const pair of listed ? listed.split(/\s+/) : []) {
+      const at = pair.lastIndexOf('_');
+      if (at > 0) efStaticCss.set(pair.slice(0, at), pair.slice(at + 1));
+    }
+  }
+  const listedHash = efStaticCss.get(id);
+  if (listedHash === true) return;
+  if (listedHash !== undefined) {
+    // Settle each id once: the hash runs on first render, not on every one.
+    if (listedHash === efCssHash(text)) {
+      efStaticCss.set(id, true);
+      return;
+    }
+    efStaticCss.delete(id);
+  }
   const s = document.createElement('style');
   s.id = id;
   s.textContent = `@layer meridian{${text}}`;
@@ -305,6 +357,23 @@ function cssPct(value) {
  * to useEffect on the server is behaviour-identical. Lowercase: internal.
  */
 const useIsoLayoutEffect = typeof window === 'undefined' ? React.useEffect : React.useLayoutEffect;
+const LAZY_TYPE = Symbol.for('react.lazy');
+/**
+ * Whether `child` is an element of `Component`, for compound components that
+ * sort their children (Select items, Resizable panels, ScrollArea bars).
+ *
+ * Children written in a Next.js Server Component reach a client component with
+ * a lazy client reference as their type, not the function, so a plain
+ * `child.type === Component` is false there. Unwrap the lazy first. While its
+ * module is still loading, `_init` throws the module's promise, which suspends
+ * exactly as rendering the lazy element would.
+ */
+function isElementOfType(child, Component) {
+  if (!React.isValidElement(child)) return false;
+  let type = child.type;
+  if (type && type.$$typeof === LAZY_TYPE && typeof type._init === 'function') type = type._init(type._payload);
+  return type === Component;
+}
 /**
  * The CSS kill-switch cannot reach JS-driven motion — rAF count-ups and
  * scrollTo({behavior:'smooth'}) — so those call sites ask here. Lowercase: internal.
@@ -372,7 +441,7 @@ const Button = React.forwardRef(function Button({
     size: isz
   }) : null);
 });
-Object.assign(__ds_scope, { injectEfCss, cssPct, useIsoLayoutEffect, prefersReducedMotion, mergeRefs, buttonVariants, Button });
+Object.assign(__ds_scope, { injectEfCss, cssPct, useIsoLayoutEffect, isElementOfType, prefersReducedMotion, mergeRefs, buttonVariants, Button });
 })(); } catch (e) { __ds_ns.__errors.push({ path: "components/forms/Button.jsx", error: String((e && e.message) || e) }); }
 
 // components/ai/AgentRun.jsx
@@ -4322,10 +4391,12 @@ function ChartStyle({
 }) {
   const colors = Object.entries(config || {}).filter(([, item]) => item.theme || item.color);
   if (!colors.length) return null;
-  const css = Object.entries(THEMES).map(([theme, prefix]) => `${prefix} [data-chart="${id}"]{\n${colors.map(([key, item]) => {
+  const vars = theme => colors.map(([key, item]) => {
     const value = item.theme ? item.theme[theme] : item.color;
     return value ? `--color-${key}:${value};` : '';
-  }).join('\n')}\n}`).join('\n');
+  }).join('\n');
+  // With no data-theme on <html>, a dark OS means dark, as in tokens/colors.css.
+  const css = Object.entries(THEMES).map(([theme, prefix]) => `${prefix} [data-chart="${id}"]{\n${vars(theme)}\n}`).join('\n') + `\n@media (prefers-color-scheme:dark){:root:not(:where([data-theme="light"])) [data-chart="${id}"]{\n${vars('dark')}\n}}`;
   // Raw text inside <style>: server-rendered, a `<` in a config value could
   // close the element and open a script. CSS never needs a literal `<` here.
   return /*#__PURE__*/React.createElement("style", {
@@ -4467,10 +4538,9 @@ const CSS = `
 .ef-donut__sr{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;border:0}
 .ef-donut__val{margin-inline-start:auto;font-family:var(--font-mono);font-size:12px;color:var(--text-primary);padding-inline-start:14px}
 `;
-// Categorical slots come from --chart-1..5 (tokens area). The fallbacks are the
-// old brand/sand steps, which fail the dataviz validator; they only apply until
-// the chart tokens are defined.
-const PALETTE = ['var(--chart-1, var(--brand-950))', 'var(--chart-2, var(--brand-500))', 'var(--chart-3, var(--brand-200))', 'var(--chart-4, var(--sand-400))', 'var(--chart-5, var(--sand-200))'];
+// Categorical slots from tokens/colors.css, in fixed order. A sixth slice reuses
+// slot 1, so keep a donut to five slices or fold the rest into "Other".
+const PALETTE = [1, 2, 3, 4, 5].map(n => `var(--chart-${n})`);
 // Fixed default locale: the runtime default would differ between server and browser.
 function DonutChart({
   data = [],
@@ -5366,6 +5436,7 @@ const CSS = `
 .ef-badge--link:hover{color:var(--text-link-hover);text-decoration:none}
 [data-theme="dark"] .ef-badge--accent{color:var(--brand-300)}
 [data-theme="dark"] .ef-badge--brand{background:var(--accent-subtle);color:var(--brand-300)}
+@media (prefers-color-scheme:dark){:root:not(:where([data-theme="light"])) .ef-badge--accent{color:var(--brand-300)}:root:not(:where([data-theme="light"])) .ef-badge--brand{background:var(--accent-subtle);color:var(--brand-300)}}
 `;
 function badgeVariants({
   variant = 'default',
@@ -5538,14 +5609,27 @@ const CSS = `
 `;
 const CarouselCtx = React.createContext(null);
 const EMPTY_PLUGINS = [];
+function isRtlScroller(element) {
+  return typeof getComputedStyle === 'function' && getComputedStyle(element).direction === 'rtl';
+}
+
+// Distance from the scroll start edge to the slide's start edge. offsetLeft is
+// physical, so in RTL the start edge is measured from the right of the
+// offsetParent (the positioned .ef-carousel), mirroring what LTR gets for free.
+function slideStart(slide, orientation, rtl) {
+  if (orientation === 'vertical') return slide.offsetTop;
+  if (!rtl) return slide.offsetLeft;
+  return (slide.offsetParent ? slide.offsetParent.clientWidth : 0) - slide.offsetLeft - slide.offsetWidth;
+}
 function closestIndex(element, orientation) {
   const position = orientation === 'vertical' ? element.scrollTop : Math.abs(element.scrollLeft);
   const slides = [...element.querySelectorAll('[data-slot="carousel-item"]')];
   if (!slides.length) return 0;
+  const rtl = orientation !== 'vertical' && isRtlScroller(element);
   let best = 0;
   let distance = Infinity;
   slides.forEach((slide, index) => {
-    const offset = orientation === 'vertical' ? slide.offsetTop : slide.offsetLeft;
+    const offset = slideStart(slide, orientation, rtl);
     const nextDistance = Math.abs(offset - position);
     if (nextDistance < distance) {
       best = index;
@@ -5592,13 +5676,17 @@ const Carousel = React.forwardRef(function Carousel({
     if (orientation === 'vertical') element.scrollTo({
       top: slide.offsetTop - alignmentOffset,
       behavior
-    });else element.scrollTo({
-      left: (direction === 'rtl' ? -1 : 1) * (slide.offsetLeft - alignmentOffset),
-      behavior
-    });
+    });else {
+      // Scroll coordinates follow the scroller's CSS direction, not opts.direction.
+      const rtl = isRtlScroller(element);
+      element.scrollTo({
+        left: (rtl ? -1 : 1) * (slideStart(slide, orientation, rtl) - alignmentOffset),
+        behavior
+      });
+    }
     setSelected(targetIndex);
     queueMicrotask(() => emit('select'));
-  }, [align, direction, emit, loop, orientation]);
+  }, [align, emit, loop, orientation]);
   const api = React.useMemo(() => ({
     canScrollNext: () => loop || selectedRef.current < slideCountRef.current - 1,
     canScrollPrev: () => loop || selectedRef.current > 0,
@@ -6088,7 +6176,7 @@ const ResizablePanelGroup = React.forwardRef(function ResizablePanelGroup({
   __ds_scope.injectEfCss('ef-css-resizable', CSS);
   const readingDirection = __ds_scope.useDirection();
   const nodes = React.Children.toArray(children);
-  const panels = nodes.filter(child => React.isValidElement(child) && child.type === ResizablePanel);
+  const panels = nodes.filter(child => __ds_scope.isElementOfType(child, ResizablePanel));
   const [sizes, setSizes] = React.useState(() => initialPanelSizes(panels));
   const updatePair = React.useCallback((index, delta) => {
     setSizes(current => {
@@ -6126,11 +6214,11 @@ const ResizablePanelGroup = React.forwardRef(function ResizablePanelGroup({
     className: `ef-resizable${className ? ' ' + className : ''}`
   }), nodes.map((child, index) => {
     if (!React.isValidElement(child)) return child;
-    if (child.type === ResizablePanel) return React.cloneElement(child, {
+    if (__ds_scope.isElementOfType(child, ResizablePanel)) return React.cloneElement(child, {
       key: child.key ?? index,
       _panelIndex: panelIndex++
     });
-    if (child.type === ResizableHandle) return React.cloneElement(child, {
+    if (__ds_scope.isElementOfType(child, ResizableHandle)) return React.cloneElement(child, {
       key: child.key ?? index,
       _handleIndex: handleIndex++
     });
@@ -6244,8 +6332,8 @@ const ScrollArea = React.forwardRef(function ScrollArea({
 }, ref) {
   __ds_scope.injectEfCss('ef-css-scrollarea', CSS);
   const nodes = React.Children.toArray(children);
-  const bars = nodes.filter(child => React.isValidElement(child) && child.type === ScrollBar);
-  const content = nodes.filter(child => !(React.isValidElement(child) && child.type === ScrollBar));
+  const bars = nodes.filter(child => __ds_scope.isElementOfType(child, ScrollBar));
+  const content = nodes.filter(child => !__ds_scope.isElementOfType(child, ScrollBar));
   return /*#__PURE__*/React.createElement("div", _extends({}, rest, {
     ref: ref,
     "data-slot": "scroll-area",
@@ -10150,6 +10238,12 @@ function clamp(value, min, max) {
 function asArray(value, fallback) {
   return Array.isArray(value) ? value : fallback;
 }
+// value + step in floating point gives 0.30000000000000004 for 0.2 + 0.1; round
+// to the step's decimals so keyboard steps land where a native step would.
+function stepFrom(value, delta, step) {
+  const decimals = (String(step).split('.')[1] || '').length;
+  return Number((value + delta).toFixed(decimals));
+}
 const Slider = React.forwardRef(function Slider({
   min = 0,
   max = 100,
@@ -10199,6 +10293,9 @@ const Slider = React.forwardRef(function Slider({
     insetInlineStart: `${inverted ? 100 - high : low}%`,
     width: `${high - low}%`
   };
+  // Every thumb's native min/max is the full range, so each thumb sits on the
+  // shared track where the range fill ends. The neighbour limit is enforced by
+  // update() and announced through aria-valuemin/aria-valuemax.
   const control = /*#__PURE__*/React.createElement("span", {
     className: "ef-slider__control"
   }, /*#__PURE__*/React.createElement("span", {
@@ -10214,14 +10311,26 @@ const Slider = React.forwardRef(function Slider({
     type: "range",
     "data-slot": "slider-thumb",
     "aria-label": rest['aria-label'] ? `${rest['aria-label']}${values.length > 1 ? ` ${index + 1}` : ''}` : undefined,
-    min: index > 0 ? values[index - 1] + minStepsBetweenThumbs * step : min,
-    max: index < values.length - 1 ? values[index + 1] - minStepsBetweenThumbs * step : max,
+    min: min,
+    max: max,
+    "aria-valuemin": index > 0 ? values[index - 1] + minStepsBetweenThumbs * step : min,
+    "aria-valuemax": index < values.length - 1 ? values[index + 1] - minStepsBetweenThumbs * step : max,
     step: step,
     value: value,
     disabled: disabled,
     dir: inverted ? dir === 'rtl' ? 'ltr' : 'rtl' : dir,
     className: "ef-slider__input",
     onChange: event => update(index, Number(event.target.value)),
+    onKeyDown: event => {
+      rest.onKeyDown?.(event);
+      if (event.defaultPrevented || orientation === 'vertical' || event.key !== 'ArrowLeft' && event.key !== 'ArrowRight') return;
+      // WebKit steps a native range by key, not by side: ArrowRight raises the
+      // value even when the thumb moves left in RTL. Step toward the arrow's
+      // side in every engine, as Chromium does natively.
+      const rtl = event.currentTarget.closest('[dir]')?.getAttribute('dir') === 'rtl';
+      event.preventDefault();
+      update(index, stepFrom(value, event.key === 'ArrowRight' !== rtl ? step : -step, step));
+    },
     onPointerUp: () => onValueCommit?.(latestRef.current),
     onKeyUp: event => {
       if (['ArrowLeft', 'ArrowRight', 'ArrowUp', 'ArrowDown', 'Home', 'End', 'PageUp', 'PageDown'].includes(event.key)) onValueCommit?.(latestRef.current);
@@ -11617,6 +11726,22 @@ try { (() => {
 const CSS = `
 .ef-portal{display:contents}
 `;
+const noopSubscribe = () => () => {};
+const onClient = () => true;
+const onServer = () => false;
+/**
+ * False on the server and during hydration, true for every other client render.
+ *
+ * A Portal renders nothing on the server, so one mounted while React hydrates
+ * server HTML is a mismatch. Owners gate on this instead of deferring Portal
+ * itself: Toaster renders its portal only once this is true, and each overlay
+ * root treats itself as closed until then (`useHydrated() && open`), so an
+ * overlay open on first load opens right after hydration and its focus and
+ * placement effects, keyed on open, run with the panel present.
+ */
+function useHydrated() {
+  return React.useSyncExternalStore(noopSubscribe, onClient, onServer);
+}
 
 /**
  * Renders children into document.body (or `container`).
@@ -11644,7 +11769,19 @@ function Portal({
     if (!host) return;
     const parent = container || document.body;
     parent.appendChild(host);
+    // StrictMode (on by default in Next.js dev) runs the cleanup and this effect
+    // again right after mount. Detaching the host blurs whatever a dialog just
+    // focused inside it, so put that focus back once the host is attached again.
+    const refocus = host.__efRefocus;
+    host.__efRefocus = null;
+    if (refocus && refocus.isConnected && host.contains(refocus) && (document.activeElement === document.body || document.activeElement === null)) {
+      refocus.focus({
+        preventScroll: true
+      });
+    }
     return () => {
+      const active = document.activeElement;
+      host.__efRefocus = active && host.contains(active) ? active : null;
       if (host.parentNode) host.parentNode.removeChild(host);
     };
   }, [container]);
@@ -11822,7 +11959,7 @@ function useScrollLock(active) {
     };
   }, [active]);
 }
-Object.assign(__ds_scope, { Portal, useAnchoredStyle, escapeLayerContext, useEscapeLayer, useScrollLock });
+Object.assign(__ds_scope, { useHydrated, Portal, useAnchoredStyle, escapeLayerContext, useEscapeLayer, useScrollLock });
 })(); } catch (e) { __ds_ns.__errors.push({ path: "components/overlay/Portal.jsx", error: String((e && e.message) || e) }); }
 
 // components/ai/ModelSelector.jsx
@@ -12239,7 +12376,9 @@ function AlertDialog({
 }) {
   const controlled = open !== undefined;
   const [internalOpen, setInternalOpen] = React.useState(defaultOpen);
-  const isOpen = controlled ? open : internalOpen;
+  // Closed while React hydrates server HTML (the server rendered no portal),
+  // open right after, so effects keyed on it run with the panel present.
+  const isOpen = __ds_scope.useHydrated() && (controlled ? open : internalOpen);
   const triggerRef = React.useRef(null);
   const titleId = React.useId();
   const descriptionId = React.useId();
@@ -12247,13 +12386,17 @@ function AlertDialog({
     if (!controlled) setInternalOpen(next);
     if (onOpenChange) onOpenChange(next);
   }, [controlled, onOpenChange]);
+  // the id of the Description actually rendered, so aria-describedby never points at nothing
+  const [describedBy, setDescribedBy] = React.useState(undefined);
   const value = React.useMemo(() => ({
     open: isOpen,
     setOpen,
     triggerRef,
     titleId,
-    descriptionId
-  }), [isOpen, setOpen, titleId, descriptionId]);
+    descriptionId,
+    describedBy,
+    setDescribedBy
+  }), [isOpen, setOpen, titleId, descriptionId, describedBy]);
   return /*#__PURE__*/React.createElement(AlertDialogContext.Provider, {
     value: value
   }, children);
@@ -12356,7 +12499,7 @@ const AlertDialogContent = React.forwardRef(function AlertDialogContent({
     role: "alertdialog",
     "aria-modal": "true",
     "aria-labelledby": ctx.titleId,
-    "aria-describedby": ctx.descriptionId,
+    "aria-describedby": rest['aria-describedby'] ?? ctx.describedBy,
     tabIndex: -1,
     "data-slot": "alert-dialog-content",
     "data-state": ctx.open ? 'open' : 'closed',
@@ -12414,9 +12557,15 @@ const AlertDialogDescription = React.forwardRef(function AlertDialogDescription(
   ...rest
 }, ref) {
   const ctx = useAlertDialog('AlertDialogDescription');
+  const resolved = rest.id || ctx.descriptionId;
+  const register = ctx.setDescribedBy;
+  __ds_scope.useIsoLayoutEffect(() => {
+    register(resolved);
+    return () => register(undefined);
+  }, [register, resolved]);
   return /*#__PURE__*/React.createElement("p", _extends({}, rest, {
     ref: ref,
-    id: rest.id || ctx.descriptionId,
+    id: resolved,
     "data-slot": "alert-dialog-description",
     className: `ef-alertdialog__description${className ? ' ' + className : ''}`
   }));
@@ -12489,17 +12638,23 @@ function Dialog({
   const [internal, setInternal] = React.useState(defaultOpen);
   const titleId = React.useId();
   const descriptionId = React.useId();
-  const open = controlled === undefined ? internal : controlled;
+  // Closed while React hydrates server HTML (the server rendered no portal),
+  // open right after, so effects keyed on it run with the panel present.
+  const open = __ds_scope.useHydrated() && (controlled === undefined ? internal : controlled);
   const setOpen = React.useCallback(next => {
     if (controlled === undefined) setInternal(next);
     onOpenChange?.(next);
   }, [controlled, onOpenChange]);
+  // the id of the Description actually rendered, so aria-describedby never points at nothing
+  const [describedBy, setDescribedBy] = React.useState(undefined);
   const value = React.useMemo(() => ({
     open,
     setOpen,
     titleId,
-    descriptionId
-  }), [open, setOpen, titleId, descriptionId]);
+    descriptionId,
+    describedBy,
+    setDescribedBy
+  }), [open, setOpen, titleId, descriptionId, describedBy]);
   return /*#__PURE__*/React.createElement(DialogContext.Provider, {
     value: value
   }, children);
@@ -12637,7 +12792,7 @@ const DialogContent = React.forwardRef(function DialogContent({
     role: "dialog",
     "aria-modal": "true",
     "aria-labelledby": rest['aria-label'] ? undefined : ctx.titleId,
-    "aria-describedby": ctx.descriptionId,
+    "aria-describedby": rest['aria-describedby'] ?? ctx.describedBy,
     tabIndex: -1,
     className: cx('ef-dialog__content', className),
     style: {
@@ -12699,9 +12854,16 @@ const DialogDescription = React.forwardRef(function DialogDescription({
   ...rest
 }, ref) {
   const ctx = React.useContext(DialogContext);
+  const resolved = id || ctx && ctx.descriptionId;
+  const register = ctx && ctx.setDescribedBy;
+  __ds_scope.useIsoLayoutEffect(() => {
+    if (!register) return;
+    register(resolved);
+    return () => register(undefined);
+  }, [register, resolved]);
   return /*#__PURE__*/React.createElement("div", _extends({}, rest, {
     ref: ref,
-    id: id || ctx && ctx.descriptionId,
+    id: resolved,
     "data-slot": slot,
     className: cx('ef-dialog__description', className)
   }));
@@ -12766,6 +12928,7 @@ const CSS = `
 .ef-toast__title{font-size:var(--text-md);font-weight:var(--weight-semibold);line-height:1.35}.ef-toast__desc{margin-top:2px;color:var(--text-inverse);font-size:var(--text-sm);line-height:1.4;opacity:.75}.ef-toast__action{margin-top:8px;padding:0;border:0;background:none;color:var(--peach-200);font-family:var(--font-sans);font-size:var(--text-sm);font-weight:var(--weight-semibold);cursor:pointer}.ef-toast__action:hover{color:var(--cream-50);text-decoration:none}.ef-toast .ef-iconbtn{color:var(--text-inverse-muted)}.ef-toast .ef-iconbtn:hover:not(:disabled){background:color-mix(in srgb,var(--text-inverse) 12%,transparent);color:var(--text-inverse)}
 .ef-toast-stack{position:fixed;z-index:var(--z-toast);display:flex;width:360px;max-width:calc(100vw - 32px);flex-direction:column;gap:10px;pointer-events:none}.ef-toast-stack>*{pointer-events:auto}.ef-toast-stack[data-position^=top]{top:24px}.ef-toast-stack[data-position^=bottom]{bottom:24px}.ef-toast-stack[data-position$=left]{inset-inline-start:24px}.ef-toast-stack[data-position$=right]{inset-inline-end:24px}.ef-toast-stack[data-position$=center]{inset-inline-start:50%;transform:translateX(-50%)}
 [data-theme="dark"] .ef-toast--success .ef-toast__icon{color:color-mix(in srgb,var(--success-600) 60%,var(--text-inverse))}[data-theme="dark"] .ef-toast--danger .ef-toast__icon{color:var(--danger-600)}[data-theme="dark"] .ef-toast--warning .ef-toast__icon{color:color-mix(in srgb,var(--warning-600) 60%,var(--text-inverse))}[data-theme="dark"] .ef-toast--info .ef-toast__icon{color:var(--brand-600)}[data-theme="dark"] .ef-toast__action{color:var(--brand-700)}
+@media (prefers-color-scheme:dark){:root:not(:where([data-theme="light"])) .ef-toast--success .ef-toast__icon{color:color-mix(in srgb,var(--success-600) 60%,var(--text-inverse))}:root:not(:where([data-theme="light"])) .ef-toast--danger .ef-toast__icon{color:var(--danger-600)}:root:not(:where([data-theme="light"])) .ef-toast--warning .ef-toast__icon{color:color-mix(in srgb,var(--warning-600) 60%,var(--text-inverse))}:root:not(:where([data-theme="light"])) .ef-toast--info .ef-toast__icon{color:var(--brand-600)}:root:not(:where([data-theme="light"])) .ef-toast__action{color:var(--brand-700)}}
 @media(max-width:599px){.ef-toast-stack{inset-inline:16px!important;width:auto;max-width:none;transform:none!important}.ef-toast-stack[data-position^=top]{top:16px}.ef-toast-stack[data-position^=bottom]{bottom:16px}}
 @keyframes ef-toast-in{from{opacity:0;transform:translateY(12px) scale(.96)}}
 /* coarse pointers get the 44px touch target, like form controls do through --control-h-* */
@@ -12987,6 +13150,9 @@ function Toaster({
     };
   }, [duration, toastOptions]);
   const resolvedOffset = typeof offset === 'number' ? `${offset}px` : offset;
+  // Mounted on every page load, so wait for hydration: see useHydrated.
+  const hydrated = __ds_scope.useHydrated();
+  if (!hydrated) return /*#__PURE__*/React.createElement(React.Fragment, null, children);
   return /*#__PURE__*/React.createElement(React.Fragment, null, children, /*#__PURE__*/React.createElement(__ds_scope.Portal, null, /*#__PURE__*/React.createElement(ToastStack, _extends({}, rest, {
     dir: dir,
     position: position,
@@ -13061,10 +13227,16 @@ function Tooltip({
   __ds_scope.injectEfCss('ef-css-tooltip', CSS);
   const provider = React.useContext(TooltipProviderCtx);
   const [inner, setInner] = React.useState(defaultOpen);
-  const open = controlled !== undefined ? controlled : inner;
+  // Closed while React hydrates server HTML (the server rendered no portal),
+  // open right after, so effects keyed on it run with the panel present.
+  const open = __ds_scope.useHydrated() && (controlled !== undefined ? controlled : inner);
   const triggerRef = React.useRef(null);
   const timerRef = React.useRef(null);
-  const contentId = React.useId();
+  // The content's own `id` wins over the generated one, and the trigger's
+  // aria attribute follows whichever is rendered.
+  const baseId = React.useId();
+  const [customId, setContentId] = React.useState();
+  const contentId = customId || baseId;
   const setOpen = React.useCallback(next => {
     if (controlled === undefined) setInner(next);
     onOpenChange?.(next);
@@ -13085,8 +13257,9 @@ function Tooltip({
     hide,
     triggerRef,
     contentId,
+    setContentId,
     disableHoverableContent: disableHoverableContent ?? provider.disableHoverableContent
-  }), [open, show, hide, contentId, disableHoverableContent, provider.disableHoverableContent]);
+  }), [open, show, hide, contentId, setContentId, disableHoverableContent, provider.disableHoverableContent]);
   return /*#__PURE__*/React.createElement(TooltipCtx.Provider, {
     value: value
   }, children);
@@ -13157,9 +13330,16 @@ const TooltipContent = React.forwardRef(function TooltipContent({
   className,
   style,
   children,
+  id,
   ...rest
 }, forwardedRef) {
   const ctx = React.useContext(TooltipCtx);
+  const registerId = ctx?.setContentId;
+  __ds_scope.useIsoLayoutEffect(() => {
+    if (!registerId) return;
+    registerId(id);
+    return () => registerId(undefined);
+  }, [registerId, id]);
   const bubbleRef = React.useRef(null);
   const want = SIDES.includes(side) ? side : 'top';
   const [placed, setPlaced] = React.useState({
@@ -13223,7 +13403,7 @@ const TooltipContent = React.forwardRef(function TooltipContent({
   return /*#__PURE__*/React.createElement(__ds_scope.Portal, null, /*#__PURE__*/React.createElement("span", _extends({}, rest, {
     ref: __ds_scope.mergeRefs(forwardedRef, bubbleRef),
     role: "tooltip",
-    id: ctx.contentId,
+    id: id || ctx.contentId,
     "data-slot": "tooltip-content",
     "data-state": "open",
     "data-side": placed.side,
@@ -13341,7 +13521,10 @@ function Combobox({
   const records = React.useRef(new Map());
   const anchorRef = React.useRef(null);
   const currentValue = value === undefined ? internalValue : value;
-  const isOpen = open === undefined ? internalOpen : open;
+  // Closed while React hydrates server HTML (the server rendered no portal),
+  // open right after, so effects keyed on it run with the panel present.
+  const requestedOpen = open === undefined ? internalOpen : open;
+  const isOpen = __ds_scope.useHydrated() && requestedOpen;
   const query = inputValue === undefined ? internalInput : inputValue;
   const setOpen = React.useCallback(next => {
     if (open === undefined) setInternalOpen(next);
@@ -13376,11 +13559,13 @@ function Combobox({
     const record = [...records.current.values()].find(entry => same(entry.value, next));
     return record ? record.text : undefined;
   };
+  // Keyed on the requested state, not isOpen: the hydration pass is not a
+  // close, and treating it as one filled the input and narrowed the list.
   React.useEffect(() => {
-    if (multiple || isOpen || query || currentValue == null) return;
+    if (multiple || requestedOpen || query || currentValue == null) return;
     const label = labelOf(currentValue);
     if (label !== undefined) setQuery(label);
-  }, [currentValue, items, isOpen, multiple]);
+  }, [currentValue, items, requestedOpen, multiple]);
   // A value changed from outside (a controlled reset, a programmatic pick)
   // must also move the text in the input, or it keeps showing the old label.
   const shownValue = React.useRef(currentValue);
@@ -13843,7 +14028,7 @@ const itemText = children => typeof children === 'string' || typeof children ===
 function collectLabels(children, out = {}) {
   React.Children.forEach(children, child => {
     if (!React.isValidElement(child)) return;
-    if (child.type === SelectItem) out[child.props.value] = itemText(child.props.children) || child.props.value;
+    if (__ds_scope.isElementOfType(child, SelectItem)) out[child.props.value] = itemText(child.props.children) || child.props.value;
     if (child.props.children) collectLabels(child.props.children, out);
   });
   return out;
@@ -13864,7 +14049,9 @@ function Select({
   const [innerValue, setInnerValue] = React.useState(defaultValue);
   const [innerOpen, setInnerOpen] = React.useState(defaultOpen);
   const value = controlled !== undefined ? controlled : innerValue;
-  const open = controlledOpen !== undefined ? controlledOpen : innerOpen;
+  // Closed while React hydrates server HTML (the server rendered no portal),
+  // open right after, so effects keyed on it run with the panel present.
+  const open = __ds_scope.useHydrated() && (controlledOpen !== undefined ? controlledOpen : innerOpen);
   const triggerRef = React.useRef(null);
   const contentRef = React.useRef(null);
   const declaredLabels = React.useMemo(() => collectLabels(children), [children]);
@@ -14877,7 +15064,9 @@ function ContextMenu({
     x: 0,
     y: 0
   });
-  const open = controlled !== undefined ? controlled : inner;
+  // Closed while React hydrates server HTML (the server rendered no portal),
+  // open right after, so effects keyed on it run with the panel present.
+  const open = __ds_scope.useHydrated() && (controlled !== undefined ? controlled : inner);
   const triggerRef = React.useRef(null);
   const contentRef = React.useRef(null);
   const menuId = React.useId();
@@ -15203,7 +15392,9 @@ function ContextMenuSub({
   children
 }) {
   const [inner, setInner] = React.useState(defaultOpen);
-  const open = controlled !== undefined ? controlled : inner;
+  // Closed while React hydrates server HTML (the server rendered no portal),
+  // open right after, so effects keyed on it run with the panel present.
+  const open = __ds_scope.useHydrated() && (controlled !== undefined ? controlled : inner);
   const triggerRef = React.useRef(null);
   const contentRef = React.useRef(null);
   const setOpen = next => {
@@ -15349,7 +15540,7 @@ function warnModalIgnored() {
     if (process.env.NODE_ENV === 'production') return;
   } catch (e) {/* no build-time env */}
   warnedModal = true;
-  console.warn('[meridian] <Drawer modal={false}> is deprecated and ignored: a Drawer is always modal. The prop will be removed in the next major version.');
+  console.warn('[meridian] <Drawer modal={false}> is deprecated and ignored: a Drawer is always modal. The prop will be removed in the next major version. Migration: https://meridian.efolusi.com/guidelines/migration.md');
 }
 function Drawer({
   open: controlled,
@@ -15366,7 +15557,9 @@ function Drawer({
     if (modal === false) warnModalIgnored();
   }, [modal]);
   const [internal, setInternal] = React.useState(defaultOpen);
-  const open = controlled === undefined ? internal : controlled;
+  // Closed while React hydrates server HTML (the server rendered no portal),
+  // open right after, so effects keyed on it run with the panel present.
+  const open = __ds_scope.useHydrated() && (controlled === undefined ? internal : controlled);
   const setOpen = React.useCallback(next => {
     if (controlled === undefined) setInternal(next);
     onOpenChange?.(next);
@@ -15622,7 +15815,9 @@ function DropdownMenu({
 }) {
   __ds_scope.injectEfCss('ef-css-dropdown-menu', CSS);
   const [inner, setInner] = React.useState(defaultOpen);
-  const open = controlled !== undefined ? controlled : inner;
+  // Closed while React hydrates server HTML (the server rendered no portal),
+  // open right after, so effects keyed on it run with the panel present.
+  const open = __ds_scope.useHydrated() && (controlled !== undefined ? controlled : inner);
   const triggerRef = React.useRef(null);
   const contentRef = React.useRef(null);
   const menuId = React.useId();
@@ -15963,7 +16158,9 @@ function DropdownMenuSub({
   children
 }) {
   const [inner, setInner] = React.useState(defaultOpen);
-  const open = controlled !== undefined ? controlled : inner;
+  // Closed while React hydrates server HTML (the server rendered no portal),
+  // open right after, so effects keyed on it run with the panel present.
+  const open = __ds_scope.useHydrated() && (controlled !== undefined ? controlled : inner);
   const triggerRef = React.useRef(null);
   const contentRef = React.useRef(null);
   const setOpen = next => {
@@ -16313,11 +16510,17 @@ function HoverCard({
 }) {
   __ds_scope.injectEfCss('ef-css-hovercard', CSS);
   const [inner, setInner] = React.useState(defaultOpen);
-  const open = controlled !== undefined ? controlled : inner;
+  // Closed while React hydrates server HTML (the server rendered no portal),
+  // open right after, so effects keyed on it run with the panel present.
+  const open = __ds_scope.useHydrated() && (controlled !== undefined ? controlled : inner);
   const triggerRef = React.useRef(null);
   const contentRef = React.useRef(null);
   const timerRef = React.useRef(null);
-  const contentId = React.useId();
+  // The content's own `id` wins over the generated one, and the trigger's
+  // aria attribute follows whichever is rendered.
+  const baseId = React.useId();
+  const [customId, setContentId] = React.useState();
+  const contentId = customId || baseId;
   const setOpen = React.useCallback(next => {
     if (controlled === undefined) setInner(next);
     onOpenChange?.(next);
@@ -16344,8 +16547,9 @@ function HoverCard({
     clearTimer,
     triggerRef,
     contentRef,
-    contentId
-  }), [open, setOpen, openSoon, closeSoon, clearTimer, contentId]);
+    contentId,
+    setContentId
+  }), [open, setOpen, openSoon, closeSoon, clearTimer, contentId, setContentId]);
   return /*#__PURE__*/React.createElement(HoverCardCtx.Provider, {
     value: value
   }, /*#__PURE__*/React.createElement(__ds_scope.escapeLayerContext.Provider, {
@@ -16400,9 +16604,16 @@ const HoverCardContent = React.forwardRef(function HoverCardContent({
   className,
   style,
   children,
+  id,
   ...rest
 }, forwardedRef) {
   const ctx = React.useContext(HoverCardCtx);
+  const registerId = ctx?.setContentId;
+  __ds_scope.useIsoLayoutEffect(() => {
+    if (!registerId) return;
+    registerId(id);
+    return () => registerId(undefined);
+  }, [registerId, id]);
   const fallbackTriggerRef = React.useRef(null);
   const fallbackContentRef = React.useRef(null);
   const {
@@ -16418,7 +16629,7 @@ const HoverCardContent = React.forwardRef(function HoverCardContent({
   if (!ctx?.open) return null;
   return /*#__PURE__*/React.createElement(__ds_scope.Portal, null, /*#__PURE__*/React.createElement("div", _extends({}, rest, {
     ref: __ds_scope.mergeRefs(forwardedRef, ctx.contentRef),
-    id: ctx.contentId,
+    id: id || ctx.contentId,
     "data-slot": "hover-card-content",
     "data-state": "open",
     "data-side": resolvedSide,
@@ -16463,10 +16674,16 @@ function Popover({
 }) {
   __ds_scope.injectEfCss('ef-css-popover', CSS);
   const [inner, setInner] = React.useState(defaultOpen);
-  const open = controlled !== undefined ? controlled : inner;
+  // Closed while React hydrates server HTML (the server rendered no portal),
+  // open right after, so effects keyed on it run with the panel present.
+  const open = __ds_scope.useHydrated() && (controlled !== undefined ? controlled : inner);
   const triggerRef = React.useRef(null);
   const contentRef = React.useRef(null);
-  const contentId = React.useId();
+  // The content's own `id` wins over the generated one, and the trigger's
+  // aria attribute follows whichever is rendered.
+  const baseId = React.useId();
+  const [customId, setContentId] = React.useState();
+  const contentId = customId || baseId;
   const setOpen = React.useCallback(next => {
     if (controlled === undefined) setInner(next);
     onOpenChange?.(next);
@@ -16476,8 +16693,9 @@ function Popover({
     setOpen,
     triggerRef,
     contentRef,
-    contentId
-  }), [open, setOpen, contentId]);
+    contentId,
+    setContentId
+  }), [open, setOpen, contentId, setContentId]);
   React.useEffect(() => {
     if (!open) return;
     const away = event => {
@@ -16581,9 +16799,16 @@ const PopoverContent = React.forwardRef(function PopoverContent({
   className,
   style,
   children,
+  id,
   ...rest
 }, forwardedRef) {
   const ctx = React.useContext(PopoverCtx);
+  const registerId = ctx?.setContentId;
+  __ds_scope.useIsoLayoutEffect(() => {
+    if (!registerId) return;
+    registerId(id);
+    return () => registerId(undefined);
+  }, [registerId, id]);
   const fallbackTriggerRef = React.useRef(null);
   const fallbackContentRef = React.useRef(null);
   const placement = side === 'top' ? 'top' : 'bottom';
@@ -16598,7 +16823,7 @@ const PopoverContent = React.forwardRef(function PopoverContent({
   if (!ctx?.open) return null;
   return /*#__PURE__*/React.createElement(__ds_scope.Portal, null, /*#__PURE__*/React.createElement("div", _extends({}, rest, {
     ref: __ds_scope.mergeRefs(forwardedRef, ctx.contentRef),
-    id: ctx.contentId,
+    id: id || ctx.contentId,
     role: role,
     "data-slot": "popover-content",
     "data-state": "open",

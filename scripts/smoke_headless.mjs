@@ -1,8 +1,11 @@
 #!/usr/bin/env node
 // Headless smoke check: loads site/_smoke.html in a real browser, waits for the
 // machine-readable signal (html[data-smoke]), and fails if any demo threw.
-// Requires a static server on BASE and Playwright's chromium.
+// Requires a static server on BASE and a Playwright browser.
 //   BASE=http://localhost:8000 node scripts/smoke_headless.mjs
+// SMOKE_BROWSER picks the engine: chromium (default, what CI runs), firefox or
+// webkit (Safari's engine). Edge is Chromium, so chromium covers it.
+//   BASE=http://localhost:8000 SMOKE_BROWSER=webkit DIRECTION=rtl node scripts/smoke_headless.mjs
 // Set EXECUTABLE_PATH to use an installed Chrome/Chromium binary locally;
 // CI omits it and continues to use Playwright's pinned browser.
 //
@@ -11,17 +14,23 @@
 // scripts/check_visual.mjs. Capture runs with reduced motion and a fixed
 // viewport so the pixels are deterministic on a given platform; comparison is
 // only meaningful CI-to-CI, where the platform is constant.
-import { chromium } from 'playwright';
+import * as playwright from 'playwright';
 import fs from 'node:fs';
 import path from 'node:path';
+import { CAPTURE_CSS, settleForCapture } from './capture_settle.mjs';
 
 const BASE = process.env.BASE || 'http://localhost:8000';
 const SHOTS = process.env.SHOTS || '';
 const EXECUTABLE_PATH = process.env.EXECUTABLE_PATH || '';
 const DIRECTION = process.env.DIRECTION === 'rtl' ? 'rtl' : 'ltr';
+const ENGINE = process.env.SMOKE_BROWSER || 'chromium';
+if (!['chromium', 'firefox', 'webkit'].includes(ENGINE)) {
+  console.error(`smoke: SMOKE_BROWSER must be chromium, firefox or webkit, not "${ENGINE}"`);
+  process.exit(1);
+}
 const URL = `${BASE}/site/_smoke.html?dir=${DIRECTION}`;
 
-const browser = await chromium.launch(EXECUTABLE_PATH ? { executablePath: EXECUTABLE_PATH } : {});
+const browser = await playwright[ENGINE].launch(EXECUTABLE_PATH ? { executablePath: EXECUTABLE_PATH } : {});
 const page = await browser.newPage({
   viewport: { width: 1280, height: 900 },
   deviceScaleFactor: 1,
@@ -50,7 +59,7 @@ await page.waitForFunction(() => document.documentElement.getAttribute('data-smo
 const result = await page.evaluate(() => window.__SMOKE__);
 
 if (!result) { console.error('smoke: no result signal'); await browser.close(); process.exit(1); }
-console.log(`smoke (${result.direction}): ${result.passed}/${result.total} rendered, ${result.failed} failed`);
+console.log(`smoke (${ENGINE} ${browser.version()}, ${result.direction}): ${result.passed}/${result.total} rendered, ${result.failed} failed`);
 if (result.direction !== DIRECTION) {
   console.error(`smoke: requested ${DIRECTION} but document rendered ${result.direction}`);
   await browser.close();
@@ -67,31 +76,26 @@ if (SHOTS) {
   await page.evaluate(() => document.fonts.ready);
   // Icons arrive by fetch after the demos render, and on the self-hosted
   // runner (headless Chromium 130 in Docker) some of those requests stall and
-  // never finish, on plain dev as well, so a capture sometimes has blank
-  // glyphs. Give them a chance to land, report what is still missing, and
-  // hide every glyph in the captures so baselines never depend on that race.
-  // Whether icons render is covered by the component tests, not by pixels.
+  // never finish, so a capture sometimes has blank glyphs. Give them a chance to
+  // land and report what is still missing; CAPTURE_CSS hides the glyphs.
   await page.waitForLoadState('networkidle', { timeout: 30000 }).catch(() => {});
   const blankIcons = await page.evaluate(() =>
     [...document.querySelectorAll('section[data-group] [data-slot="icon"]')].filter(s => !s.querySelector('svg')).length);
   if (blankIcons) {
     console.warn(`smoke: ${blankIcons} icon slot(s) still empty (${pending.size} request(s) pending${failedRequests.length ? `, ${failedRequests.length} failed` : ''}); glyphs are hidden in the captures`);
   }
-  await page.addStyleTag({ content: '[data-slot="icon"] > svg { visibility: hidden !important; }' });
-  // The sticky summary banner paints over whichever section is scrolled under
-  // it, so it was getting baked into the captures — carrying the live demo
-  // count, which would churn every affected baseline whenever a demo is added.
-  await page.addStyleTag({ content: '#summary, h1, [data-live] { display: none !important; }' });
+  await page.addStyleTag({ content: CAPTURE_CSS });
   let count = 0;
   for (const theme of ['light', 'dark']) {
     await page.evaluate(t => {
       if (t === 'dark') document.documentElement.setAttribute('data-theme', 'dark');
-      else document.documentElement.removeAttribute('data-theme');
+      else document.documentElement.setAttribute('data-theme', 'light');
     }, theme);
     // One rAF pair lets the var() swap paint before the capture.
     await page.evaluate(() => new Promise(r => requestAnimationFrame(() => requestAnimationFrame(r))));
     for (const el of await page.locator('section[data-group]').all()) {
       const group = await el.getAttribute('data-group');
+      await settleForCapture(page);
       await el.screenshot({ path: path.join(SHOTS, `g-${group}-${theme}.png`), animations: 'disabled' });
       count++;
     }

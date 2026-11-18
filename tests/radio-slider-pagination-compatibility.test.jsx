@@ -41,9 +41,33 @@ describe('Slider compatibility contract', () => {
     render(<Slider aria-label="Price range" defaultValue={[20, 80]} min={0} max={100} step={5} minStepsBetweenThumbs={2} onValueChange={change} />);
     const thumbs = screen.getAllByRole('slider');
     expect(thumbs).toHaveLength(2);
-    expect(thumbs[0].max).toBe('70');
+    expect(thumbs[0].max).toBe('100');
+    expect(thumbs[0].getAttribute('aria-valuemax')).toBe('70');
+    expect(thumbs[1].getAttribute('aria-valuemin')).toBe('30');
     fireEvent.change(thumbs[0], { target: { value: '35' } });
     expect(change).toHaveBeenCalledWith([35, 80]);
+    fireEvent.change(thumbs[0], { target: { value: '95' } });
+    expect(change).toHaveBeenLastCalledWith([70, 80]);
+  });
+
+  it('steps horizontal arrows by visual side in both directions', () => {
+    const change = vi.fn();
+    const { unmount } = render(<Slider aria-label="Volume" defaultValue={[50]} step={5} onValueChange={change} />);
+    fireEvent.keyDown(screen.getByRole('slider'), { key: 'ArrowRight' });
+    expect(change).toHaveBeenLastCalledWith([55]);
+    unmount();
+    render(<div dir="rtl"><Slider aria-label="Volume" defaultValue={[50]} step={5} onValueChange={change} /></div>);
+    fireEvent.keyDown(screen.getByRole('slider'), { key: 'ArrowRight' });
+    expect(change).toHaveBeenLastCalledWith([45]);
+    fireEvent.keyDown(screen.getByRole('slider'), { key: 'ArrowLeft' });
+    expect(change).toHaveBeenLastCalledWith([50]);
+  });
+
+  it('keeps fractional keyboard steps on the step grid', () => {
+    const change = vi.fn();
+    render(<Slider aria-label="Opacity" defaultValue={[0.2]} min={0} max={1} step={0.1} onValueChange={change} />);
+    fireEvent.keyDown(screen.getByRole('slider'), { key: 'ArrowRight' });
+    expect(change).toHaveBeenLastCalledWith([0.3]);
   });
 
   it('supports vertical orientation, disabled state, and root refs', () => {
