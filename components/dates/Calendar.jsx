@@ -7,14 +7,14 @@ import { useDirection } from '../display/Direction.jsx';
 
 const CSS = `
 .ef-cal{width:max-content;min-width:280px;user-select:none;color:var(--text-primary)}
-.ef-cal__months{display:flex;gap:18px;flex-wrap:wrap}
+.ef-cal__months{display:flex;gap:var(--space-5);flex-wrap:wrap}
 .ef-cal__month-wrap{width:280px}
-.ef-cal__head{display:flex;min-height:34px;align-items:center;gap:6px;margin-bottom:8px}
+.ef-cal__head{display:flex;min-height:34px;align-items:center;gap:var(--space-2);margin-bottom:var(--space-2)}
 .ef-cal__caption{flex:1;text-align:center;font-size:var(--text-sm);font-weight:var(--weight-semibold)}
-.ef-cal__dropdowns{display:flex;flex:1;justify-content:center;gap:5px}.ef-cal__dropdowns .ef-native-select{width:auto}.ef-cal__dropdowns select{height:30px}
-.ef-cal__grid{display:grid;grid-template-columns:repeat(7,36px);gap:2px}
+.ef-cal__dropdowns{display:flex;flex:1;justify-content:center;gap:var(--space-1)}.ef-cal__dropdowns .ef-native-select{width:auto}.ef-cal__dropdowns select{height:30px}
+.ef-cal__grid{display:grid;grid-template-columns:repeat(7,36px);gap:var(--space-0-5)}
 .ef-cal__row{display:contents}
-.ef-cal__dow{text-align:center;font-size:var(--text-xs);font-weight:var(--weight-semibold);color:var(--text-muted);padding:5px 0}
+.ef-cal__dow{text-align:center;font-size:var(--text-xs);font-weight:var(--weight-semibold);color:var(--text-muted);padding:var(--space-1) 0}
 .ef-cal__day{position:relative;display:grid;width:36px;height:34px;place-items:center;border:1px solid transparent;border-radius:var(--radius-sm);background:none;color:var(--text-primary);font:inherit;font-size:var(--text-sm);cursor:pointer}
 .ef-cal__day:hover:not(:disabled){background:var(--surface-sunken)}
 .ef-cal__day:focus-visible{outline:none;box-shadow:var(--focus-ring)}

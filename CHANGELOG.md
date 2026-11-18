@@ -2,6 +2,7 @@
 
 ## Unreleased
 
+- **Dates spacing is on the token scale.** Padding, margin and gap in Calendar, DatePicker, TimePicker and the rest of the dates group take their values from `--space-*`. Values off the 4px scale moved to the nearest step, ties up, by 1 to 2px. The TimePicker keeps the end padding that clears its clock icon.
 - **`meridian-cli` refuses a plain `http://` registry** except on localhost, so files cannot be swapped on the network. Use https.
 - **CI checks the vendored tokens against the pinned design-tokens tag.** `node scripts/sync_tokens.mjs --check-remote` re-fetches the tag in the lock and fails when the lock commit or any vendored file differs. `npm run check` runs it in CI (`CI=true`); locally it stays offline.
 
