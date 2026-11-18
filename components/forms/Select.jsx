@@ -2,7 +2,7 @@
 import React from 'react';
 import { Icon } from '../icons/Icon.jsx';
 import { injectEfCss, mergeRefs, isElementOfType } from './Button.jsx';
-import { Portal, useAnchoredStyle } from '../overlay/Portal.jsx';
+import { Portal, useAnchoredStyle, useHydrated } from '../overlay/Portal.jsx';
 
 const CSS = `
 .ef-select-trigger{display:flex;width:100%;height:var(--control-h-md);align-items:center;justify-content:space-between;gap:8px;padding:0 11px;border:1px solid var(--border-control,var(--border-strong));border-radius:var(--radius-sm);background:var(--surface-sunken);color:var(--text-primary);font:inherit;font-size:var(--text-sm);text-align:start;cursor:pointer}
@@ -40,7 +40,9 @@ export function Select({ value: controlled, defaultValue = '', onValueChange, on
   const [innerValue, setInnerValue] = React.useState(defaultValue);
   const [innerOpen, setInnerOpen] = React.useState(defaultOpen);
   const value = controlled !== undefined ? controlled : innerValue;
-  const open = controlledOpen !== undefined ? controlledOpen : innerOpen;
+  // Closed while React hydrates server HTML (the server rendered no portal),
+  // open right after, so effects keyed on it run with the panel present.
+  const open = useHydrated() && (controlledOpen !== undefined ? controlledOpen : innerOpen);
   const triggerRef = React.useRef(null);
   const contentRef = React.useRef(null);
   const declaredLabels = React.useMemo(() => collectLabels(children), [children]);

@@ -1,7 +1,7 @@
 'use client';
 import React from 'react';
 import { injectEfCss, mergeRefs, buttonVariants, useIsoLayoutEffect } from '../forms/Button.jsx';
-import { Portal, useEscapeLayer, useScrollLock, escapeLayerContext } from '../overlay/Portal.jsx';
+import { Portal, useEscapeLayer, useScrollLock, escapeLayerContext, useHydrated } from '../overlay/Portal.jsx';
 
 const CSS = `
 .ef-alertdialog__overlay{position:fixed;inset:0;z-index:var(--z-overlay);display:grid;place-items:center;padding:24px;background:var(--overlay-scrim);animation:ef-alertdialog-fade var(--dur-med) var(--ease-out)}
@@ -52,7 +52,9 @@ function renderSlot(asChild, children, props, ref) {
 export function AlertDialog({ open, defaultOpen = false, onOpenChange, children }) {
   const controlled = open !== undefined;
   const [internalOpen, setInternalOpen] = React.useState(defaultOpen);
-  const isOpen = controlled ? open : internalOpen;
+  // Closed while React hydrates server HTML (the server rendered no portal),
+  // open right after, so effects keyed on it run with the panel present.
+  const isOpen = useHydrated() && (controlled ? open : internalOpen);
   const triggerRef = React.useRef(null);
   const titleId = React.useId();
   const descriptionId = React.useId();

@@ -2,7 +2,7 @@
 import React from 'react';
 import { injectEfCss, mergeRefs, useIsoLayoutEffect } from '../forms/Button.jsx';
 import { Icon } from '../icons/Icon.jsx';
-import { Portal, useAnchoredStyle } from './Portal.jsx';
+import { Portal, useAnchoredStyle, useHydrated } from './Portal.jsx';
 import { useDirection } from '../display/Direction.jsx';
 
 const CSS = `
@@ -82,7 +82,9 @@ function useMenuKeyboard(ref, close, { sub = false, loop = true, rtl = false } =
 export function DropdownMenu({ open: controlled, defaultOpen = false, onOpenChange, modal = true, children }) {
   injectEfCss('ef-css-dropdown-menu', CSS);
   const [inner, setInner] = React.useState(defaultOpen);
-  const open = controlled !== undefined ? controlled : inner;
+  // Closed while React hydrates server HTML (the server rendered no portal),
+  // open right after, so effects keyed on it run with the panel present.
+  const open = useHydrated() && (controlled !== undefined ? controlled : inner);
   const triggerRef = React.useRef(null);
   const contentRef = React.useRef(null);
   const menuId = React.useId();
@@ -188,7 +190,9 @@ export const DropdownMenuRadioItem = React.forwardRef(function DropdownMenuRadio
 
 export function DropdownMenuSub({ open: controlled, defaultOpen = false, onOpenChange, children }) {
   const [inner, setInner] = React.useState(defaultOpen);
-  const open = controlled !== undefined ? controlled : inner;
+  // Closed while React hydrates server HTML (the server rendered no portal),
+  // open right after, so effects keyed on it run with the panel present.
+  const open = useHydrated() && (controlled !== undefined ? controlled : inner);
   const triggerRef = React.useRef(null);
   const contentRef = React.useRef(null);
   const setOpen = next => { if (controlled === undefined) setInner(next); onOpenChange?.(next); };
