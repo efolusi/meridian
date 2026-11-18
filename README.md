@@ -1,6 +1,6 @@
 # Meridian
 
-**A general-purpose open-source design system by [Efolusi](https://efolusi.com).** 123 accessible React components, 175 design tokens in light, dark and compact, 12 blocks, and 8 full example apps, served browser-native with **no build step**.
+**A general-purpose open-source design system by [Efolusi](https://efolusi.com).** 123 accessible React components, 201 design tokens in light, dark and compact, 12 blocks, and 8 full example apps, served browser-native with **no build step**.
 
 [![License: Apache-2.0](https://img.shields.io/badge/License-Apache_2.0-7A4E2B.svg)](LICENSE)
 [![Docs](https://img.shields.io/badge/docs-meridian.efolusi.com-2C1709.svg)](https://meridian.efolusi.com)
@@ -11,6 +11,10 @@
 **[Live docs](https://meridian.efolusi.com)** · [Components](https://meridian.efolusi.com/site/Components.dc.html) · [Blocks](https://meridian.efolusi.com/site/Blocks.dc.html) · [Example apps](https://meridian.efolusi.com/site/Examples.dc.html) · [Themes](https://meridian.efolusi.com/site/Themes.dc.html)
 
 Warm paper, espresso ink, hairline structure. Copy it, theme it, ship it.
+
+## Ecosystem
+
+Shared tokens: [design-tokens](https://github.com/efolusi/design-tokens). Native twin: [Glamor](https://github.com/efolusi/glamor). Short map: [guidelines/ecosystem.md](guidelines/ecosystem.md).
 
 ## Principles
 

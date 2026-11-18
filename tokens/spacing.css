@@ -1,24 +1,49 @@
-:root{
---space-0:0;--space-1:4px;--space-2:8px;--space-3:12px;--space-4:16px;--space-5:20px;--space-6:24px;--space-8:32px;--space-10:40px;--space-12:48px;--space-16:64px;--space-20:80px;--space-24:96px;--space-32:128px;
---radius-xs:4px;--radius-sm:8px;--radius-md:12px;--radius-lg:16px;--radius-xl:24px;--radius-full:999px;
---container-max:1200px;--container-text:720px;
---control-h-sm:28px;--control-h-md:36px;--control-h-lg:44px;
---tap-min:44px;
---table-pad-y:12px;--table-pad-x:16px;
-}
-/* Compact density — data-heavy B2B views */
-[data-density="compact"]{
---control-h-sm:24px;--control-h-md:30px;--control-h-lg:38px;
---table-pad-y:7px;--table-pad-x:12px;
+/* Generated from tokens.json by scripts/build.mjs. Do not edit. */
+:root {
+  --space-0: 0;
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 20px;
+  --space-6: 24px;
+  --space-8: 32px;
+  --space-10: 40px;
+  --space-12: 48px;
+  --space-16: 64px;
+  --space-20: 80px;
+  --space-24: 96px;
+  --space-32: 128px;
+  --space-0-5: 2px;
+  --radius-xs: 4px;
+  --radius-xs-plus: 6px;
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 16px;
+  --radius-xl: 24px;
+  --radius-full: 999px;
+  --container-max: 1200px;
+  --container-text: 720px;
+  --control-h-sm: 28px;
+  --control-h-md: 36px;
+  --control-h-lg: 44px;
+  --tap-min: 44px;
+  --table-pad-y: 12px;
+  --table-pad-x: 16px;
 }
 
-/* Touch pointers: the default control height (36px) is below the 44px minimum
-   touch target, so raise sm and md to --tap-min there. Compact density keeps
-   its own scale: it exists for mouse-driven data views, and a coarse pointer
-   on a compact view still needs the larger target, so it is raised too.
-   Fine pointers keep the tighter scale — desktop layout does not move. */
+[data-density="compact"] {
+  --control-h-sm: 24px;
+  --control-h-md: 30px;
+  --control-h-lg: 38px;
+  --table-pad-y: 7px;
+  --table-pad-x: 12px;
+}
+
 @media (pointer: coarse) {
   :root, [data-density="compact"] {
-    --control-h-sm:var(--tap-min);--control-h-md:var(--tap-min);--control-h-lg:var(--tap-min);
+    --control-h-sm: var(--tap-min);
+    --control-h-md: var(--tap-min);
+    --control-h-lg: var(--tap-min);
   }
 }

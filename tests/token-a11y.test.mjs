@@ -1,3 +1,4 @@
+import { readTokenCss } from './helpers/token-css.mjs'
 import { execFileSync } from 'node:child_process'
 import { readFileSync } from 'node:fs'
 import { describe, expect, it } from 'vitest'
@@ -5,10 +6,10 @@ import { describe, expect, it } from 'vitest'
 // Ported from PR #66 (DS-04, DS-07, DS-08, DS-10). DS-01, DS-05 and DS-09
 // already shipped differently in 1.22.0 and are not repeated here.
 const read = (path) => readFileSync(path, 'utf8')
-const colors = read('tokens/colors.css')
+const colors = readTokenCss('colors.css')
 const base = read('tokens/base.css')
 const fonts = read('tokens/fonts.css')
-const typography = read('tokens/typography.css')
+const typography = readTokenCss('typography.css')
 
 const AUTO = ':root:not(:where([data-theme="light"]))'
 

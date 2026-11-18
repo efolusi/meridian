@@ -1,10 +1,11 @@
+import { readTokenCss } from './helpers/token-css.mjs'
 import { describe, it, expect } from 'vitest';
 import { readFileSync } from 'node:fs';
 
 // In the dark theme the toast surface (--surface-inverse) is near-white, and
 // the success and warning icons used the dark theme's bright status tones:
 // 2.33:1 and 2.78:1, under the 3:1 non-text minimum (WCAG 1.4.11).
-const colors = readFileSync('tokens/colors.css', 'utf8');
+const colors = readTokenCss('colors.css');
 const toast = readFileSync('components/feedback/Toast.jsx', 'utf8');
 const table = body => Object.fromEntries([...body.matchAll(/(--[\w-]+):([^;]+);/g)].map(m => [m[1], m[2].trim()]));
 const light = table(colors.match(/:root\{([\s\S]*?)\n\}/)[1]);

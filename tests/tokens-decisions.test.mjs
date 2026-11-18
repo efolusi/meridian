@@ -1,11 +1,12 @@
+import { readTokenCss } from './helpers/token-css.mjs'
 import { spawnSync } from 'node:child_process'
 import { readFileSync } from 'node:fs'
 import { describe, expect, it } from 'vitest'
 
 // Owner decisions of 2026-11-13 for the token layer.
-const colors = readFileSync('tokens/colors.css', 'utf8')
-const lightBlock = colors.match(/:root\{([\s\S]*?)\n\}/)[1]
-const darkBlock = colors.match(/\[data-theme="dark"\]\{([\s\S]*?)\n\}/)[1]
+const colors = readTokenCss('colors.css')
+const lightBlock = colors.match(/:root\s*\{([\s\S]*?)\n\}/)[1]
+const darkBlock = colors.match(/\[data-theme="dark"\]\s*\{([\s\S]*?)\n\}/)[1]
 const gate = spawnSync('python3', ['scripts/check_contrast.py'], { encoding: 'utf8' })
 
 describe('form-control edge and accent-subtle ink', () => {
@@ -38,8 +39,11 @@ describe('color-scheme follows the theme', () => {
     expect(darkBlock).toMatch(/color-scheme:\s*dark/)
   })
 
-  it('does not leak color-scheme into tokens.json or the preset', () => {
-    expect(readFileSync('tokens.json', 'utf8')).not.toMatch(/color-scheme/)
+  it('keeps color-scheme out of the tokens and the preset', () => {
+    // tokens.json carries it only as a root $extensions declaration, never as a token.
+    const json = JSON.parse(readFileSync('tokens.json', 'utf8'))
+    expect(Object.keys(json)).not.toContain('color')
+    expect(json.$extensions['com.efolusi.meridian'].base.declarations).toHaveProperty('color-scheme')
     expect(readFileSync('tailwind.preset.js', 'utf8')).not.toMatch(/color-scheme/)
   })
 })
@@ -86,10 +90,10 @@ describe('tokens.json is DTCG with aliases and modes', () => {
   })
 
   it('documents the mode shape at the root', () => {
-    expect(tokens.$extensions[MODES].modes).toEqual({
-      dark: '[data-theme="dark"]',
-      compact: '[data-density="compact"]',
-      coarse: '@media (pointer: coarse)',
-    })
+    const modes = tokens.$extensions[MODES].modes
+    expect(Object.keys(modes)).toEqual(['dark', 'compact', 'coarse', 'increased', 'increased-dark'])
+    expect(modes.dark.blocks[0]).toEqual({ selector: '[data-theme="dark"]' })
+    expect(modes.compact.blocks[0]).toEqual({ selector: '[data-density="compact"]' })
+    expect(modes.coarse.blocks[0]).toEqual({ media: '(pointer: coarse)', selector: ':root, [data-density="compact"]' })
   })
 })

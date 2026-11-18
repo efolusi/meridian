@@ -22,9 +22,9 @@ CSS = pathlib.Path(os.environ.get("CONTRAST_CSS") or
 
 def block(name):
     if name == "light":
-        m = re.search(r":root\{(.*?)\n\}", CSS, re.S)
+        m = re.search(r":root\s*\{(.*?)\n\}", CSS, re.S)
     else:
-        m = re.search(r'\[data-theme="dark"\]\{(.*?)\n\}', CSS, re.S)
+        m = re.search(r'\[data-theme="dark"\]\s*\{(.*?)\n\}', CSS, re.S)
     if not m:
         sys.exit(f"could not locate the {name} token block in tokens/colors.css")
     return m.group(1)

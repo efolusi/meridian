@@ -2,7 +2,7 @@
 
 The entire design system in one file, generated from llms.txt, components/*/, and tokens/*.css by scripts/build_llms.py. Do not edit by hand. The short map of the repository is /llms.txt.
 
-> Meridian is a general-purpose open-source design system by Efolusi: 123 accessible React components, 175 design tokens (light, dark, compact), blocks, charts, and full example apps, served browser-native with zero build step. Apache-2.0 licensed.
+> Meridian is a general-purpose open-source design system by Efolusi: 123 accessible React components, 201 design tokens (light, dark, compact), blocks, charts, and full example apps, served browser-native with zero build step. Apache-2.0 licensed.
 
 Live docs: https://meridian.efolusi.com · Source: https://github.com/efolusi/meridian · License: Apache-2.0
 
@@ -4624,7 +4624,7 @@ export declare const SheetDescription: React.ForwardRefExoticComponent<DialogSlo
 
 ## Design tokens
 
-175 custom property names by file (names only; resolve current values from /styles.css, which imports these files, or /tokens.json):
+201 custom property names by file (names only; resolve current values from /styles.css, which imports these files, or /tokens.json):
 
 ### /tokens/base.css
 
@@ -4639,6 +4639,8 @@ export declare const SheetDescription: React.ForwardRefExoticComponent<DialogSlo
 --accent-subtle
 --accent-subtle-border
 --accent-subtle-fg
+--avatar-bg
+--avatar-fg
 --border-code
 --border-control
 --border-control-hover
@@ -4705,6 +4707,11 @@ export declare const SheetDescription: React.ForwardRefExoticComponent<DialogSlo
 --sand-800
 --sand-900
 --sand-950
+--state-hover-on-card
+--state-hover-on-panel
+--state-hover-on-tab
+--state-hover-on-window
+--state-pressed
 --success-100
 --success-300
 --success-600
@@ -4712,9 +4719,13 @@ export declare const SheetDescription: React.ForwardRefExoticComponent<DialogSlo
 --success-on-dark
 --surface-brand
 --surface-card
+--surface-card-hover
 --surface-code
 --surface-inverse
+--surface-inverse-active
+--surface-inverse-hover
 --surface-page
+--surface-panel
 --surface-subtle
 --surface-sunken
 --text-code
@@ -4743,6 +4754,19 @@ export declare const SheetDescription: React.ForwardRefExoticComponent<DialogSlo
 --ease-in-out
 --ease-out
 --ease-spring
+--opacity-attention
+--opacity-attention-edge
+--opacity-banner
+--opacity-banner-edge
+--opacity-chip
+--opacity-disabled
+--opacity-increased
+--opacity-kbd
+--opacity-pill
+--opacity-ring
+--opacity-selected
+--opacity-soft-hairline
+--opacity-tint
 --shadow-lg
 --shadow-md
 --shadow-sm
@@ -4777,7 +4801,9 @@ export declare const SheetDescription: React.ForwardRefExoticComponent<DialogSlo
 --radius-sm
 --radius-xl
 --radius-xs
+--radius-xs-plus
 --space-0
+--space-0-5
 --space-1
 --space-10
 --space-12

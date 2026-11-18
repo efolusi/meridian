@@ -1,3 +1,4 @@
+import { readTokenCss } from './helpers/token-css.mjs'
 import { readFileSync } from 'node:fs';
 import { describe, expect, it } from 'vitest';
 
@@ -10,7 +11,7 @@ describe('wave 2 pre-release review fixes', () => {
       expect(src, f).not.toMatch(/:hover[^{]*\{border-color:var\(--sand-400\)\}/);
       expect(src, f).toMatch(/border-color:var\(--border-control-hover/);
     }
-    const colors = read('tokens/colors.css');
+    const colors = readTokenCss('colors.css');
     expect(colors).toMatch(/--border-control-hover:var\(--sand-700\)/);
     expect(colors).toMatch(/--border-control-hover:var\(--sand-400\)/);
   });
