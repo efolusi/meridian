@@ -26,6 +26,10 @@ export async function openRegistry(location = DEFAULT_REGISTRY, { fetchImpl = gl
   if (/^https?:\/\//i.test(location)) {
     const base = new URL(location.endsWith('/') ? location : `${location}/`);
     if (base.username || base.password) throw new RegistryError('--registry URL must not carry credentials');
+    // Plain http lets anyone on the path swap the files that get written; allow it only on this machine.
+    if (base.protocol === 'http:' && !['localhost', '127.0.0.1', '[::1]'].includes(base.hostname)) {
+      throw new RegistryError(`--registry ${JSON.stringify(location)} uses plain http; use https (http is allowed only for localhost)`);
+    }
     return httpRegistry(base, fetchImpl);
   }
   // Any other scheme (file:, ftp:, data:, ...). One letter is a Windows drive.
