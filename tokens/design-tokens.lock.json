@@ -1,7 +1,7 @@
 {
   "repo": "https://github.com/efolusi/design-tokens",
-  "ref": "tokens/type-fixes",
-  "commit": "f9095ebe50f7b56cd0f78abab1e1d1ee8cfef3d4",
+  "ref": "v0.1.1",
+  "commit": "ab2a6b11ae490849527206200c174184f1d20da6",
   "files": {
     "tokens.json": "1327a0ac228303c928201fe4d21e7505e1615c41be565ccae42bc13f283b61ac",
     "tokens/colors.css": "f39bafcc471619fc435136bf0aec0712a3f72a2c0b7628f2a12550733f803ee3",
