@@ -13,7 +13,7 @@ const CSS = `
 .ef-genimg--error .ef-genimg__img{opacity:.3}
 .ef-genimg__dark{position:absolute;inset:0;background:var(--media-backdrop);opacity:0;transition:opacity var(--dur-med) var(--ease-out);pointer-events:none}
 .ef-genimg--generating .ef-genimg__dark{opacity:1}
-.ef-genimg__dots{position:absolute;inset:0;background-image:radial-gradient(circle,var(--media-backdrop-dot) 1.3px,transparent 1.7px);background-size:30px 30px;-webkit-mask-image:radial-gradient(ellipse at center,black 10%,transparent 78%);mask-image:radial-gradient(ellipse at center,black 10%,transparent 78%);animation:ef-genimg-pulse 2.8s ease-in-out infinite}
+.ef-genimg__dots{position:absolute;inset:0;background:var(--media-backdrop-dot);-webkit-mask-image:radial-gradient(ellipse at center,black 10%,transparent 78%);mask-image:radial-gradient(ellipse at center,black 10%,transparent 78%);animation:ef-genimg-pulse 2.8s ease-in-out infinite}
 @keyframes ef-genimg-pulse{0%,100%{opacity:.45}50%{opacity:1}}
 .ef-genimg__scrim{position:absolute;inset-inline:0;pointer-events:none;opacity:0;transition:opacity var(--dur-med) var(--ease-out)}
 .ef-genimg--complete .ef-genimg__scrim{opacity:1}
