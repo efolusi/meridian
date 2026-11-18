@@ -4,6 +4,7 @@
 
 - **`meridian-cli` refuses a plain `http://` registry** except on localhost, so files cannot be swapped on the network. Use https.
 - **CI checks the vendored tokens against the pinned design-tokens tag.** `node scripts/sync_tokens.mjs --check-remote` re-fetches the tag in the lock and fails when the lock commit or any vendored file differs. `npm run check` runs it in CI (`CI=true`); locally it stays offline.
+- **One branch: main.** CI runs on main and on pull requests to it; the visual-baseline workflow opens its PR against main; the development site deploys only when its workflow is run by hand.
 
 ## 1.23.0 — 2026-11-18
 
