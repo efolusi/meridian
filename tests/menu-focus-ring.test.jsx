@@ -1,3 +1,4 @@
+import { readTokenCss } from './helpers/token-css.mjs'
 import { describe, it, expect } from 'vitest';
 import { readFileSync } from 'node:fs';
 
@@ -33,7 +34,7 @@ describe('focus ring and cursor on menu-like items', () => {
   });
 
   it('the ring colour holds 3:1 on the panel in both themes', () => {
-    const colors = readFileSync('tokens/colors.css', 'utf8');
+    const colors = readTokenCss('colors.css');
     const table = body => Object.fromEntries([...body.matchAll(/(--[\w-]+):([^;]+);/g)].map(m => [m[1], m[2].trim()]));
     const light = table(colors.match(/:root\{([\s\S]*?)\n\}/)[1]);
     const dark = { ...light, ...table(colors.match(/\[data-theme="dark"\]\{([\s\S]*?)\n\}/)[1]) };

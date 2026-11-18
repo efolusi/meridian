@@ -1,10 +1,11 @@
+import { readTokenCss } from './helpers/token-css.mjs'
 // Popups that portal to <body> must stack above a Dialog (overlay 1200,
 // modal 1300), or opening one inside a Dialog paints it under the scrim.
 import { readFileSync } from 'node:fs';
 import { join } from 'node:path';
 import { describe, expect, it } from 'vitest';
 
-const effects = readFileSync(join(process.cwd(), 'tokens/effects.css'), 'utf8');
+const effects = readTokenCss('effects.css');
 const layer = name => Number(new RegExp(`${name}:(\\d+)`).exec(effects)[1]);
 
 function zIndexOf(file, selector) {

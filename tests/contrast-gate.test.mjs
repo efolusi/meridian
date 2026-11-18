@@ -1,10 +1,11 @@
+import { readTokenCss } from './helpers/token-css.mjs'
 import { spawnSync } from 'node:child_process'
 import { mkdtempSync, readFileSync, writeFileSync } from 'node:fs'
 import { tmpdir } from 'node:os'
 import { join } from 'node:path'
 import { describe, expect, it } from 'vitest'
 
-const source = readFileSync('tokens/colors.css', 'utf8')
+const source = readTokenCss('colors.css')
 
 function gate(css) {
   const env = { ...process.env }

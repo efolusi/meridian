@@ -27,7 +27,7 @@ files.set('package.json', `${JSON.stringify({
   name: '@efolusi/meridian-guard',
   version,
   description: 'Static compliance checks for React applications built with the Meridian design system.',
-  license: 'MIT',
+  license: 'Apache-2.0',
   homepage: 'https://meridian.efolusi.com',
   repository: { type: 'git', url: 'git+https://github.com/efolusi/meridian.git', directory: 'packages/guard' },
   type: 'module',

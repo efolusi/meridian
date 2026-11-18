@@ -1,3 +1,4 @@
+import { readTokenCss } from './helpers/token-css.mjs'
 // @vitest-environment jsdom
 import { readdirSync, readFileSync } from 'node:fs'
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest'
@@ -6,7 +7,7 @@ const read = (p) => readFileSync(p, 'utf8')
 
 // The default radius scale, as tokens/spacing.css declares it (light :root).
 function defaultRadii() {
-  const css = read('tokens/spacing.css')
+  const css = readTokenCss('spacing.css')
   const out = {}
   for (const [, name, px] of css.matchAll(/--(radius-(?:xs|sm|md|lg|xl)):(\d+)px/g)) {
     if (!(name in out)) out['--' + name] = Number(px)

@@ -1,6 +1,6 @@
 # Contributing to Meridian
 
-Meridian is MIT-licensed and open to contributions. Pages are plain HTML, CSS and JSX: open any `.html` in a browser and you are running the real thing. Component changes need one build step, below.
+Meridian is Apache-2.0 licensed and open to contributions. Pages are plain HTML, CSS and JSX: open any `.html` in a browser and you are running the real thing. Component changes need one build step, below.
 
 ## Read this first if you are changing a component
 
@@ -57,4 +57,4 @@ Every component ships four files in its group folder (`components/<group>/`):
 
 ## License
 
-By contributing, you agree your contributions are licensed under the MIT License.
+By contributing, you agree your contributions are licensed under the Apache License 2.0.
