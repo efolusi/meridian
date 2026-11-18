@@ -45,7 +45,7 @@ export function ContextMenuDemo() {
           </ContextMenuSubContent>
         </ContextMenuSub>
         <ContextMenuSeparator />
-        <ContextMenuItem variant="destructive">Delete</ContextMenuItem>
+        <ContextMenuItem variant="danger">Delete</ContextMenuItem>
       </ContextMenuContent>
     </ContextMenu>
   );
@@ -94,7 +94,7 @@ export function DropdownMenuDemo() {
     <DropdownMenu><DropdownMenuTrigger asChild><Button variant="secondary" iconRight="chevron-down">Actions</Button></DropdownMenuTrigger><DropdownMenuContent align="start">
       <DropdownMenuItem>Edit<DropdownMenuShortcut>⌘E</DropdownMenuShortcut></DropdownMenuItem>
       <DropdownMenuItem>Duplicate</DropdownMenuItem><DropdownMenuSeparator />
-      <DropdownMenuItem>Archive</DropdownMenuItem><DropdownMenuItem variant="destructive">Delete</DropdownMenuItem>
+      <DropdownMenuItem>Archive</DropdownMenuItem><DropdownMenuItem variant="danger">Delete</DropdownMenuItem>
     </DropdownMenuContent></DropdownMenu>
   );
 }

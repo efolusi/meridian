@@ -9,8 +9,8 @@ const CSS = `
 .ef-console__row{display:flex;align-items:flex-start;gap:9px;padding:6px 13px;border-top:1px solid var(--border-default);color:var(--text-secondary)}
 .ef-console__row:first-child{border-top:none}
 .ef-console__glyph{display:inline-flex;flex:none;width:14px;margin-top:2px;color:var(--text-muted)}
-.ef-console__row--warn .ef-console__glyph,.ef-console__row--warn .ef-console__msg{color:var(--warning-600)}
-.ef-console__row--error .ef-console__glyph,.ef-console__row--error .ef-console__msg{color:var(--danger-600)}
+.ef-console__row--warning .ef-console__glyph,.ef-console__row--warning .ef-console__msg{color:var(--warning-600)}
+.ef-console__row--danger .ef-console__glyph,.ef-console__row--danger .ef-console__msg{color:var(--danger-600)}
 .ef-console__row--debug .ef-console__glyph{color:var(--text-link)}
 .ef-console__time{flex:none;color:var(--text-muted);font-variant-numeric:tabular-nums}
 .ef-console__msg{flex:1;min-width:0;white-space:pre-wrap;word-break:break-word}
@@ -22,7 +22,7 @@ const CSS = `
 .ef-console__stack{margin:4px 0 0;padding-inline-start:19px;white-space:pre-wrap;color:var(--text-muted);font-size:11.5px}
 .ef-console__jump{position:absolute;inset-inline-end:10px;bottom:10px;display:inline-flex;align-items:center;gap:6px;padding:6px 11px;border:1px solid var(--border-strong);border-radius:var(--radius-full);background:var(--surface-card);box-shadow:var(--shadow-md);cursor:pointer;font-family:var(--font-sans);font-size:12px;font-weight:var(--weight-semibold);color:var(--text-primary)}
 `;
-const GLYPH = { info: 'info', warn: 'triangle-alert', error: 'circle-alert', debug: 'bug' };
+const GLYPH = { info: 'info', warning: 'triangle-alert', danger: 'circle-alert', debug: 'bug' };
 function Row({ e }) {
   const [open, setOpen] = React.useState(false);
   const lvl = e.level || 'log';

@@ -14,7 +14,7 @@ function Demo() {
   return (
     <div style={{ padding: 20, display: 'flex', gap: 12, alignItems: 'flex-start', flexWrap: 'wrap' }}>
       <DropdownMenu><DropdownMenuTrigger asChild><Button variant="secondary" iconRight="chevron-down">Actions</Button></DropdownMenuTrigger><DropdownMenuContent align="start">
-        <DropdownMenuItem>Edit</DropdownMenuItem><DropdownMenuItem>Duplicate<DropdownMenuShortcut>⌘D</DropdownMenuShortcut></DropdownMenuItem><DropdownMenuItem>Export CSV</DropdownMenuItem><DropdownMenuSeparator /><DropdownMenuItem variant="destructive">Delete</DropdownMenuItem>
+        <DropdownMenuItem>Edit</DropdownMenuItem><DropdownMenuItem>Duplicate<DropdownMenuShortcut>⌘D</DropdownMenuShortcut></DropdownMenuItem><DropdownMenuItem>Export CSV</DropdownMenuItem><DropdownMenuSeparator /><DropdownMenuItem variant="danger">Delete</DropdownMenuItem>
       </DropdownMenuContent></DropdownMenu>
       <Popover><PopoverTrigger asChild><Button variant="secondary" iconLeft="funnel">Filter</Button></PopoverTrigger><PopoverContent align="start" width={260}>
         <div style={{ display: 'flex', flexDirection: 'column', gap: 12 }}>
@@ -49,7 +49,7 @@ function Demo() {
           <ContextMenuCheckboxItem defaultChecked>Pin to sidebar</ContextMenuCheckboxItem>
           <ContextMenuSub><ContextMenuSubTrigger>Move to workspace</ContextMenuSubTrigger><ContextMenuSubContent><ContextMenuItem>Operations</ContextMenuItem><ContextMenuItem>Research</ContextMenuItem></ContextMenuSubContent></ContextMenuSub>
           <ContextMenuSeparator />
-          <ContextMenuItem variant="destructive">Delete</ContextMenuItem>
+          <ContextMenuItem variant="danger">Delete</ContextMenuItem>
         </ContextMenuContent>
       </ContextMenu>
       <HoverCard>

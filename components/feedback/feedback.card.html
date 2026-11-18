@@ -17,7 +17,7 @@ function Demo() {
       <Banner tone="warning" icon="triangle-alert" action="Add card" onDismiss={() => {}}><strong>Trial ends in 3 days.</strong> Your workspace pauses after that.</Banner>
       <div style={{ padding: 20, display: 'flex', flexDirection: 'column', gap: 14, maxWidth: 420 }}>
       <Alert className="ef-alert--warning"><Icon name="triangle-alert" size={16} /><AlertTitle>Trial ends in 3 days</AlertTitle><AlertDescription>Add a card to keep your workspace running.</AlertDescription><AlertAction><Button size="sm" variant="secondary">Add card</Button></AlertAction></Alert>
-      <Alert variant="destructive"><Icon name="circle-alert" size={16} /><AlertTitle>Payment failed</AlertTitle><AlertDescription>Your card ending 4242 was declined.</AlertDescription></Alert>
+      <Alert variant="danger"><Icon name="circle-alert" size={16} /><AlertTitle>Payment failed</AlertTitle><AlertDescription>Your card ending 4242 was declined.</AlertDescription></Alert>
       <Progress label="Seats used" value={4} max={5} showValue format={(v, m) => v + ' of ' + m} />
       <Progress label="API quota" value={92} tone="danger" showValue />
       <div className="show-tip" style={{ display: 'flex', gap: 16, alignItems: 'center' }}>

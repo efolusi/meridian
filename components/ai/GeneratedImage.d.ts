@@ -4,9 +4,9 @@ export interface GeneratedImageAction {
   onClick?: () => void;
 }
 export interface GeneratedImageProps {
-  /** 'queued' | 'generating' | 'complete' | 'error' */
+  /** 'queued' | 'busy' | 'complete' | 'danger' */
   /** @default 'complete' */
-  status?: 'queued' | 'generating' | 'complete' | 'error';
+  status?: 'queued' | 'busy' | 'complete' | 'danger';
   src?: string;
   alt?: string;
   /** Prompt shown top-left over the image */

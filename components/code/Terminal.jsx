@@ -10,8 +10,8 @@ const CSS = `
 .ef-term__line{white-space:pre-wrap;color:var(--code-ink)}
 .ef-term__line--cmd{color:var(--cream-50)}
 .ef-term__line--cmd::before{content:'$ ';color:var(--caramel-500)}
-.ef-term__line--ok{color:var(--success-on-dark)}
-.ef-term__line--err{color:var(--danger-on-dark)}
+.ef-term__line--success{color:var(--success-on-dark)}
+.ef-term__line--danger{color:var(--danger-on-dark)}
 .ef-term__line--info{color:var(--code-ink-subtle)}
 .ef-term__time{color:var(--code-ink-subtle);margin-inline-end:10px}
 @keyframes ef-term-caret{0%,100%{opacity:1}50%{opacity:0}}

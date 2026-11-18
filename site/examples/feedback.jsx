@@ -42,7 +42,7 @@ export function AlertTones() {
     <div style={{ display: 'flex', flexDirection: 'column', gap: 12, width: '100%', maxWidth: 520 }}>
       <Alert className="ef-alert--success"><Icon name="circle-check" size={16} /><AlertTitle>Backup restored</AlertTitle><AlertDescription>All 42 tables verified.</AlertDescription></Alert>
       <Alert className="ef-alert--warning"><Icon name="triangle-alert" size={16} /><AlertTitle>Budget at 85%</AlertTitle><AlertDescription>Runs pause at 100% unless you raise the cap.</AlertDescription></Alert>
-      <Alert variant="destructive"><Icon name="circle-alert" size={16} /><AlertTitle>Deploy failed</AlertTitle><AlertDescription>Image digest mismatch on api-7f3c.</AlertDescription></Alert>
+      <Alert variant="danger"><Icon name="circle-alert" size={16} /><AlertTitle>Deploy failed</AlertTitle><AlertDescription>Image digest mismatch on api-7f3c.</AlertDescription></Alert>
     </div>
   );
 }

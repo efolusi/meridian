@@ -11,7 +11,7 @@ describe('Bubble compatibility contract', () => {
     expect(screen.getByText('Ready').getAttribute('data-slot')).toBe('bubble-content');
   });
 
-  it.each(['default', 'secondary', 'muted', 'tinted', 'outline', 'ghost', 'destructive'])('supports the %s variant', variant => {
+  it.each(['default', 'secondary', 'muted', 'tinted', 'outline', 'ghost', 'danger'])('supports the %s variant', variant => {
     render(<Bubble variant={variant} data-testid="bubble"><BubbleContent>Message</BubbleContent></Bubble>);
     expect(screen.getByTestId('bubble').getAttribute('data-variant')).toBe(variant);
   });

@@ -24,8 +24,8 @@ describe('Alert compatibility contract', () => {
   });
 
   it('supports the destructive variant', () => {
-    render(<Alert variant="destructive" data-testid="alert"><AlertTitle>Unable to save</AlertTitle></Alert>);
-    expect(screen.getByTestId('alert').className).toContain('ef-alert--destructive');
+    render(<Alert variant="danger" data-testid="alert"><AlertTitle>Unable to save</AlertTitle></Alert>);
+    expect(screen.getByTestId('alert').className).toContain('ef-alert--danger');
   });
 
   it('forwards refs, native attributes, classes, and styles on every part', () => {

@@ -1,8 +1,8 @@
 export interface ToolCallProps {
   /** Tool name, mono */
   name: string;
-  /** @default 'running' */
-  status?: 'pending' | 'approval' | 'running' | 'success' | 'error';
+  /** @default 'busy' */
+  status?: 'pending' | 'approval' | 'busy' | 'success' | 'danger';
   /** Input args: an object renders a key/value grid, a string renders raw */
   args?: object | string;
   /** Result body (also accepts children) */

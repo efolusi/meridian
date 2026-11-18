@@ -99,8 +99,8 @@ export function ToolCallDemo() {
   return (
     <div style={{ display: 'flex', flexDirection: 'column', gap: 10, width: '100%', maxWidth: 520 }}>
       <ToolCall name="search_flights" status="success" defaultOpen args={{ from: 'LIS', arrive_before: '15:00' }} result="3 nonstops found. Best: TP 1287, 10:20 → 13:05." />
-      <ToolCall name="book_hotel" status="running" args={{ city: 'Lisbon', nights: 2 }} />
-      <ToolCall name="charge_card" status="error" args={{ amount: '$412.80' }} error="Card ending 4412 declined. Retry with the backup method?" />
+      <ToolCall name="book_hotel" status="busy" args={{ city: 'Lisbon', nights: 2 }} />
+      <ToolCall name="charge_card" status="danger" args={{ amount: '$412.80' }} error="Card ending 4412 declined. Retry with the backup method?" />
     </div>
   );
 }
@@ -112,10 +112,10 @@ export function ToolCallApproval() {
   return (
     <div style={{ width: '100%', maxWidth: 520 }}>
       <ToolCall name="send_emails" status={status} args={{ to: '12 customers', template: 'refund-apology' }}
-        onApprove={() => { setStatus('running'); setTimeout(() => setStatus('success'), 1500); }}
-        onReject={() => setStatus('error')}
+        onApprove={() => { setStatus('busy'); setTimeout(() => setStatus('success'), 1500); }}
+        onReject={() => setStatus('danger')}
         result={status === 'success' ? 'All 12 emails delivered.' : null}
-        error={status === 'error' ? 'Rejected by Ada. Nothing was sent.' : null} />
+        error={status === 'danger' ? 'Rejected by Ada. Nothing was sent.' : null} />
     </div>
   );
 }
@@ -330,8 +330,8 @@ export function GeneratedImageDemo() {
   return (
     <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 1fr', gap: 12, width: '100%', maxWidth: 640 }}>
       <GeneratedImage status="queued" prompt="Espresso machine, isometric" />
-      <GeneratedImage status="generating" prompt="Espresso machine, isometric" />
-      <GeneratedImage status="error" prompt="Espresso machine, isometric" error="Rate limit hit" onRetry={() => {}} />
+      <GeneratedImage status="busy" prompt="Espresso machine, isometric" />
+      <GeneratedImage status="danger" prompt="Espresso machine, isometric" error="Rate limit hit" onRetry={() => {}} />
     </div>
   );
 }
@@ -340,9 +340,9 @@ export function GeneratedImageDemo() {
 // @live — clock/interval content; hidden during visual baseline capture
 export function SandboxDemo() {
   const { Sandbox } = window.EfolusiDesignSystem_4ffc3d;
-  const [state, setState] = React.useState('running');
+  const [state, setState] = React.useState('busy');
   React.useEffect(() => {
-    const id = setInterval(() => setState(s => s === 'running' ? 'success' : s === 'success' ? 'error' : 'running'), 2600);
+    const id = setInterval(() => setState(s => s === 'busy' ? 'success' : s === 'success' ? 'danger' : 'busy'), 2600);
     return () => clearInterval(id);
   }, []);
   return (
@@ -362,8 +362,8 @@ export function WebPreviewDemo() {
     <div style={{ width: '100%', maxWidth: 620 }}>
       <WebPreview url="https://status.efolusi.dev" height={240} logs={[
         { level: 'info', text: 'hydrated in 84ms' },
-        { level: 'warn', text: 'preload unused: fonts/figtree.woff2' },
-        { level: 'error', text: "Uncaught TypeError: retries is undefined" },
+        { level: 'warning', text: 'preload unused: fonts/figtree.woff2' },
+        { level: 'danger', text: "Uncaught TypeError: retries is undefined" },
       ]}>
         <div style={{ padding: 28 }}>
           <div style={{ fontFamily: 'var(--font-display)', fontSize: 22, color: 'var(--text-primary)', marginBottom: 6 }}>All systems operational</div>

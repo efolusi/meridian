@@ -2140,7 +2140,7 @@
       "name": "alert",
       "type": "registry:ui",
       "title": "Alert + AlertTitle + AlertDescription + AlertAction",
-      "description": "Notifikasi inline composable dengan varian `default` dan `destructive`. Susun ikon, `AlertTitle`, `AlertDescription`, dan `AlertAction` sebagai children.",
+      "description": "Notifikasi inline composable dengan varian `default` dan `danger`. Susun ikon, `AlertTitle`, `AlertDescription`, dan `AlertAction` sebagai children.",
       "dependencies": [
         "react"
       ],

@@ -15,7 +15,7 @@ const CSS = `
 .ef-bubble[data-variant="tinted"]>.ef-bubble__content{background:var(--accent-subtle);color:var(--text-primary)}
 .ef-bubble[data-variant="outline"]>.ef-bubble__content{border-color:var(--border-default);background:var(--surface-card);color:var(--text-primary)}
 .ef-bubble[data-variant="ghost"]>.ef-bubble__content{padding:0;border-radius:0;background:transparent;color:var(--text-primary)}
-.ef-bubble[data-variant="destructive"]>.ef-bubble__content{background:var(--danger-subtle);color:var(--danger-700)}
+.ef-bubble[data-variant="danger"]>.ef-bubble__content{background:var(--danger-subtle);color:var(--danger-700)}
 .ef-bubble__content:is(button,a){cursor:pointer;text-align:start;transition:filter var(--dur-fast) var(--ease-out),background var(--dur-fast) var(--ease-out)}
 .ef-bubble__content:is(button,a):hover{filter:brightness(.96)}
 .ef-bubble__content:is(button,a):focus-visible{outline:none;box-shadow:var(--focus-ring)}
@@ -38,7 +38,7 @@ export const BubbleGroup = React.forwardRef(function BubbleGroup({ className, ..
 
 export const Bubble = React.forwardRef(function Bubble({ variant = 'default', align = 'start', className, ...rest }, ref) {
   injectEfCss('ef-css-bubble', CSS);
-  const resolvedVariant = ['default', 'secondary', 'muted', 'tinted', 'outline', 'ghost', 'destructive'].includes(variant) ? variant : 'default';
+  const resolvedVariant = ['default', 'secondary', 'muted', 'tinted', 'outline', 'ghost', 'danger'].includes(variant) ? variant : 'default';
   const resolvedAlign = align === 'end' ? 'end' : 'start';
   return <div {...rest} ref={ref} data-slot="bubble" data-variant={resolvedVariant} data-align={resolvedAlign} className={classes('ef-bubble', className)} />;
 });

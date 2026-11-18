@@ -2,6 +2,13 @@
 
 ## Unreleased
 
+- **Breaking: one set of status and variant names.** Every status-bearing component now uses `success`, `warning`, `danger`, `info`, `neutral` and `busy`. The old names are gone, with no aliases:
+  - `StatusDot` `status`: `ok` → `success`, `warn` → `warning`, `err` → `danger`, `off` → `neutral`.
+  - `Terminal` line `type`: `ok` → `success`, `err` → `danger`.
+  - `Console` and `WebPreview` log `level`: `warn` → `warning`, `error` → `danger`.
+  - `ToolCall` and `Sandbox` `status`: `running` → `busy`, `error` → `danger`. `ToolCall` now defaults to `busy`.
+  - `GeneratedImage` `status`: `generating` → `busy`, `error` → `danger`.
+  - `variant="destructive"` → `variant="danger"` on Button, Alert, Badge, Bubble, DropdownMenuItem, ContextMenuItem and InputGroupButton. Button had both; `danger` stays.
 - **`meridian-cli` refuses a plain `http://` registry** except on localhost, so files cannot be swapped on the network. Use https.
 - **CI checks the vendored tokens against the pinned design-tokens tag.** `node scripts/sync_tokens.mjs --check-remote` re-fetches the tag in the lock and fails when the lock commit or any vendored file differs. `npm run check` runs it in CI (`CI=true`); locally it stays offline.
 

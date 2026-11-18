@@ -1,6 +1,6 @@
 export interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   /** @default 'default' */
-  variant?: 'default' | 'outline' | 'ghost' | 'destructive' | 'secondary' | 'link' | 'primary' | 'danger' | 'brand';
+  variant?: 'default' | 'outline' | 'ghost' | 'secondary' | 'link' | 'primary' | 'danger' | 'brand';
   /** @default 'default' */
   size?: 'default' | 'xs' | 'sm' | 'lg' | 'icon' | 'icon-xs' | 'icon-sm' | 'icon-lg' | 'md';
   /** Lucide icon name rendered before the label */

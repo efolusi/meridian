@@ -1,6 +1,6 @@
 export interface WebPreviewLog {
-  /** 'log' | 'info' | 'warn' | 'error' */
-  level?: 'log' | 'info' | 'warn' | 'error';
+  /** 'log' | 'info' | 'warning' | 'danger' */
+  level?: 'log' | 'info' | 'warning' | 'danger';
   text: React.ReactNode;
 }
 export interface WebPreviewProps {

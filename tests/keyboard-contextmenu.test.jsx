@@ -23,7 +23,7 @@ describe('ContextMenu', () => {
           <ContextMenuItem onSelect={() => onSelect('rename')}>Rename<ContextMenuShortcut>F2</ContextMenuShortcut></ContextMenuItem>
           <ContextMenuItem onSelect={() => onSelect('duplicate')}>Duplicate</ContextMenuItem>
           <ContextMenuSeparator />
-          <ContextMenuItem variant="destructive" onSelect={() => onSelect('delete')}>Delete</ContextMenuItem>
+          <ContextMenuItem variant="danger" onSelect={() => onSelect('delete')}>Delete</ContextMenuItem>
         </ContextMenuContent>
       </ContextMenu>
     );

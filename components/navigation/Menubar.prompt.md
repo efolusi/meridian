@@ -9,7 +9,7 @@ A composable application menu bar with roving top-level focus, arrow-key menu sw
     <MenubarContent>
       <MenubarItem>New document <MenubarShortcut>⌘N</MenubarShortcut></MenubarItem>
       <MenubarSeparator />
-      <MenubarItem variant="destructive">Delete draft</MenubarItem>
+      <MenubarItem variant="danger">Delete draft</MenubarItem>
     </MenubarContent>
   </MenubarMenu>
 </Menubar>

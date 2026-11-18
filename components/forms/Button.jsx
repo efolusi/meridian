@@ -29,8 +29,6 @@ const CSS = `
 .ef-btn--brand:hover{background:var(--brand-800)}
 .ef-btn--outline{background:transparent;color:var(--text-primary);border-color:var(--border-strong)}
 .ef-btn--outline:hover{background:var(--surface-sunken)}
-.ef-btn--destructive{background:var(--danger-600);color:var(--danger-contrast)}
-.ef-btn--destructive:hover{background:var(--danger-700)}
 .ef-btn--link{height:auto;padding:0;background:transparent;color:var(--text-link);text-underline-offset:4px}
 .ef-btn--link:hover{color:var(--text-link-hover);text-decoration:none}
 @keyframes ef-spin{to{transform:rotate(360deg)}}

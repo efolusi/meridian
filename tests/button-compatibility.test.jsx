@@ -3,7 +3,7 @@ import { fireEvent, render, screen } from '@testing-library/react';
 import { describe, expect, it, vi } from 'vitest';
 import { Button, buttonVariants } from '../components/forms/Button.jsx';
 
-const VARIANTS = ['default', 'outline', 'ghost', 'destructive', 'secondary', 'link'];
+const VARIANTS = ['default', 'outline', 'ghost', 'danger', 'secondary', 'link'];
 const SIZES = ['default', 'xs', 'sm', 'lg', 'icon', 'icon-xs', 'icon-sm', 'icon-lg'];
 
 describe('Button compatibility contract', () => {

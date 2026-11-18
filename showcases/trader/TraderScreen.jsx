@@ -1,6 +1,6 @@
 const { Stat, Sparkline, BarChart, SegmentedControl, Table, Badge, Switch, Slider, Progress, Avatar, AvatarFallback, Card, CardAction, CardContent, CardDescription, CardHeader, CardTitle, Button, StatusDot, Divider, Icon, DropdownMenu, DropdownMenuTrigger, DropdownMenuContent, DropdownMenuItem, DropdownMenuSeparator, IconButton, Toaster, toast } = window.EfolusiDesignSystem_4ffc3d;
 
-function PositionActionMenu({ trigger, items, onSelect }) { return <DropdownMenu><DropdownMenuTrigger asChild>{trigger}</DropdownMenuTrigger><DropdownMenuContent align="end">{items.map((item, index) => item === 'separator' ? <DropdownMenuSeparator key={'separator-' + index} /> : <DropdownMenuItem key={item.id} variant={item.danger ? 'destructive' : 'default'} onSelect={() => onSelect?.(item.id)}>{item.icon ? <Icon name={item.icon} size={15} /> : null}{item.label}</DropdownMenuItem>)}</DropdownMenuContent></DropdownMenu>; }
+function PositionActionMenu({ trigger, items, onSelect }) { return <DropdownMenu><DropdownMenuTrigger asChild>{trigger}</DropdownMenuTrigger><DropdownMenuContent align="end">{items.map((item, index) => item === 'separator' ? <DropdownMenuSeparator key={'separator-' + index} /> : <DropdownMenuItem key={item.id} variant={item.danger ? 'danger' : 'default'} onSelect={() => onSelect?.(item.id)}>{item.icon ? <Icon name={item.icon} size={15} /> : null}{item.label}</DropdownMenuItem>)}</DropdownMenuContent></DropdownMenu>; }
 
 const SERIES = { '24h': [98, 99, 97, 101, 103, 102, 105, 104, 107, 106, 109, 112], '7d': [88, 92, 90, 95, 93, 99, 104, 101, 106, 110, 108, 112], '30d': [72, 78, 75, 82, 86, 84, 90, 95, 92, 101, 107, 112] };
 const POSITIONS = [
@@ -25,7 +25,7 @@ function TraderScreen() {
             <div style={{ display: 'flex', alignItems: 'center', gap: 6 }}>
               <a href="../console/index.html" title="Back to Console" style={{ fontFamily: 'var(--font-display)', fontWeight: 680, letterSpacing: '-0.02em', fontSize: 15, color: 'var(--text-secondary)', textDecoration: 'none' }}>Fernwick</a><span aria-hidden="true" style={{ color: 'var(--text-muted)' }}>/</span>
               <h1 style={{ fontSize: 24, fontWeight: 680 }}>Trading</h1>
-              <StatusDot status={auto ? 'busy' : 'off'} pulse={auto} label={auto ? 'Robot active' : 'Robot paused'} />
+              <StatusDot status={auto ? 'busy' : 'neutral'} pulse={auto} label={auto ? 'Robot active' : 'Robot paused'} />
               <Badge variant="secondary">Sample data</Badge>
             </div>
             <div style={{ display: 'flex', alignItems: 'baseline', gap: 12, marginTop: 16 }}>

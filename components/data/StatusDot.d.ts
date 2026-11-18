@@ -1,6 +1,6 @@
 export interface StatusDotProps extends Omit<React.HTMLAttributes<HTMLSpanElement>, 'children'> {
-  /** @default 'ok' */
-  status?: 'ok' | 'warn' | 'err' | 'busy' | 'off';
+  /** @default 'success' */
+  status?: 'success' | 'warning' | 'danger' | 'busy' | 'neutral';
   label?: React.ReactNode;
   /** Text announced for the status; defaults to OK / Warning / Error / Busy / Offline */
   statusLabel?: string;

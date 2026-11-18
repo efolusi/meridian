@@ -1,7 +1,7 @@
 import type * as React from 'react';
 
 export interface BubbleProps extends React.HTMLAttributes<HTMLDivElement> {
-  variant?: 'default' | 'secondary' | 'muted' | 'tinted' | 'outline' | 'ghost' | 'destructive';
+  variant?: 'default' | 'secondary' | 'muted' | 'tinted' | 'outline' | 'ghost' | 'danger';
   align?: 'start' | 'end';
 }
 export interface BubbleContentProps extends React.HTMLAttributes<HTMLDivElement> { asChild?: boolean; }

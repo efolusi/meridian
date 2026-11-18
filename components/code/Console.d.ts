@@ -1,6 +1,6 @@
 export interface ConsoleEntry {
-  /** 'log' | 'info' | 'warn' | 'error' | 'debug' */
-  level?: 'log' | 'info' | 'warn' | 'error' | 'debug';
+  /** 'log' | 'info' | 'warning' | 'danger' | 'debug' */
+  level?: 'log' | 'info' | 'warning' | 'danger' | 'debug';
   time?: string;
   text: React.ReactNode;
   /** Collapsible stack trace */

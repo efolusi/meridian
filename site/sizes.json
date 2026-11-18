@@ -1,16 +1,16 @@
 {
   "totals": {
     "@efolusi/meridian": {
-      "bytes": 356106,
-      "gzip": 80154
+      "bytes": 356109,
+      "gzip": 80151
     },
     "dist/components.css": {
-      "bytes": 198579,
-      "gzip": 28179
+      "bytes": 198379,
+      "gzip": 28135
     },
     "_ds_bundle.js": {
-      "bytes": 813384,
-      "gzip": 145009
+      "bytes": 813187,
+      "gzip": 144983
     }
   },
   "modules": [
@@ -32,8 +32,8 @@
         "BubbleContent",
         "BubbleReactions"
       ],
-      "bytes": 1767,
-      "gzip": 749
+      "bytes": 1762,
+      "gzip": 745
     },
     {
       "module": "ai/ChatMessage.js",
@@ -96,7 +96,7 @@
       "exports": [
         "GeneratedImage"
       ],
-      "bytes": 46451,
+      "bytes": 46441,
       "gzip": 7689
     },
     {
@@ -198,8 +198,8 @@
       "exports": [
         "Sandbox"
       ],
-      "bytes": 46307,
-      "gzip": 7747
+      "bytes": 46303,
+      "gzip": 7748
     },
     {
       "module": "ai/SelectionQuote.js",
@@ -252,8 +252,8 @@
       "exports": [
         "ToolCall"
       ],
-      "bytes": 47785,
-      "gzip": 8039
+      "bytes": 47778,
+      "gzip": 8045
     },
     {
       "module": "ai/Transcript.js",
@@ -279,8 +279,8 @@
       "exports": [
         "WebPreview"
       ],
-      "bytes": 48116,
-      "gzip": 8473
+      "bytes": 48121,
+      "gzip": 8474
     },
     {
       "module": "code/CodeBlock.js",
@@ -297,8 +297,8 @@
       "exports": [
         "Console"
       ],
-      "bytes": 47013,
-      "gzip": 8009
+      "bytes": 47017,
+      "gzip": 8010
     },
     {
       "module": "code/CopyField.js",
@@ -442,8 +442,8 @@
       "exports": [
         "StatusDot"
       ],
-      "bytes": 845,
-      "gzip": 479
+      "bytes": 865,
+      "gzip": 487
     },
     {
       "module": "data/Table.js",
