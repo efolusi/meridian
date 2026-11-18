@@ -116,7 +116,7 @@
 </div>
 <footer style="view-transition-name:site-foot;border-top:1px solid var(--border-default)">
 <div class="site-foot-row pad-sm" style="max-width:1200px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;padding:20px 28px;font-size:13px;color:var(--text-muted)">
-<span>Built by <a href="https://efolusi.com" style="color:var(--text-secondary);text-decoration:none">Efolusi</a>. The source code is available on <a href="https://github.com/efolusi/meridian" style="color:var(--text-secondary);text-decoration:none">GitHub</a>. MIT licensed.</span>
+<span>Built by <a href="https://efolusi.com" style="color:var(--text-secondary);text-decoration:none">Efolusi</a>. The source code is available on <a href="https://github.com/efolusi/meridian" style="color:var(--text-secondary);text-decoration:none">GitHub</a>. Apache-2.0 licensed.</span>
 <span style="display:flex;gap:16px"><a href="https://github.com/efolusi/meridian/blob/main/LICENSE" style="color:var(--text-secondary);text-decoration:none" style-hover="color:var(--text-primary)">License</a><a href="https://github.com/efolusi/meridian/blob/main/CONTRIBUTING.md" style="color:var(--text-secondary);text-decoration:none" style-hover="color:var(--text-primary)">Contributing</a><a href="../llms.txt" style="color:var(--text-secondary);text-decoration:none" style-hover="color:var(--text-primary)">llms.txt</a></span>
 </div>
 </footer>
@@ -203,7 +203,7 @@ class Component extends DCLogic {
         p('The site is plain static files with no build step, so any static web server can host your own copy. Serve the repository root and open index.html, which forwards to the docs home.', 'Situs ini berupa berkas statis biasa tanpa langkah build, jadi server web statis apa pun bisa menghosting salinan Anda sendiri. Sajikan root repositori dan buka index.html, yang meneruskan ke beranda docs.'),
         p('The official site at meridian.efolusi.com is served the same way, by Nginx. Once the checks pass, a push to the dev branch runs scripts/deploy-dev-static.sh and a push to main runs scripts/deploy-prod-static.sh. Each script copies the exact files of that commit into a release folder named after its SHA, points the live current link at the new release in one step, and points it back if the release check fails. Production publishes only the public site files. Cache headers and the 404 page are set in the Nginx site configs under nginx/, so reuse those rules on your own server.', 'Situs resmi di meridian.efolusi.com disajikan dengan cara yang sama, oleh Nginx. Setelah pemeriksaan lulus, push ke branch dev menjalankan scripts/deploy-dev-static.sh dan push ke main menjalankan scripts/deploy-prod-static.sh. Tiap skrip menyalin berkas persis dari commit itu ke folder rilis yang dinamai sesuai SHA-nya, mengarahkan tautan current yang aktif ke rilis baru dalam satu langkah, dan mengembalikannya bila pemeriksaan rilis gagal. Produksi hanya menerbitkan berkas situs publik. Header cache dan halaman 404 diatur di konfigurasi situs Nginx di bawah nginx/, jadi pakai ulang aturan itu di server Anda sendiri.'),
         h2('vendor', 'Vendor single components', 'Vendor komponen tunggal'),
-        p('Prefer owning the source? Copy the component file and its types straight into your codebase. MIT, no attribution required. Most components also import a few Meridian siblings (Icon, Button, IconButton, Field, Portal among them) plus the shared stylesheet tokens; each registry item lists those under registryDependencies, so copy them too.', 'Lebih suka memiliki source-nya? Salin berkas komponen dan tipenya langsung ke basis kode Anda. MIT, tanpa atribusi. Sebagian besar komponen juga mengimpor beberapa saudara Meridian (di antaranya Icon, Button, IconButton, Field, Portal) plus token stylesheet bersama; tiap item registry mendaftarnya di registryDependencies, jadi salin juga.'),
+        p('Prefer owning the source? Copy the component file and its types straight into your codebase. Apache-2.0: keep the license notice. Most components also import a few Meridian siblings (Icon, Button, IconButton, Field, Portal among them) plus the shared stylesheet tokens; each registry item lists those under registryDependencies, so copy them too.', 'Lebih suka memiliki source-nya? Salin berkas komponen dan tipenya langsung ke basis kode Anda. Apache-2.0: sertakan pemberitahuan lisensinya. Sebagian besar komponen juga mengimpor beberapa saudara Meridian (di antaranya Icon, Button, IconButton, Field, Portal) plus token stylesheet bersama; tiap item registry mendaftarnya di registryDependencies, jadi salin juga.'),
         code('text', 'terminal', 'cp meridian/components/forms/Button.jsx  src/ui/\ncp meridian/components/forms/Button.d.ts src/ui/'),
         h2('fonts', 'Fonts', 'Font'),
         p('Meridian uses Bricolage Grotesque for display, Figtree for text, and JetBrains Mono for code. The stylesheet loads them via @font-face from assets/fonts; swap the files to rebrand.', 'Meridian memakai Bricolage Grotesque untuk display, Figtree untuk teks, dan JetBrains Mono untuk kode. Stylesheet memuatnya via @font-face dari assets/fonts; ganti berkasnya untuk rebranding.'),
@@ -294,7 +294,7 @@ class Component extends DCLogic {
         p('One namespace and one prop grammar mean a model that has seen three Meridian components can work across all 123. Semantic tokens mean generated screens inherit dark mode and density for free. And because components are flat source files, a model can read the implementation instead of guessing.', 'Satu namespace dan satu tata bahasa props berarti model yang telah melihat tiga komponen Meridian bisa bekerja dengan seluruh 123 komponen. Token semantik berarti layar hasil generate mewarisi mode gelap dan densitas secara gratis. Dan karena komponen adalah berkas source datar, model bisa membaca implementasinya alih-alih menebak.'),
         code('javascript', 'agent-output.js', "const { Card, CardContent, CardHeader, CardTitle, Stat, BarChart } = window.EfolusiDesignSystem_4ffc3d;\n// a model that knows the grammar composes correctly:\n<Card><CardHeader><CardTitle>Runs this week</CardTitle></CardHeader><CardContent>\n  <Stat label=\"Total\" value=\"1,284\" delta=\"+12.4%\" direction=\"up\" />\n  <BarChart data={[42, 58, 51, 74, 66, 30, 89]} />\n</CardContent></Card>"),
       ] },
-      { group: 'Guides', id: 'contributing', title: 'Contributing', lede: 'Meridian is MIT-licensed and open to contributions. The bar: it must feel settled.', blocks: [
+      { group: 'Guides', id: 'contributing', title: 'Contributing', lede: 'Meridian is Apache-2.0 licensed and open to contributions. The bar: it must feel settled.', blocks: [
         h2('rules', 'Ground rules', 'Aturan dasar'),
         list([
           ['Semantic tokens only.', 'A PR that hardcodes a hex value or references a raw ramp is returned.', 'Hanya token semantik.', 'PR yang menuliskan nilai hex secara kaku atau merujuk ramp mentah akan dikembalikan.'],
@@ -425,7 +425,7 @@ class Component extends DCLogic {
           ['65 components', 'across 12 groups, each with source, types, and prompt guide.', '65 komponen', 'dalam 12 grup, masing-masing dengan source, tipe, dan panduan prompt.'],
           ['175 tokens', 'in light, dark, and compact, derived from the Meridian mark.', '175 token', 'dalam terang, gelap, dan ringkas, diturunkan dari logo Meridian.'],
           ['8 product kits', 'with connected journeys, 5 blocks, 5 page templates.', '8 kit produk', 'dengan alur terhubung, 5 blok, 5 templat halaman.'],
-          ['MIT license.', 'Copy freely, ship fast.', 'Lisensi MIT.', 'Salin bebas, rilis cepat.'],
+          ['Apache-2.0 license.', 'Copy freely, ship fast.', 'Lisensi Apache-2.0.', 'Salin bebas, rilis cepat.'],
         ]),
       ] },
     ];
@@ -484,7 +484,7 @@ class Component extends DCLogic {
       typography: 'Dua keluarga huruf dan satu mono, pada skala yang mapan. Sentence case di mana-mana.',
       monorepo: 'Satu pohon, ditata menurut tujuan: inti sistem di root, satu direktori dangkal per permukaan, dan situs docs yang mengonsumsi semuanya.',
       ai: 'Meridian ditulis agar terbaca oleh model sebanyak oleh manusia.',
-      contributing: 'Meridian berlisensi MIT dan terbuka untuk kontribusi. Standarnya: harus terasa mapan.',
+      contributing: 'Meridian berlisensi Apache-2.0 dan terbuka untuk kontribusi. Standarnya: harus terasa mapan.',
       changelog: 'Perubahan penting, terbaru dulu. Riwayat lengkap di CHANGELOG.md.',
     };
     const tGroup = (g) => (lang === 'id' && GROUP_ID[g]) || g;

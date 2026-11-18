@@ -60,4 +60,4 @@ MERIDIAN_SOURCE=.. node server.mjs   # read the local registry
 node smoke.mjs                        # quick end-to-end check of every tool
 ```
 
-MIT licensed.
+Apache-2.0 licensed.

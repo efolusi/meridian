@@ -107,7 +107,7 @@ Pin React 18 for this path: React 19 dropped the UMD builds the bundle relies on
 
 ## Owning the source
 
-Any path can drop to vendoring: copy `components/<group>/<Name>.jsx` and its `.d.ts` straight into your codebase (MIT, no attribution). Each registry item at `site/registry/<name>.json` lists the sibling components it needs under `registryDependencies`, so a copied component brings its dependencies with it.
+Any path can drop to vendoring: copy `components/<group>/<Name>.jsx` and its `.d.ts` straight into your codebase (Apache-2.0: keep the license notice). Each registry item at `site/registry/<name>.json` lists the sibling components it needs under `registryDependencies`, so a copied component brings its dependencies with it.
 
 ## Dark mode and density, everywhere
 
