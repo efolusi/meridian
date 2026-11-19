@@ -1567,6 +1567,10 @@
       "sourcePath": "components/forms/Textarea.jsx"
     },
     {
+      "name": "ThemeToggle",
+      "sourcePath": "components/marketing/ThemeToggle.jsx"
+    },
+    {
       "name": "Timeline",
       "sourcePath": "components/display/Timeline.jsx"
     },

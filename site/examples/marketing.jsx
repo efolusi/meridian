@@ -68,3 +68,14 @@ export function FeatureCardDemo() {
     </FeatureGrid>
   );
 }
+
+// @demo ThemeToggle System, Light and Dark
+export function ThemeToggleDemo() {
+  const { ThemeToggle } = window.EfolusiDesignSystem_4ffc3d;
+  return (
+    <div style={{ display: 'flex', gap: 'var(--space-3)', alignItems: 'center' }}>
+      <ThemeToggle />
+      <ThemeToggle lang="id" />
+    </div>
+  );
+}

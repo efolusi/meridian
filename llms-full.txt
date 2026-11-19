@@ -2,7 +2,7 @@
 
 The entire design system in one file, generated from llms.txt, components/*/, and tokens/*.css by scripts/build_llms.py. Do not edit by hand. The short map of the repository is /llms.txt.
 
-> Meridian is a general-purpose open-source design system by Efolusi: 126 accessible React components, 221 design tokens (light, dark, compact), blocks, charts, and full example apps, served browser-native with zero build step. Apache-2.0 licensed.
+> Meridian is a general-purpose open-source design system by Efolusi: 127 accessible React components, 221 design tokens (light, dark, compact), blocks, charts, and full example apps, served browser-native with zero build step. Apache-2.0 licensed.
 
 Live docs: https://meridian.efolusi.com · Source: https://github.com/efolusi/meridian · License: Apache-2.0
 
@@ -34,7 +34,7 @@ Dark mode: set data-theme="dark" on any subtree. Compact density: data-density="
 
 ## Components
 
-126 components across 13 groups: ai, code, data, dates, display, feedback, files, finance, forms, icons, marketing, navigation, overlay. Each entry lists the component's public exports, its usage guidance (.prompt.md), and its typed props interface (.d.ts).
+127 components across 13 groups: ai, code, data, dates, display, feedback, files, finance, forms, icons, marketing, navigation, overlay. Each entry lists the component's public exports, its usage guidance (.prompt.md), and its typed props interface (.d.ts).
 
 ### ai
 
@@ -3879,6 +3879,48 @@ export interface SectionHeadProps extends Omit<React.HTMLAttributes<HTMLDivEleme
   as?: 'h1' | 'h2' | 'h3';
 }
 export declare const SectionHead: React.ForwardRefExoticComponent<SectionHeadProps & React.RefAttributes<HTMLDivElement>>;
+```
+
+#### ThemeToggle
+
+Group: marketing · Source: /components/marketing/ThemeToggle.jsx · Exports: ThemeToggle
+
+# ThemeToggle
+
+One theme control for every Efolusi site. `ThemeToggle` is a single 44px button that cycles System, Light and Dark. On System it follows the operating system live. The choice is saved in the `efolusi_theme` cookie on `.efolusi.com`, so it carries across every subdomain, with a localStorage mirror.
+
+Put the output of `themeInitScript()` in an inline `<script>` in `<head>`, before the page paints. Without it, a dark-mode visitor sees a light flash. Set `lang="id"` for the Indonesian labels; the label names the current theme and the next one.
+
+```jsx
+// app/layout.jsx
+<head><script dangerouslySetInnerHTML={{ __html: themeInitScript() }} /></head>
+
+// header
+<ThemeToggle lang={lang} />
+```
+
+```ts
+export type ThemePreference = 'system' | 'light' | 'dark';
+
+export interface ThemeToggleProps extends Omit<React.ButtonHTMLAttributes<HTMLButtonElement>, 'onChange'> {
+  /** Language of the built-in labels. @default 'en' */
+  lang?: 'en' | 'id';
+  /** Override any label: `system`, `light`, `dark`, and `next` (the "switch to" phrase). */
+  labels?: Partial<Record<ThemePreference | 'next', string>>;
+  /** Called with the new preference after a click. */
+  onChange?: (preference: ThemePreference) => void;
+}
+/** One button that cycles System, Light and Dark; follows the OS live while on System. */
+export declare const ThemeToggle: React.ForwardRefExoticComponent<ThemeToggleProps & React.RefAttributes<HTMLButtonElement>>;
+
+/** Cookie first, then localStorage, else `system`. */
+export declare function readThemePreference(doc?: Document, storage?: Storage): ThemePreference;
+/** Writes the cookie (a year, SameSite=Lax, Secure on https, Domain=.efolusi.com on its hosts) and the localStorage mirror. */
+export declare function writeThemePreference(value: ThemePreference, doc?: Document, storage?: Storage): ThemePreference;
+export declare function resolveTheme(preference: ThemePreference, matchMedia?: (query: string) => MediaQueryList): 'light' | 'dark';
+export declare function applyTheme(preference: ThemePreference, doc?: Document, matchMedia?: (query: string) => MediaQueryList): 'light' | 'dark';
+/** The script to inline in <head> so the first paint has the stored or system theme. */
+export declare function themeInitScript(): string;
 ```
 
 ### navigation

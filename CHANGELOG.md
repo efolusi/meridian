@@ -2,6 +2,7 @@
 
 ## Unreleased
 
+- **`ThemeToggle` and `themeInitScript` in the marketing group.** One theme control for every Efolusi site: a 44px button that cycles System, Light and Dark, follows the operating system live while on System, and saves the choice in the `efolusi_theme` cookie on `.efolusi.com` (a year, SameSite=Lax, Secure) with a localStorage mirror. `themeInitScript()` sets `data-theme` before the first paint. Labels in English and Indonesian.
 - **Visual baselines no longer flip by one pixel.** The capture pins every demo group to a whole-pixel height first; text line heights left the charts group at 1811.27px, which rounded to 1811 or 1812 between runs. The capture also jumps every animation to its end and turns transitions off, so a shot never catches the HeroAccent underline mid-stroke.
 - **A marketing group, starting with `Section` and `SectionHead`.** `Section` is one full-width block of a marketing page: it takes its rhythm from `--section-y` (link `landing.css`), centres its content at `--container-max`, `tone="band"` puts it on the brand ground, and `ruled` draws a hairline above it. `SectionHead` gives the block an eyebrow, a title and a lede, aligned to the start or the centre. Both take every word as props, so a page passes its own Indonesian and English.
 - **Button `shape="pill"` and size `xl`.** `shape="pill"` rounds the ends fully and widens the side padding, for calls to action on marketing pages; icon sizes become circles. `size="xl"` is 52px high (`--control-h-xl`), for the hero call to action.
@@ -9,7 +10,7 @@
 - **`Hero`, `HeroAccent`, `FeatureGrid` and `FeatureCard` in the marketing group.** `Hero` opens a marketing page with a title, a sub line, pill actions and a proof line; `HeroAccent` draws a hand-drawn underline under one word once, and stays still with reduced motion. `FeatureCard` takes the brand-wide `peach`, `cocoa` and `amber` tones; every card keeps a 1px hairline, because amber (light) and cocoa (dark) sit near the page colour. A test keeps the hairline in every tone.
 - **The website showcase's local `Hero` is now `WebsiteHero`**, so it no longer shadows the new export.
 - **Visual baselines add the marketing group in compact density and on a coarse pointer.**
-- **Size budget raised by 16 KB** (npm total 1,439,477 bytes) for the marketing group.
+- **Size budget raised by 23 KB** (npm total 1,446,249 bytes) for the marketing group.
 
 ## 1.25.1 — 2026-11-19
 

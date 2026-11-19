@@ -122,5 +122,6 @@
   "WebPreview": "Pratinjau browser responsif dengan address bar draft, muat ulang, lebar desktop, tablet, dan mobile, serta konsol yang dapat dilipat.",
   "Section": "Blok halaman pemasaran selebar layar, dengan ritme dari --section-y; tone band memakai latar brand, SectionHead memberi eyebrow, judul, dan lede.",
   "Hero": "Bagian pembuka halaman pemasaran: judul, sub, tombol aksi, dan baris bukti; HeroAccent memberi garis bawah gambar tangan pada satu kata.",
-  "FeatureCard": "Kartu fitur pemasaran dalam FeatureGrid: ikon, judul, isi, dan tautan; tone peach, cocoa, atau amber dengan garis tepi tipis di setiap tema."
+  "FeatureCard": "Kartu fitur pemasaran dalam FeatureGrid: ikon, judul, isi, dan tautan; tone peach, cocoa, atau amber dengan garis tepi tipis di setiap tema.",
+  "ThemeToggle": "Satu tombol tema untuk semua situs Efolusi: sistem, terang, dan gelap; mengikuti OS secara langsung saat sistem, disimpan di cookie efolusi_theme."
 }

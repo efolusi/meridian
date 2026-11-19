@@ -1203,6 +1203,9 @@
       "SectionHead": {
         "replaces": []
       },
+      "ThemeToggle": {
+        "replaces": []
+      },
       "Breadcrumb": {
         "replaces": []
       },
