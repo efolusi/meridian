@@ -35,7 +35,7 @@ const CSS = `
 .ef-toolcall__result{font-size:var(--text-md);line-height:1.6;color:var(--text-secondary)}
 .ef-toolcall__error{padding:var(--space-3) var(--space-3);border-radius:var(--radius-sm);background:var(--danger-100);color:var(--danger-600);font-size:var(--text-sm);line-height:1.55}
 .ef-toolcall__actions{display:flex;justify-content:flex-end;gap:var(--space-2);padding-top:var(--space-0-5)}
-.ef-toolcall__btn{height:28px;padding:0 var(--space-3);border-radius:var(--radius-sm);border:1px solid var(--border-strong);background:var(--surface-card);cursor:pointer;font-family:var(--font-sans);font-size:var(--text-sm);font-weight:600;color:var(--text-primary);transition:background var(--dur-fast) var(--ease-out)}
+.ef-toolcall__btn{height:var(--control-h-sm);padding:0 var(--space-3);border-radius:var(--radius-sm);border:1px solid var(--border-strong);background:var(--surface-card);cursor:pointer;font-family:var(--font-sans);font-size:var(--text-sm);font-weight:600;color:var(--text-primary);transition:background var(--dur-fast) var(--ease-out)}
 .ef-toolcall__btn:hover{background:var(--surface-subtle)}
 .ef-toolcall__btn--accept{background:var(--accent);border-color:var(--accent);color:var(--accent-contrast)}
 .ef-toolcall__btn--accept:hover{background:var(--accent-hover)}

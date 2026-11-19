@@ -5,7 +5,7 @@ import { Tooltip, TooltipContent, TooltipTrigger } from '../feedback/Tooltip.jsx
 import { injectEfCss } from '../forms/Button.jsx';
 const CSS = `
 .ef-toolbar{display:inline-flex;align-items:center;gap:var(--space-0-5);padding:var(--space-1);background:var(--surface-card);border:1px solid var(--border-strong);border-radius:var(--radius-md)}
-.ef-toolbar__btn{display:inline-flex;align-items:center;justify-content:center;gap:var(--space-2);height:28px;min-width:28px;padding:0 var(--space-2);border:none;border-radius:var(--radius-xs-plus);background:none;cursor:pointer;color:var(--text-secondary);font-family:var(--font-sans);font-size:var(--text-sm);font-weight:var(--weight-medium);transition:background var(--dur-fast) var(--ease-out),color var(--dur-fast) var(--ease-out)}
+.ef-toolbar__btn{display:inline-flex;align-items:center;justify-content:center;gap:var(--space-2);height:var(--control-h-sm);min-width:var(--control-h-sm);padding:0 var(--space-2);border:none;border-radius:var(--radius-xs-plus);background:none;cursor:pointer;color:var(--text-secondary);font-family:var(--font-sans);font-size:var(--text-sm);font-weight:var(--weight-medium);transition:background var(--dur-fast) var(--ease-out),color var(--dur-fast) var(--ease-out)}
 .ef-toolbar__btn:hover:not(:disabled){background:var(--surface-sunken);color:var(--text-primary)}
 .ef-toolbar__btn--active{background:var(--accent);color:var(--accent-contrast)}
 .ef-toolbar__btn--active:hover:not(:disabled){background:var(--accent-hover);color:var(--accent-contrast)}

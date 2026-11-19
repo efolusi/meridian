@@ -8,7 +8,7 @@ const CSS = `
 .ef-doccard__glyph{display:inline-flex;color:var(--text-muted)}
 .ef-doccard__title{flex:1;min-width:0;font-size:var(--text-md);font-weight:var(--weight-semibold);color:var(--text-primary);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .ef-doccard__meta{font-size:var(--text-xs);color:var(--text-muted)}
-.ef-doccard__btn{display:inline-flex;align-items:center;justify-content:center;width:28px;height:28px;border:none;background:none;cursor:pointer;color:var(--text-muted);border-radius:var(--radius-sm);transition:color var(--dur-fast) var(--ease-out),background var(--dur-fast) var(--ease-out)}
+.ef-doccard__btn{display:inline-flex;align-items:center;justify-content:center;width:var(--control-h-sm);height:var(--control-h-sm);border:none;background:none;cursor:pointer;color:var(--text-muted);border-radius:var(--radius-sm);transition:color var(--dur-fast) var(--ease-out),background var(--dur-fast) var(--ease-out)}
 .ef-doccard__btn:hover{color:var(--text-primary);background:var(--surface-subtle)}
 .ef-doccard__btn:focus-visible{outline:none;box-shadow:var(--focus-ring)}
 .ef-doccard__btn--open{transform:rotate(180deg)}

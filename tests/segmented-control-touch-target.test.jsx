@@ -8,12 +8,12 @@ import { SegmentedControl } from '../components/navigation/SegmentedControl.jsx'
 // on a phone every option stayed a 28px target. jsdom cannot evaluate media
 // queries, so the injected stylesheet is read instead.
 describe('SegmentedControl touch target', () => {
-  it('raises options to --tap-min on a coarse pointer and keeps 28px otherwise', () => {
+  it('raises options to --tap-min on a coarse pointer and keeps --control-h-sm otherwise', () => {
     render(<SegmentedControl options={['Day', 'Week']} value="Day" onChange={() => {}} />);
     const css = document.getElementById('ef-css-seg').textContent.replace(/\s+/g, '');
     const coarse = css.match(/@media\(pointer:coarse\)\{([^@]*?)\}\}/);
     expect(coarse, 'a (pointer: coarse) block').toBeTruthy();
     expect(coarse[1]).toMatch(/\.ef-seg__opt\{[^}]*(min-height|height):var\(--tap-min\)/);
-    expect(css).toMatch(/\.ef-seg__opt\{[^}]*height:28px/);
+    expect(css).toMatch(/\.ef-seg__opt\{[^}]*height:var\(--control-h-sm\)/);
   });
 });

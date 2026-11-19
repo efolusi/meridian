@@ -5,7 +5,7 @@ import { Icon } from '../icons/Icon.jsx';
 const CSS = `
 .ef-webprev{display:flex;flex-direction:column;border:1px solid var(--border-default);border-radius:var(--radius-md);background:var(--surface-card);padding:var(--space-2);font-family:var(--font-sans)}
 .ef-webprev__bar{display:flex;align-items:center;gap:var(--space-1);padding:var(--space-0-5) var(--space-1) var(--space-2)}
-.ef-webprev__btn{display:inline-flex;align-items:center;justify-content:center;width:28px;height:28px;border:none;background:none;cursor:pointer;color:var(--text-muted);border-radius:var(--radius-sm);flex:none;transition:color var(--dur-fast) var(--ease-out),background var(--dur-fast) var(--ease-out)}
+.ef-webprev__btn{display:inline-flex;align-items:center;justify-content:center;width:var(--control-h-sm);height:var(--control-h-sm);border:none;background:none;cursor:pointer;color:var(--text-muted);border-radius:var(--radius-sm);flex:none;transition:color var(--dur-fast) var(--ease-out),background var(--dur-fast) var(--ease-out)}
 .ef-webprev__btn:hover{color:var(--text-primary);background:var(--surface-subtle)}
 .ef-webprev__btn--on{color:var(--text-primary);background:var(--surface-sunken)}
 .ef-webprev__btn:focus-visible{outline:none;box-shadow:var(--focus-ring)}

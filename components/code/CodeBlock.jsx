@@ -6,7 +6,7 @@ const CSS = `
 .ef-code{position:relative;background:var(--surface-code);border:1px solid var(--border-code);border-radius:var(--radius-md);overflow:hidden}
 .ef-code__head{display:flex;align-items:center;padding:var(--space-2) var(--space-2) var(--space-2) var(--space-4);border-bottom:1px solid var(--code-divider)}
 .ef-code__lang{font-family:var(--font-mono);font-size:var(--text-2xs);color:var(--code-ink-subtle)}
-.ef-code__copy{margin-inline-start:auto;display:inline-flex;min-height:24px;align-items:center;gap:var(--space-1);border:none;background:none;cursor:pointer;color:var(--code-ink-muted);font-family:var(--font-sans);font-size:var(--text-xs);font-weight:var(--weight-semibold);padding:var(--space-1) var(--space-2);border-radius:var(--radius-sm);transition:color var(--dur-fast) var(--ease-out)}
+.ef-code__copy{margin-inline-start:auto;display:inline-flex;min-height:var(--control-h-xs);align-items:center;gap:var(--space-1);border:none;background:none;cursor:pointer;color:var(--code-ink-muted);font-family:var(--font-sans);font-size:var(--text-xs);font-weight:var(--weight-semibold);padding:var(--space-1) var(--space-2);border-radius:var(--radius-sm);transition:color var(--dur-fast) var(--ease-out)}
 .ef-code__copy:hover{color:var(--code-ink-bright)}
 .ef-code__copy--done{color:var(--success-on-dark)}
 .ef-code__copy--failed{color:var(--danger-on-dark)}

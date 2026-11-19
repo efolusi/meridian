@@ -3,7 +3,7 @@ import React from 'react';
 import { injectEfCss } from './Button.jsx';
 
 const CSS = `
-.ef-toggle{display:inline-flex;align-items:center;justify-content:center;gap:var(--space-2);min-width:36px;height:36px;padding:0 var(--space-3);border:1px solid transparent;border-radius:var(--radius-sm);background:transparent;cursor:pointer;font-family:var(--font-sans);font-size:var(--text-sm);font-weight:500;color:var(--text-secondary);transition:background var(--dur-fast) var(--ease-out),border-color var(--dur-fast) var(--ease-out),color var(--dur-fast) var(--ease-out)}
+.ef-toggle{display:inline-flex;align-items:center;justify-content:center;gap:var(--space-2);min-width:var(--control-h-md);height:var(--control-h-md);padding:0 var(--space-3);border:1px solid transparent;border-radius:var(--radius-sm);background:transparent;cursor:pointer;font-family:var(--font-sans);font-size:var(--text-sm);font-weight:500;color:var(--text-secondary);transition:background var(--dur-fast) var(--ease-out),border-color var(--dur-fast) var(--ease-out),color var(--dur-fast) var(--ease-out)}
 .ef-toggle:hover:not(:disabled):not(.ef-toggle--on){background:var(--surface-sunken);color:var(--text-primary)}
 .ef-toggle--on{background:var(--accent-subtle);color:var(--accent-subtle-fg,var(--text-link))}
 .ef-toggle:focus-visible{outline:none;box-shadow:var(--focus-ring)}
