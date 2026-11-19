@@ -31,10 +31,22 @@ if (!['chromium', 'firefox', 'webkit'].includes(ENGINE)) {
 }
 const URL = `${BASE}/site/_smoke.html?dir=${DIRECTION}`;
 
+// Text line heights leave a group a fraction of a pixel tall (charts: 1811.27px), so
+// the captured box rounded to 1811 or 1812 between runs. Pin every group to a whole
+// pixel first, which also puts every group's top on a whole pixel.
+async function pinGroupHeights(p) {
+  await p.evaluate(() => {
+    const groups = [...document.querySelectorAll('section[data-group]')];
+    for (const g of groups) g.style.height = '';
+    for (const g of groups) g.style.height = `${Math.ceil(g.getBoundingClientRect().height)}px`;
+  });
+}
+
 async function shootGroup(p, group, file) {
   await p.evaluate(() => new Promise(r => requestAnimationFrame(() => requestAnimationFrame(r))));
   const el = p.locator(`section[data-group="${group}"]`);
   await settleForCapture(p);
+  await pinGroupHeights(p);
   // A tall element screenshot re-lays out the page for capture, which drops the
   // touch emulation and leaves the box measured with it: the shot then shows the
   // next group. Grow the viewport to the group instead and clip to its box.
@@ -117,6 +129,7 @@ if (SHOTS) {
     for (const el of await page.locator('section[data-group]').all()) {
       const group = await el.getAttribute('data-group');
       await settleForCapture(page);
+      await pinGroupHeights(page);
       await el.screenshot({ path: path.join(SHOTS, `g-${group}-${theme}.png`), animations: 'disabled' });
       count++;
     }
