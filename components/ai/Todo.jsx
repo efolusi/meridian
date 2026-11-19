@@ -31,10 +31,10 @@ export function Todo({ title = 'Tasks', items = [], defaultOpen = true, style, c
   return (
     <div {...rest} className={`ef-todo${open ? ' ef-todo--open' : ''}${className ? ' ' + className : ''}`} style={style}>
       <button type="button" className="ef-todo__head" aria-expanded={open} onClick={() => setOpen(!open)}>
-        <span className="ef-todo__glyph"><Icon name="list-todo" size={15} /></span>
+        <span className="ef-todo__glyph"><Icon name="list-todo" size={16} /></span>
         <span className="ef-todo__title">{title}</span>
         <span className="ef-todo__count">{done}/{items.length}</span>
-        <span className="ef-todo__chev"><Icon name="chevron-down" size={14} /></span>
+        <span className="ef-todo__chev"><Icon name="chevron-down" size={16} /></span>
       </button>
       <div className="ef-todo__body"><div className="ef-todo__clip">
         <ul className="ef-todo__list">
@@ -43,8 +43,8 @@ export function Todo({ title = 'Tasks', items = [], defaultOpen = true, style, c
             return (
               <li key={i} className={`ef-todo__item ef-todo__item--${st}`}>
                 <span className="ef-todo__mark" aria-hidden="true">
-                  {st === 'progress' ? <span className="ef-todo__spin"><Icon name="loader-circle" size={15} /></span> : null}
-                  {st === 'done' ? <Icon name="check" size={10} strokeWidth={3} /> : null}
+                  {st === 'progress' ? <span className="ef-todo__spin"><Icon name="loader-circle" size={16} /></span> : null}
+                  {st === 'done' ? <Icon name="check" size={12} strokeWidth={3} /> : null}
                 </span>
                 <span className="ef-todo__text">{it.label}</span>
               </li>

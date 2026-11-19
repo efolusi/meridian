@@ -1,5 +1,8 @@
 /* Generated from tokens.json by scripts/build.mjs. Do not edit. */
 :root {
+  --avatar-sm: 24px;
+  --avatar-md: 32px;
+  --avatar-lg: 40px;
   --space-0: 0;
   --space-1: 4px;
   --space-2: 8px;
@@ -24,15 +27,25 @@
   --radius-full: 999px;
   --container-max: 1200px;
   --container-text: 720px;
+  --control-h-xs: 24px;
   --control-h-sm: 28px;
   --control-h-md: 36px;
   --control-h-lg: 44px;
+  --icon-xs: 8px;
+  --icon-sm: 12px;
+  --icon-md: 16px;
+  --icon-lg: 20px;
+  --icon-xl: 24px;
+  --icon-2xl: 32px;
+  --sidebar-width: 256px;
+  --sidebar-width-icon: 48px;
   --tap-min: 44px;
   --table-pad-y: 12px;
   --table-pad-x: 16px;
 }
 
 [data-density="compact"] {
+  --control-h-xs: 20px;
   --control-h-sm: 24px;
   --control-h-md: 30px;
   --control-h-lg: 38px;
@@ -42,6 +55,7 @@
 
 @media (pointer: coarse) {
   :root, [data-density="compact"] {
+    --control-h-xs: var(--tap-min);
     --control-h-sm: var(--tap-min);
     --control-h-md: var(--tap-min);
     --control-h-lg: var(--tap-min);

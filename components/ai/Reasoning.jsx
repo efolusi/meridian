@@ -25,9 +25,9 @@ export function Reasoning({ streaming, duration, defaultOpen, open, onOpenChange
   return (
     <div {...rest} className={`ef-reasoning${isOpen ? ' ef-reasoning--open' : ''}${streaming ? ' ef-reasoning--streaming' : ''}${className ? ' ' + className : ''}`} style={style}>
       <button type="button" className="ef-reasoning__head" aria-expanded={isOpen} onClick={flip}>
-        <span className="ef-reasoning__glyph"><Icon name="brain" size={14} /></span>
+        <span className="ef-reasoning__glyph"><Icon name="brain" size={16} /></span>
         {head}
-        <span className="ef-reasoning__chev"><Icon name="chevron-down" size={14} /></span>
+        <span className="ef-reasoning__chev"><Icon name="chevron-down" size={16} /></span>
       </button>
       {isOpen ? <div className="ef-reasoning__body">{children}</div> : null}
     </div>

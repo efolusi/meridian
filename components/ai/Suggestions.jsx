@@ -18,7 +18,7 @@ export function Suggestions({ items = [], onSelect, style, className, ...rest })
         const icon = typeof it === 'string' ? null : it.icon;
         return (
           <button key={i} type="button" className="ef-suggestion" onClick={() => onSelect?.(label, i)}>
-            {icon ? <span className="ef-suggestion__icon"><Icon name={icon} size={14} /></span> : null}
+            {icon ? <span className="ef-suggestion__icon"><Icon name={icon} size={16} /></span> : null}
             {label}
           </button>
         );

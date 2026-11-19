@@ -97,12 +97,12 @@ function Products() {
           {PRODUCTS.map(([icon, name, desc, href]) => (
             <Card key={name} interactive style={{ '--card-spacing': '24px' }} onClick={() => { window.location.href = href; }}><CardContent>
               <span style={{ display: 'inline-flex', color: 'var(--text-primary)' }}>
-                <Icon name={icon} size={22} />
+                <Icon name={icon} size={24} />
               </span>
               <h3 style={{ fontSize: 21, fontWeight: 700, marginTop: 16 }}>{name}</h3>
               <p style={{ fontSize: 14.5, lineHeight: 1.6, color: 'var(--text-secondary)', marginTop: 8 }}>{desc}</p>
               <div style={{ display: 'flex', alignItems: 'center', gap: 6, marginTop: 16, fontSize: 14, fontWeight: 600, color: 'var(--text-link)' }}>
-                Explore {name} <Icon name="arrow-right" size={15} />
+                Explore {name} <Icon name="arrow-right" size={16} />
               </div>
             </CardContent></Card>
           ))}
@@ -154,7 +154,7 @@ function Pricing() {
               <div style={{ display: 'flex', flexDirection: 'column', gap: 9, margin: '20px 0 24px' }}>
                 {feats.map(f => (
                   <div key={f} style={{ display: 'flex', gap: 8, alignItems: 'center', fontSize: 14 }}>
-                    <span style={{ color: 'var(--sand-600)', display: 'inline-flex' }}><Icon name="check" size={15} /></span>{f}
+                    <span style={{ color: 'var(--sand-600)', display: 'inline-flex' }}><Icon name="check" size={16} /></span>{f}
                   </div>
                 ))}
               </div>
@@ -173,7 +173,7 @@ function Newsletter() {
     <div>
       <label htmlFor="newsletter-email" style={{ display: 'block', fontSize: 12, fontWeight: 600, letterSpacing: '0.06em', textTransform: 'uppercase', color: 'var(--text-muted)' }}>Newsletter email</label>
       {done ? (
-        <p style={{ fontSize: 13, color: 'var(--success-600)', marginTop: 14, display: 'flex', alignItems: 'center', gap: 6 }}><Icon name="circle-check" size={15} />You're in. See you next month.</p>
+        <p style={{ fontSize: 13, color: 'var(--success-600)', marginTop: 14, display: 'flex', alignItems: 'center', gap: 6 }}><Icon name="circle-check" size={16} />You're in. See you next month.</p>
       ) : (
         <div style={{ display: 'flex', gap: 8, marginTop: 14 }}>
           <Input id="newsletter-email" size="sm" type="email" placeholder="you@company.com" style={{ flex: 1 }} />

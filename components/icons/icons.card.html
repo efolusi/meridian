@@ -17,7 +17,7 @@ function Demo() {
           <TooltipTrigger asChild><span style={{ display: 'inline-flex', alignItems: 'center', justifyContent: 'center', width: 36, height: 36, borderRadius: 'var(--radius-sm)', color: 'var(--sand-700)', cursor: 'default' }}
             onMouseEnter={e => { e.currentTarget.style.background = 'var(--sand-100)'; e.currentTarget.style.color = 'var(--text-primary)'; }}
             onMouseLeave={e => { e.currentTarget.style.background = ''; e.currentTarget.style.color = 'var(--sand-700)'; }}>
-            <Icon name={n} size={18} />
+            <Icon name={n} size={20} />
           </span></TooltipTrigger><TooltipContent>{n}</TooltipContent>
         </Tooltip>
       ))}

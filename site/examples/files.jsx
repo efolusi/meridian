@@ -12,13 +12,13 @@ export function AttachmentDemo() {
     <AttachmentGroup role="group" aria-label="Project files" tabIndex={0} style={{ width: '100%', maxWidth: 720 }}>
       {files.map(([name, description, state]) => (
         <Attachment key={name} state={state} style={{ width: 250 }}>
-          <AttachmentMedia><Icon name="file-text" size={17} /></AttachmentMedia>
+          <AttachmentMedia><Icon name="file-text" size={16} /></AttachmentMedia>
           <AttachmentContent>
             <AttachmentTitle>{name}</AttachmentTitle>
             <AttachmentDescription>{description}</AttachmentDescription>
           </AttachmentContent>
           <AttachmentActions>
-            <AttachmentAction variant="ghost" aria-label={`Remove ${name}`}><Icon name="x" size={13} /></AttachmentAction>
+            <AttachmentAction variant="ghost" aria-label={`Remove ${name}`}><Icon name="x" size={12} /></AttachmentAction>
           </AttachmentActions>
           <AttachmentTrigger aria-label={`Open ${name}`} onClick={() => {}} />
         </Attachment>

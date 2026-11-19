@@ -53,17 +53,17 @@ export function ToolCall({ name, status = 'running', args, result, error, icon =
   return (
     <div {...rest} className={`ef-toolcall ef-toolcall--${status}${open ? ' ef-toolcall--open' : ''}${streaming ? ' ef-toolcall--streaming' : ''}${className ? ' ' + className : ''}`} style={style}>
       <button type="button" className="ef-toolcall__head" aria-expanded={open} onClick={() => setOpen(!open)}>
-        <span className="ef-toolcall__icon"><Icon name={icon} size={14} /></span>
+        <span className="ef-toolcall__icon"><Icon name={icon} size={16} /></span>
         <span className="ef-toolcall__verb">tool</span>
         {name}
         <span className={`ef-toolcall__state ef-toolcall__state--${status}`}>
-          {status === 'running' ? <span className="ef-toolcall__spin"><Icon name="loader-circle" size={13} /></span>
-            : status === 'approval' ? <Icon name="shield-check" size={13} />
-            : status === 'pending' ? <Icon name="clock" size={13} />
-            : <Icon name={status === 'success' ? 'circle-check' : 'circle-alert'} size={13} />}
+          {status === 'running' ? <span className="ef-toolcall__spin"><Icon name="loader-circle" size={12} /></span>
+            : status === 'approval' ? <Icon name="shield-check" size={12} />
+            : status === 'pending' ? <Icon name="clock" size={12} />
+            : <Icon name={status === 'success' ? 'circle-check' : 'circle-alert'} size={12} />}
           {STATES[status]}
         </span>
-        <span className="ef-toolcall__chev"><Icon name="chevron-down" size={14} /></span>
+        <span className="ef-toolcall__chev"><Icon name="chevron-down" size={16} /></span>
       </button>
       {open ? (
         <div className="ef-toolcall__body">

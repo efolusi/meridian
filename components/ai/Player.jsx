@@ -108,11 +108,11 @@ export const Player = React.forwardRef(function Player({ src, title, meta, peaks
         ))}
       </div>
       <div className="ef-player__row">
-        <button type="button" className="ef-player__btn" aria-label="Back 10 seconds" onClick={() => jumpTo(t - 10)}><Icon name="skip-back" size={14} /></button>
-        <button type="button" className="ef-player__btn ef-player__play" aria-label={playing ? 'Pause' : 'Play'} onClick={toggle}><Icon name={playing ? 'pause' : 'play'} size={15} /></button>
-        <button type="button" className="ef-player__btn" aria-label="Forward 10 seconds" onClick={() => jumpTo(t + 10)}><Icon name="skip-forward" size={14} /></button>
+        <button type="button" className="ef-player__btn" aria-label="Back 10 seconds" onClick={() => jumpTo(t - 10)}><Icon name="skip-back" size={16} /></button>
+        <button type="button" className="ef-player__btn ef-player__play" aria-label={playing ? 'Pause' : 'Play'} onClick={toggle}><Icon name={playing ? 'pause' : 'play'} size={16} /></button>
+        <button type="button" className="ef-player__btn" aria-label="Forward 10 seconds" onClick={() => jumpTo(t + 10)}><Icon name="skip-forward" size={16} /></button>
         <span className="ef-player__time">{formatTime(t, dur)} / {formatTime(dur)}</span>
-        <button type="button" className="ef-player__btn" style={{ marginInlineStart: 'auto' }} aria-label={muted ? 'Unmute' : 'Mute'} aria-pressed={muted} onClick={() => setMuted(!muted)}><Icon name={muted ? 'volume-x' : 'volume-2'} size={14} /></button>
+        <button type="button" className="ef-player__btn" style={{ marginInlineStart: 'auto' }} aria-label={muted ? 'Unmute' : 'Mute'} aria-pressed={muted} onClick={() => setMuted(!muted)}><Icon name={muted ? 'volume-x' : 'volume-2'} size={16} /></button>
       </div>
     </div>
   );

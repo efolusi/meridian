@@ -1,6 +1,6 @@
 const { Card, CardAction, CardContent, CardDescription, CardHeader, CardTitle, Badge, Button, Icon, IconButton, Avatar, AvatarFallback, AvatarGroup, Stat, BarChart, Progress, Table, Empty, EmptyContent, EmptyDescription, EmptyHeader, EmptyMedia, EmptyTitle, DropdownMenu, DropdownMenuTrigger, DropdownMenuContent, DropdownMenuItem, DropdownMenuSeparator, DropdownMenuShortcut, KeyValueList } = window.EfolusiDesignSystem_4ffc3d;
 
-function ProjectActionMenu({ trigger, items, onSelect, align = 'end' }) { return <DropdownMenu><DropdownMenuTrigger asChild>{trigger}</DropdownMenuTrigger><DropdownMenuContent align={align}>{items.map((item, index) => item === 'separator' ? <DropdownMenuSeparator key={'separator-' + index} /> : <DropdownMenuItem key={item.id} disabled={item.disabled} variant={item.danger ? 'destructive' : 'default'} onSelect={() => { onSelect?.(item.id); item.onClick?.(); }}>{item.icon ? <Icon name={item.icon} size={15} /> : null}{item.label}{item.kbd ? <DropdownMenuShortcut>{item.kbd}</DropdownMenuShortcut> : null}</DropdownMenuItem>)}</DropdownMenuContent></DropdownMenu>; }
+function ProjectActionMenu({ trigger, items, onSelect, align = 'end' }) { return <DropdownMenu><DropdownMenuTrigger asChild>{trigger}</DropdownMenuTrigger><DropdownMenuContent align={align}>{items.map((item, index) => item === 'separator' ? <DropdownMenuSeparator key={'separator-' + index} /> : <DropdownMenuItem key={item.id} disabled={item.disabled} variant={item.danger ? 'destructive' : 'default'} onSelect={() => { onSelect?.(item.id); item.onClick?.(); }}>{item.icon ? <Icon name={item.icon} size={16} /> : null}{item.label}{item.kbd ? <DropdownMenuShortcut>{item.kbd}</DropdownMenuShortcut> : null}</DropdownMenuItem>)}</DropdownMenuContent></DropdownMenu>; }
 
 const PROJECTS = [
   ['Q3 launch plan', 'AI agents', '2 hours ago', ['Ada Obi', 'Femi Alade'], 'busy'],
@@ -26,8 +26,8 @@ function ProjectsScreen({ onNewProject, notify }) {
               ]} />
             </div>
             <div style={{ display: 'flex', gap: 6, marginTop: 8 }}>
-              <Badge variant={state === 'busy' ? 'default' : 'secondary'} className={state === 'busy' ? 'ef-badge--accent' : undefined}>{state === 'busy' && <Icon name="circle" size={7} strokeWidth={4} data-icon="inline-start" />}{product}</Badge>
-              {state === 'busy' && <Badge className="ef-badge--success"><Icon name="circle" size={7} strokeWidth={4} data-icon="inline-start" />Running</Badge>}
+              <Badge variant={state === 'busy' ? 'default' : 'secondary'} className={state === 'busy' ? 'ef-badge--accent' : undefined}>{state === 'busy' && <Icon name="circle" size={8} strokeWidth={4} data-icon="inline-start" />}{product}</Badge>
+              {state === 'busy' && <Badge className="ef-badge--success"><Icon name="circle" size={8} strokeWidth={4} data-icon="inline-start" />Running</Badge>}
             </div>
             <div style={{ display: 'flex', alignItems: 'center', marginTop: 16 }}>
               <AvatarGroup>{people.map(p => <Avatar key={p} size="sm"><AvatarFallback>{p.split(/\s+/).map(part => part[0]).slice(0, 2).join('')}</AvatarFallback></Avatar>)}</AvatarGroup>
@@ -91,7 +91,7 @@ function BillingScreen({ notify }) {
         </CardContent></Card>
         <Card style={{ flex: 1, '--card-spacing': '20px' }}><CardHeader><CardTitle>Payment method</CardTitle></CardHeader><CardContent>
           <div style={{ display: 'flex', alignItems: 'center', gap: 12 }}>
-            <span style={{ display: 'inline-flex', width: 38, height: 38, alignItems: 'center', justifyContent: 'center', borderRadius: 'var(--radius-sm)', background: 'var(--surface-sunken)', color: 'var(--sand-700)' }}><Icon name="credit-card" size={18} /></span>
+            <span style={{ display: 'inline-flex', width: 38, height: 38, alignItems: 'center', justifyContent: 'center', borderRadius: 'var(--radius-sm)', background: 'var(--surface-sunken)', color: 'var(--sand-700)' }}><Icon name="credit-card" size={20} /></span>
             <div>
               <div style={{ fontSize: 14, fontWeight: 600, fontFamily: 'var(--font-mono)' }}>•••• 4242</div>
               <div style={{ fontSize: 12, color: 'var(--text-muted)' }}>Expires 08 / 28</div>
@@ -104,7 +104,7 @@ function BillingScreen({ notify }) {
           { key: 'id', label: 'Invoice', render: v => <strong>#{v}</strong> },
           { key: 'date', label: 'Date' },
           { key: 'amount', label: 'Amount', numeric: true, align: 'right' },
-          { key: 'status', label: 'Status', render: v => <Badge variant={v === 'Paid' ? 'default' : 'secondary'} className={v === 'Paid' ? 'ef-badge--success' : undefined}><Icon name="circle" size={7} strokeWidth={4} data-icon="inline-start" />{v}</Badge> },
+          { key: 'status', label: 'Status', render: v => <Badge variant={v === 'Paid' ? 'default' : 'secondary'} className={v === 'Paid' ? 'ef-badge--success' : undefined}><Icon name="circle" size={8} strokeWidth={4} data-icon="inline-start" />{v}</Badge> },
           { key: 'dl', label: '', width: 50, render: (v, r) => <IconButton icon="download" label="Download PDF" size="sm" onClick={() => notify('Invoice #' + r.id + ' downloading', 'PDF on its way.')} /> },
         ]} rows={INVOICES} /></CardContent></Card>
     </div>
