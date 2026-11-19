@@ -13,7 +13,7 @@ Where Meridian breaks its own design-system rules, and the fix for each. Nothing
 | Control size outside the size tokens (`--control-h-*`): Button `xs` 28px, icon `xs` 24px | Button, and siblings that copy it | 2 sizes | medium |
 | Raw border-radius instead of `--radius-*` | Chart, DonutChart, LineChart, Diff, Tabs, SegmentedControl, Tooltip, Toolbar, Task, Transcript, FileTypeIcon, PaymentCard | 16 values | medium |
 | Interactive part with no focus style of its own | ChatMessage, CodeBlock, Console, CopyField, Banner, Toast, Tooltip, FileTile, HoverCard, Popover | 10 components | high (check each: some rely on Button inside) |
-| Decorative gradient | GeneratedImage (4), Attachment (2), DocumentCard, CodeBlock, Loader, PaymentCard | 10 | low (check each: shimmer and fades can be functional) |
+| Decorative gradient | GeneratedImage (4), Attachment (2), DocumentCard, CodeBlock, Loader, PaymentCard | 10 | done: the PaymentCard chip and the GeneratedImage dot grid are flat (#139, #140); the other 8 are functional and stay (GeneratedImage mask and 2 text scrims, Attachment upload shimmer and scroll-edge mask, DocumentCard and CodeBlock cut-off fades, Loader shimmer) |
 | Blur / glass | TopNav, GeneratedImage | 2 | low (TopNav: one sticky bar is within the R-10 dose) |
 | Motion without reduced-motion handling | none: `tokens/base.css` stops all animation under `prefers-reduced-motion` | 0 | none |
 | Emoji as icons | none | 0 | none |
