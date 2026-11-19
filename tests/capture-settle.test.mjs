@@ -15,8 +15,8 @@ describe('visual capture settling', () => {
     expect(CAPTURE_CSS).toMatch(/\*\s*\{\s*content-visibility:\s*visible\s*!important/);
   });
 
-  it('keeps hiding glyphs and the live summary in captures', () => {
-    expect(CAPTURE_CSS).toContain('[data-slot="icon"] > svg { visibility: hidden !important; }');
+  it('captures glyphs and hides only the live summary', () => {
+    expect(CAPTURE_CSS).not.toMatch(/data-slot="icon"/);
     expect(CAPTURE_CSS).toContain('#summary, h1, [data-live] { display: none !important; }');
   });
 
