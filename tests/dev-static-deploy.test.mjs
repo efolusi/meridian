@@ -16,9 +16,9 @@ const deploy = readFileSync('scripts/deploy-dev-static.sh', 'utf8')
 const nginx = readFileSync('nginx/dev-meridian.efolusi.com.conf', 'utf8')
 
 describe('Meridian development static deployment', () => {
-  it('is push-only dev and runs on the shared development runner', () => {
-    expect(workflow).toContain('branches: [dev]')
-    expect(workflow).not.toContain('branches: [main]')
+  it('runs only by hand and on the shared development runner', () => {
+    expect(workflow).toContain('workflow_dispatch:')
+    expect(workflow).not.toContain('push:')
     expect(workflow).not.toContain('pull_request:')
     expect(workflow).toContain('runs-on: [self-hosted, Linux, X64, efolusi-dev]')
     expect(workflow).not.toContain('efolusi-prod')
