@@ -4,6 +4,8 @@ import { injectEfCss, mergeRefs, useIsoLayoutEffect } from '../forms/Button.jsx'
 import { Portal, useHydrated } from '../overlay/Portal.jsx';
 
 const CSS = `
+/* Zero specificity: a trigger with its own focus style, such as Button, keeps it. */
+:where([data-slot="tooltip-trigger"]):focus-visible{outline:none;box-shadow:var(--focus-ring);border-radius:var(--radius-sm)}
 .ef-tooltip__bubble{position:fixed;background:var(--surface-inverse);color:var(--text-inverse);font-size:var(--text-xs);font-weight:var(--weight-medium);line-height:1.35;padding:var(--space-1) var(--space-2);border-radius:6px;white-space:nowrap;pointer-events:none;z-index:var(--z-tooltip);animation:ef-tooltip-in var(--dur-fast) var(--ease-out)}
 .ef-tooltip__bubble::after{content:'';position:absolute;top:100%;left:var(--ef-tt-arrow,50%);transform:translateX(-50%);border:4px solid transparent;border-top-color:var(--surface-inverse)}
 .ef-tooltip__bubble--bottom::after{top:auto;bottom:100%;border-top-color:transparent;border-bottom-color:var(--surface-inverse)}
