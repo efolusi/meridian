@@ -3325,67 +3325,6 @@
       ]
     },
     {
-      "name": "marquee",
-      "type": "registry:ui",
-      "title": "Marquee",
-      "description": "Use `Marquee` once per page, under the hero, for a slow strip of short labels (product names, what you stand for). It loops on its own, pauses on hover, on keyboard focus and with its own pause button, and stands still with reduced motion. Screen readers get the items once, as a list named by `label",
-      "dependencies": [
-        "react"
-      ],
-      "registryDependencies": [
-        "https://meridian.efolusi.com/site/registry/meridian-base.json",
-        "https://meridian.efolusi.com/site/registry/button.json",
-        "https://meridian.efolusi.com/site/registry/icon.json"
-      ],
-      "files": [
-        {
-          "path": "components/marketing/Marquee.jsx",
-          "type": "registry:ui"
-        },
-        {
-          "path": "components/marketing/Marquee.d.ts",
-          "type": "registry:component"
-        },
-        {
-          "path": "components/marketing/Marquee.prompt.md",
-          "type": "registry:component"
-        }
-      ],
-      "categories": [
-        "marketing"
-      ]
-    },
-    {
-      "name": "reveal",
-      "type": "registry:ui",
-      "title": "Reveal",
-      "description": "Wrap a block in `Reveal` to fade and lift it in once it scrolls into view. Siblings stagger by 70ms each. Content stays visible without JavaScript, and appears at once with reduced motion. Use it on marketing sections, not inside the product UI, and not on the hero's title.",
-      "dependencies": [
-        "react"
-      ],
-      "registryDependencies": [
-        "https://meridian.efolusi.com/site/registry/meridian-base.json",
-        "https://meridian.efolusi.com/site/registry/button.json"
-      ],
-      "files": [
-        {
-          "path": "components/marketing/Reveal.jsx",
-          "type": "registry:ui"
-        },
-        {
-          "path": "components/marketing/Reveal.d.ts",
-          "type": "registry:component"
-        },
-        {
-          "path": "components/marketing/Reveal.prompt.md",
-          "type": "registry:component"
-        }
-      ],
-      "categories": [
-        "marketing"
-      ]
-    },
-    {
       "name": "section",
       "type": "registry:ui",
       "title": "Section + SectionHead",
@@ -3408,6 +3347,37 @@
         },
         {
           "path": "components/marketing/Section.prompt.md",
+          "type": "registry:component"
+        }
+      ],
+      "categories": [
+        "marketing"
+      ]
+    },
+    {
+      "name": "themetoggle",
+      "type": "registry:ui",
+      "title": "ThemeToggle",
+      "description": "One theme control for every Efolusi site, following the [theme contract](../../guidelines/theming.md#theme-contract). `ThemeToggle` is a single 44px button that cycles Light, Dark and System. On System it follows the operating system live. The choice is saved in localStorage `efolusi-theme`; the `ef",
+      "dependencies": [
+        "react"
+      ],
+      "registryDependencies": [
+        "https://meridian.efolusi.com/site/registry/meridian-base.json",
+        "https://meridian.efolusi.com/site/registry/button.json",
+        "https://meridian.efolusi.com/site/registry/icon.json"
+      ],
+      "files": [
+        {
+          "path": "components/marketing/ThemeToggle.jsx",
+          "type": "registry:ui"
+        },
+        {
+          "path": "components/marketing/ThemeToggle.d.ts",
+          "type": "registry:component"
+        },
+        {
+          "path": "components/marketing/ThemeToggle.prompt.md",
           "type": "registry:component"
         }
       ],

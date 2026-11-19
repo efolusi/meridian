@@ -146,3 +146,16 @@ It parses `tokens/colors.css`, follows every `var()` chain per theme, composites
 - **Ramp semantics.** 50 stays lightest, 950 darkest, steps evenly spaced. Derived tokens assume the ordering: `--brand-700` must be dark enough to hold 4.5:1 as text on light surfaces, `--brand-400` light enough to hold it on dark ones. Invert or skew the ramp and every derived guarantee fails at once.
 - **Status trios.** `--success-*`, `--warning-*`, and `--danger-*` each ship a 600 foreground, 100 tint, and 300 border, with the 600 holding 4.5:1 on the tint and on white. Retune the hues if your brand demands it, but keep the trio shape and re-run the checker.
 - **The code surface.** `--surface-code`, `--text-code`, and `--border-code` are fixed dark in both themes on purpose: terminals don't flip. Never remap them.
+
+## Theme contract
+
+Every Efolusi site follows this one contract, through `ThemeToggle` and `themeInitScript` from the marketing group. sso and each product adopt the component instead of their own toggle.
+
+| Part | Rule |
+|---|---|
+| Choice | localStorage `efolusi-theme` holds this origin's choice: `light`, `dark` or `system`. |
+| Cookie | `efolusi_theme` holds only the resolved `light` or `dark`, never `system`, so every product can parse it. `Domain=.efolusi.com` when the host is `efolusi.com` or ends with `.efolusi.com`; `Path=/`; `Max-Age` one year; `SameSite=Lax`; `Secure` on https. |
+| Precedence | Before paint and at runtime: the localStorage choice, then the cookie (`dark` or `light`), then `prefers-color-scheme`. A first visit to another Efolusi site inherits the cookie. |
+| Before paint | `themeInitScript()` inlined in `<head>`. |
+| Markup | Light removes `data-theme` (bare `:root`); dark sets `data-theme="dark"`. |
+| Control | One 44px button. Light → Dark → System → Light. On System, a `prefers-color-scheme` change re-resolves the theme and rewrites the cookie. Labels in English and Indonesian. |

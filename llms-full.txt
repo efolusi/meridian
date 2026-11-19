@@ -2,7 +2,7 @@
 
 The entire design system in one file, generated from llms.txt, components/*/, and tokens/*.css by scripts/build_llms.py. Do not edit by hand. The short map of the repository is /llms.txt.
 
-> Meridian is a general-purpose open-source design system by Efolusi: 128 accessible React components, 221 design tokens (light, dark, compact), blocks, charts, and full example apps, served browser-native with zero build step. Apache-2.0 licensed.
+> Meridian is a general-purpose open-source design system by Efolusi: 129 accessible React components, 221 design tokens (light, dark, compact), blocks, charts, and full example apps, served browser-native with zero build step. Apache-2.0 licensed.
 
 Live docs: https://meridian.efolusi.com · Source: https://github.com/efolusi/meridian · License: Apache-2.0
 
@@ -34,7 +34,7 @@ Dark mode: set data-theme="dark" on any subtree. Compact density: data-density="
 
 ## Components
 
-128 components across 13 groups: ai, code, data, dates, display, feedback, files, finance, forms, icons, marketing, navigation, overlay. Each entry lists the component's public exports, its usage guidance (.prompt.md), and its typed props interface (.d.ts).
+129 components across 13 groups: ai, code, data, dates, display, feedback, files, finance, forms, icons, marketing, navigation, overlay. Each entry lists the component's public exports, its usage guidance (.prompt.md), and its typed props interface (.d.ts).
 
 ### ai
 
@@ -819,7 +819,7 @@ export interface SourceCardProps {
   href?: string;
   title: React.ReactNode;
   description?: React.ReactNode;
-  /** e.g. 'stripe.com' */
+  /** e.g. 'efolusi.com' */
   domain?: string;
   /** Favicon URL; falls back to icon */
   favicon?: string;
@@ -3936,6 +3936,50 @@ export interface SectionHeadProps extends Omit<React.HTMLAttributes<HTMLDivEleme
   as?: 'h1' | 'h2' | 'h3';
 }
 export declare const SectionHead: React.ForwardRefExoticComponent<SectionHeadProps & React.RefAttributes<HTMLDivElement>>;
+```
+
+#### ThemeToggle
+
+Group: marketing · Source: /components/marketing/ThemeToggle.jsx · Exports: ThemeToggle
+
+# ThemeToggle
+
+One theme control for every Efolusi site, following the [theme contract](../../guidelines/theming.md#theme-contract). `ThemeToggle` is a single 44px button that cycles Light, Dark and System. On System it follows the operating system live. The choice is saved in localStorage `efolusi-theme`; the `efolusi_theme` cookie on `.efolusi.com` carries the resolved light or dark, so a first visit to another Efolusi site starts in the same theme.
+
+Put the output of `themeInitScript()` in an inline `<script>` in `<head>`, before the page paints. Without it, a dark-mode visitor sees a light flash. Set `lang="id"` for the Indonesian labels; the label names the current theme and the next one.
+
+```jsx
+// app/layout.jsx
+<head><script dangerouslySetInnerHTML={{ __html: themeInitScript() }} /></head>
+
+// header
+<ThemeToggle lang={lang} />
+```
+
+```ts
+export type ThemePreference = 'system' | 'light' | 'dark';
+
+export interface ThemeToggleProps extends Omit<React.ButtonHTMLAttributes<HTMLButtonElement>, 'onChange'> {
+  /** Language of the built-in labels. @default 'en' */
+  lang?: 'en' | 'id';
+  /** Override any label: `system`, `light`, `dark`, and `next` (the "switch to" phrase). */
+  labels?: Partial<Record<ThemePreference | 'next', string>>;
+  /** Called with the new preference after a click. */
+  onChange?: (preference: ThemePreference) => void;
+}
+/** One button that cycles Light, Dark and System; follows the OS live while on System. */
+export declare const ThemeToggle: React.ForwardRefExoticComponent<ThemeToggleProps & React.RefAttributes<HTMLButtonElement>>;
+
+/** The efolusi-theme localStorage choice, then the efolusi_theme cookie (dark|light), else `system`. */
+export declare function readThemePreference(doc?: Document, storage?: Storage): ThemePreference;
+/** Saves the choice in localStorage `efolusi-theme` and its resolved light|dark in the `efolusi_theme` cookie. */
+export declare function writeThemePreference(value: ThemePreference, doc?: Document, storage?: Storage, matchMedia?: (query: string) => MediaQueryList): ThemePreference;
+/** Writes the resolved theme to the `efolusi_theme` cookie: a year, Path=/, SameSite=Lax, Secure on https, Domain=.efolusi.com on efolusi.com hosts. Never `system`. */
+export declare function writeThemeCookie(theme: 'light' | 'dark', doc?: Document): void;
+export declare function resolveTheme(preference: ThemePreference, matchMedia?: (query: string) => MediaQueryList): 'light' | 'dark';
+export declare function applyTheme(preference: ThemePreference, doc?: Document, matchMedia?: (query: string) => MediaQueryList): 'light' | 'dark';
+/** The script to inline in <head> so the first paint has the stored or system theme. */
+export declare function themeInitScript(): string;
 ```
 
 ### navigation

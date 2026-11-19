@@ -84,5 +84,12 @@ export function RevealDemo() {
       <Reveal><FeatureCard tone="cocoa" icon="coins" title="Token" body="Buyback and burn." /></Reveal>
       <Reveal><FeatureCard tone="amber" icon="sparkles" title="Standard" body="Open source first." /></Reveal>
     </FeatureGrid>
+// @demo ThemeToggle Light, Dark and System
+export function ThemeToggleDemo() {
+  const { ThemeToggle } = window.EfolusiDesignSystem_4ffc3d;
+    <div style={{ display: 'flex', gap: 'var(--space-3)', alignItems: 'center' }}>
+      <ThemeToggle />
+      <ThemeToggle lang="id" />
+    </div>
   );
 }

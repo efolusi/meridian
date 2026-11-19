@@ -1,10 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+<script src="./theme.js"></script>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Meridian: the design system by Efolusi</title>
-<meta name="description" content="Meridian: a general-purpose open-source design system with 128 accessible React components, warm design tokens, blocks, charts, and full example apps, zero build step, Apache-2.0 licensed.">
+<meta name="description" content="Meridian: a general-purpose open-source design system with 129 accessible React components, warm design tokens, blocks, charts, and full example apps, zero build step, Apache-2.0 licensed.">
 <link rel="icon" type="image/svg+xml" href="../assets/favicon.svg">
 <link rel="canonical" href="https://meridian.efolusi.com/site/DsSite.dc.html">
 <meta name="robots" content="index,follow">
@@ -13,14 +14,14 @@
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Meridian">
 <meta property="og:title" content="Meridian: the design system by Efolusi">
-<meta property="og:description" content="Meridian: a general-purpose open-source design system with 128 accessible React components, warm design tokens, blocks, charts, and full example apps, zero build step, Apache-2.0 licensed.">
+<meta property="og:description" content="Meridian: a general-purpose open-source design system with 129 accessible React components, warm design tokens, blocks, charts, and full example apps, zero build step, Apache-2.0 licensed.">
 <meta property="og:url" content="https://meridian.efolusi.com/site/DsSite.dc.html">
 <meta property="og:image" content="https://meridian.efolusi.com/assets/meridian-social.png">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Meridian: the design system by Efolusi">
-<meta name="twitter:description" content="Meridian: a general-purpose open-source design system with 128 accessible React components, warm design tokens, blocks, charts, and full example apps, zero build step, Apache-2.0 licensed.">
+<meta name="twitter:description" content="Meridian: a general-purpose open-source design system with 129 accessible React components, warm design tokens, blocks, charts, and full example apps, zero build step, Apache-2.0 licensed.">
 <meta name="twitter:image" content="https://meridian.efolusi.com/assets/meridian-social.png">
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"SoftwareApplication","name":"Meridian","applicationCategory":"DeveloperApplication","operatingSystem":"Web","description":"General-purpose open-source design system by Efolusi: 128 accessible React components, warm design tokens, blocks, charts, and full example apps, served browser-native with zero build step.","url":"https://meridian.efolusi.com/","softwareVersion":"1.25.1","license":"https://opensource.org/licenses/Apache-2.0","author":{"@type":"Organization","name":"Efolusi","url":"https://efolusi.com"},"offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"SoftwareApplication","name":"Meridian","applicationCategory":"DeveloperApplication","operatingSystem":"Web","description":"General-purpose open-source design system by Efolusi: 129 accessible React components, warm design tokens, blocks, charts, and full example apps, served browser-native with zero build step.","url":"https://meridian.efolusi.com/","softwareVersion":"1.25.1","license":"https://opensource.org/licenses/Apache-2.0","author":{"@type":"Organization","name":"Efolusi","url":"https://efolusi.com"},"offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}</script>
 <script src="./support.js"></script>
 </head>
 <body>
@@ -45,14 +46,14 @@
 <x-import component="SiteSearch" from="./SiteSearch.jsx" hint-size="220px,36px"></x-import>
 <a href="https://github.com/efolusi/meridian" class="site-gh hide-sm" aria-label="GitHub repository" title="GitHub repository" style-hover="color:var(--text-primary);background:var(--surface-sunken)"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"></path><path d="M9 18c-4.51 2-5-2-7-2"></path></svg></a>
 <button type="button" class="site-lang" aria-label="Ganti ke Bahasa Indonesia" title="Ganti ke Bahasa Indonesia">ID</button>
-<button onClick="{{ toggleTheme }}" class="site-theme" aria-label="Switch theme" title="Switch theme" style-hover="color:var(--text-primary);background:var(--surface-sunken)"><svg class="icon-sun" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="4"></circle><path d="M12 2v2"></path><path d="M12 20v2"></path><path d="m4.93 4.93 1.41 1.41"></path><path d="m17.66 17.66 1.41 1.41"></path><path d="M2 12h2"></path><path d="M20 12h2"></path><path d="m6.34 17.66-1.41 1.41"></path><path d="m19.07 4.93-1.41 1.41"></path></svg><svg class="icon-moon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"></path></svg></button>
+<button onClick="{{ toggleTheme }}" class="site-theme" aria-label="Switch theme" title="Switch theme" style-hover="color:var(--text-primary);background:var(--surface-sunken)"><svg class="icon-monitor" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect width="20" height="14" x="2" y="3" rx="2"/><line x1="8" x2="16" y1="21" y2="21"/><line x1="12" x2="12" y1="17" y2="21"/></svg><svg class="icon-sun" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="4"></circle><path d="M12 2v2"></path><path d="M12 20v2"></path><path d="m4.93 4.93 1.41 1.41"></path><path d="m17.66 17.66 1.41 1.41"></path><path d="M2 12h2"></path><path d="M20 12h2"></path><path d="m6.34 17.66-1.41 1.41"></path><path d="m19.07 4.93-1.41 1.41"></path></svg><svg class="icon-moon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"></path></svg></button>
 </div>
 </header>
 <main id="main" tabIndex="-1" style="flex:1">
 <section class="hero-pad pad-sm" style="max-width:860px;margin:0 auto;padding:88px 28px 0;text-align:center">
 <a href="./Docs.dc.html" style="display:inline-flex;align-items:center;gap:8px;font-size:13px;font-weight:500;color:var(--text-secondary);border:1px solid var(--border-default);border-radius:var(--radius-full);padding:5px 14px;text-decoration:none" style-hover="border-color:var(--border-strong);color:var(--text-primary)"><span style="width:6px;height:6px;border-radius:99px;background:var(--success-600,#2F7A40)"></span><span data-lang-id="Kini sepenuhnya open source di bawah Apache-2.0 →">Now fully open source under Apache-2.0 →</span></a>
 <h1 class="hero-h1" data-lang-id="Design system di balik produk Anda berikutnya." style="font-family:var(--font-display);font-weight:700;letter-spacing:-0.025em;font-size:58px;line-height:1.06;margin:26px 0 0;text-wrap:balance">The design system behind your next product.</h1>
-<p data-lang-id="Kertas hangat, tinta espresso, struktur setipis rambut. 128 komponen aksesibel, token, blok, dan aplikasi contoh lengkap, bebas disalin, diberi tema, dan dirilis." style="font-size:18px;line-height:1.6;color:var(--text-secondary);max-width:600px;margin:20px auto 0;text-wrap:pretty">Warm paper, espresso ink, hairline structure. 128 accessible components, tokens, blocks, and full example apps, free to copy, theme, and ship.</p>
+<p data-lang-id="Kertas hangat, tinta espresso, struktur setipis rambut. 128 komponen aksesibel, token, blok, dan aplikasi contoh lengkap, bebas disalin, diberi tema, dan dirilis." style="font-size:18px;line-height:1.6;color:var(--text-secondary);max-width:600px;margin:20px auto 0;text-wrap:pretty">Warm paper, espresso ink, hairline structure. 129 accessible components, tokens, blocks, and full example apps, free to copy, theme, and ship.</p>
 <div style="display:flex;gap:12px;justify-content:center;margin-top:30px">
 <a href="./Docs.dc.html#installation" style="text-decoration:none"><x-import component-from-global-scope="EfolusiDesignSystem_4ffc3d.Button" size="lg" hint-size="150px,44px">Install Meridian</x-import></a>
 <a href="./Components.dc.html" style="text-decoration:none"><x-import component-from-global-scope="EfolusiDesignSystem_4ffc3d.Button" variant="secondary" size="lg" hint-size="180px,44px">Browse components</x-import></a>
@@ -110,7 +111,7 @@ class Component extends DCLogic {
   componentDidUpdate() { this._syncFrame(); }
   componentDidMount() {
     this._syncFrame();
-    try { const t = localStorage.getItem('efolusi-site-theme') || (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'); document.documentElement.setAttribute('data-theme', t); } catch (e) {}
+    if (window.EfSiteTheme) window.EfSiteTheme.label();
     this.setState({ dark: document.documentElement.getAttribute('data-theme') === 'dark' });
     this._measure = () => {
       const el = document.querySelector('.home-frame');
@@ -130,9 +131,7 @@ class Component extends DCLogic {
       frameScale,
       frameH: Math.round(780 * frameScale),
       toggleTheme: () => {
-        const next = this.state.dark ? 'light' : 'dark';
-        document.documentElement.setAttribute('data-theme', next);
-        try { localStorage.setItem('efolusi-site-theme', next); } catch (e) {}
+        const next = window.EfSiteTheme.cycle();
         this.setState({ dark: next === 'dark' });
       },
       example: this.state.example,

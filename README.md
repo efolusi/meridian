@@ -1,10 +1,10 @@
 # Meridian
 
-**A general-purpose open-source design system by [Efolusi](https://efolusi.com).** 128 accessible React components, 221 design tokens in light, dark and compact, 12 blocks, and 8 full example apps, served browser-native with **no build step**.
+**A general-purpose open-source design system by [Efolusi](https://efolusi.com).** 129 accessible React components, 221 design tokens in light, dark and compact, 12 blocks, and 8 full example apps, served browser-native with **no build step**.
 
 [![License: Apache-2.0](https://img.shields.io/badge/License-Apache_2.0-7A4E2B.svg)](LICENSE)
 [![Docs](https://img.shields.io/badge/docs-meridian.efolusi.com-2C1709.svg)](https://meridian.efolusi.com)
-[![Components](https://img.shields.io/badge/components-128-A0693C.svg)](https://meridian.efolusi.com/site/Components.dc.html)
+[![Components](https://img.shields.io/badge/components-129-A0693C.svg)](https://meridian.efolusi.com/site/Components.dc.html)
 [![npm](https://img.shields.io/npm/v/@efolusi/meridian?color=A0693C&label=npm)](https://www.npmjs.com/package/@efolusi/meridian)
 [![Zero dependencies](https://img.shields.io/badge/runtime%20deps-react%20only-5C3A1F.svg)](#quickstart)
 

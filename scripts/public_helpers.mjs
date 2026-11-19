@@ -1,10 +1,14 @@
 // Lowercase exports that are public API, shared by the CDN bundle and the npm barrel.
 export const PUBLIC_HELPERS = Object.freeze([
+  'applyTheme',
   'badgeVariants',
   'buttonGroupVariants',
   'buttonVariants',
   'markerVariants',
   'navigationMenuTriggerStyle',
+  'readThemePreference',
+  'resolveTheme',
+  'themeInitScript',
   'toast',
   'toggleVariants',
   'useChart',
@@ -14,4 +18,6 @@ export const PUBLIC_HELPERS = Object.freeze([
   'useMessageScrollerScrollable',
   'useMessageScrollerVisibility',
   'useSidebar',
+  'writeThemeCookie',
+  'writeThemePreference',
 ]);
