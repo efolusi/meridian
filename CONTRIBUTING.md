@@ -31,6 +31,12 @@ A green run proves that the committed bundle rebuilds byte for byte from source,
 
 One command is the whole contract: it is the same script CI executes, so a green run here means a green run there. The only thing it cannot cover locally is the browser: open `site/_smoke.html` after demo changes; it renders every demo and reports pass/fail in the page title.
 
+## Visual baselines
+
+A PR that changes what a component looks like on purpose refreshes the group screenshots in `tests/__shots__`, even when the change stays under the visual check's diff threshold. Run the `update-visual-baselines` workflow on the PR's branch, take the changed shots onto the PR, and have them reviewed before merge.
+
+The workflow leaves a `visual-baselines-<run id>` branch behind. Delete it once its shots are on the PR it served (or on main) and it has no open PR. The owner gave a standing yes for this on 2026-11-19: "Ya, izin tetap". It covers only `visual-baselines-*` branches in this repository.
+
 ## Component contract
 
 Every component ships four files in its group folder (`components/<group>/`):
