@@ -2,6 +2,9 @@
 
 ## Unreleased
 
+- **Marquee's moving copies are inert from the first server-rendered paint**, so a link inside them never takes Tab focus before hydration.
+- **SiteHeader docs say that `actions` renders twice** (the bar and the mobile panel), so it must hold no `id`.
+- **The docs demos fit a 390px screen.** The Textarea, Card, Bubble and CopyField demos had fixed widths that made the demo page scroll sideways on a phone; they are fluid now, with the same maximum width.
 - **LegalDocument refuses `/\` links.** A link starting with `/\` (which browsers read as `//`, off-site) now renders as plain text, like `//`.
 - **`SiteHeader`, `SiteFooter` and `LegalDocument` in the marketing group.** `SiteHeader` brings the skip link, the brand, primary links with `aria-current`, a language switch, an `actions` slot for each product's own controls, and a mobile menu that Escape closes. `SiteFooter` holds the tagline, social icons, link columns (each a named nav) and a bottom row; links to other sites say they open a new tab. `LegalDocument` renders a terms or privacy page from dictionary strings: `[label](href)` and `**strong**` only, never HTML, only http, https, mailto and in-site links, and stable section ids. Labels in English and Indonesian.
 - **Marquee: the moving copies are `inert`**, and the screen-reader list shows itself when one of its links takes keyboard focus, so links in the items work from the keyboard.
