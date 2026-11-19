@@ -3,9 +3,9 @@ import React from 'react';
 import { injectEfCss, mergeRefs } from '../forms/Button.jsx';
 
 const CSS = `
-.ef-marker{display:inline-flex;align-items:center;gap:6px;min-width:0;color:var(--text-muted);font-family:var(--font-sans);font-size:var(--text-sm);line-height:1.4}
-.ef-marker--border{display:flex;width:100%;padding-block:10px;border-bottom:1px solid var(--border-default)}
-.ef-marker--separator{display:flex;width:100%;gap:10px;text-align:center;white-space:nowrap}
+.ef-marker{display:inline-flex;align-items:center;gap:var(--space-2);min-width:0;color:var(--text-muted);font-family:var(--font-sans);font-size:var(--text-sm);line-height:1.4}
+.ef-marker--border{display:flex;width:100%;padding-block:var(--space-3);border-bottom:1px solid var(--border-default)}
+.ef-marker--separator{display:flex;width:100%;gap:var(--space-3);text-align:center;white-space:nowrap}
 .ef-marker--separator::before,.ef-marker--separator::after{content:"";height:1px;min-width:12px;flex:1;background:var(--border-default)}
 .ef-marker__icon{display:inline-flex;align-items:center;justify-content:center;flex:0 0 auto;color:var(--text-muted)}
 .ef-marker__content{min-width:0;overflow-wrap:anywhere}

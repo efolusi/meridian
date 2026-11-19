@@ -3,11 +3,11 @@ import React from 'react';
 import { injectEfCss, mergeRefs } from '../forms/Button.jsx';
 
 const CSS = `
-.ef-bubble-group{display:flex;min-width:0;flex-direction:column;gap:8px}
-.ef-bubble{position:relative;display:flex;width:fit-content;max-width:80%;min-width:0;flex-direction:column;gap:4px}
+.ef-bubble-group{display:flex;min-width:0;flex-direction:column;gap:var(--space-2)}
+.ef-bubble{position:relative;display:flex;width:fit-content;max-width:80%;min-width:0;flex-direction:column;gap:var(--space-1)}
 .ef-bubble[data-align="end"]{align-self:flex-end}
 .ef-bubble[data-variant="ghost"]{max-width:100%}
-.ef-bubble__content{width:fit-content;max-width:100%;min-width:0;overflow:hidden;overflow-wrap:anywhere;padding:8px 12px;border:1px solid transparent;border-radius:var(--radius-lg);font-size:var(--text-sm);line-height:var(--leading-relaxed)}
+.ef-bubble__content{width:fit-content;max-width:100%;min-width:0;overflow:hidden;overflow-wrap:anywhere;padding:var(--space-2) var(--space-3);border:1px solid transparent;border-radius:var(--radius-lg);font-size:var(--text-sm);line-height:var(--leading-relaxed)}
 .ef-bubble[data-align="end"]>.ef-bubble__content{align-self:flex-end}
 .ef-bubble[data-variant="default"]>.ef-bubble__content{background:var(--accent);color:var(--accent-contrast)}
 .ef-bubble[data-variant="secondary"]>.ef-bubble__content{background:var(--surface-sunken);color:var(--text-primary)}
@@ -19,7 +19,7 @@ const CSS = `
 .ef-bubble__content:is(button,a){cursor:pointer;text-align:start;transition:filter var(--dur-fast) var(--ease-out),background var(--dur-fast) var(--ease-out)}
 .ef-bubble__content:is(button,a):hover{filter:brightness(.96)}
 .ef-bubble__content:is(button,a):focus-visible{outline:none;box-shadow:var(--focus-ring)}
-.ef-bubble__reactions{position:absolute;z-index:1;display:flex;width:fit-content;flex-shrink:0;align-items:center;justify-content:center;gap:4px;padding:2px 6px;border-radius:var(--radius-full);background:var(--surface-subtle);font-size:var(--text-sm);box-shadow:0 0 0 3px var(--surface-card)}
+.ef-bubble__reactions{position:absolute;z-index:1;display:flex;width:fit-content;flex-shrink:0;align-items:center;justify-content:center;gap:var(--space-1);padding:var(--space-0-5) var(--space-2);border-radius:var(--radius-full);background:var(--surface-subtle);font-size:var(--text-sm);box-shadow:0 0 0 3px var(--surface-card)}
 .ef-bubble__reactions:has(button){padding:0}
 .ef-bubble__reactions[data-side="top"]{inset-block-start:0;transform:translateY(-75%)}
 .ef-bubble__reactions[data-side="bottom"]{inset-block-end:0;transform:translateY(75%)}

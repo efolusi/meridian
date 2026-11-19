@@ -6,20 +6,20 @@ const CSS = `
 .ef-confirm{border-radius:var(--radius-md);background:var(--surface-card);border:1px solid var(--accent-subtle-border);box-shadow:0 0 0 2px var(--accent-subtle)}
 .ef-confirm--danger{border-color:var(--danger-300,var(--danger-600));box-shadow:0 0 0 2px var(--danger-100)}
 .ef-confirm--settled{border-color:var(--border-default);box-shadow:none}
-.ef-confirm__head{display:flex;align-items:center;gap:9px;padding:11px 14px 0}
+.ef-confirm__head{display:flex;align-items:center;gap:var(--space-2);padding:var(--space-3) var(--space-4) 0}
 .ef-confirm__icon{display:inline-flex;color:var(--brand-700);flex:none}
 .ef-confirm--danger .ef-confirm__icon{color:var(--danger-600)}
 .ef-confirm__title{font-size:var(--text-sm);font-weight:600;color:var(--text-primary)}
-.ef-confirm__desc{padding:6px 14px 0;font-size:13.5px;line-height:1.6;color:var(--text-secondary)}
-.ef-confirm__content{padding:10px 14px 0}
-.ef-confirm__actions{display:flex;justify-content:flex-end;gap:8px;padding:12px 14px}
-.ef-confirm__btn{height:30px;padding:0 13px;border-radius:var(--radius-sm);border:1px solid var(--border-strong);background:var(--surface-card);cursor:pointer;font-family:var(--font-sans);font-size:12.5px;font-weight:600;color:var(--text-primary);transition:background var(--dur-fast) var(--ease-out)}
+.ef-confirm__desc{padding:var(--space-2) var(--space-4) 0;font-size:13.5px;line-height:1.6;color:var(--text-secondary)}
+.ef-confirm__content{padding:var(--space-3) var(--space-4) 0}
+.ef-confirm__actions{display:flex;justify-content:flex-end;gap:var(--space-2);padding:var(--space-3) var(--space-4)}
+.ef-confirm__btn{height:30px;padding:0 var(--space-3);border-radius:var(--radius-sm);border:1px solid var(--border-strong);background:var(--surface-card);cursor:pointer;font-family:var(--font-sans);font-size:12.5px;font-weight:600;color:var(--text-primary);transition:background var(--dur-fast) var(--ease-out)}
 .ef-confirm__btn:hover{background:var(--surface-subtle)}
 .ef-confirm__btn:focus-visible{outline:none;box-shadow:var(--focus-ring)}
 .ef-confirm__btn--accept{background:var(--accent);border-color:var(--accent);color:var(--accent-contrast)}
 .ef-confirm__btn--accept:hover{background:var(--accent-hover)}
 .ef-confirm--danger .ef-confirm__btn--accept{background:var(--danger-600);border-color:var(--danger-600);color:var(--danger-contrast)}
-.ef-confirm__status{display:flex;align-items:center;gap:8px;padding:10px 14px 12px;font-size:13px;color:var(--text-secondary)}
+.ef-confirm__status{display:flex;align-items:center;gap:var(--space-2);padding:var(--space-3) var(--space-4) var(--space-3);font-size:13px;color:var(--text-secondary)}
 .ef-confirm__status--approved{color:var(--success-600,var(--text-secondary))}
 .ef-confirm__status--rejected{color:var(--text-muted)}
 @media (pointer:coarse){.ef-confirm__btn{min-height:var(--tap-min)}}

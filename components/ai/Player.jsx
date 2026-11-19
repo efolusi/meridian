@@ -3,8 +3,8 @@ import React from 'react';
 import { injectEfCss, cssPct } from '../forms/Button.jsx';
 import { Icon } from '../icons/Icon.jsx';
 const CSS = `
-.ef-player{display:flex;flex-direction:column;gap:10px;padding:14px;border:1px solid var(--border-default);border-radius:var(--radius-md);background:var(--surface-card);font-family:var(--font-sans)}
-.ef-player__top{display:flex;align-items:center;gap:10px}
+.ef-player{display:flex;flex-direction:column;gap:var(--space-3);padding:var(--space-4);border:1px solid var(--border-default);border-radius:var(--radius-md);background:var(--surface-card);font-family:var(--font-sans)}
+.ef-player__top{display:flex;align-items:center;gap:var(--space-3)}
 .ef-player__title{flex:1;min-width:0;font-size:13.5px;font-weight:var(--weight-semibold);color:var(--text-primary);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .ef-player__meta{font-size:12px;color:var(--text-muted)}
 .ef-player__wave{position:relative;display:flex;align-items:center;justify-content:space-between;height:44px;cursor:pointer;touch-action:none;border-radius:var(--radius-sm)}
@@ -13,7 +13,7 @@ const CSS = `
 .ef-player__bar--played{background:var(--accent)}
 .ef-player__bar--loading{animation:ef-player-load 1.2s ease-in-out infinite}
 @keyframes ef-player-load{0%,100%{transform:scaleY(.3);opacity:.5}50%{transform:scaleY(1);opacity:1}}
-.ef-player__row{display:flex;align-items:center;gap:6px}
+.ef-player__row{display:flex;align-items:center;gap:var(--space-2)}
 .ef-player__btn{display:inline-flex;align-items:center;justify-content:center;width:30px;height:30px;border:none;background:none;cursor:pointer;color:var(--text-secondary);border-radius:var(--radius-full);transition:color var(--dur-fast) var(--ease-out),background var(--dur-fast) var(--ease-out)}
 .ef-player__btn:hover{color:var(--text-primary);background:var(--surface-subtle)}
 .ef-player__btn:focus-visible{outline:none;box-shadow:var(--focus-ring)}
