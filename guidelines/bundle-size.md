@@ -13,9 +13,9 @@ CSS is not counted per component: `styles.css` ships every component style in on
 
 | File | Size | Gzip |
 | --- | ---: | ---: |
-| `@efolusi/meridian` | 363.7 kB | 82.3 kB |
+| `@efolusi/meridian` | 364.0 kB | 82.4 kB |
 | `dist/components.css` | 219.9 kB | 29.9 kB |
-| `_ds_bundle.js` | 850.7 kB | 151.1 kB |
+| `_ds_bundle.js` | 851.4 kB | 151.3 kB |
 
 The root import, `@efolusi/meridian`, is every component. `_ds_bundle.js` is the zero-build CDN bundle, which also carries each component's CSS. The root import is minified; the CSS and the CDN bundle are measured as shipped.
 
@@ -134,7 +134,7 @@ The root import, `@efolusi/meridian`, is every component. `_ds_bundle.js` is the
 | `marketing/Section.js` | Section, SectionHead | 1.2 kB | 0.5 kB |
 | `marketing/SiteFooter.js` | SiteFooter | 2.1 kB | 0.8 kB |
 | `marketing/SiteHeader.js` | SiteHeader | 46.3 kB | 8.0 kB |
-| `marketing/ThemeToggle.js` | ThemeToggle | 46.2 kB | 8.2 kB |
+| `marketing/ThemeToggle.js` | ThemeToggle | 46.5 kB | 8.3 kB |
 | `navigation/Breadcrumbs.js` | Breadcrumb, BreadcrumbList, BreadcrumbItem, BreadcrumbLink, BreadcrumbPage, BreadcrumbSeparator, BreadcrumbEllipsis | 45.8 kB | 7.6 kB |
 | `navigation/Menubar.js` | Menubar, MenubarMenu, MenubarTrigger, MenubarContent, MenubarPortal, MenubarGroup, MenubarRadioGroup, MenubarLabel, MenubarSeparator, MenubarShortcut, MenubarItem, MenubarCheckboxItem, MenubarRadioItem, MenubarSub, MenubarSubTrigger, MenubarSubContent | 59.3 kB | 11.7 kB |
 | `navigation/NavigationMenu.js` | NavigationMenu, NavigationMenuList, NavigationMenuItem, NavigationMenuTrigger, NavigationMenuContent, NavigationMenuLink, NavigationMenuIndicator, NavigationMenuViewport | 50.5 kB | 9.5 kB |
