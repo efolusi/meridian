@@ -11,10 +11,12 @@ export interface ThemeToggleProps extends Omit<React.ButtonHTMLAttributes<HTMLBu
 /** One button that cycles Light, Dark and System; follows the OS live while on System. */
 export declare const ThemeToggle: React.ForwardRefExoticComponent<ThemeToggleProps & React.RefAttributes<HTMLButtonElement>>;
 
-/** Cookie first, then the efolusi-theme localStorage mirror, else `system`. */
+/** The efolusi-theme localStorage choice, then the efolusi_theme cookie (dark|light), else `system`. */
 export declare function readThemePreference(doc?: Document, storage?: Storage): ThemePreference;
-/** Writes the choice to the efolusi_theme cookie (a year, SameSite=Lax, Secure on https, Domain=.efolusi.com on its hosts) and the efolusi-theme localStorage mirror. */
-export declare function writeThemePreference(value: ThemePreference, doc?: Document, storage?: Storage): ThemePreference;
+/** Saves the choice in localStorage `efolusi-theme` and its resolved light|dark in the `efolusi_theme` cookie. */
+export declare function writeThemePreference(value: ThemePreference, doc?: Document, storage?: Storage, matchMedia?: (query: string) => MediaQueryList): ThemePreference;
+/** Writes the resolved theme to the `efolusi_theme` cookie: a year, Path=/, SameSite=Lax, Secure on https, Domain=.efolusi.com on efolusi.com hosts. Never `system`. */
+export declare function writeThemeCookie(theme: 'light' | 'dark', doc?: Document): void;
 export declare function resolveTheme(preference: ThemePreference, matchMedia?: (query: string) => MediaQueryList): 'light' | 'dark';
 export declare function applyTheme(preference: ThemePreference, doc?: Document, matchMedia?: (query: string) => MediaQueryList): 'light' | 'dark';
 /** The script to inline in <head> so the first paint has the stored or system theme. */

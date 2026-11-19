@@ -153,9 +153,9 @@ Every Efolusi site follows this one contract, through `ThemeToggle` and `themeIn
 
 | Part | Rule |
 |---|---|
-| Choice | `system`, `light` or `dark`. |
-| Cookie | `efolusi_theme` stores the choice. It wins. `Domain=.efolusi.com` on efolusi.com hosts only, `Path=/`, a year, `SameSite=Lax`, `Secure` on https. |
-| Mirror | localStorage `efolusi-theme` holds the same choice, read only when the cookie has none (cookies blocked, or a host outside efolusi.com). |
-| Before paint | `themeInitScript()` inlined in `<head>`: cookie, then the mirror, then `prefers-color-scheme`. Each site resolves `system` itself. |
-| Markup | Light is no `data-theme` attribute (bare `:root`); dark is `data-theme="dark"`. |
-| Control | One 44px button. Light → Dark → System. On System it follows the operating system live. Labels in English and Indonesian. |
+| Choice | localStorage `efolusi-theme` holds this origin's choice: `light`, `dark` or `system`. |
+| Cookie | `efolusi_theme` holds only the resolved `light` or `dark`, never `system`, so every product can parse it. `Domain=.efolusi.com` when the host is `efolusi.com` or ends with `.efolusi.com`; `Path=/`; `Max-Age` one year; `SameSite=Lax`; `Secure` on https. |
+| Precedence | Before paint and at runtime: the localStorage choice, then the cookie (`dark` or `light`), then `prefers-color-scheme`. A first visit to another Efolusi site inherits the cookie. |
+| Before paint | `themeInitScript()` inlined in `<head>`. |
+| Markup | Light removes `data-theme` (bare `:root`); dark sets `data-theme="dark"`. |
+| Control | One 44px button. Light → Dark → System → Light. On System, a `prefers-color-scheme` change re-resolves the theme and rewrites the cookie. Labels in English and Indonesian. |

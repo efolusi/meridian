@@ -1,8 +1,8 @@
-// The docs site's theme, shared with every Efolusi site through ThemeToggle's
-// storage: the efolusi_theme cookie, then localStorage, then the system setting.
+// The docs site's theme, on the same contract as ThemeToggle: the efolusi-theme
+// choice in localStorage, then the efolusi_theme cookie (dark|light), then the system setting.
 // The first line is themeInitScript() from components/marketing/ThemeToggle.jsx,
 // verbatim (tests/site-theme.test.mjs), so it runs before the first paint.
-(function(){try{var m=document.cookie.match(/(?:^|;\s*)efolusi_theme=([^;]+)/),p=m&&decodeURIComponent(m[1]);if(p!=='light'&&p!=='dark'&&p!=='system'){p=null;try{p=localStorage.getItem('efolusi-theme')}catch(e){}}if(p!=='light'&&p!=='dark')p=window.matchMedia&&matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light';if(p==='dark')document.documentElement.setAttribute('data-theme','dark');else document.documentElement.removeAttribute('data-theme')}catch(e){}})();
+(function(){try{var s=window.matchMedia&&matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light',c=null,t;try{c=localStorage.getItem('efolusi-theme')}catch(e){}if(c==='light'||c==='dark')t=c;else if(c==='system')t=s;else{var m=document.cookie.match(/(?:^|;\s*)efolusi_theme=(dark|light)(?:;|$)/);t=m?m[1]:s}if(t==='dark')document.documentElement.setAttribute('data-theme','dark');else document.documentElement.removeAttribute('data-theme')}catch(e){}})();
 (function () {
   var ORDER = ['light', 'dark', 'system'];
   var LABELS = {
@@ -33,7 +33,7 @@
   // On System, follow the operating system live.
   if (window.matchMedia) {
     matchMedia('(prefers-color-scheme: dark)').addEventListener('change', function () {
-      if (ds() && pref() === 'system') ds().applyTheme('system');
+      if (ds() && pref() === 'system') ds().writeThemeCookie(ds().applyTheme('system'));
     });
   }
   document.addEventListener('DOMContentLoaded', label);

@@ -18,5 +18,6 @@ export const PUBLIC_HELPERS = Object.freeze([
   'useMessageScrollerScrollable',
   'useMessageScrollerVisibility',
   'useSidebar',
+  'writeThemeCookie',
   'writeThemePreference',
 ]);

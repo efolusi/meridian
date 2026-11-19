@@ -3,9 +3,10 @@ import React from 'react';
 import { injectEfCss } from '../forms/Button.jsx';
 import { Icon } from '../icons/Icon.jsx';
 
-// One theme control for every Efolusi site; the contract is guidelines/theming.md (Theme contract). The
-// cookie on .efolusi.com carries the choice (system, light or dark) and wins;
-// localStorage mirrors it for when cookies are unavailable.
+// One theme control for every Efolusi site; the contract is guidelines/theming.md (Theme contract).
+// localStorage holds this origin's choice (light, dark or system). The cookie on
+// .efolusi.com holds only the resolved light or dark, so a first visit to another
+// Efolusi site inherits it; every product parses that cookie as dark|light.
 const THEME_COOKIE = 'efolusi_theme';
 const THEME_STORAGE_KEY = 'efolusi-theme';
 // Cycle order of the single button.
@@ -20,34 +21,42 @@ const ICONS = { system: 'monitor', light: 'sun', dark: 'moon' };
 
 const valid = (v) => (THEME_PREFERENCES.includes(v) ? v : null);
 
+/** The localStorage choice, then the cookie (dark|light), else `system`. */
 export function readThemePreference(doc = globalThis.document, storage = globalThis.localStorage) {
-  const m = doc?.cookie?.match(/(?:^|;\s*)efolusi_theme=([^;]+)/);
-  const fromCookie = valid(m && decodeURIComponent(m[1]));
-  if (fromCookie) return fromCookie;
   try {
-    return valid(storage?.getItem(THEME_STORAGE_KEY)) || 'system';
+    const choice = valid(storage?.getItem(THEME_STORAGE_KEY));
+    if (choice) return choice;
   } catch {
-    return 'system';
+    /* storage blocked: fall back to the cookie */
   }
-}
-
-export function writeThemePreference(value, doc = globalThis.document, storage = globalThis.localStorage) {
-  const pref = valid(value) || 'system';
-  const host = doc?.location?.hostname || '';
-  const domain = host === 'efolusi.com' || host.endsWith('.efolusi.com') ? '; Domain=.efolusi.com' : '';
-  const secure = doc?.location?.protocol === 'https:' ? '; Secure' : '';
-  if (doc) doc.cookie = `${THEME_COOKIE}=${pref}${domain}; Path=/; Max-Age=${YEAR}; SameSite=Lax${secure}`;
-  try {
-    storage?.setItem(THEME_STORAGE_KEY, pref);
-  } catch {
-    /* storage blocked: the cookie still holds the choice */
-  }
-  return pref;
+  const m = doc?.cookie?.match(/(?:^|;\s*)efolusi_theme=(dark|light)(?:;|$)/);
+  return m ? m[1] : 'system';
 }
 
 export function resolveTheme(pref, matchMedia = globalThis.matchMedia) {
   if (pref === 'light' || pref === 'dark') return pref;
   return matchMedia && matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+}
+
+/** Writes the resolved light|dark to the cookie; never `system`. */
+export function writeThemeCookie(theme, doc = globalThis.document) {
+  if (!doc) return;
+  const host = doc.location?.hostname || '';
+  const domain = host === 'efolusi.com' || host.endsWith('.efolusi.com') ? '; Domain=.efolusi.com' : '';
+  const secure = doc.location?.protocol === 'https:' ? '; Secure' : '';
+  doc.cookie = `${THEME_COOKIE}=${theme === 'dark' ? 'dark' : 'light'}${domain}; Path=/; Max-Age=${YEAR}; SameSite=Lax${secure}`;
+}
+
+/** Saves the choice in localStorage and its resolved theme in the cookie. */
+export function writeThemePreference(value, doc = globalThis.document, storage = globalThis.localStorage, matchMedia = globalThis.matchMedia) {
+  const pref = valid(value) || 'system';
+  try {
+    storage?.setItem(THEME_STORAGE_KEY, pref);
+  } catch {
+    /* storage blocked: the cookie still carries the resolved theme */
+  }
+  writeThemeCookie(resolveTheme(pref, matchMedia), doc);
+  return pref;
 }
 
 export function applyTheme(pref, doc = globalThis.document, matchMedia = globalThis.matchMedia) {
@@ -60,7 +69,7 @@ export function applyTheme(pref, doc = globalThis.document, matchMedia = globalT
 
 /** Inline this in <head>, before any stylesheet paints, so the first frame has the right theme. */
 export function themeInitScript() {
-  return `(function(){try{var m=document.cookie.match(/(?:^|;\\s*)${THEME_COOKIE}=([^;]+)/),p=m&&decodeURIComponent(m[1]);if(p!=='light'&&p!=='dark'&&p!=='system'){p=null;try{p=localStorage.getItem('${THEME_STORAGE_KEY}')}catch(e){}}if(p!=='light'&&p!=='dark')p=window.matchMedia&&matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light';if(p==='dark')document.documentElement.setAttribute('data-theme','dark');else document.documentElement.removeAttribute('data-theme')}catch(e){}})();`;
+  return `(function(){try{var s=window.matchMedia&&matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light',c=null,t;try{c=localStorage.getItem('${THEME_STORAGE_KEY}')}catch(e){}if(c==='light'||c==='dark')t=c;else if(c==='system')t=s;else{var m=document.cookie.match(/(?:^|;\\s*)${THEME_COOKIE}=(dark|light)(?:;|$)/);t=m?m[1]:s}if(t==='dark')document.documentElement.setAttribute('data-theme','dark');else document.documentElement.removeAttribute('data-theme')}catch(e){}})();`;
 }
 
 const CSS = `
@@ -83,7 +92,8 @@ export const ThemeToggle = React.forwardRef(function ThemeToggle({ lang = 'en', 
     applyTheme(pref);
     if (pref !== 'system' || !globalThis.matchMedia) return undefined;
     const mq = globalThis.matchMedia('(prefers-color-scheme: dark)');
-    const follow = () => applyTheme('system');
+    // Re-resolve and keep the cookie on the new resolved theme.
+    const follow = () => writeThemeCookie(applyTheme('system'));
     mq.addEventListener('change', follow);
     return () => mq.removeEventListener('change', follow);
   }, [pref]);
