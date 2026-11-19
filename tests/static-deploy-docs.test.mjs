@@ -2,14 +2,13 @@ import { readFileSync } from 'node:fs'
 import { describe, expect, it } from 'vitest'
 
 // meridian.efolusi.com is served by Nginx from an immutable release that
-// scripts/deploy-{dev,prod}-static.sh publish. There is no Cloudflare Pages
+// scripts/deploy-prod-static.sh publishes. There is no Cloudflare Pages
 // project and no wrangler config, so no public surface may tell a reader to
 // deploy that way.
 const docs = readFileSync('site/Docs.dc.html', 'utf8')
 const headers = readFileSync('_headers', 'utf8')
 const redirects = readFileSync('_redirects', 'utf8')
 const prodVhost = readFileSync('nginx/meridian.efolusi.com.conf', 'utf8')
-const devVhost = readFileSync('nginx/dev-meridian.efolusi.com.conf', 'utf8')
 
 function deploySection() {
   const start = docs.indexOf("h2('deploy'")
@@ -34,7 +33,7 @@ describe('public deployment docs', () => {
 
     for (const locale of ['en', 'id']) {
       const copy = pairs.map((pair) => pair[locale]).join('\n')
-      expect(copy).toContain('scripts/deploy-dev-static.sh')
+      expect(copy).not.toContain('deploy-dev-static')
       expect(copy).toContain('scripts/deploy-prod-static.sh')
       expect(copy).toContain('nginx/')
       expect(copy).toContain('index.html')
@@ -53,7 +52,6 @@ describe('public deployment docs', () => {
     const section = deploySection()
     if (/CORS|Access-Control/i.test(section)) {
       expect(prodVhost).toContain('Access-Control-Allow-Origin')
-      expect(devVhost).toContain('Access-Control-Allow-Origin')
     }
   })
 
