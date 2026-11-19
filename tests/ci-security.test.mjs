@@ -98,14 +98,12 @@ describe('CI runner isolation', () => {
     }
   })
 
-  it('keeps pushes and same-repository branches on the efolusi-dev runner', () => {
+  it('runs checks on GitHub-hosted runners for every event while no self-hosted runner exists', () => {
     const jobs = runsOn(workflows['checks.yml'])
     expect(Object.keys(jobs).sort()).toEqual(['gates', 'smoke'])
     for (const expr of Object.values(jobs)) {
-      for (const ctx of ['sameRepo', 'push']) {
-        expect(evaluate(expr, PR_CONTEXTS[ctx])).toEqual([
-          'self-hosted', 'Linux', 'X64', 'efolusi-dev',
-        ])
+      for (const ctx of ['sameRepo', 'push', 'fork']) {
+        expect(evaluate(expr, PR_CONTEXTS[ctx])).toBe('ubuntu-24.04')
       }
     }
   })
@@ -171,11 +169,15 @@ describe('publish workflow hardening', () => {
     }
   })
 
-  it('installs an exact npm, never a moving dist-tag', () => {
-    const install = publish.match(/npm install -g npm@(\S+)/)
-    expect(install).not.toBeNull()
-    expect(install[1]).toMatch(/^\d+\.\d+\.\d+$/)
-    const [major, minor, patch] = install[1].split('.').map(Number)
+  it('publishes with the one pinned npm, new enough for trusted publishing', () => {
+    expect(publish).not.toMatch(/npm install -g npm@/)
+    expect(publish).toContain('[[ "$actual" == "$expected" ]]')
+    expect(publish).toContain(`expected="${JSON.parse(readFileSync('package.json', 'utf8')).packageManager.split('@')[1]}"`)
+    const pkg = JSON.parse(readFileSync('package.json', 'utf8'))
+    const pinned = pkg.packageManager.split('@')[1]
+    expect(pinned).toMatch(/^\d+\.\d+\.\d+$/)
+    expect(pkg.engines.npm).toBe(pinned)
+    const [major, minor, patch] = pinned.split('.').map(Number)
     // Trusted publishing (OIDC) needs npm 11.5.1 or newer.
     expect(major * 1e6 + minor * 1e3 + patch).toBeGreaterThanOrEqual(11_005_001)
   })
@@ -205,12 +207,19 @@ describe('publish keeps third-party code and publish rights in separate jobs', (
   const build = jobOf(publish, 'build')
   const pub = jobOf(publish, 'publish')
   const release = jobOf(publish, 'release')
+  const deploy = jobOf(publish, 'deploy')
 
-  it('has decide, build, publish and release jobs chained by needs', () => {
-    expect(Object.keys(runsOn(publish))).toEqual(['decide', 'build', 'publish', 'release'])
+  it('has decide, build, publish, release and deploy jobs chained by needs', () => {
+    expect(Object.keys(runsOn(publish))).toEqual(['decide', 'build', 'publish', 'release', 'deploy'])
     expect(build).toMatch(/\n {4}needs: decide\n/)
     expect(pub).toMatch(/\n {4}needs: build\n/)
     expect(release).toMatch(/\n {4}needs: \[build, publish\]\n/)
+    expect(deploy).toMatch(/\n {4}needs: \[build, release\]\n/)
+  })
+
+  it('starts the production deploy from a job that can only start workflows', () => {
+    expect(jobPermissions(deploy)).toEqual({ actions: 'write' })
+    expect(withoutComments(deploy)).not.toMatch(/actions\/checkout|npm /)
   })
 
   it('builds and verifies with read-only rights and no publish identity', () => {
