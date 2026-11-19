@@ -14,10 +14,8 @@ concurrency:
   group: checks-${{ github.event_name == 'pull_request' && format('pr-{0}', github.event.pull_request.number) || github.run_id }}
   cancel-in-progress: ${{ github.event_name == 'pull_request' }}
 
-# GitHub-hosted for every event until the new self-hosted runners exist (the old
-# efolusi-dev runner went with the efolusi-prd reinstall, 2026-11-18). Meridian is
-# public, so hosted runs are free; fork PRs never reach a self-hosted host.
-# Move back to the efolusi-dev label when the Server runner plan has rebuilt it.
+# GitHub-hosted: Meridian is public, so every job runs on hosted runners, free
+# and unlimited, and a fork PR never reaches a self-hosted host.
 
 jobs:
   gates:
@@ -43,11 +41,11 @@ jobs:
     runs-on: ubuntu-24.04
     timeout-minutes: 30
     env:
-      # Browsers and their system libs come from the Playwright image: the
-      # self-hosted runner user has no sudo, so `install --with-deps` cannot
-      # run. Same pattern as sanctum CI (docker run as the runner uid, so the
-      # workspace never gets root-owned files). Tag matches playwright@1.48.0;
-      # the digest stops a re-pushed tag from changing the image.
+      # Browsers and their system libs come from the Playwright image, so the
+      # smoke run and the baselines render with the same pinned browsers (docker
+      # run as the runner uid, so the workspace never gets root-owned files).
+      # Tag matches playwright@1.48.0; the digest stops a re-pushed tag from
+      # changing the image.
       PW_IMAGE: mcr.microsoft.com/playwright:v1.48.0-noble@sha256:d1e54d0cbb2d6b125b0bbd32536b2ed53953ea78159c27a56f22b10058e733c4
     steps:
       - uses: actions/checkout@fbc6f3992d24b796d5a048ff273f7fcc4a7b6c09 # v5.1.0
