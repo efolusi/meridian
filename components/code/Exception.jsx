@@ -4,10 +4,10 @@ import { injectEfCss } from '../forms/Button.jsx';
 import { Icon } from '../icons/Icon.jsx';
 const CSS = `
 .ef-exception{border:1px solid var(--border-default);border-radius:var(--radius-md);background:var(--surface-card);font-family:var(--font-sans);overflow:hidden}
-.ef-exception__head{display:flex;align-items:flex-start;gap:10px;padding:11px 14px}
-.ef-exception__type{flex:none;margin-top:1px;padding:2px 7px;border-radius:var(--radius-sm);background:var(--danger-100);color:var(--danger-600);font-family:var(--font-mono);font-size:11px;font-weight:var(--weight-semibold)}
+.ef-exception__head{display:flex;align-items:flex-start;gap:var(--space-3);padding:var(--space-3) var(--space-4)}
+.ef-exception__type{flex:none;margin-top:1px;padding:var(--space-0-5) var(--space-2);border-radius:var(--radius-sm);background:var(--danger-100);color:var(--danger-600);font-family:var(--font-mono);font-size:11px;font-weight:var(--weight-semibold)}
 .ef-exception__msg{flex:1;min-width:0;font-size:13.5px;line-height:1.5;color:var(--text-primary)}
-.ef-exception__toggle{flex:none;display:inline-flex;align-items:center;gap:4px;border:none;background:none;cursor:pointer;padding:3px 7px;border-radius:var(--radius-sm);font-family:var(--font-sans);font-size:12px;color:var(--text-muted);transition:color var(--dur-fast) var(--ease-out),background var(--dur-fast) var(--ease-out)}
+.ef-exception__toggle{flex:none;display:inline-flex;align-items:center;gap:var(--space-1);border:none;background:none;cursor:pointer;padding:var(--space-1) var(--space-2);border-radius:var(--radius-sm);font-family:var(--font-sans);font-size:12px;color:var(--text-muted);transition:color var(--dur-fast) var(--ease-out),background var(--dur-fast) var(--ease-out)}
 .ef-exception__toggle:hover{color:var(--text-primary);background:var(--surface-subtle)}
 .ef-exception__toggle:focus-visible{outline:none;box-shadow:var(--focus-ring)}
 .ef-exception__chev{display:inline-flex;transition:transform var(--dur-fast) var(--ease-out)}
@@ -15,16 +15,16 @@ const CSS = `
 .ef-exception__body{display:grid;grid-template-rows:0fr;transition:grid-template-rows var(--dur-med) var(--ease-out)}
 .ef-exception--open .ef-exception__body{grid-template-rows:1fr}
 .ef-exception__clip{overflow:hidden;min-height:0}
-.ef-exception__frames{margin:0 14px 12px;padding:0;list-style:none;border:1px solid var(--border-default);border-radius:var(--radius-sm);background:var(--surface-subtle);overflow:hidden;font-family:var(--font-mono);font-size:11.5px;line-height:1.5}
-.ef-exception__frame{display:flex;align-items:baseline;gap:10px;padding:5px 11px;border-inline-start:2px solid transparent}
+.ef-exception__frames{margin:0 var(--space-4) var(--space-3);padding:0;list-style:none;border:1px solid var(--border-default);border-radius:var(--radius-sm);background:var(--surface-subtle);overflow:hidden;font-family:var(--font-mono);font-size:11.5px;line-height:1.5}
+.ef-exception__frame{display:flex;align-items:baseline;gap:var(--space-3);padding:var(--space-1) var(--space-3);border-inline-start:2px solid transparent}
 .ef-exception__frame--active{border-inline-start-color:var(--danger-600);background:var(--danger-100)}
 .ef-exception__frame--internal{opacity:.5}
 .ef-exception__fn{flex:none;color:var(--text-primary)}
 .ef-exception__loc{margin-inline-start:auto;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;color:var(--text-muted)}
-.ef-exception__src{margin:0 14px 12px;border:1px solid var(--border-default);border-radius:var(--radius-sm);background:var(--surface-subtle);overflow:hidden}
-.ef-exception__srchead{display:flex;align-items:center;gap:8px;padding:6px 11px;border-bottom:1px solid var(--border-default);font-family:var(--font-mono);font-size:11px;color:var(--text-muted)}
-.ef-exception__code{margin:0;padding:8px 0;font-family:var(--font-mono);font-size:12px;line-height:1.7;color:var(--text-secondary);overflow-x:auto}
-.ef-exception__ln{display:flex;padding:0 11px;border-inline-start:2px solid transparent;white-space:pre}
+.ef-exception__src{margin:0 var(--space-4) var(--space-3);border:1px solid var(--border-default);border-radius:var(--radius-sm);background:var(--surface-subtle);overflow:hidden}
+.ef-exception__srchead{display:flex;align-items:center;gap:var(--space-2);padding:var(--space-2) var(--space-3);border-bottom:1px solid var(--border-default);font-family:var(--font-mono);font-size:11px;color:var(--text-muted)}
+.ef-exception__code{margin:0;padding:var(--space-2) 0;font-family:var(--font-mono);font-size:12px;line-height:1.7;color:var(--text-secondary);overflow-x:auto}
+.ef-exception__ln{display:flex;padding:0 var(--space-3);border-inline-start:2px solid transparent;white-space:pre}
 .ef-exception__ln--active{border-inline-start-color:var(--danger-600);background:var(--danger-100);color:var(--danger-600)}
 .ef-exception__no{flex:none;width:34px;color:var(--text-muted);user-select:none}
 `;
