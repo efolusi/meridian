@@ -2,13 +2,25 @@
 
 ## Unreleased
 
+- **Form spacing is on the token scale.** Padding, margin and gap in the forms group (Button, Input, Select, Combobox, Field, Checkbox, Radio and the rest) take their values from `--space-*`. Values off the 4px scale moved to the nearest step, ties up, so most gaps and paddings grow by 1 to 2px. Padding that leaves room for an icon (Input with an icon or reveal button, the Select, NativeSelect and Combobox item indicators) keeps its px value until an icon-size token exists.
+- **Data spacing is on the token scale.** Padding, margin and gap in Table, Chart, BarChart, LineChart, DonutChart, Stat, StatusDot and the rest of the data group take their values from `--space-*`. Values off the 4px scale moved to the nearest step, ties up: most by 1 to 2px, the Table empty and error message from 28 to 32px.
+- **Feedback spacing is on the token scale.** Padding, margin and gap in Alert, Banner, Dialog, ConfirmDialog, Toast, Tooltip and the rest of the feedback group take their values from `--space-*`. Values off the 4px scale moved to the nearest step, ties up, by 1 to 2px. The Dialog header keeps its 56px end padding, which clears the close button.
+- **Display spacing is on the token scale.** Padding, margin and gap in Card, Avatar, Badge, Accordion, Collapsible, Toolbar, TreeList and the rest of the display group take their values from `--space-*`. Values off the 4px scale moved to the nearest step, ties up, by 1 to 2px. The TreeList indent per level stays as it is.
+- **Overlay spacing is on the token scale.** Padding, margin and gap in Popover, HoverCard, Sheet, DropdownMenu, ContextMenu, Command and the rest of the overlay group take their values from `--space-*`. Values off the 4px scale moved to the nearest step, ties up, by 1 to 2px.
+- **Code spacing is on the token scale.** Padding, margin and gap in CodeBlock, Terminal, Console, CopyField, Diff, EnvList and the rest of the code group take their values from `--space-*`. Values off the 4px scale moved to the nearest step, ties up, by 1 to 2px.
+- **Files spacing is on the token scale.** Padding, margin and gap in FileDrop, FileTile and the rest of the files group take their values from `--space-*`. Values off the 4px scale moved to the nearest step, ties up, by 1 to 2px.
+- **Dates spacing is on the token scale.** Padding, margin and gap in Calendar, DatePicker, TimePicker and the rest of the dates group take their values from `--space-*`. Values off the 4px scale moved to the nearest step, ties up, by 1 to 2px. The TimePicker keeps the end padding that clears its clock icon.
+- **Finance spacing is on the token scale.** Padding, margin and gap in PaymentCard and the rest of the finance group take their values from `--space-*`. Values off the 4px scale moved to the nearest step, ties up, by 1 to 2px.
+- **AI spacing is on the token scale.** Padding, margin and gap in Message, ChatMessage, PromptComposer, ToolCall, Sandbox and the rest of the ai group take their values from `--space-*`. Values off the 4px scale moved to the nearest step, ties up, by 1 to 2px. The Message avatar keeps the 25px offset that lines it up with the footer.
+- **PaymentCard's chip is a flat `--brand-300`** instead of a decorative gradient. The other gradients stay, because each one does a job: the GeneratedImage placeholder and its text scrims, the Attachment upload shimmer and its scroll-edge mask, the DocumentCard and CodeBlock fades that show the text is cut off, and the Loader shimmer.
+- **GeneratedImage's busy placeholder is a flat `--media-backdrop-dot` fill** instead of a dot pattern, and its class is `.ef-genimg__backdrop` (was `.ef-genimg__dots`, no alias). It keeps its soft edge and its pulse, and the scrims stay.
 - **Sizes and contrast come from design-tokens 0.2.1.** Tokens are re-vendored from design-tokens v0.2.1. 0.2.0 adds `--control-h-xs`, `--icon-xs` to `--icon-2xl`, `--avatar-sm`/`-md`/`-lg` and `--sidebar-width`/`--sidebar-width-icon`. Visual changes:
   - Button `xs` is 24px high instead of 28px, the same as icon `xs`. Compact density makes both 20px; touch screens keep `--tap-min`.
   - Icons follow the icon scale (8, 12, 16, 20, 24, 32px, ties up): 14px and 15px icons become 16px, 18px icons become 20px, 13px icons become 12px, and 7px status dots become 8px.
   - Avatar sizes and the Sidebar widths use the tokens. The values stay the same, and a Sidebar still takes `--sidebar-width` from its `style`.
   - Input's leading-icon padding is built from the tokens, so a large Input with an icon leaves room for the 20px glyph.
 - **Contrast fixes from design-tokens 0.2.1.** `--text-muted`, `--text-secondary` (now `--sand-750`), `--state-pressed`, `--state-hover-on-tab` and the status 600 colours keep text at 4.5:1 (secondary at 7:1) on every ground and hover in light, dark and increased contrast. The public token count is 214.
-- **Size budget raised by 5 KB** (npm total 1,416,663 bytes) for the size tokens and the icon-scale test.
+- **Size budget raised by 11 KB** (npm total 1,423,110 bytes) for the size tokens, the icon-scale test and the spacing tokens (`var(--space-*)` is longer than a raw px value).
 
 ## 1.24.0 — 2026-11-19
 

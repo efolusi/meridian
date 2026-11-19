@@ -21,8 +21,8 @@ const CSS = `
 .ef-file-input:hover:not(:has(.ef-input__el:disabled)) .ef-file-input__button{background:var(--accent-hover)}.ef-file-input:active:not(:has(.ef-input__el:disabled)) .ef-file-input__button{background:var(--accent-active);transform:scale(.985)}
 .ef-file-input__name{min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
 .ef-file-input>.ef-input__el[type="file"]{position:absolute;inset:0;width:100%;height:100%;padding:0;border:0;opacity:0;cursor:pointer}.ef-file-input>.ef-input__el[type="file"]:disabled{cursor:not-allowed}
-.ef-input__el--sm{height:var(--control-h-sm);padding-inline:10px;font-size:var(--text-sm)}
-.ef-input__el--lg{height:var(--control-h-lg);padding-inline:14px;font-size:var(--text-lg)}
+.ef-input__el--sm{height:var(--control-h-sm);padding-inline:var(--space-3);font-size:var(--text-sm)}
+.ef-input__el--lg{height:var(--control-h-lg);padding-inline:var(--space-4);font-size:var(--text-lg)}
 .ef-input--icon .ef-input__el{padding-inline-start:calc(var(--space-3) + var(--icon-md) + var(--space-2))}
 .ef-input--icon .ef-input__el--sm{padding-inline-start:calc(var(--space-2) + var(--icon-md) + var(--space-2))}
 .ef-input--icon .ef-input__el--lg{padding-inline-start:calc(var(--space-3) + var(--icon-lg) + var(--space-2))}

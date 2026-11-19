@@ -1,16 +1,16 @@
 {
   "totals": {
     "@efolusi/meridian": {
-      "bytes": 356062,
-      "gzip": 80076
+      "bytes": 356124,
+      "gzip": 80113
     },
     "dist/components.css": {
-      "bytes": 200949,
-      "gzip": 28520
+      "bytes": 207334,
+      "gzip": 28400
     },
     "_ds_bundle.js": {
-      "bytes": 815682,
-      "gzip": 145298
+      "bytes": 822129,
+      "gzip": 145291
     }
   },
   "modules": [
@@ -96,8 +96,8 @@
       "exports": [
         "GeneratedImage"
       ],
-      "bytes": 46451,
-      "gzip": 7689
+      "bytes": 46455,
+      "gzip": 7692
     },
     {
       "module": "ai/Marker.js",
@@ -162,8 +162,8 @@
       "exports": [
         "PromptComposer"
       ],
-      "bytes": 46921,
-      "gzip": 8043
+      "bytes": 46936,
+      "gzip": 8052
     },
     {
       "module": "ai/PromptSteps.js",
@@ -731,8 +731,8 @@
       "exports": [
         "ConfirmDialog"
       ],
-      "bytes": 55426,
-      "gzip": 10685
+      "bytes": 55440,
+      "gzip": 10695
     },
     {
       "module": "feedback/Dialog.js",
@@ -832,8 +832,8 @@
       "exports": [
         "FileTile"
       ],
-      "bytes": 47939,
-      "gzip": 8367
+      "bytes": 47954,
+      "gzip": 8379
     },
     {
       "module": "files/FileTypeIcon.js",
@@ -850,8 +850,8 @@
       "exports": [
         "PaymentCard"
       ],
-      "bytes": 2112,
-      "gzip": 779
+      "bytes": 2126,
+      "gzip": 785
     },
     {
       "module": "forms/Button.js",
