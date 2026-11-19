@@ -9,7 +9,6 @@ const CSS = `
 .ef-badge>[data-icon]{pointer-events:none;flex:none}
 .ef-badge--default{background:var(--accent);color:var(--accent-contrast)}
 .ef-badge--secondary{background:var(--surface-sunken);color:var(--text-secondary)}
-.ef-badge--danger{background:var(--danger-600);color:var(--danger-contrast)}
 .ef-badge--outline{background:transparent;border-color:var(--border-strong);color:var(--text-primary)}
 .ef-badge--ghost{background:transparent;color:var(--text-secondary)}
 .ef-badge--link{height:auto;padding:0;background:transparent;color:var(--text-link)}
@@ -20,7 +19,6 @@ const CSS = `
 .ef-badge--brand{background:var(--cream-50);color:var(--cocoa-700)}
 .ef-badge--default:hover{background:var(--accent-hover)}
 .ef-badge--secondary:hover,.ef-badge--outline:hover,.ef-badge--ghost:hover{background:var(--surface-sunken)}
-.ef-badge--danger:hover{background:var(--danger-700)}
 .ef-badge--default.ef-badge--accent:hover{background:var(--accent-subtle)}
 .ef-badge--default.ef-badge--success:hover{background:var(--success-100)}
 .ef-badge--default.ef-badge--warning:hover{background:var(--warning-100)}
