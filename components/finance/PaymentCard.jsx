@@ -9,7 +9,7 @@ const CSS = `
 .ef-paycard__num{font-family:var(--font-mono);font-size:var(--text-lg);letter-spacing:.12em;margin-top:auto}
 .ef-paycard__row{display:flex;align-items:flex-end;gap:var(--space-5);margin-top:var(--space-3)}
 .ef-paycard__lbl{font-size:8.5px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;opacity:.55}
-.ef-paycard__val{font-size:12.5px;font-weight:600;margin-top:var(--space-0-5)}
+.ef-paycard__val{font-size:var(--text-sm);font-weight:600;margin-top:var(--space-0-5)}
 .ef-paycard__chip{width:34px;height:25px;border-radius:var(--radius-xs-plus);background:var(--brand-300)}
 `;
 export function PaymentCard({ name = 'ADA OBI', number = '•••• •••• •••• 4242', expiry = '09/29', network = 'Meridian', variant = 'espresso', frozen, style, className, ...rest }) {

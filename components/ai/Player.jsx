@@ -5,7 +5,7 @@ import { Icon } from '../icons/Icon.jsx';
 const CSS = `
 .ef-player{display:flex;flex-direction:column;gap:var(--space-3);padding:var(--space-4);border:1px solid var(--border-default);border-radius:var(--radius-md);background:var(--surface-card);font-family:var(--font-sans)}
 .ef-player__top{display:flex;align-items:center;gap:var(--space-3)}
-.ef-player__title{flex:1;min-width:0;font-size:13.5px;font-weight:var(--weight-semibold);color:var(--text-primary);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.ef-player__title{flex:1;min-width:0;font-size:var(--text-md);font-weight:var(--weight-semibold);color:var(--text-primary);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .ef-player__meta{font-size:var(--text-xs);color:var(--text-muted)}
 .ef-player__wave{position:relative;display:flex;align-items:center;justify-content:space-between;height:44px;cursor:pointer;touch-action:none;border-radius:var(--radius-sm)}
 .ef-player__wave:focus-visible{outline:none;box-shadow:var(--focus-ring)}

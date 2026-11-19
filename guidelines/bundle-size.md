@@ -13,9 +13,9 @@ CSS is not counted per component: `styles.css` ships every component style in on
 
 | File | Size | Gzip |
 | --- | ---: | ---: |
-| `@efolusi/meridian` | 347.8 kB | 78.2 kB |
-| `dist/components.css` | 202.8 kB | 27.7 kB |
-| `_ds_bundle.js` | 803.2 kB | 141.9 kB |
+| `@efolusi/meridian` | 347.8 kB | 78.3 kB |
+| `dist/components.css` | 203.9 kB | 27.7 kB |
+| `_ds_bundle.js` | 804.3 kB | 141.9 kB |
 
 The root import, `@efolusi/meridian`, is every component. `_ds_bundle.js` is the zero-build CDN bundle, which also carries each component's CSS. The root import is minified; the CSS and the CDN bundle are measured as shipped.
 
@@ -60,7 +60,7 @@ The root import, `@efolusi/meridian`, is every component. `_ds_bundle.js` is the
 | `code/Terminal.js` | Terminal | 1.1 kB | 0.5 kB |
 | `data/BarChart.js` | BarChart | 1.8 kB | 0.8 kB |
 | `data/Chart.js` | ChartStyle, ChartContainer, ChartTooltip, ChartTooltipContent, ChartLegend, ChartLegendContent | 3.9 kB | 1.5 kB |
-| `data/DonutChart.js` | DonutChart | 3.0 kB | 1.3 kB |
+| `data/DonutChart.js` | DonutChart | 3.1 kB | 1.3 kB |
 | `data/EmptyState.js` | Empty, EmptyHeader, EmptyMedia, EmptyTitle, EmptyDescription, EmptyContent | 1.5 kB | 0.5 kB |
 | `data/KeyValueList.js` | KeyValueList | 0.7 kB | 0.4 kB |
 | `data/LineChart.js` | LineChart | 3.0 kB | 1.3 kB |

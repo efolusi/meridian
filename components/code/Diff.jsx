@@ -3,9 +3,9 @@ import React from 'react';
 import { injectEfCss } from '../forms/Button.jsx';
 import { Icon } from '../icons/Icon.jsx';
 const CSS = `
-.ef-diff{border:1px solid var(--border-default);border-radius:var(--radius-md);background:var(--surface-card);overflow:hidden;font-family:var(--font-mono);font-size:12.5px;line-height:1.7}
+.ef-diff{border:1px solid var(--border-default);border-radius:var(--radius-md);background:var(--surface-card);overflow:hidden;font-family:var(--font-mono);font-size:var(--text-sm);line-height:1.7}
 .ef-diff__head{display:flex;align-items:center;gap:var(--space-3);padding:var(--space-2) var(--space-3);background:var(--surface-subtle);border-bottom:1px solid var(--border-default);font-size:var(--text-xs);color:var(--text-secondary);font-family:var(--font-sans)}
-.ef-diff__counts{margin-inline-start:auto;display:inline-flex;gap:var(--space-2);font-size:11.5px;font-family:var(--font-mono);font-variant-numeric:tabular-nums}
+.ef-diff__counts{margin-inline-start:auto;display:inline-flex;gap:var(--space-2);font-size:var(--text-xs);font-family:var(--font-mono);font-variant-numeric:tabular-nums}
 .ef-diff__plus{color:var(--success-600)}
 .ef-diff__minus{color:var(--danger-600)}
 .ef-diff__scroll{overflow:auto}

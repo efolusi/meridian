@@ -21,7 +21,7 @@ const CSS = `
 .ef-console__jump:focus-visible{border-radius:var(--radius-full)}
 .ef-console__stackchev{display:inline-flex;margin-top:var(--space-0-5);color:var(--text-muted);transition:transform var(--dur-fast) var(--ease-out)}
 .ef-console__stackchev--open{transform:rotate(90deg)}
-.ef-console__stack{margin:var(--space-1) 0 0;padding-inline-start:var(--space-5);white-space:pre-wrap;color:var(--text-muted);font-size:11.5px}
+.ef-console__stack{margin:var(--space-1) 0 0;padding-inline-start:var(--space-5);white-space:pre-wrap;color:var(--text-muted);font-size:var(--text-xs)}
 .ef-console__jump{position:absolute;inset-inline-end:10px;bottom:10px;display:inline-flex;align-items:center;gap:var(--space-2);padding:var(--space-2) var(--space-3);border:1px solid var(--border-strong);border-radius:var(--radius-full);background:var(--surface-card);box-shadow:var(--shadow-md);cursor:pointer;font-family:var(--font-sans);font-size:var(--text-xs);font-weight:var(--weight-semibold);color:var(--text-primary)}
 `;
 const GLYPH = { info: 'info', warn: 'triangle-alert', error: 'circle-alert', debug: 'bug' };

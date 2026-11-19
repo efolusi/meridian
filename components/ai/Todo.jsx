@@ -7,7 +7,7 @@ const CSS = `
 .ef-todo__head{display:flex;align-items:center;gap:var(--space-2);width:100%;padding:var(--space-3) var(--space-4);border:none;background:none;cursor:pointer;text-align:start;font-family:inherit}
 .ef-todo__head:focus-visible{outline:none;box-shadow:var(--focus-ring);border-radius:var(--radius-md)}
 .ef-todo__glyph{display:inline-flex;color:var(--text-muted)}
-.ef-todo__title{flex:1;min-width:0;font-size:13.5px;font-weight:var(--weight-semibold);color:var(--text-primary)}
+.ef-todo__title{flex:1;min-width:0;font-size:var(--text-md);font-weight:var(--weight-semibold);color:var(--text-primary)}
 .ef-todo__count{font-size:var(--text-xs);color:var(--text-muted);font-variant-numeric:tabular-nums}
 .ef-todo__chev{display:inline-flex;color:var(--text-muted);transition:transform var(--dur-med) var(--ease-out)}
 .ef-todo--open .ef-todo__chev{transform:rotate(180deg)}
@@ -15,7 +15,7 @@ const CSS = `
 .ef-todo--open .ef-todo__body{grid-template-rows:1fr}
 .ef-todo__clip{overflow:hidden;min-height:0}
 .ef-todo__list{list-style:none;margin:0;padding:0 var(--space-2) var(--space-2)}
-.ef-todo__item{display:flex;align-items:flex-start;gap:var(--space-3);padding:var(--space-2) var(--space-2);font-size:13.5px;border-radius:var(--radius-sm)}
+.ef-todo__item{display:flex;align-items:flex-start;gap:var(--space-3);padding:var(--space-2) var(--space-2);font-size:var(--text-md);border-radius:var(--radius-sm)}
 .ef-todo__mark{position:relative;flex:none;width:16px;height:16px;margin-top:var(--space-0-5);border-radius:50%;border:1px solid var(--border-strong);display:inline-flex;align-items:center;justify-content:center;transition:background var(--dur-fast) var(--ease-out),border-color var(--dur-fast) var(--ease-out)}
 .ef-todo__item--progress .ef-todo__mark{border-color:transparent;color:var(--text-primary)}
 .ef-todo__item--done .ef-todo__mark{background:var(--accent);border-color:var(--accent);color:var(--accent-contrast)}

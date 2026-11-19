@@ -16,7 +16,7 @@ const CSS = `
 .ef-richcomposer__send:focus-visible{outline:none;box-shadow:var(--focus-ring)}
 .ef-richcomposer__pop{position:absolute;bottom:calc(100% + 6px);inset-inline:0;z-index:40;max-height:260px;overflow-y:auto;padding:var(--space-1);border:1px solid var(--border-default);border-radius:var(--radius-md);background:var(--surface-card);box-shadow:var(--shadow-lg)}
 .ef-richcomposer__group{padding:var(--space-2) var(--space-3) var(--space-1);font-size:var(--text-2xs);font-weight:var(--weight-semibold);letter-spacing:.04em;text-transform:uppercase;color:var(--text-muted)}
-.ef-richcomposer__item{display:flex;align-items:center;gap:var(--space-2);width:100%;padding:var(--space-2) var(--space-3);border:none;background:none;cursor:pointer;text-align:start;border-radius:var(--radius-sm);font-family:var(--font-sans);font-size:13.5px;color:var(--text-primary)}
+.ef-richcomposer__item{display:flex;align-items:center;gap:var(--space-2);width:100%;padding:var(--space-2) var(--space-3);border:none;background:none;cursor:pointer;text-align:start;border-radius:var(--radius-sm);font-family:var(--font-sans);font-size:var(--text-md);color:var(--text-primary)}
 .ef-richcomposer__item--hi{background:var(--surface-sunken)}
 .ef-richcomposer__itemicon{display:inline-flex;flex:none;color:var(--text-muted)}
 .ef-richcomposer__itemdesc{margin-inline-start:auto;font-size:var(--text-xs);color:var(--text-muted);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}

@@ -3,7 +3,7 @@ import React from 'react';
 import { injectEfCss } from '../forms/Button.jsx';
 import { Icon } from '../icons/Icon.jsx';
 const CSS = `
-.ef-task{display:flex;flex-direction:column;font-family:var(--font-sans);font-size:13.5px}
+.ef-task{display:flex;flex-direction:column;font-family:var(--font-sans);font-size:var(--text-md)}
 .ef-task__row{display:inline-flex;align-items:flex-start;gap:var(--space-2);padding:var(--space-1) var(--space-2);align-self:flex-start;color:var(--text-secondary);border-radius:var(--radius-sm)}
 .ef-task__icon{display:inline-flex;width:16px;height:20px;align-items:center;justify-content:center;color:var(--text-muted);flex:none}
 .ef-task__dot{width:6px;height:6px;border-radius:50%;background:currentColor}

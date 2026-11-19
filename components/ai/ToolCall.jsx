@@ -7,12 +7,12 @@ const CSS = `
 .ef-toolcall--approval{border-color:var(--accent-subtle-border);box-shadow:0 0 0 2px var(--accent-subtle)}
 .ef-toolcall--running{border-color:var(--accent-subtle-border)}
 .ef-toolcall--error{border-color:var(--danger-300,var(--danger-600))}
-.ef-toolcall__head{display:flex;align-items:center;gap:var(--space-2);width:100%;padding:var(--space-2) var(--space-3);border:none;background:none;cursor:pointer;text-align:start;font-family:var(--font-mono);font-size:12.5px;color:var(--text-primary)}
+.ef-toolcall__head{display:flex;align-items:center;gap:var(--space-2);width:100%;padding:var(--space-2) var(--space-3);border:none;background:none;cursor:pointer;text-align:start;font-family:var(--font-mono);font-size:var(--text-sm);color:var(--text-primary)}
 .ef-toolcall__head:focus-visible{outline:none;box-shadow:var(--focus-ring)}
 .ef-toolcall--pending .ef-toolcall__head{animation:ef-toolcall-pulse 1.4s var(--ease-out) infinite}
 @keyframes ef-toolcall-pulse{0%,100%{opacity:1}50%{opacity:.55}}
 .ef-toolcall__icon{display:inline-flex;color:var(--text-muted)}
-.ef-toolcall__verb{color:var(--text-muted);font-family:var(--font-sans);font-size:12.5px}
+.ef-toolcall__verb{color:var(--text-muted);font-family:var(--font-sans);font-size:var(--text-sm)}
 .ef-toolcall__state{margin-inline-start:auto;display:inline-flex;align-items:center;gap:var(--space-2);font-family:var(--font-sans);font-size:var(--text-xs);font-weight:500;flex:none}
 .ef-toolcall__state--pending{color:var(--text-muted)}
 .ef-toolcall__state--approval{color:var(--brand-700)}
@@ -32,10 +32,10 @@ const CSS = `
 .ef-toolcall__val{min-width:0;color:var(--text-secondary);white-space:pre-wrap;word-break:break-word}
 .ef-toolcall--streaming .ef-toolcall__row:last-child .ef-toolcall__val{animation:ef-toolcall-pulse 1.2s var(--ease-out) infinite}
 .ef-toolcall__args{margin:0;padding:var(--space-3) var(--space-3);background:var(--surface-sunken);border:1px solid var(--border-default);border-radius:var(--radius-sm);font-family:var(--font-mono);font-size:var(--text-xs);line-height:1.6;color:var(--text-secondary);white-space:pre-wrap;word-break:break-word;max-height:256px;overflow:auto}
-.ef-toolcall__result{font-size:13.5px;line-height:1.6;color:var(--text-secondary)}
+.ef-toolcall__result{font-size:var(--text-md);line-height:1.6;color:var(--text-secondary)}
 .ef-toolcall__error{padding:var(--space-3) var(--space-3);border-radius:var(--radius-sm);background:var(--danger-100);color:var(--danger-600);font-size:var(--text-sm);line-height:1.55}
 .ef-toolcall__actions{display:flex;justify-content:flex-end;gap:var(--space-2);padding-top:var(--space-0-5)}
-.ef-toolcall__btn{height:28px;padding:0 var(--space-3);border-radius:var(--radius-sm);border:1px solid var(--border-strong);background:var(--surface-card);cursor:pointer;font-family:var(--font-sans);font-size:12.5px;font-weight:600;color:var(--text-primary);transition:background var(--dur-fast) var(--ease-out)}
+.ef-toolcall__btn{height:28px;padding:0 var(--space-3);border-radius:var(--radius-sm);border:1px solid var(--border-strong);background:var(--surface-card);cursor:pointer;font-family:var(--font-sans);font-size:var(--text-sm);font-weight:600;color:var(--text-primary);transition:background var(--dur-fast) var(--ease-out)}
 .ef-toolcall__btn:hover{background:var(--surface-subtle)}
 .ef-toolcall__btn--accept{background:var(--accent);border-color:var(--accent);color:var(--accent-contrast)}
 .ef-toolcall__btn--accept:hover{background:var(--accent-hover)}

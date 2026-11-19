@@ -15,7 +15,7 @@ const CSS = `
 .ef-code pre{margin:0;padding:var(--space-4) var(--space-4);overflow-x:auto;font-family:var(--font-mono);font-size:var(--text-sm);line-height:1.6;color:var(--text-code)}
 .ef-code__win{position:relative;overflow:hidden;transition:height .45s cubic-bezier(.32,.72,0,1)}
 .ef-code__fade{position:absolute;inset-inline:0;bottom:0;height:56px;display:flex;align-items:flex-end;justify-content:center;padding-bottom:var(--space-2);background:linear-gradient(to top,var(--surface-code),transparent)}
-.ef-code__more{display:inline-flex;align-items:center;gap:var(--space-1);border:1px solid var(--code-edge);border-radius:var(--radius-full);background:var(--code-raised);cursor:pointer;padding:var(--space-1) var(--space-3);font-family:var(--font-sans);font-size:11.5px;font-weight:var(--weight-semibold);color:var(--code-ink-strong)}
+.ef-code__more{display:inline-flex;align-items:center;gap:var(--space-1);border:1px solid var(--code-edge);border-radius:var(--radius-full);background:var(--code-raised);cursor:pointer;padding:var(--space-1) var(--space-3);font-family:var(--font-sans);font-size:var(--text-xs);font-weight:var(--weight-semibold);color:var(--code-ink-strong)}
 .ef-code__more:hover{color:var(--code-ink-bright);border-color:var(--code-edge-hover)}
 .ef-code__copy:focus-visible,.ef-code__more:focus-visible{outline:none;box-shadow:var(--focus-ring)}
 `;

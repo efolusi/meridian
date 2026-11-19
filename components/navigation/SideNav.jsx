@@ -21,7 +21,7 @@ export function SideNav({ brand = 'Meridian', brandBadge, logoSrc, groups, value
     <aside {...rest} className={`ef-sidenav${className ? ' ' + className : ''}`} style={style}>
       <div className="ef-sidenav__brand">
         {logoSrc ? <img src={logoSrc} alt="" style={{ width: 30, height: 16, objectFit: 'contain' }} /> : null}
-        <span style={{ fontFamily: 'var(--font-display)', fontWeight: 680, letterSpacing: '-0.02em', fontSize: 19 }}>{brand}</span>
+        <span style={{ fontFamily: 'var(--font-display)', fontWeight: 680, letterSpacing: '-0.02em', fontSize: 'var(--text-xl)' }}>{brand}</span>
         {brandBadge ? <Badge className="ef-badge--brand" style={{ marginInlineStart: 'auto' }}>{brandBadge}</Badge> : null}
       </div>
       {groups.map((g, gi) => (

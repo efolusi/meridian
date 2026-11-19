@@ -6,7 +6,7 @@ const CSS = `
 .ef-term__head{display:flex;align-items:center;gap:var(--space-2);padding:var(--space-2) var(--space-4);border-bottom:1px solid var(--code-divider)}
 .ef-term__host{font-family:var(--font-mono);font-size:var(--text-2xs);color:var(--code-ink-subtle)}
 .ef-term__dot{width:7px;height:7px;border-radius:var(--radius-full);background:var(--success-on-dark)}
-.ef-term__body{padding:var(--space-3) var(--space-4);font-family:var(--font-mono);font-size:12.5px;line-height:1.7;overflow-x:auto}
+.ef-term__body{padding:var(--space-3) var(--space-4);font-family:var(--font-mono);font-size:var(--text-sm);line-height:1.7;overflow-x:auto}
 .ef-term__line{white-space:pre-wrap;color:var(--code-ink)}
 .ef-term__line--cmd{color:var(--cream-50)}
 .ef-term__line--cmd::before{content:'$ ';color:var(--caramel-500)}

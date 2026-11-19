@@ -4,7 +4,7 @@ import { injectEfCss } from '../forms/Button.jsx';
 
 const CSS = `
 .ef-avatar{position:relative;display:inline-flex;align-items:center;justify-content:center;flex:none;width:var(--avatar-md);height:var(--avatar-md);border-radius:var(--radius-full);background:var(--peach-200);color:var(--cocoa-700);font-size:var(--text-xs);font-weight:var(--weight-semibold);overflow:hidden;user-select:none}
-.ef-avatar--sm{width:var(--avatar-sm);height:var(--avatar-sm);font-size:9px}.ef-avatar--lg{width:var(--avatar-lg);height:var(--avatar-lg);font-size:15px}
+.ef-avatar--sm{width:var(--avatar-sm);height:var(--avatar-sm);font-size:9px}.ef-avatar--lg{width:var(--avatar-lg);height:var(--avatar-lg);font-size:var(--text-lg)}
 .ef-avatar__image{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
 .ef-avatar__fallback{display:flex;width:100%;height:100%;align-items:center;justify-content:center}
 .ef-avatar__badge{position:absolute;inset-inline-end:0;inset-block-end:0;z-index:1;display:flex;width:25%;height:25%;min-width:8px;min-height:8px;align-items:center;justify-content:center;border:2px solid var(--surface-card);border-radius:var(--radius-full);background:var(--success-500);color:var(--text-inverse)}

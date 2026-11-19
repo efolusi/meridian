@@ -10,7 +10,7 @@ const CSS = `
 .ef-sandbox__head:focus-visible{outline:none;box-shadow:var(--focus-ring)}
 .ef-sandbox__chev{display:inline-flex;color:var(--text-muted);transition:transform var(--dur-med) var(--ease-out)}
 .ef-sandbox--open .ef-sandbox__chev{transform:rotate(90deg)}
-.ef-sandbox__title{flex:1;min-width:0;font-family:var(--font-mono);font-size:12.5px;color:var(--text-primary);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.ef-sandbox__title{flex:1;min-width:0;font-family:var(--font-mono);font-size:var(--text-sm);color:var(--text-primary);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .ef-sandbox--error .ef-sandbox__title{color:var(--danger-600)}
 .ef-sandbox__meta{font-size:var(--text-xs);color:var(--text-muted);display:inline-flex;align-items:center;gap:var(--space-2)}
 .ef-sandbox__spin{display:inline-flex;color:var(--text-secondary);animation:ef-sandbox-spin 1s linear infinite}
@@ -20,11 +20,11 @@ const CSS = `
 .ef-sandbox__clip{overflow:hidden;min-height:0}
 .ef-sandbox__inner{border-top:1px solid var(--border-default)}
 .ef-sandbox__tabs{display:flex;gap:var(--space-5);padding:0 var(--space-4);border-bottom:1px solid var(--border-default)}
-.ef-sandbox__tab{display:inline-flex;align-items:center;gap:var(--space-2);height:36px;border:none;background:none;cursor:pointer;font-family:var(--font-sans);font-size:12.5px;font-weight:var(--weight-semibold);color:var(--text-muted);border-bottom:2px solid transparent;margin-bottom:-1px;transition:color var(--dur-fast) var(--ease-out),border-color var(--dur-fast) var(--ease-out)}
+.ef-sandbox__tab{display:inline-flex;align-items:center;gap:var(--space-2);height:36px;border:none;background:none;cursor:pointer;font-family:var(--font-sans);font-size:var(--text-sm);font-weight:var(--weight-semibold);color:var(--text-muted);border-bottom:2px solid transparent;margin-bottom:-1px;transition:color var(--dur-fast) var(--ease-out),border-color var(--dur-fast) var(--ease-out)}
 .ef-sandbox__tab:hover{color:var(--text-primary)}
 .ef-sandbox__tab--on{color:var(--text-primary);border-bottom-color:var(--accent)}
 .ef-sandbox__tab:focus-visible{outline:none;box-shadow:var(--focus-ring)}
-.ef-sandbox__panel{padding:var(--space-3) var(--space-4);font-family:var(--font-mono);font-size:12.5px;line-height:1.7;color:var(--text-secondary);overflow-x:auto}
+.ef-sandbox__panel{padding:var(--space-3) var(--space-4);font-family:var(--font-mono);font-size:var(--text-sm);line-height:1.7;color:var(--text-secondary);overflow-x:auto}
 .ef-sandbox__panel pre{margin:0;white-space:pre-wrap;word-break:break-word}
 @media (pointer:coarse){.ef-sandbox__tab{min-height:var(--tap-min)}}
 `;
