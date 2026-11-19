@@ -27,12 +27,12 @@ const CSS = `
 .ef-input--icon .ef-input__el--sm{padding-inline-start:calc(var(--space-2) + var(--icon-md) + var(--space-2))}
 .ef-input--icon .ef-input__el--lg{padding-inline-start:calc(var(--space-3) + var(--icon-lg) + var(--space-2))}
 .ef-input__icon{position:absolute;inset-inline-start:11px;color:var(--text-muted);display:inline-flex;pointer-events:none}
-.ef-input__reveal{position:absolute;inset-inline-end:6px;display:inline-flex;align-items:center;justify-content:center;width:28px;height:28px;padding:0;border:none;border-radius:var(--radius-sm);background:none;color:var(--text-muted);cursor:pointer}
+.ef-input__reveal{position:absolute;inset-inline-end:var(--space-1);display:inline-flex;align-items:center;justify-content:center;width:var(--control-h-sm);height:var(--control-h-sm);padding:0;border:none;border-radius:var(--radius-sm);background:none;color:var(--text-muted);cursor:pointer}
 .ef-input__reveal:hover{color:var(--text-primary)}
 .ef-input__reveal:focus-visible{outline:none;box-shadow:var(--focus-ring)}
-.ef-input--reveal .ef-input__el{padding-inline-end:38px}
-.ef-input--reveal .ef-input__el--sm{padding-inline-end:34px}
-.ef-input--reveal .ef-input__el--lg{padding-inline-end:42px}
+.ef-input--reveal .ef-input__el{padding-inline-end:calc(var(--space-1) + var(--control-h-sm) + var(--space-1))}
+
+
 .ef-input__el[aria-invalid="true"]{border-color:var(--danger-600)}
 .ef-input__el[aria-invalid="true"]:focus-visible{box-shadow:var(--focus-ring-danger)}
 /* Touch: fixed-size targets grow to --tap-min; small glyph buttons keep their look and get a centred --tap-min hit area instead. */
