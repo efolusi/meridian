@@ -26,6 +26,11 @@ describe('Meridian production static deployment', () => {
     expect(publish.match(/actions: write/g)).toHaveLength(1)
   })
 
+  it('runs the job only in efolusi/meridian, on a v* tag, in the production environment', () => {
+    expect(workflow).toContain("if: github.repository == 'efolusi/meridian' && startsWith(github.ref, 'refs/tags/v')")
+    expect(workflow).toContain('environment: production')
+  })
+
   it('binds the exact tagged SHA, checks it is on main, and runs on the production runner', () => {
     expect(workflow).toContain('runs-on: [self-hosted, Linux, X64, efolusi-prod]')
     expect(workflow).toContain('ref: ${{ github.sha }}')
