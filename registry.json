@@ -3355,6 +3355,37 @@
       ]
     },
     {
+      "name": "themetoggle",
+      "type": "registry:ui",
+      "title": "ThemeToggle",
+      "description": "One theme control for every Efolusi site, following the [theme contract](../../guidelines/theming.md#theme-contract). `ThemeToggle` is a single 44px button that cycles Light, Dark and System. On System it follows the operating system live. The choice is saved in localStorage `efolusi-theme`; the `ef",
+      "dependencies": [
+        "react"
+      ],
+      "registryDependencies": [
+        "https://meridian.efolusi.com/site/registry/meridian-base.json",
+        "https://meridian.efolusi.com/site/registry/button.json",
+        "https://meridian.efolusi.com/site/registry/icon.json"
+      ],
+      "files": [
+        {
+          "path": "components/marketing/ThemeToggle.jsx",
+          "type": "registry:ui"
+        },
+        {
+          "path": "components/marketing/ThemeToggle.d.ts",
+          "type": "registry:component"
+        },
+        {
+          "path": "components/marketing/ThemeToggle.prompt.md",
+          "type": "registry:component"
+        }
+      ],
+      "categories": [
+        "marketing"
+      ]
+    },
+    {
       "name": "breadcrumb",
       "type": "registry:ui",
       "title": "Breadcrumb + BreadcrumbList + BreadcrumbItem + BreadcrumbLink + BreadcrumbPage + BreadcrumbSeparator + BreadcrumbEllipsis",
