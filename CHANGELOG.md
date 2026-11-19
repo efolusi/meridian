@@ -11,6 +11,7 @@
   - `GeneratedImage` `status`: `generating` → `busy`, `error` → `danger`.
   - `toast.add` and `toast.promise` `type`: `error` → `danger`. A rejected `toast.promise` now gives a `danger` toast.
   - `variant="destructive"` → `variant="danger"` on Button, Alert, Badge, Bubble, DropdownMenuItem, ContextMenuItem and InputGroupButton. Button had both; `danger` stays.
+  - Button `variant="outline"` → `variant="secondary"`: the two had the same look. `AlertDialogCancel` is now `secondary`, and InputGroupButton no longer lists `outline`.
 
 ## 1.24.0 — 2026-11-19
 

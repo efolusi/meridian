@@ -1,16 +1,16 @@
 {
   "totals": {
     "@efolusi/meridian": {
-      "bytes": 355766,
-      "gzip": 79924
+      "bytes": 355768,
+      "gzip": 79929
     },
     "dist/components.css": {
-      "bytes": 200482,
-      "gzip": 28426
+      "bytes": 200324,
+      "gzip": 28415
     },
     "_ds_bundle.js": {
-      "bytes": 814373,
-      "gzip": 144872
+      "bytes": 814217,
+      "gzip": 144855
     }
   },
   "modules": [
@@ -713,8 +713,8 @@
         "AlertDialogCancel",
         "AlertDialogAction"
       ],
-      "bytes": 7074,
-      "gzip": 2472
+      "bytes": 7076,
+      "gzip": 2474
     },
     {
       "module": "feedback/Banner.js",

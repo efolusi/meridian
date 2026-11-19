@@ -3,7 +3,7 @@ import { fireEvent, render, screen } from '@testing-library/react';
 import { describe, expect, it, vi } from 'vitest';
 import { Button, buttonVariants } from '../components/forms/Button.jsx';
 
-const VARIANTS = ['default', 'outline', 'ghost', 'danger', 'secondary', 'link'];
+const VARIANTS = ['default', 'ghost', 'danger', 'secondary', 'link'];
 const SIZES = ['default', 'xs', 'sm', 'lg', 'icon', 'icon-xs', 'icon-sm', 'icon-lg'];
 
 describe('Button compatibility contract', () => {
@@ -81,8 +81,8 @@ describe('Button compatibility contract', () => {
 
   it('exports a helper suitable for semantic links and preserves legacy aliases', () => {
     expect(buttonVariants()).toBe('ef-btn ef-btn--primary ef-btn--md');
-    expect(buttonVariants({ variant: 'outline', size: 'sm', className: 'rounded' }))
-      .toBe('ef-btn ef-btn--outline ef-btn--sm rounded');
+    expect(buttonVariants({ variant: 'secondary', size: 'sm', className: 'rounded' }))
+      .toBe('ef-btn ef-btn--secondary ef-btn--sm rounded');
     expect(buttonVariants({ variant: 'primary', size: 'md' }))
       .toBe('ef-btn ef-btn--primary ef-btn--md');
     render(<a href="/account" className={buttonVariants({ variant: 'link' })}>Account</a>);

@@ -2175,7 +2175,7 @@ A compositional content row for lists and card-like collections. Use Field for f
     <ItemTitle>Security alert</ItemTitle>
     <ItemDescription>New login detected from an unknown device.</ItemDescription>
   </ItemContent>
-  <ItemActions><Button variant="outline">Review</Button></ItemActions>
+  <ItemActions><Button variant="secondary">Review</Button></ItemActions>
 </Item>
 ```
 
@@ -2521,7 +2521,7 @@ Use Alert Dialog for an important decision that must be acknowledged before work
 
 ```jsx
 <AlertDialog>
-  <AlertDialogTrigger asChild><Button variant="outline">Archive project</Button></AlertDialogTrigger>
+  <AlertDialogTrigger asChild><Button variant="secondary">Archive project</Button></AlertDialogTrigger>
   <AlertDialogContent>
     <AlertDialogHeader>
       <AlertDialogTitle>Archive this project?</AlertDialogTitle>
@@ -3016,7 +3016,7 @@ Variants: `primary` (espresso ink), `secondary` (white + border), `ghost`, `dang
 ```ts
 export interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   /** @default 'default' */
-  variant?: 'default' | 'outline' | 'ghost' | 'secondary' | 'link' | 'primary' | 'danger' | 'brand';
+  variant?: 'default' | 'ghost' | 'secondary' | 'link' | 'primary' | 'danger' | 'brand';
   /** @default 'default' */
   size?: 'default' | 'xs' | 'sm' | 'lg' | 'icon' | 'icon-xs' | 'icon-sm' | 'icon-lg' | 'md';
   /** Lucide icon name rendered before the label */
@@ -3292,7 +3292,7 @@ Compose labels, descriptions, and validation messages with the `Field` family. U
 export declare const InputGroup: React.ForwardRefExoticComponent<React.HTMLAttributes<HTMLDivElement> & React.RefAttributes<HTMLDivElement>>;
 export interface InputGroupAddonProps extends React.HTMLAttributes<HTMLDivElement> { align?: 'inline-start'|'inline-end'|'block-start'|'block-end'; }
 export declare const InputGroupAddon: React.ForwardRefExoticComponent<InputGroupAddonProps & React.RefAttributes<HTMLDivElement>>;
-export interface InputGroupButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> { size?: 'xs'|'icon-xs'|'sm'|'icon-sm'; variant?: 'default'|'danger'|'outline'|'secondary'|'ghost'|'link'; }
+export interface InputGroupButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> { size?: 'xs'|'icon-xs'|'sm'|'icon-sm'; variant?: 'default'|'danger'|'secondary'|'ghost'|'link'; }
 export declare const InputGroupButton: React.ForwardRefExoticComponent<InputGroupButtonProps & React.RefAttributes<HTMLButtonElement>>;
 export declare const InputGroupInput: React.ForwardRefExoticComponent<React.InputHTMLAttributes<HTMLInputElement> & React.RefAttributes<HTMLInputElement>>;
 export declare const InputGroupTextarea: React.ForwardRefExoticComponent<React.TextareaHTMLAttributes<HTMLTextAreaElement> & React.RefAttributes<HTMLTextAreaElement>>;

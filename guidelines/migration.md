@@ -65,6 +65,7 @@ Removed in 1.25.0. It had been ignored since 1.22.0.
 | ToolCall, Sandbox | `status` | `running`, `error` | `busy`, `danger` |
 | GeneratedImage | `status` | `generating`, `error` | `busy`, `danger` |
 | Button, Alert, Badge, Bubble, DropdownMenuItem, ContextMenuItem, InputGroupButton | `variant` | `destructive` | `danger` |
+| Button, InputGroupButton | `variant` | `outline` (the same look as `secondary`) | `secondary` |
 
 **Before**
 
