@@ -74,15 +74,20 @@ if (!result.ok) {
 if (SHOTS) {
   fs.mkdirSync(SHOTS, { recursive: true });
   await page.evaluate(() => document.fonts.ready);
-  // Icons arrive by fetch after the demos render, and on the self-hosted
-  // runner (headless Chromium 130 in Docker) some of those requests stall and
-  // never finish, so a capture sometimes has blank glyphs. Give them a chance to
-  // land and report what is still missing; CAPTURE_CSS hides the glyphs.
+  // Icons arrive by fetch after the demos render. Wait until every icon slot holds
+  // its SVG, so the captures show the glyphs; a slot that stays empty fails the run
+  // instead of producing a baseline without icons.
   await page.waitForLoadState('networkidle', { timeout: 30000 }).catch(() => {});
-  const blankIcons = await page.evaluate(() =>
+  const emptyIcons = () => page.evaluate(() =>
     [...document.querySelectorAll('section[data-group] [data-slot="icon"]')].filter(s => !s.querySelector('svg')).length);
+  await page.waitForFunction(() =>
+    [...document.querySelectorAll('section[data-group] [data-slot="icon"]')].every(s => s.querySelector('svg')),
+  null, { timeout: 30000 }).catch(() => {});
+  const blankIcons = await emptyIcons();
   if (blankIcons) {
-    console.warn(`smoke: ${blankIcons} icon slot(s) still empty (${pending.size} request(s) pending${failedRequests.length ? `, ${failedRequests.length} failed` : ''}); glyphs are hidden in the captures`);
+    console.error(`smoke: ${blankIcons} icon slot(s) still empty (${pending.size} request(s) pending${failedRequests.length ? `, ${failedRequests.length} failed` : ''}); not capturing baselines without icons`);
+    await browser.close();
+    process.exit(1);
   }
   await page.addStyleTag({ content: CAPTURE_CSS });
   let count = 0;
