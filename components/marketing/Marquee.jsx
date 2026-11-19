@@ -28,6 +28,14 @@ const CSS = `
 @media (prefers-reduced-motion:reduce){.ef-marquee__track{animation:none}.ef-marquee__pause{display:none}}
 `;
 
+// The moving copies are decoration: inert keeps any link inside them out of the tab
+// order from the first server-rendered paint, before hydration. React 18 renders an
+// unknown attribute from a string, React 19 knows inert as a boolean.
+export function inertProp(version = React.version) {
+  return { inert: Number.parseInt(version, 10) >= 19 ? true : '' };
+}
+const INERT = inertProp();
+
 const LABELS = {
   en: { pause: 'Pause the moving list', play: 'Play the moving list' },
   id: { pause: 'Jeda daftar berjalan', play: 'Putar daftar berjalan' },
@@ -40,10 +48,6 @@ export const Marquee = React.forwardRef(function Marquee(
   injectEfCss('ef-css-marquee', CSS);
   const text = { ...(LABELS[lang] || LABELS.en), ...labels };
   const [paused, setPaused] = React.useState(false);
-  // The moving copies are decoration: inert keeps any link inside them out of the tab
-  // order. Set on the node, because React 18 and 19 read the inert prop differently.
-  const viewportRef = React.useRef(null);
-  React.useEffect(() => { viewportRef.current?.setAttribute('inert', ''); }, []);
   return (
     <div
       {...rest}
@@ -56,7 +60,7 @@ export const Marquee = React.forwardRef(function Marquee(
       <ul className="ef-marquee__list" aria-label={label}>
         {items.map((item, i) => <li key={i}>{item}</li>)}
       </ul>
-      <div ref={viewportRef} className="ef-marquee__viewport" aria-hidden="true">
+      <div className="ef-marquee__viewport" aria-hidden="true" {...INERT}>
         <div className="ef-marquee__track">
           {[...items, ...items].map((item, i) => <span className="ef-marquee__item" key={i}>{item}</span>)}
         </div>

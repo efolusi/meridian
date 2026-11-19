@@ -27,7 +27,7 @@ export function CodeBlockDemo() {
 export function CopyFieldDemo() {
   const { CopyField } = window.EfolusiDesignSystem_4ffc3d;
   return (
-    <div style={{ display: 'flex', flexDirection: 'column', gap: 14, width: 400 }}>
+    <div style={{ display: 'flex', flexDirection: 'column', gap: 14, width: '100%', maxWidth: 400 }}>
       <CopyField label="Webhook URL" value="https://hooks.efolusi.com/t/9f3ac2" />
       <CopyField label="API key" value="ef_live_4d1c9a8b7e6f" secret />
     </div>

@@ -281,7 +281,7 @@ export function SwitchDemo() {
 export function TextareaDemo() {
   const { Textarea } = window.EfolusiDesignSystem_4ffc3d;
   return (
-    <div style={{ width: 380 }}>
+    <div style={{ width: '100%', maxWidth: 380 }}>
       <Textarea label="Run instructions" rows={4} placeholder="Book the cheapest nonstop, aisle seat, refundable fare…" hint="The agent follows these on every run." />
     </div>
   );
