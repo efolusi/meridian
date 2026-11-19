@@ -31,7 +31,7 @@ jobs:
 
       - uses: actions/setup-node@a0853c24544627f65ddf259abe73b1d18a591444 # v5.0.0
         with:
-          node-version: '22.23.2'
+          node-version: '26.13.1'
 
       - name: Install
         run: npm ci --no-audit --no-fund
@@ -83,10 +83,9 @@ jobs:
           # needs an org admin to change, so treat pr-create as best effort:
           # when it is refused, the branch is still pushed and the compare URL
           # lands in the run summary — one click away from the same PR.
-          # dev is the integration branch; main only takes release merges.
-          if ! gh pr create --base dev --head "$BRANCH" \
+          if ! gh pr create --base main --head "$BRANCH" \
             --title "Refresh visual baselines ($COUNT group shots)" \
             --body "Captured on this runner by the update-visual-baselines workflow (run ${GITHUB_RUN_ID}). Review the images in the diff — merging is the approval."; then
             echo "## Baselines captured — org policy blocks Actions from opening the PR" >> "$GITHUB_STEP_SUMMARY"
-            echo "Open it here: https://github.com/${GITHUB_REPOSITORY}/compare/dev...$BRANCH?expand=1" >> "$GITHUB_STEP_SUMMARY"
+            echo "Open it here: https://github.com/${GITHUB_REPOSITORY}/compare/main...$BRANCH?expand=1" >> "$GITHUB_STEP_SUMMARY"
           fi

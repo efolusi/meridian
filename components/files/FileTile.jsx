@@ -6,6 +6,7 @@ import { Progress } from '../feedback/Progress.jsx';
 import { injectEfCss } from '../forms/Button.jsx';
 const CSS = `
 .ef-filetile{display:flex;align-items:center;gap:var(--space-3);padding:var(--space-3) var(--space-3);border:1px solid var(--border-default);border-radius:var(--radius-md);background:var(--surface-card)}
+.ef-filetile:focus-within{border-color:var(--focus-ring-color)}
 .ef-filetile__icon{display:inline-flex;align-items:center;justify-content:center;width:34px;height:34px;flex:none;border-radius:var(--radius-sm);background:var(--surface-sunken);color:var(--sand-700)}
 .ef-filetile__name{font-size:var(--text-sm);font-weight:var(--weight-semibold);color:var(--text-primary);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .ef-filetile__meta{font-size:var(--text-xs);color:var(--text-muted);margin-top:1px}
