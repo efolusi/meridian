@@ -2,7 +2,7 @@
 
 The entire design system in one file, generated from llms.txt, components/*/, and tokens/*.css by scripts/build_llms.py. Do not edit by hand. The short map of the repository is /llms.txt.
 
-> Meridian is a general-purpose open-source design system by Efolusi: 124 accessible React components, 221 design tokens (light, dark, compact), blocks, charts, and full example apps, served browser-native with zero build step. Apache-2.0 licensed.
+> Meridian is a general-purpose open-source design system by Efolusi: 126 accessible React components, 221 design tokens (light, dark, compact), blocks, charts, and full example apps, served browser-native with zero build step. Apache-2.0 licensed.
 
 Live docs: https://meridian.efolusi.com · Source: https://github.com/efolusi/meridian · License: Apache-2.0
 
@@ -34,7 +34,7 @@ Dark mode: set data-theme="dark" on any subtree. Compact density: data-density="
 
 ## Components
 
-124 components across 13 groups: ai, code, data, dates, display, feedback, files, finance, forms, icons, marketing, navigation, overlay. Each entry lists the component's public exports, its usage guidance (.prompt.md), and its typed props interface (.d.ts).
+126 components across 13 groups: ai, code, data, dates, display, feedback, files, finance, forms, icons, marketing, navigation, overlay. Each entry lists the component's public exports, its usage guidance (.prompt.md), and its typed props interface (.d.ts).
 
 ### ai
 
@@ -3758,6 +3758,85 @@ export declare function Icon(props: IconProps): React.JSX.Element;
 ```
 
 ### marketing
+
+#### FeatureCard
+
+Group: marketing · Source: /components/marketing/FeatureCard.jsx · Exports: FeatureGrid, FeatureCard
+
+# FeatureCard
+
+Use `FeatureGrid` with three `FeatureCard`s to say what a product is about at a glance. Give a card an `href` and the whole card is the link; `cta` adds the link label with an arrow. The `tone` fills (`peach`, `cocoa`, `amber`) are the same for every product, from the `--tone-*` tokens; use each once per grid. Every card keeps a 1px hairline, so it reads as a shape on the page in every theme.
+
+```jsx
+<FeatureGrid>
+  <FeatureCard tone="peach" icon="package" title="Products" body="Seven tools, one account." cta="See the portfolio" href="#products" />
+  <FeatureCard tone="cocoa" icon="coins" title="Token" body="Buyback and burn, on chain." cta="Read more" href="/token" />
+  <FeatureCard tone="amber" icon="sparkles" title="Standard" body="Open source and self-hosted." cta="About us" href="/about" />
+</FeatureGrid>
+```
+
+```ts
+export interface FeatureGridProps extends React.HTMLAttributes<HTMLDivElement> {}
+export declare const FeatureGrid: React.ForwardRefExoticComponent<FeatureGridProps & React.RefAttributes<HTMLDivElement>>;
+
+export interface FeatureCardProps extends Omit<React.HTMLAttributes<HTMLElement>, 'title'> {
+  /** Makes the whole card a link. */
+  href?: string;
+  /** Lucide icon name shown in the card's top corner. */
+  icon?: string;
+  /** The card title. */
+  title: React.ReactNode;
+  /** One or two sentences under the title. */
+  body?: React.ReactNode;
+  /** Link label at the bottom, with an arrow. */
+  cta?: React.ReactNode;
+  /** Brand-wide fill from the `--tone-*` tokens. Every tone keeps a 1px hairline. @default 'default' */
+  tone?: 'default' | 'peach' | 'cocoa' | 'amber';
+  /** Heading element for the title. @default 'h3' */
+  as?: 'h2' | 'h3' | 'h4';
+}
+export declare const FeatureCard: React.ForwardRefExoticComponent<FeatureCardProps & React.RefAttributes<HTMLElement>>;
+```
+
+#### Hero
+
+Group: marketing · Source: /components/marketing/Hero.jsx · Exports: Hero, HeroAccent
+
+# Hero
+
+Use `Hero` once, at the top of a marketing page: the `title`, a short `sub`, the `actions` (pill buttons, the main one `size="xl"`) and an optional `proof` line. It is centred by default; use `align="start"` beside an image. Link `landing.css` so the top and bottom spacing steps down on small screens.
+
+Wrap one word of the title in `HeroAccent` for the hand-drawn underline. It draws once and stays still with reduced motion. Pass every word from your own dictionary, in Indonesian and English.
+
+```jsx
+<Hero
+  title={<>Tools that run on <HeroAccent>your own</HeroAccent> machine</>}
+  sub="Open source, self-hosted and private by default."
+  actions={<><Button shape="pill" size="xl" iconRight="arrow-right">Start free</Button><Button shape="pill" size="xl" variant="secondary">Read the docs</Button></>}
+/>
+```
+
+```ts
+export interface HeroProps extends Omit<React.HTMLAttributes<HTMLElement>, 'title'> {
+  /** The page title. Wrap one word in `HeroAccent` to underline it. */
+  title: React.ReactNode;
+  /** One or two sentences under the title. */
+  sub?: React.ReactNode;
+  /** Calls to action, usually `Button shape="pill"`. */
+  actions?: React.ReactNode;
+  /** A short proof line under the actions, such as a status dot and a fact. */
+  proof?: React.ReactNode;
+  /** @default 'center' */
+  align?: 'center' | 'start';
+  /** Heading element for the title. @default 'h1' */
+  as?: 'h1' | 'h2';
+}
+export declare const Hero: React.ForwardRefExoticComponent<HeroProps & React.RefAttributes<HTMLElement>>;
+
+export interface HeroAccentProps extends React.HTMLAttributes<HTMLSpanElement> {}
+/** A hand-drawn underline that draws itself once; static with reduced motion. */
+export declare function HeroAccent(props: HeroAccentProps): React.ReactElement;
+```
 
 #### Section
 

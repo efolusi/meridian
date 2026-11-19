@@ -711,6 +711,14 @@
       "sourcePath": "components/code/Exception.jsx"
     },
     {
+      "name": "FeatureCard",
+      "sourcePath": "components/marketing/FeatureCard.jsx"
+    },
+    {
+      "name": "FeatureGrid",
+      "sourcePath": "components/marketing/FeatureCard.jsx"
+    },
+    {
       "name": "FeedbackBar",
       "sourcePath": "components/ai/FeedbackBar.jsx"
     },
@@ -769,6 +777,14 @@
     {
       "name": "GeneratedImage",
       "sourcePath": "components/ai/GeneratedImage.jsx"
+    },
+    {
+      "name": "Hero",
+      "sourcePath": "components/marketing/Hero.jsx"
+    },
+    {
+      "name": "HeroAccent",
+      "sourcePath": "components/marketing/Hero.jsx"
     },
     {
       "name": "HoverCard",

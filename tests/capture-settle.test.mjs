@@ -17,7 +17,7 @@ describe('visual capture settling', () => {
 
   it('captures glyphs and hides only the live summary', () => {
     expect(CAPTURE_CSS).not.toMatch(/data-slot="icon"/);
-    expect(CAPTURE_CSS).toContain('#summary, h1, [data-live] { display: none !important; }');
+    expect(CAPTURE_CSS).toContain('#summary, body > h1, [data-live] { display: none !important; }');
   });
 
   it('waits for fonts, decoded images and a frame pair, in that order, before each group', async () => {

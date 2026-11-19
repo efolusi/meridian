@@ -1,4 +1,4 @@
-<!-- @dsCard group="Components" viewport="700x520" name="Marketing" subtitle="Section, SectionHead, band tone, Button pill" -->
+<!-- @dsCard group="Components" viewport="700x1180" name="Marketing" subtitle="Hero, FeatureCard tones, Section, band tone, Button pill" -->
 <!DOCTYPE html><html><head><meta charset="utf-8"><link rel="stylesheet" href="../../styles.css">
 <script src="https://unpkg.com/react@18.3.1/umd/react.production.min.js" integrity="sha384-DGyLxAyjq0f9SPpVevD6IgztCFlnMF6oW/XQGmfe+IsZ8TqEiDrcHkMLKI6fiB/Z" crossorigin="anonymous"></script>
 <script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.production.min.js" integrity="sha384-gTGxhz21lVGYNMcdJOyq01Edg0jhn/c22nsx0kyqP0TxaV5WVdsSH1fSDUf5YJj1" crossorigin="anonymous"></script>
@@ -7,10 +7,18 @@
 </head><body style="background:var(--surface-page)">
 <div id="root"></div>
 <script type="text/babel">
-const { Section, SectionHead, Button } = window.EfolusiDesignSystem_4ffc3d;
+const { Hero, HeroAccent, FeatureGrid, FeatureCard, Section, SectionHead, Button } = window.EfolusiDesignSystem_4ffc3d;
 function Demo() {
   return (
     <div>
+      <Hero style={{ paddingBlock: 'var(--space-10)' }} title={<>Tools that run on <HeroAccent>your own</HeroAccent> machine</>} sub="Open source, self-hosted and private by default." actions={<Button shape="pill" size="xl" iconRight="arrow-right">Start free</Button>} />
+      <div style={{ padding: 'var(--space-5)' }}>
+        <FeatureGrid>
+          <FeatureCard tone="peach" icon="package" title="Products" body="Seven tools, one account." cta="See all" href="#" />
+          <FeatureCard tone="cocoa" icon="coins" title="Token" body="Buyback and burn." cta="Read more" href="#" />
+          <FeatureCard tone="amber" icon="sparkles" title="Standard" body="Open source first." cta="About" href="#" />
+        </FeatureGrid>
+      </div>
       <Section ruled style={{ paddingBlock: 'var(--space-10)' }}>
         <SectionHead eyebrow="Products" title="Tools that run on your own machine" lede="Open source, self-hosted and private by default." align="center">
           <div style={{ display: 'flex', gap: 'var(--space-3)', marginTop: 'var(--space-3)' }}>

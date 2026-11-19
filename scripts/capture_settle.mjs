@@ -2,10 +2,10 @@
 
 // Glyphs are captured: smoke_headless.mjs waits until every icon slot holds its SVG
 // and fails the capture if one never arrives, so a baseline cannot lose its icons.
-// The summary banner carries the live demo count, which would churn baselines. content-visibility:auto (MessageScroller items) paints on an async
+// The summary banner carries the live demo count, which would churn baselines. Only a top-level h1 is hidden, so a demo's own h1 (Hero) is captured. content-visibility:auto (MessageScroller items) paints on an async
 // on-screen judgement that moves while element screenshots scroll, so it is forced on.
 export const CAPTURE_CSS = [
-  '#summary, h1, [data-live] { display: none !important; }',
+  '#summary, body > h1, [data-live] { display: none !important; }',
   '* { content-visibility: visible !important; }',
 ].join('\n');
 

@@ -5,7 +5,10 @@
 - **A marketing group, starting with `Section` and `SectionHead`.** `Section` is one full-width block of a marketing page: it takes its rhythm from `--section-y` (link `landing.css`), centres its content at `--container-max`, `tone="band"` puts it on the brand ground, and `ruled` draws a hairline above it. `SectionHead` gives the block an eyebrow, a title and a lede, aligned to the start or the centre. Both take every word as props, so a page passes its own Indonesian and English.
 - **Button `shape="pill"` and size `xl`.** `shape="pill"` rounds the ends fully and widens the side padding, for calls to action on marketing pages; icon sizes become circles. `size="xl"` is 52px high (`--control-h-xl`), for the hero call to action.
 - **Tokens from design-tokens 0.3.0.** Adds `--control-h-xl` (52px, 46px in compact density) and the feature-card tones `--tone-peach-*`, `--tone-cocoa-*` and `--tone-amber-*` (fill and on-fill, 4.5:1 locked upstream).
-- **Size budget raised by 5 KB** (npm total 1,428,562 bytes) for the marketing group.
+- **`Hero`, `HeroAccent`, `FeatureGrid` and `FeatureCard` in the marketing group.** `Hero` opens a marketing page with a title, a sub line, pill actions and a proof line; `HeroAccent` draws a hand-drawn underline under one word once, and stays still with reduced motion. `FeatureCard` takes the brand-wide `peach`, `cocoa` and `amber` tones; every card keeps a 1px hairline, because amber (light) and cocoa (dark) sit near the page colour. A test keeps the hairline in every tone.
+- **The website showcase's local `Hero` is now `WebsiteHero`**, so it no longer shadows the new export.
+- **Visual baselines add the marketing group in compact density and on a coarse pointer.**
+- **Size budget raised by 16 KB** (npm total 1,439,477 bytes) for the marketing group.
 
 ## 1.25.1 — 2026-11-19
 

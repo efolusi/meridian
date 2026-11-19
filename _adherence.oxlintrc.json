@@ -1185,6 +1185,18 @@
       "Icon": {
         "replaces": []
       },
+      "FeatureGrid": {
+        "replaces": []
+      },
+      "FeatureCard": {
+        "replaces": []
+      },
+      "Hero": {
+        "replaces": []
+      },
+      "HeroAccent": {
+        "replaces": []
+      },
       "Section": {
         "replaces": []
       },
