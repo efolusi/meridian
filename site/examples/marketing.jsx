@@ -12,7 +12,7 @@ export function SectionDemo() {
         align="center"
       >
         <div style={{ display: 'flex', gap: 'var(--space-3)', marginTop: 'var(--space-3)' }}>
-          <Button shape="pill" size="lg" iconRight="arrow-right">Start free</Button>
+          <Button shape="pill" size="xl" iconRight="arrow-right">Start free</Button>
           <Button shape="pill" size="lg" variant="secondary">Read the docs</Button>
         </div>
       </SectionHead>
@@ -37,7 +37,7 @@ export function ButtonPill() {
     <div style={{ display: 'flex', gap: 'var(--space-3)', flexWrap: 'wrap', alignItems: 'center' }}>
       <Button shape="pill" size="sm">Get in touch</Button>
       <Button shape="pill">Sign in</Button>
-      <Button shape="pill" size="lg" iconRight="arrow-right">Start free</Button>
+      <Button shape="pill" size="xl" iconRight="arrow-right">Start free</Button>
       <Button shape="pill" variant="brand">Join the waitlist</Button>
     </div>
   );

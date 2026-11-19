@@ -2,7 +2,7 @@
 
 The entire design system in one file, generated from llms.txt, components/*/, and tokens/*.css by scripts/build_llms.py. Do not edit by hand. The short map of the repository is /llms.txt.
 
-> Meridian is a general-purpose open-source design system by Efolusi: 124 accessible React components, 214 design tokens (light, dark, compact), blocks, charts, and full example apps, served browser-native with zero build step. Apache-2.0 licensed.
+> Meridian is a general-purpose open-source design system by Efolusi: 124 accessible React components, 221 design tokens (light, dark, compact), blocks, charts, and full example apps, served browser-native with zero build step. Apache-2.0 licensed.
 
 Live docs: https://meridian.efolusi.com · Source: https://github.com/efolusi/meridian · License: Apache-2.0
 
@@ -3011,12 +3011,12 @@ The action button: primary for the one main action per view, secondary/ghost for
 <Button variant="ghost">Cancel</Button>
 ```
 
-Variants: `primary` (espresso ink), `secondary` (white + border), `ghost`, `danger`, `brand` (cocoa, for marketing/brand moments only). Sizes `sm|md|lg` (28/36/44px). `loading` swaps in a spinner; labels are verbs in sentence case ("Save changes", never "Submit").
+Variants: `primary` (espresso ink), `secondary` (white + border), `ghost`, `danger`, `brand` (cocoa, for marketing/brand moments only). Sizes `sm|md|lg` (28/36/44px), and `xl` (52px) for the hero call to action on a marketing page. `loading` swaps in a spinner; labels are verbs in sentence case ("Save changes", never "Submit").
 
 On marketing pages, `shape="pill"` rounds the ends and widens the side padding. Use it for every pressable call to action on the page, and keep the default shape inside the product UI.
 
 ```jsx
-<Button shape="pill" size="lg" iconRight="arrow-right">Start free</Button>
+<Button shape="pill" size="xl" iconRight="arrow-right">Start free</Button>
 <Button shape="pill" variant="secondary">Read the docs</Button>
 ```
 
@@ -3025,7 +3025,7 @@ export interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElemen
   /** @default 'default' */
   variant?: 'default' | 'ghost' | 'secondary' | 'link' | 'primary' | 'danger' | 'brand';
   /** @default 'default' */
-  size?: 'default' | 'xs' | 'sm' | 'lg' | 'icon' | 'icon-xs' | 'icon-sm' | 'icon-lg' | 'md';
+  size?: 'default' | 'xs' | 'sm' | 'lg' | 'icon' | 'icon-xs' | 'icon-sm' | 'icon-lg' | 'md' | 'xl';
   /** `pill` rounds the ends fully and widens the side padding, for marketing pages. Icon sizes become circles. @default 'default' */
   shape?: 'default' | 'pill';
   /** Lucide icon name rendered before the label */
@@ -4673,7 +4673,7 @@ export declare const SheetDescription: React.ForwardRefExoticComponent<DialogSlo
 
 ## Design tokens
 
-214 custom property names by file (names only; resolve current values from /styles.css, which imports these files, or /tokens.json):
+221 custom property names by file (names only; resolve current values from /styles.css, which imports these files, or /tokens.json):
 
 ### /tokens/base.css
 
@@ -4790,6 +4790,12 @@ export declare const SheetDescription: React.ForwardRefExoticComponent<DialogSlo
 --text-on-media-muted
 --text-primary
 --text-secondary
+--tone-amber-fill
+--tone-amber-on-fill
+--tone-cocoa-fill
+--tone-cocoa-on-fill
+--tone-peach-fill
+--tone-peach-on-fill
 --warning-100
 --warning-300
 --warning-600
@@ -4848,6 +4854,7 @@ export declare const SheetDescription: React.ForwardRefExoticComponent<DialogSlo
 --control-h-lg
 --control-h-md
 --control-h-sm
+--control-h-xl
 --control-h-xs
 --icon-2xl
 --icon-lg

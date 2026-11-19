@@ -9,6 +9,7 @@ const CSS = `
 .ef-btn--pill.ef-btn--sm{padding-inline:var(--space-4)}
 .ef-btn--pill.ef-btn--md{padding-inline:var(--space-5)}
 .ef-btn--pill.ef-btn--lg{padding-inline:var(--space-6)}
+.ef-btn--pill.ef-btn--xl{padding-inline:var(--space-8)}
 .ef-btn:hover,.ef-btn:focus,.ef-btn:visited{text-decoration:none}
 .ef-btn:focus-visible{outline:none;box-shadow:var(--focus-ring)}
 .ef-btn:active{transform:scale(.985)}
@@ -16,6 +17,7 @@ const CSS = `
 .ef-btn--sm{height:var(--control-h-sm);padding:0 var(--space-3);font-size:var(--text-sm)}
 .ef-btn--md{height:var(--control-h-md);padding:0 var(--space-4);font-size:var(--text-md)}
 .ef-btn--lg{height:var(--control-h-lg);padding:0 var(--space-5);font-size:var(--text-lg)}
+.ef-btn--xl{height:var(--control-h-xl);padding:0 var(--space-6);font-size:var(--text-lg)}
 .ef-btn--xs{height:var(--control-h-xs);padding:0 9px;font-size:var(--text-xs);gap:6px}
 .ef-btn--icon,.ef-btn--icon-md{width:var(--control-h-md);height:var(--control-h-md);padding:0}
 .ef-btn--icon-xs{width:var(--control-h-xs);height:var(--control-h-xs);padding:0}
@@ -176,7 +178,7 @@ export function buttonVariants({ variant = 'default', size = 'default', shape = 
 }
 export const Button = React.forwardRef(function Button({ variant = 'default', size = 'default', shape = 'default', iconLeft, iconRight, fullWidth, loading, disabled, children, style, className, ...rest }, ref) {
   injectEfCss('ef-css-btn', CSS);
-  const isz = size === 'xs' || size === 'icon-xs' ? 12 : size === 'sm' || size === 'icon-sm' ? 14 : size === 'lg' || size === 'icon-lg' ? 18 : 16;
+  const isz = size === 'xs' || size === 'icon-xs' ? 12 : size === 'sm' || size === 'icon-sm' ? 14 : size === 'lg' || size === 'xl' || size === 'icon-lg' ? 18 : 16;
   return (
     <button ref={ref} className={buttonVariants({ variant, size, shape, className })} disabled={disabled || loading} aria-busy={loading || undefined} data-loading={loading ? '' : undefined} style={{ width: fullWidth ? '100%' : undefined, ...style }} {...rest}>
       {loading ? <span className="ef-btn__spin" aria-hidden="true"><Icon name="loader-circle" size={isz} /></span> : iconLeft ? <Icon name={iconLeft} size={isz} /> : null}

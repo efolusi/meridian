@@ -115,6 +115,12 @@
   --state-hover-on-tab: var(--sand-50);
   --state-hover-on-window: var(--surface-sunken);
   --state-pressed: var(--border-default);
+  --tone-peach-fill: var(--brand-100);
+  --tone-peach-on-fill: var(--sand-950);
+  --tone-cocoa-fill: var(--surface-brand);
+  --tone-cocoa-on-fill: var(--cream-50);
+  --tone-amber-fill: var(--warning-100);
+  --tone-amber-on-fill: var(--text-primary);
 }
 
 [data-theme="dark"] {

@@ -2,7 +2,7 @@ export interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElemen
   /** @default 'default' */
   variant?: 'default' | 'ghost' | 'secondary' | 'link' | 'primary' | 'danger' | 'brand';
   /** @default 'default' */
-  size?: 'default' | 'xs' | 'sm' | 'lg' | 'icon' | 'icon-xs' | 'icon-sm' | 'icon-lg' | 'md';
+  size?: 'default' | 'xs' | 'sm' | 'lg' | 'icon' | 'icon-xs' | 'icon-sm' | 'icon-lg' | 'md' | 'xl';
   /** `pill` rounds the ends fully and widens the side padding, for marketing pages. Icon sizes become circles. @default 'default' */
   shape?: 'default' | 'pill';
   /** Lucide icon name rendered before the label */

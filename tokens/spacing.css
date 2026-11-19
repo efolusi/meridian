@@ -31,6 +31,7 @@
   --control-h-sm: 28px;
   --control-h-md: 36px;
   --control-h-lg: 44px;
+  --control-h-xl: 52px;
   --icon-xs: 8px;
   --icon-sm: 12px;
   --icon-md: 16px;
@@ -49,6 +50,7 @@
   --control-h-sm: 24px;
   --control-h-md: 30px;
   --control-h-lg: 38px;
+  --control-h-xl: 46px;
   --table-pad-y: 7px;
   --table-pad-x: 12px;
 }

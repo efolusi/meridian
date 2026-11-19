@@ -3,7 +3,8 @@
 ## Unreleased
 
 - **A marketing group, starting with `Section` and `SectionHead`.** `Section` is one full-width block of a marketing page: it takes its rhythm from `--section-y` (link `landing.css`), centres its content at `--container-max`, `tone="band"` puts it on the brand ground, and `ruled` draws a hairline above it. `SectionHead` gives the block an eyebrow, a title and a lede, aligned to the start or the centre. Both take every word as props, so a page passes its own Indonesian and English.
-- **Button `shape="pill"`.** Rounds the ends fully and widens the side padding, for calls to action on marketing pages. Icon sizes become circles.
+- **Button `shape="pill"` and size `xl`.** `shape="pill"` rounds the ends fully and widens the side padding, for calls to action on marketing pages; icon sizes become circles. `size="xl"` is 52px high (`--control-h-xl`), for the hero call to action.
+- **Tokens from design-tokens 0.3.0.** Adds `--control-h-xl` (52px, 46px in compact density) and the feature-card tones `--tone-peach-*`, `--tone-cocoa-*` and `--tone-amber-*` (fill and on-fill, 4.5:1 locked upstream).
 - **Size budget raised by 5 KB** (npm total 1,428,562 bytes) for the marketing group.
 
 ## 1.25.0 — 2026-11-19
