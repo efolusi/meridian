@@ -2,9 +2,9 @@
 // storage: the efolusi_theme cookie, then localStorage, then the system setting.
 // The first line is themeInitScript() from components/marketing/ThemeToggle.jsx,
 // verbatim (tests/site-theme.test.mjs), so it runs before the first paint.
-(function(){try{var m=document.cookie.match(/(?:^|;\s*)efolusi_theme=([^;]+)/),p=m&&decodeURIComponent(m[1]);if(p!=='light'&&p!=='dark'&&p!=='system'){p=null;try{p=localStorage.getItem('efolusi_theme')}catch(e){}}if(p!=='light'&&p!=='dark')p=window.matchMedia&&matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light';document.documentElement.setAttribute('data-theme',p)}catch(e){}})();
+(function(){try{var m=document.cookie.match(/(?:^|;\s*)efolusi_theme=([^;]+)/),p=m&&decodeURIComponent(m[1]);if(p!=='light'&&p!=='dark'&&p!=='system'){p=null;try{p=localStorage.getItem('efolusi-theme')}catch(e){}}if(p!=='light'&&p!=='dark')p=window.matchMedia&&matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light';if(p==='dark')document.documentElement.setAttribute('data-theme','dark');else document.documentElement.removeAttribute('data-theme')}catch(e){}})();
 (function () {
-  var ORDER = ['system', 'light', 'dark'];
+  var ORDER = ['light', 'dark', 'system'];
   var LABELS = {
     en: { system: 'System theme', light: 'Light theme', dark: 'Dark theme', next: 'switch to' },
     id: { system: 'Tema sistem', light: 'Tema terang', dark: 'Tema gelap', next: 'ganti ke' }
@@ -20,7 +20,7 @@
     document.querySelectorAll('.site-theme').forEach(function (b) { b.setAttribute('aria-label', text); b.setAttribute('title', t[p]); });
   }
   window.EfSiteTheme = {
-    // Moves System -> Light -> Dark and returns the theme now shown.
+    // Moves Light -> Dark -> System and returns the theme now shown.
     cycle: function () {
       var next = ORDER[(ORDER.indexOf(pref()) + 1) % ORDER.length];
       ds().writeThemePreference(next);

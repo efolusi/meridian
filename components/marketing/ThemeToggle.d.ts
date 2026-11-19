@@ -8,12 +8,12 @@ export interface ThemeToggleProps extends Omit<React.ButtonHTMLAttributes<HTMLBu
   /** Called with the new preference after a click. */
   onChange?: (preference: ThemePreference) => void;
 }
-/** One button that cycles System, Light and Dark; follows the OS live while on System. */
+/** One button that cycles Light, Dark and System; follows the OS live while on System. */
 export declare const ThemeToggle: React.ForwardRefExoticComponent<ThemeToggleProps & React.RefAttributes<HTMLButtonElement>>;
 
-/** Cookie first, then localStorage, else `system`. */
+/** Cookie first, then the efolusi-theme localStorage mirror, else `system`. */
 export declare function readThemePreference(doc?: Document, storage?: Storage): ThemePreference;
-/** Writes the cookie (a year, SameSite=Lax, Secure on https, Domain=.efolusi.com on its hosts) and the localStorage mirror. */
+/** Writes the choice to the efolusi_theme cookie (a year, SameSite=Lax, Secure on https, Domain=.efolusi.com on its hosts) and the efolusi-theme localStorage mirror. */
 export declare function writeThemePreference(value: ThemePreference, doc?: Document, storage?: Storage): ThemePreference;
 export declare function resolveTheme(preference: ThemePreference, matchMedia?: (query: string) => MediaQueryList): 'light' | 'dark';
 export declare function applyTheme(preference: ThemePreference, doc?: Document, matchMedia?: (query: string) => MediaQueryList): 'light' | 'dark';

@@ -69,7 +69,7 @@ export function FeatureCardDemo() {
   );
 }
 
-// @demo ThemeToggle System, Light and Dark
+// @demo ThemeToggle Light, Dark and System
 export function ThemeToggleDemo() {
   const { ThemeToggle } = window.EfolusiDesignSystem_4ffc3d;
   return (
