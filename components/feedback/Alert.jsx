@@ -3,11 +3,11 @@ import React from 'react';
 import { injectEfCss } from '../forms/Button.jsx';
 
 const CSS = `
-.ef-alert{position:relative;display:grid;grid-template-columns:0 1fr;align-items:start;gap:2px 10px;width:100%;padding:12px 14px;border:1px solid var(--border-strong);border-radius:var(--radius-md);background:var(--surface-card);color:var(--text-primary)}
+.ef-alert{position:relative;display:grid;grid-template-columns:0 1fr;align-items:start;gap:var(--space-0-5) var(--space-3);width:100%;padding:var(--space-3) var(--space-4);border:1px solid var(--border-strong);border-radius:var(--radius-md);background:var(--surface-card);color:var(--text-primary)}
 .ef-alert:has(>[data-slot=icon]){grid-template-columns:auto 1fr}
-.ef-alert:has(>.ef-alert__action){grid-template-columns:0 1fr auto;column-gap:14px}
+.ef-alert:has(>.ef-alert__action){grid-template-columns:0 1fr auto;column-gap:var(--space-4)}
 .ef-alert:has(>[data-slot=icon]):has(>.ef-alert__action){grid-template-columns:auto 1fr auto}
-.ef-alert>[data-slot=icon]{grid-column:1;grid-row:1/3;margin-top:2px;color:currentColor}
+.ef-alert>[data-slot=icon]{grid-column:1;grid-row:1/3;margin-top:var(--space-0-5);color:currentColor}
 .ef-alert>.ef-alert__title,.ef-alert>.ef-alert__description{grid-column:2}
 .ef-alert--success{border-color:var(--success-300);color:var(--success-600)}
 .ef-alert--warning{border-color:var(--warning-300);color:var(--warning-600)}
@@ -15,8 +15,8 @@ const CSS = `
 .ef-alert__title{font-size:var(--text-md);font-weight:var(--weight-semibold);line-height:1.4;color:currentColor}
 .ef-alert__description{font-size:var(--text-sm);line-height:1.5;color:var(--text-secondary)}
 .ef-alert--danger>.ef-alert__description,.ef-alert--destructive>.ef-alert__description{color:var(--danger-700)}
-.ef-alert>.ef-alert__action{grid-column:3;grid-row:1/3;align-self:start;margin-top:-2px}
-@media (max-width:559px){.ef-alert:has(>.ef-alert__action){grid-template-columns:0 1fr}.ef-alert:has(>[data-slot=icon]):has(>.ef-alert__action){grid-template-columns:auto 1fr}.ef-alert>.ef-alert__action{grid-column:2;grid-row:auto;margin-top:8px}}
+.ef-alert>.ef-alert__action{grid-column:3;grid-row:1/3;align-self:start;margin-top:calc(-1 * var(--space-0-5))}
+@media (max-width:559px){.ef-alert:has(>.ef-alert__action){grid-template-columns:0 1fr}.ef-alert:has(>[data-slot=icon]):has(>.ef-alert__action){grid-template-columns:auto 1fr}.ef-alert>.ef-alert__action{grid-column:2;grid-row:auto;margin-top:var(--space-2)}}
 `;
 
 export const Alert = React.forwardRef(function Alert({

@@ -4,7 +4,7 @@ import { Icon } from '../icons/Icon.jsx';
 import { IconButton } from '../forms/IconButton.jsx';
 import { injectEfCss } from '../forms/Button.jsx';
 const CSS = `
-.ef-banner{display:flex;align-items:center;gap:10px;padding:9px 16px;font-size:var(--text-sm);border-bottom:1px solid var(--border-default)}
+.ef-banner{display:flex;align-items:center;gap:var(--space-3);padding:var(--space-2) var(--space-4);font-size:var(--text-sm);border-bottom:1px solid var(--border-default)}
 .ef-banner--neutral{background:var(--surface-sunken);color:var(--text-primary)}
 .ef-banner--brand{background:var(--cream-50);color:var(--cocoa-700)}
 .ef-banner--warning{background:var(--warning-100);color:var(--warning-600);border-color:var(--warning-300)}
@@ -12,7 +12,7 @@ const CSS = `
 .ef-banner__icon{display:inline-flex;flex:none}
 .ef-banner__text{flex:1;min-width:0}
 .ef-banner__text strong{font-weight:var(--weight-semibold)}
-.ef-banner__action{flex:none;display:inline-flex;min-height:24px;align-items:center;font-weight:var(--weight-semibold);font-size:var(--text-sm);color:inherit;text-decoration:underline;text-underline-offset:3px;background:none;border:none;cursor:pointer;font-family:var(--font-sans);padding:4px 0}
+.ef-banner__action{flex:none;display:inline-flex;min-height:24px;align-items:center;font-weight:var(--weight-semibold);font-size:var(--text-sm);color:inherit;text-decoration:underline;text-underline-offset:3px;background:none;border:none;cursor:pointer;font-family:var(--font-sans);padding:var(--space-1) 0}
 .ef-banner__action:focus-visible{outline:none;box-shadow:var(--focus-ring);border-radius:var(--radius-sm)}
 /* coarse pointers get the 44px touch target, like form controls do through --control-h-* */
 @media (pointer:coarse){.ef-banner__action{min-height:var(--tap-min)}}
