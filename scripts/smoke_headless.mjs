@@ -10,7 +10,8 @@
 // CI omits it and continues to use Playwright's pinned browser.
 //
 // With SHOTS=<dir> it additionally captures one PNG per example group per theme
-// (g-<file>-<light|dark>.png) after the render settles. Those are the inputs to
+// (g-<file>-<light|dark>.png) after the render settles, plus the forms group in
+// compact density and, on Chromium, on a coarse pointer (g-forms-<compact|coarse>-light.png). Those are the inputs to
 // scripts/check_visual.mjs. Capture runs with reduced motion and a fixed
 // viewport so the pixels are deterministic on a given platform; comparison is
 // only meaningful CI-to-CI, where the platform is constant.
@@ -29,6 +30,13 @@ if (!['chromium', 'firefox', 'webkit'].includes(ENGINE)) {
   process.exit(1);
 }
 const URL = `${BASE}/site/_smoke.html?dir=${DIRECTION}`;
+
+async function shootGroup(p, group, file) {
+  await p.evaluate(() => new Promise(r => requestAnimationFrame(() => requestAnimationFrame(r))));
+  const el = p.locator(`section[data-group="${group}"]`);
+  await settleForCapture(p);
+  await el.screenshot({ path: path.join(SHOTS, file), animations: 'disabled' });
+}
 
 const browser = await playwright[ENGINE].launch(EXECUTABLE_PATH ? { executablePath: EXECUTABLE_PATH } : {});
 const page = await browser.newPage({
@@ -104,6 +112,35 @@ if (SHOTS) {
       await el.screenshot({ path: path.join(SHOTS, `g-${group}-${theme}.png`), animations: 'disabled' });
       count++;
     }
+  }
+  // Density and pointer change control sizes through tokens: guard the forms group
+  // in compact density and on a coarse pointer (light theme only).
+  await page.evaluate(() => document.documentElement.setAttribute('data-theme', 'light'));
+  await page.evaluate(() => document.documentElement.setAttribute('data-density', 'compact'));
+  await shootGroup(page, 'forms', 'g-forms-compact-light.png');
+  await page.evaluate(() => document.documentElement.removeAttribute('data-density'));
+  count++;
+  if (ENGINE === 'chromium') {
+    // hasTouch makes Chromium report (pointer: coarse); it needs its own context.
+    const touch = await browser.newContext({ viewport: { width: 1280, height: 900 }, deviceScaleFactor: 1, reducedMotion: 'reduce', hasTouch: true });
+    const coarse = await touch.newPage();
+    await coarse.goto(URL, { waitUntil: 'load', timeout: 60000 });
+    await coarse.waitForFunction(() => document.documentElement.getAttribute('data-smoke') !== null, { timeout: 60000 });
+    if (!(await coarse.evaluate(() => matchMedia('(pointer: coarse)').matches))) {
+      console.error('smoke: the touch context does not report (pointer: coarse)');
+      await browser.close();
+      process.exit(1);
+    }
+    await coarse.evaluate(() => document.fonts.ready);
+    await coarse.waitForLoadState('networkidle', { timeout: 30000 }).catch(() => {});
+    await coarse.waitForFunction(() =>
+      [...document.querySelectorAll('section[data-group] [data-slot="icon"]')].every(s => s.querySelector('svg')),
+    null, { timeout: 30000 });
+    await coarse.addStyleTag({ content: CAPTURE_CSS });
+    await coarse.evaluate(() => document.documentElement.setAttribute('data-theme', 'light'));
+    await shootGroup(coarse, 'forms', 'g-forms-coarse-light.png');
+    await touch.close();
+    count++;
   }
   console.log(`smoke: ${count} group screenshots -> ${SHOTS}`);
 }
