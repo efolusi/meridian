@@ -1,4 +1,4 @@
-/* @ds-bundle: {"format":4,"namespace":"EfolusiDesignSystem_4ffc3d","components":[{"name":"AgentRun","sourcePath":"components/ai/AgentRun.jsx"},{"name":"BubbleGroup","sourcePath":"components/ai/Bubble.jsx"},{"name":"Bubble","sourcePath":"components/ai/Bubble.jsx"},{"name":"BubbleContent","sourcePath":"components/ai/Bubble.jsx"},{"name":"BubbleReactions","sourcePath":"components/ai/Bubble.jsx"},{"name":"ChatMessage","sourcePath":"components/ai/ChatMessage.jsx"},{"name":"Citation","sourcePath":"components/ai/Citation.jsx"},{"name":"SourceList","sourcePath":"components/ai/Citation.jsx"},{"name":"Confirmation","sourcePath":"components/ai/Confirmation.jsx"},{"name":"Conversation","sourcePath":"components/ai/Conversation.jsx"},{"name":"DocumentCard","sourcePath":"components/ai/DocumentCard.jsx"},{"name":"FeedbackBar","sourcePath":"components/ai/FeedbackBar.jsx"},{"name":"GeneratedImage","sourcePath":"components/ai/GeneratedImage.jsx"},{"name":"Marker","sourcePath":"components/ai/Marker.jsx"},{"name":"MarkerIcon","sourcePath":"components/ai/Marker.jsx"},{"name":"MarkerContent","sourcePath":"components/ai/Marker.jsx"},{"name":"Message","sourcePath":"components/ai/Message.jsx"},{"name":"MessageGroup","sourcePath":"components/ai/Message.jsx"},{"name":"MessageAvatar","sourcePath":"components/ai/Message.jsx"},{"name":"MessageContent","sourcePath":"components/ai/Message.jsx"},{"name":"MessageHeader","sourcePath":"components/ai/Message.jsx"},{"name":"MessageFooter","sourcePath":"components/ai/Message.jsx"},{"name":"MessageScrollerProvider","sourcePath":"components/ai/MessageScroller.jsx"},{"name":"MessageScroller","sourcePath":"components/ai/MessageScroller.jsx"},{"name":"MessageScrollerViewport","sourcePath":"components/ai/MessageScroller.jsx"},{"name":"MessageScrollerContent","sourcePath":"components/ai/MessageScroller.jsx"},{"name":"MessageScrollerItem","sourcePath":"components/ai/MessageScroller.jsx"},{"name":"MessageScrollerButton","sourcePath":"components/ai/MessageScroller.jsx"},{"name":"ModelSelector","sourcePath":"components/ai/ModelSelector.jsx"},{"name":"Player","sourcePath":"components/ai/Player.jsx"},{"name":"PromptComposer","sourcePath":"components/ai/PromptComposer.jsx"},{"name":"PromptSteps","sourcePath":"components/ai/PromptSteps.jsx"},{"name":"Reasoning","sourcePath":"components/ai/Reasoning.jsx"},{"name":"RichComposer","sourcePath":"components/ai/RichComposer.jsx"},{"name":"Sandbox","sourcePath":"components/ai/Sandbox.jsx"},{"name":"SelectionQuote","sourcePath":"components/ai/SelectionQuote.jsx"},{"name":"SourceCard","sourcePath":"components/ai/SourceCard.jsx"},{"name":"Suggestions","sourcePath":"components/ai/Suggestions.jsx"},{"name":"Task","sourcePath":"components/ai/Task.jsx"},{"name":"Todo","sourcePath":"components/ai/Todo.jsx"},{"name":"ToolCall","sourcePath":"components/ai/ToolCall.jsx"},{"name":"Transcript","sourcePath":"components/ai/Transcript.jsx"},{"name":"UsageMeter","sourcePath":"components/ai/UsageMeter.jsx"},{"name":"WebPreview","sourcePath":"components/ai/WebPreview.jsx"},{"name":"CodeBlock","sourcePath":"components/code/CodeBlock.jsx"},{"name":"Console","sourcePath":"components/code/Console.jsx"},{"name":"CopyField","sourcePath":"components/code/CopyField.jsx"},{"name":"Diff","sourcePath":"components/code/Diff.jsx"},{"name":"EnvList","sourcePath":"components/code/EnvList.jsx"},{"name":"Exception","sourcePath":"components/code/Exception.jsx"},{"name":"Terminal","sourcePath":"components/code/Terminal.jsx"},{"name":"BarChart","sourcePath":"components/data/BarChart.jsx"},{"name":"ChartStyle","sourcePath":"components/data/Chart.jsx"},{"name":"ChartContainer","sourcePath":"components/data/Chart.jsx"},{"name":"ChartTooltip","sourcePath":"components/data/Chart.jsx"},{"name":"ChartTooltipContent","sourcePath":"components/data/Chart.jsx"},{"name":"ChartLegend","sourcePath":"components/data/Chart.jsx"},{"name":"ChartLegendContent","sourcePath":"components/data/Chart.jsx"},{"name":"DonutChart","sourcePath":"components/data/DonutChart.jsx"},{"name":"Empty","sourcePath":"components/data/EmptyState.jsx"},{"name":"EmptyHeader","sourcePath":"components/data/EmptyState.jsx"},{"name":"EmptyMedia","sourcePath":"components/data/EmptyState.jsx"},{"name":"EmptyTitle","sourcePath":"components/data/EmptyState.jsx"},{"name":"EmptyDescription","sourcePath":"components/data/EmptyState.jsx"},{"name":"EmptyContent","sourcePath":"components/data/EmptyState.jsx"},{"name":"KeyValueList","sourcePath":"components/data/KeyValueList.jsx"},{"name":"LineChart","sourcePath":"components/data/LineChart.jsx"},{"name":"Skeleton","sourcePath":"components/data/Skeleton.jsx"},{"name":"Sparkline","sourcePath":"components/data/Sparkline.jsx"},{"name":"Stat","sourcePath":"components/data/Stat.jsx"},{"name":"StatusDot","sourcePath":"components/data/StatusDot.jsx"},{"name":"Table","sourcePath":"components/data/Table.jsx"},{"name":"TableHeader","sourcePath":"components/data/Table.jsx"},{"name":"TableBody","sourcePath":"components/data/Table.jsx"},{"name":"TableFooter","sourcePath":"components/data/Table.jsx"},{"name":"TableRow","sourcePath":"components/data/Table.jsx"},{"name":"TableHead","sourcePath":"components/data/Table.jsx"},{"name":"TableCell","sourcePath":"components/data/Table.jsx"},{"name":"TableCaption","sourcePath":"components/data/Table.jsx"},{"name":"CalendarDayButton","sourcePath":"components/dates/Calendar.jsx"},{"name":"Calendar","sourcePath":"components/dates/Calendar.jsx"},{"name":"TimePicker","sourcePath":"components/dates/TimePicker.jsx"},{"name":"Accordion","sourcePath":"components/display/Accordion.jsx"},{"name":"AccordionItem","sourcePath":"components/display/Accordion.jsx"},{"name":"AccordionTrigger","sourcePath":"components/display/Accordion.jsx"},{"name":"AccordionContent","sourcePath":"components/display/Accordion.jsx"},{"name":"AspectRatio","sourcePath":"components/display/AspectRatio.jsx"},{"name":"Avatar","sourcePath":"components/display/Avatar.jsx"},{"name":"AvatarImage","sourcePath":"components/display/Avatar.jsx"},{"name":"AvatarFallback","sourcePath":"components/display/Avatar.jsx"},{"name":"AvatarBadge","sourcePath":"components/display/Avatar.jsx"},{"name":"AvatarGroup","sourcePath":"components/display/Avatar.jsx"},{"name":"AvatarGroupCount","sourcePath":"components/display/Avatar.jsx"},{"name":"Badge","sourcePath":"components/display/Badge.jsx"},{"name":"CardHeader","sourcePath":"components/display/Card.jsx"},{"name":"CardTitle","sourcePath":"components/display/Card.jsx"},{"name":"CardDescription","sourcePath":"components/display/Card.jsx"},{"name":"CardAction","sourcePath":"components/display/Card.jsx"},{"name":"CardContent","sourcePath":"components/display/Card.jsx"},{"name":"CardFooter","sourcePath":"components/display/Card.jsx"},{"name":"Card","sourcePath":"components/display/Card.jsx"},{"name":"Carousel","sourcePath":"components/display/Carousel.jsx"},{"name":"CarouselContent","sourcePath":"components/display/Carousel.jsx"},{"name":"CarouselItem","sourcePath":"components/display/Carousel.jsx"},{"name":"CarouselPrevious","sourcePath":"components/display/Carousel.jsx"},{"name":"CarouselNext","sourcePath":"components/display/Carousel.jsx"},{"name":"Collapsible","sourcePath":"components/display/Collapsible.jsx"},{"name":"CollapsibleTrigger","sourcePath":"components/display/Collapsible.jsx"},{"name":"CollapsibleContent","sourcePath":"components/display/Collapsible.jsx"},{"name":"DirectionProvider","sourcePath":"components/display/Direction.jsx"},{"name":"Divider","sourcePath":"components/display/Divider.jsx"},{"name":"ItemGroup","sourcePath":"components/display/Item.jsx"},{"name":"ItemSeparator","sourcePath":"components/display/Item.jsx"},{"name":"Item","sourcePath":"components/display/Item.jsx"},{"name":"ItemMedia","sourcePath":"components/display/Item.jsx"},{"name":"ItemContent","sourcePath":"components/display/Item.jsx"},{"name":"ItemTitle","sourcePath":"components/display/Item.jsx"},{"name":"ItemDescription","sourcePath":"components/display/Item.jsx"},{"name":"ItemActions","sourcePath":"components/display/Item.jsx"},{"name":"ItemHeader","sourcePath":"components/display/Item.jsx"},{"name":"ItemFooter","sourcePath":"components/display/Item.jsx"},{"name":"Kbd","sourcePath":"components/display/Kbd.jsx"},{"name":"KbdGroup","sourcePath":"components/display/Kbd.jsx"},{"name":"Link","sourcePath":"components/display/Link.jsx"},{"name":"ResizablePanelGroup","sourcePath":"components/display/Resizable.jsx"},{"name":"ResizablePanel","sourcePath":"components/display/Resizable.jsx"},{"name":"ResizableHandle","sourcePath":"components/display/Resizable.jsx"},{"name":"ScrollArea","sourcePath":"components/display/ScrollArea.jsx"},{"name":"ScrollBar","sourcePath":"components/display/ScrollArea.jsx"},{"name":"Separator","sourcePath":"components/display/Separator.jsx"},{"name":"Tag","sourcePath":"components/display/Tag.jsx"},{"name":"Timeline","sourcePath":"components/display/Timeline.jsx"},{"name":"Toolbar","sourcePath":"components/display/Toolbar.jsx"},{"name":"TreeList","sourcePath":"components/display/TreeList.jsx"},{"name":"Alert","sourcePath":"components/feedback/Alert.jsx"},{"name":"AlertTitle","sourcePath":"components/feedback/Alert.jsx"},{"name":"AlertDescription","sourcePath":"components/feedback/Alert.jsx"},{"name":"AlertAction","sourcePath":"components/feedback/Alert.jsx"},{"name":"AlertDialog","sourcePath":"components/feedback/AlertDialog.jsx"},{"name":"AlertDialogTrigger","sourcePath":"components/feedback/AlertDialog.jsx"},{"name":"AlertDialogPortal","sourcePath":"components/feedback/AlertDialog.jsx"},{"name":"AlertDialogOverlay","sourcePath":"components/feedback/AlertDialog.jsx"},{"name":"AlertDialogContent","sourcePath":"components/feedback/AlertDialog.jsx"},{"name":"AlertDialogHeader","sourcePath":"components/feedback/AlertDialog.jsx"},{"name":"AlertDialogFooter","sourcePath":"components/feedback/AlertDialog.jsx"},{"name":"AlertDialogMedia","sourcePath":"components/feedback/AlertDialog.jsx"},{"name":"AlertDialogTitle","sourcePath":"components/feedback/AlertDialog.jsx"},{"name":"AlertDialogDescription","sourcePath":"components/feedback/AlertDialog.jsx"},{"name":"AlertDialogCancel","sourcePath":"components/feedback/AlertDialog.jsx"},{"name":"AlertDialogAction","sourcePath":"components/feedback/AlertDialog.jsx"},{"name":"Banner","sourcePath":"components/feedback/Banner.jsx"},{"name":"ConfirmDialog","sourcePath":"components/feedback/ConfirmDialog.jsx"},{"name":"Dialog","sourcePath":"components/feedback/Dialog.jsx"},{"name":"DialogTrigger","sourcePath":"components/feedback/Dialog.jsx"},{"name":"DialogPortal","sourcePath":"components/feedback/Dialog.jsx"},{"name":"DialogOverlay","sourcePath":"components/feedback/Dialog.jsx"},{"name":"DialogClose","sourcePath":"components/feedback/Dialog.jsx"},{"name":"DialogContent","sourcePath":"components/feedback/Dialog.jsx"},{"name":"DialogHeader","sourcePath":"components/feedback/Dialog.jsx"},{"name":"DialogFooter","sourcePath":"components/feedback/Dialog.jsx"},{"name":"DialogTitle","sourcePath":"components/feedback/Dialog.jsx"},{"name":"DialogDescription","sourcePath":"components/feedback/Dialog.jsx"},{"name":"Loader","sourcePath":"components/feedback/Loader.jsx"},{"name":"Progress","sourcePath":"components/feedback/Progress.jsx"},{"name":"Spinner","sourcePath":"components/feedback/Spinner.jsx"},{"name":"Toaster","sourcePath":"components/feedback/Toast.jsx"},{"name":"Tooltip","sourcePath":"components/feedback/Tooltip.jsx"},{"name":"TooltipProvider","sourcePath":"components/feedback/Tooltip.jsx"},{"name":"TooltipTrigger","sourcePath":"components/feedback/Tooltip.jsx"},{"name":"TooltipContent","sourcePath":"components/feedback/Tooltip.jsx"},{"name":"Attachment","sourcePath":"components/files/Attachment.jsx"},{"name":"AttachmentMedia","sourcePath":"components/files/Attachment.jsx"},{"name":"AttachmentContent","sourcePath":"components/files/Attachment.jsx"},{"name":"AttachmentTitle","sourcePath":"components/files/Attachment.jsx"},{"name":"AttachmentDescription","sourcePath":"components/files/Attachment.jsx"},{"name":"AttachmentActions","sourcePath":"components/files/Attachment.jsx"},{"name":"AttachmentAction","sourcePath":"components/files/Attachment.jsx"},{"name":"AttachmentTrigger","sourcePath":"components/files/Attachment.jsx"},{"name":"AttachmentGroup","sourcePath":"components/files/Attachment.jsx"},{"name":"FileDrop","sourcePath":"components/files/FileDrop.jsx"},{"name":"FileTile","sourcePath":"components/files/FileTile.jsx"},{"name":"FileTypeIcon","sourcePath":"components/files/FileTypeIcon.jsx"},{"name":"PaymentCard","sourcePath":"components/finance/PaymentCard.jsx"},{"name":"Button","sourcePath":"components/forms/Button.jsx"},{"name":"ButtonGroup","sourcePath":"components/forms/ButtonGroup.jsx"},{"name":"ButtonGroupText","sourcePath":"components/forms/ButtonGroup.jsx"},{"name":"ButtonGroupSeparator","sourcePath":"components/forms/ButtonGroup.jsx"},{"name":"ButtonTile","sourcePath":"components/forms/ButtonTile.jsx"},{"name":"ButtonTileGroup","sourcePath":"components/forms/ButtonTile.jsx"},{"name":"Checkbox","sourcePath":"components/forms/Checkbox.jsx"},{"name":"Combobox","sourcePath":"components/forms/Combobox.jsx"},{"name":"ComboboxValue","sourcePath":"components/forms/Combobox.jsx"},{"name":"ComboboxTrigger","sourcePath":"components/forms/Combobox.jsx"},{"name":"ComboboxClear","sourcePath":"components/forms/Combobox.jsx"},{"name":"ComboboxInput","sourcePath":"components/forms/Combobox.jsx"},{"name":"ComboboxContent","sourcePath":"components/forms/Combobox.jsx"},{"name":"ComboboxList","sourcePath":"components/forms/Combobox.jsx"},{"name":"ComboboxItem","sourcePath":"components/forms/Combobox.jsx"},{"name":"ComboboxGroup","sourcePath":"components/forms/Combobox.jsx"},{"name":"ComboboxLabel","sourcePath":"components/forms/Combobox.jsx"},{"name":"ComboboxCollection","sourcePath":"components/forms/Combobox.jsx"},{"name":"ComboboxEmpty","sourcePath":"components/forms/Combobox.jsx"},{"name":"ComboboxSeparator","sourcePath":"components/forms/Combobox.jsx"},{"name":"ComboboxChips","sourcePath":"components/forms/Combobox.jsx"},{"name":"ComboboxChip","sourcePath":"components/forms/Combobox.jsx"},{"name":"ComboboxChipsInput","sourcePath":"components/forms/Combobox.jsx"},{"name":"Field","sourcePath":"components/forms/Field.jsx"},{"name":"FieldSet","sourcePath":"components/forms/Field.jsx"},{"name":"FieldGroup","sourcePath":"components/forms/Field.jsx"},{"name":"FieldContent","sourcePath":"components/forms/Field.jsx"},{"name":"FieldLabel","sourcePath":"components/forms/Field.jsx"},{"name":"FieldTitle","sourcePath":"components/forms/Field.jsx"},{"name":"FieldDescription","sourcePath":"components/forms/Field.jsx"},{"name":"FieldLegend","sourcePath":"components/forms/Field.jsx"},{"name":"FieldSeparator","sourcePath":"components/forms/Field.jsx"},{"name":"FieldError","sourcePath":"components/forms/Field.jsx"},{"name":"IconButton","sourcePath":"components/forms/IconButton.jsx"},{"name":"Input","sourcePath":"components/forms/Input.jsx"},{"name":"InputGroup","sourcePath":"components/forms/InputGroup.jsx"},{"name":"InputGroupAddon","sourcePath":"components/forms/InputGroup.jsx"},{"name":"InputGroupButton","sourcePath":"components/forms/InputGroup.jsx"},{"name":"InputGroupInput","sourcePath":"components/forms/InputGroup.jsx"},{"name":"InputGroupTextarea","sourcePath":"components/forms/InputGroup.jsx"},{"name":"InputGroupText","sourcePath":"components/forms/InputGroup.jsx"},{"name":"InputOTP","sourcePath":"components/forms/InputOTP.jsx"},{"name":"InputOTPGroup","sourcePath":"components/forms/InputOTP.jsx"},{"name":"InputOTPSlot","sourcePath":"components/forms/InputOTP.jsx"},{"name":"InputOTPSeparator","sourcePath":"components/forms/InputOTP.jsx"},{"name":"Label","sourcePath":"components/forms/Label.jsx"},{"name":"NativeSelect","sourcePath":"components/forms/NativeSelect.jsx"},{"name":"NativeSelectOption","sourcePath":"components/forms/NativeSelect.jsx"},{"name":"NativeSelectOptGroup","sourcePath":"components/forms/NativeSelect.jsx"},{"name":"NumberInput","sourcePath":"components/forms/NumberInput.jsx"},{"name":"Questionnaire","sourcePath":"components/forms/Questionnaire.jsx"},{"name":"QuestionnaireProgress","sourcePath":"components/forms/Questionnaire.jsx"},{"name":"QuestionnaireItem","sourcePath":"components/forms/Questionnaire.jsx"},{"name":"QuestionnaireTitle","sourcePath":"components/forms/Questionnaire.jsx"},{"name":"QuestionnaireDescription","sourcePath":"components/forms/Questionnaire.jsx"},{"name":"QuestionnaireChoices","sourcePath":"components/forms/Questionnaire.jsx"},{"name":"QuestionnaireChoice","sourcePath":"components/forms/Questionnaire.jsx"},{"name":"QuestionnaireInput","sourcePath":"components/forms/Questionnaire.jsx"},{"name":"QuestionnaireError","sourcePath":"components/forms/Questionnaire.jsx"},{"name":"QuestionnaireActions","sourcePath":"components/forms/Questionnaire.jsx"},{"name":"QuestionnairePrevious","sourcePath":"components/forms/Questionnaire.jsx"},{"name":"QuestionnaireSkip","sourcePath":"components/forms/Questionnaire.jsx"},{"name":"QuestionnaireNext","sourcePath":"components/forms/Questionnaire.jsx"},{"name":"QuestionnaireSubmit","sourcePath":"components/forms/Questionnaire.jsx"},{"name":"RadioGroup","sourcePath":"components/forms/Radio.jsx"},{"name":"RadioGroupItem","sourcePath":"components/forms/Radio.jsx"},{"name":"Radio","sourcePath":"components/forms/Radio.jsx"},{"name":"Select","sourcePath":"components/forms/Select.jsx"},{"name":"SelectTrigger","sourcePath":"components/forms/Select.jsx"},{"name":"SelectValue","sourcePath":"components/forms/Select.jsx"},{"name":"SelectContent","sourcePath":"components/forms/Select.jsx"},{"name":"SelectGroup","sourcePath":"components/forms/Select.jsx"},{"name":"SelectLabel","sourcePath":"components/forms/Select.jsx"},{"name":"SelectSeparator","sourcePath":"components/forms/Select.jsx"},{"name":"SelectItem","sourcePath":"components/forms/Select.jsx"},{"name":"Slider","sourcePath":"components/forms/Slider.jsx"},{"name":"Switch","sourcePath":"components/forms/Switch.jsx"},{"name":"Textarea","sourcePath":"components/forms/Textarea.jsx"},{"name":"Toggle","sourcePath":"components/forms/Toggle.jsx"},{"name":"ToggleGroup","sourcePath":"components/forms/Toggle.jsx"},{"name":"ToggleGroupItem","sourcePath":"components/forms/Toggle.jsx"},{"name":"Icon","sourcePath":"components/icons/Icon.jsx"},{"name":"Breadcrumb","sourcePath":"components/navigation/Breadcrumbs.jsx"},{"name":"BreadcrumbList","sourcePath":"components/navigation/Breadcrumbs.jsx"},{"name":"BreadcrumbItem","sourcePath":"components/navigation/Breadcrumbs.jsx"},{"name":"BreadcrumbLink","sourcePath":"components/navigation/Breadcrumbs.jsx"},{"name":"BreadcrumbPage","sourcePath":"components/navigation/Breadcrumbs.jsx"},{"name":"BreadcrumbSeparator","sourcePath":"components/navigation/Breadcrumbs.jsx"},{"name":"BreadcrumbEllipsis","sourcePath":"components/navigation/Breadcrumbs.jsx"},{"name":"Menubar","sourcePath":"components/navigation/Menubar.jsx"},{"name":"MenubarMenu","sourcePath":"components/navigation/Menubar.jsx"},{"name":"MenubarTrigger","sourcePath":"components/navigation/Menubar.jsx"},{"name":"MenubarContent","sourcePath":"components/navigation/Menubar.jsx"},{"name":"MenubarPortal","sourcePath":"components/navigation/Menubar.jsx"},{"name":"MenubarGroup","sourcePath":"components/navigation/Menubar.jsx"},{"name":"MenubarRadioGroup","sourcePath":"components/navigation/Menubar.jsx"},{"name":"MenubarLabel","sourcePath":"components/navigation/Menubar.jsx"},{"name":"MenubarSeparator","sourcePath":"components/navigation/Menubar.jsx"},{"name":"MenubarShortcut","sourcePath":"components/navigation/Menubar.jsx"},{"name":"MenubarItem","sourcePath":"components/navigation/Menubar.jsx"},{"name":"MenubarCheckboxItem","sourcePath":"components/navigation/Menubar.jsx"},{"name":"MenubarRadioItem","sourcePath":"components/navigation/Menubar.jsx"},{"name":"MenubarSub","sourcePath":"components/navigation/Menubar.jsx"},{"name":"MenubarSubTrigger","sourcePath":"components/navigation/Menubar.jsx"},{"name":"MenubarSubContent","sourcePath":"components/navigation/Menubar.jsx"},{"name":"NavigationMenu","sourcePath":"components/navigation/NavigationMenu.jsx"},{"name":"NavigationMenuList","sourcePath":"components/navigation/NavigationMenu.jsx"},{"name":"NavigationMenuItem","sourcePath":"components/navigation/NavigationMenu.jsx"},{"name":"NavigationMenuTrigger","sourcePath":"components/navigation/NavigationMenu.jsx"},{"name":"NavigationMenuContent","sourcePath":"components/navigation/NavigationMenu.jsx"},{"name":"NavigationMenuLink","sourcePath":"components/navigation/NavigationMenu.jsx"},{"name":"NavigationMenuIndicator","sourcePath":"components/navigation/NavigationMenu.jsx"},{"name":"NavigationMenuViewport","sourcePath":"components/navigation/NavigationMenu.jsx"},{"name":"PageControl","sourcePath":"components/navigation/PageControl.jsx"},{"name":"Pagination","sourcePath":"components/navigation/Pagination.jsx"},{"name":"PaginationContent","sourcePath":"components/navigation/Pagination.jsx"},{"name":"PaginationItem","sourcePath":"components/navigation/Pagination.jsx"},{"name":"PaginationLink","sourcePath":"components/navigation/Pagination.jsx"},{"name":"PaginationPrevious","sourcePath":"components/navigation/Pagination.jsx"},{"name":"PaginationNext","sourcePath":"components/navigation/Pagination.jsx"},{"name":"PaginationEllipsis","sourcePath":"components/navigation/Pagination.jsx"},{"name":"SegmentedControl","sourcePath":"components/navigation/SegmentedControl.jsx"},{"name":"SideNav","sourcePath":"components/navigation/SideNav.jsx"},{"name":"SidebarProvider","sourcePath":"components/navigation/Sidebar.jsx"},{"name":"Sidebar","sourcePath":"components/navigation/Sidebar.jsx"},{"name":"SidebarTrigger","sourcePath":"components/navigation/Sidebar.jsx"},{"name":"SidebarRail","sourcePath":"components/navigation/Sidebar.jsx"},{"name":"SidebarInset","sourcePath":"components/navigation/Sidebar.jsx"},{"name":"SidebarHeader","sourcePath":"components/navigation/Sidebar.jsx"},{"name":"SidebarFooter","sourcePath":"components/navigation/Sidebar.jsx"},{"name":"SidebarContent","sourcePath":"components/navigation/Sidebar.jsx"},{"name":"SidebarGroup","sourcePath":"components/navigation/Sidebar.jsx"},{"name":"SidebarGroupContent","sourcePath":"components/navigation/Sidebar.jsx"},{"name":"SidebarMenu","sourcePath":"components/navigation/Sidebar.jsx"},{"name":"SidebarMenuItem","sourcePath":"components/navigation/Sidebar.jsx"},{"name":"SidebarMenuSub","sourcePath":"components/navigation/Sidebar.jsx"},{"name":"SidebarMenuSubItem","sourcePath":"components/navigation/Sidebar.jsx"},{"name":"SidebarInput","sourcePath":"components/navigation/Sidebar.jsx"},{"name":"SidebarSeparator","sourcePath":"components/navigation/Sidebar.jsx"},{"name":"SidebarGroupLabel","sourcePath":"components/navigation/Sidebar.jsx"},{"name":"SidebarGroupAction","sourcePath":"components/navigation/Sidebar.jsx"},{"name":"SidebarMenuButton","sourcePath":"components/navigation/Sidebar.jsx"},{"name":"SidebarMenuAction","sourcePath":"components/navigation/Sidebar.jsx"},{"name":"SidebarMenuBadge","sourcePath":"components/navigation/Sidebar.jsx"},{"name":"SidebarMenuSubButton","sourcePath":"components/navigation/Sidebar.jsx"},{"name":"SidebarMenuSkeleton","sourcePath":"components/navigation/Sidebar.jsx"},{"name":"SkipLink","sourcePath":"components/navigation/SkipLink.jsx"},{"name":"Steps","sourcePath":"components/navigation/Steps.jsx"},{"name":"Tabs","sourcePath":"components/navigation/Tabs.jsx"},{"name":"TabsList","sourcePath":"components/navigation/Tabs.jsx"},{"name":"TabsTrigger","sourcePath":"components/navigation/Tabs.jsx"},{"name":"TabsContent","sourcePath":"components/navigation/Tabs.jsx"},{"name":"TopNav","sourcePath":"components/navigation/TopNav.jsx"},{"name":"Command","sourcePath":"components/overlay/Command.jsx"},{"name":"CommandDialog","sourcePath":"components/overlay/Command.jsx"},{"name":"CommandInput","sourcePath":"components/overlay/Command.jsx"},{"name":"CommandList","sourcePath":"components/overlay/Command.jsx"},{"name":"CommandEmpty","sourcePath":"components/overlay/Command.jsx"},{"name":"CommandGroup","sourcePath":"components/overlay/Command.jsx"},{"name":"CommandItem","sourcePath":"components/overlay/Command.jsx"},{"name":"CommandShortcut","sourcePath":"components/overlay/Command.jsx"},{"name":"CommandSeparator","sourcePath":"components/overlay/Command.jsx"},{"name":"ContextMenu","sourcePath":"components/overlay/ContextMenu.jsx"},{"name":"ContextMenuTrigger","sourcePath":"components/overlay/ContextMenu.jsx"},{"name":"ContextMenuPortal","sourcePath":"components/overlay/ContextMenu.jsx"},{"name":"ContextMenuContent","sourcePath":"components/overlay/ContextMenu.jsx"},{"name":"ContextMenuGroup","sourcePath":"components/overlay/ContextMenu.jsx"},{"name":"ContextMenuLabel","sourcePath":"components/overlay/ContextMenu.jsx"},{"name":"ContextMenuSeparator","sourcePath":"components/overlay/ContextMenu.jsx"},{"name":"ContextMenuShortcut","sourcePath":"components/overlay/ContextMenu.jsx"},{"name":"ContextMenuItem","sourcePath":"components/overlay/ContextMenu.jsx"},{"name":"ContextMenuCheckboxItem","sourcePath":"components/overlay/ContextMenu.jsx"},{"name":"ContextMenuRadioGroup","sourcePath":"components/overlay/ContextMenu.jsx"},{"name":"ContextMenuRadioItem","sourcePath":"components/overlay/ContextMenu.jsx"},{"name":"ContextMenuSub","sourcePath":"components/overlay/ContextMenu.jsx"},{"name":"ContextMenuSubTrigger","sourcePath":"components/overlay/ContextMenu.jsx"},{"name":"ContextMenuSubContent","sourcePath":"components/overlay/ContextMenu.jsx"},{"name":"Drawer","sourcePath":"components/overlay/Drawer.jsx"},{"name":"DrawerTrigger","sourcePath":"components/overlay/Drawer.jsx"},{"name":"DrawerPortal","sourcePath":"components/overlay/Drawer.jsx"},{"name":"DrawerClose","sourcePath":"components/overlay/Drawer.jsx"},{"name":"DrawerOverlay","sourcePath":"components/overlay/Drawer.jsx"},{"name":"DrawerContent","sourcePath":"components/overlay/Drawer.jsx"},{"name":"DrawerHeader","sourcePath":"components/overlay/Drawer.jsx"},{"name":"DrawerFooter","sourcePath":"components/overlay/Drawer.jsx"},{"name":"DrawerTitle","sourcePath":"components/overlay/Drawer.jsx"},{"name":"DrawerDescription","sourcePath":"components/overlay/Drawer.jsx"},{"name":"DropdownMenu","sourcePath":"components/overlay/DropdownMenu.jsx"},{"name":"DropdownMenuTrigger","sourcePath":"components/overlay/DropdownMenu.jsx"},{"name":"DropdownMenuPortal","sourcePath":"components/overlay/DropdownMenu.jsx"},{"name":"DropdownMenuContent","sourcePath":"components/overlay/DropdownMenu.jsx"},{"name":"DropdownMenuGroup","sourcePath":"components/overlay/DropdownMenu.jsx"},{"name":"DropdownMenuLabel","sourcePath":"components/overlay/DropdownMenu.jsx"},{"name":"DropdownMenuSeparator","sourcePath":"components/overlay/DropdownMenu.jsx"},{"name":"DropdownMenuShortcut","sourcePath":"components/overlay/DropdownMenu.jsx"},{"name":"DropdownMenuItem","sourcePath":"components/overlay/DropdownMenu.jsx"},{"name":"DropdownMenuCheckboxItem","sourcePath":"components/overlay/DropdownMenu.jsx"},{"name":"DropdownMenuRadioGroup","sourcePath":"components/overlay/DropdownMenu.jsx"},{"name":"DropdownMenuRadioItem","sourcePath":"components/overlay/DropdownMenu.jsx"},{"name":"DropdownMenuSub","sourcePath":"components/overlay/DropdownMenu.jsx"},{"name":"DropdownMenuSubTrigger","sourcePath":"components/overlay/DropdownMenu.jsx"},{"name":"DropdownMenuSubContent","sourcePath":"components/overlay/DropdownMenu.jsx"},{"name":"HoverCard","sourcePath":"components/overlay/HoverCard.jsx"},{"name":"HoverCardTrigger","sourcePath":"components/overlay/HoverCard.jsx"},{"name":"HoverCardContent","sourcePath":"components/overlay/HoverCard.jsx"},{"name":"Popover","sourcePath":"components/overlay/Popover.jsx"},{"name":"PopoverTrigger","sourcePath":"components/overlay/Popover.jsx"},{"name":"PopoverContent","sourcePath":"components/overlay/Popover.jsx"},{"name":"PopoverHeader","sourcePath":"components/overlay/Popover.jsx"},{"name":"PopoverTitle","sourcePath":"components/overlay/Popover.jsx"},{"name":"PopoverDescription","sourcePath":"components/overlay/Popover.jsx"},{"name":"Portal","sourcePath":"components/overlay/Portal.jsx"},{"name":"Sheet","sourcePath":"components/overlay/Sheet.jsx"},{"name":"SheetTrigger","sourcePath":"components/overlay/Sheet.jsx"},{"name":"SheetClose","sourcePath":"components/overlay/Sheet.jsx"},{"name":"SheetContent","sourcePath":"components/overlay/Sheet.jsx"},{"name":"SheetHeader","sourcePath":"components/overlay/Sheet.jsx"},{"name":"SheetFooter","sourcePath":"components/overlay/Sheet.jsx"},{"name":"SheetTitle","sourcePath":"components/overlay/Sheet.jsx"},{"name":"SheetDescription","sourcePath":"components/overlay/Sheet.jsx"}],"publicHelpers":[{"name":"markerVariants","sourcePath":"components/ai/Marker.jsx"},{"name":"useMessageScroller","sourcePath":"components/ai/MessageScroller.jsx"},{"name":"useMessageScrollerVisibility","sourcePath":"components/ai/MessageScroller.jsx"},{"name":"useMessageScrollerScrollable","sourcePath":"components/ai/MessageScroller.jsx"},{"name":"useChart","sourcePath":"components/data/Chart.jsx"},{"name":"badgeVariants","sourcePath":"components/display/Badge.jsx"},{"name":"useDirection","sourcePath":"components/display/Direction.jsx"},{"name":"toast","sourcePath":"components/feedback/Toast.jsx"},{"name":"buttonVariants","sourcePath":"components/forms/Button.jsx"},{"name":"buttonGroupVariants","sourcePath":"components/forms/ButtonGroup.jsx"},{"name":"useComboboxAnchor","sourcePath":"components/forms/Combobox.jsx"},{"name":"toggleVariants","sourcePath":"components/forms/Toggle.jsx"},{"name":"navigationMenuTriggerStyle","sourcePath":"components/navigation/NavigationMenu.jsx"},{"name":"useSidebar","sourcePath":"components/navigation/Sidebar.jsx"}],"sourceHashes":{"components/ai/AgentRun.jsx":"0df7eac8f8ef","components/ai/Bubble.jsx":"2b8c0b5e6610","components/ai/ChatMessage.jsx":"7e09355736b0","components/ai/Citation.jsx":"102e8beb25c3","components/ai/Confirmation.jsx":"eccfc12d612b","components/ai/Conversation.jsx":"887838aa767c","components/ai/DocumentCard.jsx":"6f9484fdb1de","components/ai/FeedbackBar.jsx":"6f35bef6b1e5","components/ai/GeneratedImage.jsx":"457c7eccda2a","components/ai/Marker.jsx":"858cf553d63d","components/ai/Message.jsx":"7e2ad1183a44","components/ai/MessageScroller.jsx":"bc1e489d5482","components/ai/ModelSelector.jsx":"380bfb68d095","components/ai/Player.jsx":"df763e066c3a","components/ai/PromptComposer.jsx":"812269dc717b","components/ai/PromptSteps.jsx":"bb40c55a31f6","components/ai/Reasoning.jsx":"836d62f70dea","components/ai/RichComposer.jsx":"ce0528b27407","components/ai/Sandbox.jsx":"00876e416f5c","components/ai/SelectionQuote.jsx":"75f7f7aaf3df","components/ai/SourceCard.jsx":"1e0ab77e068c","components/ai/Suggestions.jsx":"6381ed8582d4","components/ai/Task.jsx":"0e0471975e8b","components/ai/Todo.jsx":"a5c5f36fda0c","components/ai/ToolCall.jsx":"0548ef4ed8a1","components/ai/Transcript.jsx":"ac501775d9f2","components/ai/UsageMeter.jsx":"d7a5ba2050a4","components/ai/WebPreview.jsx":"019797948f3a","components/code/CodeBlock.jsx":"c0552d7e2481","components/code/Console.jsx":"b5d9e53f58f4","components/code/CopyField.jsx":"8bc3ab702e56","components/code/Diff.jsx":"888cfc02151c","components/code/EnvList.jsx":"d5f56cf5a84f","components/code/Exception.jsx":"4029324593cc","components/code/Terminal.jsx":"12e652392ac8","components/data/BarChart.jsx":"db9bf54f304c","components/data/Chart.jsx":"7c7061f2906d","components/data/DonutChart.jsx":"91bb81902351","components/data/EmptyState.jsx":"afa221d0e19a","components/data/KeyValueList.jsx":"0f23076c0eda","components/data/LineChart.jsx":"03e2adfab3e6","components/data/Skeleton.jsx":"0764d0dd3a8a","components/data/Sparkline.jsx":"5f8f035c3536","components/data/Stat.jsx":"2cd85d3dea9b","components/data/StatusDot.jsx":"d9b85feb259d","components/data/Table.jsx":"39b2dcef3961","components/dates/Calendar.jsx":"0317397aa8bf","components/dates/TimePicker.jsx":"b611f9952ae2","components/display/Accordion.jsx":"37cdb6b9b7dd","components/display/AspectRatio.jsx":"e8a8c0e443d1","components/display/Avatar.jsx":"d9721ef8e861","components/display/Badge.jsx":"4b8f64607c91","components/display/Card.jsx":"6650fe69c496","components/display/Carousel.jsx":"722bac4c2f36","components/display/Collapsible.jsx":"973e1e471113","components/display/Direction.jsx":"496b315ce934","components/display/Divider.jsx":"31235f62ae31","components/display/Item.jsx":"dc44f38cbff8","components/display/Kbd.jsx":"94dde08a6995","components/display/Link.jsx":"1d80cbd9f2f6","components/display/Resizable.jsx":"9db7a9b434e6","components/display/ScrollArea.jsx":"6b1fbbe63c74","components/display/Separator.jsx":"1879c0018b92","components/display/Tag.jsx":"f772791789eb","components/display/Timeline.jsx":"6cbd2cc166b3","components/display/Toolbar.jsx":"1d0ae2f9234b","components/display/TreeList.jsx":"52c7f2d23bde","components/feedback/Alert.jsx":"fddd4f2b461b","components/feedback/AlertDialog.jsx":"f86743fdccdc","components/feedback/Banner.jsx":"baccbde1c043","components/feedback/ConfirmDialog.jsx":"c0e5bb3f41ad","components/feedback/Dialog.jsx":"103949b6902e","components/feedback/Loader.jsx":"adc34cb38672","components/feedback/Progress.jsx":"b13debdd6993","components/feedback/Spinner.jsx":"841bf3b5122e","components/feedback/Toast.jsx":"fe3f6c98af22","components/feedback/Tooltip.jsx":"e4d112e40246","components/files/Attachment.jsx":"3ed6aafdd6a7","components/files/FileDrop.jsx":"c5c05205e8f5","components/files/FileTile.jsx":"fbed4d1bb958","components/files/FileTypeIcon.jsx":"9390abb277fc","components/finance/PaymentCard.jsx":"00acd1c21351","components/forms/Button.jsx":"df6e6bfc624b","components/forms/ButtonGroup.jsx":"be79e774481b","components/forms/ButtonTile.jsx":"61c7fe656bd9","components/forms/Checkbox.jsx":"a234160c3c3b","components/forms/Combobox.jsx":"2d3ce0380736","components/forms/Field.jsx":"7855a4eb5229","components/forms/IconButton.jsx":"115662b25be2","components/forms/Input.jsx":"5066d6543ca6","components/forms/InputGroup.jsx":"47ab66fd53ca","components/forms/InputOTP.jsx":"8bf6b97d4043","components/forms/Label.jsx":"d8a588b0b484","components/forms/NativeSelect.jsx":"3610442fbb1c","components/forms/NumberInput.jsx":"13121810fb82","components/forms/Questionnaire.jsx":"e8fb4214ca8e","components/forms/Radio.jsx":"20b4863185f8","components/forms/Select.jsx":"e2b39f0151c1","components/forms/Slider.jsx":"f2f26f5ba9c5","components/forms/Switch.jsx":"b98f8a406173","components/forms/Textarea.jsx":"8a2b867a408e","components/forms/Toggle.jsx":"2e115df186c8","components/icons/Icon.jsx":"684f9ed8839c","components/navigation/Breadcrumbs.jsx":"cae8383f8576","components/navigation/Menubar.jsx":"b55011911212","components/navigation/NavigationMenu.jsx":"622cc2b033e4","components/navigation/PageControl.jsx":"f7e2aa792bcc","components/navigation/Pagination.jsx":"adbec3773300","components/navigation/SegmentedControl.jsx":"99cff9173460","components/navigation/SideNav.jsx":"4a12e3be13ed","components/navigation/Sidebar.jsx":"08ad865986ac","components/navigation/SkipLink.jsx":"4cd9796c5c15","components/navigation/Steps.jsx":"2a10d1d48686","components/navigation/Tabs.jsx":"814e4078fa4b","components/navigation/TopNav.jsx":"499509e551aa","components/overlay/Command.jsx":"1910e0a31f4e","components/overlay/ContextMenu.jsx":"ced6c3d26bee","components/overlay/Drawer.jsx":"976b9f82dcac","components/overlay/DropdownMenu.jsx":"2bb11f7ad2dd","components/overlay/HoverCard.jsx":"2857381145fd","components/overlay/Popover.jsx":"d3d06831c3d3","components/overlay/Portal.jsx":"006f089f2c03","components/overlay/Sheet.jsx":"cc890a05ad52"},"inlinedExternals":[],"unexposedExports":[{"name":"computeDiff","sourcePath":"components/code/Diff.jsx"},{"name":"cssPct","sourcePath":"components/forms/Button.jsx"},{"name":"escapeLayerContext","sourcePath":"components/overlay/Portal.jsx"},{"name":"formatTime","sourcePath":"components/ai/Player.jsx"},{"name":"injectEfCss","sourcePath":"components/forms/Button.jsx"},{"name":"isElementOfType","sourcePath":"components/forms/Button.jsx"},{"name":"mergeRefs","sourcePath":"components/forms/Button.jsx"},{"name":"prefersReducedMotion","sourcePath":"components/forms/Button.jsx"},{"name":"useAnchoredStyle","sourcePath":"components/overlay/Portal.jsx"},{"name":"useEscapeLayer","sourcePath":"components/overlay/Portal.jsx"},{"name":"useFieldProps","sourcePath":"components/forms/Field.jsx"},{"name":"useHydrated","sourcePath":"components/overlay/Portal.jsx"},{"name":"useIsoLayoutEffect","sourcePath":"components/forms/Button.jsx"},{"name":"useScrollLock","sourcePath":"components/overlay/Portal.jsx"}]} */
+/* @ds-bundle: {"format":4,"namespace":"EfolusiDesignSystem_4ffc3d","components":[{"name":"AgentRun","sourcePath":"components/ai/AgentRun.jsx"},{"name":"BubbleGroup","sourcePath":"components/ai/Bubble.jsx"},{"name":"Bubble","sourcePath":"components/ai/Bubble.jsx"},{"name":"BubbleContent","sourcePath":"components/ai/Bubble.jsx"},{"name":"BubbleReactions","sourcePath":"components/ai/Bubble.jsx"},{"name":"ChatMessage","sourcePath":"components/ai/ChatMessage.jsx"},{"name":"Citation","sourcePath":"components/ai/Citation.jsx"},{"name":"SourceList","sourcePath":"components/ai/Citation.jsx"},{"name":"Confirmation","sourcePath":"components/ai/Confirmation.jsx"},{"name":"Conversation","sourcePath":"components/ai/Conversation.jsx"},{"name":"DocumentCard","sourcePath":"components/ai/DocumentCard.jsx"},{"name":"FeedbackBar","sourcePath":"components/ai/FeedbackBar.jsx"},{"name":"GeneratedImage","sourcePath":"components/ai/GeneratedImage.jsx"},{"name":"Marker","sourcePath":"components/ai/Marker.jsx"},{"name":"MarkerIcon","sourcePath":"components/ai/Marker.jsx"},{"name":"MarkerContent","sourcePath":"components/ai/Marker.jsx"},{"name":"Message","sourcePath":"components/ai/Message.jsx"},{"name":"MessageGroup","sourcePath":"components/ai/Message.jsx"},{"name":"MessageAvatar","sourcePath":"components/ai/Message.jsx"},{"name":"MessageContent","sourcePath":"components/ai/Message.jsx"},{"name":"MessageHeader","sourcePath":"components/ai/Message.jsx"},{"name":"MessageFooter","sourcePath":"components/ai/Message.jsx"},{"name":"MessageScrollerProvider","sourcePath":"components/ai/MessageScroller.jsx"},{"name":"MessageScroller","sourcePath":"components/ai/MessageScroller.jsx"},{"name":"MessageScrollerViewport","sourcePath":"components/ai/MessageScroller.jsx"},{"name":"MessageScrollerContent","sourcePath":"components/ai/MessageScroller.jsx"},{"name":"MessageScrollerItem","sourcePath":"components/ai/MessageScroller.jsx"},{"name":"MessageScrollerButton","sourcePath":"components/ai/MessageScroller.jsx"},{"name":"ModelSelector","sourcePath":"components/ai/ModelSelector.jsx"},{"name":"Player","sourcePath":"components/ai/Player.jsx"},{"name":"PromptComposer","sourcePath":"components/ai/PromptComposer.jsx"},{"name":"PromptSteps","sourcePath":"components/ai/PromptSteps.jsx"},{"name":"Reasoning","sourcePath":"components/ai/Reasoning.jsx"},{"name":"RichComposer","sourcePath":"components/ai/RichComposer.jsx"},{"name":"Sandbox","sourcePath":"components/ai/Sandbox.jsx"},{"name":"SelectionQuote","sourcePath":"components/ai/SelectionQuote.jsx"},{"name":"SourceCard","sourcePath":"components/ai/SourceCard.jsx"},{"name":"Suggestions","sourcePath":"components/ai/Suggestions.jsx"},{"name":"Task","sourcePath":"components/ai/Task.jsx"},{"name":"Todo","sourcePath":"components/ai/Todo.jsx"},{"name":"ToolCall","sourcePath":"components/ai/ToolCall.jsx"},{"name":"Transcript","sourcePath":"components/ai/Transcript.jsx"},{"name":"UsageMeter","sourcePath":"components/ai/UsageMeter.jsx"},{"name":"WebPreview","sourcePath":"components/ai/WebPreview.jsx"},{"name":"CodeBlock","sourcePath":"components/code/CodeBlock.jsx"},{"name":"Console","sourcePath":"components/code/Console.jsx"},{"name":"CopyField","sourcePath":"components/code/CopyField.jsx"},{"name":"Diff","sourcePath":"components/code/Diff.jsx"},{"name":"EnvList","sourcePath":"components/code/EnvList.jsx"},{"name":"Exception","sourcePath":"components/code/Exception.jsx"},{"name":"Terminal","sourcePath":"components/code/Terminal.jsx"},{"name":"BarChart","sourcePath":"components/data/BarChart.jsx"},{"name":"ChartStyle","sourcePath":"components/data/Chart.jsx"},{"name":"ChartContainer","sourcePath":"components/data/Chart.jsx"},{"name":"ChartTooltip","sourcePath":"components/data/Chart.jsx"},{"name":"ChartTooltipContent","sourcePath":"components/data/Chart.jsx"},{"name":"ChartLegend","sourcePath":"components/data/Chart.jsx"},{"name":"ChartLegendContent","sourcePath":"components/data/Chart.jsx"},{"name":"DonutChart","sourcePath":"components/data/DonutChart.jsx"},{"name":"Empty","sourcePath":"components/data/EmptyState.jsx"},{"name":"EmptyHeader","sourcePath":"components/data/EmptyState.jsx"},{"name":"EmptyMedia","sourcePath":"components/data/EmptyState.jsx"},{"name":"EmptyTitle","sourcePath":"components/data/EmptyState.jsx"},{"name":"EmptyDescription","sourcePath":"components/data/EmptyState.jsx"},{"name":"EmptyContent","sourcePath":"components/data/EmptyState.jsx"},{"name":"KeyValueList","sourcePath":"components/data/KeyValueList.jsx"},{"name":"LineChart","sourcePath":"components/data/LineChart.jsx"},{"name":"Skeleton","sourcePath":"components/data/Skeleton.jsx"},{"name":"Sparkline","sourcePath":"components/data/Sparkline.jsx"},{"name":"Stat","sourcePath":"components/data/Stat.jsx"},{"name":"StatusDot","sourcePath":"components/data/StatusDot.jsx"},{"name":"Table","sourcePath":"components/data/Table.jsx"},{"name":"TableHeader","sourcePath":"components/data/Table.jsx"},{"name":"TableBody","sourcePath":"components/data/Table.jsx"},{"name":"TableFooter","sourcePath":"components/data/Table.jsx"},{"name":"TableRow","sourcePath":"components/data/Table.jsx"},{"name":"TableHead","sourcePath":"components/data/Table.jsx"},{"name":"TableCell","sourcePath":"components/data/Table.jsx"},{"name":"TableCaption","sourcePath":"components/data/Table.jsx"},{"name":"CalendarDayButton","sourcePath":"components/dates/Calendar.jsx"},{"name":"Calendar","sourcePath":"components/dates/Calendar.jsx"},{"name":"TimePicker","sourcePath":"components/dates/TimePicker.jsx"},{"name":"Accordion","sourcePath":"components/display/Accordion.jsx"},{"name":"AccordionItem","sourcePath":"components/display/Accordion.jsx"},{"name":"AccordionTrigger","sourcePath":"components/display/Accordion.jsx"},{"name":"AccordionContent","sourcePath":"components/display/Accordion.jsx"},{"name":"AspectRatio","sourcePath":"components/display/AspectRatio.jsx"},{"name":"Avatar","sourcePath":"components/display/Avatar.jsx"},{"name":"AvatarImage","sourcePath":"components/display/Avatar.jsx"},{"name":"AvatarFallback","sourcePath":"components/display/Avatar.jsx"},{"name":"AvatarBadge","sourcePath":"components/display/Avatar.jsx"},{"name":"AvatarGroup","sourcePath":"components/display/Avatar.jsx"},{"name":"AvatarGroupCount","sourcePath":"components/display/Avatar.jsx"},{"name":"Badge","sourcePath":"components/display/Badge.jsx"},{"name":"CardHeader","sourcePath":"components/display/Card.jsx"},{"name":"CardTitle","sourcePath":"components/display/Card.jsx"},{"name":"CardDescription","sourcePath":"components/display/Card.jsx"},{"name":"CardAction","sourcePath":"components/display/Card.jsx"},{"name":"CardContent","sourcePath":"components/display/Card.jsx"},{"name":"CardFooter","sourcePath":"components/display/Card.jsx"},{"name":"Card","sourcePath":"components/display/Card.jsx"},{"name":"Carousel","sourcePath":"components/display/Carousel.jsx"},{"name":"CarouselContent","sourcePath":"components/display/Carousel.jsx"},{"name":"CarouselItem","sourcePath":"components/display/Carousel.jsx"},{"name":"CarouselPrevious","sourcePath":"components/display/Carousel.jsx"},{"name":"CarouselNext","sourcePath":"components/display/Carousel.jsx"},{"name":"Collapsible","sourcePath":"components/display/Collapsible.jsx"},{"name":"CollapsibleTrigger","sourcePath":"components/display/Collapsible.jsx"},{"name":"CollapsibleContent","sourcePath":"components/display/Collapsible.jsx"},{"name":"DirectionProvider","sourcePath":"components/display/Direction.jsx"},{"name":"Divider","sourcePath":"components/display/Divider.jsx"},{"name":"ItemGroup","sourcePath":"components/display/Item.jsx"},{"name":"ItemSeparator","sourcePath":"components/display/Item.jsx"},{"name":"Item","sourcePath":"components/display/Item.jsx"},{"name":"ItemMedia","sourcePath":"components/display/Item.jsx"},{"name":"ItemContent","sourcePath":"components/display/Item.jsx"},{"name":"ItemTitle","sourcePath":"components/display/Item.jsx"},{"name":"ItemDescription","sourcePath":"components/display/Item.jsx"},{"name":"ItemActions","sourcePath":"components/display/Item.jsx"},{"name":"ItemHeader","sourcePath":"components/display/Item.jsx"},{"name":"ItemFooter","sourcePath":"components/display/Item.jsx"},{"name":"Kbd","sourcePath":"components/display/Kbd.jsx"},{"name":"KbdGroup","sourcePath":"components/display/Kbd.jsx"},{"name":"Link","sourcePath":"components/display/Link.jsx"},{"name":"ResizablePanelGroup","sourcePath":"components/display/Resizable.jsx"},{"name":"ResizablePanel","sourcePath":"components/display/Resizable.jsx"},{"name":"ResizableHandle","sourcePath":"components/display/Resizable.jsx"},{"name":"ScrollArea","sourcePath":"components/display/ScrollArea.jsx"},{"name":"ScrollBar","sourcePath":"components/display/ScrollArea.jsx"},{"name":"Separator","sourcePath":"components/display/Separator.jsx"},{"name":"Tag","sourcePath":"components/display/Tag.jsx"},{"name":"Timeline","sourcePath":"components/display/Timeline.jsx"},{"name":"Toolbar","sourcePath":"components/display/Toolbar.jsx"},{"name":"TreeList","sourcePath":"components/display/TreeList.jsx"},{"name":"Alert","sourcePath":"components/feedback/Alert.jsx"},{"name":"AlertTitle","sourcePath":"components/feedback/Alert.jsx"},{"name":"AlertDescription","sourcePath":"components/feedback/Alert.jsx"},{"name":"AlertAction","sourcePath":"components/feedback/Alert.jsx"},{"name":"AlertDialog","sourcePath":"components/feedback/AlertDialog.jsx"},{"name":"AlertDialogTrigger","sourcePath":"components/feedback/AlertDialog.jsx"},{"name":"AlertDialogPortal","sourcePath":"components/feedback/AlertDialog.jsx"},{"name":"AlertDialogOverlay","sourcePath":"components/feedback/AlertDialog.jsx"},{"name":"AlertDialogContent","sourcePath":"components/feedback/AlertDialog.jsx"},{"name":"AlertDialogHeader","sourcePath":"components/feedback/AlertDialog.jsx"},{"name":"AlertDialogFooter","sourcePath":"components/feedback/AlertDialog.jsx"},{"name":"AlertDialogMedia","sourcePath":"components/feedback/AlertDialog.jsx"},{"name":"AlertDialogTitle","sourcePath":"components/feedback/AlertDialog.jsx"},{"name":"AlertDialogDescription","sourcePath":"components/feedback/AlertDialog.jsx"},{"name":"AlertDialogCancel","sourcePath":"components/feedback/AlertDialog.jsx"},{"name":"AlertDialogAction","sourcePath":"components/feedback/AlertDialog.jsx"},{"name":"Banner","sourcePath":"components/feedback/Banner.jsx"},{"name":"ConfirmDialog","sourcePath":"components/feedback/ConfirmDialog.jsx"},{"name":"Dialog","sourcePath":"components/feedback/Dialog.jsx"},{"name":"DialogTrigger","sourcePath":"components/feedback/Dialog.jsx"},{"name":"DialogPortal","sourcePath":"components/feedback/Dialog.jsx"},{"name":"DialogOverlay","sourcePath":"components/feedback/Dialog.jsx"},{"name":"DialogClose","sourcePath":"components/feedback/Dialog.jsx"},{"name":"DialogContent","sourcePath":"components/feedback/Dialog.jsx"},{"name":"DialogHeader","sourcePath":"components/feedback/Dialog.jsx"},{"name":"DialogFooter","sourcePath":"components/feedback/Dialog.jsx"},{"name":"DialogTitle","sourcePath":"components/feedback/Dialog.jsx"},{"name":"DialogDescription","sourcePath":"components/feedback/Dialog.jsx"},{"name":"Loader","sourcePath":"components/feedback/Loader.jsx"},{"name":"Progress","sourcePath":"components/feedback/Progress.jsx"},{"name":"Spinner","sourcePath":"components/feedback/Spinner.jsx"},{"name":"Toaster","sourcePath":"components/feedback/Toast.jsx"},{"name":"Tooltip","sourcePath":"components/feedback/Tooltip.jsx"},{"name":"TooltipProvider","sourcePath":"components/feedback/Tooltip.jsx"},{"name":"TooltipTrigger","sourcePath":"components/feedback/Tooltip.jsx"},{"name":"TooltipContent","sourcePath":"components/feedback/Tooltip.jsx"},{"name":"Attachment","sourcePath":"components/files/Attachment.jsx"},{"name":"AttachmentMedia","sourcePath":"components/files/Attachment.jsx"},{"name":"AttachmentContent","sourcePath":"components/files/Attachment.jsx"},{"name":"AttachmentTitle","sourcePath":"components/files/Attachment.jsx"},{"name":"AttachmentDescription","sourcePath":"components/files/Attachment.jsx"},{"name":"AttachmentActions","sourcePath":"components/files/Attachment.jsx"},{"name":"AttachmentAction","sourcePath":"components/files/Attachment.jsx"},{"name":"AttachmentTrigger","sourcePath":"components/files/Attachment.jsx"},{"name":"AttachmentGroup","sourcePath":"components/files/Attachment.jsx"},{"name":"FileDrop","sourcePath":"components/files/FileDrop.jsx"},{"name":"FileTile","sourcePath":"components/files/FileTile.jsx"},{"name":"FileTypeIcon","sourcePath":"components/files/FileTypeIcon.jsx"},{"name":"PaymentCard","sourcePath":"components/finance/PaymentCard.jsx"},{"name":"Button","sourcePath":"components/forms/Button.jsx"},{"name":"ButtonGroup","sourcePath":"components/forms/ButtonGroup.jsx"},{"name":"ButtonGroupText","sourcePath":"components/forms/ButtonGroup.jsx"},{"name":"ButtonGroupSeparator","sourcePath":"components/forms/ButtonGroup.jsx"},{"name":"ButtonTile","sourcePath":"components/forms/ButtonTile.jsx"},{"name":"ButtonTileGroup","sourcePath":"components/forms/ButtonTile.jsx"},{"name":"Checkbox","sourcePath":"components/forms/Checkbox.jsx"},{"name":"Combobox","sourcePath":"components/forms/Combobox.jsx"},{"name":"ComboboxValue","sourcePath":"components/forms/Combobox.jsx"},{"name":"ComboboxTrigger","sourcePath":"components/forms/Combobox.jsx"},{"name":"ComboboxClear","sourcePath":"components/forms/Combobox.jsx"},{"name":"ComboboxInput","sourcePath":"components/forms/Combobox.jsx"},{"name":"ComboboxContent","sourcePath":"components/forms/Combobox.jsx"},{"name":"ComboboxList","sourcePath":"components/forms/Combobox.jsx"},{"name":"ComboboxItem","sourcePath":"components/forms/Combobox.jsx"},{"name":"ComboboxGroup","sourcePath":"components/forms/Combobox.jsx"},{"name":"ComboboxLabel","sourcePath":"components/forms/Combobox.jsx"},{"name":"ComboboxCollection","sourcePath":"components/forms/Combobox.jsx"},{"name":"ComboboxEmpty","sourcePath":"components/forms/Combobox.jsx"},{"name":"ComboboxSeparator","sourcePath":"components/forms/Combobox.jsx"},{"name":"ComboboxChips","sourcePath":"components/forms/Combobox.jsx"},{"name":"ComboboxChip","sourcePath":"components/forms/Combobox.jsx"},{"name":"ComboboxChipsInput","sourcePath":"components/forms/Combobox.jsx"},{"name":"Field","sourcePath":"components/forms/Field.jsx"},{"name":"FieldSet","sourcePath":"components/forms/Field.jsx"},{"name":"FieldGroup","sourcePath":"components/forms/Field.jsx"},{"name":"FieldContent","sourcePath":"components/forms/Field.jsx"},{"name":"FieldLabel","sourcePath":"components/forms/Field.jsx"},{"name":"FieldTitle","sourcePath":"components/forms/Field.jsx"},{"name":"FieldDescription","sourcePath":"components/forms/Field.jsx"},{"name":"FieldLegend","sourcePath":"components/forms/Field.jsx"},{"name":"FieldSeparator","sourcePath":"components/forms/Field.jsx"},{"name":"FieldError","sourcePath":"components/forms/Field.jsx"},{"name":"IconButton","sourcePath":"components/forms/IconButton.jsx"},{"name":"Input","sourcePath":"components/forms/Input.jsx"},{"name":"InputGroup","sourcePath":"components/forms/InputGroup.jsx"},{"name":"InputGroupAddon","sourcePath":"components/forms/InputGroup.jsx"},{"name":"InputGroupButton","sourcePath":"components/forms/InputGroup.jsx"},{"name":"InputGroupInput","sourcePath":"components/forms/InputGroup.jsx"},{"name":"InputGroupTextarea","sourcePath":"components/forms/InputGroup.jsx"},{"name":"InputGroupText","sourcePath":"components/forms/InputGroup.jsx"},{"name":"InputOTP","sourcePath":"components/forms/InputOTP.jsx"},{"name":"InputOTPGroup","sourcePath":"components/forms/InputOTP.jsx"},{"name":"InputOTPSlot","sourcePath":"components/forms/InputOTP.jsx"},{"name":"InputOTPSeparator","sourcePath":"components/forms/InputOTP.jsx"},{"name":"Label","sourcePath":"components/forms/Label.jsx"},{"name":"NativeSelect","sourcePath":"components/forms/NativeSelect.jsx"},{"name":"NativeSelectOption","sourcePath":"components/forms/NativeSelect.jsx"},{"name":"NativeSelectOptGroup","sourcePath":"components/forms/NativeSelect.jsx"},{"name":"NumberInput","sourcePath":"components/forms/NumberInput.jsx"},{"name":"Questionnaire","sourcePath":"components/forms/Questionnaire.jsx"},{"name":"QuestionnaireProgress","sourcePath":"components/forms/Questionnaire.jsx"},{"name":"QuestionnaireItem","sourcePath":"components/forms/Questionnaire.jsx"},{"name":"QuestionnaireTitle","sourcePath":"components/forms/Questionnaire.jsx"},{"name":"QuestionnaireDescription","sourcePath":"components/forms/Questionnaire.jsx"},{"name":"QuestionnaireChoices","sourcePath":"components/forms/Questionnaire.jsx"},{"name":"QuestionnaireChoice","sourcePath":"components/forms/Questionnaire.jsx"},{"name":"QuestionnaireInput","sourcePath":"components/forms/Questionnaire.jsx"},{"name":"QuestionnaireError","sourcePath":"components/forms/Questionnaire.jsx"},{"name":"QuestionnaireActions","sourcePath":"components/forms/Questionnaire.jsx"},{"name":"QuestionnairePrevious","sourcePath":"components/forms/Questionnaire.jsx"},{"name":"QuestionnaireSkip","sourcePath":"components/forms/Questionnaire.jsx"},{"name":"QuestionnaireNext","sourcePath":"components/forms/Questionnaire.jsx"},{"name":"QuestionnaireSubmit","sourcePath":"components/forms/Questionnaire.jsx"},{"name":"RadioGroup","sourcePath":"components/forms/Radio.jsx"},{"name":"RadioGroupItem","sourcePath":"components/forms/Radio.jsx"},{"name":"Radio","sourcePath":"components/forms/Radio.jsx"},{"name":"Select","sourcePath":"components/forms/Select.jsx"},{"name":"SelectTrigger","sourcePath":"components/forms/Select.jsx"},{"name":"SelectValue","sourcePath":"components/forms/Select.jsx"},{"name":"SelectContent","sourcePath":"components/forms/Select.jsx"},{"name":"SelectGroup","sourcePath":"components/forms/Select.jsx"},{"name":"SelectLabel","sourcePath":"components/forms/Select.jsx"},{"name":"SelectSeparator","sourcePath":"components/forms/Select.jsx"},{"name":"SelectItem","sourcePath":"components/forms/Select.jsx"},{"name":"Slider","sourcePath":"components/forms/Slider.jsx"},{"name":"Switch","sourcePath":"components/forms/Switch.jsx"},{"name":"Textarea","sourcePath":"components/forms/Textarea.jsx"},{"name":"Toggle","sourcePath":"components/forms/Toggle.jsx"},{"name":"ToggleGroup","sourcePath":"components/forms/Toggle.jsx"},{"name":"ToggleGroupItem","sourcePath":"components/forms/Toggle.jsx"},{"name":"Icon","sourcePath":"components/icons/Icon.jsx"},{"name":"Breadcrumb","sourcePath":"components/navigation/Breadcrumbs.jsx"},{"name":"BreadcrumbList","sourcePath":"components/navigation/Breadcrumbs.jsx"},{"name":"BreadcrumbItem","sourcePath":"components/navigation/Breadcrumbs.jsx"},{"name":"BreadcrumbLink","sourcePath":"components/navigation/Breadcrumbs.jsx"},{"name":"BreadcrumbPage","sourcePath":"components/navigation/Breadcrumbs.jsx"},{"name":"BreadcrumbSeparator","sourcePath":"components/navigation/Breadcrumbs.jsx"},{"name":"BreadcrumbEllipsis","sourcePath":"components/navigation/Breadcrumbs.jsx"},{"name":"Menubar","sourcePath":"components/navigation/Menubar.jsx"},{"name":"MenubarMenu","sourcePath":"components/navigation/Menubar.jsx"},{"name":"MenubarTrigger","sourcePath":"components/navigation/Menubar.jsx"},{"name":"MenubarContent","sourcePath":"components/navigation/Menubar.jsx"},{"name":"MenubarPortal","sourcePath":"components/navigation/Menubar.jsx"},{"name":"MenubarGroup","sourcePath":"components/navigation/Menubar.jsx"},{"name":"MenubarRadioGroup","sourcePath":"components/navigation/Menubar.jsx"},{"name":"MenubarLabel","sourcePath":"components/navigation/Menubar.jsx"},{"name":"MenubarSeparator","sourcePath":"components/navigation/Menubar.jsx"},{"name":"MenubarShortcut","sourcePath":"components/navigation/Menubar.jsx"},{"name":"MenubarItem","sourcePath":"components/navigation/Menubar.jsx"},{"name":"MenubarCheckboxItem","sourcePath":"components/navigation/Menubar.jsx"},{"name":"MenubarRadioItem","sourcePath":"components/navigation/Menubar.jsx"},{"name":"MenubarSub","sourcePath":"components/navigation/Menubar.jsx"},{"name":"MenubarSubTrigger","sourcePath":"components/navigation/Menubar.jsx"},{"name":"MenubarSubContent","sourcePath":"components/navigation/Menubar.jsx"},{"name":"NavigationMenu","sourcePath":"components/navigation/NavigationMenu.jsx"},{"name":"NavigationMenuList","sourcePath":"components/navigation/NavigationMenu.jsx"},{"name":"NavigationMenuItem","sourcePath":"components/navigation/NavigationMenu.jsx"},{"name":"NavigationMenuTrigger","sourcePath":"components/navigation/NavigationMenu.jsx"},{"name":"NavigationMenuContent","sourcePath":"components/navigation/NavigationMenu.jsx"},{"name":"NavigationMenuLink","sourcePath":"components/navigation/NavigationMenu.jsx"},{"name":"NavigationMenuIndicator","sourcePath":"components/navigation/NavigationMenu.jsx"},{"name":"NavigationMenuViewport","sourcePath":"components/navigation/NavigationMenu.jsx"},{"name":"PageControl","sourcePath":"components/navigation/PageControl.jsx"},{"name":"Pagination","sourcePath":"components/navigation/Pagination.jsx"},{"name":"PaginationContent","sourcePath":"components/navigation/Pagination.jsx"},{"name":"PaginationItem","sourcePath":"components/navigation/Pagination.jsx"},{"name":"PaginationLink","sourcePath":"components/navigation/Pagination.jsx"},{"name":"PaginationPrevious","sourcePath":"components/navigation/Pagination.jsx"},{"name":"PaginationNext","sourcePath":"components/navigation/Pagination.jsx"},{"name":"PaginationEllipsis","sourcePath":"components/navigation/Pagination.jsx"},{"name":"SegmentedControl","sourcePath":"components/navigation/SegmentedControl.jsx"},{"name":"SideNav","sourcePath":"components/navigation/SideNav.jsx"},{"name":"SidebarProvider","sourcePath":"components/navigation/Sidebar.jsx"},{"name":"Sidebar","sourcePath":"components/navigation/Sidebar.jsx"},{"name":"SidebarTrigger","sourcePath":"components/navigation/Sidebar.jsx"},{"name":"SidebarRail","sourcePath":"components/navigation/Sidebar.jsx"},{"name":"SidebarInset","sourcePath":"components/navigation/Sidebar.jsx"},{"name":"SidebarHeader","sourcePath":"components/navigation/Sidebar.jsx"},{"name":"SidebarFooter","sourcePath":"components/navigation/Sidebar.jsx"},{"name":"SidebarContent","sourcePath":"components/navigation/Sidebar.jsx"},{"name":"SidebarGroup","sourcePath":"components/navigation/Sidebar.jsx"},{"name":"SidebarGroupContent","sourcePath":"components/navigation/Sidebar.jsx"},{"name":"SidebarMenu","sourcePath":"components/navigation/Sidebar.jsx"},{"name":"SidebarMenuItem","sourcePath":"components/navigation/Sidebar.jsx"},{"name":"SidebarMenuSub","sourcePath":"components/navigation/Sidebar.jsx"},{"name":"SidebarMenuSubItem","sourcePath":"components/navigation/Sidebar.jsx"},{"name":"SidebarInput","sourcePath":"components/navigation/Sidebar.jsx"},{"name":"SidebarSeparator","sourcePath":"components/navigation/Sidebar.jsx"},{"name":"SidebarGroupLabel","sourcePath":"components/navigation/Sidebar.jsx"},{"name":"SidebarGroupAction","sourcePath":"components/navigation/Sidebar.jsx"},{"name":"SidebarMenuButton","sourcePath":"components/navigation/Sidebar.jsx"},{"name":"SidebarMenuAction","sourcePath":"components/navigation/Sidebar.jsx"},{"name":"SidebarMenuBadge","sourcePath":"components/navigation/Sidebar.jsx"},{"name":"SidebarMenuSubButton","sourcePath":"components/navigation/Sidebar.jsx"},{"name":"SidebarMenuSkeleton","sourcePath":"components/navigation/Sidebar.jsx"},{"name":"SkipLink","sourcePath":"components/navigation/SkipLink.jsx"},{"name":"Steps","sourcePath":"components/navigation/Steps.jsx"},{"name":"Tabs","sourcePath":"components/navigation/Tabs.jsx"},{"name":"TabsList","sourcePath":"components/navigation/Tabs.jsx"},{"name":"TabsTrigger","sourcePath":"components/navigation/Tabs.jsx"},{"name":"TabsContent","sourcePath":"components/navigation/Tabs.jsx"},{"name":"TopNav","sourcePath":"components/navigation/TopNav.jsx"},{"name":"Command","sourcePath":"components/overlay/Command.jsx"},{"name":"CommandDialog","sourcePath":"components/overlay/Command.jsx"},{"name":"CommandInput","sourcePath":"components/overlay/Command.jsx"},{"name":"CommandList","sourcePath":"components/overlay/Command.jsx"},{"name":"CommandEmpty","sourcePath":"components/overlay/Command.jsx"},{"name":"CommandGroup","sourcePath":"components/overlay/Command.jsx"},{"name":"CommandItem","sourcePath":"components/overlay/Command.jsx"},{"name":"CommandShortcut","sourcePath":"components/overlay/Command.jsx"},{"name":"CommandSeparator","sourcePath":"components/overlay/Command.jsx"},{"name":"ContextMenu","sourcePath":"components/overlay/ContextMenu.jsx"},{"name":"ContextMenuTrigger","sourcePath":"components/overlay/ContextMenu.jsx"},{"name":"ContextMenuPortal","sourcePath":"components/overlay/ContextMenu.jsx"},{"name":"ContextMenuContent","sourcePath":"components/overlay/ContextMenu.jsx"},{"name":"ContextMenuGroup","sourcePath":"components/overlay/ContextMenu.jsx"},{"name":"ContextMenuLabel","sourcePath":"components/overlay/ContextMenu.jsx"},{"name":"ContextMenuSeparator","sourcePath":"components/overlay/ContextMenu.jsx"},{"name":"ContextMenuShortcut","sourcePath":"components/overlay/ContextMenu.jsx"},{"name":"ContextMenuItem","sourcePath":"components/overlay/ContextMenu.jsx"},{"name":"ContextMenuCheckboxItem","sourcePath":"components/overlay/ContextMenu.jsx"},{"name":"ContextMenuRadioGroup","sourcePath":"components/overlay/ContextMenu.jsx"},{"name":"ContextMenuRadioItem","sourcePath":"components/overlay/ContextMenu.jsx"},{"name":"ContextMenuSub","sourcePath":"components/overlay/ContextMenu.jsx"},{"name":"ContextMenuSubTrigger","sourcePath":"components/overlay/ContextMenu.jsx"},{"name":"ContextMenuSubContent","sourcePath":"components/overlay/ContextMenu.jsx"},{"name":"Drawer","sourcePath":"components/overlay/Drawer.jsx"},{"name":"DrawerTrigger","sourcePath":"components/overlay/Drawer.jsx"},{"name":"DrawerPortal","sourcePath":"components/overlay/Drawer.jsx"},{"name":"DrawerClose","sourcePath":"components/overlay/Drawer.jsx"},{"name":"DrawerOverlay","sourcePath":"components/overlay/Drawer.jsx"},{"name":"DrawerContent","sourcePath":"components/overlay/Drawer.jsx"},{"name":"DrawerHeader","sourcePath":"components/overlay/Drawer.jsx"},{"name":"DrawerFooter","sourcePath":"components/overlay/Drawer.jsx"},{"name":"DrawerTitle","sourcePath":"components/overlay/Drawer.jsx"},{"name":"DrawerDescription","sourcePath":"components/overlay/Drawer.jsx"},{"name":"DropdownMenu","sourcePath":"components/overlay/DropdownMenu.jsx"},{"name":"DropdownMenuTrigger","sourcePath":"components/overlay/DropdownMenu.jsx"},{"name":"DropdownMenuPortal","sourcePath":"components/overlay/DropdownMenu.jsx"},{"name":"DropdownMenuContent","sourcePath":"components/overlay/DropdownMenu.jsx"},{"name":"DropdownMenuGroup","sourcePath":"components/overlay/DropdownMenu.jsx"},{"name":"DropdownMenuLabel","sourcePath":"components/overlay/DropdownMenu.jsx"},{"name":"DropdownMenuSeparator","sourcePath":"components/overlay/DropdownMenu.jsx"},{"name":"DropdownMenuShortcut","sourcePath":"components/overlay/DropdownMenu.jsx"},{"name":"DropdownMenuItem","sourcePath":"components/overlay/DropdownMenu.jsx"},{"name":"DropdownMenuCheckboxItem","sourcePath":"components/overlay/DropdownMenu.jsx"},{"name":"DropdownMenuRadioGroup","sourcePath":"components/overlay/DropdownMenu.jsx"},{"name":"DropdownMenuRadioItem","sourcePath":"components/overlay/DropdownMenu.jsx"},{"name":"DropdownMenuSub","sourcePath":"components/overlay/DropdownMenu.jsx"},{"name":"DropdownMenuSubTrigger","sourcePath":"components/overlay/DropdownMenu.jsx"},{"name":"DropdownMenuSubContent","sourcePath":"components/overlay/DropdownMenu.jsx"},{"name":"HoverCard","sourcePath":"components/overlay/HoverCard.jsx"},{"name":"HoverCardTrigger","sourcePath":"components/overlay/HoverCard.jsx"},{"name":"HoverCardContent","sourcePath":"components/overlay/HoverCard.jsx"},{"name":"Popover","sourcePath":"components/overlay/Popover.jsx"},{"name":"PopoverTrigger","sourcePath":"components/overlay/Popover.jsx"},{"name":"PopoverContent","sourcePath":"components/overlay/Popover.jsx"},{"name":"PopoverHeader","sourcePath":"components/overlay/Popover.jsx"},{"name":"PopoverTitle","sourcePath":"components/overlay/Popover.jsx"},{"name":"PopoverDescription","sourcePath":"components/overlay/Popover.jsx"},{"name":"Portal","sourcePath":"components/overlay/Portal.jsx"},{"name":"Sheet","sourcePath":"components/overlay/Sheet.jsx"},{"name":"SheetTrigger","sourcePath":"components/overlay/Sheet.jsx"},{"name":"SheetClose","sourcePath":"components/overlay/Sheet.jsx"},{"name":"SheetContent","sourcePath":"components/overlay/Sheet.jsx"},{"name":"SheetHeader","sourcePath":"components/overlay/Sheet.jsx"},{"name":"SheetFooter","sourcePath":"components/overlay/Sheet.jsx"},{"name":"SheetTitle","sourcePath":"components/overlay/Sheet.jsx"},{"name":"SheetDescription","sourcePath":"components/overlay/Sheet.jsx"}],"publicHelpers":[{"name":"markerVariants","sourcePath":"components/ai/Marker.jsx"},{"name":"useMessageScroller","sourcePath":"components/ai/MessageScroller.jsx"},{"name":"useMessageScrollerVisibility","sourcePath":"components/ai/MessageScroller.jsx"},{"name":"useMessageScrollerScrollable","sourcePath":"components/ai/MessageScroller.jsx"},{"name":"useChart","sourcePath":"components/data/Chart.jsx"},{"name":"badgeVariants","sourcePath":"components/display/Badge.jsx"},{"name":"useDirection","sourcePath":"components/display/Direction.jsx"},{"name":"toast","sourcePath":"components/feedback/Toast.jsx"},{"name":"buttonVariants","sourcePath":"components/forms/Button.jsx"},{"name":"buttonGroupVariants","sourcePath":"components/forms/ButtonGroup.jsx"},{"name":"useComboboxAnchor","sourcePath":"components/forms/Combobox.jsx"},{"name":"toggleVariants","sourcePath":"components/forms/Toggle.jsx"},{"name":"navigationMenuTriggerStyle","sourcePath":"components/navigation/NavigationMenu.jsx"},{"name":"useSidebar","sourcePath":"components/navigation/Sidebar.jsx"}],"sourceHashes":{"components/ai/AgentRun.jsx":"abff6bba6368","components/ai/Bubble.jsx":"7ffa7ca52cc3","components/ai/ChatMessage.jsx":"b97f3a4c9b68","components/ai/Citation.jsx":"a3540de5791d","components/ai/Confirmation.jsx":"a52cfb79be3c","components/ai/Conversation.jsx":"4f60205ae38a","components/ai/DocumentCard.jsx":"aa1879bc2b5f","components/ai/FeedbackBar.jsx":"936a78762e86","components/ai/GeneratedImage.jsx":"82019f56a54a","components/ai/Marker.jsx":"5c98b770dcb2","components/ai/Message.jsx":"d3662e0417ac","components/ai/MessageScroller.jsx":"6526b0af6ad9","components/ai/ModelSelector.jsx":"2ea278b7ec65","components/ai/Player.jsx":"8d42c4dea661","components/ai/PromptComposer.jsx":"d77c437cc3b1","components/ai/PromptSteps.jsx":"382441eaf822","components/ai/Reasoning.jsx":"3e6d55349b23","components/ai/RichComposer.jsx":"8272ea35aa03","components/ai/Sandbox.jsx":"25236515de47","components/ai/SelectionQuote.jsx":"7b7811a7c860","components/ai/SourceCard.jsx":"482aca2588fe","components/ai/Suggestions.jsx":"aa72d6764702","components/ai/Task.jsx":"75086faec10f","components/ai/Todo.jsx":"64d6380ef9fe","components/ai/ToolCall.jsx":"cf88122a9fe6","components/ai/Transcript.jsx":"9f099aadeecc","components/ai/UsageMeter.jsx":"18b7f1c2671e","components/ai/WebPreview.jsx":"df0b7c0c2b1c","components/code/CodeBlock.jsx":"e9d2017f4de0","components/code/Console.jsx":"270e25d432b3","components/code/CopyField.jsx":"5175ba027162","components/code/Diff.jsx":"eac10da17ca8","components/code/EnvList.jsx":"37ab42628291","components/code/Exception.jsx":"063c601d6743","components/code/Terminal.jsx":"103e8120fe20","components/data/BarChart.jsx":"34df71c614cd","components/data/Chart.jsx":"e31d00d0f274","components/data/DonutChart.jsx":"844f6fb20b88","components/data/EmptyState.jsx":"2edfe263b707","components/data/KeyValueList.jsx":"1627b4190815","components/data/LineChart.jsx":"a45ad97dcc6c","components/data/Skeleton.jsx":"0764d0dd3a8a","components/data/Sparkline.jsx":"5f8f035c3536","components/data/Stat.jsx":"c542047ad37e","components/data/StatusDot.jsx":"d30f019da8bf","components/data/Table.jsx":"4fc9c94b4a77","components/dates/Calendar.jsx":"035b1fdd26ef","components/dates/TimePicker.jsx":"2c536de13241","components/display/Accordion.jsx":"48b65a1de87b","components/display/AspectRatio.jsx":"e8a8c0e443d1","components/display/Avatar.jsx":"6ad1debdee60","components/display/Badge.jsx":"6bfd28fc097f","components/display/Card.jsx":"9693bb2d5769","components/display/Carousel.jsx":"f7759d3eef7b","components/display/Collapsible.jsx":"849933a009a6","components/display/Direction.jsx":"496b315ce934","components/display/Divider.jsx":"c5b80d5bb769","components/display/Item.jsx":"a81abe50b345","components/display/Kbd.jsx":"68dcef2c85b5","components/display/Link.jsx":"543e02db1fd8","components/display/Resizable.jsx":"d1b386a9946f","components/display/ScrollArea.jsx":"6b1fbbe63c74","components/display/Separator.jsx":"1879c0018b92","components/display/Tag.jsx":"cb3b1fbbd300","components/display/Timeline.jsx":"2beb4cc2b1bd","components/display/Toolbar.jsx":"9ee60bb6c941","components/display/TreeList.jsx":"8de7ef187a1e","components/feedback/Alert.jsx":"ebd05db88610","components/feedback/AlertDialog.jsx":"c207cfb91236","components/feedback/Banner.jsx":"534bdfbdf7f0","components/feedback/ConfirmDialog.jsx":"a6db751fdbeb","components/feedback/Dialog.jsx":"6ec672239f44","components/feedback/Loader.jsx":"5d0ebd62cc39","components/feedback/Progress.jsx":"d0aee9a3b764","components/feedback/Spinner.jsx":"841bf3b5122e","components/feedback/Toast.jsx":"7f37580612fe","components/feedback/Tooltip.jsx":"755e326d742d","components/files/Attachment.jsx":"e342c41cab1a","components/files/FileDrop.jsx":"8c7d6297e866","components/files/FileTile.jsx":"9fbf85744369","components/files/FileTypeIcon.jsx":"3c0d8c51c185","components/finance/PaymentCard.jsx":"dc9c6a93b8be","components/forms/Button.jsx":"91d3e0e9d5f4","components/forms/ButtonGroup.jsx":"6b714ffd94b1","components/forms/ButtonTile.jsx":"483e8458694f","components/forms/Checkbox.jsx":"361841e0bc37","components/forms/Combobox.jsx":"47936d8b003f","components/forms/Field.jsx":"fc23dd854a49","components/forms/IconButton.jsx":"115662b25be2","components/forms/Input.jsx":"b3930913b519","components/forms/InputGroup.jsx":"151e2615e675","components/forms/InputOTP.jsx":"8bf6b97d4043","components/forms/Label.jsx":"b93307868da4","components/forms/NativeSelect.jsx":"bfdc18f42c6b","components/forms/NumberInput.jsx":"0b9b6941d72e","components/forms/Questionnaire.jsx":"6715c6bdf121","components/forms/Radio.jsx":"6f7a7e3e3325","components/forms/Select.jsx":"a8805d8e4481","components/forms/Slider.jsx":"9e592b00e571","components/forms/Switch.jsx":"95feb9133ed1","components/forms/Textarea.jsx":"88f194bbe80e","components/forms/Toggle.jsx":"9e334b9824d8","components/icons/Icon.jsx":"684f9ed8839c","components/navigation/Breadcrumbs.jsx":"448e3b6f9ba4","components/navigation/Menubar.jsx":"77e06863818c","components/navigation/NavigationMenu.jsx":"95809965f1be","components/navigation/PageControl.jsx":"f7e2aa792bcc","components/navigation/Pagination.jsx":"0813f2f20ba3","components/navigation/SegmentedControl.jsx":"0b630d98120f","components/navigation/SideNav.jsx":"ce3557966c12","components/navigation/Sidebar.jsx":"330384810e12","components/navigation/SkipLink.jsx":"4cd9796c5c15","components/navigation/Steps.jsx":"351084d850ba","components/navigation/Tabs.jsx":"c6ed589c8d45","components/navigation/TopNav.jsx":"c7dff732e39f","components/overlay/Command.jsx":"2341852c202e","components/overlay/ContextMenu.jsx":"d958b780700d","components/overlay/Drawer.jsx":"14e2e1b01786","components/overlay/DropdownMenu.jsx":"fd71a2074697","components/overlay/HoverCard.jsx":"07b798c13631","components/overlay/Popover.jsx":"b822d80896b3","components/overlay/Portal.jsx":"006f089f2c03","components/overlay/Sheet.jsx":"d63e47392e73"},"inlinedExternals":[],"unexposedExports":[{"name":"computeDiff","sourcePath":"components/code/Diff.jsx"},{"name":"cssPct","sourcePath":"components/forms/Button.jsx"},{"name":"escapeLayerContext","sourcePath":"components/overlay/Portal.jsx"},{"name":"formatTime","sourcePath":"components/ai/Player.jsx"},{"name":"injectEfCss","sourcePath":"components/forms/Button.jsx"},{"name":"isElementOfType","sourcePath":"components/forms/Button.jsx"},{"name":"mergeRefs","sourcePath":"components/forms/Button.jsx"},{"name":"prefersReducedMotion","sourcePath":"components/forms/Button.jsx"},{"name":"useAnchoredStyle","sourcePath":"components/overlay/Portal.jsx"},{"name":"useEscapeLayer","sourcePath":"components/overlay/Portal.jsx"},{"name":"useFieldProps","sourcePath":"components/forms/Field.jsx"},{"name":"useHydrated","sourcePath":"components/overlay/Portal.jsx"},{"name":"useIsoLayoutEffect","sourcePath":"components/forms/Button.jsx"},{"name":"useScrollLock","sourcePath":"components/overlay/Portal.jsx"}]} */
 
 (() => {
 
@@ -221,18 +221,18 @@ Object.assign(__ds_scope, { Icon });
 try { (() => {
 function _extends() { return _extends = Object.assign ? Object.assign.bind() : function (n) { for (var e = 1; e < arguments.length; e++) { var t = arguments[e]; for (var r in t) ({}).hasOwnProperty.call(t, r) && (n[r] = t[r]); } return n; }, _extends.apply(null, arguments); }
 const CSS = `
-.ef-btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;text-decoration:none;border:1px solid transparent;border-radius:var(--radius-sm);font-family:var(--font-sans);font-weight:var(--weight-semibold);cursor:pointer;white-space:nowrap;user-select:none;transition:background var(--dur-fast) var(--ease-out),border-color var(--dur-fast) var(--ease-out),color var(--dur-fast) var(--ease-out),box-shadow var(--dur-fast) var(--ease-out),transform var(--dur-med) var(--ease-spring)}
+.ef-btn{display:inline-flex;align-items:center;justify-content:center;gap:var(--space-2);text-decoration:none;border:1px solid transparent;border-radius:var(--radius-sm);font-family:var(--font-sans);font-weight:var(--weight-semibold);cursor:pointer;white-space:nowrap;user-select:none;transition:background var(--dur-fast) var(--ease-out),border-color var(--dur-fast) var(--ease-out),color var(--dur-fast) var(--ease-out),box-shadow var(--dur-fast) var(--ease-out),transform var(--dur-med) var(--ease-spring)}
 .ef-btn{line-height:var(--leading-normal)}
 .ef-btn:hover,.ef-btn:focus,.ef-btn:visited{text-decoration:none}
 .ef-btn:focus-visible{outline:none;box-shadow:var(--focus-ring)}
 .ef-btn:active{transform:scale(.985)}
 .ef-btn:is(:disabled,[aria-disabled="true"],[data-disabled]){opacity:.45;cursor:not-allowed;pointer-events:none}
-.ef-btn--sm{height:var(--control-h-sm);padding:0 10px;font-size:var(--text-sm)}
-.ef-btn--md{height:var(--control-h-md);padding:0 14px;font-size:var(--text-md)}
-.ef-btn--lg{height:var(--control-h-lg);padding:0 20px;font-size:var(--text-lg)}
-.ef-btn--xs{height:28px;padding:0 9px;font-size:var(--text-xs);gap:6px}
+.ef-btn--sm{height:var(--control-h-sm);padding:0 var(--space-3);font-size:var(--text-sm)}
+.ef-btn--md{height:var(--control-h-md);padding:0 var(--space-4);font-size:var(--text-md)}
+.ef-btn--lg{height:var(--control-h-lg);padding:0 var(--space-5);font-size:var(--text-lg)}
+.ef-btn--xs{height:var(--control-h-xs);padding:0 9px;font-size:var(--text-xs);gap:6px}
 .ef-btn--icon,.ef-btn--icon-md{width:var(--control-h-md);height:var(--control-h-md);padding:0}
-.ef-btn--icon-xs{width:24px;height:24px;padding:0}
+.ef-btn--icon-xs{width:var(--control-h-xs);height:var(--control-h-xs);padding:0}
 .ef-btn--icon-sm{width:var(--control-h-sm);height:var(--control-h-sm);padding:0}
 .ef-btn--icon-lg{width:var(--control-h-lg);height:var(--control-h-lg);padding:0}
 .ef-btn--primary{background:var(--accent);color:var(--accent-contrast)}
@@ -445,7 +445,7 @@ try { (() => {
 function _extends() { return _extends = Object.assign ? Object.assign.bind() : function (n) { for (var e = 1; e < arguments.length; e++) { var t = arguments[e]; for (var r in t) ({}).hasOwnProperty.call(t, r) && (n[r] = t[r]); } return n; }, _extends.apply(null, arguments); }
 const CSS = `
 .ef-agentrun{display:flex;flex-direction:column}
-.ef-agentrun__step{display:flex;gap:12px;position:relative}
+.ef-agentrun__step{display:flex;gap:var(--space-3);position:relative}
 .ef-agentrun__rail{display:flex;flex-direction:column;align-items:center;flex:none;width:22px}
 .ef-agentrun__dot{display:inline-flex;align-items:center;justify-content:center;width:22px;height:22px;border-radius:var(--radius-full);border:1px solid var(--border-strong);background:var(--surface-card);color:var(--text-muted);flex:none}
 .ef-agentrun__step--done .ef-agentrun__dot{background:var(--accent);border-color:var(--accent);color:var(--accent-contrast)}
@@ -453,20 +453,20 @@ const CSS = `
 .ef-agentrun__step--error .ef-agentrun__dot{background:var(--danger-100);border-color:var(--danger-600);color:var(--danger-600)}
 .ef-agentrun__spin{display:inline-flex;animation:ef-agentrun-spin .9s linear infinite}
 @keyframes ef-agentrun-spin{to{transform:rotate(360deg)}}
-.ef-agentrun__line{width:1px;flex:1;background:var(--border-default);margin:3px 0}
+.ef-agentrun__line{width:1px;flex:1;background:var(--border-default);margin:var(--space-1) 0}
 .ef-agentrun__step--done .ef-agentrun__line{background:var(--accent-subtle-border)}
-.ef-agentrun__content{flex:1;min-width:0;padding:1px 0 18px}
-.ef-agentrun__step:last-child .ef-agentrun__content{padding-bottom:2px}
-.ef-agentrun__title{display:flex;align-items:baseline;gap:8px;font-size:var(--text-sm);font-weight:600;color:var(--text-primary)}
+.ef-agentrun__content{flex:1;min-width:0;padding:1px 0 var(--space-5)}
+.ef-agentrun__step:last-child .ef-agentrun__content{padding-bottom:var(--space-0-5)}
+.ef-agentrun__title{display:flex;align-items:baseline;gap:var(--space-2);font-size:var(--text-sm);font-weight:600;color:var(--text-primary)}
 .ef-agentrun__step--pending .ef-agentrun__title{color:var(--text-muted);font-weight:500}
-.ef-agentrun__time{margin-inline-start:auto;font-family:var(--font-mono);font-size:11px;color:var(--text-muted);flex:none}
-.ef-agentrun__detail{font-size:13px;line-height:1.55;color:var(--text-secondary);margin-top:3px}
-.ef-agentrun__toggle{display:inline-flex;align-items:center;gap:5px;border:none;background:none;padding:0;cursor:pointer;font-family:var(--font-sans);font-size:12px;font-weight:500;color:var(--text-muted);margin-top:4px}
+.ef-agentrun__time{margin-inline-start:auto;font-family:var(--font-mono);font-size:var(--text-2xs);color:var(--text-muted);flex:none}
+.ef-agentrun__detail{font-size:var(--text-sm);line-height:1.55;color:var(--text-secondary);margin-top:var(--space-1)}
+.ef-agentrun__toggle{display:inline-flex;align-items:center;gap:var(--space-1);border:none;background:none;padding:0;cursor:pointer;font-family:var(--font-sans);font-size:var(--text-xs);font-weight:500;color:var(--text-muted);margin-top:var(--space-1)}
 .ef-agentrun__toggle:hover{color:var(--text-primary)}
 .ef-agentrun__toggle:focus-visible{outline:none;box-shadow:var(--focus-ring)}
 .ef-agentrun__toggle .ef-agentrun__tchev{display:inline-flex;transition:transform var(--dur-med) var(--ease-out)}
 .ef-agentrun__toggle--open .ef-agentrun__tchev{transform:rotate(180deg)}
-.ef-agentrun__panel{margin-top:8px;display:flex;flex-direction:column;gap:8px}
+.ef-agentrun__panel{margin-top:var(--space-2);display:flex;flex-direction:column;gap:var(--space-2)}
 `;
 function AgentRun({
   steps = [],
@@ -510,7 +510,7 @@ function AgentRun({
       style: {
         width: 5,
         height: 5,
-        borderRadius: 99,
+        borderRadius: 'var(--radius-full)',
         background: 'currentColor',
         display: 'inline-block'
       }
@@ -546,11 +546,11 @@ Object.assign(__ds_scope, { AgentRun });
 try { (() => {
 function _extends() { return _extends = Object.assign ? Object.assign.bind() : function (n) { for (var e = 1; e < arguments.length; e++) { var t = arguments[e]; for (var r in t) ({}).hasOwnProperty.call(t, r) && (n[r] = t[r]); } return n; }, _extends.apply(null, arguments); }
 const CSS = `
-.ef-bubble-group{display:flex;min-width:0;flex-direction:column;gap:8px}
-.ef-bubble{position:relative;display:flex;width:fit-content;max-width:80%;min-width:0;flex-direction:column;gap:4px}
+.ef-bubble-group{display:flex;min-width:0;flex-direction:column;gap:var(--space-2)}
+.ef-bubble{position:relative;display:flex;width:fit-content;max-width:80%;min-width:0;flex-direction:column;gap:var(--space-1)}
 .ef-bubble[data-align="end"]{align-self:flex-end}
 .ef-bubble[data-variant="ghost"]{max-width:100%}
-.ef-bubble__content{width:fit-content;max-width:100%;min-width:0;overflow:hidden;overflow-wrap:anywhere;padding:8px 12px;border:1px solid transparent;border-radius:var(--radius-lg);font-size:var(--text-sm);line-height:var(--leading-relaxed)}
+.ef-bubble__content{width:fit-content;max-width:100%;min-width:0;overflow:hidden;overflow-wrap:anywhere;padding:var(--space-2) var(--space-3);border:1px solid transparent;border-radius:var(--radius-lg);font-size:var(--text-sm);line-height:var(--leading-relaxed)}
 .ef-bubble[data-align="end"]>.ef-bubble__content{align-self:flex-end}
 .ef-bubble[data-variant="default"]>.ef-bubble__content{background:var(--accent);color:var(--accent-contrast)}
 .ef-bubble[data-variant="secondary"]>.ef-bubble__content{background:var(--surface-sunken);color:var(--text-primary)}
@@ -562,7 +562,7 @@ const CSS = `
 .ef-bubble__content:is(button,a){cursor:pointer;text-align:start;transition:filter var(--dur-fast) var(--ease-out),background var(--dur-fast) var(--ease-out)}
 .ef-bubble__content:is(button,a):hover{filter:brightness(.96)}
 .ef-bubble__content:is(button,a):focus-visible{outline:none;box-shadow:var(--focus-ring)}
-.ef-bubble__reactions{position:absolute;z-index:1;display:flex;width:fit-content;flex-shrink:0;align-items:center;justify-content:center;gap:4px;padding:2px 6px;border-radius:var(--radius-full);background:var(--surface-subtle);font-size:var(--text-sm);box-shadow:0 0 0 3px var(--surface-card)}
+.ef-bubble__reactions{position:absolute;z-index:1;display:flex;width:fit-content;flex-shrink:0;align-items:center;justify-content:center;gap:var(--space-1);padding:var(--space-0-5) var(--space-2);border-radius:var(--radius-full);background:var(--surface-subtle);font-size:var(--text-sm);box-shadow:0 0 0 3px var(--surface-card)}
 .ef-bubble__reactions:has(button){padding:0}
 .ef-bubble__reactions[data-side="top"]{inset-block-start:0;transform:translateY(-75%)}
 .ef-bubble__reactions[data-side="bottom"]{inset-block-end:0;transform:translateY(75%)}
@@ -645,28 +645,28 @@ Object.assign(__ds_scope, { BubbleGroup, Bubble, BubbleContent, BubbleReactions 
 try { (() => {
 function _extends() { return _extends = Object.assign ? Object.assign.bind() : function (n) { for (var e = 1; e < arguments.length; e++) { var t = arguments[e]; for (var r in t) ({}).hasOwnProperty.call(t, r) && (n[r] = t[r]); } return n; }, _extends.apply(null, arguments); }
 const CSS = `
-.ef-citation{display:inline-flex;align-items:center;justify-content:center;min-width:16px;height:16px;padding:0 4px;margin:0 1px;vertical-align:super;border-radius:var(--radius-xs);border:1px solid var(--accent-subtle-border);background:var(--accent-subtle);color:var(--accent-subtle-fg, var(--brand-700));font-family:var(--font-mono);font-size:10px;font-weight:600;text-decoration:none;cursor:pointer;line-height:1}
+.ef-citation{display:inline-flex;align-items:center;justify-content:center;min-width:16px;height:16px;padding:0 var(--space-1);margin:0 1px;vertical-align:super;border-radius:var(--radius-xs);border:1px solid var(--accent-subtle-border);background:var(--accent-subtle);color:var(--accent-subtle-fg, var(--brand-700));font-family:var(--font-mono);font-size:10px;font-weight:600;text-decoration:none;cursor:pointer;line-height:1}
 .ef-citation:hover{border-color:var(--brand-700)}
 .ef-citation:focus-visible{outline:none;box-shadow:var(--focus-ring)}
 .ef-citation__wrap{position:relative;display:inline}
-.ef-citation__pop{position:absolute;bottom:calc(100% + 8px);inset-inline-start:0;width:280px;background:var(--surface-card);border:1px solid var(--border-strong);border-radius:var(--radius-md);box-shadow:var(--shadow-md);padding:12px;z-index:var(--z-popover);animation:ef-citation-in var(--dur-fast) var(--ease-out);cursor:default;text-align:start}
+.ef-citation__pop{position:absolute;bottom:calc(100% + 8px);inset-inline-start:0;width:280px;background:var(--surface-card);border:1px solid var(--border-strong);border-radius:var(--radius-md);box-shadow:var(--shadow-md);padding:var(--space-3);z-index:var(--z-popover);animation:ef-citation-in var(--dur-fast) var(--ease-out);cursor:default;text-align:start}
 @keyframes ef-citation-in{from{opacity:0;transform:translateY(3px)}}
-.ef-citation__pop-name{display:flex;align-items:center;gap:6px;font-family:var(--font-mono);font-size:11px;color:var(--text-muted)}
-.ef-citation__pop-title{font-size:13.5px;font-weight:600;color:var(--text-primary);line-height:1.4;margin-top:5px}
-.ef-citation__pop-desc{font-size:12.5px;line-height:1.55;color:var(--text-secondary);margin-top:5px;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}
-.ef-citation__pop-nav{display:flex;align-items:center;gap:4px;margin-top:9px;padding-top:8px;border-top:1px solid var(--border-default)}
+.ef-citation__pop-name{display:flex;align-items:center;gap:var(--space-2);font-family:var(--font-mono);font-size:var(--text-2xs);color:var(--text-muted)}
+.ef-citation__pop-title{font-size:var(--text-md);font-weight:600;color:var(--text-primary);line-height:1.4;margin-top:var(--space-1)}
+.ef-citation__pop-desc{font-size:var(--text-sm);line-height:1.55;color:var(--text-secondary);margin-top:var(--space-1);display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}
+.ef-citation__pop-nav{display:flex;align-items:center;gap:var(--space-1);margin-top:var(--space-2);padding-top:var(--space-2);border-top:1px solid var(--border-default)}
 .ef-citation__pop-btn{display:inline-flex;align-items:center;justify-content:center;width:22px;height:22px;border:1px solid var(--border-default);border-radius:var(--radius-sm);background:none;cursor:pointer;color:var(--text-secondary)}
 .ef-citation__pop-btn:hover{color:var(--text-primary);background:var(--surface-subtle)}
-.ef-citation__pop-count{margin-inline-start:auto;font-family:var(--font-mono);font-size:11px;color:var(--text-muted)}
+.ef-citation__pop-count{margin-inline-start:auto;font-family:var(--font-mono);font-size:var(--text-2xs);color:var(--text-muted)}
 .ef-sources{display:flex;flex-direction:column;border:1px solid var(--border-default);border-radius:var(--radius-md);overflow:hidden}
-.ef-sources__head{padding:9px 13px;font-size:11px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--text-muted);background:var(--surface-subtle);border-bottom:1px solid var(--border-default)}
-.ef-sources__item{display:flex;align-items:center;gap:10px;padding:9px 13px;text-decoration:none;border-bottom:1px solid var(--border-default);transition:background var(--dur-fast) var(--ease-out)}
+.ef-sources__head{padding:var(--space-2) var(--space-3);font-size:var(--text-2xs);font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--text-muted);background:var(--surface-subtle);border-bottom:1px solid var(--border-default)}
+.ef-sources__item{display:flex;align-items:center;gap:var(--space-3);padding:var(--space-2) var(--space-3);text-decoration:none;border-bottom:1px solid var(--border-default);transition:background var(--dur-fast) var(--ease-out)}
 .ef-sources__item:last-child{border-bottom:none}
 .ef-sources__item:hover{background:var(--surface-subtle)}
 .ef-sources__item:focus-visible{outline:none;box-shadow:var(--focus-ring)}
 .ef-sources__num{flex:none;display:inline-flex;align-items:center;justify-content:center;width:18px;height:18px;border-radius:var(--radius-xs);background:var(--accent-subtle);color:var(--accent-subtle-fg, var(--brand-700));font-family:var(--font-mono);font-size:10.5px;font-weight:600}
-.ef-sources__title{flex:1;min-width:0;font-size:13.5px;font-weight:500;color:var(--text-primary);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.ef-sources__domain{flex:none;font-family:var(--font-mono);font-size:11.5px;color:var(--text-muted)}
+.ef-sources__title{flex:1;min-width:0;font-size:var(--text-md);font-weight:500;color:var(--text-primary);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.ef-sources__domain{flex:none;font-family:var(--font-mono);font-size:var(--text-xs);color:var(--text-muted)}
 .ef-sources__ext{flex:none;display:inline-flex;color:var(--text-muted)}
 @media (pointer:coarse){.ef-citation__pop-btn{min-width:var(--tap-min);min-height:var(--tap-min)}}
 `;
@@ -738,7 +738,7 @@ function Citation({
     className: "ef-citation__pop-name"
   }, /*#__PURE__*/React.createElement(__ds_scope.Icon, {
     name: "globe",
-    size: 11
+    size: 12
   }), cur.domain || 'source'), /*#__PURE__*/React.createElement("span", {
     className: "ef-citation__pop-title",
     style: {
@@ -819,20 +819,20 @@ const CSS = `
 .ef-confirm{border-radius:var(--radius-md);background:var(--surface-card);border:1px solid var(--accent-subtle-border);box-shadow:0 0 0 2px var(--accent-subtle)}
 .ef-confirm--danger{border-color:var(--danger-300,var(--danger-600));box-shadow:0 0 0 2px var(--danger-100)}
 .ef-confirm--settled{border-color:var(--border-default);box-shadow:none}
-.ef-confirm__head{display:flex;align-items:center;gap:9px;padding:11px 14px 0}
+.ef-confirm__head{display:flex;align-items:center;gap:var(--space-2);padding:var(--space-3) var(--space-4) 0}
 .ef-confirm__icon{display:inline-flex;color:var(--brand-700);flex:none}
 .ef-confirm--danger .ef-confirm__icon{color:var(--danger-600)}
 .ef-confirm__title{font-size:var(--text-sm);font-weight:600;color:var(--text-primary)}
-.ef-confirm__desc{padding:6px 14px 0;font-size:13.5px;line-height:1.6;color:var(--text-secondary)}
-.ef-confirm__content{padding:10px 14px 0}
-.ef-confirm__actions{display:flex;justify-content:flex-end;gap:8px;padding:12px 14px}
-.ef-confirm__btn{height:30px;padding:0 13px;border-radius:var(--radius-sm);border:1px solid var(--border-strong);background:var(--surface-card);cursor:pointer;font-family:var(--font-sans);font-size:12.5px;font-weight:600;color:var(--text-primary);transition:background var(--dur-fast) var(--ease-out)}
+.ef-confirm__desc{padding:var(--space-2) var(--space-4) 0;font-size:var(--text-md);line-height:1.6;color:var(--text-secondary)}
+.ef-confirm__content{padding:var(--space-3) var(--space-4) 0}
+.ef-confirm__actions{display:flex;justify-content:flex-end;gap:var(--space-2);padding:var(--space-3) var(--space-4)}
+.ef-confirm__btn{height:30px;padding:0 var(--space-3);border-radius:var(--radius-sm);border:1px solid var(--border-strong);background:var(--surface-card);cursor:pointer;font-family:var(--font-sans);font-size:var(--text-sm);font-weight:600;color:var(--text-primary);transition:background var(--dur-fast) var(--ease-out)}
 .ef-confirm__btn:hover{background:var(--surface-subtle)}
 .ef-confirm__btn:focus-visible{outline:none;box-shadow:var(--focus-ring)}
 .ef-confirm__btn--accept{background:var(--accent);border-color:var(--accent);color:var(--accent-contrast)}
 .ef-confirm__btn--accept:hover{background:var(--accent-hover)}
 .ef-confirm--danger .ef-confirm__btn--accept{background:var(--danger-600);border-color:var(--danger-600);color:var(--danger-contrast)}
-.ef-confirm__status{display:flex;align-items:center;gap:8px;padding:10px 14px 12px;font-size:13px;color:var(--text-secondary)}
+.ef-confirm__status{display:flex;align-items:center;gap:var(--space-2);padding:var(--space-3) var(--space-4) var(--space-3);font-size:var(--text-sm);color:var(--text-secondary)}
 .ef-confirm__status--approved{color:var(--success-600,var(--text-secondary))}
 .ef-confirm__status--rejected{color:var(--text-muted)}
 @media (pointer:coarse){.ef-confirm__btn{min-height:var(--tap-min)}}
@@ -873,7 +873,7 @@ function Confirmation({
     className: "ef-confirm__icon"
   }, /*#__PURE__*/React.createElement(__ds_scope.Icon, {
     name: icon || (tone === 'danger' ? 'triangle-alert' : 'shield-check'),
-    size: 15
+    size: 16
   })), /*#__PURE__*/React.createElement("span", {
     className: "ef-confirm__title"
   }, title)), description ? /*#__PURE__*/React.createElement("div", {
@@ -894,7 +894,7 @@ function Confirmation({
     className: `ef-confirm__status ef-confirm__status--${cur}`
   }, /*#__PURE__*/React.createElement(__ds_scope.Icon, {
     name: cur === 'approved' ? 'circle-check' : 'circle-alert',
-    size: 14
+    size: 16
   }), cur === 'approved' ? approvedNote : rejectedNote));
 }
 Object.assign(__ds_scope, { Confirmation });
@@ -906,8 +906,8 @@ function _extends() { return _extends = Object.assign ? Object.assign.bind() : f
 const CSS = `
 .ef-conversation{position:relative;overflow:hidden;display:flex;flex-direction:column}
 .ef-conversation__viewport{overflow-y:auto;overscroll-behavior:contain;flex:1;min-height:0}
-.ef-conversation__inner{display:flex;flex-direction:column;gap:18px}
-.ef-conversation__jump{position:absolute;left:50%;transform:translateX(-50%);bottom:12px;display:inline-flex;align-items:center;gap:6px;height:30px;padding:0 13px;border-radius:var(--radius-full);border:1px solid var(--border-strong);background:var(--surface-card);box-shadow:var(--shadow-md);cursor:pointer;font-family:var(--font-sans);font-size:12.5px;font-weight:500;color:var(--text-secondary);z-index:5;animation:ef-conversation-in var(--dur-fast) var(--ease-out)}
+.ef-conversation__inner{display:flex;flex-direction:column;gap:var(--space-5)}
+.ef-conversation__jump{position:absolute;left:50%;transform:translateX(-50%);bottom:12px;display:inline-flex;align-items:center;gap:var(--space-2);height:30px;padding:0 var(--space-3);border-radius:var(--radius-full);border:1px solid var(--border-strong);background:var(--surface-card);box-shadow:var(--shadow-md);cursor:pointer;font-family:var(--font-sans);font-size:var(--text-sm);font-weight:500;color:var(--text-secondary);z-index:5;animation:ef-conversation-in var(--dur-fast) var(--ease-out)}
 .ef-conversation__jump:hover{color:var(--text-primary)}
 .ef-conversation__jump:focus-visible{outline:none;box-shadow:var(--focus-ring)}
 @keyframes ef-conversation-in{from{opacity:0;transform:translateX(-50%) translateY(4px)}}
@@ -978,7 +978,7 @@ const Conversation = React.forwardRef(function Conversation({
     onClick: () => toBottom()
   }, /*#__PURE__*/React.createElement(__ds_scope.Icon, {
     name: "chevron-down",
-    size: 13
+    size: 12
   }), jumpLabel) : null);
 });
 Object.assign(__ds_scope, { Conversation });
@@ -989,16 +989,16 @@ try { (() => {
 function _extends() { return _extends = Object.assign ? Object.assign.bind() : function (n) { for (var e = 1; e < arguments.length; e++) { var t = arguments[e]; for (var r in t) ({}).hasOwnProperty.call(t, r) && (n[r] = t[r]); } return n; }, _extends.apply(null, arguments); }
 const CSS = `
 .ef-doccard{border:1px solid var(--border-default);border-radius:var(--radius-md);background:var(--surface-card);font-family:var(--font-sans)}
-.ef-doccard__head{display:flex;align-items:center;gap:9px;padding:10px 10px 10px 14px}
+.ef-doccard__head{display:flex;align-items:center;gap:var(--space-2);padding:var(--space-3) var(--space-3) var(--space-3) var(--space-4)}
 .ef-doccard__glyph{display:inline-flex;color:var(--text-muted)}
-.ef-doccard__title{flex:1;min-width:0;font-size:13.5px;font-weight:var(--weight-semibold);color:var(--text-primary);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.ef-doccard__meta{font-size:12px;color:var(--text-muted)}
-.ef-doccard__btn{display:inline-flex;align-items:center;justify-content:center;width:28px;height:28px;border:none;background:none;cursor:pointer;color:var(--text-muted);border-radius:var(--radius-sm);transition:color var(--dur-fast) var(--ease-out),background var(--dur-fast) var(--ease-out)}
+.ef-doccard__title{flex:1;min-width:0;font-size:var(--text-md);font-weight:var(--weight-semibold);color:var(--text-primary);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.ef-doccard__meta{font-size:var(--text-xs);color:var(--text-muted)}
+.ef-doccard__btn{display:inline-flex;align-items:center;justify-content:center;width:var(--control-h-sm);height:var(--control-h-sm);border:none;background:none;cursor:pointer;color:var(--text-muted);border-radius:var(--radius-sm);transition:color var(--dur-fast) var(--ease-out),background var(--dur-fast) var(--ease-out)}
 .ef-doccard__btn:hover{color:var(--text-primary);background:var(--surface-subtle)}
 .ef-doccard__btn:focus-visible{outline:none;box-shadow:var(--focus-ring)}
 .ef-doccard__btn--open{transform:rotate(180deg)}
 .ef-doccard__win{position:relative;overflow:hidden;transition:height .45s cubic-bezier(.32,.72,0,1)}
-.ef-doccard__content{padding:0 16px 14px;font-size:14px;line-height:1.7;color:var(--text-secondary)}
+.ef-doccard__content{padding:0 var(--space-4) var(--space-4);font-size:var(--text-md);line-height:1.7;color:var(--text-secondary)}
 .ef-doccard__content h1,.ef-doccard__content h2,.ef-doccard__content h3{color:var(--text-primary);font-family:var(--font-display,var(--font-sans));margin:.2em 0 .4em}
 .ef-doccard__content p{margin:0 0 .8em}
 .ef-doccard__fade{position:absolute;inset-inline:0;bottom:0;height:72px;background:linear-gradient(to top,var(--surface-card),transparent);pointer-events:none;transition:opacity var(--dur-med) var(--ease-out)}
@@ -1050,7 +1050,7 @@ function DocumentCard({
     className: "ef-doccard__glyph"
   }, /*#__PURE__*/React.createElement(__ds_scope.Icon, {
     name: icon,
-    size: 15
+    size: 16
   })), /*#__PURE__*/React.createElement("span", {
     className: "ef-doccard__title"
   }, title), meta ? /*#__PURE__*/React.createElement("span", {
@@ -1062,7 +1062,7 @@ function DocumentCard({
     onClick: copy
   }, /*#__PURE__*/React.createElement(__ds_scope.Icon, {
     name: copied ? 'check' : 'copy',
-    size: 14
+    size: 16
   })), overflows || !open ? /*#__PURE__*/React.createElement("button", {
     type: "button",
     className: `ef-doccard__btn${open ? ' ef-doccard__btn--open' : ''}`,
@@ -1071,7 +1071,7 @@ function DocumentCard({
     onClick: () => setOpen(!open)
   }, /*#__PURE__*/React.createElement(__ds_scope.Icon, {
     name: "chevron-down",
-    size: 14
+    size: 16
   })) : null), /*#__PURE__*/React.createElement("div", {
     className: "ef-doccard__win",
     style: {
@@ -1092,13 +1092,13 @@ Object.assign(__ds_scope, { DocumentCard });
 try { (() => {
 function _extends() { return _extends = Object.assign ? Object.assign.bind() : function (n) { for (var e = 1; e < arguments.length; e++) { var t = arguments[e]; for (var r in t) ({}).hasOwnProperty.call(t, r) && (n[r] = t[r]); } return n; }, _extends.apply(null, arguments); }
 const CSS = `
-.ef-feedback{display:inline-flex;align-items:center;gap:2px}
+.ef-feedback{display:inline-flex;align-items:center;gap:var(--space-0-5)}
 .ef-feedback__btn{display:inline-flex;align-items:center;justify-content:center;width:26px;height:26px;border:none;border-radius:var(--radius-sm);background:none;cursor:pointer;color:var(--text-muted);transition:color var(--dur-fast) var(--ease-out),background var(--dur-fast) var(--ease-out)}
 .ef-feedback__btn:hover{color:var(--text-primary);background:var(--surface-sunken)}
 .ef-feedback__btn:focus-visible{outline:none;box-shadow:var(--focus-ring)}
 .ef-feedback__btn--on{color:var(--accent-subtle-fg, var(--brand-700));background:var(--accent-subtle)}
-.ef-feedback__sep{width:1px;height:14px;background:var(--border-default);margin:0 5px}
-.ef-feedback__note{font-size:11.5px;color:var(--text-muted);margin-inline-start:6px}
+.ef-feedback__sep{width:1px;height:14px;background:var(--border-default);margin:0 var(--space-1)}
+.ef-feedback__note{font-size:var(--text-xs);color:var(--text-muted);margin-inline-start:var(--space-2)}
 @media (pointer:coarse){.ef-feedback__btn{min-width:var(--tap-min);min-height:var(--tap-min)}}
 `;
 function FeedbackBar({
@@ -1140,7 +1140,7 @@ function FeedbackBar({
     onClick: () => cast('up')
   }, /*#__PURE__*/React.createElement(__ds_scope.Icon, {
     name: "thumbs-up",
-    size: 13
+    size: 12
   })), /*#__PURE__*/React.createElement("button", {
     type: "button",
     "aria-label": "Bad response",
@@ -1149,7 +1149,7 @@ function FeedbackBar({
     onClick: () => cast('down')
   }, /*#__PURE__*/React.createElement(__ds_scope.Icon, {
     name: "thumbs-down",
-    size: 13
+    size: 12
   })), /*#__PURE__*/React.createElement("span", {
     className: "ef-feedback__sep"
   }), onCopy || copyText ? /*#__PURE__*/React.createElement("button", {
@@ -1159,7 +1159,7 @@ function FeedbackBar({
     onClick: copy
   }, /*#__PURE__*/React.createElement(__ds_scope.Icon, {
     name: copied ? 'check' : 'copy',
-    size: 13
+    size: 12
   })) : null, onRetry ? /*#__PURE__*/React.createElement("button", {
     type: "button",
     "aria-label": "Regenerate",
@@ -1167,7 +1167,7 @@ function FeedbackBar({
     onClick: onRetry
   }, /*#__PURE__*/React.createElement(__ds_scope.Icon, {
     name: "refresh-cw",
-    size: 13
+    size: 12
   })) : null, note ? /*#__PURE__*/React.createElement("span", {
     className: "ef-feedback__note"
   }, note) : null);
@@ -1189,21 +1189,21 @@ const CSS = `
 .ef-genimg--danger .ef-genimg__img{opacity:.3}
 .ef-genimg__dark{position:absolute;inset:0;background:var(--media-backdrop);opacity:0;transition:opacity var(--dur-med) var(--ease-out);pointer-events:none}
 .ef-genimg--busy .ef-genimg__dark{opacity:1}
-.ef-genimg__dots{position:absolute;inset:0;background-image:radial-gradient(circle,var(--media-backdrop-dot) 1.3px,transparent 1.7px);background-size:30px 30px;-webkit-mask-image:radial-gradient(ellipse at center,black 10%,transparent 78%);mask-image:radial-gradient(ellipse at center,black 10%,transparent 78%);animation:ef-genimg-pulse 2.8s ease-in-out infinite}
+.ef-genimg__backdrop{position:absolute;inset:0;background:var(--media-backdrop-dot);-webkit-mask-image:radial-gradient(ellipse at center,black 10%,transparent 78%);mask-image:radial-gradient(ellipse at center,black 10%,transparent 78%);animation:ef-genimg-pulse 2.8s ease-in-out infinite}
 @keyframes ef-genimg-pulse{0%,100%{opacity:.45}50%{opacity:1}}
 .ef-genimg__scrim{position:absolute;inset-inline:0;pointer-events:none;opacity:0;transition:opacity var(--dur-med) var(--ease-out)}
 .ef-genimg--complete .ef-genimg__scrim{opacity:1}
 .ef-genimg__scrim--top{top:0;height:34%;background:linear-gradient(to bottom,var(--media-scrim),transparent)}
-.ef-genimg__prompt{position:absolute;top:13px;inset-inline:16px;font-size:13px;font-weight:var(--weight-semibold);color:var(--text-primary);z-index:2}
+.ef-genimg__prompt{position:absolute;top:13px;inset-inline:16px;font-size:var(--text-sm);font-weight:var(--weight-semibold);color:var(--text-primary);z-index:2}
 .ef-genimg--busy .ef-genimg__prompt,.ef-genimg--complete .ef-genimg__prompt{color:var(--text-on-media)}
-.ef-genimg__status{position:absolute;inset-inline-start:16px;bottom:13px;font-size:12.5px;color:var(--text-on-media-muted);z-index:2;animation:ef-genimg-pulse 1.6s ease-in-out infinite}
-.ef-genimg__center{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;color:var(--text-muted);font-size:13px;z-index:2;padding:20px;text-align:center}
-.ef-genimg__actions{position:absolute;top:9px;inset-inline-end:9px;display:flex;gap:2px;z-index:3;opacity:0;transition:opacity var(--dur-fast) var(--ease-out)}
+.ef-genimg__status{position:absolute;inset-inline-start:16px;bottom:13px;font-size:var(--text-sm);color:var(--text-on-media-muted);z-index:2;animation:ef-genimg-pulse 1.6s ease-in-out infinite}
+.ef-genimg__center{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:var(--space-3);color:var(--text-muted);font-size:var(--text-sm);z-index:2;padding:var(--space-5);text-align:center}
+.ef-genimg__actions{position:absolute;top:9px;inset-inline-end:9px;display:flex;gap:var(--space-0-5);z-index:3;opacity:0;transition:opacity var(--dur-fast) var(--ease-out)}
 .ef-genimg--complete:hover .ef-genimg__actions,.ef-genimg--complete:focus-within .ef-genimg__actions{opacity:1}
 .ef-genimg__act{display:inline-flex;align-items:center;justify-content:center;width:30px;height:30px;border:none;cursor:pointer;color:var(--text-on-media);background:var(--media-scrim-soft);border-radius:var(--radius-sm);backdrop-filter:blur(2px);transition:background var(--dur-fast) var(--ease-out)}
 .ef-genimg__act:hover{background:var(--media-scrim-strong)}
 .ef-genimg__act:focus-visible{outline:none;box-shadow:var(--focus-ring)}
-.ef-genimg__retry{display:inline-flex;align-items:center;gap:6px;padding:7px 13px;border:1px solid var(--border-strong);border-radius:var(--radius-full);background:var(--surface-card);cursor:pointer;font-family:var(--font-sans);font-size:12.5px;font-weight:var(--weight-semibold);color:var(--text-primary)}
+.ef-genimg__retry{display:inline-flex;align-items:center;gap:var(--space-2);padding:var(--space-2) var(--space-3);border:1px solid var(--border-strong);border-radius:var(--radius-full);background:var(--surface-card);cursor:pointer;font-family:var(--font-sans);font-size:var(--text-sm);font-weight:var(--weight-semibold);color:var(--text-primary)}
 .ef-genimg__err{color:var(--danger-600)}
 @media (pointer:coarse){.ef-genimg__act{min-width:var(--tap-min);min-height:var(--tap-min)}}
 `;
@@ -1233,7 +1233,7 @@ function GeneratedImage({
   }) : null, /*#__PURE__*/React.createElement("div", {
     className: "ef-genimg__dark"
   }, s === 'busy' ? /*#__PURE__*/React.createElement("div", {
-    className: "ef-genimg__dots"
+    className: "ef-genimg__backdrop"
   }) : null), /*#__PURE__*/React.createElement("div", {
     className: "ef-genimg__scrim ef-genimg__scrim--top",
     "aria-hidden": "true"
@@ -1261,7 +1261,7 @@ function GeneratedImage({
     onClick: onRetry
   }, /*#__PURE__*/React.createElement(__ds_scope.Icon, {
     name: "refresh-cw",
-    size: 13
+    size: 12
   }), "Retry") : null) : null, actions && actions.length ? /*#__PURE__*/React.createElement("div", {
     className: "ef-genimg__actions"
   }, actions.map((a, i) => /*#__PURE__*/React.createElement("button", {
@@ -1273,7 +1273,7 @@ function GeneratedImage({
     onClick: a.onClick
   }, /*#__PURE__*/React.createElement(__ds_scope.Icon, {
     name: a.icon,
-    size: 14
+    size: 16
   })))) : null);
 }
 Object.assign(__ds_scope, { GeneratedImage });
@@ -1283,9 +1283,9 @@ Object.assign(__ds_scope, { GeneratedImage });
 try { (() => {
 function _extends() { return _extends = Object.assign ? Object.assign.bind() : function (n) { for (var e = 1; e < arguments.length; e++) { var t = arguments[e]; for (var r in t) ({}).hasOwnProperty.call(t, r) && (n[r] = t[r]); } return n; }, _extends.apply(null, arguments); }
 const CSS = `
-.ef-marker{display:inline-flex;align-items:center;gap:6px;min-width:0;color:var(--text-muted);font-family:var(--font-sans);font-size:var(--text-sm);line-height:1.4}
-.ef-marker--border{display:flex;width:100%;padding-block:10px;border-bottom:1px solid var(--border-default)}
-.ef-marker--separator{display:flex;width:100%;gap:10px;text-align:center;white-space:nowrap}
+.ef-marker{display:inline-flex;align-items:center;gap:var(--space-2);min-width:0;color:var(--text-muted);font-family:var(--font-sans);font-size:var(--text-sm);line-height:1.4}
+.ef-marker--border{display:flex;width:100%;padding-block:var(--space-3);border-bottom:1px solid var(--border-default)}
+.ef-marker--separator{display:flex;width:100%;gap:var(--space-3);text-align:center;white-space:nowrap}
 .ef-marker--separator::before,.ef-marker--separator::after{content:"";height:1px;min-width:12px;flex:1;background:var(--border-default)}
 .ef-marker__icon{display:inline-flex;align-items:center;justify-content:center;flex:0 0 auto;color:var(--text-muted)}
 .ef-marker__content{min-width:0;overflow-wrap:anywhere}
@@ -1364,16 +1364,16 @@ Object.assign(__ds_scope, { markerVariants, Marker, MarkerIcon, MarkerContent })
 try { (() => {
 function _extends() { return _extends = Object.assign ? Object.assign.bind() : function (n) { for (var e = 1; e < arguments.length; e++) { var t = arguments[e]; for (var r in t) ({}).hasOwnProperty.call(t, r) && (n[r] = t[r]); } return n; }, _extends.apply(null, arguments); }
 const CSS = `
-.ef-message{display:flex;width:100%;align-items:flex-end;gap:10px}
+.ef-message{display:flex;width:100%;align-items:flex-end;gap:var(--space-3)}
 .ef-message[data-align=end]{flex-direction:row-reverse}
 .ef-message__avatar{display:flex;flex:0 0 auto;align-items:flex-end}
 .ef-message:has(.ef-message__footer)>.ef-message__avatar{align-self:flex-end;margin-block-end:25px}
-.ef-message__content{display:flex;min-width:0;max-width:min(82%,680px);flex-direction:column;align-items:flex-start;gap:5px}
+.ef-message__content{display:flex;min-width:0;max-width:min(82%,680px);flex-direction:column;align-items:flex-start;gap:var(--space-1)}
 .ef-message[data-align=end]>.ef-message__content{align-items:flex-end}
-.ef-message__header{display:flex;min-width:0;align-items:center;gap:8px;padding-inline:2px;color:var(--text-secondary);font-size:var(--text-xs);line-height:1.4}
-.ef-message__footer{display:flex;min-height:20px;align-items:center;gap:8px;padding-inline:2px;color:var(--text-muted);font-size:var(--text-xs);line-height:1.4}
+.ef-message__header{display:flex;min-width:0;align-items:center;gap:var(--space-2);padding-inline:var(--space-0-5);color:var(--text-secondary);font-size:var(--text-xs);line-height:1.4}
+.ef-message__footer{display:flex;min-height:20px;align-items:center;gap:var(--space-2);padding-inline:var(--space-0-5);color:var(--text-muted);font-size:var(--text-xs);line-height:1.4}
 .ef-message[data-align=end] .ef-message__footer{justify-content:flex-end}
-.ef-message-group{display:flex;width:100%;flex-direction:column;gap:6px}
+.ef-message-group{display:flex;width:100%;flex-direction:column;gap:var(--space-2)}
 .ef-message-group[data-align=end]{align-items:flex-end}
 .ef-message-group[data-align=start]{align-items:flex-start}
 `;
@@ -1454,7 +1454,7 @@ const CSS = `
 .ef-message-scroller{position:relative;display:flex;width:100%;height:100%;min-height:0;overflow:hidden}
 .ef-message-scroller__viewport{width:100%;height:100%;overflow:auto;overscroll-behavior:contain;scrollbar-width:thin;scrollbar-color:var(--border-strong) transparent}
 .ef-message-scroller__viewport:focus-visible{outline:0;box-shadow:inset var(--focus-ring)}
-.ef-message-scroller__content{display:flex;min-height:100%;flex-direction:column;gap:16px;padding:16px}
+.ef-message-scroller__content{display:flex;min-height:100%;flex-direction:column;gap:var(--space-4);padding:var(--space-4)}
 .ef-message-scroller__item{content-visibility:auto;contain-intrinsic-size:auto 88px}
 .ef-message-scroller__button{position:absolute;inset-inline-end:16px;inset-block-end:16px;display:inline-flex;width:34px;height:34px;align-items:center;justify-content:center;border:1px solid var(--border-default);border-radius:var(--radius-full);background:var(--surface-card);color:var(--text-primary);box-shadow:var(--shadow-sm);cursor:pointer;transition:opacity var(--dur-fast) var(--ease-out),transform var(--dur-fast) var(--ease-out),background var(--dur-fast) var(--ease-out)}
 .ef-message-scroller__button:hover{background:var(--surface-sunken)}.ef-message-scroller__button:focus-visible{outline:0;box-shadow:var(--focus-ring)}
@@ -1747,23 +1747,23 @@ Object.assign(__ds_scope, { MessageScrollerProvider, useMessageScroller, useMess
 // components/ai/Player.jsx
 try { (() => {
 const CSS = `
-.ef-player{display:flex;flex-direction:column;gap:10px;padding:14px;border:1px solid var(--border-default);border-radius:var(--radius-md);background:var(--surface-card);font-family:var(--font-sans)}
-.ef-player__top{display:flex;align-items:center;gap:10px}
-.ef-player__title{flex:1;min-width:0;font-size:13.5px;font-weight:var(--weight-semibold);color:var(--text-primary);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.ef-player__meta{font-size:12px;color:var(--text-muted)}
+.ef-player{display:flex;flex-direction:column;gap:var(--space-3);padding:var(--space-4);border:1px solid var(--border-default);border-radius:var(--radius-md);background:var(--surface-card);font-family:var(--font-sans)}
+.ef-player__top{display:flex;align-items:center;gap:var(--space-3)}
+.ef-player__title{flex:1;min-width:0;font-size:var(--text-md);font-weight:var(--weight-semibold);color:var(--text-primary);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.ef-player__meta{font-size:var(--text-xs);color:var(--text-muted)}
 .ef-player__wave{position:relative;display:flex;align-items:center;justify-content:space-between;height:44px;cursor:pointer;touch-action:none;border-radius:var(--radius-sm)}
 .ef-player__wave:focus-visible{outline:none;box-shadow:var(--focus-ring)}
 .ef-player__bar{flex:none;width:2.5px;border-radius:var(--radius-full);background:var(--sand-300);transition:background .2s var(--ease-out)}
 .ef-player__bar--played{background:var(--accent)}
 .ef-player__bar--loading{animation:ef-player-load 1.2s ease-in-out infinite}
 @keyframes ef-player-load{0%,100%{transform:scaleY(.3);opacity:.5}50%{transform:scaleY(1);opacity:1}}
-.ef-player__row{display:flex;align-items:center;gap:6px}
+.ef-player__row{display:flex;align-items:center;gap:var(--space-2)}
 .ef-player__btn{display:inline-flex;align-items:center;justify-content:center;width:30px;height:30px;border:none;background:none;cursor:pointer;color:var(--text-secondary);border-radius:var(--radius-full);transition:color var(--dur-fast) var(--ease-out),background var(--dur-fast) var(--ease-out)}
 .ef-player__btn:hover{color:var(--text-primary);background:var(--surface-subtle)}
 .ef-player__btn:focus-visible{outline:none;box-shadow:var(--focus-ring)}
 .ef-player__play{width:38px;height:38px;background:var(--accent);color:var(--accent-contrast)}
 .ef-player__play:hover{background:var(--accent-hover);color:var(--accent-contrast)}
-.ef-player__time{font-size:12px;color:var(--text-muted);font-variant-numeric:tabular-nums}
+.ef-player__time{font-size:var(--text-xs);color:var(--text-muted);font-variant-numeric:tabular-nums}
 @media (pointer:coarse){.ef-player__btn{min-width:var(--tap-min);min-height:var(--tap-min)}}
 `;
 function formatTime(s, hint) {
@@ -1930,7 +1930,7 @@ const Player = React.forwardRef(function Player({
     onClick: () => jumpTo(t - 10)
   }, /*#__PURE__*/React.createElement(__ds_scope.Icon, {
     name: "skip-back",
-    size: 14
+    size: 16
   })), /*#__PURE__*/React.createElement("button", {
     type: "button",
     className: "ef-player__btn ef-player__play",
@@ -1938,7 +1938,7 @@ const Player = React.forwardRef(function Player({
     onClick: toggle
   }, /*#__PURE__*/React.createElement(__ds_scope.Icon, {
     name: playing ? 'pause' : 'play',
-    size: 15
+    size: 16
   })), /*#__PURE__*/React.createElement("button", {
     type: "button",
     className: "ef-player__btn",
@@ -1946,7 +1946,7 @@ const Player = React.forwardRef(function Player({
     onClick: () => jumpTo(t + 10)
   }, /*#__PURE__*/React.createElement(__ds_scope.Icon, {
     name: "skip-forward",
-    size: 14
+    size: 16
   })), /*#__PURE__*/React.createElement("span", {
     className: "ef-player__time"
   }, formatTime(t, dur), " / ", formatTime(dur)), /*#__PURE__*/React.createElement("button", {
@@ -1960,7 +1960,7 @@ const Player = React.forwardRef(function Player({
     onClick: () => setMuted(!muted)
   }, /*#__PURE__*/React.createElement(__ds_scope.Icon, {
     name: muted ? 'volume-x' : 'volume-2',
-    size: 14
+    size: 16
   }))));
 });
 Object.assign(__ds_scope, { formatTime, Player });
@@ -1970,20 +1970,20 @@ Object.assign(__ds_scope, { formatTime, Player });
 try { (() => {
 function _extends() { return _extends = Object.assign ? Object.assign.bind() : function (n) { for (var e = 1; e < arguments.length; e++) { var t = arguments[e]; for (var r in t) ({}).hasOwnProperty.call(t, r) && (n[r] = t[r]); } return n; }, _extends.apply(null, arguments); }
 const CSS = `
-.ef-promptsteps{border:1px solid var(--border-default);border-radius:var(--radius-md);background:var(--surface-card);padding:5px;font-family:var(--font-sans)}
+.ef-promptsteps{border:1px solid var(--border-default);border-radius:var(--radius-md);background:var(--surface-card);padding:var(--space-1);font-family:var(--font-sans)}
 .ef-promptsteps:focus{outline:none}
 .ef-promptsteps:focus-visible{box-shadow:var(--focus-ring)}
-.ef-promptsteps__q{padding:8px 11px 6px;font-size:13.5px;font-weight:var(--weight-semibold);color:var(--text-primary)}
-.ef-promptsteps__opt{display:flex;align-items:center;gap:11px;width:100%;padding:8px 11px;border:none;background:none;cursor:pointer;text-align:start;border-radius:var(--radius-sm);font-family:var(--font-sans);font-size:13.5px;color:var(--text-secondary)}
+.ef-promptsteps__q{padding:var(--space-2) var(--space-3) var(--space-2);font-size:var(--text-md);font-weight:var(--weight-semibold);color:var(--text-primary)}
+.ef-promptsteps__opt{display:flex;align-items:center;gap:var(--space-3);width:100%;padding:var(--space-2) var(--space-3);border:none;background:none;cursor:pointer;text-align:start;border-radius:var(--radius-sm);font-family:var(--font-sans);font-size:var(--text-md);color:var(--text-secondary)}
 .ef-promptsteps__opt--hi{background:var(--surface-sunken);color:var(--text-primary)}
-.ef-promptsteps__num{flex:none;width:14px;font-variant-numeric:tabular-nums;color:var(--text-muted);font-size:12.5px}
-.ef-promptsteps__other{flex:1;min-width:0;border:none;background:none;outline:none;font-family:var(--font-sans);font-size:13.5px;color:var(--text-primary);padding:0}
+.ef-promptsteps__num{flex:none;width:14px;font-variant-numeric:tabular-nums;color:var(--text-muted);font-size:var(--text-sm)}
+.ef-promptsteps__other{flex:1;min-width:0;border:none;background:none;outline:none;font-family:var(--font-sans);font-size:var(--text-md);color:var(--text-primary);padding:0}
 .ef-promptsteps__other::placeholder{color:var(--text-muted)}
-.ef-promptsteps__foot{display:flex;align-items:center;gap:12px;padding:8px 11px 5px;font-size:12px;color:var(--text-muted)}
-.ef-promptsteps__back{display:inline-flex;align-items:center;gap:4px;border:none;background:none;cursor:pointer;padding:2px 6px;margin-inline-start:-6px;border-radius:var(--radius-sm);font-family:var(--font-sans);font-size:12px;color:var(--text-muted)}
+.ef-promptsteps__foot{display:flex;align-items:center;gap:var(--space-3);padding:var(--space-2) var(--space-3) var(--space-1);font-size:var(--text-xs);color:var(--text-muted)}
+.ef-promptsteps__back{display:inline-flex;align-items:center;gap:var(--space-1);border:none;background:none;cursor:pointer;padding:var(--space-0-5) var(--space-2);margin-inline-start:calc(-1 * var(--space-2));border-radius:var(--radius-sm);font-family:var(--font-sans);font-size:var(--text-xs);color:var(--text-muted)}
 .ef-promptsteps__back:hover{color:var(--text-primary)}
-.ef-promptsteps__kbd{margin-inline-start:auto;display:inline-flex;align-items:center;gap:5px}
-.ef-promptsteps__kbd kbd{padding:1px 6px;border:1px solid var(--border-default);border-radius:var(--radius-sm);background:var(--surface-subtle);font-family:var(--font-sans);font-size:11px;color:var(--text-secondary)}
+.ef-promptsteps__kbd{margin-inline-start:auto;display:inline-flex;align-items:center;gap:var(--space-1)}
+.ef-promptsteps__kbd kbd{padding:1px var(--space-2);border:1px solid var(--border-default);border-radius:var(--radius-sm);background:var(--surface-subtle);font-family:var(--font-sans);font-size:var(--text-2xs);color:var(--text-secondary)}
 `;
 function PromptSteps({
   steps = [],
@@ -2141,14 +2141,14 @@ try { (() => {
 function _extends() { return _extends = Object.assign ? Object.assign.bind() : function (n) { for (var e = 1; e < arguments.length; e++) { var t = arguments[e]; for (var r in t) ({}).hasOwnProperty.call(t, r) && (n[r] = t[r]); } return n; }, _extends.apply(null, arguments); }
 const CSS = `
 .ef-reasoning{border:1px solid var(--border-default);border-radius:var(--radius-md);background:var(--surface-subtle);overflow:hidden}
-.ef-reasoning__head{display:flex;align-items:center;gap:8px;width:100%;padding:9px 12px;border:none;background:none;cursor:pointer;text-align:start;font-family:var(--font-sans);font-size:var(--text-sm);font-weight:500;color:var(--text-secondary)}
+.ef-reasoning__head{display:flex;align-items:center;gap:var(--space-2);width:100%;padding:var(--space-2) var(--space-3);border:none;background:none;cursor:pointer;text-align:start;font-family:var(--font-sans);font-size:var(--text-sm);font-weight:500;color:var(--text-secondary)}
 .ef-reasoning__head:focus-visible{outline:none;box-shadow:var(--focus-ring)}
 .ef-reasoning__glyph{display:inline-flex;color:var(--text-muted)}
 .ef-reasoning--streaming .ef-reasoning__glyph{animation:ef-reasoning-pulse 1.2s var(--ease-out) infinite}
 @keyframes ef-reasoning-pulse{0%,100%{opacity:1}50%{opacity:.35}}
 .ef-reasoning__chev{margin-inline-start:auto;display:inline-flex;color:var(--text-muted);transition:transform var(--dur-med) var(--ease-out)}
 .ef-reasoning--open .ef-reasoning__chev{transform:rotate(180deg)}
-.ef-reasoning__body{padding:2px 14px 12px;font-size:13.5px;line-height:1.65;color:var(--text-secondary);white-space:pre-wrap;border-top:1px dashed var(--border-default);padding-top:10px;margin:0 0}
+.ef-reasoning__body{padding:var(--space-0-5) var(--space-4) var(--space-3);font-size:var(--text-md);line-height:1.65;color:var(--text-secondary);white-space:pre-wrap;border-top:1px dashed var(--border-default);padding-top:var(--space-3);margin:0 0}
 `;
 function Reasoning({
   streaming,
@@ -2182,12 +2182,12 @@ function Reasoning({
     className: "ef-reasoning__glyph"
   }, /*#__PURE__*/React.createElement(__ds_scope.Icon, {
     name: "brain",
-    size: 14
+    size: 16
   })), head, /*#__PURE__*/React.createElement("span", {
     className: "ef-reasoning__chev"
   }, /*#__PURE__*/React.createElement(__ds_scope.Icon, {
     name: "chevron-down",
-    size: 14
+    size: 16
   }))), isOpen ? /*#__PURE__*/React.createElement("div", {
     className: "ef-reasoning__body"
   }, children) : null);
@@ -2199,24 +2199,24 @@ Object.assign(__ds_scope, { Reasoning });
 try { (() => {
 function _extends() { return _extends = Object.assign ? Object.assign.bind() : function (n) { for (var e = 1; e < arguments.length; e++) { var t = arguments[e]; for (var r in t) ({}).hasOwnProperty.call(t, r) && (n[r] = t[r]); } return n; }, _extends.apply(null, arguments); }
 const CSS = `
-.ef-richcomposer{position:relative;border:1px solid var(--border-strong);border-radius:var(--radius-lg,14px);background:var(--surface-card);transition:border-color var(--dur-fast) var(--ease-out),box-shadow var(--dur-fast) var(--ease-out)}
+.ef-richcomposer{position:relative;border:1px solid var(--border-strong);border-radius:var(--radius-lg);background:var(--surface-card);transition:border-color var(--dur-fast) var(--ease-out),box-shadow var(--dur-fast) var(--ease-out)}
 .ef-richcomposer:focus-within{border-color:var(--text-muted);box-shadow:var(--focus-ring)}
-.ef-richcomposer__input{min-height:44px;max-height:200px;overflow-y:auto;padding:12px 14px 4px;font-family:var(--font-sans);font-size:14px;line-height:1.6;color:var(--text-primary);outline:none;white-space:pre-wrap;word-break:break-word}
+.ef-richcomposer__input{min-height:44px;max-height:200px;overflow-y:auto;padding:var(--space-3) var(--space-4) var(--space-1);font-family:var(--font-sans);font-size:var(--text-md);line-height:1.6;color:var(--text-primary);outline:none;white-space:pre-wrap;word-break:break-word}
 .ef-richcomposer__input:empty::before{content:attr(data-placeholder);color:var(--text-muted);pointer-events:none}
-.ef-richcomposer__chip{display:inline-flex;align-items:center;gap:4px;margin:0 1px;padding:1px 7px;border-radius:var(--radius-sm);background:var(--accent-subtle);border:1px solid var(--accent-subtle-border);color:var(--text-primary);font-size:13px;white-space:nowrap;user-select:none}
-.ef-richcomposer__bar{display:flex;align-items:center;gap:8px;padding:8px 10px 10px}
-.ef-richcomposer__hint{font-size:12px;color:var(--text-muted)}
+.ef-richcomposer__chip{display:inline-flex;align-items:center;gap:var(--space-1);margin:0 1px;padding:1px var(--space-2);border-radius:var(--radius-sm);background:var(--accent-subtle);border:1px solid var(--accent-subtle-border);color:var(--text-primary);font-size:var(--text-sm);white-space:nowrap;user-select:none}
+.ef-richcomposer__bar{display:flex;align-items:center;gap:var(--space-2);padding:var(--space-2) var(--space-3) var(--space-3)}
+.ef-richcomposer__hint{font-size:var(--text-xs);color:var(--text-muted)}
 .ef-richcomposer__send{margin-inline-start:auto;display:inline-flex;align-items:center;justify-content:center;width:32px;height:32px;border:none;border-radius:var(--radius-full);background:var(--accent);color:var(--accent-contrast);cursor:pointer;transition:background var(--dur-fast) var(--ease-out),opacity var(--dur-fast) var(--ease-out)}
 .ef-richcomposer__send:hover{background:var(--accent-hover)}
 .ef-richcomposer__send:disabled{opacity:.35;cursor:default}
 .ef-richcomposer__send:focus-visible{outline:none;box-shadow:var(--focus-ring)}
-.ef-richcomposer__pop{position:absolute;bottom:calc(100% + 6px);inset-inline:0;z-index:40;max-height:260px;overflow-y:auto;padding:4px;border:1px solid var(--border-default);border-radius:var(--radius-md);background:var(--surface-card);box-shadow:var(--shadow-lg)}
-.ef-richcomposer__group{padding:7px 10px 3px;font-size:11px;font-weight:var(--weight-semibold);letter-spacing:.04em;text-transform:uppercase;color:var(--text-muted)}
-.ef-richcomposer__item{display:flex;align-items:center;gap:9px;width:100%;padding:7px 10px;border:none;background:none;cursor:pointer;text-align:start;border-radius:var(--radius-sm);font-family:var(--font-sans);font-size:13.5px;color:var(--text-primary)}
+.ef-richcomposer__pop{position:absolute;bottom:calc(100% + 6px);inset-inline:0;z-index:40;max-height:260px;overflow-y:auto;padding:var(--space-1);border:1px solid var(--border-default);border-radius:var(--radius-md);background:var(--surface-card);box-shadow:var(--shadow-lg)}
+.ef-richcomposer__group{padding:var(--space-2) var(--space-3) var(--space-1);font-size:var(--text-2xs);font-weight:var(--weight-semibold);letter-spacing:.04em;text-transform:uppercase;color:var(--text-muted)}
+.ef-richcomposer__item{display:flex;align-items:center;gap:var(--space-2);width:100%;padding:var(--space-2) var(--space-3);border:none;background:none;cursor:pointer;text-align:start;border-radius:var(--radius-sm);font-family:var(--font-sans);font-size:var(--text-md);color:var(--text-primary)}
 .ef-richcomposer__item--hi{background:var(--surface-sunken)}
 .ef-richcomposer__itemicon{display:inline-flex;flex:none;color:var(--text-muted)}
-.ef-richcomposer__itemdesc{margin-inline-start:auto;font-size:12px;color:var(--text-muted);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.ef-richcomposer__empty{padding:8px 10px;font-size:13px;color:var(--text-muted)}
+.ef-richcomposer__itemdesc{margin-inline-start:auto;font-size:var(--text-xs);color:var(--text-muted);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.ef-richcomposer__empty{padding:var(--space-2) var(--space-3);font-size:var(--text-sm);color:var(--text-muted)}
 @media (pointer:coarse){.ef-richcomposer__send{min-width:var(--tap-min);min-height:var(--tap-min)}}
 `;
 function findTrigger(root) {
@@ -2409,7 +2409,7 @@ function RichComposer({
       className: "ef-richcomposer__itemicon"
     }, /*#__PURE__*/React.createElement(__ds_scope.Icon, {
       name: it.icon,
-      size: 14
+      size: 16
     })) : null, /*#__PURE__*/React.createElement("span", null, pop.char === '/' ? '/' + it.label : it.label), it.description ? /*#__PURE__*/React.createElement("span", {
       className: "ef-richcomposer__itemdesc"
     }, it.description) : null));
@@ -2442,7 +2442,7 @@ function RichComposer({
     onClick: submit
   }, /*#__PURE__*/React.createElement(__ds_scope.Icon, {
     name: "send",
-    size: 14
+    size: 16
   }))));
 }
 Object.assign(__ds_scope, { RichComposer });
@@ -2455,25 +2455,25 @@ const CSS = `
 .ef-sandbox{border:1px solid var(--border-default);border-radius:var(--radius-md);background:var(--surface-card);overflow:hidden;font-family:var(--font-sans);transition:border-color var(--dur-fast) var(--ease-out),box-shadow var(--dur-fast) var(--ease-out)}
 .ef-sandbox--busy{border-color:var(--accent-subtle-border);box-shadow:0 0 0 3px var(--accent-subtle)}
 .ef-sandbox--danger{border-color:var(--danger-300);box-shadow:0 0 0 3px var(--danger-100)}
-.ef-sandbox__head{display:flex;align-items:center;gap:9px;width:100%;padding:10px 14px;border:none;background:none;cursor:pointer;text-align:start;font-family:inherit}
+.ef-sandbox__head{display:flex;align-items:center;gap:var(--space-2);width:100%;padding:var(--space-3) var(--space-4);border:none;background:none;cursor:pointer;text-align:start;font-family:inherit}
 .ef-sandbox__head:focus-visible{outline:none;box-shadow:var(--focus-ring)}
 .ef-sandbox__chev{display:inline-flex;color:var(--text-muted);transition:transform var(--dur-med) var(--ease-out)}
 .ef-sandbox--open .ef-sandbox__chev{transform:rotate(90deg)}
-.ef-sandbox__title{flex:1;min-width:0;font-family:var(--font-mono);font-size:12.5px;color:var(--text-primary);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.ef-sandbox__title{flex:1;min-width:0;font-family:var(--font-mono);font-size:var(--text-sm);color:var(--text-primary);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .ef-sandbox--danger .ef-sandbox__title{color:var(--danger-600)}
-.ef-sandbox__meta{font-size:12px;color:var(--text-muted);display:inline-flex;align-items:center;gap:6px}
+.ef-sandbox__meta{font-size:var(--text-xs);color:var(--text-muted);display:inline-flex;align-items:center;gap:var(--space-2)}
 .ef-sandbox__spin{display:inline-flex;color:var(--text-secondary);animation:ef-sandbox-spin 1s linear infinite}
 @keyframes ef-sandbox-spin{to{transform:rotate(360deg)}}
 .ef-sandbox__body{display:grid;grid-template-rows:0fr;transition:grid-template-rows var(--dur-med) var(--ease-out)}
 .ef-sandbox--open .ef-sandbox__body{grid-template-rows:1fr}
 .ef-sandbox__clip{overflow:hidden;min-height:0}
 .ef-sandbox__inner{border-top:1px solid var(--border-default)}
-.ef-sandbox__tabs{display:flex;gap:18px;padding:0 14px;border-bottom:1px solid var(--border-default)}
-.ef-sandbox__tab{display:inline-flex;align-items:center;gap:6px;height:36px;border:none;background:none;cursor:pointer;font-family:var(--font-sans);font-size:12.5px;font-weight:var(--weight-semibold);color:var(--text-muted);border-bottom:2px solid transparent;margin-bottom:-1px;transition:color var(--dur-fast) var(--ease-out),border-color var(--dur-fast) var(--ease-out)}
+.ef-sandbox__tabs{display:flex;gap:var(--space-5);padding:0 var(--space-4);border-bottom:1px solid var(--border-default)}
+.ef-sandbox__tab{display:inline-flex;align-items:center;gap:var(--space-2);height:var(--control-h-md);border:none;background:none;cursor:pointer;font-family:var(--font-sans);font-size:var(--text-sm);font-weight:var(--weight-semibold);color:var(--text-muted);border-bottom:2px solid transparent;margin-bottom:-1px;transition:color var(--dur-fast) var(--ease-out),border-color var(--dur-fast) var(--ease-out)}
 .ef-sandbox__tab:hover{color:var(--text-primary)}
 .ef-sandbox__tab--on{color:var(--text-primary);border-bottom-color:var(--accent)}
 .ef-sandbox__tab:focus-visible{outline:none;box-shadow:var(--focus-ring)}
-.ef-sandbox__panel{padding:12px 14px;font-family:var(--font-mono);font-size:12.5px;line-height:1.7;color:var(--text-secondary);overflow-x:auto}
+.ef-sandbox__panel{padding:var(--space-3) var(--space-4);font-family:var(--font-mono);font-size:var(--text-sm);line-height:1.7;color:var(--text-secondary);overflow-x:auto}
 .ef-sandbox__panel pre{margin:0;white-space:pre-wrap;word-break:break-word}
 @media (pointer:coarse){.ef-sandbox__tab{min-height:var(--tap-min)}}
 `;
@@ -2511,7 +2511,7 @@ function Sandbox({
     className: "ef-sandbox__chev"
   }, /*#__PURE__*/React.createElement(__ds_scope.Icon, {
     name: "chevron-right",
-    size: 14
+    size: 16
   })), /*#__PURE__*/React.createElement("span", {
     className: "ef-sandbox__title"
   }, title), /*#__PURE__*/React.createElement("span", {
@@ -2520,7 +2520,7 @@ function Sandbox({
     className: "ef-sandbox__spin"
   }, /*#__PURE__*/React.createElement(__ds_scope.Icon, {
     name: "loader-circle",
-    size: 13
+    size: 12
   })) : null, meta || STATES[s])), /*#__PURE__*/React.createElement("div", {
     className: "ef-sandbox__body"
   }, /*#__PURE__*/React.createElement("div", {
@@ -2539,7 +2539,7 @@ function Sandbox({
     onClick: () => setTab(t.id)
   }, t.icon ? /*#__PURE__*/React.createElement(__ds_scope.Icon, {
     name: t.icon,
-    size: 13
+    size: 12
   }) : null, t.label))) : null, /*#__PURE__*/React.createElement("div", {
     className: "ef-sandbox__panel",
     role: "tabpanel"
@@ -2553,11 +2553,11 @@ try { (() => {
 function _extends() { return _extends = Object.assign ? Object.assign.bind() : function (n) { for (var e = 1; e < arguments.length; e++) { var t = arguments[e]; for (var r in t) ({}).hasOwnProperty.call(t, r) && (n[r] = t[r]); } return n; }, _extends.apply(null, arguments); }
 const CSS = `
 .ef-selq{position:relative}
-.ef-selq__bar{position:absolute;z-index:30;display:inline-flex;align-items:center;gap:2px;padding:4px;border:1px solid var(--border-default);border-radius:var(--radius-md);background:var(--surface-card);box-shadow:var(--shadow-lg);user-select:none}
-.ef-selq__btn{display:inline-flex;align-items:center;gap:6px;padding:5px 10px;border:none;background:none;cursor:pointer;border-radius:var(--radius-sm);font-family:var(--font-sans);font-size:12.5px;font-weight:var(--weight-semibold);color:var(--text-secondary);transition:color var(--dur-fast) var(--ease-out),background var(--dur-fast) var(--ease-out)}
+.ef-selq__bar{position:absolute;z-index:30;display:inline-flex;align-items:center;gap:var(--space-0-5);padding:var(--space-1);border:1px solid var(--border-default);border-radius:var(--radius-md);background:var(--surface-card);box-shadow:var(--shadow-lg);user-select:none}
+.ef-selq__btn{display:inline-flex;align-items:center;gap:var(--space-2);padding:var(--space-1) var(--space-3);border:none;background:none;cursor:pointer;border-radius:var(--radius-sm);font-family:var(--font-sans);font-size:var(--text-sm);font-weight:var(--weight-semibold);color:var(--text-secondary);transition:color var(--dur-fast) var(--ease-out),background var(--dur-fast) var(--ease-out)}
 .ef-selq__btn:hover{color:var(--text-primary);background:var(--surface-subtle)}
 .ef-selq__btn:focus-visible{outline:none;box-shadow:var(--focus-ring)}
-.ef-selq__sep{width:1px;height:16px;background:var(--border-default);margin:0 3px}
+.ef-selq__sep{width:1px;height:16px;background:var(--border-default);margin:0 var(--space-1)}
 `;
 function SelectionQuote({
   children,
@@ -2667,7 +2667,7 @@ function SelectionQuote({
     }
   }, a.icon ? /*#__PURE__*/React.createElement(__ds_scope.Icon, {
     name: a.icon,
-    size: 13
+    size: 12
   }) : null, a.label)))) : null);
 }
 Object.assign(__ds_scope, { SelectionQuote });
@@ -2677,16 +2677,16 @@ Object.assign(__ds_scope, { SelectionQuote });
 try { (() => {
 function _extends() { return _extends = Object.assign ? Object.assign.bind() : function (n) { for (var e = 1; e < arguments.length; e++) { var t = arguments[e]; for (var r in t) ({}).hasOwnProperty.call(t, r) && (n[r] = t[r]); } return n; }, _extends.apply(null, arguments); }
 const CSS = `
-.ef-sourcecard{display:flex;flex-direction:column;gap:6px;padding:12px;border:1px solid var(--border-default);border-radius:var(--radius-md);background:var(--surface-card);text-decoration:none;color:inherit;transition:border-color var(--dur-fast) var(--ease-out),background var(--dur-fast) var(--ease-out)}
+.ef-sourcecard{display:flex;flex-direction:column;gap:var(--space-2);padding:var(--space-3);border:1px solid var(--border-default);border-radius:var(--radius-md);background:var(--surface-card);text-decoration:none;color:inherit;transition:border-color var(--dur-fast) var(--ease-out),background var(--dur-fast) var(--ease-out)}
 a.ef-sourcecard{cursor:pointer}
 a.ef-sourcecard:hover{border-color:var(--border-strong);background:var(--surface-subtle)}
 a.ef-sourcecard:focus-visible{outline:none;box-shadow:var(--focus-ring)}
-.ef-sourcecard--plain{border-color:transparent;background:transparent;padding:8px 10px}
-.ef-sourcecard__thumb{width:100%;aspect-ratio:16/9;border-radius:var(--radius-sm);object-fit:cover;background:var(--surface-sunken);margin-bottom:4px}
-.ef-sourcecard__domain{display:inline-flex;align-items:center;gap:6px;font-size:11.5px;color:var(--text-muted)}
+.ef-sourcecard--plain{border-color:transparent;background:transparent;padding:var(--space-2) var(--space-3)}
+.ef-sourcecard__thumb{width:100%;aspect-ratio:16/9;border-radius:var(--radius-sm);object-fit:cover;background:var(--surface-sunken);margin-bottom:var(--space-1)}
+.ef-sourcecard__domain{display:inline-flex;align-items:center;gap:var(--space-2);font-size:var(--text-xs);color:var(--text-muted)}
 .ef-sourcecard__domain img{width:14px;height:14px;border-radius:var(--radius-full)}
-.ef-sourcecard__title{font-size:13.5px;font-weight:var(--weight-semibold);color:var(--text-primary);line-height:1.4}
-.ef-sourcecard__desc{font-size:12.5px;color:var(--text-muted);line-height:1.55;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}
+.ef-sourcecard__title{font-size:var(--text-md);font-weight:var(--weight-semibold);color:var(--text-primary);line-height:1.4}
+.ef-sourcecard__desc{font-size:var(--text-sm);color:var(--text-muted);line-height:1.55;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}
 `;
 // Model-supplied URL: only http(s), mailto and relative pass (see Citation.jsx).
 function safeUrl(url) {
@@ -2730,7 +2730,7 @@ function SourceCard({
     alt: ""
   }) : /*#__PURE__*/React.createElement(__ds_scope.Icon, {
     name: icon,
-    size: 13
+    size: 12
   }), domain) : null, /*#__PURE__*/React.createElement("span", {
     className: "ef-sourcecard__title"
   }, title), description ? /*#__PURE__*/React.createElement("span", {
@@ -2744,8 +2744,8 @@ Object.assign(__ds_scope, { SourceCard });
 try { (() => {
 function _extends() { return _extends = Object.assign ? Object.assign.bind() : function (n) { for (var e = 1; e < arguments.length; e++) { var t = arguments[e]; for (var r in t) ({}).hasOwnProperty.call(t, r) && (n[r] = t[r]); } return n; }, _extends.apply(null, arguments); }
 const CSS = `
-.ef-suggestions{display:flex;flex-wrap:wrap;gap:8px}
-.ef-suggestion{display:inline-flex;align-items:center;gap:7px;padding:7px 13px;border:1px solid var(--border-strong);border-radius:var(--radius-full);background:var(--surface-card);cursor:pointer;font-family:var(--font-sans);font-size:13.5px;color:var(--text-secondary);transition:color var(--dur-fast) var(--ease-out),border-color var(--dur-fast) var(--ease-out),background var(--dur-fast) var(--ease-out)}
+.ef-suggestions{display:flex;flex-wrap:wrap;gap:var(--space-2)}
+.ef-suggestion{display:inline-flex;align-items:center;gap:var(--space-2);padding:var(--space-2) var(--space-3);border:1px solid var(--border-strong);border-radius:var(--radius-full);background:var(--surface-card);cursor:pointer;font-family:var(--font-sans);font-size:var(--text-md);color:var(--text-secondary);transition:color var(--dur-fast) var(--ease-out),border-color var(--dur-fast) var(--ease-out),background var(--dur-fast) var(--ease-out)}
 .ef-suggestion:hover{color:var(--text-primary);border-color:var(--text-muted);background:var(--surface-subtle)}
 .ef-suggestion:focus-visible{outline:none;box-shadow:var(--focus-ring)}
 .ef-suggestion__icon{display:inline-flex;color:var(--text-muted)}
@@ -2773,7 +2773,7 @@ function Suggestions({
       className: "ef-suggestion__icon"
     }, /*#__PURE__*/React.createElement(__ds_scope.Icon, {
       name: icon,
-      size: 14
+      size: 16
     })) : null, label);
   }));
 }
@@ -2784,14 +2784,14 @@ Object.assign(__ds_scope, { Suggestions });
 try { (() => {
 function _extends() { return _extends = Object.assign ? Object.assign.bind() : function (n) { for (var e = 1; e < arguments.length; e++) { var t = arguments[e]; for (var r in t) ({}).hasOwnProperty.call(t, r) && (n[r] = t[r]); } return n; }, _extends.apply(null, arguments); }
 const CSS = `
-.ef-task{display:flex;flex-direction:column;font-family:var(--font-sans);font-size:13.5px}
-.ef-task__row{display:inline-flex;align-items:flex-start;gap:9px;padding:3px 8px;align-self:flex-start;color:var(--text-secondary);border-radius:var(--radius-sm)}
+.ef-task{display:flex;flex-direction:column;font-family:var(--font-sans);font-size:var(--text-md)}
+.ef-task__row{display:inline-flex;align-items:flex-start;gap:var(--space-2);padding:var(--space-1) var(--space-2);align-self:flex-start;color:var(--text-secondary);border-radius:var(--radius-sm)}
 .ef-task__icon{display:inline-flex;width:16px;height:20px;align-items:center;justify-content:center;color:var(--text-muted);flex:none}
 .ef-task__dot{width:6px;height:6px;border-radius:50%;background:currentColor}
 .ef-task__label{color:var(--text-primary)}
 .ef-task__detail{color:var(--text-muted)}
-.ef-task__detail code{font-family:var(--font-mono);font-size:12px;background:var(--surface-sunken);border-radius:4px;padding:1px 5px;color:var(--text-secondary)}
-.ef-task__rail{width:1px;height:13px;margin-inline-start:16px;background:var(--border-default);flex:none}
+.ef-task__detail code{font-family:var(--font-mono);font-size:var(--text-xs);background:var(--surface-sunken);border-radius:var(--radius-xs);padding:1px var(--space-1);color:var(--text-secondary)}
+.ef-task__rail{width:1px;height:13px;margin-inline-start:var(--space-4);background:var(--border-default);flex:none}
 .ef-task--streaming .ef-task__row:last-of-type{animation:ef-task-pulse 1.2s var(--ease-out) infinite}
 @keyframes ef-task-pulse{0%,100%{opacity:1}50%{opacity:.45}}
 `;
@@ -2816,7 +2816,7 @@ function Task({
     className: "ef-task__icon"
   }, it.icon ? /*#__PURE__*/React.createElement(__ds_scope.Icon, {
     name: it.icon,
-    size: 14
+    size: 16
   }) : /*#__PURE__*/React.createElement("span", {
     className: "ef-task__dot"
   })), /*#__PURE__*/React.createElement("span", null, /*#__PURE__*/React.createElement("span", {
@@ -2836,19 +2836,19 @@ try { (() => {
 function _extends() { return _extends = Object.assign ? Object.assign.bind() : function (n) { for (var e = 1; e < arguments.length; e++) { var t = arguments[e]; for (var r in t) ({}).hasOwnProperty.call(t, r) && (n[r] = t[r]); } return n; }, _extends.apply(null, arguments); }
 const CSS = `
 .ef-todo{border:1px solid var(--border-default);border-radius:var(--radius-md);background:var(--surface-card);font-family:var(--font-sans)}
-.ef-todo__head{display:flex;align-items:center;gap:9px;width:100%;padding:10px 14px;border:none;background:none;cursor:pointer;text-align:start;font-family:inherit}
+.ef-todo__head{display:flex;align-items:center;gap:var(--space-2);width:100%;padding:var(--space-3) var(--space-4);border:none;background:none;cursor:pointer;text-align:start;font-family:inherit}
 .ef-todo__head:focus-visible{outline:none;box-shadow:var(--focus-ring);border-radius:var(--radius-md)}
 .ef-todo__glyph{display:inline-flex;color:var(--text-muted)}
-.ef-todo__title{flex:1;min-width:0;font-size:13.5px;font-weight:var(--weight-semibold);color:var(--text-primary)}
-.ef-todo__count{font-size:12px;color:var(--text-muted);font-variant-numeric:tabular-nums}
+.ef-todo__title{flex:1;min-width:0;font-size:var(--text-md);font-weight:var(--weight-semibold);color:var(--text-primary)}
+.ef-todo__count{font-size:var(--text-xs);color:var(--text-muted);font-variant-numeric:tabular-nums}
 .ef-todo__chev{display:inline-flex;color:var(--text-muted);transition:transform var(--dur-med) var(--ease-out)}
 .ef-todo--open .ef-todo__chev{transform:rotate(180deg)}
 .ef-todo__body{display:grid;grid-template-rows:0fr;transition:grid-template-rows var(--dur-med) var(--ease-out)}
 .ef-todo--open .ef-todo__body{grid-template-rows:1fr}
 .ef-todo__clip{overflow:hidden;min-height:0}
-.ef-todo__list{list-style:none;margin:0;padding:0 6px 6px}
-.ef-todo__item{display:flex;align-items:flex-start;gap:10px;padding:6px 8px;font-size:13.5px;border-radius:var(--radius-sm)}
-.ef-todo__mark{position:relative;flex:none;width:16px;height:16px;margin-top:2px;border-radius:50%;border:1px solid var(--border-strong);display:inline-flex;align-items:center;justify-content:center;transition:background var(--dur-fast) var(--ease-out),border-color var(--dur-fast) var(--ease-out)}
+.ef-todo__list{list-style:none;margin:0;padding:0 var(--space-2) var(--space-2)}
+.ef-todo__item{display:flex;align-items:flex-start;gap:var(--space-3);padding:var(--space-2) var(--space-2);font-size:var(--text-md);border-radius:var(--radius-sm)}
+.ef-todo__mark{position:relative;flex:none;width:var(--icon-md);height:var(--icon-md);margin-top:var(--space-0-5);border-radius:50%;border:1px solid var(--border-strong);display:inline-flex;align-items:center;justify-content:center;transition:background var(--dur-fast) var(--ease-out),border-color var(--dur-fast) var(--ease-out)}
 .ef-todo__item--progress .ef-todo__mark{border-color:transparent;color:var(--text-primary)}
 .ef-todo__item--done .ef-todo__mark{background:var(--accent);border-color:var(--accent);color:var(--accent-contrast)}
 .ef-todo__spin{display:inline-flex;animation:ef-todo-spin 1s linear infinite}
@@ -2879,7 +2879,7 @@ function Todo({
     className: "ef-todo__glyph"
   }, /*#__PURE__*/React.createElement(__ds_scope.Icon, {
     name: "list-todo",
-    size: 15
+    size: 16
   })), /*#__PURE__*/React.createElement("span", {
     className: "ef-todo__title"
   }, title), /*#__PURE__*/React.createElement("span", {
@@ -2888,7 +2888,7 @@ function Todo({
     className: "ef-todo__chev"
   }, /*#__PURE__*/React.createElement(__ds_scope.Icon, {
     name: "chevron-down",
-    size: 14
+    size: 16
   }))), /*#__PURE__*/React.createElement("div", {
     className: "ef-todo__body"
   }, /*#__PURE__*/React.createElement("div", {
@@ -2907,10 +2907,10 @@ function Todo({
       className: "ef-todo__spin"
     }, /*#__PURE__*/React.createElement(__ds_scope.Icon, {
       name: "loader-circle",
-      size: 15
+      size: 16
     })) : null, st === 'done' ? /*#__PURE__*/React.createElement(__ds_scope.Icon, {
       name: "check",
-      size: 10,
+      size: 12,
       strokeWidth: 3
     }) : null), /*#__PURE__*/React.createElement("span", {
       className: "ef-todo__text"
@@ -2928,13 +2928,13 @@ const CSS = `
 .ef-toolcall--approval{border-color:var(--accent-subtle-border);box-shadow:0 0 0 2px var(--accent-subtle)}
 .ef-toolcall--busy{border-color:var(--accent-subtle-border)}
 .ef-toolcall--danger{border-color:var(--danger-300,var(--danger-600))}
-.ef-toolcall__head{display:flex;align-items:center;gap:9px;width:100%;padding:9px 12px;border:none;background:none;cursor:pointer;text-align:start;font-family:var(--font-mono);font-size:12.5px;color:var(--text-primary)}
+.ef-toolcall__head{display:flex;align-items:center;gap:var(--space-2);width:100%;padding:var(--space-2) var(--space-3);border:none;background:none;cursor:pointer;text-align:start;font-family:var(--font-mono);font-size:var(--text-sm);color:var(--text-primary)}
 .ef-toolcall__head:focus-visible{outline:none;box-shadow:var(--focus-ring)}
 .ef-toolcall--pending .ef-toolcall__head{animation:ef-toolcall-pulse 1.4s var(--ease-out) infinite}
 @keyframes ef-toolcall-pulse{0%,100%{opacity:1}50%{opacity:.55}}
 .ef-toolcall__icon{display:inline-flex;color:var(--text-muted)}
-.ef-toolcall__verb{color:var(--text-muted);font-family:var(--font-sans);font-size:12.5px}
-.ef-toolcall__state{margin-inline-start:auto;display:inline-flex;align-items:center;gap:6px;font-family:var(--font-sans);font-size:12px;font-weight:500;flex:none}
+.ef-toolcall__verb{color:var(--text-muted);font-family:var(--font-sans);font-size:var(--text-sm)}
+.ef-toolcall__state{margin-inline-start:auto;display:inline-flex;align-items:center;gap:var(--space-2);font-family:var(--font-sans);font-size:var(--text-xs);font-weight:500;flex:none}
 .ef-toolcall__state--pending{color:var(--text-muted)}
 .ef-toolcall__state--approval{color:var(--brand-700)}
 .ef-toolcall__state--busy{color:var(--text-secondary)}
@@ -2944,19 +2944,19 @@ const CSS = `
 @keyframes ef-toolcall-spin{to{transform:rotate(360deg)}}
 .ef-toolcall__chev{display:inline-flex;color:var(--text-muted);transition:transform var(--dur-med) var(--ease-out)}
 .ef-toolcall--open .ef-toolcall__chev{transform:rotate(180deg)}
-.ef-toolcall__body{border-top:1px solid var(--border-default);padding:12px;display:flex;flex-direction:column;gap:10px}
-.ef-toolcall__sec{font-size:11px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--text-muted);margin-bottom:5px}
-.ef-toolcall__grid{border:1px solid var(--border-default);border-radius:var(--radius-sm);background:var(--surface-sunken);overflow:hidden;font-family:var(--font-mono);font-size:12px}
-.ef-toolcall__row{display:grid;grid-template-columns:max-content 1fr;gap:12px;padding:6px 10px;border-top:1px solid var(--border-default)}
+.ef-toolcall__body{border-top:1px solid var(--border-default);padding:var(--space-3);display:flex;flex-direction:column;gap:var(--space-3)}
+.ef-toolcall__sec{font-size:var(--text-2xs);font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--text-muted);margin-bottom:var(--space-1)}
+.ef-toolcall__grid{border:1px solid var(--border-default);border-radius:var(--radius-sm);background:var(--surface-sunken);overflow:hidden;font-family:var(--font-mono);font-size:var(--text-xs)}
+.ef-toolcall__row{display:grid;grid-template-columns:max-content 1fr;gap:var(--space-3);padding:var(--space-2) var(--space-3);border-top:1px solid var(--border-default)}
 .ef-toolcall__row:first-child{border-top:none}
 .ef-toolcall__key{color:var(--text-muted)}
 .ef-toolcall__val{min-width:0;color:var(--text-secondary);white-space:pre-wrap;word-break:break-word}
 .ef-toolcall--streaming .ef-toolcall__row:last-child .ef-toolcall__val{animation:ef-toolcall-pulse 1.2s var(--ease-out) infinite}
-.ef-toolcall__args{margin:0;padding:10px 12px;background:var(--surface-sunken);border:1px solid var(--border-default);border-radius:var(--radius-sm);font-family:var(--font-mono);font-size:12px;line-height:1.6;color:var(--text-secondary);white-space:pre-wrap;word-break:break-word;max-height:256px;overflow:auto}
-.ef-toolcall__result{font-size:13.5px;line-height:1.6;color:var(--text-secondary)}
-.ef-toolcall__error{padding:10px 12px;border-radius:var(--radius-sm);background:var(--danger-100);color:var(--danger-600);font-size:13px;line-height:1.55}
-.ef-toolcall__actions{display:flex;justify-content:flex-end;gap:8px;padding-top:2px}
-.ef-toolcall__btn{height:28px;padding:0 12px;border-radius:var(--radius-sm);border:1px solid var(--border-strong);background:var(--surface-card);cursor:pointer;font-family:var(--font-sans);font-size:12.5px;font-weight:600;color:var(--text-primary);transition:background var(--dur-fast) var(--ease-out)}
+.ef-toolcall__args{margin:0;padding:var(--space-3) var(--space-3);background:var(--surface-sunken);border:1px solid var(--border-default);border-radius:var(--radius-sm);font-family:var(--font-mono);font-size:var(--text-xs);line-height:1.6;color:var(--text-secondary);white-space:pre-wrap;word-break:break-word;max-height:256px;overflow:auto}
+.ef-toolcall__result{font-size:var(--text-md);line-height:1.6;color:var(--text-secondary)}
+.ef-toolcall__error{padding:var(--space-3) var(--space-3);border-radius:var(--radius-sm);background:var(--danger-100);color:var(--danger-600);font-size:var(--text-sm);line-height:1.55}
+.ef-toolcall__actions{display:flex;justify-content:flex-end;gap:var(--space-2);padding-top:var(--space-0-5)}
+.ef-toolcall__btn{height:var(--control-h-sm);padding:0 var(--space-3);border-radius:var(--radius-sm);border:1px solid var(--border-strong);background:var(--surface-card);cursor:pointer;font-family:var(--font-sans);font-size:var(--text-sm);font-weight:600;color:var(--text-primary);transition:background var(--dur-fast) var(--ease-out)}
 .ef-toolcall__btn:hover{background:var(--surface-subtle)}
 .ef-toolcall__btn--accept{background:var(--accent);border-color:var(--accent);color:var(--accent-contrast)}
 .ef-toolcall__btn--accept:hover{background:var(--accent-hover)}
@@ -3006,7 +3006,7 @@ function ToolCall({
     className: "ef-toolcall__icon"
   }, /*#__PURE__*/React.createElement(__ds_scope.Icon, {
     name: icon,
-    size: 14
+    size: 16
   })), /*#__PURE__*/React.createElement("span", {
     className: "ef-toolcall__verb"
   }, "tool"), name, /*#__PURE__*/React.createElement("span", {
@@ -3015,21 +3015,21 @@ function ToolCall({
     className: "ef-toolcall__spin"
   }, /*#__PURE__*/React.createElement(__ds_scope.Icon, {
     name: "loader-circle",
-    size: 13
+    size: 12
   })) : status === 'approval' ? /*#__PURE__*/React.createElement(__ds_scope.Icon, {
     name: "shield-check",
-    size: 13
+    size: 12
   }) : status === 'pending' ? /*#__PURE__*/React.createElement(__ds_scope.Icon, {
     name: "clock",
-    size: 13
+    size: 12
   }) : /*#__PURE__*/React.createElement(__ds_scope.Icon, {
     name: status === 'success' ? 'circle-check' : 'circle-alert',
-    size: 13
+    size: 12
   }), STATES[status]), /*#__PURE__*/React.createElement("span", {
     className: "ef-toolcall__chev"
   }, /*#__PURE__*/React.createElement(__ds_scope.Icon, {
     name: "chevron-down",
-    size: 14
+    size: 16
   }))), open ? /*#__PURE__*/React.createElement("div", {
     className: "ef-toolcall__body"
   }, entries && entries.length ? /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement("div", {
@@ -3075,20 +3075,20 @@ try { (() => {
 function _extends() { return _extends = Object.assign ? Object.assign.bind() : function (n) { for (var e = 1; e < arguments.length; e++) { var t = arguments[e]; for (var r in t) ({}).hasOwnProperty.call(t, r) && (n[r] = t[r]); } return n; }, _extends.apply(null, arguments); }
 const CSS = `
 .ef-transcript{display:flex;flex-direction:column;border:1px solid var(--border-default);border-radius:var(--radius-md);background:var(--surface-card);overflow:hidden;font-family:var(--font-sans)}
-.ef-transcript__head{display:flex;align-items:center;gap:9px;padding:10px 14px;border-bottom:1px solid var(--border-default)}
-.ef-transcript__title{flex:1;min-width:0;font-size:13.5px;font-weight:var(--weight-semibold);color:var(--text-primary)}
-.ef-transcript__auto{display:inline-flex;align-items:center;gap:6px;border:1px solid var(--border-default);background:none;cursor:pointer;padding:3px 10px;border-radius:var(--radius-full);font-family:var(--font-sans);font-size:11.5px;color:var(--text-muted);transition:color var(--dur-fast) var(--ease-out),border-color var(--dur-fast) var(--ease-out)}
+.ef-transcript__head{display:flex;align-items:center;gap:var(--space-2);padding:var(--space-3) var(--space-4);border-bottom:1px solid var(--border-default)}
+.ef-transcript__title{flex:1;min-width:0;font-size:var(--text-md);font-weight:var(--weight-semibold);color:var(--text-primary)}
+.ef-transcript__auto{display:inline-flex;align-items:center;gap:var(--space-2);border:1px solid var(--border-default);background:none;cursor:pointer;padding:var(--space-1) var(--space-3);border-radius:var(--radius-full);font-family:var(--font-sans);font-size:var(--text-xs);color:var(--text-muted);transition:color var(--dur-fast) var(--ease-out),border-color var(--dur-fast) var(--ease-out)}
 .ef-transcript__auto--on{color:var(--text-primary);border-color:var(--border-strong)}
 .ef-transcript__auto:focus-visible{outline:none;box-shadow:var(--focus-ring)}
-.ef-transcript__scroll{overflow-y:auto;padding:5px}
-.ef-transcript__item{display:flex;gap:12px;padding:8px 10px;border-radius:var(--radius-sm);transition:background var(--dur-fast) var(--ease-out)}
+.ef-transcript__scroll{overflow-y:auto;padding:var(--space-1)}
+.ef-transcript__item{display:flex;gap:var(--space-3);padding:var(--space-2) var(--space-3);border-radius:var(--radius-sm);transition:background var(--dur-fast) var(--ease-out)}
 .ef-transcript__item--active{background:var(--surface-sunken)}
-.ef-transcript__time{flex:none;border:none;background:none;padding:0;cursor:pointer;font-family:var(--font-mono);font-size:11px;color:var(--text-muted);font-variant-numeric:tabular-nums;line-height:1.9;transition:color var(--dur-fast) var(--ease-out)}
+.ef-transcript__time{flex:none;border:none;background:none;padding:0;cursor:pointer;font-family:var(--font-mono);font-size:var(--text-2xs);color:var(--text-muted);font-variant-numeric:tabular-nums;line-height:1.9;transition:color var(--dur-fast) var(--ease-out)}
 .ef-transcript__time:hover{color:var(--text-primary)}
-.ef-transcript__time:focus-visible{outline:none;box-shadow:var(--focus-ring);border-radius:3px}
+.ef-transcript__time:focus-visible{outline:none;box-shadow:var(--focus-ring);border-radius:var(--radius-xs)}
 .ef-transcript__item--active .ef-transcript__time{color:var(--text-link)}
-.ef-transcript__speaker{flex:none;width:64px;font-size:12px;font-weight:var(--weight-semibold);color:var(--text-primary);line-height:1.8}
-.ef-transcript__text{flex:1;min-width:0;font-size:13.5px;line-height:1.65;color:var(--text-muted)}
+.ef-transcript__speaker{flex:none;width:64px;font-size:var(--text-xs);font-weight:var(--weight-semibold);color:var(--text-primary);line-height:1.8}
+.ef-transcript__text{flex:1;min-width:0;font-size:var(--text-md);line-height:1.65;color:var(--text-muted)}
 .ef-transcript__item--active .ef-transcript__text{color:var(--text-secondary)}
 .ef-transcript__word{transition:color .1s linear}
 .ef-transcript__word--played{color:var(--text-primary)}
@@ -3172,15 +3172,15 @@ Object.assign(__ds_scope, { Transcript });
 try { (() => {
 function _extends() { return _extends = Object.assign ? Object.assign.bind() : function (n) { for (var e = 1; e < arguments.length; e++) { var t = arguments[e]; for (var r in t) ({}).hasOwnProperty.call(t, r) && (n[r] = t[r]); } return n; }, _extends.apply(null, arguments); }
 const CSS = `
-.ef-usage{display:flex;flex-direction:column;gap:7px}
-.ef-usage__row{display:flex;align-items:baseline;gap:8px}
+.ef-usage{display:flex;flex-direction:column;gap:var(--space-2)}
+.ef-usage__row{display:flex;align-items:baseline;gap:var(--space-2)}
 .ef-usage__label{font-size:var(--text-sm);font-weight:600;color:var(--text-primary)}
-.ef-usage__figures{margin-inline-start:auto;font-family:var(--font-mono);font-size:12px;color:var(--text-muted)}
+.ef-usage__figures{margin-inline-start:auto;font-family:var(--font-mono);font-size:var(--text-xs);color:var(--text-muted)}
 .ef-usage__track{height:6px;border-radius:var(--radius-full);background:var(--surface-sunken);overflow:hidden}
 .ef-usage__fill{height:100%;border-radius:var(--radius-full);background:var(--accent);transition:width var(--dur-med) var(--ease-out)}
 .ef-usage--warn .ef-usage__fill{background:var(--warning-600)}
 .ef-usage--over .ef-usage__fill{background:var(--danger-600)}
-.ef-usage__foot{display:flex;gap:8px;font-size:12px;color:var(--text-muted)}
+.ef-usage__foot{display:flex;gap:var(--space-2);font-size:var(--text-xs);color:var(--text-muted)}
 .ef-usage__cost{margin-inline-start:auto;font-family:var(--font-mono)}
 `;
 function UsageMeter({
@@ -3262,28 +3262,28 @@ Object.assign(__ds_scope, { UsageMeter });
 try { (() => {
 function _extends() { return _extends = Object.assign ? Object.assign.bind() : function (n) { for (var e = 1; e < arguments.length; e++) { var t = arguments[e]; for (var r in t) ({}).hasOwnProperty.call(t, r) && (n[r] = t[r]); } return n; }, _extends.apply(null, arguments); }
 const CSS = `
-.ef-webprev{display:flex;flex-direction:column;border:1px solid var(--border-default);border-radius:var(--radius-md);background:var(--surface-card);padding:6px;font-family:var(--font-sans)}
-.ef-webprev__bar{display:flex;align-items:center;gap:4px;padding:2px 4px 8px}
-.ef-webprev__btn{display:inline-flex;align-items:center;justify-content:center;width:28px;height:28px;border:none;background:none;cursor:pointer;color:var(--text-muted);border-radius:var(--radius-sm);flex:none;transition:color var(--dur-fast) var(--ease-out),background var(--dur-fast) var(--ease-out)}
+.ef-webprev{display:flex;flex-direction:column;border:1px solid var(--border-default);border-radius:var(--radius-md);background:var(--surface-card);padding:var(--space-2);font-family:var(--font-sans)}
+.ef-webprev__bar{display:flex;align-items:center;gap:var(--space-1);padding:var(--space-0-5) var(--space-1) var(--space-2)}
+.ef-webprev__btn{display:inline-flex;align-items:center;justify-content:center;width:var(--control-h-sm);height:var(--control-h-sm);border:none;background:none;cursor:pointer;color:var(--text-muted);border-radius:var(--radius-sm);flex:none;transition:color var(--dur-fast) var(--ease-out),background var(--dur-fast) var(--ease-out)}
 .ef-webprev__btn:hover{color:var(--text-primary);background:var(--surface-subtle)}
 .ef-webprev__btn--on{color:var(--text-primary);background:var(--surface-sunken)}
 .ef-webprev__btn:focus-visible{outline:none;box-shadow:var(--focus-ring)}
-.ef-webprev__addr{flex:1;min-width:0;height:30px;padding:0 12px;border:1px solid var(--border-default);border-radius:var(--radius-full);background:var(--surface-subtle);font-family:var(--font-sans);font-size:12.5px;color:var(--text-secondary);transition:border-color var(--dur-fast) var(--ease-out),box-shadow var(--dur-fast) var(--ease-out)}
+.ef-webprev__addr{flex:1;min-width:0;height:30px;padding:0 var(--space-3);border:1px solid var(--border-default);border-radius:var(--radius-full);background:var(--surface-subtle);font-family:var(--font-sans);font-size:var(--text-sm);color:var(--text-secondary);transition:border-color var(--dur-fast) var(--ease-out),box-shadow var(--dur-fast) var(--ease-out)}
 .ef-webprev__addr:focus{outline:none;border-color:var(--border-strong);box-shadow:var(--focus-ring);color:var(--text-primary)}
 .ef-webprev__stage{position:relative;display:flex;justify-content:center;background:var(--surface-sunken);border:1px solid var(--border-default);border-radius:var(--radius-sm);overflow:hidden}
 .ef-webprev__frame{border:none;width:100%;height:100%;background:var(--surface-card);transition:width .45s cubic-bezier(.32,.72,0,1)}
 .ef-webprev__fake{overflow:auto;background:var(--surface-card);width:100%;height:100%;transition:width .45s cubic-bezier(.32,.72,0,1)}
-.ef-webprev__empty{display:flex;align-items:center;justify-content:center;width:100%;height:100%;font-size:12.5px;color:var(--text-muted)}
+.ef-webprev__empty{display:flex;align-items:center;justify-content:center;width:100%;height:100%;font-size:var(--text-sm);color:var(--text-muted)}
 .ef-webprev__consbody{display:grid;grid-template-rows:0fr;transition:grid-template-rows var(--dur-med) var(--ease-out)}
 .ef-webprev--console .ef-webprev__consbody{grid-template-rows:1fr}
 .ef-webprev__consclip{overflow:hidden;min-height:0}
-.ef-webprev__cons{margin-top:6px;border:1px solid var(--border-default);border-radius:var(--radius-sm);background:var(--surface-subtle);max-height:180px;overflow-y:auto;font-family:var(--font-mono);font-size:11.5px;line-height:1.6}
-.ef-webprev__log{display:flex;gap:8px;padding:5px 10px;border-top:1px solid var(--border-default);color:var(--text-secondary)}
+.ef-webprev__cons{margin-top:var(--space-2);border:1px solid var(--border-default);border-radius:var(--radius-sm);background:var(--surface-subtle);max-height:180px;overflow-y:auto;font-family:var(--font-mono);font-size:var(--text-xs);line-height:1.6}
+.ef-webprev__log{display:flex;gap:var(--space-2);padding:var(--space-1) var(--space-3);border-top:1px solid var(--border-default);color:var(--text-secondary)}
 .ef-webprev__log:first-child{border-top:none}
 .ef-webprev__log--warning{color:var(--warning-600)}
 .ef-webprev__log--danger{color:var(--danger-600)}
-.ef-webprev__logicon{display:inline-flex;flex:none;margin-top:2px}
-.ef-webprev__badge{position:absolute;top:3px;inset-inline-end:3px;min-width:14px;height:14px;padding:0 4px;border-radius:var(--radius-full);background:var(--danger-600);color:var(--danger-contrast);font-size:9.5px;font-weight:var(--weight-semibold);display:inline-flex;align-items:center;justify-content:center;font-family:var(--font-sans)}
+.ef-webprev__logicon{display:inline-flex;flex:none;margin-top:var(--space-0-5)}
+.ef-webprev__badge{position:absolute;top:3px;inset-inline-end:3px;min-width:14px;height:14px;padding:0 var(--space-1);border-radius:var(--radius-full);background:var(--danger-600);color:var(--danger-contrast);font-size:9.5px;font-weight:var(--weight-semibold);display:inline-flex;align-items:center;justify-content:center;font-family:var(--font-sans)}
 @media (pointer:coarse){.ef-webprev__btn{min-width:var(--tap-min);min-height:var(--tap-min)}}
 `;
 // Model-supplied URL: only http(s), mailto and relative pass (see Citation.jsx).
@@ -3356,7 +3356,7 @@ function WebPreview({
     onClick: () => setKey(k => k + 1)
   }, /*#__PURE__*/React.createElement(__ds_scope.Icon, {
     name: "refresh-cw",
-    size: 13
+    size: 12
   })), /*#__PURE__*/React.createElement("input", {
     className: "ef-webprev__addr",
     type: "text",
@@ -3385,7 +3385,7 @@ function WebPreview({
     onClick: () => setVp(v.id)
   }, /*#__PURE__*/React.createElement(__ds_scope.Icon, {
     name: v.icon,
-    size: 14
+    size: 16
   }))), /*#__PURE__*/React.createElement("button", {
     type: "button",
     className: `ef-webprev__btn${cons ? ' ef-webprev__btn--on' : ''}`,
@@ -3397,7 +3397,7 @@ function WebPreview({
     onClick: () => setCons(!cons)
   }, /*#__PURE__*/React.createElement(__ds_scope.Icon, {
     name: "terminal",
-    size: 14
+    size: 16
   }), errs ? /*#__PURE__*/React.createElement("span", {
     className: "ef-webprev__badge"
   }, errs) : null), /*#__PURE__*/React.createElement("a", {
@@ -3408,7 +3408,7 @@ function WebPreview({
     rel: "noreferrer noopener"
   }, /*#__PURE__*/React.createElement(__ds_scope.Icon, {
     name: "external-link",
-    size: 13
+    size: 12
   }))), /*#__PURE__*/React.createElement("div", {
     className: "ef-webprev__stage",
     style: {
@@ -3459,18 +3459,18 @@ try { (() => {
 function _extends() { return _extends = Object.assign ? Object.assign.bind() : function (n) { for (var e = 1; e < arguments.length; e++) { var t = arguments[e]; for (var r in t) ({}).hasOwnProperty.call(t, r) && (n[r] = t[r]); } return n; }, _extends.apply(null, arguments); }
 const CSS = `
 .ef-code{position:relative;background:var(--surface-code);border:1px solid var(--border-code);border-radius:var(--radius-md);overflow:hidden}
-.ef-code__head{display:flex;align-items:center;padding:7px 8px 7px 14px;border-bottom:1px solid var(--code-divider)}
-.ef-code__lang{font-family:var(--font-mono);font-size:11px;color:var(--code-ink-subtle)}
-.ef-code__copy{margin-inline-start:auto;display:inline-flex;min-height:24px;align-items:center;gap:5px;border:none;background:none;cursor:pointer;color:var(--code-ink-muted);font-family:var(--font-sans);font-size:12px;font-weight:var(--weight-semibold);padding:4px 8px;border-radius:var(--radius-sm);transition:color var(--dur-fast) var(--ease-out)}
+.ef-code__head{display:flex;align-items:center;padding:var(--space-2) var(--space-2) var(--space-2) var(--space-4);border-bottom:1px solid var(--code-divider)}
+.ef-code__lang{font-family:var(--font-mono);font-size:var(--text-2xs);color:var(--code-ink-subtle)}
+.ef-code__copy{margin-inline-start:auto;display:inline-flex;min-height:var(--control-h-xs);align-items:center;gap:var(--space-1);border:none;background:none;cursor:pointer;color:var(--code-ink-muted);font-family:var(--font-sans);font-size:var(--text-xs);font-weight:var(--weight-semibold);padding:var(--space-1) var(--space-2);border-radius:var(--radius-sm);transition:color var(--dur-fast) var(--ease-out)}
 .ef-code__copy:hover{color:var(--code-ink-bright)}
 .ef-code__copy--done{color:var(--success-on-dark)}
 .ef-code__copy--failed{color:var(--danger-on-dark)}
 .ef-code__sr{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;border:0}
 @media (pointer:coarse){.ef-code__copy{min-height:var(--tap-min);min-width:var(--tap-min);justify-content:center}}
-.ef-code pre{margin:0;padding:14px 16px;overflow-x:auto;font-family:var(--font-mono);font-size:13px;line-height:1.6;color:var(--text-code)}
+.ef-code pre{margin:0;padding:var(--space-4) var(--space-4);overflow-x:auto;font-family:var(--font-mono);font-size:var(--text-sm);line-height:1.6;color:var(--text-code)}
 .ef-code__win{position:relative;overflow:hidden;transition:height .45s cubic-bezier(.32,.72,0,1)}
-.ef-code__fade{position:absolute;inset-inline:0;bottom:0;height:56px;display:flex;align-items:flex-end;justify-content:center;padding-bottom:8px;background:linear-gradient(to top,var(--surface-code),transparent)}
-.ef-code__more{display:inline-flex;align-items:center;gap:5px;border:1px solid var(--code-edge);border-radius:var(--radius-full);background:var(--code-raised);cursor:pointer;padding:4px 12px;font-family:var(--font-sans);font-size:11.5px;font-weight:var(--weight-semibold);color:var(--code-ink-strong)}
+.ef-code__fade{position:absolute;inset-inline:0;bottom:0;height:56px;display:flex;align-items:flex-end;justify-content:center;padding-bottom:var(--space-2);background:linear-gradient(to top,var(--surface-code),transparent)}
+.ef-code__more{display:inline-flex;align-items:center;gap:var(--space-1);border:1px solid var(--code-edge);border-radius:var(--radius-full);background:var(--code-raised);cursor:pointer;padding:var(--space-1) var(--space-3);font-family:var(--font-sans);font-size:var(--text-xs);font-weight:var(--weight-semibold);color:var(--code-ink-strong)}
 .ef-code__more:hover{color:var(--code-ink-bright);border-color:var(--code-edge-hover)}
 .ef-code__copy:focus-visible,.ef-code__more:focus-visible{outline:none;box-shadow:var(--focus-ring)}
 `;
@@ -3534,7 +3534,7 @@ function CodeBlock({
     onClick: copy
   }, /*#__PURE__*/React.createElement(__ds_scope.Icon, {
     name: copied === 'done' ? 'check' : copied === 'failed' ? 'circle-alert' : 'copy',
-    size: 13
+    size: 12
   }), copied === 'done' ? 'Copied' : copied === 'failed' ? 'Copy failed' : 'Copy'), /*#__PURE__*/React.createElement("span", {
     className: "ef-code__sr",
     role: "status"
@@ -3583,25 +3583,25 @@ try { (() => {
 function _extends() { return _extends = Object.assign ? Object.assign.bind() : function (n) { for (var e = 1; e < arguments.length; e++) { var t = arguments[e]; for (var r in t) ({}).hasOwnProperty.call(t, r) && (n[r] = t[r]); } return n; }, _extends.apply(null, arguments); }
 const CSS = `
 .ef-console{position:relative;display:flex;flex-direction:column;border:1px solid var(--border-default);border-radius:var(--radius-md);background:var(--surface-card);overflow:hidden;font-family:var(--font-sans)}
-.ef-console__head{display:flex;align-items:center;gap:8px;padding:8px 13px;border-bottom:1px solid var(--border-default);background:var(--surface-subtle);font-size:12px;color:var(--text-secondary)}
-.ef-console__scroll{overflow-y:auto;font-family:var(--font-mono);font-size:12px;line-height:1.6}
-.ef-console__row{display:flex;align-items:flex-start;gap:9px;padding:6px 13px;border-top:1px solid var(--border-default);color:var(--text-secondary)}
+.ef-console__head{display:flex;align-items:center;gap:var(--space-2);padding:var(--space-2) var(--space-3);border-bottom:1px solid var(--border-default);background:var(--surface-subtle);font-size:var(--text-xs);color:var(--text-secondary)}
+.ef-console__scroll{overflow-y:auto;font-family:var(--font-mono);font-size:var(--text-xs);line-height:1.6}
+.ef-console__row{display:flex;align-items:flex-start;gap:var(--space-2);padding:var(--space-2) var(--space-3);border-top:1px solid var(--border-default);color:var(--text-secondary)}
 .ef-console__row:first-child{border-top:none}
-.ef-console__glyph{display:inline-flex;flex:none;width:14px;margin-top:2px;color:var(--text-muted)}
+.ef-console__glyph{display:inline-flex;flex:none;width:14px;margin-top:var(--space-0-5);color:var(--text-muted)}
 .ef-console__row--warning .ef-console__glyph,.ef-console__row--warning .ef-console__msg{color:var(--warning-600)}
 .ef-console__row--danger .ef-console__glyph,.ef-console__row--danger .ef-console__msg{color:var(--danger-600)}
 .ef-console__row--debug .ef-console__glyph{color:var(--text-link)}
 .ef-console__time{flex:none;color:var(--text-muted);font-variant-numeric:tabular-nums}
 .ef-console__msg{flex:1;min-width:0;white-space:pre-wrap;word-break:break-word}
-.ef-console__src{flex:none;margin-inline-start:auto;color:var(--text-muted);font-size:11px}
-.ef-console__stackbtn{display:inline-flex;align-items:center;gap:5px;border:none;background:none;padding:0;cursor:pointer;font:inherit;color:inherit;text-align:start}
+.ef-console__src{flex:none;margin-inline-start:auto;color:var(--text-muted);font-size:var(--text-2xs)}
+.ef-console__stackbtn{display:inline-flex;align-items:center;gap:var(--space-1);border:none;background:none;padding:0;cursor:pointer;font:inherit;color:inherit;text-align:start}
 .ef-console__stackbtn:hover{color:var(--text-primary)}
 .ef-console__stackbtn:focus-visible,.ef-console__jump:focus-visible{outline:none;box-shadow:var(--focus-ring);border-radius:var(--radius-sm)}
 .ef-console__jump:focus-visible{border-radius:var(--radius-full)}
-.ef-console__stackchev{display:inline-flex;margin-top:2px;color:var(--text-muted);transition:transform var(--dur-fast) var(--ease-out)}
+.ef-console__stackchev{display:inline-flex;margin-top:var(--space-0-5);color:var(--text-muted);transition:transform var(--dur-fast) var(--ease-out)}
 .ef-console__stackchev--open{transform:rotate(90deg)}
-.ef-console__stack{margin:4px 0 0;padding-inline-start:19px;white-space:pre-wrap;color:var(--text-muted);font-size:11.5px}
-.ef-console__jump{position:absolute;inset-inline-end:10px;bottom:10px;display:inline-flex;align-items:center;gap:6px;padding:6px 11px;border:1px solid var(--border-strong);border-radius:var(--radius-full);background:var(--surface-card);box-shadow:var(--shadow-md);cursor:pointer;font-family:var(--font-sans);font-size:12px;font-weight:var(--weight-semibold);color:var(--text-primary)}
+.ef-console__stack{margin:var(--space-1) 0 0;padding-inline-start:var(--space-5);white-space:pre-wrap;color:var(--text-muted);font-size:var(--text-xs)}
+.ef-console__jump{position:absolute;inset-inline-end:10px;bottom:10px;display:inline-flex;align-items:center;gap:var(--space-2);padding:var(--space-2) var(--space-3);border:1px solid var(--border-strong);border-radius:var(--radius-full);background:var(--surface-card);box-shadow:var(--shadow-md);cursor:pointer;font-family:var(--font-sans);font-size:var(--text-xs);font-weight:var(--weight-semibold);color:var(--text-primary)}
 `;
 const GLYPH = {
   info: 'info',
@@ -3634,7 +3634,7 @@ function Row({
     className: `ef-console__stackchev${open ? ' ef-console__stackchev--open' : ''}`
   }, /*#__PURE__*/React.createElement(__ds_scope.Icon, {
     name: "chevron-right",
-    size: 11
+    size: 12
   })), /*#__PURE__*/React.createElement("span", null, e.text)) : e.text, e.stack && open ? /*#__PURE__*/React.createElement("div", {
     className: "ef-console__stack"
   }, e.stack) : null), e.source ? /*#__PURE__*/React.createElement("span", {
@@ -3672,7 +3672,7 @@ function Console({
     className: "ef-console__head"
   }, /*#__PURE__*/React.createElement(__ds_scope.Icon, {
     name: "terminal",
-    size: 13
+    size: 12
   }), title, /*#__PURE__*/React.createElement("span", {
     style: {
       marginInlineStart: 'auto',
@@ -3712,27 +3712,27 @@ Object.assign(__ds_scope, { Console });
 try { (() => {
 function _extends() { return _extends = Object.assign ? Object.assign.bind() : function (n) { for (var e = 1; e < arguments.length; e++) { var t = arguments[e]; for (var r in t) ({}).hasOwnProperty.call(t, r) && (n[r] = t[r]); } return n; }, _extends.apply(null, arguments); }
 const CSS = `
-.ef-diff{border:1px solid var(--border-default);border-radius:var(--radius-md);background:var(--surface-card);overflow:hidden;font-family:var(--font-mono);font-size:12.5px;line-height:1.7}
-.ef-diff__head{display:flex;align-items:center;gap:10px;padding:8px 13px;background:var(--surface-subtle);border-bottom:1px solid var(--border-default);font-size:12px;color:var(--text-secondary);font-family:var(--font-sans)}
-.ef-diff__counts{margin-inline-start:auto;display:inline-flex;gap:8px;font-size:11.5px;font-family:var(--font-mono);font-variant-numeric:tabular-nums}
+.ef-diff{border:1px solid var(--border-default);border-radius:var(--radius-md);background:var(--surface-card);overflow:hidden;font-family:var(--font-mono);font-size:var(--text-sm);line-height:1.7}
+.ef-diff__head{display:flex;align-items:center;gap:var(--space-3);padding:var(--space-2) var(--space-3);background:var(--surface-subtle);border-bottom:1px solid var(--border-default);font-size:var(--text-xs);color:var(--text-secondary);font-family:var(--font-sans)}
+.ef-diff__counts{margin-inline-start:auto;display:inline-flex;gap:var(--space-2);font-size:var(--text-xs);font-family:var(--font-mono);font-variant-numeric:tabular-nums}
 .ef-diff__plus{color:var(--success-600)}
 .ef-diff__minus{color:var(--danger-600)}
 .ef-diff__scroll{overflow:auto}
 .ef-diff__line{display:flex;white-space:pre}
-.ef-diff__no{flex:none;width:38px;padding:0 8px;text-align:end;color:var(--text-muted);font-size:11px;user-select:none;background:var(--surface-subtle);border-inline-end:1px solid var(--border-default)}
+.ef-diff__no{flex:none;width:38px;padding:0 var(--space-2);text-align:end;color:var(--text-muted);font-size:var(--text-2xs);user-select:none;background:var(--surface-subtle);border-inline-end:1px solid var(--border-default)}
 .ef-diff__sign{flex:none;width:20px;text-align:center;user-select:none;color:var(--text-muted)}
-.ef-diff__text{flex:1;padding-inline-end:14px;color:var(--text-secondary)}
+.ef-diff__text{flex:1;padding-inline-end:var(--space-4);color:var(--text-secondary)}
 .ef-diff__line--add{background:var(--success-100)}
 .ef-diff__line--add .ef-diff__sign,.ef-diff__line--add .ef-diff__text{color:var(--success-600)}
 .ef-diff__line--del{background:var(--danger-100)}
 .ef-diff__line--del .ef-diff__sign,.ef-diff__line--del .ef-diff__text{color:var(--danger-600)}
-.ef-diff__word--add{background:var(--success-300);border-radius:3px}
-.ef-diff__word--del{background:var(--danger-300);border-radius:3px}
-.ef-diff__skip{display:flex;align-items:center;gap:10px;padding:2px 0;color:var(--text-muted);font-size:11px;user-select:none}
+.ef-diff__word--add{background:var(--success-300);border-radius:var(--radius-xs)}
+.ef-diff__word--del{background:var(--danger-300);border-radius:var(--radius-xs)}
+.ef-diff__skip{display:flex;align-items:center;gap:var(--space-3);padding:var(--space-0-5) 0;color:var(--text-muted);font-size:var(--text-2xs);user-select:none}
 .ef-diff__skipno{flex:none;width:76px;text-align:center;background:var(--surface-subtle);border-inline-end:1px solid var(--border-default)}
 .ef-diff__file{border-top:1px solid var(--border-default)}
 .ef-diff__file:first-child{border-top:none}
-.ef-diff__filehead{display:flex;align-items:center;gap:9px;width:100%;padding:8px 13px;border:none;background:var(--surface-subtle);cursor:pointer;text-align:start;font-family:var(--font-mono);font-size:12px;color:var(--text-primary)}
+.ef-diff__filehead{display:flex;align-items:center;gap:var(--space-2);width:100%;padding:var(--space-2) var(--space-3);border:none;background:var(--surface-subtle);cursor:pointer;text-align:start;font-family:var(--font-mono);font-size:var(--text-xs);color:var(--text-primary)}
 .ef-diff__filehead:focus-visible{outline:none;box-shadow:var(--focus-ring)}
 .ef-diff__filechev{display:inline-flex;color:var(--text-muted);transition:transform var(--dur-fast) var(--ease-out)}
 .ef-diff__filechev--open{transform:rotate(90deg)}
@@ -4047,19 +4047,19 @@ try { (() => {
 function _extends() { return _extends = Object.assign ? Object.assign.bind() : function (n) { for (var e = 1; e < arguments.length; e++) { var t = arguments[e]; for (var r in t) ({}).hasOwnProperty.call(t, r) && (n[r] = t[r]); } return n; }, _extends.apply(null, arguments); }
 const CSS = `
 .ef-env{border:1px solid var(--border-default);border-radius:var(--radius-md);background:var(--surface-card);font-family:var(--font-sans)}
-.ef-env__head{display:flex;align-items:center;gap:9px;padding:10px 14px}
+.ef-env__head{display:flex;align-items:center;gap:var(--space-2);padding:var(--space-3) var(--space-4)}
 .ef-env__glyph{display:inline-flex;color:var(--text-muted)}
-.ef-env__title{flex:1;min-width:0;font-size:13.5px;font-weight:var(--weight-semibold);color:var(--text-primary)}
-.ef-env__btn{display:inline-flex;align-items:center;justify-content:center;width:28px;height:28px;border:none;background:none;cursor:pointer;color:var(--text-muted);border-radius:var(--radius-sm);transition:color var(--dur-fast) var(--ease-out),background var(--dur-fast) var(--ease-out)}
+.ef-env__title{flex:1;min-width:0;font-size:var(--text-md);font-weight:var(--weight-semibold);color:var(--text-primary)}
+.ef-env__btn{display:inline-flex;align-items:center;justify-content:center;width:var(--control-h-sm);height:var(--control-h-sm);border:none;background:none;cursor:pointer;color:var(--text-muted);border-radius:var(--radius-sm);transition:color var(--dur-fast) var(--ease-out),background var(--dur-fast) var(--ease-out)}
 .ef-env__btn:hover{color:var(--text-primary);background:var(--surface-subtle)}
 .ef-env__btn:focus-visible{outline:none;box-shadow:var(--focus-ring)}
 .ef-env__btn--done{color:var(--success-600)}
-.ef-env__list{padding:0 6px 6px}
-.ef-env__row{display:flex;align-items:center;gap:12px;padding:5px 8px;border-radius:var(--radius-sm)}
+.ef-env__list{padding:0 var(--space-2) var(--space-2)}
+.ef-env__row{display:flex;align-items:center;gap:var(--space-3);padding:var(--space-1) var(--space-2);border-radius:var(--radius-sm)}
 .ef-env__row:hover{background:var(--surface-subtle)}
-.ef-env__name{flex:none;font-family:var(--font-mono);font-size:12.5px;color:var(--text-muted)}
-.ef-env__val{flex:1;min-width:0;margin-inline-start:auto;text-align:end;font-family:var(--font-mono);font-size:12.5px;color:var(--text-primary);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.ef-env__row .ef-env__btn{opacity:0;width:24px;height:24px}
+.ef-env__name{flex:none;font-family:var(--font-mono);font-size:var(--text-sm);color:var(--text-muted)}
+.ef-env__val{flex:1;min-width:0;margin-inline-start:auto;text-align:end;font-family:var(--font-mono);font-size:var(--text-sm);color:var(--text-primary);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.ef-env__row .ef-env__btn{opacity:0;width:var(--control-h-xs);height:var(--control-h-xs)}
 .ef-env__row:hover .ef-env__btn,.ef-env__row .ef-env__btn:focus-visible,.ef-env__row .ef-env__btn--done{opacity:1}
 @media (pointer:coarse){.ef-env__btn{min-width:var(--tap-min);min-height:var(--tap-min)}}
 `;
@@ -4088,7 +4088,7 @@ function Row({
     onClick: copy
   }, /*#__PURE__*/React.createElement(__ds_scope.Icon, {
     name: copied ? 'check' : 'copy',
-    size: 13
+    size: 12
   })));
 }
 function EnvList({
@@ -4111,7 +4111,7 @@ function EnvList({
     className: "ef-env__glyph"
   }, /*#__PURE__*/React.createElement(__ds_scope.Icon, {
     name: "key",
-    size: 14
+    size: 16
   })), /*#__PURE__*/React.createElement("span", {
     className: "ef-env__title"
   }, title), hasSecrets ? /*#__PURE__*/React.createElement("button", {
@@ -4122,7 +4122,7 @@ function EnvList({
     onClick: () => setVisible(!visible)
   }, /*#__PURE__*/React.createElement(__ds_scope.Icon, {
     name: visible ? 'eye-off' : 'eye',
-    size: 14
+    size: 16
   })) : null), /*#__PURE__*/React.createElement("div", {
     className: "ef-env__list"
   }, vars.map((v, i) => /*#__PURE__*/React.createElement(Row, {
@@ -4139,10 +4139,10 @@ try { (() => {
 function _extends() { return _extends = Object.assign ? Object.assign.bind() : function (n) { for (var e = 1; e < arguments.length; e++) { var t = arguments[e]; for (var r in t) ({}).hasOwnProperty.call(t, r) && (n[r] = t[r]); } return n; }, _extends.apply(null, arguments); }
 const CSS = `
 .ef-exception{border:1px solid var(--border-default);border-radius:var(--radius-md);background:var(--surface-card);font-family:var(--font-sans);overflow:hidden}
-.ef-exception__head{display:flex;align-items:flex-start;gap:10px;padding:11px 14px}
-.ef-exception__type{flex:none;margin-top:1px;padding:2px 7px;border-radius:var(--radius-sm);background:var(--danger-100);color:var(--danger-600);font-family:var(--font-mono);font-size:11px;font-weight:var(--weight-semibold)}
-.ef-exception__msg{flex:1;min-width:0;font-size:13.5px;line-height:1.5;color:var(--text-primary)}
-.ef-exception__toggle{flex:none;display:inline-flex;align-items:center;gap:4px;border:none;background:none;cursor:pointer;padding:3px 7px;border-radius:var(--radius-sm);font-family:var(--font-sans);font-size:12px;color:var(--text-muted);transition:color var(--dur-fast) var(--ease-out),background var(--dur-fast) var(--ease-out)}
+.ef-exception__head{display:flex;align-items:flex-start;gap:var(--space-3);padding:var(--space-3) var(--space-4)}
+.ef-exception__type{flex:none;margin-top:1px;padding:var(--space-0-5) var(--space-2);border-radius:var(--radius-sm);background:var(--danger-100);color:var(--danger-600);font-family:var(--font-mono);font-size:var(--text-2xs);font-weight:var(--weight-semibold)}
+.ef-exception__msg{flex:1;min-width:0;font-size:var(--text-md);line-height:1.5;color:var(--text-primary)}
+.ef-exception__toggle{flex:none;display:inline-flex;align-items:center;gap:var(--space-1);border:none;background:none;cursor:pointer;padding:var(--space-1) var(--space-2);border-radius:var(--radius-sm);font-family:var(--font-sans);font-size:var(--text-xs);color:var(--text-muted);transition:color var(--dur-fast) var(--ease-out),background var(--dur-fast) var(--ease-out)}
 .ef-exception__toggle:hover{color:var(--text-primary);background:var(--surface-subtle)}
 .ef-exception__toggle:focus-visible{outline:none;box-shadow:var(--focus-ring)}
 .ef-exception__chev{display:inline-flex;transition:transform var(--dur-fast) var(--ease-out)}
@@ -4150,16 +4150,16 @@ const CSS = `
 .ef-exception__body{display:grid;grid-template-rows:0fr;transition:grid-template-rows var(--dur-med) var(--ease-out)}
 .ef-exception--open .ef-exception__body{grid-template-rows:1fr}
 .ef-exception__clip{overflow:hidden;min-height:0}
-.ef-exception__frames{margin:0 14px 12px;padding:0;list-style:none;border:1px solid var(--border-default);border-radius:var(--radius-sm);background:var(--surface-subtle);overflow:hidden;font-family:var(--font-mono);font-size:11.5px;line-height:1.5}
-.ef-exception__frame{display:flex;align-items:baseline;gap:10px;padding:5px 11px;border-inline-start:2px solid transparent}
+.ef-exception__frames{margin:0 var(--space-4) var(--space-3);padding:0;list-style:none;border:1px solid var(--border-default);border-radius:var(--radius-sm);background:var(--surface-subtle);overflow:hidden;font-family:var(--font-mono);font-size:var(--text-xs);line-height:1.5}
+.ef-exception__frame{display:flex;align-items:baseline;gap:var(--space-3);padding:var(--space-1) var(--space-3);border-inline-start:2px solid transparent}
 .ef-exception__frame--active{border-inline-start-color:var(--danger-600);background:var(--danger-100)}
 .ef-exception__frame--internal{opacity:.5}
 .ef-exception__fn{flex:none;color:var(--text-primary)}
 .ef-exception__loc{margin-inline-start:auto;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;color:var(--text-muted)}
-.ef-exception__src{margin:0 14px 12px;border:1px solid var(--border-default);border-radius:var(--radius-sm);background:var(--surface-subtle);overflow:hidden}
-.ef-exception__srchead{display:flex;align-items:center;gap:8px;padding:6px 11px;border-bottom:1px solid var(--border-default);font-family:var(--font-mono);font-size:11px;color:var(--text-muted)}
-.ef-exception__code{margin:0;padding:8px 0;font-family:var(--font-mono);font-size:12px;line-height:1.7;color:var(--text-secondary);overflow-x:auto}
-.ef-exception__ln{display:flex;padding:0 11px;border-inline-start:2px solid transparent;white-space:pre}
+.ef-exception__src{margin:0 var(--space-4) var(--space-3);border:1px solid var(--border-default);border-radius:var(--radius-sm);background:var(--surface-subtle);overflow:hidden}
+.ef-exception__srchead{display:flex;align-items:center;gap:var(--space-2);padding:var(--space-2) var(--space-3);border-bottom:1px solid var(--border-default);font-family:var(--font-mono);font-size:var(--text-2xs);color:var(--text-muted)}
+.ef-exception__code{margin:0;padding:var(--space-2) 0;font-family:var(--font-mono);font-size:var(--text-xs);line-height:1.7;color:var(--text-secondary);overflow-x:auto}
+.ef-exception__ln{display:flex;padding:0 var(--space-3);border-inline-start:2px solid transparent;white-space:pre}
 .ef-exception__ln--active{border-inline-start-color:var(--danger-600);background:var(--danger-100);color:var(--danger-600)}
 .ef-exception__no{flex:none;width:34px;color:var(--text-muted);user-select:none}
 `;
@@ -4231,17 +4231,17 @@ try { (() => {
 function _extends() { return _extends = Object.assign ? Object.assign.bind() : function (n) { for (var e = 1; e < arguments.length; e++) { var t = arguments[e]; for (var r in t) ({}).hasOwnProperty.call(t, r) && (n[r] = t[r]); } return n; }, _extends.apply(null, arguments); }
 const CSS = `
 .ef-term{background:var(--surface-code);border:1px solid var(--border-code);border-radius:var(--radius-md);overflow:hidden}
-.ef-term__head{display:flex;align-items:center;gap:8px;padding:8px 14px;border-bottom:1px solid var(--code-divider)}
-.ef-term__host{font-family:var(--font-mono);font-size:11px;color:var(--code-ink-subtle)}
+.ef-term__head{display:flex;align-items:center;gap:var(--space-2);padding:var(--space-2) var(--space-4);border-bottom:1px solid var(--code-divider)}
+.ef-term__host{font-family:var(--font-mono);font-size:var(--text-2xs);color:var(--code-ink-subtle)}
 .ef-term__dot{width:7px;height:7px;border-radius:var(--radius-full);background:var(--success-on-dark)}
-.ef-term__body{padding:12px 16px;font-family:var(--font-mono);font-size:12.5px;line-height:1.7;overflow-x:auto}
+.ef-term__body{padding:var(--space-3) var(--space-4);font-family:var(--font-mono);font-size:var(--text-sm);line-height:1.7;overflow-x:auto}
 .ef-term__line{white-space:pre-wrap;color:var(--code-ink)}
 .ef-term__line--cmd{color:var(--cream-50)}
 .ef-term__line--cmd::before{content:'$ ';color:var(--caramel-500)}
 .ef-term__line--success{color:var(--success-on-dark)}
 .ef-term__line--danger{color:var(--danger-on-dark)}
 .ef-term__line--info{color:var(--code-ink-subtle)}
-.ef-term__time{color:var(--code-ink-subtle);margin-inline-end:10px}
+.ef-term__time{color:var(--code-ink-subtle);margin-inline-end:var(--space-3)}
 @keyframes ef-term-caret{0%,100%{opacity:1}50%{opacity:0}}
 .ef-term__caret{display:inline-block;width:7px;height:13px;background:var(--cream-50);vertical-align:-2px;animation:ef-term-caret 1s steps(1) infinite}
 `;
@@ -4293,12 +4293,12 @@ Object.assign(__ds_scope, { Terminal });
 try { (() => {
 function _extends() { return _extends = Object.assign ? Object.assign.bind() : function (n) { for (var e = 1; e < arguments.length; e++) { var t = arguments[e]; for (var r in t) ({}).hasOwnProperty.call(t, r) && (n[r] = t[r]); } return n; }, _extends.apply(null, arguments); }
 const CSS = `
-.ef-bars{display:flex;align-items:flex-end;gap:3px;width:100%}
-.ef-bars__bar{flex:1;min-width:3px;border-radius:2px 2px 0 0;background:var(--text-muted);transition:background var(--dur-fast) var(--ease-out)}
+.ef-bars{display:flex;align-items:flex-end;gap:var(--space-1);width:100%}
+.ef-bars__bar{flex:1;min-width:3px;border-radius:var(--radius-xs) var(--radius-xs) 0 0;background:var(--text-muted);transition:background var(--dur-fast) var(--ease-out)}
 .ef-bars__bar--hi{background:var(--accent)}
 .ef-bars__bar:hover{background:var(--brand-700)}
 .ef-bars__sr{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;border:0}
-.ef-bars__labels{display:flex;justify-content:space-between;margin-top:6px;font-family:var(--font-mono);font-size:10px;color:var(--text-muted)}
+.ef-bars__labels{display:flex;justify-content:space-between;margin-top:var(--space-2);font-family:var(--font-mono);font-size:10px;color:var(--text-muted)}
 `;
 // Fixed default locale: the runtime default would differ between server and browser.
 function BarChart({
@@ -4367,8 +4367,8 @@ function _extends() { return _extends = Object.assign ? Object.assign.bind() : f
 const CSS = `
 .ef-chart{display:flex;aspect-ratio:16/9;min-height:200px;width:100%;justify-content:center;color:var(--text-secondary);font-size:var(--text-xs)}
 .ef-chart .recharts-cartesian-axis-tick text{fill:var(--text-muted)}.ef-chart .recharts-cartesian-grid line{stroke:var(--border-default)}.ef-chart .recharts-curve.recharts-tooltip-cursor{stroke:var(--border-default)}.ef-chart .recharts-dot{stroke:transparent}.ef-chart .recharts-layer,.ef-chart .recharts-sector,.ef-chart .recharts-surface{outline:none}.ef-chart .recharts-rectangle.recharts-tooltip-cursor{fill:var(--surface-sunken)}
-.ef-chart-tooltip{display:grid;min-width:128px;gap:6px;padding:7px 10px;border:1px solid var(--border-default);border-radius:var(--radius-md);background:var(--surface-card);box-shadow:var(--shadow-lg);font-size:var(--text-xs)}.ef-chart-tooltip__label{font-weight:var(--weight-medium);color:var(--text-primary)}.ef-chart-tooltip__items{display:grid;gap:6px}.ef-chart-tooltip__item{display:flex;align-items:center;gap:8px}.ef-chart-tooltip__indicator{flex:none;width:10px;height:10px;border-radius:2px;background:var(--chart-indicator)}.ef-chart-tooltip__indicator--line{width:4px;height:14px}.ef-chart-tooltip__indicator--dashed{width:0;height:14px;border-inline-start:2px dashed var(--chart-indicator);background:transparent}.ef-chart-tooltip__name{color:var(--text-muted)}.ef-chart-tooltip__value{margin-inline-start:auto;color:var(--text-primary);font-family:var(--font-mono);font-weight:var(--weight-medium);font-variant-numeric:tabular-nums}
-.ef-chart-legend{display:flex;align-items:center;justify-content:center;gap:16px}.ef-chart-legend--top{padding-bottom:12px}.ef-chart-legend--bottom{padding-top:12px}.ef-chart-legend__item{display:flex;align-items:center;gap:6px}.ef-chart-legend__mark{width:8px;height:8px;border-radius:2px}
+.ef-chart-tooltip{display:grid;min-width:128px;gap:var(--space-2);padding:var(--space-2) var(--space-3);border:1px solid var(--border-default);border-radius:var(--radius-md);background:var(--surface-card);box-shadow:var(--shadow-lg);font-size:var(--text-xs)}.ef-chart-tooltip__label{font-weight:var(--weight-medium);color:var(--text-primary)}.ef-chart-tooltip__items{display:grid;gap:var(--space-2)}.ef-chart-tooltip__item{display:flex;align-items:center;gap:var(--space-2)}.ef-chart-tooltip__indicator{flex:none;width:10px;height:10px;border-radius:var(--radius-xs);background:var(--chart-indicator)}.ef-chart-tooltip__indicator--line{width:4px;height:14px}.ef-chart-tooltip__indicator--dashed{width:0;height:14px;border-inline-start:2px dashed var(--chart-indicator);background:transparent}.ef-chart-tooltip__name{color:var(--text-muted)}.ef-chart-tooltip__value{margin-inline-start:auto;color:var(--text-primary);font-family:var(--font-mono);font-weight:var(--weight-medium);font-variant-numeric:tabular-nums}
+.ef-chart-legend{display:flex;align-items:center;justify-content:center;gap:var(--space-4)}.ef-chart-legend--top{padding-bottom:var(--space-3)}.ef-chart-legend--bottom{padding-top:var(--space-3)}.ef-chart-legend__item{display:flex;align-items:center;gap:var(--space-2)}.ef-chart-legend__mark{width:8px;height:8px;border-radius:var(--radius-xs)}
 `;
 const THEMES = {
   light: '',
@@ -4530,12 +4530,12 @@ Object.assign(__ds_scope, { useChart, ChartStyle, ChartContainer, ChartTooltip, 
 try { (() => {
 function _extends() { return _extends = Object.assign ? Object.assign.bind() : function (n) { for (var e = 1; e < arguments.length; e++) { var t = arguments[e]; for (var r in t) ({}).hasOwnProperty.call(t, r) && (n[r] = t[r]); } return n; }, _extends.apply(null, arguments); }
 const CSS = `
-.ef-donut{display:flex;align-items:center;gap:20px}
-.ef-donut__legend{display:flex;flex-direction:column;gap:8px}
-.ef-donut__item{display:flex;align-items:center;gap:8px;font-size:var(--text-sm);color:var(--text-secondary);border:none;background:none;padding:0;cursor:default;font-family:var(--font-sans);text-align:start}
-.ef-donut__swatch{width:9px;height:9px;border-radius:2px;flex:none}
+.ef-donut{display:flex;align-items:center;gap:var(--space-5)}
+.ef-donut__legend{display:flex;flex-direction:column;gap:var(--space-2)}
+.ef-donut__item{display:flex;align-items:center;gap:var(--space-2);font-size:var(--text-sm);color:var(--text-secondary);border:none;background:none;padding:0;cursor:default;font-family:var(--font-sans);text-align:start}
+.ef-donut__swatch{width:9px;height:9px;border-radius:var(--radius-xs);flex:none}
 .ef-donut__sr{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;border:0}
-.ef-donut__val{margin-inline-start:auto;font-family:var(--font-mono);font-size:12px;color:var(--text-primary);padding-inline-start:14px}
+.ef-donut__val{margin-inline-start:auto;font-family:var(--font-mono);font-size:var(--text-xs);color:var(--text-primary);padding-inline-start:var(--space-4)}
 `;
 // Categorical slots from tokens/colors.css, in fixed order. A sixth slice reuses
 // slot 1, so keep a donut to five slices or fold the rest into "Other".
@@ -4635,7 +4635,7 @@ function DonutChart({
     }
   }, hov != null ? fmt(segs[hov].value) : centerValue), /*#__PURE__*/React.createElement("span", {
     style: {
-      fontSize: 11,
+      fontSize: 'var(--text-2xs)',
       color: 'var(--text-muted)'
     }
   }, hov != null ? segs[hov].label : centerLabel))), data.length ? /*#__PURE__*/React.createElement("table", {
@@ -4678,14 +4678,14 @@ Object.assign(__ds_scope, { DonutChart });
 try { (() => {
 function _extends() { return _extends = Object.assign ? Object.assign.bind() : function (n) { for (var e = 1; e < arguments.length; e++) { var t = arguments[e]; for (var r in t) ({}).hasOwnProperty.call(t, r) && (n[r] = t[r]); } return n; }, _extends.apply(null, arguments); }
 const CSS = `
-.ef-empty{display:flex;min-width:0;flex-direction:column;align-items:center;justify-content:center;gap:24px;padding:48px 24px;text-align:center}
+.ef-empty{display:flex;min-width:0;flex-direction:column;align-items:center;justify-content:center;gap:var(--space-6);padding:var(--space-12) var(--space-6);text-align:center}
 .ef-empty--bordered{border:1px dashed var(--border-default);border-radius:var(--radius-md)}
-.ef-empty__header{display:flex;max-width:420px;flex-direction:column;align-items:center;gap:6px}
+.ef-empty__header{display:flex;max-width:420px;flex-direction:column;align-items:center;gap:var(--space-2)}
 .ef-empty__media{display:flex;align-items:center;justify-content:center;color:var(--text-muted)}
-.ef-empty__media[data-variant="icon"]{width:40px;height:40px;margin-block-end:6px;border-radius:var(--radius-md);background:var(--surface-sunken);color:var(--text-secondary)}
+.ef-empty__media[data-variant="icon"]{width:40px;height:40px;margin-block-end:var(--space-2);border-radius:var(--radius-md);background:var(--surface-sunken);color:var(--text-secondary)}
 .ef-empty__title{margin:0;font-size:var(--text-lg);font-weight:var(--weight-semibold);line-height:var(--leading-tight);color:var(--text-primary)}
 .ef-empty__description{max-width:380px;font-size:var(--text-sm);line-height:var(--leading-relaxed);color:var(--text-muted);text-wrap:balance}
-.ef-empty__content{display:flex;max-width:420px;flex-direction:column;align-items:center;gap:8px}
+.ef-empty__content{display:flex;max-width:420px;flex-direction:column;align-items:center;gap:var(--space-2)}
 `;
 function cx(base, className) {
   return base + (className ? ` ${className}` : '');
@@ -4761,11 +4761,11 @@ try { (() => {
 function _extends() { return _extends = Object.assign ? Object.assign.bind() : function (n) { for (var e = 1; e < arguments.length; e++) { var t = arguments[e]; for (var r in t) ({}).hasOwnProperty.call(t, r) && (n[r] = t[r]); } return n; }, _extends.apply(null, arguments); }
 const CSS = `
 .ef-kv{display:flex;flex-direction:column}
-.ef-kv__row{display:flex;gap:16px;padding:9px 0;border-bottom:1px solid var(--border-default)}
+.ef-kv__row{display:flex;gap:var(--space-4);padding:var(--space-2) 0;border-bottom:1px solid var(--border-default)}
 .ef-kv__row:last-child{border-bottom:none}
 .ef-kv__label{width:160px;flex:none;font-size:var(--text-sm);color:var(--text-muted)}
 .ef-kv__value{flex:1;font-size:var(--text-sm);color:var(--text-primary);min-width:0;overflow-wrap:break-word}
-.ef-kv__value--mono{font-family:var(--font-mono);font-size:13px}
+.ef-kv__value--mono{font-family:var(--font-mono);font-size:var(--text-sm)}
 `;
 function KeyValueList({
   items,
@@ -4799,7 +4799,7 @@ function _extends() { return _extends = Object.assign ? Object.assign.bind() : f
 const CSS = `
 .ef-linechart{position:relative}
 .ef-linechart__sr{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;border:0}
-.ef-linechart__tip{position:absolute;transform:translate(-50%,-130%);background:var(--surface-inverse);color:var(--text-inverse);font-size:11px;font-weight:500;padding:4px 8px;border-radius:6px;white-space:nowrap;pointer-events:none;z-index:5}
+.ef-linechart__tip{position:absolute;transform:translate(-50%,-130%);background:var(--surface-inverse);color:var(--text-inverse);font-size:var(--text-2xs);font-weight:500;padding:var(--space-1) var(--space-2);border-radius:var(--radius-xs-plus);white-space:nowrap;pointer-events:none;z-index:5}
 `;
 // A fixed default locale: the runtime default differs between server and
 // browser and would make the first render mismatch on hydration.
@@ -4933,13 +4933,13 @@ try { (() => {
 function _extends() { return _extends = Object.assign ? Object.assign.bind() : function (n) { for (var e = 1; e < arguments.length; e++) { var t = arguments[e]; for (var r in t) ({}).hasOwnProperty.call(t, r) && (n[r] = t[r]); } return n; }, _extends.apply(null, arguments); }
 const CSS = `
 .ef-stat__label{font-size:var(--text-sm);color:var(--text-muted);font-weight:var(--weight-medium)}
-.ef-stat__row{display:flex;align-items:baseline;gap:8px;margin-top:6px}
-.ef-stat__value{font-family:var(--font-mono);font-size:26px;font-weight:var(--weight-semibold);letter-spacing:-0.01em;color:var(--text-primary)}
+.ef-stat__row{display:flex;align-items:baseline;gap:var(--space-2);margin-top:var(--space-2)}
+.ef-stat__value{font-family:var(--font-mono);font-size:var(--text-3xl);font-weight:var(--weight-semibold);letter-spacing:-0.01em;color:var(--text-primary)}
 .ef-stat__delta{font-size:var(--text-xs);font-weight:var(--weight-medium);white-space:nowrap}
 .ef-stat__delta--up{color:var(--success-600)}
 .ef-stat__delta--down{color:var(--danger-600)}
 .ef-stat__delta--flat{color:var(--text-muted)}
-.ef-stat__hint{font-size:var(--text-xs);color:var(--text-muted);margin-top:4px}
+.ef-stat__hint{font-size:var(--text-xs);color:var(--text-muted);margin-top:var(--space-1)}
 `;
 function Stat({
   label,
@@ -4975,7 +4975,7 @@ Object.assign(__ds_scope, { Stat });
 try { (() => {
 function _extends() { return _extends = Object.assign ? Object.assign.bind() : function (n) { for (var e = 1; e < arguments.length; e++) { var t = arguments[e]; for (var r in t) ({}).hasOwnProperty.call(t, r) && (n[r] = t[r]); } return n; }, _extends.apply(null, arguments); }
 const CSS = `
-.ef-status{display:inline-flex;align-items:center;gap:7px;font-size:var(--text-sm);color:var(--text-primary)}
+.ef-status{display:inline-flex;align-items:center;gap:var(--space-2);font-size:var(--text-sm);color:var(--text-primary)}
 .ef-status__dot{position:relative;width:8px;height:8px;border-radius:var(--radius-full);flex:none}
 .ef-status--success .ef-status__dot{background:var(--success-600)}
 .ef-status--warning .ef-status__dot{background:var(--warning-600)}
@@ -5035,14 +5035,14 @@ const CSS = `
 .ef-acc__item{border-bottom:1px solid var(--border-default)}
 .ef-acc__item:first-child{border-top:1px solid var(--border-default)}
 .ef-acc__header{display:flex;margin:0}
-.ef-acc__trigger{display:flex;align-items:center;gap:10px;width:100%;padding:14px 2px;border:none;background:none;cursor:pointer;text-align:start;font-family:var(--font-sans);font-size:var(--text-md);font-weight:var(--weight-semibold);color:var(--text-primary)}
+.ef-acc__trigger{display:flex;align-items:center;gap:var(--space-3);width:100%;padding:var(--space-4) var(--space-0-5);border:none;background:none;cursor:pointer;text-align:start;font-family:var(--font-sans);font-size:var(--text-md);font-weight:var(--weight-semibold);color:var(--text-primary)}
 .ef-acc__trigger:hover{color:var(--brand-700)}
 .ef-acc__trigger:focus-visible{outline:none;box-shadow:var(--focus-ring);border-radius:var(--radius-sm)}
 .ef-acc__trigger:disabled{opacity:.45;cursor:not-allowed}
 .ef-acc__chev{margin-inline-start:auto;color:var(--text-muted);display:inline-flex;transition:transform var(--dur-med) var(--ease-out)}
 .ef-acc__trigger[data-state="open"] .ef-acc__chev{transform:rotate(180deg)}
 .ef-acc__content{overflow:hidden;font-size:var(--text-md);line-height:var(--leading-relaxed);color:var(--text-secondary)}
-.ef-acc__content-inner{padding:0 2px 16px;max-width:640px}
+.ef-acc__content-inner{padding:0 var(--space-0-5) var(--space-4);max-width:640px}
 `;
 const AccordionRootContext = React.createContext(null);
 const AccordionItemContext = React.createContext(null);
@@ -5315,17 +5315,17 @@ Object.assign(__ds_scope, { Accordion, AccordionItem, AccordionTrigger, Accordio
 try { (() => {
 function _extends() { return _extends = Object.assign ? Object.assign.bind() : function (n) { for (var e = 1; e < arguments.length; e++) { var t = arguments[e]; for (var r in t) ({}).hasOwnProperty.call(t, r) && (n[r] = t[r]); } return n; }, _extends.apply(null, arguments); }
 const CSS = `
-.ef-avatar{position:relative;display:inline-flex;align-items:center;justify-content:center;flex:none;width:32px;height:32px;border-radius:var(--radius-full);background:var(--peach-200);color:var(--cocoa-700);font-size:12px;font-weight:var(--weight-semibold);overflow:hidden;user-select:none}
-.ef-avatar--sm{width:24px;height:24px;font-size:9px}.ef-avatar--lg{width:40px;height:40px;font-size:15px}
+.ef-avatar{position:relative;display:inline-flex;align-items:center;justify-content:center;flex:none;width:var(--avatar-md);height:var(--avatar-md);border-radius:var(--radius-full);background:var(--peach-200);color:var(--cocoa-700);font-size:var(--text-xs);font-weight:var(--weight-semibold);overflow:hidden;user-select:none}
+.ef-avatar--sm{width:var(--avatar-sm);height:var(--avatar-sm);font-size:9px}.ef-avatar--lg{width:var(--avatar-lg);height:var(--avatar-lg);font-size:var(--text-lg)}
 .ef-avatar__image{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
 .ef-avatar__fallback{display:flex;width:100%;height:100%;align-items:center;justify-content:center}
 .ef-avatar__badge{position:absolute;inset-inline-end:0;inset-block-end:0;z-index:1;display:flex;width:25%;height:25%;min-width:8px;min-height:8px;align-items:center;justify-content:center;border:2px solid var(--surface-card);border-radius:var(--radius-full);background:var(--success-500);color:var(--text-inverse)}
 .ef-avatar-group{display:inline-flex}
 .ef-avatar-group>.ef-avatar{border:2px solid var(--surface-card)}
-.ef-avatar-group>.ef-avatar+.ef-avatar,.ef-avatar-group>.ef-avatar+.ef-avatar-count,.ef-avatar-group>.ef-avatar-count+.ef-avatar{margin-inline-start:-8px}
-.ef-avatar-count{position:relative;display:inline-flex;width:32px;height:32px;align-items:center;justify-content:center;flex:none;border:2px solid var(--surface-card);border-radius:var(--radius-full);background:var(--sand-100);color:var(--text-secondary);font-size:11px;font-weight:var(--weight-semibold)}
-.ef-avatar-group:has(>.ef-avatar--sm)>.ef-avatar-count{width:24px;height:24px;font-size:9px}.ef-avatar-group:has(>.ef-avatar--lg)>.ef-avatar-count{width:40px;height:40px;font-size:13px}
-.ef-avatar-group:has(>.ef-avatar--sm)>*+*{margin-inline-start:-6px}.ef-avatar-group:has(>.ef-avatar--lg)>*+*{margin-inline-start:-10px}
+.ef-avatar-group>.ef-avatar+.ef-avatar,.ef-avatar-group>.ef-avatar+.ef-avatar-count,.ef-avatar-group>.ef-avatar-count+.ef-avatar{margin-inline-start:calc(-1 * var(--space-2))}
+.ef-avatar-count{position:relative;display:inline-flex;width:var(--avatar-md);height:var(--avatar-md);align-items:center;justify-content:center;flex:none;border:2px solid var(--surface-card);border-radius:var(--radius-full);background:var(--sand-100);color:var(--text-secondary);font-size:var(--text-2xs);font-weight:var(--weight-semibold)}
+.ef-avatar-group:has(>.ef-avatar--sm)>.ef-avatar-count{width:var(--avatar-sm);height:var(--avatar-sm);font-size:9px}.ef-avatar-group:has(>.ef-avatar--lg)>.ef-avatar-count{width:var(--avatar-lg);height:var(--avatar-lg);font-size:var(--text-sm)}
+.ef-avatar-group:has(>.ef-avatar--sm)>*+*{margin-inline-start:calc(-1 * var(--space-2))}.ef-avatar-group:has(>.ef-avatar--lg)>*+*{margin-inline-start:calc(-1 * var(--space-3))}
 `;
 function classes(...values) {
   return values.filter(Boolean).join(' ');
@@ -5410,7 +5410,7 @@ Object.assign(__ds_scope, { Avatar, AvatarImage, AvatarFallback, AvatarBadge, Av
 try { (() => {
 function _extends() { return _extends = Object.assign ? Object.assign.bind() : function (n) { for (var e = 1; e < arguments.length; e++) { var t = arguments[e]; for (var r in t) ({}).hasOwnProperty.call(t, r) && (n[r] = t[r]); } return n; }, _extends.apply(null, arguments); }
 const CSS = `
-.ef-badge{display:inline-flex;align-items:center;justify-content:center;gap:5px;height:20px;padding:0 8px;border:1px solid transparent;border-radius:var(--radius-full);font-size:var(--text-xs);font-weight:var(--weight-medium);line-height:1;white-space:nowrap;text-decoration:none;transition:background var(--dur-fast) var(--ease-out),border-color var(--dur-fast) var(--ease-out),color var(--dur-fast) var(--ease-out),box-shadow var(--dur-fast) var(--ease-out)}
+.ef-badge{display:inline-flex;align-items:center;justify-content:center;gap:var(--space-1);height:20px;padding:0 var(--space-2);border:1px solid transparent;border-radius:var(--radius-full);font-size:var(--text-xs);font-weight:var(--weight-medium);line-height:1;white-space:nowrap;text-decoration:none;transition:background var(--dur-fast) var(--ease-out),border-color var(--dur-fast) var(--ease-out),color var(--dur-fast) var(--ease-out),box-shadow var(--dur-fast) var(--ease-out)}
 .ef-badge:hover,.ef-badge:focus,.ef-badge:visited{text-decoration:none}
 .ef-badge:focus-visible{outline:none;box-shadow:var(--focus-ring)}
 .ef-badge>[data-icon]{pointer-events:none;flex:none}
@@ -5489,13 +5489,13 @@ const CSS = `
 .ef-card--composed:has(>img:first-child){padding-block-start:0}
 .ef-card--composed>img:first-child{border-start-start-radius:var(--radius-md);border-start-end-radius:var(--radius-md)}
 .ef-card--composed>img:last-child{border-end-start-radius:var(--radius-md);border-end-end-radius:var(--radius-md)}
-.ef-card__header{display:grid;grid-template-columns:minmax(0,1fr);grid-auto-rows:min-content;align-items:start;gap:4px;padding-inline:var(--card-spacing,20px)}
+.ef-card__header{display:grid;grid-template-columns:minmax(0,1fr);grid-auto-rows:min-content;align-items:start;gap:var(--space-1);padding-inline:var(--card-spacing,var(--space-5))}
 .ef-card__header:has(.ef-card__action){grid-template-columns:minmax(0,1fr) auto}
 .ef-card__title{margin:0;font-family:var(--font-sans);font-size:var(--text-lg);font-weight:var(--weight-semibold);line-height:var(--leading-tight);letter-spacing:0;color:var(--text-primary)}
 .ef-card__description{font-size:var(--text-sm);line-height:var(--leading-relaxed);color:var(--text-muted)}
 .ef-card__action{grid-column:2;grid-row:1/span 2;align-self:start;justify-self:end}
 .ef-card__content{padding-inline:var(--card-spacing)}
-.ef-card__footer{display:flex;align-items:center;gap:8px;padding:var(--card-spacing);border-top:1px solid var(--border-default);background:var(--surface-subtle);border-end-start-radius:var(--radius-md);border-end-end-radius:var(--radius-md)}
+.ef-card__footer{display:flex;align-items:center;gap:var(--space-2);padding:var(--card-spacing);border-top:1px solid var(--border-default);background:var(--surface-subtle);border-end-start-radius:var(--radius-md);border-end-end-radius:var(--radius-md)}
 `;
 function cx(base, className) {
   return base + (className ? ` ${className}` : '');
@@ -5590,12 +5590,12 @@ const CSS = `
 .ef-carousel__content{overflow-x:auto;overflow-y:hidden;scroll-behavior:smooth;scrollbar-width:none;scroll-snap-type:x mandatory;overscroll-behavior-inline:contain}
 .ef-carousel__content::-webkit-scrollbar{display:none}
 .ef-carousel__content[data-orientation="vertical"]{height:100%;overflow-x:hidden;overflow-y:auto;scroll-snap-type:y mandatory;overscroll-behavior-block:contain}
-.ef-carousel__track{display:flex;margin-inline-start:calc(var(--carousel-gap,16px)*-1)}
-.ef-carousel__content[data-orientation="vertical"]>.ef-carousel__track{height:100%;flex-direction:column;margin-inline-start:0;margin-block-start:calc(var(--carousel-gap,16px)*-1)}
-.ef-carousel__item{min-width:0;flex:0 0 100%;scroll-snap-align:start;padding-inline-start:var(--carousel-gap,16px)}
+.ef-carousel__track{display:flex;margin-inline-start:calc(var(--carousel-gap,var(--space-4))*-1)}
+.ef-carousel__content[data-orientation="vertical"]>.ef-carousel__track{height:100%;flex-direction:column;margin-inline-start:0;margin-block-start:calc(var(--carousel-gap,var(--space-4))*-1)}
+.ef-carousel__item{min-width:0;flex:0 0 100%;scroll-snap-align:start;padding-inline-start:var(--carousel-gap,var(--space-4))}
 .ef-carousel[data-align="center"] .ef-carousel__item{scroll-snap-align:center}
 .ef-carousel[data-align="end"] .ef-carousel__item{scroll-snap-align:end}
-.ef-carousel__content[data-orientation="vertical"] .ef-carousel__item{min-height:0;padding-inline-start:0;padding-block-start:var(--carousel-gap,16px)}
+.ef-carousel__content[data-orientation="vertical"] .ef-carousel__item{min-height:0;padding-inline-start:0;padding-block-start:var(--carousel-gap,var(--space-4))}
 .ef-carousel__nav{position:absolute;display:flex;align-items:center;justify-content:center;width:32px;height:32px;border:1px solid var(--border-strong);border-radius:var(--radius-full);background:var(--surface-card);color:var(--text-secondary);cursor:pointer;box-shadow:var(--shadow-sm);transition:color var(--dur-fast) var(--ease-out),transform var(--dur-fast) var(--ease-out);z-index:1}
 .ef-carousel__nav:hover:not(:disabled){color:var(--text-primary)}
 .ef-carousel__nav:focus-visible{outline:none;box-shadow:var(--focus-ring)}
@@ -5855,7 +5855,7 @@ Object.assign(__ds_scope, { Carousel, CarouselContent, CarouselItem, CarouselPre
 // components/display/Collapsible.jsx
 try { (() => {
 const CSS = `
-.ef-collapsible__trigger{display:flex;align-items:center;gap:8px;width:100%;padding:7px 0;border:none;background:none;cursor:pointer;text-align:start;font-family:var(--font-sans);font-size:var(--text-md);font-weight:600;color:var(--text-primary);border-radius:var(--radius-sm)}
+.ef-collapsible__trigger{display:flex;align-items:center;gap:var(--space-2);width:100%;padding:var(--space-2) 0;border:none;background:none;cursor:pointer;text-align:start;font-family:var(--font-sans);font-size:var(--text-md);font-weight:600;color:var(--text-primary);border-radius:var(--radius-sm)}
 .ef-collapsible__trigger:focus-visible{outline:none;box-shadow:var(--focus-ring)}
 .ef-collapsible__trigger:disabled{opacity:.45;cursor:not-allowed}
 .ef-collapsible__content[data-state="open"]{opacity:1}
@@ -6018,7 +6018,7 @@ function _extends() { return _extends = Object.assign ? Object.assign.bind() : f
 // with two different magic numbers (20px and 10px). Default to one step on the
 // space scale; an explicit style or class still wins.
 const CSS = `
-.ef-divider{display:flex;align-items:center;gap:12px;border:none;margin:var(--space-4) 0}
+.ef-divider{display:flex;align-items:center;gap:var(--space-3);border:none;margin:var(--space-4) 0}
 .ef-divider__line{flex:1;height:1px;background:var(--border-default)}
 .ef-divider__label{font-size:var(--text-xs);font-weight:var(--weight-medium);letter-spacing:0.06em;text-transform:uppercase;color:var(--text-muted);white-space:nowrap}
 .ef-divider--vertical{display:inline-flex;width:1px;align-self:stretch;background:var(--border-default)}
@@ -6054,8 +6054,8 @@ Object.assign(__ds_scope, { Divider });
 try { (() => {
 function _extends() { return _extends = Object.assign ? Object.assign.bind() : function (n) { for (var e = 1; e < arguments.length; e++) { var t = arguments[e]; for (var r in t) ({}).hasOwnProperty.call(t, r) && (n[r] = t[r]); } return n; }, _extends.apply(null, arguments); }
 const CSS = `
-.ef-kbd{display:inline-flex;align-items:center;justify-content:center;min-width:18px;height:19px;padding:0 5px;border:1px solid var(--border-strong);border-bottom-width:2px;border-radius:var(--radius-xs);background:var(--surface-card);font-family:var(--font-mono);font-size:11px;color:var(--text-secondary);line-height:1}
-.ef-kbd-group{display:inline-flex;align-items:center;gap:4px}
+.ef-kbd{display:inline-flex;align-items:center;justify-content:center;min-width:18px;height:19px;padding:0 var(--space-1);border:1px solid var(--border-strong);border-bottom-width:2px;border-radius:var(--radius-xs);background:var(--surface-card);font-family:var(--font-mono);font-size:var(--text-2xs);color:var(--text-secondary);line-height:1}
+.ef-kbd-group{display:inline-flex;align-items:center;gap:var(--space-1)}
 `;
 function joinClasses(base, className) {
   return `${base}${className ? ' ' + className : ''}`;
@@ -6091,7 +6091,7 @@ function _extends() { return _extends = Object.assign ? Object.assign.bind() : f
 // Hover deepens the link's own hue without changing text decoration. Link
 // identity stays stable across pointer, keyboard, and touch interaction.
 const CSS = `
-.ef-link{display:inline-flex;align-items:center;gap:4px;color:var(--text-link);text-decoration:none;font-weight:var(--weight-medium);cursor:pointer;border-radius:var(--radius-sm);transition:color var(--dur-fast) var(--ease-out)}
+.ef-link{display:inline-flex;align-items:center;gap:var(--space-1);color:var(--text-link);text-decoration:none;font-weight:var(--weight-medium);cursor:pointer;border-radius:var(--radius-sm);transition:color var(--dur-fast) var(--ease-out)}
 .ef-link:hover{color:var(--text-link-hover);text-decoration:none}
 .ef-link:focus-visible{outline:none;box-shadow:var(--focus-ring)}
 .ef-link--quiet{color:var(--text-secondary)}
@@ -6118,13 +6118,13 @@ function Link({
     style: style
   }, rest), icon ? /*#__PURE__*/React.createElement(__ds_scope.Icon, {
     name: icon,
-    size: 14
+    size: 16
   }) : null, children, external ? /*#__PURE__*/React.createElement(__ds_scope.Icon, {
     name: "arrow-up-right",
-    size: 13
+    size: 12
   }) : standalone ? /*#__PURE__*/React.createElement(__ds_scope.Icon, {
     name: "arrow-right",
-    size: 14
+    size: 16
   }) : null);
 }
 Object.assign(__ds_scope, { Link });
@@ -6146,7 +6146,7 @@ const CSS = `
 .ef-resizable__handle:hover::after,.ef-resizable__handle[data-resize-handle-active]::after{background:var(--accent)}
 .ef-resizable__handle:focus-visible{outline:none;box-shadow:var(--focus-ring)}
 .ef-resizable__grip{position:absolute;inset:50% auto auto 50%;width:8px;height:18px;transform:translate(-50%,-50%);border:1px solid var(--border-strong);border-radius:var(--radius-sm);background:var(--surface-card);box-shadow:var(--shadow-xs)}
-.ef-resizable__grip::after{content:'⋮';position:absolute;inset:50% auto auto 50%;transform:translate(-50%,-54%);font-size:12px;color:var(--text-muted)}
+.ef-resizable__grip::after{content:'⋮';position:absolute;inset:50% auto auto 50%;transform:translate(-50%,-54%);font-size:var(--text-xs);color:var(--text-muted)}
 .ef-resizable[data-orientation="vertical"]>.ef-resizable__handle .ef-resizable__grip{width:18px;height:8px}
 .ef-resizable[data-orientation="vertical"]>.ef-resizable__handle .ef-resizable__grip::after{content:'⋯';transform:translate(-50%,-66%)}
 `;
@@ -6400,16 +6400,16 @@ function _extends() { return _extends = Object.assign ? Object.assign.bind() : f
 const CSS = `
 .ef-item-group{display:flex;flex-direction:column}
 .ef-item{display:flex;flex-wrap:wrap;align-items:center;width:100%;border:1px solid transparent;border-radius:var(--radius-md);background:transparent;color:var(--text-primary);font-family:var(--font-sans);font-size:var(--text-sm);text-align:start;transition:background var(--dur-fast) var(--ease-out),border-color var(--dur-fast) var(--ease-out),box-shadow var(--dur-fast) var(--ease-out)}
-.ef-item[data-size="default"]{gap:16px;padding:16px}.ef-item[data-size="sm"]{gap:10px;padding:12px 16px}.ef-item[data-size="xs"]{gap:8px;padding:8px 10px}
+.ef-item[data-size="default"]{gap:var(--space-4);padding:var(--space-4)}.ef-item[data-size="sm"]{gap:var(--space-3);padding:var(--space-3) var(--space-4)}.ef-item[data-size="xs"]{gap:var(--space-2);padding:var(--space-2) var(--space-3)}
 .ef-item[data-variant="outline"]{border-color:var(--border-default)}.ef-item[data-variant="muted"]{background:var(--surface-sunken)}
 .ef-item:is(a,button){cursor:pointer;text-decoration:none}.ef-item:is(a,button):hover{background:var(--surface-sunken);text-decoration:none}.ef-item:is(a,button):focus-visible{outline:none;border-color:var(--accent);box-shadow:var(--focus-ring)}
-.ef-item__media{display:flex;flex:none;align-items:center;justify-content:center;gap:8px}.ef-item:has(.ef-item__description)>.ef-item__media{align-self:flex-start;margin-top:2px}
+.ef-item__media{display:flex;flex:none;align-items:center;justify-content:center;gap:var(--space-2)}.ef-item:has(.ef-item__description)>.ef-item__media{align-self:flex-start;margin-top:var(--space-0-5)}
 .ef-item__media[data-variant="icon"]{width:32px;height:32px;border:1px solid var(--border-default);border-radius:var(--radius-sm);background:var(--surface-sunken)}
 .ef-item__media[data-variant="image"]{width:40px;height:40px;overflow:hidden;border-radius:var(--radius-sm)}.ef-item__media[data-variant="image"] img{width:100%;height:100%;object-fit:cover}
-.ef-item__content{display:flex;min-width:0;flex:1;flex-direction:column;gap:4px}.ef-item__content+.ef-item__content{flex:none}
-.ef-item__title{display:flex;width:fit-content;align-items:center;gap:8px;font-size:var(--text-sm);font-weight:var(--weight-medium);line-height:1.35}
+.ef-item__content{display:flex;min-width:0;flex:1;flex-direction:column;gap:var(--space-1)}.ef-item__content+.ef-item__content{flex:none}
+.ef-item__title{display:flex;width:fit-content;align-items:center;gap:var(--space-2);font-size:var(--text-sm);font-weight:var(--weight-medium);line-height:1.35}
 .ef-item__description{display:-webkit-box;overflow:hidden;margin:0;color:var(--text-muted);font-size:var(--text-sm);font-weight:var(--weight-regular);line-height:1.5;text-wrap:balance;-webkit-box-orient:vertical;-webkit-line-clamp:2}.ef-item__description>a{text-decoration:underline;text-underline-offset:4px}.ef-item__description>a:hover{color:var(--text-primary)}
-.ef-item__actions{display:flex;flex:none;align-items:center;gap:8px;margin-inline-start:auto}.ef-item__header,.ef-item__footer{display:flex;flex-basis:100%;align-items:center;justify-content:space-between;gap:8px}
+.ef-item__actions{display:flex;flex:none;align-items:center;gap:var(--space-2);margin-inline-start:auto}.ef-item__header,.ef-item__footer{display:flex;flex-basis:100%;align-items:center;justify-content:space-between;gap:var(--space-2)}
 .ef-item-separator{margin-block:0}
 `;
 function classes(...values) {
@@ -6568,12 +6568,12 @@ Object.assign(__ds_scope, { ItemGroup, ItemSeparator, Item, ItemMedia, ItemConte
 try { (() => {
 function _extends() { return _extends = Object.assign ? Object.assign.bind() : function (n) { for (var e = 1; e < arguments.length; e++) { var t = arguments[e]; for (var r in t) ({}).hasOwnProperty.call(t, r) && (n[r] = t[r]); } return n; }, _extends.apply(null, arguments); }
 const CSS = `
-.ef-tag{display:inline-flex;align-items:center;gap:6px;height:26px;padding:0 10px;border-radius:var(--radius-sm);background:transparent;border:1px solid var(--border-strong);color:var(--text-secondary);font-family:var(--font-sans);font-size:var(--text-sm);font-weight:var(--weight-medium);white-space:nowrap;transition:background var(--dur-fast) var(--ease-out),border-color var(--dur-fast) var(--ease-out)}
+.ef-tag{display:inline-flex;align-items:center;gap:var(--space-2);height:26px;padding:0 var(--space-3);border-radius:var(--radius-sm);background:transparent;border:1px solid var(--border-strong);color:var(--text-secondary);font-family:var(--font-sans);font-size:var(--text-sm);font-weight:var(--weight-medium);white-space:nowrap;transition:background var(--dur-fast) var(--ease-out),border-color var(--dur-fast) var(--ease-out)}
 .ef-tag--interactive{cursor:pointer}
 .ef-tag--interactive:hover{background:var(--surface-sunken);border-color:var(--sand-400)}
 .ef-tag--interactive:focus-visible{outline:none;box-shadow:var(--focus-ring)}
-.ef-tag:has(.ef-tag__x){padding-block:2px;padding-inline-end:2px}
-.ef-tag__body{display:inline-flex;align-items:center;gap:6px;border:none;background:transparent;padding:0;margin:0;font:inherit;color:inherit;cursor:pointer;border-radius:var(--radius-sm)}
+.ef-tag:has(.ef-tag__x){padding-block:var(--space-0-5);padding-inline-end:var(--space-0-5)}
+.ef-tag__body{display:inline-flex;align-items:center;gap:var(--space-2);border:none;background:transparent;padding:0;margin:0;font:inherit;color:inherit;cursor:pointer;border-radius:var(--radius-sm)}
 .ef-tag__body:focus-visible{outline:none;box-shadow:var(--focus-ring)}
 .ef-tag__x{display:inline-flex;align-items:center;justify-content:center;width:20px;height:20px;margin:0;border:none;border-radius:var(--radius-sm);background:transparent;color:var(--text-muted);cursor:pointer;padding:0;transition:background var(--dur-fast) var(--ease-out),color var(--dur-fast) var(--ease-out)}
 .ef-tag__x:hover{background:var(--sand-200);color:var(--text-primary)}
@@ -6592,7 +6592,7 @@ function Tag({
   __ds_scope.injectEfCss('ef-css-tag', CSS);
   const body = /*#__PURE__*/React.createElement(React.Fragment, null, icon ? /*#__PURE__*/React.createElement(__ds_scope.Icon, {
     name: icon,
-    size: 13
+    size: 12
   }) : null, children);
   const removeBtn = onRemove ? /*#__PURE__*/React.createElement("button", {
     type: "button",
@@ -6640,22 +6640,22 @@ try { (() => {
 function _extends() { return _extends = Object.assign ? Object.assign.bind() : function (n) { for (var e = 1; e < arguments.length; e++) { var t = arguments[e]; for (var r in t) ({}).hasOwnProperty.call(t, r) && (n[r] = t[r]); } return n; }, _extends.apply(null, arguments); }
 const CSS = `
 .ef-timeline{list-style:none;margin:0;padding:0;display:flex;flex-direction:column}
-.ef-timeline__item{display:grid;grid-template-columns:24px minmax(0,1fr);column-gap:12px;position:relative;min-width:0}
+.ef-timeline__item{display:grid;grid-template-columns:24px minmax(0,1fr);column-gap:var(--space-3);position:relative;min-width:0}
 .ef-timeline__rail{display:flex;flex-direction:column;align-items:center;grid-row:1/span 2}
 .ef-timeline__marker{display:inline-flex;align-items:center;justify-content:center;width:24px;height:24px;border-radius:var(--radius-full);border:1px solid var(--border-strong);background:var(--surface-card);color:var(--text-muted);flex:none;z-index:1}
-.ef-timeline__line{width:1px;flex:1;min-height:16px;background:var(--border-default);margin:4px 0}
+.ef-timeline__line{width:1px;flex:1;min-height:16px;background:var(--border-default);margin:var(--space-1) 0}
 .ef-timeline__item:last-child .ef-timeline__line{visibility:hidden}
-.ef-timeline__content{min-width:0;padding-bottom:20px}
+.ef-timeline__content{min-width:0;padding-bottom:var(--space-5)}
 .ef-timeline__item:last-child .ef-timeline__content{padding-bottom:0}
-.ef-timeline__head{display:flex;align-items:baseline;gap:8px;flex-wrap:wrap;min-height:24px}
+.ef-timeline__head{display:flex;align-items:baseline;gap:var(--space-2);flex-wrap:wrap;min-height:24px}
 .ef-timeline__title{font-size:var(--text-md);font-weight:var(--weight-semibold);color:var(--text-primary);line-height:1.45}
 .ef-timeline__time{margin-inline-start:auto;color:var(--text-muted);font-family:var(--font-mono);font-size:var(--text-xs);white-space:nowrap}
-.ef-timeline__desc{margin-top:3px;color:var(--text-secondary);font-size:var(--text-sm);line-height:1.5}
-.ef-timeline__meta{margin-top:6px;color:var(--text-muted);font-size:var(--text-xs);line-height:1.4}
+.ef-timeline__desc{margin-top:var(--space-1);color:var(--text-secondary);font-size:var(--text-sm);line-height:1.5}
+.ef-timeline__meta{margin-top:var(--space-2);color:var(--text-muted);font-size:var(--text-xs);line-height:1.4}
 .ef-timeline__item--success .ef-timeline__marker{border-color:var(--success-300);background:var(--success-100);color:var(--success-600)}
 .ef-timeline__item--warning .ef-timeline__marker{border-color:var(--warning-300);background:var(--warning-100);color:var(--warning-600)}
 .ef-timeline__item--danger .ef-timeline__marker{border-color:var(--danger-300);background:var(--danger-100);color:var(--danger-600)}
-.ef-timeline--compact .ef-timeline__content{padding-bottom:12px}
+.ef-timeline--compact .ef-timeline__content{padding-bottom:var(--space-3)}
 `;
 const TONE_ICONS = {
   success: 'check',
@@ -6686,7 +6686,7 @@ function Timeline({
       className: "ef-timeline__marker"
     }, /*#__PURE__*/React.createElement(__ds_scope.Icon, {
       name: icon,
-      size: 13
+      size: 12
     })), /*#__PURE__*/React.createElement("span", {
       className: "ef-timeline__line"
     })), /*#__PURE__*/React.createElement("div", {
@@ -6713,7 +6713,7 @@ try { (() => {
 function _extends() { return _extends = Object.assign ? Object.assign.bind() : function (n) { for (var e = 1; e < arguments.length; e++) { var t = arguments[e]; for (var r in t) ({}).hasOwnProperty.call(t, r) && (n[r] = t[r]); } return n; }, _extends.apply(null, arguments); }
 const CSS = `
 .ef-tree{display:flex;flex-direction:column;gap:1px;font-size:var(--text-sm)}
-.ef-tree__row{display:flex;align-items:center;gap:7px;height:30px;padding:0 8px;border:none;border-radius:var(--radius-sm);background:none;cursor:pointer;text-align:start;font-family:var(--font-sans);font-size:var(--text-sm);color:var(--text-secondary);width:100%;transition:background var(--dur-fast) var(--ease-out),color var(--dur-fast) var(--ease-out)}
+.ef-tree__row{display:flex;align-items:center;gap:var(--space-2);height:30px;padding:0 var(--space-2);border:none;border-radius:var(--radius-sm);background:none;cursor:pointer;text-align:start;font-family:var(--font-sans);font-size:var(--text-sm);color:var(--text-secondary);width:100%;transition:background var(--dur-fast) var(--ease-out),color var(--dur-fast) var(--ease-out)}
 .ef-tree__row:hover{background:var(--surface-sunken);color:var(--text-primary)}
 .ef-tree__row--sel{background:var(--accent-subtle);color:var(--accent-subtle-fg, var(--brand-700));font-weight:var(--weight-semibold)}
 .ef-tree__row--sel:hover{background:var(--accent-subtle);color:var(--accent-subtle-fg, var(--brand-700))}
@@ -6722,7 +6722,7 @@ const CSS = `
 .ef-tree__chev--open{transform:rotate(90deg)}
 .ef-tree__icon{display:inline-flex;flex:none;color:var(--text-muted)}
 .ef-tree__row--sel .ef-tree__icon{color:inherit}
-.ef-tree__count{margin-inline-start:auto;font-family:var(--font-mono);font-size:11px;color:var(--text-muted)}
+.ef-tree__count{margin-inline-start:auto;font-family:var(--font-mono);font-size:var(--text-2xs);color:var(--text-muted)}
 @media (pointer:coarse){.ef-tree__row{min-height:var(--tap-min)}}
 `;
 function Node({
@@ -6751,7 +6751,7 @@ function Node({
     className: `ef-tree__chev${isOpen ? ' ef-tree__chev--open' : ''}`
   }, /*#__PURE__*/React.createElement(__ds_scope.Icon, {
     name: "chevron-right",
-    size: 13
+    size: 12
   })) : /*#__PURE__*/React.createElement("span", {
     style: {
       width: 13,
@@ -6761,7 +6761,7 @@ function Node({
     className: "ef-tree__icon"
   }, /*#__PURE__*/React.createElement(__ds_scope.Icon, {
     name: node.icon,
-    size: 15
+    size: 16
   })) : null, /*#__PURE__*/React.createElement("span", {
     style: {
       whiteSpace: 'nowrap',
@@ -6823,11 +6823,11 @@ Object.assign(__ds_scope, { TreeList });
 try { (() => {
 function _extends() { return _extends = Object.assign ? Object.assign.bind() : function (n) { for (var e = 1; e < arguments.length; e++) { var t = arguments[e]; for (var r in t) ({}).hasOwnProperty.call(t, r) && (n[r] = t[r]); } return n; }, _extends.apply(null, arguments); }
 const CSS = `
-.ef-alert{position:relative;display:grid;grid-template-columns:0 1fr;align-items:start;gap:2px 10px;width:100%;padding:12px 14px;border:1px solid var(--border-strong);border-radius:var(--radius-md);background:var(--surface-card);color:var(--text-primary)}
+.ef-alert{position:relative;display:grid;grid-template-columns:0 1fr;align-items:start;gap:var(--space-0-5) var(--space-3);width:100%;padding:var(--space-3) var(--space-4);border:1px solid var(--border-strong);border-radius:var(--radius-md);background:var(--surface-card);color:var(--text-primary)}
 .ef-alert:has(>[data-slot=icon]){grid-template-columns:auto 1fr}
-.ef-alert:has(>.ef-alert__action){grid-template-columns:0 1fr auto;column-gap:14px}
+.ef-alert:has(>.ef-alert__action){grid-template-columns:0 1fr auto;column-gap:var(--space-4)}
 .ef-alert:has(>[data-slot=icon]):has(>.ef-alert__action){grid-template-columns:auto 1fr auto}
-.ef-alert>[data-slot=icon]{grid-column:1;grid-row:1/3;margin-top:2px;color:currentColor}
+.ef-alert>[data-slot=icon]{grid-column:1;grid-row:1/3;margin-top:var(--space-0-5);color:currentColor}
 .ef-alert>.ef-alert__title,.ef-alert>.ef-alert__description{grid-column:2}
 .ef-alert--success{border-color:var(--success-300);color:var(--success-600)}
 .ef-alert--warning{border-color:var(--warning-300);color:var(--warning-600)}
@@ -6835,8 +6835,8 @@ const CSS = `
 .ef-alert__title{font-size:var(--text-md);font-weight:var(--weight-semibold);line-height:1.4;color:currentColor}
 .ef-alert__description{font-size:var(--text-sm);line-height:1.5;color:var(--text-secondary)}
 .ef-alert--danger>.ef-alert__description{color:var(--danger-700)}
-.ef-alert>.ef-alert__action{grid-column:3;grid-row:1/3;align-self:start;margin-top:-2px}
-@media (max-width:559px){.ef-alert:has(>.ef-alert__action){grid-template-columns:0 1fr}.ef-alert:has(>[data-slot=icon]):has(>.ef-alert__action){grid-template-columns:auto 1fr}.ef-alert>.ef-alert__action{grid-column:2;grid-row:auto;margin-top:8px}}
+.ef-alert>.ef-alert__action{grid-column:3;grid-row:1/3;align-self:start;margin-top:calc(-1 * var(--space-0-5))}
+@media (max-width:559px){.ef-alert:has(>.ef-alert__action){grid-template-columns:0 1fr}.ef-alert:has(>[data-slot=icon]):has(>.ef-alert__action){grid-template-columns:auto 1fr}.ef-alert>.ef-alert__action{grid-column:2;grid-row:auto;margin-top:var(--space-2)}}
 `;
 const Alert = React.forwardRef(function Alert({
   variant = 'default',
@@ -6890,12 +6890,12 @@ Object.assign(__ds_scope, { Alert, AlertTitle, AlertDescription, AlertAction });
 try { (() => {
 function _extends() { return _extends = Object.assign ? Object.assign.bind() : function (n) { for (var e = 1; e < arguments.length; e++) { var t = arguments[e]; for (var r in t) ({}).hasOwnProperty.call(t, r) && (n[r] = t[r]); } return n; }, _extends.apply(null, arguments); }
 const CSS = `
-.ef-loader{display:inline-flex;align-items:baseline;font-family:var(--font-sans);font-size:13.5px;color:var(--text-muted)}
+.ef-loader{display:inline-flex;align-items:baseline;font-family:var(--font-sans);font-size:var(--text-md);color:var(--text-muted)}
 .ef-loader--pulse{animation:ef-loader-pulse var(--ef-loader-dur,1.4s) ease-in-out infinite both}
 @keyframes ef-loader-pulse{0%,100%{opacity:.4}50%{opacity:1}}
 .ef-loader--shimmer{background:linear-gradient(90deg,color-mix(in oklab,currentColor 40%,transparent) 0%,color-mix(in oklab,currentColor 40%,transparent) 35%,currentColor 50%,color-mix(in oklab,currentColor 40%,transparent) 65%,color-mix(in oklab,currentColor 40%,transparent) 100%);background-size:200% 100%;-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;animation:ef-loader-shimmer var(--ef-loader-dur,2.2s) linear infinite}
 @keyframes ef-loader-shimmer{0%{background-position:100% 0}100%{background-position:-100% 0}}
-.ef-loader__dots{margin-inline-start:2px;display:inline-flex;-webkit-text-fill-color:currentColor}
+.ef-loader__dots{margin-inline-start:var(--space-0-5);display:inline-flex;-webkit-text-fill-color:currentColor}
 .ef-loader__dots span{animation:ef-loader-dot var(--ef-loader-dur,1.4s) ease-in-out infinite both}
 .ef-loader__dots span:nth-child(2){animation-delay:calc(var(--ef-loader-dur,1.4s)*.14)}
 .ef-loader__dots span:nth-child(3){animation-delay:calc(var(--ef-loader-dur,1.4s)*.28)}
@@ -6934,7 +6934,7 @@ Object.assign(__ds_scope, { Loader });
 try { (() => {
 function _extends() { return _extends = Object.assign ? Object.assign.bind() : function (n) { for (var e = 1; e < arguments.length; e++) { var t = arguments[e]; for (var r in t) ({}).hasOwnProperty.call(t, r) && (n[r] = t[r]); } return n; }, _extends.apply(null, arguments); }
 const CSS = `
-.ef-progress-shell{display:flex;flex-direction:column;gap:6px}
+.ef-progress-shell{display:flex;flex-direction:column;gap:var(--space-2)}
 .ef-progress__head{display:flex;justify-content:space-between;align-items:baseline}
 .ef-progress__label{font-size:var(--text-sm);font-weight:var(--weight-medium);color:var(--text-primary)}
 .ef-progress__val{font-family:var(--font-mono);font-size:var(--text-xs);color:var(--text-muted)}
@@ -7042,10 +7042,10 @@ Object.assign(__ds_scope, { Spinner });
 try { (() => {
 function _extends() { return _extends = Object.assign ? Object.assign.bind() : function (n) { for (var e = 1; e < arguments.length; e++) { var t = arguments[e]; for (var r in t) ({}).hasOwnProperty.call(t, r) && (n[r] = t[r]); } return n; }, _extends.apply(null, arguments); }
 const CSS = `
-.ef-attachment{position:relative;display:flex;align-items:center;gap:10px;min-width:0;padding:10px;border:1px solid var(--border-default);border-radius:var(--radius-md);background:var(--surface-card);color:var(--text-primary)}
+.ef-attachment{position:relative;display:flex;align-items:center;gap:var(--space-3);min-width:0;padding:var(--space-3);border:1px solid var(--border-default);border-radius:var(--radius-md);background:var(--surface-card);color:var(--text-primary)}
 .ef-attachment[data-orientation="vertical"]{flex-direction:column;align-items:stretch}
-.ef-attachment[data-size="sm"]{gap:8px;padding:8px}
-.ef-attachment[data-size="xs"]{gap:6px;padding:6px;border-radius:var(--radius-sm)}
+.ef-attachment[data-size="sm"]{gap:var(--space-2);padding:var(--space-2)}
+.ef-attachment[data-size="xs"]{gap:var(--space-2);padding:var(--space-2);border-radius:var(--radius-sm)}
 .ef-attachment[data-state="error"]{border-color:var(--danger-600)}
 .ef-attachment__media{display:flex;align-items:center;justify-content:center;flex:none;width:36px;height:36px;border-radius:var(--radius-sm);overflow:hidden;background:var(--surface-sunken);color:var(--text-secondary)}
 .ef-attachment[data-size="sm"] .ef-attachment__media{width:32px;height:32px}
@@ -7055,14 +7055,14 @@ const CSS = `
 .ef-attachment__content{flex:1;min-width:0}
 .ef-attachment__title{overflow:hidden;color:var(--text-primary);font-size:var(--text-sm);font-weight:var(--weight-semibold);line-height:1.35;text-overflow:ellipsis;white-space:nowrap}
 .ef-attachment[data-size="xs"] .ef-attachment__title{font-size:var(--text-xs)}
-.ef-attachment__description{overflow:hidden;margin-top:2px;color:var(--text-muted);font-size:var(--text-xs);line-height:1.35;text-overflow:ellipsis;white-space:nowrap}
+.ef-attachment__description{overflow:hidden;margin-top:var(--space-0-5);color:var(--text-muted);font-size:var(--text-xs);line-height:1.35;text-overflow:ellipsis;white-space:nowrap}
 .ef-attachment[data-state="error"] .ef-attachment__description{color:var(--danger-600)}
-.ef-attachment__actions{position:relative;z-index:3;display:flex;align-items:center;gap:4px;flex:none}
+.ef-attachment__actions{position:relative;z-index:3;display:flex;align-items:center;gap:var(--space-1);flex:none}
 .ef-attachment__trigger{position:absolute;z-index:1;inset:0;width:100%;height:100%;padding:0;border:0;border-radius:inherit;background:transparent;cursor:pointer}
 .ef-attachment__trigger:focus-visible{outline:none;box-shadow:inset var(--focus-ring)}
 .ef-attachment:has(.ef-attachment__trigger) .ef-attachment__media,.ef-attachment:has(.ef-attachment__trigger) .ef-attachment__content{pointer-events:none}
 .ef-attachment[data-state="uploading"] .ef-attachment__title,.ef-attachment[data-state="processing"] .ef-attachment__title{background:linear-gradient(90deg,var(--text-muted),var(--text-primary),var(--text-muted));background-size:200% 100%;background-clip:text;color:transparent;animation:ef-attachment-shimmer 1.5s linear infinite}
-.ef-attachment-group{display:flex;gap:8px;max-width:100%;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:thin;mask-image:linear-gradient(to right,transparent,currentColor 14px,currentColor calc(100% - 14px),transparent);padding-inline:14px}
+.ef-attachment-group{display:flex;gap:var(--space-2);max-width:100%;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:thin;mask-image:linear-gradient(to right,transparent,currentColor 14px,currentColor calc(100% - 14px),transparent);padding-inline:var(--space-4)}
 .ef-attachment-group>.ef-attachment{flex:0 0 auto;min-width:220px;scroll-snap-align:start}
 @keyframes ef-attachment-shimmer{to{background-position:-200% 0}}
 @media (prefers-reduced-motion:reduce){.ef-attachment[data-state="uploading"] .ef-attachment__title,.ef-attachment[data-state="processing"] .ef-attachment__title{animation:none;color:var(--text-primary);background:none}}
@@ -7183,7 +7183,7 @@ Object.assign(__ds_scope, { Attachment, AttachmentMedia, AttachmentContent, Atta
 try { (() => {
 function _extends() { return _extends = Object.assign ? Object.assign.bind() : function (n) { for (var e = 1; e < arguments.length; e++) { var t = arguments[e]; for (var r in t) ({}).hasOwnProperty.call(t, r) && (n[r] = t[r]); } return n; }, _extends.apply(null, arguments); }
 const CSS = `
-.ef-filedrop{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;padding:32px 24px;border:1px dashed var(--border-control, var(--border-strong));border-radius:var(--radius-md);background:var(--surface-card);cursor:pointer;text-align:center;transition:border-color var(--dur-fast) var(--ease-out),background var(--dur-fast) var(--ease-out)}
+.ef-filedrop{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:var(--space-2);padding:var(--space-8) var(--space-6);border:1px dashed var(--border-control, var(--border-strong));border-radius:var(--radius-md);background:var(--surface-card);cursor:pointer;text-align:center;transition:border-color var(--dur-fast) var(--ease-out),background var(--dur-fast) var(--ease-out)}
 .ef-filedrop:hover,.ef-filedrop--over{border-color:var(--accent);background:var(--surface-subtle)}
 .ef-filedrop:focus-visible{outline:none;box-shadow:var(--focus-ring)}
 .ef-filedrop__icon{color:var(--text-muted)}
@@ -7261,7 +7261,7 @@ function FileDrop({
     className: "ef-filedrop__icon"
   }, /*#__PURE__*/React.createElement(__ds_scope.Icon, {
     name: "upload",
-    size: 22
+    size: 24
   })), /*#__PURE__*/React.createElement("span", {
     className: "ef-filedrop__title"
   }, title || /*#__PURE__*/React.createElement("span", null, "Drop files here or ", /*#__PURE__*/React.createElement("span", {
@@ -7289,8 +7289,8 @@ Object.assign(__ds_scope, { FileDrop });
 try { (() => {
 function _extends() { return _extends = Object.assign ? Object.assign.bind() : function (n) { for (var e = 1; e < arguments.length; e++) { var t = arguments[e]; for (var r in t) ({}).hasOwnProperty.call(t, r) && (n[r] = t[r]); } return n; }, _extends.apply(null, arguments); }
 const CSS = `
-.ef-filetype{position:relative;display:inline-flex;align-items:center;justify-content:center;flex:none;background:var(--surface-card);border:1px solid var(--border-strong);border-radius:6px;color:var(--text-secondary)}
-.ef-filetype__ext{position:absolute;bottom:-5px;left:50%;transform:translateX(-50%);font-family:var(--font-mono);font-size:8px;font-weight:700;letter-spacing:.04em;padding:1px 4px;border-radius:3px;text-transform:uppercase;line-height:1.3}
+.ef-filetype{position:relative;display:inline-flex;align-items:center;justify-content:center;flex:none;background:var(--surface-card);border:1px solid var(--border-strong);border-radius:var(--radius-xs-plus);color:var(--text-secondary)}
+.ef-filetype__ext{position:absolute;bottom:-5px;left:50%;transform:translateX(-50%);font-family:var(--font-mono);font-size:8px;font-weight:700;letter-spacing:.04em;padding:1px var(--space-1);border-radius:var(--radius-xs);text-transform:uppercase;line-height:1.3}
 `;
 // Every fill carries the label colour that clears 4.5:1 on it in BOTH themes —
 // no single label colour does (white fails on brand-500/sand-500 in light, dark
@@ -7445,15 +7445,15 @@ Object.assign(__ds_scope, { FileTypeIcon });
 try { (() => {
 function _extends() { return _extends = Object.assign ? Object.assign.bind() : function (n) { for (var e = 1; e < arguments.length; e++) { var t = arguments[e]; for (var r in t) ({}).hasOwnProperty.call(t, r) && (n[r] = t[r]); } return n; }, _extends.apply(null, arguments); }
 const CSS = `
-.ef-paycard{position:relative;width:320px;aspect-ratio:1.586;border-radius:14px;padding:20px;display:flex;flex-direction:column;color:var(--brand-50);background:var(--brand-950);overflow:hidden;font-family:var(--font-sans)}
+.ef-paycard{position:relative;width:320px;aspect-ratio:1.586;border-radius:var(--radius-lg);padding:var(--space-5);display:flex;flex-direction:column;color:var(--brand-50);background:var(--brand-950);overflow:hidden;font-family:var(--font-sans)}
 .ef-paycard--caramel{background:var(--brand-700)}
 .ef-paycard--paper{background:var(--surface-card);color:var(--text-primary);border:1px solid var(--border-strong)}
-.ef-paycard__ring{position:absolute;border-radius:999px;border:1px solid currentColor;opacity:.1;pointer-events:none}
-.ef-paycard__num{font-family:var(--font-mono);font-size:16px;letter-spacing:.12em;margin-top:auto}
-.ef-paycard__row{display:flex;align-items:flex-end;gap:18px;margin-top:12px}
+.ef-paycard__ring{position:absolute;border-radius:var(--radius-full);border:1px solid currentColor;opacity:.1;pointer-events:none}
+.ef-paycard__num{font-family:var(--font-mono);font-size:var(--text-lg);letter-spacing:.12em;margin-top:auto}
+.ef-paycard__row{display:flex;align-items:flex-end;gap:var(--space-5);margin-top:var(--space-3)}
 .ef-paycard__lbl{font-size:8.5px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;opacity:.55}
-.ef-paycard__val{font-size:12.5px;font-weight:600;margin-top:2px}
-.ef-paycard__chip{width:34px;height:25px;border-radius:5px;background:linear-gradient(135deg,var(--brand-200),var(--brand-500));opacity:.9}
+.ef-paycard__val{font-size:var(--text-sm);font-weight:600;margin-top:var(--space-0-5)}
+.ef-paycard__chip{width:34px;height:25px;border-radius:var(--radius-xs-plus);background:var(--brand-300)}
 `;
 function PaymentCard({
   name = 'ADA OBI',
@@ -7499,7 +7499,7 @@ function PaymentCard({
       fontFamily: 'var(--font-display)',
       fontWeight: 680,
       letterSpacing: '-0.02em',
-      fontSize: 16
+      fontSize: 'var(--text-lg)'
     }
   }, network), frozen ? /*#__PURE__*/React.createElement("span", {
     style: {
@@ -7512,7 +7512,7 @@ function PaymentCard({
     }
   }, "Frozen") : null), /*#__PURE__*/React.createElement("div", {
     style: {
-      marginTop: 14
+      marginTop: 'var(--space-4)'
     }
   }, /*#__PURE__*/React.createElement("span", {
     className: "ef-paycard__chip",
@@ -7564,9 +7564,9 @@ const CSS = `
 .ef-btn-group[data-orientation="vertical"]>*:not(:first-child){border-start-start-radius:0!important;border-start-end-radius:0!important;border-top-width:0!important}
 .ef-btn-group[data-orientation="vertical"]>*:not(:last-child){border-end-start-radius:0!important;border-end-end-radius:0!important}
 .ef-btn-group>*:hover,.ef-btn-group>*:focus-visible{position:relative;z-index:1}
-.ef-btn-group:has(>.ef-btn-group){gap:8px}
+.ef-btn-group:has(>.ef-btn-group){gap:var(--space-2)}
 .ef-btn-group>input{flex:1}
-.ef-btn-group__text{display:flex;align-items:center;gap:8px;padding-inline:16px;border:1px solid var(--border-default);border-radius:var(--radius-sm);background:var(--surface-subtle);color:var(--text-primary);font-size:var(--text-sm);font-weight:var(--weight-medium);box-shadow:var(--shadow-xs)}
+.ef-btn-group__text{display:flex;align-items:center;gap:var(--space-2);padding-inline:var(--space-4);border:1px solid var(--border-default);border-radius:var(--radius-sm);background:var(--surface-subtle);color:var(--text-primary);font-size:var(--text-sm);font-weight:var(--weight-medium);box-shadow:var(--shadow-xs)}
 .ef-btn-group__separator{position:relative!important;align-self:stretch!important;margin:0!important;background:var(--border-strong)!important}
 .ef-btn-group__separator[data-orientation="vertical"]{height:auto!important}
 `;
@@ -7639,8 +7639,8 @@ Object.assign(__ds_scope, { buttonGroupVariants, ButtonGroup, ButtonGroupText, B
 try { (() => {
 function _extends() { return _extends = Object.assign ? Object.assign.bind() : function (n) { for (var e = 1; e < arguments.length; e++) { var t = arguments[e]; for (var r in t) ({}).hasOwnProperty.call(t, r) && (n[r] = t[r]); } return n; }, _extends.apply(null, arguments); }
 const CSS = `
-.ef-tilegroup{display:grid;gap:10px}
-.ef-tile{position:relative;display:flex;flex-direction:column;align-items:flex-start;gap:8px;padding:16px;border:1px solid var(--border-strong);border-radius:var(--radius-md);background:var(--surface-card);cursor:pointer;text-align:start;font-family:var(--font-sans);color:var(--text-primary);transition:border-color var(--dur-fast) var(--ease-out),background var(--dur-fast) var(--ease-out)}
+.ef-tilegroup{display:grid;gap:var(--space-3)}
+.ef-tile{position:relative;display:flex;flex-direction:column;align-items:flex-start;gap:var(--space-2);padding:var(--space-4);border:1px solid var(--border-strong);border-radius:var(--radius-md);background:var(--surface-card);cursor:pointer;text-align:start;font-family:var(--font-sans);color:var(--text-primary);transition:border-color var(--dur-fast) var(--ease-out),background var(--dur-fast) var(--ease-out)}
 .ef-tile:hover:not(:disabled){border-color:var(--sand-400)}
 .ef-tile:focus-visible{outline:none;box-shadow:var(--focus-ring)}
 .ef-tile:disabled{opacity:.45;cursor:not-allowed}
@@ -7685,7 +7685,7 @@ function ButtonTile({
     className: "ef-tile__check"
   }, /*#__PURE__*/React.createElement(__ds_scope.Icon, {
     name: "check",
-    size: 11,
+    size: 12,
     strokeWidth: 3
   })));
 }
@@ -7712,22 +7712,22 @@ Object.assign(__ds_scope, { ButtonTile, ButtonTileGroup });
 try { (() => {
 function _extends() { return _extends = Object.assign ? Object.assign.bind() : function (n) { for (var e = 1; e < arguments.length; e++) { var t = arguments[e]; for (var r in t) ({}).hasOwnProperty.call(t, r) && (n[r] = t[r]); } return n; }, _extends.apply(null, arguments); }
 const CSS = `
-.ef-field-set{min-width:0;margin:0;padding:0;border:0;display:grid;gap:14px}
+.ef-field-set{min-width:0;margin:0;padding:0;border:0;display:grid;gap:var(--space-4)}
 .ef-field-legend{padding:0;color:var(--text-primary);font-size:var(--text-lg);font-weight:var(--weight-semibold)}
 .ef-field-legend[data-variant="label"]{font-size:var(--text-sm)}
-.ef-field-group{display:grid;gap:18px}
-.ef-field{display:flex;min-width:0;gap:6px;color:var(--text-primary)}
+.ef-field-group{display:grid;gap:var(--space-5)}
+.ef-field{display:flex;min-width:0;gap:var(--space-2);color:var(--text-primary)}
 .ef-field[data-orientation="vertical"]{flex-direction:column}
-.ef-field[data-orientation="horizontal"]{align-items:flex-start;flex-direction:row;gap:12px}
+.ef-field[data-orientation="horizontal"]{align-items:flex-start;flex-direction:row;gap:var(--space-3)}
 .ef-field[data-orientation="responsive"]{flex-direction:column}
-@media (min-width: 640px){.ef-field[data-orientation="responsive"]{align-items:flex-start;flex-direction:row;gap:18px}.ef-field[data-orientation="responsive"]>.ef-field-content{flex:1}}
-.ef-field-content{display:flex;min-width:0;flex:1;flex-direction:column;gap:4px}
+@media (min-width: 640px){.ef-field[data-orientation="responsive"]{align-items:flex-start;flex-direction:row;gap:var(--space-5)}.ef-field[data-orientation="responsive"]>.ef-field-content{flex:1}}
+.ef-field-content{display:flex;min-width:0;flex:1;flex-direction:column;gap:var(--space-1)}
 .ef-field-label,.ef-field-title{color:var(--text-primary);font-size:var(--text-sm);font-weight:var(--weight-semibold);line-height:1.35}
-.ef-field-label{display:flex;align-items:center;gap:8px;cursor:pointer}
+.ef-field-label{display:flex;align-items:center;gap:var(--space-2);cursor:pointer}
 .ef-field[data-disabled] .ef-field-label{cursor:not-allowed;opacity:.55}
 .ef-field-description{margin:0;color:var(--text-muted);font-size:var(--text-xs);line-height:1.45}
 .ef-field-error{margin:0;color:var(--danger-600);font-size:var(--text-xs);line-height:1.45}
-.ef-field-separator{display:flex;align-items:center;gap:10px;color:var(--text-muted);font-size:var(--text-xs)}
+.ef-field-separator{display:flex;align-items:center;gap:var(--space-3);color:var(--text-muted);font-size:var(--text-xs)}
 .ef-field-separator::before,.ef-field-separator::after{content:"";height:1px;flex:1;background:var(--border-default)}
 .ef-field[data-invalid] .ef-field-label,.ef-field[data-invalid] .ef-field-title{color:var(--danger-600)}
 `;
@@ -7839,7 +7839,7 @@ Object.assign(__ds_scope, { useFieldProps, Field, FieldSet, FieldGroup, FieldCon
 try { (() => {
 function _extends() { return _extends = Object.assign ? Object.assign.bind() : function (n) { for (var e = 1; e < arguments.length; e++) { var t = arguments[e]; for (var r in t) ({}).hasOwnProperty.call(t, r) && (n[r] = t[r]); } return n; }, _extends.apply(null, arguments); }
 const CSS = `
-.ef-check{display:inline-flex;align-items:flex-start;gap:10px;user-select:none}
+.ef-check{display:inline-flex;align-items:flex-start;gap:var(--space-3);user-select:none}
 .ef-check--disabled{opacity:.45;cursor:not-allowed}
 .ef-check--disabled .ef-check__label{cursor:not-allowed}
 .ef-check__input{position:absolute;width:1px;height:1px;overflow:hidden;opacity:0;pointer-events:none}
@@ -7945,7 +7945,7 @@ const Checkbox = React.forwardRef(function Checkbox({
     }
   }), /*#__PURE__*/React.createElement(__ds_scope.Icon, {
     name: current === 'indeterminate' ? 'minus' : 'check',
-    size: 13,
+    size: 12,
     strokeWidth: 3
   })), label ? /*#__PURE__*/React.createElement("span", {
     className: "ef-check__label",
@@ -7967,25 +7967,25 @@ const CSS = `
 .ef-table-wrap{max-width:100%;overflow-x:auto;overflow-y:hidden;-webkit-overflow-scrolling:touch}
 .ef-table-wrap--sticky{overflow-y:auto}
 .ef-table{width:100%;border-collapse:collapse}
-.ef-table th{text-align:start;padding:10px var(--table-pad-x);font-size:11px;font-weight:var(--weight-semibold);letter-spacing:0.06em;text-transform:uppercase;color:var(--text-muted);border-bottom:1px solid var(--border-default);white-space:nowrap}
+.ef-table th{text-align:start;padding:var(--space-3) var(--table-pad-x);font-size:var(--text-2xs);font-weight:var(--weight-semibold);letter-spacing:0.06em;text-transform:uppercase;color:var(--text-muted);border-bottom:1px solid var(--border-default);white-space:nowrap}
 .ef-table--sticky thead th{position:sticky;top:0;z-index:1;background:var(--surface-card)}
 .ef-table td{padding:var(--table-pad-y) var(--table-pad-x);font-size:var(--text-md);border-bottom:1px solid var(--border-default);vertical-align:middle}
 .ef-table tr:last-child td{border-bottom:none}
 .ef-table tfoot{border-top:1px solid var(--border-default);font-weight:var(--weight-medium)}
 .ef-table caption{caption-side:bottom;padding-block:var(--space-3);color:var(--text-muted);font-size:var(--text-sm);text-align:start}
-.ef-table--dense td{padding:8px var(--table-pad-x);font-size:var(--text-sm)}
+.ef-table--dense td{padding:var(--space-2) var(--table-pad-x);font-size:var(--text-sm)}
 .ef-table__row--click{cursor:pointer;transition:background var(--dur-fast) var(--ease-out)}
 .ef-table__row--click:hover{background:var(--surface-subtle)}
 .ef-table__row--click:focus-visible{outline:2px solid var(--focus-ring-color);outline-offset:-2px}
 .ef-table__row--sel{background:var(--accent-subtle)}
-.ef-table .ef-num{font-family:var(--font-mono);font-size:13px}
-.ef-table__sort{display:inline-flex;align-items:center;gap:4px;border:none;background:none;padding:0;margin:0;font:inherit;letter-spacing:inherit;text-transform:inherit;color:inherit;cursor:pointer}
+.ef-table .ef-num{font-family:var(--font-mono);font-size:var(--text-sm)}
+.ef-table__sort{display:inline-flex;align-items:center;gap:var(--space-1);border:none;background:none;padding:0;margin:0;font:inherit;letter-spacing:inherit;text-transform:inherit;color:inherit;cursor:pointer}
 .ef-table__sort:hover{color:var(--text-primary)}
 .ef-table__sort:focus-visible{outline:none;box-shadow:var(--focus-ring);border-radius:var(--radius-sm)}
 .ef-table__sort__i{display:inline-flex;opacity:0;transition:opacity var(--dur-fast) var(--ease-out)}
 .ef-table__sort:hover .ef-table__sort__i,.ef-table__sort--on .ef-table__sort__i{opacity:1}
 .ef-table__sel{width:1%;white-space:nowrap}
-.ef-table__msg{padding:28px var(--table-pad-x);text-align:center;font-size:var(--text-md);color:var(--text-muted)}
+.ef-table__msg{padding:var(--space-8) var(--table-pad-x);text-align:center;font-size:var(--text-md);color:var(--text-muted)}
 .ef-table__skel{height:12px;border-radius:var(--radius-sm);background:var(--surface-sunken);animation:ef-table-pulse 1.2s var(--ease-in-out) infinite}
 @keyframes ef-table-pulse{50%{opacity:.45}}
 `;
@@ -8113,7 +8113,7 @@ const Table = React.forwardRef(function Table({
       className: "ef-table__sort__i"
     }, /*#__PURE__*/React.createElement(__ds_scope.Icon, {
       name: on && sort.direction === 'desc' ? 'chevron-down' : 'chevron-up',
-      size: 13
+      size: 12
     }))) : c.label);
   }))), /*#__PURE__*/React.createElement("tbody", null, loading ? Array.from({
     length: loadingRows
@@ -8235,18 +8235,18 @@ Object.assign(__ds_scope, { IconButton });
 try { (() => {
 function _extends() { return _extends = Object.assign ? Object.assign.bind() : function (n) { for (var e = 1; e < arguments.length; e++) { var t = arguments[e]; for (var r in t) ({}).hasOwnProperty.call(t, r) && (n[r] = t[r]); } return n; }, _extends.apply(null, arguments); }
 const CSS = `
-.ef-msg{display:flex;gap:12px;max-width:720px}
-.ef-msg__avatar{flex:none;margin-top:2px}
-.ef-msg__bot{display:inline-flex;align-items:center;justify-content:center;width:28px;height:28px;border-radius:var(--radius-full);background:var(--accent);color:var(--accent-contrast);flex:none;margin-top:2px}
-.ef-msg__meta{display:flex;align-items:baseline;gap:8px}
+.ef-msg{display:flex;gap:var(--space-3);max-width:720px}
+.ef-msg__avatar{flex:none;margin-top:var(--space-0-5)}
+.ef-msg__bot{display:inline-flex;align-items:center;justify-content:center;width:28px;height:28px;border-radius:var(--radius-full);background:var(--accent);color:var(--accent-contrast);flex:none;margin-top:var(--space-0-5)}
+.ef-msg__meta{display:flex;align-items:baseline;gap:var(--space-2)}
 .ef-msg__name{font-size:var(--text-sm);font-weight:var(--weight-semibold);color:var(--text-primary)}
 .ef-msg__time{font-size:var(--text-xs);color:var(--text-muted)}
-.ef-msg__body{font-size:var(--text-md);line-height:var(--leading-relaxed);color:var(--text-primary);margin-top:4px}
-.ef-msg--user .ef-msg__body{background:var(--surface-card);border:1px solid var(--border-default);border-radius:var(--radius-md);padding:10px 14px}
-.ef-msg__actions{display:flex;gap:2px;margin-top:6px;opacity:0;transition:opacity var(--dur-fast) var(--ease-out)}
+.ef-msg__body{font-size:var(--text-md);line-height:var(--leading-relaxed);color:var(--text-primary);margin-top:var(--space-1)}
+.ef-msg--user .ef-msg__body{background:var(--surface-card);border:1px solid var(--border-default);border-radius:var(--radius-md);padding:var(--space-3) var(--space-4)}
+.ef-msg__actions{display:flex;gap:var(--space-0-5);margin-top:var(--space-2);opacity:0;transition:opacity var(--dur-fast) var(--ease-out)}
 .ef-msg:hover .ef-msg__actions,.ef-msg:focus-within .ef-msg__actions{opacity:1}
 @keyframes ef-caret{0%,100%{opacity:1}50%{opacity:0}}
-.ef-msg__caret{display:inline-block;width:7px;height:15px;background:var(--accent);margin-inline-start:3px;vertical-align:-2px;animation:ef-caret 1s steps(1) infinite}
+.ef-msg__caret{display:inline-block;width:7px;height:15px;background:var(--accent);margin-inline-start:var(--space-1);vertical-align:-2px;animation:ef-caret 1s steps(1) infinite}
 `;
 function ChatMessage({
   role = 'assistant',
@@ -8284,7 +8284,7 @@ function ChatMessage({
     className: "ef-msg__bot"
   }, /*#__PURE__*/React.createElement(__ds_scope.Icon, {
     name: "bot",
-    size: 15
+    size: 16
   })) : /*#__PURE__*/React.createElement("span", {
     className: "ef-msg__avatar"
   }, /*#__PURE__*/React.createElement(__ds_scope.Avatar, null, /*#__PURE__*/React.createElement(__ds_scope.AvatarFallback, null, who.split(/\s+/).map(part => part[0]).slice(0, 2).join('').toUpperCase()))), /*#__PURE__*/React.createElement("div", {
@@ -8315,15 +8315,15 @@ function _extends() { return _extends = Object.assign ? Object.assign.bind() : f
 const CSS = `
 .ef-composer{display:flex;flex-direction:column;background:var(--surface-card);border:1px solid var(--border-strong);border-radius:var(--radius-lg);transition:border-color var(--dur-fast) var(--ease-out),box-shadow var(--dur-fast) var(--ease-out)}
 .ef-composer:focus-within{border-color:var(--accent);box-shadow:var(--focus-ring)}
-.ef-composer__input{border:none;background:none;resize:none;padding:14px 16px 6px;font-family:var(--font-sans);font-size:var(--text-md);line-height:1.5;color:var(--text-primary);outline:none;min-height:24px}
+.ef-composer__input{border:none;background:none;resize:none;padding:var(--space-4) var(--space-4) var(--space-2);font-family:var(--font-sans);font-size:var(--text-md);line-height:1.5;color:var(--text-primary);outline:none;min-height:24px}
 .ef-composer__input::placeholder{color:var(--text-muted)}
-.ef-composer__bar{display:flex;align-items:center;gap:2px;padding:6px 8px 8px}
+.ef-composer__bar{display:flex;align-items:center;gap:var(--space-0-5);padding:var(--space-2) var(--space-2) var(--space-2)}
 .ef-composer__send{display:inline-flex;align-items:center;justify-content:center;width:32px;height:32px;margin-inline-start:auto;border:none;border-radius:var(--radius-md);background:var(--accent);color:var(--accent-contrast);cursor:pointer;transition:background var(--dur-fast) var(--ease-out),transform var(--dur-fast) var(--ease-out)}
 .ef-composer__send:hover:not(:disabled){background:var(--accent-hover)}
 .ef-composer__send:active:not(:disabled){transform:scale(.95)}
 .ef-composer__send:disabled{background:var(--sand-200);color:var(--sand-400);cursor:not-allowed}
 .ef-composer__send:focus-visible{outline:none;box-shadow:var(--focus-ring)}
-.ef-composer__hint{font-size:var(--text-xs);color:var(--text-muted);padding:0 4px}
+.ef-composer__hint{font-size:var(--text-xs);color:var(--text-muted);padding:0 var(--space-1)}
 @media (pointer:coarse){.ef-composer__send{min-width:var(--tap-min);min-height:var(--tap-min)}}
 `;
 const PromptComposer = React.forwardRef(function PromptComposer({
@@ -8367,7 +8367,7 @@ const PromptComposer = React.forwardRef(function PromptComposer({
   }), attachments ? /*#__PURE__*/React.createElement("div", {
     style: {
       display: 'flex',
-      gap: 6,
+      gap: 'var(--space-2)',
       flexWrap: 'wrap',
       padding: '10px 12px 0'
     }
@@ -8408,7 +8408,7 @@ const PromptComposer = React.forwardRef(function PromptComposer({
     disabled: !onStop
   }, /*#__PURE__*/React.createElement(__ds_scope.Icon, {
     name: "square",
-    size: 13,
+    size: 12,
     strokeWidth: 2.5
   })) : /*#__PURE__*/React.createElement("button", {
     type: "button",
@@ -8432,13 +8432,13 @@ Object.assign(__ds_scope, { PromptComposer });
 try { (() => {
 function _extends() { return _extends = Object.assign ? Object.assign.bind() : function (n) { for (var e = 1; e < arguments.length; e++) { var t = arguments[e]; for (var r in t) ({}).hasOwnProperty.call(t, r) && (n[r] = t[r]); } return n; }, _extends.apply(null, arguments); }
 const CSS = `
-.ef-copyfield{position:relative;display:flex;flex-direction:column;gap:6px}
+.ef-copyfield{position:relative;display:flex;flex-direction:column;gap:var(--space-2)}
 .ef-copyfield__label{font-size:var(--text-sm);font-weight:var(--weight-semibold);color:var(--text-primary)}
 .ef-copyfield{min-width:0}
-.ef-copyfield__box{display:flex;align-items:center;gap:8px;min-width:0;max-width:100%;height:var(--control-h-md);padding:0 4px 0 12px;border:1px solid var(--border-strong);border-radius:var(--radius-sm);background:var(--surface-sunken)}
+.ef-copyfield__box{display:flex;align-items:center;gap:var(--space-2);min-width:0;max-width:100%;height:var(--control-h-md);padding:0 var(--space-1) 0 var(--space-3);border:1px solid var(--border-strong);border-radius:var(--radius-sm);background:var(--surface-sunken)}
 .ef-copyfield__box:focus-within{border-color:var(--focus-ring-color)}
 .ef-copyfield__sr{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;border:0}
-.ef-copyfield__value{flex:1;min-width:0;font-family:var(--font-mono);font-size:13px;color:var(--text-primary);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;user-select:all}
+.ef-copyfield__value{flex:1;min-width:0;font-family:var(--font-mono);font-size:var(--text-sm);color:var(--text-primary);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;user-select:all}
 `;
 function CopyField({
   label,
@@ -8509,7 +8509,7 @@ Object.assign(__ds_scope, { CopyField });
 try { (() => {
 function _extends() { return _extends = Object.assign ? Object.assign.bind() : function (n) { for (var e = 1; e < arguments.length; e++) { var t = arguments[e]; for (var r in t) ({}).hasOwnProperty.call(t, r) && (n[r] = t[r]); } return n; }, _extends.apply(null, arguments); }
 const CSS = `
-.ef-banner{display:flex;align-items:center;gap:10px;padding:9px 16px;font-size:var(--text-sm);border-bottom:1px solid var(--border-default)}
+.ef-banner{display:flex;align-items:center;gap:var(--space-3);padding:var(--space-2) var(--space-4);font-size:var(--text-sm);border-bottom:1px solid var(--border-default)}
 .ef-banner--neutral{background:var(--surface-sunken);color:var(--text-primary)}
 .ef-banner--brand{background:var(--cream-50);color:var(--cocoa-700)}
 .ef-banner--warning{background:var(--warning-100);color:var(--warning-600);border-color:var(--warning-300)}
@@ -8517,7 +8517,7 @@ const CSS = `
 .ef-banner__icon{display:inline-flex;flex:none}
 .ef-banner__text{flex:1;min-width:0}
 .ef-banner__text strong{font-weight:var(--weight-semibold)}
-.ef-banner__action{flex:none;display:inline-flex;min-height:24px;align-items:center;font-weight:var(--weight-semibold);font-size:var(--text-sm);color:inherit;text-decoration:underline;text-underline-offset:3px;background:none;border:none;cursor:pointer;font-family:var(--font-sans);padding:4px 0}
+.ef-banner__action{flex:none;display:inline-flex;min-height:var(--control-h-xs);align-items:center;font-weight:var(--weight-semibold);font-size:var(--text-sm);color:inherit;text-decoration:underline;text-underline-offset:3px;background:none;border:none;cursor:pointer;font-family:var(--font-sans);padding:var(--space-1) 0}
 .ef-banner__action:focus-visible{outline:none;box-shadow:var(--focus-ring);border-radius:var(--radius-sm)}
 /* coarse pointers get the 44px touch target, like form controls do through --control-h-* */
 @media (pointer:coarse){.ef-banner__action{min-height:var(--tap-min)}}
@@ -8541,7 +8541,7 @@ function Banner({
     className: "ef-banner__icon"
   }, /*#__PURE__*/React.createElement(__ds_scope.Icon, {
     name: icon,
-    size: 15
+    size: 16
   })) : null, /*#__PURE__*/React.createElement("span", {
     className: "ef-banner__text"
   }, children), action || null, onDismiss ? /*#__PURE__*/React.createElement(__ds_scope.IconButton, {
@@ -8558,7 +8558,7 @@ Object.assign(__ds_scope, { Banner });
 try { (() => {
 function _extends() { return _extends = Object.assign ? Object.assign.bind() : function (n) { for (var e = 1; e < arguments.length; e++) { var t = arguments[e]; for (var r in t) ({}).hasOwnProperty.call(t, r) && (n[r] = t[r]); } return n; }, _extends.apply(null, arguments); }
 const CSS = `
-.ef-filetile{display:flex;align-items:center;gap:12px;padding:10px 12px;border:1px solid var(--border-default);border-radius:var(--radius-md);background:var(--surface-card)}
+.ef-filetile{display:flex;align-items:center;gap:var(--space-3);padding:var(--space-3) var(--space-3);border:1px solid var(--border-default);border-radius:var(--radius-md);background:var(--surface-card)}
 .ef-filetile:focus-within{border-color:var(--focus-ring-color)}
 .ef-filetile__icon{display:inline-flex;align-items:center;justify-content:center;width:34px;height:34px;flex:none;border-radius:var(--radius-sm);background:var(--surface-sunken);color:var(--sand-700)}
 .ef-filetile__name{font-size:var(--text-sm);font-weight:var(--weight-semibold);color:var(--text-primary);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
@@ -8623,7 +8623,7 @@ function FileTile({
     className: "ef-filetile__icon"
   }, /*#__PURE__*/React.createElement(__ds_scope.Icon, {
     name: icon,
-    size: 17
+    size: 16
   })), /*#__PURE__*/React.createElement("div", {
     style: {
       flex: 1,
@@ -8636,7 +8636,7 @@ function FileTile({
   }, error) : progress != null ? /*#__PURE__*/React.createElement(__ds_scope.Progress, {
     value: progress,
     style: {
-      marginTop: 5,
+      marginTop: 'var(--space-1)',
       maxWidth: 220
     }
   }) : /*#__PURE__*/React.createElement("div", {
@@ -8655,34 +8655,34 @@ Object.assign(__ds_scope, { FileTile });
 try { (() => {
 function _extends() { return _extends = Object.assign ? Object.assign.bind() : function (n) { for (var e = 1; e < arguments.length; e++) { var t = arguments[e]; for (var r in t) ({}).hasOwnProperty.call(t, r) && (n[r] = t[r]); } return n; }, _extends.apply(null, arguments); }
 const CSS = `
-.ef-field{display:flex;flex-direction:column;gap:6px}
+.ef-field{display:flex;flex-direction:column;gap:var(--space-2)}
 .ef-field__label{font-size:var(--text-sm);font-weight:var(--weight-semibold);color:var(--text-primary)}
 .ef-field__hint{font-size:var(--text-xs);color:var(--text-muted)}
-.ef-field__error{font-size:var(--text-xs);color:var(--danger-600);display:flex;align-items:center;gap:4px}
+.ef-field__error{font-size:var(--text-xs);color:var(--danger-600);display:flex;align-items:center;gap:var(--space-1)}
 .ef-input{position:relative;display:flex;align-items:center}
-.ef-input__el{width:100%;height:var(--control-h-md);padding:0 12px;border:1px solid var(--border-control,var(--border-strong));border-radius:var(--radius-sm);background:var(--surface-sunken);color:var(--text-primary);font-family:var(--font-sans);font-size:var(--text-md);transition:border-color var(--dur-fast) var(--ease-out),box-shadow var(--dur-fast) var(--ease-out)}
+.ef-input__el{width:100%;height:var(--control-h-md);padding:0 var(--space-3);border:1px solid var(--border-control,var(--border-strong));border-radius:var(--radius-sm);background:var(--surface-sunken);color:var(--text-primary);font-family:var(--font-sans);font-size:var(--text-md);transition:border-color var(--dur-fast) var(--ease-out),box-shadow var(--dur-fast) var(--ease-out)}
 .ef-input__el::placeholder{color:var(--text-muted)}
 .ef-input__el:hover:not(:disabled){border-color:var(--border-control-hover,var(--sand-400))}
 .ef-input__el:focus-visible{outline:none;border-color:var(--accent);box-shadow:var(--focus-ring)}
 .ef-input__el:disabled{background:var(--surface-subtle);color:var(--text-muted);cursor:not-allowed;opacity:.5}
-.ef-file-input{position:relative;display:flex;width:100%;height:var(--control-h-md);align-items:center;gap:10px;padding:3px 12px 3px 3px;overflow:hidden;border:1px solid var(--border-control,var(--border-strong));border-radius:var(--radius-sm);background:var(--surface-sunken);color:var(--text-muted);font-family:var(--font-sans);font-size:var(--text-md);transition:border-color var(--dur-fast) var(--ease-out),box-shadow var(--dur-fast) var(--ease-out)}
+.ef-file-input{position:relative;display:flex;width:100%;height:var(--control-h-md);align-items:center;gap:var(--space-3);padding:var(--space-1) var(--space-3) var(--space-1) var(--space-1);overflow:hidden;border:1px solid var(--border-control,var(--border-strong));border-radius:var(--radius-sm);background:var(--surface-sunken);color:var(--text-muted);font-family:var(--font-sans);font-size:var(--text-md);transition:border-color var(--dur-fast) var(--ease-out),box-shadow var(--dur-fast) var(--ease-out)}
 .ef-file-input:hover{border-color:var(--border-control-hover,var(--sand-400))}.ef-file-input:focus-within{border-color:var(--accent);box-shadow:var(--focus-ring)}.ef-file-input:has(.ef-input__el:disabled){background:var(--surface-subtle);cursor:not-allowed;opacity:.5}
-.ef-file-input__button{display:inline-flex;height:28px;align-items:center;gap:6px;padding-inline:10px;border-radius:var(--radius-sm);background:var(--accent);color:var(--accent-contrast);font-size:var(--text-sm);font-weight:var(--weight-semibold);white-space:nowrap;transition:background var(--dur-fast) var(--ease-out),transform var(--dur-med) var(--ease-spring)}
+.ef-file-input__button{display:inline-flex;height:var(--control-h-sm);align-items:center;gap:var(--space-2);padding-inline:var(--space-3);border-radius:var(--radius-sm);background:var(--accent);color:var(--accent-contrast);font-size:var(--text-sm);font-weight:var(--weight-semibold);white-space:nowrap;transition:background var(--dur-fast) var(--ease-out),transform var(--dur-med) var(--ease-spring)}
 .ef-file-input:hover:not(:has(.ef-input__el:disabled)) .ef-file-input__button{background:var(--accent-hover)}.ef-file-input:active:not(:has(.ef-input__el:disabled)) .ef-file-input__button{background:var(--accent-active);transform:scale(.985)}
 .ef-file-input__name{min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
 .ef-file-input>.ef-input__el[type="file"]{position:absolute;inset:0;width:100%;height:100%;padding:0;border:0;opacity:0;cursor:pointer}.ef-file-input>.ef-input__el[type="file"]:disabled{cursor:not-allowed}
-.ef-input__el--sm{height:var(--control-h-sm);padding-inline:10px;font-size:var(--text-sm)}
-.ef-input__el--lg{height:var(--control-h-lg);padding-inline:14px;font-size:var(--text-lg)}
-.ef-input--icon .ef-input__el{padding-inline-start:36px}
-.ef-input--icon .ef-input__el--sm{padding-inline-start:32px}
-.ef-input--icon .ef-input__el--lg{padding-inline-start:40px}
+.ef-input__el--sm{height:var(--control-h-sm);padding-inline:var(--space-3);font-size:var(--text-sm)}
+.ef-input__el--lg{height:var(--control-h-lg);padding-inline:var(--space-4);font-size:var(--text-lg)}
+.ef-input--icon .ef-input__el{padding-inline-start:calc(var(--space-3) + var(--icon-md) + var(--space-2))}
+.ef-input--icon .ef-input__el--sm{padding-inline-start:calc(var(--space-2) + var(--icon-md) + var(--space-2))}
+.ef-input--icon .ef-input__el--lg{padding-inline-start:calc(var(--space-3) + var(--icon-lg) + var(--space-2))}
 .ef-input__icon{position:absolute;inset-inline-start:11px;color:var(--text-muted);display:inline-flex;pointer-events:none}
-.ef-input__reveal{position:absolute;inset-inline-end:6px;display:inline-flex;align-items:center;justify-content:center;width:28px;height:28px;padding:0;border:none;border-radius:var(--radius-sm);background:none;color:var(--text-muted);cursor:pointer}
+.ef-input__reveal{position:absolute;inset-inline-end:var(--space-1);display:inline-flex;align-items:center;justify-content:center;width:var(--control-h-sm);height:var(--control-h-sm);padding:0;border:none;border-radius:var(--radius-sm);background:none;color:var(--text-muted);cursor:pointer}
 .ef-input__reveal:hover{color:var(--text-primary)}
 .ef-input__reveal:focus-visible{outline:none;box-shadow:var(--focus-ring)}
-.ef-input--reveal .ef-input__el{padding-inline-end:38px}
-.ef-input--reveal .ef-input__el--sm{padding-inline-end:34px}
-.ef-input--reveal .ef-input__el--lg{padding-inline-end:42px}
+.ef-input--reveal .ef-input__el{padding-inline-end:calc(var(--space-1) + var(--control-h-sm) + var(--space-1))}
+
+
 .ef-input__el[aria-invalid="true"]{border-color:var(--danger-600)}
 .ef-input__el[aria-invalid="true"]:focus-visible{box-shadow:var(--focus-ring-danger)}
 /* Touch: fixed-size targets grow to --tap-min; small glyph buttons keep their look and get a centred --tap-min hit area instead. */
@@ -8746,7 +8746,7 @@ const Input = React.forwardRef(function Input({
     "aria-hidden": "true"
   }, /*#__PURE__*/React.createElement(__ds_scope.Icon, {
     name: "upload",
-    size: 14
+    size: 16
   }), "Choose file"), /*#__PURE__*/React.createElement("span", {
     className: "ef-file-input__name",
     "aria-hidden": "true"
@@ -8757,7 +8757,7 @@ const Input = React.forwardRef(function Input({
     "aria-hidden": "true"
   }, /*#__PURE__*/React.createElement(__ds_scope.Icon, {
     name: iconLeft,
-    size: customSize === 'lg' ? 18 : 16
+    size: customSize === 'lg' ? 20 : 16
   })) : null, input, showToggle ? /*#__PURE__*/React.createElement("button", {
     type: "button",
     className: "ef-input__reveal",
@@ -8796,12 +8796,12 @@ const CSS = `
 .ef-input-group{display:flex;min-width:0;width:100%;align-items:center;border:1px solid var(--border-control,var(--border-strong));border-radius:var(--radius-sm);background:var(--surface-card);transition:border-color var(--dur-fast) var(--ease-out),box-shadow var(--dur-fast) var(--ease-out)}
 .ef-input-group:focus-within{border-color:var(--accent);box-shadow:var(--focus-ring)}.ef-input-group:has([aria-invalid="true"]){border-color:var(--danger-600)}
 .ef-input-group:has(textarea){flex-wrap:wrap}.ef-input-group__control{min-width:0;flex:1;border:0;background:transparent;font:inherit;color:var(--text-primary)}
-input.ef-input-group__control{height:34px;padding:0 11px}textarea.ef-input-group__control{min-height:80px;padding:10px 11px;resize:vertical}.ef-input-group__control:focus{outline:none}.ef-input-group__control::placeholder{color:var(--text-muted)}
-.ef-input-group__addon{display:flex;flex:none;align-items:center;gap:6px;padding:0 10px;color:var(--text-muted);font-size:var(--text-sm);white-space:nowrap}
+input.ef-input-group__control{height:34px;padding:0 var(--space-3)}textarea.ef-input-group__control{min-height:80px;padding:var(--space-3) var(--space-3);resize:vertical}.ef-input-group__control:focus{outline:none}.ef-input-group__control::placeholder{color:var(--text-muted)}
+.ef-input-group__addon{display:flex;flex:none;align-items:center;gap:var(--space-2);padding:0 var(--space-3);color:var(--text-muted);font-size:var(--text-sm);white-space:nowrap}
 .ef-input-group__addon[data-align="inline-start"]{order:-1;border-inline-end:1px solid var(--border-default)}.ef-input-group__addon[data-align="inline-end"]{order:2;border-inline-start:1px solid var(--border-default)}
 .ef-input-group__addon[data-align="block-start"],.ef-input-group__addon[data-align="block-end"]{width:100%;min-height:34px}.ef-input-group__addon[data-align="block-start"]{order:-1;border-block-end:1px solid var(--border-default)}.ef-input-group__addon[data-align="block-end"]{order:3;border-block-start:1px solid var(--border-default)}
-.ef-input-group__button{display:inline-flex;height:26px;align-items:center;justify-content:center;gap:5px;padding:0 8px;border:0;border-radius:var(--radius-sm);background:transparent;color:var(--text-secondary);font:inherit;font-size:var(--text-xs);cursor:pointer}.ef-input-group__button:hover{background:var(--surface-sunken);color:var(--text-primary)}.ef-input-group__button:focus-visible{outline:none;box-shadow:var(--focus-ring)}
-.ef-input-group__button[data-size^="icon"]{width:26px;padding:0}.ef-input-group__text{display:inline-flex;align-items:center;line-height:1;font-size:var(--text-sm);color:var(--text-muted)}.ef-input-group__text svg{width:16px;height:16px;stroke-width:2}
+.ef-input-group__button{display:inline-flex;height:26px;align-items:center;justify-content:center;gap:var(--space-1);padding:0 var(--space-2);border:0;border-radius:var(--radius-sm);background:transparent;color:var(--text-secondary);font:inherit;font-size:var(--text-xs);cursor:pointer}.ef-input-group__button:hover{background:var(--surface-sunken);color:var(--text-primary)}.ef-input-group__button:focus-visible{outline:none;box-shadow:var(--focus-ring)}
+.ef-input-group__button[data-size^="icon"]{width:26px;padding:0}.ef-input-group__text{display:inline-flex;align-items:center;line-height:1;font-size:var(--text-sm);color:var(--text-muted)}.ef-input-group__text svg{width:var(--icon-md);height:var(--icon-md);stroke-width:2}
 /* Touch: fixed-size targets grow to --tap-min; small glyph buttons keep their look and get a centred --tap-min hit area instead. */
 @media (pointer:coarse){.ef-input-group__button{position:relative}.ef-input-group__button::before{content:"";position:absolute;inset:calc(50% - var(--tap-min) / 2)}}
 `;
@@ -9033,9 +9033,9 @@ Object.assign(__ds_scope, { InputOTP, InputOTPGroup, InputOTPSlot, InputOTPSepar
 try { (() => {
 function _extends() { return _extends = Object.assign ? Object.assign.bind() : function (n) { for (var e = 1; e < arguments.length; e++) { var t = arguments[e]; for (var r in t) ({}).hasOwnProperty.call(t, r) && (n[r] = t[r]); } return n; }, _extends.apply(null, arguments); }
 const CSS = `
-.ef-label{display:inline-flex;align-items:baseline;gap:5px;font-family:var(--font-sans);font-size:var(--text-sm);font-weight:600;color:var(--text-primary)}
+.ef-label{display:inline-flex;align-items:baseline;gap:var(--space-1);font-family:var(--font-sans);font-size:var(--text-sm);font-weight:600;color:var(--text-primary)}
 .ef-label__req{color:var(--danger-600);font-weight:600}
-.ef-label__hint{font-weight:400;color:var(--text-muted);font-size:12.5px}
+.ef-label__hint{font-weight:400;color:var(--text-muted);font-size:var(--text-sm)}
 `;
 const Label = React.forwardRef(function Label({
   htmlFor,
@@ -9068,12 +9068,12 @@ try { (() => {
 function _extends() { return _extends = Object.assign ? Object.assign.bind() : function (n) { for (var e = 1; e < arguments.length; e++) { var t = arguments[e]; for (var r in t) ({}).hasOwnProperty.call(t, r) && (n[r] = t[r]); } return n; }, _extends.apply(null, arguments); }
 const CSS = `
 .ef-native-select{position:relative;display:flex;align-items:center;width:100%}
-.ef-native-select select{width:100%;height:var(--control-h-md);appearance:none;padding-block:0;padding-inline:11px 32px;border:1px solid var(--border-control,var(--border-strong));border-radius:var(--radius-sm);background:var(--surface-sunken);color:var(--text-primary);font:inherit;font-size:var(--text-sm);cursor:pointer}
+.ef-native-select select{width:100%;height:var(--control-h-md);appearance:none;padding-block:0;padding-inline:calc(var(--space-3) - 1px) calc(var(--space-3) + var(--icon-md) + var(--space-2));border:1px solid var(--border-control,var(--border-strong));border-radius:var(--radius-sm);background:var(--surface-sunken);color:var(--text-primary);font:inherit;font-size:var(--text-sm);cursor:pointer}
 .ef-native-select select:focus-visible{outline:none;box-shadow:var(--focus-ring)}
 .ef-native-select select:disabled{cursor:not-allowed;opacity:.5}
 .ef-native-select[data-size="sm"] select{height:var(--control-h-sm)}
 .ef-native-select[data-size="lg"] select{height:var(--control-h-lg)}
-.ef-native-select__icon{position:absolute;inset-inline-end:10px;display:inline-flex;color:var(--text-muted);pointer-events:none}
+.ef-native-select__icon{position:absolute;inset-inline-end:var(--space-3);display:inline-flex;color:var(--text-muted);pointer-events:none}
 `;
 const NativeSelect = React.forwardRef(function NativeSelect({
   size = 'md',
@@ -9114,14 +9114,14 @@ try { (() => {
 function _extends() { return _extends = Object.assign ? Object.assign.bind() : function (n) { for (var e = 1; e < arguments.length; e++) { var t = arguments[e]; for (var r in t) ({}).hasOwnProperty.call(t, r) && (n[r] = t[r]); } return n; }, _extends.apply(null, arguments); }
 const CSS = `
 .ef-cal{width:max-content;min-width:280px;user-select:none;color:var(--text-primary)}
-.ef-cal__months{display:flex;gap:18px;flex-wrap:wrap}
+.ef-cal__months{display:flex;gap:var(--space-5);flex-wrap:wrap}
 .ef-cal__month-wrap{width:280px}
-.ef-cal__head{display:flex;min-height:34px;align-items:center;gap:6px;margin-bottom:8px}
+.ef-cal__head{display:flex;min-height:34px;align-items:center;gap:var(--space-2);margin-bottom:var(--space-2)}
 .ef-cal__caption{flex:1;text-align:center;font-size:var(--text-sm);font-weight:var(--weight-semibold)}
-.ef-cal__dropdowns{display:flex;flex:1;justify-content:center;gap:5px}.ef-cal__dropdowns .ef-native-select{width:auto}.ef-cal__dropdowns select{height:30px}
-.ef-cal__grid{display:grid;grid-template-columns:repeat(7,36px);gap:2px}
+.ef-cal__dropdowns{display:flex;flex:1;justify-content:center;gap:var(--space-1)}.ef-cal__dropdowns .ef-native-select{width:auto}.ef-cal__dropdowns select{height:30px}
+.ef-cal__grid{display:grid;grid-template-columns:repeat(7,36px);gap:var(--space-0-5)}
 .ef-cal__row{display:contents}
-.ef-cal__dow{text-align:center;font-size:var(--text-xs);font-weight:var(--weight-semibold);color:var(--text-muted);padding:5px 0}
+.ef-cal__dow{text-align:center;font-size:var(--text-xs);font-weight:var(--weight-semibold);color:var(--text-muted);padding:var(--space-1) 0}
 .ef-cal__day{position:relative;display:grid;width:36px;height:34px;place-items:center;border:1px solid transparent;border-radius:var(--radius-sm);background:none;color:var(--text-primary);font:inherit;font-size:var(--text-sm);cursor:pointer}
 .ef-cal__day:hover:not(:disabled){background:var(--surface-sunken)}
 .ef-cal__day:focus-visible{outline:none;box-shadow:var(--focus-ring)}
@@ -9436,10 +9436,10 @@ Object.assign(__ds_scope, { CalendarDayButton, Calendar });
 try { (() => {
 function _extends() { return _extends = Object.assign ? Object.assign.bind() : function (n) { for (var e = 1; e < arguments.length; e++) { var t = arguments[e]; for (var r in t) ({}).hasOwnProperty.call(t, r) && (n[r] = t[r]); } return n; }, _extends.apply(null, arguments); }
 const CSS = `
-.ef-field{display:flex;flex-direction:column;gap:6px}
+.ef-field{display:flex;flex-direction:column;gap:var(--space-2)}
 .ef-field__label{font-size:var(--text-sm);font-weight:var(--weight-semibold);color:var(--text-primary)}
 .ef-field__hint{font-size:var(--text-xs);color:var(--text-muted)}
-.ef-field__error{font-size:var(--text-xs);color:var(--danger-600);display:flex;align-items:center;gap:4px}
+.ef-field__error{font-size:var(--text-xs);color:var(--danger-600);display:flex;align-items:center;gap:var(--space-1)}
 .ef-number{display:flex;align-items:stretch;overflow:hidden;border:1px solid var(--border-control,var(--border-strong));border-radius:var(--radius-sm);background:var(--surface-sunken);transition:border-color var(--dur-fast) var(--ease-out),box-shadow var(--dur-fast) var(--ease-out)}
 .ef-number:hover:not(.ef-number--disabled){border-color:var(--border-control-hover,var(--sand-400))}
 .ef-number:focus-within{border-color:var(--accent);box-shadow:var(--focus-ring)}
@@ -9450,9 +9450,9 @@ const CSS = `
 .ef-number__el:focus{outline:none}
 .ef-number__el::placeholder{color:var(--text-muted)}
 .ef-number__el:disabled{color:var(--text-muted);cursor:not-allowed}
-.ef-number--sm .ef-number__el{height:calc(var(--control-h-sm) - 2px);padding:0 10px;font-size:var(--text-sm)}
-.ef-number--md .ef-number__el{height:calc(var(--control-h-md) - 2px);padding:0 12px;font-size:var(--text-md)}
-.ef-number--lg .ef-number__el{height:calc(var(--control-h-lg) - 2px);padding:0 14px;font-size:var(--text-lg)}
+.ef-number--sm .ef-number__el{height:calc(var(--control-h-sm) - 2px);padding:0 var(--space-3);font-size:var(--text-sm)}
+.ef-number--md .ef-number__el{height:calc(var(--control-h-md) - 2px);padding:0 var(--space-3);font-size:var(--text-md)}
+.ef-number--lg .ef-number__el{height:calc(var(--control-h-lg) - 2px);padding:0 var(--space-4);font-size:var(--text-lg)}
 .ef-number__steps{display:flex;flex-direction:column;flex:none;align-self:stretch;border-inline-start:1px solid var(--border-default)}
 .ef-number__step{flex:1 1 0;display:flex;align-items:center;justify-content:center;width:24px;padding:0;border:none;background:transparent;color:var(--text-muted);cursor:pointer;transition:background var(--dur-fast) var(--ease-out),color var(--dur-fast) var(--ease-out)}
 .ef-number__step:hover:not(:disabled){background:var(--surface-sunken);color:var(--text-primary)}
@@ -9646,7 +9646,7 @@ function NumberInput({
     onClick: e => stepBy(1, 1, e)
   }, /*#__PURE__*/React.createElement(__ds_scope.Icon, {
     name: "chevron-up",
-    size: size === 'lg' ? 14 : 12
+    size: size === 'lg' ? 16 : 12
   })), /*#__PURE__*/React.createElement("button", {
     type: "button",
     className: "ef-number__step",
@@ -9657,7 +9657,7 @@ function NumberInput({
     onClick: e => stepBy(-1, 1, e)
   }, /*#__PURE__*/React.createElement(__ds_scope.Icon, {
     name: "chevron-down",
-    size: size === 'lg' ? 14 : 12
+    size: size === 'lg' ? 16 : 12
   }))));
   if (!label && !hint && !error) return React.cloneElement(control, {
     style,
@@ -9699,8 +9699,8 @@ const CSS = `
 .ef-questionnaire__choice:has(input:checked){border-color:var(--accent);background:var(--accent-subtle)}
 .ef-questionnaire__choice:has(input:focus-visible){box-shadow:var(--focus-ring)}
 .ef-questionnaire__choice:has(input:disabled){opacity:.45;cursor:not-allowed}
-.ef-questionnaire__choice input{width:16px;height:16px;margin:2px 0 0;accent-color:var(--accent);flex:none}
-.ef-questionnaire__choice-label{display:grid;gap:2px;flex:1;min-width:0}
+.ef-questionnaire__choice input{width:16px;height:16px;margin:var(--space-0-5) 0 0;accent-color:var(--accent);flex:none}
+.ef-questionnaire__choice-label{display:grid;gap:var(--space-0-5);flex:1;min-width:0}
 .ef-questionnaire__shortcut{font-family:var(--font-mono);font-size:var(--text-xs);color:var(--text-muted)}
 .ef-questionnaire__input{width:100%;min-height:var(--control-h-md);padding:0 var(--space-3);border:1px solid var(--border-default);border-radius:var(--radius-md);background:var(--surface-card);color:var(--text-primary);font:inherit;outline:none}
 .ef-questionnaire__input:focus-visible{border-color:var(--accent);box-shadow:var(--focus-ring)}
@@ -10092,7 +10092,7 @@ function _extends() { return _extends = Object.assign ? Object.assign.bind() : f
 const CSS = `
 .ef-radio-group{display:grid;gap:var(--space-3)}
 .ef-radio-group[data-orientation="horizontal"]{display:flex;align-items:center;flex-wrap:wrap}
-.ef-radio{display:inline-flex;align-items:flex-start;gap:10px;cursor:pointer;user-select:none}
+.ef-radio{display:inline-flex;align-items:flex-start;gap:var(--space-3);cursor:pointer;user-select:none}
 .ef-radio--disabled{opacity:.45;cursor:not-allowed}
 .ef-radio__input{position:absolute;opacity:0;width:0;height:0}
 .ef-radio__dot{display:inline-flex;align-items:center;justify-content:center;flex:none;width:18px;height:18px;margin-top:1px;border:1.5px solid var(--border-control,var(--border-strong));border-radius:var(--radius-full);background:var(--surface-card);transition:border-color var(--dur-fast) var(--ease-out),transform var(--dur-med) var(--ease-spring)}
@@ -10214,13 +10214,13 @@ Object.assign(__ds_scope, { RadioGroup, RadioGroupItem, Radio });
 try { (() => {
 function _extends() { return _extends = Object.assign ? Object.assign.bind() : function (n) { for (var e = 1; e < arguments.length; e++) { var t = arguments[e]; for (var r in t) ({}).hasOwnProperty.call(t, r) && (n[r] = t[r]); } return n; }, _extends.apply(null, arguments); }
 const CSS = `
-.ef-slider{display:flex;flex-direction:column;gap:8px;touch-action:none;user-select:none}
+.ef-slider{display:flex;flex-direction:column;gap:var(--space-2);touch-action:none;user-select:none}
 .ef-slider__control{position:relative;display:flex;align-items:center;width:100%;height:24px}
 .ef-slider__rail{position:absolute;inset-inline:0;height:3px;border-radius:var(--radius-full);background:var(--border-strong);overflow:hidden}
 .ef-slider__range{position:absolute;inset-block:0;border-radius:inherit;background:var(--accent)}
 .ef-slider__input{position:absolute;inset:0;width:100%;height:24px;margin:0;background:transparent;pointer-events:none;-webkit-appearance:none;appearance:none}
 .ef-slider__input::-webkit-slider-runnable-track{height:3px;background:transparent}
-.ef-slider__input::-webkit-slider-thumb{width:16px;height:16px;margin-top:-6.5px;border:1.5px solid var(--accent);border-radius:var(--radius-full);background:var(--surface-card);box-shadow:var(--shadow-xs);pointer-events:auto;cursor:grab;-webkit-appearance:none;transition:transform var(--dur-fast) var(--ease-out)}
+.ef-slider__input::-webkit-slider-thumb{width:16px;height:16px;margin-top:calc(-1 * var(--space-2));border:1.5px solid var(--accent);border-radius:var(--radius-full);background:var(--surface-card);box-shadow:var(--shadow-xs);pointer-events:auto;cursor:grab;-webkit-appearance:none;transition:transform var(--dur-fast) var(--ease-out)}
 .ef-slider__input::-moz-range-track{height:3px;background:transparent}
 .ef-slider__input::-moz-range-thumb{width:13px;height:13px;border:1.5px solid var(--accent);border-radius:var(--radius-full);background:var(--surface-card);box-shadow:var(--shadow-xs);pointer-events:auto;cursor:grab}
 .ef-slider__input:active::-webkit-slider-thumb{cursor:grabbing;transform:scale(1.12)}
@@ -10357,7 +10357,7 @@ Object.assign(__ds_scope, { Slider });
 try { (() => {
 function _extends() { return _extends = Object.assign ? Object.assign.bind() : function (n) { for (var e = 1; e < arguments.length; e++) { var t = arguments[e]; for (var r in t) ({}).hasOwnProperty.call(t, r) && (n[r] = t[r]); } return n; }, _extends.apply(null, arguments); }
 const CSS = `
-.ef-switch-field{display:inline-flex;align-items:center;gap:10px;cursor:pointer;user-select:none}.ef-switch{--ef-switch-shift:15px;position:relative;display:inline-flex;flex:none;width:36px;height:21px;padding:0;border:0;border-radius:var(--radius-full);background:var(--border-control,var(--border-strong));cursor:pointer;transition:background var(--dur-med) var(--ease-out)}
+.ef-switch-field{display:inline-flex;align-items:center;gap:var(--space-3);cursor:pointer;user-select:none}.ef-switch{--ef-switch-shift:15px;position:relative;display:inline-flex;flex:none;width:36px;height:21px;padding:0;border:0;border-radius:var(--radius-full);background:var(--border-control,var(--border-strong));cursor:pointer;transition:background var(--dur-med) var(--ease-out)}
 .ef-switch--disabled{opacity:.45;cursor:not-allowed}
 .ef-switch-field[data-disabled]{cursor:not-allowed}.ef-switch-field[data-disabled] .ef-switch__label{opacity:.45}
 .ef-switch:dir(rtl){--ef-switch-shift:-15px}.ef-switch[data-state="checked"]{background:var(--accent)}
@@ -10442,11 +10442,11 @@ Object.assign(__ds_scope, { Switch });
 try { (() => {
 function _extends() { return _extends = Object.assign ? Object.assign.bind() : function (n) { for (var e = 1; e < arguments.length; e++) { var t = arguments[e]; for (var r in t) ({}).hasOwnProperty.call(t, r) && (n[r] = t[r]); } return n; }, _extends.apply(null, arguments); }
 const CSS = `
-.ef-field{display:flex;flex-direction:column;gap:6px}
+.ef-field{display:flex;flex-direction:column;gap:var(--space-2)}
 .ef-field__label{font-size:var(--text-sm);font-weight:var(--weight-semibold);color:var(--text-primary)}
 .ef-field__hint{font-size:var(--text-xs);color:var(--text-muted)}
-.ef-field__error{font-size:var(--text-xs);color:var(--danger-600);display:flex;align-items:center;gap:4px}
-.ef-textarea{width:100%;min-height:80px;padding:10px 12px;border:1px solid var(--border-control,var(--border-strong));border-radius:var(--radius-sm);background:var(--surface-sunken);color:var(--text-primary);font-family:var(--font-sans);font-size:var(--text-md);line-height:var(--leading-normal);resize:vertical;transition:border-color var(--dur-fast) var(--ease-out),box-shadow var(--dur-fast) var(--ease-out)}
+.ef-field__error{font-size:var(--text-xs);color:var(--danger-600);display:flex;align-items:center;gap:var(--space-1)}
+.ef-textarea{width:100%;min-height:80px;padding:var(--space-3) var(--space-3);border:1px solid var(--border-control,var(--border-strong));border-radius:var(--radius-sm);background:var(--surface-sunken);color:var(--text-primary);font-family:var(--font-sans);font-size:var(--text-md);line-height:var(--leading-normal);resize:vertical;transition:border-color var(--dur-fast) var(--ease-out),box-shadow var(--dur-fast) var(--ease-out)}
 .ef-textarea::placeholder{color:var(--text-muted)}
 .ef-textarea:hover:not(:disabled){border-color:var(--border-control-hover,var(--sand-400))}
 .ef-textarea:focus{outline:none;border-color:var(--accent);box-shadow:var(--focus-ring)}
@@ -10509,15 +10509,15 @@ Object.assign(__ds_scope, { Textarea });
 try { (() => {
 function _extends() { return _extends = Object.assign ? Object.assign.bind() : function (n) { for (var e = 1; e < arguments.length; e++) { var t = arguments[e]; for (var r in t) ({}).hasOwnProperty.call(t, r) && (n[r] = t[r]); } return n; }, _extends.apply(null, arguments); }
 const CSS = `
-.ef-toggle{display:inline-flex;align-items:center;justify-content:center;gap:7px;min-width:36px;height:36px;padding:0 10px;border:1px solid transparent;border-radius:var(--radius-sm);background:transparent;cursor:pointer;font-family:var(--font-sans);font-size:var(--text-sm);font-weight:500;color:var(--text-secondary);transition:background var(--dur-fast) var(--ease-out),border-color var(--dur-fast) var(--ease-out),color var(--dur-fast) var(--ease-out)}
+.ef-toggle{display:inline-flex;align-items:center;justify-content:center;gap:var(--space-2);min-width:var(--control-h-md);height:var(--control-h-md);padding:0 var(--space-3);border:1px solid transparent;border-radius:var(--radius-sm);background:transparent;cursor:pointer;font-family:var(--font-sans);font-size:var(--text-sm);font-weight:500;color:var(--text-secondary);transition:background var(--dur-fast) var(--ease-out),border-color var(--dur-fast) var(--ease-out),color var(--dur-fast) var(--ease-out)}
 .ef-toggle:hover:not(:disabled):not(.ef-toggle--on){background:var(--surface-sunken);color:var(--text-primary)}
 .ef-toggle--on{background:var(--accent-subtle);color:var(--accent-subtle-fg,var(--text-link))}
 .ef-toggle:focus-visible{outline:none;box-shadow:var(--focus-ring)}
 .ef-toggle:disabled{opacity:.45;cursor:not-allowed}
 .ef-toggle--outline{border-color:var(--border-strong)}
-.ef-toggle--sm{height:32px;min-width:32px;padding:0 8px;font-size:var(--text-xs)}
-.ef-toggle--lg{height:40px;min-width:40px;padding:0 16px;font-size:var(--text-md)}
-.ef-toggle-group{display:inline-flex;gap:var(--ef-toggle-gap,8px);align-items:center}
+.ef-toggle--sm{height:32px;min-width:32px;padding:0 var(--space-2);font-size:var(--text-xs)}
+.ef-toggle--lg{height:40px;min-width:40px;padding:0 var(--space-4);font-size:var(--text-md)}
+.ef-toggle-group{display:inline-flex;gap:var(--ef-toggle-gap,var(--space-2));align-items:center}
 .ef-toggle-group[data-orientation="vertical"]{flex-direction:column;align-items:stretch}
 /* Touch: fixed-size targets grow to --tap-min; small glyph buttons keep their look and get a centred --tap-min hit area instead. */
 @media (pointer:coarse){.ef-toggle,.ef-toggle--sm,.ef-toggle--lg{height:var(--tap-min);min-width:var(--tap-min)}}
@@ -10749,7 +10749,7 @@ const BreadcrumbSeparator = React.forwardRef(function BreadcrumbSeparator({
     className: `ef-breadcrumb__separator${className ? ' ' + className : ''}`
   }), children ?? /*#__PURE__*/React.createElement(__ds_scope.Icon, {
     name: "chevron-right",
-    size: 14
+    size: 16
   }));
 });
 const BreadcrumbEllipsis = React.forwardRef(function BreadcrumbEllipsis({
@@ -10779,7 +10779,7 @@ const CSS = `
 .ef-navigation-menu{position:relative;display:flex;width:max-content;max-width:100%;align-items:center;justify-content:center}
 .ef-navigation-menu__list{display:flex;flex:1;list-style:none;align-items:center;justify-content:center;gap:var(--space-1);margin:0;padding:0}
 .ef-navigation-menu__item{position:relative}
-.ef-navigation-menu__trigger{display:inline-flex;width:max-content;height:36px;align-items:center;justify-content:center;gap:var(--space-1);padding:0 var(--space-4);border:0;border-radius:var(--radius-md);outline:0;background:transparent;color:var(--text-primary);font:inherit;font-size:var(--text-sm);font-weight:var(--weight-medium);cursor:pointer;transition:background var(--dur-fast) var(--ease-out),box-shadow var(--dur-fast) var(--ease-out)}
+.ef-navigation-menu__trigger{display:inline-flex;width:max-content;height:var(--control-h-md);align-items:center;justify-content:center;gap:var(--space-1);padding:0 var(--space-4);border:0;border-radius:var(--radius-md);outline:0;background:transparent;color:var(--text-primary);font:inherit;font-size:var(--text-sm);font-weight:var(--weight-medium);cursor:pointer;transition:background var(--dur-fast) var(--ease-out),box-shadow var(--dur-fast) var(--ease-out)}
 .ef-navigation-menu__trigger:hover,.ef-navigation-menu__trigger:focus,.ef-navigation-menu__trigger[data-state=open]{background:var(--surface-sunken)}.ef-navigation-menu__trigger:focus-visible{box-shadow:var(--focus-ring)}
 .ef-navigation-menu__chevron{display:inline-flex;transition:transform var(--dur-med) var(--ease-out)}.ef-navigation-menu__trigger[data-state=open] .ef-navigation-menu__chevron{transform:rotate(180deg)}
 .ef-navigation-menu__content{min-width:280px;padding:var(--space-2);color:var(--text-primary);animation:ef-navigation-menu-in var(--dur-med) var(--ease-out)}
@@ -10789,7 +10789,7 @@ const CSS = `
 .ef-navigation-menu__link{display:flex;flex-direction:column;gap:var(--space-1);padding:var(--space-2) var(--space-3);border-radius:var(--radius-sm);outline:0;color:var(--text-primary);font-size:var(--text-sm);text-decoration:none;transition:background var(--dur-fast) var(--ease-out)}
 .ef-navigation-menu__link:hover,.ef-navigation-menu__link:focus,.ef-navigation-menu__link[data-active=true]{background:var(--surface-sunken);text-decoration:none}.ef-navigation-menu__link:focus-visible{box-shadow:inset 0 0 0 2px var(--focus-ring-color)}
 .ef-navigation-menu__indicator{position:absolute;inset-block-start:calc(100% - 3px);z-index:calc(var(--z-dropdown) + 1);display:flex;height:9px;align-items:flex-end;justify-content:center;pointer-events:none;transition:inset-inline-start var(--dur-med) var(--ease-out),width var(--dur-med) var(--ease-out)}
-.ef-navigation-menu__indicator-mark{width:9px;height:9px;transform:translateY(55%) rotate(45deg);border:1px solid var(--border-default);border-inline-end:0;border-block-end:0;border-radius:2px 0 0;background:var(--surface-card)}
+.ef-navigation-menu__indicator-mark{width:9px;height:9px;transform:translateY(55%) rotate(45deg);border:1px solid var(--border-default);border-inline-end:0;border-block-end:0;border-radius:var(--radius-xs) 0 0;background:var(--surface-card)}
 @keyframes ef-navigation-menu-in{from{opacity:0;transform:translateY(-4px)}}@keyframes ef-navigation-menu-viewport{from{opacity:0;transform:scale(.98)}}
 /* coarse pointers get the 44px touch target, like form controls do through --control-h-* */
 @media (pointer:coarse){.ef-navigation-menu__trigger{height:var(--tap-min)}.ef-navigation-menu__link{min-height:var(--tap-min)}}
@@ -10992,7 +10992,7 @@ const NavigationMenuTrigger = React.forwardRef(function NavigationMenuTrigger({
     "aria-hidden": "true"
   }, /*#__PURE__*/React.createElement(__ds_scope.Icon, {
     name: "chevron-down",
-    size: 13
+    size: 12
   })));
 });
 const NavigationMenuContent = React.forwardRef(function NavigationMenuContent({
@@ -11150,7 +11150,7 @@ const CSS = `
 .ef-pagination{display:flex;width:100%;justify-content:center}
 .ef-pagination__content{display:flex;align-items:center;gap:var(--space-1);margin:0;padding:0;list-style:none}
 .ef-pagination__item{display:inline-flex}
-.ef-pagination__link{display:inline-flex;align-items:center;justify-content:center;gap:var(--space-2);min-width:36px;height:36px;padding:0 var(--space-3);border:1px solid transparent;border-radius:var(--radius-sm);background:none;cursor:pointer;font-family:var(--font-sans);font-size:var(--text-sm);color:var(--text-secondary);text-decoration:none;transition:background var(--dur-fast) var(--ease-out),color var(--dur-fast) var(--ease-out),border-color var(--dur-fast) var(--ease-out)}
+.ef-pagination__link{display:inline-flex;align-items:center;justify-content:center;gap:var(--space-2);min-width:var(--control-h-md);height:var(--control-h-md);padding:0 var(--space-3);border:1px solid transparent;border-radius:var(--radius-sm);background:none;cursor:pointer;font-family:var(--font-sans);font-size:var(--text-sm);color:var(--text-secondary);text-decoration:none;transition:background var(--dur-fast) var(--ease-out),color var(--dur-fast) var(--ease-out),border-color var(--dur-fast) var(--ease-out)}
 .ef-pagination__link:hover{background:var(--surface-sunken);color:var(--text-primary);text-decoration:none}
 .ef-pagination__link[aria-current="page"]{border-color:var(--border-strong);background:var(--surface-card);color:var(--text-primary);font-weight:var(--weight-semibold)}
 .ef-pagination__link[aria-disabled="true"]{opacity:.4;pointer-events:none}
@@ -11268,7 +11268,7 @@ try { (() => {
 function _extends() { return _extends = Object.assign ? Object.assign.bind() : function (n) { for (var e = 1; e < arguments.length; e++) { var t = arguments[e]; for (var r in t) ({}).hasOwnProperty.call(t, r) && (n[r] = t[r]); } return n; }, _extends.apply(null, arguments); }
 const CSS = `
 .ef-seg{display:inline-flex;gap:var(--space-0-5);padding:var(--space-0-5);background:var(--surface-sunken);border-radius:var(--radius-md)}
-.ef-seg__opt{display:inline-flex;align-items:center;gap:var(--space-2);height:28px;padding:0 var(--space-3);border:1px solid transparent;border-radius:6px;background:none;cursor:pointer;font-family:var(--font-sans);font-size:var(--text-sm);font-weight:var(--weight-medium);color:var(--text-secondary);transition:background var(--dur-fast) var(--ease-out),color var(--dur-fast) var(--ease-out)}
+.ef-seg__opt{display:inline-flex;align-items:center;gap:var(--space-2);height:var(--control-h-sm);padding:0 var(--space-3);border:1px solid transparent;border-radius:var(--radius-xs-plus);background:none;cursor:pointer;font-family:var(--font-sans);font-size:var(--text-sm);font-weight:var(--weight-medium);color:var(--text-secondary);transition:background var(--dur-fast) var(--ease-out),color var(--dur-fast) var(--ease-out)}
 .ef-seg__opt:hover:not(.ef-seg__opt--active){color:var(--text-primary)}
 .ef-seg__opt--active{background:var(--surface-card);border-color:var(--border-strong);color:var(--text-primary);font-weight:var(--weight-semibold)}
 .ef-seg__opt:focus-visible{outline:none;box-shadow:var(--focus-ring)}
@@ -11302,7 +11302,7 @@ function SegmentedControl({
       onClick: () => onChange && onChange(opt.id)
     }, opt.icon ? /*#__PURE__*/React.createElement(__ds_scope.Icon, {
       name: opt.icon,
-      size: 14
+      size: 16
     }) : null, opt.label);
   }));
 }
@@ -11315,7 +11315,7 @@ function _extends() { return _extends = Object.assign ? Object.assign.bind() : f
 const CSS = `
 .ef-sidenav{display:flex;flex-direction:column;width:240px;flex:none;background:var(--surface-subtle);border-inline-end:1px solid var(--border-default);align-self:stretch}
 .ef-sidenav__brand{display:flex;align-items:center;gap:var(--space-2);padding:var(--space-4) var(--space-4) var(--space-4)}
-.ef-sidenav__group{font-size:11px;font-weight:600;letter-spacing:0.06em;text-transform:uppercase;color:var(--text-muted);padding:var(--space-4) var(--space-6) var(--space-2)}
+.ef-sidenav__group{font-size:var(--text-2xs);font-weight:600;letter-spacing:0.06em;text-transform:uppercase;color:var(--text-muted);padding:var(--space-4) var(--space-6) var(--space-2)}
 .ef-sidenav__item{display:flex;align-items:center;gap:var(--space-3);width:calc(100% - 24px);margin:0 var(--space-3);height:34px;padding:0 var(--space-3);border:none;border-radius:var(--radius-sm);cursor:pointer;text-align:start;background:transparent;color:var(--text-secondary);font-family:var(--font-sans);font-size:var(--text-md);font-weight:500;transition:background var(--dur-fast) var(--ease-out),color var(--dur-fast) var(--ease-out)}
 .ef-sidenav__item:hover{background:var(--surface-sunken);color:var(--text-primary)}
 .ef-sidenav__item--on{background:var(--border-default);color:var(--text-primary);font-weight:600}
@@ -11355,7 +11355,7 @@ function SideNav({
       fontFamily: 'var(--font-display)',
       fontWeight: 680,
       letterSpacing: '-0.02em',
-      fontSize: 19
+      fontSize: 'var(--text-xl)'
     }
   }, brand), brandBadge ? /*#__PURE__*/React.createElement(__ds_scope.Badge, {
     className: "ef-badge--brand",
@@ -11385,7 +11385,7 @@ function SideNav({
     }
   }, /*#__PURE__*/React.createElement(__ds_scope.Icon, {
     name: it.icon,
-    size: 17
+    size: 16
   })), /*#__PURE__*/React.createElement("span", {
     style: {
       flex: 1,
@@ -11461,7 +11461,7 @@ const CSS = `
 .ef-steps{display:flex;flex-direction:column;gap:0}
 .ef-steps__item{display:flex;gap:var(--space-3)}
 .ef-steps__rail{display:flex;flex-direction:column;align-items:center;flex:none}
-.ef-steps__marker{display:inline-flex;align-items:center;justify-content:center;width:24px;height:24px;border-radius:var(--radius-full);border:1.5px solid var(--sand-300);background:var(--surface-card);color:var(--text-muted);font-size:11px;font-weight:var(--weight-semibold);font-family:var(--font-mono);flex:none;transition:background var(--dur-fast) var(--ease-out),border-color var(--dur-fast) var(--ease-out)}
+.ef-steps__marker{display:inline-flex;align-items:center;justify-content:center;width:24px;height:24px;border-radius:var(--radius-full);border:1.5px solid var(--sand-300);background:var(--surface-card);color:var(--text-muted);font-size:var(--text-2xs);font-weight:var(--weight-semibold);font-family:var(--font-mono);flex:none;transition:background var(--dur-fast) var(--ease-out),border-color var(--dur-fast) var(--ease-out)}
 .ef-steps__item--done .ef-steps__marker{background:var(--accent);border-color:var(--accent);color:var(--accent-contrast)}
 .ef-steps__item--active .ef-steps__marker{border-color:var(--accent);color:var(--text-primary)}
 .ef-steps__line{width:1.5px;flex:1;min-height:16px;background:var(--sand-200);margin:var(--space-1) 0}
@@ -11504,7 +11504,7 @@ function Steps({
       className: "ef-steps__marker"
     }, state === 'done' ? /*#__PURE__*/React.createElement(__ds_scope.Icon, {
       name: "check",
-      size: 13,
+      size: 12,
       strokeWidth: 2.5
     }) : i + 1), (orientation === 'horizontal' || i < items.length - 1) && /*#__PURE__*/React.createElement("span", {
       className: "ef-steps__line"
@@ -11531,7 +11531,7 @@ const CSS = `
 .ef-tabs__tab:focus-visible{outline:none;box-shadow:var(--focus-ring)}
 .ef-tabs__tab--active{color:var(--text-primary);font-weight:var(--weight-semibold);background:var(--surface-sunken)}
 .ef-tabs__list[data-variant="line"] .ef-tabs__tab{background:transparent}.ef-tabs__list[data-variant="line"] .ef-tabs__tab--active::after{content:'';position:absolute;inset-inline:0;bottom:-1px;height:2px;border-radius:var(--radius-full);background:var(--accent)}
-.ef-tabs__ink{position:absolute;bottom:-1px;height:2px;background:var(--accent);border-radius:2px;transition:inset-inline-start var(--dur-med) var(--ease-spring),width var(--dur-med) var(--ease-spring)}
+.ef-tabs__ink{position:absolute;bottom:-1px;height:2px;background:var(--accent);border-radius:var(--radius-xs);transition:inset-inline-start var(--dur-med) var(--ease-spring),width var(--dur-med) var(--ease-spring)}
 .ef-tabs__count{font-size:var(--text-xs);font-weight:var(--weight-medium);color:var(--text-muted)}
 .ef-tabs__tab--active .ef-tabs__count{color:var(--text-primary)}
 .ef-tabs__content{padding-block:var(--space-4)}
@@ -11696,7 +11696,7 @@ try { (() => {
 function _extends() { return _extends = Object.assign ? Object.assign.bind() : function (n) { for (var e = 1; e < arguments.length; e++) { var t = arguments[e]; for (var r in t) ({}).hasOwnProperty.call(t, r) && (n[r] = t[r]); } return n; }, _extends.apply(null, arguments); }
 const CSS = `
 .ef-topnav{display:flex;align-items:center;gap:var(--space-3);height:60px;padding:0 var(--space-6);border-bottom:1px solid var(--border-default);background:color-mix(in srgb,var(--surface-page) 85%,transparent);backdrop-filter:blur(12px);position:sticky;top:0;z-index:20}
-.ef-topnav__title{font-size:18px;font-weight:700;font-family:var(--font-display);letter-spacing:-0.02em;color:var(--text-primary);margin:0}
+.ef-topnav__title{font-size:var(--text-xl);font-weight:700;font-family:var(--font-display);letter-spacing:-0.02em;color:var(--text-primary);margin:0}
 .ef-topnav__spacer{margin-inline-start:auto}
 `;
 function TopNav({
@@ -11969,22 +11969,22 @@ try { (() => {
 function _extends() { return _extends = Object.assign ? Object.assign.bind() : function (n) { for (var e = 1; e < arguments.length; e++) { var t = arguments[e]; for (var r in t) ({}).hasOwnProperty.call(t, r) && (n[r] = t[r]); } return n; }, _extends.apply(null, arguments); }
 const CSS = `
 .ef-modelsel{position:relative;display:inline-flex}
-.ef-modelsel__btn{display:inline-flex;align-items:center;gap:8px;height:32px;padding:0 10px;border:1px solid var(--border-strong);border-radius:var(--radius-sm);background:var(--surface-card);cursor:pointer;font-family:var(--font-sans);font-size:13px;font-weight:500;color:var(--text-primary);transition:border-color var(--dur-fast) var(--ease-out)}
+.ef-modelsel__btn{display:inline-flex;align-items:center;gap:var(--space-2);height:32px;padding:0 var(--space-3);border:1px solid var(--border-strong);border-radius:var(--radius-sm);background:var(--surface-card);cursor:pointer;font-family:var(--font-sans);font-size:var(--text-sm);font-weight:500;color:var(--text-primary);transition:border-color var(--dur-fast) var(--ease-out)}
 .ef-modelsel__btn:hover{border-color:var(--text-muted)}
 .ef-modelsel__btn:focus-visible{outline:none;box-shadow:var(--focus-ring)}
-.ef-modelsel__provider{font-size:11.5px;color:var(--text-muted);font-weight:400}
+.ef-modelsel__provider{font-size:var(--text-xs);color:var(--text-muted);font-weight:400}
 .ef-modelsel__chev{display:inline-flex;color:var(--text-muted)}
-.ef-modelsel__panel{position:absolute;bottom:calc(100% + 6px);inset-inline-start:0;min-width:260px;background:var(--surface-card);border:1px solid var(--border-strong);border-radius:var(--radius-md);box-shadow:var(--shadow-md);padding:4px;z-index:var(--z-popover);animation:ef-modelsel-in var(--dur-fast) var(--ease-out)}
+.ef-modelsel__panel{position:absolute;bottom:calc(100% + 6px);inset-inline-start:0;min-width:260px;background:var(--surface-card);border:1px solid var(--border-strong);border-radius:var(--radius-md);box-shadow:var(--shadow-md);padding:var(--space-1);z-index:var(--z-popover);animation:ef-modelsel-in var(--dur-fast) var(--ease-out)}
 .ef-modelsel--down .ef-modelsel__panel{bottom:auto;top:calc(100% + 6px)}
 @keyframes ef-modelsel-in{from{opacity:0;transform:translateY(3px)}}
-.ef-modelsel__item{display:flex;align-items:center;gap:10px;width:100%;padding:8px 10px;border:none;border-radius:var(--radius-sm);background:none;cursor:pointer;text-align:start;font-family:var(--font-sans);transition:background var(--dur-fast) var(--ease-out)}
+.ef-modelsel__item{display:flex;align-items:center;gap:var(--space-3);width:100%;padding:var(--space-2) var(--space-3);border:none;border-radius:var(--radius-sm);background:none;cursor:pointer;text-align:start;font-family:var(--font-sans);transition:background var(--dur-fast) var(--ease-out)}
 .ef-modelsel__item:hover{background:var(--surface-sunken)}
 .ef-modelsel__item:focus-visible{outline:none;box-shadow:var(--focus-ring)}
-.ef-modelsel__name{font-size:13.5px;font-weight:500;color:var(--text-primary)}
-.ef-modelsel__hint{font-size:12px;color:var(--text-muted);margin-top:1px}
-.ef-modelsel__badge{margin-inline-start:auto;flex:none;font-size:10.5px;font-weight:600;letter-spacing:.04em;text-transform:uppercase;color:var(--accent-subtle-fg, var(--brand-700));background:var(--accent-subtle);border-radius:var(--radius-sm);padding:2px 6px}
+.ef-modelsel__name{font-size:var(--text-md);font-weight:500;color:var(--text-primary)}
+.ef-modelsel__hint{font-size:var(--text-xs);color:var(--text-muted);margin-top:1px}
+.ef-modelsel__badge{margin-inline-start:auto;flex:none;font-size:10.5px;font-weight:600;letter-spacing:.04em;text-transform:uppercase;color:var(--accent-subtle-fg, var(--brand-700));background:var(--accent-subtle);border-radius:var(--radius-sm);padding:var(--space-0-5) var(--space-2)}
 .ef-modelsel__check{margin-inline-start:auto;flex:none;display:inline-flex;color:var(--brand-700)}
-.ef-modelsel__badge+.ef-modelsel__check{margin-inline-start:8px}
+.ef-modelsel__badge+.ef-modelsel__check{margin-inline-start:var(--space-2)}
 @media (pointer:coarse){.ef-modelsel__btn{min-height:var(--tap-min)}}
 `;
 function ModelSelector({
@@ -12036,14 +12036,14 @@ function ModelSelector({
     onClick: () => setOpen(!open)
   }, /*#__PURE__*/React.createElement(__ds_scope.Icon, {
     name: "sparkles",
-    size: 13
+    size: 12
   }), cur.name || 'Choose model', cur.provider ? /*#__PURE__*/React.createElement("span", {
     className: "ef-modelsel__provider"
   }, cur.provider) : null, /*#__PURE__*/React.createElement("span", {
     className: "ef-modelsel__chev"
   }, /*#__PURE__*/React.createElement(__ds_scope.Icon, {
     name: dir === 'bottom' ? 'chevron-down' : 'chevron-up',
-    size: 13
+    size: 12
   }))), open ? /*#__PURE__*/React.createElement(__ds_scope.Portal, null, /*#__PURE__*/React.createElement("div", {
     role: "listbox",
     ref: panelRef,
@@ -12073,7 +12073,7 @@ function ModelSelector({
     className: "ef-modelsel__check"
   }, /*#__PURE__*/React.createElement(__ds_scope.Icon, {
     name: "check",
-    size: 14
+    size: 16
   })) : null)))) : null);
 }
 Object.assign(__ds_scope, { ModelSelector });
@@ -12083,24 +12083,24 @@ Object.assign(__ds_scope, { ModelSelector });
 try { (() => {
 function _extends() { return _extends = Object.assign ? Object.assign.bind() : function (n) { for (var e = 1; e < arguments.length; e++) { var t = arguments[e]; for (var r in t) ({}).hasOwnProperty.call(t, r) && (n[r] = t[r]); } return n; }, _extends.apply(null, arguments); }
 const CSS = `
-.ef-field{display:flex;flex-direction:column;gap:6px}
+.ef-field{display:flex;flex-direction:column;gap:var(--space-2)}
 .ef-field__label{font-size:var(--text-sm);font-weight:var(--weight-semibold);color:var(--text-primary)}
 .ef-field__hint{font-size:var(--text-xs);color:var(--text-muted)}
 .ef-timepicker{position:relative;display:flex;align-items:center}
-.ef-timepicker__input{width:100%;height:var(--control-h-md);padding:0 34px 0 12px;border:1px solid var(--border-control,var(--border-strong));border-radius:var(--radius-sm);background:var(--surface-card);font-family:var(--font-sans);font-size:var(--text-md);color:var(--text-primary);transition:border-color var(--dur-fast) var(--ease-out),box-shadow var(--dur-fast) var(--ease-out)}
+.ef-timepicker__input{width:100%;height:var(--control-h-md);padding:0 calc(var(--space-3) + var(--icon-md) + var(--space-2)) 0 var(--space-3);border:1px solid var(--border-control,var(--border-strong));border-radius:var(--radius-sm);background:var(--surface-card);font-family:var(--font-sans);font-size:var(--text-md);color:var(--text-primary);transition:border-color var(--dur-fast) var(--ease-out),box-shadow var(--dur-fast) var(--ease-out)}
 .ef-timepicker__input::placeholder{color:var(--text-muted)}
 .ef-timepicker__input:hover:not(:disabled){border-color:var(--border-control-hover,var(--sand-400))}
 .ef-timepicker__input:focus{outline:none;border-color:var(--accent);box-shadow:var(--focus-ring)}
 .ef-timepicker__input:disabled{background:var(--surface-sunken);color:var(--text-muted);cursor:not-allowed}
 .ef-timepicker--invalid .ef-timepicker__input{border-color:var(--danger-600)}
 .ef-timepicker--invalid .ef-timepicker__input:focus{box-shadow:var(--focus-ring-danger)}
-.ef-timepicker__icon{position:absolute;inset-inline-end:11px;color:var(--text-muted);display:inline-flex;pointer-events:none}
-.ef-timepicker__panel{max-height:240px;overflow-y:auto;background:var(--surface-card);border:1px solid var(--border-strong);border-radius:var(--radius-md);box-shadow:var(--shadow-md);padding:4px;z-index:var(--z-popover);animation:ef-tp-in var(--dur-fast) var(--ease-out)}
+.ef-timepicker__icon{position:absolute;inset-inline-end:var(--space-3);color:var(--text-muted);display:inline-flex;pointer-events:none}
+.ef-timepicker__panel{max-height:240px;overflow-y:auto;background:var(--surface-card);border:1px solid var(--border-strong);border-radius:var(--radius-md);box-shadow:var(--shadow-md);padding:var(--space-1);z-index:var(--z-popover);animation:ef-tp-in var(--dur-fast) var(--ease-out)}
 @keyframes ef-tp-in{from{opacity:0;transform:translateY(-3px)}}
-.ef-timepicker__opt{display:flex;align-items:center;gap:9px;width:100%;padding:7px 10px;border:none;border-radius:var(--radius-sm);background:none;cursor:pointer;text-align:start;font-family:var(--font-sans);font-size:var(--text-sm);color:var(--text-primary)}
+.ef-timepicker__opt{display:flex;align-items:center;gap:var(--space-2);width:100%;padding:var(--space-2) var(--space-3);border:none;border-radius:var(--radius-sm);background:none;cursor:pointer;text-align:start;font-family:var(--font-sans);font-size:var(--text-sm);color:var(--text-primary)}
 .ef-timepicker__opt--hi{background:var(--surface-sunken);box-shadow:inset 0 0 0 2px var(--focus-ring-color)}
 .ef-timepicker__opt__check{margin-inline-start:auto;color:var(--accent);display:inline-flex}
-.ef-timepicker__empty{padding:14px 10px;font-size:var(--text-sm);color:var(--text-muted);text-align:center}
+.ef-timepicker__empty{padding:var(--space-4) var(--space-3);font-size:var(--text-sm);color:var(--text-muted);text-align:center}
 /* Touch: fixed-size targets grow to --tap-min; small glyph buttons keep their look and get a centred --tap-min hit area instead. */
 @media (pointer:coarse){.ef-timepicker__opt{min-height:var(--tap-min)}}
 `;
@@ -12278,7 +12278,7 @@ function TimePicker({
     className: "ef-timepicker__icon"
   }, /*#__PURE__*/React.createElement(__ds_scope.Icon, {
     name: "clock",
-    size: 15
+    size: 16
   })), open && /*#__PURE__*/React.createElement(__ds_scope.Portal, null, /*#__PURE__*/React.createElement("div", {
     ref: panelRef,
     className: "ef-timepicker__panel",
@@ -12302,7 +12302,7 @@ function TimePicker({
     className: "ef-timepicker__opt__check"
   }, /*#__PURE__*/React.createElement(__ds_scope.Icon, {
     name: "check",
-    size: 15
+    size: 16
   })) : null)))));
   if (!label && !hint) return /*#__PURE__*/React.createElement("div", _extends({}, rest, {
     className: className,
@@ -12326,18 +12326,18 @@ Object.assign(__ds_scope, { TimePicker });
 try { (() => {
 function _extends() { return _extends = Object.assign ? Object.assign.bind() : function (n) { for (var e = 1; e < arguments.length; e++) { var t = arguments[e]; for (var r in t) ({}).hasOwnProperty.call(t, r) && (n[r] = t[r]); } return n; }, _extends.apply(null, arguments); }
 const CSS = `
-.ef-alertdialog__overlay{position:fixed;inset:0;z-index:var(--z-overlay);display:grid;place-items:center;padding:24px;background:var(--overlay-scrim);animation:ef-alertdialog-fade var(--dur-med) var(--ease-out)}
-.ef-alertdialog__content{width:100%;max-width:512px;padding:24px;background:var(--surface-card);color:var(--text-primary);border:1px solid var(--border-default);border-radius:var(--radius-lg);box-shadow:var(--shadow-xl);animation:ef-alertdialog-pop var(--dur-slow) var(--ease-spring)}
+.ef-alertdialog__overlay{position:fixed;inset:0;z-index:var(--z-overlay);display:grid;place-items:center;padding:var(--space-6);background:var(--overlay-scrim);animation:ef-alertdialog-fade var(--dur-med) var(--ease-out)}
+.ef-alertdialog__content{width:100%;max-width:512px;padding:var(--space-6);background:var(--surface-card);color:var(--text-primary);border:1px solid var(--border-default);border-radius:var(--radius-lg);box-shadow:var(--shadow-xl);animation:ef-alertdialog-pop var(--dur-slow) var(--ease-spring)}
 .ef-alertdialog__content:focus{outline:none}
 .ef-alertdialog__content--sm{max-width:384px}
-.ef-alertdialog__header{display:flex;flex-direction:column;gap:8px;text-align:start}
-.ef-alertdialog__header:has(.ef-alertdialog__media){display:grid;grid-template-columns:auto minmax(0,1fr);column-gap:16px}
+.ef-alertdialog__header{display:flex;flex-direction:column;gap:var(--space-2);text-align:start}
+.ef-alertdialog__header:has(.ef-alertdialog__media){display:grid;grid-template-columns:auto minmax(0,1fr);column-gap:var(--space-4)}
 .ef-alertdialog__header:has(.ef-alertdialog__media) .ef-alertdialog__description{grid-column:2}
 .ef-alertdialog__title{margin:0;font-family:var(--font-display);font-size:var(--text-lg);font-weight:var(--weight-bold);line-height:var(--leading-tight);letter-spacing:var(--tracking-tight)}
 .ef-alertdialog__description{margin:0;color:var(--text-secondary);font-size:var(--text-sm);line-height:var(--leading-relaxed)}
 .ef-alertdialog__media{display:grid;grid-row:1/span 2;place-items:center;width:40px;height:40px;color:var(--text-primary);background:var(--surface-subtle);border-radius:var(--radius-md)}
-.ef-alertdialog__footer{display:flex;justify-content:flex-end;flex-wrap:wrap;gap:8px;margin-top:24px}
-@media(max-width:520px){.ef-alertdialog__overlay{padding:16px}.ef-alertdialog__content{padding:20px}.ef-alertdialog__footer{flex-direction:column-reverse}.ef-alertdialog__footer .ef-btn{width:100%}}
+.ef-alertdialog__footer{display:flex;justify-content:flex-end;flex-wrap:wrap;gap:var(--space-2);margin-top:var(--space-6)}
+@media(max-width:520px){.ef-alertdialog__overlay{padding:var(--space-4)}.ef-alertdialog__content{padding:var(--space-5)}.ef-alertdialog__footer{flex-direction:column-reverse}.ef-alertdialog__footer .ef-btn{width:100%}}
 @keyframes ef-alertdialog-fade{from{opacity:0}}
 @keyframes ef-alertdialog-pop{from{opacity:0;transform:scale(.96) translateY(6px)}}
 @media(prefers-reduced-motion:reduce){.ef-alertdialog__overlay,.ef-alertdialog__content{animation:none}}
@@ -12607,13 +12607,13 @@ Object.assign(__ds_scope, { AlertDialog, AlertDialogTrigger, AlertDialogPortal, 
 try { (() => {
 function _extends() { return _extends = Object.assign ? Object.assign.bind() : function (n) { for (var e = 1; e < arguments.length; e++) { var t = arguments[e]; for (var r in t) ({}).hasOwnProperty.call(t, r) && (n[r] = t[r]); } return n; }, _extends.apply(null, arguments); }
 const CSS = `
-.ef-dialog__overlay{position:fixed;inset:0;z-index:var(--z-overlay);display:flex;align-items:center;justify-content:center;padding:24px;background:var(--overlay-scrim);animation:ef-fade var(--dur-med) var(--ease-out)}
+.ef-dialog__overlay{position:fixed;inset:0;z-index:var(--z-overlay);display:flex;align-items:center;justify-content:center;padding:var(--space-6);background:var(--overlay-scrim);animation:ef-fade var(--dur-med) var(--ease-out)}
 .ef-dialog__content{width:100%;max-width:440px;max-height:min(85vh,720px);overflow:auto;border:1px solid var(--border-default);border-radius:var(--radius-lg);background:var(--surface-card);box-shadow:var(--shadow-xl);animation:ef-pop var(--dur-slow) var(--ease-spring)}
-.ef-dialog__content:focus{outline:none}.ef-dialog__close{position:absolute;inset-block-start:14px;inset-inline-end:14px}
-.ef-dialog__header{display:flex;flex-direction:column;gap:6px;padding:24px 24px 0;padding-inline-end:56px}
+.ef-dialog__content:focus{outline:none}.ef-dialog__close{position:absolute;inset-block-start:var(--space-3);inset-inline-end:var(--space-3)}
+.ef-dialog__header{display:flex;flex-direction:column;gap:var(--space-2);padding:var(--space-6) var(--space-6) 0;padding-inline-end:calc(var(--space-3) + var(--control-h-sm) + var(--space-4))}
 .ef-dialog__title{margin:0;font-family:var(--font-display);font-size:var(--text-xl);font-weight:var(--weight-bold);line-height:var(--leading-tight);letter-spacing:var(--tracking-tight);color:var(--text-primary)}
 .ef-dialog__description{font-size:var(--text-md);line-height:var(--leading-relaxed);color:var(--text-secondary)}
-.ef-dialog__body{padding:16px 24px 24px}.ef-dialog__footer{display:flex;flex-direction:column-reverse;gap:8px;padding:14px 24px;border-top:1px solid var(--border-default);background:var(--surface-subtle)}
+.ef-dialog__body{padding:var(--space-4) var(--space-6) var(--space-6)}.ef-dialog__footer{display:flex;flex-direction:column-reverse;gap:var(--space-2);padding:var(--space-4) var(--space-6);border-top:1px solid var(--border-default);background:var(--surface-subtle)}
 @media(min-width:480px){.ef-dialog__footer{flex-direction:row;justify-content:flex-end}}
 @keyframes ef-fade{from{opacity:0}}@keyframes ef-pop{from{opacity:0;transform:scale(.96) translateY(6px)}}
 `;
@@ -12904,7 +12904,7 @@ function ConfirmDialog({
     onChange: e => setTyped(e.target.value),
     placeholder: typeToConfirm,
     style: children ? {
-      marginTop: 14
+      marginTop: 'var(--space-4)'
     } : undefined
   }) : null), /*#__PURE__*/React.createElement(__ds_scope.DialogFooter, null, /*#__PURE__*/React.createElement(__ds_scope.Button, {
     variant: "ghost",
@@ -12925,10 +12925,10 @@ Object.assign(__ds_scope, { ConfirmDialog });
 try { (() => {
 function _extends() { return _extends = Object.assign ? Object.assign.bind() : function (n) { for (var e = 1; e < arguments.length; e++) { var t = arguments[e]; for (var r in t) ({}).hasOwnProperty.call(t, r) && (n[r] = t[r]); } return n; }, _extends.apply(null, arguments); }
 const CSS = `
-.ef-toast{display:flex;align-items:flex-start;gap:10px;width:360px;max-width:100%;padding:12px 14px;background:var(--surface-inverse);color:var(--text-inverse);border-radius:var(--radius-md);box-shadow:var(--shadow-lg);animation:ef-toast-in var(--dur-slow) var(--ease-spring)}
+.ef-toast{display:flex;align-items:flex-start;gap:var(--space-3);width:360px;max-width:100%;padding:var(--space-3) var(--space-4);background:var(--surface-inverse);color:var(--text-inverse);border-radius:var(--radius-md);box-shadow:var(--shadow-lg);animation:ef-toast-in var(--dur-slow) var(--ease-spring)}
 .ef-toast__icon{display:inline-flex;margin-top:1px}.ef-toast--success .ef-toast__icon{color:var(--success-on-dark)}.ef-toast--danger .ef-toast__icon{color:var(--danger-on-dark)}.ef-toast--warning .ef-toast__icon{color:var(--warning-on-dark)}.ef-toast--info .ef-toast__icon{color:var(--peach-200)}
-.ef-toast__title{font-size:var(--text-md);font-weight:var(--weight-semibold);line-height:1.35}.ef-toast__desc{margin-top:2px;color:var(--text-inverse);font-size:var(--text-sm);line-height:1.4;opacity:.75}.ef-toast__action{margin-top:8px;padding:0;border:0;background:none;color:var(--peach-200);font-family:var(--font-sans);font-size:var(--text-sm);font-weight:var(--weight-semibold);cursor:pointer}.ef-toast__action:hover{color:var(--cream-50);text-decoration:none}.ef-toast .ef-iconbtn{color:var(--text-inverse-muted)}.ef-toast .ef-iconbtn:hover:not(:disabled){background:color-mix(in srgb,var(--text-inverse) 12%,transparent);color:var(--text-inverse)}
-.ef-toast-stack{position:fixed;z-index:var(--z-toast);display:flex;width:360px;max-width:calc(100vw - 32px);flex-direction:column;gap:10px;pointer-events:none}.ef-toast-stack>*{pointer-events:auto}.ef-toast-stack[data-position^=top]{top:24px}.ef-toast-stack[data-position^=bottom]{bottom:24px}.ef-toast-stack[data-position$=left]{inset-inline-start:24px}.ef-toast-stack[data-position$=right]{inset-inline-end:24px}.ef-toast-stack[data-position$=center]{inset-inline-start:50%;transform:translateX(-50%)}
+.ef-toast__title{font-size:var(--text-md);font-weight:var(--weight-semibold);line-height:1.35}.ef-toast__desc{margin-top:var(--space-0-5);color:var(--text-inverse);font-size:var(--text-sm);line-height:1.4;opacity:.75}.ef-toast__action{margin-top:var(--space-2);padding:0;border:0;background:none;color:var(--peach-200);font-family:var(--font-sans);font-size:var(--text-sm);font-weight:var(--weight-semibold);cursor:pointer}.ef-toast__action:hover{color:var(--cream-50);text-decoration:none}.ef-toast .ef-iconbtn{color:var(--text-inverse-muted)}.ef-toast .ef-iconbtn:hover:not(:disabled){background:color-mix(in srgb,var(--text-inverse) 12%,transparent);color:var(--text-inverse)}
+.ef-toast-stack{position:fixed;z-index:var(--z-toast);display:flex;width:360px;max-width:calc(100vw - 32px);flex-direction:column;gap:var(--space-3);pointer-events:none}.ef-toast-stack>*{pointer-events:auto}.ef-toast-stack[data-position^=top]{top:24px}.ef-toast-stack[data-position^=bottom]{bottom:24px}.ef-toast-stack[data-position$=left]{inset-inline-start:24px}.ef-toast-stack[data-position$=right]{inset-inline-end:24px}.ef-toast-stack[data-position$=center]{inset-inline-start:50%;transform:translateX(-50%)}
 [data-theme="dark"] .ef-toast--success .ef-toast__icon{color:color-mix(in srgb,var(--success-600) 60%,var(--text-inverse))}[data-theme="dark"] .ef-toast--danger .ef-toast__icon{color:var(--danger-600)}[data-theme="dark"] .ef-toast--warning .ef-toast__icon{color:color-mix(in srgb,var(--warning-600) 60%,var(--text-inverse))}[data-theme="dark"] .ef-toast--info .ef-toast__icon{color:var(--brand-600)}[data-theme="dark"] .ef-toast__action{color:var(--brand-700)}
 @media (prefers-color-scheme:dark){:root:not(:where([data-theme="light"])) .ef-toast--success .ef-toast__icon{color:color-mix(in srgb,var(--success-600) 60%,var(--text-inverse))}:root:not(:where([data-theme="light"])) .ef-toast--danger .ef-toast__icon{color:var(--danger-600)}:root:not(:where([data-theme="light"])) .ef-toast--warning .ef-toast__icon{color:color-mix(in srgb,var(--warning-600) 60%,var(--text-inverse))}:root:not(:where([data-theme="light"])) .ef-toast--info .ef-toast__icon{color:var(--brand-600)}:root:not(:where([data-theme="light"])) .ef-toast__action{color:var(--brand-700)}}
 @media(max-width:599px){.ef-toast-stack{inset-inline:16px!important;width:auto;max-width:none;transform:none!important}.ef-toast-stack[data-position^=top]{top:16px}.ef-toast-stack[data-position^=bottom]{bottom:16px}}
@@ -12970,7 +12970,7 @@ function ToastItem({
     "aria-hidden": "true"
   }, /*#__PURE__*/React.createElement(__ds_scope.Icon, {
     name: ICONS[tone] || 'info',
-    size: 18
+    size: 20
   })), /*#__PURE__*/React.createElement("div", {
     style: {
       flex: 1
@@ -13201,7 +13201,7 @@ function _extends() { return _extends = Object.assign ? Object.assign.bind() : f
 const CSS = `
 /* Zero specificity: a trigger with its own focus style, such as Button, keeps it. */
 :where([data-slot="tooltip-trigger"]):focus-visible{outline:none;box-shadow:var(--focus-ring);border-radius:var(--radius-sm)}
-.ef-tooltip__bubble{position:fixed;background:var(--surface-inverse);color:var(--text-inverse);font-size:var(--text-xs);font-weight:var(--weight-medium);line-height:1.35;padding:5px 9px;border-radius:6px;white-space:nowrap;pointer-events:none;z-index:var(--z-tooltip);animation:ef-tooltip-in var(--dur-fast) var(--ease-out)}
+.ef-tooltip__bubble{position:fixed;background:var(--surface-inverse);color:var(--text-inverse);font-size:var(--text-xs);font-weight:var(--weight-medium);line-height:1.35;padding:var(--space-1) var(--space-2);border-radius:var(--radius-xs-plus);white-space:nowrap;pointer-events:none;z-index:var(--z-tooltip);animation:ef-tooltip-in var(--dur-fast) var(--ease-out)}
 .ef-tooltip__bubble::after{content:'';position:absolute;top:100%;left:var(--ef-tt-arrow,50%);transform:translateX(-50%);border:4px solid transparent;border-top-color:var(--surface-inverse)}
 .ef-tooltip__bubble--bottom::after{top:auto;bottom:100%;border-top-color:transparent;border-bottom-color:var(--surface-inverse)}
 .ef-tooltip__bubble--left::after{top:var(--ef-tt-arrow,50%);left:100%;transform:translateY(-50%);border-top-color:transparent;border-left-color:var(--surface-inverse)}
@@ -13427,14 +13427,14 @@ Object.assign(__ds_scope, { Tooltip, TooltipProvider, TooltipTrigger, TooltipCon
 try { (() => {
 function _extends() { return _extends = Object.assign ? Object.assign.bind() : function (n) { for (var e = 1; e < arguments.length; e++) { var t = arguments[e]; for (var r in t) ({}).hasOwnProperty.call(t, r) && (n[r] = t[r]); } return n; }, _extends.apply(null, arguments); }
 const CSS = `
-.ef-toolbar{display:inline-flex;align-items:center;gap:2px;padding:3px;background:var(--surface-card);border:1px solid var(--border-strong);border-radius:var(--radius-md)}
-.ef-toolbar__btn{display:inline-flex;align-items:center;justify-content:center;gap:6px;height:28px;min-width:28px;padding:0 7px;border:none;border-radius:6px;background:none;cursor:pointer;color:var(--text-secondary);font-family:var(--font-sans);font-size:var(--text-sm);font-weight:var(--weight-medium);transition:background var(--dur-fast) var(--ease-out),color var(--dur-fast) var(--ease-out)}
+.ef-toolbar{display:inline-flex;align-items:center;gap:var(--space-0-5);padding:var(--space-1);background:var(--surface-card);border:1px solid var(--border-strong);border-radius:var(--radius-md)}
+.ef-toolbar__btn{display:inline-flex;align-items:center;justify-content:center;gap:var(--space-2);height:var(--control-h-sm);min-width:var(--control-h-sm);padding:0 var(--space-2);border:none;border-radius:var(--radius-xs-plus);background:none;cursor:pointer;color:var(--text-secondary);font-family:var(--font-sans);font-size:var(--text-sm);font-weight:var(--weight-medium);transition:background var(--dur-fast) var(--ease-out),color var(--dur-fast) var(--ease-out)}
 .ef-toolbar__btn:hover:not(:disabled){background:var(--surface-sunken);color:var(--text-primary)}
 .ef-toolbar__btn--active{background:var(--accent);color:var(--accent-contrast)}
 .ef-toolbar__btn--active:hover:not(:disabled){background:var(--accent-hover);color:var(--accent-contrast)}
 .ef-toolbar__btn:disabled{opacity:.4;cursor:not-allowed}
 .ef-toolbar__btn:focus-visible{outline:none;box-shadow:var(--focus-ring)}
-.ef-toolbar__sep{width:1px;height:18px;background:var(--border-default);margin:0 4px}
+.ef-toolbar__sep{width:1px;height:18px;background:var(--border-default);margin:0 var(--space-1)}
 @media (pointer:coarse){.ef-toolbar__btn{min-width:var(--tap-min);min-height:var(--tap-min)}}
 `;
 function Toolbar({
@@ -13470,7 +13470,7 @@ function Toolbar({
       }
     }, it.icon ? /*#__PURE__*/React.createElement(__ds_scope.Icon, {
       name: it.icon,
-      size: 15
+      size: 16
     }) : null, it.label || null);
     return it.tip ? /*#__PURE__*/React.createElement(__ds_scope.Tooltip, {
       key: it.id
@@ -13486,11 +13486,11 @@ Object.assign(__ds_scope, { Toolbar });
 try { (() => {
 function _extends() { return _extends = Object.assign ? Object.assign.bind() : function (n) { for (var e = 1; e < arguments.length; e++) { var t = arguments[e]; for (var r in t) ({}).hasOwnProperty.call(t, r) && (n[r] = t[r]); } return n; }, _extends.apply(null, arguments); }
 const CSS = `
-.ef-combobox{position:relative;width:100%}.ef-combobox__input-group{width:100%}.ef-combobox__input{min-width:0}.ef-combobox__actions{gap:2px;padding-inline:4px;border:0}.ef-combobox__button{display:inline-flex;width:26px;height:26px;align-items:center;justify-content:center;border:0;border-radius:var(--radius-sm);background:transparent;color:var(--text-muted);cursor:pointer}.ef-combobox__button:hover{background:var(--surface-sunken);color:var(--text-primary)}.ef-combobox__button:focus-visible{outline:none;box-shadow:var(--focus-ring)}.ef-combobox__button:disabled{cursor:not-allowed;opacity:.45}
+.ef-combobox{position:relative;width:100%}.ef-combobox__input-group{width:100%}.ef-combobox__input{min-width:0}.ef-combobox__actions{gap:var(--space-0-5);padding-inline:var(--space-1);border:0}.ef-combobox__button{display:inline-flex;width:26px;height:26px;align-items:center;justify-content:center;border:0;border-radius:var(--radius-sm);background:transparent;color:var(--text-muted);cursor:pointer}.ef-combobox__button:hover{background:var(--surface-sunken);color:var(--text-primary)}.ef-combobox__button:focus-visible{outline:none;box-shadow:var(--focus-ring)}.ef-combobox__button:disabled{cursor:not-allowed;opacity:.45}
 .ef-combobox__content{position:fixed;z-index:var(--z-popover);max-height:min(384px,var(--ef-available-height,384px));overflow:hidden;border:1px solid var(--border-default);border-radius:var(--radius-md);background:var(--surface-card);color:var(--text-primary);box-shadow:var(--shadow-md);animation:ef-combobox-in var(--dur-fast) var(--ease-out)}@keyframes ef-combobox-in{from{opacity:0;transform:translateY(-3px)}}
-.ef-combobox__list{max-height:min(340px,var(--ef-available-height,340px));overflow-y:auto;padding:4px;scroll-padding-block:4px}.ef-combobox__item{position:relative;display:flex;width:100%;align-items:center;gap:8px;padding:7px 30px 7px 8px;border:0;border-radius:var(--radius-sm);outline:0;background:transparent;color:var(--text-primary);font:inherit;font-size:var(--text-sm);text-align:start;cursor:pointer;user-select:none}.ef-combobox__item[data-highlighted="true"]{background:var(--surface-sunken);box-shadow:inset 0 0 0 2px var(--focus-ring-color)}.ef-combobox__item[data-disabled="true"]{pointer-events:none;opacity:.5}.ef-combobox__item[hidden]{display:none}.ef-combobox__indicator{position:absolute;inset-inline-end:8px;display:inline-flex;color:var(--accent)}
-.ef-combobox__group{padding:4px}.ef-combobox__group:not(:has(.ef-combobox__item:not([hidden]))){display:none}.ef-combobox__label{padding:6px 8px;color:var(--text-muted);font-size:var(--text-xs);font-weight:var(--weight-medium)}.ef-combobox__empty{display:flex;justify-content:center;padding:12px;color:var(--text-muted);font-size:var(--text-sm)}.ef-combobox__separator{height:1px;margin:4px -4px;background:var(--border-default)}
-.ef-combobox__chips{display:flex;min-height:var(--control-h-md);width:100%;flex-wrap:wrap;align-items:center;gap:6px;padding:5px 8px;border:1px solid var(--border-control,var(--border-strong));border-radius:var(--radius-sm);background:var(--surface-card)}.ef-combobox__chips:focus-within{border-color:var(--accent);box-shadow:var(--focus-ring)}.ef-combobox__chip{display:inline-flex;height:24px;align-items:center;gap:3px;padding:0 4px 0 7px;border-radius:var(--radius-sm);background:var(--surface-sunken);font-size:var(--text-xs);font-weight:var(--weight-medium)}.ef-combobox__chip-remove{display:inline-flex;width:20px;height:20px;align-items:center;justify-content:center;border:0;border-radius:var(--radius-sm);background:transparent;color:var(--text-muted);cursor:pointer}.ef-combobox__chip-remove:hover{background:var(--surface-card);color:var(--text-primary)}.ef-combobox__chips-input{min-width:64px;flex:1;border:0;outline:0;background:transparent;color:var(--text-primary);font:inherit;font-size:var(--text-sm)}
+.ef-combobox__list{max-height:min(340px,var(--ef-available-height,340px));overflow-y:auto;padding:var(--space-1);scroll-padding-block:4px}.ef-combobox__item{position:relative;display:flex;width:100%;align-items:center;gap:8px;padding:calc(var(--space-2) - 1px) calc(var(--space-2) + var(--icon-md) + var(--space-2)) calc(var(--space-2) - 1px) var(--space-2);border:0;border-radius:var(--radius-sm);outline:0;background:transparent;color:var(--text-primary);font:inherit;font-size:var(--text-sm);text-align:start;cursor:pointer;user-select:none}.ef-combobox__item[data-highlighted="true"]{background:var(--surface-sunken);box-shadow:inset 0 0 0 2px var(--focus-ring-color)}.ef-combobox__item[data-disabled="true"]{pointer-events:none;opacity:.5}.ef-combobox__item[hidden]{display:none}.ef-combobox__indicator{position:absolute;inset-inline-end:var(--space-2);display:inline-flex;color:var(--accent)}
+.ef-combobox__group{padding:var(--space-1)}.ef-combobox__group:not(:has(.ef-combobox__item:not([hidden]))){display:none}.ef-combobox__label{padding:var(--space-2) var(--space-2);color:var(--text-muted);font-size:var(--text-xs);font-weight:var(--weight-medium)}.ef-combobox__empty{display:flex;justify-content:center;padding:var(--space-3);color:var(--text-muted);font-size:var(--text-sm)}.ef-combobox__separator{height:1px;margin:var(--space-1) calc(-1 * var(--space-1));background:var(--border-default)}
+.ef-combobox__chips{display:flex;min-height:var(--control-h-md);width:100%;flex-wrap:wrap;align-items:center;gap:var(--space-2);padding:var(--space-1) var(--space-2);border:1px solid var(--border-control,var(--border-strong));border-radius:var(--radius-sm);background:var(--surface-card)}.ef-combobox__chips:focus-within{border-color:var(--accent);box-shadow:var(--focus-ring)}.ef-combobox__chip{display:inline-flex;height:24px;align-items:center;gap:var(--space-1);padding:0 var(--space-1) 0 var(--space-2);border-radius:var(--radius-sm);background:var(--surface-sunken);font-size:var(--text-xs);font-weight:var(--weight-medium)}.ef-combobox__chip-remove{display:inline-flex;width:20px;height:20px;align-items:center;justify-content:center;border:0;border-radius:var(--radius-sm);background:transparent;color:var(--text-muted);cursor:pointer}.ef-combobox__chip-remove:hover{background:var(--surface-card);color:var(--text-primary)}.ef-combobox__chips-input{min-width:64px;flex:1;border:0;outline:0;background:transparent;color:var(--text-primary);font:inherit;font-size:var(--text-sm)}
 /* Touch: fixed-size targets grow to --tap-min; small glyph buttons keep their look and get a centred --tap-min hit area instead. */
 @media (pointer:coarse){.ef-combobox__item{min-height:var(--tap-min)}.ef-combobox__button,.ef-combobox__chip-remove{position:relative}.ef-combobox__button::before,.ef-combobox__chip-remove::before{content:"";position:absolute;inset:calc(50% - var(--tap-min) / 2)}}
 `;
@@ -13686,7 +13686,7 @@ const ComboboxClear = React.forwardRef(function ComboboxClear({
     }
   }, props), children || /*#__PURE__*/React.createElement(__ds_scope.Icon, {
     name: "x",
-    size: 14
+    size: 16
   }));
 });
 function useInputKeyboard(context, onKeyDown) {
@@ -13878,7 +13878,7 @@ const ComboboxItem = React.forwardRef(function ComboboxItem({
     className: "ef-combobox__indicator"
   }, /*#__PURE__*/React.createElement(__ds_scope.Icon, {
     name: "check",
-    size: 15
+    size: 16
   })) : null);
 });
 const ComboboxGroup = React.forwardRef(function ComboboxGroup({
@@ -14009,22 +14009,22 @@ Object.assign(__ds_scope, { Combobox, ComboboxValue, ComboboxTrigger, ComboboxCl
 try { (() => {
 function _extends() { return _extends = Object.assign ? Object.assign.bind() : function (n) { for (var e = 1; e < arguments.length; e++) { var t = arguments[e]; for (var r in t) ({}).hasOwnProperty.call(t, r) && (n[r] = t[r]); } return n; }, _extends.apply(null, arguments); }
 const CSS = `
-.ef-select-trigger{display:flex;width:100%;height:var(--control-h-md);align-items:center;justify-content:space-between;gap:8px;padding:0 11px;border:1px solid var(--border-control,var(--border-strong));border-radius:var(--radius-sm);background:var(--surface-sunken);color:var(--text-primary);font:inherit;font-size:var(--text-sm);text-align:start;cursor:pointer}
+.ef-select-trigger{display:flex;width:100%;height:var(--control-h-md);align-items:center;justify-content:space-between;gap:var(--space-2);padding:0 var(--space-3);border:1px solid var(--border-control,var(--border-strong));border-radius:var(--radius-sm);background:var(--surface-sunken);color:var(--text-primary);font:inherit;font-size:var(--text-sm);text-align:start;cursor:pointer}
 .ef-select-trigger:hover:not(:disabled){border-color:var(--border-control-hover,var(--sand-400))}
 .ef-select-trigger:focus-visible{outline:none;box-shadow:var(--focus-ring)}
 .ef-select-trigger:disabled{cursor:not-allowed;opacity:.5}
 .ef-select-trigger[aria-invalid="true"]{border-color:var(--danger-600)}
 .ef-select-value[data-placeholder]{color:var(--text-muted)}
-.ef-select-content{position:fixed;z-index:var(--z-popover);min-width:var(--select-trigger-width);max-height:280px;overflow:auto;padding:4px;border:1px solid var(--border-strong);border-radius:var(--radius-md);background:var(--surface-card);box-shadow:var(--shadow-md);animation:ef-select-in var(--dur-fast) var(--ease-out)}
+.ef-select-content{position:fixed;z-index:var(--z-popover);min-width:var(--select-trigger-width);max-height:280px;overflow:auto;padding:var(--space-1);border:1px solid var(--border-strong);border-radius:var(--radius-md);background:var(--surface-card);box-shadow:var(--shadow-md);animation:ef-select-in var(--dur-fast) var(--ease-out)}
 @keyframes ef-select-in{from{opacity:0;transform:translateY(-3px)}}
-.ef-select-group{padding:2px 0}
-.ef-select-label{padding:6px 9px;color:var(--text-muted);font-size:var(--text-xs);font-weight:var(--weight-semibold)}
-.ef-select-item{position:relative;display:flex;width:100%;min-height:32px;align-items:center;padding-block:6px;padding-inline:9px 30px;border:0;border-radius:var(--radius-sm);background:none;color:var(--text-primary);font:inherit;font-size:var(--text-sm);text-align:start;cursor:pointer}
+.ef-select-group{padding:var(--space-0-5) 0}
+.ef-select-label{padding:var(--space-2) var(--space-2);color:var(--text-muted);font-size:var(--text-xs);font-weight:var(--weight-semibold)}
+.ef-select-item{position:relative;display:flex;width:100%;min-height:32px;align-items:center;padding-block:6px;padding-inline:calc(var(--space-2) + 1px) calc(var(--space-2) + var(--icon-md) + var(--space-2));border:0;border-radius:var(--radius-sm);background:none;color:var(--text-primary);font:inherit;font-size:var(--text-sm);text-align:start;cursor:pointer}
 .ef-select-item:hover{background:var(--surface-sunken)}
 .ef-select-item:focus-visible,.ef-select-item[data-highlighted]{outline:none;background:var(--surface-sunken);box-shadow:inset 0 0 0 2px var(--focus-ring-color)}
 .ef-select-item:disabled{cursor:not-allowed;opacity:.45}
-.ef-select-check{position:absolute;inset-inline-end:9px;display:inline-flex}
-.ef-select-separator{height:1px;margin:4px 6px;background:var(--border-default)}
+.ef-select-check{position:absolute;inset-inline-end:var(--space-2);display:inline-flex}
+.ef-select-separator{height:1px;margin:var(--space-1) var(--space-2);background:var(--border-default)}
 /* Touch: fixed-size targets grow to --tap-min; small glyph buttons keep their look and get a centred --tap-min hit area instead. */
 @media (pointer:coarse){.ef-select-item{min-height:var(--tap-min)}}
 `;
@@ -14286,7 +14286,7 @@ const SelectItem = React.forwardRef(function SelectItem({
     className: "ef-select-check"
   }, /*#__PURE__*/React.createElement(__ds_scope.Icon, {
     name: "check",
-    size: 15
+    size: 16
   })) : null);
 });
 Object.assign(__ds_scope, { Select, SelectTrigger, SelectValue, SelectContent, SelectGroup, SelectLabel, SelectSeparator, SelectItem });
@@ -14310,10 +14310,10 @@ const CSS = `
 .ef-sidebar[data-state=collapsed][data-collapsible=icon] .ef-sidebar-input,.ef-sidebar[data-state=collapsed][data-collapsible=icon] .ef-sidebar-menu-action,.ef-sidebar[data-state=collapsed][data-collapsible=icon] .ef-sidebar-menu-badge,.ef-sidebar[data-state=collapsed][data-collapsible=icon] .ef-sidebar-menu-sub{display:none}
 .ef-sidebar-header,.ef-sidebar-footer{display:flex;flex-direction:column;gap:var(--space-2);padding:var(--space-2)}.ef-sidebar-content{display:flex;min-height:0;flex:1;flex-direction:column;gap:var(--space-2);overflow:auto;overscroll-behavior:contain}
 .ef-sidebar-group{position:relative;display:flex;min-width:0;flex-direction:column;padding:var(--space-2)}.ef-sidebar-group-label{display:flex;height:32px;align-items:center;padding-inline:var(--space-2);color:var(--text-muted);font-size:var(--text-xs);font-weight:var(--weight-medium)}
-.ef-sidebar-group-action{position:absolute;inset-block-start:12px;inset-inline-end:12px;display:inline-flex;width:24px;height:24px;align-items:center;justify-content:center;border:0;border-radius:var(--radius-sm);background:transparent;color:var(--text-secondary);cursor:pointer}.ef-sidebar-group-action:hover{background:var(--surface-sunken);color:var(--text-primary)}
+.ef-sidebar-group-action{position:absolute;inset-block-start:12px;inset-inline-end:12px;display:inline-flex;width:var(--control-h-xs);height:var(--control-h-xs);align-items:center;justify-content:center;border:0;border-radius:var(--radius-sm);background:transparent;color:var(--text-secondary);cursor:pointer}.ef-sidebar-group-action:hover{background:var(--surface-sunken);color:var(--text-primary)}
 .ef-sidebar-group-content{width:100%;font-size:var(--text-sm)}.ef-sidebar-menu,.ef-sidebar-menu-sub{display:flex;min-width:0;flex-direction:column;gap:var(--space-0-5);margin:0;padding:0;list-style:none}.ef-sidebar-menu-item,.ef-sidebar-menu-sub-item{position:relative;min-width:0}
-.ef-sidebar-menu-button,.ef-sidebar-menu-sub-button{display:flex;width:100%;min-width:0;align-items:center;gap:var(--space-2);border:0;border-radius:var(--radius-sm);background:transparent;color:var(--text-secondary);font:inherit;text-align:start;text-decoration:none;cursor:pointer}.ef-sidebar-menu-button{height:32px;padding-inline:var(--space-2)}.ef-sidebar-menu-button[data-size=sm]{height:28px;font-size:var(--text-xs)}.ef-sidebar-menu-button[data-size=lg]{height:40px}.ef-sidebar-menu-button:hover,.ef-sidebar-menu-sub-button:hover,.ef-sidebar-menu-button[data-active=true],.ef-sidebar-menu-sub-button[data-active=true]{background:var(--surface-sunken);color:var(--text-primary);text-decoration:none}.ef-sidebar-menu-button:focus-visible,.ef-sidebar-menu-sub-button:focus-visible,.ef-sidebar-group-action:focus-visible,.ef-sidebar-trigger:focus-visible,.ef-sidebar-rail:focus-visible{outline:0;box-shadow:var(--focus-ring)}
-.ef-sidebar-menu-button__icon{display:inline-flex;flex:0 0 auto}.ef-sidebar-menu-action{position:absolute;inset-block-start:4px;inset-inline-end:4px;display:inline-flex;width:24px;height:24px;align-items:center;justify-content:center;border:0;border-radius:var(--radius-sm);background:transparent;color:var(--text-muted);cursor:pointer}.ef-sidebar-menu-action:hover{background:var(--surface-raised);color:var(--text-primary)}
+.ef-sidebar-menu-button,.ef-sidebar-menu-sub-button{display:flex;width:100%;min-width:0;align-items:center;gap:var(--space-2);border:0;border-radius:var(--radius-sm);background:transparent;color:var(--text-secondary);font:inherit;text-align:start;text-decoration:none;cursor:pointer}.ef-sidebar-menu-button{height:32px;padding-inline:var(--space-2)}.ef-sidebar-menu-button[data-size=sm]{height:var(--control-h-sm);font-size:var(--text-xs)}.ef-sidebar-menu-button[data-size=lg]{height:40px}.ef-sidebar-menu-button:hover,.ef-sidebar-menu-sub-button:hover,.ef-sidebar-menu-button[data-active=true],.ef-sidebar-menu-sub-button[data-active=true]{background:var(--surface-sunken);color:var(--text-primary);text-decoration:none}.ef-sidebar-menu-button:focus-visible,.ef-sidebar-menu-sub-button:focus-visible,.ef-sidebar-group-action:focus-visible,.ef-sidebar-trigger:focus-visible,.ef-sidebar-rail:focus-visible{outline:0;box-shadow:var(--focus-ring)}
+.ef-sidebar-menu-button__icon{display:inline-flex;flex:0 0 auto}.ef-sidebar-menu-action{position:absolute;inset-block-start:4px;inset-inline-end:4px;display:inline-flex;width:var(--control-h-xs);height:var(--control-h-xs);align-items:center;justify-content:center;border:0;border-radius:var(--radius-sm);background:transparent;color:var(--text-muted);cursor:pointer}.ef-sidebar-menu-action:hover{background:var(--surface-raised);color:var(--text-primary)}
 .ef-sidebar-menu-action[data-show-on-hover=true]{opacity:0}.ef-sidebar-menu-item:hover>.ef-sidebar-menu-action[data-show-on-hover=true],.ef-sidebar-menu-action[data-show-on-hover=true]:focus-visible{opacity:1}
 .ef-sidebar-menu-badge{position:absolute;inset-block-start:7px;inset-inline-end:8px;min-width:20px;padding-inline:var(--space-1);border-radius:var(--radius-full);background:var(--surface-sunken);color:var(--text-muted);font-size:10px;line-height:18px;text-align:center;pointer-events:none}
 .ef-sidebar-menu-sub{margin-inline-start:var(--space-4);padding:var(--space-1) 0 var(--space-1) var(--space-3);border-inline-start:1px solid var(--border-default)}.ef-sidebar-menu-sub-button{min-height:28px;padding:var(--space-1) var(--space-2);font-size:var(--text-xs)}
@@ -14405,11 +14405,7 @@ const SidebarProvider = React.forwardRef(function SidebarProvider({
   }, /*#__PURE__*/React.createElement("div", _extends({}, props, {
     ref: ref,
     "data-slot": "sidebar-wrapper",
-    style: {
-      '--sidebar-width': '16rem',
-      '--sidebar-width-icon': '3rem',
-      ...style
-    },
+    style: style,
     className: join('ef-sidebar-provider', className)
   }), children));
 });
@@ -14532,7 +14528,7 @@ const SidebarTrigger = React.forwardRef(function SidebarTrigger({
     onClick: click
   }, ref, children || /*#__PURE__*/React.createElement(__ds_scope.Icon, {
     name: "panel-left",
-    size: 18
+    size: 20
   }));
 });
 const SidebarRail = React.forwardRef(function SidebarRail({
@@ -14706,15 +14702,15 @@ try { (() => {
 function _extends() { return _extends = Object.assign ? Object.assign.bind() : function (n) { for (var e = 1; e < arguments.length; e++) { var t = arguments[e]; for (var r in t) ({}).hasOwnProperty.call(t, r) && (n[r] = t[r]); } return n; }, _extends.apply(null, arguments); }
 const CSS = `
 .ef-command{display:flex;width:100%;height:100%;flex-direction:column;overflow:hidden;border-radius:var(--radius-md);background:var(--surface-card);color:var(--text-primary);font-family:var(--font-sans)}
-.ef-command__input-wrap{display:flex;height:44px;align-items:center;gap:8px;padding-inline:12px;border-bottom:1px solid var(--border-default);color:var(--text-muted)}
+.ef-command__input-wrap{display:flex;height:44px;align-items:center;gap:var(--space-2);padding-inline:var(--space-3);border-bottom:1px solid var(--border-default);color:var(--text-muted)}
 .ef-command__input{display:flex;width:100%;height:40px;border:0;outline:0;background:transparent;color:var(--text-primary);font:inherit;font-size:var(--text-sm)}.ef-command__input-wrap:focus-within{box-shadow:inset 0 -2px 0 var(--focus-ring-color)}.ef-command__input::placeholder{color:var(--text-muted)}.ef-command__input:disabled{cursor:not-allowed;opacity:.5}
-.ef-command__list{max-height:300px;overflow-x:hidden;overflow-y:auto;scroll-padding-block:4px;padding:4px}
-.ef-command__empty{padding:24px;text-align:center;color:var(--text-muted);font-size:var(--text-sm)}
-.ef-command__group{overflow:hidden;padding:4px}.ef-command__group[hidden],.ef-command__group:not(:has(.ef-command__item:not([hidden]))){display:none}.ef-command__heading{padding:6px 8px;color:var(--text-muted);font-size:var(--text-xs);font-weight:var(--weight-medium)}
-.ef-command__item{position:relative;display:flex;width:100%;align-items:center;gap:8px;padding:7px 8px;border:0;border-radius:var(--radius-sm);outline:0;background:transparent;color:var(--text-primary);font:inherit;font-size:var(--text-sm);text-align:start;cursor:pointer;user-select:none}.ef-command__item[data-selected="true"]{background:var(--surface-sunken);box-shadow:inset 0 0 0 2px var(--focus-ring-color)}.ef-command__item[data-disabled="true"]{pointer-events:none;opacity:.5}.ef-command__item[hidden]{display:none}
+.ef-command__list{max-height:300px;overflow-x:hidden;overflow-y:auto;scroll-padding-block:4px;padding:var(--space-1)}
+.ef-command__empty{padding:var(--space-6);text-align:center;color:var(--text-muted);font-size:var(--text-sm)}
+.ef-command__group{overflow:hidden;padding:var(--space-1)}.ef-command__group[hidden],.ef-command__group:not(:has(.ef-command__item:not([hidden]))){display:none}.ef-command__heading{padding:var(--space-2) var(--space-2);color:var(--text-muted);font-size:var(--text-xs);font-weight:var(--weight-medium)}
+.ef-command__item{position:relative;display:flex;width:100%;align-items:center;gap:var(--space-2);padding:var(--space-2) var(--space-2);border:0;border-radius:var(--radius-sm);outline:0;background:transparent;color:var(--text-primary);font:inherit;font-size:var(--text-sm);text-align:start;cursor:pointer;user-select:none}.ef-command__item[data-selected="true"]{background:var(--surface-sunken);box-shadow:inset 0 0 0 2px var(--focus-ring-color)}.ef-command__item[data-disabled="true"]{pointer-events:none;opacity:.5}.ef-command__item[hidden]{display:none}
 .ef-command__shortcut{margin-inline-start:auto;color:var(--text-muted);font-size:var(--text-xs);letter-spacing:.08em}
-.ef-command__separator{height:1px;margin-inline:-4px;background:var(--border-default)}
-.ef-command-dialog{overflow:hidden;padding:0}.ef-command-dialog>.ef-dialog__close{z-index:1}.ef-command-dialog .ef-command__input-wrap{height:48px}.ef-command-dialog .ef-command__item{padding-block:10px}
+.ef-command__separator{height:1px;margin-inline:calc(-1 * var(--space-1));background:var(--border-default)}
+.ef-command-dialog{overflow:hidden;padding:0}.ef-command-dialog>.ef-dialog__close{z-index:1}.ef-command-dialog .ef-command__input-wrap{height:48px}.ef-command-dialog .ef-command__item{padding-block:var(--space-3)}
 .ef-command__sr{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
 /* coarse pointers get the 44px touch target, like form controls do through --control-h-* */
 @media (pointer:coarse){.ef-command__item{min-height:var(--tap-min)}}
@@ -14981,18 +14977,18 @@ Object.assign(__ds_scope, { Command, CommandDialog, CommandInput, CommandList, C
 try { (() => {
 function _extends() { return _extends = Object.assign ? Object.assign.bind() : function (n) { for (var e = 1; e < arguments.length; e++) { var t = arguments[e]; for (var r in t) ({}).hasOwnProperty.call(t, r) && (n[r] = t[r]); } return n; }, _extends.apply(null, arguments); }
 const CSS = `
-.ef-context-menu__content{position:fixed;min-width:128px;max-height:calc(100vh - 16px);overflow:auto;background:var(--surface-card);color:var(--text-primary);border:1px solid var(--border-strong);border-radius:var(--radius-md);box-shadow:var(--shadow-md);padding:4px;z-index:var(--z-popover);animation:ef-context-menu-in var(--dur-fast) var(--ease-out)}
+.ef-context-menu__content{position:fixed;min-width:128px;max-height:calc(100vh - 16px);overflow:auto;background:var(--surface-card);color:var(--text-primary);border:1px solid var(--border-strong);border-radius:var(--radius-md);box-shadow:var(--shadow-md);padding:var(--space-1);z-index:var(--z-popover);animation:ef-context-menu-in var(--dur-fast) var(--ease-out)}
 @keyframes ef-context-menu-in{from{opacity:0;transform:scale(.98)}}
-.ef-context-menu__item{position:relative;display:flex;align-items:center;gap:8px;width:100%;min-height:32px;padding:6px 8px;border:0;border-radius:var(--radius-sm);outline:0;background:transparent;color:var(--text-primary);font:inherit;font-size:var(--text-sm);line-height:1.35;text-align:start;white-space:nowrap;cursor:pointer;user-select:none}
+.ef-context-menu__item{position:relative;display:flex;align-items:center;gap:var(--space-2);width:100%;min-height:32px;padding:var(--space-2) var(--space-2);border:0;border-radius:var(--radius-sm);outline:0;background:transparent;color:var(--text-primary);font:inherit;font-size:var(--text-sm);line-height:1.35;text-align:start;white-space:nowrap;cursor:pointer;user-select:none}
 .ef-context-menu__item:hover,.ef-context-menu__item:focus,.ef-context-menu__item[data-highlighted=true],.ef-context-menu__item[data-state=open]{background:var(--surface-sunken)}
 /* the tint alone is ~1.1:1 against the panel; keyboard focus needs a 3:1 ring */
 .ef-context-menu__item:focus-visible{box-shadow:inset 0 0 0 2px var(--focus-ring-color)}
 .ef-context-menu__item:disabled,.ef-context-menu__item[data-disabled=true]{pointer-events:none;opacity:.5}
-.ef-context-menu__item[data-inset=true],.ef-context-menu__label[data-inset=true]{padding-inline-start:32px}
+.ef-context-menu__item[data-inset=true],.ef-context-menu__label[data-inset=true]{padding-inline-start:var(--space-8)}
 .ef-context-menu__item[data-variant=danger]{color:var(--danger-600)}
 .ef-context-menu__indicator{position:absolute;inset-inline-start:8px;display:inline-flex;width:14px;align-items:center;justify-content:center}
-.ef-context-menu__label{padding:6px 8px;color:var(--text-primary);font-size:var(--text-sm);font-weight:var(--weight-medium)}
-.ef-context-menu__separator{height:1px;margin:4px -4px;background:var(--border-default)}
+.ef-context-menu__label{padding:var(--space-2) var(--space-2);color:var(--text-primary);font-size:var(--text-sm);font-weight:var(--weight-medium)}
+.ef-context-menu__separator{height:1px;margin:var(--space-1) calc(-1 * var(--space-1));background:var(--border-default)}
 .ef-context-menu__shortcut{margin-inline-start:auto;color:var(--text-muted);font-size:var(--text-xs);letter-spacing:.08em}
 .ef-context-menu__chevron{display:inline-flex;margin-inline-start:auto;color:var(--text-muted)}
 [dir=rtl] .ef-context-menu__chevron{transform:scaleX(-1)}
@@ -15327,7 +15323,7 @@ const ContextMenuCheckboxItem = React.forwardRef(function ContextMenuCheckboxIte
     className: "ef-context-menu__indicator"
   }, checked ? /*#__PURE__*/React.createElement(__ds_scope.Icon, {
     name: "check",
-    size: 14
+    size: 16
   }) : null), children);
 });
 function ContextMenuRadioGroup({
@@ -15448,7 +15444,7 @@ const ContextMenuSubTrigger = React.forwardRef(function ContextMenuSubTrigger({
     className: "ef-context-menu__chevron"
   }, /*#__PURE__*/React.createElement(__ds_scope.Icon, {
     name: "chevron-right",
-    size: 14
+    size: 16
   })));
 });
 const ContextMenuSubContent = React.forwardRef(function ContextMenuSubContent({
@@ -15521,9 +15517,9 @@ const CSS = `
 .ef-drawer[data-vaul-drawer-direction=left]{top:0;left:0;bottom:0;width:min(75vw,384px);border-width:0 1px 0 0;animation:ef-drawer-left var(--dur-slow) var(--ease-out)}
 .ef-drawer[data-vaul-drawer-direction=top]{top:0;left:0;right:0;width:100%;max-height:80vh;border-width:0 0 1px;border-radius:0 0 var(--radius-lg) var(--radius-lg);animation:ef-drawer-top var(--dur-slow) var(--ease-out)}
 .ef-drawer[data-vaul-drawer-direction=bottom]{bottom:0;left:0;right:0;width:100%;max-height:80vh;border-width:1px 0 0;border-radius:var(--radius-lg) var(--radius-lg) 0 0;animation:ef-drawer-bottom var(--dur-slow) var(--ease-out)}
-.ef-drawer__handle{display:none;width:100px;height:8px;flex:none;margin:16px auto 0;border-radius:var(--radius-full);background:var(--surface-sunken);cursor:grab;touch-action:none}
+.ef-drawer__handle{display:none;width:100px;height:8px;flex:none;margin:var(--space-4) auto 0;border-radius:var(--radius-full);background:var(--surface-sunken);cursor:grab;touch-action:none}
 .ef-drawer[data-vaul-drawer-direction=bottom]>.ef-drawer__handle{display:block}
-.ef-drawer__header{gap:6px;padding:20px 24px 12px;text-align:start}.ef-drawer__footer{margin-top:auto;padding:16px 24px}.ef-drawer__description{margin-top:2px}
+.ef-drawer__header{gap:var(--space-2);padding:var(--space-5) var(--space-6) var(--space-3);text-align:start}.ef-drawer__footer{margin-top:auto;padding:var(--space-4) var(--space-6)}.ef-drawer__description{margin-top:var(--space-0-5)}
 @keyframes ef-drawer-right{from{transform:translateX(24px);opacity:0}}@keyframes ef-drawer-left{from{transform:translateX(-24px);opacity:0}}@keyframes ef-drawer-top{from{transform:translateY(-24px);opacity:0}}@keyframes ef-drawer-bottom{from{transform:translateY(24px);opacity:0}}
 `;
 const DrawerContext = React.createContext(null);
@@ -15717,18 +15713,18 @@ Object.assign(__ds_scope, { Drawer, DrawerTrigger, DrawerPortal, DrawerClose, Dr
 try { (() => {
 function _extends() { return _extends = Object.assign ? Object.assign.bind() : function (n) { for (var e = 1; e < arguments.length; e++) { var t = arguments[e]; for (var r in t) ({}).hasOwnProperty.call(t, r) && (n[r] = t[r]); } return n; }, _extends.apply(null, arguments); }
 const CSS = `
-.ef-dropdown-menu__content{position:fixed;min-width:128px;max-height:calc(100vh - 16px);overflow:auto;background:var(--surface-card);color:var(--text-primary);border:1px solid var(--border-strong);border-radius:var(--radius-md);box-shadow:var(--shadow-md);padding:4px;z-index:var(--z-popover);animation:ef-dropdown-menu-in var(--dur-fast) var(--ease-out)}
+.ef-dropdown-menu__content{position:fixed;min-width:128px;max-height:calc(100vh - 16px);overflow:auto;background:var(--surface-card);color:var(--text-primary);border:1px solid var(--border-strong);border-radius:var(--radius-md);box-shadow:var(--shadow-md);padding:var(--space-1);z-index:var(--z-popover);animation:ef-dropdown-menu-in var(--dur-fast) var(--ease-out)}
 @keyframes ef-dropdown-menu-in{from{opacity:0;transform:scale(.98)}}
-.ef-dropdown-menu__item{position:relative;display:flex;align-items:center;gap:8px;width:100%;min-height:32px;padding:6px 8px;border:0;border-radius:var(--radius-sm);outline:0;background:transparent;color:var(--text-primary);font:inherit;font-size:var(--text-sm);line-height:1.35;text-align:start;white-space:nowrap;cursor:pointer;user-select:none}
+.ef-dropdown-menu__item{position:relative;display:flex;align-items:center;gap:var(--space-2);width:100%;min-height:32px;padding:var(--space-2) var(--space-2);border:0;border-radius:var(--radius-sm);outline:0;background:transparent;color:var(--text-primary);font:inherit;font-size:var(--text-sm);line-height:1.35;text-align:start;white-space:nowrap;cursor:pointer;user-select:none}
 .ef-dropdown-menu__item:hover,.ef-dropdown-menu__item:focus,.ef-dropdown-menu__item[data-highlighted=true],.ef-dropdown-menu__item[data-state=open]{background:var(--surface-sunken)}
 /* the tint alone is ~1.1:1 against the panel; keyboard focus needs a 3:1 ring */
 .ef-dropdown-menu__item:focus-visible{box-shadow:inset 0 0 0 2px var(--focus-ring-color)}
 .ef-dropdown-menu__item:disabled,.ef-dropdown-menu__item[data-disabled=true]{pointer-events:none;opacity:.5}
-.ef-dropdown-menu__item[data-inset=true],.ef-dropdown-menu__label[data-inset=true]{padding-inline-start:32px}
+.ef-dropdown-menu__item[data-inset=true],.ef-dropdown-menu__label[data-inset=true]{padding-inline-start:var(--space-8)}
 .ef-dropdown-menu__item[data-variant=danger]{color:var(--danger-600)}
 .ef-dropdown-menu__indicator{position:absolute;inset-inline-start:8px;display:inline-flex;width:14px;align-items:center;justify-content:center}
-.ef-dropdown-menu__label{padding:6px 8px;color:var(--text-primary);font-size:var(--text-sm);font-weight:var(--weight-medium)}
-.ef-dropdown-menu__separator{height:1px;margin:4px -4px;background:var(--border-default)}
+.ef-dropdown-menu__label{padding:var(--space-2) var(--space-2);color:var(--text-primary);font-size:var(--text-sm);font-weight:var(--weight-medium)}
+.ef-dropdown-menu__separator{height:1px;margin:var(--space-1) calc(-1 * var(--space-1));background:var(--border-default)}
 .ef-dropdown-menu__shortcut{margin-inline-start:auto;color:var(--text-muted);font-size:var(--text-xs);letter-spacing:.08em}
 .ef-dropdown-menu__chevron{display:inline-flex;margin-inline-start:auto;color:var(--text-muted)}
 [dir=rtl] .ef-dropdown-menu__chevron{transform:scaleX(-1)}
@@ -16072,7 +16068,7 @@ const DropdownMenuCheckboxItem = React.forwardRef(function DropdownMenuCheckboxI
     className: "ef-dropdown-menu__indicator"
   }, checked ? /*#__PURE__*/React.createElement(__ds_scope.Icon, {
     name: "check",
-    size: 14
+    size: 16
   }) : null), children);
 });
 function DropdownMenuRadioGroup({
@@ -16196,7 +16192,7 @@ const DropdownMenuSubTrigger = React.forwardRef(function DropdownMenuSubTrigger(
     className: "ef-dropdown-menu__chevron"
   }, /*#__PURE__*/React.createElement(__ds_scope.Icon, {
     name: "chevron-right",
-    size: 14
+    size: 16
   })));
 });
 const DropdownMenuSubContent = React.forwardRef(function DropdownMenuSubContent({
@@ -16265,7 +16261,7 @@ try { (() => {
 function _extends() { return _extends = Object.assign ? Object.assign.bind() : function (n) { for (var e = 1; e < arguments.length; e++) { var t = arguments[e]; for (var r in t) ({}).hasOwnProperty.call(t, r) && (n[r] = t[r]); } return n; }, _extends.apply(null, arguments); }
 const CSS = `
 .ef-menubar{display:flex;width:max-content;height:36px;align-items:center;gap:var(--space-0-5);padding:var(--space-1);border:1px solid var(--border-default);border-radius:var(--radius-md);background:var(--surface-card);box-shadow:var(--shadow-xs)}
-.ef-menubar__trigger{display:flex;height:28px;align-items:center;padding:0 var(--space-2);border:0;border-radius:var(--radius-sm);outline:0;background:transparent;color:var(--text-primary);font:inherit;font-size:var(--text-sm);font-weight:var(--weight-medium);cursor:pointer;user-select:none}
+.ef-menubar__trigger{display:flex;height:var(--control-h-sm);align-items:center;padding:0 var(--space-2);border:0;border-radius:var(--radius-sm);outline:0;background:transparent;color:var(--text-primary);font:inherit;font-size:var(--text-sm);font-weight:var(--weight-medium);cursor:pointer;user-select:none}
 .ef-menubar__trigger:hover,.ef-menubar__trigger:focus,.ef-menubar__trigger[data-state=open]{background:var(--surface-sunken)}
 .ef-menubar__trigger:focus-visible{box-shadow:var(--focus-ring)}
 /* coarse pointers get the 44px touch target, like form controls do through --control-h-* */
@@ -16478,7 +16474,7 @@ function _extends() { return _extends = Object.assign ? Object.assign.bind() : f
 const CSS = `
 /* Zero specificity: a trigger with its own focus style, such as Button, keeps it. */
 :where([data-slot="hover-card-trigger"]):focus-visible{outline:none;box-shadow:var(--focus-ring);border-radius:var(--radius-sm)}
-.ef-hovercard__panel{position:fixed;width:256px;background:var(--surface-card);color:var(--text-primary);border:1px solid var(--border-strong);border-radius:var(--radius-md);box-shadow:var(--shadow-md);padding:16px;z-index:var(--z-popover);animation:ef-hovercard-in var(--dur-med) var(--ease-out)}
+.ef-hovercard__panel{position:fixed;width:256px;background:var(--surface-card);color:var(--text-primary);border:1px solid var(--border-strong);border-radius:var(--radius-md);box-shadow:var(--shadow-md);padding:var(--space-4);z-index:var(--z-popover);animation:ef-hovercard-in var(--dur-med) var(--ease-out)}
 @keyframes ef-hovercard-in{from{opacity:0;transform:translateY(2px)}}
 `;
 const HoverCardCtx = React.createContext(null);
@@ -16641,8 +16637,8 @@ const CSS = `
 /* Zero specificity: a trigger with its own focus style, such as Button, keeps it. */
 :where([data-slot="popover-trigger"]):focus-visible{outline:none;box-shadow:var(--focus-ring);border-radius:var(--radius-sm)}
 .ef-popover{position:relative;display:inline-flex}
-.ef-popover__panel{position:fixed;width:280px;background:var(--surface-card);border:1px solid var(--border-strong);border-radius:var(--radius-md);box-shadow:var(--shadow-md);padding:14px;z-index:var(--z-popover);animation:ef-pop-in var(--dur-fast) var(--ease-out)}
-.ef-popover__header{display:grid;gap:4px;margin-bottom:12px}
+.ef-popover__panel{position:fixed;width:280px;background:var(--surface-card);border:1px solid var(--border-strong);border-radius:var(--radius-md);box-shadow:var(--shadow-md);padding:var(--space-4);z-index:var(--z-popover);animation:ef-pop-in var(--dur-fast) var(--ease-out)}
+.ef-popover__header{display:grid;gap:var(--space-1);margin-bottom:var(--space-3)}
 .ef-popover__title{margin:0;color:var(--text-primary);font-size:var(--text-md);font-weight:var(--weight-semibold);line-height:1.35}
 .ef-popover__description{margin:0;color:var(--text-muted);font-size:var(--text-sm);line-height:1.45}
 @keyframes ef-pop-in{from{opacity:0;transform:translateY(-3px)}}
@@ -16869,7 +16865,7 @@ const CSS = `
 .ef-sheet[data-side=left]{top:0;left:0;bottom:0;width:min(75vw,384px);border-width:0 1px 0 0;animation:ef-sheet-left var(--dur-slow) var(--ease-out)}
 .ef-sheet[data-side=top]{top:0;left:0;right:0;width:100%;max-height:80vh;border-width:0 0 1px;animation:ef-sheet-top var(--dur-slow) var(--ease-out)}
 .ef-sheet[data-side=bottom]{bottom:0;left:0;right:0;width:100%;max-height:80vh;border-width:1px 0 0;animation:ef-sheet-bottom var(--dur-slow) var(--ease-out)}
-.ef-sheet__header{padding:24px 24px 12px}.ef-sheet__footer{margin-top:auto}.ef-sheet__description{margin-top:4px}
+.ef-sheet__header{padding:var(--space-6) var(--space-6) var(--space-3)}.ef-sheet__footer{margin-top:auto}.ef-sheet__description{margin-top:var(--space-1)}
 @keyframes ef-sheet-right{from{transform:translateX(24px);opacity:0}}@keyframes ef-sheet-left{from{transform:translateX(-24px);opacity:0}}@keyframes ef-sheet-top{from{transform:translateY(-24px);opacity:0}}@keyframes ef-sheet-bottom{from{transform:translateY(24px);opacity:0}}
 `;
 const Sheet = __ds_scope.Dialog;

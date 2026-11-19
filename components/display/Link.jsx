@@ -5,7 +5,7 @@ import { injectEfCss } from '../forms/Button.jsx';
 // Hover deepens the link's own hue without changing text decoration. Link
 // identity stays stable across pointer, keyboard, and touch interaction.
 const CSS = `
-.ef-link{display:inline-flex;align-items:center;gap:4px;color:var(--text-link);text-decoration:none;font-weight:var(--weight-medium);cursor:pointer;border-radius:var(--radius-sm);transition:color var(--dur-fast) var(--ease-out)}
+.ef-link{display:inline-flex;align-items:center;gap:var(--space-1);color:var(--text-link);text-decoration:none;font-weight:var(--weight-medium);cursor:pointer;border-radius:var(--radius-sm);transition:color var(--dur-fast) var(--ease-out)}
 .ef-link:hover{color:var(--text-link-hover);text-decoration:none}
 .ef-link:focus-visible{outline:none;box-shadow:var(--focus-ring)}
 .ef-link--quiet{color:var(--text-secondary)}
@@ -17,9 +17,9 @@ export function Link({ href = '#', external, icon, variant = 'default', standalo
   return (
     <a href={href} target={external ? '_blank' : undefined} rel={external ? 'noreferrer' : undefined}
       className={`ef-link${variant === 'quiet' ? ' ef-link--quiet' : ''}${standalone ? ' ef-link--standalone' : ''}${className ? ' ' + className : ''}`} style={style} {...rest}>
-      {icon ? <Icon name={icon} size={14} /> : null}
+      {icon ? <Icon name={icon} size={16} /> : null}
       {children}
-      {external ? <Icon name="arrow-up-right" size={13} /> : standalone ? <Icon name="arrow-right" size={14} /> : null}
+      {external ? <Icon name="arrow-up-right" size={12} /> : standalone ? <Icon name="arrow-right" size={16} /> : null}
     </a>
   );
 }

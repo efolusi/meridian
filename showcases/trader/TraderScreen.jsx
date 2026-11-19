@@ -1,6 +1,6 @@
 const { Stat, Sparkline, BarChart, SegmentedControl, Table, Badge, Switch, Slider, Progress, Avatar, AvatarFallback, Card, CardAction, CardContent, CardDescription, CardHeader, CardTitle, Button, StatusDot, Divider, Icon, DropdownMenu, DropdownMenuTrigger, DropdownMenuContent, DropdownMenuItem, DropdownMenuSeparator, IconButton, Toaster, toast } = window.EfolusiDesignSystem_4ffc3d;
 
-function PositionActionMenu({ trigger, items, onSelect }) { return <DropdownMenu><DropdownMenuTrigger asChild>{trigger}</DropdownMenuTrigger><DropdownMenuContent align="end">{items.map((item, index) => item === 'separator' ? <DropdownMenuSeparator key={'separator-' + index} /> : <DropdownMenuItem key={item.id} variant={item.danger ? 'danger' : 'default'} onSelect={() => onSelect?.(item.id)}>{item.icon ? <Icon name={item.icon} size={15} /> : null}{item.label}</DropdownMenuItem>)}</DropdownMenuContent></DropdownMenu>; }
+function PositionActionMenu({ trigger, items, onSelect }) { return <DropdownMenu><DropdownMenuTrigger asChild>{trigger}</DropdownMenuTrigger><DropdownMenuContent align="end">{items.map((item, index) => item === 'separator' ? <DropdownMenuSeparator key={'separator-' + index} /> : <DropdownMenuItem key={item.id} variant={item.danger ? 'danger' : 'default'} onSelect={() => onSelect?.(item.id)}>{item.icon ? <Icon name={item.icon} size={16} /> : null}{item.label}</DropdownMenuItem>)}</DropdownMenuContent></DropdownMenu>; }
 
 const SERIES = { '24h': [98, 99, 97, 101, 103, 102, 105, 104, 107, 106, 109, 112], '7d': [88, 92, 90, 95, 93, 99, 104, 101, 106, 110, 108, 112], '30d': [72, 78, 75, 82, 86, 84, 90, 95, 92, 101, 107, 112] };
 const POSITIONS = [
@@ -30,7 +30,7 @@ function TraderScreen() {
             </div>
             <div style={{ display: 'flex', alignItems: 'baseline', gap: 12, marginTop: 16 }}>
               <span style={{ fontFamily: 'var(--font-mono)', fontSize: 40, fontWeight: 600, letterSpacing: '-0.01em' }}>€24,318.90</span>
-              <Badge className="ef-badge--success"><Icon name="circle" size={7} strokeWidth={4} data-icon="inline-start" />+12.4% · {range}</Badge>
+              <Badge className="ef-badge--success"><Icon name="circle" size={8} strokeWidth={4} data-icon="inline-start" />+12.4% · {range}</Badge>
             </div>
             <Sparkline data={SERIES[range]} width={420} height={72} strokeWidth={1.75} style={{ marginTop: 12 }} />
           </div>

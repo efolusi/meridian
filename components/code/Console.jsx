@@ -4,25 +4,25 @@ import { injectEfCss, prefersReducedMotion } from '../forms/Button.jsx';
 import { Icon } from '../icons/Icon.jsx';
 const CSS = `
 .ef-console{position:relative;display:flex;flex-direction:column;border:1px solid var(--border-default);border-radius:var(--radius-md);background:var(--surface-card);overflow:hidden;font-family:var(--font-sans)}
-.ef-console__head{display:flex;align-items:center;gap:8px;padding:8px 13px;border-bottom:1px solid var(--border-default);background:var(--surface-subtle);font-size:12px;color:var(--text-secondary)}
-.ef-console__scroll{overflow-y:auto;font-family:var(--font-mono);font-size:12px;line-height:1.6}
-.ef-console__row{display:flex;align-items:flex-start;gap:9px;padding:6px 13px;border-top:1px solid var(--border-default);color:var(--text-secondary)}
+.ef-console__head{display:flex;align-items:center;gap:var(--space-2);padding:var(--space-2) var(--space-3);border-bottom:1px solid var(--border-default);background:var(--surface-subtle);font-size:var(--text-xs);color:var(--text-secondary)}
+.ef-console__scroll{overflow-y:auto;font-family:var(--font-mono);font-size:var(--text-xs);line-height:1.6}
+.ef-console__row{display:flex;align-items:flex-start;gap:var(--space-2);padding:var(--space-2) var(--space-3);border-top:1px solid var(--border-default);color:var(--text-secondary)}
 .ef-console__row:first-child{border-top:none}
-.ef-console__glyph{display:inline-flex;flex:none;width:14px;margin-top:2px;color:var(--text-muted)}
+.ef-console__glyph{display:inline-flex;flex:none;width:14px;margin-top:var(--space-0-5);color:var(--text-muted)}
 .ef-console__row--warning .ef-console__glyph,.ef-console__row--warning .ef-console__msg{color:var(--warning-600)}
 .ef-console__row--danger .ef-console__glyph,.ef-console__row--danger .ef-console__msg{color:var(--danger-600)}
 .ef-console__row--debug .ef-console__glyph{color:var(--text-link)}
 .ef-console__time{flex:none;color:var(--text-muted);font-variant-numeric:tabular-nums}
 .ef-console__msg{flex:1;min-width:0;white-space:pre-wrap;word-break:break-word}
-.ef-console__src{flex:none;margin-inline-start:auto;color:var(--text-muted);font-size:11px}
-.ef-console__stackbtn{display:inline-flex;align-items:center;gap:5px;border:none;background:none;padding:0;cursor:pointer;font:inherit;color:inherit;text-align:start}
+.ef-console__src{flex:none;margin-inline-start:auto;color:var(--text-muted);font-size:var(--text-2xs)}
+.ef-console__stackbtn{display:inline-flex;align-items:center;gap:var(--space-1);border:none;background:none;padding:0;cursor:pointer;font:inherit;color:inherit;text-align:start}
 .ef-console__stackbtn:hover{color:var(--text-primary)}
 .ef-console__stackbtn:focus-visible,.ef-console__jump:focus-visible{outline:none;box-shadow:var(--focus-ring);border-radius:var(--radius-sm)}
 .ef-console__jump:focus-visible{border-radius:var(--radius-full)}
-.ef-console__stackchev{display:inline-flex;margin-top:2px;color:var(--text-muted);transition:transform var(--dur-fast) var(--ease-out)}
+.ef-console__stackchev{display:inline-flex;margin-top:var(--space-0-5);color:var(--text-muted);transition:transform var(--dur-fast) var(--ease-out)}
 .ef-console__stackchev--open{transform:rotate(90deg)}
-.ef-console__stack{margin:4px 0 0;padding-inline-start:19px;white-space:pre-wrap;color:var(--text-muted);font-size:11.5px}
-.ef-console__jump{position:absolute;inset-inline-end:10px;bottom:10px;display:inline-flex;align-items:center;gap:6px;padding:6px 11px;border:1px solid var(--border-strong);border-radius:var(--radius-full);background:var(--surface-card);box-shadow:var(--shadow-md);cursor:pointer;font-family:var(--font-sans);font-size:12px;font-weight:var(--weight-semibold);color:var(--text-primary)}
+.ef-console__stack{margin:var(--space-1) 0 0;padding-inline-start:var(--space-5);white-space:pre-wrap;color:var(--text-muted);font-size:var(--text-xs)}
+.ef-console__jump{position:absolute;inset-inline-end:10px;bottom:10px;display:inline-flex;align-items:center;gap:var(--space-2);padding:var(--space-2) var(--space-3);border:1px solid var(--border-strong);border-radius:var(--radius-full);background:var(--surface-card);box-shadow:var(--shadow-md);cursor:pointer;font-family:var(--font-sans);font-size:var(--text-xs);font-weight:var(--weight-semibold);color:var(--text-primary)}
 `;
 const GLYPH = { info: 'info', warning: 'triangle-alert', danger: 'circle-alert', debug: 'bug' };
 function Row({ e }) {
@@ -35,7 +35,7 @@ function Row({ e }) {
       <span className="ef-console__msg">
         {e.stack ? (
           <button type="button" className="ef-console__stackbtn" aria-expanded={open} onClick={() => setOpen(!open)}>
-            <span className={`ef-console__stackchev${open ? ' ef-console__stackchev--open' : ''}`}><Icon name="chevron-right" size={11} /></span>
+            <span className={`ef-console__stackchev${open ? ' ef-console__stackchev--open' : ''}`}><Icon name="chevron-right" size={12} /></span>
             <span>{e.text}</span>
           </button>
         ) : e.text}
@@ -64,7 +64,7 @@ export function Console({ title = 'Console', entries = [], height = 240, style, 
   }, [entries.length]);
   return (
     <div {...rest} className={`ef-console${className ? ' ' + className : ''}`} style={style}>
-      <div className="ef-console__head"><Icon name="terminal" size={13} />{title}<span style={{ marginInlineStart: 'auto', color: 'var(--text-muted)' }}>{entries.length} entries</span></div>
+      <div className="ef-console__head"><Icon name="terminal" size={12} />{title}<span style={{ marginInlineStart: 'auto', color: 'var(--text-muted)' }}>{entries.length} entries</span></div>
       <div ref={viewport} className="ef-console__scroll" role="log" aria-live="polite" style={{ height }} onScroll={recompute}>
         {entries.map((e, i) => <Row key={i} e={e} />)}
       </div>

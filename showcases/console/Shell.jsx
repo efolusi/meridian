@@ -1,6 +1,6 @@
 const { Icon, IconButton, Input, Avatar, AvatarFallback, Tooltip, Badge, DropdownMenu, DropdownMenuTrigger, DropdownMenuContent, DropdownMenuItem, DropdownMenuSeparator, DropdownMenuShortcut, Popover, PopoverTrigger, PopoverContent, Kbd, Divider } = window.EfolusiDesignSystem_4ffc3d;
 
-function ShellActionMenu({ trigger, items, onSelect }) { return <DropdownMenu><DropdownMenuTrigger asChild>{trigger}</DropdownMenuTrigger><DropdownMenuContent align="end">{items.map((item, index) => item === 'separator' ? <DropdownMenuSeparator key={'separator-' + index} /> : <DropdownMenuItem key={item.id} disabled={item.disabled} variant={item.danger ? 'danger' : 'default'} onSelect={() => { onSelect?.(item.id); item.onClick?.(); }}>{item.icon ? <Icon name={item.icon} size={15} /> : null}{item.label}{item.kbd ? <DropdownMenuShortcut>{item.kbd}</DropdownMenuShortcut> : null}</DropdownMenuItem>)}</DropdownMenuContent></DropdownMenu>; }
+function ShellActionMenu({ trigger, items, onSelect }) { return <DropdownMenu><DropdownMenuTrigger asChild>{trigger}</DropdownMenuTrigger><DropdownMenuContent align="end">{items.map((item, index) => item === 'separator' ? <DropdownMenuSeparator key={'separator-' + index} /> : <DropdownMenuItem key={item.id} disabled={item.disabled} variant={item.danger ? 'danger' : 'default'} onSelect={() => { onSelect?.(item.id); item.onClick?.(); }}>{item.icon ? <Icon name={item.icon} size={16} /> : null}{item.label}{item.kbd ? <DropdownMenuShortcut>{item.kbd}</DropdownMenuShortcut> : null}</DropdownMenuItem>)}</DropdownMenuContent></DropdownMenu>; }
 
 function SideItem({ icon, label, active, badge, onClick, href }) {
   const [hov, setHov] = React.useState(false);
@@ -10,10 +10,10 @@ function SideItem({ icon, label, active, badge, onClick, href }) {
     transition: 'background var(--dur-fast) var(--ease-out)', boxSizing: 'border-box' };
   const inner = (
     <React.Fragment>
-      <span style={{ color: active ? 'var(--accent)' : 'inherit', display: 'inline-flex' }}><Icon name={icon} size={17} /></span>
+      <span style={{ color: active ? 'var(--accent)' : 'inherit', display: 'inline-flex' }}><Icon name={icon} size={16} /></span>
       <span style={{ flex: 1 }}>{label}</span>
       {badge != null && <Badge variant={active ? 'default' : 'secondary'} className={active ? 'ef-badge--accent' : undefined}>{badge}</Badge>}
-      {href && hov && <Icon name="arrow-up-right" size={13} style={{ color: 'var(--text-muted)' }} />}
+      {href && hov && <Icon name="arrow-up-right" size={12} style={{ color: 'var(--text-muted)' }} />}
     </React.Fragment>
   );
   if (href) return <a href={href} style={style} onMouseEnter={() => setHov(true)} onMouseLeave={() => setHov(false)}>{inner}</a>;
@@ -80,7 +80,7 @@ function Topbar({ title, onSearch, notify }) {
       <h1 style={{ fontSize: 18, fontWeight: 680, fontFamily: 'var(--font-display)', letterSpacing: '-0.02em' }}>{title}</h1>
       <Badge variant="secondary">Sample data</Badge>
       <button onClick={onSearch} style={{ marginLeft: 'auto', display: 'flex', alignItems: 'center', gap: 8, width: 300, height: 32, padding: '0 10px', border: '1px solid var(--border-strong)', borderRadius: 'var(--radius-sm)', background: 'var(--surface-card)', cursor: 'pointer', fontFamily: 'var(--font-sans)', fontSize: 13, color: 'var(--text-muted)' }}>
-        <Icon name="search" size={15} />Search anything…
+        <Icon name="search" size={16} />Search anything…
         <span style={{ marginLeft: 'auto', display: 'inline-flex', gap: 3 }}><Kbd>⌘</Kbd><Kbd>K</Kbd></span>
       </button>
       <Popover><PopoverTrigger asChild><IconButton icon="sparkles" label="What's new" /></PopoverTrigger><PopoverContent align="end" width={320}>
@@ -93,7 +93,7 @@ function Topbar({ title, onSearch, notify }) {
         <div style={{ fontSize: 13, fontWeight: 600, marginBottom: 4 }}>Notifications</div>
         {NOTIFS.map(([icon, t, d, when]) => (
           <div key={t} style={{ display: 'flex', gap: 10, padding: '9px 0', borderBottom: '1px solid var(--sand-100)' }}>
-            <span style={{ display: 'inline-flex', width: 28, height: 28, alignItems: 'center', justifyContent: 'center', flex: 'none', borderRadius: 'var(--radius-full)', background: 'var(--sand-100)', color: 'var(--sand-700)' }}><Icon name={icon} size={14} /></span>
+            <span style={{ display: 'inline-flex', width: 28, height: 28, alignItems: 'center', justifyContent: 'center', flex: 'none', borderRadius: 'var(--radius-full)', background: 'var(--sand-100)', color: 'var(--sand-700)' }}><Icon name={icon} size={16} /></span>
             <div style={{ flex: 1, minWidth: 0 }}>
               <div style={{ fontSize: 13, fontWeight: 600 }}>{t}</div>
               <div style={{ fontSize: 12, color: 'var(--text-muted)' }}>{d}</div>

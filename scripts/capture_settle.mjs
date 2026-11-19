@@ -1,13 +1,10 @@
 // What scripts/smoke_headless.mjs applies before its group screenshots.
 
-// Glyphs are hidden because headless Chromium 130 on the self-hosted runner stalls
-// some /assets/icons/ fetches at random; their DOM is unaffected by paint, so forcing
-// content-visibility below does not bring them back. Icon rendering is covered by the
-// component tests. The summary banner carries the live demo count, which would churn
-// baselines. content-visibility:auto (MessageScroller items) paints on an async
+// Glyphs are captured: smoke_headless.mjs waits until every icon slot holds its SVG
+// and fails the capture if one never arrives, so a baseline cannot lose its icons.
+// The summary banner carries the live demo count, which would churn baselines. content-visibility:auto (MessageScroller items) paints on an async
 // on-screen judgement that moves while element screenshots scroll, so it is forced on.
 export const CAPTURE_CSS = [
-  '[data-slot="icon"] > svg { visibility: hidden !important; }',
   '#summary, h1, [data-live] { display: none !important; }',
   '* { content-visibility: visible !important; }',
 ].join('\n');

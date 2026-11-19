@@ -4,11 +4,11 @@ import { injectEfCss, useIsoLayoutEffect } from '../forms/Button.jsx';
 import { Icon } from '../icons/Icon.jsx';
 const CSS = `
 .ef-selq{position:relative}
-.ef-selq__bar{position:absolute;z-index:30;display:inline-flex;align-items:center;gap:2px;padding:4px;border:1px solid var(--border-default);border-radius:var(--radius-md);background:var(--surface-card);box-shadow:var(--shadow-lg);user-select:none}
-.ef-selq__btn{display:inline-flex;align-items:center;gap:6px;padding:5px 10px;border:none;background:none;cursor:pointer;border-radius:var(--radius-sm);font-family:var(--font-sans);font-size:12.5px;font-weight:var(--weight-semibold);color:var(--text-secondary);transition:color var(--dur-fast) var(--ease-out),background var(--dur-fast) var(--ease-out)}
+.ef-selq__bar{position:absolute;z-index:30;display:inline-flex;align-items:center;gap:var(--space-0-5);padding:var(--space-1);border:1px solid var(--border-default);border-radius:var(--radius-md);background:var(--surface-card);box-shadow:var(--shadow-lg);user-select:none}
+.ef-selq__btn{display:inline-flex;align-items:center;gap:var(--space-2);padding:var(--space-1) var(--space-3);border:none;background:none;cursor:pointer;border-radius:var(--radius-sm);font-family:var(--font-sans);font-size:var(--text-sm);font-weight:var(--weight-semibold);color:var(--text-secondary);transition:color var(--dur-fast) var(--ease-out),background var(--dur-fast) var(--ease-out)}
 .ef-selq__btn:hover{color:var(--text-primary);background:var(--surface-subtle)}
 .ef-selq__btn:focus-visible{outline:none;box-shadow:var(--focus-ring)}
-.ef-selq__sep{width:1px;height:16px;background:var(--border-default);margin:0 3px}
+.ef-selq__sep{width:1px;height:16px;background:var(--border-default);margin:0 var(--space-1)}
 `;
 export function SelectionQuote({ children, actions = [{ id: 'quote', label: 'Quote', icon: 'corner-up-left' }], onAction, style, className, ...rest }) {
   injectEfCss('ef-css-selq', CSS);
@@ -63,7 +63,7 @@ export function SelectionQuote({ children, actions = [{ id: 'quote', label: 'Quo
             <React.Fragment key={a.id || i}>
               {i > 0 ? <span className="ef-selq__sep" aria-hidden="true"></span> : null}
               <button type="button" className="ef-selq__btn" onClick={() => { if (onAction) onAction(a.id, sel.text); window.getSelection().removeAllRanges(); setSel(null); setPos(null); }}>
-                {a.icon ? <Icon name={a.icon} size={13} /> : null}{a.label}
+                {a.icon ? <Icon name={a.icon} size={12} /> : null}{a.label}
               </button>
             </React.Fragment>
           ))}

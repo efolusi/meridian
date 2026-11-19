@@ -77,7 +77,7 @@ export function ConsoleStreamingDemo() {
     const id = setInterval(() => {
       n += 1;
       const sec = String(n % 60).padStart(2, '0');
-      setEntries(e => e.slice(-40).concat({ level: n % 7 === 0 ? 'warn' : 'log', time: '14:02:' + sec, text: 'delivery #' + n + ' → 200 OK (' + (80 + (n * 37) % 400) + 'ms)' }));
+      setEntries(e => e.slice(-40).concat({ level: n % 7 === 0 ? 'warning' : 'log', time: '14:02:' + sec, text: 'delivery #' + n + ' → 200 OK (' + (80 + (n * 37) % 400) + 'ms)' }));
     }, 900);
     return () => clearInterval(id);
   }, []);

@@ -2,14 +2,14 @@
 import React from 'react';
 import { injectEfCss } from '../forms/Button.jsx';
 const CSS = `
-.ef-empty{display:flex;min-width:0;flex-direction:column;align-items:center;justify-content:center;gap:24px;padding:48px 24px;text-align:center}
+.ef-empty{display:flex;min-width:0;flex-direction:column;align-items:center;justify-content:center;gap:var(--space-6);padding:var(--space-12) var(--space-6);text-align:center}
 .ef-empty--bordered{border:1px dashed var(--border-default);border-radius:var(--radius-md)}
-.ef-empty__header{display:flex;max-width:420px;flex-direction:column;align-items:center;gap:6px}
+.ef-empty__header{display:flex;max-width:420px;flex-direction:column;align-items:center;gap:var(--space-2)}
 .ef-empty__media{display:flex;align-items:center;justify-content:center;color:var(--text-muted)}
-.ef-empty__media[data-variant="icon"]{width:40px;height:40px;margin-block-end:6px;border-radius:var(--radius-md);background:var(--surface-sunken);color:var(--text-secondary)}
+.ef-empty__media[data-variant="icon"]{width:40px;height:40px;margin-block-end:var(--space-2);border-radius:var(--radius-md);background:var(--surface-sunken);color:var(--text-secondary)}
 .ef-empty__title{margin:0;font-size:var(--text-lg);font-weight:var(--weight-semibold);line-height:var(--leading-tight);color:var(--text-primary)}
 .ef-empty__description{max-width:380px;font-size:var(--text-sm);line-height:var(--leading-relaxed);color:var(--text-muted);text-wrap:balance}
-.ef-empty__content{display:flex;max-width:420px;flex-direction:column;align-items:center;gap:8px}
+.ef-empty__content{display:flex;max-width:420px;flex-direction:column;align-items:center;gap:var(--space-2)}
 `;
 function cx(base, className) { return base + (className ? ` ${className}` : ''); }
 export const Empty = React.forwardRef(function Empty({ className, ...rest }, ref) {

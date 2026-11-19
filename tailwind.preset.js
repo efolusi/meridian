@@ -12,6 +12,7 @@ module.exports = { theme: { extend: {
     "sand-500": "var(--sand-500)",
     "sand-600": "var(--sand-600)",
     "sand-700": "var(--sand-700)",
+    "sand-750": "var(--sand-750)",
     "sand-800": "var(--sand-800)",
     "sand-900": "var(--sand-900)",
     "sand-950": "var(--sand-950)",

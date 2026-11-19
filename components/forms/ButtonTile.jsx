@@ -3,8 +3,8 @@ import React from 'react';
 import { Icon } from '../icons/Icon.jsx';
 import { injectEfCss } from './Button.jsx';
 const CSS = `
-.ef-tilegroup{display:grid;gap:10px}
-.ef-tile{position:relative;display:flex;flex-direction:column;align-items:flex-start;gap:8px;padding:16px;border:1px solid var(--border-strong);border-radius:var(--radius-md);background:var(--surface-card);cursor:pointer;text-align:start;font-family:var(--font-sans);color:var(--text-primary);transition:border-color var(--dur-fast) var(--ease-out),background var(--dur-fast) var(--ease-out)}
+.ef-tilegroup{display:grid;gap:var(--space-3)}
+.ef-tile{position:relative;display:flex;flex-direction:column;align-items:flex-start;gap:var(--space-2);padding:var(--space-4);border:1px solid var(--border-strong);border-radius:var(--radius-md);background:var(--surface-card);cursor:pointer;text-align:start;font-family:var(--font-sans);color:var(--text-primary);transition:border-color var(--dur-fast) var(--ease-out),background var(--dur-fast) var(--ease-out)}
 .ef-tile:hover:not(:disabled){border-color:var(--sand-400)}
 .ef-tile:focus-visible{outline:none;box-shadow:var(--focus-ring)}
 .ef-tile:disabled{opacity:.45;cursor:not-allowed}
@@ -23,7 +23,7 @@ export function ButtonTile({ icon, title, description, selected, disabled, onCli
       {icon ? <span className="ef-tile__icon"><Icon name={icon} size={20} /></span> : null}
       <span className="ef-tile__title">{title}</span>
       {description ? <span className="ef-tile__desc">{description}</span> : null}
-      <span className="ef-tile__check"><Icon name="check" size={11} strokeWidth={3} /></span>
+      <span className="ef-tile__check"><Icon name="check" size={12} strokeWidth={3} /></span>
     </button>
   );
 }

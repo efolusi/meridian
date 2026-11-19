@@ -1,6 +1,6 @@
 const { Card, CardContent, Badge, Button, Input, NativeSelect, NativeSelectOption, Checkbox, Avatar, AvatarFallback, Icon, IconButton, Tag, DropdownMenu, DropdownMenuTrigger, DropdownMenuContent, DropdownMenuItem, DropdownMenuSeparator, Pagination, PaginationContent, PaginationEllipsis, PaginationItem, PaginationLink, PaginationNext, PaginationPrevious, Drawer, DrawerContent, DrawerHeader, DrawerTitle, DrawerDescription, DrawerFooter, DrawerClose, KeyValueList, Dialog, DialogClose, DialogContent, DialogDescription, DialogFooter, DialogHeader, DialogTitle, Sparkline, Field, FieldLabel } = window.EfolusiDesignSystem_4ffc3d;
 
-function CustomerActionMenu({ trigger, items, onSelect, align = 'start' }) { return <DropdownMenu><DropdownMenuTrigger asChild>{trigger}</DropdownMenuTrigger><DropdownMenuContent align={align}>{items.map((item, index) => item === 'separator' ? <DropdownMenuSeparator key={'separator-' + index} /> : <DropdownMenuItem key={item.id} disabled={item.disabled} variant={item.danger ? 'danger' : 'default'} onSelect={() => { onSelect?.(item.id); item.onClick?.(); }}>{item.icon ? <Icon name={item.icon} size={15} /> : null}{item.label}</DropdownMenuItem>)}</DropdownMenuContent></DropdownMenu>; }
+function CustomerActionMenu({ trigger, items, onSelect, align = 'start' }) { return <DropdownMenu><DropdownMenuTrigger asChild>{trigger}</DropdownMenuTrigger><DropdownMenuContent align={align}>{items.map((item, index) => item === 'separator' ? <DropdownMenuSeparator key={'separator-' + index} /> : <DropdownMenuItem key={item.id} disabled={item.disabled} variant={item.danger ? 'danger' : 'default'} onSelect={() => { onSelect?.(item.id); item.onClick?.(); }}>{item.icon ? <Icon name={item.icon} size={16} /> : null}{item.label}</DropdownMenuItem>)}</DropdownMenuContent></DropdownMenu>; }
 
 const SEED = [
   ['Acme Robotics', 'ada@acmerobotics.com', 'Growth', 'Active', '$1,240', 'AI agents'],
@@ -63,7 +63,7 @@ function CustomersScreen({ notify }) {
                   </div>
                 </td>
                 <td style={td} onClick={() => setSel(r)}>{r.plan}</td>
-                <td style={td} onClick={() => setSel(r)}><Badge variant={r.status === 'Churned' ? 'secondary' : 'default'} className={BADGE_CLASS[r.status]}><Icon name="circle" size={7} strokeWidth={4} data-icon="inline-start" />{r.status}</Badge></td>
+                <td style={td} onClick={() => setSel(r)}><Badge variant={r.status === 'Churned' ? 'secondary' : 'default'} className={BADGE_CLASS[r.status]}><Icon name="circle" size={8} strokeWidth={4} data-icon="inline-start" />{r.status}</Badge></td>
                 <td style={{ ...td, fontFamily: 'var(--font-mono)', fontSize: 13 }} onClick={() => setSel(r)}>{r.mrr}</td>
                 <td style={td} onClick={() => setSel(r)}><span style={{ fontSize: 13, color: 'var(--text-secondary)' }}>{r.product}</span></td>
                 <td style={td} onClick={e => e.stopPropagation()}>
@@ -99,7 +99,7 @@ function CustomersScreen({ notify }) {
               <Avatar size="lg"><AvatarFallback>{sel.name.split(/\s+/).map(part => part[0]).slice(0, 2).join('')}</AvatarFallback></Avatar>
               <div>
                 <div style={{ fontSize: 16, fontWeight: 600 }}>{sel.name}</div>
-                <Badge variant={sel.status === 'Churned' ? 'secondary' : 'default'} className={BADGE_CLASS[sel.status]}><Icon name="circle" size={7} strokeWidth={4} data-icon="inline-start" />{sel.status}</Badge>
+                <Badge variant={sel.status === 'Churned' ? 'secondary' : 'default'} className={BADGE_CLASS[sel.status]}><Icon name="circle" size={8} strokeWidth={4} data-icon="inline-start" />{sel.status}</Badge>
               </div>
             </div>
             <KeyValueList labelWidth={110} items={[

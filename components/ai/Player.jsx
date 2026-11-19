@@ -3,23 +3,23 @@ import React from 'react';
 import { injectEfCss, cssPct } from '../forms/Button.jsx';
 import { Icon } from '../icons/Icon.jsx';
 const CSS = `
-.ef-player{display:flex;flex-direction:column;gap:10px;padding:14px;border:1px solid var(--border-default);border-radius:var(--radius-md);background:var(--surface-card);font-family:var(--font-sans)}
-.ef-player__top{display:flex;align-items:center;gap:10px}
-.ef-player__title{flex:1;min-width:0;font-size:13.5px;font-weight:var(--weight-semibold);color:var(--text-primary);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.ef-player__meta{font-size:12px;color:var(--text-muted)}
+.ef-player{display:flex;flex-direction:column;gap:var(--space-3);padding:var(--space-4);border:1px solid var(--border-default);border-radius:var(--radius-md);background:var(--surface-card);font-family:var(--font-sans)}
+.ef-player__top{display:flex;align-items:center;gap:var(--space-3)}
+.ef-player__title{flex:1;min-width:0;font-size:var(--text-md);font-weight:var(--weight-semibold);color:var(--text-primary);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.ef-player__meta{font-size:var(--text-xs);color:var(--text-muted)}
 .ef-player__wave{position:relative;display:flex;align-items:center;justify-content:space-between;height:44px;cursor:pointer;touch-action:none;border-radius:var(--radius-sm)}
 .ef-player__wave:focus-visible{outline:none;box-shadow:var(--focus-ring)}
 .ef-player__bar{flex:none;width:2.5px;border-radius:var(--radius-full);background:var(--sand-300);transition:background .2s var(--ease-out)}
 .ef-player__bar--played{background:var(--accent)}
 .ef-player__bar--loading{animation:ef-player-load 1.2s ease-in-out infinite}
 @keyframes ef-player-load{0%,100%{transform:scaleY(.3);opacity:.5}50%{transform:scaleY(1);opacity:1}}
-.ef-player__row{display:flex;align-items:center;gap:6px}
+.ef-player__row{display:flex;align-items:center;gap:var(--space-2)}
 .ef-player__btn{display:inline-flex;align-items:center;justify-content:center;width:30px;height:30px;border:none;background:none;cursor:pointer;color:var(--text-secondary);border-radius:var(--radius-full);transition:color var(--dur-fast) var(--ease-out),background var(--dur-fast) var(--ease-out)}
 .ef-player__btn:hover{color:var(--text-primary);background:var(--surface-subtle)}
 .ef-player__btn:focus-visible{outline:none;box-shadow:var(--focus-ring)}
 .ef-player__play{width:38px;height:38px;background:var(--accent);color:var(--accent-contrast)}
 .ef-player__play:hover{background:var(--accent-hover);color:var(--accent-contrast)}
-.ef-player__time{font-size:12px;color:var(--text-muted);font-variant-numeric:tabular-nums}
+.ef-player__time{font-size:var(--text-xs);color:var(--text-muted);font-variant-numeric:tabular-nums}
 @media (pointer:coarse){.ef-player__btn{min-width:var(--tap-min);min-height:var(--tap-min)}}
 `;
 export function formatTime(s, hint) {
@@ -108,11 +108,11 @@ export const Player = React.forwardRef(function Player({ src, title, meta, peaks
         ))}
       </div>
       <div className="ef-player__row">
-        <button type="button" className="ef-player__btn" aria-label="Back 10 seconds" onClick={() => jumpTo(t - 10)}><Icon name="skip-back" size={14} /></button>
-        <button type="button" className="ef-player__btn ef-player__play" aria-label={playing ? 'Pause' : 'Play'} onClick={toggle}><Icon name={playing ? 'pause' : 'play'} size={15} /></button>
-        <button type="button" className="ef-player__btn" aria-label="Forward 10 seconds" onClick={() => jumpTo(t + 10)}><Icon name="skip-forward" size={14} /></button>
+        <button type="button" className="ef-player__btn" aria-label="Back 10 seconds" onClick={() => jumpTo(t - 10)}><Icon name="skip-back" size={16} /></button>
+        <button type="button" className="ef-player__btn ef-player__play" aria-label={playing ? 'Pause' : 'Play'} onClick={toggle}><Icon name={playing ? 'pause' : 'play'} size={16} /></button>
+        <button type="button" className="ef-player__btn" aria-label="Forward 10 seconds" onClick={() => jumpTo(t + 10)}><Icon name="skip-forward" size={16} /></button>
         <span className="ef-player__time">{formatTime(t, dur)} / {formatTime(dur)}</span>
-        <button type="button" className="ef-player__btn" style={{ marginInlineStart: 'auto' }} aria-label={muted ? 'Unmute' : 'Mute'} aria-pressed={muted} onClick={() => setMuted(!muted)}><Icon name={muted ? 'volume-x' : 'volume-2'} size={14} /></button>
+        <button type="button" className="ef-player__btn" style={{ marginInlineStart: 'auto' }} aria-label={muted ? 'Unmute' : 'Mute'} aria-pressed={muted} onClick={() => setMuted(!muted)}><Icon name={muted ? 'volume-x' : 'volume-2'} size={16} /></button>
       </div>
     </div>
   );

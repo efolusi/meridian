@@ -4,10 +4,10 @@ import { Icon } from '../icons/Icon.jsx';
 import { injectEfCss } from './Button.jsx';
 import { useFieldProps } from './Field.jsx';
 const CSS = `
-.ef-field{display:flex;flex-direction:column;gap:6px}
+.ef-field{display:flex;flex-direction:column;gap:var(--space-2)}
 .ef-field__label{font-size:var(--text-sm);font-weight:var(--weight-semibold);color:var(--text-primary)}
 .ef-field__hint{font-size:var(--text-xs);color:var(--text-muted)}
-.ef-field__error{font-size:var(--text-xs);color:var(--danger-600);display:flex;align-items:center;gap:4px}
+.ef-field__error{font-size:var(--text-xs);color:var(--danger-600);display:flex;align-items:center;gap:var(--space-1)}
 .ef-number{display:flex;align-items:stretch;overflow:hidden;border:1px solid var(--border-control,var(--border-strong));border-radius:var(--radius-sm);background:var(--surface-sunken);transition:border-color var(--dur-fast) var(--ease-out),box-shadow var(--dur-fast) var(--ease-out)}
 .ef-number:hover:not(.ef-number--disabled){border-color:var(--border-control-hover,var(--sand-400))}
 .ef-number:focus-within{border-color:var(--accent);box-shadow:var(--focus-ring)}
@@ -18,9 +18,9 @@ const CSS = `
 .ef-number__el:focus{outline:none}
 .ef-number__el::placeholder{color:var(--text-muted)}
 .ef-number__el:disabled{color:var(--text-muted);cursor:not-allowed}
-.ef-number--sm .ef-number__el{height:calc(var(--control-h-sm) - 2px);padding:0 10px;font-size:var(--text-sm)}
-.ef-number--md .ef-number__el{height:calc(var(--control-h-md) - 2px);padding:0 12px;font-size:var(--text-md)}
-.ef-number--lg .ef-number__el{height:calc(var(--control-h-lg) - 2px);padding:0 14px;font-size:var(--text-lg)}
+.ef-number--sm .ef-number__el{height:calc(var(--control-h-sm) - 2px);padding:0 var(--space-3);font-size:var(--text-sm)}
+.ef-number--md .ef-number__el{height:calc(var(--control-h-md) - 2px);padding:0 var(--space-3);font-size:var(--text-md)}
+.ef-number--lg .ef-number__el{height:calc(var(--control-h-lg) - 2px);padding:0 var(--space-4);font-size:var(--text-lg)}
 .ef-number__steps{display:flex;flex-direction:column;flex:none;align-self:stretch;border-inline-start:1px solid var(--border-default)}
 .ef-number__step{flex:1 1 0;display:flex;align-items:center;justify-content:center;width:24px;padding:0;border:none;background:transparent;color:var(--text-muted);cursor:pointer;transition:background var(--dur-fast) var(--ease-out),color var(--dur-fast) var(--ease-out)}
 .ef-number__step:hover:not(:disabled){background:var(--surface-sunken);color:var(--text-primary)}
@@ -154,9 +154,9 @@ export function NumberInput({ label, hint, error, invalid, value, defaultValue, 
         onChange={e => setDraft(e.target.value)} onKeyDown={keys} onBlur={e => { commit(e); rest.onBlur?.(e); }} />
       <span className="ef-number__steps">
         <button type="button" className="ef-number__step" aria-label="Increase" tabIndex={-1} disabled={upStuck}
-          onMouseDown={e => e.preventDefault()} onClick={e => stepBy(1, 1, e)}><Icon name="chevron-up" size={size === 'lg' ? 14 : 12} /></button>
+          onMouseDown={e => e.preventDefault()} onClick={e => stepBy(1, 1, e)}><Icon name="chevron-up" size={size === 'lg' ? 16 : 12} /></button>
         <button type="button" className="ef-number__step" aria-label="Decrease" tabIndex={-1} disabled={downStuck}
-          onMouseDown={e => e.preventDefault()} onClick={e => stepBy(-1, 1, e)}><Icon name="chevron-down" size={size === 'lg' ? 14 : 12} /></button>
+          onMouseDown={e => e.preventDefault()} onClick={e => stepBy(-1, 1, e)}><Icon name="chevron-down" size={size === 'lg' ? 16 : 12} /></button>
       </span>
     </span>
   );

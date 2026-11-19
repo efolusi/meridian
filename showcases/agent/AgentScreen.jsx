@@ -1,6 +1,6 @@
 const { ChatMessage, PromptComposer, Terminal, Steps, FileTile, StatusDot, KeyValueList, CommandDialog, CommandInput, CommandList, CommandEmpty, CommandGroup, CommandItem, DropdownMenu, DropdownMenuTrigger, DropdownMenuContent, DropdownMenuItem, DropdownMenuSeparator, Card, CardContent, CardDescription, CardHeader, CardTitle, Button, IconButton, Badge, Kbd, Icon, Toaster, toast } = window.EfolusiDesignSystem_4ffc3d;
 
-function AgentActionMenu({ trigger, items, onSelect }) { return <DropdownMenu><DropdownMenuTrigger asChild>{trigger}</DropdownMenuTrigger><DropdownMenuContent align="end">{items.map((item, index) => item === 'separator' ? <DropdownMenuSeparator key={'separator-' + index} /> : <DropdownMenuItem key={item.id} variant={item.danger ? 'danger' : 'default'} onSelect={() => onSelect?.(item.id)}>{item.icon ? <Icon name={item.icon} size={15} /> : null}{item.label}</DropdownMenuItem>)}</DropdownMenuContent></DropdownMenu>; }
+function AgentActionMenu({ trigger, items, onSelect }) { return <DropdownMenu><DropdownMenuTrigger asChild>{trigger}</DropdownMenuTrigger><DropdownMenuContent align="end">{items.map((item, index) => item === 'separator' ? <DropdownMenuSeparator key={'separator-' + index} /> : <DropdownMenuItem key={item.id} variant={item.danger ? 'danger' : 'default'} onSelect={() => onSelect?.(item.id)}>{item.icon ? <Icon name={item.icon} size={16} /> : null}{item.label}</DropdownMenuItem>)}</DropdownMenuContent></DropdownMenu>; }
 
 function AgentHeader({ running, onToggle, notify }) {
   return (

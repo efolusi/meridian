@@ -3,17 +3,17 @@ import React from 'react';
 import { injectEfCss } from '../forms/Button.jsx';
 
 const CSS = `
-.ef-avatar{position:relative;display:inline-flex;align-items:center;justify-content:center;flex:none;width:32px;height:32px;border-radius:var(--radius-full);background:var(--peach-200);color:var(--cocoa-700);font-size:12px;font-weight:var(--weight-semibold);overflow:hidden;user-select:none}
-.ef-avatar--sm{width:24px;height:24px;font-size:9px}.ef-avatar--lg{width:40px;height:40px;font-size:15px}
+.ef-avatar{position:relative;display:inline-flex;align-items:center;justify-content:center;flex:none;width:var(--avatar-md);height:var(--avatar-md);border-radius:var(--radius-full);background:var(--peach-200);color:var(--cocoa-700);font-size:var(--text-xs);font-weight:var(--weight-semibold);overflow:hidden;user-select:none}
+.ef-avatar--sm{width:var(--avatar-sm);height:var(--avatar-sm);font-size:9px}.ef-avatar--lg{width:var(--avatar-lg);height:var(--avatar-lg);font-size:var(--text-lg)}
 .ef-avatar__image{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
 .ef-avatar__fallback{display:flex;width:100%;height:100%;align-items:center;justify-content:center}
 .ef-avatar__badge{position:absolute;inset-inline-end:0;inset-block-end:0;z-index:1;display:flex;width:25%;height:25%;min-width:8px;min-height:8px;align-items:center;justify-content:center;border:2px solid var(--surface-card);border-radius:var(--radius-full);background:var(--success-500);color:var(--text-inverse)}
 .ef-avatar-group{display:inline-flex}
 .ef-avatar-group>.ef-avatar{border:2px solid var(--surface-card)}
-.ef-avatar-group>.ef-avatar+.ef-avatar,.ef-avatar-group>.ef-avatar+.ef-avatar-count,.ef-avatar-group>.ef-avatar-count+.ef-avatar{margin-inline-start:-8px}
-.ef-avatar-count{position:relative;display:inline-flex;width:32px;height:32px;align-items:center;justify-content:center;flex:none;border:2px solid var(--surface-card);border-radius:var(--radius-full);background:var(--sand-100);color:var(--text-secondary);font-size:11px;font-weight:var(--weight-semibold)}
-.ef-avatar-group:has(>.ef-avatar--sm)>.ef-avatar-count{width:24px;height:24px;font-size:9px}.ef-avatar-group:has(>.ef-avatar--lg)>.ef-avatar-count{width:40px;height:40px;font-size:13px}
-.ef-avatar-group:has(>.ef-avatar--sm)>*+*{margin-inline-start:-6px}.ef-avatar-group:has(>.ef-avatar--lg)>*+*{margin-inline-start:-10px}
+.ef-avatar-group>.ef-avatar+.ef-avatar,.ef-avatar-group>.ef-avatar+.ef-avatar-count,.ef-avatar-group>.ef-avatar-count+.ef-avatar{margin-inline-start:calc(-1 * var(--space-2))}
+.ef-avatar-count{position:relative;display:inline-flex;width:var(--avatar-md);height:var(--avatar-md);align-items:center;justify-content:center;flex:none;border:2px solid var(--surface-card);border-radius:var(--radius-full);background:var(--sand-100);color:var(--text-secondary);font-size:var(--text-2xs);font-weight:var(--weight-semibold)}
+.ef-avatar-group:has(>.ef-avatar--sm)>.ef-avatar-count{width:var(--avatar-sm);height:var(--avatar-sm);font-size:9px}.ef-avatar-group:has(>.ef-avatar--lg)>.ef-avatar-count{width:var(--avatar-lg);height:var(--avatar-lg);font-size:var(--text-sm)}
+.ef-avatar-group:has(>.ef-avatar--sm)>*+*{margin-inline-start:calc(-1 * var(--space-2))}.ef-avatar-group:has(>.ef-avatar--lg)>*+*{margin-inline-start:calc(-1 * var(--space-3))}
 `;
 
 function classes(...values) {

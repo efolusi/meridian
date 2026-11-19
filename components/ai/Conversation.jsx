@@ -5,8 +5,8 @@ import { Icon } from '../icons/Icon.jsx';
 const CSS = `
 .ef-conversation{position:relative;overflow:hidden;display:flex;flex-direction:column}
 .ef-conversation__viewport{overflow-y:auto;overscroll-behavior:contain;flex:1;min-height:0}
-.ef-conversation__inner{display:flex;flex-direction:column;gap:18px}
-.ef-conversation__jump{position:absolute;left:50%;transform:translateX(-50%);bottom:12px;display:inline-flex;align-items:center;gap:6px;height:30px;padding:0 13px;border-radius:var(--radius-full);border:1px solid var(--border-strong);background:var(--surface-card);box-shadow:var(--shadow-md);cursor:pointer;font-family:var(--font-sans);font-size:12.5px;font-weight:500;color:var(--text-secondary);z-index:5;animation:ef-conversation-in var(--dur-fast) var(--ease-out)}
+.ef-conversation__inner{display:flex;flex-direction:column;gap:var(--space-5)}
+.ef-conversation__jump{position:absolute;left:50%;transform:translateX(-50%);bottom:12px;display:inline-flex;align-items:center;gap:var(--space-2);height:30px;padding:0 var(--space-3);border-radius:var(--radius-full);border:1px solid var(--border-strong);background:var(--surface-card);box-shadow:var(--shadow-md);cursor:pointer;font-family:var(--font-sans);font-size:var(--text-sm);font-weight:500;color:var(--text-secondary);z-index:5;animation:ef-conversation-in var(--dur-fast) var(--ease-out)}
 .ef-conversation__jump:hover{color:var(--text-primary)}
 .ef-conversation__jump:focus-visible{outline:none;box-shadow:var(--focus-ring)}
 @keyframes ef-conversation-in{from{opacity:0;transform:translateX(-50%) translateY(4px)}}
@@ -48,7 +48,7 @@ export const Conversation = React.forwardRef(function Conversation({ height = 42
       </div>
       {!atBottom ? (
         <button type="button" className="ef-conversation__jump" onClick={() => toBottom()}>
-          <Icon name="chevron-down" size={13} />
+          <Icon name="chevron-down" size={12} />
           {jumpLabel}
         </button>
       ) : null}

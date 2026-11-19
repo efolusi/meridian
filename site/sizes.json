@@ -1,16 +1,16 @@
 {
   "totals": {
     "@efolusi/meridian": {
-      "bytes": 355768,
-      "gzip": 79929
+      "bytes": 355830,
+      "gzip": 79911
     },
     "dist/components.css": {
-      "bytes": 200324,
-      "gzip": 28415
+      "bytes": 209327,
+      "gzip": 28351
     },
     "_ds_bundle.js": {
-      "bytes": 814217,
-      "gzip": 144855
+      "bytes": 823254,
+      "gzip": 144867
     }
   },
   "modules": [
@@ -20,8 +20,8 @@
       "exports": [
         "AgentRun"
       ],
-      "bytes": 46598,
-      "gzip": 7771
+      "bytes": 46616,
+      "gzip": 7782
     },
     {
       "module": "ai/Bubble.js",
@@ -96,8 +96,8 @@
       "exports": [
         "GeneratedImage"
       ],
-      "bytes": 46441,
-      "gzip": 7689
+      "bytes": 46445,
+      "gzip": 7692
     },
     {
       "module": "ai/Marker.js",
@@ -162,8 +162,8 @@
       "exports": [
         "PromptComposer"
       ],
-      "bytes": 46921,
-      "gzip": 8043
+      "bytes": 46936,
+      "gzip": 8052
     },
     {
       "module": "ai/PromptSteps.js",
@@ -280,7 +280,7 @@
         "WebPreview"
       ],
       "bytes": 48121,
-      "gzip": 8474
+      "gzip": 8471
     },
     {
       "module": "code/CodeBlock.js",
@@ -298,7 +298,7 @@
         "Console"
       ],
       "bytes": 47017,
-      "gzip": 8010
+      "gzip": 8003
     },
     {
       "module": "code/CopyField.js",
@@ -374,8 +374,8 @@
       "exports": [
         "DonutChart"
       ],
-      "bytes": 3112,
-      "gzip": 1300
+      "bytes": 3127,
+      "gzip": 1305
     },
     {
       "module": "data/EmptyState.js",
@@ -731,8 +731,8 @@
       "exports": [
         "ConfirmDialog"
       ],
-      "bytes": 55426,
-      "gzip": 10685
+      "bytes": 55440,
+      "gzip": 10695
     },
     {
       "module": "feedback/Dialog.js",
@@ -832,8 +832,8 @@
       "exports": [
         "FileTile"
       ],
-      "bytes": 47939,
-      "gzip": 8367
+      "bytes": 47954,
+      "gzip": 8379
     },
     {
       "module": "files/FileTypeIcon.js",
@@ -850,8 +850,8 @@
       "exports": [
         "PaymentCard"
       ],
-      "bytes": 2112,
-      "gzip": 779
+      "bytes": 2140,
+      "gzip": 788
     },
     {
       "module": "forms/Button.js",
@@ -1197,8 +1197,8 @@
       "exports": [
         "SideNav"
       ],
-      "bytes": 47081,
-      "gzip": 8089
+      "bytes": 47095,
+      "gzip": 8093
     },
     {
       "module": "navigation/Sidebar.js",
@@ -1228,8 +1228,8 @@
         "SidebarMenuSubButton",
         "SidebarMenuSkeleton"
       ],
-      "bytes": 53184,
-      "gzip": 10012
+      "bytes": 53123,
+      "gzip": 9987
     },
     {
       "module": "navigation/SkipLink.js",

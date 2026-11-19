@@ -4,7 +4,7 @@ import { Icon } from '../icons/Icon.jsx';
 import { injectEfCss } from '../forms/Button.jsx';
 const CSS = `
 .ef-seg{display:inline-flex;gap:var(--space-0-5);padding:var(--space-0-5);background:var(--surface-sunken);border-radius:var(--radius-md)}
-.ef-seg__opt{display:inline-flex;align-items:center;gap:var(--space-2);height:28px;padding:0 var(--space-3);border:1px solid transparent;border-radius:6px;background:none;cursor:pointer;font-family:var(--font-sans);font-size:var(--text-sm);font-weight:var(--weight-medium);color:var(--text-secondary);transition:background var(--dur-fast) var(--ease-out),color var(--dur-fast) var(--ease-out)}
+.ef-seg__opt{display:inline-flex;align-items:center;gap:var(--space-2);height:var(--control-h-sm);padding:0 var(--space-3);border:1px solid transparent;border-radius:var(--radius-xs-plus);background:none;cursor:pointer;font-family:var(--font-sans);font-size:var(--text-sm);font-weight:var(--weight-medium);color:var(--text-secondary);transition:background var(--dur-fast) var(--ease-out),color var(--dur-fast) var(--ease-out)}
 .ef-seg__opt:hover:not(.ef-seg__opt--active){color:var(--text-primary)}
 .ef-seg__opt--active{background:var(--surface-card);border-color:var(--border-strong);color:var(--text-primary);font-weight:var(--weight-semibold)}
 .ef-seg__opt:focus-visible{outline:none;box-shadow:var(--focus-ring)}
@@ -19,7 +19,7 @@ export function SegmentedControl({ options, value, onChange, style, className, .
         const opt = typeof o === 'string' ? { id: o, label: o } : o;
         return (
           <button key={opt.id} type="button" className={`ef-seg__opt${value === opt.id ? ' ef-seg__opt--active' : ''}`} aria-pressed={value === opt.id} disabled={opt.disabled} onClick={() => onChange && onChange(opt.id)}>
-            {opt.icon ? <Icon name={opt.icon} size={14} /> : null}{opt.label}
+            {opt.icon ? <Icon name={opt.icon} size={16} /> : null}{opt.label}
           </button>
         );
       })}

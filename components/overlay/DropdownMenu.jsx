@@ -6,18 +6,18 @@ import { Portal, useAnchoredStyle, useHydrated } from './Portal.jsx';
 import { useDirection } from '../display/Direction.jsx';
 
 const CSS = `
-.ef-dropdown-menu__content{position:fixed;min-width:128px;max-height:calc(100vh - 16px);overflow:auto;background:var(--surface-card);color:var(--text-primary);border:1px solid var(--border-strong);border-radius:var(--radius-md);box-shadow:var(--shadow-md);padding:4px;z-index:var(--z-popover);animation:ef-dropdown-menu-in var(--dur-fast) var(--ease-out)}
+.ef-dropdown-menu__content{position:fixed;min-width:128px;max-height:calc(100vh - 16px);overflow:auto;background:var(--surface-card);color:var(--text-primary);border:1px solid var(--border-strong);border-radius:var(--radius-md);box-shadow:var(--shadow-md);padding:var(--space-1);z-index:var(--z-popover);animation:ef-dropdown-menu-in var(--dur-fast) var(--ease-out)}
 @keyframes ef-dropdown-menu-in{from{opacity:0;transform:scale(.98)}}
-.ef-dropdown-menu__item{position:relative;display:flex;align-items:center;gap:8px;width:100%;min-height:32px;padding:6px 8px;border:0;border-radius:var(--radius-sm);outline:0;background:transparent;color:var(--text-primary);font:inherit;font-size:var(--text-sm);line-height:1.35;text-align:start;white-space:nowrap;cursor:pointer;user-select:none}
+.ef-dropdown-menu__item{position:relative;display:flex;align-items:center;gap:var(--space-2);width:100%;min-height:32px;padding:var(--space-2) var(--space-2);border:0;border-radius:var(--radius-sm);outline:0;background:transparent;color:var(--text-primary);font:inherit;font-size:var(--text-sm);line-height:1.35;text-align:start;white-space:nowrap;cursor:pointer;user-select:none}
 .ef-dropdown-menu__item:hover,.ef-dropdown-menu__item:focus,.ef-dropdown-menu__item[data-highlighted=true],.ef-dropdown-menu__item[data-state=open]{background:var(--surface-sunken)}
 /* the tint alone is ~1.1:1 against the panel; keyboard focus needs a 3:1 ring */
 .ef-dropdown-menu__item:focus-visible{box-shadow:inset 0 0 0 2px var(--focus-ring-color)}
 .ef-dropdown-menu__item:disabled,.ef-dropdown-menu__item[data-disabled=true]{pointer-events:none;opacity:.5}
-.ef-dropdown-menu__item[data-inset=true],.ef-dropdown-menu__label[data-inset=true]{padding-inline-start:32px}
+.ef-dropdown-menu__item[data-inset=true],.ef-dropdown-menu__label[data-inset=true]{padding-inline-start:var(--space-8)}
 .ef-dropdown-menu__item[data-variant=danger]{color:var(--danger-600)}
 .ef-dropdown-menu__indicator{position:absolute;inset-inline-start:8px;display:inline-flex;width:14px;align-items:center;justify-content:center}
-.ef-dropdown-menu__label{padding:6px 8px;color:var(--text-primary);font-size:var(--text-sm);font-weight:var(--weight-medium)}
-.ef-dropdown-menu__separator{height:1px;margin:4px -4px;background:var(--border-default)}
+.ef-dropdown-menu__label{padding:var(--space-2) var(--space-2);color:var(--text-primary);font-size:var(--text-sm);font-weight:var(--weight-medium)}
+.ef-dropdown-menu__separator{height:1px;margin:var(--space-1) calc(-1 * var(--space-1));background:var(--border-default)}
 .ef-dropdown-menu__shortcut{margin-inline-start:auto;color:var(--text-muted);font-size:var(--text-xs);letter-spacing:.08em}
 .ef-dropdown-menu__chevron{display:inline-flex;margin-inline-start:auto;color:var(--text-muted)}
 [dir=rtl] .ef-dropdown-menu__chevron{transform:scaleX(-1)}
@@ -170,7 +170,7 @@ export const DropdownMenuCheckboxItem = React.forwardRef(function DropdownMenuCh
   const [inner, setInner] = React.useState(defaultChecked);
   const checked = controlled !== undefined ? controlled : inner;
   const activate = event => { onClick?.(event); if (event.defaultPrevented || disabled) return; const next = !checked; if (controlled === undefined) setInner(next); onCheckedChange?.(next); onSelect?.(event); if (!event.defaultPrevented) root?.setOpen(false); };
-  return <button {...props} ref={ref} type="button" role="menuitemcheckbox" aria-checked={checked} disabled={disabled} data-slot={slot} data-state={checked ? 'checked' : 'unchecked'} data-disabled={disabled ? 'true' : undefined} className={join('ef-dropdown-menu__item', className)} onClick={activate}><span className="ef-dropdown-menu__indicator">{checked ? <Icon name="check" size={14} /> : null}</span>{children}</button>;
+  return <button {...props} ref={ref} type="button" role="menuitemcheckbox" aria-checked={checked} disabled={disabled} data-slot={slot} data-state={checked ? 'checked' : 'unchecked'} data-disabled={disabled ? 'true' : undefined} className={join('ef-dropdown-menu__item', className)} onClick={activate}><span className="ef-dropdown-menu__indicator">{checked ? <Icon name="check" size={16} /> : null}</span>{children}</button>;
 });
 
 export function DropdownMenuRadioGroup({ value: controlled, defaultValue = '', onValueChange, children, slot = 'dropdown-menu-radio-group', ...props }) {
@@ -203,7 +203,7 @@ export const DropdownMenuSubTrigger = React.forwardRef(function DropdownMenuSubT
   const sub = React.useContext(SubCtx);
   const rtl = useDirection() === 'rtl';
   const keyboard = event => { if (!disabled && event.key === (rtl ? 'ArrowLeft' : 'ArrowRight')) { event.preventDefault(); sub?.setOpen(true); requestAnimationFrame(() => menuItems(sub?.contentRef.current)[0]?.focus()); } };
-  return <button {...props} ref={mergeRefs(forwardedRef, sub?.triggerRef)} type="button" role="menuitem" disabled={disabled} data-slot={slot} data-state={sub?.open ? 'open' : 'closed'} data-inset={inset ? 'true' : undefined} data-disabled={disabled ? 'true' : undefined} className={join('ef-dropdown-menu__item', className)} onMouseEnter={() => !disabled && sub?.setOpen(true)} onKeyDown={compose(onKeyDown, keyboard)}>{children}<span className="ef-dropdown-menu__chevron"><Icon name="chevron-right" size={14} /></span></button>;
+  return <button {...props} ref={mergeRefs(forwardedRef, sub?.triggerRef)} type="button" role="menuitem" disabled={disabled} data-slot={slot} data-state={sub?.open ? 'open' : 'closed'} data-inset={inset ? 'true' : undefined} data-disabled={disabled ? 'true' : undefined} className={join('ef-dropdown-menu__item', className)} onMouseEnter={() => !disabled && sub?.setOpen(true)} onKeyDown={compose(onKeyDown, keyboard)}>{children}<span className="ef-dropdown-menu__chevron"><Icon name="chevron-right" size={16} /></span></button>;
 });
 
 export const DropdownMenuSubContent = React.forwardRef(function DropdownMenuSubContent({ sideOffset = 4, alignOffset = -4, loop = true, className, style, onKeyDown, children, slot = 'dropdown-menu-sub-content', ...props }, forwardedRef) {

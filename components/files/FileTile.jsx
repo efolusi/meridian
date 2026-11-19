@@ -5,7 +5,7 @@ import { IconButton } from '../forms/IconButton.jsx';
 import { Progress } from '../feedback/Progress.jsx';
 import { injectEfCss } from '../forms/Button.jsx';
 const CSS = `
-.ef-filetile{display:flex;align-items:center;gap:12px;padding:10px 12px;border:1px solid var(--border-default);border-radius:var(--radius-md);background:var(--surface-card)}
+.ef-filetile{display:flex;align-items:center;gap:var(--space-3);padding:var(--space-3) var(--space-3);border:1px solid var(--border-default);border-radius:var(--radius-md);background:var(--surface-card)}
 .ef-filetile:focus-within{border-color:var(--focus-ring-color)}
 .ef-filetile__icon{display:inline-flex;align-items:center;justify-content:center;width:34px;height:34px;flex:none;border-radius:var(--radius-sm);background:var(--surface-sunken);color:var(--sand-700)}
 .ef-filetile__name{font-size:var(--text-sm);font-weight:var(--weight-semibold);color:var(--text-primary);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
@@ -20,11 +20,11 @@ export function FileTile({ name, size, kind, status, progress, error, onRemove, 
   const icon = KIND_ICON[kind || EXT_KIND[ext]] || 'file';
   return (
     <div {...rest} className={`ef-filetile${className ? ' ' + className : ''}`} style={style}>
-      <span className="ef-filetile__icon"><Icon name={icon} size={17} /></span>
+      <span className="ef-filetile__icon"><Icon name={icon} size={16} /></span>
       <div style={{ flex: 1, minWidth: 0 }}>
         <div className="ef-filetile__name">{name}</div>
         {error ? <div className="ef-filetile__meta ef-filetile__meta--err">{error}</div>
-          : progress != null ? <Progress value={progress} style={{ marginTop: 5, maxWidth: 220 }} />
+          : progress != null ? <Progress value={progress} style={{ marginTop: 'var(--space-1)', maxWidth: 220 }} />
           : <div className="ef-filetile__meta">{[size, status].filter(Boolean).join(' · ')}</div>}
       </div>
       {actions}

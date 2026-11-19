@@ -49,7 +49,7 @@ function AuthForm({ mode, onSwitch, onMode, onDone }) {
           <Input size="lg" label="Password" type={show ? 'text' : 'password'} placeholder={signup ? '12+ characters' : '••••••••••••'} iconLeft="lock" hint={signup ? 'At least 12 characters.' : undefined} autoComplete="off" />
           <button type="button" onClick={() => setShow(!show)} aria-label={show ? 'Hide password' : 'Show password'}
             style={{ position: 'absolute', right: 10, top: 36, border: 'none', background: 'none', cursor: 'pointer', color: 'var(--text-muted)', display: 'inline-flex', padding: 4 }}>
-            <Icon name={show ? 'eye-off' : 'eye'} size={18} />
+            <Icon name={show ? 'eye-off' : 'eye'} size={20} />
           </button>
         </div>
         {!signup && (
@@ -80,7 +80,7 @@ function SentNotice({ title, email, hint, onBack }) {
   const [resent, setResent] = React.useState(false);
   return (
     <div style={{ width: 360, textAlign: 'center' }}>
-      <span style={{ display: 'inline-flex', alignItems: 'center', justifyContent: 'center', width: 48, height: 48, borderRadius: 'var(--radius-full)', background: 'var(--sand-950)', color: 'var(--sand-50)' }}><Icon name="mail" size={22} /></span>
+      <span style={{ display: 'inline-flex', alignItems: 'center', justifyContent: 'center', width: 48, height: 48, borderRadius: 'var(--radius-full)', background: 'var(--sand-950)', color: 'var(--sand-50)' }}><Icon name="mail" size={24} /></span>
       <h1 style={{ fontSize: 24, fontWeight: 680, marginTop: 18 }}>{title}</h1>
       <p style={{ marginTop: 8, fontSize: 14, lineHeight: 1.6, color: 'var(--text-secondary)' }}>We sent it to <strong>{email}</strong>.<br />{hint}</p>
       <Button size="lg" fullWidth variant="secondary" iconLeft={resent ? 'check' : 'refresh-cw'} style={{ marginTop: 22 }} onClick={() => { setResent(true); setTimeout(() => setResent(false), 2500); }}>{resent ? 'Sent again' : 'Resend email'}</Button>

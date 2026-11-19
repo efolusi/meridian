@@ -9,7 +9,7 @@ const CSS = `
 .ef-navigation-menu{position:relative;display:flex;width:max-content;max-width:100%;align-items:center;justify-content:center}
 .ef-navigation-menu__list{display:flex;flex:1;list-style:none;align-items:center;justify-content:center;gap:var(--space-1);margin:0;padding:0}
 .ef-navigation-menu__item{position:relative}
-.ef-navigation-menu__trigger{display:inline-flex;width:max-content;height:36px;align-items:center;justify-content:center;gap:var(--space-1);padding:0 var(--space-4);border:0;border-radius:var(--radius-md);outline:0;background:transparent;color:var(--text-primary);font:inherit;font-size:var(--text-sm);font-weight:var(--weight-medium);cursor:pointer;transition:background var(--dur-fast) var(--ease-out),box-shadow var(--dur-fast) var(--ease-out)}
+.ef-navigation-menu__trigger{display:inline-flex;width:max-content;height:var(--control-h-md);align-items:center;justify-content:center;gap:var(--space-1);padding:0 var(--space-4);border:0;border-radius:var(--radius-md);outline:0;background:transparent;color:var(--text-primary);font:inherit;font-size:var(--text-sm);font-weight:var(--weight-medium);cursor:pointer;transition:background var(--dur-fast) var(--ease-out),box-shadow var(--dur-fast) var(--ease-out)}
 .ef-navigation-menu__trigger:hover,.ef-navigation-menu__trigger:focus,.ef-navigation-menu__trigger[data-state=open]{background:var(--surface-sunken)}.ef-navigation-menu__trigger:focus-visible{box-shadow:var(--focus-ring)}
 .ef-navigation-menu__chevron{display:inline-flex;transition:transform var(--dur-med) var(--ease-out)}.ef-navigation-menu__trigger[data-state=open] .ef-navigation-menu__chevron{transform:rotate(180deg)}
 .ef-navigation-menu__content{min-width:280px;padding:var(--space-2);color:var(--text-primary);animation:ef-navigation-menu-in var(--dur-med) var(--ease-out)}
@@ -19,7 +19,7 @@ const CSS = `
 .ef-navigation-menu__link{display:flex;flex-direction:column;gap:var(--space-1);padding:var(--space-2) var(--space-3);border-radius:var(--radius-sm);outline:0;color:var(--text-primary);font-size:var(--text-sm);text-decoration:none;transition:background var(--dur-fast) var(--ease-out)}
 .ef-navigation-menu__link:hover,.ef-navigation-menu__link:focus,.ef-navigation-menu__link[data-active=true]{background:var(--surface-sunken);text-decoration:none}.ef-navigation-menu__link:focus-visible{box-shadow:inset 0 0 0 2px var(--focus-ring-color)}
 .ef-navigation-menu__indicator{position:absolute;inset-block-start:calc(100% - 3px);z-index:calc(var(--z-dropdown) + 1);display:flex;height:9px;align-items:flex-end;justify-content:center;pointer-events:none;transition:inset-inline-start var(--dur-med) var(--ease-out),width var(--dur-med) var(--ease-out)}
-.ef-navigation-menu__indicator-mark{width:9px;height:9px;transform:translateY(55%) rotate(45deg);border:1px solid var(--border-default);border-inline-end:0;border-block-end:0;border-radius:2px 0 0;background:var(--surface-card)}
+.ef-navigation-menu__indicator-mark{width:9px;height:9px;transform:translateY(55%) rotate(45deg);border:1px solid var(--border-default);border-inline-end:0;border-block-end:0;border-radius:var(--radius-xs) 0 0;background:var(--surface-card)}
 @keyframes ef-navigation-menu-in{from{opacity:0;transform:translateY(-4px)}}@keyframes ef-navigation-menu-viewport{from{opacity:0;transform:scale(.98)}}
 /* coarse pointers get the 44px touch target, like form controls do through --control-h-* */
 @media (pointer:coarse){.ef-navigation-menu__trigger{height:var(--tap-min)}.ef-navigation-menu__link{min-height:var(--tap-min)}}
@@ -115,7 +115,7 @@ export const NavigationMenuTrigger = React.forwardRef(function NavigationMenuTri
     }
   };
   const focus = event => { root?.setTabStop(itemValue); onFocus?.(event); };
-  return <button {...props} ref={mergeRefs(forwardedRef, localRef)} type="button" disabled={disabled} data-slot="navigation-menu-trigger" data-item-value={itemValue} data-state={open ? 'open' : 'closed'} aria-expanded={open} aria-haspopup="true" tabIndex={root?.tabStop === null || root?.tabStop === itemValue ? 0 : -1} className={join(navigationMenuTriggerStyle(), className)} onClick={compose(onClick, () => root?.openItem(open ? '' : itemValue, localRef.current, true))} onMouseEnter={compose(onMouseEnter, () => root?.openItem(itemValue, localRef.current))} onFocus={focus} onKeyDown={keyboard}>{children}<span className="ef-navigation-menu__chevron" aria-hidden="true"><Icon name="chevron-down" size={13} /></span></button>;
+  return <button {...props} ref={mergeRefs(forwardedRef, localRef)} type="button" disabled={disabled} data-slot="navigation-menu-trigger" data-item-value={itemValue} data-state={open ? 'open' : 'closed'} aria-expanded={open} aria-haspopup="true" tabIndex={root?.tabStop === null || root?.tabStop === itemValue ? 0 : -1} className={join(navigationMenuTriggerStyle(), className)} onClick={compose(onClick, () => root?.openItem(open ? '' : itemValue, localRef.current, true))} onMouseEnter={compose(onMouseEnter, () => root?.openItem(itemValue, localRef.current))} onFocus={focus} onKeyDown={keyboard}>{children}<span className="ef-navigation-menu__chevron" aria-hidden="true"><Icon name="chevron-down" size={12} /></span></button>;
 });
 
 export const NavigationMenuContent = React.forwardRef(function NavigationMenuContent({ className, forceMount = false, children, onKeyDown, ...props }, ref) {

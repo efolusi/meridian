@@ -4,7 +4,7 @@ import { Icon } from '../icons/Icon.jsx';
 import { injectEfCss } from '../forms/Button.jsx';
 const CSS = `
 .ef-tree{display:flex;flex-direction:column;gap:1px;font-size:var(--text-sm)}
-.ef-tree__row{display:flex;align-items:center;gap:7px;height:30px;padding:0 8px;border:none;border-radius:var(--radius-sm);background:none;cursor:pointer;text-align:start;font-family:var(--font-sans);font-size:var(--text-sm);color:var(--text-secondary);width:100%;transition:background var(--dur-fast) var(--ease-out),color var(--dur-fast) var(--ease-out)}
+.ef-tree__row{display:flex;align-items:center;gap:var(--space-2);height:30px;padding:0 var(--space-2);border:none;border-radius:var(--radius-sm);background:none;cursor:pointer;text-align:start;font-family:var(--font-sans);font-size:var(--text-sm);color:var(--text-secondary);width:100%;transition:background var(--dur-fast) var(--ease-out),color var(--dur-fast) var(--ease-out)}
 .ef-tree__row:hover{background:var(--surface-sunken);color:var(--text-primary)}
 .ef-tree__row--sel{background:var(--accent-subtle);color:var(--accent-subtle-fg, var(--brand-700));font-weight:var(--weight-semibold)}
 .ef-tree__row--sel:hover{background:var(--accent-subtle);color:var(--accent-subtle-fg, var(--brand-700))}
@@ -13,7 +13,7 @@ const CSS = `
 .ef-tree__chev--open{transform:rotate(90deg)}
 .ef-tree__icon{display:inline-flex;flex:none;color:var(--text-muted)}
 .ef-tree__row--sel .ef-tree__icon{color:inherit}
-.ef-tree__count{margin-inline-start:auto;font-family:var(--font-mono);font-size:11px;color:var(--text-muted)}
+.ef-tree__count{margin-inline-start:auto;font-family:var(--font-mono);font-size:var(--text-2xs);color:var(--text-muted)}
 @media (pointer:coarse){.ef-tree__row{min-height:var(--tap-min)}}
 `;
 function Node({ node, depth, open, sel, toggle, select }) {
@@ -24,8 +24,8 @@ function Node({ node, depth, open, sel, toggle, select }) {
       <button type="button" className={`ef-tree__row${sel === node.id ? ' ef-tree__row--sel' : ''}`} style={{ paddingInlineStart: 8 + depth * 18 }}
         aria-expanded={kids.length ? isOpen : undefined} aria-current={sel === node.id ? 'true' : undefined}
         onClick={() => { if (kids.length) toggle(node.id); select(node.id, node); }}>
-        {kids.length ? <span className={`ef-tree__chev${isOpen ? ' ef-tree__chev--open' : ''}`}><Icon name="chevron-right" size={13} /></span> : <span style={{ width: 13, flex: 'none' }}></span>}
-        {node.icon ? <span className="ef-tree__icon"><Icon name={node.icon} size={15} /></span> : null}
+        {kids.length ? <span className={`ef-tree__chev${isOpen ? ' ef-tree__chev--open' : ''}`}><Icon name="chevron-right" size={12} /></span> : <span style={{ width: 13, flex: 'none' }}></span>}
+        {node.icon ? <span className="ef-tree__icon"><Icon name={node.icon} size={16} /></span> : null}
         <span style={{ whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>{node.label}</span>
         {node.count != null ? <span className="ef-tree__count">{node.count}</span> : null}
       </button>

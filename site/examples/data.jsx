@@ -41,7 +41,7 @@ export function KeyValueListDemo() {
   return (
     <div style={{ width: '100%', maxWidth: 440 }}>
       <KeyValueList labelWidth={130} items={[
-        { label: 'Status', value: <Badge className="ef-badge--success"><Icon name="circle" size={7} strokeWidth={4} data-icon="inline-start" />Healthy</Badge> },
+        { label: 'Status', value: <Badge className="ef-badge--success"><Icon name="circle" size={8} strokeWidth={4} data-icon="inline-start" />Healthy</Badge> },
         { label: 'Region', value: 'eu-west-1' },
         { label: 'Endpoint', value: 'api.acme.efolusi.com', mono: true },
         { label: 'Last deploy', value: '2h ago by ada@acme.com' },
@@ -124,8 +124,8 @@ export function TableDemo() {
         <TableCaption>Agent runs from the current release window.</TableCaption>
         <TableHeader><TableRow><TableHead>Agent</TableHead><TableHead>Runs</TableHead><TableHead>P95</TableHead><TableHead>Status</TableHead></TableRow></TableHeader>
         <TableBody>
-          <TableRow><TableCell>Inbox triager</TableCell><TableCell>412</TableCell><TableCell>180 ms</TableCell><TableCell><Badge className="ef-badge--success"><Icon name="circle" size={7} strokeWidth={4} data-icon="inline-start" />Live</Badge></TableCell></TableRow>
-          <TableRow><TableCell>Flight rebooking</TableCell><TableCell>128</TableCell><TableCell>2.4 s</TableCell><TableCell><Badge className="ef-badge--success"><Icon name="circle" size={7} strokeWidth={4} data-icon="inline-start" />Live</Badge></TableCell></TableRow>
+          <TableRow><TableCell>Inbox triager</TableCell><TableCell>412</TableCell><TableCell>180 ms</TableCell><TableCell><Badge className="ef-badge--success"><Icon name="circle" size={8} strokeWidth={4} data-icon="inline-start" />Live</Badge></TableCell></TableRow>
+          <TableRow><TableCell>Flight rebooking</TableCell><TableCell>128</TableCell><TableCell>2.4 s</TableCell><TableCell><Badge className="ef-badge--success"><Icon name="circle" size={8} strokeWidth={4} data-icon="inline-start" />Live</Badge></TableCell></TableRow>
           <TableRow><TableCell>Refund handler</TableCell><TableCell>36</TableCell><TableCell>640 ms</TableCell><TableCell><Badge variant="secondary">Paused</Badge></TableCell></TableRow>
         </TableBody>
       </Table>

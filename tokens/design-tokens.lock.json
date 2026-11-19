@@ -1,12 +1,12 @@
 {
   "repo": "https://github.com/efolusi/design-tokens",
-  "ref": "v0.1.1",
-  "commit": "ab2a6b11ae490849527206200c174184f1d20da6",
+  "ref": "v0.2.1",
+  "commit": "009f5dc32927b7ec1446354c49c85144488510b2",
   "files": {
-    "tokens.json": "1327a0ac228303c928201fe4d21e7505e1615c41be565ccae42bc13f283b61ac",
-    "tokens/colors.css": "f39bafcc471619fc435136bf0aec0712a3f72a2c0b7628f2a12550733f803ee3",
+    "tokens.json": "020b7a7e5a936d79aa972f8f4ae8107e975377b4d23087c2bfbf418245e3d38e",
+    "tokens/colors.css": "252ba088302edf41fae3d9874b848227702b8d75d95a3499c1d33e334abc804c",
     "tokens/typography.css": "876d8e9f30b3a8c01573062790979ba14ef2009e51fd792b296c1958293f1505",
-    "tokens/spacing.css": "ce60628048444d0c5535d07eb44499fabc6f10e7823a8dee1466bbe6dbc4f3c5",
+    "tokens/spacing.css": "aa176ca84e9016205c0cc5be2865d36ef04c9bd49cdd1e9ad3ff1f7fcefc0e2d",
     "tokens/effects.css": "e128da9964c6979621673bfd66d7673c8bf844f888695219f2ad5164e468dce8"
   }
 }
