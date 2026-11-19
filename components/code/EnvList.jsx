@@ -6,7 +6,7 @@ const CSS = `
 .ef-env{border:1px solid var(--border-default);border-radius:var(--radius-md);background:var(--surface-card);font-family:var(--font-sans)}
 .ef-env__head{display:flex;align-items:center;gap:var(--space-2);padding:var(--space-3) var(--space-4)}
 .ef-env__glyph{display:inline-flex;color:var(--text-muted)}
-.ef-env__title{flex:1;min-width:0;font-size:13.5px;font-weight:var(--weight-semibold);color:var(--text-primary)}
+.ef-env__title{flex:1;min-width:0;font-size:var(--text-md);font-weight:var(--weight-semibold);color:var(--text-primary)}
 .ef-env__btn{display:inline-flex;align-items:center;justify-content:center;width:28px;height:28px;border:none;background:none;cursor:pointer;color:var(--text-muted);border-radius:var(--radius-sm);transition:color var(--dur-fast) var(--ease-out),background var(--dur-fast) var(--ease-out)}
 .ef-env__btn:hover{color:var(--text-primary);background:var(--surface-subtle)}
 .ef-env__btn:focus-visible{outline:none;box-shadow:var(--focus-ring)}
@@ -14,8 +14,8 @@ const CSS = `
 .ef-env__list{padding:0 var(--space-2) var(--space-2)}
 .ef-env__row{display:flex;align-items:center;gap:var(--space-3);padding:var(--space-1) var(--space-2);border-radius:var(--radius-sm)}
 .ef-env__row:hover{background:var(--surface-subtle)}
-.ef-env__name{flex:none;font-family:var(--font-mono);font-size:12.5px;color:var(--text-muted)}
-.ef-env__val{flex:1;min-width:0;margin-inline-start:auto;text-align:end;font-family:var(--font-mono);font-size:12.5px;color:var(--text-primary);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.ef-env__name{flex:none;font-family:var(--font-mono);font-size:var(--text-sm);color:var(--text-muted)}
+.ef-env__val{flex:1;min-width:0;margin-inline-start:auto;text-align:end;font-family:var(--font-mono);font-size:var(--text-sm);color:var(--text-primary);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .ef-env__row .ef-env__btn{opacity:0;width:24px;height:24px}
 .ef-env__row:hover .ef-env__btn,.ef-env__row .ef-env__btn:focus-visible,.ef-env__row .ef-env__btn--done{opacity:1}
 @media (pointer:coarse){.ef-env__btn{min-width:var(--tap-min);min-height:var(--tap-min)}}

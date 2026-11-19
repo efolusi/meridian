@@ -7,7 +7,7 @@ const CSS = `
 .ef-table-wrap{max-width:100%;overflow-x:auto;overflow-y:hidden;-webkit-overflow-scrolling:touch}
 .ef-table-wrap--sticky{overflow-y:auto}
 .ef-table{width:100%;border-collapse:collapse}
-.ef-table th{text-align:start;padding:var(--space-3) var(--table-pad-x);font-size:11px;font-weight:var(--weight-semibold);letter-spacing:0.06em;text-transform:uppercase;color:var(--text-muted);border-bottom:1px solid var(--border-default);white-space:nowrap}
+.ef-table th{text-align:start;padding:var(--space-3) var(--table-pad-x);font-size:var(--text-2xs);font-weight:var(--weight-semibold);letter-spacing:0.06em;text-transform:uppercase;color:var(--text-muted);border-bottom:1px solid var(--border-default);white-space:nowrap}
 .ef-table--sticky thead th{position:sticky;top:0;z-index:1;background:var(--surface-card)}
 .ef-table td{padding:var(--table-pad-y) var(--table-pad-x);font-size:var(--text-md);border-bottom:1px solid var(--border-default);vertical-align:middle}
 .ef-table tr:last-child td{border-bottom:none}
@@ -18,7 +18,7 @@ const CSS = `
 .ef-table__row--click:hover{background:var(--surface-subtle)}
 .ef-table__row--click:focus-visible{outline:2px solid var(--focus-ring-color);outline-offset:-2px}
 .ef-table__row--sel{background:var(--accent-subtle)}
-.ef-table .ef-num{font-family:var(--font-mono);font-size:13px}
+.ef-table .ef-num{font-family:var(--font-mono);font-size:var(--text-sm)}
 .ef-table__sort{display:inline-flex;align-items:center;gap:var(--space-1);border:none;background:none;padding:0;margin:0;font:inherit;letter-spacing:inherit;text-transform:inherit;color:inherit;cursor:pointer}
 .ef-table__sort:hover{color:var(--text-primary)}
 .ef-table__sort:focus-visible{outline:none;box-shadow:var(--focus-ring);border-radius:var(--radius-sm)}

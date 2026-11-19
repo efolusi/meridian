@@ -6,10 +6,10 @@ const CSS = `
 .ef-paycard--caramel{background:var(--brand-700)}
 .ef-paycard--paper{background:var(--surface-card);color:var(--text-primary);border:1px solid var(--border-strong)}
 .ef-paycard__ring{position:absolute;border-radius:var(--radius-full);border:1px solid currentColor;opacity:.1;pointer-events:none}
-.ef-paycard__num{font-family:var(--font-mono);font-size:16px;letter-spacing:.12em;margin-top:auto}
+.ef-paycard__num{font-family:var(--font-mono);font-size:var(--text-lg);letter-spacing:.12em;margin-top:auto}
 .ef-paycard__row{display:flex;align-items:flex-end;gap:var(--space-5);margin-top:var(--space-3)}
 .ef-paycard__lbl{font-size:8.5px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;opacity:.55}
-.ef-paycard__val{font-size:12.5px;font-weight:600;margin-top:var(--space-0-5)}
+.ef-paycard__val{font-size:var(--text-sm);font-weight:600;margin-top:var(--space-0-5)}
 .ef-paycard__chip{width:34px;height:25px;border-radius:var(--radius-xs-plus);background:var(--brand-300)}
 `;
 export function PaymentCard({ name = 'ADA OBI', number = '•••• •••• •••• 4242', expiry = '09/29', network = 'Meridian', variant = 'espresso', frozen, style, className, ...rest }) {
@@ -19,7 +19,7 @@ export function PaymentCard({ name = 'ADA OBI', number = '•••• •••
       <span className="ef-paycard__ring" style={{ width: 220, height: 220, insetInlineEnd: -70, top: -70 }}></span>
       <span className="ef-paycard__ring" style={{ width: 220, height: 220, insetInlineEnd: -40, top: -110 }}></span>
       <div style={{ display: 'flex', alignItems: 'center' }}>
-        <span style={{ fontFamily: 'var(--font-display)', fontWeight: 680, letterSpacing: '-0.02em', fontSize: 16 }}>{network}</span>
+        <span style={{ fontFamily: 'var(--font-display)', fontWeight: 680, letterSpacing: '-0.02em', fontSize: 'var(--text-lg)' }}>{network}</span>
         {frozen ? <span style={{ marginInlineStart: 'auto', fontSize: 10, fontWeight: 600, letterSpacing: '.08em', textTransform: 'uppercase', opacity: .7 }}>Frozen</span> : null}
       </div>
       <div style={{ marginTop: 'var(--space-4)' }}><span className="ef-paycard__chip" style={{ display: 'block' }}></span></div>

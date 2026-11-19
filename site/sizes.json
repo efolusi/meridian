@@ -1,16 +1,16 @@
 {
   "totals": {
     "@efolusi/meridian": {
-      "bytes": 356142,
-      "gzip": 80123
+      "bytes": 356185,
+      "gzip": 80141
     },
     "dist/components.css": {
-      "bytes": 207922,
-      "gzip": 28431
+      "bytes": 209077,
+      "gzip": 28352
     },
     "_ds_bundle.js": {
-      "bytes": 822735,
-      "gzip": 145340
+      "bytes": 823933,
+      "gzip": 145320
     }
   },
   "modules": [
@@ -374,8 +374,8 @@
       "exports": [
         "DonutChart"
       ],
-      "bytes": 3112,
-      "gzip": 1300
+      "bytes": 3127,
+      "gzip": 1305
     },
     {
       "module": "data/EmptyState.js",
@@ -850,8 +850,8 @@
       "exports": [
         "PaymentCard"
       ],
-      "bytes": 2126,
-      "gzip": 785
+      "bytes": 2140,
+      "gzip": 788
     },
     {
       "module": "forms/Button.js",
@@ -1197,8 +1197,8 @@
       "exports": [
         "SideNav"
       ],
-      "bytes": 47081,
-      "gzip": 8089
+      "bytes": 47095,
+      "gzip": 8093
     },
     {
       "module": "navigation/Sidebar.js",

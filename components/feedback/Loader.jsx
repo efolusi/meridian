@@ -2,7 +2,7 @@
 import React from 'react';
 import { injectEfCss } from '../forms/Button.jsx';
 const CSS = `
-.ef-loader{display:inline-flex;align-items:baseline;font-family:var(--font-sans);font-size:13.5px;color:var(--text-muted)}
+.ef-loader{display:inline-flex;align-items:baseline;font-family:var(--font-sans);font-size:var(--text-md);color:var(--text-muted)}
 .ef-loader--pulse{animation:ef-loader-pulse var(--ef-loader-dur,1.4s) ease-in-out infinite both}
 @keyframes ef-loader-pulse{0%,100%{opacity:.4}50%{opacity:1}}
 .ef-loader--shimmer{background:linear-gradient(90deg,color-mix(in oklab,currentColor 40%,transparent) 0%,color-mix(in oklab,currentColor 40%,transparent) 35%,currentColor 50%,color-mix(in oklab,currentColor 40%,transparent) 65%,color-mix(in oklab,currentColor 40%,transparent) 100%);background-size:200% 100%;-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;animation:ef-loader-shimmer var(--ef-loader-dur,2.2s) linear infinite}

@@ -4,7 +4,7 @@ import { injectEfCss } from '../forms/Button.jsx';
 const CSS = `
 .ef-stat__label{font-size:var(--text-sm);color:var(--text-muted);font-weight:var(--weight-medium)}
 .ef-stat__row{display:flex;align-items:baseline;gap:var(--space-2);margin-top:var(--space-2)}
-.ef-stat__value{font-family:var(--font-mono);font-size:26px;font-weight:var(--weight-semibold);letter-spacing:-0.01em;color:var(--text-primary)}
+.ef-stat__value{font-family:var(--font-mono);font-size:var(--text-3xl);font-weight:var(--weight-semibold);letter-spacing:-0.01em;color:var(--text-primary)}
 .ef-stat__delta{font-size:var(--text-xs);font-weight:var(--weight-medium);white-space:nowrap}
 .ef-stat__delta--up{color:var(--success-600)}
 .ef-stat__delta--down{color:var(--danger-600)}

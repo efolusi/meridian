@@ -7,7 +7,7 @@ const CSS = `
 .ef-kv__row:last-child{border-bottom:none}
 .ef-kv__label{width:160px;flex:none;font-size:var(--text-sm);color:var(--text-muted)}
 .ef-kv__value{flex:1;font-size:var(--text-sm);color:var(--text-primary);min-width:0;overflow-wrap:break-word}
-.ef-kv__value--mono{font-family:var(--font-mono);font-size:13px}
+.ef-kv__value--mono{font-family:var(--font-mono);font-size:var(--text-sm)}
 `;
 export function KeyValueList({ items, labelWidth = 160, style, className, ...rest }) {
   injectEfCss('ef-css-kv', CSS);

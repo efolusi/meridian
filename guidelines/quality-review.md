@@ -8,7 +8,7 @@ Counted on main after 1.24.0 and the spacing integration (#150), 2026-11-19.
 
 | Finding | Status | Where |
 |---|---|---|
-| Spacing on the token scale | done | #121, #150 (every group); padding that clears or lines up with an icon is still px, see Open |
+| Spacing on the token scale | done | #121, #150 (every group) |
 | Status names in four vocabularies; `danger` and `destructive`; Button `secondary` and `outline` | held for 1.25.0 | #120, with the product apps' PRs |
 | Button `xs` and icon `xs` off the control tokens | done | #134 (`--control-h-xs`) |
 | Avatar and Sidebar sizes | done | #134 (`--avatar-*`, `--sidebar-width*`) |
@@ -17,14 +17,15 @@ Counted on main after 1.24.0 and the spacing integration (#150), 2026-11-19.
 | Blur | done: functional | TopNav (one sticky bar, within the R-10 dose) and GeneratedImage (its action buttons over the image): each keeps its controls readable over changing content |
 | Icons missing from the visual baselines | done | #149 |
 | README "accessible" claim | done | the README names the checks behind it |
+| Raw border-radius | done | #152 (`--radius-*`, a test keeps raw radii out) |
+| Padding that clears an icon | done | #153 (`calc()` of space, icon and control-height tokens) |
+| Raw font-size | done | #154 (`--text-*`; off-scale sizes snapped); sizes below 11px stay in px, see Open |
 
 ## Open
 
 | Kind | Where | Count | Severity |
 |---|---|---|---|
-| Raw border-radius instead of `--radius-*` | Chart, BarChart, LineChart, DonutChart, Diff, Tabs, SegmentedControl, NavigationMenu, Tooltip, Toolbar, Task, Transcript, RichComposer, FileTypeIcon, PaymentCard | 20 values | medium |
-| Padding that clears an icon still in px | Input reveal, Select, NativeSelect and Combobox indicators, TimePicker, Dialog header | 8 values | low |
-| Raw font-size instead of `--text-*` | most component files; 66 match a token exactly, the rest are off the scale (12.5, 13.5, 11.5px and smaller) | 134 values | medium |
+| Font sizes below 11px stay in px | Citation, ModelSelector, WebPreview, BarChart, Avatar, FileTypeIcon, PaymentCard, Sidebar | 11 values | low; waits for a smaller `--text-*` step in design-tokens |
 | Raw width and height | most component files; some have a token (control heights, icons, dots), many are component geometry | 277 values | medium |
 
 Left as px on purpose: `1px` hairline borders and one-pixel optical nudges.
@@ -39,10 +40,8 @@ git grep -hoE "[0-9]+(\.[0-9]+)?px" -- 'components/*.jsx' | wc -l
 
 One small PR each, built on main, green, with any visual change in the CHANGELOG:
 
-1. Radius onto `--radius-*`.
-2. Icon clearance built from `calc(space + --icon-* + space)`, as Input's leading icon is.
-3. Font sizes onto `--text-*`, exact ones first, then the off-scale ones.
-4. Widths and heights: the ones a token covers.
+1. Widths and heights: the ones a token covers (PR 5), with the border-compensation px in the same rules as `calc(var(--space-*) - 1px)`.
+2. Font sizes below 11px, once design-tokens has a smaller step.
 
 ## Appendix: consumer search
 
