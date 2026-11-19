@@ -2,7 +2,7 @@
 
 The entire design system in one file, generated from llms.txt, components/*/, and tokens/*.css by scripts/build_llms.py. Do not edit by hand. The short map of the repository is /llms.txt.
 
-> Meridian is a general-purpose open-source design system by Efolusi: 127 accessible React components, 221 design tokens (light, dark, compact), blocks, charts, and full example apps, served browser-native with zero build step. Apache-2.0 licensed.
+> Meridian is a general-purpose open-source design system by Efolusi: 129 accessible React components, 221 design tokens (light, dark, compact), blocks, charts, and full example apps, served browser-native with zero build step. Apache-2.0 licensed.
 
 Live docs: https://meridian.efolusi.com · Source: https://github.com/efolusi/meridian · License: Apache-2.0
 
@@ -34,7 +34,7 @@ Dark mode: set data-theme="dark" on any subtree. Compact density: data-density="
 
 ## Components
 
-127 components across 13 groups: ai, code, data, dates, display, feedback, files, finance, forms, icons, marketing, navigation, overlay. Each entry lists the component's public exports, its usage guidance (.prompt.md), and its typed props interface (.d.ts).
+129 components across 13 groups: ai, code, data, dates, display, feedback, files, finance, forms, icons, marketing, navigation, overlay. Each entry lists the component's public exports, its usage guidance (.prompt.md), and its typed props interface (.d.ts).
 
 ### ai
 
@@ -3836,6 +3836,63 @@ export declare const Hero: React.ForwardRefExoticComponent<HeroProps & React.Ref
 export interface HeroAccentProps extends React.HTMLAttributes<HTMLSpanElement> {}
 /** A hand-drawn underline that draws itself once; static with reduced motion. */
 export declare function HeroAccent(props: HeroAccentProps): React.ReactElement;
+```
+
+#### Marquee
+
+Group: marketing · Source: /components/marketing/Marquee.jsx · Exports: Marquee
+
+# Marquee
+
+Use `Marquee` once per page, under the hero, for a slow strip of short labels (product names, what you stand for). It loops on its own, pauses on hover, on keyboard focus and with its own pause button, and stands still with reduced motion. Screen readers get the items once, as a list named by `label`; the moving copy is hidden from them.
+
+Pass the items in the page's language, and `lang="id"` for the Indonesian pause labels.
+
+```jsx
+<Marquee label="What we build" items={['Open source', 'Self-hosted', 'Private', 'Secure']} />
+```
+
+```ts
+export interface MarqueeProps extends React.HTMLAttributes<HTMLDivElement> {
+  /** Short labels that scroll past. Listed once for screen readers. */
+  items: React.ReactNode[];
+  /** Accessible name of the list. */
+  label?: string;
+  /** Seconds for one full loop. @default 36 */
+  duration?: number;
+  /** Language of the pause button labels. @default 'en' */
+  lang?: 'en' | 'id';
+  /** Override the pause button labels. */
+  labels?: Partial<Record<'pause' | 'play', string>>;
+}
+/** A slow strip of labels. Pauses on hover, on keyboard focus and with its pause button; still with reduced motion. */
+export declare const Marquee: React.ForwardRefExoticComponent<MarqueeProps & React.RefAttributes<HTMLDivElement>>;
+```
+
+#### Reveal
+
+Group: marketing · Source: /components/marketing/Reveal.jsx · Exports: Reveal
+
+# Reveal
+
+Wrap a block in `Reveal` to fade and lift it in once it scrolls into view. Siblings stagger by 70ms each. Content stays visible without JavaScript, and appears at once with reduced motion. Use it on marketing sections, not inside the product UI, and not on the hero's title.
+
+```jsx
+<FeatureGrid>
+  <Reveal><FeatureCard tone="peach" title="Products" /></Reveal>
+  <Reveal><FeatureCard tone="cocoa" title="Token" /></Reveal>
+</FeatureGrid>
+```
+
+```ts
+export interface RevealProps extends React.HTMLAttributes<HTMLElement> {
+  /** Element to render. @default 'div' */
+  as?: keyof React.JSX.IntrinsicElements;
+  /** Delay each Reveal by 70ms per Reveal sibling before it. @default true */
+  stagger?: boolean;
+}
+/** Fades and lifts its content in once it scrolls into view. Visible without JavaScript and with reduced motion. */
+export declare const Reveal: React.ForwardRefExoticComponent<RevealProps & React.RefAttributes<HTMLElement>>;
 ```
 
 #### Section

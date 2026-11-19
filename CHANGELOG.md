@@ -2,6 +2,7 @@
 
 ## Unreleased
 
+- **`Marquee` and `Reveal` in the marketing group.** `Marquee` is a slow strip of labels: listed once for screen readers, it pauses on hover, on keyboard focus and with its own 44px pause button (EN/ID labels), and stands still with reduced motion. `Reveal` fades and lifts a block in when it scrolls into view, with a 70ms stagger; content stays visible without JavaScript and appears at once with reduced motion.
 - **meridian.efolusi.com uses the shared theme.** Every docs page loads `site/theme.js` first; it runs `themeInitScript()` before paint, and the header button cycles Light, Dark and System on the same contract, following the operating system live on System. The old `efolusi-site-theme` key is gone.
 - **`ThemeToggle` and `themeInitScript` in the marketing group.** One theme control for every Efolusi site: a 44px button that cycles Light, Dark and System, follows the operating system live while on System, saves the choice in localStorage `efolusi-theme`, and writes the resolved light or dark (never system) to the `efolusi_theme` cookie on `.efolusi.com` (a year, SameSite=Lax, Secure). `themeInitScript()` sets the theme before the first paint: no attribute for light, `data-theme="dark"` for dark. The rules are in [theming § Theme contract](guidelines/theming.md#theme-contract). Labels in English and Indonesian.
 - **Visual baselines no longer flip by one pixel.** The capture pins every demo group to a whole-pixel height first; text line heights left the charts group at 1811.27px, which rounded to 1811 or 1812 between runs. The capture also jumps every animation to its end and turns transitions off, so a shot never catches the HeroAccent underline mid-stroke.
@@ -11,7 +12,7 @@
 - **`Hero`, `HeroAccent`, `FeatureGrid` and `FeatureCard` in the marketing group.** `Hero` opens a marketing page with a title, a sub line, pill actions and a proof line; `HeroAccent` draws a hand-drawn underline under one word once, and stays still with reduced motion. `FeatureCard` takes the brand-wide `peach`, `cocoa` and `amber` tones; every card keeps a 1px hairline, because amber (light) and cocoa (dark) sit near the page colour. A test keeps the hairline in every tone.
 - **The website showcase's local `Hero` is now `WebsiteHero`**, so it no longer shadows the new export.
 - **Visual baselines add the marketing group in compact density and on a coarse pointer.**
-- **Size budget raised by 23 KB** (npm total 1,446,249 bytes) for the marketing group.
+- **Size budget raised by 33 KB** (npm total 1,456,271 bytes) for the marketing group.
 
 ## 1.25.1 — 2026-11-19
 
