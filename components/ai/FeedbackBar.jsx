@@ -29,11 +29,11 @@ export function FeedbackBar({ onFeedback, onCopy, onRetry, copyText, note, style
   };
   return (
     <div {...rest} className={`ef-feedback${className ? ' ' + className : ''}`} style={style}>
-      <button type="button" aria-label="Good response" aria-pressed={vote === 'up'} className={`ef-feedback__btn${vote === 'up' ? ' ef-feedback__btn--on' : ''}`} onClick={() => cast('up')}><Icon name="thumbs-up" size={13} /></button>
-      <button type="button" aria-label="Bad response" aria-pressed={vote === 'down'} className={`ef-feedback__btn${vote === 'down' ? ' ef-feedback__btn--on' : ''}`} onClick={() => cast('down')}><Icon name="thumbs-down" size={13} /></button>
+      <button type="button" aria-label="Good response" aria-pressed={vote === 'up'} className={`ef-feedback__btn${vote === 'up' ? ' ef-feedback__btn--on' : ''}`} onClick={() => cast('up')}><Icon name="thumbs-up" size={12} /></button>
+      <button type="button" aria-label="Bad response" aria-pressed={vote === 'down'} className={`ef-feedback__btn${vote === 'down' ? ' ef-feedback__btn--on' : ''}`} onClick={() => cast('down')}><Icon name="thumbs-down" size={12} /></button>
       <span className="ef-feedback__sep"></span>
-      {onCopy || copyText ? <button type="button" aria-label="Copy" className={`ef-feedback__btn${copied ? ' ef-feedback__btn--on' : ''}`} onClick={copy}><Icon name={copied ? 'check' : 'copy'} size={13} /></button> : null}
-      {onRetry ? <button type="button" aria-label="Regenerate" className="ef-feedback__btn" onClick={onRetry}><Icon name="refresh-cw" size={13} /></button> : null}
+      {onCopy || copyText ? <button type="button" aria-label="Copy" className={`ef-feedback__btn${copied ? ' ef-feedback__btn--on' : ''}`} onClick={copy}><Icon name={copied ? 'check' : 'copy'} size={12} /></button> : null}
+      {onRetry ? <button type="button" aria-label="Regenerate" className="ef-feedback__btn" onClick={onRetry}><Icon name="refresh-cw" size={12} /></button> : null}
       {note ? <span className="ef-feedback__note">{note}</span> : null}
     </div>
   );

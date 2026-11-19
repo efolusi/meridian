@@ -35,7 +35,7 @@ export function Timeline({ items = [], compact = false, style, className, ...res
         return (
           <li key={item.id ?? index} className={`ef-timeline__item ef-timeline__item--${tone}`}>
             <span className="ef-timeline__rail" aria-hidden="true">
-              <span className="ef-timeline__marker"><Icon name={icon} size={13} /></span>
+              <span className="ef-timeline__marker"><Icon name={icon} size={12} /></span>
               <span className="ef-timeline__line" />
             </span>
             <div className="ef-timeline__content">

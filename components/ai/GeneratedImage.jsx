@@ -46,12 +46,12 @@ export function GeneratedImage({ status = 'complete', src, alt, prompt, aspect =
         <div className="ef-genimg__center">
           <span className="ef-genimg__err"><Icon name="circle-alert" size={20} /></span>
           <span className="ef-genimg__err">{error || 'Generation failed'}</span>
-          {onRetry ? <button type="button" className="ef-genimg__retry" onClick={onRetry}><Icon name="refresh-cw" size={13} />Retry</button> : null}
+          {onRetry ? <button type="button" className="ef-genimg__retry" onClick={onRetry}><Icon name="refresh-cw" size={12} />Retry</button> : null}
         </div>
       ) : null}
       {actions && actions.length ? (
         <div className="ef-genimg__actions">
-          {actions.map((a, i) => <button key={i} type="button" className="ef-genimg__act" aria-label={a.label} title={a.label} onClick={a.onClick}><Icon name={a.icon} size={14} /></button>)}
+          {actions.map((a, i) => <button key={i} type="button" className="ef-genimg__act" aria-label={a.label} title={a.label} onClick={a.onClick}><Icon name={a.icon} size={16} /></button>)}
         </div>
       ) : null}
     </div>

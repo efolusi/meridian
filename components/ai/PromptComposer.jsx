@@ -36,7 +36,7 @@ export const PromptComposer = React.forwardRef(function PromptComposer({ value, 
         {hint ? <span className="ef-composer__hint">{hint}</span> : null}
         {busy
           ? <button type="button" className="ef-composer__send" aria-label="Stop generating" onClick={onStop} disabled={!onStop}>
-              <Icon name="square" size={13} strokeWidth={2.5} />
+              <Icon name="square" size={12} strokeWidth={2.5} />
             </button>
           : <button type="button" className="ef-composer__send" aria-label="Send" disabled={disabled || !v.trim()} onClick={send}>
               <Icon name="arrow-up-right" size={16} strokeWidth={2} style={{ transform: 'rotate(-45deg)' }} />

@@ -63,7 +63,7 @@ export function SelectionQuote({ children, actions = [{ id: 'quote', label: 'Quo
             <React.Fragment key={a.id || i}>
               {i > 0 ? <span className="ef-selq__sep" aria-hidden="true"></span> : null}
               <button type="button" className="ef-selq__btn" onClick={() => { if (onAction) onAction(a.id, sel.text); window.getSelection().removeAllRanges(); setSel(null); setPos(null); }}>
-                {a.icon ? <Icon name={a.icon} size={13} /> : null}{a.label}
+                {a.icon ? <Icon name={a.icon} size={12} /> : null}{a.label}
               </button>
             </React.Fragment>
           ))}

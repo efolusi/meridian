@@ -25,7 +25,7 @@ export function Toolbar({ items, value, onChange, label, style, className, ...re
           <button key={it.id} type="button" disabled={it.disabled} aria-pressed={active.includes(it.id) || undefined}
             className={`ef-toolbar__btn${active.includes(it.id) ? ' ef-toolbar__btn--active' : ''}`}
             onClick={() => { if (onChange) onChange(it.id); if (it.onClick) it.onClick(); }}>
-            {it.icon ? <Icon name={it.icon} size={15} /> : null}
+            {it.icon ? <Icon name={it.icon} size={16} /> : null}
             {it.label || null}
           </button>
         );

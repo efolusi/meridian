@@ -100,7 +100,7 @@ export const ComboboxTrigger = React.forwardRef(function ComboboxTrigger({ class
 
 export const ComboboxClear = React.forwardRef(function ComboboxClear({ className, children, disabled, onClick, ...props }, ref) {
   const context = React.useContext(ComboboxContext);
-  return <button ref={ref} type="button" data-slot="combobox-clear" aria-label="Clear selection" disabled={disabled ?? context?.disabled} className={join('ef-combobox__button', className)} onClick={event => { onClick?.(event); if (!event.defaultPrevented) context?.clear(); }} {...props}>{children || <Icon name="x" size={14} />}</button>;
+  return <button ref={ref} type="button" data-slot="combobox-clear" aria-label="Clear selection" disabled={disabled ?? context?.disabled} className={join('ef-combobox__button', className)} onClick={event => { onClick?.(event); if (!event.defaultPrevented) context?.clear(); }} {...props}>{children || <Icon name="x" size={16} />}</button>;
 });
 
 function useInputKeyboard(context, onKeyDown) {
@@ -167,7 +167,7 @@ export const ComboboxItem = React.forwardRef(function ComboboxItem({ value, keyw
   React.useEffect(() => context?.register(id, { id, value: nextValue, text, keywords, disabled, ref: localRef }), [context?.register, disabled, id, keywords.join('\0'), nextValue, text]);
   const hidden = context ? !context.matches({ text, keywords }) : false;
   const selected = context?.multiple ? context.selected.some(item => same(item, nextValue)) : same(context?.selected, nextValue);
-  return <button ref={localRef} type="button" id={id} data-slot="combobox-item" data-highlighted={context?.active === id ? 'true' : 'false'} data-disabled={disabled ? 'true' : 'false'} role="option" aria-selected={selected} disabled={disabled} hidden={hidden} className={join('ef-combobox__item', className)} onMouseEnter={() => !disabled && context?.setActive(id)} onClick={event => { onClick?.(event); if (!event.defaultPrevented && !disabled) context?.choose(nextValue, text); }} {...props}>{children}{selected ? <span data-slot="combobox-item-indicator" className="ef-combobox__indicator"><Icon name="check" size={15} /></span> : null}</button>;
+  return <button ref={localRef} type="button" id={id} data-slot="combobox-item" data-highlighted={context?.active === id ? 'true' : 'false'} data-disabled={disabled ? 'true' : 'false'} role="option" aria-selected={selected} disabled={disabled} hidden={hidden} className={join('ef-combobox__item', className)} onMouseEnter={() => !disabled && context?.setActive(id)} onClick={event => { onClick?.(event); if (!event.defaultPrevented && !disabled) context?.choose(nextValue, text); }} {...props}>{children}{selected ? <span data-slot="combobox-item-indicator" className="ef-combobox__indicator"><Icon name="check" size={16} /></span> : null}</button>;
 });
 
 export const ComboboxGroup = React.forwardRef(function ComboboxGroup({ className, ...props }, ref) { return <div ref={ref} data-slot="combobox-group" role="group" className={join('ef-combobox__group', className)} {...props} />; });

@@ -51,7 +51,7 @@ export const BreadcrumbPage = React.forwardRef(function BreadcrumbPage({ classNa
 export const BreadcrumbSeparator = React.forwardRef(function BreadcrumbSeparator({ children, className, ...rest }, ref) {
   return (
     <li {...rest} ref={ref} data-slot="breadcrumb-separator" role="presentation" aria-hidden="true" className={`ef-breadcrumb__separator${className ? ' ' + className : ''}`}>
-      {children ?? <Icon name="chevron-right" size={14} />}
+      {children ?? <Icon name="chevron-right" size={16} />}
     </li>
   );
 });

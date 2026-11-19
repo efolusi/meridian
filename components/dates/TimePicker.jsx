@@ -120,7 +120,7 @@ export function TimePicker({ label, hint, value, onChange, stepMinutes = 30, min
         value={q != null ? q : value ? fmtSlot(value) : ''}
         onChange={e => { setQ(e.target.value); setOpen(true); setHi(0); }}
         onClick={openList} onFocus={openList} onBlur={onBlur} onKeyDown={onKey} />
-      <span className="ef-timepicker__icon"><Icon name="clock" size={15} /></span>
+      <span className="ef-timepicker__icon"><Icon name="clock" size={16} /></span>
       {open && (
         <Portal>
           {/* mousedown is swallowed so an option click never blurs the input into a stray typed-commit */}
@@ -131,7 +131,7 @@ export function TimePicker({ label, hint, value, onChange, stepMinutes = 30, min
                 className={`ef-timepicker__opt${i === hi ? ' ef-timepicker__opt--hi' : ''}`}
                 onMouseEnter={() => setHi(i)} onClick={() => pick(t)}>
                 {fmtSlot(t)}
-                {t === value ? <span className="ef-timepicker__opt__check"><Icon name="check" size={15} /></span> : null}
+                {t === value ? <span className="ef-timepicker__opt__check"><Icon name="check" size={16} /></span> : null}
               </button>
             ))}
           </div>

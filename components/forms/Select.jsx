@@ -115,5 +115,5 @@ export const SelectItem = React.forwardRef(function SelectItem({ value, disabled
   const label = itemText(children) || value;
   React.useEffect(() => { ctx?.register(value, label); }, [ctx?.register, value, label]);
   const selected = ctx?.value === value;
-  return <button {...props} ref={ref} type="button" role="option" aria-selected={selected} disabled={disabled} data-slot="select-item" className={`ef-select-item${className ? ` ${className}` : ''}`} onClick={event => { onClick?.(event); if (!event.defaultPrevented) ctx?.choose(value, label); }}>{children}{selected ? <span className="ef-select-check"><Icon name="check" size={15} /></span> : null}</button>;
+  return <button {...props} ref={ref} type="button" role="option" aria-selected={selected} disabled={disabled} data-slot="select-item" className={`ef-select-item${className ? ` ${className}` : ''}`} onClick={event => { onClick?.(event); if (!event.defaultPrevented) ctx?.choose(value, label); }}>{children}{selected ? <span className="ef-select-check"><Icon name="check" size={16} /></span> : null}</button>;
 });

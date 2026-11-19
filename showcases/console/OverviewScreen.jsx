@@ -43,7 +43,7 @@ function Activity() {
       <div style={{ display: 'flex', flexDirection: 'column' }}>
         {EVENTS.map(([who, what, when, icon], i) => (
           <div key={i} style={{ display: 'flex', gap: 10, alignItems: 'flex-start', padding: '9px 12px', borderRadius: 'var(--radius-sm)' }}>
-            <span style={{ display: 'inline-flex', width: 28, height: 28, alignItems: 'center', justifyContent: 'center', flex: 'none', borderRadius: 'var(--radius-full)', background: 'var(--sand-100)', color: 'var(--sand-700)' }}><Icon name={icon === 'key-round' ? 'lock' : icon} size={14} /></span>
+            <span style={{ display: 'inline-flex', width: 28, height: 28, alignItems: 'center', justifyContent: 'center', flex: 'none', borderRadius: 'var(--radius-full)', background: 'var(--sand-100)', color: 'var(--sand-700)' }}><Icon name={icon === 'key-round' ? 'lock' : icon} size={16} /></span>
             <div style={{ fontSize: 13, lineHeight: 1.45 }}>
               <span style={{ fontWeight: 600 }}>{who}</span> <span style={{ color: 'var(--text-secondary)' }}>{what}</span>
               <div style={{ fontSize: 11, color: 'var(--text-muted)', marginTop: 1 }}>{when}</div>

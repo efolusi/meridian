@@ -35,7 +35,7 @@ export function Steps({ items, current = 0, orientation = 'vertical', style, cla
         return (
           <div key={it.id || i} className={`ef-steps__item ef-steps__item--${state}`}>
             <div className="ef-steps__rail">
-              <span className="ef-steps__marker">{state === 'done' ? <Icon name="check" size={13} strokeWidth={2.5} /> : i + 1}</span>
+              <span className="ef-steps__marker">{state === 'done' ? <Icon name="check" size={12} strokeWidth={2.5} /> : i + 1}</span>
               {(orientation === 'horizontal' || i < items.length - 1) && <span className="ef-steps__line"></span>}
             </div>
             <div className="ef-steps__content">

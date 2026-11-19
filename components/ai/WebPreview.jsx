@@ -58,19 +58,19 @@ export function WebPreview({ url: urlProp = '', height = 340, logs = [], default
   return (
     <div {...rest} className={`ef-webprev${cons ? ' ef-webprev--console' : ''}${className ? ' ' + className : ''}`} style={style}>
       <div className="ef-webprev__bar">
-        <button type="button" className="ef-webprev__btn" aria-label="Reload" onClick={() => setKey(k => k + 1)}><Icon name="refresh-cw" size={13} /></button>
+        <button type="button" className="ef-webprev__btn" aria-label="Reload" onClick={() => setKey(k => k + 1)}><Icon name="refresh-cw" size={12} /></button>
         <input className="ef-webprev__addr" type="text" value={draft} placeholder="Enter a URL to preview" spellCheck={false}
           onChange={e => setDraft(e.target.value)}
           onKeyDown={e => { if (e.key === 'Enter') { commit(draft); e.currentTarget.blur(); } if (e.key === 'Escape') { setDraft(url); e.currentTarget.blur(); } }}
           onBlur={() => setDraft(url)} onFocus={e => e.currentTarget.select()} />
         {VIEWPORTS.map(v => (
-          <button key={v.id} type="button" className={`ef-webprev__btn${vp === v.id ? ' ef-webprev__btn--on' : ''}`} aria-label={v.id} aria-pressed={vp === v.id} onClick={() => setVp(v.id)}><Icon name={v.icon} size={14} /></button>
+          <button key={v.id} type="button" className={`ef-webprev__btn${vp === v.id ? ' ef-webprev__btn--on' : ''}`} aria-label={v.id} aria-pressed={vp === v.id} onClick={() => setVp(v.id)}><Icon name={v.icon} size={16} /></button>
         ))}
         <button type="button" className={`ef-webprev__btn${cons ? ' ef-webprev__btn--on' : ''}`} style={{ position: 'relative' }} aria-label="Console" aria-pressed={cons} onClick={() => setCons(!cons)}>
-          <Icon name="terminal" size={14} />
+          <Icon name="terminal" size={16} />
           {errs ? <span className="ef-webprev__badge">{errs}</span> : null}
         </button>
-        <a className="ef-webprev__btn" aria-label="Open in new tab" href={safe} target="_blank" rel="noreferrer noopener"><Icon name="external-link" size={13} /></a>
+        <a className="ef-webprev__btn" aria-label="Open in new tab" href={safe} target="_blank" rel="noreferrer noopener"><Icon name="external-link" size={12} /></a>
       </div>
       <div className="ef-webprev__stage" style={{ height }}>
         {children

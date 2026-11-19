@@ -21,7 +21,7 @@ export function Task({ items = [], streaming, style, className, ...rest }) {
       {items.map((it, i) => (
         <React.Fragment key={i}>
           <div className="ef-task__row" role="listitem">
-            <span className="ef-task__icon">{it.icon ? <Icon name={it.icon} size={14} /> : <span className="ef-task__dot"></span>}</span>
+            <span className="ef-task__icon">{it.icon ? <Icon name={it.icon} size={16} /> : <span className="ef-task__dot"></span>}</span>
             <span><span className="ef-task__label">{it.label}</span>{it.detail ? <span className="ef-task__detail"> {it.detail}</span> : null}</span>
           </div>
           {i < items.length - 1 ? <span className="ef-task__rail" aria-hidden="true"></span> : null}
