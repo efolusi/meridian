@@ -98,7 +98,7 @@ export function BadgeDemo() {
 export function CardDemo() {
   const { Card, CardAction, CardContent, CardDescription, CardFooter, CardHeader, CardTitle, Badge, Button, Icon } = window.EfolusiDesignSystem_4ffc3d;
   return (
-    <div style={{ width: 380 }}>
+    <div style={{ width: '100%', maxWidth: 380 }}>
       <Card>
         <CardHeader>
           <CardTitle>Nightly export</CardTitle>
