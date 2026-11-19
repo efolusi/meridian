@@ -12,7 +12,7 @@ export interface SiteHeaderProps extends React.HTMLAttributes<HTMLElement> {
   brandLabel?: string;
   /** Primary links. Each needs a real destination. */
   links?: SiteHeaderLink[];
-  /** The product's own controls: account entry, ThemeToggle, the main call to action. */
+  /** The product's own controls: account entry, ThemeToggle, the main call to action. Rendered twice (the bar and the mobile panel; one is hidden), so put no `id` inside and keep any state outside. */
   actions?: React.ReactNode;
   /** The link to the same page in the other language. */
   languageSwitch?: { label: React.ReactNode; href: string; hrefLang?: string; ariaLabel?: string };

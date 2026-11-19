@@ -4,7 +4,7 @@
 export function BubbleDemo() {
   const { Bubble, BubbleContent, BubbleGroup, BubbleReactions } = window.EfolusiDesignSystem_4ffc3d;
   return (
-    <BubbleGroup style={{ width: 420 }}>
+    <BubbleGroup style={{ width: '100%', maxWidth: 420 }}>
       <Bubble variant="secondary"><BubbleContent>Did the production checks finish?</BubbleContent></Bubble>
       <Bubble align="end">
         <BubbleContent>Yes. All regions are healthy and the release is ready.</BubbleContent>

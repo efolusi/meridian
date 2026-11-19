@@ -4,6 +4,7 @@ import { SiteHeader } from '../components/marketing/SiteHeader.jsx';
 import { SiteFooter } from '../components/marketing/SiteFooter.jsx';
 import { LegalDocument, parseLegalInline } from '../components/marketing/LegalDocument.jsx';
 import { Marquee } from '../components/marketing/Marquee.jsx';
+import { renderToString } from 'react-dom/server';
 
 describe('SiteHeader', () => {
   const links = [{ label: 'Docs', href: '/docs', current: true }, { label: 'Pricing', href: '/pricing' }];
@@ -86,5 +87,12 @@ describe('Marquee with links (MD10)', () => {
     const css = document.getElementById('ef-css-marquee').textContent.replace(/\s+/g, '');
     expect(css).toMatch(/\.ef-marquee__list:focus-within\{position:static;[^}]*clip:auto/);
     expect(css).toMatch(/\.ef-marquee__list:focus-within~\.ef-marquee__viewport\{display:none\}/);
+  });
+});
+
+describe('Marquee before hydration (MD11)', () => {
+  it('server-renders the moving copies inert, so their links never take Tab focus', () => {
+    const html = renderToString(<Marquee label="Products" items={[<a key="a" href="/komando">Komando</a>]} />);
+    expect(html).toMatch(/class="ef-marquee__viewport" aria-hidden="true" inert=""/);
   });
 });

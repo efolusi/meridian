@@ -1,16 +1,16 @@
 {
   "totals": {
     "@efolusi/meridian": {
-      "bytes": 372443,
-      "gzip": 84278
+      "bytes": 372417,
+      "gzip": 84291
     },
     "dist/components.css": {
       "bytes": 225158,
       "gzip": 30621
     },
     "_ds_bundle.js": {
-      "bytes": 871089,
-      "gzip": 154747
+      "bytes": 871104,
+      "gzip": 154809
     }
   },
   "modules": [
@@ -1138,8 +1138,8 @@
       "exports": [
         "Marquee"
       ],
-      "bytes": 45844,
-      "gzip": 7682
+      "bytes": 45815,
+      "gzip": 7669
     },
     {
       "module": "marketing/Reveal.js",
