@@ -14,7 +14,7 @@ Root paths in this repo (`styles.css`, `tokens/`, `assets/`, `components/`, `_ds
 
 ### How Meridian consumes design-tokens
 
-The source of truth is `design-tokens`. `scripts/sync_tokens.mjs <tag>` vendors its `tokens.json` and `tokens/web/{colors,typography,spacing,effects}.css` into this repo and pins them in `tokens/design-tokens.lock.json`. `scripts/build_tokens.py` only writes `tailwind.preset.js`.
+The source of truth is `design-tokens`. Every design-tokens tag is re-vendored here and in Glamor to the same tag before either releases ([rule](https://github.com/efolusi/design-tokens/blob/main/docs/consumers.md#releasing-a-new-version)). `scripts/sync_tokens.mjs <tag>` vendors its `tokens.json` and `tokens/web/{colors,typography,spacing,effects}.css` into this repo and pins them in `tokens/design-tokens.lock.json`. `scripts/build_tokens.py` only writes `tailwind.preset.js`.
 
 How it got there:
 
@@ -36,7 +36,7 @@ The site already depends on `@efolusi/meridian` (`^1.22.0`, the latest release).
 | 2 | Move Meridian's token values into `design-tokens/tokens.json`; move Komando-only tokens back to Glamor/komando-apps | design-tokens | done (v0.0.1) |
 | 3 | Generator: `tokens.json` → `tokens/web/*.css` | design-tokens | done (v0.0.1) |
 | 4 | Sync script + pinned tag; `build_tokens.py` reads the vendored files | meridian | done (pinned to v0.1.1) |
-| 5 | Check: vendored tokens equal pinned export | meridian | done (`sync_tokens.mjs --check` in `npm run check`) |
+| 5 | Check: vendored tokens equal pinned export | meridian | done (`sync_tokens.mjs --check` offline in `npm run check`; upstream against the pinned tag when `CI=true`) |
 | 6 | Map Glamor names (`window`, `panel`, `text2`, …) to Meridian roles (`surface`, `text`, `border`) so both use one set of names | design-tokens + glamor | open |
 | 7 | efolusi/efolusi: bump to 1.22.0, audit hand-written CSS that a Meridian component or token covers | efolusi | done (efolusi/efolusi#76) |
 | 8 | efolusi/efolusi: list missing components or tokens as Meridian issues | efolusi → meridian | done (#108, #109, #110, #111) |
