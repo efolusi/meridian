@@ -1,16 +1,16 @@
 {
   "totals": {
     "@efolusi/meridian": {
-      "bytes": 357070,
-      "gzip": 80177
+      "bytes": 359620,
+      "gzip": 80770
     },
     "dist/components.css": {
-      "bytes": 210940,
-      "gzip": 28663
+      "bytes": 214731,
+      "gzip": 29261
     },
     "_ds_bundle.js": {
-      "bytes": 827190,
-      "gzip": 145683
+      "bytes": 835831,
+      "gzip": 147231
     }
   },
   "modules": [
@@ -1102,6 +1102,26 @@
       ],
       "bytes": 44400,
       "gzip": 7029
+    },
+    {
+      "module": "marketing/FeatureCard.js",
+      "group": "marketing",
+      "exports": [
+        "FeatureGrid",
+        "FeatureCard"
+      ],
+      "bytes": 45631,
+      "gzip": 7534
+    },
+    {
+      "module": "marketing/Hero.js",
+      "group": "marketing",
+      "exports": [
+        "Hero",
+        "HeroAccent"
+      ],
+      "bytes": 1333,
+      "gzip": 631
     },
     {
       "module": "marketing/Section.js",

@@ -52,7 +52,7 @@ function MiniConsole() {
   );
 }
 
-function Hero() {
+function WebsiteHero() {
   return (
     <section style={{ background: 'var(--surface-page)', paddingTop: 88, paddingBottom: 96 }}>
       <div style={{ ...wrap, display: 'flex', gap: 64, alignItems: 'center' }}>
@@ -217,4 +217,4 @@ function SiteFooter() {
   );
 }
 
-Object.assign(window, { SiteHeader, Hero, Products, BrandBand, Pricing, SiteFooter, Newsletter });
+Object.assign(window, { SiteHeader, WebsiteHero, Products, BrandBand, Pricing, SiteFooter, Newsletter });

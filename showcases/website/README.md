@@ -3,7 +3,7 @@
 A public homepage: header, hero with live product preview, six-card product grid, brand band, pricing, footer. Original demonstration of the system (no prior site existed).
 
 - `index.html` — full scrolling page
-- `Sections.jsx` — SiteHeader, Hero, Products, BrandBand, Pricing, SiteFooter
+- `Sections.jsx` — SiteHeader, WebsiteHero, Products, BrandBand, Pricing, SiteFooter
 
 1200px container, 96px+ between bands, solid `--surface-page` hero (no gradients anywhere in the system), `brand` buttons for marketing CTAs.
 

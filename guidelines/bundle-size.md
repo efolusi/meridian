@@ -13,9 +13,9 @@ CSS is not counted per component: `styles.css` ships every component style in on
 
 | File | Size | Gzip |
 | --- | ---: | ---: |
-| `@efolusi/meridian` | 348.7 kB | 78.3 kB |
-| `dist/components.css` | 206.0 kB | 28.0 kB |
-| `_ds_bundle.js` | 807.8 kB | 142.3 kB |
+| `@efolusi/meridian` | 351.2 kB | 78.9 kB |
+| `dist/components.css` | 209.7 kB | 28.6 kB |
+| `_ds_bundle.js` | 816.2 kB | 143.8 kB |
 
 The root import, `@efolusi/meridian`, is every component. `_ds_bundle.js` is the zero-build CDN bundle, which also carries each component's CSS. The root import is minified; the CSS and the CDN bundle are measured as shipped.
 
@@ -126,6 +126,8 @@ The root import, `@efolusi/meridian`, is every component. `_ds_bundle.js` is the
 | `forms/Textarea.js` | Textarea | 45.0 kB | 7.6 kB |
 | `forms/Toggle.js` | Toggle, ToggleGroup, ToggleGroupItem | 2.7 kB | 1.2 kB |
 | `icons/Icon.js` | Icon | 43.4 kB | 6.9 kB |
+| `marketing/FeatureCard.js` | FeatureGrid, FeatureCard | 44.6 kB | 7.4 kB |
+| `marketing/Hero.js` | Hero, HeroAccent | 1.3 kB | 0.6 kB |
 | `marketing/Section.js` | Section, SectionHead | 1.2 kB | 0.5 kB |
 | `navigation/Breadcrumbs.js` | Breadcrumb, BreadcrumbList, BreadcrumbItem, BreadcrumbLink, BreadcrumbPage, BreadcrumbSeparator, BreadcrumbEllipsis | 45.8 kB | 7.6 kB |
 | `navigation/Menubar.js` | Menubar, MenubarMenu, MenubarTrigger, MenubarContent, MenubarPortal, MenubarGroup, MenubarRadioGroup, MenubarLabel, MenubarSeparator, MenubarShortcut, MenubarItem, MenubarCheckboxItem, MenubarRadioItem, MenubarSub, MenubarSubTrigger, MenubarSubContent | 59.3 kB | 11.7 kB |

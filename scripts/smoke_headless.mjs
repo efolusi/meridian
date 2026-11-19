@@ -11,7 +11,7 @@
 //
 // With SHOTS=<dir> it additionally captures one PNG per example group per theme
 // (g-<file>-<light|dark>.png) after the render settles, plus the forms group in
-// compact density and, on Chromium, on a coarse pointer (g-forms-<compact|coarse>-light.png). Those are the inputs to
+// compact density and, on Chromium, on a coarse pointer (g-<forms|marketing>-<compact|coarse>-light.png). Those are the inputs to
 // scripts/check_visual.mjs. Capture runs with reduced motion and a fixed
 // viewport so the pixels are deterministic on a given platform; comparison is
 // only meaningful CI-to-CI, where the platform is constant.
@@ -126,8 +126,9 @@ if (SHOTS) {
   await page.evaluate(() => document.documentElement.setAttribute('data-theme', 'light'));
   await page.evaluate(() => document.documentElement.setAttribute('data-density', 'compact'));
   await shootGroup(page, 'forms', 'g-forms-compact-light.png');
+  await shootGroup(page, 'marketing', 'g-marketing-compact-light.png');
   await page.evaluate(() => document.documentElement.removeAttribute('data-density'));
-  count++;
+  count += 2;
   if (ENGINE === 'chromium') {
     // hasTouch makes Chromium report (pointer: coarse); it needs its own context.
     const touch = await browser.newContext({ viewport: { width: 1280, height: 900 }, deviceScaleFactor: 1, reducedMotion: 'reduce', hasTouch: true });
@@ -147,8 +148,9 @@ if (SHOTS) {
     await coarse.addStyleTag({ content: CAPTURE_CSS });
     await coarse.evaluate(() => document.documentElement.setAttribute('data-theme', 'light'));
     await shootGroup(coarse, 'forms', 'g-forms-coarse-light.png');
+    await shootGroup(coarse, 'marketing', 'g-marketing-coarse-light.png');
     await touch.close();
-    count++;
+    count += 2;
   }
   console.log(`smoke: ${count} group screenshots -> ${SHOTS}`);
 }

@@ -42,3 +42,29 @@ export function ButtonPill() {
     </div>
   );
 }
+
+// @demo Hero Centred hero with an accent word
+export function HeroDemo() {
+  const { Hero, HeroAccent, Button, StatusDot } = window.EfolusiDesignSystem_4ffc3d;
+  return (
+    <Hero
+      style={{ paddingBlock: 'var(--space-12)' }}
+      title={<>Tools that run on <HeroAccent>your own</HeroAccent> machine</>}
+      sub="Open source, self-hosted and private by default. Every word comes from your own dictionary."
+      actions={<><Button shape="pill" size="xl" iconRight="arrow-right">Start free</Button><Button shape="pill" size="xl" variant="secondary">Read the docs</Button></>}
+      proof={<><StatusDot status="success" /><span>All services running</span></>}
+    />
+  );
+}
+
+// @demo FeatureCard Three tones in a grid
+export function FeatureCardDemo() {
+  const { FeatureGrid, FeatureCard } = window.EfolusiDesignSystem_4ffc3d;
+  return (
+    <FeatureGrid>
+      <FeatureCard tone="peach" icon="package" title="Products" body="Seven tools, one account, all running on your machine." cta="See the portfolio" href="#products" />
+      <FeatureCard tone="cocoa" icon="coins" title="Token" body="Buyback and burn, visible on chain." cta="Read more" href="#token" />
+      <FeatureCard tone="amber" icon="sparkles" title="Standard" body="Open source, self-hosted, private and secure." cta="About us" href="#about" />
+    </FeatureGrid>
+  );
+}

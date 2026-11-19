@@ -3264,6 +3264,67 @@
       ]
     },
     {
+      "name": "featuregrid",
+      "type": "registry:ui",
+      "title": "FeatureGrid + FeatureCard",
+      "description": "Use `FeatureGrid` with three `FeatureCard`s to say what a product is about at a glance. Give a card an `href` and the whole card is the link; `cta` adds the link label with an arrow. The `tone` fills (`peach`, `cocoa`, `amber`) are the same for every product, from the `--tone-*` tokens; use each onc",
+      "dependencies": [
+        "react"
+      ],
+      "registryDependencies": [
+        "https://meridian.efolusi.com/site/registry/meridian-base.json",
+        "https://meridian.efolusi.com/site/registry/button.json",
+        "https://meridian.efolusi.com/site/registry/icon.json"
+      ],
+      "files": [
+        {
+          "path": "components/marketing/FeatureCard.jsx",
+          "type": "registry:ui"
+        },
+        {
+          "path": "components/marketing/FeatureCard.d.ts",
+          "type": "registry:component"
+        },
+        {
+          "path": "components/marketing/FeatureCard.prompt.md",
+          "type": "registry:component"
+        }
+      ],
+      "categories": [
+        "marketing"
+      ]
+    },
+    {
+      "name": "hero",
+      "type": "registry:ui",
+      "title": "Hero + HeroAccent",
+      "description": "Use `Hero` once, at the top of a marketing page: the `title`, a short `sub`, the `actions` (pill buttons, the main one `size=\"xl\"`) and an optional `proof` line. It is centred by default; use `align=\"start\"` beside an image. Link `landing.css` so the top and bottom spacing steps down on small screen",
+      "dependencies": [
+        "react"
+      ],
+      "registryDependencies": [
+        "https://meridian.efolusi.com/site/registry/meridian-base.json",
+        "https://meridian.efolusi.com/site/registry/button.json"
+      ],
+      "files": [
+        {
+          "path": "components/marketing/Hero.jsx",
+          "type": "registry:ui"
+        },
+        {
+          "path": "components/marketing/Hero.d.ts",
+          "type": "registry:component"
+        },
+        {
+          "path": "components/marketing/Hero.prompt.md",
+          "type": "registry:component"
+        }
+      ],
+      "categories": [
+        "marketing"
+      ]
+    },
+    {
       "name": "section",
       "type": "registry:ui",
       "title": "Section + SectionHead",
