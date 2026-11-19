@@ -2,9 +2,8 @@ import { readdirSync, readFileSync } from 'node:fs'
 import { describe, expect, it } from 'vitest'
 
 // CI security contract for .github/workflows. The repository is public, so
-// every job runs on GitHub-hosted runners. The one exception is the production
-// deploy, which writes onto the VPS from the self-hosted efolusi-prod host
-// until the Worker move; what may run where is a security boundary.
+// every job runs on GitHub-hosted runners; what may run where is a security
+// boundary, so no workflow may name a self-hosted host.
 
 const WORKFLOW_DIR = '.github/workflows'
 const workflows = Object.fromEntries(
@@ -109,15 +108,15 @@ describe('CI runner isolation', () => {
     }
   })
 
-  it('runs every job on GitHub-hosted runners except the production deploy', () => {
+  it('runs every job on GitHub-hosted runners', () => {
     const selfHosted = []
     for (const [name, src] of Object.entries(workflows)) {
       for (const [job, expr] of Object.entries(runsOn(src))) {
         if (isSelfHosted(expr)) selfHosted.push(`${name} ${job}`)
       }
     }
-    expect(selfHosted).toEqual(['deploy-prod-static.yml deploy'])
-    expect(workflows).not.toHaveProperty(['deploy-dev-static.yml'])
+    expect(selfHosted).toEqual([])
+    expect(Object.keys(workflows).sort()).toEqual(['checks.yml', 'deploy-production.yml', 'publish.yml', 'update-visual-baselines.yml'])
   })
 
   it('does not leave a checkout token in .git/config for PR code to read', () => {
@@ -323,7 +322,7 @@ describe('one gate list', () => {
     const gates = jobBlock(workflows['checks.yml'], 'gates')
     expect(gates).toMatch(/\n\s+run: npm run check\n/)
     expect(JSON.parse(readFileSync('package.json', 'utf8')).scripts.check).toBe('node scripts/check_all.mjs')
-    for (const name of ['publish.yml', 'deploy-prod-static.yml']) {
+    for (const name of ['publish.yml', 'deploy-production.yml']) {
       expect(workflows[name], name).toMatch(/\bnpm run check\b/)
     }
   })
