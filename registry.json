@@ -3358,7 +3358,7 @@
       "name": "themetoggle",
       "type": "registry:ui",
       "title": "ThemeToggle",
-      "description": "One theme control for every Efolusi site. `ThemeToggle` is a single 44px button that cycles System, Light and Dark. On System it follows the operating system live. The choice is saved in the `efolusi_theme` cookie on `.efolusi.com`, so it carries across every subdomain, with a localStorage mirror.",
+      "description": "One theme control for every Efolusi site, following the [theme contract](../../guidelines/theming.md#theme-contract). `ThemeToggle` is a single 44px button that cycles Light, Dark and System. On System it follows the operating system live. The choice is saved in the `efolusi_theme` cookie on `.efolu",
       "dependencies": [
         "react"
       ],

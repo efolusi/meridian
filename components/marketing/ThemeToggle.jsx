@@ -3,10 +3,13 @@ import React from 'react';
 import { injectEfCss } from '../forms/Button.jsx';
 import { Icon } from '../icons/Icon.jsx';
 
-// One theme control for every Efolusi site. The cookie on .efolusi.com carries the
-// choice across subdomains; localStorage mirrors it for hosts outside that domain.
+// One theme control for every Efolusi site; the contract is guidelines/theming.md (Theme contract). The
+// cookie on .efolusi.com carries the choice (system, light or dark) and wins;
+// localStorage mirrors it for when cookies are unavailable.
 const THEME_COOKIE = 'efolusi_theme';
-const THEME_PREFERENCES = ['system', 'light', 'dark'];
+const THEME_STORAGE_KEY = 'efolusi-theme';
+// Cycle order of the single button.
+const THEME_PREFERENCES = ['light', 'dark', 'system'];
 const YEAR = 60 * 60 * 24 * 365;
 
 const LABELS = {
@@ -22,7 +25,7 @@ export function readThemePreference(doc = globalThis.document, storage = globalT
   const fromCookie = valid(m && decodeURIComponent(m[1]));
   if (fromCookie) return fromCookie;
   try {
-    return valid(storage?.getItem(THEME_COOKIE)) || 'system';
+    return valid(storage?.getItem(THEME_STORAGE_KEY)) || 'system';
   } catch {
     return 'system';
   }
@@ -35,7 +38,7 @@ export function writeThemePreference(value, doc = globalThis.document, storage =
   const secure = doc?.location?.protocol === 'https:' ? '; Secure' : '';
   if (doc) doc.cookie = `${THEME_COOKIE}=${pref}${domain}; Path=/; Max-Age=${YEAR}; SameSite=Lax${secure}`;
   try {
-    storage?.setItem(THEME_COOKIE, pref);
+    storage?.setItem(THEME_STORAGE_KEY, pref);
   } catch {
     /* storage blocked: the cookie still holds the choice */
   }
@@ -49,13 +52,15 @@ export function resolveTheme(pref, matchMedia = globalThis.matchMedia) {
 
 export function applyTheme(pref, doc = globalThis.document, matchMedia = globalThis.matchMedia) {
   const theme = resolveTheme(pref, matchMedia);
-  doc?.documentElement?.setAttribute('data-theme', theme);
+  // Meridian's light palette is bare :root; dark needs the dark data-theme value.
+  if (theme === 'dark') doc?.documentElement?.setAttribute('data-theme', 'dark');
+  else doc?.documentElement?.removeAttribute('data-theme');
   return theme;
 }
 
 /** Inline this in <head>, before any stylesheet paints, so the first frame has the right theme. */
 export function themeInitScript() {
-  return `(function(){try{var m=document.cookie.match(/(?:^|;\\s*)${THEME_COOKIE}=([^;]+)/),p=m&&decodeURIComponent(m[1]);if(p!=='light'&&p!=='dark'&&p!=='system'){p=null;try{p=localStorage.getItem('${THEME_COOKIE}')}catch(e){}}if(p!=='light'&&p!=='dark')p=window.matchMedia&&matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light';document.documentElement.setAttribute('data-theme',p)}catch(e){}})();`;
+  return `(function(){try{var m=document.cookie.match(/(?:^|;\\s*)${THEME_COOKIE}=([^;]+)/),p=m&&decodeURIComponent(m[1]);if(p!=='light'&&p!=='dark'&&p!=='system'){p=null;try{p=localStorage.getItem('${THEME_STORAGE_KEY}')}catch(e){}}if(p!=='light'&&p!=='dark')p=window.matchMedia&&matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light';if(p==='dark')document.documentElement.setAttribute('data-theme','dark');else document.documentElement.removeAttribute('data-theme')}catch(e){}})();`;
 }
 
 const CSS = `

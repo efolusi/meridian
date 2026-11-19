@@ -17,13 +17,13 @@ afterEach(() => { delete window.matchMedia; });
 describe('themeInitScript', () => {
   it('reads the cookie first, then localStorage, then the system preference', () => {
     fakeMedia(true);
-    localStorage.setItem('efolusi_theme', 'light');
+    localStorage.setItem('efolusi-theme', 'light');
     document.cookie = 'efolusi_theme=dark; Path=/';
     new Function(themeInitScript())();
     expect(document.documentElement.getAttribute('data-theme')).toBe('dark');
     clearCookie();
     new Function(themeInitScript())();
-    expect(document.documentElement.getAttribute('data-theme')).toBe('light');
+    expect(document.documentElement.hasAttribute('data-theme')).toBe(false);
     localStorage.clear();
     new Function(themeInitScript())();
     expect(document.documentElement.getAttribute('data-theme')).toBe('dark');
@@ -35,7 +35,7 @@ describe('theme preference storage', () => {
     for (const v of ['light', 'dark', 'system']) {
       writeThemePreference(v);
       expect(document.cookie).toContain(`efolusi_theme=${v}`);
-      expect(localStorage.getItem('efolusi_theme')).toBe(v);
+      expect(localStorage.getItem('efolusi-theme')).toBe(v);
       expect(readThemePreference()).toBe(v);
     }
   });
@@ -50,16 +50,16 @@ describe('ThemeToggle', () => {
   it('follows the system preference live while on System, and stops on Light', () => {
     const media = fakeMedia(false);
     const { getByRole } = render(<ThemeToggle />);
-    expect(document.documentElement.getAttribute('data-theme')).toBe('light');
+    expect(document.documentElement.hasAttribute('data-theme')).toBe(false);
     act(() => media.set(true));
     expect(document.documentElement.getAttribute('data-theme')).toBe('dark');
     fireEvent.click(getByRole('button'));
-    expect(document.documentElement.getAttribute('data-theme')).toBe('light');
+    expect(document.documentElement.hasAttribute('data-theme')).toBe(false);
     expect(media.listeners.size).toBe(0);
     expect(readThemePreference()).toBe('light');
   });
 
-  it('cycles System, Light, Dark with a label that names the next state, in Indonesian too', () => {
+  it('cycles Light, Dark, System with a label that names the next state, in Indonesian too', () => {
     fakeMedia(false);
     const { getByRole, rerender } = render(<ThemeToggle lang="id" />);
     const button = getByRole('button');
@@ -76,5 +76,24 @@ describe('ThemeToggle', () => {
     render(<ThemeToggle />);
     const css = document.getElementById('ef-css-theme-toggle').textContent;
     expect(css).toMatch(/\.ef-theme-toggle\{[^}]*width:var\(--tap-min\);height:var\(--tap-min\)/);
+  });
+});
+
+describe('theme contract', () => {
+  it('cycles Light -> Dark -> System and back, storing the choice in the cookie', () => {
+    fakeMedia(false);
+    writeThemePreference('light');
+    const { getByRole } = render(<ThemeToggle />);
+    const button = getByRole('button');
+    const seen = [];
+    for (let i = 0; i < 3; i += 1) { fireEvent.click(button); seen.push(readThemePreference()); }
+    expect(seen).toEqual(['dark', 'system', 'light']);
+    expect(document.cookie).toContain('efolusi_theme=light');
+  });
+
+  it('lets the cookie win over the localStorage mirror', () => {
+    localStorage.setItem('efolusi-theme', 'dark');
+    document.cookie = 'efolusi_theme=system; Path=/';
+    expect(readThemePreference()).toBe('system');
   });
 });
