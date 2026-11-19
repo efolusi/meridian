@@ -14,7 +14,7 @@ const CSS = `
 .ef-msg__body{font-size:var(--text-md);line-height:var(--leading-relaxed);color:var(--text-primary);margin-top:4px}
 .ef-msg--user .ef-msg__body{background:var(--surface-card);border:1px solid var(--border-default);border-radius:var(--radius-md);padding:10px 14px}
 .ef-msg__actions{display:flex;gap:2px;margin-top:6px;opacity:0;transition:opacity var(--dur-fast) var(--ease-out)}
-.ef-msg:hover .ef-msg__actions{opacity:1}
+.ef-msg:hover .ef-msg__actions,.ef-msg:focus-within .ef-msg__actions{opacity:1}
 @keyframes ef-caret{0%,100%{opacity:1}50%{opacity:0}}
 .ef-msg__caret{display:inline-block;width:7px;height:15px;background:var(--accent);margin-inline-start:3px;vertical-align:-2px;animation:ef-caret 1s steps(1) infinite}
 `;

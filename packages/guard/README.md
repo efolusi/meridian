@@ -85,7 +85,7 @@ GitHub Actions needs no npm token for installing the public package:
 ```yaml
 - uses: actions/setup-node@v5
   with:
-    node-version: '22'
+    node-version: '26'
 - run: npm ci
 - run: npm run guard
 ```
