@@ -19,7 +19,7 @@ const CSS = `
 .ef-confirm__btn--accept{background:var(--accent);border-color:var(--accent);color:var(--accent-contrast)}
 .ef-confirm__btn--accept:hover{background:var(--accent-hover)}
 .ef-confirm--danger .ef-confirm__btn--accept{background:var(--danger-600);border-color:var(--danger-600);color:var(--danger-contrast)}
-.ef-confirm__status{display:flex;align-items:center;gap:var(--space-2);padding:var(--space-3) var(--space-4) var(--space-3);font-size:13px;color:var(--text-secondary)}
+.ef-confirm__status{display:flex;align-items:center;gap:var(--space-2);padding:var(--space-3) var(--space-4) var(--space-3);font-size:var(--text-sm);color:var(--text-secondary)}
 .ef-confirm__status--approved{color:var(--success-600,var(--text-secondary))}
 .ef-confirm__status--rejected{color:var(--text-muted)}
 @media (pointer:coarse){.ef-confirm__btn{min-height:var(--tap-min)}}

@@ -4,13 +4,13 @@ import { injectEfCss } from '../forms/Button.jsx';
 import { Icon } from '../icons/Icon.jsx';
 const CSS = `
 .ef-diff{border:1px solid var(--border-default);border-radius:var(--radius-md);background:var(--surface-card);overflow:hidden;font-family:var(--font-mono);font-size:12.5px;line-height:1.7}
-.ef-diff__head{display:flex;align-items:center;gap:var(--space-3);padding:var(--space-2) var(--space-3);background:var(--surface-subtle);border-bottom:1px solid var(--border-default);font-size:12px;color:var(--text-secondary);font-family:var(--font-sans)}
+.ef-diff__head{display:flex;align-items:center;gap:var(--space-3);padding:var(--space-2) var(--space-3);background:var(--surface-subtle);border-bottom:1px solid var(--border-default);font-size:var(--text-xs);color:var(--text-secondary);font-family:var(--font-sans)}
 .ef-diff__counts{margin-inline-start:auto;display:inline-flex;gap:var(--space-2);font-size:11.5px;font-family:var(--font-mono);font-variant-numeric:tabular-nums}
 .ef-diff__plus{color:var(--success-600)}
 .ef-diff__minus{color:var(--danger-600)}
 .ef-diff__scroll{overflow:auto}
 .ef-diff__line{display:flex;white-space:pre}
-.ef-diff__no{flex:none;width:38px;padding:0 var(--space-2);text-align:end;color:var(--text-muted);font-size:11px;user-select:none;background:var(--surface-subtle);border-inline-end:1px solid var(--border-default)}
+.ef-diff__no{flex:none;width:38px;padding:0 var(--space-2);text-align:end;color:var(--text-muted);font-size:var(--text-2xs);user-select:none;background:var(--surface-subtle);border-inline-end:1px solid var(--border-default)}
 .ef-diff__sign{flex:none;width:20px;text-align:center;user-select:none;color:var(--text-muted)}
 .ef-diff__text{flex:1;padding-inline-end:var(--space-4);color:var(--text-secondary)}
 .ef-diff__line--add{background:var(--success-100)}
@@ -19,11 +19,11 @@ const CSS = `
 .ef-diff__line--del .ef-diff__sign,.ef-diff__line--del .ef-diff__text{color:var(--danger-600)}
 .ef-diff__word--add{background:var(--success-300);border-radius:var(--radius-xs)}
 .ef-diff__word--del{background:var(--danger-300);border-radius:var(--radius-xs)}
-.ef-diff__skip{display:flex;align-items:center;gap:var(--space-3);padding:var(--space-0-5) 0;color:var(--text-muted);font-size:11px;user-select:none}
+.ef-diff__skip{display:flex;align-items:center;gap:var(--space-3);padding:var(--space-0-5) 0;color:var(--text-muted);font-size:var(--text-2xs);user-select:none}
 .ef-diff__skipno{flex:none;width:76px;text-align:center;background:var(--surface-subtle);border-inline-end:1px solid var(--border-default)}
 .ef-diff__file{border-top:1px solid var(--border-default)}
 .ef-diff__file:first-child{border-top:none}
-.ef-diff__filehead{display:flex;align-items:center;gap:var(--space-2);width:100%;padding:var(--space-2) var(--space-3);border:none;background:var(--surface-subtle);cursor:pointer;text-align:start;font-family:var(--font-mono);font-size:12px;color:var(--text-primary)}
+.ef-diff__filehead{display:flex;align-items:center;gap:var(--space-2);width:100%;padding:var(--space-2) var(--space-3);border:none;background:var(--surface-subtle);cursor:pointer;text-align:start;font-family:var(--font-mono);font-size:var(--text-xs);color:var(--text-primary)}
 .ef-diff__filehead:focus-visible{outline:none;box-shadow:var(--focus-ring)}
 .ef-diff__filechev{display:inline-flex;color:var(--text-muted);transition:transform var(--dur-fast) var(--ease-out)}
 .ef-diff__filechev--open{transform:rotate(90deg)}

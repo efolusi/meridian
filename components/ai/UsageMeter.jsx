@@ -5,12 +5,12 @@ const CSS = `
 .ef-usage{display:flex;flex-direction:column;gap:var(--space-2)}
 .ef-usage__row{display:flex;align-items:baseline;gap:var(--space-2)}
 .ef-usage__label{font-size:var(--text-sm);font-weight:600;color:var(--text-primary)}
-.ef-usage__figures{margin-inline-start:auto;font-family:var(--font-mono);font-size:12px;color:var(--text-muted)}
+.ef-usage__figures{margin-inline-start:auto;font-family:var(--font-mono);font-size:var(--text-xs);color:var(--text-muted)}
 .ef-usage__track{height:6px;border-radius:var(--radius-full);background:var(--surface-sunken);overflow:hidden}
 .ef-usage__fill{height:100%;border-radius:var(--radius-full);background:var(--accent);transition:width var(--dur-med) var(--ease-out)}
 .ef-usage--warn .ef-usage__fill{background:var(--warning-600)}
 .ef-usage--over .ef-usage__fill{background:var(--danger-600)}
-.ef-usage__foot{display:flex;gap:var(--space-2);font-size:12px;color:var(--text-muted)}
+.ef-usage__foot{display:flex;gap:var(--space-2);font-size:var(--text-xs);color:var(--text-muted)}
 .ef-usage__cost{margin-inline-start:auto;font-family:var(--font-mono)}
 `;
 export function UsageMeter({ used = 0, limit = 100, label = 'Usage', unit = '', cost, hint, warnAt = 0.8, animated, format, locale = 'en-US', style, className, ...rest }) {

@@ -18,10 +18,10 @@ const CSS = `
 .ef-genimg__scrim{position:absolute;inset-inline:0;pointer-events:none;opacity:0;transition:opacity var(--dur-med) var(--ease-out)}
 .ef-genimg--complete .ef-genimg__scrim{opacity:1}
 .ef-genimg__scrim--top{top:0;height:34%;background:linear-gradient(to bottom,var(--media-scrim),transparent)}
-.ef-genimg__prompt{position:absolute;top:13px;inset-inline:16px;font-size:13px;font-weight:var(--weight-semibold);color:var(--text-primary);z-index:2}
+.ef-genimg__prompt{position:absolute;top:13px;inset-inline:16px;font-size:var(--text-sm);font-weight:var(--weight-semibold);color:var(--text-primary);z-index:2}
 .ef-genimg--generating .ef-genimg__prompt,.ef-genimg--complete .ef-genimg__prompt{color:var(--text-on-media)}
 .ef-genimg__status{position:absolute;inset-inline-start:16px;bottom:13px;font-size:12.5px;color:var(--text-on-media-muted);z-index:2;animation:ef-genimg-pulse 1.6s ease-in-out infinite}
-.ef-genimg__center{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:var(--space-3);color:var(--text-muted);font-size:13px;z-index:2;padding:var(--space-5);text-align:center}
+.ef-genimg__center{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:var(--space-3);color:var(--text-muted);font-size:var(--text-sm);z-index:2;padding:var(--space-5);text-align:center}
 .ef-genimg__actions{position:absolute;top:9px;inset-inline-end:9px;display:flex;gap:var(--space-0-5);z-index:3;opacity:0;transition:opacity var(--dur-fast) var(--ease-out)}
 .ef-genimg--complete:hover .ef-genimg__actions,.ef-genimg--complete:focus-within .ef-genimg__actions{opacity:1}
 .ef-genimg__act{display:inline-flex;align-items:center;justify-content:center;width:30px;height:30px;border:none;cursor:pointer;color:var(--text-on-media);background:var(--media-scrim-soft);border-radius:var(--radius-sm);backdrop-filter:blur(2px);transition:background var(--dur-fast) var(--ease-out)}

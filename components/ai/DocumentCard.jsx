@@ -7,13 +7,13 @@ const CSS = `
 .ef-doccard__head{display:flex;align-items:center;gap:var(--space-2);padding:var(--space-3) var(--space-3) var(--space-3) var(--space-4)}
 .ef-doccard__glyph{display:inline-flex;color:var(--text-muted)}
 .ef-doccard__title{flex:1;min-width:0;font-size:13.5px;font-weight:var(--weight-semibold);color:var(--text-primary);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.ef-doccard__meta{font-size:12px;color:var(--text-muted)}
+.ef-doccard__meta{font-size:var(--text-xs);color:var(--text-muted)}
 .ef-doccard__btn{display:inline-flex;align-items:center;justify-content:center;width:28px;height:28px;border:none;background:none;cursor:pointer;color:var(--text-muted);border-radius:var(--radius-sm);transition:color var(--dur-fast) var(--ease-out),background var(--dur-fast) var(--ease-out)}
 .ef-doccard__btn:hover{color:var(--text-primary);background:var(--surface-subtle)}
 .ef-doccard__btn:focus-visible{outline:none;box-shadow:var(--focus-ring)}
 .ef-doccard__btn--open{transform:rotate(180deg)}
 .ef-doccard__win{position:relative;overflow:hidden;transition:height .45s cubic-bezier(.32,.72,0,1)}
-.ef-doccard__content{padding:0 var(--space-4) var(--space-4);font-size:14px;line-height:1.7;color:var(--text-secondary)}
+.ef-doccard__content{padding:0 var(--space-4) var(--space-4);font-size:var(--text-md);line-height:1.7;color:var(--text-secondary)}
 .ef-doccard__content h1,.ef-doccard__content h2,.ef-doccard__content h3{color:var(--text-primary);font-family:var(--font-display,var(--font-sans));margin:.2em 0 .4em}
 .ef-doccard__content p{margin:0 0 .8em}
 .ef-doccard__fade{position:absolute;inset-inline:0;bottom:0;height:72px;background:linear-gradient(to top,var(--surface-card),transparent);pointer-events:none;transition:opacity var(--dur-med) var(--ease-out)}

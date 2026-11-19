@@ -12,7 +12,7 @@ const CSS = `
 .ef-sandbox--open .ef-sandbox__chev{transform:rotate(90deg)}
 .ef-sandbox__title{flex:1;min-width:0;font-family:var(--font-mono);font-size:12.5px;color:var(--text-primary);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .ef-sandbox--error .ef-sandbox__title{color:var(--danger-600)}
-.ef-sandbox__meta{font-size:12px;color:var(--text-muted);display:inline-flex;align-items:center;gap:var(--space-2)}
+.ef-sandbox__meta{font-size:var(--text-xs);color:var(--text-muted);display:inline-flex;align-items:center;gap:var(--space-2)}
 .ef-sandbox__spin{display:inline-flex;color:var(--text-secondary);animation:ef-sandbox-spin 1s linear infinite}
 @keyframes ef-sandbox-spin{to{transform:rotate(360deg)}}
 .ef-sandbox__body{display:grid;grid-template-rows:0fr;transition:grid-template-rows var(--dur-med) var(--ease-out)}

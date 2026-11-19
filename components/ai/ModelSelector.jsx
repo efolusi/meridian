@@ -5,7 +5,7 @@ import { Portal, useAnchoredStyle } from '../overlay/Portal.jsx';
 import { Icon } from '../icons/Icon.jsx';
 const CSS = `
 .ef-modelsel{position:relative;display:inline-flex}
-.ef-modelsel__btn{display:inline-flex;align-items:center;gap:var(--space-2);height:32px;padding:0 var(--space-3);border:1px solid var(--border-strong);border-radius:var(--radius-sm);background:var(--surface-card);cursor:pointer;font-family:var(--font-sans);font-size:13px;font-weight:500;color:var(--text-primary);transition:border-color var(--dur-fast) var(--ease-out)}
+.ef-modelsel__btn{display:inline-flex;align-items:center;gap:var(--space-2);height:32px;padding:0 var(--space-3);border:1px solid var(--border-strong);border-radius:var(--radius-sm);background:var(--surface-card);cursor:pointer;font-family:var(--font-sans);font-size:var(--text-sm);font-weight:500;color:var(--text-primary);transition:border-color var(--dur-fast) var(--ease-out)}
 .ef-modelsel__btn:hover{border-color:var(--text-muted)}
 .ef-modelsel__btn:focus-visible{outline:none;box-shadow:var(--focus-ring)}
 .ef-modelsel__provider{font-size:11.5px;color:var(--text-muted);font-weight:400}
@@ -17,7 +17,7 @@ const CSS = `
 .ef-modelsel__item:hover{background:var(--surface-sunken)}
 .ef-modelsel__item:focus-visible{outline:none;box-shadow:var(--focus-ring)}
 .ef-modelsel__name{font-size:13.5px;font-weight:500;color:var(--text-primary)}
-.ef-modelsel__hint{font-size:12px;color:var(--text-muted);margin-top:1px}
+.ef-modelsel__hint{font-size:var(--text-xs);color:var(--text-muted);margin-top:1px}
 .ef-modelsel__badge{margin-inline-start:auto;flex:none;font-size:10.5px;font-weight:600;letter-spacing:.04em;text-transform:uppercase;color:var(--accent-subtle-fg, var(--brand-700));background:var(--accent-subtle);border-radius:var(--radius-sm);padding:var(--space-0-5) var(--space-2)}
 .ef-modelsel__check{margin-inline-start:auto;flex:none;display:inline-flex;color:var(--brand-700)}
 .ef-modelsel__badge+.ef-modelsel__check{margin-inline-start:var(--space-2)}

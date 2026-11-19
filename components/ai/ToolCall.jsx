@@ -13,7 +13,7 @@ const CSS = `
 @keyframes ef-toolcall-pulse{0%,100%{opacity:1}50%{opacity:.55}}
 .ef-toolcall__icon{display:inline-flex;color:var(--text-muted)}
 .ef-toolcall__verb{color:var(--text-muted);font-family:var(--font-sans);font-size:12.5px}
-.ef-toolcall__state{margin-inline-start:auto;display:inline-flex;align-items:center;gap:var(--space-2);font-family:var(--font-sans);font-size:12px;font-weight:500;flex:none}
+.ef-toolcall__state{margin-inline-start:auto;display:inline-flex;align-items:center;gap:var(--space-2);font-family:var(--font-sans);font-size:var(--text-xs);font-weight:500;flex:none}
 .ef-toolcall__state--pending{color:var(--text-muted)}
 .ef-toolcall__state--approval{color:var(--brand-700)}
 .ef-toolcall__state--running{color:var(--text-secondary)}
@@ -24,16 +24,16 @@ const CSS = `
 .ef-toolcall__chev{display:inline-flex;color:var(--text-muted);transition:transform var(--dur-med) var(--ease-out)}
 .ef-toolcall--open .ef-toolcall__chev{transform:rotate(180deg)}
 .ef-toolcall__body{border-top:1px solid var(--border-default);padding:var(--space-3);display:flex;flex-direction:column;gap:var(--space-3)}
-.ef-toolcall__sec{font-size:11px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--text-muted);margin-bottom:var(--space-1)}
-.ef-toolcall__grid{border:1px solid var(--border-default);border-radius:var(--radius-sm);background:var(--surface-sunken);overflow:hidden;font-family:var(--font-mono);font-size:12px}
+.ef-toolcall__sec{font-size:var(--text-2xs);font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--text-muted);margin-bottom:var(--space-1)}
+.ef-toolcall__grid{border:1px solid var(--border-default);border-radius:var(--radius-sm);background:var(--surface-sunken);overflow:hidden;font-family:var(--font-mono);font-size:var(--text-xs)}
 .ef-toolcall__row{display:grid;grid-template-columns:max-content 1fr;gap:var(--space-3);padding:var(--space-2) var(--space-3);border-top:1px solid var(--border-default)}
 .ef-toolcall__row:first-child{border-top:none}
 .ef-toolcall__key{color:var(--text-muted)}
 .ef-toolcall__val{min-width:0;color:var(--text-secondary);white-space:pre-wrap;word-break:break-word}
 .ef-toolcall--streaming .ef-toolcall__row:last-child .ef-toolcall__val{animation:ef-toolcall-pulse 1.2s var(--ease-out) infinite}
-.ef-toolcall__args{margin:0;padding:var(--space-3) var(--space-3);background:var(--surface-sunken);border:1px solid var(--border-default);border-radius:var(--radius-sm);font-family:var(--font-mono);font-size:12px;line-height:1.6;color:var(--text-secondary);white-space:pre-wrap;word-break:break-word;max-height:256px;overflow:auto}
+.ef-toolcall__args{margin:0;padding:var(--space-3) var(--space-3);background:var(--surface-sunken);border:1px solid var(--border-default);border-radius:var(--radius-sm);font-family:var(--font-mono);font-size:var(--text-xs);line-height:1.6;color:var(--text-secondary);white-space:pre-wrap;word-break:break-word;max-height:256px;overflow:auto}
 .ef-toolcall__result{font-size:13.5px;line-height:1.6;color:var(--text-secondary)}
-.ef-toolcall__error{padding:var(--space-3) var(--space-3);border-radius:var(--radius-sm);background:var(--danger-100);color:var(--danger-600);font-size:13px;line-height:1.55}
+.ef-toolcall__error{padding:var(--space-3) var(--space-3);border-radius:var(--radius-sm);background:var(--danger-100);color:var(--danger-600);font-size:var(--text-sm);line-height:1.55}
 .ef-toolcall__actions{display:flex;justify-content:flex-end;gap:var(--space-2);padding-top:var(--space-0-5)}
 .ef-toolcall__btn{height:28px;padding:0 var(--space-3);border-radius:var(--radius-sm);border:1px solid var(--border-strong);background:var(--surface-card);cursor:pointer;font-family:var(--font-sans);font-size:12.5px;font-weight:600;color:var(--text-primary);transition:background var(--dur-fast) var(--ease-out)}
 .ef-toolcall__btn:hover{background:var(--surface-subtle)}

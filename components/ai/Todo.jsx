@@ -8,7 +8,7 @@ const CSS = `
 .ef-todo__head:focus-visible{outline:none;box-shadow:var(--focus-ring);border-radius:var(--radius-md)}
 .ef-todo__glyph{display:inline-flex;color:var(--text-muted)}
 .ef-todo__title{flex:1;min-width:0;font-size:13.5px;font-weight:var(--weight-semibold);color:var(--text-primary)}
-.ef-todo__count{font-size:12px;color:var(--text-muted);font-variant-numeric:tabular-nums}
+.ef-todo__count{font-size:var(--text-xs);color:var(--text-muted);font-variant-numeric:tabular-nums}
 .ef-todo__chev{display:inline-flex;color:var(--text-muted);transition:transform var(--dur-med) var(--ease-out)}
 .ef-todo--open .ef-todo__chev{transform:rotate(180deg)}
 .ef-todo__body{display:grid;grid-template-rows:0fr;transition:grid-template-rows var(--dur-med) var(--ease-out)}
