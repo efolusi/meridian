@@ -7,7 +7,7 @@ import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle } f
 const CSS = `
 .ef-command{display:flex;width:100%;height:100%;flex-direction:column;overflow:hidden;border-radius:var(--radius-md);background:var(--surface-card);color:var(--text-primary);font-family:var(--font-sans)}
 .ef-command__input-wrap{display:flex;height:44px;align-items:center;gap:var(--space-2);padding-inline:var(--space-3);border-bottom:1px solid var(--border-default);color:var(--text-muted)}
-.ef-command__input{display:flex;width:100%;height:40px;border:0;outline:0;background:transparent;color:var(--text-primary);font:inherit;font-size:var(--text-sm)}.ef-command__input::placeholder{color:var(--text-muted)}.ef-command__input:disabled{cursor:not-allowed;opacity:.5}
+.ef-command__input{display:flex;width:100%;height:40px;border:0;outline:0;background:transparent;color:var(--text-primary);font:inherit;font-size:var(--text-sm)}.ef-command__input-wrap:focus-within{box-shadow:inset 0 -2px 0 var(--focus-ring-color)}.ef-command__input::placeholder{color:var(--text-muted)}.ef-command__input:disabled{cursor:not-allowed;opacity:.5}
 .ef-command__list{max-height:300px;overflow-x:hidden;overflow-y:auto;scroll-padding-block:4px;padding:var(--space-1)}
 .ef-command__empty{padding:var(--space-6);text-align:center;color:var(--text-muted);font-size:var(--text-sm)}
 .ef-command__group{overflow:hidden;padding:var(--space-1)}.ef-command__group[hidden],.ef-command__group:not(:has(.ef-command__item:not([hidden]))){display:none}.ef-command__heading{padding:var(--space-2) var(--space-2);color:var(--text-muted);font-size:var(--text-xs);font-weight:var(--weight-medium)}
