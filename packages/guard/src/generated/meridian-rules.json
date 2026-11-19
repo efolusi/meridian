@@ -931,6 +931,10 @@
       "sourcePath": "components/ai/Marker.jsx"
     },
     {
+      "name": "Marquee",
+      "sourcePath": "components/marketing/Marquee.jsx"
+    },
+    {
       "name": "Menubar",
       "sourcePath": "components/navigation/Menubar.jsx"
     },
@@ -1257,6 +1261,10 @@
     {
       "name": "ResizablePanelGroup",
       "sourcePath": "components/display/Resizable.jsx"
+    },
+    {
+      "name": "Reveal",
+      "sourcePath": "components/marketing/Reveal.jsx"
     },
     {
       "name": "RichComposer",
