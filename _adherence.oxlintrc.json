@@ -1197,6 +1197,12 @@
       "HeroAccent": {
         "replaces": []
       },
+      "Marquee": {
+        "replaces": []
+      },
+      "Reveal": {
+        "replaces": []
+      },
       "Section": {
         "replaces": []
       },

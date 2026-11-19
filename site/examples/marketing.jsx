@@ -68,3 +68,21 @@ export function FeatureCardDemo() {
     </FeatureGrid>
   );
 }
+
+// @demo Marquee Labels with a pause button
+export function MarqueeDemo() {
+  const { Marquee } = window.EfolusiDesignSystem_4ffc3d;
+  return <Marquee label="What we build" items={['Open source', 'Self-hosted', 'Private', 'Secure', 'Cloud', 'Commercial']} />;
+}
+
+// @demo Reveal Staggered cards
+export function RevealDemo() {
+  const { Reveal, FeatureGrid, FeatureCard } = window.EfolusiDesignSystem_4ffc3d;
+  return (
+    <FeatureGrid>
+      <Reveal><FeatureCard tone="peach" icon="package" title="Products" body="Seven tools, one account." /></Reveal>
+      <Reveal><FeatureCard tone="cocoa" icon="coins" title="Token" body="Buyback and burn." /></Reveal>
+      <Reveal><FeatureCard tone="amber" icon="sparkles" title="Standard" body="Open source first." /></Reveal>
+    </FeatureGrid>
+  );
+}
