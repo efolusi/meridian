@@ -353,4 +353,4 @@ jobs:
         env:
           GH_TOKEN: ${{ github.token }}
           PKG: ${{ needs.build.outputs.version }}
-        run: gh workflow run deploy-prod-static.yml --repo "$GITHUB_REPOSITORY" --ref "v$PKG"
+        run: gh workflow run deploy-production.yml --repo "$GITHUB_REPOSITORY" --ref "v$PKG"

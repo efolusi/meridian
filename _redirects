@@ -1,5 +1,4 @@
-# Redirects in the _redirects format, for static hosts that read it. The
-# Meridian deploy does not: its nginx/*.conf vhosts define no redirects, and
-# the root forwards to the docs home through index.html. List only what those
-# hosts also do (tests/headers-parity.test.mjs).
+# Redirects for meridian.efolusi.com, read by Workers static assets. The root
+# goes to the docs home; index.html forwards there too, for a host that serves
+# the files without reading this one.
 / /site/DsSite.dc.html 301
