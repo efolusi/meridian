@@ -14,8 +14,8 @@ const CSS = `
 .ef-questionnaire__choice:has(input:checked){border-color:var(--accent);background:var(--accent-subtle)}
 .ef-questionnaire__choice:has(input:focus-visible){box-shadow:var(--focus-ring)}
 .ef-questionnaire__choice:has(input:disabled){opacity:.45;cursor:not-allowed}
-.ef-questionnaire__choice input{width:16px;height:16px;margin:2px 0 0;accent-color:var(--accent);flex:none}
-.ef-questionnaire__choice-label{display:grid;gap:2px;flex:1;min-width:0}
+.ef-questionnaire__choice input{width:16px;height:16px;margin:var(--space-0-5) 0 0;accent-color:var(--accent);flex:none}
+.ef-questionnaire__choice-label{display:grid;gap:var(--space-0-5);flex:1;min-width:0}
 .ef-questionnaire__shortcut{font-family:var(--font-mono);font-size:var(--text-xs);color:var(--text-muted)}
 .ef-questionnaire__input{width:100%;min-height:var(--control-h-md);padding:0 var(--space-3);border:1px solid var(--border-default);border-radius:var(--radius-md);background:var(--surface-card);color:var(--text-primary);font:inherit;outline:none}
 .ef-questionnaire__input:focus-visible{border-color:var(--accent);box-shadow:var(--focus-ring)}

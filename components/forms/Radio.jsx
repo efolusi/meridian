@@ -5,7 +5,7 @@ import { useFieldProps } from './Field.jsx';
 const CSS = `
 .ef-radio-group{display:grid;gap:var(--space-3)}
 .ef-radio-group[data-orientation="horizontal"]{display:flex;align-items:center;flex-wrap:wrap}
-.ef-radio{display:inline-flex;align-items:flex-start;gap:10px;cursor:pointer;user-select:none}
+.ef-radio{display:inline-flex;align-items:flex-start;gap:var(--space-3);cursor:pointer;user-select:none}
 .ef-radio--disabled{opacity:.45;cursor:not-allowed}
 .ef-radio__input{position:absolute;opacity:0;width:0;height:0}
 .ef-radio__dot{display:inline-flex;align-items:center;justify-content:center;flex:none;width:18px;height:18px;margin-top:1px;border:1.5px solid var(--border-control,var(--border-strong));border-radius:var(--radius-full);background:var(--surface-card);transition:border-color var(--dur-fast) var(--ease-out),transform var(--dur-med) var(--ease-spring)}

@@ -3,22 +3,22 @@ import React from 'react';
 import { injectEfCss } from './Button.jsx';
 
 const CSS = `
-.ef-field-set{min-width:0;margin:0;padding:0;border:0;display:grid;gap:14px}
+.ef-field-set{min-width:0;margin:0;padding:0;border:0;display:grid;gap:var(--space-4)}
 .ef-field-legend{padding:0;color:var(--text-primary);font-size:var(--text-lg);font-weight:var(--weight-semibold)}
 .ef-field-legend[data-variant="label"]{font-size:var(--text-sm)}
-.ef-field-group{display:grid;gap:18px}
-.ef-field{display:flex;min-width:0;gap:6px;color:var(--text-primary)}
+.ef-field-group{display:grid;gap:var(--space-5)}
+.ef-field{display:flex;min-width:0;gap:var(--space-2);color:var(--text-primary)}
 .ef-field[data-orientation="vertical"]{flex-direction:column}
-.ef-field[data-orientation="horizontal"]{align-items:flex-start;flex-direction:row;gap:12px}
+.ef-field[data-orientation="horizontal"]{align-items:flex-start;flex-direction:row;gap:var(--space-3)}
 .ef-field[data-orientation="responsive"]{flex-direction:column}
-@media (min-width: 640px){.ef-field[data-orientation="responsive"]{align-items:flex-start;flex-direction:row;gap:18px}.ef-field[data-orientation="responsive"]>.ef-field-content{flex:1}}
-.ef-field-content{display:flex;min-width:0;flex:1;flex-direction:column;gap:4px}
+@media (min-width: 640px){.ef-field[data-orientation="responsive"]{align-items:flex-start;flex-direction:row;gap:var(--space-5)}.ef-field[data-orientation="responsive"]>.ef-field-content{flex:1}}
+.ef-field-content{display:flex;min-width:0;flex:1;flex-direction:column;gap:var(--space-1)}
 .ef-field-label,.ef-field-title{color:var(--text-primary);font-size:var(--text-sm);font-weight:var(--weight-semibold);line-height:1.35}
-.ef-field-label{display:flex;align-items:center;gap:8px;cursor:pointer}
+.ef-field-label{display:flex;align-items:center;gap:var(--space-2);cursor:pointer}
 .ef-field[data-disabled] .ef-field-label{cursor:not-allowed;opacity:.55}
 .ef-field-description{margin:0;color:var(--text-muted);font-size:var(--text-xs);line-height:1.45}
 .ef-field-error{margin:0;color:var(--danger-600);font-size:var(--text-xs);line-height:1.45}
-.ef-field-separator{display:flex;align-items:center;gap:10px;color:var(--text-muted);font-size:var(--text-xs)}
+.ef-field-separator{display:flex;align-items:center;gap:var(--space-3);color:var(--text-muted);font-size:var(--text-xs)}
 .ef-field-separator::before,.ef-field-separator::after{content:"";height:1px;flex:1;background:var(--border-default)}
 .ef-field[data-invalid] .ef-field-label,.ef-field[data-invalid] .ef-field-title{color:var(--danger-600)}
 `;
