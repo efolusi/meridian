@@ -17,6 +17,8 @@ const CSS = `
 .ef-console__src{flex:none;margin-inline-start:auto;color:var(--text-muted);font-size:11px}
 .ef-console__stackbtn{display:inline-flex;align-items:center;gap:var(--space-1);border:none;background:none;padding:0;cursor:pointer;font:inherit;color:inherit;text-align:start}
 .ef-console__stackbtn:hover{color:var(--text-primary)}
+.ef-console__stackbtn:focus-visible,.ef-console__jump:focus-visible{outline:none;box-shadow:var(--focus-ring);border-radius:var(--radius-sm)}
+.ef-console__jump:focus-visible{border-radius:var(--radius-full)}
 .ef-console__stackchev{display:inline-flex;margin-top:var(--space-0-5);color:var(--text-muted);transition:transform var(--dur-fast) var(--ease-out)}
 .ef-console__stackchev--open{transform:rotate(90deg)}
 .ef-console__stack{margin:var(--space-1) 0 0;padding-inline-start:var(--space-5);white-space:pre-wrap;color:var(--text-muted);font-size:11.5px}
