@@ -101,7 +101,7 @@ export const ThemeToggle = React.forwardRef(function ThemeToggle({ lang = 'en', 
       title={text[pref]}
       onClick={choose}
     >
-      <Icon name={ICONS[pref]} size={18} aria-hidden="true" />
+      <Icon name={ICONS[pref]} size={20} aria-hidden="true" />
     </button>
   );
 });
