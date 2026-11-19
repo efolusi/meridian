@@ -25,7 +25,7 @@ export function SectionBand() {
   const { Section, SectionHead } = window.EfolusiDesignSystem_4ffc3d;
   return (
     <Section tone="band" style={{ paddingBlock: 'var(--space-12)' }}>
-      <SectionHead eyebrow="Dibuat di Indonesia" title="Built in Indonesia, used everywhere." lede="Every label comes from your own dictionary, in Indonesian and English." />
+      <SectionHead eyebrow="Made in Indonesia" title="Built in Indonesia, used everywhere." lede="Every label comes from your own dictionary, in Indonesian and English." />
     </Section>
   );
 }
