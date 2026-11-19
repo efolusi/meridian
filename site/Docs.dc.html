@@ -308,9 +308,12 @@ class Component extends DCLogic {
       { group: 'Reference', id: 'changelog', title: 'Changelog', lede: 'Notable changes, newest first. Full history in CHANGELOG.md.', blocks: [
         h2('v1240', '1.24.0 (November 2026)', '1.24.0 (November 2026)'),
         list([
+          ['Keyboard focus on every control.', 'ChatMessage, CodeBlock, Console, Banner, Toast, Command, CopyField, FileTile and the Tooltip, HoverCard and Popover triggers now show their own focus ring.', 'Fokus keyboard di setiap kontrol.', 'ChatMessage, CodeBlock, Console, Banner, Toast, Command, CopyField, FileTile serta pemicu Tooltip, HoverCard dan Popover kini menampilkan cincin fokus sendiri.'],
+          ['Navigation spacing on the token scale.', 'Padding, margin and gap in the navigation components come from the space tokens; values off the 4px scale moved by up to 2px.', 'Spasi navigasi di skala token.', 'Padding, margin dan gap di komponen navigasi berasal dari token spasi; nilai di luar skala 4px bergeser paling banyak 2px.'],
+          ['A Cloudflare Worker serves this site.', 'meridian.efolusi.com deploys from a v* release tag; _headers holds every response header.', 'Situs ini dilayani Cloudflare Worker.', 'meridian.efolusi.com di-deploy dari tag rilis v*; _headers memuat setiap header respons.'],
           ['Token check against the pinned tag.', 'CI now compares the vendored tokens with the pinned design-tokens tag upstream, not only with the lock file.', 'Cek token terhadap tag yang dikunci.', 'CI kini membandingkan token yang disalin dengan tag design-tokens yang dikunci, tidak hanya dengan berkas lock.'],
           ['The CLI refuses plain http.', 'meridian-cli accepts an http registry only on localhost; anywhere else it asks for https.', 'CLI menolak http biasa.', 'meridian-cli menerima registry http hanya di localhost; di tempat lain wajib https.'],
-          ['One branch: main.', 'CI runs on main and on pull requests to it; the development site deploys only when its workflow is run by hand.', 'Satu branch: main.', 'CI berjalan di main dan di pull request ke main; situs pengembangan hanya dideploy bila workflow-nya dijalankan manual.'],
+          ['One branch: main.', 'CI runs on main and on pull requests to it.', 'Satu branch: main.', 'CI berjalan di main dan di pull request ke main.'],
         ]),
         h2('v1230', '1.23.0 (November 2026)', '1.23.0 (November 2026)'),
         list([
