@@ -18,6 +18,6 @@ Report privately via [GitHub private vulnerability reporting](https://github.com
 - `assets/`: icons, fonts, logo
 - `styles.css` and `tokens/`: the stylesheet closure
 - The npm packages `@efolusi/meridian`, `@efolusi/meridian-tokens`, `@efolusi/meridian-icons`, `@efolusi/meridian-guard`, `@efolusi/meridian-cli` (`packages/`) and `@efolusi/meridian-mcp` (`mcp/`)
-- The release and deploy pipeline: `.github/workflows/`, `scripts/deploy-*.sh`, `nginx/`
+- The release and deploy pipeline: `.github/workflows/`, `scripts/build_worker_assets.mjs`, `wrangler.jsonc`, `_headers`
 
 Out of scope: issues in consuming applications, browsers, or third-party fonts.

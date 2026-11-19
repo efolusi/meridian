@@ -4,14 +4,7 @@ How Meridian retires an API, and what to change in your code before each major v
 
 ## Policy
 
-A deprecated prop, component or token keeps working until the next major version. While it is deprecated:
-
-- it is marked `@deprecated` in its `.d.ts`, so your editor strikes it through;
-- it logs one development warning per page that names the component and prop, such as `<Drawer modal={false}>`, and links here (production builds stay quiet);
-- [Meridian Guard](https://www.npmjs.com/package/@efolusi/meridian-guard) reports it as `MDG004`;
-- it has a section below with the reason and the before and after code.
-
-It is removed only in a major version, and only after at least one release that shipped the warning. The full rules are in [governance § Deprecation](governance.md#deprecation).
+Meridian keeps no legacy code. A rename or removal lands in one release, with no alias and no deprecation warning, and is marked **Breaking** in [CHANGELOG.md](../CHANGELOG.md). Each one has a section below with the reason and the before and after code. The full rules are in [governance § Breaking changes](governance.md#breaking-changes).
 
 ## Finding what to change
 
@@ -30,11 +23,11 @@ It is removed only in a major version, and only after at least one release that 
 
 Guard reads imports, so it does not see components used as CDN globals (`window.Drawer`) or props passed through a spread (`<Drawer {...props}>`). Search for those by hand; the development warning still catches them at runtime.
 
-## 1.24.0
+## 1.25.0
 
 ### Drawer `modal`
 
-Deprecated in 1.22.0. Removed in 1.24.0.
+Removed in 1.25.0. It had been ignored since 1.22.0.
 
 **Why.** A Drawer is always modal: it draws a scrim, traps focus and locks page scroll. The `modal` prop was accepted but never read, so `modal={false}` looked like a non-modal drawer and behaved like a modal one. Removing the prop makes the type say what the component does.
 
@@ -109,15 +102,11 @@ toast.add({ title: 'Deploy failed', type: 'danger' });
 
 ## Earlier breaking changes
 
-1.21.0 and 1.21.2 removed shorthand renderers and the first wave of prop aliases in minor releases, without a deprecation release first. That broke the policy above. Those entries in [CHANGELOG.md](../CHANGELOG.md) list each removal and its replacement; there is no deprecation warning or Guard rule for them.
+1.21.0 and 1.21.2 removed shorthand renderers and the first wave of prop aliases in minor releases. Those entries in [CHANGELOG.md](../CHANGELOG.md) list each removal and its replacement; there is no deprecation warning or Guard rule for them.
 
-## Deprecating something (contributors)
+## Breaking something (contributors)
 
-1. Publish the replacement, and migrate the showcases, starters, blocks and docs site to it.
-2. Mark the prop `@deprecated` in the `.d.ts`. Say what to use instead, that it goes in the next major version, and link this page.
-3. Log one development warning per page from the component. The message must contain "deprecated" and name the call site as `<Component prop`, for example `<Drawer modal={false}>`.
-4. Add a `### Component \`prop\`` section under the next major above, with the reason and the before and after code.
-5. Add `@codemod remove` to the `.d.ts` comment only when the component ignores the prop, so deleting it cannot change behaviour. Anything else (a rename, a changed value) gets a written migration, not a codemod.
-6. Record it in `CHANGELOG.md`.
-
-`npm run check` runs `scripts/check_migration_guide.mjs`, which fails when a deprecation warning, a `@deprecated` prop and a section here do not all line up.
+1. Rename or remove it in one change, and update every caller there: showcases, starters, blocks, the docs site, tests, skills and the product apps. Add no alias and no warning.
+2. Add a `### Component \`prop\`` section under the release above, with the reason and the before and after code. Say whether `meridian-guard --fix` can apply it.
+3. Mark it **Breaking** in `CHANGELOG.md`.
+4. Open the product apps' pull requests together with it. The release waits until they are ready, and they land with it.

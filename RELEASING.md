@@ -6,6 +6,18 @@ publishes via npm Trusted Publishing (OIDC, no token anywhere), and then creates
 the `vX.Y.Z` tag and the GitHub Release itself. Pushes whose version is already
 published are a no-op for the workflow.
 
+**The production site deploys from the tag, never from a push.**
+`deploy-production.yml` runs on a `v*` tag push, or by hand (`workflow_dispatch`)
+on a `v*` tag, in the `production` environment. It checks out the tagged commit,
+refuses a commit that is not on `main` or whose checks did not pass, runs
+`npm run check`, builds `public/` with `scripts/build_worker_assets.mjs`, deploys
+the Cloudflare Worker with a pinned wrangler, and checks the live release marker.
+It needs the environment secret `CLOUDFLARE_API_TOKEN` and the environment
+variable `CLOUDFLARE_ACCOUNT_ID`.
+A tag pushed with `GITHUB_TOKEN` starts no workflow, so `publish.yml` starts the
+deploy itself: its `deploy` job, the only one with `actions: write`, runs
+`deploy-production.yml` on the new tag after the release is cut.
+
 **This is a monorepo of five published lockstep packages.** One version bump
 publishes all five at the same version: the `@efolusi/meridian` umbrella plus
 the standalone `@efolusi/meridian-tokens`, `@efolusi/meridian-icons`,
