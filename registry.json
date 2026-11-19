@@ -3264,6 +3264,36 @@
       ]
     },
     {
+      "name": "section",
+      "type": "registry:ui",
+      "title": "Section + SectionHead",
+      "description": "Use `Section` for each full-width block of a marketing page. It sets the page rhythm from `--section-y` (link `landing.css` so it steps down on small screens) and centres its content at `--container-max`. `tone=\"band\"` puts the block on the brand ground for one statement per page; `ruled` draws a ha",
+      "dependencies": [
+        "react"
+      ],
+      "registryDependencies": [
+        "https://meridian.efolusi.com/site/registry/meridian-base.json",
+        "https://meridian.efolusi.com/site/registry/button.json"
+      ],
+      "files": [
+        {
+          "path": "components/marketing/Section.jsx",
+          "type": "registry:ui"
+        },
+        {
+          "path": "components/marketing/Section.d.ts",
+          "type": "registry:component"
+        },
+        {
+          "path": "components/marketing/Section.prompt.md",
+          "type": "registry:component"
+        }
+      ],
+      "categories": [
+        "marketing"
+      ]
+    },
+    {
       "name": "breadcrumb",
       "type": "registry:ui",
       "title": "Breadcrumb + BreadcrumbList + BreadcrumbItem + BreadcrumbLink + BreadcrumbPage + BreadcrumbSeparator + BreadcrumbEllipsis",
