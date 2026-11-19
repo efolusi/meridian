@@ -2,6 +2,8 @@
 
 ## Unreleased
 
+- **Badge `danger` is the subtle status badge again.** 1.25.0's rename left a second, solid `.ef-badge--danger` rule and a darker hover from the old `destructive` variant; the solid rule and the hover are gone. A test now fails when a component writes the same variant rule twice.
+
 ## 1.25.0 — 2026-11-19
 
 - **Breaking: Drawer no longer accepts `modal`.** The prop was ignored since 1.22.0 and only logged a warning. Delete it from your code; `meridian-guard --fix` from 1.23.0 still removes it. Meridian now ships no deprecated props.
