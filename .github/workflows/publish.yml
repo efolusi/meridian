@@ -64,7 +64,7 @@ permissions:
 jobs:
   # Fast gate so routine pushes don't spin up the whole publish machinery.
   decide:
-    runs-on: [self-hosted, Linux, X64, efolusi-dev]
+    runs-on: ubuntu-latest
     timeout-minutes: 10
     outputs:
       go: ${{ steps.d.outputs.go }}
@@ -353,4 +353,4 @@ jobs:
         env:
           GH_TOKEN: ${{ github.token }}
           PKG: ${{ needs.build.outputs.version }}
-        run: gh workflow run deploy-prod-static.yml --repo "$GITHUB_REPOSITORY" --ref "v$PKG"
+        run: gh workflow run deploy-production.yml --repo "$GITHUB_REPOSITORY" --ref "v$PKG"

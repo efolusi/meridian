@@ -1,0 +1,20 @@
+// Cloudflare Worker for meridian.efolusi.com: static assets only, no script.
+// .github/workflows/deploy-production.yml builds public/ from the release
+// commit (scripts/build_worker_assets.mjs) and deploys it on a v* tag.
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "meridian",
+  "compatibility_date": "2026-11-01",
+  "assets": {
+    "directory": "./public",
+    "not_found_handling": "404-page",
+    // Serve each path exactly as published: no pretty-URL redirects that drop
+    // .html, so the sitemap, canonical links and support.js keep their URLs.
+    "html_handling": "none"
+  },
+  "routes": [
+    { "pattern": "meridian.efolusi.com", "custom_domain": true }
+  ],
+  "workers_dev": false,
+  "preview_urls": false
+}
