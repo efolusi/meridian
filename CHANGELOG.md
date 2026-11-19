@@ -1,6 +1,6 @@
 # Changelog
 
-## Unreleased
+## 1.24.0 — 2026-11-19
 
 - **Navigation spacing is on the token scale.** Breadcrumbs, Menubar, NavigationMenu, PageControl, Pagination, SegmentedControl, SideNav, Sidebar, SkipLink, Steps, Tabs and TopNav take their padding, margin and gap from `--space-*`. Values off the 4px scale moved to the nearest step, ties up: 3 and 5px to 4px, 6 and 9px to 8px, 10px to 12px, 14 and 15px to 16px, 22px to 24px. Gaps and padding in these components grow by up to 2px. 1px optical nudges stay.
 - **meridian.efolusi.com runs as a Cloudflare Worker.** `deploy-production.yml` replaces `deploy-prod-static.yml`. It runs on a GitHub-hosted runner, in the `production` environment, from a `v*` tag or a manual run on one. It keeps the exact-SHA, on-main and `npm run check` gates, builds `public/` from the release commit with `scripts/build_worker_assets.mjs`, deploys with wrangler 4.157.0 and checks the live release. `_headers` and `_redirects` are now the only source of response headers and the root redirect. The Nginx configs, the VPS deploy script and the header parity test are gone.
