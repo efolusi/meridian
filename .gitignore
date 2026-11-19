@@ -29,3 +29,4 @@ packages/*/dist/
 # MCP server deps
 mcp/node_modules/
 mcp/package-lock.json
+public/
