@@ -61,7 +61,7 @@ describe('LegalDocument', () => {
   });
 
   it('never renders HTML or an unsafe link', () => {
-    const { container } = render(<LegalDocument title="Terms" intro={['<b>x</b> [bad](javascript:alert(1)) [proto](//evil.example) [ok](https://efolusi.com)']} />);
+    const { container } = render(<LegalDocument title="Terms" intro={['<b>x</b> [bad](javascript:alert(1)) [proto](//evil.example) [slash](/\\evil.example) [ok](https://efolusi.com)']} />);
     expect(container.querySelector('b')).toBeNull();
     const anchors = [...container.querySelectorAll('a')];
     expect(anchors.map((a) => a.getAttribute('href'))).toEqual(['https://efolusi.com']);
