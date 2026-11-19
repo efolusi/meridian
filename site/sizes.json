@@ -1,16 +1,16 @@
 {
   "totals": {
     "@efolusi/meridian": {
-      "bytes": 356106,
-      "gzip": 80154
+      "bytes": 356123,
+      "gzip": 80160
     },
     "dist/components.css": {
-      "bytes": 200520,
-      "gzip": 28466
+      "bytes": 201203,
+      "gzip": 28454
     },
     "_ds_bundle.js": {
-      "bytes": 815325,
-      "gzip": 145303
+      "bytes": 816025,
+      "gzip": 145338
     }
   },
   "modules": [
@@ -1197,8 +1197,8 @@
       "exports": [
         "SideNav"
       ],
-      "bytes": 47064,
-      "gzip": 8076
+      "bytes": 47081,
+      "gzip": 8089
     },
     {
       "module": "navigation/Sidebar.js",

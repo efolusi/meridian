@@ -7,12 +7,16 @@ the `vX.Y.Z` tag and the GitHub Release itself. Pushes whose version is already
 published are a no-op for the workflow.
 
 **The production site deploys from the tag, never from a push.**
-`deploy-prod-static.yml` runs on a `v*` tag push, or by hand (`workflow_dispatch`)
-on a `v*` tag. It checks out the tagged commit, refuses a commit that is not on
-`main` or whose checks did not pass, runs `npm run check`, and publishes.
+`deploy-production.yml` runs on a `v*` tag push, or by hand (`workflow_dispatch`)
+on a `v*` tag, in the `production` environment. It checks out the tagged commit,
+refuses a commit that is not on `main` or whose checks did not pass, runs
+`npm run check`, builds `public/` with `scripts/build_worker_assets.mjs`, deploys
+the Cloudflare Worker with a pinned wrangler, and checks the live release marker.
+It needs the environment secret `CLOUDFLARE_API_TOKEN` and the environment
+variable `CLOUDFLARE_ACCOUNT_ID`.
 A tag pushed with `GITHUB_TOKEN` starts no workflow, so `publish.yml` starts the
 deploy itself: its `deploy` job, the only one with `actions: write`, runs
-`deploy-prod-static.yml` on the new tag after the release is cut.
+`deploy-production.yml` on the new tag after the release is cut.
 
 **This is a monorepo of five published lockstep packages.** One version bump
 publishes all five at the same version: the `@efolusi/meridian` umbrella plus
@@ -31,6 +35,14 @@ push; the `decide` job gates it on its own version, so an mcp-only bump releases
 without touching the lockstep five (and a lockstep bump leaves mcp alone unless
 its version is new). It has its own Trusted Publisher; it was first published
 manually, so OIDC now maintains it.
+
+## Which number moves
+
+Meridian stays on 1.x while it is used internally only. A breaking change, with
+no alias, ships as the next 1.x minor, not as 2.0.0. The owner decided this on
+2026-11-19: "Tetap 1.x minor". The breaking-change policy in the governance docs
+says how such a change lands. A move to 2.0.0 waits for the owner to call
+Meridian stable.
 
 ## Where the version lives
 

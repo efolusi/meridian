@@ -3,17 +3,19 @@
 ## Unreleased
 
 - **Overlay spacing is on the token scale.** Padding, margin and gap in Popover, HoverCard, Sheet, DropdownMenu, ContextMenu, Command and the rest of the overlay group take their values from `--space-*`. Values off the 4px scale moved to the nearest step, ties up, by 1 to 2px.
+
+## 1.24.0 — 2026-11-19
+
+- **Navigation spacing is on the token scale.** Breadcrumbs, Menubar, NavigationMenu, PageControl, Pagination, SegmentedControl, SideNav, Sidebar, SkipLink, Steps, Tabs and TopNav take their padding, margin and gap from `--space-*`. Values off the 4px scale moved to the nearest step, ties up: 3 and 5px to 4px, 6 and 9px to 8px, 10px to 12px, 14 and 15px to 16px, 22px to 24px. Gaps and padding in these components grow by up to 2px. 1px optical nudges stay.
+- **meridian.efolusi.com runs as a Cloudflare Worker.** `deploy-production.yml` replaces `deploy-prod-static.yml`. It runs on a GitHub-hosted runner, in the `production` environment, from a `v*` tag or a manual run on one. It keeps the exact-SHA, on-main and `npm run check` gates, builds `public/` from the release commit with `scripts/build_worker_assets.mjs`, deploys with wrangler 4.157.0 and checks the live release. `_headers` and `_redirects` are now the only source of response headers and the root redirect. The Nginx configs, the VPS deploy script and the header parity test are gone.
 - **Build tooling runs on Node.js 26.13.1 and npm 11.20.0** (was 22.23.2 and 10.9.8): `.nvmrc`, `package.json` `engines` and `packageManager`, every workflow and CONTRIBUTING.md. The published packages keep `engines: >=20.10`.
-- **The production site deploys from a `v*` tag, not from a push to `main`.** `deploy-prod-static.yml` runs on a `v*` tag push or by hand on a tag, checks that the tagged commit is on `main` and passed its checks, and publishes it. After a release, `publish.yml` starts it on the new tag, from a job that is the only one with `actions: write`.
-- **The production site deploys from a `v*` tag, not from a push to `main`.** `deploy-prod-static.yml` runs on a `v*` tag push or by hand on a tag, checks that the tagged commit is on `main` and passed its checks, and publishes it. RELEASING.md says how to run it after a release.
 - **No deprecation period.** Governance and the migration guide now say that a rename or removal lands in one release, with no alias or warning, and every caller changes with it. The README, style guide, contributing guide, RFC template and skill say the same.
 - **Every overlay trigger and composite field shows its own focus.** Tooltip, HoverCard and Popover triggers draw `--focus-ring` when focused (a trigger with its own style, such as Button, keeps it). CopyField and FileTile colour their border while focus is inside. The Toast action uses `--focus-ring` instead of a hand-built ring.
 - **Six components show keyboard focus.** ChatMessage shows its action row when focus is inside it, not only on hover. The CodeBlock copy and show-all buttons, the Console stack toggle and jump button, the Banner action and the Toast action draw `--focus-ring`; the Toast ring matches its dark surface. Command underlines the search row while its input has focus.
-- **CI checks run on GitHub-hosted `ubuntu-24.04`** until the new self-hosted runners exist. Deploy jobs stay self-hosted.
-
+- **Every CI job runs on GitHub-hosted runners**, because Meridian is public: checks, the visual baselines and every publish job. The dev deploy is gone with the dev branch: its workflow, script, Nginx config and test.
 - **`meridian-cli` refuses a plain `http://` registry** except on localhost, so files cannot be swapped on the network. Use https.
 - **CI checks the vendored tokens against the pinned design-tokens tag.** `node scripts/sync_tokens.mjs --check-remote` re-fetches the tag in the lock and fails when the lock commit or any vendored file differs. `npm run check` runs it in CI (`CI=true`); locally it stays offline.
-- **One branch: main.** CI runs on main and on pull requests to it; the visual-baseline workflow opens its PR against main; the development site deploys only when its workflow is run by hand.
+- **One branch: main.** CI runs on main and on pull requests to it; the visual-baseline workflow opens its PR against main.
 
 ## 1.23.0 — 2026-11-18
 

@@ -23,11 +23,11 @@ Meridian keeps no legacy code. A rename or removal lands in one release, with no
 
 Guard reads imports, so it does not see components used as CDN globals (`window.Drawer`) or props passed through a spread (`<Drawer {...props}>`). Search for those by hand; the development warning still catches them at runtime.
 
-## 1.24.0
+## 1.25.0
 
 ### Drawer `modal`
 
-Removed in 1.24.0. It had been ignored since 1.22.0.
+Removed in 1.25.0. It had been ignored since 1.22.0.
 
 **Why.** A Drawer is always modal: it draws a scrim, traps focus and locks page scroll. The `modal` prop was accepted but never read, so `modal={false}` looked like a non-modal drawer and behaved like a modal one. Removing the prop makes the type say what the component does.
 
