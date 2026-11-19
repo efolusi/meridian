@@ -15,11 +15,11 @@ const CSS = `
 @keyframes ef-select-in{from{opacity:0;transform:translateY(-3px)}}
 .ef-select-group{padding:var(--space-0-5) 0}
 .ef-select-label{padding:var(--space-2) var(--space-2);color:var(--text-muted);font-size:var(--text-xs);font-weight:var(--weight-semibold)}
-.ef-select-item{position:relative;display:flex;width:100%;min-height:32px;align-items:center;padding-block:6px;padding-inline:9px 30px;border:0;border-radius:var(--radius-sm);background:none;color:var(--text-primary);font:inherit;font-size:var(--text-sm);text-align:start;cursor:pointer}
+.ef-select-item{position:relative;display:flex;width:100%;min-height:32px;align-items:center;padding-block:6px;padding-inline:9px calc(var(--space-2) + var(--icon-md) + var(--space-2));border:0;border-radius:var(--radius-sm);background:none;color:var(--text-primary);font:inherit;font-size:var(--text-sm);text-align:start;cursor:pointer}
 .ef-select-item:hover{background:var(--surface-sunken)}
 .ef-select-item:focus-visible,.ef-select-item[data-highlighted]{outline:none;background:var(--surface-sunken);box-shadow:inset 0 0 0 2px var(--focus-ring-color)}
 .ef-select-item:disabled{cursor:not-allowed;opacity:.45}
-.ef-select-check{position:absolute;inset-inline-end:9px;display:inline-flex}
+.ef-select-check{position:absolute;inset-inline-end:var(--space-2);display:inline-flex}
 .ef-select-separator{height:1px;margin:var(--space-1) var(--space-2);background:var(--border-default)}
 /* Touch: fixed-size targets grow to --tap-min; small glyph buttons keep their look and get a centred --tap-min hit area instead. */
 @media (pointer:coarse){.ef-select-item{min-height:var(--tap-min)}}

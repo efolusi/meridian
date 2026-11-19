@@ -6,8 +6,8 @@ import { Portal, useEscapeLayer, useScrollLock, escapeLayerContext, useHydrated 
 const CSS = `
 .ef-dialog__overlay{position:fixed;inset:0;z-index:var(--z-overlay);display:flex;align-items:center;justify-content:center;padding:var(--space-6);background:var(--overlay-scrim);animation:ef-fade var(--dur-med) var(--ease-out)}
 .ef-dialog__content{width:100%;max-width:440px;max-height:min(85vh,720px);overflow:auto;border:1px solid var(--border-default);border-radius:var(--radius-lg);background:var(--surface-card);box-shadow:var(--shadow-xl);animation:ef-pop var(--dur-slow) var(--ease-spring)}
-.ef-dialog__content:focus{outline:none}.ef-dialog__close{position:absolute;inset-block-start:14px;inset-inline-end:14px}
-.ef-dialog__header{display:flex;flex-direction:column;gap:var(--space-2);padding:var(--space-6) var(--space-6) 0;padding-inline-end:56px}
+.ef-dialog__content:focus{outline:none}.ef-dialog__close{position:absolute;inset-block-start:var(--space-3);inset-inline-end:var(--space-3)}
+.ef-dialog__header{display:flex;flex-direction:column;gap:var(--space-2);padding:var(--space-6) var(--space-6) 0;padding-inline-end:calc(var(--space-3) + var(--control-h-sm) + var(--space-4))}
 .ef-dialog__title{margin:0;font-family:var(--font-display);font-size:var(--text-xl);font-weight:var(--weight-bold);line-height:var(--leading-tight);letter-spacing:var(--tracking-tight);color:var(--text-primary)}
 .ef-dialog__description{font-size:var(--text-md);line-height:var(--leading-relaxed);color:var(--text-secondary)}
 .ef-dialog__body{padding:var(--space-4) var(--space-6) var(--space-6)}.ef-dialog__footer{display:flex;flex-direction:column-reverse;gap:var(--space-2);padding:var(--space-4) var(--space-6);border-top:1px solid var(--border-default);background:var(--surface-subtle)}
