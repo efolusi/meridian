@@ -30,3 +30,4 @@ packages/*/dist/
 mcp/node_modules/
 mcp/package-lock.json
 public/
+.wrangler/
