@@ -1,16 +1,16 @@
 {
   "totals": {
     "@efolusi/meridian": {
-      "bytes": 356123,
-      "gzip": 80160
+      "bytes": 356062,
+      "gzip": 80076
     },
     "dist/components.css": {
-      "bytes": 200682,
-      "gzip": 28479
+      "bytes": 200949,
+      "gzip": 28520
     },
     "_ds_bundle.js": {
-      "bytes": 815504,
-      "gzip": 145361
+      "bytes": 815682,
+      "gzip": 145298
     }
   },
   "modules": [
@@ -1228,8 +1228,8 @@
         "SidebarMenuSubButton",
         "SidebarMenuSkeleton"
       ],
-      "bytes": 53184,
-      "gzip": 10012
+      "bytes": 53123,
+      "gzip": 9987
     },
     {
       "module": "navigation/SkipLink.js",

@@ -2,11 +2,13 @@
 
 ## Unreleased
 
-- **Sizes come from design-tokens 0.2.0.** Tokens are re-vendored from design-tokens v0.2.0, which adds `--control-h-xs`, `--icon-xs` to `--icon-2xl`, `--avatar-sm`/`-md`/`-lg` and `--sidebar-width`/`--sidebar-width-icon`. Visual changes:
+- **Sizes and contrast come from design-tokens 0.2.1.** Tokens are re-vendored from design-tokens v0.2.1. 0.2.0 adds `--control-h-xs`, `--icon-xs` to `--icon-2xl`, `--avatar-sm`/`-md`/`-lg` and `--sidebar-width`/`--sidebar-width-icon`. Visual changes:
   - Button `xs` is 24px high instead of 28px, the same as icon `xs`. Compact density makes both 20px; touch screens keep `--tap-min`.
   - Icons follow the icon scale (8, 12, 16, 20, 24, 32px, ties up): 14px and 15px icons become 16px, 18px icons become 20px, 13px icons become 12px, and 7px status dots become 8px.
   - Avatar sizes and the Sidebar widths use the tokens. The values stay the same, and a Sidebar still takes `--sidebar-width` from its `style`.
   - Input's leading-icon padding is built from the tokens, so a large Input with an icon leaves room for the 20px glyph.
+- **Contrast fixes from design-tokens 0.2.1.** `--text-muted`, `--text-secondary` (now `--sand-750`), `--state-pressed`, `--state-hover-on-tab` and the status 600 colours keep text at 4.5:1 (secondary at 7:1) on every ground and hover in light, dark and increased contrast. The public token count is 214.
+- **Size budget raised by 5 KB** (npm total 1,416,663 bytes) for the size tokens and the icon-scale test.
 
 ## 1.24.0 — 2026-11-19
 
