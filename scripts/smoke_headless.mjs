@@ -35,7 +35,15 @@ async function shootGroup(p, group, file) {
   await p.evaluate(() => new Promise(r => requestAnimationFrame(() => requestAnimationFrame(r))));
   const el = p.locator(`section[data-group="${group}"]`);
   await settleForCapture(p);
-  await el.screenshot({ path: path.join(SHOTS, file), animations: 'disabled' });
+  // A tall element screenshot re-lays out the page for capture, which drops the
+  // touch emulation and leaves the box measured with it: the shot then shows the
+  // next group. Grow the viewport to the group instead and clip to its box.
+  const size = p.viewportSize();
+  await p.setViewportSize({ width: size.width, height: Math.ceil((await el.boundingBox()).height) });
+  await el.evaluate(n => n.scrollIntoView({ block: 'start' }));
+  await p.evaluate(() => new Promise(r => requestAnimationFrame(() => requestAnimationFrame(r))));
+  await p.screenshot({ path: path.join(SHOTS, file), clip: await el.boundingBox(), animations: 'disabled' });
+  await p.setViewportSize(size);
 }
 
 const browser = await playwright[ENGINE].launch(EXECUTABLE_PATH ? { executablePath: EXECUTABLE_PATH } : {});
