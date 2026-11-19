@@ -2,6 +2,8 @@
 
 ## Unreleased
 
+## 1.25.0 — 2026-11-19
+
 - **Breaking: Drawer no longer accepts `modal`.** The prop was ignored since 1.22.0 and only logged a warning. Delete it from your code; `meridian-guard --fix` from 1.23.0 still removes it. Meridian now ships no deprecated props.
 - **Breaking: one set of status and variant names.** Every status-bearing component now uses `success`, `warning`, `danger`, `info`, `neutral` and `busy`. The old names are gone, with no aliases:
   - `StatusDot` `status`: `ok` → `success`, `warn` → `warning`, `err` → `danger`, `off` → `neutral`.
