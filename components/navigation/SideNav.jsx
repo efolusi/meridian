@@ -6,7 +6,7 @@ import { injectEfCss } from '../forms/Button.jsx';
 const CSS = `
 .ef-sidenav{display:flex;flex-direction:column;width:240px;flex:none;background:var(--surface-subtle);border-inline-end:1px solid var(--border-default);align-self:stretch}
 .ef-sidenav__brand{display:flex;align-items:center;gap:var(--space-2);padding:var(--space-4) var(--space-4) var(--space-4)}
-.ef-sidenav__group{font-size:11px;font-weight:600;letter-spacing:0.06em;text-transform:uppercase;color:var(--text-muted);padding:var(--space-4) var(--space-6) var(--space-2)}
+.ef-sidenav__group{font-size:var(--text-2xs);font-weight:600;letter-spacing:0.06em;text-transform:uppercase;color:var(--text-muted);padding:var(--space-4) var(--space-6) var(--space-2)}
 .ef-sidenav__item{display:flex;align-items:center;gap:var(--space-3);width:calc(100% - 24px);margin:0 var(--space-3);height:34px;padding:0 var(--space-3);border:none;border-radius:var(--radius-sm);cursor:pointer;text-align:start;background:transparent;color:var(--text-secondary);font-family:var(--font-sans);font-size:var(--text-md);font-weight:500;transition:background var(--dur-fast) var(--ease-out),color var(--dur-fast) var(--ease-out)}
 .ef-sidenav__item:hover{background:var(--surface-sunken);color:var(--text-primary)}
 .ef-sidenav__item--on{background:var(--border-default);color:var(--text-primary);font-weight:600}
@@ -21,7 +21,7 @@ export function SideNav({ brand = 'Meridian', brandBadge, logoSrc, groups, value
     <aside {...rest} className={`ef-sidenav${className ? ' ' + className : ''}`} style={style}>
       <div className="ef-sidenav__brand">
         {logoSrc ? <img src={logoSrc} alt="" style={{ width: 30, height: 16, objectFit: 'contain' }} /> : null}
-        <span style={{ fontFamily: 'var(--font-display)', fontWeight: 680, letterSpacing: '-0.02em', fontSize: 19 }}>{brand}</span>
+        <span style={{ fontFamily: 'var(--font-display)', fontWeight: 680, letterSpacing: '-0.02em', fontSize: 'var(--text-xl)' }}>{brand}</span>
         {brandBadge ? <Badge className="ef-badge--brand" style={{ marginInlineStart: 'auto' }}>{brandBadge}</Badge> : null}
       </div>
       {groups.map((g, gi) => (

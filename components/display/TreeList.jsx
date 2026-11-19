@@ -13,7 +13,7 @@ const CSS = `
 .ef-tree__chev--open{transform:rotate(90deg)}
 .ef-tree__icon{display:inline-flex;flex:none;color:var(--text-muted)}
 .ef-tree__row--sel .ef-tree__icon{color:inherit}
-.ef-tree__count{margin-inline-start:auto;font-family:var(--font-mono);font-size:11px;color:var(--text-muted)}
+.ef-tree__count{margin-inline-start:auto;font-family:var(--font-mono);font-size:var(--text-2xs);color:var(--text-muted)}
 @media (pointer:coarse){.ef-tree__row{min-height:var(--tap-min)}}
 `;
 function Node({ node, depth, open, sel, toggle, select }) {

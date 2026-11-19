@@ -7,17 +7,17 @@ const CSS = `
 .ef-promptsteps{border:1px solid var(--border-default);border-radius:var(--radius-md);background:var(--surface-card);padding:var(--space-1);font-family:var(--font-sans)}
 .ef-promptsteps:focus{outline:none}
 .ef-promptsteps:focus-visible{box-shadow:var(--focus-ring)}
-.ef-promptsteps__q{padding:var(--space-2) var(--space-3) var(--space-2);font-size:13.5px;font-weight:var(--weight-semibold);color:var(--text-primary)}
-.ef-promptsteps__opt{display:flex;align-items:center;gap:var(--space-3);width:100%;padding:var(--space-2) var(--space-3);border:none;background:none;cursor:pointer;text-align:start;border-radius:var(--radius-sm);font-family:var(--font-sans);font-size:13.5px;color:var(--text-secondary)}
+.ef-promptsteps__q{padding:var(--space-2) var(--space-3) var(--space-2);font-size:var(--text-md);font-weight:var(--weight-semibold);color:var(--text-primary)}
+.ef-promptsteps__opt{display:flex;align-items:center;gap:var(--space-3);width:100%;padding:var(--space-2) var(--space-3);border:none;background:none;cursor:pointer;text-align:start;border-radius:var(--radius-sm);font-family:var(--font-sans);font-size:var(--text-md);color:var(--text-secondary)}
 .ef-promptsteps__opt--hi{background:var(--surface-sunken);color:var(--text-primary)}
-.ef-promptsteps__num{flex:none;width:14px;font-variant-numeric:tabular-nums;color:var(--text-muted);font-size:12.5px}
-.ef-promptsteps__other{flex:1;min-width:0;border:none;background:none;outline:none;font-family:var(--font-sans);font-size:13.5px;color:var(--text-primary);padding:0}
+.ef-promptsteps__num{flex:none;width:14px;font-variant-numeric:tabular-nums;color:var(--text-muted);font-size:var(--text-sm)}
+.ef-promptsteps__other{flex:1;min-width:0;border:none;background:none;outline:none;font-family:var(--font-sans);font-size:var(--text-md);color:var(--text-primary);padding:0}
 .ef-promptsteps__other::placeholder{color:var(--text-muted)}
-.ef-promptsteps__foot{display:flex;align-items:center;gap:var(--space-3);padding:var(--space-2) var(--space-3) var(--space-1);font-size:12px;color:var(--text-muted)}
-.ef-promptsteps__back{display:inline-flex;align-items:center;gap:var(--space-1);border:none;background:none;cursor:pointer;padding:var(--space-0-5) var(--space-2);margin-inline-start:calc(-1 * var(--space-2));border-radius:var(--radius-sm);font-family:var(--font-sans);font-size:12px;color:var(--text-muted)}
+.ef-promptsteps__foot{display:flex;align-items:center;gap:var(--space-3);padding:var(--space-2) var(--space-3) var(--space-1);font-size:var(--text-xs);color:var(--text-muted)}
+.ef-promptsteps__back{display:inline-flex;align-items:center;gap:var(--space-1);border:none;background:none;cursor:pointer;padding:var(--space-0-5) var(--space-2);margin-inline-start:calc(-1 * var(--space-2));border-radius:var(--radius-sm);font-family:var(--font-sans);font-size:var(--text-xs);color:var(--text-muted)}
 .ef-promptsteps__back:hover{color:var(--text-primary)}
 .ef-promptsteps__kbd{margin-inline-start:auto;display:inline-flex;align-items:center;gap:var(--space-1)}
-.ef-promptsteps__kbd kbd{padding:1px var(--space-2);border:1px solid var(--border-default);border-radius:var(--radius-sm);background:var(--surface-subtle);font-family:var(--font-sans);font-size:11px;color:var(--text-secondary)}
+.ef-promptsteps__kbd kbd{padding:1px var(--space-2);border:1px solid var(--border-default);border-radius:var(--radius-sm);background:var(--surface-subtle);font-family:var(--font-sans);font-size:var(--text-2xs);color:var(--text-secondary)}
 `;
 export function PromptSteps({ steps = [], defaultValues = {}, onAnswer, onComplete, onDismiss, style, className, ...rest }) {
   injectEfCss('ef-css-promptsteps', CSS);

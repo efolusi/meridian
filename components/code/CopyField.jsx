@@ -10,7 +10,7 @@ const CSS = `
 .ef-copyfield__box{display:flex;align-items:center;gap:var(--space-2);min-width:0;max-width:100%;height:var(--control-h-md);padding:0 var(--space-1) 0 var(--space-3);border:1px solid var(--border-strong);border-radius:var(--radius-sm);background:var(--surface-sunken)}
 .ef-copyfield__box:focus-within{border-color:var(--focus-ring-color)}
 .ef-copyfield__sr{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;border:0}
-.ef-copyfield__value{flex:1;min-width:0;font-family:var(--font-mono);font-size:13px;color:var(--text-primary);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;user-select:all}
+.ef-copyfield__value{flex:1;min-width:0;font-family:var(--font-mono);font-size:var(--text-sm);color:var(--text-primary);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;user-select:all}
 `;
 export function CopyField({ label, value, secret, style, className, ...rest }) {
   injectEfCss('ef-css-copyfield', CSS);

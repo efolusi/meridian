@@ -3,13 +3,13 @@ import React from 'react';
 import { injectEfCss } from '../forms/Button.jsx';
 import { Icon } from '../icons/Icon.jsx';
 const CSS = `
-.ef-task{display:flex;flex-direction:column;font-family:var(--font-sans);font-size:13.5px}
+.ef-task{display:flex;flex-direction:column;font-family:var(--font-sans);font-size:var(--text-md)}
 .ef-task__row{display:inline-flex;align-items:flex-start;gap:var(--space-2);padding:var(--space-1) var(--space-2);align-self:flex-start;color:var(--text-secondary);border-radius:var(--radius-sm)}
 .ef-task__icon{display:inline-flex;width:16px;height:20px;align-items:center;justify-content:center;color:var(--text-muted);flex:none}
 .ef-task__dot{width:6px;height:6px;border-radius:50%;background:currentColor}
 .ef-task__label{color:var(--text-primary)}
 .ef-task__detail{color:var(--text-muted)}
-.ef-task__detail code{font-family:var(--font-mono);font-size:12px;background:var(--surface-sunken);border-radius:var(--radius-xs);padding:1px var(--space-1);color:var(--text-secondary)}
+.ef-task__detail code{font-family:var(--font-mono);font-size:var(--text-xs);background:var(--surface-sunken);border-radius:var(--radius-xs);padding:1px var(--space-1);color:var(--text-secondary)}
 .ef-task__rail{width:1px;height:13px;margin-inline-start:var(--space-4);background:var(--border-default);flex:none}
 .ef-task--streaming .ef-task__row:last-of-type{animation:ef-task-pulse 1.2s var(--ease-out) infinite}
 @keyframes ef-task-pulse{0%,100%{opacity:1}50%{opacity:.45}}

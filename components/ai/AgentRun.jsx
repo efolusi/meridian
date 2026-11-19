@@ -18,9 +18,9 @@ const CSS = `
 .ef-agentrun__step:last-child .ef-agentrun__content{padding-bottom:var(--space-0-5)}
 .ef-agentrun__title{display:flex;align-items:baseline;gap:var(--space-2);font-size:var(--text-sm);font-weight:600;color:var(--text-primary)}
 .ef-agentrun__step--pending .ef-agentrun__title{color:var(--text-muted);font-weight:500}
-.ef-agentrun__time{margin-inline-start:auto;font-family:var(--font-mono);font-size:11px;color:var(--text-muted);flex:none}
-.ef-agentrun__detail{font-size:13px;line-height:1.55;color:var(--text-secondary);margin-top:var(--space-1)}
-.ef-agentrun__toggle{display:inline-flex;align-items:center;gap:var(--space-1);border:none;background:none;padding:0;cursor:pointer;font-family:var(--font-sans);font-size:12px;font-weight:500;color:var(--text-muted);margin-top:var(--space-1)}
+.ef-agentrun__time{margin-inline-start:auto;font-family:var(--font-mono);font-size:var(--text-2xs);color:var(--text-muted);flex:none}
+.ef-agentrun__detail{font-size:var(--text-sm);line-height:1.55;color:var(--text-secondary);margin-top:var(--space-1)}
+.ef-agentrun__toggle{display:inline-flex;align-items:center;gap:var(--space-1);border:none;background:none;padding:0;cursor:pointer;font-family:var(--font-sans);font-size:var(--text-xs);font-weight:500;color:var(--text-muted);margin-top:var(--space-1)}
 .ef-agentrun__toggle:hover{color:var(--text-primary)}
 .ef-agentrun__toggle:focus-visible{outline:none;box-shadow:var(--focus-ring)}
 .ef-agentrun__toggle .ef-agentrun__tchev{display:inline-flex;transition:transform var(--dur-med) var(--ease-out)}
