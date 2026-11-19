@@ -37,7 +37,7 @@ export function Confirmation({ title, description, tone = 'default', status, def
   return (
     <div {...rest} role="group" className={`ef-confirm${tone === 'danger' ? ' ef-confirm--danger' : ''}${settled ? ' ef-confirm--settled' : ''}${className ? ' ' + className : ''}`} style={style}>
       <div className="ef-confirm__head">
-        <span className="ef-confirm__icon"><Icon name={icon || (tone === 'danger' ? 'triangle-alert' : 'shield-check')} size={15} /></span>
+        <span className="ef-confirm__icon"><Icon name={icon || (tone === 'danger' ? 'triangle-alert' : 'shield-check')} size={16} /></span>
         <span className="ef-confirm__title">{title}</span>
       </div>
       {description ? <div className="ef-confirm__desc">{description}</div> : null}
@@ -49,7 +49,7 @@ export function Confirmation({ title, description, tone = 'default', status, def
         </div>
       ) : (
         <div className={`ef-confirm__status ef-confirm__status--${cur}`}>
-          <Icon name={cur === 'approved' ? 'circle-check' : 'circle-alert'} size={14} />
+          <Icon name={cur === 'approved' ? 'circle-check' : 'circle-alert'} size={16} />
           {cur === 'approved' ? approvedNote : rejectedNote}
         </div>
       )}

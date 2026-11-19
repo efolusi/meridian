@@ -132,7 +132,7 @@ export function RichComposer({ placeholder = 'Message… use @ to mention, / for
               <React.Fragment key={it.id}>
                 {head}
                 <button type="button" role="option" aria-selected={i === pop.hi} className={`ef-richcomposer__item${i === pop.hi ? ' ef-richcomposer__item--hi' : ''}`} onMouseEnter={() => setPop(p => ({ ...p, hi: i }))} onMouseDown={e => e.preventDefault()} onClick={() => pick(it)}>
-                  {it.icon ? <span className="ef-richcomposer__itemicon"><Icon name={it.icon} size={14} /></span> : null}
+                  {it.icon ? <span className="ef-richcomposer__itemicon"><Icon name={it.icon} size={16} /></span> : null}
                   <span>{pop.char === '/' ? '/' + it.label : it.label}</span>
                   {it.description ? <span className="ef-richcomposer__itemdesc">{it.description}</span> : null}
                 </button>
@@ -147,7 +147,7 @@ export function RichComposer({ placeholder = 'Message… use @ to mention, / for
       <div className="ef-richcomposer__bar">
         {actions}
         {hint ? <span className="ef-richcomposer__hint">{hint}</span> : null}
-        <button type="button" className="ef-richcomposer__send" aria-label="Send" disabled={empty || disabled} onClick={submit}><Icon name="send" size={14} /></button>
+        <button type="button" className="ef-richcomposer__send" aria-label="Send" disabled={empty || disabled} onClick={submit}><Icon name="send" size={16} /></button>
       </div>
     </div>
   );

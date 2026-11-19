@@ -23,7 +23,7 @@ function Block() {
       <Card style={{ '--card-spacing': '8px' }}><CardHeader><CardTitle>Activity</CardTitle></CardHeader><CardContent>
         {EVENTS.map(([who, what, when, icon, badge], i) => (
           <div key={i} style={{ display: 'flex', gap: 12, alignItems: 'flex-start', padding: '10px 12px', borderTop: i ? '1px solid var(--border-default)' : 'none' }}>
-            <span style={{ display: 'inline-flex', width: 28, height: 28, alignItems: 'center', justifyContent: 'center', flex: 'none', borderRadius: 'var(--radius-full)', background: 'var(--surface-sunken)', color: 'var(--text-secondary)' }}><Icon name={icon} size={14} /></span>
+            <span style={{ display: 'inline-flex', width: 28, height: 28, alignItems: 'center', justifyContent: 'center', flex: 'none', borderRadius: 'var(--radius-full)', background: 'var(--surface-sunken)', color: 'var(--text-secondary)' }}><Icon name={icon} size={16} /></span>
             <div style={{ fontSize: 13.5, lineHeight: 1.45, flex: 1 }}>
               <span style={{ fontWeight: 600 }}>{who}</span> <span style={{ color: 'var(--text-secondary)' }}>{what}</span>
               <div style={{ fontSize: 11, color: 'var(--text-muted)', marginTop: 1 }}>{when}</div>

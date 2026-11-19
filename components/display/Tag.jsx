@@ -19,7 +19,7 @@ export function Tag({ icon, onRemove, onClick, children, style, className, ...re
   injectEfCss('ef-css-tag', CSS);
   const body = (
     <React.Fragment>
-      {icon ? <Icon name={icon} size={13} /> : null}
+      {icon ? <Icon name={icon} size={12} /> : null}
       {children}
     </React.Fragment>
   );

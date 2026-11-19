@@ -42,10 +42,10 @@ export function ModelSelector({ models = [], value, onChange, side = 'top', styl
   return (
     <span {...rest} ref={ref} className={`ef-modelsel${dir === 'bottom' ? ' ef-modelsel--down' : ''}${className ? ' ' + className : ''}`} style={style}>
       <button type="button" className="ef-modelsel__btn" aria-haspopup="listbox" aria-expanded={open} onClick={() => setOpen(!open)}>
-        <Icon name="sparkles" size={13} />
+        <Icon name="sparkles" size={12} />
         {cur.name || 'Choose model'}
         {cur.provider ? <span className="ef-modelsel__provider">{cur.provider}</span> : null}
-        <span className="ef-modelsel__chev"><Icon name={dir === 'bottom' ? 'chevron-down' : 'chevron-up'} size={13} /></span>
+        <span className="ef-modelsel__chev"><Icon name={dir === 'bottom' ? 'chevron-down' : 'chevron-up'} size={12} /></span>
       </button>
       {open ? (
         <Portal><div role="listbox" ref={panelRef} className="ef-modelsel__panel" style={anchored}>
@@ -57,7 +57,7 @@ export function ModelSelector({ models = [], value, onChange, side = 'top', styl
                 {m.hint ? <div className="ef-modelsel__hint">{m.hint}</div> : null}
               </span>
               {m.badge ? <span className="ef-modelsel__badge">{m.badge}</span> : null}
-              {m.id === cur.id ? <span className="ef-modelsel__check"><Icon name="check" size={14} /></span> : null}
+              {m.id === cur.id ? <span className="ef-modelsel__check"><Icon name="check" size={16} /></span> : null}
             </button>
           ))}
         </div></Portal>

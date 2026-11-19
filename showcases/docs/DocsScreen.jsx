@@ -8,7 +8,7 @@ function DocsHeader({ onSearch }) {
         <span style={{ fontSize: 15, color: 'var(--text-muted)', fontWeight: 500 }}>Docs</span>
       </a>
       <button onClick={onSearch} style={{ display: 'flex', alignItems: 'center', gap: 8, width: 340, height: 32, padding: '0 10px', marginLeft: 12, border: '1px solid var(--border-strong)', borderRadius: 'var(--radius-sm)', background: 'var(--surface-card)', cursor: 'pointer', fontFamily: 'var(--font-sans)', fontSize: 13, color: 'var(--text-muted)' }}>
-        <Icon name="search" size={15} />Search docs…
+        <Icon name="search" size={16} />Search docs…
         <span style={{ marginLeft: 'auto', display: 'inline-flex', gap: 3 }}><Kbd>⌘</Kbd><Kbd>K</Kbd></span>
       </button>
       <nav style={{ marginLeft: 'auto', display: 'flex', gap: 4, alignItems: 'center' }}>
@@ -116,7 +116,7 @@ function Helpful({ onNext, nextLabel }) {
   const [done, setDone] = React.useState(false);
   return (
     <div style={{ display: 'flex', gap: 20, marginTop: 32, paddingTop: 20, borderTop: '1px solid var(--border-default)', alignItems: 'center' }}>
-      {done ? <span style={{ fontSize: 13, color: 'var(--success-600)', display: 'inline-flex', alignItems: 'center', gap: 6 }}><Icon name="circle-check" size={14} />Thanks, noted.</span> : (
+      {done ? <span style={{ fontSize: 13, color: 'var(--success-600)', display: 'inline-flex', alignItems: 'center', gap: 6 }}><Icon name="circle-check" size={16} />Thanks, noted.</span> : (
         <React.Fragment>
           <span style={{ fontSize: 13, color: 'var(--text-muted)' }}>Was this helpful?</span>
           <div style={{ display: 'flex', gap: 4 }}>
@@ -125,7 +125,7 @@ function Helpful({ onNext, nextLabel }) {
           </div>
         </React.Fragment>
       )}
-      {onNext && <a href="#" onClick={e => { e.preventDefault(); onNext(); }} style={{ marginLeft: 'auto', fontSize: 13.5, fontWeight: 600, display: 'inline-flex', alignItems: 'center', gap: 6 }}>Next: {nextLabel} <Icon name="arrow-right" size={14} /></a>}
+      {onNext && <a href="#" onClick={e => { e.preventDefault(); onNext(); }} style={{ marginLeft: 'auto', fontSize: 13.5, fontWeight: 600, display: 'inline-flex', alignItems: 'center', gap: 6 }}>Next: {nextLabel} <Icon name="arrow-right" size={16} /></a>}
     </div>
   );
 }

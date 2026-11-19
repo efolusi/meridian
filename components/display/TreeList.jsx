@@ -24,8 +24,8 @@ function Node({ node, depth, open, sel, toggle, select }) {
       <button type="button" className={`ef-tree__row${sel === node.id ? ' ef-tree__row--sel' : ''}`} style={{ paddingInlineStart: 8 + depth * 18 }}
         aria-expanded={kids.length ? isOpen : undefined} aria-current={sel === node.id ? 'true' : undefined}
         onClick={() => { if (kids.length) toggle(node.id); select(node.id, node); }}>
-        {kids.length ? <span className={`ef-tree__chev${isOpen ? ' ef-tree__chev--open' : ''}`}><Icon name="chevron-right" size={13} /></span> : <span style={{ width: 13, flex: 'none' }}></span>}
-        {node.icon ? <span className="ef-tree__icon"><Icon name={node.icon} size={15} /></span> : null}
+        {kids.length ? <span className={`ef-tree__chev${isOpen ? ' ef-tree__chev--open' : ''}`}><Icon name="chevron-right" size={12} /></span> : <span style={{ width: 13, flex: 'none' }}></span>}
+        {node.icon ? <span className="ef-tree__icon"><Icon name={node.icon} size={16} /></span> : null}
         <span style={{ whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>{node.label}</span>
         {node.count != null ? <span className="ef-tree__count">{node.count}</span> : null}
       </button>

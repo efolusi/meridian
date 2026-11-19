@@ -112,7 +112,7 @@ export const Checkbox = React.forwardRef(function Checkbox({
           if (!event.defaultPrevented) toggle();
         }}
       >
-        <Icon name={current === 'indeterminate' ? 'minus' : 'check'} size={13} strokeWidth={3} />
+        <Icon name={current === 'indeterminate' ? 'minus' : 'check'} size={12} strokeWidth={3} />
       </button>
       {label ? (
         <span className="ef-check__label" onClick={toggle}>

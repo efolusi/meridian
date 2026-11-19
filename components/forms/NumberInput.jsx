@@ -154,9 +154,9 @@ export function NumberInput({ label, hint, error, invalid, value, defaultValue, 
         onChange={e => setDraft(e.target.value)} onKeyDown={keys} onBlur={e => { commit(e); rest.onBlur?.(e); }} />
       <span className="ef-number__steps">
         <button type="button" className="ef-number__step" aria-label="Increase" tabIndex={-1} disabled={upStuck}
-          onMouseDown={e => e.preventDefault()} onClick={e => stepBy(1, 1, e)}><Icon name="chevron-up" size={size === 'lg' ? 14 : 12} /></button>
+          onMouseDown={e => e.preventDefault()} onClick={e => stepBy(1, 1, e)}><Icon name="chevron-up" size={size === 'lg' ? 16 : 12} /></button>
         <button type="button" className="ef-number__step" aria-label="Decrease" tabIndex={-1} disabled={downStuck}
-          onMouseDown={e => e.preventDefault()} onClick={e => stepBy(-1, 1, e)}><Icon name="chevron-down" size={size === 'lg' ? 14 : 12} /></button>
+          onMouseDown={e => e.preventDefault()} onClick={e => stepBy(-1, 1, e)}><Icon name="chevron-down" size={size === 'lg' ? 16 : 12} /></button>
       </span>
     </span>
   );

@@ -23,7 +23,7 @@ export function ButtonTile({ icon, title, description, selected, disabled, onCli
       {icon ? <span className="ef-tile__icon"><Icon name={icon} size={20} /></span> : null}
       <span className="ef-tile__title">{title}</span>
       {description ? <span className="ef-tile__desc">{description}</span> : null}
-      <span className="ef-tile__check"><Icon name="check" size={11} strokeWidth={3} /></span>
+      <span className="ef-tile__check"><Icon name="check" size={12} strokeWidth={3} /></span>
     </button>
   );
 }
