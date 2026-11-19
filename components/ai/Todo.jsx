@@ -16,7 +16,7 @@ const CSS = `
 .ef-todo__clip{overflow:hidden;min-height:0}
 .ef-todo__list{list-style:none;margin:0;padding:0 var(--space-2) var(--space-2)}
 .ef-todo__item{display:flex;align-items:flex-start;gap:var(--space-3);padding:var(--space-2) var(--space-2);font-size:13.5px;border-radius:var(--radius-sm)}
-.ef-todo__mark{position:relative;flex:none;width:16px;height:16px;margin-top:var(--space-0-5);border-radius:50%;border:1px solid var(--border-strong);display:inline-flex;align-items:center;justify-content:center;transition:background var(--dur-fast) var(--ease-out),border-color var(--dur-fast) var(--ease-out)}
+.ef-todo__mark{position:relative;flex:none;width:var(--icon-md);height:var(--icon-md);margin-top:var(--space-0-5);border-radius:50%;border:1px solid var(--border-strong);display:inline-flex;align-items:center;justify-content:center;transition:background var(--dur-fast) var(--ease-out),border-color var(--dur-fast) var(--ease-out)}
 .ef-todo__item--progress .ef-todo__mark{border-color:transparent;color:var(--text-primary)}
 .ef-todo__item--done .ef-todo__mark{background:var(--accent);border-color:var(--accent);color:var(--accent-contrast)}
 .ef-todo__spin{display:inline-flex;animation:ef-todo-spin 1s linear infinite}
