@@ -3,8 +3,8 @@ import React from 'react';
 import { Icon } from '../icons/Icon.jsx';
 import { injectEfCss } from '../forms/Button.jsx';
 const CSS = `
-.ef-filetype{position:relative;display:inline-flex;align-items:center;justify-content:center;flex:none;background:var(--surface-card);border:1px solid var(--border-strong);border-radius:6px;color:var(--text-secondary)}
-.ef-filetype__ext{position:absolute;bottom:-5px;left:50%;transform:translateX(-50%);font-family:var(--font-mono);font-size:8px;font-weight:700;letter-spacing:.04em;padding:1px var(--space-1);border-radius:3px;text-transform:uppercase;line-height:1.3}
+.ef-filetype{position:relative;display:inline-flex;align-items:center;justify-content:center;flex:none;background:var(--surface-card);border:1px solid var(--border-strong);border-radius:var(--radius-xs-plus);color:var(--text-secondary)}
+.ef-filetype__ext{position:absolute;bottom:-5px;left:50%;transform:translateX(-50%);font-family:var(--font-mono);font-size:8px;font-weight:700;letter-spacing:.04em;padding:1px var(--space-1);border-radius:var(--radius-xs);text-transform:uppercase;line-height:1.3}
 `;
 // Every fill carries the label colour that clears 4.5:1 on it in BOTH themes —
 // no single label colour does (white fails on brand-500/sand-500 in light, dark

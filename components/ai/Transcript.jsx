@@ -14,7 +14,7 @@ const CSS = `
 .ef-transcript__item--active{background:var(--surface-sunken)}
 .ef-transcript__time{flex:none;border:none;background:none;padding:0;cursor:pointer;font-family:var(--font-mono);font-size:11px;color:var(--text-muted);font-variant-numeric:tabular-nums;line-height:1.9;transition:color var(--dur-fast) var(--ease-out)}
 .ef-transcript__time:hover{color:var(--text-primary)}
-.ef-transcript__time:focus-visible{outline:none;box-shadow:var(--focus-ring);border-radius:3px}
+.ef-transcript__time:focus-visible{outline:none;box-shadow:var(--focus-ring);border-radius:var(--radius-xs)}
 .ef-transcript__item--active .ef-transcript__time{color:var(--text-link)}
 .ef-transcript__speaker{flex:none;width:64px;font-size:12px;font-weight:var(--weight-semibold);color:var(--text-primary);line-height:1.8}
 .ef-transcript__text{flex:1;min-width:0;font-size:13.5px;line-height:1.65;color:var(--text-muted)}

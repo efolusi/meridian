@@ -11,7 +11,7 @@ const CSS = `
 .ef-tabs__tab:focus-visible{outline:none;box-shadow:var(--focus-ring)}
 .ef-tabs__tab--active{color:var(--text-primary);font-weight:var(--weight-semibold);background:var(--surface-sunken)}
 .ef-tabs__list[data-variant="line"] .ef-tabs__tab{background:transparent}.ef-tabs__list[data-variant="line"] .ef-tabs__tab--active::after{content:'';position:absolute;inset-inline:0;bottom:-1px;height:2px;border-radius:var(--radius-full);background:var(--accent)}
-.ef-tabs__ink{position:absolute;bottom:-1px;height:2px;background:var(--accent);border-radius:2px;transition:inset-inline-start var(--dur-med) var(--ease-spring),width var(--dur-med) var(--ease-spring)}
+.ef-tabs__ink{position:absolute;bottom:-1px;height:2px;background:var(--accent);border-radius:var(--radius-xs);transition:inset-inline-start var(--dur-med) var(--ease-spring),width var(--dur-med) var(--ease-spring)}
 .ef-tabs__count{font-size:var(--text-xs);font-weight:var(--weight-medium);color:var(--text-muted)}
 .ef-tabs__tab--active .ef-tabs__count{color:var(--text-primary)}
 .ef-tabs__content{padding-block:var(--space-4)}
