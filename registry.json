@@ -3325,6 +3325,36 @@
       ]
     },
     {
+      "name": "legaldocument",
+      "type": "registry:ui",
+      "title": "LegalDocument",
+      "description": "The body of a terms or privacy page. Keep the copy in your dictionaries as plain strings: `[label](href)` makes a link and `**text**` makes it strong; nothing else is read and nothing renders as HTML. `{lang}` in an href becomes the page language, so one dictionary entry serves both. Only http, http",
+      "dependencies": [
+        "react"
+      ],
+      "registryDependencies": [
+        "https://meridian.efolusi.com/site/registry/meridian-base.json",
+        "https://meridian.efolusi.com/site/registry/button.json"
+      ],
+      "files": [
+        {
+          "path": "components/marketing/LegalDocument.jsx",
+          "type": "registry:ui"
+        },
+        {
+          "path": "components/marketing/LegalDocument.d.ts",
+          "type": "registry:component"
+        },
+        {
+          "path": "components/marketing/LegalDocument.prompt.md",
+          "type": "registry:component"
+        }
+      ],
+      "categories": [
+        "marketing"
+      ]
+    },
+    {
       "name": "marquee",
       "type": "registry:ui",
       "title": "Marquee",
@@ -3408,6 +3438,68 @@
         },
         {
           "path": "components/marketing/Section.prompt.md",
+          "type": "registry:component"
+        }
+      ],
+      "categories": [
+        "marketing"
+      ]
+    },
+    {
+      "name": "sitefooter",
+      "type": "registry:ui",
+      "title": "SiteFooter",
+      "description": "The footer of every Efolusi product page: the brand and a one-line tagline, social icon links, as many link columns as the site really has, and a bottom row for the rights line. Each column is a small `nav` named by its heading. Links to other sites open in a new tab and say so to screen readers (`l",
+      "dependencies": [
+        "react"
+      ],
+      "registryDependencies": [
+        "https://meridian.efolusi.com/site/registry/meridian-base.json",
+        "https://meridian.efolusi.com/site/registry/button.json"
+      ],
+      "files": [
+        {
+          "path": "components/marketing/SiteFooter.jsx",
+          "type": "registry:ui"
+        },
+        {
+          "path": "components/marketing/SiteFooter.d.ts",
+          "type": "registry:component"
+        },
+        {
+          "path": "components/marketing/SiteFooter.prompt.md",
+          "type": "registry:component"
+        }
+      ],
+      "categories": [
+        "marketing"
+      ]
+    },
+    {
+      "name": "siteheader",
+      "type": "registry:ui",
+      "title": "SiteHeader",
+      "description": "The header of every Efolusi product page. It brings the skip link, the brand, the primary links, an `actions` slot and a mobile menu below 860px (Escape closes it and returns focus to the button). Mark the page you are on with `current`, give every link a real destination, and point `skipHref` at th",
+      "dependencies": [
+        "react"
+      ],
+      "registryDependencies": [
+        "https://meridian.efolusi.com/site/registry/meridian-base.json",
+        "https://meridian.efolusi.com/site/registry/button.json",
+        "https://meridian.efolusi.com/site/registry/icon.json",
+        "https://meridian.efolusi.com/site/registry/skiplink.json"
+      ],
+      "files": [
+        {
+          "path": "components/marketing/SiteHeader.jsx",
+          "type": "registry:ui"
+        },
+        {
+          "path": "components/marketing/SiteHeader.d.ts",
+          "type": "registry:component"
+        },
+        {
+          "path": "components/marketing/SiteHeader.prompt.md",
           "type": "registry:component"
         }
       ],

@@ -907,6 +907,10 @@
       "sourcePath": "components/forms/Label.jsx"
     },
     {
+      "name": "LegalDocument",
+      "sourcePath": "components/marketing/LegalDocument.jsx"
+    },
+    {
       "name": "LineChart",
       "sourcePath": "components/data/LineChart.jsx"
     },
@@ -1461,6 +1465,14 @@
     {
       "name": "SideNav",
       "sourcePath": "components/navigation/SideNav.jsx"
+    },
+    {
+      "name": "SiteFooter",
+      "sourcePath": "components/marketing/SiteFooter.jsx"
+    },
+    {
+      "name": "SiteHeader",
+      "sourcePath": "components/marketing/SiteHeader.jsx"
     },
     {
       "name": "Skeleton",

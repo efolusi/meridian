@@ -1,7 +1,7 @@
 const { Button, Badge, Icon, Card, CardContent, Avatar, AvatarFallback, AvatarGroup, Input } = window.EfolusiDesignSystem_4ffc3d;
 const wrap = { maxWidth: 1200, margin: '0 auto', padding: '0 32px' };
 
-function SiteHeader() {
+function WebsiteHeader() {
   return (
     <header style={{ position: 'sticky', top: 0, zIndex: 50, background: 'color-mix(in srgb, var(--surface-page) 85%, transparent)', backdropFilter: 'blur(12px)', borderBottom: '1px solid var(--border-default)' }}>
       <div style={{ ...wrap, display: 'flex', alignItems: 'center', gap: 28, height: 64 }}>
@@ -188,7 +188,7 @@ function Newsletter() {
 // Every footer entry points at a page in this kit or a real action; entries
 // with no destination are left out rather than linked to "#".
 const FOOTER_HREFS = { 'AI agents': '../agent/index.html', Infrastructure: '../infra/index.html', Automation: '../docs/index.html', 'File tools': '../tools/index.html', Trading: '../trader/index.html', Pricing: '#pricing', Docs: '../docs/index.html', Support: 'mailto:support@fernwick.example' };
-function SiteFooter() {
+function WebsiteFooter() {
   const col = (title, links) => (
     <div>
       <div style={{ fontSize: 12, fontWeight: 600, letterSpacing: '0.06em', textTransform: 'uppercase', color: 'var(--text-muted)' }}>{title}</div>
@@ -217,4 +217,4 @@ function SiteFooter() {
   );
 }
 
-Object.assign(window, { SiteHeader, WebsiteHero, Products, BrandBand, Pricing, SiteFooter, Newsletter });
+Object.assign(window, { WebsiteHeader, WebsiteHero, Products, BrandBand, Pricing, WebsiteFooter, Newsletter });

@@ -2,7 +2,7 @@
 
 The entire design system in one file, generated from llms.txt, components/*/, and tokens/*.css by scripts/build_llms.py. Do not edit by hand. The short map of the repository is /llms.txt.
 
-> Meridian is a general-purpose open-source design system by Efolusi: 129 accessible React components, 221 design tokens (light, dark, compact), blocks, charts, and full example apps, served browser-native with zero build step. Apache-2.0 licensed.
+> Meridian is a general-purpose open-source design system by Efolusi: 132 accessible React components, 221 design tokens (light, dark, compact), blocks, charts, and full example apps, served browser-native with zero build step. Apache-2.0 licensed.
 
 Live docs: https://meridian.efolusi.com · Source: https://github.com/efolusi/meridian · License: Apache-2.0
 
@@ -34,7 +34,7 @@ Dark mode: set data-theme="dark" on any subtree. Compact density: data-density="
 
 ## Components
 
-129 components across 13 groups: ai, code, data, dates, display, feedback, files, finance, forms, icons, marketing, navigation, overlay. Each entry lists the component's public exports, its usage guidance (.prompt.md), and its typed props interface (.d.ts).
+132 components across 13 groups: ai, code, data, dates, display, feedback, files, finance, forms, icons, marketing, navigation, overlay. Each entry lists the component's public exports, its usage guidance (.prompt.md), and its typed props interface (.d.ts).
 
 ### ai
 
@@ -3838,6 +3838,46 @@ export interface HeroAccentProps extends React.HTMLAttributes<HTMLSpanElement> {
 export declare function HeroAccent(props: HeroAccentProps): React.ReactElement;
 ```
 
+#### LegalDocument
+
+Group: marketing · Source: /components/marketing/LegalDocument.jsx · Exports: LegalDocument
+
+# LegalDocument
+
+The body of a terms or privacy page. Keep the copy in your dictionaries as plain strings: `[label](href)` makes a link and `**text**` makes it strong; nothing else is read and nothing renders as HTML. `{lang}` in an href becomes the page language, so one dictionary entry serves both. Only http, https, mailto and in-site links render as links.
+
+Each section id is a stable link target that other pages point at (`/terms#refunds`). Give `contentsLabel` for the contents list. The component renders an `<article>`; the page keeps its own `<main>`.
+
+```jsx
+<main id="main">
+  <LegalDocument lang="en" title="Privacy" meta="Effective 20 November 2026" contentsLabel="Contents"
+    backLink={{ label: 'Back to home', href: '/en' }}
+    intro={['We collect what we need to run your account. See the [terms](/{lang}/terms#accounts).']}
+    sections={[{ id: 'data', head: 'What we collect', blocks: ['Your **email address**.'] }]} />
+</main>
+```
+
+```ts
+/** A paragraph string, a subheading, or a list. Strings read [label](href) and **strong**; nothing renders as HTML. */
+export type LegalBlock = string | { h3: string; id?: string } | { ul: string[] };
+export interface LegalDocumentProps extends Omit<React.HTMLAttributes<HTMLElement>, 'title'> {
+  title: React.ReactNode;
+  /** The line under the title, such as the effective date. */
+  meta?: React.ReactNode;
+  intro?: LegalBlock[];
+  /** Each id is a stable link target (/terms#refunds). */
+  sections?: { id: string; head: string; blocks: LegalBlock[] }[];
+  /** Name of the contents list; the list shows only when this is given. */
+  contentsLabel?: string;
+  backLink?: { label: React.ReactNode; href: string };
+  /** Replaces "{lang}" in link hrefs. */
+  lang?: string;
+}
+/** The shared body of a terms or privacy page, as an <article>; the page keeps its own <main>. */
+export declare const LegalDocument: React.ForwardRefExoticComponent<LegalDocumentProps & React.RefAttributes<HTMLElement>>;
+export declare function parseLegalInline(text: string, lang?: string): ({ type: 'text' | 'strong'; text: string } | { type: 'link'; text: string; href: string })[];
+```
+
 #### Marquee
 
 Group: marketing · Source: /components/marketing/Marquee.jsx · Exports: Marquee
@@ -3936,6 +3976,98 @@ export interface SectionHeadProps extends Omit<React.HTMLAttributes<HTMLDivEleme
   as?: 'h1' | 'h2' | 'h3';
 }
 export declare const SectionHead: React.ForwardRefExoticComponent<SectionHeadProps & React.RefAttributes<HTMLDivElement>>;
+```
+
+#### SiteFooter
+
+Group: marketing · Source: /components/marketing/SiteFooter.jsx · Exports: SiteFooter
+
+# SiteFooter
+
+The footer of every Efolusi product page: the brand and a one-line tagline, social icon links, as many link columns as the site really has, and a bottom row for the rights line. Each column is a small `nav` named by its heading. Links to other sites open in a new tab and say so to screen readers (`lang="id"` for the Indonesian wording).
+
+```jsx
+<SiteFooter
+  brand="Komando"
+  tagline="Manage servers safely, from the terminal or your agent."
+  columns={[{ heading: 'Product', links: [{ label: 'Docs', href: '/en/docs' }] }, { heading: 'Legal', links: [{ label: 'Privacy', href: '/en/privacy' }, { label: 'Terms', href: '/en/terms' }] }]}
+  socials={[{ label: 'GitHub', href: 'https://github.com/efolusi', icon: <Icon name="github" size={20} aria-hidden="true" /> }]}
+  bottom={<p>© 2026 Efolusi</p>}
+/>
+```
+
+```ts
+export interface SiteFooterLink {
+  label: React.ReactNode;
+  href: string;
+  /** Opens in a new tab with a hidden "(opens in a new tab)". @default true for http(s) links */
+  external?: boolean;
+}
+export interface SiteFooterProps extends React.HTMLAttributes<HTMLElement> {
+  brand?: React.ReactNode;
+  /** @default '/' */
+  brandHref?: string;
+  tagline?: React.ReactNode;
+  /** Link groups, each a small nav with its own heading. */
+  columns?: { heading: string; links: SiteFooterLink[] }[];
+  /** Icon links; `icon` is the glyph, `label` its accessible name. */
+  socials?: { label: string; href: string; icon: React.ReactNode }[];
+  /** The bottom row: rights line, made-in line. */
+  bottom?: React.ReactNode;
+  /** Language of the "(opens in a new tab)" label. @default 'en' */
+  lang?: 'en' | 'id';
+  labels?: Partial<Record<'newTab', string>>;
+}
+/** A marketing footer: brand and tagline, social icons, link columns and a bottom row. Extra content goes in children, under the tagline. */
+export declare const SiteFooter: React.ForwardRefExoticComponent<SiteFooterProps & React.RefAttributes<HTMLElement>>;
+```
+
+#### SiteHeader
+
+Group: marketing · Source: /components/marketing/SiteHeader.jsx · Exports: SiteHeader
+
+# SiteHeader
+
+The header of every Efolusi product page. It brings the skip link, the brand, the primary links, an `actions` slot and a mobile menu below 860px (Escape closes it and returns focus to the button). Mark the page you are on with `current`, give every link a real destination, and point `skipHref` at the page's `<main id>`.
+
+Meridian fetches nothing: the account entry, the `ThemeToggle` and the main call to action go in `actions`. `languageSwitch` links to the same page in the other language. Set `lang="id"` for the Indonesian labels.
+
+```jsx
+<SiteHeader
+  brand={<><img src="/logo.png" alt="" width="28" height="28" />Komando</>}
+  links={[{ label: 'Docs', href: '/en/docs', current: true }, { label: 'Pricing', href: '/en/pricing' }]}
+  languageSwitch={{ label: 'ID', href: '/id/docs', hrefLang: 'id', ariaLabel: 'Bahasa Indonesia' }}
+  actions={<><ThemeToggle /><Button shape="pill" size="sm">Get in touch</Button></>}
+/>
+```
+
+```ts
+export interface SiteHeaderLink {
+  label: React.ReactNode;
+  href: string;
+  /** Marks the page you are on (aria-current="page"). */
+  current?: boolean;
+}
+export interface SiteHeaderProps extends React.HTMLAttributes<HTMLElement> {
+  /** The logo and name. Give `brandLabel` when the brand is an image only. */
+  brand: React.ReactNode;
+  /** @default '/' */
+  brandHref?: string;
+  brandLabel?: string;
+  /** Primary links. Each needs a real destination. */
+  links?: SiteHeaderLink[];
+  /** The product's own controls: account entry, ThemeToggle, the main call to action. */
+  actions?: React.ReactNode;
+  /** The link to the same page in the other language. */
+  languageSwitch?: { label: React.ReactNode; href: string; hrefLang?: string; ariaLabel?: string };
+  /** Language of the built-in labels (menu, skip link, nav name). @default 'en' */
+  lang?: 'en' | 'id';
+  labels?: Partial<Record<'menu' | 'skip' | 'nav', string>>;
+  /** Target of the skip link, the id of the page's <main>. @default '#main' */
+  skipHref?: string;
+}
+/** A sticky marketing header with a skip link, primary links, an actions slot and a mobile menu (Escape closes it). */
+export declare const SiteHeader: React.ForwardRefExoticComponent<SiteHeaderProps & React.RefAttributes<HTMLElement>>;
 ```
 
 #### ThemeToggle

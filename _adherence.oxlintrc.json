@@ -1197,6 +1197,9 @@
       "HeroAccent": {
         "replaces": []
       },
+      "LegalDocument": {
+        "replaces": []
+      },
       "Marquee": {
         "replaces": []
       },
@@ -1207,6 +1210,12 @@
         "replaces": []
       },
       "SectionHead": {
+        "replaces": []
+      },
+      "SiteFooter": {
+        "replaces": []
+      },
+      "SiteHeader": {
         "replaces": []
       },
       "ThemeToggle": {
