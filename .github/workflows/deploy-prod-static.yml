@@ -16,6 +16,10 @@ concurrency:
 
 jobs:
   deploy:
+    # Self-hosted until the Worker move: this job writes the release onto the VPS.
+    # Deferred exception to the hosted-runner rule; the Worker move removes it.
+    if: github.repository == 'efolusi/meridian' && startsWith(github.ref, 'refs/tags/v')
+    environment: production
     runs-on: [self-hosted, Linux, X64, efolusi-prod]
     timeout-minutes: 30
     steps:

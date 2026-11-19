@@ -1,9 +1,10 @@
 import { readdirSync, readFileSync } from 'node:fs'
 import { describe, expect, it } from 'vitest'
 
-// CI security contract for .github/workflows. The repository is public and
-// efolusi-dev / efolusi-prod are org-wide self-hosted hosts shared with other
-// products, so what may run where is a security boundary, not a preference.
+// CI security contract for .github/workflows. The repository is public, so
+// every job runs on GitHub-hosted runners. The one exception is the production
+// deploy, which writes onto the VPS from the self-hosted efolusi-prod host
+// until the Worker move; what may run where is a security boundary.
 
 const WORKFLOW_DIR = '.github/workflows'
 const workflows = Object.fromEntries(
@@ -98,7 +99,7 @@ describe('CI runner isolation', () => {
     }
   })
 
-  it('runs checks on GitHub-hosted runners for every event while no self-hosted runner exists', () => {
+  it('runs checks on GitHub-hosted runners for every event', () => {
     const jobs = runsOn(workflows['checks.yml'])
     expect(Object.keys(jobs).sort()).toEqual(['gates', 'smoke'])
     for (const expr of Object.values(jobs)) {
@@ -106,6 +107,17 @@ describe('CI runner isolation', () => {
         expect(evaluate(expr, PR_CONTEXTS[ctx])).toBe('ubuntu-24.04')
       }
     }
+  })
+
+  it('runs every job on GitHub-hosted runners except the production deploy', () => {
+    const selfHosted = []
+    for (const [name, src] of Object.entries(workflows)) {
+      for (const [job, expr] of Object.entries(runsOn(src))) {
+        if (isSelfHosted(expr)) selfHosted.push(`${name} ${job}`)
+      }
+    }
+    expect(selfHosted).toEqual(['deploy-prod-static.yml deploy'])
+    expect(workflows).not.toHaveProperty(['deploy-dev-static.yml'])
   })
 
   it('does not leave a checkout token in .git/config for PR code to read', () => {
@@ -311,7 +323,7 @@ describe('one gate list', () => {
     const gates = jobBlock(workflows['checks.yml'], 'gates')
     expect(gates).toMatch(/\n\s+run: npm run check\n/)
     expect(JSON.parse(readFileSync('package.json', 'utf8')).scripts.check).toBe('node scripts/check_all.mjs')
-    for (const name of ['publish.yml', 'deploy-dev-static.yml', 'deploy-prod-static.yml']) {
+    for (const name of ['publish.yml', 'deploy-prod-static.yml']) {
       expect(workflows[name], name).toMatch(/\bnpm run check\b/)
     }
   })

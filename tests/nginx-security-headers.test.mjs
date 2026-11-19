@@ -64,7 +64,6 @@ function locations(conf) {
 
 const VHOSTS = {
   prod: { conf: readFileSync('nginx/meridian.efolusi.com.conf', 'utf8'), env: 'production' },
-  dev: { conf: readFileSync('nginx/dev-meridian.efolusi.com.conf', 'utf8'), env: 'development' },
 }
 
 describe('security headers are wired into both vhosts', () => {
@@ -101,7 +100,7 @@ describe('security headers are wired into both vhosts', () => {
 })
 
 describe('deploys refuse to publish against stale snippets', () => {
-  for (const script of ['scripts/deploy-prod-static.sh', 'scripts/deploy-dev-static.sh']) {
+  for (const script of ['scripts/deploy-prod-static.sh']) {
     it(`${script} checks each installed snippet byte for byte, root-owned and read-only`, () => {
       const src = readFileSync(script, 'utf8')
       expect(src).toMatch(/for snippet in meridian-cors\.conf meridian-security-headers\.conf; do/)
