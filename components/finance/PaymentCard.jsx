@@ -2,15 +2,15 @@
 import React from 'react';
 import { injectEfCss } from '../forms/Button.jsx';
 const CSS = `
-.ef-paycard{position:relative;width:320px;aspect-ratio:1.586;border-radius:14px;padding:var(--space-5);display:flex;flex-direction:column;color:var(--brand-50);background:var(--brand-950);overflow:hidden;font-family:var(--font-sans)}
+.ef-paycard{position:relative;width:320px;aspect-ratio:1.586;border-radius:var(--radius-lg);padding:var(--space-5);display:flex;flex-direction:column;color:var(--brand-50);background:var(--brand-950);overflow:hidden;font-family:var(--font-sans)}
 .ef-paycard--caramel{background:var(--brand-700)}
 .ef-paycard--paper{background:var(--surface-card);color:var(--text-primary);border:1px solid var(--border-strong)}
-.ef-paycard__ring{position:absolute;border-radius:999px;border:1px solid currentColor;opacity:.1;pointer-events:none}
+.ef-paycard__ring{position:absolute;border-radius:var(--radius-full);border:1px solid currentColor;opacity:.1;pointer-events:none}
 .ef-paycard__num{font-family:var(--font-mono);font-size:16px;letter-spacing:.12em;margin-top:auto}
 .ef-paycard__row{display:flex;align-items:flex-end;gap:var(--space-5);margin-top:var(--space-3)}
 .ef-paycard__lbl{font-size:8.5px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;opacity:.55}
 .ef-paycard__val{font-size:12.5px;font-weight:600;margin-top:var(--space-0-5)}
-.ef-paycard__chip{width:34px;height:25px;border-radius:5px;background:var(--brand-300)}
+.ef-paycard__chip{width:34px;height:25px;border-radius:var(--radius-xs-plus);background:var(--brand-300)}
 `;
 export function PaymentCard({ name = 'ADA OBI', number = '•••• •••• •••• 4242', expiry = '09/29', network = 'Meridian', variant = 'espresso', frozen, style, className, ...rest }) {
   injectEfCss('ef-css-paycard', CSS);

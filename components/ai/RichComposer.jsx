@@ -3,7 +3,7 @@ import React from 'react';
 import { injectEfCss } from '../forms/Button.jsx';
 import { Icon } from '../icons/Icon.jsx';
 const CSS = `
-.ef-richcomposer{position:relative;border:1px solid var(--border-strong);border-radius:var(--radius-lg,14px);background:var(--surface-card);transition:border-color var(--dur-fast) var(--ease-out),box-shadow var(--dur-fast) var(--ease-out)}
+.ef-richcomposer{position:relative;border:1px solid var(--border-strong);border-radius:var(--radius-lg);background:var(--surface-card);transition:border-color var(--dur-fast) var(--ease-out),box-shadow var(--dur-fast) var(--ease-out)}
 .ef-richcomposer:focus-within{border-color:var(--text-muted);box-shadow:var(--focus-ring)}
 .ef-richcomposer__input{min-height:44px;max-height:200px;overflow-y:auto;padding:var(--space-3) var(--space-4) var(--space-1);font-family:var(--font-sans);font-size:14px;line-height:1.6;color:var(--text-primary);outline:none;white-space:pre-wrap;word-break:break-word}
 .ef-richcomposer__input:empty::before{content:attr(data-placeholder);color:var(--text-muted);pointer-events:none}

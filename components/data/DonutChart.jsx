@@ -5,7 +5,7 @@ const CSS = `
 .ef-donut{display:flex;align-items:center;gap:var(--space-5)}
 .ef-donut__legend{display:flex;flex-direction:column;gap:var(--space-2)}
 .ef-donut__item{display:flex;align-items:center;gap:var(--space-2);font-size:var(--text-sm);color:var(--text-secondary);border:none;background:none;padding:0;cursor:default;font-family:var(--font-sans);text-align:start}
-.ef-donut__swatch{width:9px;height:9px;border-radius:2px;flex:none}
+.ef-donut__swatch{width:9px;height:9px;border-radius:var(--radius-xs);flex:none}
 .ef-donut__sr{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;border:0}
 .ef-donut__val{margin-inline-start:auto;font-family:var(--font-mono);font-size:12px;color:var(--text-primary);padding-inline-start:var(--space-4)}
 `;

@@ -42,7 +42,7 @@ export function AgentRun({ steps = [], style, className, ...rest }) {
                 {st === 'done' ? <Icon name="check" size={12} />
                   : st === 'active' ? <span className="ef-agentrun__spin"><Icon name="loader-circle" size={12} /></span>
                   : st === 'error' ? <Icon name="x" size={12} />
-                  : <span style={{ width: 5, height: 5, borderRadius: 99, background: 'currentColor', display: 'inline-block' }}></span>}
+                  : <span style={{ width: 5, height: 5, borderRadius: 'var(--radius-full)', background: 'currentColor', display: 'inline-block' }}></span>}
               </span>
               {i < steps.length - 1 ? <span className="ef-agentrun__line"></span> : null}
             </div>

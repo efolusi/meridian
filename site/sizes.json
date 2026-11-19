@@ -1,16 +1,16 @@
 {
   "totals": {
     "@efolusi/meridian": {
-      "bytes": 356124,
-      "gzip": 80113
+      "bytes": 356142,
+      "gzip": 80123
     },
     "dist/components.css": {
-      "bytes": 207334,
-      "gzip": 28400
+      "bytes": 207618,
+      "gzip": 28407
     },
     "_ds_bundle.js": {
-      "bytes": 822129,
-      "gzip": 145291
+      "bytes": 822431,
+      "gzip": 145301
     }
   },
   "modules": [
@@ -20,8 +20,8 @@
       "exports": [
         "AgentRun"
       ],
-      "bytes": 46598,
-      "gzip": 7771
+      "bytes": 46616,
+      "gzip": 7782
     },
     {
       "module": "ai/Bubble.js",
