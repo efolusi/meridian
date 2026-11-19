@@ -1,14 +1,10 @@
 import { readFileSync } from 'node:fs'
 import { describe, expect, it } from 'vitest'
 
-// meridian.efolusi.com is served by Nginx from an immutable release that
-// scripts/deploy-prod-static.sh publishes. There is no Cloudflare Pages
-// project and no wrangler config, so no public surface may tell a reader to
-// deploy that way.
+// meridian.efolusi.com is a Cloudflare Worker serving static assets that
+// scripts/build_worker_assets.mjs builds from a release commit. The public
+// deploy docs must say so, in both locales, and name no retired path.
 const docs = readFileSync('site/Docs.dc.html', 'utf8')
-const headers = readFileSync('_headers', 'utf8')
-const redirects = readFileSync('_redirects', 'utf8')
-const prodVhost = readFileSync('nginx/meridian.efolusi.com.conf', 'utf8')
 
 function deploySection() {
   const start = docs.indexOf("h2('deploy'")
@@ -27,17 +23,15 @@ function copyPairs(section) {
 }
 
 describe('public deployment docs', () => {
-  it('describe the native static deploy in both locales', () => {
+  it('describe the Worker deploy in both locales', () => {
     const pairs = copyPairs(deploySection())
     expect(pairs.length).toBeGreaterThan(0)
-
     for (const locale of ['en', 'id']) {
       const copy = pairs.map((pair) => pair[locale]).join('\n')
-      expect(copy).not.toContain('deploy-dev-static')
-      expect(copy).toContain('scripts/deploy-prod-static.sh')
-      expect(copy).toContain('nginx/')
-      expect(copy).toContain('index.html')
-      expect(copy).not.toMatch(/wrangler|cloudflare/i)
+      for (const named of ['wrangler.jsonc', 'scripts/build_worker_assets.mjs', '_headers', '_redirects', 'index.html']) {
+        expect(copy, `${locale}: ${named}`).toContain(named)
+      }
+      expect(copy).not.toMatch(/nginx|deploy-prod-static|deploy-dev-static/i)
     }
   })
 
@@ -46,17 +40,5 @@ describe('public deployment docs', () => {
       expect(en).not.toMatch(/—|--/)
       expect(id).not.toMatch(/—|--/)
     }
-  })
-
-  it('promise only headers the served vhosts actually send', () => {
-    const section = deploySection()
-    if (/CORS|Access-Control/i.test(section)) {
-      expect(prodVhost).toContain('Access-Control-Allow-Origin')
-    }
-  })
-
-  it('carry no wrangler configuration or Cloudflare hosting claims', () => {
-    expect(headers).not.toMatch(/Cloudflare/)
-    expect(redirects).not.toMatch(/Cloudflare/)
   })
 })
