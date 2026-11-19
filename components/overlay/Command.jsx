@@ -6,15 +6,15 @@ import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle } f
 
 const CSS = `
 .ef-command{display:flex;width:100%;height:100%;flex-direction:column;overflow:hidden;border-radius:var(--radius-md);background:var(--surface-card);color:var(--text-primary);font-family:var(--font-sans)}
-.ef-command__input-wrap{display:flex;height:44px;align-items:center;gap:8px;padding-inline:12px;border-bottom:1px solid var(--border-default);color:var(--text-muted)}
+.ef-command__input-wrap{display:flex;height:44px;align-items:center;gap:var(--space-2);padding-inline:var(--space-3);border-bottom:1px solid var(--border-default);color:var(--text-muted)}
 .ef-command__input{display:flex;width:100%;height:40px;border:0;outline:0;background:transparent;color:var(--text-primary);font:inherit;font-size:var(--text-sm)}.ef-command__input-wrap:focus-within{box-shadow:inset 0 -2px 0 var(--focus-ring-color)}.ef-command__input::placeholder{color:var(--text-muted)}.ef-command__input:disabled{cursor:not-allowed;opacity:.5}
-.ef-command__list{max-height:300px;overflow-x:hidden;overflow-y:auto;scroll-padding-block:4px;padding:4px}
-.ef-command__empty{padding:24px;text-align:center;color:var(--text-muted);font-size:var(--text-sm)}
-.ef-command__group{overflow:hidden;padding:4px}.ef-command__group[hidden],.ef-command__group:not(:has(.ef-command__item:not([hidden]))){display:none}.ef-command__heading{padding:6px 8px;color:var(--text-muted);font-size:var(--text-xs);font-weight:var(--weight-medium)}
-.ef-command__item{position:relative;display:flex;width:100%;align-items:center;gap:8px;padding:7px 8px;border:0;border-radius:var(--radius-sm);outline:0;background:transparent;color:var(--text-primary);font:inherit;font-size:var(--text-sm);text-align:start;cursor:pointer;user-select:none}.ef-command__item[data-selected="true"]{background:var(--surface-sunken);box-shadow:inset 0 0 0 2px var(--focus-ring-color)}.ef-command__item[data-disabled="true"]{pointer-events:none;opacity:.5}.ef-command__item[hidden]{display:none}
+.ef-command__list{max-height:300px;overflow-x:hidden;overflow-y:auto;scroll-padding-block:4px;padding:var(--space-1)}
+.ef-command__empty{padding:var(--space-6);text-align:center;color:var(--text-muted);font-size:var(--text-sm)}
+.ef-command__group{overflow:hidden;padding:var(--space-1)}.ef-command__group[hidden],.ef-command__group:not(:has(.ef-command__item:not([hidden]))){display:none}.ef-command__heading{padding:var(--space-2) var(--space-2);color:var(--text-muted);font-size:var(--text-xs);font-weight:var(--weight-medium)}
+.ef-command__item{position:relative;display:flex;width:100%;align-items:center;gap:var(--space-2);padding:var(--space-2) var(--space-2);border:0;border-radius:var(--radius-sm);outline:0;background:transparent;color:var(--text-primary);font:inherit;font-size:var(--text-sm);text-align:start;cursor:pointer;user-select:none}.ef-command__item[data-selected="true"]{background:var(--surface-sunken);box-shadow:inset 0 0 0 2px var(--focus-ring-color)}.ef-command__item[data-disabled="true"]{pointer-events:none;opacity:.5}.ef-command__item[hidden]{display:none}
 .ef-command__shortcut{margin-inline-start:auto;color:var(--text-muted);font-size:var(--text-xs);letter-spacing:.08em}
-.ef-command__separator{height:1px;margin-inline:-4px;background:var(--border-default)}
-.ef-command-dialog{overflow:hidden;padding:0}.ef-command-dialog>.ef-dialog__close{z-index:1}.ef-command-dialog .ef-command__input-wrap{height:48px}.ef-command-dialog .ef-command__item{padding-block:10px}
+.ef-command__separator{height:1px;margin-inline:calc(-1 * var(--space-1));background:var(--border-default)}
+.ef-command-dialog{overflow:hidden;padding:0}.ef-command-dialog>.ef-dialog__close{z-index:1}.ef-command-dialog .ef-command__input-wrap{height:48px}.ef-command-dialog .ef-command__item{padding-block:var(--space-3)}
 .ef-command__sr{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
 /* coarse pointers get the 44px touch target, like form controls do through --control-h-* */
 @media (pointer:coarse){.ef-command__item{min-height:var(--tap-min)}}

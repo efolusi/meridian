@@ -4,7 +4,7 @@ import { injectEfCss, cssPct } from '../forms/Button.jsx';
 const CSS = `
 .ef-linechart{position:relative}
 .ef-linechart__sr{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;border:0}
-.ef-linechart__tip{position:absolute;transform:translate(-50%,-130%);background:var(--surface-inverse);color:var(--text-inverse);font-size:11px;font-weight:500;padding:4px 8px;border-radius:6px;white-space:nowrap;pointer-events:none;z-index:5}
+.ef-linechart__tip{position:absolute;transform:translate(-50%,-130%);background:var(--surface-inverse);color:var(--text-inverse);font-size:11px;font-weight:500;padding:var(--space-1) var(--space-2);border-radius:6px;white-space:nowrap;pointer-events:none;z-index:5}
 `;
 // A fixed default locale: the runtime default differs between server and
 // browser and would make the first render mismatch on hydration.

@@ -4,14 +4,14 @@ import { injectEfCss } from '../forms/Button.jsx';
 import { Icon } from '../icons/Icon.jsx';
 const CSS = `
 .ef-reasoning{border:1px solid var(--border-default);border-radius:var(--radius-md);background:var(--surface-subtle);overflow:hidden}
-.ef-reasoning__head{display:flex;align-items:center;gap:8px;width:100%;padding:9px 12px;border:none;background:none;cursor:pointer;text-align:start;font-family:var(--font-sans);font-size:var(--text-sm);font-weight:500;color:var(--text-secondary)}
+.ef-reasoning__head{display:flex;align-items:center;gap:var(--space-2);width:100%;padding:var(--space-2) var(--space-3);border:none;background:none;cursor:pointer;text-align:start;font-family:var(--font-sans);font-size:var(--text-sm);font-weight:500;color:var(--text-secondary)}
 .ef-reasoning__head:focus-visible{outline:none;box-shadow:var(--focus-ring)}
 .ef-reasoning__glyph{display:inline-flex;color:var(--text-muted)}
 .ef-reasoning--streaming .ef-reasoning__glyph{animation:ef-reasoning-pulse 1.2s var(--ease-out) infinite}
 @keyframes ef-reasoning-pulse{0%,100%{opacity:1}50%{opacity:.35}}
 .ef-reasoning__chev{margin-inline-start:auto;display:inline-flex;color:var(--text-muted);transition:transform var(--dur-med) var(--ease-out)}
 .ef-reasoning--open .ef-reasoning__chev{transform:rotate(180deg)}
-.ef-reasoning__body{padding:2px 14px 12px;font-size:13.5px;line-height:1.65;color:var(--text-secondary);white-space:pre-wrap;border-top:1px dashed var(--border-default);padding-top:10px;margin:0 0}
+.ef-reasoning__body{padding:var(--space-0-5) var(--space-4) var(--space-3);font-size:13.5px;line-height:1.65;color:var(--text-secondary);white-space:pre-wrap;border-top:1px dashed var(--border-default);padding-top:var(--space-3);margin:0 0}
 `;
 export function Reasoning({ streaming, duration, defaultOpen, open, onOpenChange, label, children, style, className, ...rest }) {
   injectEfCss('ef-css-reasoning', CSS);

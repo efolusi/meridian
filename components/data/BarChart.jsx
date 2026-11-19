@@ -2,12 +2,12 @@
 import React from 'react';
 import { injectEfCss, cssPct } from '../forms/Button.jsx';
 const CSS = `
-.ef-bars{display:flex;align-items:flex-end;gap:3px;width:100%}
+.ef-bars{display:flex;align-items:flex-end;gap:var(--space-1);width:100%}
 .ef-bars__bar{flex:1;min-width:3px;border-radius:2px 2px 0 0;background:var(--text-muted);transition:background var(--dur-fast) var(--ease-out)}
 .ef-bars__bar--hi{background:var(--accent)}
 .ef-bars__bar:hover{background:var(--brand-700)}
 .ef-bars__sr{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;border:0}
-.ef-bars__labels{display:flex;justify-content:space-between;margin-top:6px;font-family:var(--font-mono);font-size:10px;color:var(--text-muted)}
+.ef-bars__labels{display:flex;justify-content:space-between;margin-top:var(--space-2);font-family:var(--font-mono);font-size:10px;color:var(--text-muted)}
 `;
 // Fixed default locale: the runtime default would differ between server and browser.
 export function BarChart({ data = [], height = 140, highlightLast = 0, labels, format, locale = 'en-US', 'aria-label': ariaLabel, style, className, ...rest }) {

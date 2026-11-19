@@ -4,13 +4,13 @@ import { injectEfCss } from './Button.jsx';
 import { useFieldProps } from './Field.jsx';
 
 const CSS = `
-.ef-slider{display:flex;flex-direction:column;gap:8px;touch-action:none;user-select:none}
+.ef-slider{display:flex;flex-direction:column;gap:var(--space-2);touch-action:none;user-select:none}
 .ef-slider__control{position:relative;display:flex;align-items:center;width:100%;height:24px}
 .ef-slider__rail{position:absolute;inset-inline:0;height:3px;border-radius:var(--radius-full);background:var(--border-strong);overflow:hidden}
 .ef-slider__range{position:absolute;inset-block:0;border-radius:inherit;background:var(--accent)}
 .ef-slider__input{position:absolute;inset:0;width:100%;height:24px;margin:0;background:transparent;pointer-events:none;-webkit-appearance:none;appearance:none}
 .ef-slider__input::-webkit-slider-runnable-track{height:3px;background:transparent}
-.ef-slider__input::-webkit-slider-thumb{width:16px;height:16px;margin-top:-6.5px;border:1.5px solid var(--accent);border-radius:var(--radius-full);background:var(--surface-card);box-shadow:var(--shadow-xs);pointer-events:auto;cursor:grab;-webkit-appearance:none;transition:transform var(--dur-fast) var(--ease-out)}
+.ef-slider__input::-webkit-slider-thumb{width:16px;height:16px;margin-top:calc(-1 * var(--space-2));border:1.5px solid var(--accent);border-radius:var(--radius-full);background:var(--surface-card);box-shadow:var(--shadow-xs);pointer-events:auto;cursor:grab;-webkit-appearance:none;transition:transform var(--dur-fast) var(--ease-out)}
 .ef-slider__input::-moz-range-track{height:3px;background:transparent}
 .ef-slider__input::-moz-range-thumb{width:13px;height:13px;border:1.5px solid var(--accent);border-radius:var(--radius-full);background:var(--surface-card);box-shadow:var(--shadow-xs);pointer-events:auto;cursor:grab}
 .ef-slider__input:active::-webkit-slider-thumb{cursor:grabbing;transform:scale(1.12)}

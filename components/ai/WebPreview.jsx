@@ -3,13 +3,13 @@ import React from 'react';
 import { injectEfCss } from '../forms/Button.jsx';
 import { Icon } from '../icons/Icon.jsx';
 const CSS = `
-.ef-webprev{display:flex;flex-direction:column;border:1px solid var(--border-default);border-radius:var(--radius-md);background:var(--surface-card);padding:6px;font-family:var(--font-sans)}
-.ef-webprev__bar{display:flex;align-items:center;gap:4px;padding:2px 4px 8px}
+.ef-webprev{display:flex;flex-direction:column;border:1px solid var(--border-default);border-radius:var(--radius-md);background:var(--surface-card);padding:var(--space-2);font-family:var(--font-sans)}
+.ef-webprev__bar{display:flex;align-items:center;gap:var(--space-1);padding:var(--space-0-5) var(--space-1) var(--space-2)}
 .ef-webprev__btn{display:inline-flex;align-items:center;justify-content:center;width:28px;height:28px;border:none;background:none;cursor:pointer;color:var(--text-muted);border-radius:var(--radius-sm);flex:none;transition:color var(--dur-fast) var(--ease-out),background var(--dur-fast) var(--ease-out)}
 .ef-webprev__btn:hover{color:var(--text-primary);background:var(--surface-subtle)}
 .ef-webprev__btn--on{color:var(--text-primary);background:var(--surface-sunken)}
 .ef-webprev__btn:focus-visible{outline:none;box-shadow:var(--focus-ring)}
-.ef-webprev__addr{flex:1;min-width:0;height:30px;padding:0 12px;border:1px solid var(--border-default);border-radius:var(--radius-full);background:var(--surface-subtle);font-family:var(--font-sans);font-size:12.5px;color:var(--text-secondary);transition:border-color var(--dur-fast) var(--ease-out),box-shadow var(--dur-fast) var(--ease-out)}
+.ef-webprev__addr{flex:1;min-width:0;height:30px;padding:0 var(--space-3);border:1px solid var(--border-default);border-radius:var(--radius-full);background:var(--surface-subtle);font-family:var(--font-sans);font-size:12.5px;color:var(--text-secondary);transition:border-color var(--dur-fast) var(--ease-out),box-shadow var(--dur-fast) var(--ease-out)}
 .ef-webprev__addr:focus{outline:none;border-color:var(--border-strong);box-shadow:var(--focus-ring);color:var(--text-primary)}
 .ef-webprev__stage{position:relative;display:flex;justify-content:center;background:var(--surface-sunken);border:1px solid var(--border-default);border-radius:var(--radius-sm);overflow:hidden}
 .ef-webprev__frame{border:none;width:100%;height:100%;background:var(--surface-card);transition:width .45s cubic-bezier(.32,.72,0,1)}
@@ -18,13 +18,13 @@ const CSS = `
 .ef-webprev__consbody{display:grid;grid-template-rows:0fr;transition:grid-template-rows var(--dur-med) var(--ease-out)}
 .ef-webprev--console .ef-webprev__consbody{grid-template-rows:1fr}
 .ef-webprev__consclip{overflow:hidden;min-height:0}
-.ef-webprev__cons{margin-top:6px;border:1px solid var(--border-default);border-radius:var(--radius-sm);background:var(--surface-subtle);max-height:180px;overflow-y:auto;font-family:var(--font-mono);font-size:11.5px;line-height:1.6}
-.ef-webprev__log{display:flex;gap:8px;padding:5px 10px;border-top:1px solid var(--border-default);color:var(--text-secondary)}
+.ef-webprev__cons{margin-top:var(--space-2);border:1px solid var(--border-default);border-radius:var(--radius-sm);background:var(--surface-subtle);max-height:180px;overflow-y:auto;font-family:var(--font-mono);font-size:11.5px;line-height:1.6}
+.ef-webprev__log{display:flex;gap:var(--space-2);padding:var(--space-1) var(--space-3);border-top:1px solid var(--border-default);color:var(--text-secondary)}
 .ef-webprev__log:first-child{border-top:none}
 .ef-webprev__log--warn{color:var(--warning-600)}
 .ef-webprev__log--error{color:var(--danger-600)}
-.ef-webprev__logicon{display:inline-flex;flex:none;margin-top:2px}
-.ef-webprev__badge{position:absolute;top:3px;inset-inline-end:3px;min-width:14px;height:14px;padding:0 4px;border-radius:var(--radius-full);background:var(--danger-600);color:var(--danger-contrast);font-size:9.5px;font-weight:var(--weight-semibold);display:inline-flex;align-items:center;justify-content:center;font-family:var(--font-sans)}
+.ef-webprev__logicon{display:inline-flex;flex:none;margin-top:var(--space-0-5)}
+.ef-webprev__badge{position:absolute;top:3px;inset-inline-end:3px;min-width:14px;height:14px;padding:0 var(--space-1);border-radius:var(--radius-full);background:var(--danger-600);color:var(--danger-contrast);font-size:9.5px;font-weight:var(--weight-semibold);display:inline-flex;align-items:center;justify-content:center;font-family:var(--font-sans)}
 @media (pointer:coarse){.ef-webprev__btn{min-width:var(--tap-min);min-height:var(--tap-min)}}
 `;
 // Model-supplied URL: only http(s), mailto and relative pass (see Citation.jsx).

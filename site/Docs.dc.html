@@ -308,6 +308,8 @@ class Component extends DCLogic {
       { group: 'Reference', id: 'changelog', title: 'Changelog', lede: 'Notable changes, newest first. Full history in CHANGELOG.md.', blocks: [
         h2('unreleased', 'Unreleased', 'Belum dirilis'),
         list([
+          ['Spacing on the token scale everywhere.', 'Padding, margin and gap in every component group come from the space tokens; values off the 4px scale moved by up to 2px. Padding that clears an icon or lines up with it keeps its size.', 'Spasi di skala token di mana saja.', 'Padding, margin dan gap di setiap kelompok komponen berasal dari token spasi; nilai di luar skala 4px bergeser paling banyak 2px. Padding yang memberi ruang atau sejajar dengan ikon tetap ukurannya.'],
+          ['Flat surfaces instead of decorative gradients.', 'The PaymentCard chip and the GeneratedImage placeholder are flat token fills; the gradients that mark a state, a cut-off or a scroll edge stay.', 'Permukaan datar, bukan gradien hiasan.', 'Chip PaymentCard dan placeholder GeneratedImage memakai isian token datar; gradien yang menandai keadaan, potongan atau tepi gulir tetap ada.'],
           ['Sizes and contrast from design-tokens 0.2.1.', 'Button xs is 24px, icons sit on one 8 to 32px scale, and text, status and hover colours keep their contrast in every mode.', 'Ukuran dan kontras dari design-tokens 0.2.1.', 'Button xs kini 24px, ikon berada di satu skala 8 sampai 32px, dan warna teks, status serta hover menjaga kontrasnya di setiap mode.'],
         ]),
         h2('v1240', '1.24.0 (November 2026)', '1.24.0 (November 2026)'),

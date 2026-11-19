@@ -13,7 +13,7 @@ const CSS = `
 .ef-genimg--error .ef-genimg__img{opacity:.3}
 .ef-genimg__dark{position:absolute;inset:0;background:var(--media-backdrop);opacity:0;transition:opacity var(--dur-med) var(--ease-out);pointer-events:none}
 .ef-genimg--generating .ef-genimg__dark{opacity:1}
-.ef-genimg__dots{position:absolute;inset:0;background-image:radial-gradient(circle,var(--media-backdrop-dot) 1.3px,transparent 1.7px);background-size:30px 30px;-webkit-mask-image:radial-gradient(ellipse at center,black 10%,transparent 78%);mask-image:radial-gradient(ellipse at center,black 10%,transparent 78%);animation:ef-genimg-pulse 2.8s ease-in-out infinite}
+.ef-genimg__backdrop{position:absolute;inset:0;background:var(--media-backdrop-dot);-webkit-mask-image:radial-gradient(ellipse at center,black 10%,transparent 78%);mask-image:radial-gradient(ellipse at center,black 10%,transparent 78%);animation:ef-genimg-pulse 2.8s ease-in-out infinite}
 @keyframes ef-genimg-pulse{0%,100%{opacity:.45}50%{opacity:1}}
 .ef-genimg__scrim{position:absolute;inset-inline:0;pointer-events:none;opacity:0;transition:opacity var(--dur-med) var(--ease-out)}
 .ef-genimg--complete .ef-genimg__scrim{opacity:1}
@@ -21,13 +21,13 @@ const CSS = `
 .ef-genimg__prompt{position:absolute;top:13px;inset-inline:16px;font-size:13px;font-weight:var(--weight-semibold);color:var(--text-primary);z-index:2}
 .ef-genimg--generating .ef-genimg__prompt,.ef-genimg--complete .ef-genimg__prompt{color:var(--text-on-media)}
 .ef-genimg__status{position:absolute;inset-inline-start:16px;bottom:13px;font-size:12.5px;color:var(--text-on-media-muted);z-index:2;animation:ef-genimg-pulse 1.6s ease-in-out infinite}
-.ef-genimg__center{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;color:var(--text-muted);font-size:13px;z-index:2;padding:20px;text-align:center}
-.ef-genimg__actions{position:absolute;top:9px;inset-inline-end:9px;display:flex;gap:2px;z-index:3;opacity:0;transition:opacity var(--dur-fast) var(--ease-out)}
+.ef-genimg__center{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:var(--space-3);color:var(--text-muted);font-size:13px;z-index:2;padding:var(--space-5);text-align:center}
+.ef-genimg__actions{position:absolute;top:9px;inset-inline-end:9px;display:flex;gap:var(--space-0-5);z-index:3;opacity:0;transition:opacity var(--dur-fast) var(--ease-out)}
 .ef-genimg--complete:hover .ef-genimg__actions,.ef-genimg--complete:focus-within .ef-genimg__actions{opacity:1}
 .ef-genimg__act{display:inline-flex;align-items:center;justify-content:center;width:30px;height:30px;border:none;cursor:pointer;color:var(--text-on-media);background:var(--media-scrim-soft);border-radius:var(--radius-sm);backdrop-filter:blur(2px);transition:background var(--dur-fast) var(--ease-out)}
 .ef-genimg__act:hover{background:var(--media-scrim-strong)}
 .ef-genimg__act:focus-visible{outline:none;box-shadow:var(--focus-ring)}
-.ef-genimg__retry{display:inline-flex;align-items:center;gap:6px;padding:7px 13px;border:1px solid var(--border-strong);border-radius:var(--radius-full);background:var(--surface-card);cursor:pointer;font-family:var(--font-sans);font-size:12.5px;font-weight:var(--weight-semibold);color:var(--text-primary)}
+.ef-genimg__retry{display:inline-flex;align-items:center;gap:var(--space-2);padding:var(--space-2) var(--space-3);border:1px solid var(--border-strong);border-radius:var(--radius-full);background:var(--surface-card);cursor:pointer;font-family:var(--font-sans);font-size:12.5px;font-weight:var(--weight-semibold);color:var(--text-primary)}
 .ef-genimg__err{color:var(--danger-600)}
 @media (pointer:coarse){.ef-genimg__act{min-width:var(--tap-min);min-height:var(--tap-min)}}
 `;
@@ -37,7 +37,7 @@ export function GeneratedImage({ status = 'complete', src, alt, prompt, aspect =
   return (
     <div {...rest} className={`ef-genimg ef-genimg--${aspect} ef-genimg--${s}${className ? ' ' + className : ''}`} style={style} data-state={s}>
       {src && (s === 'complete' || s === 'error') ? <img className="ef-genimg__img" src={src} alt={alt || prompt || ''} /> : null}
-      <div className="ef-genimg__dark">{s === 'generating' ? <div className="ef-genimg__dots"></div> : null}</div>
+      <div className="ef-genimg__dark">{s === 'generating' ? <div className="ef-genimg__backdrop"></div> : null}</div>
       <div className="ef-genimg__scrim ef-genimg__scrim--top" aria-hidden="true"></div>
       {prompt ? <div className="ef-genimg__prompt">{prompt}</div> : null}
       {s === 'queued' ? <div className="ef-genimg__center"><Icon name="image" size={20} /><span>Queued…</span></div> : null}

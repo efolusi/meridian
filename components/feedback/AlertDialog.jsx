@@ -4,18 +4,18 @@ import { injectEfCss, mergeRefs, buttonVariants, useIsoLayoutEffect } from '../f
 import { Portal, useEscapeLayer, useScrollLock, escapeLayerContext, useHydrated } from '../overlay/Portal.jsx';
 
 const CSS = `
-.ef-alertdialog__overlay{position:fixed;inset:0;z-index:var(--z-overlay);display:grid;place-items:center;padding:24px;background:var(--overlay-scrim);animation:ef-alertdialog-fade var(--dur-med) var(--ease-out)}
-.ef-alertdialog__content{width:100%;max-width:512px;padding:24px;background:var(--surface-card);color:var(--text-primary);border:1px solid var(--border-default);border-radius:var(--radius-lg);box-shadow:var(--shadow-xl);animation:ef-alertdialog-pop var(--dur-slow) var(--ease-spring)}
+.ef-alertdialog__overlay{position:fixed;inset:0;z-index:var(--z-overlay);display:grid;place-items:center;padding:var(--space-6);background:var(--overlay-scrim);animation:ef-alertdialog-fade var(--dur-med) var(--ease-out)}
+.ef-alertdialog__content{width:100%;max-width:512px;padding:var(--space-6);background:var(--surface-card);color:var(--text-primary);border:1px solid var(--border-default);border-radius:var(--radius-lg);box-shadow:var(--shadow-xl);animation:ef-alertdialog-pop var(--dur-slow) var(--ease-spring)}
 .ef-alertdialog__content:focus{outline:none}
 .ef-alertdialog__content--sm{max-width:384px}
-.ef-alertdialog__header{display:flex;flex-direction:column;gap:8px;text-align:start}
-.ef-alertdialog__header:has(.ef-alertdialog__media){display:grid;grid-template-columns:auto minmax(0,1fr);column-gap:16px}
+.ef-alertdialog__header{display:flex;flex-direction:column;gap:var(--space-2);text-align:start}
+.ef-alertdialog__header:has(.ef-alertdialog__media){display:grid;grid-template-columns:auto minmax(0,1fr);column-gap:var(--space-4)}
 .ef-alertdialog__header:has(.ef-alertdialog__media) .ef-alertdialog__description{grid-column:2}
 .ef-alertdialog__title{margin:0;font-family:var(--font-display);font-size:var(--text-lg);font-weight:var(--weight-bold);line-height:var(--leading-tight);letter-spacing:var(--tracking-tight)}
 .ef-alertdialog__description{margin:0;color:var(--text-secondary);font-size:var(--text-sm);line-height:var(--leading-relaxed)}
 .ef-alertdialog__media{display:grid;grid-row:1/span 2;place-items:center;width:40px;height:40px;color:var(--text-primary);background:var(--surface-subtle);border-radius:var(--radius-md)}
-.ef-alertdialog__footer{display:flex;justify-content:flex-end;flex-wrap:wrap;gap:8px;margin-top:24px}
-@media(max-width:520px){.ef-alertdialog__overlay{padding:16px}.ef-alertdialog__content{padding:20px}.ef-alertdialog__footer{flex-direction:column-reverse}.ef-alertdialog__footer .ef-btn{width:100%}}
+.ef-alertdialog__footer{display:flex;justify-content:flex-end;flex-wrap:wrap;gap:var(--space-2);margin-top:var(--space-6)}
+@media(max-width:520px){.ef-alertdialog__overlay{padding:var(--space-4)}.ef-alertdialog__content{padding:var(--space-5)}.ef-alertdialog__footer{flex-direction:column-reverse}.ef-alertdialog__footer .ef-btn{width:100%}}
 @keyframes ef-alertdialog-fade{from{opacity:0}}
 @keyframes ef-alertdialog-pop{from{opacity:0;transform:scale(.96) translateY(6px)}}
 @media(prefers-reduced-motion:reduce){.ef-alertdialog__overlay,.ef-alertdialog__content{animation:none}}

@@ -5,11 +5,11 @@ import { injectEfCss } from '../forms/Button.jsx';
 import { useFieldProps } from '../forms/Field.jsx';
 import { Portal, useAnchoredStyle } from '../overlay/Portal.jsx';
 const CSS = `
-.ef-field{display:flex;flex-direction:column;gap:6px}
+.ef-field{display:flex;flex-direction:column;gap:var(--space-2)}
 .ef-field__label{font-size:var(--text-sm);font-weight:var(--weight-semibold);color:var(--text-primary)}
 .ef-field__hint{font-size:var(--text-xs);color:var(--text-muted)}
 .ef-timepicker{position:relative;display:flex;align-items:center}
-.ef-timepicker__input{width:100%;height:var(--control-h-md);padding:0 34px 0 12px;border:1px solid var(--border-control,var(--border-strong));border-radius:var(--radius-sm);background:var(--surface-card);font-family:var(--font-sans);font-size:var(--text-md);color:var(--text-primary);transition:border-color var(--dur-fast) var(--ease-out),box-shadow var(--dur-fast) var(--ease-out)}
+.ef-timepicker__input{width:100%;height:var(--control-h-md);padding:0 34px 0 var(--space-3);border:1px solid var(--border-control,var(--border-strong));border-radius:var(--radius-sm);background:var(--surface-card);font-family:var(--font-sans);font-size:var(--text-md);color:var(--text-primary);transition:border-color var(--dur-fast) var(--ease-out),box-shadow var(--dur-fast) var(--ease-out)}
 .ef-timepicker__input::placeholder{color:var(--text-muted)}
 .ef-timepicker__input:hover:not(:disabled){border-color:var(--border-control-hover,var(--sand-400))}
 .ef-timepicker__input:focus{outline:none;border-color:var(--accent);box-shadow:var(--focus-ring)}
@@ -17,12 +17,12 @@ const CSS = `
 .ef-timepicker--invalid .ef-timepicker__input{border-color:var(--danger-600)}
 .ef-timepicker--invalid .ef-timepicker__input:focus{box-shadow:var(--focus-ring-danger)}
 .ef-timepicker__icon{position:absolute;inset-inline-end:11px;color:var(--text-muted);display:inline-flex;pointer-events:none}
-.ef-timepicker__panel{max-height:240px;overflow-y:auto;background:var(--surface-card);border:1px solid var(--border-strong);border-radius:var(--radius-md);box-shadow:var(--shadow-md);padding:4px;z-index:var(--z-popover);animation:ef-tp-in var(--dur-fast) var(--ease-out)}
+.ef-timepicker__panel{max-height:240px;overflow-y:auto;background:var(--surface-card);border:1px solid var(--border-strong);border-radius:var(--radius-md);box-shadow:var(--shadow-md);padding:var(--space-1);z-index:var(--z-popover);animation:ef-tp-in var(--dur-fast) var(--ease-out)}
 @keyframes ef-tp-in{from{opacity:0;transform:translateY(-3px)}}
-.ef-timepicker__opt{display:flex;align-items:center;gap:9px;width:100%;padding:7px 10px;border:none;border-radius:var(--radius-sm);background:none;cursor:pointer;text-align:start;font-family:var(--font-sans);font-size:var(--text-sm);color:var(--text-primary)}
+.ef-timepicker__opt{display:flex;align-items:center;gap:var(--space-2);width:100%;padding:var(--space-2) var(--space-3);border:none;border-radius:var(--radius-sm);background:none;cursor:pointer;text-align:start;font-family:var(--font-sans);font-size:var(--text-sm);color:var(--text-primary)}
 .ef-timepicker__opt--hi{background:var(--surface-sunken);box-shadow:inset 0 0 0 2px var(--focus-ring-color)}
 .ef-timepicker__opt__check{margin-inline-start:auto;color:var(--accent);display:inline-flex}
-.ef-timepicker__empty{padding:14px 10px;font-size:var(--text-sm);color:var(--text-muted);text-align:center}
+.ef-timepicker__empty{padding:var(--space-4) var(--space-3);font-size:var(--text-sm);color:var(--text-muted);text-align:center}
 /* Touch: fixed-size targets grow to --tap-min; small glyph buttons keep their look and get a centred --tap-min hit area instead. */
 @media (pointer:coarse){.ef-timepicker__opt{min-height:var(--tap-min)}}
 `;
