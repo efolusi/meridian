@@ -36,6 +36,14 @@ without touching the lockstep five (and a lockstep bump leaves mcp alone unless
 its version is new). It has its own Trusted Publisher; it was first published
 manually, so OIDC now maintains it.
 
+## Which number moves
+
+Meridian stays on 1.x while it is used internally only. A breaking change, with
+no alias, ships as the next 1.x minor, not as 2.0.0. The owner decided this on
+2026-11-19: "Tetap 1.x minor". The breaking-change policy in the governance docs
+says how such a change lands. A move to 2.0.0 waits for the owner to call
+Meridian stable.
+
 ## Where the version lives
 
 The npm build reads its version from `_ds_manifest.json`. These files carry it
