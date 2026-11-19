@@ -20,7 +20,7 @@
     const groups = JSON.parse(rt.slice(rt.indexOf('GROUPS = ') + 9, rt.lastIndexOf(';')));
     FILES = [...new Set(groups.map(g => g.id)), 'charts'];
   } catch (e) {
-    FILES = ['forms','display','navigation','feedback','data','overlay','ai','code','files','dates','finance','icons','charts'];
+    FILES = ['forms','display','navigation','feedback','data','overlay','ai','code','files','dates','finance','icons','marketing','charts'];
   }
   const fails = [], all = [];
   for (const f of FILES) {

@@ -119,5 +119,6 @@
   "Transcript": "Transkrip tersinkron waktu dengan baris aktif, timing kata opsional, pemusatan otomatis, dan kontrol stempel waktu untuk menggerakkan pemutar.",
   "TreeList": "Pohon yang bisa dilipat untuk hierarki berkas/navigasi. Baris menerima ikon + hitungan mono; cabang di-toggle saat diklik.",
   "UsageMeter": "Meter anggaran: angka terpakai/batas, bar isian yang jadi warning melewati warnAt dan danger melewati batas.",
-  "WebPreview": "Pratinjau browser responsif dengan address bar draft, muat ulang, lebar desktop, tablet, dan mobile, serta konsol yang dapat dilipat."
+  "WebPreview": "Pratinjau browser responsif dengan address bar draft, muat ulang, lebar desktop, tablet, dan mobile, serta konsol yang dapat dilipat.",
+  "Section": "Blok halaman pemasaran selebar layar, dengan ritme dari --section-y; tone band memakai latar brand, SectionHead memberi eyebrow, judul, dan lede."
 }

@@ -1185,6 +1185,12 @@
       "Icon": {
         "replaces": []
       },
+      "Section": {
+        "replaces": []
+      },
+      "SectionHead": {
+        "replaces": []
+      },
       "Breadcrumb": {
         "replaces": []
       },

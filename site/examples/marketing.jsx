@@ -1,0 +1,44 @@
+// Meridian docs demos — marketing.
+
+// @demo Section Section with a heading
+export function SectionDemo() {
+  const { Section, SectionHead, Button } = window.EfolusiDesignSystem_4ffc3d;
+  return (
+    <Section ruled style={{ paddingBlock: 'var(--space-12)' }}>
+      <SectionHead
+        eyebrow="Products"
+        title="Tools that run on your own machine"
+        lede="Open source, self-hosted and private by default."
+        align="center"
+      >
+        <div style={{ display: 'flex', gap: 'var(--space-3)', marginTop: 'var(--space-3)' }}>
+          <Button shape="pill" size="lg" iconRight="arrow-right">Start free</Button>
+          <Button shape="pill" size="lg" variant="secondary">Read the docs</Button>
+        </div>
+      </SectionHead>
+    </Section>
+  );
+}
+
+// @demo Section Band tone
+export function SectionBand() {
+  const { Section, SectionHead } = window.EfolusiDesignSystem_4ffc3d;
+  return (
+    <Section tone="band" style={{ paddingBlock: 'var(--space-12)' }}>
+      <SectionHead eyebrow="Dibuat di Indonesia" title="Built in Indonesia, used everywhere." lede="Every label comes from your own dictionary, in Indonesian and English." />
+    </Section>
+  );
+}
+
+// @demo Button Pill shape
+export function ButtonPill() {
+  const { Button } = window.EfolusiDesignSystem_4ffc3d;
+  return (
+    <div style={{ display: 'flex', gap: 'var(--space-3)', flexWrap: 'wrap', alignItems: 'center' }}>
+      <Button shape="pill" size="sm">Get in touch</Button>
+      <Button shape="pill">Sign in</Button>
+      <Button shape="pill" size="lg" iconRight="arrow-right">Start free</Button>
+      <Button shape="pill" variant="brand">Join the waitlist</Button>
+    </div>
+  );
+}

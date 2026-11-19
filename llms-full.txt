@@ -2,7 +2,7 @@
 
 The entire design system in one file, generated from llms.txt, components/*/, and tokens/*.css by scripts/build_llms.py. Do not edit by hand. The short map of the repository is /llms.txt.
 
-> Meridian is a general-purpose open-source design system by Efolusi: 123 accessible React components, 214 design tokens (light, dark, compact), blocks, charts, and full example apps, served browser-native with zero build step. Apache-2.0 licensed.
+> Meridian is a general-purpose open-source design system by Efolusi: 124 accessible React components, 214 design tokens (light, dark, compact), blocks, charts, and full example apps, served browser-native with zero build step. Apache-2.0 licensed.
 
 Live docs: https://meridian.efolusi.com · Source: https://github.com/efolusi/meridian · License: Apache-2.0
 
@@ -34,7 +34,7 @@ Dark mode: set data-theme="dark" on any subtree. Compact density: data-density="
 
 ## Components
 
-123 components across 12 groups: ai, code, data, dates, display, feedback, files, finance, forms, icons, navigation, overlay. Each entry lists the component's public exports, its usage guidance (.prompt.md), and its typed props interface (.d.ts).
+124 components across 13 groups: ai, code, data, dates, display, feedback, files, finance, forms, icons, marketing, navigation, overlay. Each entry lists the component's public exports, its usage guidance (.prompt.md), and its typed props interface (.d.ts).
 
 ### ai
 
@@ -3013,12 +3013,21 @@ The action button: primary for the one main action per view, secondary/ghost for
 
 Variants: `primary` (espresso ink), `secondary` (white + border), `ghost`, `danger`, `brand` (cocoa, for marketing/brand moments only). Sizes `sm|md|lg` (28/36/44px). `loading` swaps in a spinner; labels are verbs in sentence case ("Save changes", never "Submit").
 
+On marketing pages, `shape="pill"` rounds the ends and widens the side padding. Use it for every pressable call to action on the page, and keep the default shape inside the product UI.
+
+```jsx
+<Button shape="pill" size="lg" iconRight="arrow-right">Start free</Button>
+<Button shape="pill" variant="secondary">Read the docs</Button>
+```
+
 ```ts
 export interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   /** @default 'default' */
   variant?: 'default' | 'ghost' | 'secondary' | 'link' | 'primary' | 'danger' | 'brand';
   /** @default 'default' */
   size?: 'default' | 'xs' | 'sm' | 'lg' | 'icon' | 'icon-xs' | 'icon-sm' | 'icon-lg' | 'md';
+  /** `pill` rounds the ends fully and widens the side padding, for marketing pages. Icon sizes become circles. @default 'default' */
+  shape?: 'default' | 'pill';
   /** Lucide icon name rendered before the label */
   iconLeft?: string;
   /** Lucide icon name rendered after the label */
@@ -3028,7 +3037,7 @@ export interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElemen
   loading?: boolean;
   children?: React.ReactNode;
 }
-export declare function buttonVariants(options?: Pick<ButtonProps, 'variant' | 'size'> & { className?: string }): string;
+export declare function buttonVariants(options?: Pick<ButtonProps, 'variant' | 'size' | 'shape'> & { className?: string }): string;
 export declare const Button: React.ForwardRefExoticComponent<ButtonProps & React.RefAttributes<HTMLButtonElement>>;
 ```
 
@@ -3746,6 +3755,51 @@ export interface IconProps {
   style?: React.CSSProperties;
 }
 export declare function Icon(props: IconProps): React.JSX.Element;
+```
+
+### marketing
+
+#### Section
+
+Group: marketing · Source: /components/marketing/Section.jsx · Exports: Section, SectionHead
+
+# Section
+
+Use `Section` for each full-width block of a marketing page. It sets the page rhythm from `--section-y` (link `landing.css` so it steps down on small screens) and centres its content at `--container-max`. `tone="band"` puts the block on the brand ground for one statement per page; `ruled` draws a hairline between two plain sections.
+
+Open each section with `SectionHead`: an optional `eyebrow`, the `title`, and a short `lede`. Use `align="center"` for a centred page, and `as` to keep the heading order right. Pass both languages from your own dictionary; the component holds no copy.
+
+```jsx
+<Section ruled>
+  <SectionHead eyebrow="Products" title="Tools that run on your own machine" lede="Open source, self-hosted, private by default." align="center" />
+</Section>
+<Section tone="band">
+  <SectionHead title="Built in Indonesia, used everywhere." />
+</Section>
+```
+
+```ts
+export interface SectionProps extends React.HTMLAttributes<HTMLElement> {
+  /** `band` paints the section on the brand ground with light text. @default 'default' */
+  tone?: 'default' | 'band';
+  /** Draws a hairline above the section. @default false */
+  ruled?: boolean;
+}
+export declare const Section: React.ForwardRefExoticComponent<SectionProps & React.RefAttributes<HTMLElement>>;
+
+export interface SectionHeadProps extends Omit<React.HTMLAttributes<HTMLDivElement>, 'title'> {
+  /** Short mono label above the title. */
+  eyebrow?: React.ReactNode;
+  /** The section title. */
+  title: React.ReactNode;
+  /** One or two sentences under the title. */
+  lede?: React.ReactNode;
+  /** @default 'start' */
+  align?: 'start' | 'center';
+  /** Heading element for the title. @default 'h2' */
+  as?: 'h1' | 'h2' | 'h3';
+}
+export declare const SectionHead: React.ForwardRefExoticComponent<SectionHeadProps & React.RefAttributes<HTMLDivElement>>;
 ```
 
 ### navigation

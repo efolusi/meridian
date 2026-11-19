@@ -1259,6 +1259,14 @@
       "sourcePath": "components/display/ScrollArea.jsx"
     },
     {
+      "name": "Section",
+      "sourcePath": "components/marketing/Section.jsx"
+    },
+    {
+      "name": "SectionHead",
+      "sourcePath": "components/marketing/Section.jsx"
+    },
+    {
       "name": "SegmentedControl",
       "sourcePath": "components/navigation/SegmentedControl.jsx"
     },

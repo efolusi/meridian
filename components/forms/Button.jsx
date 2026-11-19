@@ -4,6 +4,11 @@ import { Icon } from '../icons/Icon.jsx';
 const CSS = `
 .ef-btn{display:inline-flex;align-items:center;justify-content:center;gap:var(--space-2);text-decoration:none;border:1px solid transparent;border-radius:var(--radius-sm);font-family:var(--font-sans);font-weight:var(--weight-semibold);cursor:pointer;white-space:nowrap;user-select:none;transition:background var(--dur-fast) var(--ease-out),border-color var(--dur-fast) var(--ease-out),color var(--dur-fast) var(--ease-out),box-shadow var(--dur-fast) var(--ease-out),transform var(--dur-med) var(--ease-spring)}
 .ef-btn{line-height:var(--leading-normal)}
+.ef-btn--pill{border-radius:var(--radius-full)}
+.ef-btn--pill.ef-btn--xs{padding-inline:var(--space-3)}
+.ef-btn--pill.ef-btn--sm{padding-inline:var(--space-4)}
+.ef-btn--pill.ef-btn--md{padding-inline:var(--space-5)}
+.ef-btn--pill.ef-btn--lg{padding-inline:var(--space-6)}
 .ef-btn:hover,.ef-btn:focus,.ef-btn:visited{text-decoration:none}
 .ef-btn:focus-visible{outline:none;box-shadow:var(--focus-ring)}
 .ef-btn:active{transform:scale(.985)}
@@ -164,16 +169,16 @@ export function mergeRefs(...refs) {
     }
   };
 }
-export function buttonVariants({ variant = 'default', size = 'default', className = '' } = {}) {
+export function buttonVariants({ variant = 'default', size = 'default', shape = 'default', className = '' } = {}) {
   const mappedVariant = variant === 'default' ? 'primary' : variant;
   const mappedSize = size === 'default' ? 'md' : size;
-  return `ef-btn ef-btn--${mappedVariant} ef-btn--${mappedSize}${className ? ' ' + className : ''}`;
+  return `ef-btn ef-btn--${mappedVariant} ef-btn--${mappedSize}${shape === 'pill' ? ' ef-btn--pill' : ''}${className ? ' ' + className : ''}`;
 }
-export const Button = React.forwardRef(function Button({ variant = 'default', size = 'default', iconLeft, iconRight, fullWidth, loading, disabled, children, style, className, ...rest }, ref) {
+export const Button = React.forwardRef(function Button({ variant = 'default', size = 'default', shape = 'default', iconLeft, iconRight, fullWidth, loading, disabled, children, style, className, ...rest }, ref) {
   injectEfCss('ef-css-btn', CSS);
   const isz = size === 'xs' || size === 'icon-xs' ? 12 : size === 'sm' || size === 'icon-sm' ? 14 : size === 'lg' || size === 'icon-lg' ? 18 : 16;
   return (
-    <button ref={ref} className={buttonVariants({ variant, size, className })} disabled={disabled || loading} aria-busy={loading || undefined} data-loading={loading ? '' : undefined} style={{ width: fullWidth ? '100%' : undefined, ...style }} {...rest}>
+    <button ref={ref} className={buttonVariants({ variant, size, shape, className })} disabled={disabled || loading} aria-busy={loading || undefined} data-loading={loading ? '' : undefined} style={{ width: fullWidth ? '100%' : undefined, ...style }} {...rest}>
       {loading ? <span className="ef-btn__spin" aria-hidden="true"><Icon name="loader-circle" size={isz} /></span> : iconLeft ? <Icon name={iconLeft} size={isz} /> : null}
       {children}
       {iconRight ? <Icon name={iconRight} size={isz} /> : null}

@@ -13,9 +13,9 @@ CSS is not counted per component: `styles.css` ships every component style in on
 
 | File | Size | Gzip |
 | --- | ---: | ---: |
-| `@efolusi/meridian` | 347.5 kB | 78.0 kB |
-| `dist/components.css` | 204.4 kB | 27.7 kB |
-| `_ds_bundle.js` | 804.0 kB | 141.5 kB |
+| `@efolusi/meridian` | 348.7 kB | 78.3 kB |
+| `dist/components.css` | 206.0 kB | 28.0 kB |
+| `_ds_bundle.js` | 807.8 kB | 142.3 kB |
 
 The root import, `@efolusi/meridian`, is every component. `_ds_bundle.js` is the zero-build CDN bundle, which also carries each component's CSS. The root import is minified; the CSS and the CDN bundle are measured as shipped.
 
@@ -91,21 +91,21 @@ The root import, `@efolusi/meridian`, is every component. `_ds_bundle.js` is the
 | `display/Toolbar.js` | Toolbar | 49.3 kB | 9.2 kB |
 | `display/TreeList.js` | TreeList | 45.1 kB | 7.6 kB |
 | `feedback/Alert.js` | Alert, AlertTitle, AlertDescription, AlertAction | 1.1 kB | 0.5 kB |
-| `feedback/AlertDialog.js` | AlertDialog, AlertDialogTrigger, AlertDialogPortal, AlertDialogOverlay, AlertDialogContent, AlertDialogHeader, AlertDialogFooter, AlertDialogMedia, AlertDialogTitle, AlertDialogDescription, AlertDialogCancel, AlertDialogAction | 6.9 kB | 2.4 kB |
+| `feedback/AlertDialog.js` | AlertDialog, AlertDialogTrigger, AlertDialogPortal, AlertDialogOverlay, AlertDialogContent, AlertDialogHeader, AlertDialogFooter, AlertDialogMedia, AlertDialogTitle, AlertDialogDescription, AlertDialogCancel, AlertDialogAction | 7.0 kB | 2.4 kB |
 | `feedback/Banner.js` | Banner | 44.7 kB | 7.4 kB |
-| `feedback/ConfirmDialog.js` | ConfirmDialog | 54.1 kB | 10.4 kB |
+| `feedback/ConfirmDialog.js` | ConfirmDialog | 54.2 kB | 10.5 kB |
 | `feedback/Dialog.js` | Dialog, DialogTrigger, DialogPortal, DialogOverlay, DialogClose, DialogContent, DialogHeader, DialogFooter, DialogTitle, DialogDescription | 50.2 kB | 9.2 kB |
 | `feedback/Loader.js` | Loader | 0.8 kB | 0.4 kB |
 | `feedback/Progress.js` | Progress | 1.4 kB | 0.7 kB |
 | `feedback/Spinner.js` | Spinner | 0.7 kB | 0.4 kB |
 | `feedback/Toast.js` | Toaster | 48.9 kB | 9.2 kB |
 | `feedback/Tooltip.js` | Tooltip, TooltipProvider, TooltipTrigger, TooltipContent | 5.2 kB | 2.1 kB |
-| `files/Attachment.js` | Attachment, AttachmentMedia, AttachmentContent, AttachmentTitle, AttachmentDescription, AttachmentActions, AttachmentAction, AttachmentTrigger, AttachmentGroup | 46.7 kB | 7.9 kB |
+| `files/Attachment.js` | Attachment, AttachmentMedia, AttachmentContent, AttachmentTitle, AttachmentDescription, AttachmentActions, AttachmentAction, AttachmentTrigger, AttachmentGroup | 46.8 kB | 7.9 kB |
 | `files/FileDrop.js` | FileDrop | 45.2 kB | 7.8 kB |
 | `files/FileTile.js` | FileTile | 46.8 kB | 8.2 kB |
 | `files/FileTypeIcon.js` | FileTypeIcon | 45.3 kB | 7.5 kB |
 | `finance/PaymentCard.js` | PaymentCard | 2.1 kB | 0.8 kB |
-| `forms/Button.js` | Button | 45.7 kB | 8.1 kB |
+| `forms/Button.js` | Button | 45.8 kB | 8.1 kB |
 | `forms/ButtonGroup.js` | ButtonGroup, ButtonGroupText, ButtonGroupSeparator | 2.1 kB | 0.8 kB |
 | `forms/ButtonTile.js` | ButtonTile, ButtonTileGroup | 44.5 kB | 7.3 kB |
 | `forms/Checkbox.js` | Checkbox | 45.7 kB | 7.9 kB |
@@ -126,6 +126,7 @@ The root import, `@efolusi/meridian`, is every component. `_ds_bundle.js` is the
 | `forms/Textarea.js` | Textarea | 45.0 kB | 7.6 kB |
 | `forms/Toggle.js` | Toggle, ToggleGroup, ToggleGroupItem | 2.7 kB | 1.2 kB |
 | `icons/Icon.js` | Icon | 43.4 kB | 6.9 kB |
+| `marketing/Section.js` | Section, SectionHead | 1.2 kB | 0.5 kB |
 | `navigation/Breadcrumbs.js` | Breadcrumb, BreadcrumbList, BreadcrumbItem, BreadcrumbLink, BreadcrumbPage, BreadcrumbSeparator, BreadcrumbEllipsis | 45.8 kB | 7.6 kB |
 | `navigation/Menubar.js` | Menubar, MenubarMenu, MenubarTrigger, MenubarContent, MenubarPortal, MenubarGroup, MenubarRadioGroup, MenubarLabel, MenubarSeparator, MenubarShortcut, MenubarItem, MenubarCheckboxItem, MenubarRadioItem, MenubarSub, MenubarSubTrigger, MenubarSubContent | 59.3 kB | 11.7 kB |
 | `navigation/NavigationMenu.js` | NavigationMenu, NavigationMenuList, NavigationMenuItem, NavigationMenuTrigger, NavigationMenuContent, NavigationMenuLink, NavigationMenuIndicator, NavigationMenuViewport | 50.5 kB | 9.5 kB |

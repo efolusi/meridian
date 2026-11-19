@@ -1,16 +1,16 @@
 {
   "totals": {
     "@efolusi/meridian": {
-      "bytes": 355830,
-      "gzip": 79911
+      "bytes": 357060,
+      "gzip": 80173
     },
     "dist/components.css": {
-      "bytes": 209327,
-      "gzip": 28351
+      "bytes": 210925,
+      "gzip": 28664
     },
     "_ds_bundle.js": {
-      "bytes": 823254,
-      "gzip": 144867
+      "bytes": 827158,
+      "gzip": 145680
     }
   },
   "modules": [
@@ -713,8 +713,8 @@
         "AlertDialogCancel",
         "AlertDialogAction"
       ],
-      "bytes": 7076,
-      "gzip": 2474
+      "bytes": 7126,
+      "gzip": 2501
     },
     {
       "module": "feedback/Banner.js",
@@ -731,8 +731,8 @@
       "exports": [
         "ConfirmDialog"
       ],
-      "bytes": 55440,
-      "gzip": 10695
+      "bytes": 55516,
+      "gzip": 10720
     },
     {
       "module": "feedback/Dialog.js",
@@ -814,8 +814,8 @@
         "AttachmentTrigger",
         "AttachmentGroup"
       ],
-      "bytes": 47826,
-      "gzip": 8062
+      "bytes": 47902,
+      "gzip": 8089
     },
     {
       "module": "files/FileDrop.js",
@@ -859,8 +859,8 @@
       "exports": [
         "Button"
       ],
-      "bytes": 46804,
-      "gzip": 8283
+      "bytes": 46880,
+      "gzip": 8311
     },
     {
       "module": "forms/ButtonGroup.js",
@@ -1102,6 +1102,16 @@
       ],
       "bytes": 44400,
       "gzip": 7029
+    },
+    {
+      "module": "marketing/Section.js",
+      "group": "marketing",
+      "exports": [
+        "Section",
+        "SectionHead"
+      ],
+      "bytes": 1187,
+      "gzip": 542
     },
     {
       "module": "navigation/Breadcrumbs.js",
