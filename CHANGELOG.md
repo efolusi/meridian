@@ -7,6 +7,10 @@
 - **Tokens from design-tokens 0.3.0.** Adds `--control-h-xl` (52px, 46px in compact density) and the feature-card tones `--tone-peach-*`, `--tone-cocoa-*` and `--tone-amber-*` (fill and on-fill, 4.5:1 locked upstream).
 - **Size budget raised by 5 KB** (npm total 1,428,562 bytes) for the marketing group.
 
+## 1.25.1 — 2026-11-19
+
+- **Badge `danger` is the subtle status badge again.** 1.25.0's rename left a second, solid `.ef-badge--danger` rule and a darker hover from the old `destructive` variant; the solid rule and the hover are gone. A test now fails when a component writes the same variant rule twice.
+
 ## 1.25.0 — 2026-11-19
 
 - **Breaking: Drawer no longer accepts `modal`.** The prop was ignored since 1.22.0 and only logged a warning. Delete it from your code; `meridian-guard --fix` from 1.23.0 still removes it. Meridian now ships no deprecated props.
