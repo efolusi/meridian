@@ -1,16 +1,16 @@
 {
   "totals": {
     "@efolusi/meridian": {
-      "bytes": 372440,
-      "gzip": 84275
+      "bytes": 372443,
+      "gzip": 84278
     },
     "dist/components.css": {
       "bytes": 225158,
       "gzip": 30621
     },
     "_ds_bundle.js": {
-      "bytes": 871086,
-      "gzip": 154745
+      "bytes": 871089,
+      "gzip": 154747
     }
   },
   "modules": [
@@ -1129,8 +1129,8 @@
       "exports": [
         "LegalDocument"
       ],
-      "bytes": 2572,
-      "gzip": 1012
+      "bytes": 2575,
+      "gzip": 1014
     },
     {
       "module": "marketing/Marquee.js",

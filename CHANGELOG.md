@@ -2,6 +2,7 @@
 
 ## Unreleased
 
+- **LegalDocument refuses `/\` links.** A link starting with `/\` (which browsers read as `//`, off-site) now renders as plain text, like `//`.
 - **`SiteHeader`, `SiteFooter` and `LegalDocument` in the marketing group.** `SiteHeader` brings the skip link, the brand, primary links with `aria-current`, a language switch, an `actions` slot for each product's own controls, and a mobile menu that Escape closes. `SiteFooter` holds the tagline, social icons, link columns (each a named nav) and a bottom row; links to other sites say they open a new tab. `LegalDocument` renders a terms or privacy page from dictionary strings: `[label](href)` and `**strong**` only, never HTML, only http, https, mailto and in-site links, and stable section ids. Labels in English and Indonesian.
 - **Marquee: the moving copies are `inert`**, and the screen-reader list shows itself when one of its links takes keyboard focus, so links in the items work from the keyboard.
 - **The website showcase's local `SiteHeader` and `SiteFooter` are now `WebsiteHeader` and `WebsiteFooter`**, so they no longer shadow the new exports.

@@ -21,7 +21,7 @@ export function parseLegalInline(text, lang = '') {
   return parts;
 }
 
-const SAFE_HREF = /^(https?:|mailto:|\/(?!\/)|#|\.)/i;
+const SAFE_HREF = /^(https?:|mailto:|\/(?![/\\])|#|\.)/i;
 
 function Inline({ text, lang }) {
   return parseLegalInline(text, lang).map((part, i) => {
