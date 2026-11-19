@@ -2,7 +2,7 @@ export interface SourceCardProps {
   href?: string;
   title: React.ReactNode;
   description?: React.ReactNode;
-  /** e.g. 'stripe.com' */
+  /** e.g. 'efolusi.com' */
   domain?: string;
   /** Favicon URL; falls back to icon */
   favicon?: string;
