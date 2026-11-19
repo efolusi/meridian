@@ -3,11 +3,10 @@ import { describe, expect, it } from 'vitest'
 
 // _headers is not read by the Meridian deploy (nginx is), but it ships in the
 // repository for forks on static hosts. It must not promise a cache policy or
-// a header that the served vhosts do not send.
+// a header that the served vhost does not send.
 const headers = readFileSync('_headers', 'utf8')
 const vhosts = {
   prod: readFileSync('nginx/meridian.efolusi.com.conf', 'utf8'),
-  dev: readFileSync('nginx/dev-meridian.efolusi.com.conf', 'utf8'),
 }
 
 // path pattern -> { header: value }

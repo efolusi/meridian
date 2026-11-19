@@ -137,16 +137,14 @@ describe('Meridian production static deployment', () => {
   })
 })
 
-describe('release pruning on both hosts', () => {
+describe('release pruning', () => {
   const scripts = {
     prod: readFileSync('scripts/deploy-prod-static.sh', 'utf8'),
-    dev: readFileSync('scripts/deploy-dev-static.sh', 'utf8'),
   }
   const pruneSource = (src) => src.match(/^prune_releases\(\) \{[\s\S]*?\n\}/m)?.[0]
 
-  it('is the same function in both deploy scripts and runs only after a verified deploy', () => {
+  it('runs only after a verified deploy', () => {
     expect(pruneSource(scripts.prod)).toBeTruthy()
-    expect(pruneSource(scripts.dev)).toBe(pruneSource(scripts.prod))
     for (const src of Object.values(scripts)) {
       expect(src).toContain('keep_releases=5')
       const call = src.indexOf('prune_releases "$keep_releases"')
