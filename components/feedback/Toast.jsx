@@ -72,7 +72,7 @@ toast.promise = (promise, data = {}) => {
   const id = add(typeof loading === 'object' && loading !== null ? { ...loading, type: 'loading', duration: 0 } : { title: loading, type: 'loading', duration: 0 });
   Promise.resolve(typeof promise === 'function' ? promise() : promise).then(
     value => { const result = resolve(data.success, value); add(typeof result === 'object' && result !== null ? { ...result, id, type: result.type || 'success' } : { id, title: result, type: 'success', duration: data.duration }); },
-    error => { const result = resolve(data.error, error); add(typeof result === 'object' && result !== null ? { ...result, id, type: result.type || 'error' } : { id, title: result, description: error?.message, type: 'error', duration: data.duration }); },
+    error => { const result = resolve(data.error, error); add(typeof result === 'object' && result !== null ? { ...result, id, type: result.type || 'danger' } : { id, title: result, description: error?.message, type: 'danger', duration: data.duration }); },
   );
   return id;
 };
@@ -92,6 +92,6 @@ export function Toaster({ position = 'bottom-right', visibleToasts = 3, closeBut
   return <>{children}<Portal><ToastStack {...rest} dir={dir} position={position} data-rich-colors={richColors ? 'true' : 'false'} data-expand={expand ? 'true' : 'false'} data-theme={theme} data-mobile-offset={typeof mobileOffset === 'number' ? `${mobileOffset}px` : mobileOffset} style={{ gap, ...(position.startsWith('top') ? { top: resolvedOffset } : { bottom: resolvedOffset }), ...style }} aria-label={label} role="log" aria-live="polite" aria-relevant="additions" onMouseEnter={pause} onMouseLeave={resume} onFocusCapture={pause} onBlurCapture={resume}>
     {items.slice(-visibleToasts).map(item => item.type === 'custom' && React.isValidElement(item.title)
       ? React.cloneElement(item.title, { key: item.id })
-      : <ToastItem key={item.id} tone={item.type === 'error' ? 'danger' : ['success', 'warning', 'info'].includes(item.type) ? item.type : 'info'} title={item.title} description={item.description} actionProps={item.actionProps} role={null} onClose={closeButton || item.closeButton || (item.sticky && item.closeButton !== false) ? () => close(item.id) : undefined} />)}
+      : <ToastItem key={item.id} tone={['success', 'warning', 'danger', 'info'].includes(item.type) ? item.type : 'info'} title={item.title} description={item.description} actionProps={item.actionProps} role={null} onClose={closeButton || item.closeButton || (item.sticky && item.closeButton !== false) ? () => close(item.id) : undefined} />)}
   </ToastStack></Portal></>;
 }

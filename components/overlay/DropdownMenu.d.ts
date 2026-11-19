@@ -24,7 +24,7 @@ export declare const DropdownMenuLabel: React.ForwardRefExoticComponent<Dropdown
 export declare const DropdownMenuSeparator: React.ForwardRefExoticComponent<React.HTMLAttributes<HTMLDivElement> & React.RefAttributes<HTMLDivElement>>;
 export declare const DropdownMenuShortcut: React.ForwardRefExoticComponent<React.HTMLAttributes<HTMLSpanElement> & React.RefAttributes<HTMLSpanElement>>;
 
-export interface DropdownMenuItemProps extends React.ButtonHTMLAttributes<HTMLButtonElement> { inset?: boolean; variant?: 'default' | 'destructive'; onSelect?: (event: React.SyntheticEvent) => void; }
+export interface DropdownMenuItemProps extends React.ButtonHTMLAttributes<HTMLButtonElement> { inset?: boolean; variant?: 'default' | 'danger'; onSelect?: (event: React.SyntheticEvent) => void; }
 export declare const DropdownMenuItem: React.ForwardRefExoticComponent<DropdownMenuItemProps & React.RefAttributes<HTMLButtonElement>>;
 
 export interface DropdownMenuCheckboxItemProps extends Omit<DropdownMenuItemProps, 'onCheckedChange'> { checked?: boolean; defaultChecked?: boolean; onCheckedChange?: (checked: boolean) => void; }

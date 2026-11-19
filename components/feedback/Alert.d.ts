@@ -1,7 +1,7 @@
 import type * as React from 'react';
 
 export interface AlertProps extends React.HTMLAttributes<HTMLDivElement> {
-  variant?: 'default' | 'destructive';
+  variant?: 'default' | 'danger';
 }
 
 export type AlertTitleProps = React.HTMLAttributes<HTMLDivElement>;

@@ -27,7 +27,7 @@ const DESCRIPTION_OVERRIDES = {
   Menubar: 'Desktop-style composable menu bar with controlled state, keyboard navigation, groups, choices, shortcuts, separators, and nested submenus.',
   Pagination: 'Composable semantic pager with explicit content, items, links, previous and next controls, and ellipsis.',
   Tabs: 'Controlled or uncontrolled tabs with composable list, trigger, and content parts, plus horizontal and vertical orientation.',
-  Alert: 'Composable inline notice with explicit icon, title, description, and action parts; use the destructive variant for failures.',
+  Alert: 'Composable inline notice with explicit icon, title, description, and action parts; use the danger variant for failures.',
   Skeleton: 'Native div loading placeholder with ref forwarding; compose repeated placeholders and set dimensions through native attributes and styles.',
   Table: 'Sortable, selectable data table with sticky headers, loading and empty states, plus composable semantic table parts.',
   Marker: 'Composable compact status note, system event, bordered row, or labelled separator with icon and content parts.',

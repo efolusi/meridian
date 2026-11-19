@@ -5,7 +5,7 @@ export function AlertDialogDemo() {
   const { AlertDialog, AlertDialogAction, AlertDialogCancel, AlertDialogContent, AlertDialogDescription, AlertDialogFooter, AlertDialogHeader, AlertDialogMedia, AlertDialogTitle, AlertDialogTrigger, Button, Icon } = window.EfolusiDesignSystem_4ffc3d;
   return (
     <AlertDialog>
-      <AlertDialogTrigger asChild><Button variant="outline">Archive project</Button></AlertDialogTrigger>
+      <AlertDialogTrigger asChild><Button variant="secondary">Archive project</Button></AlertDialogTrigger>
       <AlertDialogContent>
         <AlertDialogHeader>
           <AlertDialogMedia><Icon name="archive" size={20} /></AlertDialogMedia>
@@ -42,7 +42,7 @@ export function AlertTones() {
     <div style={{ display: 'flex', flexDirection: 'column', gap: 12, width: '100%', maxWidth: 520 }}>
       <Alert className="ef-alert--success"><Icon name="circle-check" size={16} /><AlertTitle>Backup restored</AlertTitle><AlertDescription>All 42 tables verified.</AlertDescription></Alert>
       <Alert className="ef-alert--warning"><Icon name="triangle-alert" size={16} /><AlertTitle>Budget at 85%</AlertTitle><AlertDescription>Runs pause at 100% unless you raise the cap.</AlertDescription></Alert>
-      <Alert variant="destructive"><Icon name="circle-alert" size={16} /><AlertTitle>Deploy failed</AlertTitle><AlertDescription>Image digest mismatch on api-7f3c.</AlertDescription></Alert>
+      <Alert variant="danger"><Icon name="circle-alert" size={16} /><AlertTitle>Deploy failed</AlertTitle><AlertDescription>Image digest mismatch on api-7f3c.</AlertDescription></Alert>
     </div>
   );
 }
@@ -116,7 +116,7 @@ export function SpinnerDemo() {
 // @demo Toaster Imperative notifications
 export function ToasterDemo() {
   const { Toaster, toast, Button } = window.EfolusiDesignSystem_4ffc3d;
-  return <div style={{ display: 'flex', gap: 8 }}><Toaster position="bottom-right" closeButton /><Button variant="outline" onClick={() => toast.add({ title: 'Release published', description: 'All production regions are healthy.', type: 'success' })}>Show toast</Button><Button variant="outline" onClick={() => toast.promise(Promise.resolve('ready'), { loading: 'Checking regions…', success: value => `Release ${value}`, error: 'Check failed' })}>Promise toast</Button></div>;
+  return <div style={{ display: 'flex', gap: 8 }}><Toaster position="bottom-right" closeButton /><Button variant="secondary" onClick={() => toast.add({ title: 'Release published', description: 'All production regions are healthy.', type: 'success' })}>Show toast</Button><Button variant="secondary" onClick={() => toast.promise(Promise.resolve('ready'), { loading: 'Checking regions…', success: value => `Release ${value}`, error: 'Check failed' })}>Promise toast</Button></div>;
 }
 
 // @demo Tooltip Hover hint

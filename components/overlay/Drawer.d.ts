@@ -7,11 +7,6 @@ export interface DrawerProps {
   onOpenChange?: (open: boolean) => void;
   direction?: DrawerDirection;
   dismissible?: boolean;
-  /**
-   * @deprecated Ignored: a Drawer is always modal. Passing `false` logs a development warning; the prop will be removed in the next major version. Migration: https://meridian.efolusi.com/guidelines/migration.md
-   * @codemod remove
-   */
-  modal?: boolean;
   handleOnly?: boolean;
   children?: React.ReactNode;
 }

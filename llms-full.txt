@@ -92,7 +92,7 @@ Use Bubble for compact conversational content. Group related bubbles, choose a s
 import type * as React from 'react';
 
 export interface BubbleProps extends React.HTMLAttributes<HTMLDivElement> {
-  variant?: 'default' | 'secondary' | 'muted' | 'tinted' | 'outline' | 'ghost' | 'destructive';
+  variant?: 'default' | 'secondary' | 'muted' | 'tinted' | 'outline' | 'ghost' | 'danger';
   align?: 'start' | 'end';
 }
 export interface BubbleContentProps extends React.HTMLAttributes<HTMLDivElement> { asChild?: boolean; }
@@ -326,7 +326,7 @@ Group: ai · Source: /components/ai/GeneratedImage.jsx · Exports: GeneratedImag
 Image-generation frame with queued / generating (pulsing dot-grid on dark) / complete (fade-in, scrim, hover actions) / error (retry) states.
 
 ```jsx
-<GeneratedImage status="generating" prompt="A lighthouse at dawn" aspect="video" />
+<GeneratedImage status="busy" prompt="A lighthouse at dawn" aspect="video" />
 <GeneratedImage src="/img.jpg" prompt="A lighthouse at dawn" actions={[{ icon: 'download', label: 'Download' }]} />
 ```
 
@@ -337,9 +337,9 @@ export interface GeneratedImageAction {
   onClick?: () => void;
 }
 export interface GeneratedImageProps {
-  /** 'queued' | 'generating' | 'complete' | 'error' */
+  /** 'queued' | 'busy' | 'complete' | 'danger' */
   /** @default 'complete' */
-  status?: 'queued' | 'generating' | 'complete' | 'error';
+  status?: 'queued' | 'busy' | 'complete' | 'danger';
   src?: string;
   alt?: string;
   /** Prompt shown top-left over the image */
@@ -739,7 +739,7 @@ Group: ai · Source: /components/ai/Sandbox.jsx · Exports: Sandbox
 Collapsible code-run panel: mono title, soft ring while running / on error, tabbed Output & Code panes. Opens itself on error by default.
 
 ```jsx
-<Sandbox title="python analyze.py" status="running" tabs={[
+<Sandbox title="python analyze.py" status="busy" tabs={[
   { id: 'out', label: 'Output', content: <pre>Loading rows…</pre> },
   { id: 'code', label: 'Code', content: <pre>import pandas as pd</pre> },
 ]} />
@@ -755,9 +755,9 @@ export interface SandboxTab {
 export interface SandboxProps {
   /** Command or filename, mono */
   title: React.ReactNode;
-  /** 'running' | 'success' | 'error' */
+  /** 'busy' | 'success' | 'danger' */
   /** @default 'success' */
-  status?: 'running' | 'success' | 'error';
+  status?: 'busy' | 'success' | 'danger';
   /** Right-side meta, e.g. duration */
   meta?: React.ReactNode;
   tabs: SandboxTab[];
@@ -943,8 +943,8 @@ Errors open by default and show the error prop. Stack several inside a message o
 export interface ToolCallProps {
   /** Tool name, mono */
   name: string;
-  /** @default 'running' */
-  status?: 'pending' | 'approval' | 'running' | 'success' | 'error';
+  /** @default 'busy' */
+  status?: 'pending' | 'approval' | 'busy' | 'success' | 'danger';
   /** Input args: an object renders a key/value grid, a string renders raw */
   args?: object | string;
   /** Result body (also accepts children) */
@@ -1064,7 +1064,7 @@ Group: ai · Source: /components/ai/WebPreview.jsx · Exports: WebPreview
 Browser pane for agent-built UIs: reload, draft-state address bar (Enter commits, Esc reverts), desktop/tablet/mobile widths (animated), collapsible console with error badge, open-in-new-tab. Pass `children` to mock the page without an iframe. Changing the `url` prop navigates the pane (parent-driven navigation); `defaultOpen` starts the console open.
 
 ```jsx
-<WebPreview url="https://demo.efolusi.dev" logs={[{ level: 'error', text: 'Uncaught TypeError…' }]}>
+<WebPreview url="https://demo.efolusi.dev" logs={[{ level: 'danger', text: 'Uncaught TypeError…' }]}>
   <MockLanding />
 </WebPreview>
 ```
@@ -1073,8 +1073,8 @@ Use `defaultOpen` for the console's initial uncontrolled state.
 
 ```ts
 export interface WebPreviewLog {
-  /** 'log' | 'info' | 'warn' | 'error' */
-  level?: 'log' | 'info' | 'warn' | 'error';
+  /** 'log' | 'info' | 'warning' | 'danger' */
+  level?: 'log' | 'info' | 'warning' | 'danger';
   text: React.ReactNode;
 }
 export interface WebPreviewProps {
@@ -1139,14 +1139,14 @@ Log viewer with level icons/colors, tabular timestamps, and per-row collapsible 
 ```jsx
 <Console entries={[
   { level: 'info', time: '14:02:11', text: 'Server started on :3000' },
-  { level: 'error', time: '14:02:19', text: 'Unhandled rejection', stack: 'at fetchUser (api.js:32)', source: 'api.js:32' },
+  { level: 'danger', time: '14:02:19', text: 'Unhandled rejection', stack: 'at fetchUser (api.js:32)', source: 'api.js:32' },
 ]} />
 ```
 
 ```ts
 export interface ConsoleEntry {
-  /** 'log' | 'info' | 'warn' | 'error' | 'debug' */
-  level?: 'log' | 'info' | 'warn' | 'error' | 'debug';
+  /** 'log' | 'info' | 'warning' | 'danger' | 'debug' */
+  level?: 'log' | 'info' | 'warning' | 'danger' | 'debug';
   time?: string;
   text: React.ReactNode;
   /** Collapsible stack trace */
@@ -1309,15 +1309,15 @@ Line-oriented console output: $ prompts, tinted ok/err/info lines, optional live
 <Terminal host="deploy@efolusi-prod" live lines={[
   { type: 'cmd', text: 'efolusi infra connect aws' },
   { type: 'info', text: 'Handshake with eu-west-1…', time: '09:41:02' },
-  { type: 'ok', text: '✓ Connected · 14 resources found', time: '09:41:04' },
+  { type: 'success', text: '✓ Connected · 14 resources found', time: '09:41:04' },
 ]} />
 ```
 
 ```ts
 export interface TerminalLine {
   text: string;
-  /** cmd gets a $ prompt; ok/err/info are tinted */
-  type?: 'cmd' | 'out' | 'ok' | 'err' | 'info';
+  /** cmd gets a $ prompt; success/danger/info are tinted */
+  type?: 'cmd' | 'out' | 'success' | 'danger' | 'info';
   /** Muted timestamp prefix */
   time?: string;
 }
@@ -1628,16 +1628,16 @@ Group: data · Source: /components/data/StatusDot.jsx · Exports: StatusDot
 Live status dot with label; `pulse` radiates for running/connected states. The state is never colour-only: with a `label` the state text is prepended visually hidden ("Error: API"), without one the dot announces itself as an image named after the state. Override the announced text with `statusLabel`.
 
 ```jsx
-<StatusDot status="ok" pulse label="Connected" />
+<StatusDot status="success" pulse label="Connected" />
 <StatusDot status="busy" pulse label="Running" />
-<StatusDot status="err" label="Failed" />
-<StatusDot status="warn" statusLabel="Degraded" label="EU region" />
+<StatusDot status="danger" label="Failed" />
+<StatusDot status="warning" statusLabel="Degraded" label="EU region" />
 ```
 
 ```ts
 export interface StatusDotProps extends Omit<React.HTMLAttributes<HTMLSpanElement>, 'children'> {
-  /** @default 'ok' */
-  status?: 'ok' | 'warn' | 'err' | 'busy' | 'off';
+  /** @default 'success' */
+  status?: 'success' | 'warning' | 'danger' | 'busy' | 'neutral';
   label?: React.ReactNode;
   /** Text announced for the status; defaults to OK / Warning / Error / Busy / Offline */
   statusLabel?: string;
@@ -1950,7 +1950,7 @@ Compact status or category label.
 ```jsx
 <Badge>Default</Badge>
 <Badge variant="secondary">Secondary</Badge>
-<Badge variant="destructive">Destructive</Badge>
+<Badge variant="danger">Danger</Badge>
 <Badge variant="outline">Outline</Badge>
 <Badge variant="ghost">Ghost</Badge>
 <Badge asChild variant="link"><a href="/updates">Updates</a></Badge>
@@ -1963,7 +1963,7 @@ Compose icons as children with `data-icon="inline-start"` or
 `className` without expanding the variant contract.
 
 ```ts
-export type BadgeVariant = 'default' | 'secondary' | 'destructive' | 'outline' | 'ghost' | 'link';
+export type BadgeVariant = 'default' | 'secondary' | 'danger' | 'outline' | 'ghost' | 'link';
 
 export interface BadgeProps extends React.HTMLAttributes<HTMLSpanElement> {
   /** @default 'default' */
@@ -2175,7 +2175,7 @@ A compositional content row for lists and card-like collections. Use Field for f
     <ItemTitle>Security alert</ItemTitle>
     <ItemDescription>New login detected from an unknown device.</ItemDescription>
   </ItemContent>
-  <ItemActions><Button variant="outline">Review</Button></ItemActions>
+  <ItemActions><Button variant="secondary">Review</Button></ItemActions>
 </Item>
 ```
 
@@ -2482,10 +2482,10 @@ Group: feedback · Source: /components/feedback/Alert.jsx · Exports: Alert, Ale
 
 # Alert
 
-Notifikasi inline composable dengan varian `default` dan `destructive`. Susun ikon, `AlertTitle`, `AlertDescription`, dan `AlertAction` sebagai children.
+Notifikasi inline composable dengan varian `default` dan `danger`. Susun ikon, `AlertTitle`, `AlertDescription`, dan `AlertAction` sebagai children.
 
 ```jsx
-<Alert variant="destructive">
+<Alert variant="danger">
   <Icon name="circle-alert" />
   <AlertTitle>Deploy failed</AlertTitle>
   <AlertDescription>Image digest mismatch.</AlertDescription>
@@ -2498,7 +2498,7 @@ Untuk warna status khusus, berikan `className` pada root dan tetap tulis ikon se
 import type * as React from 'react';
 
 export interface AlertProps extends React.HTMLAttributes<HTMLDivElement> {
-  variant?: 'default' | 'destructive';
+  variant?: 'default' | 'danger';
 }
 
 export type AlertTitleProps = React.HTMLAttributes<HTMLDivElement>;
@@ -2521,7 +2521,7 @@ Use Alert Dialog for an important decision that must be acknowledged before work
 
 ```jsx
 <AlertDialog>
-  <AlertDialogTrigger asChild><Button variant="outline">Archive project</Button></AlertDialogTrigger>
+  <AlertDialogTrigger asChild><Button variant="secondary">Archive project</Button></AlertDialogTrigger>
   <AlertDialogContent>
     <AlertDialogHeader>
       <AlertDialogTitle>Archive this project?</AlertDialogTitle>
@@ -2770,7 +2770,7 @@ A toast that never expires (one with `actionProps`, or `duration: 0`) always sho
 import * as React from 'react';
 
 export type ToastPosition = 'top-left' | 'top-center' | 'top-right' | 'bottom-left' | 'bottom-center' | 'bottom-right';
-export type ToastType = 'default' | 'success' | 'info' | 'warning' | 'error' | 'loading';
+export type ToastType = 'default' | 'success' | 'info' | 'warning' | 'danger' | 'loading';
 export interface ToastOptions {
   id?: string | number;
   title: React.ReactNode;
@@ -3016,7 +3016,7 @@ Variants: `primary` (espresso ink), `secondary` (white + border), `ghost`, `dang
 ```ts
 export interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   /** @default 'default' */
-  variant?: 'default' | 'outline' | 'ghost' | 'destructive' | 'secondary' | 'link' | 'primary' | 'danger' | 'brand';
+  variant?: 'default' | 'ghost' | 'secondary' | 'link' | 'primary' | 'danger' | 'brand';
   /** @default 'default' */
   size?: 'default' | 'xs' | 'sm' | 'lg' | 'icon' | 'icon-xs' | 'icon-sm' | 'icon-lg' | 'md';
   /** Lucide icon name rendered before the label */
@@ -3292,7 +3292,7 @@ Compose labels, descriptions, and validation messages with the `Field` family. U
 export declare const InputGroup: React.ForwardRefExoticComponent<React.HTMLAttributes<HTMLDivElement> & React.RefAttributes<HTMLDivElement>>;
 export interface InputGroupAddonProps extends React.HTMLAttributes<HTMLDivElement> { align?: 'inline-start'|'inline-end'|'block-start'|'block-end'; }
 export declare const InputGroupAddon: React.ForwardRefExoticComponent<InputGroupAddonProps & React.RefAttributes<HTMLDivElement>>;
-export interface InputGroupButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> { size?: 'xs'|'icon-xs'|'sm'|'icon-sm'; variant?: 'default'|'destructive'|'outline'|'secondary'|'ghost'|'link'; }
+export interface InputGroupButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> { size?: 'xs'|'icon-xs'|'sm'|'icon-sm'; variant?: 'default'|'danger'|'secondary'|'ghost'|'link'; }
 export declare const InputGroupButton: React.ForwardRefExoticComponent<InputGroupButtonProps & React.RefAttributes<HTMLButtonElement>>;
 export declare const InputGroupInput: React.ForwardRefExoticComponent<React.InputHTMLAttributes<HTMLInputElement> & React.RefAttributes<HTMLInputElement>>;
 export declare const InputGroupTextarea: React.ForwardRefExoticComponent<React.TextareaHTMLAttributes<HTMLTextAreaElement> & React.RefAttributes<HTMLTextAreaElement>>;
@@ -3805,7 +3805,7 @@ A composable application menu bar with roving top-level focus, arrow-key menu sw
     <MenubarContent>
       <MenubarItem>New document <MenubarShortcut>⌘N</MenubarShortcut></MenubarItem>
       <MenubarSeparator />
-      <MenubarItem variant="destructive">Delete draft</MenubarItem>
+      <MenubarItem variant="danger">Delete draft</MenubarItem>
     </MenubarContent>
   </MenubarMenu>
 </Menubar>
@@ -4299,7 +4299,7 @@ Composable right-click menu with items, checkbox and radio choices, groups, labe
   <ContextMenuContent>
     <ContextMenuItem>Rename<ContextMenuShortcut>F2</ContextMenuShortcut></ContextMenuItem>
     <ContextMenuSeparator />
-    <ContextMenuItem variant="destructive">Delete</ContextMenuItem>
+    <ContextMenuItem variant="danger">Delete</ContextMenuItem>
   </ContextMenuContent>
 </ContextMenu>
 ```
@@ -4333,7 +4333,7 @@ export declare const ContextMenuLabel: React.ForwardRefExoticComponent<ContextMe
 export declare const ContextMenuSeparator: React.ForwardRefExoticComponent<React.HTMLAttributes<HTMLDivElement> & React.RefAttributes<HTMLDivElement>>;
 export declare const ContextMenuShortcut: React.ForwardRefExoticComponent<React.HTMLAttributes<HTMLSpanElement> & React.RefAttributes<HTMLSpanElement>>;
 
-export interface ContextMenuItemProps extends React.ButtonHTMLAttributes<HTMLButtonElement> { inset?: boolean; variant?: 'default' | 'destructive'; onSelect?: (event: React.SyntheticEvent) => void; }
+export interface ContextMenuItemProps extends React.ButtonHTMLAttributes<HTMLButtonElement> { inset?: boolean; variant?: 'default' | 'danger'; onSelect?: (event: React.SyntheticEvent) => void; }
 export declare const ContextMenuItem: React.ForwardRefExoticComponent<ContextMenuItemProps & React.RefAttributes<HTMLButtonElement>>;
 
 export interface ContextMenuCheckboxItemProps extends Omit<ContextMenuItemProps, 'onCheckedChange'> { checked?: boolean; defaultChecked?: boolean; onCheckedChange?: (checked: boolean) => void; }
@@ -4379,7 +4379,7 @@ A composable, gesture-dismissable surface for mobile details and short workflows
 
 Set `direction` on `Drawer`; bottom is the default and displays a drag handle. Set `dismissible={false}` for a decision that must be completed explicitly. Use Sheet for a non-gesture desktop side panel.
 
-`modal` is deprecated and ignored: a Drawer is always modal (scrim, focus trap, scroll lock). Passing `modal={false}` logs a development warning; the prop will be removed in the next major version. Delete it; [guidelines/migration.md](../../guidelines/migration.md) has the details.
+A Drawer is always modal: scrim, focus trap and scroll lock.
 
 ```ts
 import type * as React from 'react';
@@ -4391,11 +4391,6 @@ export interface DrawerProps {
   onOpenChange?: (open: boolean) => void;
   direction?: DrawerDirection;
   dismissible?: boolean;
-  /**
-   * @deprecated Ignored: a Drawer is always modal. Passing `false` logs a development warning; the prop will be removed in the next major version. Migration: https://meridian.efolusi.com/guidelines/migration.md
-   * @codemod remove
-   */
-  modal?: boolean;
   handleOnly?: boolean;
   children?: React.ReactNode;
 }
@@ -4434,7 +4429,7 @@ Composable action menu for a button or other trigger. Supports items, checkbox a
   <DropdownMenuContent align="end">
     <DropdownMenuItem>Duplicate<DropdownMenuShortcut>⌘D</DropdownMenuShortcut></DropdownMenuItem>
     <DropdownMenuSeparator />
-    <DropdownMenuItem variant="destructive">Delete</DropdownMenuItem>
+    <DropdownMenuItem variant="danger">Delete</DropdownMenuItem>
   </DropdownMenuContent>
 </DropdownMenu>
 ```
@@ -4466,7 +4461,7 @@ export declare const DropdownMenuLabel: React.ForwardRefExoticComponent<Dropdown
 export declare const DropdownMenuSeparator: React.ForwardRefExoticComponent<React.HTMLAttributes<HTMLDivElement> & React.RefAttributes<HTMLDivElement>>;
 export declare const DropdownMenuShortcut: React.ForwardRefExoticComponent<React.HTMLAttributes<HTMLSpanElement> & React.RefAttributes<HTMLSpanElement>>;
 
-export interface DropdownMenuItemProps extends React.ButtonHTMLAttributes<HTMLButtonElement> { inset?: boolean; variant?: 'default' | 'destructive'; onSelect?: (event: React.SyntheticEvent) => void; }
+export interface DropdownMenuItemProps extends React.ButtonHTMLAttributes<HTMLButtonElement> { inset?: boolean; variant?: 'default' | 'danger'; onSelect?: (event: React.SyntheticEvent) => void; }
 export declare const DropdownMenuItem: React.ForwardRefExoticComponent<DropdownMenuItemProps & React.RefAttributes<HTMLButtonElement>>;
 
 export interface DropdownMenuCheckboxItemProps extends Omit<DropdownMenuItemProps, 'onCheckedChange'> { checked?: boolean; defaultChecked?: boolean; onCheckedChange?: (checked: boolean) => void; }

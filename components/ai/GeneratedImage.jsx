@@ -7,19 +7,19 @@ const CSS = `
 .ef-genimg--square{aspect-ratio:1}
 .ef-genimg--video{aspect-ratio:16/9}
 .ef-genimg--portrait{aspect-ratio:3/4}
-.ef-genimg--error{border-color:var(--danger-300);box-shadow:0 0 0 3px var(--danger-100)}
+.ef-genimg--danger{border-color:var(--danger-300);box-shadow:0 0 0 3px var(--danger-100)}
 .ef-genimg__img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity .5s var(--ease-out)}
 .ef-genimg--complete .ef-genimg__img{opacity:1}
-.ef-genimg--error .ef-genimg__img{opacity:.3}
+.ef-genimg--danger .ef-genimg__img{opacity:.3}
 .ef-genimg__dark{position:absolute;inset:0;background:var(--media-backdrop);opacity:0;transition:opacity var(--dur-med) var(--ease-out);pointer-events:none}
-.ef-genimg--generating .ef-genimg__dark{opacity:1}
+.ef-genimg--busy .ef-genimg__dark{opacity:1}
 .ef-genimg__backdrop{position:absolute;inset:0;background:var(--media-backdrop-dot);-webkit-mask-image:radial-gradient(ellipse at center,black 10%,transparent 78%);mask-image:radial-gradient(ellipse at center,black 10%,transparent 78%);animation:ef-genimg-pulse 2.8s ease-in-out infinite}
 @keyframes ef-genimg-pulse{0%,100%{opacity:.45}50%{opacity:1}}
 .ef-genimg__scrim{position:absolute;inset-inline:0;pointer-events:none;opacity:0;transition:opacity var(--dur-med) var(--ease-out)}
 .ef-genimg--complete .ef-genimg__scrim{opacity:1}
 .ef-genimg__scrim--top{top:0;height:34%;background:linear-gradient(to bottom,var(--media-scrim),transparent)}
 .ef-genimg__prompt{position:absolute;top:13px;inset-inline:16px;font-size:var(--text-sm);font-weight:var(--weight-semibold);color:var(--text-primary);z-index:2}
-.ef-genimg--generating .ef-genimg__prompt,.ef-genimg--complete .ef-genimg__prompt{color:var(--text-on-media)}
+.ef-genimg--busy .ef-genimg__prompt,.ef-genimg--complete .ef-genimg__prompt{color:var(--text-on-media)}
 .ef-genimg__status{position:absolute;inset-inline-start:16px;bottom:13px;font-size:var(--text-sm);color:var(--text-on-media-muted);z-index:2;animation:ef-genimg-pulse 1.6s ease-in-out infinite}
 .ef-genimg__center{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:var(--space-3);color:var(--text-muted);font-size:var(--text-sm);z-index:2;padding:var(--space-5);text-align:center}
 .ef-genimg__actions{position:absolute;top:9px;inset-inline-end:9px;display:flex;gap:var(--space-0-5);z-index:3;opacity:0;transition:opacity var(--dur-fast) var(--ease-out)}
@@ -36,13 +36,13 @@ export function GeneratedImage({ status = 'complete', src, alt, prompt, aspect =
   injectEfCss('ef-css-genimg', CSS);
   return (
     <div {...rest} className={`ef-genimg ef-genimg--${aspect} ef-genimg--${s}${className ? ' ' + className : ''}`} style={style} data-state={s}>
-      {src && (s === 'complete' || s === 'error') ? <img className="ef-genimg__img" src={src} alt={alt || prompt || ''} /> : null}
-      <div className="ef-genimg__dark">{s === 'generating' ? <div className="ef-genimg__backdrop"></div> : null}</div>
+      {src && (s === 'complete' || s === 'danger') ? <img className="ef-genimg__img" src={src} alt={alt || prompt || ''} /> : null}
+      <div className="ef-genimg__dark">{s === 'busy' ? <div className="ef-genimg__backdrop"></div> : null}</div>
       <div className="ef-genimg__scrim ef-genimg__scrim--top" aria-hidden="true"></div>
       {prompt ? <div className="ef-genimg__prompt">{prompt}</div> : null}
       {s === 'queued' ? <div className="ef-genimg__center"><Icon name="image" size={20} /><span>Queued…</span></div> : null}
-      {s === 'generating' ? <div className="ef-genimg__status">Generating…</div> : null}
-      {s === 'error' ? (
+      {s === 'busy' ? <div className="ef-genimg__status">Generating…</div> : null}
+      {s === 'danger' ? (
         <div className="ef-genimg__center">
           <span className="ef-genimg__err"><Icon name="circle-alert" size={20} /></span>
           <span className="ef-genimg__err">{error || 'Generation failed'}</span>

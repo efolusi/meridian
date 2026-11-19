@@ -53,6 +53,54 @@ Removed in 1.25.0. It had been ignored since 1.22.0.
 
 **If you wanted a non-modal panel.** Meridian has never shipped one, and the Drawer did not provide it either. For content that sits beside the page and stays interactive, make it part of the page layout (a column in your grid, for example) rather than an overlay.
 
+### Status and variant names
+
+**Why.** One status meant several names (`ok` and `success`, `err`, `error` and `danger`). Every status-bearing component now uses `success`, `warning`, `danger`, `info`, `neutral` and `busy`.
+
+| Component | Prop | Old | New |
+|---|---|---|---|
+| StatusDot | `status` | `ok`, `warn`, `err`, `off` | `success`, `warning`, `danger`, `neutral` |
+| Terminal | line `type` | `ok`, `err` | `success`, `danger` |
+| Console, WebPreview | log `level` | `warn`, `error` | `warning`, `danger` |
+| ToolCall, Sandbox | `status` | `running`, `error` | `busy`, `danger` |
+| GeneratedImage | `status` | `generating`, `error` | `busy`, `danger` |
+| Button, Alert, Badge, Bubble, DropdownMenuItem, ContextMenuItem, InputGroupButton | `variant` | `destructive` | `danger` |
+| Button, InputGroupButton | `variant` | `outline` (the same look as `secondary`) | `secondary` |
+
+**Before**
+
+```jsx
+<StatusDot status="ok" label="API" />
+<Button variant="destructive">Delete</Button>
+```
+
+**After**
+
+```jsx
+<StatusDot status="success" label="API" />
+<Button variant="danger">Delete</Button>
+```
+
+**Mechanical fix.** No Guard rule. Search for the old values and replace them; an old value now falls back to the component's default look.
+
+### Toast `type`
+
+**Why.** The toast manager took `type: 'error'` and drew it as `danger`. It now takes `danger`, like every other component. `toast.promise` marks a rejected promise `danger`. The `error` key of `toast.promise` options stays: it names the rejection callback, not a type.
+
+**Before**
+
+```js
+toast.add({ title: 'Deploy failed', type: 'error' });
+```
+
+**After**
+
+```js
+toast.add({ title: 'Deploy failed', type: 'danger' });
+```
+
+**Mechanical fix.** No Guard rule. Replace `type: 'error'` in `toast.add` calls. A toast with `type: 'error'` now shows as `info`.
+
 ## Earlier breaking changes
 
 1.21.0 and 1.21.2 removed shorthand renderers and the first wave of prop aliases in minor releases. Those entries in [CHANGELOG.md](../CHANGELOG.md) list each removal and its replacement; there is no deprecation warning or Guard rule for them.

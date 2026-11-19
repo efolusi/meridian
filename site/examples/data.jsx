@@ -106,11 +106,11 @@ export function StatusDotDemo() {
   const { StatusDot } = window.EfolusiDesignSystem_4ffc3d;
   return (
     <div style={{ display: 'flex', gap: 22, flexWrap: 'wrap' }}>
-      <StatusDot status="ok" label="API" />
+      <StatusDot status="success" label="API" />
       <StatusDot status="busy" pulse label="Deploying" />
-      <StatusDot status="warn" label="Queue depth" />
-      <StatusDot status="err" label="Webhooks" />
-      <StatusDot status="off" label="Sandbox" />
+      <StatusDot status="warning" label="Queue depth" />
+      <StatusDot status="danger" label="Webhooks" />
+      <StatusDot status="neutral" label="Sandbox" />
     </div>
   );
 }

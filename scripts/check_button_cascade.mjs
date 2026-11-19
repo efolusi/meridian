@@ -23,7 +23,7 @@ if (shots) await mkdir(shots, { recursive: true });
 const browser = await chromium.launch(process.env.EXECUTABLE_PATH ? {executablePath:process.env.EXECUTABLE_PATH} : {});
 try {
   let page;
-  const variants=['primary','secondary','ghost','danger','brand','outline','destructive','link'];
+  const variants=['primary','secondary','ghost','danger','brand','link'];
   let checks=0;
   for(const viewport of viewports) for(const theme of ['light','dark']) {
     const receiptCss=`body{margin:0;padding:var(--space-6);background:var(--surface-page);color:var(--text-primary);font-family:var(--font-sans)}h1{margin:0 0 var(--space-6);font-family:var(--font-display);font-size:var(--text-2xl)}.matrix{display:grid;gap:var(--space-4);max-width:820px}.row{display:grid;grid-template-columns:96px repeat(4,max-content);gap:var(--space-2);align-items:center}.label{font-size:var(--text-sm);font-weight:var(--weight-semibold)}.extras{display:flex;align-items:center;gap:var(--space-4);margin-top:var(--space-6)}@media(max-width:600px){body{padding:var(--space-4)}.row{grid-template-columns:1fr 1fr}.label{grid-column:1/-1}.row .ef-btn{width:100%}.extras{align-items:flex-start;flex-direction:column}}`;
@@ -61,7 +61,7 @@ try {
         }
       }
       assert.deepEqual(observed[0],observed[1],`${theme}/${variant}/${state} anchor/native mismatch`);
-      if (['primary','brand','danger','destructive'].includes(variant)) {
+      if (['primary','brand','danger'].includes(variant)) {
         for (const styles of observed) {
           const ratio = contrast(styles.color, styles.backgroundColor);
           assert.ok(ratio >= 4.5, `${theme}/${variant}/${state} text contrast ${ratio.toFixed(2)}:1 is below 4.5:1`);

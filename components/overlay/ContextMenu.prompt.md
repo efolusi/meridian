@@ -8,7 +8,7 @@ Composable right-click menu with items, checkbox and radio choices, groups, labe
   <ContextMenuContent>
     <ContextMenuItem>Rename<ContextMenuShortcut>F2</ContextMenuShortcut></ContextMenuItem>
     <ContextMenuSeparator />
-    <ContextMenuItem variant="destructive">Delete</ContextMenuItem>
+    <ContextMenuItem variant="danger">Delete</ContextMenuItem>
   </ContextMenuContent>
 </ContextMenu>
 ```

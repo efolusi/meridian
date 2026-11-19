@@ -32,22 +32,8 @@ const DrawerContext = React.createContext(null);
 const join = (...values) => values.filter(Boolean).join(' ');
 const compose = (first, second) => event => { first?.(event); if (!event.defaultPrevented) second?.(event); };
 
-// Deprecated props keep working until the next major, with one warning per
-// page outside production builds.
-let warnedModal = false;
-function warnModalIgnored() {
-  if (warnedModal || typeof console === 'undefined') return;
-  // Bare `process.env.NODE_ENV` so bundlers (Vite, webpack, esbuild) fold it to a
-  // literal; `typeof process` is not replaced and would keep the warning in
-  // production. Where nothing defines it, the read throws and we warn.
-  try { if (process.env.NODE_ENV === 'production') return; } catch (e) { /* no build-time env */ }
-  warnedModal = true;
-  console.warn('[meridian] <Drawer modal={false}> is deprecated and ignored: a Drawer is always modal. The prop will be removed in the next major version. Migration: https://meridian.efolusi.com/guidelines/migration.md');
-}
-
-export function Drawer({ open: controlled, defaultOpen = false, onOpenChange, direction = 'bottom', dismissible = true, modal = true, handleOnly = false, children }) {
+export function Drawer({ open: controlled, defaultOpen = false, onOpenChange, direction = 'bottom', dismissible = true, handleOnly = false, children }) {
   injectEfCss('ef-css-drawer', CSS);
-  React.useEffect(() => { if (modal === false) warnModalIgnored(); }, [modal]);
   const [internal, setInternal] = React.useState(defaultOpen);
   // Closed while React hydrates server HTML (the server rendered no portal),
   // open right after, so effects keyed on it run with the panel present.

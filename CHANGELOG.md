@@ -2,6 +2,16 @@
 
 ## Unreleased
 
+- **Breaking: Drawer no longer accepts `modal`.** The prop was ignored since 1.22.0 and only logged a warning. Delete it from your code; `meridian-guard --fix` from 1.23.0 still removes it. Meridian now ships no deprecated props.
+- **Breaking: one set of status and variant names.** Every status-bearing component now uses `success`, `warning`, `danger`, `info`, `neutral` and `busy`. The old names are gone, with no aliases:
+  - `StatusDot` `status`: `ok` → `success`, `warn` → `warning`, `err` → `danger`, `off` → `neutral`.
+  - `Terminal` line `type`: `ok` → `success`, `err` → `danger`.
+  - `Console` and `WebPreview` log `level`: `warn` → `warning`, `error` → `danger`.
+  - `ToolCall` and `Sandbox` `status`: `running` → `busy`, `error` → `danger`. `ToolCall` now defaults to `busy`.
+  - `GeneratedImage` `status`: `generating` → `busy`, `error` → `danger`.
+  - `toast.add` and `toast.promise` `type`: `error` → `danger`. A rejected `toast.promise` now gives a `danger` toast.
+  - `variant="destructive"` → `variant="danger"` on Button, Alert, Badge, Bubble, DropdownMenuItem, ContextMenuItem and InputGroupButton. Button had both; `danger` stays.
+  - Button `variant="outline"` → `variant="secondary"`: the two had the same look. `AlertDialogCancel` is now `secondary`, and InputGroupButton no longer lists `outline`.
 - **Control, avatar and icon sizes use their tokens.** Fixed px widths and heights that equal a token now read it: buttons and triggers in DocumentCard, ToolCall, WebPreview, EnvList, CodeBlock, the file Input, Toolbar, Menubar, SegmentedControl, Sidebar, Banner, Toggle, Pagination, NavigationMenu and Sandbox use `--control-h-*`; the Avatar group count uses `--avatar-*`; InputGroup text icons and the Todo mark use `--icon-md`. No size changes by default. They now follow compact density and grow to `--tap-min` on coarse pointers. Sizes with no matching token (32 and 40px controls, component geometry) stay in px. The Select and Combobox item and NativeSelect paddings that offset a border are `calc(var(--space-*) ± 1px)` instead of 9, 7 and 11px; no size changes.
 - **Font sizes are on the type scale.** Component font sizes take their values from `--text-*`. Sizes off the scale moved to the nearest step, ties up: 11.5px to 12px, 12.5px to 13px, 13.5px to 14px, 15px to 16px and 19px to 18px. Sizes below 11px (badge digits in Citation, Avatar, FileTypeIcon, PaymentCard, chart axes and the Sidebar badge) stay in px, because the scale starts at 11px.
 - **Icon clearance is built from tokens.** The end padding that clears an icon or button in Input (reveal), Select, Combobox, NativeSelect, TimePicker and the Dialog header is a `calc()` of `--space-*`, `--icon-md` and `--control-h-sm`, so it follows density and coarse pointers. Shifts: Input reveal 38px to 36px on every size (was 34 and 42px on sm and lg), NativeSelect and TimePicker 32 and 34px to 36px, Select and Combobox items 30px to 32px, item indicators 9px to 8px, the Dialog close button 14px to 12px from the corner.

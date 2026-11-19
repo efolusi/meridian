@@ -29,7 +29,7 @@ export function CalendarDatePickerDemo() {
   const { Button, Calendar, Field, FieldLabel, Popover, PopoverContent, PopoverTrigger } = window.EfolusiDesignSystem_4ffc3d;
   const [d, setD] = React.useState();
   return (
-    <Field style={{ width: 260 }}><FieldLabel htmlFor="renewal-date">Renewal date</FieldLabel><Popover><PopoverTrigger asChild><Button id="renewal-date" variant="outline" iconLeft="calendar">{d ? d.toLocaleDateString(undefined, { dateStyle: 'medium' }) : 'Pick a date'}</Button></PopoverTrigger><PopoverContent style={{ width: 'auto', padding: 12 }}><Calendar mode="single" selected={d} onSelect={setD} /></PopoverContent></Popover></Field>
+    <Field style={{ width: 260 }}><FieldLabel htmlFor="renewal-date">Renewal date</FieldLabel><Popover><PopoverTrigger asChild><Button id="renewal-date" variant="secondary" iconLeft="calendar">{d ? d.toLocaleDateString(undefined, { dateStyle: 'medium' }) : 'Pick a date'}</Button></PopoverTrigger><PopoverContent style={{ width: 'auto', padding: 12 }}><Calendar mode="single" selected={d} onSelect={setD} /></PopoverContent></Popover></Field>
   );
 }
 

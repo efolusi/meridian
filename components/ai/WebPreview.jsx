@@ -21,8 +21,8 @@ const CSS = `
 .ef-webprev__cons{margin-top:var(--space-2);border:1px solid var(--border-default);border-radius:var(--radius-sm);background:var(--surface-subtle);max-height:180px;overflow-y:auto;font-family:var(--font-mono);font-size:var(--text-xs);line-height:1.6}
 .ef-webprev__log{display:flex;gap:var(--space-2);padding:var(--space-1) var(--space-3);border-top:1px solid var(--border-default);color:var(--text-secondary)}
 .ef-webprev__log:first-child{border-top:none}
-.ef-webprev__log--warn{color:var(--warning-600)}
-.ef-webprev__log--error{color:var(--danger-600)}
+.ef-webprev__log--warning{color:var(--warning-600)}
+.ef-webprev__log--danger{color:var(--danger-600)}
 .ef-webprev__logicon{display:inline-flex;flex:none;margin-top:var(--space-0-5)}
 .ef-webprev__badge{position:absolute;top:3px;inset-inline-end:3px;min-width:14px;height:14px;padding:0 var(--space-1);border-radius:var(--radius-full);background:var(--danger-600);color:var(--danger-contrast);font-size:9.5px;font-weight:var(--weight-semibold);display:inline-flex;align-items:center;justify-content:center;font-family:var(--font-sans)}
 @media (pointer:coarse){.ef-webprev__btn{min-width:var(--tap-min);min-height:var(--tap-min)}}
@@ -45,7 +45,7 @@ export function WebPreview({ url: urlProp = '', height = 340, logs = [], default
   // Controlled-capable url: a changed url prop is adopted into state, so a parent
   // can drive navigation (address bar + iframe follow it) between user edits.
   React.useEffect(() => { setUrl(urlProp); setDraft(urlProp); }, [urlProp]);
-  const errs = logs.filter(l => l.level === 'error').length;
+  const errs = logs.filter(l => l.level === 'danger').length;
   const commit = v => {
     const t = v.trim();
     const next = !t || /^[a-z][a-z0-9+.-]*:/i.test(t) ? t : 'https://' + t;
@@ -54,7 +54,7 @@ export function WebPreview({ url: urlProp = '', height = 340, logs = [], default
   };
   const safe = safeUrl(url);
   const width = (VIEWPORTS.find(v => v.id === vp) || {}).width;
-  const LOG_ICON = { warn: 'triangle-alert', error: 'circle-alert', info: 'info' };
+  const LOG_ICON = { warning: 'triangle-alert', danger: 'circle-alert', info: 'info' };
   return (
     <div {...rest} className={`ef-webprev${cons ? ' ef-webprev--console' : ''}${className ? ' ' + className : ''}`} style={style}>
       <div className="ef-webprev__bar">

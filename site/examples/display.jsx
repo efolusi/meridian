@@ -81,14 +81,14 @@ export function BadgeDemo() {
       <div style={{ display: 'flex', gap: 10, alignItems: 'center', flexWrap: 'wrap' }}>
         <Badge>Default</Badge>
         <Badge variant="secondary">Secondary</Badge>
-        <Badge variant="destructive">Destructive</Badge>
+        <Badge variant="danger">Danger</Badge>
         <Badge variant="outline">Outline</Badge>
         <Badge variant="ghost">Ghost</Badge>
       </div>
       <div style={{ display: 'flex', gap: 10, alignItems: 'center', flexWrap: 'wrap' }}>
         <Badge className="ef-badge--success"><Icon name="circle" size={8} strokeWidth={4} data-icon="inline-start" />Live</Badge>
         <Badge className="ef-badge--warning"><Icon name="circle" size={8} strokeWidth={4} data-icon="inline-start" />Degraded</Badge>
-        <Badge variant="destructive">Failed</Badge>
+        <Badge variant="danger">Failed</Badge>
       </div>
     </div>
   );

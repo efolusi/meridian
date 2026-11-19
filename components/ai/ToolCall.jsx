@@ -5,8 +5,8 @@ import { Icon } from '../icons/Icon.jsx';
 const CSS = `
 .ef-toolcall{border:1px solid var(--border-default);border-radius:var(--radius-md);background:var(--surface-card);overflow:hidden;transition:border-color var(--dur-fast) var(--ease-out),box-shadow var(--dur-fast) var(--ease-out)}
 .ef-toolcall--approval{border-color:var(--accent-subtle-border);box-shadow:0 0 0 2px var(--accent-subtle)}
-.ef-toolcall--running{border-color:var(--accent-subtle-border)}
-.ef-toolcall--error{border-color:var(--danger-300,var(--danger-600))}
+.ef-toolcall--busy{border-color:var(--accent-subtle-border)}
+.ef-toolcall--danger{border-color:var(--danger-300,var(--danger-600))}
 .ef-toolcall__head{display:flex;align-items:center;gap:var(--space-2);width:100%;padding:var(--space-2) var(--space-3);border:none;background:none;cursor:pointer;text-align:start;font-family:var(--font-mono);font-size:var(--text-sm);color:var(--text-primary)}
 .ef-toolcall__head:focus-visible{outline:none;box-shadow:var(--focus-ring)}
 .ef-toolcall--pending .ef-toolcall__head{animation:ef-toolcall-pulse 1.4s var(--ease-out) infinite}
@@ -16,9 +16,9 @@ const CSS = `
 .ef-toolcall__state{margin-inline-start:auto;display:inline-flex;align-items:center;gap:var(--space-2);font-family:var(--font-sans);font-size:var(--text-xs);font-weight:500;flex:none}
 .ef-toolcall__state--pending{color:var(--text-muted)}
 .ef-toolcall__state--approval{color:var(--brand-700)}
-.ef-toolcall__state--running{color:var(--text-secondary)}
+.ef-toolcall__state--busy{color:var(--text-secondary)}
 .ef-toolcall__state--success{color:var(--success-600,var(--text-secondary))}
-.ef-toolcall__state--error{color:var(--danger-600)}
+.ef-toolcall__state--danger{color:var(--danger-600)}
 .ef-toolcall__spin{display:inline-flex;animation:ef-toolcall-spin .9s linear infinite}
 @keyframes ef-toolcall-spin{to{transform:rotate(360deg)}}
 .ef-toolcall__chev{display:inline-flex;color:var(--text-muted);transition:transform var(--dur-med) var(--ease-out)}
@@ -42,10 +42,10 @@ const CSS = `
 .ef-toolcall__btn:focus-visible{outline:none;box-shadow:var(--focus-ring)}
 @media (pointer:coarse){.ef-toolcall__btn{min-height:var(--tap-min)}}
 `;
-const STATES = { pending: 'Queued', approval: 'Needs approval', running: 'Running', success: 'Done', error: 'Failed' };
-export function ToolCall({ name, status = 'running', args, result, error, icon = 'wrench', defaultOpen, streaming, onApprove, onReject, approveLabel = 'Approve', rejectLabel = 'Reject', children, style, className, ...rest }) {
+const STATES = { pending: 'Queued', approval: 'Needs approval', busy: 'Running', success: 'Done', danger: 'Failed' };
+export function ToolCall({ name, status = 'busy', args, result, error, icon = 'wrench', defaultOpen, streaming, onApprove, onReject, approveLabel = 'Approve', rejectLabel = 'Reject', children, style, className, ...rest }) {
   injectEfCss('ef-css-toolcall', CSS);
-  const [open, setOpen] = React.useState(defaultOpen !== undefined ? !!defaultOpen : (status === 'error' || status === 'approval'));
+  const [open, setOpen] = React.useState(defaultOpen !== undefined ? !!defaultOpen : (status === 'danger' || status === 'approval'));
   const body = children || result;
   const entries = args != null && typeof args === 'object' && !Array.isArray(args) ? Object.entries(args) : null;
   const argText = args == null || entries ? null : typeof args === 'string' ? args : JSON.stringify(args, null, 2);
@@ -57,7 +57,7 @@ export function ToolCall({ name, status = 'running', args, result, error, icon =
         <span className="ef-toolcall__verb">tool</span>
         {name}
         <span className={`ef-toolcall__state ef-toolcall__state--${status}`}>
-          {status === 'running' ? <span className="ef-toolcall__spin"><Icon name="loader-circle" size={12} /></span>
+          {status === 'busy' ? <span className="ef-toolcall__spin"><Icon name="loader-circle" size={12} /></span>
             : status === 'approval' ? <Icon name="shield-check" size={12} />
             : status === 'pending' ? <Icon name="clock" size={12} />
             : <Icon name={status === 'success' ? 'circle-check' : 'circle-alert'} size={12} />}

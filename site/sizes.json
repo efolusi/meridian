@@ -1,16 +1,16 @@
 {
   "totals": {
     "@efolusi/meridian": {
-      "bytes": 356185,
-      "gzip": 80141
+      "bytes": 355830,
+      "gzip": 79911
     },
     "dist/components.css": {
-      "bytes": 209685,
-      "gzip": 28408
+      "bytes": 209327,
+      "gzip": 28351
     },
     "_ds_bundle.js": {
-      "bytes": 824541,
-      "gzip": 145401
+      "bytes": 823254,
+      "gzip": 144867
     }
   },
   "modules": [
@@ -32,8 +32,8 @@
         "BubbleContent",
         "BubbleReactions"
       ],
-      "bytes": 1767,
-      "gzip": 749
+      "bytes": 1762,
+      "gzip": 745
     },
     {
       "module": "ai/ChatMessage.js",
@@ -96,7 +96,7 @@
       "exports": [
         "GeneratedImage"
       ],
-      "bytes": 46455,
+      "bytes": 46445,
       "gzip": 7692
     },
     {
@@ -198,8 +198,8 @@
       "exports": [
         "Sandbox"
       ],
-      "bytes": 46307,
-      "gzip": 7747
+      "bytes": 46303,
+      "gzip": 7748
     },
     {
       "module": "ai/SelectionQuote.js",
@@ -252,8 +252,8 @@
       "exports": [
         "ToolCall"
       ],
-      "bytes": 47785,
-      "gzip": 8039
+      "bytes": 47778,
+      "gzip": 8045
     },
     {
       "module": "ai/Transcript.js",
@@ -279,8 +279,8 @@
       "exports": [
         "WebPreview"
       ],
-      "bytes": 48116,
-      "gzip": 8473
+      "bytes": 48121,
+      "gzip": 8471
     },
     {
       "module": "code/CodeBlock.js",
@@ -297,8 +297,8 @@
       "exports": [
         "Console"
       ],
-      "bytes": 47013,
-      "gzip": 8009
+      "bytes": 47017,
+      "gzip": 8003
     },
     {
       "module": "code/CopyField.js",
@@ -442,8 +442,8 @@
       "exports": [
         "StatusDot"
       ],
-      "bytes": 845,
-      "gzip": 479
+      "bytes": 865,
+      "gzip": 487
     },
     {
       "module": "data/Table.js",
@@ -713,8 +713,8 @@
         "AlertDialogCancel",
         "AlertDialogAction"
       ],
-      "bytes": 7074,
-      "gzip": 2472
+      "bytes": 7076,
+      "gzip": 2474
     },
     {
       "module": "feedback/Banner.js",
@@ -785,8 +785,8 @@
       "exports": [
         "Toaster"
       ],
-      "bytes": 50081,
-      "gzip": 9398
+      "bytes": 50066,
+      "gzip": 9391
     },
     {
       "module": "feedback/Tooltip.js",
@@ -1325,8 +1325,8 @@
         "DrawerTitle",
         "DrawerDescription"
       ],
-      "bytes": 55277,
-      "gzip": 10483
+      "bytes": 54937,
+      "gzip": 10304
     },
     {
       "module": "overlay/DropdownMenu.js",

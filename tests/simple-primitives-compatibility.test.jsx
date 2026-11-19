@@ -47,7 +47,7 @@ describe('Spinner compatibility contract', () => {
 });
 
 describe('Badge compatibility contract', () => {
-  it.each(['default', 'secondary', 'destructive', 'outline', 'ghost', 'link'])(
+  it.each(['default', 'secondary', 'danger', 'outline', 'ghost', 'link'])(
     'supports the %s variant',
     (variant) => {
       render(<Badge variant={variant} data-testid={`badge-${variant}`}>{variant}</Badge>);

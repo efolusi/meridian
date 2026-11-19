@@ -4,7 +4,7 @@ Use Alert Dialog for an important decision that must be acknowledged before work
 
 ```jsx
 <AlertDialog>
-  <AlertDialogTrigger asChild><Button variant="outline">Archive project</Button></AlertDialogTrigger>
+  <AlertDialogTrigger asChild><Button variant="secondary">Archive project</Button></AlertDialogTrigger>
   <AlertDialogContent>
     <AlertDialogHeader>
       <AlertDialogTitle>Archive this project?</AlertDialogTitle>

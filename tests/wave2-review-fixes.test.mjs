@@ -20,12 +20,6 @@ describe('wave 2 pre-release review fixes', () => {
     expect(read('components/navigation/PageControl.jsx')).toMatch(/@media \(pointer:coarse\)\{\.ef-dots\{flex-wrap:wrap/);
   });
 
-  it('the Drawer deprecation guard uses a bare process.env.NODE_ENV that bundlers fold', () => {
-    const src = read('components/overlay/Drawer.jsx');
-    expect(src).not.toMatch(/typeof process !== 'undefined' && process\.env && process\.env\.NODE_ENV === 'production'/);
-    expect(src).toMatch(/try \{ if \(process\.env\.NODE_ENV === 'production'\) return; \}/);
-  });
-
   it('the fictional Fernwick docs never name an Efolusi environment variable', () => {
     expect(read('showcases/docs/DocsScreen.jsx')).not.toMatch(/EFOLUSI_/);
   });

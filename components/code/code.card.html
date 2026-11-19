@@ -14,9 +14,9 @@ function Demo() {
       <CodeBlock lang="bash">npm install @efolusi/sdk</CodeBlock>
       <Terminal host="deploy@efolusi-prod" live lines={[
         { type: 'cmd', text: 'efolusi infra connect aws' },
-        { type: 'ok', text: '✓ Connected · 14 resources found', time: '09:41:04' },
+        { type: 'success', text: '✓ Connected · 14 resources found', time: '09:41:04' },
         { type: 'cmd', text: 'efolusi dns verify app.efolusi.com' },
-        { type: 'err', text: '✗ CNAME missing — add the record below', time: '09:41:09' },
+        { type: 'danger', text: '✗ CNAME missing — add the record below', time: '09:41:09' },
       ]} />
       <Diff title="agents/retry.ts"
         from={'export function retry(run: Run) {\n  const maxAttempts = 3;\n  const window = seconds(40);\n  return schedule(run, maxAttempts, window);\n}'}
@@ -24,8 +24,8 @@ function Demo() {
       <Console height={170} entries={[
         { level: 'info', time: '14:02:11', text: 'Replaying 12 failed deliveries' },
         { level: 'log', time: '14:02:12', text: 'batch 1/3 → hooks.acme.io · 200 OK' },
-        { level: 'warn', time: '14:02:13', text: 'batch 2/3 slow (1.9s), backing off' },
-        { level: 'error', time: '14:02:19', text: 'delivery #9 failed once, retrying', stack: 'at deliver (webhooks.ts:88)\nat replay (batch.ts:31)', source: 'webhooks.ts:88' },
+        { level: 'warning', time: '14:02:13', text: 'batch 2/3 slow (1.9s), backing off' },
+        { level: 'danger', time: '14:02:19', text: 'delivery #9 failed once, retrying', stack: 'at deliver (webhooks.ts:88)\nat replay (batch.ts:31)', source: 'webhooks.ts:88' },
         { level: 'log', time: '14:02:24', text: 'batch 3/3 → hooks.acme.io · 200 OK' },
         { level: 'info', time: '14:02:24', text: 'Replay complete: 12/12 delivered' },
       ]} />

@@ -1,7 +1,7 @@
 export interface TerminalLine {
   text: string;
-  /** cmd gets a $ prompt; ok/err/info are tinted */
-  type?: 'cmd' | 'out' | 'ok' | 'err' | 'info';
+  /** cmd gets a $ prompt; success/danger/info are tinted */
+  type?: 'cmd' | 'out' | 'success' | 'danger' | 'info';
   /** Muted timestamp prefix */
   time?: string;
 }

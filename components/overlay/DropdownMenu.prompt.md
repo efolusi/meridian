@@ -8,7 +8,7 @@ Composable action menu for a button or other trigger. Supports items, checkbox a
   <DropdownMenuContent align="end">
     <DropdownMenuItem>Duplicate<DropdownMenuShortcut>⌘D</DropdownMenuShortcut></DropdownMenuItem>
     <DropdownMenuSeparator />
-    <DropdownMenuItem variant="destructive">Delete</DropdownMenuItem>
+    <DropdownMenuItem variant="danger">Delete</DropdownMenuItem>
   </DropdownMenuContent>
 </DropdownMenu>
 ```

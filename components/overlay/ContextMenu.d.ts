@@ -24,7 +24,7 @@ export declare const ContextMenuLabel: React.ForwardRefExoticComponent<ContextMe
 export declare const ContextMenuSeparator: React.ForwardRefExoticComponent<React.HTMLAttributes<HTMLDivElement> & React.RefAttributes<HTMLDivElement>>;
 export declare const ContextMenuShortcut: React.ForwardRefExoticComponent<React.HTMLAttributes<HTMLSpanElement> & React.RefAttributes<HTMLSpanElement>>;
 
-export interface ContextMenuItemProps extends React.ButtonHTMLAttributes<HTMLButtonElement> { inset?: boolean; variant?: 'default' | 'destructive'; onSelect?: (event: React.SyntheticEvent) => void; }
+export interface ContextMenuItemProps extends React.ButtonHTMLAttributes<HTMLButtonElement> { inset?: boolean; variant?: 'default' | 'danger'; onSelect?: (event: React.SyntheticEvent) => void; }
 export declare const ContextMenuItem: React.ForwardRefExoticComponent<ContextMenuItemProps & React.RefAttributes<HTMLButtonElement>>;
 
 export interface ContextMenuCheckboxItemProps extends Omit<ContextMenuItemProps, 'onCheckedChange'> { checked?: boolean; defaultChecked?: boolean; onCheckedChange?: (checked: boolean) => void; }

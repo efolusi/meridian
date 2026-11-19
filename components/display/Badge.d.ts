@@ -1,4 +1,4 @@
-export type BadgeVariant = 'default' | 'secondary' | 'destructive' | 'outline' | 'ghost' | 'link';
+export type BadgeVariant = 'default' | 'secondary' | 'danger' | 'outline' | 'ghost' | 'link';
 
 export interface BadgeProps extends React.HTMLAttributes<HTMLSpanElement> {
   /** @default 'default' */

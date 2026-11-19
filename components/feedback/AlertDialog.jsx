@@ -175,5 +175,5 @@ function createAction(name, slot, variant, closes) {
   });
 }
 
-export const AlertDialogCancel = createAction('AlertDialogCancel', 'alert-dialog-cancel', 'outline', true);
+export const AlertDialogCancel = createAction('AlertDialogCancel', 'alert-dialog-cancel', 'secondary', true);
 export const AlertDialogAction = createAction('AlertDialogAction', 'alert-dialog-action', 'default', true);

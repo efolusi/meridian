@@ -1,9 +1,9 @@
 # Alert
 
-Notifikasi inline composable dengan varian `default` dan `destructive`. Susun ikon, `AlertTitle`, `AlertDescription`, dan `AlertAction` sebagai children.
+Notifikasi inline composable dengan varian `default` dan `danger`. Susun ikon, `AlertTitle`, `AlertDescription`, dan `AlertAction` sebagai children.
 
 ```jsx
-<Alert variant="destructive">
+<Alert variant="danger">
   <Icon name="circle-alert" />
   <AlertTitle>Deploy failed</AlertTitle>
   <AlertDescription>Image digest mismatch.</AlertDescription>

@@ -1,22 +1,22 @@
 const { Banner, Stat, Sparkline, SegmentedControl, Table, StatusDot, Drawer, DrawerContent, DrawerHeader, DrawerTitle, DrawerDescription, DrawerFooter, DrawerClose, KeyValueList, CopyField, Terminal, Dialog, DialogClose, DialogContent, DialogDescription, DialogFooter, DialogHeader, DialogTitle, Card, CardContent, Button, NativeSelect, NativeSelectOption, Field, FieldLabel, Input, Badge, Icon, Toaster, toast } = window.EfolusiDesignSystem_4ffc3d;
 
 const RESOURCES = [
-  { id: 'pg', name: 'pg-prod-eu', kind: 'PostgreSQL', icon: 'database', region: 'eu-west-1', status: 'ok', latency: '38 ms' },
-  { id: 'redis', name: 'cache-main', kind: 'Redis', icon: 'hard-drive', region: 'eu-west-1', status: 'ok', latency: '2 ms' },
-  { id: 'aws', name: 'aws-primary', kind: 'AWS account', icon: 'cloud', region: 'eu-west-1', status: 'ok', latency: '—' },
-  { id: 'ssh', name: 'worker-04', kind: 'SSH host', icon: 'terminal', region: 'fra1', status: 'warn', latency: '212 ms' },
-  { id: 'k8s', name: 'render-cluster', kind: 'Kubernetes', icon: 'server', region: 'us-east-1', status: 'ok', latency: '61 ms' },
+  { id: 'pg', name: 'pg-prod-eu', kind: 'PostgreSQL', icon: 'database', region: 'eu-west-1', status: 'success', latency: '38 ms' },
+  { id: 'redis', name: 'cache-main', kind: 'Redis', icon: 'hard-drive', region: 'eu-west-1', status: 'success', latency: '2 ms' },
+  { id: 'aws', name: 'aws-primary', kind: 'AWS account', icon: 'cloud', region: 'eu-west-1', status: 'success', latency: '—' },
+  { id: 'ssh', name: 'worker-04', kind: 'SSH host', icon: 'terminal', region: 'fra1', status: 'warning', latency: '212 ms' },
+  { id: 'k8s', name: 'render-cluster', kind: 'Kubernetes', icon: 'server', region: 'us-east-1', status: 'success', latency: '61 ms' },
 ];
 const DOMAINS = [
-  { id: 'apex', name: 'fernwick.example', kind: 'A record', icon: 'globe', region: '—', status: 'ok', latency: '76.76.21.21' },
-  { id: 'app', name: 'app.fernwick.example', kind: 'CNAME', icon: 'globe', region: '—', status: 'err', latency: 'missing' },
-  { id: 'docs', name: 'docs.fernwick.example', kind: 'CNAME', icon: 'book-open', region: '—', status: 'ok', latency: 'edge.fernwick.example' },
+  { id: 'apex', name: 'fernwick.example', kind: 'A record', icon: 'globe', region: '—', status: 'success', latency: '76.76.21.21' },
+  { id: 'app', name: 'app.fernwick.example', kind: 'CNAME', icon: 'globe', region: '—', status: 'danger', latency: 'missing' },
+  { id: 'docs', name: 'docs.fernwick.example', kind: 'CNAME', icon: 'book-open', region: '—', status: 'success', latency: 'edge.fernwick.example' },
 ];
 const CERTS = [
-  { id: 'c1', name: '*.fernwick.example', kind: 'Wildcard', icon: 'shield-check', region: 'Auto-renews', status: 'ok', latency: 'Oct 2, 2026' },
-  { id: 'c2', name: 'pay.fernwick.example', kind: 'Single', icon: 'shield-check', region: 'Manual', status: 'warn', latency: 'Jul 29, 2026' },
+  { id: 'c1', name: '*.fernwick.example', kind: 'Wildcard', icon: 'shield-check', region: 'Auto-renews', status: 'success', latency: 'Oct 2, 2026' },
+  { id: 'c2', name: 'pay.fernwick.example', kind: 'Single', icon: 'shield-check', region: 'Manual', status: 'warning', latency: 'Jul 29, 2026' },
 ];
-const STATUS_LABEL = { ok: 'Healthy', warn: 'Degraded', err: 'Action needed' };
+const STATUS_LABEL = { success: 'Healthy', warning: 'Degraded', danger: 'Action needed' };
 const COLS_LAST = { resources: 'Latency', domains: 'Value', certificates: 'Expires' };
 
 function InfraScreen() {
@@ -36,7 +36,7 @@ function InfraScreen() {
           <div style={{ display: 'flex', alignItems: 'center', gap: 6 }}>
             <a href="../console/index.html" title="Back to Console" style={{ fontFamily: 'var(--font-display)', fontWeight: 680, letterSpacing: '-0.02em', fontSize: 15, color: 'var(--text-secondary)', textDecoration: 'none' }}>Fernwick</a><span aria-hidden="true" style={{ color: 'var(--text-muted)' }}>/</span>
             <h1 style={{ fontSize: 24, fontWeight: 680 }}>Infrastructure</h1>
-            <StatusDot status="warn" pulse label="1 incident" />
+            <StatusDot status="warning" pulse label="1 incident" />
             <Badge variant="secondary">Sample data</Badge>
             <div style={{ marginLeft: 'auto', display: 'flex', gap: 8 }}>
               <Button variant="secondary" iconLeft="terminal" onClick={() => setCli(true)}>Open CLI</Button>
@@ -62,7 +62,7 @@ function InfraScreen() {
               { key: 'name', label: 'Name', render: (v, r) => <span style={{ display: 'inline-flex', alignItems: 'center', gap: 10, fontWeight: 600 }}><span style={{ display: 'inline-flex', width: 30, height: 30, alignItems: 'center', justifyContent: 'center', borderRadius: 'var(--radius-sm)', background: 'var(--surface-sunken)', color: 'var(--sand-700)' }}><Icon name={r.icon} size={16} /></span>{v}</span> },
               { key: 'kind', label: 'Type' },
               { key: 'region', label: tab === 'resources' ? 'Region' : 'Notes' },
-              { key: 'status', label: 'Status', render: v => <StatusDot status={v} pulse={v !== 'ok'} label={STATUS_LABEL[v]} /> },
+              { key: 'status', label: 'Status', render: v => <StatusDot status={v} pulse={v !== 'success'} label={STATUS_LABEL[v]} /> },
               { key: 'latency', label: COLS_LAST[tab], numeric: true, align: 'right' },
             ]} rows={rows} />
           </CardContent></Card>
@@ -71,7 +71,7 @@ function InfraScreen() {
       <Drawer open={!!sel} onOpenChange={open => { if (!open) setSel(null); }} direction="right"><DrawerContent style={{ width: 420 }}><DrawerHeader><DrawerTitle>{sel ? sel.name : ''}</DrawerTitle><DrawerDescription>Connection health and recent activity.</DrawerDescription></DrawerHeader>
         {sel && (
           <div style={{ display: 'flex', flexDirection: 'column', gap: 18, padding: 20 }}>
-            <StatusDot status={sel.status} pulse={sel.status !== 'ok'} label={STATUS_LABEL[sel.status]} />
+            <StatusDot status={sel.status} pulse={sel.status !== 'success'} label={STATUS_LABEL[sel.status]} />
             <KeyValueList labelWidth={110} items={[
               { label: 'Type', value: sel.kind },
               { label: tab === 'resources' ? 'Region' : 'Notes', value: sel.region },
@@ -83,7 +83,7 @@ function InfraScreen() {
               <div style={{ fontSize: 13, fontWeight: 600, marginBottom: 8 }}>Recent activity</div>
               <Terminal maxHeight={160} lines={[
                 { type: 'info', text: 'Health check passed', time: '09:41' },
-                { type: sel.status === 'ok' ? 'ok' : 'err', text: sel.status === 'ok' ? '\u2713 Responding normally' : '\u2717 Slow responses detected', time: '09:40' },
+                { type: sel.status === 'success' ? 'success' : 'danger', text: sel.status === 'ok' ? '\u2713 Responding normally' : '\u2717 Slow responses detected', time: '09:40' },
                 { type: 'info', text: 'Config synced', time: '08:12' },
               ]} />
             </div>
@@ -95,7 +95,7 @@ function InfraScreen() {
           <Field><FieldLabel htmlFor="connection-kind">Kind</FieldLabel><NativeSelect id="connection-kind">{['PostgreSQL', 'MySQL', 'Redis', 'SSH host', 'Kubernetes', 'AWS account', 'Domain / DNS'].map(value => <NativeSelectOption key={value} value={value}>{value}</NativeSelectOption>)}</NativeSelect></Field>
           <Input label="Host" placeholder="db.internal.acme.co:5432" iconLeft="server" />
           <Field><FieldLabel htmlFor="connection-region">Region</FieldLabel><NativeSelect id="connection-region">{['eu-west-1', 'us-east-1', 'fra1', 'sgp1'].map(value => <NativeSelectOption key={value} value={value}>{value}</NativeSelectOption>)}</NativeSelect></Field>
-        </div></div><DialogFooter><DialogClose asChild><Button variant="ghost">Cancel</Button></DialogClose><Button iconRight="arrow-right" onClick={() => { setConnect(false); setTab('resources'); setExtra(x => [...x, { id: 'new' + x.length, name: 'db-replica-' + (x.length + 1), kind: 'PostgreSQL', icon: 'database', region: 'eu-west-1', status: 'ok', latency: '41 ms' }]); notify('Tunnel created', 'db-replica is connected and healthy.'); }}>Create tunnel</Button></DialogFooter></DialogContent></Dialog>
+        </div></div><DialogFooter><DialogClose asChild><Button variant="ghost">Cancel</Button></DialogClose><Button iconRight="arrow-right" onClick={() => { setConnect(false); setTab('resources'); setExtra(x => [...x, { id: 'new' + x.length, name: 'db-replica-' + (x.length + 1), kind: 'PostgreSQL', icon: 'database', region: 'eu-west-1', status: 'success', latency: '41 ms' }]); notify('Tunnel created', 'db-replica is connected and healthy.'); }}>Create tunnel</Button></DialogFooter></DialogContent></Dialog>
       <Drawer open={cli} onOpenChange={setCli} direction="right"><DrawerContent style={{ width: 480 }}><DrawerHeader><DrawerTitle>Fernwick CLI</DrawerTitle><DrawerDescription>Install commands and live infrastructure output.</DrawerDescription></DrawerHeader>
         <div style={{ display: 'flex', flexDirection: 'column', gap: 14, padding: 20 }}>
           <CopyField label="Install" value="curl -fsSL cli.fernwick.example | sh" />
@@ -103,7 +103,7 @@ function InfraScreen() {
             { type: 'cmd', text: 'fernwick infra ls' },
             { type: 'out', text: '14 resources \u00b7 3 regions \u00b7 1 degraded' },
             { type: 'cmd', text: 'fernwick infra logs worker-04 --tail' },
-            { type: 'err', text: '\u2717 p95 812ms (baseline 190ms)', time: '09:41:12' },
+            { type: 'danger', text: '\u2717 p95 812ms (baseline 190ms)', time: '09:41:12' },
             { type: 'info', text: 'Suggestion: drain + restart with fernwick infra restart worker-04', time: '09:41:12' },
           ]} />
         </div>

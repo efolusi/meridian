@@ -1,6 +1,6 @@
 const { ChatMessage, PromptComposer, Terminal, Steps, FileTile, StatusDot, KeyValueList, CommandDialog, CommandInput, CommandList, CommandEmpty, CommandGroup, CommandItem, DropdownMenu, DropdownMenuTrigger, DropdownMenuContent, DropdownMenuItem, DropdownMenuSeparator, Card, CardContent, CardDescription, CardHeader, CardTitle, Button, IconButton, Badge, Kbd, Icon, Toaster, toast } = window.EfolusiDesignSystem_4ffc3d;
 
-function AgentActionMenu({ trigger, items, onSelect }) { return <DropdownMenu><DropdownMenuTrigger asChild>{trigger}</DropdownMenuTrigger><DropdownMenuContent align="end">{items.map((item, index) => item === 'separator' ? <DropdownMenuSeparator key={'separator-' + index} /> : <DropdownMenuItem key={item.id} variant={item.danger ? 'destructive' : 'default'} onSelect={() => onSelect?.(item.id)}>{item.icon ? <Icon name={item.icon} size={16} /> : null}{item.label}</DropdownMenuItem>)}</DropdownMenuContent></DropdownMenu>; }
+function AgentActionMenu({ trigger, items, onSelect }) { return <DropdownMenu><DropdownMenuTrigger asChild>{trigger}</DropdownMenuTrigger><DropdownMenuContent align="end">{items.map((item, index) => item === 'separator' ? <DropdownMenuSeparator key={'separator-' + index} /> : <DropdownMenuItem key={item.id} variant={item.danger ? 'danger' : 'default'} onSelect={() => onSelect?.(item.id)}>{item.icon ? <Icon name={item.icon} size={16} /> : null}{item.label}</DropdownMenuItem>)}</DropdownMenuContent></DropdownMenu>; }
 
 function AgentHeader({ running, onToggle, notify }) {
   return (
@@ -11,7 +11,7 @@ function AgentHeader({ running, onToggle, notify }) {
       </a>
       <span style={{ color: 'var(--sand-300)' }}>/</span>
       <span style={{ fontSize: 14, fontWeight: 600 }}>Retry failed webhooks</span>
-      <StatusDot status={running ? 'busy' : 'off'} pulse={running} label={running ? 'Running' : 'Paused'} />
+      <StatusDot status={running ? 'busy' : 'neutral'} pulse={running} label={running ? 'Running' : 'Paused'} />
       <div style={{ marginLeft: 'auto', display: 'flex', alignItems: 'center', gap: 8 }}>
         <span style={{ display: 'inline-flex', alignItems: 'center', gap: 5, fontSize: 12, color: 'var(--text-muted)' }}><Kbd>⌘</Kbd><Kbd>K</Kbd></span>
         <Button size="sm" variant="secondary" iconLeft={running ? 'pause' : 'play'} onClick={onToggle}>{running ? 'Pause' : 'Resume'}</Button>
@@ -47,7 +47,7 @@ function TaskRail({ running }) {
       </Card>
       <Card>
         <CardHeader><CardTitle>Run</CardTitle></CardHeader>
-        <CardContent><div style={{ marginBottom: 8 }}><StatusDot status={running ? 'busy' : 'off'} pulse={running} label={running ? 'Agent active' : 'Paused by you'} /></div>
+        <CardContent><div style={{ marginBottom: 8 }}><StatusDot status={running ? 'busy' : 'neutral'} pulse={running} label={running ? 'Agent active' : 'Paused by you'} /></div>
         <KeyValueList labelWidth={88} items={[
           { label: 'Model', value: 'fernwick-1' },
           { label: 'Tokens', value: '48.1k', mono: true },
@@ -120,7 +120,7 @@ function AgentScreen() {
                       Connected. Scanning delivery log:
                       <Terminal host="agent@pg-prod-eu" style={{ marginTop: 10 }} lines={[
                         { type: 'cmd', text: 'SELECT count(*) FROM webhook_deliveries WHERE status = 503 AND day = yesterday' },
-                        { type: 'ok', text: '12 rows · 02:10\u201302:14 UTC', time: '14:02:41' },
+                        { type: 'success', text: '12 rows · 02:10\u201302:14 UTC', time: '14:02:41' },
                         { type: 'info', text: 'Grouping by endpoint\u2026 1 endpoint affected', time: '14:02:42' },
                       ]} />
                     </div>

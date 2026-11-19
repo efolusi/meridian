@@ -1,7 +1,7 @@
 {
   "Accordion": "Daftar disclosure setipis rambut (FAQ, docs). Buka-tunggal secara bawaan; multiple mengizinkan beberapa terbuka.",
   "AgentRun": "Jejak eksekusi vertikal: satu baris per langkah dengan status done/active/pending/error, rel penghubung, stempel waktu mono.",
-  "Alert": "Callout inline composable dengan judul, deskripsi, ikon, dan aksi eksplisit; gunakan varian destructive untuk kegagalan.",
+  "Alert": "Callout inline composable dengan judul, deskripsi, ikon, dan aksi eksplisit; gunakan varian danger untuk kegagalan.",
   "AlertDialog": "Dialog modal untuk keputusan penting yang memerlukan konfirmasi atau pembatalan eksplisit.",
   "AspectRatio": "Mengunci children ke kotak rasio tetap (mengisi lebar). Untuk media, embed, placeholder peta.",
   "Attachment": "Lampiran berkas atau gambar yang dapat dikomposisi dengan status unggah, media, metadata, tindakan independen, dan pemicu seluruh kartu.",

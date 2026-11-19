@@ -26,7 +26,7 @@
     {
       "path": "components/navigation/Menubar.prompt.md",
       "type": "registry:component",
-      "content": "# Menubar\n\nA composable application menu bar with roving top-level focus, arrow-key menu switching, typeahead, checkbox/radio items, nested submenus, and portal positioning.\n\n```jsx\n<Menubar>\n  <MenubarMenu>\n    <MenubarTrigger>File</MenubarTrigger>\n    <MenubarContent>\n      <MenubarItem>New document <MenubarShortcut>\u2318N</MenubarShortcut></MenubarItem>\n      <MenubarSeparator />\n      <MenubarItem variant=\"destructive\">Delete draft</MenubarItem>\n    </MenubarContent>\n  </MenubarMenu>\n</Menubar>\n```\n\nUse `MenubarCheckboxItem` for independent view settings, `MenubarRadioGroup` with `MenubarRadioItem` for a single choice, and `MenubarSub` for nested commands. Use a single dropdown when the commands do not form an application-level menu bar.\n"
+      "content": "# Menubar\n\nA composable application menu bar with roving top-level focus, arrow-key menu switching, typeahead, checkbox/radio items, nested submenus, and portal positioning.\n\n```jsx\n<Menubar>\n  <MenubarMenu>\n    <MenubarTrigger>File</MenubarTrigger>\n    <MenubarContent>\n      <MenubarItem>New document <MenubarShortcut>\u2318N</MenubarShortcut></MenubarItem>\n      <MenubarSeparator />\n      <MenubarItem variant=\"danger\">Delete draft</MenubarItem>\n    </MenubarContent>\n  </MenubarMenu>\n</Menubar>\n```\n\nUse `MenubarCheckboxItem` for independent view settings, `MenubarRadioGroup` with `MenubarRadioItem` for a single choice, and `MenubarSub` for nested commands. Use a single dropdown when the commands do not form an application-level menu bar.\n"
     }
   ],
   "categories": [

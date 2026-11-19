@@ -9,7 +9,7 @@ A compositional content row for lists and card-like collections. Use Field for f
     <ItemTitle>Security alert</ItemTitle>
     <ItemDescription>New login detected from an unknown device.</ItemDescription>
   </ItemContent>
-  <ItemActions><Button variant="outline">Review</Button></ItemActions>
+  <ItemActions><Button variant="secondary">Review</Button></ItemActions>
 </Item>
 ```
 

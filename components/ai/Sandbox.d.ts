@@ -7,9 +7,9 @@ export interface SandboxTab {
 export interface SandboxProps {
   /** Command or filename, mono */
   title: React.ReactNode;
-  /** 'running' | 'success' | 'error' */
+  /** 'busy' | 'success' | 'danger' */
   /** @default 'success' */
-  status?: 'running' | 'success' | 'error';
+  status?: 'busy' | 'success' | 'danger';
   /** Right-side meta, e.g. duration */
   meta?: React.ReactNode;
   tabs: SandboxTab[];

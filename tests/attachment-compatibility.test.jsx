@@ -83,8 +83,8 @@ describe('Attachment compatibility contract', () => {
 describe('Button dependency contract', () => {
   it('supports documented variants, sizes, helper export, and refs while retaining aliases', () => {
     const ref = React.createRef();
-    render(<Button ref={ref} variant="destructive" size="icon-sm" aria-label="Delete" />);
-    expect(ref.current.classList.contains('ef-btn--destructive')).toBe(true);
+    render(<Button ref={ref} variant="danger" size="icon-sm" aria-label="Delete" />);
+    expect(ref.current.classList.contains('ef-btn--danger')).toBe(true);
     expect(ref.current.classList.contains('ef-btn--icon-sm')).toBe(true);
     expect(buttonVariants()).toBe('ef-btn ef-btn--primary ef-btn--md');
     expect(buttonVariants({ variant: 'primary', size: 'md' })).toBe('ef-btn ef-btn--primary ef-btn--md');
