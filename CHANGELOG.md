@@ -7,8 +7,17 @@
   - Icons follow the icon scale (8, 12, 16, 20, 24, 32px, ties up): 14px and 15px icons become 16px, 18px icons become 20px, 13px icons become 12px, and 7px status dots become 8px.
   - Avatar sizes and the Sidebar widths use the tokens. The values stay the same, and a Sidebar still takes `--sidebar-width` from its `style`.
   - Input's leading-icon padding is built from the tokens, so a large Input with an icon leaves room for the 20px glyph.
+- **Build tooling runs on Node.js 26.13.1 and npm 11.20.0** (was 22.23.2 and 10.9.8): `.nvmrc`, `package.json` `engines` and `packageManager`, every workflow and CONTRIBUTING.md. The published packages keep `engines: >=20.10`.
+- **The production site deploys from a `v*` tag, not from a push to `main`.** `deploy-prod-static.yml` runs on a `v*` tag push or by hand on a tag, checks that the tagged commit is on `main` and passed its checks, and publishes it. After a release, `publish.yml` starts it on the new tag, from a job that is the only one with `actions: write`.
+- **The production site deploys from a `v*` tag, not from a push to `main`.** `deploy-prod-static.yml` runs on a `v*` tag push or by hand on a tag, checks that the tagged commit is on `main` and passed its checks, and publishes it. RELEASING.md says how to run it after a release.
+- **No deprecation period.** Governance and the migration guide now say that a rename or removal lands in one release, with no alias or warning, and every caller changes with it. The README, style guide, contributing guide, RFC template and skill say the same.
+- **Every overlay trigger and composite field shows its own focus.** Tooltip, HoverCard and Popover triggers draw `--focus-ring` when focused (a trigger with its own style, such as Button, keeps it). CopyField and FileTile colour their border while focus is inside. The Toast action uses `--focus-ring` instead of a hand-built ring.
+- **Six components show keyboard focus.** ChatMessage shows its action row when focus is inside it, not only on hover. The CodeBlock copy and show-all buttons, the Console stack toggle and jump button, the Banner action and the Toast action draw `--focus-ring`; the Toast ring matches its dark surface. Command underlines the search row while its input has focus.
+- **CI checks run on GitHub-hosted `ubuntu-24.04`** until the new self-hosted runners exist. Deploy jobs stay self-hosted.
+
 - **`meridian-cli` refuses a plain `http://` registry** except on localhost, so files cannot be swapped on the network. Use https.
 - **CI checks the vendored tokens against the pinned design-tokens tag.** `node scripts/sync_tokens.mjs --check-remote` re-fetches the tag in the lock and fails when the lock commit or any vendored file differs. `npm run check` runs it in CI (`CI=true`); locally it stays offline.
+- **One branch: main.** CI runs on main and on pull requests to it; the visual-baseline workflow opens its PR against main; the development site deploys only when its workflow is run by hand.
 
 ## 1.23.0 — 2026-11-18
 
