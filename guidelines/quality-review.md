@@ -2,47 +2,47 @@
 
 Where Meridian breaks its own design-system rules, and the fix for each. Nothing is removed: every component stays, used or not. Written 2026-11-18 against main after 1.23.0, with antislop, antislop-ui, antislop-human, antislop-layoutmobile and design-taste-frontend.
 
-## Counts
+## Status
+
+Counted on main after 1.24.0 and the spacing integration (#150), 2026-11-19.
+
+| Finding | Status | Where |
+|---|---|---|
+| Spacing on the token scale | done | #121, #150 (every group); padding that clears or lines up with an icon is still px, see Open |
+| Status names in four vocabularies; `danger` and `destructive`; Button `secondary` and `outline` | held for 1.25.0 | #120, with the product apps' PRs |
+| Button `xs` and icon `xs` off the control tokens | done | #134 (`--control-h-xs`) |
+| Avatar and Sidebar sizes | done | #134 (`--avatar-*`, `--sidebar-width*`) |
+| Focus styles | done | #119, #123 |
+| Decorative gradients | done | PaymentCard chip and GeneratedImage dot grid are flat (#139, #140); the other eight mark a state, a cut-off or a scroll edge |
+| Blur | done: functional | TopNav (one sticky bar, within the R-10 dose) and GeneratedImage (its action buttons over the image): each keeps its controls readable over changing content |
+| Icons missing from the visual baselines | done | #149 |
+| README "accessible" claim | done | the README names the checks behind it |
+
+## Open
 
 | Kind | Where | Count | Severity |
 |---|---|---|---|
-| Raw px instead of a space or size token | 115 of 123 component files | 1,553 values | high |
-| Off-scale spacing (not on the 4px scale: 2, 3, 5, 6, 7, 9, 10, 14px) | most component files | about 300 values | high |
-| One status meaning, several names (`ok`/`success`, `err`/`error`/`danger`, `warn`/`warning`, `running`/`busy`/`generating`) | StatusDot, Terminal, Console, WebPreview vs Alert, Badge, Toast | 4 vocabularies | high |
-| Two variant names for one look (`danger` and `destructive`, `secondary` and `outline` on Button) | Button, Alert, Badge, DropdownMenu, ContextMenu, InputGroup | 6 components | medium |
-| Control size outside the size tokens (`--control-h-*`): Button `xs` 28px, icon `xs` 24px | Button, and siblings that copy it | 2 sizes | medium |
-| Raw border-radius instead of `--radius-*` | Chart, DonutChart, LineChart, Diff, Tabs, SegmentedControl, Tooltip, Toolbar, Task, Transcript, FileTypeIcon, PaymentCard | 16 values | medium |
-| Interactive part with no focus style of its own | ChatMessage, CodeBlock, Console, CopyField, Banner, Toast, Tooltip, FileTile, HoverCard, Popover | 10 components | high (check each: some rely on Button inside) |
-| Decorative gradient | GeneratedImage (4), Attachment (2), DocumentCard, CodeBlock, Loader, PaymentCard | 10 | done: the PaymentCard chip and the GeneratedImage dot grid are flat (#139, #140); the other 8 are functional and stay (GeneratedImage mask and 2 text scrims, Attachment upload shimmer and scroll-edge mask, DocumentCard and CodeBlock cut-off fades, Loader shimmer) |
-| Blur / glass | TopNav, GeneratedImage | 2 | low (TopNav: one sticky bar is within the R-10 dose) |
-| Motion without reduced-motion handling | none: `tokens/base.css` stops all animation under `prefers-reduced-motion` | 0 | none |
-| Emoji as icons | none | 0 | none |
-| README and docs claims | "123 accessible React components" without a stated test; badge counts | 2 | low |
+| Raw border-radius instead of `--radius-*` | Chart, BarChart, LineChart, DonutChart, Diff, Tabs, SegmentedControl, NavigationMenu, Tooltip, Toolbar, Task, Transcript, RichComposer, FileTypeIcon, PaymentCard | 20 values | medium |
+| Padding that clears an icon still in px | Input reveal, Select, NativeSelect and Combobox indicators, TimePicker, Dialog header | 8 values | low |
+| Raw font-size instead of `--text-*` | most component files; 66 match a token exactly, the rest are off the scale (12.5, 13.5, 11.5px and smaller) | 134 values | medium |
+| Raw width and height | most component files; some have a token (control heights, icons, dots), many are component geometry | 277 values | medium |
 
-Raw px counted on dev, 2026-11-18: `git grep -hoE "[0-9]+(\.[0-9]+)?px" origin/dev -- 'components/*.jsx' | wc -l`.
+Left as px on purpose: `1px` hairline borders and one-pixel optical nudges.
 
-## The ten worst
+All raw px together: 877 values in 113 of 123 component files. Counted with:
 
-1. Spacing is not on the token scale: 1,553 raw px values. Fix: replace with `--space-*`, and round off-scale values (6, 10, 14px) to the scale, group by group; each group is a visual change stated in the CHANGELOG.
-2. Status names split into four vocabularies. Fix: one set, `success`, `warning`, `danger`, `info`, `neutral`, `busy`, used by every status-bearing component; the old names are removed in 1.24.0 with no aliases (owner, 2026-11-18).
-3. Sidebar: 53 raw px values, the most of any component. Fix: tokens, and the 4px scale.
-4. Combobox and Input: 32 and 23 raw values, with heights that do not follow `--control-h-*`. Fix: share Input's sizing with Select and Combobox through the control tokens.
-5. 11 interactive components with no focus style of their own. Fix: `:focus-visible` with `--focus-ring` on every focusable part; keyboard-test each.
-6. Button `xs` and icon `xs` sizes are raw 28px and 24px. Fix: add `--control-h-xs` (and an icon size) in design-tokens, then use it here.
-7. `danger` and `destructive` both exist on Button and the menus. Fix: one name, `danger`, across Button, Alert, Badge and the menus.
-8. Chart family (Chart, LineChart, DonutChart) uses raw radius and px for legends and tooltips. Fix: radius and space tokens, matching Tooltip and Popover.
-9. Avatar: 23 raw px sizes. Fix: an avatar size scale (`--avatar-*`) in design-tokens.
-10. Decorative gradients in Attachment, DocumentCard and PaymentCard. Fix: flat surface tokens unless the gradient carries meaning.
+```sh
+git grep -hoE "[0-9]+(\.[0-9]+)?px" -- 'components/*.jsx' | wc -l
+```
 
-## Order of fixes
+## Order of the open fixes
 
-Each group is one small PR into main, green, sent to the Audit queue, with the visual change written in the CHANGELOG:
+One small PR each, built on main, green, with any visual change in the CHANGELOG:
 
-1. Status and variant names (2, 7).
-2. Focus styles (5).
-3. Tokens for controls, avatars and radius, added to design-tokens first (6, 9, 8).
-4. Spacing on the scale, one component group per PR (1, 3, 4).
-5. Gradients and docs claims (10, and the README counts).
+1. Radius onto `--radius-*`.
+2. Icon clearance built from `calc(space + --icon-* + space)`, as Input's leading icon is.
+3. Font sizes onto `--text-*`, exact ones first, then the off-scale ones.
+4. Widths and heights: the ones a token covers.
 
 ## Appendix: consumer search
 

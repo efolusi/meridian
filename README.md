@@ -20,7 +20,7 @@ Shared tokens: [design-tokens](https://github.com/efolusi/design-tokens). Native
 
 - **The zero-build path comes first.** The four-tag CDN page never regresses for the sake of the npm build; where the two differ, the difference is deliberate and documented.
 - **Accessible by default.** WCAG 2.1 AA is the floor: visible focus, full keyboard paths, contrast in both themes, reduced motion respected. A component that takes an ARIA role implements that role's whole keyboard contract.
-- **Every claim is a check.** "Accessible", "reproducible" and "the types compile" are gates in `npm run check`, not adjectives.
+- **Every claim is a check.** "Accessible", "reproducible" and "the types compile" are gates in `npm run check`, not adjectives. For "accessible" those are the WCAG AA contrast gate (`scripts/check_contrast.py`), the keyboard, focus-ring and tap-target tests (`tests/keyboard*.test.jsx`, `tests/menu-focus-ring.test.jsx`, `tests/tap-targets-display.test.mjs`) and the headless smoke run in CI.
 - **No legacy code.** A rename lands in one release with no alias or warning, and every caller, product apps included, changes with it ([governance](guidelines/governance.md#breaking-changes)). The [migration guide](guidelines/migration.md) lists every breaking change with before and after code.
 
 ## Quickstart
