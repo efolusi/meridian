@@ -3,10 +3,15 @@ import React from 'react';
 import { injectEfCss } from '../forms/Button.jsx';
 import { Icon } from '../icons/Icon.jsx';
 
-// The items are listed once for assistive tech; the moving track is a decorative copy.
+// The items are listed once for assistive tech and keyboards (the list shows itself when
+// a link in it takes focus); the moving track is a decorative, inert copy.
 const CSS = `
 .ef-marquee{position:relative;display:flex;align-items:center;border-top:1px solid var(--border-default);background:var(--surface-subtle);overflow:hidden}
-.ef-marquee__list{position:absolute;width:1px;height:1px;margin:-1px;padding:0;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;border:0}
+.ef-marquee__list{position:absolute;width:1px;height:1px;margin:-1px;padding:0;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;border:0;list-style:none}
+.ef-marquee__list:focus-within{position:static;display:flex;flex:1;flex-wrap:wrap;gap:var(--space-2) var(--space-5);width:auto;height:auto;margin:0;padding:var(--space-2) var(--space-6);overflow:visible;clip:auto;white-space:normal}
+.ef-marquee__list:focus-within~.ef-marquee__viewport{display:none}
+.ef-marquee__list a{display:inline-flex;align-items:center;min-height:var(--tap-min);color:var(--text-primary)}
+.ef-marquee__list a:focus-visible{outline:none;border-radius:var(--radius-xs);box-shadow:var(--focus-ring)}
 .ef-marquee__viewport{flex:1;min-width:0;overflow:hidden}
 .ef-marquee__track{display:flex;width:max-content;animation:ef-marquee var(--ef-marquee-duration,36s) linear infinite}
 .ef-marquee:hover .ef-marquee__track,.ef-marquee:focus-within .ef-marquee__track,.ef-marquee[data-paused] .ef-marquee__track{animation-play-state:paused}
@@ -35,6 +40,10 @@ export const Marquee = React.forwardRef(function Marquee(
   injectEfCss('ef-css-marquee', CSS);
   const text = { ...(LABELS[lang] || LABELS.en), ...labels };
   const [paused, setPaused] = React.useState(false);
+  // The moving copies are decoration: inert keeps any link inside them out of the tab
+  // order. Set on the node, because React 18 and 19 read the inert prop differently.
+  const viewportRef = React.useRef(null);
+  React.useEffect(() => { viewportRef.current?.setAttribute('inert', ''); }, []);
   return (
     <div
       {...rest}
@@ -47,7 +56,7 @@ export const Marquee = React.forwardRef(function Marquee(
       <ul className="ef-marquee__list" aria-label={label}>
         {items.map((item, i) => <li key={i}>{item}</li>)}
       </ul>
-      <div className="ef-marquee__viewport" aria-hidden="true">
+      <div ref={viewportRef} className="ef-marquee__viewport" aria-hidden="true">
         <div className="ef-marquee__track">
           {[...items, ...items].map((item, i) => <span className="ef-marquee__item" key={i}>{item}</span>)}
         </div>

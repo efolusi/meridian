@@ -6,6 +6,7 @@ export const PUBLIC_HELPERS = Object.freeze([
   'buttonVariants',
   'markerVariants',
   'navigationMenuTriggerStyle',
+  'parseLegalInline',
   'readThemePreference',
   'resolveTheme',
   'themeInitScript',

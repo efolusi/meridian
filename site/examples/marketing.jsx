@@ -87,13 +87,66 @@ export function RevealDemo() {
   );
 }
 
-// @demo ThemeToggle Light, Dark and System
+// @demo ThemeToggle One button, three states
 export function ThemeToggleDemo() {
   const { ThemeToggle } = window.EfolusiDesignSystem_4ffc3d;
   return (
     <div style={{ display: 'flex', gap: 'var(--space-3)', alignItems: 'center' }}>
       <ThemeToggle />
-      <ThemeToggle lang="id" />
+      <span style={{ fontSize: 'var(--text-sm)', color: 'var(--text-secondary)' }}>Click to cycle Light, Dark and System. The page theme changes with it.</span>
     </div>
+  );
+}
+
+// @demo SiteHeader Links, language switch and actions
+export function SiteHeaderDemo() {
+  const { SiteHeader, Button, ThemeToggle } = window.EfolusiDesignSystem_4ffc3d;
+  return (
+    <SiteHeader
+      style={{ position: 'relative' }}
+      brand="Komando"
+      brandHref="#"
+      links={[{ label: 'Docs', href: '#docs', current: true }, { label: 'Pricing', href: '#pricing' }, { label: 'Changelog', href: '#changelog' }]}
+      languageSwitch={{ label: 'ID', href: '#id', hrefLang: 'id', ariaLabel: 'Bahasa Indonesia' }}
+      actions={<><ThemeToggle /><Button shape="pill" size="sm">Get in touch</Button></>}
+      skipHref="#docs"
+    />
+  );
+}
+
+// @demo SiteFooter Columns, socials and the bottom row
+export function SiteFooterDemo() {
+  const { SiteFooter, Icon } = window.EfolusiDesignSystem_4ffc3d;
+  return (
+    <SiteFooter
+      brand="Komando"
+      brandHref="#"
+      tagline="Manage servers safely, from the terminal or your agent."
+      socials={[{ label: 'GitHub', href: 'https://github.com/efolusi', icon: <Icon name="github" size={20} aria-hidden="true" /> }]}
+      columns={[
+        { heading: 'Product', links: [{ label: 'Docs', href: '#docs' }, { label: 'Pricing', href: '#pricing' }] },
+        { heading: 'Legal', links: [{ label: 'Privacy', href: '#privacy' }, { label: 'Terms', href: '#terms' }] },
+      ]}
+      bottom={<><span>Built by Efolusi.</span><span>Apache-2.0 licensed.</span></>}
+    />
+  );
+}
+
+// @demo LegalDocument Terms with contents
+export function LegalDocumentDemo() {
+  const { LegalDocument } = window.EfolusiDesignSystem_4ffc3d;
+  return (
+    <LegalDocument
+      lang="en"
+      title="Terms"
+      meta="Effective 20 November 2026"
+      contentsLabel="Contents"
+      backLink={{ label: 'Back to home', href: '#' }}
+      intro={['These terms cover your use of the service. Payments are handled by **pay**, see [refunds](#refunds).']}
+      sections={[
+        { id: 'accounts', head: 'Your account', blocks: ['You keep your sign-in details private.'] },
+        { id: 'refunds', head: 'Refunds', blocks: [{ ul: ['Ask within 14 days.', 'We answer within 3 working days.'] }] },
+      ]}
+    />
   );
 }

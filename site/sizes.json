@@ -1,16 +1,16 @@
 {
   "totals": {
     "@efolusi/meridian": {
-      "bytes": 365298,
-      "gzip": 82542
+      "bytes": 372440,
+      "gzip": 84275
     },
     "dist/components.css": {
-      "bytes": 217803,
-      "gzip": 29666
+      "bytes": 225158,
+      "gzip": 30621
     },
     "_ds_bundle.js": {
-      "bytes": 851004,
-      "gzip": 150912
+      "bytes": 871086,
+      "gzip": 154745
     }
   },
   "modules": [
@@ -1124,13 +1124,22 @@
       "gzip": 631
     },
     {
+      "module": "marketing/LegalDocument.js",
+      "group": "marketing",
+      "exports": [
+        "LegalDocument"
+      ],
+      "bytes": 2572,
+      "gzip": 1012
+    },
+    {
       "module": "marketing/Marquee.js",
       "group": "marketing",
       "exports": [
         "Marquee"
       ],
-      "bytes": 45762,
-      "gzip": 7625
+      "bytes": 45844,
+      "gzip": 7682
     },
     {
       "module": "marketing/Reveal.js",
@@ -1150,6 +1159,24 @@
       ],
       "bytes": 1187,
       "gzip": 542
+    },
+    {
+      "module": "marketing/SiteFooter.js",
+      "group": "marketing",
+      "exports": [
+        "SiteFooter"
+      ],
+      "bytes": 2179,
+      "gzip": 816
+    },
+    {
+      "module": "marketing/SiteHeader.js",
+      "group": "marketing",
+      "exports": [
+        "SiteHeader"
+      ],
+      "bytes": 47398,
+      "gzip": 8225
     },
     {
       "module": "marketing/ThemeToggle.js",

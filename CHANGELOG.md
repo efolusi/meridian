@@ -2,6 +2,9 @@
 
 ## Unreleased
 
+- **`SiteHeader`, `SiteFooter` and `LegalDocument` in the marketing group.** `SiteHeader` brings the skip link, the brand, primary links with `aria-current`, a language switch, an `actions` slot for each product's own controls, and a mobile menu that Escape closes. `SiteFooter` holds the tagline, social icons, link columns (each a named nav) and a bottom row; links to other sites say they open a new tab. `LegalDocument` renders a terms or privacy page from dictionary strings: `[label](href)` and `**strong**` only, never HTML, only http, https, mailto and in-site links, and stable section ids. Labels in English and Indonesian.
+- **Marquee: the moving copies are `inert`**, and the screen-reader list shows itself when one of its links takes keyboard focus, so links in the items work from the keyboard.
+- **The website showcase's local `SiteHeader` and `SiteFooter` are now `WebsiteHeader` and `WebsiteFooter`**, so they no longer shadow the new exports.
 - **`Marquee` and `Reveal` in the marketing group.** `Marquee` is a slow strip of labels: listed once for screen readers, it pauses on hover, on keyboard focus and with its own 44px pause button (EN/ID labels), and stands still with reduced motion. `Reveal` fades and lifts a block in when it scrolls into view, with a 70ms stagger; content stays visible without JavaScript and appears at once with reduced motion.
 - **meridian.efolusi.com uses the shared theme.** Every docs page loads `site/theme.js` first; it runs `themeInitScript()` before paint, and the header button cycles Light, Dark and System on the same contract, following the operating system live on System. The old `efolusi-site-theme` key is gone.
 - **`ThemeToggle` and `themeInitScript` in the marketing group.** One theme control for every Efolusi site: a 44px button that cycles Light, Dark and System, follows the operating system live while on System, saves the choice in localStorage `efolusi-theme`, and writes the resolved light or dark (never system) to the `efolusi_theme` cookie on `.efolusi.com` (a year, SameSite=Lax, Secure). `themeInitScript()` sets the theme before the first paint: no attribute for light, `data-theme="dark"` for dark. The rules are in [theming § Theme contract](guidelines/theming.md#theme-contract). Labels in English and Indonesian.
@@ -12,7 +15,7 @@
 - **`Hero`, `HeroAccent`, `FeatureGrid` and `FeatureCard` in the marketing group.** `Hero` opens a marketing page with a title, a sub line, pill actions and a proof line; `HeroAccent` draws a hand-drawn underline under one word once, and stays still with reduced motion. `FeatureCard` takes the brand-wide `peach`, `cocoa` and `amber` tones; every card keeps a 1px hairline, because amber (light) and cocoa (dark) sit near the page colour. A test keeps the hairline in every tone.
 - **The website showcase's local `Hero` is now `WebsiteHero`**, so it no longer shadows the new export.
 - **Visual baselines add the marketing group in compact density and on a coarse pointer.**
-- **Size budget raised by 33 KB** (npm total 1,456,271 bytes) for the marketing group.
+- **Size budget raised by 56 KB** (npm total 1,479,034 bytes) for the marketing group.
 
 ## 1.25.1 — 2026-11-19
 
