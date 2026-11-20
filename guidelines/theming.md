@@ -173,14 +173,19 @@ import { themeInitScript } from '@efolusi/meridian/theme';
 
 ## Plain HTML sites
 
-Sites without React load two files from `browser/`, shipped in the npm package (`@efolusi/meridian/browser/…`) and at `https://meridian.efolusi.com/browser/…`:
+Sites without React load two files from `browser/`. Self-host them from the npm package (`@efolusi/meridian/browser/…`), or load the versioned copy, which never changes once published, with its hash from `browser/hashes.json`:
 
 ```html
 <head>
-  <script src="/browser/theme-init.js"></script>          <!-- before the CSS: no flash -->
-  <script type="module" src="/browser/marketing.js"></script>
+  <!-- before the CSS: no flash -->
+  <script src="https://meridian.efolusi.com/browser/1.27.0/theme-init.js"
+          integrity="sha256-…" crossorigin="anonymous"></script>
+  <script type="module" src="https://meridian.efolusi.com/browser/1.27.0/marketing.js"
+          integrity="sha256-…" crossorigin="anonymous"></script>
 </head>
 ```
+
+The unversioned `/browser/` files change with each release and serve meridian.efolusi.com itself; product sites do not load them.
 
 `marketing.js` wires the markup the React components render, by `data-slot`: the theme toggle, the `SiteHeader` mobile menu and the `Marquee` pause button. It also wires markup added later. `init(root)` returns a cleanup function, for content you mount yourself.
 
