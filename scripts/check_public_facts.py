@@ -61,7 +61,9 @@ def current_text(path):
     if start < 0:
         return source
     end = source.find("\n      ] },", start)
-    end = len(source) if end < 0 else end
+    if end < 0:
+        # Fail closed: blanking to the end of the file would hide every count after it.
+        raise ValueError(f"{path}: changelog section has no closing '      ] }},' line")
     return source[:start] + re.sub(r"[^\n]", " ", source[start:end]) + source[end:]
 
 
