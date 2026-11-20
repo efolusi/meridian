@@ -19,6 +19,7 @@ const CSS = `
 .ef-questionnaire__shortcut{font-family:var(--font-mono);font-size:var(--text-xs);color:var(--text-muted)}
 .ef-questionnaire__input{width:100%;min-height:var(--control-h-md);padding:0 var(--space-3);border:1px solid var(--border-default);border-radius:var(--radius-md);background:var(--surface-card);color:var(--text-primary);font:inherit;outline:none}
 .ef-questionnaire__input:focus-visible{border-color:var(--accent);box-shadow:var(--focus-ring)}
+.ef-questionnaire__required{font-size:var(--text-sm);font-weight:var(--weight-regular);color:var(--text-secondary)}
 .ef-questionnaire__error{font-size:var(--text-sm);color:var(--danger-600)}
 .ef-questionnaire__actions{display:flex;flex-wrap:wrap;align-items:center;justify-content:flex-end;gap:var(--space-2)}
 .ef-questionnaire__button{min-height:var(--control-h-md);padding:0 var(--space-4);border:1px solid var(--border-default);border-radius:var(--radius-md);background:var(--surface-card);color:var(--text-primary);font:inherit;font-weight:var(--weight-medium);cursor:pointer}
@@ -116,7 +117,13 @@ export const QuestionnaireItem = React.forwardRef(function QuestionnaireItem({ n
   return <ItemContext.Provider value={context}><fieldset {...rest} ref={ref} tabIndex={-1} name={name} disabled={disabled} hidden={!active} aria-invalid={invalid || undefined} data-questionnaire-item={name} data-status={status} className={join('ef-questionnaire__item', className)}>{children}</fieldset></ItemContext.Provider>;
 });
 
-export const QuestionnaireTitle = React.forwardRef(function QuestionnaireTitle({ className, ...rest }, ref) { return <legend {...rest} ref={ref} className={join('ef-questionnaire__title', className)} />; });
+// The legend names the group, so its visible "required" mark is also what screen readers hear.
+const TITLE_LABELS = { en: { required: ' (required)' }, id: { required: ' (wajib)' } };
+export const QuestionnaireTitle = React.forwardRef(function QuestionnaireTitle({ lang = 'en', labels, className, children, ...rest }, ref) {
+  const item = React.useContext(ItemContext);
+  const text = { ...(TITLE_LABELS[lang] || TITLE_LABELS.en), ...labels };
+  return <legend {...rest} ref={ref} className={join('ef-questionnaire__title', className)}>{children}{item?.required ? <span className="ef-questionnaire__required">{text.required}</span> : null}</legend>;
+});
 export const QuestionnaireDescription = React.forwardRef(function QuestionnaireDescription({ className, ...rest }, ref) { return <p {...rest} ref={ref} className={join('ef-questionnaire__description', className)} />; });
 export const QuestionnaireChoices = React.forwardRef(function QuestionnaireChoices({ className, ...rest }, ref) { return <div {...rest} ref={ref} className={join('ef-questionnaire__choices', className)} />; });
 

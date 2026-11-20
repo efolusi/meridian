@@ -38,7 +38,7 @@ describe('Questionnaire compatibility contract', () => {
   it('renders semantic progress, fieldset, legend, and native choices', () => {
     render(<Fixture />);
     expect(screen.getByRole('progressbar').getAttribute('aria-valuenow')).toBe('1');
-    expect(screen.getByRole('group', { name: 'Choose scope' }).hidden).toBe(false);
+    expect(screen.getByRole('group', { name: 'Choose scope (required)' }).hidden).toBe(false);
     expect(screen.getByRole('radio', { name: 'Small patch' }).getAttribute('name')).toBe('scope');
   });
 
@@ -61,7 +61,7 @@ describe('Questionnaire compatibility contract', () => {
     fireEvent.click(screen.getByRole('button', { name: 'Submit' }));
     expect(submit).toHaveBeenCalledTimes(1);
     fireEvent.click(screen.getByRole('button', { name: 'Previous' }));
-    expect(screen.getByRole('group', { name: 'Choose scope' }).hidden).toBe(false);
+    expect(screen.getByRole('group', { name: 'Choose scope (required)' }).hidden).toBe(false);
   });
 
   it('supports controlled navigation', () => {
