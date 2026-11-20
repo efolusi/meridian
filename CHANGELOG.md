@@ -2,6 +2,7 @@
 
 ## Unreleased
 
+- **PaymentCard labels use `--text-2xs` (11px)** instead of 8.5px, so "Card holder" and "Expires" stay readable; the card still fits a 390px screen.
 - **CI runs axe over every demo group**, light and dark, and fails on any serious or critical issue.
 - **axe finds no serious or critical issue on any group, light or dark.** Toolbar icon buttons are named by their tip; FileTile's progress bar by the file name; a labelled Avatar badge is an image and an unlabelled one is hidden; the Resizable handle reports its value; Tabs from `items` (no panels) no longer point `aria-controls` at panels that do not exist; the AlertDialog trigger says `aria-haspopup="dialog"`; ItemGroup wraps each item in a list item (`display: contents`, so layout and the item's own role stay); the Resizable group, NavigationMenu and Questionnaire fieldset drop ARIA their roles do not allow; Carousel, ScrollArea and Diff scroll areas take keyboard focus, with a focus ring, so they scroll without a mouse.
 - **Every text passes 4.5:1 in light and dark (axe color-contrast clean on all groups).** Diff word highlights keep their tinted fill with the primary ink; internal Exception frames use `--text-muted` instead of half opacity; PaymentCard labels drop their opacity; the ToolCall approval state uses `--accent-subtle-fg`; the Avatar group count sits on `--surface-sunken`, so it follows the theme; the pulsing Loader stands still with reduced motion.

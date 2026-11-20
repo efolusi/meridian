@@ -25,7 +25,7 @@ Counted on main after 1.24.0 and the spacing integration (#150), 2026-11-19.
 
 | Kind | Where | Count | Severity |
 |---|---|---|---|
-| Font sizes below 11px stay in px | Citation, ModelSelector, WebPreview, BarChart, Avatar, FileTypeIcon, PaymentCard, Sidebar | 11 values | low; waits for a smaller `--text-*` step in design-tokens |
+| Font sizes below 11px stay in px | Citation, ModelSelector, WebPreview, BarChart, Avatar, FileTypeIcon, PaymentCard (network mark), Sidebar | 10 values | low; waits for a smaller `--text-*` step in design-tokens |
 | Raw width and height | most component files; some have a token (control heights, icons, dots), many are component geometry | 277 values | medium |
 
 Left as px on purpose: `1px` hairline borders and one-pixel optical nudges.

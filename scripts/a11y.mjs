@@ -25,6 +25,9 @@ const browser = await playwright.chromium.launch(EXECUTABLE_PATH ? { executableP
 const page = await browser.newPage({ viewport: { width: 1280, height: 900 }, deviceScaleFactor: 1, reducedMotion: 'reduce' });
 await page.goto(`${BASE}/site/_smoke.html`, { waitUntil: 'load', timeout: 60000 });
 await page.waitForFunction(() => document.documentElement.getAttribute('data-smoke') !== null, { timeout: 60000 });
+// Measure the settled page: web fonts and late icons change text metrics and fills.
+await page.evaluate(() => document.fonts.ready);
+await page.waitForLoadState('networkidle', { timeout: 30000 }).catch(() => {});
 await page.addScriptTag({ content: AXE });
 // The theme switch below animates colours; measure the settled colours, not a frame
 // in between (a mid-transition dark run reported 92 false contrast failures).
