@@ -1,16 +1,16 @@
 {
   "totals": {
     "@efolusi/meridian": {
-      "bytes": 373243,
-      "gzip": 84604
+      "bytes": 373253,
+      "gzip": 84585
     },
     "dist/components.css": {
-      "bytes": 225715,
-      "gzip": 30656
+      "bytes": 225913,
+      "gzip": 30692
     },
     "_ds_bundle.js": {
-      "bytes": 873535,
-      "gzip": 155503
+      "bytes": 873739,
+      "gzip": 155537
     }
   },
   "modules": [
@@ -596,8 +596,8 @@
         "ItemHeader",
         "ItemFooter"
       ],
-      "bytes": 3730,
-      "gzip": 1079
+      "bytes": 3750,
+      "gzip": 1071
     },
     {
       "module": "display/Kbd.js",
@@ -832,8 +832,8 @@
       "exports": [
         "FileTile"
       ],
-      "bytes": 47995,
-      "gzip": 8396
+      "bytes": 47985,
+      "gzip": 8364
     },
     {
       "module": "files/FileTypeIcon.js",

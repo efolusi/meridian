@@ -14,8 +14,8 @@ CSS is not counted per component: `styles.css` ships every component style in on
 | File | Size | Gzip |
 | --- | ---: | ---: |
 | `@efolusi/meridian` | 364.5 kB | 82.6 kB |
-| `dist/components.css` | 220.4 kB | 29.9 kB |
-| `_ds_bundle.js` | 853.1 kB | 151.9 kB |
+| `dist/components.css` | 220.6 kB | 30.0 kB |
+| `_ds_bundle.js` | 853.3 kB | 151.9 kB |
 
 The root import, `@efolusi/meridian`, is every component. `_ds_bundle.js` is the zero-build CDN bundle, which also carries each component's CSS. The root import is minified; the CSS and the CDN bundle are measured as shipped.
 
@@ -80,7 +80,7 @@ The root import, `@efolusi/meridian`, is every component. `_ds_bundle.js` is the
 | `display/Collapsible.js` | Collapsible, CollapsibleTrigger, CollapsibleContent | 2.8 kB | 1.0 kB |
 | `display/Direction.js` | DirectionProvider | 0.4 kB | 0.2 kB |
 | `display/Divider.js` | Divider | 0.8 kB | 0.4 kB |
-| `display/Item.js` | ItemGroup, ItemSeparator, Item, ItemMedia, ItemContent, ItemTitle, ItemDescription, ItemActions, ItemHeader, ItemFooter | 3.6 kB | 1.1 kB |
+| `display/Item.js` | ItemGroup, ItemSeparator, Item, ItemMedia, ItemContent, ItemTitle, ItemDescription, ItemActions, ItemHeader, ItemFooter | 3.7 kB | 1.0 kB |
 | `display/Kbd.js` | Kbd, KbdGroup | 0.7 kB | 0.4 kB |
 | `display/Link.js` | Link | 44.1 kB | 7.2 kB |
 | `display/Resizable.js` | ResizablePanelGroup, ResizablePanel, ResizableHandle | 4.0 kB | 1.7 kB |
