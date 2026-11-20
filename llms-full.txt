@@ -3900,6 +3900,8 @@ Pass the items in the page's language, and `lang="id"` for the Indonesian pause 
 <Marquee label="What we build" items={['Open source', 'Self-hosted', 'Private', 'Secure']} />
 ```
 
+On a site without React, render the same markup with `data-duration` and load `browser/marketing.js` for the pause button; see [theming § Plain HTML sites](../../guidelines/theming.md#plain-html-sites).
+
 ```ts
 export interface MarqueeProps extends React.HTMLAttributes<HTMLDivElement> {
   /** Short labels that scroll past. Listed once for screen readers. */
@@ -4049,6 +4051,8 @@ Meridian fetches nothing: the account entry, the `ThemeToggle` and the main call
 />
 ```
 
+On a site without React, render the same markup and load `browser/marketing.js` for the menu; see [theming § Plain HTML sites](../../guidelines/theming.md#plain-html-sites).
+
 ```ts
 export interface SiteHeaderLink {
   label: React.ReactNode;
@@ -4097,6 +4101,8 @@ Put the output of `themeInitScript()` in an inline `<script>` in `<head>`, befor
 ```
 
 Every `ThemeToggle` on a page stays in step: a choice made in one updates the others, and a choice made in another tab of the same site updates this one. A choice made on another `*.efolusi.com` product reaches this site only through the cookie, so it shows on the next page load here, not live.
+
+On a site without React, load `browser/theme-init.js` and `browser/marketing.js` instead; see [theming § Plain HTML sites](../../guidelines/theming.md#plain-html-sites).
 
 ```ts
 export type ThemePreference = 'system' | 'light' | 'dark';

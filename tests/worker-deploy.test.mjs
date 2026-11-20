@@ -1,5 +1,5 @@
 import { execFileSync } from 'node:child_process'
-import { existsSync, mkdtempSync, readFileSync, rmSync } from 'node:fs'
+import { existsSync, mkdtempSync, readFileSync, rmSync, writeFileSync } from 'node:fs'
 import { tmpdir } from 'node:os'
 import { join } from 'node:path'
 import { describe, expect, it } from 'vitest'
@@ -118,7 +118,7 @@ describe('Worker assets (scripts/build_worker_assets.mjs)', () => {
 
   it('keeps repository and operator files out of the published tree', () => {
     for (const path of FORBIDDEN_PATHS) expect(PUBLIC_PATHS).not.toContain(path)
-    expect(PUBLIC_PATHS).toEqual(expect.arrayContaining(['index.html', '404.html', '_ds_bundle.js', '_headers', '_redirects', 'assets', 'site', 'tokens']))
+    expect(PUBLIC_PATHS).toEqual(expect.arrayContaining(['index.html', '404.html', '_ds_bundle.js', '_headers', '_redirects', 'assets', 'browser', 'site', 'tokens']))
   })
 
   it('builds public/ from the exact committed bytes of HEAD', () => {
@@ -127,8 +127,13 @@ describe('Worker assets (scripts/build_worker_assets.mjs)', () => {
     try {
       execFileSync('git', ['clone', '--quiet', '--no-hardlinks', '--depth', '1', `file://${process.cwd()}`, dir])
       const sha = execFileSync('git', ['rev-parse', 'HEAD'], { cwd: dir, encoding: 'utf8' }).trim()
+      execFileSync('git', ['tag', 'v0.0.1'], { cwd: dir })
       const out = buildWorkerAssets(sha, dir)
       expect(readFileSync(join(out, 'meridian-release.txt'), 'utf8')).toBe(`${sha}\n`)
+      const version = JSON.parse(readFileSync('package.json', 'utf8')).version
+      for (const file of ['marketing.js', 'theme.js', 'theme-init.js', 'hashes.json']) {
+        expect(readFileSync(join(out, 'browser', version, file), 'utf8'), file).toBe(readFileSync(join(out, 'browser', file), 'utf8'))
+      }
       for (const path of ['index.html', '404.html', '_headers', '_redirects', 'site/DsSite.dc.html']) {
         expect(existsSync(join(out, path)), path).toBe(true)
       }
@@ -155,7 +160,7 @@ describe('_headers is the one source of response headers', () => {
   it('never sets one header twice on a path, because Cloudflare would join the values', () => {
     const paths = ['/assets/favicon.svg', '/assets/icons/x.svg', '/assets/fonts/x.woff2', '/_ds_bundle.js', '/styles.css',
       '/landing.css', '/tokens/colors.css', '/site/DsSite.dc.html', '/site/registry/button.json', '/site/registry.json',
-      '/registry.json', '/LICENSE', '/README.md', '/meridian-release.txt', '/index.html']
+      '/registry.json', '/LICENSE', '/README.md', '/meridian-release.txt', '/index.html', '/browser/marketing.js', '/browser/1.27.0/marketing.js']
     for (const path of paths) {
       for (const [name, values] of Object.entries(headersFor(path))) expect(values, `${path} ${name}`).toHaveLength(1)
     }
@@ -165,14 +170,23 @@ describe('_headers is the one source of response headers', () => {
     expect(headersFor('/assets/favicon.svg')['cache-control']).toEqual(['public, max-age=604800'])
     expect(headersFor('/assets/icons/x.svg')['cache-control']).toEqual(['public, max-age=604800'])
     expect(headersFor('/assets/fonts/x.woff2')['cache-control']).toEqual(['public, max-age=31536000'])
-    for (const path of ['/_ds_bundle.js', '/styles.css', '/landing.css', '/tokens/colors.css', '/site/DsSite.dc.html']) {
+    for (const path of ['/_ds_bundle.js', '/styles.css', '/landing.css', '/tokens/colors.css', '/site/DsSite.dc.html', '/browser/marketing.js']) {
       expect(headersFor(path)['cache-control'], path).toEqual(['no-cache'])
     }
     expect(headersFor('/meridian-release.txt')['cache-control']).toEqual(['no-store, max-age=0'])
   })
 
-  it('lets any origin load the registry and the fonts, and nothing else', () => {
-    for (const path of ['/registry.json', '/site/registry.json', '/site/registry/button.json', '/assets/fonts/x.woff2']) {
+  it('serves versioned plain scripts as immutable, and the unversioned ones for this site only', () => {
+    for (const path of ['/browser/1.27.0/marketing.js', '/browser/1.27.0/theme-init.js', '/browser/1.27.0/hashes.json']) {
+      expect(headersFor(path)['cache-control'], path).toEqual(['public, max-age=31536000, immutable'])
+      expect(headersFor(path)['access-control-allow-origin'], path).toEqual(['*'])
+    }
+    expect(headersFor('/browser/marketing.js')['cache-control']).toEqual(['no-cache'])
+    expect(headersFor('/browser/marketing.js')['access-control-allow-origin']).toBeUndefined()
+  })
+
+  it('lets any origin load the registry, the fonts and the versioned plain scripts, and nothing else', () => {
+    for (const path of ['/registry.json', '/site/registry.json', '/site/registry/button.json', '/assets/fonts/x.woff2', '/browser/1.27.0/marketing.js']) {
       expect(headersFor(path)['access-control-allow-origin'], path).toEqual(['*'])
     }
     for (const path of ['/site/DsSite.dc.html', '/_ds_bundle.js', '/assets/favicon.svg']) {
@@ -184,5 +198,59 @@ describe('_headers is the one source of response headers', () => {
     const rootDocs = PUBLIC_PATHS.filter((p) => p === 'LICENSE' || /^[A-Z]+\.md$/.test(p))
     expect(rootDocs.sort()).toEqual(['ARCHITECTURE.md', 'CHANGELOG.md', 'CONTRIBUTING.md', 'LICENSE', 'README.md', 'SECURITY.md'])
     for (const doc of rootDocs) expect(headersFor(`/${doc}`)['content-type'], doc).toEqual(['text/plain; charset=utf-8'])
+  })
+
+  // A throwaway clone with three releases: one before browser/ existed and two after.
+  function cloneWithReleases() {
+    const dir = mkdtempSync(join(tmpdir(), 'meridian-worker-tags-'))
+    const run = (...args) => execFileSync('git', ['-c', 'user.name=t', '-c', 'user.email=t@example.invalid', ...args], { cwd: dir, encoding: 'utf8' })
+    execFileSync('git', ['clone', '--quiet', '--no-hardlinks', '--depth', '1', `file://${process.cwd()}`, dir])
+    run('rm', '-rq', 'browser')
+    run('commit', '-qm', 'before browser')
+    run('tag', 'v0.1.0')
+    run('checkout', '-q', 'HEAD~1', '--', 'browser')
+    writeFileSync(join(dir, 'browser', 'marketing.js'), '// release one\n')
+    run('commit', '-qam', 'one')
+    run('tag', 'v0.2.0')
+    writeFileSync(join(dir, 'browser', 'marketing.js'), '// release two\n')
+    run('commit', '-qam', 'two')
+    run('tag', 'v0.3.0')
+    return { dir, run }
+  }
+
+  it('keeps browser/<version>/ of every release, byte for byte', () => {
+    const { dir, run } = cloneWithReleases()
+    try {
+      const out = buildWorkerAssets(run('rev-parse', 'HEAD').trim(), dir)
+      expect(existsSync(join(out, 'browser', '0.1.0'))).toBe(false)
+      for (const tag of ['v0.2.0', 'v0.3.0']) {
+        const files = run('ls-tree', '--name-only', tag, '--', 'browser/').split('\n').filter(Boolean)
+        expect(files.length).toBeGreaterThan(0)
+        for (const path of files) {
+          const shipped = readFileSync(join(out, 'browser', tag.slice(1), path.slice('browser/'.length)))
+          expect(shipped.equals(execFileSync('git', ['show', `${tag}:${path}`], { cwd: dir })), `${tag} ${path}`).toBe(true)
+        }
+      }
+      expect(readFileSync(join(out, 'browser', '0.2.0', 'marketing.js'), 'utf8')).toBe('// release one\n')
+    } finally {
+      rmSync(dir, { recursive: true, force: true })
+    }
+  })
+
+  it('fails instead of dropping old versions when the checkout has no tags', () => {
+    const dir = mkdtempSync(join(tmpdir(), 'meridian-worker-notags-'))
+    try {
+      execFileSync('git', ['clone', '--quiet', '--no-hardlinks', '--depth', '1', '--no-tags', `file://${process.cwd()}`, dir])
+      const sha = execFileSync('git', ['rev-parse', 'HEAD'], { cwd: dir, encoding: 'utf8' }).trim()
+      expect(() => buildWorkerAssets(sha, dir)).toThrow(/no v\* tags/)
+      expect(existsSync(join(dir, 'public'))).toBe(false)
+    } finally {
+      rmSync(dir, { recursive: true, force: true })
+    }
+  })
+
+  it('checks out every tag in the deploy workflow', () => {
+    expect(workflow).toMatch(/fetch-depth: 0/)
+    expect(workflow).toMatch(/fetch-tags: true/)
   })
 })

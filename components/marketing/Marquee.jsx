@@ -48,14 +48,25 @@ export const Marquee = React.forwardRef(function Marquee(
   injectEfCss('ef-css-marquee', CSS);
   const text = { ...(LABELS[lang] || LABELS.en), ...labels };
   const [paused, setPaused] = React.useState(false);
+  // The duration goes through the CSSOM, not a style attribute, so strict-CSP pages keep it.
+  const rootRef = React.useRef(null);
+  React.useEffect(() => {
+    rootRef.current?.style.setProperty('--ef-marquee-duration', `${duration}s`);
+  }, [duration]);
+  const setRef = (node) => {
+    rootRef.current = node;
+    if (typeof ref === 'function') ref(node);
+    else if (ref) ref.current = node;
+  };
   return (
     <div
       {...rest}
-      ref={ref}
+      ref={setRef}
       data-slot="marquee"
       data-paused={paused ? '' : undefined}
       className={`ef-marquee${className ? ` ${className}` : ''}`}
-      style={{ '--ef-marquee-duration': `${duration}s`, ...style }}
+      data-duration={duration}
+      style={style}
     >
       <ul className="ef-marquee__list" aria-label={label}>
         {items.map((item, i) => <li key={i}>{item}</li>)}

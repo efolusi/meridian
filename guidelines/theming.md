@@ -159,3 +159,31 @@ Every Efolusi site follows this one contract, through `ThemeToggle` and `themeIn
 | Before paint | `themeInitScript()` inlined in `<head>`. |
 | Markup | Light removes `data-theme` (bare `:root`); dark sets `data-theme="dark"`. |
 | Control | One 44px button. Light → Dark → System → Light. On System, a `prefers-color-scheme` change re-resolves the theme and rewrites the cookie. Labels in English and Indonesian. |
+
+## Plain HTML sites
+
+Sites without React load two files from `browser/`. Self-host them from the npm package (`@efolusi/meridian/browser/…`), or load the versioned copy, which never changes once published, with its hash from `browser/hashes.json`:
+
+```html
+<head>
+  <!-- before the CSS: no flash -->
+  <script src="https://meridian.efolusi.com/browser/1.27.0/theme-init.js"
+          integrity="sha256-…" crossorigin="anonymous"></script>
+  <script type="module" src="https://meridian.efolusi.com/browser/1.27.0/marketing.js"
+          integrity="sha256-…" crossorigin="anonymous"></script>
+</head>
+```
+
+The unversioned `/browser/` files change with each release and serve meridian.efolusi.com itself; product sites do not load them.
+
+`marketing.js` wires the markup the React components render, by `data-slot`: the theme toggle, the `SiteHeader` mobile menu and the `Marquee` pause button. It also wires markup added later. `init(root)` returns a cleanup function, for content you mount yourself.
+
+```html
+<button type="button" data-slot="theme-toggle" class="ef-theme-toggle">
+  <svg data-theme-icon="light" aria-hidden="true">…</svg>
+  <svg data-theme-icon="dark" aria-hidden="true">…</svg>
+  <svg data-theme-icon="system" aria-hidden="true">…</svg>
+</button>
+```
+
+The labels follow the nearest `lang` (`en` or `id`). For a strict CSP, the files use no eval, no HTML strings and no style attributes. `browser/hashes.json` lists their `sha256-` hashes for `integrity=` or a `script-src` hash, and the hashes change only when a file changes.

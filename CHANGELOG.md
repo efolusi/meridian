@@ -1,5 +1,11 @@
 # Changelog
 
+## Unreleased
+
+- **Plain scripts for sites without React (`browser/`).** `theme-init.js` sets the theme before paint and `marketing.js` wires the theme toggle, the SiteHeader menu and the Marquee pause on the markup the React components render, including markup added later. They ship in the npm package (`@efolusi/meridian/browser/*`) and at `meridian.efolusi.com/browser/<version>/` (immutable, CORS; every release keeps its folder, rebuilt from its tag on each deploy), with sha256 hashes in `browser/hashes.json` for SRI or CSP. A `ThemeToggle` React renders is marked `data-ef-react`, and `marketing.js` leaves it to React, so a page with both moves one step per click. The theme contract keeps one source, the marked block in `ThemeToggle.jsx`; `browser/theme.js` is generated from it. meridian.efolusi.com itself now uses these files instead of its own `site/theme.js`. See [theming § Plain HTML sites](guidelines/theming.md#plain-html-sites).
+- **Size budget raised by 15 KB** (npm total 1,493,696 bytes) for the plain scripts in `browser/`.
+- **Marquee sets its loop duration through the CSSOM** (`data-duration` in the markup) instead of a style attribute. This is part of MD18; the other inline styles stay open.
+
 ## 1.26.1 — 2026-11-20
 
 - **The Docs page works again.** A missing `]),` in its 1.26.0 changelog list (since #160) stopped the whole page script, so the page rendered without its logic and its theme button did nothing. A test now compiles the script of every `site/*.dc.html` page.

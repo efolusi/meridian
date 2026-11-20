@@ -6,7 +6,7 @@
 // never becomes web-accessible by accident. _headers and _redirects go in too:
 // Workers static assets read them from the assets directory.
 import { execFileSync } from 'node:child_process';
-import { existsSync, lstatSync, mkdirSync, mkdtempSync, readdirSync, rmSync, statSync, writeFileSync } from 'node:fs';
+import { copyFileSync, existsSync, lstatSync, mkdirSync, mkdtempSync, readdirSync, rmSync, statSync, writeFileSync } from 'node:fs';
 import { tmpdir } from 'node:os';
 import { join, resolve } from 'node:path';
 import { pathToFileURL } from 'node:url';
@@ -17,14 +17,13 @@ export const PUBLIC_PATHS = [
   'tokens.json', 'registry.json', 'llms.txt', 'llms-full.txt',
   'README.md', 'ARCHITECTURE.md', 'CHANGELOG.md', 'CONTRIBUTING.md', 'SECURITY.md', 'LICENSE',
   'robots.txt', 'sitemap.xml', '_headers', '_redirects',
-  'assets', 'blocks', 'compatibility', 'components', 'guidelines', 'showcases', 'site', 'skills', 'starters', 'tokens',
+  'assets', 'blocks', 'browser', 'compatibility', 'components', 'guidelines', 'showcases', 'site', 'skills', 'starters', 'tokens',
 ];
 export const FORBIDDEN_PATHS = ['.github', '.nvmrc', 'CLAUDE.md', 'package.json', 'package-lock.json', 'scripts', 'tests', 'wrangler.jsonc'];
 export const OUT_DIR = 'public';
 
 function fail(message) {
-  console.error(`[meridian-worker] ${message}`);
-  process.exit(1);
+  throw new Error(`[meridian-worker] ${message}`);
 }
 
 function hasSymlink(dir) {
@@ -42,6 +41,8 @@ export function buildWorkerAssets(sha, root = process.cwd()) {
   if (!/^[0-9a-f]{40}$/.test(sha ?? '')) fail('usage: build_worker_assets.mjs <40-character lowercase git sha>');
   const git = (...args) => execFileSync('git', args, { cwd: root, encoding: 'utf8' }).trim();
   if (git('rev-parse', 'HEAD') !== sha) fail('checkout does not match the requested release');
+  const tags = git('tag', '--list', 'v*').split('\n').filter((t) => /^v\d+\.\d+\.\d+$/.test(t));
+  if (!tags.length) fail('no v* tags in this checkout; fetch the tags so older browser/<version>/ folders stay published');
 
   const archive = mkdtempSync(join(tmpdir(), 'meridian-worker-'));
   const out = resolve(root, OUT_DIR);
@@ -59,6 +60,26 @@ export function buildWorkerAssets(sha, root = process.cwd()) {
     rmSync(archive, { recursive: true, force: true });
   }
 
+  // Other sites pin browser/<version>/ with an immutable cache, so every release
+  // that shipped browser files stays published, with the bytes of its tag.
+  const browser = join(out, 'browser');
+  for (const tag of tags) {
+    // Releases before browser/ existed have nothing to keep.
+    const tree = execFileSync('git', ['ls-tree', tag, '--', 'browser/'], { cwd: root, encoding: 'utf8' });
+    const blobs = tree.split('\n').filter((l) => l.split(/\s/)[1] === 'blob').map((l) => l.split('\t')[1].slice('browser/'.length));
+    if (!blobs.length) continue;
+    const dir = join(browser, tag.slice(1));
+    mkdirSync(dir);
+    for (const f of blobs) writeFileSync(join(dir, f), execFileSync('git', ['show', `${tag}:browser/${f}`], { cwd: root }));
+  }
+  const version = JSON.parse(git('show', `${sha}:package.json`)).version;
+  if (!existsSync(join(browser, version))) {
+    mkdirSync(join(browser, version));
+    for (const entry of readdirSync(browser, { withFileTypes: true })) {
+      if (entry.isFile()) copyFileSync(join(browser, entry.name), join(browser, version, entry.name));
+    }
+  }
+
   const link = hasSymlink(out);
   if (link) fail(`public tree must not contain symlinks: ${link}`);
   for (const path of FORBIDDEN_PATHS) {
@@ -72,6 +93,11 @@ export function buildWorkerAssets(sha, root = process.cwd()) {
 }
 
 if (process.argv[1] && import.meta.url === pathToFileURL(process.argv[1]).href) {
-  const out = buildWorkerAssets(process.argv[2]);
-  console.log(`[meridian-worker] built ${out} for ${process.argv[2]}`);
+  try {
+    const out = buildWorkerAssets(process.argv[2]);
+    console.log(`[meridian-worker] built ${out} for ${process.argv[2]}`);
+  } catch (error) {
+    console.error(error.message);
+    process.exit(1);
+  }
 }

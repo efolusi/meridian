@@ -7,3 +7,5 @@ Pass the items in the page's language, and `lang="id"` for the Indonesian pause 
 ```jsx
 <Marquee label="What we build" items={['Open source', 'Self-hosted', 'Private', 'Secure']} />
 ```
+
+On a site without React, render the same markup with `data-duration` and load `browser/marketing.js` for the pause button; see [theming § Plain HTML sites](../../guidelines/theming.md#plain-html-sites).
