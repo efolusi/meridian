@@ -106,3 +106,30 @@ describe('style attributes in component sources', () => {
     expect(stale).toEqual([]);
   });
 });
+
+describe('BarChart sizes its bars through the CSSOM', () => {
+  const data = [{ label: 'a', value: 1 }, { label: 'b', value: 3 }, { label: 'c', value: 7 }];
+
+  it('server HTML has no style attribute, and hydration reports no mismatch', async () => {
+    const { hydrateRoot } = await import('react-dom/client');
+    const { act } = await import('react');
+    const html = renderToString(<BarChart data={data} />);
+    expect(html).not.toMatch(/\sstyle="/);
+    const host = document.createElement('div');
+    host.innerHTML = html;
+    document.body.appendChild(host);
+    const errors = [];
+    await act(async () => { hydrateRoot(host, <BarChart data={data} />, { onRecoverableError: (e) => errors.push(e) }); });
+    expect(errors).toEqual([]);
+    host.remove();
+  });
+
+  it('sets the chart height and each bar height after mount, rounded so values that do not divide evenly survive', async () => {
+    const { render } = await import('@testing-library/react');
+    const { container, unmount } = render(<BarChart data={data} height={80} />);
+    expect(container.querySelector('.ef-bars').style.height).toBe('80px');
+    const heights = [...container.querySelectorAll('.ef-bars__bar')].map((b) => b.style.height);
+    expect(heights).toEqual(['14.286%', '42.857%', '100%']);
+    unmount();
+  });
+});

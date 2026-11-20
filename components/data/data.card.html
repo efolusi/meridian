@@ -33,7 +33,7 @@ function Demo() {
           { key: 'name', label: 'Customer', render: (v) => <span style={{ display: 'inline-flex', alignItems: 'center', gap: 8, fontWeight: 600 }}><Avatar size="sm"><AvatarFallback>{v.split(/\s+/).map(part => part[0]).slice(0, 2).join('')}</AvatarFallback></Avatar>{v}</span> },
           { key: 'plan', label: 'Plan' },
           { key: 'status', label: 'Status', render: v => <Badge className={v === 'Active' ? 'ef-badge--success' : 'ef-badge--warning'}><Icon name="circle" size={8} strokeWidth={4} data-icon="inline-start" />{v}</Badge> },
-          { key: 'mrr', label: 'MRR', numeric: true, align: 'right' },
+          { key: 'mrr', label: 'MRR', numeric: true, align: 'end' },
         ]} rows={rows} />
       </CardContent></Card>
       <div style={{ display: 'grid', gridTemplateColumns: '1.2fr 1fr', gap: 16 }}>

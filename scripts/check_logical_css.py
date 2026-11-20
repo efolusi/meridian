@@ -32,8 +32,6 @@ COORDINATE_EXCEPTIONS = {
     "components/ai/Conversation.jsx": ["left:50%"],
     "components/ai/SelectionQuote.jsx": ["left: pos.left", "left: 0"],
     "components/data/LineChart.jsx": ["left: cssPct("],
-    # Table keeps its public align values left/right and maps them to start/end.
-    "components/data/Table.jsx": ["const ALIGN = { left: 'start'"],
     "components/display/Carousel.jsx": ["left:50%", "scrollTo({ left:"],
     "components/display/Resizable.jsx": ["left:4px", "left:0;right:0"],
     "components/feedback/Tooltip.jsx": [

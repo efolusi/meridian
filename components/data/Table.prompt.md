@@ -13,7 +13,7 @@ Selection behaves the same: `selectable` alone works, and `selected` + `onSelect
   columns={[
     { key: 'name', label: 'Customer', sortable: true },
     { key: 'plan', label: 'Plan' },
-    { key: 'mrr', label: 'MRR', numeric: true, align: 'right', sortable: true,
+    { key: 'mrr', label: 'MRR', numeric: true, align: 'end', sortable: true,
       sortAccessor: r => Number(String(r.mrr).replace(/[^0-9.]/g, '')) },
     { key: 'status', label: 'Status', render: v => <Badge className="ef-badge--success"><Icon name="circle" size={8} strokeWidth={4} data-icon="inline-start" />{v}</Badge> },
   ]}

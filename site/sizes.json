@@ -1,16 +1,16 @@
 {
   "totals": {
     "@efolusi/meridian": {
-      "bytes": 373717,
-      "gzip": 84496
+      "bytes": 373639,
+      "gzip": 84454
     },
     "dist/components.css": {
       "bytes": 229176,
       "gzip": 31385
     },
     "_ds_bundle.js": {
-      "bytes": 879420,
-      "gzip": 157124
+      "bytes": 879226,
+      "gzip": 157023
     }
   },
   "modules": [
@@ -458,8 +458,8 @@
         "TableCell",
         "TableCaption"
       ],
-      "bytes": 51875,
-      "gzip": 9943
+      "bytes": 51800,
+      "gzip": 9899
     },
     {
       "module": "dates/Calendar.js",

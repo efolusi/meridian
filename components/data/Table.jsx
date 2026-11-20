@@ -40,9 +40,6 @@ const compare = (a, b) => {
   return String(a).localeCompare(String(b), undefined, { numeric: true, sensitivity: 'base' });
 };
 
-// Physical align values map to logical ones so right-to-left pages mirror.
-const ALIGN = { left: 'start', right: 'end', start: 'start', end: 'end', center: 'center' };
-
 export const Table = React.forwardRef(function Table({
   columns, rows, rowKey, onRowClick, dense, children,
   sort: sortProp, defaultSort, onSortChange,
@@ -117,7 +114,7 @@ export const Table = React.forwardRef(function Table({
           {columns.map(c => {
             const on = sort && sort.key === c.key;
             return (
-              <th key={c.key} data-align={ALIGN[c.align]} ref={styleRef({ width: c.width })}
+              <th key={c.key} data-align={c.align} ref={styleRef({ width: c.width })}
                 aria-sort={c.sortable ? (on ? (sort.direction === 'asc' ? 'ascending' : 'descending') : 'none') : undefined}>
                 {c.sortable ? (
                   <button type="button" className={`ef-table__sort${on ? ' ef-table__sort--on' : ''}`} onClick={() => toggleSort(c.key)}>
@@ -163,7 +160,7 @@ export const Table = React.forwardRef(function Table({
                         </td>
                       ) : null}
                       {columns.map(c => (
-                        <td key={c.key} className={c.numeric ? 'ef-num' : ''} data-align={ALIGN[c.align]}>
+                        <td key={c.key} className={c.numeric ? 'ef-num' : ''} data-align={c.align}>
                           {c.render ? c.render(row[c.key], row, i) : row[c.key]}
                         </td>
                       ))}
