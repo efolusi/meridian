@@ -18,7 +18,7 @@ const CSS = `
 .ef-exception__frames{margin:0 var(--space-4) var(--space-3);padding:0;list-style:none;border:1px solid var(--border-default);border-radius:var(--radius-sm);background:var(--surface-subtle);overflow:hidden;font-family:var(--font-mono);font-size:var(--text-xs);line-height:1.5}
 .ef-exception__frame{display:flex;align-items:baseline;gap:var(--space-3);padding:var(--space-1) var(--space-3);border-inline-start:2px solid transparent}
 .ef-exception__frame--active{border-inline-start-color:var(--danger-600);background:var(--danger-100)}
-.ef-exception__frame--internal{opacity:.5}
+.ef-exception__frame--internal,.ef-exception__frame--internal .ef-exception__fn,.ef-exception__frame--internal .ef-exception__loc{color:var(--text-muted)}
 .ef-exception__fn{flex:none;color:var(--text-primary)}
 .ef-exception__loc{margin-inline-start:auto;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;color:var(--text-muted)}
 .ef-exception__src{margin:0 var(--space-4) var(--space-3);border:1px solid var(--border-default);border-radius:var(--radius-sm);background:var(--surface-subtle);overflow:hidden}

@@ -26,6 +26,9 @@ const page = await browser.newPage({ viewport: { width: 1280, height: 900 }, dev
 await page.goto(`${BASE}/site/_smoke.html`, { waitUntil: 'load', timeout: 60000 });
 await page.waitForFunction(() => document.documentElement.getAttribute('data-smoke') !== null, { timeout: 60000 });
 await page.addScriptTag({ content: AXE });
+// The theme switch below animates colours; measure the settled colours, not a frame
+// in between (a mid-transition dark run reported 92 false contrast failures).
+await page.addStyleTag({ content: '*, *::before, *::after { transition: none !important; }' });
 
 const selectors = GROUPS.includes('all') ? ['section[data-group]'] : GROUPS.map((g) => `section[data-group="${g}"]`);
 const missing = await page.evaluate((list) => list.filter((s) => !document.querySelector(s)), selectors);
