@@ -143,3 +143,53 @@ describe('BarChart sizes its bars through the CSSOM', () => {
     unmount();
   });
 });
+
+describe('Player sizes its bars through the CSSOM', () => {
+  // The old hydration tests guarded the sixteen-digit peak precision: pseudoPeaks makes
+  // irrational-looking floats, and each bar must carry a short percentage, not all of them.
+  const rounded = (p) => `${Math.round(Math.max(8, p * 100) * 1000) / 1000}%`;
+  const heights = (container) => [...container.querySelectorAll('.ef-player__bar')].map((b) => b.style.height);
+
+  async function hydrate(element) {
+    const { hydrateRoot } = await import('react-dom/client');
+    const { act } = await import('react');
+    const host = document.createElement('div');
+    host.innerHTML = renderToString(element);
+    expect(host.innerHTML).not.toMatch(/\sstyle="/);
+    document.body.appendChild(host);
+    const errors = [];
+    await act(async () => { hydrateRoot(host, element, { onRecoverableError: (e) => errors.push(e) }); });
+    return { host, errors };
+  }
+
+  it('generated peaks: every bar gets a short percentage, and hydration reports no mismatch', async () => {
+    const { host, errors } = await hydrate(<Player src="some-track.mp3" title="T" />);
+    expect(errors).toEqual([]);
+    const values = heights(host);
+    expect(values).toHaveLength(72);
+    for (const v of values) {
+      expect(v).toMatch(/^\d+(\.\d{1,3})?%$/);
+      expect(parseFloat(v)).toBeGreaterThanOrEqual(8);
+      expect(parseFloat(v)).toBeLessThanOrEqual(100);
+    }
+    host.remove();
+  });
+
+  it('caller-supplied peaks: each bar height equals its peak, rounded to three decimals', async () => {
+    const peaks = Array.from({ length: 12 }, (_, i) => (i + 1) / 7);
+    const { host, errors } = await hydrate(<Player src="x" peaks={peaks} />);
+    expect(errors).toEqual([]);
+    expect(heights(host)).toEqual(peaks.map(rounded));
+    host.remove();
+  });
+
+  it('peaks [0.2, 0.9] give 20% and 90%, and a peak under 8% is raised to 8%', async () => {
+    const { render } = await import('@testing-library/react');
+    const a = render(<Player src="x" peaks={[0.2, 0.9]} />);
+    expect(heights(a.container)).toEqual(['20%', '90%']);
+    a.unmount();
+    const b = render(<Player src="x" peaks={[0.01, 1]} />);
+    expect(heights(b.container)).toEqual(['8%', '100%']);
+    b.unmount();
+  });
+});
