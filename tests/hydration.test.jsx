@@ -2,7 +2,6 @@ import { describe, it, expect } from 'vitest';
 import { renderToString } from 'react-dom/server';
 
 import { cssPct } from '../components/forms/Button.jsx';
-import { Player } from '../components/ai/Player.jsx';
 import { UsageMeter } from '../components/ai/UsageMeter.jsx';
 import { ResizableHandle, ResizablePanel, ResizablePanelGroup } from '../components/display/Resizable.jsx';
 
@@ -70,17 +69,6 @@ describe('cssPct', () => {
 });
 
 describe('server-rendered styles survive the CSS parser', () => {
-  it('Player, with generated placeholder peaks', () => {
-    // The original defect: pseudoPeaks produces irrational-looking floats and
-    // every bar carried all sixteen digits into the style attribute.
-    expectStylesSurviveParsing(renderToString(<Player src="some-track.mp3" title="T" />));
-  });
-
-  it('Player, with caller-supplied peaks', () => {
-    const peaks = Array.from({ length: 12 }, (_, i) => (i + 1) / 7);
-    expectStylesSurviveParsing(renderToString(<Player src="x" peaks={peaks} />));
-  });
-
   it('UsageMeter, at a ratio that does not divide evenly', () => {
     expectStylesSurviveParsing(renderToString(<UsageMeter used={1} limit={3} />));
   });

@@ -13,9 +13,9 @@ CSS is not counted per component: `styles.css` ships every component style in on
 
 | File | Size | Gzip |
 | --- | ---: | ---: |
-| `@efolusi/meridian` | 364.9 kB | 82.5 kB |
-| `dist/components.css` | 223.8 kB | 30.6 kB |
-| `_ds_bundle.js` | 858.6 kB | 153.3 kB |
+| `@efolusi/meridian` | 364.8 kB | 82.4 kB |
+| `dist/components.css` | 224.2 kB | 30.8 kB |
+| `_ds_bundle.js` | 859.0 kB | 153.3 kB |
 
 The root import, `@efolusi/meridian`, is every component. `_ds_bundle.js` is the zero-build CDN bundle, which also carries each component's CSS. The root import is minified; the CSS and the CDN bundle are measured as shipped.
 
@@ -28,7 +28,7 @@ The root import, `@efolusi/meridian`, is every component. `_ds_bundle.js` is the
 | `ai/ChatMessage.js` | ChatMessage | 46.5 kB | 7.9 kB |
 | `ai/Citation.js` | Citation, SourceList | 46.6 kB | 8.1 kB |
 | `ai/Confirmation.js` | Confirmation | 45.3 kB | 7.6 kB |
-| `ai/Conversation.js` | Conversation | 45.1 kB | 7.7 kB |
+| `ai/Conversation.js` | Conversation | 45.4 kB | 7.8 kB |
 | `ai/DocumentCard.js` | DocumentCard | 45.5 kB | 7.8 kB |
 | `ai/FeedbackBar.js` | FeedbackBar | 45.2 kB | 7.6 kB |
 | `ai/GeneratedImage.js` | GeneratedImage | 45.5 kB | 7.6 kB |
@@ -36,9 +36,9 @@ The root import, `@efolusi/meridian`, is every component. `_ds_bundle.js` is the
 | `ai/Message.js` | Message, MessageGroup, MessageAvatar, MessageContent, MessageHeader, MessageFooter | 1.5 kB | 0.5 kB |
 | `ai/MessageScroller.js` | MessageScrollerProvider, MessageScroller, MessageScrollerViewport, MessageScrollerContent, MessageScrollerItem, MessageScrollerButton | 49.8 kB | 9.2 kB |
 | `ai/ModelSelector.js` | ModelSelector | 47.9 kB | 8.7 kB |
-| `ai/Player.js` | Player | 47.9 kB | 8.5 kB |
-| `ai/PromptComposer.js` | PromptComposer | 46.0 kB | 8.0 kB |
-| `ai/PromptSteps.js` | PromptSteps | 46.7 kB | 8.3 kB |
+| `ai/Player.js` | Player | 48.0 kB | 8.6 kB |
+| `ai/PromptComposer.js` | PromptComposer | 46.0 kB | 7.9 kB |
+| `ai/PromptSteps.js` | PromptSteps | 46.8 kB | 8.3 kB |
 | `ai/Reasoning.js` | Reasoning | 44.6 kB | 7.5 kB |
 | `ai/RichComposer.js` | RichComposer | 48.0 kB | 8.8 kB |
 | `ai/Sandbox.js` | Sandbox | 45.4 kB | 7.7 kB |
@@ -54,16 +54,16 @@ The root import, `@efolusi/meridian`, is every component. `_ds_bundle.js` is the
 | `code/CodeBlock.js` | CodeBlock | 46.2 kB | 8.0 kB |
 | `code/Console.js` | Console | 46.3 kB | 8.0 kB |
 | `code/CopyField.js` | CopyField | 45.7 kB | 7.8 kB |
-| `code/Diff.js` | Diff | 48.2 kB | 8.7 kB |
+| `code/Diff.js` | Diff | 48.4 kB | 8.8 kB |
 | `code/EnvList.js` | EnvList | 45.2 kB | 7.6 kB |
 | `code/Exception.js` | Exception | 45.6 kB | 7.6 kB |
-| `code/Terminal.js` | Terminal | 1.1 kB | 0.5 kB |
+| `code/Terminal.js` | Terminal | 1.3 kB | 0.6 kB |
 | `data/BarChart.js` | BarChart | 2.0 kB | 0.9 kB |
-| `data/Chart.js` | ChartStyle, ChartContainer, ChartTooltip, ChartTooltipContent, ChartLegend, ChartLegendContent | 3.9 kB | 1.5 kB |
+| `data/Chart.js` | ChartStyle, ChartContainer, ChartTooltip, ChartTooltipContent, ChartLegend, ChartLegendContent | 4.1 kB | 1.6 kB |
 | `data/DonutChart.js` | DonutChart | 2.9 kB | 1.2 kB |
 | `data/EmptyState.js` | Empty, EmptyHeader, EmptyMedia, EmptyTitle, EmptyDescription, EmptyContent | 1.5 kB | 0.5 kB |
-| `data/KeyValueList.js` | KeyValueList | 0.7 kB | 0.4 kB |
-| `data/LineChart.js` | LineChart | 3.0 kB | 1.3 kB |
+| `data/KeyValueList.js` | KeyValueList | 0.9 kB | 0.5 kB |
+| `data/LineChart.js` | LineChart | 3.2 kB | 1.4 kB |
 | `data/Skeleton.js` | Skeleton | 0.4 kB | 0.3 kB |
 | `data/Sparkline.js` | Sparkline | 1.1 kB | 0.7 kB |
 | `data/Stat.js` | Stat | 0.8 kB | 0.4 kB |
@@ -95,7 +95,7 @@ The root import, `@efolusi/meridian`, is every component. `_ds_bundle.js` is the
 | `feedback/Banner.js` | Banner | 44.8 kB | 7.5 kB |
 | `feedback/ConfirmDialog.js` | ConfirmDialog | 54.4 kB | 10.5 kB |
 | `feedback/Dialog.js` | Dialog, DialogTrigger, DialogPortal, DialogOverlay, DialogClose, DialogContent, DialogHeader, DialogFooter, DialogTitle, DialogDescription | 50.4 kB | 9.3 kB |
-| `feedback/Loader.js` | Loader | 0.8 kB | 0.4 kB |
+| `feedback/Loader.js` | Loader | 1.0 kB | 0.5 kB |
 | `feedback/Progress.js` | Progress | 1.5 kB | 0.8 kB |
 | `feedback/Spinner.js` | Spinner | 0.7 kB | 0.4 kB |
 | `feedback/Toast.js` | Toaster | 49.3 kB | 9.3 kB |
@@ -103,7 +103,7 @@ The root import, `@efolusi/meridian`, is every component. `_ds_bundle.js` is the
 | `files/Attachment.js` | Attachment, AttachmentMedia, AttachmentContent, AttachmentTitle, AttachmentDescription, AttachmentActions, AttachmentAction, AttachmentTrigger, AttachmentGroup | 47.0 kB | 8.0 kB |
 | `files/FileDrop.js` | FileDrop | 45.4 kB | 7.9 kB |
 | `files/FileTile.js` | FileTile | 47.1 kB | 8.3 kB |
-| `files/FileTypeIcon.js` | FileTypeIcon | 45.5 kB | 7.6 kB |
+| `files/FileTypeIcon.js` | FileTypeIcon | 45.8 kB | 7.7 kB |
 | `finance/PaymentCard.js` | PaymentCard | 1.7 kB | 0.5 kB |
 | `forms/Button.js` | Button | 46.2 kB | 8.3 kB |
 | `forms/ButtonGroup.js` | ButtonGroup, ButtonGroupText, ButtonGroupSeparator | 2.1 kB | 0.8 kB |

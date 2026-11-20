@@ -4,6 +4,7 @@ import { Icon } from '../icons/Icon.jsx';
 import { IconButton } from '../forms/IconButton.jsx';
 import { injectEfCss } from '../forms/Button.jsx';
 const CSS = `
+.ef-composer__attach{display:flex;gap:var(--space-2);flex-wrap:wrap;padding:10px 12px 0}.ef-composer__send-icon{transform:rotate(-45deg)}
 .ef-composer{display:flex;flex-direction:column;background:var(--surface-card);border:1px solid var(--border-strong);border-radius:var(--radius-lg);transition:border-color var(--dur-fast) var(--ease-out),box-shadow var(--dur-fast) var(--ease-out)}
 .ef-composer:focus-within{border-color:var(--accent);box-shadow:var(--focus-ring)}
 .ef-composer__input{border:none;background:none;resize:none;padding:var(--space-4) var(--space-4) var(--space-2);font-family:var(--font-sans);font-size:var(--text-md);line-height:1.5;color:var(--text-primary);outline:none;min-height:24px}
@@ -25,7 +26,7 @@ export const PromptComposer = React.forwardRef(function PromptComposer({ value, 
   const send = () => { if (v.trim() && onSend && !disabled) { onSend(v); if (value == null) setInner(''); } };
   return (
     <div ref={ref} {...rest} className={`ef-composer${className ? ' ' + className : ''}`} style={style}>
-      {attachments ? <div style={{ display: 'flex', gap: 'var(--space-2)', flexWrap: 'wrap', padding: '10px 12px 0' }}>{attachments}</div> : null}
+      {attachments ? <div className="ef-composer__attach">{attachments}</div> : null}
       <textarea className="ef-composer__input" rows={rows} placeholder={placeholder} value={v} disabled={disabled}
         aria-label={ariaLabelledby ? undefined : ariaLabel || placeholder} aria-labelledby={ariaLabelledby}
         onChange={e => set(e.target.value, e)}
@@ -39,7 +40,7 @@ export const PromptComposer = React.forwardRef(function PromptComposer({ value, 
               <Icon name="square" size={12} strokeWidth={2.5} />
             </button>
           : <button type="button" className="ef-composer__send" aria-label="Send" disabled={disabled || !v.trim()} onClick={send}>
-              <Icon name="arrow-up-right" size={16} strokeWidth={2} style={{ transform: 'rotate(-45deg)' }} />
+              <Icon name="arrow-up-right" size={16} strokeWidth={2} className="ef-composer__send-icon" />
             </button>}
       </div>
     </div>

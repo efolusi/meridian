@@ -1,7 +1,7 @@
 'use client';
 import React from 'react';
 import * as RechartsPrimitive from 'recharts';
-import { injectEfCss } from '../forms/Button.jsx';
+import { injectEfCss, styleRef } from '../forms/Button.jsx';
 
 const CSS = `
 .ef-chart{display:flex;aspect-ratio:16/9;min-height:200px;width:100%;justify-content:center;color:var(--text-secondary);font-size:var(--text-xs)}
@@ -72,7 +72,7 @@ export function ChartTooltipContent({ active, payload, locale = 'en-US', classNa
       const configItem = payloadConfig(config, item, `${nameKey || item.name || item.dataKey || 'value'}`);
       const indicatorColor = color || item.payload?.fill || item.color;
       return <div className="ef-chart-tooltip__item" key={index}>{formatter && item.value !== undefined && item.name ? formatter(item.value, item.name, item, index, item.payload) : <>
-        {configItem?.icon ? React.createElement(configItem.icon) : !hideIndicator ? <span className={`ef-chart-tooltip__indicator ef-chart-tooltip__indicator--${indicator}`} style={{ '--chart-indicator': indicatorColor }} /> : null}
+        {configItem?.icon ? React.createElement(configItem.icon) : !hideIndicator ? <span className={`ef-chart-tooltip__indicator ef-chart-tooltip__indicator--${indicator}`} ref={styleRef({ '--chart-indicator': indicatorColor })} /> : null}
         <span className="ef-chart-tooltip__name">{nestLabel ? labelNode : null}{configItem?.label || item.name}</span>
         {item.value != null ? <span className="ef-chart-tooltip__value">{typeof item.value === 'number' ? new Intl.NumberFormat(locale).format(item.value) : String(item.value)}</span> : null}
       </>}</div>;
@@ -91,6 +91,6 @@ export function ChartLegendContent({ className, hideIcon = false, payload, verti
   if (!payload || !payload.length) return null;
   return <div className={`ef-chart-legend ef-chart-legend--${verticalAlign}${className ? ` ${className}` : ''}`}>{payload.filter(item => item.type !== 'none').map((item, index) => {
     const configItem = payloadConfig(config, item, `${nameKey || item.dataKey || 'value'}`);
-    return <div className="ef-chart-legend__item" key={index}>{configItem?.icon && !hideIcon ? React.createElement(configItem.icon) : <span className="ef-chart-legend__mark" style={{ backgroundColor: item.color }} />}{configItem?.label}</div>;
+    return <div className="ef-chart-legend__item" key={index}>{configItem?.icon && !hideIcon ? React.createElement(configItem.icon) : <span className="ef-chart-legend__mark" ref={styleRef({ 'background-color': item.color })} />}{configItem?.label}</div>;
   })}</div>;
 }

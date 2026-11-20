@@ -1,8 +1,9 @@
 'use client';
 import React from 'react';
-import { injectEfCss } from '../forms/Button.jsx';
+import { injectEfCss, styleRef } from '../forms/Button.jsx';
 import { Icon } from '../icons/Icon.jsx';
 const CSS = `
+.ef-diff__name{flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis}
 .ef-diff{border:1px solid var(--border-default);border-radius:var(--radius-md);background:var(--surface-card);overflow:hidden;font-family:var(--font-mono);font-size:var(--text-sm);line-height:1.7}
 .ef-diff__head{display:flex;align-items:center;gap:var(--space-3);padding:var(--space-2) var(--space-3);background:var(--surface-subtle);border-bottom:1px solid var(--border-default);font-size:var(--text-xs);color:var(--text-secondary);font-family:var(--font-sans)}
 .ef-diff__counts{margin-inline-start:auto;display:inline-flex;gap:var(--space-2);font-size:var(--text-xs);font-family:var(--font-mono);font-variant-numeric:tabular-nums}
@@ -140,7 +141,7 @@ function DiffFile({ file, wordLevel, contextLines }) {
     <div className="ef-diff__file">
       <button type="button" className="ef-diff__filehead" aria-expanded={open} onClick={() => setOpen(!open)}>
         <span className={`ef-diff__filechev${open ? ' ef-diff__filechev--open' : ''}`}><Icon name="chevron-right" size={12} /></span>
-        <span style={{ flex: 1, minWidth: 0, overflow: 'hidden', textOverflow: 'ellipsis' }}>{file.name}</span>
+        <span className="ef-diff__name">{file.name}</span>
         <Counts adds={r.adds} dels={r.dels} />
       </button>
       {open ? <div className="ef-diff__scroll" tabIndex={0}><Rows rows={r.rows} /></div> : null}
@@ -159,7 +160,7 @@ export function Diff({ title, from, to, files, wordLevel = true, contextLines = 
         <div className="ef-diff__head">{title}<Counts adds={single.adds} dels={single.dels} /></div>
       ) : null}
       {files ? files.map((f, i) => <DiffFile key={f.name || i} file={f} wordLevel={wordLevel} contextLines={contextLines} />) : (
-        <div className="ef-diff__scroll" tabIndex={0} style={maxHeight ? { maxHeight } : null}><Rows rows={single.rows} /></div>
+        <div className="ef-diff__scroll" tabIndex={0} ref={styleRef({ 'max-height': maxHeight || undefined })}><Rows rows={single.rows} /></div>
       )}
     </div>
   );

@@ -1,6 +1,6 @@
 'use client';
 import React from 'react';
-import { injectEfCss } from '../forms/Button.jsx';
+import { injectEfCss, styleRef } from '../forms/Button.jsx';
 const CSS = `
 .ef-loader{display:inline-flex;align-items:baseline;font-family:var(--font-sans);font-size:var(--text-md);color:var(--text-muted)}
 .ef-loader--pulse{animation:ef-loader-pulse var(--ef-loader-dur,1.4s) ease-in-out infinite both}
@@ -16,9 +16,8 @@ const CSS = `
 `;
 export function Loader({ variant = 'pulse', dots, duration, children = 'Thinking', style, className, ...rest }) {
   injectEfCss('ef-css-loader', CSS);
-  const vars = duration ? { '--ef-loader-dur': duration + 's' } : null;
   return (
-    <span {...rest} role="status" aria-label={typeof children === 'string' ? children : 'Loading'} className={`ef-loader ef-loader--${variant}${className ? ' ' + className : ''}`} style={{ ...vars, ...style }}>
+    <span {...rest} role="status" aria-label={typeof children === 'string' ? children : 'Loading'} className={`ef-loader ef-loader--${variant}${className ? ' ' + className : ''}`} ref={styleRef({ '--ef-loader-dur': duration ? duration + 's' : undefined })} style={style}>
       {children}
       {dots ? <span className="ef-loader__dots" aria-hidden="true"><span>.</span><span>.</span><span>.</span></span> : null}
     </span>

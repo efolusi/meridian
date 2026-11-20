@@ -15,6 +15,17 @@ import { CodeBlock } from '../components/code/CodeBlock.jsx';
 import { Console } from '../components/code/Console.jsx';
 import { ScrollArea } from '../components/display/ScrollArea.jsx';
 import { AspectRatio } from '../components/display/AspectRatio.jsx';
+import { Conversation } from '../components/ai/Conversation.jsx';
+import { Player } from '../components/ai/Player.jsx';
+import { PromptComposer } from '../components/ai/PromptComposer.jsx';
+import { PromptSteps } from '../components/ai/PromptSteps.jsx';
+import { ChatMessage } from '../components/ai/ChatMessage.jsx';
+import { Diff } from '../components/code/Diff.jsx';
+import { Terminal } from '../components/code/Terminal.jsx';
+import { KeyValueList } from '../components/data/KeyValueList.jsx';
+import { LineChart } from '../components/data/LineChart.jsx';
+import { Loader } from '../components/feedback/Loader.jsx';
+import { FileTypeIcon } from '../components/files/FileTypeIcon.jsx';
 
 // MD18 (#180): strict-CSP sites (style-src without 'unsafe-inline') drop style attributes,
 // so components put fixed styles in their CSS and set runtime values through the CSSOM.
@@ -24,29 +35,17 @@ import { AspectRatio } from '../components/display/AspectRatio.jsx';
 // closes when it is empty.
 const REMAINING = {
     "ai/AgentRun.jsx": 1,
-    "ai/ChatMessage.jsx": 1,
-    "ai/Conversation.jsx": 2,
     "ai/DocumentCard.jsx": 1,
     "ai/ModelSelector.jsx": 2,
-    "ai/Player.jsx": 2,
-    "ai/PromptComposer.jsx": 2,
-    "ai/PromptSteps.jsx": 2,
     "ai/SelectionQuote.jsx": 1,
     "ai/Transcript.jsx": 1,
     "ai/UsageMeter.jsx": 1,
-    "code/Diff.jsx": 2,
-    "code/Terminal.jsx": 1,
-    "data/Chart.jsx": 2,
-    "data/KeyValueList.jsx": 1,
-    "data/LineChart.jsx": 2,
     "dates/TimePicker.jsx": 1,
     "display/Resizable.jsx": 1,
     "feedback/ConfirmDialog.jsx": 1,
     "feedback/Dialog.jsx": 1,
-    "feedback/Loader.jsx": 1,
     "feedback/Tooltip.jsx": 1,
     "files/FileDrop.jsx": 1,
-    "files/FileTypeIcon.jsx": 2,
     "forms/Button.jsx": 1,
     "forms/ButtonTile.jsx": 1,
     "forms/Input.jsx": 1,
@@ -84,6 +83,17 @@ describe('no style attributes in server-rendered HTML', () => {
     Console: <Console entries={[{ level: 'info', text: 'Ready' }]} height={160} />,
     ScrollArea: <ScrollArea maxHeight={120}>text</ScrollArea>,
     AspectRatio: <AspectRatio ratio={16 / 9}>media</AspectRatio>,
+    Conversation: <Conversation><p>hi</p></Conversation>,
+    Player: <Player src="x.mp3" title="T" />,
+    PromptComposer: <PromptComposer attachments={<span>file</span>} />,
+    PromptSteps: <PromptSteps steps={[{ question: 'Q', options: ['A', 'B'], other: true }]} />,
+    ChatMessage: <ChatMessage name="Ada">hi</ChatMessage>,
+    Diff: <Diff title="a" from={'a\nb'} to={'a\nc'} maxHeight={200} />,
+    Terminal: <Terminal lines={['ok']} />,
+    KeyValueList: <KeyValueList items={[{ label: 'A', value: '1' }]} />,
+    LineChart: <LineChart data={[{ label: 'a', value: 1 }, { label: 'b', value: 3 }]} />,
+    Loader: <Loader duration={2} />,
+    FileTypeIcon: <FileTypeIcon ext="pdf" />,
   };
   it.each(Object.keys(cases))('%s', (name) => {
     expect(renderToString(cases[name])).not.toMatch(/\sstyle="/);
@@ -131,5 +141,55 @@ describe('BarChart sizes its bars through the CSSOM', () => {
     const heights = [...container.querySelectorAll('.ef-bars__bar')].map((b) => b.style.height);
     expect(heights).toEqual(['14.286%', '42.857%', '100%']);
     unmount();
+  });
+});
+
+describe('Player sizes its bars through the CSSOM', () => {
+  // The old hydration tests guarded the sixteen-digit peak precision: pseudoPeaks makes
+  // irrational-looking floats, and each bar must carry a short percentage, not all of them.
+  const rounded = (p) => `${Math.round(Math.max(8, p * 100) * 1000) / 1000}%`;
+  const heights = (container) => [...container.querySelectorAll('.ef-player__bar')].map((b) => b.style.height);
+
+  async function hydrate(element) {
+    const { hydrateRoot } = await import('react-dom/client');
+    const { act } = await import('react');
+    const host = document.createElement('div');
+    host.innerHTML = renderToString(element);
+    expect(host.innerHTML).not.toMatch(/\sstyle="/);
+    document.body.appendChild(host);
+    const errors = [];
+    await act(async () => { hydrateRoot(host, element, { onRecoverableError: (e) => errors.push(e) }); });
+    return { host, errors };
+  }
+
+  it('generated peaks: every bar gets a short percentage, and hydration reports no mismatch', async () => {
+    const { host, errors } = await hydrate(<Player src="some-track.mp3" title="T" />);
+    expect(errors).toEqual([]);
+    const values = heights(host);
+    expect(values).toHaveLength(72);
+    for (const v of values) {
+      expect(v).toMatch(/^\d+(\.\d{1,3})?%$/);
+      expect(parseFloat(v)).toBeGreaterThanOrEqual(8);
+      expect(parseFloat(v)).toBeLessThanOrEqual(100);
+    }
+    host.remove();
+  });
+
+  it('caller-supplied peaks: each bar height equals its peak, rounded to three decimals', async () => {
+    const peaks = Array.from({ length: 12 }, (_, i) => (i + 1) / 7);
+    const { host, errors } = await hydrate(<Player src="x" peaks={peaks} />);
+    expect(errors).toEqual([]);
+    expect(heights(host)).toEqual(peaks.map(rounded));
+    host.remove();
+  });
+
+  it('peaks [0.2, 0.9] give 20% and 90%, and a peak under 8% is raised to 8%', async () => {
+    const { render } = await import('@testing-library/react');
+    const a = render(<Player src="x" peaks={[0.2, 0.9]} />);
+    expect(heights(a.container)).toEqual(['20%', '90%']);
+    a.unmount();
+    const b = render(<Player src="x" peaks={[0.01, 1]} />);
+    expect(heights(b.container)).toEqual(['8%', '100%']);
+    b.unmount();
   });
 });
