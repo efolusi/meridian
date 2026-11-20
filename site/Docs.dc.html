@@ -307,6 +307,11 @@ class Component extends DCLogic {
         p('Open an issue describing the gap, agree on the API in the thread, then submit the three files plus a specimen entry. Versioning and release policy live in guidelines/governance.md; the full contribution guide is CONTRIBUTING.md at the repo root.', 'Buka issue yang menjelaskan celahnya, sepakati API di thread, lalu kirim ketiga berkas plus entri spesimen. Kebijakan versioning dan rilis ada di guidelines/governance.md; panduan kontribusi lengkap ada di CONTRIBUTING.md di root repo.'),
       ] },
       { group: 'Reference', id: 'changelog', title: 'Changelog', lede: 'Notable changes, newest first. Full history in CHANGELOG.md.', blocks: [
+        h2('unreleased', 'Unreleased', 'Belum dirilis'),
+        list([
+          ['The Docs page works again.', 'A missing bracket in the 1.26.0 changelog stopped this page script; a test now compiles every site page.', 'Halaman Docs berfungsi lagi.', 'Satu kurung yang hilang di changelog 1.26.0 menghentikan skrip halaman ini; sebuah tes kini mengompilasi setiap halaman situs.'],
+          ['History keeps its counts.', 'The 1.0.0 entry says 201 tokens again, and the count check skips changelog history.', 'Riwayat menjaga angkanya.', 'Entri 1.0.0 kembali menyebut 201 token, dan pemeriksaan angka melewati riwayat changelog.'],
+        ]),
         h2('v1260', '1.26.0 (November 2026)', '1.26.0 (November 2026)'),
         list([
           ['LegalDocument refuses backslash links.', 'A link starting with a slash and a backslash, which browsers send off-site, renders as plain text.', 'LegalDocument menolak tautan garis miring terbalik.', 'Tautan yang diawali garis miring dan garis miring terbalik, yang dibawa peramban ke luar situs, tampil sebagai teks biasa.'],
@@ -316,6 +321,7 @@ class Component extends DCLogic {
           ['One theme control.', 'ThemeToggle cycles Light, Dark and System, follows the OS live on System, and shares the resolved theme with every Efolusi site through the efolusi_theme cookie.', 'Satu kontrol tema.', 'ThemeToggle berganti antara Terang, Gelap, dan Sistem, mengikuti OS secara langsung saat Sistem, dan membagikan tema yang dipakai ke semua situs Efolusi lewat cookie efolusi_theme.'],
           ['Hero and feature cards.', 'Hero opens a marketing page; FeatureCard takes the brand-wide peach, cocoa and amber tones and always keeps a hairline edge.', 'Hero dan kartu fitur.', 'Hero membuka halaman pemasaran; FeatureCard memakai tone peach, cocoa, dan amber yang sama untuk semua produk dan selalu punya garis tepi tipis.'],
           ['Pill buttons.', 'Button shape="pill" rounds the ends for calls to action on marketing pages.', 'Tombol pil.', 'Button shape="pill" membulatkan ujungnya untuk ajakan bertindak di halaman pemasaran.'],
+        ]),
         h2('v1251', '1.25.1 (November 2026)', '1.25.1 (November 2026)'),
         list([
           ['Badge danger is subtle again.', 'A leftover solid rule from the old destructive variant is removed, so the danger badge is the subtle status badge.', 'Badge danger kembali halus.', 'Aturan solid sisa varian destructive lama dihapus, jadi badge danger kembali menjadi badge status yang halus.'],
@@ -459,7 +465,7 @@ class Component extends DCLogic {
         h2('v100', '1.0.0 (July 2026)', '1.0.0 (Juli 2026)'),
         list([
           ['65 components', 'across 12 groups, each with source, types, and prompt guide.', '65 komponen', 'dalam 12 grup, masing-masing dengan source, tipe, dan panduan prompt.'],
-          ['221 tokens', 'in light, dark, and compact, derived from the Meridian mark.', '201 token', 'dalam terang, gelap, dan ringkas, diturunkan dari logo Meridian.'],
+          ['201 tokens', 'in light, dark, and compact, derived from the Meridian mark.', '201 token', 'dalam terang, gelap, dan ringkas, diturunkan dari logo Meridian.'],
           ['8 product kits', 'with connected journeys, 5 blocks, 5 page templates.', '8 kit produk', 'dengan alur terhubung, 5 blok, 5 templat halaman.'],
           ['Apache-2.0 license.', 'Copy freely, ship fast.', 'Lisensi Apache-2.0.', 'Salin bebas, rilis cepat.'],
         ]),
@@ -512,7 +518,7 @@ class Component extends DCLogic {
     const GROUP_ID = { 'Get started': 'Mulai', 'Guides': 'Panduan', 'Reference': 'Referensi' };
     const TITLE_ID = { introduction: 'Pendahuluan', installation: 'Instalasi', 'bundle-size': 'Ukuran bundle', theming: 'Penataan tema', 'dark-mode': 'Mode gelap & densitas', typography: 'Tipografi', monorepo: 'Repositori', ai: 'AI & skills', contributing: 'Berkontribusi', changelog: 'Catatan perubahan' };
     const LEDE_ID = {
-      introduction: 'Meridian adalah design system open-source serba-guna oleh Efolusi. 132 komponen aksesibel, 201 token, dan aplikasi contoh lengkap, tanpa langkah build.',
+      introduction: 'Meridian adalah design system open-source serba-guna oleh Efolusi. 132 komponen aksesibel, 221 token, dan aplikasi contoh lengkap, tanpa langkah build.',
       installation: 'Muat satu stylesheet dan satu bundle. Itu saja seluruh instalasinya.',
       'bundle-size': 'Seberapa besar tambahan tiap komponen pada aplikasi yang memasang Meridian dari npm.',
       theming: 'Tiga lapis token: ramp mentah, peran semantik, gaya komponen. Anda menata lapisan tengah.',

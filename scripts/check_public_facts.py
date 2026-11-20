@@ -51,6 +51,22 @@ public_surfaces = (
     ROOT / "site/Examples.dc.html",
     ROOT / "llms.txt",
 )
+def current_text(path):
+    """A page's text without its changelog history, whose counts are true for their release.
+
+    The history block is blanked line for line, so reported line numbers stay right.
+    """
+    source = path.read_text()
+    start = source.find("id: 'changelog'")
+    if start < 0:
+        return source
+    end = source.find("\n      ] },", start)
+    if end < 0:
+        # Fail closed: blanking to the end of the file would hide every count after it.
+        raise ValueError(f"{path}: changelog section has no closing '      ] }},' line")
+    return source[:start] + re.sub(r"[^\n]", " ", source[start:end]) + source[end:]
+
+
 component_claim_patterns = (
     re.compile(r"\b(\d+)\s+accessible\s+(?:React\s+)?components\b", re.IGNORECASE),
     re.compile(r"\b(\d+)\s+komponen\s+aksesibel\b", re.IGNORECASE),
@@ -65,7 +81,7 @@ component_claim_patterns = (
     re.compile(r"\b(\d+)\s+components\s+\(source\b", re.IGNORECASE),
 )
 for path in public_surfaces:
-    source = path.read_text()
+    source = current_text(path)
     for pattern in component_claim_patterns:
         for match in pattern.finditer(source):
             if int(match.group(1)) != facts["components"]:
@@ -80,9 +96,10 @@ token_claim_patterns = (
     re.compile(r"\b(\d+)\s+unique\s+tokens?(?:\s+names?)?\b", re.IGNORECASE),
     re.compile(r"\b(\d+)\s+token\s+unik\b", re.IGNORECASE),
     re.compile(r"\b(\d+)\s+(?:tokens|token)\s+·", re.IGNORECASE),
+    re.compile(r"\b(\d+)\s+(?:tokens|token),", re.IGNORECASE),
 )
 for path in public_surfaces:
-    source = path.read_text()
+    source = current_text(path)
     for pattern in token_claim_patterns:
         for match in pattern.finditer(source):
             if int(match.group(1)) != facts["tokens"]:
