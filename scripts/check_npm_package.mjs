@@ -169,7 +169,8 @@ if (shippedIcons !== repoIcons) {
 // Server Component importing this package is a build error.
 const noDirective = [];
 for (const group of fs.readdirSync(path.join(ROOT, 'dist'), { withFileTypes: true })) {
-  if (!group.isDirectory() || group.name.startsWith('assets') || group.name === 'tokens') continue;
+  // browser/ holds plain scripts for pages without React, not components.
+  if (!group.isDirectory() || group.name.startsWith('assets') || group.name === 'tokens' || group.name === 'browser') continue;
   for (const f of fs.readdirSync(path.join(ROOT, 'dist', group.name))) {
     if (!f.endsWith('.js') || f === '_svg.js') continue;
     const head = fs.readFileSync(path.join(ROOT, 'dist', group.name, f), 'utf8').slice(0, 40);

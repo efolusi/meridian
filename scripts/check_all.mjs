@@ -34,6 +34,7 @@ const GENERATORS = [
   ['node', ['scripts/build_site_nav.mjs']],
   ['node', ['scripts/build_guard_rules.mjs']],
   ['node', ['scripts/build_size_table.mjs']],
+  ['node', ['scripts/build_browser.mjs']],
 ]
 
 /**
@@ -61,6 +62,9 @@ const GENERATED_PATHS = [
   'packages/guard/src/generated/meridian-rules.json',
   'site/sizes.json',
   'guidelines/bundle-size.md',
+  'browser/theme.js',
+  'browser/theme-init.js',
+  'browser/hashes.json',
 ]
 
 const GATES = [

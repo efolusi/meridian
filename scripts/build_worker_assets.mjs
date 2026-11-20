@@ -17,7 +17,7 @@ export const PUBLIC_PATHS = [
   'tokens.json', 'registry.json', 'llms.txt', 'llms-full.txt',
   'README.md', 'ARCHITECTURE.md', 'CHANGELOG.md', 'CONTRIBUTING.md', 'SECURITY.md', 'LICENSE',
   'robots.txt', 'sitemap.xml', '_headers', '_redirects',
-  'assets', 'blocks', 'compatibility', 'components', 'guidelines', 'showcases', 'site', 'skills', 'starters', 'tokens',
+  'assets', 'blocks', 'browser', 'compatibility', 'components', 'guidelines', 'showcases', 'site', 'skills', 'starters', 'tokens',
 ];
 export const FORBIDDEN_PATHS = ['.github', '.nvmrc', 'CLAUDE.md', 'package.json', 'package-lock.json', 'scripts', 'tests', 'wrangler.jsonc'];
 export const OUT_DIR = 'public';

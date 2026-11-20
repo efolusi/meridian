@@ -13,9 +13,9 @@ CSS is not counted per component: `styles.css` ships every component style in on
 
 | File | Size | Gzip |
 | --- | ---: | ---: |
-| `@efolusi/meridian` | 364.7 kB | 82.7 kB |
-| `dist/components.css` | 220.7 kB | 30.0 kB |
-| `_ds_bundle.js` | 853.9 kB | 152.1 kB |
+| `@efolusi/meridian` | 364.9 kB | 82.7 kB |
+| `dist/components.css` | 221.0 kB | 30.0 kB |
+| `_ds_bundle.js` | 854.6 kB | 152.3 kB |
 
 The root import, `@efolusi/meridian`, is every component. `_ds_bundle.js` is the zero-build CDN bundle, which also carries each component's CSS. The root import is minified; the CSS and the CDN bundle are measured as shipped.
 
@@ -129,7 +129,7 @@ The root import, `@efolusi/meridian`, is every component. `_ds_bundle.js` is the
 | `marketing/FeatureCard.js` | FeatureGrid, FeatureCard | 44.6 kB | 7.4 kB |
 | `marketing/Hero.js` | Hero, HeroAccent | 1.3 kB | 0.6 kB |
 | `marketing/LegalDocument.js` | LegalDocument | 2.5 kB | 1.0 kB |
-| `marketing/Marquee.js` | Marquee | 44.8 kB | 7.5 kB |
+| `marketing/Marquee.js` | Marquee | 44.9 kB | 7.6 kB |
 | `marketing/Reveal.js` | Reveal | 1.3 kB | 0.8 kB |
 | `marketing/Section.js` | Section, SectionHead | 1.2 kB | 0.5 kB |
 | `marketing/SiteFooter.js` | SiteFooter | 2.1 kB | 0.8 kB |

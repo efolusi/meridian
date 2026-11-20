@@ -118,7 +118,7 @@ describe('Worker assets (scripts/build_worker_assets.mjs)', () => {
 
   it('keeps repository and operator files out of the published tree', () => {
     for (const path of FORBIDDEN_PATHS) expect(PUBLIC_PATHS).not.toContain(path)
-    expect(PUBLIC_PATHS).toEqual(expect.arrayContaining(['index.html', '404.html', '_ds_bundle.js', '_headers', '_redirects', 'assets', 'site', 'tokens']))
+    expect(PUBLIC_PATHS).toEqual(expect.arrayContaining(['index.html', '404.html', '_ds_bundle.js', '_headers', '_redirects', 'assets', 'browser', 'site', 'tokens']))
   })
 
   it('builds public/ from the exact committed bytes of HEAD', () => {
@@ -155,7 +155,7 @@ describe('_headers is the one source of response headers', () => {
   it('never sets one header twice on a path, because Cloudflare would join the values', () => {
     const paths = ['/assets/favicon.svg', '/assets/icons/x.svg', '/assets/fonts/x.woff2', '/_ds_bundle.js', '/styles.css',
       '/landing.css', '/tokens/colors.css', '/site/DsSite.dc.html', '/site/registry/button.json', '/site/registry.json',
-      '/registry.json', '/LICENSE', '/README.md', '/meridian-release.txt', '/index.html']
+      '/registry.json', '/LICENSE', '/README.md', '/meridian-release.txt', '/index.html', '/browser/marketing.js']
     for (const path of paths) {
       for (const [name, values] of Object.entries(headersFor(path))) expect(values, `${path} ${name}`).toHaveLength(1)
     }
@@ -165,14 +165,14 @@ describe('_headers is the one source of response headers', () => {
     expect(headersFor('/assets/favicon.svg')['cache-control']).toEqual(['public, max-age=604800'])
     expect(headersFor('/assets/icons/x.svg')['cache-control']).toEqual(['public, max-age=604800'])
     expect(headersFor('/assets/fonts/x.woff2')['cache-control']).toEqual(['public, max-age=31536000'])
-    for (const path of ['/_ds_bundle.js', '/styles.css', '/landing.css', '/tokens/colors.css', '/site/DsSite.dc.html']) {
+    for (const path of ['/_ds_bundle.js', '/styles.css', '/landing.css', '/tokens/colors.css', '/site/DsSite.dc.html', '/browser/marketing.js']) {
       expect(headersFor(path)['cache-control'], path).toEqual(['no-cache'])
     }
     expect(headersFor('/meridian-release.txt')['cache-control']).toEqual(['no-store, max-age=0'])
   })
 
-  it('lets any origin load the registry and the fonts, and nothing else', () => {
-    for (const path of ['/registry.json', '/site/registry.json', '/site/registry/button.json', '/assets/fonts/x.woff2']) {
+  it('lets any origin load the registry, the fonts and the plain browser scripts, and nothing else', () => {
+    for (const path of ['/registry.json', '/site/registry.json', '/site/registry/button.json', '/assets/fonts/x.woff2', '/browser/marketing.js', '/browser/theme.js']) {
       expect(headersFor(path)['access-control-allow-origin'], path).toEqual(['*'])
     }
     for (const path of ['/site/DsSite.dc.html', '/_ds_bundle.js', '/assets/favicon.svg']) {

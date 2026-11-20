@@ -12,3 +12,5 @@ Meridian fetches nothing: the account entry, the `ThemeToggle` and the main call
   actions={<><ThemeToggle /><Button shape="pill" size="sm">Get in touch</Button></>}
 />
 ```
+
+On a site without React, render the same markup and load `browser/marketing.js` for the menu; see [theming § Plain HTML sites](../../guidelines/theming.md#plain-html-sites).

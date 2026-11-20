@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<script src="./theme.js"></script>
+<script src="../browser/theme-init.js"></script>
+<script type="module" src="../browser/marketing.js"></script>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Docs | Meridian</title>
@@ -44,7 +45,7 @@
 <x-import component="SiteSearch" from="./SiteSearch.jsx" hint-size="220px,36px"></x-import>
 <a href="https://github.com/efolusi/meridian" class="site-gh hide-sm" aria-label="GitHub repository" title="GitHub repository" style-hover="color:var(--text-primary);background:var(--surface-sunken)"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"></path><path d="M9 18c-4.51 2-5-2-7-2"></path></svg></a>
 <button type="button" class="site-lang" aria-label="Ganti ke Bahasa Indonesia" title="Ganti ke Bahasa Indonesia">ID</button>
-<button onClick="{{ toggleTheme }}" class="site-theme" aria-label="Switch theme" title="Switch theme" style-hover="color:var(--text-primary);background:var(--surface-sunken)"><svg class="icon-monitor" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect width="20" height="14" x="2" y="3" rx="2"/><line x1="8" x2="16" y1="21" y2="21"/><line x1="12" x2="12" y1="17" y2="21"/></svg><svg class="icon-sun" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="4"></circle><path d="M12 2v2"></path><path d="M12 20v2"></path><path d="m4.93 4.93 1.41 1.41"></path><path d="m17.66 17.66 1.41 1.41"></path><path d="M2 12h2"></path><path d="M20 12h2"></path><path d="m6.34 17.66-1.41 1.41"></path><path d="m19.07 4.93-1.41 1.41"></path></svg><svg class="icon-moon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"></path></svg></button>
+<button data-slot="theme-toggle" class="site-theme" aria-label="Switch theme" title="Switch theme" style-hover="color:var(--text-primary);background:var(--surface-sunken)"><svg class="icon-monitor" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect width="20" height="14" x="2" y="3" rx="2"/><line x1="8" x2="16" y1="21" y2="21"/><line x1="12" x2="12" y1="17" y2="21"/></svg><svg class="icon-sun" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="4"></circle><path d="M12 2v2"></path><path d="M12 20v2"></path><path d="m4.93 4.93 1.41 1.41"></path><path d="m17.66 17.66 1.41 1.41"></path><path d="M2 12h2"></path><path d="M20 12h2"></path><path d="m6.34 17.66-1.41 1.41"></path><path d="m19.07 4.93-1.41 1.41"></path></svg><svg class="icon-moon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"></path></svg></button>
 </div>
 </header>
 <div style="display:flex;max-width:1440px;margin:0 auto;width:100%;flex:1">
@@ -127,7 +128,7 @@
 class Component extends DCLogic {
   state = { dark: false, si: 0, langTick: 0, sizes: null, sizesFailed: false };
   componentDidMount() {
-    if (window.EfSiteTheme) window.EfSiteTheme.label();
+    
     this.setState({ dark: document.documentElement.getAttribute('data-theme') === 'dark' });
     this._onHash = () => this.applyHash();
     window.addEventListener('hashchange', this._onHash);
@@ -309,6 +310,7 @@ class Component extends DCLogic {
       { group: 'Reference', id: 'changelog', title: 'Changelog', lede: 'Notable changes, newest first. Full history in CHANGELOG.md.', blocks: [
         h2('unreleased', 'Unreleased', 'Belum dirilis'),
         list([
+          ['Plain scripts for sites without React.', 'browser/theme-init.js and browser/marketing.js bring the theme toggle, the header menu and the marquee pause to any HTML page, with published hashes for a strict CSP. This site uses them too.', 'Skrip biasa untuk situs tanpa React.', 'browser/theme-init.js dan browser/marketing.js membawa tombol tema, menu header, dan jeda marquee ke halaman HTML mana pun, dengan hash yang dipublikasikan untuk CSP ketat. Situs ini juga memakainya.'],
           ['The Docs page works again.', 'A missing bracket in the 1.26.0 changelog stopped this page script; a test now compiles every site page.', 'Halaman Docs berfungsi lagi.', 'Satu kurung yang hilang di changelog 1.26.0 menghentikan skrip halaman ini; sebuah tes kini mengompilasi setiap halaman situs.'],
           ['History keeps its counts.', 'The 1.0.0 entry says 201 tokens again, and the count check skips changelog history.', 'Riwayat menjaga angkanya.', 'Entri 1.0.0 kembali menyebut 201 token, dan pemeriksaan angka melewati riwayat changelog.'],
         ]),
@@ -551,10 +553,6 @@ class Component extends DCLogic {
     const prev = this.state.si > 0 ? all[this.state.si - 1] : null;
     const next = this.state.si < all.length - 1 ? all[this.state.si + 1] : null;
     return {
-      toggleTheme: () => {
-        const nextT = window.EfSiteTheme.cycle();
-        this.setState({ dark: nextT === 'dark' });
-      },
       navGroups: groups,
       activeId: cur.id,
       activeTitle: tTitle(cur),

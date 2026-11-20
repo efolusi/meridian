@@ -159,3 +159,26 @@ Every Efolusi site follows this one contract, through `ThemeToggle` and `themeIn
 | Before paint | `themeInitScript()` inlined in `<head>`. |
 | Markup | Light removes `data-theme` (bare `:root`); dark sets `data-theme="dark"`. |
 | Control | One 44px button. Light → Dark → System → Light. On System, a `prefers-color-scheme` change re-resolves the theme and rewrites the cookie. Labels in English and Indonesian. |
+
+## Plain HTML sites
+
+Sites without React load two files from `browser/`, shipped in the npm package (`@efolusi/meridian/browser/…`) and at `https://meridian.efolusi.com/browser/…`:
+
+```html
+<head>
+  <script src="/browser/theme-init.js"></script>          <!-- before the CSS: no flash -->
+  <script type="module" src="/browser/marketing.js"></script>
+</head>
+```
+
+`marketing.js` wires the markup the React components render, by `data-slot`: the theme toggle, the `SiteHeader` mobile menu and the `Marquee` pause button. It also wires markup added later. `init(root)` returns a cleanup function, for content you mount yourself.
+
+```html
+<button type="button" data-slot="theme-toggle" class="ef-theme-toggle">
+  <svg data-theme-icon="light" aria-hidden="true">…</svg>
+  <svg data-theme-icon="dark" aria-hidden="true">…</svg>
+  <svg data-theme-icon="system" aria-hidden="true">…</svg>
+</button>
+```
+
+The labels follow the nearest `lang` (`en` or `id`). For a strict CSP, the files use no eval, no HTML strings and no style attributes. `browser/hashes.json` lists their `sha256-` hashes for `integrity=` or a `script-src` hash, and the hashes change only when a file changes.

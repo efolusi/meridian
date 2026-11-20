@@ -200,6 +200,12 @@ for (const f of fs.readdirSync(FONT_DIR).sort()) {
 // Apache-2.0 requires the licence text to travel with the code; a package.json field
 // saying "Apache-2.0" is metadata, not the grant. THIRD_PARTY_NOTICES covers the fonts
 // this package redistributes.
+// Plain scripts for sites without React (browser/), shipped byte for byte so their
+// published hashes stay true.
+for (const f of ['theme-init.js', 'theme.js', 'marketing.js', 'hashes.json']) {
+  files.set(`browser/${f}`, fs.readFileSync(path.join(ROOT, 'browser', f), 'utf8'));
+}
+
 for (const f of ['LICENSE', 'THIRD_PARTY_NOTICES.md']) {
   files.set(f, fs.readFileSync(path.join(ROOT, f), 'utf8'));
 }
@@ -233,6 +239,8 @@ files.set('package.json', JSON.stringify({
     // Without this the './*' pattern rewrites asset subpaths to a '.js' that
     // does not exist, so an explicit font or licence import fails.
     './assets/*': './assets/*',
+    // Plain scripts: no .d.ts and no extension rewrite, so the files resolve as published.
+    './browser/*': './browser/*',
     // Both spellings of a deep import must work. './*' alone appends the
     // extension, so 'forms/Button.js' resolved to forms/Button.js.js — which is
     // exactly the form the README documents. Node prefers the more specific

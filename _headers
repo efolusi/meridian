@@ -53,6 +53,11 @@
 /tokens/*
   Cache-Control: no-cache
 
+# Plain scripts for other Efolusi sites: module scripts load cross-origin only with CORS.
+/browser/*
+  Cache-Control: no-cache
+  Access-Control-Allow-Origin: *
+
 /site/*
   Cache-Control: no-cache
 

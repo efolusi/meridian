@@ -78,8 +78,8 @@
 [data-theme="dark"] .site-theme .icon-sun{display:none}
 [data-theme="dark"] .site-theme .icon-moon{display:block}
 .site-theme .icon-monitor{display:none}
-[data-theme-preference="system"] .site-theme .icon-monitor{display:block}
-[data-theme-preference="system"] .site-theme .icon-sun,[data-theme-preference="system"] .site-theme .icon-moon{display:none}
+.site-theme[data-preference="system"] .icon-monitor{display:block}
+.site-theme[data-preference="system"] .icon-sun,.site-theme[data-preference="system"] .icon-moon{display:none}
 
 /* Touch pointers get the design system's own minimum target instead of the
    36px mouse geometry. --tap-min ships in tokens/spacing.css; the fallback
