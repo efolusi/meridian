@@ -38,7 +38,7 @@ describe('theme toggle', () => {
     b.click();
     expect([b.dataset.preference, attr(), cookie(), localStorage.getItem('efolusi-theme')]).toEqual(['dark', 'dark', 'dark', 'dark']);
     b.click();
-    expect([b.dataset.preference, attr(), cookie()]).toEqual(['system', null, 'light']);
+    expect([b.dataset.preference, attr(), cookie()]).toEqual(['system', 'light', 'light']);
     b.click();
     expect(b.dataset.preference).toBe('light');
   });

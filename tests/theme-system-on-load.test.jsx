@@ -22,7 +22,7 @@ describe('System on page load', () => {
     document.cookie = 'efolusi_theme=dark; Path=/';
     new Function(themeInitScript())();
     expect(cookie()).toBe('light');
-    expect(document.documentElement.hasAttribute('data-theme')).toBe(false);
+    expect(document.documentElement.getAttribute('data-theme')).toBe('light');
   });
 
   it('the pre-paint script leaves an inherited cookie alone when there is no choice here', () => {
