@@ -179,6 +179,25 @@ Under a nonce-based CSP, pass the request's nonce, or the script is blocked and 
 
 Under a hash-based CSP, allow the sha256 of the exact `themeInitScript()` output (hash the string the function returns, byte for byte, at build or start time). pay and komando.efolusi.com do this. A hash written by hand goes stale when the contract changes, so compute it from the function.
 
+## Server layouts
+
+`themeInitScript` and the rest of the theme contract are also exported from `@efolusi/meridian/theme`, a module with no React import and no `"use client"`, so a server layout can import it directly:
+
+```jsx
+// app/layout.jsx (a Server Component)
+import { themeInitScript } from '@efolusi/meridian/theme';
+
+<head><script dangerouslySetInnerHTML={{ __html: themeInitScript() }} /></head>
+```
+
+Under a nonce-based CSP, pass the request's nonce, or the script is blocked and the first paint flashes the wrong theme:
+
+```jsx
+<script nonce={nonce} dangerouslySetInnerHTML={{ __html: themeInitScript() }} />
+```
+
+Under a hash-based CSP, allow the sha256 of the exact `themeInitScript()` output (hash the string the function returns, byte for byte, at build or start time). pay and komando.efolusi.com do this. A hash written by hand goes stale when the contract changes, so compute it from the function.
+
 ## Plain HTML sites
 
 Sites without React load two files from `browser/`. Self-host them from the npm package (`@efolusi/meridian/browser/…`), or load the versioned copy, which never changes once published, with its hash from `browser/hashes.json`:
