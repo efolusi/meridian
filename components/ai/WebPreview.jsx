@@ -1,8 +1,10 @@
 'use client';
 import React from 'react';
-import { injectEfCss } from '../forms/Button.jsx';
+import { injectEfCss, styleRef } from '../forms/Button.jsx';
 import { Icon } from '../icons/Icon.jsx';
 const CSS = `
+.ef-webprev__btn--cons{position:relative}
+.ef-webprev__log--empty{color:var(--text-muted)}
 .ef-webprev{display:flex;flex-direction:column;border:1px solid var(--border-default);border-radius:var(--radius-md);background:var(--surface-card);padding:var(--space-2);font-family:var(--font-sans)}
 .ef-webprev__bar{display:flex;align-items:center;gap:var(--space-1);padding:var(--space-0-5) var(--space-1) var(--space-2)}
 .ef-webprev__btn{display:inline-flex;align-items:center;justify-content:center;width:var(--control-h-sm);height:var(--control-h-sm);border:none;background:none;cursor:pointer;color:var(--text-muted);border-radius:var(--radius-sm);flex:none;transition:color var(--dur-fast) var(--ease-out),background var(--dur-fast) var(--ease-out)}
@@ -66,17 +68,17 @@ export function WebPreview({ url: urlProp = '', height = 340, logs = [], default
         {VIEWPORTS.map(v => (
           <button key={v.id} type="button" className={`ef-webprev__btn${vp === v.id ? ' ef-webprev__btn--on' : ''}`} aria-label={v.id} aria-pressed={vp === v.id} onClick={() => setVp(v.id)}><Icon name={v.icon} size={16} /></button>
         ))}
-        <button type="button" className={`ef-webprev__btn${cons ? ' ef-webprev__btn--on' : ''}`} style={{ position: 'relative' }} aria-label="Console" aria-pressed={cons} onClick={() => setCons(!cons)}>
+        <button type="button" className={`ef-webprev__btn ef-webprev__btn--cons${cons ? ' ef-webprev__btn--on' : ''}`} aria-label="Console" aria-pressed={cons} onClick={() => setCons(!cons)}>
           <Icon name="terminal" size={16} />
           {errs ? <span className="ef-webprev__badge">{errs}</span> : null}
         </button>
         <a className="ef-webprev__btn" aria-label="Open in new tab" href={safe} target="_blank" rel="noreferrer noopener"><Icon name="external-link" size={12} /></a>
       </div>
-      <div className="ef-webprev__stage" style={{ height }}>
+      <div className="ef-webprev__stage" ref={styleRef({ height })}>
         {children
-          ? <div className="ef-webprev__fake" style={width ? { width } : null}>{children}</div>
+          ? <div className="ef-webprev__fake" ref={styleRef({ width })}>{children}</div>
           : safe
-            ? <iframe key={safe + '-' + key} className="ef-webprev__frame" src={safe} title="Web preview" sandbox="allow-scripts allow-same-origin allow-forms allow-popups" style={width ? { width } : null}></iframe>
+            ? <iframe key={safe + '-' + key} className="ef-webprev__frame" src={safe} title="Web preview" sandbox="allow-scripts allow-same-origin allow-forms allow-popups" ref={styleRef({ width })}></iframe>
             : <div className="ef-webprev__empty">Enter a URL to preview</div>}
       </div>
       <div className="ef-webprev__consbody"><div className="ef-webprev__consclip">
@@ -87,7 +89,7 @@ export function WebPreview({ url: urlProp = '', height = 340, logs = [], default
               <span>{l.text}</span>
             </div>
           ))}
-          {!logs.length ? <div className="ef-webprev__log" style={{ color: 'var(--text-muted)' }}>Console is empty</div> : null}
+          {!logs.length ? <div className="ef-webprev__log ef-webprev__log--empty">Console is empty</div> : null}
         </div>
       </div></div>
     </div>

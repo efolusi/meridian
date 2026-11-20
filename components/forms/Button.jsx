@@ -124,6 +124,22 @@ export function cssPct(value) {
   return (Math.round(value * 1000) / 1000) + '%';
 }
 /**
+ * A ref callback that sets CSS properties on the node through the CSSOM, so a runtime
+ * value needs no style attribute (strict CSP drops those). null or undefined removes it.
+ * It sits here beside injectEfCss and mergeRefs because build_bundle.mjs only takes
+ * components/<group>/*.jsx and counts every such file as a component, so a helper-only
+ * module has no place in the bundle.
+ */
+export function styleRef(values) {
+  return (node) => {
+    if (!node) return;
+    for (const [name, value] of Object.entries(values)) {
+      if (value == null || value === false) node.style.removeProperty(name);
+      else node.style.setProperty(name, typeof value === 'number' ? `${value}px` : String(value));
+    }
+  };
+}
+/**
  * Point several refs at one node.
  *
  * A component that forwards a ref usually needs the same node itself — to

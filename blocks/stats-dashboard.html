@@ -34,7 +34,7 @@ function Block() {
         <Card><CardHeader><CardTitle>Top agents</CardTitle></CardHeader><CardContent style={{ paddingInline: 0, marginBlockEnd: 'calc(var(--card-spacing) * -1)' }}>
           <Table rowKey="id" columns={[
             { key: 'name', label: 'Agent' },
-            { key: 'runs', label: 'Runs', numeric: true, align: 'right' },
+            { key: 'runs', label: 'Runs', numeric: true, align: 'end' },
             { key: 'status', label: 'Status', render: (v) => <Badge variant={v === 'Live' ? 'default' : 'secondary'} className={v === 'Live' ? 'ef-badge--success' : undefined}>{v === 'Live' && <Icon name="circle" size={8} strokeWidth={4} data-icon="inline-start" />}{v}</Badge> },
           ]} rows={[
             { id: 'a', name: 'Inbox triager', runs: 4120, status: 'Live' },

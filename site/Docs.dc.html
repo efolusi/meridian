@@ -310,6 +310,8 @@ class Component extends DCLogic {
       { group: 'Reference', id: 'changelog', title: 'Changelog', lede: 'Notable changes, newest first. Full history in CHANGELOG.md.', blocks: [
         h2('unreleased', 'Unreleased', 'Belum dirilis'),
         list([
+          ['Table column align is start, center or end.', 'left and right are gone: use align: \'end\' where you wrote \'right\', and \'start\' where you wrote \'left\'. The alignment now follows the text direction.', 'Align kolom Table adalah start, center, atau end.', 'left dan right dihapus: pakai align: \'end\' di tempat \'right\', dan \'start\' di tempat \'left\'. Perataan kini mengikuti arah teks.'],
+          ['Ten more components work under a strict CSP.', 'Citation, WebPreview, BarChart, Table, TreeList, CodeBlock, Console, Toast, ScrollArea and AspectRatio render no style attribute; runtime sizes go through the CSSOM.', 'Sepuluh komponen lagi berjalan dengan CSP ketat.', 'Citation, WebPreview, BarChart, Table, TreeList, CodeBlock, Console, Toast, ScrollArea, dan AspectRatio tidak lagi merender atribut style; ukuran saat berjalan diatur lewat CSSOM.'],
           ['Plain scripts for sites without React.', 'browser/theme-init.js and browser/marketing.js bring the theme toggle, the header menu and the marquee pause to any HTML page, with published hashes for a strict CSP. This site uses them too.', 'Skrip biasa untuk situs tanpa React.', 'browser/theme-init.js dan browser/marketing.js membawa tombol tema, menu header, dan jeda marquee ke halaman HTML mana pun, dengan hash yang dipublikasikan untuk CSP ketat. Situs ini juga memakainya.'],
         ]),
         h2('v1261', '1.26.1 (November 2026)', '1.26.1 (November 2026)'),
@@ -484,7 +486,7 @@ class Component extends DCLogic {
     if (!this.state.sizes) return { isP: true, text: id ? 'Memuat ukuran…' : 'Loading sizes…' };
     // A no-break space keeps the unit on the number's line in narrow columns.
     const kb = v => (v / 1024).toFixed(1) + '\u00a0kB';
-    const num = (key, label, sortable) => ({ key, label, align: 'right', numeric: true, sortable, render: kb });
+    const num = (key, label, sortable) => ({ key, label, align: 'end', numeric: true, sortable, render: kb });
     if (which === 'totals') {
       const rows = Object.entries(this.state.sizes.totals).map(([file, v]) => ({ file, bytes: v.bytes, gzip: v.gzip }));
       return { isTable: true, props: { dense: true, rowKey: 'file', rows, columns: [

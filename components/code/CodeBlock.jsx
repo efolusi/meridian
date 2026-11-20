@@ -1,8 +1,9 @@
 'use client';
 import React from 'react';
 import { Icon } from '../icons/Icon.jsx';
-import { injectEfCss } from '../forms/Button.jsx';
+import { injectEfCss, mergeRefs, styleRef } from '../forms/Button.jsx';
 const CSS = `
+.ef-code__less{display:flex;justify-content:center;padding:0 0 var(--space-2)}
 .ef-code{position:relative;background:var(--surface-code);border:1px solid var(--border-code);border-radius:var(--radius-md);overflow:hidden}
 .ef-code__head{display:flex;align-items:center;padding:var(--space-2) var(--space-2) var(--space-2) var(--space-4);border-bottom:1px solid var(--code-divider)}
 .ef-code__lang{font-family:var(--font-mono);font-size:var(--text-2xs);color:var(--code-ink-subtle)}
@@ -61,17 +62,17 @@ export function CodeBlock({ lang, title, children, maxHeight, clip, clipHeight =
         <span className="ef-code__sr" role="status">{copied === 'done' ? 'Copied to clipboard' : copied === 'failed' ? 'Copy failed' : ''}</span>
       </div>
       {clip ? (
-        <div className="ef-code__win" style={{ height: full === null ? (open ? undefined : clipHeight) : (open ? full : Math.min(full, clipHeight)) }}>
+        <div className="ef-code__win" ref={styleRef({ height: full === null ? (open ? undefined : clipHeight) : (open ? full : Math.min(full, clipHeight)) })}>
           <pre ref={ref}>{children}</pre>
           {full !== null && full > clipHeight && !open ? (
             <div className="ef-code__fade"><button type="button" className="ef-code__more" onClick={() => setOpen(true)}><Icon name="chevron-down" size={12} />Show all</button></div>
           ) : null}
           {open && full !== null && full > clipHeight ? (
-            <div style={{ display: 'flex', justifyContent: 'center', padding: '0 0 8px' }}><button type="button" className="ef-code__more" onClick={() => setOpen(false)}><Icon name="chevron-up" size={12} />Collapse</button></div>
+            <div className="ef-code__less"><button type="button" className="ef-code__more" onClick={() => setOpen(false)}><Icon name="chevron-up" size={12} />Collapse</button></div>
           ) : null}
         </div>
       ) : (
-        <pre ref={ref} style={maxHeight ? { maxHeight, overflowY: 'auto' } : undefined}>{children}</pre>
+        <pre ref={mergeRefs(ref, styleRef({ 'max-height': maxHeight, 'overflow-y': maxHeight ? 'auto' : undefined }))}>{children}</pre>
       )}
     </div>
   );

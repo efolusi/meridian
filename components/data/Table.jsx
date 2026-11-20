@@ -1,6 +1,6 @@
 'use client';
 import React from 'react';
-import { injectEfCss } from '../forms/Button.jsx';
+import { injectEfCss, mergeRefs, styleRef } from '../forms/Button.jsx';
 import { Checkbox } from '../forms/Checkbox.jsx';
 import { Icon } from '../icons/Icon.jsx';
 const CSS = `
@@ -19,6 +19,8 @@ const CSS = `
 .ef-table__row--click:focus-visible{outline:2px solid var(--focus-ring-color);outline-offset:-2px}
 .ef-table__row--sel{background:var(--accent-subtle)}
 .ef-table .ef-num{font-family:var(--font-mono);font-size:var(--text-sm)}
+.ef-table [data-align="start"]{text-align:start}.ef-table [data-align="end"]{text-align:end}.ef-table [data-align="center"]{text-align:center}
+.ef-table__skel{width:75%}.ef-table__skel--first{width:55%}
 .ef-table__sort{display:inline-flex;align-items:center;gap:var(--space-1);border:none;background:none;padding:0;margin:0;font:inherit;letter-spacing:inherit;text-transform:inherit;color:inherit;cursor:pointer}
 .ef-table__sort:hover{color:var(--text-primary)}
 .ef-table__sort:focus-visible{outline:none;box-shadow:var(--focus-ring);border-radius:var(--radius-sm)}
@@ -95,11 +97,11 @@ export const Table = React.forwardRef(function Table({
   const someOn = !allOn && allKeys.some(k => selected.includes(k));
   const span = columns.length + (selectable ? 1 : 0);
 
-  const wrapStyle = stickyHeader || maxHeight ? { maxHeight: maxHeight || 320, ...style } : style;
+  const wrapRef = styleRef({ 'max-height': stickyHeader || maxHeight ? (maxHeight || 320) : undefined });
 
   return (
-    <div ref={ref} {...rest}
-      className={`ef-table-wrap${stickyHeader || maxHeight ? ' ef-table-wrap--sticky' : ''}`} style={wrapStyle}>
+    <div ref={mergeRefs(ref, wrapRef)} {...rest}
+      className={`ef-table-wrap${stickyHeader || maxHeight ? ' ef-table-wrap--sticky' : ''}`} style={style}>
       <table className={`ef-table${dense ? ' ef-table--dense' : ''}${stickyHeader ? ' ef-table--sticky' : ''}${className ? ' ' + className : ''}`}>
         <thead><tr>
           {selectable ? (
@@ -112,7 +114,7 @@ export const Table = React.forwardRef(function Table({
           {columns.map(c => {
             const on = sort && sort.key === c.key;
             return (
-              <th key={c.key} style={{ width: c.width, textAlign: c.align }}
+              <th key={c.key} data-align={c.align} ref={styleRef({ width: c.width })}
                 aria-sort={c.sortable ? (on ? (sort.direction === 'asc' ? 'ascending' : 'descending') : 'none') : undefined}>
                 {c.sortable ? (
                   <button type="button" className={`ef-table__sort${on ? ' ef-table__sort--on' : ''}`} onClick={() => toggleSort(c.key)}>
@@ -131,7 +133,7 @@ export const Table = React.forwardRef(function Table({
             ? Array.from({ length: loadingRows }, (_, i) => (
                 <tr key={'sk' + i}>
                   {Array.from({ length: span }, (_, j) => (
-                    <td key={j}><div className="ef-table__skel" style={{ width: j === 0 ? '55%' : '75%' }} /></td>
+                    <td key={j}><div className={`ef-table__skel${j === 0 ? ' ef-table__skel--first' : ''}`} /></td>
                   ))}
                 </tr>
               ))
@@ -158,7 +160,7 @@ export const Table = React.forwardRef(function Table({
                         </td>
                       ) : null}
                       {columns.map(c => (
-                        <td key={c.key} className={c.numeric ? 'ef-num' : ''} style={{ textAlign: c.align }}>
+                        <td key={c.key} className={c.numeric ? 'ef-num' : ''} data-align={c.align}>
                           {c.render ? c.render(row[c.key], row, i) : row[c.key]}
                         </td>
                       ))}

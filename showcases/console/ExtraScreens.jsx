@@ -103,7 +103,7 @@ function BillingScreen({ notify }) {
       <Card><CardHeader><CardTitle>Invoices</CardTitle><CardDescription>Also emailed to billing@acme.co on the 1st.</CardDescription></CardHeader><CardContent style={{ paddingInline: 0, marginBlockEnd: 'calc(var(--card-spacing) * -1)' }}><Table rowKey="id" columns={[
           { key: 'id', label: 'Invoice', render: v => <strong>#{v}</strong> },
           { key: 'date', label: 'Date' },
-          { key: 'amount', label: 'Amount', numeric: true, align: 'right' },
+          { key: 'amount', label: 'Amount', numeric: true, align: 'end' },
           { key: 'status', label: 'Status', render: v => <Badge variant={v === 'Paid' ? 'default' : 'secondary'} className={v === 'Paid' ? 'ef-badge--success' : undefined}><Icon name="circle" size={8} strokeWidth={4} data-icon="inline-start" />{v}</Badge> },
           { key: 'dl', label: '', width: 50, render: (v, r) => <IconButton icon="download" label="Download PDF" size="sm" onClick={() => notify('Invoice #' + r.id + ' downloading', 'PDF on its way.')} /> },
         ]} rows={INVOICES} /></CardContent></Card>

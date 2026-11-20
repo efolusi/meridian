@@ -1,8 +1,9 @@
 'use client';
 import React from 'react';
-import { injectEfCss, prefersReducedMotion } from '../forms/Button.jsx';
+import { injectEfCss, mergeRefs, prefersReducedMotion, styleRef } from '../forms/Button.jsx';
 import { Icon } from '../icons/Icon.jsx';
 const CSS = `
+.ef-console__count{margin-inline-start:auto;color:var(--text-muted)}
 .ef-console{position:relative;display:flex;flex-direction:column;border:1px solid var(--border-default);border-radius:var(--radius-md);background:var(--surface-card);overflow:hidden;font-family:var(--font-sans)}
 .ef-console__head{display:flex;align-items:center;gap:var(--space-2);padding:var(--space-2) var(--space-3);border-bottom:1px solid var(--border-default);background:var(--surface-subtle);font-size:var(--text-xs);color:var(--text-secondary)}
 .ef-console__scroll{overflow-y:auto;font-family:var(--font-mono);font-size:var(--text-xs);line-height:1.6}
@@ -64,8 +65,8 @@ export function Console({ title = 'Console', entries = [], height = 240, style, 
   }, [entries.length]);
   return (
     <div {...rest} className={`ef-console${className ? ' ' + className : ''}`} style={style}>
-      <div className="ef-console__head"><Icon name="terminal" size={12} />{title}<span style={{ marginInlineStart: 'auto', color: 'var(--text-muted)' }}>{entries.length} entries</span></div>
-      <div ref={viewport} className="ef-console__scroll" role="log" aria-live="polite" style={{ height }} onScroll={recompute}>
+      <div className="ef-console__head"><Icon name="terminal" size={12} />{title}<span className="ef-console__count">{entries.length} entries</span></div>
+      <div ref={mergeRefs(viewport, styleRef({ height }))} className="ef-console__scroll" role="log" aria-live="polite" onScroll={recompute}>
         {entries.map((e, i) => <Row key={i} e={e} />)}
       </div>
       {!atBottom ? <button type="button" className="ef-console__jump" onClick={() => { const v = viewport.current; if (v) v.scrollTo({ top: v.scrollHeight, behavior: prefersReducedMotion() ? 'auto' : 'smooth' }); }}><Icon name="chevron-down" size={12} />Latest</button> : null}
