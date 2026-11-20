@@ -212,3 +212,24 @@ describe('a React ThemeToggle and marketing.js on one page', () => {
     expect(localStorage.getItem('efolusi-theme')).toBe('dark');
   });
 });
+
+describe('browser/theme.d.ts matches browser/theme.js', () => {
+  it('declares every runtime export, and nothing else', async () => {
+    const runtime = Object.keys(await import('../browser/theme.js')).sort();
+    const dts = readFileSync('browser/theme.d.ts', 'utf8');
+    const declared = [...dts.matchAll(/^export declare (?:function|const) (\w+)/gm)].map((m) => m[1]).sort();
+    expect(declared).toEqual(runtime);
+  });
+
+  it('types the constants with their real values', async () => {
+    const theme = await import('../browser/theme.js');
+    const dts = readFileSync('browser/theme.d.ts', 'utf8');
+    expect(dts).toContain(`THEME_STORAGE_KEY: '${theme.THEME_STORAGE_KEY}'`);
+    expect(dts).toContain(`THEME_CHANGE_EVENT: '${theme.THEME_CHANGE_EVENT}'`);
+    for (const pref of theme.THEME_PREFERENCES) expect(dts).toContain(`'${pref}'`);
+    expect(Object.keys(theme.LABELS).sort()).toEqual(['en', 'id']);
+    for (const lang of Object.keys(theme.LABELS)) {
+      expect(Object.keys(theme.LABELS[lang]).sort()).toEqual([...theme.THEME_PREFERENCES, 'next'].sort());
+    }
+  });
+});
