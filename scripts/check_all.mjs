@@ -63,6 +63,7 @@ const GENERATED_PATHS = [
   'site/sizes.json',
   'guidelines/bundle-size.md',
   'browser/theme.js',
+  'browser/theme.d.ts',
   'browser/theme-init.js',
   'browser/hashes.json',
 ]

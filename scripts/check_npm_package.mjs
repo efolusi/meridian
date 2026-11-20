@@ -82,6 +82,20 @@ try {
       process.exit(1);
     }
   }
+
+  // MD21: server layouts (a Next.js App Router layout, Astro) import the theme contract
+  // without React and without a client directive, through its own subpath.
+  fs.writeFileSync(probe, `export * from ${JSON.stringify(`${NAME}/theme`)};\n`);
+  const theme = await import(pathToFileURL(probe).href + '?u=theme');
+  const themeSource = fs.readFileSync(path.join(ROOT, 'dist', 'browser', 'theme.js'), 'utf8');
+  if (typeof theme.themeInitScript !== 'function' || theme.themeInitScript() !== barrel.themeInitScript()) {
+    console.error(`${NAME}/theme must export the same themeInitScript() as the main entry`);
+    process.exit(1);
+  }
+  if (/['"]use client['"]|from ['"]react/.test(themeSource)) {
+    console.error(`${NAME}/theme must stay server-safe: no "use client" and no React import`);
+    process.exit(1);
+  }
 } finally {
   fs.rmSync(sandbox, { recursive: true, force: true });
 }

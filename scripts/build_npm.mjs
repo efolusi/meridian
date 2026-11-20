@@ -202,7 +202,7 @@ for (const f of fs.readdirSync(FONT_DIR).sort()) {
 // this package redistributes.
 // Plain scripts for sites without React (browser/), shipped byte for byte so their
 // published hashes stay true.
-for (const f of ['theme-init.js', 'theme.js', 'marketing.js', 'hashes.json']) {
+for (const f of ['theme-init.js', 'theme.js', 'theme.d.ts', 'marketing.js', 'hashes.json']) {
   files.set(`browser/${f}`, fs.readFileSync(path.join(ROOT, 'browser', f), 'utf8'));
 }
 
@@ -239,7 +239,9 @@ files.set('package.json', JSON.stringify({
     // Without this the './*' pattern rewrites asset subpaths to a '.js' that
     // does not exist, so an explicit font or licence import fails.
     './assets/*': './assets/*',
-    // Plain scripts: no .d.ts and no extension rewrite, so the files resolve as published.
+    // The theme contract alone, safe to import in server code: no React, no "use client".
+    './theme': { types: './browser/theme.d.ts', default: './browser/theme.js' },
+    // Plain scripts: no extension rewrite, so the files resolve as published.
     './browser/*': './browser/*',
     // Both spellings of a deep import must work. './*' alone appends the
     // extension, so 'forms/Button.js' resolved to forms/Button.js.js — which is
