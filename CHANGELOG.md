@@ -1,6 +1,6 @@
 # Changelog
 
-## Unreleased
+## 1.26.1 — 2026-11-20
 
 - **The Docs page works again.** A missing `]),` in its 1.26.0 changelog list (since #160) stopped the whole page script, so the page rendered without its logic and its theme button did nothing. A test now compiles the script of every `site/*.dc.html` page.
 - **The 1.0.0 changelog entry says 201 tokens again**, the count it shipped with; the Indonesian introduction now says 221, the current count. The public-count check skips the Docs changelog history and also reads the "N token," form, so it catches a stale Indonesian count. Both checks fail closed: the page test needs a script on every page, and the count check stops with an error when the changelog section has no end.
