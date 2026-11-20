@@ -30,6 +30,7 @@ describe('precedence: localStorage choice, then the cookie, then the system', ()
     runInit();
     expect(attr()).toBeNull();
     localStorage.clear();
+    document.cookie = 'efolusi_theme=dark; Path=/'; // the System load above rewrote it (MD22)
     runInit();
     expect(attr()).toBe('dark');
     clearCookie();
@@ -80,6 +81,21 @@ describe('the cookie', () => {
     const plain = fakeDoc('localhost', 'http:');
     writeThemeCookie('light', plain);
     expect(plain.cookie).not.toContain('Secure');
+  });
+
+  it('themeInitScript writes the same cookie as writeThemeCookie, for efolusi hosts, localhost, https and http', () => {
+    const run = (hostname, protocol) => {
+      const doc = { cookie: '', documentElement: { setAttribute() {}, removeAttribute() {} }, location: { hostname, protocol } };
+      const storage = { getItem: () => 'system' };
+      const media = () => ({ matches: true });
+      new Function('window', 'localStorage', 'document', 'location', 'matchMedia', themeInitScript())({ matchMedia: media }, storage, doc, doc.location, media);
+      return doc.cookie;
+    };
+    for (const [host, protocol] of [['efolusi.com', 'https:'], ['my.efolusi.com', 'https:'], ['notefolusi.com', 'https:'], ['localhost', 'http:'], ['localhost', 'https:']]) {
+      const expected = { cookie: '', location: { hostname: host, protocol } };
+      writeThemeCookie('dark', expected);
+      expect(run(host, protocol), `${host} ${protocol}`).toBe(expected.cookie);
+    }
   });
 });
 

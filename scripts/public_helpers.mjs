@@ -8,6 +8,7 @@ export const PUBLIC_HELPERS = Object.freeze([
   'navigationMenuTriggerStyle',
   'parseLegalInline',
   'readThemePreference',
+  'refreshSystemCookie',
   'resolveTheme',
   'themeInitScript',
   'toast',

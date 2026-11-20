@@ -158,7 +158,7 @@ Every Efolusi site follows this one contract, through `ThemeToggle` and `themeIn
 | Precedence | Before paint and at runtime: the localStorage choice, then the cookie (`dark` or `light`), then `prefers-color-scheme`. A first visit to another Efolusi site inherits the cookie. |
 | Before paint | `themeInitScript()` inlined in `<head>`. |
 | Markup | Light removes `data-theme` (bare `:root`); dark sets `data-theme="dark"`. |
-| Control | One 44px button. Light → Dark → System → Light. On System, a `prefers-color-scheme` change re-resolves the theme and rewrites the cookie. Labels in English and Indonesian. |
+| Control | One 44px button. Light → Dark → System → Light. On System, every page load and every `prefers-color-scheme` change re-resolve the theme and rewrite the cookie, so other sites never inherit a stale value. Labels in English and Indonesian. |
 
 ## Server layouts
 
@@ -178,6 +178,8 @@ Under a nonce-based CSP, pass the request's nonce, or the script is blocked and 
 ```
 
 Under a hash-based CSP, allow the sha256 of the exact `themeInitScript()` output (hash the string the function returns, byte for byte, at build or start time). pay and komando.efolusi.com do this. A hash written by hand goes stale when the contract changes, so compute it from the function.
+
+A hash site picks up a changed script on its next build. When `themeInitScript()`'s text changes between releases (1.27.0 rewrote it so System refreshes the cookie), a site that hard-codes the old hash blocks the script and flashes the wrong theme until it rebuilds. Nonce sites are not affected, and a versioned `browser/<version>/` pin keeps its old bytes.
 
 ## Plain HTML sites
 
