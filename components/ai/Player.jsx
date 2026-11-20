@@ -1,8 +1,9 @@
 'use client';
 import React from 'react';
-import { injectEfCss, cssPct } from '../forms/Button.jsx';
+import { injectEfCss, cssPct, styleRef } from '../forms/Button.jsx';
 import { Icon } from '../icons/Icon.jsx';
 const CSS = `
+.ef-player__btn--end{margin-inline-start:auto}
 .ef-player{display:flex;flex-direction:column;gap:var(--space-3);padding:var(--space-4);border:1px solid var(--border-default);border-radius:var(--radius-md);background:var(--surface-card);font-family:var(--font-sans)}
 .ef-player__top{display:flex;align-items:center;gap:var(--space-3)}
 .ef-player__title{flex:1;min-width:0;font-size:var(--text-md);font-weight:var(--weight-semibold);color:var(--text-primary);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
@@ -104,7 +105,7 @@ export const Player = React.forwardRef(function Player({ src, title, meta, peaks
           else if (e.key === 'End') { e.preventDefault(); jumpTo(dur); }
         }}>
         {bars.map((p, i) => (
-          <span key={i} className={`ef-player__bar${!dur && playing ? ' ef-player__bar--loading' : (i + 0.5) / bars.length <= ratio ? ' ef-player__bar--played' : ''}`} style={{ height: cssPct(Math.max(8, p * 100)), animationDelay: !dur ? (i * 30) + 'ms' : undefined }}></span>
+          <span key={i} className={`ef-player__bar${!dur && playing ? ' ef-player__bar--loading' : (i + 0.5) / bars.length <= ratio ? ' ef-player__bar--played' : ''}`} ref={styleRef({ height: cssPct(Math.max(8, p * 100)), 'animation-delay': !dur ? (i * 30) + 'ms' : undefined })}></span>
         ))}
       </div>
       <div className="ef-player__row">
@@ -112,7 +113,7 @@ export const Player = React.forwardRef(function Player({ src, title, meta, peaks
         <button type="button" className="ef-player__btn ef-player__play" aria-label={playing ? 'Pause' : 'Play'} onClick={toggle}><Icon name={playing ? 'pause' : 'play'} size={16} /></button>
         <button type="button" className="ef-player__btn" aria-label="Forward 10 seconds" onClick={() => jumpTo(t + 10)}><Icon name="skip-forward" size={16} /></button>
         <span className="ef-player__time">{formatTime(t, dur)} / {formatTime(dur)}</span>
-        <button type="button" className="ef-player__btn" style={{ marginInlineStart: 'auto' }} aria-label={muted ? 'Unmute' : 'Mute'} aria-pressed={muted} onClick={() => setMuted(!muted)}><Icon name={muted ? 'volume-x' : 'volume-2'} size={16} /></button>
+        <button type="button" className="ef-player__btn ef-player__btn--end" aria-label={muted ? 'Unmute' : 'Mute'} aria-pressed={muted} onClick={() => setMuted(!muted)}><Icon name={muted ? 'volume-x' : 'volume-2'} size={16} /></button>
       </div>
     </div>
   );

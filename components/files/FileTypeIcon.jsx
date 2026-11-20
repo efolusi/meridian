@@ -1,7 +1,7 @@
 'use client';
 import React from 'react';
 import { Icon } from '../icons/Icon.jsx';
-import { injectEfCss } from '../forms/Button.jsx';
+import { injectEfCss, styleRef } from '../forms/Button.jsx';
 const CSS = `
 .ef-filetype{position:relative;display:inline-flex;align-items:center;justify-content:center;flex:none;background:var(--surface-card);border:1px solid var(--border-strong);border-radius:var(--radius-xs-plus);color:var(--text-secondary)}
 .ef-filetype__ext{position:absolute;bottom:-5px;left:50%;transform:translateX(-50%);font-family:var(--font-mono);font-size:8px;font-weight:700;letter-spacing:.04em;padding:1px var(--space-1);border-radius:var(--radius-xs);text-transform:uppercase;line-height:1.3}
@@ -24,9 +24,9 @@ export function FileTypeIcon({ ext = 'txt', size = 40, showExt = true, style, cl
   injectEfCss('ef-css-filetype', CSS);
   const k = KIND[ext.toLowerCase()] || { icon: 'file', color: 'var(--sand-500)', label: T.ink };
   return (
-    <span {...rest} className={`ef-filetype${className ? ' ' + className : ''}`} style={{ width: size, height: size, ...style }} title={'.' + ext}>
+    <span {...rest} className={`ef-filetype${className ? ' ' + className : ''}`} ref={styleRef({ width: size, height: size })} style={style} title={'.' + ext}>
       <Icon name={k.icon} size={Math.round(size * 0.45)} />
-      {showExt ? <span className="ef-filetype__ext" style={{ background: k.color, color: k.label }}>{ext}</span> : null}
+      {showExt ? <span className="ef-filetype__ext" ref={styleRef({ background: k.color, color: k.label })}>{ext}</span> : null}
     </span>
   );
 }

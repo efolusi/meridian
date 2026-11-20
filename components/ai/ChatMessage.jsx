@@ -5,6 +5,7 @@ import { Avatar, AvatarFallback } from '../display/Avatar.jsx';
 import { IconButton } from '../forms/IconButton.jsx';
 import { injectEfCss } from '../forms/Button.jsx';
 const CSS = `
+.ef-msg__main{flex:1;min-width:0}
 .ef-msg{display:flex;gap:var(--space-3);max-width:720px}
 .ef-msg__avatar{flex:none;margin-top:var(--space-0-5)}
 .ef-msg__bot{display:inline-flex;align-items:center;justify-content:center;width:28px;height:28px;border-radius:var(--radius-full);background:var(--accent);color:var(--accent-contrast);flex:none;margin-top:var(--space-0-5)}
@@ -35,7 +36,7 @@ export function ChatMessage({ role = 'assistant', name, time, streaming, actions
       {role === 'assistant' || role === 'system'
         ? <span className="ef-msg__bot"><Icon name="bot" size={16} /></span>
         : <span className="ef-msg__avatar"><Avatar><AvatarFallback>{who.split(/\s+/).map((part) => part[0]).slice(0, 2).join('').toUpperCase()}</AvatarFallback></Avatar></span>}
-      <div style={{ flex: 1, minWidth: 0 }}>
+      <div className="ef-msg__main">
         <div className="ef-msg__meta"><span className="ef-msg__name">{who}</span>{time ? <span className="ef-msg__time">{time}</span> : null}</div>
         <div className="ef-msg__body">{children}{streaming ? <span className="ef-msg__caret"></span> : null}</div>
         {actionRow && role === 'assistant' && !streaming ? (

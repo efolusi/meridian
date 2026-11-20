@@ -1,6 +1,6 @@
 'use client';
 import React from 'react';
-import { injectEfCss } from '../forms/Button.jsx';
+import { injectEfCss, styleRef } from '../forms/Button.jsx';
 const CSS = `
 .ef-kv{display:flex;flex-direction:column}
 .ef-kv__row{display:flex;gap:var(--space-4);padding:var(--space-2) 0;border-bottom:1px solid var(--border-default)}
@@ -15,7 +15,7 @@ export function KeyValueList({ items, labelWidth = 160, style, className, ...res
     <div {...rest} className={`ef-kv${className ? ' ' + className : ''}`} style={style}>
       {items.map((it, i) => (
         <div key={i} className="ef-kv__row">
-          <span className="ef-kv__label" style={{ width: labelWidth }}>{it.label}</span>
+          <span className="ef-kv__label" ref={styleRef({ width: labelWidth })}>{it.label}</span>
           <span className={`ef-kv__value${it.mono ? ' ef-kv__value--mono' : ''}`}>{it.value}</span>
         </div>
       ))}

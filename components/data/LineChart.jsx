@@ -1,7 +1,8 @@
 'use client';
 import React from 'react';
-import { injectEfCss, cssPct } from '../forms/Button.jsx';
+import { injectEfCss, cssPct, styleRef } from '../forms/Button.jsx';
 const CSS = `
+.ef-linechart__svg{display:block}
 .ef-linechart{position:relative}
 .ef-linechart__sr{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;border:0}
 .ef-linechart__tip{position:absolute;transform:translate(-50%,-130%);background:var(--surface-inverse);color:var(--text-inverse);font-size:var(--text-2xs);font-weight:500;padding:var(--space-1) var(--space-2);border-radius:var(--radius-xs-plus);white-space:nowrap;pointer-events:none;z-index:5}
@@ -41,7 +42,7 @@ export function LineChart({ data = [], height = 150, showArea = true, showDots =
   };
   return (
     <div {...rest} ref={ref} className={`ef-linechart${className ? ' ' + className : ''}`} style={style} onMouseMove={move} onMouseLeave={() => setHov(null)}>
-      <svg role="img" aria-label={summary} viewBox={`0 0 ${W} ${H}`} width="100%" height={H} preserveAspectRatio="none" style={{ display: 'block' }}>
+      <svg role="img" aria-label={summary} viewBox={`0 0 ${W} ${H}`} width="100%" height={H} preserveAspectRatio="none" className="ef-linechart__svg">
         {showArea && area && <path d={area} fill="var(--accent)" opacity=".07" />}
         {path && <path d={path} fill="none" stroke="var(--accent)" strokeWidth="1.5" vectorEffect="non-scaling-stroke" />}
         {(showDots ? data.map((_, i) => i) : hov != null ? [hov] : []).map(i => (
@@ -56,7 +57,7 @@ export function LineChart({ data = [], height = 150, showArea = true, showDots =
         </table>
       ) : null}
       {hov != null && (
-        <div aria-hidden="true" className="ef-linechart__tip" style={{ left: cssPct(x(hov) / W * 100), top: cssPct(y(data[hov].value) / H * 100) }}>
+        <div aria-hidden="true" className="ef-linechart__tip" ref={styleRef({ left: cssPct(x(hov) / W * 100), top: cssPct(y(data[hov].value) / H * 100) })}>
           {data[hov].label}{data[hov].label ? ' · ' : ''}{fmt(data[hov].value)}
         </div>
       )}

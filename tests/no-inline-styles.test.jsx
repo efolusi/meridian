@@ -15,6 +15,17 @@ import { CodeBlock } from '../components/code/CodeBlock.jsx';
 import { Console } from '../components/code/Console.jsx';
 import { ScrollArea } from '../components/display/ScrollArea.jsx';
 import { AspectRatio } from '../components/display/AspectRatio.jsx';
+import { Conversation } from '../components/ai/Conversation.jsx';
+import { Player } from '../components/ai/Player.jsx';
+import { PromptComposer } from '../components/ai/PromptComposer.jsx';
+import { PromptSteps } from '../components/ai/PromptSteps.jsx';
+import { ChatMessage } from '../components/ai/ChatMessage.jsx';
+import { Diff } from '../components/code/Diff.jsx';
+import { Terminal } from '../components/code/Terminal.jsx';
+import { KeyValueList } from '../components/data/KeyValueList.jsx';
+import { LineChart } from '../components/data/LineChart.jsx';
+import { Loader } from '../components/feedback/Loader.jsx';
+import { FileTypeIcon } from '../components/files/FileTypeIcon.jsx';
 
 // MD18 (#180): strict-CSP sites (style-src without 'unsafe-inline') drop style attributes,
 // so components put fixed styles in their CSS and set runtime values through the CSSOM.
@@ -24,29 +35,17 @@ import { AspectRatio } from '../components/display/AspectRatio.jsx';
 // closes when it is empty.
 const REMAINING = {
     "ai/AgentRun.jsx": 1,
-    "ai/ChatMessage.jsx": 1,
-    "ai/Conversation.jsx": 2,
     "ai/DocumentCard.jsx": 1,
     "ai/ModelSelector.jsx": 2,
-    "ai/Player.jsx": 2,
-    "ai/PromptComposer.jsx": 2,
-    "ai/PromptSteps.jsx": 2,
     "ai/SelectionQuote.jsx": 1,
     "ai/Transcript.jsx": 1,
     "ai/UsageMeter.jsx": 1,
-    "code/Diff.jsx": 2,
-    "code/Terminal.jsx": 1,
-    "data/Chart.jsx": 2,
-    "data/KeyValueList.jsx": 1,
-    "data/LineChart.jsx": 2,
     "dates/TimePicker.jsx": 1,
     "display/Resizable.jsx": 1,
     "feedback/ConfirmDialog.jsx": 1,
     "feedback/Dialog.jsx": 1,
-    "feedback/Loader.jsx": 1,
     "feedback/Tooltip.jsx": 1,
     "files/FileDrop.jsx": 1,
-    "files/FileTypeIcon.jsx": 2,
     "forms/Button.jsx": 1,
     "forms/ButtonTile.jsx": 1,
     "forms/Input.jsx": 1,
@@ -84,6 +83,17 @@ describe('no style attributes in server-rendered HTML', () => {
     Console: <Console entries={[{ level: 'info', text: 'Ready' }]} height={160} />,
     ScrollArea: <ScrollArea maxHeight={120}>text</ScrollArea>,
     AspectRatio: <AspectRatio ratio={16 / 9}>media</AspectRatio>,
+    Conversation: <Conversation><p>hi</p></Conversation>,
+    Player: <Player src="x.mp3" title="T" />,
+    PromptComposer: <PromptComposer attachments={<span>file</span>} />,
+    PromptSteps: <PromptSteps steps={[{ question: 'Q', options: ['A', 'B'], other: true }]} />,
+    ChatMessage: <ChatMessage name="Ada">hi</ChatMessage>,
+    Diff: <Diff title="a" from={'a\nb'} to={'a\nc'} maxHeight={200} />,
+    Terminal: <Terminal lines={['ok']} />,
+    KeyValueList: <KeyValueList items={[{ label: 'A', value: '1' }]} />,
+    LineChart: <LineChart data={[{ label: 'a', value: 1 }, { label: 'b', value: 3 }]} />,
+    Loader: <Loader duration={2} />,
+    FileTypeIcon: <FileTypeIcon ext="pdf" />,
   };
   it.each(Object.keys(cases))('%s', (name) => {
     expect(renderToString(cases[name])).not.toMatch(/\sstyle="/);

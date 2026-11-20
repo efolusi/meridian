@@ -1,6 +1,6 @@
 'use client';
 import React from 'react';
-import { injectEfCss, prefersReducedMotion } from '../forms/Button.jsx';
+import { injectEfCss, prefersReducedMotion, mergeRefs, styleRef } from '../forms/Button.jsx';
 import { Icon } from '../icons/Icon.jsx';
 const CSS = `
 .ef-conversation{position:relative;overflow:hidden;display:flex;flex-direction:column}
@@ -42,8 +42,8 @@ export const Conversation = React.forwardRef(function Conversation({ height = 42
     return () => ro.disconnect();
   }, [autoStick]);
   return (
-    <div ref={ref} {...rest} className={`ef-conversation${className ? ' ' + className : ''}`} style={{ height, ...style }}>
-      <div ref={viewport} className="ef-conversation__viewport" onScroll={recompute} style={{ padding }}>
+    <div ref={mergeRefs(ref, styleRef({ height }))} {...rest} className={`ef-conversation${className ? ' ' + className : ''}`} style={style}>
+      <div ref={mergeRefs(viewport, styleRef({ padding }))} className="ef-conversation__viewport" onScroll={recompute}>
         <div ref={inner} className="ef-conversation__inner">{children}</div>
       </div>
       {!atBottom ? (

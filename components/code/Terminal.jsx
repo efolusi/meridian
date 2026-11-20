@@ -1,7 +1,8 @@
 'use client';
 import React from 'react';
-import { injectEfCss } from '../forms/Button.jsx';
+import { injectEfCss, styleRef } from '../forms/Button.jsx';
 const CSS = `
+.ef-term__body{overflow-y:auto}
 .ef-term{background:var(--surface-code);border:1px solid var(--border-code);border-radius:var(--radius-md);overflow:hidden}
 .ef-term__head{display:flex;align-items:center;gap:var(--space-2);padding:var(--space-2) var(--space-4);border-bottom:1px solid var(--code-divider)}
 .ef-term__host{font-family:var(--font-mono);font-size:var(--text-2xs);color:var(--code-ink-subtle)}
@@ -22,7 +23,7 @@ export function Terminal({ host, lines = [], live, maxHeight = 260, style, class
   return (
     <div {...rest} className={`ef-term${className ? ' ' + className : ''}`} style={style}>
       {host ? <div className="ef-term__head"><span className="ef-term__dot"></span><span className="ef-term__host">{host}</span></div> : null}
-      <div className="ef-term__body" role="log" aria-live="polite" style={{ maxHeight, overflowY: 'auto' }}>
+      <div className="ef-term__body" role="log" aria-live="polite" ref={styleRef({ 'max-height': maxHeight })}>
         {lines.map((l, i) => {
           const item = typeof l === 'string' ? { text: l } : l;
           return (

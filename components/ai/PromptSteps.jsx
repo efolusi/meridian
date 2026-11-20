@@ -4,6 +4,7 @@ import { injectEfCss } from '../forms/Button.jsx';
 import { Icon } from '../icons/Icon.jsx';
 import { useDirection } from '../display/Direction.jsx';
 const CSS = `
+.ef-promptsteps__opt--other{cursor:text}.ef-promptsteps__text{flex:1}
 .ef-promptsteps{border:1px solid var(--border-default);border-radius:var(--radius-md);background:var(--surface-card);padding:var(--space-1);font-family:var(--font-sans)}
 .ef-promptsteps:focus{outline:none}
 .ef-promptsteps:focus-visible{box-shadow:var(--focus-ring)}
@@ -62,14 +63,14 @@ export function PromptSteps({ steps = [], defaultValues = {}, onAnswer, onComple
     <div {...rest} ref={rootRef} tabIndex={-1} className={`ef-promptsteps${className ? ' ' + className : ''}`} style={style} onKeyDown={onKey}>
       <div className="ef-promptsteps__q">{step.question}</div>
       {opts.map((o, i) => i === otherIdx ? (
-        <div key="__other" className={`ef-promptsteps__opt${hi === i ? ' ef-promptsteps__opt--hi' : ''}`} style={{ cursor: 'text' }} onMouseEnter={() => setHi(i)} onClick={() => { setHi(i); if (otherRef.current) otherRef.current.focus(); }}>
+        <div key="__other" className={`ef-promptsteps__opt${hi === i ? ' ef-promptsteps__opt--hi' : ''} ef-promptsteps__opt--other`} onMouseEnter={() => setHi(i)} onClick={() => { setHi(i); if (otherRef.current) otherRef.current.focus(); }}>
           <span className="ef-promptsteps__num">{i + 1}.</span>
           <input ref={otherRef} className="ef-promptsteps__other" type="text" value={other} placeholder={typeof step.other === 'string' ? step.other : 'Type your answer'} onChange={e => { setOther(e.target.value); setHi(i); }} onFocus={() => setHi(i)} />
         </div>
       ) : (
         <button key={o} type="button" className={`ef-promptsteps__opt${hi === i ? ' ef-promptsteps__opt--hi' : ''}`} onMouseEnter={() => setHi(i)} onClick={() => { setHi(i); submit(); }}>
           <span className="ef-promptsteps__num">{i + 1}.</span>
-          <span style={{ flex: 1 }}>{o}</span>
+          <span className="ef-promptsteps__text">{o}</span>
         </button>
       ))}
       <div className="ef-promptsteps__foot">

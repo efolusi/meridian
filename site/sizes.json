@@ -1,16 +1,16 @@
 {
   "totals": {
     "@efolusi/meridian": {
-      "bytes": 373717,
-      "gzip": 84496
+      "bytes": 373644,
+      "gzip": 84392
     },
     "dist/components.css": {
-      "bytes": 229176,
-      "gzip": 31385
+      "bytes": 229605,
+      "gzip": 31488
     },
     "_ds_bundle.js": {
-      "bytes": 879420,
-      "gzip": 157124
+      "bytes": 879834,
+      "gzip": 157095
     }
   },
   "modules": [
@@ -41,8 +41,8 @@
       "exports": [
         "ChatMessage"
       ],
-      "bytes": 47580,
-      "gzip": 8116
+      "bytes": 47579,
+      "gzip": 8103
     },
     {
       "module": "ai/Citation.js",
@@ -69,8 +69,8 @@
       "exports": [
         "Conversation"
       ],
-      "bytes": 46186,
-      "gzip": 7852
+      "bytes": 46443,
+      "gzip": 7992
     },
     {
       "module": "ai/DocumentCard.js",
@@ -153,8 +153,8 @@
       "exports": [
         "Player"
       ],
-      "bytes": 49001,
-      "gzip": 8755
+      "bytes": 49159,
+      "gzip": 8840
     },
     {
       "module": "ai/PromptComposer.js",
@@ -162,8 +162,8 @@
       "exports": [
         "PromptComposer"
       ],
-      "bytes": 47132,
-      "gzip": 8160
+      "bytes": 47082,
+      "gzip": 8092
     },
     {
       "module": "ai/PromptSteps.js",
@@ -171,8 +171,8 @@
       "exports": [
         "PromptSteps"
       ],
-      "bytes": 47862,
-      "gzip": 8467
+      "bytes": 47885,
+      "gzip": 8456
     },
     {
       "module": "ai/Reasoning.js",
@@ -315,8 +315,8 @@
       "exports": [
         "Diff"
       ],
-      "bytes": 49381,
-      "gzip": 8950
+      "bytes": 49559,
+      "gzip": 9006
     },
     {
       "module": "code/EnvList.js",
@@ -342,8 +342,8 @@
       "exports": [
         "Terminal"
       ],
-      "bytes": 1118,
-      "gzip": 508
+      "bytes": 1320,
+      "gzip": 618
     },
     {
       "module": "data/BarChart.js",
@@ -365,8 +365,8 @@
         "ChartLegend",
         "ChartLegendContent"
       ],
-      "bytes": 4027,
-      "gzip": 1577
+      "bytes": 4247,
+      "gzip": 1682
     },
     {
       "module": "data/DonutChart.js",
@@ -397,8 +397,8 @@
       "exports": [
         "KeyValueList"
       ],
-      "bytes": 710,
-      "gzip": 398
+      "bytes": 926,
+      "gzip": 516
     },
     {
       "module": "data/LineChart.js",
@@ -406,8 +406,8 @@
       "exports": [
         "LineChart"
       ],
-      "bytes": 3074,
-      "gzip": 1376
+      "bytes": 3248,
+      "gzip": 1454
     },
     {
       "module": "data/Skeleton.js",
@@ -758,8 +758,8 @@
       "exports": [
         "Loader"
       ],
-      "bytes": 826,
-      "gzip": 447
+      "bytes": 1034,
+      "gzip": 555
     },
     {
       "module": "feedback/Progress.js",
@@ -841,8 +841,8 @@
       "exports": [
         "FileTypeIcon"
       ],
-      "bytes": 46633,
-      "gzip": 7778
+      "bytes": 46853,
+      "gzip": 7882
     },
     {
       "module": "finance/PaymentCard.js",
