@@ -12,4 +12,4 @@ Put the output of `themeInitScript()` in an inline `<script>` in `<head>`, befor
 <ThemeToggle lang={lang} />
 ```
 
-Every `ThemeToggle` on a page stays in step: a choice made in one updates the others, and a choice made in another tab of the same site updates this one.
+Every `ThemeToggle` on a page stays in step: a choice made in one updates the others, and a choice made in another tab of the same site updates this one. A choice made on another `*.efolusi.com` product reaches this site only through the cookie, so it shows on the next page load here, not live.
