@@ -1,5 +1,5 @@
 import { execFileSync } from 'node:child_process'
-import { existsSync, mkdtempSync, readFileSync, rmSync } from 'node:fs'
+import { existsSync, mkdtempSync, readFileSync, rmSync, writeFileSync } from 'node:fs'
 import { tmpdir } from 'node:os'
 import { join } from 'node:path'
 import { describe, expect, it } from 'vitest'
@@ -127,6 +127,7 @@ describe('Worker assets (scripts/build_worker_assets.mjs)', () => {
     try {
       execFileSync('git', ['clone', '--quiet', '--no-hardlinks', '--depth', '1', `file://${process.cwd()}`, dir])
       const sha = execFileSync('git', ['rev-parse', 'HEAD'], { cwd: dir, encoding: 'utf8' }).trim()
+      execFileSync('git', ['tag', 'v0.0.1'], { cwd: dir })
       const out = buildWorkerAssets(sha, dir)
       expect(readFileSync(join(out, 'meridian-release.txt'), 'utf8')).toBe(`${sha}\n`)
       const version = JSON.parse(readFileSync('package.json', 'utf8')).version
@@ -197,5 +198,59 @@ describe('_headers is the one source of response headers', () => {
     const rootDocs = PUBLIC_PATHS.filter((p) => p === 'LICENSE' || /^[A-Z]+\.md$/.test(p))
     expect(rootDocs.sort()).toEqual(['ARCHITECTURE.md', 'CHANGELOG.md', 'CONTRIBUTING.md', 'LICENSE', 'README.md', 'SECURITY.md'])
     for (const doc of rootDocs) expect(headersFor(`/${doc}`)['content-type'], doc).toEqual(['text/plain; charset=utf-8'])
+  })
+
+  // A throwaway clone with three releases: one before browser/ existed and two after.
+  function cloneWithReleases() {
+    const dir = mkdtempSync(join(tmpdir(), 'meridian-worker-tags-'))
+    const run = (...args) => execFileSync('git', ['-c', 'user.name=t', '-c', 'user.email=t@example.invalid', ...args], { cwd: dir, encoding: 'utf8' })
+    execFileSync('git', ['clone', '--quiet', '--no-hardlinks', '--depth', '1', `file://${process.cwd()}`, dir])
+    run('rm', '-rq', 'browser')
+    run('commit', '-qm', 'before browser')
+    run('tag', 'v0.1.0')
+    run('checkout', '-q', 'HEAD~1', '--', 'browser')
+    writeFileSync(join(dir, 'browser', 'marketing.js'), '// release one\n')
+    run('commit', '-qam', 'one')
+    run('tag', 'v0.2.0')
+    writeFileSync(join(dir, 'browser', 'marketing.js'), '// release two\n')
+    run('commit', '-qam', 'two')
+    run('tag', 'v0.3.0')
+    return { dir, run }
+  }
+
+  it('keeps browser/<version>/ of every release, byte for byte', () => {
+    const { dir, run } = cloneWithReleases()
+    try {
+      const out = buildWorkerAssets(run('rev-parse', 'HEAD').trim(), dir)
+      expect(existsSync(join(out, 'browser', '0.1.0'))).toBe(false)
+      for (const tag of ['v0.2.0', 'v0.3.0']) {
+        const files = run('ls-tree', '--name-only', tag, '--', 'browser/').split('\n').filter(Boolean)
+        expect(files.length).toBeGreaterThan(0)
+        for (const path of files) {
+          const shipped = readFileSync(join(out, 'browser', tag.slice(1), path.slice('browser/'.length)))
+          expect(shipped.equals(execFileSync('git', ['show', `${tag}:${path}`], { cwd: dir })), `${tag} ${path}`).toBe(true)
+        }
+      }
+      expect(readFileSync(join(out, 'browser', '0.2.0', 'marketing.js'), 'utf8')).toBe('// release one\n')
+    } finally {
+      rmSync(dir, { recursive: true, force: true })
+    }
+  })
+
+  it('fails instead of dropping old versions when the checkout has no tags', () => {
+    const dir = mkdtempSync(join(tmpdir(), 'meridian-worker-notags-'))
+    try {
+      execFileSync('git', ['clone', '--quiet', '--no-hardlinks', '--depth', '1', '--no-tags', `file://${process.cwd()}`, dir])
+      const sha = execFileSync('git', ['rev-parse', 'HEAD'], { cwd: dir, encoding: 'utf8' }).trim()
+      expect(() => buildWorkerAssets(sha, dir)).toThrow(/no v\* tags/)
+      expect(existsSync(join(dir, 'public'))).toBe(false)
+    } finally {
+      rmSync(dir, { recursive: true, force: true })
+    }
+  })
+
+  it('checks out every tag in the deploy workflow', () => {
+    expect(workflow).toMatch(/fetch-depth: 0/)
+    expect(workflow).toMatch(/fetch-tags: true/)
   })
 })
