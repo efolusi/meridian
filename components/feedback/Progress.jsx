@@ -1,6 +1,6 @@
 'use client';
 import React from 'react';
-import { injectEfCss } from '../forms/Button.jsx';
+import { injectEfCss, useIsoLayoutEffect } from '../forms/Button.jsx';
 
 const CSS = `
 .ef-progress-shell{display:flex;flex-direction:column;gap:var(--space-2)}
@@ -9,6 +9,7 @@ const CSS = `
 .ef-progress__val{font-family:var(--font-mono);font-size:var(--text-xs);color:var(--text-muted)}
 .ef-progress{position:relative;height:8px;width:100%;overflow:hidden;border-radius:var(--radius-full);background:var(--sand-200)}
 .ef-progress__indicator{height:100%;width:100%;border-radius:inherit;background:var(--accent);transition:transform var(--dur-slow) var(--ease-out)}
+.ef-progress__indicator[data-state="loading"]{transform:translateX(calc(-100% + var(--ef-progress-value, 0%)))}
 .ef-progress[data-tone="warning"] .ef-progress__indicator{background:var(--warning-600)}
 .ef-progress[data-tone="danger"] .ef-progress__indicator{background:var(--danger-600)}
 .ef-progress[data-state="indeterminate"] .ef-progress__indicator{width:45%;animation:ef-progress-indeterminate 1.2s ease-in-out infinite}
@@ -39,6 +40,12 @@ export const Progress = React.forwardRef(function Progress({
   const percent = determinate ? (safeValue / safeMax) * 100 : 0;
   const state = !determinate ? 'indeterminate' : safeValue === safeMax ? 'complete' : 'loading';
   const generatedLabelId = React.useId();
+  // The fill is a custom property set through the CSSOM, not a style attribute (strict CSP).
+  // A complete bar is full from the CSS alone; a partial one fills in on mount.
+  const indicatorRef = React.useRef(null);
+  useIsoLayoutEffect(() => {
+    indicatorRef.current?.style.setProperty('--ef-progress-value', `${percent}%`);
+  }, [percent]);
   const labelledBy = rest['aria-labelledby'] ?? (label ? generatedLabelId : undefined);
   const track = (
     <div
@@ -61,7 +68,7 @@ export const Progress = React.forwardRef(function Progress({
         data-slot="progress-indicator"
         data-state={state}
         className="ef-progress__indicator"
-        style={determinate ? { transform: `translateX(calc(-100% + ${percent}%))` } : undefined}
+        ref={indicatorRef}
       />
     </div>
   );

@@ -19,7 +19,21 @@ function warnMissing(name) {
   console.warn('[meridian] <Icon name="' + name + '"> is not a Meridian glyph, so nothing will render. Check the name against the icon gallery, or add ' + name + '.svg to assets/icons/.');
 }
 
+const ICON_SCALE = [8, 12, 16, 20, 24, 32];
+// Sizes on the scale come from tokens/base.css; any other size is set through the CSSOM, never a style attribute.
+const useIsoLayoutEffect = typeof window === 'undefined' ? React.useEffect : React.useLayoutEffect;
+function useOffScaleSize(ref, size) {
+  useIsoLayoutEffect(() => {
+    const node = ref.current;
+    if (!node || ICON_SCALE.includes(size)) return;
+    node.style.setProperty('width', `${size}px`);
+    node.style.setProperty('height', `${size}px`);
+  }, [size]);
+}
+
 export function Icon({ name, size = 16, strokeWidth = 1.5, title, className, style, ...rest }) {
+  const ref = React.useRef(null);
+  useOffScaleSize(ref, size);
   const svg = SVGS[name] || '';
   if (!svg) warnMissing(name);
   const html = svg
@@ -32,7 +46,9 @@ export function Icon({ name, size = 16, strokeWidth = 1.5, title, className, sty
     'aria-label': title,
     role: title ? 'img' : undefined,
     className,
-    style: { display: 'inline-flex', flex: 'none', width: size, height: size, color: 'inherit', ...style },
+    ref,
+    'data-size': size,
+    style,
     dangerouslySetInnerHTML: { __html: html },
   });
 }

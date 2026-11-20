@@ -6,6 +6,15 @@
    less specificity than any .ef-* class, so components in the same layer keep
    their own margins, fonts and colours. */
 @layer meridian{
+/* Icons: the box and the scale sizes here, so the markup carries no style attribute (strict CSP).
+   A size off the scale is set through the CSSOM by Icon. */
+[data-slot="icon"]{display:inline-flex;flex:none;color:inherit}
+[data-slot="icon"][data-size="8"]{width:var(--icon-xs);height:var(--icon-xs)}
+[data-slot="icon"][data-size="12"]{width:var(--icon-sm);height:var(--icon-sm)}
+[data-slot="icon"][data-size="16"]{width:var(--icon-md);height:var(--icon-md)}
+[data-slot="icon"][data-size="20"]{width:var(--icon-lg);height:var(--icon-lg)}
+[data-slot="icon"][data-size="24"]{width:var(--icon-xl);height:var(--icon-xl)}
+[data-slot="icon"][data-size="32"]{width:var(--icon-2xl);height:var(--icon-2xl)}
 body{margin:0;font-family:var(--font-sans);font-size:var(--text-md);line-height:var(--leading-normal);color:var(--text-primary);background:var(--surface-page);-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
 h1,h2,h3,h4{font-family:var(--font-display);letter-spacing:var(--tracking-display);line-height:var(--leading-snug);margin:0}
 p{margin:0}

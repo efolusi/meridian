@@ -25,7 +25,21 @@ function warnNotSvg(name) {
   console.warn('[meridian] ' + base() + 'assets/icons/' + name + '.svg answered with something that is not an SVG, often an app\'s index.html, so <Icon name="' + name + '"> renders nothing. Serve assets/icons/ beside _ds_bundle.js, or in a bundled app use the registry or npm Icon, which inlines every glyph.');
 }
 
+const ICON_SCALE = [8, 12, 16, 20, 24, 32];
+// Sizes on the scale come from tokens/base.css; any other size is set through the CSSOM, never a style attribute.
+const useIsoLayoutEffect = typeof window === 'undefined' ? React.useEffect : React.useLayoutEffect;
+function useOffScaleSize(ref, size) {
+  useIsoLayoutEffect(() => {
+    const node = ref.current;
+    if (!node || ICON_SCALE.includes(size)) return;
+    node.style.setProperty('width', `${size}px`);
+    node.style.setProperty('height', `${size}px`);
+  }, [size]);
+}
+
 export function Icon({ name, size = 16, strokeWidth = 1.5, title, className, style, ...rest }) {
+  const ref = React.useRef(null);
+  useOffScaleSize(ref, size);
   const [svg, setSvg] = React.useState(name in _cache ? _cache[name] : null);
   React.useEffect(() => {
     // `name in _cache` rather than a truthy check, so a name that 404s is
@@ -66,5 +80,5 @@ export function Icon({ name, size = 16, strokeWidth = 1.5, title, className, sty
   const html = svg
     ? svg.replace('width="24"', 'width="' + size + '"').replace('height="24"', 'height="' + size + '"').replace('stroke-width="2"', 'stroke-width="' + strokeWidth + '"')
     : '';
-  return <span {...rest} data-slot="icon" aria-hidden={title ? undefined : true} aria-label={title} role={title ? 'img' : undefined} className={className} style={{ display: 'inline-flex', flex: 'none', width: size, height: size, color: 'inherit', ...style }} dangerouslySetInnerHTML={{ __html: html }} />;
+  return <span {...rest} data-slot="icon" aria-hidden={title ? undefined : true} aria-label={title} role={title ? 'img' : undefined} ref={ref} data-size={size} className={className} style={style} dangerouslySetInnerHTML={{ __html: html }} />;
 }
