@@ -1,5 +1,10 @@
 # Changelog
 
+## Unreleased
+
+- **The Docs page works again.** A missing `]),` in its 1.26.0 changelog list (since #160) stopped the whole page script, so the page rendered without its logic and its theme button did nothing. A test now compiles the script of every `site/*.dc.html` page.
+- **The 1.0.0 changelog entry says 201 tokens again**, the count it shipped with; the Indonesian introduction now says 221, the current count. The public-count check skips the Docs changelog history and also reads the "N token," form, so it catches a stale Indonesian count.
+
 ## 1.26.0 — 2026-11-20
 
 - **A required Questionnaire item says so in its title.** `QuestionnaireTitle` adds " (required)" to the legend when the item is `required` (`lang="id"` gives " (wajib)"; `labels.required` replaces the whole suffix), visible and read as the group's name; this replaces the `aria-required` the fieldset may not carry, so required checkbox items are announced again.
