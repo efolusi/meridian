@@ -18,6 +18,8 @@ export declare function writeThemePreference(value: ThemePreference, doc?: Docum
 /** Writes the resolved theme to the `efolusi_theme` cookie: a year, Path=/, SameSite=Lax, Secure on https, Domain=.efolusi.com on efolusi.com hosts. Never `system`. */
 export declare function writeThemeCookie(theme: 'light' | 'dark', doc?: Document): void;
 export declare function resolveTheme(preference: ThemePreference, matchMedia?: (query: string) => MediaQueryList): 'light' | 'dark';
+/** With the choice on System here, rewrites the `efolusi_theme` cookie to the theme shown now. */
+export declare function refreshSystemCookie(doc?: Document, storage?: Storage, matchMedia?: (query: string) => MediaQueryList): void;
 export declare function applyTheme(preference: ThemePreference, doc?: Document, matchMedia?: (query: string) => MediaQueryList): 'light' | 'dark';
 /** The script to inline in <head> so the first paint has the stored or system theme. */
 export declare function themeInitScript(): string;

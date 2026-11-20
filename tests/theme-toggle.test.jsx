@@ -30,6 +30,7 @@ describe('precedence: localStorage choice, then the cookie, then the system', ()
     runInit();
     expect(attr()).toBeNull();
     localStorage.clear();
+    document.cookie = 'efolusi_theme=dark; Path=/'; // the System load above rewrote it (MD22)
     runInit();
     expect(attr()).toBe('dark');
     clearCookie();

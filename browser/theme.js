@@ -53,6 +53,17 @@ export function writeThemePreference(value, doc = globalThis.document, storage =
   return pref;
 }
 
+/** With the choice on System here, rewrite the cookie to the theme shown now, so other sites inherit a current value. */
+export function refreshSystemCookie(doc = globalThis.document, storage = globalThis.localStorage, matchMedia = globalThis.matchMedia) {
+  let choice = null;
+  try {
+    choice = storage?.getItem(THEME_STORAGE_KEY);
+  } catch {
+    return;
+  }
+  if (choice === 'system') writeThemeCookie(resolveTheme('system', matchMedia), doc);
+}
+
 export function applyTheme(pref, doc = globalThis.document, matchMedia = globalThis.matchMedia) {
   const theme = resolveTheme(pref, matchMedia);
   // Meridian's light palette is bare :root; dark needs the dark data-theme value.
@@ -63,6 +74,6 @@ export function applyTheme(pref, doc = globalThis.document, matchMedia = globalT
 
 /** Inline this in <head>, before any stylesheet paints, so the first frame has the right theme. */
 export function themeInitScript() {
-  return `(function(){try{var s=window.matchMedia&&matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light',c=null,t;try{c=localStorage.getItem('${THEME_STORAGE_KEY}')}catch(e){}if(c==='light'||c==='dark')t=c;else if(c==='system')t=s;else{var m=document.cookie.match(/(?:^|;\\s*)${THEME_COOKIE}=(dark|light)(?:;|$)/);t=m?m[1]:s}if(t==='dark')document.documentElement.setAttribute('data-theme','dark');else document.documentElement.removeAttribute('data-theme')}catch(e){}})();`;
+  return `(function(){try{var s=window.matchMedia&&matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light',c=null,t;try{c=localStorage.getItem('${THEME_STORAGE_KEY}')}catch(e){}if(c==='light'||c==='dark')t=c;else if(c==='system')t=s;else{var m=document.cookie.match(/(?:^|;\\s*)${THEME_COOKIE}=(dark|light)(?:;|$)/);t=m?m[1]:s}if(t==='dark')document.documentElement.setAttribute('data-theme','dark');else document.documentElement.removeAttribute('data-theme');if(c==='system'){var h=location.hostname,d=h==='efolusi.com'||h.slice(-12)==='.efolusi.com'?'; Domain=.efolusi.com':'';document.cookie='${THEME_COOKIE}='+t+d+'; Path=/; Max-Age=${YEAR}; SameSite=Lax'+(location.protocol==='https:'?'; Secure':'')}}catch(e){}})();`;
 }
 export { THEME_PREFERENCES, THEME_STORAGE_KEY, THEME_CHANGE_EVENT, LABELS };

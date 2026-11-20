@@ -158,7 +158,7 @@ Every Efolusi site follows this one contract, through `ThemeToggle` and `themeIn
 | Precedence | Before paint and at runtime: the localStorage choice, then the cookie (`dark` or `light`), then `prefers-color-scheme`. A first visit to another Efolusi site inherits the cookie. |
 | Before paint | `themeInitScript()` inlined in `<head>`. |
 | Markup | Light removes `data-theme` (bare `:root`); dark sets `data-theme="dark"`. |
-| Control | One 44px button. Light → Dark → System → Light. On System, a `prefers-color-scheme` change re-resolves the theme and rewrites the cookie. Labels in English and Indonesian. |
+| Control | One 44px button. Light → Dark → System → Light. On System, every page load and every `prefers-color-scheme` change re-resolve the theme and rewrite the cookie, so other sites never inherit a stale value. Labels in English and Indonesian. |
 
 ## Server layouts
 

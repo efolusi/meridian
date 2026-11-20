@@ -6,7 +6,7 @@
 // CSP: no eval, no HTML strings, no style attributes; values go through the CSSOM.
 import {
   LABELS, THEME_CHANGE_EVENT, THEME_PREFERENCES, THEME_STORAGE_KEY,
-  applyTheme, readThemePreference, writeThemeCookie, writeThemePreference,
+  applyTheme, readThemePreference, refreshSystemCookie, writeThemeCookie, writeThemePreference,
 } from './theme.js';
 
 const MARQUEE_LABELS = {
@@ -70,6 +70,7 @@ export function init(root = document) {
   if (active.has(root)) {
     sync();
     refresh();
+    refreshSystemCookie();
     return active.get(root);
   }
 
@@ -112,6 +113,7 @@ export function init(root = document) {
   observer.observe(root, { childList: true, subtree: true });
   sync();
   refresh();
+  refreshSystemCookie();
 
   const cleanup = () => {
     root.removeEventListener('click', onClick);
