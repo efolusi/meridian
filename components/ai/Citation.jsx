@@ -3,6 +3,8 @@ import React from 'react';
 import { injectEfCss } from '../forms/Button.jsx';
 import { Icon } from '../icons/Icon.jsx';
 const CSS = `
+.ef-citation__pop-title,.ef-citation__pop-desc{display:block}
+.ef-citation__pop-nav{display:flex}
 .ef-citation{display:inline-flex;align-items:center;justify-content:center;min-width:16px;height:16px;padding:0 var(--space-1);margin:0 1px;vertical-align:super;border-radius:var(--radius-xs);border:1px solid var(--accent-subtle-border);background:var(--accent-subtle);color:var(--accent-subtle-fg, var(--brand-700));font-family:var(--font-mono);font-size:10px;font-weight:600;text-decoration:none;cursor:pointer;line-height:1}
 .ef-citation:hover{border-color:var(--brand-700)}
 .ef-citation:focus-visible{outline:none;box-shadow:var(--focus-ring)}
@@ -49,7 +51,7 @@ export function Citation({ index, href, title, sources, onClick, style, classNam
   React.useEffect(() => () => clearTimeout(t.current), []);
   const chip = (
     <a href={link || (list && list[0] && safeUrl(list[0].url)) || '#'} title={title} onClick={onClick} target={link ? '_blank' : undefined} rel={link ? 'noopener' : undefined}
-      className={`ef-citation${className ? ' ' + className : ''}`} style={list ? null : style} aria-label={title ? 'Source ' + index + ': ' + title : 'Source ' + index}>{index}</a>
+      className={`ef-citation${className ? ' ' + className : ''}`} {...(list ? {} : { style })} aria-label={title ? 'Source ' + index + ': ' + title : 'Source ' + index}>{index}</a>
   );
   if (!list) return chip;
   const cur = list[Math.abs(i) % list.length];
@@ -61,10 +63,10 @@ export function Citation({ index, href, title, sources, onClick, style, classNam
       {open ? (
         <span className="ef-citation__pop" role="dialog">
           <span className="ef-citation__pop-name"><Icon name="globe" size={12} />{cur.domain || 'source'}</span>
-          <span className="ef-citation__pop-title" style={{ display: 'block' }}>{cur.title}</span>
-          {cur.description ? <span className="ef-citation__pop-desc" style={{ display: 'block' }}>{cur.description}</span> : null}
+          <span className="ef-citation__pop-title">{cur.title}</span>
+          {cur.description ? <span className="ef-citation__pop-desc">{cur.description}</span> : null}
           {list.length > 1 ? (
-            <span className="ef-citation__pop-nav" style={{ display: 'flex' }}>
+            <span className="ef-citation__pop-nav">
               <button type="button" aria-label="Previous source" className="ef-citation__pop-btn" onClick={() => setI((i - 1 + list.length) % list.length)}><Icon name="chevron-left" size={12} /></button>
               <button type="button" aria-label="Next source" className="ef-citation__pop-btn" onClick={() => setI((i + 1) % list.length)}><Icon name="chevron-right" size={12} /></button>
               <span className="ef-citation__pop-count">{(Math.abs(i) % list.length) + 1}/{list.length}</span>

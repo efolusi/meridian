@@ -4,7 +4,6 @@ import { renderToString } from 'react-dom/server';
 import { cssPct } from '../components/forms/Button.jsx';
 import { Player } from '../components/ai/Player.jsx';
 import { UsageMeter } from '../components/ai/UsageMeter.jsx';
-import { BarChart } from '../components/data/BarChart.jsx';
 import { ResizableHandle, ResizablePanel, ResizablePanelGroup } from '../components/display/Resizable.jsx';
 
 /**
@@ -84,12 +83,6 @@ describe('server-rendered styles survive the CSS parser', () => {
 
   it('UsageMeter, at a ratio that does not divide evenly', () => {
     expectStylesSurviveParsing(renderToString(<UsageMeter used={1} limit={3} />));
-  });
-
-  it('BarChart, with values that do not divide evenly', () => {
-    expectStylesSurviveParsing(
-      renderToString(<BarChart data={[{ label: 'a', value: 1 }, { label: 'b', value: 3 }, { label: 'c', value: 7 }]} />),
-    );
   });
 
   it('ResizablePanel, at a percentage that does not divide evenly', () => {

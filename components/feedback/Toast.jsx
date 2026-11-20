@@ -2,10 +2,11 @@
 import React from 'react';
 import { Icon } from '../icons/Icon.jsx';
 import { IconButton } from '../forms/IconButton.jsx';
-import { injectEfCss } from '../forms/Button.jsx';
+import { injectEfCss, styleRef } from '../forms/Button.jsx';
 import { Portal, useHydrated } from '../overlay/Portal.jsx';
 
 const CSS = `
+.ef-toast__body{flex:1}
 .ef-toast{display:flex;align-items:flex-start;gap:var(--space-3);width:360px;max-width:100%;padding:var(--space-3) var(--space-4);background:var(--surface-inverse);color:var(--text-inverse);border-radius:var(--radius-md);box-shadow:var(--shadow-lg);animation:ef-toast-in var(--dur-slow) var(--ease-spring)}
 .ef-toast__icon{display:inline-flex;margin-top:1px}.ef-toast--success .ef-toast__icon{color:var(--success-on-dark)}.ef-toast--danger .ef-toast__icon{color:var(--danger-on-dark)}.ef-toast--warning .ef-toast__icon{color:var(--warning-on-dark)}.ef-toast--info .ef-toast__icon{color:var(--peach-200)}
 .ef-toast__title{font-size:var(--text-md);font-weight:var(--weight-semibold);line-height:1.35}.ef-toast__desc{margin-top:var(--space-0-5);color:var(--text-inverse);font-size:var(--text-sm);line-height:1.4;opacity:.75}.ef-toast__action{margin-top:var(--space-2);padding:0;border:0;background:none;color:var(--peach-200);font-family:var(--font-sans);font-size:var(--text-sm);font-weight:var(--weight-semibold);cursor:pointer}.ef-toast__action:hover{color:var(--cream-50);text-decoration:none}.ef-toast .ef-iconbtn{color:var(--text-inverse-muted)}.ef-toast .ef-iconbtn:hover:not(:disabled){background:color-mix(in srgb,var(--text-inverse) 12%,transparent);color:var(--text-inverse)}
@@ -25,14 +26,14 @@ function ToastItem({ tone = 'info', title, description, actionProps, onClose, ro
   const actionNode = actionProps ? <button type="button" {...actionProps} className={`ef-toast__action${actionProps.className ? ` ${actionProps.className}` : ''}`} /> : null;
   return <div {...rest} data-slot="toast" className={`ef-toast ef-toast--${tone}${className ? ` ${className}` : ''}`} role={role || undefined} style={style}>
     <span className="ef-toast__icon" aria-hidden="true"><Icon name={ICONS[tone] || 'info'} size={20} /></span>
-    <div style={{ flex: 1 }}><div className="ef-toast__title">{title}</div>{description ? <div className="ef-toast__desc">{description}</div> : null}{actionNode}</div>
+    <div className="ef-toast__body"><div className="ef-toast__title">{title}</div>{description ? <div className="ef-toast__desc">{description}</div> : null}{actionNode}</div>
     {onClose ? <IconButton icon="x" label="Dismiss" size="sm" onClick={onClose} /> : null}
   </div>;
 }
 
-function ToastStack({ children, position = 'bottom-right', style, className, ...rest }) {
+function ToastStack({ children, position = 'bottom-right', gap, offset, style, className, ...rest }) {
   injectEfCss('ef-css-toast', CSS);
-  return <div {...rest} data-slot="toaster" data-position={position} className={`ef-toast-stack${className ? ` ${className}` : ''}`} style={style}>{children}</div>;
+  return <div {...rest} data-slot="toaster" data-position={position} className={`ef-toast-stack${className ? ` ${className}` : ''}`} ref={styleRef({ gap, top: position.startsWith('top') ? offset : undefined, bottom: position.startsWith('top') ? undefined : offset })} style={style}>{children}</div>;
 }
 
 let records = [];
@@ -89,7 +90,7 @@ export function Toaster({ position = 'bottom-right', visibleToasts = 3, closeBut
   // Mounted on every page load, so wait for hydration: see useHydrated.
   const hydrated = useHydrated();
   if (!hydrated) return <>{children}</>;
-  return <>{children}<Portal><ToastStack {...rest} dir={dir} position={position} data-rich-colors={richColors ? 'true' : 'false'} data-expand={expand ? 'true' : 'false'} data-theme={theme} data-mobile-offset={typeof mobileOffset === 'number' ? `${mobileOffset}px` : mobileOffset} style={{ gap, ...(position.startsWith('top') ? { top: resolvedOffset } : { bottom: resolvedOffset }), ...style }} aria-label={label} role="log" aria-live="polite" aria-relevant="additions" onMouseEnter={pause} onMouseLeave={resume} onFocusCapture={pause} onBlurCapture={resume}>
+  return <>{children}<Portal><ToastStack {...rest} dir={dir} position={position} data-rich-colors={richColors ? 'true' : 'false'} data-expand={expand ? 'true' : 'false'} data-theme={theme} data-mobile-offset={typeof mobileOffset === 'number' ? `${mobileOffset}px` : mobileOffset} gap={gap} offset={resolvedOffset} style={style} aria-label={label} role="log" aria-live="polite" aria-relevant="additions" onMouseEnter={pause} onMouseLeave={resume} onFocusCapture={pause} onBlurCapture={resume}>
     {items.slice(-visibleToasts).map(item => item.type === 'custom' && React.isValidElement(item.title)
       ? React.cloneElement(item.title, { key: item.id })
       : <ToastItem key={item.id} tone={['success', 'warning', 'danger', 'info'].includes(item.type) ? item.type : 'info'} title={item.title} description={item.description} actionProps={item.actionProps} role={null} onClose={closeButton || item.closeButton || (item.sticky && item.closeButton !== false) ? () => close(item.id) : undefined} />)}

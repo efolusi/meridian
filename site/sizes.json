@@ -1,16 +1,16 @@
 {
   "totals": {
     "@efolusi/meridian": {
-      "bytes": 373581,
-      "gzip": 84454
+      "bytes": 373717,
+      "gzip": 84496
     },
     "dist/components.css": {
-      "bytes": 228258,
-      "gzip": 31187
+      "bytes": 229176,
+      "gzip": 31385
     },
     "_ds_bundle.js": {
-      "bytes": 877456,
-      "gzip": 156579
+      "bytes": 879209,
+      "gzip": 157034
     }
   },
   "modules": [
@@ -51,8 +51,8 @@
         "Citation",
         "SourceList"
       ],
-      "bytes": 47827,
-      "gzip": 8301
+      "bytes": 47761,
+      "gzip": 8285
     },
     {
       "module": "ai/Confirmation.js",
@@ -279,8 +279,8 @@
       "exports": [
         "WebPreview"
       ],
-      "bytes": 48317,
-      "gzip": 8567
+      "bytes": 48504,
+      "gzip": 8625
     },
     {
       "module": "code/CodeBlock.js",
@@ -288,8 +288,8 @@
       "exports": [
         "CodeBlock"
       ],
-      "bytes": 47064,
-      "gzip": 8106
+      "bytes": 47334,
+      "gzip": 8217
     },
     {
       "module": "code/Console.js",
@@ -297,8 +297,8 @@
       "exports": [
         "Console"
       ],
-      "bytes": 47213,
-      "gzip": 8075
+      "bytes": 47438,
+      "gzip": 8173
     },
     {
       "module": "code/CopyField.js",
@@ -351,8 +351,8 @@
       "exports": [
         "BarChart"
       ],
-      "bytes": 1868,
-      "gzip": 861
+      "bytes": 2039,
+      "gzip": 938
     },
     {
       "module": "data/Chart.js",
@@ -458,8 +458,8 @@
         "TableCell",
         "TableCaption"
       ],
-      "bytes": 51484,
-      "gzip": 9768
+      "bytes": 51875,
+      "gzip": 9943
     },
     {
       "module": "dates/Calendar.js",
@@ -498,8 +498,8 @@
       "exports": [
         "AspectRatio"
       ],
-      "bytes": 605,
-      "gzip": 388
+      "bytes": 897,
+      "gzip": 532
     },
     {
       "module": "display/Avatar.js",
@@ -636,8 +636,8 @@
         "ScrollArea",
         "ScrollBar"
       ],
-      "bytes": 1292,
-      "gzip": 653
+      "bytes": 1556,
+      "gzip": 783
     },
     {
       "module": "display/Separator.js",
@@ -681,8 +681,8 @@
       "exports": [
         "TreeList"
       ],
-      "bytes": 46367,
-      "gzip": 7906
+      "bytes": 46541,
+      "gzip": 7944
     },
     {
       "module": "feedback/Alert.js",
@@ -785,8 +785,8 @@
       "exports": [
         "Toaster"
       ],
-      "bytes": 50262,
-      "gzip": 9451
+      "bytes": 50508,
+      "gzip": 9545
     },
     {
       "module": "feedback/Tooltip.js",
@@ -859,8 +859,8 @@
       "exports": [
         "Button"
       ],
-      "bytes": 47086,
-      "gzip": 8387
+      "bytes": 47267,
+      "gzip": 8473
     },
     {
       "module": "forms/ButtonGroup.js",

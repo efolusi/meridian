@@ -7,13 +7,14 @@
     "react"
   ],
   "registryDependencies": [
-    "https://meridian.efolusi.com/site/registry/meridian-base.json"
+    "https://meridian.efolusi.com/site/registry/meridian-base.json",
+    "https://meridian.efolusi.com/site/registry/button.json"
   ],
   "files": [
     {
       "path": "components/display/AspectRatio.jsx",
       "type": "registry:ui",
-      "content": "'use client';\nimport React from 'react';\nexport const AspectRatio = React.forwardRef(function AspectRatio({ ratio, children, style, className, ...rest }, ref) {\n  return (\n    <div ref={ref} {...rest} className={className} style={{ position: 'relative', width: '100%', aspectRatio: String(Math.round(ratio * 1000) / 1000), ...style }}>\n      <div style={{ position: 'absolute', inset: 0 }}>{children}</div>\n    </div>\n  );\n});\n"
+      "content": "'use client';\nimport React from 'react';\nimport { injectEfCss, mergeRefs, styleRef } from '../forms/Button.jsx';\n\n// The ratio is set through the CSSOM, not a style attribute (strict CSP).\nconst CSS = `\n.ef-aspect{position:relative;width:100%}\n.ef-aspect__inner{position:absolute;inset:0}\n`;\n\nexport const AspectRatio = React.forwardRef(function AspectRatio({ ratio, children, style, className, ...rest }, ref) {\n  injectEfCss('ef-css-aspect', CSS);\n  return (\n    <div {...rest} ref={mergeRefs(ref, styleRef({ 'aspect-ratio': String(Math.round(ratio * 1000) / 1000) }))} className={`ef-aspect${className ? ' ' + className : ''}`} style={style}>\n      <div className=\"ef-aspect__inner\">{children}</div>\n    </div>\n  );\n});\n"
     },
     {
       "path": "components/display/AspectRatio.d.ts",

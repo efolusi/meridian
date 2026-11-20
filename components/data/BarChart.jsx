@@ -1,7 +1,8 @@
 'use client';
 import React from 'react';
-import { injectEfCss, cssPct } from '../forms/Button.jsx';
+import { injectEfCss, cssPct, styleRef } from '../forms/Button.jsx';
 const CSS = `
+.ef-bars-chart{position:relative}
 .ef-bars{display:flex;align-items:flex-end;gap:var(--space-1);width:100%}
 .ef-bars__bar{flex:1;min-width:3px;border-radius:var(--radius-xs) var(--radius-xs) 0 0;background:var(--text-muted);transition:background var(--dur-fast) var(--ease-out)}
 .ef-bars__bar--hi{background:var(--accent)}
@@ -22,11 +23,11 @@ export function BarChart({ data = [], height = 140, highlightLast = 0, labels, f
     ? `Bar chart, ${vals.length} bar${vals.length === 1 ? '' : 's'}, highest ${name(top)} ${fmt(vals[top])}`
     : 'Bar chart, no data');
   return (
-    <div {...rest} className={className} style={{ position: 'relative', ...style }}>
-      <div className="ef-bars" role="img" aria-label={summary} style={{ height }}>
+    <div {...rest} className={`ef-bars-chart${className ? ' ' + className : ''}`} style={style}>
+      <div className="ef-bars" role="img" aria-label={summary} ref={styleRef({ height })}>
         {vals.map((v, i) => (
           <div key={i} className={`ef-bars__bar${i >= vals.length - highlightLast ? ' ef-bars__bar--hi' : ''}`}
-            style={{ height: cssPct(Math.max(2, (v / max) * 100)) }}
+            ref={styleRef({ height: cssPct(Math.max(2, (v / max) * 100)) })}
             title={(data[i] && data[i].label ? data[i].label + ' · ' : '') + fmt(v)}></div>
         ))}
       </div>
