@@ -126,6 +126,9 @@ export function cssPct(value) {
 /**
  * A ref callback that sets CSS properties on the node through the CSSOM, so a runtime
  * value needs no style attribute (strict CSP drops those). null or undefined removes it.
+ * It sits here beside injectEfCss and mergeRefs because build_bundle.mjs only takes
+ * components/<group>/*.jsx and counts every such file as a component, so a helper-only
+ * module has no place in the bundle.
  */
 export function styleRef(values) {
   return (node) => {
