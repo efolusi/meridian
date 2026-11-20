@@ -53,9 +53,14 @@
 /tokens/*
   Cache-Control: no-cache
 
-# Plain scripts for other Efolusi sites: module scripts load cross-origin only with CORS.
-/browser/*
+# Plain scripts. The unversioned files serve this site and change with each release.
+/browser/:file
   Cache-Control: no-cache
+
+# Other Efolusi sites load a versioned copy, which never changes once published; module
+# scripts load cross-origin only with CORS.
+/browser/:version/*
+  Cache-Control: public, max-age=31536000, immutable
   Access-Control-Allow-Origin: *
 
 /site/*

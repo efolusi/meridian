@@ -129,6 +129,10 @@ describe('Worker assets (scripts/build_worker_assets.mjs)', () => {
       const sha = execFileSync('git', ['rev-parse', 'HEAD'], { cwd: dir, encoding: 'utf8' }).trim()
       const out = buildWorkerAssets(sha, dir)
       expect(readFileSync(join(out, 'meridian-release.txt'), 'utf8')).toBe(`${sha}\n`)
+      const version = JSON.parse(readFileSync('package.json', 'utf8')).version
+      for (const file of ['marketing.js', 'theme.js', 'theme-init.js', 'hashes.json']) {
+        expect(readFileSync(join(out, 'browser', version, file), 'utf8'), file).toBe(readFileSync(join(out, 'browser', file), 'utf8'))
+      }
       for (const path of ['index.html', '404.html', '_headers', '_redirects', 'site/DsSite.dc.html']) {
         expect(existsSync(join(out, path)), path).toBe(true)
       }
@@ -155,7 +159,7 @@ describe('_headers is the one source of response headers', () => {
   it('never sets one header twice on a path, because Cloudflare would join the values', () => {
     const paths = ['/assets/favicon.svg', '/assets/icons/x.svg', '/assets/fonts/x.woff2', '/_ds_bundle.js', '/styles.css',
       '/landing.css', '/tokens/colors.css', '/site/DsSite.dc.html', '/site/registry/button.json', '/site/registry.json',
-      '/registry.json', '/LICENSE', '/README.md', '/meridian-release.txt', '/index.html', '/browser/marketing.js']
+      '/registry.json', '/LICENSE', '/README.md', '/meridian-release.txt', '/index.html', '/browser/marketing.js', '/browser/1.27.0/marketing.js']
     for (const path of paths) {
       for (const [name, values] of Object.entries(headersFor(path))) expect(values, `${path} ${name}`).toHaveLength(1)
     }
@@ -171,8 +175,17 @@ describe('_headers is the one source of response headers', () => {
     expect(headersFor('/meridian-release.txt')['cache-control']).toEqual(['no-store, max-age=0'])
   })
 
-  it('lets any origin load the registry, the fonts and the plain browser scripts, and nothing else', () => {
-    for (const path of ['/registry.json', '/site/registry.json', '/site/registry/button.json', '/assets/fonts/x.woff2', '/browser/marketing.js', '/browser/theme.js']) {
+  it('serves versioned plain scripts as immutable, and the unversioned ones for this site only', () => {
+    for (const path of ['/browser/1.27.0/marketing.js', '/browser/1.27.0/theme-init.js', '/browser/1.27.0/hashes.json']) {
+      expect(headersFor(path)['cache-control'], path).toEqual(['public, max-age=31536000, immutable'])
+      expect(headersFor(path)['access-control-allow-origin'], path).toEqual(['*'])
+    }
+    expect(headersFor('/browser/marketing.js')['cache-control']).toEqual(['no-cache'])
+    expect(headersFor('/browser/marketing.js')['access-control-allow-origin']).toBeUndefined()
+  })
+
+  it('lets any origin load the registry, the fonts and the versioned plain scripts, and nothing else', () => {
+    for (const path of ['/registry.json', '/site/registry.json', '/site/registry/button.json', '/assets/fonts/x.woff2', '/browser/1.27.0/marketing.js']) {
       expect(headersFor(path)['access-control-allow-origin'], path).toEqual(['*'])
     }
     for (const path of ['/site/DsSite.dc.html', '/_ds_bundle.js', '/assets/favicon.svg']) {

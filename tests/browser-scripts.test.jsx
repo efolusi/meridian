@@ -197,3 +197,18 @@ describe('Marquee without a style attribute (part of MD18)', () => {
     expect(container.firstChild.style.getPropertyValue('--ef-marquee-duration')).toBe('20s');
   });
 });
+
+describe('a React ThemeToggle and marketing.js on one page', () => {
+  it('moves one step per click: the plain script leaves the React button to React', async () => {
+    const { render } = await import('@testing-library/react');
+    const { ThemeToggle } = await import('../components/marketing/ThemeToggle.jsx');
+    fakeMedia(false);
+    localStorage.setItem('efolusi-theme', 'light');
+    cleanup = init();
+    const { getByRole } = render(<ThemeToggle />);
+    const button = getByRole('button');
+    expect(button.hasAttribute('data-ef-react')).toBe(true);
+    button.click();
+    expect(localStorage.getItem('efolusi-theme')).toBe('dark');
+  });
+});

@@ -127,6 +127,7 @@ export const ThemeToggle = React.forwardRef(function ThemeToggle({ lang = 'en', 
       ref={ref}
       type="button"
       data-slot="theme-toggle"
+      data-ef-react=""
       data-preference={pref}
       className={`ef-theme-toggle${className ? ` ${className}` : ''}`}
       aria-label={`${text[pref]}, ${text.next} ${text[next].toLowerCase()}`}
