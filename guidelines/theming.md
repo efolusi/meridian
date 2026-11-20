@@ -160,6 +160,17 @@ Every Efolusi site follows this one contract, through `ThemeToggle` and `themeIn
 | Markup | Light removes `data-theme` (bare `:root`); dark sets `data-theme="dark"`. |
 | Control | One 44px button. Light → Dark → System → Light. On System, a `prefers-color-scheme` change re-resolves the theme and rewrites the cookie. Labels in English and Indonesian. |
 
+## Server layouts
+
+`themeInitScript` and the rest of the theme contract are also exported from `@efolusi/meridian/theme`, a module with no React import and no `"use client"`, so a server layout can import it directly:
+
+```jsx
+// app/layout.jsx (a Server Component)
+import { themeInitScript } from '@efolusi/meridian/theme';
+
+<head><script dangerouslySetInnerHTML={{ __html: themeInitScript() }} /></head>
+```
+
 ## Plain HTML sites
 
 Sites without React load two files from `browser/`, shipped in the npm package (`@efolusi/meridian/browser/…`) and at `https://meridian.efolusi.com/browser/…`:
