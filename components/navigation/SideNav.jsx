@@ -12,6 +12,12 @@ const CSS = `
 .ef-sidenav__item--on{background:var(--border-default);color:var(--text-primary);font-weight:600}
 .ef-sidenav__item:focus-visible{outline:none;box-shadow:var(--focus-ring)}
 .ef-sidenav__foot{margin-top:auto;padding:var(--space-3)}
+.ef-sidenav__logo{object-fit:contain}
+.ef-sidenav__name{font-family:var(--font-display);font-weight:680;letter-spacing:-0.02em;font-size:var(--text-xl)}
+.ef-sidenav__badge{margin-inline-start:auto}
+.ef-sidenav__nav{display:flex;flex-direction:column;gap:var(--space-0-5)}
+.ef-sidenav__icon{display:inline-flex;color:inherit}
+.ef-sidenav__label{flex:1;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 /* coarse pointers get the 44px touch target, like form controls do through --control-h-* */
 @media (pointer:coarse){.ef-sidenav__item{height:var(--tap-min)}}
 `;
@@ -20,18 +26,18 @@ export function SideNav({ brand = 'Meridian', brandBadge, logoSrc, groups, value
   return (
     <aside {...rest} className={`ef-sidenav${className ? ' ' + className : ''}`} style={style}>
       <div className="ef-sidenav__brand">
-        {logoSrc ? <img src={logoSrc} alt="" style={{ width: 30, height: 16, objectFit: 'contain' }} /> : null}
-        <span style={{ fontFamily: 'var(--font-display)', fontWeight: 680, letterSpacing: '-0.02em', fontSize: 'var(--text-xl)' }}>{brand}</span>
-        {brandBadge ? <Badge className="ef-badge--brand" style={{ marginInlineStart: 'auto' }}>{brandBadge}</Badge> : null}
+        {logoSrc ? <img src={logoSrc} alt="" width={30} height={16} className="ef-sidenav__logo" /> : null}
+        <span className="ef-sidenav__name">{brand}</span>
+        {brandBadge ? <Badge className="ef-badge--brand ef-sidenav__badge">{brandBadge}</Badge> : null}
       </div>
       {groups.map((g, gi) => (
         <React.Fragment key={gi}>
           {g.label ? <div className="ef-sidenav__group">{g.label}</div> : null}
-          <nav style={{ display: 'flex', flexDirection: 'column', gap: 'var(--space-0-5)' }}>
+          <nav className="ef-sidenav__nav">
             {g.items.map(it => (
               <button key={it.id} type="button" aria-current={value === it.id ? 'page' : undefined} className={`ef-sidenav__item${value === it.id ? ' ef-sidenav__item--on' : ''}`} onClick={() => onChange && onChange(it.id)}>
-                <span style={{ display: 'inline-flex', color: 'inherit' }}><Icon name={it.icon} size={16} /></span>
-                <span style={{ flex: 1, whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>{it.label}</span>
+                <span className="ef-sidenav__icon"><Icon name={it.icon} size={16} /></span>
+                <span className="ef-sidenav__label">{it.label}</span>
                 {it.badge != null ? <Badge variant={value === it.id ? 'default' : 'secondary'} className={value === it.id ? 'ef-badge--accent' : undefined}>{it.badge}</Badge> : null}
               </button>
             ))}

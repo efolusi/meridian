@@ -17,8 +17,9 @@ describe('Progress compatibility contract', () => {
     expect(progress.dataset.max).toBe('100');
     expect(progress.dataset.job).toBe('upload');
     expect(progress.classList.contains('consumer-progress')).toBe(true);
-    expect(progress.querySelector('[data-slot="progress-indicator"]').style.transform)
-      .toBe('translateX(calc(-100% + 33%))');
+    // The fill is a custom property set through the CSSOM (no style attribute in the server HTML).
+    expect(progress.querySelector('[data-slot="progress-indicator"]').style.getPropertyValue('--ef-progress-value'))
+      .toBe('33%');
   });
 
   it('clamps values and exposes the complete state', () => {

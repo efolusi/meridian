@@ -1,11 +1,20 @@
 'use client';
 import React from 'react';
-import { injectEfCss } from '../forms/Button.jsx';
+import { injectEfCss, useIsoLayoutEffect } from '../forms/Button.jsx';
 const CSS = `
-.ef-donut{display:flex;align-items:center;gap:var(--space-5)}
+.ef-donut{position:relative;display:flex;align-items:center;gap:var(--space-5)}
 .ef-donut__legend{display:flex;flex-direction:column;gap:var(--space-2)}
 .ef-donut__item{display:flex;align-items:center;gap:var(--space-2);font-size:var(--text-sm);color:var(--text-secondary);border:none;background:none;padding:0;cursor:default;font-family:var(--font-sans);text-align:start}
-.ef-donut__swatch{width:9px;height:9px;border-radius:var(--radius-xs);flex:none}
+.ef-donut__swatch{width:9px;height:9px;border-radius:var(--radius-xs);flex:none;overflow:hidden}
+.ef-donut__figure{position:relative;flex:none}
+.ef-donut__figure>svg{display:block;overflow:visible;transform:rotate(-90deg)}
+.ef-donut__seg{transition:stroke-width 120ms var(--ease-out)}
+.ef-donut__center{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;pointer-events:none}
+.ef-donut__value{font-family:var(--font-mono);font-size:var(--ef-donut-value-size,var(--text-2xl));font-weight:600;color:var(--text-primary)}
+.ef-donut__label{font-size:var(--text-2xs);color:var(--text-muted)}
+.ef-donut__item{transition:opacity 120ms var(--ease-out)}
+.ef-donut__item[data-dim]{opacity:.45}
+@media (prefers-reduced-motion:reduce){.ef-donut__seg,.ef-donut__item{transition:none}}
 .ef-donut__sr{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;border:0}
 .ef-donut__val{margin-inline-start:auto;font-family:var(--font-mono);font-size:var(--text-xs);color:var(--text-primary);padding-inline-start:var(--space-4)}
 `;
@@ -16,6 +25,11 @@ const PALETTE = [1, 2, 3, 4, 5].map(n => `var(--chart-${n})`);
 export function DonutChart({ data = [], size = 140, thickness = 16, centerLabel, centerValue, format, locale = 'en-US', 'aria-label': ariaLabel, style, className, ...rest }) {
   injectEfCss('ef-css-donut', CSS);
   const [hov, setHov] = React.useState(null);
+  // The centre figure scales with the chart; set through the CSSOM, not a style attribute (strict CSP).
+  const rootRef = React.useRef(null);
+  useIsoLayoutEffect(() => {
+    rootRef.current?.style.setProperty('--ef-donut-value-size', `${Math.round(size * 0.16)}px`);
+  }, [size]);
   const total = data.reduce((s, d) => s + d.value, 0) || 1;
   const nf = new Intl.NumberFormat(locale);
   const fmt = v => format ? format(v) : nf.format(v);
@@ -35,20 +49,20 @@ export function DonutChart({ data = [], size = 140, thickness = 16, centerLabel,
     return seg;
   });
   return (
-    <div {...rest} className={`ef-donut${className ? ' ' + className : ''}`} style={{ position: 'relative', ...style }}>
-      <div role="img" aria-label={summary} style={{ position: 'relative', width: size, height: size, flex: 'none' }}>
-        <svg viewBox="0 0 100 100" width={size} height={size} style={{ overflow: 'visible', transform: 'rotate(-90deg)' }}>
+    <div {...rest} ref={rootRef} className={`ef-donut${className ? ' ' + className : ''}`} style={style}>
+      <div role="img" aria-label={summary} className="ef-donut__figure">
+        <svg viewBox="0 0 100 100" width={size} height={size}>
           {segs.map(s => (
             <circle key={s.i} cx="50" cy="50" r={R} fill="none" stroke={s.color} strokeWidth={thickness * (hov === s.i ? 1.15 : 1)}
-              strokeDasharray={s.dash} strokeDashoffset={s.offset} style={{ transition: 'stroke-width 120ms var(--ease-out)' }}
+              strokeDasharray={s.dash} strokeDashoffset={s.offset} className="ef-donut__seg"
               onMouseEnter={() => setHov(s.i)} onMouseLeave={() => setHov(null)} />
           ))}
         </svg>
-        <div style={{ position: 'absolute', inset: 0, display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', pointerEvents: 'none' }}>
-          <span style={{ fontFamily: 'var(--font-mono)', fontSize: Math.round(size * 0.16), fontWeight: 600, color: 'var(--text-primary)' }}>
+        <div className="ef-donut__center">
+          <span className="ef-donut__value">
             {hov != null ? fmt(segs[hov].value) : centerValue}
           </span>
-          <span style={{ fontSize: 'var(--text-2xs)', color: 'var(--text-muted)' }}>{hov != null ? segs[hov].label : centerLabel}</span>
+          <span className="ef-donut__label">{hov != null ? segs[hov].label : centerLabel}</span>
         </div>
       </div>
       {data.length ? (
@@ -60,8 +74,8 @@ export function DonutChart({ data = [], size = 140, thickness = 16, centerLabel,
       {/* The table above carries the same figures for assistive tech. */}
       <div className="ef-donut__legend" aria-hidden="true">
         {segs.map(s => (
-          <span key={s.i} className="ef-donut__item" onMouseEnter={() => setHov(s.i)} onMouseLeave={() => setHov(null)} style={{ opacity: hov == null || hov === s.i ? 1 : .45, transition: 'opacity 120ms var(--ease-out)' }}>
-            <span className="ef-donut__swatch" style={{ background: s.color }}></span>
+          <span key={s.i} className="ef-donut__item" onMouseEnter={() => setHov(s.i)} onMouseLeave={() => setHov(null)} data-dim={hov == null || hov === s.i ? undefined : ''}>
+            <svg className="ef-donut__swatch" viewBox="0 0 1 1" aria-hidden="true" focusable="false"><rect width="1" height="1" fill={s.color} /></svg>
             {s.label}
             <span className="ef-donut__val">{pct(s.value)}</span>
           </span>

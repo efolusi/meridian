@@ -11,22 +11,31 @@ const CSS = `
 .ef-paycard__lbl{font-size:var(--text-2xs);font-weight:600;letter-spacing:.08em;text-transform:uppercase}
 .ef-paycard__val{font-size:var(--text-sm);font-weight:600;margin-top:var(--space-0-5)}
 .ef-paycard__chip{width:34px;height:25px;border-radius:var(--radius-xs-plus);background:var(--brand-300)}
+.ef-paycard--frozen{filter:grayscale(.7) opacity(.75)}
+.ef-paycard__ring--a{width:220px;height:220px;inset-inline-end:-70px;top:-70px}
+.ef-paycard__ring--b{width:220px;height:220px;inset-inline-end:-40px;top:-110px}
+.ef-paycard__top{display:flex;align-items:center}
+.ef-paycard__network{font-family:var(--font-display);font-weight:680;letter-spacing:-0.02em;font-size:var(--text-lg)}
+.ef-paycard__frozen{margin-inline-start:auto;font-size:10px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;opacity:.7}
+.ef-paycard__chip-row{margin-top:var(--space-4)}
+.ef-paycard__chip,.ef-paycard__lbl,.ef-paycard__val{display:block}
+.ef-paycard__holder{flex:1;min-width:0}
 `;
 export function PaymentCard({ name = 'ADA OBI', number = '•••• •••• •••• 4242', expiry = '09/29', network = 'Meridian', variant = 'espresso', frozen, style, className, ...rest }) {
   injectEfCss('ef-css-paycard', CSS);
   return (
-    <div {...rest} className={`ef-paycard${variant === 'caramel' ? ' ef-paycard--caramel' : variant === 'paper' ? ' ef-paycard--paper' : ''}${className ? ' ' + className : ''}`} style={{ filter: frozen ? 'grayscale(.7) opacity(.75)' : undefined, ...style }}>
-      <span className="ef-paycard__ring" style={{ width: 220, height: 220, insetInlineEnd: -70, top: -70 }}></span>
-      <span className="ef-paycard__ring" style={{ width: 220, height: 220, insetInlineEnd: -40, top: -110 }}></span>
-      <div style={{ display: 'flex', alignItems: 'center' }}>
-        <span style={{ fontFamily: 'var(--font-display)', fontWeight: 680, letterSpacing: '-0.02em', fontSize: 'var(--text-lg)' }}>{network}</span>
-        {frozen ? <span style={{ marginInlineStart: 'auto', fontSize: 10, fontWeight: 600, letterSpacing: '.08em', textTransform: 'uppercase', opacity: .7 }}>Frozen</span> : null}
+    <div {...rest} className={`ef-paycard${variant === 'caramel' ? ' ef-paycard--caramel' : variant === 'paper' ? ' ef-paycard--paper' : ''}${frozen ? ' ef-paycard--frozen' : ''}${className ? ' ' + className : ''}`} style={style}>
+      <span className="ef-paycard__ring ef-paycard__ring--a"></span>
+      <span className="ef-paycard__ring ef-paycard__ring--b"></span>
+      <div className="ef-paycard__top">
+        <span className="ef-paycard__network">{network}</span>
+        {frozen ? <span className="ef-paycard__frozen">Frozen</span> : null}
       </div>
-      <div style={{ marginTop: 'var(--space-4)' }}><span className="ef-paycard__chip" style={{ display: 'block' }}></span></div>
+      <div className="ef-paycard__chip-row"><span className="ef-paycard__chip"></span></div>
       <div className="ef-paycard__num">{number}</div>
       <div className="ef-paycard__row">
-        <span style={{ flex: 1, minWidth: 0 }}><span className="ef-paycard__lbl" style={{ display: 'block' }}>Card holder</span><span className="ef-paycard__val" style={{ display: 'block' }}>{name}</span></span>
-        <span><span className="ef-paycard__lbl" style={{ display: 'block' }}>Expires</span><span className="ef-paycard__val" style={{ display: 'block' }}>{expiry}</span></span>
+        <span className="ef-paycard__holder"><span className="ef-paycard__lbl">Card holder</span><span className="ef-paycard__val">{name}</span></span>
+        <span><span className="ef-paycard__lbl">Expires</span><span className="ef-paycard__val">{expiry}</span></span>
       </div>
     </div>
   );
