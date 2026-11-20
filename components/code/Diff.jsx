@@ -17,8 +17,8 @@ const CSS = `
 .ef-diff__line--add .ef-diff__sign,.ef-diff__line--add .ef-diff__text{color:var(--success-600)}
 .ef-diff__line--del{background:var(--danger-100)}
 .ef-diff__line--del .ef-diff__sign,.ef-diff__line--del .ef-diff__text{color:var(--danger-600)}
-.ef-diff__word--add{background:var(--success-300);border-radius:var(--radius-xs)}
-.ef-diff__word--del{background:var(--danger-300);border-radius:var(--radius-xs)}
+.ef-diff__word--add{background:var(--success-300);color:var(--text-primary);border-radius:var(--radius-xs)}
+.ef-diff__word--del{background:var(--danger-300);color:var(--text-primary);border-radius:var(--radius-xs)}
 .ef-diff__skip{display:flex;align-items:center;gap:var(--space-3);padding:var(--space-0-5) 0;color:var(--text-muted);font-size:var(--text-2xs);user-select:none}
 .ef-diff__skipno{flex:none;width:76px;text-align:center;background:var(--surface-subtle);border-inline-end:1px solid var(--border-default)}
 .ef-diff__file{border-top:1px solid var(--border-default)}

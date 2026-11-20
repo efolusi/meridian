@@ -31,6 +31,14 @@ A green run proves that the committed bundle rebuilds byte for byte from source,
 
 One command is the whole contract: it is the same script CI executes, so a green run here means a green run there. The only thing it cannot cover locally is the browser: open `site/_smoke.html` after demo changes; it renders every demo and reports pass/fail in the page title.
 
+For accessibility, serve the repo and run axe-core over the smoke page. It checks WCAG 2.0, 2.1 and 2.2 at levels A and AA in the light and dark themes, and fails on any serious or critical violation. It needs a Playwright browser, like the smoke script:
+
+```bash
+BASE=http://localhost:8000 npm run a11y                      # the marketing group
+BASE=http://localhost:8000 A11Y_GROUPS=forms,data npm run a11y
+BASE=http://localhost:8000 A11Y_GROUPS=all npm run a11y      # every group
+```
+
 ## Visual baselines
 
 A PR that changes what a component looks like on purpose refreshes the group screenshots in `tests/__shots__`, even when the change stays under the visual check's diff threshold. Run the `update-visual-baselines` workflow on the PR's branch, take the changed shots onto the PR, and have them reviewed before merge.

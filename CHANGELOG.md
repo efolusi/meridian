@@ -2,6 +2,7 @@
 
 ## Unreleased
 
+- **Every text passes 4.5:1 in light and dark (axe color-contrast clean on all groups).** Diff word highlights keep their tinted fill with the primary ink; internal Exception frames use `--text-muted` instead of half opacity; PaymentCard labels drop their opacity; the ToolCall approval state uses `--accent-subtle-fg`; the Avatar group count sits on `--surface-sunken`, so it follows the theme; the pulsing Loader stands still with reduced motion.
 - **Every ThemeToggle on a page stays in step.** `writeThemePreference` sends an `efolusi-theme-change` event, and each toggle re-reads the choice on it and on the `storage` event from other tabs. A SiteHeader that renders its actions twice no longer has two toggles that disagree.
 - **Marquee's moving copies are inert from the first server-rendered paint**, so a link inside them never takes Tab focus before hydration.
 - **SiteHeader docs say that `actions` renders twice** (the bar and the mobile panel), so it must hold no `id`.

@@ -15,7 +15,7 @@ const CSS = `
 .ef-toolcall__verb{color:var(--text-muted);font-family:var(--font-sans);font-size:var(--text-sm)}
 .ef-toolcall__state{margin-inline-start:auto;display:inline-flex;align-items:center;gap:var(--space-2);font-family:var(--font-sans);font-size:var(--text-xs);font-weight:500;flex:none}
 .ef-toolcall__state--pending{color:var(--text-muted)}
-.ef-toolcall__state--approval{color:var(--brand-700)}
+.ef-toolcall__state--approval{color:var(--accent-subtle-fg)}
 .ef-toolcall__state--busy{color:var(--text-secondary)}
 .ef-toolcall__state--success{color:var(--success-600,var(--text-secondary))}
 .ef-toolcall__state--danger{color:var(--danger-600)}

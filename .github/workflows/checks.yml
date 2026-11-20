@@ -60,11 +60,11 @@ jobs:
       # silently for weeks while the gates job stayed green. Install it for real.
       - name: Install Playwright package (browsers come from the image)
         run: |
-          npm install --no-save --no-audit --no-fund playwright@1.48.0
+          npm install --no-save --no-audit --no-fund playwright@1.48.0 axe-core@4.13.0
           docker pull -q "$PW_IMAGE"
           {
             echo '#!/bin/sh'
-            echo 'exec docker run --rm --network host --ipc host --user "$(id -u):$(id -g)" -e HOME=/tmp -e BASE -e SHOTS -e BUTTON_SHOTS -e DIRECTION -v "$GITHUB_WORKSPACE:$GITHUB_WORKSPACE" -v "$RUNNER_TEMP:$RUNNER_TEMP" -w "$GITHUB_WORKSPACE" "$PW_IMAGE" node "$@"'
+            echo 'exec docker run --rm --network host --ipc host --user "$(id -u):$(id -g)" -e HOME=/tmp -e BASE -e SHOTS -e BUTTON_SHOTS -e DIRECTION -e A11Y_GROUPS -v "$GITHUB_WORKSPACE:$GITHUB_WORKSPACE" -v "$RUNNER_TEMP:$RUNNER_TEMP" -w "$GITHUB_WORKSPACE" "$PW_IMAGE" node "$@"'
           } > "$RUNNER_TEMP/pw-node"
           chmod +x "$RUNNER_TEMP/pw-node"
       - name: Button anchor cascade and state parity
@@ -90,6 +90,11 @@ jobs:
           fi
           if [ "$CODE" -eq 0 ]; then
             BASE=http://127.0.0.1:8000 "$RUNNER_TEMP/pw-node" scripts/smoke_starters.mjs
+            CODE=$?
+          fi
+          if [ "$CODE" -eq 0 ]; then
+            # axe-core over the marketing group; widen A11Y_GROUPS as other groups are fixed.
+            BASE=http://127.0.0.1:8000 A11Y_GROUPS=marketing "$RUNNER_TEMP/pw-node" scripts/a11y.mjs
             CODE=$?
           fi
           set -e
