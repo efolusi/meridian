@@ -6,7 +6,7 @@
 // never becomes web-accessible by accident. _headers and _redirects go in too:
 // Workers static assets read them from the assets directory.
 import { execFileSync } from 'node:child_process';
-import { existsSync, lstatSync, mkdirSync, mkdtempSync, readdirSync, rmSync, statSync, writeFileSync } from 'node:fs';
+import { copyFileSync, existsSync, lstatSync, mkdirSync, mkdtempSync, readdirSync, rmSync, statSync, writeFileSync } from 'node:fs';
 import { tmpdir } from 'node:os';
 import { join, resolve } from 'node:path';
 import { pathToFileURL } from 'node:url';
@@ -57,6 +57,14 @@ export function buildWorkerAssets(sha, root = process.cwd()) {
     execFileSync('sh', ['-c', `tar -C "${archive}" -cf - ${PUBLIC_PATHS.map((p) => `"${p}"`).join(' ')} | tar -C "${out}" -xf -`]);
   } finally {
     rmSync(archive, { recursive: true, force: true });
+  }
+
+  // Other sites load browser/<version>/, which never changes once published (immutable cache).
+  const version = JSON.parse(git('show', `${sha}:package.json`)).version;
+  const browser = join(out, 'browser');
+  mkdirSync(join(browser, version));
+  for (const entry of readdirSync(browser, { withFileTypes: true })) {
+    if (entry.isFile()) copyFileSync(join(browser, entry.name), join(browser, version, entry.name));
   }
 
   const link = hasSymlink(out);

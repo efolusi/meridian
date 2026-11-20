@@ -13,7 +13,8 @@ const MARQUEE_LABELS = {
   en: { pause: 'Pause the moving list', play: 'Play the moving list' },
   id: { pause: 'Jeda daftar berjalan', play: 'Putar daftar berjalan' },
 };
-const TOGGLE = '[data-slot="theme-toggle"]';
+// A toggle React renders (data-ef-react) is React's; this script leaves it alone.
+const TOGGLE = '[data-slot="theme-toggle"]:not([data-ef-react])';
 const MENU = '[data-slot="site-header"] .ef-site-header__menu';
 const MARQUEE = '[data-slot="marquee"]';
 const active = new WeakMap();
