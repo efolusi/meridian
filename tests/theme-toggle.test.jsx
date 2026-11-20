@@ -124,3 +124,25 @@ describe('ThemeToggle', () => {
     expect(css).toMatch(/\.ef-theme-toggle\{[^}]*width:var\(--tap-min\);height:var\(--tap-min\)/);
   });
 });
+
+describe('ThemeToggle instances stay in step (MD13)', () => {
+  it('updates the other toggle on the page when one cycles', () => {
+    fakeMedia(false);
+    localStorage.setItem('efolusi-theme', 'light');
+    const { getAllByRole } = render(<><ThemeToggle /><ThemeToggle lang="id" /></>);
+    const [en, id] = getAllByRole('button');
+    fireEvent.click(en);
+    expect(en.dataset.preference).toBe('dark');
+    expect(id.dataset.preference).toBe('dark');
+    expect(id.getAttribute('aria-label')).toBe('Tema gelap, ganti ke tema sistem');
+  });
+
+  it('follows a choice made in another tab through the storage event', () => {
+    fakeMedia(false);
+    localStorage.setItem('efolusi-theme', 'light');
+    const { getByRole } = render(<ThemeToggle />);
+    localStorage.setItem('efolusi-theme', 'system');
+    act(() => { window.dispatchEvent(new StorageEvent('storage', { key: 'efolusi-theme' })); });
+    expect(getByRole('button').dataset.preference).toBe('system');
+  });
+});

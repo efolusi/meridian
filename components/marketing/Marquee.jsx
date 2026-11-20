@@ -31,7 +31,10 @@ const CSS = `
 // The moving copies are decoration: inert keeps any link inside them out of the tab
 // order from the first server-rendered paint, before hydration. React 18 renders an
 // unknown attribute from a string, React 19 knows inert as a boolean.
-const INERT = { inert: Number.parseInt(React.version, 10) >= 19 ? true : '' };
+export function inertProp(version = React.version) {
+  return { inert: Number.parseInt(version, 10) >= 19 ? true : '' };
+}
+const INERT = inertProp();
 
 const LABELS = {
   en: { pause: 'Pause the moving list', play: 'Play the moving list' },

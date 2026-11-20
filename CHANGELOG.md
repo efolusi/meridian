@@ -2,6 +2,7 @@
 
 ## Unreleased
 
+- **Every ThemeToggle on a page stays in step.** `writeThemePreference` sends an `efolusi-theme-change` event, and each toggle re-reads the choice on it and on the `storage` event from other tabs. A SiteHeader that renders its actions twice no longer has two toggles that disagree.
 - **Marquee's moving copies are inert from the first server-rendered paint**, so a link inside them never takes Tab focus before hydration.
 - **SiteHeader docs say that `actions` renders twice** (the bar and the mobile panel), so it must hold no `id`.
 - **The docs demos fit a 390px screen.** The Textarea, Card, Bubble and CopyField demos had fixed widths that made the demo page scroll sideways on a phone; they are fluid now, with the same maximum width.

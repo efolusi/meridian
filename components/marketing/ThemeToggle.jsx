@@ -9,6 +9,7 @@ import { Icon } from '../icons/Icon.jsx';
 // Efolusi site inherits it; every product parses that cookie as dark|light.
 const THEME_COOKIE = 'efolusi_theme';
 const THEME_STORAGE_KEY = 'efolusi-theme';
+const THEME_CHANGE_EVENT = 'efolusi-theme-change';
 // Cycle order of the single button.
 const THEME_PREFERENCES = ['light', 'dark', 'system'];
 const YEAR = 60 * 60 * 24 * 365;
@@ -56,6 +57,8 @@ export function writeThemePreference(value, doc = globalThis.document, storage =
     /* storage blocked: the cookie still carries the resolved theme */
   }
   writeThemeCookie(resolveTheme(pref, matchMedia), doc);
+  // Every ThemeToggle on the page re-reads the choice (a header renders its actions twice).
+  doc?.defaultView?.dispatchEvent(new CustomEvent(THEME_CHANGE_EVENT, { detail: pref }));
   return pref;
 }
 
@@ -85,7 +88,16 @@ export const ThemeToggle = React.forwardRef(function ThemeToggle({ lang = 'en', 
   const [pref, setPref] = React.useState('system');
 
   React.useEffect(() => {
-    setPref(readThemePreference());
+    const sync = () => setPref(readThemePreference());
+    // Another toggle on this page, or the same choice made in another tab.
+    const onStorage = (e) => { if (e.key === null || e.key === THEME_STORAGE_KEY) sync(); };
+    sync();
+    window.addEventListener(THEME_CHANGE_EVENT, sync);
+    window.addEventListener('storage', onStorage);
+    return () => {
+      window.removeEventListener(THEME_CHANGE_EVENT, sync);
+      window.removeEventListener('storage', onStorage);
+    };
   }, []);
 
   React.useEffect(() => {

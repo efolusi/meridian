@@ -11,3 +11,5 @@ Put the output of `themeInitScript()` in an inline `<script>` in `<head>`, befor
 // header
 <ThemeToggle lang={lang} />
 ```
+
+Every `ThemeToggle` on a page stays in step: a choice made in one updates the others, and a choice made in another tab of the same site updates this one.
