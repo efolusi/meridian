@@ -38,9 +38,17 @@ function renderRoot({ render, asChild, children, rootProps, ref }) {
   return <div {...rootProps} ref={ref}>{children}</div>;
 }
 
-export const ItemGroup = React.forwardRef(function ItemGroup({ className, ...props }, ref) {
+// A list must hold list items. Each child sits in a listitem wrapper with display:contents,
+// so the layout and the child's own role (a link, a button) stay as they are; decorative
+// separators pass through.
+export const ItemGroup = React.forwardRef(function ItemGroup({ className, children, ...props }, ref) {
   injectEfCss('ef-css-item', CSS);
-  return <div ref={ref} role="list" data-slot="item-group" className={classes('ef-item-group', className)} {...props} />;
+  const items = React.Children.map(children, (child) => {
+    if (child == null || child === false) return child;
+    if (React.isValidElement(child) && child.type === ItemSeparator) return child;
+    return <div role="listitem" data-slot="item-group-item" style={{ display: 'contents' }}>{child}</div>;
+  });
+  return <div ref={ref} role="list" data-slot="item-group" className={classes('ef-item-group', className)} {...props}>{items}</div>;
 });
 
 export const ItemSeparator = React.forwardRef(function ItemSeparator({ className, ...props }, ref) {

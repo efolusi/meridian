@@ -113,7 +113,7 @@ export const QuestionnaireItem = React.forwardRef(function QuestionnaireItem({ n
   React.useEffect(() => { onStatusChange?.(status); }, [onStatusChange, status]);
   const invalid = invalidProp || root?.invalid[name];
   const context = { name, required, multiple, disabled, invalid, status };
-  return <ItemContext.Provider value={context}><fieldset {...rest} ref={ref} tabIndex={-1} name={name} disabled={disabled} hidden={!active} aria-required={required || undefined} aria-invalid={invalid || undefined} data-questionnaire-item={name} data-status={status} className={join('ef-questionnaire__item', className)}>{children}</fieldset></ItemContext.Provider>;
+  return <ItemContext.Provider value={context}><fieldset {...rest} ref={ref} tabIndex={-1} name={name} disabled={disabled} hidden={!active} aria-invalid={invalid || undefined} data-questionnaire-item={name} data-status={status} className={join('ef-questionnaire__item', className)}>{children}</fieldset></ItemContext.Provider>;
 });
 
 export const QuestionnaireTitle = React.forwardRef(function QuestionnaireTitle({ className, ...rest }, ref) { return <legend {...rest} ref={ref} className={join('ef-questionnaire__title', className)} />; });

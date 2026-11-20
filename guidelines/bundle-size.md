@@ -13,9 +13,9 @@ CSS is not counted per component: `styles.css` ships every component style in on
 
 | File | Size | Gzip |
 | --- | ---: | ---: |
-| `@efolusi/meridian` | 364.0 kB | 82.5 kB |
-| `dist/components.css` | 220.1 kB | 29.9 kB |
-| `_ds_bundle.js` | 851.7 kB | 151.4 kB |
+| `@efolusi/meridian` | 364.5 kB | 82.6 kB |
+| `dist/components.css` | 220.4 kB | 29.9 kB |
+| `_ds_bundle.js` | 853.1 kB | 151.9 kB |
 
 The root import, `@efolusi/meridian`, is every component. `_ds_bundle.js` is the zero-build CDN bundle, which also carries each component's CSS. The root import is minified; the CSS and the CDN bundle are measured as shipped.
 
@@ -73,17 +73,17 @@ The root import, `@efolusi/meridian`, is every component. `_ds_bundle.js` is the
 | `dates/TimePicker.js` | TimePicker | 50.0 kB | 9.9 kB |
 | `display/Accordion.js` | Accordion, AccordionItem, AccordionTrigger, AccordionContent | 48.6 kB | 8.7 kB |
 | `display/AspectRatio.js` | AspectRatio | 0.6 kB | 0.4 kB |
-| `display/Avatar.js` | Avatar, AvatarImage, AvatarFallback, AvatarBadge, AvatarGroup, AvatarGroupCount | 1.7 kB | 0.6 kB |
+| `display/Avatar.js` | Avatar, AvatarImage, AvatarFallback, AvatarBadge, AvatarGroup, AvatarGroupCount | 1.8 kB | 0.6 kB |
 | `display/Badge.js` | Badge | 0.9 kB | 0.5 kB |
 | `display/Card.js` | CardHeader, CardTitle, CardDescription, CardAction, CardContent, CardFooter, Card | 1.8 kB | 0.6 kB |
 | `display/Carousel.js` | Carousel, CarouselContent, CarouselItem, CarouselPrevious, CarouselNext | 48.8 kB | 9.0 kB |
 | `display/Collapsible.js` | Collapsible, CollapsibleTrigger, CollapsibleContent | 2.8 kB | 1.0 kB |
 | `display/Direction.js` | DirectionProvider | 0.4 kB | 0.2 kB |
 | `display/Divider.js` | Divider | 0.8 kB | 0.4 kB |
-| `display/Item.js` | ItemGroup, ItemSeparator, Item, ItemMedia, ItemContent, ItemTitle, ItemDescription, ItemActions, ItemHeader, ItemFooter | 3.4 kB | 1.0 kB |
+| `display/Item.js` | ItemGroup, ItemSeparator, Item, ItemMedia, ItemContent, ItemTitle, ItemDescription, ItemActions, ItemHeader, ItemFooter | 3.6 kB | 1.1 kB |
 | `display/Kbd.js` | Kbd, KbdGroup | 0.7 kB | 0.4 kB |
 | `display/Link.js` | Link | 44.1 kB | 7.2 kB |
-| `display/Resizable.js` | ResizablePanelGroup, ResizablePanel, ResizableHandle | 3.9 kB | 1.7 kB |
+| `display/Resizable.js` | ResizablePanelGroup, ResizablePanel, ResizableHandle | 4.0 kB | 1.7 kB |
 | `display/ScrollArea.js` | ScrollArea, ScrollBar | 1.3 kB | 0.6 kB |
 | `display/Separator.js` | Separator | 0.6 kB | 0.4 kB |
 | `display/Tag.js` | Tag | 44.4 kB | 7.3 kB |
@@ -102,7 +102,7 @@ The root import, `@efolusi/meridian`, is every component. `_ds_bundle.js` is the
 | `feedback/Tooltip.js` | Tooltip, TooltipProvider, TooltipTrigger, TooltipContent | 5.2 kB | 2.1 kB |
 | `files/Attachment.js` | Attachment, AttachmentMedia, AttachmentContent, AttachmentTitle, AttachmentDescription, AttachmentActions, AttachmentAction, AttachmentTrigger, AttachmentGroup | 46.8 kB | 7.9 kB |
 | `files/FileDrop.js` | FileDrop | 45.2 kB | 7.8 kB |
-| `files/FileTile.js` | FileTile | 46.8 kB | 8.2 kB |
+| `files/FileTile.js` | FileTile | 46.9 kB | 8.2 kB |
 | `files/FileTypeIcon.js` | FileTypeIcon | 45.3 kB | 7.5 kB |
 | `finance/PaymentCard.js` | PaymentCard | 2.1 kB | 0.8 kB |
 | `forms/Button.js` | Button | 45.8 kB | 8.1 kB |
@@ -118,7 +118,7 @@ The root import, `@efolusi/meridian`, is every component. `_ds_bundle.js` is the
 | `forms/Label.js` | Label | 0.7 kB | 0.4 kB |
 | `forms/NativeSelect.js` | NativeSelect, NativeSelectOption, NativeSelectOptGroup | 44.3 kB | 7.2 kB |
 | `forms/NumberInput.js` | NumberInput | 47.7 kB | 8.8 kB |
-| `forms/Questionnaire.js` | Questionnaire, QuestionnaireProgress, QuestionnaireItem, QuestionnaireTitle, QuestionnaireDescription, QuestionnaireChoices, QuestionnaireChoice, QuestionnaireInput, QuestionnaireError, QuestionnaireActions, QuestionnairePrevious, QuestionnaireSkip, QuestionnaireNext, QuestionnaireSubmit | 7.2 kB | 2.4 kB |
+| `forms/Questionnaire.js` | Questionnaire, QuestionnaireProgress, QuestionnaireItem, QuestionnaireTitle, QuestionnaireDescription, QuestionnaireChoices, QuestionnaireChoice, QuestionnaireInput, QuestionnaireError, QuestionnaireActions, QuestionnairePrevious, QuestionnaireSkip, QuestionnaireNext, QuestionnaireSubmit | 7.1 kB | 2.4 kB |
 | `forms/Radio.js` | RadioGroup, RadioGroupItem, Radio | 2.3 kB | 1.0 kB |
 | `forms/Select.js` | Select, SelectTrigger, SelectValue, SelectContent, SelectGroup, SelectLabel, SelectSeparator, SelectItem | 51.1 kB | 10.0 kB |
 | `forms/Slider.js` | Slider | 2.8 kB | 1.4 kB |
@@ -137,7 +137,7 @@ The root import, `@efolusi/meridian`, is every component. `_ds_bundle.js` is the
 | `marketing/ThemeToggle.js` | ThemeToggle | 46.5 kB | 8.3 kB |
 | `navigation/Breadcrumbs.js` | Breadcrumb, BreadcrumbList, BreadcrumbItem, BreadcrumbLink, BreadcrumbPage, BreadcrumbSeparator, BreadcrumbEllipsis | 45.8 kB | 7.6 kB |
 | `navigation/Menubar.js` | Menubar, MenubarMenu, MenubarTrigger, MenubarContent, MenubarPortal, MenubarGroup, MenubarRadioGroup, MenubarLabel, MenubarSeparator, MenubarShortcut, MenubarItem, MenubarCheckboxItem, MenubarRadioItem, MenubarSub, MenubarSubTrigger, MenubarSubContent | 59.3 kB | 11.7 kB |
-| `navigation/NavigationMenu.js` | NavigationMenu, NavigationMenuList, NavigationMenuItem, NavigationMenuTrigger, NavigationMenuContent, NavigationMenuLink, NavigationMenuIndicator, NavigationMenuViewport | 50.5 kB | 9.5 kB |
+| `navigation/NavigationMenu.js` | NavigationMenu, NavigationMenuList, NavigationMenuItem, NavigationMenuTrigger, NavigationMenuContent, NavigationMenuLink, NavigationMenuIndicator, NavigationMenuViewport | 50.4 kB | 9.5 kB |
 | `navigation/PageControl.js` | PageControl | 0.7 kB | 0.4 kB |
 | `navigation/Pagination.js` | Pagination, PaginationContent, PaginationItem, PaginationLink, PaginationPrevious, PaginationNext, PaginationEllipsis | 45.7 kB | 7.5 kB |
 | `navigation/SegmentedControl.js` | SegmentedControl | 44.1 kB | 7.3 kB |
@@ -145,7 +145,7 @@ The root import, `@efolusi/meridian`, is every component. `_ds_bundle.js` is the
 | `navigation/Sidebar.js` | SidebarProvider, Sidebar, SidebarTrigger, SidebarRail, SidebarInset, SidebarHeader, SidebarFooter, SidebarContent, SidebarGroup, SidebarGroupContent, SidebarMenu, SidebarMenuItem, SidebarMenuSub, SidebarMenuSubItem, SidebarInput, SidebarSeparator, SidebarGroupLabel, SidebarGroupAction, SidebarMenuButton, SidebarMenuAction, SidebarMenuBadge, SidebarMenuSubButton, SidebarMenuSkeleton | 51.9 kB | 9.8 kB |
 | `navigation/SkipLink.js` | SkipLink | 0.7 kB | 0.5 kB |
 | `navigation/Steps.js` | Steps | 44.5 kB | 7.3 kB |
-| `navigation/Tabs.js` | Tabs, TabsList, TabsTrigger, TabsContent | 46.7 kB | 8.2 kB |
+| `navigation/Tabs.js` | Tabs, TabsList, TabsTrigger, TabsContent | 46.8 kB | 8.3 kB |
 | `navigation/TopNav.js` | TopNav | 0.6 kB | 0.3 kB |
 | `overlay/Command.js` | Command, CommandDialog, CommandInput, CommandList, CommandEmpty, CommandGroup, CommandItem, CommandShortcut, CommandSeparator | 54.4 kB | 10.6 kB |
 | `overlay/ContextMenu.js` | ContextMenu, ContextMenuTrigger, ContextMenuPortal, ContextMenuContent, ContextMenuGroup, ContextMenuLabel, ContextMenuSeparator, ContextMenuShortcut, ContextMenuItem, ContextMenuCheckboxItem, ContextMenuRadioGroup, ContextMenuRadioItem, ContextMenuSub, ContextMenuSubTrigger, ContextMenuSubContent | 55.5 kB | 10.9 kB |

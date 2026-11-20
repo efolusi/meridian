@@ -64,7 +64,7 @@ export const ResizablePanelGroup = React.forwardRef(function ResizablePanelGroup
   const value = React.useMemo(() => ({ orientation, direction: direction || readingDirection, sizes, updatePair }), [orientation, direction, readingDirection, sizes, updatePair]);
   return (
     <ResizableCtx.Provider value={value}>
-      <div {...props} ref={ref} data-slot="resizable-panel-group" data-orientation={orientation} aria-orientation={orientation} className={`ef-resizable${className ? ' ' + className : ''}`}>
+      <div {...props} ref={ref} data-slot="resizable-panel-group" data-orientation={orientation} className={`ef-resizable${className ? ' ' + className : ''}`}>
         {nodes.map((child, index) => {
           if (!React.isValidElement(child)) return child;
           if (isElementOfType(child, ResizablePanel)) return React.cloneElement(child, { key: child.key ?? index, _panelIndex: panelIndex++ });
@@ -115,5 +115,5 @@ export const ResizableHandle = React.forwardRef(function ResizableHandle({ _hand
     event.preventDefault();
     ctx.updatePair(_handleIndex, delta);
   };
-  return <div {...props} ref={ref} role="separator" tabIndex={disabled ? undefined : 0} aria-label={props['aria-label'] || 'Resize panes'} aria-disabled={disabled || undefined} aria-orientation={ctx?.orientation === 'horizontal' ? 'vertical' : 'horizontal'} data-slot="resizable-handle" data-resize-handle-active={active ? '' : undefined} className={`ef-resizable__handle${className ? ' ' + className : ''}`} onPointerDown={down} onKeyDown={key}>{withHandle ? <span className="ef-resizable__grip" aria-hidden="true" /> : null}</div>;
+  return <div {...props} ref={ref} role="separator" tabIndex={disabled ? undefined : 0} aria-label={props['aria-label'] || 'Resize panes'} aria-valuenow={Math.round(ctx?.sizes?.[_handleIndex] ?? 50)} aria-valuemin={0} aria-valuemax={100} aria-disabled={disabled || undefined} aria-orientation={ctx?.orientation === 'horizontal' ? 'vertical' : 'horizontal'} data-slot="resizable-handle" data-resize-handle-active={active ? '' : undefined} className={`ef-resizable__handle${className ? ' ' + className : ''}`} onPointerDown={down} onKeyDown={key}>{withHandle ? <span className="ef-resizable__grip" aria-hidden="true" /> : null}</div>;
 });

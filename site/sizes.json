@@ -1,16 +1,16 @@
 {
   "totals": {
     "@efolusi/meridian": {
-      "bytes": 372739,
-      "gzip": 84431
+      "bytes": 373243,
+      "gzip": 84604
     },
     "dist/components.css": {
-      "bytes": 225397,
-      "gzip": 30639
+      "bytes": 225705,
+      "gzip": 30659
     },
     "_ds_bundle.js": {
-      "bytes": 872187,
-      "gzip": 155081
+      "bytes": 873525,
+      "gzip": 155505
     }
   },
   "modules": [
@@ -315,8 +315,8 @@
       "exports": [
         "Diff"
       ],
-      "bytes": 49163,
-      "gzip": 8847
+      "bytes": 49185,
+      "gzip": 8856
     },
     {
       "module": "code/EnvList.js",
@@ -512,8 +512,8 @@
         "AvatarGroup",
         "AvatarGroupCount"
       ],
-      "bytes": 1719,
-      "gzip": 609
+      "bytes": 1804,
+      "gzip": 657
     },
     {
       "module": "display/Badge.js",
@@ -549,8 +549,8 @@
         "CarouselPrevious",
         "CarouselNext"
       ],
-      "bytes": 49992,
-      "gzip": 9249
+      "bytes": 50002,
+      "gzip": 9261
     },
     {
       "module": "display/Collapsible.js",
@@ -596,8 +596,8 @@
         "ItemHeader",
         "ItemFooter"
       ],
-      "bytes": 3511,
-      "gzip": 1001
+      "bytes": 3730,
+      "gzip": 1079
     },
     {
       "module": "display/Kbd.js",
@@ -626,8 +626,8 @@
         "ResizablePanel",
         "ResizableHandle"
       ],
-      "bytes": 4002,
-      "gzip": 1727
+      "bytes": 4065,
+      "gzip": 1760
     },
     {
       "module": "display/ScrollArea.js",
@@ -636,8 +636,8 @@
         "ScrollArea",
         "ScrollBar"
       ],
-      "bytes": 1281,
-      "gzip": 646
+      "bytes": 1292,
+      "gzip": 653
     },
     {
       "module": "display/Separator.js",
@@ -672,8 +672,8 @@
       "exports": [
         "Toolbar"
       ],
-      "bytes": 50438,
-      "gzip": 9452
+      "bytes": 50485,
+      "gzip": 9467
     },
     {
       "module": "display/TreeList.js",
@@ -713,8 +713,8 @@
         "AlertDialogCancel",
         "AlertDialogAction"
       ],
-      "bytes": 7126,
-      "gzip": 2501
+      "bytes": 7121,
+      "gzip": 2505
     },
     {
       "module": "feedback/Banner.js",
@@ -832,8 +832,8 @@
       "exports": [
         "FileTile"
       ],
-      "bytes": 47954,
-      "gzip": 8379
+      "bytes": 47995,
+      "gzip": 8396
     },
     {
       "module": "files/FileTypeIcon.js",
@@ -1026,8 +1026,8 @@
         "QuestionnaireNext",
         "QuestionnaireSubmit"
       ],
-      "bytes": 7339,
-      "gzip": 2432
+      "bytes": 7313,
+      "gzip": 2427
     },
     {
       "module": "forms/Radio.js",
@@ -1239,8 +1239,8 @@
         "NavigationMenuIndicator",
         "NavigationMenuViewport"
       ],
-      "bytes": 51664,
-      "gzip": 9719
+      "bytes": 51643,
+      "gzip": 9711
     },
     {
       "module": "navigation/PageControl.js",
@@ -1342,8 +1342,8 @@
         "TabsTrigger",
         "TabsContent"
       ],
-      "bytes": 47860,
-      "gzip": 8420
+      "bytes": 47917,
+      "gzip": 8457
     },
     {
       "module": "navigation/TopNav.js",

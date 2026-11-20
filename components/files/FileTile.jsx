@@ -24,7 +24,7 @@ export function FileTile({ name, size, kind, status, progress, error, onRemove, 
       <div style={{ flex: 1, minWidth: 0 }}>
         <div className="ef-filetile__name">{name}</div>
         {error ? <div className="ef-filetile__meta ef-filetile__meta--err">{error}</div>
-          : progress != null ? <Progress value={progress} style={{ marginTop: 'var(--space-1)', maxWidth: 220 }} />
+          : progress != null ? <Progress value={progress} aria-label={typeof name === 'string' ? name : undefined} style={{ marginTop: 'var(--space-1)', maxWidth: 220 }} />
           : <div className="ef-filetile__meta">{[size, status].filter(Boolean).join(' · ')}</div>}
       </div>
       {actions}

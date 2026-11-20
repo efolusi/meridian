@@ -9,6 +9,7 @@ const CSS = `
 .ef-diff__plus{color:var(--success-600)}
 .ef-diff__minus{color:var(--danger-600)}
 .ef-diff__scroll{overflow:auto}
+.ef-diff__scroll:focus-visible{outline:2px solid var(--focus-ring-color);outline-offset:-2px}
 .ef-diff__line{display:flex;white-space:pre}
 .ef-diff__no{flex:none;width:38px;padding:0 var(--space-2);text-align:end;color:var(--text-muted);font-size:var(--text-2xs);user-select:none;background:var(--surface-subtle);border-inline-end:1px solid var(--border-default)}
 .ef-diff__sign{flex:none;width:20px;text-align:center;user-select:none;color:var(--text-muted)}
@@ -142,7 +143,7 @@ function DiffFile({ file, wordLevel, contextLines }) {
         <span style={{ flex: 1, minWidth: 0, overflow: 'hidden', textOverflow: 'ellipsis' }}>{file.name}</span>
         <Counts adds={r.adds} dels={r.dels} />
       </button>
-      {open ? <div className="ef-diff__scroll"><Rows rows={r.rows} /></div> : null}
+      {open ? <div className="ef-diff__scroll" tabIndex={0}><Rows rows={r.rows} /></div> : null}
     </div>
   );
 }
@@ -158,7 +159,7 @@ export function Diff({ title, from, to, files, wordLevel = true, contextLines = 
         <div className="ef-diff__head">{title}<Counts adds={single.adds} dels={single.dels} /></div>
       ) : null}
       {files ? files.map((f, i) => <DiffFile key={f.name || i} file={f} wordLevel={wordLevel} contextLines={contextLines} />) : (
-        <div className="ef-diff__scroll" style={maxHeight ? { maxHeight } : null}><Rows rows={single.rows} /></div>
+        <div className="ef-diff__scroll" tabIndex={0} style={maxHeight ? { maxHeight } : null}><Rows rows={single.rows} /></div>
       )}
     </div>
   );

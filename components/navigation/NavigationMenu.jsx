@@ -78,7 +78,7 @@ export const NavigationMenu = React.forwardRef(function NavigationMenu({ value: 
     triggers.find(trigger => trigger.dataset.itemValue === itemValue)?.focus();
   }, []);
   const context = React.useMemo(() => ({ value, setValue, viewport, viewportNode, setViewportNode, openItem, moveTrigger, focusTrigger, direction, orientation, tabStop, setTabStop, indicator, updateIndicator, pendingFocusRef }), [value, setValue, viewport, viewportNode, openItem, moveTrigger, focusTrigger, direction, orientation, tabStop, indicator, updateIndicator]);
-  return <NavigationRootContext.Provider value={context}><nav {...props} ref={mergeRefs(forwardedRef, rootRef)} data-slot="navigation-menu" data-viewport={viewport ? 'true' : 'false'} aria-orientation={orientation} className={join('ef-navigation-menu', className)} onKeyDown={onKeyDown}>{children}{viewport ? <NavigationMenuViewport /> : null}</nav></NavigationRootContext.Provider>;
+  return <NavigationRootContext.Provider value={context}><nav {...props} ref={mergeRefs(forwardedRef, rootRef)} data-slot="navigation-menu" data-viewport={viewport ? 'true' : 'false'} className={join('ef-navigation-menu', className)} onKeyDown={onKeyDown}>{children}{viewport ? <NavigationMenuViewport /> : null}</nav></NavigationRootContext.Provider>;
 });
 
 export const NavigationMenuList = React.forwardRef(function NavigationMenuList({ className, ...props }, ref) { return <ul {...props} ref={ref} data-slot="navigation-menu-list" className={join('ef-navigation-menu__list', className)} />; });
