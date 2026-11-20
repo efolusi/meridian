@@ -93,8 +93,8 @@ jobs:
             CODE=$?
           fi
           if [ "$CODE" -eq 0 ]; then
-            # axe-core over the marketing group; widen A11Y_GROUPS as other groups are fixed.
-            BASE=http://127.0.0.1:8000 A11Y_GROUPS=marketing "$RUNNER_TEMP/pw-node" scripts/a11y.mjs
+            # axe-core over every demo group, light and dark.
+            BASE=http://127.0.0.1:8000 A11Y_GROUPS=all "$RUNNER_TEMP/pw-node" scripts/a11y.mjs
             CODE=$?
           fi
           set -e

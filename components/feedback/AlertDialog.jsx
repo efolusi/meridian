@@ -75,7 +75,7 @@ export const AlertDialogTrigger = React.forwardRef(function AlertDialogTrigger({
     as: 'button',
     type: asChild ? undefined : rest.type || 'button',
     'data-slot': 'alert-dialog-trigger',
-    'aria-haspopup': 'alertdialog',
+    'aria-haspopup': 'dialog',
     'aria-expanded': ctx.open,
     onClick: composeEventHandlers(onClick, () => ctx.setOpen(true)),
   };

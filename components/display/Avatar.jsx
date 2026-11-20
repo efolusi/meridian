@@ -59,7 +59,7 @@ export const AvatarFallback = React.forwardRef(function AvatarFallback({ classNa
 });
 
 export const AvatarBadge = React.forwardRef(function AvatarBadge({ className, ...rest }, ref) {
-  return <span {...rest} ref={ref} data-slot="avatar-badge" className={classes('ef-avatar__badge', className)} />;
+  return <span role={rest['aria-label'] ? 'img' : undefined} aria-hidden={rest['aria-label'] || rest.children ? undefined : true} {...rest} ref={ref} data-slot="avatar-badge" className={classes('ef-avatar__badge', className)} />;
 });
 
 export const AvatarGroup = React.forwardRef(function AvatarGroup({ className, ...rest }, ref) {

@@ -9,6 +9,8 @@ const CSS = `
 .ef-filetile:focus-within{border-color:var(--focus-ring-color)}
 .ef-filetile__icon{display:inline-flex;align-items:center;justify-content:center;width:34px;height:34px;flex:none;border-radius:var(--radius-sm);background:var(--surface-sunken);color:var(--sand-700)}
 .ef-filetile__name{font-size:var(--text-sm);font-weight:var(--weight-semibold);color:var(--text-primary);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.ef-filetile__body{flex:1;min-width:0}
+.ef-filetile__progress{margin-top:var(--space-1);max-width:220px}
 .ef-filetile__meta{font-size:var(--text-xs);color:var(--text-muted);margin-top:1px}
 .ef-filetile__meta--err{color:var(--danger-600)}
 `;
@@ -21,10 +23,10 @@ export function FileTile({ name, size, kind, status, progress, error, onRemove, 
   return (
     <div {...rest} className={`ef-filetile${className ? ' ' + className : ''}`} style={style}>
       <span className="ef-filetile__icon"><Icon name={icon} size={16} /></span>
-      <div style={{ flex: 1, minWidth: 0 }}>
+      <div className="ef-filetile__body">
         <div className="ef-filetile__name">{name}</div>
         {error ? <div className="ef-filetile__meta ef-filetile__meta--err">{error}</div>
-          : progress != null ? <Progress value={progress} style={{ marginTop: 'var(--space-1)', maxWidth: 220 }} />
+          : progress != null ? <Progress value={progress} aria-label={typeof name === 'string' ? name : undefined} className="ef-filetile__progress" />
           : <div className="ef-filetile__meta">{[size, status].filter(Boolean).join(' · ')}</div>}
       </div>
       {actions}

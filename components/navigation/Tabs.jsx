@@ -19,14 +19,14 @@ const CSS = `
 @media (pointer:coarse){.ef-tabs__tab{height:var(--tap-min)}}
 `;
 const TabsContext = React.createContext(null);
-export const Tabs = React.forwardRef(function Tabs({ items, value: valueProp, defaultValue, onValueChange, onChange, orientation = 'horizontal', children, style, className, ...rest }, fRef) {
+export const Tabs = React.forwardRef(function Tabs({ items, _noPanels = false, value: valueProp, defaultValue, onValueChange, onChange, orientation = 'horizontal', children, style, className, ...rest }, fRef) {
   injectEfCss('ef-css-tabs', CSS);
   const uid = React.useId();
   const [inner, setInner] = React.useState(defaultValue != null ? defaultValue : (items && items[0] ? items[0].id : undefined));
   const value = valueProp !== undefined ? valueProp : inner;
   const change = next => { if (valueProp === undefined) setInner(next); if (onValueChange) onValueChange(next); if (onChange) onChange(next); };
   const forwardedRef = typeof fRef === 'function' || (fRef && Object.prototype.hasOwnProperty.call(fRef, 'current')) ? fRef : null;
-  if (items) return <Tabs value={value} onValueChange={change} orientation={orientation} className={className} style={style} {...rest} ref={forwardedRef}>
+  if (items) return <Tabs _noPanels value={value} onValueChange={change} orientation={orientation} className={className} style={style} {...rest} ref={forwardedRef}>
     <TabsList>
       {items.map(it => (
         <TabsTrigger key={it.id} value={it.id}>
@@ -37,7 +37,7 @@ export const Tabs = React.forwardRef(function Tabs({ items, value: valueProp, de
       ))}
     </TabsList>
   </Tabs>;
-  return <TabsContext.Provider value={{ value, change, orientation, uid }}><div {...rest} ref={forwardedRef} data-slot="tabs" data-orientation={orientation} className={`ef-tabs${className ? ' ' + className : ''}`} style={style}>{children}</div></TabsContext.Provider>;
+  return <TabsContext.Provider value={{ value, change, orientation, uid, noPanels: _noPanels }}><div {...rest} ref={forwardedRef} data-slot="tabs" data-orientation={orientation} className={`ef-tabs${className ? ' ' + className : ''}`} style={style}>{children}</div></TabsContext.Provider>;
 });
 
 export const TabsList = React.forwardRef(function TabsList({ className, onKeyDown, variant, ...props }, ref) {
@@ -62,7 +62,7 @@ export const TabsList = React.forwardRef(function TabsList({ className, onKeyDow
 });
 export const TabsTrigger = React.forwardRef(function TabsTrigger({ value, className, disabled, ...props }, ref) {
   const ctx = React.useContext(TabsContext) || { value: undefined, change: () => {}, uid: 'tabs' }; const active = ctx.value === value;
-  return <button {...props} ref={ref} id={`${ctx.uid}-trigger-${value}`} type="button" role="tab" disabled={disabled} aria-selected={active} aria-controls={`${ctx.uid}-content-${value}`} tabIndex={active ? 0 : -1} data-slot="tabs-trigger" data-state={active ? 'active' : 'inactive'} data-active={active ? 'true' : 'false'} className={`ef-tabs__tab${active ? ' ef-tabs__tab--active' : ''}${className ? ' ' + className : ''}`} onClick={e => { if (props.onClick) props.onClick(e); if (!e.defaultPrevented) ctx.change(value); }} />;
+  return <button {...props} ref={ref} id={`${ctx.uid}-trigger-${value}`} type="button" role="tab" disabled={disabled} aria-selected={active} aria-controls={ctx.noPanels ? undefined : `${ctx.uid}-content-${value}`} tabIndex={active ? 0 : -1} data-slot="tabs-trigger" data-state={active ? 'active' : 'inactive'} data-active={active ? 'true' : 'false'} className={`ef-tabs__tab${active ? ' ef-tabs__tab--active' : ''}${className ? ' ' + className : ''}`} onClick={e => { if (props.onClick) props.onClick(e); if (!e.defaultPrevented) ctx.change(value); }} />;
 });
 export const TabsContent = React.forwardRef(function TabsContent({ value, className, forceMount, ...props }, ref) {
   const ctx = React.useContext(TabsContext) || { value: undefined, uid: 'tabs' }; const active = ctx.value === value; if (!active && !forceMount) return null;

@@ -5,6 +5,7 @@ import { Separator } from './Separator.jsx';
 
 const CSS = `
 .ef-item-group{display:flex;flex-direction:column}
+.ef-item-group>[data-slot="item-group-item"]{display:flex;flex-direction:column;min-width:0}
 .ef-item{display:flex;flex-wrap:wrap;align-items:center;width:100%;border:1px solid transparent;border-radius:var(--radius-md);background:transparent;color:var(--text-primary);font-family:var(--font-sans);font-size:var(--text-sm);text-align:start;transition:background var(--dur-fast) var(--ease-out),border-color var(--dur-fast) var(--ease-out),box-shadow var(--dur-fast) var(--ease-out)}
 .ef-item[data-size="default"]{gap:var(--space-4);padding:var(--space-4)}.ef-item[data-size="sm"]{gap:var(--space-3);padding:var(--space-3) var(--space-4)}.ef-item[data-size="xs"]{gap:var(--space-2);padding:var(--space-2) var(--space-3)}
 .ef-item[data-variant="outline"]{border-color:var(--border-default)}.ef-item[data-variant="muted"]{background:var(--surface-sunken)}
@@ -38,9 +39,17 @@ function renderRoot({ render, asChild, children, rootProps, ref }) {
   return <div {...rootProps} ref={ref}>{children}</div>;
 }
 
-export const ItemGroup = React.forwardRef(function ItemGroup({ className, ...props }, ref) {
+// A list must hold list items. Each child sits in a listitem wrapper that is a real box
+// (screen readers drop the role of a display:contents element), laid out so the group's gap
+// and the item's own width stay the same. Separators stay decorative inside the list.
+export const ItemGroup = React.forwardRef(function ItemGroup({ className, children, ...props }, ref) {
   injectEfCss('ef-css-item', CSS);
-  return <div ref={ref} role="list" data-slot="item-group" className={classes('ef-item-group', className)} {...props} />;
+  const items = React.Children.map(children, (child) => {
+    if (child == null || child === false) return child;
+    if (React.isValidElement(child) && child.type === ItemSeparator) return React.cloneElement(child, { decorative: true });
+    return <div role="listitem" data-slot="item-group-item">{child}</div>;
+  });
+  return <div ref={ref} role="list" data-slot="item-group" className={classes('ef-item-group', className)} {...props}>{items}</div>;
 });
 
 export const ItemSeparator = React.forwardRef(function ItemSeparator({ className, ...props }, ref) {

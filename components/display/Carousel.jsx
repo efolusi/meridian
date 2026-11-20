@@ -8,6 +8,7 @@ const CSS = `
 .ef-carousel{position:relative}
 .ef-carousel__content{overflow-x:auto;overflow-y:hidden;scroll-behavior:smooth;scrollbar-width:none;scroll-snap-type:x mandatory;overscroll-behavior-inline:contain}
 .ef-carousel__content::-webkit-scrollbar{display:none}
+.ef-carousel__content:focus-visible{outline:none;box-shadow:var(--focus-ring);border-radius:var(--radius-sm)}
 .ef-carousel__content[data-orientation="vertical"]{height:100%;overflow-x:hidden;overflow-y:auto;scroll-snap-type:y mandatory;overscroll-behavior-block:contain}
 .ef-carousel__track{display:flex;margin-inline-start:calc(var(--carousel-gap,var(--space-4))*-1)}
 .ef-carousel__content[data-orientation="vertical"]>.ef-carousel__track{height:100%;flex-direction:column;margin-inline-start:0;margin-block-start:calc(var(--carousel-gap,var(--space-4))*-1)}
@@ -150,7 +151,7 @@ export const CarouselContent = React.forwardRef(function CarouselContent({ child
     const next = closestIndex(event.currentTarget, ctx.orientation);
     if (next !== ctx.selected) ctx.selectFromScroll(next);
   };
-  return <div {...props} ref={setRef} data-slot="carousel-content" data-orientation={ctx?.orientation || 'horizontal'} className={`ef-carousel__content${className ? ' ' + className : ''}`} style={style} onScroll={handleScroll}><div data-slot="carousel-track" className="ef-carousel__track">{children}</div></div>;
+  return <div tabIndex={0} {...props} ref={setRef} data-slot="carousel-content" data-orientation={ctx?.orientation || 'horizontal'} className={`ef-carousel__content${className ? ' ' + className : ''}`} style={style} onScroll={handleScroll}><div data-slot="carousel-track" className="ef-carousel__track">{children}</div></div>;
 });
 
 export const CarouselItem = React.forwardRef(function CarouselItem({ className, ...props }, ref) {
