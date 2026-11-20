@@ -14,3 +14,5 @@ Compose a multi-step form with `Questionnaire` and its explicit parts. Pass the 
 ```
 
 Items render semantic `fieldset`/`legend` pairs. Choices are native radios or checkboxes, freeform answers use `QuestionnaireInput`, optional questions can be explicitly skipped, and controlled navigation uses `item` with `onItemChange`.
+
+A `required` item adds " (required)" to its `QuestionnaireTitle`. The mark is part of the legend, so screen readers hear it with the question. Set `lang="id"` for " (wajib)", or `labels={{ required: '...' }}` to replace the whole suffix, brackets included.

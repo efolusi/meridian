@@ -15,7 +15,7 @@ CSS is not counted per component: `styles.css` ships every component style in on
 | --- | ---: | ---: |
 | `@efolusi/meridian` | 364.7 kB | 82.7 kB |
 | `dist/components.css` | 220.7 kB | 30.0 kB |
-| `_ds_bundle.js` | 853.7 kB | 152.0 kB |
+| `_ds_bundle.js` | 853.9 kB | 152.1 kB |
 
 The root import, `@efolusi/meridian`, is every component. `_ds_bundle.js` is the zero-build CDN bundle, which also carries each component's CSS. The root import is minified; the CSS and the CDN bundle are measured as shipped.
 
@@ -118,7 +118,7 @@ The root import, `@efolusi/meridian`, is every component. `_ds_bundle.js` is the
 | `forms/Label.js` | Label | 0.7 kB | 0.4 kB |
 | `forms/NativeSelect.js` | NativeSelect, NativeSelectOption, NativeSelectOptGroup | 44.3 kB | 7.2 kB |
 | `forms/NumberInput.js` | NumberInput | 47.7 kB | 8.8 kB |
-| `forms/Questionnaire.js` | Questionnaire, QuestionnaireProgress, QuestionnaireItem, QuestionnaireTitle, QuestionnaireDescription, QuestionnaireChoices, QuestionnaireChoice, QuestionnaireInput, QuestionnaireError, QuestionnaireActions, QuestionnairePrevious, QuestionnaireSkip, QuestionnaireNext, QuestionnaireSubmit | 7.3 kB | 2.4 kB |
+| `forms/Questionnaire.js` | Questionnaire, QuestionnaireProgress, QuestionnaireItem, QuestionnaireTitle, QuestionnaireDescription, QuestionnaireChoices, QuestionnaireChoice, QuestionnaireInput, QuestionnaireError, QuestionnaireActions, QuestionnairePrevious, QuestionnaireSkip, QuestionnaireNext, QuestionnaireSubmit | 7.4 kB | 2.5 kB |
 | `forms/Radio.js` | RadioGroup, RadioGroupItem, Radio | 2.3 kB | 1.0 kB |
 | `forms/Select.js` | Select, SelectTrigger, SelectValue, SelectContent, SelectGroup, SelectLabel, SelectSeparator, SelectItem | 51.1 kB | 10.0 kB |
 | `forms/Slider.js` | Slider | 2.8 kB | 1.4 kB |

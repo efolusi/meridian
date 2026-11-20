@@ -12,11 +12,11 @@ const items = [
   { name: 'note', choices: [{ value: 'none' }] },
 ];
 
-function Fixture({ label }) {
+function Fixture({ lang, labels }) {
   return (
     <Questionnaire items={items} onSubmit={(e) => e.preventDefault()}>
       <QuestionnaireItem name="tools" required multiple>
-        <QuestionnaireTitle requiredLabel={label}>Which tools do you use?</QuestionnaireTitle>
+        <QuestionnaireTitle lang={lang} labels={labels}>Which tools do you use?</QuestionnaireTitle>
         <QuestionnaireChoices>
           <QuestionnaireChoice value="git">Git</QuestionnaireChoice>
           <QuestionnaireChoice value="ci">CI</QuestionnaireChoice>
@@ -35,9 +35,14 @@ describe('Questionnaire required items', () => {
     expect(screen.getByRole('group', { name: 'Which tools do you use? (required)' })).toBeTruthy();
   });
 
-  it('takes the mark in the page language', () => {
-    render(<Fixture label="wajib" />);
+  it('takes the mark in Indonesian', () => {
+    render(<Fixture lang="id" />);
     expect(screen.getByRole('group', { name: 'Which tools do you use? (wajib)' })).toBeTruthy();
+  });
+
+  it('lets labels replace the whole suffix, brackets included', () => {
+    render(<Fixture labels={{ required: ' [required]' }} />);
+    expect(screen.getByRole('group', { name: 'Which tools do you use? [required]' })).toBeTruthy();
   });
 
   it('adds no mark to an optional item', () => {

@@ -118,9 +118,11 @@ export const QuestionnaireItem = React.forwardRef(function QuestionnaireItem({ n
 });
 
 // The legend names the group, so its visible "required" mark is also what screen readers hear.
-export const QuestionnaireTitle = React.forwardRef(function QuestionnaireTitle({ requiredLabel = 'required', className, children, ...rest }, ref) {
+const TITLE_LABELS = { en: { required: ' (required)' }, id: { required: ' (wajib)' } };
+export const QuestionnaireTitle = React.forwardRef(function QuestionnaireTitle({ lang = 'en', labels, className, children, ...rest }, ref) {
   const item = React.useContext(ItemContext);
-  return <legend {...rest} ref={ref} className={join('ef-questionnaire__title', className)}>{children}{item?.required ? <span className="ef-questionnaire__required"> ({requiredLabel})</span> : null}</legend>;
+  const text = { ...(TITLE_LABELS[lang] || TITLE_LABELS.en), ...labels };
+  return <legend {...rest} ref={ref} className={join('ef-questionnaire__title', className)}>{children}{item?.required ? <span className="ef-questionnaire__required">{text.required}</span> : null}</legend>;
 });
 export const QuestionnaireDescription = React.forwardRef(function QuestionnaireDescription({ className, ...rest }, ref) { return <p {...rest} ref={ref} className={join('ef-questionnaire__description', className)} />; });
 export const QuestionnaireChoices = React.forwardRef(function QuestionnaireChoices({ className, ...rest }, ref) { return <div {...rest} ref={ref} className={join('ef-questionnaire__choices', className)} />; });

@@ -1,16 +1,16 @@
 {
   "totals": {
     "@efolusi/meridian": {
-      "bytes": 373423,
-      "gzip": 84635
+      "bytes": 373500,
+      "gzip": 84649
     },
     "dist/components.css": {
       "bytes": 226029,
       "gzip": 30709
     },
     "_ds_bundle.js": {
-      "bytes": 874193,
-      "gzip": 155665
+      "bytes": 874365,
+      "gzip": 155742
     }
   },
   "modules": [
@@ -1026,8 +1026,8 @@
         "QuestionnaireNext",
         "QuestionnaireSubmit"
       ],
-      "bytes": 7482,
-      "gzip": 2475
+      "bytes": 7556,
+      "gzip": 2520
     },
     {
       "module": "forms/Radio.js",

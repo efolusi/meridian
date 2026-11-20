@@ -7,8 +7,10 @@ export declare const QuestionnaireProgress: React.ForwardRefExoticComponent<Reac
 export interface QuestionnaireItemProps extends React.FieldsetHTMLAttributes<HTMLFieldSetElement> { name: string; multiple?: boolean; invalid?: boolean; onStatusChange?: (status: QuestionnaireItemStatus) => void; }
 export declare const QuestionnaireItem: React.ForwardRefExoticComponent<QuestionnaireItemProps & React.RefAttributes<HTMLFieldSetElement>>;
 export interface QuestionnaireTitleProps extends React.HTMLAttributes<HTMLLegendElement> {
-  /** Shown after the title, in brackets, when the item is `required`; read as part of the legend. @default 'required' */
-  requiredLabel?: string;
+  /** Language of the built-in required mark: ' (required)' or ' (wajib)'. @default 'en' */
+  lang?: 'en' | 'id';
+  /** Override the required mark, the whole suffix with its brackets and leading space. Shown when the item is `required`, and read as part of the legend. */
+  labels?: Partial<Record<'required', string>>;
 }
 export declare const QuestionnaireTitle: React.ForwardRefExoticComponent<QuestionnaireTitleProps & React.RefAttributes<HTMLLegendElement>>;
 export declare const QuestionnaireDescription: React.ForwardRefExoticComponent<React.HTMLAttributes<HTMLParagraphElement> & React.RefAttributes<HTMLParagraphElement>>;

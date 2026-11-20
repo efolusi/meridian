@@ -2,7 +2,7 @@
 
 ## Unreleased
 
-- **A required Questionnaire item says so in its title.** `QuestionnaireTitle` adds "(required)" to the legend when the item is `required` (`requiredLabel` for other languages), visible and read as the group's name; this replaces the `aria-required` the fieldset may not carry, so required checkbox items are announced again.
+- **A required Questionnaire item says so in its title.** `QuestionnaireTitle` adds " (required)" to the legend when the item is `required` (`lang="id"` gives " (wajib)"; `labels.required` replaces the whole suffix), visible and read as the group's name; this replaces the `aria-required` the fieldset may not carry, so required checkbox items are announced again.
 - **ItemGroup's list items are real boxes**, not `display: contents` (VoiceOver drops the role of such an element), and carry no style attribute; a separator inside the group stays decorative. **FileTile** lays out its body and progress bar with classes instead of style attributes, so it works under a strict CSP.
 - **PaymentCard labels use `--text-2xs` (11px)** instead of 8.5px, so "Card holder" and "Expires" stay readable; the card still fits a 390px screen.
 - **CI runs axe over every demo group**, light and dark, and fails on any serious or critical issue.
