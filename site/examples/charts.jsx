@@ -72,7 +72,7 @@ export function PositionsTable() {
     <div style={{ width: '100%', maxWidth: 620 }}>
       <Table rowKey="id" columns={[
         { key: 'name', label: 'Position' },
-        { key: 'pl', label: 'P&L', numeric: true, align: 'right', render: (v) => <span style={{ color: v.startsWith('+') ? 'var(--success-600, var(--text-primary))' : 'var(--danger-600)' }}>{v}</span> },
+        { key: 'pl', label: 'P&L', numeric: true, align: 'end', render: (v) => <span style={{ color: v.startsWith('+') ? 'var(--success-600, var(--text-primary))' : 'var(--danger-600)' }}>{v}</span> },
         { key: 'trend', label: '30d', render: (v) => <Sparkline data={v} width={96} height={24} /> },
         { key: 'status', label: '', render: (v) => <Badge variant={v === 'Auto' ? 'default' : 'secondary'} className={v === 'Auto' ? 'ef-badge--accent' : undefined}>{v}</Badge> },
       ]} rows={[

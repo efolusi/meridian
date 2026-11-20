@@ -13,9 +13,9 @@ CSS is not counted per component: `styles.css` ships every component style in on
 
 | File | Size | Gzip |
 | --- | ---: | ---: |
-| `@efolusi/meridian` | 364.9 kB | 82.4 kB |
+| `@efolusi/meridian` | 364.8 kB | 82.4 kB |
 | `dist/components.css` | 224.2 kB | 30.8 kB |
-| `_ds_bundle.js` | 859.2 kB | 153.4 kB |
+| `_ds_bundle.js` | 859.0 kB | 153.3 kB |
 
 The root import, `@efolusi/meridian`, is every component. `_ds_bundle.js` is the zero-build CDN bundle, which also carries each component's CSS. The root import is minified; the CSS and the CDN bundle are measured as shipped.
 
@@ -68,7 +68,7 @@ The root import, `@efolusi/meridian`, is every component. `_ds_bundle.js` is the
 | `data/Sparkline.js` | Sparkline | 1.1 kB | 0.7 kB |
 | `data/Stat.js` | Stat | 0.8 kB | 0.4 kB |
 | `data/StatusDot.js` | StatusDot | 0.8 kB | 0.5 kB |
-| `data/Table.js` | Table, TableHeader, TableBody, TableFooter, TableRow, TableHead, TableCell, TableCaption | 50.7 kB | 9.7 kB |
+| `data/Table.js` | Table, TableHeader, TableBody, TableFooter, TableRow, TableHead, TableCell, TableCaption | 50.6 kB | 9.7 kB |
 | `dates/Calendar.js` | CalendarDayButton, Calendar | 52.2 kB | 10.0 kB |
 | `dates/TimePicker.js` | TimePicker | 50.2 kB | 9.9 kB |
 | `display/Accordion.js` | Accordion, AccordionItem, AccordionTrigger, AccordionContent | 48.8 kB | 8.7 kB |

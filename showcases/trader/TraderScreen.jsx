@@ -48,10 +48,10 @@ function TraderScreen() {
             <CardContent style={{ paddingInline: 0, marginBlockEnd: 'calc(var(--card-spacing) * -1)' }}><Table rowKey="id" columns={[
               { key: 'pair', label: 'Pair', render: v => <strong>{v}</strong> },
               { key: 'side', label: 'Side', render: v => <Badge className={v === 'Long' ? 'ef-badge--success' : 'ef-badge--warning'}>{v}</Badge> },
-              { key: 'size', label: 'Size', numeric: true, align: 'right' },
-              { key: 'entry', label: 'Entry', numeric: true, align: 'right' },
-              { key: 'mark', label: 'Mark', numeric: true, align: 'right' },
-              { key: 'pnl', label: 'P&L (€)', numeric: true, align: 'right', render: (v, r) => <span style={{ color: r.up ? 'var(--success-600)' : 'var(--danger-600)', fontFamily: 'var(--font-mono)', fontSize: 13 }}>{v}</span> },
+              { key: 'size', label: 'Size', numeric: true, align: 'end' },
+              { key: 'entry', label: 'Entry', numeric: true, align: 'end' },
+              { key: 'mark', label: 'Mark', numeric: true, align: 'end' },
+              { key: 'pnl', label: 'P&L (€)', numeric: true, align: 'end', render: (v, r) => <span style={{ color: r.up ? 'var(--success-600)' : 'var(--danger-600)', fontFamily: 'var(--font-mono)', fontSize: 13 }}>{v}</span> },
               { key: 'spark', label: '', width: 100, render: (v, r) => <Sparkline data={v} width={84} height={24} direction={r.up ? 'up' : 'down'} /> },
               { key: 'menu', label: '', width: 44, render: (v, r) => <PositionActionMenu trigger={<IconButton icon="ellipsis" label="More" size="sm" />} onSelect={id => { if (id === 'close') { setPositions(ps => ps.filter(p => p.id !== r.id)); notify('Position closed', 'info'); } else notify('Order ticket opened'); }} items={[{ id: 'ticket', label: 'Adjust position', icon: 'pencil' }, 'separator', { id: 'close', label: 'Close position', icon: 'x', danger: true }]} /> },
             ]} rows={positions} /></CardContent>

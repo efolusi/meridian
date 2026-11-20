@@ -63,7 +63,7 @@ function InfraScreen() {
               { key: 'kind', label: 'Type' },
               { key: 'region', label: tab === 'resources' ? 'Region' : 'Notes' },
               { key: 'status', label: 'Status', render: v => <StatusDot status={v} pulse={v !== 'success'} label={STATUS_LABEL[v]} /> },
-              { key: 'latency', label: COLS_LAST[tab], numeric: true, align: 'right' },
+              { key: 'latency', label: COLS_LAST[tab], numeric: true, align: 'end' },
             ]} rows={rows} />
           </CardContent></Card>
         </div>

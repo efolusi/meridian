@@ -3,7 +3,7 @@ export interface TableColumn {
   key: string;
   label: React.ReactNode;
   width?: number | string;
-  align?: 'left' | 'center' | 'right';
+  align?: 'start' | 'center' | 'end';
   /** Mono tabular figures */
   numeric?: boolean;
   /** Show a sort control in the header for this column */
