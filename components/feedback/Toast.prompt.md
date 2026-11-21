@@ -22,4 +22,4 @@ Toasts follow the notice rules in design-tokens `docs/motion.md` (WCAG 2.2.1):
 - A danger toast, a toast with `actionProps` and a loading toast never dismiss themselves, whatever `duration` says. `duration: 0` keeps any toast.
 - Any other toast dismisses itself after the `--hold-notice` token (8000 ms), or after the `duration` you pass to `Toaster` or the toast. The timer pauses while the pointer is over the stack, while focus is inside it and while the window is hidden, and resumes with the time that was left.
 - Every toast has a visible Dismiss button. Pass `closeButton={false}` to `Toaster`, or `closeButton: false` on one toast, to turn it off for a toast that expires; a toast that never expires keeps its button unless it passes `closeButton: false` itself.
-- The stack is one polite live region (`role="log"`), so a screen reader announces each toast once.
+- Each toast is announced through the stack's polite live region (`role="log"`, `aria-live="polite"`). The toasts carry no `role="status"` of their own on purpose: a status inside a polite log would be announced twice.
