@@ -1,6 +1,6 @@
 # Changelog
 
-## Unreleased
+## 1.27.1 — 2026-11-21
 
 - **A versioned browser path that was never published no longer gets an immutable cache header.** `/browser/<version>/*` in `_headers` matched the request path even when Workers answered with the 404 page, so a missing version (for example `/browser/1.26.1/marketing.js`) returned a 404 with `Cache-Control: public, max-age=31536000, immutable` and CORS `*`, which a browser or edge cache could keep for a year. The wildcard is gone: `scripts/build_worker_assets.mjs` now appends an exact-file immutable and CORS rule for each versioned file it publishes, and the build fails before `_headers` passes the 100 rules Workers read. If the edge already holds a cached 404 for such a path, purge it.
 
