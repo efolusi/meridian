@@ -105,6 +105,17 @@ describe('Meridian production deploy to Cloudflare Workers', () => {
     expect(live).toContain('exit 1')
   })
 
+  it('says in the failure message that the deploy is live, that it is a P1, and what to do', () => {
+    const live = workflow.slice(workflow.indexOf('versioned_ok()'))
+    const message = live.slice(live.indexOf('[[ "$attempt" == 6 ]] && {'), live.indexOf('exit 1'))
+    expect(message).toContain('P1: Meridian $version is LIVE, but its versioned browser headers are wrong after 6 attempts.')
+    expect(message).toContain("Do not roll back: the previous build's _headers may be the bad ones.")
+    expect(message).toContain('Ship a fix release the same day.')
+    expect(message).toContain('purge that path in Cloudflare')
+    // It must not read as "not deployed".
+    expect(message).not.toMatch(/not deployed|did not deploy|deploy failed/i)
+  })
+
   it('serves static assets only from public/ on the meridian.efolusi.com route', () => {
     expect(wrangler).toContain('"name": "meridian"')
     expect(wrangler).toContain('"directory": "./public"')

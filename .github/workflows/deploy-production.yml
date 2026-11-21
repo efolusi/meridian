@@ -93,7 +93,16 @@ jobs:
           }
           for attempt in 1 2 3 4 5 6; do
             versioned_ok && break
-            [[ "$attempt" == 6 ]] && { echo "versioned browser headers are wrong after 6 attempts" >&2; exit 1; }
+            # By now the Worker is live: the release marker matched. A red step here means the
+            # deploy is live with wrong headers, which is a P1, and not a deploy that never happened.
+            # Rolling back is not the fix, because the previous build's _headers may be the bad ones.
+            [[ "$attempt" == 6 ]] && {
+              echo "P1: Meridian $version is LIVE, but its versioned browser headers are wrong after 6 attempts." >&2
+              echo "A published version is not immutable, or a missing version still answers with immutable." >&2
+              echo "Do not roll back: the previous build's _headers may be the bad ones." >&2
+              echo "Ship a fix release the same day. If a wrong immutable answer was served, purge that path in Cloudflare." >&2
+              exit 1
+            }
             sleep 10
           done
           # Agents read the skill and the guidelines as text, not a download.
