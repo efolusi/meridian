@@ -40,7 +40,7 @@
     "reason": "A looping animation: its period is not a transition duration, and the motion scale has no loop token."
   },
   "components/data/Skeleton.jsx": {
-    "count": 1,
+    "count": 2,
     "reason": "A looping animation: its period is not a transition duration, and the motion scale has no loop token."
   },
   "components/data/StatusDot.jsx": {

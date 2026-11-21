@@ -2,7 +2,7 @@
   "name": "skeleton",
   "type": "registry:ui",
   "title": "Skeleton",
-  "description": "Loading placeholder that accepts native div attributes, consumer classes, and refs.",
+  "description": "Loading placeholder that accepts native div attributes, consumer classes, and refs. It is `aria-hidden` by default: say that content is loading on the region that will hold it (`aria-busy=\"true\"` and a label on the parent), not on the placeholder. In Windows High Contrast it draws as a block in `Gra",
   "dependencies": [
     "react"
   ],
@@ -14,17 +14,17 @@
     {
       "path": "components/data/Skeleton.jsx",
       "type": "registry:ui",
-      "content": "'use client';\nimport React from 'react';\nimport { injectEfCss } from '../runtime/runtime.jsx';\n\nconst CSS = `\n@keyframes ef-skel{0%,100%{opacity:1}50%{opacity:.45}}\n.ef-skel{display:block;background:var(--border-default);border-radius:var(--radius-sm);animation:ef-skel 1.4s var(--ease-standard) infinite}\n`;\n\nexport const Skeleton = React.forwardRef(function Skeleton(\n  { className, ...rest },\n  ref,\n) {\n  injectEfCss('ef-css-skel', CSS);\n  return <div {...rest} ref={ref} data-slot=\"skeleton\" className={`ef-skel${className ? ' ' + className : ''}`} />;\n});\n"
+      "content": "'use client';\nimport React from 'react';\nimport { injectEfCss } from '../runtime/runtime.jsx';\n\nconst CSS = `\n@keyframes ef-skel{0%,100%{opacity:1}50%{opacity:.45}}\n.ef-skel{display:block;background:var(--border-default);border-radius:var(--radius-sm);animation:ef-skel 1.4s var(--ease-standard) infinite}\n.ef-skel[data-shimmer]{background:linear-gradient(90deg,var(--border-default) 0%,var(--border-strong) 50%,var(--border-default) 100%) 100% 0/200% 100%;animation:ef-skel-shimmer 1.6s linear infinite}\n@keyframes ef-skel-shimmer{to{background-position:-100% 0}}\n@media (forced-colors:active){.ef-skel,.ef-skel[data-shimmer]{forced-color-adjust:none;background:GrayText}}\n@media (prefers-reduced-motion:reduce){.ef-skel[data-shimmer]{background:var(--border-default);animation:none}}\n`;\n\nexport const Skeleton = React.forwardRef(function Skeleton(\n  { shimmer = false, className, ...rest },\n  ref,\n) {\n  injectEfCss('ef-css-skel', CSS);\n  return <div aria-hidden=\"true\" {...rest} ref={ref} data-slot=\"skeleton\" data-shimmer={shimmer ? '' : undefined} className={`ef-skel${className ? ' ' + className : ''}`} />;\n});\n"
     },
     {
       "path": "components/data/Skeleton.d.ts",
       "type": "registry:component",
-      "content": "export type SkeletonProps = React.HTMLAttributes<HTMLDivElement>;\nexport declare const Skeleton: React.ForwardRefExoticComponent<SkeletonProps & React.RefAttributes<HTMLDivElement>>;\n"
+      "content": "export interface SkeletonProps extends React.HTMLAttributes<HTMLDivElement> {\n  /** A light band sweeps across the block instead of the block pulsing. Reduced motion shows a still block. @default false */\n  shimmer?: boolean;\n}\nexport declare const Skeleton: React.ForwardRefExoticComponent<SkeletonProps & React.RefAttributes<HTMLDivElement>>;\n"
     },
     {
       "path": "components/data/Skeleton.prompt.md",
       "type": "registry:component",
-      "content": "Loading placeholder that accepts native div attributes, consumer classes, and refs.\n\n```jsx\n<Skeleton style={{ width: 40, height: 40, borderRadius: 'var(--radius-full)' }} />\n<Skeleton aria-label=\"Loading account details\" style={{ width: '60%', height: 12 }} />\n```\n\nCompose repeated text placeholders explicitly so their rhythm and final-line width match the content they represent:\n\n```jsx\n<div style={{ display: 'grid', gap: 8 }}>\n  <Skeleton style={{ width: '100%', height: 12 }} />\n  <Skeleton style={{ width: '60%', height: 12 }} />\n</div>\n```\n"
+      "content": "Loading placeholder that accepts native div attributes, consumer classes, and refs. It is `aria-hidden` by default: say that content is loading on the region that will hold it (`aria-busy=\"true\"` and a label on the parent), not on the placeholder. In Windows High Contrast it draws as a block in `GrayText`.\n\n```jsx\n<Skeleton style={{ width: 40, height: 40, borderRadius: 'var(--radius-full)' }} />\n<section aria-busy=\"true\" aria-label=\"Account details\">\n  <Skeleton style={{ width: '60%', height: 12 }} />\n</section>\n```\n\nPass `shimmer` for a light band that sweeps across the block instead of a pulse. With reduced motion both variants show a still block.\n\n```jsx\n<Skeleton shimmer style={{ width: '100%', height: 12 }} />\n```\n\nCompose repeated text placeholders explicitly so their rhythm and final-line width match the content they represent:\n\n```jsx\n<div style={{ display: 'grid', gap: 8 }}>\n  <Skeleton style={{ width: '100%', height: 12 }} />\n  <Skeleton style={{ width: '60%', height: 12 }} />\n</div>\n```\n"
     }
   ],
   "categories": [

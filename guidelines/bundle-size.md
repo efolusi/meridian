@@ -14,8 +14,8 @@ CSS is not counted per component: `styles.css` ships every component style in on
 | File | Size | Gzip |
 | --- | ---: | ---: |
 | `@efolusi/meridian` | 367.2 kB | 83.1 kB |
-| `dist/components.css` | 229.0 kB | 31.2 kB |
-| `_ds_bundle.js` | 870.3 kB | 155.6 kB |
+| `dist/components.css` | 229.5 kB | 31.3 kB |
+| `_ds_bundle.js` | 870.8 kB | 155.8 kB |
 
 The root import, `@efolusi/meridian`, is every component. `_ds_bundle.js` is the zero-build CDN bundle, which also carries each component's CSS. The root import is minified; the CSS and the CDN bundle are measured as shipped.
 
@@ -64,7 +64,7 @@ The root import, `@efolusi/meridian`, is every component. `_ds_bundle.js` is the
 | `data/EmptyState.js` | Empty, EmptyHeader, EmptyMedia, EmptyTitle, EmptyDescription, EmptyContent | 1.5 kB | 0.5 kB |
 | `data/KeyValueList.js` | KeyValueList | 0.9 kB | 0.5 kB |
 | `data/LineChart.js` | LineChart | 3.2 kB | 1.4 kB |
-| `data/Skeleton.js` | Skeleton | 0.4 kB | 0.3 kB |
+| `data/Skeleton.js` | Skeleton | 0.5 kB | 0.3 kB |
 | `data/Sparkline.js` | Sparkline | 1.1 kB | 0.7 kB |
 | `data/Stat.js` | Stat | 0.8 kB | 0.4 kB |
 | `data/StatusDot.js` | StatusDot | 0.8 kB | 0.5 kB |
