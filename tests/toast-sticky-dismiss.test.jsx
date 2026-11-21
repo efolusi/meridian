@@ -21,8 +21,13 @@ describe('toasts that never expire can be dismissed', () => {
     expect(screen.getByRole('button', { name: 'Dismiss' })).toBeTruthy();
   });
 
-  it('an expiring toast and a loading toast keep the Toaster default', () => {
-    render(<Toaster />);
+  it('an expiring toast and a loading toast follow the Toaster closeButton, which is on by default', () => {
+    const { unmount } = render(<Toaster />);
+    act(() => { toast.add({ title: 'Saved' }); toast.add({ title: 'Uploading', type: 'loading' }); });
+    expect(screen.getAllByRole('button', { name: 'Dismiss' })).toHaveLength(2);
+    unmount();
+    act(() => toast.close());
+    render(<Toaster closeButton={false} />);
     act(() => { toast.add({ title: 'Saved' }); toast.add({ title: 'Uploading', type: 'loading' }); });
     expect(screen.queryByRole('button', { name: 'Dismiss' })).toBeNull();
   });

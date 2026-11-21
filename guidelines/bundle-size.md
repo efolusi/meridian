@@ -13,9 +13,9 @@ CSS is not counted per component: `styles.css` ships every component style in on
 
 | File | Size | Gzip |
 | --- | ---: | ---: |
-| `@efolusi/meridian` | 364.7 kB | 82.3 kB |
+| `@efolusi/meridian` | 365.3 kB | 82.6 kB |
 | `dist/components.css` | 224.8 kB | 30.7 kB |
-| `_ds_bundle.js` | 860.0 kB | 153.3 kB |
+| `_ds_bundle.js` | 861.5 kB | 154.0 kB |
 
 The root import, `@efolusi/meridian`, is every component. `_ds_bundle.js` is the zero-build CDN bundle, which also carries each component's CSS. The root import is minified; the CSS and the CDN bundle are measured as shipped.
 
@@ -98,7 +98,7 @@ The root import, `@efolusi/meridian`, is every component. `_ds_bundle.js` is the
 | `feedback/Loader.js` | Loader | 1.0 kB | 0.5 kB |
 | `feedback/Progress.js` | Progress | 1.5 kB | 0.8 kB |
 | `feedback/Spinner.js` | Spinner | 0.7 kB | 0.4 kB |
-| `feedback/Toast.js` | Toaster | 49.3 kB | 9.3 kB |
+| `feedback/Toast.js` | Toaster | 50.0 kB | 9.6 kB |
 | `feedback/Tooltip.js` | Tooltip, TooltipProvider, TooltipTrigger, TooltipContent | 5.2 kB | 2.1 kB |
 | `files/Attachment.js` | Attachment, AttachmentMedia, AttachmentContent, AttachmentTitle, AttachmentDescription, AttachmentActions, AttachmentAction, AttachmentTrigger, AttachmentGroup | 47.0 kB | 8.0 kB |
 | `files/FileDrop.js` | FileDrop | 45.4 kB | 7.9 kB |
