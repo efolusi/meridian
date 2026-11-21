@@ -28,6 +28,9 @@ const NON_TRAVEL = new Map([
   ['.ef-slider__input::-webkit-slider-thumb', 'press scales the thumb'], ['.ef-carousel__nav', 'the translate only centres the button; nothing moves between states'],
   ['.ef-tile__check', 'a check scales in'], ['.ef-check__box svg', 'a check scales in'], ['.ef-radio__dot::after', 'a dot scales in'],
 ]);
+// Selectors the probe cannot build (a pseudo-class or a sibling combinator) and that carry a positional transition.
+// Each needs a reviewed reason; an unlisted one fails below, so a new moving transition cannot hide behind an unbuildable selector.
+const UNBUILDABLE = new Map([]);
 const POSITIONAL = /^(transform|translate|inset(-[\w-]+)?|top|left|right|bottom|margin(-[\w-]+)?|width|height|flex-basis|max-width|max-height)$/;
 // [selector, property list] for every rule with a transition.
 function transitionRules(text) {
@@ -50,7 +53,7 @@ function build(selector) {
   const m = selector.match(/^(.*?)(::[\w-]+)?$/);
   // Each element is built alone, so the structural pseudo-classes below hold without more markup.
   const parts = m[1].replace(/:(?:first|last|only)-(?:child|of-type)/g, '').split(/\s*>\s*|\s+/).filter(Boolean);
-  if (parts.some((p) => /:/.test(p.replace(/\[[^\]]*\]/g, '')))) return null;
+  if (parts.some((p) => /:/.test(p.replace(/\[[^\]]*\]/g, '')) || /^[+~]$/.test(p) || /[+~]/.test(p.replace(/\[[^\]]*\]/g, '')))) return null;
   let html = '', closing = '';
   parts.forEach((part, i) => {
     const tag = part.match(/^[a-z][\w-]*/)?.[0] ?? 'div';
@@ -140,6 +143,10 @@ try {
   }
   assert.deepEqual(travelling, [], `these transitions still move or resize for a moment under reduce (make them instant, or fade opacity only):\n  ${travelling.join('\n  ')}`);
   const unbuilt = travelProbes.filter((p) => !p.built).map((p) => p.selector);
+  const unreviewed = unbuilt.filter((s) => !UNBUILDABLE.has(s));
+  assert.deepEqual(unreviewed, [], `positional transitions the probe cannot build (make them instant, simplify the selector, or list them in UNBUILDABLE with a reason):\n  ${unreviewed.join('\n  ')}`);
+  const staleUnbuildable = [...UNBUILDABLE.keys()].filter((s) => !unbuilt.includes(s));
+  assert.deepEqual(staleUnbuildable, [], `UNBUILDABLE selectors that are now built or gone: ${staleUnbuildable.join(' | ')}`);
   const staleReview = [...NON_TRAVEL.keys()].filter((sel) => !travellers.some((t) => t.group === sel));
   assert.deepEqual(staleReview, [], `reviewed non-travel selectors that no longer have a transition: ${staleReview.join(' | ')}`);
 
