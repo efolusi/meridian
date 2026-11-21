@@ -177,7 +177,8 @@ try {
   }
   assert.deepEqual(travelling, [], `these transitions still move or resize for a moment under reduce (make them instant, or fade opacity only):\n  ${travelling.join('\n  ')}`);
   assert.deepEqual(unbuiltEntrances, [], `entrance animations the probe cannot build (simplify the selector, or list them in UNBUILDABLE_ENTRANCE with a reason):\n  ${unbuiltEntrances.join('\n  ')}`);
-  if (calm.viewTransition) {
+  assert.ok(calm.viewTransition, 'View Transitions are not available in the check browser, so the reduced-motion rule for them is not proven');
+  {
     const { group, old, now } = calm.viewTransition;
     assert.ok(group <= 0.001, `a View Transition group still moves under reduce (${group}s)`);
     assert.ok(old > 0.1 && old < 0.2 && now > 0.1 && now < 0.2, `View Transition snapshots should fade over 120 ms under reduce (old ${old}s, new ${now}s)`);

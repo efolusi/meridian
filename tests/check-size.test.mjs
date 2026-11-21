@@ -26,13 +26,15 @@ describe('size budget', () => {
     expect(TOLERANCE_BYTES).toBeLessThanOrEqual(256);
   });
 
-  it('records in the budget the totals that the bundle-size table shows', () => {
+  it('records in the budget the totals that the bundle-size table shows, within the tolerance', () => {
     const recorded = JSON.parse(readFileSync(new URL('../scripts/size_budget.json', import.meta.url), 'utf8'));
     const table = readFileSync(new URL('../guidelines/bundle-size.md', import.meta.url), 'utf8');
     for (const file of ['dist/components.css', '_ds_bundle.js']) {
       const shown = table.match(new RegExp('\\| `' + file.replace('.', '\\.') + '` \\| ([\\d.]+) kB'))?.[1];
       expect(shown, file).toBeDefined();
-      expect((recorded[file] / 1024).toFixed(1), `${file}: change size_budget.json and the table together (npm run check:fix)`).toBe(shown);
+      // Growth inside the tolerance moves the table but not the record, so allow the tolerance plus the table's rounding.
+      const slackKiB = TOLERANCE_BYTES / 1024 + 0.05;
+      expect(Math.abs(recorded[file] / 1024 - Number(shown)), `${file}: change size_budget.json and the table together (npm run check:fix)`).toBeLessThanOrEqual(slackKiB);
     }
   });
 
