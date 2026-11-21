@@ -1,7 +1,7 @@
 'use client';
 import React from 'react';
 import { IconButton } from '../forms/IconButton.jsx';
-import { injectEfCss, mergeRefs, useIsoLayoutEffect } from '../forms/Button.jsx';
+import { injectEfCss, mergeRefs, useIsoLayoutEffect } from '../runtime/runtime.jsx';
 import { Portal, useEscapeLayer, useScrollLock, escapeLayerContext, useHydrated } from '../overlay/Portal.jsx';
 const CSS = `
 .ef-dialog__overlay{position:fixed;inset:0;z-index:var(--z-overlay);display:flex;align-items:center;justify-content:center;padding:var(--space-6);background:var(--overlay-scrim);animation:ef-fade var(--dur-med) var(--ease-out)}

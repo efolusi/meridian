@@ -2,7 +2,7 @@
   "name": "meridian-base",
   "type": "registry:style",
   "title": "Meridian base",
-  "description": "Stylesheet entry and the full token layer (colour, typography, spacing, effects) in light, dark and compact. Every other item depends on this.",
+  "description": "Stylesheet entry and the full token layer (colour, typography, spacing, effects) in light, dark and compact. Every component item depends on this.",
   "files": [
     {
       "path": "styles.css",

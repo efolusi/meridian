@@ -2,7 +2,7 @@
 import React from 'react';
 import { Icon } from '../icons/Icon.jsx';
 import { Badge } from '../display/Badge.jsx';
-import { injectEfCss } from '../forms/Button.jsx';
+import { injectEfCss } from '../runtime/runtime.jsx';
 const CSS = `
 .ef-sidenav{display:flex;flex-direction:column;width:240px;flex:none;background:var(--surface-subtle);border-inline-end:1px solid var(--border-default);align-self:stretch}
 .ef-sidenav__brand{display:flex;align-items:center;gap:var(--space-2);padding:var(--space-4) var(--space-4) var(--space-4)}

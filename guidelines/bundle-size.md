@@ -15,7 +15,7 @@ CSS is not counted per component: `styles.css` ships every component style in on
 | --- | ---: | ---: |
 | `@efolusi/meridian` | 364.7 kB | 82.3 kB |
 | `dist/components.css` | 224.2 kB | 30.8 kB |
-| `_ds_bundle.js` | 859.0 kB | 153.3 kB |
+| `_ds_bundle.js` | 859.4 kB | 153.3 kB |
 
 The root import, `@efolusi/meridian`, is every component. `_ds_bundle.js` is the zero-build CDN bundle, which also carries each component's CSS. The root import is minified; the CSS and the CDN bundle are measured as shipped.
 
@@ -105,7 +105,7 @@ The root import, `@efolusi/meridian`, is every component. `_ds_bundle.js` is the
 | `files/FileTile.js` | FileTile | 47.1 kB | 8.3 kB |
 | `files/FileTypeIcon.js` | FileTypeIcon | 45.8 kB | 7.7 kB |
 | `finance/PaymentCard.js` | PaymentCard | 1.7 kB | 0.5 kB |
-| `forms/Button.js` | Button | 46.2 kB | 8.3 kB |
+| `forms/Button.js` | Button | 44.7 kB | 7.5 kB |
 | `forms/ButtonGroup.js` | ButtonGroup, ButtonGroupText, ButtonGroupSeparator | 2.1 kB | 0.8 kB |
 | `forms/ButtonTile.js` | ButtonTile, ButtonTileGroup | 44.7 kB | 7.4 kB |
 | `forms/Checkbox.js` | Checkbox | 45.9 kB | 8.0 kB |
@@ -155,3 +155,4 @@ The root import, `@efolusi/meridian`, is every component. `_ds_bundle.js` is the
 | `overlay/Popover.js` | Popover, PopoverTrigger, PopoverContent, PopoverHeader, PopoverTitle, PopoverDescription | 6.8 kB | 2.6 kB |
 | `overlay/Portal.js` | Portal | 3.1 kB | 1.4 kB |
 | `overlay/Sheet.js` | Sheet, SheetTrigger, SheetClose, SheetContent, SheetHeader, SheetFooter, SheetTitle, SheetDescription | 51.5 kB | 9.5 kB |
+| `runtime/runtime.js` |  | 1.5 kB | 0.8 kB |

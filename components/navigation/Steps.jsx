@@ -1,7 +1,7 @@
 'use client';
 import React from 'react';
 import { Icon } from '../icons/Icon.jsx';
-import { injectEfCss } from '../forms/Button.jsx';
+import { injectEfCss } from '../runtime/runtime.jsx';
 const CSS = `
 .ef-steps{display:flex;flex-direction:column;gap:0}
 .ef-steps__item{display:flex;gap:var(--space-3)}

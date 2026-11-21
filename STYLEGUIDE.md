@@ -22,7 +22,7 @@ The conventions that keep many hands producing one system. CONTRIBUTING.md says 
 - Type sizes from `--text-*`; spacing from `--space-*`; motion from `--dur-fast/med/slow` + `--ease-out/spring`; nothing animates longer than 240ms.
 - Radius follows the component role, not a fleet-wide forced shape: controls use `--radius-sm`, containers use `--radius-md/lg`, and pills/avatars may use `--radius-full`. A product may deliberately compose a different exported radius token; raw radii are not an exception.
 - Semantic state colors come from success/warning/danger roles. Categorical data visualization may keep a reviewed categorical palette when color distinguishes series rather than status; document that exception beside the palette and never reuse it for state or action meaning.
-- One `CSS` template string per component, injected via `injectEfCss(id, css)`. Class prefix `ef-<component>`.
+- One `CSS` template string per component, injected via `injectEfCss(id, css)`, imported from `../runtime/runtime.jsx` with the other shared helpers (`mergeRefs`, `styleRef`, `cssPct`, `useIsoLayoutEffect`, `prefersReducedMotion`, `isElementOfType`). Class prefix `ef-<component>`.
 - States: hover, press (scale .985), focus-visible ring, disabled (.45 opacity), and loading where the action is async.
 - No new dependencies. React and the DS namespace are the entire import surface; icons come from the curated Lucide set in `assets/icons/`.
 

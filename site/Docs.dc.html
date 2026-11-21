@@ -308,6 +308,10 @@ class Component extends DCLogic {
         p('Open an issue describing the gap, agree on the API in the thread, then submit the three files plus a specimen entry. Versioning and release policy live in guidelines/governance.md; the full contribution guide is CONTRIBUTING.md at the repo root.', 'Buka issue yang menjelaskan celahnya, sepakati API di thread, lalu kirim ketiga berkas plus entri spesimen. Kebijakan versioning dan rilis ada di guidelines/governance.md; panduan kontribusi lengkap ada di CONTRIBUTING.md di root repo.'),
       ] },
       { group: 'Reference', id: 'changelog', title: 'Changelog', lede: 'Notable changes, newest first. Full history in CHANGELOG.md.', blocks: [
+        h2('unreleased', 'Unreleased', 'Belum dirilis'),
+        list([
+          ['Shared helpers have their own module.', 'injectEfCss, mergeRefs, styleRef and the other helpers moved from forms/Button.jsx to runtime/runtime.jsx. Behaviour is unchanged; registry installs now depend on the meridian-runtime item instead of button.', 'Helper bersama punya modul sendiri.', 'injectEfCss, mergeRefs, styleRef, dan helper lain pindah dari forms/Button.jsx ke runtime/runtime.jsx. Perilaku tidak berubah; instalasi registry kini bergantung pada item meridian-runtime, bukan button.'],
+        ]),
         h2('v1271', '1.27.1 (November 2026)', '1.27.1 (November 2026)'),
         list([
           ['A missing versioned script is not cached for a year.', 'A browser/<version>/ path that was never published no longer returns a 404 marked immutable; the immutable rule is now written per published file.', 'Skrip berversi yang tidak ada tidak di-cache setahun.', 'Path browser/<version>/ yang tidak pernah dipublikasikan tidak lagi mengembalikan 404 bertanda immutable; aturan immutable kini ditulis per file yang dipublikasikan.'],

@@ -10,7 +10,7 @@ ROOT = pathlib.Path(__file__).resolve().parent.parent
 manifest = json.loads((ROOT / "_ds_manifest.json").read_text())
 
 facts = {
-    "components": len(list((ROOT / "components").glob("*/*.jsx"))),
+    "components": len([p for p in (ROOT / "components").glob("*/*.jsx") if p.stem[0].isupper()]),  # runtime.jsx is helpers, not a component
     "icons": len(list((ROOT / "assets/icons").glob("*.svg"))),
     "blocks": len(list((ROOT / "blocks").glob("*.html"))),
     "starters": len([t for t in manifest.get("templates", []) if t["folder"].startswith("starters/")]),

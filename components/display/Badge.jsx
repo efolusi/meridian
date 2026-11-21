@@ -1,6 +1,6 @@
 'use client';
 import React from 'react';
-import { injectEfCss, mergeRefs } from '../forms/Button.jsx';
+import { injectEfCss, mergeRefs } from '../runtime/runtime.jsx';
 
 const CSS = `
 .ef-badge{display:inline-flex;align-items:center;justify-content:center;gap:var(--space-1);height:20px;padding:0 var(--space-2);border:1px solid transparent;border-radius:var(--radius-full);font-size:var(--text-xs);font-weight:var(--weight-medium);line-height:1;white-space:nowrap;text-decoration:none;transition:background var(--dur-fast) var(--ease-out),border-color var(--dur-fast) var(--ease-out),color var(--dur-fast) var(--ease-out),box-shadow var(--dur-fast) var(--ease-out)}

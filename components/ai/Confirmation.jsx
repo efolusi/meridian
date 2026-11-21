@@ -1,6 +1,6 @@
 'use client';
 import React from 'react';
-import { injectEfCss } from '../forms/Button.jsx';
+import { injectEfCss } from '../runtime/runtime.jsx';
 import { Icon } from '../icons/Icon.jsx';
 const CSS = `
 .ef-confirm{border-radius:var(--radius-md);background:var(--surface-card);border:1px solid var(--accent-subtle-border);box-shadow:0 0 0 2px var(--accent-subtle)}

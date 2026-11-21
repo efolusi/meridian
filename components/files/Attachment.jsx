@@ -1,6 +1,7 @@
 'use client';
 import React from 'react';
-import { Button, injectEfCss, mergeRefs } from '../forms/Button.jsx';
+import { Button } from '../forms/Button.jsx';
+import { injectEfCss, mergeRefs } from '../runtime/runtime.jsx';
 
 const CSS = `
 .ef-attachment{position:relative;display:flex;align-items:center;gap:var(--space-3);min-width:0;padding:var(--space-3);border:1px solid var(--border-default);border-radius:var(--radius-md);background:var(--surface-card);color:var(--text-primary)}

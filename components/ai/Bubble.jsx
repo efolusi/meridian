@@ -1,6 +1,6 @@
 'use client';
 import React from 'react';
-import { injectEfCss, mergeRefs } from '../forms/Button.jsx';
+import { injectEfCss, mergeRefs } from '../runtime/runtime.jsx';
 
 const CSS = `
 .ef-bubble-group{display:flex;min-width:0;flex-direction:column;gap:var(--space-2)}

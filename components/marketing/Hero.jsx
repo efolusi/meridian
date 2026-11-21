@@ -1,6 +1,6 @@
 'use client';
 import React from 'react';
-import { injectEfCss } from '../forms/Button.jsx';
+import { injectEfCss } from '../runtime/runtime.jsx';
 
 // --hero-top and --hero-bottom come from landing.css, which steps them down on smaller screens.
 const CSS = `

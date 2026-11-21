@@ -1,6 +1,6 @@
 'use client';
 import React from 'react';
-import { injectEfCss } from '../forms/Button.jsx';
+import { injectEfCss } from '../runtime/runtime.jsx';
 const CSS = `
 .ef-paycard{position:relative;width:320px;aspect-ratio:1.586;border-radius:var(--radius-lg);padding:var(--space-5);display:flex;flex-direction:column;color:var(--brand-50);background:var(--brand-950);overflow:hidden;font-family:var(--font-sans)}
 .ef-paycard--caramel{background:var(--brand-700)}

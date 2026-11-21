@@ -1,7 +1,7 @@
 'use client';
 import React from 'react';
 import { Icon } from '../icons/Icon.jsx';
-import { injectEfCss, mergeRefs } from '../forms/Button.jsx';
+import { injectEfCss, mergeRefs } from '../runtime/runtime.jsx';
 
 const CSS = `
 .ef-breadcrumb__list{display:flex;align-items:center;gap:var(--space-2);flex-wrap:wrap;margin:0;padding:0;list-style:none;font-size:var(--text-sm);color:var(--text-muted);overflow-wrap:anywhere}

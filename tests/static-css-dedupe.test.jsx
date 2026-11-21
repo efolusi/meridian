@@ -15,7 +15,8 @@ async function load(listed) {
   vi.spyOn(window, 'getComputedStyle').mockImplementation(() => ({
     getPropertyValue: name => (name === '--ef-css-static' ? listed : ''),
   }));
-  return import('../components/forms/Button.jsx');
+  const [button, runtime] = await Promise.all([import('../components/forms/Button.jsx'), import('../components/runtime/runtime.jsx')]);
+  return { ...button, ...runtime };
 }
 
 const injected = id => document.head.querySelector(`style#${id}`);

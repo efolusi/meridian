@@ -1,6 +1,6 @@
 'use client';
 import React from 'react';
-import { injectEfCss } from '../forms/Button.jsx';
+import { injectEfCss } from '../runtime/runtime.jsx';
 const CSS = `
 .ef-topnav{display:flex;align-items:center;gap:var(--space-3);height:60px;padding:0 var(--space-6);border-bottom:1px solid var(--border-default);background:color-mix(in srgb,var(--surface-page) 85%,transparent);backdrop-filter:blur(12px);position:sticky;top:0;z-index:20}
 .ef-topnav__title{font-size:var(--text-xl);font-weight:700;font-family:var(--font-display);letter-spacing:-0.02em;color:var(--text-primary);margin:0}

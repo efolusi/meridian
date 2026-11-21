@@ -1,7 +1,7 @@
 'use client';
 import React from 'react';
 import { Icon } from '../icons/Icon.jsx';
-import { injectEfCss } from '../forms/Button.jsx';
+import { injectEfCss } from '../runtime/runtime.jsx';
 import { useDirection } from '../display/Direction.jsx';
 const CSS = `
 .ef-tabs{position:relative}.ef-tabs__list{position:relative;display:flex;gap:var(--space-1);border-bottom:1px solid var(--border-default)}

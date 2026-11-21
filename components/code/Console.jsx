@@ -1,6 +1,6 @@
 'use client';
 import React from 'react';
-import { injectEfCss, mergeRefs, prefersReducedMotion, styleRef } from '../forms/Button.jsx';
+import { injectEfCss, mergeRefs, prefersReducedMotion, styleRef } from '../runtime/runtime.jsx';
 import { Icon } from '../icons/Icon.jsx';
 const CSS = `
 .ef-console__count{margin-inline-start:auto;color:var(--text-muted)}

@@ -67,7 +67,8 @@ describe('docs site skip link', () => {
 describe('public copy stays current', () => {
   const components = readdirSync('components', { withFileTypes: true })
     .filter((d) => d.isDirectory())
-    .flatMap((d) => readdirSync('components/' + d.name).filter((f) => f.endsWith('.jsx')))
+    // components/runtime/runtime.jsx holds shared helpers, and is the one lowercase file name.
+    .flatMap((d) => readdirSync('components/' + d.name).filter((f) => f.endsWith('.jsx') && /^[A-Z]/.test(f)))
   const docs = read('site/Docs.dc.html')
 
   it('every "all N" / "not all N" component claim uses the real count', () => {

@@ -3,7 +3,7 @@ import React from 'react';
 import { Icon } from '../icons/Icon.jsx';
 import { Avatar, AvatarFallback } from '../display/Avatar.jsx';
 import { IconButton } from '../forms/IconButton.jsx';
-import { injectEfCss } from '../forms/Button.jsx';
+import { injectEfCss } from '../runtime/runtime.jsx';
 const CSS = `
 .ef-msg__main{flex:1;min-width:0}
 .ef-msg{display:flex;gap:var(--space-3);max-width:720px}

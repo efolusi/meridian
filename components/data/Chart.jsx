@@ -1,7 +1,7 @@
 'use client';
 import React from 'react';
 import * as RechartsPrimitive from 'recharts';
-import { injectEfCss, styleRef } from '../forms/Button.jsx';
+import { injectEfCss, styleRef } from '../runtime/runtime.jsx';
 
 const CSS = `
 .ef-chart{display:flex;aspect-ratio:16/9;min-height:200px;width:100%;justify-content:center;color:var(--text-secondary);font-size:var(--text-xs)}

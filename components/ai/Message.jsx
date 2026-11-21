@@ -1,6 +1,6 @@
 'use client';
 import React from 'react';
-import { injectEfCss } from '../forms/Button.jsx';
+import { injectEfCss } from '../runtime/runtime.jsx';
 
 const CSS = `
 .ef-message{display:flex;width:100%;align-items:flex-end;gap:var(--space-3)}

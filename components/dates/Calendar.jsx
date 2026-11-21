@@ -1,7 +1,7 @@
 'use client';
 import React from 'react';
 import { IconButton } from '../forms/IconButton.jsx';
-import { injectEfCss } from '../forms/Button.jsx';
+import { injectEfCss } from '../runtime/runtime.jsx';
 import { NativeSelect, NativeSelectOption } from '../forms/NativeSelect.jsx';
 import { useDirection } from '../display/Direction.jsx';
 

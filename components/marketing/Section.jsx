@@ -1,6 +1,6 @@
 'use client';
 import React from 'react';
-import { injectEfCss } from '../forms/Button.jsx';
+import { injectEfCss } from '../runtime/runtime.jsx';
 
 // --section-y comes from landing.css, which steps it down on smaller screens.
 const CSS = `

@@ -2,7 +2,7 @@
 import React from 'react';
 import { Icon } from '../icons/Icon.jsx';
 import { IconButton } from '../forms/IconButton.jsx';
-import { injectEfCss } from '../forms/Button.jsx';
+import { injectEfCss } from '../runtime/runtime.jsx';
 const CSS = `
 .ef-composer__attach{display:flex;gap:var(--space-2);flex-wrap:wrap;padding:10px 12px 0}.ef-composer__send-icon{transform:rotate(-45deg)}
 .ef-composer{display:flex;flex-direction:column;background:var(--surface-card);border:1px solid var(--border-strong);border-radius:var(--radius-lg);transition:border-color var(--dur-fast) var(--ease-out),box-shadow var(--dur-fast) var(--ease-out)}

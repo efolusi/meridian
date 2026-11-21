@@ -1,7 +1,7 @@
 'use client';
 import React from 'react';
 import { Icon } from '../icons/Icon.jsx';
-import { injectEfCss, mergeRefs, isElementOfType } from './Button.jsx';
+import { injectEfCss, mergeRefs, isElementOfType } from '../runtime/runtime.jsx';
 import { Portal, useAnchoredStyle, useHydrated } from '../overlay/Portal.jsx';
 
 const CSS = `

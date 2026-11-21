@@ -1,7 +1,7 @@
 'use client';
 import React from 'react';
 import { Icon } from '../icons/Icon.jsx';
-import { injectEfCss } from './Button.jsx';
+import { injectEfCss } from '../runtime/runtime.jsx';
 const CSS = `
 .ef-tilegroup{display:grid;gap:var(--space-3)}
 .ef-tile{position:relative;display:flex;flex-direction:column;align-items:flex-start;gap:var(--space-2);padding:var(--space-4);border:1px solid var(--border-strong);border-radius:var(--radius-md);background:var(--surface-card);cursor:pointer;text-align:start;font-family:var(--font-sans);color:var(--text-primary);transition:border-color var(--dur-fast) var(--ease-out),background var(--dur-fast) var(--ease-out)}

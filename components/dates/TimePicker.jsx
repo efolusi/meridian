@@ -1,7 +1,7 @@
 'use client';
 import React from 'react';
 import { Icon } from '../icons/Icon.jsx';
-import { injectEfCss } from '../forms/Button.jsx';
+import { injectEfCss } from '../runtime/runtime.jsx';
 import { useFieldProps } from '../forms/Field.jsx';
 import { Portal, useAnchoredStyle } from '../overlay/Portal.jsx';
 const CSS = `

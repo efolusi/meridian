@@ -1,6 +1,6 @@
 'use client';
 import React from 'react';
-import { injectEfCss, prefersReducedMotion } from '../forms/Button.jsx';
+import { injectEfCss, prefersReducedMotion } from '../runtime/runtime.jsx';
 import { Icon } from '../icons/Icon.jsx';
 import { useDirection } from './Direction.jsx';
 

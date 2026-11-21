@@ -1,6 +1,6 @@
 'use client';
 import React from 'react';
-import { injectEfCss, useIsoLayoutEffect } from '../forms/Button.jsx';
+import { injectEfCss, useIsoLayoutEffect } from '../runtime/runtime.jsx';
 const CSS = `
 .ef-donut{position:relative;display:flex;align-items:center;gap:var(--space-5)}
 .ef-donut__legend{display:flex;flex-direction:column;gap:var(--space-2)}

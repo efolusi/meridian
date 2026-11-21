@@ -1,7 +1,7 @@
 'use client';
 import React from 'react';
 import { Icon } from '../icons/Icon.jsx';
-import { injectEfCss, mergeRefs } from '../forms/Button.jsx';
+import { injectEfCss, mergeRefs } from '../runtime/runtime.jsx';
 
 const CSS = `
 .ef-acc{display:flex;flex-direction:column}

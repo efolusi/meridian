@@ -1,6 +1,6 @@
 'use client';
 import React from 'react';
-import { injectEfCss } from '../forms/Button.jsx';
+import { injectEfCss } from '../runtime/runtime.jsx';
 
 // Content is visible until the script runs, so a page without JavaScript loses nothing.
 const CSS = `

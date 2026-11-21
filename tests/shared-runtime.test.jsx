@@ -1,6 +1,7 @@
+import { readdirSync, readFileSync } from 'node:fs';
 import React from 'react';
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
-import { cssPct, injectEfCss, isElementOfType, mergeRefs, prefersReducedMotion, styleRef, useIsoLayoutEffect } from '../components/forms/Button.jsx';
+import { cssPct, injectEfCss, isElementOfType, mergeRefs, prefersReducedMotion, styleRef, useIsoLayoutEffect } from '../components/runtime/runtime.jsx';
 
 // MD24 (#195): the helpers every component shares. These tests pin their behaviour, so moving
 // them out of Button.jsx changes only where they are imported from.
@@ -62,7 +63,7 @@ describe('useIsoLayoutEffect', () => {
   it('is useEffect on the server, so renderToString does not warn', async () => {
     vi.resetModules();
     vi.stubGlobal('window', undefined);
-    const mod = await import('../components/forms/Button.jsx');
+    const mod = await import('../components/runtime/runtime.jsx');
     expect(mod.useIsoLayoutEffect).toBe(React.useEffect);
   });
 });
@@ -122,10 +123,40 @@ describe('injectEfCss', () => {
   it('does nothing without a document', async () => {
     vi.resetModules();
     vi.stubGlobal('document', undefined);
-    const mod = await import('../components/forms/Button.jsx');
+    const mod = await import('../components/runtime/runtime.jsx');
     expect(() => mod.injectEfCss('ef-css-pin-b', '.b{}')).not.toThrow();
     vi.unstubAllGlobals();
     expect(document.getElementById('ef-css-pin-b')).toBeNull();
     vi.resetModules();
+  });
+});
+
+describe('where the helpers live', () => {
+  const HELPERS = ['injectEfCss', 'mergeRefs', 'styleRef', 'cssPct', 'useIsoLayoutEffect', 'prefersReducedMotion', 'isElementOfType'];
+  const components = readdirSync('components', { withFileTypes: true })
+    .filter((d) => d.isDirectory())
+    .flatMap((d) => readdirSync(`components/${d.name}`).filter((f) => f.endsWith('.jsx')).map((f) => `components/${d.name}/${f}`));
+
+  it('Button.jsx does not export or re-export them', async () => {
+    const button = await import('../components/forms/Button.jsx');
+    for (const name of HELPERS) expect(button[name], name).toBeUndefined();
+  });
+
+  it('no component imports one from anywhere but components/runtime/runtime.jsx', () => {
+    for (const file of components) {
+      for (const m of readFileSync(file, 'utf8').matchAll(/import\s*\{([^}]*)\}\s*from\s*'([^']+)'/g)) {
+        const names = m[1].split(',').map((n) => n.trim());
+        if (!names.some((n) => HELPERS.includes(n))) continue;
+        expect(m[2], `${file} imports ${names.join(', ')}`).toMatch(/\/runtime\/runtime\.jsx$/);
+      }
+    }
+  });
+
+  it('the bundle compiles the module and keeps every helper off the public namespace', () => {
+    const header = JSON.parse(readFileSync('_ds_bundle.js', 'utf8').split('\n')[0].replace(/^\/\* @ds-bundle: /, '').replace(/ \*\/$/, ''));
+    expect(header.sourceHashes['components/runtime/runtime.jsx']).toBeTruthy();
+    const hidden = header.unexposedExports.filter((e) => e.sourcePath === 'components/runtime/runtime.jsx').map((e) => e.name).sort();
+    expect(hidden).toEqual([...HELPERS].sort());
+    expect(header.components.some((c) => c.sourcePath === 'components/runtime/runtime.jsx')).toBe(false);
   });
 });

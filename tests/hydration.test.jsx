@@ -1,7 +1,7 @@
 import { describe, it, expect } from 'vitest';
 import { renderToString } from 'react-dom/server';
 
-import { cssPct } from '../components/forms/Button.jsx';
+import { cssPct } from '../components/runtime/runtime.jsx';
 import { UsageMeter } from '../components/ai/UsageMeter.jsx';
 import { ResizableHandle, ResizablePanel, ResizablePanelGroup } from '../components/display/Resizable.jsx';
 

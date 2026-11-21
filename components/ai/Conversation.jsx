@@ -1,6 +1,6 @@
 'use client';
 import React from 'react';
-import { injectEfCss, prefersReducedMotion, mergeRefs, styleRef } from '../forms/Button.jsx';
+import { injectEfCss, prefersReducedMotion, mergeRefs, styleRef } from '../runtime/runtime.jsx';
 import { Icon } from '../icons/Icon.jsx';
 const CSS = `
 .ef-conversation{position:relative;overflow:hidden;display:flex;flex-direction:column}

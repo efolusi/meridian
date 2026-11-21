@@ -1,6 +1,6 @@
 'use client';
 import React from 'react';
-import { injectEfCss, mergeRefs } from '../forms/Button.jsx';
+import { injectEfCss, mergeRefs } from '../runtime/runtime.jsx';
 
 const CSS = `
 .ef-marker{display:inline-flex;align-items:center;gap:var(--space-2);min-width:0;color:var(--text-muted);font-family:var(--font-sans);font-size:var(--text-sm);line-height:1.4}

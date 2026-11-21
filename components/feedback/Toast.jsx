@@ -2,7 +2,7 @@
 import React from 'react';
 import { Icon } from '../icons/Icon.jsx';
 import { IconButton } from '../forms/IconButton.jsx';
-import { injectEfCss, styleRef } from '../forms/Button.jsx';
+import { injectEfCss, styleRef } from '../runtime/runtime.jsx';
 import { Portal, useHydrated } from '../overlay/Portal.jsx';
 
 const CSS = `

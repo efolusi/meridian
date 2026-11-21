@@ -1,6 +1,6 @@
 'use client';
 import React from 'react';
-import { injectEfCss } from '../forms/Button.jsx';
+import { injectEfCss } from '../runtime/runtime.jsx';
 
 const CSS = `
 .ef-site-footer{border-top:1px solid var(--border-default);background:var(--surface-subtle);color:var(--text-secondary)}

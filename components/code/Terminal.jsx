@@ -1,6 +1,6 @@
 'use client';
 import React from 'react';
-import { injectEfCss, styleRef } from '../forms/Button.jsx';
+import { injectEfCss, styleRef } from '../runtime/runtime.jsx';
 const CSS = `
 .ef-term__body{overflow-y:auto}
 .ef-term{background:var(--surface-code);border:1px solid var(--border-code);border-radius:var(--radius-md);overflow:hidden}

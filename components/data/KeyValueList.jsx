@@ -1,6 +1,6 @@
 'use client';
 import React from 'react';
-import { injectEfCss, styleRef } from '../forms/Button.jsx';
+import { injectEfCss, styleRef } from '../runtime/runtime.jsx';
 const CSS = `
 .ef-kv{display:flex;flex-direction:column}
 .ef-kv__row{display:flex;gap:var(--space-4);padding:var(--space-2) 0;border-bottom:1px solid var(--border-default)}

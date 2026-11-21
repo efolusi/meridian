@@ -1,6 +1,6 @@
 'use client';
 import React from 'react';
-import { injectEfCss } from '../forms/Button.jsx';
+import { injectEfCss } from '../runtime/runtime.jsx';
 
 const CSS = `
 .ef-card{background:var(--surface-card);border:1px solid var(--border-default);border-radius:var(--radius-md)}

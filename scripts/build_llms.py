@@ -66,6 +66,8 @@ def component_entries():
     entries = []
     for jsx in sorted(ROOT.glob("components/*/*.jsx")):
         group, name = jsx.parent.name, jsx.stem
+        if not name[0].isupper():
+            continue  # components/runtime/runtime.jsx: shared helpers, not a component
         prompt = jsx.with_name(f"{name}.prompt.md")
         dts = jsx.with_name(f"{name}.d.ts")
         for sibling in (prompt, dts):

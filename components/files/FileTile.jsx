@@ -3,7 +3,7 @@ import React from 'react';
 import { Icon } from '../icons/Icon.jsx';
 import { IconButton } from '../forms/IconButton.jsx';
 import { Progress } from '../feedback/Progress.jsx';
-import { injectEfCss } from '../forms/Button.jsx';
+import { injectEfCss } from '../runtime/runtime.jsx';
 const CSS = `
 .ef-filetile{display:flex;align-items:center;gap:var(--space-3);padding:var(--space-3) var(--space-3);border:1px solid var(--border-default);border-radius:var(--radius-md);background:var(--surface-card)}
 .ef-filetile:focus-within{border-color:var(--focus-ring-color)}

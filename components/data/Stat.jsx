@@ -1,6 +1,6 @@
 'use client';
 import React from 'react';
-import { injectEfCss } from '../forms/Button.jsx';
+import { injectEfCss } from '../runtime/runtime.jsx';
 const CSS = `
 .ef-stat__label{font-size:var(--text-sm);color:var(--text-muted);font-weight:var(--weight-medium)}
 .ef-stat__row{display:flex;align-items:baseline;gap:var(--space-2);margin-top:var(--space-2)}

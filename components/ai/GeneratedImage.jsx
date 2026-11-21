@@ -1,6 +1,6 @@
 'use client';
 import React from 'react';
-import { injectEfCss } from '../forms/Button.jsx';
+import { injectEfCss } from '../runtime/runtime.jsx';
 import { Icon } from '../icons/Icon.jsx';
 const CSS = `
 .ef-genimg{position:relative;width:100%;overflow:hidden;border-radius:var(--radius-md);border:1px solid var(--border-default);background:var(--surface-sunken);font-family:var(--font-sans)}

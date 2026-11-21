@@ -1,6 +1,6 @@
 'use client';
 import React from 'react';
-import { injectEfCss, useIsoLayoutEffect } from '../forms/Button.jsx';
+import { injectEfCss, useIsoLayoutEffect } from '../runtime/runtime.jsx';
 import { Icon } from '../icons/Icon.jsx';
 const CSS = `
 .ef-selq{position:relative}

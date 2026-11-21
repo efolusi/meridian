@@ -1,6 +1,6 @@
 'use client';
 import React from 'react';
-import { injectEfCss } from './Button.jsx';
+import { injectEfCss } from '../runtime/runtime.jsx';
 
 const CSS = `
 .ef-field-set{min-width:0;margin:0;padding:0;border:0;display:grid;gap:var(--space-4)}

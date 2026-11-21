@@ -33,7 +33,7 @@ try {
 
   const added = run('add', 'button', '--registry', REGISTRY, '--dir', 'app');
   expectExit(added, 0, 'add button');
-  for (const file of ['components/forms/Button.jsx', 'components/forms/Button.d.ts', 'components/forms/Button.prompt.md', 'components/icons/Icon.jsx', 'styles.css']) {
+  for (const file of ['components/forms/Button.jsx', 'components/forms/Button.d.ts', 'components/forms/Button.prompt.md', 'components/icons/Icon.jsx', 'components/runtime/runtime.jsx', 'styles.css']) {
     if (!fs.existsSync(path.join(temporary, 'app', file))) throw new Error(`add button did not write ${file}`);
   }
   for (const file of ['components/icons/_svg.js', 'components/icons/LICENSE-Lucide.txt', 'tokens/fonts.css']) {

@@ -1,6 +1,6 @@
 'use client';
 import React from 'react';
-import { injectEfCss, mergeRefs } from '../forms/Button.jsx';
+import { injectEfCss, mergeRefs } from '../runtime/runtime.jsx';
 
 const CSS = `
 .ef-collapsible__trigger{display:flex;align-items:center;gap:var(--space-2);width:100%;padding:var(--space-2) 0;border:none;background:none;cursor:pointer;text-align:start;font-family:var(--font-sans);font-size:var(--text-md);font-weight:600;color:var(--text-primary);border-radius:var(--radius-sm)}

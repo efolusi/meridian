@@ -2,7 +2,7 @@
 import React from 'react';
 import { Icon } from '../icons/Icon.jsx';
 import { IconButton } from '../forms/IconButton.jsx';
-import { injectEfCss } from '../forms/Button.jsx';
+import { injectEfCss } from '../runtime/runtime.jsx';
 const CSS = `
 .ef-copyfield{position:relative;display:flex;flex-direction:column;gap:var(--space-2)}
 .ef-copyfield__label{font-size:var(--text-sm);font-weight:var(--weight-semibold);color:var(--text-primary)}

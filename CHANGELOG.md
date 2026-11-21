@@ -1,5 +1,9 @@
 # Changelog
 
+## Unreleased
+
+- **The shared runtime helpers moved out of `components/forms/Button.jsx` into `components/runtime/runtime.jsx`.** `injectEfCss`, `mergeRefs`, `styleRef`, `cssPct`, `useIsoLayoutEffect`, `prefersReducedMotion` and `isElementOfType` live in one module that every component imports, and `Button.jsx` no longer exports them (no alias). Behaviour is unchanged. The registry has a new item, `meridian-runtime`, which the component items depend on in place of `button`: `add dialog` no longer writes `Button.jsx` just for `injectEfCss`, and it writes `components/runtime/runtime.jsx`. The npm package ships `runtime/runtime.js`; none of it joins the public exports. If you imported a helper from `forms/Button.jsx` in your own copy-in code, import it from `runtime/runtime.jsx`.
+
 ## 1.27.1 — 2026-11-21
 
 - **A versioned browser path that was never published no longer gets an immutable cache header.** `/browser/<version>/*` in `_headers` matched the request path even when Workers answered with the 404 page, so a missing version (for example `/browser/1.26.1/marketing.js`) returned a 404 with `Cache-Control: public, max-age=31536000, immutable` and CORS `*`, which a browser or edge cache could keep for a year. The wildcard is gone: `scripts/build_worker_assets.mjs` now appends an exact-file immutable and CORS rule for each versioned file it publishes, and the build fails before `_headers` passes the 100 rules Workers read. If the edge already holds a cached 404 for such a path, purge it.
