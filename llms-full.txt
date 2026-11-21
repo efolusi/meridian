@@ -2,7 +2,7 @@
 
 The entire design system in one file, generated from llms.txt, components/*/, and tokens/*.css by scripts/build_llms.py. Do not edit by hand. The short map of the repository is /llms.txt.
 
-> Meridian is a general-purpose open-source design system by Efolusi: 132 accessible React components, 232 design tokens (light, dark, compact), blocks, charts, and full example apps, served browser-native with zero build step. Apache-2.0 licensed.
+> Meridian is a general-purpose open-source design system by Efolusi: 133 accessible React components, 232 design tokens (light, dark, compact), blocks, charts, and full example apps, served browser-native with zero build step. Apache-2.0 licensed.
 
 Live docs: https://meridian.efolusi.com · Source: https://github.com/efolusi/meridian · License: Apache-2.0
 
@@ -34,7 +34,7 @@ Dark mode: set data-theme="dark" on any subtree. Compact density: data-density="
 
 ## Components
 
-132 components across 13 groups: ai, code, data, dates, display, feedback, files, finance, forms, icons, marketing, navigation, overlay. Each entry lists the component's public exports, its usage guidance (.prompt.md), and its typed props interface (.d.ts).
+133 components across 13 groups: ai, code, data, dates, display, feedback, files, finance, forms, icons, marketing, navigation, overlay. Each entry lists the component's public exports, its usage guidance (.prompt.md), and its typed props interface (.d.ts).
 
 ### ai
 
@@ -3773,6 +3773,34 @@ export declare function Icon(props: IconProps): React.JSX.Element;
 ```
 
 ### marketing
+
+#### Counter
+
+Group: marketing · Source: /components/marketing/Counter.jsx · Exports: Counter
+
+# Counter
+
+Use `Counter` for a stat number on a marketing page: it counts up from 0 to `value` over 1.2 s once it is 40% in view. The final value sits in the markup from the start, so server render, no JavaScript and screen readers get the real number, and reduced motion shows it at once. Pass the page's locale (`locale={lang}`): the default is `en`, fixed so the server and the browser print the same digits. `format` takes Intl.NumberFormat options. A counter already in view at load shows its final value and does not climb; a new `value` climbs from the number on screen; a value that is not a number renders as plain text. Use it for a number that is true (a count, a measured figure), never for an invented one, and not inside the product UI.
+
+```jsx
+<Counter value={12400} locale={lang} />
+<Counter value={0.98} format={{ style: 'percent' }} />
+```
+
+```ts
+export interface CounterProps extends React.HTMLAttributes<HTMLSpanElement> {
+  /** The number to count up to. A value that is not a number renders as plain text. */
+  value: number;
+  /** BCP 47 locale for the digits and separators. A fixed default keeps the server and the browser the same, so pass the page's locale (`locale={lang}`). @default 'en' */
+  locale?: string;
+  /** Intl.NumberFormat options, such as `{ style: 'currency', currency: 'IDR' }` or `{ notation: 'compact' }`. */
+  format?: Intl.NumberFormatOptions;
+  /** Count up when it scrolls into view. False shows the final value at once. A counter already in view at load shows its final value and does not restart. @default true */
+  animate?: boolean;
+}
+/** A stat number that counts up once it scrolls into view. The final value is always in the markup, so it reads correctly without JavaScript, with reduced motion and to screen readers. */
+export declare const Counter: React.ForwardRefExoticComponent<CounterProps & React.RefAttributes<HTMLSpanElement>>;
+```
 
 #### FeatureCard
 

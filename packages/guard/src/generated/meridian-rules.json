@@ -519,6 +519,10 @@
       "sourcePath": "components/code/CopyField.jsx"
     },
     {
+      "name": "Counter",
+      "sourcePath": "components/marketing/Counter.jsx"
+    },
+    {
       "name": "Dialog",
       "sourcePath": "components/feedback/Dialog.jsx"
     },
