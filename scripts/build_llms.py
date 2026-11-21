@@ -61,13 +61,17 @@ def fenced(text, info=""):
     return f"{fence}{info}\n{text.rstrip()}\n{fence}"
 
 
+# The folder of shared helpers: not components, so counts and docs skip it.
+SHARED_HELPERS_FOLDER = "components/runtime/"
+
+
 def component_entries():
     """[(group, name, exports, prompt, dts)] sorted by group then name."""
     entries = []
     for jsx in sorted(ROOT.glob("components/*/*.jsx")):
         group, name = jsx.parent.name, jsx.stem
-        if not name[0].isupper():
-            continue  # components/runtime/runtime.jsx: shared helpers, not a component
+        if str(jsx.relative_to(ROOT)).startswith(SHARED_HELPERS_FOLDER):
+            continue
         prompt = jsx.with_name(f"{name}.prompt.md")
         dts = jsx.with_name(f"{name}.d.ts")
         for sibling in (prompt, dts):

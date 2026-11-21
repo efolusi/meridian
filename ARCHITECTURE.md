@@ -47,7 +47,7 @@ monorepo.
 
 ## The pipeline
 
-- Components are plain `.jsx` files styling against semantic tokens only. Each calls `injectEfCss(id, css)` (from `components/runtime/runtime.jsx`, the one lowercase file: the helpers every component shares) and is compiled by **`scripts/build_bundle.mjs`** into `_ds_bundle.js`, which attaches every export to `window.EfolusiDesignSystem_4ffc3d`. Run `npm install` once, then `node scripts/build_bundle.mjs`.
+- Components are plain `.jsx` files styling against semantic tokens only. Each calls `injectEfCss(id, css)` (from `components/runtime/runtime.jsx`: the runtime folder holds the shared helpers) and is compiled by **`scripts/build_bundle.mjs`** into `_ds_bundle.js`, which attaches every export to `window.EfolusiDesignSystem_4ffc3d`. Run `npm install` once, then `node scripts/build_bundle.mjs`.
 - Pages load `react`, `react-dom`, and the bundle, then read components off that namespace. `.dc.html` pages additionally use the `x-dc` runtime in `support.js`.
 - `Icon` fetches `assets/icons/<name>.svg` relative to the **bundle script's URL**, not the page URL. Root placement of `_ds_bundle.js` is therefore load-bearing.
 - Each starter (and `site/`) carries its own `ds-base.js` (one `base` line pointing at the root) and a copy of `support.js`, so a copied folder works standalone. The copies must stay byte-identical; `scripts/check_runtime_copies.py` enforces that.

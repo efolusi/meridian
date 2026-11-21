@@ -137,6 +137,13 @@ describe('where the helpers live', () => {
     .filter((d) => d.isDirectory())
     .flatMap((d) => readdirSync(`components/${d.name}`).filter((f) => f.endsWith('.jsx')).map((f) => `components/${d.name}/${f}`));
 
+  it('every .jsx under components/ outside components/runtime/ is a component and starts with a capital letter', () => {
+    const outside = components.filter((file) => !file.startsWith('components/runtime/'));
+    expect(outside.length).toBeGreaterThan(100);
+    expect(outside.filter((file) => !/^[A-Z]/.test(file.split('/').pop()))).toEqual([]);
+    expect(components.filter((file) => file.startsWith('components/runtime/'))).toEqual(['components/runtime/runtime.jsx']);
+  });
+
   it('Button.jsx does not export or re-export them', async () => {
     const button = await import('../components/forms/Button.jsx');
     for (const name of HELPERS) expect(button[name], name).toBeUndefined();

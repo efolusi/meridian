@@ -1488,7 +1488,9 @@
     {
       "module": "runtime/runtime.js",
       "group": "runtime",
-      "exports": [],
+      "exports": [
+        "shared helpers"
+      ],
       "bytes": 1487,
       "gzip": 867
     }
