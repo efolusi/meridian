@@ -1,0 +1,234 @@
+{
+  "components/ai/AgentRun.jsx": {
+    "count": 3,
+    "reason": "Existing use of a ramp stop in component CSS; to move to a semantic token (MD row)."
+  },
+  "components/ai/Bubble.jsx": {
+    "count": 1,
+    "reason": "Existing use of a ramp stop in component CSS; to move to a semantic token (MD row)."
+  },
+  "components/ai/Citation.jsx": {
+    "count": 3,
+    "reason": "Existing use of a ramp stop in component CSS; to move to a semantic token (MD row)."
+  },
+  "components/ai/Confirmation.jsx": {
+    "count": 6,
+    "reason": "Existing use of a ramp stop in component CSS; to move to a semantic token (MD row)."
+  },
+  "components/ai/FeedbackBar.jsx": {
+    "count": 1,
+    "reason": "Existing use of a ramp stop in component CSS; to move to a semantic token (MD row)."
+  },
+  "components/ai/GeneratedImage.jsx": {
+    "count": 3,
+    "reason": "Existing use of a ramp stop in component CSS; to move to a semantic token (MD row)."
+  },
+  "components/ai/ModelSelector.jsx": {
+    "count": 2,
+    "reason": "Existing use of a ramp stop in component CSS; to move to a semantic token (MD row)."
+  },
+  "components/ai/Player.jsx": {
+    "count": 1,
+    "reason": "Existing use of a ramp stop in component CSS; to move to a semantic token (MD row)."
+  },
+  "components/ai/PromptComposer.jsx": {
+    "count": 2,
+    "reason": "Existing use of a ramp stop in component CSS; to move to a semantic token (MD row)."
+  },
+  "components/ai/Sandbox.jsx": {
+    "count": 3,
+    "reason": "Existing use of a ramp stop in component CSS; to move to a semantic token (MD row)."
+  },
+  "components/ai/ToolCall.jsx": {
+    "count": 4,
+    "reason": "Existing use of a ramp stop in component CSS; to move to a semantic token (MD row)."
+  },
+  "components/ai/UsageMeter.jsx": {
+    "count": 2,
+    "reason": "Existing use of a ramp stop in component CSS; to move to a semantic token (MD row)."
+  },
+  "components/ai/WebPreview.jsx": {
+    "count": 3,
+    "reason": "Existing use of a ramp stop in component CSS; to move to a semantic token (MD row)."
+  },
+  "components/code/Console.jsx": {
+    "count": 2,
+    "reason": "Existing use of a ramp stop in component CSS; to move to a semantic token (MD row)."
+  },
+  "components/code/Diff.jsx": {
+    "count": 8,
+    "reason": "Existing use of a ramp stop in component CSS; to move to a semantic token (MD row)."
+  },
+  "components/code/EnvList.jsx": {
+    "count": 1,
+    "reason": "Existing use of a ramp stop in component CSS; to move to a semantic token (MD row)."
+  },
+  "components/code/Exception.jsx": {
+    "count": 7,
+    "reason": "Existing use of a ramp stop in component CSS; to move to a semantic token (MD row)."
+  },
+  "components/code/Terminal.jsx": {
+    "count": 3,
+    "reason": "Existing use of a ramp stop in component CSS; to move to a semantic token (MD row)."
+  },
+  "components/data/BarChart.jsx": {
+    "count": 1,
+    "reason": "Existing use of a ramp stop in component CSS; to move to a semantic token (MD row)."
+  },
+  "components/data/Sparkline.jsx": {
+    "count": 2,
+    "reason": "Existing use of a ramp stop in component CSS; to move to a semantic token (MD row)."
+  },
+  "components/data/Stat.jsx": {
+    "count": 2,
+    "reason": "Existing use of a ramp stop in component CSS; to move to a semantic token (MD row)."
+  },
+  "components/data/StatusDot.jsx": {
+    "count": 9,
+    "reason": "Existing use of a ramp stop in component CSS; to move to a semantic token (MD row)."
+  },
+  "components/dates/TimePicker.jsx": {
+    "count": 2,
+    "reason": "Existing use of a ramp stop in component CSS; to move to a semantic token (MD row)."
+  },
+  "components/display/Accordion.jsx": {
+    "count": 1,
+    "reason": "Existing use of a ramp stop in component CSS; to move to a semantic token (MD row)."
+  },
+  "components/display/Avatar.jsx": {
+    "count": 3,
+    "reason": "Existing use of a ramp stop in component CSS; to move to a semantic token (MD row)."
+  },
+  "components/display/Badge.jsx": {
+    "count": 16,
+    "reason": "Existing use of a ramp stop in component CSS; to move to a semantic token (MD row)."
+  },
+  "components/display/Card.jsx": {
+    "count": 1,
+    "reason": "Existing use of a ramp stop in component CSS; to move to a semantic token (MD row)."
+  },
+  "components/display/Tag.jsx": {
+    "count": 2,
+    "reason": "Existing use of a ramp stop in component CSS; to move to a semantic token (MD row)."
+  },
+  "components/display/Timeline.jsx": {
+    "count": 9,
+    "reason": "Existing use of a ramp stop in component CSS; to move to a semantic token (MD row)."
+  },
+  "components/display/TreeList.jsx": {
+    "count": 2,
+    "reason": "Existing use of a ramp stop in component CSS; to move to a semantic token (MD row)."
+  },
+  "components/feedback/Alert.jsx": {
+    "count": 7,
+    "reason": "Existing use of a ramp stop in component CSS; to move to a semantic token (MD row)."
+  },
+  "components/feedback/Banner.jsx": {
+    "count": 8,
+    "reason": "Existing use of a ramp stop in component CSS; to move to a semantic token (MD row)."
+  },
+  "components/feedback/Progress.jsx": {
+    "count": 3,
+    "reason": "Existing use of a ramp stop in component CSS; to move to a semantic token (MD row)."
+  },
+  "components/feedback/Toast.jsx": {
+    "count": 13,
+    "reason": "Existing use of a ramp stop in component CSS; to move to a semantic token (MD row)."
+  },
+  "components/files/Attachment.jsx": {
+    "count": 2,
+    "reason": "Existing use of a ramp stop in component CSS; to move to a semantic token (MD row)."
+  },
+  "components/files/FileTile.jsx": {
+    "count": 2,
+    "reason": "Existing use of a ramp stop in component CSS; to move to a semantic token (MD row)."
+  },
+  "components/files/FileTypeIcon.jsx": {
+    "count": 22,
+    "reason": "Existing use of a ramp stop in component CSS; to move to a semantic token (MD row)."
+  },
+  "components/finance/PaymentCard.jsx": {
+    "count": 4,
+    "reason": "Existing use of a ramp stop in component CSS; to move to a semantic token (MD row)."
+  },
+  "components/forms/Button.jsx": {
+    "count": 4,
+    "reason": "Existing use of a ramp stop in component CSS; to move to a semantic token (MD row)."
+  },
+  "components/forms/ButtonTile.jsx": {
+    "count": 1,
+    "reason": "Existing use of a ramp stop in component CSS; to move to a semantic token (MD row)."
+  },
+  "components/forms/Checkbox.jsx": {
+    "count": 1,
+    "reason": "Existing use of a ramp stop in component CSS; to move to a semantic token (MD row)."
+  },
+  "components/forms/Field.jsx": {
+    "count": 2,
+    "reason": "Existing use of a ramp stop in component CSS; to move to a semantic token (MD row)."
+  },
+  "components/forms/Input.jsx": {
+    "count": 4,
+    "reason": "Existing use of a ramp stop in component CSS; to move to a semantic token (MD row)."
+  },
+  "components/forms/InputGroup.jsx": {
+    "count": 1,
+    "reason": "Existing use of a ramp stop in component CSS; to move to a semantic token (MD row)."
+  },
+  "components/forms/InputOTP.jsx": {
+    "count": 1,
+    "reason": "Existing use of a ramp stop in component CSS; to move to a semantic token (MD row)."
+  },
+  "components/forms/Label.jsx": {
+    "count": 1,
+    "reason": "Existing use of a ramp stop in component CSS; to move to a semantic token (MD row)."
+  },
+  "components/forms/NumberInput.jsx": {
+    "count": 3,
+    "reason": "Existing use of a ramp stop in component CSS; to move to a semantic token (MD row)."
+  },
+  "components/forms/Questionnaire.jsx": {
+    "count": 3,
+    "reason": "Existing use of a ramp stop in component CSS; to move to a semantic token (MD row)."
+  },
+  "components/forms/Radio.jsx": {
+    "count": 1,
+    "reason": "Existing use of a ramp stop in component CSS; to move to a semantic token (MD row)."
+  },
+  "components/forms/Select.jsx": {
+    "count": 2,
+    "reason": "Existing use of a ramp stop in component CSS; to move to a semantic token (MD row)."
+  },
+  "components/forms/Textarea.jsx": {
+    "count": 3,
+    "reason": "Existing use of a ramp stop in component CSS; to move to a semantic token (MD row)."
+  },
+  "components/marketing/Hero.jsx": {
+    "count": 1,
+    "reason": "Existing use of a ramp stop in component CSS; to move to a semantic token (MD row)."
+  },
+  "components/marketing/Marquee.jsx": {
+    "count": 4,
+    "reason": "Existing use of a ramp stop in component CSS; to move to a semantic token (MD row)."
+  },
+  "components/navigation/Breadcrumbs.jsx": {
+    "count": 1,
+    "reason": "Existing use of a ramp stop in component CSS; to move to a semantic token (MD row)."
+  },
+  "components/navigation/PageControl.jsx": {
+    "count": 1,
+    "reason": "Existing use of a ramp stop in component CSS; to move to a semantic token (MD row)."
+  },
+  "components/navigation/Steps.jsx": {
+    "count": 2,
+    "reason": "Existing use of a ramp stop in component CSS; to move to a semantic token (MD row)."
+  },
+  "components/overlay/ContextMenu.jsx": {
+    "count": 1,
+    "reason": "Existing use of a ramp stop in component CSS; to move to a semantic token (MD row)."
+  },
+  "components/overlay/DropdownMenu.jsx": {
+    "count": 1,
+    "reason": "Existing use of a ramp stop in component CSS; to move to a semantic token (MD row)."
+  }
+}

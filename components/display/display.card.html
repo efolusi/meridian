@@ -7,7 +7,7 @@
 </head><body style="background:var(--surface-page)">
 <div id="root"></div>
 <script type="text/babel">
-const { Card, CardAction, CardContent, CardDescription, CardFooter, CardHeader, CardTitle, Badge, Tag, Avatar, AvatarFallback, AvatarGroup, Button, Kbd, Divider, Accordion, AccordionItem, AccordionTrigger, AccordionContent, Link, Toolbar, Item, ItemActions, ItemContent, ItemDescription, ItemGroup, ItemMedia, ItemSeparator, ItemTitle, Icon, TreeList, Switch, Collapsible, CollapsibleTrigger, CollapsibleContent, AspectRatio, ScrollArea, Carousel, CarouselContent, CarouselItem, CarouselPrevious, CarouselNext, ResizablePanelGroup, ResizablePanel, ResizableHandle } = window.EfolusiDesignSystem_4ffc3d;
+const { Card, CardAction, CardContent, CardDescription, CardFooter, CardHeader, CardTitle, Badge, Tag, Avatar, AvatarFallback, AvatarGroup, Button, Kbd, Divider, Accordion, AccordionItem, AccordionTrigger, AccordionContent, Link, Toolbar, Item, ItemActions, ItemContent, ItemDescription, ItemGroup, ItemMedia, ItemSeparator, ItemTitle, Icon, TreeList, Switch, Collapsible, CollapsibleTrigger, CollapsibleContent, AspectRatio, ScrollArea, Carousel, CarouselContent, CarouselItem, CarouselPrevious, CarouselNext, ResizablePanelGroup, ResizablePanel, ResizableHandle, Decor } = window.EfolusiDesignSystem_4ffc3d;
 const lbl = { fontSize: 11, fontWeight: 600, letterSpacing: '0.06em', textTransform: 'uppercase', color: 'var(--text-muted)', marginBottom: 8 };
 function Demo() {
   const [tags, setTags] = React.useState(['Billing', 'API']);
@@ -120,6 +120,17 @@ function Demo() {
             <ResizableHandle withHandle />
             <ResizablePanel><div style={{ padding: 12, fontSize: 13, color: 'var(--text-secondary)', height: '100%' }}>Keyboard: focus the handle, then arrow keys.</div></ResizablePanel>
           </ResizablePanelGroup>
+        </div>
+      </div>
+      <div style={{ gridColumn: 'span 2' }}>
+        <div style={lbl}>Decor</div>
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: 8 }}>
+          {['mesh', 'noise', 'grid', 'dots'].map((pattern) => (
+            <div key={pattern} style={{ position: 'relative', isolation: 'isolate', height: 96, padding: 10, border: '1px solid var(--border-default)', borderRadius: 'var(--radius-md)', background: 'var(--surface-page)', fontSize: 13, color: 'var(--text-primary)' }}>
+              <Decor pattern={pattern} fade={pattern === 'mesh'} />
+              {pattern}
+            </div>
+          ))}
         </div>
       </div>
     </div>
