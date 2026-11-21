@@ -308,6 +308,10 @@ class Component extends DCLogic {
         p('Open an issue describing the gap, agree on the API in the thread, then submit the three files plus a specimen entry. Versioning and release policy live in guidelines/governance.md; the full contribution guide is CONTRIBUTING.md at the repo root.', 'Buka issue yang menjelaskan celahnya, sepakati API di thread, lalu kirim ketiga berkas plus entri spesimen. Kebijakan versioning dan rilis ada di guidelines/governance.md; panduan kontribusi lengkap ada di CONTRIBUTING.md di root repo.'),
       ] },
       { group: 'Reference', id: 'changelog', title: 'Changelog', lede: 'Notable changes, newest first. Full history in CHANGELOG.md.', blocks: [
+        h2('unreleased', 'Unreleased', 'Belum dirilis'),
+        list([
+          ['The size budget tolerance is 256 bytes.', 'A build that grows has to record its new size with scripts/check_size.mjs --update in the same PR, and a test fails when the budget and the bundle-size table disagree.', 'Toleransi anggaran ukuran kini 256 byte.', 'Build yang membesar harus mencatat ukuran barunya dengan scripts/check_size.mjs --update di PR yang sama, dan sebuah pengujian gagal bila anggaran dan tabel ukuran bundel berbeda.'],
+        ]),
         h2('v1290', '1.29.0 (November 2026)', '1.29.0 (November 2026)'),
         list([
           ['Nothing moves under reduced motion.', 'Switch, Tabs, NavigationMenu, UsageMeter, WebPreview, DocumentCard, CodeBlock, PageControl and MessageScroller now show the end state at once instead of sliding or resizing for 120 ms. A browser check in CI lists every moving transition.', 'Tidak ada yang bergerak saat gerak dikurangi.', 'Switch, Tabs, NavigationMenu, UsageMeter, WebPreview, DocumentCard, CodeBlock, PageControl, dan MessageScroller kini langsung menampilkan keadaan akhir, tidak lagi bergeser atau berubah ukuran selama 120 ms. Pemeriksaan di peramban pada CI mendaftar setiap transisi yang bergerak.'],
