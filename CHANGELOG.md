@@ -1,5 +1,9 @@
 # Changelog
 
+## Unreleased
+
+- **`Decor` in the display group.** A decorative backdrop drawn in CSS only: `pattern` is `mesh` (soft brand gradient), `noise`, `grid` or `dots`; `fade` fades it toward the bottom edge. It is `aria-hidden`, has no animation (so reduced motion has nothing to stop), is hidden in forced-colors mode, takes every colour from tokens, and adds no dependency. Put it inside a parent with `position: relative; isolation: isolate`. A test measures `--text-primary` and `--text-secondary` over the strongest point of every pattern on the page, card and sunken surfaces in light and dark and holds them at 4.5:1; `--text-muted` is not covered.
+
 ## 1.30.0 — 2026-11-22
 
 - **`Skeleton` takes `shimmer`, hides from assistive technology, and View Transitions respect reduced motion.** `<Skeleton shimmer />` sweeps a band (`--border-strong`, at least 1.2:1 against the block in light and dark) across the block instead of pulsing; with reduced motion both variants are still. `Skeleton` is now `aria-hidden` by default, so an `aria-label` on a Skeleton (the old prompt example did that) is no longer read: move the label to the region that will hold the content and set `aria-busy="true"` there and draws as a `GrayText` block in Windows High Contrast. `document.startViewTransition` snapshots are not matched by `*`, so the reduced-motion guard now names them: the groups stop moving and the old and new snapshots cross-fade over `--dur-fast`. Use `document.startViewTransition?.(update) ?? update()` for a page or state change; browsers without the API just run `update`. `scripts/check_reduced_motion.mjs` starts a real View Transition under `reduce` and fails if a group still moves.

@@ -30,6 +30,7 @@
   "ContextMenu": "Menu klik-kanan composable dengan item, checkbox, radio, grup, shortcut, separator, serta submenu bertingkat.",
   "Conversation": "Viewport thread menempel-di-bawah: tetap terpaku ke pesan terbaru selama streaming (ResizeObserver), menampilkan pil \"Jump to latest\" saat pembaca menggulir ke atas.",
   "CopyField": "Nilai mono baca-saja dengan salin (dan ungkap, untuk rahasia). Untuk kunci API, IP, record DNS.",
+  "Decor": "Latar dekoratif murni CSS (mesh gradien, noise, grid, titik); tersembunyi dari teknologi bantu, tanpa gerak, hilang pada mode forced-colors.",
   "Dialog": "Modal terpusat dengan overlay redup, scale-in lentur, tutup via ESC/overlay/✕.",
   "Diff": "Diff terpadu dengan gutter nomor-baris ganda, tanda +/−, nuansa baris tambah/hapus, dan hitungan header.",
   "DirectionProvider": "Penyedia arah baca LTR atau RTL untuk komponen dan interaksi keyboard di dalam subtree.",

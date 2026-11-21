@@ -1,16 +1,16 @@
 {
   "totals": {
     "@efolusi/meridian": {
-      "bytes": 376036,
-      "gzip": 85095
+      "bytes": 376544,
+      "gzip": 85186
     },
     "dist/components.css": {
-      "bytes": 234977,
-      "gzip": 32062
+      "bytes": 236637,
+      "gzip": 32404
     },
     "_ds_bundle.js": {
-      "bytes": 891725,
-      "gzip": 159509
+      "bytes": 894816,
+      "gzip": 160210
     }
   },
   "modules": [
@@ -562,6 +562,15 @@
       ],
       "bytes": 2866,
       "gzip": 1020
+    },
+    {
+      "module": "display/Decor.js",
+      "group": "display",
+      "exports": [
+        "Decor"
+      ],
+      "bytes": 544,
+      "gzip": 368
     },
     {
       "module": "display/Direction.js",
