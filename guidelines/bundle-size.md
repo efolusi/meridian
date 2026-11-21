@@ -13,9 +13,9 @@ CSS is not counted per component: `styles.css` ships every component style in on
 
 | File | Size | Gzip |
 | --- | ---: | ---: |
-| `@efolusi/meridian` | 365.3 kB | 82.6 kB |
-| `dist/components.css` | 228.7 kB | 31.1 kB |
-| `_ds_bundle.js` | 865.4 kB | 154.5 kB |
+| `@efolusi/meridian` | 365.8 kB | 82.7 kB |
+| `dist/components.css` | 230.3 kB | 31.5 kB |
+| `_ds_bundle.js` | 868.4 kB | 155.2 kB |
 
 The root import, `@efolusi/meridian`, is every component. `_ds_bundle.js` is the zero-build CDN bundle, which also carries each component's CSS. The root import is minified; the CSS and the CDN bundle are measured as shipped.
 
@@ -78,6 +78,7 @@ The root import, `@efolusi/meridian`, is every component. `_ds_bundle.js` is the
 | `display/Card.js` | CardHeader, CardTitle, CardDescription, CardAction, CardContent, CardFooter, Card | 1.8 kB | 0.6 kB |
 | `display/Carousel.js` | Carousel, CarouselContent, CarouselItem, CarouselPrevious, CarouselNext | 49.0 kB | 9.1 kB |
 | `display/Collapsible.js` | Collapsible, CollapsibleTrigger, CollapsibleContent | 2.8 kB | 1.0 kB |
+| `display/Decor.js` | Decor | 0.5 kB | 0.4 kB |
 | `display/Direction.js` | DirectionProvider | 0.4 kB | 0.2 kB |
 | `display/Divider.js` | Divider | 0.8 kB | 0.4 kB |
 | `display/Item.js` | ItemGroup, ItemSeparator, Item, ItemMedia, ItemContent, ItemTitle, ItemDescription, ItemActions, ItemHeader, ItemFooter | 3.7 kB | 1.0 kB |

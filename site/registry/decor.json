@@ -1,0 +1,34 @@
+{
+  "name": "decor",
+  "type": "registry:ui",
+  "title": "Decor",
+  "description": "Use `Decor` for a decorative backdrop behind a hero or a section: `mesh` (soft brand gradient), `noise` (fine grain), `grid` (hairlines) or `dots`. It is CSS only, `aria-hidden`, never animated, and hidden in forced-colors mode. Put it inside a parent with `position: relative; isolation: isolate`; i",
+  "dependencies": [
+    "react"
+  ],
+  "registryDependencies": [
+    "https://meridian.efolusi.com/site/registry/meridian-base.json",
+    "https://meridian.efolusi.com/site/registry/meridian-runtime.json"
+  ],
+  "files": [
+    {
+      "path": "components/display/Decor.jsx",
+      "type": "registry:ui",
+      "content": "'use client';\nimport React from 'react';\nimport { injectEfCss } from '../runtime/runtime.jsx';\n\n// The parent sets `position:relative; isolation:isolate`; the block sits at z-index:-1 inside it.\n// Every colour is a token at low strength, and tests/decor.test.jsx measures body text over the strongest point.\nconst CSS = `\n.ef-decor{position:absolute;inset:0;z-index:-1;pointer-events:none;background-repeat:no-repeat}\n.ef-decor[data-pattern=\"mesh\"]{background-image:radial-gradient(60% 50% at 15% 10%,color-mix(in oklab,var(--brand-400) 18%,transparent),transparent 70%),radial-gradient(55% 45% at 85% 20%,color-mix(in oklab,var(--brand-300) 16%,transparent),transparent 70%),radial-gradient(70% 50% at 50% 100%,color-mix(in oklab,var(--brand-500) 14%,transparent),transparent 70%)}\n.ef-decor[data-pattern=\"grid\"]{background-repeat:repeat;background-size:32px 32px;background-image:linear-gradient(to right,color-mix(in oklab,var(--text-muted) 16%,transparent) 1px,transparent 1px),linear-gradient(to bottom,color-mix(in oklab,var(--text-muted) 16%,transparent) 1px,transparent 1px)}\n.ef-decor[data-pattern=\"dots\"]{background-repeat:repeat;background-size:20px 20px;background-image:radial-gradient(circle,color-mix(in oklab,var(--text-muted) 22%,transparent) 1px,transparent 1.5px)}\n.ef-decor[data-pattern=\"noise\"]{background-repeat:repeat;background-size:7px 7px,11px 11px,13px 13px;background-position:0 0,3px 5px,6px 2px;background-image:radial-gradient(circle,color-mix(in oklab,var(--text-muted) 12%,transparent) .6px,transparent .8px),radial-gradient(circle,color-mix(in oklab,var(--text-muted) 10%,transparent) .6px,transparent .8px),radial-gradient(circle,color-mix(in oklab,var(--text-muted) 8%,transparent) .6px,transparent .8px)}\n.ef-decor[data-fade]{-webkit-mask-image:linear-gradient(to bottom,black 55%,transparent);mask-image:linear-gradient(to bottom,black 55%,transparent)}\n@media (forced-colors:active){.ef-decor{display:none}}\n`;\n\n/** A decorative backdrop (gradient mesh, grain, grid or dots) drawn in CSS only. Hidden from assistive technology, no motion, hidden in forced-colors mode. */\nexport const Decor = React.forwardRef(function Decor({ pattern = 'mesh', fade = false, className, ...rest }, ref) {\n  injectEfCss('ef-css-decor', CSS);\n  return <div {...rest} ref={ref} aria-hidden=\"true\" data-slot=\"decor\" data-pattern={pattern} data-fade={fade ? '' : undefined} className={className ? `ef-decor ${className}` : 'ef-decor'} />;\n});\n"
+    },
+    {
+      "path": "components/display/Decor.d.ts",
+      "type": "registry:component",
+      "content": "export interface DecorProps extends Omit<React.HTMLAttributes<HTMLDivElement>, 'children'> {\n  /** The pattern to draw. @default 'mesh' */\n  pattern?: 'mesh' | 'noise' | 'grid' | 'dots';\n  /** Fade the pattern out toward the bottom edge. @default false */\n  fade?: boolean;\n}\n/** A decorative backdrop drawn in CSS only. Always `aria-hidden`, never animated, hidden in forced-colors mode. Put it inside a parent with `position: relative; isolation: isolate`. */\nexport declare const Decor: React.ForwardRefExoticComponent<DecorProps & React.RefAttributes<HTMLDivElement>>;\n"
+    },
+    {
+      "path": "components/display/Decor.prompt.md",
+      "type": "registry:component",
+      "content": "# Decor\n\nUse `Decor` for a decorative backdrop behind a hero or a section: `mesh` (soft brand gradient), `noise` (fine grain), `grid` (hairlines) or `dots`. It is CSS only, `aria-hidden`, never animated, and hidden in forced-colors mode. Put it inside a parent with `position: relative; isolation: isolate`; it sits behind the content. `fade` fades it out toward the bottom edge.\n\nBody text in `--text-primary` or `--text-secondary` keeps 4.5:1 over every pattern in light and dark (a test measures the strongest point). Do not put `--text-muted` or small light text on it. Use one pattern per section, and only where the page gains something from it: a pattern that decorates nothing is noise.\n\n```jsx\n<section style={{ position: 'relative', isolation: 'isolate' }}>\n  <Decor pattern=\"mesh\" fade />\n  <h2>Plans</h2>\n</section>\n```\n"
+    }
+  ],
+  "categories": [
+    "display"
+  ],
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json"
+}

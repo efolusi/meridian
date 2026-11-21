@@ -164,6 +164,21 @@ export function DividerDemo() {
   );
 }
 
+// @demo Decor Mesh, noise, grid and dots
+export function DecorDemo() {
+  const { Decor } = window.EfolusiDesignSystem_4ffc3d;
+  return (
+    <div style={{ width: 360, display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 8 }}>
+      {['mesh', 'noise', 'grid', 'dots'].map((pattern) => (
+        <div key={pattern} style={{ position: 'relative', isolation: 'isolate', height: 96, padding: 10, border: '1px solid var(--border-default)', borderRadius: 'var(--radius-md)', background: 'var(--surface-page)', color: 'var(--text-primary)', fontSize: 13 }}>
+          <Decor pattern={pattern} fade={pattern === 'mesh'} />
+          {pattern}
+        </div>
+      ))}
+    </div>
+  );
+}
+
 // @demo Separator Semantic and decorative rules
 export function SeparatorDemo() {
   const { Separator } = window.EfolusiDesignSystem_4ffc3d;

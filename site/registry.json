@@ -1789,6 +1789,36 @@
       ]
     },
     {
+      "name": "decor",
+      "type": "registry:ui",
+      "title": "Decor",
+      "description": "Use `Decor` for a decorative backdrop behind a hero or a section: `mesh` (soft brand gradient), `noise` (fine grain), `grid` (hairlines) or `dots`. It is CSS only, `aria-hidden`, never animated, and hidden in forced-colors mode. Put it inside a parent with `position: relative; isolation: isolate`; i",
+      "dependencies": [
+        "react"
+      ],
+      "registryDependencies": [
+        "https://meridian.efolusi.com/site/registry/meridian-base.json",
+        "https://meridian.efolusi.com/site/registry/meridian-runtime.json"
+      ],
+      "files": [
+        {
+          "path": "components/display/Decor.jsx",
+          "type": "registry:ui"
+        },
+        {
+          "path": "components/display/Decor.d.ts",
+          "type": "registry:component"
+        },
+        {
+          "path": "components/display/Decor.prompt.md",
+          "type": "registry:component"
+        }
+      ],
+      "categories": [
+        "display"
+      ]
+    },
+    {
       "name": "direction",
       "type": "registry:ui",
       "title": "DirectionProvider",
