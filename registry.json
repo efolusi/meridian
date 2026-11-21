@@ -1792,7 +1792,7 @@
       "name": "decor",
       "type": "registry:ui",
       "title": "Decor",
-      "description": "Use `Decor` for a decorative backdrop behind a hero or a section: `mesh` (soft brand gradient), `noise` (fine grain), `grid` (hairlines) or `dots`. It is CSS only, `aria-hidden`, never animated, and hidden in forced-colors mode. Put it inside a parent with `position: relative; isolation: isolate`; i",
+      "description": "Use `Decor` for a decorative backdrop behind a hero or a section: `mesh` (a soft gradient from the accent tokens, so a rebrand and dark mode reach it), `noise` (fine grain), `grid` (hairlines) or `dots`. It is CSS only, `aria-hidden`, never animated, and hidden in forced-colors mode. Put it inside a",
       "dependencies": [
         "react"
       ],

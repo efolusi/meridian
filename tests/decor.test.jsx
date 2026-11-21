@@ -54,6 +54,13 @@ describe('Decor styles', () => {
     expect(css()).not.toMatch(/#[0-9a-f]{3,8}\b|rgba?\(|hsla?\(/i);
   });
 
+  it('colours the mesh from the accent group, so a rebrand and dark mode reach it', () => {
+    const mesh = css().match(/\[data-pattern="mesh"\]\{[^}]*\}\s*(?=\.ef-decor\[data-pattern="grid")/s)?.[0] ?? css().match(/\[data-pattern="mesh"\][^\n]*/)[0];
+    const used = new Set([...mesh.matchAll(/var\((--[\w-]+)\)/g)].map((m) => m[1]));
+    expect([...used].sort()).toEqual(['--accent', '--accent-subtle-border'].filter((t) => used.has(t)));
+    expect(used.size).toBeGreaterThan(0);
+  });
+
   it('loads no file and embeds no data URI, so the package has no asset to miss', () => {
     expect(css()).not.toMatch(/url\(|@import/);
   });
@@ -79,6 +86,14 @@ const lum = (c) => {
   return 0.2126 * r + 0.7152 * g + 0.0722 * b;
 };
 const ratio = (a, b) => { const [hi, lo] = [lum(a), lum(b)].sort((x, y) => y - x); return (hi + 0.05) / (lo + 0.05); };
+
+describe('Decor follows a rebrand', () => {
+  it('resolves the mesh colours from whatever --accent holds', () => {
+    const themed = { ...block('light'), '--accent': '#FF0000', '--accent-subtle-border': '#00FF00' };
+    expect(resolve('--accent', themed)).toBe('#FF0000');
+    expect(resolve('--accent-subtle-border', themed)).toBe('#00FF00');
+  });
+});
 
 describe.each(['light', 'dark'])('Decor contrast in %s', (theme) => {
   const themed = block(theme);
