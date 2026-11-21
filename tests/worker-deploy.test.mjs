@@ -2,8 +2,12 @@ import { execFileSync } from 'node:child_process'
 import { existsSync, mkdtempSync, readdirSync, readFileSync, rmSync, writeFileSync } from 'node:fs'
 import { tmpdir } from 'node:os'
 import { join } from 'node:path'
-import { afterAll, describe, expect, it } from 'vitest'
+import { afterAll, describe, expect, it, vi } from 'vitest'
 import { FORBIDDEN_PATHS, PUBLIC_PATHS, buildWorkerAssets } from '../scripts/build_worker_assets.mjs'
+
+// Each build clones and archives the whole repository, which takes longer than the 30 s default while the
+// full check runs its other test files in parallel.
+vi.setConfig({ testTimeout: 120_000 })
 
 const workflow = readFileSync('.github/workflows/deploy-production.yml', 'utf8')
 const wrangler = readFileSync('wrangler.jsonc', 'utf8')

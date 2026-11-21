@@ -1,6 +1,6 @@
 # Changelog
 
-## 1.27.1 — 2026-11-21
+## Unreleased
 
 - **The production deploy checks live that a missing browser version is a 404 without `immutable`.** After the Worker goes live it requests a published version (200, immutable, CORS) and a never-published one (404, no immutable), with a probe query so an older cached answer cannot hide the new headers, and retries a few times so a propagation delay does not fail a good deploy. `_headers` cannot see the response status, so a missing path gets no `Cache-Control` rather than `no-store`.
 
