@@ -1,16 +1,16 @@
 {
   "totals": {
     "@efolusi/meridian": {
-      "bytes": 373430,
-      "gzip": 84295
+      "bytes": 374107,
+      "gzip": 84542
     },
     "dist/components.css": {
       "bytes": 230212,
       "gzip": 31453
     },
     "_ds_bundle.js": {
-      "bytes": 880605,
-      "gzip": 157014
+      "bytes": 882209,
+      "gzip": 157669
     }
   },
   "modules": [
@@ -785,8 +785,8 @@
       "exports": [
         "Toaster"
       ],
-      "bytes": 50508,
-      "gzip": 9545
+      "bytes": 51167,
+      "gzip": 9823
     },
     {
       "module": "feedback/Tooltip.js",

@@ -38,7 +38,15 @@ function ToastStack({ children, position = 'bottom-right', gap, offset, style, c
 
 let records = [];
 let sequence = 0;
-let defaultDuration = 5000;
+let defaultDuration;
+// How long a self-dismissing notice stays: the --hold-notice token (design-tokens docs/motion.md), read
+// where the toast is added. The number is only for a page that has not loaded the tokens.
+const NOTICE_HOLD_FALLBACK = 8000;
+function holdNotice() {
+  if (typeof document === 'undefined') return NOTICE_HOLD_FALLBACK;
+  const token = getComputedStyle(document.documentElement).getPropertyValue('--hold-notice').trim().match(/^([\d.]+)(ms|s)$/);
+  return token ? Number(token[1]) * (token[2] === 's' ? 1000 : 1) : NOTICE_HOLD_FALLBACK;
+}
 let defaultToastOptions = {};
 const listeners = new Set();
 const timers = new Map();
@@ -50,17 +58,23 @@ function close(id) {
   else { const timer = timers.get(id); if (timer?.handle) clearTimeout(timer.handle); timers.delete(id); records = records.filter(item => item.id !== id); }
   emit();
 }
+// Why the timers are held: the pointer is over the stack, focus is inside it, or the window is hidden
+// (WCAG 2.2.1). A toast added while a hold is on starts paused.
+const holds = new Set();
 function schedule(id, duration) {
   if (!(duration > 0)) return;
   const timer = { remaining: duration, startedAt: Date.now(), handle: null };
-  timer.handle = setTimeout(() => close(id), duration); timers.set(id, timer);
+  if (holds.size === 0) timer.handle = setTimeout(() => close(id), duration);
+  timers.set(id, timer);
 }
 function add(options = {}) {
   const merged = { ...defaultToastOptions, ...options };
   const id = merged.id ?? `toast-${++sequence}`;
   const next = { ...merged, id, type: merged.type || 'default' };
   const previous = timers.get(id); if (previous?.handle) clearTimeout(previous.handle); timers.delete(id);
-  const duration = merged.duration ?? (next.type === 'loading' || next.actionProps ? 0 : defaultDuration);
+  // What the user must act on, or is still waiting for, never dismisses itself, whatever duration was asked for.
+  const mustAct = next.type === 'loading' || next.type === 'danger' || Boolean(next.actionProps);
+  const duration = mustAct ? 0 : merged.duration ?? defaultDuration ?? holdNotice();
   // a toast that never expires must be dismissable, or it stays on screen for good
   next.sticky = !(duration > 0) && next.type !== 'loading';
   records = records.some(item => item.id === id) ? records.map(item => item.id === id ? next : item) : [...records, next];
@@ -79,20 +93,29 @@ toast.promise = (promise, data = {}) => {
 };
 
 function pause() { timers.forEach(timer => { if (!timer.handle) return; clearTimeout(timer.handle); timer.remaining = Math.max(0, timer.remaining - (Date.now() - timer.startedAt)); timer.handle = null; }); }
+function hold(reason) { const idle = holds.size === 0; holds.add(reason); if (idle) pause(); }
+function release(reason) { if (holds.delete(reason) && holds.size === 0) resume(); }
 function resume() { const expired = []; timers.forEach((timer, id) => { if (timer.handle) return; if (timer.remaining <= 0) { expired.push(id); return; } timer.startedAt = Date.now(); timer.handle = setTimeout(() => close(id), timer.remaining); }); expired.forEach(close); }
 
-export function Toaster({ position = 'bottom-right', visibleToasts = 3, closeButton = false, richColors = false, duration = 5000, toastOptions = {}, expand = false, theme = 'system', dir, gap = 10, offset, mobileOffset, label = 'Notifications', children, style, ...rest }) {
+export function Toaster({ position = 'bottom-right', visibleToasts = 3, closeButton = true, richColors = false, duration, toastOptions = {}, expand = false, theme = 'system', dir, gap = 10, offset, mobileOffset, label = 'Notifications', children, style, ...rest }) {
   injectEfCss('ef-css-toast', CSS);
   const [items, setItems] = React.useState(records);
   React.useEffect(() => { const listener = value => setItems(value); listeners.add(listener); listener(records); return () => listeners.delete(listener); }, []);
-  React.useEffect(() => { defaultDuration = duration; defaultToastOptions = toastOptions; return () => { defaultDuration = 5000; defaultToastOptions = {}; }; }, [duration, toastOptions]);
+  React.useEffect(() => { defaultDuration = duration; defaultToastOptions = toastOptions; return () => { defaultDuration = undefined; defaultToastOptions = {}; }; }, [duration, toastOptions]);
+  // A hidden window holds the timers too, so a notice is not gone before anyone could read it.
+  React.useEffect(() => {
+    const sync = () => (document.visibilityState === 'hidden' ? hold('hidden') : release('hidden'));
+    sync();
+    document.addEventListener('visibilitychange', sync);
+    return () => { document.removeEventListener('visibilitychange', sync); ['hidden', 'pointer', 'focus'].forEach(release); };
+  }, []);
   const resolvedOffset = typeof offset === 'number' ? `${offset}px` : offset;
   // Mounted on every page load, so wait for hydration: see useHydrated.
   const hydrated = useHydrated();
   if (!hydrated) return <>{children}</>;
-  return <>{children}<Portal><ToastStack {...rest} dir={dir} position={position} data-rich-colors={richColors ? 'true' : 'false'} data-expand={expand ? 'true' : 'false'} data-theme={theme} data-mobile-offset={typeof mobileOffset === 'number' ? `${mobileOffset}px` : mobileOffset} gap={gap} offset={resolvedOffset} style={style} aria-label={label} role="log" aria-live="polite" aria-relevant="additions" onMouseEnter={pause} onMouseLeave={resume} onFocusCapture={pause} onBlurCapture={resume}>
+  return <>{children}<Portal><ToastStack {...rest} dir={dir} position={position} data-rich-colors={richColors ? 'true' : 'false'} data-expand={expand ? 'true' : 'false'} data-theme={theme} data-mobile-offset={typeof mobileOffset === 'number' ? `${mobileOffset}px` : mobileOffset} gap={gap} offset={resolvedOffset} style={style} aria-label={label} role="log" aria-live="polite" aria-relevant="additions" onMouseEnter={() => hold('pointer')} onMouseLeave={() => release('pointer')} onFocusCapture={() => hold('focus')} onBlurCapture={() => release('focus')}>
     {items.slice(-visibleToasts).map(item => item.type === 'custom' && React.isValidElement(item.title)
       ? React.cloneElement(item.title, { key: item.id })
-      : <ToastItem key={item.id} tone={['success', 'warning', 'danger', 'info'].includes(item.type) ? item.type : 'info'} title={item.title} description={item.description} actionProps={item.actionProps} role={null} onClose={closeButton || item.closeButton || (item.sticky && item.closeButton !== false) ? () => close(item.id) : undefined} />)}
+      : <ToastItem key={item.id} tone={['success', 'warning', 'danger', 'info'].includes(item.type) ? item.type : 'info'} title={item.title} description={item.description} actionProps={item.actionProps} role={null} onClose={item.closeButton ?? (closeButton || item.sticky) ? () => close(item.id) : undefined} />)}
   </ToastStack></Portal></>;
 }

@@ -2750,7 +2750,7 @@ Group: feedback · Source: /components/feedback/Toast.jsx · Exports: Toaster
 Mount one `Toaster` near the application root, then publish succinct status updates through the manager.
 
 ```jsx
-<Toaster position="bottom-right" closeButton />
+<Toaster position="bottom-right" />
 
 const id = toast.add({
   title: 'Run completed',
@@ -2762,9 +2762,14 @@ const id = toast.add({
 toast.close(id)
 ```
 
-Use `toast.promise` to update the same notification through loading, success, and error states. Hovering or focusing the stack pauses dismissal timers.
+Use `toast.promise` to update the same notification through loading, success, and error states.
 
-A toast that never expires (one with `actionProps`, or `duration: 0`) always shows its Dismiss button, unless the toast itself passes `closeButton: false`.
+Toasts follow the notice rules in design-tokens `docs/motion.md` (WCAG 2.2.1):
+
+- A danger toast, a toast with `actionProps` and a loading toast never dismiss themselves, whatever `duration` says. `duration: 0` keeps any toast.
+- Any other toast dismisses itself after the `--hold-notice` token (8000 ms), or after the `duration` you pass to `Toaster` or the toast. The timer pauses while the pointer is over the stack, while focus is inside it and while the window is hidden, and resumes with the time that was left.
+- Every toast has a visible Dismiss button. Pass `closeButton={false}` to `Toaster`, or `closeButton: false` on one toast, to turn it off for a toast that expires; a toast that never expires keeps its button unless it passes `closeButton: false` itself.
+- Each toast is announced through the stack's polite live region (`role="log"`, `aria-live="polite"`). The toasts carry no `role="status"` of their own on purpose: a status inside a polite log would be announced twice.
 
 ```ts
 import * as React from 'react';
@@ -2776,8 +2781,10 @@ export interface ToastOptions {
   title: React.ReactNode;
   description?: React.ReactNode;
   type?: ToastType;
+  /** ms before the toast dismisses itself; default is the --hold-notice token. Ignored for danger, loading and action toasts, which never dismiss themselves; 0 keeps any toast. */
   duration?: number;
   actionProps?: React.ButtonHTMLAttributes<HTMLButtonElement>;
+  /** Show Dismiss on this toast; overrides the Toaster. */
   closeButton?: boolean;
 }
 export interface ToastPromiseOptions<T> {
@@ -2792,7 +2799,7 @@ export interface ToastManager {
   promise<T>(promise: Promise<T> | (() => Promise<T>), options: ToastPromiseOptions<T>): string | number;
 }
 export const toast: ToastManager;
-export interface ToasterProps extends React.HTMLAttributes<HTMLDivElement> { position?: ToastPosition; visibleToasts?: number; closeButton?: boolean; richColors?: boolean; duration?: number; toastOptions?: Partial<ToastOptions>; expand?: boolean; theme?: 'light' | 'dark' | 'system'; dir?: 'ltr' | 'rtl'; gap?: number; offset?: number | string; mobileOffset?: number | string; label?: string; children?: React.ReactNode }
+export interface ToasterProps extends React.HTMLAttributes<HTMLDivElement> { position?: ToastPosition; visibleToasts?: number; /** Default true. */ closeButton?: boolean; richColors?: boolean; /** Default for toasts that dismiss themselves; the --hold-notice token when omitted. */ duration?: number; toastOptions?: Partial<ToastOptions>; expand?: boolean; theme?: 'light' | 'dark' | 'system'; dir?: 'ltr' | 'rtl'; gap?: number; offset?: number | string; mobileOffset?: number | string; label?: string; children?: React.ReactNode }
 export function Toaster(props: ToasterProps): React.JSX.Element;
 ```
 
