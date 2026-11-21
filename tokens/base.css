@@ -28,8 +28,9 @@ code,pre,kbd{font-family:var(--font-mono)}
 *,*::before,*::after{box-sizing:border-box}
 /* Layered !important outranks unlayered !important, so this holds against product
    CSS too. Delays are zeroed as well: a delayed reveal must not keep content
-   hidden, or keep it waiting, under reduce. */
-@media (prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms!important;animation-delay:0s!important;animation-iteration-count:1!important;transition-duration:.01ms!important;transition-delay:0s!important;scroll-behavior:auto!important}}
+   hidden, or keep it waiting, under reduce. Transition durations are left to the
+   tokens: under reduce they swap to the 120 ms fade (design-tokens docs/motion.md). */
+@media (prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms!important;animation-delay:0s!important;animation-iteration-count:1!important;transition-delay:0s!important;scroll-behavior:auto!important}}
 }
 /* Forced colours (Windows High Contrast) remove box-shadow, and box-shadow is how
    every component draws --focus-ring after outline:none, so focus would vanish.

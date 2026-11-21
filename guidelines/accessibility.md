@@ -29,7 +29,7 @@ Efolusi ships WCAG 2.1 AA. The rules, per concern:
 
 ## Motion
 - Durations cap at 250ms (`--dur-slow`) and convey state only; `--dur-long` is for marketing pages. Under `prefers-reduced-motion` the tokens swap themselves (base, slow and long become the fast fade, shifts are 0, `--ease-emphasised` becomes `--ease-standard`), so a component that uses the tokens needs no query of its own. If you add larger motion, gate it behind `prefers-reduced-motion`.
-- `tokens/base.css` ships a global `prefers-reduced-motion: reduce` guard that collapses all animation and transition durations, including component-injected CSS.
+- `tokens/base.css` ships a global `prefers-reduced-motion: reduce` guard that stops every animation, including component-injected CSS: the duration is near zero and a loop runs once. Transitions are not forced: the duration tokens swap to the 120 ms fade, so a change of state still reads.
 
 ## Component keyboard contracts (verified in-browser)
 - Dialog, Drawer, ConfirmDialog: focus moves in on open, Tab and Shift+Tab wrap inside, Escape closes, focus returns to the invoker; panels carry `aria-labelledby`/`aria-describedby`.
@@ -97,8 +97,9 @@ Firefox on macOS (Playwright's Firefox would not start on the macOS 27 test
 host), the release just before the current one in each browser (the 1.48
 builds are older than that), and touch input.
 
-**Reduced motion** is honoured globally at `tokens/base.css:10`: under
-`prefers-reduced-motion: reduce` every animation and transition is collapsed to
-0.01ms with `!important` and scroll-behavior goes auto, so entrances land
+**Reduced motion** is honoured globally in `tokens/base.css`: under
+`prefers-reduced-motion: reduce` every animation is collapsed to 0.01ms with
+`!important`, a loop runs once, and scroll-behavior goes auto, so entrances land
 instantly rather than being skipped. It applies to `*`, so a component cannot opt
-out of it by accident.
+out of it by accident. A transition is left to the tokens, which swap to the 120 ms
+fade, so a state change does not become a jump.
