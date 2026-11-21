@@ -53,7 +53,7 @@ function build(selector) {
   const m = selector.match(/^(.*?)(::[\w-]+)?$/);
   // Each element is built alone, so the structural pseudo-classes below hold without more markup.
   const parts = m[1].replace(/:(?:first|last|only)-(?:child|of-type)/g, '').split(/\s*>\s*|\s+/).filter(Boolean);
-  if (parts.some((p) => /:/.test(p.replace(/\[[^\]]*\]/g, '')))) return null;
+  if (parts.some((p) => /:/.test(p.replace(/\[[^\]]*\]/g, '')) || /^[+~]$/.test(p) || /[+~]/.test(p.replace(/\[[^\]]*\]/g, '')))) return null;
   let html = '', closing = '';
   parts.forEach((part, i) => {
     const tag = part.match(/^[a-z][\w-]*/)?.[0] ?? 'div';
