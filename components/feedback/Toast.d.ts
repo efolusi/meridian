@@ -7,8 +7,10 @@ export interface ToastOptions {
   title: React.ReactNode;
   description?: React.ReactNode;
   type?: ToastType;
+  /** ms before the toast dismisses itself; default is the --hold-notice token. Ignored for danger, loading and action toasts, which never dismiss themselves; 0 keeps any toast. */
   duration?: number;
   actionProps?: React.ButtonHTMLAttributes<HTMLButtonElement>;
+  /** Show Dismiss on this toast; overrides the Toaster. */
   closeButton?: boolean;
 }
 export interface ToastPromiseOptions<T> {
@@ -23,5 +25,5 @@ export interface ToastManager {
   promise<T>(promise: Promise<T> | (() => Promise<T>), options: ToastPromiseOptions<T>): string | number;
 }
 export const toast: ToastManager;
-export interface ToasterProps extends React.HTMLAttributes<HTMLDivElement> { position?: ToastPosition; visibleToasts?: number; closeButton?: boolean; richColors?: boolean; duration?: number; toastOptions?: Partial<ToastOptions>; expand?: boolean; theme?: 'light' | 'dark' | 'system'; dir?: 'ltr' | 'rtl'; gap?: number; offset?: number | string; mobileOffset?: number | string; label?: string; children?: React.ReactNode }
+export interface ToasterProps extends React.HTMLAttributes<HTMLDivElement> { position?: ToastPosition; visibleToasts?: number; /** Default true. */ closeButton?: boolean; richColors?: boolean; /** Default for toasts that dismiss themselves; the --hold-notice token when omitted. */ duration?: number; toastOptions?: Partial<ToastOptions>; expand?: boolean; theme?: 'light' | 'dark' | 'system'; dir?: 'ltr' | 'rtl'; gap?: number; offset?: number | string; mobileOffset?: number | string; label?: string; children?: React.ReactNode }
 export function Toaster(props: ToasterProps): React.JSX.Element;

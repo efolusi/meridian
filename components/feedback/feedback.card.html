@@ -33,7 +33,7 @@ function Demo() {
         <div className="ef-dialog__body"><Input label="Project name" defaultValue="Q3 launch plan" /></div>
         <DialogFooter><DialogClose asChild><Button variant="ghost">Cancel</Button></DialogClose><DialogClose asChild><Button>Save changes</Button></DialogClose></DialogFooter>
       </DialogContent></Dialog>
-      <Toaster position="bottom-right" closeButton />
+      <Toaster position="bottom-right" />
       <Button variant="secondary" onClick={() => toast.add({ title: 'Invite sent', description: 'Ada will get an email in a minute.', type: 'success' })}>Preview notification</Button>
       </div>
       <div style={{ display: 'flex', flexDirection: 'column', gap: 12 }}>
