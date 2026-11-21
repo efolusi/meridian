@@ -1,5 +1,5 @@
 import { execFileSync } from 'node:child_process'
-import { existsSync, mkdtempSync, readFileSync, rmSync, writeFileSync } from 'node:fs'
+import { existsSync, mkdtempSync, readdirSync, readFileSync, rmSync, writeFileSync } from 'node:fs'
 import { tmpdir } from 'node:os'
 import { join } from 'node:path'
 import { describe, expect, it } from 'vitest'
@@ -27,9 +27,9 @@ function matches(pattern, path) {
   return new RegExp(`^${re}$`).test(path)
 }
 
-function headersFor(path) {
+function headersFor(path, src = headers) {
   const out = {}
-  for (const { path: pattern, set } of parseHeaders(headers)) {
+  for (const { path: pattern, set } of parseHeaders(src)) {
     if (!matches(pattern, path)) continue
     for (const [name, value] of Object.entries(set)) (out[name] ??= []).push(value)
   }
@@ -176,17 +176,13 @@ describe('_headers is the one source of response headers', () => {
     expect(headersFor('/meridian-release.txt')['cache-control']).toEqual(['no-store, max-age=0'])
   })
 
-  it('serves versioned plain scripts as immutable, and the unversioned ones for this site only', () => {
-    for (const path of ['/browser/1.27.0/marketing.js', '/browser/1.27.0/theme-init.js', '/browser/1.27.0/hashes.json']) {
-      expect(headersFor(path)['cache-control'], path).toEqual(['public, max-age=31536000, immutable'])
-      expect(headersFor(path)['access-control-allow-origin'], path).toEqual(['*'])
-    }
+  it('serves the unversioned plain scripts for this site only, and sets no rule for versioned paths in _headers', () => {
     expect(headersFor('/browser/marketing.js')['cache-control']).toEqual(['no-cache'])
     expect(headersFor('/browser/marketing.js')['access-control-allow-origin']).toBeUndefined()
   })
 
-  it('lets any origin load the registry, the fonts and the versioned plain scripts, and nothing else', () => {
-    for (const path of ['/registry.json', '/site/registry.json', '/site/registry/button.json', '/assets/fonts/x.woff2', '/browser/1.27.0/marketing.js']) {
+  it('lets any origin load the registry and the fonts, and nothing else here', () => {
+    for (const path of ['/registry.json', '/site/registry.json', '/site/registry/button.json', '/assets/fonts/x.woff2']) {
       expect(headersFor(path)['access-control-allow-origin'], path).toEqual(['*'])
     }
     for (const path of ['/site/DsSite.dc.html', '/_ds_bundle.js', '/assets/favicon.svg']) {
@@ -217,6 +213,58 @@ describe('_headers is the one source of response headers', () => {
     run('tag', 'v0.3.0')
     return { dir, run }
   }
+
+  // The immutable rule belongs to files that exist. _headers matches the request path, even
+  // when Workers answers it with the 404 page, so a wildcard rule would send a year-long
+  // immutable 404 for a version that was never published. The build writes exact-file rules.
+  it('gives immutable cache and CORS to published versioned files, and to nothing else under /browser/', () => {
+    const { dir, run } = cloneWithReleases()
+    try {
+      const out = buildWorkerAssets(run('rev-parse', 'HEAD').trim(), dir)
+      const built = readFileSync(join(out, '_headers'), 'utf8')
+      for (const version of ['0.2.0', '0.3.0']) {
+        for (const file of readdirSync(join(out, 'browser', version))) {
+          const h = headersFor(`/browser/${version}/${file}`, built)
+          expect(h['cache-control'], `${version}/${file}`).toEqual(['public, max-age=31536000, immutable'])
+          expect(h['access-control-allow-origin'], `${version}/${file}`).toEqual(['*'])
+        }
+      }
+      for (const missing of ['/browser/0.1.0/marketing.js', '/browser/9.9.9/marketing.js', '/browser/0.2.0/nope.js', '/browser/0.2.0/', '/browser/0.2.0']) {
+        const h = headersFor(missing, built)
+        expect(h['cache-control'], missing).not.toEqual(expect.arrayContaining([expect.stringContaining('immutable')]))
+        expect(h['access-control-allow-origin'], missing).toBeUndefined()
+      }
+      expect(headersFor('/browser/marketing.js', built)['cache-control']).toEqual(['no-cache'])
+    } finally {
+      rmSync(dir, { recursive: true, force: true })
+    }
+  })
+
+  it('never sets one header twice on a built versioned path', () => {
+    const { dir, run } = cloneWithReleases()
+    try {
+      const out = buildWorkerAssets(run('rev-parse', 'HEAD').trim(), dir)
+      const built = readFileSync(join(out, '_headers'), 'utf8')
+      for (const version of readdirSync(join(out, 'browser')).filter((v) => /^\d/.test(v))) {
+        for (const file of readdirSync(join(out, 'browser', version))) {
+          for (const [name, values] of Object.entries(headersFor(`/browser/${version}/${file}`, built))) expect(values, `${version}/${file} ${name}`).toHaveLength(1)
+        }
+      }
+    } finally {
+      rmSync(dir, { recursive: true, force: true })
+    }
+  })
+
+  it('fails the build before _headers passes the 100 rules Workers read', () => {
+    const { dir, run } = cloneWithReleases()
+    try {
+      // Five browser files per release: twenty more releases push the file past the limit.
+      for (let i = 0; i < 20; i += 1) run('tag', `v1.${i}.0`)
+      expect(() => buildWorkerAssets(run('rev-parse', 'HEAD').trim(), dir)).toThrow(/100/)
+    } finally {
+      rmSync(dir, { recursive: true, force: true })
+    }
+  })
 
   it('keeps browser/<version>/ of every release, byte for byte', () => {
     const { dir, run } = cloneWithReleases()
