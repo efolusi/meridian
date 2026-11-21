@@ -1,6 +1,6 @@
 # Changelog
 
-## Unreleased
+## 1.29.0 — 2026-11-22
 
 - **Overlay entrances fade under reduced motion instead of snapping.** The reduced-motion guard set every animation to 0.01 ms, so Drawer, Sheet, Dialog, AlertDialog, Toast, popovers, Select, Combobox, menus and the other entrances appeared at once, while `motion.md` promises the 120 ms fade. The guard now reads `--ef-motion-guard` (0.01 ms on every element, so loops still stop). Each entrance sets it to `--dur-fast` and `animation-name: ef-reduce-fade` inside its own reduce media query; `ef-reduce-fade` (opacity only) is defined once in `tokens/base.css`. Only entrances set `--ef-motion-guard`, to at most `--dur-fast`; do not set it on a loop. Anyone who vendors files updates `base.css` and `components.css` together. `scripts/check_reduced_motion.mjs` runs every entrance animation in Chromium with `reduce` emulated and fails on one that snaps, still moves, or cannot be built.
 - **Progress and UsageMeter move at the progress duration.** The bar of both moved at `--dur-slow` or `--dur-base` with an ease-out curve; `motion.md` says a bar that moves to a value uses `--dur-progress` with `linear`, so both do now.
