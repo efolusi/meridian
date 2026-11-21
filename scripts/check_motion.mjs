@@ -1,7 +1,8 @@
 #!/usr/bin/env node
 // Motion comes from the tokens. Fails on a literal duration (ms or s), a literal cubic-bezier or a named
 // easing (ease, ease-in, ease-out, ease-in-out, linear) in transition, animation and their duration and
-// timing-function longhands, in the files Meridian ships. The tokens are --dur-fast, --dur-base,
+// timing-function longhands, in CSS and in the camelCase style props and style assignments of JS, in the
+// files Meridian ships. The tokens are --dur-fast, --dur-base,
 // --dur-slow, --dur-progress (with linear), --dur-long (web marketing only) and the --ease-* curves
 // (design-tokens docs/motion.md). The model is Glamor's scripts/check-motion.sh.
 //
@@ -20,7 +21,9 @@ export const ALLOWLIST_FILE = 'scripts/motion_allowlist.json';
 // they hold the literals; generated files (the bundle, the registry) follow their sources.
 export const SCAN = /^(?:components\/.+\.jsx|site\/(?!registry\/).+\.(?:css|html|jsx|js)|blocks\/.+\.html|starters\/.+\.(?:html|css|js|jsx)|styles\.css|landing\.css|tokens\/(?:base|layers)\.css)$/;
 
-const PROPERTY = /(?<![\w-])(transition|animation)(-duration|-timing-function)?\s*:\s*([^;}\n]*)/g;
+// CSS (transition-duration: …), a style object (transitionDuration: '…') and an assignment (el.style.transition = '…').
+// `=` must not start `==` or `===`, which compare.
+const PROPERTY = /(?<![\w-])(transition|animation)(-duration|-timing-function|Duration|TimingFunction)?\s*(?::|=(?!=))\s*([^;}\n]*)/g;
 const DURATION = /(?<![\w.#-])(\d*\.?\d+)(ms|s)(?![\w-])/g;
 const EASING = /(?<![\w-])(?:cubic-bezier\(|steps\(|ease-in-out|ease-in|ease-out|ease|linear|step-start|step-end)(?![\w-])/g;
 
@@ -31,7 +34,7 @@ export function findLiterals(text) {
   const found = [];
   const clean = stripComments(text);
   for (const m of clean.matchAll(PROPERTY)) {
-    const value = m[3].trim().replace(/['"`,]+$/, '').trim();
+    const value = m[3].trim().replace(/^['"`]+|['"`,]+$/g, '').trim();
     const literals = [];
     for (const d of value.matchAll(DURATION)) if (Number(d[1]) !== 0) literals.push(d[0]);
     for (const e of value.matchAll(EASING)) {

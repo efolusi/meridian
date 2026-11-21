@@ -47,6 +47,34 @@ describe('findLiterals', () => {
     expect(bad('.a{animation-delay:30ms}')).toBe(0);
   });
 
+  it('fails the camelCase style props and a style assignment (MD34)', () => {
+    expect(bad("const s = { transitionDuration: '200ms' };")).toBe(1);
+    expect(bad("const s = { animationDuration: '.5s' };")).toBe(1);
+    expect(bad("const s = { transitionTimingFunction: 'ease-in-out' };")).toBe(1);
+    expect(bad("const s = { animationTimingFunction: 'cubic-bezier(.4,0,.2,1)' };")).toBe(1);
+    expect(bad("const s = { transitionTimingFunction: 'linear' };")).toBe(1);
+    expect(bad("el.style.transitionDuration = '120ms';")).toBe(1);
+    expect(bad("el.style.transition = 'opacity 0.3s var(--ease-enter)';")).toBe(1);
+    expect(bad('el.style.animation = `spin 1s linear infinite`;')).toBe(1);
+  });
+
+  it('passes the camelCase forms that use tokens, none or zero, and comparisons', () => {
+    expect(bad("const s = { transitionDuration: 'var(--dur-base)', transitionTimingFunction: 'var(--ease-enter)' };")).toBe(0);
+    expect(bad("const s = { animationDuration: 'var(--dur-slow)' };")).toBe(0);
+    expect(bad("el.style.transition = 'none';")).toBe(0);
+    expect(bad("el.style.transitionDuration = '0ms';")).toBe(0);
+    expect(bad("el.style.transitionDuration = 'var(--dur-fast)';")).toBe(0);
+    expect(bad("const s = { transitionDuration: 'var(--dur-progress)', transitionTimingFunction: 'linear' };")).toBe(0);
+    expect(bad("if (animation === 'spin' && transition == '1s') run();")).toBe(0);
+    expect(bad("const s = { transitionProperty: 'opacity', transitionDelay: '30ms' };")).toBe(0);
+  });
+
+  it('reports the camelCase property as written', () => {
+    expect(findLiterals("const s = { transitionDuration: '200ms' };")).toEqual([
+      { line: 1, property: 'transitionDuration', value: '200ms', literals: ['200ms'] },
+    ]);
+  });
+
   it('reports the line and the declaration', () => {
     const found = findLiterals('.a{color:red}\n.b{transition:opacity 200ms var(--ease-enter)}\n');
     expect(found).toEqual([{ line: 2, property: 'transition', value: 'opacity 200ms var(--ease-enter)', literals: ['200ms'] }]);
