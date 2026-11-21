@@ -3289,7 +3289,7 @@
       "name": "counter",
       "type": "registry:ui",
       "title": "Counter",
-      "description": "Use `Counter` for a stat number on a marketing page: it counts up from 0 to `value` over 1.2 s once it is 40% in view. The final value sits in the markup from the start, so server render, no JavaScript and screen readers get the real number, and reduced motion shows it at once. Format with `locale` ",
+      "description": "Use `Counter` for a stat number on a marketing page: it counts up from 0 to `value` over 1.2 s once it is 40% in view. The final value sits in the markup from the start, so server render, no JavaScript and screen readers get the real number, and reduced motion shows it at once. Pass the page's local",
       "dependencies": [
         "react"
       ],

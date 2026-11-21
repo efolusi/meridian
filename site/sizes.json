@@ -1,16 +1,16 @@
 {
   "totals": {
     "@efolusi/meridian": {
-      "bytes": 375536,
-      "gzip": 84865
+      "bytes": 375976,
+      "gzip": 85055
     },
     "dist/components.css": {
-      "bytes": 234321,
-      "gzip": 31903
+      "bytes": 234497,
+      "gzip": 31935
     },
     "_ds_bundle.js": {
-      "bytes": 889643,
-      "gzip": 159011
+      "bytes": 891151,
+      "gzip": 159353
     }
   },
   "modules": [
@@ -1109,8 +1109,8 @@
       "exports": [
         "Counter"
       ],
-      "bytes": 1461,
-      "gzip": 814
+      "bytes": 1900,
+      "gzip": 948
     },
     {
       "module": "marketing/FeatureCard.js",
