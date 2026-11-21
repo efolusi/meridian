@@ -1,16 +1,16 @@
 {
   "totals": {
     "@efolusi/meridian": {
-      "bytes": 374107,
-      "gzip": 84542
+      "bytes": 375536,
+      "gzip": 84865
     },
     "dist/components.css": {
-      "bytes": 234118,
-      "gzip": 31851
+      "bytes": 234321,
+      "gzip": 31903
     },
     "_ds_bundle.js": {
-      "bytes": 886115,
-      "gzip": 158193
+      "bytes": 889643,
+      "gzip": 159011
     }
   },
   "modules": [
@@ -1102,6 +1102,15 @@
       ],
       "bytes": 44596,
       "gzip": 7157
+    },
+    {
+      "module": "marketing/Counter.js",
+      "group": "marketing",
+      "exports": [
+        "Counter"
+      ],
+      "bytes": 1461,
+      "gzip": 814
     },
     {
       "module": "marketing/FeatureCard.js",

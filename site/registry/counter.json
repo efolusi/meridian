@@ -1,0 +1,34 @@
+{
+  "name": "counter",
+  "type": "registry:ui",
+  "title": "Counter",
+  "description": "Use `Counter` for a stat number on a marketing page: it counts up from 0 to `value` over 1.2 s once it is 40% in view. The final value sits in the markup from the start, so server render, no JavaScript and screen readers get the real number, and reduced motion shows it at once. Format with `locale` ",
+  "dependencies": [
+    "react"
+  ],
+  "registryDependencies": [
+    "https://meridian.efolusi.com/site/registry/meridian-base.json",
+    "https://meridian.efolusi.com/site/registry/meridian-runtime.json"
+  ],
+  "files": [
+    {
+      "path": "components/marketing/Counter.jsx",
+      "type": "registry:ui",
+      "content": "'use client';\nimport React from 'react';\nimport { injectEfCss } from '../runtime/runtime.jsx';\n\n// The final value is in the markup from the start (server render, no JavaScript, screen readers).\n// The live layer only overlays it, so the width never changes while the number climbs.\nconst CSS = `\n.ef-counter{display:inline-grid;font-variant-numeric:tabular-nums}\n.ef-counter>*{grid-area:1/1}\n.ef-counter__live{text-align:inherit}\n.ef-counter__final{opacity:0}\n`;\n\nconst DURATION_MS = 1200;\nconst easeOut = (t) => 1 - (1 - t) ** 3;\n// The climbing number keeps the decimals of the final value, so 12400 never shows 3,191.117.\nconst decimalsOf = (n) => (String(n).split('.')[1] || '').length;\n\n/** A stat number that counts up from 0 to `value` once it scrolls into view. Shows the final value at once without JavaScript, with reduced motion, or when `animate` is false. */\nexport const Counter = React.forwardRef(function Counter({ value, locale, format, animate = true, className, ...rest }, forwarded) {\n  injectEfCss('ef-css-counter', CSS);\n  const local = React.useRef(null);\n  const formatter = React.useMemo(() => new Intl.NumberFormat(locale, format), [locale, JSON.stringify(format)]);\n  const final = formatter.format(value);\n  const [shown, setShown] = React.useState(final);\n  React.useEffect(() => {\n    setShown(final);\n    const node = local.current;\n    const reduce = globalThis.matchMedia?.('(prefers-reduced-motion: reduce)').matches;\n    if (!animate || reduce || !node || typeof IntersectionObserver === 'undefined') return undefined;\n    let frame = 0;\n    const decimals = decimalsOf(value);\n    const step = (v) => Number(v.toFixed(decimals));\n    setShown(formatter.format(0));\n    const run = () => {\n      const start = performance.now();\n      const tick = (now) => {\n        const t = Math.min(1, (now - start) / DURATION_MS);\n        setShown(formatter.format(t === 1 ? value : step(value * easeOut(t))));\n        if (t < 1) frame = requestAnimationFrame(tick);\n      };\n      frame = requestAnimationFrame(tick);\n    };\n    const observer = new IntersectionObserver((entries) => {\n      if (!entries.some((e) => e.isIntersecting)) return;\n      observer.disconnect();\n      run();\n    }, { threshold: 0.4 });\n    observer.observe(node);\n    return () => { observer.disconnect(); cancelAnimationFrame(frame); };\n  }, [value, final, animate, formatter]);\n  const ref = (node) => {\n    local.current = node;\n    if (typeof forwarded === 'function') forwarded(node);\n    else if (forwarded) forwarded.current = node;\n  };\n  return (\n    <span {...rest} ref={ref} data-slot=\"counter\" className={className ? `ef-counter ${className}` : 'ef-counter'}>\n      <span className=\"ef-counter__final\">{final}</span>\n      <span className=\"ef-counter__live\" aria-hidden=\"true\">{shown}</span>\n    </span>\n  );\n});\n"
+    },
+    {
+      "path": "components/marketing/Counter.d.ts",
+      "type": "registry:component",
+      "content": "export interface CounterProps extends React.HTMLAttributes<HTMLSpanElement> {\n  /** The number to count up to. */\n  value: number;\n  /** BCP 47 locale for the digits and separators. @default the page locale */\n  locale?: string;\n  /** Intl.NumberFormat options, such as `{ style: 'currency', currency: 'IDR' }` or `{ notation: 'compact' }`. */\n  format?: Intl.NumberFormatOptions;\n  /** Count up when it scrolls into view. False shows the final value at once. @default true */\n  animate?: boolean;\n}\n/** A stat number that counts up once it scrolls into view. The final value is always in the markup, so it reads correctly without JavaScript, with reduced motion and to screen readers. */\nexport declare const Counter: React.ForwardRefExoticComponent<CounterProps & React.RefAttributes<HTMLSpanElement>>;\n"
+    },
+    {
+      "path": "components/marketing/Counter.prompt.md",
+      "type": "registry:component",
+      "content": "# Counter\n\nUse `Counter` for a stat number on a marketing page: it counts up from 0 to `value` over 1.2 s once it is 40% in view. The final value sits in the markup from the start, so server render, no JavaScript and screen readers get the real number, and reduced motion shows it at once. Format with `locale` and `format` (Intl.NumberFormat options). Use it for a number that is true (a count, a measured figure), never for an invented one, and not inside the product UI.\n\n```jsx\n<Counter value={12400} locale=\"en\" />\n<Counter value={0.98} format={{ style: 'percent' }} />\n```\n"
+    }
+  ],
+  "categories": [
+    "marketing"
+  ],
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json"
+}
