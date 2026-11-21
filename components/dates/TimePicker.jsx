@@ -25,6 +25,7 @@ const CSS = `
 .ef-timepicker__empty{padding:var(--space-4) var(--space-3);font-size:var(--text-sm);color:var(--text-muted);text-align:center}
 /* Touch: fixed-size targets grow to --tap-min; small glyph buttons keep their look and get a centred --tap-min hit area instead. */
 @media (pointer:coarse){.ef-timepicker__opt{min-height:var(--tap-min)}}
+@media (prefers-reduced-motion:reduce){@keyframes ef-tp-in{from{opacity:0}}.ef-timepicker__panel{--ef-motion-guard:var(--dur-fast)}}
 `;
 const toMin = t => { const p = t.split(':'); return Number(p[0]) * 60 + Number(p[1] || 0); };
 const toHM = n => String(Math.floor(n / 60)).padStart(2, '0') + ':' + String(n % 60).padStart(2, '0');

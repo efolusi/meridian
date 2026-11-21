@@ -18,6 +18,7 @@ const CSS = `
 @keyframes ef-toast-in{from{opacity:0;transform:translateY(12px) scale(.96)}}
 /* coarse pointers get the 44px touch target, like form controls do through --control-h-* */
 @media (pointer:coarse){.ef-toast__action{min-height:var(--tap-min)}}
+@media (prefers-reduced-motion:reduce){@keyframes ef-toast-in{from{opacity:0}}.ef-toast{--ef-motion-guard:var(--dur-fast)}}
 `;
 const ICONS = { success: 'circle-check', danger: 'circle-alert', warning: 'triangle-alert', info: 'info' };
 

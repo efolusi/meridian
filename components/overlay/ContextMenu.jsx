@@ -23,6 +23,7 @@ const CSS = `
 [dir=rtl] .ef-context-menu__chevron{transform:scaleX(-1)}
 /* coarse pointers get the 44px touch target, like form controls do through --control-h-* */
 @media (pointer:coarse){.ef-context-menu__item{min-height:var(--tap-min)}}
+@media (prefers-reduced-motion:reduce){@keyframes ef-context-menu-in{from{opacity:0}}.ef-context-menu__content{--ef-motion-guard:var(--dur-fast)}}
 `;
 
 const RootCtx = React.createContext(null);

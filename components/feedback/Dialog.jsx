@@ -13,6 +13,7 @@ const CSS = `
 .ef-dialog__body{padding:var(--space-4) var(--space-6) var(--space-6)}.ef-dialog__footer{display:flex;flex-direction:column-reverse;gap:var(--space-2);padding:var(--space-4) var(--space-6);border-top:1px solid var(--border-default);background:var(--surface-subtle)}
 @media(min-width:480px){.ef-dialog__footer{flex-direction:row;justify-content:flex-end}}
 @keyframes ef-fade{from{opacity:0}}@keyframes ef-pop{from{opacity:0;transform:scale(.96) translateY(6px)}}
+@media (prefers-reduced-motion:reduce){@keyframes ef-fade{from{opacity:0}}@keyframes ef-pop{from{opacity:0}}.ef-dialog__overlay,.ef-dialog__content{--ef-motion-guard:var(--dur-fast)}}
 `;
 const DialogContext = React.createContext(null);
 const FOCUSABLE = 'button,[href],input,select,textarea,[tabindex]';

@@ -1855,6 +1855,7 @@
     "ease-enter",
     "ease-exit",
     "ease-standard",
+    "ef-motion-guard",
     "focus-ring",
     "focus-ring-color",
     "focus-ring-danger",

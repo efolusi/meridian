@@ -19,7 +19,7 @@ const CSS = `
 @media(max-width:520px){.ef-alertdialog__overlay{padding:var(--space-4)}.ef-alertdialog__content{padding:var(--space-5)}.ef-alertdialog__footer{flex-direction:column-reverse}.ef-alertdialog__footer .ef-btn{width:100%}}
 @keyframes ef-alertdialog-fade{from{opacity:0}}
 @keyframes ef-alertdialog-pop{from{opacity:0;transform:scale(.96) translateY(6px)}}
-@media(prefers-reduced-motion:reduce){.ef-alertdialog__overlay,.ef-alertdialog__content{animation:none}}
+@media (prefers-reduced-motion:reduce){@keyframes ef-alertdialog-fade{from{opacity:0}}@keyframes ef-alertdialog-pop{from{opacity:0}}.ef-alertdialog__overlay,.ef-alertdialog__content{--ef-motion-guard:var(--dur-fast)}}
 `;
 
 const AlertDialogContext = React.createContext(null);
