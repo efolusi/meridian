@@ -2,9 +2,11 @@
 // Fail when a built artifact grows past its recorded budget.
 //
 // The budget file records sizes; each artifact may exceed its record by
-// TOLERANCE_BYTES. An exact ceiling failed every branch on a few hundred bytes
-// of ordinary growth and made parallel branches conflict on the budget file.
-// Growth past the tolerance still fails until someone runs --update and commits.
+// TOLERANCE_BYTES, which only absorbs build noise. A wide tolerance let every PR add
+// up to 4 KiB without a budget change, and the drift added up (main sat 3150 bytes over
+// its record). Growth past the tolerance fails until someone runs --update and commits,
+// so the budget change is reviewed in the PR that causes it. tests/check-size.test.mjs
+// also checks that the budget and the table in guidelines/bundle-size.md agree.
 //
 // Raw bytes only. Gzip size depends on the tool and level, so it is reported for
 // context but never gated.
@@ -22,7 +24,7 @@ import zlib from 'node:zlib';
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const BUDGET = path.join(ROOT, 'scripts', 'size_budget.json');
-export const TOLERANCE_BYTES = 4096;
+export const TOLERANCE_BYTES = 256;
 
 function dirSize(dir) {
   let total = 0;
