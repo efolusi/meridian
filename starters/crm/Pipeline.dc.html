@@ -22,7 +22,7 @@ a:focus-visible{outline:none;box-shadow:var(--focus-ring)}.crm-nav a:hover{text-
 @media (min-width:40rem){.crm-nav{display:flex;gap:2px;margin-inline-start:12px}.crm-nav a{padding:7px 10px;border-radius:var(--radius-sm);color:var(--text-secondary);font-size:13px;font-weight:600;text-decoration:none;white-space:nowrap}.crm-nav a[aria-current="page"]{background:var(--accent-subtle);color:var(--text-link)}.crm-board{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media (min-width:64rem){.crm-main{padding:24px}.crm-board{grid-template-columns:repeat(4,minmax(0,1fr))}}
 @media (pointer:coarse){.crm-nav a,.crm-card{min-height:44px}}
-@media (prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition-duration:.01ms!important}}
+@media (prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important}}
 </style></helmet>
 <div class="crm-shell" data-theme="{{ theme }}" data-density="{{ density }}">
 <header class="crm-top"><div class="crm-brand"><strong>Northstar CRM</strong></div><nav class="crm-nav" aria-label="CRM"><a href="./Pipeline.dc.html" aria-current="page">Pipeline</a><a href="./Accounts.dc.html">Accounts</a></nav><div class="crm-actions"><x-import component-from-global-scope="EfolusiDesignSystem_4ffc3d.Button" variant="secondary" size="sm" icon-left="search" hint-size="92px,36px">Search</x-import><x-import component-from-global-scope="EfolusiDesignSystem_4ffc3d.Button" size="sm" icon-left="plus" hint-size="118px,36px">Add deal</x-import></div></header>

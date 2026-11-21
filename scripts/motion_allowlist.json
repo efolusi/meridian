@@ -83,18 +83,6 @@
     "count": 1,
     "reason": "Freezes an animation at its last frame for snapshots (with a -99s delay). It is not UI motion."
   },
-  "starters/ai-workspace/Evaluations.dc.html": {
-    "count": 1,
-    "reason": "The reduced-motion kill switch: near zero, not 0, so animationend and transitionend still fire. It overrides every duration, so it cannot use a token."
-  },
-  "starters/ai-workspace/Knowledge.dc.html": {
-    "count": 1,
-    "reason": "The reduced-motion kill switch: near zero, not 0, so animationend and transitionend still fire. It overrides every duration, so it cannot use a token."
-  },
-  "starters/ai-workspace/Workspace.dc.html": {
-    "count": 1,
-    "reason": "The reduced-motion kill switch: near zero, not 0, so animationend and transitionend still fire. It overrides every duration, so it cannot use a token."
-  },
   "starters/ai-workspace/support.js": {
     "count": 1,
     "reason": "Freezes an animation at its last frame for snapshots (with a -99s delay). It is not UI motion."
@@ -106,18 +94,6 @@
   "starters/auth-page/support.js": {
     "count": 1,
     "reason": "Freezes an animation at its last frame for snapshots (with a -99s delay). It is not UI motion."
-  },
-  "starters/crm/AccountDetail.dc.html": {
-    "count": 1,
-    "reason": "The reduced-motion kill switch: near zero, not 0, so animationend and transitionend still fire. It overrides every duration, so it cannot use a token."
-  },
-  "starters/crm/Accounts.dc.html": {
-    "count": 1,
-    "reason": "The reduced-motion kill switch: near zero, not 0, so animationend and transitionend still fire. It overrides every duration, so it cannot use a token."
-  },
-  "starters/crm/Pipeline.dc.html": {
-    "count": 1,
-    "reason": "The reduced-motion kill switch: near zero, not 0, so animationend and transitionend still fire. It overrides every duration, so it cannot use a token."
   },
   "starters/crm/support.js": {
     "count": 1,
@@ -131,18 +107,6 @@
     "count": 1,
     "reason": "Freezes an animation at its last frame for snapshots (with a -99s delay). It is not UI motion."
   },
-  "starters/finance-ops/Cashflow.dc.html": {
-    "count": 1,
-    "reason": "The reduced-motion kill switch: near zero, not 0, so animationend and transitionend still fire. It overrides every duration, so it cannot use a token."
-  },
-  "starters/finance-ops/Reconciliation.dc.html": {
-    "count": 1,
-    "reason": "The reduced-motion kill switch: near zero, not 0, so animationend and transitionend still fire. It overrides every duration, so it cannot use a token."
-  },
-  "starters/finance-ops/Transactions.dc.html": {
-    "count": 1,
-    "reason": "The reduced-motion kill switch: near zero, not 0, so animationend and transitionend still fire. It overrides every duration, so it cannot use a token."
-  },
   "starters/finance-ops/support.js": {
     "count": 1,
     "reason": "Freezes an animation at its last frame for snapshots (with a -99s delay). It is not UI motion."
@@ -151,24 +115,12 @@
     "count": 1,
     "reason": "Freezes an animation at its last frame for snapshots (with a -99s delay). It is not UI motion."
   },
-  "starters/service-desk/Queue.dc.html": {
-    "count": 1,
-    "reason": "The reduced-motion kill switch: near zero, not 0, so animationend and transitionend still fire. It overrides every duration, so it cannot use a token."
-  },
-  "starters/service-desk/TicketDetail.dc.html": {
-    "count": 1,
-    "reason": "The reduced-motion kill switch: near zero, not 0, so animationend and transitionend still fire. It overrides every duration, so it cannot use a token."
-  },
-  "starters/service-desk/Tickets.dc.html": {
-    "count": 1,
-    "reason": "The reduced-motion kill switch: near zero, not 0, so animationend and transitionend still fire. It overrides every duration, so it cannot use a token."
-  },
   "starters/service-desk/support.js": {
     "count": 1,
     "reason": "Freezes an animation at its last frame for snapshots (with a -99s delay). It is not UI motion."
   },
   "tokens/base.css": {
-    "count": 2,
-    "reason": "The reduced-motion kill switch: near zero, not 0, so animationend and transitionend still fire. It overrides every duration, so it cannot use a token."
+    "count": 1,
+    "reason": "The reduced-motion loop stop: animation-duration near zero (not 0) with one iteration, so a loop ends and animationend still fires. Transitions are not forced here: the tokens swap to the 120 ms fade."
   }
 }
