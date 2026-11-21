@@ -6,7 +6,7 @@ import { Portal, useAnchoredStyle, useEscapeLayer, escapeLayerContext, useHydrat
 const CSS = `
 /* Zero specificity: a trigger with its own focus style, such as Button, keeps it. */
 :where([data-slot="hover-card-trigger"]):focus-visible{outline:none;box-shadow:var(--focus-ring);border-radius:var(--radius-sm)}
-.ef-hovercard__panel{position:fixed;width:256px;background:var(--surface-card);color:var(--text-primary);border:1px solid var(--border-strong);border-radius:var(--radius-md);box-shadow:var(--shadow-md);padding:var(--space-4);z-index:var(--z-popover);animation:ef-hovercard-in var(--dur-med) var(--ease-out)}
+.ef-hovercard__panel{position:fixed;width:256px;background:var(--surface-card);color:var(--text-primary);border:1px solid var(--border-strong);border-radius:var(--radius-md);box-shadow:var(--shadow-md);padding:var(--space-4);z-index:var(--z-popover);animation:ef-hovercard-in var(--dur-base) var(--ease-enter)}
 @keyframes ef-hovercard-in{from{opacity:0;transform:translateY(2px)}}
 `;
 

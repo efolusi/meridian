@@ -10,7 +10,7 @@ const CSS = `
 .ef-resizable__handle{flex:none;position:relative;background:transparent;border:none;padding:0;cursor:col-resize;touch-action:none}
 .ef-resizable[data-orientation="horizontal"]>.ef-resizable__handle{width:9px}
 .ef-resizable[data-orientation="vertical"]>.ef-resizable__handle{height:9px;cursor:row-resize}
-.ef-resizable__handle::after{content:'';position:absolute;background:var(--border-default);transition:background var(--dur-fast) var(--ease-out)}
+.ef-resizable__handle::after{content:'';position:absolute;background:var(--border-default);transition:background var(--dur-fast) var(--ease-enter)}
 .ef-resizable[data-orientation="horizontal"]>.ef-resizable__handle::after{inset-inline-start:4px;inset-block:0;width:1px}
 .ef-resizable[data-orientation="vertical"]>.ef-resizable__handle::after{inset-block-start:4px;inset-inline:0;height:1px}
 .ef-resizable__handle:hover::after,.ef-resizable__handle[data-resize-handle-active]::after{background:var(--accent)}

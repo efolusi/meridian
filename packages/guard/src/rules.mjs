@@ -47,7 +47,7 @@ export const RULES = Object.freeze({
   slowMotion: {
     id: 'MDG009',
     severity: 'warning',
-    description: 'Interface motion stays within Meridian\'s 240ms budget.',
+    description: 'Interface motion stays within Meridian\'s 250ms budget.',
   },
   rawFontFamily: {
     id: 'MDG010',

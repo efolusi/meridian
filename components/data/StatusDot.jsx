@@ -11,7 +11,7 @@ const CSS = `
 .ef-status--neutral .ef-status__dot{background:var(--sand-400)}
 .ef-status__sr{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;border:0}
 @keyframes ef-status-pulse{0%{box-shadow:0 0 0 0 currentColor;opacity:.5}100%{box-shadow:0 0 0 6px currentColor;opacity:0}}
-.ef-status--pulse .ef-status__dot::after{content:'';position:absolute;inset:0;border-radius:var(--radius-full);animation:ef-status-pulse 1.6s var(--ease-out) infinite}
+.ef-status--pulse .ef-status__dot::after{content:'';position:absolute;inset:0;border-radius:var(--radius-full);animation:ef-status-pulse 1.6s var(--ease-enter) infinite}
 .ef-status--success .ef-status__dot::after{color:var(--success-600)}
 .ef-status--warning .ef-status__dot::after{color:var(--warning-600)}
 .ef-status--danger .ef-status__dot::after{color:var(--danger-600)}

@@ -3,7 +3,7 @@ import React from 'react';
 import { injectEfCss } from '../runtime/runtime.jsx';
 import { Icon } from '../icons/Icon.jsx';
 const CSS = `
-.ef-sourcecard{display:flex;flex-direction:column;gap:var(--space-2);padding:var(--space-3);border:1px solid var(--border-default);border-radius:var(--radius-md);background:var(--surface-card);text-decoration:none;color:inherit;transition:border-color var(--dur-fast) var(--ease-out),background var(--dur-fast) var(--ease-out)}
+.ef-sourcecard{display:flex;flex-direction:column;gap:var(--space-2);padding:var(--space-3);border:1px solid var(--border-default);border-radius:var(--radius-md);background:var(--surface-card);text-decoration:none;color:inherit;transition:border-color var(--dur-fast) var(--ease-enter),background var(--dur-fast) var(--ease-enter)}
 a.ef-sourcecard{cursor:pointer}
 a.ef-sourcecard:hover{border-color:var(--border-strong);background:var(--surface-subtle)}
 a.ef-sourcecard:focus-visible{outline:none;box-shadow:var(--focus-ring)}

@@ -9,7 +9,7 @@ const CSS = `
 .ef-citation:hover{border-color:var(--brand-700)}
 .ef-citation:focus-visible{outline:none;box-shadow:var(--focus-ring)}
 .ef-citation__wrap{position:relative;display:inline}
-.ef-citation__pop{position:absolute;bottom:calc(100% + 8px);inset-inline-start:0;width:280px;background:var(--surface-card);border:1px solid var(--border-strong);border-radius:var(--radius-md);box-shadow:var(--shadow-md);padding:var(--space-3);z-index:var(--z-popover);animation:ef-citation-in var(--dur-fast) var(--ease-out);cursor:default;text-align:start}
+.ef-citation__pop{position:absolute;bottom:calc(100% + 8px);inset-inline-start:0;width:280px;background:var(--surface-card);border:1px solid var(--border-strong);border-radius:var(--radius-md);box-shadow:var(--shadow-md);padding:var(--space-3);z-index:var(--z-popover);animation:ef-citation-in var(--dur-fast) var(--ease-enter);cursor:default;text-align:start}
 @keyframes ef-citation-in{from{opacity:0;transform:translateY(3px)}}
 .ef-citation__pop-name{display:flex;align-items:center;gap:var(--space-2);font-family:var(--font-mono);font-size:var(--text-2xs);color:var(--text-muted)}
 .ef-citation__pop-title{font-size:var(--text-md);font-weight:600;color:var(--text-primary);line-height:1.4;margin-top:var(--space-1)}
@@ -20,7 +20,7 @@ const CSS = `
 .ef-citation__pop-count{margin-inline-start:auto;font-family:var(--font-mono);font-size:var(--text-2xs);color:var(--text-muted)}
 .ef-sources{display:flex;flex-direction:column;border:1px solid var(--border-default);border-radius:var(--radius-md);overflow:hidden}
 .ef-sources__head{padding:var(--space-2) var(--space-3);font-size:var(--text-2xs);font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--text-muted);background:var(--surface-subtle);border-bottom:1px solid var(--border-default)}
-.ef-sources__item{display:flex;align-items:center;gap:var(--space-3);padding:var(--space-2) var(--space-3);text-decoration:none;border-bottom:1px solid var(--border-default);transition:background var(--dur-fast) var(--ease-out)}
+.ef-sources__item{display:flex;align-items:center;gap:var(--space-3);padding:var(--space-2) var(--space-3);text-decoration:none;border-bottom:1px solid var(--border-default);transition:background var(--dur-fast) var(--ease-enter)}
 .ef-sources__item:last-child{border-bottom:none}
 .ef-sources__item:hover{background:var(--surface-subtle)}
 .ef-sources__item:focus-visible{outline:none;box-shadow:var(--focus-ring)}

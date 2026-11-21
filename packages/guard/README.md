@@ -69,7 +69,7 @@ not shipped interface source.
 | `MDG006` | error | Referenced Meridian radius tokens must exist in the generated token contract. |
 | `MDG007` | warning | Non-zero interface radii use the shared Meridian radius hierarchy. |
 | `MDG008` | warning | Box shadows use the warm Meridian elevation scale. |
-| `MDG009` | warning | Interface animation and transition durations do not exceed 240 ms. |
+| `MDG009` | warning | Interface animation and transition durations do not exceed 250 ms (`--dur-slow`). |
 | `MDG010` | warning | Font families use the Figtree, Bricolage, or JetBrains role tokens. |
 | `MDG011` | warning | Font sizes use Meridian's named type scale. |
 | `MDG012` | error | Consumer classes/styles do not repaint or reshape Button and IconButton chrome. |

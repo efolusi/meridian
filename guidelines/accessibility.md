@@ -28,7 +28,7 @@ Efolusi ships WCAG 2.1 AA. The rules, per concern:
 - Skeleton is decorative; pair with visually-hidden "Loading…" when it replaces content
 
 ## Motion
-- Durations cap at 240ms and convey state only. If you add larger motion, gate it behind `prefers-reduced-motion`.
+- Durations cap at 250ms (`--dur-slow`) and convey state only; `--dur-long` is for marketing pages. Under `prefers-reduced-motion` the tokens swap themselves (base, slow and long become the fast fade, shifts are 0, `--ease-emphasised` becomes `--ease-standard`), so a component that uses the tokens needs no query of its own. If you add larger motion, gate it behind `prefers-reduced-motion`.
 - `tokens/base.css` ships a global `prefers-reduced-motion: reduce` guard that collapses all animation and transition durations, including component-injected CSS.
 
 ## Component keyboard contracts (verified in-browser)

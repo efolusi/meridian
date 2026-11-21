@@ -1,0 +1,174 @@
+{
+  "components/ai/AgentRun.jsx": {
+    "count": 1,
+    "reason": "A looping animation: its period is not a transition duration, and the motion scale has no loop token."
+  },
+  "components/ai/ChatMessage.jsx": {
+    "count": 1,
+    "reason": "A looping animation: its period is not a transition duration, and the motion scale has no loop token."
+  },
+  "components/ai/GeneratedImage.jsx": {
+    "count": 2,
+    "reason": "A looping animation: its period is not a transition duration, and the motion scale has no loop token."
+  },
+  "components/ai/Player.jsx": {
+    "count": 1,
+    "reason": "A looping animation: its period is not a transition duration, and the motion scale has no loop token."
+  },
+  "components/ai/Reasoning.jsx": {
+    "count": 1,
+    "reason": "A looping animation: its period is not a transition duration, and the motion scale has no loop token."
+  },
+  "components/ai/Sandbox.jsx": {
+    "count": 1,
+    "reason": "A looping animation: its period is not a transition duration, and the motion scale has no loop token."
+  },
+  "components/ai/Task.jsx": {
+    "count": 1,
+    "reason": "A looping animation: its period is not a transition duration, and the motion scale has no loop token."
+  },
+  "components/ai/Todo.jsx": {
+    "count": 1,
+    "reason": "A looping animation: its period is not a transition duration, and the motion scale has no loop token."
+  },
+  "components/ai/ToolCall.jsx": {
+    "count": 3,
+    "reason": "A looping animation: its period is not a transition duration, and the motion scale has no loop token."
+  },
+  "components/code/Terminal.jsx": {
+    "count": 1,
+    "reason": "A looping animation: its period is not a transition duration, and the motion scale has no loop token."
+  },
+  "components/data/Skeleton.jsx": {
+    "count": 1,
+    "reason": "A looping animation: its period is not a transition duration, and the motion scale has no loop token."
+  },
+  "components/data/StatusDot.jsx": {
+    "count": 1,
+    "reason": "A looping animation: its period is not a transition duration, and the motion scale has no loop token."
+  },
+  "components/data/Table.jsx": {
+    "count": 1,
+    "reason": "A looping animation: its period is not a transition duration, and the motion scale has no loop token."
+  },
+  "components/feedback/Loader.jsx": {
+    "count": 3,
+    "reason": "A looping animation: its period is not a transition duration, and the motion scale has no loop token."
+  },
+  "components/feedback/Progress.jsx": {
+    "count": 1,
+    "reason": "A looping animation: its period is not a transition duration, and the motion scale has no loop token."
+  },
+  "components/feedback/Spinner.jsx": {
+    "count": 1,
+    "reason": "A looping animation: its period is not a transition duration, and the motion scale has no loop token."
+  },
+  "components/files/Attachment.jsx": {
+    "count": 1,
+    "reason": "A looping animation: its period is not a transition duration, and the motion scale has no loop token."
+  },
+  "components/forms/Button.jsx": {
+    "count": 1,
+    "reason": "A looping animation: its period is not a transition duration, and the motion scale has no loop token."
+  },
+  "components/forms/InputOTP.jsx": {
+    "count": 1,
+    "reason": "A looping animation: its period is not a transition duration, and the motion scale has no loop token."
+  },
+  "components/marketing/Marquee.jsx": {
+    "count": 1,
+    "reason": "A looping animation: its period is not a transition duration, and the motion scale has no loop token."
+  },
+  "site/support.js": {
+    "count": 1,
+    "reason": "Freezes an animation at its last frame for snapshots (with a -99s delay). It is not UI motion."
+  },
+  "starters/ai-workspace/Evaluations.dc.html": {
+    "count": 1,
+    "reason": "The reduced-motion kill switch: near zero, not 0, so animationend and transitionend still fire. It overrides every duration, so it cannot use a token."
+  },
+  "starters/ai-workspace/Knowledge.dc.html": {
+    "count": 1,
+    "reason": "The reduced-motion kill switch: near zero, not 0, so animationend and transitionend still fire. It overrides every duration, so it cannot use a token."
+  },
+  "starters/ai-workspace/Workspace.dc.html": {
+    "count": 1,
+    "reason": "The reduced-motion kill switch: near zero, not 0, so animationend and transitionend still fire. It overrides every duration, so it cannot use a token."
+  },
+  "starters/ai-workspace/support.js": {
+    "count": 1,
+    "reason": "Freezes an animation at its last frame for snapshots (with a -99s delay). It is not UI motion."
+  },
+  "starters/app-page/support.js": {
+    "count": 1,
+    "reason": "Freezes an animation at its last frame for snapshots (with a -99s delay). It is not UI motion."
+  },
+  "starters/auth-page/support.js": {
+    "count": 1,
+    "reason": "Freezes an animation at its last frame for snapshots (with a -99s delay). It is not UI motion."
+  },
+  "starters/crm/AccountDetail.dc.html": {
+    "count": 1,
+    "reason": "The reduced-motion kill switch: near zero, not 0, so animationend and transitionend still fire. It overrides every duration, so it cannot use a token."
+  },
+  "starters/crm/Accounts.dc.html": {
+    "count": 1,
+    "reason": "The reduced-motion kill switch: near zero, not 0, so animationend and transitionend still fire. It overrides every duration, so it cannot use a token."
+  },
+  "starters/crm/Pipeline.dc.html": {
+    "count": 1,
+    "reason": "The reduced-motion kill switch: near zero, not 0, so animationend and transitionend still fire. It overrides every duration, so it cannot use a token."
+  },
+  "starters/crm/support.js": {
+    "count": 1,
+    "reason": "Freezes an animation at its last frame for snapshots (with a -99s delay). It is not UI motion."
+  },
+  "starters/dashboard/support.js": {
+    "count": 1,
+    "reason": "Freezes an animation at its last frame for snapshots (with a -99s delay). It is not UI motion."
+  },
+  "starters/docs-page/support.js": {
+    "count": 1,
+    "reason": "Freezes an animation at its last frame for snapshots (with a -99s delay). It is not UI motion."
+  },
+  "starters/finance-ops/Cashflow.dc.html": {
+    "count": 1,
+    "reason": "The reduced-motion kill switch: near zero, not 0, so animationend and transitionend still fire. It overrides every duration, so it cannot use a token."
+  },
+  "starters/finance-ops/Reconciliation.dc.html": {
+    "count": 1,
+    "reason": "The reduced-motion kill switch: near zero, not 0, so animationend and transitionend still fire. It overrides every duration, so it cannot use a token."
+  },
+  "starters/finance-ops/Transactions.dc.html": {
+    "count": 1,
+    "reason": "The reduced-motion kill switch: near zero, not 0, so animationend and transitionend still fire. It overrides every duration, so it cannot use a token."
+  },
+  "starters/finance-ops/support.js": {
+    "count": 1,
+    "reason": "Freezes an animation at its last frame for snapshots (with a -99s delay). It is not UI motion."
+  },
+  "starters/marketing-page/support.js": {
+    "count": 1,
+    "reason": "Freezes an animation at its last frame for snapshots (with a -99s delay). It is not UI motion."
+  },
+  "starters/service-desk/Queue.dc.html": {
+    "count": 1,
+    "reason": "The reduced-motion kill switch: near zero, not 0, so animationend and transitionend still fire. It overrides every duration, so it cannot use a token."
+  },
+  "starters/service-desk/TicketDetail.dc.html": {
+    "count": 1,
+    "reason": "The reduced-motion kill switch: near zero, not 0, so animationend and transitionend still fire. It overrides every duration, so it cannot use a token."
+  },
+  "starters/service-desk/Tickets.dc.html": {
+    "count": 1,
+    "reason": "The reduced-motion kill switch: near zero, not 0, so animationend and transitionend still fire. It overrides every duration, so it cannot use a token."
+  },
+  "starters/service-desk/support.js": {
+    "count": 1,
+    "reason": "Freezes an animation at its last frame for snapshots (with a -99s delay). It is not UI motion."
+  },
+  "tokens/base.css": {
+    "count": 2,
+    "reason": "The reduced-motion kill switch: near zero, not 0, so animationend and transitionend still fire. It overrides every duration, so it cannot use a token."
+  }
+}

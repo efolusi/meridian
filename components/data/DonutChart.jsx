@@ -8,11 +8,11 @@ const CSS = `
 .ef-donut__swatch{width:9px;height:9px;border-radius:var(--radius-xs);flex:none;overflow:hidden}
 .ef-donut__figure{position:relative;flex:none}
 .ef-donut__figure>svg{display:block;overflow:visible;transform:rotate(-90deg)}
-.ef-donut__seg{transition:stroke-width 120ms var(--ease-out)}
+.ef-donut__seg{transition:stroke-width var(--dur-fast) var(--ease-enter)}
 .ef-donut__center{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;pointer-events:none}
 .ef-donut__value{font-family:var(--font-mono);font-size:var(--ef-donut-value-size,var(--text-2xl));font-weight:600;color:var(--text-primary)}
 .ef-donut__label{font-size:var(--text-2xs);color:var(--text-muted)}
-.ef-donut__item{transition:opacity 120ms var(--ease-out)}
+.ef-donut__item{transition:opacity var(--dur-fast) var(--ease-enter)}
 .ef-donut__item[data-dim]{opacity:.45}
 @media (prefers-reduced-motion:reduce){.ef-donut__seg,.ef-donut__item{transition:none}}
 .ef-donut__sr{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;border:0}

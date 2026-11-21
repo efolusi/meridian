@@ -4,7 +4,7 @@ import { injectEfCss, cssPct, styleRef } from '../runtime/runtime.jsx';
 const CSS = `
 .ef-bars-chart{position:relative}
 .ef-bars{display:flex;align-items:flex-end;gap:var(--space-1);width:100%}
-.ef-bars__bar{flex:1;min-width:3px;border-radius:var(--radius-xs) var(--radius-xs) 0 0;background:var(--text-muted);transition:background var(--dur-fast) var(--ease-out)}
+.ef-bars__bar{flex:1;min-width:3px;border-radius:var(--radius-xs) var(--radius-xs) 0 0;background:var(--text-muted);transition:background var(--dur-fast) var(--ease-enter)}
 .ef-bars__bar--hi{background:var(--accent)}
 .ef-bars__bar:hover{background:var(--brand-700)}
 .ef-bars__sr{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;border:0}

@@ -18,7 +18,7 @@ function UsageChart({ notify }) {
             <TooltipTrigger asChild><div onMouseEnter={() => setHov(i)} onMouseLeave={() => setHov(null)}
               style={{ display: 'flex', flex: 1, height: '100%', alignItems: 'flex-end' }}>
             <div
-              style={{ width: '100%', height: (v / max * 100) + '%', borderRadius: '3px 3px 0 0', background: hov === i ? 'var(--brand-700)' : i > 23 ? 'var(--brand-900)' : 'var(--sand-200)', transition: 'background var(--dur-fast) var(--ease-out)' }} />
+              style={{ width: '100%', height: (v / max * 100) + '%', borderRadius: '3px 3px 0 0', background: hov === i ? 'var(--brand-700)' : i > 23 ? 'var(--brand-900)' : 'var(--sand-200)', transition: 'background var(--dur-fast) var(--ease-enter)' }} />
             </div></TooltipTrigger><TooltipContent>{(v * 113).toLocaleString()} requests</TooltipContent>
           </Tooltip>
         ))}

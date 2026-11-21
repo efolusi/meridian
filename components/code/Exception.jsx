@@ -7,12 +7,12 @@ const CSS = `
 .ef-exception__head{display:flex;align-items:flex-start;gap:var(--space-3);padding:var(--space-3) var(--space-4)}
 .ef-exception__type{flex:none;margin-top:1px;padding:var(--space-0-5) var(--space-2);border-radius:var(--radius-sm);background:var(--danger-100);color:var(--danger-600);font-family:var(--font-mono);font-size:var(--text-2xs);font-weight:var(--weight-semibold)}
 .ef-exception__msg{flex:1;min-width:0;font-size:var(--text-md);line-height:1.5;color:var(--text-primary)}
-.ef-exception__toggle{flex:none;display:inline-flex;align-items:center;gap:var(--space-1);border:none;background:none;cursor:pointer;padding:var(--space-1) var(--space-2);border-radius:var(--radius-sm);font-family:var(--font-sans);font-size:var(--text-xs);color:var(--text-muted);transition:color var(--dur-fast) var(--ease-out),background var(--dur-fast) var(--ease-out)}
+.ef-exception__toggle{flex:none;display:inline-flex;align-items:center;gap:var(--space-1);border:none;background:none;cursor:pointer;padding:var(--space-1) var(--space-2);border-radius:var(--radius-sm);font-family:var(--font-sans);font-size:var(--text-xs);color:var(--text-muted);transition:color var(--dur-fast) var(--ease-enter),background var(--dur-fast) var(--ease-enter)}
 .ef-exception__toggle:hover{color:var(--text-primary);background:var(--surface-subtle)}
 .ef-exception__toggle:focus-visible{outline:none;box-shadow:var(--focus-ring)}
-.ef-exception__chev{display:inline-flex;transition:transform var(--dur-fast) var(--ease-out)}
+.ef-exception__chev{display:inline-flex;transition:transform var(--dur-fast) var(--ease-enter)}
 .ef-exception--open .ef-exception__chev{transform:rotate(90deg)}
-.ef-exception__body{display:grid;grid-template-rows:0fr;transition:grid-template-rows var(--dur-med) var(--ease-out)}
+.ef-exception__body{display:grid;grid-template-rows:0fr;transition:grid-template-rows var(--dur-base) var(--ease-enter)}
 .ef-exception--open .ef-exception__body{grid-template-rows:1fr}
 .ef-exception__clip{overflow:hidden;min-height:0}
 .ef-exception__frames{margin:0 var(--space-4) var(--space-3);padding:0;list-style:none;border:1px solid var(--border-default);border-radius:var(--radius-sm);background:var(--surface-subtle);overflow:hidden;font-family:var(--font-mono);font-size:var(--text-xs);line-height:1.5}

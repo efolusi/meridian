@@ -4,7 +4,7 @@ import { injectEfCss } from '../runtime/runtime.jsx';
 
 const CSS = `
 @keyframes ef-skel{0%,100%{opacity:1}50%{opacity:.45}}
-.ef-skel{display:block;background:var(--border-default);border-radius:var(--radius-sm);animation:ef-skel 1.4s var(--ease-in-out) infinite}
+.ef-skel{display:block;background:var(--border-default);border-radius:var(--radius-sm);animation:ef-skel 1.4s var(--ease-standard) infinite}
 `;
 
 export const Skeleton = React.forwardRef(function Skeleton(

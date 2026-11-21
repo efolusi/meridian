@@ -9,19 +9,19 @@ const CSS = `
 .ef-todo__glyph{display:inline-flex;color:var(--text-muted)}
 .ef-todo__title{flex:1;min-width:0;font-size:var(--text-md);font-weight:var(--weight-semibold);color:var(--text-primary)}
 .ef-todo__count{font-size:var(--text-xs);color:var(--text-muted);font-variant-numeric:tabular-nums}
-.ef-todo__chev{display:inline-flex;color:var(--text-muted);transition:transform var(--dur-med) var(--ease-out)}
+.ef-todo__chev{display:inline-flex;color:var(--text-muted);transition:transform var(--dur-base) var(--ease-enter)}
 .ef-todo--open .ef-todo__chev{transform:rotate(180deg)}
-.ef-todo__body{display:grid;grid-template-rows:0fr;transition:grid-template-rows var(--dur-med) var(--ease-out)}
+.ef-todo__body{display:grid;grid-template-rows:0fr;transition:grid-template-rows var(--dur-base) var(--ease-enter)}
 .ef-todo--open .ef-todo__body{grid-template-rows:1fr}
 .ef-todo__clip{overflow:hidden;min-height:0}
 .ef-todo__list{list-style:none;margin:0;padding:0 var(--space-2) var(--space-2)}
 .ef-todo__item{display:flex;align-items:flex-start;gap:var(--space-3);padding:var(--space-2) var(--space-2);font-size:var(--text-md);border-radius:var(--radius-sm)}
-.ef-todo__mark{position:relative;flex:none;width:var(--icon-md);height:var(--icon-md);margin-top:var(--space-0-5);border-radius:50%;border:1px solid var(--border-strong);display:inline-flex;align-items:center;justify-content:center;transition:background var(--dur-fast) var(--ease-out),border-color var(--dur-fast) var(--ease-out)}
+.ef-todo__mark{position:relative;flex:none;width:var(--icon-md);height:var(--icon-md);margin-top:var(--space-0-5);border-radius:50%;border:1px solid var(--border-strong);display:inline-flex;align-items:center;justify-content:center;transition:background var(--dur-fast) var(--ease-enter),border-color var(--dur-fast) var(--ease-enter)}
 .ef-todo__item--progress .ef-todo__mark{border-color:transparent;color:var(--text-primary)}
 .ef-todo__item--done .ef-todo__mark{background:var(--accent);border-color:var(--accent);color:var(--accent-contrast)}
 .ef-todo__spin{display:inline-flex;animation:ef-todo-spin 1s linear infinite}
 @keyframes ef-todo-spin{to{transform:rotate(360deg)}}
-.ef-todo__text{min-width:0;color:var(--text-primary);line-height:1.55;transition:color var(--dur-fast) var(--ease-out)}
+.ef-todo__text{min-width:0;color:var(--text-primary);line-height:1.55;transition:color var(--dur-fast) var(--ease-enter)}
 .ef-todo__item--done .ef-todo__text{color:var(--text-muted);text-decoration:line-through}
 `;
 export function Todo({ title = 'Tasks', items = [], defaultOpen = true, style, className, ...rest }) {
