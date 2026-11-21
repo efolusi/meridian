@@ -83,6 +83,16 @@ describe('Meridian production deploy to Cloudflare Workers', () => {
     expect(workflow).toContain('[[ "$live" == "$MERIDIAN_RELEASE_SHA" ]]')
   })
 
+  it('checks live that a published version is immutable and a missing one is a 404 without immutable', () => {
+    const live = workflow.slice(workflow.indexOf('Check the live release'))
+    expect(live).toContain('/browser/$version/marketing.js')
+    expect(live).toMatch(/HTTP\/\[0-9\.\]\+ 200/)
+    expect(live).toContain('cache-control: public, max-age=31536000, immutable')
+    expect(live).toContain('/browser/0.0.0/marketing.js?probe=$MERIDIAN_RELEASE_SHA')
+    expect(live).toMatch(/HTTP\/\[0-9\.\]\+ 404/)
+    expect(live).toContain("! grep -qi 'immutable' <<<\"$missing\"")
+  })
+
   it('serves static assets only from public/ on the meridian.efolusi.com route', () => {
     expect(wrangler).toContain('"name": "meridian"')
     expect(wrangler).toContain('"directory": "./public"')
