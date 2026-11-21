@@ -14,6 +14,8 @@ const CSS = `
 .ef-message-scroller__button[data-active=false]{opacity:0;transform:translateY(4px);pointer-events:none}
 .ef-message-scroller__button[data-direction=start] .ef-message-scroller__button-icon{transform:rotate(180deg)}
 @media (pointer:coarse){.ef-message-scroller__button{min-width:var(--tap-min);min-height:var(--tap-min)}}
+/* Reduced motion: nothing moves or resizes; the end state is shown at once. */
+@media (prefers-reduced-motion:reduce){.ef-message-scroller__button{transition:opacity var(--dur-fast) var(--ease-enter),background var(--dur-fast) var(--ease-enter)}}
 `;
 
 const MessageScrollerContext = React.createContext(null);

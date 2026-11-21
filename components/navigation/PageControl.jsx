@@ -11,6 +11,8 @@ const CSS = `
 .ef-dots__dot:focus-visible::before{box-shadow:var(--focus-ring)}
 /* coarse pointers get the 44px touch target, like form controls do through --control-h-* */
 @media (pointer:coarse){.ef-dots{flex-wrap:wrap;justify-content:center;max-width:100%}.ef-dots__dot{width:var(--tap-min);height:var(--tap-min)}}
+/* Reduced motion: nothing moves or resizes; the end state is shown at once. */
+@media (prefers-reduced-motion:reduce){.ef-dots__dot::before{transition:background var(--dur-fast) var(--ease-enter)}}
 `;
 export function PageControl({ count, index = 0, onChange, label = 'Page', style, className, ...rest }) {
   injectEfCss('ef-css-dots', CSS);

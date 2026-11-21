@@ -17,6 +17,8 @@ const CSS = `
 .ef-tabs__content{padding-block:var(--space-4)}
 /* coarse pointers get the 44px touch target, like form controls do through --control-h-* */
 @media (pointer:coarse){.ef-tabs__tab{height:var(--tap-min)}}
+/* Reduced motion: nothing moves or resizes; the end state is shown at once. */
+@media (prefers-reduced-motion:reduce){.ef-tabs__ink{transition:none}}
 `;
 const TabsContext = React.createContext(null);
 export const Tabs = React.forwardRef(function Tabs({ items, _noPanels = false, value: valueProp, defaultValue, onValueChange, onChange, orientation = 'horizontal', children, style, className, ...rest }, fRef) {

@@ -23,6 +23,8 @@ const CSS = `
 @keyframes ef-navigation-menu-in{from{opacity:0;transform:translateY(-4px)}}@keyframes ef-navigation-menu-viewport{from{opacity:0;transform:scale(.98)}}
 /* coarse pointers get the 44px touch target, like form controls do through --control-h-* */
 @media (pointer:coarse){.ef-navigation-menu__trigger{height:var(--tap-min)}.ef-navigation-menu__link{min-height:var(--tap-min)}}
+/* Reduced motion: nothing moves or resizes; the end state is shown at once. */
+@media (prefers-reduced-motion:reduce){.ef-navigation-menu__indicator{transition:none}}
 `;
 
 const NavigationRootContext = React.createContext(null);
