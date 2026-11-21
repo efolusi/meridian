@@ -87,6 +87,18 @@ export function RevealDemo() {
   );
 }
 
+// @demo Counter Stat figures that count up
+export function CounterDemo() {
+  const { Counter } = window.EfolusiDesignSystem_4ffc3d;
+  return (
+    <div style={{ display: 'flex', gap: 'var(--space-8)', flexWrap: 'wrap', fontFamily: 'var(--font-display)', fontSize: 'var(--text-3xl)' }}>
+      <Counter value={12400} locale="en" />
+      <Counter value={0.98} format={{ style: 'percent' }} locale="en" />
+      <Counter value={7} />
+    </div>
+  );
+}
+
 // @demo ThemeToggle One button, three states
 export function ThemeToggleDemo() {
   const { ThemeToggle } = window.EfolusiDesignSystem_4ffc3d;

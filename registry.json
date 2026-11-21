@@ -3286,6 +3286,36 @@
       ]
     },
     {
+      "name": "counter",
+      "type": "registry:ui",
+      "title": "Counter",
+      "description": "Use `Counter` for a stat number on a marketing page: it counts up from 0 to `value` over 1.2 s once it is 40% in view. The final value sits in the markup from the start, so server render, no JavaScript and screen readers get the real number, and reduced motion shows it at once. Pass the page's local",
+      "dependencies": [
+        "react"
+      ],
+      "registryDependencies": [
+        "https://meridian.efolusi.com/site/registry/meridian-base.json",
+        "https://meridian.efolusi.com/site/registry/meridian-runtime.json"
+      ],
+      "files": [
+        {
+          "path": "components/marketing/Counter.jsx",
+          "type": "registry:ui"
+        },
+        {
+          "path": "components/marketing/Counter.d.ts",
+          "type": "registry:component"
+        },
+        {
+          "path": "components/marketing/Counter.prompt.md",
+          "type": "registry:component"
+        }
+      ],
+      "categories": [
+        "marketing"
+      ]
+    },
+    {
       "name": "featuregrid",
       "type": "registry:ui",
       "title": "FeatureGrid + FeatureCard",
