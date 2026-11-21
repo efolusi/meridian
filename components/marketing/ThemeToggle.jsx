@@ -90,7 +90,7 @@ export function themeInitScript() {
 const ICONS = { system: 'monitor', light: 'sun', dark: 'moon' };
 
 const CSS = `
-.ef-theme-toggle{display:inline-flex;align-items:center;justify-content:center;flex:none;width:var(--tap-min);height:var(--tap-min);padding:0;border:1px solid transparent;border-radius:var(--radius-full);background:transparent;color:var(--text-secondary);cursor:pointer;transition:background var(--dur-fast) var(--ease-out),color var(--dur-fast) var(--ease-out)}
+.ef-theme-toggle{display:inline-flex;align-items:center;justify-content:center;flex:none;width:var(--tap-min);height:var(--tap-min);padding:0;border:1px solid transparent;border-radius:var(--radius-full);background:transparent;color:var(--text-secondary);cursor:pointer;transition:background var(--dur-fast) var(--ease-enter),color var(--dur-fast) var(--ease-enter)}
 .ef-theme-toggle:hover{background:var(--surface-sunken);color:var(--text-primary)}
 .ef-theme-toggle:focus-visible{outline:none;box-shadow:var(--focus-ring)}
 .ef-theme-toggle [data-theme-icon]{display:none}

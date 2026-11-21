@@ -366,8 +366,8 @@ export function scanStyleSource(source, file, contracts) {
       const durations = [...value.matchAll(/(-?\d*\.?\d+)\s*(ms|s)\b/gi)]
         .map(item => durationMs(item[0])).filter(item => item !== null);
       const slowest = Math.max(0, ...durations);
-      if (slowest > 240) diagnostics.push(diagnostic(file, node, RULES.slowMotion,
-        `Motion duration ${slowest}ms exceeds Meridian's 240ms interface budget.`));
+      if (slowest > 250) diagnostics.push(diagnostic(file, node, RULES.slowMotion,
+        `Motion duration ${slowest}ms exceeds Meridian's 250ms interface budget (dur.slow).`));
     }
     if (property === 'font-family' && !/^(?:inherit|initial|unset)$/.test(value)
       && !/var\(\s*--font-(?:sans|display|mono)/.test(value)) {

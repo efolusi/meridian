@@ -7,12 +7,12 @@ const CSS = `
 .ef-pagination{display:flex;width:100%;justify-content:center}
 .ef-pagination__content{display:flex;align-items:center;gap:var(--space-1);margin:0;padding:0;list-style:none}
 .ef-pagination__item{display:inline-flex}
-.ef-pagination__link{display:inline-flex;align-items:center;justify-content:center;gap:var(--space-2);min-width:var(--control-h-md);height:var(--control-h-md);padding:0 var(--space-3);border:1px solid transparent;border-radius:var(--radius-sm);background:none;cursor:pointer;font-family:var(--font-sans);font-size:var(--text-sm);color:var(--text-secondary);text-decoration:none;transition:background var(--dur-fast) var(--ease-out),color var(--dur-fast) var(--ease-out),border-color var(--dur-fast) var(--ease-out)}
+.ef-pagination__link{display:inline-flex;align-items:center;justify-content:center;gap:var(--space-2);min-width:var(--control-h-md);height:var(--control-h-md);padding:0 var(--space-3);border:1px solid transparent;border-radius:var(--radius-sm);background:none;cursor:pointer;font-family:var(--font-sans);font-size:var(--text-sm);color:var(--text-secondary);text-decoration:none;transition:background var(--dur-fast) var(--ease-enter),color var(--dur-fast) var(--ease-enter),border-color var(--dur-fast) var(--ease-enter)}
 .ef-pagination__link:hover{background:var(--surface-sunken);color:var(--text-primary);text-decoration:none}
 .ef-pagination__link[aria-current="page"]{border-color:var(--border-strong);background:var(--surface-card);color:var(--text-primary);font-weight:var(--weight-semibold)}
 .ef-pagination__link[aria-disabled="true"]{opacity:.4;pointer-events:none}
 .ef-pagination__link:focus-visible{outline:none;box-shadow:var(--focus-ring)}
-.ef-pagination__previous svg,.ef-pagination__next svg{transition:transform var(--dur-fast) var(--ease-out)}
+.ef-pagination__previous svg,.ef-pagination__next svg{transition:transform var(--dur-fast) var(--ease-enter)}
 [dir="rtl"] .ef-pagination__previous svg,[dir="rtl"] .ef-pagination__next svg{transform:scaleX(-1)}
 .ef-pagination__ellipsis{display:inline-flex;align-items:center;justify-content:center;width:36px;height:36px;color:var(--text-muted)}
 /* coarse pointers get the 44px touch target, like form controls do through --control-h-* */

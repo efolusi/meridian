@@ -156,12 +156,20 @@ describe('Meridian Guard rules', () => {
 describe('Meridian Guard scanning and reporting', () => {
   it('checks CSS radius, elevation, motion and type hierarchy', () => {
     const diagnostics = scanStyleSource(`
-      .good { border-radius: var(--radius-md); box-shadow: var(--shadow-lg); font-family: var(--font-sans); font-size: var(--text-md); transition: transform var(--dur-slow) var(--ease-out); }
+      .good { border-radius: var(--radius-md); box-shadow: var(--shadow-lg); font-family: var(--font-sans); font-size: var(--text-md); transition: transform var(--dur-slow) var(--ease-enter); }
       .bad { color: #fff; border-radius: 13px; box-shadow: 0 8px 20px rgba(0,0,0,.2); font-family: Inter, sans-serif; font-size: 15px; animation: enter 480ms ease; }
       .square { border-radius: 0; box-shadow: none; }
     `, '/app/src/styles.css', contracts);
     expect(diagnostics.map(item => item.ruleId)).toEqual(['MDG003', 'MDG007', 'MDG008', 'MDG010', 'MDG011', 'MDG009']);
     expect(diagnostics.every(item => item.line === 3)).toBe(true);
+  });
+
+  it('keeps the motion budget at dur.slow, 250 ms', () => {
+    const budget = (css) => scanStyleSource(css, '/app/src/styles.css', contracts).map(item => item.ruleId);
+    expect(budget('.a { transition: opacity 250ms; }')).toEqual([]);
+    expect(budget('.a { animation-duration: .25s; }')).toEqual([]);
+    expect(budget('.a { transition: opacity 251ms; }')).toEqual(['MDG009']);
+    expect(budget('.a { transition: opacity var(--dur-slow) var(--ease-enter); }')).toEqual([]);
   });
 
   it('scans supported files recursively and ignores build directories', async () => {

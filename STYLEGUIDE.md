@@ -19,7 +19,7 @@ The conventions that keep many hands producing one system. CONTRIBUTING.md says 
 ## Styling
 
 - Semantic tokens only: `var(--surface-card)`, never raw hex, never raw ramp values (`--sand-300`) in components. New values go into `tokens/` first.
-- Type sizes from `--text-*`; spacing from `--space-*`; motion from `--dur-fast/med/slow` + `--ease-out/spring`; nothing animates longer than 240ms.
+- Type sizes from `--text-*`; spacing from `--space-*`; motion from `--dur-fast/base/slow` and the `--ease-*` curves (`standard`, `enter`, `exit`, `emphasised`), never a literal duration or curve (`scripts/check_motion.mjs`); nothing in product UI animates longer than 250ms.
 - Radius follows the component role, not a fleet-wide forced shape: controls use `--radius-sm`, containers use `--radius-md/lg`, and pills/avatars may use `--radius-full`. A product may deliberately compose a different exported radius token; raw radii are not an exception.
 - Semantic state colors come from success/warning/danger roles. Categorical data visualization may keep a reviewed categorical palette when color distinguishes series rather than status; document that exception beside the palette and never reuse it for state or action meaning.
 - One `CSS` template string per component, injected via `injectEfCss(id, css)`, imported from `../runtime/runtime.jsx` with the other shared helpers (`mergeRefs`, `styleRef`, `cssPct`, `useIsoLayoutEffect`, `prefersReducedMotion`, `isElementOfType`). Class prefix `ef-<component>`.

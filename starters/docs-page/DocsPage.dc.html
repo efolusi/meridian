@@ -8,7 +8,7 @@
 <body>
 <x-dc>
 <!-- @template name="Docs page" description="Docs journey (3 pages): quickstart, authentication, errors" -->
-<helmet><script src="./ds-base.js"></script><style>@view-transition{navigation:auto}::view-transition-group(*){animation-duration:160ms}@media (prefers-reduced-motion:reduce){::view-transition-group(*),::view-transition-old(*),::view-transition-new(*){animation:none!important}}html{background:#FAF9F6}@media(max-width:900px){.docs-side,.docs-toc{display:none}}@media (pointer:coarse){header a[href],nav a[href],footer a[href]{min-height:var(--tap-min);display:inline-flex;align-items:center}}</style></helmet>
+<helmet><script src="./ds-base.js"></script><style>@view-transition{navigation:auto}::view-transition-group(*){animation-duration:var(--dur-base)}@media (prefers-reduced-motion:reduce){::view-transition-group(*),::view-transition-old(*),::view-transition-new(*){animation:none!important}}html{background:#FAF9F6}@media(max-width:900px){.docs-side,.docs-toc{display:none}}@media (pointer:coarse){header a[href],nav a[href],footer a[href]{min-height:var(--tap-min);display:inline-flex;align-items:center}}</style></helmet>
 <div style="min-height:100vh;background:var(--surface-page);color:var(--text-primary);font-family:var(--font-sans)">
 <header style="view-transition-name:shell-top;display:flex;align-items:center;gap:14px;height:58px;padding:0 24px;border-bottom:1px solid var(--border-default)">
 <span style="font-family:var(--font-display);font-weight:680;letter-spacing:-0.02em;font-size:17px">Fernwick</span>

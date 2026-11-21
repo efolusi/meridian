@@ -5,12 +5,12 @@ import { IconButton } from '../forms/IconButton.jsx';
 import { injectEfCss } from '../runtime/runtime.jsx';
 const CSS = `
 .ef-composer__attach{display:flex;gap:var(--space-2);flex-wrap:wrap;padding:10px 12px 0}.ef-composer__send-icon{transform:rotate(-45deg)}
-.ef-composer{display:flex;flex-direction:column;background:var(--surface-card);border:1px solid var(--border-strong);border-radius:var(--radius-lg);transition:border-color var(--dur-fast) var(--ease-out),box-shadow var(--dur-fast) var(--ease-out)}
+.ef-composer{display:flex;flex-direction:column;background:var(--surface-card);border:1px solid var(--border-strong);border-radius:var(--radius-lg);transition:border-color var(--dur-fast) var(--ease-enter),box-shadow var(--dur-fast) var(--ease-enter)}
 .ef-composer:focus-within{border-color:var(--accent);box-shadow:var(--focus-ring)}
 .ef-composer__input{border:none;background:none;resize:none;padding:var(--space-4) var(--space-4) var(--space-2);font-family:var(--font-sans);font-size:var(--text-md);line-height:1.5;color:var(--text-primary);outline:none;min-height:24px}
 .ef-composer__input::placeholder{color:var(--text-muted)}
 .ef-composer__bar{display:flex;align-items:center;gap:var(--space-0-5);padding:var(--space-2) var(--space-2) var(--space-2)}
-.ef-composer__send{display:inline-flex;align-items:center;justify-content:center;width:32px;height:32px;margin-inline-start:auto;border:none;border-radius:var(--radius-md);background:var(--accent);color:var(--accent-contrast);cursor:pointer;transition:background var(--dur-fast) var(--ease-out),transform var(--dur-fast) var(--ease-out)}
+.ef-composer__send{display:inline-flex;align-items:center;justify-content:center;width:32px;height:32px;margin-inline-start:auto;border:none;border-radius:var(--radius-md);background:var(--accent);color:var(--accent-contrast);cursor:pointer;transition:background var(--dur-fast) var(--ease-enter),transform var(--dur-fast) var(--ease-enter)}
 .ef-composer__send:hover:not(:disabled){background:var(--accent-hover)}
 .ef-composer__send:active:not(:disabled){transform:scale(.95)}
 .ef-composer__send:disabled{background:var(--sand-200);color:var(--sand-400);cursor:not-allowed}

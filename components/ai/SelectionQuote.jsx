@@ -5,7 +5,7 @@ import { Icon } from '../icons/Icon.jsx';
 const CSS = `
 .ef-selq{position:relative}
 .ef-selq__bar{position:absolute;z-index:30;display:inline-flex;align-items:center;gap:var(--space-0-5);padding:var(--space-1);border:1px solid var(--border-default);border-radius:var(--radius-md);background:var(--surface-card);box-shadow:var(--shadow-lg);user-select:none}
-.ef-selq__btn{display:inline-flex;align-items:center;gap:var(--space-2);padding:var(--space-1) var(--space-3);border:none;background:none;cursor:pointer;border-radius:var(--radius-sm);font-family:var(--font-sans);font-size:var(--text-sm);font-weight:var(--weight-semibold);color:var(--text-secondary);transition:color var(--dur-fast) var(--ease-out),background var(--dur-fast) var(--ease-out)}
+.ef-selq__btn{display:inline-flex;align-items:center;gap:var(--space-2);padding:var(--space-1) var(--space-3);border:none;background:none;cursor:pointer;border-radius:var(--radius-sm);font-family:var(--font-sans);font-size:var(--text-sm);font-weight:var(--weight-semibold);color:var(--text-secondary);transition:color var(--dur-fast) var(--ease-enter),background var(--dur-fast) var(--ease-enter)}
 .ef-selq__btn:hover{color:var(--text-primary);background:var(--surface-subtle)}
 .ef-selq__btn:focus-visible{outline:none;box-shadow:var(--focus-ring)}
 .ef-selq__sep{width:1px;height:16px;background:var(--border-default);margin:0 var(--space-1)}

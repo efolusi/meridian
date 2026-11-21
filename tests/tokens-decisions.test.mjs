@@ -91,7 +91,7 @@ describe('tokens.json is DTCG with aliases and modes', () => {
 
   it('documents the mode shape at the root', () => {
     const modes = tokens.$extensions[MODES].modes
-    expect(Object.keys(modes)).toEqual(['dark', 'compact', 'coarse', 'increased', 'increased-dark'])
+    expect(Object.keys(modes)).toEqual(['dark', 'compact', 'coarse', 'increased', 'increased-dark', 'reduced-motion'])
     expect(modes.dark.blocks[0]).toEqual({ selector: '[data-theme="dark"]' })
     expect(modes.compact.blocks[0]).toEqual({ selector: '[data-density="compact"]' })
     expect(modes.coarse.blocks[0]).toEqual({ media: '(pointer: coarse)', selector: ':root, [data-density="compact"]' })

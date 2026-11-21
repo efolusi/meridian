@@ -13,7 +13,7 @@ const CSS = `
 .ef-acc__trigger:hover{color:var(--brand-700)}
 .ef-acc__trigger:focus-visible{outline:none;box-shadow:var(--focus-ring);border-radius:var(--radius-sm)}
 .ef-acc__trigger:disabled{opacity:.45;cursor:not-allowed}
-.ef-acc__chev{margin-inline-start:auto;color:var(--text-muted);display:inline-flex;transition:transform var(--dur-med) var(--ease-out)}
+.ef-acc__chev{margin-inline-start:auto;color:var(--text-muted);display:inline-flex;transition:transform var(--dur-base) var(--ease-enter)}
 .ef-acc__trigger[data-state="open"] .ef-acc__chev{transform:rotate(180deg)}
 .ef-acc__content{overflow:hidden;font-size:var(--text-md);line-height:var(--leading-relaxed);color:var(--text-secondary)}
 .ef-acc__content-inner{padding:0 var(--space-0-5) var(--space-4);max-width:640px}

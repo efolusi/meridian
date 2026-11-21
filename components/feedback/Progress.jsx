@@ -8,7 +8,7 @@ const CSS = `
 .ef-progress__label{font-size:var(--text-sm);font-weight:var(--weight-medium);color:var(--text-primary)}
 .ef-progress__val{font-family:var(--font-mono);font-size:var(--text-xs);color:var(--text-muted)}
 .ef-progress{position:relative;height:8px;width:100%;overflow:hidden;border-radius:var(--radius-full);background:var(--sand-200)}
-.ef-progress__indicator{height:100%;width:100%;border-radius:inherit;background:var(--accent);transition:transform var(--dur-slow) var(--ease-out)}
+.ef-progress__indicator{height:100%;width:100%;border-radius:inherit;background:var(--accent);transition:transform var(--dur-slow) var(--ease-enter)}
 .ef-progress__indicator[data-state="loading"]{transform:translateX(calc(-100% + var(--ef-progress-value, 0%)))}
 .ef-progress[data-tone="warning"] .ef-progress__indicator{background:var(--warning-600)}
 .ef-progress[data-tone="danger"] .ef-progress__indicator{background:var(--danger-600)}

@@ -86,6 +86,7 @@ const GATES = [
   ['Public facts match inventories', 'python3', ['scripts/check_public_facts.py']],
   ['No dead interactive controls', 'python3', ['scripts/check_dead_controls.py']],
   ['No new raw colour literals', 'python3', ['scripts/check_token_adherence.py']],
+  ['Motion uses the duration and curve tokens', 'node', ['scripts/check_motion.mjs']],
   ['Logical CSS direction safety', 'python3', ['scripts/check_logical_css.py']],
   ['Hover does not add underlines', 'node', ['scripts/check_hover_decoration.mjs']],
   ['Template prop and attribute contracts', 'python3', ['scripts/check_template_props.py']],

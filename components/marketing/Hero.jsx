@@ -14,7 +14,7 @@ const CSS = `
 .ef-hero__proof{display:flex;align-items:center;gap:var(--space-2);font-size:var(--text-sm);color:var(--text-muted)}
 .ef-hero-accent{position:relative;display:inline-block}
 .ef-hero-accent svg{position:absolute;inset-inline:0;bottom:-0.14em;width:100%;height:0.22em;overflow:visible}
-.ef-hero-accent path{fill:none;stroke:var(--brand-500);stroke-width:7;stroke-linecap:round;stroke-dasharray:100;stroke-dashoffset:100;animation:ef-hero-draw var(--dur-slow) var(--ease-out) var(--dur-slow) forwards}
+.ef-hero-accent path{fill:none;stroke:var(--brand-500);stroke-width:7;stroke-linecap:round;stroke-dasharray:100;stroke-dashoffset:100;animation:ef-hero-draw var(--dur-slow) var(--ease-enter) var(--dur-slow) forwards}
 @keyframes ef-hero-draw{to{stroke-dashoffset:0}}
 @media (prefers-reduced-motion:reduce){.ef-hero-accent path{animation:none;stroke-dashoffset:0}}
 `;

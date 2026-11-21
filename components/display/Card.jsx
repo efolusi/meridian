@@ -5,7 +5,7 @@ import { injectEfCss } from '../runtime/runtime.jsx';
 const CSS = `
 .ef-card{background:var(--surface-card);border:1px solid var(--border-default);border-radius:var(--radius-md)}
 .ef-card--elevated{box-shadow:var(--shadow-sm)}
-.ef-card--interactive{cursor:pointer;transition:border-color var(--dur-fast) var(--ease-out),background var(--dur-fast) var(--ease-out)}
+.ef-card--interactive{cursor:pointer;transition:border-color var(--dur-fast) var(--ease-enter),background var(--dur-fast) var(--ease-enter)}
 .ef-card--interactive:hover{border-color:var(--sand-400)}
 .ef-card--interactive:active{background:var(--surface-subtle)}
 .ef-card--composed{--card-spacing:16px;display:flex;flex-direction:column;gap:var(--card-spacing);overflow:hidden;padding-block:var(--card-spacing);font-size:var(--text-sm);color:var(--text-primary)}

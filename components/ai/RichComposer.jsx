@@ -3,14 +3,14 @@ import React from 'react';
 import { injectEfCss } from '../runtime/runtime.jsx';
 import { Icon } from '../icons/Icon.jsx';
 const CSS = `
-.ef-richcomposer{position:relative;border:1px solid var(--border-strong);border-radius:var(--radius-lg);background:var(--surface-card);transition:border-color var(--dur-fast) var(--ease-out),box-shadow var(--dur-fast) var(--ease-out)}
+.ef-richcomposer{position:relative;border:1px solid var(--border-strong);border-radius:var(--radius-lg);background:var(--surface-card);transition:border-color var(--dur-fast) var(--ease-enter),box-shadow var(--dur-fast) var(--ease-enter)}
 .ef-richcomposer:focus-within{border-color:var(--text-muted);box-shadow:var(--focus-ring)}
 .ef-richcomposer__input{min-height:44px;max-height:200px;overflow-y:auto;padding:var(--space-3) var(--space-4) var(--space-1);font-family:var(--font-sans);font-size:var(--text-md);line-height:1.6;color:var(--text-primary);outline:none;white-space:pre-wrap;word-break:break-word}
 .ef-richcomposer__input:empty::before{content:attr(data-placeholder);color:var(--text-muted);pointer-events:none}
 .ef-richcomposer__chip{display:inline-flex;align-items:center;gap:var(--space-1);margin:0 1px;padding:1px var(--space-2);border-radius:var(--radius-sm);background:var(--accent-subtle);border:1px solid var(--accent-subtle-border);color:var(--text-primary);font-size:var(--text-sm);white-space:nowrap;user-select:none}
 .ef-richcomposer__bar{display:flex;align-items:center;gap:var(--space-2);padding:var(--space-2) var(--space-3) var(--space-3)}
 .ef-richcomposer__hint{font-size:var(--text-xs);color:var(--text-muted)}
-.ef-richcomposer__send{margin-inline-start:auto;display:inline-flex;align-items:center;justify-content:center;width:32px;height:32px;border:none;border-radius:var(--radius-full);background:var(--accent);color:var(--accent-contrast);cursor:pointer;transition:background var(--dur-fast) var(--ease-out),opacity var(--dur-fast) var(--ease-out)}
+.ef-richcomposer__send{margin-inline-start:auto;display:inline-flex;align-items:center;justify-content:center;width:32px;height:32px;border:none;border-radius:var(--radius-full);background:var(--accent);color:var(--accent-contrast);cursor:pointer;transition:background var(--dur-fast) var(--ease-enter),opacity var(--dur-fast) var(--ease-enter)}
 .ef-richcomposer__send:hover{background:var(--accent-hover)}
 .ef-richcomposer__send:disabled{opacity:.35;cursor:default}
 .ef-richcomposer__send:focus-visible{outline:none;box-shadow:var(--focus-ring)}

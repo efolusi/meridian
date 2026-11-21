@@ -4,7 +4,7 @@ import { injectEfCss } from '../runtime/runtime.jsx';
 import { Icon } from '../icons/Icon.jsx';
 const CSS = `
 .ef-feedback{display:inline-flex;align-items:center;gap:var(--space-0-5)}
-.ef-feedback__btn{display:inline-flex;align-items:center;justify-content:center;width:26px;height:26px;border:none;border-radius:var(--radius-sm);background:none;cursor:pointer;color:var(--text-muted);transition:color var(--dur-fast) var(--ease-out),background var(--dur-fast) var(--ease-out)}
+.ef-feedback__btn{display:inline-flex;align-items:center;justify-content:center;width:26px;height:26px;border:none;border-radius:var(--radius-sm);background:none;cursor:pointer;color:var(--text-muted);transition:color var(--dur-fast) var(--ease-enter),background var(--dur-fast) var(--ease-enter)}
 .ef-feedback__btn:hover{color:var(--text-primary);background:var(--surface-sunken)}
 .ef-feedback__btn:focus-visible{outline:none;box-shadow:var(--focus-ring)}
 .ef-feedback__btn--on{color:var(--accent-subtle-fg, var(--brand-700));background:var(--accent-subtle)}

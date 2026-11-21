@@ -23,7 +23,7 @@ const CSS = `
 .ef-agentrun__toggle{display:inline-flex;align-items:center;gap:var(--space-1);border:none;background:none;padding:0;cursor:pointer;font-family:var(--font-sans);font-size:var(--text-xs);font-weight:500;color:var(--text-muted);margin-top:var(--space-1)}
 .ef-agentrun__toggle:hover{color:var(--text-primary)}
 .ef-agentrun__toggle:focus-visible{outline:none;box-shadow:var(--focus-ring)}
-.ef-agentrun__toggle .ef-agentrun__tchev{display:inline-flex;transition:transform var(--dur-med) var(--ease-out)}
+.ef-agentrun__toggle .ef-agentrun__tchev{display:inline-flex;transition:transform var(--dur-base) var(--ease-enter)}
 .ef-agentrun__toggle--open .ef-agentrun__tchev{transform:rotate(180deg)}
 .ef-agentrun__panel{margin-top:var(--space-2);display:flex;flex-direction:column;gap:var(--space-2)}
 `;

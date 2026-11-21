@@ -7,7 +7,7 @@ const CSS = `
 .ef-env__head{display:flex;align-items:center;gap:var(--space-2);padding:var(--space-3) var(--space-4)}
 .ef-env__glyph{display:inline-flex;color:var(--text-muted)}
 .ef-env__title{flex:1;min-width:0;font-size:var(--text-md);font-weight:var(--weight-semibold);color:var(--text-primary)}
-.ef-env__btn{display:inline-flex;align-items:center;justify-content:center;width:var(--control-h-sm);height:var(--control-h-sm);border:none;background:none;cursor:pointer;color:var(--text-muted);border-radius:var(--radius-sm);transition:color var(--dur-fast) var(--ease-out),background var(--dur-fast) var(--ease-out)}
+.ef-env__btn{display:inline-flex;align-items:center;justify-content:center;width:var(--control-h-sm);height:var(--control-h-sm);border:none;background:none;cursor:pointer;color:var(--text-muted);border-radius:var(--radius-sm);transition:color var(--dur-fast) var(--ease-enter),background var(--dur-fast) var(--ease-enter)}
 .ef-env__btn:hover{color:var(--text-primary);background:var(--surface-subtle)}
 .ef-env__btn:focus-visible{outline:none;box-shadow:var(--focus-ring)}
 .ef-env__btn--done{color:var(--success-600)}

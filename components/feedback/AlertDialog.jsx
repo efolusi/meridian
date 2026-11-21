@@ -5,8 +5,8 @@ import { injectEfCss, mergeRefs, useIsoLayoutEffect } from '../runtime/runtime.j
 import { Portal, useEscapeLayer, useScrollLock, escapeLayerContext, useHydrated } from '../overlay/Portal.jsx';
 
 const CSS = `
-.ef-alertdialog__overlay{position:fixed;inset:0;z-index:var(--z-overlay);display:grid;place-items:center;padding:var(--space-6);background:var(--overlay-scrim);animation:ef-alertdialog-fade var(--dur-med) var(--ease-out)}
-.ef-alertdialog__content{width:100%;max-width:512px;padding:var(--space-6);background:var(--surface-card);color:var(--text-primary);border:1px solid var(--border-default);border-radius:var(--radius-lg);box-shadow:var(--shadow-xl);animation:ef-alertdialog-pop var(--dur-slow) var(--ease-spring)}
+.ef-alertdialog__overlay{position:fixed;inset:0;z-index:var(--z-overlay);display:grid;place-items:center;padding:var(--space-6);background:var(--overlay-scrim);animation:ef-alertdialog-fade var(--dur-base) var(--ease-enter)}
+.ef-alertdialog__content{width:100%;max-width:512px;padding:var(--space-6);background:var(--surface-card);color:var(--text-primary);border:1px solid var(--border-default);border-radius:var(--radius-lg);box-shadow:var(--shadow-xl);animation:ef-alertdialog-pop var(--dur-slow) var(--ease-emphasised)}
 .ef-alertdialog__content:focus{outline:none}
 .ef-alertdialog__content--sm{max-width:384px}
 .ef-alertdialog__header{display:flex;flex-direction:column;gap:var(--space-2);text-align:start}

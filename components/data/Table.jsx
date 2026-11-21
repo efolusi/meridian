@@ -14,7 +14,7 @@ const CSS = `
 .ef-table tfoot{border-top:1px solid var(--border-default);font-weight:var(--weight-medium)}
 .ef-table caption{caption-side:bottom;padding-block:var(--space-3);color:var(--text-muted);font-size:var(--text-sm);text-align:start}
 .ef-table--dense td{padding:var(--space-2) var(--table-pad-x);font-size:var(--text-sm)}
-.ef-table__row--click{cursor:pointer;transition:background var(--dur-fast) var(--ease-out)}
+.ef-table__row--click{cursor:pointer;transition:background var(--dur-fast) var(--ease-enter)}
 .ef-table__row--click:hover{background:var(--surface-subtle)}
 .ef-table__row--click:focus-visible{outline:2px solid var(--focus-ring-color);outline-offset:-2px}
 .ef-table__row--sel{background:var(--accent-subtle)}
@@ -24,11 +24,11 @@ const CSS = `
 .ef-table__sort{display:inline-flex;align-items:center;gap:var(--space-1);border:none;background:none;padding:0;margin:0;font:inherit;letter-spacing:inherit;text-transform:inherit;color:inherit;cursor:pointer}
 .ef-table__sort:hover{color:var(--text-primary)}
 .ef-table__sort:focus-visible{outline:none;box-shadow:var(--focus-ring);border-radius:var(--radius-sm)}
-.ef-table__sort__i{display:inline-flex;opacity:0;transition:opacity var(--dur-fast) var(--ease-out)}
+.ef-table__sort__i{display:inline-flex;opacity:0;transition:opacity var(--dur-fast) var(--ease-enter)}
 .ef-table__sort:hover .ef-table__sort__i,.ef-table__sort--on .ef-table__sort__i{opacity:1}
 .ef-table__sel{width:1%;white-space:nowrap}
 .ef-table__msg{padding:var(--space-8) var(--table-pad-x);text-align:center;font-size:var(--text-md);color:var(--text-muted)}
-.ef-table__skel{height:12px;border-radius:var(--radius-sm);background:var(--surface-sunken);animation:ef-table-pulse 1.2s var(--ease-in-out) infinite}
+.ef-table__skel{height:12px;border-radius:var(--radius-sm);background:var(--surface-sunken);animation:ef-table-pulse 1.2s var(--ease-standard) infinite}
 @keyframes ef-table-pulse{50%{opacity:.45}}
 `;
 

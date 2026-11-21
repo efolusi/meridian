@@ -7,12 +7,12 @@ import { SkipLink } from '../navigation/SkipLink.jsx';
 // The header of a marketing site. Products put their own account entry, theme
 // control and main call to action in `actions`; Meridian fetches nothing.
 const CSS = `
-.ef-site-header{position:sticky;inset-block-start:0;z-index:var(--z-sticky);background:var(--surface-page);border-bottom:1px solid transparent;transition:border-color var(--dur-fast) var(--ease-out)}
+.ef-site-header{position:sticky;inset-block-start:0;z-index:var(--z-sticky);background:var(--surface-page);border-bottom:1px solid transparent;transition:border-color var(--dur-fast) var(--ease-enter)}
 .ef-site-header[data-scrolled]{border-bottom-color:var(--border-default)}
 .ef-site-header__inner{display:flex;align-items:center;gap:var(--space-6);width:100%;max-width:var(--container-max);min-height:calc(var(--control-h-lg) + var(--space-4));margin-inline:auto;padding-inline:var(--space-6)}
 .ef-site-header__brand{display:inline-flex;align-items:center;gap:var(--space-2);min-height:var(--tap-min);color:var(--text-primary);font-family:var(--font-display);font-size:var(--text-lg);font-weight:var(--weight-bold);text-decoration:none}
 .ef-site-header__nav{display:flex;align-items:center;gap:var(--space-1);margin-inline-end:auto}
-.ef-site-header__link{display:inline-flex;align-items:center;min-height:var(--tap-min);padding-inline:var(--space-3);border-radius:var(--radius-full);color:var(--text-secondary);font-size:var(--text-md);font-weight:var(--weight-medium);text-decoration:none;transition:background var(--dur-fast) var(--ease-out),color var(--dur-fast) var(--ease-out)}
+.ef-site-header__link{display:inline-flex;align-items:center;min-height:var(--tap-min);padding-inline:var(--space-3);border-radius:var(--radius-full);color:var(--text-secondary);font-size:var(--text-md);font-weight:var(--weight-medium);text-decoration:none;transition:background var(--dur-fast) var(--ease-enter),color var(--dur-fast) var(--ease-enter)}
 .ef-site-header__link:hover{background:var(--surface-sunken);color:var(--text-primary)}
 .ef-site-header__link[aria-current="page"]{color:var(--text-primary);background:var(--surface-sunken)}
 .ef-site-header__brand:focus-visible,.ef-site-header__link:focus-visible,.ef-site-header__menu:focus-visible{outline:none;box-shadow:var(--focus-ring)}

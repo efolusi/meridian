@@ -18,10 +18,10 @@ import {
 const CSS = `
 .ef-drawer__overlay{padding:0}
 .ef-drawer{position:fixed;z-index:var(--z-modal);display:flex;max-width:none;max-height:none;flex-direction:column;overflow:auto;border-radius:0;background:var(--surface-card);box-shadow:var(--shadow-xl);touch-action:none;will-change:transform}
-.ef-drawer[data-vaul-drawer-direction=right]{top:0;right:0;bottom:0;width:min(75vw,384px);border-width:0 0 0 1px;animation:ef-drawer-right var(--dur-slow) var(--ease-out)}
-.ef-drawer[data-vaul-drawer-direction=left]{top:0;left:0;bottom:0;width:min(75vw,384px);border-width:0 1px 0 0;animation:ef-drawer-left var(--dur-slow) var(--ease-out)}
-.ef-drawer[data-vaul-drawer-direction=top]{top:0;left:0;right:0;width:100%;max-height:80vh;border-width:0 0 1px;border-radius:0 0 var(--radius-lg) var(--radius-lg);animation:ef-drawer-top var(--dur-slow) var(--ease-out)}
-.ef-drawer[data-vaul-drawer-direction=bottom]{bottom:0;left:0;right:0;width:100%;max-height:80vh;border-width:1px 0 0;border-radius:var(--radius-lg) var(--radius-lg) 0 0;animation:ef-drawer-bottom var(--dur-slow) var(--ease-out)}
+.ef-drawer[data-vaul-drawer-direction=right]{top:0;right:0;bottom:0;width:min(75vw,384px);border-width:0 0 0 1px;animation:ef-drawer-right var(--dur-slow) var(--ease-enter)}
+.ef-drawer[data-vaul-drawer-direction=left]{top:0;left:0;bottom:0;width:min(75vw,384px);border-width:0 1px 0 0;animation:ef-drawer-left var(--dur-slow) var(--ease-enter)}
+.ef-drawer[data-vaul-drawer-direction=top]{top:0;left:0;right:0;width:100%;max-height:80vh;border-width:0 0 1px;border-radius:0 0 var(--radius-lg) var(--radius-lg);animation:ef-drawer-top var(--dur-slow) var(--ease-enter)}
+.ef-drawer[data-vaul-drawer-direction=bottom]{bottom:0;left:0;right:0;width:100%;max-height:80vh;border-width:1px 0 0;border-radius:var(--radius-lg) var(--radius-lg) 0 0;animation:ef-drawer-bottom var(--dur-slow) var(--ease-enter)}
 .ef-drawer__handle{display:none;width:100px;height:8px;flex:none;margin:var(--space-4) auto 0;border-radius:var(--radius-full);background:var(--surface-sunken);cursor:grab;touch-action:none}
 .ef-drawer[data-vaul-drawer-direction=bottom]>.ef-drawer__handle{display:block}
 .ef-drawer__header{gap:var(--space-2);padding:var(--space-5) var(--space-6) var(--space-3);text-align:start}.ef-drawer__footer{margin-top:auto;padding:var(--space-4) var(--space-6)}.ef-drawer__description{margin-top:var(--space-0-5)}

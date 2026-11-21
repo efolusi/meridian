@@ -6,7 +6,7 @@ import { Separator } from './Separator.jsx';
 const CSS = `
 .ef-item-group{display:flex;flex-direction:column}
 .ef-item-group>[data-slot="item-group-item"]{display:flex;flex-direction:column;min-width:0}
-.ef-item{display:flex;flex-wrap:wrap;align-items:center;width:100%;border:1px solid transparent;border-radius:var(--radius-md);background:transparent;color:var(--text-primary);font-family:var(--font-sans);font-size:var(--text-sm);text-align:start;transition:background var(--dur-fast) var(--ease-out),border-color var(--dur-fast) var(--ease-out),box-shadow var(--dur-fast) var(--ease-out)}
+.ef-item{display:flex;flex-wrap:wrap;align-items:center;width:100%;border:1px solid transparent;border-radius:var(--radius-md);background:transparent;color:var(--text-primary);font-family:var(--font-sans);font-size:var(--text-sm);text-align:start;transition:background var(--dur-fast) var(--ease-enter),border-color var(--dur-fast) var(--ease-enter),box-shadow var(--dur-fast) var(--ease-enter)}
 .ef-item[data-size="default"]{gap:var(--space-4);padding:var(--space-4)}.ef-item[data-size="sm"]{gap:var(--space-3);padding:var(--space-3) var(--space-4)}.ef-item[data-size="xs"]{gap:var(--space-2);padding:var(--space-2) var(--space-3)}
 .ef-item[data-variant="outline"]{border-color:var(--border-default)}.ef-item[data-variant="muted"]{background:var(--surface-sunken)}
 .ef-item:is(a,button){cursor:pointer;text-decoration:none}.ef-item:is(a,button):hover{background:var(--surface-sunken);text-decoration:none}.ef-item:is(a,button):focus-visible{outline:none;border-color:var(--accent);box-shadow:var(--focus-ring)}

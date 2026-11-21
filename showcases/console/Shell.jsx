@@ -7,7 +7,7 @@ function SideItem({ icon, label, active, badge, onClick, href }) {
   const style = { display: 'flex', alignItems: 'center', gap: 10, width: '100%', height: 34, padding: '0 10px', border: 'none', borderRadius: 'var(--radius-sm)', cursor: 'pointer', textAlign: 'left', textDecoration: 'none',
     background: active ? 'var(--sand-200)' : hov ? 'var(--sand-100)' : 'transparent',
     color: active ? 'var(--text-primary)' : 'var(--text-secondary)', fontFamily: 'var(--font-sans)', fontSize: 14, fontWeight: active ? 600 : 500,
-    transition: 'background var(--dur-fast) var(--ease-out)', boxSizing: 'border-box' };
+    transition: 'background var(--dur-fast) var(--ease-enter)', boxSizing: 'border-box' };
   const inner = (
     <React.Fragment>
       <span style={{ color: active ? 'var(--accent)' : 'inherit', display: 'inline-flex' }}><Icon name={icon} size={16} /></span>

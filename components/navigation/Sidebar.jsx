@@ -6,8 +6,8 @@ import { useScrollLock, useEscapeLayer, escapeLayerContext } from '../overlay/Po
 
 const CSS = `
 .ef-sidebar-provider{--sidebar-width:16rem;--sidebar-width-icon:3rem;position:relative;display:flex;min-height:100%;width:100%;background:var(--surface-page);color:var(--text-primary)}
-.ef-sidebar{position:relative;flex:0 0 var(--sidebar-width);width:var(--sidebar-width);min-height:100%;transition:flex-basis var(--dur-med) var(--ease-out),width var(--dur-med) var(--ease-out)}
-.ef-sidebar__panel{position:absolute;inset-block:0;inset-inline-start:0;z-index:30;display:flex;width:var(--sidebar-width);flex-direction:column;border-inline-end:1px solid var(--border-default);background:var(--surface-card);color:var(--text-primary);transition:width var(--dur-med) var(--ease-out),transform var(--dur-med) var(--ease-out)}
+.ef-sidebar{position:relative;flex:0 0 var(--sidebar-width);width:var(--sidebar-width);min-height:100%;transition:flex-basis var(--dur-base) var(--ease-enter),width var(--dur-base) var(--ease-enter)}
+.ef-sidebar__panel{position:absolute;inset-block:0;inset-inline-start:0;z-index:30;display:flex;width:var(--sidebar-width);flex-direction:column;border-inline-end:1px solid var(--border-default);background:var(--surface-card);color:var(--text-primary);transition:width var(--dur-base) var(--ease-enter),transform var(--dur-base) var(--ease-enter)}
 .ef-sidebar[data-side=right] .ef-sidebar__panel{inset-inline-start:auto;inset-inline-end:0;border-inline-end:0;border-inline-start:1px solid var(--border-default)}
 .ef-sidebar[data-variant=floating] .ef-sidebar__panel{inset-block:8px;border:1px solid var(--border-default);border-radius:var(--radius-lg);box-shadow:var(--shadow-sm)}
 .ef-sidebar[data-side=left][data-variant=floating] .ef-sidebar__panel{inset-inline-start:8px}.ef-sidebar[data-side=right][data-variant=floating] .ef-sidebar__panel{inset-inline-end:8px}

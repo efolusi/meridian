@@ -11,7 +11,7 @@ const CSS = `
 .ef-task__detail{color:var(--text-muted)}
 .ef-task__detail code{font-family:var(--font-mono);font-size:var(--text-xs);background:var(--surface-sunken);border-radius:var(--radius-xs);padding:1px var(--space-1);color:var(--text-secondary)}
 .ef-task__rail{width:1px;height:13px;margin-inline-start:var(--space-4);background:var(--border-default);flex:none}
-.ef-task--streaming .ef-task__row:last-of-type{animation:ef-task-pulse 1.2s var(--ease-out) infinite}
+.ef-task--streaming .ef-task__row:last-of-type{animation:ef-task-pulse 1.2s var(--ease-enter) infinite}
 @keyframes ef-task-pulse{0%,100%{opacity:1}50%{opacity:.45}}
 `;
 export function Task({ items = [], streaming, style, className, ...rest }) {

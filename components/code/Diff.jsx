@@ -27,7 +27,7 @@ const CSS = `
 .ef-diff__file:first-child{border-top:none}
 .ef-diff__filehead{display:flex;align-items:center;gap:var(--space-2);width:100%;padding:var(--space-2) var(--space-3);border:none;background:var(--surface-subtle);cursor:pointer;text-align:start;font-family:var(--font-mono);font-size:var(--text-xs);color:var(--text-primary)}
 .ef-diff__filehead:focus-visible{outline:none;box-shadow:var(--focus-ring)}
-.ef-diff__filechev{display:inline-flex;color:var(--text-muted);transition:transform var(--dur-fast) var(--ease-out)}
+.ef-diff__filechev{display:inline-flex;color:var(--text-muted);transition:transform var(--dur-fast) var(--ease-enter)}
 .ef-diff__filechev--open{transform:rotate(90deg)}
 `;
 function lcsOps(a, b) {

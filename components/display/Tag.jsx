@@ -3,14 +3,14 @@ import React from 'react';
 import { Icon } from '../icons/Icon.jsx';
 import { injectEfCss } from '../runtime/runtime.jsx';
 const CSS = `
-.ef-tag{display:inline-flex;align-items:center;gap:var(--space-2);height:26px;padding:0 var(--space-3);border-radius:var(--radius-sm);background:transparent;border:1px solid var(--border-strong);color:var(--text-secondary);font-family:var(--font-sans);font-size:var(--text-sm);font-weight:var(--weight-medium);white-space:nowrap;transition:background var(--dur-fast) var(--ease-out),border-color var(--dur-fast) var(--ease-out)}
+.ef-tag{display:inline-flex;align-items:center;gap:var(--space-2);height:26px;padding:0 var(--space-3);border-radius:var(--radius-sm);background:transparent;border:1px solid var(--border-strong);color:var(--text-secondary);font-family:var(--font-sans);font-size:var(--text-sm);font-weight:var(--weight-medium);white-space:nowrap;transition:background var(--dur-fast) var(--ease-enter),border-color var(--dur-fast) var(--ease-enter)}
 .ef-tag--interactive{cursor:pointer}
 .ef-tag--interactive:hover{background:var(--surface-sunken);border-color:var(--sand-400)}
 .ef-tag--interactive:focus-visible{outline:none;box-shadow:var(--focus-ring)}
 .ef-tag:has(.ef-tag__x){padding-block:var(--space-0-5);padding-inline-end:var(--space-0-5)}
 .ef-tag__body{display:inline-flex;align-items:center;gap:var(--space-2);border:none;background:transparent;padding:0;margin:0;font:inherit;color:inherit;cursor:pointer;border-radius:var(--radius-sm)}
 .ef-tag__body:focus-visible{outline:none;box-shadow:var(--focus-ring)}
-.ef-tag__x{display:inline-flex;align-items:center;justify-content:center;width:20px;height:20px;margin:0;border:none;border-radius:var(--radius-sm);background:transparent;color:var(--text-muted);cursor:pointer;padding:0;transition:background var(--dur-fast) var(--ease-out),color var(--dur-fast) var(--ease-out)}
+.ef-tag__x{display:inline-flex;align-items:center;justify-content:center;width:20px;height:20px;margin:0;border:none;border-radius:var(--radius-sm);background:transparent;color:var(--text-muted);cursor:pointer;padding:0;transition:background var(--dur-fast) var(--ease-enter),color var(--dur-fast) var(--ease-enter)}
 .ef-tag__x:hover{background:var(--sand-200);color:var(--text-primary)}
 .ef-tag__x:focus-visible{outline:none;box-shadow:var(--focus-ring)}
 @media (pointer:coarse){.ef-tag__x{position:relative}.ef-tag__x::after{content:'';position:absolute;inset:calc((20px - var(--tap-min)) / 2)}}
