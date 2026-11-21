@@ -1,7 +1,7 @@
 'use client';
 import React from 'react';
 import { Icon } from '../icons/Icon.jsx';
-import { injectEfCss, styleRef } from '../forms/Button.jsx';
+import { injectEfCss, styleRef } from '../runtime/runtime.jsx';
 const CSS = `
 .ef-tree__spacer{width:13px;flex:none}
 .ef-tree__label{white-space:nowrap;overflow:hidden;text-overflow:ellipsis}

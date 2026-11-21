@@ -1,6 +1,6 @@
 'use client';
 import React from 'react';
-import { injectEfCss, styleRef } from '../forms/Button.jsx';
+import { injectEfCss, styleRef } from '../runtime/runtime.jsx';
 import { Icon } from '../icons/Icon.jsx';
 const CSS = `
 .ef-webprev__btn--cons{position:relative}

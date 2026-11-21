@@ -1,16 +1,16 @@
 {
   "totals": {
     "@efolusi/meridian": {
-      "bytes": 373421,
-      "gzip": 84321
+      "bytes": 373430,
+      "gzip": 84295
     },
     "dist/components.css": {
       "bytes": 229605,
       "gzip": 31488
     },
     "_ds_bundle.js": {
-      "bytes": 879565,
-      "gzip": 157008
+      "bytes": 879998,
+      "gzip": 157004
     }
   },
   "modules": [
@@ -207,8 +207,8 @@
       "exports": [
         "SelectionQuote"
       ],
-      "bytes": 46883,
-      "gzip": 8164
+      "bytes": 46877,
+      "gzip": 8196
     },
     {
       "module": "ai/SourceCard.js",
@@ -859,8 +859,8 @@
       "exports": [
         "Button"
       ],
-      "bytes": 47267,
-      "gzip": 8473
+      "bytes": 45822,
+      "gzip": 7703
     },
     {
       "module": "forms/ButtonGroup.js",
@@ -1484,6 +1484,15 @@
       ],
       "bytes": 52707,
       "gzip": 9690
+    },
+    {
+      "module": "runtime/runtime.js",
+      "group": "runtime",
+      "exports": [
+        "shared helpers"
+      ],
+      "bytes": 1487,
+      "gzip": 867
     }
   ]
 }

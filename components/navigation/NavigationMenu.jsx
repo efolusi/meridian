@@ -1,7 +1,7 @@
 'use client';
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { injectEfCss, mergeRefs, useIsoLayoutEffect } from '../forms/Button.jsx';
+import { injectEfCss, mergeRefs, useIsoLayoutEffect } from '../runtime/runtime.jsx';
 import { Icon } from '../icons/Icon.jsx';
 import { useDirection } from '../display/Direction.jsx';
 

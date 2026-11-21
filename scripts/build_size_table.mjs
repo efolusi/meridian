@@ -118,7 +118,12 @@ export function renderMarkdown(data) {
   return lines.join('\n');
 }
 
+// The folder of shared helpers: not components, so counts and docs skip it.
+const SHARED_HELPERS_FOLDER = 'components/runtime/';
+
 function exportsOf(rel) {
+  // Every consumer downloads the shared helpers, so the row stays in the table, labelled.
+  if (`components/${rel}`.startsWith(SHARED_HELPERS_FOLDER)) return ['shared helpers'];
   const src = fs.readFileSync(path.join(ROOT, 'components', rel.replace(/\.js$/, '.jsx')), 'utf8');
   return [...src.matchAll(/^export (?:function|const) (\w+)/gm)].map((m) => m[1])
     .filter((n) => n[0] === n[0].toUpperCase());

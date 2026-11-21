@@ -1,6 +1,6 @@
 'use client';
 import React from 'react';
-import { injectEfCss, cssPct, isElementOfType } from '../forms/Button.jsx';
+import { injectEfCss, cssPct, isElementOfType } from '../runtime/runtime.jsx';
 import { useDirection } from './Direction.jsx';
 
 const CSS = `

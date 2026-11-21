@@ -1,7 +1,8 @@
 import { describe, it, expect } from 'vitest';
 import { renderToString } from 'react-dom/server';
 
-import { injectEfCss, Button } from '../components/forms/Button.jsx';
+import { Button } from '../components/forms/Button.jsx';
+import { injectEfCss } from '../components/runtime/runtime.jsx';
 import { Card, CardContent, CardHeader, CardTitle } from '../components/display/Card.jsx';
 
 // The npm build extracts every CSS literal into a static components.css and

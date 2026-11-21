@@ -7,7 +7,7 @@ import { Portal } from '../components/overlay/Portal.jsx';
 import { Toaster } from '../components/feedback/Toast.jsx';
 import { Dialog, DialogContent, DialogTitle } from '../components/feedback/Dialog.jsx';
 import { Select, SelectTrigger, SelectValue, SelectContent, SelectItem } from '../components/forms/Select.jsx';
-import { isElementOfType } from '../components/forms/Button.jsx';
+import { isElementOfType } from '../components/runtime/runtime.jsx';
 
 // Found in a fresh Next.js app: the server rendered nothing for a Portal, the
 // hydrating client rendered the portal, and React reported a mismatch on every

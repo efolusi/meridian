@@ -1,6 +1,6 @@
 'use client';
 import React from 'react';
-import { injectEfCss, mergeRefs, styleRef } from '../forms/Button.jsx';
+import { injectEfCss, mergeRefs, styleRef } from '../runtime/runtime.jsx';
 
 // The ratio is set through the CSSOM, not a style attribute (strict CSP).
 const CSS = `

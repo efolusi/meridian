@@ -1,6 +1,6 @@
 'use client';
 import React from 'react';
-import { injectEfCss } from '../forms/Button.jsx';
+import { injectEfCss } from '../runtime/runtime.jsx';
 const CSS = `
 .ef-empty{display:flex;min-width:0;flex-direction:column;align-items:center;justify-content:center;gap:var(--space-6);padding:var(--space-12) var(--space-6);text-align:center}
 .ef-empty--bordered{border:1px dashed var(--border-default);border-radius:var(--radius-md)}

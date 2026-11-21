@@ -37,6 +37,11 @@ def file_entry(path, ftype, embed, target=None):
 
 HOST = "https://meridian.efolusi.com/site/registry"
 BASE_ITEM = "meridian-base"
+# The helpers every component imports (CSS injection, refs, SSR-safe effects). It has no
+# component, so the manifest names no item for it; this item ships it, and every component
+# item whose imports reach it depends on it.
+RUNTIME_ITEM = "meridian-runtime"
+RUNTIME_SOURCE = "components/runtime/runtime.jsx"
 
 # Registry item names are install contracts. Keep them stable when a source
 # gains compositional exports whose declaration order differs from the root.
@@ -66,15 +71,15 @@ def _source_to_item_name():
     return {
         src: REGISTRY_NAME_OVERRIDES.get(src, names[0].lower())
         for src, names in by_source.items()
-    }, by_source
+    } | {RUNTIME_SOURCE: RUNTIME_ITEM}, by_source
 
 
 def _registry_deps(jsx, name_of_source):
     """Every other registry item this component's imports require.
 
-    Components import siblings by relative path ('../forms/Button.jsx'), and 85 of
-    them pull Button purely for injectEfCss. Those edges have to be declared or a
-    CLI writes a file whose imports resolve to nothing.
+    Components import siblings by relative path ('../icons/Icon.jsx'), and nearly all
+    of them import the runtime helpers ('../runtime/runtime.jsx'). Those edges have to
+    be declared or a CLI writes a file whose imports resolve to nothing.
     """
     deps = set()
     # [^;]* spans lines: `import {\n  Dialog,\n  ...\n} from '../feedback/Dialog.jsx';`
@@ -240,8 +245,21 @@ def base_item(embed):
         "name": BASE_ITEM,
         "type": "registry:style",
         "title": "Meridian base",
-        "description": "Stylesheet entry and the full token layer (colour, typography, spacing, effects) in light, dark and compact. Every other item depends on this.",
+        "description": "Stylesheet entry and the full token layer (colour, typography, spacing, effects) in light, dark and compact. Every component item depends on this.",
         "files": files,
+        "categories": ["foundation"],
+    }]
+
+
+def runtime_item(embed):
+    """The shared helpers, as the one item every component depends on."""
+    return [{
+        "name": RUNTIME_ITEM,
+        "type": "registry:ui",
+        "title": "Meridian runtime helpers",
+        "description": "The helpers every component imports: CSS injection, ref merging, CSSOM styles, an SSR-safe layout effect and small DOM guards. Components depend on this item; you rarely add it yourself.",
+        "dependencies": ["react"],
+        "files": [file_entry(ROOT / RUNTIME_SOURCE, "registry:ui", embed)],
         "categories": ["foundation"],
     }]
 
@@ -332,7 +350,7 @@ def main():
     write_copy_in_sources()
     write_component_css()
     index_items, written = [], 0
-    for make in (base_item, ssr_css_item, component_items, block_items, template_items):
+    for make in (base_item, runtime_item, ssr_css_item, component_items, block_items, template_items):
         for lean, full in zip(make(embed=False), make(embed=True)):
             index_items.append(lean)
             full["$schema"] = "https://ui.shadcn.com/schema/registry-item.json"

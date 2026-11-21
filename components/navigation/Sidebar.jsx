@@ -1,7 +1,7 @@
 'use client';
 import React from 'react';
 import { Icon } from '../icons/Icon.jsx';
-import { injectEfCss, mergeRefs } from '../forms/Button.jsx';
+import { injectEfCss, mergeRefs } from '../runtime/runtime.jsx';
 import { useScrollLock, useEscapeLayer, escapeLayerContext } from '../overlay/Portal.jsx';
 
 const CSS = `

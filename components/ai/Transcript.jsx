@@ -1,6 +1,6 @@
 'use client';
 import React from 'react';
-import { injectEfCss, prefersReducedMotion } from '../forms/Button.jsx';
+import { injectEfCss, prefersReducedMotion } from '../runtime/runtime.jsx';
 import { formatTime } from './Player.jsx';
 const CSS = `
 .ef-transcript{display:flex;flex-direction:column;border:1px solid var(--border-default);border-radius:var(--radius-md);background:var(--surface-card);overflow:hidden;font-family:var(--font-sans)}

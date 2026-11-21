@@ -1,7 +1,7 @@
 'use client';
 import React from 'react';
 import { useHydrated } from './Portal.jsx';
-import { injectEfCss } from '../forms/Button.jsx';
+import { injectEfCss } from '../runtime/runtime.jsx';
 import {
   Dialog,
   DialogClose,

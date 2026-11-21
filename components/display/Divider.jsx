@@ -1,6 +1,6 @@
 'use client';
 import React from 'react';
-import { injectEfCss } from '../forms/Button.jsx';
+import { injectEfCss } from '../runtime/runtime.jsx';
 // A separator with no margin is never what a caller wants: every consumer had
 // to remember spacing, and even this repo's own showcases patched it inline
 // with two different magic numbers (20px and 10px). Default to one step on the

@@ -1,6 +1,6 @@
 'use client';
 import React from 'react';
-import { injectEfCss } from '../forms/Button.jsx';
+import { injectEfCss } from '../runtime/runtime.jsx';
 
 const CSS = `
 .ef-avatar{position:relative;display:inline-flex;align-items:center;justify-content:center;flex:none;width:var(--avatar-md);height:var(--avatar-md);border-radius:var(--radius-full);background:var(--peach-200);color:var(--cocoa-700);font-size:var(--text-xs);font-weight:var(--weight-semibold);overflow:hidden;user-select:none}

@@ -1,6 +1,6 @@
 'use client';
 import React from 'react';
-import { injectEfCss, styleRef } from '../forms/Button.jsx';
+import { injectEfCss, styleRef } from '../runtime/runtime.jsx';
 const CSS = `
 .ef-loader{display:inline-flex;align-items:baseline;font-family:var(--font-sans);font-size:var(--text-md);color:var(--text-muted)}
 .ef-loader--pulse{animation:ef-loader-pulse var(--ef-loader-dur,1.4s) ease-in-out infinite both}

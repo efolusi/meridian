@@ -7,7 +7,8 @@ import { renderToString } from 'react-dom/server';
 // server guard. This file runs in a bare node environment — the same world a
 // Next.js server render lives in — where `typeof document === 'undefined'`
 // and injection must be a silent no-op rather than a crash.
-import { injectEfCss, Button } from '../components/forms/Button.jsx';
+import { Button } from '../components/forms/Button.jsx';
+import { injectEfCss } from '../components/runtime/runtime.jsx';
 
 describe('injection on the server', () => {
   it('is a no-op without a document, not a crash', () => {

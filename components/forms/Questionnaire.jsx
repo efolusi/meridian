@@ -1,6 +1,6 @@
 'use client';
 import React from 'react';
-import { injectEfCss } from './Button.jsx';
+import { injectEfCss } from '../runtime/runtime.jsx';
 
 const CSS = `
 .ef-questionnaire{display:grid;gap:var(--space-5)}

@@ -1,6 +1,6 @@
 'use client';
 import React from 'react';
-import { injectEfCss, useIsoLayoutEffect } from '../forms/Button.jsx';
+import { injectEfCss, useIsoLayoutEffect } from '../runtime/runtime.jsx';
 
 const CSS = `
 .ef-progress-shell{display:flex;flex-direction:column;gap:var(--space-2)}

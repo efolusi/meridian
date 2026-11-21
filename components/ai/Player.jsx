@@ -1,6 +1,6 @@
 'use client';
 import React from 'react';
-import { injectEfCss, cssPct, styleRef } from '../forms/Button.jsx';
+import { injectEfCss, cssPct, styleRef } from '../runtime/runtime.jsx';
 import { Icon } from '../icons/Icon.jsx';
 const CSS = `
 .ef-player__btn--end{margin-inline-start:auto}

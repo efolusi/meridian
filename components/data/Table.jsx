@@ -1,6 +1,6 @@
 'use client';
 import React from 'react';
-import { injectEfCss, mergeRefs, styleRef } from '../forms/Button.jsx';
+import { injectEfCss, mergeRefs, styleRef } from '../runtime/runtime.jsx';
 import { Checkbox } from '../forms/Checkbox.jsx';
 import { Icon } from '../icons/Icon.jsx';
 const CSS = `

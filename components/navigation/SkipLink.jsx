@@ -1,6 +1,6 @@
 'use client';
 import React from 'react';
-import { injectEfCss } from '../forms/Button.jsx';
+import { injectEfCss } from '../runtime/runtime.jsx';
 const CSS = `
 /* Off-screen rather than display:none or visibility:hidden: both of those
    remove the link from the focus order entirely, which is the one thing a skip

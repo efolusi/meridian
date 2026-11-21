@@ -7,10 +7,12 @@ import re
 import sys
 
 ROOT = pathlib.Path(__file__).resolve().parent.parent
+# The folder of shared helpers: not components, so counts and docs skip it.
+SHARED_HELPERS_FOLDER = "components/runtime/"
 manifest = json.loads((ROOT / "_ds_manifest.json").read_text())
 
 facts = {
-    "components": len(list((ROOT / "components").glob("*/*.jsx"))),
+    "components": len([p for p in (ROOT / "components").glob("*/*.jsx") if not str(p.relative_to(ROOT)).startswith(SHARED_HELPERS_FOLDER)]),
     "icons": len(list((ROOT / "assets/icons").glob("*.svg"))),
     "blocks": len(list((ROOT / "blocks").glob("*.html"))),
     "starters": len([t for t in manifest.get("templates", []) if t["folder"].startswith("starters/")]),

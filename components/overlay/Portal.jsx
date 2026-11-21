@@ -3,7 +3,7 @@ import React from 'react';
 // Bare imports are stripped by the bundle compiler, so this resolves to the
 // window global there; in an ESM consumer it resolves normally. Both work.
 import ReactDOM from 'react-dom';
-import { injectEfCss, useIsoLayoutEffect } from '../forms/Button.jsx';
+import { injectEfCss, useIsoLayoutEffect } from '../runtime/runtime.jsx';
 const CSS = `
 .ef-portal{display:contents}
 `;

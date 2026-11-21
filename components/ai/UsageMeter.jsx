@@ -1,6 +1,6 @@
 'use client';
 import React from 'react';
-import { injectEfCss, cssPct, prefersReducedMotion } from '../forms/Button.jsx';
+import { injectEfCss, cssPct, prefersReducedMotion } from '../runtime/runtime.jsx';
 const CSS = `
 .ef-usage{display:flex;flex-direction:column;gap:var(--space-2)}
 .ef-usage__row{display:flex;align-items:baseline;gap:var(--space-2)}

@@ -1,7 +1,7 @@
 'use client';
 import React from 'react';
 import { Icon } from '../icons/Icon.jsx';
-import { injectEfCss, mergeRefs, styleRef } from '../forms/Button.jsx';
+import { injectEfCss, mergeRefs, styleRef } from '../runtime/runtime.jsx';
 const CSS = `
 .ef-code__less{display:flex;justify-content:center;padding:0 0 var(--space-2)}
 .ef-code{position:relative;background:var(--surface-code);border:1px solid var(--border-code);border-radius:var(--radius-md);overflow:hidden}

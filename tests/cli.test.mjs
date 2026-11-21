@@ -362,7 +362,7 @@ describe('meridian bin against site/registry', () => {
   it('adds an item with its registry dependencies, then reports them unchanged', () => {
     const first = run('add', 'dialog', '--registry', SITE_REGISTRY, '--dir', 'app');
     expect(first.status, first.stderr).toBe(0);
-    expect(first.stdout).toContain('Items: meridian-base, icon, button, iconbutton, portal, dialog');
+    expect(first.stdout).toContain('Items: meridian-base, icon, meridian-runtime, iconbutton, portal, dialog');
     expect(first.stdout).toContain('npm install react');
 
     const second = run('add', 'dialog', '--registry', SITE_REGISTRY, '--dir', 'app');

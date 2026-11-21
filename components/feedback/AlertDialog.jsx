@@ -1,6 +1,7 @@
 'use client';
 import React from 'react';
-import { injectEfCss, mergeRefs, buttonVariants, useIsoLayoutEffect } from '../forms/Button.jsx';
+import { buttonVariants } from '../forms/Button.jsx';
+import { injectEfCss, mergeRefs, useIsoLayoutEffect } from '../runtime/runtime.jsx';
 import { Portal, useEscapeLayer, useScrollLock, escapeLayerContext, useHydrated } from '../overlay/Portal.jsx';
 
 const CSS = `

@@ -65,8 +65,10 @@ describe('docs site skip link', () => {
 })
 
 describe('public copy stays current', () => {
+  // The folder of shared helpers: not components, so counts and docs skip it.
+  const SHARED_HELPERS_FOLDER = 'components/runtime/'
   const components = readdirSync('components', { withFileTypes: true })
-    .filter((d) => d.isDirectory())
+    .filter((d) => d.isDirectory() && !`components/${d.name}/`.startsWith(SHARED_HELPERS_FOLDER))
     .flatMap((d) => readdirSync('components/' + d.name).filter((f) => f.endsWith('.jsx')))
   const docs = read('site/Docs.dc.html')
 

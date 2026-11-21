@@ -1,6 +1,6 @@
 'use client';
 import React from 'react';
-import { injectEfCss } from '../forms/Button.jsx';
+import { injectEfCss } from '../runtime/runtime.jsx';
 
 // Legal copy lives in dictionaries as plain strings. Two marks are read, nothing else,
 // and nothing is ever rendered as HTML:

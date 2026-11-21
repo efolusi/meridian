@@ -1,7 +1,7 @@
 'use client';
 import React from 'react';
 import { Icon } from '../icons/Icon.jsx';
-import { injectEfCss } from '../forms/Button.jsx';
+import { injectEfCss } from '../runtime/runtime.jsx';
 // Hover deepens the link's own hue without changing text decoration. Link
 // identity stays stable across pointer, keyboard, and touch interaction.
 const CSS = `

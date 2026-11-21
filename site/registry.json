@@ -7,7 +7,7 @@
       "name": "meridian-base",
       "type": "registry:style",
       "title": "Meridian base",
-      "description": "Stylesheet entry and the full token layer (colour, typography, spacing, effects) in light, dark and compact. Every other item depends on this.",
+      "description": "Stylesheet entry and the full token layer (colour, typography, spacing, effects) in light, dark and compact. Every component item depends on this.",
       "files": [
         {
           "path": "styles.css",
@@ -55,6 +55,24 @@
       ]
     },
     {
+      "name": "meridian-runtime",
+      "type": "registry:ui",
+      "title": "Meridian runtime helpers",
+      "description": "The helpers every component imports: CSS injection, ref merging, CSSOM styles, an SSR-safe layout effect and small DOM guards. Components depend on this item; you rarely add it yourself.",
+      "dependencies": [
+        "react"
+      ],
+      "files": [
+        {
+          "path": "components/runtime/runtime.jsx",
+          "type": "registry:ui"
+        }
+      ],
+      "categories": [
+        "foundation"
+      ]
+    },
+    {
       "name": "meridian-ssr-css",
       "type": "registry:style",
       "title": "Meridian component CSS for server rendering",
@@ -83,8 +101,8 @@
       ],
       "registryDependencies": [
         "https://meridian.efolusi.com/site/registry/meridian-base.json",
-        "https://meridian.efolusi.com/site/registry/button.json",
-        "https://meridian.efolusi.com/site/registry/icon.json"
+        "https://meridian.efolusi.com/site/registry/icon.json",
+        "https://meridian.efolusi.com/site/registry/meridian-runtime.json"
       ],
       "files": [
         {
@@ -114,7 +132,7 @@
       ],
       "registryDependencies": [
         "https://meridian.efolusi.com/site/registry/meridian-base.json",
-        "https://meridian.efolusi.com/site/registry/button.json"
+        "https://meridian.efolusi.com/site/registry/meridian-runtime.json"
       ],
       "files": [
         {
@@ -145,9 +163,9 @@
       "registryDependencies": [
         "https://meridian.efolusi.com/site/registry/meridian-base.json",
         "https://meridian.efolusi.com/site/registry/avatar.json",
-        "https://meridian.efolusi.com/site/registry/button.json",
         "https://meridian.efolusi.com/site/registry/icon.json",
-        "https://meridian.efolusi.com/site/registry/iconbutton.json"
+        "https://meridian.efolusi.com/site/registry/iconbutton.json",
+        "https://meridian.efolusi.com/site/registry/meridian-runtime.json"
       ],
       "files": [
         {
@@ -177,8 +195,8 @@
       ],
       "registryDependencies": [
         "https://meridian.efolusi.com/site/registry/meridian-base.json",
-        "https://meridian.efolusi.com/site/registry/button.json",
-        "https://meridian.efolusi.com/site/registry/icon.json"
+        "https://meridian.efolusi.com/site/registry/icon.json",
+        "https://meridian.efolusi.com/site/registry/meridian-runtime.json"
       ],
       "files": [
         {
@@ -208,8 +226,8 @@
       ],
       "registryDependencies": [
         "https://meridian.efolusi.com/site/registry/meridian-base.json",
-        "https://meridian.efolusi.com/site/registry/button.json",
-        "https://meridian.efolusi.com/site/registry/icon.json"
+        "https://meridian.efolusi.com/site/registry/icon.json",
+        "https://meridian.efolusi.com/site/registry/meridian-runtime.json"
       ],
       "files": [
         {
@@ -239,8 +257,8 @@
       ],
       "registryDependencies": [
         "https://meridian.efolusi.com/site/registry/meridian-base.json",
-        "https://meridian.efolusi.com/site/registry/button.json",
-        "https://meridian.efolusi.com/site/registry/icon.json"
+        "https://meridian.efolusi.com/site/registry/icon.json",
+        "https://meridian.efolusi.com/site/registry/meridian-runtime.json"
       ],
       "files": [
         {
@@ -270,8 +288,8 @@
       ],
       "registryDependencies": [
         "https://meridian.efolusi.com/site/registry/meridian-base.json",
-        "https://meridian.efolusi.com/site/registry/button.json",
-        "https://meridian.efolusi.com/site/registry/icon.json"
+        "https://meridian.efolusi.com/site/registry/icon.json",
+        "https://meridian.efolusi.com/site/registry/meridian-runtime.json"
       ],
       "files": [
         {
@@ -301,8 +319,8 @@
       ],
       "registryDependencies": [
         "https://meridian.efolusi.com/site/registry/meridian-base.json",
-        "https://meridian.efolusi.com/site/registry/button.json",
-        "https://meridian.efolusi.com/site/registry/icon.json"
+        "https://meridian.efolusi.com/site/registry/icon.json",
+        "https://meridian.efolusi.com/site/registry/meridian-runtime.json"
       ],
       "files": [
         {
@@ -332,8 +350,8 @@
       ],
       "registryDependencies": [
         "https://meridian.efolusi.com/site/registry/meridian-base.json",
-        "https://meridian.efolusi.com/site/registry/button.json",
-        "https://meridian.efolusi.com/site/registry/icon.json"
+        "https://meridian.efolusi.com/site/registry/icon.json",
+        "https://meridian.efolusi.com/site/registry/meridian-runtime.json"
       ],
       "files": [
         {
@@ -363,7 +381,7 @@
       ],
       "registryDependencies": [
         "https://meridian.efolusi.com/site/registry/meridian-base.json",
-        "https://meridian.efolusi.com/site/registry/button.json"
+        "https://meridian.efolusi.com/site/registry/meridian-runtime.json"
       ],
       "files": [
         {
@@ -393,7 +411,7 @@
       ],
       "registryDependencies": [
         "https://meridian.efolusi.com/site/registry/meridian-base.json",
-        "https://meridian.efolusi.com/site/registry/button.json"
+        "https://meridian.efolusi.com/site/registry/meridian-runtime.json"
       ],
       "files": [
         {
@@ -423,8 +441,8 @@
       ],
       "registryDependencies": [
         "https://meridian.efolusi.com/site/registry/meridian-base.json",
-        "https://meridian.efolusi.com/site/registry/button.json",
-        "https://meridian.efolusi.com/site/registry/icon.json"
+        "https://meridian.efolusi.com/site/registry/icon.json",
+        "https://meridian.efolusi.com/site/registry/meridian-runtime.json"
       ],
       "files": [
         {
@@ -454,8 +472,8 @@
       ],
       "registryDependencies": [
         "https://meridian.efolusi.com/site/registry/meridian-base.json",
-        "https://meridian.efolusi.com/site/registry/button.json",
         "https://meridian.efolusi.com/site/registry/icon.json",
+        "https://meridian.efolusi.com/site/registry/meridian-runtime.json",
         "https://meridian.efolusi.com/site/registry/portal.json"
       ],
       "files": [
@@ -486,8 +504,8 @@
       ],
       "registryDependencies": [
         "https://meridian.efolusi.com/site/registry/meridian-base.json",
-        "https://meridian.efolusi.com/site/registry/button.json",
-        "https://meridian.efolusi.com/site/registry/icon.json"
+        "https://meridian.efolusi.com/site/registry/icon.json",
+        "https://meridian.efolusi.com/site/registry/meridian-runtime.json"
       ],
       "files": [
         {
@@ -517,9 +535,9 @@
       ],
       "registryDependencies": [
         "https://meridian.efolusi.com/site/registry/meridian-base.json",
-        "https://meridian.efolusi.com/site/registry/button.json",
         "https://meridian.efolusi.com/site/registry/icon.json",
-        "https://meridian.efolusi.com/site/registry/iconbutton.json"
+        "https://meridian.efolusi.com/site/registry/iconbutton.json",
+        "https://meridian.efolusi.com/site/registry/meridian-runtime.json"
       ],
       "files": [
         {
@@ -549,9 +567,9 @@
       ],
       "registryDependencies": [
         "https://meridian.efolusi.com/site/registry/meridian-base.json",
-        "https://meridian.efolusi.com/site/registry/button.json",
         "https://meridian.efolusi.com/site/registry/direction.json",
-        "https://meridian.efolusi.com/site/registry/icon.json"
+        "https://meridian.efolusi.com/site/registry/icon.json",
+        "https://meridian.efolusi.com/site/registry/meridian-runtime.json"
       ],
       "files": [
         {
@@ -581,8 +599,8 @@
       ],
       "registryDependencies": [
         "https://meridian.efolusi.com/site/registry/meridian-base.json",
-        "https://meridian.efolusi.com/site/registry/button.json",
-        "https://meridian.efolusi.com/site/registry/icon.json"
+        "https://meridian.efolusi.com/site/registry/icon.json",
+        "https://meridian.efolusi.com/site/registry/meridian-runtime.json"
       ],
       "files": [
         {
@@ -612,8 +630,8 @@
       ],
       "registryDependencies": [
         "https://meridian.efolusi.com/site/registry/meridian-base.json",
-        "https://meridian.efolusi.com/site/registry/button.json",
-        "https://meridian.efolusi.com/site/registry/icon.json"
+        "https://meridian.efolusi.com/site/registry/icon.json",
+        "https://meridian.efolusi.com/site/registry/meridian-runtime.json"
       ],
       "files": [
         {
@@ -643,8 +661,8 @@
       ],
       "registryDependencies": [
         "https://meridian.efolusi.com/site/registry/meridian-base.json",
-        "https://meridian.efolusi.com/site/registry/button.json",
-        "https://meridian.efolusi.com/site/registry/icon.json"
+        "https://meridian.efolusi.com/site/registry/icon.json",
+        "https://meridian.efolusi.com/site/registry/meridian-runtime.json"
       ],
       "files": [
         {
@@ -674,8 +692,8 @@
       ],
       "registryDependencies": [
         "https://meridian.efolusi.com/site/registry/meridian-base.json",
-        "https://meridian.efolusi.com/site/registry/button.json",
-        "https://meridian.efolusi.com/site/registry/icon.json"
+        "https://meridian.efolusi.com/site/registry/icon.json",
+        "https://meridian.efolusi.com/site/registry/meridian-runtime.json"
       ],
       "files": [
         {
@@ -705,8 +723,8 @@
       ],
       "registryDependencies": [
         "https://meridian.efolusi.com/site/registry/meridian-base.json",
-        "https://meridian.efolusi.com/site/registry/button.json",
-        "https://meridian.efolusi.com/site/registry/icon.json"
+        "https://meridian.efolusi.com/site/registry/icon.json",
+        "https://meridian.efolusi.com/site/registry/meridian-runtime.json"
       ],
       "files": [
         {
@@ -736,8 +754,8 @@
       ],
       "registryDependencies": [
         "https://meridian.efolusi.com/site/registry/meridian-base.json",
-        "https://meridian.efolusi.com/site/registry/button.json",
-        "https://meridian.efolusi.com/site/registry/icon.json"
+        "https://meridian.efolusi.com/site/registry/icon.json",
+        "https://meridian.efolusi.com/site/registry/meridian-runtime.json"
       ],
       "files": [
         {
@@ -767,8 +785,8 @@
       ],
       "registryDependencies": [
         "https://meridian.efolusi.com/site/registry/meridian-base.json",
-        "https://meridian.efolusi.com/site/registry/button.json",
-        "https://meridian.efolusi.com/site/registry/icon.json"
+        "https://meridian.efolusi.com/site/registry/icon.json",
+        "https://meridian.efolusi.com/site/registry/meridian-runtime.json"
       ],
       "files": [
         {
@@ -798,8 +816,8 @@
       ],
       "registryDependencies": [
         "https://meridian.efolusi.com/site/registry/meridian-base.json",
-        "https://meridian.efolusi.com/site/registry/button.json",
-        "https://meridian.efolusi.com/site/registry/icon.json"
+        "https://meridian.efolusi.com/site/registry/icon.json",
+        "https://meridian.efolusi.com/site/registry/meridian-runtime.json"
       ],
       "files": [
         {
@@ -829,8 +847,8 @@
       ],
       "registryDependencies": [
         "https://meridian.efolusi.com/site/registry/meridian-base.json",
-        "https://meridian.efolusi.com/site/registry/button.json",
-        "https://meridian.efolusi.com/site/registry/icon.json"
+        "https://meridian.efolusi.com/site/registry/icon.json",
+        "https://meridian.efolusi.com/site/registry/meridian-runtime.json"
       ],
       "files": [
         {
@@ -860,7 +878,7 @@
       ],
       "registryDependencies": [
         "https://meridian.efolusi.com/site/registry/meridian-base.json",
-        "https://meridian.efolusi.com/site/registry/button.json",
+        "https://meridian.efolusi.com/site/registry/meridian-runtime.json",
         "https://meridian.efolusi.com/site/registry/player.json"
       ],
       "files": [
@@ -891,7 +909,7 @@
       ],
       "registryDependencies": [
         "https://meridian.efolusi.com/site/registry/meridian-base.json",
-        "https://meridian.efolusi.com/site/registry/button.json"
+        "https://meridian.efolusi.com/site/registry/meridian-runtime.json"
       ],
       "files": [
         {
@@ -921,8 +939,8 @@
       ],
       "registryDependencies": [
         "https://meridian.efolusi.com/site/registry/meridian-base.json",
-        "https://meridian.efolusi.com/site/registry/button.json",
-        "https://meridian.efolusi.com/site/registry/icon.json"
+        "https://meridian.efolusi.com/site/registry/icon.json",
+        "https://meridian.efolusi.com/site/registry/meridian-runtime.json"
       ],
       "files": [
         {
@@ -952,8 +970,8 @@
       ],
       "registryDependencies": [
         "https://meridian.efolusi.com/site/registry/meridian-base.json",
-        "https://meridian.efolusi.com/site/registry/button.json",
-        "https://meridian.efolusi.com/site/registry/icon.json"
+        "https://meridian.efolusi.com/site/registry/icon.json",
+        "https://meridian.efolusi.com/site/registry/meridian-runtime.json"
       ],
       "files": [
         {
@@ -983,8 +1001,8 @@
       ],
       "registryDependencies": [
         "https://meridian.efolusi.com/site/registry/meridian-base.json",
-        "https://meridian.efolusi.com/site/registry/button.json",
-        "https://meridian.efolusi.com/site/registry/icon.json"
+        "https://meridian.efolusi.com/site/registry/icon.json",
+        "https://meridian.efolusi.com/site/registry/meridian-runtime.json"
       ],
       "files": [
         {
@@ -1014,9 +1032,9 @@
       ],
       "registryDependencies": [
         "https://meridian.efolusi.com/site/registry/meridian-base.json",
-        "https://meridian.efolusi.com/site/registry/button.json",
         "https://meridian.efolusi.com/site/registry/icon.json",
-        "https://meridian.efolusi.com/site/registry/iconbutton.json"
+        "https://meridian.efolusi.com/site/registry/iconbutton.json",
+        "https://meridian.efolusi.com/site/registry/meridian-runtime.json"
       ],
       "files": [
         {
@@ -1046,8 +1064,8 @@
       ],
       "registryDependencies": [
         "https://meridian.efolusi.com/site/registry/meridian-base.json",
-        "https://meridian.efolusi.com/site/registry/button.json",
-        "https://meridian.efolusi.com/site/registry/icon.json"
+        "https://meridian.efolusi.com/site/registry/icon.json",
+        "https://meridian.efolusi.com/site/registry/meridian-runtime.json"
       ],
       "files": [
         {
@@ -1077,8 +1095,8 @@
       ],
       "registryDependencies": [
         "https://meridian.efolusi.com/site/registry/meridian-base.json",
-        "https://meridian.efolusi.com/site/registry/button.json",
-        "https://meridian.efolusi.com/site/registry/icon.json"
+        "https://meridian.efolusi.com/site/registry/icon.json",
+        "https://meridian.efolusi.com/site/registry/meridian-runtime.json"
       ],
       "files": [
         {
@@ -1108,8 +1126,8 @@
       ],
       "registryDependencies": [
         "https://meridian.efolusi.com/site/registry/meridian-base.json",
-        "https://meridian.efolusi.com/site/registry/button.json",
-        "https://meridian.efolusi.com/site/registry/icon.json"
+        "https://meridian.efolusi.com/site/registry/icon.json",
+        "https://meridian.efolusi.com/site/registry/meridian-runtime.json"
       ],
       "files": [
         {
@@ -1139,7 +1157,7 @@
       ],
       "registryDependencies": [
         "https://meridian.efolusi.com/site/registry/meridian-base.json",
-        "https://meridian.efolusi.com/site/registry/button.json"
+        "https://meridian.efolusi.com/site/registry/meridian-runtime.json"
       ],
       "files": [
         {
@@ -1169,7 +1187,7 @@
       ],
       "registryDependencies": [
         "https://meridian.efolusi.com/site/registry/meridian-base.json",
-        "https://meridian.efolusi.com/site/registry/button.json"
+        "https://meridian.efolusi.com/site/registry/meridian-runtime.json"
       ],
       "files": [
         {
@@ -1200,7 +1218,7 @@
       ],
       "registryDependencies": [
         "https://meridian.efolusi.com/site/registry/meridian-base.json",
-        "https://meridian.efolusi.com/site/registry/button.json"
+        "https://meridian.efolusi.com/site/registry/meridian-runtime.json"
       ],
       "files": [
         {
@@ -1230,7 +1248,7 @@
       ],
       "registryDependencies": [
         "https://meridian.efolusi.com/site/registry/meridian-base.json",
-        "https://meridian.efolusi.com/site/registry/button.json"
+        "https://meridian.efolusi.com/site/registry/meridian-runtime.json"
       ],
       "files": [
         {
@@ -1260,7 +1278,7 @@
       ],
       "registryDependencies": [
         "https://meridian.efolusi.com/site/registry/meridian-base.json",
-        "https://meridian.efolusi.com/site/registry/button.json"
+        "https://meridian.efolusi.com/site/registry/meridian-runtime.json"
       ],
       "files": [
         {
@@ -1290,7 +1308,7 @@
       ],
       "registryDependencies": [
         "https://meridian.efolusi.com/site/registry/meridian-base.json",
-        "https://meridian.efolusi.com/site/registry/button.json"
+        "https://meridian.efolusi.com/site/registry/meridian-runtime.json"
       ],
       "files": [
         {
@@ -1320,7 +1338,7 @@
       ],
       "registryDependencies": [
         "https://meridian.efolusi.com/site/registry/meridian-base.json",
-        "https://meridian.efolusi.com/site/registry/button.json"
+        "https://meridian.efolusi.com/site/registry/meridian-runtime.json"
       ],
       "files": [
         {
@@ -1350,7 +1368,7 @@
       ],
       "registryDependencies": [
         "https://meridian.efolusi.com/site/registry/meridian-base.json",
-        "https://meridian.efolusi.com/site/registry/button.json"
+        "https://meridian.efolusi.com/site/registry/meridian-runtime.json"
       ],
       "files": [
         {
@@ -1409,7 +1427,7 @@
       ],
       "registryDependencies": [
         "https://meridian.efolusi.com/site/registry/meridian-base.json",
-        "https://meridian.efolusi.com/site/registry/button.json"
+        "https://meridian.efolusi.com/site/registry/meridian-runtime.json"
       ],
       "files": [
         {
@@ -1439,7 +1457,7 @@
       ],
       "registryDependencies": [
         "https://meridian.efolusi.com/site/registry/meridian-base.json",
-        "https://meridian.efolusi.com/site/registry/button.json"
+        "https://meridian.efolusi.com/site/registry/meridian-runtime.json"
       ],
       "files": [
         {
@@ -1469,9 +1487,9 @@
       ],
       "registryDependencies": [
         "https://meridian.efolusi.com/site/registry/meridian-base.json",
-        "https://meridian.efolusi.com/site/registry/button.json",
         "https://meridian.efolusi.com/site/registry/checkbox.json",
-        "https://meridian.efolusi.com/site/registry/icon.json"
+        "https://meridian.efolusi.com/site/registry/icon.json",
+        "https://meridian.efolusi.com/site/registry/meridian-runtime.json"
       ],
       "files": [
         {
@@ -1501,9 +1519,9 @@
       ],
       "registryDependencies": [
         "https://meridian.efolusi.com/site/registry/meridian-base.json",
-        "https://meridian.efolusi.com/site/registry/button.json",
         "https://meridian.efolusi.com/site/registry/direction.json",
         "https://meridian.efolusi.com/site/registry/iconbutton.json",
+        "https://meridian.efolusi.com/site/registry/meridian-runtime.json",
         "https://meridian.efolusi.com/site/registry/nativeselect.json"
       ],
       "files": [
@@ -1534,9 +1552,9 @@
       ],
       "registryDependencies": [
         "https://meridian.efolusi.com/site/registry/meridian-base.json",
-        "https://meridian.efolusi.com/site/registry/button.json",
         "https://meridian.efolusi.com/site/registry/field.json",
         "https://meridian.efolusi.com/site/registry/icon.json",
+        "https://meridian.efolusi.com/site/registry/meridian-runtime.json",
         "https://meridian.efolusi.com/site/registry/portal.json"
       ],
       "files": [
@@ -1567,8 +1585,8 @@
       ],
       "registryDependencies": [
         "https://meridian.efolusi.com/site/registry/meridian-base.json",
-        "https://meridian.efolusi.com/site/registry/button.json",
-        "https://meridian.efolusi.com/site/registry/icon.json"
+        "https://meridian.efolusi.com/site/registry/icon.json",
+        "https://meridian.efolusi.com/site/registry/meridian-runtime.json"
       ],
       "files": [
         {
@@ -1598,7 +1616,7 @@
       ],
       "registryDependencies": [
         "https://meridian.efolusi.com/site/registry/meridian-base.json",
-        "https://meridian.efolusi.com/site/registry/button.json"
+        "https://meridian.efolusi.com/site/registry/meridian-runtime.json"
       ],
       "files": [
         {
@@ -1628,7 +1646,7 @@
       ],
       "registryDependencies": [
         "https://meridian.efolusi.com/site/registry/meridian-base.json",
-        "https://meridian.efolusi.com/site/registry/button.json"
+        "https://meridian.efolusi.com/site/registry/meridian-runtime.json"
       ],
       "files": [
         {
@@ -1658,7 +1676,7 @@
       ],
       "registryDependencies": [
         "https://meridian.efolusi.com/site/registry/meridian-base.json",
-        "https://meridian.efolusi.com/site/registry/button.json"
+        "https://meridian.efolusi.com/site/registry/meridian-runtime.json"
       ],
       "files": [
         {
@@ -1688,7 +1706,7 @@
       ],
       "registryDependencies": [
         "https://meridian.efolusi.com/site/registry/meridian-base.json",
-        "https://meridian.efolusi.com/site/registry/button.json"
+        "https://meridian.efolusi.com/site/registry/meridian-runtime.json"
       ],
       "files": [
         {
@@ -1718,9 +1736,9 @@
       ],
       "registryDependencies": [
         "https://meridian.efolusi.com/site/registry/meridian-base.json",
-        "https://meridian.efolusi.com/site/registry/button.json",
         "https://meridian.efolusi.com/site/registry/direction.json",
-        "https://meridian.efolusi.com/site/registry/icon.json"
+        "https://meridian.efolusi.com/site/registry/icon.json",
+        "https://meridian.efolusi.com/site/registry/meridian-runtime.json"
       ],
       "files": [
         {
@@ -1750,7 +1768,7 @@
       ],
       "registryDependencies": [
         "https://meridian.efolusi.com/site/registry/meridian-base.json",
-        "https://meridian.efolusi.com/site/registry/button.json"
+        "https://meridian.efolusi.com/site/registry/meridian-runtime.json"
       ],
       "files": [
         {
@@ -1809,7 +1827,7 @@
       ],
       "registryDependencies": [
         "https://meridian.efolusi.com/site/registry/meridian-base.json",
-        "https://meridian.efolusi.com/site/registry/button.json"
+        "https://meridian.efolusi.com/site/registry/meridian-runtime.json"
       ],
       "files": [
         {
@@ -1839,7 +1857,7 @@
       ],
       "registryDependencies": [
         "https://meridian.efolusi.com/site/registry/meridian-base.json",
-        "https://meridian.efolusi.com/site/registry/button.json",
+        "https://meridian.efolusi.com/site/registry/meridian-runtime.json",
         "https://meridian.efolusi.com/site/registry/separator.json"
       ],
       "files": [
@@ -1870,7 +1888,7 @@
       ],
       "registryDependencies": [
         "https://meridian.efolusi.com/site/registry/meridian-base.json",
-        "https://meridian.efolusi.com/site/registry/button.json"
+        "https://meridian.efolusi.com/site/registry/meridian-runtime.json"
       ],
       "files": [
         {
@@ -1900,8 +1918,8 @@
       ],
       "registryDependencies": [
         "https://meridian.efolusi.com/site/registry/meridian-base.json",
-        "https://meridian.efolusi.com/site/registry/button.json",
-        "https://meridian.efolusi.com/site/registry/icon.json"
+        "https://meridian.efolusi.com/site/registry/icon.json",
+        "https://meridian.efolusi.com/site/registry/meridian-runtime.json"
       ],
       "files": [
         {
@@ -1931,8 +1949,8 @@
       ],
       "registryDependencies": [
         "https://meridian.efolusi.com/site/registry/meridian-base.json",
-        "https://meridian.efolusi.com/site/registry/button.json",
-        "https://meridian.efolusi.com/site/registry/direction.json"
+        "https://meridian.efolusi.com/site/registry/direction.json",
+        "https://meridian.efolusi.com/site/registry/meridian-runtime.json"
       ],
       "files": [
         {
@@ -1962,7 +1980,7 @@
       ],
       "registryDependencies": [
         "https://meridian.efolusi.com/site/registry/meridian-base.json",
-        "https://meridian.efolusi.com/site/registry/button.json"
+        "https://meridian.efolusi.com/site/registry/meridian-runtime.json"
       ],
       "files": [
         {
@@ -1992,7 +2010,7 @@
       ],
       "registryDependencies": [
         "https://meridian.efolusi.com/site/registry/meridian-base.json",
-        "https://meridian.efolusi.com/site/registry/button.json"
+        "https://meridian.efolusi.com/site/registry/meridian-runtime.json"
       ],
       "files": [
         {
@@ -2022,8 +2040,8 @@
       ],
       "registryDependencies": [
         "https://meridian.efolusi.com/site/registry/meridian-base.json",
-        "https://meridian.efolusi.com/site/registry/button.json",
-        "https://meridian.efolusi.com/site/registry/icon.json"
+        "https://meridian.efolusi.com/site/registry/icon.json",
+        "https://meridian.efolusi.com/site/registry/meridian-runtime.json"
       ],
       "files": [
         {
@@ -2053,8 +2071,8 @@
       ],
       "registryDependencies": [
         "https://meridian.efolusi.com/site/registry/meridian-base.json",
-        "https://meridian.efolusi.com/site/registry/button.json",
-        "https://meridian.efolusi.com/site/registry/icon.json"
+        "https://meridian.efolusi.com/site/registry/icon.json",
+        "https://meridian.efolusi.com/site/registry/meridian-runtime.json"
       ],
       "files": [
         {
@@ -2084,8 +2102,8 @@
       ],
       "registryDependencies": [
         "https://meridian.efolusi.com/site/registry/meridian-base.json",
-        "https://meridian.efolusi.com/site/registry/button.json",
         "https://meridian.efolusi.com/site/registry/icon.json",
+        "https://meridian.efolusi.com/site/registry/meridian-runtime.json",
         "https://meridian.efolusi.com/site/registry/tooltip.json"
       ],
       "files": [
@@ -2116,8 +2134,8 @@
       ],
       "registryDependencies": [
         "https://meridian.efolusi.com/site/registry/meridian-base.json",
-        "https://meridian.efolusi.com/site/registry/button.json",
-        "https://meridian.efolusi.com/site/registry/icon.json"
+        "https://meridian.efolusi.com/site/registry/icon.json",
+        "https://meridian.efolusi.com/site/registry/meridian-runtime.json"
       ],
       "files": [
         {
@@ -2147,7 +2165,7 @@
       ],
       "registryDependencies": [
         "https://meridian.efolusi.com/site/registry/meridian-base.json",
-        "https://meridian.efolusi.com/site/registry/button.json"
+        "https://meridian.efolusi.com/site/registry/meridian-runtime.json"
       ],
       "files": [
         {
@@ -2178,6 +2196,7 @@
       "registryDependencies": [
         "https://meridian.efolusi.com/site/registry/meridian-base.json",
         "https://meridian.efolusi.com/site/registry/button.json",
+        "https://meridian.efolusi.com/site/registry/meridian-runtime.json",
         "https://meridian.efolusi.com/site/registry/portal.json"
       ],
       "files": [
@@ -2208,9 +2227,9 @@
       ],
       "registryDependencies": [
         "https://meridian.efolusi.com/site/registry/meridian-base.json",
-        "https://meridian.efolusi.com/site/registry/button.json",
         "https://meridian.efolusi.com/site/registry/icon.json",
-        "https://meridian.efolusi.com/site/registry/iconbutton.json"
+        "https://meridian.efolusi.com/site/registry/iconbutton.json",
+        "https://meridian.efolusi.com/site/registry/meridian-runtime.json"
       ],
       "files": [
         {
@@ -2272,8 +2291,8 @@
       ],
       "registryDependencies": [
         "https://meridian.efolusi.com/site/registry/meridian-base.json",
-        "https://meridian.efolusi.com/site/registry/button.json",
         "https://meridian.efolusi.com/site/registry/iconbutton.json",
+        "https://meridian.efolusi.com/site/registry/meridian-runtime.json",
         "https://meridian.efolusi.com/site/registry/portal.json"
       ],
       "files": [
@@ -2304,7 +2323,7 @@
       ],
       "registryDependencies": [
         "https://meridian.efolusi.com/site/registry/meridian-base.json",
-        "https://meridian.efolusi.com/site/registry/button.json"
+        "https://meridian.efolusi.com/site/registry/meridian-runtime.json"
       ],
       "files": [
         {
@@ -2334,7 +2353,7 @@
       ],
       "registryDependencies": [
         "https://meridian.efolusi.com/site/registry/meridian-base.json",
-        "https://meridian.efolusi.com/site/registry/button.json"
+        "https://meridian.efolusi.com/site/registry/meridian-runtime.json"
       ],
       "files": [
         {
@@ -2364,7 +2383,7 @@
       ],
       "registryDependencies": [
         "https://meridian.efolusi.com/site/registry/meridian-base.json",
-        "https://meridian.efolusi.com/site/registry/button.json"
+        "https://meridian.efolusi.com/site/registry/meridian-runtime.json"
       ],
       "files": [
         {
@@ -2394,9 +2413,9 @@
       ],
       "registryDependencies": [
         "https://meridian.efolusi.com/site/registry/meridian-base.json",
-        "https://meridian.efolusi.com/site/registry/button.json",
         "https://meridian.efolusi.com/site/registry/icon.json",
         "https://meridian.efolusi.com/site/registry/iconbutton.json",
+        "https://meridian.efolusi.com/site/registry/meridian-runtime.json",
         "https://meridian.efolusi.com/site/registry/portal.json"
       ],
       "files": [
@@ -2427,7 +2446,7 @@
       ],
       "registryDependencies": [
         "https://meridian.efolusi.com/site/registry/meridian-base.json",
-        "https://meridian.efolusi.com/site/registry/button.json",
+        "https://meridian.efolusi.com/site/registry/meridian-runtime.json",
         "https://meridian.efolusi.com/site/registry/portal.json"
       ],
       "files": [
@@ -2458,7 +2477,8 @@
       ],
       "registryDependencies": [
         "https://meridian.efolusi.com/site/registry/meridian-base.json",
-        "https://meridian.efolusi.com/site/registry/button.json"
+        "https://meridian.efolusi.com/site/registry/button.json",
+        "https://meridian.efolusi.com/site/registry/meridian-runtime.json"
       ],
       "files": [
         {
@@ -2488,8 +2508,8 @@
       ],
       "registryDependencies": [
         "https://meridian.efolusi.com/site/registry/meridian-base.json",
-        "https://meridian.efolusi.com/site/registry/button.json",
-        "https://meridian.efolusi.com/site/registry/icon.json"
+        "https://meridian.efolusi.com/site/registry/icon.json",
+        "https://meridian.efolusi.com/site/registry/meridian-runtime.json"
       ],
       "files": [
         {
@@ -2519,9 +2539,9 @@
       ],
       "registryDependencies": [
         "https://meridian.efolusi.com/site/registry/meridian-base.json",
-        "https://meridian.efolusi.com/site/registry/button.json",
         "https://meridian.efolusi.com/site/registry/icon.json",
         "https://meridian.efolusi.com/site/registry/iconbutton.json",
+        "https://meridian.efolusi.com/site/registry/meridian-runtime.json",
         "https://meridian.efolusi.com/site/registry/progress.json"
       ],
       "files": [
@@ -2552,8 +2572,8 @@
       ],
       "registryDependencies": [
         "https://meridian.efolusi.com/site/registry/meridian-base.json",
-        "https://meridian.efolusi.com/site/registry/button.json",
-        "https://meridian.efolusi.com/site/registry/icon.json"
+        "https://meridian.efolusi.com/site/registry/icon.json",
+        "https://meridian.efolusi.com/site/registry/meridian-runtime.json"
       ],
       "files": [
         {
@@ -2583,7 +2603,7 @@
       ],
       "registryDependencies": [
         "https://meridian.efolusi.com/site/registry/meridian-base.json",
-        "https://meridian.efolusi.com/site/registry/button.json"
+        "https://meridian.efolusi.com/site/registry/meridian-runtime.json"
       ],
       "files": [
         {
@@ -2613,7 +2633,8 @@
       ],
       "registryDependencies": [
         "https://meridian.efolusi.com/site/registry/meridian-base.json",
-        "https://meridian.efolusi.com/site/registry/icon.json"
+        "https://meridian.efolusi.com/site/registry/icon.json",
+        "https://meridian.efolusi.com/site/registry/meridian-runtime.json"
       ],
       "files": [
         {
@@ -2643,7 +2664,7 @@
       ],
       "registryDependencies": [
         "https://meridian.efolusi.com/site/registry/meridian-base.json",
-        "https://meridian.efolusi.com/site/registry/button.json",
+        "https://meridian.efolusi.com/site/registry/meridian-runtime.json",
         "https://meridian.efolusi.com/site/registry/separator.json"
       ],
       "files": [
@@ -2674,8 +2695,8 @@
       ],
       "registryDependencies": [
         "https://meridian.efolusi.com/site/registry/meridian-base.json",
-        "https://meridian.efolusi.com/site/registry/button.json",
-        "https://meridian.efolusi.com/site/registry/icon.json"
+        "https://meridian.efolusi.com/site/registry/icon.json",
+        "https://meridian.efolusi.com/site/registry/meridian-runtime.json"
       ],
       "files": [
         {
@@ -2705,9 +2726,9 @@
       ],
       "registryDependencies": [
         "https://meridian.efolusi.com/site/registry/meridian-base.json",
-        "https://meridian.efolusi.com/site/registry/button.json",
         "https://meridian.efolusi.com/site/registry/field.json",
-        "https://meridian.efolusi.com/site/registry/icon.json"
+        "https://meridian.efolusi.com/site/registry/icon.json",
+        "https://meridian.efolusi.com/site/registry/meridian-runtime.json"
       ],
       "files": [
         {
@@ -2737,9 +2758,9 @@
       ],
       "registryDependencies": [
         "https://meridian.efolusi.com/site/registry/meridian-base.json",
-        "https://meridian.efolusi.com/site/registry/button.json",
         "https://meridian.efolusi.com/site/registry/icon.json",
         "https://meridian.efolusi.com/site/registry/inputgroup.json",
+        "https://meridian.efolusi.com/site/registry/meridian-runtime.json",
         "https://meridian.efolusi.com/site/registry/portal.json"
       ],
       "files": [
@@ -2770,7 +2791,7 @@
       ],
       "registryDependencies": [
         "https://meridian.efolusi.com/site/registry/meridian-base.json",
-        "https://meridian.efolusi.com/site/registry/button.json"
+        "https://meridian.efolusi.com/site/registry/meridian-runtime.json"
       ],
       "files": [
         {
@@ -2800,8 +2821,8 @@
       ],
       "registryDependencies": [
         "https://meridian.efolusi.com/site/registry/meridian-base.json",
-        "https://meridian.efolusi.com/site/registry/button.json",
-        "https://meridian.efolusi.com/site/registry/icon.json"
+        "https://meridian.efolusi.com/site/registry/icon.json",
+        "https://meridian.efolusi.com/site/registry/meridian-runtime.json"
       ],
       "files": [
         {
@@ -2831,9 +2852,9 @@
       ],
       "registryDependencies": [
         "https://meridian.efolusi.com/site/registry/meridian-base.json",
-        "https://meridian.efolusi.com/site/registry/button.json",
         "https://meridian.efolusi.com/site/registry/field.json",
-        "https://meridian.efolusi.com/site/registry/icon.json"
+        "https://meridian.efolusi.com/site/registry/icon.json",
+        "https://meridian.efolusi.com/site/registry/meridian-runtime.json"
       ],
       "files": [
         {
@@ -2863,8 +2884,8 @@
       ],
       "registryDependencies": [
         "https://meridian.efolusi.com/site/registry/meridian-base.json",
-        "https://meridian.efolusi.com/site/registry/button.json",
-        "https://meridian.efolusi.com/site/registry/field.json"
+        "https://meridian.efolusi.com/site/registry/field.json",
+        "https://meridian.efolusi.com/site/registry/meridian-runtime.json"
       ],
       "files": [
         {
@@ -2894,7 +2915,7 @@
       ],
       "registryDependencies": [
         "https://meridian.efolusi.com/site/registry/meridian-base.json",
-        "https://meridian.efolusi.com/site/registry/button.json"
+        "https://meridian.efolusi.com/site/registry/meridian-runtime.json"
       ],
       "files": [
         {
@@ -2924,7 +2945,7 @@
       ],
       "registryDependencies": [
         "https://meridian.efolusi.com/site/registry/meridian-base.json",
-        "https://meridian.efolusi.com/site/registry/button.json"
+        "https://meridian.efolusi.com/site/registry/meridian-runtime.json"
       ],
       "files": [
         {
@@ -2954,8 +2975,8 @@
       ],
       "registryDependencies": [
         "https://meridian.efolusi.com/site/registry/meridian-base.json",
-        "https://meridian.efolusi.com/site/registry/button.json",
-        "https://meridian.efolusi.com/site/registry/icon.json"
+        "https://meridian.efolusi.com/site/registry/icon.json",
+        "https://meridian.efolusi.com/site/registry/meridian-runtime.json"
       ],
       "files": [
         {
@@ -2985,9 +3006,9 @@
       ],
       "registryDependencies": [
         "https://meridian.efolusi.com/site/registry/meridian-base.json",
-        "https://meridian.efolusi.com/site/registry/button.json",
         "https://meridian.efolusi.com/site/registry/field.json",
-        "https://meridian.efolusi.com/site/registry/icon.json"
+        "https://meridian.efolusi.com/site/registry/icon.json",
+        "https://meridian.efolusi.com/site/registry/meridian-runtime.json"
       ],
       "files": [
         {
@@ -3017,7 +3038,7 @@
       ],
       "registryDependencies": [
         "https://meridian.efolusi.com/site/registry/meridian-base.json",
-        "https://meridian.efolusi.com/site/registry/button.json"
+        "https://meridian.efolusi.com/site/registry/meridian-runtime.json"
       ],
       "files": [
         {
@@ -3047,8 +3068,8 @@
       ],
       "registryDependencies": [
         "https://meridian.efolusi.com/site/registry/meridian-base.json",
-        "https://meridian.efolusi.com/site/registry/button.json",
-        "https://meridian.efolusi.com/site/registry/field.json"
+        "https://meridian.efolusi.com/site/registry/field.json",
+        "https://meridian.efolusi.com/site/registry/meridian-runtime.json"
       ],
       "files": [
         {
@@ -3078,8 +3099,8 @@
       ],
       "registryDependencies": [
         "https://meridian.efolusi.com/site/registry/meridian-base.json",
-        "https://meridian.efolusi.com/site/registry/button.json",
         "https://meridian.efolusi.com/site/registry/icon.json",
+        "https://meridian.efolusi.com/site/registry/meridian-runtime.json",
         "https://meridian.efolusi.com/site/registry/portal.json"
       ],
       "files": [
@@ -3110,8 +3131,8 @@
       ],
       "registryDependencies": [
         "https://meridian.efolusi.com/site/registry/meridian-base.json",
-        "https://meridian.efolusi.com/site/registry/button.json",
-        "https://meridian.efolusi.com/site/registry/field.json"
+        "https://meridian.efolusi.com/site/registry/field.json",
+        "https://meridian.efolusi.com/site/registry/meridian-runtime.json"
       ],
       "files": [
         {
@@ -3141,8 +3162,8 @@
       ],
       "registryDependencies": [
         "https://meridian.efolusi.com/site/registry/meridian-base.json",
-        "https://meridian.efolusi.com/site/registry/button.json",
-        "https://meridian.efolusi.com/site/registry/field.json"
+        "https://meridian.efolusi.com/site/registry/field.json",
+        "https://meridian.efolusi.com/site/registry/meridian-runtime.json"
       ],
       "files": [
         {
@@ -3172,9 +3193,9 @@
       ],
       "registryDependencies": [
         "https://meridian.efolusi.com/site/registry/meridian-base.json",
-        "https://meridian.efolusi.com/site/registry/button.json",
         "https://meridian.efolusi.com/site/registry/field.json",
-        "https://meridian.efolusi.com/site/registry/icon.json"
+        "https://meridian.efolusi.com/site/registry/icon.json",
+        "https://meridian.efolusi.com/site/registry/meridian-runtime.json"
       ],
       "files": [
         {
@@ -3204,7 +3225,7 @@
       ],
       "registryDependencies": [
         "https://meridian.efolusi.com/site/registry/meridian-base.json",
-        "https://meridian.efolusi.com/site/registry/button.json"
+        "https://meridian.efolusi.com/site/registry/meridian-runtime.json"
       ],
       "files": [
         {
@@ -3274,8 +3295,8 @@
       ],
       "registryDependencies": [
         "https://meridian.efolusi.com/site/registry/meridian-base.json",
-        "https://meridian.efolusi.com/site/registry/button.json",
-        "https://meridian.efolusi.com/site/registry/icon.json"
+        "https://meridian.efolusi.com/site/registry/icon.json",
+        "https://meridian.efolusi.com/site/registry/meridian-runtime.json"
       ],
       "files": [
         {
@@ -3305,7 +3326,7 @@
       ],
       "registryDependencies": [
         "https://meridian.efolusi.com/site/registry/meridian-base.json",
-        "https://meridian.efolusi.com/site/registry/button.json"
+        "https://meridian.efolusi.com/site/registry/meridian-runtime.json"
       ],
       "files": [
         {
@@ -3335,7 +3356,7 @@
       ],
       "registryDependencies": [
         "https://meridian.efolusi.com/site/registry/meridian-base.json",
-        "https://meridian.efolusi.com/site/registry/button.json"
+        "https://meridian.efolusi.com/site/registry/meridian-runtime.json"
       ],
       "files": [
         {
@@ -3365,8 +3386,8 @@
       ],
       "registryDependencies": [
         "https://meridian.efolusi.com/site/registry/meridian-base.json",
-        "https://meridian.efolusi.com/site/registry/button.json",
-        "https://meridian.efolusi.com/site/registry/icon.json"
+        "https://meridian.efolusi.com/site/registry/icon.json",
+        "https://meridian.efolusi.com/site/registry/meridian-runtime.json"
       ],
       "files": [
         {
@@ -3396,7 +3417,7 @@
       ],
       "registryDependencies": [
         "https://meridian.efolusi.com/site/registry/meridian-base.json",
-        "https://meridian.efolusi.com/site/registry/button.json"
+        "https://meridian.efolusi.com/site/registry/meridian-runtime.json"
       ],
       "files": [
         {
@@ -3426,7 +3447,7 @@
       ],
       "registryDependencies": [
         "https://meridian.efolusi.com/site/registry/meridian-base.json",
-        "https://meridian.efolusi.com/site/registry/button.json"
+        "https://meridian.efolusi.com/site/registry/meridian-runtime.json"
       ],
       "files": [
         {
@@ -3456,7 +3477,7 @@
       ],
       "registryDependencies": [
         "https://meridian.efolusi.com/site/registry/meridian-base.json",
-        "https://meridian.efolusi.com/site/registry/button.json"
+        "https://meridian.efolusi.com/site/registry/meridian-runtime.json"
       ],
       "files": [
         {
@@ -3486,8 +3507,8 @@
       ],
       "registryDependencies": [
         "https://meridian.efolusi.com/site/registry/meridian-base.json",
-        "https://meridian.efolusi.com/site/registry/button.json",
         "https://meridian.efolusi.com/site/registry/icon.json",
+        "https://meridian.efolusi.com/site/registry/meridian-runtime.json",
         "https://meridian.efolusi.com/site/registry/skiplink.json"
       ],
       "files": [
@@ -3518,8 +3539,8 @@
       ],
       "registryDependencies": [
         "https://meridian.efolusi.com/site/registry/meridian-base.json",
-        "https://meridian.efolusi.com/site/registry/button.json",
-        "https://meridian.efolusi.com/site/registry/icon.json"
+        "https://meridian.efolusi.com/site/registry/icon.json",
+        "https://meridian.efolusi.com/site/registry/meridian-runtime.json"
       ],
       "files": [
         {
@@ -3549,8 +3570,8 @@
       ],
       "registryDependencies": [
         "https://meridian.efolusi.com/site/registry/meridian-base.json",
-        "https://meridian.efolusi.com/site/registry/button.json",
-        "https://meridian.efolusi.com/site/registry/icon.json"
+        "https://meridian.efolusi.com/site/registry/icon.json",
+        "https://meridian.efolusi.com/site/registry/meridian-runtime.json"
       ],
       "files": [
         {
@@ -3580,9 +3601,9 @@
       ],
       "registryDependencies": [
         "https://meridian.efolusi.com/site/registry/meridian-base.json",
-        "https://meridian.efolusi.com/site/registry/button.json",
         "https://meridian.efolusi.com/site/registry/direction.json",
-        "https://meridian.efolusi.com/site/registry/dropdownmenu.json"
+        "https://meridian.efolusi.com/site/registry/dropdownmenu.json",
+        "https://meridian.efolusi.com/site/registry/meridian-runtime.json"
       ],
       "files": [
         {
@@ -3612,9 +3633,9 @@
       ],
       "registryDependencies": [
         "https://meridian.efolusi.com/site/registry/meridian-base.json",
-        "https://meridian.efolusi.com/site/registry/button.json",
         "https://meridian.efolusi.com/site/registry/direction.json",
-        "https://meridian.efolusi.com/site/registry/icon.json"
+        "https://meridian.efolusi.com/site/registry/icon.json",
+        "https://meridian.efolusi.com/site/registry/meridian-runtime.json"
       ],
       "files": [
         {
@@ -3644,7 +3665,7 @@
       ],
       "registryDependencies": [
         "https://meridian.efolusi.com/site/registry/meridian-base.json",
-        "https://meridian.efolusi.com/site/registry/button.json"
+        "https://meridian.efolusi.com/site/registry/meridian-runtime.json"
       ],
       "files": [
         {
@@ -3674,8 +3695,8 @@
       ],
       "registryDependencies": [
         "https://meridian.efolusi.com/site/registry/meridian-base.json",
-        "https://meridian.efolusi.com/site/registry/button.json",
-        "https://meridian.efolusi.com/site/registry/icon.json"
+        "https://meridian.efolusi.com/site/registry/icon.json",
+        "https://meridian.efolusi.com/site/registry/meridian-runtime.json"
       ],
       "files": [
         {
@@ -3705,8 +3726,8 @@
       ],
       "registryDependencies": [
         "https://meridian.efolusi.com/site/registry/meridian-base.json",
-        "https://meridian.efolusi.com/site/registry/button.json",
-        "https://meridian.efolusi.com/site/registry/icon.json"
+        "https://meridian.efolusi.com/site/registry/icon.json",
+        "https://meridian.efolusi.com/site/registry/meridian-runtime.json"
       ],
       "files": [
         {
@@ -3737,8 +3758,8 @@
       "registryDependencies": [
         "https://meridian.efolusi.com/site/registry/meridian-base.json",
         "https://meridian.efolusi.com/site/registry/badge.json",
-        "https://meridian.efolusi.com/site/registry/button.json",
-        "https://meridian.efolusi.com/site/registry/icon.json"
+        "https://meridian.efolusi.com/site/registry/icon.json",
+        "https://meridian.efolusi.com/site/registry/meridian-runtime.json"
       ],
       "files": [
         {
@@ -3768,8 +3789,8 @@
       ],
       "registryDependencies": [
         "https://meridian.efolusi.com/site/registry/meridian-base.json",
-        "https://meridian.efolusi.com/site/registry/button.json",
         "https://meridian.efolusi.com/site/registry/icon.json",
+        "https://meridian.efolusi.com/site/registry/meridian-runtime.json",
         "https://meridian.efolusi.com/site/registry/portal.json"
       ],
       "files": [
@@ -3800,7 +3821,7 @@
       ],
       "registryDependencies": [
         "https://meridian.efolusi.com/site/registry/meridian-base.json",
-        "https://meridian.efolusi.com/site/registry/button.json"
+        "https://meridian.efolusi.com/site/registry/meridian-runtime.json"
       ],
       "files": [
         {
@@ -3830,8 +3851,8 @@
       ],
       "registryDependencies": [
         "https://meridian.efolusi.com/site/registry/meridian-base.json",
-        "https://meridian.efolusi.com/site/registry/button.json",
-        "https://meridian.efolusi.com/site/registry/icon.json"
+        "https://meridian.efolusi.com/site/registry/icon.json",
+        "https://meridian.efolusi.com/site/registry/meridian-runtime.json"
       ],
       "files": [
         {
@@ -3861,9 +3882,9 @@
       ],
       "registryDependencies": [
         "https://meridian.efolusi.com/site/registry/meridian-base.json",
-        "https://meridian.efolusi.com/site/registry/button.json",
         "https://meridian.efolusi.com/site/registry/direction.json",
-        "https://meridian.efolusi.com/site/registry/icon.json"
+        "https://meridian.efolusi.com/site/registry/icon.json",
+        "https://meridian.efolusi.com/site/registry/meridian-runtime.json"
       ],
       "files": [
         {
@@ -3893,7 +3914,7 @@
       ],
       "registryDependencies": [
         "https://meridian.efolusi.com/site/registry/meridian-base.json",
-        "https://meridian.efolusi.com/site/registry/button.json"
+        "https://meridian.efolusi.com/site/registry/meridian-runtime.json"
       ],
       "files": [
         {
@@ -3923,9 +3944,9 @@
       ],
       "registryDependencies": [
         "https://meridian.efolusi.com/site/registry/meridian-base.json",
-        "https://meridian.efolusi.com/site/registry/button.json",
         "https://meridian.efolusi.com/site/registry/dialog.json",
-        "https://meridian.efolusi.com/site/registry/icon.json"
+        "https://meridian.efolusi.com/site/registry/icon.json",
+        "https://meridian.efolusi.com/site/registry/meridian-runtime.json"
       ],
       "files": [
         {
@@ -3955,9 +3976,9 @@
       ],
       "registryDependencies": [
         "https://meridian.efolusi.com/site/registry/meridian-base.json",
-        "https://meridian.efolusi.com/site/registry/button.json",
         "https://meridian.efolusi.com/site/registry/direction.json",
         "https://meridian.efolusi.com/site/registry/icon.json",
+        "https://meridian.efolusi.com/site/registry/meridian-runtime.json",
         "https://meridian.efolusi.com/site/registry/portal.json"
       ],
       "files": [
@@ -3988,8 +4009,8 @@
       ],
       "registryDependencies": [
         "https://meridian.efolusi.com/site/registry/meridian-base.json",
-        "https://meridian.efolusi.com/site/registry/button.json",
         "https://meridian.efolusi.com/site/registry/dialog.json",
+        "https://meridian.efolusi.com/site/registry/meridian-runtime.json",
         "https://meridian.efolusi.com/site/registry/portal.json"
       ],
       "files": [
@@ -4020,9 +4041,9 @@
       ],
       "registryDependencies": [
         "https://meridian.efolusi.com/site/registry/meridian-base.json",
-        "https://meridian.efolusi.com/site/registry/button.json",
         "https://meridian.efolusi.com/site/registry/direction.json",
         "https://meridian.efolusi.com/site/registry/icon.json",
+        "https://meridian.efolusi.com/site/registry/meridian-runtime.json",
         "https://meridian.efolusi.com/site/registry/portal.json"
       ],
       "files": [
@@ -4053,7 +4074,7 @@
       ],
       "registryDependencies": [
         "https://meridian.efolusi.com/site/registry/meridian-base.json",
-        "https://meridian.efolusi.com/site/registry/button.json",
+        "https://meridian.efolusi.com/site/registry/meridian-runtime.json",
         "https://meridian.efolusi.com/site/registry/portal.json"
       ],
       "files": [
@@ -4084,7 +4105,7 @@
       ],
       "registryDependencies": [
         "https://meridian.efolusi.com/site/registry/meridian-base.json",
-        "https://meridian.efolusi.com/site/registry/button.json",
+        "https://meridian.efolusi.com/site/registry/meridian-runtime.json",
         "https://meridian.efolusi.com/site/registry/portal.json"
       ],
       "files": [
@@ -4115,7 +4136,7 @@
       ],
       "registryDependencies": [
         "https://meridian.efolusi.com/site/registry/meridian-base.json",
-        "https://meridian.efolusi.com/site/registry/button.json"
+        "https://meridian.efolusi.com/site/registry/meridian-runtime.json"
       ],
       "files": [
         {
@@ -4145,8 +4166,8 @@
       ],
       "registryDependencies": [
         "https://meridian.efolusi.com/site/registry/meridian-base.json",
-        "https://meridian.efolusi.com/site/registry/button.json",
-        "https://meridian.efolusi.com/site/registry/dialog.json"
+        "https://meridian.efolusi.com/site/registry/dialog.json",
+        "https://meridian.efolusi.com/site/registry/meridian-runtime.json"
       ],
       "files": [
         {

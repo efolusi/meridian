@@ -1,6 +1,6 @@
 'use client';
 import React from 'react';
-import { injectEfCss, cssPct, styleRef } from '../forms/Button.jsx';
+import { injectEfCss, cssPct, styleRef } from '../runtime/runtime.jsx';
 const CSS = `
 .ef-linechart__svg{display:block}
 .ef-linechart{position:relative}

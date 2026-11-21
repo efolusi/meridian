@@ -23,8 +23,8 @@ npx meridian add button --dry-run
 ```
 
 `add` reads each item's `registryDependencies` and adds those items too, so
-`add button` also writes the shared stylesheet and tokens (`meridian-base`) and
-`Icon`. Files keep their registry paths under `--dir`, for example
+`add button` also writes the shared stylesheet and tokens (`meridian-base`), the
+shared helpers (`meridian-runtime`) and `Icon`. Files keep their registry paths under `--dir`, for example
 `components/forms/Button.jsx`, because the components import each other by
 relative path. When it finishes, `add` prints the npm packages the files
 import. It does not run `npm install` for you.
