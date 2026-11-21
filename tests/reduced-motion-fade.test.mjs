@@ -26,7 +26,8 @@ describe('the reduced-motion kill switch', () => {
     for (const file of withSwitch) {
       const body = readFileSync(file, 'utf8').match(KILL_SWITCH)[1];
       if (file === 'tokens/base.css') {
-        expect(body).toMatch(/animation-duration:\.01ms!important/);
+        expect(body).toMatch(/--ef-motion-guard:\.01ms/);
+        expect(body).toMatch(/animation-duration:var\(--ef-motion-guard\)!important/);
         expect(body).toMatch(/animation-iteration-count:1!important/);
         expect(body).toMatch(/animation-delay:0s!important/);
         expect(body).toMatch(/transition-delay:0s!important/);

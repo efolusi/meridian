@@ -23,6 +23,7 @@ const CSS = `
 [dir=rtl] .ef-dropdown-menu__chevron{transform:scaleX(-1)}
 /* coarse pointers get the 44px touch target, like form controls do through --control-h-* */
 @media (pointer:coarse){.ef-dropdown-menu__item{min-height:var(--tap-min)}}
+@media (prefers-reduced-motion:reduce){.ef-dropdown-menu__content{--ef-motion-guard:var(--dur-fast);animation-name:ef-reduce-fade}}
 `;
 
 const RootCtx = React.createContext(null);

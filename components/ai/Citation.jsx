@@ -29,6 +29,7 @@ const CSS = `
 .ef-sources__domain{flex:none;font-family:var(--font-mono);font-size:var(--text-xs);color:var(--text-muted)}
 .ef-sources__ext{flex:none;display:inline-flex;color:var(--text-muted)}
 @media (pointer:coarse){.ef-citation__pop-btn{min-width:var(--tap-min);min-height:var(--tap-min)}}
+@media (prefers-reduced-motion:reduce){.ef-citation__pop{--ef-motion-guard:var(--dur-fast);animation-name:ef-reduce-fade}}
 `;
 // Source and preview URLs usually come from model or tool output, so a
 // javascript:, vbscript: or data: URL must never reach an href or iframe src.

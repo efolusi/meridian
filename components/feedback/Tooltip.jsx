@@ -12,6 +12,7 @@ const CSS = `
 .ef-tooltip__bubble--left::after{top:var(--ef-tt-arrow,50%);left:100%;transform:translateY(-50%);border-top-color:transparent;border-left-color:var(--surface-inverse)}
 .ef-tooltip__bubble--right::after{top:var(--ef-tt-arrow,50%);left:auto;right:100%;transform:translateY(-50%);border-top-color:transparent;border-right-color:var(--surface-inverse)}
 @keyframes ef-tooltip-in{from{opacity:0}to{opacity:1}}
+@media (prefers-reduced-motion:reduce){.ef-tooltip__bubble{--ef-motion-guard:var(--dur-fast);animation-name:ef-reduce-fade}}
 `;
 const SIDES = ['top', 'bottom', 'left', 'right'];
 const TooltipProviderCtx = React.createContext({ delayDuration: 0, skipDelayDuration: 300, disableHoverableContent: false });

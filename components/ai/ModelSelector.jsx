@@ -22,6 +22,7 @@ const CSS = `
 .ef-modelsel__check{margin-inline-start:auto;flex:none;display:inline-flex;color:var(--brand-700)}
 .ef-modelsel__badge+.ef-modelsel__check{margin-inline-start:var(--space-2)}
 @media (pointer:coarse){.ef-modelsel__btn{min-height:var(--tap-min)}}
+@media (prefers-reduced-motion:reduce){.ef-modelsel__panel{--ef-motion-guard:var(--dur-fast);animation-name:ef-reduce-fade}}
 `;
 export function ModelSelector({ models = [], value, onChange, side = 'top', style, className, ...rest }) {
   injectEfCss('ef-css-modelsel', CSS);
