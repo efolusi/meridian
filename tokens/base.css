@@ -32,9 +32,12 @@ code,pre,kbd{font-family:var(--font-mono)}
    tokens: under reduce they swap to the 120 ms fade (design-tokens docs/motion.md).
    --ef-motion-guard is the animation duration: 0.01 ms for every element, so loops stop. Only an overlay
    entrance sets it, to --dur-fast, together with animation-name:ef-reduce-fade (opacity only), inside its
-   own reduce media query; a consumer must not set it on a loop. */
+   own reduce media query; a consumer must not set it on a loop.
+   A View Transition (document.startViewTransition) does not match `*`: its groups stop moving and its
+   old and new snapshots cross-fade over --dur-fast. */
 @keyframes ef-reduce-fade{from{opacity:0}}
 @media (prefers-reduced-motion:reduce){*,*::before,*::after{--ef-motion-guard:.01ms;animation-duration:var(--ef-motion-guard)!important;animation-delay:0s!important;animation-iteration-count:1!important;transition-delay:0s!important;scroll-behavior:auto!important}}
+@media (prefers-reduced-motion:reduce){::view-transition-group(*),::view-transition-image-pair(*){animation-duration:var(--ef-motion-guard)!important;animation-iteration-count:1!important}::view-transition-old(*),::view-transition-new(*){animation-duration:var(--dur-fast)!important;animation-iteration-count:1!important}}
 }
 /* Forced colours (Windows High Contrast) remove box-shadow, and box-shadow is how
    every component draws --focus-ring after outline:none, so focus would vanish.

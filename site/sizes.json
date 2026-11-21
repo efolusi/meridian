@@ -1,16 +1,16 @@
 {
   "totals": {
     "@efolusi/meridian": {
-      "bytes": 374615,
-      "gzip": 84636
+      "bytes": 376544,
+      "gzip": 85186
     },
     "dist/components.css": {
-      "bytes": 235857,
-      "gzip": 32222
+      "bytes": 236637,
+      "gzip": 32404
     },
     "_ds_bundle.js": {
-      "bytes": 889285,
-      "gzip": 158907
+      "bytes": 894816,
+      "gzip": 160210
     }
   },
   "modules": [
@@ -415,8 +415,8 @@
       "exports": [
         "Skeleton"
       ],
-      "bytes": 455,
-      "gzip": 319
+      "bytes": 515,
+      "gzip": 358
     },
     {
       "module": "data/Sparkline.js",
@@ -1111,6 +1111,15 @@
       ],
       "bytes": 44596,
       "gzip": 7157
+    },
+    {
+      "module": "marketing/Counter.js",
+      "group": "marketing",
+      "exports": [
+        "Counter"
+      ],
+      "bytes": 1900,
+      "gzip": 948
     },
     {
       "module": "marketing/FeatureCard.js",

@@ -103,3 +103,4 @@ builds are older than that), and touch input.
 instantly rather than being skipped. It applies to `*`, so a component cannot opt
 out of it by accident. A transition is left to the tokens, which swap to the 120 ms
 fade, so a state change does not become a jump. Overlay entrances are the exception to the 0.01ms: they fade (opacity only) over `--dur-fast` through `--ef-motion-guard`, which only they set.
+View Transitions (`document.startViewTransition`): the guard stops the groups and cross-fades the old and new snapshots over `--dur-fast`. A transition you name yourself (`view-transition-name: card`) keeps the keyframes you write for `::view-transition-old(card)` and `::view-transition-new(card)`, so inside your own `prefers-reduced-motion: reduce` block give them opacity-only keyframes. Call `document.startViewTransition?.(update) ?? update()`, so a browser without the API just runs `update`.

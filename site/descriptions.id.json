@@ -125,6 +125,7 @@
   "Hero": "Bagian pembuka halaman pemasaran: judul, sub, tombol aksi, dan baris bukti; HeroAccent memberi garis bawah gambar tangan pada satu kata.",
   "FeatureCard": "Kartu fitur pemasaran dalam FeatureGrid: ikon, judul, isi, dan tautan; tone peach, cocoa, atau amber dengan garis tepi tipis di setiap tema.",
   "Marquee": "Pita label yang bergerak pelan di bawah hero; berhenti saat hover, fokus keyboard, atau tombol jeda, dan diam dengan gerak dikurangi.",
+  "Counter": "Angka statistik yang menghitung naik saat masuk layar; nilai akhir selalu ada di markup, jadi terbaca tanpa JavaScript, dengan gerak dikurangi, dan oleh pembaca layar.",
   "Reveal": "Memudarkan dan mengangkat konten saat masuk layar, dengan jeda bertingkat; tetap terlihat tanpa JavaScript dan dengan gerak dikurangi.",
   "ThemeToggle": "Satu tombol tema untuk semua situs Efolusi: terang, gelap, dan sistem; pilihan di localStorage, tema yang dipakai di cookie efolusi_theme; mengikuti OS secara langsung saat sistem.",
   "SiteHeader": "Header situs pemasaran: tautan lewati ke konten, merek, tautan utama, slot aksi, dan menu seluler yang ditutup dengan Escape.",

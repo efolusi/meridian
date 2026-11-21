@@ -13,9 +13,9 @@ CSS is not counted per component: `styles.css` ships every component style in on
 
 | File | Size | Gzip |
 | --- | ---: | ---: |
-| `@efolusi/meridian` | 365.8 kB | 82.7 kB |
-| `dist/components.css` | 230.3 kB | 31.5 kB |
-| `_ds_bundle.js` | 868.4 kB | 155.2 kB |
+| `@efolusi/meridian` | 367.7 kB | 83.2 kB |
+| `dist/components.css` | 231.1 kB | 31.6 kB |
+| `_ds_bundle.js` | 873.8 kB | 156.5 kB |
 
 The root import, `@efolusi/meridian`, is every component. `_ds_bundle.js` is the zero-build CDN bundle, which also carries each component's CSS. The root import is minified; the CSS and the CDN bundle are measured as shipped.
 
@@ -64,7 +64,7 @@ The root import, `@efolusi/meridian`, is every component. `_ds_bundle.js` is the
 | `data/EmptyState.js` | Empty, EmptyHeader, EmptyMedia, EmptyTitle, EmptyDescription, EmptyContent | 1.5 kB | 0.5 kB |
 | `data/KeyValueList.js` | KeyValueList | 0.9 kB | 0.5 kB |
 | `data/LineChart.js` | LineChart | 3.2 kB | 1.4 kB |
-| `data/Skeleton.js` | Skeleton | 0.4 kB | 0.3 kB |
+| `data/Skeleton.js` | Skeleton | 0.5 kB | 0.3 kB |
 | `data/Sparkline.js` | Sparkline | 1.1 kB | 0.7 kB |
 | `data/Stat.js` | Stat | 0.8 kB | 0.4 kB |
 | `data/StatusDot.js` | StatusDot | 0.8 kB | 0.5 kB |
@@ -127,6 +127,7 @@ The root import, `@efolusi/meridian`, is every component. `_ds_bundle.js` is the
 | `forms/Textarea.js` | Textarea | 45.1 kB | 7.7 kB |
 | `forms/Toggle.js` | Toggle, ToggleGroup, ToggleGroupItem | 2.7 kB | 1.2 kB |
 | `icons/Icon.js` | Icon | 43.6 kB | 7.0 kB |
+| `marketing/Counter.js` | Counter | 1.9 kB | 0.9 kB |
 | `marketing/FeatureCard.js` | FeatureGrid, FeatureCard | 44.8 kB | 7.5 kB |
 | `marketing/Hero.js` | Hero, HeroAccent | 1.3 kB | 0.6 kB |
 | `marketing/LegalDocument.js` | LegalDocument | 2.5 kB | 1.0 kB |
