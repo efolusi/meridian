@@ -2,7 +2,7 @@
 
 ## Unreleased
 
-- **`Counter` in the marketing group.** A stat number that counts up from 0 to `value` over 1.2 s once it is 40% in view. The final value is in the markup from the start (server render, no JavaScript, screen readers), the climbing number is an `aria-hidden` overlay in the same grid cell so the width never changes, and reduced motion or `animate={false}` shows the final value at once. `locale` and `format` take `Intl.NumberFormat` options. No dependency.
+- **`Counter` in the marketing group.** A stat number that counts up from 0 to `value` over 1.2 s once it is 40% in view. The final value is in the markup from the start (server render, no JavaScript, screen readers), the climbing number is an `aria-hidden` overlay in the same grid cell so the width never changes, and reduced motion or `animate={false}` shows the final value at once. `locale` defaults to `'en'` (fixed, so server and browser agree; pass the page's locale) and `format` takes `Intl.NumberFormat` options. A counter already in view at load shows its final value and does not climb; a new `value` climbs from the number on screen; a non-number renders as plain text; print shows the final value. No dependency.
 - **The size budget tolerance is 256 bytes, not 4096.** Each PR could add up to 4 KiB without a budget change, and the drift added up. A larger build now has to run `node scripts/check_size.mjs --update` and show the new size in the PR, and a test fails when `scripts/size_budget.json` and the totals in `guidelines/bundle-size.md` disagree.
 
 ## 1.29.0 — 2026-11-22
