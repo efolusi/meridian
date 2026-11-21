@@ -2,6 +2,7 @@
 
 ## Unreleased
 
+- **The production deploy checks live that a missing browser version is a 404 without `immutable`.** After the Worker goes live it requests a published version (200, immutable, CORS) and a never-published one (404, no immutable), with a probe query so an older cached answer cannot hide the new headers, and retries a few times so a propagation delay does not fail a good deploy. `_headers` cannot see the response status, so a missing path gets no `Cache-Control` rather than `no-store`.
 - **The shared runtime helpers moved out of `components/forms/Button.jsx` into `components/runtime/runtime.jsx`.** `injectEfCss`, `mergeRefs`, `styleRef`, `cssPct`, `useIsoLayoutEffect`, `prefersReducedMotion` and `isElementOfType` live in one module that every component imports, and `Button.jsx` no longer exports them (no alias). Behaviour is unchanged. The registry has a new item, `meridian-runtime`, which the component items depend on in place of `button`: `add dialog` no longer writes `Button.jsx` just for `injectEfCss`, and it writes `components/runtime/runtime.jsx`. The npm package ships `runtime/runtime.js`; none of it joins the public exports. If you imported a helper from `forms/Button.jsx` in your own copy-in code, import it from `runtime/runtime.jsx`.
 
 ## 1.27.1 — 2026-11-21
