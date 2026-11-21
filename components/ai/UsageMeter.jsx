@@ -12,6 +12,8 @@ const CSS = `
 .ef-usage--over .ef-usage__fill{background:var(--danger-600)}
 .ef-usage__foot{display:flex;gap:var(--space-2);font-size:var(--text-xs);color:var(--text-muted)}
 .ef-usage__cost{margin-inline-start:auto;font-family:var(--font-mono)}
+/* Reduced motion: nothing moves or resizes; the end state is shown at once. */
+@media (prefers-reduced-motion:reduce){.ef-usage__fill{transition:none}}
 `;
 export function UsageMeter({ used = 0, limit = 100, label = 'Usage', unit = '', cost, hint, warnAt = 0.8, animated, format, locale = 'en-US', style, className, ...rest }) {
   injectEfCss('ef-css-usage', CSS);

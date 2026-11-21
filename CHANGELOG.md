@@ -1,5 +1,9 @@
 # Changelog
 
+## Unreleased
+
+- **Nothing moves or resizes under reduced motion.** Since the duration tokens swap to the 120 ms fade under `prefers-reduced-motion`, a transition on a position or a size still took 120 ms. Nine components now show the end state at once: DocumentCard and CodeBlock (the height of the window), WebPreview (the width of the frame), UsageMeter (the fill), Switch (the thumb), Tabs (the ink) and NavigationMenu (the indicator) switch the transition off; PageControl (the active dot's width) and MessageScroller (the button's lift) keep only the colour or opacity fade. Sidebar, Reveal, FeatureCard, Progress and the keyframe entrances (Drawer, Sheet, Dialog, Toast, popovers) already did. `scripts/check_reduced_motion.mjs` now reads every component rule that transitions `transform`, `inset-*`, `top`, `left`, `width`, `height` or `flex-basis`, builds the element in Chromium with `reduce` emulated, and fails if the transition still runs; a transform that only rotates or scales (a chevron, a press) is listed with its reason in the script, and a new rule must be fixed or listed.
+
 ## 1.28.0 — 2026-11-21
 
 - **A stray `node_modules` symlink is gone from the repo.** #210 committed a symlink to a local absolute path by accident, because `node_modules/` in `.gitignore` does not match a symlink. The ignore rule is now `node_modules`, and a test fails if any symlink is tracked.

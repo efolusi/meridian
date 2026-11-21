@@ -19,6 +19,8 @@ const CSS = `
 .ef-code__more{display:inline-flex;align-items:center;gap:var(--space-1);border:1px solid var(--code-edge);border-radius:var(--radius-full);background:var(--code-raised);cursor:pointer;padding:var(--space-1) var(--space-3);font-family:var(--font-sans);font-size:var(--text-xs);font-weight:var(--weight-semibold);color:var(--code-ink-strong)}
 .ef-code__more:hover{color:var(--code-ink-bright);border-color:var(--code-edge-hover)}
 .ef-code__copy:focus-visible,.ef-code__more:focus-visible{outline:none;box-shadow:var(--focus-ring)}
+/* Reduced motion: nothing moves or resizes; the end state is shown at once. */
+@media (prefers-reduced-motion:reduce){.ef-code__win{transition:none}}
 `;
 export function CodeBlock({ lang, title, children, maxHeight, clip, clipHeight = 240, style, className, ...rest }) {
   injectEfCss('ef-css-code', CSS);

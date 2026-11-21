@@ -11,6 +11,8 @@ const CSS = `
 .ef-switch[data-state="checked"] .ef-switch__track::after{transform:translateX(var(--ef-switch-shift))}.ef-switch:focus-visible{outline:none;box-shadow:var(--focus-ring)}
 .ef-switch--sm{--ef-switch-shift:12px;width:30px;height:18px}.ef-switch--sm:dir(rtl){--ef-switch-shift:-12px}.ef-switch--sm .ef-switch__track::after{width:13px;height:13px;top:2.5px}
 .ef-switch__label{font-size:var(--text-md);color:var(--text-primary)}
+/* Reduced motion: nothing moves or resizes; the end state is shown at once. */
+@media (prefers-reduced-motion:reduce){.ef-switch__track::after{transition:none}}
 `;
 export const Switch = React.forwardRef(function Switch({ label, size = 'md', disabled, checked: checkedProp, defaultChecked, onCheckedChange, onClick, name, value = 'on', required, style, className, ...rest }, ref) {
   injectEfCss('ef-css-switch', CSS);
