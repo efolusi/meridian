@@ -2,8 +2,12 @@ import { execFileSync } from 'node:child_process'
 import { existsSync, mkdtempSync, readdirSync, readFileSync, rmSync, writeFileSync } from 'node:fs'
 import { tmpdir } from 'node:os'
 import { join } from 'node:path'
-import { describe, expect, it } from 'vitest'
+import { afterAll, describe, expect, it, vi } from 'vitest'
 import { FORBIDDEN_PATHS, PUBLIC_PATHS, buildWorkerAssets } from '../scripts/build_worker_assets.mjs'
+
+// Each build clones and archives the whole repository, which takes longer than the 30 s default while the
+// full check runs its other test files in parallel.
+vi.setConfig({ testTimeout: 120_000 })
 
 const workflow = readFileSync('.github/workflows/deploy-production.yml', 'utf8')
 const wrangler = readFileSync('wrangler.jsonc', 'utf8')
@@ -81,6 +85,35 @@ describe('Meridian production deploy to Cloudflare Workers', () => {
     expect(workflow).toContain('CLOUDFLARE_ACCOUNT_ID: ${{ vars.CLOUDFLARE_ACCOUNT_ID }}')
     expect(workflow).toContain('https://meridian.efolusi.com/meridian-release.txt')
     expect(workflow).toContain('[[ "$live" == "$MERIDIAN_RELEASE_SHA" ]]')
+  })
+
+  it('checks live that a published version is immutable and a missing one is a 404 without immutable', () => {
+    const live = workflow.slice(workflow.indexOf('Check the live release'))
+    // Both requests carry the probe query, so an older cached answer cannot hide the new headers.
+    expect(live).toContain('/browser/$version/marketing.js?probe=$MERIDIAN_RELEASE_SHA')
+    expect(live).toContain('/browser/0.0.0/marketing.js?probe=$MERIDIAN_RELEASE_SHA')
+    expect(live).toMatch(/HTTP\/\[0-9\.\]\+ 200/)
+    expect(live).toContain('cache-control: public, max-age=31536000, immutable')
+    expect(live).toMatch(/HTTP\/\[0-9\.\]\+ 404/)
+    expect(live).toContain("! grep -qi 'immutable' <<<\"$missing\"")
+  })
+
+  it('retries the versioned header probe, so a propagation delay does not fail a good deploy, but still fails a bad one', () => {
+    const live = workflow.slice(workflow.indexOf('versioned_ok()'))
+    expect(live).toMatch(/for attempt in 1 2 3 4 5 6; do\n\s+versioned_ok && break/)
+    expect(live).toContain('[[ "$attempt" == 6 ]] && {')
+    expect(live).toContain('exit 1')
+  })
+
+  it('says in the failure message that the deploy is live, that it is a P1, and what to do', () => {
+    const live = workflow.slice(workflow.indexOf('versioned_ok()'))
+    const message = live.slice(live.indexOf('[[ "$attempt" == 6 ]] && {'), live.indexOf('exit 1'))
+    expect(message).toContain('P1: Meridian $version is LIVE, but its versioned browser headers are wrong after 6 attempts.')
+    expect(message).toContain("Do not roll back: the previous build's _headers may be the bad ones.")
+    expect(message).toContain('Ship a fix release the same day.')
+    expect(message).toContain('purge that path in Cloudflare')
+    // It must not read as "not deployed".
+    expect(message).not.toMatch(/not deployed|did not deploy|deploy failed/i)
   })
 
   it('serves static assets only from public/ on the meridian.efolusi.com route', () => {
@@ -217,41 +250,41 @@ describe('_headers is the one source of response headers', () => {
   // The immutable rule belongs to files that exist. _headers matches the request path, even
   // when Workers answers it with the 404 page, so a wildcard rule would send a year-long
   // immutable 404 for a version that was never published. The build writes exact-file rules.
-  it('gives immutable cache and CORS to published versioned files, and to nothing else under /browser/', () => {
-    const { dir, run } = cloneWithReleases()
-    try {
+  // One build serves both header tests: each build archives the whole repository.
+  let builtOnce
+  function builtHeaders() {
+    if (!builtOnce) {
+      const { dir, run } = cloneWithReleases()
       const out = buildWorkerAssets(run('rev-parse', 'HEAD').trim(), dir)
-      const built = readFileSync(join(out, '_headers'), 'utf8')
-      for (const version of ['0.2.0', '0.3.0']) {
-        for (const file of readdirSync(join(out, 'browser', version))) {
-          const h = headersFor(`/browser/${version}/${file}`, built)
-          expect(h['cache-control'], `${version}/${file}`).toEqual(['public, max-age=31536000, immutable'])
-          expect(h['access-control-allow-origin'], `${version}/${file}`).toEqual(['*'])
-        }
-      }
-      for (const missing of ['/browser/0.1.0/marketing.js', '/browser/9.9.9/marketing.js', '/browser/0.2.0/nope.js', '/browser/0.2.0/', '/browser/0.2.0']) {
-        const h = headersFor(missing, built)
-        expect(h['cache-control'], missing).not.toEqual(expect.arrayContaining([expect.stringContaining('immutable')]))
-        expect(h['access-control-allow-origin'], missing).toBeUndefined()
-      }
-      expect(headersFor('/browser/marketing.js', built)['cache-control']).toEqual(['no-cache'])
-    } finally {
-      rmSync(dir, { recursive: true, force: true })
+      builtOnce = { dir, out, text: readFileSync(join(out, '_headers'), 'utf8') }
     }
+    return builtOnce
+  }
+  afterAll(() => { if (builtOnce) rmSync(builtOnce.dir, { recursive: true, force: true }) })
+
+  it('gives immutable cache and CORS to published versioned files, and to nothing else under /browser/', () => {
+    const { out, text: built } = builtHeaders()
+    for (const version of ['0.2.0', '0.3.0']) {
+      for (const file of readdirSync(join(out, 'browser', version))) {
+        const h = headersFor(`/browser/${version}/${file}`, built)
+        expect(h['cache-control'], `${version}/${file}`).toEqual(['public, max-age=31536000, immutable'])
+        expect(h['access-control-allow-origin'], `${version}/${file}`).toEqual(['*'])
+      }
+    }
+    for (const missing of ['/browser/0.1.0/marketing.js', '/browser/9.9.9/marketing.js', '/browser/0.2.0/nope.js', '/browser/0.2.0/', '/browser/0.2.0']) {
+      const h = headersFor(missing, built)
+      expect(h['cache-control'], missing).not.toEqual(expect.arrayContaining([expect.stringContaining('immutable')]))
+      expect(h['access-control-allow-origin'], missing).toBeUndefined()
+    }
+    expect(headersFor('/browser/marketing.js', built)['cache-control']).toEqual(['no-cache'])
   })
 
   it('never sets one header twice on a built versioned path', () => {
-    const { dir, run } = cloneWithReleases()
-    try {
-      const out = buildWorkerAssets(run('rev-parse', 'HEAD').trim(), dir)
-      const built = readFileSync(join(out, '_headers'), 'utf8')
-      for (const version of readdirSync(join(out, 'browser')).filter((v) => /^\d/.test(v))) {
-        for (const file of readdirSync(join(out, 'browser', version))) {
-          for (const [name, values] of Object.entries(headersFor(`/browser/${version}/${file}`, built))) expect(values, `${version}/${file} ${name}`).toHaveLength(1)
-        }
+    const { out, text: built } = builtHeaders()
+    for (const version of readdirSync(join(out, 'browser')).filter((v) => /^\d/.test(v))) {
+      for (const file of readdirSync(join(out, 'browser', version))) {
+        for (const [name, values] of Object.entries(headersFor(`/browser/${version}/${file}`, built))) expect(values, `${version}/${file} ${name}`).toHaveLength(1)
       }
-    } finally {
-      rmSync(dir, { recursive: true, force: true })
     }
   })
 
