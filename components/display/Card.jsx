@@ -7,6 +7,7 @@ const CSS = `
 .ef-card--elevated{box-shadow:var(--shadow-sm)}
 .ef-card--interactive{cursor:pointer;transition:border-color var(--dur-fast) var(--ease-enter),background var(--dur-fast) var(--ease-enter)}
 .ef-card--interactive:hover{border-color:var(--sand-400)}
+.ef-card--interactive:focus-visible{outline:none;box-shadow:var(--focus-ring)}
 .ef-card--interactive:active{background:var(--surface-subtle)}
 .ef-card--composed{--card-spacing:16px;display:flex;flex-direction:column;gap:var(--card-spacing);overflow:hidden;padding-block:var(--card-spacing);font-size:var(--text-sm);color:var(--text-primary)}
 .ef-card--composed[data-size="sm"]{--card-spacing:12px}

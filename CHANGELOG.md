@@ -2,6 +2,7 @@
 
 ## Unreleased
 
+- **An interactive `Card` shows the focus ring.** `Card` with `interactive` had a hover and a press state but no keyboard focus state, so a card made focusable with `tabIndex` showed nothing when tabbed to. It now draws the same focus ring as a button. `Card` still renders a `div`: when the whole card is an action, make it a link or button inside, or add `tabIndex`, a role and key handling yourself.
 - **The size budget tolerance is 256 bytes, not 4096.** Each PR could add up to 4 KiB without a budget change, and the drift added up. A larger build now has to run `node scripts/check_size.mjs --update` and show the new size in the PR, and a test fails when `scripts/size_budget.json` and the totals in `guidelines/bundle-size.md` disagree.
 
 ## 1.29.0 — 2026-11-22

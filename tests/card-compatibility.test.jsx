@@ -58,4 +58,10 @@ describe('Card compatibility contract', () => {
     expect(card.lastElementChild.getAttribute('data-slot')).toBe('card-content');
   });
 
+
+  it('shows the focus ring on an interactive card that a consumer makes focusable', () => {
+    render(<Card interactive tabIndex={0}>Open</Card>);
+    const rules = document.getElementById('ef-css-card').textContent.replace(/\s+/g, '');
+    expect(rules).toContain('.ef-card--interactive:focus-visible{outline:none;box-shadow:var(--focus-ring)}');
+  });
 });
