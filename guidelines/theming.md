@@ -157,7 +157,7 @@ Every Efolusi site follows this one contract, through `ThemeToggle` and `themeIn
 | Cookie | `efolusi_theme` holds only the resolved `light` or `dark`, never `system`, so every product can parse it. `Domain=.efolusi.com` when the host is `efolusi.com` or ends with `.efolusi.com`; `Path=/`; `Max-Age` one year; `SameSite=Lax`; `Secure` on https. |
 | Precedence | Before paint and at runtime: the localStorage choice, then the cookie (`dark` or `light`), then `prefers-color-scheme`. A first visit to another Efolusi site inherits the cookie. |
 | Before paint | `themeInitScript()` inlined in `<head>`. |
-| Markup | Light removes `data-theme` (bare `:root`); dark sets `data-theme="dark"`. |
+| Markup | `data-theme` on `<html>` is always the resolved theme, `light` or `dark`, for every choice including System. Light never removes the attribute, so a dark OS cannot turn a Light choice dark. The media rule in `tokens/colors.css` is only the no-JS fallback. |
 | Control | One 44px button. Light → Dark → System → Light. On System, every page load and every `prefers-color-scheme` change re-resolve the theme and rewrite the cookie, so other sites never inherit a stale value. Labels in English and Indonesian. |
 
 ## Server layouts
@@ -170,6 +170,8 @@ import { themeInitScript } from '@efolusi/meridian/theme';
 
 <head><script dangerouslySetInnerHTML={{ __html: themeInitScript() }} /></head>
 ```
+
+The script sets `data-theme` to `light` or `dark` before paint. If the server also renders `<html data-theme>` (from the `efolusi_theme` cookie, say), use the same two values, so the script changes nothing on the first frame.
 
 Under a nonce-based CSP, pass the request's nonce, or the script is blocked and the first paint flashes the wrong theme:
 
@@ -196,6 +198,8 @@ Sites without React load two files from `browser/`. Self-host them from the npm 
 ```
 
 The unversioned `/browser/` files change with each release and serve meridian.efolusi.com itself; product sites do not load them.
+
+Both files keep `data-theme` on `<html>` at the resolved `light` or `dark`, and `marketing.js` re-resolves it when the operating system changes while the choice is System. Code that reads the theme should compare `data-theme` with `"dark"`, not test whether the attribute exists.
 
 `marketing.js` wires the markup the React components render, by `data-slot`: the theme toggle, the `SiteHeader` mobile menu and the `Marquee` pause button. It also wires markup added later. `init(root)` returns a cleanup function, for content you mount yourself.
 

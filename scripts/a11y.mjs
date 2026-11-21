@@ -44,8 +44,7 @@ if (missing.length) {
 let blocking = 0;
 for (const theme of ['light', 'dark']) {
   await page.evaluate((t) => {
-    if (t === 'dark') document.documentElement.setAttribute('data-theme', 'dark');
-    else document.documentElement.removeAttribute('data-theme');
+    document.documentElement.setAttribute('data-theme', t);
   }, theme);
   await page.evaluate(() => new Promise((r) => requestAnimationFrame(() => requestAnimationFrame(r))));
   const result = await page.evaluate(async ({ include, tags }) => {

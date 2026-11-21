@@ -66,14 +66,14 @@ export function refreshSystemCookie(doc = globalThis.document, storage = globalT
 
 export function applyTheme(pref, doc = globalThis.document, matchMedia = globalThis.matchMedia) {
   const theme = resolveTheme(pref, matchMedia);
-  // Meridian's light palette is bare :root; dark needs the dark data-theme value.
-  if (theme === 'dark') doc?.documentElement?.setAttribute('data-theme', 'dark');
-  else doc?.documentElement?.removeAttribute('data-theme');
+  // data-theme is always the resolved theme, so a dark OS cannot turn a Light choice dark;
+  // the media rule in tokens/colors.css stays as the no-JS fallback only.
+  doc?.documentElement?.setAttribute('data-theme', theme);
   return theme;
 }
 
 /** Inline this in <head>, before any stylesheet paints, so the first frame has the right theme. */
 export function themeInitScript() {
-  return `(function(){try{var s=window.matchMedia&&matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light',c=null,t;try{c=localStorage.getItem('${THEME_STORAGE_KEY}')}catch(e){}if(c==='light'||c==='dark')t=c;else if(c==='system')t=s;else{var m=document.cookie.match(/(?:^|;\\s*)${THEME_COOKIE}=(dark|light)(?:;|$)/);t=m?m[1]:s}if(t==='dark')document.documentElement.setAttribute('data-theme','dark');else document.documentElement.removeAttribute('data-theme');if(c==='system'){var h=location.hostname,d=h==='efolusi.com'||h.slice(-12)==='.efolusi.com'?'; Domain=.efolusi.com':'';document.cookie='${THEME_COOKIE}='+t+d+'; Path=/; Max-Age=${YEAR}; SameSite=Lax'+(location.protocol==='https:'?'; Secure':'')}}catch(e){}})();`;
+  return `(function(){try{var s=window.matchMedia&&matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light',c=null,t;try{c=localStorage.getItem('${THEME_STORAGE_KEY}')}catch(e){}if(c==='light'||c==='dark')t=c;else if(c==='system')t=s;else{var m=document.cookie.match(/(?:^|;\\s*)${THEME_COOKIE}=(dark|light)(?:;|$)/);t=m?m[1]:s}document.documentElement.setAttribute('data-theme',t);if(c==='system'){var h=location.hostname,d=h==='efolusi.com'||h.slice(-12)==='.efolusi.com'?'; Domain=.efolusi.com':'';document.cookie='${THEME_COOKIE}='+t+d+'; Path=/; Max-Age=${YEAR}; SameSite=Lax'+(location.protocol==='https:'?'; Secure':'')}}catch(e){}})();`;
 }
 export { THEME_PREFERENCES, THEME_STORAGE_KEY, THEME_CHANGE_EVENT, LABELS };

@@ -25,10 +25,10 @@ describe('precedence: localStorage choice, then the cookie, then the system', ()
     document.cookie = 'efolusi_theme=dark; Path=/';
     localStorage.setItem('efolusi-theme', 'light');
     runInit();
-    expect(attr()).toBeNull();
+    expect(attr()).toBe('light');
     localStorage.setItem('efolusi-theme', 'system');
     runInit();
-    expect(attr()).toBeNull();
+    expect(attr()).toBe('light');
     localStorage.clear();
     document.cookie = 'efolusi_theme=dark; Path=/'; // the System load above rewrote it (MD22)
     runInit();
@@ -54,7 +54,7 @@ describe('precedence: localStorage choice, then the cookie, then the system', ()
     document.cookie = 'efolusi_theme=system; Path=/';
     expect(readThemePreference()).toBe('system');
     runInit();
-    expect(attr()).toBeNull();
+    expect(attr()).toBe('light');
   });
 });
 
@@ -100,21 +100,21 @@ describe('the cookie', () => {
 });
 
 describe('ThemeToggle', () => {
-  it('cycles Light, Dark, System and back to Light; light removes the attribute', () => {
+  it('cycles Light, Dark, System and back to Light; light sets data-theme="light"', () => {
     fakeMedia(false);
     localStorage.setItem('efolusi-theme', 'light');
     const { getByRole } = render(<ThemeToggle />);
     const button = getByRole('button');
     const seen = [];
     for (let i = 0; i < 3; i += 1) { fireEvent.click(button); seen.push([readThemePreference(), attr()]); }
-    expect(seen).toEqual([['dark', 'dark'], ['system', null], ['light', null]]);
+    expect(seen).toEqual([['dark', 'dark'], ['system', 'light'], ['light', 'light']]);
   });
 
   it('in System, re-resolves on a system change and rewrites the cookie', () => {
     const media = fakeMedia(false);
     localStorage.setItem('efolusi-theme', 'system');
     const { getByRole } = render(<ThemeToggle />);
-    expect(attr()).toBeNull();
+    expect(attr()).toBe('light');
     act(() => media.set(true));
     expect(attr()).toBe('dark');
     expect(cookie()).toBe('dark');
