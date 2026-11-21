@@ -69,6 +69,8 @@ jobs:
           chmod +x "$RUNNER_TEMP/pw-node"
       - name: Button anchor cascade and state parity
         run: BUTTON_SHOTS="$RUNNER_TEMP/button-shots" "$RUNNER_TEMP/pw-node" scripts/check_button_cascade.mjs
+      - name: Reduced motion keeps the token fade and stops loops
+        run: "$RUNNER_TEMP/pw-node" scripts/check_reduced_motion.mjs
       - name: Upload button interaction receipts
         if: always()
         uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4.6.2
