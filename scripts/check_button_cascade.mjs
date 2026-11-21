@@ -12,6 +12,12 @@ const source = await readFile(new URL('components/forms/Button.jsx',root),'utf8'
 const css = source.match(/const CSS = `([\s\S]*?)`;/)?.[1];
 assert.ok(css, 'Button source CSS must be present');
 const shots = process.env.BUTTON_SHOTS || '';
+// Under reduced motion the duration tokens swap to the 120 ms fade, so a hover or focus colour is mid-transition
+// for a moment. Read styles only after every transition has ended (a loop would never end, so give up after 1 s).
+const settle = (page) => page.evaluate(async () => {
+  getComputedStyle(document.body).color; // flush style so a transition started by hover or focus exists
+  await Promise.race([Promise.all(document.getAnimations().map((a) => a.finished.catch(() => {}))), new Promise((r) => setTimeout(r, 1000))]);
+});
 const viewports = [
   { name: 'mobile', width: 375, height: 812 },
   { name: 'desktop', width: 1280, height: 800 },
@@ -52,7 +58,7 @@ try {
           });
           await target.hover(); await page.mouse.down();
         }
-        await page.waitForTimeout(30);
+        await settle(page);
         try {
           if(state==='active') assert.equal(await target.evaluate(el=>el.matches(':active')),true,`${theme}/${variant}/${prefix}: pointer must actually activate the tested control; ${JSON.stringify(await page.evaluate(()=>window.__pointerEvidence))}`);
           observed.push(await target.evaluate(el=>{const s=getComputedStyle(el);return Object.fromEntries(['color','backgroundColor','borderRadius','fontFamily','fontSize','fontWeight','lineHeight','gap','padding','height'].map(k=>[k,s[k]]));}));
@@ -76,18 +82,18 @@ try {
     const plain=page.locator('#plain');
     assert.equal(await plain.evaluate(el=>getComputedStyle(el).color),expected.link,`${theme}: plain link token`);
     await plain.hover();
-    await page.waitForTimeout(30);
+    await settle(page);
     assert.equal(await plain.evaluate(el=>getComputedStyle(el).color),expected.linkHover,`${theme}: plain link hover token`);
     const primary=page.locator('#b-primary');
     const primaryStyle=await primary.evaluate(el=>{const s=getComputedStyle(el);return {radius:s.borderRadius,fontFamily:s.fontFamily,fontSize:s.fontSize,fontWeight:s.fontWeight,lineHeight:s.lineHeight,gap:s.gap,transitionDuration:s.transitionDuration};});
     for(const key of ['radius','fontFamily','fontSize','fontWeight','lineHeight']) assert.equal(primaryStyle[key],expected[key],`${theme}: button ${key} must resolve Meridian token`);
     assert.equal(primaryStyle.gap,'8px',`${theme}: button gap must stay on the 4px spacing grid`);
-    assert.ok(primaryStyle.transitionDuration.split(',').every(value=>parseFloat(value)<=.01),`${theme}: reduced motion must collapse button transitions`);
+    assert.ok(primaryStyle.transitionDuration.split(',').every(value=>parseFloat(value)<=.12),`${theme}: reduced motion must keep button transitions within the 120 ms fade`);
     await page.keyboard.press('Tab');
-    await page.waitForTimeout(30);
+    await settle(page);
     const anchorFocus=await page.locator('#a-primary').evaluate(el=>getComputedStyle(el).boxShadow);
     await page.keyboard.press('Tab');
-    await page.waitForTimeout(30);
+    await settle(page);
     const nativeFocus=await page.locator('#b-primary').evaluate(el=>getComputedStyle(el).boxShadow);
     assert.equal(anchorFocus,nativeFocus,`${theme}: keyboard focus ring must match for anchor/native buttons`);
     assert.notEqual(anchorFocus,'none',`${theme}: keyboard focus ring must remain visible`);
