@@ -5,6 +5,12 @@ Loading placeholder that accepts native div attributes, consumer classes, and re
 <Skeleton aria-label="Loading account details" style={{ width: '60%', height: 12 }} />
 ```
 
+Pass `shimmer` for a light band that sweeps across the block instead of a pulse. With reduced motion both variants show a still block.
+
+```jsx
+<Skeleton shimmer style={{ width: '100%', height: 12 }} />
+```
+
 Compose repeated text placeholders explicitly so their rhythm and final-line width match the content they represent:
 
 ```jsx

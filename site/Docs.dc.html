@@ -311,6 +311,7 @@ class Component extends DCLogic {
         h2('unreleased', 'Unreleased', 'Belum dirilis'),
         list([
           ['The size budget tolerance is 256 bytes.', 'A build that grows has to record its new size with scripts/check_size.mjs --update in the same PR, and a test fails when the budget and the bundle-size table disagree.', 'Toleransi anggaran ukuran kini 256 byte.', 'Build yang membesar harus mencatat ukuran barunya dengan scripts/check_size.mjs --update di PR yang sama, dan sebuah pengujian gagal bila anggaran dan tabel ukuran bundel berbeda.'],
+          ['Skeleton shimmer, and View Transitions under reduced motion.', 'Skeleton takes shimmer: a light band sweeps across the block instead of a pulse. View Transitions respect reduced motion: groups stop moving and snapshots cross-fade over 120 ms. Call document.startViewTransition?.(update) ?? update() for a page or state change.', 'Kilau pada Skeleton, dan View Transition saat gerak dikurangi.', 'Skeleton menerima shimmer: pita cahaya menyapu blok, bukan berdenyut. View Transition menghormati gerak dikurangi: grup berhenti bergerak dan cuplikan memudar silang selama 120 ms. Panggil document.startViewTransition?.(update) ?? update() untuk pergantian halaman atau keadaan.'],
         ]),
         h2('v1290', '1.29.0 (November 2026)', '1.29.0 (November 2026)'),
         list([

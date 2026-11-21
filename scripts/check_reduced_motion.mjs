@@ -136,7 +136,17 @@ try {
         const props = rule ? [...new Set([...rule.cssRules].flatMap((k) => [...k.style]))] : [];
         return { selector: p.selector, name: s.animationName, duration: Number.parseFloat(s.animationDuration), props };
       });
-      return { entrances, travel, computed, elapsed, loop: { name: loop.animationName, duration: loop.animationDuration, count: loop.animationIterationCount, ended: loopEnded }, components };
+      // A View Transition: its pseudo-elements do not match `*`, so the guard names them. Groups stop moving; snapshots fade.
+      let viewTransition = null;
+      if (document.startViewTransition) {
+        const transition = document.startViewTransition(() => {});
+        await transition.ready.catch(() => {});
+        const root = document.documentElement;
+        const read = (pseudo) => Number.parseFloat(getComputedStyle(root, pseudo).animationDuration);
+        viewTransition = { group: read('::view-transition-group(root)'), old: read('::view-transition-old(root)'), now: read('::view-transition-new(root)') };
+        transition.skipTransition();
+      }
+      return { viewTransition, entrances, travel, computed, elapsed, loop: { name: loop.animationName, duration: loop.animationDuration, count: loop.animationIterationCount, ended: loopEnded }, components };
     }, [verifiable.map((p) => ({ selector: p.selector, pseudo: p.built.pseudo })), travelVerifiable.map((p) => ({ selector: p.selector, pseudo: p.built.pseudo })), entranceVerifiable.map((p) => ({ selector: p.selector, pseudo: p.built.pseudo }))]);
     await page.close();
     return result;
@@ -167,6 +177,11 @@ try {
   }
   assert.deepEqual(travelling, [], `these transitions still move or resize for a moment under reduce (make them instant, or fade opacity only):\n  ${travelling.join('\n  ')}`);
   assert.deepEqual(unbuiltEntrances, [], `entrance animations the probe cannot build (simplify the selector, or list them in UNBUILDABLE_ENTRANCE with a reason):\n  ${unbuiltEntrances.join('\n  ')}`);
+  if (calm.viewTransition) {
+    const { group, old, now } = calm.viewTransition;
+    assert.ok(group <= 0.001, `a View Transition group still moves under reduce (${group}s)`);
+    assert.ok(old > 0.1 && old < 0.2 && now > 0.1 && now < 0.2, `View Transition snapshots should fade over 120 ms under reduce (old ${old}s, new ${now}s)`);
+  }
   // Entrances: a 120 ms fade of opacity only. A snap (no duration) or a slide (any other property) fails.
   const entranceFaults = calm.entrances.filter((e) => !e.missing && !ENTRANCE_SNAP.has(e.selector)).flatMap((e) => [
     ...(e.name === 'none' || !(e.duration > 0.1 && e.duration < 0.2) ? [`${e.selector}: runs ${e.duration}s (${e.name}), expected the 120 ms fade`] : []),

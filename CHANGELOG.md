@@ -2,6 +2,7 @@
 
 ## Unreleased
 
+- **`Skeleton` takes `shimmer`, and View Transitions respect reduced motion.** `<Skeleton shimmer />` sweeps a light band across the block instead of pulsing; with reduced motion both variants are still. `document.startViewTransition` snapshots are not matched by `*`, so the reduced-motion guard now names them: the groups stop moving and the old and new snapshots cross-fade over `--dur-fast`. Use `document.startViewTransition?.(update) ?? update()` for a page or state change; browsers without the API just run `update`. `scripts/check_reduced_motion.mjs` starts a real View Transition under `reduce` and fails if a group still moves.
 - **The size budget tolerance is 256 bytes, not 4096.** Each PR could add up to 4 KiB without a budget change, and the drift added up. A larger build now has to run `node scripts/check_size.mjs --update` and show the new size in the PR, and a test fails when `scripts/size_budget.json` and the totals in `guidelines/bundle-size.md` disagree.
 
 ## 1.29.0 — 2026-11-22

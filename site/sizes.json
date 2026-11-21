@@ -1,16 +1,16 @@
 {
   "totals": {
     "@efolusi/meridian": {
-      "bytes": 374107,
-      "gzip": 84542
+      "bytes": 374147,
+      "gzip": 84577
     },
     "dist/components.css": {
-      "bytes": 234118,
-      "gzip": 31851
+      "bytes": 234490,
+      "gzip": 31940
     },
     "_ds_bundle.js": {
-      "bytes": 886115,
-      "gzip": 158193
+      "bytes": 886552,
+      "gzip": 158301
     }
   },
   "modules": [
@@ -415,8 +415,8 @@
       "exports": [
         "Skeleton"
       ],
-      "bytes": 455,
-      "gzip": 319
+      "bytes": 495,
+      "gzip": 343
     },
     {
       "module": "data/Sparkline.js",
