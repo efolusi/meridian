@@ -1,6 +1,6 @@
 # Changelog
 
-## Unreleased
+## 1.28.0 — 2026-11-21
 
 - **A stray `node_modules` symlink is gone from the repo.** #210 committed a symlink to a local absolute path by accident, because `node_modules/` in `.gitignore` does not match a symlink. The ignore rule is now `node_modules`, and a test fails if any symlink is tracked.
 - **The motion check also reads camelCase style props and style assignments.** `scripts/check_motion.mjs` used to read only CSS spellings; it now also fails a literal duration, curve or named easing in `transitionDuration`, `animationDuration`, `transitionTimingFunction` and `animationTimingFunction` in a style object, and in an assignment such as `el.style.transition = '…'`. A comparison (`===`) is not an assignment. The repository had none, so the allowlist does not change. Web Animations options and timers are not read.
