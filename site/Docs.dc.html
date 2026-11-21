@@ -308,6 +308,10 @@ class Component extends DCLogic {
         p('Open an issue describing the gap, agree on the API in the thread, then submit the three files plus a specimen entry. Versioning and release policy live in guidelines/governance.md; the full contribution guide is CONTRIBUTING.md at the repo root.', 'Buka issue yang menjelaskan celahnya, sepakati API di thread, lalu kirim ketiga berkas plus entri spesimen. Kebijakan versioning dan rilis ada di guidelines/governance.md; panduan kontribusi lengkap ada di CONTRIBUTING.md di root repo.'),
       ] },
       { group: 'Reference', id: 'changelog', title: 'Changelog', lede: 'Notable changes, newest first. Full history in CHANGELOG.md.', blocks: [
+        h2('unreleased', 'Unreleased', 'Belum dirilis'),
+        list([
+          ['A missing versioned script is not cached for a year.', 'A browser/<version>/ path that was never published no longer returns a 404 marked immutable; the immutable rule is now written per published file.', 'Skrip berversi yang tidak ada tidak di-cache setahun.', 'Path browser/<version>/ yang tidak pernah dipublikasikan tidak lagi mengembalikan 404 bertanda immutable; aturan immutable kini ditulis per file yang dipublikasikan.'],
+        ]),
         h2('v1270', '1.27.0 (November 2026)', '1.27.0 (November 2026)'),
         list([
           ['Breaking: data-theme is always light or dark.', 'Light no longer removes the attribute, so a Light choice stays light on a dark OS. Compare getAttribute(\'data-theme\') with \'dark\' instead of testing that the attribute is absent. The init script text changed, so sites that hash it must rebuild.', 'Perubahan: data-theme selalu light atau dark.', 'Terang tidak lagi menghapus atribut, jadi pilihan Terang tetap terang di OS gelap. Bandingkan getAttribute(\'data-theme\') dengan \'dark\', bukan memeriksa atribut tidak ada. Teks skrip init berubah, jadi situs yang menghitung hash-nya harus rebuild.'],
