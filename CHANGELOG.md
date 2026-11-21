@@ -1,6 +1,6 @@
 # Changelog
 
-## Unreleased
+## 1.27.0 — 2026-11-21
 
 - **Breaking: `data-theme` on `<html>` is always `light` or `dark`.** Light no longer removes the attribute, so a Light choice stays light on a dark operating system (it used to fall through to the OS). `themeInitScript`, `applyTheme`, `ThemeToggle` and the plain `browser/theme-init.js`, `browser/theme.js` and `browser/marketing.js` set the resolved value for every choice including System, and on System they re-resolve it and the cookie when the OS changes. Code that tests `!hasAttribute('data-theme')` for light must compare `getAttribute('data-theme')` with `'dark'` instead. The media rule in `tokens/colors.css` stays as the no-JS fallback. No alias for the old behaviour. See [theming § Theme contract](guidelines/theming.md#theme-contract).
 - **`themeInitScript()`'s text changed again, so its inline-script CSP hash changes.** A site that hashes it at build picks it up on its next build; a site that hard-codes the old hash blocks the script and flashes the wrong theme until it rebuilds. Nonce sites are not affected, and a versioned `browser/<version>/` pin keeps its old bytes.
