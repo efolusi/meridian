@@ -255,6 +255,17 @@ describe('_headers is the one source of response headers', () => {
     }
   })
 
+  it('fails the build before _headers passes the 100 rules Workers read', () => {
+    const { dir, run } = cloneWithReleases()
+    try {
+      // Five browser files per release: twenty more releases push the file past the limit.
+      for (let i = 0; i < 20; i += 1) run('tag', `v1.${i}.0`)
+      expect(() => buildWorkerAssets(run('rev-parse', 'HEAD').trim(), dir)).toThrow(/100/)
+    } finally {
+      rmSync(dir, { recursive: true, force: true })
+    }
+  })
+
   it('keeps browser/<version>/ of every release, byte for byte', () => {
     const { dir, run } = cloneWithReleases()
     try {
