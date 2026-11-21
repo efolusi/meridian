@@ -26,7 +26,7 @@ const CSS = `
 .ef-drawer[data-vaul-drawer-direction=bottom]>.ef-drawer__handle{display:block}
 .ef-drawer__header{gap:var(--space-2);padding:var(--space-5) var(--space-6) var(--space-3);text-align:start}.ef-drawer__footer{margin-top:auto;padding:var(--space-4) var(--space-6)}.ef-drawer__description{margin-top:var(--space-0-5)}
 @keyframes ef-drawer-right{from{transform:translateX(24px);opacity:0}}@keyframes ef-drawer-left{from{transform:translateX(-24px);opacity:0}}@keyframes ef-drawer-top{from{transform:translateY(-24px);opacity:0}}@keyframes ef-drawer-bottom{from{transform:translateY(24px);opacity:0}}
-@media (prefers-reduced-motion:reduce){@keyframes ef-drawer-right{from{opacity:0}}@keyframes ef-drawer-left{from{opacity:0}}@keyframes ef-drawer-top{from{opacity:0}}@keyframes ef-drawer-bottom{from{opacity:0}}.ef-drawer[data-vaul-drawer-direction=right],.ef-drawer[data-vaul-drawer-direction=left],.ef-drawer[data-vaul-drawer-direction=top],.ef-drawer[data-vaul-drawer-direction=bottom]{--ef-motion-guard:var(--dur-fast)}}
+@media (prefers-reduced-motion:reduce){.ef-drawer[data-vaul-drawer-direction=right],.ef-drawer[data-vaul-drawer-direction=left],.ef-drawer[data-vaul-drawer-direction=top],.ef-drawer[data-vaul-drawer-direction=bottom]{--ef-motion-guard:var(--dur-fast);animation-name:ef-reduce-fade}}
 `;
 
 const DrawerContext = React.createContext(null);

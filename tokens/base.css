@@ -30,8 +30,10 @@ code,pre,kbd{font-family:var(--font-mono)}
    CSS too. Delays are zeroed as well: a delayed reveal must not keep content
    hidden, or keep it waiting, under reduce. Transition durations are left to the
    tokens: under reduce they swap to the 120 ms fade (design-tokens docs/motion.md).
-   --ef-motion-guard is the animation duration: 0.01 ms for every element, so loops stop; an overlay
-   entrance sets it to --dur-fast on itself and redefines its keyframes as an opacity-only fade. */
+   --ef-motion-guard is the animation duration: 0.01 ms for every element, so loops stop. Only an overlay
+   entrance sets it, to --dur-fast, together with animation-name:ef-reduce-fade (opacity only), inside its
+   own reduce media query; a consumer must not set it on a loop. */
+@keyframes ef-reduce-fade{from{opacity:0}}
 @media (prefers-reduced-motion:reduce){*,*::before,*::after{--ef-motion-guard:.01ms;animation-duration:var(--ef-motion-guard)!important;animation-delay:0s!important;animation-iteration-count:1!important;transition-delay:0s!important;scroll-behavior:auto!important}}
 }
 /* Forced colours (Windows High Contrast) remove box-shadow, and box-shadow is how

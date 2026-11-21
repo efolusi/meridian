@@ -11,7 +11,7 @@ const CSS = `
 .ef-conversation__jump:focus-visible{outline:none;box-shadow:var(--focus-ring)}
 @keyframes ef-conversation-in{from{opacity:0;transform:translateX(-50%) translateY(4px)}}
 @media (pointer:coarse){.ef-conversation__jump{min-height:var(--tap-min)}}
-@media (prefers-reduced-motion:reduce){@keyframes ef-conversation-in{from{opacity:0}}.ef-conversation__jump{--ef-motion-guard:var(--dur-fast)}}
+@media (prefers-reduced-motion:reduce){.ef-conversation__jump{--ef-motion-guard:var(--dur-fast);animation-name:ef-reduce-fade}}
 `;
 export const Conversation = React.forwardRef(function Conversation({ height = 420, autoStick = true, jumpLabel = 'Jump to latest', padding = 4, children, style, className, ...rest }, ref) {
   injectEfCss('ef-css-conversation', CSS);

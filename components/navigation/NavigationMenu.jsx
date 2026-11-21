@@ -25,7 +25,7 @@ const CSS = `
 @media (pointer:coarse){.ef-navigation-menu__trigger{height:var(--tap-min)}.ef-navigation-menu__link{min-height:var(--tap-min)}}
 /* Reduced motion: nothing moves or resizes; the end state is shown at once. */
 @media (prefers-reduced-motion:reduce){.ef-navigation-menu__indicator{transition:none}}
-@media (prefers-reduced-motion:reduce){@keyframes ef-navigation-menu-in{from{opacity:0}}@keyframes ef-navigation-menu-viewport{from{opacity:0}}.ef-navigation-menu__content,.ef-navigation-menu__viewport{--ef-motion-guard:var(--dur-fast)}}
+@media (prefers-reduced-motion:reduce){.ef-navigation-menu__content,.ef-navigation-menu__viewport{--ef-motion-guard:var(--dur-fast);animation-name:ef-reduce-fade}}
 `;
 
 const NavigationRootContext = React.createContext(null);

@@ -23,7 +23,7 @@ const CSS = `
 .ef-select-separator{height:1px;margin:var(--space-1) var(--space-2);background:var(--border-default)}
 /* Touch: fixed-size targets grow to --tap-min; small glyph buttons keep their look and get a centred --tap-min hit area instead. */
 @media (pointer:coarse){.ef-select-item{min-height:var(--tap-min)}}
-@media (prefers-reduced-motion:reduce){@keyframes ef-select-in{from{opacity:0}}.ef-select-content{--ef-motion-guard:var(--dur-fast)}}
+@media (prefers-reduced-motion:reduce){.ef-select-content{--ef-motion-guard:var(--dur-fast);animation-name:ef-reduce-fade}}
 `;
 const SelectCtx = React.createContext(null);
 const itemText = children => typeof children === 'string' || typeof children === 'number' ? String(children) : '';

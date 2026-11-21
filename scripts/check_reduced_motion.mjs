@@ -31,6 +31,8 @@ const NON_TRAVEL = new Map([
 // Selectors the probe cannot build (a pseudo-class or a sibling combinator) and that carry a positional transition.
 // Each needs a reviewed reason; an unlisted one fails below, so a new moving transition cannot hide behind an unbuildable selector.
 const UNBUILDABLE = new Map([]);
+// The same for entrance animations on a selector the probe cannot build.
+const UNBUILDABLE_ENTRANCE = new Map([]);
 const POSITIONAL = /^(transform|translate|inset(-[\w-]+)?|top|left|right|bottom|margin(-[\w-]+)?|width|height|flex-basis|max-width|max-height)$/;
 // [selector, property list] for every rule with a transition.
 function transitionRules(text) {
@@ -53,7 +55,7 @@ function build(selector) {
   const m = selector.match(/^(.*?)(::[\w-]+)?$/);
   // Each element is built alone, so the structural pseudo-classes below hold without more markup.
   const parts = m[1].replace(/:(?:first|last|only)-(?:child|of-type)/g, '').split(/\s*>\s*|\s+/).filter(Boolean);
-  if (parts.some((p) => /:/.test(p.replace(/\[[^\]]*\]/g, '')) || /^[+~]$/.test(p) || /[+~]/.test(p.replace(/\[[^\]]*\]/g, '')))) return null;
+  if (parts.some((p) => /:/.test(p.replace(/\[[^\]]*\]/g, '')) || /[+~]/.test(p.replace(/\[[^\]]*\]/g, '')))) return null;
   let html = '', closing = '';
   parts.forEach((part, i) => {
     const tag = part.match(/^[a-z][\w-]*/)?.[0] ?? 'div';
@@ -69,6 +71,7 @@ const entrances = [...new Set([...css.replace(/\/\*[\s\S]*?\*\//g, '').matchAll(
 // Entrances that end on their final state at once, reviewed: the hero stroke draws itself, and reduce shows the finished stroke.
 const ENTRANCE_SNAP = new Map([['.ef-hero-accent path', 'the stroke is drawn in full, with no draw-in']]);
 const entranceVerifiable = entrances.filter((p) => p.built);
+const unbuiltEntrances = entrances.filter((p) => !p.built && !UNBUILDABLE_ENTRANCE.has(p.selector)).map((p) => p.selector);
 const probes = selectors.map((s) => ({ selector: s, built: build(s) }));
 const verifiable = probes.filter((p) => p.built);
 const travelVerifiable = travelProbes.filter((p) => p.built);
@@ -163,6 +166,7 @@ try {
     });
   }
   assert.deepEqual(travelling, [], `these transitions still move or resize for a moment under reduce (make them instant, or fade opacity only):\n  ${travelling.join('\n  ')}`);
+  assert.deepEqual(unbuiltEntrances, [], `entrance animations the probe cannot build (simplify the selector, or list them in UNBUILDABLE_ENTRANCE with a reason):\n  ${unbuiltEntrances.join('\n  ')}`);
   // Entrances: a 120 ms fade of opacity only. A snap (no duration) or a slide (any other property) fails.
   const entranceFaults = calm.entrances.filter((e) => !e.missing && !ENTRANCE_SNAP.has(e.selector)).flatMap((e) => [
     ...(e.name === 'none' || !(e.duration > 0.1 && e.duration < 0.2) ? [`${e.selector}: runs ${e.duration}s (${e.name}), expected the 120 ms fade`] : []),

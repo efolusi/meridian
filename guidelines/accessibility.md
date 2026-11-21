@@ -29,7 +29,7 @@ Efolusi ships WCAG 2.1 AA. The rules, per concern:
 
 ## Motion
 - Durations cap at 250ms (`--dur-slow`) and convey state only; `--dur-long` is for marketing pages. Under `prefers-reduced-motion` the tokens swap themselves (base, slow and long become the fast fade, shifts are 0, `--ease-emphasised` becomes `--ease-standard`), so a component that uses the tokens needs no query of its own. If you add larger motion, gate it behind `prefers-reduced-motion`.
-- `tokens/base.css` ships a global `prefers-reduced-motion: reduce` guard that stops every animation, including component-injected CSS: the duration is near zero and a loop runs once. Transitions are not forced: the duration tokens swap to the 120 ms fade, so a change of state still reads.
+- `tokens/base.css` ships a global `prefers-reduced-motion: reduce` guard that stops every animation, including component-injected CSS: the duration is near zero and a loop runs once. Transitions are not forced: the duration tokens swap to the 120 ms fade, so a change of state still reads. An overlay entrance (Drawer, Sheet, Dialog, Toast, popovers, menus) fades in over that 120 ms: inside its own reduce media query it sets `--ef-motion-guard: var(--dur-fast)` and `animation-name: ef-reduce-fade` (opacity only, defined once in `tokens/base.css`). Only entrances set `--ef-motion-guard`, to at most `--dur-fast`; a consumer must not set it on a loop.
 
 ## Component keyboard contracts (verified in-browser)
 - Dialog, Drawer, ConfirmDialog: focus moves in on open, Tab and Shift+Tab wrap inside, Escape closes, focus returns to the invoker; panels carry `aria-labelledby`/`aria-describedby`.
@@ -102,4 +102,4 @@ builds are older than that), and touch input.
 `!important`, a loop runs once, and scroll-behavior goes auto, so entrances land
 instantly rather than being skipped. It applies to `*`, so a component cannot opt
 out of it by accident. A transition is left to the tokens, which swap to the 120 ms
-fade, so a state change does not become a jump.
+fade, so a state change does not become a jump. Overlay entrances are the exception to the 0.01ms: they fade (opacity only) over `--dur-fast` through `--ef-motion-guard`, which only they set.

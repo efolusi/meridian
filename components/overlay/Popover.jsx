@@ -12,7 +12,7 @@ const CSS = `
 .ef-popover__title{margin:0;color:var(--text-primary);font-size:var(--text-md);font-weight:var(--weight-semibold);line-height:1.35}
 .ef-popover__description{margin:0;color:var(--text-muted);font-size:var(--text-sm);line-height:1.45}
 @keyframes ef-pop-in{from{opacity:0;transform:translateY(-3px)}}
-@media (prefers-reduced-motion:reduce){@keyframes ef-pop-in{from{opacity:0}}.ef-popover__panel{--ef-motion-guard:var(--dur-fast)}}
+@media (prefers-reduced-motion:reduce){.ef-popover__panel{--ef-motion-guard:var(--dur-fast);animation-name:ef-reduce-fade}}
 `;
 const PopoverCtx = React.createContext(null);
 const TABBABLE = 'a[href],button,input,select,textarea,[tabindex]';
