@@ -48,9 +48,9 @@ A `system` value stored in a visitor's browser by an earlier release is read as 
 
 ### Logo path
 
-The Meridian mark is the logo-system file at `assets/meridian.svg` (owner rule: one logo per product). The old path `assets/meridian-mark.svg` is gone, and the mark is now square (viewBox 64 by 64) where it was wide.
+The Meridian mark is the logo-system file at `assets/meridian.svg` (owner rule: one logo per product). The old path (named in the CHANGELOG entry) is gone, and the mark is now square (viewBox 64 by 64) where it was wide.
 
-**Before.** `<img src="assets/meridian-mark.svg" width="30" height="16">`, `.meridian-mark` in `site/site.css`.
+**Before.** The image at the old path with `width="30" height="16"`, and the matching old class in `site/site.css`.
 **After.** `<img src="assets/meridian.svg" width="32" height="32">`, `.meridian-logo`. The minimum size is 32px square.
 
 **Mechanical fix.** No Guard rule. Replace the path in your copies and give the image a square box; copy the new file from the release, not from the old one.
