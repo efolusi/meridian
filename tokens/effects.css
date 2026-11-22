@@ -44,7 +44,6 @@
   --material-spec: calc(0.95 * min(1, var(--glass-strength) * 1.6));
   --material-spec-low: calc(0.35 * var(--glass-strength));
   --material-sheen: calc(0.55 * var(--glass-strength));
-  --material-glow: 0;
   --motion-lift: 1.012;
   --motion-press: 0.98;
   --opacity-tint: 0.12;
@@ -72,7 +71,6 @@
   --material-spec: calc(0.22 * min(1, var(--glass-strength) * 1.6));
   --material-spec-low: calc(0.05 * var(--glass-strength));
   --material-sheen: calc(0.1 * var(--glass-strength));
-  --material-glow: calc(0.18 * var(--glass-strength));
 }
 
 @media (prefers-color-scheme:dark) {
@@ -86,7 +84,6 @@
     --material-spec: calc(0.22 * min(1, var(--glass-strength) * 1.6));
     --material-spec-low: calc(0.05 * var(--glass-strength));
     --material-sheen: calc(0.1 * var(--glass-strength));
-    --material-glow: calc(0.18 * var(--glass-strength));
   }
 }
 
@@ -100,7 +97,6 @@
     --material-blur-thick: 0px;
     --material-saturate: 1;
     --material-sheen: 0;
-    --material-glow: 0;
   }
 }
 
@@ -114,7 +110,6 @@
     --material-blur-thick: 0px;
     --material-saturate: 1;
     --material-sheen: 0;
-    --material-glow: 0;
   }
 }
 
@@ -128,7 +123,6 @@
     --material-blur-thick: 0px;
     --material-saturate: 1;
     --material-sheen: 0;
-    --material-glow: 0;
   }
 }
 
@@ -155,7 +149,6 @@
     --material-blur-thick: 0px;
     --material-saturate: 1;
     --material-sheen: 0;
-    --material-glow: 0;
   }
 }
 
@@ -169,6 +162,5 @@
     --material-blur-thick: 0px;
     --material-saturate: 1;
     --material-sheen: 0;
-    --material-glow: 0;
   }
 }

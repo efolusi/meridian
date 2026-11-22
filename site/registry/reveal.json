@@ -24,7 +24,7 @@
     {
       "path": "components/marketing/Reveal.prompt.md",
       "type": "registry:component",
-      "content": "# Reveal\n\nWrap a block in `Reveal` to fade and lift it in once it scrolls into view. Siblings stagger by 70ms each. Content stays visible without JavaScript, and appears at once with reduced motion. Use it on marketing sections, not inside the product UI, and not on the hero's title.\n\n```jsx\n<FeatureGrid>\n  <Reveal><FeatureCard tone=\"peach\" title=\"Products\" /></Reveal>\n  <Reveal><FeatureCard tone=\"cocoa\" title=\"Token\" /></Reveal>\n</FeatureGrid>\n```\n"
+      "content": "# Reveal\n\nWrap a block in `Reveal` to fade and lift it in once it scrolls into view. Siblings stagger by 70ms each. Content stays visible without JavaScript, and appears at once with reduced motion. Use it on marketing sections, not inside the product UI, and not on the hero's title.\n\n```jsx\n<FeatureGrid>\n  <Reveal><FeatureCard tone=\"peach\" title=\"Products\" /></Reveal>\n  <Reveal><FeatureCard tone=\"band\" title=\"Token\" /></Reveal>\n</FeatureGrid>\n```\n"
     }
   ],
   "categories": [

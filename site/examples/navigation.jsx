@@ -243,7 +243,7 @@ export function TabBarDemo() {
   // On a phone the bar is fixed to the bottom and hidden from 720px up; the demo shows it in place.
   return (
     <div onClick={(e) => { const a = e.target.closest('a'); if (a) { e.preventDefault(); setValue(items.find((i) => a.getAttribute('href') === i.href).id); } }} style={{ width: '100%', maxWidth: 420 }}>
-      <TabBar aria-label="Screens" value={value} items={items} style={{ position: 'static', translate: 'none', display: 'flex', width: '100%' }} />
+      <TabBar aria-label="Screens" value={value} items={items} style={{ position: 'static', display: 'flex', width: '100%' }} />
     </div>
   );
 }

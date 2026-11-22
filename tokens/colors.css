@@ -240,7 +240,7 @@
   --border-default: #3A322A;
   --border-strong: #453C31;
   --border-inverse: rgba(30,26,20,.2);
-  --border-control: var(--sand-600);
+  --border-control: #7C725E;
   --border-control-hover: var(--sand-400);
   --border-hover: var(--sand-600);
   --accent: var(--ember-300);
@@ -346,7 +346,7 @@
     --border-default: #3A322A;
     --border-strong: #453C31;
     --border-inverse: rgba(30,26,20,.2);
-    --border-control: var(--sand-600);
+    --border-control: #7C725E;
     --border-control-hover: var(--sand-400);
     --border-hover: var(--sand-600);
     --accent: var(--ember-300);

@@ -41,7 +41,7 @@ describe('glass material', () => {
   });
 
   it('turns into plain system colours under forced colours', () => {
-    const fc = css.slice(css.indexOf('@media (forced-colors:active){.ef-glass'));
+    const fc = css.slice(css.indexOf('@media (forced-colors:active){:focus-visible'));
     expect(fc).toMatch(/\.ef-glass\{[^}]*background:Canvas[^}]*backdrop-filter:none/);
     expect(fc).toMatch(/\.ef-glass-field::before\{display:none\}/);
   });

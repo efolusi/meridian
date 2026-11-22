@@ -2,7 +2,7 @@
   "name": "topnav",
   "type": "registry:ui",
   "title": "TopNav",
-  "description": "Sticky blurred header: optional leading slot, display-font title, right-aligned actions.",
+  "description": "Sticky glass bar, floating as a pill by default (`floating={false}` for a full-width bar): optional leading slot, display-font title, right-aligned actions. Content scrolls under it, so it is the chrome glass of design-tokens `docs/glass.md`.",
   "dependencies": [
     "react"
   ],
@@ -14,17 +14,17 @@
     {
       "path": "components/navigation/TopNav.jsx",
       "type": "registry:ui",
-      "content": "'use client';\nimport React from 'react';\nimport { injectEfCss } from '../runtime/runtime.jsx';\nconst CSS = `\n.ef-topnav{display:flex;align-items:center;gap:var(--space-3);height:60px;padding:0 var(--space-6);border-bottom:1px solid var(--border-default);background:color-mix(in srgb,var(--surface-page) 85%,transparent);backdrop-filter:blur(12px);position:sticky;top:0;z-index:20}\n.ef-topnav__title{font-size:var(--text-xl);font-weight:700;font-family:var(--font-display);letter-spacing:-0.02em;color:var(--text-primary);margin:0}\n.ef-topnav__spacer{margin-inline-start:auto}\n`;\nexport function TopNav({ title, leading, children, style, className, ...rest }) {\n  injectEfCss('ef-css-topnav', CSS);\n  return (\n    <header {...rest} className={`ef-topnav${className ? ' ' + className : ''}`} style={style}>\n      {leading}\n      {title ? <h1 className=\"ef-topnav__title\">{title}</h1> : null}\n      <span className=\"ef-topnav__spacer\"></span>\n      {children}\n    </header>\n  );\n}\n"
+      "content": "'use client';\nimport React from 'react';\nimport { injectEfCss } from '../runtime/runtime.jsx';\n// Chrome glass that content scrolls under (design-tokens docs/glass.md). Floating by default: a pill\n// inset from the edges; floating={false} keeps a full-width bar with a bottom edge.\nconst CSS = `\n.ef-topnav{display:flex;align-items:center;gap:var(--space-3);height:60px;padding:0 var(--space-6);position:sticky;top:0;z-index:20}\n.ef-topnav:not(.ef-topnav--floating){border-width:0 0 1px;border-radius:0}\n.ef-topnav--floating{top:var(--space-3);height:56px;margin:var(--space-3) var(--space-3) 0;padding:0 var(--space-2) 0 var(--space-5);border-radius:var(--radius-full)}\n.ef-topnav__title{font-size:var(--text-xl);font-weight:var(--weight-display);font-family:var(--font-display);letter-spacing:var(--tracking-display);color:var(--text-primary);margin:0}\n.ef-topnav__spacer{margin-inline-start:auto}\n`;\nexport function TopNav({ title, leading, children, floating = true, style, className, ...rest }) {\n  injectEfCss('ef-css-topnav', CSS);\n  return (\n    <header {...rest} className={`ef-topnav ef-glass ef-glass--chrome ef-glass--blur${floating ? ' ef-topnav--floating' : ''}${className ? ' ' + className : ''}`} style={style}>\n      {leading}\n      {title ? <h1 className=\"ef-topnav__title\">{title}</h1> : null}\n      <span className=\"ef-topnav__spacer\"></span>\n      {children}\n    </header>\n  );\n}\n"
     },
     {
       "path": "components/navigation/TopNav.d.ts",
       "type": "registry:component",
-      "content": "export interface TopNavProps {\n  title?: React.ReactNode;\n  /** Slot before the title (back button, breadcrumbs) */\n  leading?: React.ReactNode;\n  /** Right-aligned actions (search, bell, avatar) */\n  children?: React.ReactNode;\n  style?: React.CSSProperties;\n  className?: string;\n}\nexport declare function TopNav(props: TopNavProps): React.JSX.Element;\n"
+      "content": "export interface TopNavProps {\n  title?: React.ReactNode;\n  /** Slot before the title (back button, breadcrumbs) */\n  leading?: React.ReactNode;\n  /** Right-aligned actions (search, bell, avatar) */\n  children?: React.ReactNode;\n  /** A pill inset from the edges (default). false keeps a full-width bar. Both are chrome glass. */\n  floating?: boolean;\n  style?: React.CSSProperties;\n  className?: string;\n}\nexport declare function TopNav(props: TopNavProps): React.JSX.Element;\n"
     },
     {
       "path": "components/navigation/TopNav.prompt.md",
       "type": "registry:component",
-      "content": "Sticky blurred header: optional leading slot, display-font title, right-aligned actions.\n\n```jsx\n<TopNav title=\"Customers\">\n  <Input size=\"sm\" placeholder=\"Search\u2026 \u2318K\" iconLeft=\"search\" style={{ width: 300 }} />\n  <IconButton icon=\"bell\" label=\"Notifications\" />\n  <Avatar><AvatarFallback>AO</AvatarFallback></Avatar>\n</TopNav>\n```\n"
+      "content": "Sticky glass bar, floating as a pill by default (`floating={false}` for a full-width bar): optional leading slot, display-font title, right-aligned actions. Content scrolls under it, so it is the chrome glass of design-tokens `docs/glass.md`.\n\n```jsx\n<TopNav title=\"Customers\">\n  <Input size=\"sm\" placeholder=\"Search\u2026 \u2318K\" iconLeft=\"search\" style={{ width: 300 }} />\n  <IconButton icon=\"bell\" label=\"Notifications\" />\n  <Avatar><AvatarFallback>AO</AvatarFallback></Avatar>\n</TopNav>\n```\n"
     }
   ],
   "categories": [

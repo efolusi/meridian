@@ -13,9 +13,9 @@ CSS is not counted per component: `styles.css` ships every component style in on
 
 | File | Size | Gzip |
 | --- | ---: | ---: |
-| `@efolusi/meridian` | 367.4 kB | 83.0 kB |
-| `dist/components.css` | 231.7 kB | 31.7 kB |
-| `_ds_bundle.js` | 874.2 kB | 156.5 kB |
+| `@efolusi/meridian` | 368.1 kB | 83.2 kB |
+| `dist/components.css` | 234.8 kB | 32.1 kB |
+| `_ds_bundle.js` | 879.0 kB | 157.4 kB |
 
 The root import, `@efolusi/meridian`, is every component. `_ds_bundle.js` is the zero-build CDN bundle, which also carries each component's CSS. The root import is minified; the CSS and the CDN bundle are measured as shipped.
 
@@ -94,7 +94,7 @@ The root import, `@efolusi/meridian`, is every component. `_ds_bundle.js` is the
 | `feedback/Alert.js` | Alert, AlertTitle, AlertDescription, AlertAction | 1.1 kB | 0.5 kB |
 | `feedback/AlertDialog.js` | AlertDialog, AlertDialogTrigger, AlertDialogPortal, AlertDialogOverlay, AlertDialogContent, AlertDialogHeader, AlertDialogFooter, AlertDialogMedia, AlertDialogTitle, AlertDialogDescription, AlertDialogCancel, AlertDialogAction | 7.0 kB | 2.4 kB |
 | `feedback/Banner.js` | Banner | 44.8 kB | 7.5 kB |
-| `feedback/ConfirmDialog.js` | ConfirmDialog | 54.4 kB | 10.5 kB |
+| `feedback/ConfirmDialog.js` | ConfirmDialog | 54.5 kB | 10.6 kB |
 | `feedback/Dialog.js` | Dialog, DialogTrigger, DialogPortal, DialogOverlay, DialogClose, DialogContent, DialogHeader, DialogFooter, DialogTitle, DialogDescription | 50.4 kB | 9.3 kB |
 | `feedback/Loader.js` | Loader | 1.0 kB | 0.5 kB |
 | `feedback/Progress.js` | Progress | 1.5 kB | 0.8 kB |
@@ -113,7 +113,7 @@ The root import, `@efolusi/meridian`, is every component. `_ds_bundle.js` is the
 | `forms/Combobox.js` | Combobox, ComboboxValue, ComboboxTrigger, ComboboxClear, ComboboxInput, ComboboxContent, ComboboxList, ComboboxItem, ComboboxGroup, ComboboxLabel, ComboboxCollection, ComboboxEmpty, ComboboxSeparator, ComboboxChips, ComboboxChip, ComboboxChipsInput | 57.5 kB | 11.6 kB |
 | `forms/Field.js` | Field, FieldSet, FieldGroup, FieldContent, FieldLabel, FieldTitle, FieldDescription, FieldLegend, FieldSeparator, FieldError | 2.6 kB | 1.0 kB |
 | `forms/IconButton.js` | IconButton | 44.1 kB | 7.3 kB |
-| `forms/Input.js` | Input | 46.4 kB | 8.1 kB |
+| `forms/Input.js` | Input | 46.5 kB | 8.2 kB |
 | `forms/InputGroup.js` | InputGroup, InputGroupAddon, InputGroupButton, InputGroupInput, InputGroupTextarea, InputGroupText | 2.2 kB | 0.8 kB |
 | `forms/InputOTP.js` | InputOTP, InputOTPGroup, InputOTPSlot, InputOTPSeparator | 2.5 kB | 1.1 kB |
 | `forms/Label.js` | Label | 0.7 kB | 0.4 kB |
@@ -147,8 +147,9 @@ The root import, `@efolusi/meridian`, is every component. `_ds_bundle.js` is the
 | `navigation/Sidebar.js` | SidebarProvider, Sidebar, SidebarTrigger, SidebarRail, SidebarInset, SidebarHeader, SidebarFooter, SidebarContent, SidebarGroup, SidebarGroupContent, SidebarMenu, SidebarMenuItem, SidebarMenuSub, SidebarMenuSubItem, SidebarInput, SidebarSeparator, SidebarGroupLabel, SidebarGroupAction, SidebarMenuButton, SidebarMenuAction, SidebarMenuBadge, SidebarMenuSubButton, SidebarMenuSkeleton | 52.1 kB | 9.8 kB |
 | `navigation/SkipLink.js` | SkipLink | 0.7 kB | 0.5 kB |
 | `navigation/Steps.js` | Steps | 44.7 kB | 7.4 kB |
+| `navigation/TabBar.js` | TabBar | 44.2 kB | 7.3 kB |
 | `navigation/Tabs.js` | Tabs, TabsList, TabsTrigger, TabsContent | 47.0 kB | 8.3 kB |
-| `navigation/TopNav.js` | TopNav | 0.6 kB | 0.3 kB |
+| `navigation/TopNav.js` | TopNav | 0.7 kB | 0.4 kB |
 | `overlay/Command.js` | Command, CommandDialog, CommandInput, CommandList, CommandEmpty, CommandGroup, CommandItem, CommandShortcut, CommandSeparator | 54.6 kB | 10.6 kB |
 | `overlay/ContextMenu.js` | ContextMenu, ContextMenuTrigger, ContextMenuPortal, ContextMenuContent, ContextMenuGroup, ContextMenuLabel, ContextMenuSeparator, ContextMenuShortcut, ContextMenuItem, ContextMenuCheckboxItem, ContextMenuRadioGroup, ContextMenuRadioItem, ContextMenuSub, ContextMenuSubTrigger, ContextMenuSubContent | 55.7 kB | 11.0 kB |
 | `overlay/Drawer.js` | Drawer, DrawerTrigger, DrawerPortal, DrawerClose, DrawerOverlay, DrawerContent, DrawerHeader, DrawerFooter, DrawerTitle, DrawerDescription | 53.8 kB | 10.1 kB |

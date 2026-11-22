@@ -5,7 +5,9 @@ module.exports = { theme: { extend: {
   "colors": {
     "sand-25": "var(--sand-25)",
     "sand-50": "var(--sand-50)",
+    "sand-75": "var(--sand-75)",
     "sand-100": "var(--sand-100)",
+    "sand-150": "var(--sand-150)",
     "sand-200": "var(--sand-200)",
     "sand-300": "var(--sand-300)",
     "sand-400": "var(--sand-400)",
