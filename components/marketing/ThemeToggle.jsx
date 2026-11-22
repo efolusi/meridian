@@ -4,42 +4,46 @@ import { injectEfCss } from '../runtime/runtime.jsx';
 import { Icon } from '../icons/Icon.jsx';
 
 // One theme control for every Efolusi site; the contract is guidelines/theming.md (Theme contract).
-// localStorage holds this origin's choice (light, dark or system). The cookie on
-// .efolusi.com holds only the resolved light or dark, so a first visit to another
-// Efolusi site inherits it; every product parses that cookie as dark|light.
+// The switch offers light and dark only. localStorage holds this origin's choice, written
+// only when the person switches; until then the page shows the device's theme. The cookie on
+// .efolusi.com holds that choice too, so a first visit to another Efolusi site inherits it;
+// every product parses that cookie as dark|light.
 // theme-contract:start (scripts/build_browser.mjs copies this block to browser/theme.js)
 const THEME_COOKIE = 'efolusi_theme';
 const THEME_STORAGE_KEY = 'efolusi-theme';
 const THEME_CHANGE_EVENT = 'efolusi-theme-change';
-// Cycle order of the single button.
-const THEME_PREFERENCES = ['light', 'dark', 'system'];
+const THEME_PREFERENCES = ['light', 'dark'];
 const YEAR = 60 * 60 * 24 * 365;
 
 const LABELS = {
-  en: { system: 'System theme', light: 'Light theme', dark: 'Dark theme', next: 'switch to' },
-  id: { system: 'Tema sistem', light: 'Tema terang', dark: 'Tema gelap', next: 'ganti ke' },
+  en: { light: 'Light theme', dark: 'Dark theme', next: 'Switch to' },
+  id: { light: 'Tema terang', dark: 'Tema gelap', next: 'Ganti ke' },
 };
 
 const valid = (v) => (THEME_PREFERENCES.includes(v) ? v : null);
 
-/** The localStorage choice, then the cookie (dark|light), else `system`. */
+/** The localStorage choice, then the cookie (dark|light), else null: no choice, so the device decides. */
 export function readThemePreference(doc = globalThis.document, storage = globalThis.localStorage) {
   try {
-    const choice = valid(storage?.getItem(THEME_STORAGE_KEY));
+    const stored = storage?.getItem(THEME_STORAGE_KEY);
+    const choice = valid(stored);
     if (choice) return choice;
+    // An earlier release stored `system`. That is no choice now: drop it once.
+    if (stored === 'system') storage.removeItem(THEME_STORAGE_KEY);
   } catch {
     /* storage blocked: fall back to the cookie */
   }
   const m = doc?.cookie?.match(/(?:^|;\s*)efolusi_theme=(dark|light)(?:;|$)/);
-  return m ? m[1] : 'system';
+  return m ? m[1] : null;
 }
 
+/** `light` or `dark` for a choice; with no choice, the device's theme. */
 export function resolveTheme(pref, matchMedia = globalThis.matchMedia) {
   if (pref === 'light' || pref === 'dark') return pref;
   return matchMedia && matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
 }
 
-/** Writes the resolved light|dark to the cookie; never `system`. */
+/** Writes light|dark to the cookie. */
 export function writeThemeCookie(theme, doc = globalThis.document) {
   if (!doc) return;
   const host = doc.location?.hostname || '';
@@ -48,64 +52,59 @@ export function writeThemeCookie(theme, doc = globalThis.document) {
   doc.cookie = `${THEME_COOKIE}=${theme === 'dark' ? 'dark' : 'light'}${domain}; Path=/; Max-Age=${YEAR}; SameSite=Lax${secure}`;
 }
 
-/** Saves the choice in localStorage and its resolved theme in the cookie. */
-export function writeThemePreference(value, doc = globalThis.document, storage = globalThis.localStorage, matchMedia = globalThis.matchMedia) {
-  const pref = valid(value) || 'system';
+/** Saves the person's choice (light or dark) in localStorage and the cookie. Anything else is refused and returns null. */
+export function writeThemePreference(value, doc = globalThis.document, storage = globalThis.localStorage) {
+  const pref = valid(value);
+  if (!pref) return null;
   try {
     storage?.setItem(THEME_STORAGE_KEY, pref);
   } catch {
-    /* storage blocked: the cookie still carries the resolved theme */
+    /* storage blocked: the cookie still carries the choice */
   }
-  writeThemeCookie(resolveTheme(pref, matchMedia), doc);
+  writeThemeCookie(pref, doc);
   // Every ThemeToggle on the page re-reads the choice (a header renders its actions twice).
   doc?.defaultView?.dispatchEvent(new CustomEvent(THEME_CHANGE_EVENT, { detail: pref }));
   return pref;
 }
 
-/** With the choice on System here, rewrite the cookie to the theme shown now, so other sites inherit a current value. */
-export function refreshSystemCookie(doc = globalThis.document, storage = globalThis.localStorage, matchMedia = globalThis.matchMedia) {
-  let choice = null;
-  try {
-    choice = storage?.getItem(THEME_STORAGE_KEY);
-  } catch {
-    return;
-  }
-  if (choice === 'system') writeThemeCookie(resolveTheme('system', matchMedia), doc);
-}
-
 export function applyTheme(pref, doc = globalThis.document, matchMedia = globalThis.matchMedia) {
   const theme = resolveTheme(pref, matchMedia);
-  // data-theme is always the resolved theme, so a dark OS cannot turn a Light choice dark;
+  // data-theme is always light or dark, so a dark device cannot turn a Light choice dark;
   // the media rule in tokens/colors.css stays as the no-JS fallback only.
   doc?.documentElement?.setAttribute('data-theme', theme);
   return theme;
 }
 
-/** Inline this in <head>, before any stylesheet paints, so the first frame has the right theme. */
+/** Inline this in <head>, before any stylesheet paints, so the first frame has the right theme. It stores nothing. */
 export function themeInitScript() {
-  return `(function(){try{var s=window.matchMedia&&matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light',c=null,t;try{c=localStorage.getItem('${THEME_STORAGE_KEY}')}catch(e){}if(c==='light'||c==='dark')t=c;else if(c==='system')t=s;else{var m=document.cookie.match(/(?:^|;\\s*)${THEME_COOKIE}=(dark|light)(?:;|$)/);t=m?m[1]:s}document.documentElement.setAttribute('data-theme',t);if(c==='system'){var h=location.hostname,d=h==='efolusi.com'||h.slice(-12)==='.efolusi.com'?'; Domain=.efolusi.com':'';document.cookie='${THEME_COOKIE}='+t+d+'; Path=/; Max-Age=${YEAR}; SameSite=Lax'+(location.protocol==='https:'?'; Secure':'')}}catch(e){}})();`;
+  return `(function(){try{var s=window.matchMedia&&matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light',c=null,t;try{c=localStorage.getItem('${THEME_STORAGE_KEY}');if(c==='system'){localStorage.removeItem('${THEME_STORAGE_KEY}');c=null}}catch(e){}if(c==='light'||c==='dark')t=c;else{var m=document.cookie.match(/(?:^|;\\s*)${THEME_COOKIE}=(dark|light)(?:;|$)/);t=m?m[1]:s}document.documentElement.setAttribute('data-theme',t)}catch(e){}})();`;
 }
 // theme-contract:end
 
-const ICONS = { system: 'monitor', light: 'sun', dark: 'moon' };
+const ICONS = { light: 'sun', dark: 'moon' };
 
 const CSS = `
 .ef-theme-toggle{display:inline-flex;align-items:center;justify-content:center;flex:none;width:var(--tap-min);height:var(--tap-min);padding:0;border:1px solid transparent;border-radius:var(--radius-full);background:transparent;color:var(--text-secondary);cursor:pointer;transition:background var(--dur-fast) var(--ease-enter),color var(--dur-fast) var(--ease-enter)}
 .ef-theme-toggle:hover{background:var(--surface-sunken);color:var(--text-primary)}
 .ef-theme-toggle:focus-visible{outline:none;box-shadow:var(--focus-ring)}
 .ef-theme-toggle [data-theme-icon]{display:none}
-.ef-theme-toggle[data-preference="light"] [data-theme-icon="light"],.ef-theme-toggle[data-preference="dark"] [data-theme-icon="dark"],.ef-theme-toggle[data-preference="system"] [data-theme-icon="system"]{display:inline-flex}
+.ef-theme-toggle[data-theme-shown="light"] [data-theme-icon="light"],.ef-theme-toggle[data-theme-shown="dark"] [data-theme-icon="dark"]{display:inline-flex}
 @media (prefers-reduced-motion:reduce){.ef-theme-toggle{transition:none}}
 `;
 
 export const ThemeToggle = React.forwardRef(function ThemeToggle({ lang = 'en', labels, className, onChange, ...rest }, ref) {
   injectEfCss('ef-css-theme-toggle', CSS);
   const text = { ...(LABELS[lang] || LABELS.en), ...labels };
-  const [pref, setPref] = React.useState('system');
+  // pref is the person's choice (null until they switch); shown is the theme in use.
+  const [pref, setPref] = React.useState(null);
+  const [shown, setShown] = React.useState('light');
 
   React.useEffect(() => {
-    refreshSystemCookie();
-    const sync = () => setPref(readThemePreference());
+    const sync = () => {
+      const choice = readThemePreference();
+      setPref(choice);
+      setShown(applyTheme(choice));
+    };
     // Another toggle on this page, or the same choice made in another tab.
     const onStorage = (e) => { if (e.key === null || e.key === THEME_STORAGE_KEY) sync(); };
     sync();
@@ -118,19 +117,19 @@ export const ThemeToggle = React.forwardRef(function ThemeToggle({ lang = 'en', 
   }, []);
 
   React.useEffect(() => {
-    applyTheme(pref);
-    if (pref !== 'system' || !globalThis.matchMedia) return undefined;
+    if (pref || !globalThis.matchMedia) return undefined;
     const mq = globalThis.matchMedia('(prefers-color-scheme: dark)');
-    // Re-resolve and keep the cookie on the new resolved theme.
-    const follow = () => writeThemeCookie(applyTheme('system'));
+    // No choice yet: follow the device, and store nothing.
+    const follow = () => setShown(applyTheme(null));
     mq.addEventListener('change', follow);
     return () => mq.removeEventListener('change', follow);
   }, [pref]);
 
-  const next = THEME_PREFERENCES[(THEME_PREFERENCES.indexOf(pref) + 1) % THEME_PREFERENCES.length];
+  const other = THEME_PREFERENCES.find((t) => t !== shown);
   const choose = () => {
-    setPref(writeThemePreference(next));
-    onChange?.(next);
+    setPref(writeThemePreference(other));
+    setShown(applyTheme(other));
+    onChange?.(other);
   };
 
   return (
@@ -140,13 +139,13 @@ export const ThemeToggle = React.forwardRef(function ThemeToggle({ lang = 'en', 
       type="button"
       data-slot="theme-toggle"
       data-ef-react=""
-      data-preference={pref}
+      data-theme-shown={shown}
       className={`ef-theme-toggle${className ? ` ${className}` : ''}`}
-      aria-label={`${text[pref]}, ${text.next} ${text[next].toLowerCase()}`}
-      title={text[pref]}
+      aria-label={`${text.next} ${text[other].toLowerCase()}`}
+      title={text[shown]}
       onClick={choose}
     >
-      <Icon name={ICONS[pref]} size={20} aria-hidden="true" />
+      <Icon name={ICONS[shown]} size={20} aria-hidden="true" />
     </button>
   );
 });

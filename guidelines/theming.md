@@ -153,12 +153,12 @@ Every Efolusi site follows this one contract, through `ThemeToggle` and `themeIn
 
 | Part | Rule |
 |---|---|
-| Choice | localStorage `efolusi-theme` holds this origin's choice: `light`, `dark` or `system`. |
-| Cookie | `efolusi_theme` holds only the resolved `light` or `dark`, never `system`, so every product can parse it. `Domain=.efolusi.com` when the host is `efolusi.com` or ends with `.efolusi.com`; `Path=/`; `Max-Age` one year; `SameSite=Lax`; `Secure` on https. |
-| Precedence | Before paint and at runtime: the localStorage choice, then the cookie (`dark` or `light`), then `prefers-color-scheme`. A first visit to another Efolusi site inherits the cookie. |
-| Before paint | `themeInitScript()` inlined in `<head>`. |
-| Markup | `data-theme` on `<html>` is always the resolved theme, `light` or `dark`, for every choice including System. Light never removes the attribute, so a dark OS cannot turn a Light choice dark. The media rule in `tokens/colors.css` is only the no-JS fallback. |
-| Control | One 44px button. Light → Dark → System → Light. On System, every page load and every `prefers-color-scheme` change re-resolve the theme and rewrite the cookie, so other sites never inherit a stale value. Labels in English and Indonesian. |
+| Choice | The switch offers two choices only, `light` and `dark`; there is no system option. localStorage `efolusi-theme` holds this origin's choice, written only when the person switches. A `system` value stored by an earlier release is read as no choice and removed once. |
+| Cookie | `efolusi_theme` holds the person's choice, `light` or `dark`, so every product can parse it, and is written only when they switch. `Domain=.efolusi.com` when the host is `efolusi.com` or ends with `.efolusi.com`; `Path=/`; `Max-Age` one year; `SameSite=Lax`; `Secure` on https. |
+| Precedence | Before paint and at runtime: the localStorage choice, then the cookie (`dark` or `light`), then the device's `prefers-color-scheme`. A first visit starts in the device's theme and stores nothing; a first visit to another Efolusi site inherits the cookie. |
+| Before paint | `themeInitScript()` inlined in `<head>`. It paints the theme and stores nothing. |
+| Markup | `data-theme` on `<html>` is always `light` or `dark`. Light never removes the attribute, so a dark device cannot turn a Light choice dark. The media rule in `tokens/colors.css` is only the no-JS fallback. |
+| Control | One 44px button that shows the theme in use (sun for light, moon for dark) and flips to the other. Its `aria-label` names the action ("Switch to dark theme", "Ganti ke tema gelap"). With no stored choice it follows the device live and stores nothing. Labels in English and Indonesian. |
 
 ## Server layouts
 
@@ -181,7 +181,7 @@ Under a nonce-based CSP, pass the request's nonce, or the script is blocked and 
 
 Under a hash-based CSP, allow the sha256 of the exact `themeInitScript()` output (hash the string the function returns, byte for byte, at build or start time). pay and komando.efolusi.com do this. A hash written by hand goes stale when the contract changes, so compute it from the function.
 
-A hash site picks up a changed script on its next build. When `themeInitScript()`'s text changes between releases (1.27.0 rewrote it so System refreshes the cookie), a site that hard-codes the old hash blocks the script and flashes the wrong theme until it rebuilds. Nonce sites are not affected, and a versioned `browser/<version>/` pin keeps its old bytes.
+A hash site picks up a changed script on its next build. When `themeInitScript()`'s text changes between releases (1.31.0 rewrote it to drop System), a site that hard-codes the old hash blocks the script and flashes the wrong theme until it rebuilds. Nonce sites are not affected, and a versioned `browser/<version>/` pin keeps its old bytes.
 
 ## Plain HTML sites
 
@@ -199,7 +199,7 @@ Sites without React load two files from `browser/`. Self-host them from the npm 
 
 The unversioned `/browser/` files change with each release and serve meridian.efolusi.com itself; product sites do not load them.
 
-Both files keep `data-theme` on `<html>` at the resolved `light` or `dark`, and `marketing.js` re-resolves it when the operating system changes while the choice is System. Code that reads the theme should compare `data-theme` with `"dark"`, not test whether the attribute exists.
+Both files keep `data-theme` on `<html>` at the resolved `light` or `dark`, and `marketing.js` re-resolves it when the device changes while there is no stored choice. Code that reads the theme should compare `data-theme` with `"dark"`, not test whether the attribute exists.
 
 `marketing.js` wires the markup the React components render, by `data-slot`: the theme toggle, the `SiteHeader` mobile menu and the `Marquee` pause button. It also wires markup added later. `init(root)` returns a cleanup function, for content you mount yourself.
 
@@ -207,7 +207,6 @@ Both files keep `data-theme` on `<html>` at the resolved `light` or `dark`, and 
 <button type="button" data-slot="theme-toggle" class="ef-theme-toggle">
   <svg data-theme-icon="light" aria-hidden="true">…</svg>
   <svg data-theme-icon="dark" aria-hidden="true">…</svg>
-  <svg data-theme-icon="system" aria-hidden="true">…</svg>
 </button>
 ```
 

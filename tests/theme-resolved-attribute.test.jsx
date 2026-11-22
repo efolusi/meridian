@@ -3,8 +3,8 @@ import { act, render } from '@testing-library/react';
 import { ThemeToggle, themeInitScript, applyTheme } from '../components/marketing/ThemeToggle.jsx';
 import { init } from '../browser/marketing.js';
 
-// MD23 (#192): data-theme is always the resolved theme, light or dark, for every choice
-// including System. Light no longer removes the attribute, so a dark OS cannot turn it dark.
+// MD23 (#192): data-theme is always light or dark. Light never removes the attribute,
+// so a dark device cannot turn a Light choice dark.
 const attr = () => document.documentElement.getAttribute('data-theme');
 const cookie = () => (document.cookie.match(/(?:^|;\s*)efolusi_theme=([^;]*)/) || [])[1];
 function fakeMedia(dark) {
@@ -52,17 +52,16 @@ describe.each(Object.entries(runtimes))('%s', (_name, { start, follows }) => {
     stop();
   });
 
-  it('System follows the OS, with the attribute always set', async () => {
+  it('with no choice and no cookie, the device decides and nothing is stored', async () => {
     const os = fakeMedia(true);
-    localStorage.setItem('efolusi-theme', 'system');
     let stop;
     await act(async () => { stop = start(); });
     expect(attr()).toBe('dark');
-    expect(cookie()).toBe('dark');
+    expect(cookie()).toBeUndefined();
     if (follows) {
       await act(async () => { os.set(false); });
       expect(attr()).toBe('light');
-      expect(cookie()).toBe('light');
+      expect(cookie()).toBeUndefined();
     }
     stop();
   });
@@ -97,7 +96,7 @@ describe('applyTheme', () => {
     expect(attr()).toBe('light');
     expect(applyTheme('dark')).toBe('dark');
     expect(attr()).toBe('dark');
-    expect(applyTheme('system')).toBe('dark');
+    expect(applyTheme(null)).toBe('dark');
     expect(attr()).toBe('dark');
   });
 });

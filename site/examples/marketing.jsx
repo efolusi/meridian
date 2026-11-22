@@ -105,7 +105,7 @@ export function ThemeToggleDemo() {
   return (
     <div style={{ display: 'flex', gap: 'var(--space-3)', alignItems: 'center' }}>
       <ThemeToggle />
-      <span style={{ fontSize: 'var(--text-sm)', color: 'var(--text-secondary)' }}>Click to cycle Light, Dark and System. The page theme changes with it.</span>
+      <span style={{ fontSize: 'var(--text-sm)', color: 'var(--text-secondary)' }}>Click to switch between Light and Dark. The page theme changes with it.</span>
     </div>
   );
 }

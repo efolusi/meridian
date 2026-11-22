@@ -1,25 +1,24 @@
-export type ThemePreference = 'system' | 'light' | 'dark';
+export type ThemePreference = 'light' | 'dark';
 
 export interface ThemeToggleProps extends Omit<React.ButtonHTMLAttributes<HTMLButtonElement>, 'onChange'> {
   /** Language of the built-in labels. @default 'en' */
   lang?: 'en' | 'id';
-  /** Override any label: `system`, `light`, `dark`, and `next` (the "switch to" phrase). */
+  /** Override any label: `light`, `dark`, and `next` (the "Switch to" phrase). */
   labels?: Partial<Record<ThemePreference | 'next', string>>;
-  /** Called with the new preference after a click. */
+  /** Called with the new theme after a click. */
   onChange?: (preference: ThemePreference) => void;
 }
-/** One button that cycles Light, Dark and System; follows the OS live while on System. */
+/** One button that shows the theme in use and flips to the other, Light or Dark. With no stored choice it follows the device live and stores nothing. */
 export declare const ThemeToggle: React.ForwardRefExoticComponent<ThemeToggleProps & React.RefAttributes<HTMLButtonElement>>;
 
-/** The efolusi-theme localStorage choice, then the efolusi_theme cookie (dark|light), else `system`. */
-export declare function readThemePreference(doc?: Document, storage?: Storage): ThemePreference;
-/** Saves the choice in localStorage `efolusi-theme` and its resolved light|dark in the `efolusi_theme` cookie. */
-export declare function writeThemePreference(value: ThemePreference, doc?: Document, storage?: Storage, matchMedia?: (query: string) => MediaQueryList): ThemePreference;
-/** Writes the resolved theme to the `efolusi_theme` cookie: a year, Path=/, SameSite=Lax, Secure on https, Domain=.efolusi.com on efolusi.com hosts. Never `system`. */
-export declare function writeThemeCookie(theme: 'light' | 'dark', doc?: Document): void;
-export declare function resolveTheme(preference: ThemePreference, matchMedia?: (query: string) => MediaQueryList): 'light' | 'dark';
-/** With the choice on System here, rewrites the `efolusi_theme` cookie to the theme shown now. */
-export declare function refreshSystemCookie(doc?: Document, storage?: Storage, matchMedia?: (query: string) => MediaQueryList): void;
-export declare function applyTheme(preference: ThemePreference, doc?: Document, matchMedia?: (query: string) => MediaQueryList): 'light' | 'dark';
-/** The script to inline in <head> so the first paint has the stored or system theme. */
+/** The efolusi-theme localStorage choice, then the efolusi_theme cookie (dark|light), else null: no choice, the device decides. A `system` value stored by an earlier release is read as null and removed once. */
+export declare function readThemePreference(doc?: Document, storage?: Storage): ThemePreference | null;
+/** Saves the choice in localStorage `efolusi-theme` and the `efolusi_theme` cookie. Anything but light or dark is refused and returns null. */
+export declare function writeThemePreference(value: ThemePreference, doc?: Document, storage?: Storage): ThemePreference | null;
+/** Writes light|dark to the `efolusi_theme` cookie: a year, Path=/, SameSite=Lax, Secure on https, Domain=.efolusi.com on efolusi.com hosts. */
+export declare function writeThemeCookie(theme: ThemePreference, doc?: Document): void;
+/** The choice itself, or with null the device's theme. */
+export declare function resolveTheme(preference: ThemePreference | null, matchMedia?: (query: string) => MediaQueryList): 'light' | 'dark';
+export declare function applyTheme(preference: ThemePreference | null, doc?: Document, matchMedia?: (query: string) => MediaQueryList): 'light' | 'dark';
+/** The script to inline in <head> so the first paint has the stored, inherited or device theme. It stores nothing. */
 export declare function themeInitScript(): string;

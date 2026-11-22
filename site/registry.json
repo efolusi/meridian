@@ -3593,7 +3593,7 @@
       "name": "themetoggle",
       "type": "registry:ui",
       "title": "ThemeToggle",
-      "description": "One theme control for every Efolusi site, following the [theme contract](../../guidelines/theming.md#theme-contract). `ThemeToggle` is a single 44px button that cycles Light, Dark and System. On System it follows the operating system live. It keeps `data-theme` on `<html>` at the resolved `light` or",
+      "description": "One theme control for every Efolusi site, following the [theme contract](../../guidelines/theming.md#theme-contract). `ThemeToggle` is a single 44px button that shows the theme in use and flips to the other, Light or Dark; there is no system option. With no stored choice it follows the device live a",
       "dependencies": [
         "react"
       ],

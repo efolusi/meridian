@@ -23,6 +23,29 @@ Meridian keeps no legacy code. A rename or removal lands in one release, with no
 
 Guard reads imports, so it does not see components used as CDN globals (`window.Drawer`) or props passed through a spread (`<Drawer {...props}>`). Search for those by hand; the development warning still catches them at runtime.
 
+## 1.31.0
+
+### ThemeToggle offers light and dark only
+
+The theme switch has two choices, `light` and `dark`, in every product (owner rule, 2026-11-22). The `system` choice, its icon and its label are gone. A first visit starts in the device's theme and stores nothing; the choice is kept once the person switches.
+
+**Before.** The button cycled Light, Dark, System. `readThemePreference()` returned `'system'` with no choice. `ThemePreference` included `'system'`. `refreshSystemCookie()` existed. `labels` took a `system` key. The button carried `data-preference`.
+
+**After.** The button flips between Light and Dark and shows the theme in use. `readThemePreference()` returns `null` with no choice. `ThemePreference` is `'light' | 'dark'`. `refreshSystemCookie()` is removed. `labels` takes `light`, `dark` and `next`. The button carries `data-theme-shown`, and its `aria-label` names the action ("Switch to dark theme", "Ganti ke tema gelap"). `resolveTheme(null)` and `applyTheme(null)` give the device's theme. `writeThemePreference()` refuses anything but `light` or `dark` and returns `null`.
+
+```jsx
+// before
+const pref = readThemePreference();          // 'light' | 'dark' | 'system'
+<ThemeToggle labels={{ system: 'Auto' }} />
+// after
+const pref = readThemePreference();          // 'light' | 'dark' | null
+<ThemeToggle labels={{ next: 'Switch to' }} />
+```
+
+A `system` value stored in a visitor's browser by an earlier release is read as no choice and removed once by the reader and by `themeInitScript()`. That is visitor data, not an alias. `themeInitScript()` no longer writes the cookie, so a site that hard-codes its hash needs the new hash from `browser/hashes.json`.
+
+**Mechanical fix.** No Guard rule. Remove `system` from your `labels`, any `ThemePreference` switch and any `data-preference` selector; the CSS for the markup in `marketing.js` drops the `system` icon.
+
 ## 1.25.0
 
 ### Drawer `modal`
