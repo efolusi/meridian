@@ -46,6 +46,15 @@ A `system` value stored in a visitor's browser by an earlier release is read as 
 
 **Mechanical fix.** No Guard rule. Remove `system` from your `labels`, any `ThemePreference` switch and any `data-preference` selector; the CSS for the markup in `marketing.js` drops the `system` icon.
 
+### Logo path
+
+The Meridian mark is the logo-system file at `assets/meridian.svg` (owner rule: one logo per product). The old path (named in the CHANGELOG entry) is gone, and the mark is now square (viewBox 64 by 64) where it was wide.
+
+**Before.** The image at the old path with `width="30" height="16"`, and the matching old class in `site/site.css`.
+**After.** `<img src="assets/meridian.svg" width="32" height="32">`, `.meridian-logo`. The minimum size is 32px square.
+
+**Mechanical fix.** No Guard rule. Replace the path in your copies and give the image a square box; copy the new file from the release, not from the old one.
+
 ## 1.25.0
 
 ### Drawer `modal`

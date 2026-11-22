@@ -47,7 +47,7 @@ describe('apps: the fictional product', () => {
   // wordmark, never the Meridian mark (asset or inlined SVG).
   it('never shows the Meridian mark next to a fictional product', () => {
     const hits = sources
-      .filter(({ text }) => /meridian-mark\.svg|viewBox="0 0 62 33"/.test(text))
+      .filter(({ text }) => /meridian\.svg|M15\.11 19\.79Q16 18/.test(text))
       .map(({ file }) => file)
     expect(hits).toEqual([])
   })
