@@ -40,6 +40,17 @@ design-tokens v0.7.0 renamed `tone.cocoa` to `tone.band`: its fill is the warm b
 <FeatureCard tone="band" title="Token" />
 ```
 
+### TopNav is chrome glass; floating and sticky are opt-in
+
+`TopNav` keeps its layout: static and full width, now on chrome glass instead of the 85% page colour with a blur. Two props are new and off by default: `floating` (a pill inset from the edges) and `sticky` (stays at the top and blurs what scrolls under it; the page then keeps `--ef-topnav-space` free at the top). The recommended look is both.
+
+```jsx
+// before
+<TopNav title="Docs" />            // sticky, blurred 85% page colour
+// after: the recommended look
+<TopNav title="Docs" floating sticky />
+```
+
 ### --text-on-brand is dark ink on the warm band
 
 `--surface-brand` is the warm band now, and `--text-on-brand` is dark ink on it (light in dark). Code that put `--text-on-brand` on a fixed dark fill gets dark text on a dark fill.
