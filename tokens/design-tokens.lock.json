@@ -1,12 +1,12 @@
 {
   "repo": "https://github.com/efolusi/design-tokens",
-  "ref": "v0.5.0",
-  "commit": "b7ee05adda9732a588e7cb7b6a03ff69f7507401",
+  "ref": "v0.6.0",
+  "commit": "93dfcdb2e89b820c1e9054fa6744f5c4e2ecbb24",
   "files": {
-    "tokens.json": "290bbfb94a9b48201b16e6e2690a165ffa3f7f497721712755066b0519bdc84f",
-    "tokens/colors.css": "aa31cbb610ab1fe59e50d9da1e197d89e99c0f9dfc33da2e404d4a3d104e3feb",
-    "tokens/typography.css": "876d8e9f30b3a8c01573062790979ba14ef2009e51fd792b296c1958293f1505",
-    "tokens/spacing.css": "c0dda727b5f0bdb320ec6244778df70016de2fd01d7b7a8bc742a6161a25e4a4",
-    "tokens/effects.css": "88328742ee7bdb73fc3acbc181e8ba2e027e98c29c90f9d29609f06d4fc578ad"
+    "tokens.json": "21d89408eef28814ec3374ea6a126efb2f12962882d7f8322487d282c94a48f1",
+    "tokens/colors.css": "61b5b7728da741ac1f576ebadd96fa2d3f1ce722f33e2fde6b7b7a2d2aab693e",
+    "tokens/typography.css": "c11a739e4874da78b2b641f3dbb6bf5f51a7f9fd6545205a43407a7825b63398",
+    "tokens/spacing.css": "005768215b542676f1e4bde0d7771b84ff171d4b71567a389a58ca549f49eec4",
+    "tokens/effects.css": "e438b7a58bc09595493f8bf22fd866b716b5d28fc6d32e96dfa4ce9e0431434e"
   }
 }

@@ -5,6 +5,6 @@ Wrap a block in `Reveal` to fade and lift it in once it scrolls into view. Sibli
 ```jsx
 <FeatureGrid>
   <Reveal><FeatureCard tone="peach" title="Products" /></Reveal>
-  <Reveal><FeatureCard tone="cocoa" title="Token" /></Reveal>
+  <Reveal><FeatureCard tone="band" title="Token" /></Reveal>
 </FeatureGrid>
 ```

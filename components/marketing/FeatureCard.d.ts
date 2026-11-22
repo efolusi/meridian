@@ -13,7 +13,7 @@ export interface FeatureCardProps extends Omit<React.HTMLAttributes<HTMLElement>
   /** Link label at the bottom, with an arrow. */
   cta?: React.ReactNode;
   /** Brand-wide fill from the `--tone-*` tokens. Every tone keeps a 1px hairline. @default 'default' */
-  tone?: 'default' | 'peach' | 'cocoa' | 'amber';
+  tone?: 'default' | 'peach' | 'band' | 'amber';
   /** Heading element for the title. @default 'h3' */
   as?: 'h2' | 'h3' | 'h4';
 }

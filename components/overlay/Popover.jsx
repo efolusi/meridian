@@ -11,8 +11,8 @@ const CSS = `
 .ef-popover__header{display:grid;gap:var(--space-1);margin-bottom:var(--space-3)}
 .ef-popover__title{margin:0;color:var(--text-primary);font-size:var(--text-md);font-weight:var(--weight-semibold);line-height:1.35}
 .ef-popover__description{margin:0;color:var(--text-muted);font-size:var(--text-sm);line-height:1.45}
-@keyframes ef-pop-in{from{opacity:0;transform:translateY(-3px)}}
-@media (prefers-reduced-motion:reduce){.ef-popover__panel{--ef-motion-guard:var(--dur-fast);animation-name:ef-reduce-fade}}
+@keyframes ef-pop-in{from{transform:translateY(-3px)}}
+@media (prefers-reduced-motion:reduce){.ef-popover__panel{animation:none}}
 `;
 const PopoverCtx = React.createContext(null);
 const TABBABLE = 'a[href],button,input,select,textarea,[tabindex]';

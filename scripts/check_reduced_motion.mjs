@@ -66,10 +66,26 @@ function build(selector) {
   });
   return { html: html + closing, pseudo: m[2] ?? null };
 }
-// Entrance animations (one run, not infinite). Under reduce they must be an opacity-only fade of the 120 ms token, not a snap and not a slide.
+// Entrance animations (one run, not infinite). Under reduce they must be an opacity-only fade of the 120 ms token, not a snap and not a slide; the reviewed snaps below are the exception.
 const entrances = [...new Set([...css.replace(/\/\*[\s\S]*?\*\//g, '').matchAll(/(?<![\w-])([^{}@;]+)\{([^{}]*\banimation:\s*(ef-[\w-]+)(?![^{};]*\binfinite\b)[^{}]*)\}/g)].flatMap((m) => m[1].split(/,(?![^(]*\))/).map((x) => x.trim()).filter(Boolean).map((x) => x + '\u0000' + m[3])))].map((x) => { const [selector, name] = x.split('\u0000'); return { selector, name, built: build(selector) }; });
 // Entrances that end on their final state at once, reviewed: the hero stroke draws itself, and reduce shows the finished stroke.
-const ENTRANCE_SNAP = new Map([['.ef-hero-accent path', 'the stroke is drawn in full, with no draw-in']]);
+// Overlays on glass appear at once under reduce: an opacity fade would show the text behind them.
+const GLASS_OVERLAY = 'the overlay sits on thick glass and never animates opacity, so the text behind it never reads through (MD54, design-tokens docs/glass.md)';
+const ENTRANCE_SNAP = new Map([
+  ['.ef-hero-accent path', 'the stroke is drawn in full, with no draw-in'],
+  ['.ef-sheet[data-side=right]', GLASS_OVERLAY],
+  ['.ef-sheet[data-side=left]', GLASS_OVERLAY],
+  ['.ef-sheet[data-side=top]', GLASS_OVERLAY],
+  ['.ef-sheet[data-side=bottom]', GLASS_OVERLAY],
+  ['.ef-drawer[data-vaul-drawer-direction=right]', GLASS_OVERLAY],
+  ['.ef-drawer[data-vaul-drawer-direction=left]', GLASS_OVERLAY],
+  ['.ef-drawer[data-vaul-drawer-direction=top]', GLASS_OVERLAY],
+  ['.ef-drawer[data-vaul-drawer-direction=bottom]', GLASS_OVERLAY],
+  ['.ef-popover__panel', GLASS_OVERLAY],
+  ['.ef-dropdown-menu__content', GLASS_OVERLAY],
+  ['.ef-context-menu__content', GLASS_OVERLAY],
+  ['.ef-hovercard__panel', GLASS_OVERLAY],
+]);
 const entranceVerifiable = entrances.filter((p) => p.built);
 const unbuiltEntrances = entrances.filter((p) => !p.built && !UNBUILDABLE_ENTRANCE.has(p.selector)).map((p) => p.selector);
 const probes = selectors.map((s) => ({ selector: s, built: build(s) }));

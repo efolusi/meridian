@@ -7,7 +7,7 @@ import { useDirection } from '../display/Direction.jsx';
 
 const CSS = `
 .ef-context-menu__content{position:fixed;min-width:128px;max-height:calc(100vh - 16px);overflow:auto;background:var(--surface-card);color:var(--text-primary);border:1px solid var(--border-strong);border-radius:var(--radius-md);box-shadow:var(--shadow-md);padding:var(--space-1);z-index:var(--z-popover);animation:ef-context-menu-in var(--dur-fast) var(--ease-enter)}
-@keyframes ef-context-menu-in{from{opacity:0;transform:scale(.98)}}
+@keyframes ef-context-menu-in{from{transform:scale(.98)}}
 .ef-context-menu__item{position:relative;display:flex;align-items:center;gap:var(--space-2);width:100%;min-height:32px;padding:var(--space-2) var(--space-2);border:0;border-radius:var(--radius-sm);outline:0;background:transparent;color:var(--text-primary);font:inherit;font-size:var(--text-sm);line-height:1.35;text-align:start;white-space:nowrap;cursor:pointer;user-select:none}
 .ef-context-menu__item:hover,.ef-context-menu__item:focus,.ef-context-menu__item[data-highlighted=true],.ef-context-menu__item[data-state=open]{background:var(--surface-sunken)}
 /* the tint alone is ~1.1:1 against the panel; keyboard focus needs a 3:1 ring */
@@ -23,7 +23,7 @@ const CSS = `
 [dir=rtl] .ef-context-menu__chevron{transform:scaleX(-1)}
 /* coarse pointers get the 44px touch target, like form controls do through --control-h-* */
 @media (pointer:coarse){.ef-context-menu__item{min-height:var(--tap-min)}}
-@media (prefers-reduced-motion:reduce){.ef-context-menu__content{--ef-motion-guard:var(--dur-fast);animation-name:ef-reduce-fade}}
+@media (prefers-reduced-motion:reduce){.ef-context-menu__content{animation:none}}
 `;
 
 const RootCtx = React.createContext(null);
