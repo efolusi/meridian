@@ -17,7 +17,7 @@ function vars(text) {
   for (const [, name, value] of text.matchAll(/(--[\w-]+):([^;}]+)/g)) out[name] = value.trim();
   return out;
 }
-const light = vars(block(':root'));
+const light = vars(block(':root,[data-theme="light"]'));
 const dark = { ...light, ...vars(block('[data-theme="dark"]')) };
 function toRgb(hex) {
   const m = /^#([0-9a-f]{6})$/i.exec(hex);

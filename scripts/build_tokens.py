@@ -17,7 +17,7 @@ def declarations(body):
     return {name[2:]: val.strip() for name, val in re.findall(r"(--[\w-]+)\s*:\s*([^;]+);", body)}
 
 def parse_root(css):
-    m = re.search(r":root\s*\{(.*?)\}", css, re.S)
+    m = re.search(r':root(?:,\s*\[data-theme="light"\])?\s*\{(.*?)\}', css, re.S)
     return declarations(m.group(1)) if m else {}
 
 # The type scale shares the text- prefix with the text colours, so it has to be

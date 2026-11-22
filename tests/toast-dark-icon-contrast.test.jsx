@@ -8,7 +8,7 @@ import { readFileSync } from 'node:fs';
 const colors = readTokenCss('colors.css');
 const toast = readFileSync('components/feedback/Toast.jsx', 'utf8');
 const table = body => Object.fromEntries([...body.matchAll(/(--[\w-]+):([^;]+);/g)].map(m => [m[1], m[2].trim()]));
-const light = table(colors.match(/:root\{([\s\S]*?)\n\}/)[1]);
+const light = table(colors.match(/:root(?:,\s*\[data-theme="light"\])?\s*\{([\s\S]*?)\n\}/)[1]);
 const dark = { ...light, ...table(colors.match(/\[data-theme="dark"\]\{([\s\S]*?)\n\}/)[1]) };
 function hex(value) {
   for (let v = value, i = 0; i < 10; i += 1) {

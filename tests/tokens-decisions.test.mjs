@@ -5,7 +5,7 @@ import { describe, expect, it } from 'vitest'
 
 // Owner decisions of 2026-11-13 for the token layer.
 const colors = readTokenCss('colors.css')
-const lightBlock = colors.match(/:root\s*\{([\s\S]*?)\n\}/)[1]
+const lightBlock = colors.match(/:root(?:,\s*\[data-theme="light"\])?\s*\{([\s\S]*?)\n\}/)[1]
 const darkBlock = colors.match(/\[data-theme="dark"\]\s*\{([\s\S]*?)\n\}/)[1]
 const gate = spawnSync('python3', ['scripts/check_contrast.py'], { encoding: 'utf8' })
 

@@ -33,8 +33,8 @@ const CSS = `
 .ef-btn--ghost:hover{background:var(--surface-sunken);color:var(--text-primary)}
 .ef-btn--danger{background:var(--status-danger-solid);color:var(--status-danger-on-solid)}
 .ef-btn--danger:hover{background:var(--danger-700)}
-.ef-btn--brand{background:var(--brand-700);color:var(--text-on-brand)}
-.ef-btn--brand:hover{background:var(--brand-800)}
+.ef-btn--brand{background:var(--surface-brand);color:var(--text-on-brand)}
+.ef-btn--brand:hover{background:var(--surface-brand-hover)}
 .ef-btn--link{height:auto;padding:0;background:transparent;color:var(--text-link);text-underline-offset:4px}
 .ef-btn--link:hover{color:var(--text-link-hover);text-decoration:none}
 @keyframes ef-spin{to{transform:rotate(360deg)}}

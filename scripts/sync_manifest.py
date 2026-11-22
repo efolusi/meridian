@@ -83,7 +83,7 @@ def infer_kind(name, value):
 def blocks(css, filename):
     """Yield (scope, [(name, value), ...]) for the :root block then each scoped block."""
     out = []
-    m = re.search(r":root\s*\{(.*?)\n\}", css, re.S)
+    m = re.search(r':root(?:,\s*\[data-theme="light"\])?\s*\{(.*?)\n\}', css, re.S)
     if m:
         out.append(("", m.group(1)))
     for scope_m in re.finditer(r'^(\[data-[\w-]+="[\w-]+"\])\s*\{(.*?)\n\}', css, re.S | re.M):

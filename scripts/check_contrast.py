@@ -22,7 +22,7 @@ CSS = pathlib.Path(os.environ.get("CONTRAST_CSS") or
 
 def block(name):
     if name == "light":
-        m = re.search(r":root\s*\{(.*?)\n\}", CSS, re.S)
+        m = re.search(r':root(?:,\s*\[data-theme="light"\])?\s*\{(.*?)\n\}', CSS, re.S)
     else:
         m = re.search(r'\[data-theme="dark"\]\s*\{(.*?)\n\}', CSS, re.S)
     if not m:
@@ -119,8 +119,10 @@ PAIRS = [
     ("--danger-contrast", ["--danger-600", "--danger-700"], 4.5, "danger button normal and hover text"),
     ("--success-contrast", ["--success-600"], 4.5, "FileTypeIcon label on the green fill"),
     ("--warning-contrast", ["--warning-600"], 4.5, "FileTypeIcon label on the amber fill"),
-    ("--text-on-brand", ["--brand-700", "--brand-800", "--sand-600", "--sand-800"], 4.5,
-     "brand Button (rest, hover) and FileTypeIcon labels on fixed fills"),
+    ("--text-on-brand", ["--surface-brand", "--surface-brand-hover"], 4.5,
+     "brand Button (rest, hover) and the band Section, on the warm band"),
+    ("--text-on-media", ["--brand-700", "--brand-800", "--sand-600", "--sand-800"], 4.5,
+     "FileTypeIcon labels on fixed dark fills"),
     ("--brand-950", ["--brand-500", "--sand-500"], 4.5, "FileTypeIcon ink label on fixed light fills"),
     ("--text-inverse", ["--surface-inverse"], 4.5, "Toast text"),
     ("--text-on-brand-muted", ["--surface-brand"], 4.5, "muted text on the brand surface"),
@@ -147,7 +149,7 @@ PAIRS = [
     # surface; in dark Toast swaps to the strong status tokens on a light one.
     # Dark success and warning icons are color-mix(in srgb, <tone> 60%, --text-inverse).
     ("mix(--success-600 60%, --text-inverse)", ["--surface-inverse"], 3.0, "Toast success icon (dark theme)"),
-    ("--danger-600", ["--surface-inverse"], 3.0, "Toast danger icon (dark theme)"),
+    ("mix(--danger-600 60%, --text-inverse)", ["--surface-inverse"], 3.0, "Toast danger icon (dark theme)"),
     ("mix(--warning-600 60%, --text-inverse)", ["--surface-inverse"], 3.0, "Toast warning icon (dark theme)"),
     ("--success-on-dark", ["--surface-inverse"], 3.0, "Toast success icon (light theme)"),
     ("--danger-on-dark", ["--surface-inverse"], 3.0, "Toast danger icon (light theme)"),

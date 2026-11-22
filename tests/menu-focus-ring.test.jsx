@@ -36,7 +36,7 @@ describe('focus ring and cursor on menu-like items', () => {
   it('the ring colour holds 3:1 on the panel in both themes', () => {
     const colors = readTokenCss('colors.css');
     const table = body => Object.fromEntries([...body.matchAll(/(--[\w-]+):([^;]+);/g)].map(m => [m[1], m[2].trim()]));
-    const light = table(colors.match(/:root\{([\s\S]*?)\n\}/)[1]);
+    const light = table(colors.match(/:root(?:,\s*\[data-theme="light"\])?\s*\{([\s\S]*?)\n\}/)[1]);
     const dark = { ...light, ...table(colors.match(/\[data-theme="dark"\]\{([\s\S]*?)\n\}/)[1]) };
     const hex = (t, v) => { for (let i = 0; i < 10; i += 1) { const r = v.match(/^var\((--[\w-]+)\)$/); if (!r) return v; v = t[r[1]]; } return v; };
     const lum = h => { const c = [1, 3, 5].map(i => parseInt(h.slice(i, i + 2), 16) / 255).map(s => (s <= 0.03928 ? s / 12.92 : ((s + 0.055) / 1.055) ** 2.4)); return 0.2126 * c[0] + 0.7152 * c[1] + 0.0722 * c[2]; };
