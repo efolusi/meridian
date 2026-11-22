@@ -124,7 +124,7 @@ Meridian is general-purpose: the primitives and the patterns for an entire produ
 - **Trading & finance**: portfolios, positions, P&L, live signals → Sparkline, Stat, Table, PaymentCard.
 - **Admin & marketing**: dashboards, settings, pricing, docs → the full display, navigation, and data tiers.
 
-Meridian has its own three-stroke mark (`assets/meridian-mark.svg`): a minimal `///` symbol and forward path rendered in espresso, paired with warm sand neutrals, humanist sans type, an 8px-to-24px radius scale, comfortable density, light and dark themes, Lucide icons, and springy motion.
+Meridian has its own three-stroke mark (`assets/meridian.svg`): a minimal `///` symbol and forward path rendered in espresso, paired with warm sand neutrals, humanist sans type, an 8px-to-24px radius scale, comfortable density, light and dark themes, Lucide icons, and springy motion.
 
 ## Blocks
 
