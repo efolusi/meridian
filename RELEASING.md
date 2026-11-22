@@ -71,7 +71,7 @@ version in `.nvmrc`: run `nvm use` (or install that version) before `npm ci`.
 
 ## The steps
 
-1. Move CHANGELOG's `Unreleased` content under a `## X.Y.Z — YYYY-MM-DD` heading.
+1. Move CHANGELOG's `Unreleased` content under a `## vX.Y.Z - YYYY-MM-DD` heading.
    The workflow lifts this section verbatim into the GitHub Release notes.
 2. Bump the version in the five files above.
 3. `npm run check`: all gates green, locally, before anything is pushed.

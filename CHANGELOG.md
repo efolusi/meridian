@@ -7,21 +7,21 @@
 - **A test fails on a raw ramp token in component CSS.** `tests/no-raw-ramp-tokens.test.mjs` fails when a component reads a ramp stop such as `--brand-400` or `--danger-600` instead of a semantic token, because ramps never remap in dark and a rebrand that sets only the accent group skips them. The 204 existing uses in 58 files were cut to 70 uses in 25 files (status tints now read the `--status-*` tokens); the rest are recorded in `scripts/ramp_allowlist.json` with a count per file and a reason, and a count can only fall. `Decor`'s mesh now reads `--accent` and `--accent-subtle-border`, so a rebrand and dark mode reach it.
 - **`Decor` in the display group.** A decorative backdrop drawn in CSS only: `pattern` is `mesh` (soft brand gradient), `noise`, `grid` or `dots`; `fade` fades it toward the bottom edge. It is `aria-hidden`, has no animation (so reduced motion has nothing to stop), is hidden in forced-colors mode, takes every colour from tokens, and adds no dependency. Put it inside a parent with `position: relative; isolation: isolate`. A test measures `--text-primary` and `--text-secondary` over the strongest point of every pattern on the page, card and sunken surfaces in light and dark and holds them at 4.5:1; `--text-muted` is not covered.
 
-## 1.30.0 — 2026-11-22
+## v1.30.0 - 2026-11-22
 
 - **`Skeleton` takes `shimmer`, hides from assistive technology, and View Transitions respect reduced motion.** `<Skeleton shimmer />` sweeps a band (`--border-strong`, at least 1.2:1 against the block in light and dark) across the block instead of pulsing; with reduced motion both variants are still. `Skeleton` is now `aria-hidden` by default, so an `aria-label` on a Skeleton (the old prompt example did that) is no longer read: move the label to the region that will hold the content and set `aria-busy="true"` there and draws as a `GrayText` block in Windows High Contrast. `document.startViewTransition` snapshots are not matched by `*`, so the reduced-motion guard now names them: the groups stop moving and the old and new snapshots cross-fade over `--dur-fast`. Use `document.startViewTransition?.(update) ?? update()` for a page or state change; browsers without the API just run `update`. `scripts/check_reduced_motion.mjs` starts a real View Transition under `reduce` and fails if a group still moves.
 - **`Counter` in the marketing group.** A stat number that counts up from 0 to `value` over 1.2 s once it is 40% in view. The final value is in the markup from the start (server render, no JavaScript, screen readers), the climbing number is an `aria-hidden` overlay in the same grid cell so the width never changes, and reduced motion or `animate={false}` shows the final value at once. `locale` defaults to `'en'` (fixed, so server and browser agree; pass the page's locale) and `format` takes `Intl.NumberFormat` options. A counter already in view at load shows its final value and does not climb; a new `value` climbs from the number on screen; a non-number renders as plain text; print shows the final value. No dependency.
 - **An interactive `Card` shows the focus ring.** `Card` with `interactive` had a hover and a press state but no keyboard focus state, so a card made focusable with `tabIndex` showed nothing when tabbed to. It now draws the same focus ring as a button. `Card` still renders a `div`: when the whole card is an action, make it a link or button inside, or add `tabIndex`, a role and key handling yourself.
 - **The size budget tolerance is 256 bytes, not 4096.** Each PR could add up to 4 KiB without a budget change, and the drift added up. A larger build now has to run `node scripts/check_size.mjs --update` and show the new size in the PR, and a test fails when `scripts/size_budget.json` and the totals in `guidelines/bundle-size.md` disagree.
 
-## 1.29.0 — 2026-11-22
+## v1.29.0 - 2026-11-22
 
 - **Overlay entrances fade under reduced motion instead of snapping.** The reduced-motion guard set every animation to 0.01 ms, so Drawer, Sheet, Dialog, AlertDialog, Toast, popovers, Select, Combobox, menus and the other entrances appeared at once, while `motion.md` promises the 120 ms fade. The guard now reads `--ef-motion-guard` (0.01 ms on every element, so loops still stop). Each entrance sets it to `--dur-fast` and `animation-name: ef-reduce-fade` inside its own reduce media query; `ef-reduce-fade` (opacity only) is defined once in `tokens/base.css`. Only entrances set `--ef-motion-guard`, to at most `--dur-fast`; do not set it on a loop. Anyone who vendors files updates `base.css` and `components.css` together. `scripts/check_reduced_motion.mjs` runs every entrance animation in Chromium with `reduce` emulated and fails on one that snaps, still moves, or cannot be built.
 - **Progress and UsageMeter move at the progress duration.** The bar of both moved at `--dur-slow` or `--dur-base` with an ease-out curve; `motion.md` says a bar that moves to a value uses `--dur-progress` with `linear`, so both do now.
 - **The reduced-motion check no longer lets an unbuildable selector pass.** `scripts/check_reduced_motion.mjs` only printed the positional transitions whose element it could not build (a pseudo-class, a sibling combinator), so a new moving transition on such a selector went through. It now fails on them unless they are listed in a reviewed `UNBUILDABLE` map with a reason, and on a listed one that is gone.
 - **Nothing moves or resizes under reduced motion.** Since the duration tokens swap to the 120 ms fade under `prefers-reduced-motion`, a transition on a position or a size still took 120 ms. Nine components now show the end state at once: DocumentCard and CodeBlock (the height of the window), WebPreview (the width of the frame), UsageMeter (the fill), Switch (the thumb), Tabs (the ink) and NavigationMenu (the indicator) switch the transition off; PageControl (the active dot's width) and MessageScroller (the button's lift) keep only the colour or opacity fade. Sidebar, Reveal, FeatureCard, Progress and the keyframe entrances (Drawer, Sheet, Dialog, Toast, popovers) already did. `scripts/check_reduced_motion.mjs` now reads every component rule that transitions `transform`, `inset-*`, `top`, `left`, `width`, `height` or `flex-basis`, builds the element in Chromium with `reduce` emulated, and fails if the transition still runs; a transform that only rotates or scales (a chevron, a press) is listed with its reason in the script, and a new rule must be fixed or listed.
 
-## 1.28.0 — 2026-11-21
+## v1.28.0 - 2026-11-21
 
 - **A stray `node_modules` symlink is gone from the repo.** #210 committed a symlink to a local absolute path by accident, because `node_modules/` in `.gitignore` does not match a symlink. The ignore rule is now `node_modules`, and a test fails if any symlink is tracked.
 - **The motion check also reads camelCase style props and style assignments.** `scripts/check_motion.mjs` used to read only CSS spellings; it now also fails a literal duration, curve or named easing in `transitionDuration`, `animationDuration`, `transitionTimingFunction` and `animationTimingFunction` in a style object, and in an assignment such as `el.style.transition = '…'`. A comparison (`===`) is not an assignment. The repository had none, so the allowlist does not change. Web Animations options and timers are not read.
@@ -34,11 +34,11 @@
 - **The production deploy checks live that a missing browser version is a 404 without `immutable`.** After the Worker goes live it requests a published version (200, immutable, CORS) and a never-published one (404, no immutable), with a probe query so an older cached answer cannot hide the new headers, and retries a few times so a propagation delay does not fail a good deploy. `_headers` cannot see the response status, so a missing path gets no `Cache-Control` rather than `no-store`.
 - **The shared runtime helpers moved out of `components/forms/Button.jsx` into `components/runtime/runtime.jsx`.** `injectEfCss`, `mergeRefs`, `styleRef`, `cssPct`, `useIsoLayoutEffect`, `prefersReducedMotion` and `isElementOfType` live in one module that every component imports, and `Button.jsx` no longer exports them (no alias). Behaviour is unchanged. The registry has a new item, `meridian-runtime`, which the component items depend on in place of `button`: `add dialog` no longer writes `Button.jsx` just for `injectEfCss`, and it writes `components/runtime/runtime.jsx`. The npm package ships `runtime/runtime.js`; none of it joins the public exports. If you imported a helper from `forms/Button.jsx` in your own copy-in code, import it from `runtime/runtime.jsx`.
 
-## 1.27.1 — 2026-11-21
+## v1.27.1 - 2026-11-21
 
 - **A versioned browser path that was never published no longer gets an immutable cache header.** `/browser/<version>/*` in `_headers` matched the request path even when Workers answered with the 404 page, so a missing version (for example `/browser/1.26.1/marketing.js`) returned a 404 with `Cache-Control: public, max-age=31536000, immutable` and CORS `*`, which a browser or edge cache could keep for a year. The wildcard is gone: `scripts/build_worker_assets.mjs` now appends an exact-file immutable and CORS rule for each versioned file it publishes, and the build fails before `_headers` passes the 100 rules Workers read. If the edge already holds a cached 404 for such a path, purge it.
 
-## 1.27.0 — 2026-11-21
+## v1.27.0 - 2026-11-21
 
 - **Breaking: `data-theme` on `<html>` is always `light` or `dark`.** Light no longer removes the attribute, so a Light choice stays light on a dark operating system (it used to fall through to the OS). `themeInitScript`, `applyTheme`, `ThemeToggle` and the plain `browser/theme-init.js`, `browser/theme.js` and `browser/marketing.js` set the resolved value for every choice including System, and on System they re-resolve it and the cookie when the OS changes. Code that tests `!hasAttribute('data-theme')` for light must compare `getAttribute('data-theme')` with `'dark'` instead. The media rule in `tokens/colors.css` stays as the no-JS fallback. No alias for the old behaviour. See [theming § Theme contract](guidelines/theming.md#theme-contract).
 - **`themeInitScript()`'s text changed again, so its inline-script CSP hash changes.** A site that hashes it at build picks it up on its next build; a site that hard-codes the old hash blocks the script and flashes the wrong theme until it rebuilds. Nonce sites are not affected, and a versioned `browser/<version>/` pin keeps its old bytes.
@@ -53,12 +53,12 @@
 - **Size budget raised by 15 KB** (npm total 1,493,696 bytes) for the plain scripts in `browser/`.
 - **Marquee sets its loop duration through the CSSOM** (`data-duration` in the markup) instead of a style attribute. This is part of MD18; the other inline styles stay open.
 
-## 1.26.1 — 2026-11-20
+## v1.26.1 - 2026-11-20
 
 - **The Docs page works again.** A missing `]),` in its 1.26.0 changelog list (since #160) stopped the whole page script, so the page rendered without its logic and its theme button did nothing. A test now compiles the script of every `site/*.dc.html` page.
 - **The 1.0.0 changelog entry says 201 tokens again**, the count it shipped with; the Indonesian introduction now says 221, the current count. The public-count check skips the Docs changelog history and also reads the "N token," form, so it catches a stale Indonesian count. Both checks fail closed: the page test needs a script on every page, and the count check stops with an error when the changelog section has no end.
 
-## 1.26.0 — 2026-11-20
+## v1.26.0 - 2026-11-20
 
 - **A required Questionnaire item says so in its title.** `QuestionnaireTitle` adds " (required)" to the legend when the item is `required` (`lang="id"` gives " (wajib)"; `labels.required` replaces the whole suffix), visible and read as the group's name; this replaces the `aria-required` the fieldset may not carry, so required checkbox items are announced again.
 - **ItemGroup's list items are real boxes**, not `display: contents` (VoiceOver drops the role of such an element), and carry no style attribute; a separator inside the group stays decorative. **FileTile** lays out its body and progress bar with classes instead of style attributes, so it works under a strict CSP.
@@ -86,11 +86,11 @@
 - **Visual baselines add the marketing group in compact density and on a coarse pointer.**
 - **Size budget raised by 56 KB** (npm total 1,479,034 bytes) for the marketing group.
 
-## 1.25.1 — 2026-11-19
+## v1.25.1 - 2026-11-19
 
 - **Badge `danger` is the subtle status badge again.** 1.25.0's rename left a second, solid `.ef-badge--danger` rule and a darker hover from the old `destructive` variant; the solid rule and the hover are gone. A test now fails when a component writes the same variant rule twice.
 
-## 1.25.0 — 2026-11-19
+## v1.25.0 - 2026-11-19
 
 - **Breaking: Drawer no longer accepts `modal`.** The prop was ignored since 1.22.0 and only logged a warning. Delete it from your code; `meridian-guard --fix` from 1.23.0 still removes it. Meridian now ships no deprecated props.
 - **Breaking: one set of status and variant names.** Every status-bearing component now uses `success`, `warning`, `danger`, `info`, `neutral` and `busy`. The old names are gone, with no aliases:
@@ -126,7 +126,7 @@
 - **Contrast fixes from design-tokens 0.2.1.** `--text-muted`, `--text-secondary` (now `--sand-750`), `--state-pressed`, `--state-hover-on-tab` and the status 600 colours keep text at 4.5:1 (secondary at 7:1) on every ground and hover in light, dark and increased contrast. The public token count is 214.
 - **Size budget raised by 11 KB** (npm total 1,423,110 bytes) for the size tokens, the icon-scale test and the spacing tokens (`var(--space-*)` is longer than a raw px value).
 
-## 1.24.0 — 2026-11-19
+## v1.24.0 - 2026-11-19
 
 - **Navigation spacing is on the token scale.** Breadcrumbs, Menubar, NavigationMenu, PageControl, Pagination, SegmentedControl, SideNav, Sidebar, SkipLink, Steps, Tabs and TopNav take their padding, margin and gap from `--space-*`. Values off the 4px scale moved to the nearest step, ties up: 3 and 5px to 4px, 6 and 9px to 8px, 10px to 12px, 14 and 15px to 16px, 22px to 24px. Gaps and padding in these components grow by up to 2px. 1px optical nudges stay.
 - **meridian.efolusi.com runs as a Cloudflare Worker.** `deploy-production.yml` replaces `deploy-prod-static.yml`. It runs on a GitHub-hosted runner, in the `production` environment, from a `v*` tag or a manual run on one. It keeps the exact-SHA, on-main and `npm run check` gates, builds `public/` from the release commit with `scripts/build_worker_assets.mjs`, deploys with wrangler 4.157.0 and checks the live release. `_headers` and `_redirects` are now the only source of response headers and the root redirect. The Nginx configs, the VPS deploy script and the header parity test are gone.
@@ -139,7 +139,7 @@
 - **CI checks the vendored tokens against the pinned design-tokens tag.** `node scripts/sync_tokens.mjs --check-remote` re-fetches the tag in the lock and fails when the lock commit or any vendored file differs. `npm run check` runs it in CI (`CI=true`); locally it stays offline.
 - **One branch: main.** CI runs on main and on pull requests to it; the visual-baseline workflow opens its PR against main.
 
-## 1.23.0 — 2026-11-18
+## v1.23.0 - 2026-11-18
 
 - **`@efolusi/meridian-cli` ships with the other packages.** Its first version (1.22.0) was published by hand; from 1.23.0 the publish workflow releases it in lockstep.
 - **Known dev-only advisory.** `npm audit` reports picomatch ≤4.0.7 (ReDoS on single-branch repeated extglobs) through vite, vitest, fdir and tinyglobby. No published package depends on them (`npm audit --omit=dev` is clean), and no fixed picomatch exists yet. It will be bumped when one is published.
@@ -183,7 +183,7 @@
 - **Carousel and Slider work in right-to-left layouts in every engine.** In RTL, Carousel measured slides from the physical left edge, so a second Next jumped back to the first slide. Slider thumbs on a two-thumb range now sit where the fill ends, and the Left and Right arrows move a horizontal thumb toward the arrow in Safari too (WebKit moved it the other way in RTL). RTL is now checked in Chromium, Firefox and WebKit; see `guidelines/accessibility.md`.
 - **The hosted site sends security headers** (nosniff, HSTS, Referrer-Policy, `frame-ancestors 'self'`), allows cross-origin font and registry loads, and serves Markdown and `LICENSE` as plain text.
 
-## 1.22.0 — 2026-11-13
+## v1.22.0 - 2026-11-13
 
 - **Form controls have visible edges.** New `--border-control` token (at least 3:1 against field and card surfaces in both themes) is used by every input, select, checkbox, radio, switch and file drop edge. New `--accent-subtle-fg` keeps text on `--accent-subtle` at 4.5:1 in dark mode.
 - **Keyboard focus is visible in every list.** Select, Combobox and TimePicker options, menu items, Command options and NavigationMenu links draw an inset focus ring instead of a faint tint.
@@ -213,19 +213,19 @@
 - **The docs site has a skip link and switches language live**; Blocks, Examples, Charts, Themes and Colors are translated into Indonesian.
 - **Showcase toasts work again, every example page declares its language and has a title, and copied-out starters no longer show a broken logo.**
 
-## 1.21.10 — 2026-10-12
+## v1.21.10 - 2026-10-12
 
 - **`Alert`: the action never covers the text.** `AlertAction` was absolutely positioned with only 96px reserved on the right, so any action wider than that (every real one: "Send the link again", "I have read and accept") sat on top of the description, and on phones it covered half of it. The action is now a grid column beside the text and, below 560px, a full-width row under it. Measured on My Efolusi's account page at 375, 768 and 1440px: description and action rectangles no longer intersect (before: the action covered 66x20px of the verify-email text and 90x20px of the consent text at 375px, 66x12 and 90x12 at 768px; after: 0, and the phone action is 299x44px, full width).
 
-## 1.21.9 — 2026-09-19
+## v1.21.9 - 2026-09-19
 
 - **`SkipLink`: one Tab press past the header.** None of the Efolusi products had a skip link, so a keyboard user tabbed through the whole navigation on every page. The link stays in the focus order while invisible (clipped, not `display:none`) and reveals itself on focus; its target needs `tabIndex={-1}`, or Safari and Firefox scroll without moving focus.
 
-## 1.21.8 — 2026-09-19
+## v1.21.8 - 2026-09-19
 
 - **`landing.css`: an opt-in landing rhythm layer.** Section, hero and page-hero spacing at 64/80/96px across phone, tablet and desktop, matching efolusi.com at its real breakpoints (641px and 1021px), plus thin `.mrd-section` / `.mrd-hero` / `.mrd-page-hero` / `.mrd-container` classes. Page rhythm stays out of the token contract: import it only where you want it.
 
-## 1.21.7 — 2026-09-19
+## v1.21.7 - 2026-09-19
 
 - **Controls meet the 44px touch target on touch devices.** Under `@media (pointer: coarse)` the small, medium and large control heights all resolve to `--tap-min`, so a phone or tablet gets a 44px tap area while mouse-driven layouts keep the tighter 28/36/44 scale. Compact density is raised too: it exists for dense mouse views, and a finger on that view still needs the larger target.
 
@@ -235,30 +235,30 @@
 
 - **Error, offline, and empty states now have canonical blocks.** `server-error` carries the request ID a user can quote plus a retry, `offline` promises unsaved work is kept, and `empty-state` pairs a primary action with a sample, so products stop inventing these pages one at a time.
 
-## 1.21.6 — 2026-09-05
+## v1.21.6 - 2026-09-05
 
 - **Links and buttons now share a cascade-safe interaction contract.** Ordinary links use `--text-link-hover`, while every native and anchor Button variant retains its intended foreground through hover, focus, active, disabled, and loading states in light and dark themes.
 - **Disabled and loading semantics are consistent across element types.** Native disabled buttons, `aria-disabled` anchors, and `data-disabled` controls suppress interaction uniformly; loading Buttons expose `aria-busy` and an assistive-technology-safe spinner.
 - **Browser coverage now guards the complete Button contract.** Chromium checks all eight variants across both themes and interaction states, including keyboard focus, contrast, tokenized geometry, and reduced motion.
 
-## 1.21.5 — 2026-09-05
+## v1.21.5 - 2026-09-05
 
 - **Meridian Guard now enforces visual-system contracts in authored CSS.** Raw interface radii, shadows, font families, font sizes, and motion above 240ms are reported so consumer applications cannot silently drift from the shared hierarchy.
 - **Button chrome stays owned by Meridian variants.** Static consumer classes and inline styles that repaint or reshape `Button` and `IconButton` are rejected, preventing low-contrast hover states and inconsistent radii.
 - **Guard understands the complete umbrella export shape.** Lowercase helpers such as `buttonVariants` and `toast` are accepted without weakening unknown-component checks.
 
-## 1.21.4 — 2026-09-04
+## v1.21.4 - 2026-09-04
 
 - Anchor buttons retain their variant foreground on hover and focus; base link rules now respect the Meridian cascade layer. Ordinary links preserve their default styling.
 - Button line-height uses the shared token so native buttons and anchor buttons align, including the link variant.
 - CI checks 48 anchor/native variant, theme and interaction-state combinations in Chromium.
 
-## 1.21.3 — 2026-08-14
+## v1.21.3 - 2026-08-14
 
 - **Meridian Guard is public.** Install `@efolusi/meridian-guard` as a development dependency to check authored applications against Meridian's generated component, token, icon, and deprecation contract.
 - **Guard fails closed on empty scans.** A missing or misconfigured CI target now exits with a runtime error instead of reporting a false pass; intentional empty targets can opt in with `--allow-empty`. The public guide now covers Node requirements, project scripts, CI, output formats, exit codes, the programmatic API, limitations, and troubleshooting.
 
-## 1.21.2 — 2026-08-14
+## v1.21.2 - 2026-08-14
 
 - **Meridian has a complete original brand system.** The former owl identity is replaced across the documentation, components, blocks, examples, starters, dashboards, favicon, social artwork, and empty brand surfaces by the production `///` mark and Bricolage Grotesque wordmark.
 - **Brand lockups are optically aligned.** The mark now matches the wordmark cap height, keeps a shared baseline, and uses a consistent 6px compact or 8px large gap across the official horizontal assets, SideNav, examples, blocks, and starter journeys.
@@ -270,11 +270,11 @@
 - **Toast now matches the current manager contract.** `toast.add`, `toast.close`, `toast.promise`, typed statuses, and `actionProps` are covered by runtime tests and the install registry, bringing the compatibility snapshot to 64 of 64 proven families.
 - **Docs and adherence inventories now regenerate from source.** New component sources update the docs catalogue, interfaces, public counts, and adherence metadata through repository-owned generators instead of compiler-only manual artifacts.
 
-## 1.21.1 — 2026-08-13
+## v1.21.1 - 2026-08-13
 
 - Render `DialogTitle` as a semantic level-two heading while preserving its styling and accessible-name wiring.
 
-## 1.21.0 — 2026-08-13
+## v1.21.0 - 2026-08-13
 
 - **Notifications were consolidated.** Meridian ships one notification system: canonical `Toaster` plus the imperative `toast` manager API.
 
@@ -300,7 +300,7 @@ All notable changes to Meridian are documented here. Format follows [Keep a Chan
 
 > **On the versions below 1.4.0:** Meridian was built in the open but released to nobody. Versions 1.0.0 through 1.3.0 are development milestones recorded as they happened; they were never tagged, published, or installable, so there is no artefact to go back to. They are kept because they are an accurate record of how the system was built, not because you can depend on them. The first tagged, publicly consumable release is 1.4.0.
 
-## 1.20.0 — 2026-08-12
+## v1.20.0 - 2026-08-12
 
 ### Added
 - **Stable compositional migration surface.** Modern application primitives include the complete Sidebar composition, conversation Message and Message Scroller families, and the current imperative Toast contract alongside the accessible component catalog.
@@ -310,37 +310,37 @@ All notable changes to Meridian are documented here. Format follows [Keep a Chan
 - **Notifications now use `Toaster` plus `toast`.** The provider-bound `Toaster.useToast()` queue was removed from current source and every bundled showcase migrated to the stable imperative lifecycle, including typed status, promise, action, position, timer pause, and dismiss behavior.
 - **Compatibility inventory follows the current reference surface.** Current component families are tracked with executable compatibility evidence.
 
-## 1.19.1 — 2026-08-03
+## v1.19.1 - 2026-08-03
 
 ### Changed
 - **`linkedin` is now the tile, not the letters.** The 1.18.0 glyph drew only the "in" letterforms, which is not how anyone recognises the logo — the mark people know is the rounded square with the letters knocked out. Redrawn as the tile with even-odd cutouts; same name, same box, so nothing changes at call sites except looking right.
 
-## 1.19.0 — 2026-08-03
+## v1.19.0 - 2026-08-03
 
 ### Added
 - **`github-brand`.** 1.18.0 shipped `linkedin` and `x-brand` filled, which made the one social glyph already in the set — the Lucide outline `github` — the odd one out in any follow-us row: two solid marks and one wireframe. The filled GitHub mark joins under the same naming rule (`-brand` when a Lucide name is taken); the outline `github` stays for whoever prefers it.
 
-## 1.18.0 — 2026-08-03
+## v1.18.0 - 2026-08-03
 
 ### Added
 - **Brand marks: `linkedin` and `x-brand`.** The set is Lucide-derived, and Lucide dropped its brand logos — so any product that wanted a "follow us" row had to inline its own SVGs, which efolusi.com promptly did (a smell: the design system existing so products don't hand-roll visuals). Two filled 24×24 marks join the set: `linkedin`, and `x-brand` for the X platform logo — named that way because `x` is already the close mark, and a close button that renders a social logo is the kind of bug you only catch in production. They are trademarks reproduced for linking to official profiles, noted as such in THIRD_PARTY_NOTICES.md, and they follow `currentColor` like every other glyph.
 
-## 1.17.0 — 2026-07-31
+## v1.17.0 - 2026-07-31
 
 ### Added
 - **`closeLabel` on `Dialog` and `Drawer`.** The ✕ carried an accessible name written in English in the source, so an app that had translated every other string still shipped a dialog whose only unlabelled-by-sight control announced itself as "Close" — and that is the one control a screen-reader user needs to get out of a modal. Both components now take `closeLabel`, defaulting to `Close`, alongside the `revealLabel`/`hideLabel` added in 1.16.0. A dialog with no `onClose` still has no ✕ at all: passing a label does not conjure one.
 
-## 1.16.0 — 2026-07-31
+## v1.16.0 - 2026-07-31
 
 ### Added
 - **`revealable` on `Input`.** A password field nobody can read back is a password field people mistype, and every product was about to hand-roll the same eye button — the Efolusi accounts sign-in did. Set `revealable` on a `type="password"` field and it gains a show/hide toggle: a real button, so it is reachable by keyboard, carrying `aria-pressed` and a label that says what pressing it will do (`revealLabel` / `hideLabel` for other languages). It is ignored on fields that are not passwords.
 
-## 1.15.0 — 2026-07-30
+## v1.15.0 - 2026-07-30
 
 ### Fixed
 - **Anchored panels aligned to the right opened against the wrong edge.** A `Menu` with `align="right"` near the right of the viewport dropped its panel at the far LEFT instead of under its trigger — reported from the Efolusi accounts console, where every row's action menu did it. Two halves caused it: the panel class pinned `right: 0` while `useAnchoredStyle`'s first-frame inline style pinned `left: 0`, so the panel was laid out with both edges pinned, stretched to the full viewport width, and was then measured at that width — after which the edge clamp had nowhere to put it and fell back to the left edge. The placement now pins `right`/`bottom` to `auto` from the first frame, and the panel classes for `Menu`, `Popover` and `HoverCard` no longer pin an edge the placement already sets. `HoverCard` had the same shape vertically (`top`/`bottom`).
 
-## 1.14.0 — 2026-07-30
+## v1.14.0 - 2026-07-30
 
 ### Fixed
 - **Link hover no longer turns the link near-black.** `.ef-link:hover` used `--accent-hover`, which is `#1D0E04` in the light theme — a warm brown link jumping to near-black on hover reads as broken rather than emphasised. Hover now deepens the link's own hue through a new `--text-link-hover` token (`--brand-900` light, `--brand-300` dark). The hover underline stays: colour alone is not a safe affordance (WCAG 1.4.1).
@@ -348,12 +348,12 @@ All notable changes to Meridian are documented here. Format follows [Keep a Chan
 ### Added
 - **`--text-link-hover`.** The link ramp had a resting colour but no hover companion, which is why consumers inherited the accent ramp by default.
 
-## 1.13.0 — 2026-07-30
+## v1.13.0 - 2026-07-30
 
 ### Added
 - **`sun` and `moon`.** The system documents a dark theme via `data-theme` but shipped no icon for switching between them, so consumers hand-inlined Lucide glyphs to build a theme toggle — the Efolusi site did exactly that. Both now come from the set.
 
-## 1.12.0 — 2026-07-30
+## v1.12.0 - 2026-07-30
 
 ### Added
 - **Four icons the account and security surfaces needed.** `shield`, `laptop`, `monitor` and `log-in` join the Lucide-derived set. The gap showed up building a sign-in and account console: there was no icon for a security section, a desktop session, or a sign-in affordance — the set shipped `log-out` without `log-in`, and `shield-check` without the plain `shield`.
@@ -361,12 +361,12 @@ All notable changes to Meridian are documented here. Format follows [Keep a Chan
 ### Changed
 - **`Divider` carries default vertical spacing** (one step on the space scale) instead of `margin: 0`. A separator flush against its neighbours is never what a caller wants, and the papercut was visible in this repo: the tools and console showcases each patched it inline with a different magic number (`20px` and `10px`). An explicit `style` or `className` still overrides, and those two showcase patches are gone.
 
-## 1.11.1 — 2026-07-30
+## v1.11.1 - 2026-07-30
 
 ### Fixed
 - **`::selection` sets an explicit text color.** The selection rules set only a background (`--brand-100` light, `#453728` dark), so selected text kept its own color — light text on a dark section in the light theme disappeared into the cream highlight when selected. Each selection background now pairs with a matching ink (`--cocoa-900` light, `#F3EFE7` dark).
 
-## 1.11.0 — 2026-07-29
+## v1.11.0 - 2026-07-29
 
 Locale-aware inputs and one more prop aligned to the house convention. Every
 change is additive: without a `locale` the components format exactly as before.
@@ -377,7 +377,7 @@ change is additive: without a `locale` the components format exactly as before.
 ### Changed
 - **`defaultOpen` is canonical on EnvList**, matching the `defaultOpen` used across the other disclosure-style components. The old `defaultVisible` keeps working as a `@deprecated` alias (canonical wins), pinned by a test — no break.
 
-## 1.10.0 — 2026-07-29
+## v1.10.0 - 2026-07-29
 
 A monorepo of three lockstep packages, one prop vocabulary aligned to the common
 standard, and a size-regression budget in CI. Every change is additive: old prop
@@ -392,13 +392,13 @@ names keep working for one more major, marked `@deprecated`.
 ### Changed
 - **Prop vocabulary aligned to the common standard, non-breaking.** `status` is now the canonical prop for state-like values (StatusDot, Sandbox, GeneratedImage, Confirmation); `state` stays as a `@deprecated` alias. `action` is canonically a `ReactNode` across Alert, Banner, and Toast; the old `onAction` / `actionLabel` remain as `@deprecated` aliases. Canonical wins when both are passed. No prop was removed; 18 alias tests pin the old call sites still working.
 
-## 1.9.2 — 2026-07-23
+## v1.9.2 - 2026-07-23
 
 ### Fixed
 - **Icon's missing-glyph warning now reaches npm consumers too.** 1.9.1 added the warning to `components/icons/Icon.jsx`, which is the CDN bundle's implementation; the npm build replaces that file with an inlined-SVG version generated by `scripts/build_npm.mjs`, so installs kept failing in silence. The generated component warns as well, once per name so a bad icon inside a list does not flood the console.
 - **The warning no longer fires on valid icons.** In the bundle, 1.9.1 warned on any failed fetch, so a jsdom test run — where a relative icon URL cannot resolve at all — logged a missing-glyph warning for every icon on the page. Only a served 404 means the name is wrong; transport failures are the environment and stay quiet.
 
-## 1.9.1 — 2026-07-23
+## v1.9.1 - 2026-07-23
 
 Three fixes for bugs that read as mistakes at the call site rather than as component faults, which is what made them expensive to track down.
 
@@ -407,7 +407,7 @@ Three fixes for bugs that read as mistakes at the call site rather than as compo
 - **CopyField dropped its extra props when used without a label.** The unlabelled branch rebuilt the box through `cloneElement` and never passed `...rest`, so `id`, `data-*` and `aria-*` set at the call site silently vanished. Its copied-state timeout also outlived unmount.
 - **Icon failed silently on an unknown name.** A missing glyph rendered an empty span with nothing in the console, which reads as a CSS bug and sends you looking in the wrong place. It now warns with the name and how to fix it. The failure is also cached, so a name that 404s is no longer refetched by every later mount.
 
-## 1.9.0 — 2026-07-22
+## v1.9.0 - 2026-07-22
 
 Editable demos, one prop vocabulary (with one-major deprecated aliases, per governance), zero raw colour literals, and visual regression in CI.
 
@@ -426,7 +426,7 @@ Editable demos, one prop vocabulary (with one-major deprecated aliases, per gove
 ### Decided (recorded in ROADMAP.md)
 - Single npm package, no monorepo split; FUNDING.yml omitted until sponsor accounts exist; docs hosting and npm scope marked resolved.
 
-## 1.8.0 — 2026-07-22
+## v1.8.0 - 2026-07-22
 
 Three new components, range selection for Calendar, form-level state, a bring-your-own-brand theming guide, and a single-file AI corpus. 109 components, 115 public exports.
 
@@ -441,7 +441,7 @@ Three new components, range selection for Calendar, form-level state, a bring-yo
 ### Changed
 - The docs' AI-consumption claim scales with the library: a model that has seen three Meridian components can now write the other 106.
 
-## 1.7.0 — 2026-07-22
+## v1.7.0 - 2026-07-22
 
 The keyboard contracts the docs called "verified in-browser" are now verified by tests — which promptly found three components breaking them — plus live-region announcements, reduced-motion coverage for JS-driven animation, and a server-render sweep of all 112 exports.
 
@@ -462,7 +462,7 @@ The keyboard contracts the docs called "verified in-browser" are now verified by
 - The `useLayoutEffect` SSR warning is gone from all 13 components that fired it (one isomorphic helper, downgrade-to-`useEffect` on the server — behaviour-identical, positioning work only means anything with a DOM).
 - `publish.yml` runs `npm run check` instead of its own hand-maintained gate list, which had already drifted from CI's.
 
-## 1.6.0 — 2026-07-22
+## v1.6.0 - 2026-07-22
 
 The npm package grows a static CSS story, and an audit of eight dimensions fixed the accessibility and forwarding bugs it confirmed.
 
@@ -483,7 +483,7 @@ The npm package grows a static CSS story, and an audit of eight dimensions fixed
 - The docs site, `llms.txt`, `SKILL.md` and CONTRIBUTING now document the npm install path; CONTRIBUTING's check list is `npm run check`.
 - `main` is protected by a ruleset: PRs plus green `gates` and `smoke` checks required, repository admins bypass.
 
-## 1.5.2 — 2026-07-20
+## v1.5.2 - 2026-07-20
 
 ### Fixed
 - **Server rendering any component with a proportional inline style mismatched on hydration.** Percentages were built as `value + '%'`, which writes every digit JavaScript has: `1/3 * 100` becomes `33.33333333333333%`. Browsers keep about six significant figures when parsing an inline style, so the DOM reads back `33.3333%`, React compares its own string against the browser's truncated one, and reports a mismatch. React does not patch these up, so the affected elements keep the server's values and any client-side recalculation is silently dropped.
@@ -494,7 +494,7 @@ The npm package grows a static CSS story, and an audit of eight dimensions fixed
 
   Regression coverage renders the five components with `renderToString` and asserts no serialised style carries more decimals than the parser keeps. Note for future work: jsdom preserves full float precision where browsers truncate, so a round-trip assertion through jsdom passes even with the fix reverted. The test asserts the precision bound directly for that reason.
 
-## 1.5.1 — 2026-07-20
+## v1.5.1 - 2026-07-20
 
 ### Fixed
 - **Every icon in the npm package was blank.** 68 of the 106 components render an `Icon`, and the tarball shipped none of the 108 SVGs. Even had it shipped them, `Icon` derives its base URL from the `<script src="..._ds_bundle.js">` tag, which exists only on the zero-build site: in an npm consumer that lookup returns `''` and the request goes out page-relative. Copying the files in would not have fixed the URL, so the npm build now inlines the SVG sources (~38 kB raw, ~5 kB gzipped) and drops the fetch entirely. Icons render in server output instead of one effect late, with no request per icon per route.
@@ -506,7 +506,7 @@ The npm package grows a static CSS story, and an audit of eight dimensions fixed
 - **Deep imports were broken in the published 1.5.0.** The `exports` map used a single `./*` pattern, which appends the extension, so `@efolusi/meridian/forms/Button.js` resolved to `forms/Button.js.js` and threw for every consumer — and that is the exact spelling the package README documents. `@efolusi/meridian/package.json` failed the same way, which breaks tools that read it. Both spellings now resolve, with or without `.js`.
 - `check_npm_package.mjs` imported `dist/` by file path, which bypasses `exports` entirely; that is why the broken map shipped green. It now symlinks the build into a temp `node_modules` and resolves every specifier by package name, the way Node does after an install.
 
-## 1.5.0 — 2026-07-20
+## v1.5.0 - 2026-07-20
 
 The runtime layer the 1.4.0 release was missing: a toast owner, field wiring, a portal for every floating surface, a real test suite, and an npm package whose types and assets actually work for consumers.
 
@@ -532,7 +532,7 @@ The runtime layer the 1.4.0 release was missing: a toast owner, field wiring, a 
 - **The npm package shipped CSS that pointed at fonts it did not contain.** `tokens/fonts.css` `@font-face`s five families from `../assets/fonts/`, but the build only copied components and token CSS. An unresolvable `url()` is a hard build failure in Vite and webpack, so the package would have broken every bundler consumer on first import. The fonts now ship (with their OFL texts, as the licence requires), and `check_npm_package.mjs` fails on any CSS asset missing from the tarball.
 - **Repo-wide factual drift.** An audit of every surface against measured counts fixed 83 confirmed items: component inventories that listed 104 of 106 (README omitted `FormField` and `Portal` from their groups), a stale icon count of 65 against the 108 that ship, `unexposedExports` documented as three helpers when the bundle carries seven, `kits`/`templates` named in the license scope years after they became `showcases`/`starters`, ROADMAP entries still listing shipped work as missing, docs-site meta and JSON-LD counts, `.prompt.md` examples referencing an icon that does not exist, and the last of the internal-product naming. Released changelog entries were deliberately left alone: they record what was true at the time.
 
-## 1.4.0 — 2026-07-19 — first public release
+## v1.4.0 - 2026-07-19 - first public release
 
 The first tagged, installable version. Meridian is repositioned as a general-purpose design system, the accessibility claims it was making are now true, and the documented install path actually runs.
 
@@ -567,7 +567,7 @@ The first tagged, installable version. Meridian is repositioned as a general-pur
 - Contrast: `--text-muted` (#948A74 → #746A55 light, #8F8574 → #9C9280 dark), `--success-600` (#3E8E4E → #2F7A40 light, #5FB86E dark), `--danger-600` (#DC2626 → #C81E1E) now meet WCAG AA (≥4.5:1) on page, card, and their status tints in both themes.
 - Docs corrected: icon count (65 → 107) and stroke width (assets are 2px; `Icon` renders 1.5px), deduplicated README data-component list, docs-site component counts (88/77 → 104).
 
-## 1.3.0 — 2026-07-17 — AI-native component expansion
+## v1.3.0 - 2026-07-17 - AI-native component expansion
 
 1.1.0, 1.2.0 and 1.3.0 were built before this repository existed. Its history starts on 2026-07-17 with an import of 1.3.0, whose changelog already dated 1.1.0 and 1.2.0 that same day. None of the three was tagged or published to npm (the first tag is v1.4.0, the first npm release 1.5.0), so no earlier date can be recovered and all three keep 2026-07-17.
 
@@ -583,13 +583,13 @@ The first tagged, installable version. Meridian is repositioned as a general-pur
 - Diff: accepts `from`/`to` strings (word-level change marks, context collapsing) and `files` for multi-file review; legacy `lines` prop unchanged.
 - CodeBlock: `clip` prop clips tall code with a fade + Show all / Collapse.
 
-## 1.2.0 — 2026-07-17
+## v1.2.0 - 2026-07-17
 ### Added
 - AI-native components (inspired by the agentic-UI ecosystem): Reasoning, ToolCall, AgentRun, Confirmation, Conversation, Citation + SourceList, Suggestions, ModelSelector, UsageMeter, FeedbackBar (ai); Diff (code). Total: 88.
 - Native behaviors ported from the ecosystem: tool approval gates (approve/reject), streaming key-value args, stick-to-bottom conversation viewport with jump-to-latest, citation hover previews with a source pager, animated count-up usage figures, collapsible run-step detail.
 - 4 new icons: brain, wrench, thumbs-up, thumbs-down.
 
-## 1.1.0 — 2026-07-17
+## v1.1.0 - 2026-07-17
 ### Added
 - 12 components completing the primitive set: Toggle + ToggleGroup, ButtonGroup, InputGroup, Label (forms); Collapsible, AspectRatio, ScrollArea, Carousel, Resizable (display); Menubar (navigation); ContextMenu, HoverCard (overlay). Total: 77.
 - Documentation site (`templates/ds-site/`): Home, Docs, Components, Blocks, Examples, Charts, Themes, Colors — with client-side page transitions.
@@ -605,7 +605,7 @@ The first tagged, installable version. Meridian is repositioned as a general-pur
 ### Changed
 - System renamed **Efolusi DS → Meridian** (by Efolusi). Install paths now `meridian/…`.
 
-## 1.0.0 — 2026-07
+## v1.0.0 - 2026-07
 ### Added
 - 65 components across 12 groups, each with `.jsx`, typed `.d.ts`, and `.prompt.md` usage guide.
 - 158 design tokens (light, dark, compact) derived from the Efolusi brand mark.

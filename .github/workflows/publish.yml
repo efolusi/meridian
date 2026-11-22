@@ -322,8 +322,8 @@ jobs:
           import re, sys
           ver = sys.argv[1]
           t = open('CHANGELOG.md', encoding='utf-8').read()
-          m = re.search(rf'^## {re.escape(ver)}[^\n]*\n(.*?)(?=^## |\Z)', t, re.S | re.M)
-          print(m.group(1).strip() if m else f'Meridian {ver}. Details in CHANGELOG.md.')
+          m = re.search(rf'^## v{re.escape(ver)}[^\n]*\n(.*?)(?=^## |\Z)', t, re.S | re.M)
+          print(m.group(1).strip() if m else f'v{ver}. Details in CHANGELOG.md.')
           EOF
           # gh tags the published commit via the API; a leftover tag must be at this SHA.
           if TAG_LINES="$(git ls-remote --exit-code origin "refs/tags/v$PKG")"; then
@@ -333,9 +333,9 @@ jobs:
               echo "::error::tag v$PKG exists at $TAG_SHA, not at the published commit $GITHUB_SHA."
               exit 1
             fi
-            gh release create "v$PKG" --verify-tag --title "Meridian $PKG" --notes-file "$NOTES"
+            gh release create "v$PKG" --verify-tag --title "v$PKG" --notes-file "$NOTES"
           else
-            gh release create "v$PKG" --target "$GITHUB_SHA" --title "Meridian $PKG" --notes-file "$NOTES"
+            gh release create "v$PKG" --target "$GITHUB_SHA" --title "v$PKG" --notes-file "$NOTES"
           fi
           echo "released v$PKG"
 
