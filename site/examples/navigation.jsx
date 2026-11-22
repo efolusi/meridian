@@ -230,3 +230,20 @@ export function SkipLinkDemo() {
     </div>
   );
 }
+
+// @demo TabBar Phone tab bar
+export function TabBarDemo() {
+  const { TabBar } = window.EfolusiDesignSystem_4ffc3d;
+  const [value, setValue] = React.useState('docs');
+  const items = [
+    { id: 'home', label: 'Products', href: '#products', icon: 'package' },
+    { id: 'docs', label: 'Docs', href: '#docs', icon: 'book-open' },
+    { id: 'settings', label: 'Settings', href: '#settings', icon: 'settings' },
+  ];
+  // On a phone the bar is fixed to the bottom and hidden from 720px up; the demo shows it in place.
+  return (
+    <div onClick={(e) => { const a = e.target.closest('a'); if (a) { e.preventDefault(); setValue(items.find((i) => a.getAttribute('href') === i.href).id); } }} style={{ width: '100%', maxWidth: 420 }}>
+      <TabBar aria-label="Screens" value={value} items={items} style={{ position: 'static', translate: 'none', display: 'flex', width: '100%' }} />
+    </div>
+  );
+}

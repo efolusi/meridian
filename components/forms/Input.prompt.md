@@ -1,4 +1,4 @@
-Native text input with ref forwarding, file-input styling, disabled and invalid states. It renders bare by default, or as a full field when `label`/`hint`/`error` are set.
+Native text input with ref forwarding, file-input styling, disabled and invalid states. It renders bare by default, or as a full field when `label`/`hint`/`error` are set. `glass` makes a search field in a bar or toolbar clear glass.
 
 ```jsx
 <Input label="Work email" placeholder="you@company.com" iconLeft="mail" />
