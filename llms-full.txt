@@ -4163,9 +4163,9 @@ Group: marketing · Source: /components/marketing/ThemeToggle.jsx · Exports: Th
 
 # ThemeToggle
 
-One theme control for every Efolusi site, following the [theme contract](../../guidelines/theming.md#theme-contract). `ThemeToggle` is a single 44px button that cycles Light, Dark and System. On System it follows the operating system live. It keeps `data-theme` on `<html>` at the resolved `light` or `dark`; Light never removes the attribute, so test `getAttribute('data-theme') === 'dark'`, not `hasAttribute`. The choice is saved in localStorage `efolusi-theme`; the `efolusi_theme` cookie on `.efolusi.com` carries the resolved light or dark, so a first visit to another Efolusi site starts in the same theme.
+One theme control for every Efolusi site, following the [theme contract](../../guidelines/theming.md#theme-contract). `ThemeToggle` is a single 44px button that shows the theme in use and flips to the other, Light or Dark; there is no system option. With no stored choice it follows the device live and stores nothing. It keeps `data-theme` on `<html>` at `light` or `dark`; Light never removes the attribute, so test `getAttribute('data-theme') === 'dark'`, not `hasAttribute`. The person's choice is saved in localStorage `efolusi-theme` when they switch; the `efolusi_theme` cookie on `.efolusi.com` carries it, so a first visit to another Efolusi site starts in the same theme. A `system` value stored by an earlier release is read as no choice and removed.
 
-Put the output of `themeInitScript()` (import it from `@efolusi/meridian/theme` in a server layout) in an inline `<script>` in `<head>`, before the page paints. Without it, a dark-mode visitor sees a light flash. Set `lang="id"` for the Indonesian labels; the label names the current theme and the next one.
+Put the output of `themeInitScript()` (import it from `@efolusi/meridian/theme` in a server layout) in an inline `<script>` in `<head>`, before the page paints. Without it, a dark-mode visitor sees a light flash. Set `lang="id"` for the Indonesian labels; the label names the action, such as "Switch to dark theme".
 
 ```jsx
 // app/layout.jsx: import { themeInitScript } from '@efolusi/meridian/theme';
@@ -4180,30 +4180,29 @@ Every `ThemeToggle` on a page stays in step: a choice made in one updates the ot
 On a site without React, load `browser/theme-init.js` and `browser/marketing.js` instead; see [theming § Plain HTML sites](../../guidelines/theming.md#plain-html-sites).
 
 ```ts
-export type ThemePreference = 'system' | 'light' | 'dark';
+export type ThemePreference = 'light' | 'dark';
 
 export interface ThemeToggleProps extends Omit<React.ButtonHTMLAttributes<HTMLButtonElement>, 'onChange'> {
   /** Language of the built-in labels. @default 'en' */
   lang?: 'en' | 'id';
-  /** Override any label: `system`, `light`, `dark`, and `next` (the "switch to" phrase). */
+  /** Override any label: `light`, `dark`, and `next` (the "Switch to" phrase). */
   labels?: Partial<Record<ThemePreference | 'next', string>>;
-  /** Called with the new preference after a click. */
+  /** Called with the new theme after a click. */
   onChange?: (preference: ThemePreference) => void;
 }
-/** One button that cycles Light, Dark and System; follows the OS live while on System. */
+/** One button that shows the theme in use and flips to the other, Light or Dark. With no stored choice it follows the device live and stores nothing. */
 export declare const ThemeToggle: React.ForwardRefExoticComponent<ThemeToggleProps & React.RefAttributes<HTMLButtonElement>>;
 
-/** The efolusi-theme localStorage choice, then the efolusi_theme cookie (dark|light), else `system`. */
-export declare function readThemePreference(doc?: Document, storage?: Storage): ThemePreference;
-/** Saves the choice in localStorage `efolusi-theme` and its resolved light|dark in the `efolusi_theme` cookie. */
-export declare function writeThemePreference(value: ThemePreference, doc?: Document, storage?: Storage, matchMedia?: (query: string) => MediaQueryList): ThemePreference;
-/** Writes the resolved theme to the `efolusi_theme` cookie: a year, Path=/, SameSite=Lax, Secure on https, Domain=.efolusi.com on efolusi.com hosts. Never `system`. */
-export declare function writeThemeCookie(theme: 'light' | 'dark', doc?: Document): void;
-export declare function resolveTheme(preference: ThemePreference, matchMedia?: (query: string) => MediaQueryList): 'light' | 'dark';
-/** With the choice on System here, rewrites the `efolusi_theme` cookie to the theme shown now. */
-export declare function refreshSystemCookie(doc?: Document, storage?: Storage, matchMedia?: (query: string) => MediaQueryList): void;
-export declare function applyTheme(preference: ThemePreference, doc?: Document, matchMedia?: (query: string) => MediaQueryList): 'light' | 'dark';
-/** The script to inline in <head> so the first paint has the stored or system theme. */
+/** The efolusi-theme localStorage choice, then the efolusi_theme cookie (dark|light), else null: no choice, the device decides. A `system` value stored by an earlier release is read as null and removed once. */
+export declare function readThemePreference(doc?: Document, storage?: Storage): ThemePreference | null;
+/** Saves the choice in localStorage `efolusi-theme` and the `efolusi_theme` cookie. Anything but light or dark is refused and returns null. */
+export declare function writeThemePreference(value: ThemePreference, doc?: Document, storage?: Storage): ThemePreference | null;
+/** Writes light|dark to the `efolusi_theme` cookie: a year, Path=/, SameSite=Lax, Secure on https, Domain=.efolusi.com on efolusi.com hosts. */
+export declare function writeThemeCookie(theme: ThemePreference, doc?: Document): void;
+/** The choice itself, or with null the device's theme. */
+export declare function resolveTheme(preference: ThemePreference | null, matchMedia?: (query: string) => MediaQueryList): 'light' | 'dark';
+export declare function applyTheme(preference: ThemePreference | null, doc?: Document, matchMedia?: (query: string) => MediaQueryList): 'light' | 'dark';
+/** The script to inline in <head> so the first paint has the stored, inherited or device theme. It stores nothing. */
 export declare function themeInitScript(): string;
 ```
 

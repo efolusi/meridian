@@ -27,27 +27,25 @@ beforeEach(() => {
 afterEach(() => { cleanup(); cleanup = () => {}; delete window.matchMedia; });
 
 describe('theme toggle', () => {
-  it('cycles light, dark, system with the contract storage and labels', () => {
+  it('shows the theme in use and flips between light and dark with the contract storage and labels', () => {
     fakeMedia(false);
-    localStorage.setItem('efolusi-theme', 'light');
     document.body.innerHTML = toggle();
     cleanup = init();
     const b = document.querySelector('[data-slot="theme-toggle"]');
-    expect(b.dataset.preference).toBe('light');
-    expect(b.getAttribute('aria-label')).toBe('Light theme, switch to dark theme');
+    expect(b.dataset.themeShown).toBe('light');
+    expect(b.getAttribute('aria-label')).toBe('Switch to dark theme');
+    expect([cookie(), localStorage.getItem('efolusi-theme')]).toEqual([undefined, null]);
     b.click();
-    expect([b.dataset.preference, attr(), cookie(), localStorage.getItem('efolusi-theme')]).toEqual(['dark', 'dark', 'dark', 'dark']);
+    expect([b.dataset.themeShown, attr(), cookie(), localStorage.getItem('efolusi-theme')]).toEqual(['dark', 'dark', 'dark', 'dark']);
     b.click();
-    expect([b.dataset.preference, attr(), cookie()]).toEqual(['system', 'light', 'light']);
-    b.click();
-    expect(b.dataset.preference).toBe('light');
+    expect([b.dataset.themeShown, attr(), cookie()]).toEqual(['light', 'light', 'light']);
   });
 
   it('speaks Indonesian when the button or page is lang="id"', () => {
     fakeMedia(false);
     document.body.innerHTML = toggle('id');
     cleanup = init();
-    expect(document.querySelector('button').getAttribute('aria-label')).toBe('Tema sistem, ganti ke tema terang');
+    expect(document.querySelector('button').getAttribute('aria-label')).toBe('Ganti ke tema gelap');
   });
 
   it('keeps every toggle on the page in step', () => {
@@ -56,16 +54,23 @@ describe('theme toggle', () => {
     cleanup = init();
     const [a, b] = document.querySelectorAll('button');
     a.click();
-    expect(b.dataset.preference).toBe('light');
+    expect(b.dataset.themeShown).toBe('dark');
   });
 
-  it('follows the system live on System and rewrites the cookie', () => {
+  it('follows the device live while there is no choice, and stores nothing', () => {
     const media = fakeMedia(false);
-    localStorage.setItem('efolusi-theme', 'system');
     document.body.innerHTML = toggle();
     cleanup = init();
     media.set(true);
-    expect([attr(), cookie()]).toEqual(['dark', 'dark']);
+    expect([attr(), cookie(), localStorage.getItem('efolusi-theme')]).toEqual(['dark', undefined, null]);
+  });
+
+  it('reads a stored system value as no choice and removes it', () => {
+    fakeMedia(true);
+    localStorage.setItem('efolusi-theme', 'system');
+    document.body.innerHTML = toggle();
+    cleanup = init();
+    expect([attr(), localStorage.getItem('efolusi-theme')]).toEqual(['dark', null]);
   });
 
   it('binds once when init runs twice, and cleanup unbinds', () => {
@@ -76,10 +81,10 @@ describe('theme toggle', () => {
     const second = init();
     const b = document.querySelector('button');
     b.click();
-    expect(b.dataset.preference).toBe('dark');
+    expect(b.dataset.themeShown).toBe('dark');
     first(); second();
     b.click();
-    expect(b.dataset.preference).toBe('dark');
+    expect(b.dataset.themeShown).toBe('dark');
   });
 });
 
@@ -173,10 +178,10 @@ describe('content rendered after init', () => {
     document.body.innerHTML = toggle() + '<div data-slot="marquee"><button class="ef-marquee__pause" aria-pressed="false"></button></div>';
     await new Promise((r) => setTimeout(r, 0));
     const b = document.querySelector('[data-slot="theme-toggle"]');
-    expect(b.getAttribute('aria-label')).toBe('Light theme, switch to dark theme');
+    expect(b.getAttribute('aria-label')).toBe('Switch to dark theme');
     expect(document.querySelector('.ef-marquee__pause').getAttribute('aria-label')).toBe('Pause the moving list');
     b.click();
-    expect(b.dataset.preference).toBe('dark');
+    expect(b.dataset.themeShown).toBe('dark');
   });
 });
 

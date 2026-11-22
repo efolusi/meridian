@@ -1,8 +1,8 @@
 # ThemeToggle
 
-One theme control for every Efolusi site, following the [theme contract](../../guidelines/theming.md#theme-contract). `ThemeToggle` is a single 44px button that cycles Light, Dark and System. On System it follows the operating system live. It keeps `data-theme` on `<html>` at the resolved `light` or `dark`; Light never removes the attribute, so test `getAttribute('data-theme') === 'dark'`, not `hasAttribute`. The choice is saved in localStorage `efolusi-theme`; the `efolusi_theme` cookie on `.efolusi.com` carries the resolved light or dark, so a first visit to another Efolusi site starts in the same theme.
+One theme control for every Efolusi site, following the [theme contract](../../guidelines/theming.md#theme-contract). `ThemeToggle` is a single 44px button that shows the theme in use and flips to the other, Light or Dark; there is no system option. With no stored choice it follows the device live and stores nothing. It keeps `data-theme` on `<html>` at `light` or `dark`; Light never removes the attribute, so test `getAttribute('data-theme') === 'dark'`, not `hasAttribute`. The person's choice is saved in localStorage `efolusi-theme` when they switch; the `efolusi_theme` cookie on `.efolusi.com` carries it, so a first visit to another Efolusi site starts in the same theme. A `system` value stored by an earlier release is read as no choice and removed.
 
-Put the output of `themeInitScript()` (import it from `@efolusi/meridian/theme` in a server layout) in an inline `<script>` in `<head>`, before the page paints. Without it, a dark-mode visitor sees a light flash. Set `lang="id"` for the Indonesian labels; the label names the current theme and the next one.
+Put the output of `themeInitScript()` (import it from `@efolusi/meridian/theme` in a server layout) in an inline `<script>` in `<head>`, before the page paints. Without it, a dark-mode visitor sees a light flash. Set `lang="id"` for the Indonesian labels; the label names the action, such as "Switch to dark theme".
 
 ```jsx
 // app/layout.jsx: import { themeInitScript } from '@efolusi/meridian/theme';

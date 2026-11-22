@@ -2,8 +2,9 @@ import { afterEach, beforeEach, describe, expect, it } from 'vitest';
 import { act, fireEvent, render } from '@testing-library/react';
 import { ThemeToggle, themeInitScript, readThemePreference, writeThemePreference, writeThemeCookie } from '../components/marketing/ThemeToggle.jsx';
 
-// The theme contract (guidelines/theming.md): localStorage efolusi-theme holds the choice,
-// the efolusi_theme cookie holds only the resolved light|dark.
+// The theme contract (guidelines/theming.md): the switch offers light and dark only.
+// localStorage efolusi-theme holds the person's choice, written only when they switch;
+// the efolusi_theme cookie holds that choice for other Efolusi sites.
 function fakeMedia(dark) {
   const state = { dark };
   const listeners = new Set();
@@ -19,53 +20,66 @@ const runInit = () => new Function(themeInitScript())();
 beforeEach(() => { clearCookie(); localStorage.clear(); document.documentElement.removeAttribute('data-theme'); });
 afterEach(() => { delete window.matchMedia; });
 
-describe('precedence: localStorage choice, then the cookie, then the system', () => {
-  it('holds before paint', () => {
+describe('precedence: stored choice, then the cookie, then the device', () => {
+  it('holds before paint, and the script stores nothing', () => {
     fakeMedia(false);
     document.cookie = 'efolusi_theme=dark; Path=/';
     localStorage.setItem('efolusi-theme', 'light');
     runInit();
     expect(attr()).toBe('light');
-    localStorage.setItem('efolusi-theme', 'system');
-    runInit();
-    expect(attr()).toBe('light');
     localStorage.clear();
-    document.cookie = 'efolusi_theme=dark; Path=/'; // the System load above rewrote it (MD22)
     runInit();
     expect(attr()).toBe('dark');
     clearCookie();
     fakeMedia(true);
     runInit();
     expect(attr()).toBe('dark');
+    expect(cookie()).toBeUndefined();
+    expect(localStorage.getItem('efolusi-theme')).toBeNull();
   });
 
-  it('holds at runtime', () => {
+  it('holds at runtime: no choice reads as null', () => {
     document.cookie = 'efolusi_theme=dark; Path=/';
     expect(readThemePreference()).toBe('dark');
-    localStorage.setItem('efolusi-theme', 'system');
-    expect(readThemePreference()).toBe('system');
+    localStorage.setItem('efolusi-theme', 'light');
+    expect(readThemePreference()).toBe('light');
     localStorage.clear();
     clearCookie();
-    expect(readThemePreference()).toBe('system');
+    expect(readThemePreference()).toBeNull();
   });
 
   it('ignores a cookie that is not dark or light', () => {
     fakeMedia(false);
     document.cookie = 'efolusi_theme=system; Path=/';
-    expect(readThemePreference()).toBe('system');
+    expect(readThemePreference()).toBeNull();
     runInit();
     expect(attr()).toBe('light');
   });
 });
 
-describe('the cookie', () => {
-  it('stores the choice in localStorage and only the resolved theme in the cookie, never system', () => {
+describe('a "system" value stored by an earlier release', () => {
+  it('is read as no choice and removed once, by the reader', () => {
+    localStorage.setItem('efolusi-theme', 'system');
+    expect(readThemePreference()).toBeNull();
+    expect(localStorage.getItem('efolusi-theme')).toBeNull();
+  });
+
+  it('is read as no choice and removed once, by the pre-paint script, which paints the device theme', () => {
     fakeMedia(true);
-    expect(writeThemePreference('system')).toBe('system');
-    expect(localStorage.getItem('efolusi-theme')).toBe('system');
+    localStorage.setItem('efolusi-theme', 'system');
+    runInit();
+    expect(attr()).toBe('dark');
+    expect(localStorage.getItem('efolusi-theme')).toBeNull();
+  });
+});
+
+describe('the cookie', () => {
+  it('writeThemePreference stores light or dark in both places and refuses anything else', () => {
+    expect(writeThemePreference('dark')).toBe('dark');
+    expect(localStorage.getItem('efolusi-theme')).toBe('dark');
     expect(cookie()).toBe('dark');
-    writeThemePreference('light');
-    expect(cookie()).toBe('light');
+    expect(writeThemePreference('system')).toBeNull();
+    expect(localStorage.getItem('efolusi-theme')).toBe('dark');
     writeThemeCookie('system');
     expect(cookie()).toBe('light');
   });
@@ -82,55 +96,74 @@ describe('the cookie', () => {
     writeThemeCookie('light', plain);
     expect(plain.cookie).not.toContain('Secure');
   });
-
-  it('themeInitScript writes the same cookie as writeThemeCookie, for efolusi hosts, localhost, https and http', () => {
-    const run = (hostname, protocol) => {
-      const doc = { cookie: '', documentElement: { setAttribute() {}, removeAttribute() {} }, location: { hostname, protocol } };
-      const storage = { getItem: () => 'system' };
-      const media = () => ({ matches: true });
-      new Function('window', 'localStorage', 'document', 'location', 'matchMedia', themeInitScript())({ matchMedia: media }, storage, doc, doc.location, media);
-      return doc.cookie;
-    };
-    for (const [host, protocol] of [['efolusi.com', 'https:'], ['my.efolusi.com', 'https:'], ['notefolusi.com', 'https:'], ['localhost', 'http:'], ['localhost', 'https:']]) {
-      const expected = { cookie: '', location: { hostname: host, protocol } };
-      writeThemeCookie('dark', expected);
-      expect(run(host, protocol), `${host} ${protocol}`).toBe(expected.cookie);
-    }
-  });
 });
 
 describe('ThemeToggle', () => {
-  it('cycles Light, Dark, System and back to Light; light sets data-theme="light"', () => {
+  it('shows the theme in use, says the action, and stores nothing until the person switches', () => {
+    fakeMedia(true);
+    const { getByRole } = render(<ThemeToggle />);
+    const button = getByRole('button');
+    expect(attr()).toBe('dark');
+    expect(button.dataset.themeShown).toBe('dark');
+    expect(button.getAttribute('aria-label')).toBe('Switch to light theme');
+    expect(localStorage.getItem('efolusi-theme')).toBeNull();
+    expect(cookie()).toBeUndefined();
+  });
+
+  it('flips between light and dark and keeps the choice', () => {
     fakeMedia(false);
-    localStorage.setItem('efolusi-theme', 'light');
     const { getByRole } = render(<ThemeToggle />);
     const button = getByRole('button');
     const seen = [];
-    for (let i = 0; i < 3; i += 1) { fireEvent.click(button); seen.push([readThemePreference(), attr()]); }
-    expect(seen).toEqual([['dark', 'dark'], ['system', 'light'], ['light', 'light']]);
+    for (let i = 0; i < 3; i += 1) { fireEvent.click(button); seen.push([readThemePreference(), attr(), cookie()]); }
+    expect(seen).toEqual([['dark', 'dark', 'dark'], ['light', 'light', 'light'], ['dark', 'dark', 'dark']]);
   });
 
-  it('in System, re-resolves on a system change and rewrites the cookie', () => {
+  it('is operable from the keyboard: Enter and Space click a native button', () => {
+    fakeMedia(false);
+    const { getByRole } = render(<ThemeToggle />);
+    const button = getByRole('button');
+    expect(button.tagName).toBe('BUTTON');
+    expect(button.getAttribute('type')).toBe('button');
+    button.focus();
+    expect(document.activeElement).toBe(button);
+  });
+
+  it('follows the device live while there is no choice, and writes no cookie', () => {
     const media = fakeMedia(false);
-    localStorage.setItem('efolusi-theme', 'system');
     const { getByRole } = render(<ThemeToggle />);
     expect(attr()).toBe('light');
     act(() => media.set(true));
     expect(attr()).toBe('dark');
-    expect(cookie()).toBe('dark');
-    fireEvent.click(getByRole('button'));
-    expect(media.listeners.size).toBe(0);
+    expect(getByRole('button').dataset.themeShown).toBe('dark');
+    expect(cookie()).toBeUndefined();
   });
 
-  it('labels the current and next state in English and Indonesian', () => {
+  it('stops following the device once the person has chosen', () => {
+    const media = fakeMedia(false);
+    const { getByRole } = render(<ThemeToggle />);
+    fireEvent.click(getByRole('button'));
+    expect(media.listeners.size).toBe(0);
+    act(() => media.set(false));
+    expect(attr()).toBe('dark');
+  });
+
+  it('labels the action in English and Indonesian', () => {
     fakeMedia(false);
     const { getByRole, rerender } = render(<ThemeToggle lang="id" />);
     const button = getByRole('button');
-    expect(button.getAttribute('aria-label')).toBe('Tema sistem, ganti ke tema terang');
-    fireEvent.click(button);
+    expect(button.getAttribute('aria-label')).toBe('Ganti ke tema gelap');
     fireEvent.click(button);
     rerender(<ThemeToggle lang="en" />);
-    expect(button.getAttribute('aria-label')).toBe('Dark theme, switch to system theme');
+    expect(button.getAttribute('aria-label')).toBe('Switch to light theme');
+    rerender(<ThemeToggle lang="id" />);
+    expect(button.getAttribute('aria-label')).toBe('Ganti ke tema terang');
+  });
+
+  it('has no system label, icon or type', () => {
+    fakeMedia(false);
+    const { getByRole } = render(<ThemeToggle />);
+    expect(getByRole('button').outerHTML).not.toMatch(/system|monitor/i);
   });
 
   it('is a 44px tap target', () => {
@@ -142,23 +175,21 @@ describe('ThemeToggle', () => {
 });
 
 describe('ThemeToggle instances stay in step (MD13)', () => {
-  it('updates the other toggle on the page when one cycles', () => {
+  it('updates the other toggle on the page when one flips', () => {
     fakeMedia(false);
-    localStorage.setItem('efolusi-theme', 'light');
     const { getAllByRole } = render(<><ThemeToggle /><ThemeToggle lang="id" /></>);
     const [en, id] = getAllByRole('button');
     fireEvent.click(en);
-    expect(en.dataset.preference).toBe('dark');
-    expect(id.dataset.preference).toBe('dark');
-    expect(id.getAttribute('aria-label')).toBe('Tema gelap, ganti ke tema sistem');
+    expect(en.dataset.themeShown).toBe('dark');
+    expect(id.dataset.themeShown).toBe('dark');
+    expect(id.getAttribute('aria-label')).toBe('Ganti ke tema terang');
   });
 
   it('follows a choice made in another tab through the storage event', () => {
     fakeMedia(false);
-    localStorage.setItem('efolusi-theme', 'light');
     const { getByRole } = render(<ThemeToggle />);
-    localStorage.setItem('efolusi-theme', 'system');
+    localStorage.setItem('efolusi-theme', 'dark');
     act(() => { window.dispatchEvent(new StorageEvent('storage', { key: 'efolusi-theme' })); });
-    expect(getByRole('button').dataset.preference).toBe('system');
+    expect(getByRole('button').dataset.themeShown).toBe('dark');
   });
 });

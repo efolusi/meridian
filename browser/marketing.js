@@ -6,7 +6,7 @@
 // CSP: no eval, no HTML strings, no style attributes; values go through the CSSOM.
 import {
   LABELS, THEME_CHANGE_EVENT, THEME_PREFERENCES, THEME_STORAGE_KEY,
-  applyTheme, readThemePreference, refreshSystemCookie, writeThemeCookie, writeThemePreference,
+  applyTheme, readThemePreference, resolveTheme, writeThemePreference,
 } from './theme.js';
 
 const MARQUEE_LABELS = {
@@ -20,16 +20,16 @@ const MARQUEE = '[data-slot="marquee"]';
 const active = new WeakMap();
 
 const langOf = (el) => ((el.closest('[lang]')?.getAttribute('lang') || '').toLowerCase().startsWith('id') ? 'id' : 'en');
-const nextOf = (pref) => THEME_PREFERENCES[(THEME_PREFERENCES.indexOf(pref) + 1) % THEME_PREFERENCES.length];
+const otherOf = (shown) => THEME_PREFERENCES.find((t) => t !== shown);
 
 function labelToggles(root) {
-  const pref = readThemePreference();
+  const shown = resolveTheme(readThemePreference());
   for (const b of root.querySelectorAll(TOGGLE)) {
     const text = LABELS[langOf(b)];
-    const label = `${text[pref]}, ${text.next} ${text[nextOf(pref)].toLowerCase()}`;
-    if (b.dataset.preference !== pref) b.dataset.preference = pref;
+    const label = `${text.next} ${text[otherOf(shown)].toLowerCase()}`;
+    if (b.dataset.themeShown !== shown) b.dataset.themeShown = shown;
     if (b.getAttribute('aria-label') !== label) b.setAttribute('aria-label', label);
-    if (b.getAttribute('title') !== text[pref]) b.setAttribute('title', text[pref]);
+    if (b.getAttribute('title') !== text[shown]) b.setAttribute('title', text[shown]);
   }
 }
 
@@ -71,7 +71,6 @@ export function init(root = document) {
   if (active.has(root)) {
     sync();
     refresh();
-    refreshSystemCookie();
     return active.get(root);
   }
 
@@ -79,7 +78,7 @@ export function init(root = document) {
     const target = e.target instanceof Element ? e.target : null;
     if (!target) return;
     if (target.closest(TOGGLE)) {
-      writeThemePreference(nextOf(readThemePreference()));
+      writeThemePreference(otherOf(resolveTheme(readThemePreference())));
       return;
     }
     const menu = target.closest(MENU);
@@ -100,9 +99,9 @@ export function init(root = document) {
   };
   const onStorage = (e) => { if (e.key === null || e.key === THEME_STORAGE_KEY) sync(); };
   const onScroll = () => { for (const h of root.querySelectorAll('[data-slot="site-header"]')) h.toggleAttribute('data-scrolled', win.scrollY > 4); };
-  // On System, follow the operating system and keep the cookie on the resolved theme.
+  // With no choice yet, follow the device. Nothing is stored.
   const media = win.matchMedia?.('(prefers-color-scheme: dark)');
-  const onMedia = () => { if (readThemePreference() === 'system') writeThemeCookie(applyTheme('system')); };
+  const onMedia = () => { if (!readThemePreference()) { applyTheme(null); labelToggles(root); } };
   const observer = new win.MutationObserver(refresh);
 
   root.addEventListener('click', onClick);
@@ -114,7 +113,6 @@ export function init(root = document) {
   observer.observe(root, { childList: true, subtree: true });
   sync();
   refresh();
-  refreshSystemCookie();
 
   const cleanup = () => {
     root.removeEventListener('click', onClick);
