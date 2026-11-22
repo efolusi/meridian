@@ -1,0 +1,35 @@
+{
+  "name": "tabbar",
+  "type": "registry:ui",
+  "title": "TabBar",
+  "description": "Use `TabBar` on phone screens for three to five top destinations. It floats above the home indicator as chrome glass and hides from 720px up, where `TopNav` carries the same links. Give it the `value` of the current destination; that item gets `aria-current=\"page\"`. Give the page `padding-block-end:",
+  "dependencies": [
+    "react"
+  ],
+  "registryDependencies": [
+    "https://meridian.efolusi.com/site/registry/meridian-base.json",
+    "https://meridian.efolusi.com/site/registry/icon.json",
+    "https://meridian.efolusi.com/site/registry/meridian-runtime.json"
+  ],
+  "files": [
+    {
+      "path": "components/navigation/TabBar.jsx",
+      "type": "registry:ui",
+      "content": "'use client';\nimport React from 'react';\nimport { Icon } from '../icons/Icon.jsx';\nimport { injectEfCss } from '../runtime/runtime.jsx';\n// A floating chrome-glass tab bar for phones (design-tokens docs/glass.md). It sits above the home\n// indicator (safe-area inset) and hides from 720px up, where the TopNav carries the same links.\n// While it shows, the scroll port keeps --ef-tabbar-space free at the bottom, so a focused element is never\n// scrolled under it (WCAG 2.2 2.4.11); pages add the same space as padding-block-end.\nconst CSS = `\n:root{--ef-tabbar-space:calc(var(--tap-min) + 2 * var(--space-1) + 2 * var(--space-3) + env(safe-area-inset-bottom))}\n@media (max-width:719px){:root:has(.ef-tabbar){scroll-padding-block-end:var(--ef-tabbar-space)}}\n.ef-tabbar{position:fixed;z-index:20;inset-inline:0;inset-block-end:max(var(--space-3),env(safe-area-inset-bottom));margin-inline:auto;display:flex;gap:var(--space-0-5);width:calc(100% - 2 * var(--space-3));max-width:480px;padding:var(--space-1);border-radius:var(--radius-full)}\n.ef-tabbar__item{flex:1;display:inline-flex;flex-direction:column;align-items:center;justify-content:center;gap:var(--space-0-5);min-height:var(--tap-min);padding:var(--space-1) var(--space-2);border-radius:var(--radius-full);color:var(--text-primary);font-size:var(--text-xs);font-weight:var(--weight-semibold);text-decoration:none;transition:background var(--dur-fast) var(--ease-enter)}\n.ef-tabbar__item:hover{background:color-mix(in srgb,var(--text-primary) 7%,transparent)}\n.ef-tabbar__item[aria-current=\"page\"]{background:var(--accent);color:var(--accent-contrast)}\n.ef-tabbar__item:focus-visible{outline:2px solid transparent;box-shadow:var(--focus-ring)}\n@media (min-width:720px){.ef-tabbar{display:none}}\n@media (forced-colors:active){.ef-tabbar__item[aria-current=\"page\"]{background:Highlight;color:HighlightText;forced-color-adjust:none}}\n`;\nconst LABELS = { en: { nav: 'Main navigation' }, id: { nav: 'Navigasi utama' } };\nexport function TabBar({ items = [], value, lang = 'en', labels, style, className, ...rest }) {\n  injectEfCss('ef-css-tabbar', CSS);\n  const text = { ...(LABELS[lang] ?? LABELS.en), ...labels };\n  return (\n    <nav aria-label={text.nav} {...rest} className={`ef-tabbar ef-glass ef-glass--chrome ef-glass--blur${className ? ' ' + className : ''}`} style={style}>\n      {items.map((item) => (\n        <a key={item.id} href={item.href} className=\"ef-tabbar__item\" aria-current={value === item.id ? 'page' : undefined}>\n          {item.icon ? <Icon name={item.icon} size={20} /> : null}\n          {item.label}\n        </a>\n      ))}\n    </nav>\n  );\n}\n"
+    },
+    {
+      "path": "components/navigation/TabBar.d.ts",
+      "type": "registry:component",
+      "content": "export interface TabBarItem {\n  id: string;\n  label: React.ReactNode;\n  href: string;\n  /** Lucide icon name */\n  icon?: string;\n}\nexport interface TabBarProps extends React.HTMLAttributes<HTMLElement> {\n  /** Three to five destinations */\n  items: TabBarItem[];\n  /** Id of the current destination; it gets aria-current=\"page\" */\n  value?: string;\n  /** Names the navigation for screen readers; defaults to the built-in label */\n  'aria-label'?: string;\n  /** Language of the built-in label */\n  lang?: 'en' | 'id';\n  /** Override the built-in label: { nav } */\n  labels?: { nav?: string };\n}\nexport declare function TabBar(props: TabBarProps): React.JSX.Element;\n"
+    },
+    {
+      "path": "components/navigation/TabBar.prompt.md",
+      "type": "registry:component",
+      "content": "# TabBar\n\nUse `TabBar` on phone screens for three to five top destinations. It floats above the home indicator as chrome glass and hides from 720px up, where `TopNav` carries the same links. Give it the `value` of the current destination; that item gets `aria-current=\"page\"`. Give the page `padding-block-end: var(--ef-tabbar-space)` on phones so the last content is not under it; while the bar shows, Meridian sets `scroll-padding-block-end` to the same space, so a focused element is never scrolled under it. Without an `aria-label` the landmark is named \"Main navigation\" (`lang=\"id\"`: \"Navigasi utama\").\n\n```jsx\n<TabBar aria-label=\"Screens\" value=\"docs\" items={[\n  { id: 'home', label: 'Products', href: '/' },\n  { id: 'docs', label: 'Docs', href: '/docs' },\n  { id: 'settings', label: 'Settings', href: '/settings' },\n]} />\n```\n"
+    }
+  ],
+  "categories": [
+    "navigation"
+  ],
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json"
+}

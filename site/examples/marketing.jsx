@@ -63,7 +63,7 @@ export function FeatureCardDemo() {
   return (
     <FeatureGrid>
       <FeatureCard tone="peach" icon="package" title="Products" body="Seven tools, one account, all running on your machine." cta="See the portfolio" href="#products" />
-      <FeatureCard tone="cocoa" icon="coins" title="Token" body="Buyback and burn, visible on chain." cta="Read more" href="#token" />
+      <FeatureCard tone="band" icon="coins" title="Token" body="Buyback and burn, visible on chain." cta="Read more" href="#token" />
       <FeatureCard tone="amber" icon="sparkles" title="Standard" body="Open source, self-hosted, private and secure." cta="About us" href="#about" />
     </FeatureGrid>
   );
@@ -81,7 +81,7 @@ export function RevealDemo() {
   return (
     <FeatureGrid>
       <Reveal><FeatureCard tone="peach" icon="package" title="Products" body="Seven tools, one account." /></Reveal>
-      <Reveal><FeatureCard tone="cocoa" icon="coins" title="Token" body="Buyback and burn." /></Reveal>
+      <Reveal><FeatureCard tone="band" icon="coins" title="Token" body="Buyback and burn." /></Reveal>
       <Reveal><FeatureCard tone="amber" icon="sparkles" title="Standard" body="Open source first." /></Reveal>
     </FeatureGrid>
   );

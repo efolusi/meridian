@@ -1,4 +1,4 @@
-Inline 2–5-way toggle on a sand track; active segment is a white hairline chip. Use it for views/ranges, and Tabs for page sections.
+Inline toggle for 2 to 5 options on a clear-glass track; the active segment is thick glass. Use it for views and ranges, and Tabs for page sections.
 
 ```jsx
 <SegmentedControl options={['7d', '30d', '90d']} value={range} onChange={setRange} />

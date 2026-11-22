@@ -5,7 +5,7 @@ import { describe, expect, it } from 'vitest'
 
 // Owner decisions of 2026-11-13 for the token layer.
 const colors = readTokenCss('colors.css')
-const lightBlock = colors.match(/:root\s*\{([\s\S]*?)\n\}/)[1]
+const lightBlock = colors.match(/:root(?:,\s*\[data-theme="light"\])?\s*\{([\s\S]*?)\n\}/)[1]
 const darkBlock = colors.match(/\[data-theme="dark"\]\s*\{([\s\S]*?)\n\}/)[1]
 const gate = spawnSync('python3', ['scripts/check_contrast.py'], { encoding: 'utf8' })
 
@@ -67,7 +67,7 @@ describe('tokens.json is DTCG with aliases and modes', () => {
   })
 
   it('writes aliases as {group.leaf} that resolve to a real token', () => {
-    expect(byPath.get('surface.page').$value).toBe('{sand.50}')
+    expect(byPath.get('surface.page').$value).toBe('{sand.25}')
     expect(byPath.get('text.primary').$value).toBe('{sand.950}')
     for (const [path, node] of leaves) {
       const values = [node.$value, ...Object.values(node.$extensions?.[MODES]?.modes ?? {})]
@@ -79,8 +79,8 @@ describe('tokens.json is DTCG with aliases and modes', () => {
 
   it('carries dark, compact and coarse-pointer values as modes', () => {
     const mode = (path) => byPath.get(path).$extensions[MODES].modes
-    expect(mode('surface.page').dark).toBe('#191512')
-    expect(mode('text.link').dark).toBe('{brand.400}')
+    expect(mode('surface.page').dark).toBe('#1C1814')
+    expect(mode('text.link').dark).toBe('{ember.300}')
     expect(mode('border.control').dark).toBeDefined()
     expect(mode('control.h-md').compact).toBe('30px')
     expect(mode('control.h-md').coarse).toBe('{tap.min}')
@@ -91,7 +91,7 @@ describe('tokens.json is DTCG with aliases and modes', () => {
 
   it('documents the mode shape at the root', () => {
     const modes = tokens.$extensions[MODES].modes
-    expect(Object.keys(modes)).toEqual(['dark', 'compact', 'coarse', 'increased', 'increased-dark', 'reduced-motion'])
+    expect(Object.keys(modes)).toEqual(['dark', 'compact', 'coarse', 'increased', 'increased-dark', 'reduced-motion', 'reduced-transparency', 'no-backdrop'])
     expect(modes.dark.blocks[0]).toEqual({ selector: '[data-theme="dark"]' })
     expect(modes.compact.blocks[0]).toEqual({ selector: '[data-density="compact"]' })
     expect(modes.coarse.blocks[0]).toEqual({ media: '(pointer: coarse)', selector: ':root, [data-density="compact"]' })

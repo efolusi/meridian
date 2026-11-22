@@ -98,6 +98,20 @@ The invariant: **only semantic aliases ever appear inside `[data-theme="dark"]`.
 
 If your product has no dark styling at all, set `data-theme="light"` on `<html>`. Otherwise a dark OS turns Meridian components dark inside a light page.
 
+## Glass
+
+The glass material comes from design-tokens (`docs/glass.md`): one number, `--glass-strength`, sets how much glass shows, and every `--material-*` value follows it. Meridian draws it with classes in `tokens/base.css`:
+
+| Class | Use |
+|---|---|
+| `.ef-glass .ef-glass--chrome .ef-glass--blur` | Bars that content scrolls under: `TopNav`, `TabBar`, a toolbar |
+| `.ef-glass .ef-glass--clear` | Controls on a bar or panel: `ThemeToggle`, `SegmentedControl`, `Input glass` |
+| `.ef-glass .ef-glass--regular` | A card or panel on the field, without a blur |
+| `.ef-glass .ef-glass--thick .ef-glass--blur` | Your own sheet or popover; Meridian's overlays already are |
+| `.ef-glass-field` | On the page body: the quiet warm field that glass blurs |
+
+Rules: blur only what content scrolls under; at most four blurred surfaces on screen; never put a blurred surface inside another (the inner one blurs nothing); an overlay never fades its opacity in. Every class turns solid under reduced transparency, more contrast, no `backdrop-filter` and forced colours, so a product needs no fallback of its own. To show more or less glass, set `--glass-strength` on `:root` (design-tokens recommends 0.33; 0.5 is visibly more glass) and run `scripts/check_contrast.py`, which measures every pair Meridian paints on glass.
+
 ## Fonts
 
 Three families, three tokens (`tokens/typography.css`): `--font-display` for h1–h4 and display moments, `--font-sans` for everything readable, `--font-mono` for code, keys, and tabular numbers. The stock faces load via `@font-face` in `tokens/fonts.css` from `assets/fonts/`.

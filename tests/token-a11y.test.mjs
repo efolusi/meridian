@@ -80,9 +80,9 @@ describe('dark tokens follow the OS when no theme is set (DS-08)', () => {
 })
 
 describe('base element rules (DS-04, DS-10)', () => {
-  it('puts everything inside @layer meridian except the forced-colors outline', () => {
+  it('puts everything inside @layer meridian except the forced-colors block (focus outline, solid glass)', () => {
     const outside = outsideMeridianLayer(base).trim()
-    expect(outside).toMatch(/^@media \(forced-colors:active\)\{:focus-visible\{outline:2px solid Highlight;outline-offset:2px\}\}$/)
+    expect(outside).toMatch(/^@media \(forced-colors:active\)\{:focus-visible\{outline:2px solid Highlight;outline-offset:2px\}\.ef-glass\{background:Canvas;border-color:CanvasText;-webkit-backdrop-filter:none;backdrop-filter:none;box-shadow:none\}\.ef-glass-field::before\{display:none\}\}$/)
   })
 
   it('keeps the anchor default at zero specificity so .ef-btn variants keep their foreground', () => {

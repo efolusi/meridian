@@ -6,7 +6,7 @@ import path from 'node:path';
 // remaps in dark and is skipped by a rebrand that sets only the accent group.
 // scripts/ramp_allowlist.json records the existing uses per file; a count may only fall.
 const TOKENS = fs.readFileSync('tokens/colors.css', 'utf8');
-const rootBlock = TOKENS.match(/:root\s*\{([\s\S]*?)\n\}/)[1];
+const rootBlock = TOKENS.match(/:root(?:,\s*\[data-theme="light"\])?\s*\{([\s\S]*?)\n\}/)[1];
 const ramps = new Set([...rootBlock.matchAll(/(--[a-z]+)-\d{2,3}\s*:/g)].map((m) => m[1]));
 const RAMP_USE = new RegExp(`var\\((?:${[...ramps].join('|')})-\\d{2,3}\\)`, 'g');
 const allowlist = JSON.parse(fs.readFileSync('scripts/ramp_allowlist.json', 'utf8'));

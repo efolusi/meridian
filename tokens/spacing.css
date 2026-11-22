@@ -1,5 +1,5 @@
 /* Generated from tokens.json by scripts/build.mjs. Do not edit. */
-:root {
+:root, [data-theme="light"] {
   --avatar-sm: 24px;
   --avatar-md: 32px;
   --avatar-lg: 40px;
@@ -20,10 +20,10 @@
   --space-0-5: 2px;
   --radius-xs: 4px;
   --radius-xs-plus: 6px;
-  --radius-sm: 8px;
-  --radius-md: 12px;
-  --radius-lg: 16px;
-  --radius-xl: 24px;
+  --radius-sm: 10px;
+  --radius-md: 16px;
+  --radius-lg: 22px;
+  --radius-xl: 28px;
   --radius-full: 999px;
   --container-max: 1200px;
   --container-text: 720px;

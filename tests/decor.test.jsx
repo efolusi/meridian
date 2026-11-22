@@ -68,7 +68,7 @@ describe('Decor styles', () => {
 
 // Contrast of body text over the strongest point of each pattern, light and dark.
 const block = (name) => {
-  const re = name === 'light' ? /:root\s*\{([\s\S]*?)\n\}/ : /\[data-theme="dark"\]\s*\{([\s\S]*?)\n\}/;
+  const re = name === 'light' ? /:root(?:,\s*\[data-theme="light"\])?\s*\{([\s\S]*?)\n\}/ : /\[data-theme="dark"\]\s*\{([\s\S]*?)\n\}/;
   return Object.fromEntries([...TOKENS.match(re)[1].matchAll(/(--[\w-]+):([^;]+);/g)].map((m) => [m[1], m[2].trim()]));
 };
 const resolve = (name, themed) => {

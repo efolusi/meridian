@@ -10,7 +10,7 @@ const CSS = `
 // no single label colour does (white fails on brand-500/sand-500 in light, dark
 // ink fails on the fixed dark fills in dark). Status fills flip via the
 // *-contrast tokens; fixed fills pair with a fixed label.
-const T = { flipD: 'var(--status-danger-on-solid)', flipS: 'var(--status-success-on-solid)', flipW: 'var(--status-warning-on-solid)', white: 'var(--text-on-brand)', ink: 'var(--brand-950)' };
+const T = { flipD: 'var(--status-danger-on-solid)', flipS: 'var(--status-success-on-solid)', flipW: 'var(--status-warning-on-solid)', white: 'var(--text-on-media)', ink: 'var(--brand-950)' };
 const KIND = {
   pdf: { icon: 'file-text', color: 'var(--status-danger-text)', label: T.flipD },
   doc: { icon: 'file-text', color: 'var(--brand-700)', label: T.white }, docx: { icon: 'file-text', color: 'var(--brand-700)', label: T.white }, txt: { icon: 'file-text', color: 'var(--sand-600)', label: T.white }, md: { icon: 'file-text', color: 'var(--sand-600)', label: T.white },

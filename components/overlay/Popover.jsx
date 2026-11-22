@@ -5,14 +5,14 @@ import { Portal, useAnchoredStyle, useEscapeLayer, escapeLayerContext, useHydrat
 
 const CSS = `
 /* Zero specificity: a trigger with its own focus style, such as Button, keeps it. */
-:where([data-slot="popover-trigger"]):focus-visible{outline:none;box-shadow:var(--focus-ring);border-radius:var(--radius-sm)}
+:where([data-slot="popover-trigger"]):focus-visible{outline:2px solid transparent;box-shadow:var(--focus-ring);border-radius:var(--radius-sm)}
 .ef-popover{position:relative;display:inline-flex}
-.ef-popover__panel{position:fixed;width:280px;background:var(--surface-card);border:1px solid var(--border-strong);border-radius:var(--radius-md);box-shadow:var(--shadow-md);padding:var(--space-4);z-index:var(--z-popover);animation:ef-pop-in var(--dur-fast) var(--ease-enter)}
+.ef-popover__panel{position:fixed;width:280px;background:color-mix(in srgb,var(--material-tint) calc(var(--material-thick) * 100%),transparent);-webkit-backdrop-filter:blur(var(--material-blur-thick)) saturate(var(--material-saturate));backdrop-filter:blur(var(--material-blur-thick)) saturate(var(--material-saturate));border:1px solid var(--border-strong);border-radius:var(--radius-md);box-shadow:var(--shadow-md);padding:var(--space-4);z-index:var(--z-popover);animation:ef-pop-in var(--dur-fast) var(--ease-enter)}
 .ef-popover__header{display:grid;gap:var(--space-1);margin-bottom:var(--space-3)}
 .ef-popover__title{margin:0;color:var(--text-primary);font-size:var(--text-md);font-weight:var(--weight-semibold);line-height:1.35}
 .ef-popover__description{margin:0;color:var(--text-muted);font-size:var(--text-sm);line-height:1.45}
-@keyframes ef-pop-in{from{opacity:0;transform:translateY(-3px)}}
-@media (prefers-reduced-motion:reduce){.ef-popover__panel{--ef-motion-guard:var(--dur-fast);animation-name:ef-reduce-fade}}
+@keyframes ef-pop-in{from{transform:translateY(-3px)}}
+@media (prefers-reduced-motion:reduce){.ef-popover__panel{animation:none}}
 `;
 const PopoverCtx = React.createContext(null);
 const TABBABLE = 'a[href],button,input,select,textarea,[tabindex]';

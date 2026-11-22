@@ -2876,7 +2876,7 @@
       "name": "input",
       "type": "registry:ui",
       "title": "Input",
-      "description": "Native text input with ref forwarding, file-input styling, disabled and invalid states. It renders bare by default, or as a full field when `label`/`hint`/`error` are set.",
+      "description": "Native text input with ref forwarding, file-input styling, disabled and invalid states. It renders bare by default, or as a full field when `label`/`hint`/`error` are set. `glass` makes a search field in a bar or toolbar clear glass.",
       "dependencies": [
         "react"
       ],
@@ -3349,7 +3349,7 @@
       "name": "featuregrid",
       "type": "registry:ui",
       "title": "FeatureGrid + FeatureCard",
-      "description": "Use `FeatureGrid` with three `FeatureCard`s to say what a product is about at a glance. Give a card an `href` and the whole card is the link; `cta` adds the link label with an arrow. The `tone` fills (`peach`, `cocoa`, `amber`) are the same for every product, from the `--tone-*` tokens; use each onc",
+      "description": "Use `FeatureGrid` with three `FeatureCard`s to say what a product is about at a glance. Give a card an `href` and the whole card is the link; `cta` adds the link label with an arrow. The `tone` fills (`peach`, `band`, `amber`) are the same for every product, from the `--tone-*` tokens; use each once",
       "dependencies": [
         "react"
       ],
@@ -3780,7 +3780,7 @@
       "name": "segmentedcontrol",
       "type": "registry:ui",
       "title": "SegmentedControl",
-      "description": "Inline 2\u20135-way toggle on a sand track; active segment is a white hairline chip. Use it for views/ranges, and Tabs for page sections.",
+      "description": "Inline toggle for 2 to 5 options on a clear-glass track; the active segment is thick glass. Use it for views and ranges, and Tabs for page sections.",
       "dependencies": [
         "react"
       ],
@@ -3933,6 +3933,37 @@
       ]
     },
     {
+      "name": "tabbar",
+      "type": "registry:ui",
+      "title": "TabBar",
+      "description": "Use `TabBar` on phone screens for three to five top destinations. It floats above the home indicator as chrome glass and hides from 720px up, where `TopNav` carries the same links. Give it the `value` of the current destination; that item gets `aria-current=\"page\"`. Give the page `padding-block-end:",
+      "dependencies": [
+        "react"
+      ],
+      "registryDependencies": [
+        "https://meridian.efolusi.com/site/registry/meridian-base.json",
+        "https://meridian.efolusi.com/site/registry/icon.json",
+        "https://meridian.efolusi.com/site/registry/meridian-runtime.json"
+      ],
+      "files": [
+        {
+          "path": "components/navigation/TabBar.jsx",
+          "type": "registry:ui"
+        },
+        {
+          "path": "components/navigation/TabBar.d.ts",
+          "type": "registry:component"
+        },
+        {
+          "path": "components/navigation/TabBar.prompt.md",
+          "type": "registry:component"
+        }
+      ],
+      "categories": [
+        "navigation"
+      ]
+    },
+    {
       "name": "tabs",
       "type": "registry:ui",
       "title": "Tabs + TabsList + TabsTrigger + TabsContent",
@@ -3968,7 +3999,7 @@
       "name": "topnav",
       "type": "registry:ui",
       "title": "TopNav",
-      "description": "Sticky blurred header: optional leading slot, display-font title, right-aligned actions.",
+      "description": "Glass top bar: optional leading slot, display-font title, right-aligned actions. By default it is a full-width bar where the page puts it. The recommended look is `floating sticky`: a pill that stays at the top while content scrolls under it (then it blurs, and the page keeps `--ef-topnav-space` fre",
       "dependencies": [
         "react"
       ],

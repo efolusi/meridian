@@ -1,16 +1,16 @@
 {
   "totals": {
     "@efolusi/meridian": {
-      "bytes": 376178,
-      "gzip": 84965
+      "bytes": 377304,
+      "gzip": 85344
     },
     "dist/components.css": {
-      "bytes": 237310,
-      "gzip": 32466
+      "bytes": 240898,
+      "gzip": 33001
     },
     "_ds_bundle.js": {
-      "bytes": 895176,
-      "gzip": 160251
+      "bytes": 901586,
+      "gzip": 161599
     }
   },
   "modules": [
@@ -740,8 +740,8 @@
       "exports": [
         "ConfirmDialog"
       ],
-      "bytes": 55722,
-      "gzip": 10788
+      "bytes": 55760,
+      "gzip": 10810
     },
     {
       "module": "feedback/Dialog.js",
@@ -958,8 +958,8 @@
       "exports": [
         "Input"
       ],
-      "bytes": 47553,
-      "gzip": 8327
+      "bytes": 47591,
+      "gzip": 8347
     },
     {
       "module": "forms/InputGroup.js",
@@ -1128,7 +1128,7 @@
         "FeatureGrid",
         "FeatureCard"
       ],
-      "bytes": 45827,
+      "bytes": 45826,
       "gzip": 7631
     },
     {
@@ -1202,8 +1202,8 @@
       "exports": [
         "ThemeToggle"
       ],
-      "bytes": 47633,
-      "gzip": 8595
+      "bytes": 47658,
+      "gzip": 8607
     },
     {
       "module": "navigation/Breadcrumbs.js",
@@ -1290,8 +1290,8 @@
       "exports": [
         "SegmentedControl"
       ],
-      "bytes": 45326,
-      "gzip": 7545
+      "bytes": 45351,
+      "gzip": 7558
     },
     {
       "module": "navigation/SideNav.js",
@@ -1352,6 +1352,15 @@
       "gzip": 7610
     },
     {
+      "module": "navigation/TabBar.js",
+      "group": "navigation",
+      "exports": [
+        "TabBar"
+      ],
+      "bytes": 45347,
+      "gzip": 7556
+    },
+    {
       "module": "navigation/Tabs.js",
       "group": "navigation",
       "exports": [
@@ -1369,8 +1378,8 @@
       "exports": [
         "TopNav"
       ],
-      "bytes": 587,
-      "gzip": 352
+      "bytes": 853,
+      "gzip": 496
     },
     {
       "module": "overlay/Command.js",
