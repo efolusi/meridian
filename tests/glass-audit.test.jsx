@@ -43,8 +43,10 @@ describe('LOW 1: the changelog names the vendored tag', () => {
   it('matches tokens/design-tokens.lock.json', () => {
     const lock = JSON.parse(readFileSync('tokens/design-tokens.lock.json', 'utf8'));
     const log = readFileSync('CHANGELOG.md', 'utf8');
-    const unreleased = log.slice(log.indexOf('## Unreleased'), log.indexOf('\n## v'));
-    expect(unreleased).toContain(`vendored at ${lock.ref}`);
+    // The newest section, Unreleased or the release it became.
+    const start = log.indexOf('\n## ') + 1;
+    const newest = log.slice(start, log.indexOf('\n## v', start + 1));
+    expect(newest).toContain(`vendored at ${lock.ref}`);
   });
 });
 

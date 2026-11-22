@@ -23,7 +23,7 @@ Meridian keeps no legacy code. A rename or removal lands in one release, with no
 
 Guard reads imports, so it does not see components used as CDN globals (`window.Drawer`) or props passed through a spread (`<Drawer {...props}>`). Search for those by hand; the development warning still catches them at runtime.
 
-## Unreleased
+## v2.0.0
 
 ### FeatureCard tone="cocoa" is tone="band"
 
@@ -64,7 +64,7 @@ design-tokens v0.7.0 renamed `tone.cocoa` to `tone.band`: its fill is the warm b
 /* after  */ .my-chip { background: var(--brand-700); color: var(--text-on-media); }
 ```
 
-## 1.31.0
+## v1.31.0
 
 ### ThemeToggle offers light and dark only
 
@@ -96,7 +96,7 @@ The Meridian mark is the logo-system file at `assets/meridian.svg` (owner rule: 
 
 **Mechanical fix.** No Guard rule. Replace the path in your copies and give the image a square box; copy the new file from the release, not from the old one.
 
-## 1.25.0
+## v1.25.0
 
 ### Drawer `modal`
 
