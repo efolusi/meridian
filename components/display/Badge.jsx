@@ -13,15 +13,15 @@ const CSS = `
 .ef-badge--ghost{background:transparent;color:var(--text-secondary)}
 .ef-badge--link{height:auto;padding:0;background:transparent;color:var(--text-link)}
 .ef-badge--accent{background:var(--accent-subtle);color:var(--accent-subtle-fg)}
-.ef-badge--success{background:var(--success-100);color:var(--success-600)}
-.ef-badge--warning{background:var(--warning-100);color:var(--warning-600)}
-.ef-badge--danger{background:var(--danger-100);color:var(--danger-600)}
+.ef-badge--success{background:var(--status-success-bg);color:var(--status-success-text)}
+.ef-badge--warning{background:var(--status-warning-bg);color:var(--status-warning-text)}
+.ef-badge--danger{background:var(--status-danger-bg);color:var(--status-danger-text)}
 .ef-badge--brand{background:var(--cream-50);color:var(--cocoa-700)}
 .ef-badge--default:hover{background:var(--accent-hover)}
 .ef-badge--secondary:hover,.ef-badge--outline:hover,.ef-badge--ghost:hover{background:var(--surface-sunken)}
 .ef-badge--default.ef-badge--accent:hover{background:var(--accent-subtle)}
-.ef-badge--default.ef-badge--success:hover{background:var(--success-100)}
-.ef-badge--default.ef-badge--warning:hover{background:var(--warning-100)}
+.ef-badge--default.ef-badge--success:hover{background:var(--status-success-bg)}
+.ef-badge--default.ef-badge--warning:hover{background:var(--status-warning-bg)}
 .ef-badge--default.ef-badge--brand:hover{background:var(--cream-50)}
 .ef-badge--link:hover{color:var(--text-link-hover);text-decoration:none}
 [data-theme="dark"] .ef-badge--accent{color:var(--brand-300)}

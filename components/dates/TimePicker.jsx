@@ -14,7 +14,7 @@ const CSS = `
 .ef-timepicker__input:hover:not(:disabled){border-color:var(--border-control-hover)}
 .ef-timepicker__input:focus{outline:none;border-color:var(--accent);box-shadow:var(--focus-ring)}
 .ef-timepicker__input:disabled{background:var(--surface-sunken);color:var(--text-muted);cursor:not-allowed}
-.ef-timepicker--invalid .ef-timepicker__input{border-color:var(--danger-600)}
+.ef-timepicker--invalid .ef-timepicker__input{border-color:var(--status-danger-solid)}
 .ef-timepicker--invalid .ef-timepicker__input:focus{box-shadow:var(--focus-ring-danger)}
 .ef-timepicker__icon{position:absolute;inset-inline-end:var(--space-3);color:var(--text-muted);display:inline-flex;pointer-events:none}
 .ef-timepicker__panel{max-height:240px;overflow-y:auto;background:var(--surface-card);border:1px solid var(--border-strong);border-radius:var(--radius-md);box-shadow:var(--shadow-md);padding:var(--space-1);z-index:var(--z-popover);animation:ef-tp-in var(--dur-fast) var(--ease-enter)}

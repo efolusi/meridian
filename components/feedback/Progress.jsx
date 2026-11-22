@@ -10,8 +10,8 @@ const CSS = `
 .ef-progress{position:relative;height:8px;width:100%;overflow:hidden;border-radius:var(--radius-full);background:var(--sand-200)}
 .ef-progress__indicator{height:100%;width:100%;border-radius:inherit;background:var(--accent);transition:transform var(--dur-progress) linear}
 .ef-progress__indicator[data-state="loading"]{transform:translateX(calc(-100% + var(--ef-progress-value, 0%)))}
-.ef-progress[data-tone="warning"] .ef-progress__indicator{background:var(--warning-600)}
-.ef-progress[data-tone="danger"] .ef-progress__indicator{background:var(--danger-600)}
+.ef-progress[data-tone="warning"] .ef-progress__indicator{background:var(--status-warning-solid)}
+.ef-progress[data-tone="danger"] .ef-progress__indicator{background:var(--status-danger-solid)}
 .ef-progress[data-state="indeterminate"] .ef-progress__indicator{width:45%;animation:ef-progress-indeterminate 1.2s ease-in-out infinite}
 @keyframes ef-progress-indeterminate{0%{transform:translateX(-110%)}50%{transform:translateX(125%)}100%{transform:translateX(240%)}}
 [dir="rtl"] .ef-progress[data-state="indeterminate"] .ef-progress__indicator{animation-direction:reverse}

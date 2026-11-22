@@ -20,7 +20,7 @@ const CSS = `
 .ef-questionnaire__input{width:100%;min-height:var(--control-h-md);padding:0 var(--space-3);border:1px solid var(--border-default);border-radius:var(--radius-md);background:var(--surface-card);color:var(--text-primary);font:inherit;outline:none}
 .ef-questionnaire__input:focus-visible{border-color:var(--accent);box-shadow:var(--focus-ring)}
 .ef-questionnaire__required{font-size:var(--text-sm);font-weight:var(--weight-regular);color:var(--text-secondary)}
-.ef-questionnaire__error{font-size:var(--text-sm);color:var(--danger-600)}
+.ef-questionnaire__error{font-size:var(--text-sm);color:var(--status-danger-text)}
 .ef-questionnaire__actions{display:flex;flex-wrap:wrap;align-items:center;justify-content:flex-end;gap:var(--space-2)}
 .ef-questionnaire__button{min-height:var(--control-h-md);padding:0 var(--space-4);border:1px solid var(--border-default);border-radius:var(--radius-md);background:var(--surface-card);color:var(--text-primary);font:inherit;font-weight:var(--weight-medium);cursor:pointer}
 .ef-questionnaire__button[data-primary]{border-color:var(--brand-950);background:var(--brand-950);color:var(--text-on-brand)}

@@ -10,15 +10,15 @@ const CSS = `
 // no single label colour does (white fails on brand-500/sand-500 in light, dark
 // ink fails on the fixed dark fills in dark). Status fills flip via the
 // *-contrast tokens; fixed fills pair with a fixed label.
-const T = { flipD: 'var(--danger-contrast)', flipS: 'var(--success-contrast)', flipW: 'var(--warning-contrast)', white: 'var(--text-on-brand)', ink: 'var(--brand-950)' };
+const T = { flipD: 'var(--status-danger-on-solid)', flipS: 'var(--status-success-on-solid)', flipW: 'var(--status-warning-on-solid)', white: 'var(--text-on-brand)', ink: 'var(--brand-950)' };
 const KIND = {
-  pdf: { icon: 'file-text', color: 'var(--danger-600)', label: T.flipD },
+  pdf: { icon: 'file-text', color: 'var(--status-danger-text)', label: T.flipD },
   doc: { icon: 'file-text', color: 'var(--brand-700)', label: T.white }, docx: { icon: 'file-text', color: 'var(--brand-700)', label: T.white }, txt: { icon: 'file-text', color: 'var(--sand-600)', label: T.white }, md: { icon: 'file-text', color: 'var(--sand-600)', label: T.white },
-  csv: { icon: 'table', color: 'var(--success-600)', label: T.flipS }, xls: { icon: 'table', color: 'var(--success-600)', label: T.flipS }, xlsx: { icon: 'table', color: 'var(--success-600)', label: T.flipS },
+  csv: { icon: 'table', color: 'var(--status-success-text)', label: T.flipS }, xls: { icon: 'table', color: 'var(--status-success-text)', label: T.flipS }, xlsx: { icon: 'table', color: 'var(--status-success-text)', label: T.flipS },
   png: { icon: 'image', color: 'var(--brand-500)', label: T.ink }, jpg: { icon: 'image', color: 'var(--brand-500)', label: T.ink }, svg: { icon: 'image', color: 'var(--brand-500)', label: T.ink }, gif: { icon: 'image', color: 'var(--brand-500)', label: T.ink },
-  mp4: { icon: 'video', color: 'var(--warning-600)', label: T.flipW }, mov: { icon: 'video', color: 'var(--warning-600)', label: T.flipW },
-  mp3: { icon: 'mic', color: 'var(--warning-600)', label: T.flipW }, wav: { icon: 'mic', color: 'var(--warning-600)', label: T.flipW },
-  zip: { icon: 'archive', color: 'var(--sand-600)', label: T.white }, json: { icon: 'code', color: 'var(--sand-800)', label: T.white }, js: { icon: 'code', color: 'var(--warning-600)', label: T.flipW }, ts: { icon: 'code', color: 'var(--brand-700)', label: T.white },
+  mp4: { icon: 'video', color: 'var(--status-warning-text)', label: T.flipW }, mov: { icon: 'video', color: 'var(--status-warning-text)', label: T.flipW },
+  mp3: { icon: 'mic', color: 'var(--status-warning-text)', label: T.flipW }, wav: { icon: 'mic', color: 'var(--status-warning-text)', label: T.flipW },
+  zip: { icon: 'archive', color: 'var(--sand-600)', label: T.white }, json: { icon: 'code', color: 'var(--sand-800)', label: T.white }, js: { icon: 'code', color: 'var(--status-warning-text)', label: T.flipW }, ts: { icon: 'code', color: 'var(--brand-700)', label: T.white },
 };
 export function FileTypeIcon({ ext = 'txt', size = 40, showExt = true, style, className, ...rest }) {
   injectEfCss('ef-css-filetype', CSS);

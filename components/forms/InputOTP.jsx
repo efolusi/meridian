@@ -12,7 +12,7 @@ const CSS = `
 .ef-otp__slot:first-child{border-start-start-radius:var(--radius-md);border-end-start-radius:var(--radius-md)}
 .ef-otp__slot:last-child{border-inline-end-width:1px;border-start-end-radius:var(--radius-md);border-end-end-radius:var(--radius-md)}
 .ef-otp__slot[data-active]{z-index:1;border-color:var(--accent);box-shadow:var(--focus-ring)}
-.ef-otp__slot[aria-invalid="true"]{border-color:var(--danger-600)}
+.ef-otp__slot[aria-invalid="true"]{border-color:var(--status-danger-solid)}
 .ef-otp__caret{width:1px;height:18px;background:var(--text-primary);animation:ef-otp-caret 1s step-end infinite}
 .ef-otp__separator{display:flex;align-items:center;justify-content:center;width:28px;color:var(--text-muted)}
 @keyframes ef-otp-caret{50%{opacity:0}}

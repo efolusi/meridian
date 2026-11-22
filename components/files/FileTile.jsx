@@ -12,7 +12,7 @@ const CSS = `
 .ef-filetile__body{flex:1;min-width:0}
 .ef-filetile__progress{margin-top:var(--space-1);max-width:220px}
 .ef-filetile__meta{font-size:var(--text-xs);color:var(--text-muted);margin-top:1px}
-.ef-filetile__meta--err{color:var(--danger-600)}
+.ef-filetile__meta--err{color:var(--status-danger-text)}
 `;
 const KIND_ICON = { image: 'image', video: 'video', audio: 'music', code: 'code', archive: 'package', doc: 'file-text' };
 const EXT_KIND = { png: 'image', jpg: 'image', jpeg: 'image', gif: 'image', svg: 'image', webp: 'image', mp4: 'video', mov: 'video', webm: 'video', mp3: 'audio', wav: 'audio', flac: 'audio', js: 'code', ts: 'code', py: 'code', json: 'code', zip: 'archive', tar: 'archive', gz: 'archive', pdf: 'doc', doc: 'doc', docx: 'doc', md: 'doc', txt: 'doc', csv: 'doc' };

@@ -10,7 +10,7 @@ const CSS = `
 .ef-env__btn{display:inline-flex;align-items:center;justify-content:center;width:var(--control-h-sm);height:var(--control-h-sm);border:none;background:none;cursor:pointer;color:var(--text-muted);border-radius:var(--radius-sm);transition:color var(--dur-fast) var(--ease-enter),background var(--dur-fast) var(--ease-enter)}
 .ef-env__btn:hover{color:var(--text-primary);background:var(--surface-subtle)}
 .ef-env__btn:focus-visible{outline:none;box-shadow:var(--focus-ring)}
-.ef-env__btn--done{color:var(--success-600)}
+.ef-env__btn--done{color:var(--status-success-text)}
 .ef-env__list{padding:0 var(--space-2) var(--space-2)}
 .ef-env__row{display:flex;align-items:center;gap:var(--space-3);padding:var(--space-1) var(--space-2);border-radius:var(--radius-sm)}
 .ef-env__row:hover{background:var(--surface-subtle)}

@@ -17,9 +17,9 @@ const CSS = `
 .ef-timeline__time{margin-inline-start:auto;color:var(--text-muted);font-family:var(--font-mono);font-size:var(--text-xs);white-space:nowrap}
 .ef-timeline__desc{margin-top:var(--space-1);color:var(--text-secondary);font-size:var(--text-sm);line-height:1.5}
 .ef-timeline__meta{margin-top:var(--space-2);color:var(--text-muted);font-size:var(--text-xs);line-height:1.4}
-.ef-timeline__item--success .ef-timeline__marker{border-color:var(--success-300);background:var(--success-100);color:var(--success-600)}
-.ef-timeline__item--warning .ef-timeline__marker{border-color:var(--warning-300);background:var(--warning-100);color:var(--warning-600)}
-.ef-timeline__item--danger .ef-timeline__marker{border-color:var(--danger-300);background:var(--danger-100);color:var(--danger-600)}
+.ef-timeline__item--success .ef-timeline__marker{border-color:var(--status-success-border);background:var(--status-success-bg);color:var(--status-success-text)}
+.ef-timeline__item--warning .ef-timeline__marker{border-color:var(--status-warning-border);background:var(--status-warning-bg);color:var(--status-warning-text)}
+.ef-timeline__item--danger .ef-timeline__marker{border-color:var(--status-danger-border);background:var(--status-danger-bg);color:var(--status-danger-text)}
 .ef-timeline--compact .ef-timeline__content{padding-bottom:var(--space-3)}
 `;
 
