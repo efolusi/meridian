@@ -7,7 +7,7 @@ const CSS = `
 .ef-confirm--danger{border-color:var(--danger-300,var(--danger-600));box-shadow:0 0 0 2px var(--danger-100)}
 .ef-confirm--settled{border-color:var(--border-default);box-shadow:none}
 .ef-confirm__head{display:flex;align-items:center;gap:var(--space-2);padding:var(--space-3) var(--space-4) 0}
-.ef-confirm__icon{display:inline-flex;color:var(--brand-700);flex:none}
+.ef-confirm__icon{display:inline-flex;color:var(--accent-subtle-fg);flex:none}
 .ef-confirm--danger .ef-confirm__icon{color:var(--danger-600)}
 .ef-confirm__title{font-size:var(--text-sm);font-weight:600;color:var(--text-primary)}
 .ef-confirm__desc{padding:var(--space-2) var(--space-4) 0;font-size:var(--text-md);line-height:1.6;color:var(--text-secondary)}

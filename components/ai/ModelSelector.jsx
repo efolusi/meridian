@@ -18,8 +18,8 @@ const CSS = `
 .ef-modelsel__item:focus-visible{outline:none;box-shadow:var(--focus-ring)}
 .ef-modelsel__name{font-size:var(--text-md);font-weight:500;color:var(--text-primary)}
 .ef-modelsel__hint{font-size:var(--text-xs);color:var(--text-muted);margin-top:1px}
-.ef-modelsel__badge{margin-inline-start:auto;flex:none;font-size:10.5px;font-weight:600;letter-spacing:.04em;text-transform:uppercase;color:var(--accent-subtle-fg, var(--brand-700));background:var(--accent-subtle);border-radius:var(--radius-sm);padding:var(--space-0-5) var(--space-2)}
-.ef-modelsel__check{margin-inline-start:auto;flex:none;display:inline-flex;color:var(--brand-700)}
+.ef-modelsel__badge{margin-inline-start:auto;flex:none;font-size:10.5px;font-weight:600;letter-spacing:.04em;text-transform:uppercase;color:var(--accent-subtle-fg);background:var(--accent-subtle);border-radius:var(--radius-sm);padding:var(--space-0-5) var(--space-2)}
+.ef-modelsel__check{margin-inline-start:auto;flex:none;display:inline-flex;color:var(--accent-subtle-fg)}
 .ef-modelsel__badge+.ef-modelsel__check{margin-inline-start:var(--space-2)}
 @media (pointer:coarse){.ef-modelsel__btn{min-height:var(--tap-min)}}
 @media (prefers-reduced-motion:reduce){.ef-modelsel__panel{--ef-motion-guard:var(--dur-fast);animation-name:ef-reduce-fade}}
