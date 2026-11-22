@@ -10,7 +10,7 @@ const CSS = `
 .ef-acc__item:first-child{border-top:1px solid var(--border-default)}
 .ef-acc__header{display:flex;margin:0}
 .ef-acc__trigger{display:flex;align-items:center;gap:var(--space-3);width:100%;padding:var(--space-4) var(--space-0-5);border:none;background:none;cursor:pointer;text-align:start;font-family:var(--font-sans);font-size:var(--text-md);font-weight:var(--weight-semibold);color:var(--text-primary)}
-.ef-acc__trigger:hover{color:var(--brand-700)}
+.ef-acc__trigger:hover{color:var(--text-link)}
 .ef-acc__trigger:focus-visible{outline:none;box-shadow:var(--focus-ring);border-radius:var(--radius-sm)}
 .ef-acc__trigger:disabled{opacity:.45;cursor:not-allowed}
 .ef-acc__chev{margin-inline-start:auto;color:var(--text-muted);display:inline-flex;transition:transform var(--dur-base) var(--ease-enter)}
