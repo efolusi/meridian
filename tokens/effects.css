@@ -21,6 +21,8 @@
   --dur-slow: 250ms;
   --dur-progress: 250ms;
   --dur-long: 480ms;
+  --dur-loop: 1400ms;
+  --dur-loop-slow: 1600ms;
   --shift-sm: var(--space-1);
   --shift-md: var(--space-2);
   --shift-lg: var(--space-4);
