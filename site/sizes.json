@@ -1,16 +1,16 @@
 {
   "totals": {
     "@efolusi/meridian": {
-      "bytes": 376983,
-      "gzip": 85151
+      "bytes": 377304,
+      "gzip": 85344
     },
     "dist/components.css": {
-      "bytes": 240391,
-      "gzip": 32900
+      "bytes": 240898,
+      "gzip": 33001
     },
     "_ds_bundle.js": {
-      "bytes": 900111,
-      "gzip": 161153
+      "bytes": 901586,
+      "gzip": 161599
     }
   },
   "modules": [
@@ -1357,8 +1357,8 @@
       "exports": [
         "TabBar"
       ],
-      "bytes": 45218,
-      "gzip": 7480
+      "bytes": 45347,
+      "gzip": 7556
     },
     {
       "module": "navigation/Tabs.js",
@@ -1378,8 +1378,8 @@
       "exports": [
         "TopNav"
       ],
-      "bytes": 672,
-      "gzip": 394
+      "bytes": 853,
+      "gzip": 496
     },
     {
       "module": "overlay/Command.js",

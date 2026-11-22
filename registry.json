@@ -3936,7 +3936,7 @@
       "name": "tabbar",
       "type": "registry:ui",
       "title": "TabBar",
-      "description": "Use `TabBar` on phone screens for three to five top destinations. It floats above the home indicator as chrome glass and hides from 720px up, where `TopNav` carries the same links. Give it an `aria-label` and the `value` of the current destination; that item gets `aria-current=\"page\"`. Leave room at",
+      "description": "Use `TabBar` on phone screens for three to five top destinations. It floats above the home indicator as chrome glass and hides from 720px up, where `TopNav` carries the same links. Give it the `value` of the current destination; that item gets `aria-current=\"page\"`. Give the page `padding-block-end:",
       "dependencies": [
         "react"
       ],
@@ -3999,7 +3999,7 @@
       "name": "topnav",
       "type": "registry:ui",
       "title": "TopNav",
-      "description": "Sticky glass bar, floating as a pill by default (`floating={false}` for a full-width bar): optional leading slot, display-font title, right-aligned actions. Content scrolls under it, so it is the chrome glass of design-tokens `docs/glass.md`.",
+      "description": "Glass top bar: optional leading slot, display-font title, right-aligned actions. By default it is a full-width bar where the page puts it. The recommended look is `floating sticky`: a pill that stays at the top while content scrolls under it (then it blurs, and the page keeps `--ef-topnav-space` fre",
       "dependencies": [
         "react"
       ],

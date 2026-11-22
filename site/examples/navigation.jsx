@@ -195,7 +195,7 @@ export function TopNavDemo() {
   } = window.EfolusiDesignSystem_4ffc3d;
   return (
     <div style={{ width: '100%', maxWidth: 640, border: '1px solid var(--border-default)', borderRadius: 'var(--radius-md)', overflow: 'hidden' }}>
-      <TopNav leading={(
+      <TopNav floating sticky leading={(
         <Breadcrumb>
           <BreadcrumbList>
             <BreadcrumbItem><BreadcrumbLink href="#agents">Agents</BreadcrumbLink></BreadcrumbItem>

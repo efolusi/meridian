@@ -2,9 +2,9 @@
 
 ## Unreleased
 
-- **Warm glass (MD51 to MD56).** design-tokens is vendored at v0.6.0: the owner's "halus" direction of 2026-11-22, a warm palette with an ember accent and a touch of glass at `glass.strength` 0.33 (design-tokens `docs/glass.md`). The cocoa colour stays only in the marks and the wordmark.
+- **Warm glass (MD51 to MD56).** design-tokens is vendored at v0.7.0 (v0.6.0, v0.6.1 and v0.7.0 in one step): the "halus" direction of 2026-11-22, a warm palette with an ember accent and a touch of glass at `glass.strength` 0.33 (design-tokens `docs/glass.md`). The cocoa colour stays only in the marks and the wordmark.
   - `tokens/base.css` adds the glass material: `.ef-glass` with `--clear`, `--regular`, `--chrome` and `--thick`, `.ef-glass--blur` for surfaces that content scrolls under, and `.ef-glass-field`, the quiet field behind the page. Every thickness turns solid under reduced transparency, more contrast, no `backdrop-filter` and forced colours (MD51).
-  - `TopNav` is a floating chrome-glass bar by default; `floating={false}` keeps a full-width bar (MD52). New `TabBar`: a floating glass tab bar for phones, hidden from 720px up.
+  - `TopNav` is chrome glass and keeps its layout: static and full width by default. Two opt-in props, `floating` (a pill inset from the edges) and `sticky` (stays at the top and blurs what scrolls under it); the recommended look is both. While a bar is sticky or fixed, the page keeps `--ef-topnav-space` / `--ef-tabbar-space` free with scroll-padding, so focus is never hidden (MD52). New `TabBar`: a floating glass tab bar for phones, hidden from 720px up. Both bars name their landmark (`lang`, `labels`).
   - `ThemeToggle`, `SegmentedControl` and `Input glass` (a search field) are clear glass (MD53).
   - Sheet, Drawer, Popover, DropdownMenu, ContextMenu and HoverCard are thick glass and enter by transform only; under reduced motion they appear at once, because an opacity fade would show the text behind them (MD54). `scripts/check_reduced_motion.mjs` lists them as reviewed snaps.
   - `scripts/check_contrast.py` measures what Meridian paints on bar, clear and thick glass against the worst backdrop in both themes (MD55).

@@ -23,6 +23,36 @@ Meridian keeps no legacy code. A rename or removal lands in one release, with no
 
 Guard reads imports, so it does not see components used as CDN globals (`window.Drawer`) or props passed through a spread (`<Drawer {...props}>`). Search for those by hand; the development warning still catches them at runtime.
 
+## Unreleased
+
+### FeatureCard tone="cocoa" is tone="band"
+
+design-tokens v0.7.0 renamed `tone.cocoa` to `tone.band`: its fill is the warm band (`--surface-brand`) and its text `--text-on-brand`. Cocoa stays only in the marks and the wordmark. There is no alias.
+
+**Before.** `tone="cocoa"`, a dark cocoa card with light text; CSS `--tone-cocoa-fill`, `--tone-cocoa-on-fill`.
+
+**After.** `tone="band"`, the warm band with dark ink; CSS `--tone-band-fill`, `--tone-band-on-fill`.
+
+```jsx
+// before
+<FeatureCard tone="cocoa" title="Token" />
+// after
+<FeatureCard tone="band" title="Token" />
+```
+
+### --text-on-brand is dark ink on the warm band
+
+`--surface-brand` is the warm band now, and `--text-on-brand` is dark ink on it (light in dark). Code that put `--text-on-brand` on a fixed dark fill gets dark text on a dark fill.
+
+**Before.** `--text-on-brand` was white, used on cocoa fills.
+
+**After.** On the band, keep `--text-on-brand`. On a fixed dark fill (a file-type colour, a photo) use `--text-on-media`. Meridian's brand `Button` is the band (`--surface-brand`, hover `--surface-brand-hover`); `Questionnaire`'s primary button is the accent.
+
+```css
+/* before */ .my-chip { background: var(--brand-700); color: var(--text-on-brand); }
+/* after  */ .my-chip { background: var(--brand-700); color: var(--text-on-media); }
+```
+
 ## 1.31.0
 
 ### ThemeToggle offers light and dark only

@@ -14,7 +14,7 @@ const CSS = `
 .ef-input__el::placeholder{color:var(--text-muted)}
 .ef-input__el.ef-glass{background-color:color-mix(in srgb,var(--material-tint) calc(var(--material-clear) * 100%),transparent);border-color:var(--border-control,var(--border-strong));border-radius:var(--radius-full)}
 .ef-input__el:hover:not(:disabled){border-color:var(--border-control-hover)}
-.ef-input__el:focus-visible{outline:none;border-color:var(--accent);box-shadow:var(--focus-ring)}
+.ef-input__el:focus-visible{outline:2px solid transparent;border-color:var(--accent);box-shadow:var(--focus-ring)}
 .ef-input__el:disabled{background:var(--surface-subtle);color:var(--text-muted);cursor:not-allowed;opacity:.5}
 .ef-file-input{position:relative;display:flex;width:100%;height:var(--control-h-md);align-items:center;gap:var(--space-3);padding:var(--space-1) var(--space-3) var(--space-1) var(--space-1);overflow:hidden;border:1px solid var(--border-control,var(--border-strong));border-radius:var(--radius-sm);background:var(--surface-sunken);color:var(--text-muted);font-family:var(--font-sans);font-size:var(--text-md);transition:border-color var(--dur-fast) var(--ease-enter),box-shadow var(--dur-fast) var(--ease-enter)}
 .ef-file-input:hover{border-color:var(--border-control-hover)}.ef-file-input:focus-within{border-color:var(--accent);box-shadow:var(--focus-ring)}.ef-file-input:has(.ef-input__el:disabled){background:var(--surface-subtle);cursor:not-allowed;opacity:.5}
@@ -30,7 +30,7 @@ const CSS = `
 .ef-input__icon{position:absolute;inset-inline-start:11px;color:var(--text-muted);display:inline-flex;pointer-events:none}
 .ef-input__reveal{position:absolute;inset-inline-end:var(--space-1);display:inline-flex;align-items:center;justify-content:center;width:var(--control-h-sm);height:var(--control-h-sm);padding:0;border:none;border-radius:var(--radius-sm);background:none;color:var(--text-muted);cursor:pointer}
 .ef-input__reveal:hover{color:var(--text-primary)}
-.ef-input__reveal:focus-visible{outline:none;box-shadow:var(--focus-ring)}
+.ef-input__reveal:focus-visible{outline:2px solid transparent;box-shadow:var(--focus-ring)}
 .ef-input--reveal .ef-input__el{padding-inline-end:calc(var(--space-1) + var(--control-h-sm) + var(--space-1))}
 
 

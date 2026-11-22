@@ -13,9 +13,9 @@ CSS is not counted per component: `styles.css` ships every component style in on
 
 | File | Size | Gzip |
 | --- | ---: | ---: |
-| `@efolusi/meridian` | 368.1 kB | 83.2 kB |
-| `dist/components.css` | 234.8 kB | 32.1 kB |
-| `_ds_bundle.js` | 879.0 kB | 157.4 kB |
+| `@efolusi/meridian` | 368.5 kB | 83.3 kB |
+| `dist/components.css` | 235.3 kB | 32.2 kB |
+| `_ds_bundle.js` | 880.5 kB | 157.8 kB |
 
 The root import, `@efolusi/meridian`, is every component. `_ds_bundle.js` is the zero-build CDN bundle, which also carries each component's CSS. The root import is minified; the CSS and the CDN bundle are measured as shipped.
 
@@ -147,9 +147,9 @@ The root import, `@efolusi/meridian`, is every component. `_ds_bundle.js` is the
 | `navigation/Sidebar.js` | SidebarProvider, Sidebar, SidebarTrigger, SidebarRail, SidebarInset, SidebarHeader, SidebarFooter, SidebarContent, SidebarGroup, SidebarGroupContent, SidebarMenu, SidebarMenuItem, SidebarMenuSub, SidebarMenuSubItem, SidebarInput, SidebarSeparator, SidebarGroupLabel, SidebarGroupAction, SidebarMenuButton, SidebarMenuAction, SidebarMenuBadge, SidebarMenuSubButton, SidebarMenuSkeleton | 52.1 kB | 9.8 kB |
 | `navigation/SkipLink.js` | SkipLink | 0.7 kB | 0.5 kB |
 | `navigation/Steps.js` | Steps | 44.7 kB | 7.4 kB |
-| `navigation/TabBar.js` | TabBar | 44.2 kB | 7.3 kB |
+| `navigation/TabBar.js` | TabBar | 44.3 kB | 7.4 kB |
 | `navigation/Tabs.js` | Tabs, TabsList, TabsTrigger, TabsContent | 47.0 kB | 8.3 kB |
-| `navigation/TopNav.js` | TopNav | 0.7 kB | 0.4 kB |
+| `navigation/TopNav.js` | TopNav | 0.8 kB | 0.5 kB |
 | `overlay/Command.js` | Command, CommandDialog, CommandInput, CommandList, CommandEmpty, CommandGroup, CommandItem, CommandShortcut, CommandSeparator | 54.6 kB | 10.6 kB |
 | `overlay/ContextMenu.js` | ContextMenu, ContextMenuTrigger, ContextMenuPortal, ContextMenuContent, ContextMenuGroup, ContextMenuLabel, ContextMenuSeparator, ContextMenuShortcut, ContextMenuItem, ContextMenuCheckboxItem, ContextMenuRadioGroup, ContextMenuRadioItem, ContextMenuSub, ContextMenuSubTrigger, ContextMenuSubContent | 55.7 kB | 11.0 kB |
 | `overlay/Drawer.js` | Drawer, DrawerTrigger, DrawerPortal, DrawerClose, DrawerOverlay, DrawerContent, DrawerHeader, DrawerFooter, DrawerTitle, DrawerDescription | 53.8 kB | 10.1 kB |

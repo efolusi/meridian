@@ -117,7 +117,7 @@
   "ToolCall": "Tanda terima pemanggilan tool: nama tool mono, status langsung (running/success/error), isi Input/Result yang bisa dilipat.",
   "Toolbar": "Aksi ikon berkelompok pada chip setipis rambut untuk editor, kontrol chart, dan bar massal. value menandai yang aktif (tinta).",
   "Tooltip": "Tooltip hover/fokus dengan jeda 200ms dan pop lentur. Bungkus elemen pemicu apa pun.",
-  "TopNav": "Bilah atas kaca yang mengambang berbentuk pil secara bawaan (floating={false} untuk bilah penuh): slot depan opsional, judul font-display, aksi rata kanan.",
+  "TopNav": "Bilah atas kaca: slot depan opsional, judul font-display, aksi rata kanan. Bawaannya bilah penuh; tampilan yang disarankan adalah floating sticky, pil yang menempel di atas saat konten digulir.",
   "Transcript": "Transkrip tersinkron waktu dengan baris aktif, timing kata opsional, pemusatan otomatis, dan kontrol stempel waktu untuk menggerakkan pemutar.",
   "TreeList": "Pohon yang bisa dilipat untuk hierarki berkas/navigasi. Baris menerima ikon + hitungan mono; cabang di-toggle saat diklik.",
   "UsageMeter": "Meter anggaran: angka terpakai/batas, bar isian yang jadi warning melewati warnAt dan danger melewati batas.",

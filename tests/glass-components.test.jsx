@@ -17,18 +17,11 @@ const glass = (el, kind, blur) => {
 };
 
 describe('MD52: bars', () => {
-  it('TopNav is a floating chrome-glass bar by default', () => {
-    render(<TopNav title="Efolusi" />);
+  it('TopNav is chrome glass; floating and sticky are opt-in (see glass-audit.test.jsx)', () => {
+    render(<TopNav title="Efolusi" floating sticky />);
     const bar = screen.getByRole('banner');
     glass(bar, 'chrome', true);
     expect(bar.className).toContain('ef-topnav--floating');
-  });
-
-  it('TopNav can stay a full-width bar, still glass', () => {
-    render(<TopNav title="Docs" floating={false} />);
-    const bar = screen.getByRole('banner');
-    glass(bar, 'chrome', true);
-    expect(bar.className).not.toContain('ef-topnav--floating');
   });
 
   it('TopNav no longer paints its own blur or page background', () => {

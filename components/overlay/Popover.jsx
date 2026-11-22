@@ -5,7 +5,7 @@ import { Portal, useAnchoredStyle, useEscapeLayer, escapeLayerContext, useHydrat
 
 const CSS = `
 /* Zero specificity: a trigger with its own focus style, such as Button, keeps it. */
-:where([data-slot="popover-trigger"]):focus-visible{outline:none;box-shadow:var(--focus-ring);border-radius:var(--radius-sm)}
+:where([data-slot="popover-trigger"]):focus-visible{outline:2px solid transparent;box-shadow:var(--focus-ring);border-radius:var(--radius-sm)}
 .ef-popover{position:relative;display:inline-flex}
 .ef-popover__panel{position:fixed;width:280px;background:color-mix(in srgb,var(--material-tint) calc(var(--material-thick) * 100%),transparent);-webkit-backdrop-filter:blur(var(--material-blur-thick)) saturate(var(--material-saturate));backdrop-filter:blur(var(--material-blur-thick)) saturate(var(--material-saturate));border:1px solid var(--border-strong);border-radius:var(--radius-md);box-shadow:var(--shadow-md);padding:var(--space-4);z-index:var(--z-popover);animation:ef-pop-in var(--dur-fast) var(--ease-enter)}
 .ef-popover__header{display:grid;gap:var(--space-1);margin-bottom:var(--space-3)}

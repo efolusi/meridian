@@ -4627,7 +4627,7 @@ Group: navigation · Source: /components/navigation/TabBar.jsx · Exports: TabBa
 
 # TabBar
 
-Use `TabBar` on phone screens for three to five top destinations. It floats above the home indicator as chrome glass and hides from 720px up, where `TopNav` carries the same links. Give it an `aria-label` and the `value` of the current destination; that item gets `aria-current="page"`. Leave room at the bottom of the page (about 88px) so the last content is not under it.
+Use `TabBar` on phone screens for three to five top destinations. It floats above the home indicator as chrome glass and hides from 720px up, where `TopNav` carries the same links. Give it the `value` of the current destination; that item gets `aria-current="page"`. Give the page `padding-block-end: var(--ef-tabbar-space)` on phones so the last content is not under it; while the bar shows, Meridian sets `scroll-padding-block-end` to the same space, so a focused element is never scrolled under it. Without an `aria-label` the landmark is named "Main navigation" (`lang="id"`: "Navigasi utama").
 
 ```jsx
 <TabBar aria-label="Screens" value="docs" items={[
@@ -4650,8 +4650,12 @@ export interface TabBarProps extends React.HTMLAttributes<HTMLElement> {
   items: TabBarItem[];
   /** Id of the current destination; it gets aria-current="page" */
   value?: string;
-  /** Required: names the navigation for screen readers */
-  'aria-label': string;
+  /** Names the navigation for screen readers; defaults to the built-in label */
+  'aria-label'?: string;
+  /** Language of the built-in label */
+  lang?: 'en' | 'id';
+  /** Override the built-in label: { nav } */
+  labels?: { nav?: string };
 }
 export declare function TabBar(props: TabBarProps): React.JSX.Element;
 ```
@@ -4697,7 +4701,7 @@ export declare const TabsContent: React.ForwardRefExoticComponent<React.HTMLAttr
 
 Group: navigation · Source: /components/navigation/TopNav.jsx · Exports: TopNav
 
-Sticky glass bar, floating as a pill by default (`floating={false}` for a full-width bar): optional leading slot, display-font title, right-aligned actions. Content scrolls under it, so it is the chrome glass of design-tokens `docs/glass.md`.
+Glass top bar: optional leading slot, display-font title, right-aligned actions. By default it is a full-width bar where the page puts it. The recommended look is `floating sticky`: a pill that stays at the top while content scrolls under it (then it blurs, and the page keeps `--ef-topnav-space` free at the top so focus is never hidden). Its banner landmark is named "Top bar" (`lang="id"`: "Bilah atas").
 
 ```jsx
 <TopNav title="Customers">
@@ -4714,8 +4718,14 @@ export interface TopNavProps {
   leading?: React.ReactNode;
   /** Right-aligned actions (search, bell, avatar) */
   children?: React.ReactNode;
-  /** A pill inset from the edges (default). false keeps a full-width bar. Both are chrome glass. */
+  /** A pill inset from the edges. Default false: a full-width bar. */
   floating?: boolean;
+  /** Stays at the top while content scrolls under it, and blurs it. Default false. Sets scroll-padding so focus is never hidden. */
+  sticky?: boolean;
+  /** Language of the built-in landmark name */
+  lang?: 'en' | 'id';
+  /** Override the landmark name: { header } */
+  labels?: { header?: string };
   style?: React.CSSProperties;
   className?: string;
 }
