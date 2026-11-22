@@ -33,3 +33,29 @@ describe('overlays on glass never animate opacity', () => {
     });
   }
 });
+
+// MD54: the panels sit on thick glass: the material.thick tint with the fixed sheet blur.
+const THICK_BG = 'background:color-mix(in srgb,var(--material-tint) calc(var(--material-thick) * 100%),transparent)';
+const THICK_BLUR = 'backdrop-filter:blur(var(--material-blur-thick)) saturate(var(--material-saturate))';
+const PANEL = {
+  'components/overlay/Popover.jsx': '.ef-popover__panel',
+  'components/overlay/DropdownMenu.jsx': '.ef-dropdown-menu__content',
+  'components/overlay/ContextMenu.jsx': '.ef-context-menu__content',
+  'components/overlay/HoverCard.jsx': '.ef-hovercard__panel',
+  'components/overlay/Drawer.jsx': '.ef-drawer[data-vaul-drawer-direction]',
+  'components/overlay/Sheet.jsx': '.ef-sheet[data-side]',
+};
+describe('overlay panels are thick glass', () => {
+  for (const [file, sel] of Object.entries(PANEL)) {
+    it(`${file}: ${sel}`, () => {
+      const src = readFileSync(file, 'utf8');
+      const at = src.indexOf(`${sel}{`);
+      expect(at, `${file} has a ${sel} rule`).toBeGreaterThanOrEqual(0);
+      const body = src.slice(at, src.indexOf('}', at));
+      expect(body).toContain(THICK_BG);
+      expect(body).toContain(`-webkit-${THICK_BLUR}`);
+      expect(body).toContain(THICK_BLUR);
+      expect(body).not.toContain('background:var(--surface-card)');
+    });
+  }
+});

@@ -5,6 +5,8 @@ import { Dialog, DialogClose, DialogContent, DialogDescription, DialogFooter, Di
 
 const CSS = `
 .ef-sheet{position:fixed;margin:0;max-width:none;max-height:none;border-radius:0;display:flex;flex-direction:column}
+/* Thick glass (MD54): the attribute selector outranks the Dialog content background. */
+.ef-sheet[data-side]{background:color-mix(in srgb,var(--material-tint) calc(var(--material-thick) * 100%),transparent);-webkit-backdrop-filter:blur(var(--material-blur-thick)) saturate(var(--material-saturate));backdrop-filter:blur(var(--material-blur-thick)) saturate(var(--material-saturate))}
 .ef-sheet[data-side=right]{top:0;right:0;bottom:0;width:min(75vw,384px);border-width:0 0 0 1px;animation:ef-sheet-right var(--dur-slow) var(--ease-enter)}
 .ef-sheet[data-side=left]{top:0;left:0;bottom:0;width:min(75vw,384px);border-width:0 1px 0 0;animation:ef-sheet-left var(--dur-slow) var(--ease-enter)}
 .ef-sheet[data-side=top]{top:0;left:0;right:0;width:100%;max-height:80vh;border-width:0 0 1px;animation:ef-sheet-top var(--dur-slow) var(--ease-enter)}
