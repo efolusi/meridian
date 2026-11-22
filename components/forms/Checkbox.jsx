@@ -15,7 +15,7 @@ const CSS = `
 .ef-check__box[data-state="checked"] svg,.ef-check__box[data-state="indeterminate"] svg{opacity:1;transform:scale(1)}
 .ef-check__box:active:not(:disabled){transform:scale(.95)}
 .ef-check__box:focus-visible{outline:none;box-shadow:var(--focus-ring)}
-.ef-check__box[aria-invalid="true"]{border-color:var(--danger-600)}
+.ef-check__box[aria-invalid="true"]{border-color:var(--status-danger-solid)}
 .ef-check__label{font-size:var(--text-md);color:var(--text-primary);line-height:1.4;cursor:pointer}
 .ef-check__desc{display:block;font-size:var(--text-sm);color:var(--text-muted)}
 /* Touch: fixed-size targets grow to --tap-min; small glyph buttons keep their look and get a centred --tap-min hit area instead. */

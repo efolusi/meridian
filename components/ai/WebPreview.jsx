@@ -23,10 +23,10 @@ const CSS = `
 .ef-webprev__cons{margin-top:var(--space-2);border:1px solid var(--border-default);border-radius:var(--radius-sm);background:var(--surface-subtle);max-height:180px;overflow-y:auto;font-family:var(--font-mono);font-size:var(--text-xs);line-height:1.6}
 .ef-webprev__log{display:flex;gap:var(--space-2);padding:var(--space-1) var(--space-3);border-top:1px solid var(--border-default);color:var(--text-secondary)}
 .ef-webprev__log:first-child{border-top:none}
-.ef-webprev__log--warning{color:var(--warning-600)}
-.ef-webprev__log--danger{color:var(--danger-600)}
+.ef-webprev__log--warning{color:var(--status-warning-text)}
+.ef-webprev__log--danger{color:var(--status-danger-text)}
 .ef-webprev__logicon{display:inline-flex;flex:none;margin-top:var(--space-0-5)}
-.ef-webprev__badge{position:absolute;top:3px;inset-inline-end:3px;min-width:14px;height:14px;padding:0 var(--space-1);border-radius:var(--radius-full);background:var(--danger-600);color:var(--danger-contrast);font-size:9.5px;font-weight:var(--weight-semibold);display:inline-flex;align-items:center;justify-content:center;font-family:var(--font-sans)}
+.ef-webprev__badge{position:absolute;top:3px;inset-inline-end:3px;min-width:14px;height:14px;padding:0 var(--space-1);border-radius:var(--radius-full);background:var(--status-danger-solid);color:var(--status-danger-on-solid);font-size:9.5px;font-weight:var(--weight-semibold);display:inline-flex;align-items:center;justify-content:center;font-family:var(--font-sans)}
 @media (pointer:coarse){.ef-webprev__btn{min-width:var(--tap-min);min-height:var(--tap-min)}}
 /* Reduced motion: nothing moves or resizes; the end state is shown at once. */
 @media (prefers-reduced-motion:reduce){.ef-webprev__frame,.ef-webprev__fake{transition:none}}

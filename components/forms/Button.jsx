@@ -31,7 +31,7 @@ const CSS = `
 .ef-btn--secondary:hover{background:var(--surface-sunken)}
 .ef-btn--ghost{background:transparent;color:var(--text-secondary)}
 .ef-btn--ghost:hover{background:var(--surface-sunken);color:var(--text-primary)}
-.ef-btn--danger{background:var(--danger-600);color:var(--danger-contrast)}
+.ef-btn--danger{background:var(--status-danger-solid);color:var(--status-danger-on-solid)}
 .ef-btn--danger:hover{background:var(--danger-700)}
 .ef-btn--brand{background:var(--brand-700);color:var(--text-on-brand)}
 .ef-btn--brand:hover{background:var(--brand-800)}

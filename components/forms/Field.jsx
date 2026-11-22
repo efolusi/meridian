@@ -17,10 +17,10 @@ const CSS = `
 .ef-field-label{display:flex;align-items:center;gap:var(--space-2);cursor:pointer}
 .ef-field[data-disabled] .ef-field-label{cursor:not-allowed;opacity:.55}
 .ef-field-description{margin:0;color:var(--text-muted);font-size:var(--text-xs);line-height:1.45}
-.ef-field-error{margin:0;color:var(--danger-600);font-size:var(--text-xs);line-height:1.45}
+.ef-field-error{margin:0;color:var(--status-danger-text);font-size:var(--text-xs);line-height:1.45}
 .ef-field-separator{display:flex;align-items:center;gap:var(--space-3);color:var(--text-muted);font-size:var(--text-xs)}
 .ef-field-separator::before,.ef-field-separator::after{content:"";height:1px;flex:1;background:var(--border-default)}
-.ef-field[data-invalid] .ef-field-label,.ef-field[data-invalid] .ef-field-title{color:var(--danger-600)}
+.ef-field[data-invalid] .ef-field-label,.ef-field[data-invalid] .ef-field-title{color:var(--status-danger-text)}
 `;
 const FieldCtx = React.createContext(null);
 

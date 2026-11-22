@@ -10,8 +10,8 @@ const CSS = `
 .ef-console__row{display:flex;align-items:flex-start;gap:var(--space-2);padding:var(--space-2) var(--space-3);border-top:1px solid var(--border-default);color:var(--text-secondary)}
 .ef-console__row:first-child{border-top:none}
 .ef-console__glyph{display:inline-flex;flex:none;width:14px;margin-top:var(--space-0-5);color:var(--text-muted)}
-.ef-console__row--warning .ef-console__glyph,.ef-console__row--warning .ef-console__msg{color:var(--warning-600)}
-.ef-console__row--danger .ef-console__glyph,.ef-console__row--danger .ef-console__msg{color:var(--danger-600)}
+.ef-console__row--warning .ef-console__glyph,.ef-console__row--warning .ef-console__msg{color:var(--status-warning-text)}
+.ef-console__row--danger .ef-console__glyph,.ef-console__row--danger .ef-console__msg{color:var(--status-danger-text)}
 .ef-console__row--debug .ef-console__glyph{color:var(--text-link)}
 .ef-console__time{flex:none;color:var(--text-muted);font-variant-numeric:tabular-nums}
 .ef-console__msg{flex:1;min-width:0;white-space:pre-wrap;word-break:break-word}

@@ -6,10 +6,10 @@ import { Portal, useAnchoredStyle, useHydrated } from '../overlay/Portal.jsx';
 
 const CSS = `
 .ef-select-trigger{display:flex;width:100%;height:var(--control-h-md);align-items:center;justify-content:space-between;gap:var(--space-2);padding:0 var(--space-3);border:1px solid var(--border-control,var(--border-strong));border-radius:var(--radius-sm);background:var(--surface-sunken);color:var(--text-primary);font:inherit;font-size:var(--text-sm);text-align:start;cursor:pointer}
-.ef-select-trigger:hover:not(:disabled){border-color:var(--border-control-hover,var(--sand-400))}
+.ef-select-trigger:hover:not(:disabled){border-color:var(--border-control-hover)}
 .ef-select-trigger:focus-visible{outline:none;box-shadow:var(--focus-ring)}
 .ef-select-trigger:disabled{cursor:not-allowed;opacity:.5}
-.ef-select-trigger[aria-invalid="true"]{border-color:var(--danger-600)}
+.ef-select-trigger[aria-invalid="true"]{border-color:var(--status-danger-solid)}
 .ef-select-value[data-placeholder]{color:var(--text-muted)}
 .ef-select-content{position:fixed;z-index:var(--z-popover);min-width:var(--select-trigger-width);max-height:280px;overflow:auto;padding:var(--space-1);border:1px solid var(--border-strong);border-radius:var(--radius-md);background:var(--surface-card);box-shadow:var(--shadow-md);animation:ef-select-in var(--dur-fast) var(--ease-enter)}
 @keyframes ef-select-in{from{opacity:0;transform:translateY(-3px)}}

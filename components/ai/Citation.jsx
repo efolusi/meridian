@@ -5,8 +5,8 @@ import { Icon } from '../icons/Icon.jsx';
 const CSS = `
 .ef-citation__pop-title,.ef-citation__pop-desc{display:block}
 .ef-citation__pop-nav{display:flex}
-.ef-citation{display:inline-flex;align-items:center;justify-content:center;min-width:16px;height:16px;padding:0 var(--space-1);margin:0 1px;vertical-align:super;border-radius:var(--radius-xs);border:1px solid var(--accent-subtle-border);background:var(--accent-subtle);color:var(--accent-subtle-fg, var(--brand-700));font-family:var(--font-mono);font-size:10px;font-weight:600;text-decoration:none;cursor:pointer;line-height:1}
-.ef-citation:hover{border-color:var(--brand-700)}
+.ef-citation{display:inline-flex;align-items:center;justify-content:center;min-width:16px;height:16px;padding:0 var(--space-1);margin:0 1px;vertical-align:super;border-radius:var(--radius-xs);border:1px solid var(--accent-subtle-border);background:var(--accent-subtle);color:var(--accent-subtle-fg);font-family:var(--font-mono);font-size:10px;font-weight:600;text-decoration:none;cursor:pointer;line-height:1}
+.ef-citation:hover{border-color:var(--accent-subtle-fg)}
 .ef-citation:focus-visible{outline:none;box-shadow:var(--focus-ring)}
 .ef-citation__wrap{position:relative;display:inline}
 .ef-citation__pop{position:absolute;bottom:calc(100% + 8px);inset-inline-start:0;width:280px;background:var(--surface-card);border:1px solid var(--border-strong);border-radius:var(--radius-md);box-shadow:var(--shadow-md);padding:var(--space-3);z-index:var(--z-popover);animation:ef-citation-in var(--dur-fast) var(--ease-enter);cursor:default;text-align:start}
@@ -24,7 +24,7 @@ const CSS = `
 .ef-sources__item:last-child{border-bottom:none}
 .ef-sources__item:hover{background:var(--surface-subtle)}
 .ef-sources__item:focus-visible{outline:none;box-shadow:var(--focus-ring)}
-.ef-sources__num{flex:none;display:inline-flex;align-items:center;justify-content:center;width:18px;height:18px;border-radius:var(--radius-xs);background:var(--accent-subtle);color:var(--accent-subtle-fg, var(--brand-700));font-family:var(--font-mono);font-size:10.5px;font-weight:600}
+.ef-sources__num{flex:none;display:inline-flex;align-items:center;justify-content:center;width:18px;height:18px;border-radius:var(--radius-xs);background:var(--accent-subtle);color:var(--accent-subtle-fg);font-family:var(--font-mono);font-size:10.5px;font-weight:600}
 .ef-sources__title{flex:1;min-width:0;font-size:var(--text-md);font-weight:500;color:var(--text-primary);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .ef-sources__domain{flex:none;font-family:var(--font-mono);font-size:var(--text-xs);color:var(--text-muted)}
 .ef-sources__ext{flex:none;display:inline-flex;color:var(--text-muted)}

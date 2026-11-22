@@ -4,7 +4,7 @@ import { injectEfCss } from '../runtime/runtime.jsx';
 import { useFieldProps } from './Field.jsx';
 const CSS = `
 .ef-input-group{display:flex;min-width:0;width:100%;align-items:center;border:1px solid var(--border-control,var(--border-strong));border-radius:var(--radius-sm);background:var(--surface-card);transition:border-color var(--dur-fast) var(--ease-enter),box-shadow var(--dur-fast) var(--ease-enter)}
-.ef-input-group:focus-within{border-color:var(--accent);box-shadow:var(--focus-ring)}.ef-input-group:has([aria-invalid="true"]){border-color:var(--danger-600)}
+.ef-input-group:focus-within{border-color:var(--accent);box-shadow:var(--focus-ring)}.ef-input-group:has([aria-invalid="true"]){border-color:var(--status-danger-solid)}
 .ef-input-group:has(textarea){flex-wrap:wrap}.ef-input-group__control{min-width:0;flex:1;border:0;background:transparent;font:inherit;color:var(--text-primary)}
 input.ef-input-group__control{height:34px;padding:0 var(--space-3)}textarea.ef-input-group__control{min-height:80px;padding:var(--space-3) var(--space-3);resize:vertical}.ef-input-group__control:focus{outline:none}.ef-input-group__control::placeholder{color:var(--text-muted)}
 .ef-input-group__addon{display:flex;flex:none;align-items:center;gap:var(--space-2);padding:0 var(--space-3);color:var(--text-muted);font-size:var(--text-sm);white-space:nowrap}

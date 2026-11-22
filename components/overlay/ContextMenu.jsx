@@ -14,7 +14,7 @@ const CSS = `
 .ef-context-menu__item:focus-visible{box-shadow:inset 0 0 0 2px var(--focus-ring-color)}
 .ef-context-menu__item:disabled,.ef-context-menu__item[data-disabled=true]{pointer-events:none;opacity:.5}
 .ef-context-menu__item[data-inset=true],.ef-context-menu__label[data-inset=true]{padding-inline-start:var(--space-8)}
-.ef-context-menu__item[data-variant=danger]{color:var(--danger-600)}
+.ef-context-menu__item[data-variant=danger]{color:var(--status-danger-text)}
 .ef-context-menu__indicator{position:absolute;inset-inline-start:8px;display:inline-flex;width:14px;align-items:center;justify-content:center}
 .ef-context-menu__label{padding:var(--space-2) var(--space-2);color:var(--text-primary);font-size:var(--text-sm);font-weight:var(--weight-medium)}
 .ef-context-menu__separator{height:1px;margin:var(--space-1) calc(-1 * var(--space-1));background:var(--border-default)}

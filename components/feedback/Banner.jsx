@@ -7,8 +7,8 @@ const CSS = `
 .ef-banner{display:flex;align-items:center;gap:var(--space-3);padding:var(--space-2) var(--space-4);font-size:var(--text-sm);border-bottom:1px solid var(--border-default)}
 .ef-banner--neutral{background:var(--surface-sunken);color:var(--text-primary)}
 .ef-banner--brand{background:var(--cream-50);color:var(--cocoa-700)}
-.ef-banner--warning{background:var(--warning-100);color:var(--warning-600);border-color:var(--warning-300)}
-.ef-banner--danger{background:var(--danger-100);color:var(--danger-600);border-color:var(--danger-300)}
+.ef-banner--warning{background:var(--status-warning-bg);color:var(--status-warning-text);border-color:var(--status-warning-border)}
+.ef-banner--danger{background:var(--status-danger-bg);color:var(--status-danger-text);border-color:var(--status-danger-border)}
 .ef-banner__icon{display:inline-flex;flex:none}
 .ef-banner__text{flex:1;min-width:0}
 .ef-banner__text strong{font-weight:var(--weight-semibold)}

@@ -4,11 +4,11 @@ import { injectEfCss } from '../runtime/runtime.jsx';
 import { Icon } from '../icons/Icon.jsx';
 const CSS = `
 .ef-confirm{border-radius:var(--radius-md);background:var(--surface-card);border:1px solid var(--accent-subtle-border);box-shadow:0 0 0 2px var(--accent-subtle)}
-.ef-confirm--danger{border-color:var(--danger-300,var(--danger-600));box-shadow:0 0 0 2px var(--danger-100)}
+.ef-confirm--danger{border-color:var(--danger-300,var(--danger-600));box-shadow:0 0 0 2px var(--status-danger-bg)}
 .ef-confirm--settled{border-color:var(--border-default);box-shadow:none}
 .ef-confirm__head{display:flex;align-items:center;gap:var(--space-2);padding:var(--space-3) var(--space-4) 0}
-.ef-confirm__icon{display:inline-flex;color:var(--brand-700);flex:none}
-.ef-confirm--danger .ef-confirm__icon{color:var(--danger-600)}
+.ef-confirm__icon{display:inline-flex;color:var(--accent-subtle-fg);flex:none}
+.ef-confirm--danger .ef-confirm__icon{color:var(--status-danger-text)}
 .ef-confirm__title{font-size:var(--text-sm);font-weight:600;color:var(--text-primary)}
 .ef-confirm__desc{padding:var(--space-2) var(--space-4) 0;font-size:var(--text-md);line-height:1.6;color:var(--text-secondary)}
 .ef-confirm__content{padding:var(--space-3) var(--space-4) 0}
@@ -18,7 +18,7 @@ const CSS = `
 .ef-confirm__btn:focus-visible{outline:none;box-shadow:var(--focus-ring)}
 .ef-confirm__btn--accept{background:var(--accent);border-color:var(--accent);color:var(--accent-contrast)}
 .ef-confirm__btn--accept:hover{background:var(--accent-hover)}
-.ef-confirm--danger .ef-confirm__btn--accept{background:var(--danger-600);border-color:var(--danger-600);color:var(--danger-contrast)}
+.ef-confirm--danger .ef-confirm__btn--accept{background:var(--status-danger-solid);border-color:var(--status-danger-solid);color:var(--status-danger-on-solid)}
 .ef-confirm__status{display:flex;align-items:center;gap:var(--space-2);padding:var(--space-3) var(--space-4) var(--space-3);font-size:var(--text-sm);color:var(--text-secondary)}
 .ef-confirm__status--approved{color:var(--success-600,var(--text-secondary))}
 .ef-confirm__status--rejected{color:var(--text-muted)}

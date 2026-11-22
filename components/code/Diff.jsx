@@ -7,20 +7,20 @@ const CSS = `
 .ef-diff{border:1px solid var(--border-default);border-radius:var(--radius-md);background:var(--surface-card);overflow:hidden;font-family:var(--font-mono);font-size:var(--text-sm);line-height:1.7}
 .ef-diff__head{display:flex;align-items:center;gap:var(--space-3);padding:var(--space-2) var(--space-3);background:var(--surface-subtle);border-bottom:1px solid var(--border-default);font-size:var(--text-xs);color:var(--text-secondary);font-family:var(--font-sans)}
 .ef-diff__counts{margin-inline-start:auto;display:inline-flex;gap:var(--space-2);font-size:var(--text-xs);font-family:var(--font-mono);font-variant-numeric:tabular-nums}
-.ef-diff__plus{color:var(--success-600)}
-.ef-diff__minus{color:var(--danger-600)}
+.ef-diff__plus{color:var(--status-success-text)}
+.ef-diff__minus{color:var(--status-danger-text)}
 .ef-diff__scroll{overflow:auto}
 .ef-diff__scroll:focus-visible{outline:2px solid var(--focus-ring-color);outline-offset:-2px}
 .ef-diff__line{display:flex;white-space:pre}
 .ef-diff__no{flex:none;width:38px;padding:0 var(--space-2);text-align:end;color:var(--text-muted);font-size:var(--text-2xs);user-select:none;background:var(--surface-subtle);border-inline-end:1px solid var(--border-default)}
 .ef-diff__sign{flex:none;width:20px;text-align:center;user-select:none;color:var(--text-muted)}
 .ef-diff__text{flex:1;padding-inline-end:var(--space-4);color:var(--text-secondary)}
-.ef-diff__line--add{background:var(--success-100)}
-.ef-diff__line--add .ef-diff__sign,.ef-diff__line--add .ef-diff__text{color:var(--success-600)}
-.ef-diff__line--del{background:var(--danger-100)}
-.ef-diff__line--del .ef-diff__sign,.ef-diff__line--del .ef-diff__text{color:var(--danger-600)}
-.ef-diff__word--add{background:var(--success-300);color:var(--text-primary);border-radius:var(--radius-xs)}
-.ef-diff__word--del{background:var(--danger-300);color:var(--text-primary);border-radius:var(--radius-xs)}
+.ef-diff__line--add{background:var(--status-success-bg)}
+.ef-diff__line--add .ef-diff__sign,.ef-diff__line--add .ef-diff__text{color:var(--status-success-text)}
+.ef-diff__line--del{background:var(--status-danger-bg)}
+.ef-diff__line--del .ef-diff__sign,.ef-diff__line--del .ef-diff__text{color:var(--status-danger-text)}
+.ef-diff__word--add{background:var(--status-success-border);color:var(--text-primary);border-radius:var(--radius-xs)}
+.ef-diff__word--del{background:var(--status-danger-border);color:var(--text-primary);border-radius:var(--radius-xs)}
 .ef-diff__skip{display:flex;align-items:center;gap:var(--space-3);padding:var(--space-0-5) 0;color:var(--text-muted);font-size:var(--text-2xs);user-select:none}
 .ef-diff__skipno{flex:none;width:76px;text-align:center;background:var(--surface-subtle);border-inline-end:1px solid var(--border-default)}
 .ef-diff__file{border-top:1px solid var(--border-default)}

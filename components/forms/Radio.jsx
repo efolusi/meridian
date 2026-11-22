@@ -14,7 +14,7 @@ const CSS = `
 .ef-radio__input:checked+.ef-radio__dot::after{opacity:1;transform:scale(1)}
 .ef-radio:active .ef-radio__dot{transform:scale(.95)}
 .ef-radio__input:focus-visible+.ef-radio__dot{box-shadow:var(--focus-ring)}
-.ef-radio__input[aria-invalid="true"]+.ef-radio__dot{border-color:var(--danger-600)}
+.ef-radio__input[aria-invalid="true"]+.ef-radio__dot{border-color:var(--status-danger-solid)}
 .ef-radio__label{font-size:var(--text-md);color:var(--text-primary);line-height:1.4}
 .ef-radio__desc{display:block;font-size:var(--text-sm);color:var(--text-muted)}
 /* Touch: fixed-size targets grow to --tap-min; small glyph buttons keep their look and get a centred --tap-min hit area instead. */

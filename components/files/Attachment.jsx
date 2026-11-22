@@ -8,7 +8,7 @@ const CSS = `
 .ef-attachment[data-orientation="vertical"]{flex-direction:column;align-items:stretch}
 .ef-attachment[data-size="sm"]{gap:var(--space-2);padding:var(--space-2)}
 .ef-attachment[data-size="xs"]{gap:var(--space-2);padding:var(--space-2);border-radius:var(--radius-sm)}
-.ef-attachment[data-state="error"]{border-color:var(--danger-600)}
+.ef-attachment[data-state="error"]{border-color:var(--status-danger-solid)}
 .ef-attachment__media{display:flex;align-items:center;justify-content:center;flex:none;width:36px;height:36px;border-radius:var(--radius-sm);overflow:hidden;background:var(--surface-sunken);color:var(--text-secondary)}
 .ef-attachment[data-size="sm"] .ef-attachment__media{width:32px;height:32px}
 .ef-attachment[data-size="xs"] .ef-attachment__media{width:24px;height:24px}
@@ -18,7 +18,7 @@ const CSS = `
 .ef-attachment__title{overflow:hidden;color:var(--text-primary);font-size:var(--text-sm);font-weight:var(--weight-semibold);line-height:1.35;text-overflow:ellipsis;white-space:nowrap}
 .ef-attachment[data-size="xs"] .ef-attachment__title{font-size:var(--text-xs)}
 .ef-attachment__description{overflow:hidden;margin-top:var(--space-0-5);color:var(--text-muted);font-size:var(--text-xs);line-height:1.35;text-overflow:ellipsis;white-space:nowrap}
-.ef-attachment[data-state="error"] .ef-attachment__description{color:var(--danger-600)}
+.ef-attachment[data-state="error"] .ef-attachment__description{color:var(--status-danger-text)}
 .ef-attachment__actions{position:relative;z-index:3;display:flex;align-items:center;gap:var(--space-1);flex:none}
 .ef-attachment__trigger{position:absolute;z-index:1;inset:0;width:100%;height:100%;padding:0;border:0;border-radius:inherit;background:transparent;cursor:pointer}
 .ef-attachment__trigger:focus-visible{outline:none;box-shadow:inset var(--focus-ring)}

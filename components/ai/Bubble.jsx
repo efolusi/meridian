@@ -15,7 +15,7 @@ const CSS = `
 .ef-bubble[data-variant="tinted"]>.ef-bubble__content{background:var(--accent-subtle);color:var(--text-primary)}
 .ef-bubble[data-variant="outline"]>.ef-bubble__content{border-color:var(--border-default);background:var(--surface-card);color:var(--text-primary)}
 .ef-bubble[data-variant="ghost"]>.ef-bubble__content{padding:0;border-radius:0;background:transparent;color:var(--text-primary)}
-.ef-bubble[data-variant="danger"]>.ef-bubble__content{background:var(--danger-subtle);color:var(--danger-700)}
+.ef-bubble[data-variant="danger"]>.ef-bubble__content{background:var(--danger-subtle);color:var(--status-danger-text)}
 .ef-bubble__content:is(button,a){cursor:pointer;text-align:start;transition:filter var(--dur-fast) var(--ease-enter),background var(--dur-fast) var(--ease-enter)}
 .ef-bubble__content:is(button,a):hover{filter:brightness(.96)}
 .ef-bubble__content:is(button,a):focus-visible{outline:none;box-shadow:var(--focus-ring)}

@@ -7,7 +7,7 @@ const CSS = `
 .ef-genimg--square{aspect-ratio:1}
 .ef-genimg--video{aspect-ratio:16/9}
 .ef-genimg--portrait{aspect-ratio:3/4}
-.ef-genimg--danger{border-color:var(--danger-300);box-shadow:0 0 0 3px var(--danger-100)}
+.ef-genimg--danger{border-color:var(--status-danger-border);box-shadow:0 0 0 3px var(--status-danger-bg)}
 .ef-genimg__img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity var(--dur-slow) var(--ease-enter)}
 .ef-genimg--complete .ef-genimg__img{opacity:1}
 .ef-genimg--danger .ef-genimg__img{opacity:.3}
@@ -28,7 +28,7 @@ const CSS = `
 .ef-genimg__act:hover{background:var(--media-scrim-strong)}
 .ef-genimg__act:focus-visible{outline:none;box-shadow:var(--focus-ring)}
 .ef-genimg__retry{display:inline-flex;align-items:center;gap:var(--space-2);padding:var(--space-2) var(--space-3);border:1px solid var(--border-strong);border-radius:var(--radius-full);background:var(--surface-card);cursor:pointer;font-family:var(--font-sans);font-size:var(--text-sm);font-weight:var(--weight-semibold);color:var(--text-primary)}
-.ef-genimg__err{color:var(--danger-600)}
+.ef-genimg__err{color:var(--status-danger-text)}
 @media (pointer:coarse){.ef-genimg__act{min-width:var(--tap-min);min-height:var(--tap-min)}}
 `;
 export function GeneratedImage({ status = 'complete', src, alt, prompt, aspect = 'square', error, onRetry, actions, style, className, ...rest }) {

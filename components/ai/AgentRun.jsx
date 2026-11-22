@@ -9,7 +9,7 @@ const CSS = `
 .ef-agentrun__dot{display:inline-flex;align-items:center;justify-content:center;width:22px;height:22px;border-radius:var(--radius-full);border:1px solid var(--border-strong);background:var(--surface-card);color:var(--text-muted);flex:none}
 .ef-agentrun__step--done .ef-agentrun__dot{background:var(--accent);border-color:var(--accent);color:var(--accent-contrast)}
 .ef-agentrun__step--active .ef-agentrun__dot{border-color:var(--accent);color:var(--accent)}
-.ef-agentrun__step--error .ef-agentrun__dot{background:var(--danger-100);border-color:var(--danger-600);color:var(--danger-600)}
+.ef-agentrun__step--error .ef-agentrun__dot{background:var(--status-danger-bg);border-color:var(--status-danger-solid);color:var(--status-danger-text)}
 .ef-agentrun__spin{display:inline-flex;animation:ef-agentrun-spin .9s linear infinite}
 @keyframes ef-agentrun-spin{to{transform:rotate(360deg)}}
 .ef-agentrun__line{width:1px;flex:1;background:var(--border-default);margin:var(--space-1) 0}
