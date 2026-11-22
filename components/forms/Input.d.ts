@@ -1,4 +1,6 @@
 export interface InputProps extends Omit<React.InputHTMLAttributes<HTMLInputElement>, 'size'> {
+  /** Clear glass, for a search field in a bar or toolbar (design-tokens docs/glass.md) */
+  glass?: boolean;
   /** Field label rendered above. */
   label?: string;
   /** Muted helper text below. */

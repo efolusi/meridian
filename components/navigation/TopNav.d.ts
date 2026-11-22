@@ -4,6 +4,8 @@ export interface TopNavProps {
   leading?: React.ReactNode;
   /** Right-aligned actions (search, bell, avatar) */
   children?: React.ReactNode;
+  /** A pill inset from the edges (default). false keeps a full-width bar. Both are chrome glass. */
+  floating?: boolean;
   style?: React.CSSProperties;
   className?: string;
 }

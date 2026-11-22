@@ -12,6 +12,7 @@ const CSS = `
 .ef-input{position:relative;display:flex;align-items:center}
 .ef-input__el{width:100%;height:var(--control-h-md);padding:0 var(--space-3);border:1px solid var(--border-control,var(--border-strong));border-radius:var(--radius-sm);background:var(--surface-sunken);color:var(--text-primary);font-family:var(--font-sans);font-size:var(--text-md);transition:border-color var(--dur-fast) var(--ease-enter),box-shadow var(--dur-fast) var(--ease-enter)}
 .ef-input__el::placeholder{color:var(--text-muted)}
+.ef-input__el.ef-glass{background-color:color-mix(in srgb,var(--material-tint) calc(var(--material-clear) * 100%),transparent);border-color:var(--border-control,var(--border-strong));border-radius:var(--radius-full)}
 .ef-input__el:hover:not(:disabled){border-color:var(--border-control-hover)}
 .ef-input__el:focus-visible{outline:none;border-color:var(--accent);box-shadow:var(--focus-ring)}
 .ef-input__el:disabled{background:var(--surface-subtle);color:var(--text-muted);cursor:not-allowed;opacity:.5}
@@ -55,6 +56,7 @@ export const Input = React.forwardRef(function Input({
   hideLabel = 'Hide password',
   style,
   className,
+  glass,
   ...rest
 }, ref) {
   injectEfCss('ef-css-input', CSS);
@@ -80,7 +82,7 @@ export const Input = React.forwardRef(function Input({
       aria-describedby={describedBy}
       aria-invalid={bad || rest['aria-invalid'] || undefined}
       type={showToggle && revealed ? 'text' : rest.type}
-      className={classes('ef-input__el', customSize !== 'md' && `ef-input__el--${customSize}`, className)}
+      className={classes('ef-input__el', customSize !== 'md' && `ef-input__el--${customSize}`, glass && 'ef-glass ef-glass--clear', className)}
       style={rest.type === 'file' ? undefined : style}
       onChange={rest.type === 'file' ? (event) => {
         setFileName(event.currentTarget.files?.[0]?.name || 'No file chosen');
