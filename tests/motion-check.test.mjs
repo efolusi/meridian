@@ -34,6 +34,8 @@ describe('findLiterals', () => {
   it('passes the tokens, none, zero, and linear next to the progress token', () => {
     expect(bad('.a{transition:opacity var(--dur-fast) var(--ease-enter),transform var(--dur-base) var(--ease-emphasised)}')).toBe(0);
     expect(bad('.a{transition:width var(--dur-progress) linear}')).toBe(0);
+    expect(bad('.a{animation:sweep var(--dur-loop-slow) linear infinite}')).toBe(0);
+    expect(bad('.a{animation:sweep 1.6s linear infinite}')).toBe(1);
     expect(bad('.a{transition:none;animation:none}')).toBe(0);
     expect(bad('.a{transition-duration:0s;animation-duration:0ms}')).toBe(0);
     expect(bad('.a{animation:ef-spin var(--dur-long) var(--ease-standard) infinite}')).toBe(0);

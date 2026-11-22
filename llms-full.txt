@@ -2,7 +2,7 @@
 
 The entire design system in one file, generated from llms.txt, components/*/, and tokens/*.css by scripts/build_llms.py. Do not edit by hand. The short map of the repository is /llms.txt.
 
-> Meridian is a general-purpose open-source design system by Efolusi: 134 accessible React components, 232 design tokens (light, dark, compact), blocks, charts, and full example apps, served browser-native with zero build step. Apache-2.0 licensed.
+> Meridian is a general-purpose open-source design system by Efolusi: 134 accessible React components, 265 design tokens (light, dark, compact), blocks, charts, and full example apps, served browser-native with zero build step. Apache-2.0 licensed.
 
 Live docs: https://meridian.efolusi.com · Source: https://github.com/efolusi/meridian · License: Apache-2.0
 
@@ -5078,7 +5078,7 @@ export declare const SheetDescription: React.ForwardRefExoticComponent<DialogSlo
 
 ## Design tokens
 
-233 custom property names by file (names only; resolve current values from /styles.css, which imports these files, or /tokens.json):
+266 custom property names by file (names only; resolve current values from /styles.css, which imports these files, or /tokens.json):
 
 ### /tokens/base.css
 
@@ -5090,15 +5090,18 @@ export declare const SheetDescription: React.ForwardRefExoticComponent<DialogSlo
 --accent-active
 --accent-contrast
 --accent-hover
+--accent-soft
 --accent-subtle
 --accent-subtle-border
 --accent-subtle-fg
+--accent-warm
 --avatar-bg
 --avatar-fg
 --border-code
 --border-control
 --border-control-hover
 --border-default
+--border-hover
 --border-inverse
 --border-strong
 --brand-100
@@ -5142,6 +5145,11 @@ export declare const SheetDescription: React.ForwardRefExoticComponent<DialogSlo
 --focus-ring-color
 --focus-ring-danger
 --focus-ring-offset
+--info-100
+--info-300
+--info-600
+--info-contrast
+--info-on-dark
 --media-backdrop
 --media-backdrop-dot
 --media-scrim
@@ -5167,12 +5175,33 @@ export declare const SheetDescription: React.ForwardRefExoticComponent<DialogSlo
 --state-hover-on-tab
 --state-hover-on-window
 --state-pressed
+--status-danger-bg
+--status-danger-border
+--status-danger-on-solid
+--status-danger-solid
+--status-danger-text
+--status-info-bg
+--status-info-border
+--status-info-on-solid
+--status-info-solid
+--status-info-text
+--status-success-bg
+--status-success-border
+--status-success-on-solid
+--status-success-solid
+--status-success-text
+--status-warning-bg
+--status-warning-border
+--status-warning-on-solid
+--status-warning-solid
+--status-warning-text
 --success-100
 --success-300
 --success-600
 --success-contrast
 --success-on-dark
 --surface-brand
+--surface-brand-hover
 --surface-card
 --surface-card-hover
 --surface-code
@@ -5183,7 +5212,9 @@ export declare const SheetDescription: React.ForwardRefExoticComponent<DialogSlo
 --surface-panel
 --surface-subtle
 --surface-sunken
+--surface-track
 --text-code
+--text-disabled
 --text-inverse
 --text-inverse-muted
 --text-link
@@ -5212,6 +5243,8 @@ export declare const SheetDescription: React.ForwardRefExoticComponent<DialogSlo
 --dur-base
 --dur-fast
 --dur-long
+--dur-loop
+--dur-loop-slow
 --dur-progress
 --dur-slow
 --ease-emphasised
