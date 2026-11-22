@@ -88,7 +88,7 @@
     "reason": "Existing use of a ramp stop in component CSS; to move to a semantic token (MD row)."
   },
   "components/dates/TimePicker.jsx": {
-    "count": 2,
+    "count": 1,
     "reason": "Existing use of a ramp stop in component CSS; to move to a semantic token (MD row)."
   },
   "components/display/Accordion.jsx": {
@@ -168,7 +168,7 @@
     "reason": "Existing use of a ramp stop in component CSS; to move to a semantic token (MD row)."
   },
   "components/forms/Input.jsx": {
-    "count": 4,
+    "count": 2,
     "reason": "Existing use of a ramp stop in component CSS; to move to a semantic token (MD row)."
   },
   "components/forms/InputGroup.jsx": {
@@ -184,7 +184,7 @@
     "reason": "Existing use of a ramp stop in component CSS; to move to a semantic token (MD row)."
   },
   "components/forms/NumberInput.jsx": {
-    "count": 3,
+    "count": 2,
     "reason": "Existing use of a ramp stop in component CSS; to move to a semantic token (MD row)."
   },
   "components/forms/Questionnaire.jsx": {
@@ -196,11 +196,11 @@
     "reason": "Existing use of a ramp stop in component CSS; to move to a semantic token (MD row)."
   },
   "components/forms/Select.jsx": {
-    "count": 2,
+    "count": 1,
     "reason": "Existing use of a ramp stop in component CSS; to move to a semantic token (MD row)."
   },
   "components/forms/Textarea.jsx": {
-    "count": 3,
+    "count": 2,
     "reason": "Existing use of a ramp stop in component CSS; to move to a semantic token (MD row)."
   },
   "components/marketing/Hero.jsx": {
