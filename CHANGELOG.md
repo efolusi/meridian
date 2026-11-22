@@ -2,6 +2,16 @@
 
 ## Unreleased
 
+- **Warm glass (MD51 to MD56).** design-tokens is vendored at v0.6.0: the owner's "halus" direction of 2026-11-22, a warm palette with an ember accent and a touch of glass at `glass.strength` 0.33 (design-tokens `docs/glass.md`). The cocoa colour stays only in the marks and the wordmark.
+  - `tokens/base.css` adds the glass material: `.ef-glass` with `--clear`, `--regular`, `--chrome` and `--thick`, `.ef-glass--blur` for surfaces that content scrolls under, and `.ef-glass-field`, the quiet field behind the page. Every thickness turns solid under reduced transparency, more contrast, no `backdrop-filter` and forced colours (MD51).
+  - `TopNav` is a floating chrome-glass bar by default; `floating={false}` keeps a full-width bar (MD52). New `TabBar`: a floating glass tab bar for phones, hidden from 720px up.
+  - `ThemeToggle`, `SegmentedControl` and `Input glass` (a search field) are clear glass (MD53).
+  - Sheet, Drawer, Popover, DropdownMenu, ContextMenu and HoverCard are thick glass and enter by transform only; under reduced motion they appear at once, because an opacity fade would show the text behind them (MD54). `scripts/check_reduced_motion.mjs` lists them as reviewed snaps.
+  - `scripts/check_contrast.py` measures what Meridian paints on bar, clear and thick glass against the worst backdrop in both themes (MD55).
+- **Breaking: `FeatureCard` `tone="cocoa"` is renamed `tone="band"` (MD56).** design-tokens renamed `tone.cocoa` to `tone.band`; its fill is the warm band. Rename every `tone="cocoa"`.
+- **Breaking look: the `brand` Button is the warm band** (`--surface-brand`, hover `--surface-brand-hover`) instead of a cocoa fill, and the `Questionnaire` primary button is the accent. `FileTypeIcon` labels on fixed dark fills read `--text-on-media`. The dark-theme `Toast` danger icon paints the same 60% mix as success and warning.
+- **The light token block is `:root, [data-theme="light"]`** in the vendored CSS, so a light subtree inside a dark page gets the light values back; the gate, the generators and the tests read that selector.
+
 ## v1.31.0 - 2026-11-22
 
 - **Breaking: `ThemeToggle` offers light and dark only (MD47).** The `system` choice, its icon and label, the `ThemePreference` member and `refreshSystemCookie()` are removed; the button shows the theme in use and flips to the other, and its `aria-label` names the action. With no stored choice a first visit starts in the device's theme and stores nothing; the choice is kept once the person switches. `readThemePreference()` returns `null` with no choice, and `data-preference` is now `data-theme-shown`. A `system` value stored in a visitor's browser by an earlier release is read as no choice and removed once (visitor data, not an alias). `themeInitScript()` no longer writes the cookie, so its hash changes. Before and after code is in `guidelines/migration.md`; the product apps that use `ThemeToggle` (efolusi, komando site, sso, pay web, docs site) take the change together with the release.
