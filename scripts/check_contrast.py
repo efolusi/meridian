@@ -233,6 +233,132 @@ for theme, table, fallback in (("light", light, None), ("dark", dark, light)):
             elif not ok:
                 failures.append((theme, fg_tok, bg_tok, r, minimum))
 
+# ---- Glass (MD55, design-tokens docs/glass.md) ----
+# What Meridian paints on glass, against the worst backdrop that can sit under it. Glass is
+# alpha * tint + (1 - alpha) * backdrop; a blur only averages the backdrop, so a large solid area of
+# the brightest or darkest content is the worst case. Material values live in effects.css as live
+# calc() over --glass-strength; they are evaluated here with a parser that only knows numbers, px,
+# + - * /, parentheses, calc, min and max.
+EFFECTS = (pathlib.Path(os.environ["CONTRAST_EFFECTS"]).read_text() if os.environ.get("CONTRAST_EFFECTS") else
+           (pathlib.Path(__file__).resolve().parent.parent / "tokens" / "effects.css").read_text())
+
+
+def effect_tokens(name):
+    pat = r':root(?:,\s*\[data-theme="light"\])?\s*\{(.*?)\n\}' if name == "light" else r'\[data-theme="dark"\]\s*\{(.*?)\n\}'
+    m = re.search(pat, EFFECTS, re.S)
+    if not m:
+        sys.exit(f"could not locate the {name} block in tokens/effects.css")
+    return {tok: val.strip() for tok, val in re.findall(r"(--[\w-]+):([^;]+);", m.group(1))}
+
+
+def evaluate(expr):
+    toks = re.findall(r"\d*\.?\d+(?:px)?|calc|min|max|[-+*/(),]|\S", expr)
+    pos = [0]
+
+    def peek():
+        return toks[pos[0]] if pos[0] < len(toks) else None
+
+    def take(want=None):
+        t = peek()
+        if t is None or (want is not None and t != want):
+            raise ValueError(f"bad expression {expr!r}")
+        pos[0] += 1
+        return t
+
+    def args():
+        take("(")
+        out = [total()]
+        while peek() == ",":
+            take(",")
+            out.append(total())
+        take(")")
+        return out
+
+    def atom():
+        t = peek()
+        if t == "-":
+            take()
+            return -atom()
+        if t == "(":
+            take()
+            v = total()
+            take(")")
+            return v
+        if t == "calc":
+            take()
+            (v,) = args()
+            return v
+        if t in ("min", "max"):
+            take()
+            return (min if t == "min" else max)(args())
+        if t is not None and re.fullmatch(r"\d*\.?\d+(px)?", t):
+            take()
+            return float(t.replace("px", ""))
+        raise ValueError(f"bad expression {expr!r}")
+
+    def product():
+        v = atom()
+        while peek() in ("*", "/"):
+            v = v * atom() if take() == "*" else v / atom()
+        return v
+
+    def total():
+        v = product()
+        while peek() in ("+", "-"):
+            v = v + product() if take() == "+" else v - product()
+        return v
+
+    v = total()
+    if pos[0] != len(toks):
+        raise ValueError(f"bad expression {expr!r}")
+    return v
+
+
+def material(name, table, fallback):
+    raw = table.get(name, fallback.get(name) if fallback else None)
+    strength = table.get("--glass-strength", fallback.get("--glass-strength") if fallback else None)
+    return evaluate(raw.replace("var(--glass-strength)", strength))
+
+
+def mix(top, bottom, alpha):
+    ch = lambda h, i: int(h[1 + 2 * i:3 + 2 * i], 16)
+    return "#" + "".join(f"{round(alpha * ch(top, i) + (1 - alpha) * ch(bottom, i)):02x}" for i in range(3))
+
+
+fx_light = effect_tokens("light")
+fx_dark = effect_tokens("dark")
+for theme, table, fallback, fx, fxfb in (("light", light, None, fx_light, None), ("dark", dark, light, fx_dark, fx_light)):
+    col = lambda tok: to_hex(resolve(tok, table, fallback))
+    tint = to_hex(fx.get("--material-tint", (fxfb or {}).get("--material-tint")))
+    clear, chrome, thick = (material(f"--material-{k}", fx, fxfb) for k in ("clear", "chrome", "thick"))
+    strength = float(resolve("--field-strength", table, fallback) or fx.get("--glass-strength") or (fxfb or {}).get("--glass-strength"))
+    f0 = col("--field-0")
+    under = [("field-0", f0)] + [(f"field-{i}", mix(col(f"--field-{i}"), f0, strength)) for i in (1, 2, 3)]
+    under += [("accent", col("--accent")), ("code block", col("--surface-code")), ("card", col("--surface-card")),
+              ("band", col("--surface-brand")), ("black", "#000000"), ("white", "#ffffff")]
+    for bname, b in under:
+        bar = mix(tint, b, chrome)
+        cleared = mix(tint, bar, clear)
+        sheet = mix(tint, b, thick)
+        for fg_tok, surface, bg, minimum, label in (
+            ("--text-primary", "chrome", bar, 4.5, "TopNav title, TabBar items"),
+            ("--text-secondary", "chrome", bar, 4.5, "TopNav actions"),
+            ("--focus-ring-color", "chrome", bar, 3.0, "focus ring on the bar"),
+            ("--text-primary", "clear in chrome", cleared, 4.5, "search text, ThemeToggle icon"),
+            ("--text-muted", "clear in chrome", cleared, 4.5, "search placeholder"),
+            ("--text-secondary", "clear in chrome", cleared, 4.5, "segmented control option"),
+            ("--text-primary", "thick", sheet, 4.5, "sheet and menu text"),
+            ("--text-secondary", "thick", sheet, 4.5, "sheet descriptions"),
+            ("--text-muted", "thick", sheet, 4.5, "menu shortcuts and hints"),
+        ):
+            fg = col(fg_tok)
+            r = ratio(fg, bg)
+            checked += 1
+            ok = r >= minimum
+            print(f"{'ok  ' if ok else 'FAIL':5s} {theme:5s} glass {fg_tok} on {surface} over {bname:10s} {r:5.2f}:1  (min {minimum}, {label})")
+            if not ok:
+                failures.append((theme, fg_tok, f"{surface} over {bname}", r, minimum))
+
 if unresolved:
     print("\nunresolved tokens (a pair that cannot be measured is a failure, not a pass):")
     for theme, tok, why in unresolved:

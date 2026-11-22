@@ -24,7 +24,7 @@ const RADII = [
   // review test fails if the default scale moves past these.
   { id: 'square', label: 'Square', vars: { '--radius-xs': '0px', '--radius-sm': '0px', '--radius-md': '0px', '--radius-lg': '0px', '--radius-xl': '0px' } },
   { id: 'default', label: 'Default', def: true, vars: {} },
-  { id: 'soft', label: 'Soft', vars: { '--radius-xs': '6px', '--radius-sm': '12px', '--radius-md': '16px', '--radius-lg': '22px', '--radius-xl': '32px' } },
+  { id: 'soft', label: 'Soft', vars: { '--radius-xs': '6px', '--radius-sm': '14px', '--radius-md': '20px', '--radius-lg': '26px', '--radius-xl': '34px' } },
 ];
 function cssBlock(sel, vars) {
   const keys = Object.keys(vars);

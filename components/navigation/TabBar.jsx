@@ -13,7 +13,7 @@ const CSS = `
 @media (min-width:720px){.ef-tabbar{display:none}}
 @media (forced-colors:active){.ef-tabbar__item[aria-current="page"]{background:Highlight;color:HighlightText;forced-color-adjust:none}}
 `;
-export function TabBar({ items, value, style, className, ...rest }) {
+export function TabBar({ items = [], value, style, className, ...rest }) {
   injectEfCss('ef-css-tabbar', CSS);
   return (
     <nav {...rest} className={`ef-tabbar ef-glass ef-glass--chrome ef-glass--blur${className ? ' ' + className : ''}`} style={style}>
