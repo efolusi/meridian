@@ -30,19 +30,23 @@ describe('glass material', () => {
 
   it('lives in the meridian layer, so product CSS still wins', () => {
     expect(layer).toContain('.ef-glass{');
-    expect(layer).toContain('.ef-field{');
+    expect(layer).toContain('.ef-glass-field{');
   });
 
   it('draws the field from field tokens at field.strength', () => {
-    const field = rule('.ef-field');
+    const field = rule('.ef-glass-field');
     expect(field).toContain('background-color:var(--field-0)');
     for (const n of [1, 2, 3]) expect(css).toContain(`var(--field-${n})`);
-    expect(css).toMatch(/\.ef-field::before\{[^}]*opacity:var\(--field-strength\)/);
+    expect(css).toMatch(/\.ef-glass-field::before\{[^}]*opacity:var\(--field-strength\)/);
   });
 
   it('turns into plain system colours under forced colours', () => {
     const fc = css.slice(css.lastIndexOf('@media (forced-colors:active){'));
     expect(fc).toMatch(/\.ef-glass\{[^}]*background:Canvas[^}]*backdrop-filter:none/);
-    expect(fc).toMatch(/\.ef-field::before\{display:none\}/);
+    expect(fc).toMatch(/\.ef-glass-field::before\{display:none\}/);
+  });
+
+  it('does not reuse a class a component owns (.ef-field is the form field)', () => {
+    expect(css).not.toMatch(/(^|[}\s,])\.ef-field[{:]/);
   });
 });
