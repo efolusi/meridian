@@ -41,6 +41,8 @@ jobs:
         run: |
           npm install --no-save --no-audit --no-fund playwright@1.48.0
           docker pull -q "$PW_IMAGE"
+          # The single quotes are on purpose: the variables expand inside the container, not here.
+          # shellcheck disable=SC2016
           {
             echo '#!/bin/sh'
             echo 'exec docker run --rm --network host --ipc host --user "$(id -u):$(id -g)" -e HOME=/tmp -e BASE -e SHOTS -e BUTTON_SHOTS -e DIRECTION -v "$GITHUB_WORKSPACE:$GITHUB_WORKSPACE" -v "$RUNNER_TEMP:$RUNNER_TEMP" -w "$GITHUB_WORKSPACE" "$PW_IMAGE" node "$@"'
@@ -51,7 +53,10 @@ jobs:
         run: |
           python3 scripts/serve_static.py 8000 127.0.0.1 &
           SERVER=$!
-          for i in $(seq 1 20); do curl -sf http://127.0.0.1:8000/site/_smoke.html >/dev/null && break || sleep 0.5; done
+          for _ in $(seq 1 20); do
+            if curl -sf http://127.0.0.1:8000/site/_smoke.html >/dev/null; then break; fi
+            sleep 0.5
+          done
           set +e
           BASE=http://127.0.0.1:8000 SHOTS="$RUNNER_TEMP/shots" "$RUNNER_TEMP/pw-node" scripts/smoke_headless.mjs
           CODE=$?
@@ -65,7 +70,7 @@ jobs:
         run: |
           rm -f tests/__shots__/*.png
           cp "$RUNNER_TEMP"/shots/*.png tests/__shots__/
-          COUNT=$(ls tests/__shots__/*.png | wc -l)
+          COUNT=$(find tests/__shots__ -maxdepth 1 -name '*.png' | wc -l)
           git add tests/__shots__
           # Staged diff, not worktree diff: fresh baselines are UNTRACKED files,
           # which `git diff --quiet` cannot see — that combination silently
