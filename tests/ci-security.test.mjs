@@ -333,3 +333,29 @@ describe('one gate list', () => {
     expect(gates).not.toMatch(/git diff --exit-code/)
   })
 })
+
+// zizmor cache-poisoning and artipacked (2026-11-23): setup-node v5 turns the npm cache
+// on by itself because package.json names a packageManager. A release or deploy job must
+// not restore a cache another run wrote, and a checkout keeps its token only when a later
+// step pushes with it.
+describe('release and deploy jobs use no package cache and keep no token they do not need', () => {
+  const steps = (src, action) => src.split(/\n(?= {6}- )/).filter((s) => s.includes(`uses: ${action}@`))
+
+  for (const name of ['publish.yml', 'deploy-production.yml']) {
+    it(`${name}: every setup-node turns the package cache off`, () => {
+      const found = steps(workflows[name], 'actions/setup-node')
+      expect(found.length).toBeGreaterThan(0)
+      for (const s of found) expect(s, s).toMatch(/package-manager-cache: false/)
+    })
+
+    it(`${name}: every checkout drops its token`, () => {
+      for (const s of steps(workflows[name], 'actions/checkout')) expect(s, s).toMatch(/persist-credentials: false/)
+    })
+  }
+
+  it('update-visual-baselines.yml keeps the token only because it pushes the baseline branch', () => {
+    const src = workflows['update-visual-baselines.yml']
+    expect(src).toMatch(/git push origin "\$BRANCH"/)
+    expect(src).toMatch(/zizmor: ignore\[artipacked\]/)
+  })
+})
