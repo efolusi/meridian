@@ -20,7 +20,7 @@ const CSS = `
 .ef-agentrun__step--pending .ef-agentrun__title{color:var(--text-muted);font-weight:500}
 .ef-agentrun__time{margin-inline-start:auto;font-family:var(--font-mono);font-size:var(--text-2xs);color:var(--text-muted);flex:none}
 .ef-agentrun__detail{font-size:var(--text-sm);line-height:1.55;color:var(--text-secondary);margin-top:var(--space-1)}
-.ef-agentrun__toggle{display:inline-flex;align-items:center;gap:var(--space-1);border:none;background:none;padding:0;cursor:pointer;font-family:var(--font-sans);font-size:var(--text-xs);font-weight:500;color:var(--text-muted);margin-top:var(--space-1)}
+.ef-agentrun__toggle{display:inline-flex;align-items:center;gap:var(--gap-label-icon);border:none;background:none;padding:0;cursor:pointer;font-family:var(--font-sans);font-size:var(--text-xs);font-weight:500;color:var(--text-muted);margin-top:var(--space-1)}
 .ef-agentrun__toggle:hover{color:var(--text-primary)}
 .ef-agentrun__toggle:focus-visible{outline:none;box-shadow:var(--focus-ring)}
 .ef-agentrun__toggle .ef-agentrun__tchev{display:inline-flex;transition:transform var(--dur-base) var(--ease-enter)}

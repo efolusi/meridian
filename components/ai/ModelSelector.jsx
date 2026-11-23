@@ -5,7 +5,7 @@ import { Portal, useAnchoredStyle } from '../overlay/Portal.jsx';
 import { Icon } from '../icons/Icon.jsx';
 const CSS = `
 .ef-modelsel{position:relative;display:inline-flex}
-.ef-modelsel__btn{display:inline-flex;align-items:center;gap:var(--space-2);height:32px;padding:0 var(--space-3);border:1px solid var(--border-strong);border-radius:var(--radius-sm);background:var(--surface-card);cursor:pointer;font-family:var(--font-sans);font-size:var(--text-sm);font-weight:500;color:var(--text-primary);transition:border-color var(--dur-fast) var(--ease-enter)}
+.ef-modelsel__btn{display:inline-flex;align-items:center;gap:var(--gap-label-icon);height:32px;padding:0 var(--space-3);border:1px solid var(--border-strong);border-radius:var(--radius-sm);background:var(--surface-card);cursor:pointer;font-family:var(--font-sans);font-size:var(--text-sm);font-weight:500;color:var(--text-primary);transition:border-color var(--dur-fast) var(--ease-enter)}
 .ef-modelsel__btn:hover{border-color:var(--text-muted)}
 .ef-modelsel__btn:focus-visible{outline:none;box-shadow:var(--focus-ring)}
 .ef-modelsel__provider{font-size:var(--text-xs);color:var(--text-muted);font-weight:400}

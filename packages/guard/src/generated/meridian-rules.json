@@ -1892,6 +1892,8 @@
     "font-display",
     "font-mono",
     "font-sans",
+    "gap-label-icon",
+    "gap-label-icon-sm",
     "glass-strength",
     "guard-click",
     "hold-confirm",

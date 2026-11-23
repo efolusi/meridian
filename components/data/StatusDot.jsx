@@ -2,7 +2,7 @@
 import React from 'react';
 import { injectEfCss } from '../runtime/runtime.jsx';
 const CSS = `
-.ef-status{display:inline-flex;align-items:center;gap:var(--space-2);font-size:var(--text-sm);color:var(--text-primary)}
+.ef-status{display:inline-flex;align-items:center;gap:var(--gap-label-icon);font-size:var(--text-sm);color:var(--text-primary)}
 .ef-status__dot{position:relative;width:8px;height:8px;border-radius:var(--radius-full);flex:none}
 .ef-status--success .ef-status__dot{background:var(--status-success-solid)}
 .ef-status--warning .ef-status__dot{background:var(--status-warning-solid)}

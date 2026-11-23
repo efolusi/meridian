@@ -1,5 +1,9 @@
 # Changelog
 
+## v2.1.0 - 2026-11-23
+
+- **One token for the gap between a label and its icon (MD59).** Two new tokens in `tokens/base.css`, Meridian-level aliases of the space scale (`tokens/spacing.css` is vendored from design-tokens, so they live here until design-tokens carries them): `--gap-label-icon` (`--space-2`, 8px) for an inline text and icon pair, and `--gap-label-icon-sm` (`--space-1`, 4px) for the small controls Badge, Button `xs` and Link. Every inline label and icon pair reads one of the two instead of a space step or a literal. Visible spacing changes: Button `xs` 6px to 4px, and 4px to 8px for the Input group button, the Navigation menu trigger and the Agent run toggle. The Combobox item's literal 8px is now the token, with the same value. Stacked and full-row layouts keep their own gaps (Tabbar item, Navigation menu link, Accordion trigger, Sidenav item, Topnav, Alert, and the lists, chips container and tabs list). `tests/gap-label-icon.test.mjs` pins each pair to its token and fails on a literal px gap in component CSS. Consumers that style one of these pairs themselves should read the same token; visual baselines of the affected components need regenerating. design-tokens stays vendored at v0.7.0.
+
 ## v2.0.0 - 2026-11-22
 
 A major release: the warm glass design (design-tokens v0.7.0). Upgrade steps: [guidelines/migration.md](guidelines/migration.md#v200).
