@@ -71,6 +71,9 @@ jobs:
       version: ${{ steps.d.outputs.version }}
     steps:
       - uses: actions/checkout@fbc6f3992d24b796d5a048ff273f7fcc4a7b6c09 # v5.1.0
+        with:
+          # Reads the manifest only; nothing here pushes, so the token is not kept.
+          persist-credentials: false
       - id: d
         run: |
           VERSION="$(node -p "require('./_ds_manifest.json').version")"
@@ -134,6 +137,8 @@ jobs:
       - uses: actions/setup-node@a0853c24544627f65ddf259abe73b1d18a591444 # v5.0.0
         with:
           node-version: '26.13.1'
+          # No package cache in a publish job: a cache written by another run could poison what is published.
+          package-manager-cache: false
 
       - name: Require successful exact-SHA checks before publish
         if: github.event_name == 'push'
@@ -252,6 +257,8 @@ jobs:
       - uses: actions/setup-node@a0853c24544627f65ddf259abe73b1d18a591444 # v5.0.0
         with:
           node-version: '26.13.1'
+          # No package cache in a publish job: a cache written by another run could poison what is published.
+          package-manager-cache: false
           registry-url: 'https://registry.npmjs.org'
 
       # Trusted publishing needs npm 11.5.1 or newer; node 22 still bundles 10.x.

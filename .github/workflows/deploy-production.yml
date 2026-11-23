@@ -34,6 +34,8 @@ jobs:
       - uses: actions/setup-node@a0853c24544627f65ddf259abe73b1d18a591444 # v5.0.0
         with:
           node-version-file: .nvmrc
+          # No package cache in a deploy job: a cache written by another run could poison the deployed build.
+          package-manager-cache: false
 
       - name: Require successful exact-SHA checks before production deploy
         env:
