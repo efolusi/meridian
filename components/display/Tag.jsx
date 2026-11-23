@@ -3,7 +3,7 @@ import React from 'react';
 import { Icon } from '../icons/Icon.jsx';
 import { injectEfCss } from '../runtime/runtime.jsx';
 const CSS = `
-.ef-tag{display:inline-flex;align-items:center;gap:var(--space-2);height:26px;padding:0 var(--space-3);border-radius:var(--radius-sm);background:transparent;border:1px solid var(--border-strong);color:var(--text-secondary);font-family:var(--font-sans);font-size:var(--text-sm);font-weight:var(--weight-medium);white-space:nowrap;transition:background var(--dur-fast) var(--ease-enter),border-color var(--dur-fast) var(--ease-enter)}
+.ef-tag{display:inline-flex;align-items:center;gap:var(--gap-label-icon);height:26px;padding:0 var(--space-3);border-radius:var(--radius-sm);background:transparent;border:1px solid var(--border-strong);color:var(--text-secondary);font-family:var(--font-sans);font-size:var(--text-sm);font-weight:var(--weight-medium);white-space:nowrap;transition:background var(--dur-fast) var(--ease-enter),border-color var(--dur-fast) var(--ease-enter)}
 .ef-tag--interactive{cursor:pointer}
 .ef-tag--interactive:hover{background:var(--surface-sunken);border-color:var(--sand-400)}
 .ef-tag--interactive:focus-visible{outline:none;box-shadow:var(--focus-ring)}

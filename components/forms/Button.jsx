@@ -3,7 +3,7 @@ import React from 'react';
 import { Icon } from '../icons/Icon.jsx';
 import { injectEfCss } from '../runtime/runtime.jsx';
 const CSS = `
-.ef-btn{display:inline-flex;align-items:center;justify-content:center;gap:var(--space-2);text-decoration:none;border:1px solid transparent;border-radius:var(--radius-sm);font-family:var(--font-sans);font-weight:var(--weight-semibold);cursor:pointer;white-space:nowrap;user-select:none;transition:background var(--dur-fast) var(--ease-enter),border-color var(--dur-fast) var(--ease-enter),color var(--dur-fast) var(--ease-enter),box-shadow var(--dur-fast) var(--ease-enter),transform var(--dur-base) var(--ease-emphasised)}
+.ef-btn{display:inline-flex;align-items:center;justify-content:center;gap:var(--gap-label-icon);text-decoration:none;border:1px solid transparent;border-radius:var(--radius-sm);font-family:var(--font-sans);font-weight:var(--weight-semibold);cursor:pointer;white-space:nowrap;user-select:none;transition:background var(--dur-fast) var(--ease-enter),border-color var(--dur-fast) var(--ease-enter),color var(--dur-fast) var(--ease-enter),box-shadow var(--dur-fast) var(--ease-enter),transform var(--dur-base) var(--ease-emphasised)}
 .ef-btn{line-height:var(--leading-normal)}
 .ef-btn--pill{border-radius:var(--radius-full)}
 .ef-btn--pill.ef-btn--xs{padding-inline:var(--space-3)}
@@ -19,7 +19,7 @@ const CSS = `
 .ef-btn--md{height:var(--control-h-md);padding:0 var(--space-4);font-size:var(--text-md)}
 .ef-btn--lg{height:var(--control-h-lg);padding:0 var(--space-5);font-size:var(--text-lg)}
 .ef-btn--xl{height:var(--control-h-xl);padding:0 var(--space-6);font-size:var(--text-lg)}
-.ef-btn--xs{height:var(--control-h-xs);padding:0 9px;font-size:var(--text-xs);gap:6px}
+.ef-btn--xs{height:var(--control-h-xs);padding:0 9px;font-size:var(--text-xs);gap:var(--gap-label-icon-sm)}
 .ef-btn--icon,.ef-btn--icon-md{width:var(--control-h-md);height:var(--control-h-md);padding:0}
 .ef-btn--icon-xs{width:var(--control-h-xs);height:var(--control-h-xs);padding:0}
 .ef-btn--icon-sm{width:var(--control-h-sm);height:var(--control-h-sm);padding:0}

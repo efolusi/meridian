@@ -6,6 +6,10 @@
    less specificity than any .ef-* class, so components in the same layer keep
    their own margins, fonts and colours. */
 @layer meridian{
+/* The gap between a label and its icon. Meridian-level aliases of the space scale: spacing.css is
+   vendored from design-tokens, so these live here until design-tokens carries them.
+   --gap-label-icon is an inline text and icon pair; --gap-label-icon-sm is the small controls (Badge, Button xs, Link). */
+:root{--gap-label-icon:var(--space-2);--gap-label-icon-sm:var(--space-1)}
 /* Icons: the box and the scale sizes here, so the markup carries no style attribute (strict CSP).
    A size off the scale is set through the CSSOM by Icon. */
 [data-slot="icon"]{display:inline-flex;flex:none;color:inherit}
