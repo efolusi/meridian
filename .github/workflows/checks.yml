@@ -62,6 +62,8 @@ jobs:
         run: |
           npm install --no-save --no-audit --no-fund playwright@1.48.0 axe-core@4.13.0
           docker pull -q "$PW_IMAGE"
+          # The single quotes are on purpose: the variables expand inside the container, not here.
+          # shellcheck disable=SC2016
           {
             echo '#!/bin/sh'
             echo 'exec docker run --rm --network host --ipc host --user "$(id -u):$(id -g)" -e HOME=/tmp -e BASE -e SHOTS -e BUTTON_SHOTS -e DIRECTION -e A11Y_GROUPS -v "$GITHUB_WORKSPACE:$GITHUB_WORKSPACE" -v "$RUNNER_TEMP:$RUNNER_TEMP" -w "$GITHUB_WORKSPACE" "$PW_IMAGE" node "$@"'
@@ -70,7 +72,7 @@ jobs:
       - name: Button anchor cascade and state parity
         run: BUTTON_SHOTS="$RUNNER_TEMP/button-shots" "$RUNNER_TEMP/pw-node" scripts/check_button_cascade.mjs
       - name: Reduced motion keeps the token fade and stops loops
-        run: $RUNNER_TEMP/pw-node scripts/check_reduced_motion.mjs
+        run: '"$RUNNER_TEMP/pw-node" scripts/check_reduced_motion.mjs'
       - name: Upload button interaction receipts
         if: always()
         uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4.6.2
@@ -82,7 +84,10 @@ jobs:
         run: |
           python3 scripts/serve_static.py 8000 127.0.0.1 &
           SERVER=$!
-          for i in $(seq 1 20); do curl -sf http://127.0.0.1:8000/site/_smoke.html >/dev/null && break || sleep 0.5; done
+          for _ in $(seq 1 20); do
+            if curl -sf http://127.0.0.1:8000/site/_smoke.html >/dev/null; then break; fi
+            sleep 0.5
+          done
           set +e
           BASE=http://127.0.0.1:8000 SHOTS="$RUNNER_TEMP/shots" "$RUNNER_TEMP/pw-node" scripts/smoke_headless.mjs
           CODE=$?
