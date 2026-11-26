@@ -1,6 +1,6 @@
 'use client';
 import React from 'react';
-import { injectEfCss } from '../runtime/runtime.jsx';
+import { injectEfCss, styleRef } from '../runtime/runtime.jsx';
 import { useFieldProps } from './Field.jsx';
 
 const CSS = `
@@ -57,15 +57,17 @@ export const Slider = React.forwardRef(function Slider({ min = 0, max = 100, ste
     onValueChange?.(next);
   };
 
-  const rangeStyle = orientation === 'vertical'
-    ? { bottom: `${low}%`, height: `${high - low}%`, width: '100%' }
-    : { insetInlineStart: `${inverted ? 100 - high : low}%`, width: `${high - low}%` };
+  // The range is sized through the CSSOM, not a style attribute (strict CSP drops those). A
+  // property the other orientation sets is cleared (null), so a switch leaves nothing behind.
+  const rangeValues = orientation === 'vertical'
+    ? { bottom: `${low}%`, height: `${high - low}%`, width: '100%', 'inset-inline-start': null }
+    : { 'inset-inline-start': `${inverted ? 100 - high : low}%`, width: `${high - low}%`, bottom: null, height: null };
   // Every thumb's native min/max is the full range, so each thumb sits on the
   // shared track where the range fill ends. The neighbour limit is enforced by
   // update() and announced through aria-valuemin/aria-valuemax.
   const control = (
     <span className="ef-slider__control">
-      <span className="ef-slider__rail" data-slot="slider-track"><span className="ef-slider__range" data-slot="slider-range" style={rangeStyle} /></span>
+      <span className="ef-slider__rail" data-slot="slider-track"><span className="ef-slider__range" data-slot="slider-range" ref={styleRef(rangeValues)} /></span>
       {values.map((value, index) => (
         <input
           {...rest}

@@ -1,12 +1,14 @@
 'use client';
 import React from 'react';
-import { injectEfCss, cssPct, isElementOfType } from '../runtime/runtime.jsx';
+import { injectEfCss, cssPct, isElementOfType, mergeRefs, styleRefUnder, useIsoLayoutEffect } from '../runtime/runtime.jsx';
 import { useDirection } from './Direction.jsx';
 
 const CSS = `
 .ef-resizable{display:flex;width:100%;height:100%;min-height:0;min-width:0}
 .ef-resizable[data-orientation="vertical"]{flex-direction:column}
-.ef-resizable__pane{min-width:0;min-height:0;overflow:auto}
+/* Before hydration a pane has no flex-basis yet, so the panes split the space equally; once the size is written, data-sized turns the fallback off. */
+.ef-resizable__pane{flex:1 1 0;min-width:0;min-height:0;overflow:auto}
+.ef-resizable__pane[data-sized]{flex-grow:0;flex-shrink:0}
 .ef-resizable__handle{flex:none;position:relative;background:transparent;border:none;padding:0;cursor:col-resize;touch-action:none}
 .ef-resizable[data-orientation="horizontal"]>.ef-resizable__handle{width:9px}
 .ef-resizable[data-orientation="vertical"]>.ef-resizable__handle{height:9px;cursor:row-resize}
@@ -79,7 +81,9 @@ export const ResizablePanelGroup = React.forwardRef(function ResizablePanelGroup
 export const ResizablePanel = React.forwardRef(function ResizablePanel({ _panelIndex = 0, defaultSize, minSize, maxSize, className, ...props }, ref) {
   const ctx = React.useContext(ResizableCtx);
   const size = ctx?.sizes[_panelIndex] ?? sizeNumber(defaultSize, 50);
-  return <div {...props} ref={ref} data-slot="resizable-panel" data-panel-index={_panelIndex} className={`ef-resizable__pane${className ? ' ' + className : ''}`} style={{ flexBasis: cssPct(size), flexGrow: 0, flexShrink: 0, ...props.style }} />;
+  const [sized, setSized] = React.useState(false);
+  useIsoLayoutEffect(() => { setSized(true); }, []);
+  return <div {...props} ref={mergeRefs(ref, styleRefUnder({ 'flex-basis': cssPct(size) }, props.style))} data-slot="resizable-panel" data-sized={sized ? '' : undefined} data-panel-index={_panelIndex} className={`ef-resizable__pane${className ? ' ' + className : ''}`} />;
 });
 
 export const ResizableHandle = React.forwardRef(function ResizableHandle({ _handleIndex = 0, withHandle = false, disabled = false, className, ...props }, ref) {

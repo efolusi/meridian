@@ -1,16 +1,16 @@
 {
   "totals": {
     "@efolusi/meridian": {
-      "bytes": 377423,
-      "gzip": 85327
+      "bytes": 377698,
+      "gzip": 85430
     },
     "dist/components.css": {
-      "bytes": 241716,
-      "gzip": 33169
+      "bytes": 242003,
+      "gzip": 33301
     },
     "_ds_bundle.js": {
-      "bytes": 903395,
-      "gzip": 162048
+      "bytes": 904563,
+      "gzip": 162469
     }
   },
   "modules": [
@@ -207,8 +207,8 @@
       "exports": [
         "SelectionQuote"
       ],
-      "bytes": 46877,
-      "gzip": 8196
+      "bytes": 47143,
+      "gzip": 8366
     },
     {
       "module": "ai/SourceCard.js",
@@ -635,8 +635,8 @@
         "ResizablePanel",
         "ResizableHandle"
       ],
-      "bytes": 4065,
-      "gzip": 1760
+      "bytes": 4696,
+      "gzip": 2028
     },
     {
       "module": "display/ScrollArea.js",
@@ -681,8 +681,8 @@
       "exports": [
         "Toolbar"
       ],
-      "bytes": 51010,
-      "gzip": 9680
+      "bytes": 51184,
+      "gzip": 9749
     },
     {
       "module": "display/TreeList.js",
@@ -740,8 +740,8 @@
       "exports": [
         "ConfirmDialog"
       ],
-      "bytes": 56136,
-      "gzip": 10945
+      "bytes": 56310,
+      "gzip": 11028
     },
     {
       "module": "feedback/Dialog.js",
@@ -758,8 +758,8 @@
         "DialogTitle",
         "DialogDescription"
       ],
-      "bytes": 51905,
-      "gzip": 9649
+      "bytes": 52079,
+      "gzip": 9730
     },
     {
       "module": "feedback/Loader.js",
@@ -806,8 +806,8 @@
         "TooltipTrigger",
         "TooltipContent"
       ],
-      "bytes": 5634,
-      "gzip": 2258
+      "bytes": 5808,
+      "gzip": 2337
     },
     {
       "module": "files/Attachment.js",
@@ -1062,8 +1062,8 @@
         "SelectSeparator",
         "SelectItem"
       ],
-      "bytes": 52875,
-      "gzip": 10418
+      "bytes": 53049,
+      "gzip": 10492
     },
     {
       "module": "forms/Slider.js",
@@ -1071,8 +1071,8 @@
       "exports": [
         "Slider"
       ],
-      "bytes": 2890,
-      "gzip": 1422
+      "bytes": 3160,
+      "gzip": 1551
     },
     {
       "module": "forms/Switch.js",
@@ -1100,8 +1100,8 @@
         "ToggleGroup",
         "ToggleGroupItem"
       ],
-      "bytes": 3203,
-      "gzip": 1508
+      "bytes": 3377,
+      "gzip": 1603
     },
     {
       "module": "icons/Icon.js",
@@ -1241,8 +1241,8 @@
         "MenubarSubTrigger",
         "MenubarSubContent"
       ],
-      "bytes": 61220,
-      "gzip": 12369
+      "bytes": 61396,
+      "gzip": 12461
     },
     {
       "module": "navigation/NavigationMenu.js",
@@ -1257,8 +1257,8 @@
         "NavigationMenuIndicator",
         "NavigationMenuViewport"
       ],
-      "bytes": 51839,
-      "gzip": 9762
+      "bytes": 52013,
+      "gzip": 9925
     },
     {
       "module": "navigation/PageControl.js",
@@ -1395,8 +1395,8 @@
         "CommandShortcut",
         "CommandSeparator"
       ],
-      "bytes": 56261,
-      "gzip": 11049
+      "bytes": 56435,
+      "gzip": 11129
     },
     {
       "module": "overlay/ContextMenu.js",
@@ -1418,8 +1418,8 @@
         "ContextMenuSubTrigger",
         "ContextMenuSubContent"
       ],
-      "bytes": 57346,
-      "gzip": 11511
+      "bytes": 57481,
+      "gzip": 11583
     },
     {
       "module": "overlay/Drawer.js",
@@ -1436,8 +1436,8 @@
         "DrawerTitle",
         "DrawerDescription"
       ],
-      "bytes": 55433,
-      "gzip": 10777
+      "bytes": 55631,
+      "gzip": 10864
     },
     {
       "module": "overlay/DropdownMenu.js",
@@ -1459,8 +1459,8 @@
         "DropdownMenuSubTrigger",
         "DropdownMenuSubContent"
       ],
-      "bytes": 57270,
-      "gzip": 11502
+      "bytes": 57444,
+      "gzip": 11608
     },
     {
       "module": "overlay/HoverCard.js",
@@ -1470,8 +1470,8 @@
         "HoverCardTrigger",
         "HoverCardContent"
       ],
-      "bytes": 6133,
-      "gzip": 2537
+      "bytes": 6307,
+      "gzip": 2611
     },
     {
       "module": "overlay/Popover.js",
@@ -1484,8 +1484,8 @@
         "PopoverTitle",
         "PopoverDescription"
       ],
-      "bytes": 7292,
-      "gzip": 2806
+      "bytes": 7466,
+      "gzip": 2881
     },
     {
       "module": "overlay/Portal.js",
@@ -1509,8 +1509,8 @@
         "SheetTitle",
         "SheetDescription"
       ],
-      "bytes": 53003,
-      "gzip": 9840
+      "bytes": 53177,
+      "gzip": 9920
     },
     {
       "module": "runtime/runtime.js",
@@ -1518,8 +1518,8 @@
       "exports": [
         "shared helpers"
       ],
-      "bytes": 1666,
-      "gzip": 949
+      "bytes": 1840,
+      "gzip": 1036
     }
   ]
 }

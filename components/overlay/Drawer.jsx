@@ -89,7 +89,7 @@ export const DrawerContent = React.forwardRef(function DrawerContent({ className
   const transform = offset ? (axis === 'clientX' ? `translateX(${offset * sign}px)` : `translateY(${offset * sign}px)`) : undefined;
   const escape = event => { onEscapeKeyDown?.(event); if (!drawer?.dismissible) event.preventDefault(); };
   const dismissOverlay = event => { overlayProps?.onMouseDown?.(event); if (!drawer?.dismissible) event.preventDefault(); };
-  return <DialogContent {...props} ref={mergeRefs(ref, styleRef({ transform: transform || style?.transform, transition: offset ? 'none' : style?.transition }))} slot="drawer-content" data-vaul-drawer-direction={direction} className={join('ef-drawer', className)} width="none" showCloseButton={false} onEscapeKeyDown={escape} overlayProps={{ ...overlayProps, slot: 'drawer-overlay', className: join('ef-drawer__overlay', overlayProps?.className), onMouseDown: dismissOverlay }} style={style} onPointerDown={start} onPointerMove={move} onPointerUp={end}>
+  return <DialogContent {...props} ref={mergeRefs(ref, styleRef(offset ? { transform, transition: 'none' } : { transform: style?.transform, transition: style?.transition }))} slot="drawer-content" data-vaul-drawer-direction={direction} className={join('ef-drawer', className)} width="none" showCloseButton={false} onEscapeKeyDown={escape} overlayProps={{ ...overlayProps, slot: 'drawer-overlay', className: join('ef-drawer__overlay', overlayProps?.className), onMouseDown: dismissOverlay }} style={style} onPointerDown={start} onPointerMove={move} onPointerUp={end}>
     <div data-slot="drawer-handle" className="ef-drawer__handle" />{children}
   </DialogContent>;
 });

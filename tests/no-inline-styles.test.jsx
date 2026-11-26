@@ -40,19 +40,18 @@ import { SidebarMenuSkeleton } from '../components/navigation/Sidebar.jsx';
 import { Dialog, DialogContent, DialogTitle } from '../components/feedback/Dialog.jsx';
 import { Sheet, SheetContent, SheetTitle } from '../components/overlay/Sheet.jsx';
 import { Popover, PopoverContent, PopoverTrigger } from '../components/overlay/Popover.jsx';
+import { Slider } from '../components/forms/Slider.jsx';
+import { ResizableHandle, ResizablePanel, ResizablePanelGroup } from '../components/display/Resizable.jsx';
+import { SelectionQuote } from '../components/ai/SelectionQuote.jsx';
 
 // MD18 (#180): strict-CSP sites (style-src without 'unsafe-inline') drop style attributes,
 // so components put fixed styles in their CSS and set runtime values through the CSSOM.
 // A style prop the caller passes is the caller's choice and is allowed through.
 
 // Files not fixed yet, with their count of style attributes. It only shrinks; #180
-// closes when it is empty.
-const REMAINING = {
-    "ai/SelectionQuote.jsx": 1,
-    "display/Resizable.jsx": 1,
-    "forms/Slider.jsx": 1,
-    "navigation/NavigationMenu.jsx": 1,
-  };
+// closes when it is empty, and it is empty now. A new file with a style attribute fails the
+// first test below.
+const REMAINING = {};
 
 describe('no style attributes in server-rendered HTML', () => {
   const cases = {
@@ -97,6 +96,10 @@ describe('no style attributes in server-rendered HTML', () => {
     PaginationEllipsis: <PaginationEllipsis />,
     'SidebarMenuSkeleton showIcon': <SidebarMenuSkeleton showIcon />,
     SidebarMenuSkeleton: <SidebarMenuSkeleton />,
+    Slider: <Slider defaultValue={[20, 70]} aria-label="Range" />,
+    'Slider vertical': <Slider defaultValue={[30]} orientation="vertical" aria-label="Level" />,
+    ResizablePanelGroup: <ResizablePanelGroup><ResizablePanel defaultSize={30}>a</ResizablePanel><ResizableHandle /><ResizablePanel>b</ResizablePanel></ResizablePanelGroup>,
+    SelectionQuote: <SelectionQuote actions={[{ id: 'q', label: 'Quote' }]}>text</SelectionQuote>,
   };
   it.each(Object.keys(cases))('%s', (name) => {
     expect(renderToString(cases[name])).not.toMatch(/\sstyle="/);
@@ -320,5 +323,130 @@ describe('batch 5 overlays: fixed styles in CSS, placement through the CSSOM', (
     expect(panel.style.width).toBe('280px');
     expect(panel.style.top).toBe('5px');
     unmount();
+  });
+});
+
+describe('batch 6 sets the last runtime values through the CSSOM', () => {
+  it('Slider sizes its range after mount, for both orientations', async () => {
+    const { render } = await import('@testing-library/react');
+    const h = render(<Slider defaultValue={[20, 70]} aria-label="Range" />);
+    const range = h.container.querySelector('.ef-slider__range');
+    expect(range.style.width).toBe('50%');
+    expect(range.style.getPropertyValue('inset-inline-start')).toBe('20%');
+    h.unmount();
+    const v = render(<Slider defaultValue={[30]} orientation="vertical" aria-label="Level" />);
+    const vr = v.container.querySelector('.ef-slider__range');
+    expect(vr.style.height).toBe('30%');
+    expect(vr.style.bottom).toBe('0%');
+    v.unmount();
+  });
+
+  it('ResizablePanel gets its flex-basis after mount and its no-grow, no-shrink from the class', async () => {
+    const { render } = await import('@testing-library/react');
+    const { container, unmount } = render(<ResizablePanelGroup><ResizablePanel defaultSize={100 / 3}>a</ResizablePanel><ResizableHandle /><ResizablePanel>b</ResizablePanel></ResizablePanelGroup>);
+    const panes = container.querySelectorAll('[data-slot="resizable-panel"]');
+    expect(panes[0].style.flexBasis).toBe('33.333%');
+    expect(panes[0].style.flexGrow).toBe('');
+    expect(panes[0].style.flexShrink).toBe('');
+    unmount();
+  });
+
+  it('Resizable hydrates without a mismatch and writes a short percentage', async () => {
+    const { hydrateRoot } = await import('react-dom/client');
+    const { act } = await import('react');
+    const tree = <ResizablePanelGroup><ResizablePanel defaultSize={100 / 3}><div>left</div></ResizablePanel><ResizableHandle /><ResizablePanel><div>right</div></ResizablePanel></ResizablePanelGroup>;
+    const html = renderToString(tree);
+    expect(html).not.toMatch(/\sstyle="/);
+    const host = document.createElement('div');
+    host.innerHTML = html;
+    document.body.appendChild(host);
+    const errors = [];
+    await act(async () => { hydrateRoot(host, tree, { onRecoverableError: (e) => errors.push(e) }); });
+    expect(errors).toEqual([]);
+    expect(host.querySelector('[data-slot="resizable-panel"]').style.flexBasis).toBe('33.333%');
+    host.remove();
+  });
+});
+
+describe('review of batch 6: first paint, rerender and behaviour', () => {
+  it('Resizable: before hydration a pane has an equal-split fallback, and data-sized swaps it for the written flex-basis', async () => {
+    const src = readFileSync('components/display/Resizable.jsx', 'utf8');
+    expect(src).toMatch(/\.ef-resizable__pane\{[^}]*flex:1 1 0/);
+    expect(src).toMatch(/\.ef-resizable__pane\[data-sized\]\{[^}]*flex-grow:0;flex-shrink:0/);
+    const html = renderToString(<ResizablePanelGroup><ResizablePanel defaultSize={30}>a</ResizablePanel><ResizableHandle /><ResizablePanel>b</ResizablePanel></ResizablePanelGroup>);
+    expect(html).toContain('ef-resizable__pane');
+    expect(html).not.toContain('data-sized');
+    expect(html).not.toMatch(/\sstyle="/);
+    const { render } = await import('@testing-library/react');
+    const { container, unmount } = render(<ResizablePanelGroup><ResizablePanel defaultSize={30}>a</ResizablePanel><ResizableHandle /><ResizablePanel>b</ResizablePanel></ResizablePanelGroup>);
+    const pane = container.querySelector('[data-slot="resizable-panel"]');
+    expect(pane.hasAttribute('data-sized')).toBe(true);
+    expect(pane.style.flexBasis).toBe('30%');
+    unmount();
+  });
+
+  it('Resizable: a caller flex shorthand wins over the computed flex-basis', async () => {
+    const { render } = await import('@testing-library/react');
+    const { container, unmount } = render(<ResizablePanelGroup><ResizablePanel defaultSize={30} style={{ flex: '2 2 0' }}>a</ResizablePanel><ResizableHandle /><ResizablePanel>b</ResizablePanel></ResizablePanelGroup>);
+    const pane = container.querySelector('[data-slot="resizable-panel"]');
+    expect(pane.style.flexBasis).toBe('0px');
+    unmount();
+  });
+
+  it('Slider: the range follows a value change, and an orientation switch clears the other orientation\'s properties', async () => {
+    const { render } = await import('@testing-library/react');
+    const { container, rerender, unmount } = render(<Slider value={[20, 70]} onValueChange={() => {}} aria-label="Range" />);
+    const range = () => container.querySelector('.ef-slider__range');
+    expect(range().style.width).toBe('50%');
+    rerender(<Slider value={[10, 40]} onValueChange={() => {}} aria-label="Range" />);
+    expect(range().style.width).toBe('30%');
+    expect(range().style.getPropertyValue('inset-inline-start')).toBe('10%');
+    rerender(<Slider value={[10, 40]} orientation="vertical" onValueChange={() => {}} aria-label="Range" />);
+    expect(range().style.getPropertyValue('inset-inline-start')).toBe('');
+    expect(range().style.bottom).toBe('10%');
+    expect(range().style.height).toBe('30%');
+    rerender(<Slider value={[10, 40]} onValueChange={() => {}} aria-label="Range" />);
+    expect(range().style.bottom).toBe('');
+    expect(range().style.height).toBe('');
+    expect(range().style.getPropertyValue('inset-inline-start')).toBe('10%');
+    unmount();
+  });
+
+  it('SelectionQuote: selecting text places the bar (top, left, data-placed)', async () => {
+    const { render, screen, waitFor } = await import('@testing-library/react');
+    const rect = HTMLElement.prototype.getBoundingClientRect;
+    HTMLElement.prototype.getBoundingClientRect = function () {
+      const bar = this.classList?.contains('ef-selq__bar');
+      const w = bar ? 100 : 500;
+      const h = bar ? 30 : 200;
+      return { x: 0, y: 0, top: 0, left: 0, right: w, bottom: h, width: w, height: h, toJSON() {} };
+    };
+    // jsdom has no layout, and may not define Range.getClientRects at all.
+    const hadRects = Object.prototype.hasOwnProperty.call(Range.prototype, 'getClientRects');
+    const savedRects = Range.prototype.getClientRects;
+    Range.prototype.getClientRects = () => [{ top: 100, bottom: 120, left: 50, right: 90, width: 40, height: 20 }];
+    try {
+      const { container, unmount } = render(<SelectionQuote actions={[{ id: 'q', label: 'Quote' }]}><p>Quotable words</p></SelectionQuote>);
+      expect(container.querySelector('.ef-selq__bar')).toBeNull();
+      const text = container.querySelector('p').firstChild;
+      const range = document.createRange();
+      range.setStart(text, 0);
+      range.setEnd(text, 8);
+      const selection = window.getSelection();
+      selection.removeAllRanges();
+      selection.addRange(range);
+      document.dispatchEvent(new Event('pointerup', { bubbles: true }));
+      await waitFor(() => expect(container.querySelector('.ef-selq__bar')).not.toBeNull());
+      const bar = container.querySelector('.ef-selq__bar');
+      await waitFor(() => expect(bar.hasAttribute('data-placed')).toBe(true));
+      expect(bar.style.top).toBe('62px');
+      expect(bar.style.left).toBe('50px');
+      expect(screen.getByRole('toolbar')).toBe(bar);
+      selection.removeAllRanges();
+      unmount();
+    } finally {
+      if (hadRects) Range.prototype.getClientRects = savedRects; else delete Range.prototype.getClientRects;
+      HTMLElement.prototype.getBoundingClientRect = rect;
+    }
   });
 });

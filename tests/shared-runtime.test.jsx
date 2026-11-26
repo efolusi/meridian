@@ -25,6 +25,23 @@ describe('styleRefUnder', () => {
     expect(el.style.left).toBe('20px');
   });
 
+  it('a caller inset shorthand keeps the computed top, right, bottom and left off', () => {
+    const el = document.createElement('div');
+    styleRefUnder({ top: 10, left: 20, right: 'auto', bottom: 'auto', width: 30 }, { inset: 0 })(el);
+    expect(el.style.top).toBe('');
+    expect(el.style.left).toBe('');
+    expect(el.style.right).toBe('');
+    expect(el.style.bottom).toBe('');
+    expect(el.style.width).toBe('30px');
+  });
+
+  it('a caller flex shorthand keeps the computed flex-basis off', () => {
+    const el = document.createElement('div');
+    styleRefUnder({ 'flex-basis': '40%', width: 30 }, { flex: '1 1 0' })(el);
+    expect(el.style.flexBasis).toBe('');
+    expect(el.style.width).toBe('30px');
+  });
+
   it('sets everything when the caller passes no style', () => {
     const el = document.createElement('div');
     styleRefUnder({ top: 10, 'max-width': 300 }, undefined)(el);
