@@ -109,6 +109,23 @@ Pin React 18 for this path: React 19 dropped the UMD builds the bundle relies on
 
 Any path can drop to vendoring: copy `components/<group>/<Name>.jsx` and its `.d.ts` straight into your codebase (Apache-2.0: keep the license notice). Each registry item at `site/registry/<name>.json` lists the sibling components it needs under `registryDependencies`, so a copied component brings its dependencies with it.
 
+## Strict Content Security Policy
+
+No Meridian component writes a `style` attribute of its own. Runtime sizes and positions go through the CSSOM, which a CSP does not block. What a strict policy (`style-src` without `'unsafe-inline'`) still blocks depends on how you install Meridian:
+
+| Install | Under a strict `style-src` | What to do |
+|---|---|---|
+| npm, `@efolusi/meridian` | Works: the component CSS is the static `styles.css` | Nothing |
+| Registry copies, `npx meridian add` | Each component adds a `<style>` element when it renders, and the policy blocks it | Add `meridian-ssr-css` and import its `components.css`; components then skip the CSS it carries. A copy you edit adds its own CSS again, and that is blocked |
+| CDN bundle, `_ds_bundle.js` | Each component adds a `<style>` element when it renders, and the policy blocks it | Allow `'unsafe-inline'` in `style-src`, or use the npm package |
+
+Two things are blocked on every path:
+
+- `ChartStyle`, which `ChartContainer` renders, writes a `<style>` element for the colours its `config` sets (`color` or `theme`), so the series lose those colours.
+- A `style` prop you pass is a `style` attribute in server-rendered HTML. The policy drops it, and hydration does not apply it again. In the browser, React sets it through the CSSOM, which works.
+
+The theme script is a `script-src` matter: pass a nonce or allow its hash, as [theming.md](theming.md#server-layouts) describes.
+
 ## Dark mode and density, everywhere
 
 Independent of framework, set attributes on `<html>` or any subtree:
@@ -117,7 +134,7 @@ Independent of framework, set attributes on `<html>` or any subtree:
 <html data-theme="dark" data-density="compact">
 ```
 
-Only semantic aliases remap. A `data-theme="dark"` subtree turns dark inside a light page. The reverse does not work yet: there is no `data-theme="light"` token block, so a light card inside a dark page stays dark.
+Only semantic aliases remap. A `data-theme="dark"` subtree turns dark inside a light page, and a `data-theme="light"` subtree turns light inside a dark one: the light token block is `:root, [data-theme="light"]`.
 
 With no `data-theme` on `<html>`, Meridian follows the operating system:
 `prefers-color-scheme: dark` applies the dark tokens. `data-theme="dark"`
