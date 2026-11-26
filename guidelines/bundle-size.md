@@ -14,8 +14,8 @@ CSS is not counted per component: `styles.css` ships every component style in on
 | File | Size | Gzip |
 | --- | ---: | ---: |
 | `@efolusi/meridian` | 368.5 kB | 83.3 kB |
-| `dist/components.css` | 235.9 kB | 32.4 kB |
-| `_ds_bundle.js` | 882.0 kB | 158.2 kB |
+| `dist/components.css` | 236.0 kB | 32.4 kB |
+| `_ds_bundle.js` | 882.4 kB | 158.3 kB |
 
 The root import, `@efolusi/meridian`, is every component. `_ds_bundle.js` is the zero-build CDN bundle, which also carries each component's CSS. The root import is minified; the CSS and the CDN bundle are measured as shipped.
 
@@ -42,7 +42,7 @@ The root import, `@efolusi/meridian`, is every component. `_ds_bundle.js` is the
 | `ai/Reasoning.js` | Reasoning | 44.6 kB | 7.5 kB |
 | `ai/RichComposer.js` | RichComposer | 48.0 kB | 8.8 kB |
 | `ai/Sandbox.js` | Sandbox | 45.4 kB | 7.7 kB |
-| `ai/SelectionQuote.js` | SelectionQuote | 45.8 kB | 8.0 kB |
+| `ai/SelectionQuote.js` | SelectionQuote | 46.0 kB | 8.2 kB |
 | `ai/SourceCard.js` | SourceCard | 44.7 kB | 7.6 kB |
 | `ai/Suggestions.js` | Suggestions | 44.2 kB | 7.3 kB |
 | `ai/Task.js` | Task | 44.6 kB | 7.4 kB |
@@ -84,7 +84,7 @@ The root import, `@efolusi/meridian`, is every component. `_ds_bundle.js` is the
 | `display/Item.js` | ItemGroup, ItemSeparator, Item, ItemMedia, ItemContent, ItemTitle, ItemDescription, ItemActions, ItemHeader, ItemFooter | 3.7 kB | 1.0 kB |
 | `display/Kbd.js` | Kbd, KbdGroup | 0.7 kB | 0.4 kB |
 | `display/Link.js` | Link | 44.3 kB | 7.3 kB |
-| `display/Resizable.js` | ResizablePanelGroup, ResizablePanel, ResizableHandle | 4.0 kB | 1.7 kB |
+| `display/Resizable.js` | ResizablePanelGroup, ResizablePanel, ResizableHandle | 4.4 kB | 1.9 kB |
 | `display/ScrollArea.js` | ScrollArea, ScrollBar | 1.5 kB | 0.8 kB |
 | `display/Separator.js` | Separator | 0.6 kB | 0.4 kB |
 | `display/Tag.js` | Tag | 44.6 kB | 7.4 kB |
@@ -122,7 +122,7 @@ The root import, `@efolusi/meridian`, is every component. `_ds_bundle.js` is the
 | `forms/Questionnaire.js` | Questionnaire, QuestionnaireProgress, QuestionnaireItem, QuestionnaireTitle, QuestionnaireDescription, QuestionnaireChoices, QuestionnaireChoice, QuestionnaireInput, QuestionnaireError, QuestionnaireActions, QuestionnairePrevious, QuestionnaireSkip, QuestionnaireNext, QuestionnaireSubmit | 7.4 kB | 2.5 kB |
 | `forms/Radio.js` | RadioGroup, RadioGroupItem, Radio | 2.3 kB | 1.0 kB |
 | `forms/Select.js` | Select, SelectTrigger, SelectValue, SelectContent, SelectGroup, SelectLabel, SelectSeparator, SelectItem | 51.6 kB | 10.2 kB |
-| `forms/Slider.js` | Slider | 2.8 kB | 1.4 kB |
+| `forms/Slider.js` | Slider | 3.1 kB | 1.5 kB |
 | `forms/Switch.js` | Switch | 2.0 kB | 0.9 kB |
 | `forms/Textarea.js` | Textarea | 45.1 kB | 7.7 kB |
 | `forms/Toggle.js` | Toggle, ToggleGroup, ToggleGroupItem | 3.0 kB | 1.4 kB |
@@ -139,7 +139,7 @@ The root import, `@efolusi/meridian`, is every component. `_ds_bundle.js` is the
 | `marketing/ThemeToggle.js` | ThemeToggle | 46.5 kB | 8.4 kB |
 | `navigation/Breadcrumbs.js` | Breadcrumb, BreadcrumbList, BreadcrumbItem, BreadcrumbLink, BreadcrumbPage, BreadcrumbSeparator, BreadcrumbEllipsis | 46.0 kB | 7.7 kB |
 | `navigation/Menubar.js` | Menubar, MenubarMenu, MenubarTrigger, MenubarContent, MenubarPortal, MenubarGroup, MenubarRadioGroup, MenubarLabel, MenubarSeparator, MenubarShortcut, MenubarItem, MenubarCheckboxItem, MenubarRadioItem, MenubarSub, MenubarSubTrigger, MenubarSubContent | 59.8 kB | 12.1 kB |
-| `navigation/NavigationMenu.js` | NavigationMenu, NavigationMenuList, NavigationMenuItem, NavigationMenuTrigger, NavigationMenuContent, NavigationMenuLink, NavigationMenuIndicator, NavigationMenuViewport | 50.6 kB | 9.5 kB |
+| `navigation/NavigationMenu.js` | NavigationMenu, NavigationMenuList, NavigationMenuItem, NavigationMenuTrigger, NavigationMenuContent, NavigationMenuLink, NavigationMenuIndicator, NavigationMenuViewport | 50.8 kB | 9.7 kB |
 | `navigation/PageControl.js` | PageControl | 0.7 kB | 0.4 kB |
 | `navigation/Pagination.js` | Pagination, PaginationContent, PaginationItem, PaginationLink, PaginationPrevious, PaginationNext, PaginationEllipsis | 45.8 kB | 7.6 kB |
 | `navigation/SegmentedControl.js` | SegmentedControl | 44.3 kB | 7.4 kB |

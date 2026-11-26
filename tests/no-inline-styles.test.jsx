@@ -40,19 +40,18 @@ import { SidebarMenuSkeleton } from '../components/navigation/Sidebar.jsx';
 import { Dialog, DialogContent, DialogTitle } from '../components/feedback/Dialog.jsx';
 import { Sheet, SheetContent, SheetTitle } from '../components/overlay/Sheet.jsx';
 import { Popover, PopoverContent, PopoverTrigger } from '../components/overlay/Popover.jsx';
+import { Slider } from '../components/forms/Slider.jsx';
+import { ResizableHandle, ResizablePanel, ResizablePanelGroup } from '../components/display/Resizable.jsx';
+import { SelectionQuote } from '../components/ai/SelectionQuote.jsx';
 
 // MD18 (#180): strict-CSP sites (style-src without 'unsafe-inline') drop style attributes,
 // so components put fixed styles in their CSS and set runtime values through the CSSOM.
 // A style prop the caller passes is the caller's choice and is allowed through.
 
 // Files not fixed yet, with their count of style attributes. It only shrinks; #180
-// closes when it is empty.
-const REMAINING = {
-    "ai/SelectionQuote.jsx": 1,
-    "display/Resizable.jsx": 1,
-    "forms/Slider.jsx": 1,
-    "navigation/NavigationMenu.jsx": 1,
-  };
+// closes when it is empty, and it is empty now. A new file with a style attribute fails the
+// first test below.
+const REMAINING = {};
 
 describe('no style attributes in server-rendered HTML', () => {
   const cases = {
@@ -97,6 +96,10 @@ describe('no style attributes in server-rendered HTML', () => {
     PaginationEllipsis: <PaginationEllipsis />,
     'SidebarMenuSkeleton showIcon': <SidebarMenuSkeleton showIcon />,
     SidebarMenuSkeleton: <SidebarMenuSkeleton />,
+    Slider: <Slider defaultValue={[20, 70]} aria-label="Range" />,
+    'Slider vertical': <Slider defaultValue={[30]} orientation="vertical" aria-label="Level" />,
+    ResizablePanelGroup: <ResizablePanelGroup><ResizablePanel defaultSize={30}>a</ResizablePanel><ResizableHandle /><ResizablePanel>b</ResizablePanel></ResizablePanelGroup>,
+    SelectionQuote: <SelectionQuote actions={[{ id: 'q', label: 'Quote' }]}>text</SelectionQuote>,
   };
   it.each(Object.keys(cases))('%s', (name) => {
     expect(renderToString(cases[name])).not.toMatch(/\sstyle="/);
@@ -298,5 +301,47 @@ describe('batch 5 overlays: fixed styles in CSS, placement through the CSSOM', (
     expect(panel.style.width).toBe('280px');
     expect(panel.style.top).toBe('5px');
     unmount();
+  });
+});
+
+describe('batch 6 sets the last runtime values through the CSSOM', () => {
+  it('Slider sizes its range after mount, for both orientations', async () => {
+    const { render } = await import('@testing-library/react');
+    const h = render(<Slider defaultValue={[20, 70]} aria-label="Range" />);
+    const range = h.container.querySelector('.ef-slider__range');
+    expect(range.style.width).toBe('50%');
+    expect(range.style.getPropertyValue('inset-inline-start')).toBe('20%');
+    h.unmount();
+    const v = render(<Slider defaultValue={[30]} orientation="vertical" aria-label="Level" />);
+    const vr = v.container.querySelector('.ef-slider__range');
+    expect(vr.style.height).toBe('30%');
+    expect(vr.style.bottom).toBe('0%');
+    v.unmount();
+  });
+
+  it('ResizablePanel gets its flex-basis after mount and its no-grow, no-shrink from the class', async () => {
+    const { render } = await import('@testing-library/react');
+    const { container, unmount } = render(<ResizablePanelGroup><ResizablePanel defaultSize={100 / 3}>a</ResizablePanel><ResizableHandle /><ResizablePanel>b</ResizablePanel></ResizablePanelGroup>);
+    const panes = container.querySelectorAll('[data-slot="resizable-panel"]');
+    expect(panes[0].style.flexBasis).toBe('33.333%');
+    expect(panes[0].style.flexGrow).toBe('');
+    expect(panes[0].style.flexShrink).toBe('');
+    unmount();
+  });
+
+  it('Resizable hydrates without a mismatch and writes a short percentage', async () => {
+    const { hydrateRoot } = await import('react-dom/client');
+    const { act } = await import('react');
+    const tree = <ResizablePanelGroup><ResizablePanel defaultSize={100 / 3}><div>left</div></ResizablePanel><ResizableHandle /><ResizablePanel><div>right</div></ResizablePanel></ResizablePanelGroup>;
+    const html = renderToString(tree);
+    expect(html).not.toMatch(/\sstyle="/);
+    const host = document.createElement('div');
+    host.innerHTML = html;
+    document.body.appendChild(host);
+    const errors = [];
+    await act(async () => { hydrateRoot(host, tree, { onRecoverableError: (e) => errors.push(e) }); });
+    expect(errors).toEqual([]);
+    expect(host.querySelector('[data-slot="resizable-panel"]').style.flexBasis).toBe('33.333%');
+    host.remove();
   });
 });

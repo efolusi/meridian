@@ -1,7 +1,7 @@
 'use client';
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { injectEfCss, mergeRefs, useIsoLayoutEffect } from '../runtime/runtime.jsx';
+import { injectEfCss, mergeRefs, styleRef, useIsoLayoutEffect } from '../runtime/runtime.jsx';
 import { Icon } from '../icons/Icon.jsx';
 import { useDirection } from '../display/Direction.jsx';
 
@@ -154,7 +154,7 @@ export const NavigationMenuLink = React.forwardRef(function NavigationMenuLink({
 export const NavigationMenuIndicator = React.forwardRef(function NavigationMenuIndicator({ className, style, ...props }, ref) {
   const root = React.useContext(NavigationRootContext);
   if (!root?.value) return null;
-  return <div {...props} ref={ref} data-slot="navigation-menu-indicator" data-state="visible" className={join('ef-navigation-menu__indicator', className)} style={{ ...style, insetInlineStart: root.indicator.start, width: root.indicator.width }}><div className="ef-navigation-menu__indicator-mark" /></div>;
+  return <div {...props} ref={mergeRefs(ref, styleRef({ 'inset-inline-start': root.indicator.start, width: root.indicator.width }))} data-slot="navigation-menu-indicator" data-state="visible" className={join('ef-navigation-menu__indicator', className)} style={style}><div className="ef-navigation-menu__indicator-mark" /></div>;
 });
 
 export const NavigationMenuViewport = React.forwardRef(function NavigationMenuViewport({ className, ...props }, ref) {

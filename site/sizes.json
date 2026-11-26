@@ -1,16 +1,16 @@
 {
   "totals": {
     "@efolusi/meridian": {
-      "bytes": 377351,
-      "gzip": 85296
+      "bytes": 377395,
+      "gzip": 85328
     },
     "dist/components.css": {
-      "bytes": 241579,
-      "gzip": 33140
+      "bytes": 241670,
+      "gzip": 33171
     },
     "_ds_bundle.js": {
-      "bytes": 903150,
-      "gzip": 161976
+      "bytes": 903610,
+      "gzip": 162130
     }
   },
   "modules": [
@@ -207,8 +207,8 @@
       "exports": [
         "SelectionQuote"
       ],
-      "bytes": 46877,
-      "gzip": 8196
+      "bytes": 47143,
+      "gzip": 8366
     },
     {
       "module": "ai/SourceCard.js",
@@ -635,8 +635,8 @@
         "ResizablePanel",
         "ResizableHandle"
       ],
-      "bytes": 4065,
-      "gzip": 1760
+      "bytes": 4455,
+      "gzip": 1913
     },
     {
       "module": "display/ScrollArea.js",
@@ -1071,8 +1071,8 @@
       "exports": [
         "Slider"
       ],
-      "bytes": 2890,
-      "gzip": 1422
+      "bytes": 3160,
+      "gzip": 1551
     },
     {
       "module": "forms/Switch.js",
@@ -1257,8 +1257,8 @@
         "NavigationMenuIndicator",
         "NavigationMenuViewport"
       ],
-      "bytes": 51839,
-      "gzip": 9762
+      "bytes": 52013,
+      "gzip": 9925
     },
     {
       "module": "navigation/PageControl.js",
