@@ -121,7 +121,7 @@ No Meridian component writes a `style` attribute of its own. Runtime sizes and p
 
 Two things are blocked on every path:
 
-- A `ChartContainer` whose `config` sets `color` or `theme` renders a `<style>` element for the series colours, so the series lose those colours.
+- `ChartStyle`, which `ChartContainer` renders, writes a `<style>` element for the colours its `config` sets (`color` or `theme`), so the series lose those colours.
 - A `style` prop you pass is a `style` attribute in server-rendered HTML. The policy drops it, and hydration does not apply it again. In the browser, React sets it through the CSSOM, which works.
 
 The theme script is a `script-src` matter: pass a nonce or allow its hash, as [theming.md](theming.md#server-layouts) describes.

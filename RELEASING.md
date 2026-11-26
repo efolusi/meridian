@@ -38,11 +38,20 @@ manually, so OIDC now maintains it.
 
 ## Which number moves
 
-Meridian stays on 1.x while it is used internally only. A breaking change, with
-no alias, ships as the next 1.x minor, not as 2.0.0. The owner decided this on
-2026-11-19: "Tetap 1.x minor". The breaking-change policy in the governance docs
-says how such a change lands. A move to 2.0.0 waits for the owner to call
-Meridian stable.
+The rules are in [governance § Versioning](guidelines/governance.md#versioning);
+the breaking-change policy there says how such a change lands.
+
+- A breaking change, with no alias, ships as the next minor while Meridian is
+  used only inside Efolusi. 1.31.0 (ThemeToggle offers light and dark only) is
+  one.
+- A visual language shift ships as the next major. 2.0.0 (2026-11-22, the warm
+  glass design on design-tokens v0.7.0) is the only one so far.
+- A breaking change ships as the next major once Meridian has outside users.
+
+On 2026-11-19 the owner decided that Meridian stays on 1.x while it is used
+internally only: "Tetap 1.x minor". 2.0.0 left 1.x three days later as a visual
+language shift, so that sentence no longer describes the version. No later
+owner decision on the major number is recorded here.
 
 ## Where the version lives
 
