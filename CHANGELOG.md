@@ -3,6 +3,7 @@
 ## Unreleased
 
 - **AgentRun, DocumentCard, Transcript, UsageMeter, FileDrop, Button, ButtonTile, Input, Toggle, Reveal, Pagination, Sidebar and ConfirmDialog render no style attribute (MD18, batch 4)**, so they keep their look on strict-CSP sites. Fixed styles moved to CSS (`Button` `fullWidth` is the class `ef-btn--full`, `buttonVariants` takes `fullWidth`; the `SidebarMenuSkeleton` width is a class); heights, widths, the tile column count, the toggle gap and the Reveal stagger delay are set through the CSSOM after mount. A `style` prop you pass still lands on the element. A server render of `UsageMeter` now shows an empty fill until the page hydrates, as the other CSSOM-sized bars do.
+- **Dialog, Sheet, Drawer, Popover, HoverCard, DropdownMenu, ContextMenu, Select, TimePicker, ModelSelector and Tooltip render no style attribute (MD18, batch 5)**, so they keep their look on strict-CSP sites. `position` comes from the CSS (`.ef-dialog__content` is `position: relative` at zero specificity, so `.ef-sheet` and `.ef-drawer` stay `fixed`); panel placement, the Dialog `width` (`max-width`), the Select trigger width, the Tooltip arrow offset and the Drawer drag offset are set through the CSSOM by the new internal `styleRefUnder`. A `style` prop you pass still lands on the element and still wins over the computed value.
 - design-tokens stays vendored at v0.7.0; this release changes no token.
 
 ## v2.1.0 - 2026-11-23

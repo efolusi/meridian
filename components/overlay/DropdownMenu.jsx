@@ -1,6 +1,6 @@
 'use client';
 import React from 'react';
-import { injectEfCss, mergeRefs, useIsoLayoutEffect } from '../runtime/runtime.jsx';
+import { injectEfCss, mergeRefs, styleRefUnder, useIsoLayoutEffect } from '../runtime/runtime.jsx';
 import { Icon } from '../icons/Icon.jsx';
 import { Portal, useAnchoredStyle, useHydrated } from './Portal.jsx';
 import { useDirection } from '../display/Direction.jsx';
@@ -141,7 +141,7 @@ export const DropdownMenuContent = React.forwardRef(function DropdownMenuContent
     return () => { document.removeEventListener('pointerdown', away); window.removeEventListener('blur', blur); };
   }, [root?.open, close]);
   if (!root?.open) return null;
-  return <DropdownMenuPortal><div dir={rtl ? 'rtl' : undefined} {...rest} ref={ref} role="menu" data-ef-menu={root.menuId} data-slot={slot} data-state="open" data-side={resolvedSide} data-align={align} className={join('ef-dropdown-menu__content', className)} style={{ ...anchored, ...style }} onKeyDown={compose(onKeyDown, keyboard)}>{children}</div></DropdownMenuPortal>;
+  return <DropdownMenuPortal><div dir={rtl ? 'rtl' : undefined} {...rest} ref={mergeRefs(ref, styleRefUnder(anchored, style))} role="menu" data-ef-menu={root.menuId} data-slot={slot} data-state="open" data-side={resolvedSide} data-align={align} className={join('ef-dropdown-menu__content', className)} style={style} onKeyDown={compose(onKeyDown, keyboard)}>{children}</div></DropdownMenuPortal>;
 });
 
 export const DropdownMenuGroup = React.forwardRef(function DropdownMenuGroup({ slot = 'dropdown-menu-group', ...props }, ref) {
@@ -219,5 +219,5 @@ export const DropdownMenuSubContent = React.forwardRef(function DropdownMenuSubC
   const keyboard = useMenuKeyboard(localRef, close, { sub: true, loop, rtl });
   useIsoLayoutEffect(() => { if (sub?.open) menuItems(localRef.current)[0]?.focus(); }, [sub?.open]);
   if (!sub?.open) return null;
-  return <DropdownMenuPortal><div dir={rtl ? 'rtl' : undefined} {...props} ref={mergeRefs(forwardedRef, localRef, sub.contentRef)} role="menu" data-ef-menu={root?.menuId} data-slot={slot} data-state="open" data-side={side} className={join('ef-dropdown-menu__content', className)} style={{ ...anchored, ...style }} onMouseLeave={() => sub.setOpen(false)} onKeyDown={compose(onKeyDown, keyboard)}>{children}</div></DropdownMenuPortal>;
+  return <DropdownMenuPortal><div dir={rtl ? 'rtl' : undefined} {...props} ref={mergeRefs(forwardedRef, localRef, sub.contentRef, styleRefUnder(anchored, style))} role="menu" data-ef-menu={root?.menuId} data-slot={slot} data-state="open" data-side={side} className={join('ef-dropdown-menu__content', className)} style={style} onMouseLeave={() => sub.setOpen(false)} onKeyDown={compose(onKeyDown, keyboard)}>{children}</div></DropdownMenuPortal>;
 });

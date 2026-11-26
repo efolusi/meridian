@@ -1,6 +1,6 @@
 'use client';
 import React from 'react';
-import { injectEfCss, mergeRefs, useIsoLayoutEffect } from '../runtime/runtime.jsx';
+import { injectEfCss, mergeRefs, styleRefUnder, useIsoLayoutEffect } from '../runtime/runtime.jsx';
 import { Portal, useAnchoredStyle, useEscapeLayer, escapeLayerContext, useHydrated } from './Portal.jsx';
 
 const CSS = `
@@ -105,9 +105,9 @@ export const HoverCardContent = React.forwardRef(function HoverCardContent({ ali
   if (!ctx?.open) return null;
   return (
     <Portal>
-      <div {...rest} ref={mergeRefs(forwardedRef, ctx.contentRef)} id={id || ctx.contentId} data-slot="hover-card-content" data-state="open" data-side={resolvedSide} data-align={align}
+      <div {...rest} ref={mergeRefs(forwardedRef, ctx.contentRef, styleRefUnder(anchored, style))} id={id || ctx.contentId} data-slot="hover-card-content" data-state="open" data-side={resolvedSide} data-align={align}
         onMouseEnter={compose(rest.onMouseEnter, ctx.clearTimer)} onMouseLeave={compose(rest.onMouseLeave, ctx.closeSoon)}
-        className={`ef-hovercard__panel${className ? ' ' + className : ''}`} style={{ ...anchored, ...style }}>{children}</div>
+        className={`ef-hovercard__panel${className ? ' ' + className : ''}`} style={style}>{children}</div>
     </Portal>
   );
 });

@@ -1,7 +1,7 @@
 import { readdirSync, readFileSync } from 'node:fs';
 import React from 'react';
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
-import { cssPct, injectEfCss, isElementOfType, mergeRefs, prefersReducedMotion, styleRef, useIsoLayoutEffect } from '../components/runtime/runtime.jsx';
+import { cssPct, injectEfCss, isElementOfType, mergeRefs, prefersReducedMotion, styleRef, styleRefUnder, useIsoLayoutEffect } from '../components/runtime/runtime.jsx';
 
 // MD24 (#195): the helpers every component shares. These tests pin their behaviour, so moving
 // them out of Button.jsx changes only where they are imported from.
@@ -13,6 +13,23 @@ describe('cssPct', () => {
     expect(cssPct(50)).toBe('50%');
     expect(cssPct(0)).toBe('0%');
     expect(cssPct(80.06002337425701)).toBe('80.06%');
+  });
+});
+
+describe('styleRefUnder', () => {
+  it('sets computed values, but leaves a property the caller style sets to the caller', () => {
+    const el = document.createElement('div');
+    styleRefUnder({ top: 10, left: 20, 'max-width': 300 }, { top: 5, maxWidth: 200 })(el);
+    expect(el.style.top).toBe('');
+    expect(el.style.maxWidth).toBe('');
+    expect(el.style.left).toBe('20px');
+  });
+
+  it('sets everything when the caller passes no style', () => {
+    const el = document.createElement('div');
+    styleRefUnder({ top: 10, 'max-width': 300 }, undefined)(el);
+    expect(el.style.top).toBe('10px');
+    expect(el.style.maxWidth).toBe('300px');
   });
 });
 
@@ -132,7 +149,7 @@ describe('injectEfCss', () => {
 });
 
 describe('where the helpers live', () => {
-  const HELPERS = ['injectEfCss', 'mergeRefs', 'styleRef', 'cssPct', 'useIsoLayoutEffect', 'prefersReducedMotion', 'isElementOfType'];
+  const HELPERS = ['injectEfCss', 'mergeRefs', 'styleRef', 'styleRefUnder', 'cssPct', 'useIsoLayoutEffect', 'prefersReducedMotion', 'isElementOfType'];
   const components = readdirSync('components', { withFileTypes: true })
     .filter((d) => d.isDirectory())
     .flatMap((d) => readdirSync(`components/${d.name}`).filter((f) => f.endsWith('.jsx')).map((f) => `components/${d.name}/${f}`));

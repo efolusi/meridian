@@ -1,7 +1,7 @@
 'use client';
 import React from 'react';
 import { Icon } from '../icons/Icon.jsx';
-import { injectEfCss } from '../runtime/runtime.jsx';
+import { injectEfCss, mergeRefs, styleRef } from '../runtime/runtime.jsx';
 import { useFieldProps } from '../forms/Field.jsx';
 import { Portal, useAnchoredStyle } from '../overlay/Portal.jsx';
 const CSS = `
@@ -125,7 +125,7 @@ export function TimePicker({ label, hint, value, onChange, stepMinutes = 30, min
       {open && (
         <Portal>
           {/* mousedown is swallowed so an option click never blurs the input into a stray typed-commit */}
-          <div ref={panelRef} className="ef-timepicker__panel" role="listbox" id={listId} style={anchored} onMouseDown={e => e.preventDefault()}>
+          <div ref={mergeRefs(panelRef, styleRef(anchored))} className="ef-timepicker__panel" role="listbox" id={listId} onMouseDown={e => e.preventDefault()}>
             {shown.length === 0 && <div className="ef-timepicker__empty">No matching time.</div>}
             {shown.map((t, i) => (
               <button key={t} type="button" role="option" id={`${listId}-opt-${i}`} tabIndex={-1} aria-selected={t === value}
