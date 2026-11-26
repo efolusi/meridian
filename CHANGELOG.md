@@ -3,6 +3,7 @@
 ## Unreleased
 
 - **AgentRun, DocumentCard, Transcript, UsageMeter, FileDrop, Button, ButtonTile, Input, Toggle, Reveal, Pagination, Sidebar and ConfirmDialog render no style attribute (MD18, batch 4)**, so they keep their look on strict-CSP sites. Fixed styles moved to CSS (`Button` `fullWidth` is the class `ef-btn--full`, `buttonVariants` takes `fullWidth`; the `SidebarMenuSkeleton` width is a class); heights, widths, the tile column count, the toggle gap and the Reveal stagger delay are set through the CSSOM after mount. A `style` prop you pass still lands on the element. A server render of `UsageMeter` now shows an empty fill until the page hydrates, as the other CSSOM-sized bars do.
+- **First paint before hydration (MD18, batch 4).** Without a style attribute, a server render shows these parts at their CSS defaults until the page hydrates: the `UsageMeter` fill starts empty and animates in, a `DocumentCard` shows `--ef-doccard-h` at its 200px default (a different `collapsedHeight` jumps on hydration), a `Transcript` shows its 280px default (another `height` jumps), and a `ButtonTileGroup` with a column count other than 3 starts at 3. `Button` `fullWidth`, the `FileDrop` input and the `SidebarMenuSkeleton` width have no such gap: they are CSS from the start.
 - design-tokens stays vendored at v0.7.0; this release changes no token.
 
 ## v2.1.0 - 2026-11-23

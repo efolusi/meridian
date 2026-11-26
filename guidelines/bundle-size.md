@@ -13,9 +13,9 @@ CSS is not counted per component: `styles.css` ships every component style in on
 
 | File | Size | Gzip |
 | --- | ---: | ---: |
-| `@efolusi/meridian` | 368.4 kB | 83.2 kB |
-| `dist/components.css` | 235.8 kB | 32.4 kB |
-| `_ds_bundle.js` | 881.1 kB | 157.9 kB |
+| `@efolusi/meridian` | 368.6 kB | 83.3 kB |
+| `dist/components.css` | 236.0 kB | 32.4 kB |
+| `_ds_bundle.js` | 881.9 kB | 158.2 kB |
 
 The root import, `@efolusi/meridian`, is every component. `_ds_bundle.js` is the zero-build CDN bundle, which also carries each component's CSS. The root import is minified; the CSS and the CDN bundle are measured as shipped.
 
@@ -48,7 +48,7 @@ The root import, `@efolusi/meridian`, is every component. `_ds_bundle.js` is the
 | `ai/Task.js` | Task | 44.6 kB | 7.4 kB |
 | `ai/Todo.js` | Todo | 45.2 kB | 7.5 kB |
 | `ai/ToolCall.js` | ToolCall | 46.8 kB | 8.0 kB |
-| `ai/Transcript.js` | Transcript | 2.5 kB | 1.1 kB |
+| `ai/Transcript.js` | Transcript | 2.6 kB | 1.1 kB |
 | `ai/UsageMeter.js` | UsageMeter | 2.1 kB | 1.0 kB |
 | `ai/WebPreview.js` | WebPreview | 47.4 kB | 8.4 kB |
 | `code/CodeBlock.js` | CodeBlock | 46.2 kB | 8.0 kB |
@@ -125,7 +125,7 @@ The root import, `@efolusi/meridian`, is every component. `_ds_bundle.js` is the
 | `forms/Slider.js` | Slider | 2.8 kB | 1.4 kB |
 | `forms/Switch.js` | Switch | 2.0 kB | 0.9 kB |
 | `forms/Textarea.js` | Textarea | 45.1 kB | 7.7 kB |
-| `forms/Toggle.js` | Toggle, ToggleGroup, ToggleGroupItem | 3.0 kB | 1.4 kB |
+| `forms/Toggle.js` | Toggle, ToggleGroup, ToggleGroupItem | 3.1 kB | 1.5 kB |
 | `icons/Icon.js` | Icon | 43.6 kB | 7.0 kB |
 | `marketing/Counter.js` | Counter | 1.9 kB | 0.9 kB |
 | `marketing/FeatureCard.js` | FeatureGrid, FeatureCard | 44.8 kB | 7.5 kB |
@@ -158,4 +158,4 @@ The root import, `@efolusi/meridian`, is every component. `_ds_bundle.js` is the
 | `overlay/Popover.js` | Popover, PopoverTrigger, PopoverContent, PopoverHeader, PopoverTitle, PopoverDescription | 6.8 kB | 2.6 kB |
 | `overlay/Portal.js` | Portal | 3.1 kB | 1.4 kB |
 | `overlay/Sheet.js` | Sheet, SheetTrigger, SheetClose, SheetContent, SheetHeader, SheetFooter, SheetTitle, SheetDescription | 51.5 kB | 9.5 kB |
-| `runtime/runtime.js` | shared helpers | 1.5 kB | 0.8 kB |
+| `runtime/runtime.js` | shared helpers | 1.6 kB | 0.9 kB |

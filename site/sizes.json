@@ -1,16 +1,16 @@
 {
   "totals": {
     "@efolusi/meridian": {
-      "bytes": 377226,
-      "gzip": 85201
+      "bytes": 377416,
+      "gzip": 85305
     },
     "dist/components.css": {
-      "bytes": 241500,
-      "gzip": 33129
+      "bytes": 241637,
+      "gzip": 33158
     },
     "_ds_bundle.js": {
-      "bytes": 902232,
-      "gzip": 161713
+      "bytes": 903073,
+      "gzip": 161985
     }
   },
   "modules": [
@@ -78,8 +78,8 @@
       "exports": [
         "DocumentCard"
       ],
-      "bytes": 46801,
-      "gzip": 8104
+      "bytes": 46811,
+      "gzip": 8108
     },
     {
       "module": "ai/FeedbackBar.js",
@@ -261,8 +261,8 @@
       "exports": [
         "Transcript"
       ],
-      "bytes": 2607,
-      "gzip": 1129
+      "bytes": 2628,
+      "gzip": 1139
     },
     {
       "module": "ai/UsageMeter.js",
@@ -1100,8 +1100,8 @@
         "ToggleGroup",
         "ToggleGroupItem"
       ],
-      "bytes": 3041,
-      "gzip": 1433
+      "bytes": 3203,
+      "gzip": 1508
     },
     {
       "module": "icons/Icon.js",
@@ -1518,8 +1518,8 @@
       "exports": [
         "shared helpers"
       ],
-      "bytes": 1487,
-      "gzip": 867
+      "bytes": 1666,
+      "gzip": 949
     }
   ]
 }

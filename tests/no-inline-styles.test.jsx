@@ -234,17 +234,39 @@ describe('batch 4 sets runtime values through the CSSOM', () => {
   it('Transcript and DocumentCard set their heights after mount', async () => {
     const { render } = await import('@testing-library/react');
     const t = render(<Transcript items={[{ start: 5, text: 'hi' }]} height={200} />);
-    expect(t.container.querySelector('.ef-transcript__scroll').style.height).toBe('200px');
+    expect(t.container.querySelector('.ef-transcript__scroll').style.getPropertyValue('--ef-transcript-h')).toBe('200px');
     t.unmount();
     // jsdom measures nothing, so give the card a 500px body and a ResizeObserver to watch it.
     const { vi } = await import('vitest');
     vi.stubGlobal('ResizeObserver', class { observe() {} disconnect() {} });
     const height = vi.spyOn(HTMLElement.prototype, 'scrollHeight', 'get').mockReturnValue(500);
     const d = render(<DocumentCard title="Doc" collapsedHeight={120}>text</DocumentCard>);
-    expect(d.container.querySelector('.ef-doccard__win').style.height).toBe('120px');
+    expect(d.container.querySelector('.ef-doccard__win').style.getPropertyValue('--ef-doccard-h')).toBe('120px');
     d.unmount();
     height.mockRestore();
     vi.unstubAllGlobals();
+  });
+
+  it('ToggleGroup: a caller --ef-toggle-gap wins over the spacing prop', async () => {
+    const { render } = await import('@testing-library/react');
+    const { container, unmount } = render(<ToggleGroup spacing={3} style={{ '--ef-toggle-gap': '2px' }}>x</ToggleGroup>);
+    expect(container.querySelector('.ef-toggle-group').style.getPropertyValue('--ef-toggle-gap')).toBe('2px');
+    unmount();
+  });
+
+  it('first paint: the Transcript default height and the DocumentCard collapsed height are in the CSS, not only set after mount', () => {
+    const transcript = readFileSync('components/ai/Transcript.jsx', 'utf8');
+    expect(transcript).toMatch(/\.ef-transcript__scroll\{[^}]*height:var\(--ef-transcript-h,280px\)/);
+    const card = readFileSync('components/ai/DocumentCard.jsx', 'utf8');
+    expect(card).toMatch(/\.ef-doccard__win\{[^}]*height:var\(--ef-doccard-h,200px\)/);
+    const html = renderToString(<Transcript items={[{ start: 5, text: 'hi' }]} />);
+    expect(html).toContain('ef-transcript__scroll');
+    expect(html).not.toMatch(/\sstyle="/);
+  });
+
+  it('Button: .ef-btn--full comes after the touch block, so fullWidth wins over the icon sizes on touch', () => {
+    const src = readFileSync('components/forms/Button.jsx', 'utf8');
+    expect(src.indexOf('.ef-btn--full{')).toBeGreaterThan(src.indexOf('@media (pointer:coarse)'));
   });
 
   it('UsageMeter sets the fill width after mount, rounded to three decimals', async () => {
