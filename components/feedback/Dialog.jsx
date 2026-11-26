@@ -10,7 +10,7 @@ const CSS = `
 .ef-dialog__header{display:flex;flex-direction:column;gap:var(--space-2);padding:var(--space-6) var(--space-6) 0;padding-inline-end:calc(var(--space-3) + var(--control-h-sm) + var(--space-4))}
 .ef-dialog__title{margin:0;font-family:var(--font-display);font-size:var(--text-xl);font-weight:var(--weight-bold);line-height:var(--leading-tight);letter-spacing:var(--tracking-tight);color:var(--text-primary)}
 .ef-dialog__description{font-size:var(--text-md);line-height:var(--leading-relaxed);color:var(--text-secondary)}
-.ef-dialog__body{padding:var(--space-4) var(--space-6) var(--space-6)}.ef-dialog__footer{display:flex;flex-direction:column-reverse;gap:var(--space-2);padding:var(--space-4) var(--space-6);border-top:1px solid var(--border-default);background:var(--surface-subtle)}
+.ef-dialog__body{padding:var(--space-4) var(--space-6) var(--space-6)}.ef-dialog__typed{margin-top:var(--space-4)}.ef-dialog__footer{display:flex;flex-direction:column-reverse;gap:var(--space-2);padding:var(--space-4) var(--space-6);border-top:1px solid var(--border-default);background:var(--surface-subtle)}
 @media(min-width:480px){.ef-dialog__footer{flex-direction:row;justify-content:flex-end}}
 @keyframes ef-fade{from{opacity:0}}@keyframes ef-pop{from{opacity:0;transform:scale(.96) translateY(6px)}}
 @media (prefers-reduced-motion:reduce){.ef-dialog__overlay,.ef-dialog__content{--ef-motion-guard:var(--dur-fast);animation-name:ef-reduce-fade}}

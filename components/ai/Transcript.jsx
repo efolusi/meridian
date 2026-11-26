@@ -1,6 +1,6 @@
 'use client';
 import React from 'react';
-import { injectEfCss, prefersReducedMotion } from '../runtime/runtime.jsx';
+import { injectEfCss, prefersReducedMotion, mergeRefs, styleRef } from '../runtime/runtime.jsx';
 import { formatTime } from './Player.jsx';
 const CSS = `
 .ef-transcript{display:flex;flex-direction:column;border:1px solid var(--border-default);border-radius:var(--radius-md);background:var(--surface-card);overflow:hidden;font-family:var(--font-sans)}
@@ -46,7 +46,7 @@ export function Transcript({ title = 'Transcript', items = [], currentTime = 0, 
         <span className="ef-transcript__title">{title}</span>
         <button type="button" className={`ef-transcript__auto${auto ? ' ef-transcript__auto--on' : ''}`} aria-pressed={auto} onClick={() => setAuto(!auto)}>Auto-scroll</button>
       </div>
-      <div ref={viewport} className="ef-transcript__scroll" style={{ height }}>
+      <div ref={mergeRefs(viewport, styleRef({ height }))} className="ef-transcript__scroll">
         {items.map((it, i) => (
           <div key={i} ref={el => { rowRefs.current[i] = el; }} className={`ef-transcript__item${i === active ? ' ef-transcript__item--active' : ''}`}>
             <button type="button" className="ef-transcript__time" onClick={() => onJump && onJump(it.start)}>{formatTime(it.start)}</button>

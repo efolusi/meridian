@@ -55,7 +55,7 @@ export function FileDrop({ onFiles, onReject, accept, maxSize, multiple = true, 
       <span className="ef-filedrop__icon"><Icon name="upload" size={24} /></span>
       <span className="ef-filedrop__title">{title || <span>Drop files here or <span className="ef-filedrop__action">browse</span></span>}</span>
       {hint ? <span className="ef-filedrop__hint">{hint}</span> : null}
-      <input ref={inputRef} type="file" accept={accept} multiple={multiple} style={{ display: 'none' }} onChange={e => { handle(e.target.files); e.target.value = ''; }} />
+      <input ref={inputRef} type="file" accept={accept} multiple={multiple} hidden onChange={e => { handle(e.target.files); e.target.value = ''; }} />
     </div>
   );
 }

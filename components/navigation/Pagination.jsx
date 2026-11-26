@@ -14,6 +14,7 @@ const CSS = `
 .ef-pagination__link:focus-visible{outline:none;box-shadow:var(--focus-ring)}
 .ef-pagination__previous svg,.ef-pagination__next svg{transition:transform var(--dur-fast) var(--ease-enter)}
 [dir="rtl"] .ef-pagination__previous svg,[dir="rtl"] .ef-pagination__next svg{transform:scaleX(-1)}
+.ef-pagination__sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
 .ef-pagination__ellipsis{display:inline-flex;align-items:center;justify-content:center;width:36px;height:36px;color:var(--text-muted)}
 /* coarse pointers get the 44px touch target, like form controls do through --control-h-* */
 @media (pointer:coarse){.ef-pagination__link{min-width:var(--tap-min);height:var(--tap-min)}}
@@ -41,5 +42,5 @@ export const PaginationNext = React.forwardRef(function PaginationNext({ text = 
   return <PaginationLink {...props} ref={ref} size="default" aria-label={props['aria-label'] || 'Go to next page'} className={`ef-pagination__next${className ? ' ' + className : ''}`}><span>{text}</span><Icon name="chevron-right" size={16} /></PaginationLink>;
 });
 export const PaginationEllipsis = React.forwardRef(function PaginationEllipsis({ className, ...props }, ref) {
-  return <span {...props} ref={ref} aria-hidden="true" data-slot="pagination-ellipsis" className={`ef-pagination__ellipsis${className ? ' ' + className : ''}`}><Icon name="ellipsis" size={16} /><span style={{ position: 'absolute', width: 1, height: 1, overflow: 'hidden', clip: 'rect(0 0 0 0)' }}>More pages</span></span>;
+  return <span {...props} ref={ref} aria-hidden="true" data-slot="pagination-ellipsis" className={`ef-pagination__ellipsis${className ? ' ' + className : ''}`}><Icon name="ellipsis" size={16} /><span className="ef-pagination__sr">More pages</span></span>;
 });

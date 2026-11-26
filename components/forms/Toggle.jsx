@@ -1,6 +1,6 @@
 'use client';
 import React from 'react';
-import { injectEfCss } from '../runtime/runtime.jsx';
+import { injectEfCss, mergeRefs, styleRef } from '../runtime/runtime.jsx';
 
 const CSS = `
 .ef-toggle{display:inline-flex;align-items:center;justify-content:center;gap:var(--space-2);min-width:var(--control-h-md);height:var(--control-h-md);padding:0 var(--space-3);border:1px solid transparent;border-radius:var(--radius-sm);background:transparent;cursor:pointer;font-family:var(--font-sans);font-size:var(--text-sm);font-weight:500;color:var(--text-secondary);transition:background var(--dur-fast) var(--ease-enter),border-color var(--dur-fast) var(--ease-enter),color var(--dur-fast) var(--ease-enter)}
@@ -105,9 +105,9 @@ export const ToggleGroup = React.forwardRef(function ToggleGroup({ type = 'singl
   };
   const ctx = React.useMemo(() => ({ isOn, toggle, variant, size, disabled }), [current, type, variant, size, disabled]);
   return (
-    <div {...rest} ref={ref} role="group" data-slot="toggle-group" data-orientation={orientation} dir={dir}
+    <div {...rest} ref={mergeRefs(ref, styleRef({ '--ef-toggle-gap': `${spacing * 4}px` }))} role="group" data-slot="toggle-group" data-orientation={orientation} dir={dir}
       className={`ef-toggle-group${className ? ' ' + className : ''}`}
-      style={{ '--ef-toggle-gap': `${spacing * 4}px`, ...style }} onKeyDown={keyNav}>
+      style={style} onKeyDown={keyNav}>
       <GroupCtx.Provider value={ctx}>{children}</GroupCtx.Provider>
     </div>
   );

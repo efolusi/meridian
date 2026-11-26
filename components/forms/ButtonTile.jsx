@@ -1,9 +1,9 @@
 'use client';
 import React from 'react';
 import { Icon } from '../icons/Icon.jsx';
-import { injectEfCss } from '../runtime/runtime.jsx';
+import { injectEfCss, styleRef } from '../runtime/runtime.jsx';
 const CSS = `
-.ef-tilegroup{display:grid;gap:var(--space-3)}
+.ef-tilegroup{display:grid;grid-template-columns:repeat(var(--ef-tile-columns,3),1fr);gap:var(--space-3)}
 .ef-tile{position:relative;display:flex;flex-direction:column;align-items:flex-start;gap:var(--space-2);padding:var(--space-4);border:1px solid var(--border-strong);border-radius:var(--radius-md);background:var(--surface-card);cursor:pointer;text-align:start;font-family:var(--font-sans);color:var(--text-primary);transition:border-color var(--dur-fast) var(--ease-enter),background var(--dur-fast) var(--ease-enter)}
 .ef-tile:hover:not(:disabled){border-color:var(--sand-400)}
 .ef-tile:focus-visible{outline:none;box-shadow:var(--focus-ring)}
@@ -29,5 +29,5 @@ export function ButtonTile({ icon, title, description, selected, disabled, onCli
 }
 export function ButtonTileGroup({ columns = 3, children, style, className, ...rest }) {
   injectEfCss('ef-css-tile', CSS);
-  return <div {...rest} className={`ef-tilegroup${className ? ' ' + className : ''}`} style={{ gridTemplateColumns: `repeat(${columns},1fr)`, ...style }}>{children}</div>;
+  return <div {...rest} className={`ef-tilegroup${className ? ' ' + className : ''}`} style={style} ref={styleRef({ '--ef-tile-columns': String(columns) })}>{children}</div>;
 }

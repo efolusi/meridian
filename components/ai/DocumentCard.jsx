@@ -1,6 +1,6 @@
 'use client';
 import React from 'react';
-import { injectEfCss } from '../runtime/runtime.jsx';
+import { injectEfCss, styleRef } from '../runtime/runtime.jsx';
 import { Icon } from '../icons/Icon.jsx';
 const CSS = `
 .ef-doccard{border:1px solid var(--border-default);border-radius:var(--radius-md);background:var(--surface-card);font-family:var(--font-sans)}
@@ -57,7 +57,7 @@ export function DocumentCard({ title, meta, icon = 'file-text', collapsedHeight 
           <button type="button" className={`ef-doccard__btn${open ? ' ef-doccard__btn--open' : ''}`} aria-expanded={open} aria-label={open ? 'Collapse' : 'Expand'} onClick={() => setOpen(!open)}><Icon name="chevron-down" size={16} /></button>
         ) : null}
       </div>
-      <div className="ef-doccard__win" style={{ height }}>
+      <div className="ef-doccard__win" ref={styleRef({ height })}>
         <div ref={inner} className="ef-doccard__content">{children}</div>
         {overflows && !open ? <div className="ef-doccard__fade" onClick={() => setOpen(true)}></div> : null}
       </div>

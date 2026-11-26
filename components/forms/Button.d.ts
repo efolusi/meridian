@@ -14,5 +14,5 @@ export interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElemen
   loading?: boolean;
   children?: React.ReactNode;
 }
-export declare function buttonVariants(options?: Pick<ButtonProps, 'variant' | 'size' | 'shape'> & { className?: string }): string;
+export declare function buttonVariants(options?: Pick<ButtonProps, 'variant' | 'size' | 'shape' | 'fullWidth'> & { className?: string }): string;
 export declare const Button: React.ForwardRefExoticComponent<ButtonProps & React.RefAttributes<HTMLButtonElement>>;

@@ -13,8 +13,8 @@ CSS is not counted per component: `styles.css` ships every component style in on
 
 | File | Size | Gzip |
 | --- | ---: | ---: |
-| `@efolusi/meridian` | 368.5 kB | 83.3 kB |
-| `dist/components.css` | 235.4 kB | 32.3 kB |
+| `@efolusi/meridian` | 368.4 kB | 83.2 kB |
+| `dist/components.css` | 235.8 kB | 32.4 kB |
 | `_ds_bundle.js` | 880.6 kB | 157.9 kB |
 
 The root import, `@efolusi/meridian`, is every component. `_ds_bundle.js` is the zero-build CDN bundle, which also carries each component's CSS. The root import is minified; the CSS and the CDN bundle are measured as shipped.
@@ -23,13 +23,13 @@ The root import, `@efolusi/meridian`, is every component. `_ds_bundle.js` is the
 
 | Import | Exports | Minified | Gzip |
 | --- | --- | ---: | ---: |
-| `ai/AgentRun.js` | AgentRun | 45.7 kB | 7.7 kB |
+| `ai/AgentRun.js` | AgentRun | 45.6 kB | 7.7 kB |
 | `ai/Bubble.js` | BubbleGroup, Bubble, BubbleContent, BubbleReactions | 1.7 kB | 0.7 kB |
 | `ai/ChatMessage.js` | ChatMessage | 46.5 kB | 7.9 kB |
 | `ai/Citation.js` | Citation, SourceList | 46.6 kB | 8.1 kB |
 | `ai/Confirmation.js` | Confirmation | 45.3 kB | 7.6 kB |
 | `ai/Conversation.js` | Conversation | 45.4 kB | 7.8 kB |
-| `ai/DocumentCard.js` | DocumentCard | 45.5 kB | 7.8 kB |
+| `ai/DocumentCard.js` | DocumentCard | 45.7 kB | 7.9 kB |
 | `ai/FeedbackBar.js` | FeedbackBar | 45.2 kB | 7.6 kB |
 | `ai/GeneratedImage.js` | GeneratedImage | 45.5 kB | 7.6 kB |
 | `ai/Marker.js` | Marker, MarkerIcon, MarkerContent | 1.4 kB | 0.6 kB |
@@ -48,8 +48,8 @@ The root import, `@efolusi/meridian`, is every component. `_ds_bundle.js` is the
 | `ai/Task.js` | Task | 44.6 kB | 7.4 kB |
 | `ai/Todo.js` | Todo | 45.2 kB | 7.5 kB |
 | `ai/ToolCall.js` | ToolCall | 46.8 kB | 8.0 kB |
-| `ai/Transcript.js` | Transcript | 2.3 kB | 1.0 kB |
-| `ai/UsageMeter.js` | UsageMeter | 1.9 kB | 0.9 kB |
+| `ai/Transcript.js` | Transcript | 2.5 kB | 1.1 kB |
+| `ai/UsageMeter.js` | UsageMeter | 2.1 kB | 1.0 kB |
 | `ai/WebPreview.js` | WebPreview | 47.4 kB | 8.4 kB |
 | `code/CodeBlock.js` | CodeBlock | 46.2 kB | 8.0 kB |
 | `code/Console.js` | Console | 46.3 kB | 8.0 kB |
@@ -92,9 +92,9 @@ The root import, `@efolusi/meridian`, is every component. `_ds_bundle.js` is the
 | `display/Toolbar.js` | Toolbar | 49.5 kB | 9.3 kB |
 | `display/TreeList.js` | TreeList | 45.5 kB | 7.8 kB |
 | `feedback/Alert.js` | Alert, AlertTitle, AlertDescription, AlertAction | 1.1 kB | 0.5 kB |
-| `feedback/AlertDialog.js` | AlertDialog, AlertDialogTrigger, AlertDialogPortal, AlertDialogOverlay, AlertDialogContent, AlertDialogHeader, AlertDialogFooter, AlertDialogMedia, AlertDialogTitle, AlertDialogDescription, AlertDialogCancel, AlertDialogAction | 7.0 kB | 2.4 kB |
+| `feedback/AlertDialog.js` | AlertDialog, AlertDialogTrigger, AlertDialogPortal, AlertDialogOverlay, AlertDialogContent, AlertDialogHeader, AlertDialogFooter, AlertDialogMedia, AlertDialogTitle, AlertDialogDescription, AlertDialogCancel, AlertDialogAction | 7.0 kB | 2.5 kB |
 | `feedback/Banner.js` | Banner | 44.8 kB | 7.5 kB |
-| `feedback/ConfirmDialog.js` | ConfirmDialog | 54.5 kB | 10.6 kB |
+| `feedback/ConfirmDialog.js` | ConfirmDialog | 54.5 kB | 10.5 kB |
 | `feedback/Dialog.js` | Dialog, DialogTrigger, DialogPortal, DialogOverlay, DialogClose, DialogContent, DialogHeader, DialogFooter, DialogTitle, DialogDescription | 50.4 kB | 9.3 kB |
 | `feedback/Loader.js` | Loader | 1.0 kB | 0.5 kB |
 | `feedback/Progress.js` | Progress | 1.5 kB | 0.8 kB |
@@ -106,9 +106,9 @@ The root import, `@efolusi/meridian`, is every component. `_ds_bundle.js` is the
 | `files/FileTile.js` | FileTile | 47.1 kB | 8.3 kB |
 | `files/FileTypeIcon.js` | FileTypeIcon | 45.8 kB | 7.7 kB |
 | `finance/PaymentCard.js` | PaymentCard | 1.7 kB | 0.5 kB |
-| `forms/Button.js` | Button | 44.7 kB | 7.5 kB |
+| `forms/Button.js` | Button | 44.8 kB | 7.5 kB |
 | `forms/ButtonGroup.js` | ButtonGroup, ButtonGroupText, ButtonGroupSeparator | 2.1 kB | 0.8 kB |
-| `forms/ButtonTile.js` | ButtonTile, ButtonTileGroup | 44.7 kB | 7.4 kB |
+| `forms/ButtonTile.js` | ButtonTile, ButtonTileGroup | 44.9 kB | 7.5 kB |
 | `forms/Checkbox.js` | Checkbox | 45.9 kB | 8.0 kB |
 | `forms/Combobox.js` | Combobox, ComboboxValue, ComboboxTrigger, ComboboxClear, ComboboxInput, ComboboxContent, ComboboxList, ComboboxItem, ComboboxGroup, ComboboxLabel, ComboboxCollection, ComboboxEmpty, ComboboxSeparator, ComboboxChips, ComboboxChip, ComboboxChipsInput | 57.5 kB | 11.6 kB |
 | `forms/Field.js` | Field, FieldSet, FieldGroup, FieldContent, FieldLabel, FieldTitle, FieldDescription, FieldLegend, FieldSeparator, FieldError | 2.6 kB | 1.0 kB |
@@ -125,14 +125,14 @@ The root import, `@efolusi/meridian`, is every component. `_ds_bundle.js` is the
 | `forms/Slider.js` | Slider | 2.8 kB | 1.4 kB |
 | `forms/Switch.js` | Switch | 2.0 kB | 0.9 kB |
 | `forms/Textarea.js` | Textarea | 45.1 kB | 7.7 kB |
-| `forms/Toggle.js` | Toggle, ToggleGroup, ToggleGroupItem | 2.7 kB | 1.2 kB |
+| `forms/Toggle.js` | Toggle, ToggleGroup, ToggleGroupItem | 3.0 kB | 1.4 kB |
 | `icons/Icon.js` | Icon | 43.6 kB | 7.0 kB |
 | `marketing/Counter.js` | Counter | 1.9 kB | 0.9 kB |
 | `marketing/FeatureCard.js` | FeatureGrid, FeatureCard | 44.8 kB | 7.5 kB |
 | `marketing/Hero.js` | Hero, HeroAccent | 1.3 kB | 0.6 kB |
 | `marketing/LegalDocument.js` | LegalDocument | 2.5 kB | 1.0 kB |
 | `marketing/Marquee.js` | Marquee | 45.1 kB | 7.7 kB |
-| `marketing/Reveal.js` | Reveal | 1.3 kB | 0.8 kB |
+| `marketing/Reveal.js` | Reveal | 1.4 kB | 0.8 kB |
 | `marketing/Section.js` | Section, SectionHead | 1.2 kB | 0.5 kB |
 | `marketing/SiteFooter.js` | SiteFooter | 2.1 kB | 0.8 kB |
 | `marketing/SiteHeader.js` | SiteHeader | 46.5 kB | 8.1 kB |
@@ -141,10 +141,10 @@ The root import, `@efolusi/meridian`, is every component. `_ds_bundle.js` is the
 | `navigation/Menubar.js` | Menubar, MenubarMenu, MenubarTrigger, MenubarContent, MenubarPortal, MenubarGroup, MenubarRadioGroup, MenubarLabel, MenubarSeparator, MenubarShortcut, MenubarItem, MenubarCheckboxItem, MenubarRadioItem, MenubarSub, MenubarSubTrigger, MenubarSubContent | 59.5 kB | 11.8 kB |
 | `navigation/NavigationMenu.js` | NavigationMenu, NavigationMenuList, NavigationMenuItem, NavigationMenuTrigger, NavigationMenuContent, NavigationMenuLink, NavigationMenuIndicator, NavigationMenuViewport | 50.6 kB | 9.5 kB |
 | `navigation/PageControl.js` | PageControl | 0.7 kB | 0.4 kB |
-| `navigation/Pagination.js` | Pagination, PaginationContent, PaginationItem, PaginationLink, PaginationPrevious, PaginationNext, PaginationEllipsis | 45.9 kB | 7.6 kB |
+| `navigation/Pagination.js` | Pagination, PaginationContent, PaginationItem, PaginationLink, PaginationPrevious, PaginationNext, PaginationEllipsis | 45.8 kB | 7.6 kB |
 | `navigation/SegmentedControl.js` | SegmentedControl | 44.3 kB | 7.4 kB |
 | `navigation/SideNav.js` | SideNav | 46.0 kB | 7.9 kB |
-| `navigation/Sidebar.js` | SidebarProvider, Sidebar, SidebarTrigger, SidebarRail, SidebarInset, SidebarHeader, SidebarFooter, SidebarContent, SidebarGroup, SidebarGroupContent, SidebarMenu, SidebarMenuItem, SidebarMenuSub, SidebarMenuSubItem, SidebarInput, SidebarSeparator, SidebarGroupLabel, SidebarGroupAction, SidebarMenuButton, SidebarMenuAction, SidebarMenuBadge, SidebarMenuSubButton, SidebarMenuSkeleton | 52.1 kB | 9.8 kB |
+| `navigation/Sidebar.js` | SidebarProvider, Sidebar, SidebarTrigger, SidebarRail, SidebarInset, SidebarHeader, SidebarFooter, SidebarContent, SidebarGroup, SidebarGroupContent, SidebarMenu, SidebarMenuItem, SidebarMenuSub, SidebarMenuSubItem, SidebarInput, SidebarSeparator, SidebarGroupLabel, SidebarGroupAction, SidebarMenuButton, SidebarMenuAction, SidebarMenuBadge, SidebarMenuSubButton, SidebarMenuSkeleton | 52.0 kB | 9.8 kB |
 | `navigation/SkipLink.js` | SkipLink | 0.7 kB | 0.5 kB |
 | `navigation/Steps.js` | Steps | 44.7 kB | 7.4 kB |
 | `navigation/TabBar.js` | TabBar | 44.3 kB | 7.4 kB |
