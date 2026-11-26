@@ -1,16 +1,16 @@
 {
   "totals": {
     "@efolusi/meridian": {
-      "bytes": 377384,
-      "gzip": 85322
+      "bytes": 377423,
+      "gzip": 85327
     },
     "dist/components.css": {
       "bytes": 241716,
       "gzip": 33169
     },
     "_ds_bundle.js": {
-      "bytes": 903348,
-      "gzip": 162046
+      "bytes": 903395,
+      "gzip": 162048
     }
   },
   "modules": [
@@ -740,8 +740,8 @@
       "exports": [
         "ConfirmDialog"
       ],
-      "bytes": 56097,
-      "gzip": 10944
+      "bytes": 56136,
+      "gzip": 10945
     },
     {
       "module": "feedback/Dialog.js",
