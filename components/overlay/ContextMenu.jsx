@@ -155,7 +155,7 @@ export const ContextMenuContent = React.forwardRef(function ContextMenuContent({
     return () => { document.removeEventListener('pointerdown', away); window.removeEventListener('blur', blur); };
   }, [root?.open, close]);
   if (!root?.open) return null;
-  return <ContextMenuPortal><div dir={rtl ? 'rtl' : undefined} {...rest} ref={mergeRefs(ref, styleRefUnder({ left: root.point.x, top: root.point.y }, style))} role="menu" data-ef-menu={root.menuId} data-slot="context-menu-content" data-state="open" className={join('ef-context-menu__content', className)} style={style} onKeyDown={compose(onKeyDown, keyboard)}>{children}</div></ContextMenuPortal>;
+  return <ContextMenuPortal><div dir={rtl ? 'rtl' : undefined} {...rest} ref={ref} role="menu" data-ef-menu={root.menuId} data-slot="context-menu-content" data-state="open" className={join('ef-context-menu__content', className)} style={style} onKeyDown={compose(onKeyDown, keyboard)}>{children}</div></ContextMenuPortal>;
 });
 
 export const ContextMenuGroup = React.forwardRef(function ContextMenuGroup(props, ref) {

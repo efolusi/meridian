@@ -103,11 +103,14 @@ export function styleRef(values) {
  * styleRef for values the component computes (a panel's position, a measured width)
  * under a style prop the caller passes: a property the caller's style already sets
  * is left to the caller, as `{ ...computed, ...style }` did when it was one attribute.
+ * A caller `inset` shorthand covers top, right, bottom and left.
  */
 export function styleRefUnder(values, style) {
   const own = {};
+  const insetSet = style?.inset != null;
   for (const [name, value] of Object.entries(values)) {
     const camel = name.replace(/-([a-z])/g, (_, c) => c.toUpperCase());
+    if (insetSet && (name === 'top' || name === 'right' || name === 'bottom' || name === 'left')) continue;
     if (style?.[camel] == null && style?.[name] == null) own[name] = value;
   }
   return styleRef(own);
