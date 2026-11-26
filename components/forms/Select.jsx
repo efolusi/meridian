@@ -1,7 +1,7 @@
 'use client';
 import React from 'react';
 import { Icon } from '../icons/Icon.jsx';
-import { injectEfCss, mergeRefs, isElementOfType } from '../runtime/runtime.jsx';
+import { injectEfCss, mergeRefs, isElementOfType, styleRefUnder } from '../runtime/runtime.jsx';
 import { Portal, useAnchoredStyle, useHydrated } from '../overlay/Portal.jsx';
 
 const CSS = `
@@ -104,7 +104,7 @@ export const SelectContent = React.forwardRef(function SelectContent({ children,
       if (match) { event.preventDefault(); match.focus(); }
     }
   };
-  return <Portal><div {...props} ref={mergeRefs(ref, ctx.contentRef)} role="listbox" data-slot="select-content" data-position={position} className={`ef-select-content${className ? ` ${className}` : ''}`} style={{ ...anchored, '--select-trigger-width': `${ctx.triggerRef.current?.offsetWidth || 160}px`, ...style }} onKeyDown={key}>{children}</div></Portal>;
+  return <Portal><div {...props} ref={mergeRefs(ref, ctx.contentRef, styleRefUnder({ ...anchored, '--select-trigger-width': `${ctx.triggerRef.current?.offsetWidth || 160}px` }, style))} role="listbox" data-slot="select-content" data-position={position} className={`ef-select-content${className ? ` ${className}` : ''}`} style={style} onKeyDown={key}>{children}</div></Portal>;
 });
 
 export const SelectGroup = React.forwardRef(function SelectGroup({ className, ...props }, ref) { return <div {...props} ref={ref} role="group" data-slot="select-group" className={`ef-select-group${className ? ` ${className}` : ''}`} />; });

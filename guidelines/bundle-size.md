@@ -13,9 +13,9 @@ CSS is not counted per component: `styles.css` ships every component style in on
 
 | File | Size | Gzip |
 | --- | ---: | ---: |
-| `@efolusi/meridian` | 368.6 kB | 83.3 kB |
-| `dist/components.css` | 236.0 kB | 32.4 kB |
-| `_ds_bundle.js` | 881.9 kB | 158.2 kB |
+| `@efolusi/meridian` | 368.5 kB | 83.3 kB |
+| `dist/components.css` | 236.1 kB | 32.4 kB |
+| `_ds_bundle.js` | 882.2 kB | 158.2 kB |
 
 The root import, `@efolusi/meridian`, is every component. `_ds_bundle.js` is the zero-build CDN bundle, which also carries each component's CSS. The root import is minified; the CSS and the CDN bundle are measured as shipped.
 
@@ -35,7 +35,7 @@ The root import, `@efolusi/meridian`, is every component. `_ds_bundle.js` is the
 | `ai/Marker.js` | Marker, MarkerIcon, MarkerContent | 1.4 kB | 0.6 kB |
 | `ai/Message.js` | Message, MessageGroup, MessageAvatar, MessageContent, MessageHeader, MessageFooter | 1.5 kB | 0.5 kB |
 | `ai/MessageScroller.js` | MessageScrollerProvider, MessageScroller, MessageScrollerViewport, MessageScrollerContent, MessageScrollerItem, MessageScrollerButton | 49.8 kB | 9.2 kB |
-| `ai/ModelSelector.js` | ModelSelector | 47.9 kB | 8.7 kB |
+| `ai/ModelSelector.js` | ModelSelector | 48.1 kB | 9.0 kB |
 | `ai/Player.js` | Player | 48.0 kB | 8.6 kB |
 | `ai/PromptComposer.js` | PromptComposer | 46.0 kB | 7.9 kB |
 | `ai/PromptSteps.js` | PromptSteps | 46.8 kB | 8.3 kB |
@@ -70,7 +70,7 @@ The root import, `@efolusi/meridian`, is every component. `_ds_bundle.js` is the
 | `data/StatusDot.js` | StatusDot | 0.8 kB | 0.5 kB |
 | `data/Table.js` | Table, TableHeader, TableBody, TableFooter, TableRow, TableHead, TableCell, TableCaption | 50.6 kB | 9.7 kB |
 | `dates/Calendar.js` | CalendarDayButton, Calendar | 52.2 kB | 10.0 kB |
-| `dates/TimePicker.js` | TimePicker | 50.2 kB | 9.9 kB |
+| `dates/TimePicker.js` | TimePicker | 50.4 kB | 10.0 kB |
 | `display/Accordion.js` | Accordion, AccordionItem, AccordionTrigger, AccordionContent | 48.8 kB | 8.7 kB |
 | `display/AspectRatio.js` | AspectRatio | 0.9 kB | 0.5 kB |
 | `display/Avatar.js` | Avatar, AvatarImage, AvatarFallback, AvatarBadge, AvatarGroup, AvatarGroupCount | 1.8 kB | 0.6 kB |
@@ -89,18 +89,18 @@ The root import, `@efolusi/meridian`, is every component. `_ds_bundle.js` is the
 | `display/Separator.js` | Separator | 0.6 kB | 0.4 kB |
 | `display/Tag.js` | Tag | 44.6 kB | 7.4 kB |
 | `display/Timeline.js` | Timeline | 45.1 kB | 7.5 kB |
-| `display/Toolbar.js` | Toolbar | 49.5 kB | 9.3 kB |
+| `display/Toolbar.js` | Toolbar | 49.8 kB | 9.5 kB |
 | `display/TreeList.js` | TreeList | 45.5 kB | 7.8 kB |
 | `feedback/Alert.js` | Alert, AlertTitle, AlertDescription, AlertAction | 1.1 kB | 0.5 kB |
 | `feedback/AlertDialog.js` | AlertDialog, AlertDialogTrigger, AlertDialogPortal, AlertDialogOverlay, AlertDialogContent, AlertDialogHeader, AlertDialogFooter, AlertDialogMedia, AlertDialogTitle, AlertDialogDescription, AlertDialogCancel, AlertDialogAction | 7.0 kB | 2.5 kB |
 | `feedback/Banner.js` | Banner | 44.8 kB | 7.5 kB |
-| `feedback/ConfirmDialog.js` | ConfirmDialog | 54.5 kB | 10.5 kB |
-| `feedback/Dialog.js` | Dialog, DialogTrigger, DialogPortal, DialogOverlay, DialogClose, DialogContent, DialogHeader, DialogFooter, DialogTitle, DialogDescription | 50.4 kB | 9.3 kB |
+| `feedback/ConfirmDialog.js` | ConfirmDialog | 54.8 kB | 10.7 kB |
+| `feedback/Dialog.js` | Dialog, DialogTrigger, DialogPortal, DialogOverlay, DialogClose, DialogContent, DialogHeader, DialogFooter, DialogTitle, DialogDescription | 50.7 kB | 9.4 kB |
 | `feedback/Loader.js` | Loader | 1.0 kB | 0.5 kB |
 | `feedback/Progress.js` | Progress | 1.5 kB | 0.8 kB |
 | `feedback/Spinner.js` | Spinner | 0.7 kB | 0.4 kB |
 | `feedback/Toast.js` | Toaster | 50.0 kB | 9.6 kB |
-| `feedback/Tooltip.js` | Tooltip, TooltipProvider, TooltipTrigger, TooltipContent | 5.2 kB | 2.1 kB |
+| `feedback/Tooltip.js` | Tooltip, TooltipProvider, TooltipTrigger, TooltipContent | 5.5 kB | 2.2 kB |
 | `files/Attachment.js` | Attachment, AttachmentMedia, AttachmentContent, AttachmentTitle, AttachmentDescription, AttachmentActions, AttachmentAction, AttachmentTrigger, AttachmentGroup | 47.0 kB | 8.0 kB |
 | `files/FileDrop.js` | FileDrop | 45.4 kB | 7.9 kB |
 | `files/FileTile.js` | FileTile | 47.1 kB | 8.3 kB |
@@ -121,7 +121,7 @@ The root import, `@efolusi/meridian`, is every component. `_ds_bundle.js` is the
 | `forms/NumberInput.js` | NumberInput | 47.8 kB | 8.9 kB |
 | `forms/Questionnaire.js` | Questionnaire, QuestionnaireProgress, QuestionnaireItem, QuestionnaireTitle, QuestionnaireDescription, QuestionnaireChoices, QuestionnaireChoice, QuestionnaireInput, QuestionnaireError, QuestionnaireActions, QuestionnairePrevious, QuestionnaireSkip, QuestionnaireNext, QuestionnaireSubmit | 7.4 kB | 2.5 kB |
 | `forms/Radio.js` | RadioGroup, RadioGroupItem, Radio | 2.3 kB | 1.0 kB |
-| `forms/Select.js` | Select, SelectTrigger, SelectValue, SelectContent, SelectGroup, SelectLabel, SelectSeparator, SelectItem | 51.3 kB | 10.0 kB |
+| `forms/Select.js` | Select, SelectTrigger, SelectValue, SelectContent, SelectGroup, SelectLabel, SelectSeparator, SelectItem | 51.6 kB | 10.2 kB |
 | `forms/Slider.js` | Slider | 2.8 kB | 1.4 kB |
 | `forms/Switch.js` | Switch | 2.0 kB | 0.9 kB |
 | `forms/Textarea.js` | Textarea | 45.1 kB | 7.7 kB |
@@ -138,7 +138,7 @@ The root import, `@efolusi/meridian`, is every component. `_ds_bundle.js` is the
 | `marketing/SiteHeader.js` | SiteHeader | 46.5 kB | 8.1 kB |
 | `marketing/ThemeToggle.js` | ThemeToggle | 46.5 kB | 8.4 kB |
 | `navigation/Breadcrumbs.js` | Breadcrumb, BreadcrumbList, BreadcrumbItem, BreadcrumbLink, BreadcrumbPage, BreadcrumbSeparator, BreadcrumbEllipsis | 46.0 kB | 7.7 kB |
-| `navigation/Menubar.js` | Menubar, MenubarMenu, MenubarTrigger, MenubarContent, MenubarPortal, MenubarGroup, MenubarRadioGroup, MenubarLabel, MenubarSeparator, MenubarShortcut, MenubarItem, MenubarCheckboxItem, MenubarRadioItem, MenubarSub, MenubarSubTrigger, MenubarSubContent | 59.5 kB | 11.8 kB |
+| `navigation/Menubar.js` | Menubar, MenubarMenu, MenubarTrigger, MenubarContent, MenubarPortal, MenubarGroup, MenubarRadioGroup, MenubarLabel, MenubarSeparator, MenubarShortcut, MenubarItem, MenubarCheckboxItem, MenubarRadioItem, MenubarSub, MenubarSubTrigger, MenubarSubContent | 59.8 kB | 12.1 kB |
 | `navigation/NavigationMenu.js` | NavigationMenu, NavigationMenuList, NavigationMenuItem, NavigationMenuTrigger, NavigationMenuContent, NavigationMenuLink, NavigationMenuIndicator, NavigationMenuViewport | 50.6 kB | 9.5 kB |
 | `navigation/PageControl.js` | PageControl | 0.7 kB | 0.4 kB |
 | `navigation/Pagination.js` | Pagination, PaginationContent, PaginationItem, PaginationLink, PaginationPrevious, PaginationNext, PaginationEllipsis | 45.8 kB | 7.6 kB |
@@ -150,12 +150,12 @@ The root import, `@efolusi/meridian`, is every component. `_ds_bundle.js` is the
 | `navigation/TabBar.js` | TabBar | 44.3 kB | 7.4 kB |
 | `navigation/Tabs.js` | Tabs, TabsList, TabsTrigger, TabsContent | 47.0 kB | 8.3 kB |
 | `navigation/TopNav.js` | TopNav | 0.8 kB | 0.5 kB |
-| `overlay/Command.js` | Command, CommandDialog, CommandInput, CommandList, CommandEmpty, CommandGroup, CommandItem, CommandShortcut, CommandSeparator | 54.6 kB | 10.6 kB |
-| `overlay/ContextMenu.js` | ContextMenu, ContextMenuTrigger, ContextMenuPortal, ContextMenuContent, ContextMenuGroup, ContextMenuLabel, ContextMenuSeparator, ContextMenuShortcut, ContextMenuItem, ContextMenuCheckboxItem, ContextMenuRadioGroup, ContextMenuRadioItem, ContextMenuSub, ContextMenuSubTrigger, ContextMenuSubContent | 55.7 kB | 11.0 kB |
-| `overlay/Drawer.js` | Drawer, DrawerTrigger, DrawerPortal, DrawerClose, DrawerOverlay, DrawerContent, DrawerHeader, DrawerFooter, DrawerTitle, DrawerDescription | 53.8 kB | 10.1 kB |
-| `overlay/DropdownMenu.js` | DropdownMenu, DropdownMenuTrigger, DropdownMenuPortal, DropdownMenuContent, DropdownMenuGroup, DropdownMenuLabel, DropdownMenuSeparator, DropdownMenuShortcut, DropdownMenuItem, DropdownMenuCheckboxItem, DropdownMenuRadioGroup, DropdownMenuRadioItem, DropdownMenuSub, DropdownMenuSubTrigger, DropdownMenuSubContent | 55.6 kB | 11.0 kB |
-| `overlay/HoverCard.js` | HoverCard, HoverCardTrigger, HoverCardContent | 5.7 kB | 2.3 kB |
-| `overlay/Popover.js` | Popover, PopoverTrigger, PopoverContent, PopoverHeader, PopoverTitle, PopoverDescription | 6.8 kB | 2.6 kB |
+| `overlay/Command.js` | Command, CommandDialog, CommandInput, CommandList, CommandEmpty, CommandGroup, CommandItem, CommandShortcut, CommandSeparator | 54.9 kB | 10.8 kB |
+| `overlay/ContextMenu.js` | ContextMenu, ContextMenuTrigger, ContextMenuPortal, ContextMenuContent, ContextMenuGroup, ContextMenuLabel, ContextMenuSeparator, ContextMenuShortcut, ContextMenuItem, ContextMenuCheckboxItem, ContextMenuRadioGroup, ContextMenuRadioItem, ContextMenuSub, ContextMenuSubTrigger, ContextMenuSubContent | 56.0 kB | 11.2 kB |
+| `overlay/Drawer.js` | Drawer, DrawerTrigger, DrawerPortal, DrawerClose, DrawerOverlay, DrawerContent, DrawerHeader, DrawerFooter, DrawerTitle, DrawerDescription | 54.1 kB | 10.5 kB |
+| `overlay/DropdownMenu.js` | DropdownMenu, DropdownMenuTrigger, DropdownMenuPortal, DropdownMenuContent, DropdownMenuGroup, DropdownMenuLabel, DropdownMenuSeparator, DropdownMenuShortcut, DropdownMenuItem, DropdownMenuCheckboxItem, DropdownMenuRadioGroup, DropdownMenuRadioItem, DropdownMenuSub, DropdownMenuSubTrigger, DropdownMenuSubContent | 55.9 kB | 11.2 kB |
+| `overlay/HoverCard.js` | HoverCard, HoverCardTrigger, HoverCardContent | 6.0 kB | 2.5 kB |
+| `overlay/Popover.js` | Popover, PopoverTrigger, PopoverContent, PopoverHeader, PopoverTitle, PopoverDescription | 7.1 kB | 2.7 kB |
 | `overlay/Portal.js` | Portal | 3.1 kB | 1.4 kB |
-| `overlay/Sheet.js` | Sheet, SheetTrigger, SheetClose, SheetContent, SheetHeader, SheetFooter, SheetTitle, SheetDescription | 51.5 kB | 9.5 kB |
+| `overlay/Sheet.js` | Sheet, SheetTrigger, SheetClose, SheetContent, SheetHeader, SheetFooter, SheetTitle, SheetDescription | 51.8 kB | 9.6 kB |
 | `runtime/runtime.js` | shared helpers | 1.6 kB | 0.9 kB |

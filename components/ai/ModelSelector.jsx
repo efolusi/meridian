@@ -1,6 +1,6 @@
 'use client';
 import React from 'react';
-import { injectEfCss } from '../runtime/runtime.jsx';
+import { injectEfCss, mergeRefs, styleRef } from '../runtime/runtime.jsx';
 import { Portal, useAnchoredStyle } from '../overlay/Portal.jsx';
 import { Icon } from '../icons/Icon.jsx';
 const CSS = `
@@ -16,6 +16,7 @@ const CSS = `
 .ef-modelsel__item{display:flex;align-items:center;gap:var(--space-3);width:100%;padding:var(--space-2) var(--space-3);border:none;border-radius:var(--radius-sm);background:none;cursor:pointer;text-align:start;font-family:var(--font-sans);transition:background var(--dur-fast) var(--ease-enter)}
 .ef-modelsel__item:hover{background:var(--surface-sunken)}
 .ef-modelsel__item:focus-visible{outline:none;box-shadow:var(--focus-ring)}
+.ef-modelsel__text{min-width:0}
 .ef-modelsel__name{font-size:var(--text-md);font-weight:500;color:var(--text-primary)}
 .ef-modelsel__hint{font-size:var(--text-xs);color:var(--text-muted);margin-top:1px}
 .ef-modelsel__badge{margin-inline-start:auto;flex:none;font-size:10.5px;font-weight:600;letter-spacing:.04em;text-transform:uppercase;color:var(--accent-subtle-fg);background:var(--accent-subtle);border-radius:var(--radius-sm);padding:var(--space-0-5) var(--space-2)}
@@ -49,11 +50,11 @@ export function ModelSelector({ models = [], value, onChange, side = 'top', styl
         <span className="ef-modelsel__chev"><Icon name={dir === 'bottom' ? 'chevron-down' : 'chevron-up'} size={12} /></span>
       </button>
       {open ? (
-        <Portal><div role="listbox" ref={panelRef} className="ef-modelsel__panel" style={anchored}>
+        <Portal><div role="listbox" ref={mergeRefs(panelRef, styleRef(anchored))} className="ef-modelsel__panel">
           {models.map(m => (
             <button key={m.id} type="button" role="option" aria-selected={m.id === cur.id} className="ef-modelsel__item"
               onClick={() => { setOpen(false); if (onChange) onChange(m.id); }}>
-              <span style={{ minWidth: 0 }}>
+              <span className="ef-modelsel__text">
                 <span className="ef-modelsel__name">{m.name}</span>
                 {m.hint ? <div className="ef-modelsel__hint">{m.hint}</div> : null}
               </span>

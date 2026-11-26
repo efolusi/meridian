@@ -1,6 +1,6 @@
 'use client';
 import React from 'react';
-import { injectEfCss, mergeRefs, useIsoLayoutEffect } from '../runtime/runtime.jsx';
+import { injectEfCss, mergeRefs, styleRefUnder, useIsoLayoutEffect } from '../runtime/runtime.jsx';
 import { Icon } from '../icons/Icon.jsx';
 import { Portal, useAnchoredStyle, useHydrated } from './Portal.jsx';
 import { useDirection } from '../display/Direction.jsx';
@@ -155,7 +155,7 @@ export const ContextMenuContent = React.forwardRef(function ContextMenuContent({
     return () => { document.removeEventListener('pointerdown', away); window.removeEventListener('blur', blur); };
   }, [root?.open, close]);
   if (!root?.open) return null;
-  return <ContextMenuPortal><div dir={rtl ? 'rtl' : undefined} {...rest} ref={ref} role="menu" data-ef-menu={root.menuId} data-slot="context-menu-content" data-state="open" className={join('ef-context-menu__content', className)} style={{ left: root.point.x, top: root.point.y, ...style }} onKeyDown={compose(onKeyDown, keyboard)}>{children}</div></ContextMenuPortal>;
+  return <ContextMenuPortal><div dir={rtl ? 'rtl' : undefined} {...rest} ref={mergeRefs(ref, styleRefUnder({ left: root.point.x, top: root.point.y }, style))} role="menu" data-ef-menu={root.menuId} data-slot="context-menu-content" data-state="open" className={join('ef-context-menu__content', className)} style={style} onKeyDown={compose(onKeyDown, keyboard)}>{children}</div></ContextMenuPortal>;
 });
 
 export const ContextMenuGroup = React.forwardRef(function ContextMenuGroup(props, ref) {
@@ -233,5 +233,5 @@ export const ContextMenuSubContent = React.forwardRef(function ContextMenuSubCon
   const keyboard = useMenuKeyboard(localRef, close, { sub: true, loop, rtl });
   useIsoLayoutEffect(() => { if (sub?.open) menuItems(localRef.current)[0]?.focus(); }, [sub?.open]);
   if (!sub?.open) return null;
-  return <ContextMenuPortal><div dir={rtl ? 'rtl' : undefined} {...props} ref={mergeRefs(forwardedRef, localRef, sub.contentRef)} role="menu" data-ef-menu={root?.menuId} data-slot="context-menu-sub-content" data-state="open" data-side={side} className={join('ef-context-menu__content', className)} style={{ ...anchored, ...style }} onMouseLeave={() => sub.setOpen(false)} onKeyDown={compose(onKeyDown, keyboard)}>{children}</div></ContextMenuPortal>;
+  return <ContextMenuPortal><div dir={rtl ? 'rtl' : undefined} {...props} ref={mergeRefs(forwardedRef, localRef, sub.contentRef, styleRefUnder(anchored, style))} role="menu" data-ef-menu={root?.menuId} data-slot="context-menu-sub-content" data-state="open" data-side={side} className={join('ef-context-menu__content', className)} style={style} onMouseLeave={() => sub.setOpen(false)} onKeyDown={compose(onKeyDown, keyboard)}>{children}</div></ContextMenuPortal>;
 });
