@@ -100,6 +100,19 @@ export function styleRef(values) {
   };
 }
 /**
+ * styleRef for values the component computes (a panel's position, a measured width)
+ * under a style prop the caller passes: a property the caller's style already sets
+ * is left to the caller, as `{ ...computed, ...style }` did when it was one attribute.
+ */
+export function styleRefUnder(values, style) {
+  const own = {};
+  for (const [name, value] of Object.entries(values)) {
+    const camel = name.replace(/-([a-z])/g, (_, c) => c.toUpperCase());
+    if (style?.[camel] == null && style?.[name] == null) own[name] = value;
+  }
+  return styleRef(own);
+}
+/**
  * useLayoutEffect that is silent on the server.
  *
  * React warns when useLayoutEffect renders under renderToString; the effect

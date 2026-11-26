@@ -1,13 +1,13 @@
 'use client';
 import React from 'react';
-import { injectEfCss, cssPct, prefersReducedMotion } from '../runtime/runtime.jsx';
+import { injectEfCss, cssPct, prefersReducedMotion, styleRef } from '../runtime/runtime.jsx';
 const CSS = `
 .ef-usage{display:flex;flex-direction:column;gap:var(--space-2)}
 .ef-usage__row{display:flex;align-items:baseline;gap:var(--space-2)}
 .ef-usage__label{font-size:var(--text-sm);font-weight:600;color:var(--text-primary)}
 .ef-usage__figures{margin-inline-start:auto;font-family:var(--font-mono);font-size:var(--text-xs);color:var(--text-muted)}
 .ef-usage__track{height:6px;border-radius:var(--radius-full);background:var(--surface-sunken);overflow:hidden}
-.ef-usage__fill{height:100%;border-radius:var(--radius-full);background:var(--accent);transition:width var(--dur-progress) linear}
+.ef-usage__fill{display:block;width:0;height:100%;border-radius:var(--radius-full);background:var(--accent);transition:width var(--dur-progress) linear}
 .ef-usage--warn .ef-usage__fill{background:var(--status-warning-solid)}
 .ef-usage--over .ef-usage__fill{background:var(--status-danger-solid)}
 .ef-usage__foot{display:flex;gap:var(--space-2);font-size:var(--text-xs);color:var(--text-muted)}
@@ -44,7 +44,7 @@ export function UsageMeter({ used = 0, limit = 100, label = 'Usage', unit = '', 
         <span className="ef-usage__figures">{fmt(shown)} / {fmt(limit)}{unit ? ' ' + unit : ''}</span>
       </div>
       <div className="ef-usage__track" role="progressbar" aria-valuenow={Math.round(Math.min(1, Math.max(0, ratio)) * 100)} aria-valuemin={0} aria-valuemax={100} aria-valuetext={`${fmt(used)} / ${fmt(limit)}${unit ? " " + unit : ""}`} aria-label={label}>
-        <span className="ef-usage__fill" style={{ width: cssPct(Math.min(100, (animated ? shownRatio : ratio) * 100)), display: 'block' }}></span>
+        <span className="ef-usage__fill" ref={styleRef({ width: cssPct(Math.min(100, (animated ? shownRatio : ratio) * 100)) })}></span>
       </div>
       {hint || cost ? (
         <div className="ef-usage__foot">

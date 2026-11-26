@@ -1,6 +1,6 @@
 'use client';
 import React from 'react';
-import { injectEfCss, prefersReducedMotion } from '../runtime/runtime.jsx';
+import { injectEfCss, prefersReducedMotion, mergeRefs, styleRef } from '../runtime/runtime.jsx';
 import { formatTime } from './Player.jsx';
 const CSS = `
 .ef-transcript{display:flex;flex-direction:column;border:1px solid var(--border-default);border-radius:var(--radius-md);background:var(--surface-card);overflow:hidden;font-family:var(--font-sans)}
@@ -9,7 +9,7 @@ const CSS = `
 .ef-transcript__auto{display:inline-flex;align-items:center;gap:var(--space-2);border:1px solid var(--border-default);background:none;cursor:pointer;padding:var(--space-1) var(--space-3);border-radius:var(--radius-full);font-family:var(--font-sans);font-size:var(--text-xs);color:var(--text-muted);transition:color var(--dur-fast) var(--ease-enter),border-color var(--dur-fast) var(--ease-enter)}
 .ef-transcript__auto--on{color:var(--text-primary);border-color:var(--border-strong)}
 .ef-transcript__auto:focus-visible{outline:none;box-shadow:var(--focus-ring)}
-.ef-transcript__scroll{overflow-y:auto;padding:var(--space-1)}
+.ef-transcript__scroll{height:var(--ef-transcript-h,280px);overflow-y:auto;padding:var(--space-1)}
 .ef-transcript__item{display:flex;gap:var(--space-3);padding:var(--space-2) var(--space-3);border-radius:var(--radius-sm);transition:background var(--dur-fast) var(--ease-enter)}
 .ef-transcript__item--active{background:var(--surface-sunken)}
 .ef-transcript__time{flex:none;border:none;background:none;padding:0;cursor:pointer;font-family:var(--font-mono);font-size:var(--text-2xs);color:var(--text-muted);font-variant-numeric:tabular-nums;line-height:1.9;transition:color var(--dur-fast) var(--ease-enter)}
@@ -46,7 +46,7 @@ export function Transcript({ title = 'Transcript', items = [], currentTime = 0, 
         <span className="ef-transcript__title">{title}</span>
         <button type="button" className={`ef-transcript__auto${auto ? ' ef-transcript__auto--on' : ''}`} aria-pressed={auto} onClick={() => setAuto(!auto)}>Auto-scroll</button>
       </div>
-      <div ref={viewport} className="ef-transcript__scroll" style={{ height }}>
+      <div ref={mergeRefs(viewport, styleRef({ '--ef-transcript-h': height ?? 'auto' }))} className="ef-transcript__scroll">
         {items.map((it, i) => (
           <div key={i} ref={el => { rowRefs.current[i] = el; }} className={`ef-transcript__item${i === active ? ' ef-transcript__item--active' : ''}`}>
             <button type="button" className="ef-transcript__time" onClick={() => onJump && onJump(it.start)}>{formatTime(it.start)}</button>

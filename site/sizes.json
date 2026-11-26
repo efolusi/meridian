@@ -1,16 +1,16 @@
 {
   "totals": {
     "@efolusi/meridian": {
-      "bytes": 377304,
-      "gzip": 85344
+      "bytes": 377416,
+      "gzip": 85305
     },
     "dist/components.css": {
-      "bytes": 241090,
-      "gzip": 33046
+      "bytes": 241637,
+      "gzip": 33158
     },
     "_ds_bundle.js": {
-      "bytes": 901778,
-      "gzip": 161672
+      "bytes": 903073,
+      "gzip": 161985
     }
   },
   "modules": [
@@ -20,8 +20,8 @@
       "exports": [
         "AgentRun"
       ],
-      "bytes": 46812,
-      "gzip": 7896
+      "bytes": 46733,
+      "gzip": 7836
     },
     {
       "module": "ai/Bubble.js",
@@ -78,8 +78,8 @@
       "exports": [
         "DocumentCard"
       ],
-      "bytes": 46585,
-      "gzip": 7940
+      "bytes": 46811,
+      "gzip": 8108
     },
     {
       "module": "ai/FeedbackBar.js",
@@ -261,8 +261,8 @@
       "exports": [
         "Transcript"
       ],
-      "bytes": 2353,
-      "gzip": 1018
+      "bytes": 2628,
+      "gzip": 1139
     },
     {
       "module": "ai/UsageMeter.js",
@@ -270,8 +270,8 @@
       "exports": [
         "UsageMeter"
       ],
-      "bytes": 1982,
-      "gzip": 955
+      "bytes": 2134,
+      "gzip": 1027
     },
     {
       "module": "ai/WebPreview.js",
@@ -722,8 +722,8 @@
         "AlertDialogCancel",
         "AlertDialogAction"
       ],
-      "bytes": 7121,
-      "gzip": 2505
+      "bytes": 7159,
+      "gzip": 2519
     },
     {
       "module": "feedback/Banner.js",
@@ -740,8 +740,8 @@
       "exports": [
         "ConfirmDialog"
       ],
-      "bytes": 55760,
-      "gzip": 10810
+      "bytes": 55779,
+      "gzip": 10792
     },
     {
       "module": "feedback/Dialog.js",
@@ -823,8 +823,8 @@
         "AttachmentTrigger",
         "AttachmentGroup"
       ],
-      "bytes": 48108,
-      "gzip": 8168
+      "bytes": 48131,
+      "gzip": 8169
     },
     {
       "module": "files/FileDrop.js",
@@ -832,8 +832,8 @@
       "exports": [
         "FileDrop"
       ],
-      "bytes": 46521,
-      "gzip": 8059
+      "bytes": 46508,
+      "gzip": 8053
     },
     {
       "module": "files/FileTile.js",
@@ -868,8 +868,8 @@
       "exports": [
         "Button"
       ],
-      "bytes": 45822,
-      "gzip": 7703
+      "bytes": 45845,
+      "gzip": 7702
     },
     {
       "module": "forms/ButtonGroup.js",
@@ -889,8 +889,8 @@
         "ButtonTile",
         "ButtonTileGroup"
       ],
-      "bytes": 45732,
-      "gzip": 7618
+      "bytes": 45942,
+      "gzip": 7703
     },
     {
       "module": "forms/Checkbox.js",
@@ -958,8 +958,8 @@
       "exports": [
         "Input"
       ],
-      "bytes": 47591,
-      "gzip": 8347
+      "bytes": 47593,
+      "gzip": 8351
     },
     {
       "module": "forms/InputGroup.js",
@@ -1100,8 +1100,8 @@
         "ToggleGroup",
         "ToggleGroupItem"
       ],
-      "bytes": 2736,
-      "gzip": 1272
+      "bytes": 3203,
+      "gzip": 1508
     },
     {
       "module": "icons/Icon.js",
@@ -1165,8 +1165,8 @@
       "exports": [
         "Reveal"
       ],
-      "bytes": 1371,
-      "gzip": 805
+      "bytes": 1462,
+      "gzip": 835
     },
     {
       "module": "marketing/Section.js",
@@ -1281,8 +1281,8 @@
         "PaginationNext",
         "PaginationEllipsis"
       ],
-      "bytes": 46983,
-      "gzip": 7799
+      "bytes": 46929,
+      "gzip": 7752
     },
     {
       "module": "navigation/SegmentedControl.js",
@@ -1330,8 +1330,8 @@
         "SidebarMenuSubButton",
         "SidebarMenuSkeleton"
       ],
-      "bytes": 53319,
-      "gzip": 10048
+      "bytes": 53293,
+      "gzip": 10026
     },
     {
       "module": "navigation/SkipLink.js",
@@ -1518,8 +1518,8 @@
       "exports": [
         "shared helpers"
       ],
-      "bytes": 1487,
-      "gzip": 867
+      "bytes": 1666,
+      "gzip": 949
     }
   ]
 }

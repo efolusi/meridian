@@ -54,6 +54,12 @@ export const Reveal = React.forwardRef(function Reveal({ as: Tag = 'div', stagge
   }, [stagger]);
   const ref = (node) => {
     local.current = node;
+    // The stagger delay goes through the CSSOM, not a style attribute (strict CSP drops those).
+    // A transitionDelay the caller passes in style is theirs and stays.
+    if (node && style?.transitionDelay == null) {
+      if (delay && state) node.style.setProperty('transition-delay', `${delay}ms`);
+      else node.style.removeProperty('transition-delay');
+    }
     if (typeof forwarded === 'function') forwarded(node);
     else if (forwarded) forwarded.current = node;
   };
@@ -64,7 +70,7 @@ export const Reveal = React.forwardRef(function Reveal({ as: Tag = 'div', stagge
       data-slot="reveal"
       data-reveal={state || ''}
       className={className}
-      style={delay && state ? { transitionDelay: `${delay}ms`, ...style } : style}
+      style={style}
     >
       {children}
     </Tag>

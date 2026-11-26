@@ -83,7 +83,7 @@ export const Input = React.forwardRef(function Input({
       aria-invalid={bad || rest['aria-invalid'] || undefined}
       type={showToggle && revealed ? 'text' : rest.type}
       className={classes('ef-input__el', customSize !== 'md' && `ef-input__el--${customSize}`, glass && 'ef-glass ef-glass--clear', className)}
-      style={rest.type === 'file' ? undefined : style}
+      {...(rest.type === 'file' ? null : { style })}
       onChange={rest.type === 'file' ? (event) => {
         setFileName(event.currentTarget.files?.[0]?.name || 'No file chosen');
         rest.onChange?.(event);

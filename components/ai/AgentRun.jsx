@@ -10,6 +10,7 @@ const CSS = `
 .ef-agentrun__step--done .ef-agentrun__dot{background:var(--accent);border-color:var(--accent);color:var(--accent-contrast)}
 .ef-agentrun__step--active .ef-agentrun__dot{border-color:var(--accent);color:var(--accent)}
 .ef-agentrun__step--error .ef-agentrun__dot{background:var(--status-danger-bg);border-color:var(--status-danger-solid);color:var(--status-danger-text)}
+.ef-agentrun__pip{display:inline-block;width:5px;height:5px;border-radius:var(--radius-full);background:currentColor}
 .ef-agentrun__spin{display:inline-flex;animation:ef-agentrun-spin .9s linear infinite}
 @keyframes ef-agentrun-spin{to{transform:rotate(360deg)}}
 .ef-agentrun__line{width:1px;flex:1;background:var(--border-default);margin:var(--space-1) 0}
@@ -42,7 +43,7 @@ export function AgentRun({ steps = [], style, className, ...rest }) {
                 {st === 'done' ? <Icon name="check" size={12} />
                   : st === 'active' ? <span className="ef-agentrun__spin"><Icon name="loader-circle" size={12} /></span>
                   : st === 'error' ? <Icon name="x" size={12} />
-                  : <span style={{ width: 5, height: 5, borderRadius: 'var(--radius-full)', background: 'currentColor', display: 'inline-block' }}></span>}
+                  : <span className="ef-agentrun__pip"></span>}
               </span>
               {i < steps.length - 1 ? <span className="ef-agentrun__line"></span> : null}
             </div>

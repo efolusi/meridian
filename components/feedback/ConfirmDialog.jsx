@@ -14,7 +14,7 @@ export function ConfirmDialog({ open, onOpenChange, onConfirm, title, descriptio
         <div className="ef-dialog__body">
           {children}
           {typeToConfirm ? (
-            <Input label={`Type “${typeToConfirm}” to confirm`} value={typed} onChange={e => setTyped(e.target.value)} placeholder={typeToConfirm} style={children ? { marginTop: 'var(--space-4)' } : undefined} />
+            <Input label={`Type “${typeToConfirm}” to confirm`} value={typed} onChange={e => setTyped(e.target.value)} placeholder={typeToConfirm} className={children ? 'ef-dialog__typed' : undefined} />
           ) : null}
         </div>
         <DialogFooter>
