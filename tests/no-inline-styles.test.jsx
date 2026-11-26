@@ -367,3 +367,86 @@ describe('batch 6 sets the last runtime values through the CSSOM', () => {
     host.remove();
   });
 });
+
+describe('review of batch 6: first paint, rerender and behaviour', () => {
+  it('Resizable: before hydration a pane has an equal-split fallback, and data-sized swaps it for the written flex-basis', async () => {
+    const src = readFileSync('components/display/Resizable.jsx', 'utf8');
+    expect(src).toMatch(/\.ef-resizable__pane\{[^}]*flex:1 1 0/);
+    expect(src).toMatch(/\.ef-resizable__pane\[data-sized\]\{[^}]*flex-grow:0;flex-shrink:0/);
+    const html = renderToString(<ResizablePanelGroup><ResizablePanel defaultSize={30}>a</ResizablePanel><ResizableHandle /><ResizablePanel>b</ResizablePanel></ResizablePanelGroup>);
+    expect(html).toContain('ef-resizable__pane');
+    expect(html).not.toContain('data-sized');
+    expect(html).not.toMatch(/\sstyle="/);
+    const { render } = await import('@testing-library/react');
+    const { container, unmount } = render(<ResizablePanelGroup><ResizablePanel defaultSize={30}>a</ResizablePanel><ResizableHandle /><ResizablePanel>b</ResizablePanel></ResizablePanelGroup>);
+    const pane = container.querySelector('[data-slot="resizable-panel"]');
+    expect(pane.hasAttribute('data-sized')).toBe(true);
+    expect(pane.style.flexBasis).toBe('30%');
+    unmount();
+  });
+
+  it('Resizable: a caller flex shorthand wins over the computed flex-basis', async () => {
+    const { render } = await import('@testing-library/react');
+    const { container, unmount } = render(<ResizablePanelGroup><ResizablePanel defaultSize={30} style={{ flex: '2 2 0' }}>a</ResizablePanel><ResizableHandle /><ResizablePanel>b</ResizablePanel></ResizablePanelGroup>);
+    const pane = container.querySelector('[data-slot="resizable-panel"]');
+    expect(pane.style.flexBasis).toBe('0px');
+    unmount();
+  });
+
+  it('Slider: the range follows a value change, and an orientation switch clears the other orientation\'s properties', async () => {
+    const { render } = await import('@testing-library/react');
+    const { container, rerender, unmount } = render(<Slider value={[20, 70]} onValueChange={() => {}} aria-label="Range" />);
+    const range = () => container.querySelector('.ef-slider__range');
+    expect(range().style.width).toBe('50%');
+    rerender(<Slider value={[10, 40]} onValueChange={() => {}} aria-label="Range" />);
+    expect(range().style.width).toBe('30%');
+    expect(range().style.getPropertyValue('inset-inline-start')).toBe('10%');
+    rerender(<Slider value={[10, 40]} orientation="vertical" onValueChange={() => {}} aria-label="Range" />);
+    expect(range().style.getPropertyValue('inset-inline-start')).toBe('');
+    expect(range().style.bottom).toBe('10%');
+    expect(range().style.height).toBe('30%');
+    rerender(<Slider value={[10, 40]} onValueChange={() => {}} aria-label="Range" />);
+    expect(range().style.bottom).toBe('');
+    expect(range().style.height).toBe('');
+    expect(range().style.getPropertyValue('inset-inline-start')).toBe('10%');
+    unmount();
+  });
+
+  it('SelectionQuote: selecting text places the bar (top, left, data-placed)', async () => {
+    const { render, screen, waitFor } = await import('@testing-library/react');
+    const rect = HTMLElement.prototype.getBoundingClientRect;
+    HTMLElement.prototype.getBoundingClientRect = function () {
+      const bar = this.classList?.contains('ef-selq__bar');
+      const w = bar ? 100 : 500;
+      const h = bar ? 30 : 200;
+      return { x: 0, y: 0, top: 0, left: 0, right: w, bottom: h, width: w, height: h, toJSON() {} };
+    };
+    // jsdom has no layout, and may not define Range.getClientRects at all.
+    const hadRects = Object.prototype.hasOwnProperty.call(Range.prototype, 'getClientRects');
+    const savedRects = Range.prototype.getClientRects;
+    Range.prototype.getClientRects = () => [{ top: 100, bottom: 120, left: 50, right: 90, width: 40, height: 20 }];
+    try {
+      const { container, unmount } = render(<SelectionQuote actions={[{ id: 'q', label: 'Quote' }]}><p>Quotable words</p></SelectionQuote>);
+      expect(container.querySelector('.ef-selq__bar')).toBeNull();
+      const text = container.querySelector('p').firstChild;
+      const range = document.createRange();
+      range.setStart(text, 0);
+      range.setEnd(text, 8);
+      const selection = window.getSelection();
+      selection.removeAllRanges();
+      selection.addRange(range);
+      document.dispatchEvent(new Event('pointerup', { bubbles: true }));
+      await waitFor(() => expect(container.querySelector('.ef-selq__bar')).not.toBeNull());
+      const bar = container.querySelector('.ef-selq__bar');
+      await waitFor(() => expect(bar.hasAttribute('data-placed')).toBe(true));
+      expect(bar.style.top).toBe('62px');
+      expect(bar.style.left).toBe('50px');
+      expect(screen.getByRole('toolbar')).toBe(bar);
+      selection.removeAllRanges();
+      unmount();
+    } finally {
+      if (hadRects) Range.prototype.getClientRects = savedRects; else delete Range.prototype.getClientRects;
+      HTMLElement.prototype.getBoundingClientRect = rect;
+    }
+  });
+});

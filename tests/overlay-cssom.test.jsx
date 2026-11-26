@@ -43,17 +43,22 @@ describe('Drawer drag', () => {
     }
   });
 
-  it('a caller transform on the panel is the caller\'s, even during a drag', async () => {
+  it('the drag wins over a caller transform and transition, and the caller\'s values come back at rest', async () => {
     const original = window.PointerEvent;
     window.PointerEvent = TestPointerEvent;
     try {
       const user = userEvent.setup();
-      render(<Drawer direction="right"><DrawerTrigger asChild><Button>Open</Button></DrawerTrigger><DrawerContent style={{ transform: 'scale(1)' }}><DrawerTitle>Order</DrawerTitle></DrawerContent></Drawer>);
+      render(<Drawer direction="right"><DrawerTrigger asChild><Button>Open</Button></DrawerTrigger><DrawerContent style={{ transform: 'scale(1)', transition: 'opacity 1s' }}><DrawerTitle>Order</DrawerTitle></DrawerContent></Drawer>);
       await user.click(screen.getByRole('button', { name: 'Open' }));
       const panel = screen.getByRole('dialog');
+      expect(panel.style.transform).toBe('scale(1)');
       fireEvent.pointerDown(panel, { pointerId: 1, clientX: 0 });
       fireEvent.pointerMove(panel, { pointerId: 1, clientX: 30 });
+      expect(panel.style.transform).toBe('translateX(30px)');
+      expect(panel.style.transition).toBe('none');
+      fireEvent.pointerUp(panel, { pointerId: 1, clientX: 30 });
       expect(panel.style.transform).toBe('scale(1)');
+      expect(panel.style.transition).toContain('opacity');
     } finally {
       window.PointerEvent = original;
     }

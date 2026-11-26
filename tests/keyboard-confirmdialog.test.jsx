@@ -76,4 +76,21 @@ describe('ConfirmDialog', () => {
     expect(screen.queryByRole('dialog')).toBeNull();
     expect(document.activeElement).toBe(trigger);
   });
+
+  it('puts the space above the typed-confirm field on a wrapper, so the label sits one gap above its input (MD60)', async () => {
+    const user = userEvent.setup();
+    render(
+      <>
+        <Button onClick={() => {}}>Open</Button>
+        <ConfirmDialog open onOpenChange={() => {}} title="Delete project" typeToConfirm="meridian-docs">
+          <p>This cannot be undone.</p>
+        </ConfirmDialog>
+      </>
+    );
+    const input = await screen.findByLabelText(/to confirm/);
+    expect(input.classList.contains('ef-dialog__typed')).toBe(false);
+    const wrapper = input.closest('.ef-dialog__typed');
+    expect(wrapper).not.toBeNull();
+    expect(wrapper.firstElementChild.classList.contains('ef-field')).toBe(true);
+  });
 });

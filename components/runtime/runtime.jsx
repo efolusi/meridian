@@ -103,14 +103,19 @@ export function styleRef(values) {
  * styleRef for values the component computes (a panel's position, a measured width)
  * under a style prop the caller passes: a property the caller's style already sets
  * is left to the caller, as `{ ...computed, ...style }` did when it was one attribute.
- * A caller `inset` shorthand covers top, right, bottom and left.
+ * A caller shorthand covers its longhands: `inset` covers top, right, bottom and left, and
+ * `flex` covers flex-basis.
  */
+const SHORTHAND_COVERS = { inset: ['top', 'right', 'bottom', 'left'], flex: ['flex-basis'] };
 export function styleRefUnder(values, style) {
   const own = {};
-  const insetSet = style?.inset != null;
+  const covered = new Set();
+  for (const [shorthand, longhands] of Object.entries(SHORTHAND_COVERS)) {
+    if (style?.[shorthand] != null) longhands.forEach(name => covered.add(name));
+  }
   for (const [name, value] of Object.entries(values)) {
     const camel = name.replace(/-([a-z])/g, (_, c) => c.toUpperCase());
-    if (insetSet && (name === 'top' || name === 'right' || name === 'bottom' || name === 'left')) continue;
+    if (covered.has(name)) continue;
     if (style?.[camel] == null && style?.[name] == null) own[name] = value;
   }
   return styleRef(own);
