@@ -68,10 +68,27 @@ describe('cssPct', () => {
   });
 });
 
-describe('server-rendered styles survive the CSS parser', () => {
-  it('UsageMeter, at a ratio that does not divide evenly', () => {
-    expectStylesSurviveParsing(renderToString(<UsageMeter used={1} limit={3} />));
+describe('UsageMeter, at a ratio that does not divide evenly', () => {
+  // The fill width is set through the CSSOM after mount, so the server HTML carries no
+  // style attribute for the parser to truncate; what is left to guard is that hydration
+  // reports no mismatch and the width written is a short percentage.
+  it('hydrates without a mismatch and writes a short percentage', async () => {
+    const { hydrateRoot } = await import('react-dom/client');
+    const { act } = await import('react');
+    const html = renderToString(<UsageMeter used={1} limit={3} />);
+    expect(html).not.toMatch(/\sstyle="/);
+    const host = document.createElement('div');
+    host.innerHTML = html;
+    document.body.appendChild(host);
+    const errors = [];
+    await act(async () => { hydrateRoot(host, <UsageMeter used={1} limit={3} />, { onRecoverableError: (e) => errors.push(e) }); });
+    expect(errors).toEqual([]);
+    expect(host.querySelector('.ef-usage__fill').style.width).toBe('33.333%');
+    host.remove();
   });
+});
+
+describe('server-rendered styles survive the CSS parser', () => {
 
   it('ResizablePanel, at a percentage that does not divide evenly', () => {
     expectStylesSurviveParsing(
