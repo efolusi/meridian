@@ -22,7 +22,7 @@ export const SheetClose = DialogClose;
 
 export const SheetContent = React.forwardRef(function SheetContent({ side = 'right', className, children, style, ...props }, ref) {
   injectEfCss('ef-css-sheet', CSS);
-  return <DialogContent {...props} ref={ref} slot="sheet-content" data-side={side} className={`ef-sheet${className ? ' ' + className : ''}`} width="none" style={{ ...style, position: 'fixed' }}>{children}</DialogContent>;
+  return <DialogContent {...props} ref={ref} slot="sheet-content" data-side={side} className={`ef-sheet${className ? ' ' + className : ''}`} width="none" style={style}>{children}</DialogContent>;
 });
 export const SheetHeader = React.forwardRef(function SheetHeader({ className, ...props }, ref) { return <DialogHeader {...props} ref={ref} slot="sheet-header" className={`ef-sheet__header${className ? ' ' + className : ''}`} />; });
 export const SheetFooter = React.forwardRef(function SheetFooter({ className, ...props }, ref) { return <DialogFooter {...props} ref={ref} slot="sheet-footer" className={`ef-sheet__footer${className ? ' ' + className : ''}`} />; });
