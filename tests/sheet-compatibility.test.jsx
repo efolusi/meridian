@@ -12,7 +12,9 @@ describe('Sheet composition', () => {
     const panel = screen.getByRole('dialog');
     expect(panel.dataset.slot).toBe('sheet-content');
     expect(panel.dataset.side).toBe('left');
-    expect(panel.style.position).toBe('fixed');
+    // position: fixed comes from the .ef-sheet class, not from a style attribute (MD18)
+    expect(panel.classList.contains('ef-sheet')).toBe(true);
+    expect(panel.style.position).toBe('');
     expect(panel.querySelector('[data-slot="sheet-header"]')).toBeTruthy();
     expect(panel.querySelector('[data-slot="sheet-title"]')).toBeTruthy();
     expect(panel.querySelector('[data-slot="sheet-description"]')).toBeTruthy();

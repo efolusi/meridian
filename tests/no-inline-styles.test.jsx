@@ -37,6 +37,9 @@ import { ToggleGroup } from '../components/forms/Toggle.jsx';
 import { Reveal } from '../components/marketing/Reveal.jsx';
 import { PaginationEllipsis } from '../components/navigation/Pagination.jsx';
 import { SidebarMenuSkeleton } from '../components/navigation/Sidebar.jsx';
+import { Dialog, DialogContent, DialogTitle } from '../components/feedback/Dialog.jsx';
+import { Sheet, SheetContent, SheetTitle } from '../components/overlay/Sheet.jsx';
+import { Popover, PopoverContent, PopoverTrigger } from '../components/overlay/Popover.jsx';
 
 // MD18 (#180): strict-CSP sites (style-src without 'unsafe-inline') drop style attributes,
 // so components put fixed styles in their CSS and set runtime values through the CSSOM.
@@ -45,21 +48,10 @@ import { SidebarMenuSkeleton } from '../components/navigation/Sidebar.jsx';
 // Files not fixed yet, with their count of style attributes. It only shrinks; #180
 // closes when it is empty.
 const REMAINING = {
-    "ai/ModelSelector.jsx": 2,
     "ai/SelectionQuote.jsx": 1,
-    "dates/TimePicker.jsx": 1,
     "display/Resizable.jsx": 1,
-    "feedback/Dialog.jsx": 1,
-    "feedback/Tooltip.jsx": 1,
-    "forms/Select.jsx": 1,
     "forms/Slider.jsx": 1,
     "navigation/NavigationMenu.jsx": 1,
-    "overlay/ContextMenu.jsx": 2,
-    "overlay/Drawer.jsx": 1,
-    "overlay/DropdownMenu.jsx": 2,
-    "overlay/HoverCard.jsx": 1,
-    "overlay/Popover.jsx": 1,
-    "overlay/Sheet.jsx": 1
   };
 
 describe('no style attributes in server-rendered HTML', () => {
@@ -292,6 +284,41 @@ describe('batch 4 sets runtime values through the CSSOM', () => {
     const { container, unmount } = render(<div><Reveal>a</Reveal><Reveal>b</Reveal></div>);
     const nodes = container.querySelectorAll('[data-slot="reveal"]');
     expect(nodes[1].style.transitionDelay).toBe('70ms');
+    unmount();
+  });
+});
+
+describe('batch 5 overlays: fixed styles in CSS, placement through the CSSOM', () => {
+  it('Dialog takes position from CSS and sets max-width from width; a caller maxWidth wins', async () => {
+    const { render } = await import('@testing-library/react');
+    const a = render(<Dialog open><DialogContent width={600}><DialogTitle>T</DialogTitle></DialogContent></Dialog>);
+    const panel = document.querySelector('[data-slot="dialog-content"]');
+    expect(panel.style.position).toBe('');
+    expect(panel.style.maxWidth).toBe('600px');
+    a.unmount();
+    const b = render(<Dialog open><DialogContent width={600} style={{ maxWidth: 320 }}><DialogTitle>T</DialogTitle></DialogContent></Dialog>);
+    expect(document.querySelector('[data-slot="dialog-content"]').style.maxWidth).toBe('320px');
+    b.unmount();
+  });
+
+  it('Sheet takes position: fixed from its class, not from a style attribute', async () => {
+    const { render } = await import('@testing-library/react');
+    const { unmount } = render(<Sheet open><SheetContent><SheetTitle>T</SheetTitle></SheetContent></Sheet>);
+    const panel = document.querySelector('[data-slot="sheet-content"]');
+    expect(panel.style.position).toBe('');
+    expect(panel.className).toContain('ef-sheet');
+    unmount();
+  });
+
+  it('Popover is placed through the CSSOM: fixed, with a width from the prop, and a caller style wins', async () => {
+    const { render, screen } = await import('@testing-library/react');
+    const userEvent = (await import('@testing-library/user-event')).default;
+    const { unmount } = render(<Popover><PopoverTrigger>Open</PopoverTrigger><PopoverContent width={280} style={{ top: 5 }}>x</PopoverContent></Popover>);
+    await userEvent.click(screen.getByRole('button', { name: 'Open' }));
+    const panel = document.querySelector('[data-slot="popover-content"]');
+    expect(panel.style.position).toBe('fixed');
+    expect(panel.style.width).toBe('280px');
+    expect(panel.style.top).toBe('5px');
     unmount();
   });
 });

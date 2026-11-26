@@ -1,6 +1,6 @@
 'use client';
 import React from 'react';
-import { injectEfCss, mergeRefs, useIsoLayoutEffect } from '../runtime/runtime.jsx';
+import { injectEfCss, mergeRefs, styleRefUnder, useIsoLayoutEffect } from '../runtime/runtime.jsx';
 import { Portal, useAnchoredStyle, useEscapeLayer, escapeLayerContext, useHydrated } from './Portal.jsx';
 
 const CSS = `
@@ -135,8 +135,8 @@ export const PopoverContent = React.forwardRef(function PopoverContent({ align =
   if (!ctx?.open) return null;
   return (
     <Portal>
-      <div {...rest} ref={mergeRefs(forwardedRef, ctx.contentRef)} id={id || ctx.contentId} role={role} data-slot="popover-content" data-state="open" data-side={placement} data-align={align}
-        className={`ef-popover__panel${className ? ' ' + className : ''}`} style={{ ...anchored, width: width ?? undefined, ...style }}>{children}</div>
+      <div {...rest} ref={mergeRefs(forwardedRef, ctx.contentRef, styleRefUnder({ ...anchored, width: width ?? undefined }, style))} id={id || ctx.contentId} role={role} data-slot="popover-content" data-state="open" data-side={placement} data-align={align}
+        className={`ef-popover__panel${className ? ' ' + className : ''}`} style={style}>{children}</div>
     </Portal>
   );
 });

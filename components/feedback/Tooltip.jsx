@@ -1,6 +1,6 @@
 'use client';
 import React from 'react';
-import { injectEfCss, mergeRefs, useIsoLayoutEffect } from '../runtime/runtime.jsx';
+import { injectEfCss, mergeRefs, styleRefUnder, useIsoLayoutEffect } from '../runtime/runtime.jsx';
 import { Portal, useHydrated } from '../overlay/Portal.jsx';
 
 const CSS = `
@@ -137,9 +137,9 @@ export const TooltipContent = React.forwardRef(function TooltipContent({ side = 
   if (!ctx?.open) return null;
   return (
     <Portal>
-      <span {...rest} ref={mergeRefs(forwardedRef, bubbleRef)} role="tooltip" id={id || ctx.contentId} data-slot="tooltip-content" data-state="open" data-side={placed.side}
+      <span {...rest} ref={mergeRefs(forwardedRef, bubbleRef, styleRefUnder({ ...placed.style, '--ef-tt-arrow': placed.arrow == null ? undefined : placed.arrow + 'px' }, style))} role="tooltip" id={id || ctx.contentId} data-slot="tooltip-content" data-state="open" data-side={placed.side}
         className={`ef-tooltip__bubble${placed.side !== 'top' ? ' ef-tooltip__bubble--' + placed.side : ''}${className ? ' ' + className : ''}`}
-        style={{ ...placed.style, '--ef-tt-arrow': placed.arrow == null ? undefined : placed.arrow + 'px', ...style }}>{children}</span>
+        style={style}>{children}</span>
     </Portal>
   );
 });
