@@ -1,16 +1,16 @@
 {
   "totals": {
     "@efolusi/meridian": {
-      "bytes": 379588,
-      "gzip": 86066
+      "bytes": 379695,
+      "gzip": 86110
     },
     "dist/components.css": {
-      "bytes": 249285,
-      "gzip": 35276
+      "bytes": 250054,
+      "gzip": 35348
     },
     "_ds_bundle.js": {
-      "bytes": 917596,
-      "gzip": 166644
+      "bytes": 918512,
+      "gzip": 166823
     }
   },
   "modules": [
@@ -536,8 +536,8 @@
         "CardFooter",
         "Card"
       ],
-      "bytes": 1856,
-      "gzip": 592
+      "bytes": 1928,
+      "gzip": 621
     },
     {
       "module": "display/Carousel.js",
@@ -740,8 +740,8 @@
       "exports": [
         "ConfirmDialog"
       ],
-      "bytes": 56310,
-      "gzip": 11028
+      "bytes": 56325,
+      "gzip": 11036
     },
     {
       "module": "feedback/Dialog.js",
@@ -958,8 +958,8 @@
       "exports": [
         "Input"
       ],
-      "bytes": 47593,
-      "gzip": 8351
+      "bytes": 47608,
+      "gzip": 8362
     },
     {
       "module": "forms/InputGroup.js",
@@ -1013,8 +1013,8 @@
       "exports": [
         "NumberInput"
       ],
-      "bytes": 48990,
-      "gzip": 9077
+      "bytes": 49010,
+      "gzip": 9084
     },
     {
       "module": "forms/Questionnaire.js",

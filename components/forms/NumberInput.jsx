@@ -8,7 +8,7 @@ const CSS = `
 .ef-field__label{font-size:var(--text-sm);font-weight:var(--weight-semibold);color:var(--text-primary)}
 .ef-field__hint{font-size:var(--text-xs);color:var(--text-muted)}
 .ef-field__error{font-size:var(--text-xs);color:var(--status-danger-text);display:flex;align-items:center;gap:var(--space-1)}
-.ef-number{display:flex;align-items:stretch;overflow:hidden;border:1px solid var(--border-control,var(--border-strong));border-radius:var(--radius-sm);background:var(--surface-sunken);transition:border-color var(--dur-fast) var(--ease-enter),box-shadow var(--dur-fast) var(--ease-enter)}
+.ef-number{display:flex;align-items:stretch;overflow:hidden;border:1px solid var(--border-control,var(--border-strong));border-radius:var(--field-radius,var(--radius-sm));background:var(--surface-sunken);transition:border-color var(--dur-fast) var(--ease-enter),box-shadow var(--dur-fast) var(--ease-enter)}
 .ef-number:hover:not(.ef-number--disabled){border-color:var(--border-control-hover)}
 .ef-number:focus-within{border-color:var(--accent-edge);box-shadow:var(--focus-ring)}
 .ef-number.ef-number--invalid{border-color:var(--status-danger-solid)}
@@ -21,6 +21,7 @@ const CSS = `
 .ef-number--sm .ef-number__el{height:calc(var(--control-h-sm) - 2px);padding:0 var(--space-3);font-size:var(--text-sm)}
 .ef-number--md .ef-number__el{height:calc(var(--control-h-md) - 2px);padding:0 var(--space-3);font-size:var(--text-md)}
 .ef-number--lg .ef-number__el{height:calc(var(--control-h-lg) - 2px);padding:0 var(--space-4);font-size:var(--text-lg)}
+.ef-number--xl .ef-number__el{height:calc(var(--control-h-xl) - 2px);padding:0 var(--space-4);font-size:var(--text-lg)}
 .ef-number__steps{display:flex;flex-direction:column;flex:none;align-self:stretch;border-inline-start:1px solid var(--border-default)}
 .ef-number__step{flex:1 1 0;display:flex;align-items:center;justify-content:center;width:24px;padding:0;border:none;background:transparent;color:var(--text-muted);cursor:pointer;transition:background var(--dur-fast) var(--ease-enter),color var(--dur-fast) var(--ease-enter)}
 .ef-number__step:hover:not(:disabled){background:var(--surface-sunken);color:var(--text-primary)}
@@ -29,6 +30,7 @@ const CSS = `
 .ef-number__step+.ef-number__step{border-top:1px solid var(--border-default)}
 .ef-number--sm .ef-number__step{width:22px}
 .ef-number--lg .ef-number__step{width:28px}
+.ef-number--xl .ef-number__step{width:28px}
 /* Touch: fixed-size targets grow to --tap-min; small glyph buttons keep their look and get a centred --tap-min hit area instead. */
 @media (pointer:coarse){.ef-number__steps{flex-direction:row}.ef-number .ef-number__step{width:var(--tap-min)}.ef-number__step+.ef-number__step{border-top:0;border-inline-start:1px solid var(--border-default)}}
 `;
@@ -154,9 +156,9 @@ export function NumberInput({ label, hint, error, invalid, value, defaultValue, 
         onChange={e => setDraft(e.target.value)} onKeyDown={keys} onBlur={e => { commit(e); rest.onBlur?.(e); }} />
       <span className="ef-number__steps">
         <button type="button" className="ef-number__step" aria-label="Increase" tabIndex={-1} disabled={upStuck}
-          onMouseDown={e => e.preventDefault()} onClick={e => stepBy(1, 1, e)}><Icon name="chevron-up" size={size === 'lg' ? 16 : 12} /></button>
+          onMouseDown={e => e.preventDefault()} onClick={e => stepBy(1, 1, e)}><Icon name="chevron-up" size={size === 'lg' || size === 'xl' ? 16 : 12} /></button>
         <button type="button" className="ef-number__step" aria-label="Decrease" tabIndex={-1} disabled={downStuck}
-          onMouseDown={e => e.preventDefault()} onClick={e => stepBy(-1, 1, e)}><Icon name="chevron-down" size={size === 'lg' ? 16 : 12} /></button>
+          onMouseDown={e => e.preventDefault()} onClick={e => stepBy(-1, 1, e)}><Icon name="chevron-down" size={size === 'lg' || size === 'xl' ? 16 : 12} /></button>
       </span>
     </span>
   );

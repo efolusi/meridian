@@ -13,9 +13,9 @@ CSS is not counted per component: `styles.css` ships every component style in on
 
 | File | Size | Gzip |
 | --- | ---: | ---: |
-| `@efolusi/meridian` | 370.7 kB | 84.0 kB |
-| `dist/components.css` | 243.4 kB | 34.4 kB |
-| `_ds_bundle.js` | 896.1 kB | 162.7 kB |
+| `@efolusi/meridian` | 370.8 kB | 84.1 kB |
+| `dist/components.css` | 244.2 kB | 34.5 kB |
+| `_ds_bundle.js` | 897.0 kB | 162.9 kB |
 
 The root import, `@efolusi/meridian`, is every component. `_ds_bundle.js` is the zero-build CDN bundle, which also carries each component's CSS. The root import is minified; the CSS and the CDN bundle are measured as shipped.
 
@@ -75,7 +75,7 @@ The root import, `@efolusi/meridian`, is every component. `_ds_bundle.js` is the
 | `display/AspectRatio.js` | AspectRatio | 0.9 kB | 0.5 kB |
 | `display/Avatar.js` | Avatar, AvatarImage, AvatarFallback, AvatarBadge, AvatarGroup, AvatarGroupCount | 1.8 kB | 0.6 kB |
 | `display/Badge.js` | Badge | 0.9 kB | 0.5 kB |
-| `display/Card.js` | CardHeader, CardTitle, CardDescription, CardAction, CardContent, CardFooter, Card | 1.8 kB | 0.6 kB |
+| `display/Card.js` | CardHeader, CardTitle, CardDescription, CardAction, CardContent, CardFooter, Card | 1.9 kB | 0.6 kB |
 | `display/Carousel.js` | Carousel, CarouselContent, CarouselItem, CarouselPrevious, CarouselNext | 49.3 kB | 9.3 kB |
 | `display/Collapsible.js` | Collapsible, CollapsibleTrigger, CollapsibleContent | 2.8 kB | 1.0 kB |
 | `display/Decor.js` | Decor | 0.5 kB | 0.4 kB |
@@ -118,7 +118,7 @@ The root import, `@efolusi/meridian`, is every component. `_ds_bundle.js` is the
 | `forms/InputOTP.js` | InputOTP, InputOTPGroup, InputOTPSlot, InputOTPSeparator | 2.5 kB | 1.1 kB |
 | `forms/Label.js` | Label | 0.7 kB | 0.4 kB |
 | `forms/NativeSelect.js` | NativeSelect, NativeSelectOption, NativeSelectOptGroup | 44.4 kB | 7.3 kB |
-| `forms/NumberInput.js` | NumberInput | 47.8 kB | 8.9 kB |
+| `forms/NumberInput.js` | NumberInput | 47.9 kB | 8.9 kB |
 | `forms/Questionnaire.js` | Questionnaire, QuestionnaireProgress, QuestionnaireItem, QuestionnaireTitle, QuestionnaireDescription, QuestionnaireChoices, QuestionnaireChoice, QuestionnaireInput, QuestionnaireError, QuestionnaireActions, QuestionnairePrevious, QuestionnaireSkip, QuestionnaireNext, QuestionnaireSubmit | 7.4 kB | 2.5 kB |
 | `forms/Radio.js` | RadioGroup, RadioGroupItem, Radio | 2.3 kB | 1.0 kB |
 | `forms/Select.js` | Select, SelectTrigger, SelectValue, SelectContent, SelectGroup, SelectLabel, SelectSeparator, SelectItem | 51.8 kB | 10.2 kB |

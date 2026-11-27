@@ -1,6 +1,6 @@
 export type NativeSelectProps = Omit<React.ComponentPropsWithoutRef<'select'>, 'size'> & {
   /** Meridian control height. @default 'md' */
-  size?: 'sm' | 'md' | 'lg';
+  size?: 'sm' | 'md' | 'lg' | 'xl';
 };
 export type NativeSelectOptionProps = React.ComponentPropsWithoutRef<'option'>;
 export type NativeSelectOptGroupProps = React.ComponentPropsWithoutRef<'optgroup'>;

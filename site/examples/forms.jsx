@@ -34,6 +34,25 @@ export function ButtonLoading() {
   return <Button loading={busy} onClick={run}>{busy ? 'Deploying…' : 'Deploy to production'}</Button>;
 }
 
+// @demo Button Shape setting
+export function ButtonShape() {
+  const { Button, IconButton, Tag, Badge, Input, Switch } = window.EfolusiDesignSystem_4ffc3d;
+  const [pill, setPill] = React.useState(true);
+  return (
+    <div data-shape={pill ? 'pill' : undefined} style={{ display: 'grid', gap: 16, width: '100%', maxWidth: 360 }}>
+      <Switch checked={pill} onCheckedChange={setPill} label={'data-shape="pill" on an ancestor'} />
+      <div style={{ display: 'flex', gap: 12, flexWrap: 'wrap', alignItems: 'center' }}>
+        <Button>Save</Button>
+        <Button variant="secondary">Preview</Button>
+        <IconButton icon="settings" label="Settings" />
+        <Tag>Billing</Tag>
+        <Badge>Verified</Badge>
+      </div>
+      <Input aria-label="Project name" placeholder="Project name" />
+    </div>
+  );
+}
+
 // @demo ButtonGroup Attached actions
 export function ButtonGroupDemo() {
   const { ButtonGroup, ButtonGroupSeparator, ButtonGroupText, Button, IconButton } = window.EfolusiDesignSystem_4ffc3d;
@@ -141,6 +160,20 @@ export function InputDemo() {
       <Input aria-label="Project name" placeholder="Project name" />
       <Input label="Work email" placeholder="ada@company.com" iconLeft="mail" hint="We only use this for run alerts." />
       <Input type="file" aria-label="Upload receipt" />
+    </div>
+  );
+}
+
+// @demo Input Sizes
+export function InputSizes() {
+  const { Input, Button } = window.EfolusiDesignSystem_4ffc3d;
+  return (
+    <div style={{ width: 320, display: 'grid', gap: 12 }}>
+      <Input aria-label="Small" size="sm" placeholder="sm, 28px" />
+      <Input aria-label="Medium" placeholder="md, 36px" />
+      <Input aria-label="Large" size="lg" placeholder="lg, 44px" />
+      <Input aria-label="Extra large" size="xl" placeholder="xl, 52px" />
+      <Button size="xl">Continue</Button>
     </div>
   );
 }

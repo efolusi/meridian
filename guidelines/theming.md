@@ -114,6 +114,27 @@ The glass material comes from design-tokens (`docs/glass.md`): one number, `--gl
 
 Rules: blur only what content scrolls under; at most four blurred surfaces on screen; never put a blurred surface inside another (the inner one blurs nothing); an overlay never fades its opacity in. Every class turns solid under reduced transparency, more contrast, no `backdrop-filter` and forced colours, so a product needs no fallback of its own. To show more or less glass, set `--glass-strength` on `:root` (design-tokens recommends 0.33; 0.5 is visibly more glass) and run `scripts/check_contrast.py`, which measures every pair Meridian paints on glass.
 
+## Shape
+
+Meridian's default corners are a rounded rectangle for everything you press (`--radius-sm`, 10px) and everything you type into (`--radius-sm`). One attribute on `<html>` or `<body>` changes both:
+
+```html
+<html lang="en" data-shape="pill">
+```
+
+| Property | Set by `data-shape="pill"` | Read by |
+|---|---|---|
+| `--press-radius` | `var(--radius-full)` | `Button`, `IconButton`, `Tag` (and its remove button), `Badge`, the `ButtonGroup` text addon |
+| `--field-radius` | `var(--radius-md)` (16px) | `Input`, `Textarea`, `NumberInput`, `Select`, `NativeSelect`, `InputGroup`, `Combobox` chips, `TimePicker`, `CopyField` |
+
+Things you press become pills. Fields take `--radius-md`, not a full pill: they are rounded rectangles at 16px (what efolusi.com and sso web draw on their inputs, measured on the live pages), so a multi-line `Textarea` does not turn into a stadium. What a single-line field draws depends on its height, because a radius over half the height is a stadium. Measured in the render at 16px: `Input` sm (28px) is a stadium, since the radius clamps to 14px; `Input` md and `NativeSelect` (36px) are near-stadiums, 16px of a possible 18px with a 4px straight side; `Input` lg (44px), `Input` xl (52px) and `Textarea` are rounded rectangles. A product that remaps `--radius-md` gets its own number. The padding does not change: a `Button shape="pill"` still widens its side padding, a Button under the attribute does not. Without the attribute every component keeps its own radius, so nothing moves for a consumer that does not opt in. `Badge` is a pill either way; the setting only lets it follow `--press-radius`.
+
+Where the attribute works: only on `<html>` or `<body>`. Every overlay (`Dialog`, `AlertDialog`, `Popover`, `Tooltip`, `Toast`, the `Select` and `Combobox` lists, the menus) is portalled into `document.body`, so an attribute on a subtree never reaches it and a `Button` inside a `Dialog` would stay rectangular. To scope the setting to a subtree, render the overlay's portal into it with the `container` prop (`DialogPortal`, `AlertDialogPortal`, `DropdownMenuPortal`, `Portal`).
+
+Not covered: `Toggle` and `ToggleGroup`, `ButtonTile`, the `InputOTP` slots and the `Sidebar` search input follow neither property. They keep `--radius-sm` or `--radius-md` under the attribute, because their corners are joined to a neighbour (a segmented group, shared slot edges) or belong to a tile, not to a single pressable or field.
+
+A product that needs another radius sets the property itself, in unlayered CSS or on any element: `:root { --press-radius: var(--radius-md); }`. Do not force `.ef-btn { border-radius: ... }` in a global stylesheet: that is what the setting replaces, and it fights `Button shape`, the glass `Input` and `ButtonGroup`.
+
 ## Fonts
 
 Three families, three tokens (`tokens/typography.css`): `--font-display` for h1–h4 and display moments, `--font-sans` for everything readable, `--font-mono` for code, keys, and tabular numbers. The stock faces load via `@font-face` in `tokens/fonts.css` from `assets/fonts/`.

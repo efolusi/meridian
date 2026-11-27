@@ -3,7 +3,7 @@
 The validation pattern every Efolusi form follows.
 
 ## Structure
-- Label above field (Input/Select/Textarea `label` prop), optional `hint` below. 14px controls, `--control-h-md` default; `lg` for auth/marketing.
+- Label above field (Input/Select/Textarea `label` prop), optional `hint` below. 14px controls, `--control-h-md` default; `lg` for auth/marketing. At 767px and narrower the text of Input, Textarea, NumberInput, NativeSelect, Combobox, TimePicker, Command, the Sidebar search, the composers, PromptSteps, WebPreview, Questionnaire and InputOTP is 16px whatever the size, so iOS Safari does not zoom the page on focus; do not set a smaller `font-size` on them in phone CSS.
 - One column. Related short fields (city/zip) may share a row; never three-up.
 - One primary action, right-aligned, verb label ("Create account"). Ghost "Cancel" to its left.
 

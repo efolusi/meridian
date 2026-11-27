@@ -18,6 +18,7 @@ const CSS = `
 .ef-card__header{display:grid;grid-template-columns:minmax(0,1fr);grid-auto-rows:min-content;align-items:start;gap:var(--space-1);padding-inline:var(--card-spacing,var(--space-5))}
 .ef-card__header:has(.ef-card__action){grid-template-columns:minmax(0,1fr) auto}
 .ef-card__title{margin:0;font-family:var(--font-sans);font-size:var(--text-lg);font-weight:var(--weight-semibold);line-height:var(--leading-tight);letter-spacing:0;color:var(--text-primary)}
+.ef-card__title--display{font-family:var(--font-display);font-size:var(--text-2xl);font-weight:var(--weight-bold);line-height:var(--leading-snug);letter-spacing:var(--tracking-display)}
 .ef-card__description{font-size:var(--text-sm);line-height:var(--leading-relaxed);color:var(--text-muted)}
 .ef-card__action{grid-column:2;grid-row:1/span 2;align-self:start;justify-self:end}
 .ef-card__content{padding-inline:var(--card-spacing)}
@@ -32,8 +33,8 @@ export const CardHeader = React.forwardRef(function CardHeader({ className, ...r
   return <div {...rest} ref={ref} data-slot="card-header" className={cx('ef-card__header', className)} />;
 });
 
-export const CardTitle = React.forwardRef(function CardTitle({ as: Heading = 'h2', className, ...rest }, ref) {
-  return <Heading {...rest} ref={ref} data-slot="card-title" className={cx('ef-card__title', className)} />;
+export const CardTitle = React.forwardRef(function CardTitle({ as: Heading = 'h2', size = 'default', className, ...rest }, ref) {
+  return <Heading {...rest} ref={ref} data-slot="card-title" className={cx(size === 'display' ? 'ef-card__title ef-card__title--display' : 'ef-card__title', className)} />;
 });
 
 export const CardDescription = React.forwardRef(function CardDescription({ className, ...rest }, ref) {

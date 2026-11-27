@@ -59,10 +59,35 @@ code,pre,kbd{font-family:var(--font-mono)}
 .ef-glass--thick.ef-glass--blur{-webkit-backdrop-filter:blur(var(--material-blur-thick)) saturate(var(--material-saturate));backdrop-filter:blur(var(--material-blur-thick)) saturate(var(--material-saturate))}
 .ef-glass-field{position:relative;isolation:isolate;background-color:var(--field-0)}
 .ef-glass-field::before{content:"";position:fixed;inset:0;z-index:-1;pointer-events:none;opacity:var(--field-strength);background:radial-gradient(60% 55% at 10% 6%,var(--field-1),transparent 70%),radial-gradient(55% 60% at 94% 16%,var(--field-3),transparent 72%),radial-gradient(70% 60% at 70% 96%,var(--field-2),transparent 70%)}
+/* Shape (MD81): one root setting for the corners of everything you press and everything you type into.
+   data-shape="pill" on <html> or <body> sets two properties: --press-radius (Button, IconButton, Tag, Badge,
+   ButtonGroup text) to a full pill and --field-radius (Input, Textarea, NumberInput, Select, InputGroup and the other
+   text fields) to --radius-md (16px). A subtree does not reach the portalled overlays (Dialog, Popover, Toast and the rest
+   mount in document.body): pass `container` or set it on <html> or <body>. The components read the properties with
+   today's radius as the fallback, so an absent attribute changes nothing. Fields are not full pills: a multi-line field
+   with a full radius reads as a mistake. --radius-md is 16px here (what efolusi.com and sso web draw): Input sm (28px)
+   is a stadium (radius over half the height), Input md and NativeSelect (36px) are near-stadiums, Input lg (44px),
+   Input xl (52px) and Textarea are rounded rectangles. Toggle, ButtonTile, InputOTP slots and the Sidebar search input follow
+   neither property. */
+[data-shape="pill"]{--press-radius:var(--radius-full);--field-radius:var(--radius-md)}
+/* Page title (MD83): the one title of a signed-in page or a plain page, written by sso, pay and efolusi.com each on
+   its own. Display face at --text-3xl to --text-4xl, balanced, and a long word breaks instead of overflowing. Put it
+   on the h1; marketing pages use Hero and sections use SectionHead. */
+.ef-page-title{margin:0;font-family:var(--font-display);font-size:clamp(var(--text-3xl),4vw,var(--text-4xl));font-weight:var(--weight-bold);line-height:var(--leading-tight);letter-spacing:var(--tracking-display);text-wrap:balance;overflow-wrap:break-word}
 }
+/* Phone control text (MD86): iOS Safari zooms the page when a text control takes focus while its text is under 16px,
+   and Input md (14px), Input sm, Textarea, NumberInput, NativeSelect and the InputGroup control under Combobox are
+   13 or 14px, as are the TimePicker, Command, Sidebar search, composer (PromptComposer, RichComposer), PromptSteps,
+   WebPreview address, Questionnaire and InputOTP inputs. At phone widths every one of them is 16px, whatever its
+   size prop. Unlayered on purpose, like the
+   forced-colors rule below: it outranks the sized rules in @layer meridian whatever the source order, and a product's
+   own unlayered rule that comes later can still choose a larger size. Sizes lg and xl are 16px already. */
+@media (max-width:767px){.ef-input__el,.ef-input__el--sm,.ef-textarea,.ef-number__el,.ef-native-select select,.ef-input-group__control,.ef-combobox__chips-input,.ef-timepicker__input,.ef-command__input,.ef-sidebar-input,.ef-composer__input,.ef-richcomposer__input,.ef-promptsteps__other,.ef-webprev__addr,.ef-questionnaire__input,.ef-otp__input{font-size:16px}}
 /* Forced colours (Windows High Contrast) remove box-shadow, and box-shadow is how
    every component draws --focus-ring after outline:none, so focus would vanish.
    Deliberately outside the layer: unlayered, it outranks the @layer meridian
-   component rules without !important. Highlight is a system colour, so it
-   survives the forced palette. */
-@media (forced-colors:active){:focus-visible{outline:2px solid Highlight;outline-offset:2px}.ef-glass{background:Canvas;border-color:CanvasText;-webkit-backdrop-filter:none;backdrop-filter:none;box-shadow:none}.ef-glass-field::before{display:none}}
+   component rules, and !important makes it outrank a product's own `outline:none`
+   too (MD78). An important declaration in a layer beats an unlayered one, so no
+   component may carry an !important outline: tests/md78-forced-colors-focus.test.mjs
+   scans them. Highlight is a system colour, so it survives the forced palette. */
+@media (forced-colors:active){:focus-visible{outline:2px solid Highlight!important;outline-offset:2px}.ef-glass{background:Canvas;border-color:CanvasText;-webkit-backdrop-filter:none;backdrop-filter:none;box-shadow:none}.ef-glass-field::before{display:none}}

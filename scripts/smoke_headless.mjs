@@ -225,6 +225,49 @@ if (await page.evaluate(() => CSS.supports('animation-timeline', 'scroll(self in
   console.log(`smoke: Table fade case skipped (${ENGINE} has no scroll-driven animations)`);
 }
 
+// MD81, MD82: the shape setting and the xl field size, read as computed styles (the unit tests only match CSS text).
+// data-shape="pill" on <html> makes a Button a full pill (the corner radius reaches half its height) and leaves it a
+// rounded rectangle (10px) without the attribute; Input size="xl" is 52px high. The fixture is removed again.
+{
+  await page.evaluate(() => {
+    const DS = window.EfolusiDesignSystem_4ffc3d, R = window.React;
+    const host = document.createElement('div');
+    host.id = 'shape-fixture';
+    host.style.cssText = 'position:fixed;inset-block-start:0;inset-inline-start:0;width:375px;background:var(--surface-page);z-index:99999';
+    document.body.appendChild(host);
+    window.__shapeRoot = window.ReactDOM.createRoot(host);
+    window.__shapeRoot.render(R.createElement(R.Fragment, null,
+      R.createElement(DS.Button, { id: 'shape-button' }, 'Save'),
+      R.createElement(DS.Input, { id: 'shape-input', size: 'xl', 'aria-label': 'Email' })));
+  });
+  await page.waitForSelector('#shape-button');
+  const measure = () => page.evaluate(() => {
+    const button = document.getElementById('shape-button');
+    const input = document.getElementById('shape-input');
+    const box = button.getBoundingClientRect();
+    return {
+      shape: document.documentElement.getAttribute('data-shape'),
+      buttonHeight: box.height,
+      buttonRadius: Number.parseFloat(getComputedStyle(button).borderTopLeftRadius),
+      inputHeight: input.getBoundingClientRect().height,
+    };
+  });
+  const plain = await measure();
+  await page.evaluate(() => document.documentElement.setAttribute('data-shape', 'pill'));
+  const pill = await measure();
+  await page.evaluate(() => { document.documentElement.removeAttribute('data-shape'); window.__shapeRoot.unmount(); document.getElementById('shape-fixture').remove(); });
+  const failed = [];
+  if (plain.shape !== null || !(plain.buttonRadius < plain.buttonHeight / 2)) failed.push(`without data-shape a Button is a rounded rectangle (radius ${plain.buttonRadius}px, height ${plain.buttonHeight}px)`);
+  if (!(pill.buttonRadius >= pill.buttonHeight / 2)) failed.push(`under data-shape="pill" a Button is a full pill (radius ${pill.buttonRadius}px, height ${pill.buttonHeight}px)`);
+  if (plain.inputHeight !== 52 || pill.inputHeight !== 52) failed.push(`Input size="xl" is 52px high (${plain.inputHeight}px without, ${pill.inputHeight}px with the attribute)`);
+  if (failed.length) {
+    console.error(`smoke: shape case failed: ${failed.join('; ')}`);
+    await browser.close();
+    process.exit(1);
+  }
+  console.log(`smoke: data-shape="pill" makes a Button a pill (${plain.buttonRadius}px to ${pill.buttonRadius}px) and Input size="xl" is ${plain.inputHeight}px`);
+}
+
 if (SHOTS) {
   fs.mkdirSync(SHOTS, { recursive: true });
   await page.evaluate(() => document.fonts.ready);
