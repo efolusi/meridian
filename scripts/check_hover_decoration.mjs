@@ -13,8 +13,10 @@ const files = execFileSync('git', ['ls-files'], { cwd: ROOT, encoding: 'utf8' })
 // Reviewed exceptions, file -> selector. Hover does not add an underline, so a link keeps one identity across pointer,
 // keyboard and touch. The one exception (MD74 review, design coordinator decision): the quiet Link is plain at rest, which
 // is safe only for navigation and footers, and shows its underline on hover and keyboard focus so it still reads as a link.
+const QUIET_LINK = new Set(['.ef-link--quiet:hover,.ef-link--quiet:focus-visible']);
 const REVIEWED = new Map([
-  ['components/display/Link.jsx', new Set(['.ef-link--quiet:hover,.ef-link--quiet:focus-visible'])],
+  ['components/display/Link.jsx', QUIET_LINK],
+  ['registry/components.css', QUIET_LINK], // generated from Link.jsx by the build
 ]);
 const failures = [];
 const hoverRule = /([^{}]*:hover[^{}]*)\{([^{}]*)\}/g;
