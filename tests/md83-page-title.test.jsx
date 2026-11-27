@@ -31,7 +31,10 @@ describe('.ef-page-title (tokens/base.css)', () => {
 
   it('balances the wrap, breaks a long word and has no margin of its own', () => {
     expect(rule).toContain('text-wrap:balance');
-    expect(rule).toContain('overflow-wrap:anywhere');
+    // break-word, not anywhere: anywhere also lowers the min-content width, so in a flex or grid row the title
+    // would collapse to one letter per line instead of keeping its column.
+    expect(rule).toContain('overflow-wrap:break-word');
+    expect(rule).not.toContain('overflow-wrap:anywhere');
     expect(rule).toContain('margin:0');
   });
 

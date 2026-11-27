@@ -48,6 +48,7 @@ describe('components read the properties and keep today\'s value as the fallback
     ['components/display/Tag.jsx', '.ef-tag__body', 'var(--radius-sm)'],
     ['components/display/Tag.jsx', '.ef-tag__x', 'var(--radius-sm)'],
     ['components/display/Badge.jsx', '.ef-badge', 'var(--radius-full)'],
+    ['components/forms/ButtonGroup.jsx', '.ef-btn-group__text', 'var(--radius-sm)'],
   ];
   for (const [file, selector, today] of PRESSED) {
     it(`${file} ${selector} reads ${PRESS}`, () => {
