@@ -136,6 +136,14 @@ describe('the Alert layout survives wrapper elements around its parts (MD74 roun
     expect([...alert.children].every((c) => c.classList.contains('sc-host-x'))).toBe(true);
   });
 
+  // The starters load _ds_bundle.js, not the component source, so the browser smoke only sees this CSS once the bundle is
+  // rebuilt. Round 6 shipped the source fix with a stale bundle and the smoke stayed red (+2px at 768px).
+  it('has the same Alert CSS in the bundle the starters load as in the component source', () => {
+    const bundle = readFileSync('_ds_bundle.js', 'utf8');
+    expect(bundle).toContain(alertCss().trim());
+    expect(bundle).not.toMatch(/\.ef-alert\s*>/);
+  });
+
   it('does not take an icon that sits only inside the action for the alert icon', () => {
     const { container } = render(<Alert icon={false}><AlertTitle>T</AlertTitle><AlertAction><button type="button"><Icon name="x" /></button></AlertAction></Alert>);
     expect(alertIcons(container.querySelector('.ef-alert'))).toHaveLength(0);
