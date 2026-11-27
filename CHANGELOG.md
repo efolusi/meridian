@@ -1,8 +1,8 @@
 # Changelog
 
-## Unreleased
+## v2.5.0 - 2026-11-27
 
-Semver level: MINOR (v2.5.0).
+Semver level: MINOR.
 
 The interface accent is now the owl's copper, `#CD8F69`, in both themes, and the `ember` ramp is gone (design-tokens v0.8.0, vendored in this release). Primary buttons, links, the focus ring and chart lines change colour for every consumer. Six token names are removed with no alias, which breaks any stylesheet that names them; while Meridian is used only inside Efolusi that counts as a minor, and the visual language (glass, paper, radius, type, layout) stays. One list, for a consumer:
 

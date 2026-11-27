@@ -3,9 +3,9 @@ import { readFileSync } from 'node:fs';
 import { describe, expect, it } from 'vitest';
 
 const changelog = readFileSync('CHANGELOG.md', 'utf8');
-const unreleased = changelog.slice(changelog.indexOf('## Unreleased'), changelog.indexOf('\n## v2.4.0'));
+const unreleased = changelog.slice(changelog.indexOf('## v2.5.0'), changelog.indexOf('\n## v2.4.0'));
 
-describe('the Unreleased consumer list covers the MD74 review items', () => {
+describe('the v2.5.0 consumer list covers the MD74 review items', () => {
   it('says a third-party or wrapped icon in an Alert needs data-slot="icon" or icon={false}', () => {
     expect(unreleased).toMatch(/third-party or wrapped icon[^.]*data-slot="icon"[^.]*icon=\{false\}/);
   });
