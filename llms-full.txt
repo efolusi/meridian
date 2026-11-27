@@ -2047,6 +2047,13 @@ CardTitle is a heading (`h2` by default; pass `as="h3"` for the level the page n
 </Card>
 ```
 
+`CardTitle size="display"` sets the title in the display face at `--text-2xl`, for a section card on an account or settings page; the default is the sans `--text-lg`. The title of the page itself is `<h1 className="ef-page-title">`: the display face, `--text-3xl` to `--text-4xl`, balanced. Marketing pages use `Hero` and `SectionHead` instead.
+
+```jsx
+<h1 className="ef-page-title">Billing</h1>
+<Card><CardHeader><CardTitle size="display">Subscriptions</CardTitle></CardHeader></Card>
+```
+
 ```ts
 import type * as React from 'react';
 
@@ -2061,6 +2068,8 @@ export declare const CardHeader: React.ForwardRefExoticComponent<React.HTMLAttri
 export interface CardTitleProps extends React.HTMLAttributes<HTMLHeadingElement> {
   /** The heading level the page needs. Default `h2`; the look does not change. */
   as?: 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6';
+  /** `display` sets the title in the display face at `--text-2xl`, for a section card (account and settings panels). @default 'default' */
+  size?: 'default' | 'display';
 }
 export declare const CardTitle: React.ForwardRefExoticComponent<CardTitleProps & React.RefAttributes<HTMLHeadingElement>>;
 export declare const CardDescription: React.ForwardRefExoticComponent<React.HTMLAttributes<HTMLDivElement> & React.RefAttributes<HTMLDivElement>>;
@@ -2443,6 +2452,8 @@ Chip for filters and labels; removable via `onRemove`, clickable via `onClick`.
 <Tag icon="funnel" onRemove={remove}>Billing</Tag>
 <Tag icon="plus" onClick={add}>Add filter</Tag>
 ```
+
+Under `data-shape="pill"` on an ancestor the Tag is a full pill (`--press-radius`); see `guidelines/theming.md`, section Shape.
 
 ```ts
 export interface TagProps extends React.HTMLAttributes<HTMLSpanElement> {
@@ -3124,6 +3135,8 @@ The action button: primary for the one main action per view, secondary/ghost for
 
 Variants: `primary` (espresso ink), `secondary` (white + border), `ghost`, `danger`, `brand` (cocoa, for marketing/brand moments only). Sizes `sm|md|lg` (28/36/44px), and `xl` (52px) for the hero call to action on a marketing page. `loading` swaps in a spinner; labels are verbs in sentence case ("Save changes", never "Submit").
 
+To make every pressable thing on the page a pill, set `data-shape="pill"` once on `<html>` or any ancestor instead of passing `shape` to each Button: the corners change for Button, IconButton, Tag and Badge, and for the text fields, with no change to padding. Without the attribute nothing changes. See `guidelines/theming.md`, section Shape.
+
 On marketing pages, `shape="pill"` rounds the ends and widens the side padding. Use it for every pressable call to action on the page, and keep the default shape inside the product UI.
 
 ```jsx
@@ -3371,7 +3384,7 @@ Native text input with ref forwarding, file-input styling, disabled and invalid 
 <Input type="file" aria-label="Upload receipt" />
 ```
 
-`error` implies invalid styling and an accessible alert. `iconLeft` takes a Meridian icon name. Visual sizes `sm|md|lg` are additive; a numeric `size` is forwarded as the native input width.
+`error` implies invalid styling and an accessible alert. `iconLeft` takes a Meridian icon name. Under `data-shape="pill"` on an ancestor the corners follow `--field-radius` (`--radius-lg`, not a full pill, so a multi-line Textarea reads the same); see `guidelines/theming.md`, section Shape. Visual sizes `sm|md|lg|xl` are additive (28, 36, 44 and 52px; `md` is the default). `xl` is the Button `xl` height, 52px, for the main form of a page such as sign-in, so the field and its submit button line up; on touch the sizes up to `lg` grow to 44px and `xl` stays 52px. A numeric `size` is forwarded as the native input width.
 
 ```ts
 export interface InputProps extends Omit<React.InputHTMLAttributes<HTMLInputElement>, 'size'> {
@@ -3386,7 +3399,7 @@ export interface InputProps extends Omit<React.InputHTMLAttributes<HTMLInputElem
   /** Meridian icon name inside the field at inline start. */
   iconLeft?: string;
   /** Native numeric width or Meridian's additive visual sizes. */
-  size?: number | 'sm' | 'md' | 'lg';
+  size?: number | 'sm' | 'md' | 'lg' | 'xl';
   invalid?: boolean;
   /** Adds a show/hide button to a password field. */
   revealable?: boolean;
@@ -3499,7 +3512,7 @@ invalid control and provide its visible label through `FieldLabel` or `Label`.
 ```ts
 export type NativeSelectProps = Omit<React.ComponentPropsWithoutRef<'select'>, 'size'> & {
   /** Meridian control height. @default 'md' */
-  size?: 'sm' | 'md' | 'lg';
+  size?: 'sm' | 'md' | 'lg' | 'xl';
 };
 export type NativeSelectOptionProps = React.ComponentPropsWithoutRef<'option'>;
 export type NativeSelectOptGroupProps = React.ComponentPropsWithoutRef<'optgroup'>;
@@ -3566,7 +3579,7 @@ export interface NumberInputProps extends Omit<React.InputHTMLAttributes<HTMLInp
   /** Arrow/stepper increment; commits snap to its grid. @default 1 */
   step?: number;
   /** @default 'md' */
-  size?: 'sm' | 'md' | 'lg';
+  size?: 'sm' | 'md' | 'lg' | 'xl';
   disabled?: boolean;
   placeholder?: string;
   /**
@@ -5190,14 +5203,16 @@ export declare const SheetDescription: React.ForwardRefExoticComponent<DialogSlo
 
 ## Design tokens
 
-300 custom property names by file (names only; resolve current values from /styles.css, which imports these files, or /tokens.json):
+302 custom property names by file (names only; resolve current values from /styles.css, which imports these files, or /tokens.json):
 
 ### /tokens/base.css
 
 --ef-glass-alpha
 --ef-motion-guard
+--field-radius
 --gap-label-icon
 --gap-label-icon-sm
+--press-radius
 
 ### /tokens/colors.css
 
