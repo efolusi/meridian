@@ -163,22 +163,34 @@ if (await page.evaluate(() => CSS.supports('animation-timeline', 'scroll(self in
     await browser.close();
     process.exit(1);
   }
+  // scrollLeft is 0 at the inline START in both directions and runs to +max in LTR but to -max in RTL (the inline END is the
+  // left edge there), so a large positive value clamps to the start in RTL. Say whether the scroll really reached the target.
   const scrollTo = (end) => page.evaluate((toEnd) => {
     const wrap = document.querySelector('#table-fade-fixture .ef-table-wrap');
-    wrap.scrollLeft = toEnd ? wrap.scrollWidth : 0;
+    const max = wrap.scrollWidth - wrap.clientWidth;
+    wrap.scrollLeft = toEnd ? (getComputedStyle(wrap).direction === 'rtl' ? -max : max) : 0;
+    return toEnd ? Math.abs(wrap.scrollLeft) >= max - 1 && max > 0 : wrap.scrollLeft === 0;
   }, end);
   const fadeIs = (want) => page.waitForFunction((w) => {
     const wrap = document.querySelector('#table-fade-fixture .ef-table-wrap');
     const second = (getComputedStyle(wrap).maskSize.split(/,(?![^(]*\))/)[1] || '').trim();
     return w === 'shown' ? Number.parseFloat(second) > 0 : Number.parseFloat(second) === 0;
   }, want, { timeout: 3000 }).then(() => true, () => false);
-  await scrollTo(false);
+  if (!(await scrollTo(false))) {
+    console.error(`smoke: Table fade case: could not scroll the wrapper to the inline start (${JSON.stringify(await read())})`);
+    await browser.close();
+    process.exit(1);
+  }
   if (!(await fadeIs('shown'))) {
     console.error(`smoke: Table fade case: no fade at the start of the scroll after focus left the table (${JSON.stringify(await read())})`);
     await browser.close();
     process.exit(1);
   }
-  await scrollTo(true);
+  if (!(await scrollTo(true))) {
+    console.error(`smoke: Table fade case: could not scroll the wrapper to the inline end (${JSON.stringify(await read())})`);
+    await browser.close();
+    process.exit(1);
+  }
   if (!(await fadeIs('gone'))) {
     console.error(`smoke: Table fade case: the fade stays at the end of the scroll, where nothing is hidden (${JSON.stringify(await read())})`);
     await browser.close();

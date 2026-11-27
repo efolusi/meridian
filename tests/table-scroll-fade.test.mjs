@@ -63,3 +63,40 @@ describe('Table scroll wrapper fades its end edge while content is hidden (MD73)
     expect(source).toMatch(/tabIndex: 0, role: callerName \? 'region' : 'group'/);
   });
 });
+
+// MD74 round 3: the RTL smoke pass failed with the fade still 28px "at the end of the scroll". In right-to-left scrollLeft
+// runs from 0 (the inline START, the right edge) down to -(scrollWidth - clientWidth) (the inline END), so assigning a large
+// positive scrollLeft clamps to 0, the start, and the fade is rightly still shown. The CSS was right and the case was wrong.
+describe('the fade sits at the inline end in both directions, and the smoke case scrolls to it in both (MD74 round 3)', () => {
+  const SUPPORTS = '@supports (animation-timeline:scroll(self inline)){';
+  const wrap = block(SUPPORTS);
+  const layers = (text) => text.split(/,(?![^(]*\))/).map((x) => x.trim());
+
+  it('LTR: solid layer left, 28px fade layer right, gradient to the right', () => {
+    const rule = /\.ef-table-wrap\{[^}]*\}/.exec(wrap)[0];
+    expect(layers(/mask-position:([^;}]*)/.exec(rule)[1])).toEqual(['left', 'right']);
+    expect(rule).toContain('linear-gradient(to right,currentcolor,transparent)');
+  });
+
+  it('RTL: solid layer right, fade layer left, gradient to the left: the fade layer is at the end in both', () => {
+    const rule = /\.ef-table-wrap:dir\(rtl\)\{[^}]*\}/.exec(wrap)[0];
+    expect(layers(/mask-position:([^;}]*)/.exec(rule)[1])).toEqual(['right', 'left']);
+    expect(rule).toContain('linear-gradient(to left,currentcolor,transparent)');
+  });
+
+  it('measures progress along the inline axis, which follows the writing direction (start to end in RTL too)', () => {
+    expect(wrap).toContain('animation-timeline:scroll(self inline)');
+    // The keyframes name sizes only, no physical side, so they do not assume left-to-right.
+    expect(block('@keyframes ef-table-fade')).not.toMatch(/left|right|translate|position/);
+  });
+
+  it('has the smoke case scroll to the inline END by direction: negative scrollLeft in RTL, positive in LTR', () => {
+    const smoke = readFileSync('scripts/smoke_headless.mjs', 'utf8');
+    expect(smoke).toMatch(/getComputedStyle\(wrap\)\.direction === 'rtl' \? -max : max/);
+    expect(smoke).toMatch(/const max = wrap\.scrollWidth - wrap\.clientWidth/);
+    // It also checks that the scroll really reached the end, so a wrong scroll is reported as such and not as a CSS bug.
+    expect(smoke).toMatch(/Math\.abs\(wrap\.scrollLeft\) >= max - 1/);
+    expect(smoke).not.toMatch(/wrap\.scrollLeft = toEnd \? wrap\.scrollWidth : 0/);
+  });
+});
+
