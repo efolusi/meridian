@@ -5,4 +5,4 @@ Chip for filters and labels; removable via `onRemove`, clickable via `onClick`.
 <Tag icon="plus" onClick={add}>Add filter</Tag>
 ```
 
-Under `data-shape="pill"` on an ancestor the Tag is a full pill (`--press-radius`); see `guidelines/theming.md`, section Shape.
+Under `data-shape="pill"` on `<html>` or `<body>` the Tag is a full pill (`--press-radius`); see `guidelines/theming.md`, section Shape.

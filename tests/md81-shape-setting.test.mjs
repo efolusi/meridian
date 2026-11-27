@@ -1,7 +1,7 @@
 // MD81: one root setting for the shape of everything you press and everything you type into. sso web and efolusi.com
 // forced it in their own global CSS (`.ef-btn, .ef-tag, .ef-badge {border-radius: var(--radius-full)}`, `.ef-input__el,
 // .ef-textarea {border-radius: var(--radius-lg)}`, `.ef-iconbtn {border-radius: var(--radius-full)}`), pay and the
-// komando site kept the rectangle. Meridian now has `data-shape="pill"` (on html or any ancestor), which sets two custom
+// komando site kept the rectangle. Meridian now has `data-shape="pill"` (on html or body), which sets two custom
 // properties; the components read them and keep today's value as the fallback, so an absent attribute changes nothing.
 import { readdirSync, readFileSync } from 'node:fs';
 import { describe, expect, it } from 'vitest';
@@ -96,5 +96,45 @@ describe('one place for the setting', () => {
       expect(text, `${file} data-shape`).not.toContain('data-shape');
       expect(text, `${file} radius !important`).not.toMatch(/border-radius:[^;}]*!important/);
     }
+  });
+});
+
+// Portal.jsx appends every overlay to document.body (or a `container`), so a data-shape on a subtree never reaches
+// Dialog, Popover, Toast and the like: the docs say html or body, never "any ancestor".
+describe('the docs say where the attribute works, and what it really draws', () => {
+  const DOCS = [
+    ['CHANGELOG.md', (text) => text.split('\n').find((line) => line.includes('(MD81)'))],
+    ['guidelines/theming.md', (text) => text.slice(text.indexOf('## Shape'), text.indexOf('## Fonts'))],
+    ['tokens/base.css', (text) => text.slice(text.indexOf('Shape (MD81)'), text.indexOf('[data-shape="pill"]'))],
+    ['components/forms/Button.prompt.md', (text) => text],
+    ['components/forms/Input.prompt.md', (text) => text],
+    ['components/display/Tag.prompt.md', (text) => text],
+    ['site/Docs.dc.html', (text) => text.split('\n').find((line) => line.includes('New root setting data-shape'))],
+  ];
+  for (const [file, pick] of DOCS) {
+    it(`${file} does not claim a subtree works`, () => {
+      const text = pick(read(file));
+      expect(text, `${file} section`).toBeTruthy();
+      expect(text).not.toMatch(/any ancestor|on an ancestor|elemen induk mana pun/);
+    });
+  }
+
+  const shape = read('guidelines/theming.md');
+  const section = shape.slice(shape.indexOf('## Shape'), shape.indexOf('## Fonts'));
+  it('theming.md names html and body, and the portalled overlays a subtree does not reach', () => {
+    expect(section).toContain('`<html>` or `<body>`');
+    expect(section).toMatch(/portal/i);
+    expect(section).toContain('`container`');
+  });
+
+  it('theming.md says what the field radius draws: a stadium when the radius is over half the height', () => {
+    expect(section).toContain('stadium');
+    expect(section).toContain('22px');
+    expect(section).toContain('16px');
+  });
+
+  it('theming.md lists the controls that follow neither property', () => {
+    for (const name of ['Toggle', 'ButtonTile', 'InputOTP', 'Sidebar']) expect(section, name).toContain(name);
+    expect(section).toContain('neither');
   });
 });

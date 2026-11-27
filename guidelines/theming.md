@@ -116,7 +116,7 @@ Rules: blur only what content scrolls under; at most four blurred surfaces on sc
 
 ## Shape
 
-Meridian's default corners are a rounded rectangle for everything you press (`--radius-sm`, 10px) and everything you type into (`--radius-sm`). One attribute on `<html>`, or on any ancestor, changes both:
+Meridian's default corners are a rounded rectangle for everything you press (`--radius-sm`, 10px) and everything you type into (`--radius-sm`). One attribute on `<html>` or `<body>` changes both:
 
 ```html
 <html lang="en" data-shape="pill">
@@ -124,10 +124,14 @@ Meridian's default corners are a rounded rectangle for everything you press (`--
 
 | Property | Set by `data-shape="pill"` | Read by |
 |---|---|---|
-| `--press-radius` | `var(--radius-full)` | `Button`, `IconButton`, `Tag` (and its remove button), `Badge` |
+| `--press-radius` | `var(--radius-full)` | `Button`, `IconButton`, `Tag` (and its remove button), `Badge`, the `ButtonGroup` text addon |
 | `--field-radius` | `var(--radius-lg)` (22px) | `Input`, `Textarea`, `NumberInput`, `Select`, `NativeSelect`, `InputGroup`, `Combobox` chips, `TimePicker`, `CopyField` |
 
-Things you press become pills; fields stay a rounded rectangle, so a multi-line `Textarea` does not turn into a stadium. The padding does not change: a `Button shape="pill"` still widens its side padding, a Button under the attribute does not. Without the attribute every component keeps its own radius, so nothing moves for a consumer that does not opt in. `Badge` is a pill either way; the setting only lets it follow `--press-radius`.
+Things you press become pills. Fields take `--radius-lg`, not a full pill, so a multi-line `Textarea` does not turn into a stadium. What a single-line field draws depends on its height, because a radius over half the height is a stadium: at 22px (Meridian's scale, and what efolusi.com renders for its inputs) `Input` sm, md and lg (28, 36 and 44px) are stadiums, and `Input` xl (52px) and `Textarea` stay rounded rectangles. A product that remaps `--radius-lg` gets its own number: sso web sets it to 16px, where only sm (28px) is a stadium. The padding does not change: a `Button shape="pill"` still widens its side padding, a Button under the attribute does not. Without the attribute every component keeps its own radius, so nothing moves for a consumer that does not opt in. `Badge` is a pill either way; the setting only lets it follow `--press-radius`.
+
+Where the attribute works: only on `<html>` or `<body>`. Every overlay (`Dialog`, `AlertDialog`, `Popover`, `Tooltip`, `Toast`, the `Select` and `Combobox` lists, the menus) is portalled into `document.body`, so an attribute on a subtree never reaches it and a `Button` inside a `Dialog` would stay rectangular. To scope the setting to a subtree, render the overlay's portal into it with the `container` prop (`DialogPortal`, `AlertDialogPortal`, `DropdownMenuPortal`, `Portal`).
+
+Not covered: `Toggle` and `ToggleGroup`, `ButtonTile`, the `InputOTP` slots and the `Sidebar` search input follow neither property. They keep `--radius-sm` or `--radius-md` under the attribute, because their corners are joined to a neighbour (a segmented group, shared slot edges) or belong to a tile, not to a single pressable or field.
 
 A product that needs another radius sets the property itself, in unlayered CSS or on any element: `:root { --press-radius: var(--radius-md); }`. Do not force `.ef-btn { border-radius: ... }` in a global stylesheet: that is what the setting replaces, and it fights `Button shape`, the glass `Input` and `ButtonGroup`.
 
