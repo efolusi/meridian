@@ -7,6 +7,8 @@ export interface ConversationProps {
   jumpLabel?: string;
   /** Viewport padding @default 4 */
   padding?: number | string;
+  /** Name of the scrolling viewport, which is a focusable region @default 'Conversation' */
+  'aria-label'?: string;
   /** Messages, tool calls, etc. */
   children?: React.ReactNode;
   style?: React.CSSProperties;

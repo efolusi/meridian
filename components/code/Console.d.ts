@@ -9,6 +9,7 @@ export interface ConsoleEntry {
   source?: string;
 }
 export interface ConsoleProps {
+  /** Heading, also the accessible name of the log @default 'Console' */
   title?: string;
   entries: ConsoleEntry[];
   /** Viewport height in px. Default 240 */

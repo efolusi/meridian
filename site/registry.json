@@ -995,7 +995,7 @@
       "name": "console",
       "type": "registry:ui",
       "title": "Console",
-      "description": "Log viewer with level icons/colors, tabular timestamps, and per-row collapsible stack traces. It sticks to the bottom while streaming and shows a \"Latest\" pill when scrolled up.",
+      "description": "Log viewer with level icons/colors, tabular timestamps, and per-row collapsible stack traces. It sticks to the bottom while streaming and shows a \"Latest\" pill when scrolled up. The log is keyboard-focusable and its accessible name is `title`.",
       "dependencies": [
         "react"
       ],

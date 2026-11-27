@@ -1,5 +1,17 @@
 # Changelog
 
+## Unreleased
+
+Semver level: MINOR.
+
+`Conversation`, `Console` and a scrolling `Table` now take a tab stop and show a focus outline for every consumer, so a keyboard user can scroll them. Each is a named region (`Conversation`, `Table`) or log (`Console`), so a screen reader announces what took focus. No token changes and no removed exports.
+
+- **Scrollable parts take a tab stop (MD17).** `Conversation` (the message viewport), `Console` (the log) and `Table` (the scroll wrapper) scroll, but a keyboard user could not reach them to scroll with the arrow keys (WCAG 2.1.1; axe `scrollable-region-focusable`, found by the new 390px pass). The viewport and the log now take `tabIndex={0}`; the `Table` wrapper takes it only while its content overflows, so a table that fits adds no tab stop, and it keeps the stop while it holds focus so focus does not fall to the page. All three show the standard focus outline (`--focus-ring-color`, 2px, inset) on keyboard focus.
+- **Names for the new tab stops (WCAG 4.1.2).** The `Conversation` viewport is `role="region"` named by the new `aria-label` prop (default `Conversation`). The `Console` log is named by its `title`. While a `Table` scrolls, its wrapper is `role="region"` named by your `aria-label` or `aria-labelledby`, else `Table`. A `tabIndex`, `role` or `aria-label` you pass on a `Table` with `columns` and `rows` still wins.
+- **Bundle size.** `Conversation`, `Console` and `Table` gained a role, a name, a focus outline and (for `Table`) a blur listener. Against main: `_ds_bundle.js` +2,010 bytes (905,805 to 907,815), `dist/components.css` +293 bytes (242,003 to 242,296), the npm total +2,343 bytes (1,566,094 to 1,568,437), the CLI package unchanged. `scripts/size_budget.json` is re-recorded to these sizes.
+- **a11y check: second axe pass at 390px.** `npm run a11y` runs every group in light and dark at 1280px and again at 390px (target-size), and fails at 390px when the page scrolls sideways outside a region that scrolls on purpose. That is a proxy for WCAG 1.4.10 Reflow, which asks for 320px; it is not a 1.4.10 check. A group with no elements now fails instead of passing with nothing checked, and the run prints how many elements each group holds. Moderate and minor findings still never fail the run; the closing line counts them. The CI smoke job installs axe-core with `npm ci` from the lockfile, not by version.
+- design-tokens stays vendored at v0.7.0; this release changes no token.
+
 ## v2.3.0 - 2026-11-27
 
 Semver level: MINOR.
