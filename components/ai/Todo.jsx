@@ -18,7 +18,7 @@ const CSS = `
 .ef-todo__item{display:flex;align-items:flex-start;gap:var(--space-3);padding:var(--space-2) var(--space-2);font-size:var(--text-md);border-radius:var(--radius-sm)}
 .ef-todo__mark{position:relative;flex:none;width:var(--icon-md);height:var(--icon-md);margin-top:var(--space-0-5);border-radius:50%;border:1px solid var(--border-strong);display:inline-flex;align-items:center;justify-content:center;transition:background var(--dur-fast) var(--ease-enter),border-color var(--dur-fast) var(--ease-enter)}
 .ef-todo__item--progress .ef-todo__mark{border-color:transparent;color:var(--text-primary)}
-.ef-todo__item--done .ef-todo__mark{background:var(--accent);border-color:var(--accent);color:var(--accent-contrast)}
+.ef-todo__item--done .ef-todo__mark{background:var(--accent);border-color:var(--accent-edge);color:var(--accent-contrast)}
 .ef-todo__spin{display:inline-flex;animation:ef-todo-spin 1s linear infinite}
 @keyframes ef-todo-spin{to{transform:rotate(360deg)}}
 .ef-todo__text{min-width:0;color:var(--text-primary);line-height:1.55;transition:color var(--dur-fast) var(--ease-enter)}

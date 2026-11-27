@@ -34,6 +34,15 @@ def tokens(name):
     return {tok: val.strip() for tok, val in re.findall(r"(--[\w-]+):([^;]+);", block(name))}
 
 
+def increased(name):
+    """The prefers-contrast: more overrides of one theme, as a token table (empty if the block is missing)."""
+    selector = r':root, \[data-theme="light"\]' if name == "light" else r'\[data-theme="dark"\]'
+    m = re.search(r'@media \(prefers-contrast: more\) \{\s*' + selector + r'\s*\{(.*?)\n  \}', CSS, re.S)
+    if not m:
+        sys.exit(f"could not locate the {name} prefers-contrast: more block in tokens/colors.css")
+    return {tok: val.strip() for tok, val in re.findall(r"(--[\w-]+):([^;]+);", m.group(1))}
+
+
 def resolve(tok, table, fallback=None):
     """Follow a var() chain, re-checking the active theme table at every hop.
 
@@ -162,6 +171,23 @@ PAIRS = [
     ("--chart-5", ["--surface-card", "--surface-page"], 3.0, "chart series 5"),
 ]
 
+# MD74: in light the accent fill (copper) is 2.47 to 2.72:1 on the surfaces, under the 3:1 a shape needs
+# (WCAG 1.4.11), so every shape a component draws with the accent paints --accent-edge instead: the 1px edge of
+# a fill, the colour of a mark, a line or a thin fill. In dark the edge is the fill itself. Each entry is one
+# group of components with the grounds that group sits on; the gate measures all four modes (light, dark and
+# the two prefers-contrast: more tables). --surface-track is the ground of a progress fill, --border-default
+# of a line. A slider rail and the unplayed Player bars are --surface-track too.
+EDGE_PAIRS = [
+    ("--accent-edge", SURFACES, 3.0,
+     "edge of an accent fill: Button primary, IconButton solid, Toolbar active, TabBar current, Calendar selected day, Badge solid, ToolCall and Confirmation accept, Questionnaire primary, send buttons, Player play, file-input button"),
+    ("--accent-edge", SURFACES, 3.0,
+     "state marks: Checkbox, Switch on, Radio, Steps, Todo, AgentRun, ButtonTile, Slider thumb, TimePicker and Combobox check"),
+    ("--accent-edge", SURFACES, 3.0,
+     "selected and focused borders: ButtonTile, Questionnaire choice, FileDrop, Item, Input, Textarea, NumberInput, InputGroup, InputOTP, PromptComposer, Combobox chips"),
+    ("--accent-edge", SURFACES + ["--surface-track", "--border-default"], 3.0,
+     "thin indicators on a track or line: Progress, UsageMeter, Slider range on its rail, played Player bars among the unplayed, Tabs underline and ink, PageControl, Steps line, Sandbox tab, Resizable handle, BarChart highlight, LineChart"),
+]
+
 # Light chart slots 3 (green) and 5 (pink) sit near 2.7:1. Darkening them would
 # break the palette's lightness band and colour-blind separation, so these marks
 # never carry identity alone: DonutChart always renders a text legend with values
@@ -203,8 +229,15 @@ light = tokens("light")
 dark = tokens("dark")
 failures, unresolved, stale, tolerated, checked = [], [], [], [], 0
 
-for theme, table, fallback in (("light", light, None), ("dark", dark, light)):
-    for fg_tok, bg_toks, minimum, label in PAIRS:
+increased_light = {**light, **increased("light")}
+increased_dark = {**dark, **increased("dark")}
+for theme, table, fallback, pairs in (
+    ("light", light, None, PAIRS + EDGE_PAIRS),
+    ("dark", dark, light, PAIRS + EDGE_PAIRS),
+    ("increased", increased_light, None, EDGE_PAIRS),
+    ("increased-dark", increased_dark, light, EDGE_PAIRS),
+):
+    for fg_tok, bg_toks, minimum, label in pairs:
         fg_raw = resolve(fg_tok, table, fallback)
         for bg_tok in bg_toks:
             key = (theme, fg_tok, bg_tok)

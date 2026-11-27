@@ -10,7 +10,7 @@ const CSS = `
 .ef-field__error{font-size:var(--text-xs);color:var(--status-danger-text);display:flex;align-items:center;gap:var(--space-1)}
 .ef-number{display:flex;align-items:stretch;overflow:hidden;border:1px solid var(--border-control,var(--border-strong));border-radius:var(--radius-sm);background:var(--surface-sunken);transition:border-color var(--dur-fast) var(--ease-enter),box-shadow var(--dur-fast) var(--ease-enter)}
 .ef-number:hover:not(.ef-number--disabled){border-color:var(--border-control-hover)}
-.ef-number:focus-within{border-color:var(--accent);box-shadow:var(--focus-ring)}
+.ef-number:focus-within{border-color:var(--accent-edge);box-shadow:var(--focus-ring)}
 .ef-number.ef-number--invalid{border-color:var(--status-danger-solid)}
 .ef-number.ef-number--invalid:focus-within{box-shadow:var(--focus-ring-danger)}
 .ef-number--disabled{background:var(--surface-subtle)}

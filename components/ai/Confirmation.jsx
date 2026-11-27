@@ -16,7 +16,7 @@ const CSS = `
 .ef-confirm__btn{height:30px;padding:0 var(--space-3);border-radius:var(--radius-sm);border:1px solid var(--border-strong);background:var(--surface-card);cursor:pointer;font-family:var(--font-sans);font-size:var(--text-sm);font-weight:600;color:var(--text-primary);transition:background var(--dur-fast) var(--ease-enter)}
 .ef-confirm__btn:hover{background:var(--surface-subtle)}
 .ef-confirm__btn:focus-visible{outline:none;box-shadow:var(--focus-ring)}
-.ef-confirm__btn--accept{background:var(--accent);border-color:var(--accent);color:var(--accent-contrast)}
+.ef-confirm__btn--accept{background:var(--accent);border-color:var(--accent-edge);color:var(--accent-contrast)}
 .ef-confirm__btn--accept:hover{background:var(--accent-hover)}
 .ef-confirm--danger .ef-confirm__btn--accept{background:var(--status-danger-solid);border-color:var(--status-danger-solid);color:var(--status-danger-on-solid)}
 .ef-confirm__status{display:flex;align-items:center;gap:var(--space-2);padding:var(--space-3) var(--space-4) var(--space-3);font-size:var(--text-sm);color:var(--text-secondary)}

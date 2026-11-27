@@ -7,8 +7,8 @@ const CSS = `
 .ef-agentrun__step{display:flex;gap:var(--space-3);position:relative}
 .ef-agentrun__rail{display:flex;flex-direction:column;align-items:center;flex:none;width:22px}
 .ef-agentrun__dot{display:inline-flex;align-items:center;justify-content:center;width:22px;height:22px;border-radius:var(--radius-full);border:1px solid var(--border-strong);background:var(--surface-card);color:var(--text-muted);flex:none}
-.ef-agentrun__step--done .ef-agentrun__dot{background:var(--accent);border-color:var(--accent);color:var(--accent-contrast)}
-.ef-agentrun__step--active .ef-agentrun__dot{border-color:var(--accent);color:var(--accent)}
+.ef-agentrun__step--done .ef-agentrun__dot{background:var(--accent);border-color:var(--accent-edge);color:var(--accent-contrast)}
+.ef-agentrun__step--active .ef-agentrun__dot{border-color:var(--accent-edge);color:var(--accent-edge)}
 .ef-agentrun__step--error .ef-agentrun__dot{background:var(--status-danger-bg);border-color:var(--status-danger-solid);color:var(--status-danger-text)}
 .ef-agentrun__pip{display:inline-block;width:5px;height:5px;border-radius:var(--radius-full);background:currentColor}
 .ef-agentrun__spin{display:inline-flex;animation:ef-agentrun-spin .9s linear infinite}

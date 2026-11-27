@@ -17,9 +17,9 @@ const CSS = `
 .ef-badge--warning{background:var(--status-warning-bg);border-color:transparent;color:var(--status-warning-text)}
 .ef-badge--danger{background:var(--status-danger-bg);border-color:transparent;color:var(--status-danger-text)}
 .ef-badge--brand{background:var(--cream-50);border-color:transparent;color:var(--cocoa-700)}
-.ef-badge--solid{background:var(--accent);border-color:transparent;color:var(--accent-contrast)}
+.ef-badge--solid{background:var(--accent);border-color:var(--accent-edge);color:var(--accent-contrast)}
 .ef-badge--default:hover{border-color:var(--border-hover)}
-.ef-badge--solid:hover{background:var(--accent-hover);border-color:transparent}
+.ef-badge--solid:hover{background:var(--accent-hover);border-color:var(--accent-edge)}
 .ef-badge--secondary:hover,.ef-badge--outline:hover,.ef-badge--ghost:hover{background:var(--surface-sunken)}
 .ef-badge--default.ef-badge--accent:hover{background:var(--accent-subtle);border-color:transparent}
 .ef-badge--default.ef-badge--success:hover{background:var(--status-success-bg);border-color:transparent}

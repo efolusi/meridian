@@ -37,7 +37,7 @@ const CSS = `
 .ef-toolcall__actions{display:flex;justify-content:flex-end;gap:var(--space-2);padding-top:var(--space-0-5)}
 .ef-toolcall__btn{height:var(--control-h-sm);padding:0 var(--space-3);border-radius:var(--radius-sm);border:1px solid var(--border-strong);background:var(--surface-card);cursor:pointer;font-family:var(--font-sans);font-size:var(--text-sm);font-weight:600;color:var(--text-primary);transition:background var(--dur-fast) var(--ease-enter)}
 .ef-toolcall__btn:hover{background:var(--surface-subtle)}
-.ef-toolcall__btn--accept{background:var(--accent);border-color:var(--accent);color:var(--accent-contrast)}
+.ef-toolcall__btn--accept{background:var(--accent);border-color:var(--accent-edge);color:var(--accent-contrast)}
 .ef-toolcall__btn--accept:hover{background:var(--accent-hover)}
 .ef-toolcall__btn:focus-visible{outline:none;box-shadow:var(--focus-ring)}
 @media (pointer:coarse){.ef-toolcall__btn{min-height:var(--tap-min)}}

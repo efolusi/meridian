@@ -186,7 +186,7 @@ function Toc() {
         {items.map(([href, label]) => (
           <a key={href} href={href} onClick={() => setActive(href)}
             style={{ fontSize: 13, textDecoration: 'none', paddingLeft: 12, marginLeft: -1, lineHeight: 1.4,
-              borderLeft: active === href ? '2px solid var(--accent)' : '2px solid transparent',
+              borderLeft: active === href ? '2px solid var(--accent-edge)' : '2px solid transparent',
               color: active === href ? 'var(--brand-700)' : 'var(--text-secondary)', fontWeight: active === href ? 600 : 450 }}>{label}</a>
         ))}
       </div>

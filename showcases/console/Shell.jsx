@@ -10,7 +10,7 @@ function SideItem({ icon, label, active, badge, onClick, href }) {
     transition: 'background var(--dur-fast) var(--ease-enter)', boxSizing: 'border-box' };
   const inner = (
     <React.Fragment>
-      <span style={{ color: active ? 'var(--accent)' : 'inherit', display: 'inline-flex' }}><Icon name={icon} size={16} /></span>
+      <span style={{ color: active ? 'var(--accent-edge)' : 'inherit', display: 'inline-flex' }}><Icon name={icon} size={16} /></span>
       <span style={{ flex: 1 }}>{label}</span>
       {badge != null && <Badge variant={active ? 'default' : 'secondary'} className={active ? 'ef-badge--accent' : undefined}>{badge}</Badge>}
       {href && hov && <Icon name="arrow-up-right" size={12} style={{ color: 'var(--text-muted)' }} />}

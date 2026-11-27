@@ -24,7 +24,7 @@ const CSS = `
 .ef-btn--icon-xs{width:var(--control-h-xs);height:var(--control-h-xs);padding:0}
 .ef-btn--icon-sm{width:var(--control-h-sm);height:var(--control-h-sm);padding:0}
 .ef-btn--icon-lg{width:var(--control-h-lg);height:var(--control-h-lg);padding:0}
-.ef-btn--primary{background:var(--accent);color:var(--accent-contrast)}
+.ef-btn--primary{background:var(--accent);border-color:var(--accent-edge);color:var(--accent-contrast)}
 .ef-btn--primary:hover{background:var(--accent-hover)}
 .ef-btn--primary:active{background:var(--accent-active)}
 .ef-btn--secondary{background:transparent;color:var(--text-primary);border-color:var(--border-strong)}

@@ -3,10 +3,6 @@
     "count": 1,
     "reason": "Left in MD44 on purpose: no existing semantic token has this value, or the swap needs a visual decision (design-tokens v0.5.0 has no token for it). Moves to a token when design-tokens adds one."
   },
-  "components/ai/Player.jsx": {
-    "count": 1,
-    "reason": "Left in MD44 on purpose: no existing semantic token has this value, or the swap needs a visual decision (design-tokens v0.5.0 has no token for it). Moves to a token when design-tokens adds one."
-  },
   "components/ai/PromptComposer.jsx": {
     "count": 2,
     "reason": "Left in MD44 on purpose: no existing semantic token has this value, or the swap needs a visual decision (design-tokens v0.5.0 has no token for it). Moves to a token when design-tokens adds one."

@@ -84,13 +84,15 @@ describe('Badge default is neutral (MD69)', () => {
       expect(contrast(rest.color, hoverFill)).toBeGreaterThanOrEqual(4.5);
     });
 
-    it(`solid keeps the old ember look and holds 4.5:1 at rest and on hover in ${theme}`, () => {
+    it(`solid keeps the accent fill and holds 4.5:1 at rest and on hover in ${theme}`, () => {
       const rest = paint(table, '.ef-badge--solid');
       expect(rest.background).toBe(resolve(table, 'var(--accent)'));
       expect(rest.color).toBe(resolve(table, 'var(--accent-contrast)'));
       const hover = paint(table, '.ef-badge--solid:hover');
-      expect(declarations('.ef-badge--solid:hover')['border-color']).toBe('transparent');
-      expect(declarations('.ef-badge--solid')['border-color']).toBe('transparent');
+      // MD74: the copper fill is under 3:1 on a light surface, so the badge carries the 1px accent edge (3:1 on the card).
+      expect(declarations('.ef-badge--solid:hover')['border-color']).toBe('var(--accent-edge)');
+      expect(declarations('.ef-badge--solid')['border-color']).toBe('var(--accent-edge)');
+      expect(contrast(resolve(table, 'var(--accent-edge)'), resolve(table, 'var(--surface-card)'))).toBeGreaterThanOrEqual(3);
       expect(hover.background).toBe(resolve(table, 'var(--accent-hover)'));
       expect(contrast(rest.color, rest.background)).toBeGreaterThanOrEqual(4.5);
       expect(contrast(rest.color, hover.background)).toBeGreaterThanOrEqual(4.5);

@@ -13,7 +13,7 @@ const CSS = `
 .ef-iconbtn--quiet:hover:not(:disabled){background:var(--surface-sunken);color:var(--text-primary)}
 .ef-iconbtn--outline{border-color:var(--border-strong);background:transparent;color:var(--text-primary)}
 .ef-iconbtn--outline:hover:not(:disabled){background:var(--surface-sunken)}
-.ef-iconbtn--solid{background:var(--accent);color:var(--accent-contrast)}
+.ef-iconbtn--solid{background:var(--accent);border-color:var(--accent-edge);color:var(--accent-contrast)}
 .ef-iconbtn--solid:hover:not(:disabled){background:var(--accent-hover)}
 `;
 export const IconButton = React.forwardRef(function IconButton({ icon, label, variant = 'quiet', size = 'md', disabled, style, className, ...rest }, ref) {
