@@ -236,7 +236,7 @@ Stick-to-bottom thread viewport: keeps pinned to the latest message while stream
 
 Wrap the message column of any chat surface; it owns scrolling, you own the messages. Set autoStick={false} for read-only transcripts.
 
-The viewport is a keyboard-focusable `region` so the thread can be scrolled with the arrow keys; `aria-label` names it (default `Conversation`).
+The viewport is a keyboard-focusable part so the thread can be scrolled with the arrow keys. Unnamed it is a `group` called `Conversation` (set the words with `label`), which is no landmark. `aria-label` or `aria-labelledby` makes it a `region` with that name; `aria-labelledby` wins.
 
 ```ts
 export interface ConversationProps {
@@ -248,8 +248,12 @@ export interface ConversationProps {
   jumpLabel?: string;
   /** Viewport padding @default 4 */
   padding?: number | string;
-  /** Name of the scrolling viewport, which is a focusable region @default 'Conversation' */
+  /** Default name of the viewport while you give none; the viewport is then a group. Translate it here @default 'Conversation' */
+  label?: string;
+  /** Replaces the whole name of the viewport and makes it a region */
   'aria-label'?: string;
+  /** Names the viewport by another element and makes it a region; wins over `aria-label` */
+  'aria-labelledby'?: string;
   /** Messages, tool calls, etc. */
   children?: React.ReactNode;
   style?: React.CSSProperties;
@@ -1206,7 +1210,7 @@ Unified diff with dual line-number gutters, +/− signs, add/del row tints, and 
 
 Pass the original and changed text through `from` and `to`; line numbers, change counts, and word-level marks are computed. For non-diff code use CodeBlock.
 
-The scrolling part is a keyboard-focusable `region` so the diff can be scrolled with the arrow keys. A single diff is named by `aria-label` or `aria-labelledby`; without either it takes `title` when that is a string, else `Diff`. With `files`, each open file is a region named after the file.
+The scrolling part is keyboard-focusable so the diff can be scrolled with the arrow keys. A single diff is a `region` when you pass `aria-label` or `aria-labelledby`; otherwise it is a `group` named by `title` when that is a string, else `Diff` (set the words with `label`). With `files`, each open file is a `group` named after the file, so a long list adds no landmarks.
 
 ```ts
 export interface DiffProps {
@@ -1224,9 +1228,11 @@ export interface DiffProps {
   contextLines?: number;
   /** Scroll past this height */
   maxHeight?: number | string;
-  /** Names the scroll region of a single diff (or use `aria-labelledby`); a `files` diff names each region after its file @default the title when it is a string, else 'Diff' */
+  /** Default name of a single diff's scroll part when you give none and the title is not a string; the part is then a group. Translate it here @default 'Diff' */
+  label?: string;
+  /** Names the scroll part of a single diff and makes it a region; ignored with `files` */
   'aria-label'?: string;
-  /** Names the scroll region of a single diff by another element; wins over `aria-label` */
+  /** Names the scroll part of a single diff by another element and makes it a region; wins over `aria-label` */
   'aria-labelledby'?: string;
   style?: React.CSSProperties;
   className?: string;
@@ -1702,7 +1708,7 @@ Selection behaves the same: `selectable` alone works, and `selected` + `onSelect
 
 `dense` tightens row height; `render(value, row, i)` for custom cells; `loading` swaps the body for shimmer rows so the header and column widths stay put while the first page loads.
 
-While the table scrolls (wider or taller than its box) the wrapper becomes a keyboard-focusable `region` so it can be scrolled with the arrow keys. Name it with `aria-label` or `aria-labelledby`; without either it is called `Table`.
+While the table scrolls (wider or taller than its box) the wrapper becomes keyboard-focusable so it can be scrolled with the arrow keys. Unnamed it is a `group` called `Table` (set the words with `label`), which is no landmark. `aria-label` or `aria-labelledby` makes it a `region` with that name; `aria-labelledby` wins.
 
 For a genuinely large grid (virtualisation, column resizing, grouping), reach for a dedicated data grid. This covers the admin table, not that.
 
@@ -1752,7 +1758,9 @@ export interface TableProps extends React.TableHTMLAttributes<HTMLTableElement> 
   loading?: boolean;
   /** @default 3 */
   loadingRows?: number;
-  /** Names the scroll region the wrapper becomes while the table scrolls (or `aria-labelledby`) @default 'Table' */
+  /** Default name of the wrapper while the table scrolls and you give none; the wrapper is then a group. Translate it here @default 'Table' */
+  label?: string;
+  /** Names the wrapper while the table scrolls and makes it a region (or use `aria-labelledby`, which wins) */
   'aria-label'?: string;
   /** Shown when there are no rows @default 'Nothing to show yet.' */
   empty?: React.ReactNode;
@@ -2061,6 +2069,8 @@ Composable, swipe-friendly scroll-snap carousel with keyboard controls and an ev
 
 Use `orientation="vertical"` for vertical collections and `setApi` for slide counts or selection events. Size items through their `style.flexBasis` or a project utility class. Not for primary navigation.
 
+The scrolling `CarouselContent` is a keyboard-focusable `group`, not a second region: the `Carousel` root is already the carousel region. Name the root with `aria-label` or `aria-labelledby`; the group is then named after it plus `label` (`Featured work Slides`, `label` defaults to `Slides`), so the root's name is not read twice. For another word order, pass `aria-label` or `aria-labelledby` on `CarouselContent`: it replaces the whole name.
+
 ```ts
 export interface CarouselApi {
   canScrollNext(): boolean;
@@ -2082,7 +2092,15 @@ export interface CarouselOptions { align?: 'start' | 'center' | 'end'; loop?: bo
 export interface CarouselPlugin { init?(api: CarouselApi): void; destroy?(): void; }
 export interface CarouselProps extends React.HTMLAttributes<HTMLDivElement> { orientation?: 'horizontal' | 'vertical'; opts?: CarouselOptions; plugins?: CarouselPlugin[]; setApi?: (api: CarouselApi | undefined) => void; }
 export declare const Carousel: React.ForwardRefExoticComponent<CarouselProps & React.RefAttributes<HTMLDivElement>>;
-export declare const CarouselContent: React.ForwardRefExoticComponent<React.HTMLAttributes<HTMLDivElement> & React.RefAttributes<HTMLDivElement>>;
+export interface CarouselContentProps extends React.HTMLAttributes<HTMLDivElement> {
+  /** The words of the group name: after the root's name when the root has one ('Featured work Slides'), alone otherwise. Translate them here @default 'Slides' */
+  label?: string;
+  /** Replaces the whole name of the group, root name included */
+  'aria-label'?: string;
+  /** Names the group by another element; wins over `aria-label` */
+  'aria-labelledby'?: string;
+}
+export declare const CarouselContent: React.ForwardRefExoticComponent<CarouselContentProps & React.RefAttributes<HTMLDivElement>>;
 export declare const CarouselItem: React.ForwardRefExoticComponent<React.HTMLAttributes<HTMLDivElement> & React.RefAttributes<HTMLDivElement>>;
 export declare const CarouselPrevious: React.ForwardRefExoticComponent<React.ButtonHTMLAttributes<HTMLButtonElement> & React.RefAttributes<HTMLButtonElement>>;
 export declare const CarouselNext: React.ForwardRefExoticComponent<React.ButtonHTMLAttributes<HTMLButtonElement> & React.RefAttributes<HTMLButtonElement>>;
@@ -2350,12 +2368,20 @@ Scrollable viewport with thin, themed scrollbars.
 
 Add a horizontal `ScrollBar` when wide content can overflow. The scrollbar component declares the intended orientation while the native viewport preserves platform scrolling and accessibility.
 
+The viewport is a keyboard-focusable part so it can be scrolled with the arrow keys. Unnamed it is a `group` called `Scroll area` (set the words with `label`), which is no landmark, so several areas on a page stay quiet. Give it `aria-label` or `aria-labelledby` to make it a `region`; both name the viewport, not the wrapper, `aria-labelledby` wins, and `aria-label` replaces the whole name.
+
 ```ts
 export interface ScrollAreaProps extends React.HTMLAttributes<HTMLDivElement> {
   /** Scroll past this height */
   maxHeight?: number | string;
   /** Fixed height */
   height?: number | string;
+  /** Default name of the viewport while you give none; the viewport is then a group. Translate it here @default 'Scroll area' */
+  label?: string;
+  /** Replaces the whole name of the viewport and makes it a region (it names the viewport, not the wrapper) */
+  'aria-label'?: string;
+  /** Names the viewport by another element and makes it a region; wins over `aria-label` */
+  'aria-labelledby'?: string;
   children?: React.ReactNode;
 }
 export interface ScrollBarProps extends React.HTMLAttributes<HTMLSpanElement> { orientation?: 'horizontal' | 'vertical'; }

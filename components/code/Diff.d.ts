@@ -13,9 +13,11 @@ export interface DiffProps {
   contextLines?: number;
   /** Scroll past this height */
   maxHeight?: number | string;
-  /** Names the scroll region of a single diff (or use `aria-labelledby`); a `files` diff names each region after its file @default the title when it is a string, else 'Diff' */
+  /** Default name of a single diff's scroll part when you give none and the title is not a string; the part is then a group. Translate it here @default 'Diff' */
+  label?: string;
+  /** Names the scroll part of a single diff and makes it a region; ignored with `files` */
   'aria-label'?: string;
-  /** Names the scroll region of a single diff by another element; wins over `aria-label` */
+  /** Names the scroll part of a single diff by another element and makes it a region; wins over `aria-label` */
   'aria-labelledby'?: string;
   style?: React.CSSProperties;
   className?: string;

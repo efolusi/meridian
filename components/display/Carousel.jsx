@@ -133,11 +133,13 @@ export const Carousel = React.forwardRef(function Carousel({ orientation = 'hori
     if (event.key === previousKey) { event.preventDefault(); api.scrollPrev(); }
     if (event.key === nextKey) { event.preventDefault(); api.scrollNext(); }
   };
-  const value = React.useMemo(() => ({ api, direction, orientation, registerContent, selectFromScroll, selected, slideCount }), [api, direction, orientation, registerContent, selectFromScroll, selected, slideCount]);
+  const label = props['aria-label'];
+  const labelledBy = props['aria-labelledby'];
+  const value = React.useMemo(() => ({ api, direction, label, labelledBy, orientation, registerContent, selectFromScroll, selected, slideCount }), [api, direction, label, labelledBy, orientation, registerContent, selectFromScroll, selected, slideCount]);
   return <CarouselCtx.Provider value={value}><div {...props} ref={ref} role="region" aria-roledescription="carousel" data-slot="carousel" data-orientation={orientation} data-align={align} className={`ef-carousel${className ? ' ' + className : ''}`} onKeyDown={handleKeyDown}>{children}</div></CarouselCtx.Provider>;
 });
 
-export const CarouselContent = React.forwardRef(function CarouselContent({ children, className, style, onScroll, ...props }, forwardedRef) {
+export const CarouselContent = React.forwardRef(function CarouselContent({ label = 'Slides', children, className, style, onScroll, ...props }, forwardedRef) {
   const ctx = React.useContext(CarouselCtx);
   const registerContent = ctx?.registerContent;
   const setRef = React.useCallback(element => {
@@ -151,7 +153,16 @@ export const CarouselContent = React.forwardRef(function CarouselContent({ child
     const next = closestIndex(event.currentTarget, ctx.orientation);
     if (next !== ctx.selected) ctx.selectFromScroll(next);
   };
-  return <div tabIndex={0} {...props} ref={setRef} data-slot="carousel-content" data-orientation={ctx?.orientation || 'horizontal'} className={`ef-carousel__content${className ? ' ' + className : ''}`} style={style} onScroll={handleScroll}><div data-slot="carousel-track" className="ef-carousel__track">{children}</div></div>;
+  // The root is already the carousel region, so the scrolling part is a group, not a second landmark.
+  // Its name follows the root's name with the label ("Featured work Slides"), so a screen reader
+  // does not read the root's name twice. aria-label or aria-labelledby on the content replaces it all.
+  const autoId = React.useId();
+  const id = props.id || autoId;
+  let name = { 'aria-label': label };
+  if (props['aria-label'] != null || props['aria-labelledby'] != null) name = {};
+  else if (ctx?.labelledBy) name = { 'aria-labelledby': `${ctx.labelledBy} ${id}`, 'aria-label': label, id };
+  else if (ctx?.label) name = { 'aria-label': `${ctx.label} ${label}` };
+  return <div tabIndex={0} role="group" {...name} {...props} ref={setRef} data-slot="carousel-content" data-orientation={ctx?.orientation || 'horizontal'} className={`ef-carousel__content${className ? ' ' + className : ''}`} style={style} onScroll={handleScroll}><div data-slot="carousel-track" className="ef-carousel__track">{children}</div></div>;
 });
 
 export const CarouselItem = React.forwardRef(function CarouselItem({ className, ...props }, ref) {

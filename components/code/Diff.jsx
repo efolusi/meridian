@@ -144,11 +144,11 @@ function DiffFile({ file, wordLevel, contextLines }) {
         <span className="ef-diff__name">{file.name}</span>
         <Counts adds={r.adds} dels={r.dels} />
       </button>
-      {open ? <div className="ef-diff__scroll" role="region" aria-label={file.name} tabIndex={0}><Rows rows={r.rows} /></div> : null}
+      {open ? <div className="ef-diff__scroll" role="group" aria-label={file.name} tabIndex={0}><Rows rows={r.rows} /></div> : null}
     </div>
   );
 }
-export function Diff({ title, from, to, files, wordLevel = true, contextLines = 3, maxHeight, 'aria-label': ariaLabel, 'aria-labelledby': labelledBy, style, className, ...rest }) {
+export function Diff({ title, from, to, files, wordLevel = true, contextLines = 3, maxHeight, label = 'Diff', 'aria-label': ariaLabel, 'aria-labelledby': labelledBy, style, className, ...rest }) {
   injectEfCss('ef-css-diff', CSS);
   const single = React.useMemo(() => {
     if (files) return null;
@@ -160,7 +160,7 @@ export function Diff({ title, from, to, files, wordLevel = true, contextLines = 
         <div className="ef-diff__head">{title}<Counts adds={single.adds} dels={single.dels} /></div>
       ) : null}
       {files ? files.map((f, i) => <DiffFile key={f.name || i} file={f} wordLevel={wordLevel} contextLines={contextLines} />) : (
-        <div className="ef-diff__scroll" role="region" aria-label={labelledBy ? undefined : (ariaLabel || (typeof title === 'string' && title) || 'Diff')} aria-labelledby={labelledBy} tabIndex={0} ref={styleRef({ 'max-height': maxHeight || undefined })}><Rows rows={single.rows} /></div>
+        <div className="ef-diff__scroll" role={ariaLabel || labelledBy ? 'region' : 'group'} aria-label={labelledBy ? undefined : (ariaLabel || (typeof title === 'string' && title) || label)} aria-labelledby={labelledBy} tabIndex={0} ref={styleRef({ 'max-height': maxHeight || undefined })}><Rows rows={single.rows} /></div>
       )}
     </div>
   );

@@ -11,12 +11,12 @@ const CSS = `
 .ef-scrollarea__viewport::-webkit-scrollbar-thumb:hover{background:var(--text-muted);border:2px solid transparent;background-clip:content-box}
 .ef-scrollarea__bar{position:absolute;pointer-events:none;opacity:0}
 `;
-export const ScrollArea = React.forwardRef(function ScrollArea({ maxHeight, height, children, style, className, ...rest }, ref) {
+export const ScrollArea = React.forwardRef(function ScrollArea({ maxHeight, height, label = 'Scroll area', 'aria-label': ariaLabel, 'aria-labelledby': labelledBy, children, style, className, ...rest }, ref) {
   injectEfCss('ef-css-scrollarea', CSS);
   const nodes = React.Children.toArray(children);
   const bars = nodes.filter(child => isElementOfType(child, ScrollBar));
   const content = nodes.filter(child => !isElementOfType(child, ScrollBar));
-  return <div {...rest} ref={mergeRefs(ref, styleRef({ 'max-height': maxHeight, height }))} data-slot="scroll-area" className={`ef-scrollarea${className ? ' ' + className : ''}`} style={style}><div tabIndex={0} data-slot="scroll-area-viewport" className="ef-scrollarea__viewport" ref={styleRef({ 'max-height': maxHeight, height })}>{content}</div>{bars}</div>;
+  return <div {...rest} ref={mergeRefs(ref, styleRef({ 'max-height': maxHeight, height }))} data-slot="scroll-area" className={`ef-scrollarea${className ? ' ' + className : ''}`} style={style}><div tabIndex={0} role={ariaLabel || labelledBy ? 'region' : 'group'} aria-label={labelledBy ? undefined : (ariaLabel || label)} aria-labelledby={labelledBy} data-slot="scroll-area-viewport" className="ef-scrollarea__viewport" ref={styleRef({ 'max-height': maxHeight, height })}>{content}</div>{bars}</div>;
 });
 export const ScrollBar = React.forwardRef(function ScrollBar({ orientation = 'vertical', className, ...props }, ref) {
   return <span {...props} ref={ref} aria-hidden="true" data-slot="scroll-area-scrollbar" data-orientation={orientation} className={`ef-scrollarea__bar${className ? ' ' + className : ''}`} />;

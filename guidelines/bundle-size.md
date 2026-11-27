@@ -13,9 +13,9 @@ CSS is not counted per component: `styles.css` ships every component style in on
 
 | File | Size | Gzip |
 | --- | ---: | ---: |
-| `@efolusi/meridian` | 369.7 kB | 83.7 kB |
+| `@efolusi/meridian` | 370.3 kB | 83.9 kB |
 | `dist/components.css` | 236.6 kB | 32.6 kB |
-| `_ds_bundle.js` | 886.8 kB | 159.8 kB |
+| `_ds_bundle.js` | 888.3 kB | 160.3 kB |
 
 The root import, `@efolusi/meridian`, is every component. `_ds_bundle.js` is the zero-build CDN bundle, which also carries each component's CSS. The root import is minified; the CSS and the CDN bundle are measured as shipped.
 
@@ -28,7 +28,7 @@ The root import, `@efolusi/meridian`, is every component. `_ds_bundle.js` is the
 | `ai/ChatMessage.js` | ChatMessage | 46.5 kB | 7.9 kB |
 | `ai/Citation.js` | Citation, SourceList | 46.6 kB | 8.1 kB |
 | `ai/Confirmation.js` | Confirmation | 45.3 kB | 7.6 kB |
-| `ai/Conversation.js` | Conversation | 45.4 kB | 7.9 kB |
+| `ai/Conversation.js` | Conversation | 45.5 kB | 7.9 kB |
 | `ai/DocumentCard.js` | DocumentCard | 45.7 kB | 7.9 kB |
 | `ai/FeedbackBar.js` | FeedbackBar | 45.2 kB | 7.6 kB |
 | `ai/GeneratedImage.js` | GeneratedImage | 45.5 kB | 7.6 kB |
@@ -76,7 +76,7 @@ The root import, `@efolusi/meridian`, is every component. `_ds_bundle.js` is the
 | `display/Avatar.js` | Avatar, AvatarImage, AvatarFallback, AvatarBadge, AvatarGroup, AvatarGroupCount | 1.8 kB | 0.6 kB |
 | `display/Badge.js` | Badge | 0.9 kB | 0.5 kB |
 | `display/Card.js` | CardHeader, CardTitle, CardDescription, CardAction, CardContent, CardFooter, Card | 1.8 kB | 0.6 kB |
-| `display/Carousel.js` | Carousel, CarouselContent, CarouselItem, CarouselPrevious, CarouselNext | 49.0 kB | 9.1 kB |
+| `display/Carousel.js` | Carousel, CarouselContent, CarouselItem, CarouselPrevious, CarouselNext | 49.3 kB | 9.3 kB |
 | `display/Collapsible.js` | Collapsible, CollapsibleTrigger, CollapsibleContent | 2.8 kB | 1.0 kB |
 | `display/Decor.js` | Decor | 0.5 kB | 0.4 kB |
 | `display/Direction.js` | DirectionProvider | 0.4 kB | 0.2 kB |
@@ -85,7 +85,7 @@ The root import, `@efolusi/meridian`, is every component. `_ds_bundle.js` is the
 | `display/Kbd.js` | Kbd, KbdGroup | 0.7 kB | 0.4 kB |
 | `display/Link.js` | Link | 44.3 kB | 7.3 kB |
 | `display/Resizable.js` | ResizablePanelGroup, ResizablePanel, ResizableHandle | 4.6 kB | 2.0 kB |
-| `display/ScrollArea.js` | ScrollArea, ScrollBar | 1.5 kB | 0.8 kB |
+| `display/ScrollArea.js` | ScrollArea, ScrollBar | 1.6 kB | 0.8 kB |
 | `display/Separator.js` | Separator | 0.6 kB | 0.4 kB |
 | `display/Tag.js` | Tag | 44.6 kB | 7.4 kB |
 | `display/Timeline.js` | Timeline | 45.1 kB | 7.5 kB |
