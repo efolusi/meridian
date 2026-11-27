@@ -155,9 +155,32 @@ if (await page.evaluate(() => CSS.supports('animation-timeline', 'scroll(self in
   await page.locator('#table-fade-before').focus();
   await page.evaluate(() => document.activeElement.blur());
   await settle();
+  // Focus left the table, so the mask is back. Tabbing to the last-column button scrolled the wrapper to its far end, where
+  // nothing is hidden and the fade is 0 by design, so scroll back to the start before asking for the 28px fade.
   const after = await read();
-  if (after.mask === 'none' || !(fadeWidth(after.size) > 0)) {
-    console.error(`smoke: Table fade case: the fade did not come back after focus left the table (${after.mask}, ${after.size})`);
+  if (after.mask === 'none') {
+    console.error(`smoke: Table fade case: the mask did not come back after focus left the table (${after.mask})`);
+    await browser.close();
+    process.exit(1);
+  }
+  const scrollTo = (end) => page.evaluate((toEnd) => {
+    const wrap = document.querySelector('#table-fade-fixture .ef-table-wrap');
+    wrap.scrollLeft = toEnd ? wrap.scrollWidth : 0;
+  }, end);
+  const fadeIs = (want) => page.waitForFunction((w) => {
+    const wrap = document.querySelector('#table-fade-fixture .ef-table-wrap');
+    const second = (getComputedStyle(wrap).maskSize.split(/,(?![^(]*\))/)[1] || '').trim();
+    return w === 'shown' ? Number.parseFloat(second) > 0 : Number.parseFloat(second) === 0;
+  }, want, { timeout: 3000 }).then(() => true, () => false);
+  await scrollTo(false);
+  if (!(await fadeIs('shown'))) {
+    console.error(`smoke: Table fade case: no fade at the start of the scroll after focus left the table (${JSON.stringify(await read())})`);
+    await browser.close();
+    process.exit(1);
+  }
+  await scrollTo(true);
+  if (!(await fadeIs('gone'))) {
+    console.error(`smoke: Table fade case: the fade stays at the end of the scroll, where nothing is hidden (${JSON.stringify(await read())})`);
     await browser.close();
     process.exit(1);
   }

@@ -45,7 +45,9 @@ describe('Table scroll wrapper fades its end edge while content is hidden (MD73)
     const wrap = block(SUPPORTS);
     expect(wrap).toMatch(/\.ef-table-wrap:dir\(rtl\)\{mask-image:linear-gradient\(currentcolor,currentcolor\),linear-gradient\(to left,currentcolor,transparent\);mask-position:right,left\}/);
     // Any keyboard focus inside lifts it: the wrapper itself, a focused row (tabIndex 0 with onRowClick) or a control in the last column.
-    expect(wrap).toContain('.ef-table-wrap:focus-visible,.ef-table-wrap:has(:focus-visible){mask-image:none;animation-name:none}');
+    expect(wrap).toContain('.ef-table-wrap:focus-visible,.ef-table-wrap:has(:focus-visible){mask-image:none}');
+    // Only the mask lifts: toggling animation-name would restart the scroll-driven animation when focus leaves.
+    expect(wrap).not.toMatch(/:has\(:focus-visible\)\{[^}]*animation-name/);
   });
 
   it('says in a comment why prefers-reduced-motion leaves the fade alone: a scroll timeline ignores animation-duration, and it is not motion', () => {

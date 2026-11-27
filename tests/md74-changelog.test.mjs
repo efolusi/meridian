@@ -32,5 +32,9 @@ describe('the Unreleased consumer list covers the MD74 review items', () => {
     expect(unreleased).toMatch(/BarChart[^.]*base bars[^.]*--border-control/);
     expect(unreleased).toMatch(/1px `--accent-edge` outline/);
     expect(unreleased).toMatch(/Tone cannot carry the highlight alone \(WCAG 1\.4\.1\)/);
+    expect(unreleased).toContain('told apart by hue plus a 1px edge, about 1.3:1 by tone in light, weak for colour-blind readers: pair it with a label or a legend.');
+    expect(readFileSync('components/data/BarChart.prompt.md', 'utf8')).toContain('weak for colour-blind readers: pair it with a label or a legend.');
+    expect(readFileSync('site/Docs.dc.html', 'utf8')).toContain('weak for colour-blind readers: pair it with a label or a legend.');
+    expect(readFileSync('site/Docs.dc.html', 'utf8')).toContain('lemah bagi pembaca buta warna: sertakan label atau legenda.');
   });
 });

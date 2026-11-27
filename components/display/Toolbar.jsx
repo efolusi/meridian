@@ -14,7 +14,7 @@ const CSS = `
 .ef-toolbar__sep{width:1px;height:18px;background:var(--border-default);margin:0 var(--space-1)}
 @media (pointer:coarse){.ef-toolbar__btn{min-width:var(--tap-min);min-height:var(--tap-min)}}
 /* The accent edge is an inset shadow, which forced colours drop: an outline in a system colour keeps it. */
-@media (forced-colors:active){.ef-toolbar__btn--active{outline:1px solid Highlight}}
+@media (forced-colors:active){.ef-toolbar__btn--active{outline:1px solid Highlight}.ef-toolbar__btn:focus-visible{outline:2px solid Highlight;outline-offset:2px}}
 `;
 export function Toolbar({ items, value, onChange, label, style, className, ...rest }) {
   injectEfCss('ef-css-toolbar', CSS);

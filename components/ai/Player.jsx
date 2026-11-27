@@ -23,7 +23,7 @@ const CSS = `
 .ef-player__time{font-size:var(--text-xs);color:var(--text-muted);font-variant-numeric:tabular-nums}
 @media (pointer:coarse){.ef-player__btn{min-width:var(--tap-min);min-height:var(--tap-min)}}
 /* The accent edge is an inset shadow, which forced colours drop: an outline in a system colour keeps it. */
-@media (forced-colors:active){.ef-player__play{outline:1px solid ButtonText}}
+@media (forced-colors:active){.ef-player__play{outline:1px solid ButtonText}.ef-player__btn:focus-visible{outline:2px solid Highlight;outline-offset:2px}}
 `;
 export function formatTime(s, hint) {
   const t = Math.max(0, Math.floor(s || 0));

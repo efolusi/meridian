@@ -5,3 +5,5 @@ Hairline-minimal bar chart: quiet base bars, a highlight window of copper bars w
 ```
 
 Format displayed values with `format`, matching the other chart components.
+
+The highlighted BarChart bar is told apart by hue plus a 1px edge, about 1.3:1 by tone in light, weak for colour-blind readers: pair it with a label or a legend.
