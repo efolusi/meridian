@@ -53,8 +53,8 @@ describe('the xl rules use the Button xl height', () => {
     expect(text).toContain('.ef-number--xl .ef-number__step{width:28px}');
   });
 
-  it('NativeSelect xl is the xl height', () => {
-    expect(css('components/forms/NativeSelect.jsx')).toContain('.ef-native-select[data-size="xl"] select{height:var(--control-h-xl)}');
+  it('NativeSelect xl is the xl height and the xl text size, as Input xl is', () => {
+    expect(css('components/forms/NativeSelect.jsx')).toContain('.ef-native-select[data-size="xl"] select{height:var(--control-h-xl);font-size:var(--text-lg)}');
   });
 });
 
