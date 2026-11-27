@@ -1,16 +1,16 @@
 {
   "totals": {
     "@efolusi/meridian": {
-      "bytes": 378151,
-      "gzip": 85561
+      "bytes": 378454,
+      "gzip": 85669
     },
     "dist/components.css": {
       "bytes": 242296,
       "gzip": 33342
     },
     "_ds_bundle.js": {
-      "bytes": 907017,
-      "gzip": 163306
+      "bytes": 907815,
+      "gzip": 163592
     }
   },
   "modules": [
@@ -69,8 +69,8 @@
       "exports": [
         "Conversation"
       ],
-      "bytes": 46454,
-      "gzip": 8065
+      "bytes": 46513,
+      "gzip": 8086
     },
     {
       "module": "ai/DocumentCard.js",
@@ -297,8 +297,8 @@
       "exports": [
         "Console"
       ],
-      "bytes": 47449,
-      "gzip": 8249
+      "bytes": 47464,
+      "gzip": 8253
     },
     {
       "module": "code/CopyField.js",
@@ -458,8 +458,8 @@
         "TableCell",
         "TableCaption"
       ],
-      "bytes": 52178,
-      "gzip": 10134
+      "bytes": 52406,
+      "gzip": 10241
     },
     {
       "module": "dates/Calendar.js",

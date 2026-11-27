@@ -236,6 +236,8 @@ Stick-to-bottom thread viewport: keeps pinned to the latest message while stream
 
 Wrap the message column of any chat surface; it owns scrolling, you own the messages. Set autoStick={false} for read-only transcripts.
 
+The viewport is a keyboard-focusable `region` so the thread can be scrolled with the arrow keys; `aria-label` names it (default `Conversation`).
+
 ```ts
 export interface ConversationProps {
   /** Viewport height @default 420 */
@@ -246,6 +248,8 @@ export interface ConversationProps {
   jumpLabel?: string;
   /** Viewport padding @default 4 */
   padding?: number | string;
+  /** Name of the scrolling viewport, which is a focusable region @default 'Conversation' */
+  'aria-label'?: string;
   /** Messages, tool calls, etc. */
   children?: React.ReactNode;
   style?: React.CSSProperties;
@@ -1134,7 +1138,7 @@ Group: code · Source: /components/code/Console.jsx · Exports: Console
 
 # Console
 
-Log viewer with level icons/colors, tabular timestamps, and per-row collapsible stack traces. It sticks to the bottom while streaming and shows a "Latest" pill when scrolled up.
+Log viewer with level icons/colors, tabular timestamps, and per-row collapsible stack traces. It sticks to the bottom while streaming and shows a "Latest" pill when scrolled up. The log is keyboard-focusable and its accessible name is `title`.
 
 ```jsx
 <Console entries={[
@@ -1155,6 +1159,7 @@ export interface ConsoleEntry {
   source?: string;
 }
 export interface ConsoleProps {
+  /** Heading, also the accessible name of the log @default 'Console' */
   title?: string;
   entries: ConsoleEntry[];
   /** Viewport height in px. Default 240 */
@@ -1691,6 +1696,8 @@ Selection behaves the same: `selectable` alone works, and `selected` + `onSelect
 
 `dense` tightens row height; `render(value, row, i)` for custom cells; `loading` swaps the body for shimmer rows so the header and column widths stay put while the first page loads.
 
+While the table scrolls (wider or taller than its box) the wrapper becomes a keyboard-focusable `region` so it can be scrolled with the arrow keys. Name it with `aria-label` or `aria-labelledby`; without either it is called `Table`.
+
 For a genuinely large grid (virtualisation, column resizing, grouping), reach for a dedicated data grid. This covers the admin table, not that.
 
 ```ts
@@ -1739,6 +1746,8 @@ export interface TableProps extends React.TableHTMLAttributes<HTMLTableElement> 
   loading?: boolean;
   /** @default 3 */
   loadingRows?: number;
+  /** Names the scroll region the wrapper becomes while the table scrolls (or `aria-labelledby`) @default 'Table' */
+  'aria-label'?: string;
   /** Shown when there are no rows @default 'Nothing to show yet.' */
   empty?: React.ReactNode;
   style?: React.CSSProperties;
