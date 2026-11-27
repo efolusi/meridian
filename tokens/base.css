@@ -73,6 +73,8 @@ code,pre,kbd{font-family:var(--font-mono)}
 /* Forced colours (Windows High Contrast) remove box-shadow, and box-shadow is how
    every component draws --focus-ring after outline:none, so focus would vanish.
    Deliberately outside the layer: unlayered, it outranks the @layer meridian
-   component rules without !important. Highlight is a system colour, so it
-   survives the forced palette. */
-@media (forced-colors:active){:focus-visible{outline:2px solid Highlight;outline-offset:2px}.ef-glass{background:Canvas;border-color:CanvasText;-webkit-backdrop-filter:none;backdrop-filter:none;box-shadow:none}.ef-glass-field::before{display:none}}
+   component rules, and !important makes it outrank a product's own `outline:none`
+   too (MD78). An important declaration in a layer beats an unlayered one, so no
+   component may carry an !important outline: tests/md78-forced-colors-focus.test.mjs
+   scans them. Highlight is a system colour, so it survives the forced palette. */
+@media (forced-colors:active){:focus-visible{outline:2px solid Highlight!important;outline-offset:2px}.ef-glass{background:Canvas;border-color:CanvasText;-webkit-backdrop-filter:none;backdrop-filter:none;box-shadow:none}.ef-glass-field::before{display:none}}
