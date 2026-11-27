@@ -13,9 +13,9 @@ CSS is not counted per component: `styles.css` ships every component style in on
 
 | File | Size | Gzip |
 | --- | ---: | ---: |
-| `@efolusi/meridian` | 370.2 kB | 83.9 kB |
+| `@efolusi/meridian` | 370.3 kB | 83.9 kB |
 | `dist/components.css` | 236.6 kB | 32.6 kB |
-| `_ds_bundle.js` | 887.7 kB | 160.1 kB |
+| `_ds_bundle.js` | 888.3 kB | 160.3 kB |
 
 The root import, `@efolusi/meridian`, is every component. `_ds_bundle.js` is the zero-build CDN bundle, which also carries each component's CSS. The root import is minified; the CSS and the CDN bundle are measured as shipped.
 
@@ -28,7 +28,7 @@ The root import, `@efolusi/meridian`, is every component. `_ds_bundle.js` is the
 | `ai/ChatMessage.js` | ChatMessage | 46.5 kB | 7.9 kB |
 | `ai/Citation.js` | Citation, SourceList | 46.6 kB | 8.1 kB |
 | `ai/Confirmation.js` | Confirmation | 45.3 kB | 7.6 kB |
-| `ai/Conversation.js` | Conversation | 45.4 kB | 7.9 kB |
+| `ai/Conversation.js` | Conversation | 45.5 kB | 7.9 kB |
 | `ai/DocumentCard.js` | DocumentCard | 45.7 kB | 7.9 kB |
 | `ai/FeedbackBar.js` | FeedbackBar | 45.2 kB | 7.6 kB |
 | `ai/GeneratedImage.js` | GeneratedImage | 45.5 kB | 7.6 kB |
