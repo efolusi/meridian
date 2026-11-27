@@ -25,7 +25,7 @@
     {
       "path": "components/display/Tag.prompt.md",
       "type": "registry:component",
-      "content": "Chip for filters and labels; removable via `onRemove`, clickable via `onClick`.\n\n```jsx\n<Tag icon=\"funnel\" onRemove={remove}>Billing</Tag>\n<Tag icon=\"plus\" onClick={add}>Add filter</Tag>\n```\n\nUnder `data-shape=\"pill\"` on an ancestor the Tag is a full pill (`--press-radius`); see `guidelines/theming.md`, section Shape.\n"
+      "content": "Chip for filters and labels; removable via `onRemove`, clickable via `onClick`.\n\n```jsx\n<Tag icon=\"funnel\" onRemove={remove}>Billing</Tag>\n<Tag icon=\"plus\" onClick={add}>Add filter</Tag>\n```\n\nUnder `data-shape=\"pill\"` on `<html>` or `<body>` the Tag is a full pill (`--press-radius`); see `guidelines/theming.md`, section Shape.\n"
     }
   ],
   "categories": [
