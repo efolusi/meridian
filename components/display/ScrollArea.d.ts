@@ -3,9 +3,11 @@ export interface ScrollAreaProps extends React.HTMLAttributes<HTMLDivElement> {
   maxHeight?: number | string;
   /** Fixed height */
   height?: number | string;
-  /** Names the scroll region (the viewport, not the wrapper); or use `aria-labelledby` @default 'Scroll area' */
+  /** Default name of the viewport while you give none; the viewport is then a group. Translate it here @default 'Scroll area' */
+  label?: string;
+  /** Replaces the whole name of the viewport and makes it a region (it names the viewport, not the wrapper) */
   'aria-label'?: string;
-  /** Names the scroll region by another element; wins over `aria-label` */
+  /** Names the viewport by another element and makes it a region; wins over `aria-label` */
   'aria-labelledby'?: string;
   children?: React.ReactNode;
 }

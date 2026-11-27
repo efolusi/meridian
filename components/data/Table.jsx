@@ -45,7 +45,7 @@ export const Table = React.forwardRef(function Table({
   columns, rows, rowKey, onRowClick, dense, children,
   sort: sortProp, defaultSort, onSortChange,
   selectable, selected: selectedProp, defaultSelected, onSelectionChange,
-  stickyHeader, maxHeight, loading, loadingRows = 3, empty = 'Nothing to show yet.',
+  label = 'Table', stickyHeader, maxHeight, loading, loadingRows = 3, empty = 'Nothing to show yet.',
   style, className, ...rest
 }, ref) {
   injectEfCss('ef-css-table', CSS);
@@ -74,10 +74,12 @@ export const Table = React.forwardRef(function Table({
       if (ro) ro.disconnect();
     };
   }, [composition]);
-  // A focusable scroll region needs a role and a name (WCAG 4.1.2): the caller's
-  // aria-label or aria-labelledby, else 'Table'.
+  // A focusable scroll part needs a role and a name (WCAG 4.1.2). Named by the caller (aria-labelledby
+  // wins over aria-label) it is a region; unnamed it is a group carrying `label`, so several scrolling
+  // tables do not add several landmarks of one name.
+  const callerName = rest['aria-labelledby'] || rest['aria-label'];
   const scrollRegion = scrolls
-    ? { tabIndex: 0, role: 'region', 'aria-label': rest['aria-labelledby'] ? undefined : (rest['aria-label'] || 'Table'), 'aria-labelledby': rest['aria-labelledby'] }
+    ? { tabIndex: 0, role: callerName ? 'region' : 'group', 'aria-label': rest['aria-labelledby'] ? undefined : (rest['aria-label'] || label), 'aria-labelledby': rest['aria-labelledby'] }
     : {};
   // Hooks first: the composition branch below returns early, and hooks after
   // it would drop sort and selection state whenever a table passes through it.

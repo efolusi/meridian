@@ -43,7 +43,9 @@ export interface TableProps extends React.TableHTMLAttributes<HTMLTableElement> 
   loading?: boolean;
   /** @default 3 */
   loadingRows?: number;
-  /** Names the scroll region the wrapper becomes while the table scrolls (or `aria-labelledby`) @default 'Table' */
+  /** Default name of the wrapper while the table scrolls and you give none; the wrapper is then a group. Translate it here @default 'Table' */
+  label?: string;
+  /** Names the wrapper while the table scrolls and makes it a region (or use `aria-labelledby`, which wins) */
   'aria-label'?: string;
   /** Shown when there are no rows @default 'Nothing to show yet.' */
   empty?: React.ReactNode;

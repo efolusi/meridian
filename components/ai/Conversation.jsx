@@ -14,7 +14,7 @@ const CSS = `
 @media (pointer:coarse){.ef-conversation__jump{min-height:var(--tap-min)}}
 @media (prefers-reduced-motion:reduce){.ef-conversation__jump{--ef-motion-guard:var(--dur-fast);animation-name:ef-reduce-fade}}
 `;
-export const Conversation = React.forwardRef(function Conversation({ height = 420, autoStick = true, jumpLabel = 'Jump to latest', padding = 4, 'aria-label': ariaLabel = 'Conversation', children, style, className, ...rest }, ref) {
+export const Conversation = React.forwardRef(function Conversation({ height = 420, autoStick = true, jumpLabel = 'Jump to latest', padding = 4, label = 'Conversation', 'aria-label': ariaLabel, 'aria-labelledby': labelledBy, children, style, className, ...rest }, ref) {
   injectEfCss('ef-css-conversation', CSS);
   const viewport = React.useRef(null);
   const inner = React.useRef(null);
@@ -45,7 +45,7 @@ export const Conversation = React.forwardRef(function Conversation({ height = 42
   }, [autoStick]);
   return (
     <div ref={mergeRefs(ref, styleRef({ height }))} {...rest} className={`ef-conversation${className ? ' ' + className : ''}`} style={style}>
-      <div ref={mergeRefs(viewport, styleRef({ padding }))} className="ef-conversation__viewport" role="region" aria-label={ariaLabel} tabIndex={0} onScroll={recompute}>
+      <div ref={mergeRefs(viewport, styleRef({ padding }))} className="ef-conversation__viewport" role={ariaLabel || labelledBy ? 'region' : 'group'} aria-label={labelledBy ? undefined : (ariaLabel || label)} aria-labelledby={labelledBy} tabIndex={0} onScroll={recompute}>
         <div ref={inner} className="ef-conversation__inner">{children}</div>
       </div>
       {!atBottom ? (

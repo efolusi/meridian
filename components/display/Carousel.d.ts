@@ -19,9 +19,11 @@ export interface CarouselPlugin { init?(api: CarouselApi): void; destroy?(): voi
 export interface CarouselProps extends React.HTMLAttributes<HTMLDivElement> { orientation?: 'horizontal' | 'vertical'; opts?: CarouselOptions; plugins?: CarouselPlugin[]; setApi?: (api: CarouselApi | undefined) => void; }
 export declare const Carousel: React.ForwardRefExoticComponent<CarouselProps & React.RefAttributes<HTMLDivElement>>;
 export interface CarouselContentProps extends React.HTMLAttributes<HTMLDivElement> {
-  /** Names the scrolling region of slides @default the root's `aria-label` plus ' slides', else 'Slides' */
+  /** The words of the group name: after the root's name when the root has one ('Featured work Slides'), alone otherwise. Translate them here @default 'Slides' */
+  label?: string;
+  /** Replaces the whole name of the group, root name included */
   'aria-label'?: string;
-  /** Names the scrolling region by another element; wins over `aria-label` */
+  /** Names the group by another element; wins over `aria-label` */
   'aria-labelledby'?: string;
 }
 export declare const CarouselContent: React.ForwardRefExoticComponent<CarouselContentProps & React.RefAttributes<HTMLDivElement>>;
