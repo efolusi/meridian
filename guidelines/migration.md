@@ -42,7 +42,7 @@ design-tokens v0.8.0 (vendored in v2.5.0) makes the interface accent the owl's c
 .my-switch[aria-checked="true"] { background: var(--accent); box-shadow: inset 0 0 0 1px var(--accent-edge); }
 ```
 
-Also check, in light, primary buttons, checked states, tabs and charts: they change colour. Links in running text carry an underline now (`Link`, and classless anchors inside `p`, `dd`, `blockquote` and `figcaption`). A disabled primary `Button` or solid `IconButton` is flat neutral, no longer faded copper. `CardTitle` is an `h2` (pass `as` for another level) and `Alert` draws a default icon per variant (`icon={false}` for none).
+Also check, in light, primary buttons, checked states, tabs and charts: they change colour. Links in running text carry an underline now (`Link`, and classless anchors inside `p`, `dd`, `blockquote` and `figcaption`; from 2.5.1 also `li`, `td`, `caption`, `label` and the Alert description, but never inside `nav`, `[role=navigation]`, `[role=menu]`, `[role=menubar]`, `[role=tablist]` or `[role=toolbar]`). A disabled primary `Button` or solid `IconButton` is flat neutral, no longer faded copper. `CardTitle` is an `h2` (pass `as` for another level) and `Alert` draws a default icon per variant (`icon={false}` for none).
 
 ## v2.0.0
 
