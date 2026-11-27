@@ -82,7 +82,11 @@ version in `.nvmrc`: run `nvm use` (or install that version) before `npm ci`.
 
 1. Move CHANGELOG's `Unreleased` content under a `## vX.Y.Z - YYYY-MM-DD` heading.
    The workflow lifts this section verbatim into the GitHub Release notes.
-2. Bump the version in the five files above.
+2. Bump the version in the other five files in the table above (the table has
+   six rows; the CHANGELOG heading is step 1). Then run `npm run check:fix`: it
+   regenerates the files that carry the version, `registry/tokens/fonts.css`,
+   `site/registry/meridian-base.json` and
+   `packages/guard/src/generated/meridian-rules.json`.
 3. `npm run check`: all gates green, locally, before anything is pushed.
 4. Commit and push. That is the release: the publish workflow sees the new
    version, re-runs the gates, publishes to npm, then pushes the tag and cuts

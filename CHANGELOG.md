@@ -1,8 +1,10 @@
 # Changelog
 
-## Unreleased
+## v2.3.0 - 2026-11-27
 
 Semver level: MINOR.
+
+Charts now work under a strict CSP on the npm package, and `ThemeToggle` paints the stored choice before the first frame. No token changes and no removed exports.
 
 - **ThemeToggle paints the stored choice on the first frame (MD25).** The toggle read the stored choice in a passive effect, which runs after the browser paints. On a page that renders it without `themeInitScript()` (or before the script's attribute lands), a visitor whose stored choice differs from the device theme saw the device theme, and a sun icon on a dark page, for one frame. The read and the first `data-theme` write now run in a layout effect (`useIsoLayoutEffect`), before the first paint. The contract in [guidelines/theming.md](guidelines/theming.md#theme-contract) is unchanged: localStorage, then the cookie, then the device. A server render still shows the light icon until hydration, then corrects before paint. `tests/theme-toggle.test.jsx` pins the first frame and the first `data-theme` value to the stored choice.
 - **`ChartStyle` renders no `<style>` element (MD62, #274).** The colours a `ChartContainer` `config` sets (`color` or `theme`) are now `--color-<key>` custom properties written on the chart element through the CSSOM, so a page with a chart works under a strict CSP (`style-src` without `'unsafe-inline'`) on every install path. A `theme` pair is one `light-dark(light, dark)` value: it follows the `color-scheme` the tokens set for `data-theme` and for a dark OS with no `data-theme`, with no selector of its own. `ChartStyle` keeps its props and export; it now returns `null` (the type said `JSX.Element | null`). Before, the chart `<style>` was the one element that needed `'unsafe-inline'` or a nonce even with the npm package; the strict-CSP section of `guidelines/frameworks.md` no longer lists it. `tests/chart-edge-cases.test.jsx` checks that server-rendered HTML of a `ChartContainer` has no style element.
