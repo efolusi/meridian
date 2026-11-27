@@ -5,6 +5,7 @@
 import { chromium } from 'playwright';
 import fs from 'node:fs';
 import path from 'node:path';
+import { overflowCulprits } from './overflow_culprits.mjs';
 
 const BASE = process.env.BASE || 'http://127.0.0.1:8000';
 const EXECUTABLE_PATH = process.env.EXECUTABLE_PATH || '';
@@ -73,17 +74,13 @@ for (const width of widths) {
       errors: [...document.querySelectorAll('.sc-has-error,.sc-logic-error')]
         .map(node => node.textContent.trim()).filter(Boolean),
       overflow: document.documentElement.scrollWidth - document.documentElement.clientWidth,
-      // The widest elements that reach past the viewport, so an overflow failure names its cause.
-      culprits: [...document.body.querySelectorAll('*')]
-        .map(node => ({ node, over: Math.round((node.getBoundingClientRect().right - document.documentElement.clientWidth) * 100) / 100 }))
-        .filter(({ over }) => over > 0.5)
-        .sort((a, b) => b.over - a.over).slice(0, 3)
-        .map(({ node, over }) => `${node.tagName.toLowerCase()}${node.className && typeof node.className === 'string' ? '.' + node.className.trim().split(/\s+/).join('.') : ''} +${over}px`),
     }));
+    // The elements to blame for an overflow: past the viewport edge, or text wider than its box.
+    state.culprits = state.overflow > 1 ? await page.evaluate(overflowCulprits) : [];
     for (const error of [...new Set([...state.errors, ...pageErrors])]) {
       failures.push(`${rel} @ ${width}px: ${error}`);
     }
-    if (state.overflow > 1) failures.push(`${rel} @ ${width}px: horizontal overflow +${state.overflow}px (${state.culprits.join('; ') || 'no element reaches past the viewport'})`);
+    if (state.overflow > 1) failures.push(`${rel} @ ${width}px: horizontal overflow +${state.overflow}px (${state.culprits.join('; ') || 'no element reaches past the viewport and no text is wider than its box'})`);
 
     if (width === 1280) {
       for (const anchor of await page.locator('nav a').all()) {
