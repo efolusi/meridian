@@ -100,3 +100,49 @@ describe('the fade sits at the inline end in both directions, and the smoke case
   });
 });
 
+// MD74 round 4: the RTL pass ended with the fade layer 0.0095px wide ('calc(100% - 0.00947806px) 100%, 0.00947806px 100%'): the
+// scroll reached the inline end, but in RTL the maximum scroll is fractional and progress is 99.97%, so a sub-pixel remainder is left.
+// That is not a visible fade, and the case asked for exactly 0. The case reads the fade layer's width in px, from any of the
+// forms the computed size takes, calls it GONE under 0.5px and SHOWN over 27px (28px nominal), in both directions, and the poll
+// needs two readings one animation frame apart to agree, so a transient value cannot pass.
+describe('the smoke case reads the fade width with a tolerance (MD74 round 4)', () => {
+  const smoke = readFileSync('scripts/smoke_headless.mjs', 'utf8');
+  const source = /\/\/ fadePx:start\n([\s\S]*?)\/\/ fadePx:end/.exec(smoke);
+  const fadePx = source ? new Function(`${source[1]}; return fadePx;`)() : null;
+  const GONE = 0.5;
+  const SHOWN = 27;
+
+  it('exposes the parser between markers so it can be tested', () => {
+    expect(source).not.toBeNull();
+    expect(typeof fadePx).toBe('function');
+  });
+
+  it('takes the fade layer width in px from every form the computed size has', () => {
+    expect(fadePx('calc(100% - 28px) 100%, 28px 100%')).toBe(28);
+    expect(fadePx('100% 100%, 0px 100%')).toBe(0);
+    expect(fadePx('calc(100% - 0.00947806px) 100%, 0.00947806px 100%')).toBeCloseTo(0.00947806, 8);
+    expect(fadePx('347px 100%, 28px 100%')).toBe(28);
+    expect(fadePx('100% 100%, 0 100%')).toBe(0);
+    // Only the solid layer is readable: the fade is what the calc takes off it.
+    expect(fadePx('calc(100% - 12.5px) 100%')).toBe(12.5);
+    expect(Number.isNaN(fadePx('100% 100%'))).toBe(true);
+  });
+
+  it('calls the sub-pixel remainder GONE, 28px SHOWN, and a half-way fade neither', () => {
+    const gone = (w) => w < GONE;
+    const shown = (w) => w > SHOWN;
+    expect(gone(fadePx('calc(100% - 0.00947806px) 100%, 0.00947806px 100%'))).toBe(true);
+    expect(gone(fadePx('100% 100%, 0px 100%'))).toBe(true);
+    expect(shown(fadePx('calc(100% - 28px) 100%, 28px 100%'))).toBe(true);
+    expect(gone(fadePx('calc(100% - 14px) 100%, 14px 100%')) || shown(fadePx('calc(100% - 14px) 100%, 14px 100%'))).toBe(false);
+  });
+
+  it('uses those thresholds in the poll, reads twice one animation frame apart, and no longer compares to exactly 0', () => {
+    expect(smoke).toMatch(/const GONE_PX = 0\.5, SHOWN_PX = 27/);
+    expect(smoke).toMatch(/requestAnimationFrame\(r\)\)[^;]*;\s*const second = /);
+    expect(smoke).toMatch(/first < goneAt && second < goneAt|both\(first, second\)/);
+    expect(smoke).not.toMatch(/Number\.parseFloat\(second\) === 0/);
+    expect(smoke).not.toMatch(/Number\.parseFloat\(second\) > 0/);
+  });
+});
+
