@@ -197,20 +197,22 @@ describe('ThemeToggle instances stay in step (MD13)', () => {
 
 describe('first frame (MD25): the stored choice is applied before the first paint', () => {
   // A sibling declared after the toggle runs its layout effect in the same commit, before the
-  // browser paints and before any passive effect. What it sees is what the first frame shows.
+  // browser paints and before any passive effect. What it sees in data-theme is what the first
+  // frame is painted with. The icon follows in the synchronous re-render that the toggle's own
+  // state update triggers, still before paint, so it is checked after the render.
   function Probe({ seen }) {
-    React.useLayoutEffect(() => {
-      seen.push({ theme: attr(), shown: document.querySelector('[data-slot="theme-toggle"]').dataset.themeShown });
-    }, [seen]);
+    React.useLayoutEffect(() => { seen.push(attr()); }, [seen]);
     return null;
   }
+  const icon = () => document.querySelector('[data-slot="theme-toggle"]').dataset.themeShown;
 
   it('paints the stored choice, not the device theme, on the first frame', () => {
     fakeMedia(false);
     localStorage.setItem('efolusi-theme', 'dark');
     const seen = [];
     render(<><ThemeToggle /><Probe seen={seen} /></>);
-    expect(seen).toEqual([{ theme: 'dark', shown: 'dark' }]);
+    expect(seen).toEqual(['dark']);
+    expect(icon()).toBe('dark');
   });
 
   it('paints the cookie choice on the first frame when nothing is stored', () => {
@@ -218,7 +220,8 @@ describe('first frame (MD25): the stored choice is applied before the first pain
     document.cookie = 'efolusi_theme=light; Path=/';
     const seen = [];
     render(<><ThemeToggle /><Probe seen={seen} /></>);
-    expect(seen).toEqual([{ theme: 'light', shown: 'light' }]);
+    expect(seen).toEqual(['light']);
+    expect(icon()).toBe('light');
   });
 
   it('applies the stored choice first and never the device theme, even for a frame', () => {
@@ -239,6 +242,7 @@ describe('first frame (MD25): the stored choice is applied before the first pain
     fakeMedia(true);
     const seen = [];
     render(<><ThemeToggle /><Probe seen={seen} /></>);
-    expect(seen).toEqual([{ theme: 'dark', shown: 'dark' }]);
+    expect(seen).toEqual(['dark']);
+    expect(icon()).toBe('dark');
   });
 });
