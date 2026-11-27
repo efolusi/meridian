@@ -113,6 +113,22 @@ export function CardDemo() {
   );
 }
 
+// @demo Card Page title and display card title
+export function CardPageTitle() {
+  const { Card, CardHeader, CardTitle, CardDescription } = window.EfolusiDesignSystem_4ffc3d;
+  return (
+    <div style={{ display: 'grid', gap: 16, width: '100%', maxWidth: 420 }}>
+      <h1 className="ef-page-title">Billing</h1>
+      <Card>
+        <CardHeader>
+          <CardTitle size="display">Subscriptions</CardTitle>
+          <CardDescription>Plans and invoices for this account.</CardDescription>
+        </CardHeader>
+      </Card>
+    </div>
+  );
+}
+
 // @demo Carousel Scroll-snap strip
 export function CarouselDemo() {
   const { Carousel, CarouselContent, CarouselItem, CarouselPrevious, CarouselNext, Card, CardContent, CardDescription, CardHeader, CardTitle } = window.EfolusiDesignSystem_4ffc3d;

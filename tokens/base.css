@@ -65,6 +65,10 @@ code,pre,kbd{font-family:var(--font-mono)}
    --radius-lg. The components read them with today's radius as the fallback, so an absent attribute changes nothing.
    Fields are not pills: a multi-line field with a full radius reads as a mistake. */
 [data-shape="pill"]{--press-radius:var(--radius-full);--field-radius:var(--radius-lg)}
+/* Page title (MD83): the one title of a signed-in page or a plain page, written by sso, pay and efolusi.com each on
+   its own. Display face at --text-3xl to --text-4xl, balanced, and a long word breaks instead of overflowing. Put it
+   on the h1; marketing pages use Hero and sections use SectionHead. */
+.ef-page-title{margin:0;font-family:var(--font-display);font-size:clamp(var(--text-3xl),4vw,var(--text-4xl));font-weight:var(--weight-bold);line-height:var(--leading-tight);letter-spacing:var(--tracking-display);text-wrap:balance;overflow-wrap:anywhere}
 }
 /* Forced colours (Windows High Contrast) remove box-shadow, and box-shadow is how
    every component draws --focus-ring after outline:none, so focus would vanish.
