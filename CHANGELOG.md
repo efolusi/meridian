@@ -1,5 +1,10 @@
 # Changelog
 
+## Unreleased
+
+- **`ChartStyle` renders no `<style>` element (MD62, #274).** The colours a `ChartContainer` `config` sets (`color` or `theme`) are now `--color-<key>` custom properties written on the chart element through the CSSOM, so a page with a chart works under a strict CSP (`style-src` without `'unsafe-inline'`) on every install path. A `theme` pair is one `light-dark(light, dark)` value: it follows the `color-scheme` the tokens set for `data-theme` and for a dark OS with no `data-theme`, with no selector of its own. `ChartStyle` keeps its props and export; it now returns `null` (the type said `JSX.Element | null`). Before, the chart `<style>` was the one element that needed `'unsafe-inline'` or a nonce even with the npm package; the strict-CSP section of `guidelines/frameworks.md` no longer lists it. `tests/chart-edge-cases.test.jsx` checks that server-rendered HTML of a `ChartContainer` has no style element.
+- **Charts: first paint before hydration (MD62).** A server render shows the series without the `config` colours until the page hydrates, as the other CSSOM-set parts do. A `theme` pair with one side missing now uses that side in both themes (before, the other theme left the colour unset). `light-dark()` needs Chrome 123, Firefox 120 or Safari 17.5; an older browser drops the colour.
+
 ## v2.2.0 - 2026-11-27
 
 No Meridian component writes a style attribute of its own (MD18). Under a strict CSP (`style-src` without `'unsafe-inline'`) that is enough only for the npm package, which ships the component CSS as a static stylesheet. Two exceptions remain: the CDN bundle and registry copies without `meridian-ssr-css` add a `<style>` element for each component when it renders, and on every install path `ChartStyle` renders a `<style>` element for the colours a `ChartContainer` `config` sets. What each install path needs: [guidelines/frameworks.md](guidelines/frameworks.md#strict-content-security-policy). No token changes and no removed exports.

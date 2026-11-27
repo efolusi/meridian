@@ -119,10 +119,11 @@ No Meridian component writes a `style` attribute of its own. Runtime sizes and p
 | Registry copies, `npx meridian add` | Each component adds a `<style>` element when it renders, and the policy blocks it | Add `meridian-ssr-css` and import its `components.css`; components then skip the CSS it carries. A copy you edit adds its own CSS again, and that is blocked |
 | CDN bundle, `_ds_bundle.js` | Each component adds a `<style>` element when it renders, and the policy blocks it | Allow `'unsafe-inline'` in `style-src`, or use the npm package |
 
-Two things are blocked on every path:
+One thing is blocked on every path:
 
-- `ChartStyle`, which `ChartContainer` renders, writes a `<style>` element for the colours its `config` sets (`color` or `theme`), so the series lose those colours.
 - A `style` prop you pass is a `style` attribute in server-rendered HTML. The policy drops it, and hydration does not apply it again. In the browser, React sets it through the CSSOM, which works.
+
+The colours a `ChartContainer` `config` sets (`color` or `theme`) are not blocked: `ChartStyle` writes them as `--color-<key>` custom properties on the chart element through the CSSOM, and a `theme` pair is a `light-dark()` value. A server render shows the series without those colours until the page hydrates. `light-dark()` needs Chrome 123, Firefox 120 or Safari 17.5.
 
 The theme script is a `script-src` matter: pass a nonce or allow its hash, as [theming.md](theming.md#server-layouts) describes.
 
