@@ -15,6 +15,11 @@
           "target": "styles.css"
         },
         {
+          "path": "tokens/_before-base.css",
+          "type": "registry:file",
+          "target": "tokens/_before-base.css"
+        },
+        {
           "path": "tokens/base.css",
           "type": "registry:file",
           "target": "tokens/base.css"
