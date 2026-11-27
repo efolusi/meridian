@@ -37,11 +37,7 @@ describe('links in running text are underlined (MD74)', () => {
     expect(readFileSync('components/display/Link.prompt.md', 'utf8')).toMatch(/quiet[^.]*navigation[^.]*footer[^.]*never running text/i);
   });
 
-  it('underlines a classless anchor inside a paragraph, definition, quote or caption, hover included', () => {
-    const selector = ':where(p, dd, blockquote, figcaption) a:where(:not([class]))';
-    expect(rule(baseCss, selector)).toMatch(/text-decoration:underline/);
-    expect(rule(baseCss, `${selector}:hover`)).not.toMatch(/text-decoration:none/);
-  });
+  // The classless-anchor rule in tokens/base.css, and the parents it covers, are held by tests/md92-link-parents.test.mjs.
 
   it('keeps the legal document links underlined', () => {
     const legal = readFileSync('components/marketing/LegalDocument.jsx', 'utf8');
