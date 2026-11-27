@@ -70,6 +70,12 @@ code,pre,kbd{font-family:var(--font-mono)}
    on the h1; marketing pages use Hero and sections use SectionHead. */
 .ef-page-title{margin:0;font-family:var(--font-display);font-size:clamp(var(--text-3xl),4vw,var(--text-4xl));font-weight:var(--weight-bold);line-height:var(--leading-tight);letter-spacing:var(--tracking-display);text-wrap:balance;overflow-wrap:anywhere}
 }
+/* Phone control text (MD86): iOS Safari zooms the page when a text control takes focus while its text is under 16px,
+   and Input md (14px), Input sm, Textarea, NumberInput, NativeSelect and the InputGroup control under Combobox are
+   13 or 14px. At phone widths every one of them is 16px, whatever its size prop. Unlayered on purpose, like the
+   forced-colors rule below: it outranks the sized rules in @layer meridian whatever the source order, and a product's
+   own unlayered rule that comes later can still choose a larger size. Sizes lg and xl are 16px already. */
+@media (max-width:767px){.ef-input__el,.ef-input__el--sm,.ef-textarea,.ef-number__el,.ef-native-select select,.ef-input-group__control,.ef-combobox__chips-input{font-size:16px}}
 /* Forced colours (Windows High Contrast) remove box-shadow, and box-shadow is how
    every component draws --focus-ring after outline:none, so focus would vanish.
    Deliberately outside the layer: unlayered, it outranks the @layer meridian
