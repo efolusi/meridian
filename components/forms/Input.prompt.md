@@ -6,4 +6,4 @@ Native text input with ref forwarding, file-input styling, disabled and invalid 
 <Input type="file" aria-label="Upload receipt" />
 ```
 
-`error` implies invalid styling and an accessible alert. `iconLeft` takes a Meridian icon name. Visual sizes `sm|md|lg` are additive; a numeric `size` is forwarded as the native input width.
+`error` implies invalid styling and an accessible alert. `iconLeft` takes a Meridian icon name. Under `data-shape="pill"` on an ancestor the corners follow `--field-radius` (`--radius-lg`, not a full pill, so a multi-line Textarea reads the same); see `guidelines/theming.md`, section Shape. Visual sizes `sm|md|lg` are additive; a numeric `size` is forwarded as the native input width.

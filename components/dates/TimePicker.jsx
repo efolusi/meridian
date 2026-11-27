@@ -9,7 +9,7 @@ const CSS = `
 .ef-field__label{font-size:var(--text-sm);font-weight:var(--weight-semibold);color:var(--text-primary)}
 .ef-field__hint{font-size:var(--text-xs);color:var(--text-muted)}
 .ef-timepicker{position:relative;display:flex;align-items:center}
-.ef-timepicker__input{width:100%;height:var(--control-h-md);padding:0 calc(var(--space-3) + var(--icon-md) + var(--space-2)) 0 var(--space-3);border:1px solid var(--border-control,var(--border-strong));border-radius:var(--radius-sm);background:var(--surface-card);font-family:var(--font-sans);font-size:var(--text-md);color:var(--text-primary);transition:border-color var(--dur-fast) var(--ease-enter),box-shadow var(--dur-fast) var(--ease-enter)}
+.ef-timepicker__input{width:100%;height:var(--control-h-md);padding:0 calc(var(--space-3) + var(--icon-md) + var(--space-2)) 0 var(--space-3);border:1px solid var(--border-control,var(--border-strong));border-radius:var(--field-radius,var(--radius-sm));background:var(--surface-card);font-family:var(--font-sans);font-size:var(--text-md);color:var(--text-primary);transition:border-color var(--dur-fast) var(--ease-enter),box-shadow var(--dur-fast) var(--ease-enter)}
 .ef-timepicker__input::placeholder{color:var(--text-muted)}
 .ef-timepicker__input:hover:not(:disabled){border-color:var(--border-control-hover)}
 .ef-timepicker__input:focus{outline:none;border-color:var(--accent-edge);box-shadow:var(--focus-ring)}

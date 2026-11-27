@@ -59,6 +59,12 @@ code,pre,kbd{font-family:var(--font-mono)}
 .ef-glass--thick.ef-glass--blur{-webkit-backdrop-filter:blur(var(--material-blur-thick)) saturate(var(--material-saturate));backdrop-filter:blur(var(--material-blur-thick)) saturate(var(--material-saturate))}
 .ef-glass-field{position:relative;isolation:isolate;background-color:var(--field-0)}
 .ef-glass-field::before{content:"";position:fixed;inset:0;z-index:-1;pointer-events:none;opacity:var(--field-strength);background:radial-gradient(60% 55% at 10% 6%,var(--field-1),transparent 70%),radial-gradient(55% 60% at 94% 16%,var(--field-3),transparent 72%),radial-gradient(70% 60% at 70% 96%,var(--field-2),transparent 70%)}
+/* Shape (MD81): one root setting for the corners of everything you press and everything you type into.
+   data-shape="pill" on <html> or any ancestor sets two properties: --press-radius (Button, IconButton, Tag, Badge)
+   to a full pill and --field-radius (Input, Textarea, NumberInput, Select, InputGroup and the other text fields) to
+   --radius-lg. The components read them with today's radius as the fallback, so an absent attribute changes nothing.
+   Fields are not pills: a multi-line field with a full radius reads as a mistake. */
+[data-shape="pill"]{--press-radius:var(--radius-full);--field-radius:var(--radius-lg)}
 }
 /* Forced colours (Windows High Contrast) remove box-shadow, and box-shadow is how
    every component draws --focus-ring after outline:none, so focus would vanish.

@@ -34,6 +34,25 @@ export function ButtonLoading() {
   return <Button loading={busy} onClick={run}>{busy ? 'Deploying…' : 'Deploy to production'}</Button>;
 }
 
+// @demo Button Shape setting
+export function ButtonShape() {
+  const { Button, IconButton, Tag, Badge, Input, Switch } = window.EfolusiDesignSystem_4ffc3d;
+  const [pill, setPill] = React.useState(true);
+  return (
+    <div data-shape={pill ? 'pill' : undefined} style={{ display: 'grid', gap: 16, width: '100%', maxWidth: 360 }}>
+      <Switch checked={pill} onCheckedChange={setPill} label={'data-shape="pill" on an ancestor'} />
+      <div style={{ display: 'flex', gap: 12, flexWrap: 'wrap', alignItems: 'center' }}>
+        <Button>Save</Button>
+        <Button variant="secondary">Preview</Button>
+        <IconButton icon="settings" label="Settings" />
+        <Tag>Billing</Tag>
+        <Badge>Verified</Badge>
+      </div>
+      <Input aria-label="Project name" placeholder="Project name" />
+    </div>
+  );
+}
+
 // @demo ButtonGroup Attached actions
 export function ButtonGroupDemo() {
   const { ButtonGroup, ButtonGroupSeparator, ButtonGroupText, Button, IconButton } = window.EfolusiDesignSystem_4ffc3d;

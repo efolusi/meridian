@@ -114,6 +114,23 @@ The glass material comes from design-tokens (`docs/glass.md`): one number, `--gl
 
 Rules: blur only what content scrolls under; at most four blurred surfaces on screen; never put a blurred surface inside another (the inner one blurs nothing); an overlay never fades its opacity in. Every class turns solid under reduced transparency, more contrast, no `backdrop-filter` and forced colours, so a product needs no fallback of its own. To show more or less glass, set `--glass-strength` on `:root` (design-tokens recommends 0.33; 0.5 is visibly more glass) and run `scripts/check_contrast.py`, which measures every pair Meridian paints on glass.
 
+## Shape
+
+Meridian's default corners are a rounded rectangle for everything you press (`--radius-sm`, 10px) and everything you type into (`--radius-sm`). One attribute on `<html>`, or on any ancestor, changes both:
+
+```html
+<html lang="en" data-shape="pill">
+```
+
+| Property | Set by `data-shape="pill"` | Read by |
+|---|---|---|
+| `--press-radius` | `var(--radius-full)` | `Button`, `IconButton`, `Tag` (and its remove button), `Badge` |
+| `--field-radius` | `var(--radius-lg)` (22px) | `Input`, `Textarea`, `NumberInput`, `Select`, `NativeSelect`, `InputGroup`, `Combobox` chips, `TimePicker`, `CopyField` |
+
+Things you press become pills; fields stay a rounded rectangle, so a multi-line `Textarea` does not turn into a stadium. The padding does not change: a `Button shape="pill"` still widens its side padding, a Button under the attribute does not. Without the attribute every component keeps its own radius, so nothing moves for a consumer that does not opt in. `Badge` is a pill either way; the setting only lets it follow `--press-radius`.
+
+A product that needs another radius sets the property itself, in unlayered CSS or on any element: `:root { --press-radius: var(--radius-md); }`. Do not force `.ef-btn { border-radius: ... }` in a global stylesheet: that is what the setting replaces, and it fights `Button shape`, the glass `Input` and `ButtonGroup`.
+
 ## Fonts
 
 Three families, three tokens (`tokens/typography.css`): `--font-display` for h1–h4 and display moments, `--font-sans` for everything readable, `--font-mono` for code, keys, and tabular numbers. The stock faces load via `@font-face` in `tokens/fonts.css` from `assets/fonts/`.
