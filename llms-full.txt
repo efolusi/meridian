@@ -2061,6 +2061,8 @@ Composable, swipe-friendly scroll-snap carousel with keyboard controls and an ev
 
 Use `orientation="vertical"` for vertical collections and `setApi` for slide counts or selection events. Size items through their `style.flexBasis` or a project utility class. Not for primary navigation.
 
+The scrolling `CarouselContent` is a keyboard-focusable `region`, separate from the `Carousel` root, which is already a named carousel. Name the root with `aria-label` or `aria-labelledby`; the content then takes that name plus ` slides` (`Featured work slides`), so the two regions never share a name. Without a root name it is `Slides`. An `aria-label` or `aria-labelledby` on `CarouselContent` wins.
+
 ```ts
 export interface CarouselApi {
   canScrollNext(): boolean;
@@ -2082,7 +2084,13 @@ export interface CarouselOptions { align?: 'start' | 'center' | 'end'; loop?: bo
 export interface CarouselPlugin { init?(api: CarouselApi): void; destroy?(): void; }
 export interface CarouselProps extends React.HTMLAttributes<HTMLDivElement> { orientation?: 'horizontal' | 'vertical'; opts?: CarouselOptions; plugins?: CarouselPlugin[]; setApi?: (api: CarouselApi | undefined) => void; }
 export declare const Carousel: React.ForwardRefExoticComponent<CarouselProps & React.RefAttributes<HTMLDivElement>>;
-export declare const CarouselContent: React.ForwardRefExoticComponent<React.HTMLAttributes<HTMLDivElement> & React.RefAttributes<HTMLDivElement>>;
+export interface CarouselContentProps extends React.HTMLAttributes<HTMLDivElement> {
+  /** Names the scrolling region of slides @default the root's `aria-label` plus ' slides', else 'Slides' */
+  'aria-label'?: string;
+  /** Names the scrolling region by another element; wins over `aria-label` */
+  'aria-labelledby'?: string;
+}
+export declare const CarouselContent: React.ForwardRefExoticComponent<CarouselContentProps & React.RefAttributes<HTMLDivElement>>;
 export declare const CarouselItem: React.ForwardRefExoticComponent<React.HTMLAttributes<HTMLDivElement> & React.RefAttributes<HTMLDivElement>>;
 export declare const CarouselPrevious: React.ForwardRefExoticComponent<React.ButtonHTMLAttributes<HTMLButtonElement> & React.RefAttributes<HTMLButtonElement>>;
 export declare const CarouselNext: React.ForwardRefExoticComponent<React.ButtonHTMLAttributes<HTMLButtonElement> & React.RefAttributes<HTMLButtonElement>>;
@@ -2350,12 +2358,18 @@ Scrollable viewport with thin, themed scrollbars.
 
 Add a horizontal `ScrollBar` when wide content can overflow. The scrollbar component declares the intended orientation while the native viewport preserves platform scrolling and accessibility.
 
+The viewport is a keyboard-focusable `region` so it can be scrolled with the arrow keys. Name it with `aria-label` or `aria-labelledby` (both name the viewport, not the wrapper); without either it is named `Scroll area`. Give each `ScrollArea` on one page its own name.
+
 ```ts
 export interface ScrollAreaProps extends React.HTMLAttributes<HTMLDivElement> {
   /** Scroll past this height */
   maxHeight?: number | string;
   /** Fixed height */
   height?: number | string;
+  /** Names the scroll region (the viewport, not the wrapper); or use `aria-labelledby` @default 'Scroll area' */
+  'aria-label'?: string;
+  /** Names the scroll region by another element; wins over `aria-label` */
+  'aria-labelledby'?: string;
   children?: React.ReactNode;
 }
 export interface ScrollBarProps extends React.HTMLAttributes<HTMLSpanElement> { orientation?: 'horizontal' | 'vertical'; }

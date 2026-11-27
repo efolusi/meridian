@@ -1,16 +1,16 @@
 {
   "totals": {
     "@efolusi/meridian": {
-      "bytes": 378612,
-      "gzip": 85720
+      "bytes": 379045,
+      "gzip": 85866
     },
     "dist/components.css": {
       "bytes": 242296,
       "gzip": 33342
     },
     "_ds_bundle.js": {
-      "bytes": 908081,
-      "gzip": 163656
+      "bytes": 909013,
+      "gzip": 163966
     }
   },
   "modules": [
@@ -549,8 +549,8 @@
         "CarouselPrevious",
         "CarouselNext"
       ],
-      "bytes": 50198,
-      "gzip": 9328
+      "bytes": 50523,
+      "gzip": 9523
     },
     {
       "module": "display/Collapsible.js",
@@ -645,8 +645,8 @@
         "ScrollArea",
         "ScrollBar"
       ],
-      "bytes": 1556,
-      "gzip": 783
+      "bytes": 1664,
+      "gzip": 828
     },
     {
       "module": "display/Separator.js",
