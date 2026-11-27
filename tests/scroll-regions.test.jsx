@@ -5,6 +5,8 @@ import { Conversation } from '../components/ai/Conversation.jsx';
 import { Console } from '../components/code/Console.jsx';
 import { Diff } from '../components/code/Diff.jsx';
 import { Table } from '../components/data/Table.jsx';
+import { Carousel, CarouselContent, CarouselItem } from '../components/display/Carousel.jsx';
+import { ScrollArea } from '../components/display/ScrollArea.jsx';
 
 // MD17: a part that scrolls must be reachable by keyboard (WCAG 2.1.1) and, being focusable,
 // must say what it is (role) and what it is called (name, WCAG 4.1.2). axe calls the first
@@ -181,5 +183,67 @@ describe('Diff scroll regions', () => {
     expect(regions[0].getAttribute('tabindex')).toBe('0');
     expect(screen.getByRole('region', { name: 'a.ts' })).toBe(regions[0]);
     expect(screen.queryByRole('region', { name: 'Ignored for files' })).toBeNull();
+  });
+});
+
+describe('ScrollArea viewport', () => {
+  it('is a focusable region named Scroll area by default', () => {
+    const { container } = render(<ScrollArea maxHeight={80}><p>Long content</p></ScrollArea>);
+    const viewport = container.querySelector('[data-slot="scroll-area-viewport"]');
+    expect(viewport.getAttribute('tabindex')).toBe('0');
+    expect(screen.getByRole('region', { name: 'Scroll area' })).toBe(viewport);
+  });
+
+  it('takes its name from aria-label, which names the viewport and not the wrapper', () => {
+    const { container } = render(<ScrollArea aria-label="Activity log"><p>Entry</p></ScrollArea>);
+    expect(screen.getByRole('region', { name: 'Activity log' })).toBe(container.querySelector('[data-slot="scroll-area-viewport"]'));
+    expect(container.querySelector('[data-slot="scroll-area"]').hasAttribute('aria-label')).toBe(false);
+  });
+
+  it('takes its name from aria-labelledby', () => {
+    const { container } = render(<div><h2 id="cap">Activity log</h2><ScrollArea aria-labelledby="cap"><p>Entry</p></ScrollArea></div>);
+    const viewport = container.querySelector('[data-slot="scroll-area-viewport"]');
+    expect(viewport.hasAttribute('aria-label')).toBe(false);
+    expect(container.querySelector('[data-slot="scroll-area"]').hasAttribute('aria-labelledby')).toBe(false);
+    expect(screen.getByRole('region', { name: 'Activity log' })).toBe(viewport);
+  });
+});
+
+describe('Carousel content', () => {
+  const slides = [1, 2, 3].map(n => <CarouselItem key={n}>Slide {n}</CarouselItem>);
+
+  it('is a focusable region named Slides when the root has no name', () => {
+    const { container } = render(<Carousel><CarouselContent>{slides}</CarouselContent></Carousel>);
+    const content = container.querySelector('[data-slot="carousel-content"]');
+    expect(content.getAttribute('tabindex')).toBe('0');
+    expect(screen.getByRole('region', { name: 'Slides' })).toBe(content);
+  });
+
+  it('adds "slides" to the root label, so the two regions never share a name', () => {
+    const { container } = render(<Carousel aria-label="Featured work"><CarouselContent>{slides}</CarouselContent></Carousel>);
+    const content = container.querySelector('[data-slot="carousel-content"]');
+    expect(screen.getByRole('region', { name: 'Featured work' })).toBe(container.querySelector('[data-slot="carousel"]'));
+    expect(screen.getByRole('region', { name: 'Featured work slides' })).toBe(content);
+  });
+
+  it('adds "slides" to a root aria-labelledby name', () => {
+    const { container } = render(<div><h2 id="cap">Featured work</h2><Carousel aria-labelledby="cap"><CarouselContent>{slides}</CarouselContent></Carousel></div>);
+    expect(screen.getByRole('region', { name: 'Featured work slides' })).toBe(container.querySelector('[data-slot="carousel-content"]'));
+    expect(screen.getByRole('region', { name: 'Featured work' })).toBe(container.querySelector('[data-slot="carousel"]'));
+  });
+
+  it('lets an aria-label, aria-labelledby or role passed on the content win', () => {
+    const { container, rerender } = render(<Carousel aria-label="Featured work"><CarouselContent aria-label="Case studies">{slides}</CarouselContent></Carousel>);
+    const content = container.querySelector('[data-slot="carousel-content"]');
+    expect(screen.getByRole('region', { name: 'Case studies' })).toBe(content);
+    rerender(<div><h2 id="cap">Our cases</h2><Carousel aria-label="Featured work"><CarouselContent aria-labelledby="cap">{slides}</CarouselContent></Carousel></div>);
+    expect(screen.getByRole('region', { name: 'Our cases' })).toBe(container.querySelector('[data-slot="carousel-content"]'));
+    rerender(<Carousel><CarouselContent role="group" aria-label="Pictures">{slides}</CarouselContent></Carousel>);
+    expect(screen.getByRole('group', { name: 'Pictures' })).toBe(container.querySelector('[data-slot="carousel-content"]'));
+  });
+
+  it('names a content outside a Carousel Slides', () => {
+    render(<CarouselContent>{slides}</CarouselContent>);
+    expect(screen.getByRole('region', { name: 'Slides' })).toBeTruthy();
   });
 });

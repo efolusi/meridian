@@ -18,7 +18,13 @@ export interface CarouselOptions { align?: 'start' | 'center' | 'end'; loop?: bo
 export interface CarouselPlugin { init?(api: CarouselApi): void; destroy?(): void; }
 export interface CarouselProps extends React.HTMLAttributes<HTMLDivElement> { orientation?: 'horizontal' | 'vertical'; opts?: CarouselOptions; plugins?: CarouselPlugin[]; setApi?: (api: CarouselApi | undefined) => void; }
 export declare const Carousel: React.ForwardRefExoticComponent<CarouselProps & React.RefAttributes<HTMLDivElement>>;
-export declare const CarouselContent: React.ForwardRefExoticComponent<React.HTMLAttributes<HTMLDivElement> & React.RefAttributes<HTMLDivElement>>;
+export interface CarouselContentProps extends React.HTMLAttributes<HTMLDivElement> {
+  /** Names the scrolling region of slides @default the root's `aria-label` plus ' slides', else 'Slides' */
+  'aria-label'?: string;
+  /** Names the scrolling region by another element; wins over `aria-label` */
+  'aria-labelledby'?: string;
+}
+export declare const CarouselContent: React.ForwardRefExoticComponent<CarouselContentProps & React.RefAttributes<HTMLDivElement>>;
 export declare const CarouselItem: React.ForwardRefExoticComponent<React.HTMLAttributes<HTMLDivElement> & React.RefAttributes<HTMLDivElement>>;
 export declare const CarouselPrevious: React.ForwardRefExoticComponent<React.ButtonHTMLAttributes<HTMLButtonElement> & React.RefAttributes<HTMLButtonElement>>;
 export declare const CarouselNext: React.ForwardRefExoticComponent<React.ButtonHTMLAttributes<HTMLButtonElement> & React.RefAttributes<HTMLButtonElement>>;

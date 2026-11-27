@@ -3,6 +3,10 @@ export interface ScrollAreaProps extends React.HTMLAttributes<HTMLDivElement> {
   maxHeight?: number | string;
   /** Fixed height */
   height?: number | string;
+  /** Names the scroll region (the viewport, not the wrapper); or use `aria-labelledby` @default 'Scroll area' */
+  'aria-label'?: string;
+  /** Names the scroll region by another element; wins over `aria-label` */
+  'aria-labelledby'?: string;
   children?: React.ReactNode;
 }
 export interface ScrollBarProps extends React.HTMLAttributes<HTMLSpanElement> { orientation?: 'horizontal' | 'vertical'; }
