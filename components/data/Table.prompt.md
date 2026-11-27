@@ -26,4 +26,6 @@ Selection behaves the same: `selectable` alone works, and `selected` + `onSelect
 
 While the table scrolls (wider or taller than its box) the wrapper becomes keyboard-focusable so it can be scrolled with the arrow keys. Unnamed it is a `group` called `Table` (set the words with `label`), which is no landmark. `aria-label` or `aria-labelledby` makes it a `region` with that name; `aria-labelledby` wins.
 
+When columns are hidden past the end edge, that edge fades (28px, CSS only, gone once the last column is in view, mirrored in right-to-left, off while the wrapper has the focus ring). A browser without scroll-driven animations shows no fade; the region, tab stop and label are the same either way.
+
 For a genuinely large grid (virtualisation, column resizing, grouping), reach for a dedicated data grid. This covers the admin table, not that.
