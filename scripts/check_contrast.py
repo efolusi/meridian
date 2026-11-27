@@ -35,9 +35,9 @@ def tokens(name):
 
 
 def increased(name):
-    """The prefers-contrast: more overrides of one theme, as a token table (empty if the block is missing)."""
-    selector = r':root, \[data-theme="light"\]' if name == "light" else r'\[data-theme="dark"\]'
-    m = re.search(r'@media \(prefers-contrast: more\) \{\s*' + selector + r'\s*\{(.*?)\n  \}', CSS, re.S)
+    """The prefers-contrast: more overrides of one theme, as a token table (a missing block is a hard failure)."""
+    selector = r':root,\s*\[data-theme="light"\]' if name == "light" else r'\[data-theme="dark"\]'
+    m = re.search(r'@media \(prefers-contrast:\s*more\)\s*\{\s*' + selector + r'\s*\{([^{}]*)\}', CSS)
     if not m:
         sys.exit(f"could not locate the {name} prefers-contrast: more block in tokens/colors.css")
     return {tok: val.strip() for tok, val in re.findall(r"(--[\w-]+):([^;]+);", m.group(1))}

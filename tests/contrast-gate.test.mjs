@@ -38,6 +38,28 @@ describe('contrast gate', () => {
     expect(out).toMatch(/FAIL\s+\w+\s+--text-on-brand\s+on --surface-brand-hover/)
   })
 
+  // MD74: every shape the components draw with the accent paints --accent-edge, which must hold 3:1 in four modes.
+  it('measures --accent-edge on the surfaces, the track and the border in light', () => {
+    const { code, out } = gate(source.replace('--accent-edge:var(--brand-600)', '--accent-edge:var(--copper-300)'))
+    expect(code).toBe(1)
+    expect(out).toMatch(/FAIL\s+light --accent-edge\s+on --surface-page/)
+    expect(out).toMatch(/FAIL\s+light --accent-edge\s+on --surface-track/)
+  })
+
+  it('measures --accent-edge in dark and in both prefers-contrast: more tables', () => {
+    const real = gate().out
+    for (const mode of ['dark', 'increased', 'increased-dark']) expect(real, mode).toMatch(new RegExp(`ok\\s+${mode}\\s+--accent-edge\\s+on --surface-track`))
+    const { code, out } = gate(source.replace('--accent-edge:var(--sand-800)', '--accent-edge:var(--sand-100)'))
+    expect(code).toBe(1)
+    expect(out).toMatch(/FAIL\s+increased --accent-edge\s+on --surface-page/)
+  })
+
+  it('measures the label of a disabled primary Button on its track fill', () => {
+    const { code, out } = gate(source.replace('--text-muted:#6B624E', '--text-muted:#B5AC98'))
+    expect(code).toBe(1)
+    expect(out).toMatch(/FAIL\s+light --text-muted\s+on --surface-track/)
+  })
+
   it('measures the dark Toast icons as the color-mix they paint', () => {
     const { out } = gate()
     expect(out).toMatch(/ok\s+dark\s+mix\(--success-600 60%, --text-inverse\) on --surface-inverse\s+4\.88:1/)

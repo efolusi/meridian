@@ -12,8 +12,8 @@ const CSS = `
    stays opaque, and a browser without scroll timelines shows no fade. The focus ring is not masked. */
 @keyframes ef-table-fade{from{mask-size:calc(100% - 28px) 100%,28px 100%}to{mask-size:100% 100%,0 100%}}
 @supports (animation-timeline:scroll(self inline)){
-.ef-table-wrap{animation-name:ef-table-fade;animation-fill-mode:both;animation-timeline:scroll(self inline);animation-range:calc(100% - 40px) 100%;mask-image:linear-gradient(#000,#000),linear-gradient(to right,#000,transparent);mask-repeat:no-repeat;mask-position:left,right;mask-size:100% 100%,0 100%}
-.ef-table-wrap:dir(rtl){mask-image:linear-gradient(#000,#000),linear-gradient(to left,#000,transparent);mask-position:right,left}
+.ef-table-wrap{animation-name:ef-table-fade;animation-fill-mode:both;animation-timeline:scroll(self inline);animation-range:calc(100% - 40px) 100%;mask-image:linear-gradient(currentcolor,currentcolor),linear-gradient(to right,currentcolor,transparent);mask-repeat:no-repeat;mask-position:left,right;mask-size:100% 100%,0 100%}
+.ef-table-wrap:dir(rtl){mask-image:linear-gradient(currentcolor,currentcolor),linear-gradient(to left,currentcolor,transparent);mask-position:right,left}
 .ef-table-wrap:focus-visible{mask-image:none;animation-name:none}
 }
 .ef-table{width:100%;border-collapse:collapse}

@@ -33,9 +33,9 @@ describe('Table scroll wrapper fades its end edge while content is hidden (MD73)
     expect(wrap).toContain('animation-fill-mode:both');
   });
 
-  it('starts opaque: a solid layer at full size plus a fade layer 0 wide, so a table that fits is not masked', () => {
+  it('starts opaque: a solid layer at full size plus a fade layer 0 wide (currentcolor: a mask reads alpha only, a literal black would be a raw colour), so a table that fits is not masked', () => {
     const wrap = block(SUPPORTS);
-    expect(wrap).toMatch(/\.ef-table-wrap\{[^}]*mask-image:linear-gradient\(#000,#000\),linear-gradient\(to right,#000,transparent\)/);
+    expect(wrap).toMatch(/\.ef-table-wrap\{[^}]*mask-image:linear-gradient\(currentcolor,currentcolor\),linear-gradient\(to right,currentcolor,transparent\)/);
     expect(wrap).toMatch(/\.ef-table-wrap\{[^}]*mask-size:100% 100%,0 100%/);
     expect(wrap).toMatch(/\.ef-table-wrap\{[^}]*mask-position:left,right/);
     expect(wrap).toMatch(/\.ef-table-wrap\{[^}]*mask-repeat:no-repeat/);
@@ -43,7 +43,7 @@ describe('Table scroll wrapper fades its end edge while content is hidden (MD73)
 
   it('mirrors in right-to-left, and drops the mask while the wrap has the focus ring', () => {
     const wrap = block(SUPPORTS);
-    expect(wrap).toMatch(/\.ef-table-wrap:dir\(rtl\)\{mask-image:linear-gradient\(#000,#000\),linear-gradient\(to left,#000,transparent\);mask-position:right,left\}/);
+    expect(wrap).toMatch(/\.ef-table-wrap:dir\(rtl\)\{mask-image:linear-gradient\(currentcolor,currentcolor\),linear-gradient\(to left,currentcolor,transparent\);mask-position:right,left\}/);
     expect(wrap).toMatch(/\.ef-table-wrap:focus-visible\{mask-image:none;animation-name:none\}/);
   });
 
