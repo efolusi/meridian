@@ -1404,7 +1404,8 @@ export type ChartConfig = Record<string, { label?: React.ReactNode; icon?: React
 export declare function useChart(): { config: ChartConfig };
 export interface ChartContainerProps extends React.HTMLAttributes<HTMLDivElement> { config: ChartConfig; children: ResponsiveContainerProps['children']; initialDimension?: { width: number; height: number } }
 export declare const ChartContainer: React.ForwardRefExoticComponent<ChartContainerProps & React.RefAttributes<HTMLDivElement>>;
-export declare function ChartStyle(props: { id: string; config: ChartConfig }): React.JSX.Element | null;
+/** ChartContainer writes its own colours; use this only on its own. Renders nothing: writes the `config` colours as `--color-<key>` custom properties through the CSSOM (no style element, strict-CSP safe) on the element in the document with `data-chart={id}`, and takes them off on unmount or when `id` or `config` change. */
+export declare function ChartStyle(props: { id: string; config: ChartConfig }): null;
 export declare function ChartTooltip(props: TooltipProps<any, any>): React.JSX.Element | null;
 export interface ChartTooltipContentProps extends Omit<DefaultTooltipContentProps<TooltipValueType, string | number>, 'accessibilityLayer'> { active?: boolean; className?: string; hideLabel?: boolean; hideIndicator?: boolean; indicator?: 'line' | 'dot' | 'dashed'; nameKey?: string; labelKey?: string; color?: string; /** Number formatting locale @default 'en-US' */ locale?: string }
 export declare function ChartTooltipContent(props: ChartTooltipContentProps): React.JSX.Element | null;

@@ -48,7 +48,7 @@ Full keyboard coverage across overlays: DropdownMenu, ContextMenu, and Menubar s
 ## Browser support and RTL
 
 **Supported:** the last two versions of Chrome, Edge, Safari and Firefox. The
-system uses `color-mix()`, `:focus-visible`, CSS custom properties and
+system uses `color-mix()`, `light-dark()` (Chart theme colours), `:focus-visible`, CSS custom properties and
 `position: fixed` overlays; all are available across that range. The zero-build
 CDN path additionally depends on React 18 UMD builds, because React 19 dropped UMD, so
 that path is pinned to 18 while the npm build tracks `react >= 18`.

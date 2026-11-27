@@ -1,7 +1,7 @@
 'use client';
 import React from 'react';
 import * as RechartsPrimitive from 'recharts';
-import { injectEfCss, styleRef } from '../runtime/runtime.jsx';
+import { injectEfCss, mergeRefs, styleRef, useIsoLayoutEffect } from '../runtime/runtime.jsx';
 
 const CSS = `
 .ef-chart{display:flex;aspect-ratio:16/9;min-height:200px;width:100%;justify-content:center;color:var(--text-secondary);font-size:var(--text-xs)}
@@ -10,7 +10,6 @@ const CSS = `
 .ef-chart-legend{display:flex;align-items:center;justify-content:center;gap:var(--space-4)}.ef-chart-legend--top{padding-bottom:var(--space-3)}.ef-chart-legend--bottom{padding-top:var(--space-3)}.ef-chart-legend__item{display:flex;align-items:center;gap:var(--space-2)}.ef-chart-legend__mark{width:8px;height:8px;border-radius:var(--radius-xs)}
 `;
 
-const THEMES = { light: '', dark: '[data-theme="dark"]' };
 const INITIAL_DIMENSION = { width: 320, height: 200 };
 const ChartContext = React.createContext(null);
 
@@ -20,19 +19,42 @@ export function useChart() {
   return context;
 }
 
+// The colours a ChartContainer config sets, as custom properties. They are written
+// through the CSSOM, so no <style> element or style attribute is in server HTML and a
+// strict CSP (style-src without 'unsafe-inline') does not block them. A `theme` pair
+// becomes light-dark(), which follows the color-scheme the tokens set for data-theme and
+// for a dark OS with no data-theme, so the colour needs no selector of its own. A pair
+// with one side missing uses that side in both themes.
+function chartVars(config) {
+  const vars = {};
+  for (const [key, item] of Object.entries(config || {})) {
+    if (!item) continue;
+    const light = item.theme ? item.theme.light : item.color;
+    const dark = item.theme ? item.theme.dark : item.color;
+    if (!light && !dark) continue;
+    vars[`--color-${key}`] = light && dark && light !== dark ? `light-dark(${light}, ${dark})` : (light || dark);
+  }
+  return vars;
+}
+
+// Writes the colours on `node` and returns the cleanup that takes them off again.
+function writeChartVars(node, vars) {
+  const names = Object.keys(vars);
+  for (const name of names) node.style.setProperty(name, vars[name]);
+  return () => { for (const name of names) node.style.removeProperty(name); };
+}
+
+// A standalone ChartStyle has no node of its own: it looks for the chart element with
+// its `data-chart` id in the document. A ChartContainer does not use it; it writes on
+// its own node, so a chart in a shadow root or a detached tree gets its colours too.
+// The id is compared as text, not put in a selector: a caller id may hold a quote.
 export function ChartStyle({ id, config }) {
-  const colors = Object.entries(config || {}).filter(([, item]) => item.theme || item.color);
-  if (!colors.length) return null;
-  const vars = theme => colors.map(([key, item]) => {
-    const value = item.theme ? item.theme[theme] : item.color;
-    return value ? `--color-${key}:${value};` : '';
-  }).join('\n');
-  // With no data-theme on <html>, a dark OS means dark, as in tokens/colors.css.
-  const css = Object.entries(THEMES).map(([theme, prefix]) => `${prefix} [data-chart="${id}"]{\n${vars(theme)}\n}`).join('\n')
-    + `\n@media (prefers-color-scheme:dark){:root:not(:where([data-theme="light"])) [data-chart="${id}"]{\n${vars('dark')}\n}}`;
-  // Raw text inside <style>: server-rendered, a `<` in a config value could
-  // close the element and open a script. CSS never needs a literal `<` here.
-  return <style dangerouslySetInnerHTML={{ __html: css.replace(/</g, '\\3c ') }} />;
+  const key = JSON.stringify(chartVars(config));
+  useIsoLayoutEffect(() => {
+    const chart = Array.from(document.querySelectorAll('[data-chart]')).find(node => node.dataset.chart === id);
+    return chart ? writeChartVars(chart, JSON.parse(key)) : undefined;
+  }, [id, key]);
+  return null;
 }
 
 export const ChartContainer = React.forwardRef(function ChartContainer({ id, className, children, config = {}, initialDimension = INITIAL_DIMENSION, ...props }, ref) {
@@ -40,8 +62,10 @@ export const ChartContainer = React.forwardRef(function ChartContainer({ id, cla
   const uniqueId = React.useId();
   const chartId = `chart-${id || uniqueId.replace(/:/g, '')}`;
   const ResponsiveContainer = RechartsPrimitive && RechartsPrimitive.ResponsiveContainer;
-  return <ChartContext.Provider value={{ config }}><div ref={ref} data-slot="chart" data-chart={chartId} className={`ef-chart${className ? ` ${className}` : ''}`} {...props}>
-    <ChartStyle id={chartId} config={config} />
+  const node = React.useRef(null);
+  const colorsKey = JSON.stringify(chartVars(config));
+  useIsoLayoutEffect(() => (node.current ? writeChartVars(node.current, JSON.parse(colorsKey)) : undefined), [colorsKey]);
+  return <ChartContext.Provider value={{ config }}><div ref={mergeRefs(ref, node)} data-slot="chart" data-chart={chartId} className={`ef-chart${className ? ` ${className}` : ''}`} {...props}>
     {ResponsiveContainer ? <ResponsiveContainer initialDimension={initialDimension}>{children}</ResponsiveContainer> : children}
   </div></ChartContext.Provider>;
 });

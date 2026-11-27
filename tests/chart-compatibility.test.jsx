@@ -21,7 +21,8 @@ describe('Chart compatibility contract', () => {
     expect(ref.current.dataset.chart).toBe('chart-usage');
     expect(screen.getByTestId('responsive').dataset.size).toBe('320x200');
     expect(screen.getByText('Desktop')).toBeTruthy();
-    expect(container.querySelector('style').textContent).toContain('--color-mobile:#abc');
+    expect(ref.current.style.getPropertyValue('--color-mobile')).toBe('light-dark(#123, #abc)');
+    expect(container.querySelector('style')).toBeNull();
   });
 
   it('throws when useChart is called outside the container', () => {
