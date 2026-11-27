@@ -1,5 +1,10 @@
 # Changelog
 
+## Unreleased
+
+- **ThemeToggle paints the stored choice on the first frame (MD25).** The toggle read the stored choice in a passive effect, which runs after the browser paints. On a page that renders it without `themeInitScript()` (or before the script's attribute lands), a visitor whose stored choice differs from the device theme saw the device theme, and a sun icon on a dark page, for one frame. The read and the first `data-theme` write now run in a layout effect (`useIsoLayoutEffect`), before the first paint. The contract in [guidelines/theming.md](guidelines/theming.md#theme-contract) is unchanged: localStorage, then the cookie, then the device. A server render still shows the light icon until hydration, then corrects before paint. `tests/theme-toggle.test.jsx` pins the first frame and the first `data-theme` value to the stored choice.
+- design-tokens stays vendored at v0.7.0; this release changes no token.
+
 ## v2.2.0 - 2026-11-27
 
 No Meridian component writes a style attribute of its own (MD18). Under a strict CSP (`style-src` without `'unsafe-inline'`) that is enough only for the npm package, which ships the component CSS as a static stylesheet. Two exceptions remain: the CDN bundle and registry copies without `meridian-ssr-css` add a `<style>` element for each component when it renders, and on every install path `ChartStyle` renders a `<style>` element for the colours a `ChartContainer` `config` sets. What each install path needs: [guidelines/frameworks.md](guidelines/frameworks.md#strict-content-security-policy). No token changes and no removed exports.
