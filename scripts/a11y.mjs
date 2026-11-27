@@ -3,8 +3,10 @@
 // (WCAG 2.0, 2.1 and 2.2, levels A and AA) over the chosen demo groups in the
 // light and dark themes at a 1280px desktop width and again at a 390px phone
 // width (target-size and reflow), and exits 1 on any serious or critical
-// violation. At 390px it also fails when the page scrolls sideways (WCAG 1.4.10
-// Reflow), except inside a region that scrolls on purpose.
+// violation. At 390px it also fails when the page scrolls sideways, except
+// inside a region that scrolls on purpose: no sideways scroll at 390px is a
+// proxy for WCAG 1.4.10 Reflow, which asks for 320px; this is not a 1.4.10 check.
+// A group with no elements on the page fails: axe passes an empty section.
 // Moderate and minor findings never fail the run: each is printed as `warn`
 // and the closing line counts them, so a rising count shows in the CI log.
 // Requires a static server on BASE and a Playwright browser, like
@@ -50,7 +52,13 @@ if (missing.length) {
   process.exit(1);
 }
 
+// An empty section has nothing for axe to flag, so it would pass; count what is there.
+const counts = await page.evaluate((list) => list.map((s) => [s, document.querySelectorAll(`${s} *`).length]), selectors);
 let blocking = 0;
+for (const [sel, n] of counts) {
+  console.log(`${n ? 'ok  ' : 'FAIL'} ${sel}: ${n} element(s) to check`);
+  if (!n) blocking += 1;
+}
 let warnings = 0;
 const warnRules = new Set();
 for (const viewport of VIEWPORTS) {

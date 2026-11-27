@@ -67,7 +67,7 @@ export function Console({ title = 'Console', entries = [], height = 240, style, 
   return (
     <div {...rest} className={`ef-console${className ? ' ' + className : ''}`} style={style}>
       <div className="ef-console__head"><Icon name="terminal" size={12} />{title}<span className="ef-console__count">{entries.length} entries</span></div>
-      <div ref={mergeRefs(viewport, styleRef({ height }))} className="ef-console__scroll" role="log" tabIndex={0} aria-live="polite" onScroll={recompute}>
+      <div ref={mergeRefs(viewport, styleRef({ height }))} className="ef-console__scroll" role="log" aria-label={title} tabIndex={0} aria-live="polite" onScroll={recompute}>
         {entries.map((e, i) => <Row key={i} e={e} />)}
       </div>
       {!atBottom ? <button type="button" className="ef-console__jump" onClick={() => { const v = viewport.current; if (v) v.scrollTo({ top: v.scrollHeight, behavior: prefersReducedMotion() ? 'auto' : 'smooth' }); }}><Icon name="chevron-down" size={12} />Latest</button> : null}

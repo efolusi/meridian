@@ -57,15 +57,28 @@ export const Table = React.forwardRef(function Table({
   React.useEffect(() => {
     const el = wrapEl.current;
     if (!el) return undefined;
-    const measure = () => setScrolls(el.scrollWidth > el.clientWidth || el.scrollHeight > el.clientHeight);
+    const overflows = () => el.scrollWidth > el.clientWidth || el.scrollHeight > el.clientHeight;
+    // While the wrap holds focus the tab stop stays, so focus does not fall to the body
+    // when the overflow stops; it goes once focus leaves.
+    const measure = () => setScrolls(overflows() || document.activeElement === el);
+    const release = () => setScrolls(overflows());
     measure();
-    if (typeof ResizeObserver === 'undefined') return undefined;
-    const ro = new ResizeObserver(measure);
-    ro.observe(el);
-    if (el.firstElementChild) ro.observe(el.firstElementChild);
-    return () => ro.disconnect();
+    el.addEventListener('blur', release);
+    const ro = typeof ResizeObserver === 'undefined' ? null : new ResizeObserver(measure);
+    if (ro) {
+      ro.observe(el);
+      if (el.firstElementChild) ro.observe(el.firstElementChild);
+    }
+    return () => {
+      el.removeEventListener('blur', release);
+      if (ro) ro.disconnect();
+    };
   }, [composition]);
-  const scrollTab = scrolls ? 0 : undefined;
+  // A focusable scroll region needs a role and a name (WCAG 4.1.2): the caller's
+  // aria-label or aria-labelledby, else 'Table'.
+  const scrollRegion = scrolls
+    ? { tabIndex: 0, role: 'region', 'aria-label': rest['aria-labelledby'] ? undefined : (rest['aria-label'] || 'Table'), 'aria-labelledby': rest['aria-labelledby'] }
+    : {};
   // Hooks first: the composition branch below returns early, and hooks after
   // it would drop sort and selection state whenever a table passes through it.
 
@@ -106,7 +119,7 @@ export const Table = React.forwardRef(function Table({
   const key = (row, pos) => rowKey ? (typeof rowKey === 'function' ? rowKey(row) : row[rowKey]) : order[pos];
 
   if (!columns || !rows) {
-    return <div ref={wrapEl} data-slot="table-container" className="ef-table-wrap" tabIndex={scrollTab}>
+    return <div ref={wrapEl} data-slot="table-container" className="ef-table-wrap" {...scrollRegion}>
       <table ref={ref} {...rest} data-slot="table" className={`ef-table${dense ? ' ef-table--dense' : ''}${className ? ' ' + className : ''}`} style={style}>{children}</table>
     </div>;
   }
@@ -118,7 +131,7 @@ export const Table = React.forwardRef(function Table({
   const wrapRef = styleRef({ 'max-height': stickyHeader || maxHeight ? (maxHeight || 320) : undefined });
 
   return (
-    <div ref={mergeRefs(ref, wrapRef, wrapEl)} tabIndex={scrollTab} {...rest}
+    <div ref={mergeRefs(ref, wrapRef, wrapEl)} {...scrollRegion} {...rest}
       className={`ef-table-wrap${stickyHeader || maxHeight ? ' ef-table-wrap--sticky' : ''}`} style={style}>
       <table className={`ef-table${dense ? ' ef-table--dense' : ''}${stickyHeader ? ' ef-table--sticky' : ''}${className ? ' ' + className : ''}`}>
         <thead><tr>

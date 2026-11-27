@@ -24,4 +24,6 @@ Selection behaves the same: `selectable` alone works, and `selected` + `onSelect
 
 `dense` tightens row height; `render(value, row, i)` for custom cells; `loading` swaps the body for shimmer rows so the header and column widths stay put while the first page loads.
 
+While the table scrolls (wider or taller than its box) the wrapper becomes a keyboard-focusable `region` so it can be scrolled with the arrow keys. Name it with `aria-label` or `aria-labelledby`; without either it is called `Table`.
+
 For a genuinely large grid (virtualisation, column resizing, grouping), reach for a dedicated data grid. This covers the admin table, not that.

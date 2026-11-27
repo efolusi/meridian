@@ -28,5 +28,6 @@ describe('axe in CI', () => {
     const script = readFileSync('scripts/a11y.mjs', 'utf8');
     expect(script).toContain('width: 390');
     expect(script).toContain('moderate or minor warning node(s)');
+    expect(script).toContain('element(s) to check');
   });
 });

@@ -5,3 +5,5 @@ Stick-to-bottom thread viewport: keeps pinned to the latest message while stream
 `<Conversation height={480}>{messages.map(m => <ChatMessage …/>)}</Conversation>`
 
 Wrap the message column of any chat surface; it owns scrolling, you own the messages. Set autoStick={false} for read-only transcripts.
+
+The viewport is a keyboard-focusable `region` so the thread can be scrolled with the arrow keys; `aria-label` names it (default `Conversation`).
