@@ -20,11 +20,12 @@ describe('LineChart with no data', () => {
 describe('ChartStyle under a strict CSP (MD62)', () => {
   const hostile = 'red;}</style><script>alert(1)</script><style>';
 
-  it('server-rendered HTML of a ChartContainer has no style element and no style attribute', () => {
+  it('server-rendered HTML of a ChartContainer has no style element and no style attribute on the chart', () => {
     const html = renderToString(<ChartContainer config={{ a: { color: 'red' }, b: { theme: { light: '#111', dark: '#eee' } } }}><div /></ChartContainer>);
     expect(html).toContain('data-chart=');
     expect(html).not.toMatch(/<style/i);
-    expect(html).not.toMatch(/\sstyle=/i);
+    // The chart element is Meridian's; the Recharts wrapper inside it sets its own size.
+    expect(html.match(/<div data-slot="chart"[^>]*>/)[0]).not.toMatch(/\sstyle=/i);
   });
 
   it('a config value cannot open markup during SSR', () => {

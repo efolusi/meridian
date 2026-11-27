@@ -69,8 +69,10 @@ describe('dark tokens follow the OS when no theme is set (DS-08)', () => {
     })
   }
 
-  it('gives Chart an OS-dark colour block', () => {
-    expect(read('components/data/Chart.jsx')).toContain(`@media (prefers-color-scheme:dark){${AUTO} [data-chart=`)
+  it('gives Chart theme colours as light-dark(), which follows data-theme and the OS through color-scheme', () => {
+    const chart = read('components/data/Chart.jsx')
+    expect(chart).toContain('light-dark(')
+    expect(chart).not.toContain('[data-theme="dark"]')
   })
 
   it('leaves no other component with a [data-theme="dark"] rule and no OS-dark mirror', () => {

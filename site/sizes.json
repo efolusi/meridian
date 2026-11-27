@@ -1,16 +1,16 @@
 {
   "totals": {
     "@efolusi/meridian": {
-      "bytes": 377698,
-      "gzip": 85430
+      "bytes": 377720,
+      "gzip": 85404
     },
     "dist/components.css": {
       "bytes": 242003,
       "gzip": 33301
     },
     "_ds_bundle.js": {
-      "bytes": 904563,
-      "gzip": 162469
+      "bytes": 905129,
+      "gzip": 162685
     }
   },
   "modules": [
@@ -365,8 +365,8 @@
         "ChartLegend",
         "ChartLegendContent"
       ],
-      "bytes": 4247,
-      "gzip": 1682
+      "bytes": 4277,
+      "gzip": 1690
     },
     {
       "module": "data/DonutChart.js",
