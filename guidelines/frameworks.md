@@ -123,7 +123,7 @@ One thing is blocked on every path:
 
 - A `style` prop you pass is a `style` attribute in server-rendered HTML. The policy drops it, and hydration does not apply it again. In the browser, React sets it through the CSSOM, which works.
 
-The colours a `ChartContainer` `config` sets (`color` or `theme`) are not blocked: `ChartStyle` writes them as `--color-<key>` custom properties on the chart element through the CSSOM, and a `theme` pair is a `light-dark()` value. A server render shows the series without those colours until the page hydrates. `light-dark()` needs Chrome 123, Firefox 120 or Safari 17.5.
+The colours a `ChartContainer` `config` sets (`color` or `theme`) are not blocked: `ChartStyle` writes them as `--color-<key>` custom properties on the chart element through the CSSOM, and a `theme` pair is a `light-dark()` value. A server render shows the series without those colours until the page hydrates. `light-dark()` needs Chrome 123, Firefox 120 or Safari 17.5, inside the [supported browsers](accessibility.md#browser-support-and-rtl). A browser without it shows a `theme` colour as black fill and no stroke; a single `color` works everywhere.
 
 The theme script is a `script-src` matter: pass a nonce or allow its hash, as [theming.md](theming.md#server-layouts) describes.
 
