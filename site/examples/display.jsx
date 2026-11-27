@@ -84,6 +84,7 @@ export function BadgeDemo() {
         <Badge variant="danger">Danger</Badge>
         <Badge variant="outline">Outline</Badge>
         <Badge variant="ghost">Ghost</Badge>
+        <Badge variant="solid">Solid</Badge>
       </div>
       <div style={{ display: 'flex', gap: 10, alignItems: 'center', flexWrap: 'wrap' }}>
         <Badge className="ef-badge--success"><Icon name="circle" size={8} strokeWidth={4} data-icon="inline-start" />Live</Badge>
