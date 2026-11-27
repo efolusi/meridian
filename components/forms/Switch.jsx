@@ -12,7 +12,7 @@ const CSS = `
 /* The accent edge is an inset shadow, which forced colours drop: an outline in a system colour keeps it. The focus ring is a shadow
    too, and the component sets outline:none on focus, so the forced block restates the 2px focus outline at the same
    specificity and later in the sheet; it also beats the 1px edge outline above. */
-@media (forced-colors:active){.ef-switch[data-state="checked"]{outline:1px solid Highlight}.ef-switch:focus-visible{outline:2px solid Highlight;outline-offset:2px}}
+@media (forced-colors:active){.ef-switch[data-state="checked"]{outline:1px solid Highlight}}
 .ef-switch--sm{--ef-switch-shift:12px;width:30px;height:18px}.ef-switch--sm:dir(rtl){--ef-switch-shift:-12px}.ef-switch--sm .ef-switch__track::after{width:13px;height:13px;top:2.5px}
 .ef-switch__label{font-size:var(--text-md);color:var(--text-primary)}
 /* Reduced motion: nothing moves or resizes; the end state is shown at once. */

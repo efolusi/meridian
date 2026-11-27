@@ -1,9 +1,11 @@
-// MD78: forced-colors mode drops box-shadow, and 69 component files draw their focus ring as a box-shadow after
+// MD78: forced-colors mode drops box-shadow, and component files draw their focus ring as a box-shadow after
 // `outline:none`, so a focused control could show no ring at all (WCAG 2.4.7). MD74 fixed Switch, Toolbar and Player
-// one by one. The systemic fix is one rule in tokens/base.css: a 2px Highlight outline on every :focus-visible, with
-// !important so it also beats a product's own `outline:none`. It is unlayered, and an important declaration in an
-// unlayered rule loses to an important one in a layer, so no component may carry an `!important` outline: a test
-// scans all of them. A component forced-colors block must not set a focus outline that differs from the base rule.
+// one by one. The systemic fix is one rule in tokens/base.css: a 2px Highlight outline on every :focus-visible,
+// declared !important. The base rule was already unlayered and already beat a component's `outline:none` (an
+// unlayered rule outranks every @layer rule); !important changes the outcome only against a product's own unlayered
+// rules, such as its `outline:none`. An important declaration in a layer beats an important one outside it, so no
+// component may carry an `!important` outline, and no component forced-colors block restates the focus outline: the
+// base rule is the one place. A test scans every CSS template of every component file.
 import { readdirSync, readFileSync } from 'node:fs';
 import { describe, expect, it } from 'vitest';
 
@@ -17,7 +19,10 @@ const walk = (dir) => {
   }
 };
 walk('components');
-const css = (file) => /const CSS = `([\s\S]*?)`;/.exec(read(file))?.[1] ?? '';
+// Every CSS template a component injects: the const named in each injectEfCss(id, NAME) call, all of them joined.
+const injected = (text) => [...new Set([...text.matchAll(/injectEfCss\('[^']*',\s*([A-Za-z_$][\w$]*)\)/g)].map((m) => m[1]))];
+const templates = (text) => injected(text).map((name) => new RegExp(`const ${name.replace(/\$/g, '\\$')} = \`([\\s\\S]*?)\`;`).exec(text)?.[1]);
+const css = (file) => templates(read(file)).filter((t) => t !== undefined).join('\n');
 // The text inside each `@media (forced-colors:active){ ... }`, braces balanced.
 const forcedBlocks = (text) => {
   const blocks = [];
@@ -64,20 +69,36 @@ describe('no component fights the base focus rule', () => {
     expect(components.filter((file) => forcedBlocks(css(file)).length > 0).length).toBeGreaterThanOrEqual(6);
   });
 
+  it('reads every CSS template in a file: each injected const is found, and no other CSS const is left unread', () => {
+    for (const file of components) {
+      const text = read(file);
+      const names = injected(text);
+      const found = templates(text);
+      expect(found.every((t) => t !== undefined), `${file} injects a template the scan cannot find`).toBe(true);
+      // A template const that is never injected would be CSS nobody scans; there is none, and a second one must be injected.
+      const declared = [...text.matchAll(/^(?:export )?const ([A-Za-z_$][\w$]*)\s*=\s*`/gm)].map((m) => m[1]).filter((name) => /css|style/i.test(name));
+      expect(declared.sort(), `${file} CSS templates vs injected`).toEqual(names.sort());
+    }
+  });
+
+  it('joins several templates of one file (the scan itself, on a file with two)', () => {
+    const text = "const CSS = `.a{x:1}`;\nconst MORE_CSS = `.b{y:2}`;\ninjectEfCss('a', CSS);\ninjectEfCss('b', MORE_CSS);";
+    expect(templates(text)).toEqual(['.a{x:1}', '.b{y:2}']);
+  });
+
   it('no component sets an !important outline: a layered important beats the unlayered one', () => {
     for (const file of components) expect(css(file), file).not.toMatch(/outline[^;}]*!important/);
   });
 
-  it('no forced-colors block removes or restyles a focus outline other than the base rule\'s', () => {
+  it('no forced-colors block sets a focus outline (the base rule is the only one) or switches an outline off', () => {
     for (const file of components) {
       for (const block of forcedBlocks(css(file))) {
         for (const [selector, body] of rules(block)) {
           const outline = /(?:^|;)outline:([^;]*)/.exec(body)?.[1];
           const offset = /(?:^|;)outline-offset:([^;]*)/.exec(body)?.[1];
-          if (/:focus(-visible|-within)?\b/.test(selector)) {
-            expect(outline, `${file} ${selector}`).toBe('2px solid Highlight');
-            expect(offset, `${file} ${selector}`).toBe('2px');
-          }
+          // The base rule is the one place for the focus outline: restating it here is a second copy that can drift.
+          expect(/:focus(-visible|-within)?\b/.test(selector), `${file} ${selector} restates the focus outline`).toBe(false);
+          expect(offset, `${file} ${selector} outline-offset`).toBeUndefined();
           // An edge outline on a selected or default state is fine; none may switch the outline off.
           if (outline !== undefined) expect(outline, `${file} ${selector}`).not.toMatch(/^(none|0|transparent)\b/);
           expect(body, `${file} ${selector}`).not.toMatch(/outline-(style|width):\s*(none|0)/);
@@ -90,17 +111,4 @@ describe('no component fights the base focus rule', () => {
     const bad = forcedBlocks('x @media (forced-colors:active){.a:focus-visible{outline:none}.b{outline:1px solid Highlight}} y');
     expect(rules(bad[0])).toEqual([['.a:focus-visible', 'outline:none'], ['.b', 'outline:1px solid Highlight']]);
   });
-});
-
-describe('the restated Switch, Toolbar and Player focus rules (MD74 round 2)', () => {
-  // The base rule now covers them (same value, !important, unlayered), so they are redundant. They stay in this change:
-  // tests/forced-colors-edges.test.mjs pins them, and removing a pinned rule is its own decision. Until then they must
-  // agree with the base rule exactly, so the two can never disagree.
-  for (const file of ['components/forms/Switch.jsx', 'components/display/Toolbar.jsx', 'components/ai/Player.jsx']) {
-    it(`${file} restates exactly the base outline`, () => {
-      const focus = forcedBlocks(css(file)).flatMap(rules).filter(([selector]) => selector.includes(':focus-visible'));
-      expect(focus).toHaveLength(1);
-      expect(focus[0][1]).toBe('outline:2px solid Highlight;outline-offset:2px');
-    });
-  }
 });
