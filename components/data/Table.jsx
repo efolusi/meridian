@@ -6,6 +6,7 @@ import { Icon } from '../icons/Icon.jsx';
 const CSS = `
 .ef-table-wrap{max-width:100%;overflow-x:auto;overflow-y:hidden;-webkit-overflow-scrolling:touch}
 .ef-table-wrap--sticky{overflow-y:auto}
+.ef-table-wrap:focus-visible{outline:2px solid var(--focus-ring-color);outline-offset:-2px}
 .ef-table{width:100%;border-collapse:collapse}
 .ef-table th{text-align:start;padding:var(--space-3) var(--table-pad-x);font-size:var(--text-2xs);font-weight:var(--weight-semibold);letter-spacing:0.06em;text-transform:uppercase;color:var(--text-muted);border-bottom:1px solid var(--border-default);white-space:nowrap}
 .ef-table--sticky thead th{position:sticky;top:0;z-index:1;background:var(--surface-card)}
@@ -48,6 +49,23 @@ export const Table = React.forwardRef(function Table({
   style, className, ...rest
 }, ref) {
   injectEfCss('ef-css-table', CSS);
+  // A wrap that scrolls takes a tab stop so a keyboard user can scroll it (WCAG 2.1.1,
+  // axe scrollable-region-focusable); one that fits stays out of the tab order.
+  const wrapEl = React.useRef(null);
+  const [scrolls, setScrolls] = React.useState(false);
+  const composition = !columns || !rows;
+  React.useEffect(() => {
+    const el = wrapEl.current;
+    if (!el) return undefined;
+    const measure = () => setScrolls(el.scrollWidth > el.clientWidth || el.scrollHeight > el.clientHeight);
+    measure();
+    if (typeof ResizeObserver === 'undefined') return undefined;
+    const ro = new ResizeObserver(measure);
+    ro.observe(el);
+    if (el.firstElementChild) ro.observe(el.firstElementChild);
+    return () => ro.disconnect();
+  }, [composition]);
+  const scrollTab = scrolls ? 0 : undefined;
   // Hooks first: the composition branch below returns early, and hooks after
   // it would drop sort and selection state whenever a table passes through it.
 
@@ -88,7 +106,7 @@ export const Table = React.forwardRef(function Table({
   const key = (row, pos) => rowKey ? (typeof rowKey === 'function' ? rowKey(row) : row[rowKey]) : order[pos];
 
   if (!columns || !rows) {
-    return <div data-slot="table-container" className="ef-table-wrap">
+    return <div ref={wrapEl} data-slot="table-container" className="ef-table-wrap" tabIndex={scrollTab}>
       <table ref={ref} {...rest} data-slot="table" className={`ef-table${dense ? ' ef-table--dense' : ''}${className ? ' ' + className : ''}`} style={style}>{children}</table>
     </div>;
   }
@@ -100,7 +118,7 @@ export const Table = React.forwardRef(function Table({
   const wrapRef = styleRef({ 'max-height': stickyHeader || maxHeight ? (maxHeight || 320) : undefined });
 
   return (
-    <div ref={mergeRefs(ref, wrapRef)} {...rest}
+    <div ref={mergeRefs(ref, wrapRef, wrapEl)} tabIndex={scrollTab} {...rest}
       className={`ef-table-wrap${stickyHeader || maxHeight ? ' ef-table-wrap--sticky' : ''}`} style={style}>
       <table className={`ef-table${dense ? ' ef-table--dense' : ''}${stickyHeader ? ' ef-table--sticky' : ''}${className ? ' ' + className : ''}`}>
         <thead><tr>

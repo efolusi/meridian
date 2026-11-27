@@ -1,5 +1,10 @@
 # Changelog
 
+## Unreleased
+
+- **Scrollable parts take a tab stop (MD17).** `Conversation` (the message viewport), `Console` (the log) and `Table` (the scroll wrapper) scroll, but a keyboard user could not reach them to scroll with the arrow keys (WCAG 2.1.1; axe `scrollable-region-focusable`, found by the new 390px pass). The viewport and the log now take `tabIndex={0}`; the `Table` wrapper takes it only while its content overflows, so a table that fits adds no tab stop. All three show the standard focus outline (`--focus-ring-color`, 2px, inset) on keyboard focus. A `tabIndex` you pass on a `Table` still wins.
+- **a11y check: second axe pass at 390px.** `npm run a11y` runs every group in light and dark at 1280px and again at 390px (target-size, reflow), and fails at 390px when the page scrolls sideways outside a region that scrolls on purpose (WCAG 1.4.10). Moderate and minor findings still never fail the run; the closing line now counts them. The CI smoke job installs axe-core with `npm ci` from the lockfile, not by version.
+
 ## v2.3.0 - 2026-11-27
 
 Semver level: MINOR.
