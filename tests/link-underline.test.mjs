@@ -3,26 +3,7 @@
 // pair and holds the Link component, the prose-link rule in base.css and the legal text to the underline.
 import { readFileSync } from 'node:fs';
 import { describe, expect, it } from 'vitest';
-import { contrast } from '../scripts/contrast.mjs';
-import { readTokenCss } from './helpers/token-css.mjs';
-
-const tokens = readTokenCss('colors.css');
-const vars = (text) => Object.fromEntries([...text.matchAll(/(--[\w-]+):([^;}]+)/g)].map(([, n, v]) => [n, v.trim()]));
-const block = (selector) => {
-  const start = tokens.indexOf(`${selector}{`);
-  return tokens.slice(start, tokens.indexOf('\n}', start));
-};
-const light = vars(block(':root,[data-theme="light"]'));
-const dark = { ...light, ...vars(block('[data-theme="dark"]')) };
-const toRgb = (hex) => {
-  const n = parseInt(hex.slice(1), 16);
-  return `rgb(${n >> 16}, ${(n >> 8) & 255}, ${n & 255})`;
-};
-const resolve = (table, name) => {
-  let v = table[name];
-  for (let i = 0; i < 10 && /^var\(/.test(v); i += 1) v = table[/var\((--[\w-]+)\)/.exec(v)[1]];
-  return toRgb(v);
-};
+import { THEMES, ratio } from './helpers/token-table.mjs';
 
 const rule = (css, selector) => {
   const start = css.indexOf(`${selector}{`);
@@ -34,8 +15,8 @@ const baseCss = readFileSync('tokens/base.css', 'utf8');
 
 describe('links in running text are underlined (MD74)', () => {
   it('measures why: the link colour against the body ink is under 3:1 in both themes', () => {
-    for (const [name, table] of [['light', light], ['dark', dark]]) {
-      const r = contrast(resolve(table, '--text-link'), resolve(table, '--text-primary'));
+    for (const [name, table] of THEMES) {
+      const r = ratio(table, '--text-link', '--text-primary');
       expect(r, `${name} link against body ink`).toBeLessThan(3);
     }
   });

@@ -124,6 +124,7 @@ PAIRS = [
     ("--warning-600", ["--warning-100", "--surface-card"], 4.5, "status text"),
     ("--danger-600", ["--danger-100", "--surface-card"], 4.5, "status text"),
     ("--accent-contrast", ["--accent"], 4.5, "text on accent"),
+    ("--text-muted", ["--surface-track"], 4.5, "label of a disabled primary Button and solid IconButton (WCAG exempts it, the label stays legible)"),
     ("--accent-subtle-fg", ["--accent-subtle"], 4.5, "text and icons on the accent tint"),
     ("--danger-contrast", ["--danger-600", "--danger-700"], 4.5, "danger button normal and hover text"),
     ("--success-contrast", ["--success-600"], 4.5, "FileTypeIcon label on the green fill"),

@@ -7,6 +7,7 @@ const CSS = `
 .ef-iconbtn:focus-visible{outline:none;box-shadow:var(--focus-ring)}
 .ef-iconbtn:active:not(:disabled){transform:scale(.96)}
 .ef-iconbtn:disabled{opacity:.45;cursor:not-allowed}
+.ef-iconbtn--solid:disabled{opacity:1;background:var(--surface-track);border-color:transparent;color:var(--text-muted)}
 .ef-iconbtn--sm{width:var(--control-h-sm);height:var(--control-h-sm)}
 .ef-iconbtn--md{width:var(--control-h-md);height:var(--control-h-md)}
 .ef-iconbtn--lg{width:var(--control-h-lg);height:var(--control-h-lg)}

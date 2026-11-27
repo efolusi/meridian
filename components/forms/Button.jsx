@@ -15,6 +15,9 @@ const CSS = `
 .ef-btn:focus-visible{outline:none;box-shadow:var(--focus-ring)}
 .ef-btn:active{transform:scale(.985)}
 .ef-btn:is(:disabled,[aria-disabled="true"],[data-disabled]){opacity:.45;cursor:not-allowed;pointer-events:none}
+/* A disabled primary is flat and neutral, not faded copper: the copper fill and ink label at .45 opacity are 1.9:1 apart
+   in light. Loading keeps the faded copper, the spinner says it is busy. */
+.ef-btn--primary:is(:disabled,[aria-disabled="true"],[data-disabled]):not([data-loading]){opacity:1;background:var(--surface-track);border-color:transparent;color:var(--text-muted)}
 .ef-btn--sm{height:var(--control-h-sm);padding:0 var(--space-3);font-size:var(--text-sm)}
 .ef-btn--md{height:var(--control-h-md);padding:0 var(--space-4);font-size:var(--text-md)}
 .ef-btn--lg{height:var(--control-h-lg);padding:0 var(--space-5);font-size:var(--text-lg)}
