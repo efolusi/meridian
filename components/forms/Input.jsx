@@ -24,9 +24,11 @@ const CSS = `
 .ef-file-input>.ef-input__el[type="file"]{position:absolute;inset:0;width:100%;height:100%;padding:0;border:0;opacity:0;cursor:pointer}.ef-file-input>.ef-input__el[type="file"]:disabled{cursor:not-allowed}
 .ef-input__el--sm{height:var(--control-h-sm);padding-inline:var(--space-3);font-size:var(--text-sm)}
 .ef-input__el--lg{height:var(--control-h-lg);padding-inline:var(--space-4);font-size:var(--text-lg)}
+.ef-input__el--xl{height:var(--control-h-xl);padding-inline:var(--space-4);font-size:var(--text-lg)}
 .ef-input--icon .ef-input__el{padding-inline-start:calc(var(--space-3) + var(--icon-md) + var(--space-2))}
 .ef-input--icon .ef-input__el--sm{padding-inline-start:calc(var(--space-2) + var(--icon-md) + var(--space-2))}
 .ef-input--icon .ef-input__el--lg{padding-inline-start:calc(var(--space-3) + var(--icon-lg) + var(--space-2))}
+.ef-input--icon .ef-input__el--xl{padding-inline-start:calc(var(--space-3) + var(--icon-lg) + var(--space-2))}
 .ef-input__icon{position:absolute;inset-inline-start:11px;color:var(--text-muted);display:inline-flex;pointer-events:none}
 .ef-input__reveal{position:absolute;inset-inline-end:var(--space-1);display:inline-flex;align-items:center;justify-content:center;width:var(--control-h-sm);height:var(--control-h-sm);padding:0;border:none;border-radius:var(--radius-sm);background:none;color:var(--text-muted);cursor:pointer}
 .ef-input__reveal:hover{color:var(--text-primary)}
@@ -65,7 +67,7 @@ export const Input = React.forwardRef(function Input({
   const uid = React.useId();
   const [revealed, setRevealed] = React.useState(false);
   const [fileName, setFileName] = React.useState('No file chosen');
-  const customSize = typeof size === 'string' && ['sm', 'md', 'lg'].includes(size) ? size : 'md';
+  const customSize = typeof size === 'string' && ['sm', 'md', 'lg', 'xl'].includes(size) ? size : 'md';
   const nativeSize = typeof size === 'number' ? size : undefined;
   const showToggle = !!(revealable && rest.type === 'password');
   const field = useFieldProps({ invalid, error, id: rest.id, 'aria-describedby': rest['aria-describedby'], required: rest.required });
@@ -103,7 +105,7 @@ export const Input = React.forwardRef(function Input({
     : iconLeft || showToggle
     ? (
       <span className={classes('ef-input', iconLeft && 'ef-input--icon', showToggle && 'ef-input--reveal')}>
-        {iconLeft ? <span className="ef-input__icon" aria-hidden="true"><Icon name={iconLeft} size={customSize === 'lg' ? 20 : 16} /></span> : null}
+        {iconLeft ? <span className="ef-input__icon" aria-hidden="true"><Icon name={iconLeft} size={customSize === 'lg' || customSize === 'xl' ? 20 : 16} /></span> : null}
         {input}
         {showToggle ? (
           <button

@@ -19,7 +19,7 @@ export interface NumberInputProps extends Omit<React.InputHTMLAttributes<HTMLInp
   /** Arrow/stepper increment; commits snap to its grid. @default 1 */
   step?: number;
   /** @default 'md' */
-  size?: 'sm' | 'md' | 'lg';
+  size?: 'sm' | 'md' | 'lg' | 'xl';
   disabled?: boolean;
   placeholder?: string;
   /**

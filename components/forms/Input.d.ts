@@ -10,7 +10,7 @@ export interface InputProps extends Omit<React.InputHTMLAttributes<HTMLInputElem
   /** Meridian icon name inside the field at inline start. */
   iconLeft?: string;
   /** Native numeric width or Meridian's additive visual sizes. */
-  size?: number | 'sm' | 'md' | 'lg';
+  size?: number | 'sm' | 'md' | 'lg' | 'xl';
   invalid?: boolean;
   /** Adds a show/hide button to a password field. */
   revealable?: boolean;

@@ -164,6 +164,20 @@ export function InputDemo() {
   );
 }
 
+// @demo Input Sizes
+export function InputSizes() {
+  const { Input, Button } = window.EfolusiDesignSystem_4ffc3d;
+  return (
+    <div style={{ width: 320, display: 'grid', gap: 12 }}>
+      <Input aria-label="Small" size="sm" placeholder="sm, 28px" />
+      <Input aria-label="Medium" placeholder="md, 36px" />
+      <Input aria-label="Large" size="lg" placeholder="lg, 44px" />
+      <Input aria-label="Extra large" size="xl" placeholder="xl, 52px" />
+      <Button size="xl">Continue</Button>
+    </div>
+  );
+}
+
 // @demo Input Validation state
 export function InputInvalid() {
   const { Input } = window.EfolusiDesignSystem_4ffc3d;

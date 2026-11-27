@@ -10,6 +10,7 @@ const CSS = `
 .ef-native-select select:disabled{cursor:not-allowed;opacity:.5}
 .ef-native-select[data-size="sm"] select{height:var(--control-h-sm)}
 .ef-native-select[data-size="lg"] select{height:var(--control-h-lg)}
+.ef-native-select[data-size="xl"] select{height:var(--control-h-xl)}
 .ef-native-select__icon{position:absolute;inset-inline-end:var(--space-3);display:inline-flex;color:var(--text-muted);pointer-events:none}
 `;
 export const NativeSelect = React.forwardRef(function NativeSelect({ size = 'md', className, style, ...props }, ref) {
