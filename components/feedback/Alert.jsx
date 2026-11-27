@@ -1,35 +1,45 @@
 'use client';
 import React from 'react';
+import { Icon } from '../icons/Icon.jsx';
 import { injectEfCss } from '../runtime/runtime.jsx';
 
+// Colour alone must not carry the state (WCAG 1.4.1): each variant has a glyph. A caller icon replaces it.
+const DEFAULT_ICON = { default: 'info', success: 'circle-check', warning: 'triangle-alert', danger: 'circle-alert' };
+const isIcon = (child) => React.isValidElement(child) && (child.type === Icon || child.type === 'svg' || child.props['data-slot'] === 'icon');
+
 const CSS = `
-.ef-alert{position:relative;display:grid;grid-template-columns:0 1fr;align-items:start;gap:var(--space-0-5) var(--space-3);width:100%;padding:var(--space-3) var(--space-4);border:1px solid var(--border-strong);border-radius:var(--radius-md);background:var(--surface-card);color:var(--text-primary)}
-.ef-alert:has(>[data-slot=icon]){grid-template-columns:auto 1fr}
-.ef-alert:has(>.ef-alert__action){grid-template-columns:0 1fr auto;column-gap:var(--space-4)}
-.ef-alert:has(>[data-slot=icon]):has(>.ef-alert__action){grid-template-columns:auto 1fr auto}
+.ef-alert{position:relative;display:grid;grid-template-columns:minmax(0,1fr);align-items:start;gap:var(--space-0-5) 0;width:100%;padding:var(--space-3) var(--space-4);border:1px solid var(--border-strong);border-radius:var(--radius-md);background:var(--surface-card);color:var(--text-primary)}
+.ef-alert:has(>[data-slot=icon]){grid-template-columns:auto minmax(0,1fr);column-gap:var(--space-3)}
+.ef-alert:has(>.ef-alert__action){grid-template-columns:minmax(0,1fr) auto;column-gap:var(--space-4)}
+.ef-alert:has(>[data-slot=icon]):has(>.ef-alert__action){grid-template-columns:auto minmax(0,1fr) auto}
 .ef-alert>[data-slot=icon]{grid-column:1;grid-row:1/3;margin-top:var(--space-0-5);color:currentColor}
-.ef-alert>.ef-alert__title,.ef-alert>.ef-alert__description{grid-column:2}
+.ef-alert>.ef-alert__title,.ef-alert>.ef-alert__description{grid-column:1}
+.ef-alert:has(>[data-slot=icon])>.ef-alert__title,.ef-alert:has(>[data-slot=icon])>.ef-alert__description{grid-column:2}
 .ef-alert--success{border-color:var(--status-success-border);color:var(--status-success-text)}
 .ef-alert--warning{border-color:var(--status-warning-border);color:var(--status-warning-text)}
 .ef-alert--danger{border-color:var(--status-danger-border);color:var(--status-danger-text)}
 .ef-alert__title{font-size:var(--text-md);font-weight:var(--weight-semibold);line-height:1.4;color:currentColor}
 .ef-alert__description{font-size:var(--text-sm);line-height:1.5;color:var(--text-secondary)}
 .ef-alert--danger>.ef-alert__description{color:var(--status-danger-text)}
-.ef-alert>.ef-alert__action{grid-column:3;grid-row:1/3;align-self:start;margin-top:calc(-1 * var(--space-0-5))}
-@media (max-width:559px){.ef-alert:has(>.ef-alert__action){grid-template-columns:0 1fr}.ef-alert:has(>[data-slot=icon]):has(>.ef-alert__action){grid-template-columns:auto 1fr}.ef-alert>.ef-alert__action{grid-column:2;grid-row:auto;margin-top:var(--space-2)}}
+.ef-alert>.ef-alert__action{grid-column:2;grid-row:1/3;align-self:start;margin-top:calc(-1 * var(--space-0-5))}
+.ef-alert:has(>[data-slot=icon])>.ef-alert__action{grid-column:3}
+@media (max-width:559px){.ef-alert:has(>.ef-alert__action){grid-template-columns:minmax(0,1fr)}.ef-alert:has(>[data-slot=icon]):has(>.ef-alert__action){grid-template-columns:auto minmax(0,1fr)}.ef-alert>.ef-alert__action{grid-column:1;grid-row:auto;margin-top:var(--space-2)}.ef-alert:has(>[data-slot=icon])>.ef-alert__action{grid-column:2}}
 `;
 
 export const Alert = React.forwardRef(function Alert({
   variant = 'default',
+  icon,
   children,
   className,
   ...rest
 }, ref) {
   injectEfCss('ef-css-alert', CSS);
   const classes = ['ef-alert', `ef-alert--${variant}`, className || ''].filter(Boolean).join(' ');
+  const name = icon === false || React.Children.toArray(children).some(isIcon) ? null : icon || DEFAULT_ICON[variant];
 
   return (
     <div {...rest} ref={ref} data-slot="alert" role="alert" className={classes}>
+      {name ? <Icon name={name} size={16} /> : null}
       {children}
     </div>
   );
