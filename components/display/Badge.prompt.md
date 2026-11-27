@@ -13,7 +13,7 @@ Compact status or category label.
 
 `default` is neutral: a sunken surface with a strong border and ink text, so a
 normal status reads quieter than the primary button. Use `solid` for the filled
-accent badge (the ember fill of the primary button) when one badge in a view
+accent badge (the copper fill of the primary button, with its 1px accent edge) when one badge in a view
 must stand out; keep it to one per view. A status that needs a colour (Verified,
 Live, Degraded) takes the `ef-badge--success` or `ef-badge--warning` class, as
 in the last example.

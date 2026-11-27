@@ -22,7 +22,7 @@ A rebrand touches layer 2, plus the `--brand-*` stops in layer 1 when the identi
 
 ## The minimum viable rebrand
 
-The brand rides on a small set of tokens: the accent group (`--accent`, `--accent-hover`, `--accent-active`, `--accent-contrast`, plus the `--accent-subtle` / `--accent-subtle-border` tint pair), the focus ring pair (`--focus-ring-color`, `--focus-ring-offset`), the link color (`--text-link`), and the `--brand-*` ramp they resolve through. Everything else is neutral.
+The brand rides on a small set of tokens: the accent group (`--accent`, `--accent-hover`, `--accent-active`, `--accent-contrast`, `--accent-edge`, plus the `--accent-subtle` / `--accent-subtle-border` tint pair), the focus ring pair (`--focus-ring-color`, `--focus-ring-offset`), the link color (`--text-link`), and the `--brand-*` ramp they resolve through. Everything else is neutral.
 
 Copy this block and swap in your values. The example is a deep teal; every pair in it passes the contrast duty below, in both themes.
 
@@ -47,6 +47,7 @@ Copy this block and swap in your values. The example is a deep teal; every pair 
   --accent-hover: #071812;   /* darker than your 950 */
   --accent-active: #04100C;  /* darker still */
   --accent-contrast: #FFFFFF;
+  --accent-edge: var(--accent);  /* shapes and the 1px edge of the fill: 3:1 on page, card, sunken, track */
   --accent-subtle: var(--brand-50);
   --accent-subtle-border: var(--brand-200);
 
@@ -68,17 +69,18 @@ Two facts drive the dark half of your override file:
 - **Only semantic aliases remap in dark.** The stylesheet's `[data-theme="dark"]` block re-points surfaces, text, borders, the accent group, status tints, and `--focus-ring-color`. Ramps never change: `--brand-400` is the same hex at midnight.
 - **Your `:root` block outranks the stylesheet's dark block.** Both selectors have equal specificity and your file loads later, so any dark-remapped token you set in `:root` needs a dark value in the same file, otherwise dark mode inherits your light value.
 
-From the block above, the dark-remapped tokens are the six accent tokens, `--text-link`, and `--focus-ring-color` (the ramp and `--focus-ring-offset` are not). So the dark half restores or retunes exactly those:
+From the block above, the dark-remapped tokens are the seven accent tokens, `--text-link`, and `--focus-ring-color` (the ramp and `--focus-ring-offset` are not). So the dark half restores or retunes exactly those:
 
 ```css
 /* brand.css, continued */
 [data-theme="dark"] {
-  /* The first four restore the stylesheet's own dark accent (near-white),
-     so primary buttons stay the brightest thing on a dark page. */
+  /* The first four set this brand's dark accent (near-white here, so primary
+     buttons stay the brightest thing on a dark page); the stylesheet's own is copper. */
   --accent: #F3EFE7;
   --accent-hover: #FFFFFF;
   --accent-active: #D5CFC0;
   --accent-contrast: #1E1A14;
+  --accent-edge: var(--accent);
   --accent-subtle: #12251E;        /* dark tint of your brand */
   --accent-subtle-border: #1E4033;
   --text-link: var(--brand-400);
@@ -144,6 +146,7 @@ Any replacement value must keep the guarantees the stock palette ships with: **4
 - `--text-primary`, `--text-secondary`, `--text-muted` on `--surface-page`, `--surface-card`, and `--surface-sunken`: ≥ 4.5:1
 - each status foreground (`--success-600`, `--warning-600`, `--danger-600`) on its `*-100` tint and on `--surface-card`: ≥ 4.5:1
 - `--accent-contrast` on `--accent`: ≥ 4.5:1
+- `--accent-edge` on `--surface-page`, `--surface-card`, `--surface-sunken`, `--surface-track` and `--border-default`: ≥ 3:1, in light, dark and both `prefers-contrast: more` tables (every component shape and fill edge paints it)
 - `--focus-ring-color` on all three surfaces and on `--focus-ring-offset`: ≥ 3:1
 
 The verifier is in the repo:

@@ -23,6 +23,27 @@ Meridian keeps no legacy code. A rename or removal lands in one release, with no
 
 Guard reads imports, so it does not see components used as CDN globals (`window.Drawer`) or props passed through a spread (`<Drawer {...props}>`). Search for those by hand; the development warning still catches them at runtime.
 
+## v2.5.0
+
+### The ember ramp is gone and the accent is copper
+
+design-tokens v0.8.0 (vendored in v2.5.0) makes the interface accent the owl's copper, `#CD8F69`, in both themes, and removes the `ember` ramp. There is no alias. Six names stop existing: `--ember-50`, `--ember-100`, `--ember-150`, `--ember-300`, `--ember-600` and `--ember-700` (in `tokens.json`: `ember.50` and so on). A `var()` that points at a missing property is silently invalid, so the colour falls back to the inherited one: search your own CSS for `ember`.
+
+**Before.** `var(--ember-600)` for a brand colour, `var(--accent)` as a border, icon, line or thin fill on a light surface.
+
+**After.** A brand colour is `--accent` (fill), `--text-link` (text) or `--copper-300` to `--copper-600` (the new ramp). A shape drawn with the accent on a light surface is `--accent-edge`: copper is 2.47 to 2.72:1 on the surfaces, under the 3:1 a shape needs (WCAG 1.4.11). The label on an accent fill is ink (`--accent-contrast`) in both themes, no longer white in light.
+
+```css
+/* before */
+.badge-dot { background: var(--ember-600); }
+.my-switch[aria-checked="true"] { background: var(--accent); }
+/* after */
+.badge-dot { background: var(--copper-500); }
+.my-switch[aria-checked="true"] { background: var(--accent); box-shadow: inset 0 0 0 1px var(--accent-edge); }
+```
+
+Also check, in light, primary buttons, checked states, tabs and charts: they change colour. Links in running text carry an underline now (`Link`, and classless anchors inside `p`, `dd`, `blockquote` and `figcaption`). A disabled primary `Button` or solid `IconButton` is flat neutral, no longer faded copper. `CardTitle` is an `h2` (pass `as` for another level) and `Alert` draws a default icon per variant (`icon={false}` for none).
+
 ## v2.0.0
 
 ### FeatureCard tone="cocoa" is tone="band"
