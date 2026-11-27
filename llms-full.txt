@@ -1206,6 +1206,8 @@ Unified diff with dual line-number gutters, +/− signs, add/del row tints, and 
 
 Pass the original and changed text through `from` and `to`; line numbers, change counts, and word-level marks are computed. For non-diff code use CodeBlock.
 
+The scrolling part is a keyboard-focusable `region` so the diff can be scrolled with the arrow keys. A single diff is named by `aria-label` or `aria-labelledby`; without either it takes `title` when that is a string, else `Diff`. With `files`, each open file is a region named after the file.
+
 ```ts
 export interface DiffProps {
   /** Header: file path etc. Shows +/− counts */
@@ -1222,6 +1224,10 @@ export interface DiffProps {
   contextLines?: number;
   /** Scroll past this height */
   maxHeight?: number | string;
+  /** Names the scroll region of a single diff (or use `aria-labelledby`); a `files` diff names each region after its file @default the title when it is a string, else 'Diff' */
+  'aria-label'?: string;
+  /** Names the scroll region of a single diff by another element; wins over `aria-label` */
+  'aria-labelledby'?: string;
   style?: React.CSSProperties;
   className?: string;
 }
