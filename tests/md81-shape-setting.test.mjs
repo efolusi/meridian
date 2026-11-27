@@ -23,10 +23,11 @@ const FIELD = '--field-radius';
 describe('the root setting (tokens/base.css)', () => {
   const base = read('tokens/base.css');
 
-  it('data-shape="pill" sets the press radius to full and the field radius to lg', () => {
+  it('data-shape="pill" sets the press radius to full and the field radius to md (16px, what efolusi.com and sso web draw)', () => {
     const rule = declarations(base, '[data-shape="pill"]');
     expect(rule).toContain(`${PRESS}:var(--radius-full)`);
-    expect(rule).toContain(`${FIELD}:var(--radius-lg)`);
+    expect(rule).toContain(`${FIELD}:var(--radius-md)`);
+    expect(rule).not.toContain(`${FIELD}:var(--radius-lg)`);
   });
 
   it('is a plain custom-property rule: no !important, and no default on :root (absent attribute = today)', () => {
@@ -129,9 +130,18 @@ describe('the docs say where the attribute works, and what it really draws', () 
 
   it('theming.md says what the field radius draws: a stadium when the radius is over half the height', () => {
     expect(section).toContain('stadium');
-    expect(section).toContain('22px');
     expect(section).toContain('16px');
   });
+
+  // The field radius is --radius-md (16px), measured live on efolusi.com and sso web. At --radius-lg (22px) the
+  // 28 to 44px fields became stadiums, so no doc may still name --radius-lg or 22px as the field radius.
+  for (const [file, pick] of DOCS) {
+    it(`${file} does not state the old field radius (--radius-lg, 22px)`, () => {
+      const text = pick(read(file));
+      expect(text, `${file} section`).toBeTruthy();
+      expect(text).not.toMatch(/--radius-lg|22px/);
+    });
+  }
 
   it('theming.md lists the controls that follow neither property', () => {
     for (const name of ['Toggle', 'ButtonTile', 'InputOTP', 'Sidebar']) expect(section, name).toContain(name);

@@ -62,13 +62,14 @@ code,pre,kbd{font-family:var(--font-mono)}
 /* Shape (MD81): one root setting for the corners of everything you press and everything you type into.
    data-shape="pill" on <html> or <body> sets two properties: --press-radius (Button, IconButton, Tag, Badge,
    ButtonGroup text) to a full pill and --field-radius (Input, Textarea, NumberInput, Select, InputGroup and the other
-   text fields) to --radius-lg. A subtree does not reach the portalled overlays (Dialog, Popover, Toast and the rest
+   text fields) to --radius-md (16px). A subtree does not reach the portalled overlays (Dialog, Popover, Toast and the rest
    mount in document.body): pass `container` or set it on <html> or <body>. The components read the properties with
    today's radius as the fallback, so an absent attribute changes nothing. Fields are not full pills: a multi-line field
-   with a full radius reads as a mistake. --radius-lg is 22px here, so a single-line field up to 44px high still draws
-   as a stadium (radius over half the height). Toggle, ButtonTile, InputOTP slots and the Sidebar search input follow
+   with a full radius reads as a mistake. --radius-md is 16px here (what efolusi.com and sso web draw): Input sm (28px)
+   is a stadium (radius over half the height), Input md and NativeSelect (36px) are near-stadiums, Input lg (44px),
+   Input xl (52px) and Textarea are rounded rectangles. Toggle, ButtonTile, InputOTP slots and the Sidebar search input follow
    neither property. */
-[data-shape="pill"]{--press-radius:var(--radius-full);--field-radius:var(--radius-lg)}
+[data-shape="pill"]{--press-radius:var(--radius-full);--field-radius:var(--radius-md)}
 /* Page title (MD83): the one title of a signed-in page or a plain page, written by sso, pay and efolusi.com each on
    its own. Display face at --text-3xl to --text-4xl, balanced, and a long word breaks instead of overflowing. Put it
    on the h1; marketing pages use Hero and sections use SectionHead. */
