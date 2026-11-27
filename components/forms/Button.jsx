@@ -15,6 +15,12 @@ const CSS = `
 .ef-btn:focus-visible{outline:none;box-shadow:var(--focus-ring)}
 .ef-btn:active{transform:scale(.985)}
 .ef-btn:is(:disabled,[aria-disabled="true"],[data-disabled]){opacity:.45;cursor:not-allowed;pointer-events:none}
+/* A disabled primary is flat and neutral, not faded copper: the copper fill and ink label at .45 opacity are 1.9:1 apart
+   in light. A loading primary is disabled too, but the spinner is its only busy cue, so it keeps full strength (ink on
+   copper 6.37:1, aria-busy is set) and a progress cursor; hover and press leave it alone. */
+.ef-btn--primary:is(:disabled,[aria-disabled="true"],[data-disabled]):not([data-loading]){opacity:1;background:var(--surface-track);border-color:transparent;color:var(--text-muted)}
+.ef-btn--primary[data-loading]{opacity:1;cursor:progress;pointer-events:auto}
+.ef-btn--primary[data-loading]:is(:hover,:active){background:var(--accent);border-color:var(--accent-edge);transform:none}
 .ef-btn--sm{height:var(--control-h-sm);padding:0 var(--space-3);font-size:var(--text-sm)}
 .ef-btn--md{height:var(--control-h-md);padding:0 var(--space-4);font-size:var(--text-md)}
 .ef-btn--lg{height:var(--control-h-lg);padding:0 var(--space-5);font-size:var(--text-lg)}
@@ -24,7 +30,7 @@ const CSS = `
 .ef-btn--icon-xs{width:var(--control-h-xs);height:var(--control-h-xs);padding:0}
 .ef-btn--icon-sm{width:var(--control-h-sm);height:var(--control-h-sm);padding:0}
 .ef-btn--icon-lg{width:var(--control-h-lg);height:var(--control-h-lg);padding:0}
-.ef-btn--primary{background:var(--accent);color:var(--accent-contrast)}
+.ef-btn--primary{background:var(--accent);border-color:var(--accent-edge);color:var(--accent-contrast)}
 .ef-btn--primary:hover{background:var(--accent-hover)}
 .ef-btn--primary:active{background:var(--accent-active)}
 .ef-btn--secondary{background:transparent;color:var(--text-primary);border-color:var(--border-strong)}

@@ -71,8 +71,10 @@ describe('Alert action layout contract', () => {
     // action wider than 96px overflowed onto the description.
     expect(source).not.toMatch(/ef-alert__action\{position:absolute/);
     expect(source).not.toMatch(/padding-inline-end:96px/);
-    expect(source).toMatch(/\.ef-alert>\.ef-alert__action\{grid-column:3;grid-row:1\/3/);
+    expect(source).toMatch(/\.ef-alert \.ef-alert__action\{grid-column:2;grid-row:1\/3/);
+    expect(source).toContain('.ef-alert:has([data-slot=icon]:not(:is(.ef-alert__title,.ef-alert__description,.ef-alert__action) *)) .ef-alert__action{grid-column:3}');
     // Below 560px the action drops under the text as a full-width row.
-    expect(source).toMatch(/@media \(max-width:559px\)\{[^}]*\.ef-alert:has\(>\.ef-alert__action\)\{grid-template-columns:0 1fr\}/);
+    expect(source).toMatch(/@media \(max-width:559px\)\{[^}]*\.ef-alert:has\(\.ef-alert__action\)\{grid-template-columns:minmax\(0,1fr\)\}/);
+    expect(source).toMatch(/@media \(max-width:559px\)\{[^]*\.ef-alert \.ef-alert__action\{grid-column:1;grid-row:auto/);
   });
 });

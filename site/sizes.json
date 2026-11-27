@@ -1,16 +1,16 @@
 {
   "totals": {
     "@efolusi/meridian": {
-      "bytes": 379224,
-      "gzip": 85933
+      "bytes": 379588,
+      "gzip": 86066
     },
     "dist/components.css": {
-      "bytes": 242739,
-      "gzip": 33405
+      "bytes": 249285,
+      "gzip": 35276
     },
     "_ds_bundle.js": {
-      "bytes": 910068,
-      "gzip": 164213
+      "bytes": 917596,
+      "gzip": 166644
     }
   },
   "modules": [
@@ -406,8 +406,8 @@
       "exports": [
         "LineChart"
       ],
-      "bytes": 3248,
-      "gzip": 1454
+      "bytes": 3263,
+      "gzip": 1459
     },
     {
       "module": "data/Skeleton.js",
@@ -536,8 +536,8 @@
         "CardFooter",
         "Card"
       ],
-      "bytes": 1850,
-      "gzip": 567
+      "bytes": 1856,
+      "gzip": 592
     },
     {
       "module": "display/Carousel.js",
@@ -702,8 +702,8 @@
         "AlertDescription",
         "AlertAction"
       ],
-      "bytes": 1175,
-      "gzip": 470
+      "bytes": 46058,
+      "gzip": 7700
     },
     {
       "module": "feedback/AlertDialog.js",

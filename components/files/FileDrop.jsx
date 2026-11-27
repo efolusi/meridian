@@ -4,7 +4,7 @@ import { Icon } from '../icons/Icon.jsx';
 import { injectEfCss } from '../runtime/runtime.jsx';
 const CSS = `
 .ef-filedrop{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:var(--space-2);padding:var(--space-8) var(--space-6);border:1px dashed var(--border-control, var(--border-strong));border-radius:var(--radius-md);background:var(--surface-card);cursor:pointer;text-align:center;transition:border-color var(--dur-fast) var(--ease-enter),background var(--dur-fast) var(--ease-enter)}
-.ef-filedrop:hover,.ef-filedrop--over{border-color:var(--accent);background:var(--surface-subtle)}
+.ef-filedrop:hover,.ef-filedrop--over{border-color:var(--accent-edge);background:var(--surface-subtle)}
 .ef-filedrop:focus-visible{outline:none;box-shadow:var(--focus-ring)}
 .ef-filedrop__icon{color:var(--text-muted)}
 .ef-filedrop--over .ef-filedrop__icon,.ef-filedrop:hover .ef-filedrop__icon{color:var(--text-primary)}

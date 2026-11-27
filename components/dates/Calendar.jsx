@@ -21,7 +21,7 @@ const CSS = `
 .ef-cal__day:disabled{cursor:not-allowed;opacity:.35}
 .ef-cal__day[data-outside="true"]{color:var(--text-muted)}
 .ef-cal__day[data-today="true"]{border-color:var(--border-strong)}
-.ef-cal__day[data-selected="true"]{background:var(--accent);color:var(--accent-contrast);font-weight:var(--weight-semibold)}
+.ef-cal__day[data-selected="true"]{background:var(--accent);border-color:var(--accent-edge);color:var(--accent-contrast);font-weight:var(--weight-semibold)}
 .ef-cal__day[data-range-middle="true"]{border-radius:0;background:var(--accent-subtle);color:var(--text-primary)}
 .ef-cal__day[data-range-start="true"]{border-start-end-radius:0;border-end-end-radius:0}
 .ef-cal__day[data-range-end="true"]{border-start-start-radius:0;border-end-start-radius:0}

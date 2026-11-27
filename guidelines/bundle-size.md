@@ -13,9 +13,9 @@ CSS is not counted per component: `styles.css` ships every component style in on
 
 | File | Size | Gzip |
 | --- | ---: | ---: |
-| `@efolusi/meridian` | 370.3 kB | 83.9 kB |
-| `dist/components.css` | 237.0 kB | 32.6 kB |
-| `_ds_bundle.js` | 888.7 kB | 160.4 kB |
+| `@efolusi/meridian` | 370.7 kB | 84.0 kB |
+| `dist/components.css` | 243.4 kB | 34.4 kB |
+| `_ds_bundle.js` | 896.1 kB | 162.7 kB |
 
 The root import, `@efolusi/meridian`, is every component. `_ds_bundle.js` is the zero-build CDN bundle, which also carries each component's CSS. The root import is minified; the CSS and the CDN bundle are measured as shipped.
 
@@ -91,7 +91,7 @@ The root import, `@efolusi/meridian`, is every component. `_ds_bundle.js` is the
 | `display/Timeline.js` | Timeline | 45.1 kB | 7.5 kB |
 | `display/Toolbar.js` | Toolbar | 50.0 kB | 9.5 kB |
 | `display/TreeList.js` | TreeList | 45.5 kB | 7.8 kB |
-| `feedback/Alert.js` | Alert, AlertTitle, AlertDescription, AlertAction | 1.1 kB | 0.5 kB |
+| `feedback/Alert.js` | Alert, AlertTitle, AlertDescription, AlertAction | 45.0 kB | 7.5 kB |
 | `feedback/AlertDialog.js` | AlertDialog, AlertDialogTrigger, AlertDialogPortal, AlertDialogOverlay, AlertDialogContent, AlertDialogHeader, AlertDialogFooter, AlertDialogMedia, AlertDialogTitle, AlertDialogDescription, AlertDialogCancel, AlertDialogAction | 7.0 kB | 2.5 kB |
 | `feedback/Banner.js` | Banner | 44.8 kB | 7.5 kB |
 | `feedback/ConfirmDialog.js` | ConfirmDialog | 55.0 kB | 10.8 kB |

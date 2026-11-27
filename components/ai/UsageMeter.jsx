@@ -7,7 +7,7 @@ const CSS = `
 .ef-usage__label{font-size:var(--text-sm);font-weight:600;color:var(--text-primary)}
 .ef-usage__figures{margin-inline-start:auto;font-family:var(--font-mono);font-size:var(--text-xs);color:var(--text-muted)}
 .ef-usage__track{height:6px;border-radius:var(--radius-full);background:var(--surface-sunken);overflow:hidden}
-.ef-usage__fill{display:block;width:0;height:100%;border-radius:var(--radius-full);background:var(--accent);transition:width var(--dur-progress) linear}
+.ef-usage__fill{display:block;width:0;height:100%;border-radius:var(--radius-full);background:var(--accent-edge);transition:width var(--dur-progress) linear}
 .ef-usage--warn .ef-usage__fill{background:var(--status-warning-solid)}
 .ef-usage--over .ef-usage__fill{background:var(--status-danger-solid)}
 .ef-usage__foot{display:flex;gap:var(--space-2);font-size:var(--text-xs);color:var(--text-muted)}

@@ -1,7 +1,9 @@
 import type * as React from 'react';
 
 export interface AlertProps extends React.HTMLAttributes<HTMLDivElement> {
-  variant?: 'default' | 'danger';
+  variant?: 'default' | 'success' | 'warning' | 'danger';
+  /** Icon name. Default: info, circle-check, triangle-alert or circle-alert by variant. `false` shows none. An icon child replaces it. */
+  icon?: string | false;
 }
 
 export type AlertTitleProps = React.HTMLAttributes<HTMLDivElement>;

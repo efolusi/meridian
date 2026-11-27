@@ -11,7 +11,7 @@ const CSS = `
 .ef-otp__slot{position:relative;display:flex;width:40px;height:40px;align-items:center;justify-content:center;border:1px solid var(--border-control,var(--border-strong));border-inline-end-width:0;background:var(--surface-card);color:var(--text-primary);font-family:var(--font-mono);font-size:var(--text-md);font-weight:var(--weight-semibold);transition:border-color var(--dur-fast) var(--ease-enter),box-shadow var(--dur-fast) var(--ease-enter)}
 .ef-otp__slot:first-child{border-start-start-radius:var(--radius-md);border-end-start-radius:var(--radius-md)}
 .ef-otp__slot:last-child{border-inline-end-width:1px;border-start-end-radius:var(--radius-md);border-end-end-radius:var(--radius-md)}
-.ef-otp__slot[data-active]{z-index:1;border-color:var(--accent);box-shadow:var(--focus-ring)}
+.ef-otp__slot[data-active]{z-index:1;border-color:var(--accent-edge);box-shadow:var(--focus-ring)}
 .ef-otp__slot[aria-invalid="true"]{border-color:var(--status-danger-solid)}
 .ef-otp__caret{width:1px;height:18px;background:var(--text-primary);animation:ef-otp-caret 1s step-end infinite}
 .ef-otp__separator{display:flex;align-items:center;justify-content:center;width:28px;color:var(--text-muted)}

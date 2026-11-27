@@ -1181,7 +1181,7 @@
       "name": "barchart",
       "type": "registry:ui",
       "title": "BarChart",
-      "description": "Hairline-minimal bar chart: sand bars, ink highlight window, hover tint + title tooltip.",
+      "description": "Hairline-minimal bar chart: quiet base bars, a highlight window of copper bars with a 1px accent-edge outline (the outline carries the highlight, not tone alone; the base bars have none), hover tint + title tooltip.",
       "dependencies": [
         "react"
       ],
@@ -1700,7 +1700,7 @@
       "name": "card",
       "type": "registry:ui",
       "title": "Card + CardHeader + CardTitle + CardDescription + CardAction + CardContent + CardFooter",
-      "description": "Compose Card from header, title, description, action, content, and footer parts. Use `size=\"sm\"` for compact surfaces or set `--card-spacing` on the root when a layout needs a deliberate custom inset.",
+      "description": "CardTitle is a heading (`h2` by default; pass `as=\"h3\"` for the level the page needs), so a page of cards has a heading outline. Compose Card from header, title, description, action, content, and footer parts. Use `size=\"sm\"` for compact surfaces or set `--card-spacing` on the root when a layout nee",
       "dependencies": [
         "react"
       ],
@@ -1942,7 +1942,7 @@
       "name": "link",
       "type": "registry:ui",
       "title": "Link",
-      "description": "Styled anchor. `external` adds \u2197 + new tab; `standalone` makes a semibold CTA with \u2192.",
+      "description": "Styled anchor, underlined so a link in running text is not marked by colour alone (the link colour is 2.43:1 against body ink in light, 1.88:1 in dark). `external` adds \u2197 + new tab; `standalone` makes a semibold CTA with \u2192 and drops the underline, because it sits alone. `variant=\"quiet\"` is for navi",
       "dependencies": [
         "react"
       ],
@@ -2189,12 +2189,13 @@
       "name": "alert",
       "type": "registry:ui",
       "title": "Alert + AlertTitle + AlertDescription + AlertAction",
-      "description": "Notifikasi inline composable dengan varian `default` dan `danger`. Susun ikon, `AlertTitle`, `AlertDescription`, dan `AlertAction` sebagai children.",
+      "description": "Notifikasi inline composable dengan varian `default`, `success`, `warning`, dan `danger`. Susun `AlertTitle`, `AlertDescription`, dan `AlertAction` sebagai children. Setiap varian punya ikon bawaan (`info`, `circle-check`, `triangle-alert`, `circle-alert`) supaya status tidak hanya dibawa warna; ber",
       "dependencies": [
         "react"
       ],
       "registryDependencies": [
         "https://meridian.efolusi.com/site/registry/meridian-base.json",
+        "https://meridian.efolusi.com/site/registry/icon.json",
         "https://meridian.efolusi.com/site/registry/meridian-runtime.json"
       ],
       "files": [

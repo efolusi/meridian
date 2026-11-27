@@ -141,7 +141,7 @@ function Pricing() {
         <p style={{ fontSize: 16, color: 'var(--text-secondary)', marginTop: 10 }}>No usage cliffs, no surprise line items. Cancel anytime.</p>
         <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 1fr', gap: 20, marginTop: 44, textAlign: 'left' }}>
           {TIERS.map(([name, price, desc, feats, cta]) => (
-            <Card key={name} style={{ '--card-spacing': '28px', ...(cta === 'primary' ? { borderColor: 'var(--accent)', boxShadow: 'var(--shadow-sm)' } : {}) }}><CardContent>
+            <Card key={name} style={{ '--card-spacing': '28px', ...(cta === 'primary' ? { borderColor: 'var(--accent-edge)', boxShadow: 'var(--shadow-sm)' } : {}) }}><CardContent>
               <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
                 <h3 style={{ fontSize: 18, fontWeight: 700 }}>{name}</h3>
                 {cta === 'primary' && <Badge className="ef-badge--accent">Popular</Badge>}

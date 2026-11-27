@@ -14,11 +14,11 @@ const CSS = `
 .ef-input__el::placeholder{color:var(--text-muted)}
 .ef-input__el.ef-glass{background-color:color-mix(in srgb,var(--material-tint) calc(var(--material-clear) * 100%),transparent);border-color:var(--border-control,var(--border-strong));border-radius:var(--radius-full)}
 .ef-input__el:hover:not(:disabled){border-color:var(--border-control-hover)}
-.ef-input__el:focus-visible{outline:2px solid transparent;border-color:var(--accent);box-shadow:var(--focus-ring)}
+.ef-input__el:focus-visible{outline:2px solid transparent;border-color:var(--accent-edge);box-shadow:var(--focus-ring)}
 .ef-input__el:disabled{background:var(--surface-subtle);color:var(--text-muted);cursor:not-allowed;opacity:.5}
 .ef-file-input{position:relative;display:flex;width:100%;height:var(--control-h-md);align-items:center;gap:var(--space-3);padding:var(--space-1) var(--space-3) var(--space-1) var(--space-1);overflow:hidden;border:1px solid var(--border-control,var(--border-strong));border-radius:var(--radius-sm);background:var(--surface-sunken);color:var(--text-muted);font-family:var(--font-sans);font-size:var(--text-md);transition:border-color var(--dur-fast) var(--ease-enter),box-shadow var(--dur-fast) var(--ease-enter)}
-.ef-file-input:hover{border-color:var(--border-control-hover)}.ef-file-input:focus-within{border-color:var(--accent);box-shadow:var(--focus-ring)}.ef-file-input:has(.ef-input__el:disabled){background:var(--surface-subtle);cursor:not-allowed;opacity:.5}
-.ef-file-input__button{display:inline-flex;height:var(--control-h-sm);align-items:center;gap:var(--space-2);padding-inline:var(--space-3);border-radius:var(--radius-sm);background:var(--accent);color:var(--accent-contrast);font-size:var(--text-sm);font-weight:var(--weight-semibold);white-space:nowrap;transition:background var(--dur-fast) var(--ease-enter),transform var(--dur-base) var(--ease-emphasised)}
+.ef-file-input:hover{border-color:var(--border-control-hover)}.ef-file-input:focus-within{border-color:var(--accent-edge);box-shadow:var(--focus-ring)}.ef-file-input:has(.ef-input__el:disabled){background:var(--surface-subtle);cursor:not-allowed;opacity:.5}
+.ef-file-input__button{display:inline-flex;height:var(--control-h-sm);align-items:center;gap:var(--space-2);padding-inline:var(--space-3);border-radius:var(--radius-sm);background:var(--accent);box-shadow:inset 0 0 0 1px var(--accent-edge);color:var(--accent-contrast);font-size:var(--text-sm);font-weight:var(--weight-semibold);white-space:nowrap;transition:background var(--dur-fast) var(--ease-enter),transform var(--dur-base) var(--ease-emphasised)}
 .ef-file-input:hover:not(:has(.ef-input__el:disabled)) .ef-file-input__button{background:var(--accent-hover)}.ef-file-input:active:not(:has(.ef-input__el:disabled)) .ef-file-input__button{background:var(--accent-active);transform:scale(.985)}
 .ef-file-input__name{min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
 .ef-file-input>.ef-input__el[type="file"]{position:absolute;inset:0;width:100%;height:100%;padding:0;border:0;opacity:0;cursor:pointer}.ef-file-input>.ef-input__el[type="file"]:disabled{cursor:not-allowed}
@@ -38,6 +38,8 @@ const CSS = `
 .ef-input__el[aria-invalid="true"]:focus-visible{box-shadow:var(--focus-ring-danger)}
 /* Touch: fixed-size targets grow to --tap-min; small glyph buttons keep their look and get a centred --tap-min hit area instead. */
 @media (pointer:coarse){.ef-input__reveal::before{content:"";position:absolute;inset:calc(50% - var(--tap-min) / 2)}}
+/* The accent edge is an inset shadow, which forced colours drop: an outline in a system colour keeps it. */
+@media (forced-colors:active){.ef-file-input__button{outline:1px solid ButtonText}}
 `;
 
 function classes(...values) {

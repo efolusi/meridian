@@ -34,6 +34,15 @@ def tokens(name):
     return {tok: val.strip() for tok, val in re.findall(r"(--[\w-]+):([^;]+);", block(name))}
 
 
+def increased(name):
+    """The prefers-contrast: more overrides of one theme, as a token table (a missing block is a hard failure)."""
+    selector = r':root,\s*\[data-theme="light"\]' if name == "light" else r'\[data-theme="dark"\]'
+    m = re.search(r'@media \(prefers-contrast:\s*more\)\s*\{\s*' + selector + r'\s*\{([^{}]*)\}', CSS)
+    if not m:
+        sys.exit(f"could not locate the {name} prefers-contrast: more block in tokens/colors.css")
+    return {tok: val.strip() for tok, val in re.findall(r"(--[\w-]+):([^;]+);", m.group(1))}
+
+
 def resolve(tok, table, fallback=None):
     """Follow a var() chain, re-checking the active theme table at every hop.
 
@@ -114,7 +123,8 @@ PAIRS = [
     ("--success-600", ["--success-100", "--surface-card"], 4.5, "status text"),
     ("--warning-600", ["--warning-100", "--surface-card"], 4.5, "status text"),
     ("--danger-600", ["--danger-100", "--surface-card"], 4.5, "status text"),
-    ("--accent-contrast", ["--accent"], 4.5, "text on accent"),
+    ("--accent-contrast", ["--accent"], 4.5, "text on accent, and the spinner and label of a loading primary Button"),
+    ("--text-muted", ["--surface-track"], 4.5, "label of a disabled primary Button and solid IconButton (WCAG exempts it, the label stays legible)"),
     ("--accent-subtle-fg", ["--accent-subtle"], 4.5, "text and icons on the accent tint"),
     ("--danger-contrast", ["--danger-600", "--danger-700"], 4.5, "danger button normal and hover text"),
     ("--success-contrast", ["--success-600"], 4.5, "FileTypeIcon label on the green fill"),
@@ -141,6 +151,8 @@ PAIRS = [
     # on every surface a field can sit on.
     ("--border-control", SURFACES, 3.0, "form-control edge"),
     ("--border-control-hover", SURFACES, 3.0, "form-control edge on hover"),
+    # BarChart base bars paint --border-control (MD74 review): data marks need 3:1 against the page and the card too.
+    ("--border-control", ["--surface-page", "--surface-card"], 3.0, "BarChart base bars"),
     # WCAG 1.4.11 — the focus indicator must be distinguishable from whatever it
     # sits on. The inner offset ring is surface-coloured, so the outer ring only
     # ever borders a surface, never a control fill.
@@ -162,6 +174,27 @@ PAIRS = [
     ("--chart-5", ["--surface-card", "--surface-page"], 3.0, "chart series 5"),
 ]
 
+# MD74: in light the accent fill (copper) is 2.47 to 2.72:1 on the surfaces, under the 3:1 a shape needs
+# (WCAG 1.4.11), so every shape a component draws with the accent paints --accent-edge instead: the 1px edge of
+# a fill, the colour of a mark, a line or a thin fill. In dark the edge is the fill itself. Each entry is one
+# group of components with the grounds that group sits on; the gate measures all four modes (light, dark and
+# the two prefers-contrast: more tables). --surface-track is the ground of a progress fill, --border-default
+# of a line. A slider rail and the unplayed Player bars are --surface-track too.
+EDGE_PAIRS = [
+    ("--accent-edge", SURFACES, 3.0,
+     "edge of an accent fill: Button primary, IconButton solid, Toolbar active, TabBar current, Calendar selected day, Badge solid, ToolCall and Confirmation accept, Questionnaire primary, send buttons, Player play, file-input button"),
+    ("--accent-edge", SURFACES, 3.0,
+     "state marks: Checkbox, Switch on, Radio, Steps, Todo, AgentRun, ButtonTile, Slider thumb, TimePicker and Combobox check"),
+    ("--accent-edge", SURFACES, 3.0,
+     "selected and focused borders: ButtonTile, Questionnaire choice, FileDrop, Item, Input, Textarea, NumberInput, InputGroup, InputOTP, PromptComposer, Combobox chips"),
+    # The highlighted BarChart bars sit beside the base bars (--border-control). 3:1 between the two is out of reach with any
+    # one colour: the base must be 3:1 from the page, the highlight is itself 4.43:1 (light) and 6.49:1 (dark) from it,
+    # and the only colours 3:1 from both are near-black in light and none in dark. See LABELLED_MARKS.
+    ("--accent-edge", ["--border-control"], 3.0, "BarChart highlight outline against the base bars"),
+    ("--accent-edge", SURFACES + ["--surface-track", "--border-default"], 3.0,
+     "thin indicators on a track or line: Progress, UsageMeter, Slider range on its rail, played Player bars among the unplayed, Tabs underline and ink, PageControl, Steps line, Sandbox tab, Resizable handle, BarChart highlight, LineChart"),
+]
+
 # Light chart slots 3 (green) and 5 (pink) sit near 2.7:1. Darkening them would
 # break the palette's lightness band and colour-blind separation, so these marks
 # never carry identity alone: DonutChart always renders a text legend with values
@@ -171,6 +204,10 @@ PAIRS = [
 LABELLED_MARKS = {
     ("light", f"--chart-{n}", bg) for n in (3, 5) for bg in ("--surface-card", "--surface-page")
 }
+# BarChart highlight against its base bars: 1.34:1 in light, 1.75:1 in dark (it was 1.32 and 1.03 against the old
+# --text-muted base). The highlight is carried by its 1px outline (the base bars have none) and the bars have a hidden data
+# table, so it never depends on tone (WCAG 1.4.1).
+LABELLED_MARKS |= {(theme, "--accent-edge", "--border-control") for theme in ("light", "dark")}
 
 # Pairs that fail today and need a visual decision from the owner before the
 # token moves (see the 2026-11-12 review). They are reported, not hidden: a pair
@@ -203,8 +240,15 @@ light = tokens("light")
 dark = tokens("dark")
 failures, unresolved, stale, tolerated, checked = [], [], [], [], 0
 
-for theme, table, fallback in (("light", light, None), ("dark", dark, light)):
-    for fg_tok, bg_toks, minimum, label in PAIRS:
+increased_light = {**light, **increased("light")}
+increased_dark = {**dark, **increased("dark")}
+for theme, table, fallback, pairs in (
+    ("light", light, None, PAIRS + EDGE_PAIRS),
+    ("dark", dark, light, PAIRS + EDGE_PAIRS),
+    ("increased", increased_light, None, EDGE_PAIRS),
+    ("increased-dark", increased_dark, light, EDGE_PAIRS),
+):
+    for fg_tok, bg_toks, minimum, label in pairs:
         fg_raw = resolve(fg_tok, table, fallback)
         for bg_tok in bg_toks:
             key = (theme, fg_tok, bg_tok)

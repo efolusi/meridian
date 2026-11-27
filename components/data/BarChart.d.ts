@@ -3,7 +3,7 @@ export interface BarChartProps {
   data: Array<number | { value: number; label?: string }>;
   /** @default 140 */
   height?: number;
-  /** Ink-fill the last N bars */
+  /** Highlight the last N bars: copper fill with a 1px accent-edge outline (the base bars have none), so the highlight is not carried by tone alone */
   highlightLast?: number;
   /** X-axis labels, spread edge to edge */
   labels?: string[];

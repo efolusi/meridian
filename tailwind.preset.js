@@ -112,6 +112,7 @@ module.exports = { theme: { extend: {
     "accent-subtle-border": "var(--accent-subtle-border)",
     "accent-contrast": "var(--accent-contrast)",
     "accent-subtle-fg": "var(--accent-subtle-fg)",
+    "accent-edge": "var(--accent-edge)",
     "accent-warm": "var(--accent-warm)",
     "accent-soft": "var(--accent-soft)",
     "focus-ring-color": "var(--focus-ring-color)",
@@ -151,6 +152,8 @@ module.exports = { theme: { extend: {
     "xl": "var(--shadow-xl)"
   },
   "fontSize": {
+    "4xs": "var(--text-4xs)",
+    "3xs": "var(--text-3xs)",
     "2xs": "var(--text-2xs)",
     "xs": "var(--text-xs)",
     "sm": "var(--text-sm)",

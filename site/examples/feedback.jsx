@@ -23,11 +23,10 @@ export function AlertDialogDemo() {
 
 // @demo Alert Inline callout
 export function AlertDemo() {
-  const { Alert, AlertTitle, AlertDescription, Icon } = window.EfolusiDesignSystem_4ffc3d;
+  const { Alert, AlertTitle, AlertDescription } = window.EfolusiDesignSystem_4ffc3d;
   return (
     <div style={{ width: '100%', maxWidth: 520 }}>
       <Alert>
-        <Icon name="info" size={16} />
         <AlertTitle>Scheduled maintenance</AlertTitle>
         <AlertDescription>The EU region pauses for ~10 minutes on Sunday 02:00 UTC. Queued runs resume automatically.</AlertDescription>
       </Alert>
@@ -37,12 +36,13 @@ export function AlertDemo() {
 
 // @demo Alert Tones
 export function AlertTones() {
-  const { Alert, AlertTitle, AlertDescription, Icon } = window.EfolusiDesignSystem_4ffc3d;
+  const { Alert, AlertTitle, AlertDescription } = window.EfolusiDesignSystem_4ffc3d;
   return (
     <div style={{ display: 'flex', flexDirection: 'column', gap: 12, width: '100%', maxWidth: 520 }}>
-      <Alert className="ef-alert--success"><Icon name="circle-check" size={16} /><AlertTitle>Backup restored</AlertTitle><AlertDescription>All 42 tables verified.</AlertDescription></Alert>
-      <Alert className="ef-alert--warning"><Icon name="triangle-alert" size={16} /><AlertTitle>Budget at 85%</AlertTitle><AlertDescription>Runs pause at 100% unless you raise the cap.</AlertDescription></Alert>
-      <Alert variant="danger"><Icon name="circle-alert" size={16} /><AlertTitle>Deploy failed</AlertTitle><AlertDescription>Image digest mismatch on api-7f3c.</AlertDescription></Alert>
+      <Alert variant="success"><AlertTitle>Backup restored</AlertTitle><AlertDescription>All 42 tables verified.</AlertDescription></Alert>
+      <Alert variant="warning"><AlertTitle>Budget at 85%</AlertTitle><AlertDescription>Runs pause at 100% unless you raise the cap.</AlertDescription></Alert>
+      <Alert icon={false}><AlertTitle>No icon, no indent</AlertTitle><AlertDescription>The text starts at the left edge when there is no glyph.</AlertDescription></Alert>
+      <Alert variant="danger"><AlertTitle>Deploy failed</AlertTitle><AlertDescription>Image digest mismatch on api-7f3c.</AlertDescription></Alert>
     </div>
   );
 }

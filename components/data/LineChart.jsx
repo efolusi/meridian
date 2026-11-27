@@ -43,10 +43,10 @@ export function LineChart({ data = [], height = 150, showArea = true, showDots =
   return (
     <div {...rest} ref={ref} className={`ef-linechart${className ? ' ' + className : ''}`} style={style} onMouseMove={move} onMouseLeave={() => setHov(null)}>
       <svg role="img" aria-label={summary} viewBox={`0 0 ${W} ${H}`} width="100%" height={H} preserveAspectRatio="none" className="ef-linechart__svg">
-        {showArea && area && <path d={area} fill="var(--accent)" opacity=".07" />}
-        {path && <path d={path} fill="none" stroke="var(--accent)" strokeWidth="1.5" vectorEffect="non-scaling-stroke" />}
+        {showArea && area && <path d={area} fill="var(--accent-edge)" opacity=".07" />}
+        {path && <path d={path} fill="none" stroke="var(--accent-edge)" strokeWidth="1.5" vectorEffect="non-scaling-stroke" />}
         {(showDots ? data.map((_, i) => i) : hov != null ? [hov] : []).map(i => (
-          <circle key={i} cx={x(i)} cy={y(data[i].value)} r="3" fill="var(--surface-card)" stroke="var(--accent)" strokeWidth="1.5" vectorEffect="non-scaling-stroke" />
+          <circle key={i} cx={x(i)} cy={y(data[i].value)} r="3" fill="var(--surface-card)" stroke="var(--accent-edge)" strokeWidth="1.5" vectorEffect="non-scaling-stroke" />
         ))}
         {hov != null && <line x1={x(hov)} x2={x(hov)} y1={PAD} y2={H - PAD} stroke="var(--border-strong)" strokeDasharray="3 3" vectorEffect="non-scaling-stroke" />}
       </svg>

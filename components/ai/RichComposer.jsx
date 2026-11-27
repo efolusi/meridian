@@ -10,7 +10,7 @@ const CSS = `
 .ef-richcomposer__chip{display:inline-flex;align-items:center;gap:var(--space-1);margin:0 1px;padding:1px var(--space-2);border-radius:var(--radius-sm);background:var(--accent-subtle);border:1px solid var(--accent-subtle-border);color:var(--text-primary);font-size:var(--text-sm);white-space:nowrap;user-select:none}
 .ef-richcomposer__bar{display:flex;align-items:center;gap:var(--space-2);padding:var(--space-2) var(--space-3) var(--space-3)}
 .ef-richcomposer__hint{font-size:var(--text-xs);color:var(--text-muted)}
-.ef-richcomposer__send{margin-inline-start:auto;display:inline-flex;align-items:center;justify-content:center;width:32px;height:32px;border:none;border-radius:var(--radius-full);background:var(--accent);color:var(--accent-contrast);cursor:pointer;transition:background var(--dur-fast) var(--ease-enter),opacity var(--dur-fast) var(--ease-enter)}
+.ef-richcomposer__send{margin-inline-start:auto;display:inline-flex;align-items:center;justify-content:center;width:32px;height:32px;border:none;border-radius:var(--radius-full);background:var(--accent);box-shadow:inset 0 0 0 1px var(--accent-edge);color:var(--accent-contrast);cursor:pointer;transition:background var(--dur-fast) var(--ease-enter),opacity var(--dur-fast) var(--ease-enter)}
 .ef-richcomposer__send:hover{background:var(--accent-hover)}
 .ef-richcomposer__send:disabled{opacity:.35;cursor:default}
 .ef-richcomposer__send:focus-visible{outline:none;box-shadow:var(--focus-ring)}

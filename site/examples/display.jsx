@@ -122,7 +122,7 @@ export function CarouselDemo() {
         <CarouselContent>
           {['Analytics', 'Billing', 'Identity', 'Storage', 'Search', 'Webhooks'].map(p => (
             <CarouselItem key={p} style={{ flexBasis: 180 }}>
-              <Card><CardHeader><CardTitle>{p}</CardTitle><CardDescription>Module</CardDescription></CardHeader><CardContent><div style={{ height: 28 }} /></CardContent></Card>
+              <Card><CardHeader><CardTitle as="h3">{p}</CardTitle><CardDescription>Module</CardDescription></CardHeader><CardContent><div style={{ height: 28 }} /></CardContent></Card>
             </CarouselItem>
           ))}
         </CarouselContent>

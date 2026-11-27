@@ -45,7 +45,9 @@ describe('Card compatibility contract', () => {
         <CardFooter ref={refs[6]}>Footer</CardFooter>
       </Card>,
     );
-    expect(refs.every(entry => entry.current instanceof HTMLDivElement)).toBe(true);
+    // The title is a heading since MD70; every other part stays a div.
+    expect(refs[2].current instanceof HTMLHeadingElement).toBe(true);
+    expect(refs.filter((_, i) => i !== 2).every(entry => entry.current instanceof HTMLDivElement)).toBe(true);
     expect(screen.getByLabelText('Summary').className).toContain('root');
     expect(screen.getByLabelText('Summary').style.getPropertyValue('--card-spacing')).toBe('24px');
     expect(refs[1].current.className).toContain('header');

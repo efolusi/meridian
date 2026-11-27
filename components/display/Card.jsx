@@ -32,8 +32,8 @@ export const CardHeader = React.forwardRef(function CardHeader({ className, ...r
   return <div {...rest} ref={ref} data-slot="card-header" className={cx('ef-card__header', className)} />;
 });
 
-export const CardTitle = React.forwardRef(function CardTitle({ className, ...rest }, ref) {
-  return <div {...rest} ref={ref} data-slot="card-title" className={cx('ef-card__title', className)} />;
+export const CardTitle = React.forwardRef(function CardTitle({ as: Heading = 'h2', className, ...rest }, ref) {
+  return <Heading {...rest} ref={ref} data-slot="card-title" className={cx('ef-card__title', className)} />;
 });
 
 export const CardDescription = React.forwardRef(function CardDescription({ className, ...rest }, ref) {

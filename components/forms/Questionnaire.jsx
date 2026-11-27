@@ -11,19 +11,19 @@ const CSS = `
 .ef-questionnaire__choices{display:grid;gap:var(--space-2)}
 .ef-questionnaire__choice{position:relative;display:flex;align-items:flex-start;gap:var(--space-3);padding:var(--space-3);border:1px solid var(--border-default);border-radius:var(--radius-md);background:var(--surface-card);color:var(--text-primary);cursor:pointer;transition:border-color var(--dur-fast) var(--ease-enter),background var(--dur-fast) var(--ease-enter)}
 .ef-questionnaire__choice:hover{border-color:var(--border-strong);background:var(--surface-sunken)}
-.ef-questionnaire__choice:has(input:checked){border-color:var(--accent);background:var(--accent-subtle)}
+.ef-questionnaire__choice:has(input:checked){border-color:var(--accent-edge);background:var(--accent-subtle)}
 .ef-questionnaire__choice:has(input:focus-visible){box-shadow:var(--focus-ring)}
 .ef-questionnaire__choice:has(input:disabled){opacity:.45;cursor:not-allowed}
-.ef-questionnaire__choice input{width:16px;height:16px;margin:var(--space-0-5) 0 0;accent-color:var(--accent);flex:none}
+.ef-questionnaire__choice input{width:16px;height:16px;margin:var(--space-0-5) 0 0;accent-color:var(--accent-edge);flex:none}
 .ef-questionnaire__choice-label{display:grid;gap:var(--space-0-5);flex:1;min-width:0}
 .ef-questionnaire__shortcut{font-family:var(--font-mono);font-size:var(--text-xs);color:var(--text-muted)}
 .ef-questionnaire__input{width:100%;min-height:var(--control-h-md);padding:0 var(--space-3);border:1px solid var(--border-default);border-radius:var(--radius-md);background:var(--surface-card);color:var(--text-primary);font:inherit;outline:none}
-.ef-questionnaire__input:focus-visible{border-color:var(--accent);box-shadow:var(--focus-ring)}
+.ef-questionnaire__input:focus-visible{border-color:var(--accent-edge);box-shadow:var(--focus-ring)}
 .ef-questionnaire__required{font-size:var(--text-sm);font-weight:var(--weight-regular);color:var(--text-secondary)}
 .ef-questionnaire__error{font-size:var(--text-sm);color:var(--status-danger-text)}
 .ef-questionnaire__actions{display:flex;flex-wrap:wrap;align-items:center;justify-content:flex-end;gap:var(--space-2)}
 .ef-questionnaire__button{min-height:var(--control-h-md);padding:0 var(--space-4);border:1px solid var(--border-default);border-radius:var(--radius-md);background:var(--surface-card);color:var(--text-primary);font:inherit;font-weight:var(--weight-medium);cursor:pointer}
-.ef-questionnaire__button[data-primary]{border-color:var(--accent);background:var(--accent);color:var(--accent-contrast)}
+.ef-questionnaire__button[data-primary]{border-color:var(--accent-edge);background:var(--accent);color:var(--accent-contrast)}
 .ef-questionnaire__button:disabled{opacity:.45;cursor:not-allowed}
 `;
 

@@ -175,7 +175,7 @@ window.MeridianLiveFrame = (() => {
     borderRadius: 'var(--radius-sm)', padding: '6px 16px',
     color: kind === 'run' ? 'var(--accent-contrast)' : 'var(--text-secondary)',
     background: kind === 'run' ? 'var(--accent)' : 'transparent',
-    border: '1px solid ' + (kind === 'run' ? 'var(--accent)' : 'var(--border-default)'),
+    border: '1px solid ' + (kind === 'run' ? 'var(--accent-edge)' : 'var(--border-default)'),
   });
   function MeridianLiveFrame({ file, exp, minHeight }) {
     const [tab, setTab] = React.useState('preview');

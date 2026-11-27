@@ -4,6 +4,7 @@ import { render } from '@testing-library/react';
 import { DonutChart } from '../components/data/DonutChart.jsx';
 import { BarChart } from '../components/data/BarChart.jsx';
 import { FileDrop } from '../components/files/FileDrop.jsx';
+import { THEMES, ratio } from './helpers/token-table.mjs';
 
 const css = id => document.getElementById(id).textContent;
 
@@ -24,9 +25,10 @@ describe('DonutChart', () => {
 });
 
 describe('BarChart resting bars', () => {
-  it('use a fill that clears 3:1 on card in both themes (--text-muted)', () => {
+  it('use a fill that clears 3:1 on card in both themes (--border-control, MD74 review: quieter than the highlight)', () => {
     render(<BarChart data={[1, 2]} />);
-    expect(css('ef-css-bars')).toMatch(/\.ef-bars__bar\{[^}]*background:var\(--text-muted\)/);
+    expect(css('ef-css-bars')).toMatch(/\.ef-bars__bar\{[^}]*background:var\(--border-control\)/);
+    for (const [name, table] of THEMES) expect(ratio(table, '--border-control', '--surface-card'), name).toBeGreaterThanOrEqual(3);
   });
 });
 

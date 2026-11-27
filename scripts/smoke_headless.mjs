@@ -99,6 +99,132 @@ if (!result.ok) {
   process.exit(1);
 }
 
+// The width in px of the Table fade layer, from the computed mask-size ('<solid>, <fade>'). The fade layer is the second entry
+// ('28px 100%', '0px 100%', '0.0095px 100%'); if only the solid layer is readable ('calc(100% - 28px) 100%') the fade is what its
+// calc takes off. NaN when neither form is there. A fractional remainder is normal at the end of the scroll (in RTL the maximum
+// scroll is fractional and progress stops at 99.97%), so callers compare with a tolerance, never with exactly 0.
+// fadePx:start
+function fadePx(maskSize) {
+  const layers = maskSize.split(/,(?![^(]*\))/).map((layer) => layer.trim());
+  const width = (layer) => (/^(calc\([^)]*\)|\S+)/.exec(layer || '') || [''])[0];
+  const calcOff = (w) => { const m = /^calc\(\s*100%\s*-\s*([\d.]+(?:e[+-]?\d+)?)px\s*\)$/i.exec(w); return m ? Number(m[1]) : Number.NaN; };
+  const fade = width(layers[1]);
+  if (/px$/.test(fade)) return Number.parseFloat(fade);
+  if (fade === '0') return 0;
+  const off = calcOff(fade);
+  return Number.isNaN(off) ? calcOff(width(layers[0])) : off;
+}
+// fadePx:end
+const GONE_PX = 0.5, SHOWN_PX = 27; // the fade is nominally 28px wide
+// MD74: a Table that scrolls sideways fades its end edge while content is hidden there (scroll-driven animation on a
+// mask). The fade must lift while any keyboard focus is inside the wrapper, so a focused row or a control in the last
+// column is never under it. The fixture is 375px wide with nine columns and a button in the last one; it is removed
+// again before any screenshot is taken.
+if (await page.evaluate(() => CSS.supports('animation-timeline', 'scroll(self inline)'))) {
+  await page.evaluate(() => {
+    const DS = window.EfolusiDesignSystem_4ffc3d, R = window.React;
+    const host = document.createElement('div');
+    host.id = 'table-fade-fixture';
+    host.style.cssText = 'position:fixed;inset-block-start:0;inset-inline-start:0;width:375px;background:var(--surface-page);z-index:99999';
+    document.body.appendChild(host);
+    const columns = Array.from({ length: 8 }, (_, i) => ({ key: `c${i}`, label: `Column ${i}` }));
+    columns.push({ key: 'act', label: 'Action', render: (_v, row) => R.createElement('button', { type: 'button', className: 'table-fade-last' }, `Open ${row.id}`) });
+    const rows = Array.from({ length: 3 }, (_, r) => Object.fromEntries([['id', `r${r}`], ['act', ''], ...columns.slice(0, 8).map(c => [c.key, `${c.label} of row ${r} has a long value`])]));
+    window.__tableFadeRoot = window.ReactDOM.createRoot(host);
+    window.__tableFadeRoot.render(R.createElement(R.Fragment, null,
+      R.createElement('button', { type: 'button', id: 'table-fade-before' }, 'Before'),
+      R.createElement(DS.Table, { columns, rows, rowKey: 'id', onRowClick: () => {}, label: 'Fade fixture' })));
+  });
+  await page.waitForSelector('#table-fade-fixture .ef-table-wrap[tabindex="0"]', { timeout: 10000 });
+  const settle = () => page.evaluate(() => new Promise(r => requestAnimationFrame(() => requestAnimationFrame(r))));
+  const read = () => page.evaluate(() => {
+    const wrap = document.querySelector('#table-fade-fixture .ef-table-wrap');
+    const cs = getComputedStyle(wrap);
+    return { mask: cs.maskImage, size: cs.maskSize, active: document.activeElement.tagName + (document.activeElement.className ? '.' + String(document.activeElement.className).split(' ')[0] : '') };
+  });
+  await page.evaluate((src) => { window.__fadePx = new Function(`${src}; return fadePx;`)(); }, fadePx.toString());
+  await settle();
+  const rest = await read();
+  if (!(fadePx(rest.size) > SHOWN_PX)) {
+    console.error(`smoke: Table fade case: the end edge is not faded while columns are hidden (mask-size ${rest.size})`);
+    await browser.close();
+    process.exit(1);
+  }
+  await page.locator('#table-fade-before').focus();
+  const focusOrder = [];
+  // Tab to the wrapper, a row (tabIndex 0 with onRowClick) and a control in the last column: no fade under any of them.
+  for (let i = 0; i < 4; i++) {
+    await page.keyboard.press('Tab');
+    await settle();
+    const now = await read();
+    focusOrder.push(now.active);
+    if (now.mask !== 'none') {
+      console.error(`smoke: Table fade case: the fade stays on while ${now.active} has keyboard focus (mask-image ${now.mask})`);
+      await browser.close();
+      process.exit(1);
+    }
+  }
+  if (!focusOrder.some(a => a.startsWith('TR')) || !focusOrder.some(a => a.startsWith('BUTTON.table-fade-last'))) {
+    console.error(`smoke: Table fade case: Tab did not reach a row and a last-column control (${focusOrder.join(', ')})`);
+    await browser.close();
+    process.exit(1);
+  }
+  await page.locator('#table-fade-before').focus();
+  await page.evaluate(() => document.activeElement.blur());
+  await settle();
+  // Focus left the table, so the mask is back. Tabbing to the last-column button scrolled the wrapper to its far end, where
+  // nothing is hidden and the fade is 0 by design, so scroll back to the start before asking for the 28px fade.
+  const after = await read();
+  if (after.mask === 'none') {
+    console.error(`smoke: Table fade case: the mask did not come back after focus left the table (${after.mask})`);
+    await browser.close();
+    process.exit(1);
+  }
+  // scrollLeft is 0 at the inline START in both directions and runs to +max in LTR but to -max in RTL (the inline END is the
+  // left edge there), so a large positive value clamps to the start in RTL. Say whether the scroll really reached the target.
+  const scrollTo = (end) => page.evaluate((toEnd) => {
+    const wrap = document.querySelector('#table-fade-fixture .ef-table-wrap');
+    const max = wrap.scrollWidth - wrap.clientWidth;
+    wrap.scrollLeft = toEnd ? (getComputedStyle(wrap).direction === 'rtl' ? -max : max) : 0;
+    return toEnd ? Math.abs(wrap.scrollLeft) >= max - 1 && max > 0 : wrap.scrollLeft === 0;
+  }, end);
+  // Two readings one animation frame apart must both satisfy the condition, so a transient value cannot pass.
+  const fadeIs = (want) => page.waitForFunction(async ([w, goneAt, shownAt]) => {
+    const wrap = document.querySelector('#table-fade-fixture .ef-table-wrap');
+    const width = () => window.__fadePx(getComputedStyle(wrap).maskSize);
+    const ok = (px) => (w === 'shown' ? px > shownAt : px < goneAt);
+    const first = width();
+    await new Promise((r) => requestAnimationFrame(r));
+    const second = width();
+    const both = (x, y) => ok(x) && ok(y);
+    return both(first, second);
+  }, [want, GONE_PX, SHOWN_PX], { timeout: 3000 }).then(() => true, () => false);
+  if (!(await scrollTo(false))) {
+    console.error(`smoke: Table fade case: could not scroll the wrapper to the inline start (${JSON.stringify(await read())})`);
+    await browser.close();
+    process.exit(1);
+  }
+  if (!(await fadeIs('shown'))) {
+    console.error(`smoke: Table fade case: no fade at the start of the scroll after focus left the table (${JSON.stringify(await read())})`);
+    await browser.close();
+    process.exit(1);
+  }
+  if (!(await scrollTo(true))) {
+    console.error(`smoke: Table fade case: could not scroll the wrapper to the inline end (${JSON.stringify(await read())})`);
+    await browser.close();
+    process.exit(1);
+  }
+  if (!(await fadeIs('gone'))) {
+    console.error(`smoke: Table fade case: the fade stays at the end of the scroll, where nothing is hidden (${JSON.stringify(await read())})`);
+    await browser.close();
+    process.exit(1);
+  }
+  await page.evaluate(() => { window.__tableFadeRoot.unmount(); document.getElementById('table-fade-fixture').remove(); });
+  console.log('smoke: Table end-edge fade lifts for the wrapper, a row and a last-column control');
+} else {
+  console.log(`smoke: Table fade case skipped (${ENGINE} has no scroll-driven animations)`);
+}
+
 if (SHOTS) {
   fs.mkdirSync(SHOTS, { recursive: true });
   await page.evaluate(() => document.fonts.ready);
