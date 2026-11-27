@@ -13,8 +13,20 @@ describe('axe in CI', () => {
     expect(workflow).toContain('-e A11Y_GROUPS');
   });
 
-  it('installs the same exact axe-core as package.json in the smoke job', () => {
+  it('installs axe-core from the lockfile with npm ci, not by version on the command line', () => {
+    const lock = JSON.parse(readFileSync('package-lock.json', 'utf8'));
     expect(pkg.devDependencies['axe-core']).toMatch(/^\d+\.\d+\.\d+$/);
-    expect(workflow).toContain(`axe-core@${pkg.devDependencies['axe-core']}`);
+    expect(lock.packages['node_modules/axe-core'].version).toBe(pkg.devDependencies['axe-core']);
+    expect(lock.packages['node_modules/axe-core'].integrity).toMatch(/^sha512-/);
+    const smoke = workflow.slice(workflow.indexOf('  smoke:'));
+    expect(smoke.indexOf('npm ci --no-audit --no-fund')).toBeGreaterThan(-1);
+    expect(smoke.indexOf('npm ci --no-audit --no-fund')).toBeLessThan(smoke.indexOf('npm install --no-save'));
+    expect(workflow).not.toMatch(/npm install[^\n]*axe-core/);
+  });
+
+  it('runs the second pass at 390px and counts moderate and minor warnings', () => {
+    const script = readFileSync('scripts/a11y.mjs', 'utf8');
+    expect(script).toContain('width: 390');
+    expect(script).toContain('moderate or minor warning node(s)');
   });
 });

@@ -1,7 +1,12 @@
 #!/usr/bin/env node
 // Accessibility check: loads site/_smoke.html in a real browser, runs axe-core
 // (WCAG 2.0, 2.1 and 2.2, levels A and AA) over the chosen demo groups in the
-// light and dark themes, and exits 1 on any serious or critical violation.
+// light and dark themes at a 1280px desktop width and again at a 390px phone
+// width (target-size and reflow), and exits 1 on any serious or critical
+// violation. At 390px it also fails when the page scrolls sideways (WCAG 1.4.10
+// Reflow), except inside a region that scrolls on purpose.
+// Moderate and minor findings never fail the run: each is printed as `warn`
+// and the closing line counts them, so a rising count shows in the CI log.
 // Requires a static server on BASE and a Playwright browser, like
 // scripts/smoke_headless.mjs.
 //   BASE=http://localhost:8000 npm run a11y
@@ -19,6 +24,10 @@ const EXECUTABLE_PATH = process.env.EXECUTABLE_PATH || '';
 const GROUPS = (process.env.A11Y_GROUPS || 'marketing').split(',').map((g) => g.trim()).filter(Boolean);
 const TAGS = ['wcag2a', 'wcag2aa', 'wcag21a', 'wcag21aa', 'wcag22aa'];
 const BLOCKING = new Set(['serious', 'critical']);
+const VIEWPORTS = [
+  { name: 'desktop', width: 1280, height: 900 },
+  { name: 'phone', width: 390, height: 844 },
+];
 
 const started = Date.now();
 const browser = await playwright.chromium.launch(EXECUTABLE_PATH ? { executablePath: EXECUTABLE_PATH } : {});
@@ -42,28 +51,73 @@ if (missing.length) {
 }
 
 let blocking = 0;
-for (const theme of ['light', 'dark']) {
-  await page.evaluate((t) => {
-    document.documentElement.setAttribute('data-theme', t);
-  }, theme);
-  await page.evaluate(() => new Promise((r) => requestAnimationFrame(() => requestAnimationFrame(r))));
-  const result = await page.evaluate(async ({ include, tags }) => {
-    const r = await window.axe.run({ include: include.map((s) => [s]) }, { runOnly: { type: 'tag', values: tags }, resultTypes: ['violations'] });
-    return r.violations.map((v) => ({
-      id: v.id, impact: v.impact, help: v.help,
-      nodes: v.nodes.map((n) => ({ target: n.target.join(' ') })),
-    }));
-  }, { include: selectors, tags: TAGS });
-  for (const v of result) {
-    const block = BLOCKING.has(v.impact);
-    if (block) blocking += v.nodes.length;
-    console.log(`${block ? 'FAIL' : 'warn'} [${theme}] ${v.impact} ${v.id}: ${v.help} (${v.nodes.length})`);
-    for (const n of v.nodes.slice(0, 8)) console.log(`       ${n.target}`);
+let warnings = 0;
+const warnRules = new Set();
+for (const viewport of VIEWPORTS) {
+  await page.setViewportSize({ width: viewport.width, height: viewport.height });
+  for (const theme of ['light', 'dark']) {
+    const label = `${theme} ${viewport.width}px`;
+    await page.evaluate((t) => {
+      document.documentElement.setAttribute('data-theme', t);
+    }, theme);
+    await page.evaluate(() => new Promise((r) => requestAnimationFrame(() => requestAnimationFrame(r))));
+    const result = await page.evaluate(async ({ include, tags }) => {
+      const r = await window.axe.run({ include: include.map((s) => [s]) }, { runOnly: { type: 'tag', values: tags }, resultTypes: ['violations'] });
+      return r.violations.map((v) => ({
+        id: v.id, impact: v.impact, help: v.help,
+        nodes: v.nodes.map((n) => ({ target: n.target.join(' ') })),
+      }));
+    }, { include: selectors, tags: TAGS });
+    for (const v of result) {
+      const block = BLOCKING.has(v.impact);
+      if (block) blocking += v.nodes.length;
+      else {
+        warnings += v.nodes.length;
+        warnRules.add(v.id);
+      }
+      console.log(`${block ? 'FAIL' : 'warn'} [${label}] ${v.impact} ${v.id}: ${v.help} (${v.nodes.length})`);
+      for (const n of v.nodes.slice(0, 8)) console.log(`       ${n.target}`);
+    }
+    if (!result.length) console.log(`ok   [${label}] no violations`);
+    if (viewport.width <= 400) {
+      const wide = await page.evaluate(({ include }) => {
+        const root = document.scrollingElement;
+        if (root.scrollWidth <= window.innerWidth) return [];
+        const path = (el) => {
+          const parts = [];
+          for (let n = el; n && n !== document.body && parts.length < 4; n = n.parentElement) {
+            parts.unshift(n.tagName.toLowerCase() + (n.id ? `#${n.id}` : '') + (typeof n.className === 'string' && n.className.trim() ? `.${n.className.trim().split(/\s+/)[0]}` : ''));
+          }
+          return parts.join(' > ');
+        };
+        // An element is a culprit when it sticks out past the right edge and no
+        // ancestor clips it or scrolls it on purpose.
+        const clipped = (el) => {
+          for (let n = el.parentElement; n && n !== document.body; n = n.parentElement) {
+            const o = getComputedStyle(n).overflowX;
+            if (o !== 'visible') return true;
+          }
+          return false;
+        };
+        const out = [];
+        for (const section of document.querySelectorAll(include.join(','))) {
+          for (const el of section.querySelectorAll('*')) {
+            const r = el.getBoundingClientRect();
+            if (r.width && r.right > window.innerWidth + 1 && !clipped(el)) out.push(path(el));
+          }
+        }
+        return out.length ? out : ['(page wider than the viewport, no single element found)'];
+      }, { include: selectors });
+      if (wide.length) {
+        blocking += wide.length;
+        console.log(`FAIL [${label}] reflow: page scrolls sideways (${wide.length})`);
+        for (const w of wide.slice(0, 8)) console.log(`       ${w}`);
+      } else console.log(`ok   [${label}] no sideways scroll`);
+    }
   }
-  if (!result.length) console.log(`ok   [${theme}] no violations`);
 }
 
 await browser.close();
 const secs = ((Date.now() - started) / 1000).toFixed(1);
-console.log(`a11y: ${GROUPS.join(', ')} in light and dark, ${blocking} serious or critical node(s), ${secs}s`);
+console.log(`a11y: ${GROUPS.join(', ')} in light and dark at ${VIEWPORTS.map((v) => v.width + 'px').join(' and ')}, ${blocking} serious or critical node(s), ${warnings} moderate or minor warning node(s) in ${warnRules.size} rule(s) (not blocking), ${secs}s`);
 process.exit(blocking ? 1 : 0);

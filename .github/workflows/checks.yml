@@ -54,13 +54,17 @@ jobs:
       - uses: actions/setup-node@a0853c24544627f65ddf259abe73b1d18a591444 # v5.0.0
         with:
           node-version: '26.13.1'
+      # axe-core comes from package.json and the lockfile (integrity checked),
+      # so it is installed with npm ci, not by version on the command line.
+      - name: Install build dependencies (npm ci)
+        run: npm ci --no-audit --no-fund
       # smoke_headless.mjs imports from 'playwright', so the
       # package has to be resolvable from the repo. `npx --package=X node script`
       # does not put X on the module search path, which is why this job failed
       # silently for weeks while the gates job stayed green. Install it for real.
       - name: Install Playwright package (browsers come from the image)
         run: |
-          npm install --no-save --no-audit --no-fund playwright@1.48.0 axe-core@4.13.0
+          npm install --no-save --no-audit --no-fund playwright@1.48.0
           docker pull -q "$PW_IMAGE"
           # The single quotes are on purpose: the variables expand inside the container, not here.
           # shellcheck disable=SC2016
