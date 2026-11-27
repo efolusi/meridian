@@ -30,11 +30,14 @@ p{margin:0}
    (WCAG 1.4.1). Classless anchors inside text blocks only; a component anchor has its own class and its own rule.
    Text blocks (MD92): p, dd, blockquote, figcaption, li, td, caption, label (a consent line with a link in it) and the
    Alert description. Not covered, on purpose: th (a header is a label, its link is a sort or a navigation control),
-   summary (the disclosure control), dt (a term) and the list or nav containers themselves. A navigation list gives its
-   links a class, which the :not([class]) opt-out leaves alone. This rule is unlayered on purpose: the :where(a) default
-   above is unlayered too and would beat a layered component rule. */
-:where(p, dd, blockquote, figcaption, li, td, caption, label, .ef-alert__description) a:where(:not([class])){text-decoration:underline;text-decoration-thickness:1px;text-underline-offset:.2em}
-:where(p, dd, blockquote, figcaption, li, td, caption, label, .ef-alert__description) a:where(:not([class])):hover{text-decoration-thickness:2px}
+   summary (the disclosure control), dt (a term) and the list or nav containers themselves. Navigation is not covered
+   either (MD97): a classless link inside nav, [role=navigation], [role=menu], [role=menubar], [role=tablist] or
+   [role=toolbar] stays plain, however deep, because its cue is its place, not the underline. The exclusion is
+   :not(:is(...) *) inside the same :where(), so the specificity stays 0,0,1 and a layered component rule still wins
+   (supported: Chrome 88, Firefox 84, Safari 9). A link with a class keeps the :not([class]) opt-out. This rule is
+   unlayered on purpose: the :where(a) default above is unlayered too and would beat a layered component rule. */
+:where(p, dd, blockquote, figcaption, li, td, caption, label, .ef-alert__description) a:where(:not([class]):not(:is(nav, [role=navigation], [role=menu], [role=menubar], [role=tablist], [role=toolbar]) *)){text-decoration:underline;text-decoration-thickness:1px;text-underline-offset:.2em}
+:where(p, dd, blockquote, figcaption, li, td, caption, label, .ef-alert__description) a:where(:not([class]):not(:is(nav, [role=navigation], [role=menu], [role=menubar], [role=tablist], [role=toolbar]) *)):hover{text-decoration-thickness:2px}
 :where(a:focus-visible){outline:none;box-shadow:var(--focus-ring);border-radius:var(--radius-sm)}
 code,pre,kbd{font-family:var(--font-mono)}
 ::selection{background:var(--brand-100);color:var(--cocoa-900)}

@@ -268,6 +268,23 @@ if (await page.evaluate(() => CSS.supports('animation-timeline', 'scroll(self in
   console.log(`smoke: data-shape="pill" makes a Button a pill (${plain.buttonRadius}px to ${pill.buttonRadius}px) and Input size="xl" is ${plain.inputHeight}px`);
 }
 
+// MD97: a classless link is underlined in a p, a plain li and a td and plain inside nav, [role=navigation], [role=menu],
+// [role=menubar], [role=tablist] and [role=toolbar]. jsdom cannot compute :not() with a complex selector, so the fixture
+// page measures text-decoration-line in the browser and leaves the cases in window.__MD97__.
+{
+  const fixture = await browser.newPage({ viewport: { width: 1280, height: 900 } });
+  await fixture.goto(`${BASE}/tests/fixtures/md97-nav-links.html`, { waitUntil: 'load', timeout: 60000 });
+  const md97 = await fixture.evaluate(() => window.__MD97__);
+  await fixture.close();
+  const wrong = md97.cases.filter(c => c.got !== c.expect).map(c => `${c.name}: ${c.got} (want ${c.expect})`);
+  if (wrong.length) {
+    console.error(`smoke: MD97 link case failed: ${wrong.join('; ')}`);
+    await browser.close();
+    process.exit(1);
+  }
+  console.log(`smoke: classless links are underlined in text and plain in navigation (${md97.cases.length} cases)`);
+}
+
 if (SHOTS) {
   fs.mkdirSync(SHOTS, { recursive: true });
   await page.evaluate(() => document.fonts.ready);

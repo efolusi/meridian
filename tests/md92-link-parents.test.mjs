@@ -6,11 +6,10 @@ import { readFileSync } from 'node:fs';
 import { describe, expect, it } from 'vitest';
 
 const baseCss = readFileSync('tokens/base.css', 'utf8');
-const LINK = 'a:where(:not([class]))';
 
-// The parent list of the one rule that underlines classless links in running text.
+// The parent list of the one rule (its link condition also carries the navigation exclusion of MD97) that underlines classless links in running text.
 const parents = () => {
-  const match = /(?:^|\n):where\(([^)]*)\) a:where\(:not\(\[class\]\)\)\{([^}]*)\}/.exec(baseCss);
+  const match = /(?:^|\n):where\(([^)]*)\) a:where\(:not\(\[class\]\)[^{]*?\)\{([^}]*)\}/.exec(baseCss);
   expect(match, 'the running-text link rule in tokens/base.css').not.toBeNull();
   return { list: match[1].split(',').map((part) => part.trim()), declarations: match[2] };
 };
@@ -22,9 +21,10 @@ describe('a classless link in running text is underlined (MD92)', () => {
   });
 
   it('thickens on hover and never drops the underline', () => {
-    const hover = new RegExp(`:where\\(${parents().list.map((p) => p.replace(/[.]/g, '\\.')).join(', ')}\\) ${LINK.replace(/[()[\]]/g, '\\$&')}:hover\\{([^}]*)\\}`).exec(baseCss);
+    const hover = /(?:^|\n):where\(([^)]*)\) a:where\(:not\(\[class\]\)[^{]*?\):hover\{([^}]*)\}/.exec(baseCss);
     expect(hover, 'hover rule with the same parents').not.toBeNull();
-    expect(hover[1]).not.toMatch(/text-decoration:none/);
+    expect(hover[1].split(',').map((part) => part.trim())).toEqual(parents().list);
+    expect(hover[2]).not.toMatch(/text-decoration:none/);
   });
 
   // Parents that are running text: the v2.5.0 four, plus the four MD92 adds.
@@ -47,7 +47,7 @@ describe('a classless link in running text is underlined (MD92)', () => {
   }
 
   it('keeps the class opt-out: a component anchor and a nav link with a class stay as their own rule draws them', () => {
-    expect(baseCss).toContain(`) ${LINK}{text-decoration:underline`);
+    expect(baseCss).toMatch(/\) a:where\(:not\(\[class\]\)[^{]*\)\{text-decoration:underline/);
     expect(parents().list.join(' ')).not.toMatch(/\[class\]/);
   });
 });

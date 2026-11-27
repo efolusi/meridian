@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>MD97 classless links in navigation and in text</title>
+<link rel="stylesheet" href="../../tokens/base.css">
+<style>body{margin:16px;font:16px/1.5 system-ui,sans-serif}pre{white-space:pre-wrap}</style>
+</head>
+<body>
+<!-- MD97: a classless link is underlined in running text (p, li, td) and plain in navigation. Each case holds one
+     classless link with data-case; data-expect says what its text-decoration-line must be. Served by
+     scripts/smoke_headless.mjs and by hand: window.__MD97__ holds the measured result. -->
+<main>
+  <nav aria-label="Site"><ul><li><a href="#a" data-case="nav-list" data-expect="none">Nav list</a></li></ul></nav>
+  <footer><nav aria-label="Footer"><ul><li><a href="#b" data-case="footer-nav" data-expect="none">Footer nav</a></li></ul></nav></footer>
+  <nav aria-label="Breadcrumb"><ol><li><a href="#c" data-case="breadcrumb" data-expect="none">Breadcrumb</a></li></ol></nav>
+  <div role="navigation" aria-label="Role"><ul><li><a href="#d" data-case="role-navigation" data-expect="none">Role navigation</a></li></ul></div>
+  <ul role="menu"><li role="none"><a href="#e" role="menuitem" data-case="role-menu" data-expect="none">Role menu</a></li></ul>
+  <ul role="menubar"><li role="none"><a href="#f" role="menuitem" data-case="role-menubar" data-expect="none">Role menubar</a></li></ul>
+  <ul role="tablist"><li role="presentation"><a href="#g" role="tab" data-case="role-tablist" data-expect="none">Role tablist</a></li></ul>
+  <div role="toolbar" aria-label="Tools"><ul><li><a href="#h" data-case="role-toolbar" data-expect="none">Role toolbar</a></li></ul></div>
+  <nav aria-label="Deep"><div><ul><li><span><a href="#i" data-case="nav-deep" data-expect="none">Deep inside nav</a></span></li></ul></div></nav>
+  <p>Text with <a href="#j" data-case="p" data-expect="underline">a link in a paragraph</a>.</p>
+  <ul><li>Item with <a href="#k" data-case="li-plain" data-expect="underline">a link in a plain list</a>.</li></ul>
+  <table><tbody><tr><td>Cell with <a href="#l" data-case="td" data-expect="underline">a link in a cell</a>.</td></tr></tbody></table>
+  <nav aria-label="Next to text"><ul><li><a href="#m" class="own" data-case="nav-class" data-expect="none">Nav link with a class</a></li></ul></nav>
+  <ul><li><a href="#n" class="own" data-case="li-class" data-expect="none">Plain list link with a class</a></li></ul>
+</main>
+<pre id="result"></pre>
+<script>
+  // textDecorationLine per case, measured after layout. The case list is the markup above, so a new case is one line there.
+  const cases = [...document.querySelectorAll('[data-case]')].map((a) => ({
+    name: a.dataset.case,
+    expect: a.dataset.expect,
+    got: getComputedStyle(a).textDecorationLine,
+  }));
+  window.__MD97__ = { cases, ok: cases.every((c) => c.got === c.expect) };
+  document.getElementById('result').textContent = cases.map((c) => `${c.got === c.expect ? 'ok  ' : 'FAIL'} ${c.name}: ${c.got} (want ${c.expect})`).join('\n');
+  document.documentElement.setAttribute('data-md97', window.__MD97__.ok ? 'ok' : 'fail');
+</script>
+</body>
+</html>
