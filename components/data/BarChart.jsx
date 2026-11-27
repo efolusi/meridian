@@ -4,8 +4,10 @@ import { injectEfCss, cssPct, styleRef } from '../runtime/runtime.jsx';
 const CSS = `
 .ef-bars-chart{position:relative}
 .ef-bars{display:flex;align-items:flex-end;gap:var(--space-1);width:100%}
-.ef-bars__bar{flex:1;min-width:3px;border-radius:var(--radius-xs) var(--radius-xs) 0 0;background:var(--text-muted);transition:background var(--dur-fast) var(--ease-enter)}
-.ef-bars__bar--hi{background:var(--accent-edge)}
+.ef-bars__bar{flex:1;min-width:3px;border-radius:var(--radius-xs) var(--radius-xs) 0 0;background:var(--border-control);transition:background var(--dur-fast) var(--ease-enter)}
+.ef-bars__bar--hi{background:var(--accent);box-shadow:inset 0 0 0 1px var(--accent-edge)}
+/* The highlight is carried by its outline, not by tone alone (WCAG 1.4.1): the base bars have none. Forced colours drop the shadow. */
+@media (forced-colors:active){.ef-bars__bar--hi{outline:1px solid Highlight}}
 .ef-bars__bar:hover{background:var(--accent-subtle-fg)}
 .ef-bars__sr{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;border:0}
 .ef-bars__labels{display:flex;justify-content:space-between;margin-top:var(--space-2);font-family:var(--font-mono);font-size:10px;color:var(--text-muted)}

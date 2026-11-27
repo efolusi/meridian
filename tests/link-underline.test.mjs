@@ -27,6 +27,16 @@ describe('links in running text are underlined (MD74)', () => {
     expect(rule(linkCss, '.ef-link--standalone')).toMatch(/text-decoration:none/);
   });
 
+  it('keeps the quiet variant plain at rest and underlined on hover and keyboard focus (navigation and footers, never running text)', () => {
+    expect(rule(linkCss, '.ef-link--quiet')).toMatch(/text-decoration:none/);
+    const hover = linkCss.slice(linkCss.indexOf('.ef-link--quiet:hover'), linkCss.indexOf('}', linkCss.indexOf('.ef-link--quiet:hover')));
+    expect(hover).toContain('.ef-link--quiet:hover,.ef-link--quiet:focus-visible{');
+    expect(hover).toMatch(/text-decoration:underline/);
+    // The quiet rules come after the base ones so equal specificity resolves to quiet.
+    expect(linkCss.indexOf('.ef-link--quiet{')).toBeGreaterThan(linkCss.indexOf('.ef-link:hover{'));
+    expect(readFileSync('components/display/Link.prompt.md', 'utf8')).toMatch(/quiet[^.]*navigation[^.]*footer[^.]*never running text/i);
+  });
+
   it('underlines a classless anchor inside a paragraph, definition, quote or caption, hover included', () => {
     const selector = ':where(p, dd, blockquote, figcaption) a:where(:not([class]))';
     expect(rule(baseCss, selector)).toMatch(/text-decoration:underline/);

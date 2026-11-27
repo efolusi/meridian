@@ -26,8 +26,29 @@ describe('disabled primary Button (MD74)', () => {
     expect(button).toMatch(/\.ef-btn:is\(:disabled[^)]*\)\{opacity:\.45/);
   });
 
-  it('gives the solid IconButton the same disabled look', () => {
-    expect(iconButton).toMatch(/\.ef-iconbtn--solid:disabled\{opacity:1;background:var\(--surface-track\);border-color:transparent;color:var\(--text-muted\)\}/);
+  const IS = ':is(:disabled,[aria-disabled="true"],[data-disabled])';
+
+  it('gives the solid IconButton the same disabled look, for the same three disabled signals as Button', () => {
+    expect(iconButton).toContain(`.ef-iconbtn${IS}{opacity:.45;cursor:not-allowed}`);
+    expect(iconButton).toContain(`.ef-iconbtn--solid${IS}{opacity:1;background:var(--surface-track);border-color:transparent;color:var(--text-muted)}`);
+    // The hover, press and quiet states do not wake a disabled one either.
+    expect(iconButton).not.toMatch(/:not\(:disabled\)/);
+  });
+
+  it('keeps a loading primary at full strength: the spinner is the only busy cue and faded copper was 1.9:1', () => {
+    const rule = button.slice(button.indexOf('.ef-btn--primary[data-loading]{'), button.indexOf('}', button.indexOf('.ef-btn--primary[data-loading]{')));
+    expect(rule).toContain('opacity:1');
+    expect(rule).toContain('cursor:progress');
+    // Declared after the shared disabled rule (a loading Button is disabled too), at equal specificity.
+    expect(button.indexOf('.ef-btn--primary[data-loading]{')).toBeGreaterThan(button.indexOf('.ef-btn:is(:disabled'));
+    // Hover and press do not move a button that cannot be pressed.
+    expect(button).toMatch(/\.ef-btn--primary\[data-loading\]:is\(:hover,:active\)\{background:var\(--accent\);border-color:var\(--accent-edge\);transform:none\}/);
+  });
+
+  it('holds the label of a loading primary on its copper fill at 4.5:1 in light and dark', () => {
+    for (const [name, table] of THEMES) {
+      expect(ratio(table, '--accent-contrast', '--accent'), name).toBeGreaterThanOrEqual(4.5);
+    }
   });
 
   it('holds the label at 4.5:1 on its fill in light and dark', () => {

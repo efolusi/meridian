@@ -9,12 +9,15 @@ const CSS = `
 .ef-table-wrap:focus-visible{outline:2px solid var(--focus-ring-color);outline-offset:-2px}
 /* More columns than fit: the end edge fades while content is hidden there (WCAG 1.3.1 gives no cue otherwise). A scroll-driven
    animation shrinks a mask's fade layer from 28px to 0 over the last 40px of the scroll; a table that fits has no timeline and
-   stays opaque, and a browser without scroll timelines shows no fade. The focus ring is not masked. */
+   stays opaque, and a browser without scroll timelines shows no fade. No focus ring is masked: the wrapper, a focused row
+   (tabIndex 0 with onRowClick) or a control in the last column lifts the fade while it has keyboard focus.
+   prefers-reduced-motion sets animation-duration .01ms, which a scroll timeline ignores, so the fade stays on: it is
+   not motion (nothing moves in time, it follows the scroll the reader makes). Do not "fix" that with animation:none. */
 @keyframes ef-table-fade{from{mask-size:calc(100% - 28px) 100%,28px 100%}to{mask-size:100% 100%,0 100%}}
 @supports (animation-timeline:scroll(self inline)){
 .ef-table-wrap{animation-name:ef-table-fade;animation-fill-mode:both;animation-timeline:scroll(self inline);animation-range:calc(100% - 40px) 100%;mask-image:linear-gradient(currentcolor,currentcolor),linear-gradient(to right,currentcolor,transparent);mask-repeat:no-repeat;mask-position:left,right;mask-size:100% 100%,0 100%}
 .ef-table-wrap:dir(rtl){mask-image:linear-gradient(currentcolor,currentcolor),linear-gradient(to left,currentcolor,transparent);mask-position:right,left}
-.ef-table-wrap:focus-visible{mask-image:none;animation-name:none}
+.ef-table-wrap:focus-visible,.ef-table-wrap:has(:focus-visible){mask-image:none;animation-name:none}
 }
 .ef-table{width:100%;border-collapse:collapse}
 .ef-table th{text-align:start;padding:var(--space-3) var(--table-pad-x);font-size:var(--text-2xs);font-weight:var(--weight-semibold);letter-spacing:0.06em;text-transform:uppercase;color:var(--text-muted);border-bottom:1px solid var(--border-default);white-space:nowrap}

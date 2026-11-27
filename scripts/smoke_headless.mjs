@@ -99,6 +99,74 @@ if (!result.ok) {
   process.exit(1);
 }
 
+// MD74: a Table that scrolls sideways fades its end edge while content is hidden there (scroll-driven animation on a
+// mask). The fade must lift while any keyboard focus is inside the wrapper, so a focused row or a control in the last
+// column is never under it. The fixture is 375px wide with nine columns and a button in the last one; it is removed
+// again before any screenshot is taken.
+if (await page.evaluate(() => CSS.supports('animation-timeline', 'scroll(self inline)'))) {
+  await page.evaluate(() => {
+    const DS = window.EfolusiDesignSystem_4ffc3d, R = window.React;
+    const host = document.createElement('div');
+    host.id = 'table-fade-fixture';
+    host.style.cssText = 'position:fixed;inset-block-start:0;inset-inline-start:0;width:375px;background:var(--surface-page);z-index:99999';
+    document.body.appendChild(host);
+    const columns = Array.from({ length: 8 }, (_, i) => ({ key: `c${i}`, label: `Column ${i}` }));
+    columns.push({ key: 'act', label: 'Action', render: (_v, row) => R.createElement('button', { type: 'button', className: 'table-fade-last' }, `Open ${row.id}`) });
+    const rows = Array.from({ length: 3 }, (_, r) => Object.fromEntries([['id', `r${r}`], ['act', ''], ...columns.slice(0, 8).map(c => [c.key, `${c.label} of row ${r} has a long value`])]));
+    window.__tableFadeRoot = window.ReactDOM.createRoot(host);
+    window.__tableFadeRoot.render(R.createElement(R.Fragment, null,
+      R.createElement('button', { type: 'button', id: 'table-fade-before' }, 'Before'),
+      R.createElement(DS.Table, { columns, rows, rowKey: 'id', onRowClick: () => {}, label: 'Fade fixture' })));
+  });
+  await page.waitForSelector('#table-fade-fixture .ef-table-wrap[tabindex="0"]', { timeout: 10000 });
+  const settle = () => page.evaluate(() => new Promise(r => requestAnimationFrame(() => requestAnimationFrame(r))));
+  const read = () => page.evaluate(() => {
+    const wrap = document.querySelector('#table-fade-fixture .ef-table-wrap');
+    const cs = getComputedStyle(wrap);
+    return { mask: cs.maskImage, size: cs.maskSize, active: document.activeElement.tagName + (document.activeElement.className ? '.' + String(document.activeElement.className).split(' ')[0] : '') };
+  });
+  const fadeWidth = (size) => Number.parseFloat((size.split(/,(?![^(]*\))/)[1] || '').trim());
+  await settle();
+  const rest = await read();
+  if (!(fadeWidth(rest.size) > 0)) {
+    console.error(`smoke: Table fade case: the end edge is not faded while columns are hidden (mask-size ${rest.size})`);
+    await browser.close();
+    process.exit(1);
+  }
+  await page.locator('#table-fade-before').focus();
+  const focusOrder = [];
+  // Tab to the wrapper, a row (tabIndex 0 with onRowClick) and a control in the last column: no fade under any of them.
+  for (let i = 0; i < 4; i++) {
+    await page.keyboard.press('Tab');
+    await settle();
+    const now = await read();
+    focusOrder.push(now.active);
+    if (now.mask !== 'none') {
+      console.error(`smoke: Table fade case: the fade stays on while ${now.active} has keyboard focus (mask-image ${now.mask})`);
+      await browser.close();
+      process.exit(1);
+    }
+  }
+  if (!focusOrder.some(a => a.startsWith('TR')) || !focusOrder.some(a => a.startsWith('BUTTON.table-fade-last'))) {
+    console.error(`smoke: Table fade case: Tab did not reach a row and a last-column control (${focusOrder.join(', ')})`);
+    await browser.close();
+    process.exit(1);
+  }
+  await page.locator('#table-fade-before').focus();
+  await page.evaluate(() => document.activeElement.blur());
+  await settle();
+  const after = await read();
+  if (after.mask === 'none' || !(fadeWidth(after.size) > 0)) {
+    console.error(`smoke: Table fade case: the fade did not come back after focus left the table (${after.mask}, ${after.size})`);
+    await browser.close();
+    process.exit(1);
+  }
+  await page.evaluate(() => { window.__tableFadeRoot.unmount(); document.getElementById('table-fade-fixture').remove(); });
+  console.log('smoke: Table end-edge fade lifts for the wrapper, a row and a last-column control');
+} else {
+  console.log(`smoke: Table fade case skipped (${ENGINE} has no scroll-driven animations)`);
+}
+
 if (SHOTS) {
   fs.mkdirSync(SHOTS, { recursive: true });
   await page.evaluate(() => document.fonts.ready);

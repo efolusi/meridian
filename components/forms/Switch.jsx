@@ -9,6 +9,8 @@ const CSS = `
 .ef-switch:dir(rtl){--ef-switch-shift:-15px}.ef-switch[data-state="checked"]{background:var(--accent);box-shadow:inset 0 0 0 1px var(--accent-edge)}.ef-switch[data-state="checked"]:focus-visible{box-shadow:inset 0 0 0 1px var(--accent-edge),var(--focus-ring)}
 .ef-switch__track::after{content:'';position:absolute;top:2.5px;inset-inline-start:2.5px;width:16px;height:16px;border-radius:var(--radius-full);background:var(--surface-card);box-shadow:var(--shadow-sm);transition:transform var(--dur-base) var(--ease-emphasised)}
 .ef-switch[data-state="checked"] .ef-switch__track::after{transform:translateX(var(--ef-switch-shift))}.ef-switch:focus-visible{outline:none;box-shadow:var(--focus-ring)}
+/* The accent edge is an inset shadow, which forced colours drop: an outline in a system colour keeps it. */
+@media (forced-colors:active){.ef-switch[data-state="checked"]{outline:1px solid Highlight}}
 .ef-switch--sm{--ef-switch-shift:12px;width:30px;height:18px}.ef-switch--sm:dir(rtl){--ef-switch-shift:-12px}.ef-switch--sm .ef-switch__track::after{width:13px;height:13px;top:2.5px}
 .ef-switch__label{font-size:var(--text-md);color:var(--text-primary)}
 /* Reduced motion: nothing moves or resizes; the end state is shown at once. */

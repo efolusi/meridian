@@ -3,7 +3,7 @@ export interface LinkProps extends React.AnchorHTMLAttributes<HTMLAnchorElement>
   external?: boolean;
   /** Leading Lucide icon */
   icon?: string;
-  /** 'quiet' inherits secondary text color @default 'default' */
+  /** 'quiet' is secondary text, plain at rest and underlined on hover and focus: for navigation and footers, never running text @default 'default' */
   variant?: 'default' | 'quiet';
   /** Semibold + trailing → for standalone CTAs */
   standalone?: boolean;

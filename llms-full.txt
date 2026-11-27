@@ -1359,7 +1359,7 @@ export declare function Terminal(props: TerminalProps): React.JSX.Element;
 
 Group: data · Source: /components/data/BarChart.jsx · Exports: BarChart
 
-Hairline-minimal bar chart: sand bars, ink highlight window, hover tint + title tooltip.
+Hairline-minimal bar chart: quiet base bars, a highlight window of copper bars with a 1px accent-edge outline (the outline carries the highlight, not tone alone; the base bars have none), hover tint + title tooltip.
 
 ```jsx
 <BarChart data={requests} height={150} highlightLast={4} labels={['Jun 18', 'Jul 2', 'Jul 16']} format={v => v.toLocaleString() + ' req'} />
@@ -1373,7 +1373,7 @@ export interface BarChartProps {
   data: Array<number | { value: number; label?: string }>;
   /** @default 140 */
   height?: number;
-  /** Ink-fill the last N bars */
+  /** Highlight the last N bars: copper fill with a 1px accent-edge outline (the base bars have none), so the highlight is not carried by tone alone */
   highlightLast?: number;
   /** X-axis labels, spread edge to edge */
   labels?: string[];
@@ -2319,12 +2319,13 @@ export declare const KbdGroup: React.ForwardRefExoticComponent<KbdGroupProps & R
 
 Group: display · Source: /components/display/Link.jsx · Exports: Link
 
-Styled anchor, underlined so a link in running text is not marked by colour alone (the link colour is 2.43:1 against body ink in light, 1.88:1 in dark). `external` adds ↗ + new tab; `standalone` makes a semibold CTA with → and drops the underline, because it sits alone.
+Styled anchor, underlined so a link in running text is not marked by colour alone (the link colour is 2.43:1 against body ink in light, 1.88:1 in dark). `external` adds ↗ + new tab; `standalone` makes a semibold CTA with → and drops the underline, because it sits alone. `variant="quiet"` is for navigation and footers, never running text: it is plain at rest and underlined on hover and keyboard focus.
 
 ```jsx
 <Link href="/docs">the docs</Link>
 <Link external href="https://status.efolusi.com">API status</Link>
 <Link standalone href="#">Explore AI agents</Link>
+<Link variant="quiet" href="/terms">Terms</Link>
 ```
 
 ```ts
@@ -2333,7 +2334,7 @@ export interface LinkProps extends React.AnchorHTMLAttributes<HTMLAnchorElement>
   external?: boolean;
   /** Leading Lucide icon */
   icon?: string;
-  /** 'quiet' inherits secondary text color @default 'default' */
+  /** 'quiet' is secondary text, plain at rest and underlined on hover and focus: for navigation and footers, never running text @default 'default' */
   variant?: 'default' | 'quiet';
   /** Semibold + trailing → for standalone CTAs */
   standalone?: boolean;
@@ -2582,7 +2583,7 @@ Group: feedback · Source: /components/feedback/Alert.jsx · Exports: Alert, Ale
 
 # Alert
 
-Notifikasi inline composable dengan varian `default`, `success`, `warning`, dan `danger`. Susun `AlertTitle`, `AlertDescription`, dan `AlertAction` sebagai children. Setiap varian punya ikon bawaan (`info`, `circle-check`, `triangle-alert`, `circle-alert`) supaya status tidak hanya dibawa warna; beri `icon="nama"` untuk ikon lain, `icon={false}` tanpa ikon, atau tulis `<Icon>` sebagai child untuk menggantinya. Tanpa ikon, teks mulai di tepi kiri tanpa celah.
+Notifikasi inline composable dengan varian `default`, `success`, `warning`, dan `danger`. Susun `AlertTitle`, `AlertDescription`, dan `AlertAction` sebagai children. Setiap varian punya ikon bawaan (`info`, `circle-check`, `triangle-alert`, `circle-alert`) supaya status tidak hanya dibawa warna; beri `icon="nama"` untuk ikon lain, `icon={false}` tanpa ikon, atau tulis `<Icon>` sebagai child untuk menggantinya. Tanpa ikon, teks mulai di tepi kiri tanpa celah. Ikon dari pihak ketiga atau yang terbungkus tidak dikenali sebagai ikon Anda, sehingga Alert menambahkan ikonnya sendiri: beri `data-slot="icon"` pada ikon Anda, atau pakai `icon={false}`.
 
 ```jsx
 <Alert variant="danger">

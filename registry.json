@@ -1181,7 +1181,7 @@
       "name": "barchart",
       "type": "registry:ui",
       "title": "BarChart",
-      "description": "Hairline-minimal bar chart: sand bars, ink highlight window, hover tint + title tooltip.",
+      "description": "Hairline-minimal bar chart: quiet base bars, a highlight window of copper bars with a 1px accent-edge outline (the outline carries the highlight, not tone alone; the base bars have none), hover tint + title tooltip.",
       "dependencies": [
         "react"
       ],
@@ -1942,7 +1942,7 @@
       "name": "link",
       "type": "registry:ui",
       "title": "Link",
-      "description": "Styled anchor, underlined so a link in running text is not marked by colour alone (the link colour is 2.43:1 against body ink in light, 1.88:1 in dark). `external` adds \u2197 + new tab; `standalone` makes a semibold CTA with \u2192 and drops the underline, because it sits alone.",
+      "description": "Styled anchor, underlined so a link in running text is not marked by colour alone (the link colour is 2.43:1 against body ink in light, 1.88:1 in dark). `external` adds \u2197 + new tab; `standalone` makes a semibold CTA with \u2192 and drops the underline, because it sits alone. `variant=\"quiet\"` is for navi",
       "dependencies": [
         "react"
       ],
