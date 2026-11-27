@@ -62,20 +62,24 @@ describe('Alert default icons (MD71)', () => {
   });
 });
 
+// The icon is any [data-slot=icon] that is not inside the title, description or action; the parts are found by class and by
+// descendant, never as direct children (MD74 round 6, see the wrapper tests below).
+const ICON = '[data-slot=icon]:not(:is(.ef-alert__title,.ef-alert__description,.ef-alert__action) *)';
+
 describe('Alert grid has no gap without an icon (MD71)', () => {
   it('is one column with no column gap by default, two columns with a 12px gap when it has an icon', () => {
     const css = alertCss();
     expect(rule(css, '.ef-alert')).toMatch(/grid-template-columns:minmax\(0,1fr\)/);
     expect(rule(css, '.ef-alert')).toMatch(/gap:var\(--space-0-5\) 0/);
     expect(rule(css, '.ef-alert')).not.toMatch(/grid-template-columns:0 /);
-    expect(rule(css, '.ef-alert:has(>[data-slot=icon])')).toMatch(/grid-template-columns:auto minmax\(0,1fr\)/);
-    expect(rule(css, '.ef-alert:has(>[data-slot=icon])')).toMatch(/column-gap:var\(--space-3\)/);
+    expect(rule(css, `.ef-alert:has(${ICON})`)).toMatch(/grid-template-columns:auto minmax\(0,1fr\)/);
+    expect(rule(css, `.ef-alert:has(${ICON})`)).toMatch(/column-gap:var\(--space-3\)/);
   });
 
   it('puts title and description in the first column, or the second when an icon takes the first', () => {
     const css = alertCss();
-    expect(rule(css, '.ef-alert>.ef-alert__title,.ef-alert>.ef-alert__description')).toBe('.ef-alert>.ef-alert__title,.ef-alert>.ef-alert__description{grid-column:1');
-    expect(rule(css, '.ef-alert:has(>[data-slot=icon])>.ef-alert__title,.ef-alert:has(>[data-slot=icon])>.ef-alert__description')).toMatch(/grid-column:2/);
+    expect(rule(css, '.ef-alert .ef-alert__title,.ef-alert .ef-alert__description')).toBe('.ef-alert .ef-alert__title,.ef-alert .ef-alert__description{grid-column:1');
+    expect(rule(css, `.ef-alert:has(${ICON}) .ef-alert__title,.ef-alert:has(${ICON}) .ef-alert__description`)).toMatch(/grid-column:2/);
   });
 });
 
@@ -92,10 +96,48 @@ describe('the default icon steps aside for any other icon (MD74 round 5)', () =>
     expect(screen.getByTestId('own').querySelector('[data-alert-default]')).toBeNull();
   });
 
-  it('hides the marked icon when another icon is a direct child, and keeps the layout rules for the caller icon', () => {
+  it('hides the marked icon when another icon is in the alert, and keeps the layout rules for the caller icon', () => {
     const css = alertCss();
-    expect(css).toContain('.ef-alert:has(>[data-slot=icon]:not([data-alert-default]))>[data-alert-default]{display:none}');
-    expect(css).toContain('.ef-alert>[data-slot=icon]{grid-column:1;grid-row:1/3;');
+    expect(css).toContain('.ef-alert:has([data-slot=icon]:not([data-alert-default]):not(:is(.ef-alert__title,.ef-alert__description,.ef-alert__action) *)) [data-alert-default]{display:none}');
+    expect(css).toContain(`.ef-alert ${ICON}{grid-column:1;grid-row:1/3;`);
   });
 });
 
+// MD74 round 6: the starters' DC runtime wraps every x-import in <div class="sc-host-x" style="display:contents">, so the Alert's
+// icon, title and description are NOT direct children. A child combinator (.ef-alert>.ef-alert__title) cannot see through such a
+// wrapper: the title and description fell into auto-placed cells, the icon column grew to the description's width and the
+// title sat in a 0px column, its words overflowing to the right (+1px of document scroll at 768px, +2px in CI). Measured in the
+// Orca browser on starters/docs-page/Authentication.dc.html: grid columns '642px 0px' before, '16px 626px' after.
+describe('the Alert layout survives wrapper elements around its parts (MD74 round 6)', () => {
+  it('uses no child combinator for the parts or the icon, which a display:contents wrapper hides', () => {
+    expect(alertCss()).not.toMatch(/\.ef-alert\s*>/);
+    expect(alertCss()).not.toMatch(/:has\(\s*>/);
+  });
+
+  // jsdom has no engine for the stylesheet's complex :not(), so the icon rule is run as the same test in script: a
+  // [data-slot=icon] with no title, description or action ancestor. The browser run is in the commit message.
+  const alertIcons = (alert) => [...alert.querySelectorAll('[data-slot=icon]')].filter((n) => !n.closest('.ef-alert__title,.ef-alert__description,.ef-alert__action'));
+
+  it('finds the title, description, action and icon through wrappers, and leaves icons inside the parts alone', () => {
+    const wrap = (el) => <div className="sc-host-x" style={{ display: 'contents' }}>{el}</div>;
+    const { container } = render(
+      <Alert icon={false}>
+        {wrap(<Icon name="shield" />)}
+        {wrap(<AlertTitle>T <Icon name="info" /></AlertTitle>)}
+        {wrap(<AlertDescription>D</AlertDescription>)}
+        {wrap(<AlertAction><button type="button"><Icon name="x" /></button></AlertAction>)}
+      </Alert>,
+    );
+    const alert = container.querySelector('.ef-alert');
+    expect(alertIcons(alert).map((n) => n.getAttribute('data-name'))).toEqual(['shield']);
+    expect(alert.querySelector('.ef-alert__title')).not.toBeNull();
+    expect(alert.querySelector('.ef-alert__action')).not.toBeNull();
+    // None of them is a direct child of the alert, which is exactly what the old child combinators needed.
+    expect([...alert.children].every((c) => c.classList.contains('sc-host-x'))).toBe(true);
+  });
+
+  it('does not take an icon that sits only inside the action for the alert icon', () => {
+    const { container } = render(<Alert icon={false}><AlertTitle>T</AlertTitle><AlertAction><button type="button"><Icon name="x" /></button></AlertAction></Alert>);
+    expect(alertIcons(container.querySelector('.ef-alert'))).toHaveLength(0);
+  });
+});
