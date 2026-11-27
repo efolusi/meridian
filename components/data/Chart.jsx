@@ -1,7 +1,7 @@
 'use client';
 import React from 'react';
 import * as RechartsPrimitive from 'recharts';
-import { injectEfCss, styleRef, useIsoLayoutEffect } from '../runtime/runtime.jsx';
+import { injectEfCss, mergeRefs, styleRef, useIsoLayoutEffect } from '../runtime/runtime.jsx';
 
 const CSS = `
 .ef-chart{display:flex;aspect-ratio:16/9;min-height:200px;width:100%;justify-content:center;color:var(--text-secondary);font-size:var(--text-xs)}
@@ -37,18 +37,22 @@ function chartVars(config) {
   return vars;
 }
 
+// Writes the colours on `node` and returns the cleanup that takes them off again.
+function writeChartVars(node, vars) {
+  const names = Object.keys(vars);
+  for (const name of names) node.style.setProperty(name, vars[name]);
+  return () => { for (const name of names) node.style.removeProperty(name); };
+}
+
+// A standalone ChartStyle has no node of its own: it looks for the chart element with
+// its `data-chart` id in the document. A ChartContainer does not use it; it writes on
+// its own node, so a chart in a shadow root or a detached tree gets its colours too.
+// The id is compared as text, not put in a selector: a caller id may hold a quote.
 export function ChartStyle({ id, config }) {
-  const vars = chartVars(config);
-  const applied = React.useRef([]);
-  const key = JSON.stringify(vars);
+  const key = JSON.stringify(chartVars(config));
   useIsoLayoutEffect(() => {
-    // Compared as text, not put in a selector: a caller id may hold a quote.
     const chart = Array.from(document.querySelectorAll('[data-chart]')).find(node => node.dataset.chart === id);
-    if (!chart) return;
-    const next = JSON.parse(key);
-    for (const name of applied.current) if (!(name in next)) chart.style.removeProperty(name);
-    for (const [name, value] of Object.entries(next)) chart.style.setProperty(name, value);
-    applied.current = Object.keys(next);
+    return chart ? writeChartVars(chart, JSON.parse(key)) : undefined;
   }, [id, key]);
   return null;
 }
@@ -58,8 +62,10 @@ export const ChartContainer = React.forwardRef(function ChartContainer({ id, cla
   const uniqueId = React.useId();
   const chartId = `chart-${id || uniqueId.replace(/:/g, '')}`;
   const ResponsiveContainer = RechartsPrimitive && RechartsPrimitive.ResponsiveContainer;
-  return <ChartContext.Provider value={{ config }}><div ref={ref} data-slot="chart" data-chart={chartId} className={`ef-chart${className ? ` ${className}` : ''}`} {...props}>
-    <ChartStyle id={chartId} config={config} />
+  const node = React.useRef(null);
+  const colorsKey = JSON.stringify(chartVars(config));
+  useIsoLayoutEffect(() => (node.current ? writeChartVars(node.current, JSON.parse(colorsKey)) : undefined), [colorsKey]);
+  return <ChartContext.Provider value={{ config }}><div ref={mergeRefs(ref, node)} data-slot="chart" data-chart={chartId} className={`ef-chart${className ? ` ${className}` : ''}`} {...props}>
     {ResponsiveContainer ? <ResponsiveContainer initialDimension={initialDimension}>{children}</ResponsiveContainer> : children}
   </div></ChartContext.Provider>;
 });

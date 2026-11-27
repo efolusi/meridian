@@ -2,6 +2,7 @@ import React from 'react';
 import { describe, it, expect, vi } from 'vitest';
 import { render, screen, fireEvent, act } from '@testing-library/react';
 import { renderToString } from 'react-dom/server';
+import { createRoot } from 'react-dom/client';
 import { LineChart } from '../components/data/LineChart.jsx';
 import { ChartContainer, ChartStyle } from '../components/data/Chart.jsx';
 
@@ -58,5 +59,48 @@ describe('ChartStyle under a strict CSP (MD62)', () => {
   it('keeps a caller id on data-chart so ChartStyle finds its chart', () => {
     const { container } = render(<ChartContainer id="sales" config={{ a: { color: 'red' } }}><div /></ChartContainer>);
     expect(container.querySelector('[data-chart="chart-sales"]').style.getPropertyValue('--color-a')).toBe('red');
+  });
+
+  it('a hostile config value sets no extra property on the client', () => {
+    const { container } = render(<ChartContainer config={{ a: { color: hostile } }}><div /></ChartContainer>);
+    const chart = container.querySelector('[data-slot="chart"]');
+    expect(chart.style.getPropertyValue('--evil')).toBe('');
+    // The value is one inert custom-property value: no second declaration came out of the `;`.
+    expect(chart.style.length).toBe(1);
+    expect(container.querySelector('script')).toBeNull();
+    expect(container.querySelector('style')).toBeNull();
+  });
+
+  it('sets the colour when the chart renders inside a shadow root', () => {
+    const host = document.body.appendChild(document.createElement('div'));
+    const shadow = host.attachShadow({ mode: 'open' });
+    const mount = shadow.appendChild(document.createElement('div'));
+    const root = createRoot(mount);
+    globalThis.IS_REACT_ACT_ENVIRONMENT = true;
+    act(() => root.render(<ChartContainer config={{ a: { color: 'rgb(4, 5, 6)' } }}><div /></ChartContainer>));
+    expect(mount.querySelector('[data-slot="chart"]').style.getPropertyValue('--color-a')).toBe('rgb(4, 5, 6)');
+    act(() => root.unmount());
+    host.remove();
+  });
+});
+
+describe('a standalone ChartStyle (MD62)', () => {
+  it('writes its colours on the element with its data-chart id', () => {
+    const { container } = render(<><div data-chart="solo" /><ChartStyle id="solo" config={{ a: { color: 'red' } }} /></>);
+    expect(container.querySelector('[data-chart="solo"]').style.getPropertyValue('--color-a')).toBe('red');
+  });
+
+  it('removes its colours on unmount', () => {
+    const { container, unmount } = render(<><div data-chart="solo" /><ChartStyle id="solo" config={{ a: { color: 'red' } }} /></>);
+    const target = container.querySelector('[data-chart="solo"]');
+    unmount();
+    expect(target.style.getPropertyValue('--color-a')).toBe('');
+  });
+
+  it('moves its colours when the id changes', () => {
+    const { container, rerender } = render(<><div data-chart="one" /><div data-chart="two" /><ChartStyle id="one" config={{ a: { color: 'red' } }} /></>);
+    rerender(<><div data-chart="one" /><div data-chart="two" /><ChartStyle id="two" config={{ a: { color: 'red' } }} /></>);
+    expect(container.querySelector('[data-chart="one"]').style.getPropertyValue('--color-a')).toBe('');
+    expect(container.querySelector('[data-chart="two"]').style.getPropertyValue('--color-a')).toBe('red');
   });
 });
