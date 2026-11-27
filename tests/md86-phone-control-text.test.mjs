@@ -1,6 +1,8 @@
 // MD86: iOS Safari zooms the whole page when a text control takes focus while its text is under 16px. pay web
 // reported NativeSelect at 14px; Input md, Textarea, NumberInput and the InputGroup control Combobox is built on
-// are 13 or 14px too. One rule in tokens/base.css lifts the control text to 16px at phone widths, for every size.
+// are 13 or 14px too, and so are the text fields of the other families (TimePicker, Command, Sidebar search, the
+// composers, PromptSteps, WebPreview, Questionnaire, the real input behind InputOTP). One rule in tokens/base.css
+// lifts the control text to 16px at phone widths, for every size.
 // It is unlayered, so it outranks the sized component rules in @layer meridian whatever the source order is.
 import { readFileSync } from 'node:fs';
 import { describe, expect, it } from 'vitest';
@@ -35,6 +37,15 @@ const CONTROLS = [
   ['components/forms/NativeSelect.jsx', '.ef-native-select select'],
   ['components/forms/InputGroup.jsx', '.ef-input-group__control'],
   ['components/forms/Combobox.jsx', '.ef-combobox__chips-input'],
+  ['components/dates/TimePicker.jsx', '.ef-timepicker__input'],
+  ['components/overlay/Command.jsx', '.ef-command__input'],
+  ['components/navigation/Sidebar.jsx', '.ef-sidebar-input'],
+  ['components/ai/PromptComposer.jsx', '.ef-composer__input'],
+  ['components/ai/RichComposer.jsx', '.ef-richcomposer__input'],
+  ['components/ai/PromptSteps.jsx', '.ef-promptsteps__other'],
+  ['components/ai/WebPreview.jsx', '.ef-webprev__addr'],
+  ['components/forms/Questionnaire.jsx', '.ef-questionnaire__input'],
+  ['components/forms/InputOTP.jsx', '.ef-otp__input'],
 ];
 
 describe('one phone rule lifts control text to 16px (tokens/base.css)', () => {
