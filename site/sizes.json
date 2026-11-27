@@ -1,16 +1,16 @@
 {
   "totals": {
     "@efolusi/meridian": {
-      "bytes": 377751,
-      "gzip": 85416
+      "bytes": 377741,
+      "gzip": 85418
     },
     "dist/components.css": {
       "bytes": 242003,
       "gzip": 33301
     },
     "_ds_bundle.js": {
-      "bytes": 905599,
-      "gzip": 162876
+      "bytes": 905805,
+      "gzip": 162954
     }
   },
   "modules": [
@@ -1202,8 +1202,8 @@
       "exports": [
         "ThemeToggle"
       ],
-      "bytes": 47658,
-      "gzip": 8607
+      "bytes": 47698,
+      "gzip": 8644
     },
     {
       "module": "navigation/Breadcrumbs.js",

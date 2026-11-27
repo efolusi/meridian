@@ -1,6 +1,6 @@
 'use client';
 import React from 'react';
-import { injectEfCss } from '../runtime/runtime.jsx';
+import { injectEfCss, useIsoLayoutEffect } from '../runtime/runtime.jsx';
 import { Icon } from '../icons/Icon.jsx';
 
 // One theme control for every Efolusi site; the contract is guidelines/theming.md (Theme contract).
@@ -99,7 +99,9 @@ export const ThemeToggle = React.forwardRef(function ThemeToggle({ lang = 'en', 
   const [pref, setPref] = React.useState(null);
   const [shown, setShown] = React.useState('light');
 
-  React.useEffect(() => {
+  // A layout effect, so the stored choice is read and applied before the first paint: a passive
+  // effect runs after it and shows the device's theme for one frame when the choice differs.
+  useIsoLayoutEffect(() => {
     const sync = () => {
       const choice = readThemePreference();
       setPref(choice);
