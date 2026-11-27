@@ -26,6 +26,10 @@ p{margin:0}
    Zero specificity also lets .ef-btn keep its foreground within this layer. */
 :where(a){color:var(--text-link);text-decoration:none;transition:color var(--dur-fast) var(--ease-enter)}
 :where(a:hover){color:var(--text-link-hover);text-decoration:none}
+/* A link in running text is underlined: the link colour is 2.43:1 against the body ink in light and 1.88:1 in dark
+   (WCAG 1.4.1). Classless anchors inside text blocks only; a component anchor has its own class and its own rule. */
+:where(p, dd, blockquote, figcaption) a:where(:not([class])){text-decoration:underline;text-decoration-thickness:1px;text-underline-offset:.2em}
+:where(p, dd, blockquote, figcaption) a:where(:not([class])):hover{text-decoration-thickness:2px}
 :where(a:focus-visible){outline:none;box-shadow:var(--focus-ring);border-radius:var(--radius-sm)}
 code,pre,kbd{font-family:var(--font-mono)}
 ::selection{background:var(--brand-100);color:var(--cocoa-900)}
