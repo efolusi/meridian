@@ -7,22 +7,24 @@ const CSS = `
 .ef-badge:hover,.ef-badge:focus,.ef-badge:visited{text-decoration:none}
 .ef-badge:focus-visible{outline:none;box-shadow:var(--focus-ring)}
 .ef-badge>[data-icon]{pointer-events:none;flex:none}
-.ef-badge--default{background:var(--accent);color:var(--accent-contrast)}
+.ef-badge--default{background:var(--surface-sunken);border-color:var(--border-strong);color:var(--text-primary)}
 .ef-badge--secondary{background:var(--surface-sunken);color:var(--text-secondary)}
 .ef-badge--outline{background:transparent;border-color:var(--border-strong);color:var(--text-primary)}
 .ef-badge--ghost{background:transparent;color:var(--text-secondary)}
 .ef-badge--link{height:auto;padding:0;background:transparent;color:var(--text-link)}
-.ef-badge--accent{background:var(--accent-subtle);color:var(--accent-subtle-fg)}
-.ef-badge--success{background:var(--status-success-bg);color:var(--status-success-text)}
-.ef-badge--warning{background:var(--status-warning-bg);color:var(--status-warning-text)}
-.ef-badge--danger{background:var(--status-danger-bg);color:var(--status-danger-text)}
-.ef-badge--brand{background:var(--cream-50);color:var(--cocoa-700)}
-.ef-badge--default:hover{background:var(--accent-hover)}
+.ef-badge--accent{background:var(--accent-subtle);border-color:transparent;color:var(--accent-subtle-fg)}
+.ef-badge--success{background:var(--status-success-bg);border-color:transparent;color:var(--status-success-text)}
+.ef-badge--warning{background:var(--status-warning-bg);border-color:transparent;color:var(--status-warning-text)}
+.ef-badge--danger{background:var(--status-danger-bg);border-color:transparent;color:var(--status-danger-text)}
+.ef-badge--brand{background:var(--cream-50);border-color:transparent;color:var(--cocoa-700)}
+.ef-badge--solid{background:var(--accent);border-color:transparent;color:var(--accent-contrast)}
+.ef-badge--default:hover{border-color:var(--border-hover)}
+.ef-badge--solid:hover{background:var(--accent-hover);border-color:transparent}
 .ef-badge--secondary:hover,.ef-badge--outline:hover,.ef-badge--ghost:hover{background:var(--surface-sunken)}
-.ef-badge--default.ef-badge--accent:hover{background:var(--accent-subtle)}
-.ef-badge--default.ef-badge--success:hover{background:var(--status-success-bg)}
-.ef-badge--default.ef-badge--warning:hover{background:var(--status-warning-bg)}
-.ef-badge--default.ef-badge--brand:hover{background:var(--cream-50)}
+.ef-badge--default.ef-badge--accent:hover{background:var(--accent-subtle);border-color:transparent}
+.ef-badge--default.ef-badge--success:hover{background:var(--status-success-bg);border-color:transparent}
+.ef-badge--default.ef-badge--warning:hover{background:var(--status-warning-bg);border-color:transparent}
+.ef-badge--default.ef-badge--brand:hover{background:var(--cream-50);border-color:transparent}
 .ef-badge--link:hover{color:var(--text-link-hover);text-decoration:none}
 [data-theme="dark"] .ef-badge--accent{color:var(--brand-300)}
 [data-theme="dark"] .ef-badge--brand{background:var(--accent-subtle);color:var(--brand-300)}
