@@ -1,4 +1,5 @@
-import { afterEach, beforeEach, describe, expect, it } from 'vitest';
+import React from 'react';
+import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
 import { act, fireEvent, render } from '@testing-library/react';
 import { ThemeToggle, themeInitScript, readThemePreference, writeThemePreference, writeThemeCookie } from '../components/marketing/ThemeToggle.jsx';
 
@@ -191,5 +192,53 @@ describe('ThemeToggle instances stay in step (MD13)', () => {
     localStorage.setItem('efolusi-theme', 'dark');
     act(() => { window.dispatchEvent(new StorageEvent('storage', { key: 'efolusi-theme' })); });
     expect(getByRole('button').dataset.themeShown).toBe('dark');
+  });
+});
+
+describe('first frame (MD25): the stored choice is applied before the first paint', () => {
+  // A sibling declared after the toggle runs its layout effect in the same commit, before the
+  // browser paints and before any passive effect. What it sees is what the first frame shows.
+  function Probe({ seen }) {
+    React.useLayoutEffect(() => {
+      seen.push({ theme: attr(), shown: document.querySelector('[data-slot="theme-toggle"]').dataset.themeShown });
+    }, [seen]);
+    return null;
+  }
+
+  it('paints the stored choice, not the device theme, on the first frame', () => {
+    fakeMedia(false);
+    localStorage.setItem('efolusi-theme', 'dark');
+    const seen = [];
+    render(<><ThemeToggle /><Probe seen={seen} /></>);
+    expect(seen).toEqual([{ theme: 'dark', shown: 'dark' }]);
+  });
+
+  it('paints the cookie choice on the first frame when nothing is stored', () => {
+    fakeMedia(true);
+    document.cookie = 'efolusi_theme=light; Path=/';
+    const seen = [];
+    render(<><ThemeToggle /><Probe seen={seen} /></>);
+    expect(seen).toEqual([{ theme: 'light', shown: 'light' }]);
+  });
+
+  it('applies the stored choice first and never the device theme, even for a frame', () => {
+    fakeMedia(false);
+    localStorage.setItem('efolusi-theme', 'dark');
+    const set = vi.spyOn(document.documentElement, 'setAttribute');
+    try {
+      render(<ThemeToggle />);
+      const applied = set.mock.calls.filter(([name]) => name === 'data-theme').map(([, value]) => value);
+      expect(applied[0]).toBe('dark');
+      expect(applied.every((v) => v === 'dark')).toBe(true);
+    } finally {
+      set.mockRestore();
+    }
+  });
+
+  it('with no choice, paints the device theme on the first frame', () => {
+    fakeMedia(true);
+    const seen = [];
+    render(<><ThemeToggle /><Probe seen={seen} /></>);
+    expect(seen).toEqual([{ theme: 'dark', shown: 'dark' }]);
   });
 });
