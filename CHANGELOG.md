@@ -1,5 +1,11 @@
 # Changelog
 
+## Unreleased
+
+Semver level: PATCH.
+
+- **Links in `li`, `td`, `caption`, `label` and an `Alert` description are underlined (MD92, WCAG 1.4.1).** The v2.5.0 rule underlined classless anchors in `p`, `dd`, `blockquote` and `figcaption` only, so a link inside a list item, a table cell, a table caption, a consent label (`<label>I accept the <a>terms</a></label>`) or the text of an `Alert` (the product site had 18 in `li` and `td`; sso `/account` had Platform terms and Privacy notice in an `Alert`) was colour only, and the link colour is 2.43:1 against body ink in light and 1.88:1 in dark. `tokens/base.css` now covers those parents with the same thin underline (thicker on hover) and the same `:not([class])` opt-out, so a navigation list whose links carry a class stays plain. Deliberately not covered: `th` (a header is a label, its link is a sort or navigation control), `summary` (the disclosure control), `dt` and the `ul`, `ol` and `nav` containers. **What a consumer does:** delete your own scoped rule that underlines a classless link in `li` or `td` (the product site has one, row W52), and in an `Alert` description. A link that must stay plain inside one of these parents takes a class.
+
 ## v2.5.0 - 2026-11-27
 
 Semver level: MINOR.
