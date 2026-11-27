@@ -3,6 +3,7 @@ import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
 import { act, render, screen } from '@testing-library/react';
 import { Conversation } from '../components/ai/Conversation.jsx';
 import { Console } from '../components/code/Console.jsx';
+import { Diff } from '../components/code/Diff.jsx';
 import { Table } from '../components/data/Table.jsx';
 
 // MD17: a part that scrolls must be reachable by keyboard (WCAG 2.1.1) and, being focusable,
@@ -130,5 +131,55 @@ describe('Table scroll wrapper', () => {
     const wrap = wrapOf(container);
     expect(wrap.getAttribute('tabindex')).toBe('0');
     expect(screen.getByRole('region', { name: 'Table' })).toBe(wrap);
+  });
+});
+
+describe('Diff scroll regions', () => {
+  const from = 'const max = 3;\nreturn run();';
+  const to = 'const max = 5;\nreturn run();';
+
+  it('is a focusable region named Diff by default', () => {
+    const { container } = render(<Diff from={from} to={to} />);
+    const region = container.querySelector('.ef-diff__scroll');
+    expect(region.getAttribute('tabindex')).toBe('0');
+    expect(screen.getByRole('region', { name: 'Diff' })).toBe(region);
+  });
+
+  it('is named by a string title when there is one', () => {
+    const { container } = render(<Diff title="agents/retry.ts" from={from} to={to} />);
+    expect(screen.getByRole('region', { name: 'agents/retry.ts' })).toBe(container.querySelector('.ef-diff__scroll'));
+  });
+
+  it('is named Diff when the title is not a string', () => {
+    render(<Diff title={<b>retry</b>} from={from} to={to} />);
+    expect(screen.getByRole('region', { name: 'Diff' })).toBeTruthy();
+  });
+
+  it('takes its name from aria-label, which names the region and not the wrapper', () => {
+    const { container } = render(<Diff aria-label="Retry change" from={from} to={to} />);
+    expect(screen.getByRole('region', { name: 'Retry change' })).toBe(container.querySelector('.ef-diff__scroll'));
+    expect(container.querySelector('.ef-diff').hasAttribute('aria-label')).toBe(false);
+  });
+
+  it('takes its name from aria-labelledby', () => {
+    const { container } = render(<div><h2 id="cap">Retry change</h2><Diff aria-labelledby="cap" from={from} to={to} /></div>);
+    const region = container.querySelector('.ef-diff__scroll');
+    expect(region.getAttribute('aria-labelledby')).toBe('cap');
+    expect(region.hasAttribute('aria-label')).toBe(false);
+    expect(container.querySelector('.ef-diff').hasAttribute('aria-labelledby')).toBe(false);
+    expect(screen.getByRole('region', { name: 'Retry change' })).toBe(region);
+  });
+
+  it('names each open file region after the file', () => {
+    const files = [
+      { name: 'a.ts', from: 'one', to: 'two' },
+      { name: 'b.ts', from: 'x', to: 'y', defaultOpen: false },
+    ];
+    const { container } = render(<Diff files={files} aria-label="Ignored for files" />);
+    const regions = container.querySelectorAll('.ef-diff__scroll');
+    expect(regions).toHaveLength(1);
+    expect(regions[0].getAttribute('tabindex')).toBe('0');
+    expect(screen.getByRole('region', { name: 'a.ts' })).toBe(regions[0]);
+    expect(screen.queryByRole('region', { name: 'Ignored for files' })).toBeNull();
   });
 });
