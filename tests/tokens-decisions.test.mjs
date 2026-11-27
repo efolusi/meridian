@@ -80,7 +80,7 @@ describe('tokens.json is DTCG with aliases and modes', () => {
   it('carries dark, compact and coarse-pointer values as modes', () => {
     const mode = (path) => byPath.get(path).$extensions[MODES].modes
     expect(mode('surface.page').dark).toBe('#1C1814')
-    expect(mode('text.link').dark).toBe('{ember.300}')
+    expect(mode('text.link').dark).toBe('{copper.400}')
     expect(mode('border.control').dark).toBeDefined()
     expect(mode('control.h-md').compact).toBe('30px')
     expect(mode('control.h-md').coarse).toBe('{tap.min}')

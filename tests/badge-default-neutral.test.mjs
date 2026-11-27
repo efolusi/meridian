@@ -1,4 +1,4 @@
-// MD69: the Badge `default` variant is a quiet neutral badge, not the ember
+// MD69: the Badge `default` variant is a quiet neutral badge, not the accent
 // fill of the primary button. The `solid` variant keeps the loud look for a
 // consumer that wants it. Contrast is measured from the tokens the rules name.
 import { readTokenCss } from './helpers/token-css.mjs';

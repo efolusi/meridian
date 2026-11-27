@@ -26,14 +26,14 @@ describe('contrast gate', () => {
   })
 
   it('measures links, which it used to skip', () => {
-    // --ember-300 links on white are far under 4.5:1.
-    const { code, out } = gate(source.replace('--text-link:var(--ember-700)', '--text-link:var(--ember-300)'))
+    // --brand-300 links on white are far under 4.5:1.
+    const { code, out } = gate(source.replace('--text-link:var(--brand-700)', '--text-link:var(--brand-300)'))
     expect(code).toBe(1)
     expect(out).toMatch(/FAIL\s+light --text-link/)
   })
 
   it('measures the brand button label on its hover fill', () => {
-    const { code, out } = gate(source.replace('--surface-brand-hover:var(--ember-150)', '--surface-brand-hover:var(--sand-950)'))
+    const { code, out } = gate(source.replace('--surface-brand-hover:var(--brand-200)', '--surface-brand-hover:var(--sand-950)'))
     expect(code).toBe(1)
     expect(out).toMatch(/FAIL\s+\w+\s+--text-on-brand\s+on --surface-brand-hover/)
   })

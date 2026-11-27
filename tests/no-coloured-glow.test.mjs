@@ -5,7 +5,7 @@ import { describe, expect, it } from 'vitest';
 // contact shadow only (offset at most 3px, blur at most 8px, coloured part at most .16 alpha), no glow,
 // and in dark no coloured shadow at all. Glass bars and sheets carry no coloured glow either.
 const FILES = ['tokens/base.css', 'components/forms/Button.jsx', 'components/forms/Switch.jsx', 'components/navigation/SegmentedControl.jsx', 'components/navigation/TabBar.jsx', 'components/display/Badge.jsx', 'components/marketing/ThemeToggle.jsx'];
-const COLOUR = /var\(--(accent|brand|ember|danger|success|warning|info|status)[\w-]*\)/;
+const COLOUR = /var\(--(accent|brand|danger|success|warning|info|status)[\w-]*\)/;
 
 describe('no coloured glow on filled controls or glass', () => {
   for (const file of FILES) {
