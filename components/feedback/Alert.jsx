@@ -13,6 +13,8 @@ const CSS = `
 .ef-alert:has(>.ef-alert__action){grid-template-columns:minmax(0,1fr) auto;column-gap:var(--space-4)}
 .ef-alert:has(>[data-slot=icon]):has(>.ef-alert__action){grid-template-columns:auto minmax(0,1fr) auto}
 .ef-alert>[data-slot=icon]{grid-column:1;grid-row:1/3;margin-top:var(--space-0-5);color:currentColor}
+/* The default icon steps aside for any other icon child, however it was built (a caller icon, a template runtime's element). */
+.ef-alert:has(>[data-slot=icon]:not([data-alert-default]))>[data-alert-default]{display:none}
 .ef-alert>.ef-alert__title,.ef-alert>.ef-alert__description{grid-column:1}
 .ef-alert:has(>[data-slot=icon])>.ef-alert__title,.ef-alert:has(>[data-slot=icon])>.ef-alert__description{grid-column:2}
 .ef-alert--success{border-color:var(--status-success-border);color:var(--status-success-text)}
@@ -39,7 +41,7 @@ export const Alert = React.forwardRef(function Alert({
 
   return (
     <div {...rest} ref={ref} data-slot="alert" role="alert" className={classes}>
-      {name ? <Icon name={name} size={16} /> : null}
+      {name ? <Icon name={name} size={16} data-alert-default={icon ? undefined : ''} /> : null}
       {children}
     </div>
   );

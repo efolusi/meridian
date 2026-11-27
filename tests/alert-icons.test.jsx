@@ -5,7 +5,7 @@ import { render, screen } from '@testing-library/react';
 
 // Icon fetches an SVG by name; the stand-in prints the name so the test can read which glyph Alert chose.
 vi.mock('../components/icons/Icon.jsx', () => ({
-  Icon: ({ name, size }) => <span data-slot="icon" data-name={name} data-size={size} aria-hidden="true" />,
+  Icon: ({ name, size, ...rest }) => <span {...rest} data-slot="icon" data-name={name} data-size={size} aria-hidden="true" />,
 }));
 const { Alert, AlertAction, AlertDescription, AlertTitle } = await import('../components/feedback/Alert.jsx');
 const { Icon } = await import('../components/icons/Icon.jsx');
@@ -78,3 +78,24 @@ describe('Alert grid has no gap without an icon (MD71)', () => {
     expect(rule(css, '.ef-alert:has(>[data-slot=icon])>.ef-alert__title,.ef-alert:has(>[data-slot=icon])>.ef-alert__description')).toMatch(/grid-column:2/);
   });
 });
+
+// MD74 round 5: the starter smoke fetched info.svg on a page whose Alert already carries its own triangle-alert Icon, so the
+// default icon was rendered next to the caller's (the DC runtime that renders the starters builds the children outside the
+// element-type check). A caller icon must replace the default whatever built it, so the default icon is marked and the CSS
+// hides it as soon as the Alert has any other icon child.
+describe('the default icon steps aside for any other icon (MD74 round 5)', () => {
+  it('marks the default icon so the stylesheet can find it, and not a caller icon', () => {
+    render(<Alert data-testid="alert"><AlertTitle>T</AlertTitle></Alert>);
+    const icon = screen.getByTestId('alert').querySelector('[data-slot="icon"]');
+    expect(icon.hasAttribute('data-alert-default')).toBe(true);
+    render(<Alert data-testid="own"><Icon name="shield" /><AlertTitle>T</AlertTitle></Alert>);
+    expect(screen.getByTestId('own').querySelector('[data-alert-default]')).toBeNull();
+  });
+
+  it('hides the marked icon when another icon is a direct child, and keeps the layout rules for the caller icon', () => {
+    const css = alertCss();
+    expect(css).toContain('.ef-alert:has(>[data-slot=icon]:not([data-alert-default]))>[data-alert-default]{display:none}');
+    expect(css).toContain('.ef-alert>[data-slot=icon]{grid-column:1;grid-row:1/3;');
+  });
+});
+
