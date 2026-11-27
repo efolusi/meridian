@@ -1,6 +1,6 @@
 {
   "name": "meridian-build",
-  "version": "2.3.0",
+  "version": "2.4.0",
   "private": true,
   "description": "Build tooling for the Meridian design system. Not the published package — consumers use the CDN or vendor the folder; see README.md.",
   "type": "module",
