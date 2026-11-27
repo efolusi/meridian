@@ -61,6 +61,11 @@ jobs:
           set +e
           BASE=http://127.0.0.1:8000 SHOTS="$RUNNER_TEMP/shots" "$RUNNER_TEMP/pw-node" scripts/smoke_headless.mjs
           CODE=$?
+          if [ "$CODE" -eq 0 ]; then
+            # The same cases in RTL, no screenshots: a case that only fails in RTL shows here, before the images are committed.
+            BASE=http://127.0.0.1:8000 DIRECTION=rtl "$RUNNER_TEMP/pw-node" scripts/smoke_headless.mjs
+            CODE=$?
+          fi
           set -e
           kill $SERVER 2>/dev/null || true
           exit $CODE
