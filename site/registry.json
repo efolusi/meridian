@@ -3411,7 +3411,7 @@
       "name": "languageswitch",
       "type": "registry:ui",
       "title": "LanguageSwitch",
-      "description": "Use `LanguageSwitch` where a page can be read in more than one language: one short code per language (`ID`, `EN`), each a link to the same page in that language. Put it in the `actions` of `SiteHeader` beside `ThemeToggle`, or in the language slot of `SiteFooter`. It lives in the marketing group wit",
+      "description": "The language switch of every Efolusi site: one short code per language (ID, EN), each a link to the same page in that language.",
       "dependencies": [
         "react"
       ],

@@ -61,7 +61,7 @@ Dark mode and compact density are attribute scopes, not rebuilds:
 | **npm** | you have a bundler (Vite, Next, Remix) | `npm install @efolusi/meridian` |
 | **CDN** (above) | prototypes, demos, a single-file artifact | the four tags above |
 | **Vendor the folder** | you want to own and edit the source | copy the repo; link `styles.css` and `_ds_bundle.js` |
-| **Vendor one component** | you need Button, not all 135 | `npx @efolusi/meridian-cli add button`, or copy `components/<group>/<Name>.jsx` + `.d.ts` by hand (Apache-2.0: keep the license notice) |
+| **Vendor one component** | you need Button, not all 136 | `npx @efolusi/meridian-cli add button`, or copy `components/<group>/<Name>.jsx` + `.d.ts` by hand (Apache-2.0: keep the license notice) |
 
 **From the registry.** Compatible registry clients install editable component source, types, usage guidance, and the Meridian dependencies it needs from `efolusi/meridian/<item>`. The same catalog is served at `https://meridian.efolusi.com/site/registry.json`, with items under `https://meridian.efolusi.com/site/registry/<item>.json`.
 

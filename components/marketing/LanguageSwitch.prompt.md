@@ -1,6 +1,8 @@
 # LanguageSwitch
 
-Use `LanguageSwitch` where a page can be read in more than one language: one short code per language (`ID`, `EN`), each a link to the same page in that language. Put it in the `actions` of `SiteHeader` beside `ThemeToggle`, or in the language slot of `SiteFooter`. It lives in the marketing group with the header and footer that hold it.
+The language switch of every Efolusi site: one short code per language (ID, EN), each a link to the same page in that language.
+
+Put it in the `actions` of `SiteHeader` beside `ThemeToggle`, or in the language slot of `SiteFooter`. It lives in the marketing group with the header and footer that hold it. Use it where a page can be read in more than one language.
 
 Give every language its own `href` (the product knows the other URL; Meridian fetches and stores nothing). Each link carries `hreflang` and `lang` with the language's code, and an accessible name that spells the language in itself and ends with the visible code: `Bahasa Indonesia (ID)`, `English (EN)`, so a voice user can say "click ID". The language in use is marked `aria-current="true"` and is not a link: a link to the page you are on does nothing. Pass `name` for any code other than `en` and `id`.
 
