@@ -1,11 +1,11 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-shape="pill">
 <head>
 <script src="../browser/theme-init.js"></script>
 <script type="module" src="../browser/marketing.js"></script>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Components | Meridian</title>
+<title>Components · Meridian</title>
 <meta name="description" content="135 accessible React components with live demos, typed props, and usage guides.">
 <link rel="icon" type="image/svg+xml" href="../assets/favicon.svg">
 <link rel="canonical" href="https://meridian.efolusi.com/site/Components.dc.html">
@@ -79,7 +79,7 @@
 </sc-for>
 </div></details>
 <div style="font-family:var(--font-mono);font-size:12px;color:var(--text-muted)">docs / components / {{ activeGroupId }}</div>
-<h1 style="font-size:36px;font-weight:680;font-family:var(--font-display);letter-spacing:-0.02em;margin:8px 0 0">{{ activeName }}</h1>
+<h1 class="ef-page-title" style="margin:8px 0 0">{{ activeName }}</h1>
 <p style="font-size:16.5px;line-height:1.6;color:var(--text-secondary);margin:10px 0 0;text-wrap:pretty">{{ activeDesc }}</p>
 <sc-if value="{{ hasHero }}" hint-placeholder-val="{{ false }}">
 <div id="sec-preview" style="margin-top:26px"><x-import component-from-global-scope="MeridianLiveFrame" file="{{ heroFile }}" exp="{{ heroExp }}" hint-size="100%,420px"></x-import></div>
@@ -158,7 +158,7 @@
 </div>
 <footer style="view-transition-name:site-foot;border-top:1px solid var(--border-default)">
 <div class="site-foot-row pad-sm" style="max-width:1200px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;padding:20px 28px;font-size:13px;color:var(--text-muted)">
-<span>Built by <a href="https://efolusi.com" style="color:var(--text-secondary);text-decoration:none">Efolusi</a>. The source code is available on <a href="https://github.com/efolusi/meridian" style="color:var(--text-secondary);text-decoration:none">GitHub</a>. Apache-2.0 licensed.</span>
+<p style="margin:0">Built by <a href="https://efolusi.com" style="color:var(--text-secondary)">Efolusi</a>. The source code is available on <a href="https://github.com/efolusi/meridian" style="color:var(--text-secondary)">GitHub</a>. Apache-2.0 licensed.</p>
 <span style="display:flex;gap:16px"><a href="https://github.com/efolusi/meridian/blob/main/LICENSE" style="color:var(--text-secondary);text-decoration:none" style-hover="color:var(--text-primary)">License</a><a href="https://github.com/efolusi/meridian/blob/main/CONTRIBUTING.md" style="color:var(--text-secondary);text-decoration:none" style-hover="color:var(--text-primary)">Contributing</a><a href="https://github.com/efolusi/meridian/blob/main/README.md" style="color:var(--text-secondary);text-decoration:none" style-hover="color:var(--text-primary)">Readme</a></span>
 </div>
 </footer>
