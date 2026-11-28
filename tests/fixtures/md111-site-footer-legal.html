@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>MD111 SiteFooter legal row</title>
+<link rel="stylesheet" href="../../styles.css">
+<style>body{margin:0;background:var(--surface-page);color:var(--text-primary);font-family:var(--font-sans)}pre{white-space:pre-wrap;margin:16px}</style>
+<script src="../../node_modules/react/umd/react.production.min.js"></script>
+<script src="../../node_modules/react-dom/umd/react-dom.production.min.js"></script>
+<script src="../../_ds_bundle.js"></script>
+</head>
+<body>
+<!-- MD111: the legal links of the SiteFooter are at least 24 px tall at a fine pointer and 44 px at a coarse pointer,
+     the copyright year comes from the clock, and the language slot takes a LanguageSwitch. window.__MD111__ holds the
+     measured result: the copyright text, each legal link's width and height, the language targets. Served by hand:
+     python3 -m http.server from the repository root, then open /tests/fixtures/md111-site-footer-legal.html (add
+     ?theme=dark or ?density=compact; ?lang=id for the Indonesian labels). -->
+<main id="root"></main>
+<pre id="out"></pre>
+<script>
+  const params = new URLSearchParams(location.search);
+  if (params.get('theme')) document.documentElement.dataset.theme = params.get('theme');
+  if (params.get('density')) document.documentElement.dataset.density = params.get('density');
+  const lang = params.get('lang') === 'id' ? 'id' : 'en';
+  const { SiteFooter, LanguageSwitch } = window.EfolusiDesignSystem_4ffc3d;
+  const h = React.createElement;
+  const languages = [
+    { code: 'id', label: 'ID', href: '/id/', name: 'Bahasa Indonesia' },
+    { code: 'en', label: 'EN', href: '/en/', name: 'English' },
+  ];
+  ReactDOM.createRoot(document.getElementById('root')).render(h(SiteFooter, {
+    brand: 'Komando', brandHref: '#', lang,
+    tagline: 'Manage servers safely, from the terminal or your agent.',
+    columns: [{ heading: 'Product', links: [{ label: 'Docs', href: '#docs' }, { label: 'Pricing', href: '#pricing' }] }],
+    name: 'PT Efolusi Dunia Teknologi', since: new Date().getFullYear() - 2,
+    legal: [{ label: lang === 'id' ? 'Ketentuan platform' : 'Platform terms', href: '#terms' }, { label: lang === 'id' ? 'Pemberitahuan privasi' : 'Privacy notice', href: '#privacy' }, { label: 'Status', href: '#status' }],
+    languageSwitch: h(LanguageSwitch, { languages, current: lang, size: 'sm', lang }),
+  }));
+  const px = (v) => Math.round(parseFloat(v) * 100) / 100;
+  // Measure again after a device emulation changes the pointer: window.__measureMD111().
+  window.__measureMD111 = () => {
+    const box = (el) => { const r = el.getBoundingClientRect(); return { w: px(r.width), h: px(r.height) }; };
+    const result = {
+      pointer: matchMedia('(pointer:fine)').matches ? 'fine' : matchMedia('(pointer:coarse)').matches ? 'coarse' : 'none',
+      width: innerWidth,
+      overflowX: document.documentElement.scrollWidth > document.documentElement.clientWidth,
+      copyright: document.querySelector('.ef-site-footer__copyright').textContent,
+      clockYear: new Date().getFullYear(),
+      legalNav: document.querySelector('.ef-site-footer__meta nav').getAttribute('aria-label'),
+      legal: [...document.querySelectorAll('.ef-site-footer__legal-link')].map((a) => ({ text: a.textContent, ...box(a) })),
+      language: [...document.querySelectorAll('.ef-language-switch__item')].map((a) => ({ text: a.textContent, tag: a.tagName.toLowerCase(), ...box(a) })),
+    };
+    window.__MD111__ = result;
+    document.getElementById('out').textContent = JSON.stringify(result, null, 2);
+    return result;
+  };
+  requestAnimationFrame(() => requestAnimationFrame(() => window.__measureMD111()));
+</script>
+</body>
+</html>

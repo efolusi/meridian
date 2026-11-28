@@ -2,7 +2,7 @@
 
 The entire design system in one file, generated from llms.txt, components/*/, and tokens/*.css by scripts/build_llms.py. Do not edit by hand. The short map of the repository is /llms.txt.
 
-> Meridian is a general-purpose open-source design system by Efolusi: 135 accessible React components, 296 design tokens (light, dark, compact), blocks, charts, and full example apps, served browser-native with zero build step. Apache-2.0 licensed.
+> Meridian is a general-purpose open-source design system by Efolusi: 136 accessible React components, 296 design tokens (light, dark, compact), blocks, charts, and full example apps, served browser-native with zero build step. Apache-2.0 licensed.
 
 Live docs: https://meridian.efolusi.com · Source: https://github.com/efolusi/meridian · License: Apache-2.0
 
@@ -4206,15 +4206,20 @@ Group: marketing · Source: /components/marketing/SiteFooter.jsx · Exports: Sit
 
 # SiteFooter
 
-The footer of every Efolusi product page: the brand and a one-line tagline, social icon links, as many link columns as the site really has, and a bottom row for the rights line. Each column is a small `nav` named by its heading. Links to other sites open in a new tab and say so to screen readers (`lang="id"` for the Indonesian wording).
+The footer of every Efolusi product page: the brand and a one-line tagline, social icon links, as many link columns as the site really has, and a bottom row: the copyright, the legal links and the language switch. Each column is a small `nav` named by its heading. Links to other sites open in a new tab and say so to screen readers (`lang="id"` for the Indonesian wording).
+
+The bottom row is `© {year} {name}`, then the `legal` links (terms, privacy notice and others, a `nav` named "Legal"), then the `languageSwitch` slot (a `LanguageSwitch`), then `bottom` for anything else. Never type the year: `year` is read from `new Date().getFullYear()` at render. Pass `year` only to pin it (tests, a server render that must match the browser across New Year). `since` makes a range, `{since} to {year}` (`{since} sampai {year}` with `lang="id"`), when it is before the year. A legal link is 24px tall at least at a fine pointer and 44px at a coarse pointer.
 
 ```jsx
 <SiteFooter
   brand="Komando"
   tagline="Manage servers safely, from the terminal or your agent."
-  columns={[{ heading: 'Product', links: [{ label: 'Docs', href: '/en/docs' }] }, { heading: 'Legal', links: [{ label: 'Privacy', href: '/en/privacy' }, { label: 'Terms', href: '/en/terms' }] }]}
+  columns={[{ heading: 'Product', links: [{ label: 'Docs', href: '/en/docs' }, { label: 'Pricing', href: '/en/pricing' }] }]}
   socials={[{ label: 'GitHub', href: 'https://github.com/efolusi', icon: <Icon name="github" size={20} aria-hidden="true" /> }]}
-  bottom={<p>© 2026 Efolusi</p>}
+  name="PT Efolusi Dunia Teknologi"
+  since={FOUNDED_YEAR}
+  legal={[{ label: 'Platform terms', href: '/en/terms' }, { label: 'Privacy notice', href: '/en/privacy' }]}
+  languageSwitch={<LanguageSwitch size="sm" current="en" languages={languages} />}
 />
 ```
 
@@ -4234,13 +4239,24 @@ export interface SiteFooterProps extends React.HTMLAttributes<HTMLElement> {
   columns?: { heading: string; links: SiteFooterLink[] }[];
   /** Icon links; `icon` is the glyph, `label` its accessible name. */
   socials?: { label: string; href: string; icon: React.ReactNode }[];
-  /** The bottom row: rights line, made-in line. */
+  /** Who holds the copyright. With it the bottom row starts with `© {year} {name}`; without it no copyright line is printed. */
+  name?: React.ReactNode;
+  /** The copyright year. Left out, the footer reads `new Date().getFullYear()` at render, so nobody edits it every January. Pass it to pin the year (tests, and a server render that must match the browser across New Year). */
+  year?: number;
+  /** The first year, for a range: `since` before the year prints `{since} to {year}` (`sampai` in Indonesian). Not before the year, one year is printed. */
+  since?: number;
+  /** The legal row: terms, privacy notice and others, as a nav named "Legal" next to the copyright. Each link is 24px tall at least at a fine pointer and 44px at a coarse pointer. */
+  legal?: SiteFooterLink[];
+  /** The language slot of the bottom row: give it a `LanguageSwitch`. */
+  languageSwitch?: React.ReactNode;
+  /** The rest of the bottom row after the copyright, the legal links and the language switch: a made-in line. */
   bottom?: React.ReactNode;
-  /** Language of the "(opens in a new tab)" label. @default 'en' */
+  /** Language of the built-in labels (new tab, year range, legal nav). @default 'en' */
   lang?: 'en' | 'id';
-  labels?: Partial<Record<'newTab', string>>;
+  /** `newTab` is the hidden "(opens in a new tab)", `to` the word of a year range, `legal` the name of the legal nav. */
+  labels?: Partial<Record<'newTab' | 'to' | 'legal', string>>;
 }
-/** A marketing footer: brand and tagline, social icons, link columns and a bottom row. Extra content goes in children, under the tagline. */
+/** A marketing footer: brand and tagline, social icons, link columns and a bottom row (copyright with a computed year, legal links, a language switch). Extra content goes in children, under the tagline. */
 export declare const SiteFooter: React.ForwardRefExoticComponent<SiteFooterProps & React.RefAttributes<HTMLElement>>;
 ```
 
