@@ -14,8 +14,8 @@ CSS is not counted per component: `styles.css` ships every component style in on
 | File | Size | Gzip |
 | --- | ---: | ---: |
 | `@efolusi/meridian` | 370.8 kB | 84.1 kB |
-| `dist/components.css` | 244.2 kB | 34.5 kB |
-| `_ds_bundle.js` | 897.0 kB | 162.9 kB |
+| `dist/components.css` | 244.9 kB | 34.8 kB |
+| `_ds_bundle.js` | 897.7 kB | 163.2 kB |
 
 The root import, `@efolusi/meridian`, is every component. `_ds_bundle.js` is the zero-build CDN bundle, which also carries each component's CSS. The root import is minified; the CSS and the CDN bundle are measured as shipped.
 

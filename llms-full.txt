@@ -1701,7 +1701,7 @@ Selection behaves the same: `selectable` alone works, and `selected` + `onSelect
     { key: 'plan', label: 'Plan' },
     { key: 'mrr', label: 'MRR', numeric: true, align: 'end', sortable: true,
       sortAccessor: r => Number(String(r.mrr).replace(/[^0-9.]/g, '')) },
-    { key: 'status', label: 'Status', render: v => <Badge className="ef-badge--success"><Icon name="circle" size={8} strokeWidth={4} data-icon="inline-start" />{v}</Badge> },
+    { key: 'status', label: 'Status', render: v => <Badge variant="success"><Icon name="circle" size={8} strokeWidth={4} data-icon="inline-start" />{v}</Badge> },
   ]}
   rows={customers}
   empty="No customers yet."
@@ -1993,16 +1993,20 @@ Compact status or category label.
 <Badge variant="outline">Outline</Badge>
 <Badge variant="ghost">Ghost</Badge>
 <Badge variant="solid">Solid</Badge>
+<Badge variant="success"><Icon name="circle-check" size={12} data-icon="inline-start" />Verified</Badge>
+<Badge variant="brand">Efolusi</Badge>
 <Badge asChild variant="link"><a href="/updates">Updates</a></Badge>
-<Badge className="ef-badge--success"><Icon name="circle-check" size={12} data-icon="inline-start" />Verified</Badge>
 ```
 
 `default` is neutral: a sunken surface with a strong border and ink text, so a
 normal status reads quieter than the primary button. Use `solid` for the filled
 accent badge (the copper fill of the primary button, with its 1px accent edge) when one badge in a view
-must stand out; keep it to one per view. A status that needs a colour (Verified,
-Live, Degraded) takes the `ef-badge--success` or `ef-badge--warning` class, as
-in the last example.
+must stand out; keep it to one per view. A status that is good news (Verified,
+Live) takes `variant="success"`; a label that belongs to the brand takes
+`variant="brand"`. Both hold 4.5:1 for their text in light, dark and both
+increased-contrast tables. Do not write `ef-badge--success` or `ef-badge--brand`
+on a default Badge by hand. A status with no variant (Degraded) takes the
+`ef-badge--warning` class.
 
 `badgeVariants` returns the root class names for semantic custom elements.
 Compose icons as children with `data-icon="inline-start"` or
@@ -2013,8 +2017,9 @@ Compose icons as children with `data-icon="inline-start"` or
 /**
  * `default` is a quiet neutral badge (sunken surface, strong border, ink text).
  * `solid` is the filled accent badge, the same fill as the primary button.
+ * `success` is the green status tint (Verified, Live). `brand` is the warm cream tint, the dark accent tint in dark.
  */
-export type BadgeVariant = 'default' | 'secondary' | 'danger' | 'outline' | 'ghost' | 'link' | 'solid';
+export type BadgeVariant = 'default' | 'secondary' | 'danger' | 'outline' | 'ghost' | 'link' | 'solid' | 'success' | 'brand';
 
 export interface BadgeProps extends React.HTMLAttributes<HTMLSpanElement> {
   /** @default 'default' */
