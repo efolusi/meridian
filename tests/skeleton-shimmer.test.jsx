@@ -11,10 +11,11 @@ describe('Skeleton shimmer', () => {
     expect(shimmer.hasAttribute('data-shimmer')).toBe(true);
   });
 
-  it('shows a still block under reduced motion', () => {
+  it('keeps sweeping under reduced motion: a skeleton signals loading, and the guard leaves it running (MD122)', () => {
     render(<Skeleton shimmer />);
     const rules = document.getElementById('ef-css-skel').textContent.replace(/\s+/g, '');
-    expect(rules).toContain('@media(prefers-reduced-motion:reduce){.ef-skel[data-shimmer]{background:var(--border-default);animation:none}}');
+    expect(rules).not.toMatch(/prefers-reduced-motion:reduce\)\{[^}]*ef-skel/);
+    expect(rules).toContain('.ef-skel[data-shimmer]{background:linear-gradient');
   });
 
   it('is hidden from assistive technology unless the caller says otherwise', () => {

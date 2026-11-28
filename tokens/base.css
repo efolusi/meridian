@@ -113,6 +113,24 @@ code,pre,kbd{font-family:var(--font-mono)}
    its own. Display face at --text-3xl to --text-4xl, balanced, and a long word breaks instead of overflowing. Put it
    on the h1; marketing pages use Hero and sections use SectionHead. */
 .ef-page-title{margin:0;font-family:var(--font-display);font-size:clamp(var(--text-3xl),4vw,var(--text-4xl));font-weight:var(--weight-bold);line-height:var(--leading-tight);letter-spacing:var(--tracking-display);text-wrap:balance;overflow-wrap:break-word}
+/* Not-found page (MD110): the markup of the root 404.html, which products copy. Plain HTML, no script and no style
+   attribute, so a strict CSP lets it render. It needs only this stylesheet. One mark, the status code, then the same
+   message in English and Indonesian side by side, stacked on a phone. The link is drawn like a primary Button because
+   the static stylesheet does not carry the component CSS. */
+.ef-notfound{box-sizing:border-box;min-height:100vh;min-height:100dvh;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:var(--space-4);padding:var(--space-16) var(--space-6);text-align:center}
+.ef-notfound__mark{display:block;width:40px;height:40px}
+.ef-notfound__code{margin:0;font-family:var(--font-mono);font-size:var(--text-sm);color:var(--text-muted)}
+.ef-notfound__langs{display:grid;gap:var(--space-8);width:100%;max-width:56rem;margin-block-start:var(--space-4)}
+.ef-notfound__lang{display:flex;flex-direction:column;align-items:center;gap:var(--space-4)}
+.ef-notfound .ef-page-title{font-size:var(--text-3xl)}
+.ef-notfound__lang p{margin:0;max-width:34ch;font-size:var(--text-lg);line-height:var(--leading-relaxed);color:var(--text-secondary)}
+.ef-notfound__lang+.ef-notfound__lang{padding-block-start:var(--space-8);border-block-start:1px solid var(--border-default)}
+.ef-notfound__home{display:inline-flex;align-items:center;justify-content:center;box-sizing:border-box;min-height:var(--tap-min);margin-block-start:var(--space-2);padding:0 var(--space-5);border:1px solid var(--accent-edge);border-radius:var(--press-radius,var(--radius-sm));background:var(--accent);color:var(--accent-contrast);font-family:var(--font-sans);font-size:var(--text-md);font-weight:var(--weight-semibold);line-height:var(--leading-normal);text-decoration:none;white-space:nowrap;transition:background var(--dur-fast) var(--ease-enter)}
+@media (prefers-reduced-motion:no-preference){.ef-notfound__home{transition:background var(--dur-fast) var(--ease-enter),transform var(--dur-fast) var(--ease-enter)}}
+@media (hover:hover){.ef-notfound__home:hover{background:var(--accent-hover);text-decoration:none}}
+.ef-notfound__home:active{background:var(--accent-active);transform:scale(var(--motion-press))}
+.ef-notfound__home:focus-visible{outline:none;box-shadow:var(--focus-ring)}
+@media (min-width:880px){.ef-notfound__langs{grid-template-columns:1fr 1fr;gap:var(--space-8)}.ef-notfound__lang+.ef-notfound__lang{padding-block-start:0;padding-inline-start:var(--space-8);border-block-start:0;border-inline-start:1px solid var(--border-default)}}
 }
 /* Phone control text (MD86): iOS Safari zooms the page when a text control takes focus while its text is under 16px,
    and Input md (14px), Input sm, Textarea, NumberInput, NativeSelect and the InputGroup control under Combobox are
