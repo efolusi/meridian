@@ -32,6 +32,18 @@ export function SidebarFloatingDemo() {
   </div>;
 }
 
+// @demo AccountCard Signed-in person
+export function AccountCardDemo() {
+  const { AccountCard } = window.EfolusiDesignSystem_4ffc3d;
+  return (
+    <div style={{ display: 'grid', gap: 'var(--space-3)', width: 240 }}>
+      <AccountCard name="Ada Obi" email="ada@example.com" />
+      <AccountCard email="grace@example.com" />
+      <div style={{ width: 72 }}><AccountCard name="Ada Obi" email="ada@example.com" compact /></div>
+    </div>
+  );
+}
+
 // @demo Breadcrumb Path trail
 export function BreadcrumbsDemo() {
   const { Breadcrumb, BreadcrumbList, BreadcrumbItem, BreadcrumbLink, BreadcrumbPage, BreadcrumbSeparator, BreadcrumbEllipsis } = window.EfolusiDesignSystem_4ffc3d;
