@@ -10,7 +10,7 @@ const CSS = `
 .ef-marker__icon{display:inline-flex;align-items:center;justify-content:center;flex:0 0 auto;color:var(--text-muted)}
 .ef-marker__content{min-width:0;overflow-wrap:anywhere}
 .ef-marker:is(a,button){border:0;background:transparent;color:var(--text-link);cursor:pointer;text-decoration:none}
-.ef-marker:is(a,button):hover{text-decoration:none;color:var(--text-link-hover)}
+@media (hover:hover){.ef-marker:is(a,button):hover{text-decoration:none;color:var(--text-link-hover)}}
 .ef-marker:is(a,button):focus-visible{outline:none;box-shadow:var(--focus-ring)}
 `;
 

@@ -58,6 +58,13 @@ code,pre,kbd{font-family:var(--font-mono)}
 @keyframes ef-reduce-fade{from{opacity:0}}
 @media (prefers-reduced-motion:reduce){*,*::before,*::after{--ef-motion-guard:.01ms;animation-duration:var(--ef-motion-guard)!important;animation-delay:0s!important;animation-iteration-count:1!important;transition-delay:0s!important;scroll-behavior:auto!important}}
 @media (prefers-reduced-motion:reduce){::view-transition-group(*),::view-transition-image-pair(*){animation-duration:var(--ef-motion-guard)!important;animation-iteration-count:1!important}::view-transition-old(*),::view-transition-new(*){animation-duration:var(--dur-fast)!important;animation-iteration-count:1!important}}
+/* Theme switch (MD118). A swap changes every colour at once, and each element with a colour transition starts one,
+   so the page smears (46 transitionrun events on the docs Components page, 22 on sso web). While <html> carries
+   data-theme-switching every transition is off. ThemeToggle (and browser/marketing.js) sets the attribute, swaps the
+   theme, and removes the attribute after two animation frames. Inside the layer on purpose: a layered !important
+   outranks an unlayered one, so a product's own !important transition does not survive the swap. A product that
+   switches the theme itself calls swapTheme(), or sets the attribute for the same two frames. Delete any local copy. */
+[data-theme-switching] *,[data-theme-switching] *::before,[data-theme-switching] *::after{transition:none!important}
 /* Warm glass (design-tokens docs/glass.md). One material, four thicknesses, all from material.* tokens.
    .ef-glass--blur only where content scrolls under it (bars, sheets, popovers); at most four on screen,
    never one inside another. The tokens turn every thickness solid under reduced transparency, more

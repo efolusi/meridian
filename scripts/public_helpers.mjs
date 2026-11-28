@@ -9,6 +9,7 @@ export const PUBLIC_HELPERS = Object.freeze([
   'parseLegalInline',
   'readThemePreference',
   'resolveTheme',
+  'swapTheme',
   'themeInitScript',
   'toast',
   'toggleVariants',

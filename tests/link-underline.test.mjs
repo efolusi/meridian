@@ -30,7 +30,9 @@ describe('links in running text are underlined (MD74)', () => {
   it('keeps the quiet variant plain at rest and underlined on hover and keyboard focus (navigation and footers, never running text)', () => {
     expect(rule(linkCss, '.ef-link--quiet')).toMatch(/text-decoration:none/);
     const hover = linkCss.slice(linkCss.indexOf('.ef-link--quiet:hover'), linkCss.indexOf('}', linkCss.indexOf('.ef-link--quiet:hover')));
-    expect(hover).toContain('.ef-link--quiet:hover,.ef-link--quiet:focus-visible{');
+    // The hover half sits inside @media (hover:hover) (MD132 sweep); the keyboard focus half is its own rule.
+    expect(linkCss).toContain('@media (hover:hover){.ef-link--quiet:hover{');
+    expect(rule(linkCss, '.ef-link--quiet:focus-visible')).toMatch(/text-decoration:underline/);
     expect(hover).toMatch(/text-decoration:underline/);
     // The quiet rules come after the base ones so equal specificity resolves to quiet.
     expect(linkCss.indexOf('.ef-link--quiet{')).toBeGreaterThan(linkCss.indexOf('.ef-link:hover{'));

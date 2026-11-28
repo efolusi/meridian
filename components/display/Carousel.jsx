@@ -17,7 +17,7 @@ const CSS = `
 .ef-carousel[data-align="end"] .ef-carousel__item{scroll-snap-align:end}
 .ef-carousel__content[data-orientation="vertical"] .ef-carousel__item{min-height:0;padding-inline-start:0;padding-block-start:var(--carousel-gap,var(--space-4))}
 .ef-carousel__nav{position:absolute;display:flex;align-items:center;justify-content:center;width:32px;height:32px;border:1px solid var(--border-strong);border-radius:var(--radius-full);background:var(--surface-card);color:var(--text-secondary);cursor:pointer;box-shadow:var(--shadow-sm);transition:color var(--dur-fast) var(--ease-enter),transform var(--dur-fast) var(--ease-enter);z-index:1}
-.ef-carousel__nav:hover:not(:disabled){color:var(--text-primary)}
+@media (hover:hover){.ef-carousel__nav:hover:not(:disabled){color:var(--text-primary)}}
 .ef-carousel__nav:focus-visible{outline:none;box-shadow:var(--focus-ring)}
 .ef-carousel__nav:disabled{opacity:.35;cursor:default}
 .ef-carousel__nav--previous{inset-inline-start:-14px;top:50%;transform:translateY(-50%)}

@@ -2,7 +2,7 @@
 
 The entire design system in one file, generated from llms.txt, components/*/, and tokens/*.css by scripts/build_llms.py. Do not edit by hand. The short map of the repository is /llms.txt.
 
-> Meridian is a general-purpose open-source design system by Efolusi: 136 accessible React components, 296 design tokens (light, dark, compact), blocks, charts, and full example apps, served browser-native with zero build step. Apache-2.0 licensed.
+> Meridian is a general-purpose open-source design system by Efolusi: 136 accessible React components, 299 design tokens (light, dark, compact), blocks, charts, and full example apps, served browser-native with zero build step. Apache-2.0 licensed.
 
 Live docs: https://meridian.efolusi.com · Source: https://github.com/efolusi/meridian · License: Apache-2.0
 
@@ -4270,13 +4270,13 @@ Group: marketing · Source: /components/marketing/SiteHeader.jsx · Exports: Sit
 
 The header of every Efolusi product page. It brings the skip link, the brand, the primary links, an `actions` slot and a mobile menu below 860px (Escape closes it and returns focus to the button). Mark the page you are on with `current`, give every link a real destination, and point `skipHref` at the page's `<main id>`.
 
-Meridian fetches nothing: the account entry, the `ThemeToggle` and the main call to action go in `actions`. `actions` renders twice, once in the bar and once in the mobile panel (only one shows at a time), so put no `id` inside it and keep any state it needs outside the slot. `languageSwitch` links to the same page in the other language. Set `lang="id"` for the Indonesian labels.
+Meridian fetches nothing: the account entry, the `ThemeToggle` and the main call to action go in `actions`. `actions` renders twice, once in the bar and once in the mobile panel (only one shows at a time), so put no `id` inside it and keep any state it needs outside the slot. `languageSwitch` takes a `LanguageSwitch` (the same component the `SiteFooter` takes), shown before `actions` in the bar and in the mobile panel; it renders twice for the same reason, so give it no `id`. Set `lang="id"` for the Indonesian labels.
 
 ```jsx
 <SiteHeader
   brand={<><img src="/logo.png" alt="" width="28" height="28" />Komando</>}
   links={[{ label: 'Docs', href: '/en/docs', current: true }, { label: 'Pricing', href: '/en/pricing' }]}
-  languageSwitch={{ label: 'ID', href: '/id/docs', hrefLang: 'id', ariaLabel: 'Bahasa Indonesia' }}
+  languageSwitch={<LanguageSwitch current="en" languages={[{ code: 'id', label: 'ID', href: '/id/docs', name: 'Bahasa Indonesia' }, { code: 'en', label: 'EN', href: '/en/docs', name: 'English' }]} />}
   actions={<><ThemeToggle /><Button shape="pill" size="sm">Get in touch</Button></>}
 />
 ```
@@ -4300,8 +4300,8 @@ export interface SiteHeaderProps extends React.HTMLAttributes<HTMLElement> {
   links?: SiteHeaderLink[];
   /** The product's own controls: account entry, ThemeToggle, the main call to action. Rendered twice (the bar and the mobile panel; one is hidden), so put no `id` inside and keep any state outside. */
   actions?: React.ReactNode;
-  /** The link to the same page in the other language. */
-  languageSwitch?: { label: React.ReactNode; href: string; hrefLang?: string; ariaLabel?: string };
+  /** The language slot, before `actions`: give it a `LanguageSwitch`. Rendered twice like `actions` (the bar and the mobile panel; one is hidden). */
+  languageSwitch?: React.ReactNode;
   /** Language of the built-in labels (menu, skip link, nav name). @default 'en' */
   lang?: 'en' | 'id';
   labels?: Partial<Record<'menu' | 'skip' | 'nav', string>>;
@@ -4357,6 +4357,8 @@ export declare function writeThemeCookie(theme: ThemePreference, doc?: Document)
 /** The choice itself, or with null the device's theme. */
 export declare function resolveTheme(preference: ThemePreference | null, matchMedia?: (query: string) => MediaQueryList): 'light' | 'dark';
 export declare function applyTheme(preference: ThemePreference | null, doc?: Document, matchMedia?: (query: string) => MediaQueryList): 'light' | 'dark';
+/** Runs a theme swap with every transition off: sets `data-theme-switching` on <html>, runs `swap`, flushes the style and removes the attribute after two animation frames (the rule is in tokens/base.css). Returns what `swap` returns. */
+export declare function swapTheme<T>(swap: () => T, doc?: Document): T;
 /** The script to inline in <head> so the first paint has the stored, inherited or device theme. It stores nothing. */
 export declare function themeInitScript(): string;
 ```
@@ -5279,7 +5281,7 @@ export declare const SheetDescription: React.ForwardRefExoticComponent<DialogSlo
 
 ## Design tokens
 
-303 custom property names by file (names only; resolve current values from /styles.css, which imports these files, or /tokens.json):
+306 custom property names by file (names only; resolve current values from /styles.css, which imports these files, or /tokens.json):
 
 ### /tokens/base.css
 
@@ -5461,9 +5463,9 @@ export declare const SheetDescription: React.ForwardRefExoticComponent<DialogSlo
 
 --dur-base
 --dur-fast
---dur-long
 --dur-loop
 --dur-loop-slow
+--dur-modal
 --dur-progress
 --dur-slow
 --ease-emphasised
@@ -5488,6 +5490,8 @@ export declare const SheetDescription: React.ForwardRefExoticComponent<DialogSlo
 --material-spec-low
 --material-thick
 --material-tint
+--motion-enter-scale-lg
+--motion-enter-scale-sm
 --motion-lift
 --motion-press
 --opacity-attention
@@ -5511,6 +5515,7 @@ export declare const SheetDescription: React.ForwardRefExoticComponent<DialogSlo
 --shift-lg
 --shift-md
 --shift-sm
+--shift-xl
 --z-dropdown
 --z-modal
 --z-overlay

@@ -127,14 +127,14 @@ export function LanguageSwitchDemo() {
 
 // @demo SiteHeader Links, language switch and actions
 export function SiteHeaderDemo() {
-  const { SiteHeader, Button, ThemeToggle } = window.EfolusiDesignSystem_4ffc3d;
+  const { SiteHeader, Button, ThemeToggle, LanguageSwitch } = window.EfolusiDesignSystem_4ffc3d;
   return (
     <SiteHeader
       style={{ position: 'relative' }}
       brand="Komando"
       brandHref="#"
       links={[{ label: 'Docs', href: '#docs', current: true }, { label: 'Pricing', href: '#pricing' }, { label: 'Changelog', href: '#changelog' }]}
-      languageSwitch={{ label: 'ID', href: '#id', hrefLang: 'id', ariaLabel: 'Bahasa Indonesia' }}
+      languageSwitch={<LanguageSwitch current="en" languages={[{ code: 'id', label: 'ID', href: '#id', name: 'Bahasa Indonesia' }, { code: 'en', label: 'EN', href: '#en', name: 'English' }]} />}
       actions={<><ThemeToggle /><Button shape="pill" size="sm">Get in touch</Button></>}
       skipHref="#docs"
     />

@@ -6,7 +6,7 @@
 // CSP: no eval, no HTML strings, no style attributes; values go through the CSSOM.
 import {
   LABELS, THEME_CHANGE_EVENT, THEME_PREFERENCES, THEME_STORAGE_KEY,
-  applyTheme, readThemePreference, resolveTheme, writeThemePreference,
+  applyTheme, readThemePreference, resolveTheme, swapTheme, writeThemePreference,
 } from './theme.js';
 
 const MARQUEE_LABELS = {
@@ -78,7 +78,7 @@ export function init(root = document) {
     const target = e.target instanceof Element ? e.target : null;
     if (!target) return;
     if (target.closest(TOGGLE)) {
-      writeThemePreference(otherOf(resolveTheme(readThemePreference())));
+      swapTheme(() => writeThemePreference(otherOf(resolveTheme(readThemePreference()))));
       return;
     }
     const menu = target.closest(MENU);
@@ -101,7 +101,7 @@ export function init(root = document) {
   const onScroll = () => { for (const h of root.querySelectorAll('[data-slot="site-header"]')) h.toggleAttribute('data-scrolled', win.scrollY > 4); };
   // With no choice yet, follow the device. Nothing is stored.
   const media = win.matchMedia?.('(prefers-color-scheme: dark)');
-  const onMedia = () => { if (!readThemePreference()) { applyTheme(null); labelToggles(root); } };
+  const onMedia = () => { if (!readThemePreference()) { swapTheme(() => applyTheme(null)); labelToggles(root); } };
   const observer = new win.MutationObserver(refresh);
 
   root.addEventListener('click', onClick);

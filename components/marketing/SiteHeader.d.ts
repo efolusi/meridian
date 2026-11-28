@@ -14,8 +14,8 @@ export interface SiteHeaderProps extends React.HTMLAttributes<HTMLElement> {
   links?: SiteHeaderLink[];
   /** The product's own controls: account entry, ThemeToggle, the main call to action. Rendered twice (the bar and the mobile panel; one is hidden), so put no `id` inside and keep any state outside. */
   actions?: React.ReactNode;
-  /** The link to the same page in the other language. */
-  languageSwitch?: { label: React.ReactNode; href: string; hrefLang?: string; ariaLabel?: string };
+  /** The language slot, before `actions`: give it a `LanguageSwitch`. Rendered twice like `actions` (the bar and the mobile panel; one is hidden). */
+  languageSwitch?: React.ReactNode;
   /** Language of the built-in labels (menu, skip link, nav name). @default 'en' */
   lang?: 'en' | 'id';
   labels?: Partial<Record<'menu' | 'skip' | 'nav', string>>;

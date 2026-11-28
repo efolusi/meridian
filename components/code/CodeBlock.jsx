@@ -8,7 +8,7 @@ const CSS = `
 .ef-code__head{display:flex;align-items:center;padding:var(--space-2) var(--space-2) var(--space-2) var(--space-4);border-bottom:1px solid var(--code-divider)}
 .ef-code__lang{font-family:var(--font-mono);font-size:var(--text-2xs);color:var(--code-ink-subtle)}
 .ef-code__copy{margin-inline-start:auto;display:inline-flex;min-height:var(--control-h-xs);align-items:center;gap:var(--space-1);border:none;background:none;cursor:pointer;color:var(--code-ink-muted);font-family:var(--font-sans);font-size:var(--text-xs);font-weight:var(--weight-semibold);padding:var(--space-1) var(--space-2);border-radius:var(--radius-sm);transition:color var(--dur-fast) var(--ease-enter)}
-.ef-code__copy:hover{color:var(--code-ink-bright)}
+@media (hover:hover){.ef-code__copy:hover{color:var(--code-ink-bright)}}
 .ef-code__copy--done{color:var(--success-on-dark)}
 .ef-code__copy--failed{color:var(--danger-on-dark)}
 .ef-code__sr{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;border:0}
@@ -17,7 +17,7 @@ const CSS = `
 .ef-code__win{position:relative;overflow:hidden;transition:height var(--dur-slow) var(--ease-enter)}
 .ef-code__fade{position:absolute;inset-inline:0;bottom:0;height:56px;display:flex;align-items:flex-end;justify-content:center;padding-bottom:var(--space-2);background:linear-gradient(to top,var(--surface-code),transparent)}
 .ef-code__more{display:inline-flex;align-items:center;gap:var(--space-1);border:1px solid var(--code-edge);border-radius:var(--radius-full);background:var(--code-raised);cursor:pointer;padding:var(--space-1) var(--space-3);font-family:var(--font-sans);font-size:var(--text-xs);font-weight:var(--weight-semibold);color:var(--code-ink-strong)}
-.ef-code__more:hover{color:var(--code-ink-bright);border-color:var(--code-edge-hover)}
+@media (hover:hover){.ef-code__more:hover{color:var(--code-ink-bright);border-color:var(--code-edge-hover)}}
 .ef-code__copy:focus-visible,.ef-code__more:focus-visible{outline:none;box-shadow:var(--focus-ring)}
 /* Reduced motion: nothing moves or resizes; the end state is shown at once. */
 @media (prefers-reduced-motion:reduce){.ef-code__win{transition:none}}

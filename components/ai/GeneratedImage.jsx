@@ -25,7 +25,7 @@ const CSS = `
 .ef-genimg__actions{position:absolute;top:9px;inset-inline-end:9px;display:flex;gap:var(--space-0-5);z-index:3;opacity:0;transition:opacity var(--dur-fast) var(--ease-enter)}
 .ef-genimg--complete:hover .ef-genimg__actions,.ef-genimg--complete:focus-within .ef-genimg__actions{opacity:1}
 .ef-genimg__act{display:inline-flex;align-items:center;justify-content:center;width:30px;height:30px;border:none;cursor:pointer;color:var(--text-on-media);background:var(--media-scrim-soft);border-radius:var(--radius-sm);backdrop-filter:blur(2px);transition:background var(--dur-fast) var(--ease-enter)}
-.ef-genimg__act:hover{background:var(--media-scrim-strong)}
+@media (hover:hover){.ef-genimg__act:hover{background:var(--media-scrim-strong)}}
 .ef-genimg__act:focus-visible{outline:none;box-shadow:var(--focus-ring)}
 .ef-genimg__retry{display:inline-flex;align-items:center;gap:var(--space-2);padding:var(--space-2) var(--space-3);border:1px solid var(--border-strong);border-radius:var(--radius-full);background:var(--surface-card);cursor:pointer;font-family:var(--font-sans);font-size:var(--text-sm);font-weight:var(--weight-semibold);color:var(--text-primary)}
 .ef-genimg__err{color:var(--status-danger-text)}

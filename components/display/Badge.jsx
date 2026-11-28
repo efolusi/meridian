@@ -4,7 +4,7 @@ import { injectEfCss, mergeRefs } from '../runtime/runtime.jsx';
 
 const CSS = `
 .ef-badge{display:inline-flex;align-items:center;justify-content:center;gap:var(--gap-label-icon-sm);height:20px;padding:0 var(--space-2);border:1px solid transparent;border-radius:var(--press-radius,var(--radius-full));font-size:var(--text-xs);font-weight:var(--weight-medium);line-height:1;white-space:nowrap;text-decoration:none;transition:background var(--dur-fast) var(--ease-enter),border-color var(--dur-fast) var(--ease-enter),color var(--dur-fast) var(--ease-enter),box-shadow var(--dur-fast) var(--ease-enter)}
-.ef-badge:hover,.ef-badge:focus,.ef-badge:visited{text-decoration:none}
+.ef-badge:focus,.ef-badge:visited{text-decoration:none}@media (hover:hover){.ef-badge:hover{text-decoration:none}}
 .ef-badge:focus-visible{outline:none;box-shadow:var(--focus-ring)}
 .ef-badge>[data-icon]{pointer-events:none;flex:none}
 .ef-badge--default{background:var(--surface-sunken);border-color:var(--border-strong);color:var(--text-primary)}
@@ -18,14 +18,14 @@ const CSS = `
 .ef-badge--danger{background:var(--status-danger-bg);border-color:transparent;color:var(--status-danger-text)}
 .ef-badge--brand{background:var(--cream-50);border-color:transparent;color:var(--cocoa-700)}
 .ef-badge--solid{background:var(--accent);border-color:var(--accent-edge);color:var(--accent-contrast)}
-.ef-badge--default:hover{border-color:var(--border-hover)}
-.ef-badge--solid:hover{background:var(--accent-hover);border-color:var(--accent-edge)}
-.ef-badge--secondary:hover,.ef-badge--outline:hover,.ef-badge--ghost:hover{background:var(--surface-sunken)}
-.ef-badge--default.ef-badge--accent:hover{background:var(--accent-subtle);border-color:transparent}
-.ef-badge--default.ef-badge--success:hover{background:var(--status-success-bg);border-color:transparent}
-.ef-badge--default.ef-badge--warning:hover{background:var(--status-warning-bg);border-color:transparent}
-.ef-badge--default.ef-badge--brand:hover{background:var(--cream-50);border-color:transparent}
-.ef-badge--link:hover{color:var(--text-link-hover);text-decoration:none}
+@media (hover:hover){.ef-badge--default:hover{border-color:var(--border-hover)}}
+@media (hover:hover){.ef-badge--solid:hover{background:var(--accent-hover);border-color:var(--accent-edge)}}
+@media (hover:hover){.ef-badge--secondary:hover,.ef-badge--outline:hover,.ef-badge--ghost:hover{background:var(--surface-sunken)}}
+@media (hover:hover){.ef-badge--default.ef-badge--accent:hover{background:var(--accent-subtle);border-color:transparent}}
+@media (hover:hover){.ef-badge--default.ef-badge--success:hover{background:var(--status-success-bg);border-color:transparent}}
+@media (hover:hover){.ef-badge--default.ef-badge--warning:hover{background:var(--status-warning-bg);border-color:transparent}}
+@media (hover:hover){.ef-badge--default.ef-badge--brand:hover{background:var(--cream-50);border-color:transparent}}
+@media (hover:hover){.ef-badge--link:hover{color:var(--text-link-hover);text-decoration:none}}
 [data-theme="dark"] .ef-badge--brand{background:var(--accent-subtle);color:var(--accent-subtle-fg)}
 @media (prefers-color-scheme:dark){:root:not(:where([data-theme="light"])) .ef-badge--brand{background:var(--accent-subtle);color:var(--accent-subtle-fg)}}
 `;

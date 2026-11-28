@@ -15,7 +15,7 @@ const CSS = `
 .ef-resizable__handle::after{content:'';position:absolute;background:var(--border-default);transition:background var(--dur-fast) var(--ease-enter)}
 .ef-resizable[data-orientation="horizontal"]>.ef-resizable__handle::after{inset-inline-start:4px;inset-block:0;width:1px}
 .ef-resizable[data-orientation="vertical"]>.ef-resizable__handle::after{inset-block-start:4px;inset-inline:0;height:1px}
-.ef-resizable__handle:hover::after,.ef-resizable__handle[data-resize-handle-active]::after{background:var(--accent-edge)}
+.ef-resizable__handle[data-resize-handle-active]::after{background:var(--accent-edge)}@media (hover:hover){.ef-resizable__handle:hover::after{background:var(--accent-edge)}}
 .ef-resizable__handle:focus-visible{outline:none;box-shadow:var(--focus-ring)}
 .ef-resizable__grip{position:absolute;inset:50% auto auto 50%;width:8px;height:18px;transform:translate(-50%,-50%);border:1px solid var(--border-strong);border-radius:var(--radius-sm);background:var(--surface-card);box-shadow:var(--shadow-xs)}
 .ef-resizable__grip::after{content:'⋮';position:absolute;inset:50% auto auto 50%;transform:translate(-50%,-54%);font-size:var(--text-xs);color:var(--text-muted)}

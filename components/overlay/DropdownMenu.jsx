@@ -7,9 +7,13 @@ import { useDirection } from '../display/Direction.jsx';
 
 const CSS = `
 .ef-dropdown-menu__content{position:fixed;min-width:128px;max-height:calc(100vh - 16px);overflow:auto;background:color-mix(in srgb,var(--material-tint) calc(var(--material-thick) * 100%),transparent);-webkit-backdrop-filter:blur(var(--material-blur-thick)) saturate(var(--material-saturate));backdrop-filter:blur(var(--material-blur-thick)) saturate(var(--material-saturate));color:var(--text-primary);border:1px solid var(--border-strong);border-radius:var(--radius-md);box-shadow:var(--shadow-md);padding:var(--space-1);z-index:var(--z-popover);animation:ef-dropdown-menu-in var(--dur-fast) var(--ease-enter)}
-@keyframes ef-dropdown-menu-in{from{transform:scale(.98)}}
+@keyframes ef-dropdown-menu-in{from{transform:scale(var(--motion-enter-scale-sm))}}
+.ef-dropdown-menu__content[data-side=bottom]{transform-origin:top}
+.ef-dropdown-menu__content[data-side=top]{transform-origin:bottom}
+.ef-dropdown-menu__content[data-side=left]{transform-origin:right}
+.ef-dropdown-menu__content[data-side=right]{transform-origin:left}
 .ef-dropdown-menu__item{position:relative;display:flex;align-items:center;gap:var(--gap-label-icon);width:100%;min-height:32px;padding:var(--space-2) var(--space-2);border:0;border-radius:var(--radius-sm);outline:0;background:transparent;color:var(--text-primary);font:inherit;font-size:var(--text-sm);line-height:1.35;text-align:start;white-space:nowrap;cursor:pointer;user-select:none}
-.ef-dropdown-menu__item:hover,.ef-dropdown-menu__item:focus,.ef-dropdown-menu__item[data-highlighted=true],.ef-dropdown-menu__item[data-state=open]{background:var(--surface-sunken)}
+.ef-dropdown-menu__item:focus,.ef-dropdown-menu__item[data-highlighted=true],.ef-dropdown-menu__item[data-state=open]{background:var(--surface-sunken)}@media (hover:hover){.ef-dropdown-menu__item:hover{background:var(--surface-sunken)}}
 /* the tint alone is ~1.1:1 against the panel; keyboard focus needs a 3:1 ring */
 .ef-dropdown-menu__item:focus-visible{box-shadow:inset 0 0 0 2px var(--focus-ring-color)}
 .ef-dropdown-menu__item:disabled,.ef-dropdown-menu__item[data-disabled=true]{pointer-events:none;opacity:.5}

@@ -13,12 +13,13 @@ const CSS = `
 .ef-site-header__brand{display:inline-flex;align-items:center;gap:var(--space-2);min-height:var(--tap-min);color:var(--text-primary);font-family:var(--font-display);font-size:var(--text-lg);font-weight:var(--weight-bold);text-decoration:none}
 .ef-site-header__nav{display:flex;align-items:center;gap:var(--space-1);margin-inline-end:auto}
 .ef-site-header__link{display:inline-flex;align-items:center;min-height:var(--tap-min);padding-inline:var(--space-3);border-radius:var(--radius-full);color:var(--text-secondary);font-size:var(--text-md);font-weight:var(--weight-medium);text-decoration:none;transition:background var(--dur-fast) var(--ease-enter),color var(--dur-fast) var(--ease-enter)}
-.ef-site-header__link:hover{background:var(--surface-sunken);color:var(--text-primary)}
+@media (hover:hover){.ef-site-header__link:hover{background:var(--surface-sunken);color:var(--text-primary)}}
 .ef-site-header__link[aria-current="page"]{color:var(--text-primary);background:var(--surface-sunken)}
 .ef-site-header__brand:focus-visible,.ef-site-header__link:focus-visible,.ef-site-header__menu:focus-visible{outline:none;box-shadow:var(--focus-ring)}
 .ef-site-header__actions{display:flex;align-items:center;gap:var(--space-2)}
-.ef-site-header__menu{display:none;align-items:center;justify-content:center;width:var(--tap-min);height:var(--tap-min);padding:0;border:0;border-radius:var(--radius-full);background:transparent;color:var(--text-primary);cursor:pointer}
-.ef-site-header__menu:hover{background:var(--surface-sunken)}
+.ef-site-header__menu{display:none;align-items:center;justify-content:center;width:var(--control-h-md);height:var(--control-h-md);padding:0;border:0;border-radius:var(--radius-full);background:transparent;color:var(--text-primary);cursor:pointer}
+@media (hover:hover){.ef-site-header__menu:hover{background:var(--surface-sunken)}}
+.ef-site-header__menu:active{background:var(--state-pressed)}
 .ef-site-header__panel{display:none}
 @media (max-width:860px){
   .ef-site-header__nav,.ef-site-header__actions{display:none}
@@ -65,9 +66,6 @@ export const SiteHeader = React.forwardRef(function SiteHeader(
   const navLinks = (onClick) => links.map((l) => (
     <a key={l.href} className="ef-site-header__link" href={l.href} aria-current={l.current ? 'page' : undefined} onClick={onClick}>{l.label}</a>
   ));
-  const language = languageSwitch ? (
-    <a className="ef-site-header__link" href={languageSwitch.href} hrefLang={languageSwitch.hrefLang} lang={languageSwitch.hrefLang} aria-label={languageSwitch.ariaLabel}>{languageSwitch.label}</a>
-  ) : null;
 
   return (
     <>
@@ -76,14 +74,14 @@ export const SiteHeader = React.forwardRef(function SiteHeader(
         <div className="ef-site-header__inner">
           <a className="ef-site-header__brand" href={brandHref} aria-label={brandLabel}>{brand}</a>
           <nav className="ef-site-header__nav" aria-label={text.nav}>{navLinks()}</nav>
-          <div className="ef-site-header__actions">{language}{actions}</div>
+          <div className="ef-site-header__actions">{languageSwitch}{actions}</div>
           <button ref={menuRef} type="button" className="ef-site-header__menu" aria-expanded={open} aria-controls={panelId} aria-label={text.menu} onClick={() => setOpen((v) => !v)}>
             <Icon name={open ? 'x' : 'menu'} size={20} aria-hidden="true" />
           </button>
         </div>
         <div id={panelId} className="ef-site-header__panel" data-open={open ? '' : undefined}>
           {navLinks(close)}
-          {language}
+          {languageSwitch}
           {actions ? <div className="ef-site-header__panel-actions">{actions}</div> : null}
         </div>
       </header>

@@ -8,7 +8,7 @@ const CSS = `
 .ef-conversation__viewport:focus-visible{outline:2px solid var(--focus-ring-color);outline-offset:-2px}
 .ef-conversation__inner{display:flex;flex-direction:column;gap:var(--space-5)}
 .ef-conversation__jump{position:absolute;left:50%;transform:translateX(-50%);bottom:12px;display:inline-flex;align-items:center;gap:var(--space-2);height:30px;padding:0 var(--space-3);border-radius:var(--radius-full);border:1px solid var(--border-strong);background:var(--surface-card);box-shadow:var(--shadow-md);cursor:pointer;font-family:var(--font-sans);font-size:var(--text-sm);font-weight:500;color:var(--text-secondary);z-index:5;animation:ef-conversation-in var(--dur-fast) var(--ease-enter)}
-.ef-conversation__jump:hover{color:var(--text-primary)}
+@media (hover:hover){.ef-conversation__jump:hover{color:var(--text-primary)}}
 .ef-conversation__jump:focus-visible{outline:none;box-shadow:var(--focus-ring)}
 @keyframes ef-conversation-in{from{opacity:0;transform:translateX(-50%) translateY(4px)}}
 @media (pointer:coarse){.ef-conversation__jump{min-height:var(--tap-min)}}

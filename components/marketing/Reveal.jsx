@@ -4,8 +4,8 @@ import { injectEfCss } from '../runtime/runtime.jsx';
 
 // Content is visible until the script runs, so a page without JavaScript loses nothing.
 const CSS = `
-[data-reveal="pending"]{opacity:0;transform:translateY(var(--space-3));transition:opacity var(--dur-slow) var(--ease-enter),transform var(--dur-slow) var(--ease-emphasised)}
-[data-reveal="shown"]{opacity:1;transform:none;transition:opacity var(--dur-slow) var(--ease-enter),transform var(--dur-slow) var(--ease-emphasised)}
+[data-reveal="pending"]{opacity:0;transform:translateY(var(--space-3));transition:opacity var(--dur-slow) var(--ease-enter),transform var(--dur-slow) var(--ease-enter)}
+[data-reveal="shown"]{opacity:1;transform:none;transition:opacity var(--dur-slow) var(--ease-enter),transform var(--dur-slow) var(--ease-enter)}
 @media (prefers-reduced-motion:reduce){[data-reveal]{opacity:1;transform:none;transition:none}}
 `;
 

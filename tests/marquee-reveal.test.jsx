@@ -16,7 +16,9 @@ describe('Marquee', () => {
   it('pauses on hover, keyboard focus and its button, and stops with reduced motion', () => {
     const { getByRole, container } = render(<Marquee lang="id" items={['a']} />);
     const rules = css('ef-css-marquee');
-    expect(rules).toMatch(/\.ef-marquee:hover\.ef-marquee__track,\.ef-marquee:focus-within\.ef-marquee__track,\.ef-marquee\[data-paused\]\.ef-marquee__track\{animation-play-state:paused\}/);
+    // Hover pauses it only where a pointer can hover (MD132 sweep); keyboard focus and the button always do.
+    expect(rules).toMatch(/@media\(hover:hover\)\{\.ef-marquee:hover\.ef-marquee__track\{animation-play-state:paused\}\}/);
+    expect(rules).toMatch(/\.ef-marquee:focus-within\.ef-marquee__track,\.ef-marquee\[data-paused\]\.ef-marquee__track\{animation-play-state:paused\}/);
     expect(rules).toMatch(/@media\(prefers-reduced-motion:reduce\)\{\.ef-marquee__track\{animation:none\}/);
     const button = getByRole('button', { name: 'Jeda daftar berjalan' });
     fireEvent.click(button);

@@ -40,7 +40,9 @@ function resolve(table, value) {
 const source = readFileSync(join(process.cwd(), 'components/display/Badge.jsx'), 'utf8');
 const css = /const CSS = `([\s\S]*?)`;/.exec(source)[1];
 function declarations(selector) {
-  const start = css.indexOf(`\n${selector}{`);
+  // A hover rule sits inside @media (hover:hover) since MD132: it follows `{` on the same line, not a newline.
+  const query = selector.endsWith(':hover') ? css.indexOf(`@media (hover:hover){${selector}{`) : -1;
+  const start = query > -1 ? query + '@media (hover:hover){'.length - 1 : css.indexOf(`\n${selector}{`);
   expect(start, `${selector} rule`).toBeGreaterThan(-1);
   const body = css.slice(start + selector.length + 2, css.indexOf('}', start));
   return Object.fromEntries(body.split(';').filter(Boolean).map(d => {

@@ -7,9 +7,10 @@ import { injectEfCss } from '../runtime/runtime.jsx';
 // the product gives each language its own href.
 const CSS = `
 .ef-language-switch__list{display:flex;align-items:center;gap:var(--space-1);margin:0;padding:0;list-style:none}
-.ef-language-switch__item{display:inline-flex;align-items:center;justify-content:center;box-sizing:border-box;min-width:var(--tap-min);min-height:var(--tap-min);padding-inline:var(--space-2);border-radius:var(--radius-full);color:var(--text-secondary);font-size:var(--text-md);font-weight:var(--weight-medium);line-height:1;text-decoration:none;transition:background var(--dur-fast) var(--ease-enter),color var(--dur-fast) var(--ease-enter)}
+.ef-language-switch__item{display:inline-flex;align-items:center;justify-content:center;box-sizing:border-box;min-width:var(--control-h-md);min-height:var(--control-h-md);padding-inline:var(--space-2);border-radius:var(--radius-full);color:var(--text-secondary);font-size:var(--text-md);font-weight:var(--weight-medium);line-height:1;text-decoration:none;transition:background var(--dur-fast) var(--ease-enter),color var(--dur-fast) var(--ease-enter)}
 .ef-language-switch[data-size="sm"] .ef-language-switch__item{min-width:var(--control-h-sm);min-height:var(--control-h-sm);font-size:var(--text-sm)}
-a.ef-language-switch__item:hover{background:var(--surface-sunken);color:var(--text-primary)}
+@media (hover:hover){a.ef-language-switch__item:hover{background:var(--surface-sunken);color:var(--text-primary)}}
+a.ef-language-switch__item:active{background:var(--state-pressed);color:var(--text-primary)}
 .ef-language-switch__item[aria-current="true"]{background:var(--surface-sunken);color:var(--text-primary);font-weight:var(--weight-semibold)}
 .ef-language-switch__item:focus-visible{outline:2px solid transparent;box-shadow:var(--focus-ring)}
 @media (pointer:coarse){.ef-language-switch[data-size="sm"] .ef-language-switch__item{min-width:var(--tap-min);min-height:var(--tap-min)}}

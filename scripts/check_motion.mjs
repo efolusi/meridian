@@ -3,8 +3,8 @@
 // easing (ease, ease-in, ease-out, ease-in-out, linear) in transition, animation and their duration and
 // timing-function longhands, in CSS and in the camelCase style props and style assignments of JS, in the
 // files Meridian ships. The tokens are --dur-fast, --dur-base, --dur-slow, --dur-progress (with linear),
-// --dur-loop and --dur-loop-slow (a looping animation; linear for a sweep), --dur-long (web marketing only)
-// and the --ease-* curves
+// --dur-loop and --dur-loop-slow (a looping animation; linear for a sweep), --dur-modal (a modal, a drawer or a
+// panel arriving) and the --ease-* curves
 // (design-tokens docs/motion.md). The model is Glamor's scripts/check-motion.sh.
 //
 // A value that has no token goes in scripts/motion_allowlist.json as { "<file>": { count, reason } }.
@@ -80,7 +80,7 @@ if (process.argv[1] === fileURLToPath(import.meta.url)) {
   }
   if (problems.length) {
     console.error(problems.join('\n'));
-    console.error('\nMotion outside the tokens: use --dur-fast, --dur-base, --dur-slow, --dur-progress (with linear), --dur-loop or --dur-loop-slow (with linear for a sweep) or --dur-long (web marketing only), and the --ease-* curves. A value with no token goes in scripts/motion_allowlist.json with its reason.');
+    console.error('\nMotion outside the tokens: use --dur-fast, --dur-base, --dur-slow, --dur-progress (with linear), --dur-loop or --dur-loop-slow (with linear for a sweep) or --dur-modal (a modal, a drawer or a panel arriving), and the --ease-* curves. A value with no token goes in scripts/motion_allowlist.json with its reason.');
     process.exit(1);
   }
   const total = Object.values(counts).reduce((n, f) => n + f.length, 0);

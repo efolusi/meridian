@@ -12,6 +12,7 @@ import { Icon } from '../icons/Icon.jsx';
 const THEME_COOKIE = 'efolusi_theme';
 const THEME_STORAGE_KEY = 'efolusi-theme';
 const THEME_CHANGE_EVENT = 'efolusi-theme-change';
+const THEME_SWITCHING_ATTRIBUTE = 'data-theme-switching';
 const THEME_PREFERENCES = ['light', 'dark'];
 const YEAR = 60 * 60 * 24 * 365;
 
@@ -75,6 +76,26 @@ export function applyTheme(pref, doc = globalThis.document, matchMedia = globalT
   return theme;
 }
 
+/**
+ * Runs a theme swap with every transition off. A swap changes every colour at once, and each element with a colour
+ * transition would start one (46 on the docs Components page): the page smears. tokens/base.css turns transitions
+ * off while <html> carries data-theme-switching; this sets it, runs the swap, flushes the style so the new colours
+ * land with transitions off, and removes it after two animation frames. Returns what the swap returns.
+ */
+export function swapTheme(swap, doc = globalThis.document) {
+  const root = doc?.documentElement;
+  if (!root) return swap();
+  root.setAttribute(THEME_SWITCHING_ATTRIBUTE, '');
+  try {
+    return swap();
+  } finally {
+    void root.offsetHeight;
+    const win = doc.defaultView;
+    const frame = (cb) => (win?.requestAnimationFrame ? win.requestAnimationFrame(cb) : setTimeout(cb, 16));
+    frame(() => frame(() => root.removeAttribute(THEME_SWITCHING_ATTRIBUTE)));
+  }
+}
+
 /** Inline this in <head>, before any stylesheet paints, so the first frame has the right theme. It stores nothing. */
 export function themeInitScript() {
   return `(function(){try{var s=window.matchMedia&&matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light',c=null,t;try{c=localStorage.getItem('${THEME_STORAGE_KEY}');if(c==='system'){localStorage.removeItem('${THEME_STORAGE_KEY}');c=null}}catch(e){}if(c==='light'||c==='dark')t=c;else{var m=document.cookie.match(/(?:^|;\\s*)${THEME_COOKIE}=(dark|light)(?:;|$)/);t=m?m[1]:s}document.documentElement.setAttribute('data-theme',t)}catch(e){}})();`;
@@ -84,8 +105,9 @@ export function themeInitScript() {
 const ICONS = { light: 'sun', dark: 'moon' };
 
 const CSS = `
-.ef-theme-toggle{display:inline-flex;align-items:center;justify-content:center;flex:none;width:var(--tap-min);height:var(--tap-min);padding:0;border-radius:var(--radius-full);color:var(--text-secondary);cursor:pointer;transition:background var(--dur-fast) var(--ease-enter),color var(--dur-fast) var(--ease-enter)}
-.ef-theme-toggle:hover{background:var(--surface-sunken);color:var(--text-primary)}
+.ef-theme-toggle{display:inline-flex;align-items:center;justify-content:center;flex:none;width:var(--control-h-md);height:var(--control-h-md);padding:0;border:0;border-radius:var(--radius-full);background:transparent;color:var(--text-secondary);cursor:pointer;transition:background var(--dur-fast) var(--ease-enter),color var(--dur-fast) var(--ease-enter)}
+@media (hover:hover){.ef-theme-toggle:hover{background:var(--surface-sunken);color:var(--text-primary)}}
+.ef-theme-toggle:active{background:var(--state-pressed);color:var(--text-primary)}
 .ef-theme-toggle:focus-visible{outline:2px solid transparent;box-shadow:var(--focus-ring)}
 .ef-theme-toggle [data-theme-icon]{display:none}
 .ef-theme-toggle[data-theme-shown="light"] [data-theme-icon="light"],.ef-theme-toggle[data-theme-shown="dark"] [data-theme-icon="dark"]{display:inline-flex}
@@ -122,15 +144,17 @@ export const ThemeToggle = React.forwardRef(function ThemeToggle({ lang = 'en', 
     if (pref || !globalThis.matchMedia) return undefined;
     const mq = globalThis.matchMedia('(prefers-color-scheme: dark)');
     // No choice yet: follow the device, and store nothing.
-    const follow = () => setShown(applyTheme(null));
+    const follow = () => setShown(swapTheme(() => applyTheme(null)));
     mq.addEventListener('change', follow);
     return () => mq.removeEventListener('change', follow);
   }, [pref]);
 
   const other = THEME_PREFERENCES.find((t) => t !== shown);
   const choose = () => {
-    setPref(writeThemePreference(other));
-    setShown(applyTheme(other));
+    swapTheme(() => {
+      setPref(writeThemePreference(other));
+      setShown(applyTheme(other));
+    });
     onChange?.(other);
   };
 
@@ -142,7 +166,7 @@ export const ThemeToggle = React.forwardRef(function ThemeToggle({ lang = 'en', 
       data-slot="theme-toggle"
       data-ef-react=""
       data-theme-shown={shown}
-      className={`ef-theme-toggle ef-glass ef-glass--clear${className ? ` ${className}` : ''}`}
+      className={`ef-theme-toggle${className ? ` ${className}` : ''}`}
       aria-label={`${text.next} ${text[other].toLowerCase()}`}
       title={text[shown]}
       onClick={choose}

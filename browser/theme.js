@@ -2,6 +2,7 @@
 const THEME_COOKIE = 'efolusi_theme';
 const THEME_STORAGE_KEY = 'efolusi-theme';
 const THEME_CHANGE_EVENT = 'efolusi-theme-change';
+const THEME_SWITCHING_ATTRIBUTE = 'data-theme-switching';
 const THEME_PREFERENCES = ['light', 'dark'];
 const YEAR = 60 * 60 * 24 * 365;
 
@@ -63,6 +64,26 @@ export function applyTheme(pref, doc = globalThis.document, matchMedia = globalT
   // the media rule in tokens/colors.css stays as the no-JS fallback only.
   doc?.documentElement?.setAttribute('data-theme', theme);
   return theme;
+}
+
+/**
+ * Runs a theme swap with every transition off. A swap changes every colour at once, and each element with a colour
+ * transition would start one (46 on the docs Components page): the page smears. tokens/base.css turns transitions
+ * off while <html> carries data-theme-switching; this sets it, runs the swap, flushes the style so the new colours
+ * land with transitions off, and removes it after two animation frames. Returns what the swap returns.
+ */
+export function swapTheme(swap, doc = globalThis.document) {
+  const root = doc?.documentElement;
+  if (!root) return swap();
+  root.setAttribute(THEME_SWITCHING_ATTRIBUTE, '');
+  try {
+    return swap();
+  } finally {
+    void root.offsetHeight;
+    const win = doc.defaultView;
+    const frame = (cb) => (win?.requestAnimationFrame ? win.requestAnimationFrame(cb) : setTimeout(cb, 16));
+    frame(() => frame(() => root.removeAttribute(THEME_SWITCHING_ATTRIBUTE)));
+  }
 }
 
 /** Inline this in <head>, before any stylesheet paints, so the first frame has the right theme. It stores nothing. */

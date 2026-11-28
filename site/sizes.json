@@ -1,16 +1,16 @@
 {
   "totals": {
     "@efolusi/meridian": {
-      "bytes": 381779,
-      "gzip": 86703
+      "bytes": 381924,
+      "gzip": 86793
     },
     "dist/components.css": {
-      "bytes": 252641,
-      "gzip": 35783
+      "bytes": 257008,
+      "gzip": 36232
     },
     "_ds_bundle.js": {
-      "bytes": 925267,
-      "gzip": 168328
+      "bytes": 930482,
+      "gzip": 169144
     }
   },
   "modules": [
@@ -1202,8 +1202,8 @@
       "exports": [
         "SiteHeader"
       ],
-      "bytes": 47594,
-      "gzip": 8309
+      "bytes": 47434,
+      "gzip": 8271
     },
     {
       "module": "marketing/ThemeToggle.js",
@@ -1211,8 +1211,8 @@
       "exports": [
         "ThemeToggle"
       ],
-      "bytes": 47698,
-      "gzip": 8644
+      "bytes": 47996,
+      "gzip": 8770
     },
     {
       "module": "navigation/Breadcrumbs.js",

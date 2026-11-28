@@ -29,14 +29,14 @@ const CSS = `
 .ef-table caption{caption-side:bottom;padding-block:var(--space-3);color:var(--text-muted);font-size:var(--text-sm);text-align:start}
 .ef-table--dense td{padding:var(--space-2) var(--table-pad-x);font-size:var(--text-sm)}
 .ef-table__row--click{cursor:pointer;transition:background var(--dur-fast) var(--ease-enter)}
-.ef-table__row--click:hover{background:var(--surface-subtle)}
+@media (hover:hover){.ef-table__row--click:hover{background:var(--surface-subtle)}}
 .ef-table__row--click:focus-visible{outline:2px solid var(--focus-ring-color);outline-offset:-2px}
 .ef-table__row--sel{background:var(--accent-subtle)}
 .ef-table .ef-num{font-family:var(--font-mono);font-size:var(--text-sm)}
 .ef-table [data-align="start"]{text-align:start}.ef-table [data-align="end"]{text-align:end}.ef-table [data-align="center"]{text-align:center}
 .ef-table__skel{width:75%}.ef-table__skel--first{width:55%}
 .ef-table__sort{display:inline-flex;align-items:center;gap:var(--space-1);border:none;background:none;padding:0;margin:0;font:inherit;letter-spacing:inherit;text-transform:inherit;color:inherit;cursor:pointer}
-.ef-table__sort:hover{color:var(--text-primary)}
+@media (hover:hover){.ef-table__sort:hover{color:var(--text-primary)}}
 .ef-table__sort:focus-visible{outline:none;box-shadow:var(--focus-ring);border-radius:var(--radius-sm)}
 .ef-table__sort__i{display:inline-flex;opacity:0;transition:opacity var(--dur-fast) var(--ease-enter)}
 .ef-table__sort:hover .ef-table__sort__i,.ef-table__sort--on .ef-table__sort__i{opacity:1}

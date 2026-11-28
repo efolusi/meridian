@@ -5,7 +5,7 @@ import { injectEfCss, styleRef } from '../runtime/runtime.jsx';
 const CSS = `
 .ef-tilegroup{display:grid;grid-template-columns:repeat(var(--ef-tile-columns,3),1fr);gap:var(--space-3)}
 .ef-tile{position:relative;display:flex;flex-direction:column;align-items:flex-start;gap:var(--space-2);padding:var(--space-4);border:1px solid var(--border-strong);border-radius:var(--radius-md);background:var(--surface-card);cursor:pointer;text-align:start;font-family:var(--font-sans);color:var(--text-primary);transition:border-color var(--dur-fast) var(--ease-enter),background var(--dur-fast) var(--ease-enter)}
-.ef-tile:hover:not(:disabled){border-color:var(--sand-400)}
+@media (hover:hover){.ef-tile:hover:not(:disabled){border-color:var(--sand-400)}}
 .ef-tile:focus-visible{outline:none;box-shadow:var(--focus-ring)}
 .ef-tile:disabled{opacity:.45;cursor:not-allowed}
 .ef-tile--on{border-color:var(--accent-edge);box-shadow:inset 0 0 0 1px var(--accent-edge)}
@@ -13,7 +13,7 @@ const CSS = `
 .ef-tile--on .ef-tile__icon{color:var(--text-primary)}
 .ef-tile__title{font-size:var(--text-md);font-weight:var(--weight-semibold)}
 .ef-tile__desc{font-size:var(--text-sm);color:var(--text-muted);line-height:1.45}
-.ef-tile__check{position:absolute;top:12px;inset-inline-end:12px;display:inline-flex;align-items:center;justify-content:center;width:18px;height:18px;border-radius:var(--radius-full);background:var(--accent);box-shadow:inset 0 0 0 1px var(--accent-edge);color:var(--accent-contrast);opacity:0;transform:scale(.6);transition:opacity var(--dur-fast) var(--ease-enter),transform var(--dur-base) var(--ease-emphasised)}
+.ef-tile__check{position:absolute;top:12px;inset-inline-end:12px;display:inline-flex;align-items:center;justify-content:center;width:18px;height:18px;border-radius:var(--radius-full);background:var(--accent);box-shadow:inset 0 0 0 1px var(--accent-edge);color:var(--accent-contrast);opacity:0;transform:scale(.6);transition:opacity var(--dur-fast) var(--ease-enter),transform var(--dur-base) var(--ease-enter)}
 .ef-tile--on .ef-tile__check{opacity:1;transform:scale(1)}
 `;
 export function ButtonTile({ icon, title, description, selected, disabled, onClick, type = 'button', style, className, ...rest }) {

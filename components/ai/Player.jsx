@@ -16,10 +16,10 @@ const CSS = `
 @keyframes ef-player-load{0%,100%{transform:scaleY(.3);opacity:.5}50%{transform:scaleY(1);opacity:1}}
 .ef-player__row{display:flex;align-items:center;gap:var(--space-2)}
 .ef-player__btn{display:inline-flex;align-items:center;justify-content:center;width:30px;height:30px;border:none;background:none;cursor:pointer;color:var(--text-secondary);border-radius:var(--radius-full);transition:color var(--dur-fast) var(--ease-enter),background var(--dur-fast) var(--ease-enter)}
-.ef-player__btn:hover{color:var(--text-primary);background:var(--surface-subtle)}
+@media (hover:hover){.ef-player__btn:hover{color:var(--text-primary);background:var(--surface-subtle)}}
 .ef-player__btn:focus-visible{outline:none;box-shadow:var(--focus-ring)}
 .ef-player__play{width:38px;height:38px;background:var(--accent);box-shadow:inset 0 0 0 1px var(--accent-edge);color:var(--accent-contrast)}
-.ef-player__play:hover{background:var(--accent-hover);color:var(--accent-contrast)}
+@media (hover:hover){.ef-player__play:hover{background:var(--accent-hover);color:var(--accent-contrast)}}
 .ef-player__time{font-size:var(--text-xs);color:var(--text-muted);font-variant-numeric:tabular-nums}
 @media (pointer:coarse){.ef-player__btn{min-width:var(--tap-min);min-height:var(--tap-min)}}
 /* The accent edge is an inset shadow, which forced colours drop: an outline in a system colour keeps it. */

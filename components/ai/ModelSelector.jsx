@@ -6,7 +6,7 @@ import { Icon } from '../icons/Icon.jsx';
 const CSS = `
 .ef-modelsel{position:relative;display:inline-flex}
 .ef-modelsel__btn{display:inline-flex;align-items:center;gap:var(--gap-label-icon);height:32px;padding:0 var(--space-3);border:1px solid var(--border-strong);border-radius:var(--radius-sm);background:var(--surface-card);cursor:pointer;font-family:var(--font-sans);font-size:var(--text-sm);font-weight:500;color:var(--text-primary);transition:border-color var(--dur-fast) var(--ease-enter)}
-.ef-modelsel__btn:hover{border-color:var(--text-muted)}
+@media (hover:hover){.ef-modelsel__btn:hover{border-color:var(--text-muted)}}
 .ef-modelsel__btn:focus-visible{outline:none;box-shadow:var(--focus-ring)}
 .ef-modelsel__provider{font-size:var(--text-xs);color:var(--text-muted);font-weight:400}
 .ef-modelsel__chev{display:inline-flex;color:var(--text-muted)}
@@ -14,7 +14,7 @@ const CSS = `
 .ef-modelsel--down .ef-modelsel__panel{bottom:auto;top:calc(100% + 6px)}
 @keyframes ef-modelsel-in{from{opacity:0;transform:translateY(3px)}}
 .ef-modelsel__item{display:flex;align-items:center;gap:var(--space-3);width:100%;padding:var(--space-2) var(--space-3);border:none;border-radius:var(--radius-sm);background:none;cursor:pointer;text-align:start;font-family:var(--font-sans);transition:background var(--dur-fast) var(--ease-enter)}
-.ef-modelsel__item:hover{background:var(--surface-sunken)}
+@media (hover:hover){.ef-modelsel__item:hover{background:var(--surface-sunken)}}
 .ef-modelsel__item:focus-visible{outline:none;box-shadow:var(--focus-ring)}
 .ef-modelsel__text{min-width:0}
 .ef-modelsel__name{font-size:var(--text-md);font-weight:500;color:var(--text-primary)}

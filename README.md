@@ -1,6 +1,6 @@
 # Meridian
 
-**A general-purpose open-source design system by [Efolusi](https://efolusi.com).** 136 accessible React components, 296 design tokens in light, dark and compact, 12 blocks, and 8 full example apps, served browser-native with **no build step**.
+**A general-purpose open-source design system by [Efolusi](https://efolusi.com).** 136 accessible React components, 299 design tokens in light, dark and compact, 12 blocks, and 8 full example apps, served browser-native with **no build step**.
 
 [![License: Apache-2.0](https://img.shields.io/badge/License-Apache_2.0-7A4E2B.svg)](LICENSE)
 [![Docs](https://img.shields.io/badge/docs-meridian.efolusi.com-2C1709.svg)](https://meridian.efolusi.com)
@@ -153,6 +153,7 @@ import '@efolusi/meridian/landing.css'
 ## Guidelines
 
 - `guidelines/brand.md`: palette derivation, type and spacing scales, motion, iconography, voice and copy rules
+- `guidelines/motion.md`: the one page of the motion rule: when to animate, durations, easing, enter scale, exits, press 0.98, reduced motion, the theme swap
 - `guidelines/theming.md`: bring your own brand: token layers, the semantic override set, dark-mode invariants, font swaps, contrast duties
 - `guidelines/forms.md`: validation timing (blur → change → submit), error copy, submit states, async checks
 - `guidelines/patterns.md`: the product-state playbook: loading, empty, error, destructive flows, and agent surfaces

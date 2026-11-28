@@ -29,7 +29,7 @@ Efolusi ships WCAG 2.1 AA. The rules, per concern:
 - Skeleton is decorative; pair with visually-hidden "Loading…" when it replaces content
 
 ## Motion
-- Durations cap at 250ms (`--dur-slow`) and convey state only; `--dur-long` is for marketing pages. Under `prefers-reduced-motion` the tokens swap themselves (base, slow and long become the fast fade, shifts are 0, `--ease-emphasised` becomes `--ease-standard`), so a component that uses the tokens needs no query of its own. If you add larger motion, gate it behind `prefers-reduced-motion`.
+- Durations cap at 250ms (`--dur-slow`) and convey state only; `--dur-modal` (400ms) is for a modal, a drawer or a panel arriving. Under `prefers-reduced-motion` the tokens swap themselves (base, slow and modal become the fast fade, shifts are 0, the enter scales are 1, `--ease-emphasised` becomes `--ease-standard`), so a component that uses the tokens needs no query of its own. If you add larger motion, gate it behind `prefers-reduced-motion`.
 - `tokens/base.css` ships a global `prefers-reduced-motion: reduce` guard that stops every animation, including component-injected CSS: the duration is near zero and a loop runs once. Transitions are not forced: the duration tokens swap to the 120 ms fade, so a change of state still reads. An overlay entrance (Drawer, Sheet, Dialog, Toast, popovers, menus) fades in over that 120 ms: inside its own reduce media query it sets `--ef-motion-guard: var(--dur-fast)` and `animation-name: ef-reduce-fade` (opacity only, defined once in `tokens/base.css`). Only entrances set `--ef-motion-guard`, to at most `--dur-fast`; a consumer must not set it on a loop.
 
 ## Component keyboard contracts (verified in-browser)
