@@ -1,6 +1,6 @@
 'use client';
 import React from 'react';
-import { injectEfCss } from '../runtime/runtime.jsx';
+import { injectEfCss, usePresence } from '../runtime/runtime.jsx';
 import { Icon } from '../icons/Icon.jsx';
 const CSS = `
 .ef-citation__pop-title,.ef-citation__pop-desc{display:block}
@@ -11,6 +11,9 @@ const CSS = `
 .ef-citation__wrap{position:relative;display:inline}
 .ef-citation__pop{position:absolute;bottom:calc(100% + 8px);inset-inline-start:0;width:280px;background:var(--surface-card);border:1px solid var(--border-strong);border-radius:var(--radius-md);box-shadow:var(--shadow-md);padding:var(--space-3);z-index:var(--z-popover);animation:ef-citation-in var(--dur-fast) var(--ease-enter);cursor:default;text-align:start}
 @keyframes ef-citation-in{from{opacity:0;transform:translateY(3px)}}
+@keyframes ef-citation-out{to{opacity:0;transform:translateY(3px)}}
+.ef-citation__pop[data-state="closed"]{animation:ef-reduce-fade-out var(--dur-fast) var(--ease-exit) forwards;pointer-events:none}
+@media (prefers-reduced-motion:no-preference){.ef-citation__pop[data-state="closed"]{animation:ef-citation-out var(--dur-fast) var(--ease-exit) forwards}}
 .ef-citation__pop-name{display:flex;align-items:center;gap:var(--space-2);font-family:var(--font-mono);font-size:var(--text-2xs);color:var(--text-muted)}
 .ef-citation__pop-title{font-size:var(--text-md);font-weight:600;color:var(--text-primary);line-height:1.4;margin-top:var(--space-1)}
 .ef-citation__pop-desc{font-size:var(--text-sm);line-height:1.55;color:var(--text-secondary);margin-top:var(--space-1);display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}
@@ -45,6 +48,8 @@ export function Citation({ index, href, title, sources, onClick, style, classNam
   const [open, setOpen] = React.useState(false);
   const [i, setI] = React.useState(0);
   const t = React.useRef(null);
+  const popRef = React.useRef(null);
+  const { present, state } = usePresence(open, popRef);
   const list = sources && sources.length ? sources : null;
   const link = safeUrl(href);
   const enter = () => { if (!list) return; clearTimeout(t.current); t.current = setTimeout(() => setOpen(true), 200); };
@@ -61,8 +66,8 @@ export function Citation({ index, href, title, sources, onClick, style, classNam
       onFocus={enter} onBlur={leave}
       onKeyDown={e => { if (e.key === 'Escape' && open) { e.stopPropagation(); clearTimeout(t.current); setOpen(false); } }}>
       {chip}
-      {open ? (
-        <span className="ef-citation__pop" role="dialog">
+      {present ? (
+        <span ref={popRef} className="ef-citation__pop" role="dialog" data-state={state}>
           <span className="ef-citation__pop-name"><Icon name="globe" size={12} />{cur.domain || 'source'}</span>
           <span className="ef-citation__pop-title">{cur.title}</span>
           {cur.description ? <span className="ef-citation__pop-desc">{cur.description}</span> : null}

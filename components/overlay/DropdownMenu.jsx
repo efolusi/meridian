@@ -1,6 +1,6 @@
 'use client';
 import React from 'react';
-import { injectEfCss, mergeRefs, styleRefUnder, useIsoLayoutEffect } from '../runtime/runtime.jsx';
+import { injectEfCss, mergeRefs, styleRefUnder, useIsoLayoutEffect, usePresence } from '../runtime/runtime.jsx';
 import { Icon } from '../icons/Icon.jsx';
 import { Portal, useAnchoredStyle, useHydrated } from './Portal.jsx';
 import { useDirection } from '../display/Direction.jsx';
@@ -8,6 +8,9 @@ import { useDirection } from '../display/Direction.jsx';
 const CSS = `
 .ef-dropdown-menu__content{position:fixed;min-width:128px;max-height:calc(100vh - 16px);overflow:auto;background:color-mix(in srgb,var(--material-tint) calc(var(--material-thick) * 100%),transparent);-webkit-backdrop-filter:blur(var(--material-blur-thick)) saturate(var(--material-saturate));backdrop-filter:blur(var(--material-blur-thick)) saturate(var(--material-saturate));color:var(--text-primary);border:1px solid var(--border-strong);border-radius:var(--radius-md);box-shadow:var(--shadow-md);padding:var(--space-1);z-index:var(--z-popover);animation:ef-dropdown-menu-in var(--dur-fast) var(--ease-enter)}
 @keyframes ef-dropdown-menu-in{from{transform:scale(var(--motion-enter-scale-sm))}}
+@keyframes ef-dropdown-menu-out{to{transform:scale(var(--motion-enter-scale-sm))}}
+.ef-dropdown-menu__content[data-state="closed"]{pointer-events:none}
+@media (prefers-reduced-motion:no-preference){.ef-dropdown-menu__content[data-state="closed"]{animation:ef-dropdown-menu-out var(--dur-fast) var(--ease-exit) forwards}}
 .ef-dropdown-menu__content[data-side=bottom]{transform-origin:top}
 .ef-dropdown-menu__content[data-side=top]{transform-origin:bottom}
 .ef-dropdown-menu__content[data-side=left]{transform-origin:right}
@@ -127,7 +130,8 @@ export const DropdownMenuContent = React.forwardRef(function DropdownMenuContent
   const ref = mergeRefs(forwardedRef, localRef, root?.contentRef);
   const fallbackTriggerRef = React.useRef(null);
   const fallbackContentRef = React.useRef(null);
-  const { style: anchored, side: resolvedSide } = useAnchoredStyle(root?.triggerRef ?? fallbackTriggerRef, root?.contentRef ?? fallbackContentRef, { open: !!root?.open, placement: side, align, offset: sideOffset, crossOffset: alignOffset });
+  const { present, state } = usePresence(!!root?.open, localRef);
+  const { style: anchored, side: resolvedSide } = useAnchoredStyle(root?.triggerRef ?? fallbackTriggerRef, root?.contentRef ?? fallbackContentRef, { open: present, placement: side, align, offset: sideOffset, crossOffset: alignOffset });
   const close = React.useCallback(() => {
     root?.setOpen(false);
     const event = { defaultPrevented: false, preventDefault() { this.defaultPrevented = true; } };
@@ -144,8 +148,8 @@ export const DropdownMenuContent = React.forwardRef(function DropdownMenuContent
     window.addEventListener('blur', blur);
     return () => { document.removeEventListener('pointerdown', away); window.removeEventListener('blur', blur); };
   }, [root?.open, close]);
-  if (!root?.open) return null;
-  return <DropdownMenuPortal><div dir={rtl ? 'rtl' : undefined} {...rest} ref={mergeRefs(ref, styleRefUnder(anchored, style))} role="menu" data-ef-menu={root.menuId} data-slot={slot} data-state="open" data-side={resolvedSide} data-align={align} className={join('ef-dropdown-menu__content', className)} style={style} onKeyDown={compose(onKeyDown, keyboard)}>{children}</div></DropdownMenuPortal>;
+  if (!present) return null;
+  return <DropdownMenuPortal><div dir={rtl ? 'rtl' : undefined} {...rest} ref={mergeRefs(ref, styleRefUnder(anchored, style))} role="menu" data-ef-menu={root.menuId} data-slot={slot} data-state={state} data-side={resolvedSide} data-align={align} className={join('ef-dropdown-menu__content', className)} style={style} onKeyDown={compose(onKeyDown, keyboard)}>{children}</div></DropdownMenuPortal>;
 });
 
 export const DropdownMenuGroup = React.forwardRef(function DropdownMenuGroup({ slot = 'dropdown-menu-group', ...props }, ref) {
@@ -218,10 +222,11 @@ export const DropdownMenuSubContent = React.forwardRef(function DropdownMenuSubC
   const localRef = React.useRef(null);
   const fallbackTriggerRef = React.useRef(null);
   const fallbackContentRef = React.useRef(null);
-  const { style: anchored, side } = useAnchoredStyle(sub?.triggerRef ?? fallbackTriggerRef, sub?.contentRef ?? fallbackContentRef, { open: !!sub?.open, placement: rtl ? 'left' : 'right', align: 'start', offset: sideOffset, crossOffset: alignOffset });
+  const { present, state } = usePresence(!!sub?.open, localRef);
+  const { style: anchored, side } = useAnchoredStyle(sub?.triggerRef ?? fallbackTriggerRef, sub?.contentRef ?? fallbackContentRef, { open: present, placement: rtl ? 'left' : 'right', align: 'start', offset: sideOffset, crossOffset: alignOffset });
   const close = () => { sub?.setOpen(false); sub?.triggerRef.current?.focus(); };
   const keyboard = useMenuKeyboard(localRef, close, { sub: true, loop, rtl });
   useIsoLayoutEffect(() => { if (sub?.open) menuItems(localRef.current)[0]?.focus(); }, [sub?.open]);
-  if (!sub?.open) return null;
-  return <DropdownMenuPortal><div dir={rtl ? 'rtl' : undefined} {...props} ref={mergeRefs(forwardedRef, localRef, sub.contentRef, styleRefUnder(anchored, style))} role="menu" data-ef-menu={root?.menuId} data-slot={slot} data-state="open" data-side={side} className={join('ef-dropdown-menu__content', className)} style={style} onMouseLeave={() => sub.setOpen(false)} onKeyDown={compose(onKeyDown, keyboard)}>{children}</div></DropdownMenuPortal>;
+  if (!present) return null;
+  return <DropdownMenuPortal><div dir={rtl ? 'rtl' : undefined} {...props} ref={mergeRefs(forwardedRef, localRef, sub.contentRef, styleRefUnder(anchored, style))} role="menu" data-ef-menu={root?.menuId} data-slot={slot} data-state={state} data-side={side} className={join('ef-dropdown-menu__content', className)} style={style} onMouseLeave={() => sub.setOpen(false)} onKeyDown={compose(onKeyDown, keyboard)}>{children}</div></DropdownMenuPortal>;
 });

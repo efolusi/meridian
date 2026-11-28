@@ -1,7 +1,7 @@
 'use client';
 import React from 'react';
 import { Icon } from '../icons/Icon.jsx';
-import { injectEfCss, mergeRefs, styleRef } from '../runtime/runtime.jsx';
+import { injectEfCss, mergeRefs, styleRef, usePresence } from '../runtime/runtime.jsx';
 import { useFieldProps } from '../forms/Field.jsx';
 import { Portal, useAnchoredStyle } from '../overlay/Portal.jsx';
 const CSS = `
@@ -19,6 +19,9 @@ const CSS = `
 .ef-timepicker__icon{position:absolute;inset-inline-end:var(--space-3);color:var(--text-muted);display:inline-flex;pointer-events:none}
 .ef-timepicker__panel{max-height:240px;overflow-y:auto;background:var(--surface-card);border:1px solid var(--border-strong);border-radius:var(--radius-md);box-shadow:var(--shadow-md);padding:var(--space-1);z-index:var(--z-popover);animation:ef-tp-in var(--dur-fast) var(--ease-enter)}
 @keyframes ef-tp-in{from{opacity:0;transform:translateY(-3px)}}
+@keyframes ef-tp-out{to{opacity:0;transform:translateY(-3px)}}
+.ef-timepicker__panel[data-state="closed"]{animation:ef-reduce-fade-out var(--dur-fast) var(--ease-exit) forwards;pointer-events:none}
+@media (prefers-reduced-motion:no-preference){.ef-timepicker__panel[data-state="closed"]{animation:ef-tp-out var(--dur-fast) var(--ease-exit) forwards}}
 .ef-timepicker__opt{display:flex;align-items:center;gap:var(--space-2);width:100%;padding:var(--space-2) var(--space-3);border:none;border-radius:var(--radius-sm);background:none;cursor:pointer;text-align:start;font-family:var(--font-sans);font-size:var(--text-sm);color:var(--text-primary)}
 .ef-timepicker__opt--hi{background:var(--surface-sunken);box-shadow:inset 0 0 0 2px var(--focus-ring-color)}
 .ef-timepicker__opt__check{margin-inline-start:auto;color:var(--accent-edge);display:inline-flex}
@@ -60,7 +63,8 @@ export function TimePicker({ label, hint, value, onChange, stepMinutes = 30, min
   const listId = React.useId();
   const ref = React.useRef(null);
   const panelRef = React.useRef(null);
-  const { style: anchored } = useAnchoredStyle(ref, panelRef, { open, placement: 'bottom', align: 'start', matchWidth: true });
+  const { present, state } = usePresence(open, panelRef);
+  const { style: anchored } = useAnchoredStyle(ref, panelRef, { open: present, placement: 'bottom', align: 'start', matchWidth: true });
   const lo = toMin(minTime || '00:00');
   const end = toMin(maxTime || '23:59');
   const step = Math.max(1, stepMinutes);
@@ -122,10 +126,10 @@ export function TimePicker({ label, hint, value, onChange, stepMinutes = 30, min
         onChange={e => { setQ(e.target.value); setOpen(true); setHi(0); }}
         onClick={openList} onFocus={openList} onBlur={onBlur} onKeyDown={onKey} />
       <span className="ef-timepicker__icon"><Icon name="clock" size={16} /></span>
-      {open && (
+      {present && (
         <Portal>
           {/* mousedown is swallowed so an option click never blurs the input into a stray typed-commit */}
-          <div ref={mergeRefs(panelRef, styleRef(anchored))} className="ef-timepicker__panel" role="listbox" id={listId} onMouseDown={e => e.preventDefault()}>
+          <div ref={mergeRefs(panelRef, styleRef(anchored))} className="ef-timepicker__panel" data-state={state} role="listbox" id={listId} onMouseDown={e => e.preventDefault()}>
             {shown.length === 0 && <div className="ef-timepicker__empty">No matching time.</div>}
             {shown.map((t, i) => (
               <button key={t} type="button" role="option" id={`${listId}-opt-${i}`} tabIndex={-1} aria-selected={t === value}

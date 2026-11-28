@@ -1,7 +1,7 @@
 'use client';
 import React from 'react';
 import { buttonVariants } from '../forms/Button.jsx';
-import { injectEfCss, mergeRefs, useIsoLayoutEffect } from '../runtime/runtime.jsx';
+import { injectEfCss, mergeRefs, useIsoLayoutEffect, usePresence } from '../runtime/runtime.jsx';
 import { Portal, useEscapeLayer, useScrollLock, escapeLayerContext, useHydrated } from '../overlay/Portal.jsx';
 
 const CSS = `
@@ -19,6 +19,11 @@ const CSS = `
 @media(max-width:520px){.ef-alertdialog__overlay{padding:var(--space-4)}.ef-alertdialog__content{padding:var(--space-5)}.ef-alertdialog__footer{flex-direction:column-reverse}.ef-alertdialog__footer .ef-btn{width:100%}}
 @keyframes ef-alertdialog-fade{from{opacity:0}}
 @keyframes ef-alertdialog-pop{from{opacity:0;transform:scale(var(--motion-enter-scale-lg)) translateY(6px)}}
+/* Exit (MD121): as the Dialog; the scrim animates its colour so the panel stays visible for its exit. */
+@keyframes ef-alertdialog-fade-out{to{background-color:transparent}}
+@keyframes ef-alertdialog-pop-out{to{opacity:0;transform:scale(var(--motion-enter-scale-lg)) translateY(6px)}}
+.ef-alertdialog__overlay[data-state="closed"],.ef-alertdialog__content[data-state="closed"]{animation:ef-reduce-fade-out var(--dur-fast) var(--ease-exit) forwards;pointer-events:none}
+@media (prefers-reduced-motion:no-preference){.ef-alertdialog__overlay[data-state="closed"]{animation:ef-alertdialog-fade-out var(--dur-fast) var(--ease-exit) forwards}.ef-alertdialog__content[data-state="closed"]{animation:ef-alertdialog-pop-out var(--dur-slow) var(--ease-exit) forwards}}
 @media (prefers-reduced-motion:reduce){.ef-alertdialog__overlay,.ef-alertdialog__content{--ef-motion-guard:var(--dur-fast);animation-name:ef-reduce-fade}}
 `;
 
@@ -100,6 +105,8 @@ export const AlertDialogContent = React.forwardRef(function AlertDialogContent({
   injectEfCss('ef-css-alertdialog', CSS);
   const ctx = useAlertDialog('AlertDialogContent');
   const panelRef = React.useRef(null);
+  const rootRef = React.useRef(null);
+  const { present } = usePresence(ctx.open, rootRef);
   const layer = useEscapeLayer(ctx.open, event => { event.preventDefault(); ctx.setOpen(false); });
   useScrollLock(ctx.open);
   React.useEffect(() => {
@@ -111,7 +118,7 @@ export const AlertDialogContent = React.forwardRef(function AlertDialogContent({
       ctx.triggerRef.current?.focus?.();
     };
   }, [ctx.open, ctx.triggerRef]);
-  if (!ctx.open && !forceMount) return null;
+  if (!present && !forceMount) return null;
   const handleKeyDown = event => {
     if (onKeyDown) onKeyDown(event);
     if (event.defaultPrevented || event.key !== 'Tab') return;
@@ -124,8 +131,8 @@ export const AlertDialogContent = React.forwardRef(function AlertDialogContent({
     else if (!event.shiftKey && (index < 0 || index === focusable.length - 1)) { event.preventDefault(); focusable[0].focus(); }
   };
   return (
-    <AlertDialogPortal forceMount={forceMount}>
-      <AlertDialogOverlay forceMount={forceMount}>
+    <AlertDialogPortal forceMount>
+      <AlertDialogOverlay forceMount ref={rootRef}>
         <div {...rest} ref={mergeRefs(ref, panelRef)} role="alertdialog" aria-modal="true" aria-labelledby={ctx.titleId} aria-describedby={rest['aria-describedby'] ?? ctx.describedBy}
           tabIndex={-1} data-slot="alert-dialog-content" data-state={ctx.open ? 'open' : 'closed'} data-size={size}
           className={`ef-alertdialog__content ef-alertdialog__content--${size}${className ? ' ' + className : ''}`} onKeyDown={handleKeyDown}>

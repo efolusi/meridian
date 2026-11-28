@@ -153,6 +153,33 @@ export function prefersReducedMotion() {
   return typeof window !== 'undefined' && !!window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 }
 /**
+ * Keep an overlay mounted while its exit animation runs (MD121).
+ *
+ * `open` is the overlay's own state; `ref` is the outermost node it renders (a panel, or the dialog overlay that
+ * holds the panel). Returns `present` (render the overlay) and `state` ("open" or "closed", for data-state). When
+ * `open` turns false the node stays, closed, until every CSS animation named `...-out` under it has finished: the
+ * exit keyframes of the components carry that suffix, so a spinner or any other loop inside never holds it up. With
+ * no such animation running (reduced motion without the fade, no CSS, a browser without getAnimations, jsdom) the
+ * node goes at once, in the same commit, so nothing flashes. A reopen during the exit cancels the wait: the same
+ * node is open again and its enter animation restarts. Lowercase: internal.
+ */
+export function usePresence(open, ref) {
+  const [mounted, setMounted] = React.useState(open);
+  if (open && !mounted) setMounted(true);
+  useIsoLayoutEffect(() => {
+    if (open || !mounted) return undefined;
+    const node = ref?.current;
+    const exits = node && typeof node.getAnimations === 'function'
+      ? node.getAnimations({ subtree: true }).filter(a => typeof a.animationName === 'string' && a.animationName.endsWith('-out'))
+      : [];
+    if (!exits.length) { setMounted(false); return undefined; }
+    let live = true;
+    Promise.allSettled(exits.map(a => a.finished)).then(() => { if (live) setMounted(false); });
+    return () => { live = false; };
+  }, [open, mounted, ref]);
+  return { present: open || mounted, state: open ? 'open' : 'closed' };
+}
+/**
  * Point several refs at one node.
  *
  * A component that forwards a ref usually needs the same node itself — to

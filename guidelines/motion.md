@@ -74,6 +74,15 @@ An exit is one step shorter than its enter, on `--ease-exit`:
 
 Slide fully out only where the destination carries meaning, as a drawer closing does.
 
+Every overlay that animates in animates out: `Popover`, `HoverCard`, `Tooltip`, `DropdownMenu`, `ContextMenu`, `Select`, `Combobox`, `TimePicker`, `ModelSelector`, `Citation`, the jump button of `Conversation`, `Toast`, `Dialog`, `AlertDialog`, `Drawer`, `Sheet`. The overlay stays mounted, with `data-state="closed"`, until its `ef-*-out` animation has ended, then unmounts; where no exit runs it goes at once. A product writes no exit and no unmount delay of its own.
+
+| Kind | Exit |
+|---|---|
+| A panel on a solid surface (`Select`, `Combobox`, `TimePicker`, `ModelSelector`, `Citation`, `Tooltip`, `Toast`, `Dialog`, `AlertDialog`) and the jump button | Opacity to 0 and back to the value the enter started from (scale, shift). The scrim of a dialog lets go over `--dur-fast`, so the panel inside stays visible for its own exit. |
+| A panel on thick glass (`Popover`, `HoverCard`, `DropdownMenu`, `ContextMenu`) | The enter's transform backwards, no opacity: glass never fades (design-tokens docs/glass.md). |
+| A sheet or drawer on glass | Slides fully out the way it came, no opacity. |
+| Under reduced motion | A solid panel fades out over `--dur-fast`. A glass panel goes at once. |
+
 ## Press
 
 A control that scales down while pressed (press 0.98, fast 120: the house values) reads `--motion-press` (0.98) over `transform var(--dur-fast) var(--ease-enter)`: `Button`, `IconButton`, the `Input` file button, `Checkbox`, `Radio`, the composer send button. `tests/md123-press.test.mjs` fails any other scale-down on `:active`. A disabled control never presses. `--motion-lift` (1.012) is the hover lift of a card, not a press. A hover fill is written inside `@media (hover: hover)`, so a touch screen never keeps it.

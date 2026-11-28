@@ -1,6 +1,6 @@
 'use client';
 import React from 'react';
-import { injectEfCss, mergeRefs, styleRefUnder, useIsoLayoutEffect } from '../runtime/runtime.jsx';
+import { injectEfCss, mergeRefs, styleRefUnder, useIsoLayoutEffect, usePresence } from '../runtime/runtime.jsx';
 import { Icon } from '../icons/Icon.jsx';
 import { Portal, useAnchoredStyle, useHydrated } from './Portal.jsx';
 import { useDirection } from '../display/Direction.jsx';
@@ -8,6 +8,9 @@ import { useDirection } from '../display/Direction.jsx';
 const CSS = `
 .ef-context-menu__content{position:fixed;min-width:128px;max-height:calc(100vh - 16px);overflow:auto;background:color-mix(in srgb,var(--material-tint) calc(var(--material-thick) * 100%),transparent);-webkit-backdrop-filter:blur(var(--material-blur-thick)) saturate(var(--material-saturate));backdrop-filter:blur(var(--material-blur-thick)) saturate(var(--material-saturate));color:var(--text-primary);border:1px solid var(--border-strong);border-radius:var(--radius-md);box-shadow:var(--shadow-md);padding:var(--space-1);z-index:var(--z-popover);animation:ef-context-menu-in var(--dur-fast) var(--ease-enter)}
 @keyframes ef-context-menu-in{from{transform:scale(var(--motion-enter-scale-sm))}}
+@keyframes ef-context-menu-out{to{transform:scale(var(--motion-enter-scale-sm))}}
+.ef-context-menu__content[data-state="closed"]{pointer-events:none}
+@media (prefers-reduced-motion:no-preference){.ef-context-menu__content[data-state="closed"]{animation:ef-context-menu-out var(--dur-fast) var(--ease-exit) forwards}}
 .ef-context-menu__item{position:relative;display:flex;align-items:center;gap:var(--gap-label-icon);width:100%;min-height:32px;padding:var(--space-2) var(--space-2);border:0;border-radius:var(--radius-sm);outline:0;background:transparent;color:var(--text-primary);font:inherit;font-size:var(--text-sm);line-height:1.35;text-align:start;white-space:nowrap;cursor:pointer;user-select:none}
 .ef-context-menu__item:focus,.ef-context-menu__item[data-highlighted=true],.ef-context-menu__item[data-state=open]{background:var(--surface-sunken)}@media (hover:hover){.ef-context-menu__item:hover{background:var(--surface-sunken)}}
 /* the tint alone is ~1.1:1 against the panel; keyboard focus needs a 3:1 ring */
@@ -128,6 +131,7 @@ export const ContextMenuContent = React.forwardRef(function ContextMenuContent({
   const rtl = useDirection() === 'rtl';
   const localRef = React.useRef(null);
   const ref = mergeRefs(forwardedRef, localRef, root?.contentRef);
+  const { present, state } = usePresence(!!root?.open, localRef);
   const close = React.useCallback(() => {
     root?.setOpen(false);
     const event = { defaultPrevented: false, preventDefault() { this.defaultPrevented = true; } };
@@ -154,8 +158,8 @@ export const ContextMenuContent = React.forwardRef(function ContextMenuContent({
     window.addEventListener('blur', blur);
     return () => { document.removeEventListener('pointerdown', away); window.removeEventListener('blur', blur); };
   }, [root?.open, close]);
-  if (!root?.open) return null;
-  return <ContextMenuPortal><div dir={rtl ? 'rtl' : undefined} {...rest} ref={ref} role="menu" data-ef-menu={root.menuId} data-slot="context-menu-content" data-state="open" className={join('ef-context-menu__content', className)} style={style} onKeyDown={compose(onKeyDown, keyboard)}>{children}</div></ContextMenuPortal>;
+  if (!present) return null;
+  return <ContextMenuPortal><div dir={rtl ? 'rtl' : undefined} {...rest} ref={ref} role="menu" data-ef-menu={root.menuId} data-slot="context-menu-content" data-state={state} className={join('ef-context-menu__content', className)} style={style} onKeyDown={compose(onKeyDown, keyboard)}>{children}</div></ContextMenuPortal>;
 });
 
 export const ContextMenuGroup = React.forwardRef(function ContextMenuGroup(props, ref) {
@@ -228,10 +232,11 @@ export const ContextMenuSubContent = React.forwardRef(function ContextMenuSubCon
   const localRef = React.useRef(null);
   const fallbackTriggerRef = React.useRef(null);
   const fallbackContentRef = React.useRef(null);
-  const { style: anchored, side } = useAnchoredStyle(sub?.triggerRef ?? fallbackTriggerRef, sub?.contentRef ?? fallbackContentRef, { open: !!sub?.open, placement: rtl ? 'left' : 'right', align: 'start', offset: sideOffset, crossOffset: alignOffset });
+  const { present, state } = usePresence(!!sub?.open, localRef);
+  const { style: anchored, side } = useAnchoredStyle(sub?.triggerRef ?? fallbackTriggerRef, sub?.contentRef ?? fallbackContentRef, { open: present, placement: rtl ? 'left' : 'right', align: 'start', offset: sideOffset, crossOffset: alignOffset });
   const close = () => { sub?.setOpen(false); sub?.triggerRef.current?.focus(); };
   const keyboard = useMenuKeyboard(localRef, close, { sub: true, loop, rtl });
   useIsoLayoutEffect(() => { if (sub?.open) menuItems(localRef.current)[0]?.focus(); }, [sub?.open]);
-  if (!sub?.open) return null;
-  return <ContextMenuPortal><div dir={rtl ? 'rtl' : undefined} {...props} ref={mergeRefs(forwardedRef, localRef, sub.contentRef, styleRefUnder(anchored, style))} role="menu" data-ef-menu={root?.menuId} data-slot="context-menu-sub-content" data-state="open" data-side={side} className={join('ef-context-menu__content', className)} style={style} onMouseLeave={() => sub.setOpen(false)} onKeyDown={compose(onKeyDown, keyboard)}>{children}</div></ContextMenuPortal>;
+  if (!present) return null;
+  return <ContextMenuPortal><div dir={rtl ? 'rtl' : undefined} {...props} ref={mergeRefs(forwardedRef, localRef, sub.contentRef, styleRefUnder(anchored, style))} role="menu" data-ef-menu={root?.menuId} data-slot="context-menu-sub-content" data-state={state} data-side={side} className={join('ef-context-menu__content', className)} style={style} onMouseLeave={() => sub.setOpen(false)} onKeyDown={compose(onKeyDown, keyboard)}>{children}</div></ContextMenuPortal>;
 });

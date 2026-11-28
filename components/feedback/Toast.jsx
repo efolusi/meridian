@@ -2,7 +2,7 @@
 import React from 'react';
 import { Icon } from '../icons/Icon.jsx';
 import { IconButton } from '../forms/IconButton.jsx';
-import { injectEfCss, styleRef } from '../runtime/runtime.jsx';
+import { injectEfCss, styleRef, useIsoLayoutEffect, usePresence } from '../runtime/runtime.jsx';
 import { Portal, useHydrated } from '../overlay/Portal.jsx';
 
 const CSS = `
@@ -16,16 +16,24 @@ const CSS = `
 @media(max-width:599px){.ef-toast-stack{inset-inline:16px!important;width:auto;max-width:none;transform:none!important}.ef-toast-stack[data-position^=top]{top:16px}.ef-toast-stack[data-position^=bottom]{bottom:16px}}
 .ef-toast__action:focus-visible{outline:none;border-radius:var(--radius-sm);box-shadow:var(--focus-ring)}
 @keyframes ef-toast-in{from{opacity:0;transform:translateY(12px) scale(var(--motion-enter-scale-sm))}}
+@keyframes ef-toast-out{to{opacity:0;transform:translateY(12px) scale(var(--motion-enter-scale-sm))}}
+.ef-toast[data-state="closed"]{animation:ef-reduce-fade-out var(--dur-fast) var(--ease-exit) forwards;pointer-events:none}
+@media (prefers-reduced-motion:no-preference){.ef-toast[data-state="closed"]{animation:ef-toast-out var(--dur-base) var(--ease-exit) forwards}}
 /* coarse pointers get the 44px touch target, like form controls do through --control-h-* */
 @media (pointer:coarse){.ef-toast__action{min-height:var(--tap-min)}}
 @media (prefers-reduced-motion:reduce){.ef-toast{--ef-motion-guard:var(--dur-fast);animation-name:ef-reduce-fade}}
 `;
 const ICONS = { success: 'circle-check', danger: 'circle-alert', warning: 'triangle-alert', info: 'info' };
 
-function ToastItem({ tone = 'info', title, description, actionProps, onClose, role = 'status', style, className, ...rest }) {
+// `leaving` is a toast that was dismissed or timed out: it stays, closed, until its exit has played, then calls onGone.
+function ToastItem({ tone = 'info', title, description, actionProps, onClose, role = 'status', style, className, leaving = false, onGone, ...rest }) {
   injectEfCss('ef-css-toast', CSS);
+  const ref = React.useRef(null);
+  const { present, state } = usePresence(!leaving, ref);
+  React.useEffect(() => { if (!present) onGone?.(); }, [present, onGone]);
+  if (!present) return null;
   const actionNode = actionProps ? <button type="button" {...actionProps} className={`ef-toast__action${actionProps.className ? ` ${actionProps.className}` : ''}`} /> : null;
-  return <div {...rest} data-slot="toast" className={`ef-toast ef-toast--${tone}${className ? ` ${className}` : ''}`} role={role || undefined} style={style}>
+  return <div {...rest} ref={ref} data-slot="toast" data-state={state} className={`ef-toast ef-toast--${tone}${className ? ` ${className}` : ''}`} role={role || undefined} style={style}>
     <span className="ef-toast__icon" aria-hidden="true"><Icon name={ICONS[tone] || 'info'} size={20} /></span>
     <div className="ef-toast__body"><div className="ef-toast__title">{title}</div>{description ? <div className="ef-toast__desc">{description}</div> : null}{actionNode}</div>
     {onClose ? <IconButton icon="x" label="Dismiss" size="sm" onClick={onClose} /> : null}
@@ -101,6 +109,19 @@ function resume() { const expired = []; timers.forEach((timer, id) => { if (time
 export function Toaster({ position = 'bottom-right', visibleToasts = 3, closeButton = true, richColors = false, duration, toastOptions = {}, expand = false, theme = 'system', dir, gap = 10, offset, mobileOffset, label = 'Notifications', children, style, ...rest }) {
   injectEfCss('ef-css-toast', CSS);
   const [items, setItems] = React.useState(records);
+  // What is on screen: the toasts that are live, plus the ones that were just removed, each still in its old place until its exit ends.
+  const [rendered, setRendered] = React.useState(() => records.slice(-visibleToasts).map(item => ({ item, leaving: false })));
+  useIsoLayoutEffect(() => {
+    const shown = items.slice(-visibleToasts);
+    setRendered(previous => {
+      const now = new Map(shown.map(item => [item.id, item]));
+      const next = previous.map(entry => now.has(entry.item.id) ? { item: now.get(entry.item.id), leaving: false } : { item: entry.item, leaving: true });
+      const kept = new Set(previous.map(entry => entry.item.id));
+      for (const item of shown) if (!kept.has(item.id)) next.push({ item, leaving: false });
+      return next;
+    });
+  }, [items, visibleToasts]);
+  const gone = React.useCallback(id => setRendered(previous => previous.filter(entry => !(entry.leaving && entry.item.id === id))), []);
   React.useEffect(() => { const listener = value => setItems(value); listeners.add(listener); listener(records); return () => listeners.delete(listener); }, []);
   React.useEffect(() => { defaultDuration = duration; defaultToastOptions = toastOptions; return () => { defaultDuration = undefined; defaultToastOptions = {}; }; }, [duration, toastOptions]);
   // A hidden window holds the timers too, so a notice is not gone before anyone could read it.
@@ -115,8 +136,8 @@ export function Toaster({ position = 'bottom-right', visibleToasts = 3, closeBut
   const hydrated = useHydrated();
   if (!hydrated) return <>{children}</>;
   return <>{children}<Portal><ToastStack {...rest} dir={dir} position={position} data-rich-colors={richColors ? 'true' : 'false'} data-expand={expand ? 'true' : 'false'} data-theme={theme} data-mobile-offset={typeof mobileOffset === 'number' ? `${mobileOffset}px` : mobileOffset} gap={gap} offset={resolvedOffset} style={style} aria-label={label} role="log" aria-live="polite" aria-relevant="additions" onMouseEnter={() => hold('pointer')} onMouseLeave={() => release('pointer')} onFocusCapture={() => hold('focus')} onBlurCapture={() => release('focus')}>
-    {items.slice(-visibleToasts).map(item => item.type === 'custom' && React.isValidElement(item.title)
-      ? React.cloneElement(item.title, { key: item.id })
-      : <ToastItem key={item.id} tone={['success', 'warning', 'danger', 'info'].includes(item.type) ? item.type : 'info'} title={item.title} description={item.description} actionProps={item.actionProps} role={null} onClose={item.closeButton ?? (closeButton || item.sticky) ? () => close(item.id) : undefined} />)}
+    {rendered.map(({ item, leaving }) => item.type === 'custom' && React.isValidElement(item.title)
+      ? (leaving ? null : React.cloneElement(item.title, { key: item.id }))
+      : <ToastItem key={item.id} leaving={leaving} onGone={() => gone(item.id)} tone={['success', 'warning', 'danger', 'info'].includes(item.type) ? item.type : 'info'} title={item.title} description={item.description} actionProps={item.actionProps} role={null} onClose={item.closeButton ?? (closeButton || item.sticky) ? () => close(item.id) : undefined} />)}
   </ToastStack></Portal></>;
 }

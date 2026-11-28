@@ -166,7 +166,7 @@ describe('injectEfCss', () => {
 });
 
 describe('where the helpers live', () => {
-  const HELPERS = ['injectEfCss', 'mergeRefs', 'styleRef', 'styleRefUnder', 'cssPct', 'useIsoLayoutEffect', 'prefersReducedMotion', 'isElementOfType'];
+  const HELPERS = ['injectEfCss', 'mergeRefs', 'styleRef', 'styleRefUnder', 'cssPct', 'useIsoLayoutEffect', 'prefersReducedMotion', 'isElementOfType', 'usePresence'];
   const components = readdirSync('components', { withFileTypes: true })
     .filter((d) => d.isDirectory())
     .flatMap((d) => readdirSync(`components/${d.name}`).filter((f) => f.endsWith('.jsx')).map((f) => `components/${d.name}/${f}`));

@@ -56,6 +56,11 @@ code,pre,kbd{font-family:var(--font-mono)}
    A View Transition (document.startViewTransition) does not match `*`: its groups stop moving and its
    old and new snapshots cross-fade over --dur-fast. */
 @keyframes ef-reduce-fade{from{opacity:0}}
+/* The exit of an overlay (MD121) is the same fade backwards: the closed state of every overlay runs ef-reduce-fade-out
+   over --dur-fast. Under reduce a closed element takes --dur-fast for the guard, so the guard below does not
+   shorten it to .01 ms; its movement exit is written by the component inside no-preference. */
+@keyframes ef-reduce-fade-out{to{opacity:0}}
+@media (prefers-reduced-motion:reduce){[data-state="closed"]{--ef-motion-guard:var(--dur-fast)}}
 @media (prefers-reduced-motion:reduce){*,*::before,*::after{--ef-motion-guard:.01ms;animation-duration:var(--ef-motion-guard)!important;animation-delay:0s!important;animation-iteration-count:1!important;transition-delay:0s!important;scroll-behavior:auto!important}}
 @media (prefers-reduced-motion:reduce){::view-transition-group(*),::view-transition-image-pair(*){animation-duration:var(--ef-motion-guard)!important;animation-iteration-count:1!important}::view-transition-old(*),::view-transition-new(*){animation-duration:var(--dur-fast)!important;animation-iteration-count:1!important}}
 /* Theme switch (MD118). A swap changes every colour at once, and each element with a colour transition starts one,
