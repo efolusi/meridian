@@ -13,7 +13,7 @@ export interface LanguageSwitchProps extends React.HTMLAttributes<HTMLElement> {
   languages: LanguageSwitchLanguage[];
   /** The `code` of the language the page is in. It is shown as the current item (`aria-current="true"`), not as a link. */
   current: string;
-  /** `md` is a 44px target at every pointer, as the ThemeToggle. `sm` is 28px at a fine pointer (24px in compact density) and 44px at a coarse pointer. @default 'md' */
+  /** `md` is 36px at a fine pointer (30px in compact density) and 44px at a coarse pointer, as the ThemeToggle. `sm` is 28px at a fine pointer (24px in compact density) and 44px at a coarse pointer. @default 'md' */
   size?: 'sm' | 'md';
   /** Language of the built-in nav name. @default 'en' */
   lang?: 'en' | 'id';

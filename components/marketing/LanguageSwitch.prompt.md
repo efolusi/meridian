@@ -6,7 +6,7 @@ Put it in the `actions` of `SiteHeader` beside `ThemeToggle`, or in the language
 
 Give every language its own `href` (the product knows the other URL; Meridian fetches and stores nothing). Each link carries `hreflang` and `lang` with the language's code, and an accessible name that spells the language in itself and ends with the visible code: `Bahasa Indonesia (ID)`, `English (EN)`, so a voice user can say "click ID". The language in use is marked `aria-current="true"` and is not a link: a link to the page you are on does nothing. Pass `name` for any code other than `en` and `id`.
 
-Each target is 44px at a coarse pointer. At a fine pointer `size="md"` (default) is 44px as the `ThemeToggle`, and `size="sm"` is 28px (24px in compact density), never less than 24px. The focus ring comes from the library, and the only motion is the colour transition.
+Each target is 44px at a coarse pointer. At a fine pointer `size="md"` (default) is 36px (30px in compact density), as the `ThemeToggle` and the header menu button, and `size="sm"` is 28px (24px in compact density), never less than 24px. The focus ring comes from the library, and the only motion is the colour transition.
 
 ```jsx
 <LanguageSwitch
