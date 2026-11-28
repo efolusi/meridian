@@ -5,6 +5,7 @@ import { injectEfCss } from '../runtime/runtime.jsx';
 const CSS = `
 .ef-card{background:var(--surface-card);border:1px solid var(--border-default);border-radius:var(--radius-md)}
 .ef-card--elevated{background:var(--surface-elevated);border:1px solid transparent;box-shadow:var(--shadow-elevated)}
+.ef-card--elevated :is(.ef-item[data-variant="muted"],.ef-bubble[data-variant="secondary"]>.ef-bubble__content,.ef-badge--secondary,.ef-empty__media[data-variant="icon"],.ef-attachment__media,.ef-filetile__icon){border:1px solid var(--border-default)}
 .ef-card--interactive{cursor:pointer;transition:border-color var(--dur-fast) var(--ease-enter),background var(--dur-fast) var(--ease-enter)}
 @media (hover:hover){.ef-card--interactive:hover{border-color:var(--sand-400)}}
 .ef-card--interactive:focus-visible{outline:none;box-shadow:var(--focus-ring)}

@@ -10,6 +10,7 @@ const CSS = `
 .ef-sidebar__panel{position:absolute;inset-block:0;inset-inline-start:0;z-index:30;display:flex;width:var(--sidebar-width);flex-direction:column;border-inline-end:1px solid var(--border-default);background:var(--surface-card);color:var(--text-primary);transition:width var(--dur-base) var(--ease-enter),transform var(--dur-base) var(--ease-enter)}
 .ef-sidebar[data-side=right] .ef-sidebar__panel{inset-inline-start:auto;inset-inline-end:0;border-inline-end:0;border-inline-start:1px solid var(--border-default)}
 .ef-sidebar[data-variant=floating] .ef-sidebar__panel{inset-block:8px;border:1px solid transparent;border-radius:var(--radius-lg);background:var(--surface-elevated);box-shadow:var(--shadow-elevated)}
+.ef-sidebar[data-variant=floating] .ef-sidebar-menu-badge{border:1px solid var(--border-default)}
 .ef-sidebar[data-side=left][data-variant=floating] .ef-sidebar__panel{inset-inline-start:8px}.ef-sidebar[data-side=right][data-variant=floating] .ef-sidebar__panel{inset-inline-end:8px}
 .ef-sidebar[data-state=collapsed][data-collapsible=offcanvas]{flex-basis:0;width:0}.ef-sidebar[data-state=collapsed][data-collapsible=offcanvas] .ef-sidebar__panel{transform:translateX(calc(-100% - 10px))}
 [dir=rtl] .ef-sidebar[data-state=collapsed][data-collapsible=offcanvas] .ef-sidebar__panel,.ef-sidebar[data-side=right][data-state=collapsed][data-collapsible=offcanvas] .ef-sidebar__panel{transform:translateX(calc(100% + 10px))}
