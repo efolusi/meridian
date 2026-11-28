@@ -21,6 +21,8 @@ const CSS = `
 /* a checkbox or radio item draws its mark in the start gutter (8px in, 14px wide); the text starts after it */
 .ef-dropdown-menu__item[role=menuitemcheckbox],.ef-dropdown-menu__item[role=menuitemradio]{padding-inline-start:var(--space-8)}
 .ef-dropdown-menu__item[role=menuitemradio] .ef-dropdown-menu__indicator svg{fill:currentColor}
+/* selected is told apart from highlighted by more than the mark: the highlight is a fill (and a ring from the keyboard), the selected item is also semibold */
+.ef-dropdown-menu__item[aria-checked=true]{font-weight:var(--weight-semibold)}
 .ef-dropdown-menu__item[data-variant=danger]{color:var(--status-danger-text)}
 .ef-dropdown-menu__indicator{position:absolute;inset-inline-start:8px;display:inline-flex;width:14px;align-items:center;justify-content:center}
 .ef-dropdown-menu__label{padding:var(--space-2) var(--space-2);color:var(--text-primary);font-size:var(--text-sm);font-weight:var(--weight-medium)}

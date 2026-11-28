@@ -287,4 +287,9 @@ describe('the menu items that draw a mark keep their text clear of it', () => {
     const css = cssOf('components/overlay/DropdownMenu.jsx')
     expect(css).toMatch(/\.ef-dropdown-menu__item\[role=menuitemcheckbox\],\.ef-dropdown-menu__item\[role=menuitemradio\]\{padding-inline-start:var\(--space-8\)\}/)
   })
+
+  it('marks the selected item by weight as well as by the mark, so the highlight fill is never the only other cue', () => {
+    const css = cssOf('components/overlay/DropdownMenu.jsx')
+    expect(css).toMatch(/\.ef-dropdown-menu__item\[aria-checked=true\]\{font-weight:var\(--weight-semibold\)\}/)
+  })
 })

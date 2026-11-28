@@ -5,12 +5,12 @@
       "gzip": 88245
     },
     "dist/components.css": {
-      "bytes": 266071,
-      "gzip": 38022
+      "bytes": 266310,
+      "gzip": 38104
     },
     "_ds_bundle.js": {
-      "bytes": 950996,
-      "gzip": 174443
+      "bytes": 951235,
+      "gzip": 174524
     }
   },
   "modules": [
