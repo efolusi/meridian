@@ -30,7 +30,7 @@ Efolusi ships WCAG 2.1 AA. The rules, per concern:
 
 ## Motion
 - Durations cap at 250ms (`--dur-slow`) and convey state only; `--dur-modal` (400ms) is for a modal, a drawer or a panel arriving. Under `prefers-reduced-motion` the tokens swap themselves (base, slow and modal become the fast fade, shifts are 0, the enter scales are 1, `--ease-emphasised` becomes `--ease-standard`), so a component that uses the tokens needs no query of its own. If you add larger motion, gate it behind `prefers-reduced-motion`.
-- `tokens/base.css` ships a global `prefers-reduced-motion: reduce` guard that stops every animation, including component-injected CSS: the duration is near zero and a loop runs once. Transitions are not forced: the duration tokens swap to the 120 ms fade, so a change of state still reads. An overlay entrance (Drawer, Sheet, Dialog, Toast, popovers, menus) fades in over that 120 ms: inside its own reduce media query it sets `--ef-motion-guard: var(--dur-fast)` and `animation-name: ef-reduce-fade` (opacity only, defined once in `tokens/base.css`). Only entrances set `--ef-motion-guard`, to at most `--dur-fast`; a consumer must not set it on a loop.
+- `tokens/base.css` ships a global `prefers-reduced-motion: reduce` guard that stills every animation, including component-injected CSS: the duration is near zero and a loop runs once. Loops that signal loading are the exception (MD122): a Spinner, the Button spinner, a Skeleton and an indeterminate Progress keep running at their own duration (`--dur-spin`, 800 ms, on a linear curve for the spinners), because a frozen spinner reads as a hung page; `guidelines/motion.md` lists them. Transitions are not forced: the duration tokens swap to the 120 ms fade, so a change of state still reads. An overlay entrance (Drawer, Sheet, Dialog, Toast, popovers, menus) fades in over that 120 ms: inside its own reduce media query it sets `--ef-motion-guard: var(--dur-fast)` and `animation-name: ef-reduce-fade` (opacity only, defined once in `tokens/base.css`). Only entrances set `--ef-motion-guard`, to at most `--dur-fast`; a consumer must not set it on a loop.
 
 ## Component keyboard contracts (verified in-browser)
 - Dialog, Drawer, ConfirmDialog: focus moves in on open, Tab and Shift+Tab wrap inside, Escape closes, focus returns to the invoker; panels carry `aria-labelledby`/`aria-describedby`.
@@ -99,9 +99,10 @@ host), the release just before the current one in each browser (the 1.48
 builds are older than that), and touch input.
 
 **Reduced motion** is honoured globally in `tokens/base.css`: under
-`prefers-reduced-motion: reduce` every animation is collapsed to 0.01ms with
+`prefers-reduced-motion: reduce` every animation that is not a loading loop is collapsed to 0.01ms with
 `!important`, a loop runs once, and scroll-behavior goes auto, so entrances land
 instantly rather than being skipped. It applies to `*`, so a component cannot opt
-out of it by accident. A transition is left to the tokens, which swap to the 120 ms
+out of it by accident; the loading loops (a spinner, a skeleton) are named in its
+exclusion and keep turning. A transition is left to the tokens, which swap to the 120 ms
 fade, so a state change does not become a jump. Overlay entrances are the exception to the 0.01ms: they fade (opacity only) over `--dur-fast` through `--ef-motion-guard`, which only they set.
 View Transitions (`document.startViewTransition`): the guard stops the groups and cross-fades the old and new snapshots over `--dur-fast`. A transition you name yourself (`view-transition-name: card`) keeps the keyframes you write for `::view-transition-old(card)` and `::view-transition-new(card)`, so inside your own `prefers-reduced-motion: reduce` block give them opacity-only keyframes. Call `document.startViewTransition?.(update) ?? update()`, so a browser without the API just runs `update`.

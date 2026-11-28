@@ -113,7 +113,11 @@ try {
     const loading=page.locator('#loading');
     assert.equal(await loading.getAttribute('aria-busy'),'true',`${theme}: loading semantics`);
     assert.equal(await loading.isDisabled(),true,`${theme}: loading button must be inoperable`);
-    assert.ok(parseFloat(await loading.locator('.ef-btn__spin').evaluate(el=>getComputedStyle(el).animationDuration))<=.01,`${theme}: reduced motion must collapse spinner animation`);
+    // MD122: a loading spinner keeps turning under reduced motion (a frozen one reads as a hung page), at --dur-spin on a
+    // linear curve. Everything else in the button collapses: its transitions are held to the 120 ms fade above.
+    const spin=await loading.locator('.ef-btn__spin').evaluate(el=>{const s=getComputedStyle(el);return {name:s.animationName,duration:s.animationDuration,count:s.animationIterationCount,timing:s.animationTimingFunction,token:getComputedStyle(document.documentElement).getPropertyValue('--dur-spin').trim()};});
+    assert.equal(spin.token,'800ms',`${theme}: --dur-spin is the one spinner duration`);
+    assert.deepEqual({name:spin.name,duration:spin.duration,count:spin.count,timing:spin.timing},{name:'ef-spin',duration:'0.8s',count:'infinite',timing:'linear'},`${theme}: reduced motion must keep the Button spinner turning at --dur-spin`);
     const overflow=await page.evaluate(()=>document.documentElement.scrollWidth-document.documentElement.clientWidth);
     assert.ok(overflow<=1,`${theme}/${viewport.name}: button fixture overflows horizontally by ${overflow}px`);
     if(shots) await page.screenshot({path:path.join(shots,`buttons-${viewport.name}-${theme}.png`),fullPage:true,animations:'disabled'});
