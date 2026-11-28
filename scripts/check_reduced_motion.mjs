@@ -118,8 +118,8 @@ try {
       const fade = document.getElementById('fade');
       const computed = style(fade).transitionDuration;
       const elapsed = await new Promise((resolve) => {
-        const start = performance.now();
-        fade.addEventListener('transitionend', () => resolve(performance.now() - start), { once: true });
+        // elapsedTime is the transition's own run time, so a busy machine that delays the event by a few frames cannot fail the check.
+        fade.addEventListener('transitionend', (event) => resolve(event.elapsedTime * 1000), { once: true });
         fade.classList.add('off');
         setTimeout(() => resolve(-1), 2000);
       });
