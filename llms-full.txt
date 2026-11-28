@@ -3160,14 +3160,20 @@ On marketing pages, `shape="pill"` rounds the ends and widens the side padding. 
 
 ### Arrow bubble
 
-`iconBubble` puts a round bubble with an arrow at the end of the button. Use it for the one hero or closing call to action of a marketing page, never on every button. The bubble is the button's label colour and the arrow is the button's own colour, so the bubble reads on the button (6.37:1 on a primary, 3:1 needed) and the arrow reads on the bubble (4.5:1 needed) in light and dark. The bubble button is always a pill, replaces `iconRight`, and draws at `md`, `lg` and `xl` (36, 44, 52px) on `primary`, `secondary`, `brand`, `danger` and `band`; on `ghost`, `link` and the smaller sizes the glyph is a plain trailing icon. On hover or keyboard focus the arrow nudges toward the end of the line by `--shift-sm`; under reduced motion it stays.
+`iconBubble` puts a round bubble with an arrow at the end of the button. Use it for the one hero or closing call to action of a marketing page, never on every button. The bubble is the button's label colour and the arrow is the button's own colour, so the bubble reads on the button (6.37:1 on a primary, 3:1 needed) and the arrow reads on the bubble (4.5:1 needed) in light and dark. The bubble button is always a pill, replaces `iconRight`, and draws at `md`, `lg` and `xl` (36, 44, 52px) on `primary`, `secondary`, `brand`, `danger` and `band`; on `ghost`, `link` and the smaller sizes the glyph is a plain trailing icon. On hover or keyboard focus (with a fine pointer) the arrow moves: `arrow-up-right` turns 45 degrees to point along the line, any other arrow nudges toward the end of the line by `--shift-sm`. Under reduced motion, and on a touch screen, it stays.
 
 ```jsx
 <Button shape="pill" size="xl" iconBubble="arrow-right">Start free</Button>
 <Button size="lg" variant="secondary" iconBubble="arrow-right">Read the docs</Button>
 ```
 
-For a link, build the classes with `buttonVariants` and put the bubble after the label (the icon is 20px, 16px at `md`):
+`arrow-up-right` is the one that turns, so it is the arrow for a call to action that leaves the page or opens a section:
+
+```jsx
+<Button shape="pill" size="xl" iconBubble="arrow-up-right">See what we've built</Button>
+```
+
+For a link, build the classes with `buttonVariants` and put the bubble after the label (the icon is 20px, 16px at `md`). Write `data-turn` on the bubble when the icon is `arrow-up-right`, so it turns:
 
 ```jsx
 <a className={buttonVariants({ size: 'xl', bubble: true })} href="/start">Start free<span className="ef-btn__bubble" aria-hidden="true"><Icon name="arrow-right" size={20} /></span></a>
@@ -3196,14 +3202,14 @@ export interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElemen
   iconLeft?: string;
   /** Lucide icon name rendered after the label */
   iconRight?: string;
-  /** Lucide icon name rendered in a round bubble at the end of the button, for the one hero or closing call to action (`arrow-right`). The bubble takes the label colour and the arrow takes the button colour, so both read in light and dark. It makes the button a pill, replaces `iconRight`, and draws only at sizes `md`, `lg` and `xl` and not on `ghost` or `link`; anywhere else the glyph is a plain trailing icon. */
+  /** Lucide icon name rendered in a round bubble at the end of the button, for the one hero or closing call to action (`arrow-right`, or `arrow-up-right`, which turns 45 degrees on hover while any other arrow nudges). The bubble takes the label colour and the arrow takes the button colour, so both read in light and dark. It makes the button a pill, replaces `iconRight`, and draws only at sizes `md`, `lg` and `xl` and not on `ghost` or `link`; anywhere else the glyph is a plain trailing icon. */
   iconBubble?: string;
   fullWidth?: boolean;
   /** Shows a spinner and disables the button */
   loading?: boolean;
   children?: React.ReactNode;
 }
-export declare function buttonVariants(options?: Pick<ButtonProps, 'variant' | 'size' | 'shape' | 'fullWidth'> & { /** Adds the pill and bubble classes; the markup is `<span className="ef-btn__bubble" aria-hidden="true"><Icon name="arrow-right" size={20} /></span>` after the label (size 16 at `md`). */ bubble?: boolean; className?: string }): string;
+export declare function buttonVariants(options?: Pick<ButtonProps, 'variant' | 'size' | 'shape' | 'fullWidth'> & { /** Adds the pill and bubble classes; the markup is `<span className="ef-btn__bubble" aria-hidden="true"><Icon name="arrow-right" size={20} /></span>` after the label (size 16 at `md`); add `data-turn` to the span for `arrow-up-right`, so the arrow turns on hover. */ bubble?: boolean; className?: string }): string;
 export declare const Button: React.ForwardRefExoticComponent<ButtonProps & React.RefAttributes<HTMLButtonElement>>;
 ```
 

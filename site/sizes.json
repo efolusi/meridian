@@ -1,16 +1,16 @@
 {
   "totals": {
     "@efolusi/meridian": {
-      "bytes": 384083,
-      "gzip": 87629
+      "bytes": 384126,
+      "gzip": 87648
     },
     "dist/components.css": {
-      "bytes": 270277,
-      "gzip": 38332
+      "bytes": 270844,
+      "gzip": 38528
     },
     "_ds_bundle.js": {
-      "bytes": 950123,
-      "gzip": 172855
+      "bytes": 950757,
+      "gzip": 173054
     }
   },
   "modules": [
@@ -740,8 +740,8 @@
       "exports": [
         "ConfirmDialog"
       ],
-      "bytes": 57367,
-      "gzip": 11402
+      "bytes": 57410,
+      "gzip": 11423
     },
     {
       "module": "feedback/Dialog.js",
@@ -823,8 +823,8 @@
         "AttachmentTrigger",
         "AttachmentGroup"
       ],
-      "bytes": 48672,
-      "gzip": 8328
+      "bytes": 48715,
+      "gzip": 8351
     },
     {
       "module": "files/FileDrop.js",
@@ -868,8 +868,8 @@
       "exports": [
         "Button"
       ],
-      "bytes": 46386,
-      "gzip": 7869
+      "bytes": 46429,
+      "gzip": 7891
     },
     {
       "module": "forms/ButtonGroup.js",

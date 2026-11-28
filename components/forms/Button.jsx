@@ -65,9 +65,12 @@ const CSS = `
 .ef-btn--band{background:var(--cream-50);border-color:var(--accent-edge);color:var(--brand-950);--ef-btn-ink:var(--brand-950);--ef-btn-fill:var(--cream-50)}
 @media (hover:hover){.ef-btn--band:hover{background:var(--brand-200);--ef-btn-fill:var(--brand-200)}}
 .ef-btn--band:active{background:var(--brand-300);--ef-btn-fill:var(--brand-300)}
-/* The arrow nudges toward the end of the line on hover and keyboard focus, by the shift token: only with a fine pointer and only
-   when motion is welcome. The transition is declared inside that query, so reduced motion has none and nothing travels. */
-@media (hover:hover){@media (prefers-reduced-motion:no-preference){.ef-btn--bubble:is(:hover,:focus-visible) .ef-btn__bubble [data-slot="icon"]{translate:var(--shift-sm) 0}.ef-btn--bubble:is(:hover,:focus-visible) .ef-btn__bubble:dir(rtl) [data-slot="icon"]{translate:calc(-1 * var(--shift-sm)) 0}.ef-btn__bubble [data-slot="icon"]{transition:translate var(--dur-base) var(--ease-enter)}}}
+/* The arrow moves on hover and keyboard focus, only with a fine pointer and only when motion is welcome: the diagonal arrow
+   (arrow-up-right, marked data-turn) turns 45 degrees to point along the line, any other arrow nudges toward the end of the
+   line by the shift token. Both transitions use the duration and curve tokens and are declared inside the query, so reduced
+   motion has none and nothing moves (the shift token is 0 there as well). In right-to-left the glyph is mirrored, so it turns
+   and nudges the other way. */
+@media (hover:hover){@media (prefers-reduced-motion:no-preference){.ef-btn--bubble:is(:hover,:focus-visible) .ef-btn__bubble:not([data-turn]) [data-slot="icon"]{translate:var(--shift-sm) 0}.ef-btn--bubble:is(:hover,:focus-visible) .ef-btn__bubble:not([data-turn]):dir(rtl) [data-slot="icon"]{translate:calc(-1 * var(--shift-sm)) 0}.ef-btn--bubble:is(:hover,:focus-visible) .ef-btn__bubble[data-turn] [data-slot="icon"]{rotate:45deg}.ef-btn--bubble:is(:hover,:focus-visible) .ef-btn__bubble[data-turn]:dir(rtl) [data-slot="icon"]{rotate:-45deg}.ef-btn__bubble [data-slot="icon"]{transition:translate var(--dur-base) var(--ease-enter),rotate var(--dur-base) var(--ease-enter)}}}
 /* Touch: fixed-size targets grow to --tap-min; small glyph buttons keep their look and get a centred --tap-min hit area instead. */
 @media (pointer:coarse){.ef-btn--xs{height:var(--tap-min)}.ef-btn--icon-xs{width:var(--tap-min);height:var(--tap-min)}}
 .ef-btn--full{width:100%}
@@ -93,7 +96,7 @@ export const Button = React.forwardRef(function Button({ variant = 'default', si
       {loading && !bubble ? <span className="ef-btn__spin" aria-hidden="true"><Icon name="loader-circle" size={isz} /></span> : iconLeft ? <Icon name={iconLeft} size={isz} /> : null}
       {children}
       {trailing ? <Icon name={trailing} size={isz} /> : null}
-      {bubble ? <span className="ef-btn__bubble" aria-hidden="true">{loading ? <span className="ef-btn__spin"><Icon name="loader-circle" size={bubbleIcon} /></span> : <Icon name={iconBubble} size={bubbleIcon} />}</span> : null}
+      {bubble ? <span className="ef-btn__bubble" data-turn={iconBubble === 'arrow-up-right' ? '' : undefined} aria-hidden="true">{loading ? <span className="ef-btn__spin"><Icon name="loader-circle" size={bubbleIcon} /></span> : <Icon name={iconBubble} size={bubbleIcon} />}</span> : null}
     </button>
   );
 });
