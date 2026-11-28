@@ -21,7 +21,7 @@ const page0 = (theme, dir) => `<!doctype html><html data-theme="${theme}" dir="$
 <script src="/node_modules/react-dom/umd/react-dom.development.js"></script>
 <script src="/_ds_bundle.js"></script></head><body style="margin:0;padding:24px;background:var(--surface-page)"><div id="host"></div></body></html>`;
 
-// Each menu: how to render it with a checkbox item (checked), a radio group (one selected), a plain item and a disabled-free list.
+// Each menu: how to render it with a plain item, a checkbox item (checked), a radio group (one selected) and a submenu.
 // `open` opens it from the keyboard from the trigger; `pointerOpen` opens it with the pointer.
 const MENUS = {
   context: {
@@ -40,6 +40,30 @@ const MENUS = {
           h(C.ContextMenuSubContent, null, h(C.ContextMenuItem, null, 'Save as'))))),
     keyOpen: async (page) => { await page.focus('#trigger'); await page.keyboard.press('ContextMenu'); },
     pointerOpen: async (page) => { await page.click('#trigger', { button: 'right' }); },
+  },
+  menubar: {
+    trigger: '#trigger', itemClass: 'ef-dropdown-menu__item', indicator: '.ef-dropdown-menu__indicator', panel: '.ef-dropdown-menu__content',
+    // The second menu, reached with the arrow key that points at it from the open first menu.
+    sibling: { trigger: '#trigger2', first: 'Undo' },
+    render: ({ h, C }) => h(C.Menubar, null,
+      h(C.MenubarMenu, null,
+        h(C.MenubarTrigger, { id: 'trigger' }, 'File'),
+        h(C.MenubarContent, null,
+          h(C.MenubarItem, null, 'Back'),
+          h(C.MenubarCheckboxItem, { defaultChecked: true }, 'Show bookmarks'),
+          h(C.MenubarSeparator),
+          h(C.MenubarRadioGroup, { defaultValue: 'light' },
+            h(C.MenubarRadioItem, { value: 'light' }, 'Light'),
+            h(C.MenubarRadioItem, { value: 'dark' }, 'Dark')),
+          h(C.MenubarSub, null,
+            h(C.MenubarSubTrigger, null, 'More'),
+            h(C.MenubarSubContent, null, h(C.MenubarItem, null, 'Save as'))))),
+      h(C.MenubarMenu, null,
+        h(C.MenubarTrigger, { id: 'trigger2' }, 'Edit'),
+        h(C.MenubarContent, null, h(C.MenubarItem, null, 'Undo')))),
+    // ArrowDown from the focused trigger opens the menu; the pointer opens it with a click.
+    keyOpen: async (page) => { await page.focus('#trigger'); await page.keyboard.press('ArrowDown'); },
+    pointerOpen: async (page) => { await page.click('#trigger'); },
   },
 };
 const only = process.env.MENU;
@@ -145,6 +169,17 @@ try {
         await page.waitForFunction(() => document.activeElement && document.activeElement.getAttribute('role') === 'menuitem', null, { timeout: 2000 }).catch(() => {});
         assert.equal((await active())?.role, 'menuitem', `${where}: focus moves into a menu opened with the pointer`);
         ok();
+
+        // 6. A menubar: the arrow key toward the next menu opens it with focus on its first item; Escape returns focus to that trigger.
+        if (menu.sibling) {
+          await page.keyboard.press(dir === 'rtl' ? 'ArrowLeft' : 'ArrowRight');
+          await page.waitForFunction((t) => (document.activeElement.textContent || '').trim() === t, menu.sibling.first, { timeout: 2000 }).catch(() => {});
+          assert.equal((await active())?.text, menu.sibling.first, `${where}: the arrow key toward the next menu opens it and focus moves to its first item`);
+          await page.keyboard.press('Escape');
+          await page.waitForSelector(menu.panel, { state: 'detached' });
+          assert.equal((await active())?.id, menu.sibling.trigger.slice(1), `${where}: Escape closes the second menu and returns focus to its trigger`);
+          ok(2);
+        }
 
         assert.deepEqual(problems, [], `${where}: no page errors`);
         await ctx.close();
