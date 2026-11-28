@@ -1,6 +1,6 @@
 import { readFileSync } from 'node:fs'
 import { describe, expect, it } from 'vitest'
-import { componentFiles, rulesOf } from './helpers/component-css.mjs'
+import { componentFiles, keyframesOf, rulesOf } from './helpers/component-css.mjs'
 
 // MD122 and MD127: the reduced-motion guard (tokens/base.css).
 //   Loops that signal LOADING keep running, at their own duration and curve: a spinner that freezes reads as a
@@ -97,6 +97,31 @@ describe('the guard stills every element that is not a loading loop', () => {
       }
     }
   })
+})
+
+describe('a pulse never dips below the contrast floor', () => {
+  // The pulses keep running under reduce, so axe or a reader can land on the dimmest frame. Measured from the tokens
+  // (light and dark, every surface): --text-muted needs opacity .91 for 4.5:1, the strictest case. See tokens/base.css.
+  const PULSES = ['ef-loader-pulse', 'ef-genimg-status-pulse', 'ef-task-pulse', 'ef-reasoning-pulse', 'ef-toolcall-pulse']
+  it('--ef-pulse-floor is one value, at or above the strictest measured floor', () => {
+    const floor = /--ef-pulse-floor:\s*(\.\d+|0\.\d+)/.exec(base)
+    expect(floor, 'the --ef-pulse-floor declaration').not.toBeNull()
+    expect(Number(floor[1])).toBeGreaterThanOrEqual(0.91)
+    expect(base.match(/--ef-pulse-floor:/g)).toHaveLength(1)
+  })
+  for (const name of PULSES) {
+    it(`${name} dips only to the floor`, () => {
+      const body = []
+      for (const file of componentFiles()) {
+        const text = readFileSync(file, 'utf8')
+        for (const k of keyframesOf(text, file)) if (k.name === name) body.push(k.body)
+      }
+      expect(body, `@keyframes ${name}`).toHaveLength(1)
+      const opacities = [...body[0].matchAll(/opacity:\s*([^;}]+)/g)].map((m) => m[1].trim())
+      expect(opacities.length).toBeGreaterThan(0)
+      for (const o of opacities) expect(['1', 'var(--ef-pulse-floor)']).toContain(o)
+    })
+  }
 })
 
 describe('movement is off and opacity stays', () => {

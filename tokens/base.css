@@ -14,6 +14,13 @@
    increased-contrast tables follow it. It sits on :root and on every [data-theme] element: a themed subtree
    resolves its own --accent-edge, not the root's. A product deletes its own --accent-word remap. */
 :root,[data-theme]{--accent-word:var(--accent-edge)}
+/* The dimmest opacity of a loading pulse (Loader pulse, GeneratedImage status, Task, Reasoning, ToolCall). A pulse keeps
+   running under reduce (MD122), so axe or a reader can land on its dimmest frame: the text must pass there too.
+   Measured from the tokens in light and dark, on every surface (page, card, subtle, sunken, elevated): the lowest opacity
+   at which --text-muted still has 4.5:1 is .91 in light and .87 in dark (the Loader on --surface-sunken is the
+   strictest); --text-secondary .82, --text-primary .61, the GeneratedImage status on its media backdrop .62, and the
+   Reasoning glyph (a mark, 3:1) .71. One value for all, above the strictest. */
+:root{--ef-pulse-floor:.92}
 /* One turn of every rotating spinner (Spinner, the Button spinner, the glyph spinners of AgentRun, Sandbox, Todo and
    ToolCall), always with linear (MD129; owner decision 2026-11-28: 1.4 s was too slow for a loading indicator). It waits
    for a design-tokens row DT --dur-spin and then moves there: effects.css is vendored, so it is defined here until then. */
