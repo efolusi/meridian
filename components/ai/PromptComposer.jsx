@@ -12,7 +12,7 @@ const CSS = `
 .ef-composer__bar{display:flex;align-items:center;gap:var(--space-0-5);padding:var(--space-2) var(--space-2) var(--space-2)}
 .ef-composer__send{display:inline-flex;align-items:center;justify-content:center;width:32px;height:32px;margin-inline-start:auto;border:none;border-radius:var(--radius-md);background:var(--accent);box-shadow:inset 0 0 0 1px var(--accent-edge);color:var(--accent-contrast);cursor:pointer;transition:background var(--dur-fast) var(--ease-enter),transform var(--dur-fast) var(--ease-enter)}
 .ef-composer__send:hover:not(:disabled){background:var(--accent-hover)}
-.ef-composer__send:active:not(:disabled){transform:scale(.95)}
+.ef-composer__send:active:not(:disabled){transform:scale(var(--motion-press))}
 .ef-composer__send:disabled{background:var(--sand-200);color:var(--sand-400);cursor:not-allowed}
 .ef-composer__send:focus-visible{outline:none;box-shadow:var(--focus-ring)}
 .ef-composer__hint{font-size:var(--text-xs);color:var(--text-muted);padding:0 var(--space-1)}
