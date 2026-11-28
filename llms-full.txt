@@ -3147,7 +3147,7 @@ The action button: primary for the one main action per view, secondary/ghost for
 <Button variant="ghost">Cancel</Button>
 ```
 
-Variants: `primary` (espresso ink), `secondary` (white + border), `ghost`, `danger`, `brand` (cocoa, for marketing/brand moments only), `band` (for a button on a `Section tone="band"`, see below). Sizes `sm|md|lg` (28/36/44px), and `xl` (52px) for the hero call to action on a marketing page. `loading` swaps in a spinner; labels are verbs in sentence case ("Save changes", never "Submit").
+Variants: `primary` (espresso ink), `secondary` (transparent, edged with `--border-control`, the form-control edge: 3:1 against every surface in light and dark, WCAG 1.4.11), `ghost`, `danger`, `brand` (cocoa, for marketing/brand moments only), `band` (for a button on a `Section tone="band"`, see below). Sizes `sm|md|lg` (28/36/44px), and `xl` (52px) for the hero call to action on a marketing page. `loading` swaps in a spinner; labels are verbs in sentence case ("Save changes", never "Submit").
 
 To make every pressable thing on the page a pill, set `data-shape="pill"` once on `<html>` or `<body>` instead of passing `shape` to each Button: the corners change for Button, IconButton, Tag and Badge, and for the text fields, with no change to padding. Without the attribute nothing changes. See `guidelines/theming.md`, section Shape.
 
@@ -4037,6 +4037,8 @@ Group: marketing · Source: /components/marketing/Hero.jsx · Exports: Hero, Her
 
 Use `Hero` once, at the top of a marketing page: the `title`, a short `sub`, the `actions` (pill buttons, the main one `size="xl"`) and an optional `proof` line. It is centred by default; use `align="start"` beside an image. Link `landing.css` so the top and bottom spacing steps down on small screens.
 
+`actions` stack below 640px, and a stacked pair has one width, the widest button's: pass the buttons as they are and delete your own pair CSS (`width`, `min-width`, `flex: 1` or `align-self` on the hero buttons). At 640px and above they sit in one row that wraps.
+
 Wrap one word of the title in `HeroAccent` for the hand-drawn underline. It draws once and stays still with reduced motion. Pass every word from your own dictionary, in Indonesian and English.
 
 ```jsx
@@ -4053,7 +4055,7 @@ export interface HeroProps extends Omit<React.HTMLAttributes<HTMLElement>, 'titl
   title: React.ReactNode;
   /** One or two sentences under the title. */
   sub?: React.ReactNode;
-  /** Calls to action, usually `Button shape="pill"`. */
+  /** Calls to action, usually `Button shape="pill"`. Below 640px they stack in one column as wide as the widest button. */
   actions?: React.ReactNode;
   /** A short proof line under the actions, such as a status dot and a fact. */
   proof?: React.ReactNode;
@@ -4081,7 +4083,7 @@ Put it in the `actions` of `SiteHeader` beside `ThemeToggle`, or in the language
 
 Give every language its own `href` (the product knows the other URL; Meridian fetches and stores nothing). Each link carries `hreflang` and `lang` with the language's code, and an accessible name that spells the language in itself and ends with the visible code: `Bahasa Indonesia (ID)`, `English (EN)`, so a voice user can say "click ID". The language in use is marked `aria-current="true"` and is not a link: a link to the page you are on does nothing. Pass `name` for any code other than `en` and `id`.
 
-Each target is 44px at a coarse pointer. At a fine pointer `size="md"` (default) is 44px as the `ThemeToggle`, and `size="sm"` is 28px (24px in compact density), never less than 24px. The focus ring comes from the library, and the only motion is the colour transition.
+Each target is 44px at a coarse pointer. At a fine pointer `size="md"` (default) is 36px (30px in compact density), as the `ThemeToggle` and the header menu button, and `size="sm"` is 28px (24px in compact density), never less than 24px. The focus ring comes from the library, and the only motion is the colour transition.
 
 ```jsx
 <LanguageSwitch
@@ -4114,7 +4116,7 @@ export interface LanguageSwitchProps extends React.HTMLAttributes<HTMLElement> {
   languages: LanguageSwitchLanguage[];
   /** The `code` of the language the page is in. It is shown as the current item (`aria-current="true"`), not as a link. */
   current: string;
-  /** `md` is a 44px target at every pointer, as the ThemeToggle. `sm` is 28px at a fine pointer (24px in compact density) and 44px at a coarse pointer. @default 'md' */
+  /** `md` is 36px at a fine pointer (30px in compact density) and 44px at a coarse pointer, as the ThemeToggle. `sm` is 28px at a fine pointer (24px in compact density) and 44px at a coarse pointer. @default 'md' */
   size?: 'sm' | 'md';
   /** Language of the built-in nav name. @default 'en' */
   lang?: 'en' | 'id';
@@ -4382,7 +4384,7 @@ Group: marketing · Source: /components/marketing/ThemeToggle.jsx · Exports: Th
 
 # ThemeToggle
 
-One theme control for every Efolusi site, following the [theme contract](../../guidelines/theming.md#theme-contract). `ThemeToggle` is a single 44px button that shows the theme in use and flips to the other, Light or Dark; there is no system option. With no stored choice it follows the device live and stores nothing. It keeps `data-theme` on `<html>` at `light` or `dark`; Light never removes the attribute, so test `getAttribute('data-theme') === 'dark'`, not `hasAttribute`. The person's choice is saved in localStorage `efolusi-theme` when they switch; the `efolusi_theme` cookie on `.efolusi.com` carries it, so a first visit to another Efolusi site starts in the same theme. A `system` value stored by an earlier release is read as no choice and removed.
+One theme control for every Efolusi site, following the [theme contract](../../guidelines/theming.md#theme-contract). `ThemeToggle` is a single button, 36px at a fine pointer (30px in compact density) and 44px at a coarse pointer, that shows the theme in use and flips to the other, Light or Dark; there is no system option. With no stored choice it follows the device live and stores nothing. It keeps `data-theme` on `<html>` at `light` or `dark`; Light never removes the attribute, so test `getAttribute('data-theme') === 'dark'`, not `hasAttribute`. The person's choice is saved in localStorage `efolusi-theme` when they switch; the `efolusi_theme` cookie on `.efolusi.com` carries it, so a first visit to another Efolusi site starts in the same theme. A `system` value stored by an earlier release is read as no choice and removed.
 
 Put the output of `themeInitScript()` (import it from `@efolusi/meridian/theme` in a server layout) in an inline `<script>` in `<head>`, before the page paints. Without it, a dark-mode visitor sees a light flash. Set `lang="id"` for the Indonesian labels; the label names the action, such as "Switch to dark theme".
 

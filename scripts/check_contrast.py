@@ -149,7 +149,7 @@ PAIRS = [
     ("--text-on-media-muted", ["--media-backdrop"], 4.5, "GeneratedImage status line"),
     # WCAG 1.4.11 — a form control's edge is its only boundary, so it needs 3:1
     # on every surface a field can sit on.
-    ("--border-control", SURFACES, 3.0, "form-control edge"),
+    ("--border-control", SURFACES, 3.0, "form-control edge and the secondary Button edge"),
     ("--border-control-hover", SURFACES, 3.0, "form-control edge on hover"),
     # BarChart base bars paint --border-control (MD74 review): data marks need 3:1 against the page and the card too.
     ("--border-control", ["--surface-page", "--surface-card"], 3.0, "BarChart base bars"),

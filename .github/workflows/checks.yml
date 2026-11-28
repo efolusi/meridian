@@ -81,6 +81,14 @@ jobs:
         run: '"$RUNNER_TEMP/pw-node" scripts/check_reduced_motion.mjs'
       - name: Menus take focus, answer the keyboard and keep text clear of the mark
         run: '"$RUNNER_TEMP/pw-node" scripts/check_menu_focus.mjs'
+      - name: A stacked hero pair of buttons has one width
+        run: '"$RUNNER_TEMP/pw-node" scripts/check_hero_pair.mjs'
+      - name: The shared 404 page follows the stored theme and centres its languages
+        run: '"$RUNNER_TEMP/pw-node" scripts/check_not_found.mjs'
+      - name: LanguageSwitch renders the sizes its types and docs say
+        run: '"$RUNNER_TEMP/pw-node" scripts/check_language_switch_size.mjs'
+      - name: The secondary Button edge is 3:1 against its surface, light and dark
+        run: '"$RUNNER_TEMP/pw-node" scripts/check_button_secondary_edge.mjs'
       - name: Button renders a link with the button's look and link semantics
         run: '"$RUNNER_TEMP/pw-node" scripts/check_button_link.mjs'
       - name: Upload button interaction receipts

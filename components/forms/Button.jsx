@@ -33,7 +33,7 @@ const CSS = `
 .ef-btn--primary{background:var(--accent);border-color:var(--accent-edge);color:var(--accent-contrast);--ef-btn-ink:var(--accent-contrast);--ef-btn-fill:var(--accent)}
 @media (hover:hover){.ef-btn--primary:hover{background:var(--accent-hover);--ef-btn-fill:var(--accent-hover)}}
 .ef-btn--primary:active{background:var(--accent-active);--ef-btn-fill:var(--accent-active)}
-.ef-btn--secondary{background:transparent;color:var(--text-primary);border-color:var(--border-strong);--ef-btn-ink:var(--text-primary);--ef-btn-fill:var(--surface-page)}
+.ef-btn--secondary{background:transparent;color:var(--text-primary);border-color:var(--border-control);--ef-btn-ink:var(--text-primary);--ef-btn-fill:var(--surface-page)}
 @media (hover:hover){.ef-btn--secondary:hover{background:var(--surface-sunken)}}
 .ef-btn--ghost{background:transparent;color:var(--text-secondary)}
 @media (hover:hover){.ef-btn--ghost:hover{background:var(--surface-sunken);color:var(--text-primary)}}
