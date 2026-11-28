@@ -68,7 +68,7 @@ const CSS = `
 .ef-btn--band:active{background:var(--brand-300);--ef-btn-fill:var(--brand-300)}
 /* The arrow nudges toward the end of the line on hover and keyboard focus, by the shift token: only with a fine pointer and only
    when motion is welcome. The transition is declared inside that query, so reduced motion has none and nothing travels. */
-@media (hover:hover) and (prefers-reduced-motion:no-preference){.ef-btn--bubble:is(:hover,:focus-visible) .ef-btn__bubble [data-slot="icon"]{translate:var(--shift-sm) 0}.ef-btn--bubble:is(:hover,:focus-visible) .ef-btn__bubble:dir(rtl) [data-slot="icon"]{translate:calc(-1 * var(--shift-sm)) 0}.ef-btn__bubble [data-slot="icon"]{transition:translate var(--dur-base) var(--ease-enter)}}
+@media (hover:hover){@media (prefers-reduced-motion:no-preference){.ef-btn--bubble:is(:hover,:focus-visible) .ef-btn__bubble [data-slot="icon"]{translate:var(--shift-sm) 0}.ef-btn--bubble:is(:hover,:focus-visible) .ef-btn__bubble:dir(rtl) [data-slot="icon"]{translate:calc(-1 * var(--shift-sm)) 0}.ef-btn__bubble [data-slot="icon"]{transition:translate var(--dur-base) var(--ease-enter)}}}
 /* Touch: fixed-size targets grow to --tap-min; small glyph buttons keep their look and get a centred --tap-min hit area instead. */
 @media (pointer:coarse){.ef-btn--xs{height:var(--tap-min)}.ef-btn--icon-xs{width:var(--tap-min);height:var(--tap-min)}}
 .ef-btn--full{width:100%}

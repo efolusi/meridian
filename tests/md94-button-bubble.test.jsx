@@ -127,7 +127,7 @@ describe('Button bubble contrast, from the tokens', () => {
 });
 
 describe('Button arrow nudge follows the motion tokens', () => {
-  const nudge = css.slice(css.indexOf('@media (hover:hover) and (prefers-reduced-motion:no-preference){'));
+  const nudge = css.slice(css.indexOf('@media (hover:hover){@media (prefers-reduced-motion:no-preference){'));
   const block = nudge.slice(0, nudge.indexOf('\n'));
 
   it('moves only with a fine pointer and only when motion is welcome, by the shift token', () => {

@@ -64,8 +64,8 @@
     "reason": "Left in MD44 on purpose: no existing semantic token has this value, or the swap needs a visual decision (design-tokens v0.5.0 has no token for it). Moves to a token when design-tokens adds one."
   },
   "components/forms/Button.jsx": {
-    "count": 1,
-    "reason": "Left in MD44 on purpose: no existing semantic token has this value, or the swap needs a visual decision (design-tokens v0.5.0 has no token for it). Moves to a token when design-tokens adds one."
+    "count": 10,
+    "reason": "The danger hover (--danger-700), left in MD44 on purpose, and the band variant (MD94): a cream fill with dark ink that stays the same in light and dark, so it reads a fixed ramp stop (--cream-50, --brand-200, --brand-300, --brand-950) and no semantic token has that pair. Moves to a token when design-tokens adds one for a button on a band."
   },
   "components/forms/ButtonTile.jsx": {
     "count": 1,
