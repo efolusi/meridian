@@ -3,7 +3,7 @@ import React from 'react';
 import { injectEfCss } from '../runtime/runtime.jsx';
 
 // --hero-top and --hero-bottom come from landing.css, which steps them down on smaller screens.
-// Below 640px the actions stack in one grid column as wide as the widest button, so a stacked pair has one width (MD147).
+// At 640px and below the actions stack in one grid column as wide as the widest button, so a stacked pair has one width (MD147).
 const CSS = `
 .ef-hero{padding-block:var(--hero-top,var(--space-16)) var(--hero-bottom,var(--space-16));color:var(--text-primary)}
 .ef-hero__inner{display:flex;flex-direction:column;gap:var(--space-5);width:100%;max-width:var(--container-max);margin-inline:auto;padding-inline:var(--space-6)}

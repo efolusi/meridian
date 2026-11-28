@@ -15,9 +15,9 @@ export interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElemen
   fullWidth?: boolean;
   /** Shows a spinner and disables the button. On a link (`href` or `asChild`) it sets `aria-busy` and `aria-disabled`, takes the link out of the tab order and swallows the click. */
   loading?: boolean;
-  /** Renders an `<a>` with the same classes, bubble, spinner, focus ring and states as the button. A link has no `disabled` attribute: `disabled` and `loading` set `aria-disabled="true"` and `tabindex="-1"` and block the click and the Enter key. Space does not activate it (link semantics). `target`, `rel`, `download` and `hrefLang` pass through. */
+  /** Renders an `<a>` with the same classes, bubble, spinner, focus ring and states as the button. A link has no `disabled` attribute: `disabled` and `loading` set `aria-disabled="true"` and `tabindex="-1"` and block the click and the Enter key; the blocked click also stops there (`stopPropagation`), so a parent's `onClick` does not fire. Space does not activate it (link semantics). `href` is passed to the `<a>` as given and is not sanitised. `target`, `rel`, `download`, `hrefLang` and `referrerPolicy` pass through; `target="_blank"` gets `rel="noopener"` unless you set a `rel`. */
   href?: string;
-  /** Gives the classes, state and inner markup to your own link, the single child element (a Next.js `Link` with its locale, a router `Link`), instead of rendering an element. The child keeps its `href`, props and ref; its `className`, `style` and click handlers are merged with Button's. `disabled`, `loading` and the blocked click work as on `href`. The child must be a link (an `a`), not a `button`. */
+  /** Gives the classes, state and inner markup to your own link, the single child element (a Next.js `Link` with its locale, a router `Link`), instead of rendering an element. The child keeps its `href`, props and ref. Only `className`, `style`, `onClick` and `onAuxClick` are merged with Button's; on any other prop set on both the child's value wins and Button's is dropped silently, and an `href` set on `Button` is ignored (set it on the child). `disabled`, `loading` and the blocked click work as on `href`. The child must be a link (an `a`), not a `button`. */
   asChild?: boolean;
   children?: React.ReactNode;
 }

@@ -103,8 +103,11 @@ function renderButtonInner({ size, iconLeft, iconRight, iconBubble, bubble, load
 }
 const joinClass = (...names) => names.filter(Boolean).join(' ');
 // A link has no disabled attribute. A disabled or loading link keeps its href (a router link needs one), says aria-disabled, leaves the
-// tab order and swallows the click, the middle click and the Enter key (Enter on a focused link is a click).
-const swallow = (handler, blocked) => (event) => { if (blocked) { event.preventDefault(); return; } handler?.(event); };
+// tab order and swallows the click, the middle click and the Enter key (Enter on a focused link is a click). It also stops the event, as a
+// native disabled button does, so a parent's onClick does not fire for a click on a blocked link.
+const swallow = (handler, blocked) => (event) => { if (blocked) { event.preventDefault(); event.stopPropagation(); return; } handler?.(event); };
+// A link that opens a new tab gets rel="noopener" unless the caller set a rel (an empty one counts as set).
+const defaultRel = ({ target, rel }) => (target === '_blank' && rel === undefined ? { rel: 'noopener' } : null);
 export const Button = React.forwardRef(function Button({ variant = 'default', size = 'default', shape = 'default', iconLeft, iconRight, iconBubble, fullWidth, loading, disabled, asChild = false, href, children, style, className, onClick, onAuxClick, ...rest }, ref) {
   injectEfCss('ef-css-btn', CSS);
   const bubble = Boolean(iconBubble) && bubbleFits(variant === 'default' ? 'primary' : variant, size);
@@ -118,7 +121,7 @@ export const Button = React.forwardRef(function Button({ variant = 'default', si
       // The consumer's link (a Next.js Link with its locale, a router Link) is the element; Button gives it the classes, the state and the inner markup.
       const child = React.Children.only(children);
       return React.cloneElement(child, {
-        ...rest, ...child.props, ...linkState,
+        ...rest, ...child.props, ...defaultRel({ ...rest, ...child.props }), ...linkState,
         ref: mergeRefs(ref, child.ref),
         className: joinClass(classes, child.props.className),
         style: style || child.props.style ? { ...style, ...child.props.style } : undefined,
@@ -127,7 +130,7 @@ export const Button = React.forwardRef(function Button({ variant = 'default', si
         children: inner(child.props.children),
       });
     }
-    return <a {...rest} {...linkState} ref={ref} href={href} className={classes} style={style} onClick={swallow(onClick, blocked)} onAuxClick={swallow(onAuxClick, blocked)}>{inner(children)}</a>;
+    return <a {...rest} {...defaultRel(rest)} {...linkState} ref={ref} href={href} className={classes} style={style} onClick={swallow(onClick, blocked)} onAuxClick={swallow(onAuxClick, blocked)}>{inner(children)}</a>;
   }
   return (
     <button ref={ref} className={classes} disabled={disabled || loading} aria-busy={loading || undefined} data-loading={loading ? '' : undefined} style={style} onClick={onClick} onAuxClick={onAuxClick} {...rest}>

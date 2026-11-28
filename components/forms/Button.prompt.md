@@ -38,10 +38,12 @@ A call to action that goes to another page is a link, not a button. Give `Button
 
 ```jsx
 <Button href="/start" shape="pill" size="xl" iconBubble="arrow-up-right">Start free</Button>
-<Button href="/docs" variant="secondary" target="_blank" rel="noopener">Read the docs</Button>
+<Button href="/docs" variant="secondary" target="_blank">Read the docs</Button>
 ```
 
-With a router, use `asChild` and pass your own link as the single child: a Next.js `Link` keeps its locale and prefetch, and Button gives it the classes, the state and the inner markup. The child's `href`, props, ref, `className`, `style` and click handlers stay and are merged with Button's:
+`href` is passed to the `<a>` as given, as on any anchor: Button does not sanitise it, so never build it from user input without checking the scheme. `target`, `rel`, `download`, `hrefLang` and `referrerPolicy` pass through, and `target="_blank"` gets `rel="noopener"` unless you set a `rel` yourself.
+
+With a router, use `asChild` and pass your own link as the single child: a Next.js `Link` keeps its locale and prefetch, and Button gives it the classes, the state and the inner markup. The child's `href`, props and ref stay. Only `className`, `style`, `onClick` and `onAuxClick` are merged with Button's; on any other prop set on both (`onKeyDown`, `onFocus`, `aria-*`, `target`), the child's value wins and Button's is dropped without a warning. An `href` set on `Button` itself is ignored with `asChild`: set it on the child. Props set only on `Button` (`data-*`, `aria-*`, `target`) are passed to the child:
 
 ```jsx
 <Button asChild shape="pill" size="xl" iconBubble="arrow-up-right">
@@ -49,7 +51,7 @@ With a router, use `asChild` and pass your own link as the single child: a Next.
 </Button>
 ```
 
-A link is not a button, and the difference is kept: Enter follows it, Space does not (Space scrolls the page, as on every link), and Cmd, Ctrl or middle click opens it in a new tab. A link has no `disabled` attribute, so `disabled` and `loading` set `aria-disabled="true"` and `tabindex="-1"`, keep the `href`, and swallow the click, the middle click and Enter. `loading` also sets `aria-busy` and draws the spinner (in the bubble when there is one, so the label does not move). Use `Button` with `onClick` for an action and `Button` with `href` for a destination; never an `href="#"`.
+A link is not a button, and the difference is kept: Enter follows it, Space does not (Space scrolls the page, as on every link), and Cmd, Ctrl or middle click opens it in a new tab. A link has no `disabled` attribute, so `disabled` and `loading` set `aria-disabled="true"` and `tabindex="-1"`, keep the `href`, and swallow the click, the middle click and Enter. The blocked click also stops there, as on a native disabled button, so an `onClick` on a parent (a clickable card around the link) does not fire. `loading` also sets `aria-busy` and draws the spinner (in the bubble when there is one, so the label does not move). Use `Button` with `onClick` for an action and `Button` with `href` for a destination; never an `href="#"`.
 
 `buttonVariants` stays for markup that is not React (a server template, a Markdown renderer): it returns the class names only, and the bubble span is yours to write, so prefer `href` or `asChild` wherever React renders the link.
 
