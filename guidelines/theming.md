@@ -201,6 +201,7 @@ Every Efolusi site follows this one contract, through `ThemeToggle` and `themeIn
 | Before paint | `themeInitScript()` inlined in `<head>`. It paints the theme and stores nothing. |
 | Markup | `data-theme` on `<html>` is always `light` or `dark`. Light never removes the attribute, so a dark device cannot turn a Light choice dark. The media rule in `tokens/colors.css` is only the no-JS fallback. |
 | Control | One 44px button that shows the theme in use (sun for light, moon for dark) and flips to the other. Its `aria-label` names the action ("Switch to dark theme", "Ganti ke tema gelap"). With no stored choice it follows the device live and stores nothing. Labels in English and Indonesian. |
+| Swap | A swap changes every colour at once, so every transition is off for it: `swapTheme(fn)` (the toggle and `marketing.js` call it) sets `data-theme-switching` on `<html>`, runs the swap, and removes the attribute after two animation frames; the rule `[data-theme-switching] * { transition: none !important }` is in `tokens/base.css`, inside the layer, so it beats a product's own transition. A product that switches the theme itself calls `swapTheme(fn)` too. Delete any local copy of this rule. Animations and view transitions are not affected. |
 
 ## Server layouts
 
