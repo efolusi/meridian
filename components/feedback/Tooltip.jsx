@@ -1,6 +1,6 @@
 'use client';
 import React from 'react';
-import { injectEfCss, mergeRefs, styleRefUnder, useIsoLayoutEffect } from '../runtime/runtime.jsx';
+import { injectEfCss, mergeRefs, styleRefUnder, useIsoLayoutEffect, usePresence } from '../runtime/runtime.jsx';
 import { Portal, useHydrated } from '../overlay/Portal.jsx';
 
 const CSS = `
@@ -15,6 +15,9 @@ const CSS = `
 .ef-tooltip__bubble--left::after{top:var(--ef-tt-arrow,50%);left:100%;transform:translateY(-50%);border-top-color:transparent;border-left-color:var(--surface-inverse)}
 .ef-tooltip__bubble--right::after{top:var(--ef-tt-arrow,50%);left:auto;right:100%;transform:translateY(-50%);border-top-color:transparent;border-right-color:var(--surface-inverse)}
 @keyframes ef-tooltip-in{from{opacity:0;transform:scale(var(--motion-enter-scale-sm))}to{opacity:1;transform:none}}
+@keyframes ef-tooltip-out{to{opacity:0;transform:scale(var(--motion-enter-scale-sm))}}
+.ef-tooltip__bubble[data-state="closed"]{animation:ef-reduce-fade-out var(--dur-fast) var(--ease-exit) forwards;pointer-events:none}
+@media (prefers-reduced-motion:no-preference){.ef-tooltip__bubble[data-state="closed"]{animation:ef-tooltip-out var(--dur-fast) var(--ease-exit) forwards}}
 @media (prefers-reduced-motion:reduce){.ef-tooltip__bubble{--ef-motion-guard:var(--dur-fast);animation-name:ef-reduce-fade}}
 `;
 const SIDES = ['top', 'bottom', 'left', 'right'];
@@ -100,6 +103,7 @@ export const TooltipContent = React.forwardRef(function TooltipContent({ side = 
     return () => registerId(undefined);
   }, [registerId, id]);
   const bubbleRef = React.useRef(null);
+  const { present, state } = usePresence(!!ctx?.open, bubbleRef);
   const want = SIDES.includes(side) ? side : 'top';
   const [placed, setPlaced] = React.useState({ style: { position: 'fixed', top: 0, left: 0, visibility: 'hidden' }, side: want, arrow: null });
   useIsoLayoutEffect(() => {
@@ -137,10 +141,10 @@ export const TooltipContent = React.forwardRef(function TooltipContent({ side = 
     window.addEventListener('resize', move);
     return () => { window.removeEventListener('scroll', move, true); window.removeEventListener('resize', move); };
   }, [ctx?.open, ctx?.triggerRef, want, sideOffset]);
-  if (!ctx?.open) return null;
+  if (!present) return null;
   return (
     <Portal>
-      <span {...rest} ref={mergeRefs(forwardedRef, bubbleRef, styleRefUnder({ ...placed.style, '--ef-tt-arrow': placed.arrow == null ? undefined : placed.arrow + 'px' }, style))} role="tooltip" id={id || ctx.contentId} data-slot="tooltip-content" data-state="open" data-side={placed.side}
+      <span {...rest} ref={mergeRefs(forwardedRef, bubbleRef, styleRefUnder({ ...placed.style, '--ef-tt-arrow': placed.arrow == null ? undefined : placed.arrow + 'px' }, style))} role="tooltip" id={id || ctx.contentId} data-slot="tooltip-content" data-state={state} data-side={placed.side}
         className={`ef-tooltip__bubble${placed.side !== 'top' ? ' ef-tooltip__bubble--' + placed.side : ''}${className ? ' ' + className : ''}`}
         style={style}>{children}</span>
     </Portal>

@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>MD121 overlay exits</title>
+<link rel="stylesheet" href="../../styles.css">
+<style>body{margin:16px;background:var(--surface-page);font-family:var(--font-sans)}pre{white-space:pre-wrap}</style>
+<script src="../../node_modules/react/umd/react.production.min.js"></script>
+<script src="../../node_modules/react-dom/umd/react-dom.production.min.js"></script>
+<script src="../../_ds_bundle.js"></script>
+</head>
+<body>
+<!-- MD121: an overlay that closes stays mounted, data-state="closed", until its exit animation has ended. A Popover (thick
+     glass: transform only), a Dialog (a solid panel: opacity and transform, the scrim over its own, shorter exit) and a
+     Toast are opened and closed from window.__exit(kind); the result lists, right after the close, every animation
+     running under the closed node (name, duration, easing) and how long the node stayed mounted. Served by hand:
+     python3 -m http.server from the repository root, then open /tests/fixtures/md121-exit.html. -->
+<main id="root"></main>
+<pre id="out"></pre>
+<script>
+  const DS = window.EfolusiDesignSystem_4ffc3d;
+  const h = React.createElement;
+  const { Popover, PopoverTrigger, PopoverContent, Dialog, DialogContent, DialogTitle, Toaster, toast } = DS;
+  let setState;
+  function App() {
+    const [s, set] = React.useState({ popover: false, dialog: false });
+    setState = set;
+    return h(React.Fragment, null,
+      h(Popover, { open: s.popover }, h(PopoverTrigger, null, 'Popover trigger'), h(PopoverContent, null, 'Popover panel')),
+      h(Dialog, { open: s.dialog }, h(DialogContent, null, h(DialogTitle, null, 'Dialog title'))),
+      h(Toaster, { position: 'bottom-right' }));
+  }
+  ReactDOM.createRoot(document.getElementById('root')).render(h(App));
+  const wait = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
+  const frame = () => new Promise((resolve) => requestAnimationFrame(resolve));
+  const reduce = () => matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const names = (root) => root.getAnimations({ subtree: true }).map((a) => ({
+    name: a.animationName, ms: a.effect.getComputedTiming().duration,
+    easing: getComputedStyle(a.effect.target).animationTimingFunction, fill: getComputedStyle(a.effect.target).animationFillMode,
+    target: (a.effect.target.className || a.effect.target.tagName).toString().split(' ')[0],
+  }));
+  const closeOf = { popover: () => setState((s) => ({ ...s, popover: false })), dialog: () => setState((s) => ({ ...s, dialog: false })) };
+  const openOf = { popover: () => setState((s) => ({ ...s, popover: true })), dialog: () => setState((s) => ({ ...s, dialog: true })) };
+  const nodeOf = { popover: () => document.querySelector('[data-slot="popover-content"]'), dialog: () => document.querySelector('.ef-dialog__overlay'), toast: () => document.querySelector('[data-slot="toast"]') };
+  window.__exit = async (kind) => {
+    let id;
+    if (kind === 'toast') { id = toast.add({ title: 'Saved', duration: 0 }); await wait(500); } else { openOf[kind](); await wait(700); }
+    const node = nodeOf[kind]();
+    const before = node.getAttribute('data-state');
+    const t0 = performance.now();
+    if (kind === 'toast') toast.close(id); else closeOf[kind]();
+    await frame();
+    const closed = nodeOf[kind]();
+    const result = { kind, reduce: reduce(), stateBefore: before, stateAfterClose: closed && closed.getAttribute('data-state'), animations: closed ? names(closed) : [], mountedMs: null };
+    // how long the node stays in the document: the time of the removal itself, not of a frame
+    await new Promise((resolve) => {
+      if (!nodeOf[kind]()) return resolve();
+      const stop = setTimeout(resolve, 3000);
+      new MutationObserver((records, observer) => { if (!nodeOf[kind]()) { result.mountedMs = Math.round(performance.now() - t0); observer.disconnect(); clearTimeout(stop); resolve(); } }).observe(document.body, { childList: true, subtree: true });
+    });
+    result.gone = !nodeOf[kind]();
+    window.__EXIT__ = window.__EXIT__ || {};
+    window.__EXIT__[kind] = result;
+    document.getElementById('out').textContent = JSON.stringify(window.__EXIT__, null, 2);
+    return result;
+  };
+</script>
+</body>
+</html>

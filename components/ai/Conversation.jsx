@@ -1,6 +1,6 @@
 'use client';
 import React from 'react';
-import { injectEfCss, prefersReducedMotion, mergeRefs, styleRef } from '../runtime/runtime.jsx';
+import { injectEfCss, prefersReducedMotion, mergeRefs, styleRef, usePresence } from '../runtime/runtime.jsx';
 import { Icon } from '../icons/Icon.jsx';
 const CSS = `
 .ef-conversation{position:relative;overflow:hidden;display:flex;flex-direction:column}
@@ -11,6 +11,9 @@ const CSS = `
 @media (hover:hover){.ef-conversation__jump:hover{color:var(--text-primary)}}
 .ef-conversation__jump:focus-visible{outline:none;box-shadow:var(--focus-ring)}
 @keyframes ef-conversation-in{from{opacity:0;transform:translateX(-50%) translateY(4px)}}
+@keyframes ef-conversation-out{to{opacity:0;transform:translateX(-50%) translateY(4px)}}
+.ef-conversation__jump[data-state="closed"]{animation:ef-reduce-fade-out var(--dur-fast) var(--ease-exit) forwards;pointer-events:none}
+@media (prefers-reduced-motion:no-preference){.ef-conversation__jump[data-state="closed"]{animation:ef-conversation-out var(--dur-fast) var(--ease-exit) forwards}}
 @media (pointer:coarse){.ef-conversation__jump{min-height:var(--tap-min)}}
 @media (prefers-reduced-motion:reduce){.ef-conversation__jump{--ef-motion-guard:var(--dur-fast);animation-name:ef-reduce-fade}}
 `;
@@ -43,13 +46,15 @@ export const Conversation = React.forwardRef(function Conversation({ height = 42
     ro.observe(inner.current);
     return () => ro.disconnect();
   }, [autoStick]);
+  const jumpRef = React.useRef(null);
+  const { present: jumpPresent, state: jumpState } = usePresence(!atBottom, jumpRef);
   return (
     <div ref={mergeRefs(ref, styleRef({ height }))} {...rest} className={`ef-conversation${className ? ' ' + className : ''}`} style={style}>
       <div ref={mergeRefs(viewport, styleRef({ padding }))} className="ef-conversation__viewport" role={ariaLabel || labelledBy ? 'region' : 'group'} aria-label={labelledBy ? undefined : (ariaLabel || label)} aria-labelledby={labelledBy} tabIndex={0} onScroll={recompute}>
         <div ref={inner} className="ef-conversation__inner">{children}</div>
       </div>
-      {!atBottom ? (
-        <button type="button" className="ef-conversation__jump" onClick={() => toBottom()}>
+      {jumpPresent ? (
+        <button type="button" ref={jumpRef} data-state={jumpState} className="ef-conversation__jump" onClick={() => toBottom()}>
           <Icon name="chevron-down" size={12} />
           {jumpLabel}
         </button>

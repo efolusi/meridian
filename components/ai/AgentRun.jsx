@@ -11,7 +11,7 @@ const CSS = `
 .ef-agentrun__step--active .ef-agentrun__dot{border-color:var(--accent-edge);color:var(--accent-edge)}
 .ef-agentrun__step--error .ef-agentrun__dot{background:var(--status-danger-bg);border-color:var(--status-danger-solid);color:var(--status-danger-text)}
 .ef-agentrun__pip{display:inline-block;width:5px;height:5px;border-radius:var(--radius-full);background:currentColor}
-.ef-agentrun__spin{display:inline-flex;animation:ef-agentrun-spin .9s linear infinite}
+.ef-agentrun__spin{display:inline-flex;animation:ef-agentrun-spin var(--dur-spin) linear infinite}
 @keyframes ef-agentrun-spin{to{transform:rotate(360deg)}}
 .ef-agentrun__line{width:1px;flex:1;background:var(--border-default);margin:var(--space-1) 0}
 .ef-agentrun__step--done .ef-agentrun__line{background:var(--accent-subtle-border)}

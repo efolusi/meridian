@@ -1,6 +1,6 @@
 'use client';
 import React from 'react';
-import { injectEfCss, mergeRefs, styleRef } from '../runtime/runtime.jsx';
+import { injectEfCss, mergeRefs, styleRef, usePresence } from '../runtime/runtime.jsx';
 import { Portal, useAnchoredStyle } from '../overlay/Portal.jsx';
 import { Icon } from '../icons/Icon.jsx';
 const CSS = `
@@ -13,6 +13,9 @@ const CSS = `
 .ef-modelsel__panel{position:absolute;bottom:calc(100% + 6px);inset-inline-start:0;min-width:260px;background:var(--surface-card);border:1px solid var(--border-strong);border-radius:var(--radius-md);box-shadow:var(--shadow-md);padding:var(--space-1);z-index:var(--z-popover);animation:ef-modelsel-in var(--dur-fast) var(--ease-enter)}
 .ef-modelsel--down .ef-modelsel__panel{bottom:auto;top:calc(100% + 6px)}
 @keyframes ef-modelsel-in{from{opacity:0;transform:translateY(3px)}}
+@keyframes ef-modelsel-out{to{opacity:0;transform:translateY(3px)}}
+.ef-modelsel__panel[data-state="closed"]{animation:ef-reduce-fade-out var(--dur-fast) var(--ease-exit) forwards;pointer-events:none}
+@media (prefers-reduced-motion:no-preference){.ef-modelsel__panel[data-state="closed"]{animation:ef-modelsel-out var(--dur-fast) var(--ease-exit) forwards}}
 .ef-modelsel__item{display:flex;align-items:center;gap:var(--space-3);width:100%;padding:var(--space-2) var(--space-3);border:none;border-radius:var(--radius-sm);background:none;cursor:pointer;text-align:start;font-family:var(--font-sans);transition:background var(--dur-fast) var(--ease-enter)}
 @media (hover:hover){.ef-modelsel__item:hover{background:var(--surface-sunken)}}
 .ef-modelsel__item:focus-visible{outline:none;box-shadow:var(--focus-ring)}
@@ -31,7 +34,8 @@ export function ModelSelector({ models = [], value, onChange, side = 'top', styl
   const [open, setOpen] = React.useState(false);
   const ref = React.useRef(null);
   const panelRef = React.useRef(null);
-  const { style: anchored } = useAnchoredStyle(ref, panelRef, { open, placement: dir, align: 'start' });
+  const { present, state } = usePresence(open, panelRef);
+  const { style: anchored } = useAnchoredStyle(ref, panelRef, { open: present, placement: dir, align: 'start' });
   React.useEffect(() => {
     if (!open) return;
     const away = e => { if (ref.current && !ref.current.contains(e.target)) setOpen(false); };
@@ -49,8 +53,8 @@ export function ModelSelector({ models = [], value, onChange, side = 'top', styl
         {cur.provider ? <span className="ef-modelsel__provider">{cur.provider}</span> : null}
         <span className="ef-modelsel__chev"><Icon name={dir === 'bottom' ? 'chevron-down' : 'chevron-up'} size={12} /></span>
       </button>
-      {open ? (
-        <Portal><div role="listbox" ref={mergeRefs(panelRef, styleRef(anchored))} className="ef-modelsel__panel">
+      {present ? (
+        <Portal><div role="listbox" data-state={state} ref={mergeRefs(panelRef, styleRef(anchored))} className="ef-modelsel__panel">
           {models.map(m => (
             <button key={m.id} type="button" role="option" aria-selected={m.id === cur.id} className="ef-modelsel__item"
               onClick={() => { setOpen(false); if (onChange) onChange(m.id); }}>

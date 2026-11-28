@@ -77,7 +77,7 @@ jobs:
         run: BUTTON_SHOTS="$RUNNER_TEMP/button-shots" "$RUNNER_TEMP/pw-node" scripts/check_button_cascade.mjs
       - name: Label and icon gap measured in the rendered controls
         run: '"$RUNNER_TEMP/pw-node" scripts/check_label_icon_gap.mjs'
-      - name: Reduced motion keeps the token fade and stops loops
+      - name: Reduced motion keeps the token fade and the loading loops, and stops the other loops
         run: '"$RUNNER_TEMP/pw-node" scripts/check_reduced_motion.mjs'
       - name: Upload button interaction receipts
         if: always()

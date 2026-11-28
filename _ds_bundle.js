@@ -1,4 +1,4 @@
-/* @ds-bundle: {"format":4,"namespace":"EfolusiDesignSystem_4ffc3d","components":[{"name":"AgentRun","sourcePath":"components/ai/AgentRun.jsx"},{"name":"BubbleGroup","sourcePath":"components/ai/Bubble.jsx"},{"name":"Bubble","sourcePath":"components/ai/Bubble.jsx"},{"name":"BubbleContent","sourcePath":"components/ai/Bubble.jsx"},{"name":"BubbleReactions","sourcePath":"components/ai/Bubble.jsx"},{"name":"ChatMessage","sourcePath":"components/ai/ChatMessage.jsx"},{"name":"Citation","sourcePath":"components/ai/Citation.jsx"},{"name":"SourceList","sourcePath":"components/ai/Citation.jsx"},{"name":"Confirmation","sourcePath":"components/ai/Confirmation.jsx"},{"name":"Conversation","sourcePath":"components/ai/Conversation.jsx"},{"name":"DocumentCard","sourcePath":"components/ai/DocumentCard.jsx"},{"name":"FeedbackBar","sourcePath":"components/ai/FeedbackBar.jsx"},{"name":"GeneratedImage","sourcePath":"components/ai/GeneratedImage.jsx"},{"name":"Marker","sourcePath":"components/ai/Marker.jsx"},{"name":"MarkerIcon","sourcePath":"components/ai/Marker.jsx"},{"name":"MarkerContent","sourcePath":"components/ai/Marker.jsx"},{"name":"Message","sourcePath":"components/ai/Message.jsx"},{"name":"MessageGroup","sourcePath":"components/ai/Message.jsx"},{"name":"MessageAvatar","sourcePath":"components/ai/Message.jsx"},{"name":"MessageContent","sourcePath":"components/ai/Message.jsx"},{"name":"MessageHeader","sourcePath":"components/ai/Message.jsx"},{"name":"MessageFooter","sourcePath":"components/ai/Message.jsx"},{"name":"MessageScrollerProvider","sourcePath":"components/ai/MessageScroller.jsx"},{"name":"MessageScroller","sourcePath":"components/ai/MessageScroller.jsx"},{"name":"MessageScrollerViewport","sourcePath":"components/ai/MessageScroller.jsx"},{"name":"MessageScrollerContent","sourcePath":"components/ai/MessageScroller.jsx"},{"name":"MessageScrollerItem","sourcePath":"components/ai/MessageScroller.jsx"},{"name":"MessageScrollerButton","sourcePath":"components/ai/MessageScroller.jsx"},{"name":"ModelSelector","sourcePath":"components/ai/ModelSelector.jsx"},{"name":"Player","sourcePath":"components/ai/Player.jsx"},{"name":"PromptComposer","sourcePath":"components/ai/PromptComposer.jsx"},{"name":"PromptSteps","sourcePath":"components/ai/PromptSteps.jsx"},{"name":"Reasoning","sourcePath":"components/ai/Reasoning.jsx"},{"name":"RichComposer","sourcePath":"components/ai/RichComposer.jsx"},{"name":"Sandbox","sourcePath":"components/ai/Sandbox.jsx"},{"name":"SelectionQuote","sourcePath":"components/ai/SelectionQuote.jsx"},{"name":"SourceCard","sourcePath":"components/ai/SourceCard.jsx"},{"name":"Suggestions","sourcePath":"components/ai/Suggestions.jsx"},{"name":"Task","sourcePath":"components/ai/Task.jsx"},{"name":"Todo","sourcePath":"components/ai/Todo.jsx"},{"name":"ToolCall","sourcePath":"components/ai/ToolCall.jsx"},{"name":"Transcript","sourcePath":"components/ai/Transcript.jsx"},{"name":"UsageMeter","sourcePath":"components/ai/UsageMeter.jsx"},{"name":"WebPreview","sourcePath":"components/ai/WebPreview.jsx"},{"name":"CodeBlock","sourcePath":"components/code/CodeBlock.jsx"},{"name":"Console","sourcePath":"components/code/Console.jsx"},{"name":"CopyField","sourcePath":"components/code/CopyField.jsx"},{"name":"Diff","sourcePath":"components/code/Diff.jsx"},{"name":"EnvList","sourcePath":"components/code/EnvList.jsx"},{"name":"Exception","sourcePath":"components/code/Exception.jsx"},{"name":"Terminal","sourcePath":"components/code/Terminal.jsx"},{"name":"BarChart","sourcePath":"components/data/BarChart.jsx"},{"name":"ChartStyle","sourcePath":"components/data/Chart.jsx"},{"name":"ChartContainer","sourcePath":"components/data/Chart.jsx"},{"name":"ChartTooltip","sourcePath":"components/data/Chart.jsx"},{"name":"ChartTooltipContent","sourcePath":"components/data/Chart.jsx"},{"name":"ChartLegend","sourcePath":"components/data/Chart.jsx"},{"name":"ChartLegendContent","sourcePath":"components/data/Chart.jsx"},{"name":"DonutChart","sourcePath":"components/data/DonutChart.jsx"},{"name":"Empty","sourcePath":"components/data/EmptyState.jsx"},{"name":"EmptyHeader","sourcePath":"components/data/EmptyState.jsx"},{"name":"EmptyMedia","sourcePath":"components/data/EmptyState.jsx"},{"name":"EmptyTitle","sourcePath":"components/data/EmptyState.jsx"},{"name":"EmptyDescription","sourcePath":"components/data/EmptyState.jsx"},{"name":"EmptyContent","sourcePath":"components/data/EmptyState.jsx"},{"name":"KeyValueList","sourcePath":"components/data/KeyValueList.jsx"},{"name":"LineChart","sourcePath":"components/data/LineChart.jsx"},{"name":"Skeleton","sourcePath":"components/data/Skeleton.jsx"},{"name":"Sparkline","sourcePath":"components/data/Sparkline.jsx"},{"name":"Stat","sourcePath":"components/data/Stat.jsx"},{"name":"StatusDot","sourcePath":"components/data/StatusDot.jsx"},{"name":"Table","sourcePath":"components/data/Table.jsx"},{"name":"TableHeader","sourcePath":"components/data/Table.jsx"},{"name":"TableBody","sourcePath":"components/data/Table.jsx"},{"name":"TableFooter","sourcePath":"components/data/Table.jsx"},{"name":"TableRow","sourcePath":"components/data/Table.jsx"},{"name":"TableHead","sourcePath":"components/data/Table.jsx"},{"name":"TableCell","sourcePath":"components/data/Table.jsx"},{"name":"TableCaption","sourcePath":"components/data/Table.jsx"},{"name":"CalendarDayButton","sourcePath":"components/dates/Calendar.jsx"},{"name":"Calendar","sourcePath":"components/dates/Calendar.jsx"},{"name":"TimePicker","sourcePath":"components/dates/TimePicker.jsx"},{"name":"Accordion","sourcePath":"components/display/Accordion.jsx"},{"name":"AccordionItem","sourcePath":"components/display/Accordion.jsx"},{"name":"AccordionTrigger","sourcePath":"components/display/Accordion.jsx"},{"name":"AccordionContent","sourcePath":"components/display/Accordion.jsx"},{"name":"AspectRatio","sourcePath":"components/display/AspectRatio.jsx"},{"name":"Avatar","sourcePath":"components/display/Avatar.jsx"},{"name":"AvatarImage","sourcePath":"components/display/Avatar.jsx"},{"name":"AvatarFallback","sourcePath":"components/display/Avatar.jsx"},{"name":"AvatarBadge","sourcePath":"components/display/Avatar.jsx"},{"name":"AvatarGroup","sourcePath":"components/display/Avatar.jsx"},{"name":"AvatarGroupCount","sourcePath":"components/display/Avatar.jsx"},{"name":"Badge","sourcePath":"components/display/Badge.jsx"},{"name":"CardHeader","sourcePath":"components/display/Card.jsx"},{"name":"CardTitle","sourcePath":"components/display/Card.jsx"},{"name":"CardDescription","sourcePath":"components/display/Card.jsx"},{"name":"CardAction","sourcePath":"components/display/Card.jsx"},{"name":"CardContent","sourcePath":"components/display/Card.jsx"},{"name":"CardFooter","sourcePath":"components/display/Card.jsx"},{"name":"Card","sourcePath":"components/display/Card.jsx"},{"name":"Carousel","sourcePath":"components/display/Carousel.jsx"},{"name":"CarouselContent","sourcePath":"components/display/Carousel.jsx"},{"name":"CarouselItem","sourcePath":"components/display/Carousel.jsx"},{"name":"CarouselPrevious","sourcePath":"components/display/Carousel.jsx"},{"name":"CarouselNext","sourcePath":"components/display/Carousel.jsx"},{"name":"Collapsible","sourcePath":"components/display/Collapsible.jsx"},{"name":"CollapsibleTrigger","sourcePath":"components/display/Collapsible.jsx"},{"name":"CollapsibleContent","sourcePath":"components/display/Collapsible.jsx"},{"name":"Decor","sourcePath":"components/display/Decor.jsx"},{"name":"DirectionProvider","sourcePath":"components/display/Direction.jsx"},{"name":"Divider","sourcePath":"components/display/Divider.jsx"},{"name":"ItemGroup","sourcePath":"components/display/Item.jsx"},{"name":"ItemSeparator","sourcePath":"components/display/Item.jsx"},{"name":"Item","sourcePath":"components/display/Item.jsx"},{"name":"ItemMedia","sourcePath":"components/display/Item.jsx"},{"name":"ItemContent","sourcePath":"components/display/Item.jsx"},{"name":"ItemTitle","sourcePath":"components/display/Item.jsx"},{"name":"ItemDescription","sourcePath":"components/display/Item.jsx"},{"name":"ItemActions","sourcePath":"components/display/Item.jsx"},{"name":"ItemHeader","sourcePath":"components/display/Item.jsx"},{"name":"ItemFooter","sourcePath":"components/display/Item.jsx"},{"name":"Kbd","sourcePath":"components/display/Kbd.jsx"},{"name":"KbdGroup","sourcePath":"components/display/Kbd.jsx"},{"name":"Link","sourcePath":"components/display/Link.jsx"},{"name":"ResizablePanelGroup","sourcePath":"components/display/Resizable.jsx"},{"name":"ResizablePanel","sourcePath":"components/display/Resizable.jsx"},{"name":"ResizableHandle","sourcePath":"components/display/Resizable.jsx"},{"name":"ScrollArea","sourcePath":"components/display/ScrollArea.jsx"},{"name":"ScrollBar","sourcePath":"components/display/ScrollArea.jsx"},{"name":"Separator","sourcePath":"components/display/Separator.jsx"},{"name":"Tag","sourcePath":"components/display/Tag.jsx"},{"name":"Timeline","sourcePath":"components/display/Timeline.jsx"},{"name":"Toolbar","sourcePath":"components/display/Toolbar.jsx"},{"name":"TreeList","sourcePath":"components/display/TreeList.jsx"},{"name":"Alert","sourcePath":"components/feedback/Alert.jsx"},{"name":"AlertTitle","sourcePath":"components/feedback/Alert.jsx"},{"name":"AlertDescription","sourcePath":"components/feedback/Alert.jsx"},{"name":"AlertAction","sourcePath":"components/feedback/Alert.jsx"},{"name":"AlertDialog","sourcePath":"components/feedback/AlertDialog.jsx"},{"name":"AlertDialogTrigger","sourcePath":"components/feedback/AlertDialog.jsx"},{"name":"AlertDialogPortal","sourcePath":"components/feedback/AlertDialog.jsx"},{"name":"AlertDialogOverlay","sourcePath":"components/feedback/AlertDialog.jsx"},{"name":"AlertDialogContent","sourcePath":"components/feedback/AlertDialog.jsx"},{"name":"AlertDialogHeader","sourcePath":"components/feedback/AlertDialog.jsx"},{"name":"AlertDialogFooter","sourcePath":"components/feedback/AlertDialog.jsx"},{"name":"AlertDialogMedia","sourcePath":"components/feedback/AlertDialog.jsx"},{"name":"AlertDialogTitle","sourcePath":"components/feedback/AlertDialog.jsx"},{"name":"AlertDialogDescription","sourcePath":"components/feedback/AlertDialog.jsx"},{"name":"AlertDialogCancel","sourcePath":"components/feedback/AlertDialog.jsx"},{"name":"AlertDialogAction","sourcePath":"components/feedback/AlertDialog.jsx"},{"name":"Banner","sourcePath":"components/feedback/Banner.jsx"},{"name":"ConfirmDialog","sourcePath":"components/feedback/ConfirmDialog.jsx"},{"name":"Dialog","sourcePath":"components/feedback/Dialog.jsx"},{"name":"DialogTrigger","sourcePath":"components/feedback/Dialog.jsx"},{"name":"DialogPortal","sourcePath":"components/feedback/Dialog.jsx"},{"name":"DialogOverlay","sourcePath":"components/feedback/Dialog.jsx"},{"name":"DialogClose","sourcePath":"components/feedback/Dialog.jsx"},{"name":"DialogContent","sourcePath":"components/feedback/Dialog.jsx"},{"name":"DialogHeader","sourcePath":"components/feedback/Dialog.jsx"},{"name":"DialogFooter","sourcePath":"components/feedback/Dialog.jsx"},{"name":"DialogTitle","sourcePath":"components/feedback/Dialog.jsx"},{"name":"DialogDescription","sourcePath":"components/feedback/Dialog.jsx"},{"name":"Loader","sourcePath":"components/feedback/Loader.jsx"},{"name":"Progress","sourcePath":"components/feedback/Progress.jsx"},{"name":"Spinner","sourcePath":"components/feedback/Spinner.jsx"},{"name":"Toaster","sourcePath":"components/feedback/Toast.jsx"},{"name":"Tooltip","sourcePath":"components/feedback/Tooltip.jsx"},{"name":"TooltipProvider","sourcePath":"components/feedback/Tooltip.jsx"},{"name":"TooltipTrigger","sourcePath":"components/feedback/Tooltip.jsx"},{"name":"TooltipContent","sourcePath":"components/feedback/Tooltip.jsx"},{"name":"Attachment","sourcePath":"components/files/Attachment.jsx"},{"name":"AttachmentMedia","sourcePath":"components/files/Attachment.jsx"},{"name":"AttachmentContent","sourcePath":"components/files/Attachment.jsx"},{"name":"AttachmentTitle","sourcePath":"components/files/Attachment.jsx"},{"name":"AttachmentDescription","sourcePath":"components/files/Attachment.jsx"},{"name":"AttachmentActions","sourcePath":"components/files/Attachment.jsx"},{"name":"AttachmentAction","sourcePath":"components/files/Attachment.jsx"},{"name":"AttachmentTrigger","sourcePath":"components/files/Attachment.jsx"},{"name":"AttachmentGroup","sourcePath":"components/files/Attachment.jsx"},{"name":"FileDrop","sourcePath":"components/files/FileDrop.jsx"},{"name":"FileTile","sourcePath":"components/files/FileTile.jsx"},{"name":"FileTypeIcon","sourcePath":"components/files/FileTypeIcon.jsx"},{"name":"PaymentCard","sourcePath":"components/finance/PaymentCard.jsx"},{"name":"Button","sourcePath":"components/forms/Button.jsx"},{"name":"ButtonGroup","sourcePath":"components/forms/ButtonGroup.jsx"},{"name":"ButtonGroupText","sourcePath":"components/forms/ButtonGroup.jsx"},{"name":"ButtonGroupSeparator","sourcePath":"components/forms/ButtonGroup.jsx"},{"name":"ButtonTile","sourcePath":"components/forms/ButtonTile.jsx"},{"name":"ButtonTileGroup","sourcePath":"components/forms/ButtonTile.jsx"},{"name":"Checkbox","sourcePath":"components/forms/Checkbox.jsx"},{"name":"Combobox","sourcePath":"components/forms/Combobox.jsx"},{"name":"ComboboxValue","sourcePath":"components/forms/Combobox.jsx"},{"name":"ComboboxTrigger","sourcePath":"components/forms/Combobox.jsx"},{"name":"ComboboxClear","sourcePath":"components/forms/Combobox.jsx"},{"name":"ComboboxInput","sourcePath":"components/forms/Combobox.jsx"},{"name":"ComboboxContent","sourcePath":"components/forms/Combobox.jsx"},{"name":"ComboboxList","sourcePath":"components/forms/Combobox.jsx"},{"name":"ComboboxItem","sourcePath":"components/forms/Combobox.jsx"},{"name":"ComboboxGroup","sourcePath":"components/forms/Combobox.jsx"},{"name":"ComboboxLabel","sourcePath":"components/forms/Combobox.jsx"},{"name":"ComboboxCollection","sourcePath":"components/forms/Combobox.jsx"},{"name":"ComboboxEmpty","sourcePath":"components/forms/Combobox.jsx"},{"name":"ComboboxSeparator","sourcePath":"components/forms/Combobox.jsx"},{"name":"ComboboxChips","sourcePath":"components/forms/Combobox.jsx"},{"name":"ComboboxChip","sourcePath":"components/forms/Combobox.jsx"},{"name":"ComboboxChipsInput","sourcePath":"components/forms/Combobox.jsx"},{"name":"Field","sourcePath":"components/forms/Field.jsx"},{"name":"FieldSet","sourcePath":"components/forms/Field.jsx"},{"name":"FieldGroup","sourcePath":"components/forms/Field.jsx"},{"name":"FieldContent","sourcePath":"components/forms/Field.jsx"},{"name":"FieldLabel","sourcePath":"components/forms/Field.jsx"},{"name":"FieldTitle","sourcePath":"components/forms/Field.jsx"},{"name":"FieldDescription","sourcePath":"components/forms/Field.jsx"},{"name":"FieldLegend","sourcePath":"components/forms/Field.jsx"},{"name":"FieldSeparator","sourcePath":"components/forms/Field.jsx"},{"name":"FieldError","sourcePath":"components/forms/Field.jsx"},{"name":"IconButton","sourcePath":"components/forms/IconButton.jsx"},{"name":"Input","sourcePath":"components/forms/Input.jsx"},{"name":"InputGroup","sourcePath":"components/forms/InputGroup.jsx"},{"name":"InputGroupAddon","sourcePath":"components/forms/InputGroup.jsx"},{"name":"InputGroupButton","sourcePath":"components/forms/InputGroup.jsx"},{"name":"InputGroupInput","sourcePath":"components/forms/InputGroup.jsx"},{"name":"InputGroupTextarea","sourcePath":"components/forms/InputGroup.jsx"},{"name":"InputGroupText","sourcePath":"components/forms/InputGroup.jsx"},{"name":"InputOTP","sourcePath":"components/forms/InputOTP.jsx"},{"name":"InputOTPGroup","sourcePath":"components/forms/InputOTP.jsx"},{"name":"InputOTPSlot","sourcePath":"components/forms/InputOTP.jsx"},{"name":"InputOTPSeparator","sourcePath":"components/forms/InputOTP.jsx"},{"name":"Label","sourcePath":"components/forms/Label.jsx"},{"name":"NativeSelect","sourcePath":"components/forms/NativeSelect.jsx"},{"name":"NativeSelectOption","sourcePath":"components/forms/NativeSelect.jsx"},{"name":"NativeSelectOptGroup","sourcePath":"components/forms/NativeSelect.jsx"},{"name":"NumberInput","sourcePath":"components/forms/NumberInput.jsx"},{"name":"Questionnaire","sourcePath":"components/forms/Questionnaire.jsx"},{"name":"QuestionnaireProgress","sourcePath":"components/forms/Questionnaire.jsx"},{"name":"QuestionnaireItem","sourcePath":"components/forms/Questionnaire.jsx"},{"name":"QuestionnaireTitle","sourcePath":"components/forms/Questionnaire.jsx"},{"name":"QuestionnaireDescription","sourcePath":"components/forms/Questionnaire.jsx"},{"name":"QuestionnaireChoices","sourcePath":"components/forms/Questionnaire.jsx"},{"name":"QuestionnaireChoice","sourcePath":"components/forms/Questionnaire.jsx"},{"name":"QuestionnaireInput","sourcePath":"components/forms/Questionnaire.jsx"},{"name":"QuestionnaireError","sourcePath":"components/forms/Questionnaire.jsx"},{"name":"QuestionnaireActions","sourcePath":"components/forms/Questionnaire.jsx"},{"name":"QuestionnairePrevious","sourcePath":"components/forms/Questionnaire.jsx"},{"name":"QuestionnaireSkip","sourcePath":"components/forms/Questionnaire.jsx"},{"name":"QuestionnaireNext","sourcePath":"components/forms/Questionnaire.jsx"},{"name":"QuestionnaireSubmit","sourcePath":"components/forms/Questionnaire.jsx"},{"name":"RadioGroup","sourcePath":"components/forms/Radio.jsx"},{"name":"RadioGroupItem","sourcePath":"components/forms/Radio.jsx"},{"name":"Radio","sourcePath":"components/forms/Radio.jsx"},{"name":"Select","sourcePath":"components/forms/Select.jsx"},{"name":"SelectTrigger","sourcePath":"components/forms/Select.jsx"},{"name":"SelectValue","sourcePath":"components/forms/Select.jsx"},{"name":"SelectContent","sourcePath":"components/forms/Select.jsx"},{"name":"SelectGroup","sourcePath":"components/forms/Select.jsx"},{"name":"SelectLabel","sourcePath":"components/forms/Select.jsx"},{"name":"SelectSeparator","sourcePath":"components/forms/Select.jsx"},{"name":"SelectItem","sourcePath":"components/forms/Select.jsx"},{"name":"Slider","sourcePath":"components/forms/Slider.jsx"},{"name":"Switch","sourcePath":"components/forms/Switch.jsx"},{"name":"Textarea","sourcePath":"components/forms/Textarea.jsx"},{"name":"Toggle","sourcePath":"components/forms/Toggle.jsx"},{"name":"ToggleGroup","sourcePath":"components/forms/Toggle.jsx"},{"name":"ToggleGroupItem","sourcePath":"components/forms/Toggle.jsx"},{"name":"Icon","sourcePath":"components/icons/Icon.jsx"},{"name":"Counter","sourcePath":"components/marketing/Counter.jsx"},{"name":"FeatureGrid","sourcePath":"components/marketing/FeatureCard.jsx"},{"name":"FeatureCard","sourcePath":"components/marketing/FeatureCard.jsx"},{"name":"Hero","sourcePath":"components/marketing/Hero.jsx"},{"name":"HeroAccent","sourcePath":"components/marketing/Hero.jsx"},{"name":"LanguageSwitch","sourcePath":"components/marketing/LanguageSwitch.jsx"},{"name":"LegalDocument","sourcePath":"components/marketing/LegalDocument.jsx"},{"name":"Marquee","sourcePath":"components/marketing/Marquee.jsx"},{"name":"Reveal","sourcePath":"components/marketing/Reveal.jsx"},{"name":"Section","sourcePath":"components/marketing/Section.jsx"},{"name":"SectionHead","sourcePath":"components/marketing/Section.jsx"},{"name":"SiteFooter","sourcePath":"components/marketing/SiteFooter.jsx"},{"name":"SiteHeader","sourcePath":"components/marketing/SiteHeader.jsx"},{"name":"ThemeToggle","sourcePath":"components/marketing/ThemeToggle.jsx"},{"name":"AccountCard","sourcePath":"components/navigation/AccountCard.jsx"},{"name":"Breadcrumb","sourcePath":"components/navigation/Breadcrumbs.jsx"},{"name":"BreadcrumbList","sourcePath":"components/navigation/Breadcrumbs.jsx"},{"name":"BreadcrumbItem","sourcePath":"components/navigation/Breadcrumbs.jsx"},{"name":"BreadcrumbLink","sourcePath":"components/navigation/Breadcrumbs.jsx"},{"name":"BreadcrumbPage","sourcePath":"components/navigation/Breadcrumbs.jsx"},{"name":"BreadcrumbSeparator","sourcePath":"components/navigation/Breadcrumbs.jsx"},{"name":"BreadcrumbEllipsis","sourcePath":"components/navigation/Breadcrumbs.jsx"},{"name":"Menubar","sourcePath":"components/navigation/Menubar.jsx"},{"name":"MenubarMenu","sourcePath":"components/navigation/Menubar.jsx"},{"name":"MenubarTrigger","sourcePath":"components/navigation/Menubar.jsx"},{"name":"MenubarContent","sourcePath":"components/navigation/Menubar.jsx"},{"name":"MenubarPortal","sourcePath":"components/navigation/Menubar.jsx"},{"name":"MenubarGroup","sourcePath":"components/navigation/Menubar.jsx"},{"name":"MenubarRadioGroup","sourcePath":"components/navigation/Menubar.jsx"},{"name":"MenubarLabel","sourcePath":"components/navigation/Menubar.jsx"},{"name":"MenubarSeparator","sourcePath":"components/navigation/Menubar.jsx"},{"name":"MenubarShortcut","sourcePath":"components/navigation/Menubar.jsx"},{"name":"MenubarItem","sourcePath":"components/navigation/Menubar.jsx"},{"name":"MenubarCheckboxItem","sourcePath":"components/navigation/Menubar.jsx"},{"name":"MenubarRadioItem","sourcePath":"components/navigation/Menubar.jsx"},{"name":"MenubarSub","sourcePath":"components/navigation/Menubar.jsx"},{"name":"MenubarSubTrigger","sourcePath":"components/navigation/Menubar.jsx"},{"name":"MenubarSubContent","sourcePath":"components/navigation/Menubar.jsx"},{"name":"NavigationMenu","sourcePath":"components/navigation/NavigationMenu.jsx"},{"name":"NavigationMenuList","sourcePath":"components/navigation/NavigationMenu.jsx"},{"name":"NavigationMenuItem","sourcePath":"components/navigation/NavigationMenu.jsx"},{"name":"NavigationMenuTrigger","sourcePath":"components/navigation/NavigationMenu.jsx"},{"name":"NavigationMenuContent","sourcePath":"components/navigation/NavigationMenu.jsx"},{"name":"NavigationMenuLink","sourcePath":"components/navigation/NavigationMenu.jsx"},{"name":"NavigationMenuIndicator","sourcePath":"components/navigation/NavigationMenu.jsx"},{"name":"NavigationMenuViewport","sourcePath":"components/navigation/NavigationMenu.jsx"},{"name":"PageControl","sourcePath":"components/navigation/PageControl.jsx"},{"name":"Pagination","sourcePath":"components/navigation/Pagination.jsx"},{"name":"PaginationContent","sourcePath":"components/navigation/Pagination.jsx"},{"name":"PaginationItem","sourcePath":"components/navigation/Pagination.jsx"},{"name":"PaginationLink","sourcePath":"components/navigation/Pagination.jsx"},{"name":"PaginationPrevious","sourcePath":"components/navigation/Pagination.jsx"},{"name":"PaginationNext","sourcePath":"components/navigation/Pagination.jsx"},{"name":"PaginationEllipsis","sourcePath":"components/navigation/Pagination.jsx"},{"name":"SegmentedControl","sourcePath":"components/navigation/SegmentedControl.jsx"},{"name":"SideNav","sourcePath":"components/navigation/SideNav.jsx"},{"name":"SidebarProvider","sourcePath":"components/navigation/Sidebar.jsx"},{"name":"Sidebar","sourcePath":"components/navigation/Sidebar.jsx"},{"name":"SidebarTrigger","sourcePath":"components/navigation/Sidebar.jsx"},{"name":"SidebarRail","sourcePath":"components/navigation/Sidebar.jsx"},{"name":"SidebarInset","sourcePath":"components/navigation/Sidebar.jsx"},{"name":"SidebarHeader","sourcePath":"components/navigation/Sidebar.jsx"},{"name":"SidebarFooter","sourcePath":"components/navigation/Sidebar.jsx"},{"name":"SidebarContent","sourcePath":"components/navigation/Sidebar.jsx"},{"name":"SidebarGroup","sourcePath":"components/navigation/Sidebar.jsx"},{"name":"SidebarGroupContent","sourcePath":"components/navigation/Sidebar.jsx"},{"name":"SidebarMenu","sourcePath":"components/navigation/Sidebar.jsx"},{"name":"SidebarMenuItem","sourcePath":"components/navigation/Sidebar.jsx"},{"name":"SidebarMenuSub","sourcePath":"components/navigation/Sidebar.jsx"},{"name":"SidebarMenuSubItem","sourcePath":"components/navigation/Sidebar.jsx"},{"name":"SidebarInput","sourcePath":"components/navigation/Sidebar.jsx"},{"name":"SidebarSeparator","sourcePath":"components/navigation/Sidebar.jsx"},{"name":"SidebarGroupLabel","sourcePath":"components/navigation/Sidebar.jsx"},{"name":"SidebarGroupAction","sourcePath":"components/navigation/Sidebar.jsx"},{"name":"SidebarMenuButton","sourcePath":"components/navigation/Sidebar.jsx"},{"name":"SidebarMenuAction","sourcePath":"components/navigation/Sidebar.jsx"},{"name":"SidebarMenuBadge","sourcePath":"components/navigation/Sidebar.jsx"},{"name":"SidebarMenuSubButton","sourcePath":"components/navigation/Sidebar.jsx"},{"name":"SidebarMenuSkeleton","sourcePath":"components/navigation/Sidebar.jsx"},{"name":"SkipLink","sourcePath":"components/navigation/SkipLink.jsx"},{"name":"Steps","sourcePath":"components/navigation/Steps.jsx"},{"name":"TabBar","sourcePath":"components/navigation/TabBar.jsx"},{"name":"Tabs","sourcePath":"components/navigation/Tabs.jsx"},{"name":"TabsList","sourcePath":"components/navigation/Tabs.jsx"},{"name":"TabsTrigger","sourcePath":"components/navigation/Tabs.jsx"},{"name":"TabsContent","sourcePath":"components/navigation/Tabs.jsx"},{"name":"TopNav","sourcePath":"components/navigation/TopNav.jsx"},{"name":"Command","sourcePath":"components/overlay/Command.jsx"},{"name":"CommandDialog","sourcePath":"components/overlay/Command.jsx"},{"name":"CommandInput","sourcePath":"components/overlay/Command.jsx"},{"name":"CommandList","sourcePath":"components/overlay/Command.jsx"},{"name":"CommandEmpty","sourcePath":"components/overlay/Command.jsx"},{"name":"CommandGroup","sourcePath":"components/overlay/Command.jsx"},{"name":"CommandItem","sourcePath":"components/overlay/Command.jsx"},{"name":"CommandShortcut","sourcePath":"components/overlay/Command.jsx"},{"name":"CommandSeparator","sourcePath":"components/overlay/Command.jsx"},{"name":"ContextMenu","sourcePath":"components/overlay/ContextMenu.jsx"},{"name":"ContextMenuTrigger","sourcePath":"components/overlay/ContextMenu.jsx"},{"name":"ContextMenuPortal","sourcePath":"components/overlay/ContextMenu.jsx"},{"name":"ContextMenuContent","sourcePath":"components/overlay/ContextMenu.jsx"},{"name":"ContextMenuGroup","sourcePath":"components/overlay/ContextMenu.jsx"},{"name":"ContextMenuLabel","sourcePath":"components/overlay/ContextMenu.jsx"},{"name":"ContextMenuSeparator","sourcePath":"components/overlay/ContextMenu.jsx"},{"name":"ContextMenuShortcut","sourcePath":"components/overlay/ContextMenu.jsx"},{"name":"ContextMenuItem","sourcePath":"components/overlay/ContextMenu.jsx"},{"name":"ContextMenuCheckboxItem","sourcePath":"components/overlay/ContextMenu.jsx"},{"name":"ContextMenuRadioGroup","sourcePath":"components/overlay/ContextMenu.jsx"},{"name":"ContextMenuRadioItem","sourcePath":"components/overlay/ContextMenu.jsx"},{"name":"ContextMenuSub","sourcePath":"components/overlay/ContextMenu.jsx"},{"name":"ContextMenuSubTrigger","sourcePath":"components/overlay/ContextMenu.jsx"},{"name":"ContextMenuSubContent","sourcePath":"components/overlay/ContextMenu.jsx"},{"name":"Drawer","sourcePath":"components/overlay/Drawer.jsx"},{"name":"DrawerTrigger","sourcePath":"components/overlay/Drawer.jsx"},{"name":"DrawerPortal","sourcePath":"components/overlay/Drawer.jsx"},{"name":"DrawerClose","sourcePath":"components/overlay/Drawer.jsx"},{"name":"DrawerOverlay","sourcePath":"components/overlay/Drawer.jsx"},{"name":"DrawerContent","sourcePath":"components/overlay/Drawer.jsx"},{"name":"DrawerHeader","sourcePath":"components/overlay/Drawer.jsx"},{"name":"DrawerFooter","sourcePath":"components/overlay/Drawer.jsx"},{"name":"DrawerTitle","sourcePath":"components/overlay/Drawer.jsx"},{"name":"DrawerDescription","sourcePath":"components/overlay/Drawer.jsx"},{"name":"DropdownMenu","sourcePath":"components/overlay/DropdownMenu.jsx"},{"name":"DropdownMenuTrigger","sourcePath":"components/overlay/DropdownMenu.jsx"},{"name":"DropdownMenuPortal","sourcePath":"components/overlay/DropdownMenu.jsx"},{"name":"DropdownMenuContent","sourcePath":"components/overlay/DropdownMenu.jsx"},{"name":"DropdownMenuGroup","sourcePath":"components/overlay/DropdownMenu.jsx"},{"name":"DropdownMenuLabel","sourcePath":"components/overlay/DropdownMenu.jsx"},{"name":"DropdownMenuSeparator","sourcePath":"components/overlay/DropdownMenu.jsx"},{"name":"DropdownMenuShortcut","sourcePath":"components/overlay/DropdownMenu.jsx"},{"name":"DropdownMenuItem","sourcePath":"components/overlay/DropdownMenu.jsx"},{"name":"DropdownMenuCheckboxItem","sourcePath":"components/overlay/DropdownMenu.jsx"},{"name":"DropdownMenuRadioGroup","sourcePath":"components/overlay/DropdownMenu.jsx"},{"name":"DropdownMenuRadioItem","sourcePath":"components/overlay/DropdownMenu.jsx"},{"name":"DropdownMenuSub","sourcePath":"components/overlay/DropdownMenu.jsx"},{"name":"DropdownMenuSubTrigger","sourcePath":"components/overlay/DropdownMenu.jsx"},{"name":"DropdownMenuSubContent","sourcePath":"components/overlay/DropdownMenu.jsx"},{"name":"HoverCard","sourcePath":"components/overlay/HoverCard.jsx"},{"name":"HoverCardTrigger","sourcePath":"components/overlay/HoverCard.jsx"},{"name":"HoverCardContent","sourcePath":"components/overlay/HoverCard.jsx"},{"name":"Popover","sourcePath":"components/overlay/Popover.jsx"},{"name":"PopoverTrigger","sourcePath":"components/overlay/Popover.jsx"},{"name":"PopoverContent","sourcePath":"components/overlay/Popover.jsx"},{"name":"PopoverHeader","sourcePath":"components/overlay/Popover.jsx"},{"name":"PopoverTitle","sourcePath":"components/overlay/Popover.jsx"},{"name":"PopoverDescription","sourcePath":"components/overlay/Popover.jsx"},{"name":"Portal","sourcePath":"components/overlay/Portal.jsx"},{"name":"Sheet","sourcePath":"components/overlay/Sheet.jsx"},{"name":"SheetTrigger","sourcePath":"components/overlay/Sheet.jsx"},{"name":"SheetClose","sourcePath":"components/overlay/Sheet.jsx"},{"name":"SheetContent","sourcePath":"components/overlay/Sheet.jsx"},{"name":"SheetHeader","sourcePath":"components/overlay/Sheet.jsx"},{"name":"SheetFooter","sourcePath":"components/overlay/Sheet.jsx"},{"name":"SheetTitle","sourcePath":"components/overlay/Sheet.jsx"},{"name":"SheetDescription","sourcePath":"components/overlay/Sheet.jsx"}],"publicHelpers":[{"name":"markerVariants","sourcePath":"components/ai/Marker.jsx"},{"name":"useMessageScroller","sourcePath":"components/ai/MessageScroller.jsx"},{"name":"useMessageScrollerVisibility","sourcePath":"components/ai/MessageScroller.jsx"},{"name":"useMessageScrollerScrollable","sourcePath":"components/ai/MessageScroller.jsx"},{"name":"useChart","sourcePath":"components/data/Chart.jsx"},{"name":"badgeVariants","sourcePath":"components/display/Badge.jsx"},{"name":"useDirection","sourcePath":"components/display/Direction.jsx"},{"name":"toast","sourcePath":"components/feedback/Toast.jsx"},{"name":"buttonVariants","sourcePath":"components/forms/Button.jsx"},{"name":"buttonGroupVariants","sourcePath":"components/forms/ButtonGroup.jsx"},{"name":"useComboboxAnchor","sourcePath":"components/forms/Combobox.jsx"},{"name":"toggleVariants","sourcePath":"components/forms/Toggle.jsx"},{"name":"parseLegalInline","sourcePath":"components/marketing/LegalDocument.jsx"},{"name":"readThemePreference","sourcePath":"components/marketing/ThemeToggle.jsx"},{"name":"resolveTheme","sourcePath":"components/marketing/ThemeToggle.jsx"},{"name":"writeThemeCookie","sourcePath":"components/marketing/ThemeToggle.jsx"},{"name":"writeThemePreference","sourcePath":"components/marketing/ThemeToggle.jsx"},{"name":"applyTheme","sourcePath":"components/marketing/ThemeToggle.jsx"},{"name":"swapTheme","sourcePath":"components/marketing/ThemeToggle.jsx"},{"name":"themeInitScript","sourcePath":"components/marketing/ThemeToggle.jsx"},{"name":"navigationMenuTriggerStyle","sourcePath":"components/navigation/NavigationMenu.jsx"},{"name":"useSidebar","sourcePath":"components/navigation/Sidebar.jsx"}],"sourceHashes":{"components/ai/AgentRun.jsx":"69cb61194379","components/ai/Bubble.jsx":"741d8f819696","components/ai/ChatMessage.jsx":"129062e198d4","components/ai/Citation.jsx":"68b118a1bc6c","components/ai/Confirmation.jsx":"fcaa628f7207","components/ai/Conversation.jsx":"3ab5c950e10b","components/ai/DocumentCard.jsx":"48daf1ccfe9c","components/ai/FeedbackBar.jsx":"40ed57ca1018","components/ai/GeneratedImage.jsx":"14ef085642f6","components/ai/Marker.jsx":"1b182df49fde","components/ai/Message.jsx":"7551262b2699","components/ai/MessageScroller.jsx":"ce7ebe10c948","components/ai/ModelSelector.jsx":"8ef1853cb3b7","components/ai/Player.jsx":"f3f439a52aa6","components/ai/PromptComposer.jsx":"5bf743baf810","components/ai/PromptSteps.jsx":"715cb10e1704","components/ai/Reasoning.jsx":"2e70b19df925","components/ai/RichComposer.jsx":"4fe6cf2a809b","components/ai/Sandbox.jsx":"955dbddb7fbe","components/ai/SelectionQuote.jsx":"e93d0a89da66","components/ai/SourceCard.jsx":"1ea2fa4c5f3b","components/ai/Suggestions.jsx":"d5946e3296d8","components/ai/Task.jsx":"45f108c24f74","components/ai/Todo.jsx":"f7bcbbfa12dd","components/ai/ToolCall.jsx":"e7166b528957","components/ai/Transcript.jsx":"b041e04d7ddc","components/ai/UsageMeter.jsx":"00fdc6404e5d","components/ai/WebPreview.jsx":"18215919e633","components/code/CodeBlock.jsx":"ea37e194ea95","components/code/Console.jsx":"d0d90a82e2ee","components/code/CopyField.jsx":"be664d12431f","components/code/Diff.jsx":"8eb0b8b6a2a1","components/code/EnvList.jsx":"c5e1b02d5086","components/code/Exception.jsx":"1d0f25b88e80","components/code/Terminal.jsx":"04af89d33f9e","components/data/BarChart.jsx":"7555a7c64da2","components/data/Chart.jsx":"9e7f92b5440f","components/data/DonutChart.jsx":"24393d447fb8","components/data/EmptyState.jsx":"619fd2d2abf4","components/data/KeyValueList.jsx":"7709582f927c","components/data/LineChart.jsx":"5d04a6d7770a","components/data/Skeleton.jsx":"c290b9347304","components/data/Sparkline.jsx":"5f8f035c3536","components/data/Stat.jsx":"56900e06839b","components/data/StatusDot.jsx":"c27dfa6b00e6","components/data/Table.jsx":"3d1bb92ebe47","components/dates/Calendar.jsx":"522ffd7934a1","components/dates/TimePicker.jsx":"a8f06ace0114","components/display/Accordion.jsx":"183558cb3ac0","components/display/AspectRatio.jsx":"d0db5f008a16","components/display/Avatar.jsx":"37c0008a5a85","components/display/Badge.jsx":"0d8d89a18c6b","components/display/Card.jsx":"d8515e68ac24","components/display/Carousel.jsx":"9509be264e0d","components/display/Collapsible.jsx":"23190a4bbbb8","components/display/Decor.jsx":"807df653c84d","components/display/Direction.jsx":"496b315ce934","components/display/Divider.jsx":"5e45b6ebf9a8","components/display/Item.jsx":"bf3b1f4f0356","components/display/Kbd.jsx":"fe5bf3150fc5","components/display/Link.jsx":"dedd1c52b07a","components/display/Resizable.jsx":"835e6b198a23","components/display/ScrollArea.jsx":"2157e7e04c79","components/display/Separator.jsx":"f2a070d3dd77","components/display/Tag.jsx":"331d57912f02","components/display/Timeline.jsx":"ad14fdfb0fb1","components/display/Toolbar.jsx":"a341bac26cb0","components/display/TreeList.jsx":"ce66060b7d51","components/feedback/Alert.jsx":"1ae64761d36a","components/feedback/AlertDialog.jsx":"bc6c49548af6","components/feedback/Banner.jsx":"38132ec49dd7","components/feedback/ConfirmDialog.jsx":"dd0042f6af61","components/feedback/Dialog.jsx":"7f4e1ded137f","components/feedback/Loader.jsx":"c1526672d818","components/feedback/Progress.jsx":"fed5db55448e","components/feedback/Spinner.jsx":"42f4cdcadee3","components/feedback/Toast.jsx":"4158abf96bbc","components/feedback/Tooltip.jsx":"64d5ba179080","components/files/Attachment.jsx":"748b38f9c523","components/files/FileDrop.jsx":"a3310ff879a8","components/files/FileTile.jsx":"741aaf2f0dd0","components/files/FileTypeIcon.jsx":"2d4ae99e2cca","components/finance/PaymentCard.jsx":"0f6e45d12319","components/forms/Button.jsx":"8f6148e9d77c","components/forms/ButtonGroup.jsx":"07ca6624effb","components/forms/ButtonTile.jsx":"febe5c79769d","components/forms/Checkbox.jsx":"1afc1d97e802","components/forms/Combobox.jsx":"cb0fcedd9ce4","components/forms/Field.jsx":"d319ab2daa7c","components/forms/IconButton.jsx":"cd560e6eadd9","components/forms/Input.jsx":"fd0b64492be2","components/forms/InputGroup.jsx":"6c3867b53c3c","components/forms/InputOTP.jsx":"5841fe4d0f6b","components/forms/Label.jsx":"e578f162c6ca","components/forms/NativeSelect.jsx":"bed59129bf67","components/forms/NumberInput.jsx":"a22ffb1e9dd1","components/forms/Questionnaire.jsx":"f24c40df0760","components/forms/Radio.jsx":"8f8ea67b2fd0","components/forms/Select.jsx":"41e1a9171aa6","components/forms/Slider.jsx":"a19e75869c62","components/forms/Switch.jsx":"6278a4ba4d4f","components/forms/Textarea.jsx":"0a2ccff0953b","components/forms/Toggle.jsx":"c96f425770e9","components/icons/Icon.jsx":"31861bb3664b","components/marketing/Counter.jsx":"75351126284e","components/marketing/FeatureCard.jsx":"1c3a15c5c169","components/marketing/Hero.jsx":"5e20cf4d258d","components/marketing/LanguageSwitch.jsx":"a02c9ca71364","components/marketing/LegalDocument.jsx":"f97c15396a78","components/marketing/Marquee.jsx":"004cf92bb53c","components/marketing/Reveal.jsx":"3a0eed67379d","components/marketing/Section.jsx":"57b3777e6912","components/marketing/SiteFooter.jsx":"529d2c51ff27","components/marketing/SiteHeader.jsx":"72e5574ae555","components/marketing/ThemeToggle.jsx":"ec816e2bccf6","components/navigation/AccountCard.jsx":"3c1c0c90e313","components/navigation/Breadcrumbs.jsx":"607db7ed9c96","components/navigation/Menubar.jsx":"296bbe483b68","components/navigation/NavigationMenu.jsx":"66f470136ab0","components/navigation/PageControl.jsx":"6eeae89fb9d5","components/navigation/Pagination.jsx":"f585b061ff42","components/navigation/SegmentedControl.jsx":"1616dc42e9a5","components/navigation/SideNav.jsx":"261c903ccf4e","components/navigation/Sidebar.jsx":"929544d00631","components/navigation/SkipLink.jsx":"bccd54bd3d38","components/navigation/Steps.jsx":"877acf0912b3","components/navigation/TabBar.jsx":"052216b90603","components/navigation/Tabs.jsx":"8a0ff39d984d","components/navigation/TopNav.jsx":"ffd9465ae123","components/overlay/Command.jsx":"d4ddd51933d2","components/overlay/ContextMenu.jsx":"928b8fdd4b05","components/overlay/Drawer.jsx":"b37a306a0ac5","components/overlay/DropdownMenu.jsx":"b25fd1b90fc1","components/overlay/HoverCard.jsx":"39d96598c10d","components/overlay/Popover.jsx":"4f7854ac5aec","components/overlay/Portal.jsx":"0f1fdfed26e4","components/overlay/Sheet.jsx":"ef9777306c2f","components/runtime/runtime.jsx":"0d3405894ce0"},"inlinedExternals":[],"unexposedExports":[{"name":"computeDiff","sourcePath":"components/code/Diff.jsx"},{"name":"cssPct","sourcePath":"components/runtime/runtime.jsx"},{"name":"escapeLayerContext","sourcePath":"components/overlay/Portal.jsx"},{"name":"formatTime","sourcePath":"components/ai/Player.jsx"},{"name":"inertProp","sourcePath":"components/marketing/Marquee.jsx"},{"name":"injectEfCss","sourcePath":"components/runtime/runtime.jsx"},{"name":"isElementOfType","sourcePath":"components/runtime/runtime.jsx"},{"name":"mergeRefs","sourcePath":"components/runtime/runtime.jsx"},{"name":"prefersReducedMotion","sourcePath":"components/runtime/runtime.jsx"},{"name":"styleRef","sourcePath":"components/runtime/runtime.jsx"},{"name":"styleRefUnder","sourcePath":"components/runtime/runtime.jsx"},{"name":"useAnchoredStyle","sourcePath":"components/overlay/Portal.jsx"},{"name":"useEscapeLayer","sourcePath":"components/overlay/Portal.jsx"},{"name":"useFieldProps","sourcePath":"components/forms/Field.jsx"},{"name":"useHydrated","sourcePath":"components/overlay/Portal.jsx"},{"name":"useIsoLayoutEffect","sourcePath":"components/runtime/runtime.jsx"},{"name":"useScrollLock","sourcePath":"components/overlay/Portal.jsx"},{"name":"useThemeState","sourcePath":"components/marketing/ThemeToggle.jsx"}]} */
+/* @ds-bundle: {"format":4,"namespace":"EfolusiDesignSystem_4ffc3d","components":[{"name":"AgentRun","sourcePath":"components/ai/AgentRun.jsx"},{"name":"BubbleGroup","sourcePath":"components/ai/Bubble.jsx"},{"name":"Bubble","sourcePath":"components/ai/Bubble.jsx"},{"name":"BubbleContent","sourcePath":"components/ai/Bubble.jsx"},{"name":"BubbleReactions","sourcePath":"components/ai/Bubble.jsx"},{"name":"ChatMessage","sourcePath":"components/ai/ChatMessage.jsx"},{"name":"Citation","sourcePath":"components/ai/Citation.jsx"},{"name":"SourceList","sourcePath":"components/ai/Citation.jsx"},{"name":"Confirmation","sourcePath":"components/ai/Confirmation.jsx"},{"name":"Conversation","sourcePath":"components/ai/Conversation.jsx"},{"name":"DocumentCard","sourcePath":"components/ai/DocumentCard.jsx"},{"name":"FeedbackBar","sourcePath":"components/ai/FeedbackBar.jsx"},{"name":"GeneratedImage","sourcePath":"components/ai/GeneratedImage.jsx"},{"name":"Marker","sourcePath":"components/ai/Marker.jsx"},{"name":"MarkerIcon","sourcePath":"components/ai/Marker.jsx"},{"name":"MarkerContent","sourcePath":"components/ai/Marker.jsx"},{"name":"Message","sourcePath":"components/ai/Message.jsx"},{"name":"MessageGroup","sourcePath":"components/ai/Message.jsx"},{"name":"MessageAvatar","sourcePath":"components/ai/Message.jsx"},{"name":"MessageContent","sourcePath":"components/ai/Message.jsx"},{"name":"MessageHeader","sourcePath":"components/ai/Message.jsx"},{"name":"MessageFooter","sourcePath":"components/ai/Message.jsx"},{"name":"MessageScrollerProvider","sourcePath":"components/ai/MessageScroller.jsx"},{"name":"MessageScroller","sourcePath":"components/ai/MessageScroller.jsx"},{"name":"MessageScrollerViewport","sourcePath":"components/ai/MessageScroller.jsx"},{"name":"MessageScrollerContent","sourcePath":"components/ai/MessageScroller.jsx"},{"name":"MessageScrollerItem","sourcePath":"components/ai/MessageScroller.jsx"},{"name":"MessageScrollerButton","sourcePath":"components/ai/MessageScroller.jsx"},{"name":"ModelSelector","sourcePath":"components/ai/ModelSelector.jsx"},{"name":"Player","sourcePath":"components/ai/Player.jsx"},{"name":"PromptComposer","sourcePath":"components/ai/PromptComposer.jsx"},{"name":"PromptSteps","sourcePath":"components/ai/PromptSteps.jsx"},{"name":"Reasoning","sourcePath":"components/ai/Reasoning.jsx"},{"name":"RichComposer","sourcePath":"components/ai/RichComposer.jsx"},{"name":"Sandbox","sourcePath":"components/ai/Sandbox.jsx"},{"name":"SelectionQuote","sourcePath":"components/ai/SelectionQuote.jsx"},{"name":"SourceCard","sourcePath":"components/ai/SourceCard.jsx"},{"name":"Suggestions","sourcePath":"components/ai/Suggestions.jsx"},{"name":"Task","sourcePath":"components/ai/Task.jsx"},{"name":"Todo","sourcePath":"components/ai/Todo.jsx"},{"name":"ToolCall","sourcePath":"components/ai/ToolCall.jsx"},{"name":"Transcript","sourcePath":"components/ai/Transcript.jsx"},{"name":"UsageMeter","sourcePath":"components/ai/UsageMeter.jsx"},{"name":"WebPreview","sourcePath":"components/ai/WebPreview.jsx"},{"name":"CodeBlock","sourcePath":"components/code/CodeBlock.jsx"},{"name":"Console","sourcePath":"components/code/Console.jsx"},{"name":"CopyField","sourcePath":"components/code/CopyField.jsx"},{"name":"Diff","sourcePath":"components/code/Diff.jsx"},{"name":"EnvList","sourcePath":"components/code/EnvList.jsx"},{"name":"Exception","sourcePath":"components/code/Exception.jsx"},{"name":"Terminal","sourcePath":"components/code/Terminal.jsx"},{"name":"BarChart","sourcePath":"components/data/BarChart.jsx"},{"name":"ChartStyle","sourcePath":"components/data/Chart.jsx"},{"name":"ChartContainer","sourcePath":"components/data/Chart.jsx"},{"name":"ChartTooltip","sourcePath":"components/data/Chart.jsx"},{"name":"ChartTooltipContent","sourcePath":"components/data/Chart.jsx"},{"name":"ChartLegend","sourcePath":"components/data/Chart.jsx"},{"name":"ChartLegendContent","sourcePath":"components/data/Chart.jsx"},{"name":"DonutChart","sourcePath":"components/data/DonutChart.jsx"},{"name":"Empty","sourcePath":"components/data/EmptyState.jsx"},{"name":"EmptyHeader","sourcePath":"components/data/EmptyState.jsx"},{"name":"EmptyMedia","sourcePath":"components/data/EmptyState.jsx"},{"name":"EmptyTitle","sourcePath":"components/data/EmptyState.jsx"},{"name":"EmptyDescription","sourcePath":"components/data/EmptyState.jsx"},{"name":"EmptyContent","sourcePath":"components/data/EmptyState.jsx"},{"name":"KeyValueList","sourcePath":"components/data/KeyValueList.jsx"},{"name":"LineChart","sourcePath":"components/data/LineChart.jsx"},{"name":"Skeleton","sourcePath":"components/data/Skeleton.jsx"},{"name":"Sparkline","sourcePath":"components/data/Sparkline.jsx"},{"name":"Stat","sourcePath":"components/data/Stat.jsx"},{"name":"StatusDot","sourcePath":"components/data/StatusDot.jsx"},{"name":"Table","sourcePath":"components/data/Table.jsx"},{"name":"TableHeader","sourcePath":"components/data/Table.jsx"},{"name":"TableBody","sourcePath":"components/data/Table.jsx"},{"name":"TableFooter","sourcePath":"components/data/Table.jsx"},{"name":"TableRow","sourcePath":"components/data/Table.jsx"},{"name":"TableHead","sourcePath":"components/data/Table.jsx"},{"name":"TableCell","sourcePath":"components/data/Table.jsx"},{"name":"TableCaption","sourcePath":"components/data/Table.jsx"},{"name":"CalendarDayButton","sourcePath":"components/dates/Calendar.jsx"},{"name":"Calendar","sourcePath":"components/dates/Calendar.jsx"},{"name":"TimePicker","sourcePath":"components/dates/TimePicker.jsx"},{"name":"Accordion","sourcePath":"components/display/Accordion.jsx"},{"name":"AccordionItem","sourcePath":"components/display/Accordion.jsx"},{"name":"AccordionTrigger","sourcePath":"components/display/Accordion.jsx"},{"name":"AccordionContent","sourcePath":"components/display/Accordion.jsx"},{"name":"AspectRatio","sourcePath":"components/display/AspectRatio.jsx"},{"name":"Avatar","sourcePath":"components/display/Avatar.jsx"},{"name":"AvatarImage","sourcePath":"components/display/Avatar.jsx"},{"name":"AvatarFallback","sourcePath":"components/display/Avatar.jsx"},{"name":"AvatarBadge","sourcePath":"components/display/Avatar.jsx"},{"name":"AvatarGroup","sourcePath":"components/display/Avatar.jsx"},{"name":"AvatarGroupCount","sourcePath":"components/display/Avatar.jsx"},{"name":"Badge","sourcePath":"components/display/Badge.jsx"},{"name":"CardHeader","sourcePath":"components/display/Card.jsx"},{"name":"CardTitle","sourcePath":"components/display/Card.jsx"},{"name":"CardDescription","sourcePath":"components/display/Card.jsx"},{"name":"CardAction","sourcePath":"components/display/Card.jsx"},{"name":"CardContent","sourcePath":"components/display/Card.jsx"},{"name":"CardFooter","sourcePath":"components/display/Card.jsx"},{"name":"Card","sourcePath":"components/display/Card.jsx"},{"name":"Carousel","sourcePath":"components/display/Carousel.jsx"},{"name":"CarouselContent","sourcePath":"components/display/Carousel.jsx"},{"name":"CarouselItem","sourcePath":"components/display/Carousel.jsx"},{"name":"CarouselPrevious","sourcePath":"components/display/Carousel.jsx"},{"name":"CarouselNext","sourcePath":"components/display/Carousel.jsx"},{"name":"Collapsible","sourcePath":"components/display/Collapsible.jsx"},{"name":"CollapsibleTrigger","sourcePath":"components/display/Collapsible.jsx"},{"name":"CollapsibleContent","sourcePath":"components/display/Collapsible.jsx"},{"name":"Decor","sourcePath":"components/display/Decor.jsx"},{"name":"DirectionProvider","sourcePath":"components/display/Direction.jsx"},{"name":"Divider","sourcePath":"components/display/Divider.jsx"},{"name":"ItemGroup","sourcePath":"components/display/Item.jsx"},{"name":"ItemSeparator","sourcePath":"components/display/Item.jsx"},{"name":"Item","sourcePath":"components/display/Item.jsx"},{"name":"ItemMedia","sourcePath":"components/display/Item.jsx"},{"name":"ItemContent","sourcePath":"components/display/Item.jsx"},{"name":"ItemTitle","sourcePath":"components/display/Item.jsx"},{"name":"ItemDescription","sourcePath":"components/display/Item.jsx"},{"name":"ItemActions","sourcePath":"components/display/Item.jsx"},{"name":"ItemHeader","sourcePath":"components/display/Item.jsx"},{"name":"ItemFooter","sourcePath":"components/display/Item.jsx"},{"name":"Kbd","sourcePath":"components/display/Kbd.jsx"},{"name":"KbdGroup","sourcePath":"components/display/Kbd.jsx"},{"name":"Link","sourcePath":"components/display/Link.jsx"},{"name":"ResizablePanelGroup","sourcePath":"components/display/Resizable.jsx"},{"name":"ResizablePanel","sourcePath":"components/display/Resizable.jsx"},{"name":"ResizableHandle","sourcePath":"components/display/Resizable.jsx"},{"name":"ScrollArea","sourcePath":"components/display/ScrollArea.jsx"},{"name":"ScrollBar","sourcePath":"components/display/ScrollArea.jsx"},{"name":"Separator","sourcePath":"components/display/Separator.jsx"},{"name":"Tag","sourcePath":"components/display/Tag.jsx"},{"name":"Timeline","sourcePath":"components/display/Timeline.jsx"},{"name":"Toolbar","sourcePath":"components/display/Toolbar.jsx"},{"name":"TreeList","sourcePath":"components/display/TreeList.jsx"},{"name":"Alert","sourcePath":"components/feedback/Alert.jsx"},{"name":"AlertTitle","sourcePath":"components/feedback/Alert.jsx"},{"name":"AlertDescription","sourcePath":"components/feedback/Alert.jsx"},{"name":"AlertAction","sourcePath":"components/feedback/Alert.jsx"},{"name":"AlertDialog","sourcePath":"components/feedback/AlertDialog.jsx"},{"name":"AlertDialogTrigger","sourcePath":"components/feedback/AlertDialog.jsx"},{"name":"AlertDialogPortal","sourcePath":"components/feedback/AlertDialog.jsx"},{"name":"AlertDialogOverlay","sourcePath":"components/feedback/AlertDialog.jsx"},{"name":"AlertDialogContent","sourcePath":"components/feedback/AlertDialog.jsx"},{"name":"AlertDialogHeader","sourcePath":"components/feedback/AlertDialog.jsx"},{"name":"AlertDialogFooter","sourcePath":"components/feedback/AlertDialog.jsx"},{"name":"AlertDialogMedia","sourcePath":"components/feedback/AlertDialog.jsx"},{"name":"AlertDialogTitle","sourcePath":"components/feedback/AlertDialog.jsx"},{"name":"AlertDialogDescription","sourcePath":"components/feedback/AlertDialog.jsx"},{"name":"AlertDialogCancel","sourcePath":"components/feedback/AlertDialog.jsx"},{"name":"AlertDialogAction","sourcePath":"components/feedback/AlertDialog.jsx"},{"name":"Banner","sourcePath":"components/feedback/Banner.jsx"},{"name":"ConfirmDialog","sourcePath":"components/feedback/ConfirmDialog.jsx"},{"name":"Dialog","sourcePath":"components/feedback/Dialog.jsx"},{"name":"DialogTrigger","sourcePath":"components/feedback/Dialog.jsx"},{"name":"DialogPortal","sourcePath":"components/feedback/Dialog.jsx"},{"name":"DialogOverlay","sourcePath":"components/feedback/Dialog.jsx"},{"name":"DialogClose","sourcePath":"components/feedback/Dialog.jsx"},{"name":"DialogContent","sourcePath":"components/feedback/Dialog.jsx"},{"name":"DialogHeader","sourcePath":"components/feedback/Dialog.jsx"},{"name":"DialogFooter","sourcePath":"components/feedback/Dialog.jsx"},{"name":"DialogTitle","sourcePath":"components/feedback/Dialog.jsx"},{"name":"DialogDescription","sourcePath":"components/feedback/Dialog.jsx"},{"name":"Loader","sourcePath":"components/feedback/Loader.jsx"},{"name":"Progress","sourcePath":"components/feedback/Progress.jsx"},{"name":"Spinner","sourcePath":"components/feedback/Spinner.jsx"},{"name":"Toaster","sourcePath":"components/feedback/Toast.jsx"},{"name":"Tooltip","sourcePath":"components/feedback/Tooltip.jsx"},{"name":"TooltipProvider","sourcePath":"components/feedback/Tooltip.jsx"},{"name":"TooltipTrigger","sourcePath":"components/feedback/Tooltip.jsx"},{"name":"TooltipContent","sourcePath":"components/feedback/Tooltip.jsx"},{"name":"Attachment","sourcePath":"components/files/Attachment.jsx"},{"name":"AttachmentMedia","sourcePath":"components/files/Attachment.jsx"},{"name":"AttachmentContent","sourcePath":"components/files/Attachment.jsx"},{"name":"AttachmentTitle","sourcePath":"components/files/Attachment.jsx"},{"name":"AttachmentDescription","sourcePath":"components/files/Attachment.jsx"},{"name":"AttachmentActions","sourcePath":"components/files/Attachment.jsx"},{"name":"AttachmentAction","sourcePath":"components/files/Attachment.jsx"},{"name":"AttachmentTrigger","sourcePath":"components/files/Attachment.jsx"},{"name":"AttachmentGroup","sourcePath":"components/files/Attachment.jsx"},{"name":"FileDrop","sourcePath":"components/files/FileDrop.jsx"},{"name":"FileTile","sourcePath":"components/files/FileTile.jsx"},{"name":"FileTypeIcon","sourcePath":"components/files/FileTypeIcon.jsx"},{"name":"PaymentCard","sourcePath":"components/finance/PaymentCard.jsx"},{"name":"Button","sourcePath":"components/forms/Button.jsx"},{"name":"ButtonGroup","sourcePath":"components/forms/ButtonGroup.jsx"},{"name":"ButtonGroupText","sourcePath":"components/forms/ButtonGroup.jsx"},{"name":"ButtonGroupSeparator","sourcePath":"components/forms/ButtonGroup.jsx"},{"name":"ButtonTile","sourcePath":"components/forms/ButtonTile.jsx"},{"name":"ButtonTileGroup","sourcePath":"components/forms/ButtonTile.jsx"},{"name":"Checkbox","sourcePath":"components/forms/Checkbox.jsx"},{"name":"Combobox","sourcePath":"components/forms/Combobox.jsx"},{"name":"ComboboxValue","sourcePath":"components/forms/Combobox.jsx"},{"name":"ComboboxTrigger","sourcePath":"components/forms/Combobox.jsx"},{"name":"ComboboxClear","sourcePath":"components/forms/Combobox.jsx"},{"name":"ComboboxInput","sourcePath":"components/forms/Combobox.jsx"},{"name":"ComboboxContent","sourcePath":"components/forms/Combobox.jsx"},{"name":"ComboboxList","sourcePath":"components/forms/Combobox.jsx"},{"name":"ComboboxItem","sourcePath":"components/forms/Combobox.jsx"},{"name":"ComboboxGroup","sourcePath":"components/forms/Combobox.jsx"},{"name":"ComboboxLabel","sourcePath":"components/forms/Combobox.jsx"},{"name":"ComboboxCollection","sourcePath":"components/forms/Combobox.jsx"},{"name":"ComboboxEmpty","sourcePath":"components/forms/Combobox.jsx"},{"name":"ComboboxSeparator","sourcePath":"components/forms/Combobox.jsx"},{"name":"ComboboxChips","sourcePath":"components/forms/Combobox.jsx"},{"name":"ComboboxChip","sourcePath":"components/forms/Combobox.jsx"},{"name":"ComboboxChipsInput","sourcePath":"components/forms/Combobox.jsx"},{"name":"Field","sourcePath":"components/forms/Field.jsx"},{"name":"FieldSet","sourcePath":"components/forms/Field.jsx"},{"name":"FieldGroup","sourcePath":"components/forms/Field.jsx"},{"name":"FieldContent","sourcePath":"components/forms/Field.jsx"},{"name":"FieldLabel","sourcePath":"components/forms/Field.jsx"},{"name":"FieldTitle","sourcePath":"components/forms/Field.jsx"},{"name":"FieldDescription","sourcePath":"components/forms/Field.jsx"},{"name":"FieldLegend","sourcePath":"components/forms/Field.jsx"},{"name":"FieldSeparator","sourcePath":"components/forms/Field.jsx"},{"name":"FieldError","sourcePath":"components/forms/Field.jsx"},{"name":"IconButton","sourcePath":"components/forms/IconButton.jsx"},{"name":"Input","sourcePath":"components/forms/Input.jsx"},{"name":"InputGroup","sourcePath":"components/forms/InputGroup.jsx"},{"name":"InputGroupAddon","sourcePath":"components/forms/InputGroup.jsx"},{"name":"InputGroupButton","sourcePath":"components/forms/InputGroup.jsx"},{"name":"InputGroupInput","sourcePath":"components/forms/InputGroup.jsx"},{"name":"InputGroupTextarea","sourcePath":"components/forms/InputGroup.jsx"},{"name":"InputGroupText","sourcePath":"components/forms/InputGroup.jsx"},{"name":"InputOTP","sourcePath":"components/forms/InputOTP.jsx"},{"name":"InputOTPGroup","sourcePath":"components/forms/InputOTP.jsx"},{"name":"InputOTPSlot","sourcePath":"components/forms/InputOTP.jsx"},{"name":"InputOTPSeparator","sourcePath":"components/forms/InputOTP.jsx"},{"name":"Label","sourcePath":"components/forms/Label.jsx"},{"name":"NativeSelect","sourcePath":"components/forms/NativeSelect.jsx"},{"name":"NativeSelectOption","sourcePath":"components/forms/NativeSelect.jsx"},{"name":"NativeSelectOptGroup","sourcePath":"components/forms/NativeSelect.jsx"},{"name":"NumberInput","sourcePath":"components/forms/NumberInput.jsx"},{"name":"Questionnaire","sourcePath":"components/forms/Questionnaire.jsx"},{"name":"QuestionnaireProgress","sourcePath":"components/forms/Questionnaire.jsx"},{"name":"QuestionnaireItem","sourcePath":"components/forms/Questionnaire.jsx"},{"name":"QuestionnaireTitle","sourcePath":"components/forms/Questionnaire.jsx"},{"name":"QuestionnaireDescription","sourcePath":"components/forms/Questionnaire.jsx"},{"name":"QuestionnaireChoices","sourcePath":"components/forms/Questionnaire.jsx"},{"name":"QuestionnaireChoice","sourcePath":"components/forms/Questionnaire.jsx"},{"name":"QuestionnaireInput","sourcePath":"components/forms/Questionnaire.jsx"},{"name":"QuestionnaireError","sourcePath":"components/forms/Questionnaire.jsx"},{"name":"QuestionnaireActions","sourcePath":"components/forms/Questionnaire.jsx"},{"name":"QuestionnairePrevious","sourcePath":"components/forms/Questionnaire.jsx"},{"name":"QuestionnaireSkip","sourcePath":"components/forms/Questionnaire.jsx"},{"name":"QuestionnaireNext","sourcePath":"components/forms/Questionnaire.jsx"},{"name":"QuestionnaireSubmit","sourcePath":"components/forms/Questionnaire.jsx"},{"name":"RadioGroup","sourcePath":"components/forms/Radio.jsx"},{"name":"RadioGroupItem","sourcePath":"components/forms/Radio.jsx"},{"name":"Radio","sourcePath":"components/forms/Radio.jsx"},{"name":"Select","sourcePath":"components/forms/Select.jsx"},{"name":"SelectTrigger","sourcePath":"components/forms/Select.jsx"},{"name":"SelectValue","sourcePath":"components/forms/Select.jsx"},{"name":"SelectContent","sourcePath":"components/forms/Select.jsx"},{"name":"SelectGroup","sourcePath":"components/forms/Select.jsx"},{"name":"SelectLabel","sourcePath":"components/forms/Select.jsx"},{"name":"SelectSeparator","sourcePath":"components/forms/Select.jsx"},{"name":"SelectItem","sourcePath":"components/forms/Select.jsx"},{"name":"Slider","sourcePath":"components/forms/Slider.jsx"},{"name":"Switch","sourcePath":"components/forms/Switch.jsx"},{"name":"Textarea","sourcePath":"components/forms/Textarea.jsx"},{"name":"Toggle","sourcePath":"components/forms/Toggle.jsx"},{"name":"ToggleGroup","sourcePath":"components/forms/Toggle.jsx"},{"name":"ToggleGroupItem","sourcePath":"components/forms/Toggle.jsx"},{"name":"Icon","sourcePath":"components/icons/Icon.jsx"},{"name":"Counter","sourcePath":"components/marketing/Counter.jsx"},{"name":"FeatureGrid","sourcePath":"components/marketing/FeatureCard.jsx"},{"name":"FeatureCard","sourcePath":"components/marketing/FeatureCard.jsx"},{"name":"Hero","sourcePath":"components/marketing/Hero.jsx"},{"name":"HeroAccent","sourcePath":"components/marketing/Hero.jsx"},{"name":"LanguageSwitch","sourcePath":"components/marketing/LanguageSwitch.jsx"},{"name":"LegalDocument","sourcePath":"components/marketing/LegalDocument.jsx"},{"name":"Marquee","sourcePath":"components/marketing/Marquee.jsx"},{"name":"Reveal","sourcePath":"components/marketing/Reveal.jsx"},{"name":"Section","sourcePath":"components/marketing/Section.jsx"},{"name":"SectionHead","sourcePath":"components/marketing/Section.jsx"},{"name":"SiteFooter","sourcePath":"components/marketing/SiteFooter.jsx"},{"name":"SiteHeader","sourcePath":"components/marketing/SiteHeader.jsx"},{"name":"ThemeToggle","sourcePath":"components/marketing/ThemeToggle.jsx"},{"name":"AccountCard","sourcePath":"components/navigation/AccountCard.jsx"},{"name":"Breadcrumb","sourcePath":"components/navigation/Breadcrumbs.jsx"},{"name":"BreadcrumbList","sourcePath":"components/navigation/Breadcrumbs.jsx"},{"name":"BreadcrumbItem","sourcePath":"components/navigation/Breadcrumbs.jsx"},{"name":"BreadcrumbLink","sourcePath":"components/navigation/Breadcrumbs.jsx"},{"name":"BreadcrumbPage","sourcePath":"components/navigation/Breadcrumbs.jsx"},{"name":"BreadcrumbSeparator","sourcePath":"components/navigation/Breadcrumbs.jsx"},{"name":"BreadcrumbEllipsis","sourcePath":"components/navigation/Breadcrumbs.jsx"},{"name":"Menubar","sourcePath":"components/navigation/Menubar.jsx"},{"name":"MenubarMenu","sourcePath":"components/navigation/Menubar.jsx"},{"name":"MenubarTrigger","sourcePath":"components/navigation/Menubar.jsx"},{"name":"MenubarContent","sourcePath":"components/navigation/Menubar.jsx"},{"name":"MenubarPortal","sourcePath":"components/navigation/Menubar.jsx"},{"name":"MenubarGroup","sourcePath":"components/navigation/Menubar.jsx"},{"name":"MenubarRadioGroup","sourcePath":"components/navigation/Menubar.jsx"},{"name":"MenubarLabel","sourcePath":"components/navigation/Menubar.jsx"},{"name":"MenubarSeparator","sourcePath":"components/navigation/Menubar.jsx"},{"name":"MenubarShortcut","sourcePath":"components/navigation/Menubar.jsx"},{"name":"MenubarItem","sourcePath":"components/navigation/Menubar.jsx"},{"name":"MenubarCheckboxItem","sourcePath":"components/navigation/Menubar.jsx"},{"name":"MenubarRadioItem","sourcePath":"components/navigation/Menubar.jsx"},{"name":"MenubarSub","sourcePath":"components/navigation/Menubar.jsx"},{"name":"MenubarSubTrigger","sourcePath":"components/navigation/Menubar.jsx"},{"name":"MenubarSubContent","sourcePath":"components/navigation/Menubar.jsx"},{"name":"NavigationMenu","sourcePath":"components/navigation/NavigationMenu.jsx"},{"name":"NavigationMenuList","sourcePath":"components/navigation/NavigationMenu.jsx"},{"name":"NavigationMenuItem","sourcePath":"components/navigation/NavigationMenu.jsx"},{"name":"NavigationMenuTrigger","sourcePath":"components/navigation/NavigationMenu.jsx"},{"name":"NavigationMenuContent","sourcePath":"components/navigation/NavigationMenu.jsx"},{"name":"NavigationMenuLink","sourcePath":"components/navigation/NavigationMenu.jsx"},{"name":"NavigationMenuIndicator","sourcePath":"components/navigation/NavigationMenu.jsx"},{"name":"NavigationMenuViewport","sourcePath":"components/navigation/NavigationMenu.jsx"},{"name":"PageControl","sourcePath":"components/navigation/PageControl.jsx"},{"name":"Pagination","sourcePath":"components/navigation/Pagination.jsx"},{"name":"PaginationContent","sourcePath":"components/navigation/Pagination.jsx"},{"name":"PaginationItem","sourcePath":"components/navigation/Pagination.jsx"},{"name":"PaginationLink","sourcePath":"components/navigation/Pagination.jsx"},{"name":"PaginationPrevious","sourcePath":"components/navigation/Pagination.jsx"},{"name":"PaginationNext","sourcePath":"components/navigation/Pagination.jsx"},{"name":"PaginationEllipsis","sourcePath":"components/navigation/Pagination.jsx"},{"name":"SegmentedControl","sourcePath":"components/navigation/SegmentedControl.jsx"},{"name":"SideNav","sourcePath":"components/navigation/SideNav.jsx"},{"name":"SidebarProvider","sourcePath":"components/navigation/Sidebar.jsx"},{"name":"Sidebar","sourcePath":"components/navigation/Sidebar.jsx"},{"name":"SidebarTrigger","sourcePath":"components/navigation/Sidebar.jsx"},{"name":"SidebarRail","sourcePath":"components/navigation/Sidebar.jsx"},{"name":"SidebarInset","sourcePath":"components/navigation/Sidebar.jsx"},{"name":"SidebarHeader","sourcePath":"components/navigation/Sidebar.jsx"},{"name":"SidebarFooter","sourcePath":"components/navigation/Sidebar.jsx"},{"name":"SidebarContent","sourcePath":"components/navigation/Sidebar.jsx"},{"name":"SidebarGroup","sourcePath":"components/navigation/Sidebar.jsx"},{"name":"SidebarGroupContent","sourcePath":"components/navigation/Sidebar.jsx"},{"name":"SidebarMenu","sourcePath":"components/navigation/Sidebar.jsx"},{"name":"SidebarMenuItem","sourcePath":"components/navigation/Sidebar.jsx"},{"name":"SidebarMenuSub","sourcePath":"components/navigation/Sidebar.jsx"},{"name":"SidebarMenuSubItem","sourcePath":"components/navigation/Sidebar.jsx"},{"name":"SidebarInput","sourcePath":"components/navigation/Sidebar.jsx"},{"name":"SidebarSeparator","sourcePath":"components/navigation/Sidebar.jsx"},{"name":"SidebarGroupLabel","sourcePath":"components/navigation/Sidebar.jsx"},{"name":"SidebarGroupAction","sourcePath":"components/navigation/Sidebar.jsx"},{"name":"SidebarMenuButton","sourcePath":"components/navigation/Sidebar.jsx"},{"name":"SidebarMenuAction","sourcePath":"components/navigation/Sidebar.jsx"},{"name":"SidebarMenuBadge","sourcePath":"components/navigation/Sidebar.jsx"},{"name":"SidebarMenuSubButton","sourcePath":"components/navigation/Sidebar.jsx"},{"name":"SidebarMenuSkeleton","sourcePath":"components/navigation/Sidebar.jsx"},{"name":"SkipLink","sourcePath":"components/navigation/SkipLink.jsx"},{"name":"Steps","sourcePath":"components/navigation/Steps.jsx"},{"name":"TabBar","sourcePath":"components/navigation/TabBar.jsx"},{"name":"Tabs","sourcePath":"components/navigation/Tabs.jsx"},{"name":"TabsList","sourcePath":"components/navigation/Tabs.jsx"},{"name":"TabsTrigger","sourcePath":"components/navigation/Tabs.jsx"},{"name":"TabsContent","sourcePath":"components/navigation/Tabs.jsx"},{"name":"TopNav","sourcePath":"components/navigation/TopNav.jsx"},{"name":"Command","sourcePath":"components/overlay/Command.jsx"},{"name":"CommandDialog","sourcePath":"components/overlay/Command.jsx"},{"name":"CommandInput","sourcePath":"components/overlay/Command.jsx"},{"name":"CommandList","sourcePath":"components/overlay/Command.jsx"},{"name":"CommandEmpty","sourcePath":"components/overlay/Command.jsx"},{"name":"CommandGroup","sourcePath":"components/overlay/Command.jsx"},{"name":"CommandItem","sourcePath":"components/overlay/Command.jsx"},{"name":"CommandShortcut","sourcePath":"components/overlay/Command.jsx"},{"name":"CommandSeparator","sourcePath":"components/overlay/Command.jsx"},{"name":"ContextMenu","sourcePath":"components/overlay/ContextMenu.jsx"},{"name":"ContextMenuTrigger","sourcePath":"components/overlay/ContextMenu.jsx"},{"name":"ContextMenuPortal","sourcePath":"components/overlay/ContextMenu.jsx"},{"name":"ContextMenuContent","sourcePath":"components/overlay/ContextMenu.jsx"},{"name":"ContextMenuGroup","sourcePath":"components/overlay/ContextMenu.jsx"},{"name":"ContextMenuLabel","sourcePath":"components/overlay/ContextMenu.jsx"},{"name":"ContextMenuSeparator","sourcePath":"components/overlay/ContextMenu.jsx"},{"name":"ContextMenuShortcut","sourcePath":"components/overlay/ContextMenu.jsx"},{"name":"ContextMenuItem","sourcePath":"components/overlay/ContextMenu.jsx"},{"name":"ContextMenuCheckboxItem","sourcePath":"components/overlay/ContextMenu.jsx"},{"name":"ContextMenuRadioGroup","sourcePath":"components/overlay/ContextMenu.jsx"},{"name":"ContextMenuRadioItem","sourcePath":"components/overlay/ContextMenu.jsx"},{"name":"ContextMenuSub","sourcePath":"components/overlay/ContextMenu.jsx"},{"name":"ContextMenuSubTrigger","sourcePath":"components/overlay/ContextMenu.jsx"},{"name":"ContextMenuSubContent","sourcePath":"components/overlay/ContextMenu.jsx"},{"name":"Drawer","sourcePath":"components/overlay/Drawer.jsx"},{"name":"DrawerTrigger","sourcePath":"components/overlay/Drawer.jsx"},{"name":"DrawerPortal","sourcePath":"components/overlay/Drawer.jsx"},{"name":"DrawerClose","sourcePath":"components/overlay/Drawer.jsx"},{"name":"DrawerOverlay","sourcePath":"components/overlay/Drawer.jsx"},{"name":"DrawerContent","sourcePath":"components/overlay/Drawer.jsx"},{"name":"DrawerHeader","sourcePath":"components/overlay/Drawer.jsx"},{"name":"DrawerFooter","sourcePath":"components/overlay/Drawer.jsx"},{"name":"DrawerTitle","sourcePath":"components/overlay/Drawer.jsx"},{"name":"DrawerDescription","sourcePath":"components/overlay/Drawer.jsx"},{"name":"DropdownMenu","sourcePath":"components/overlay/DropdownMenu.jsx"},{"name":"DropdownMenuTrigger","sourcePath":"components/overlay/DropdownMenu.jsx"},{"name":"DropdownMenuPortal","sourcePath":"components/overlay/DropdownMenu.jsx"},{"name":"DropdownMenuContent","sourcePath":"components/overlay/DropdownMenu.jsx"},{"name":"DropdownMenuGroup","sourcePath":"components/overlay/DropdownMenu.jsx"},{"name":"DropdownMenuLabel","sourcePath":"components/overlay/DropdownMenu.jsx"},{"name":"DropdownMenuSeparator","sourcePath":"components/overlay/DropdownMenu.jsx"},{"name":"DropdownMenuShortcut","sourcePath":"components/overlay/DropdownMenu.jsx"},{"name":"DropdownMenuItem","sourcePath":"components/overlay/DropdownMenu.jsx"},{"name":"DropdownMenuCheckboxItem","sourcePath":"components/overlay/DropdownMenu.jsx"},{"name":"DropdownMenuRadioGroup","sourcePath":"components/overlay/DropdownMenu.jsx"},{"name":"DropdownMenuRadioItem","sourcePath":"components/overlay/DropdownMenu.jsx"},{"name":"DropdownMenuSub","sourcePath":"components/overlay/DropdownMenu.jsx"},{"name":"DropdownMenuSubTrigger","sourcePath":"components/overlay/DropdownMenu.jsx"},{"name":"DropdownMenuSubContent","sourcePath":"components/overlay/DropdownMenu.jsx"},{"name":"HoverCard","sourcePath":"components/overlay/HoverCard.jsx"},{"name":"HoverCardTrigger","sourcePath":"components/overlay/HoverCard.jsx"},{"name":"HoverCardContent","sourcePath":"components/overlay/HoverCard.jsx"},{"name":"Popover","sourcePath":"components/overlay/Popover.jsx"},{"name":"PopoverTrigger","sourcePath":"components/overlay/Popover.jsx"},{"name":"PopoverContent","sourcePath":"components/overlay/Popover.jsx"},{"name":"PopoverHeader","sourcePath":"components/overlay/Popover.jsx"},{"name":"PopoverTitle","sourcePath":"components/overlay/Popover.jsx"},{"name":"PopoverDescription","sourcePath":"components/overlay/Popover.jsx"},{"name":"Portal","sourcePath":"components/overlay/Portal.jsx"},{"name":"Sheet","sourcePath":"components/overlay/Sheet.jsx"},{"name":"SheetTrigger","sourcePath":"components/overlay/Sheet.jsx"},{"name":"SheetClose","sourcePath":"components/overlay/Sheet.jsx"},{"name":"SheetContent","sourcePath":"components/overlay/Sheet.jsx"},{"name":"SheetHeader","sourcePath":"components/overlay/Sheet.jsx"},{"name":"SheetFooter","sourcePath":"components/overlay/Sheet.jsx"},{"name":"SheetTitle","sourcePath":"components/overlay/Sheet.jsx"},{"name":"SheetDescription","sourcePath":"components/overlay/Sheet.jsx"}],"publicHelpers":[{"name":"markerVariants","sourcePath":"components/ai/Marker.jsx"},{"name":"useMessageScroller","sourcePath":"components/ai/MessageScroller.jsx"},{"name":"useMessageScrollerVisibility","sourcePath":"components/ai/MessageScroller.jsx"},{"name":"useMessageScrollerScrollable","sourcePath":"components/ai/MessageScroller.jsx"},{"name":"useChart","sourcePath":"components/data/Chart.jsx"},{"name":"badgeVariants","sourcePath":"components/display/Badge.jsx"},{"name":"useDirection","sourcePath":"components/display/Direction.jsx"},{"name":"toast","sourcePath":"components/feedback/Toast.jsx"},{"name":"buttonVariants","sourcePath":"components/forms/Button.jsx"},{"name":"buttonGroupVariants","sourcePath":"components/forms/ButtonGroup.jsx"},{"name":"useComboboxAnchor","sourcePath":"components/forms/Combobox.jsx"},{"name":"toggleVariants","sourcePath":"components/forms/Toggle.jsx"},{"name":"parseLegalInline","sourcePath":"components/marketing/LegalDocument.jsx"},{"name":"readThemePreference","sourcePath":"components/marketing/ThemeToggle.jsx"},{"name":"resolveTheme","sourcePath":"components/marketing/ThemeToggle.jsx"},{"name":"writeThemeCookie","sourcePath":"components/marketing/ThemeToggle.jsx"},{"name":"writeThemePreference","sourcePath":"components/marketing/ThemeToggle.jsx"},{"name":"applyTheme","sourcePath":"components/marketing/ThemeToggle.jsx"},{"name":"swapTheme","sourcePath":"components/marketing/ThemeToggle.jsx"},{"name":"themeInitScript","sourcePath":"components/marketing/ThemeToggle.jsx"},{"name":"navigationMenuTriggerStyle","sourcePath":"components/navigation/NavigationMenu.jsx"},{"name":"useSidebar","sourcePath":"components/navigation/Sidebar.jsx"}],"sourceHashes":{"components/ai/AgentRun.jsx":"0832d281e7c1","components/ai/Bubble.jsx":"741d8f819696","components/ai/ChatMessage.jsx":"7c90d3857cda","components/ai/Citation.jsx":"054a85d5bfdb","components/ai/Confirmation.jsx":"fcaa628f7207","components/ai/Conversation.jsx":"2024382724fa","components/ai/DocumentCard.jsx":"48daf1ccfe9c","components/ai/FeedbackBar.jsx":"40ed57ca1018","components/ai/GeneratedImage.jsx":"865b13af21ed","components/ai/Marker.jsx":"1b182df49fde","components/ai/Message.jsx":"7551262b2699","components/ai/MessageScroller.jsx":"ce7ebe10c948","components/ai/ModelSelector.jsx":"e51ece369680","components/ai/Player.jsx":"f3f439a52aa6","components/ai/PromptComposer.jsx":"5bf743baf810","components/ai/PromptSteps.jsx":"715cb10e1704","components/ai/Reasoning.jsx":"6c6bbb7c8f15","components/ai/RichComposer.jsx":"4fe6cf2a809b","components/ai/Sandbox.jsx":"15563b201675","components/ai/SelectionQuote.jsx":"e93d0a89da66","components/ai/SourceCard.jsx":"1ea2fa4c5f3b","components/ai/Suggestions.jsx":"d5946e3296d8","components/ai/Task.jsx":"973820c75d78","components/ai/Todo.jsx":"9a9029545d8d","components/ai/ToolCall.jsx":"9b88fad454ca","components/ai/Transcript.jsx":"b041e04d7ddc","components/ai/UsageMeter.jsx":"00fdc6404e5d","components/ai/WebPreview.jsx":"18215919e633","components/code/CodeBlock.jsx":"ea37e194ea95","components/code/Console.jsx":"d0d90a82e2ee","components/code/CopyField.jsx":"be664d12431f","components/code/Diff.jsx":"8eb0b8b6a2a1","components/code/EnvList.jsx":"fe17048b90d2","components/code/Exception.jsx":"1d0f25b88e80","components/code/Terminal.jsx":"04af89d33f9e","components/data/BarChart.jsx":"7555a7c64da2","components/data/Chart.jsx":"9e7f92b5440f","components/data/DonutChart.jsx":"24393d447fb8","components/data/EmptyState.jsx":"619fd2d2abf4","components/data/KeyValueList.jsx":"7709582f927c","components/data/LineChart.jsx":"5d04a6d7770a","components/data/Skeleton.jsx":"601f46bb638d","components/data/Sparkline.jsx":"5f8f035c3536","components/data/Stat.jsx":"56900e06839b","components/data/StatusDot.jsx":"c27dfa6b00e6","components/data/Table.jsx":"a30bc6c937a8","components/dates/Calendar.jsx":"522ffd7934a1","components/dates/TimePicker.jsx":"d9909e6a30cf","components/display/Accordion.jsx":"183558cb3ac0","components/display/AspectRatio.jsx":"d0db5f008a16","components/display/Avatar.jsx":"37c0008a5a85","components/display/Badge.jsx":"0d8d89a18c6b","components/display/Card.jsx":"d8515e68ac24","components/display/Carousel.jsx":"9509be264e0d","components/display/Collapsible.jsx":"23190a4bbbb8","components/display/Decor.jsx":"807df653c84d","components/display/Direction.jsx":"496b315ce934","components/display/Divider.jsx":"5e45b6ebf9a8","components/display/Item.jsx":"bf3b1f4f0356","components/display/Kbd.jsx":"fe5bf3150fc5","components/display/Link.jsx":"dedd1c52b07a","components/display/Resizable.jsx":"835e6b198a23","components/display/ScrollArea.jsx":"2157e7e04c79","components/display/Separator.jsx":"f2a070d3dd77","components/display/Tag.jsx":"331d57912f02","components/display/Timeline.jsx":"ad14fdfb0fb1","components/display/Toolbar.jsx":"a341bac26cb0","components/display/TreeList.jsx":"ce66060b7d51","components/feedback/Alert.jsx":"1ae64761d36a","components/feedback/AlertDialog.jsx":"583bff9a19af","components/feedback/Banner.jsx":"38132ec49dd7","components/feedback/ConfirmDialog.jsx":"dd0042f6af61","components/feedback/Dialog.jsx":"a32521a9cf32","components/feedback/Loader.jsx":"3c13701698c8","components/feedback/Progress.jsx":"7d111a9a19be","components/feedback/Spinner.jsx":"9a01865b321c","components/feedback/Toast.jsx":"b1d377534ae2","components/feedback/Tooltip.jsx":"a98ab6c33a05","components/files/Attachment.jsx":"92bccc1cf5b7","components/files/FileDrop.jsx":"a3310ff879a8","components/files/FileTile.jsx":"741aaf2f0dd0","components/files/FileTypeIcon.jsx":"2d4ae99e2cca","components/finance/PaymentCard.jsx":"0f6e45d12319","components/forms/Button.jsx":"6e949a3418a5","components/forms/ButtonGroup.jsx":"07ca6624effb","components/forms/ButtonTile.jsx":"febe5c79769d","components/forms/Checkbox.jsx":"1afc1d97e802","components/forms/Combobox.jsx":"c2803e2774b3","components/forms/Field.jsx":"d319ab2daa7c","components/forms/IconButton.jsx":"cd560e6eadd9","components/forms/Input.jsx":"fd0b64492be2","components/forms/InputGroup.jsx":"6c3867b53c3c","components/forms/InputOTP.jsx":"5841fe4d0f6b","components/forms/Label.jsx":"e578f162c6ca","components/forms/NativeSelect.jsx":"bed59129bf67","components/forms/NumberInput.jsx":"a22ffb1e9dd1","components/forms/Questionnaire.jsx":"f24c40df0760","components/forms/Radio.jsx":"8f8ea67b2fd0","components/forms/Select.jsx":"8712ee3204d7","components/forms/Slider.jsx":"a19e75869c62","components/forms/Switch.jsx":"6278a4ba4d4f","components/forms/Textarea.jsx":"0a2ccff0953b","components/forms/Toggle.jsx":"c96f425770e9","components/icons/Icon.jsx":"31861bb3664b","components/marketing/Counter.jsx":"75351126284e","components/marketing/FeatureCard.jsx":"1c3a15c5c169","components/marketing/Hero.jsx":"5e20cf4d258d","components/marketing/LanguageSwitch.jsx":"a02c9ca71364","components/marketing/LegalDocument.jsx":"f97c15396a78","components/marketing/Marquee.jsx":"004cf92bb53c","components/marketing/Reveal.jsx":"3a0eed67379d","components/marketing/Section.jsx":"57b3777e6912","components/marketing/SiteFooter.jsx":"529d2c51ff27","components/marketing/SiteHeader.jsx":"72e5574ae555","components/marketing/ThemeToggle.jsx":"ec816e2bccf6","components/navigation/AccountCard.jsx":"3c1c0c90e313","components/navigation/Breadcrumbs.jsx":"607db7ed9c96","components/navigation/Menubar.jsx":"296bbe483b68","components/navigation/NavigationMenu.jsx":"66f470136ab0","components/navigation/PageControl.jsx":"6eeae89fb9d5","components/navigation/Pagination.jsx":"f585b061ff42","components/navigation/SegmentedControl.jsx":"1616dc42e9a5","components/navigation/SideNav.jsx":"261c903ccf4e","components/navigation/Sidebar.jsx":"2d9499bed394","components/navigation/SkipLink.jsx":"bccd54bd3d38","components/navigation/Steps.jsx":"877acf0912b3","components/navigation/TabBar.jsx":"052216b90603","components/navigation/Tabs.jsx":"8a0ff39d984d","components/navigation/TopNav.jsx":"ffd9465ae123","components/overlay/Command.jsx":"d4ddd51933d2","components/overlay/ContextMenu.jsx":"874fcff745e4","components/overlay/Drawer.jsx":"144a23e8ff6f","components/overlay/DropdownMenu.jsx":"0b501916c3a7","components/overlay/HoverCard.jsx":"63754edbad17","components/overlay/Popover.jsx":"5627f41ed102","components/overlay/Portal.jsx":"0f1fdfed26e4","components/overlay/Sheet.jsx":"4984c7140078","components/runtime/runtime.jsx":"f625145adaa5"},"inlinedExternals":[],"unexposedExports":[{"name":"computeDiff","sourcePath":"components/code/Diff.jsx"},{"name":"cssPct","sourcePath":"components/runtime/runtime.jsx"},{"name":"escapeLayerContext","sourcePath":"components/overlay/Portal.jsx"},{"name":"formatTime","sourcePath":"components/ai/Player.jsx"},{"name":"inertProp","sourcePath":"components/marketing/Marquee.jsx"},{"name":"injectEfCss","sourcePath":"components/runtime/runtime.jsx"},{"name":"isElementOfType","sourcePath":"components/runtime/runtime.jsx"},{"name":"mergeRefs","sourcePath":"components/runtime/runtime.jsx"},{"name":"prefersReducedMotion","sourcePath":"components/runtime/runtime.jsx"},{"name":"styleRef","sourcePath":"components/runtime/runtime.jsx"},{"name":"styleRefUnder","sourcePath":"components/runtime/runtime.jsx"},{"name":"useAnchoredStyle","sourcePath":"components/overlay/Portal.jsx"},{"name":"useEscapeLayer","sourcePath":"components/overlay/Portal.jsx"},{"name":"useFieldProps","sourcePath":"components/forms/Field.jsx"},{"name":"useHydrated","sourcePath":"components/overlay/Portal.jsx"},{"name":"useIsoLayoutEffect","sourcePath":"components/runtime/runtime.jsx"},{"name":"usePresence","sourcePath":"components/runtime/runtime.jsx"},{"name":"useScrollLock","sourcePath":"components/overlay/Portal.jsx"},{"name":"useThemeState","sourcePath":"components/marketing/ThemeToggle.jsx"}]} */
 
 (() => {
 
@@ -356,6 +356,43 @@ function prefersReducedMotion() {
   return typeof window !== 'undefined' && !!window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 }
 /**
+ * Keep an overlay mounted while its exit animation runs (MD121).
+ *
+ * `open` is the overlay's own state; `ref` is the outermost node it renders (a panel, or the dialog overlay that
+ * holds the panel). Returns `present` (render the overlay) and `state` ("open" or "closed", for data-state). When
+ * `open` turns false the node stays, closed, until every CSS animation named `...-out` under it has finished: the
+ * exit keyframes of the components carry that suffix, so a spinner or any other loop inside never holds it up. With
+ * no such animation running (reduced motion without the fade, no CSS, a browser without getAnimations, jsdom) the
+ * node goes at once, in the same commit, so nothing flashes. A reopen during the exit cancels the wait: the same
+ * node is open again and its enter animation restarts. Lowercase: internal.
+ */
+function usePresence(open, ref) {
+  const [mounted, setMounted] = React.useState(open);
+  if (open && !mounted) setMounted(true);
+  useIsoLayoutEffect(() => {
+    if (open || !mounted) return undefined;
+    const node = ref?.current;
+    const exits = node && typeof node.getAnimations === 'function' ? node.getAnimations({
+      subtree: true
+    }).filter(a => typeof a.animationName === 'string' && a.animationName.endsWith('-out')) : [];
+    if (!exits.length) {
+      setMounted(false);
+      return undefined;
+    }
+    let live = true;
+    Promise.allSettled(exits.map(a => a.finished)).then(() => {
+      if (live) setMounted(false);
+    });
+    return () => {
+      live = false;
+    };
+  }, [open, mounted, ref]);
+  return {
+    present: open || mounted,
+    state: open ? 'open' : 'closed'
+  };
+}
+/**
  * Point several refs at one node.
  *
  * A component that forwards a ref usually needs the same node itself — to
@@ -370,7 +407,7 @@ function mergeRefs(...refs) {
     }
   };
 }
-Object.assign(__ds_scope, { injectEfCss, cssPct, styleRef, styleRefUnder, useIsoLayoutEffect, isElementOfType, prefersReducedMotion, mergeRefs });
+Object.assign(__ds_scope, { injectEfCss, cssPct, styleRef, styleRefUnder, useIsoLayoutEffect, isElementOfType, prefersReducedMotion, usePresence, mergeRefs });
 })(); } catch (e) { __ds_ns.__errors.push({ path: "components/runtime/runtime.jsx", error: String((e && e.message) || e) }); }
 
 // components/ai/AgentRun.jsx
@@ -385,7 +422,7 @@ const CSS = `
 .ef-agentrun__step--active .ef-agentrun__dot{border-color:var(--accent-edge);color:var(--accent-edge)}
 .ef-agentrun__step--error .ef-agentrun__dot{background:var(--status-danger-bg);border-color:var(--status-danger-solid);color:var(--status-danger-text)}
 .ef-agentrun__pip{display:inline-block;width:5px;height:5px;border-radius:var(--radius-full);background:currentColor}
-.ef-agentrun__spin{display:inline-flex;animation:ef-agentrun-spin .9s linear infinite}
+.ef-agentrun__spin{display:inline-flex;animation:ef-agentrun-spin var(--dur-spin) linear infinite}
 @keyframes ef-agentrun-spin{to{transform:rotate(360deg)}}
 .ef-agentrun__line{width:1px;flex:1;background:var(--border-default);margin:var(--space-1) 0}
 .ef-agentrun__step--done .ef-agentrun__line{background:var(--accent-subtle-border)}
@@ -581,6 +618,9 @@ const CSS = `
 .ef-citation__wrap{position:relative;display:inline}
 .ef-citation__pop{position:absolute;bottom:calc(100% + 8px);inset-inline-start:0;width:280px;background:var(--surface-card);border:1px solid var(--border-strong);border-radius:var(--radius-md);box-shadow:var(--shadow-md);padding:var(--space-3);z-index:var(--z-popover);animation:ef-citation-in var(--dur-fast) var(--ease-enter);cursor:default;text-align:start}
 @keyframes ef-citation-in{from{opacity:0;transform:translateY(3px)}}
+@keyframes ef-citation-out{to{opacity:0;transform:translateY(3px)}}
+.ef-citation__pop[data-state="closed"]{animation:ef-reduce-fade-out var(--dur-fast) var(--ease-exit) forwards;pointer-events:none}
+@media (prefers-reduced-motion:no-preference){.ef-citation__pop[data-state="closed"]{animation:ef-citation-out var(--dur-fast) var(--ease-exit) forwards}}
 .ef-citation__pop-name{display:flex;align-items:center;gap:var(--space-2);font-family:var(--font-mono);font-size:var(--text-2xs);color:var(--text-muted)}
 .ef-citation__pop-title{font-size:var(--text-md);font-weight:600;color:var(--text-primary);line-height:1.4;margin-top:var(--space-1)}
 .ef-citation__pop-desc{font-size:var(--text-sm);line-height:1.55;color:var(--text-secondary);margin-top:var(--space-1);display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}
@@ -624,6 +664,11 @@ function Citation({
   const [open, setOpen] = React.useState(false);
   const [i, setI] = React.useState(0);
   const t = React.useRef(null);
+  const popRef = React.useRef(null);
+  const {
+    present,
+    state
+  } = __ds_scope.usePresence(open, popRef);
   const list = sources && sources.length ? sources : null;
   const link = safeUrl(href);
   const enter = () => {
@@ -664,9 +709,11 @@ function Citation({
         setOpen(false);
       }
     }
-  }), chip, open ? /*#__PURE__*/React.createElement("span", {
+  }), chip, present ? /*#__PURE__*/React.createElement("span", {
+    ref: popRef,
     className: "ef-citation__pop",
-    role: "dialog"
+    role: "dialog",
+    "data-state": state
   }, /*#__PURE__*/React.createElement("span", {
     className: "ef-citation__pop-name"
   }, /*#__PURE__*/React.createElement(__ds_scope.Icon, {
@@ -836,6 +883,9 @@ const CSS = `
 @media (hover:hover){.ef-conversation__jump:hover{color:var(--text-primary)}}
 .ef-conversation__jump:focus-visible{outline:none;box-shadow:var(--focus-ring)}
 @keyframes ef-conversation-in{from{opacity:0;transform:translateX(-50%) translateY(4px)}}
+@keyframes ef-conversation-out{to{opacity:0;transform:translateX(-50%) translateY(4px)}}
+.ef-conversation__jump[data-state="closed"]{animation:ef-reduce-fade-out var(--dur-fast) var(--ease-exit) forwards;pointer-events:none}
+@media (prefers-reduced-motion:no-preference){.ef-conversation__jump[data-state="closed"]{animation:ef-conversation-out var(--dur-fast) var(--ease-exit) forwards}}
 @media (pointer:coarse){.ef-conversation__jump{min-height:var(--tap-min)}}
 @media (prefers-reduced-motion:reduce){.ef-conversation__jump{--ef-motion-guard:var(--dur-fast);animation-name:ef-reduce-fade}}
 `;
@@ -883,6 +933,11 @@ const Conversation = React.forwardRef(function Conversation({
     ro.observe(inner.current);
     return () => ro.disconnect();
   }, [autoStick]);
+  const jumpRef = React.useRef(null);
+  const {
+    present: jumpPresent,
+    state: jumpState
+  } = __ds_scope.usePresence(!atBottom, jumpRef);
   return /*#__PURE__*/React.createElement("div", _extends({
     ref: __ds_scope.mergeRefs(ref, __ds_scope.styleRef({
       height
@@ -903,8 +958,10 @@ const Conversation = React.forwardRef(function Conversation({
   }, /*#__PURE__*/React.createElement("div", {
     ref: inner,
     className: "ef-conversation__inner"
-  }, children)), !atBottom ? /*#__PURE__*/React.createElement("button", {
+  }, children)), jumpPresent ? /*#__PURE__*/React.createElement("button", {
     type: "button",
+    ref: jumpRef,
+    "data-state": jumpState,
     className: "ef-conversation__jump",
     onClick: () => toBottom()
   }, /*#__PURE__*/React.createElement(__ds_scope.Icon, {
@@ -1130,10 +1187,13 @@ const CSS = `
 .ef-genimg__scrim--top{top:0;height:34%;background:linear-gradient(to bottom,var(--media-scrim),transparent)}
 .ef-genimg__prompt{position:absolute;top:13px;inset-inline:16px;font-size:var(--text-sm);font-weight:var(--weight-semibold);color:var(--text-primary);z-index:2}
 .ef-genimg--busy .ef-genimg__prompt,.ef-genimg--complete .ef-genimg__prompt{color:var(--text-on-media)}
-.ef-genimg__status{position:absolute;inset-inline-start:16px;bottom:13px;font-size:var(--text-sm);color:var(--text-on-media-muted);z-index:2;animation:ef-genimg-pulse 1.6s ease-in-out infinite}
+.ef-genimg__status{position:absolute;inset-inline-start:16px;bottom:13px;font-size:var(--text-sm);color:var(--text-on-media-muted);z-index:2;animation:ef-genimg-status-pulse 1.6s ease-in-out infinite}
+@keyframes ef-genimg-status-pulse{0%,100%{opacity:var(--ef-pulse-floor)}50%{opacity:1}}
 .ef-genimg__center{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:var(--space-3);color:var(--text-muted);font-size:var(--text-sm);z-index:2;padding:var(--space-5);text-align:center}
-.ef-genimg__actions{position:absolute;top:9px;inset-inline-end:9px;display:flex;gap:var(--space-0-5);z-index:3;opacity:0;transition:opacity var(--dur-fast) var(--ease-enter)}
-.ef-genimg--complete:hover .ef-genimg__actions,.ef-genimg--complete:focus-within .ef-genimg__actions{opacity:1}
+.ef-genimg__actions{position:absolute;top:9px;inset-inline-end:9px;display:flex;gap:var(--space-0-5);z-index:3;transition:opacity var(--dur-fast) var(--ease-enter)}
+/* Revealed by a pointer that can hover; shown at rest where nothing hovers, so a touch user can reach the actions. */
+@media (hover:hover){.ef-genimg__actions{opacity:0}.ef-genimg--complete:hover .ef-genimg__actions,.ef-genimg--complete:focus-within .ef-genimg__actions{opacity:1}}
+@media (hover:none),(pointer:coarse){.ef-genimg__actions{opacity:1}}
 .ef-genimg__act{display:inline-flex;align-items:center;justify-content:center;width:30px;height:30px;border:none;cursor:pointer;color:var(--text-on-media);background:var(--media-scrim-soft);border-radius:var(--radius-sm);backdrop-filter:blur(2px);transition:background var(--dur-fast) var(--ease-enter)}
 @media (hover:hover){.ef-genimg__act:hover{background:var(--media-scrim-strong)}}
 .ef-genimg__act:focus-visible{outline:none;box-shadow:var(--focus-ring)}
@@ -2077,7 +2137,7 @@ const CSS = `
 .ef-reasoning__head:focus-visible{outline:none;box-shadow:var(--focus-ring)}
 .ef-reasoning__glyph{display:inline-flex;color:var(--text-muted)}
 .ef-reasoning--streaming .ef-reasoning__glyph{animation:ef-reasoning-pulse 1.2s var(--ease-enter) infinite}
-@keyframes ef-reasoning-pulse{0%,100%{opacity:1}50%{opacity:.35}}
+@keyframes ef-reasoning-pulse{0%,100%{opacity:1}50%{opacity:var(--ef-pulse-floor)}}
 .ef-reasoning__chev{margin-inline-start:auto;display:inline-flex;color:var(--text-muted);transition:transform var(--dur-base) var(--ease-enter)}
 .ef-reasoning--open .ef-reasoning__chev{transform:rotate(180deg)}
 .ef-reasoning__body{padding:var(--space-0-5) var(--space-4) var(--space-3);font-size:var(--text-md);line-height:1.65;color:var(--text-secondary);white-space:pre-wrap;border-top:1px dashed var(--border-default);padding-top:var(--space-3);margin:0 0}
@@ -2394,7 +2454,7 @@ const CSS = `
 .ef-sandbox__title{flex:1;min-width:0;font-family:var(--font-mono);font-size:var(--text-sm);color:var(--text-primary);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .ef-sandbox--danger .ef-sandbox__title{color:var(--status-danger-text)}
 .ef-sandbox__meta{font-size:var(--text-xs);color:var(--text-muted);display:inline-flex;align-items:center;gap:var(--space-2)}
-.ef-sandbox__spin{display:inline-flex;color:var(--text-secondary);animation:ef-sandbox-spin 1s linear infinite}
+.ef-sandbox__spin{display:inline-flex;color:var(--text-secondary);animation:ef-sandbox-spin var(--dur-spin) linear infinite}
 @keyframes ef-sandbox-spin{to{transform:rotate(360deg)}}
 .ef-sandbox__body{display:grid;grid-template-rows:0fr;transition:grid-template-rows var(--dur-base) var(--ease-enter)}
 .ef-sandbox--open .ef-sandbox__body{grid-template-rows:1fr}
@@ -2725,7 +2785,7 @@ const CSS = `
 .ef-task__detail code{font-family:var(--font-mono);font-size:var(--text-xs);background:var(--surface-sunken);border-radius:var(--radius-xs);padding:1px var(--space-1);color:var(--text-secondary)}
 .ef-task__rail{width:1px;height:13px;margin-inline-start:var(--space-4);background:var(--border-default);flex:none}
 .ef-task--streaming .ef-task__row:last-of-type{animation:ef-task-pulse 1.2s var(--ease-enter) infinite}
-@keyframes ef-task-pulse{0%,100%{opacity:1}50%{opacity:.45}}
+@keyframes ef-task-pulse{0%,100%{opacity:1}50%{opacity:var(--ef-pulse-floor)}}
 `;
 function Task({
   items = [],
@@ -2783,7 +2843,7 @@ const CSS = `
 .ef-todo__mark{position:relative;flex:none;width:var(--icon-md);height:var(--icon-md);margin-top:var(--space-0-5);border-radius:50%;border:1px solid var(--border-strong);display:inline-flex;align-items:center;justify-content:center;transition:background var(--dur-fast) var(--ease-enter),border-color var(--dur-fast) var(--ease-enter)}
 .ef-todo__item--progress .ef-todo__mark{border-color:transparent;color:var(--text-primary)}
 .ef-todo__item--done .ef-todo__mark{background:var(--accent);border-color:var(--accent-edge);color:var(--accent-contrast)}
-.ef-todo__spin{display:inline-flex;animation:ef-todo-spin 1s linear infinite}
+.ef-todo__spin{display:inline-flex;animation:ef-todo-spin var(--dur-spin) linear infinite}
 @keyframes ef-todo-spin{to{transform:rotate(360deg)}}
 .ef-todo__text{min-width:0;color:var(--text-primary);line-height:1.55;transition:color var(--dur-fast) var(--ease-enter)}
 .ef-todo__item--done .ef-todo__text{color:var(--text-muted);text-decoration:line-through}
@@ -2863,7 +2923,7 @@ const CSS = `
 .ef-toolcall__head{display:flex;align-items:center;gap:var(--space-2);width:100%;padding:var(--space-2) var(--space-3);border:none;background:none;cursor:pointer;text-align:start;font-family:var(--font-mono);font-size:var(--text-sm);color:var(--text-primary)}
 .ef-toolcall__head:focus-visible{outline:none;box-shadow:var(--focus-ring)}
 .ef-toolcall--pending .ef-toolcall__head{animation:ef-toolcall-pulse 1.4s var(--ease-enter) infinite}
-@keyframes ef-toolcall-pulse{0%,100%{opacity:1}50%{opacity:.55}}
+@keyframes ef-toolcall-pulse{0%,100%{opacity:1}50%{opacity:var(--ef-pulse-floor)}}
 .ef-toolcall__icon{display:inline-flex;color:var(--text-muted)}
 .ef-toolcall__verb{color:var(--text-muted);font-family:var(--font-sans);font-size:var(--text-sm)}
 .ef-toolcall__state{margin-inline-start:auto;display:inline-flex;align-items:center;gap:var(--space-2);font-family:var(--font-sans);font-size:var(--text-xs);font-weight:500;flex:none}
@@ -2872,7 +2932,7 @@ const CSS = `
 .ef-toolcall__state--busy{color:var(--text-secondary)}
 .ef-toolcall__state--success{color:var(--success-600,var(--text-secondary))}
 .ef-toolcall__state--danger{color:var(--status-danger-text)}
-.ef-toolcall__spin{display:inline-flex;animation:ef-toolcall-spin .9s linear infinite}
+.ef-toolcall__spin{display:inline-flex;animation:ef-toolcall-spin var(--dur-spin) linear infinite}
 @keyframes ef-toolcall-spin{to{transform:rotate(360deg)}}
 .ef-toolcall__chev{display:inline-flex;color:var(--text-muted);transition:transform var(--dur-base) var(--ease-enter)}
 .ef-toolcall--open .ef-toolcall__chev{transform:rotate(180deg)}
@@ -3994,8 +4054,11 @@ const CSS = `
 @media (hover:hover){.ef-env__row:hover{background:var(--surface-subtle)}}
 .ef-env__name{flex:none;font-family:var(--font-mono);font-size:var(--text-sm);color:var(--text-muted)}
 .ef-env__val{flex:1;min-width:0;margin-inline-start:auto;text-align:end;font-family:var(--font-mono);font-size:var(--text-sm);color:var(--text-primary);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.ef-env__row .ef-env__btn{opacity:0;width:var(--control-h-xs);height:var(--control-h-xs)}
-.ef-env__row:hover .ef-env__btn,.ef-env__row .ef-env__btn:focus-visible,.ef-env__row .ef-env__btn--done{opacity:1}
+.ef-env__row .ef-env__btn{width:var(--control-h-xs);height:var(--control-h-xs)}
+/* Revealed by a pointer that can hover; shown at rest where nothing hovers, so a touch user can copy and reveal a value. */
+@media (hover:hover){.ef-env__row .ef-env__btn{opacity:0}.ef-env__row:hover .ef-env__btn,.ef-env__row:focus-within .ef-env__btn{opacity:1}}
+@media (hover:none),(pointer:coarse){.ef-env__row .ef-env__btn{opacity:1}}
+.ef-env__row .ef-env__btn--done{opacity:1}
 @media (pointer:coarse){.ef-env__btn{min-width:var(--tap-min);min-height:var(--tap-min)}}
 `;
 const MASK = '••••••••';
@@ -4855,7 +4918,6 @@ const CSS = `
 .ef-skel[data-shimmer]{background:linear-gradient(90deg,var(--border-default) 0%,var(--border-strong) 50%,var(--border-default) 100%) 100% 0/200% 100%;animation:ef-skel-shimmer var(--dur-loop-slow) linear infinite}
 @keyframes ef-skel-shimmer{to{background-position:-100% 0}}
 @media (forced-colors:active){.ef-skel,.ef-skel[data-shimmer]{forced-color-adjust:none;background:GrayText}}
-@media (prefers-reduced-motion:reduce){.ef-skel[data-shimmer]{background:var(--border-default);animation:none}}
 `;
 const Skeleton = React.forwardRef(function Skeleton({
   shimmer = false,
@@ -6982,8 +7044,7 @@ function _extends() { return _extends = Object.assign ? Object.assign.bind() : f
 const CSS = `
 .ef-loader{display:inline-flex;align-items:baseline;font-family:var(--font-sans);font-size:var(--text-md);color:var(--text-muted)}
 .ef-loader--pulse{animation:ef-loader-pulse var(--ef-loader-dur,1.4s) ease-in-out infinite both}
-@keyframes ef-loader-pulse{0%,100%{opacity:.4}50%{opacity:1}}
-@media (prefers-reduced-motion:reduce){.ef-loader--pulse{animation:none}}
+@keyframes ef-loader-pulse{0%,100%{opacity:var(--ef-pulse-floor)}50%{opacity:1}}
 .ef-loader--shimmer{background:linear-gradient(90deg,color-mix(in oklab,currentColor 40%,transparent) 0%,color-mix(in oklab,currentColor 40%,transparent) 35%,currentColor 50%,color-mix(in oklab,currentColor 40%,transparent) 65%,color-mix(in oklab,currentColor 40%,transparent) 100%);background-size:200% 100%;-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;animation:ef-loader-shimmer var(--ef-loader-dur,2.2s) linear infinite}
 @keyframes ef-loader-shimmer{0%{background-position:100% 0}100%{background-position:-100% 0}}
 .ef-loader__dots{margin-inline-start:var(--space-0-5);display:inline-flex;-webkit-text-fill-color:currentColor}
@@ -7034,7 +7095,7 @@ const CSS = `
 .ef-progress[data-state="indeterminate"] .ef-progress__indicator{width:45%;animation:ef-progress-indeterminate 1.2s ease-in-out infinite}
 @keyframes ef-progress-indeterminate{0%{transform:translateX(-110%)}50%{transform:translateX(125%)}100%{transform:translateX(240%)}}
 [dir="rtl"] .ef-progress[data-state="indeterminate"] .ef-progress__indicator{animation-direction:reverse}
-@media (prefers-reduced-motion:reduce){.ef-progress__indicator{transition:none}.ef-progress[data-state="indeterminate"] .ef-progress__indicator{animation:none;transform:none}}
+@media (prefers-reduced-motion:reduce){.ef-progress__indicator{transition:none}}
 `;
 function classes(...values) {
   return values.filter(Boolean).join(' ');
@@ -7104,7 +7165,7 @@ try { (() => {
 function _extends() { return _extends = Object.assign ? Object.assign.bind() : function (n) { for (var e = 1; e < arguments.length; e++) { var t = arguments[e]; for (var r in t) ({}).hasOwnProperty.call(t, r) && (n[r] = t[r]); } return n; }, _extends.apply(null, arguments); }
 const CSS = `
 @keyframes ef-spinner{to{transform:rotate(360deg)}}
-.ef-spinner{display:inline-block;flex:none;color:var(--text-muted);animation:ef-spinner .7s linear infinite}
+.ef-spinner{display:inline-block;flex:none;color:var(--text-muted);animation:ef-spinner var(--dur-spin) linear infinite}
 `;
 const Spinner = React.forwardRef(function Spinner({
   className,
@@ -7507,7 +7568,7 @@ const CSS = `
 .ef-btn--link{height:auto;padding:0;background:transparent;color:var(--text-link);text-underline-offset:4px}
 @media (hover:hover){.ef-btn--link:hover{color:var(--text-link-hover);text-decoration:none}}
 @keyframes ef-spin{to{transform:rotate(360deg)}}
-.ef-btn__spin{display:inline-flex;animation:ef-spin .7s linear infinite}
+.ef-btn__spin{display:inline-flex;animation:ef-spin var(--dur-spin) linear infinite}
 /* The trailing arrow bubble (MD94, iconBubble). The bubble takes the button's label colour (--ef-btn-ink) and the arrow takes
    the button's own fill (--ef-btn-fill), so the bubble reads on the button and the arrow reads on the bubble in light and
    dark (primary: ink on copper 6.37:1 both ways; copper on copper was 1.10:1). A bubble button is always a pill, and the circle
@@ -7645,7 +7706,6 @@ const CSS = `
 .ef-attachment-group{display:flex;gap:var(--space-2);max-width:100%;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:thin;mask-image:linear-gradient(to right,transparent,currentColor 14px,currentColor calc(100% - 14px),transparent);padding-inline:var(--space-4)}
 .ef-attachment-group>.ef-attachment{flex:0 0 auto;min-width:220px;scroll-snap-align:start}
 @keyframes ef-attachment-shimmer{to{background-position:-200% 0}}
-@media (prefers-reduced-motion:reduce){.ef-attachment[data-state="uploading"] .ef-attachment__title,.ef-attachment[data-state="processing"] .ef-attachment__title{animation:none;color:var(--text-primary);background:none}}
 `;
 const classes = (base, className) => base + (className ? ' ' + className : '');
 const Attachment = React.forwardRef(function Attachment({
@@ -8208,8 +8268,11 @@ const CSS = `
 .ef-table__sort{display:inline-flex;align-items:center;gap:var(--space-1);border:none;background:none;padding:0;margin:0;font:inherit;letter-spacing:inherit;text-transform:inherit;color:inherit;cursor:pointer}
 @media (hover:hover){.ef-table__sort:hover{color:var(--text-primary)}}
 .ef-table__sort:focus-visible{outline:none;box-shadow:var(--focus-ring);border-radius:var(--radius-sm)}
-.ef-table__sort__i{display:inline-flex;opacity:0;transition:opacity var(--dur-fast) var(--ease-enter)}
-.ef-table__sort:hover .ef-table__sort__i,.ef-table__sort--on .ef-table__sort__i{opacity:1}
+.ef-table__sort__i{display:inline-flex;transition:opacity var(--dur-fast) var(--ease-enter)}
+/* The arrow that says a column sorts: revealed by a pointer that can hover, shown at rest where nothing hovers. */
+@media (hover:hover){.ef-table__sort__i{opacity:0}.ef-table__sort:hover .ef-table__sort__i,.ef-table__sort:focus-within .ef-table__sort__i{opacity:1}}
+@media (hover:none),(pointer:coarse){.ef-table__sort__i{opacity:1}}
+.ef-table__sort--on .ef-table__sort__i{opacity:1}
 .ef-table__sel{width:1%;white-space:nowrap}
 .ef-table__msg{padding:var(--space-8) var(--table-pad-x);text-align:center;font-size:var(--text-md);color:var(--text-muted)}
 .ef-table__skel{height:12px;border-radius:var(--radius-sm);background:var(--surface-sunken);animation:ef-table-pulse 1.2s var(--ease-standard) infinite}
@@ -8502,8 +8565,10 @@ const CSS = `
 .ef-msg__time{font-size:var(--text-xs);color:var(--text-muted)}
 .ef-msg__body{font-size:var(--text-md);line-height:var(--leading-relaxed);color:var(--text-primary);margin-top:var(--space-1)}
 .ef-msg--user .ef-msg__body{background:var(--surface-card);border:1px solid var(--border-default);border-radius:var(--radius-md);padding:var(--space-3) var(--space-4)}
-.ef-msg__actions{display:flex;gap:var(--space-0-5);margin-top:var(--space-2);opacity:0;transition:opacity var(--dur-fast) var(--ease-enter)}
-.ef-msg:hover .ef-msg__actions,.ef-msg:focus-within .ef-msg__actions{opacity:1}
+.ef-msg__actions{display:flex;gap:var(--space-0-5);margin-top:var(--space-2);transition:opacity var(--dur-fast) var(--ease-enter)}
+/* Revealed by a pointer that can hover; shown at rest where nothing hovers, so a touch user can reach Copy and Retry. */
+@media (hover:hover){.ef-msg__actions{opacity:0}.ef-msg:hover .ef-msg__actions,.ef-msg:focus-within .ef-msg__actions{opacity:1}}
+@media (hover:none),(pointer:coarse){.ef-msg__actions{opacity:1}}
 @keyframes ef-caret{0%,100%{opacity:1}50%{opacity:0}}
 .ef-msg__caret{display:inline-block;width:7px;height:15px;background:var(--accent);margin-inline-start:var(--space-1);vertical-align:-2px;animation:ef-caret 1s steps(1) infinite}
 `;
@@ -13578,6 +13643,9 @@ const CSS = `
 .ef-modelsel__panel{position:absolute;bottom:calc(100% + 6px);inset-inline-start:0;min-width:260px;background:var(--surface-card);border:1px solid var(--border-strong);border-radius:var(--radius-md);box-shadow:var(--shadow-md);padding:var(--space-1);z-index:var(--z-popover);animation:ef-modelsel-in var(--dur-fast) var(--ease-enter)}
 .ef-modelsel--down .ef-modelsel__panel{bottom:auto;top:calc(100% + 6px)}
 @keyframes ef-modelsel-in{from{opacity:0;transform:translateY(3px)}}
+@keyframes ef-modelsel-out{to{opacity:0;transform:translateY(3px)}}
+.ef-modelsel__panel[data-state="closed"]{animation:ef-reduce-fade-out var(--dur-fast) var(--ease-exit) forwards;pointer-events:none}
+@media (prefers-reduced-motion:no-preference){.ef-modelsel__panel[data-state="closed"]{animation:ef-modelsel-out var(--dur-fast) var(--ease-exit) forwards}}
 .ef-modelsel__item{display:flex;align-items:center;gap:var(--space-3);width:100%;padding:var(--space-2) var(--space-3);border:none;border-radius:var(--radius-sm);background:none;cursor:pointer;text-align:start;font-family:var(--font-sans);transition:background var(--dur-fast) var(--ease-enter)}
 @media (hover:hover){.ef-modelsel__item:hover{background:var(--surface-sunken)}}
 .ef-modelsel__item:focus-visible{outline:none;box-shadow:var(--focus-ring)}
@@ -13605,9 +13673,13 @@ function ModelSelector({
   const ref = React.useRef(null);
   const panelRef = React.useRef(null);
   const {
+    present,
+    state
+  } = __ds_scope.usePresence(open, panelRef);
+  const {
     style: anchored
   } = __ds_scope.useAnchoredStyle(ref, panelRef, {
-    open,
+    open: present,
     placement: dir,
     align: 'start'
   });
@@ -13647,8 +13719,9 @@ function ModelSelector({
   }, /*#__PURE__*/React.createElement(__ds_scope.Icon, {
     name: dir === 'bottom' ? 'chevron-down' : 'chevron-up',
     size: 12
-  }))), open ? /*#__PURE__*/React.createElement(__ds_scope.Portal, null, /*#__PURE__*/React.createElement("div", {
+  }))), present ? /*#__PURE__*/React.createElement(__ds_scope.Portal, null, /*#__PURE__*/React.createElement("div", {
     role: "listbox",
+    "data-state": state,
     ref: __ds_scope.mergeRefs(panelRef, __ds_scope.styleRef(anchored)),
     className: "ef-modelsel__panel"
   }, models.map(m => /*#__PURE__*/React.createElement("button", {
@@ -13697,6 +13770,9 @@ const CSS = `
 .ef-timepicker__icon{position:absolute;inset-inline-end:var(--space-3);color:var(--text-muted);display:inline-flex;pointer-events:none}
 .ef-timepicker__panel{max-height:240px;overflow-y:auto;background:var(--surface-card);border:1px solid var(--border-strong);border-radius:var(--radius-md);box-shadow:var(--shadow-md);padding:var(--space-1);z-index:var(--z-popover);animation:ef-tp-in var(--dur-fast) var(--ease-enter)}
 @keyframes ef-tp-in{from{opacity:0;transform:translateY(-3px)}}
+@keyframes ef-tp-out{to{opacity:0;transform:translateY(-3px)}}
+.ef-timepicker__panel[data-state="closed"]{animation:ef-reduce-fade-out var(--dur-fast) var(--ease-exit) forwards;pointer-events:none}
+@media (prefers-reduced-motion:no-preference){.ef-timepicker__panel[data-state="closed"]{animation:ef-tp-out var(--dur-fast) var(--ease-exit) forwards}}
 .ef-timepicker__opt{display:flex;align-items:center;gap:var(--space-2);width:100%;padding:var(--space-2) var(--space-3);border:none;border-radius:var(--radius-sm);background:none;cursor:pointer;text-align:start;font-family:var(--font-sans);font-size:var(--text-sm);color:var(--text-primary)}
 .ef-timepicker__opt--hi{background:var(--surface-sunken);box-shadow:inset 0 0 0 2px var(--focus-ring-color)}
 .ef-timepicker__opt__check{margin-inline-start:auto;color:var(--accent-edge);display:inline-flex}
@@ -13769,9 +13845,13 @@ function TimePicker({
   const ref = React.useRef(null);
   const panelRef = React.useRef(null);
   const {
+    present,
+    state
+  } = __ds_scope.usePresence(open, panelRef);
+  const {
     style: anchored
   } = __ds_scope.useAnchoredStyle(ref, panelRef, {
-    open,
+    open: present,
     placement: 'bottom',
     align: 'start',
     matchWidth: true
@@ -13880,9 +13960,10 @@ function TimePicker({
   }, /*#__PURE__*/React.createElement(__ds_scope.Icon, {
     name: "clock",
     size: 16
-  })), open && /*#__PURE__*/React.createElement(__ds_scope.Portal, null, /*#__PURE__*/React.createElement("div", {
+  })), present && /*#__PURE__*/React.createElement(__ds_scope.Portal, null, /*#__PURE__*/React.createElement("div", {
     ref: __ds_scope.mergeRefs(panelRef, __ds_scope.styleRef(anchored)),
     className: "ef-timepicker__panel",
+    "data-state": state,
     role: "listbox",
     id: listId,
     onMouseDown: e => e.preventDefault()
@@ -13940,6 +14021,11 @@ const CSS = `
 @media(max-width:520px){.ef-alertdialog__overlay{padding:var(--space-4)}.ef-alertdialog__content{padding:var(--space-5)}.ef-alertdialog__footer{flex-direction:column-reverse}.ef-alertdialog__footer .ef-btn{width:100%}}
 @keyframes ef-alertdialog-fade{from{opacity:0}}
 @keyframes ef-alertdialog-pop{from{opacity:0;transform:scale(var(--motion-enter-scale-lg)) translateY(6px)}}
+/* Exit (MD121): as the Dialog; the scrim animates its colour so the panel stays visible for its exit. */
+@keyframes ef-alertdialog-fade-out{to{background-color:transparent}}
+@keyframes ef-alertdialog-pop-out{to{opacity:0;transform:scale(var(--motion-enter-scale-lg)) translateY(6px)}}
+.ef-alertdialog__overlay[data-state="closed"],.ef-alertdialog__content[data-state="closed"]{animation:ef-reduce-fade-out var(--dur-fast) var(--ease-exit) forwards;pointer-events:none}
+@media (prefers-reduced-motion:no-preference){.ef-alertdialog__overlay[data-state="closed"]{animation:ef-alertdialog-fade-out var(--dur-fast) var(--ease-exit) forwards}.ef-alertdialog__content[data-state="closed"]{animation:ef-alertdialog-pop-out var(--dur-slow) var(--ease-exit) forwards}}
 @media (prefers-reduced-motion:reduce){.ef-alertdialog__overlay,.ef-alertdialog__content{--ef-motion-guard:var(--dur-fast);animation-name:ef-reduce-fade}}
 `;
 const AlertDialogContext = React.createContext(null);
@@ -14058,6 +14144,10 @@ const AlertDialogContent = React.forwardRef(function AlertDialogContent({
   __ds_scope.injectEfCss('ef-css-alertdialog', CSS);
   const ctx = useAlertDialog('AlertDialogContent');
   const panelRef = React.useRef(null);
+  const rootRef = React.useRef(null);
+  const {
+    present
+  } = __ds_scope.usePresence(ctx.open, rootRef);
   const layer = __ds_scope.useEscapeLayer(ctx.open, event => {
     event.preventDefault();
     ctx.setOpen(false);
@@ -14072,7 +14162,7 @@ const AlertDialogContent = React.forwardRef(function AlertDialogContent({
       ctx.triggerRef.current?.focus?.();
     };
   }, [ctx.open, ctx.triggerRef]);
-  if (!ctx.open && !forceMount) return null;
+  if (!present && !forceMount) return null;
   const handleKeyDown = event => {
     if (onKeyDown) onKeyDown(event);
     if (event.defaultPrevented || event.key !== 'Tab') return;
@@ -14093,9 +14183,10 @@ const AlertDialogContent = React.forwardRef(function AlertDialogContent({
     }
   };
   return /*#__PURE__*/React.createElement(AlertDialogPortal, {
-    forceMount: forceMount
+    forceMount: true
   }, /*#__PURE__*/React.createElement(AlertDialogOverlay, {
-    forceMount: forceMount
+    forceMount: true,
+    ref: rootRef
   }, /*#__PURE__*/React.createElement("div", _extends({}, rest, {
     ref: __ds_scope.mergeRefs(ref, panelRef),
     role: "alertdialog",
@@ -14217,6 +14308,10 @@ const CSS = `
 .ef-dialog__body{padding:var(--space-4) var(--space-6) var(--space-6)}.ef-dialog__typed{margin-top:var(--space-4)}.ef-dialog__footer{display:flex;flex-direction:column-reverse;gap:var(--space-2);padding:var(--space-4) var(--space-6);border-top:1px solid var(--border-default);background:var(--surface-subtle)}
 @media(min-width:480px){.ef-dialog__footer{flex-direction:row;justify-content:flex-end}}
 @keyframes ef-fade{from{opacity:0}}@keyframes ef-pop{from{opacity:0;transform:scale(var(--motion-enter-scale-lg)) translateY(6px)}}
+/* Exit (MD121): the panel leaves over --dur-slow, the scrim lets go over --dur-fast. The scrim animates its colour, not its opacity, so the panel inside it stays visible for its whole exit. */
+@keyframes ef-fade-out{to{background-color:transparent}}@keyframes ef-pop-out{to{opacity:0;transform:scale(var(--motion-enter-scale-lg)) translateY(6px)}}
+.ef-dialog__overlay[data-state="closed"],.ef-dialog__content[data-state="closed"]{animation:ef-reduce-fade-out var(--dur-fast) var(--ease-exit) forwards;pointer-events:none}
+@media (prefers-reduced-motion:no-preference){.ef-dialog__overlay[data-state="closed"]{animation:ef-fade-out var(--dur-fast) var(--ease-exit) forwards}.ef-dialog__content[data-state="closed"]{animation:ef-pop-out var(--dur-slow) var(--ease-exit) forwards}}
 @media (prefers-reduced-motion:reduce){.ef-dialog__overlay,.ef-dialog__content{--ef-motion-guard:var(--dur-fast);animation-name:ef-reduce-fade}}
 `;
 const DialogContext = React.createContext(null);
@@ -14355,6 +14450,12 @@ const DialogContent = React.forwardRef(function DialogContent({
   const ctx = React.useContext(DialogContext);
   const panelRef = React.useRef(null);
   const previous = React.useRef(null);
+  // the overlay is the outermost node, so it is the one kept mounted while the exit runs
+  const rootRef = React.useRef(null);
+  const {
+    present,
+    state
+  } = __ds_scope.usePresence(!!(ctx && ctx.open), rootRef);
   React.useEffect(() => {
     if (!ctx || !ctx.open) return;
     previous.current = document.activeElement;
@@ -14387,14 +14488,16 @@ const DialogContent = React.forwardRef(function DialogContent({
     document.addEventListener('keydown', key);
     return () => document.removeEventListener('keydown', key);
   }, [ctx && ctx.open]);
-  if (!ctx || !ctx.open) return null;
+  if (!ctx || !present) return null;
   return /*#__PURE__*/React.createElement(DialogPortal, null, /*#__PURE__*/React.createElement(DialogOverlay, _extends({}, overlayProps, {
-    ref: overlayRef
+    ref: __ds_scope.mergeRefs(overlayRef, rootRef),
+    "data-state": state
   }), /*#__PURE__*/React.createElement("div", _extends({}, rest, {
     ref: __ds_scope.mergeRefs(ref, panelRef, __ds_scope.styleRefUnder({
       'max-width': width
     }, style)),
     "data-slot": slot,
+    "data-state": state,
     role: "dialog",
     "aria-modal": "true",
     "aria-labelledby": rest['aria-label'] ? undefined : ctx.titleId,
@@ -14534,6 +14637,9 @@ const CSS = `
 @media(max-width:599px){.ef-toast-stack{inset-inline:16px!important;width:auto;max-width:none;transform:none!important}.ef-toast-stack[data-position^=top]{top:16px}.ef-toast-stack[data-position^=bottom]{bottom:16px}}
 .ef-toast__action:focus-visible{outline:none;border-radius:var(--radius-sm);box-shadow:var(--focus-ring)}
 @keyframes ef-toast-in{from{opacity:0;transform:translateY(12px) scale(var(--motion-enter-scale-sm))}}
+@keyframes ef-toast-out{to{opacity:0;transform:translateY(12px) scale(var(--motion-enter-scale-sm))}}
+.ef-toast[data-state="closed"]{animation:ef-reduce-fade-out var(--dur-fast) var(--ease-exit) forwards;pointer-events:none}
+@media (prefers-reduced-motion:no-preference){.ef-toast[data-state="closed"]{animation:ef-toast-out var(--dur-base) var(--ease-exit) forwards}}
 /* coarse pointers get the 44px touch target, like form controls do through --control-h-* */
 @media (pointer:coarse){.ef-toast__action{min-height:var(--tap-min)}}
 @media (prefers-reduced-motion:reduce){.ef-toast{--ef-motion-guard:var(--dur-fast);animation-name:ef-reduce-fade}}
@@ -14544,6 +14650,8 @@ const ICONS = {
   warning: 'triangle-alert',
   info: 'info'
 };
+
+// `leaving` is a toast that was dismissed or timed out: it stays, closed, until its exit has played, then calls onGone.
 function ToastItem({
   tone = 'info',
   title,
@@ -14553,16 +14661,29 @@ function ToastItem({
   role = 'status',
   style,
   className,
+  leaving = false,
+  onGone,
   ...rest
 }) {
   __ds_scope.injectEfCss('ef-css-toast', CSS);
+  const ref = React.useRef(null);
+  const {
+    present,
+    state
+  } = __ds_scope.usePresence(!leaving, ref);
+  React.useEffect(() => {
+    if (!present) onGone?.();
+  }, [present, onGone]);
+  if (!present) return null;
   const actionNode = actionProps ? /*#__PURE__*/React.createElement("button", _extends({
     type: "button"
   }, actionProps, {
     className: `ef-toast__action${actionProps.className ? ` ${actionProps.className}` : ''}`
   })) : null;
   return /*#__PURE__*/React.createElement("div", _extends({}, rest, {
+    ref: ref,
     "data-slot": "toast",
+    "data-state": state,
     className: `ef-toast ef-toast--${tone}${className ? ` ${className}` : ''}`,
     role: role || undefined,
     style: style
@@ -14765,6 +14886,31 @@ function Toaster({
 }) {
   __ds_scope.injectEfCss('ef-css-toast', CSS);
   const [items, setItems] = React.useState(records);
+  // What is on screen: the toasts that are live, plus the ones that were just removed, each still in its old place until its exit ends.
+  const [rendered, setRendered] = React.useState(() => records.slice(-visibleToasts).map(item => ({
+    item,
+    leaving: false
+  })));
+  __ds_scope.useIsoLayoutEffect(() => {
+    const shown = items.slice(-visibleToasts);
+    setRendered(previous => {
+      const now = new Map(shown.map(item => [item.id, item]));
+      const next = previous.map(entry => now.has(entry.item.id) ? {
+        item: now.get(entry.item.id),
+        leaving: false
+      } : {
+        item: entry.item,
+        leaving: true
+      });
+      const kept = new Set(previous.map(entry => entry.item.id));
+      for (const item of shown) if (!kept.has(item.id)) next.push({
+        item,
+        leaving: false
+      });
+      return next;
+    });
+  }, [items, visibleToasts]);
+  const gone = React.useCallback(id => setRendered(previous => previous.filter(entry => !(entry.leaving && entry.item.id === id))), []);
   React.useEffect(() => {
     const listener = value => setItems(value);
     listeners.add(listener);
@@ -14811,10 +14957,15 @@ function Toaster({
     onMouseLeave: () => release('pointer'),
     onFocusCapture: () => hold('focus'),
     onBlurCapture: () => release('focus')
-  }), items.slice(-visibleToasts).map(item => item.type === 'custom' && React.isValidElement(item.title) ? React.cloneElement(item.title, {
+  }), rendered.map(({
+    item,
+    leaving
+  }) => item.type === 'custom' && React.isValidElement(item.title) ? leaving ? null : React.cloneElement(item.title, {
     key: item.id
   }) : /*#__PURE__*/React.createElement(ToastItem, {
     key: item.id,
+    leaving: leaving,
+    onGone: () => gone(item.id),
     tone: ['success', 'warning', 'danger', 'info'].includes(item.type) ? item.type : 'info',
     title: item.title,
     description: item.description,
@@ -14841,6 +14992,9 @@ const CSS = `
 .ef-tooltip__bubble--left::after{top:var(--ef-tt-arrow,50%);left:100%;transform:translateY(-50%);border-top-color:transparent;border-left-color:var(--surface-inverse)}
 .ef-tooltip__bubble--right::after{top:var(--ef-tt-arrow,50%);left:auto;right:100%;transform:translateY(-50%);border-top-color:transparent;border-right-color:var(--surface-inverse)}
 @keyframes ef-tooltip-in{from{opacity:0;transform:scale(var(--motion-enter-scale-sm))}to{opacity:1;transform:none}}
+@keyframes ef-tooltip-out{to{opacity:0;transform:scale(var(--motion-enter-scale-sm))}}
+.ef-tooltip__bubble[data-state="closed"]{animation:ef-reduce-fade-out var(--dur-fast) var(--ease-exit) forwards;pointer-events:none}
+@media (prefers-reduced-motion:no-preference){.ef-tooltip__bubble[data-state="closed"]{animation:ef-tooltip-out var(--dur-fast) var(--ease-exit) forwards}}
 @media (prefers-reduced-motion:reduce){.ef-tooltip__bubble{--ef-motion-guard:var(--dur-fast);animation-name:ef-reduce-fade}}
 `;
 const SIDES = ['top', 'bottom', 'left', 'right'];
@@ -14981,6 +15135,10 @@ const TooltipContent = React.forwardRef(function TooltipContent({
     return () => registerId(undefined);
   }, [registerId, id]);
   const bubbleRef = React.useRef(null);
+  const {
+    present,
+    state
+  } = __ds_scope.usePresence(!!ctx?.open, bubbleRef);
   const want = SIDES.includes(side) ? side : 'top';
   const [placed, setPlaced] = React.useState({
     style: {
@@ -15039,7 +15197,7 @@ const TooltipContent = React.forwardRef(function TooltipContent({
       window.removeEventListener('resize', move);
     };
   }, [ctx?.open, ctx?.triggerRef, want, sideOffset]);
-  if (!ctx?.open) return null;
+  if (!present) return null;
   return /*#__PURE__*/React.createElement(__ds_scope.Portal, null, /*#__PURE__*/React.createElement("span", _extends({}, rest, {
     ref: __ds_scope.mergeRefs(forwardedRef, bubbleRef, __ds_scope.styleRefUnder({
       ...placed.style,
@@ -15048,7 +15206,7 @@ const TooltipContent = React.forwardRef(function TooltipContent({
     role: "tooltip",
     id: id || ctx.contentId,
     "data-slot": "tooltip-content",
-    "data-state": "open",
+    "data-state": state,
     "data-side": placed.side,
     className: `ef-tooltip__bubble${placed.side !== 'top' ? ' ef-tooltip__bubble--' + placed.side : ''}${className ? ' ' + className : ''}`,
     style: style
@@ -15125,6 +15283,9 @@ function _extends() { return _extends = Object.assign ? Object.assign.bind() : f
 const CSS = `
 .ef-combobox{position:relative;width:100%}.ef-combobox__input-group{width:100%}.ef-combobox__input{min-width:0}.ef-combobox__actions{gap:var(--space-0-5);padding-inline:var(--space-1);border:0}.ef-combobox__button{display:inline-flex;width:26px;height:26px;align-items:center;justify-content:center;border:0;border-radius:var(--radius-sm);background:transparent;color:var(--text-muted);cursor:pointer}@media (hover:hover){.ef-combobox__button:hover{background:var(--surface-sunken);color:var(--text-primary)}}.ef-combobox__button:focus-visible{outline:none;box-shadow:var(--focus-ring)}.ef-combobox__button:disabled{cursor:not-allowed;opacity:.45}
 .ef-combobox__content{position:fixed;z-index:var(--z-popover);max-height:min(384px,var(--ef-available-height,384px));overflow:hidden;border:1px solid var(--border-default);border-radius:var(--radius-md);background:var(--surface-card);color:var(--text-primary);box-shadow:var(--shadow-md);animation:ef-combobox-in var(--dur-fast) var(--ease-enter)}@keyframes ef-combobox-in{from{opacity:0;transform:translateY(-3px)}}
+@keyframes ef-combobox-out{to{opacity:0;transform:translateY(-3px)}}
+.ef-combobox__content[data-state="closed"]{animation:ef-reduce-fade-out var(--dur-fast) var(--ease-exit) forwards;pointer-events:none}
+@media (prefers-reduced-motion:no-preference){.ef-combobox__content[data-state="closed"]{animation:ef-combobox-out var(--dur-fast) var(--ease-exit) forwards}}
 .ef-combobox__list{max-height:min(340px,var(--ef-available-height,340px));overflow-y:auto;padding:var(--space-1);scroll-padding-block:4px}.ef-combobox__item{position:relative;display:flex;width:100%;align-items:center;gap:var(--gap-label-icon);padding:calc(var(--space-2) - 1px) calc(var(--space-2) + var(--icon-md) + var(--space-2)) calc(var(--space-2) - 1px) var(--space-2);border:0;border-radius:var(--radius-sm);outline:0;background:transparent;color:var(--text-primary);font:inherit;font-size:var(--text-sm);text-align:start;cursor:pointer;user-select:none}.ef-combobox__item[data-highlighted="true"]{background:var(--surface-sunken);box-shadow:inset 0 0 0 2px var(--focus-ring-color)}.ef-combobox__item[data-disabled="true"]{pointer-events:none;opacity:.5}.ef-combobox__item[hidden]{display:none}.ef-combobox__indicator{position:absolute;inset-inline-end:var(--space-2);display:inline-flex;color:var(--accent-edge)}
 .ef-combobox__group{padding:var(--space-1)}.ef-combobox__group:not(:has(.ef-combobox__item:not([hidden]))){display:none}.ef-combobox__label{padding:var(--space-2) var(--space-2);color:var(--text-muted);font-size:var(--text-xs);font-weight:var(--weight-medium)}.ef-combobox__empty{display:flex;justify-content:center;padding:var(--space-3);color:var(--text-muted);font-size:var(--text-sm)}.ef-combobox__separator{height:1px;margin:var(--space-1) calc(-1 * var(--space-1));background:var(--border-default)}
 .ef-combobox__chips{display:flex;min-height:var(--control-h-md);width:100%;flex-wrap:wrap;align-items:center;gap:var(--space-2);padding:var(--space-1) var(--space-2);border:1px solid var(--border-control,var(--border-strong));border-radius:var(--field-radius,var(--radius-sm));background:var(--surface-card)}.ef-combobox__chips:focus-within{border-color:var(--accent-edge);box-shadow:var(--focus-ring)}.ef-combobox__chip{display:inline-flex;height:24px;align-items:center;gap:var(--space-1);padding:0 var(--space-1) 0 var(--space-2);border-radius:var(--radius-sm);background:var(--surface-sunken);font-size:var(--text-xs);font-weight:var(--weight-medium)}.ef-combobox__chip-remove{display:inline-flex;width:20px;height:20px;align-items:center;justify-content:center;border:0;border-radius:var(--radius-sm);background:transparent;color:var(--text-muted);cursor:pointer}@media (hover:hover){.ef-combobox__chip-remove:hover{background:var(--surface-card);color:var(--text-primary)}}.ef-combobox__chips-input{min-width:64px;flex:1;border:0;outline:0;background:transparent;color:var(--text-primary);font:inherit;font-size:var(--text-sm)}
@@ -15422,9 +15583,13 @@ const ComboboxContent = React.forwardRef(function ComboboxContent({
   React.useImperativeHandle(forwardedRef, () => popupRef.current);
   const target = anchor || context?.anchorRef;
   const {
+    present,
+    state
+  } = __ds_scope.usePresence(!!context?.isOpen, popupRef);
+  const {
     style
   } = __ds_scope.useAnchoredStyle(target, popupRef, {
-    open: context?.isOpen,
+    open: present,
     placement: side,
     align,
     offset: sideOffset,
@@ -15439,10 +15604,11 @@ const ComboboxContent = React.forwardRef(function ComboboxContent({
     document.addEventListener('mousedown', close);
     return () => document.removeEventListener('mousedown', close);
   }, [context?.isOpen, context?.setOpen, target]);
-  if (!context?.isOpen) return null;
+  if (!present) return null;
   return /*#__PURE__*/React.createElement(__ds_scope.Portal, null, /*#__PURE__*/React.createElement("div", _extends({
     ref: popupRef,
     "data-slot": "combobox-content",
+    "data-state": state,
     className: join('ef-combobox__content', className),
     style: style
   }, props), children));
@@ -15655,6 +15821,9 @@ const CSS = `
 .ef-select-value[data-placeholder]{color:var(--text-muted)}
 .ef-select-content{position:fixed;z-index:var(--z-popover);min-width:var(--select-trigger-width);max-height:280px;overflow:auto;padding:var(--space-1);border:1px solid var(--border-strong);border-radius:var(--radius-md);background:var(--surface-card);box-shadow:var(--shadow-md);animation:ef-select-in var(--dur-fast) var(--ease-enter)}
 @keyframes ef-select-in{from{opacity:0;transform:translateY(-3px)}}
+@keyframes ef-select-out{to{opacity:0;transform:translateY(-3px)}}
+.ef-select-content[data-state="closed"]{animation:ef-reduce-fade-out var(--dur-fast) var(--ease-exit) forwards;pointer-events:none}
+@media (prefers-reduced-motion:no-preference){.ef-select-content[data-state="closed"]{animation:ef-select-out var(--dur-fast) var(--ease-exit) forwards}}
 .ef-select-group{padding:var(--space-0-5) 0}
 .ef-select-label{padding:var(--space-2) var(--space-2);color:var(--text-muted);font-size:var(--text-xs);font-weight:var(--weight-semibold)}
 .ef-select-item{position:relative;display:flex;width:100%;min-height:32px;align-items:center;padding-block:6px;padding-inline:calc(var(--space-2) + 1px) calc(var(--space-2) + var(--icon-md) + var(--space-2));border:0;border-radius:var(--radius-sm);background:none;color:var(--text-primary);font:inherit;font-size:var(--text-sm);text-align:start;cursor:pointer}
@@ -15809,9 +15978,13 @@ const SelectContent = React.forwardRef(function SelectContent({
 }, ref) {
   const ctx = React.useContext(SelectCtx);
   const {
+    present,
+    state
+  } = __ds_scope.usePresence(!!ctx?.open, ctx?.contentRef);
+  const {
     style: anchored
   } = __ds_scope.useAnchoredStyle(ctx?.triggerRef, ctx?.contentRef, {
-    open: !!ctx?.open,
+    open: present,
     placement: 'bottom',
     align,
     offset: sideOffset
@@ -15824,7 +15997,7 @@ const SelectContent = React.forwardRef(function SelectContent({
       (selected || first)?.focus();
     });
   }, [ctx?.open]);
-  if (!ctx?.open) return null;
+  if (!present) return null;
   const key = event => {
     onKeyDown?.(event);
     if (event.defaultPrevented) return;
@@ -15856,6 +16029,7 @@ const SelectContent = React.forwardRef(function SelectContent({
     }, style)),
     role: "listbox",
     "data-slot": "select-content",
+    "data-state": state,
     "data-position": position,
     className: `ef-select-content${className ? ` ${className}` : ''}`,
     style: style,
@@ -15953,7 +16127,9 @@ const CSS = `
 .ef-sidebar-group-content{width:100%;font-size:var(--text-sm)}.ef-sidebar-menu,.ef-sidebar-menu-sub{display:flex;min-width:0;flex-direction:column;gap:var(--space-0-5);margin:0;padding:0;list-style:none}.ef-sidebar-menu-item,.ef-sidebar-menu-sub-item{position:relative;min-width:0}
 .ef-sidebar-menu-button,.ef-sidebar-menu-sub-button{display:flex;width:100%;min-width:0;align-items:center;gap:var(--gap-label-icon);border:0;border-radius:var(--radius-sm);background:transparent;color:var(--text-secondary);font:inherit;text-align:start;text-decoration:none;cursor:pointer}.ef-sidebar-menu-button{height:32px;padding-inline:var(--space-2)}.ef-sidebar-menu-button[data-size=sm]{height:var(--control-h-sm);font-size:var(--text-xs)}.ef-sidebar-menu-button[data-size=lg]{height:40px}.ef-sidebar-menu-button[data-active=true],.ef-sidebar-menu-sub-button[data-active=true]{background:var(--surface-sunken);color:var(--text-primary);text-decoration:none}@media (hover:hover){.ef-sidebar-menu-button:hover,.ef-sidebar-menu-sub-button:hover{background:var(--surface-sunken);color:var(--text-primary);text-decoration:none}}.ef-sidebar-menu-button:focus-visible,.ef-sidebar-menu-sub-button:focus-visible,.ef-sidebar-group-action:focus-visible,.ef-sidebar-trigger:focus-visible,.ef-sidebar-rail:focus-visible{outline:0;box-shadow:var(--focus-ring)}
 .ef-sidebar-menu-button__icon{display:inline-flex;flex:0 0 auto}.ef-sidebar-menu-action{position:absolute;inset-block-start:4px;inset-inline-end:4px;display:inline-flex;width:var(--control-h-xs);height:var(--control-h-xs);align-items:center;justify-content:center;border:0;border-radius:var(--radius-sm);background:transparent;color:var(--text-muted);cursor:pointer}@media (hover:hover){.ef-sidebar-menu-action:hover{background:var(--surface-raised);color:var(--text-primary)}}
-.ef-sidebar-menu-action[data-show-on-hover=true]{opacity:0}.ef-sidebar-menu-item:hover>.ef-sidebar-menu-action[data-show-on-hover=true],.ef-sidebar-menu-action[data-show-on-hover=true]:focus-visible{opacity:1}
+/* Revealed by a pointer that can hover; shown at rest where nothing hovers, so a touch user can reach the item menu. */
+@media (hover:hover){.ef-sidebar-menu-action[data-show-on-hover=true]{opacity:0}.ef-sidebar-menu-item:hover>.ef-sidebar-menu-action[data-show-on-hover=true],.ef-sidebar-menu-item:focus-within>.ef-sidebar-menu-action[data-show-on-hover=true],.ef-sidebar-menu-action[data-show-on-hover=true]:focus-visible{opacity:1}}
+@media (hover:none),(pointer:coarse){.ef-sidebar-menu-action[data-show-on-hover=true]{opacity:1}}
 .ef-sidebar-menu-badge{position:absolute;inset-block-start:7px;inset-inline-end:8px;min-width:20px;padding-inline:var(--space-1);border-radius:var(--radius-full);background:var(--surface-sunken);color:var(--text-muted);font-size:10px;line-height:18px;text-align:center;pointer-events:none}
 .ef-sidebar-menu-sub{margin-inline-start:var(--space-4);padding:var(--space-1) 0 var(--space-1) var(--space-3);border-inline-start:1px solid var(--border-default)}.ef-sidebar-menu-sub-button{min-height:28px;padding:var(--space-1) var(--space-2);font-size:var(--text-xs)}
 .ef-sidebar-input{width:100%;height:32px;padding-inline:var(--space-3);border:1px solid var(--border-strong);border-radius:var(--radius-sm);background:var(--surface-sunken);color:var(--text-primary);font:inherit;font-size:var(--text-sm)}.ef-sidebar-input:focus-visible{outline:0;box-shadow:var(--focus-ring)}
@@ -16614,6 +16790,9 @@ function _extends() { return _extends = Object.assign ? Object.assign.bind() : f
 const CSS = `
 .ef-context-menu__content{position:fixed;min-width:128px;max-height:calc(100vh - 16px);overflow:auto;background:color-mix(in srgb,var(--material-tint) calc(var(--material-thick) * 100%),transparent);-webkit-backdrop-filter:blur(var(--material-blur-thick)) saturate(var(--material-saturate));backdrop-filter:blur(var(--material-blur-thick)) saturate(var(--material-saturate));color:var(--text-primary);border:1px solid var(--border-strong);border-radius:var(--radius-md);box-shadow:var(--shadow-md);padding:var(--space-1);z-index:var(--z-popover);animation:ef-context-menu-in var(--dur-fast) var(--ease-enter)}
 @keyframes ef-context-menu-in{from{transform:scale(var(--motion-enter-scale-sm))}}
+@keyframes ef-context-menu-out{to{transform:scale(var(--motion-enter-scale-sm))}}
+.ef-context-menu__content[data-state="closed"]{pointer-events:none}
+@media (prefers-reduced-motion:no-preference){.ef-context-menu__content[data-state="closed"]{animation:ef-context-menu-out var(--dur-fast) var(--ease-exit) forwards}}
 .ef-context-menu__item{position:relative;display:flex;align-items:center;gap:var(--gap-label-icon);width:100%;min-height:32px;padding:var(--space-2) var(--space-2);border:0;border-radius:var(--radius-sm);outline:0;background:transparent;color:var(--text-primary);font:inherit;font-size:var(--text-sm);line-height:1.35;text-align:start;white-space:nowrap;cursor:pointer;user-select:none}
 .ef-context-menu__item:focus,.ef-context-menu__item[data-highlighted=true],.ef-context-menu__item[data-state=open]{background:var(--surface-sunken)}@media (hover:hover){.ef-context-menu__item:hover{background:var(--surface-sunken)}}
 /* the tint alone is ~1.1:1 against the panel; keyboard focus needs a 3:1 ring */
@@ -16794,6 +16973,10 @@ const ContextMenuContent = React.forwardRef(function ContextMenuContent({
   const rtl = __ds_scope.useDirection() === 'rtl';
   const localRef = React.useRef(null);
   const ref = __ds_scope.mergeRefs(forwardedRef, localRef, root?.contentRef);
+  const {
+    present,
+    state
+  } = __ds_scope.usePresence(!!root?.open, localRef);
   const close = React.useCallback(() => {
     root?.setOpen(false);
     const event = {
@@ -16832,7 +17015,7 @@ const ContextMenuContent = React.forwardRef(function ContextMenuContent({
       window.removeEventListener('blur', blur);
     };
   }, [root?.open, close]);
-  if (!root?.open) return null;
+  if (!present) return null;
   return /*#__PURE__*/React.createElement(ContextMenuPortal, null, /*#__PURE__*/React.createElement("div", _extends({
     dir: rtl ? 'rtl' : undefined
   }, rest, {
@@ -16840,7 +17023,7 @@ const ContextMenuContent = React.forwardRef(function ContextMenuContent({
     role: "menu",
     "data-ef-menu": root.menuId,
     "data-slot": "context-menu-content",
-    "data-state": "open",
+    "data-state": state,
     className: join('ef-context-menu__content', className),
     style: style,
     onKeyDown: compose(onKeyDown, keyboard)
@@ -17096,10 +17279,14 @@ const ContextMenuSubContent = React.forwardRef(function ContextMenuSubContent({
   const fallbackTriggerRef = React.useRef(null);
   const fallbackContentRef = React.useRef(null);
   const {
+    present,
+    state
+  } = __ds_scope.usePresence(!!sub?.open, localRef);
+  const {
     style: anchored,
     side
   } = __ds_scope.useAnchoredStyle(sub?.triggerRef ?? fallbackTriggerRef, sub?.contentRef ?? fallbackContentRef, {
-    open: !!sub?.open,
+    open: present,
     placement: rtl ? 'left' : 'right',
     align: 'start',
     offset: sideOffset,
@@ -17117,7 +17304,7 @@ const ContextMenuSubContent = React.forwardRef(function ContextMenuSubContent({
   __ds_scope.useIsoLayoutEffect(() => {
     if (sub?.open) menuItems(localRef.current)[0]?.focus();
   }, [sub?.open]);
-  if (!sub?.open) return null;
+  if (!present) return null;
   return /*#__PURE__*/React.createElement(ContextMenuPortal, null, /*#__PURE__*/React.createElement("div", _extends({
     dir: rtl ? 'rtl' : undefined
   }, props, {
@@ -17125,7 +17312,7 @@ const ContextMenuSubContent = React.forwardRef(function ContextMenuSubContent({
     role: "menu",
     "data-ef-menu": root?.menuId,
     "data-slot": "context-menu-sub-content",
-    "data-state": "open",
+    "data-state": state,
     "data-side": side,
     className: join('ef-context-menu__content', className),
     style: style,
@@ -17151,7 +17338,10 @@ const CSS = `
 .ef-drawer[data-vaul-drawer-direction=bottom]>.ef-drawer__handle{display:block}
 .ef-drawer__header{gap:var(--space-2);padding:var(--space-5) var(--space-6) var(--space-3);text-align:start}.ef-drawer__footer{margin-top:auto;padding:var(--space-4) var(--space-6)}.ef-drawer__description{margin-top:var(--space-0-5)}
 @keyframes ef-drawer-right{from{transform:translateX(24px)}}@keyframes ef-drawer-left{from{transform:translateX(-24px)}}@keyframes ef-drawer-top{from{transform:translateY(-24px)}}@keyframes ef-drawer-bottom{from{transform:translateY(24px)}}
-@media (prefers-reduced-motion:reduce){.ef-drawer[data-vaul-drawer-direction=right],.ef-drawer[data-vaul-drawer-direction=left],.ef-drawer[data-vaul-drawer-direction=top],.ef-drawer[data-vaul-drawer-direction=bottom]{animation:none}}
+@keyframes ef-drawer-right-out{to{transform:translateX(100%)}}@keyframes ef-drawer-left-out{to{transform:translateX(-100%)}}@keyframes ef-drawer-top-out{to{transform:translateY(-100%)}}@keyframes ef-drawer-bottom-out{to{transform:translateY(100%)}}
+.ef-drawer[data-vaul-drawer-direction=right][data-state="closed"],.ef-drawer[data-vaul-drawer-direction=left][data-state="closed"],.ef-drawer[data-vaul-drawer-direction=top][data-state="closed"],.ef-drawer[data-vaul-drawer-direction=bottom][data-state="closed"]{pointer-events:none}
+@media (prefers-reduced-motion:no-preference){.ef-drawer[data-vaul-drawer-direction=right][data-state="closed"]{animation:ef-drawer-right-out var(--dur-slow) var(--ease-exit) forwards}.ef-drawer[data-vaul-drawer-direction=left][data-state="closed"]{animation:ef-drawer-left-out var(--dur-slow) var(--ease-exit) forwards}.ef-drawer[data-vaul-drawer-direction=top][data-state="closed"]{animation:ef-drawer-top-out var(--dur-slow) var(--ease-exit) forwards}.ef-drawer[data-vaul-drawer-direction=bottom][data-state="closed"]{animation:ef-drawer-bottom-out var(--dur-slow) var(--ease-exit) forwards}}
+@media (prefers-reduced-motion:reduce){.ef-drawer[data-vaul-drawer-direction=right],.ef-drawer[data-vaul-drawer-direction=left],.ef-drawer[data-vaul-drawer-direction=top],.ef-drawer[data-vaul-drawer-direction=bottom],.ef-drawer[data-vaul-drawer-direction=right][data-state="closed"],.ef-drawer[data-vaul-drawer-direction=left][data-state="closed"],.ef-drawer[data-vaul-drawer-direction=top][data-state="closed"],.ef-drawer[data-vaul-drawer-direction=bottom][data-state="closed"]{animation:none}}
 `;
 const DrawerContext = React.createContext(null);
 const join = (...values) => values.filter(Boolean).join(' ');
@@ -17347,6 +17537,9 @@ function _extends() { return _extends = Object.assign ? Object.assign.bind() : f
 const CSS = `
 .ef-dropdown-menu__content{position:fixed;min-width:128px;max-height:calc(100vh - 16px);overflow:auto;background:color-mix(in srgb,var(--material-tint) calc(var(--material-thick) * 100%),transparent);-webkit-backdrop-filter:blur(var(--material-blur-thick)) saturate(var(--material-saturate));backdrop-filter:blur(var(--material-blur-thick)) saturate(var(--material-saturate));color:var(--text-primary);border:1px solid var(--border-strong);border-radius:var(--radius-md);box-shadow:var(--shadow-md);padding:var(--space-1);z-index:var(--z-popover);animation:ef-dropdown-menu-in var(--dur-fast) var(--ease-enter)}
 @keyframes ef-dropdown-menu-in{from{transform:scale(var(--motion-enter-scale-sm))}}
+@keyframes ef-dropdown-menu-out{to{transform:scale(var(--motion-enter-scale-sm))}}
+.ef-dropdown-menu__content[data-state="closed"]{pointer-events:none}
+@media (prefers-reduced-motion:no-preference){.ef-dropdown-menu__content[data-state="closed"]{animation:ef-dropdown-menu-out var(--dur-fast) var(--ease-exit) forwards}}
 .ef-dropdown-menu__content[data-side=bottom]{transform-origin:top}
 .ef-dropdown-menu__content[data-side=top]{transform-origin:bottom}
 .ef-dropdown-menu__content[data-side=left]{transform-origin:right}
@@ -17535,10 +17728,14 @@ const DropdownMenuContent = React.forwardRef(function DropdownMenuContent({
   const fallbackTriggerRef = React.useRef(null);
   const fallbackContentRef = React.useRef(null);
   const {
+    present,
+    state
+  } = __ds_scope.usePresence(!!root?.open, localRef);
+  const {
     style: anchored,
     side: resolvedSide
   } = __ds_scope.useAnchoredStyle(root?.triggerRef ?? fallbackTriggerRef, root?.contentRef ?? fallbackContentRef, {
-    open: !!root?.open,
+    open: present,
     placement: side,
     align,
     offset: sideOffset,
@@ -17576,7 +17773,7 @@ const DropdownMenuContent = React.forwardRef(function DropdownMenuContent({
       window.removeEventListener('blur', blur);
     };
   }, [root?.open, close]);
-  if (!root?.open) return null;
+  if (!present) return null;
   return /*#__PURE__*/React.createElement(DropdownMenuPortal, null, /*#__PURE__*/React.createElement("div", _extends({
     dir: rtl ? 'rtl' : undefined
   }, rest, {
@@ -17584,7 +17781,7 @@ const DropdownMenuContent = React.forwardRef(function DropdownMenuContent({
     role: "menu",
     "data-ef-menu": root.menuId,
     "data-slot": slot,
-    "data-state": "open",
+    "data-state": state,
     "data-side": resolvedSide,
     "data-align": align,
     className: join('ef-dropdown-menu__content', className),
@@ -17854,10 +18051,14 @@ const DropdownMenuSubContent = React.forwardRef(function DropdownMenuSubContent(
   const fallbackTriggerRef = React.useRef(null);
   const fallbackContentRef = React.useRef(null);
   const {
+    present,
+    state
+  } = __ds_scope.usePresence(!!sub?.open, localRef);
+  const {
     style: anchored,
     side
   } = __ds_scope.useAnchoredStyle(sub?.triggerRef ?? fallbackTriggerRef, sub?.contentRef ?? fallbackContentRef, {
-    open: !!sub?.open,
+    open: present,
     placement: rtl ? 'left' : 'right',
     align: 'start',
     offset: sideOffset,
@@ -17875,7 +18076,7 @@ const DropdownMenuSubContent = React.forwardRef(function DropdownMenuSubContent(
   __ds_scope.useIsoLayoutEffect(() => {
     if (sub?.open) menuItems(localRef.current)[0]?.focus();
   }, [sub?.open]);
-  if (!sub?.open) return null;
+  if (!present) return null;
   return /*#__PURE__*/React.createElement(DropdownMenuPortal, null, /*#__PURE__*/React.createElement("div", _extends({
     dir: rtl ? 'rtl' : undefined
   }, props, {
@@ -17883,7 +18084,7 @@ const DropdownMenuSubContent = React.forwardRef(function DropdownMenuSubContent(
     role: "menu",
     "data-ef-menu": root?.menuId,
     "data-slot": slot,
-    "data-state": "open",
+    "data-state": state,
     "data-side": side,
     className: join('ef-dropdown-menu__content', className),
     style: style,
@@ -18383,6 +18584,9 @@ const CSS = `
 :where([data-slot="hover-card-trigger"]):focus-visible{outline:2px solid transparent;box-shadow:var(--focus-ring);border-radius:var(--radius-sm)}
 .ef-hovercard__panel{position:fixed;width:256px;background:color-mix(in srgb,var(--material-tint) calc(var(--material-thick) * 100%),transparent);-webkit-backdrop-filter:blur(var(--material-blur-thick)) saturate(var(--material-saturate));backdrop-filter:blur(var(--material-blur-thick)) saturate(var(--material-saturate));color:var(--text-primary);border:1px solid var(--border-strong);border-radius:var(--radius-md);box-shadow:var(--shadow-md);padding:var(--space-4);z-index:var(--z-popover);animation:ef-hovercard-in var(--dur-base) var(--ease-enter)}
 @keyframes ef-hovercard-in{from{transform:translateY(2px)}}
+@keyframes ef-hovercard-out{to{transform:translateY(2px)}}
+.ef-hovercard__panel[data-state="closed"]{pointer-events:none}
+@media (prefers-reduced-motion:no-preference){.ef-hovercard__panel[data-state="closed"]{animation:ef-hovercard-out var(--dur-fast) var(--ease-exit) forwards}}
 @media (prefers-reduced-motion:reduce){.ef-hovercard__panel{animation:none}}
 `;
 const HoverCardCtx = React.createContext(null);
@@ -18509,21 +18713,25 @@ const HoverCardContent = React.forwardRef(function HoverCardContent({
   const fallbackTriggerRef = React.useRef(null);
   const fallbackContentRef = React.useRef(null);
   const {
+    present,
+    state
+  } = __ds_scope.usePresence(!!ctx?.open, ctx?.contentRef ?? fallbackContentRef);
+  const {
     style: anchored,
     side: resolvedSide
   } = __ds_scope.useAnchoredStyle(ctx?.triggerRef ?? fallbackTriggerRef, ctx?.contentRef ?? fallbackContentRef, {
-    open: !!ctx?.open,
+    open: present,
     placement: side,
     align,
     offset: sideOffset,
     crossOffset: alignOffset
   });
-  if (!ctx?.open) return null;
+  if (!present) return null;
   return /*#__PURE__*/React.createElement(__ds_scope.Portal, null, /*#__PURE__*/React.createElement("div", _extends({}, rest, {
     ref: __ds_scope.mergeRefs(forwardedRef, ctx.contentRef, __ds_scope.styleRefUnder(anchored, style)),
     id: id || ctx.contentId,
     "data-slot": "hover-card-content",
-    "data-state": "open",
+    "data-state": state,
     "data-side": resolvedSide,
     "data-align": align,
     onMouseEnter: compose(rest.onMouseEnter, ctx.clearTimer),
@@ -18547,6 +18755,9 @@ const CSS = `
 .ef-popover__title{margin:0;color:var(--text-primary);font-size:var(--text-md);font-weight:var(--weight-semibold);line-height:1.35}
 .ef-popover__description{margin:0;color:var(--text-muted);font-size:var(--text-sm);line-height:1.45}
 @keyframes ef-pop-in{from{transform:translateY(-3px)}}
+@keyframes ef-popover-out{to{transform:translateY(-3px)}}
+.ef-popover__panel[data-state="closed"]{pointer-events:none}
+@media (prefers-reduced-motion:no-preference){.ef-popover__panel[data-state="closed"]{animation:ef-popover-out var(--dur-fast) var(--ease-exit) forwards}}
 @media (prefers-reduced-motion:reduce){.ef-popover__panel{animation:none}}
 `;
 const PopoverCtx = React.createContext(null);
@@ -18705,14 +18916,18 @@ const PopoverContent = React.forwardRef(function PopoverContent({
   const fallbackContentRef = React.useRef(null);
   const placement = side === 'top' ? 'top' : 'bottom';
   const {
+    present,
+    state
+  } = __ds_scope.usePresence(!!ctx?.open, ctx?.contentRef ?? fallbackContentRef);
+  const {
     style: anchored
   } = __ds_scope.useAnchoredStyle(ctx?.triggerRef ?? fallbackTriggerRef, ctx?.contentRef ?? fallbackContentRef, {
-    open: !!ctx?.open,
+    open: present,
     placement,
     align,
     offset: sideOffset
   });
-  if (!ctx?.open) return null;
+  if (!present) return null;
   return /*#__PURE__*/React.createElement(__ds_scope.Portal, null, /*#__PURE__*/React.createElement("div", _extends({}, rest, {
     ref: __ds_scope.mergeRefs(forwardedRef, ctx.contentRef, __ds_scope.styleRefUnder({
       ...anchored,
@@ -18721,7 +18936,7 @@ const PopoverContent = React.forwardRef(function PopoverContent({
     id: id || ctx.contentId,
     role: role,
     "data-slot": "popover-content",
-    "data-state": "open",
+    "data-state": state,
     "data-side": placement,
     "data-align": align,
     className: `ef-popover__panel${className ? ' ' + className : ''}`,
@@ -18774,7 +18989,10 @@ const CSS = `
 .ef-sheet[data-side=bottom]{bottom:0;left:0;right:0;width:100%;max-height:80vh;border-width:1px 0 0;animation:ef-sheet-bottom var(--dur-modal) var(--ease-enter)}
 .ef-sheet__header{padding:var(--space-6) var(--space-6) var(--space-3)}.ef-sheet__footer{margin-top:auto}.ef-sheet__description{margin-top:var(--space-1)}
 @keyframes ef-sheet-right{from{transform:translateX(24px)}}@keyframes ef-sheet-left{from{transform:translateX(-24px)}}@keyframes ef-sheet-top{from{transform:translateY(-24px)}}@keyframes ef-sheet-bottom{from{transform:translateY(24px)}}
-@media (prefers-reduced-motion:reduce){.ef-sheet[data-side=right],.ef-sheet[data-side=left],.ef-sheet[data-side=top],.ef-sheet[data-side=bottom]{animation:none}}
+@keyframes ef-sheet-right-out{to{transform:translateX(100%)}}@keyframes ef-sheet-left-out{to{transform:translateX(-100%)}}@keyframes ef-sheet-top-out{to{transform:translateY(-100%)}}@keyframes ef-sheet-bottom-out{to{transform:translateY(100%)}}
+.ef-sheet[data-side=right][data-state="closed"],.ef-sheet[data-side=left][data-state="closed"],.ef-sheet[data-side=top][data-state="closed"],.ef-sheet[data-side=bottom][data-state="closed"]{pointer-events:none}
+@media (prefers-reduced-motion:no-preference){.ef-sheet[data-side=right][data-state="closed"]{animation:ef-sheet-right-out var(--dur-slow) var(--ease-exit) forwards}.ef-sheet[data-side=left][data-state="closed"]{animation:ef-sheet-left-out var(--dur-slow) var(--ease-exit) forwards}.ef-sheet[data-side=top][data-state="closed"]{animation:ef-sheet-top-out var(--dur-slow) var(--ease-exit) forwards}.ef-sheet[data-side=bottom][data-state="closed"]{animation:ef-sheet-bottom-out var(--dur-slow) var(--ease-exit) forwards}}
+@media (prefers-reduced-motion:reduce){.ef-sheet[data-side=right],.ef-sheet[data-side=left],.ef-sheet[data-side=top],.ef-sheet[data-side=bottom],.ef-sheet[data-side=right][data-state="closed"],.ef-sheet[data-side=left][data-state="closed"],.ef-sheet[data-side=top][data-state="closed"],.ef-sheet[data-side=bottom][data-state="closed"]{animation:none}}
 `;
 const Sheet = __ds_scope.Dialog;
 const SheetTrigger = __ds_scope.DialogTrigger;

@@ -10,7 +10,7 @@ const CSS = `
 .ef-toolcall__head{display:flex;align-items:center;gap:var(--space-2);width:100%;padding:var(--space-2) var(--space-3);border:none;background:none;cursor:pointer;text-align:start;font-family:var(--font-mono);font-size:var(--text-sm);color:var(--text-primary)}
 .ef-toolcall__head:focus-visible{outline:none;box-shadow:var(--focus-ring)}
 .ef-toolcall--pending .ef-toolcall__head{animation:ef-toolcall-pulse 1.4s var(--ease-enter) infinite}
-@keyframes ef-toolcall-pulse{0%,100%{opacity:1}50%{opacity:.55}}
+@keyframes ef-toolcall-pulse{0%,100%{opacity:1}50%{opacity:var(--ef-pulse-floor)}}
 .ef-toolcall__icon{display:inline-flex;color:var(--text-muted)}
 .ef-toolcall__verb{color:var(--text-muted);font-family:var(--font-sans);font-size:var(--text-sm)}
 .ef-toolcall__state{margin-inline-start:auto;display:inline-flex;align-items:center;gap:var(--space-2);font-family:var(--font-sans);font-size:var(--text-xs);font-weight:500;flex:none}
@@ -19,7 +19,7 @@ const CSS = `
 .ef-toolcall__state--busy{color:var(--text-secondary)}
 .ef-toolcall__state--success{color:var(--success-600,var(--text-secondary))}
 .ef-toolcall__state--danger{color:var(--status-danger-text)}
-.ef-toolcall__spin{display:inline-flex;animation:ef-toolcall-spin .9s linear infinite}
+.ef-toolcall__spin{display:inline-flex;animation:ef-toolcall-spin var(--dur-spin) linear infinite}
 @keyframes ef-toolcall-spin{to{transform:rotate(360deg)}}
 .ef-toolcall__chev{display:inline-flex;color:var(--text-muted);transition:transform var(--dur-base) var(--ease-enter)}
 .ef-toolcall--open .ef-toolcall__chev{transform:rotate(180deg)}

@@ -69,6 +69,23 @@ for (const viewport of VIEWPORTS) {
       document.documentElement.setAttribute('data-theme', t);
     }, theme);
     await page.evaluate(() => new Promise((r) => requestAnimationFrame(() => requestAnimationFrame(r))));
+    // The loading pulses keep running under reduce (MD122). Hold each opacity animation on its dimmest frame, so the
+    // contrast is measured where it is lowest, not on whichever frame the scan lands on.
+    await page.evaluate(() => {
+      for (const a of document.getAnimations()) {
+        const el = a.effect?.target;
+        const timing = a.effect?.getComputedTiming?.();
+        if (!el || timing?.iterations !== Infinity || !(timing?.duration > 0) || !a.effect.getKeyframes().some((k) => 'opacity' in k)) continue;
+        let low = { opacity: Infinity, time: 0 };
+        for (let i = 0; i <= 20; i += 1) {
+          a.pause();
+          a.currentTime = (timing.duration * i) / 20;
+          const opacity = Number(getComputedStyle(el).opacity);
+          if (opacity < low.opacity) low = { opacity, time: a.currentTime };
+        }
+        a.currentTime = low.time;
+      }
+    });
     const result = await page.evaluate(async ({ include, tags }) => {
       const r = await window.axe.run({ include: include.map((s) => [s]) }, { runOnly: { type: 'tag', values: tags }, resultTypes: ['violations'] });
       return r.violations.map((v) => ({

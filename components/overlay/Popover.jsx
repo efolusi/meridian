@@ -1,6 +1,6 @@
 'use client';
 import React from 'react';
-import { injectEfCss, mergeRefs, styleRefUnder, useIsoLayoutEffect } from '../runtime/runtime.jsx';
+import { injectEfCss, mergeRefs, styleRefUnder, useIsoLayoutEffect, usePresence } from '../runtime/runtime.jsx';
 import { Portal, useAnchoredStyle, useEscapeLayer, escapeLayerContext, useHydrated } from './Portal.jsx';
 
 const CSS = `
@@ -12,6 +12,9 @@ const CSS = `
 .ef-popover__title{margin:0;color:var(--text-primary);font-size:var(--text-md);font-weight:var(--weight-semibold);line-height:1.35}
 .ef-popover__description{margin:0;color:var(--text-muted);font-size:var(--text-sm);line-height:1.45}
 @keyframes ef-pop-in{from{transform:translateY(-3px)}}
+@keyframes ef-popover-out{to{transform:translateY(-3px)}}
+.ef-popover__panel[data-state="closed"]{pointer-events:none}
+@media (prefers-reduced-motion:no-preference){.ef-popover__panel[data-state="closed"]{animation:ef-popover-out var(--dur-fast) var(--ease-exit) forwards}}
 @media (prefers-reduced-motion:reduce){.ef-popover__panel{animation:none}}
 `;
 const PopoverCtx = React.createContext(null);
@@ -131,11 +134,12 @@ export const PopoverContent = React.forwardRef(function PopoverContent({ align =
   const fallbackTriggerRef = React.useRef(null);
   const fallbackContentRef = React.useRef(null);
   const placement = side === 'top' ? 'top' : 'bottom';
-  const { style: anchored } = useAnchoredStyle(ctx?.triggerRef ?? fallbackTriggerRef, ctx?.contentRef ?? fallbackContentRef, { open: !!ctx?.open, placement, align, offset: sideOffset });
-  if (!ctx?.open) return null;
+  const { present, state } = usePresence(!!ctx?.open, ctx?.contentRef ?? fallbackContentRef);
+  const { style: anchored } = useAnchoredStyle(ctx?.triggerRef ?? fallbackTriggerRef, ctx?.contentRef ?? fallbackContentRef, { open: present, placement, align, offset: sideOffset });
+  if (!present) return null;
   return (
     <Portal>
-      <div {...rest} ref={mergeRefs(forwardedRef, ctx.contentRef, styleRefUnder({ ...anchored, width: width ?? undefined }, style))} id={id || ctx.contentId} role={role} data-slot="popover-content" data-state="open" data-side={placement} data-align={align}
+      <div {...rest} ref={mergeRefs(forwardedRef, ctx.contentRef, styleRefUnder({ ...anchored, width: width ?? undefined }, style))} id={id || ctx.contentId} role={role} data-slot="popover-content" data-state={state} data-side={placement} data-align={align}
         className={`ef-popover__panel${className ? ' ' + className : ''}`} style={style}>{children}</div>
     </Portal>
   );

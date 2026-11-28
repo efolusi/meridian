@@ -1,13 +1,16 @@
 'use client';
 import React from 'react';
 import { Icon } from '../icons/Icon.jsx';
-import { injectEfCss } from '../runtime/runtime.jsx';
+import { injectEfCss, usePresence } from '../runtime/runtime.jsx';
 import { InputGroup, InputGroupAddon, InputGroupInput } from './InputGroup.jsx';
 import { Portal, useAnchoredStyle, useHydrated } from '../overlay/Portal.jsx';
 
 const CSS = `
 .ef-combobox{position:relative;width:100%}.ef-combobox__input-group{width:100%}.ef-combobox__input{min-width:0}.ef-combobox__actions{gap:var(--space-0-5);padding-inline:var(--space-1);border:0}.ef-combobox__button{display:inline-flex;width:26px;height:26px;align-items:center;justify-content:center;border:0;border-radius:var(--radius-sm);background:transparent;color:var(--text-muted);cursor:pointer}@media (hover:hover){.ef-combobox__button:hover{background:var(--surface-sunken);color:var(--text-primary)}}.ef-combobox__button:focus-visible{outline:none;box-shadow:var(--focus-ring)}.ef-combobox__button:disabled{cursor:not-allowed;opacity:.45}
 .ef-combobox__content{position:fixed;z-index:var(--z-popover);max-height:min(384px,var(--ef-available-height,384px));overflow:hidden;border:1px solid var(--border-default);border-radius:var(--radius-md);background:var(--surface-card);color:var(--text-primary);box-shadow:var(--shadow-md);animation:ef-combobox-in var(--dur-fast) var(--ease-enter)}@keyframes ef-combobox-in{from{opacity:0;transform:translateY(-3px)}}
+@keyframes ef-combobox-out{to{opacity:0;transform:translateY(-3px)}}
+.ef-combobox__content[data-state="closed"]{animation:ef-reduce-fade-out var(--dur-fast) var(--ease-exit) forwards;pointer-events:none}
+@media (prefers-reduced-motion:no-preference){.ef-combobox__content[data-state="closed"]{animation:ef-combobox-out var(--dur-fast) var(--ease-exit) forwards}}
 .ef-combobox__list{max-height:min(340px,var(--ef-available-height,340px));overflow-y:auto;padding:var(--space-1);scroll-padding-block:4px}.ef-combobox__item{position:relative;display:flex;width:100%;align-items:center;gap:var(--gap-label-icon);padding:calc(var(--space-2) - 1px) calc(var(--space-2) + var(--icon-md) + var(--space-2)) calc(var(--space-2) - 1px) var(--space-2);border:0;border-radius:var(--radius-sm);outline:0;background:transparent;color:var(--text-primary);font:inherit;font-size:var(--text-sm);text-align:start;cursor:pointer;user-select:none}.ef-combobox__item[data-highlighted="true"]{background:var(--surface-sunken);box-shadow:inset 0 0 0 2px var(--focus-ring-color)}.ef-combobox__item[data-disabled="true"]{pointer-events:none;opacity:.5}.ef-combobox__item[hidden]{display:none}.ef-combobox__indicator{position:absolute;inset-inline-end:var(--space-2);display:inline-flex;color:var(--accent-edge)}
 .ef-combobox__group{padding:var(--space-1)}.ef-combobox__group:not(:has(.ef-combobox__item:not([hidden]))){display:none}.ef-combobox__label{padding:var(--space-2) var(--space-2);color:var(--text-muted);font-size:var(--text-xs);font-weight:var(--weight-medium)}.ef-combobox__empty{display:flex;justify-content:center;padding:var(--space-3);color:var(--text-muted);font-size:var(--text-sm)}.ef-combobox__separator{height:1px;margin:var(--space-1) calc(-1 * var(--space-1));background:var(--border-default)}
 .ef-combobox__chips{display:flex;min-height:var(--control-h-md);width:100%;flex-wrap:wrap;align-items:center;gap:var(--space-2);padding:var(--space-1) var(--space-2);border:1px solid var(--border-control,var(--border-strong));border-radius:var(--field-radius,var(--radius-sm));background:var(--surface-card)}.ef-combobox__chips:focus-within{border-color:var(--accent-edge);box-shadow:var(--focus-ring)}.ef-combobox__chip{display:inline-flex;height:24px;align-items:center;gap:var(--space-1);padding:0 var(--space-1) 0 var(--space-2);border-radius:var(--radius-sm);background:var(--surface-sunken);font-size:var(--text-xs);font-weight:var(--weight-medium)}.ef-combobox__chip-remove{display:inline-flex;width:20px;height:20px;align-items:center;justify-content:center;border:0;border-radius:var(--radius-sm);background:transparent;color:var(--text-muted);cursor:pointer}@media (hover:hover){.ef-combobox__chip-remove:hover{background:var(--surface-card);color:var(--text-primary)}}.ef-combobox__chips-input{min-width:64px;flex:1;border:0;outline:0;background:transparent;color:var(--text-primary);font:inherit;font-size:var(--text-sm)}
@@ -141,14 +144,15 @@ export const ComboboxContent = React.forwardRef(function ComboboxContent({ class
   const popupRef = React.useRef(null);
   React.useImperativeHandle(forwardedRef, () => popupRef.current);
   const target = anchor || context?.anchorRef;
-  const { style } = useAnchoredStyle(target, popupRef, { open: context?.isOpen, placement: side, align, offset: sideOffset, crossOffset: alignOffset, matchWidth: side === 'top' || side === 'bottom' });
+  const { present, state } = usePresence(!!context?.isOpen, popupRef);
+  const { style } = useAnchoredStyle(target, popupRef, { open: present, placement: side, align, offset: sideOffset, crossOffset: alignOffset, matchWidth: side === 'top' || side === 'bottom' });
   React.useEffect(() => {
     if (!context?.isOpen) return;
     const close = event => { if (!target?.current?.contains(event.target) && !popupRef.current?.contains(event.target)) context.setOpen(false); };
     document.addEventListener('mousedown', close); return () => document.removeEventListener('mousedown', close);
   }, [context?.isOpen, context?.setOpen, target]);
-  if (!context?.isOpen) return null;
-  return <Portal><div ref={popupRef} data-slot="combobox-content" className={join('ef-combobox__content', className)} style={style} {...props}>{children}</div></Portal>;
+  if (!present) return null;
+  return <Portal><div ref={popupRef} data-slot="combobox-content" data-state={state} className={join('ef-combobox__content', className)} style={style} {...props}>{children}</div></Portal>;
 });
 
 export const ComboboxList = React.forwardRef(function ComboboxList({ className, children, ...props }, ref) {
