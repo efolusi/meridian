@@ -58,6 +58,7 @@ module.exports = { theme: { extend: {
     "chart-5": "var(--chart-5)",
     "surface-page": "var(--surface-page)",
     "surface-card": "var(--surface-card)",
+    "surface-elevated": "var(--surface-elevated)",
     "surface-panel": "var(--surface-panel)",
     "surface-card-hover": "var(--surface-card-hover)",
     "surface-sunken": "var(--surface-sunken)",
@@ -149,7 +150,8 @@ module.exports = { theme: { extend: {
     "sm": "var(--shadow-sm)",
     "md": "var(--shadow-md)",
     "lg": "var(--shadow-lg)",
-    "xl": "var(--shadow-xl)"
+    "xl": "var(--shadow-xl)",
+    "elevated": "var(--shadow-elevated)"
   },
   "fontSize": {
     "4xs": "var(--text-4xs)",

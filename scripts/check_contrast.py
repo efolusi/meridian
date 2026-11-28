@@ -111,7 +111,7 @@ def ratio(fg, bg):
     return (l1 + 0.05) / (l2 + 0.05)
 
 
-SURFACES = ["--surface-page", "--surface-card", "--surface-sunken", "--surface-subtle"]
+SURFACES = ["--surface-page", "--surface-card", "--surface-elevated", "--surface-sunken", "--surface-subtle"]
 
 # (foreground, [backgrounds], minimum ratio, what the pair guarantees)
 # Every pair here is one a component actually paints; the comment names it.
@@ -414,6 +414,61 @@ for theme, table, fallback, fx, fxfb in (("light", light, None, fx_light, None),
             print(f"{'ok  ' if ok else 'FAIL':5s} {theme:5s} glass {fg_tok} on {surface} over {bname:10s} {r:5.2f}:1  (min {minimum}, {label})")
             if not ok:
                 failures.append((theme, fg_tok, f"{surface} over {bname}", r, minimum))
+
+# ---- Raised surfaces (DT23, MD134, MD135) ----
+# A raised card carries depth in dark as a lighter step (--surface-elevated) plus a ring (--shadow-elevated); light
+# carries it by the soft shadow, so light has no ring to measure. Increased contrast replaces the ring with a 3:1 colour.
+# The well edge is the --border-default a well gets inside an elevated card (a --surface-sunken fill is 1.01:1 from
+# the dark elevated surface, so the fill alone vanishes). Floors are the measured values rounded down.
+def effect_increased(name):
+    selector = r':root,\s*\[data-theme="light"\]' if name == "light" else r'\[data-theme="dark"\]'
+    m = re.search(r'@media \(prefers-contrast:\s*more\)\s*\{\s*' + selector + r'\s*\{([^{}]*)\}', EFFECTS)
+    if not m:
+        sys.exit(f"could not locate the {name} prefers-contrast: more block in tokens/effects.css")
+    return {tok: val.strip() for tok, val in re.findall(r"(--[\w-]+):([^;]+);", m.group(1))}
+
+
+RING = re.compile(r"0 0 0 1px (#[0-9A-Fa-f]{6})")
+fx_inc_light = {**fx_light, **effect_increased("light")}
+fx_inc_dark = {**fx_dark, **effect_increased("dark")}
+RAISED = (
+    # theme, colour table, fallback, effects table, [(label, foreground token or "ring", background token, floor)]
+    ("light", light, None, fx_light, [
+        ("well edge --border-default on the elevated surface", "--border-default", "--surface-elevated", 1.2),
+        ("elevated card on the page (the soft shadow carries depth)", "--surface-elevated", "--surface-page", 1.02),
+    ]),
+    ("dark", dark, light, fx_dark, [
+        ("elevated card on the page", "--surface-elevated", "--surface-page", 1.2),
+        ("ring on the page", "ring", "--surface-page", 1.6),
+        ("ring on the elevated card", "ring", "--surface-elevated", 1.3),
+        ("well edge --border-default on the elevated surface", "--border-default", "--surface-elevated", 1.15),
+    ]),
+    ("increased", increased_light, None, fx_inc_light, [
+        ("ring on the page", "ring", "--surface-page", 3.0),
+        ("well edge --border-default on the elevated surface", "--border-default", "--surface-elevated", 3.0),
+    ]),
+    ("increased-dark", increased_dark, light, fx_inc_dark, [
+        ("ring on the page", "ring", "--surface-page", 3.0),
+        ("well edge --border-default on the elevated surface", "--border-default", "--surface-elevated", 3.0),
+    ]),
+)
+for theme, table, fallback, fx, pairs in RAISED:
+    for label, fg_tok, bg_tok, minimum in pairs:
+        bg = to_hex(resolve(bg_tok, table, fallback))
+        if fg_tok == "ring":
+            m = RING.search(fx.get("--shadow-elevated", ""))
+            fg = m.group(1).upper() if m else None
+        else:
+            fg = to_hex(resolve(fg_tok, table, fallback), over=bg)
+        if fg is None or bg is None:
+            unresolved.append((theme, f"{fg_tok} on {bg_tok}", "raised-surface pair did not resolve to a colour"))
+            continue
+        r = ratio(fg, bg)
+        checked += 1
+        ok = r >= minimum
+        print(f"{'ok  ' if ok else 'FAIL':5s} {theme:5s} raised {label} {r:5.2f}:1  (min {minimum})")
+        if not ok:
+            failures.append((theme, fg_tok, bg_tok, r, minimum))
 
 if unresolved:
     print("\nunresolved tokens (a pair that cannot be measured is a failure, not a pass):")

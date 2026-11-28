@@ -130,6 +130,25 @@ export function CardPageTitle() {
   );
 }
 
+// @demo Card Elevated, holding a well
+export function CardElevatedDemo() {
+  const { Card, CardHeader, CardTitle, CardDescription, CardContent, Item, ItemMedia, ItemContent, ItemTitle, ItemDescription, Icon } = window.EfolusiDesignSystem_4ffc3d;
+  return (
+    <div style={{ display: 'grid', gap: 16, width: '100%', maxWidth: 420 }}>
+      <Card elevated>
+        <CardHeader>
+          <CardTitle>Raised card</CardTitle>
+          <CardDescription>A lighter step and a ring in dark, a soft shadow in light.</CardDescription>
+        </CardHeader>
+        <CardContent style={{ display: 'grid', gap: 12 }}>
+          <Item variant="muted" size="sm"><ItemMedia variant="icon"><Icon name="database" /></ItemMedia><ItemContent><ItemTitle>Warehouse sync</ItemTitle><ItemDescription>Nightly at 02:00</ItemDescription></ItemContent></Item>
+          <pre style={{ margin: 0, padding: 12, borderRadius: 'var(--radius-md)', background: 'var(--surface-sunken)', border: '1px solid var(--border-default)', fontFamily: 'var(--font-mono)', fontSize: 13 }}>komando deploy --env production</pre>
+        </CardContent>
+      </Card>
+    </div>
+  );
+}
+
 // @demo Carousel Scroll-snap strip
 export function CarouselDemo() {
   const { Carousel, CarouselContent, CarouselItem, CarouselPrevious, CarouselNext, Card, CardContent, CardDescription, CardHeader, CardTitle } = window.EfolusiDesignSystem_4ffc3d;
