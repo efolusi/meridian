@@ -3179,10 +3179,12 @@ A call to action that goes to another page is a link, not a button. Give `Button
 
 ```jsx
 <Button href="/start" shape="pill" size="xl" iconBubble="arrow-up-right">Start free</Button>
-<Button href="/docs" variant="secondary" target="_blank" rel="noopener">Read the docs</Button>
+<Button href="/docs" variant="secondary" target="_blank">Read the docs</Button>
 ```
 
-With a router, use `asChild` and pass your own link as the single child: a Next.js `Link` keeps its locale and prefetch, and Button gives it the classes, the state and the inner markup. The child's `href`, props, ref, `className`, `style` and click handlers stay and are merged with Button's:
+`href` is passed to the `<a>` as given, as on any anchor: Button does not sanitise it, so never build it from user input without checking the scheme. `target`, `rel`, `download`, `hrefLang` and `referrerPolicy` pass through, and `target="_blank"` gets `rel="noopener"` unless you set a `rel` yourself.
+
+With a router, use `asChild` and pass your own link as the single child: a Next.js `Link` keeps its locale and prefetch, and Button gives it the classes, the state and the inner markup. The child's `href`, props and ref stay. Only `className`, `style`, `onClick` and `onAuxClick` are merged with Button's; on any other prop set on both (`onKeyDown`, `onFocus`, `aria-*`, `target`), the child's value wins and Button's is dropped without a warning. An `href` set on `Button` itself is ignored with `asChild`: set it on the child. Props set only on `Button` (`data-*`, `aria-*`, `target`) are passed to the child:
 
 ```jsx
 <Button asChild shape="pill" size="xl" iconBubble="arrow-up-right">
@@ -3190,7 +3192,7 @@ With a router, use `asChild` and pass your own link as the single child: a Next.
 </Button>
 ```
 
-A link is not a button, and the difference is kept: Enter follows it, Space does not (Space scrolls the page, as on every link), and Cmd, Ctrl or middle click opens it in a new tab. A link has no `disabled` attribute, so `disabled` and `loading` set `aria-disabled="true"` and `tabindex="-1"`, keep the `href`, and swallow the click, the middle click and Enter. `loading` also sets `aria-busy` and draws the spinner (in the bubble when there is one, so the label does not move). Use `Button` with `onClick` for an action and `Button` with `href` for a destination; never an `href="#"`.
+A link is not a button, and the difference is kept: Enter follows it, Space does not (Space scrolls the page, as on every link), and Cmd, Ctrl or middle click opens it in a new tab. A link has no `disabled` attribute, so `disabled` and `loading` set `aria-disabled="true"` and `tabindex="-1"`, keep the `href`, and swallow the click, the middle click and Enter. The blocked click also stops there, as on a native disabled button, so an `onClick` on a parent (a clickable card around the link) does not fire. `loading` also sets `aria-busy` and draws the spinner (in the bubble when there is one, so the label does not move). Use `Button` with `onClick` for an action and `Button` with `href` for a destination; never an `href="#"`.
 
 `buttonVariants` stays for markup that is not React (a server template, a Markdown renderer): it returns the class names only, and the bubble span is yours to write, so prefer `href` or `asChild` wherever React renders the link.
 
@@ -3222,9 +3224,9 @@ export interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElemen
   fullWidth?: boolean;
   /** Shows a spinner and disables the button. On a link (`href` or `asChild`) it sets `aria-busy` and `aria-disabled`, takes the link out of the tab order and swallows the click. */
   loading?: boolean;
-  /** Renders an `<a>` with the same classes, bubble, spinner, focus ring and states as the button. A link has no `disabled` attribute: `disabled` and `loading` set `aria-disabled="true"` and `tabindex="-1"` and block the click and the Enter key. Space does not activate it (link semantics). `target`, `rel`, `download` and `hrefLang` pass through. */
+  /** Renders an `<a>` with the same classes, bubble, spinner, focus ring and states as the button. A link has no `disabled` attribute: `disabled` and `loading` set `aria-disabled="true"` and `tabindex="-1"` and block the click and the Enter key; the blocked click also stops there (`stopPropagation`), so a parent's `onClick` does not fire. Space does not activate it (link semantics). `href` is passed to the `<a>` as given and is not sanitised. `target`, `rel`, `download`, `hrefLang` and `referrerPolicy` pass through; `target="_blank"` gets `rel="noopener"` unless you set a `rel`. */
   href?: string;
-  /** Gives the classes, state and inner markup to your own link, the single child element (a Next.js `Link` with its locale, a router `Link`), instead of rendering an element. The child keeps its `href`, props and ref; its `className`, `style` and click handlers are merged with Button's. `disabled`, `loading` and the blocked click work as on `href`. The child must be a link (an `a`), not a `button`. */
+  /** Gives the classes, state and inner markup to your own link, the single child element (a Next.js `Link` with its locale, a router `Link`), instead of rendering an element. The child keeps its `href`, props and ref. Only `className`, `style`, `onClick` and `onAuxClick` are merged with Button's; on any other prop set on both the child's value wins and Button's is dropped silently, and an `href` set on `Button` is ignored (set it on the child). `disabled`, `loading` and the blocked click work as on `href`. The child must be a link (an `a`), not a `button`. */
   asChild?: boolean;
   children?: React.ReactNode;
 }
@@ -4037,7 +4039,7 @@ Group: marketing · Source: /components/marketing/Hero.jsx · Exports: Hero, Her
 
 Use `Hero` once, at the top of a marketing page: the `title`, a short `sub`, the `actions` (pill buttons, the main one `size="xl"`) and an optional `proof` line. It is centred by default; use `align="start"` beside an image. Link `landing.css` so the top and bottom spacing steps down on small screens.
 
-`actions` stack below 640px, and a stacked pair has one width, the widest button's: pass the buttons as they are and delete your own pair CSS (`width`, `min-width`, `flex: 1` or `align-self` on the hero buttons). At 640px and above they sit in one row that wraps.
+`actions` stack at 640px and below (every set of actions, a short pair that fitted on one row included), and a stacked pair has one width, the widest button's: pass the buttons as they are and delete your own pair CSS (`width`, `min-width`, `flex: 1` or `align-self` on the hero buttons). From 641px up they sit in one row that wraps. A child of `actions` that is not a button (a text link, a wrapper) is stretched to the widest button when stacked.
 
 Wrap one word of the title in `HeroAccent` for the hand-drawn underline. It draws once and stays still with reduced motion. Pass every word from your own dictionary, in Indonesian and English.
 
@@ -4055,7 +4057,7 @@ export interface HeroProps extends Omit<React.HTMLAttributes<HTMLElement>, 'titl
   title: React.ReactNode;
   /** One or two sentences under the title. */
   sub?: React.ReactNode;
-  /** Calls to action, usually `Button shape="pill"`. Below 640px they stack in one column as wide as the widest button. */
+  /** Calls to action, usually `Button shape="pill"`. At 640px and below they stack in one column as wide as the widest button (every set of actions, short pairs included; a child that is not a button is stretched to that width). */
   actions?: React.ReactNode;
   /** A short proof line under the actions, such as a status dot and a fact. */
   proof?: React.ReactNode;
