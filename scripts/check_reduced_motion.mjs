@@ -51,7 +51,7 @@ function transitionRules(text) {
 const travellers = transitionRules(css.replace(/\/\*[\s\S]*?\*\//g, '')).flatMap(([sel, list]) => sel.split(/,(?![^(]*\))/).map((x) => x.trim()).filter(Boolean).map((x) => ({ selector: x, group: sel, list })));
 const travelProbes = travellers.map((t) => ({ ...t, built: build(t.selector) }));
 // The loops the guard leaves running (MD122), read from the guard rule itself in tokens/base.css.
-const loadingSelector = css.match(/\*:not\(:is\((.*?)\)\),\*::before,\*::after\{--ef-motion-guard:\.01ms/)?.[1];
+const loadingSelector = css.match(/\*:not\(:where\((.*?)\)\),\*::before,\*::after\{--ef-motion-guard:\.01ms/)?.[1];
 assert.ok(loadingSelector, 'the --ef-motion-guard rule with its loading exclusion must be in tokens/base.css');
 for (const required of ['.ef-spinner', '.ef-btn__spin']) assert.ok(loadingSelector.split(',').includes(required), `the guard must leave ${required} running`);
 const loops = [...css.matchAll(/(?<![\w-])([^{}@]+)\{([^{}]*\binfinite\b[^{}]*)\}/g)].map((m) => m[1].trim()).filter((s) => !/^(from|to|\d+%)/.test(s));
@@ -92,6 +92,8 @@ const ENTRANCE_SNAP = new Map([
   ['.ef-context-menu__content', GLASS_OVERLAY],
   ['.ef-hovercard__panel', GLASS_OVERLAY],
 ]);
+// Their exit is the same snap (MD121: under reduce a glass panel goes at once, a solid panel fades out), so the closed state of each is reviewed too.
+for (const key of [...ENTRANCE_SNAP.keys()]) if (ENTRANCE_SNAP.get(key) === GLASS_OVERLAY) ENTRANCE_SNAP.set(`${key}[data-state="closed"]`, GLASS_OVERLAY);
 const entranceVerifiable = entrances.filter((p) => p.built);
 const unbuiltEntrances = entrances.filter((p) => !p.built && !UNBUILDABLE_ENTRANCE.has(p.selector)).map((p) => p.selector);
 const probes = selectors.map((s) => ({ selector: s, built: build(s) }));

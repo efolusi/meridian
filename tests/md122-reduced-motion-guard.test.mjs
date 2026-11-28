@@ -41,7 +41,7 @@ describe('the guard stills every element that is not a loading loop', () => {
   it('is one rule on every element and its pseudo-elements, minus the loading loops', () => {
     expect(guard, 'the --ef-motion-guard rule').not.toBeNull()
     // the exclusion is written once: no animation runs on a pseudo-element of a loader, so *::before and *::after need none
-    expect(guard[1]).toMatch(/^\*:not\(:is\(.+\)\),\*::before,\*::after$/)
+    expect(guard[1]).toMatch(/^\*:not\(:where\(.+\)\),\*::before,\*::after$/)
     expect(guard[2]).toMatch(/animation-duration:var\(--ef-motion-guard\)!important/)
     expect(guard[2]).toMatch(/animation-iteration-count:1!important/)
   })
@@ -53,7 +53,7 @@ describe('the guard stills every element that is not a loading loop', () => {
   }
 
   it('lists no selector that is not a loop: every excluded selector is one of the loading loops above', () => {
-    const inner = /^\*:not\(:is\((.*)\)\),\*::before,\*::after$/.exec(guard[1])[1]
+    const inner = /^\*:not\(:where\((.*)\)\),\*::before,\*::after$/.exec(guard[1])[1]
     const listed = inner.split(/,(?![^()[\]]*[)\]])/)
     expect(listed.sort()).toEqual(LOADING.map(flat).sort())
   })
