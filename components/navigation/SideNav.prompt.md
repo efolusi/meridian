@@ -1,7 +1,7 @@
-The product sidebar: brand row, grouped nav with icons and badges, and the foot (the account card and its menu). 240px on `--surface-subtle`, 72px when `collapsed`.
+The product sidebar: head (brand and one collapse button), grouped nav with icons and badges, and the foot (the account card and its menu). 240px on `--surface-subtle`, 72px when collapsed.
 
 ```jsx
-<SideNav logoSrc="assets/meridian.svg" brandBadge="Console" value={nav} onChange={setNav}
+<SideNav logoSrc="assets/meridian.svg" value={nav} onChange={setNav}
   groups={[
     { items: [{ id: 'overview', label: 'Overview', icon: 'layout-dashboard' }, { id: 'customers', label: 'Customers', icon: 'users', badge: 128 }] },
     { label: 'Products', items: [{ id: 'agent', label: 'AI agents', icon: 'bot' }] },
@@ -20,6 +20,9 @@ The product sidebar: brand row, grouped nav with icons and badges, and the foot 
 The foot shows when `account` is given.
 
 - `lang="id"` writes the menu in Indonesian ("Tema", "Terang", "Gelap", "Keluar"). `labels` overrides any word.
-- `collapsed` draws the icon rail: nav rows show the icon only, the card shows the avatar alone inside the same border and opens the same menu. Every label, the name and the email stay in the DOM as accessible names, and the nav rows carry a `title`. A nav item with a `badge` shows a dot. The component draws no collapse button: the product decides when to collapse.
+- **The head** holds the brand and ONE icon button that collapses and expands the rail (`aria-expanded`, `aria-controls` the rail, label "Collapse sidebar" or "Expand sidebar", "Ciutkan sidebar" or "Perluas sidebar" with `lang="id"`; it also has a tooltip). There is no section tag by default: `brandBadge` stays an option for a product with a real need, and it is hidden while collapsed.
+- **Collapsed** is the icon rail: nav rows show the icon only, each with a Meridian tooltip on hover and on keyboard focus, the card shows the avatar alone inside the same border and opens the same menu. Every label, the name and the email stay in the DOM as accessible names. A nav item with a `badge` shows a dot. The width animates by the `--dur-slow` and `--ease-standard` tokens and does not animate under reduced motion.
+- **State.** Leave `collapsed` out and the rail keeps its own state: `defaultCollapsed` is the first state, and the choice is stored per viewer on this origin (`storageKey`, default `efolusi-sidenav-collapsed`; `null` stores nothing). The stored choice is read before the first paint and the width starts animating only after that frame, so a returning viewer never sees the rail slide into place. Server HTML shows `defaultCollapsed`; pass it from your own cookie if the first paint before scripts must match too. `collapsed` with `onCollapsedChange` is the controlled form (the product stores it); `collapsed` alone draws no button; `collapsible={false}` draws none either.
+- **Phone.** Below 768px the rail is in a drawer at full width: the button is not drawn and an uncontrolled rail is never collapsed there.
 - A polite status announces the new theme after a choice.
 - On a phone put the same `SideNav` in a drawer at its full width, so the foot is the same there.

@@ -148,8 +148,8 @@ export function SideNavDemo() {
   const { SideNav } = window.EfolusiDesignSystem_4ffc3d;
   const [v, setV] = React.useState('runs');
   return (
-    <div style={{ width: 240, height: 480, border: '1px solid var(--border-default)', borderRadius: 'var(--radius-md)', overflow: 'hidden' }}>
-      <SideNav brand="Meridian" value={v} onChange={setV} account={{ name: 'Ada Obi', email: 'ada@example.com' }} menuItems={[{ id: 'account', label: 'Account settings', icon: 'settings', onSelect: () => setV('settings') }]} onSignOut={() => setV('home')} groups={[
+    <div style={{ display: 'flex', width: 'fit-content', height: 480, border: '1px solid var(--border-default)', borderRadius: 'var(--radius-md)', overflow: 'hidden' }}>
+      <SideNav storageKey={null} brand="Meridian" value={v} onChange={setV} account={{ name: 'Ada Obi', email: 'ada@example.com' }} menuItems={[{ id: 'account', label: 'Account settings', icon: 'settings', onSelect: () => setV('settings') }]} onSignOut={() => setV('home')} groups={[
         { items: [
           { id: 'home', label: 'Overview', icon: 'house' },
           { id: 'runs', label: 'Runs', icon: 'bot', badge: 3 },
@@ -169,8 +169,8 @@ export function SideNavCollapsedDemo() {
   const { SideNav } = window.EfolusiDesignSystem_4ffc3d;
   const [v, setV] = React.useState('runs');
   return (
-    <div style={{ width: 72, height: 480, border: '1px solid var(--border-default)', borderRadius: 'var(--radius-md)', overflow: 'hidden' }}>
-      <SideNav collapsed brand="Meridian" value={v} onChange={setV} account={{ name: 'Ada Obi', email: 'ada@example.com' }} menuItems={[{ id: 'account', label: 'Account settings', icon: 'settings', onSelect: () => setV('settings') }]} onSignOut={() => setV('home')} groups={[
+    <div style={{ display: 'flex', width: 'fit-content', height: 480, border: '1px solid var(--border-default)', borderRadius: 'var(--radius-md)', overflow: 'hidden' }}>
+      <SideNav defaultCollapsed storageKey={null} brand="Meridian" value={v} onChange={setV} account={{ name: 'Ada Obi', email: 'ada@example.com' }} menuItems={[{ id: 'account', label: 'Account settings', icon: 'settings', onSelect: () => setV('settings') }]} onSignOut={() => setV('home')} groups={[
         { items: [
           { id: 'home', label: 'Overview', icon: 'house' },
           { id: 'runs', label: 'Runs', icon: 'bot', badge: 3 },

@@ -247,9 +247,8 @@ describe('the collapsed rail', () => {
     expect(within(open()).getAllByRole('menuitem').map((i) => i.textContent)).toEqual(['Sign out'])
   })
 
-  it('gives each icon-only nav row a tooltip and marks a row with a count', () => {
+  it('marks a row with a count', () => {
     rail({ collapsed: true })
-    expect(screen.getByRole('button', { name: 'Overview' }).title).toBe('Overview')
     expect(screen.getByRole('button', { name: 'Runs 3' }).hasAttribute('data-has-count')).toBe(true)
   })
 
@@ -259,11 +258,6 @@ describe('the collapsed rail', () => {
     expect(hidden).not.toMatch(/display:none/)
     expect(rule(sideCss, '.ef-sidenav[data-collapsed]')).toMatch(/width:72px/)
     expect(rule(cardCss, '.ef-account-card[data-compact] .ef-account-card__text')).toMatch(/clip:rect\(0 0 0 0\)/)
-  })
-
-  it('draws no collapse control', () => {
-    const { container } = rail({ collapsed: true })
-    expect(container.querySelectorAll('button')).toHaveLength(4)
   })
 })
 

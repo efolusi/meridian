@@ -90,7 +90,7 @@
   "SelectionQuote": "Fitur pilih-untuk-mengutip dengan toolbar mengambang yang sadar viewport, dapat berbalik dan tetap terklem di sekitar teks pilihan.",
   "Separator": "Pemisah horizontal atau vertikal yang dapat bersifat dekoratif maupun semantik.",
   "Sheet": "Dialog geser composable untuk alur tambahan, dengan dukungan sisi atas, kanan, bawah, dan kiri serta fokus modal yang aksesibel.",
-  "SideNav": "Sidebar produk: baris brand, navigasi berkelompok dengan ikon dan badge, serta kaki yang sama di setiap produk: satu kartu akun berbingkai yang dibuka menjadi menu (Tema, item produk, Keluar). 240px di --surface-subtle, 72px saat dilipat.",
+  "SideNav": "Sidebar produk: kepala berisi brand dan satu tombol untuk menciutkan atau memperluas sidebar, navigasi berkelompok dengan ikon dan badge, serta kaki yang sama di setiap produk: satu kartu akun berbingkai yang dibuka menjadi menu (Tema, item produk, Keluar). 240px di --surface-subtle, 72px saat diciutkan dengan tooltip di setiap ikon; pilihan tiap pengguna diingat tanpa kedipan.",
   "Sidebar": "Shell aplikasi composable dengan state desktop dan seluler, mode off-canvas atau ikon, sisi kiri/kanan, navigasi bertingkat, serta pintasan keyboard.",
   "Skeleton": "Placeholder pemuatan berupa div native; susun placeholder berulang dan atur dimensinya lewat atribut serta style native.",
   "SkipLink": "Tautan pertama yang bisa difokus: satu tekan Tab membawa pengguna keyboard melewati header langsung ke konten. Tersembunyi sampai difokus; targetnya perlu tabIndex=-1 agar fokus benar-benar berpindah.",
