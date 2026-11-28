@@ -14,7 +14,7 @@ function Block() {
   return (
     <div style={{ display: 'flex', height: '100vh', overflow: 'hidden' }}>
       <div className="bk-side" style={{ width: 232, flex: 'none', borderRight: '1px solid var(--border-default)' }}>
-        <SideNav brand="Acme Ops" value={nav} onChange={setNav} groups={[
+        <SideNav brand="Acme Ops" value={nav} onChange={setNav} account={{ name: 'Ada Obi', email: 'ada@example.com' }} onSignOut={() => {}} groups={[
           { items: [
             { id: 'home', label: 'Overview', icon: 'house' },
             { id: 'runs', label: 'Runs', icon: 'bot', badge: 3 },

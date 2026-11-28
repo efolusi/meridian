@@ -3652,6 +3652,37 @@
       ]
     },
     {
+      "name": "accountcard",
+      "type": "registry:ui",
+      "title": "AccountCard",
+      "description": "The signed-in person in one bordered card: avatar, name and email. It is static (not a button) and `SideNav` draws it at the foot of the rail, below the theme and sign-out rows. Use it on its own only where the same card is needed outside a rail, for example in a drawer.",
+      "dependencies": [
+        "react"
+      ],
+      "registryDependencies": [
+        "https://meridian.efolusi.com/site/registry/meridian-base.json",
+        "https://meridian.efolusi.com/site/registry/avatar.json",
+        "https://meridian.efolusi.com/site/registry/meridian-runtime.json"
+      ],
+      "files": [
+        {
+          "path": "components/navigation/AccountCard.jsx",
+          "type": "registry:ui"
+        },
+        {
+          "path": "components/navigation/AccountCard.d.ts",
+          "type": "registry:component"
+        },
+        {
+          "path": "components/navigation/AccountCard.prompt.md",
+          "type": "registry:component"
+        }
+      ],
+      "categories": [
+        "navigation"
+      ]
+    },
+    {
       "name": "breadcrumb",
       "type": "registry:ui",
       "title": "Breadcrumb + BreadcrumbList + BreadcrumbItem + BreadcrumbLink + BreadcrumbPage + BreadcrumbSeparator + BreadcrumbEllipsis",
@@ -3842,15 +3873,17 @@
       "name": "sidenav",
       "type": "registry:ui",
       "title": "SideNav",
-      "description": "The product sidebar: brand row, grouped nav with icons/badges, pinned footer. 240px on `--surface-subtle`.",
+      "description": "The product sidebar: brand row, grouped nav with icons and badges, and the foot. 240px on `--surface-subtle`, 72px when `collapsed`.",
       "dependencies": [
         "react"
       ],
       "registryDependencies": [
         "https://meridian.efolusi.com/site/registry/meridian-base.json",
+        "https://meridian.efolusi.com/site/registry/accountcard.json",
         "https://meridian.efolusi.com/site/registry/badge.json",
         "https://meridian.efolusi.com/site/registry/icon.json",
-        "https://meridian.efolusi.com/site/registry/meridian-runtime.json"
+        "https://meridian.efolusi.com/site/registry/meridian-runtime.json",
+        "https://meridian.efolusi.com/site/registry/themetoggle.json"
       ],
       "files": [
         {

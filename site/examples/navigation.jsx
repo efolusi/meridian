@@ -136,8 +136,29 @@ export function SideNavDemo() {
   const { SideNav } = window.EfolusiDesignSystem_4ffc3d;
   const [v, setV] = React.useState('runs');
   return (
-    <div style={{ width: 240, height: 340, border: '1px solid var(--border-default)', borderRadius: 'var(--radius-md)', overflow: 'hidden' }}>
-      <SideNav brand="Meridian" value={v} onChange={setV} groups={[
+    <div style={{ width: 240, height: 480, border: '1px solid var(--border-default)', borderRadius: 'var(--radius-md)', overflow: 'hidden' }}>
+      <SideNav brand="Meridian" value={v} onChange={setV} account={{ name: 'Ada Obi', email: 'ada@example.com' }} onSignOut={() => setV('home')} groups={[
+        { items: [
+          { id: 'home', label: 'Overview', icon: 'house' },
+          { id: 'runs', label: 'Runs', icon: 'bot', badge: 3 },
+          { id: 'data', label: 'Data', icon: 'database' },
+        ] },
+        { label: 'Workspace', items: [
+          { id: 'members', label: 'Members', icon: 'users' },
+          { id: 'settings', label: 'Settings', icon: 'settings' },
+        ] },
+      ]} />
+    </div>
+  );
+}
+
+// @demo SideNav Collapsed rail
+export function SideNavCollapsedDemo() {
+  const { SideNav } = window.EfolusiDesignSystem_4ffc3d;
+  const [v, setV] = React.useState('runs');
+  return (
+    <div style={{ width: 72, height: 480, border: '1px solid var(--border-default)', borderRadius: 'var(--radius-md)', overflow: 'hidden' }}>
+      <SideNav collapsed brand="Meridian" value={v} onChange={setV} account={{ name: 'Ada Obi', email: 'ada@example.com' }} onSignOut={() => setV('home')} groups={[
         { items: [
           { id: 'home', label: 'Overview', icon: 'house' },
           { id: 'runs', label: 'Runs', icon: 'bot', badge: 3 },

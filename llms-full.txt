@@ -2,7 +2,7 @@
 
 The entire design system in one file, generated from llms.txt, components/*/, and tokens/*.css by scripts/build_llms.py. Do not edit by hand. The short map of the repository is /llms.txt.
 
-> Meridian is a general-purpose open-source design system by Efolusi: 136 accessible React components, 301 design tokens (light, dark, compact), blocks, charts, and full example apps, served browser-native with zero build step. Apache-2.0 licensed.
+> Meridian is a general-purpose open-source design system by Efolusi: 137 accessible React components, 301 design tokens (light, dark, compact), blocks, charts, and full example apps, served browser-native with zero build step. Apache-2.0 licensed.
 
 Live docs: https://meridian.efolusi.com · Source: https://github.com/efolusi/meridian · License: Apache-2.0
 
@@ -34,7 +34,7 @@ Dark mode: set data-theme="dark" on any subtree. Compact density: data-density="
 
 ## Components
 
-136 components across 13 groups: ai, code, data, dates, display, feedback, files, finance, forms, icons, marketing, navigation, overlay. Each entry lists the component's public exports, its usage guidance (.prompt.md), and its typed props interface (.d.ts).
+137 components across 13 groups: ai, code, data, dates, display, feedback, files, finance, forms, icons, marketing, navigation, overlay. Each entry lists the component's public exports, its usage guidance (.prompt.md), and its typed props interface (.d.ts).
 
 ### ai
 
@@ -4374,6 +4374,34 @@ export declare function themeInitScript(): string;
 
 ### navigation
 
+#### AccountCard
+
+Group: navigation · Source: /components/navigation/AccountCard.jsx · Exports: AccountCard
+
+The signed-in person in one bordered card: avatar, name and email. It is static (not a button) and `SideNav` draws it at the foot of the rail, below the theme and sign-out rows. Use it on its own only where the same card is needed outside a rail, for example in a drawer.
+
+```jsx
+<AccountCard name="Ada Obi" email="ada@example.com" image="/avatars/ada.png" />
+<AccountCard email="ada@example.com" />
+<AccountCard name="Ada Obi" email="ada@example.com" compact />
+```
+
+The initials come from the first and last word of `name` (or the first two letters of the email), so a missing or broken `image` still shows a mark. The picture is decorative (`alt=""`) because the name sits beside it. `compact` keeps the card and its border and shows the avatar alone; the name and email stay in the DOM, visually hidden, so a screen reader still reads them.
+
+```ts
+export interface AccountCardProps extends React.HTMLAttributes<HTMLDivElement> {
+  /** Display name. Without it the card shows the email on the first line only. */
+  name?: string | null;
+  email: string;
+  /** Profile picture URL. Initials show when it is missing or fails to load. */
+  image?: string | null;
+  /** The avatar alone inside the same bordered card (the collapsed rail). The name and email stay in the DOM for screen readers. @default false */
+  compact?: boolean;
+}
+/** The signed-in person in one bordered card: avatar, name, email. Static, not a control. `SideNav` draws it at the foot of the rail. */
+export declare const AccountCard: React.ForwardRefExoticComponent<AccountCardProps & React.RefAttributes<HTMLDivElement>>;
+```
+
 #### Breadcrumbs
 
 Group: navigation · Source: /components/navigation/Breadcrumbs.jsx · Exports: Breadcrumb, BreadcrumbList, BreadcrumbItem, BreadcrumbLink, BreadcrumbPage, BreadcrumbSeparator, BreadcrumbEllipsis
@@ -4631,20 +4659,47 @@ export declare function SegmentedControl(props: SegmentedControlProps): React.JS
 
 Group: navigation · Source: /components/navigation/SideNav.jsx · Exports: SideNav
 
-The product sidebar: brand row, grouped nav with icons/badges, pinned footer. 240px on `--surface-subtle`.
+The product sidebar: brand row, grouped nav with icons and badges, and the foot. 240px on `--surface-subtle`, 72px when `collapsed`.
 
 ```jsx
 <SideNav logoSrc="assets/meridian.svg" brandBadge="Console" value={nav} onChange={setNav}
   groups={[
     { items: [{ id: 'overview', label: 'Overview', icon: 'layout-dashboard' }, { id: 'customers', label: 'Customers', icon: 'users', badge: 128 }] },
-{ label: 'Products', items: [{ id: 'agent', label: 'AI agents', icon: 'bot' }] },
+    { label: 'Products', items: [{ id: 'agent', label: 'AI agents', icon: 'bot' }] },
   ]}
-  footer={<Item size="sm"><ItemMedia><Avatar><AvatarFallback>AO</AvatarFallback></Avatar></ItemMedia><ItemContent><ItemTitle>Ada Obi</ItemTitle><ItemDescription>Acme Workspace</ItemDescription></ItemContent></Item>} />
+  account={{ name: 'Ada Obi', email: 'ada@example.com' }}
+  onSignOut={signOut} />
 ```
+
+**The foot is the same on every front** and no product builds its own. From the top it is: a theme row (icon, "Theme", and the state "Light" or "Dark"), a sign-out row ("Sign out"), then one bordered `AccountCard`. The rows use the nav row style (`.ef-sidenav__item`, 34px, 44px at a coarse pointer), not icon-only circles and not a second toggle style. The header `ThemeToggle` keeps its own borderless icon; the foot's theme row is a labelled row, and both read and write the one theme contract, so they stay in step. The foot shows when `account` or `onSignOut` is given; give both.
+
+- `lang="id"` writes the foot in Indonesian ("Tema", "Terang", "Gelap", "Keluar"). `labels` overrides any word.
+- `collapsed` draws the icon rail: rows show the icon only, the card shows the avatar alone inside the same border. Every label, the name and the email stay in the DOM as accessible names, and the nav rows and foot rows carry a `title`. A nav item with a `badge` shows a dot. The component draws no collapse button: the product decides when to collapse.
+- The theme row's accessible name is "Theme: Dark" and its tooltip says what a press does. A polite status announces the new theme after a press.
+- On a phone put the same `SideNav` in a drawer at its full width, so the foot is the same there.
 
 ```ts
 export interface SideNavItem { id: string; label: React.ReactNode; icon: string; badge?: React.ReactNode; }
 export interface SideNavGroup { /** Uppercase group heading (omit for main nav) */ label?: string; items: SideNavItem[]; }
+export interface SideNavAccount {
+  /** Display name. Without it the card shows the email on the first line only. */
+  name?: string | null;
+  email: string;
+  /** Profile picture URL. Initials show when it is missing or fails to load. */
+  image?: string | null;
+}
+export interface SideNavLabels {
+  /** The theme row. @default 'Theme' ('Tema' with lang="id") */
+  theme?: string;
+  /** The state shown when the page is light. @default 'Light' ('Terang') */
+  light?: string;
+  /** The state shown when the page is dark. @default 'Dark' ('Gelap') */
+  dark?: string;
+  /** The sign-out row. @default 'Sign out' ('Keluar') */
+  signOut?: string;
+  /** The phrase before the other theme in the row's tooltip. @default 'Switch to' ('Ganti ke') */
+  next?: string;
+}
 export interface SideNavProps {
   /** @default 'Meridian' */
   brand?: string;
@@ -4655,11 +4710,20 @@ export interface SideNavProps {
   /** Active item id */
   value: string;
   onChange?: (id: string) => void;
-  /** Pinned bottom slot (account card…) */
-  footer?: React.ReactNode;
+  /** The icon rail: 72px wide, icons only, every label stays in the DOM as the accessible name. The product decides when; `SideNav` draws no toggle. @default false */
+  collapsed?: boolean;
+  /** The signed-in person. Draws the one bordered `AccountCard` at the foot. */
+  account?: SideNavAccount;
+  /** Draws the labelled sign-out row of the foot and calls this when it is pressed. */
+  onSignOut?: () => void;
+  /** Language of the foot's built-in labels. @default 'en' */
+  lang?: 'en' | 'id';
+  /** Override any label of the foot. */
+  labels?: SideNavLabels;
   style?: React.CSSProperties;
   className?: string;
 }
+/** The rail: brand, grouped nav, and the foot. The foot is the same on every front: a theme row, a sign-out row, then one bordered account card. It shows when `account` or `onSignOut` is given. */
 export declare function SideNav(props: SideNavProps): React.JSX.Element;
 ```
 

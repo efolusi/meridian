@@ -61,7 +61,7 @@ function Demo() {
         </NavigationMenu>
       </div>
       <div><div style={lbl}>SideNav + TopNav</div>
-        <div style={{ display: 'flex', border: '1px solid var(--border-default)', borderRadius: 'var(--radius-md)', overflow: 'hidden', height: 260 }}>
+        <div style={{ display: 'flex', border: '1px solid var(--border-default)', borderRadius: 'var(--radius-md)', overflow: 'hidden', height: 440 }}>
           <SideNav logoSrc="../../assets/meridian.svg" brandBadge="Console" value={nav} onChange={setNav}
             groups={[
               { items: [
@@ -70,7 +70,7 @@ function Demo() {
                 { id: 'billing', label: 'Billing', icon: 'credit-card' },
               ]},
             ]}
-            footer={<Item size="sm"><ItemMedia><Avatar><AvatarFallback>AO</AvatarFallback></Avatar></ItemMedia><ItemContent><ItemTitle>Ada Obi</ItemTitle><ItemDescription>Acme Workspace</ItemDescription></ItemContent></Item>} />
+            account={{ name: 'Ada Obi', email: 'ada@example.com' }} onSignOut={() => {}} />
           <div style={{ flex: 1, background: 'var(--surface-page)' }}>
             <TopNav title="Overview">
               <Input size="sm" placeholder="Search… ⌘K" iconLeft="search" style={{ width: 200 }} />
