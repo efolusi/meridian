@@ -127,6 +127,28 @@ The colours a `ChartContainer` `config` sets (`color` or `theme`) are not blocke
 
 The theme script is a `script-src` matter: pass a nonce or allow its hash, as [theming.md](theming.md#server-layouts) describes.
 
+## A 404 page on a static site
+
+A static site needs a not-found page, and the host has to answer with it. Without one, an unknown path returns status 404 and an empty body, a blank white page with no way home. pay and the komando site did exactly that.
+
+**The page.** The root `404.html` is the shared page, in English and Indonesian, light and dark. Copy it into the site and change three things: the mark, the product name in the `<title>`, and the `href` of the two home links. To keep one language, delete the other `<section>`. It needs one stylesheet, `styles.css` (the `.ef-notfound` rules live in `tokens/base.css`), and holds no script, no `<style>` and no `style` attribute, so a strict CSP that allows `'self'` renders it without `'unsafe-inline'`, a nonce or a hash. Do not add any of the three to it. It follows the operating system for light or dark, because a saved theme needs the theme script. The `not-found` block in `blocks/` is a different thing: a card inside an app, with search.
+
+**The deploy.** The host must serve that page for every unknown path, with status `404` and the same response headers as any other page, the CSP header included. A 404 that skips the CSP is a page without the policy, and any URL reaches it.
+
+| Host | What to set |
+|---|---|
+| Cloudflare Workers static assets | `"assets": { "not_found_handling": "404-page" }` in the Wrangler config. The Worker serves the nearest `404.html` with status 404, and the rules in `_headers` match the request path, so a `/*` rule with `Content-Security-Policy` covers it |
+| A Worker with a script that fetches `env.ASSETS` | Return the assets response as it comes: its body and its 404 status. Never build `new Response(null, { status: 404 })`. Set the CSP on that response the same way you set it on a 200 |
+| Another static host | Name `404.html` as the not-found file in the host's own setting, and set the CSP header for every path in the same place as for the other pages |
+
+Check it with a path that does not exist, after every deploy and before a release that changes the Worker:
+
+```sh
+curl -si https://your-site.example/no-such-page
+```
+
+The first line must say `404`, the headers must include `content-security-policy`, and the body must contain `class="ef-notfound"`. A `404` with an empty body or a missing CSP header is a defect.
+
 ## Dark mode and density, everywhere
 
 Independent of framework, set attributes on `<html>` or any subtree:
