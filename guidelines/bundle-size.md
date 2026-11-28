@@ -13,9 +13,9 @@ CSS is not counted per component: `styles.css` ships every component style in on
 
 | File | Size | Gzip |
 | --- | ---: | ---: |
-| `@efolusi/meridian` | 375.1 kB | 85.6 kB |
-| `dist/components.css` | 264.5 kB | 37.6 kB |
-| `_ds_bundle.js` | 928.5 kB | 169.0 kB |
+| `@efolusi/meridian` | 379.9 kB | 86.8 kB |
+| `dist/components.css` | 269.1 kB | 38.3 kB |
+| `_ds_bundle.js` | 943.0 kB | 173.3 kB |
 
 The root import, `@efolusi/meridian`, is every component. `_ds_bundle.js` is the zero-build CDN bundle, which also carries each component's CSS. The root import is minified; the CSS and the CDN bundle are measured as shipped.
 
@@ -137,14 +137,15 @@ The root import, `@efolusi/meridian`, is every component. `_ds_bundle.js` is the
 | `marketing/Section.js` | Section, SectionHead | 1.2 kB | 0.5 kB |
 | `marketing/SiteFooter.js` | SiteFooter | 2.8 kB | 1.0 kB |
 | `marketing/SiteHeader.js` | SiteHeader | 46.3 kB | 8.1 kB |
-| `marketing/ThemeToggle.js` | ThemeToggle | 46.9 kB | 8.6 kB |
+| `marketing/ThemeToggle.js` | ThemeToggle | 47.0 kB | 8.6 kB |
+| `navigation/AccountCard.js` | AccountCard | 45.8 kB | 8.0 kB |
 | `navigation/Breadcrumbs.js` | Breadcrumb, BreadcrumbList, BreadcrumbItem, BreadcrumbLink, BreadcrumbPage, BreadcrumbSeparator, BreadcrumbEllipsis | 46.0 kB | 7.7 kB |
-| `navigation/Menubar.js` | Menubar, MenubarMenu, MenubarTrigger, MenubarContent, MenubarPortal, MenubarGroup, MenubarRadioGroup, MenubarLabel, MenubarSeparator, MenubarShortcut, MenubarItem, MenubarCheckboxItem, MenubarRadioItem, MenubarSub, MenubarSubTrigger, MenubarSubContent | 60.4 kB | 12.4 kB |
+| `navigation/Menubar.js` | Menubar, MenubarMenu, MenubarTrigger, MenubarContent, MenubarPortal, MenubarGroup, MenubarRadioGroup, MenubarLabel, MenubarSeparator, MenubarShortcut, MenubarItem, MenubarCheckboxItem, MenubarRadioItem, MenubarSub, MenubarSubTrigger, MenubarSubContent | 60.4 kB | 12.5 kB |
 | `navigation/NavigationMenu.js` | NavigationMenu, NavigationMenuList, NavigationMenuItem, NavigationMenuTrigger, NavigationMenuContent, NavigationMenuLink, NavigationMenuIndicator, NavigationMenuViewport | 50.8 kB | 9.7 kB |
 | `navigation/PageControl.js` | PageControl | 0.7 kB | 0.4 kB |
 | `navigation/Pagination.js` | Pagination, PaginationContent, PaginationItem, PaginationLink, PaginationPrevious, PaginationNext, PaginationEllipsis | 45.8 kB | 7.6 kB |
 | `navigation/SegmentedControl.js` | SegmentedControl | 44.3 kB | 7.4 kB |
-| `navigation/SideNav.js` | SideNav | 46.0 kB | 7.9 kB |
+| `navigation/SideNav.js` | SideNav | 67.1 kB | 14.5 kB |
 | `navigation/Sidebar.js` | SidebarProvider, Sidebar, SidebarTrigger, SidebarRail, SidebarInset, SidebarHeader, SidebarFooter, SidebarContent, SidebarGroup, SidebarGroupContent, SidebarMenu, SidebarMenuItem, SidebarMenuSub, SidebarMenuSubItem, SidebarInput, SidebarSeparator, SidebarGroupLabel, SidebarGroupAction, SidebarMenuButton, SidebarMenuAction, SidebarMenuBadge, SidebarMenuSubButton, SidebarMenuSkeleton | 52.0 kB | 9.8 kB |
 | `navigation/SkipLink.js` | SkipLink | 0.7 kB | 0.5 kB |
 | `navigation/Steps.js` | Steps | 44.7 kB | 7.4 kB |
@@ -154,7 +155,7 @@ The root import, `@efolusi/meridian`, is every component. `_ds_bundle.js` is the
 | `overlay/Command.js` | Command, CommandDialog, CommandInput, CommandList, CommandEmpty, CommandGroup, CommandItem, CommandShortcut, CommandSeparator | 55.6 kB | 11.1 kB |
 | `overlay/ContextMenu.js` | ContextMenu, ContextMenuTrigger, ContextMenuPortal, ContextMenuContent, ContextMenuGroup, ContextMenuLabel, ContextMenuSeparator, ContextMenuShortcut, ContextMenuItem, ContextMenuCheckboxItem, ContextMenuRadioGroup, ContextMenuRadioItem, ContextMenuSub, ContextMenuSubTrigger, ContextMenuSubContent | 56.6 kB | 11.6 kB |
 | `overlay/Drawer.js` | Drawer, DrawerTrigger, DrawerPortal, DrawerClose, DrawerOverlay, DrawerContent, DrawerHeader, DrawerFooter, DrawerTitle, DrawerDescription | 54.8 kB | 10.9 kB |
-| `overlay/DropdownMenu.js` | DropdownMenu, DropdownMenuTrigger, DropdownMenuPortal, DropdownMenuContent, DropdownMenuGroup, DropdownMenuLabel, DropdownMenuSeparator, DropdownMenuShortcut, DropdownMenuItem, DropdownMenuCheckboxItem, DropdownMenuRadioGroup, DropdownMenuRadioItem, DropdownMenuSub, DropdownMenuSubTrigger, DropdownMenuSubContent | 56.5 kB | 11.6 kB |
+| `overlay/DropdownMenu.js` | DropdownMenu, DropdownMenuTrigger, DropdownMenuPortal, DropdownMenuContent, DropdownMenuGroup, DropdownMenuLabel, DropdownMenuSeparator, DropdownMenuShortcut, DropdownMenuItem, DropdownMenuCheckboxItem, DropdownMenuRadioGroup, DropdownMenuRadioItem, DropdownMenuSub, DropdownMenuSubTrigger, DropdownMenuSubContent | 56.6 kB | 11.6 kB |
 | `overlay/HoverCard.js` | HoverCard, HoverCardTrigger, HoverCardContent | 6.6 kB | 2.7 kB |
 | `overlay/Popover.js` | Popover, PopoverTrigger, PopoverContent, PopoverHeader, PopoverTitle, PopoverDescription | 7.7 kB | 3.0 kB |
 | `overlay/Portal.js` | Portal | 3.1 kB | 1.4 kB |
