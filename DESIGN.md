@@ -2,7 +2,7 @@
 
 The one page an agent or a designer reads before touching Meridian, Glamor or a product built on them. It names the decisions. Values live in the tokens (`tokens.json`, vendored from [efolusi/design-tokens](https://github.com/efolusi/design-tokens)); this file repeats a value only where it is a measurement, and says when it was measured.
 
-Every statement here is true of the code today, or it sits under Known gaps. A statement with a check names the check; a statement with no check is held by review only.
+Every statement here is true of the code today, or it sits under Known gaps. A statement with a check names the check; a statement with no check is held by review only. Where `guidelines/brand.md` and the code disagree, this file says both and names the row; it does not pick. "Today" always means the code.
 
 Longer rules: [guidelines/brand.md](guidelines/brand.md) (language), [guidelines/theming.md](guidelines/theming.md), [guidelines/motion.md](guidelines/motion.md), [guidelines/accessibility.md](guidelines/accessibility.md), [guidelines/patterns.md](guidelines/patterns.md), [guidelines/forms.md](guidelines/forms.md), [STYLEGUIDE.md](STYLEGUIDE.md).
 
@@ -10,7 +10,7 @@ Longer rules: [guidelines/brand.md](guidelines/brand.md) (language), [guidelines
 
 Meridian is warm, quiet and exact. Warm paper in light, warm charcoal in dark, one copper accent, structure drawn by hairlines, motion that confirms an action. It is a tool for people who work in it all day, so it says little and does what it says.
 
-It is not a glass or gradient style, not a cool grey enterprise kit, and not decorative. Nothing in the product UI uses emoji, Title Case or a bounce.
+It is not led by glass or gradients, not a cool grey enterprise kit, and not decorative. Nothing in the product UI uses emoji, Title Case or a bounce.
 
 Meridian is the web half. [Glamor](https://github.com/efolusi/glamor) is the native half. Both read [design-tokens](https://github.com/efolusi/design-tokens). Glamor keeps its own native scales for radius, control height and type size (see Known gaps).
 
@@ -22,7 +22,7 @@ One neutral ramp (`--sand-25` to `--sand-950`), one brand ramp (`--brand-50` to 
 
 | Role | Token | Use |
 |---|---|---|
-| Accent | `--accent` (copper in both themes) | The fill of the one primary action per view. `--accent-hover`, `--accent-active` for its states, `--accent-contrast` for the label on it. |
+| Accent | `--accent` (copper in both themes) | The fill of the one primary action per view. `--accent-hover`, `--accent-active` for its states, `--accent-contrast` for the label on it. brand.md says primary actions use espresso ink `--brand-950`, code says `--accent` (`Button.jsx:33`): see MD174, open. Today: copper. |
 | Accent edge | `--accent-edge` | Every shape drawn in the accent: the edge of the primary button, a check mark, a switch that is on, a progress fill, a tab underline. The accent fill alone is under 3:1 on light surfaces. |
 | Accent as text | `--text-link`, `--text-link-hover` | Links. A link in running text keeps its underline. |
 | Quiet accent | `--accent-subtle`, `--accent-subtle-border`, `--accent-subtle-fg` | Selected rows, soft emphasis. |
@@ -35,12 +35,12 @@ Hierarchy comes from surface steps and hairlines, not from shadows. Ratios are a
 
 | Token | Use | Light | Dark |
 |---|---|---|---|
-| `--surface-page` | The page | 1.00 | 1.00 |
+| `--surface-page` | The page. brand.md says `--sand-50`, tokens say `--sand-25`: see MD175, open. Today: `--sand-25`. | 1.00 | 1.00 |
 | `--surface-subtle` | A quiet fill: a message bubble, a citation, a pressed card | 1.02 | 1.04 |
-| `--surface-sunken` | A well inside a card; hover fill for quiet controls | 1.06 | 1.22 |
+| `--surface-sunken` | A well inside a card; hover fill for quiet controls. brand.md says the quiet hover is `--sand-100`, code says `--surface-sunken`: see MD182, open. In dark it is lighter than the card: see MD165, open. | 1.06 | 1.22 |
 | `--surface-card` | Cards, panels, fields (`--surface-panel` is the same value) | 1.03 | 1.10 |
 | `--surface-elevated` | A raised card (`Card elevated`, the floating `Sidebar` panel) | 1.03 | 1.20 |
-| `--surface-brand` | Brand bands (`Section tone="band"`, the `brand` and `band` Button) | 1.16 | 1.21 |
+| `--surface-brand` | `Section tone="band"` and the `brand` Button. brand.md says cocoa `#482818`, tokens say a light peach in light and a deep brown in dark: see MD184, open. | 1.16 | 1.21 |
 | `--surface-inverse` | An inverse panel, full bleed, with `--text-inverse` | 16.74 | 16.76 |
 | `--surface-code`, `--surface-track` | Code blocks; the empty track of a progress bar or switch | not measured | not measured |
 
@@ -64,16 +64,16 @@ Primary, secondary and muted pass 4.5:1 on page, card and sunken in both themes 
 
 | Token | Use |
 |---|---|
-| `--border-default` | A card, a divider. Decoration, exempt from contrast minimums. |
+| `--border-default` | A card, a divider. Decoration, exempt from contrast minimums. brand.md says `--sand-200`, tokens say a separate value (`#EDE9E1`): see MD176, open. Today: the token. |
 | `--border-strong` | A stronger divider. Decoration. |
 | `--border-control`, `--border-control-hover` | The outline of something you operate: a field, a checkbox. |
-| `--border-hover` | A card or tile border on hover. |
+| `--border-hover` | A card or tile border on hover. `Card` reads a ramp stop instead, and in dark that is lighter, not darker: see MD181, open. |
 
 A border that carries state alone (an error outline, a selected row) uses a colour of 3:1 or more: `--danger-600`, `--accent-edge`.
 
 ### Status
 
-Each family has a tint (`*-100`), a border (`*-300`), a text and solid colour (`*-600`, danger text `-700`), a label colour on the solid (`*-contrast`) and a text colour for dark grounds (`*-on-dark`). Meaning is fixed: success is done or healthy, warning needs attention, danger failed or destructive, info is neutral news. Status is never colour alone: Badge has text, Alert an icon, Progress a value.
+Each family has a tint (`*-100`), a border (`*-300`), a text and solid colour (`*-600`, danger text `-700`), a label colour on the solid (`*-contrast`) and a text colour for dark grounds (`*-on-dark`). The tokens carry four families (success, warning, danger, info); components read three. brand.md says three trios: see MD186, open. Meaning is fixed: success is done or healthy, warning needs attention, danger failed or destructive. Status is never colour alone: Badge has text, Alert an icon, Progress a value.
 
 ### Dark
 
@@ -89,7 +89,7 @@ Dark is a second mapping of the same roles, never a second set of ramp stops. `[
 
 All three are self-hosted and variable. Each token carries its fallback stack.
 
-Sizes are `--text-4xs` (9px) to `--text-7xl` (76px), 14 steps. Weights are `--weight-regular` 400, `-medium` 500, `-semibold` 600, `-bold` 700, `-display` 560. Leading: `--leading-tight` 1.1, `-snug` 1.25, `-normal` 1.5, `-relaxed` 1.65. Tracking: `--tracking-display` -0.025em, `-tight` -0.01em, `-wide` 0.06em.
+Sizes are `--text-4xs` (9px) to `--text-7xl` (76px), 14 steps. brand.md says the minimum is 12px: see MD179, open. Weights are `--weight-regular` 400, `-medium` 500, `-semibold` 600, `-bold` 700, `-display` 560; brand.md says display 500 to 700, wordmark 600 to 680, the docs say 600 to 700: see MD178, open. Leading: `--leading-tight` 1.1, `-snug` 1.25, `-normal` 1.5, `-relaxed` 1.65. Tracking: `--tracking-display` -0.025em, `-tight` -0.01em, `-wide` 0.06em; brand.md says display tracking is -0.02em: see MD177, open. Today: the tokens.
 
 What is fixed today:
 
@@ -100,8 +100,8 @@ What is fixed today:
 | Page title (`.ef-page-title`) | `clamp(--text-3xl, 4vw, --text-4xl)`, bold, `--leading-tight` |
 | Hero title | `clamp(--text-5xl, 4.2vw, --text-6xl)`, bold |
 | Fields on a phone | 16px at 767px and narrower, so iOS does not zoom on focus |
-| Eyebrow | 12px, semibold, `--tracking-wide`, the one place for capitals |
-| Numbers in tables and metrics | Mono, tabular |
+| Eyebrow | brand.md says 12px, semibold, 0.06em; code says `Section` eyebrow is 12px mono medium, other uppercase labels are 11px or 10.5px with 0.04em or 0.06em: see MD180, open |
+| Numbers in metrics | `Stat` value is mono (`--font-mono`); brand.md asks tabular mono for tables too, held by review |
 
 Sentence case everywhere. Weight before size for emphasis. The full role table (display, headings, lead, body, label, caption, code) is a known gap.
 
@@ -127,7 +127,9 @@ Sentence case everywhere. Weight before size for emphasis. The full role table (
 
 In dark, `--shadow-sm`, `-md` and `-lg` add a 1px ring, because a black shadow cannot show on a near-black page. Under `prefers-contrast: more` the raised ring turns stronger and glass turns opaque.
 
-Blur exists on the sticky top bar and on the buttons over a generated image, nowhere else (quality-review, done). Glass strength is `--glass-strength`. Decorative gradients: none. Eight components keep one because it marks a state, a cut-off or a scroll edge; `Skeleton shimmer` is one of them and is opt-in.
+Blur: brand.md says sticky headers only. Code says `backdrop-filter` in six overlays (`ContextMenu`, `Drawer`, `DropdownMenu`, `HoverCard`, `Popover`, `Sheet`), in the `ef-glass--blur` class (the sticky `TopNav`) and in the `GeneratedImage` actions; `prefers-reduced-transparency` and `prefers-contrast: more` turn it off: see MD183, open. Glass strength is `--glass-strength`.
+
+Gradients: brand.md says none. Code has eight components with one (a fade, a scrim, a scroll edge, the `Decor` patterns, an opt-in `Skeleton` shimmer, `Loader` shimmer, an upload bar): see MD170, open. Inner shadows: brand.md says none; two components use a non-ring inset shadow (`SegmentedControl`, `Command`): see MD187, open.
 
 ## Shapes
 
@@ -137,7 +139,7 @@ Blur exists on the sticky top bar and on the buttons over a generated image, now
 | `--radius-xs-plus` | 6px | Compact inline parts |
 | `--radius-sm` | 10px | Buttons and fields |
 | `--radius-md` | 16px | Cards, and fields under `data-shape="pill"` |
-| `--radius-lg` | 22px | Overlays (Dialog) |
+| `--radius-lg` | 22px | Dialog, AlertDialog, Drawer. brand.md says 22px for all overlays; popovers, menus, hover cards and toasts take `--radius-md`: see MD185, open |
 | `--radius-xl` | 28px | Hero media |
 | `--radius-full` | 999px | Avatars, dots, pills |
 
@@ -154,7 +156,7 @@ Blur exists on the sticky top bar and on the buttons over a generated image, now
 | State | Rule |
 |---|---|
 | Rest | Role tokens only |
-| Hover | A fill step or a darker border, only inside `@media (hover: hover)`, so a tap never leaves a fill |
+| Hover | A fill step (`--surface-sunken`) or a border step (`--border-hover`), only inside `@media (hover: hover)`, so a tap never leaves a fill. brand.md says cards darken their border: see MD181, open |
 | Focus | `:focus-visible`, `--focus-ring`, never removed; forced-colors draws a 2px `Highlight` outline |
 | Active | `transform: scale(var(--motion-press))`, 0.98 |
 | Disabled | Dimmed and not clickable. The dimming value is not one value yet (Known gaps). |
@@ -185,7 +187,7 @@ Which component for loading, empty, error and destructive moments: [guidelines/p
 | Don't | Held by |
 |---|---|
 | Use a raw hex or a ramp stop (`--sand-400`) in a component | colours: check; ramp stops: review only (Known gaps) |
-| Add a gradient, emoji, Title Case or ALL CAPS body text | review |
+| Add a gradient as a surface or fill, an emoji, Title Case or ALL CAPS body text (gradient exceptions: MD170) | review |
 | Remove the focus ring or set `outline: none` without a replacement | axe, review |
 | Use `transition: all` or a bounce | `scripts/check_motion.mjs` |
 | Force `.ef-btn { border-radius }`; use `data-shape` or `--press-radius` | review |
@@ -218,10 +220,17 @@ Not yet written: a named breakpoint scale, what collapses at each step, and imag
 
 Tracked as issues; each title starts with its row ID.
 
-- No named breakpoint scale; the code uses seven different widths (MD167).
+Real defects, target 2.6.2:
+
+- No named breakpoint scale; the code uses nine different widths (MD167).
 - No type hierarchy table by role; raw font weights in components (MD166).
-- The surface ladder has no written when-to-use per level beyond this file, and `--surface-sunken` is lighter than `--surface-card` in dark (MD165).
+- `--surface-sunken` is lighter than `--surface-card` in dark (MD165).
 - The disabled dimming is 0.45 on most controls, 0.5 on Input and flat on the primary Button; the token `--opacity-disabled` is 0.3 and unused (MD168).
+- `Skeleton` and `Loader` have a shimmer in Meridian; Glamor has none (MD172).
+
+Other gaps:
+
+- brand.md disagrees with the code on the primary colour (MD174), page colour (MD175), card border (MD176), display tracking (MD177), display weight (MD178), smallest text (MD179), eyebrow (MD180), card hover (MD181), quiet hover fill (MD182), blur (MD183), brand band colour (MD184), overlay radius (MD185), status families (MD186), inner shadows (MD187) and gradients (MD170).
 - 16 component files read a ramp stop instead of a role; no check catches it (MD171).
 - No state matrix per component (MD169).
 - The outline Button edge is 1.5:1 in light and 1.63:1 in dark (MD151).
