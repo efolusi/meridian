@@ -220,7 +220,7 @@ Not yet written: a named breakpoint scale, what collapses at each step, and imag
 
 Tracked as issues; each title starts with its row ID.
 
-Real defects, target 2.6.2:
+Real defects, target 2.7.1:
 
 - No named breakpoint scale; the code uses nine different widths (MD167).
 - No type hierarchy table by role; raw font weights in components (MD166).
