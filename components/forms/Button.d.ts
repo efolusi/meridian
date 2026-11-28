@@ -10,12 +10,12 @@ export interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElemen
   iconLeft?: string;
   /** Lucide icon name rendered after the label */
   iconRight?: string;
-  /** Lucide icon name rendered in a round bubble at the end of the button, for the one hero or closing call to action (`arrow-right`). The bubble takes the label colour and the arrow takes the button colour, so both read in light and dark. It makes the button a pill, replaces `iconRight`, and draws only at sizes `md`, `lg` and `xl` and not on `ghost` or `link`; anywhere else the glyph is a plain trailing icon. */
+  /** Lucide icon name rendered in a round bubble at the end of the button, for the one hero or closing call to action (`arrow-right`, or `arrow-up-right`, which turns 45 degrees on hover while any other arrow nudges). The bubble takes the label colour and the arrow takes the button colour, so both read in light and dark. It makes the button a pill, replaces `iconRight`, and draws only at sizes `md`, `lg` and `xl` and not on `ghost` or `link`; anywhere else the glyph is a plain trailing icon. */
   iconBubble?: string;
   fullWidth?: boolean;
   /** Shows a spinner and disables the button */
   loading?: boolean;
   children?: React.ReactNode;
 }
-export declare function buttonVariants(options?: Pick<ButtonProps, 'variant' | 'size' | 'shape' | 'fullWidth'> & { /** Adds the pill and bubble classes; the markup is `<span className="ef-btn__bubble" aria-hidden="true"><Icon name="arrow-right" size={20} /></span>` after the label (size 16 at `md`). */ bubble?: boolean; className?: string }): string;
+export declare function buttonVariants(options?: Pick<ButtonProps, 'variant' | 'size' | 'shape' | 'fullWidth'> & { /** Adds the pill and bubble classes; the markup is `<span className="ef-btn__bubble" aria-hidden="true"><Icon name="arrow-right" size={20} /></span>` after the label (size 16 at `md`); add `data-turn` to the span for `arrow-up-right`, so the arrow turns on hover. */ bubble?: boolean; className?: string }): string;
 export declare const Button: React.ForwardRefExoticComponent<ButtonProps & React.RefAttributes<HTMLButtonElement>>;

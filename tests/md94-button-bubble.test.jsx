@@ -141,22 +141,39 @@ describe('Button bubble contrast, from the tokens', () => {
   });
 });
 
-describe('Button arrow nudge follows the motion tokens', () => {
+describe('Button arrow turn and nudge follow the motion tokens (MD94, MD143)', () => {
   const nudge = css.slice(css.indexOf('@media (hover:hover){@media (prefers-reduced-motion:no-preference){'));
   const block = nudge.slice(0, nudge.indexOf('\n'));
 
-  it('moves only with a fine pointer and only when motion is welcome, by the shift token', () => {
-    expect(block).toContain('translate:var(--shift-sm) 0');
-    expect(block).toContain('translate:calc(-1 * var(--shift-sm)) 0');
+  it('moves only with a fine pointer and only when motion is welcome: the diagonal arrow turns 45 degrees, any other nudges by the shift token', () => {
+    expect(block).toContain('.ef-btn__bubble[data-turn] [data-slot="icon"]{rotate:45deg}');
+    expect(block).toContain('.ef-btn__bubble[data-turn]:dir(rtl) [data-slot="icon"]{rotate:-45deg}');
+    expect(block).toContain('.ef-btn__bubble:not([data-turn]) [data-slot="icon"]{translate:var(--shift-sm) 0}');
+    expect(block).toContain('.ef-btn__bubble:not([data-turn]):dir(rtl) [data-slot="icon"]{translate:calc(-1 * var(--shift-sm)) 0}');
   });
 
-  it('declares its transition inside that query, from the duration and curve tokens, so reduced motion has none', () => {
-    expect(block).toContain('transition:translate var(--dur-base) var(--ease-enter)');
-    expect(css.replace(block, '')).not.toMatch(/transition:[^;}]*\btranslate\b/);
+  it('turns and nudges on keyboard focus as on hover, inside the same query', () => {
+    expect(block.match(/\.ef-btn--bubble:is\(:hover,:focus-visible\)/g)).toHaveLength(4);
+  });
+
+  it('declares its transitions inside that query, from the duration and curve tokens, so reduced motion has none', () => {
+    expect(block).toContain('transition:translate var(--dur-base) var(--ease-enter),rotate var(--dur-base) var(--ease-enter)');
+    expect(css.replace(block, '')).not.toMatch(/transition:[^;}]*\b(?:translate|rotate)\b/);
     expect(block).not.toMatch(/\d+(?:ms|s)\b|cubic-bezier|ease-in|ease-out|linear/);
+  });
+
+  it('the turn is the only literal angle and it sits only in that query', () => {
+    expect(css.replace(block, '')).not.toMatch(/rotate:-?\d+deg/);
   });
 
   it('mirrors the arrow in right-to-left', () => {
     expect(decl(rule('.ef-btn__bubble:dir(rtl) [data-slot="icon"]'), 'transform')).toBe('scaleX(-1)');
+  });
+
+  it('marks only arrow-up-right with data-turn, in a Button and nowhere else', () => {
+    const turned = render(<Button iconBubble="arrow-up-right">Go</Button>).container.querySelector('.ef-btn__bubble');
+    expect(turned.hasAttribute('data-turn')).toBe(true);
+    const straight = render(<Button iconBubble="arrow-right">Go</Button>).container.querySelector('.ef-btn__bubble');
+    expect(straight.hasAttribute('data-turn')).toBe(false);
   });
 });

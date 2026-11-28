@@ -35,6 +35,7 @@ export function ButtonBubble() {
       <Button size="lg" iconBubble="arrow-right">Book a call</Button>
       <Button size="md" iconBubble="arrow-right">Learn more</Button>
       <Button size="lg" variant="secondary" iconBubble="arrow-right">Read the docs</Button>
+      <Button size="xl" iconBubble="arrow-up-right">See what we've built</Button>
     </div>
   );
 }
