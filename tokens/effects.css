@@ -14,18 +14,19 @@
   --z-tooltip: 1600;
   --ease-standard: cubic-bezier(.65,0,.35,1);
   --ease-enter: cubic-bezier(.22,1,.36,1);
-  --ease-exit: cubic-bezier(.5,0,.75,0);
+  --ease-exit: cubic-bezier(.22,1,.36,1);
   --ease-emphasised: cubic-bezier(.3,1.04,.35,1);
   --dur-fast: 120ms;
   --dur-base: 200ms;
   --dur-slow: 250ms;
   --dur-progress: 250ms;
-  --dur-long: 480ms;
+  --dur-modal: 400ms;
   --dur-loop: 1400ms;
   --dur-loop-slow: 1600ms;
   --shift-sm: var(--space-1);
   --shift-md: var(--space-2);
   --shift-lg: var(--space-4);
+  --shift-xl: var(--space-8);
   --hold-spinner-delay: 300ms;
   --hold-spinner-min: 500ms;
   --hold-confirm: 1500ms;
@@ -46,6 +47,8 @@
   --material-sheen: calc(0.55 * var(--glass-strength));
   --motion-lift: 1.012;
   --motion-press: 0.98;
+  --motion-enter-scale-sm: 0.97;
+  --motion-enter-scale-lg: 0.98;
   --opacity-tint: 0.12;
   --opacity-pill: 0.1;
   --opacity-increased: 0.16;
@@ -132,10 +135,13 @@
     --dur-base: var(--dur-fast);
     --dur-slow: var(--dur-fast);
     --dur-progress: 0ms;
-    --dur-long: var(--dur-fast);
+    --dur-modal: var(--dur-fast);
     --shift-sm: 0;
     --shift-md: 0;
     --shift-lg: 0;
+    --shift-xl: 0;
+    --motion-enter-scale-sm: 1;
+    --motion-enter-scale-lg: 1;
   }
 }
 

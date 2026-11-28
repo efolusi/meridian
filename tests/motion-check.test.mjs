@@ -38,7 +38,7 @@ describe('findLiterals', () => {
     expect(bad('.a{animation:sweep 1.6s linear infinite}')).toBe(1);
     expect(bad('.a{transition:none;animation:none}')).toBe(0);
     expect(bad('.a{transition-duration:0s;animation-duration:0ms}')).toBe(0);
-    expect(bad('.a{animation:ef-spin var(--dur-long) var(--ease-standard) infinite}')).toBe(0);
+    expect(bad('.a{animation:ef-spin var(--dur-modal) var(--ease-standard) infinite}')).toBe(0);
     expect(bad('.a{transition:opacity var(--dur-fast,var(--dur-base)) var(--ease-enter)}')).toBe(0);
   });
 

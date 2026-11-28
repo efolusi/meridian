@@ -5279,7 +5279,7 @@ export declare const SheetDescription: React.ForwardRefExoticComponent<DialogSlo
 
 ## Design tokens
 
-303 custom property names by file (names only; resolve current values from /styles.css, which imports these files, or /tokens.json):
+306 custom property names by file (names only; resolve current values from /styles.css, which imports these files, or /tokens.json):
 
 ### /tokens/base.css
 
@@ -5461,9 +5461,9 @@ export declare const SheetDescription: React.ForwardRefExoticComponent<DialogSlo
 
 --dur-base
 --dur-fast
---dur-long
 --dur-loop
 --dur-loop-slow
+--dur-modal
 --dur-progress
 --dur-slow
 --ease-emphasised
@@ -5488,6 +5488,8 @@ export declare const SheetDescription: React.ForwardRefExoticComponent<DialogSlo
 --material-spec-low
 --material-thick
 --material-tint
+--motion-enter-scale-lg
+--motion-enter-scale-sm
 --motion-lift
 --motion-press
 --opacity-attention
@@ -5511,6 +5513,7 @@ export declare const SheetDescription: React.ForwardRefExoticComponent<DialogSlo
 --shift-lg
 --shift-md
 --shift-sm
+--shift-xl
 --z-dropdown
 --z-modal
 --z-overlay
