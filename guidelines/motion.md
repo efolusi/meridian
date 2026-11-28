@@ -89,9 +89,18 @@ A control that scales down while pressed (press 0.98, fast 120: the house values
 
 ## Reduced motion
 
-Under `prefers-reduced-motion: reduce` the tokens swap themselves, so a component needs no query of its own: `--dur-base`, `--dur-slow` and `--dur-modal` become the `--dur-fast` fade, `--shift-*` is 0, the enter scales are 1, `--dur-progress` is 0 and `--ease-emphasised` becomes `--ease-standard`. Movement, blur and scale are gone; opacity stays: an enter or an exit is a short cross-fade. The press stays, because it is brief feedback and not travel. `--ef-motion-guard` is the animation duration under reduce (0.01 ms for every element, so a looping animation stops); an overlay entrance sets it to `--dur-fast` with `animation-name: ef-reduce-fade`. A JavaScript animation checks `matchMedia('(prefers-reduced-motion: reduce)')` itself.
+Under `prefers-reduced-motion: reduce` the tokens swap themselves, so a component needs no query of its own: `--dur-base`, `--dur-slow` and `--dur-modal` become the `--dur-fast` fade, `--shift-*` is 0, the enter scales are 1, `--dur-progress` is 0 and `--ease-emphasised` becomes `--ease-standard`. Movement, blur and scale are gone; opacity stays: an enter or an exit is a short cross-fade. The press stays, because it is brief feedback and not travel. `--ef-motion-guard` is the animation duration under reduce (0.01 ms for every element, so a looping animation stops); an overlay entrance or exit sets it to `--dur-fast` with `animation-name: ef-reduce-fade` (`ef-reduce-fade-out` for the closed state). A JavaScript animation checks `matchMedia('(prefers-reduced-motion: reduce)')` itself.
 
-Tracked, not yet done: exit animations (MD121), loading indicators that keep turning under reduce (MD122), transform transitions under reduce (MD127), one spinner duration (MD129).
+| Under reduce | What happens | Where |
+|---|---|---|
+| A loop that signals loading (`Spinner`, the `Button` spinner, `Skeleton`, `Loader`, an indeterminate `Progress`, a stream pulse) | Keeps running at its own duration and curve. A frozen spinner reads as a hung page. | Left out of the guard by name in `tokens/base.css`. |
+| Any other loop (a caret, a marquee, a growing ring, a scaling bar) | Stops: one iteration, no delay. | The guard. |
+| A transition that moves (a chevron turning, a tick or a dot scaling in) | Does not run; the new state shows at once. Opacity stays and fades over `--dur-fast`. | One rule in `tokens/base.css`. |
+| The press scale | Stays. | Not touched. |
+
+A product does not write its own reduce rule for any of this, and does not set `--ef-motion-guard` on a loop.
+
+Tracked, not yet done: one spinner duration (MD129).
 
 ## Theme switch
 

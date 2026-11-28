@@ -51,8 +51,12 @@ code,pre,kbd{font-family:var(--font-mono)}
    hidden, or keep it waiting, under reduce. Transition durations are left to the
    tokens: under reduce they swap to the 120 ms fade (design-tokens docs/motion.md).
    --ef-motion-guard is the animation duration: 0.01 ms for every element, so loops stop. Only an overlay
-   entrance sets it, to --dur-fast, together with animation-name:ef-reduce-fade (opacity only), inside its
+   entrance or exit sets it, to --dur-fast, together with animation-name:ef-reduce-fade (opacity only), inside its
    own reduce media query; a consumer must not set it on a loop.
+   Loops that signal LOADING are the exception (MD122): a spinner, a skeleton, a shimmer, an indeterminate bar and a
+   stream pulse keep running at their own duration and curve, because a frozen spinner reads as a hung page. They are
+   left out of the rule by name, and tests/md122-reduced-motion-guard.test.mjs fails an infinite animation that is
+   neither listed there nor named as not loading (a caret, a marquee, a growing ring, a scaling bar: those stop).
    A View Transition (document.startViewTransition) does not match `*`: its groups stop moving and its
    old and new snapshots cross-fade over --dur-fast. */
 @keyframes ef-reduce-fade{from{opacity:0}}
@@ -61,8 +65,15 @@ code,pre,kbd{font-family:var(--font-mono)}
    shorten it to .01 ms; its movement exit is written by the component inside no-preference. */
 @keyframes ef-reduce-fade-out{to{opacity:0}}
 @media (prefers-reduced-motion:reduce){[data-state="closed"]{--ef-motion-guard:var(--dur-fast)}}
-@media (prefers-reduced-motion:reduce){*,*::before,*::after{--ef-motion-guard:.01ms;animation-duration:var(--ef-motion-guard)!important;animation-delay:0s!important;animation-iteration-count:1!important;transition-delay:0s!important;scroll-behavior:auto!important}}
+@media (prefers-reduced-motion:reduce){*:not(:is(.ef-spinner,.ef-btn__spin,.ef-agentrun__spin,.ef-sandbox__spin,.ef-todo__spin,.ef-toolcall__spin,.ef-skel,.ef-table__skel,.ef-progress[data-state="indeterminate"] .ef-progress__indicator,.ef-loader--pulse,.ef-loader--shimmer,.ef-loader__dots span,.ef-attachment[data-state="uploading"] .ef-attachment__title,.ef-attachment[data-state="processing"] .ef-attachment__title,.ef-genimg__backdrop,.ef-genimg__status,.ef-reasoning--streaming .ef-reasoning__glyph,.ef-toolcall--pending .ef-toolcall__head,.ef-toolcall--streaming .ef-toolcall__row:last-child .ef-toolcall__val,.ef-task--streaming .ef-task__row:last-of-type)),*::before,*::after{--ef-motion-guard:.01ms;animation-duration:var(--ef-motion-guard)!important;animation-delay:0s!important;animation-iteration-count:1!important;transition-delay:0s!important;scroll-behavior:auto!important}}
 @media (prefers-reduced-motion:reduce){::view-transition-group(*),::view-transition-image-pair(*){animation-duration:var(--ef-motion-guard)!important;animation-iteration-count:1!important}::view-transition-old(*),::view-transition-new(*){animation-duration:var(--dur-fast)!important;animation-iteration-count:1!important}}
+/* Movement is off and opacity stays (MD127). A transition that turns or scales something does not run under reduce:
+   a chevron turns at once, a tick and a dot appear at full size while their opacity fades over --dur-fast. Layered
+   !important so a component rule written after it, and a product rule, do not bring the movement back. The press
+   scale stays (Button, IconButton, Checkbox, Radio, the composer send, the slider thumb): it is brief feedback, not
+   travel. tests/md122-reduced-motion-guard.test.mjs fails a transform transition that is neither here, nor a press,
+   nor given its own reduce rule by its component. */
+@media (prefers-reduced-motion:reduce){.ef-agentrun__toggle .ef-agentrun__tchev,.ef-reasoning__chev,.ef-sandbox__chev,.ef-todo__chev,.ef-toolcall__chev,.ef-console__stackchev,.ef-diff__filechev,.ef-exception__chev,.ef-acc__chev,.ef-tree__chev,.ef-navigation-menu__chevron,.ef-pagination__previous svg,.ef-pagination__next svg{transition:none!important}.ef-check__box svg,.ef-radio__dot::after,.ef-tile__check{transition-property:opacity!important}}
 /* Theme switch (MD118). A swap changes every colour at once, and each element with a colour transition starts one,
    so the page smears (46 transitionrun events on the docs Components page, 22 on sso web). While <html> carries
    data-theme-switching every transition is off. ThemeToggle (and browser/marketing.js) sets the attribute, swaps the
