@@ -32,6 +32,18 @@ export function SidebarFloatingDemo() {
   </div>;
 }
 
+// @demo AccountCard Signed-in person
+export function AccountCardDemo() {
+  const { AccountCard } = window.EfolusiDesignSystem_4ffc3d;
+  return (
+    <div style={{ display: 'grid', gap: 'var(--space-3)', width: 240 }}>
+      <AccountCard name="Ada Obi" email="ada@example.com" />
+      <AccountCard email="grace@example.com" />
+      <div style={{ width: 72 }}><AccountCard name="Ada Obi" email="ada@example.com" compact /></div>
+    </div>
+  );
+}
+
 // @demo Breadcrumb Path trail
 export function BreadcrumbsDemo() {
   const { Breadcrumb, BreadcrumbList, BreadcrumbItem, BreadcrumbLink, BreadcrumbPage, BreadcrumbSeparator, BreadcrumbEllipsis } = window.EfolusiDesignSystem_4ffc3d;
@@ -136,8 +148,29 @@ export function SideNavDemo() {
   const { SideNav } = window.EfolusiDesignSystem_4ffc3d;
   const [v, setV] = React.useState('runs');
   return (
-    <div style={{ width: 240, height: 340, border: '1px solid var(--border-default)', borderRadius: 'var(--radius-md)', overflow: 'hidden' }}>
-      <SideNav brand="Meridian" value={v} onChange={setV} groups={[
+    <div style={{ display: 'flex', width: 'fit-content', height: 480, border: '1px solid var(--border-default)', borderRadius: 'var(--radius-md)', overflow: 'hidden' }}>
+      <SideNav storageKey={null} brand="Meridian" value={v} onChange={setV} account={{ name: 'Ada Obi', email: 'ada@example.com' }} menuItems={[{ id: 'account', label: 'Account settings', icon: 'settings', onSelect: () => setV('settings') }]} onSignOut={() => setV('home')} groups={[
+        { items: [
+          { id: 'home', label: 'Overview', icon: 'house' },
+          { id: 'runs', label: 'Runs', icon: 'bot', badge: 3 },
+          { id: 'data', label: 'Data', icon: 'database' },
+        ] },
+        { label: 'Workspace', items: [
+          { id: 'members', label: 'Members', icon: 'users' },
+          { id: 'settings', label: 'Settings', icon: 'settings' },
+        ] },
+      ]} />
+    </div>
+  );
+}
+
+// @demo SideNav Collapsed rail
+export function SideNavCollapsedDemo() {
+  const { SideNav } = window.EfolusiDesignSystem_4ffc3d;
+  const [v, setV] = React.useState('runs');
+  return (
+    <div style={{ display: 'flex', width: 'fit-content', height: 480, border: '1px solid var(--border-default)', borderRadius: 'var(--radius-md)', overflow: 'hidden' }}>
+      <SideNav defaultCollapsed storageKey={null} brand="Meridian" value={v} onChange={setV} account={{ name: 'Ada Obi', email: 'ada@example.com' }} menuItems={[{ id: 'account', label: 'Account settings', icon: 'settings', onSelect: () => setV('settings') }]} onSignOut={() => setV('home')} groups={[
         { items: [
           { id: 'home', label: 'Overview', icon: 'house' },
           { id: 'runs', label: 'Runs', icon: 'bot', badge: 3 },
