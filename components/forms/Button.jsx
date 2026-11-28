@@ -50,7 +50,6 @@ const CSS = `
    dark (primary: ink on copper 6.37:1 both ways; copper on copper was 1.10:1). A bubble button is always a pill, and the circle
    sits concentric with the pill end: the inset is the same on the end and the top, and it grows with the size (md 5, lg 6,
    xl 8). Sizes md, lg and xl only. The pair is set on each variant above and on .ef-btn--band below. */
-.ef-btn--bubble{--ef-btn-ink:var(--text-primary);--ef-btn-fill:var(--surface-page)}
 .ef-btn--bubble.ef-btn--md{--ef-btn-inset:5px;padding-inline-end:var(--ef-btn-inset)}
 .ef-btn--bubble.ef-btn--lg{--ef-btn-inset:6px;padding-inline-end:var(--ef-btn-inset)}
 .ef-btn--bubble.ef-btn--xl{--ef-btn-inset:8px;padding-inline-end:var(--ef-btn-inset)}

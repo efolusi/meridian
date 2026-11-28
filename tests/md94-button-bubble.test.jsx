@@ -59,6 +59,21 @@ describe('Button iconBubble (MD94)', () => {
   });
 });
 
+describe('Button bubble pair cascade', () => {
+  it('no rule that applies to every bubble sets the pair: it would override the variant (same specificity, later in the sheet)', () => {
+    // Found on the built page: a .ef-btn--bubble default put the secondary ink on the primary bubble, 2.37:1 in dark.
+    for (const selector of ['.ef-btn--bubble', '.ef-btn__bubble']) {
+      expect(decl(rule(selector), '--ef-btn-ink'), selector).toBeUndefined();
+      expect(decl(rule(selector), '--ef-btn-fill'), selector).toBeUndefined();
+    }
+  });
+
+  it.each(['primary', 'secondary', 'brand', 'danger', 'band'])('%s sets both halves of the pair itself', (variant) => {
+    expect(decl(rule(`.ef-btn--${variant}`), '--ef-btn-ink'), variant).toBeDefined();
+    expect(decl(rule(`.ef-btn--${variant}`), '--ef-btn-fill'), variant).toBeDefined();
+  });
+});
+
 describe('Button bubble sizes follow the control heights', () => {
   it.each([['md', '5px'], ['lg', '6px'], ['xl', '8px']])('%s: the circle is the control height less twice the inset (%s), and the end padding is the inset', (size, inset) => {
     expect(decl(rule(`.ef-btn--bubble.ef-btn--${size}`), '--ef-btn-inset')).toBe(inset);
