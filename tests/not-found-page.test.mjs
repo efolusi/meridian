@@ -47,6 +47,20 @@ describe('404.html, the shared not-found page', () => {
   })
 })
 
+// MD149: from 880px the two languages sit side by side, and one language kept (the other section deleted) sits in the middle.
+// A fixed two-column grid put a single section in the left half. One column per section, as many as there are sections, does not.
+// Measured in a real browser, 375 to 1920px: scripts/check_not_found.mjs.
+describe('the language grid of the 404 page (MD149)', () => {
+  const wide = base.slice(base.indexOf('@media (min-width:880px){.ef-notfound__langs'))
+  it('is one column per section from 880px, not two fixed columns', () => {
+    expect(wide).toMatch(/\.ef-notfound__langs\{[^}]*grid-auto-flow:column;grid-auto-columns:1fr/)
+    expect(wide).not.toMatch(/\.ef-notfound__langs\{[^}]*grid-template-columns/)
+  })
+  it('keeps the divider between two sections only', () => {
+    expect(wide).toContain('.ef-notfound__lang+.ef-notfound__lang{padding-block-start:0;padding-inline-start:var(--space-8);border-block-start:0;border-inline-start:1px solid var(--border-default)}')
+  })
+})
+
 describe('the deploy rule for the 404 page', () => {
   it('is written in the framework guide: status 404, the CSP header, the Workers setting and the check', () => {
     const section = guide.slice(guide.indexOf('## A 404 page on a static site'), guide.indexOf('## Dark mode and density, everywhere'))

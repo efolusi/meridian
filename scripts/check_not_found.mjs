@@ -92,5 +92,37 @@ try {
       console.log(`ok ${where}: data-theme ${m.theme}, ground ${m.bg}`);
     }
   }
+
+  // MD149: where the sections sit. Centre of each section's text block against the middle of the page.
+  const place = async (html, width) => {
+    const { ctx, page, problems } = await open({ html, width, device: 'light', stored: null });
+    const m = await page.evaluate(() => ({
+      mid: document.documentElement.clientWidth / 2,
+      sections: [...document.querySelectorAll('.ef-notfound__lang')].map((el) => { const r = el.getBoundingClientRect(); const h = el.querySelector('h1,h2').getBoundingClientRect(); return { centre: (r.left + r.right) / 2, headCentre: (h.left + h.right) / 2, width: r.width }; }),
+      scrollW: document.documentElement.scrollWidth, clientW: document.documentElement.clientWidth,
+    }));
+    assert.deepEqual(problems, [], `${width}px: no failed request, no page error`);
+    assert.ok(m.scrollW <= m.clientW, `${width}px: no sideways scroll`);
+    await ctx.close();
+    return m;
+  };
+  for (const width of [375, 879, 880, 1024, 1280, 1920]) {
+    const one = await place(english, width);
+    assert.equal(one.sections.length, 1, `${width}px one language: one section`);
+    assert.ok(Math.abs(one.sections[0].centre - one.mid) < 1, `${width}px one language: the section is centred (${one.sections[0].centre} vs ${one.mid})`);
+    assert.ok(Math.abs(one.sections[0].headCentre - one.mid) < 1, `${width}px one language: its title is centred`);
+    const two = await place(full, width);
+    assert.equal(two.sections.length, 2, `${width}px two languages: two sections`);
+    const [a, b] = two.sections;
+    if (width >= 880) {
+      assert.ok(a.centre < two.mid && b.centre > two.mid, `${width}px two languages: side by side, one each side of the middle`);
+      assert.ok(Math.abs((two.mid - a.centre) - (b.centre - two.mid)) < 1, `${width}px two languages: mirrored about the middle`);
+      assert.ok(Math.abs(a.width - b.width) < 1, `${width}px two languages: equal columns`);
+    } else {
+      assert.ok(Math.abs(a.centre - two.mid) < 1 && Math.abs(b.centre - two.mid) < 1, `${width}px two languages: stacked, both centred`);
+    }
+    ok(6);
+    console.log(`ok ${width}px: one language centre ${one.sections[0].centre.toFixed(1)} of ${one.mid}; two ${a.centre.toFixed(1)} and ${b.centre.toFixed(1)}`);
+  }
 } finally { await browser.close(); }
 console.log(`check_not_found: ${checked} assertions passed`);

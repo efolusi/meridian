@@ -140,7 +140,7 @@ code,pre,kbd{font-family:var(--font-mono)}
 @media (hover:hover){.ef-notfound__home:hover{background:var(--accent-hover);text-decoration:none}}
 .ef-notfound__home:active{background:var(--accent-active);transform:scale(var(--motion-press))}
 .ef-notfound__home:focus-visible{outline:none;box-shadow:var(--focus-ring)}
-@media (min-width:880px){.ef-notfound__langs{grid-template-columns:1fr 1fr;gap:var(--space-8)}.ef-notfound__lang+.ef-notfound__lang{padding-block-start:0;padding-inline-start:var(--space-8);border-block-start:0;border-inline-start:1px solid var(--border-default)}}
+@media (min-width:880px){.ef-notfound__langs{grid-auto-flow:column;grid-auto-columns:1fr;gap:var(--space-8)}.ef-notfound__lang+.ef-notfound__lang{padding-block-start:0;padding-inline-start:var(--space-8);border-block-start:0;border-inline-start:1px solid var(--border-default)}}
 }
 /* Phone control text (MD86): iOS Safari zooms the page when a text control takes focus while its text is under 16px,
    and Input md (14px), Input sm, Textarea, NumberInput, NativeSelect and the InputGroup control under Combobox are
