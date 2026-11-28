@@ -142,7 +142,7 @@ export function CardElevatedDemo() {
         </CardHeader>
         <CardContent style={{ display: 'grid', gap: 12 }}>
           <Item variant="muted" size="sm"><ItemMedia variant="icon"><Icon name="database" /></ItemMedia><ItemContent><ItemTitle>Warehouse sync</ItemTitle><ItemDescription>Nightly at 02:00</ItemDescription></ItemContent></Item>
-          <pre style={{ margin: 0, padding: 12, borderRadius: 'var(--radius-md)', background: 'var(--surface-sunken)', border: '1px solid var(--border-default)', fontFamily: 'var(--font-mono)', fontSize: 13 }}>komando deploy --env production</pre>
+          <pre style={{ margin: 0, padding: 12, borderRadius: 'var(--radius-md)', background: 'var(--surface-sunken)', border: '1px solid var(--border-default)', fontFamily: 'var(--font-mono)', fontSize: 13 }}>npm run build</pre>
         </CardContent>
       </Card>
     </div>
