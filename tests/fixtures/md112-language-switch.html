@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>MD112 LanguageSwitch targets</title>
+<link rel="stylesheet" href="../../styles.css">
+<style>body{margin:16px;background:var(--surface-page);color:var(--text-primary);font-family:var(--font-sans)}.row{margin:0 0 12px}pre{white-space:pre-wrap}</style>
+<script src="../../node_modules/react/umd/react.production.min.js"></script>
+<script src="../../node_modules/react-dom/umd/react-dom.production.min.js"></script>
+<script src="../../_ds_bundle.js"></script>
+</head>
+<body>
+<!-- MD112: every LanguageSwitch target is at least 24 px at a fine pointer and 44 px at a coarse pointer, at both
+     sizes. window.__MD112__ holds the measured result: each item's width and height, its tag, lang, hreflang,
+     aria-current and accessible name attribute. Served by hand: python3 -m http.server from the repository root, then
+     open /tests/fixtures/md112-language-switch.html (add ?theme=dark or ?density=compact to look at the other modes). -->
+<main id="root"></main>
+<pre id="out"></pre>
+<script>
+  const params = new URLSearchParams(location.search);
+  if (params.get('theme')) document.documentElement.dataset.theme = params.get('theme');
+  if (params.get('density')) document.documentElement.dataset.density = params.get('density');
+  const { LanguageSwitch } = window.EfolusiDesignSystem_4ffc3d;
+  const h = React.createElement;
+  const languages = [
+    { code: 'id', label: 'ID', href: '/id/docs', name: 'Bahasa Indonesia' },
+    { code: 'en', label: 'EN', href: '/en/docs', name: 'English' },
+  ];
+  const cases = [
+    ['md, current id', { current: 'id' }],
+    ['md, current en', { current: 'en' }],
+    ['sm, current id', { current: 'id', size: 'sm' }],
+  ];
+  ReactDOM.createRoot(document.getElementById('root')).render(
+    cases.map(([name, props]) => h('div', { key: name, className: 'row', 'data-case': name }, h(LanguageSwitch, { languages, ...props }))));
+  const px = (v) => Math.round(parseFloat(v) * 100) / 100;
+  // Measure again after a device emulation changes the pointer: window.__measureMD112().
+  window.__measureMD112 = () => {
+    const result = {
+      pointer: matchMedia('(pointer:fine)').matches ? 'fine' : matchMedia('(pointer:coarse)').matches ? 'coarse' : 'none',
+      cases: [...document.querySelectorAll('[data-case]')].map((el) => ({
+        name: el.dataset.case,
+        items: [...el.querySelectorAll('.ef-language-switch__item')].map((item) => {
+          const r = item.getBoundingClientRect();
+          return {
+            tag: item.tagName.toLowerCase(), text: item.textContent, w: px(r.width), h: px(r.height),
+            lang: item.getAttribute('lang'), hreflang: item.getAttribute('hreflang'), current: item.getAttribute('aria-current'),
+            name: item.getAttribute('aria-label'), href: item.getAttribute('href'),
+          };
+        }),
+      })),
+    };
+    window.__MD112__ = result;
+    document.getElementById('out').textContent = JSON.stringify(result, null, 2);
+    return result;
+  };
+  requestAnimationFrame(() => requestAnimationFrame(() => window.__measureMD112()));
+</script>
+</body>
+</html>

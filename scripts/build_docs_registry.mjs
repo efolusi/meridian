@@ -22,6 +22,8 @@ const DESCRIPTION_OVERRIDES = {
   Select: 'Composable custom select with controlled state, anchored content, groups, labels, separators, and keyboard navigation.',
   Avatar: 'Composable avatar with explicit image, fallback, badge, group, and group-count parts in three named sizes.',
   Badge: 'Compact status, category, or link label with canonical variants and explicit child composition.',
+  LanguageSwitch: 'The language switch: one short code per language, each a link to the same page in that language with hreflang and lang; the current language is marked and is not a link. 44px targets at a coarse pointer.',
+  SiteFooter: 'Marketing footer: brand and tagline, social icons, link columns, and a bottom row with the copyright (the year is computed at render), the legal links, and a language switch.',
   Card: 'Composable surface with header, title, description, action, content, and footer parts; supports compact, elevated, and interactive treatments.',
   Separator: 'Unlabelled horizontal or vertical dividing rule with optional decorative semantics and no built-in spacing.',
   Menubar: 'Desktop-style composable menu bar with controlled state, keyboard navigation, groups, choices, shortcuts, separators, and nested submenus.',

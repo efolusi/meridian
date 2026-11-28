@@ -1203,6 +1203,9 @@
       "HeroAccent": {
         "replaces": []
       },
+      "LanguageSwitch": {
+        "replaces": []
+      },
       "LegalDocument": {
         "replaces": []
       },

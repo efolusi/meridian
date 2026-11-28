@@ -16,13 +16,28 @@ const CSS = `
 .ef-site-footer__list{display:flex;flex-direction:column;margin:0;padding:0;list-style:none}
 .ef-site-footer__link{display:inline-flex;align-items:center;min-height:var(--tap-min);color:var(--text-secondary);font-size:var(--text-md);text-decoration:none}
 .ef-site-footer__link:hover{color:var(--text-primary)}
-.ef-site-footer__brand-link:focus-visible,.ef-site-footer__social:focus-visible,.ef-site-footer__link:focus-visible{outline:none;border-radius:var(--radius-xs);box-shadow:var(--focus-ring)}
+.ef-site-footer__brand-link:focus-visible,.ef-site-footer__social:focus-visible,.ef-site-footer__link:focus-visible,.ef-site-footer__legal-link:focus-visible{outline:none;border-radius:var(--radius-xs);box-shadow:var(--focus-ring)}
 .ef-site-footer__bottom{display:flex;flex-wrap:wrap;justify-content:space-between;gap:var(--space-3);margin-top:var(--space-12);padding-top:var(--space-6);border-top:1px solid var(--border-default);font-size:var(--text-sm)}
+.ef-site-footer__meta{display:flex;flex-wrap:wrap;align-items:center;gap:var(--space-1) var(--space-6)}
+.ef-site-footer__copyright{margin:0}
+.ef-site-footer__legal{display:flex;flex-wrap:wrap;margin:0;padding:0;list-style:none;gap:var(--space-1) var(--space-4)}
+.ef-site-footer__legal-link{display:inline-flex;align-items:center;justify-content:center;min-width:var(--control-h-sm);min-height:var(--control-h-sm);color:var(--text-secondary);font-size:var(--text-sm);text-decoration:none}
+.ef-site-footer__legal-link:hover{color:var(--text-primary)}
 .ef-site-footer__sr{position:absolute;width:1px;height:1px;margin:-1px;padding:0;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;border:0}
 @media (max-width:640px){.ef-site-footer__top{grid-template-columns:1fr}}
 `;
 
-const LABELS = { en: { newTab: '(opens in a new tab)' }, id: { newTab: '(membuka tab baru)' } };
+const LABELS = {
+  en: { newTab: '(opens in a new tab)', to: 'to', legal: 'Legal' },
+  id: { newTab: '(membuka tab baru)', to: 'sampai', legal: 'Informasi hukum' },
+};
+
+// The year is read from the clock at render, so nobody edits it every January. `year` wins over the clock (tests, and
+// a server render that must match the browser across New Year); `since` makes a range when it is before the year.
+function copyrightYears(year, since, to) {
+  const current = year ?? new Date().getFullYear();
+  return since != null && since < current ? `${since} ${to} ${current}` : `${current}`;
+}
 
 function FooterLink({ link, text, className }) {
   const external = link.external ?? /^https?:\/\//.test(link.href);
@@ -35,11 +50,12 @@ function FooterLink({ link, text, className }) {
 }
 
 export const SiteFooter = React.forwardRef(function SiteFooter(
-  { brand, brandHref = '/', tagline, columns = [], socials = [], bottom, lang = 'en', labels, className, children, ...rest },
+  { brand, brandHref = '/', tagline, columns = [], socials = [], bottom, name, year, since, legal = [], languageSwitch, lang = 'en', labels, className, children, ...rest },
   ref,
 ) {
   injectEfCss('ef-css-site-footer', CSS);
   const text = { ...(LABELS[lang] || LABELS.en), ...labels };
+  const hasMeta = Boolean(name) || legal.length > 0;
   return (
     <footer {...rest} ref={ref} data-slot="site-footer" className={`ef-site-footer${className ? ` ${className}` : ''}`}>
       <div className="ef-site-footer__inner">
@@ -65,7 +81,24 @@ export const SiteFooter = React.forwardRef(function SiteFooter(
             </nav>
           ))}
         </div>
-        {bottom ? <div className="ef-site-footer__bottom">{bottom}</div> : null}
+        {hasMeta || languageSwitch || bottom ? (
+          <div className="ef-site-footer__bottom">
+            {hasMeta ? (
+              <div className="ef-site-footer__meta">
+                {name ? <p className="ef-site-footer__copyright">© {copyrightYears(year, since, text.to)} {name}</p> : null}
+                {legal.length ? (
+                  <nav aria-label={text.legal}>
+                    <ul className="ef-site-footer__legal">
+                      {legal.map((l) => <li key={l.href}><FooterLink className="ef-site-footer__legal-link" text={text} link={l} /></li>)}
+                    </ul>
+                  </nav>
+                ) : null}
+              </div>
+            ) : null}
+            {languageSwitch}
+            {bottom}
+          </div>
+        ) : null}
       </div>
     </footer>
   );

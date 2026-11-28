@@ -2,7 +2,7 @@
 
 The entire design system in one file, generated from llms.txt, components/*/, and tokens/*.css by scripts/build_llms.py. Do not edit by hand. The short map of the repository is /llms.txt.
 
-> Meridian is a general-purpose open-source design system by Efolusi: 135 accessible React components, 296 design tokens (light, dark, compact), blocks, charts, and full example apps, served browser-native with zero build step. Apache-2.0 licensed.
+> Meridian is a general-purpose open-source design system by Efolusi: 136 accessible React components, 296 design tokens (light, dark, compact), blocks, charts, and full example apps, served browser-native with zero build step. Apache-2.0 licensed.
 
 Live docs: https://meridian.efolusi.com · Source: https://github.com/efolusi/meridian · License: Apache-2.0
 
@@ -34,7 +34,7 @@ Dark mode: set data-theme="dark" on any subtree. Compact density: data-density="
 
 ## Components
 
-135 components across 13 groups: ai, code, data, dates, display, feedback, files, finance, forms, icons, marketing, navigation, overlay. Each entry lists the component's public exports, its usage guidance (.prompt.md), and its typed props interface (.d.ts).
+136 components across 13 groups: ai, code, data, dates, display, feedback, files, finance, forms, icons, marketing, navigation, overlay. Each entry lists the component's public exports, its usage guidance (.prompt.md), and its typed props interface (.d.ts).
 
 ### ai
 
@@ -4005,6 +4005,61 @@ export interface HeroAccentProps extends React.HTMLAttributes<HTMLSpanElement> {
 export declare function HeroAccent(props: HeroAccentProps): React.ReactElement;
 ```
 
+#### LanguageSwitch
+
+Group: marketing · Source: /components/marketing/LanguageSwitch.jsx · Exports: LanguageSwitch
+
+# LanguageSwitch
+
+The language switch of every Efolusi site: one short code per language (ID, EN), each a link to the same page in that language.
+
+Put it in the `actions` of `SiteHeader` beside `ThemeToggle`, or in the language slot of `SiteFooter`. It lives in the marketing group with the header and footer that hold it. Use it where a page can be read in more than one language.
+
+Give every language its own `href` (the product knows the other URL; Meridian fetches and stores nothing). Each link carries `hreflang` and `lang` with the language's code, and an accessible name that spells the language in itself and ends with the visible code: `Bahasa Indonesia (ID)`, `English (EN)`, so a voice user can say "click ID". The language in use is marked `aria-current="true"` and is not a link: a link to the page you are on does nothing. Pass `name` for any code other than `en` and `id`.
+
+Each target is 44px at a coarse pointer. At a fine pointer `size="md"` (default) is 44px as the `ThemeToggle`, and `size="sm"` is 28px (24px in compact density), never less than 24px. The focus ring comes from the library, and the only motion is the colour transition.
+
+```jsx
+<LanguageSwitch
+  lang="id"
+  current="id"
+  languages={[
+    { code: 'id', label: 'ID', href: '/id/docs', name: 'Bahasa Indonesia' },
+    { code: 'en', label: 'EN', href: '/en/docs', name: 'English' },
+  ]}
+/>
+```
+
+It renders plain `<a>` elements, as `SiteHeader` and `SiteFooter` do: a language change loads the page in the other language, so a full navigation is right. With Next.js, build each `href` from the locale route; `next/link` is not needed. `SiteHeader` renders `actions` twice (the bar and the mobile panel), so the switch uses no `id`.
+
+On a site without React, copy the markup: `<nav class="ef-language-switch" data-size="md" aria-label="Language"><ul class="ef-language-switch__list"><li><span class="ef-language-switch__item" role="link" aria-disabled="true" aria-current="true" lang="id" aria-label="Bahasa Indonesia (ID)">ID</span></li><li><a class="ef-language-switch__item" href="/en/" hreflang="en" lang="en" aria-label="English (EN)">EN</a></li></ul></nav>`.
+
+```ts
+export interface LanguageSwitchLanguage {
+  /** The language code. It becomes `lang` on the item and `hreflang` on the link (`id`, `en`). */
+  code: string;
+  /** The short text shown: `ID`, `EN`. */
+  label: string;
+  /** The same page in this language. The current language's `href` is not used. */
+  href: string;
+  /** The language spelled in itself, for the accessible name: `Bahasa Indonesia`, `English`. Known for `en` and `id`; other codes fall back to Intl, then to `label`. */
+  name?: string;
+}
+export interface LanguageSwitchProps extends React.HTMLAttributes<HTMLElement> {
+  /** One entry per language the page exists in, including the current one. */
+  languages: LanguageSwitchLanguage[];
+  /** The `code` of the language the page is in. It is shown as the current item (`aria-current="true"`), not as a link. */
+  current: string;
+  /** `md` is a 44px target at every pointer, as the ThemeToggle. `sm` is 28px at a fine pointer (24px in compact density) and 44px at a coarse pointer. @default 'md' */
+  size?: 'sm' | 'md';
+  /** Language of the built-in nav name. @default 'en' */
+  lang?: 'en' | 'id';
+  labels?: Partial<Record<'nav', string>>;
+}
+/** The language switch: one short code per language, each a link (`hreflang`, `lang`, the language's own name as its accessible name) to the same page in that language; the language in use is marked `aria-current="true"` and is not a link. */
+export declare const LanguageSwitch: React.ForwardRefExoticComponent<LanguageSwitchProps & React.RefAttributes<HTMLElement>>;
+```
+
 #### LegalDocument
 
 Group: marketing · Source: /components/marketing/LegalDocument.jsx · Exports: LegalDocument
@@ -4153,15 +4208,20 @@ Group: marketing · Source: /components/marketing/SiteFooter.jsx · Exports: Sit
 
 # SiteFooter
 
-The footer of every Efolusi product page: the brand and a one-line tagline, social icon links, as many link columns as the site really has, and a bottom row for the rights line. Each column is a small `nav` named by its heading. Links to other sites open in a new tab and say so to screen readers (`lang="id"` for the Indonesian wording).
+The footer of every Efolusi product page: the brand and a one-line tagline, social icon links, as many link columns as the site really has, and a bottom row: the copyright, the legal links and the language switch. Each column is a small `nav` named by its heading. Links to other sites open in a new tab and say so to screen readers (`lang="id"` for the Indonesian wording).
+
+The bottom row is `© {year} {name}`, then the `legal` links (terms, privacy notice and others, a `nav` named "Legal"), then the `languageSwitch` slot (a `LanguageSwitch`), then `bottom` for anything else. Never type the year: `year` is read from `new Date().getFullYear()` at render. Pass `year` only to pin it (tests, a server render that must match the browser across New Year). `since` makes a range, `{since} to {year}` (`{since} sampai {year}` with `lang="id"`), when it is before the year. A legal link is 24px tall at least at a fine pointer and 44px at a coarse pointer.
 
 ```jsx
 <SiteFooter
   brand="Komando"
   tagline="Manage servers safely, from the terminal or your agent."
-  columns={[{ heading: 'Product', links: [{ label: 'Docs', href: '/en/docs' }] }, { heading: 'Legal', links: [{ label: 'Privacy', href: '/en/privacy' }, { label: 'Terms', href: '/en/terms' }] }]}
+  columns={[{ heading: 'Product', links: [{ label: 'Docs', href: '/en/docs' }, { label: 'Pricing', href: '/en/pricing' }] }]}
   socials={[{ label: 'GitHub', href: 'https://github.com/efolusi', icon: <Icon name="github" size={20} aria-hidden="true" /> }]}
-  bottom={<p>© 2026 Efolusi</p>}
+  name="PT Efolusi Dunia Teknologi"
+  since={FOUNDED_YEAR}
+  legal={[{ label: 'Platform terms', href: '/en/terms' }, { label: 'Privacy notice', href: '/en/privacy' }]}
+  languageSwitch={<LanguageSwitch size="sm" current="en" languages={languages} />}
 />
 ```
 
@@ -4181,13 +4241,24 @@ export interface SiteFooterProps extends React.HTMLAttributes<HTMLElement> {
   columns?: { heading: string; links: SiteFooterLink[] }[];
   /** Icon links; `icon` is the glyph, `label` its accessible name. */
   socials?: { label: string; href: string; icon: React.ReactNode }[];
-  /** The bottom row: rights line, made-in line. */
+  /** Who holds the copyright. With it the bottom row starts with `© {year} {name}`; without it no copyright line is printed. */
+  name?: React.ReactNode;
+  /** The copyright year. Left out, the footer reads `new Date().getFullYear()` at render, so nobody edits it every January. Pass it to pin the year (tests, and a server render that must match the browser across New Year). */
+  year?: number;
+  /** The first year, for a range: `since` before the year prints `{since} to {year}` (`sampai` in Indonesian). Not before the year, one year is printed. */
+  since?: number;
+  /** The legal row: terms, privacy notice and others, as a nav named "Legal" next to the copyright. Each link is 24px tall at least at a fine pointer and 44px at a coarse pointer. */
+  legal?: SiteFooterLink[];
+  /** The language slot of the bottom row: give it a `LanguageSwitch`. */
+  languageSwitch?: React.ReactNode;
+  /** The rest of the bottom row after the copyright, the legal links and the language switch: a made-in line. */
   bottom?: React.ReactNode;
-  /** Language of the "(opens in a new tab)" label. @default 'en' */
+  /** Language of the built-in labels (new tab, year range, legal nav). @default 'en' */
   lang?: 'en' | 'id';
-  labels?: Partial<Record<'newTab', string>>;
+  /** `newTab` is the hidden "(opens in a new tab)", `to` the word of a year range, `legal` the name of the legal nav. */
+  labels?: Partial<Record<'newTab' | 'to' | 'legal', string>>;
 }
-/** A marketing footer: brand and tagline, social icons, link columns and a bottom row. Extra content goes in children, under the tagline. */
+/** A marketing footer: brand and tagline, social icons, link columns and a bottom row (copyright with a computed year, legal links, a language switch). Extra content goes in children, under the tagline. */
 export declare const SiteFooter: React.ForwardRefExoticComponent<SiteFooterProps & React.RefAttributes<HTMLElement>>;
 ```
 

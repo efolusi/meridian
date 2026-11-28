@@ -110,6 +110,21 @@ export function ThemeToggleDemo() {
   );
 }
 
+// @demo LanguageSwitch Two languages, the current one marked, two sizes
+export function LanguageSwitchDemo() {
+  const { LanguageSwitch } = window.EfolusiDesignSystem_4ffc3d;
+  const languages = [
+    { code: 'id', label: 'ID', href: '#id', name: 'Bahasa Indonesia' },
+    { code: 'en', label: 'EN', href: '#en', name: 'English' },
+  ];
+  return (
+    <div style={{ display: 'flex', gap: 'var(--space-6)', alignItems: 'center', flexWrap: 'wrap' }}>
+      <LanguageSwitch languages={languages} current="en" />
+      <LanguageSwitch languages={languages} current="id" size="sm" lang="id" />
+    </div>
+  );
+}
+
 // @demo SiteHeader Links, language switch and actions
 export function SiteHeaderDemo() {
   const { SiteHeader, Button, ThemeToggle } = window.EfolusiDesignSystem_4ffc3d;
@@ -126,20 +141,20 @@ export function SiteHeaderDemo() {
   );
 }
 
-// @demo SiteFooter Columns, socials and the bottom row
+// @demo SiteFooter Columns, socials, legal row and language switch
 export function SiteFooterDemo() {
-  const { SiteFooter, Icon } = window.EfolusiDesignSystem_4ffc3d;
+  const { SiteFooter, LanguageSwitch, Icon } = window.EfolusiDesignSystem_4ffc3d;
   return (
     <SiteFooter
       brand="Komando"
       brandHref="#"
       tagline="Manage servers safely, from the terminal or your agent."
       socials={[{ label: 'GitHub', href: 'https://github.com/efolusi', icon: <Icon name="github" size={20} aria-hidden="true" /> }]}
-      columns={[
-        { heading: 'Product', links: [{ label: 'Docs', href: '#docs' }, { label: 'Pricing', href: '#pricing' }] },
-        { heading: 'Legal', links: [{ label: 'Privacy', href: '#privacy' }, { label: 'Terms', href: '#terms' }] },
-      ]}
-      bottom={<><span>Built by Efolusi.</span><span>Apache-2.0 licensed.</span></>}
+      columns={[{ heading: 'Product', links: [{ label: 'Docs', href: '#docs' }, { label: 'Pricing', href: '#pricing' }] }]}
+      name="Efolusi"
+      legal={[{ label: 'Terms', href: '#terms' }, { label: 'Privacy notice', href: '#privacy' }]}
+      languageSwitch={<LanguageSwitch size="sm" current="en" languages={[{ code: 'id', label: 'ID', href: '#id', name: 'Bahasa Indonesia' }, { code: 'en', label: 'EN', href: '#en', name: 'English' }]} />}
+      bottom={<span>Apache-2.0 licensed.</span>}
     />
   );
 }
