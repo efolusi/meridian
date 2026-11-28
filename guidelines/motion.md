@@ -100,6 +100,8 @@ Under `prefers-reduced-motion: reduce` the tokens swap themselves, so a componen
 
 A product does not write its own reduce rule for any of this, and does not set `--ef-motion-guard` on a loop.
 
+A page change (`@view-transition`, `document.startViewTransition`) cross-fades the old and the new snapshot. Under reduce `tokens/base.css` already runs that fade over `--dur-fast` and stops the groups, so a page writes no `::view-transition` reduce rule: `animation: none` there turns the fade into a hard cut. Under no-preference a page that people change many times a day sets `::view-transition-old(root), ::view-transition-new(root)` to `animation-duration: var(--dur-fast)` on `--ease-enter`, as the docs site does, instead of the browser's 250 ms `ease`.
+
 ## Theme switch
 
 A theme swap changes every colour at once, so every transition is off for it. `swapTheme(fn)` (called by `ThemeToggle` and `browser/marketing.js`) sets `data-theme-switching` on `<html>`, runs the swap, and removes the attribute after two animation frames; the rule in `tokens/base.css` is `[data-theme-switching] * { transition: none !important }`. See the Swap row of the Theme contract in [theming.md](theming.md#theme-contract). A product deletes any local copy.
