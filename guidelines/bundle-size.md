@@ -14,8 +14,8 @@ CSS is not counted per component: `styles.css` ships every component style in on
 | File | Size | Gzip |
 | --- | ---: | ---: |
 | `@efolusi/meridian` | 378.3 kB | 86.2 kB |
-| `dist/components.css` | 259.3 kB | 37.0 kB |
-| `_ds_bundle.js` | 928.1 kB | 170.2 kB |
+| `dist/components.css` | 259.8 kB | 37.1 kB |
+| `_ds_bundle.js` | 928.7 kB | 170.4 kB |
 
 The root import, `@efolusi/meridian`, is every component. `_ds_bundle.js` is the zero-build CDN bundle, which also carries each component's CSS. The root import is minified; the CSS and the CDN bundle are measured as shipped.
 
@@ -94,14 +94,14 @@ The root import, `@efolusi/meridian`, is every component. `_ds_bundle.js` is the
 | `feedback/Alert.js` | Alert, AlertTitle, AlertDescription, AlertAction | 45.0 kB | 7.5 kB |
 | `feedback/AlertDialog.js` | AlertDialog, AlertDialogTrigger, AlertDialogPortal, AlertDialogOverlay, AlertDialogContent, AlertDialogHeader, AlertDialogFooter, AlertDialogMedia, AlertDialogTitle, AlertDialogDescription, AlertDialogCancel, AlertDialogAction | 7.1 kB | 2.5 kB |
 | `feedback/Banner.js` | Banner | 44.8 kB | 7.5 kB |
-| `feedback/ConfirmDialog.js` | ConfirmDialog | 55.5 kB | 10.9 kB |
+| `feedback/ConfirmDialog.js` | ConfirmDialog | 55.6 kB | 10.9 kB |
 | `feedback/Dialog.js` | Dialog, DialogTrigger, DialogPortal, DialogOverlay, DialogClose, DialogContent, DialogHeader, DialogFooter, DialogTitle, DialogDescription | 50.9 kB | 9.5 kB |
 | `feedback/Loader.js` | Loader | 1.0 kB | 0.5 kB |
 | `feedback/Progress.js` | Progress | 1.5 kB | 0.8 kB |
 | `feedback/Spinner.js` | Spinner | 0.7 kB | 0.4 kB |
 | `feedback/Toast.js` | Toaster | 50.0 kB | 9.6 kB |
 | `feedback/Tooltip.js` | Tooltip, TooltipProvider, TooltipTrigger, TooltipContent | 5.7 kB | 2.3 kB |
-| `files/Attachment.js` | Attachment, AttachmentMedia, AttachmentContent, AttachmentTitle, AttachmentDescription, AttachmentActions, AttachmentAction, AttachmentTrigger, AttachmentGroup | 47.5 kB | 8.1 kB |
+| `files/Attachment.js` | Attachment, AttachmentMedia, AttachmentContent, AttachmentTitle, AttachmentDescription, AttachmentActions, AttachmentAction, AttachmentTrigger, AttachmentGroup | 47.6 kB | 8.2 kB |
 | `files/FileDrop.js` | FileDrop | 45.4 kB | 7.9 kB |
 | `files/FileTile.js` | FileTile | 47.1 kB | 8.3 kB |
 | `files/FileTypeIcon.js` | FileTypeIcon | 45.8 kB | 7.7 kB |
