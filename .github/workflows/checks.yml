@@ -81,6 +81,8 @@ jobs:
         run: '"$RUNNER_TEMP/pw-node" scripts/check_reduced_motion.mjs'
       - name: Menus take focus, answer the keyboard and keep text clear of the mark
         run: '"$RUNNER_TEMP/pw-node" scripts/check_menu_focus.mjs'
+      - name: A stacked hero pair of buttons has one width
+        run: '"$RUNNER_TEMP/pw-node" scripts/check_hero_pair.mjs'
       - name: Upload button interaction receipts
         if: always()
         uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4.6.2

@@ -3,7 +3,7 @@ export interface HeroProps extends Omit<React.HTMLAttributes<HTMLElement>, 'titl
   title: React.ReactNode;
   /** One or two sentences under the title. */
   sub?: React.ReactNode;
-  /** Calls to action, usually `Button shape="pill"`. */
+  /** Calls to action, usually `Button shape="pill"`. Below 640px they stack in one column as wide as the widest button. */
   actions?: React.ReactNode;
   /** A short proof line under the actions, such as a status dot and a fact. */
   proof?: React.ReactNode;

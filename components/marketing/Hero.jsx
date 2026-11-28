@@ -3,6 +3,7 @@ import React from 'react';
 import { injectEfCss } from '../runtime/runtime.jsx';
 
 // --hero-top and --hero-bottom come from landing.css, which steps them down on smaller screens.
+// Below 640px the actions stack in one grid column as wide as the widest button, so a stacked pair has one width (MD147).
 const CSS = `
 .ef-hero{padding-block:var(--hero-top,var(--space-16)) var(--hero-bottom,var(--space-16));color:var(--text-primary)}
 .ef-hero__inner{display:flex;flex-direction:column;gap:var(--space-5);width:100%;max-width:var(--container-max);margin-inline:auto;padding-inline:var(--space-6)}
@@ -11,6 +12,7 @@ const CSS = `
 .ef-hero__sub{margin:0;max-width:var(--container-text);font-size:var(--text-lg);line-height:var(--leading-relaxed);color:var(--text-secondary);text-wrap:pretty}
 .ef-hero__actions{display:flex;flex-wrap:wrap;gap:var(--space-3);margin-top:var(--space-2)}
 .ef-hero[data-align="center"] .ef-hero__actions{justify-content:center}
+@media (max-width:640px){.ef-hero__actions{display:grid;grid-template-columns:minmax(0,max-content);justify-content:center}.ef-hero[data-align="start"] .ef-hero__actions{justify-content:start}}
 .ef-hero__proof{display:flex;align-items:center;gap:var(--space-2);font-size:var(--text-sm);color:var(--text-muted)}
 .ef-hero-accent{position:relative;display:inline-block}
 .ef-hero-accent svg{position:absolute;inset-inline:0;bottom:-0.14em;width:100%;height:0.22em;overflow:visible}
