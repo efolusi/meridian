@@ -153,6 +153,7 @@ import '@efolusi/meridian/landing.css'
 ## Guidelines
 
 - `guidelines/brand.md`: palette derivation, type and spacing scales, motion, iconography, voice and copy rules
+- `guidelines/motion.md`: the one page of the motion rule: when to animate, durations, easing, enter scale, exits, press 0.98, reduced motion, the theme swap
 - `guidelines/theming.md`: bring your own brand: token layers, the semantic override set, dark-mode invariants, font swaps, contrast duties
 - `guidelines/forms.md`: validation timing (blur → change → submit), error copy, submit states, async checks
 - `guidelines/patterns.md`: the product-state playbook: loading, empty, error, destructive flows, and agent surfaces
