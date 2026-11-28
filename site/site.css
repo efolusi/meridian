@@ -41,7 +41,7 @@
 
 /* Header menu (≤1080px) and sidebar drawers (≤900px) — native details/summary */
 .site-menu{display:none;position:relative}
-.site-menu>summary{list-style:none;display:inline-flex;align-items:center;justify-content:center;width:36px;height:36px;border:1px solid var(--border-strong);border-radius:var(--radius-sm);cursor:pointer;color:var(--text-primary);background:transparent}
+.site-menu>summary{list-style:none;display:inline-flex;align-items:center;justify-content:center;width:36px;height:36px;border:1px solid var(--border-strong);border-radius:var(--press-radius,var(--radius-sm));cursor:pointer;color:var(--text-primary);background:transparent}
 .site-menu>summary::-webkit-details-marker{display:none}
 .site-menu>summary:focus-visible{outline:none;box-shadow:var(--focus-ring)}
 .site-menu[open]>summary{background:var(--surface-sunken)}
@@ -68,8 +68,8 @@
 }
 
 /* Header control consistency: 36px hamburger, search, GitHub, and theme toggle */
-.site-theme,.site-gh{display:inline-flex;align-items:center;justify-content:center;width:36px;height:36px;border:1px solid var(--border-strong);border-radius:var(--radius-sm);background:transparent;color:var(--text-secondary);cursor:pointer;flex:none;text-decoration:none}
-.site-lang{display:inline-flex;align-items:center;justify-content:center;height:36px;min-width:36px;padding:0 8px;border:1px solid var(--border-strong);border-radius:var(--radius-sm);background:transparent;color:var(--text-secondary);cursor:pointer;flex:none;font-family:var(--font-mono);font-size:12px;font-weight:600;letter-spacing:0.02em}
+.site-theme,.site-gh{display:inline-flex;align-items:center;justify-content:center;width:36px;height:36px;border:1px solid var(--border-strong);border-radius:var(--press-radius,var(--radius-sm));background:transparent;color:var(--text-secondary);cursor:pointer;flex:none;text-decoration:none}
+.site-lang{display:inline-flex;align-items:center;justify-content:center;height:36px;min-width:36px;padding:0 8px;border:1px solid var(--border-strong);border-radius:var(--press-radius,var(--radius-sm));background:transparent;color:var(--text-secondary);cursor:pointer;flex:none;font-family:var(--font-mono);font-size:12px;font-weight:600;letter-spacing:0.02em}
 .site-lang:hover{color:var(--text-primary);background:var(--surface-sunken)}
 .site-lang:focus-visible{outline:none;box-shadow:var(--focus-ring)}
 .site-theme:focus-visible,.site-gh:focus-visible{outline:none;box-shadow:var(--focus-ring)}
