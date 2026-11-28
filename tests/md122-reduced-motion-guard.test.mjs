@@ -72,6 +72,23 @@ describe('the guard stills every element that is not a loading loop', () => {
     expect(unknown).toEqual([])
   })
 
+  it('no component stops a loading loop in its own reduce block (the guard leaves it running)', () => {
+    const stopped = []
+    for (const file of componentFiles()) {
+      const text = readFileSync(file, 'utf8').replace(/\/\*[\s\S]*?\*\//g, '')
+      for (const m of text.matchAll(/@media\s*\(prefers-reduced-motion:\s*reduce\)\s*\{((?:[^{}]*\{[^{}]*\})*)\}/g)) {
+        for (const r of rulesOf(m[1], file)) {
+          if (!/animation(-name)?:\s*none/.test(r.body)) continue
+          for (const raw of r.selector.split(',')) {
+            const selector = raw.trim()
+            if (LOADING.includes(selector) || LOADING.includes(COVERED_BY[selector])) stopped.push(`${file}: ${selector}`)
+          }
+        }
+      }
+    }
+    expect(stopped).toEqual([])
+  })
+
   it('the loading loops that rotate are linear', () => {
     for (const file of componentFiles()) {
       for (const r of rulesOf(readFileSync(file, 'utf8'), file)) {

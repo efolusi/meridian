@@ -8,7 +8,6 @@ const CSS = `
 .ef-skel[data-shimmer]{background:linear-gradient(90deg,var(--border-default) 0%,var(--border-strong) 50%,var(--border-default) 100%) 100% 0/200% 100%;animation:ef-skel-shimmer var(--dur-loop-slow) linear infinite}
 @keyframes ef-skel-shimmer{to{background-position:-100% 0}}
 @media (forced-colors:active){.ef-skel,.ef-skel[data-shimmer]{forced-color-adjust:none;background:GrayText}}
-@media (prefers-reduced-motion:reduce){.ef-skel[data-shimmer]{background:var(--border-default);animation:none}}
 `;
 
 export const Skeleton = React.forwardRef(function Skeleton(
