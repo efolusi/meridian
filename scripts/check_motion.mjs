@@ -40,8 +40,8 @@ export function findLiterals(text) {
     for (const d of value.matchAll(DURATION)) if (Number(d[1]) !== 0) literals.push(d[0]);
     for (const e of value.matchAll(EASING)) {
       // linear is the curve of a progress bar and of a looping sweep: it has no numbers to share, and goes with
-      // --dur-progress or a --dur-loop token.
-      if (e[0] === 'linear' && /--dur-(?:progress|loop)/.test(value)) continue;
+      // --dur-progress, a --dur-loop token or --dur-spin.
+      if (e[0] === 'linear' && /--dur-(?:progress|loop|spin)/.test(value)) continue;
       literals.push(e[0].replace(/\($/, '(…)'));
     }
     if (literals.length) found.push({ line: clean.slice(0, m.index).split('\n').length, property: m[1] + (m[2] ?? ''), value, literals });
@@ -80,7 +80,7 @@ if (process.argv[1] === fileURLToPath(import.meta.url)) {
   }
   if (problems.length) {
     console.error(problems.join('\n'));
-    console.error('\nMotion outside the tokens: use --dur-fast, --dur-base, --dur-slow, --dur-progress (with linear), --dur-loop or --dur-loop-slow (with linear for a sweep) or --dur-modal (a modal, a drawer or a panel arriving), and the --ease-* curves. A value with no token goes in scripts/motion_allowlist.json with its reason.');
+    console.error('\nMotion outside the tokens: use --dur-fast, --dur-base, --dur-slow, --dur-progress (with linear), --dur-spin (with linear), --dur-loop or --dur-loop-slow (with linear for a sweep) or --dur-modal (a modal, a drawer or a panel arriving), and the --ease-* curves. A value with no token goes in scripts/motion_allowlist.json with its reason.');
     process.exit(1);
   }
   const total = Object.values(counts).reduce((n, f) => n + f.length, 0);

@@ -14,6 +14,10 @@
    increased-contrast tables follow it. It sits on :root and on every [data-theme] element: a themed subtree
    resolves its own --accent-edge, not the root's. A product deletes its own --accent-word remap. */
 :root,[data-theme]{--accent-word:var(--accent-edge)}
+/* One turn of every rotating spinner (Spinner, the Button spinner, the glyph spinners of AgentRun, Sandbox, Todo and
+   ToolCall), always with linear (MD129; owner decision 2026-11-28: 1.4 s was too slow for a loading indicator). It waits
+   for a design-tokens row DT --dur-spin and then moves there: effects.css is vendored, so it is defined here until then. */
+:root{--dur-spin:800ms}
 /* Icons: the box and the scale sizes here, so the markup carries no style attribute (strict CSP).
    A size off the scale is set through the CSSOM by Icon. */
 [data-slot="icon"]{display:inline-flex;flex:none;color:inherit}

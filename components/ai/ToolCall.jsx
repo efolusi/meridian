@@ -19,7 +19,7 @@ const CSS = `
 .ef-toolcall__state--busy{color:var(--text-secondary)}
 .ef-toolcall__state--success{color:var(--success-600,var(--text-secondary))}
 .ef-toolcall__state--danger{color:var(--status-danger-text)}
-.ef-toolcall__spin{display:inline-flex;animation:ef-toolcall-spin var(--dur-loop) linear infinite}
+.ef-toolcall__spin{display:inline-flex;animation:ef-toolcall-spin var(--dur-spin) linear infinite}
 @keyframes ef-toolcall-spin{to{transform:rotate(360deg)}}
 .ef-toolcall__chev{display:inline-flex;color:var(--text-muted);transition:transform var(--dur-base) var(--ease-enter)}
 .ef-toolcall--open .ef-toolcall__chev{transform:rotate(180deg)}

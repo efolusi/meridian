@@ -13,7 +13,7 @@ const CSS = `
 .ef-sandbox__title{flex:1;min-width:0;font-family:var(--font-mono);font-size:var(--text-sm);color:var(--text-primary);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .ef-sandbox--danger .ef-sandbox__title{color:var(--status-danger-text)}
 .ef-sandbox__meta{font-size:var(--text-xs);color:var(--text-muted);display:inline-flex;align-items:center;gap:var(--space-2)}
-.ef-sandbox__spin{display:inline-flex;color:var(--text-secondary);animation:ef-sandbox-spin var(--dur-loop) linear infinite}
+.ef-sandbox__spin{display:inline-flex;color:var(--text-secondary);animation:ef-sandbox-spin var(--dur-spin) linear infinite}
 @keyframes ef-sandbox-spin{to{transform:rotate(360deg)}}
 .ef-sandbox__body{display:grid;grid-template-rows:0fr;transition:grid-template-rows var(--dur-base) var(--ease-enter)}
 .ef-sandbox--open .ef-sandbox__body{grid-template-rows:1fr}

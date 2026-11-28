@@ -3,8 +3,9 @@ import { describe, expect, it } from 'vitest'
 import { componentFiles, rulesOf } from './helpers/component-css.mjs'
 
 // MD129: one spinner, one duration. .ef-spinner and .ef-btn__spin wrote a literal .7s, the glyph spinners of
-// AgentRun, Sandbox, Todo and ToolCall .9s and 1s, while --dur-loop is 1400 ms and Glamor's durLoop is 1.4 s. Every
-// rotating spinner reads --dur-loop and turns on a linear curve: a loop has no ease.
+// AgentRun, Sandbox, Todo and ToolCall .9s and 1s. Every rotating spinner reads --dur-spin (800 ms, defined once in
+// tokens/base.css, owner decision 2026-11-28: 1.4 s was too slow for a loading indicator) and turns on a linear curve:
+// a loop has no ease. --dur-loop (1400 ms) stays for the Skeleton pulse, not for a spinner.
 const turning = []
 for (const file of componentFiles()) {
   for (const r of rulesOf(readFileSync(file, 'utf8'), file)) {
@@ -21,8 +22,8 @@ describe('every rotating spinner', () => {
   })
 
   for (const t of turning) {
-    it(`${t.selector} turns over --dur-loop on linear, forever`, () => {
-      expect(t.value.replace(/^ef-[\w-]+\s+/, '')).toBe('var(--dur-loop) linear infinite')
+    it(`${t.selector} turns over --dur-spin on linear, forever`, () => {
+      expect(t.value.replace(/^ef-[\w-]+\s+/, '')).toBe('var(--dur-spin) linear infinite')
     })
   }
 
@@ -31,8 +32,17 @@ describe('every rotating spinner', () => {
     expect(of('.ef-spinner')).toBe(of('.ef-btn__spin'))
   })
 
-  it('--dur-loop is the 1400 ms of the tokens, so Glamor durLoop (1.4 s) is the same number', () => {
-    expect(readFileSync('tokens/effects.css', 'utf8')).toMatch(/--dur-loop:\s*1400ms/)
+  it('--dur-spin is 800ms and defined once, in tokens/base.css, not in the vendored effects.css', () => {
+    const defs = []
+    for (const file of ['tokens/base.css', 'tokens/effects.css', ...componentFiles()]) {
+      for (const m of readFileSync(file, 'utf8').matchAll(/--dur-spin\s*:\s*([^;}]+)/g)) defs.push({ file, value: m[1].trim() })
+    }
+    expect(defs).toEqual([{ file: 'tokens/base.css', value: '800ms' }])
+  })
+
+  it('the reduced-motion guard (MD122, MD127) leaves the spinners running', () => {
+    const base = readFileSync('tokens/base.css', 'utf8')
+    expect(base).not.toMatch(/ef-[\w-]*spin[\w-]*[^}]*animation\s*:\s*none/)
   })
 
   it('the motion allowlist no longer excuses a literal period for a spinner', () => {
