@@ -195,6 +195,17 @@ EDGE_PAIRS = [
      "thin indicators on a track or line: Progress, UsageMeter, Slider range on its rail, played Player bars among the unplayed, Tabs underline and ink, PageControl, Steps line, Sandbox tab, Resizable handle, BarChart highlight, LineChart"),
 ]
 
+# MD114: the Badge `success` and `brand` variants (and the classes sso wrote by hand before them) paint these pairs.
+# Measured in all four modes, like EDGE_PAIRS. `brand` is cocoa ink on cream in light; in dark and the dark
+# increased table it swaps to the accent tint (the [data-theme="dark"] .ef-badge--brand rule), so the cream pair is
+# not painted there. --accent-subtle-fg on --accent-subtle is the Badge accent pair as well; the light and dark tables
+# already measure it in PAIRS, the two increased tables measure it here.
+BADGE_PAIRS = [
+    ("--status-success-text", ["--status-success-bg"], 4.5, "Badge success"),
+    ("--cocoa-700", ["--cream-50"], 4.5, "Badge brand (light)"),
+    ("--accent-subtle-fg", ["--accent-subtle"], 4.5, "Badge brand (dark) and Badge accent"),
+]
+
 # Light chart slots 3 (green) and 5 (pink) sit near 2.7:1. Darkening them would
 # break the palette's lightness band and colour-blind separation, so these marks
 # never carry identity alone: DonutChart always renders a text legend with values
@@ -220,6 +231,7 @@ KNOWN_FAILURES = {
 # surface) and the -600 tokens only in dark (on the light one). The other
 # combinations never reach a screen, so they are not measured.
 NOT_PAINTED = {("dark", f"--{tone}-on-dark", "--surface-inverse") for tone in ("success", "danger", "warning")}
+NOT_PAINTED |= {(theme, "--cocoa-700", "--cream-50") for theme in ("dark", "increased-dark")}
 NOT_PAINTED |= {("light", f"--{tone}-600", "--surface-inverse") for tone in ("success", "danger", "warning")}
 NOT_PAINTED |= {("light", f"mix(--{tone}-600 60%, --text-inverse)", "--surface-inverse") for tone in ("success", "warning")}
 
@@ -243,10 +255,10 @@ failures, unresolved, stale, tolerated, checked = [], [], [], [], 0
 increased_light = {**light, **increased("light")}
 increased_dark = {**dark, **increased("dark")}
 for theme, table, fallback, pairs in (
-    ("light", light, None, PAIRS + EDGE_PAIRS),
-    ("dark", dark, light, PAIRS + EDGE_PAIRS),
-    ("increased", increased_light, None, EDGE_PAIRS),
-    ("increased-dark", increased_dark, light, EDGE_PAIRS),
+    ("light", light, None, PAIRS + EDGE_PAIRS + BADGE_PAIRS),
+    ("dark", dark, light, PAIRS + EDGE_PAIRS + BADGE_PAIRS),
+    ("increased", increased_light, None, EDGE_PAIRS + BADGE_PAIRS),
+    ("increased-dark", increased_dark, light, EDGE_PAIRS + BADGE_PAIRS),
 ):
     for fg_tok, bg_toks, minimum, label in pairs:
         fg_raw = resolve(fg_tok, table, fallback)

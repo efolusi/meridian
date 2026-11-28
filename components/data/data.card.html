@@ -49,7 +49,7 @@ function Demo() {
       <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 16 }}>
         <Card style={{ '--card-spacing': '16px' }}><CardHeader><CardTitle>Weekly runs</CardTitle></CardHeader><CardContent><BarChart height={130} highlightLast={1} labels={['Mon','Tue','Wed','Thu','Fri','Sat','Sun']} data={[42,58,51,74,66,30,89]} format={v => v + ' runs'} /></CardContent></Card>
         <Card style={{ '--card-spacing': '16px' }}><CardHeader><CardTitle>Resource</CardTitle></CardHeader><CardContent><KeyValueList labelWidth={120} items={[
-            { label: 'Status', value: <Badge className="ef-badge--success"><Icon name="circle" size={8} strokeWidth={4} data-icon="inline-start" />Healthy</Badge> },
+            { label: 'Status', value: <Badge variant="success"><Icon name="circle" size={8} strokeWidth={4} data-icon="inline-start" />Healthy</Badge> },
             { label: 'Region', value: 'eu-west-1' },
             { label: 'Endpoint', value: 'api.acme.efolusi.com', mono: true },
           ]} /></CardContent></Card>

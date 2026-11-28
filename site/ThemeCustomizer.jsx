@@ -93,7 +93,7 @@ function ThemeCustomizer() {
           h('div', { style: { background: 'var(--surface-card)', border: '1px solid var(--border-default)', borderRadius: 'var(--radius-md)', padding: 20 } },
             h('div', { style: { display: 'flex', alignItems: 'center', gap: 10, flexWrap: 'wrap' } },
               h('h3', { style: { fontFamily: 'var(--font-display)', fontWeight: 650, fontSize: 17, letterSpacing: '-0.01em', margin: 0 } }, 'Workspace overview'),
-              h(Badge, { className: 'ef-badge--success' },
+              h(Badge, { variant: 'success' },
                 h(Icon, { name: 'circle', size: 7, strokeWidth: 4, 'data-icon': 'inline-start' }),
                 'Live'),
               h('div', { style: { marginLeft: 'auto', display: 'flex', gap: 8 } },

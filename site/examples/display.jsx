@@ -85,9 +85,10 @@ export function BadgeDemo() {
         <Badge variant="outline">Outline</Badge>
         <Badge variant="ghost">Ghost</Badge>
         <Badge variant="solid">Solid</Badge>
+        <Badge variant="brand">Brand</Badge>
       </div>
       <div style={{ display: 'flex', gap: 10, alignItems: 'center', flexWrap: 'wrap' }}>
-        <Badge className="ef-badge--success"><Icon name="circle" size={8} strokeWidth={4} data-icon="inline-start" />Live</Badge>
+        <Badge variant="success"><Icon name="circle" size={8} strokeWidth={4} data-icon="inline-start" />Live</Badge>
         <Badge className="ef-badge--warning"><Icon name="circle" size={8} strokeWidth={4} data-icon="inline-start" />Degraded</Badge>
         <Badge variant="danger">Failed</Badge>
       </div>
@@ -104,7 +105,7 @@ export function CardDemo() {
         <CardHeader>
           <CardTitle>Nightly export</CardTitle>
           <CardDescription>Runs at 02:00 UTC</CardDescription>
-          <CardAction><Badge className="ef-badge--success"><Icon name="circle" size={8} strokeWidth={4} data-icon="inline-start" />Live</Badge></CardAction>
+          <CardAction><Badge variant="success"><Icon name="circle" size={8} strokeWidth={4} data-icon="inline-start" />Live</Badge></CardAction>
         </CardHeader>
         <CardContent>Exports every closed conversation to your warehouse as Parquet.</CardContent>
         <CardFooter><Button variant="ghost" size="sm">View history</Button></CardFooter>
@@ -235,7 +236,7 @@ export function ItemDemo() {
   const { Item, ItemActions, ItemContent, ItemDescription, ItemGroup, ItemMedia, ItemTitle, Badge, Icon } = window.EfolusiDesignSystem_4ffc3d;
   return (
     <ItemGroup style={{ width: '100%', maxWidth: 460, gap: 8 }}>
-      <Item variant="outline"><ItemMedia variant="icon"><Icon name="bot" /></ItemMedia><ItemContent><ItemTitle>Flight rebooking agent</ItemTitle><ItemDescription>Last run 4 min ago</ItemDescription></ItemContent><ItemActions><Badge className="ef-badge--success"><Icon name="circle" size={8} strokeWidth={4} data-icon="inline-start" />Live</Badge></ItemActions></Item>
+      <Item variant="outline"><ItemMedia variant="icon"><Icon name="bot" /></ItemMedia><ItemContent><ItemTitle>Flight rebooking agent</ItemTitle><ItemDescription>Last run 4 min ago</ItemDescription></ItemContent><ItemActions><Badge variant="success"><Icon name="circle" size={8} strokeWidth={4} data-icon="inline-start" />Live</Badge></ItemActions></Item>
       <Item variant="muted" size="sm"><ItemMedia variant="icon"><Icon name="database" /></ItemMedia><ItemContent><ItemTitle>Warehouse sync</ItemTitle><ItemDescription>Nightly at 02:00</ItemDescription></ItemContent><ItemActions><Badge variant="secondary">Paused</Badge></ItemActions></Item>
     </ItemGroup>
   );

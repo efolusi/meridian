@@ -41,7 +41,7 @@ function ConsoleSidebar({ nav, onNav }) {
     <aside style={{ width: 240, flex: 'none', display: 'flex', flexDirection: 'column', borderRight: '1px solid var(--border-default)', background: 'var(--sand-25)' }}>
       <div style={{ display: 'flex', alignItems: 'center', gap: 10, padding: '16px 16px 14px' }}>
         <a href="../website/index.html" title="fernwick.example" style={{ fontFamily: 'var(--font-display)', fontWeight: 680, letterSpacing: '-0.02em', fontSize: 19, color: 'var(--text-primary)', textDecoration: 'none' }}>Fernwick</a>
-        <Badge className="ef-badge--brand" style={{ marginLeft: 'auto' }}>Console</Badge>
+        <Badge variant="brand" style={{ marginLeft: 'auto' }}>Console</Badge>
       </div>
       <nav style={{ display: 'flex', flexDirection: 'column', gap: 2, padding: '4px 12px' }}>
         {items.map(([id, icon, label, badge]) => <SideItem key={id} icon={icon} label={label} badge={badge} active={nav === id} onClick={() => onNav(id)} />)}
