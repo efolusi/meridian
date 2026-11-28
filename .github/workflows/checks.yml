@@ -83,6 +83,8 @@ jobs:
         run: '"$RUNNER_TEMP/pw-node" scripts/check_menu_focus.mjs'
       - name: A stacked hero pair of buttons has one width
         run: '"$RUNNER_TEMP/pw-node" scripts/check_hero_pair.mjs'
+      - name: The shared 404 page follows the stored theme and centres its languages
+        run: '"$RUNNER_TEMP/pw-node" scripts/check_not_found.mjs'
       - name: Upload button interaction receipts
         if: always()
         uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4.6.2
