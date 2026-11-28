@@ -6,7 +6,7 @@ import { Icon } from '../icons/Icon.jsx';
 // Every card keeps a hairline: some tone fills sit near the page colour in one theme.
 const CSS = `
 .ef-feature-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,18rem),1fr));gap:var(--space-6)}
-.ef-feature-card{position:relative;display:flex;flex-direction:column;gap:var(--space-3);min-height:100%;padding:var(--space-8);overflow:hidden;border:1px solid var(--border-default);border-radius:var(--radius-xl);background:var(--surface-card);color:var(--text-primary);text-decoration:none;transition:transform var(--dur-base) var(--ease-emphasised),box-shadow var(--dur-base) var(--ease-enter)}
+.ef-feature-card{position:relative;display:flex;flex-direction:column;gap:var(--space-3);min-height:100%;padding:var(--space-8);overflow:hidden;border:1px solid var(--border-default);border-radius:var(--radius-xl);background:var(--surface-card);color:var(--text-primary);text-decoration:none;transition:transform var(--dur-base) var(--ease-enter),box-shadow var(--dur-base) var(--ease-enter)}
 .ef-feature-card[data-tone="peach"]{background:var(--tone-peach-fill);color:var(--tone-peach-on-fill)}
 .ef-feature-card[data-tone="band"]{background:var(--tone-band-fill);color:var(--tone-band-on-fill)}
 .ef-feature-card[data-tone="amber"]{background:var(--tone-amber-fill);color:var(--tone-amber-on-fill)}

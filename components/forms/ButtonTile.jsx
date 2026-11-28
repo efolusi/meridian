@@ -13,7 +13,7 @@ const CSS = `
 .ef-tile--on .ef-tile__icon{color:var(--text-primary)}
 .ef-tile__title{font-size:var(--text-md);font-weight:var(--weight-semibold)}
 .ef-tile__desc{font-size:var(--text-sm);color:var(--text-muted);line-height:1.45}
-.ef-tile__check{position:absolute;top:12px;inset-inline-end:12px;display:inline-flex;align-items:center;justify-content:center;width:18px;height:18px;border-radius:var(--radius-full);background:var(--accent);box-shadow:inset 0 0 0 1px var(--accent-edge);color:var(--accent-contrast);opacity:0;transform:scale(.6);transition:opacity var(--dur-fast) var(--ease-enter),transform var(--dur-base) var(--ease-emphasised)}
+.ef-tile__check{position:absolute;top:12px;inset-inline-end:12px;display:inline-flex;align-items:center;justify-content:center;width:18px;height:18px;border-radius:var(--radius-full);background:var(--accent);box-shadow:inset 0 0 0 1px var(--accent-edge);color:var(--accent-contrast);opacity:0;transform:scale(.6);transition:opacity var(--dur-fast) var(--ease-enter),transform var(--dur-base) var(--ease-enter)}
 .ef-tile--on .ef-tile__check{opacity:1;transform:scale(1)}
 `;
 export function ButtonTile({ icon, title, description, selected, disabled, onClick, type = 'button', style, className, ...rest }) {
