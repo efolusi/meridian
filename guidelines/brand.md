@@ -13,6 +13,7 @@ The Meridian mark is the anchor: three identical rising strokes, the literal sho
 
 - **Voice:** confident, direct, warm. Short declarative sentences. We speak as "we", address the user as "you". ("You're all set." / "We'll email you a receipt.")
 - **Casing:** Sentence case everywhere: headings, buttons, labels, nav. Never Title Case, never ALL CAPS except tiny eyebrow labels (`letter-spacing: 0.06em`, 12px, semibold).
+- **Page titles:** one rule for the browser tab and the `<title>`: sentence case, the page first and the product name last, separated by ` · ` (a middle dot with a space on each side), never a pipe, a colon or a dash. The same in English and Indonesian: "Invoices · Meridian", "Tagihan · Meridian".
 - **Buttons** are verbs: "Create workspace", "Send invite", "Save changes", never "Submit", "OK", or "Click here".
 - **Empty states** lead with the action, not the absence: "Create your first project" over "No projects found".
 - **Errors** say what happened + how to fix, no blame, no jargon: "That email is already in use. Try signing in instead."

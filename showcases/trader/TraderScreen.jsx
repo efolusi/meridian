@@ -30,7 +30,7 @@ function TraderScreen() {
             </div>
             <div style={{ display: 'flex', alignItems: 'baseline', gap: 12, marginTop: 16 }}>
               <span style={{ fontFamily: 'var(--font-mono)', fontSize: 40, fontWeight: 600, letterSpacing: '-0.01em' }}>€24,318.90</span>
-              <Badge className="ef-badge--success"><Icon name="circle" size={8} strokeWidth={4} data-icon="inline-start" />+12.4% · {range}</Badge>
+              <Badge variant="success"><Icon name="circle" size={8} strokeWidth={4} data-icon="inline-start" />+12.4% · {range}</Badge>
             </div>
             <Sparkline data={SERIES[range]} width={420} height={72} strokeWidth={1.75} style={{ marginTop: 12 }} />
           </div>

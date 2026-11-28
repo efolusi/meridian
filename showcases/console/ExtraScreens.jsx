@@ -27,7 +27,7 @@ function ProjectsScreen({ onNewProject, notify }) {
             </div>
             <div style={{ display: 'flex', gap: 6, marginTop: 8 }}>
               <Badge variant={state === 'busy' ? 'default' : 'secondary'} className={state === 'busy' ? 'ef-badge--accent' : undefined}>{state === 'busy' && <Icon name="circle" size={8} strokeWidth={4} data-icon="inline-start" />}{product}</Badge>
-              {state === 'busy' && <Badge className="ef-badge--success"><Icon name="circle" size={8} strokeWidth={4} data-icon="inline-start" />Running</Badge>}
+              {state === 'busy' && <Badge variant="success"><Icon name="circle" size={8} strokeWidth={4} data-icon="inline-start" />Running</Badge>}
             </div>
             <div style={{ display: 'flex', alignItems: 'center', marginTop: 16 }}>
               <AvatarGroup>{people.map(p => <Avatar key={p} size="sm"><AvatarFallback>{p.split(/\s+/).map(part => part[0]).slice(0, 2).join('')}</AvatarFallback></Avatar>)}</AvatarGroup>

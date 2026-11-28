@@ -10,6 +10,10 @@
    vendored from design-tokens, so these live here until design-tokens carries them.
    --gap-label-icon is an inline text and icon pair; --gap-label-icon-sm is the small controls (Badge, Button xs, Link). */
 :root{--gap-label-icon:var(--space-2);--gap-label-icon-sm:var(--space-1)}
+/* The accent coloured word of a heading or a script title (MD109). One alias of --accent-edge, so the dark and both
+   increased-contrast tables follow it. It sits on :root and on every [data-theme] element: a themed subtree
+   resolves its own --accent-edge, not the root's. A product deletes its own --accent-word remap. */
+:root,[data-theme]{--accent-word:var(--accent-edge)}
 /* Icons: the box and the scale sizes here, so the markup carries no style attribute (strict CSP).
    A size off the scale is set through the CSSOM by Icon. */
 [data-slot="icon"]{display:inline-flex;flex:none;color:inherit}

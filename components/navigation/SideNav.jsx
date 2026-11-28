@@ -28,7 +28,7 @@ export function SideNav({ brand = 'Meridian', brandBadge, logoSrc, groups, value
       <div className="ef-sidenav__brand">
         {logoSrc ? <img src={logoSrc} alt="" width={30} height={16} className="ef-sidenav__logo" /> : null}
         <span className="ef-sidenav__name">{brand}</span>
-        {brandBadge ? <Badge className="ef-badge--brand ef-sidenav__badge">{brandBadge}</Badge> : null}
+        {brandBadge ? <Badge variant="brand" className="ef-sidenav__badge">{brandBadge}</Badge> : null}
       </div>
       {groups.map((g, gi) => (
         <React.Fragment key={gi}>

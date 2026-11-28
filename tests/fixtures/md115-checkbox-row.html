@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>MD115 Checkbox row height</title>
+<link rel="stylesheet" href="../../styles.css">
+<style>body{margin:16px;background:var(--surface-page);font-family:var(--font-sans)}.row{margin:0 0 12px}pre{white-space:pre-wrap}</style>
+<script src="../../node_modules/react/umd/react.production.min.js"></script>
+<script src="../../node_modules/react-dom/umd/react-dom.production.min.js"></script>
+<script src="../../_ds_bundle.js"></script>
+</head>
+<body>
+<!-- MD115: at a fine pointer the Checkbox row is at least 24 px tall (WCAG 2.5.8), with and without a label, and the
+     18 px box keeps its size. At a coarse pointer the 44 px hit area stays. window.__MD115__ holds the measured result:
+     row and box heights, the label height, and the size of the box's hit area (its ::before, measured through the
+     pseudo element's computed size). Served by hand: python3 -m http.server from the repository root, then open
+     /tests/fixtures/md115-checkbox-row.html. -->
+<main id="root"></main>
+<pre id="out"></pre>
+<script>
+  const { Checkbox } = window.EfolusiDesignSystem_4ffc3d;
+  const h = React.createElement;
+  const cases = [
+    ['labelled', { label: 'Remember this device' }],
+    ['labelled with description', { label: 'Email me a receipt', description: 'One email per payment, to the address on the account.' }],
+    ['bare', { 'aria-label': 'Select row' }],
+  ];
+  ReactDOM.createRoot(document.getElementById('root')).render(
+    cases.map(([name, props]) => h('div', { key: name, className: 'row', 'data-case': name }, h(Checkbox, props))));
+  const px = (v) => Math.round(parseFloat(v) * 100) / 100;
+  // Measure again after a device emulation changes the pointer: window.__measureMD115().
+  window.__measureMD115 = () => {
+    const result = {
+      pointer: matchMedia('(pointer:fine)').matches ? 'fine' : matchMedia('(pointer:coarse)').matches ? 'coarse' : 'none',
+      cases: [...document.querySelectorAll('[data-case]')].map((el) => {
+        const row = el.querySelector('.ef-check');
+        const box = el.querySelector('.ef-check__box');
+        const label = el.querySelector('.ef-check__label');
+        const hit = getComputedStyle(box, '::before');
+        return {
+          name: el.dataset.case,
+          row: px(row.getBoundingClientRect().height),
+          box: [px(box.getBoundingClientRect().width), px(box.getBoundingClientRect().height)],
+          label: label ? px(label.getBoundingClientRect().height) : null,
+          hit: hit.content === 'none' ? null : [px(hit.width), px(hit.height)],
+        };
+      }),
+    };
+    window.__MD115__ = result;
+    document.getElementById('out').textContent = JSON.stringify(result, null, 2);
+    return result;
+  };
+  requestAnimationFrame(() => requestAnimationFrame(() => window.__measureMD115()));
+</script>
+</body>
+</html>
