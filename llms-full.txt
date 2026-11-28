@@ -5011,6 +5011,8 @@ Composable right-click menu with items, checkbox and radio choices, groups, labe
 
 Every action must also exist somewhere visible. Right-click is a shortcut, never the only path.
 
+A `ContextMenuCheckboxItem` or `ContextMenuRadioItem` draws its mark in the start gutter (`--space-8`), so the text never sits under it. The selected radio mark is filled, and a checked item (`aria-checked="true"`) is semibold: the highlighted item is a fill, a ring from the keyboard, and the checked one is told apart from it by weight as well as by the mark. The menu takes focus on its first item when it opens, from the pointer or the context-menu key (`ContextMenu`, `Shift+F10`); ArrowDown, ArrowUp, Home, End and Escape work from there, and Escape returns focus to the trigger.
+
 ```ts
 import type * as React from 'react';
 
@@ -5041,11 +5043,13 @@ export declare const ContextMenuShortcut: React.ForwardRefExoticComponent<React.
 export interface ContextMenuItemProps extends React.ButtonHTMLAttributes<HTMLButtonElement> { inset?: boolean; variant?: 'default' | 'danger'; onSelect?: (event: React.SyntheticEvent) => void; }
 export declare const ContextMenuItem: React.ForwardRefExoticComponent<ContextMenuItemProps & React.RefAttributes<HTMLButtonElement>>;
 
+/** A checked item draws a check in the start gutter and is semibold. */
 export interface ContextMenuCheckboxItemProps extends Omit<ContextMenuItemProps, 'onCheckedChange'> { checked?: boolean; defaultChecked?: boolean; onCheckedChange?: (checked: boolean) => void; }
 export declare const ContextMenuCheckboxItem: React.ForwardRefExoticComponent<ContextMenuCheckboxItemProps & React.RefAttributes<HTMLButtonElement>>;
 
 export interface ContextMenuRadioGroupProps extends React.HTMLAttributes<HTMLDivElement> { value?: string; defaultValue?: string; onValueChange?: (value: string) => void; }
 export declare function ContextMenuRadioGroup(props: ContextMenuRadioGroupProps): React.JSX.Element;
+/** The selected item draws a filled dot in the start gutter and is semibold. */
 export interface ContextMenuRadioItemProps extends ContextMenuItemProps { value: string; }
 export declare const ContextMenuRadioItem: React.ForwardRefExoticComponent<ContextMenuRadioItemProps & React.RefAttributes<HTMLButtonElement>>;
 
