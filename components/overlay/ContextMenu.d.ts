@@ -27,11 +27,13 @@ export declare const ContextMenuShortcut: React.ForwardRefExoticComponent<React.
 export interface ContextMenuItemProps extends React.ButtonHTMLAttributes<HTMLButtonElement> { inset?: boolean; variant?: 'default' | 'danger'; onSelect?: (event: React.SyntheticEvent) => void; }
 export declare const ContextMenuItem: React.ForwardRefExoticComponent<ContextMenuItemProps & React.RefAttributes<HTMLButtonElement>>;
 
+/** A checked item draws a check in the start gutter and is semibold. */
 export interface ContextMenuCheckboxItemProps extends Omit<ContextMenuItemProps, 'onCheckedChange'> { checked?: boolean; defaultChecked?: boolean; onCheckedChange?: (checked: boolean) => void; }
 export declare const ContextMenuCheckboxItem: React.ForwardRefExoticComponent<ContextMenuCheckboxItemProps & React.RefAttributes<HTMLButtonElement>>;
 
 export interface ContextMenuRadioGroupProps extends React.HTMLAttributes<HTMLDivElement> { value?: string; defaultValue?: string; onValueChange?: (value: string) => void; }
 export declare function ContextMenuRadioGroup(props: ContextMenuRadioGroupProps): React.JSX.Element;
+/** The selected item draws a filled dot in the start gutter and is semibold. */
 export interface ContextMenuRadioItemProps extends ContextMenuItemProps { value: string; }
 export declare const ContextMenuRadioItem: React.ForwardRefExoticComponent<ContextMenuRadioItemProps & React.RefAttributes<HTMLButtonElement>>;
 
