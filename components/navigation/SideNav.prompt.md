@@ -1,4 +1,4 @@
-The product sidebar: brand row, grouped nav with icons and badges, and the foot. 240px on `--surface-subtle`, 72px when `collapsed`.
+The product sidebar: brand row, grouped nav with icons and badges, and the foot (the account card and its menu). 240px on `--surface-subtle`, 72px when `collapsed`.
 
 ```jsx
 <SideNav logoSrc="assets/meridian.svg" brandBadge="Console" value={nav} onChange={setNav}
@@ -7,12 +7,19 @@ The product sidebar: brand row, grouped nav with icons and badges, and the foot.
     { label: 'Products', items: [{ id: 'agent', label: 'AI agents', icon: 'bot' }] },
   ]}
   account={{ name: 'Ada Obi', email: 'ada@example.com' }}
+  menuItems={[{ id: 'account', label: 'Account settings', icon: 'settings', onSelect: openAccount }]}
   onSignOut={signOut} />
 ```
 
-**The foot is the same on every front** and no product builds its own. From the top it is: a theme row (icon, "Theme", and the state "Light" or "Dark"), a sign-out row ("Sign out"), then one bordered `AccountCard`. The rows use the nav row style (`.ef-sidenav__item`, 34px, 44px at a coarse pointer), not icon-only circles and not a second toggle style. The header `ThemeToggle` keeps its own borderless icon; the foot's theme row is a labelled row, and both read and write the one theme contract, so they stay in step. The foot shows when `account` or `onSignOut` is given; give both.
+**The foot is the same on every front** and no product builds its own. At rest it is ONE bordered `AccountCard` (avatar, name, email, a small chevron) and nothing else: no theme row, no sign-out row, no icon-only circles. The card is a button (`aria-haspopup="menu"`, `aria-expanded`). Pressing it, or Enter or Space on it, opens the account menu above it, built on `DropdownMenu` (arrows move, Escape closes and returns focus to the card):
 
-- `lang="id"` writes the foot in Indonesian ("Tema", "Terang", "Gelap", "Keluar"). `labels` overrides any word.
-- `collapsed` draws the icon rail: rows show the icon only, the card shows the avatar alone inside the same border. Every label, the name and the email stay in the DOM as accessible names, and the nav rows and foot rows carry a `title`. A nav item with a `badge` shows a dot. The component draws no collapse button: the product decides when to collapse.
-- The theme row's accessible name is "Theme: Dark" and its tooltip says what a press does. A polite status announces the new theme after a press.
+1. **Theme**: a group heading with two radios, "Light" and "Dark", the current one checked. Choosing one switches the page and closes the menu. The foot and the header `ThemeToggle` read and write the one theme contract, so they stay in step.
+2. **Your items**: `menuItems={[{ id, label, icon, onSelect }]}` for what a product adds (Language, Account settings). They sit after the Theme group.
+3. **Sign out**: last, set apart by a separator. It shows when `onSignOut` is given.
+
+The foot shows when `account` is given.
+
+- `lang="id"` writes the menu in Indonesian ("Tema", "Terang", "Gelap", "Keluar"). `labels` overrides any word.
+- `collapsed` draws the icon rail: nav rows show the icon only, the card shows the avatar alone inside the same border and opens the same menu. Every label, the name and the email stay in the DOM as accessible names, and the nav rows carry a `title`. A nav item with a `badge` shows a dot. The component draws no collapse button: the product decides when to collapse.
+- A polite status announces the new theme after a choice.
 - On a phone put the same `SideNav` in a drawer at its full width, so the foot is the same there.

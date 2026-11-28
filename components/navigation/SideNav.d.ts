@@ -7,17 +7,23 @@ export interface SideNavAccount {
   /** Profile picture URL. Initials show when it is missing or fails to load. */
   image?: string | null;
 }
+export interface SideNavMenuItem {
+  id: string;
+  label: React.ReactNode;
+  /** A Meridian icon name drawn before the label. */
+  icon?: string;
+  /** Called when the item is chosen; the menu then closes. */
+  onSelect?: (event: React.SyntheticEvent) => void;
+}
 export interface SideNavLabels {
-  /** The theme row. @default 'Theme' ('Tema' with lang="id") */
+  /** The heading of the theme group in the account menu. @default 'Theme' ('Tema' with lang="id") */
   theme?: string;
-  /** The state shown when the page is light. @default 'Light' ('Terang') */
+  /** The radio for the light theme. @default 'Light' ('Terang') */
   light?: string;
-  /** The state shown when the page is dark. @default 'Dark' ('Gelap') */
+  /** The radio for the dark theme. @default 'Dark' ('Gelap') */
   dark?: string;
-  /** The sign-out row. @default 'Sign out' ('Keluar') */
+  /** The sign-out item. @default 'Sign out' ('Keluar') */
   signOut?: string;
-  /** The phrase before the other theme in the row's tooltip. @default 'Switch to' ('Ganti ke') */
-  next?: string;
 }
 export interface SideNavProps {
   /** @default 'Meridian' */
@@ -29,18 +35,20 @@ export interface SideNavProps {
   /** Active item id */
   value: string;
   onChange?: (id: string) => void;
-  /** The icon rail: 72px wide, icons only, every label stays in the DOM as the accessible name. The product decides when; `SideNav` draws no toggle. @default false */
+  /** The icon rail: 72px wide, icons only, every label stays in the DOM as the accessible name. The foot shows the avatar alone and opens the same menu. The product decides when; `SideNav` draws no toggle. @default false */
   collapsed?: boolean;
-  /** The signed-in person. Draws the one bordered `AccountCard` at the foot. */
+  /** The signed-in person. Draws the foot: one bordered `AccountCard` that is a button and opens the account menu above it. */
   account?: SideNavAccount;
-  /** Draws the labelled sign-out row of the foot and calls this when it is pressed. */
+  /** Product items of the account menu (for example Language, Account settings), after the Theme group and before Sign out. */
+  menuItems?: SideNavMenuItem[];
+  /** Adds the Sign out item, last and set apart, and calls this when it is chosen. */
   onSignOut?: () => void;
-  /** Language of the foot's built-in labels. @default 'en' */
+  /** Language of the menu's built-in words. @default 'en' */
   lang?: 'en' | 'id';
-  /** Override any label of the foot. */
+  /** Override any built-in word of the menu. */
   labels?: SideNavLabels;
   style?: React.CSSProperties;
   className?: string;
 }
-/** The rail: brand, grouped nav, and the foot. The foot is the same on every front: a theme row, a sign-out row, then one bordered account card. It shows when `account` or `onSignOut` is given. */
+/** The rail: brand, grouped nav, and the foot. The foot is the same on every front: one bordered account card, and nothing else at rest. Pressing it opens the account menu (Theme, your items, Sign out). It shows when `account` is given. */
 export declare function SideNav(props: SideNavProps): React.JSX.Element;

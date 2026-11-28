@@ -115,9 +115,9 @@ const CSS = `
 `;
 
 /**
- * The theme state behind every theme control (the ThemeToggle and the SideNav foot row): `shown` is the theme in use,
- * `other` the one a press switches to, `choose` switches. It reads and writes the one contract above, so every control
- * on a page stays in step. `onChange` is called with the new theme after a switch.
+ * The theme state behind every theme control (the ThemeToggle and the SideNav account menu): `shown` is the theme in use,
+ * `other` the one a press switches to, `choose` switches to it, `set(theme)` picks one by name. It reads and writes the
+ * one contract above, so every control on a page stays in step. `onChange` is called with the new theme after a switch.
  */
 export function useThemeState(onChange) {
   // pref is the person's choice (null until they switch); shown is the theme in use.
@@ -153,14 +153,16 @@ export function useThemeState(onChange) {
   }, [pref]);
 
   const other = THEME_PREFERENCES.find((t) => t !== shown);
-  const choose = () => {
+  const apply = (next) => {
     swapTheme(() => {
-      setPref(writeThemePreference(other));
-      setShown(applyTheme(other));
+      setPref(writeThemePreference(next));
+      setShown(applyTheme(next));
     });
-    onChange?.(other);
+    onChange?.(next);
   };
-  return { shown, other, choose };
+  const choose = () => apply(other);
+  const set = (next) => { if (valid(next) && next !== shown) apply(next); };
+  return { shown, other, choose, set };
 }
 
 export const ThemeToggle = React.forwardRef(function ThemeToggle({ lang = 'en', labels, className, onChange, ...rest }, ref) {

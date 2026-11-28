@@ -3,6 +3,7 @@ import React from 'react';
 import { Icon } from '../icons/Icon.jsx';
 import { Badge } from '../display/Badge.jsx';
 import { useThemeState } from '../marketing/ThemeToggle.jsx';
+import { DropdownMenu, DropdownMenuTrigger, DropdownMenuContent, DropdownMenuItem, DropdownMenuLabel, DropdownMenuSeparator, DropdownMenuRadioGroup, DropdownMenuRadioItem } from '../overlay/DropdownMenu.jsx';
 import { injectEfCss } from '../runtime/runtime.jsx';
 import { AccountCard } from './AccountCard.jsx';
 const CSS = `
@@ -13,10 +14,8 @@ const CSS = `
 @media (hover:hover){.ef-sidenav__item:hover{background:var(--surface-sunken);color:var(--text-primary)}}
 .ef-sidenav__item--on{background:var(--border-default);color:var(--text-primary);font-weight:600}
 .ef-sidenav__item:focus-visible{outline:none;box-shadow:var(--focus-ring)}
-.ef-sidenav__foot{margin-top:auto;display:flex;flex-direction:column;gap:var(--space-3);padding:var(--space-4) 0 var(--space-3)}
-.ef-sidenav__actions{display:flex;flex-direction:column;gap:var(--space-0-5)}
-.ef-sidenav__state{margin-inline-start:auto;font-size:var(--text-xs);font-weight:400;color:var(--text-muted)}
-.ef-sidenav__account{margin:0 var(--space-3)}
+.ef-sidenav__foot{margin-top:auto;padding:var(--space-4) var(--space-3) var(--space-3)}
+.ef-sidenav__menu{min-width:208px}
 .ef-sidenav__logo{object-fit:contain}
 .ef-sidenav__name{font-family:var(--font-display);font-weight:680;letter-spacing:-0.02em;font-size:var(--text-xl)}
 .ef-sidenav__mark{display:none;font-family:var(--font-display);font-weight:680;font-size:var(--text-xl);line-height:1}
@@ -30,42 +29,58 @@ const CSS = `
 .ef-sidenav[data-collapsed] .ef-sidenav__mark{display:inline}
 .ef-sidenav[data-collapsed] .ef-sidenav__logo+.ef-sidenav__mark{display:none}
 .ef-sidenav[data-collapsed] .ef-sidenav__item{justify-content:center;gap:0;padding:0}
-.ef-sidenav[data-collapsed] .ef-sidenav__name,.ef-sidenav[data-collapsed] .ef-sidenav__brand .ef-sidenav__badge,.ef-sidenav[data-collapsed] .ef-sidenav__label,.ef-sidenav[data-collapsed] .ef-sidenav__count,.ef-sidenav[data-collapsed] .ef-sidenav__state{position:absolute;width:1px;height:1px;margin:-1px;padding:0;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;border:0}
+.ef-sidenav[data-collapsed] .ef-sidenav__name,.ef-sidenav[data-collapsed] .ef-sidenav__brand .ef-sidenav__badge,.ef-sidenav[data-collapsed] .ef-sidenav__label,.ef-sidenav[data-collapsed] .ef-sidenav__count{position:absolute;width:1px;height:1px;margin:-1px;padding:0;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;border:0}
 .ef-sidenav[data-collapsed] .ef-sidenav__item[data-has-count]::after{content:"";position:absolute;inset-block-start:8px;inset-inline-end:12px;width:8px;height:8px;border-radius:var(--radius-full);background:var(--accent-edge)}
 .ef-sidenav[data-collapsed] .ef-sidenav__group{height:1px;margin:var(--space-3) var(--space-5);padding:0;overflow:hidden;font-size:0;background:var(--border-default)}
 /* coarse pointers get the 44px touch target, like form controls do through --control-h-* */
 @media (pointer:coarse){.ef-sidenav__item{height:var(--tap-min)}}
 `;
-const FOOT_LABELS = {
-  en: { theme: 'Theme', light: 'Light', dark: 'Dark', signOut: 'Sign out', next: 'Switch to' },
-  id: { theme: 'Tema', light: 'Terang', dark: 'Gelap', signOut: 'Keluar', next: 'Ganti ke' },
+const MENU_LABELS = {
+  en: { theme: 'Theme', light: 'Light', dark: 'Dark', signOut: 'Sign out' },
+  id: { theme: 'Tema', light: 'Terang', dark: 'Gelap', signOut: 'Keluar' },
 };
 const textOf = (node) => (typeof node === 'string' || typeof node === 'number' ? String(node) : undefined);
-// The theme row and the sign-out row of the foot: the same row style as the nav rows above, the label always in the DOM.
-function FootRows({ lang, labels, collapsed, onSignOut }) {
-  const text = { ...(FOOT_LABELS[lang] || FOOT_LABELS.en), ...labels };
+// The foot: one account card that opens the account menu above it (Theme as Light and Dark, the product's own items, Sign out).
+// The menu is the DropdownMenu, so arrows, Escape and focus return come from it.
+function AccountFoot({ account, collapsed, lang, labels, menuItems, onSignOut }) {
+  const text = { ...(MENU_LABELS[lang] || MENU_LABELS.en), ...labels };
   const [announce, setAnnounce] = React.useState('');
-  const { shown, other, choose } = useThemeState((next) => setAnnounce(`${text.theme}: ${text[next]}`));
-  const themeName = `${text.theme}: ${text[shown]}`;
-  const switchTo = `${text.next} ${text[other].toLowerCase()}`;
+  const { shown, set } = useThemeState((next) => setAnnounce(`${text.theme}: ${text[next]}`));
   return (
-    <div className="ef-sidenav__actions">
-      <button type="button" data-slot="sidenav-theme" className="ef-sidenav__item" aria-label={themeName} title={collapsed ? `${themeName}. ${switchTo}` : switchTo} onClick={choose}>
-        <span className="ef-sidenav__icon"><Icon name={shown === 'dark' ? 'moon' : 'sun'} size={16} /></span>
-        <span className="ef-sidenav__label">{text.theme}</span>
-        <span className="ef-sidenav__state" aria-hidden="true">{text[shown]}</span>
-      </button>
-      {onSignOut ? (
-        <button type="button" data-slot="sidenav-sign-out" className="ef-sidenav__item" title={collapsed ? text.signOut : undefined} onClick={onSignOut}>
-          <span className="ef-sidenav__icon"><Icon name="log-out" size={16} /></span>
-          <span className="ef-sidenav__label">{text.signOut}</span>
-        </button>
-      ) : null}
+    <div className="ef-sidenav__foot" data-slot="sidenav-foot">
+      <DropdownMenu>
+        <DropdownMenuTrigger asChild>
+          <AccountCard interactive name={account.name} email={account.email} image={account.image} compact={collapsed} />
+        </DropdownMenuTrigger>
+        <DropdownMenuContent side="top" align="start" sideOffset={8} className="ef-sidenav__menu">
+          <DropdownMenuLabel>{text.theme}</DropdownMenuLabel>
+          <DropdownMenuRadioGroup value={shown} onValueChange={set}>
+            <DropdownMenuRadioItem value="light">{text.light}</DropdownMenuRadioItem>
+            <DropdownMenuRadioItem value="dark">{text.dark}</DropdownMenuRadioItem>
+          </DropdownMenuRadioGroup>
+          <DropdownMenuSeparator />
+          {(menuItems || []).map((it) => (
+            <DropdownMenuItem key={it.id} onSelect={it.onSelect}>
+              {it.icon ? <Icon name={it.icon} size={16} /> : null}
+              <span>{it.label}</span>
+            </DropdownMenuItem>
+          ))}
+          {onSignOut ? (
+            <>
+              {menuItems && menuItems.length ? <DropdownMenuSeparator /> : null}
+              <DropdownMenuItem onSelect={onSignOut}>
+                <Icon name="log-out" size={16} />
+                <span>{text.signOut}</span>
+              </DropdownMenuItem>
+            </>
+          ) : null}
+        </DropdownMenuContent>
+      </DropdownMenu>
       <span className="ef-sidenav__status" role="status">{announce}</span>
     </div>
   );
 }
-export function SideNav({ brand = 'Meridian', brandBadge, logoSrc, groups, value, onChange, collapsed = false, account, onSignOut, lang = 'en', labels, style, className, ...rest }) {
+export function SideNav({ brand = 'Meridian', brandBadge, logoSrc, groups, value, onChange, collapsed = false, account, menuItems, onSignOut, lang = 'en', labels, style, className, ...rest }) {
   injectEfCss('ef-css-sidenav', CSS);
   return (
     <aside {...rest} data-collapsed={collapsed ? '' : undefined} className={`ef-sidenav${className ? ' ' + className : ''}`} style={style}>
@@ -89,12 +104,7 @@ export function SideNav({ brand = 'Meridian', brandBadge, logoSrc, groups, value
           </nav>
         </React.Fragment>
       ))}
-      {account || onSignOut ? (
-        <div className="ef-sidenav__foot" data-slot="sidenav-foot">
-          <FootRows lang={lang} labels={labels} collapsed={collapsed} onSignOut={onSignOut} />
-          {account ? <AccountCard className="ef-sidenav__account" name={account.name} email={account.email} image={account.image} compact={collapsed} /> : null}
-        </div>
-      ) : null}
+      {account ? <AccountFoot account={account} collapsed={collapsed} lang={lang} labels={labels} menuItems={menuItems} onSignOut={onSignOut} /> : null}
     </aside>
   );
 }
