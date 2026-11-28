@@ -125,9 +125,10 @@ describe('a pulse never dips below the contrast floor', () => {
 })
 
 describe('movement is off and opacity stays', () => {
-  const reduceOf = (text) => {
+  // The body of every @media block that opens with `query`, braces matched.
+  const mediaOf = (text, query) => {
     const out = []
-    for (const m of text.matchAll(/@media\s*\(prefers-reduced-motion:\s*reduce\)\s*\{/g)) {
+    for (const m of text.matchAll(new RegExp(`@media\\s*\\(prefers-reduced-motion:\\s*${query}\\)\\s*\\{`, 'g'))) {
       let depth = 0
       let i = m.index + m[0].length - 1
       for (; i < text.length; i += 1) {
@@ -137,6 +138,22 @@ describe('movement is off and opacity stays', () => {
       out.push(text.slice(m.index + m[0].length, i))
     }
     return out.join('\n')
+  }
+  const reduceOf = (text) => mediaOf(text, 'reduce')
+  // A transition written inside `no-preference` does not exist under reduce, so nothing moves there (the Button arrow nudge, MD94).
+  const withoutNoPreference = (text) => {
+    let out = text
+    for (;;) {
+      const m = /@media\s*\(prefers-reduced-motion:\s*no-preference\)\s*\{/.exec(out)
+      if (!m) return out
+      let depth = 0
+      let i = m.index + m[0].length - 1
+      for (; i < out.length; i += 1) {
+        if (out[i] === '{') depth += 1
+        else if (out[i] === '}') { depth -= 1; if (depth === 0) break }
+      }
+      out = out.slice(0, m.index) + out.slice(i + 1)
+    }
   }
   const centralReduce = flat(reduceOf(base))
 
@@ -148,7 +165,7 @@ describe('movement is off and opacity stays', () => {
   for (const file of componentFiles()) {
     const text = readFileSync(file, 'utf8').replace(/\/\*[\s\S]*?\*\//g, (m) => m.replace(/[^\n]/g, ' '))
     const own = flat(reduceOf(text))
-    for (const r of rulesOf(text, file)) {
+    for (const r of rulesOf(withoutNoPreference(text), file)) {
       const t = /(?<![\w-])transition\s*:([^;}]*)/.exec(r.body)
       if (!t || !/(?:^|[\s,])(transform|translate|rotate|scale)(?=[\s,]|$)/.test(t[1])) continue
       movers.push({ file, selector: r.selector, own })

@@ -26,6 +26,31 @@ export function ButtonSizes() {
   );
 }
 
+// @demo Button Arrow bubble
+export function ButtonBubble() {
+  const { Button } = window.EfolusiDesignSystem_4ffc3d;
+  return (
+    <div style={{ display: 'flex', gap: 12, flexWrap: 'wrap', alignItems: 'center' }}>
+      <Button size="xl" iconBubble="arrow-right">Start free</Button>
+      <Button size="lg" iconBubble="arrow-right">Book a call</Button>
+      <Button size="md" iconBubble="arrow-right">Learn more</Button>
+      <Button size="lg" variant="secondary" iconBubble="arrow-right">Read the docs</Button>
+    </div>
+  );
+}
+
+// @demo Button On a band
+export function ButtonOnBand() {
+  const { Button } = window.EfolusiDesignSystem_4ffc3d;
+  return (
+    <div style={{ display: 'flex', gap: 12, flexWrap: 'wrap', alignItems: 'center', padding: 24, borderRadius: 16, background: 'var(--surface-brand)', color: 'var(--text-on-brand)', width: '100%' }}>
+      <Button variant="band" size="xl" iconBubble="arrow-right">See the plans</Button>
+      <Button variant="band" size="lg">Contact us</Button>
+      <Button size="lg" iconBubble="arrow-right">Start free</Button>
+    </div>
+  );
+}
+
 // @demo Button Loading state
 export function ButtonLoading() {
   const { Button } = window.EfolusiDesignSystem_4ffc3d;
