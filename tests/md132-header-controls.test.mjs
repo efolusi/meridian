@@ -150,14 +150,11 @@ describe('no button relies on a product reset for its border or background', () 
 })
 
 // The hover sweep (chief, 2026-11-28): a :hover rule outside @media (hover: hover) sticks after a tap on a touch
-// screen. Every :hover rule of the library sits inside that query, except these, each with its reason.
+// screen. Every :hover rule of the library sits inside that query, except these, each with its reason. The five hover
+// reveals (message actions, image actions, env row buttons, sort arrow, sidebar action) moved inside it in batch C2:
+// they are shown at rest where nothing hovers (tests/hover-reveal-touch.test.mjs).
 const hoverAllowed = {
   'components/forms/Button.jsx .ef-btn--primary[data-loading]:is(:hover,:active)': 'resets the primary fill while loading, for hover and for press; it undoes a fill, it adds none',
-  'components/ai/ChatMessage.jsx .ef-msg:hover .ef-msg__actions': 'reveals the hidden message actions; inside the query they would never show on touch (open item: show them at rest on touch)',
-  'components/ai/GeneratedImage.jsx .ef-genimg--complete:hover .ef-genimg__actions': 'reveals the hidden image actions; same reason as the message actions',
-  'components/code/EnvList.jsx .ef-env__row:hover .ef-env__btn': 'reveals the hidden row buttons; same reason as the message actions',
-  'components/data/Table.jsx .ef-table__sort:hover .ef-table__sort__i': 'reveals the sort arrow; the arrow is a hint and the sorted state shows it at rest',
-  'components/navigation/Sidebar.jsx .ef-sidebar-menu-item:hover>.ef-sidebar-menu-action[data-show-on-hover=true]': 'reveals the hidden menu action; same reason as the message actions',
 }
 
 const withoutHoverQueries = outsideHover

@@ -14,8 +14,10 @@ const CSS = `
 .ef-msg__time{font-size:var(--text-xs);color:var(--text-muted)}
 .ef-msg__body{font-size:var(--text-md);line-height:var(--leading-relaxed);color:var(--text-primary);margin-top:var(--space-1)}
 .ef-msg--user .ef-msg__body{background:var(--surface-card);border:1px solid var(--border-default);border-radius:var(--radius-md);padding:var(--space-3) var(--space-4)}
-.ef-msg__actions{display:flex;gap:var(--space-0-5);margin-top:var(--space-2);opacity:0;transition:opacity var(--dur-fast) var(--ease-enter)}
-.ef-msg:hover .ef-msg__actions,.ef-msg:focus-within .ef-msg__actions{opacity:1}
+.ef-msg__actions{display:flex;gap:var(--space-0-5);margin-top:var(--space-2);transition:opacity var(--dur-fast) var(--ease-enter)}
+/* Revealed by a pointer that can hover; shown at rest where nothing hovers, so a touch user can reach Copy and Retry. */
+@media (hover:hover){.ef-msg__actions{opacity:0}.ef-msg:hover .ef-msg__actions,.ef-msg:focus-within .ef-msg__actions{opacity:1}}
+@media (hover:none),(pointer:coarse){.ef-msg__actions{opacity:1}}
 @keyframes ef-caret{0%,100%{opacity:1}50%{opacity:0}}
 .ef-msg__caret{display:inline-block;width:7px;height:15px;background:var(--accent);margin-inline-start:var(--space-1);vertical-align:-2px;animation:ef-caret 1s steps(1) infinite}
 `;

@@ -27,7 +27,6 @@ const CSS = `
 .ef-attachment-group{display:flex;gap:var(--space-2);max-width:100%;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:thin;mask-image:linear-gradient(to right,transparent,currentColor 14px,currentColor calc(100% - 14px),transparent);padding-inline:var(--space-4)}
 .ef-attachment-group>.ef-attachment{flex:0 0 auto;min-width:220px;scroll-snap-align:start}
 @keyframes ef-attachment-shimmer{to{background-position:-200% 0}}
-@media (prefers-reduced-motion:reduce){.ef-attachment[data-state="uploading"] .ef-attachment__title,.ef-attachment[data-state="processing"] .ef-attachment__title{animation:none;color:var(--text-primary);background:none}}
 `;
 
 const classes = (base, className) => base + (className ? ' ' + className : '');

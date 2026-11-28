@@ -44,7 +44,7 @@ const CSS = `
 .ef-btn--link{height:auto;padding:0;background:transparent;color:var(--text-link);text-underline-offset:4px}
 @media (hover:hover){.ef-btn--link:hover{color:var(--text-link-hover);text-decoration:none}}
 @keyframes ef-spin{to{transform:rotate(360deg)}}
-.ef-btn__spin{display:inline-flex;animation:ef-spin .7s linear infinite}
+.ef-btn__spin{display:inline-flex;animation:ef-spin var(--dur-spin) linear infinite}
 /* The trailing arrow bubble (MD94, iconBubble). The bubble takes the button's label colour (--ef-btn-ink) and the arrow takes
    the button's own fill (--ef-btn-fill), so the bubble reads on the button and the arrow reads on the bubble in light and
    dark (primary: ink on copper 6.37:1 both ways; copper on copper was 1.10:1). A bubble button is always a pill, and the circle

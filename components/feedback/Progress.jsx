@@ -15,7 +15,7 @@ const CSS = `
 .ef-progress[data-state="indeterminate"] .ef-progress__indicator{width:45%;animation:ef-progress-indeterminate 1.2s ease-in-out infinite}
 @keyframes ef-progress-indeterminate{0%{transform:translateX(-110%)}50%{transform:translateX(125%)}100%{transform:translateX(240%)}}
 [dir="rtl"] .ef-progress[data-state="indeterminate"] .ef-progress__indicator{animation-direction:reverse}
-@media (prefers-reduced-motion:reduce){.ef-progress__indicator{transition:none}.ef-progress[data-state="indeterminate"] .ef-progress__indicator{animation:none;transform:none}}
+@media (prefers-reduced-motion:reduce){.ef-progress__indicator{transition:none}}
 `;
 
 function classes(...values) {

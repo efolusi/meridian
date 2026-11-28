@@ -13,7 +13,10 @@ const CSS = `
 .ef-sheet[data-side=bottom]{bottom:0;left:0;right:0;width:100%;max-height:80vh;border-width:1px 0 0;animation:ef-sheet-bottom var(--dur-modal) var(--ease-enter)}
 .ef-sheet__header{padding:var(--space-6) var(--space-6) var(--space-3)}.ef-sheet__footer{margin-top:auto}.ef-sheet__description{margin-top:var(--space-1)}
 @keyframes ef-sheet-right{from{transform:translateX(24px)}}@keyframes ef-sheet-left{from{transform:translateX(-24px)}}@keyframes ef-sheet-top{from{transform:translateY(-24px)}}@keyframes ef-sheet-bottom{from{transform:translateY(24px)}}
-@media (prefers-reduced-motion:reduce){.ef-sheet[data-side=right],.ef-sheet[data-side=left],.ef-sheet[data-side=top],.ef-sheet[data-side=bottom]{animation:none}}
+@keyframes ef-sheet-right-out{to{transform:translateX(100%)}}@keyframes ef-sheet-left-out{to{transform:translateX(-100%)}}@keyframes ef-sheet-top-out{to{transform:translateY(-100%)}}@keyframes ef-sheet-bottom-out{to{transform:translateY(100%)}}
+.ef-sheet[data-side=right][data-state="closed"],.ef-sheet[data-side=left][data-state="closed"],.ef-sheet[data-side=top][data-state="closed"],.ef-sheet[data-side=bottom][data-state="closed"]{pointer-events:none}
+@media (prefers-reduced-motion:no-preference){.ef-sheet[data-side=right][data-state="closed"]{animation:ef-sheet-right-out var(--dur-slow) var(--ease-exit) forwards}.ef-sheet[data-side=left][data-state="closed"]{animation:ef-sheet-left-out var(--dur-slow) var(--ease-exit) forwards}.ef-sheet[data-side=top][data-state="closed"]{animation:ef-sheet-top-out var(--dur-slow) var(--ease-exit) forwards}.ef-sheet[data-side=bottom][data-state="closed"]{animation:ef-sheet-bottom-out var(--dur-slow) var(--ease-exit) forwards}}
+@media (prefers-reduced-motion:reduce){.ef-sheet[data-side=right],.ef-sheet[data-side=left],.ef-sheet[data-side=top],.ef-sheet[data-side=bottom],.ef-sheet[data-side=right][data-state="closed"],.ef-sheet[data-side=left][data-state="closed"],.ef-sheet[data-side=top][data-state="closed"],.ef-sheet[data-side=bottom][data-state="closed"]{animation:none}}
 `;
 
 export const Sheet = Dialog;

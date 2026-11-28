@@ -1,6 +1,6 @@
 'use client';
 import React from 'react';
-import { injectEfCss, mergeRefs, styleRefUnder, useIsoLayoutEffect } from '../runtime/runtime.jsx';
+import { injectEfCss, mergeRefs, styleRefUnder, useIsoLayoutEffect, usePresence } from '../runtime/runtime.jsx';
 import { Portal, useAnchoredStyle, useEscapeLayer, escapeLayerContext, useHydrated } from './Portal.jsx';
 
 const CSS = `
@@ -8,6 +8,9 @@ const CSS = `
 :where([data-slot="hover-card-trigger"]):focus-visible{outline:2px solid transparent;box-shadow:var(--focus-ring);border-radius:var(--radius-sm)}
 .ef-hovercard__panel{position:fixed;width:256px;background:color-mix(in srgb,var(--material-tint) calc(var(--material-thick) * 100%),transparent);-webkit-backdrop-filter:blur(var(--material-blur-thick)) saturate(var(--material-saturate));backdrop-filter:blur(var(--material-blur-thick)) saturate(var(--material-saturate));color:var(--text-primary);border:1px solid var(--border-strong);border-radius:var(--radius-md);box-shadow:var(--shadow-md);padding:var(--space-4);z-index:var(--z-popover);animation:ef-hovercard-in var(--dur-base) var(--ease-enter)}
 @keyframes ef-hovercard-in{from{transform:translateY(2px)}}
+@keyframes ef-hovercard-out{to{transform:translateY(2px)}}
+.ef-hovercard__panel[data-state="closed"]{pointer-events:none}
+@media (prefers-reduced-motion:no-preference){.ef-hovercard__panel[data-state="closed"]{animation:ef-hovercard-out var(--dur-fast) var(--ease-exit) forwards}}
 @media (prefers-reduced-motion:reduce){.ef-hovercard__panel{animation:none}}
 `;
 
@@ -95,17 +98,18 @@ export const HoverCardContent = React.forwardRef(function HoverCardContent({ ali
   }, [registerId, id]);
   const fallbackTriggerRef = React.useRef(null);
   const fallbackContentRef = React.useRef(null);
+  const { present, state } = usePresence(!!ctx?.open, ctx?.contentRef ?? fallbackContentRef);
   const { style: anchored, side: resolvedSide } = useAnchoredStyle(ctx?.triggerRef ?? fallbackTriggerRef, ctx?.contentRef ?? fallbackContentRef, {
-    open: !!ctx?.open,
+    open: present,
     placement: side,
     align,
     offset: sideOffset,
     crossOffset: alignOffset,
   });
-  if (!ctx?.open) return null;
+  if (!present) return null;
   return (
     <Portal>
-      <div {...rest} ref={mergeRefs(forwardedRef, ctx.contentRef, styleRefUnder(anchored, style))} id={id || ctx.contentId} data-slot="hover-card-content" data-state="open" data-side={resolvedSide} data-align={align}
+      <div {...rest} ref={mergeRefs(forwardedRef, ctx.contentRef, styleRefUnder(anchored, style))} id={id || ctx.contentId} data-slot="hover-card-content" data-state={state} data-side={resolvedSide} data-align={align}
         onMouseEnter={compose(rest.onMouseEnter, ctx.clearTimer)} onMouseLeave={compose(rest.onMouseLeave, ctx.closeSoon)}
         className={`ef-hovercard__panel${className ? ' ' + className : ''}`} style={style}>{children}</div>
     </Portal>

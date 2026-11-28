@@ -1,7 +1,9 @@
 // Real Chromium with prefers-reduced-motion: reduce emulated (design-tokens docs/motion.md):
 //  - a token transition still runs the documented fade, 120 ms, not near zero;
 //  - every looping animation in the component CSS stops (no animation, or a run of one iteration with
-//    a near-zero duration, so animationend still fires);
+//    a near-zero duration, so animationend still fires), except the loops that signal loading (a spinner,
+//    a skeleton, an indeterminate bar: MD122), which keep running at their own duration. The exception list is
+//    the one the guard in tokens/base.css writes, read from there, so it cannot drift from the page;
 //  - nothing travels: a component transition that moves or resizes (transform, inset, top, left, width,
 //    flex-basis, ...) is instant under reduce, so a drawer or an indicator does not slide for 120 ms. A
 //    transform that only rotates or scales is on the reviewed list below, with the reason.
@@ -48,6 +50,10 @@ function transitionRules(text) {
 }
 const travellers = transitionRules(css.replace(/\/\*[\s\S]*?\*\//g, '')).flatMap(([sel, list]) => sel.split(/,(?![^(]*\))/).map((x) => x.trim()).filter(Boolean).map((x) => ({ selector: x, group: sel, list })));
 const travelProbes = travellers.map((t) => ({ ...t, built: build(t.selector) }));
+// The loops the guard leaves running (MD122), read from the guard rule itself in tokens/base.css.
+const loadingSelector = css.match(/\*:not\(:where\((.*?)\)\),\*::before,\*::after\{--ef-motion-guard:\.01ms/)?.[1];
+assert.ok(loadingSelector, 'the --ef-motion-guard rule with its loading exclusion must be in tokens/base.css');
+for (const required of ['.ef-spinner', '.ef-btn__spin']) assert.ok(loadingSelector.split(',').includes(required), `the guard must leave ${required} running`);
 const loops = [...css.matchAll(/(?<![\w-])([^{}@]+)\{([^{}]*\binfinite\b[^{}]*)\}/g)].map((m) => m[1].trim()).filter((s) => !/^(from|to|\d+%)/.test(s));
 const selectors = [...new Set(loops.flatMap((s) => s.split(',').map((x) => x.trim())).filter(Boolean))];
 // Build the ancestry a selector needs: tags, classes and [attr=value] only. A selector with a pseudo-class is skipped.
@@ -86,6 +92,8 @@ const ENTRANCE_SNAP = new Map([
   ['.ef-context-menu__content', GLASS_OVERLAY],
   ['.ef-hovercard__panel', GLASS_OVERLAY],
 ]);
+// Their exit is the same snap (MD121: under reduce a glass panel goes at once, a solid panel fades out), so the closed state of each is reviewed too.
+for (const key of [...ENTRANCE_SNAP.keys()]) if (ENTRANCE_SNAP.get(key) === GLASS_OVERLAY) ENTRANCE_SNAP.set(`${key}[data-state="closed"]`, GLASS_OVERLAY);
 const entranceVerifiable = entrances.filter((p) => p.built);
 const unbuiltEntrances = entrances.filter((p) => !p.built && !UNBUILDABLE_ENTRANCE.has(p.selector)).map((p) => p.selector);
 const probes = selectors.map((s) => ({ selector: s, built: build(s) }));
@@ -105,13 +113,13 @@ try {
     const page = await browser.newPage({ reducedMotion });
     await page.route('**/*', (route) => route.abort());
     await page.setContent(fixture);
-    const result = await page.evaluate(async ([probeList, travelList, entranceList]) => {
+    const result = await page.evaluate(async ([probeList, travelList, entranceList, loadingSel]) => {
       const style = (el, pseudo) => getComputedStyle(el, pseudo);
       const fade = document.getElementById('fade');
       const computed = style(fade).transitionDuration;
       const elapsed = await new Promise((resolve) => {
-        const start = performance.now();
-        fade.addEventListener('transitionend', () => resolve(performance.now() - start), { once: true });
+        // elapsedTime is the transition's own run time, so a busy machine that delays the event by a few frames cannot fail the check.
+        fade.addEventListener('transitionend', (event) => resolve(event.elapsedTime * 1000), { once: true });
         fade.classList.add('off');
         setTimeout(() => resolve(-1), 2000);
       });
@@ -129,7 +137,7 @@ try {
         const el = document.querySelector(`[data-i="${i}"] [data-probe]`);
         if (!el) return { selector: p.selector, missing: true };
         const s = style(el, p.pseudo);
-        return { selector: p.selector, name: s.animationName, duration: s.animationDuration, count: s.animationIterationCount };
+        return { selector: p.selector, name: s.animationName, duration: s.animationDuration, count: s.animationIterationCount, keeps: !p.pseudo && el.matches(loadingSel) };
       });
       const travel = travelList.map((p, i) => {
         const el = document.querySelector(`[data-t="${i}"] [data-probe]`);
@@ -163,7 +171,7 @@ try {
         transition.skipTransition();
       }
       return { viewTransition, entrances, travel, computed, elapsed, loop: { name: loop.animationName, duration: loop.animationDuration, count: loop.animationIterationCount, ended: loopEnded }, components };
-    }, [verifiable.map((p) => ({ selector: p.selector, pseudo: p.built.pseudo })), travelVerifiable.map((p) => ({ selector: p.selector, pseudo: p.built.pseudo })), entranceVerifiable.map((p) => ({ selector: p.selector, pseudo: p.built.pseudo }))]);
+    }, [verifiable.map((p) => ({ selector: p.selector, pseudo: p.built.pseudo })), travelVerifiable.map((p) => ({ selector: p.selector, pseudo: p.built.pseudo })), entranceVerifiable.map((p) => ({ selector: p.selector, pseudo: p.built.pseudo })), loadingSelector]);
     await page.close();
     return result;
   };
@@ -174,8 +182,12 @@ try {
   assert.ok(calm.elapsed >= 100 && calm.elapsed < 400, `the fade ran ${Math.round(calm.elapsed)} ms, expected about 120 ms`);
   assert.ok(calm.loop.name === 'none' || (Number.parseFloat(calm.loop.duration) <= 0.001 && calm.loop.count === '1'), `the probe loop is still running: ${JSON.stringify(calm.loop)}`);
   assert.ok(calm.loop.ended, 'animationend still fires for a stopped loop');
-  const running = calm.components.filter((c) => !c.missing && c.name !== 'none' && !(Number.parseFloat(c.duration) <= 0.001 && c.count === '1'));
-  assert.deepEqual(running, [], `component loops still running under reduce:\n${JSON.stringify(running, null, 2)}`);
+  // A loop the guard names (a loading loop) keeps running at its own duration, on repeat; every other loop stops.
+  const running = calm.components.filter((c) => !c.missing && !c.keeps && c.name !== 'none' && !(Number.parseFloat(c.duration) <= 0.001 && c.count === '1'));
+  assert.deepEqual(running, [], `component loops still running under reduce (a loop that signals loading goes in the guard's exclusion in tokens/base.css, with its reason in tests/md122-reduced-motion-guard.test.mjs):\n${JSON.stringify(running, null, 2)}`);
+  const stalled = calm.components.filter((c) => !c.missing && c.keeps && !(c.name !== 'none' && c.count === 'infinite' && Number.parseFloat(c.duration) >= 0.1));
+  assert.deepEqual(stalled, [], `loading loops that stop under reduce (a frozen spinner reads as a hung page):\n${JSON.stringify(stalled, null, 2)}`);
+  assert.ok(calm.components.some((c) => c.keeps), 'no loading loop was probed, so the loading exception is not proven');
   const unmatched = calm.components.filter((c) => c.missing).map((c) => c.selector);
   assert.equal(unmatched.length, 0, `could not build an element for: ${unmatched.join(' | ')}`);
 
@@ -219,7 +231,7 @@ try {
   assert.equal(full.loop.count, 'infinite', 'no preference: the loop runs');
 
   const skipped = probes.filter((p) => !p.built).map((p) => p.selector);
-  console.log(`Reduced motion: the token fade runs ${Math.round(calm.elapsed)} ms (0.12s); ${verifiable.length} component loop selector(s) stop${skipped.length ? `; ${skipped.length} with a pseudo-class not exercised: ${skipped.join(' | ')}` : ''}; ${travelVerifiable.length} positional transition selector(s) are instant or reviewed; ${entranceVerifiable.length} entrance animation(s) are a 120 ms opacity fade${unbuilt.length ? `, ${unbuilt.length} not exercised (${unbuilt.join(' | ')})` : ''}.`);
+  console.log(`Reduced motion: the token fade runs ${Math.round(calm.elapsed)} ms (0.12s); ${calm.components.filter((c) => c.keeps).length} loading loop(s) keep running and ${calm.components.filter((c) => !c.keeps && !c.missing).length} other loop selector(s) stop${skipped.length ? `; ${skipped.length} with a pseudo-class not exercised: ${skipped.join(' | ')}` : ''}; ${travelVerifiable.length} positional transition selector(s) are instant or reviewed; ${entranceVerifiable.length} entrance animation(s) are a 120 ms opacity fade${unbuilt.length ? `, ${unbuilt.length} not exercised (${unbuilt.join(' | ')})` : ''}.`);
 } finally {
   await browser.close();
 }

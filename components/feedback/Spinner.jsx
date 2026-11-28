@@ -4,7 +4,7 @@ import { injectEfCss } from '../runtime/runtime.jsx';
 
 const CSS = `
 @keyframes ef-spinner{to{transform:rotate(360deg)}}
-.ef-spinner{display:inline-block;flex:none;color:var(--text-muted);animation:ef-spinner .7s linear infinite}
+.ef-spinner{display:inline-block;flex:none;color:var(--text-muted);animation:ef-spinner var(--dur-spin) linear infinite}
 `;
 
 export const Spinner = React.forwardRef(function Spinner(

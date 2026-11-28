@@ -1,7 +1,7 @@
 'use client';
 import React from 'react';
 import { Icon } from '../icons/Icon.jsx';
-import { injectEfCss, mergeRefs, isElementOfType, styleRefUnder } from '../runtime/runtime.jsx';
+import { injectEfCss, mergeRefs, isElementOfType, styleRefUnder, usePresence } from '../runtime/runtime.jsx';
 import { Portal, useAnchoredStyle, useHydrated } from '../overlay/Portal.jsx';
 
 const CSS = `
@@ -13,6 +13,9 @@ const CSS = `
 .ef-select-value[data-placeholder]{color:var(--text-muted)}
 .ef-select-content{position:fixed;z-index:var(--z-popover);min-width:var(--select-trigger-width);max-height:280px;overflow:auto;padding:var(--space-1);border:1px solid var(--border-strong);border-radius:var(--radius-md);background:var(--surface-card);box-shadow:var(--shadow-md);animation:ef-select-in var(--dur-fast) var(--ease-enter)}
 @keyframes ef-select-in{from{opacity:0;transform:translateY(-3px)}}
+@keyframes ef-select-out{to{opacity:0;transform:translateY(-3px)}}
+.ef-select-content[data-state="closed"]{animation:ef-reduce-fade-out var(--dur-fast) var(--ease-exit) forwards;pointer-events:none}
+@media (prefers-reduced-motion:no-preference){.ef-select-content[data-state="closed"]{animation:ef-select-out var(--dur-fast) var(--ease-exit) forwards}}
 .ef-select-group{padding:var(--space-0-5) 0}
 .ef-select-label{padding:var(--space-2) var(--space-2);color:var(--text-muted);font-size:var(--text-xs);font-weight:var(--weight-semibold)}
 .ef-select-item{position:relative;display:flex;width:100%;min-height:32px;align-items:center;padding-block:6px;padding-inline:calc(var(--space-2) + 1px) calc(var(--space-2) + var(--icon-md) + var(--space-2));border:0;border-radius:var(--radius-sm);background:none;color:var(--text-primary);font:inherit;font-size:var(--text-sm);text-align:start;cursor:pointer}
@@ -79,7 +82,8 @@ export function SelectValue({ placeholder, children, className }) {
 
 export const SelectContent = React.forwardRef(function SelectContent({ children, className, position, align = 'start', sideOffset = 5, onKeyDown, style, ...props }, ref) {
   const ctx = React.useContext(SelectCtx);
-  const { style: anchored } = useAnchoredStyle(ctx?.triggerRef, ctx?.contentRef, { open: !!ctx?.open, placement: 'bottom', align, offset: sideOffset });
+  const { present, state } = usePresence(!!ctx?.open, ctx?.contentRef);
+  const { style: anchored } = useAnchoredStyle(ctx?.triggerRef, ctx?.contentRef, { open: present, placement: 'bottom', align, offset: sideOffset });
   React.useEffect(() => {
     if (!ctx?.open) return;
     requestAnimationFrame(() => {
@@ -88,7 +92,7 @@ export const SelectContent = React.forwardRef(function SelectContent({ children,
       (selected || first)?.focus();
     });
   }, [ctx?.open]);
-  if (!ctx?.open) return null;
+  if (!present) return null;
   const key = event => {
     onKeyDown?.(event);
     if (event.defaultPrevented) return;
@@ -104,7 +108,7 @@ export const SelectContent = React.forwardRef(function SelectContent({ children,
       if (match) { event.preventDefault(); match.focus(); }
     }
   };
-  return <Portal><div {...props} ref={mergeRefs(ref, ctx.contentRef, styleRefUnder({ ...anchored, '--select-trigger-width': `${ctx.triggerRef.current?.offsetWidth || 160}px` }, style))} role="listbox" data-slot="select-content" data-position={position} className={`ef-select-content${className ? ` ${className}` : ''}`} style={style} onKeyDown={key}>{children}</div></Portal>;
+  return <Portal><div {...props} ref={mergeRefs(ref, ctx.contentRef, styleRefUnder({ ...anchored, '--select-trigger-width': `${ctx.triggerRef.current?.offsetWidth || 160}px` }, style))} role="listbox" data-slot="select-content" data-state={state} data-position={position} className={`ef-select-content${className ? ` ${className}` : ''}`} style={style} onKeyDown={key}>{children}</div></Portal>;
 });
 
 export const SelectGroup = React.forwardRef(function SelectGroup({ className, ...props }, ref) { return <div {...props} ref={ref} role="group" data-slot="select-group" className={`ef-select-group${className ? ` ${className}` : ''}`} />; });

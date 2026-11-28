@@ -16,8 +16,11 @@ const CSS = `
 @media (hover:hover){.ef-env__row:hover{background:var(--surface-subtle)}}
 .ef-env__name{flex:none;font-family:var(--font-mono);font-size:var(--text-sm);color:var(--text-muted)}
 .ef-env__val{flex:1;min-width:0;margin-inline-start:auto;text-align:end;font-family:var(--font-mono);font-size:var(--text-sm);color:var(--text-primary);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.ef-env__row .ef-env__btn{opacity:0;width:var(--control-h-xs);height:var(--control-h-xs)}
-.ef-env__row:hover .ef-env__btn,.ef-env__row .ef-env__btn:focus-visible,.ef-env__row .ef-env__btn--done{opacity:1}
+.ef-env__row .ef-env__btn{width:var(--control-h-xs);height:var(--control-h-xs)}
+/* Revealed by a pointer that can hover; shown at rest where nothing hovers, so a touch user can copy and reveal a value. */
+@media (hover:hover){.ef-env__row .ef-env__btn{opacity:0}.ef-env__row:hover .ef-env__btn,.ef-env__row:focus-within .ef-env__btn{opacity:1}}
+@media (hover:none),(pointer:coarse){.ef-env__row .ef-env__btn{opacity:1}}
+.ef-env__row .ef-env__btn--done{opacity:1}
 @media (pointer:coarse){.ef-env__btn{min-width:var(--tap-min);min-height:var(--tap-min)}}
 `;
 const MASK = '••••••••';
