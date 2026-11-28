@@ -17,6 +17,21 @@ export function SidebarDemo() {
   </div>;
 }
 
+// @demo Sidebar Floating panel
+export function SidebarFloatingDemo() {
+  const { SidebarProvider, Sidebar, SidebarContent, SidebarGroup, SidebarGroupLabel, SidebarGroupContent, SidebarMenu, SidebarMenuItem, SidebarMenuButton, SidebarMenuBadge, SidebarInset, Icon } = window.EfolusiDesignSystem_4ffc3d;
+  return <div style={{ width: '100%', maxWidth: 760, height: 320, overflow: 'hidden', border: '1px solid var(--border-default)', borderRadius: 'var(--radius-lg)' }}>
+    <SidebarProvider style={{ '--sidebar-width': '220px', minHeight: 320 }}>
+      <Sidebar variant="floating" collapsible="none">
+        <SidebarContent><SidebarGroup><SidebarGroupLabel>Operations</SidebarGroupLabel><SidebarGroupContent><SidebarMenu>
+          {[['layout-dashboard', 'Overview', null], ['activity', 'Live runs', '12'], ['inbox', 'Inbox', '3']].map(([icon, label, count], index) => <SidebarMenuItem key={label}><SidebarMenuButton href="#sidebar-floating" isActive={index === 0}><Icon name={icon} /><span>{label}</span></SidebarMenuButton>{count ? <SidebarMenuBadge>{count}</SidebarMenuBadge> : null}</SidebarMenuItem>)}
+        </SidebarMenu></SidebarGroupContent></SidebarGroup></SidebarContent>
+      </Sidebar>
+      <SidebarInset><div style={{ padding: 16 }}><strong>Operations</strong></div></SidebarInset>
+    </SidebarProvider>
+  </div>;
+}
+
 // @demo Breadcrumb Path trail
 export function BreadcrumbsDemo() {
   const { Breadcrumb, BreadcrumbList, BreadcrumbItem, BreadcrumbLink, BreadcrumbPage, BreadcrumbSeparator, BreadcrumbEllipsis } = window.EfolusiDesignSystem_4ffc3d;

@@ -10,9 +10,10 @@ const lock = JSON.parse(readFileSync('tokens/design-tokens.lock.json', 'utf8'))
 const rootBlock = (text) => /:root[^{]*\{([\s\S]*?)\n\}/.exec(text)[1]
 const decl = (block, name) => new RegExp(`${name}\\s*:\\s*([^;]+);`).exec(block)?.[1].trim()
 
-describe('vendored design-tokens v0.9.0', () => {
-  it('is pinned to v0.9.0', () => {
-    expect(lock.ref).toBe('v0.9.0')
+describe('vendored design-tokens (the motion tokens arrive with v0.9.0)', () => {
+  it('is pinned to a tag at v0.9.0 or newer', () => {
+    const [major, minor] = lock.ref.replace(/^v/, '').split('.').map(Number)
+    expect(major > 0 || minor >= 9).toBe(true)
   })
 
   it('defines the new motion tokens', () => {

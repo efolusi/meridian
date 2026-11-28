@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>MD134 elevated card</title>
+<link rel="stylesheet" href="../../styles.css">
+<style>
+  body{margin:0;font-family:var(--font-sans)}
+  .pair{display:grid;grid-template-columns:1fr 1fr}
+  .stage{background:var(--surface-page);color:var(--text-primary);padding:40px 32px;display:grid;gap:28px;align-content:start}
+  .stage>h2{margin:0;font-size:13px;font-weight:600;letter-spacing:0;color:var(--text-muted)}
+  .row{display:flex;gap:20px;align-items:flex-start;flex-wrap:wrap}
+  .tile{width:72px;height:72px;display:grid;place-items:center;font-weight:600}
+  .notice{display:flex;gap:12px;align-items:flex-start;padding:14px 16px;border-inline-start:4px solid var(--accent-edge)}
+  .well{padding:10px 12px;border-radius:var(--radius-sm);background:var(--surface-sunken);font-size:13px}
+  .well--edged{border:1px solid var(--border-default)}
+  #out{white-space:pre-wrap;font:12px/1.4 var(--font-mono);margin:16px;color:var(--text-muted)}
+</style>
+<script src="../../node_modules/react/umd/react.production.min.js"></script>
+<script src="../../node_modules/react-dom/umd/react-dom.production.min.js"></script>
+<script src="../../_ds_bundle.js"></script>
+</head>
+<body>
+<!-- MD134 and MD135: a raised card in dark is a lighter surface step plus a visible ring; a well inside it has an edge.
+     Light on the left, dark on the right, each stage is a [data-theme] section on the page colour of its theme.
+     Served by hand: python3 -m http.server from the repository root, open /tests/fixtures/md134-elevated.html
+     (?only=light or ?only=dark for one stage; ?show=card, tile, notice or well for one part, as the pictures of the
+     vault note use). window.__MD134__ holds the computed colours and the WCAG ratios. -->
+<div class="pair" id="pair">
+  <section class="stage" data-theme="light" id="light"><h2>Light</h2><div id="root-light"></div></section>
+  <section class="stage" data-theme="dark" id="dark"><h2>Dark</h2><div id="root-dark"></div></section>
+</div>
+<pre id="out"></pre>
+<script>
+  const params = new URLSearchParams(location.search);
+  const only = params.get('only');
+  if (only) { document.getElementById('pair').style.gridTemplateColumns = '1fr'; document.getElementById(only === 'light' ? 'dark' : 'light').remove(); }
+  const show = params.get('show');
+  if (show) {
+    const keep = { card: ['c-plan'], tile: ['tile'], notice: ['notice'], well: ['c-plan'] }[show] || [];
+    const hide = ['c-plan', 'tile', 'notice', 'c-list'].filter((id) => !keep.includes(id)).map((id) => `#${id}`).join(',');
+    const extra = show === 'well' ? '#c-plan .ef-card__header,#c-plan p,#c-plan .ef-card__footer{display:none}' : '';
+    document.head.insertAdjacentHTML('beforeend', `<style>${hide}{display:none!important}${extra}.stage{padding:24px}.stage>h2{display:none}</style>`);
+  }
+  const { Card, CardHeader, CardTitle, CardDescription, CardContent, CardFooter, Badge, Item, ItemContent, ItemTitle, ItemDescription, Button } = window.EfolusiDesignSystem_4ffc3d;
+  const h = React.createElement;
+  const stage = () => h(React.Fragment, null,
+    h('div', { className: 'row' },
+      h(Card, { elevated: true, id: 'c-plan', style: { width: 340, '--card-spacing': '20px' } },
+        h(CardHeader, null, h(CardTitle, null, 'Current plan'), h(CardDescription, null, 'Team, billed yearly.')),
+        h(CardContent, { style: { display: 'grid', gap: 10 } },
+          h('p', { style: { margin: 0, fontSize: 14 } }, 'Next invoice on 1 December. ', h('a', { href: '#', className: 'ef-link' }, 'See usage')),
+          h('div', { className: 'well well--edged', id: 'own-well' }, 'A well of your own, with the one-line edge'),
+          h(Item, { variant: 'muted', id: 'item-well' }, h(ItemContent, null, h(ItemTitle, null, 'Muted item'), h(ItemDescription, null, 'The library edge'))),
+          h('div', null, h(Badge, { variant: 'secondary', id: 'badge-well' }, 'Secondary'))),
+        h(CardFooter, null, h(Button, { size: 'sm' }, 'Change plan'))),
+      h('div', { style: { display: 'grid', gap: 20 } },
+        h(Card, { elevated: true, className: 'tile', id: 'tile' }, 'Tile'),
+        h(Card, { elevated: true, className: 'notice', id: 'notice', style: { width: 260 } }, h('div', { style: { fontSize: 13.5 } }, h('strong', null, 'Payment due. '), 'Your card expires in 7 days.'))),
+      h(Card, { id: 'c-list', style: { width: 150, '--card-spacing': '14px' } }, h(CardContent, { style: { fontSize: 13 } }, 'A card in a list keeps the flat surface'))));
+  for (const id of ['root-light', 'root-dark']) { const el = document.getElementById(id); if (el) ReactDOM.createRoot(el).render(stage()); }
+
+  // WCAG contrast from computed colours (opaque rgb only; the page colour is read from the stage background).
+  const rgb = (c) => { const m = /rgba?\(([\d.]+)[, ]+([\d.]+)[, ]+([\d.]+)/.exec(c); return m ? [+m[1], +m[2], +m[3]] : null; };
+  const lum = ([r, g, b]) => { const f = (v) => { v /= 255; return v <= 0.04045 ? v / 12.92 : ((v + 0.055) / 1.055) ** 2.4; }; return 0.2126 * f(r) + 0.7152 * f(g) + 0.0722 * f(b); };
+  const ratio = (a, b) => { const [x, y] = [lum(a), lum(b)].sort((p, q) => q - p); return Math.round(((x + 0.05) / (y + 0.05)) * 100) / 100; };
+  const ringOf = (shadow) => { const m = /rgb\(([^)]*)\)\s+0px 0px 0px 1px/.exec(shadow); return m ? rgb(`rgb(${m[1]})`) : null; };
+  window.__measure = () => {
+    const out = {};
+    for (const theme of ['light', 'dark']) {
+      const st = document.getElementById(theme); if (!st) continue;
+      const page = rgb(getComputedStyle(st).backgroundColor);
+      const card = st.querySelector('.ef-card--elevated');
+      const cs = getComputedStyle(card);
+      const surface = rgb(cs.backgroundColor);
+      const ring = ringOf(cs.boxShadow);
+      const list = getComputedStyle(st.querySelector('.ef-card:not(.ef-card--elevated)'));
+      const wellEdge = (sel) => { const e = st.querySelector(sel); const w = getComputedStyle(e); return { fill: w.backgroundColor, border: `${w.borderTopWidth} ${w.borderTopStyle} ${w.borderTopColor}`, edgeVsSurface: rgb(w.borderTopColor) && w.borderTopWidth !== '0px' ? ratio(rgb(w.borderTopColor), surface) : null, fillVsSurface: ratio(rgb(w.backgroundColor), surface) }; };
+      out[theme] = {
+        page: getComputedStyle(st).backgroundColor, surface: cs.backgroundColor, border: `${cs.borderTopWidth} ${cs.borderTopStyle} ${cs.borderTopColor}`, boxShadow: cs.boxShadow,
+        cardVsPage: ratio(surface, page), ringVsPage: ring ? ratio(ring, page) : null, ringVsCard: ring ? ratio(ring, surface) : null,
+        listCard: { surface: list.backgroundColor, border: `${list.borderTopWidth} ${list.borderTopStyle} ${list.borderTopColor}`, vsPage: ratio(rgb(list.backgroundColor), page) },
+        ownWell: wellEdge('#own-well'), itemWell: wellEdge('#item-well'), badgeWell: wellEdge('#badge-well'),
+        text: { primary: ratio(rgb(getComputedStyle(card.querySelector('.ef-card__title')).color), surface), muted: ratio(rgb(getComputedStyle(card.querySelector('.ef-card__description')).color), surface) },
+      };
+    }
+    window.__MD134__ = out;
+    document.getElementById('out').textContent = JSON.stringify(out, null, 2);
+    return out;
+  };
+  requestAnimationFrame(() => requestAnimationFrame(() => window.__measure()));
+</script>
+</body>
+</html>

@@ -5,6 +5,7 @@
   --shadow-md: 0 2px 4px rgba(46,41,34,.05),0 10px 28px rgba(46,41,34,.09);
   --shadow-lg: 0 4px 10px rgba(46,41,34,.07),0 24px 60px rgba(46,41,34,.16);
   --shadow-xl: 0 16px 40px rgba(31,26,20,.18),0 2px 8px rgba(31,26,20,.08);
+  --shadow-elevated: 0 1px 2px rgba(46,41,34,.04),0 2px 8px rgba(46,41,34,.05);
   --z-dropdown: 1000;
   --z-sticky: 1100;
   --z-overlay: 1200;
@@ -68,6 +69,7 @@
   --shadow-sm: 0 0 0 1px #3A322A;
   --shadow-md: 0 0 0 1px #3A322A,0 12px 32px rgba(0,0,0,.4);
   --shadow-lg: 0 0 0 1px #3A322A,0 24px 64px rgba(0,0,0,.5);
+  --shadow-elevated: 0 0 0 1px #453C31,inset 0 1px 0 rgba(255,244,230,.05),0 8px 24px rgba(0,0,0,.45);
   --material-tint: #26201B;
   --material-thick: max(0.94, calc(1 - var(--glass-strength) * 0.16));
   --material-edge: calc(0.14 * min(1, var(--glass-strength) * 1.6));
@@ -81,6 +83,7 @@
     --shadow-sm: 0 0 0 1px #3A322A;
     --shadow-md: 0 0 0 1px #3A322A,0 12px 32px rgba(0,0,0,.4);
     --shadow-lg: 0 0 0 1px #3A322A,0 24px 64px rgba(0,0,0,.5);
+    --shadow-elevated: 0 0 0 1px #453C31,inset 0 1px 0 rgba(255,244,230,.05),0 8px 24px rgba(0,0,0,.45);
     --material-tint: #26201B;
     --material-thick: max(0.94, calc(1 - var(--glass-strength) * 0.16));
     --material-edge: calc(0.14 * min(1, var(--glass-strength) * 1.6));
@@ -92,6 +95,7 @@
 
 @media (prefers-contrast: more) {
   :root, [data-theme="light"] {
+    --shadow-elevated: 0 0 0 1px #948A74,0 1px 2px rgba(46,41,34,.04),0 2px 8px rgba(46,41,34,.05);
     --material-clear: 1;
     --material-regular: 1;
     --material-chrome: 1;
@@ -105,6 +109,7 @@
 
 @media (prefers-contrast: more) {
   [data-theme="dark"] {
+    --shadow-elevated: 0 0 0 1px #7C725E,inset 0 1px 0 rgba(255,244,230,.05),0 8px 24px rgba(0,0,0,.45);
     --material-clear: 1;
     --material-regular: 1;
     --material-chrome: 1;
@@ -118,6 +123,7 @@
 
 @media (prefers-contrast: more) and (prefers-color-scheme:dark) {
   :root:not(:where([data-theme="light"])) {
+    --shadow-elevated: 0 0 0 1px #7C725E,inset 0 1px 0 rgba(255,244,230,.05),0 8px 24px rgba(0,0,0,.45);
     --material-clear: 1;
     --material-regular: 1;
     --material-chrome: 1;

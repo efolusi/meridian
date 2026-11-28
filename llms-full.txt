@@ -2,7 +2,7 @@
 
 The entire design system in one file, generated from llms.txt, components/*/, and tokens/*.css by scripts/build_llms.py. Do not edit by hand. The short map of the repository is /llms.txt.
 
-> Meridian is a general-purpose open-source design system by Efolusi: 136 accessible React components, 299 design tokens (light, dark, compact), blocks, charts, and full example apps, served browser-native with zero build step. Apache-2.0 licensed.
+> Meridian is a general-purpose open-source design system by Efolusi: 136 accessible React components, 301 design tokens (light, dark, compact), blocks, charts, and full example apps, served browser-native with zero build step. Apache-2.0 licensed.
 
 Live docs: https://meridian.efolusi.com · Source: https://github.com/efolusi/meridian · License: Apache-2.0
 
@@ -2057,6 +2057,15 @@ CardTitle is a heading (`h2` by default; pass `as="h3"` for the level the page n
 ```jsx
 <h1 className="ef-page-title">Billing</h1>
 <Card><CardHeader><CardTitle size="display">Subscriptions</CardTitle></CardHeader></Card>
+```
+
+`elevated` raises the card above the page: `--surface-elevated` and `--shadow-elevated` (in dark a lighter surface, a visible ring and a soft darkness under it; in light the card colour and a soft shadow). Use it for the one card that lifts off the page, not for every card in a list: cards in a list keep the flat `--surface-card` and the hairline. The card keeps a transparent 1px border under the ring so forced colours still draw an edge. A block inside an elevated card that has only a `--surface-sunken` fill (a muted `Item`, a secondary `Badge`, a secondary `Bubble`, an icon `EmptyState` media, an `Attachment` or `FileTile` icon) gets a `--border-default` edge from the card; a well of your own inside it writes `border: 1px solid var(--border-default)`, because the fill alone is 1.01:1 from the dark elevated surface.
+
+```jsx
+<Card elevated>
+  <CardHeader><CardTitle>Current plan</CardTitle></CardHeader>
+  <CardContent>Team, billed yearly.</CardContent>
+</Card>
 ```
 
 ```ts
@@ -5281,7 +5290,7 @@ export declare const SheetDescription: React.ForwardRefExoticComponent<DialogSlo
 
 ## Design tokens
 
-307 custom property names by file (names only; resolve current values from /styles.css, which imports these files, or /tokens.json):
+309 custom property names by file (names only; resolve current values from /styles.css, which imports these files, or /tokens.json):
 
 ### /tokens/base.css
 
@@ -5427,6 +5436,7 @@ export declare const SheetDescription: React.ForwardRefExoticComponent<DialogSlo
 --surface-card
 --surface-card-hover
 --surface-code
+--surface-elevated
 --surface-inverse
 --surface-inverse-active
 --surface-inverse-hover
@@ -5508,6 +5518,7 @@ export declare const SheetDescription: React.ForwardRefExoticComponent<DialogSlo
 --opacity-selected
 --opacity-soft-hairline
 --opacity-tint
+--shadow-elevated
 --shadow-lg
 --shadow-md
 --shadow-sm
