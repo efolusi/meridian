@@ -3,18 +3,29 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Page not found · Meridian</title>
-<meta name="description" content="This page moved on. Head back to the Meridian docs.">
+<title>Page not found · Halaman tidak ditemukan · Meridian</title>
+<meta name="description" content="This page is not here. Halaman ini tidak ada.">
 <link rel="icon" type="image/svg+xml" href="/assets/favicon.svg">
 <link rel="stylesheet" href="/styles.css">
 </head>
-<body style="background:var(--surface-page);margin:0">
-<section style="min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:72px 24px;font-family:var(--font-sans);color:var(--text-primary)">
-  <img src="/assets/meridian.svg" alt="" width="32" height="32">
-  <div style="font-family:var(--font-mono);font-size:13px;color:var(--text-muted);margin-top:18px">404</div>
-  <h1 style="font-family:var(--font-display);font-size:40px;font-weight:680;letter-spacing:-0.02em;margin:12px 0 0">This page moved on.</h1>
-  <p style="font-size:15px;line-height:1.6;color:var(--text-secondary);margin:12px auto 0;max-width:400px">The link may be old, or the page was renamed. The docs home has everything.</p>
-  <a href="/" style="display:inline-flex;align-items:center;height:36px;padding:0 16px;margin-top:24px;border-radius:var(--press-radius,var(--radius-sm));background:var(--accent);color:var(--accent-contrast);font-size:14px;font-weight:500;text-decoration:none">Back to the docs</a>
-</section>
+<body>
+<!-- The shared Meridian 404 page for static sites (MD110). Copy this file; guidelines/frameworks.md, "A 404 page on a static site", says how.
+     Change three things: the mark (the img), the product name in the title, and the home href. To keep one language, delete the other section. -->
+<main class="ef-notfound">
+  <img class="ef-notfound__mark" src="/assets/favicon.svg" alt="" width="40" height="40">
+  <p class="ef-notfound__code">404</p>
+  <div class="ef-notfound__langs">
+    <section class="ef-notfound__lang" lang="en" aria-labelledby="not-found-en">
+      <h1 class="ef-page-title" id="not-found-en">Page not found</h1>
+      <p>The link may be old, or the page was renamed. Go back to the home page and look from there.</p>
+      <a class="ef-notfound__home" href="/">Back to home</a>
+    </section>
+    <section class="ef-notfound__lang" lang="id" aria-labelledby="not-found-id">
+      <h2 class="ef-page-title" id="not-found-id">Halaman tidak ditemukan</h2>
+      <p>Tautannya mungkin sudah usang, atau halamannya berganti nama. Kembali ke beranda.</p>
+      <a class="ef-notfound__home" href="/">Kembali ke beranda</a>
+    </section>
+  </div>
+</main>
 </body>
 </html>
