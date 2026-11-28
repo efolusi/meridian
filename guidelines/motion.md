@@ -12,6 +12,7 @@ Often the answer is no. Motion confirms an action; it never plays for its own sa
 | A menu people open many times a day | No opening animation; an exit at most. |
 | A view's first load, a success, an empty state | The few moments that deserve a short entrance. |
 | Anything that changes state | Leaves a static cue too: a colour, an icon or a label. Motion is never the only feedback. |
+| An action revealed by hover (message actions, row buttons, a sort arrow) | Hidden at rest only where a pointer can hover: inside `@media (hover: hover)` it is revealed by `:hover` and `:focus-within`. Where nothing hovers, `@media (hover: none), (pointer: coarse)`, it is shown at rest: an action a touch user cannot reach is a defect. |
 | Interactive state | A transition, so it can reverse mid-flight. Keyframes only for a sequence that runs once. |
 | What may animate | `opacity` and `transform`; a measured height. Name the properties: never `transition: all`. |
 

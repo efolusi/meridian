@@ -38,8 +38,11 @@ const CSS = `
 .ef-table__sort{display:inline-flex;align-items:center;gap:var(--space-1);border:none;background:none;padding:0;margin:0;font:inherit;letter-spacing:inherit;text-transform:inherit;color:inherit;cursor:pointer}
 @media (hover:hover){.ef-table__sort:hover{color:var(--text-primary)}}
 .ef-table__sort:focus-visible{outline:none;box-shadow:var(--focus-ring);border-radius:var(--radius-sm)}
-.ef-table__sort__i{display:inline-flex;opacity:0;transition:opacity var(--dur-fast) var(--ease-enter)}
-.ef-table__sort:hover .ef-table__sort__i,.ef-table__sort--on .ef-table__sort__i{opacity:1}
+.ef-table__sort__i{display:inline-flex;transition:opacity var(--dur-fast) var(--ease-enter)}
+/* The arrow that says a column sorts: revealed by a pointer that can hover, shown at rest where nothing hovers. */
+@media (hover:hover){.ef-table__sort__i{opacity:0}.ef-table__sort:hover .ef-table__sort__i,.ef-table__sort:focus-within .ef-table__sort__i{opacity:1}}
+@media (hover:none),(pointer:coarse){.ef-table__sort__i{opacity:1}}
+.ef-table__sort--on .ef-table__sort__i{opacity:1}
 .ef-table__sel{width:1%;white-space:nowrap}
 .ef-table__msg{padding:var(--space-8) var(--table-pad-x);text-align:center;font-size:var(--text-md);color:var(--text-muted)}
 .ef-table__skel{height:12px;border-radius:var(--radius-sm);background:var(--surface-sunken);animation:ef-table-pulse 1.2s var(--ease-standard) infinite}

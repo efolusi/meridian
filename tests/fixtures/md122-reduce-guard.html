@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>MD122 and MD127 reduced-motion guard</title>
+<link rel="stylesheet" href="../../styles.css">
+<style>body{margin:16px;background:var(--surface-page);font-family:var(--font-sans)}pre{white-space:pre-wrap}.row{display:flex;gap:16px;align-items:center;margin:0 0 12px}</style>
+<script src="../../node_modules/react/umd/react.production.min.js"></script>
+<script src="../../node_modules/react-dom/umd/react-dom.production.min.js"></script>
+<script src="../../_ds_bundle.js"></script>
+</head>
+<body>
+<!-- MD122 and MD127: what the reduced-motion rules of tokens/base.css do. A browser pane that cannot switch
+     prefers-reduced-motion is measured by copying the rules without their media wrapper: window.__guard(true) reads
+     tokens/base.css, takes the body of every @media (prefers-reduced-motion:reduce) block and adds it unwrapped, so the
+     rules apply as they do under reduce; window.__guard(false) removes them. window.__measure() then reads the computed
+     animation and transition of a Spinner, a Button spinner, a Checkbox tick, an Accordion chevron and a control loop that
+     is not a loading loop (a caret). Served by hand: python3 -m http.server from the repository root, then open
+     /tests/fixtures/md122-reduce-guard.html. -->
+<main id="root"></main>
+<pre id="out"></pre>
+<script>
+  const { Spinner, Button, Checkbox, Accordion, AccordionItem, AccordionTrigger, AccordionContent } = window.EfolusiDesignSystem_4ffc3d;
+  const h = React.createElement;
+  ReactDOM.createRoot(document.getElementById('root')).render(h(React.Fragment, null,
+    h('div', { className: 'row' }, h(Spinner, { 'aria-label': 'Loading' }), h(Button, { loading: true }, 'Saving'), h(Checkbox, { label: 'Tick', defaultChecked: true })),
+    h(Accordion, { type: 'single', collapsible: true, defaultValue: 'a' }, h(AccordionItem, { value: 'a' }, h(AccordionTrigger, null, 'Chevron'), h(AccordionContent, null, 'Body'))),
+    h('div', { id: 'caret', className: 'ef-msg__caret', 'aria-hidden': 'true', style: { animation: 'ef-caret 1s steps(1) infinite' } })));
+  const blocks = (css) => {
+    const out = [];
+    for (const m of css.matchAll(/@media\s*\(prefers-reduced-motion:\s*reduce\)\s*\{/g)) {
+      let depth = 0, i = m.index + m[0].length - 1;
+      for (; i < css.length; i += 1) { if (css[i] === '{') depth += 1; else if (css[i] === '}') { depth -= 1; if (!depth) break; } }
+      out.push(css.slice(m.index + m[0].length, i));
+    }
+    return out.join('\n');
+  };
+  window.__guard = async (on) => {
+    document.getElementById('forced-reduce')?.remove();
+    if (!on) return 'off';
+    const css = await (await fetch('../../tokens/base.css')).text();
+    const style = document.createElement('style');
+    style.id = 'forced-reduce';
+    // inside the layer the library uses, so the cascade order is the same as the media block's
+    style.textContent = `@layer meridian{${blocks(css)}}`;
+    document.head.appendChild(style);
+    return 'on';
+  };
+  const q = (selector) => document.querySelector(selector);
+  const read = (el) => { const s = getComputedStyle(el); return { name: s.animationName, duration: s.animationDuration, count: s.animationIterationCount, running: el.getAnimations().length, transitionProperty: s.transitionProperty }; };
+  window.__measure = () => {
+    const result = {
+      spinner: read(q('.ef-spinner')), buttonSpinner: read(q('.ef-btn__spin')), tick: read(q('.ef-check__box svg')),
+      chevron: read(q('.ef-acc__chev')), caret: read(q('#caret')),
+    };
+    document.getElementById('out').textContent = JSON.stringify(result, null, 2);
+    return result;
+  };
+</script>
+</body>
+</html>

@@ -22,8 +22,10 @@ const CSS = `
 .ef-genimg--busy .ef-genimg__prompt,.ef-genimg--complete .ef-genimg__prompt{color:var(--text-on-media)}
 .ef-genimg__status{position:absolute;inset-inline-start:16px;bottom:13px;font-size:var(--text-sm);color:var(--text-on-media-muted);z-index:2;animation:ef-genimg-pulse 1.6s ease-in-out infinite}
 .ef-genimg__center{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:var(--space-3);color:var(--text-muted);font-size:var(--text-sm);z-index:2;padding:var(--space-5);text-align:center}
-.ef-genimg__actions{position:absolute;top:9px;inset-inline-end:9px;display:flex;gap:var(--space-0-5);z-index:3;opacity:0;transition:opacity var(--dur-fast) var(--ease-enter)}
-.ef-genimg--complete:hover .ef-genimg__actions,.ef-genimg--complete:focus-within .ef-genimg__actions{opacity:1}
+.ef-genimg__actions{position:absolute;top:9px;inset-inline-end:9px;display:flex;gap:var(--space-0-5);z-index:3;transition:opacity var(--dur-fast) var(--ease-enter)}
+/* Revealed by a pointer that can hover; shown at rest where nothing hovers, so a touch user can reach the actions. */
+@media (hover:hover){.ef-genimg__actions{opacity:0}.ef-genimg--complete:hover .ef-genimg__actions,.ef-genimg--complete:focus-within .ef-genimg__actions{opacity:1}}
+@media (hover:none),(pointer:coarse){.ef-genimg__actions{opacity:1}}
 .ef-genimg__act{display:inline-flex;align-items:center;justify-content:center;width:30px;height:30px;border:none;cursor:pointer;color:var(--text-on-media);background:var(--media-scrim-soft);border-radius:var(--radius-sm);backdrop-filter:blur(2px);transition:background var(--dur-fast) var(--ease-enter)}
 @media (hover:hover){.ef-genimg__act:hover{background:var(--media-scrim-strong)}}
 .ef-genimg__act:focus-visible{outline:none;box-shadow:var(--focus-ring)}

@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Hover reveals on touch</title>
+<link rel="stylesheet" href="../../styles.css">
+<style>body{margin:16px;background:var(--surface-page);font-family:var(--font-sans)}.row{margin:0 0 12px}pre{white-space:pre-wrap}</style>
+<script src="../../node_modules/react/umd/react.production.min.js"></script>
+<script src="../../node_modules/react-dom/umd/react-dom.production.min.js"></script>
+<script src="../../_ds_bundle.js"></script>
+</head>
+<body>
+<!-- The ChatMessage actions (Copy, Retry) were revealed only by :hover, so a phone never showed them. At a pointer that can
+     hover they are hidden at rest and revealed by hover and by focus inside the message; where the pointer cannot hover
+     or is coarse they are visible at rest. window.__measureReveal() reads the computed opacity of the action row at rest
+     and after focus moves inside the message. Served by hand: python3 -m http.server from the repository root, then
+     open /tests/fixtures/hover-reveal-touch.html in a browser with a 375 px mobile (coarse) viewport and again at 1050 px. -->
+<main id="root"></main>
+<pre id="out"></pre>
+<script>
+  const { ChatMessage } = window.EfolusiDesignSystem_4ffc3d;
+  const h = React.createElement;
+  ReactDOM.createRoot(document.getElementById('root')).render(
+    h(ChatMessage, { role: 'assistant', onCopy() {}, onRetry() {} }, 'The report is ready. Copy it, or ask again.'));
+  const media = (q) => matchMedia(q).matches;
+  const wait = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
+  window.__measureReveal = async () => {
+    const actions = document.querySelector('.ef-msg__actions');
+    // nothing focused and no pointer over the message: the state at rest
+    if (document.activeElement && document.activeElement !== document.body) document.activeElement.blur();
+    await wait(300);
+    const rest = getComputedStyle(actions).opacity;
+    actions.querySelector('button').focus();
+    // the 120 ms fade needs a rendered frame to finish; a page without focus renders late, so wait for the animation
+    await Promise.all(actions.getAnimations().map((a) => a.finished.catch(() => {})));
+    await wait(200);
+    const result = {
+      hoverHover: media('(hover:hover)'), hoverNone: media('(hover:none)'), pointerCoarse: media('(pointer:coarse)'),
+      opacityAtRest: rest, opacityWithFocusInside: getComputedStyle(actions).opacity,
+    };
+    document.getElementById('out').textContent = JSON.stringify(result, null, 2);
+    window.__REVEAL__ = result;
+    return result;
+  };
+</script>
+</body>
+</html>
