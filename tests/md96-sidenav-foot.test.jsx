@@ -140,6 +140,16 @@ describe('the keyboard', () => {
     expect(document.activeElement).toBe(card())
   })
 
+  it('closes on a press outside the menu and stays open on a press inside it', () => {
+    rail()
+    const menu = open()
+    fireEvent.pointerDown(within(menu).getByText('Theme'))
+    expect(screen.getByRole('menu')).toBeTruthy()
+    fireEvent.pointerDown(document.body)
+    expect(screen.queryByRole('menu')).toBeNull()
+    expect(card().getAttribute('aria-expanded')).toBe('false')
+  })
+
   it('opens with Space too', () => {
     rail()
     card().focus()

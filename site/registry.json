@@ -3655,13 +3655,14 @@
       "name": "accountcard",
       "type": "registry:ui",
       "title": "AccountCard",
-      "description": "The signed-in person in one bordered card: avatar, name and email. It is static (not a button) and `SideNav` draws it at the foot of the rail, below the theme and sign-out rows. Use it on its own only where the same card is needed outside a rail, for example in a drawer.",
+      "description": "The signed-in person in one bordered card: avatar, name and email. By default it is static (not a button). `SideNav` draws it at the foot of the rail as `interactive`: a button with a small chevron that opens the account menu above it. Use it on its own where the same card is needed outside a rail, ",
       "dependencies": [
         "react"
       ],
       "registryDependencies": [
         "https://meridian.efolusi.com/site/registry/meridian-base.json",
         "https://meridian.efolusi.com/site/registry/avatar.json",
+        "https://meridian.efolusi.com/site/registry/icon.json",
         "https://meridian.efolusi.com/site/registry/meridian-runtime.json"
       ],
       "files": [
@@ -3873,7 +3874,7 @@
       "name": "sidenav",
       "type": "registry:ui",
       "title": "SideNav",
-      "description": "The product sidebar: brand row, grouped nav with icons and badges, and the foot. 240px on `--surface-subtle`, 72px when `collapsed`.",
+      "description": "The product sidebar: brand row, grouped nav with icons and badges, and the foot (the account card and its menu). 240px on `--surface-subtle`, 72px when `collapsed`.",
       "dependencies": [
         "react"
       ],
@@ -3881,6 +3882,7 @@
         "https://meridian.efolusi.com/site/registry/meridian-base.json",
         "https://meridian.efolusi.com/site/registry/accountcard.json",
         "https://meridian.efolusi.com/site/registry/badge.json",
+        "https://meridian.efolusi.com/site/registry/dropdownmenu.json",
         "https://meridian.efolusi.com/site/registry/icon.json",
         "https://meridian.efolusi.com/site/registry/meridian-runtime.json",
         "https://meridian.efolusi.com/site/registry/themetoggle.json"

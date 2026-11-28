@@ -10,7 +10,7 @@ const CSS = `
 .ef-account-card__email{font-size:var(--text-xs);color:var(--text-secondary);overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
 .ef-account-card--button{width:100%;margin:0;font:inherit;text-align:start;cursor:pointer;transition:background var(--dur-fast) var(--ease-enter),border-color var(--dur-fast) var(--ease-enter)}
 @media (hover:hover){.ef-account-card--button:hover{background:var(--surface-sunken)}}
-.ef-account-card--button[aria-expanded=true]{background:var(--surface-sunken)}
+.ef-account-card--button[data-state=open]{background:var(--surface-sunken)}
 .ef-account-card--button:focus-visible{outline:none;box-shadow:var(--focus-ring)}
 .ef-account-card__mark{display:inline-flex;margin-inline-start:auto;color:var(--text-muted)}
 .ef-account-card[data-compact] .ef-account-card__mark{display:none}

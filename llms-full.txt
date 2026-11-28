@@ -4406,18 +4406,19 @@ export declare function themeInitScript(): string;
 
 Group: navigation · Source: /components/navigation/AccountCard.jsx · Exports: AccountCard
 
-The signed-in person in one bordered card: avatar, name and email. It is static (not a button) and `SideNav` draws it at the foot of the rail, below the theme and sign-out rows. Use it on its own only where the same card is needed outside a rail, for example in a drawer.
+The signed-in person in one bordered card: avatar, name and email. By default it is static (not a button). `SideNav` draws it at the foot of the rail as `interactive`: a button with a small chevron that opens the account menu above it. Use it on its own where the same card is needed outside a rail, for example in a drawer.
 
 ```jsx
 <AccountCard name="Ada Obi" email="ada@example.com" image="/avatars/ada.png" />
 <AccountCard email="ada@example.com" />
 <AccountCard name="Ada Obi" email="ada@example.com" compact />
+<DropdownMenuTrigger asChild><AccountCard interactive name="Ada Obi" email="ada@example.com" /></DropdownMenuTrigger>
 ```
 
-The initials come from the first and last word of `name` (or the first two letters of the email), so a missing or broken `image` still shows a mark. The picture is decorative (`alt=""`) because the name sits beside it. `compact` keeps the card and its border and shows the avatar alone; the name and email stay in the DOM, visually hidden, so a screen reader still reads them.
+The initials come from the first and last word of `name` (or the first two letters of the email), so a missing or broken `image` still shows a mark. The picture is decorative (`alt=""`) because the name sits beside it. `compact` keeps the card and its border and shows the avatar alone; the name and email stay in the DOM, visually hidden, so a screen reader still reads them. `interactive` renders a `button` (44px at a coarse pointer, focus ring, hover fill only on hover-capable pointers); give it the trigger props yourself or wrap it in `DropdownMenuTrigger asChild`.
 
 ```ts
-export interface AccountCardProps extends React.HTMLAttributes<HTMLDivElement> {
+export interface AccountCardProps extends Omit<React.HTMLAttributes<HTMLElement>, 'children'> {
   /** Display name. Without it the card shows the email on the first line only. */
   name?: string | null;
   email: string;
@@ -4425,9 +4426,11 @@ export interface AccountCardProps extends React.HTMLAttributes<HTMLDivElement> {
   image?: string | null;
   /** The avatar alone inside the same bordered card (the collapsed rail). The name and email stay in the DOM for screen readers. @default false */
   compact?: boolean;
+  /** Draws the card as a `button` with a small chevron, for a card that opens something (the account menu of `SideNav`). Pass the trigger props (`aria-haspopup`, `aria-expanded`, `onClick`) yourself, or wrap it in `DropdownMenuTrigger asChild`. @default false */
+  interactive?: boolean;
 }
-/** The signed-in person in one bordered card: avatar, name, email. Static, not a control. `SideNav` draws it at the foot of the rail. */
-export declare const AccountCard: React.ForwardRefExoticComponent<AccountCardProps & React.RefAttributes<HTMLDivElement>>;
+/** The signed-in person in one bordered card: avatar, name, email. Static by default; `interactive` makes it a button. `SideNav` draws it at the foot of the rail as the trigger of the account menu. */
+export declare const AccountCard: React.ForwardRefExoticComponent<AccountCardProps & React.RefAttributes<HTMLElement>>;
 ```
 
 #### Breadcrumbs
@@ -4687,7 +4690,7 @@ export declare function SegmentedControl(props: SegmentedControlProps): React.JS
 
 Group: navigation · Source: /components/navigation/SideNav.jsx · Exports: SideNav
 
-The product sidebar: brand row, grouped nav with icons and badges, and the foot. 240px on `--surface-subtle`, 72px when `collapsed`.
+The product sidebar: brand row, grouped nav with icons and badges, and the foot (the account card and its menu). 240px on `--surface-subtle`, 72px when `collapsed`.
 
 ```jsx
 <SideNav logoSrc="assets/meridian.svg" brandBadge="Console" value={nav} onChange={setNav}
@@ -4696,14 +4699,21 @@ The product sidebar: brand row, grouped nav with icons and badges, and the foot.
     { label: 'Products', items: [{ id: 'agent', label: 'AI agents', icon: 'bot' }] },
   ]}
   account={{ name: 'Ada Obi', email: 'ada@example.com' }}
+  menuItems={[{ id: 'account', label: 'Account settings', icon: 'settings', onSelect: openAccount }]}
   onSignOut={signOut} />
 ```
 
-**The foot is the same on every front** and no product builds its own. From the top it is: a theme row (icon, "Theme", and the state "Light" or "Dark"), a sign-out row ("Sign out"), then one bordered `AccountCard`. The rows use the nav row style (`.ef-sidenav__item`, 34px, 44px at a coarse pointer), not icon-only circles and not a second toggle style. The header `ThemeToggle` keeps its own borderless icon; the foot's theme row is a labelled row, and both read and write the one theme contract, so they stay in step. The foot shows when `account` or `onSignOut` is given; give both.
+**The foot is the same on every front** and no product builds its own. At rest it is ONE bordered `AccountCard` (avatar, name, email, a small chevron) and nothing else: no theme row, no sign-out row, no icon-only circles. The card is a button (`aria-haspopup="menu"`, `aria-expanded`). Pressing it, or Enter or Space on it, opens the account menu above it, built on `DropdownMenu` (arrows move, Escape closes and returns focus to the card):
 
-- `lang="id"` writes the foot in Indonesian ("Tema", "Terang", "Gelap", "Keluar"). `labels` overrides any word.
-- `collapsed` draws the icon rail: rows show the icon only, the card shows the avatar alone inside the same border. Every label, the name and the email stay in the DOM as accessible names, and the nav rows and foot rows carry a `title`. A nav item with a `badge` shows a dot. The component draws no collapse button: the product decides when to collapse.
-- The theme row's accessible name is "Theme: Dark" and its tooltip says what a press does. A polite status announces the new theme after a press.
+1. **Theme**: a group heading with two radios, "Light" and "Dark", the current one checked. Choosing one switches the page and closes the menu. The foot and the header `ThemeToggle` read and write the one theme contract, so they stay in step.
+2. **Your items**: `menuItems={[{ id, label, icon, onSelect }]}` for what a product adds (Language, Account settings). They sit after the Theme group.
+3. **Sign out**: last, set apart by a separator. It shows when `onSignOut` is given.
+
+The foot shows when `account` is given.
+
+- `lang="id"` writes the menu in Indonesian ("Tema", "Terang", "Gelap", "Keluar"). `labels` overrides any word.
+- `collapsed` draws the icon rail: nav rows show the icon only, the card shows the avatar alone inside the same border and opens the same menu. Every label, the name and the email stay in the DOM as accessible names, and the nav rows carry a `title`. A nav item with a `badge` shows a dot. The component draws no collapse button: the product decides when to collapse.
+- A polite status announces the new theme after a choice.
 - On a phone put the same `SideNav` in a drawer at its full width, so the foot is the same there.
 
 ```ts
@@ -4716,17 +4726,23 @@ export interface SideNavAccount {
   /** Profile picture URL. Initials show when it is missing or fails to load. */
   image?: string | null;
 }
+export interface SideNavMenuItem {
+  id: string;
+  label: React.ReactNode;
+  /** A Meridian icon name drawn before the label. */
+  icon?: string;
+  /** Called when the item is chosen; the menu then closes. */
+  onSelect?: (event: React.SyntheticEvent) => void;
+}
 export interface SideNavLabels {
-  /** The theme row. @default 'Theme' ('Tema' with lang="id") */
+  /** The heading of the theme group in the account menu. @default 'Theme' ('Tema' with lang="id") */
   theme?: string;
-  /** The state shown when the page is light. @default 'Light' ('Terang') */
+  /** The radio for the light theme. @default 'Light' ('Terang') */
   light?: string;
-  /** The state shown when the page is dark. @default 'Dark' ('Gelap') */
+  /** The radio for the dark theme. @default 'Dark' ('Gelap') */
   dark?: string;
-  /** The sign-out row. @default 'Sign out' ('Keluar') */
+  /** The sign-out item. @default 'Sign out' ('Keluar') */
   signOut?: string;
-  /** The phrase before the other theme in the row's tooltip. @default 'Switch to' ('Ganti ke') */
-  next?: string;
 }
 export interface SideNavProps {
   /** @default 'Meridian' */
@@ -4738,20 +4754,22 @@ export interface SideNavProps {
   /** Active item id */
   value: string;
   onChange?: (id: string) => void;
-  /** The icon rail: 72px wide, icons only, every label stays in the DOM as the accessible name. The product decides when; `SideNav` draws no toggle. @default false */
+  /** The icon rail: 72px wide, icons only, every label stays in the DOM as the accessible name. The foot shows the avatar alone and opens the same menu. The product decides when; `SideNav` draws no toggle. @default false */
   collapsed?: boolean;
-  /** The signed-in person. Draws the one bordered `AccountCard` at the foot. */
+  /** The signed-in person. Draws the foot: one bordered `AccountCard` that is a button and opens the account menu above it. */
   account?: SideNavAccount;
-  /** Draws the labelled sign-out row of the foot and calls this when it is pressed. */
+  /** Product items of the account menu (for example Language, Account settings), after the Theme group and before Sign out. */
+  menuItems?: SideNavMenuItem[];
+  /** Adds the Sign out item, last and set apart, and calls this when it is chosen. */
   onSignOut?: () => void;
-  /** Language of the foot's built-in labels. @default 'en' */
+  /** Language of the menu's built-in words. @default 'en' */
   lang?: 'en' | 'id';
-  /** Override any label of the foot. */
+  /** Override any built-in word of the menu. */
   labels?: SideNavLabels;
   style?: React.CSSProperties;
   className?: string;
 }
-/** The rail: brand, grouped nav, and the foot. The foot is the same on every front: a theme row, a sign-out row, then one bordered account card. It shows when `account` or `onSignOut` is given. */
+/** The rail: brand, grouped nav, and the foot. The foot is the same on every front: one bordered account card, and nothing else at rest. Pressing it opens the account menu (Theme, your items, Sign out). It shows when `account` is given. */
 export declare function SideNav(props: SideNavProps): React.JSX.Element;
 ```
 
