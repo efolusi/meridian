@@ -4690,10 +4690,10 @@ export declare function SegmentedControl(props: SegmentedControlProps): React.JS
 
 Group: navigation · Source: /components/navigation/SideNav.jsx · Exports: SideNav
 
-The product sidebar: brand row, grouped nav with icons and badges, and the foot (the account card and its menu). 240px on `--surface-subtle`, 72px when `collapsed`.
+The product sidebar: head (brand and one collapse button), grouped nav with icons and badges, and the foot (the account card and its menu). 240px on `--surface-subtle`, 72px when collapsed.
 
 ```jsx
-<SideNav logoSrc="assets/meridian.svg" brandBadge="Console" value={nav} onChange={setNav}
+<SideNav logoSrc="assets/meridian.svg" value={nav} onChange={setNav}
   groups={[
     { items: [{ id: 'overview', label: 'Overview', icon: 'layout-dashboard' }, { id: 'customers', label: 'Customers', icon: 'users', badge: 128 }] },
     { label: 'Products', items: [{ id: 'agent', label: 'AI agents', icon: 'bot' }] },
@@ -4712,7 +4712,10 @@ The product sidebar: brand row, grouped nav with icons and badges, and the foot 
 The foot shows when `account` is given.
 
 - `lang="id"` writes the menu in Indonesian ("Tema", "Terang", "Gelap", "Keluar"). `labels` overrides any word.
-- `collapsed` draws the icon rail: nav rows show the icon only, the card shows the avatar alone inside the same border and opens the same menu. Every label, the name and the email stay in the DOM as accessible names, and the nav rows carry a `title`. A nav item with a `badge` shows a dot. The component draws no collapse button: the product decides when to collapse.
+- **The head** holds the brand and ONE icon button that collapses and expands the rail (`aria-expanded`, `aria-controls` the rail, label "Collapse sidebar" or "Expand sidebar", "Ciutkan sidebar" or "Perluas sidebar" with `lang="id"`; it also has a tooltip). There is no section tag by default: `brandBadge` stays an option for a product with a real need, and it is hidden while collapsed.
+- **Collapsed** is the icon rail: nav rows show the icon only, each with a Meridian tooltip on hover and on keyboard focus, the card shows the avatar alone inside the same border and opens the same menu. Every label, the name and the email stay in the DOM as accessible names. A nav item with a `badge` shows a dot. The width animates by the `--dur-slow` and `--ease-standard` tokens and does not animate under reduced motion.
+- **State.** Leave `collapsed` out and the rail keeps its own state: `defaultCollapsed` is the first state, and the choice is stored per viewer on this origin (`storageKey`, default `efolusi-sidenav-collapsed`; `null` stores nothing). The stored choice is read before the first paint and the width starts animating only after that frame, so a returning viewer never sees the rail slide into place. Server HTML shows `defaultCollapsed`; pass it from your own cookie if the first paint before scripts must match too. `collapsed` with `onCollapsedChange` is the controlled form (the product stores it); `collapsed` alone draws no button; `collapsible={false}` draws none either.
+- **Phone.** Below 768px the rail is in a drawer at full width: the button is not drawn and an uncontrolled rail is never collapsed there.
 - A polite status announces the new theme after a choice.
 - On a phone put the same `SideNav` in a drawer at its full width, so the foot is the same there.
 
@@ -4743,33 +4746,45 @@ export interface SideNavLabels {
   dark?: string;
   /** The sign-out item. @default 'Sign out' ('Keluar') */
   signOut?: string;
+  /** The label and tooltip of the rail button while the rail is open. @default 'Collapse sidebar' ('Ciutkan sidebar') */
+  collapse?: string;
+  /** The label and tooltip of the rail button while the rail is collapsed. @default 'Expand sidebar' ('Perluas sidebar') */
+  expand?: string;
 }
 export interface SideNavProps {
   /** @default 'Meridian' */
   brand?: string;
-  /** Badge next to brand (e.g. 'Console') */
+  /** An optional tag next to the brand (for example 'Console'). None by default: the head holds the brand and the collapse button only. It is hidden while the rail is collapsed. */
   brandBadge?: React.ReactNode;
   logoSrc?: string;
   groups: SideNavGroup[];
   /** Active item id */
   value: string;
   onChange?: (id: string) => void;
-  /** The icon rail: 72px wide, icons only, every label stays in the DOM as the accessible name. The foot shows the avatar alone and opens the same menu. The product decides when; `SideNav` draws no toggle. @default false */
+  /** The icon rail, controlled: 72px wide, icons only, every label stays in the DOM as the accessible name. Leave it out to let the rail keep its own state (see `defaultCollapsed`). A controlled rail draws the head button only when `onCollapsedChange` is given. */
   collapsed?: boolean;
+  /** The first state of an uncontrolled rail. A choice the viewer stored on this origin wins over it (read before the first paint). @default false */
+  defaultCollapsed?: boolean;
+  /** Called with the new state when the head button is pressed. */
+  onCollapsedChange?: (collapsed: boolean) => void;
+  /** Draws the one icon button in the rail head (aria-expanded, aria-controls). It is never drawn on a phone (below 768px the rail lives in a drawer at full width, and an uncontrolled rail is never collapsed there). @default true */
+  collapsible?: boolean;
+  /** The localStorage key that remembers an uncontrolled rail per viewer. `null` stores nothing. @default 'efolusi-sidenav-collapsed' */
+  storageKey?: string | null;
   /** The signed-in person. Draws the foot: one bordered `AccountCard` that is a button and opens the account menu above it. */
   account?: SideNavAccount;
   /** Product items of the account menu (for example Language, Account settings), after the Theme group and before Sign out. */
   menuItems?: SideNavMenuItem[];
   /** Adds the Sign out item, last and set apart, and calls this when it is chosen. */
   onSignOut?: () => void;
-  /** Language of the menu's built-in words. @default 'en' */
+  /** Language of the built-in words (the menu and the rail button). @default 'en' */
   lang?: 'en' | 'id';
-  /** Override any built-in word of the menu. */
+  /** Override any built-in word. */
   labels?: SideNavLabels;
   style?: React.CSSProperties;
   className?: string;
 }
-/** The rail: brand, grouped nav, and the foot. The foot is the same on every front: one bordered account card, and nothing else at rest. Pressing it opens the account menu (Theme, your items, Sign out). It shows when `account` is given. */
+/** The rail: head (brand and the collapse button), grouped nav, and the foot. The foot is the same on every front: one bordered account card, and nothing else at rest. Pressing it opens the account menu (Theme, your items, Sign out). It shows when `account` is given. */
 export declare function SideNav(props: SideNavProps): React.JSX.Element;
 ```
 

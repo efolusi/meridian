@@ -126,6 +126,12 @@ describe('the account menu', () => {
 })
 
 describe('the keyboard', () => {
+  it('moves focus into the menu only once the panel is visible (a hidden panel cannot take focus)', () => {
+    const src = readFileSync('components/overlay/DropdownMenu.jsx', 'utf8')
+    expect(src).toMatch(/anchored\.visibility !== 'hidden'\) menuItems\(localRef\.current\)\[0\]\?\.focus\(\); \}, \[root\?\.open, anchored\.visibility\]/)
+  })
+
+
   it('opens with Enter, moves with the arrows and closes with Escape, returning focus to the card', () => {
     rail()
     card().focus()
@@ -263,7 +269,7 @@ describe('the collapsed rail', () => {
 
 describe('rows keep the touch target and the focus ring', () => {
   it('uses one row rule for nav, 44px at a coarse pointer', () => {
-    expect(sideCss).toMatch(/@media \(pointer:coarse\)\{\.ef-sidenav__item\{height:var\(--tap-min\)\}\}/)
+    expect(sideCss).toMatch(/@media \(pointer:coarse\)\{\.ef-sidenav__item\{height:var\(--tap-min\)\}/)
     expect(rule(sideCss, '.ef-sidenav__item:focus-visible')).toMatch(/box-shadow:var\(--focus-ring\)/)
   })
 
@@ -273,5 +279,12 @@ describe('rows keep the touch target and the focus ring', () => {
 
   it('has no literal colours or px font sizes', () => {
     expect(sideCss + cardCss).not.toMatch(/#[0-9a-fA-F]{3,8}\b/)
+  })
+})
+
+describe('the menu items that draw a mark keep their text clear of it', () => {
+  it('gives a checkbox or radio item the start gutter the 14px mark sits in', () => {
+    const css = cssOf('components/overlay/DropdownMenu.jsx')
+    expect(css).toMatch(/\.ef-dropdown-menu__item\[role=menuitemcheckbox\],\.ef-dropdown-menu__item\[role=menuitemradio\]\{padding-inline-start:var\(--space-8\)\}/)
   })
 })

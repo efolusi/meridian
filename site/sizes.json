@@ -1,16 +1,16 @@
 {
   "totals": {
     "@efolusi/meridian": {
-      "bytes": 385779,
-      "gzip": 87750
+      "bytes": 387370,
+      "gzip": 88226
     },
     "dist/components.css": {
-      "bytes": 264108,
-      "gzip": 37601
+      "bytes": 265504,
+      "gzip": 37848
     },
     "_ds_bundle.js": {
-      "bytes": 945250,
-      "gzip": 172922
+      "bytes": 950362,
+      "gzip": 174239
     }
   },
   "modules": [
@@ -1259,8 +1259,8 @@
         "MenubarSubTrigger",
         "MenubarSubContent"
       ],
-      "bytes": 61396,
-      "gzip": 12461
+      "bytes": 61434,
+      "gzip": 12475
     },
     {
       "module": "navigation/NavigationMenu.js",
@@ -1317,8 +1317,8 @@
       "exports": [
         "SideNav"
       ],
-      "bytes": 62500,
-      "gzip": 13089
+      "bytes": 68221,
+      "gzip": 14653
     },
     {
       "module": "navigation/Sidebar.js",
@@ -1477,8 +1477,8 @@
         "DropdownMenuSubTrigger",
         "DropdownMenuSubContent"
       ],
-      "bytes": 57444,
-      "gzip": 11608
+      "bytes": 57482,
+      "gzip": 11623
     },
     {
       "module": "overlay/HoverCard.js",

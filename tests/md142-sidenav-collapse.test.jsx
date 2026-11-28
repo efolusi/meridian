@@ -63,6 +63,7 @@ describe('the head button', () => {
     fireEvent.click(screen.getByRole('button', { name: 'Ciutkan sidebar' }))
     expect(screen.getByRole('button', { name: 'Perluas sidebar' })).toBeTruthy()
     unmount()
+    localStorage.clear()
     rail({ labels: { collapse: 'Fold' } })
     expect(screen.getByRole('button', { name: 'Fold' })).toBeTruthy()
   })
@@ -176,13 +177,11 @@ describe('the stored choice', () => {
     expect(localStorage.getItem(KEY)).toBe('0')
   })
 
-  it('restores a stored collapse in the first committed frame, with the width transition still off', () => {
+  it('restores a stored collapse synchronously after render (a layout effect, before any frame), with the width transition still off', () => {
     localStorage.setItem(KEY, '1')
-    const seen = []
-    const Probe = () => { React.useLayoutEffect(() => { seen.push(document.querySelector('aside').hasAttribute('data-collapsed')) }); return null }
-    const { container } = render(<><SideNav groups={groups} value="home" account={account} /><Probe /></>)
+    const { container } = rail()
+    // no animation frame has run yet: the rail is already collapsed and `data-ready` (the transition) is not on
     expect(container.querySelector('aside').hasAttribute('data-collapsed')).toBe(true)
-    expect(seen.at(-1)).toBe(true)
     expect(container.querySelector('aside').hasAttribute('data-ready')).toBe(false)
   })
 

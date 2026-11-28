@@ -141,7 +141,7 @@ export function SideNav({ brand = 'Meridian', brandBadge, logoSrc, groups, value
         {showToggle ? (
           <Tooltip>
             <TooltipTrigger asChild>
-              <button type="button" className="ef-sidenav__toggle" data-slot="sidenav-toggle" aria-expanded={!collapsed} aria-controls={id || railId} aria-label={collapsed ? text.expand : text.collapse} onClick={toggle}>
+              <button type="button" className="ef-sidenav__toggle" aria-expanded={!collapsed} aria-controls={id || railId} aria-label={collapsed ? text.expand : text.collapse} onClick={toggle}>
                 <span className="ef-sidenav__icon"><Icon name="panel-left" size={16} /></span>
               </button>
             </TooltipTrigger>

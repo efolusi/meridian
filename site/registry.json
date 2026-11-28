@@ -3874,7 +3874,7 @@
       "name": "sidenav",
       "type": "registry:ui",
       "title": "SideNav",
-      "description": "The product sidebar: brand row, grouped nav with icons and badges, and the foot (the account card and its menu). 240px on `--surface-subtle`, 72px when `collapsed`.",
+      "description": "The product sidebar: head (brand and one collapse button), grouped nav with icons and badges, and the foot (the account card and its menu). 240px on `--surface-subtle`, 72px when collapsed.",
       "dependencies": [
         "react"
       ],
@@ -3885,7 +3885,8 @@
         "https://meridian.efolusi.com/site/registry/dropdownmenu.json",
         "https://meridian.efolusi.com/site/registry/icon.json",
         "https://meridian.efolusi.com/site/registry/meridian-runtime.json",
-        "https://meridian.efolusi.com/site/registry/themetoggle.json"
+        "https://meridian.efolusi.com/site/registry/themetoggle.json",
+        "https://meridian.efolusi.com/site/registry/tooltip.json"
       ],
       "files": [
         {

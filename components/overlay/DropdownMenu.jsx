@@ -18,6 +18,9 @@ const CSS = `
 .ef-dropdown-menu__item:focus-visible{box-shadow:inset 0 0 0 2px var(--focus-ring-color)}
 .ef-dropdown-menu__item:disabled,.ef-dropdown-menu__item[data-disabled=true]{pointer-events:none;opacity:.5}
 .ef-dropdown-menu__item[data-inset=true],.ef-dropdown-menu__label[data-inset=true]{padding-inline-start:var(--space-8)}
+/* a checkbox or radio item draws its mark in the start gutter (8px in, 14px wide); the text starts after it */
+.ef-dropdown-menu__item[role=menuitemcheckbox],.ef-dropdown-menu__item[role=menuitemradio]{padding-inline-start:var(--space-8)}
+.ef-dropdown-menu__item[role=menuitemradio] .ef-dropdown-menu__indicator svg{fill:currentColor}
 .ef-dropdown-menu__item[data-variant=danger]{color:var(--status-danger-text)}
 .ef-dropdown-menu__indicator{position:absolute;inset-inline-start:8px;display:inline-flex;width:14px;align-items:center;justify-content:center}
 .ef-dropdown-menu__label{padding:var(--space-2) var(--space-2);color:var(--text-primary);font-size:var(--text-sm);font-weight:var(--weight-medium)}
@@ -135,7 +138,9 @@ export const DropdownMenuContent = React.forwardRef(function DropdownMenuContent
     if (!event.defaultPrevented) root?.triggerRef.current?.focus?.();
   }, [root, onCloseAutoFocus]);
   const keyboard = useMenuKeyboard(localRef, close, { loop });
-  useIsoLayoutEffect(() => { if (root?.open) menuItems(localRef.current)[0]?.focus(); }, [root?.open]);
+  // The panel is visibility:hidden until it is placed (the commit after it opens), and a hidden element cannot take focus, so
+  // focus moves in when it turns visible. Without this the first item never got focus in a browser: arrows and Escape did nothing from the trigger.
+  useIsoLayoutEffect(() => { if (root?.open && anchored.visibility !== 'hidden') menuItems(localRef.current)[0]?.focus(); }, [root?.open, anchored.visibility]);
   React.useEffect(() => {
     if (!root?.open) return;
     const away = event => { if (!insideMenu(event.target, root.menuId) && !root.triggerRef.current?.contains(event.target)) close(); };
