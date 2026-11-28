@@ -18,6 +18,10 @@ const CSS = `
 .ef-check__box[aria-invalid="true"]{border-color:var(--status-danger-solid)}
 .ef-check__label{font-size:var(--text-md);color:var(--text-primary);line-height:1.4;cursor:pointer}
 .ef-check__desc{display:block;font-size:var(--text-sm);color:var(--text-muted)}
+/* Fine pointer (MD115, WCAG 2.5.8): the row, the label and the hit area of the box are 24px at least. The label's line is 1.4em
+   (19.6px at --text-md), so its block padding fills the rest; the 18px box keeps its size and sits centred in the 24px row. The hit
+   area of the box is the coarse rule's centred ::before at 24px: 50% is half of the 15px padding box inside the 1.5px border. */
+@media (pointer:fine){.ef-check{min-height:24px}.ef-check__box{position:relative;margin-top:3px}.ef-check__box::before{content:"";position:absolute;inset:calc(50% - 12px)}.ef-check__label{min-height:24px;padding-block:max(0px,calc((24px - 1.4em) / 2))}}
 /* Touch: fixed-size targets grow to --tap-min; small glyph buttons keep their look and get a centred --tap-min hit area instead. */
 @media (pointer:coarse){.ef-check__box{position:relative}.ef-check__box::before{content:"";position:absolute;inset:calc(50% - var(--tap-min) / 2)}}
 `;
