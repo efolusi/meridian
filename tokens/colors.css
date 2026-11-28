@@ -85,6 +85,7 @@
   --chart-5: #E87BA4;
   --surface-page: var(--sand-25);
   --surface-card: #FFFFFF;
+  --surface-elevated: var(--surface-card);
   --surface-panel: var(--surface-card);
   --surface-card-hover: var(--surface-sunken);
   --surface-sunken: var(--sand-75);
@@ -212,6 +213,7 @@
   --chart-5: #D55181;
   --surface-page: #1C1814;
   --surface-card: #26201B;
+  --surface-elevated: #2E2721;
   --surface-panel: var(--surface-card);
   --surface-card-hover: var(--surface-sunken);
   --surface-sunken: #2F2822;
@@ -315,6 +317,7 @@
     --chart-5: #D55181;
     --surface-page: #1C1814;
     --surface-card: #26201B;
+    --surface-elevated: #2E2721;
     --surface-panel: var(--surface-card);
     --surface-card-hover: var(--surface-sunken);
     --surface-sunken: #2F2822;

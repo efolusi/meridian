@@ -111,7 +111,7 @@ def ratio(fg, bg):
     return (l1 + 0.05) / (l2 + 0.05)
 
 
-SURFACES = ["--surface-page", "--surface-card", "--surface-sunken", "--surface-subtle"]
+SURFACES = ["--surface-page", "--surface-card", "--surface-elevated", "--surface-sunken", "--surface-subtle"]
 
 # (foreground, [backgrounds], minimum ratio, what the pair guarantees)
 # Every pair here is one a component actually paints; the comment names it.
