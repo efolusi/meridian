@@ -111,7 +111,7 @@ The glass material comes from design-tokens (`docs/glass.md`): one number, `--gl
 | Class | Use |
 |---|---|
 | `.ef-glass .ef-glass--chrome .ef-glass--blur` | Bars that content scrolls under: `TopNav`, `TabBar`, a toolbar |
-| `.ef-glass .ef-glass--clear` | Controls on a bar or panel: `ThemeToggle`, `SegmentedControl`, `Input glass` |
+| `.ef-glass .ef-glass--clear` | Controls on a bar or panel: `SegmentedControl`, `Input glass`. Not the `ThemeToggle`: it has no border at rest |
 | `.ef-glass .ef-glass--regular` | A card or panel on the field, without a blur |
 | `.ef-glass .ef-glass--thick .ef-glass--blur` | Your own sheet or popover; Meridian's overlays already are |
 | `.ef-glass-field` | On the page body: the quiet warm field that glass blurs |

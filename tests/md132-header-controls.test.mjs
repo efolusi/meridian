@@ -15,17 +15,30 @@ const headerCss = cssOf('components/marketing/SiteHeader.jsx')
 const base = readFileSync('tokens/base.css', 'utf8').replace(/\/\*[\s\S]*?\*\//g, '')
 const spacing = readFileSync('tokens/spacing.css', 'utf8')
 const rule = (css, selector) => rulesOf(css).find((r) => r.selector === selector)?.body ?? ''
-const hoverBlock = (css) => {
-  const start = css.indexOf('@media (hover:hover){')
-  expect(start, '@media (hover:hover)').toBeGreaterThan(-1)
-  let depth = 0
-  for (let i = css.indexOf('{', start); i < css.length; i += 1) {
-    if (css[i] === '{') depth += 1
-    if (css[i] === '}' && (depth -= 1) === 0) return css.slice(css.indexOf('{', start) + 1, i)
+const hoverBlocks = (css) => {
+  const blocks = []
+  let i = 0
+  for (;;) {
+    const start = css.indexOf('@media (hover:hover){', i)
+    if (start === -1) break
+    let depth = 0
+    let j = css.indexOf('{', start)
+    const open = j
+    for (; j < css.length; j += 1) {
+      if (css[j] === '{') depth += 1
+      if (css[j] === '}' && (depth -= 1) === 0) break
+    }
+    blocks.push(css.slice(open + 1, j))
+    i = j + 1
   }
-  throw new Error('unclosed hover block')
+  return blocks
 }
-const outsideHover = (css) => css.replace(hoverBlock(css), '')
+const hoverBlock = (css) => {
+  const blocks = hoverBlocks(css)
+  expect(blocks.length, '@media (hover:hover)').toBeGreaterThan(0)
+  return blocks.join('\n')
+}
+const outsideHover = (css) => hoverBlocks(css).reduce((rest, block) => rest.replace(`@media (hover:hover){${block}}`, ''), css)
 
 describe('one size for the header controls: --control-h-md', () => {
   it('is 36 px at a fine pointer and --tap-min (44 px) at a coarse pointer, from the vendored spacing tokens', () => {
@@ -133,5 +146,64 @@ describe('no button relies on a product reset for its border or background', () 
 
   it('every allow-list entry has a reason', () => {
     for (const [key, reason] of Object.entries(allowed)) expect(reason.length, key).toBeGreaterThan(10)
+  })
+})
+
+// The hover sweep (chief, 2026-11-28): a :hover rule outside @media (hover: hover) sticks after a tap on a touch
+// screen. Every :hover rule of the library sits inside that query, except these, each with its reason.
+const hoverAllowed = {
+  'components/forms/Button.jsx .ef-btn--primary[data-loading]:is(:hover,:active)': 'resets the primary fill while loading, for hover and for press; it undoes a fill, it adds none',
+  'components/ai/ChatMessage.jsx .ef-msg:hover .ef-msg__actions': 'reveals the hidden message actions; inside the query they would never show on touch (open item: show them at rest on touch)',
+  'components/ai/GeneratedImage.jsx .ef-genimg--complete:hover .ef-genimg__actions': 'reveals the hidden image actions; same reason as the message actions',
+  'components/code/EnvList.jsx .ef-env__row:hover .ef-env__btn': 'reveals the hidden row buttons; same reason as the message actions',
+  'components/data/Table.jsx .ef-table__sort:hover .ef-table__sort__i': 'reveals the sort arrow; the arrow is a hint and the sorted state shows it at rest',
+  'components/navigation/Sidebar.jsx .ef-sidebar-menu-item:hover>.ef-sidebar-menu-action[data-show-on-hover=true]': 'reveals the hidden menu action; same reason as the message actions',
+}
+
+const withoutHoverQueries = outsideHover
+
+describe('no :hover rule of a component sits outside @media (hover: hover)', () => {
+  const files = execFileSync('git', ['ls-files', '-z', 'components'], { encoding: 'utf8' }).split('\0').filter((f) => f.endsWith('.jsx'))
+  const found = []
+  let queries = 0
+  for (const file of files) {
+    const text = readFileSync(file, 'utf8')
+    for (const m of text.matchAll(/(?:const|let)\s+\w*CSS\w*\s*=\s*`([\s\S]*?)`/g)) {
+      queries += (m[1].match(/@media \(hover:hover\)\{/g) ?? []).length
+      for (const rule of rulesOf(withoutHoverQueries(m[1]))) {
+        for (const sel of rule.selector.split(/,(?![^(]*\))/)) {
+          if (sel.includes(':hover')) found.push(`${file} ${sel.trim()}`)
+        }
+      }
+    }
+  }
+
+  it('the sweep wrapped the rules (it did not just skip the files)', () => {
+    expect(queries).toBeGreaterThan(80)
+  })
+
+  it('every :hover selector outside the query is on the allow-list', () => {
+    expect(found.filter((key) => !(key in hoverAllowed))).toEqual([])
+  })
+
+  it('every allow-list entry is still needed and has a reason', () => {
+    for (const [key, reason] of Object.entries(hoverAllowed)) {
+      expect(found, key).toContain(key)
+      expect(reason.length, key).toBeGreaterThan(20)
+    }
+  })
+})
+
+describe('the guideline and the CHANGELOG say it (MD132)', () => {
+  const brand = readFileSync('guidelines/brand.md', 'utf8')
+  const changelog = readFileSync('CHANGELOG.md', 'utf8')
+  it('guidelines/brand.md: the theme toggle has no border at rest, hover fill only; hover fills sit in (hover: hover)', () => {
+    expect(brand).toContain('The theme toggle has no border at rest and no glass: hover fill only, on every product.')
+    expect(brand).toContain('every hover fill sits inside `@media (hover: hover)`')
+    expect(brand).toContain('`--control-h-md`')
+  })
+  it('the CHANGELOG has a VISIBLE CHANGE bullet that names the marketing baselines that move', () => {
+    expect(changelog).toMatch(/theme toggle has no border at rest[^\n]*VISIBLE CHANGE/)
+    expect(changelog).toContain('`g-marketing-light`, `g-marketing-dark`, `g-marketing-coarse-light` and `g-marketing-compact-light`')
   })
 })

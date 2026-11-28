@@ -50,9 +50,11 @@ describe('MD53: controls on clear glass', () => {
     expect(src).toMatch(/\.ef-seg__opt--active\{[^}]*calc\(var\(--material-thick\) \* 100%\)/);
   });
 
-  it('ThemeToggle is clear glass', () => {
+  // MD132 (owner, 2026-11-28): the toggle was clear glass, whose 1px border and two inset edge lines were a
+  // resting ring on every product. It is a plain control now: hover fill only.
+  it('ThemeToggle is not glass (MD132): no ef-glass class, so no border, fill or inset edge line at rest', () => {
     render(<ThemeToggle />);
-    glass(screen.getByRole('button'), 'clear', false);
+    expect(screen.getByRole('button').className).not.toContain('ef-glass');
   });
 
   it('a search field can be clear glass', () => {
