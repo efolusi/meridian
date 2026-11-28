@@ -8,12 +8,12 @@ import { injectEfCss } from '../runtime/runtime.jsx';
 // never running text) go without at rest; quiet is underlined on hover and keyboard focus.
 const CSS = `
 .ef-link{display:inline-flex;align-items:center;gap:var(--gap-label-icon-sm);color:var(--text-link);text-decoration:underline;text-decoration-thickness:1px;text-underline-offset:.2em;font-weight:var(--weight-medium);cursor:pointer;border-radius:var(--radius-sm);transition:color var(--dur-fast) var(--ease-enter)}
-.ef-link:hover{color:var(--text-link-hover);text-decoration-thickness:2px}
+@media (hover:hover){.ef-link:hover{color:var(--text-link-hover);text-decoration-thickness:2px}}
 .ef-link:focus-visible{outline:none;box-shadow:var(--focus-ring)}
 .ef-link--quiet{color:var(--text-secondary);text-decoration:none}
-.ef-link--quiet:hover,.ef-link--quiet:focus-visible{color:var(--text-primary);text-decoration:underline}
+.ef-link--quiet:focus-visible{color:var(--text-primary);text-decoration:underline}@media (hover:hover){.ef-link--quiet:hover{color:var(--text-primary);text-decoration:underline}}
 .ef-link--standalone{font-weight:var(--weight-semibold);text-decoration:none}
-.ef-link--standalone:hover{text-decoration:none}
+@media (hover:hover){.ef-link--standalone:hover{text-decoration:none}}
 `;
 export function Link({ href = '#', external, icon, variant = 'default', standalone, children, style, className, ...rest }) {
   injectEfCss('ef-css-link', CSS);

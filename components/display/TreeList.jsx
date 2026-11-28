@@ -8,9 +8,9 @@ const CSS = `
 .ef-tree{display:flex;flex-direction:column;gap:1px;font-size:var(--text-sm)}
 .ef-tree__row{display:flex;align-items:center;gap:var(--space-2);height:30px;padding:0 var(--space-2);border:none;border-radius:var(--radius-sm);background:none;cursor:pointer;text-align:start;font-family:var(--font-sans);font-size:var(--text-sm);color:var(--text-secondary);width:100%;transition:background var(--dur-fast) var(--ease-enter),color var(--dur-fast) var(--ease-enter)}
 .ef-tree__row{padding-inline-start:calc(8px + var(--ef-tree-depth, 0) * 18px)}
-.ef-tree__row:hover{background:var(--surface-sunken);color:var(--text-primary)}
+@media (hover:hover){.ef-tree__row:hover{background:var(--surface-sunken);color:var(--text-primary)}}
 .ef-tree__row--sel{background:var(--accent-subtle);color:var(--accent-subtle-fg);font-weight:var(--weight-semibold)}
-.ef-tree__row--sel:hover{background:var(--accent-subtle);color:var(--accent-subtle-fg)}
+@media (hover:hover){.ef-tree__row--sel:hover{background:var(--accent-subtle);color:var(--accent-subtle-fg)}}
 .ef-tree__row:focus-visible{outline:none;box-shadow:var(--focus-ring)}
 .ef-tree__chev{display:inline-flex;color:var(--text-muted);transition:transform var(--dur-fast) var(--ease-enter);flex:none}
 .ef-tree__chev--open{transform:rotate(90deg)}

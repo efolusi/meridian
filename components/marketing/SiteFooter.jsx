@@ -11,18 +11,18 @@ const CSS = `
 .ef-site-footer__tagline{margin:0;font-size:var(--text-md);line-height:var(--leading-relaxed)}
 .ef-site-footer__socials{display:flex;gap:var(--space-1);margin:0;padding:0;list-style:none}
 .ef-site-footer__social{display:inline-flex;align-items:center;justify-content:center;width:var(--tap-min);height:var(--tap-min);border-radius:var(--radius-full);color:var(--text-secondary)}
-.ef-site-footer__social:hover{background:var(--surface-sunken);color:var(--text-primary)}
+@media (hover:hover){.ef-site-footer__social:hover{background:var(--surface-sunken);color:var(--text-primary)}}
 .ef-site-footer__heading{margin:0 0 var(--space-2);font-size:var(--text-sm);font-weight:var(--weight-semibold);color:var(--text-primary)}
 .ef-site-footer__list{display:flex;flex-direction:column;margin:0;padding:0;list-style:none}
 .ef-site-footer__link{display:inline-flex;align-items:center;min-height:var(--tap-min);color:var(--text-secondary);font-size:var(--text-md);text-decoration:none}
-.ef-site-footer__link:hover{color:var(--text-primary)}
+@media (hover:hover){.ef-site-footer__link:hover{color:var(--text-primary)}}
 .ef-site-footer__brand-link:focus-visible,.ef-site-footer__social:focus-visible,.ef-site-footer__link:focus-visible,.ef-site-footer__legal-link:focus-visible{outline:none;border-radius:var(--radius-xs);box-shadow:var(--focus-ring)}
 .ef-site-footer__bottom{display:flex;flex-wrap:wrap;justify-content:space-between;gap:var(--space-3);margin-top:var(--space-12);padding-top:var(--space-6);border-top:1px solid var(--border-default);font-size:var(--text-sm)}
 .ef-site-footer__meta{display:flex;flex-wrap:wrap;align-items:center;gap:var(--space-1) var(--space-6)}
 .ef-site-footer__copyright{margin:0}
 .ef-site-footer__legal{display:flex;flex-wrap:wrap;margin:0;padding:0;list-style:none;gap:var(--space-1) var(--space-4)}
 .ef-site-footer__legal-link{display:inline-flex;align-items:center;justify-content:center;min-width:var(--control-h-sm);min-height:var(--control-h-sm);color:var(--text-secondary);font-size:var(--text-sm);text-decoration:none}
-.ef-site-footer__legal-link:hover{color:var(--text-primary)}
+@media (hover:hover){.ef-site-footer__legal-link:hover{color:var(--text-primary)}}
 .ef-site-footer__sr{position:absolute;width:1px;height:1px;margin:-1px;padding:0;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;border:0}
 @media (max-width:640px){.ef-site-footer__top{grid-template-columns:1fr}}
 `;

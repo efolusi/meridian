@@ -5,7 +5,7 @@ import { Icon } from '../icons/Icon.jsx';
 const CSS = `
 .ef-sourcecard{display:flex;flex-direction:column;gap:var(--space-2);padding:var(--space-3);border:1px solid var(--border-default);border-radius:var(--radius-md);background:var(--surface-card);text-decoration:none;color:inherit;transition:border-color var(--dur-fast) var(--ease-enter),background var(--dur-fast) var(--ease-enter)}
 a.ef-sourcecard{cursor:pointer}
-a.ef-sourcecard:hover{border-color:var(--border-strong);background:var(--surface-subtle)}
+@media (hover:hover){a.ef-sourcecard:hover{border-color:var(--border-strong);background:var(--surface-subtle)}}
 a.ef-sourcecard:focus-visible{outline:none;box-shadow:var(--focus-ring)}
 .ef-sourcecard--plain{border-color:transparent;background:transparent;padding:var(--space-2) var(--space-3)}
 .ef-sourcecard__thumb{width:100%;aspect-ratio:16/9;border-radius:var(--radius-sm);object-fit:cover;background:var(--surface-sunken);margin-bottom:var(--space-1)}

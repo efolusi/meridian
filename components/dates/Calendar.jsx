@@ -16,7 +16,7 @@ const CSS = `
 .ef-cal__row{display:contents}
 .ef-cal__dow{text-align:center;font-size:var(--text-xs);font-weight:var(--weight-semibold);color:var(--text-muted);padding:var(--space-1) 0}
 .ef-cal__day{position:relative;display:grid;width:36px;height:34px;place-items:center;border:1px solid transparent;border-radius:var(--radius-sm);background:none;color:var(--text-primary);font:inherit;font-size:var(--text-sm);cursor:pointer}
-.ef-cal__day:hover:not(:disabled){background:var(--surface-sunken)}
+@media (hover:hover){.ef-cal__day:hover:not(:disabled){background:var(--surface-sunken)}}
 .ef-cal__day:focus-visible{outline:none;box-shadow:var(--focus-ring)}
 .ef-cal__day:disabled{cursor:not-allowed;opacity:.35}
 .ef-cal__day[data-outside="true"]{color:var(--text-muted)}

@@ -13,7 +13,7 @@ const CSS = `
 .ef-transcript__item{display:flex;gap:var(--space-3);padding:var(--space-2) var(--space-3);border-radius:var(--radius-sm);transition:background var(--dur-fast) var(--ease-enter)}
 .ef-transcript__item--active{background:var(--surface-sunken)}
 .ef-transcript__time{flex:none;border:none;background:none;padding:0;cursor:pointer;font-family:var(--font-mono);font-size:var(--text-2xs);color:var(--text-muted);font-variant-numeric:tabular-nums;line-height:1.9;transition:color var(--dur-fast) var(--ease-enter)}
-.ef-transcript__time:hover{color:var(--text-primary)}
+@media (hover:hover){.ef-transcript__time:hover{color:var(--text-primary)}}
 .ef-transcript__time:focus-visible{outline:none;box-shadow:var(--focus-ring);border-radius:var(--radius-xs)}
 .ef-transcript__item--active .ef-transcript__time{color:var(--text-link)}
 .ef-transcript__speaker{flex:none;width:64px;font-size:var(--text-xs);font-weight:var(--weight-semibold);color:var(--text-primary);line-height:1.8}

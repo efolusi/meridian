@@ -5,7 +5,7 @@ import { injectEfCss, styleRef } from '../runtime/runtime.jsx';
 const CSS = `
 .ef-tilegroup{display:grid;grid-template-columns:repeat(var(--ef-tile-columns,3),1fr);gap:var(--space-3)}
 .ef-tile{position:relative;display:flex;flex-direction:column;align-items:flex-start;gap:var(--space-2);padding:var(--space-4);border:1px solid var(--border-strong);border-radius:var(--radius-md);background:var(--surface-card);cursor:pointer;text-align:start;font-family:var(--font-sans);color:var(--text-primary);transition:border-color var(--dur-fast) var(--ease-enter),background var(--dur-fast) var(--ease-enter)}
-.ef-tile:hover:not(:disabled){border-color:var(--sand-400)}
+@media (hover:hover){.ef-tile:hover:not(:disabled){border-color:var(--sand-400)}}
 .ef-tile:focus-visible{outline:none;box-shadow:var(--focus-ring)}
 .ef-tile:disabled{opacity:.45;cursor:not-allowed}
 .ef-tile--on{border-color:var(--accent-edge);box-shadow:inset 0 0 0 1px var(--accent-edge)}

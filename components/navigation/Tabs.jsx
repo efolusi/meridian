@@ -7,7 +7,7 @@ const CSS = `
 .ef-tabs{position:relative}.ef-tabs__list{position:relative;display:flex;gap:var(--space-1);border-bottom:1px solid var(--border-default)}
 .ef-tabs__list[data-orientation="vertical"]{flex-direction:column;border-bottom:0;border-inline-end:1px solid var(--border-default)}
 .ef-tabs__tab{position:relative;display:inline-flex;align-items:center;gap:var(--gap-label-icon);height:38px;padding:0 var(--space-3);border:none;background:transparent;color:var(--text-secondary);font-family:var(--font-sans);font-size:var(--text-md);font-weight:var(--weight-medium);cursor:pointer;border-radius:var(--radius-sm) var(--radius-sm) 0 0;transition:color var(--dur-fast) var(--ease-enter),background var(--dur-fast) var(--ease-enter)}
-.ef-tabs__tab:hover{color:var(--text-primary);background:var(--surface-sunken)}
+@media (hover:hover){.ef-tabs__tab:hover{color:var(--text-primary);background:var(--surface-sunken)}}
 .ef-tabs__tab:focus-visible{outline:none;box-shadow:var(--focus-ring)}
 .ef-tabs__tab--active{color:var(--text-primary);font-weight:var(--weight-semibold);background:var(--surface-sunken)}
 .ef-tabs__list[data-variant="line"] .ef-tabs__tab{background:transparent}.ef-tabs__list[data-variant="line"] .ef-tabs__tab--active::after{content:'';position:absolute;inset-inline:0;bottom:-1px;height:2px;border-radius:var(--radius-full);background:var(--accent-edge)}

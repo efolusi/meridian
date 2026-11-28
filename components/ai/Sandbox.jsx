@@ -21,7 +21,7 @@ const CSS = `
 .ef-sandbox__inner{border-top:1px solid var(--border-default)}
 .ef-sandbox__tabs{display:flex;gap:var(--space-5);padding:0 var(--space-4);border-bottom:1px solid var(--border-default)}
 .ef-sandbox__tab{display:inline-flex;align-items:center;gap:var(--space-2);height:var(--control-h-md);border:none;background:none;cursor:pointer;font-family:var(--font-sans);font-size:var(--text-sm);font-weight:var(--weight-semibold);color:var(--text-muted);border-bottom:2px solid transparent;margin-bottom:-1px;transition:color var(--dur-fast) var(--ease-enter),border-color var(--dur-fast) var(--ease-enter)}
-.ef-sandbox__tab:hover{color:var(--text-primary)}
+@media (hover:hover){.ef-sandbox__tab:hover{color:var(--text-primary)}}
 .ef-sandbox__tab--on{color:var(--text-primary);border-bottom-color:var(--accent-edge)}
 .ef-sandbox__tab:focus-visible{outline:none;box-shadow:var(--focus-ring)}
 .ef-sandbox__panel{padding:var(--space-3) var(--space-4);font-family:var(--font-mono);font-size:var(--text-sm);line-height:1.7;color:var(--text-secondary);overflow-x:auto}

@@ -5,7 +5,7 @@ const CSS = `
 .ef-dots{display:inline-flex;align-items:center}
 .ef-dots__dot{position:relative;width:24px;height:24px;padding:0;border:none;background:transparent;cursor:pointer}
 .ef-dots__dot::before{content:'';position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:7px;height:7px;border-radius:var(--radius-full);background:var(--border-strong);transition:background var(--dur-fast) var(--ease-enter),width var(--dur-base) var(--ease-enter)}
-.ef-dots__dot:hover::before{background:var(--sand-400)}
+@media (hover:hover){.ef-dots__dot:hover::before{background:var(--sand-400)}}
 .ef-dots__dot--on::before{width:20px;background:var(--accent-edge)}
 .ef-dots__dot:focus-visible{outline:none}
 .ef-dots__dot:focus-visible::before{box-shadow:var(--focus-ring)}

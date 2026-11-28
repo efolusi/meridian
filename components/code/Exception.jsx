@@ -8,7 +8,7 @@ const CSS = `
 .ef-exception__type{flex:none;margin-top:1px;padding:var(--space-0-5) var(--space-2);border-radius:var(--radius-sm);background:var(--status-danger-bg);color:var(--status-danger-text);font-family:var(--font-mono);font-size:var(--text-2xs);font-weight:var(--weight-semibold)}
 .ef-exception__msg{flex:1;min-width:0;font-size:var(--text-md);line-height:1.5;color:var(--text-primary)}
 .ef-exception__toggle{flex:none;display:inline-flex;align-items:center;gap:var(--space-1);border:none;background:none;cursor:pointer;padding:var(--space-1) var(--space-2);border-radius:var(--radius-sm);font-family:var(--font-sans);font-size:var(--text-xs);color:var(--text-muted);transition:color var(--dur-fast) var(--ease-enter),background var(--dur-fast) var(--ease-enter)}
-.ef-exception__toggle:hover{color:var(--text-primary);background:var(--surface-subtle)}
+@media (hover:hover){.ef-exception__toggle:hover{color:var(--text-primary);background:var(--surface-subtle)}}
 .ef-exception__toggle:focus-visible{outline:none;box-shadow:var(--focus-ring)}
 .ef-exception__chev{display:inline-flex;transition:transform var(--dur-fast) var(--ease-enter)}
 .ef-exception--open .ef-exception__chev{transform:rotate(90deg)}

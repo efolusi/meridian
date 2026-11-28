@@ -46,7 +46,7 @@ function Block({ block, lang }) {
 const CSS = `
 .ef-legal{width:100%;max-width:var(--container-text);margin-inline:auto;padding:var(--space-12) var(--space-6) var(--space-16);color:var(--text-primary);font-size:var(--text-md);line-height:var(--leading-relaxed)}
 .ef-legal__back{display:inline-flex;align-items:center;min-height:var(--tap-min);color:var(--text-secondary);text-decoration:none}
-.ef-legal__back:hover{color:var(--text-primary)}
+@media (hover:hover){.ef-legal__back:hover{color:var(--text-primary)}}
 .ef-legal h1{margin:var(--space-4) 0 var(--space-2);font-family:var(--font-display);font-size:var(--text-4xl);line-height:var(--leading-tight);letter-spacing:var(--tracking-display)}
 .ef-legal__meta{margin:0 0 var(--space-8);color:var(--text-muted);font-size:var(--text-sm)}
 .ef-legal h2{margin:var(--space-10) 0 var(--space-3);font-family:var(--font-display);font-size:var(--text-2xl);line-height:var(--leading-snug);scroll-margin-top:calc(var(--control-h-lg) + var(--space-8))}
@@ -54,7 +54,7 @@ const CSS = `
 .ef-legal p,.ef-legal ul{margin:0 0 var(--space-4)}
 .ef-legal ul{padding-inline-start:var(--space-6)}
 .ef-legal a{color:var(--text-link);text-decoration:underline;text-underline-offset:var(--space-1)}
-.ef-legal a:hover{color:var(--text-link-hover)}
+@media (hover:hover){.ef-legal a:hover{color:var(--text-link-hover)}}
 .ef-legal a:focus-visible{outline:none;border-radius:var(--radius-xs);box-shadow:var(--focus-ring)}
 .ef-legal__toc{margin:var(--space-8) 0;padding:var(--space-5) var(--space-6);border:1px solid var(--border-default);border-radius:var(--radius-md);background:var(--surface-subtle)}
 .ef-legal__toc-head{margin:0 0 var(--space-2);font-weight:var(--weight-semibold)}

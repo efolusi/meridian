@@ -9,7 +9,7 @@ const CSS = `
 .ef-field__hint{font-size:var(--text-xs);color:var(--text-muted)}
 .ef-field__error{font-size:var(--text-xs);color:var(--status-danger-text);display:flex;align-items:center;gap:var(--space-1)}
 .ef-number{display:flex;align-items:stretch;overflow:hidden;border:1px solid var(--border-control,var(--border-strong));border-radius:var(--field-radius,var(--radius-sm));background:var(--surface-sunken);transition:border-color var(--dur-fast) var(--ease-enter),box-shadow var(--dur-fast) var(--ease-enter)}
-.ef-number:hover:not(.ef-number--disabled){border-color:var(--border-control-hover)}
+@media (hover:hover){.ef-number:hover:not(.ef-number--disabled){border-color:var(--border-control-hover)}}
 .ef-number:focus-within{border-color:var(--accent-edge);box-shadow:var(--focus-ring)}
 .ef-number.ef-number--invalid{border-color:var(--status-danger-solid)}
 .ef-number.ef-number--invalid:focus-within{box-shadow:var(--focus-ring-danger)}
@@ -24,7 +24,7 @@ const CSS = `
 .ef-number--xl .ef-number__el{height:calc(var(--control-h-xl) - 2px);padding:0 var(--space-4);font-size:var(--text-lg)}
 .ef-number__steps{display:flex;flex-direction:column;flex:none;align-self:stretch;border-inline-start:1px solid var(--border-default)}
 .ef-number__step{flex:1 1 0;display:flex;align-items:center;justify-content:center;width:24px;padding:0;border:none;background:transparent;color:var(--text-muted);cursor:pointer;transition:background var(--dur-fast) var(--ease-enter),color var(--dur-fast) var(--ease-enter)}
-.ef-number__step:hover:not(:disabled){background:var(--surface-sunken);color:var(--text-primary)}
+@media (hover:hover){.ef-number__step:hover:not(:disabled){background:var(--surface-sunken);color:var(--text-primary)}}
 .ef-number__step:disabled{opacity:.45;cursor:not-allowed}
 .ef-number__step:focus-visible{outline:none;box-shadow:var(--focus-ring)}
 .ef-number__step+.ef-number__step{border-top:1px solid var(--border-default)}

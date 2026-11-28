@@ -8,7 +8,7 @@ const CSS = `
 .ef-scrollarea__viewport::-webkit-scrollbar{width:9px;height:9px}
 .ef-scrollarea__viewport::-webkit-scrollbar-track{background:transparent}
 .ef-scrollarea__viewport::-webkit-scrollbar-thumb{background:var(--border-strong);border-radius:var(--radius-full);border:2px solid transparent;background-clip:content-box}
-.ef-scrollarea__viewport::-webkit-scrollbar-thumb:hover{background:var(--text-muted);border:2px solid transparent;background-clip:content-box}
+@media (hover:hover){.ef-scrollarea__viewport::-webkit-scrollbar-thumb:hover{background:var(--text-muted);border:2px solid transparent;background-clip:content-box}}
 .ef-scrollarea__bar{position:absolute;pointer-events:none;opacity:0}
 `;
 export const ScrollArea = React.forwardRef(function ScrollArea({ maxHeight, height, label = 'Scroll area', 'aria-label': ariaLabel, 'aria-labelledby': labelledBy, children, style, className, ...rest }, ref) {

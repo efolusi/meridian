@@ -7,7 +7,7 @@ const CSS = `
 .ef-breadcrumb__list{display:flex;align-items:center;gap:var(--space-2);flex-wrap:wrap;margin:0;padding:0;list-style:none;font-size:var(--text-sm);color:var(--text-muted);overflow-wrap:anywhere}
 .ef-breadcrumb__item{display:inline-flex;align-items:center;gap:var(--gap-label-icon)}
 .ef-breadcrumb__link{color:var(--text-muted);text-decoration:none;padding:var(--space-0-5) var(--space-1);border-radius:var(--radius-sm);transition:color var(--dur-fast) var(--ease-enter)}
-.ef-breadcrumb__link:hover{color:var(--text-primary);text-decoration:none}
+@media (hover:hover){.ef-breadcrumb__link:hover{color:var(--text-primary);text-decoration:none}}
 .ef-breadcrumb__link:focus-visible{outline:none;box-shadow:var(--focus-ring)}
 .ef-breadcrumb__page{color:var(--text-primary);font-weight:var(--weight-regular)}
 .ef-breadcrumb__separator{display:inline-flex;color:var(--sand-400)}

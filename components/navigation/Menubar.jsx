@@ -23,7 +23,7 @@ import {
 const CSS = `
 .ef-menubar{display:flex;width:max-content;height:36px;align-items:center;gap:var(--space-0-5);padding:var(--space-1);border:1px solid var(--border-default);border-radius:var(--radius-md);background:var(--surface-card);box-shadow:var(--shadow-xs)}
 .ef-menubar__trigger{display:flex;height:var(--control-h-sm);align-items:center;padding:0 var(--space-2);border:0;border-radius:var(--radius-sm);outline:0;background:transparent;color:var(--text-primary);font:inherit;font-size:var(--text-sm);font-weight:var(--weight-medium);cursor:pointer;user-select:none}
-.ef-menubar__trigger:hover,.ef-menubar__trigger:focus,.ef-menubar__trigger[data-state=open]{background:var(--surface-sunken)}
+.ef-menubar__trigger:focus,.ef-menubar__trigger[data-state=open]{background:var(--surface-sunken)}@media (hover:hover){.ef-menubar__trigger:hover{background:var(--surface-sunken)}}
 .ef-menubar__trigger:focus-visible{box-shadow:var(--focus-ring)}
 /* coarse pointers get the 44px touch target, like form controls do through --control-h-* */
 @media (pointer:coarse){.ef-menubar{height:auto}.ef-menubar__trigger{height:var(--tap-min)}}

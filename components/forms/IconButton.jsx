@@ -11,11 +11,11 @@ const CSS = `
 .ef-iconbtn--sm{width:var(--control-h-sm);height:var(--control-h-sm)}
 .ef-iconbtn--md{width:var(--control-h-md);height:var(--control-h-md)}
 .ef-iconbtn--lg{width:var(--control-h-lg);height:var(--control-h-lg)}
-.ef-iconbtn--quiet:hover:not(:is(:disabled,[aria-disabled="true"],[data-disabled])){background:var(--surface-sunken);color:var(--text-primary)}
+@media (hover:hover){.ef-iconbtn--quiet:hover:not(:is(:disabled,[aria-disabled="true"],[data-disabled])){background:var(--surface-sunken);color:var(--text-primary)}}
 .ef-iconbtn--outline{border-color:var(--border-strong);background:transparent;color:var(--text-primary)}
-.ef-iconbtn--outline:hover:not(:is(:disabled,[aria-disabled="true"],[data-disabled])){background:var(--surface-sunken)}
+@media (hover:hover){.ef-iconbtn--outline:hover:not(:is(:disabled,[aria-disabled="true"],[data-disabled])){background:var(--surface-sunken)}}
 .ef-iconbtn--solid{background:var(--accent);border-color:var(--accent-edge);color:var(--accent-contrast)}
-.ef-iconbtn--solid:hover:not(:is(:disabled,[aria-disabled="true"],[data-disabled])){background:var(--accent-hover)}
+@media (hover:hover){.ef-iconbtn--solid:hover:not(:is(:disabled,[aria-disabled="true"],[data-disabled])){background:var(--accent-hover)}}
 `;
 export const IconButton = React.forwardRef(function IconButton({ icon, label, variant = 'quiet', size = 'md', disabled, style, className, ...rest }, ref) {
   injectEfCss('ef-css-iconbtn', CSS);

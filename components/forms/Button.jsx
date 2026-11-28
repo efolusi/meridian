@@ -11,7 +11,7 @@ const CSS = `
 .ef-btn--pill.ef-btn--md{padding-inline:var(--space-5)}
 .ef-btn--pill.ef-btn--lg{padding-inline:var(--space-6)}
 .ef-btn--pill.ef-btn--xl{padding-inline:var(--space-8)}
-.ef-btn:hover,.ef-btn:focus,.ef-btn:visited{text-decoration:none}
+.ef-btn:focus,.ef-btn:visited{text-decoration:none}@media (hover:hover){.ef-btn:hover{text-decoration:none}}
 .ef-btn:focus-visible{outline:none;box-shadow:var(--focus-ring)}
 .ef-btn:active{transform:scale(var(--motion-press))}
 .ef-btn:is(:disabled,[aria-disabled="true"],[data-disabled]){opacity:.45;cursor:not-allowed;pointer-events:none}
@@ -31,18 +31,18 @@ const CSS = `
 .ef-btn--icon-sm{width:var(--control-h-sm);height:var(--control-h-sm);padding:0}
 .ef-btn--icon-lg{width:var(--control-h-lg);height:var(--control-h-lg);padding:0}
 .ef-btn--primary{background:var(--accent);border-color:var(--accent-edge);color:var(--accent-contrast)}
-.ef-btn--primary:hover{background:var(--accent-hover)}
+@media (hover:hover){.ef-btn--primary:hover{background:var(--accent-hover)}}
 .ef-btn--primary:active{background:var(--accent-active)}
 .ef-btn--secondary{background:transparent;color:var(--text-primary);border-color:var(--border-strong)}
-.ef-btn--secondary:hover{background:var(--surface-sunken)}
+@media (hover:hover){.ef-btn--secondary:hover{background:var(--surface-sunken)}}
 .ef-btn--ghost{background:transparent;color:var(--text-secondary)}
-.ef-btn--ghost:hover{background:var(--surface-sunken);color:var(--text-primary)}
+@media (hover:hover){.ef-btn--ghost:hover{background:var(--surface-sunken);color:var(--text-primary)}}
 .ef-btn--danger{background:var(--status-danger-solid);color:var(--status-danger-on-solid)}
-.ef-btn--danger:hover{background:var(--danger-700)}
+@media (hover:hover){.ef-btn--danger:hover{background:var(--danger-700)}}
 .ef-btn--brand{background:var(--surface-brand);color:var(--text-on-brand)}
-.ef-btn--brand:hover{background:var(--surface-brand-hover)}
+@media (hover:hover){.ef-btn--brand:hover{background:var(--surface-brand-hover)}}
 .ef-btn--link{height:auto;padding:0;background:transparent;color:var(--text-link);text-underline-offset:4px}
-.ef-btn--link:hover{color:var(--text-link-hover);text-decoration:none}
+@media (hover:hover){.ef-btn--link:hover{color:var(--text-link-hover);text-decoration:none}}
 @keyframes ef-spin{to{transform:rotate(360deg)}}
 .ef-btn__spin{display:inline-flex;animation:ef-spin .7s linear infinite}
 /* Touch: fixed-size targets grow to --tap-min; small glyph buttons keep their look and get a centred --tap-min hit area instead. */

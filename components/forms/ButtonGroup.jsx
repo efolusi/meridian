@@ -10,7 +10,7 @@ const CSS = `
 .ef-btn-group[data-orientation="vertical"]{flex-direction:column}
 .ef-btn-group[data-orientation="vertical"]>*:not(:first-child){border-start-start-radius:0!important;border-start-end-radius:0!important;border-top-width:0!important}
 .ef-btn-group[data-orientation="vertical"]>*:not(:last-child){border-end-start-radius:0!important;border-end-end-radius:0!important}
-.ef-btn-group>*:hover,.ef-btn-group>*:focus-visible{position:relative;z-index:1}
+.ef-btn-group>*:focus-visible{position:relative;z-index:1}@media (hover:hover){.ef-btn-group>*:hover{position:relative;z-index:1}}
 .ef-btn-group:has(>.ef-btn-group){gap:var(--space-2)}
 .ef-btn-group>input{flex:1}
 .ef-btn-group__text{display:flex;align-items:center;gap:var(--space-2);padding-inline:var(--space-4);border:1px solid var(--border-default);border-radius:var(--press-radius,var(--radius-sm));background:var(--surface-subtle);color:var(--text-primary);font-size:var(--text-sm);font-weight:var(--weight-medium);box-shadow:var(--shadow-xs)}

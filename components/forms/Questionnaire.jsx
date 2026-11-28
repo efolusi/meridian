@@ -10,7 +10,7 @@ const CSS = `
 .ef-questionnaire__description{margin:calc(var(--space-2) * -1) 0 0;color:var(--text-secondary);font-size:var(--text-md)}
 .ef-questionnaire__choices{display:grid;gap:var(--space-2)}
 .ef-questionnaire__choice{position:relative;display:flex;align-items:flex-start;gap:var(--space-3);padding:var(--space-3);border:1px solid var(--border-default);border-radius:var(--radius-md);background:var(--surface-card);color:var(--text-primary);cursor:pointer;transition:border-color var(--dur-fast) var(--ease-enter),background var(--dur-fast) var(--ease-enter)}
-.ef-questionnaire__choice:hover{border-color:var(--border-strong);background:var(--surface-sunken)}
+@media (hover:hover){.ef-questionnaire__choice:hover{border-color:var(--border-strong);background:var(--surface-sunken)}}
 .ef-questionnaire__choice:has(input:checked){border-color:var(--accent-edge);background:var(--accent-subtle)}
 .ef-questionnaire__choice:has(input:focus-visible){box-shadow:var(--focus-ring)}
 .ef-questionnaire__choice:has(input:disabled){opacity:.45;cursor:not-allowed}

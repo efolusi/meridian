@@ -16,7 +16,7 @@ const CSS = `
 .ef-promptsteps__other::placeholder{color:var(--text-muted)}
 .ef-promptsteps__foot{display:flex;align-items:center;gap:var(--space-3);padding:var(--space-2) var(--space-3) var(--space-1);font-size:var(--text-xs);color:var(--text-muted)}
 .ef-promptsteps__back{display:inline-flex;align-items:center;gap:var(--space-1);border:none;background:none;cursor:pointer;padding:var(--space-0-5) var(--space-2);margin-inline-start:calc(-1 * var(--space-2));border-radius:var(--radius-sm);font-family:var(--font-sans);font-size:var(--text-xs);color:var(--text-muted)}
-.ef-promptsteps__back:hover{color:var(--text-primary)}
+@media (hover:hover){.ef-promptsteps__back:hover{color:var(--text-primary)}}
 .ef-promptsteps__kbd{margin-inline-start:auto;display:inline-flex;align-items:center;gap:var(--space-1)}
 .ef-promptsteps__kbd kbd{padding:1px var(--space-2);border:1px solid var(--border-default);border-radius:var(--radius-sm);background:var(--surface-subtle);font-family:var(--font-sans);font-size:var(--text-2xs);color:var(--text-secondary)}
 `;

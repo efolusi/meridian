@@ -8,7 +8,7 @@ const CSS = `
 .ef-bars__bar--hi{background:var(--accent);box-shadow:inset 0 0 0 1px var(--accent-edge)}
 /* The highlight is carried by its outline, not by tone alone (WCAG 1.4.1): the base bars have none. Forced colours drop the shadow. */
 @media (forced-colors:active){.ef-bars__bar--hi{outline:1px solid Highlight}}
-.ef-bars__bar:hover{background:var(--accent-subtle-fg)}
+@media (hover:hover){.ef-bars__bar:hover{background:var(--accent-subtle-fg)}}
 .ef-bars__sr{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;border:0}
 .ef-bars__labels{display:flex;justify-content:space-between;margin-top:var(--space-2);font-family:var(--font-mono);font-size:10px;color:var(--text-muted)}
 `;
