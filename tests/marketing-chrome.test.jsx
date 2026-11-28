@@ -2,6 +2,7 @@ import { describe, expect, it } from 'vitest';
 import { fireEvent, render } from '@testing-library/react';
 import { SiteHeader } from '../components/marketing/SiteHeader.jsx';
 import { SiteFooter } from '../components/marketing/SiteFooter.jsx';
+import { LanguageSwitch } from '../components/marketing/LanguageSwitch.jsx';
 import { LegalDocument, parseLegalInline } from '../components/marketing/LegalDocument.jsx';
 import { Marquee, inertProp } from '../components/marketing/Marquee.jsx';
 import { renderToString } from 'react-dom/server';
@@ -32,6 +33,23 @@ describe('SiteHeader', () => {
   it('shows the actions slot', () => {
     const { getAllByRole } = render(<SiteHeader brand="Komando" actions={<button type="button">Sign in</button>} />);
     expect(getAllByRole('button', { name: 'Sign in' }).length).toBeGreaterThan(0);
+  });
+
+  // MD131: one way to switch language. The slot takes a LanguageSwitch (as SiteFooter does); the old
+  // { label, href, hrefLang, ariaLabel } object, which drew one plain text link, is gone.
+  it('takes a LanguageSwitch in the languageSwitch slot, in the bar and in the mobile panel', () => {
+    const languages = [{ code: 'id', label: 'ID', href: '/id', name: 'Bahasa Indonesia' }, { code: 'en', label: 'EN', href: '/en', name: 'English' }];
+    const { container } = render(<SiteHeader brand="Komando" languageSwitch={<LanguageSwitch languages={languages} current="en" />} />);
+    const bar = container.querySelector('.ef-site-header__actions');
+    const panel = container.querySelector('.ef-site-header__panel');
+    expect(bar.querySelector('[data-slot="language-switch"]')).toBeTruthy();
+    expect(panel.querySelector('[data-slot="language-switch"]')).toBeTruthy();
+    expect(bar.querySelector('a[hreflang="id"]').getAttribute('href')).toBe('/id');
+  });
+
+  it('draws nothing for the language when no slot is given', () => {
+    const { container } = render(<SiteHeader brand="Komando" />);
+    expect(container.querySelector('[data-slot="language-switch"]')).toBeNull();
   });
 });
 
