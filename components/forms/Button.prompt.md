@@ -32,11 +32,26 @@ On marketing pages, `shape="pill"` rounds the ends and widens the side padding. 
 <Button shape="pill" size="xl" iconBubble="arrow-up-right">See what we've built</Button>
 ```
 
-For a link, build the classes with `buttonVariants` and put the bubble after the label (the icon is 20px, 16px at `md`). Write `data-turn` on the bubble when the icon is `arrow-up-right`, so it turns:
+### As a link
+
+A call to action that goes to another page is a link, not a button. Give `Button` an `href` and it draws an `<a>` with the same classes, bubble, spinner, focus ring, states and 45 degree turn as the button, in one markup (the same function draws both, so they cannot drift):
 
 ```jsx
-<a className={buttonVariants({ size: 'xl', bubble: true })} href="/start">Start free<span className="ef-btn__bubble" aria-hidden="true"><Icon name="arrow-right" size={20} /></span></a>
+<Button href="/start" shape="pill" size="xl" iconBubble="arrow-up-right">Start free</Button>
+<Button href="/docs" variant="secondary" target="_blank" rel="noopener">Read the docs</Button>
 ```
+
+With a router, use `asChild` and pass your own link as the single child: a Next.js `Link` keeps its locale and prefetch, and Button gives it the classes, the state and the inner markup. The child's `href`, props, ref, `className`, `style` and click handlers stay and are merged with Button's:
+
+```jsx
+<Button asChild shape="pill" size="xl" iconBubble="arrow-up-right">
+  <Link href="/start" locale="id">Mulai gratis</Link>
+</Button>
+```
+
+A link is not a button, and the difference is kept: Enter follows it, Space does not (Space scrolls the page, as on every link), and Cmd, Ctrl or middle click opens it in a new tab. A link has no `disabled` attribute, so `disabled` and `loading` set `aria-disabled="true"` and `tabindex="-1"`, keep the `href`, and swallow the click, the middle click and Enter. `loading` also sets `aria-busy` and draws the spinner (in the bubble when there is one, so the label does not move). Use `Button` with `onClick` for an action and `Button` with `href` for a destination; never an `href="#"`.
+
+`buttonVariants` stays for markup that is not React (a server template, a Markdown renderer): it returns the class names only, and the bubble span is yours to write, so prefer `href` or `asChild` wherever React renders the link.
 
 ### On a band
 

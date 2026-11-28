@@ -79,6 +79,8 @@ jobs:
         run: '"$RUNNER_TEMP/pw-node" scripts/check_label_icon_gap.mjs'
       - name: Reduced motion keeps the token fade and the loading loops, and stops the other loops
         run: '"$RUNNER_TEMP/pw-node" scripts/check_reduced_motion.mjs'
+      - name: Button renders a link with the button's look and link semantics
+        run: '"$RUNNER_TEMP/pw-node" scripts/check_button_link.mjs'
       - name: Upload button interaction receipts
         if: always()
         uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4.6.2
