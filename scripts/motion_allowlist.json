@@ -1,8 +1,4 @@
 {
-  "components/ai/AgentRun.jsx": {
-    "count": 1,
-    "reason": "A looping animation: its period is not a transition duration, and the motion scale has no loop token."
-  },
   "components/ai/ChatMessage.jsx": {
     "count": 1,
     "reason": "A looping animation: its period is not a transition duration, and the motion scale has no loop token."
@@ -19,20 +15,12 @@
     "count": 1,
     "reason": "A looping animation: its period is not a transition duration, and the motion scale has no loop token."
   },
-  "components/ai/Sandbox.jsx": {
-    "count": 1,
-    "reason": "A looping animation: its period is not a transition duration, and the motion scale has no loop token."
-  },
   "components/ai/Task.jsx": {
     "count": 1,
     "reason": "A looping animation: its period is not a transition duration, and the motion scale has no loop token."
   },
-  "components/ai/Todo.jsx": {
-    "count": 1,
-    "reason": "A looping animation: its period is not a transition duration, and the motion scale has no loop token."
-  },
   "components/ai/ToolCall.jsx": {
-    "count": 3,
+    "count": 2,
     "reason": "A looping animation: its period is not a transition duration, and the motion scale has no loop token."
   },
   "components/code/Terminal.jsx": {
@@ -55,15 +43,7 @@
     "count": 1,
     "reason": "A looping animation: its period is not a transition duration, and the motion scale has no loop token."
   },
-  "components/feedback/Spinner.jsx": {
-    "count": 1,
-    "reason": "A looping animation: its period is not a transition duration, and the motion scale has no loop token."
-  },
   "components/files/Attachment.jsx": {
-    "count": 1,
-    "reason": "A looping animation: its period is not a transition duration, and the motion scale has no loop token."
-  },
-  "components/forms/Button.jsx": {
     "count": 1,
     "reason": "A looping animation: its period is not a transition duration, and the motion scale has no loop token."
   },

@@ -26,7 +26,7 @@ Small things are fast, large things take longer.
 | `--dur-slow` | 250 ms | A panel opening in place, and the exit of a modal. |
 | `--dur-modal` | 400 ms | A modal, a drawer or a panel arriving: `Dialog`, `AlertDialog`, `Drawer`, `Sheet`. The one long duration. |
 | `--dur-progress` | 250 ms | A bar moving to a new value, with `linear`. |
-| `--dur-loop`, `--dur-loop-slow` | 1400 ms, 1600 ms | One turn of a loop (skeleton, shimmer), with `linear`. |
+| `--dur-loop`, `--dur-loop-slow` | 1400 ms, 1600 ms | One turn of a loop, with `linear`: every spinner (`Spinner`, the `Button` spinner, the glyph spinners of `AgentRun`, `Sandbox`, `Todo` and `ToolCall`) turns over `--dur-loop`; a skeleton shimmer over `--dur-loop-slow`. |
 
 Product UI never runs longer than 250 ms, except a modal, a drawer or a panel arriving.
 
@@ -99,8 +99,6 @@ Under `prefers-reduced-motion: reduce` the tokens swap themselves, so a componen
 | The press scale | Stays. | Not touched. |
 
 A product does not write its own reduce rule for any of this, and does not set `--ef-motion-guard` on a loop.
-
-Tracked, not yet done: one spinner duration (MD129).
 
 ## Theme switch
 

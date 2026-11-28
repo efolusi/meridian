@@ -44,7 +44,7 @@ const CSS = `
 .ef-btn--link{height:auto;padding:0;background:transparent;color:var(--text-link);text-underline-offset:4px}
 @media (hover:hover){.ef-btn--link:hover{color:var(--text-link-hover);text-decoration:none}}
 @keyframes ef-spin{to{transform:rotate(360deg)}}
-.ef-btn__spin{display:inline-flex;animation:ef-spin .7s linear infinite}
+.ef-btn__spin{display:inline-flex;animation:ef-spin var(--dur-loop) linear infinite}
 /* Touch: fixed-size targets grow to --tap-min; small glyph buttons keep their look and get a centred --tap-min hit area instead. */
 @media (pointer:coarse){.ef-btn--xs{height:var(--tap-min)}.ef-btn--icon-xs{width:var(--tap-min);height:var(--tap-min)}}
 .ef-btn--full{width:100%}
