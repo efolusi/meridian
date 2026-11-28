@@ -6,7 +6,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Docs · Meridian</title>
-<meta name="description" content="Install Meridian, learn the token system, theming, and density, and build with 136 accessible components.">
+<meta name="description" content="Install Meridian, learn the token system, theming, and density, and build with 137 accessible components.">
 <link rel="icon" type="image/svg+xml" href="../assets/favicon.svg">
 <link rel="canonical" href="https://meridian.efolusi.com/site/Docs.dc.html">
 <meta name="robots" content="index,follow">
@@ -15,12 +15,12 @@
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Meridian">
 <meta property="og:title" content="Docs | Meridian">
-<meta property="og:description" content="Install Meridian, learn the token system, theming, and density, and build with 136 accessible components.">
+<meta property="og:description" content="Install Meridian, learn the token system, theming, and density, and build with 137 accessible components.">
 <meta property="og:url" content="https://meridian.efolusi.com/site/Docs.dc.html">
 <meta property="og:image" content="https://meridian.efolusi.com/assets/meridian-social.png">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Docs | Meridian">
-<meta name="twitter:description" content="Install Meridian, learn the token system, theming, and density, and build with 136 accessible components.">
+<meta name="twitter:description" content="Install Meridian, learn the token system, theming, and density, and build with 137 accessible components.">
 <meta name="twitter:image" content="https://meridian.efolusi.com/assets/meridian-social.png">
 <script src="./support.js"></script>
 </head>
@@ -159,7 +159,7 @@ class Component extends DCLogic {
     const bundleSnippet = '<link rel="stylesheet" href="meridian/styles.css">\n<' + SC + ' src="https://unpkg.com/react@18.3.1/umd/react.production.min.js" integrity="sha384-DGyLxAyjq0f9SPpVevD6IgztCFlnMF6oW/XQGmfe+IsZ8TqEiDrcHkMLKI6fiB/Z" crossorigin="anonymous"></' + SC + '>\n<' + SC + ' src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.production.min.js" integrity="sha384-gTGxhz21lVGYNMcdJOyq01Edg0jhn/c22nsx0kyqP0TxaV5WVdsSH1fSDUf5YJj1" crossorigin="anonymous"></' + SC + '>\n<' + SC + ' src="meridian/_ds_bundle.js"></' + SC + '>';
     const hostedSnippet = '<link rel="stylesheet" href="https://meridian.efolusi.com/styles.css">\n<' + SC + ' src="https://unpkg.com/react@18.3.1/umd/react.production.min.js" integrity="sha384-DGyLxAyjq0f9SPpVevD6IgztCFlnMF6oW/XQGmfe+IsZ8TqEiDrcHkMLKI6fiB/Z" crossorigin="anonymous"></' + SC + '>\n<' + SC + ' src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.production.min.js" integrity="sha384-gTGxhz21lVGYNMcdJOyq01Edg0jhn/c22nsx0kyqP0TxaV5WVdsSH1fSDUf5YJj1" crossorigin="anonymous"></' + SC + '>\n<' + SC + ' src="https://meridian.efolusi.com/_ds_bundle.js"></' + SC + '>';
     this._sections = [
-      { group: 'Get started', id: 'introduction', title: 'Introduction', lede: 'Meridian is a general-purpose open-source design system by Efolusi. 136 accessible components, 301 tokens, and full example apps, with no build step.', blocks: [
+      { group: 'Get started', id: 'introduction', title: 'Introduction', lede: 'Meridian is a general-purpose open-source design system by Efolusi. 137 accessible components, 301 tokens, and full example apps, with no build step.', blocks: [
         p('This is not just a component library. It is the complete working system: the tokens, the components, the blocks, and the example apps that use them, in one repository you can read end to end.',
           'Ini bukan sekadar pustaka komponen. Ini sistem kerja lengkap: token, komponen, blok, dan aplikasi contoh yang memakainya, dalam satu repositori yang bisa Anda baca dari ujung ke ujung.'),
         h2('principles', 'Principles', 'Prinsip'),
@@ -293,7 +293,7 @@ class Component extends DCLogic {
           ['_ds_manifest.json:', 'machine-readable registry of components, tokens, and cards.', '_ds_manifest.json:', 'registry dapat dibaca mesin berisi komponen, token, dan kartu.'],
         ]),
         h2('why', 'Why it works', 'Mengapa berhasil'),
-        p('One namespace and one prop grammar mean a model that has seen three Meridian components can work across all 136. Semantic tokens mean generated screens inherit dark mode and density for free. And because components are flat source files, a model can read the implementation instead of guessing.', 'Satu namespace dan satu tata bahasa props berarti model yang telah melihat tiga komponen Meridian bisa bekerja dengan seluruh 136 komponen. Token semantik berarti layar hasil generate mewarisi mode gelap dan densitas secara gratis. Dan karena komponen adalah berkas source datar, model bisa membaca implementasinya alih-alih menebak.'),
+        p('One namespace and one prop grammar mean a model that has seen three Meridian components can work across all 137. Semantic tokens mean generated screens inherit dark mode and density for free. And because components are flat source files, a model can read the implementation instead of guessing.', 'Satu namespace dan satu tata bahasa props berarti model yang telah melihat tiga komponen Meridian bisa bekerja dengan seluruh 137 komponen. Token semantik berarti layar hasil generate mewarisi mode gelap dan densitas secara gratis. Dan karena komponen adalah berkas source datar, model bisa membaca implementasinya alih-alih menebak.'),
         code('javascript', 'agent-output.js', "const { Card, CardContent, CardHeader, CardTitle, Stat, BarChart } = window.EfolusiDesignSystem_4ffc3d;\n// a model that knows the grammar composes correctly:\n<Card><CardHeader><CardTitle>Runs this week</CardTitle></CardHeader><CardContent>\n  <Stat label=\"Total\" value=\"1,284\" delta=\"+12.4%\" direction=\"up\" />\n  <BarChart data={[42, 58, 51, 74, 66, 30, 89]} />\n</CardContent></Card>"),
       ] },
       { group: 'Guides', id: 'contributing', title: 'Contributing', lede: 'Meridian is Apache-2.0 licensed and open to contributions. The bar: it must feel settled.', blocks: [
@@ -331,6 +331,9 @@ class Component extends DCLogic {
           ['Button has a trailing arrow bubble and a band variant.', 'iconBubble="arrow-right" draws a round bubble at the end of the button: the bubble is the label colour and the arrow is the button fill, so both read in light and dark. It is a pill, replaces iconRight and draws at md, lg and xl. variant="band" is a cream button for a Section tone="band". A link uses buttonVariants({ bubble: true }). Delete your own hand-drawn bubble.', 'iconBubble="arrow-right" menggambar gelembung bulat di ujung tombol: gelembung berwarna label dan panah berwarna isi tombol, sehingga keduanya terbaca di terang dan gelap. Bentuknya pil, menggantikan iconRight, dan tampil pada md, lg, dan xl. variant="band" adalah tombol krem untuk Section tone="band". Tautan memakai buttonVariants({ bubble: true }). Hapus gelembung buatan Anda sendiri.'],
           ['The bubble arrow turns 45 degrees on hover.', 'An arrow-up-right in the bubble turns 45 degrees on hover and keyboard focus, so it points along the line. Any other arrow keeps the 4px nudge. On touch and under reduced motion the arrow does not move.', 'Panah arrow-up-right di dalam gelembung berputar 45 derajat saat hover dan fokus papan ketik, sehingga mengarah searah garis. Panah lain tetap bergeser 4px. Pada layar sentuh dan saat gerak dikurangi, panah tidak bergerak.'],
           ['One shared 404 page for static sites.', 'The root 404.html is the page products copy: plain HTML, one stylesheet, no script and no inline style, English and Indonesian, light and dark, one link home. guidelines/frameworks.md says what the host must do: answer every unknown path with status 404 and the same headers.', '404.html di akar adalah halaman yang disalin produk: HTML polos, satu stylesheet, tanpa skrip dan tanpa gaya sebaris, Inggris dan Indonesia, terang dan gelap, satu tautan ke beranda. guidelines/frameworks.md menjelaskan tugas host: menjawab setiap jalur yang tidak dikenal dengan status 404 dan header yang sama.'],
+          ['SideNav has one foot: an account card that opens an account menu.', 'SideNav draws its own foot. At rest it is one bordered AccountCard (avatar, name, email). Pressing it opens a menu with Theme (Light and Dark), your menuItems and Sign out. New props: account, menuItems, onSignOut, lang, labels. The footer slot is removed with no alias: pass account, menuItems and onSignOut instead and delete your own foot. AccountCard is a component and useThemeState keeps the menu and the header ThemeToggle in step.', 'SideNav menggambar footnya sendiri. Saat diam, foot berupa satu AccountCard berbingkai (avatar, nama, email). Menekannya membuka menu berisi Tema (Terang dan Gelap), menuItems Anda, dan Keluar. Prop baru: account, menuItems, onSignOut, lang, labels. Slot footer dihapus tanpa alias: berikan account, menuItems, dan onSignOut, lalu hapus foot buatan Anda sendiri. AccountCard kini komponen, dan useThemeState menjaga menu dan ThemeToggle di header tetap searah.'],
+          ['SideNav has a collapse button and an icon rail.', 'The head is the brand and one icon button: collapse or expand, with aria-expanded and a tooltip. Collapsed, the rail is 72px, shows icons with tooltips and keeps every name in the DOM. The choice is stored per viewer in localStorage (storageKey) and read before the first paint. The head has no section tag by default; delete your own "account" or "admin" tag and your own collapse code.', 'Kepala berisi merek dan satu tombol ikon: ciutkan atau perluas, dengan aria-expanded dan tooltip. Saat diciutkan, rel selebar 72px menampilkan ikon dengan tooltip dan tetap menyimpan setiap nama di DOM. Pilihan disimpan per pengguna di localStorage (storageKey) dan dibaca sebelum render pertama. Kepala tidak punya tag bagian secara bawaan; hapus tag "account" atau "admin" dan kode ciut buatan Anda sendiri.'],
+          ['DropdownMenu takes focus in a real browser.', 'The panel was hidden when the first item was focused, so in a browser focus stayed on the trigger and ArrowDown and Escape did nothing. Focus now moves in when the panel is visible. Checkbox and radio items keep their text clear of the mark, and a checked item is semibold. ContextMenu and Menubar are tracked separately.', 'Panel masih tersembunyi saat item pertama difokuskan, sehingga di browser fokus tetap di pemicu dan ArrowDown serta Escape tidak bekerja. Fokus kini pindah saat panel terlihat. Item checkbox dan radio menjaga teksnya tidak menimpa tanda, dan item yang dicentang dicetak semitebal. ContextMenu dan Menubar dilacak terpisah.'],
         ]),
         h2('v252', '2.5.2 (November 2026)', '2.5.2 (November 2026)'),
         list([
@@ -645,7 +648,7 @@ class Component extends DCLogic {
     const GROUP_ID = { 'Get started': 'Mulai', 'Guides': 'Panduan', 'Reference': 'Referensi' };
     const TITLE_ID = { introduction: 'Pendahuluan', installation: 'Instalasi', 'bundle-size': 'Ukuran bundle', theming: 'Penataan tema', 'dark-mode': 'Mode gelap & densitas', typography: 'Tipografi', monorepo: 'Repositori', ai: 'AI & skills', contributing: 'Berkontribusi', changelog: 'Catatan perubahan' };
     const LEDE_ID = {
-      introduction: 'Meridian adalah design system open-source serba-guna oleh Efolusi. 136 komponen aksesibel, 301 token, dan aplikasi contoh lengkap, tanpa langkah build.',
+      introduction: 'Meridian adalah design system open-source serba-guna oleh Efolusi. 137 komponen aksesibel, 301 token, dan aplikasi contoh lengkap, tanpa langkah build.',
       installation: 'Muat satu stylesheet dan satu bundle. Itu saja seluruh instalasinya.',
       'bundle-size': 'Seberapa besar tambahan tiap komponen pada aplikasi yang memasang Meridian dari npm.',
       theming: 'Tiga lapis token: ramp mentah, peran semantik, gaya komponen. Anda menata lapisan tengah.',

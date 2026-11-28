@@ -114,9 +114,12 @@ const CSS = `
 @media (prefers-reduced-motion:reduce){.ef-theme-toggle{transition:none}}
 `;
 
-export const ThemeToggle = React.forwardRef(function ThemeToggle({ lang = 'en', labels, className, onChange, ...rest }, ref) {
-  injectEfCss('ef-css-theme-toggle', CSS);
-  const text = { ...(LABELS[lang] || LABELS.en), ...labels };
+/**
+ * The theme state behind every theme control (the ThemeToggle and the SideNav account menu): `shown` is the theme in use,
+ * `other` the one a press switches to, `choose` switches to it, `set(theme)` picks one by name. It reads and writes the
+ * one contract above, so every control on a page stays in step. `onChange` is called with the new theme after a switch.
+ */
+export function useThemeState(onChange) {
   // pref is the person's choice (null until they switch); shown is the theme in use.
   const [pref, setPref] = React.useState(null);
   const [shown, setShown] = React.useState('light');
@@ -150,13 +153,22 @@ export const ThemeToggle = React.forwardRef(function ThemeToggle({ lang = 'en', 
   }, [pref]);
 
   const other = THEME_PREFERENCES.find((t) => t !== shown);
-  const choose = () => {
+  const apply = (next) => {
     swapTheme(() => {
-      setPref(writeThemePreference(other));
-      setShown(applyTheme(other));
+      setPref(writeThemePreference(next));
+      setShown(applyTheme(next));
     });
-    onChange?.(other);
+    onChange?.(next);
   };
+  const choose = () => apply(other);
+  const set = (next) => { if (valid(next) && next !== shown) apply(next); };
+  return { shown, other, choose, set };
+}
+
+export const ThemeToggle = React.forwardRef(function ThemeToggle({ lang = 'en', labels, className, onChange, ...rest }, ref) {
+  injectEfCss('ef-css-theme-toggle', CSS);
+  const text = { ...(LABELS[lang] || LABELS.en), ...labels };
+  const { shown, other, choose } = useThemeState(onChange);
 
   return (
     <button

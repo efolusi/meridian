@@ -59,6 +59,8 @@ describe('no style attributes in server-rendered HTML', () => {
     'PaymentCard frozen': <PaymentCard name="ADA OBI" number="•••• 4412" expiry="09/29" frozen />,
     DonutChart: <DonutChart data={[{ label: 'A', value: 3 }, { label: 'B', value: 1 }]} centerLabel="Total" />,
     SideNav: <SideNav brand="Komando" brandBadge="Beta" logoSrc="/logo.svg" groups={[{ label: 'Main', items: [{ id: 'a', label: 'Hosts', icon: 'server', badge: 2 }] }]} value="a" />,
+    'SideNav foot': <SideNav groups={[{ items: [{ id: 'a', label: 'Hosts', icon: 'server' }] }]} value="a" account={{ name: 'Ada Obi', email: 'ada@example.com' }} onSignOut={() => {}} />,
+    'SideNav collapsed': <SideNav collapsed groups={[{ items: [{ id: 'a', label: 'Hosts', icon: 'server' }] }]} value="a" account={{ email: 'ada@example.com' }} onSignOut={() => {}} />,
     Progress: <Progress value={40} />,
     Icon: <Icon name="check" size={20} />,
     Citation: <Citation index={1} href="https://efolusi.com" title="Efolusi" description="Home" />,

@@ -19,6 +19,10 @@
       "sourcePath": "components/display/Accordion.jsx"
     },
     {
+      "name": "AccountCard",
+      "sourcePath": "components/navigation/AccountCard.jsx"
+    },
+    {
       "name": "AgentRun",
       "sourcePath": "components/ai/AgentRun.jsx"
     },

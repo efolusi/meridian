@@ -51,6 +51,7 @@ const PROPS = {
   SegmentedControl: { options: ['a', 'b'] },
   Select: { options: ['a', 'b'] },
   SideNav: { groups: [{ items: [{ id: 'a', label: 'A' }] }] },
+  AccountCard: { email: 'ada@example.com' },
   Sparkline: { data: [1, 3, 2] },
   Steps: { items: [{ label: 'One' }, { label: 'Two' }] },
   Accordion: { items: [{ id: 'a', title: 'A', content: 'x' }] },

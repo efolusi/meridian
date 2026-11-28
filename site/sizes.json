@@ -1,16 +1,16 @@
 {
   "totals": {
     "@efolusi/meridian": {
-      "bytes": 384126,
-      "gzip": 87648
+      "bytes": 389026,
+      "gzip": 88932
     },
     "dist/components.css": {
-      "bytes": 270844,
-      "gzip": 38528
+      "bytes": 275577,
+      "gzip": 39241
     },
     "_ds_bundle.js": {
-      "bytes": 950757,
-      "gzip": 173054
+      "bytes": 965586,
+      "gzip": 177408
     }
   },
   "modules": [
@@ -1211,8 +1211,17 @@
       "exports": [
         "ThemeToggle"
       ],
-      "bytes": 47996,
-      "gzip": 8770
+      "bytes": 48140,
+      "gzip": 8839
+    },
+    {
+      "module": "navigation/AccountCard.js",
+      "group": "navigation",
+      "exports": [
+        "AccountCard"
+      ],
+      "bytes": 46881,
+      "gzip": 8185
     },
     {
       "module": "navigation/Breadcrumbs.js",
@@ -1250,8 +1259,8 @@
         "MenubarSubTrigger",
         "MenubarSubContent"
       ],
-      "bytes": 61845,
-      "gzip": 12739
+      "bytes": 61883,
+      "gzip": 12753
     },
     {
       "module": "navigation/NavigationMenu.js",
@@ -1308,8 +1317,8 @@
       "exports": [
         "SideNav"
       ],
-      "bytes": 47095,
-      "gzip": 8093
+      "bytes": 68677,
+      "gzip": 14862
     },
     {
       "module": "navigation/Sidebar.js",
@@ -1468,8 +1477,8 @@
         "DropdownMenuSubTrigger",
         "DropdownMenuSubContent"
       ],
-      "bytes": 57891,
-      "gzip": 11890
+      "bytes": 57929,
+      "gzip": 11906
     },
     {
       "module": "overlay/HoverCard.js",
