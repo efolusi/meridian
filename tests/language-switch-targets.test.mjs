@@ -2,7 +2,7 @@ import { readFileSync } from 'node:fs'
 import { describe, expect, it } from 'vitest'
 
 // MD112: every language target is 24 px at least at a fine pointer and 44 px at a coarse pointer (WCAG 2.5.8, and the
-// 44 px touch rule of the library). md is the --tap-min circle of the ThemeToggle; sm is --control-h-sm, which is 28 px
+// 44 px touch rule of the library). md is --control-h-md (36 px at a fine pointer, --tap-min at a coarse pointer, MD132), the size of the ThemeToggle; sm is --control-h-sm, which is 28 px
 // at a fine pointer (24 px in compact density) and --tap-min at a coarse pointer. Measured in a browser:
 // tests/fixtures/md112-language-switch.html.
 const source = readFileSync('components/marketing/LanguageSwitch.jsx', 'utf8')
@@ -25,10 +25,10 @@ function rule(block, selector) {
 }
 
 describe('LanguageSwitch targets (MD112)', () => {
-  it('md is the 44px tap target at every pointer', () => {
+  it('md is the header control size, --control-h-md: 36px at a fine pointer, 44px at a coarse pointer (MD132)', () => {
     const r = rule(css, '.ef-language-switch__item')
-    expect(r).toContain('min-width:var(--tap-min)')
-    expect(r).toContain('min-height:var(--tap-min)')
+    expect(r).toContain('min-width:var(--control-h-md)')
+    expect(r).toContain('min-height:var(--control-h-md)')
   })
 
   it('sm is --control-h-sm square, never under 24px at a fine pointer', () => {

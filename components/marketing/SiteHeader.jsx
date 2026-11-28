@@ -17,8 +17,9 @@ const CSS = `
 .ef-site-header__link[aria-current="page"]{color:var(--text-primary);background:var(--surface-sunken)}
 .ef-site-header__brand:focus-visible,.ef-site-header__link:focus-visible,.ef-site-header__menu:focus-visible{outline:none;box-shadow:var(--focus-ring)}
 .ef-site-header__actions{display:flex;align-items:center;gap:var(--space-2)}
-.ef-site-header__menu{display:none;align-items:center;justify-content:center;width:var(--tap-min);height:var(--tap-min);padding:0;border:0;border-radius:var(--radius-full);background:transparent;color:var(--text-primary);cursor:pointer}
-.ef-site-header__menu:hover{background:var(--surface-sunken)}
+.ef-site-header__menu{display:none;align-items:center;justify-content:center;width:var(--control-h-md);height:var(--control-h-md);padding:0;border:0;border-radius:var(--radius-full);background:transparent;color:var(--text-primary);cursor:pointer}
+@media (hover:hover){.ef-site-header__menu:hover{background:var(--surface-sunken)}}
+.ef-site-header__menu:active{background:var(--state-pressed)}
 .ef-site-header__panel{display:none}
 @media (max-width:860px){
   .ef-site-header__nav,.ef-site-header__actions{display:none}

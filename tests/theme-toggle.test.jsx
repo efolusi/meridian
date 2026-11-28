@@ -167,11 +167,11 @@ describe('ThemeToggle', () => {
     expect(getByRole('button').outerHTML).not.toMatch(/system|monitor/i);
   });
 
-  it('is a 44px tap target', () => {
+  it('is the header control size: --control-h-md, 36px with a mouse and 44px at a coarse pointer (MD132)', () => {
     fakeMedia(false);
     render(<ThemeToggle />);
     const css = document.getElementById('ef-css-theme-toggle').textContent;
-    expect(css).toMatch(/\.ef-theme-toggle\{[^}]*width:var\(--tap-min\);height:var\(--tap-min\)/);
+    expect(css).toMatch(/\.ef-theme-toggle\{[^}]*width:var\(--control-h-md\);height:var\(--control-h-md\)/);
   });
 });
 
