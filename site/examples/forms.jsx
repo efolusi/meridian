@@ -40,6 +40,31 @@ export function ButtonBubble() {
   );
 }
 
+// @demo Button As a link
+export function ButtonAsLink() {
+  const { Button } = window.EfolusiDesignSystem_4ffc3d;
+  const row = { display: 'flex', gap: 12, flexWrap: 'wrap', alignItems: 'center' };
+  return (
+    <div style={{ display: 'flex', flexDirection: 'column', gap: 16 }}>
+      <div style={row}>
+        <Button size="xl" iconBubble="arrow-up-right">Button</Button>
+        <Button href="#forms/Button" size="xl" iconBubble="arrow-up-right">Link with href</Button>
+        <Button asChild size="xl" iconBubble="arrow-up-right"><a href="#forms/Button">Your own link</a></Button>
+      </div>
+      <div style={row}>
+        <Button variant="secondary" size="lg">Button</Button>
+        <Button href="#forms/Button" variant="secondary" size="lg">Link with href</Button>
+        <Button href="https://github.com/efolusi/meridian" target="_blank" rel="noopener" variant="secondary" size="lg" iconRight="external-link">Opens a new tab</Button>
+      </div>
+      <div style={row}>
+        <Button href="#forms/Button" loading>Loading link</Button>
+        <Button href="#forms/Button" disabled>Disabled link</Button>
+        <Button href="#forms/Button" size="lg" iconBubble="arrow-right" loading>Loading with bubble</Button>
+      </div>
+    </div>
+  );
+}
+
 // @demo Button On a band
 export function ButtonOnBand() {
   const { Button } = window.EfolusiDesignSystem_4ffc3d;

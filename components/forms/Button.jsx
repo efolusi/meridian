@@ -1,7 +1,7 @@
 'use client';
 import React from 'react';
 import { Icon } from '../icons/Icon.jsx';
-import { injectEfCss } from '../runtime/runtime.jsx';
+import { injectEfCss, mergeRefs } from '../runtime/runtime.jsx';
 const CSS = `
 .ef-btn{display:inline-flex;align-items:center;justify-content:center;gap:var(--gap-label-icon);text-decoration:none;border:1px solid transparent;border-radius:var(--press-radius,var(--radius-sm));font-family:var(--font-sans);font-weight:var(--weight-semibold);cursor:pointer;white-space:nowrap;user-select:none;transition:background var(--dur-fast) var(--ease-enter),border-color var(--dur-fast) var(--ease-enter),color var(--dur-fast) var(--ease-enter),box-shadow var(--dur-fast) var(--ease-enter),transform var(--dur-fast) var(--ease-enter)}
 .ef-btn{line-height:var(--leading-normal)}
@@ -84,19 +84,54 @@ export function buttonVariants({ variant = 'default', size = 'default', shape = 
   const withBubble = bubble && bubbleFits(mappedVariant, mappedSize);
   return `ef-btn ef-btn--${mappedVariant} ef-btn--${mappedSize}${shape === 'pill' || withBubble ? ' ef-btn--pill' : ''}${withBubble ? ' ef-btn--bubble' : ''}${fullWidth ? ' ef-btn--full' : ''}${className ? ' ' + className : ''}`;
 }
-export const Button = React.forwardRef(function Button({ variant = 'default', size = 'default', shape = 'default', iconLeft, iconRight, iconBubble, fullWidth, loading, disabled, children, style, className, ...rest }, ref) {
-  injectEfCss('ef-css-btn', CSS);
+// The inner markup of a Button: the leading icon or spinner, the label, the trailing icon, the arrow bubble. ONE function draws it for the
+// <button>, the <a> (href) and the consumer's own link (asChild), so a link can never drift from the button in the bubble, its data-turn
+// turn, the spinner or the icon size.
+function renderButtonInner({ size, iconLeft, iconRight, iconBubble, bubble, loading }, label) {
   const isz = size === 'xs' || size === 'icon-xs' ? 12 : size === 'sm' || size === 'icon-sm' ? 14 : size === 'lg' || size === 'xl' || size === 'icon-lg' ? 18 : 16;
   // A bubble draws its own spinner, so the label does not jump when the button loads; where the bubble does not fit, the glyph is a plain trailing icon.
-  const bubble = Boolean(iconBubble) && bubbleFits(variant === 'default' ? 'primary' : variant, size);
   const trailing = bubble ? null : iconRight || iconBubble;
   const bubbleIcon = size === 'lg' || size === 'xl' ? 20 : 16;
   return (
-    <button ref={ref} className={buttonVariants({ variant, size, shape, bubble, fullWidth, className })} disabled={disabled || loading} aria-busy={loading || undefined} data-loading={loading ? '' : undefined} style={style} {...rest}>
+    <>
       {loading && !bubble ? <span className="ef-btn__spin" aria-hidden="true"><Icon name="loader-circle" size={isz} /></span> : iconLeft ? <Icon name={iconLeft} size={isz} /> : null}
-      {children}
+      {label}
       {trailing ? <Icon name={trailing} size={isz} /> : null}
       {bubble ? <span className="ef-btn__bubble" data-turn={iconBubble === 'arrow-up-right' ? '' : undefined} aria-hidden="true">{loading ? <span className="ef-btn__spin"><Icon name="loader-circle" size={bubbleIcon} /></span> : <Icon name={iconBubble} size={bubbleIcon} />}</span> : null}
+    </>
+  );
+}
+const joinClass = (...names) => names.filter(Boolean).join(' ');
+// A link has no disabled attribute. A disabled or loading link keeps its href (a router link needs one), says aria-disabled, leaves the
+// tab order and swallows the click, the middle click and the Enter key (Enter on a focused link is a click).
+const swallow = (handler, blocked) => (event) => { if (blocked) { event.preventDefault(); return; } handler?.(event); };
+export const Button = React.forwardRef(function Button({ variant = 'default', size = 'default', shape = 'default', iconLeft, iconRight, iconBubble, fullWidth, loading, disabled, asChild = false, href, children, style, className, onClick, onAuxClick, ...rest }, ref) {
+  injectEfCss('ef-css-btn', CSS);
+  const bubble = Boolean(iconBubble) && bubbleFits(variant === 'default' ? 'primary' : variant, size);
+  const classes = buttonVariants({ variant, size, shape, bubble, fullWidth, className });
+  const inner = (label) => renderButtonInner({ size, iconLeft, iconRight, iconBubble, bubble, loading }, label);
+  if (asChild || href !== undefined) {
+    const blocked = Boolean(disabled || loading);
+    // Only the keys that are set, so an unset key never overwrites the consumer's own aria-busy, tabIndex or data-loading.
+    const linkState = { ...(loading ? { 'aria-busy': true, 'data-loading': '' } : null), ...(blocked ? { 'aria-disabled': 'true', tabIndex: -1 } : null) };
+    if (asChild) {
+      // The consumer's link (a Next.js Link with its locale, a router Link) is the element; Button gives it the classes, the state and the inner markup.
+      const child = React.Children.only(children);
+      return React.cloneElement(child, {
+        ...rest, ...child.props, ...linkState,
+        ref: mergeRefs(ref, child.ref),
+        className: joinClass(classes, child.props.className),
+        style: style || child.props.style ? { ...style, ...child.props.style } : undefined,
+        onClick: swallow((event) => { child.props.onClick?.(event); onClick?.(event); }, blocked),
+        onAuxClick: swallow((event) => { child.props.onAuxClick?.(event); onAuxClick?.(event); }, blocked),
+        children: inner(child.props.children),
+      });
+    }
+    return <a {...rest} {...linkState} ref={ref} href={href} className={classes} style={style} onClick={swallow(onClick, blocked)} onAuxClick={swallow(onAuxClick, blocked)}>{inner(children)}</a>;
+  }
+  return (
+    <button ref={ref} className={classes} disabled={disabled || loading} aria-busy={loading || undefined} data-loading={loading ? '' : undefined} style={style} onClick={onClick} onAuxClick={onAuxClick} {...rest}>
+      {inner(children)}
     </button>
   );
 });

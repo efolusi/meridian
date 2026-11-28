@@ -3173,11 +3173,26 @@ On marketing pages, `shape="pill"` rounds the ends and widens the side padding. 
 <Button shape="pill" size="xl" iconBubble="arrow-up-right">See what we've built</Button>
 ```
 
-For a link, build the classes with `buttonVariants` and put the bubble after the label (the icon is 20px, 16px at `md`). Write `data-turn` on the bubble when the icon is `arrow-up-right`, so it turns:
+### As a link
+
+A call to action that goes to another page is a link, not a button. Give `Button` an `href` and it draws an `<a>` with the same classes, bubble, spinner, focus ring, states and 45 degree turn as the button, in one markup (the same function draws both, so they cannot drift):
 
 ```jsx
-<a className={buttonVariants({ size: 'xl', bubble: true })} href="/start">Start free<span className="ef-btn__bubble" aria-hidden="true"><Icon name="arrow-right" size={20} /></span></a>
+<Button href="/start" shape="pill" size="xl" iconBubble="arrow-up-right">Start free</Button>
+<Button href="/docs" variant="secondary" target="_blank" rel="noopener">Read the docs</Button>
 ```
+
+With a router, use `asChild` and pass your own link as the single child: a Next.js `Link` keeps its locale and prefetch, and Button gives it the classes, the state and the inner markup. The child's `href`, props, ref, `className`, `style` and click handlers stay and are merged with Button's:
+
+```jsx
+<Button asChild shape="pill" size="xl" iconBubble="arrow-up-right">
+  <Link href="/start" locale="id">Mulai gratis</Link>
+</Button>
+```
+
+A link is not a button, and the difference is kept: Enter follows it, Space does not (Space scrolls the page, as on every link), and Cmd, Ctrl or middle click opens it in a new tab. A link has no `disabled` attribute, so `disabled` and `loading` set `aria-disabled="true"` and `tabindex="-1"`, keep the `href`, and swallow the click, the middle click and Enter. `loading` also sets `aria-busy` and draws the spinner (in the bubble when there is one, so the label does not move). Use `Button` with `onClick` for an action and `Button` with `href` for a destination; never an `href="#"`.
+
+`buttonVariants` stays for markup that is not React (a server template, a Markdown renderer): it returns the class names only, and the bubble span is yours to write, so prefer `href` or `asChild` wherever React renders the link.
 
 ### On a band
 
@@ -3190,7 +3205,7 @@ A band is the brand-colour section (`Section tone="band"`): cream in light, dark
 ```
 
 ```ts
-export interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
+export interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement>, Pick<React.AnchorHTMLAttributes<HTMLAnchorElement>, 'target' | 'rel' | 'download' | 'hrefLang' | 'referrerPolicy'> {
   /** @default 'default' */
   /** `band` is for a button that sits on a Section `tone="band"` (the cream band in light, the dark band in dark): a cream fill with dark ink, the same in both themes. @default 'default' */
   variant?: 'default' | 'ghost' | 'secondary' | 'link' | 'primary' | 'danger' | 'brand' | 'band';
@@ -3205,12 +3220,18 @@ export interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElemen
   /** Lucide icon name rendered in a round bubble at the end of the button, for the one hero or closing call to action (`arrow-right`, or `arrow-up-right`, which turns 45 degrees on hover while any other arrow nudges). The bubble takes the label colour and the arrow takes the button colour, so both read in light and dark. It makes the button a pill, replaces `iconRight`, and draws only at sizes `md`, `lg` and `xl` and not on `ghost` or `link`; anywhere else the glyph is a plain trailing icon. */
   iconBubble?: string;
   fullWidth?: boolean;
-  /** Shows a spinner and disables the button */
+  /** Shows a spinner and disables the button. On a link (`href` or `asChild`) it sets `aria-busy` and `aria-disabled`, takes the link out of the tab order and swallows the click. */
   loading?: boolean;
+  /** Renders an `<a>` with the same classes, bubble, spinner, focus ring and states as the button. A link has no `disabled` attribute: `disabled` and `loading` set `aria-disabled="true"` and `tabindex="-1"` and block the click and the Enter key. Space does not activate it (link semantics). `target`, `rel`, `download` and `hrefLang` pass through. */
+  href?: string;
+  /** Gives the classes, state and inner markup to your own link, the single child element (a Next.js `Link` with its locale, a router `Link`), instead of rendering an element. The child keeps its `href`, props and ref; its `className`, `style` and click handlers are merged with Button's. `disabled`, `loading` and the blocked click work as on `href`. The child must be a link (an `a`), not a `button`. */
+  asChild?: boolean;
   children?: React.ReactNode;
 }
-export declare function buttonVariants(options?: Pick<ButtonProps, 'variant' | 'size' | 'shape' | 'fullWidth'> & { /** Adds the pill and bubble classes; the markup is `<span className="ef-btn__bubble" aria-hidden="true"><Icon name="arrow-right" size={20} /></span>` after the label (size 16 at `md`); add `data-turn` to the span for `arrow-up-right`, so the arrow turns on hover. */ bubble?: boolean; className?: string }): string;
-export declare const Button: React.ForwardRefExoticComponent<ButtonProps & React.RefAttributes<HTMLButtonElement>>;
+export declare function buttonVariants(options?: Pick<ButtonProps, 'variant' | 'size' | 'shape' | 'fullWidth'> & { /** Adds the pill and bubble classes; for markup that is not React only: the bubble span is yours to write after the label. Where React renders the link, use `<Button href>` or `<Button asChild>`, which draw the bubble. */ bubble?: boolean; className?: string }): string;
+/** With `href` or `asChild` the ref is the link element, so the call has a second signature for it. */
+export type ButtonLinkProps = ButtonProps & ({ href: string } | { asChild: true }) & React.RefAttributes<HTMLAnchorElement>;
+export declare const Button: React.ForwardRefExoticComponent<ButtonProps & React.RefAttributes<HTMLButtonElement>> & ((props: ButtonLinkProps) => React.ReactElement | null);
 ```
 
 #### ButtonGroup

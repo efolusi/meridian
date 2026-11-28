@@ -89,6 +89,8 @@ jobs:
         run: '"$RUNNER_TEMP/pw-node" scripts/check_language_switch_size.mjs'
       - name: The secondary Button edge is 3:1 against its surface, light and dark
         run: '"$RUNNER_TEMP/pw-node" scripts/check_button_secondary_edge.mjs'
+      - name: Button renders a link with the button's look and link semantics
+        run: '"$RUNNER_TEMP/pw-node" scripts/check_button_link.mjs'
       - name: Upload button interaction receipts
         if: always()
         uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4.6.2
