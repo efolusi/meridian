@@ -18,7 +18,7 @@ export interface SideNavMenuItem {
 export interface SideNavLabels {
   /** The heading of the theme group in the account menu. @default 'Theme' ('Tema' with lang="id") */
   theme?: string;
-  /** The radio for the light theme. @default 'Light' ('Terang') */
+  /** The radio for the light theme. The menu has no System radio: the theme contract is light and dark only (MD47). @default 'Light' ('Terang') */
   light?: string;
   /** The radio for the dark theme. @default 'Dark' ('Gelap') */
   dark?: string;
