@@ -5203,10 +5203,11 @@ export declare const SheetDescription: React.ForwardRefExoticComponent<DialogSlo
 
 ## Design tokens
 
-302 custom property names by file (names only; resolve current values from /styles.css, which imports these files, or /tokens.json):
+303 custom property names by file (names only; resolve current values from /styles.css, which imports these files, or /tokens.json):
 
 ### /tokens/base.css
 
+--accent-word
 --ef-glass-alpha
 --ef-motion-guard
 --field-radius

@@ -62,6 +62,10 @@ Copy this block and swap in your values. The example is a deep teal; every pair 
 
 `--focus-ring` itself is a composite (a surface-colored offset layer under the color band) and re-resolves through the pair; `--focus-ring-danger` does the same with `--danger-600` in the band. Set the pair; never rebuild the composites by hand.
 
+## The accent word
+
+`--accent-word` colours the one accent word of a heading or a script title ("Tagihan yang *jelas*"). Meridian sets it to `var(--accent-edge)` on `:root` and on every `[data-theme]` element, so it follows the dark theme and both increased-contrast tables with no value of its own. Use `color: var(--accent-word)` and nothing else: do not remap it in a product and do not point it at a `--brand-*` stop (`--brand-400` is `#CE9C66`, a few hue steps off the dark `--accent-edge` `#CD8F69`). A product that defined its own `--accent-word` deletes that definition.
+
 ## Dark mode
 
 Two facts drive the dark half of your override file:
