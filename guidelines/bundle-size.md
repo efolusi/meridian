@@ -13,9 +13,9 @@ CSS is not counted per component: `styles.css` ships every component style in on
 
 | File | Size | Gzip |
 | --- | ---: | ---: |
-| `@efolusi/meridian` | 376.0 kB | 85.5 kB |
-| `dist/components.css` | 254.0 kB | 35.8 kB |
-| `_ds_bundle.js` | 917.1 kB | 166.8 kB |
+| `@efolusi/meridian` | 376.5 kB | 85.6 kB |
+| `dist/components.css` | 257.5 kB | 36.7 kB |
+| `_ds_bundle.js` | 921.9 kB | 168.1 kB |
 
 The root import, `@efolusi/meridian`, is every component. `_ds_bundle.js` is the zero-build CDN bundle, which also carries each component's CSS. The root import is minified; the CSS and the CDN bundle are measured as shipped.
 
@@ -92,21 +92,21 @@ The root import, `@efolusi/meridian`, is every component. `_ds_bundle.js` is the
 | `display/Toolbar.js` | Toolbar | 50.0 kB | 9.5 kB |
 | `display/TreeList.js` | TreeList | 45.5 kB | 7.8 kB |
 | `feedback/Alert.js` | Alert, AlertTitle, AlertDescription, AlertAction | 45.0 kB | 7.5 kB |
-| `feedback/AlertDialog.js` | AlertDialog, AlertDialogTrigger, AlertDialogPortal, AlertDialogOverlay, AlertDialogContent, AlertDialogHeader, AlertDialogFooter, AlertDialogMedia, AlertDialogTitle, AlertDialogDescription, AlertDialogCancel, AlertDialogAction | 7.0 kB | 2.5 kB |
+| `feedback/AlertDialog.js` | AlertDialog, AlertDialogTrigger, AlertDialogPortal, AlertDialogOverlay, AlertDialogContent, AlertDialogHeader, AlertDialogFooter, AlertDialogMedia, AlertDialogTitle, AlertDialogDescription, AlertDialogCancel, AlertDialogAction | 7.1 kB | 2.5 kB |
 | `feedback/Banner.js` | Banner | 44.8 kB | 7.5 kB |
-| `feedback/ConfirmDialog.js` | ConfirmDialog | 55.0 kB | 10.8 kB |
+| `feedback/ConfirmDialog.js` | ConfirmDialog | 55.5 kB | 10.9 kB |
 | `feedback/Dialog.js` | Dialog, DialogTrigger, DialogPortal, DialogOverlay, DialogClose, DialogContent, DialogHeader, DialogFooter, DialogTitle, DialogDescription | 50.9 kB | 9.5 kB |
 | `feedback/Loader.js` | Loader | 1.0 kB | 0.5 kB |
 | `feedback/Progress.js` | Progress | 1.5 kB | 0.8 kB |
 | `feedback/Spinner.js` | Spinner | 0.7 kB | 0.4 kB |
 | `feedback/Toast.js` | Toaster | 50.0 kB | 9.6 kB |
 | `feedback/Tooltip.js` | Tooltip, TooltipProvider, TooltipTrigger, TooltipContent | 5.7 kB | 2.3 kB |
-| `files/Attachment.js` | Attachment, AttachmentMedia, AttachmentContent, AttachmentTitle, AttachmentDescription, AttachmentActions, AttachmentAction, AttachmentTrigger, AttachmentGroup | 47.0 kB | 8.0 kB |
+| `files/Attachment.js` | Attachment, AttachmentMedia, AttachmentContent, AttachmentTitle, AttachmentDescription, AttachmentActions, AttachmentAction, AttachmentTrigger, AttachmentGroup | 47.5 kB | 8.1 kB |
 | `files/FileDrop.js` | FileDrop | 45.4 kB | 7.9 kB |
 | `files/FileTile.js` | FileTile | 47.1 kB | 8.3 kB |
 | `files/FileTypeIcon.js` | FileTypeIcon | 45.8 kB | 7.7 kB |
 | `finance/PaymentCard.js` | PaymentCard | 1.7 kB | 0.5 kB |
-| `forms/Button.js` | Button | 44.8 kB | 7.5 kB |
+| `forms/Button.js` | Button | 45.3 kB | 7.7 kB |
 | `forms/ButtonGroup.js` | ButtonGroup, ButtonGroupText, ButtonGroupSeparator | 2.1 kB | 0.8 kB |
 | `forms/ButtonTile.js` | ButtonTile, ButtonTileGroup | 44.9 kB | 7.5 kB |
 | `forms/Checkbox.js` | Checkbox | 45.9 kB | 8.0 kB |
