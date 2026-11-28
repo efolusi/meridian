@@ -1,16 +1,16 @@
 {
   "totals": {
     "@efolusi/meridian": {
-      "bytes": 379695,
-      "gzip": 86110
+      "bytes": 381050,
+      "gzip": 86493
     },
     "dist/components.css": {
-      "bytes": 250743,
-      "gzip": 35607
+      "bytes": 252050,
+      "gzip": 35711
     },
     "_ds_bundle.js": {
-      "bytes": 919207,
-      "gzip": 167094
+      "bytes": 923365,
+      "gzip": 167880
     }
   },
   "modules": [
@@ -1140,6 +1140,15 @@
       ],
       "bytes": 1333,
       "gzip": 631
+    },
+    {
+      "module": "marketing/LanguageSwitch.js",
+      "group": "marketing",
+      "exports": [
+        "LanguageSwitch"
+      ],
+      "bytes": 1383,
+      "gzip": 702
     },
     {
       "module": "marketing/LegalDocument.js",

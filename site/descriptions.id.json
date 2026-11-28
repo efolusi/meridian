@@ -129,6 +129,7 @@
   "Counter": "Angka statistik yang menghitung naik saat masuk layar; nilai akhir selalu ada di markup, jadi terbaca tanpa JavaScript, dengan gerak dikurangi, dan oleh pembaca layar.",
   "Reveal": "Memudarkan dan mengangkat konten saat masuk layar, dengan jeda bertingkat; tetap terlihat tanpa JavaScript dan dengan gerak dikurangi.",
   "ThemeToggle": "Satu tombol tema untuk semua situs Efolusi: terang, gelap, dan sistem; pilihan di localStorage, tema yang dipakai di cookie efolusi_theme; mengikuti OS secara langsung saat sistem.",
+  "LanguageSwitch": "Pengalih bahasa: satu kode pendek per bahasa, tiap kode tautan ke halaman yang sama dalam bahasa itu dengan hreflang dan lang; bahasa yang sedang dipakai ditandai aria-current dan bukan tautan.",
   "SiteHeader": "Header situs pemasaran: tautan lewati ke konten, merek, tautan utama, slot aksi, dan menu seluler yang ditutup dengan Escape.",
   "SiteFooter": "Footer situs pemasaran: merek dan tagline, tautan sosial, kolom tautan, dan baris bawah; tautan luar memberi tahu bahwa membuka tab baru.",
   "LegalDocument": "Isi halaman syarat atau privasi dari string kamus: [label](href) dan **tebal** saja, tanpa HTML, dengan id bagian yang stabil."

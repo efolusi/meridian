@@ -110,6 +110,21 @@ export function ThemeToggleDemo() {
   );
 }
 
+// @demo LanguageSwitch Two languages, the current one marked, two sizes
+export function LanguageSwitchDemo() {
+  const { LanguageSwitch } = window.EfolusiDesignSystem_4ffc3d;
+  const languages = [
+    { code: 'id', label: 'ID', href: '#id', name: 'Bahasa Indonesia' },
+    { code: 'en', label: 'EN', href: '#en', name: 'English' },
+  ];
+  return (
+    <div style={{ display: 'flex', gap: 'var(--space-6)', alignItems: 'center', flexWrap: 'wrap' }}>
+      <LanguageSwitch languages={languages} current="en" />
+      <LanguageSwitch languages={languages} current="id" size="sm" lang="id" />
+    </div>
+  );
+}
+
 // @demo SiteHeader Links, language switch and actions
 export function SiteHeaderDemo() {
   const { SiteHeader, Button, ThemeToggle } = window.EfolusiDesignSystem_4ffc3d;

@@ -3408,6 +3408,36 @@
       ]
     },
     {
+      "name": "languageswitch",
+      "type": "registry:ui",
+      "title": "LanguageSwitch",
+      "description": "Use `LanguageSwitch` where a page can be read in more than one language: one short code per language (`ID`, `EN`), each a link to the same page in that language. Put it in the `actions` of `SiteHeader` beside `ThemeToggle`, or in the language slot of `SiteFooter`. It lives in the marketing group wit",
+      "dependencies": [
+        "react"
+      ],
+      "registryDependencies": [
+        "https://meridian.efolusi.com/site/registry/meridian-base.json",
+        "https://meridian.efolusi.com/site/registry/meridian-runtime.json"
+      ],
+      "files": [
+        {
+          "path": "components/marketing/LanguageSwitch.jsx",
+          "type": "registry:ui"
+        },
+        {
+          "path": "components/marketing/LanguageSwitch.d.ts",
+          "type": "registry:component"
+        },
+        {
+          "path": "components/marketing/LanguageSwitch.prompt.md",
+          "type": "registry:component"
+        }
+      ],
+      "categories": [
+        "marketing"
+      ]
+    },
+    {
       "name": "legaldocument",
       "type": "registry:ui",
       "title": "LegalDocument",

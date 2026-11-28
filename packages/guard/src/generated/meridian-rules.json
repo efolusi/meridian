@@ -915,6 +915,10 @@
       "sourcePath": "components/forms/Label.jsx"
     },
     {
+      "name": "LanguageSwitch",
+      "sourcePath": "components/marketing/LanguageSwitch.jsx"
+    },
+    {
       "name": "LegalDocument",
       "sourcePath": "components/marketing/LegalDocument.jsx"
     },
